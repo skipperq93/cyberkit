@@ -30,7 +30,7 @@
 #include <wtf/glib/RunLoopSourcePriority.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 // This version number is in the DB and marks the current generation of the schema
 // Currently, a mismatched schema causes the DB to be wiped and reset.
@@ -566,7 +566,7 @@ void IconDatabase::loadIconForPageURL(const String& pageURL, AllowDatabaseWrite 
                 return;
             }
 
-            auto icon = [&]() -> WebCore::PlatformImagePtr {
+            auto icon = [&]() -> CyberCore::PlatformImagePtr {
                 Locker locker { m_loadedIconsLock };
                 auto it = m_loadedIcons.find(iconURL);
                 if (it != m_loadedIcons.end() && it->value.first) {

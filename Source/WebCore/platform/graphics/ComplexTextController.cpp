@@ -40,7 +40,7 @@
 #include <CoreText/CoreText.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class TextLayout {
     WTF_MAKE_FAST_ALLOCATED;
@@ -846,4 +846,4 @@ ComplexTextController::ComplexTextRun::ComplexTextRun(const Vector<FloatSize>& a
 {
 }
 
-} // namespace WebCore
+} // namespace CyberCore

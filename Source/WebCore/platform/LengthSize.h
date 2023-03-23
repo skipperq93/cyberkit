@@ -22,7 +22,7 @@
 #include "CompositeOperation.h"
 #include "Length.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct BlendingContext;
 
@@ -51,4 +51,4 @@ inline LengthSize blend(const LengthSize& from, const LengthSize& to, const Blen
 
 WTF::TextStream& operator<<(WTF::TextStream&, const LengthSize&);
 
-} // namespace WebCore
+} // namespace CyberCore

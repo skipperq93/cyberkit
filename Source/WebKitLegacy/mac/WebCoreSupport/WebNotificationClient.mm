@@ -40,7 +40,7 @@
 #import <wtf/Scope.h>
 #import <wtf/cocoa/VectorCocoa.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 @interface WebNotificationPolicyListener : NSObject <WebAllowDenyPolicyListener>
 {
@@ -105,7 +105,7 @@ void WebNotificationClient::requestPermission(ScriptExecutionContext& context, W
 
     m_everRequestedPermission = true;
 
-    auto webOrigin = adoptNS([[WebSecurityOrigin alloc] _initWithWebCoreSecurityOrigin:context.securityOrigin()]);
+    auto webOrigin = adoptNS([[WebSecurityOrigin alloc] _initWithCyberCoreSecurityOrigin:context.securityOrigin()]);
 
     // Add origin to list of origins that have requested permission to use the Notifications API.
     m_notificationPermissionRequesters.add(context.securityOrigin()->data());
@@ -127,7 +127,7 @@ NotificationClient::Permission WebNotificationClient::checkPermission(ScriptExec
         return NotificationClient::Permission::Denied;
     if (![[m_webView preferences] notificationsEnabled])
         return NotificationClient::Permission::Denied;
-    auto webOrigin = adoptNS([[WebSecurityOrigin alloc] _initWithWebCoreSecurityOrigin:context->securityOrigin()]);
+    auto webOrigin = adoptNS([[WebSecurityOrigin alloc] _initWithCyberCoreSecurityOrigin:context->securityOrigin()]);
     WebNotificationPermission permission = [[m_webView _notificationProvider] policyForOrigin:webOrigin.get()];
 
     // To reduce fingerprinting, if the origin has not requested permission to use the

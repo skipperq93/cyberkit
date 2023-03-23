@@ -32,7 +32,7 @@
 #include "CachedResourceRequestInitiatorTypes.h"
 #include "CachedSVGDocument.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 CachedSVGDocumentReference::CachedSVGDocumentReference(const String& url)
     : m_url(url)

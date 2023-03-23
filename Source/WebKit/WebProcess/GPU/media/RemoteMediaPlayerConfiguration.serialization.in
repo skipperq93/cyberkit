@@ -22,7 +22,7 @@
 
 #if ENABLE(GPU_PROCESS)
 
-struct WebKit::RemoteMediaPlayerConfiguration {
+struct CyberKit::RemoteMediaPlayerConfiguration {
     String engineDescription;
     double maximumDurationToCacheMediaTime;
     bool supportsScanning;

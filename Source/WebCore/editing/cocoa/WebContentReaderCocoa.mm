@@ -81,8 +81,8 @@
 - (NSString *)_htmlDocumentFragmentString:(NSRange)range documentAttributes:(NSDictionary *)attributes subresources:(NSArray **)subresources;
 @end
 #else
-SOFT_LINK_PRIVATE_FRAMEWORK(WebKitLegacy)
-SOFT_LINK(WebKitLegacy, _WebCreateFragment, void, (WebCore::Document& document, NSAttributedString *string, WebCore::FragmentAndResources& result), (document, string, result))
+SOFT_LINK_PRIVATE_FRAMEWORK(CyberKitLegacy)
+SOFT_LINK(CyberKitLegacy, _WebCreateFragment, void, (WebCore::Document& document, NSAttributedString *string, WebCore::FragmentAndResources& result), (document, string, result))
 #endif
 
 namespace WebCore {
@@ -98,7 +98,7 @@ static FragmentAndResources createFragment(Frame&, NSAttributedString *)
 
 static NSDictionary *attributesForAttributedStringConversion()
 {
-    // This function needs to be kept in sync with identically named one in WebKitLegacy, which is used on older OS versions.
+    // This function needs to be kept in sync with identically named one in CyberKitLegacy, which is used on older OS versions.
     RetainPtr<NSMutableArray> excludedElements = adoptNS([[NSMutableArray alloc] initWithObjects:
         // Omit style since we want style to be inline so the fragment can be easily inserted.
         @"style",

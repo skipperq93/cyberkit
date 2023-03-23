@@ -31,7 +31,7 @@
 
 #include "AVIFImageReader.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 AVIFImageDecoder::AVIFImageDecoder(AlphaOption alphaOption, GammaAndColorProfileOption gammaAndColorProfileOption)
     : ScalableImageDecoder(alphaOption, gammaAndColorProfileOption)

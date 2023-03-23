@@ -59,11 +59,11 @@ private:
 
     private:
         // API::ResourceLoadClient
-        void didSendRequest(ResourceLoadInfo&&, WebCore::ResourceRequest&&) const final;
-        void didPerformHTTPRedirection(ResourceLoadInfo&&, WebCore::ResourceResponse&&, WebCore::ResourceRequest&&) const final;
-        void didReceiveChallenge(ResourceLoadInfo&&, WebCore::AuthenticationChallenge&&) const final;
-        void didReceiveResponse(ResourceLoadInfo&&, WebCore::ResourceResponse&&) const final;
-        void didCompleteWithError(ResourceLoadInfo&&, WebCore::ResourceResponse&&, WebCore::ResourceError&&) const final;
+        void didSendRequest(ResourceLoadInfo&&, CyberCore::ResourceRequest&&) const final;
+        void didPerformHTTPRedirection(ResourceLoadInfo&&, CyberCore::ResourceResponse&&, CyberCore::ResourceRequest&&) const final;
+        void didReceiveChallenge(ResourceLoadInfo&&, CyberCore::AuthenticationChallenge&&) const final;
+        void didReceiveResponse(ResourceLoadInfo&&, CyberCore::ResourceResponse&&) const final;
+        void didCompleteWithError(ResourceLoadInfo&&, CyberCore::ResourceResponse&&, CyberCore::ResourceError&&) const final;
 
         ResourceLoadDelegate& m_resourceLoadDelegate;
     };

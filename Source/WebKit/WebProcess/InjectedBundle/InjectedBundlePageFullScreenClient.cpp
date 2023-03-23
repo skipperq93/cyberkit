@@ -33,13 +33,13 @@
 #include "WKAPICast.h"
 #include "WKBundleAPICast.h"
 #include "WKSharedAPICast.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebFullScreenManagerProxyMessages.h"
 #include "WebPage.h"
 #include <CyberCore/Element.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 bool InjectedBundlePageFullScreenClient::supportsFullScreen(WebPage *page, bool withKeyboard)
 {
@@ -51,7 +51,7 @@ bool InjectedBundlePageFullScreenClient::supportsFullScreen(WebPage *page, bool 
     return supports;
 }
 
-void InjectedBundlePageFullScreenClient::enterFullScreenForElement(WebPage *page, WebCore::Element *element, bool blocksReturnToFullscreenFromPictureInPicture, bool isVideoElementWithControls, FloatSize videoDimensions)
+void InjectedBundlePageFullScreenClient::enterFullScreenForElement(WebPage *page, CyberCore::Element *element, bool blocksReturnToFullscreenFromPictureInPicture, bool isVideoElementWithControls, FloatSize videoDimensions)
 {
     if (m_client.enterFullScreenForElement) {
         RefPtr<InjectedBundleNodeHandle> nodeHandle = InjectedBundleNodeHandle::getOrCreate(element);
@@ -60,7 +60,7 @@ void InjectedBundlePageFullScreenClient::enterFullScreenForElement(WebPage *page
         page->send(Messages::WebFullScreenManagerProxy::EnterFullScreen(blocksReturnToFullscreenFromPictureInPicture, isVideoElementWithControls, videoDimensions));
 }
 
-void InjectedBundlePageFullScreenClient::exitFullScreenForElement(WebPage *page, WebCore::Element *element)
+void InjectedBundlePageFullScreenClient::exitFullScreenForElement(WebPage *page, CyberCore::Element *element)
 {
     if (m_client.exitFullScreenForElement) {
         RefPtr<InjectedBundleNodeHandle> nodeHandle = InjectedBundleNodeHandle::getOrCreate(element);
@@ -93,6 +93,6 @@ void InjectedBundlePageFullScreenClient::closeFullScreen(WebPage *page)
         page->send(Messages::WebFullScreenManagerProxy::Close());
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(FULLSCREEN_API)

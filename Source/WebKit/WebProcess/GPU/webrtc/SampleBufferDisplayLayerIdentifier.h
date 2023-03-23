@@ -29,11 +29,11 @@
 
 #include <wtf/ObjectIdentifier.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 enum SampleBufferDisplayLayerIdentifierType { };
 using SampleBufferDisplayLayerIdentifier = ObjectIdentifier<SampleBufferDisplayLayerIdentifierType>;
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

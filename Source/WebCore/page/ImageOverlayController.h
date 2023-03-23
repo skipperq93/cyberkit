@@ -35,7 +35,7 @@
 #include "DataDetectorHighlight.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class Element;
@@ -106,4 +106,4 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore

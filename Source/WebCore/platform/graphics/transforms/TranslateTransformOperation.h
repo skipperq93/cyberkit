@@ -29,7 +29,7 @@
 #include "TransformOperation.h"
 #include <wtf/Ref.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct BlendingContext;
 
@@ -87,6 +87,6 @@ private:
     Length m_z;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_TRANSFORMOPERATION(WebCore::TranslateTransformOperation, isTranslateTransformOperationType())
+SPECIALIZE_TYPE_TRAITS_TRANSFORMOPERATION(CyberCore::TranslateTransformOperation, isTranslateTransformOperationType())

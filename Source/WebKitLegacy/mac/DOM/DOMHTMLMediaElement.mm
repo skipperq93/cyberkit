@@ -43,295 +43,295 @@
 #import <wtf/GetPtr.h>
 #import <wtf/URL.h>
 
-#define IMPL static_cast<WebCore::HTMLMediaElement*>(reinterpret_cast<WebCore::Node*>(_internal))
+#define IMPL static_cast<CyberCore::HTMLMediaElement*>(reinterpret_cast<CyberCore::Node*>(_internal))
 
 @implementation DOMHTMLMediaElement
 
 - (DOMMediaError *)error
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->error()));
 }
 
 - (NSString *)src
 {
-    WebCore::JSMainThreadNullState state;
-    return IMPL->getURLAttribute(WebCore::HTMLNames::srcAttr).string();
+    CyberCore::JSMainThreadNullState state;
+    return IMPL->getURLAttribute(CyberCore::HTMLNames::srcAttr).string();
 }
 
 - (void)setSrc:(NSString *)newSrc
 {
-    WebCore::JSMainThreadNullState state;
-    IMPL->setAttributeWithoutSynchronization(WebCore::HTMLNames::srcAttr, newSrc);
+    CyberCore::JSMainThreadNullState state;
+    IMPL->setAttributeWithoutSynchronization(CyberCore::HTMLNames::srcAttr, newSrc);
 }
 
 - (NSString *)currentSrc
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->currentSrc().string();
 }
 
 - (NSString *)crossOrigin
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->crossOrigin();
 }
 
 - (void)setCrossOrigin:(NSString *)newCrossOrigin
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->setCrossOrigin(newCrossOrigin);
 }
 
 - (unsigned short)networkState
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->networkState();
 }
 
 - (NSString *)preload
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->preload();
 }
 
 - (void)setPreload:(NSString *)newPreload
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->setPreload(newPreload);
 }
 
 - (DOMTimeRanges *)buffered
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->buffered()));
 }
 
 - (unsigned short)readyState
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->readyState();
 }
 
 - (BOOL)seeking
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->seeking();
 }
 
 - (double)currentTime
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->currentTime();
 }
 
 - (void)setCurrentTime:(double)newCurrentTime
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     raiseOnDOMError(IMPL->setCurrentTimeForBindings(newCurrentTime));
 }
 
 - (double)duration
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->duration();
 }
 
 - (BOOL)paused
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->paused();
 }
 
 - (double)defaultPlaybackRate
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->defaultPlaybackRate();
 }
 
 - (void)setDefaultPlaybackRate:(double)newDefaultPlaybackRate
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->setDefaultPlaybackRate(newDefaultPlaybackRate);
 }
 
 - (double)playbackRate
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->playbackRate();
 }
 
 - (void)setPlaybackRate:(double)newPlaybackRate
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->setPlaybackRate(newPlaybackRate);
 }
 
 - (DOMTimeRanges *)played
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->played()));
 }
 
 - (DOMTimeRanges *)seekable
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->seekable()));
 }
 
 - (BOOL)ended
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->ended();
 }
 
 - (BOOL)autoplay
 {
-    WebCore::JSMainThreadNullState state;
-    return IMPL->hasAttributeWithoutSynchronization(WebCore::HTMLNames::autoplayAttr);
+    CyberCore::JSMainThreadNullState state;
+    return IMPL->hasAttributeWithoutSynchronization(CyberCore::HTMLNames::autoplayAttr);
 }
 
 - (void)setAutoplay:(BOOL)newAutoplay
 {
-    WebCore::JSMainThreadNullState state;
-    IMPL->setBooleanAttribute(WebCore::HTMLNames::autoplayAttr, newAutoplay);
+    CyberCore::JSMainThreadNullState state;
+    IMPL->setBooleanAttribute(CyberCore::HTMLNames::autoplayAttr, newAutoplay);
 }
 
 - (BOOL)loop
 {
-    WebCore::JSMainThreadNullState state;
-    return IMPL->hasAttributeWithoutSynchronization(WebCore::HTMLNames::loopAttr);
+    CyberCore::JSMainThreadNullState state;
+    return IMPL->hasAttributeWithoutSynchronization(CyberCore::HTMLNames::loopAttr);
 }
 
 - (void)setLoop:(BOOL)newLoop
 {
-    WebCore::JSMainThreadNullState state;
-    IMPL->setBooleanAttribute(WebCore::HTMLNames::loopAttr, newLoop);
+    CyberCore::JSMainThreadNullState state;
+    IMPL->setBooleanAttribute(CyberCore::HTMLNames::loopAttr, newLoop);
 }
 
 - (BOOL)controls
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->controls();
 }
 
 - (void)setControls:(BOOL)newControls
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->setControls(newControls);
 }
 
 - (double)volume
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->volume();
 }
 
 - (void)setVolume:(double)newVolume
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     raiseOnDOMError(IMPL->setVolume(newVolume));
 }
 
 - (BOOL)muted
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->muted();
 }
 
 - (void)setMuted:(BOOL)newMuted
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->setMuted(newMuted);
 }
 
 - (BOOL)defaultMuted
 {
-    WebCore::JSMainThreadNullState state;
-    return IMPL->hasAttributeWithoutSynchronization(WebCore::HTMLNames::mutedAttr);
+    CyberCore::JSMainThreadNullState state;
+    return IMPL->hasAttributeWithoutSynchronization(CyberCore::HTMLNames::mutedAttr);
 }
 
 - (void)setDefaultMuted:(BOOL)newDefaultMuted
 {
-    WebCore::JSMainThreadNullState state;
-    IMPL->setBooleanAttribute(WebCore::HTMLNames::mutedAttr, newDefaultMuted);
+    CyberCore::JSMainThreadNullState state;
+    IMPL->setBooleanAttribute(CyberCore::HTMLNames::mutedAttr, newDefaultMuted);
 }
 
 - (BOOL)webkitPreservesPitch
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->webkitPreservesPitch();
 }
 
 - (void)setWebkitPreservesPitch:(BOOL)newWebkitPreservesPitch
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->setWebkitPreservesPitch(newWebkitPreservesPitch);
 }
 
 - (BOOL)webkitHasClosedCaptions
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->webkitHasClosedCaptions();
 }
 
 - (BOOL)webkitClosedCaptionsVisible
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->webkitClosedCaptionsVisible();
 }
 
 - (void)setWebkitClosedCaptionsVisible:(BOOL)newWebkitClosedCaptionsVisible
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->setWebkitClosedCaptionsVisible(newWebkitClosedCaptionsVisible);
 }
 
 - (NSString *)mediaGroup
 {
-    WebCore::JSMainThreadNullState state;
-    return IMPL->getAttribute(WebCore::HTMLNames::mediagroupAttr);
+    CyberCore::JSMainThreadNullState state;
+    return IMPL->getAttribute(CyberCore::HTMLNames::mediagroupAttr);
 }
 
 - (void)setMediaGroup:(NSString *)newMediaGroup
 {
-    WebCore::JSMainThreadNullState state;
-    IMPL->setAttributeWithoutSynchronization(WebCore::HTMLNames::mediagroupAttr, newMediaGroup);
+    CyberCore::JSMainThreadNullState state;
+    IMPL->setAttributeWithoutSynchronization(CyberCore::HTMLNames::mediagroupAttr, newMediaGroup);
 }
 
 - (void)load
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->load();
 }
 
 - (NSString *)canPlayType:(NSString *)type
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->canPlayType(type);
 }
 
 - (NSTimeInterval)getStartDate
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(IMPL->getStartDate());
 }
 
 - (void)play
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->play();
 }
 
 - (void)pause
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->pause();
 }
 
 - (void)fastSeek:(double)time
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->fastSeek(time);
 }
 

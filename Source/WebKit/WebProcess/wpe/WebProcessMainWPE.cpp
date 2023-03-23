@@ -39,8 +39,8 @@
 #include <gst/gst.h>
 #endif
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 class WebProcessMainWPE final : public AuxiliaryProcessMainBase<WebProcess> {
 public:
@@ -75,4 +75,4 @@ int WebProcessMain(int argc, char** argv)
     return AuxiliaryProcessMain<WebProcessMainWPE>(argc, argv);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

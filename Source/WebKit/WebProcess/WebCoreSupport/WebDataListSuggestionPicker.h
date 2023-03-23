@@ -29,30 +29,30 @@
 
 #include <CyberCore/DataListSuggestionPicker.h>
 
-namespace WebCore {
+namespace CyberCore {
 class DataListSuggestionsClient;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPage;
 
-class WebDataListSuggestionPicker final : public WebCore::DataListSuggestionPicker {
+class WebDataListSuggestionPicker final : public CyberCore::DataListSuggestionPicker {
 public:
-    WebDataListSuggestionPicker(WebPage&, WebCore::DataListSuggestionsClient&);
+    WebDataListSuggestionPicker(WebPage&, CyberCore::DataListSuggestionsClient&);
 
     void didSelectOption(const String&);
     void didCloseSuggestions();
 
 private:
     void handleKeydownWithIdentifier(const String&) final;
-    void displayWithActivationType(WebCore::DataListSuggestionActivationType) final;
+    void displayWithActivationType(CyberCore::DataListSuggestionActivationType) final;
     void close() final;
 
-    WebCore::DataListSuggestionsClient& m_client;
+    CyberCore::DataListSuggestionsClient& m_client;
     WebPage& m_page;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

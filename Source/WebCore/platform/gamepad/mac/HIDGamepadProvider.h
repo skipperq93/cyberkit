@@ -37,7 +37,7 @@
 #include <wtf/RetainPtr.h>
 #include <wtf/WorkQueue.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class GamepadProviderClient;
 
@@ -93,6 +93,6 @@ private:
 #endif // HAVE(MULTIGAMEPADPROVIDER_SUPPORT)
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(GAMEPAD) && PLATFORM(MAC)

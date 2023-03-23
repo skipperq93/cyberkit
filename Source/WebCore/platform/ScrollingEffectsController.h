@@ -39,7 +39,7 @@
 #include <wtf/Noncopyable.h>
 #include <wtf/RunLoop.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class KeyboardScrollingAnimator;
 class LayoutSize;
@@ -289,4 +289,4 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore

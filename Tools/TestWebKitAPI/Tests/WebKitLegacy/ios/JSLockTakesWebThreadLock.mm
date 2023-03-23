@@ -31,14 +31,14 @@
 #import <CyberScriptCore/JSVirtualMachine.h>
 #import <CyberScriptCore/JSVirtualMachineInternal.h>
 #import <UIKit/UIKit.h>
-#import <CyberCore/WebCoreThread.h>
+#import <CyberCore/CyberCoreThread.h>
 #import <stdlib.h>
 #import <wtf/DataLog.h>
 #import <wtf/RetainPtr.h>
 
 namespace TestWebKitAPI {
 
-TEST(WebKitLegacy, JSLockTakesWebThreadLock)
+TEST(CyberKitLegacy, JSLockTakesWebThreadLock)
 {
     RetainPtr<UIWindow> uiWindow = adoptNS([[UIWindow alloc] initWithFrame:NSMakeRect(0, 0, 800, 600)]);
     RetainPtr<UIWebView> uiWebView = adoptNS([[UIWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600)]);

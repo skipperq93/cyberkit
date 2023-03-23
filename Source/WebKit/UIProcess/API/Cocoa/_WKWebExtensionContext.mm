@@ -38,7 +38,7 @@
 #import "_WKWebExtensionInternal.h"
 #import "_WKWebExtensionMatchPatternInternal.h"
 #import "_WKWebExtensionTab.h"
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 #import <wtf/URLParser.h>
 
 NSErrorDomain const _WKWebExtensionContextErrorDomain = @"_WKWebExtensionContextErrorDomain";
@@ -81,7 +81,7 @@ _WKWebExtensionContextNotificationUserInfoKey const _WKWebExtensionContextNotifi
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainRunLoop(_WKWebExtensionContext.class, self))
+    if (CyberCoreObjCScheduleDeallocateOnMainRunLoop(_WKWebExtensionContext.class, self))
         return;
 
     _webExtensionContext->~WebExtensionContext();

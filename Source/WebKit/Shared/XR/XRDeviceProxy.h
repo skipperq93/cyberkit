@@ -33,7 +33,7 @@
 #include <wtf/Vector.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 class SecurityOriginData;
 }
 
@@ -54,8 +54,8 @@ public:
 private:
     XRDeviceProxy(XRDeviceInfo&&, PlatformXRSystemProxy&);
 
-    WebCore::IntSize recommendedResolution(PlatformXR::SessionMode) final { return m_recommendedResolution; }
-    void initializeTrackingAndRendering(const WebCore::SecurityOriginData&, PlatformXR::SessionMode, const PlatformXR::Device::FeatureList&) final;
+    CyberCore::IntSize recommendedResolution(PlatformXR::SessionMode) final { return m_recommendedResolution; }
+    void initializeTrackingAndRendering(const CyberCore::SecurityOriginData&, PlatformXR::SessionMode, const PlatformXR::Device::FeatureList&) final;
     void shutDownTrackingAndRendering() final;
     bool supportsSessionShutdownNotification() const final { return true; }
     void initializeReferenceSpace(PlatformXR::ReferenceSpaceType) final { }
@@ -68,7 +68,7 @@ private:
     XRDeviceIdentifier m_identifier;
     WeakPtr<PlatformXRSystemProxy> m_xrSystem;
     bool m_supportsStereoRendering { false };
-    WebCore::IntSize m_recommendedResolution { 0, 0 };
+    CyberCore::IntSize m_recommendedResolution { 0, 0 };
 };
 
 } // namespace WebKit

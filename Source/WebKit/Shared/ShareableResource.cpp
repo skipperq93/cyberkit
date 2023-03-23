@@ -33,7 +33,7 @@
 #include <wtf/CheckedArithmetic.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 ShareableResource::Handle::Handle() = default;
 

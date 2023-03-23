@@ -76,9 +76,9 @@ namespace TestWebKitAPI {
 
 // FIXME Re-enable when https://bugs.webkit.org/show_bug.cgi?id=237125 is resovled 
 #if PLATFORM(IOS)
-TEST(WebKitLegacy, DISABLED_ScrollingDoesNotPauseMedia)
+TEST(CyberKitLegacy, DISABLED_ScrollingDoesNotPauseMedia)
 #else
-TEST(WebKitLegacy, ScrollingDoesNotPauseMedia)
+TEST(CyberKitLegacy, ScrollingDoesNotPauseMedia)
 #endif
 {
     RetainPtr<WebPreferences> preferences = [WebPreferences standardPreferences];

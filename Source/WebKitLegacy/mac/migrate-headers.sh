@@ -25,15 +25,15 @@
 
 mkdir -p "${TARGET_BUILD_DIR}/${PRIVATE_HEADERS_FOLDER_PATH}"
 mkdir -p "${TARGET_BUILD_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}"
-mkdir -p "${BUILT_PRODUCTS_DIR}/DerivedSources/WebKitLegacy"
+mkdir -p "${BUILT_PRODUCTS_DIR}/DerivedSources/CyberKitLegacy"
 
-# If we didn't build WebCore, use the production copy of the headers
+# If we didn't build CyberCore, use the production copy of the headers
 if [ ! -d "${WEBCORE_PRIVATE_HEADERS_DIR}" ]; then
     export WEBCORE_PRIVATE_HEADERS_DIR="${WEBCORE_PRIVATE_HEADERS_DIR_Production}"
 fi
 
 if [ "${ACTION}" = "analyze" -o "${ACTION}" = "build" -o "${ACTION}" = "install" -o "${ACTION}" = "installhdrs" -o "${ACTION}" = "installapi" ]; then
-    ln -sfh "${WEBCORE_PRIVATE_HEADERS_DIR}" "${BUILT_PRODUCTS_DIR}/DerivedSources/WebKitLegacy/WebCorePrivateHeaders"
+    ln -sfh "${WEBCORE_PRIVATE_HEADERS_DIR}" "${BUILT_PRODUCTS_DIR}/DerivedSources/CyberKitLegacy/CyberCorePrivateHeaders"
 
     make -C mac -f "MigrateHeaders.make" -j `/usr/sbin/sysctl -n hw.activecpu` SDKROOT="${SDKROOT}" migrate_headers
     for WK_CURRENT_ARCH in ${ARCHS}; do

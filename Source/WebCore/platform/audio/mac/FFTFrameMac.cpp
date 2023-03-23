@@ -41,7 +41,7 @@
 #include <wtf/NeverDestroyed.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 constexpr unsigned kMinFFTPow2Size = 2;
 constexpr unsigned kMaxFFTPow2Size = 24;
@@ -158,7 +158,7 @@ void FFTFrame::initialize()
 {
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // #if OS(DARWIN)
 

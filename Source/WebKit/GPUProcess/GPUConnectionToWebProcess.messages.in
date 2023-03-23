@@ -27,12 +27,12 @@ messages -> GPUConnectionToWebProcess WantsDispatchMessage {
     void ReleaseRenderingBackend(WebKit::RenderingBackendIdentifier renderingBackendIdentifier) AllowedWhenWaitingForSyncReply
     void ReleaseSerializedImageBuffer(WebKit::RemoteSerializedImageBufferWriteReference reference)
 #if ENABLE(WEBGL)
-    void CreateGraphicsContextGL(struct WebCore::GraphicsContextGLAttributes attributes, WebKit::GraphicsContextGLIdentifier graphicsContextGLIdentifier, WebKit::RenderingBackendIdentifier renderingBackendIdentifier, IPC::StreamServerConnection::Handle serverConnection) AllowedWhenWaitingForSyncReply
+    void CreateGraphicsContextGL(struct CyberCore::GraphicsContextGLAttributes attributes, WebKit::GraphicsContextGLIdentifier graphicsContextGLIdentifier, WebKit::RenderingBackendIdentifier renderingBackendIdentifier, IPC::StreamServerConnection::Handle serverConnection) AllowedWhenWaitingForSyncReply
     void ReleaseGraphicsContextGL(WebKit::GraphicsContextGLIdentifier graphicsContextGLIdentifier) AllowedWhenWaitingForSyncReply
 #endif
     void CreateRemoteGPU(WebKit::WebGPUIdentifier identifier, WebKit::RenderingBackendIdentifier renderingBackendIdentifier, IPC::StreamServerConnection::Handle serverConnection) AllowedWhenWaitingForSyncReply
     void ClearNowPlayingInfo()
-    void SetNowPlayingInfo(struct WebCore::NowPlayingInfo nowPlayingInfo)
+    void SetNowPlayingInfo(struct CyberCore::NowPlayingInfo nowPlayingInfo)
 #if USE(AUDIO_SESSION)
     EnsureAudioSession() -> (struct WebKit::RemoteAudioSessionConfiguration configuration) Synchronous
 #endif
@@ -43,8 +43,8 @@ messages -> GPUConnectionToWebProcess WantsDispatchMessage {
     EnableVP9Decoders(bool shouldEnableVP8Decoder, bool shouldEnableVP9Decoder, bool shouldEnableVP9SWDecoder)
 #endif
 #if HAVE(VISIBILITY_PROPAGATION_VIEW)
-    CreateVisibilityPropagationContextForPage(WebKit::WebPageProxyIdentifier pageProxyID, WebCore::PageIdentifier pageID, bool canShowWhileLocked);
-    DestroyVisibilityPropagationContextForPage(WebKit::WebPageProxyIdentifier pageProxyID, WebCore::PageIdentifier pageID);
+    CreateVisibilityPropagationContextForPage(WebKit::WebPageProxyIdentifier pageProxyID, CyberCore::PageIdentifier pageID, bool canShowWhileLocked);
+    DestroyVisibilityPropagationContextForPage(WebKit::WebPageProxyIdentifier pageProxyID, CyberCore::PageIdentifier pageID);
 #endif
     SetMediaOverridesForTesting(struct WebKit::MediaOverridesForTesting configuration)
     CreateAudioHardwareListener(WebKit::RemoteAudioHardwareListenerIdentifier identifier)

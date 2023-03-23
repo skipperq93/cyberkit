@@ -27,7 +27,7 @@
 
 #if ENABLE(APPLE_PAY)
 
-#include "ApplePayInstallmentConfigurationWebCore.h"
+#include "ApplePayInstallmentConfigurationCyberCore.h"
 #include "ApplePayLineItem.h"
 #include "ApplePaySetupConfiguration.h"
 #include "ApplePayShippingContactEditingMode.h"
@@ -39,7 +39,7 @@
 #include <wtf/HashSet.h>
 #include <wtf/text/StringHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ApplePaySessionPaymentRequest;
 class Page;
@@ -161,10 +161,10 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::MockPaymentCoordinator)
-    static bool isType(const WebCore::PaymentCoordinatorClient& paymentCoordinatorClient) { return paymentCoordinatorClient.isMockPaymentCoordinator(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::MockPaymentCoordinator)
+    static bool isType(const CyberCore::PaymentCoordinatorClient& paymentCoordinatorClient) { return paymentCoordinatorClient.isMockPaymentCoordinator(); }
 SPECIALIZE_TYPE_TRAITS_END()
 
 #endif // ENABLE(APPLE_PAY)

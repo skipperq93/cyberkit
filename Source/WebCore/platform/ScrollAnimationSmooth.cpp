@@ -35,7 +35,7 @@
 #include "TimingFunction.h"
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static const float animationSpeed { 1000.0f };
 static const Seconds maxAnimationDuration { 200_ms };
@@ -139,4 +139,4 @@ String ScrollAnimationSmooth::debugDescription() const
     return textStream.release();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

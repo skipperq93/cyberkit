@@ -45,7 +45,7 @@
 #include <wtf/URL.h>
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Exception;
 class ScriptExecutionContext;
@@ -166,4 +166,4 @@ private:
     String m_userAgentForSharedWorker;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

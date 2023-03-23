@@ -33,7 +33,7 @@
 #include "FontCache.h"
 #include "FontCascade.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 SystemFallbackFontCache& SystemFallbackFontCache::forCurrentThread()
 {
@@ -86,4 +86,4 @@ void SystemFallbackFontCache::remove(Font* font)
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore

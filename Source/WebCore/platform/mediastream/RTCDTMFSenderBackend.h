@@ -30,7 +30,7 @@
 #include <wtf/Function.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RTCDTMFSenderBackend {
 public:
@@ -45,6 +45,6 @@ public:
     virtual ~RTCDTMFSenderBackend() = default;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

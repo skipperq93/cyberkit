@@ -38,8 +38,8 @@
 
 #if PLATFORM(COCOA) && ENABLE(MEDIA_STREAM)
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 RemoteCaptureSampleManager::RemoteCaptureSampleManager()
     : m_queue(WorkQueue::create("RemoteCaptureSampleManager", WorkQueue::QOS::UserInteractive))
@@ -106,7 +106,7 @@ void RemoteCaptureSampleManager::addSource(Ref<RemoteRealtimeVideoSource>&& sour
     });
 }
 
-void RemoteCaptureSampleManager::removeSource(WebCore::RealtimeMediaSourceIdentifier identifier)
+void RemoteCaptureSampleManager::removeSource(CyberCore::RealtimeMediaSourceIdentifier identifier)
 {
     ASSERT(WTF::isMainRunLoop());
     m_queue->dispatch([this, protectedThis = Ref { *this }, identifier] {
@@ -128,7 +128,7 @@ void RemoteCaptureSampleManager::setVideoFrameObjectHeapProxy(RemoteVideoFrameOb
     m_videoFrameObjectHeapProxy = proxy;
 }
 
-void RemoteCaptureSampleManager::audioStorageChanged(WebCore::RealtimeMediaSourceIdentifier identifier, ConsumerSharedCARingBuffer::Handle&& handle, const WebCore::CAAudioStreamDescription& description, IPC::Semaphore&& semaphore, const MediaTime& mediaTime, size_t frameChunkSize)
+void RemoteCaptureSampleManager::audioStorageChanged(CyberCore::RealtimeMediaSourceIdentifier identifier, ConsumerSharedCARingBuffer::Handle&& handle, const CyberCore::CAAudioStreamDescription& description, IPC::Semaphore&& semaphore, const MediaTime& mediaTime, size_t frameChunkSize)
 {
     ASSERT(!WTF::isMainRunLoop());
 
@@ -157,7 +157,7 @@ void RemoteCaptureSampleManager::videoFrameAvailable(RealtimeMediaSourceIdentifi
     iterator->value->remoteVideoFrameAvailable(WTFMove(videoFrame), metadata);
 }
 
-void RemoteCaptureSampleManager::videoFrameAvailableCV(RealtimeMediaSourceIdentifier identifier, RetainPtr<CVPixelBufferRef>&& pixelBuffer, WebCore::VideoFrame::Rotation rotation, bool mirrored, MediaTime presentationTime, WebCore::VideoFrameTimeMetadata metadata)
+void RemoteCaptureSampleManager::videoFrameAvailableCV(RealtimeMediaSourceIdentifier identifier, RetainPtr<CVPixelBufferRef>&& pixelBuffer, CyberCore::VideoFrame::Rotation rotation, bool mirrored, MediaTime presentationTime, CyberCore::VideoFrameTimeMetadata metadata)
 {
     ASSERT(!WTF::isMainRunLoop());
     auto iterator = m_videoSources.find(identifier);
@@ -214,7 +214,7 @@ void RemoteCaptureSampleManager::RemoteAudio::startThread()
     m_thread = Thread::create("RemoteCaptureSampleManager::RemoteAudio thread", WTFMove(threadLoop), ThreadType::Audio, Thread::QOS::UserInteractive);
 }
 
-void RemoteCaptureSampleManager::RemoteAudio::setStorage(ConsumerSharedCARingBuffer::Handle&& handle, const WebCore::CAAudioStreamDescription& description, IPC::Semaphore&& semaphore, const MediaTime& mediaTime, size_t frameChunkSize)
+void RemoteCaptureSampleManager::RemoteAudio::setStorage(ConsumerSharedCARingBuffer::Handle&& handle, const CyberCore::CAAudioStreamDescription& description, IPC::Semaphore&& semaphore, const MediaTime& mediaTime, size_t frameChunkSize)
 {
     stopThread();
     m_buffer = nullptr;

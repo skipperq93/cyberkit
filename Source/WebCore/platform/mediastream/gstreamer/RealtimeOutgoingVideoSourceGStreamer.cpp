@@ -31,7 +31,7 @@
 GST_DEBUG_CATEGORY_EXTERN(webkit_webrtc_endpoint_debug);
 #define GST_CAT_DEFAULT webkit_webrtc_endpoint_debug
 
-namespace WebCore {
+namespace CyberCore {
 
 struct RealtimeOutgoingVideoSourceHolder {
     RefPtr<RealtimeOutgoingVideoSourceGStreamer> source;
@@ -271,6 +271,6 @@ void RealtimeOutgoingVideoSourceGStreamer::flush()
     gst_element_send_event(m_outgoingSource.get(), gst_video_event_new_downstream_force_key_unit(GST_CLOCK_TIME_NONE, GST_CLOCK_TIME_NONE, GST_CLOCK_TIME_NONE, FALSE, 1));
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(GSTREAMER_WEBRTC)

@@ -50,7 +50,7 @@ private:
     void updatePanel(WebAuthenticationStatus) const final;
     void dismissPanel(WebAuthenticationResult) const final;
     void requestPin(uint64_t, CompletionHandler<void(const WTF::String&)>&&) const final;
-    void selectAssertionResponse(Vector<Ref<WebCore::AuthenticatorAssertionResponse>>&&, WebAuthenticationSource, CompletionHandler<void(WebCore::AuthenticatorAssertionResponse*)>&&) const final;
+    void selectAssertionResponse(Vector<Ref<CyberCore::AuthenticatorAssertionResponse>>&&, WebAuthenticationSource, CompletionHandler<void(CyberCore::AuthenticatorAssertionResponse*)>&&) const final;
     void decidePolicyForLocalAuthenticator(CompletionHandler<void(LocalAuthenticatorPolicy)>&&) const final;
     void requestLAContextForUserVerification(CompletionHandler<void(LAContext *)>&&) const final;
 

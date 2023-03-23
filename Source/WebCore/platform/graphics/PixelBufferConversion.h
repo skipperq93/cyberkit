@@ -27,7 +27,7 @@
 
 #include "PixelBufferFormat.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class IntSize;
 

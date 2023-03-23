@@ -28,7 +28,7 @@
 
 #import <pal/spi/cf/CFNetworkSPI.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static ProtectionSpace::ServerType type(NSURLProtectionSpace *space)
 {
@@ -191,4 +191,4 @@ bool ProtectionSpace::encodingRequiresPlatformData(NSURLProtectionSpace *space)
     return space.distinguishedNames || space.serverTrust;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

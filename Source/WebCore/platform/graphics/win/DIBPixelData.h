@@ -35,7 +35,7 @@
 typedef unsigned char UInt8;
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class DIBPixelData {
 public:
@@ -70,4 +70,4 @@ private:
     unsigned short m_bitsPerPixel;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

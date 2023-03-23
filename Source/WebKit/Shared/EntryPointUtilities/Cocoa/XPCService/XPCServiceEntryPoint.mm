@@ -94,13 +94,13 @@ bool XPCServiceInitializerDelegate::getClientSDKAlignedBehaviors(SDKAlignedBehav
     return true;
 }
 
-bool XPCServiceInitializerDelegate::getProcessIdentifier(WebCore::ProcessIdentifier& identifier)
+bool XPCServiceInitializerDelegate::getProcessIdentifier(CyberCore::ProcessIdentifier& identifier)
 {
     auto parsedIdentifier = parseInteger<uint64_t>(StringView::fromLatin1(xpc_dictionary_get_string(m_initializerMessage, "process-identifier")));
     if (!parsedIdentifier)
         return false;
 
-    identifier = makeObjectIdentifier<WebCore::ProcessIdentifierType>(*parsedIdentifier);
+    identifier = makeObjectIdentifier<CyberCore::ProcessIdentifierType>(*parsedIdentifier);
     return true;
 }
 

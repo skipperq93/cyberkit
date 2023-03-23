@@ -34,7 +34,7 @@
 #include "RemoteCommandListener.h"
 #include <wtf/RunLoop.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct NowPlayingInfo;
 

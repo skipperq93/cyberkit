@@ -32,7 +32,7 @@
 #import <CyberCore/PlaybackSessionInterfaceAVKit.h>
 #import <CyberCore/PlaybackSessionModelMediaElement.h>
 #import <CyberCore/WebAVPlayerController.h>
-#import <CyberCore/WebCoreFullScreenWindow.h>
+#import <CyberCore/CyberCoreFullScreenWindow.h>
 #import <objc/message.h>
 #import <objc/runtime.h>
 #import <pal/spi/cocoa/AVKitSPI.h>
@@ -127,12 +127,12 @@ static WebAVPlayerView *allocWebAVPlayerViewInstance()
 }
 
 @interface WebVideoFullscreenController () <WebAVPlayerViewDelegate, NSWindowDelegate> {
-    RefPtr<WebCore::PlaybackSessionModelMediaElement> _playbackModel;
-    RefPtr<WebCore::PlaybackSessionInterfaceAVKit> _playbackInterface;
+    RefPtr<CyberCore::PlaybackSessionModelMediaElement> _playbackModel;
+    RefPtr<CyberCore::PlaybackSessionInterfaceAVKit> _playbackInterface;
     RetainPtr<NSView> _contentOverlay;
     BOOL _isFullScreen;
 }
-@property (readonly) WebCoreFullScreenWindow* fullscreenWindow;
+@property (readonly) CyberCoreFullScreenWindow* fullscreenWindow;
 @property (readonly) WebAVPlayerView* playerView;
 @end
 
@@ -141,14 +141,14 @@ static WebAVPlayerView *allocWebAVPlayerViewInstance()
 - (id)init
 {
     // Do not defer window creation, to make sure -windowNumber is created (needed by WebWindowScaleAnimation).
-    auto window = adoptNS([[WebCoreFullScreenWindow alloc] initWithContentRect:NSZeroRect styleMask:(NSWindowStyleMaskFullSizeContentView | NSWindowStyleMaskResizable) backing:NSBackingStoreBuffered defer:NO]);
+    auto window = adoptNS([[CyberCoreFullScreenWindow alloc] initWithContentRect:NSZeroRect styleMask:(NSWindowStyleMaskFullSizeContentView | NSWindowStyleMaskResizable) backing:NSBackingStoreBuffered defer:NO]);
     [window setCollectionBehavior:([window collectionBehavior] | NSWindowCollectionBehaviorFullScreenPrimary)];
     [window setDelegate: self];
     self = [super initWithWindow:window.get()];
     if (!self)
         return nil;
-    _playbackModel = WebCore::PlaybackSessionModelMediaElement::create();
-    _playbackInterface = WebCore::PlaybackSessionInterfaceAVKit::create(*_playbackModel);
+    _playbackModel = CyberCore::PlaybackSessionModelMediaElement::create();
+    _playbackInterface = CyberCore::PlaybackSessionInterfaceAVKit::create(*_playbackModel);
     _contentOverlay = adoptNS([[NSView alloc] initWithFrame:NSZeroRect]);
     _contentOverlay.get().layerContentsRedrawPolicy = NSViewLayerContentsRedrawNever;
     _contentOverlay.get().layer = adoptNS([[WebVideoFullscreenOverlayLayer alloc] init]).get();
@@ -167,9 +167,9 @@ static WebAVPlayerView *allocWebAVPlayerViewInstance()
     [super dealloc];
 }
 
-- (WebCoreFullScreenWindow *)fullscreenWindow
+- (CyberCoreFullScreenWindow *)fullscreenWindow
 {
-    return (WebCoreFullScreenWindow *)[super window];
+    return (CyberCoreFullScreenWindow *)[super window];
 }
 
 - (void)windowDidLoad
@@ -191,14 +191,14 @@ static WebAVPlayerView *allocWebAVPlayerViewInstance()
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidResignActive:) name:NSApplicationDidResignActiveNotification object:NSApp];
 }
 
-- (NakedPtr<WebCore::HTMLVideoElement>)videoElement
+- (NakedPtr<CyberCore::HTMLVideoElement>)videoElement
 {
     return _videoElement.get();
 }
 
 // FIXME: This method is not really a setter. The caller relies on its side effects, and it's
 // called once each time we enter full screen. So it should have a different name.
-- (void)setVideoElement:(NakedPtr<WebCore::HTMLVideoElement>)videoElement
+- (void)setVideoElement:(NakedPtr<CyberCore::HTMLVideoElement>)videoElement
 {
     ASSERT(videoElement);
     _videoElement = videoElement;

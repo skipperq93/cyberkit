@@ -36,7 +36,7 @@
 #include <wtf/spi/cocoa/IOSurfaceSPI.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(ImageBufferShareableMappedIOSurfaceBackend);
 
@@ -79,7 +79,7 @@ ImageBufferBackendHandle ImageBufferShareableMappedIOSurfaceBackend::createBacke
     return ImageBufferBackendHandle(m_surface->createSendRight());
 }
 
-void ImageBufferShareableMappedIOSurfaceBackend::setOwnershipIdentity(const WebCore::ProcessIdentity& resourceOwner)
+void ImageBufferShareableMappedIOSurfaceBackend::setOwnershipIdentity(const CyberCore::ProcessIdentity& resourceOwner)
 {
     m_surface->setOwnershipIdentity(resourceOwner);
 }

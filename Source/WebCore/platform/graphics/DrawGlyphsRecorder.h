@@ -40,7 +40,7 @@
 #include <pal/spi/cg/CoreGraphicsSPI.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class FloatPoint;
 class Font;
@@ -124,4 +124,4 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore

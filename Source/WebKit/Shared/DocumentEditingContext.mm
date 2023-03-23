@@ -29,7 +29,7 @@
 #if PLATFORM(IOS_FAMILY)
 
 #import "UIKitSPI.h"
-#import "WebCoreArgumentCoders.h"
+#import "CyberCoreArgumentCoders.h"
 #import <CyberCore/ElementContext.h>
 
 namespace WebKit {
@@ -131,31 +131,31 @@ std::optional<WebKit::DocumentEditingContext> ArgumentCoder<WebKit::DocumentEdit
 {
     WebKit::DocumentEditingContext context;
 
-    std::optional<WebCore::AttributedString> contextBefore;
+    std::optional<CyberCore::AttributedString> contextBefore;
     decoder >> contextBefore;
     if (!contextBefore)
         return std::nullopt;
     context.contextBefore = *contextBefore;
 
-    std::optional<WebCore::AttributedString> selectedText;
+    std::optional<CyberCore::AttributedString> selectedText;
     decoder >> selectedText;
     if (!selectedText)
         return std::nullopt;
     context.selectedText = *selectedText;
 
-    std::optional<WebCore::AttributedString> contextAfter;
+    std::optional<CyberCore::AttributedString> contextAfter;
     decoder >> contextAfter;
     if (!contextAfter)
         return std::nullopt;
     context.contextAfter = *contextAfter;
 
-    std::optional<WebCore::AttributedString> markedText;
+    std::optional<CyberCore::AttributedString> markedText;
     decoder >> markedText;
     if (!markedText)
         return std::nullopt;
     context.markedText = *markedText;
 
-    std::optional<WebCore::AttributedString> annotatedText;
+    std::optional<CyberCore::AttributedString> annotatedText;
     decoder >> annotatedText;
     if (!annotatedText)
         return std::nullopt;
@@ -198,7 +198,7 @@ std::optional<WebKit::DocumentEditingContextRequest> ArgumentCoder<WebKit::Docum
     if (!decoder.decode(request.rect))
         return std::nullopt;
 
-    std::optional<std::optional<WebCore::ElementContext>> optionalTextInputContext;
+    std::optional<std::optional<CyberCore::ElementContext>> optionalTextInputContext;
     decoder >> optionalTextInputContext;
     if (!optionalTextInputContext)
         return std::nullopt;

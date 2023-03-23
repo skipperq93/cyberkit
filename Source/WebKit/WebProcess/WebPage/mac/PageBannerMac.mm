@@ -32,8 +32,8 @@
 #import <CyberCore/FrameView.h>
 #import <CyberCore/GraphicsLayer.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 Ref<PageBanner> PageBanner::create(CALayer *layer, int height, Client* client)
 {
@@ -112,7 +112,7 @@ void PageBanner::showIfHidden()
         return;
     m_isHidden = false;
 
-    // This will re-create a parent layer in the WebCore layer tree, and we will re-add
+    // This will re-create a parent layer in the CyberCore layer tree, and we will re-add
     // m_layer as a child of it. 
     addToPage(m_type, m_webPage);
 }
@@ -163,6 +163,6 @@ CALayer *PageBanner::layer()
     return m_layer.get();
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(MAC)

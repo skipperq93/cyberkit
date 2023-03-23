@@ -29,7 +29,7 @@
 
 OBJC_CLASS NSFontManager;
 
-namespace WebCore {
+namespace CyberCore {
 
 class FontAttributeChanges;
 class FontChanges;
@@ -37,6 +37,6 @@ class FontChanges;
 WEBCORE_EXPORT FontChanges computedFontChanges(NSFontManager *);
 WEBCORE_EXPORT FontAttributeChanges computedFontAttributeChanges(NSFontManager *, id attributeConverter);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

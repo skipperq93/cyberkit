@@ -25,11 +25,11 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 enum AdjustViewSizeOrNot {
     DoNotAdjustViewSize,
     AdjustViewSize
 };
 
-} // namespace WebCore
+} // namespace CyberCore

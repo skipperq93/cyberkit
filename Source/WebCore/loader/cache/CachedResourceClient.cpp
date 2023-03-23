@@ -27,7 +27,7 @@
 
 #include "CachedResource.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 CachedResourceClient::CachedResourceClient() = default;
 
@@ -71,4 +71,4 @@ bool CachedResourceClient::shouldMarkAsReferenced() const
     return true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

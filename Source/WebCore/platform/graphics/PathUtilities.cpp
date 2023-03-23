@@ -36,7 +36,7 @@
 #include <math.h>
 #include <wtf/MathExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FloatPointGraph {
     WTF_MAKE_NONCOPYABLE(FloatPointGraph);

@@ -27,7 +27,7 @@
 
 #include "GraphicsContext.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class NullGraphicsContextPaintInvalidationReasons : uint8_t {
     None,
@@ -152,4 +152,4 @@ private:
     const PaintInvalidationReasons m_paintInvalidationReasons { PaintInvalidationReasons::None };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

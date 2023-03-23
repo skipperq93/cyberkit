@@ -25,7 +25,7 @@
 #include "RenderBox.h"
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class HitTestResult;
 class LegacyEllipsisBox;
@@ -230,6 +230,6 @@ inline LegacyRootInlineBox* LegacyRootInlineBox::prevRootBox() const
     return downcast<LegacyRootInlineBox>(m_prevLineBox);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_INLINE_BOX(LegacyRootInlineBox, isRootInlineBox())

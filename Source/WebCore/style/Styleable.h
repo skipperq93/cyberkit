@@ -31,7 +31,7 @@
 #include "RenderStyleConstants.h"
 #include "WebAnimationTypes.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class KeyframeEffectStack;
 class RenderElement;
@@ -181,4 +181,4 @@ struct Styleable {
     void updateCSSTransitions(const RenderStyle& currentStyle, const RenderStyle& newStyle) const;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

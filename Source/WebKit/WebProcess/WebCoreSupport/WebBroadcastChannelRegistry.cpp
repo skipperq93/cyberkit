@@ -33,7 +33,7 @@
 #include <CyberCore/MessageWithMessagePorts.h>
 #include <wtf/CallbackAggregator.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 static inline IPC::Connection& networkProcessConnection()
 {
@@ -44,17 +44,17 @@ static inline IPC::Connection& networkProcessConnection()
 // The identity of opaque origins wouldn't be preserved when serializing them as a SecurityOriginData (via ClientOrigin).
 // Since BroadcastChannels from an opaque origin can only communicate with other BroadcastChannels from the same opaque origin,
 // the destination channels have to be within the same WebProcess anyway.
-static std::optional<WebCore::ClientOrigin> toClientOrigin(const WebCore::PartitionedSecurityOrigin& origin)
+static std::optional<CyberCore::ClientOrigin> toClientOrigin(const CyberCore::PartitionedSecurityOrigin& origin)
 {
     if (origin.topOrigin->isOpaque() || origin.clientOrigin->isOpaque())
         return std::nullopt;
-    return WebCore::ClientOrigin { origin.topOrigin->data(), origin.clientOrigin->data() };
+    return CyberCore::ClientOrigin { origin.topOrigin->data(), origin.clientOrigin->data() };
 }
 
-void WebBroadcastChannelRegistry::registerChannel(const WebCore::PartitionedSecurityOrigin& origin, const String& name, WebCore::BroadcastChannelIdentifier identifier)
+void WebBroadcastChannelRegistry::registerChannel(const CyberCore::PartitionedSecurityOrigin& origin, const String& name, CyberCore::BroadcastChannelIdentifier identifier)
 {
-    auto& channelsForOrigin = m_channelsPerOrigin.ensure(origin, [] { return HashMap<String, Vector<WebCore::BroadcastChannelIdentifier>> { }; }).iterator->value;
-    auto& channelsForName = channelsForOrigin.ensure(name, [] { return Vector<WebCore::BroadcastChannelIdentifier> { }; }).iterator->value;
+    auto& channelsForOrigin = m_channelsPerOrigin.ensure(origin, [] { return HashMap<String, Vector<CyberCore::BroadcastChannelIdentifier>> { }; }).iterator->value;
+    auto& channelsForName = channelsForOrigin.ensure(name, [] { return Vector<CyberCore::BroadcastChannelIdentifier> { }; }).iterator->value;
     channelsForName.append(identifier);
 
     if (channelsForName.size() == 1) {
@@ -63,7 +63,7 @@ void WebBroadcastChannelRegistry::registerChannel(const WebCore::PartitionedSecu
     }
 }
 
-void WebBroadcastChannelRegistry::unregisterChannel(const WebCore::PartitionedSecurityOrigin& origin, const String& name, WebCore::BroadcastChannelIdentifier identifier)
+void WebBroadcastChannelRegistry::unregisterChannel(const CyberCore::PartitionedSecurityOrigin& origin, const String& name, CyberCore::BroadcastChannelIdentifier identifier)
 {
     auto channelsPerOriginIterator = m_channelsPerOrigin.find(origin);
     if (channelsPerOriginIterator == m_channelsPerOrigin.end())
@@ -88,15 +88,15 @@ void WebBroadcastChannelRegistry::unregisterChannel(const WebCore::PartitionedSe
         m_channelsPerOrigin.remove(channelsPerOriginIterator);
 }
 
-void WebBroadcastChannelRegistry::postMessage(const WebCore::PartitionedSecurityOrigin& origin, const String& name, WebCore::BroadcastChannelIdentifier source, Ref<WebCore::SerializedScriptValue>&& message, CompletionHandler<void()>&& completionHandler)
+void WebBroadcastChannelRegistry::postMessage(const CyberCore::PartitionedSecurityOrigin& origin, const String& name, CyberCore::BroadcastChannelIdentifier source, Ref<CyberCore::SerializedScriptValue>&& message, CompletionHandler<void()>&& completionHandler)
 {
     auto callbackAggregator = CallbackAggregator::create(WTFMove(completionHandler));
     postMessageLocally(origin, name, source, message.copyRef(), callbackAggregator.copyRef());
     if (auto clientOrigin = toClientOrigin(origin))
-        networkProcessConnection().sendWithAsyncReply(Messages::NetworkBroadcastChannelRegistry::PostMessage { *clientOrigin, name, WebCore::MessageWithMessagePorts { WTFMove(message), { } } }, [callbackAggregator] { }, 0);
+        networkProcessConnection().sendWithAsyncReply(Messages::NetworkBroadcastChannelRegistry::PostMessage { *clientOrigin, name, CyberCore::MessageWithMessagePorts { WTFMove(message), { } } }, [callbackAggregator] { }, 0);
 }
 
-void WebBroadcastChannelRegistry::postMessageLocally(const WebCore::PartitionedSecurityOrigin& origin, const String& name, std::optional<WebCore::BroadcastChannelIdentifier> sourceInProcess, Ref<WebCore::SerializedScriptValue>&& message, Ref<WTF::CallbackAggregator>&& callbackAggregator)
+void WebBroadcastChannelRegistry::postMessageLocally(const CyberCore::PartitionedSecurityOrigin& origin, const String& name, std::optional<CyberCore::BroadcastChannelIdentifier> sourceInProcess, Ref<CyberCore::SerializedScriptValue>&& message, Ref<WTF::CallbackAggregator>&& callbackAggregator)
 {
     auto channelsPerOriginIterator = m_channelsPerOrigin.find(origin);
     if (channelsPerOriginIterator == m_channelsPerOrigin.end())
@@ -111,14 +111,14 @@ void WebBroadcastChannelRegistry::postMessageLocally(const WebCore::PartitionedS
     for (auto& channelIdentifier : channelIdentifiersForName) {
         if (channelIdentifier == sourceInProcess)
             continue;
-        WebCore::BroadcastChannel::dispatchMessageTo(channelIdentifier, message.copyRef(), [callbackAggregator] { });
+        CyberCore::BroadcastChannel::dispatchMessageTo(channelIdentifier, message.copyRef(), [callbackAggregator] { });
     }
 }
 
-void WebBroadcastChannelRegistry::postMessageToRemote(const WebCore::ClientOrigin& clientOrigin, const String& name, WebCore::MessageWithMessagePorts&& message, CompletionHandler<void()>&& completionHandler)
+void WebBroadcastChannelRegistry::postMessageToRemote(const CyberCore::ClientOrigin& clientOrigin, const String& name, CyberCore::MessageWithMessagePorts&& message, CompletionHandler<void()>&& completionHandler)
 {
     auto callbackAggregator = CallbackAggregator::create(WTFMove(completionHandler));
-    WebCore::PartitionedSecurityOrigin origin { clientOrigin.topOrigin.securityOrigin(), clientOrigin.clientOrigin.securityOrigin() };
+    CyberCore::PartitionedSecurityOrigin origin { clientOrigin.topOrigin.securityOrigin(), clientOrigin.clientOrigin.securityOrigin() };
     postMessageLocally(origin, name, std::nullopt, *message.message, callbackAggregator.copyRef());
 }
 
@@ -133,4 +133,4 @@ void WebBroadcastChannelRegistry::networkProcessCrashed()
     }
 }
 
-} // namespace WebKit
+} // namespace CyberKit

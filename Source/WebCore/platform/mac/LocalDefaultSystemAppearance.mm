@@ -32,7 +32,7 @@
 #import <AppKit/NSAppearance.h>
 #import <pal/spi/mac/NSAppearanceSPI.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 LocalDefaultSystemAppearance::LocalDefaultSystemAppearance(bool useDarkAppearance, const Color& tintColor)
 {

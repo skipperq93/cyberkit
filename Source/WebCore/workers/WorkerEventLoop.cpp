@@ -29,7 +29,7 @@
 #include "Microtasks.h"
 #include "WorkerOrWorkletGlobalScope.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<WorkerEventLoop> WorkerEventLoop::create(WorkerOrWorkletGlobalScope& context)
 {
@@ -80,4 +80,4 @@ const String WorkerEventLoop::taskMode()
     return "workerEventLoopTaskMode"_s;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

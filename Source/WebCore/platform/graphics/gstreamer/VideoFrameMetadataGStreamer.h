@@ -26,8 +26,8 @@
 
 #include <gst/gst.h>
 
-GstBuffer* webkitGstBufferSetVideoFrameTimeMetadata(GstBuffer*, std::optional<WebCore::VideoFrameTimeMetadata>&&);
+GstBuffer* webkitGstBufferSetVideoFrameTimeMetadata(GstBuffer*, std::optional<CyberCore::VideoFrameTimeMetadata>&&);
 void webkitGstTraceProcessingTimeForElement(GstElement*);
-WebCore::VideoFrameMetadata webkitGstBufferGetVideoFrameMetadata(GstBuffer*);
+CyberCore::VideoFrameMetadata webkitGstBufferGetVideoFrameMetadata(GstBuffer*);
 
 #endif // ENABLE(VIDEO) && USE(GSTREAMER)

@@ -30,7 +30,7 @@
 
 #include <cairo.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 FloatRect::FloatRect(const cairo_rectangle_t& r)
     : m_location(r.x, r.y)
@@ -44,6 +44,6 @@ FloatRect::operator cairo_rectangle_t() const
     return r;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(CAIRO)

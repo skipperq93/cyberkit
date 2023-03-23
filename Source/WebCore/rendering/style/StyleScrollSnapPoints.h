@@ -31,7 +31,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ScrollSnapType {
     ScrollSnapAxis axis { ScrollSnapAxis::Both };
@@ -57,4 +57,4 @@ inline bool operator==(const ScrollSnapAlign& a, const ScrollSnapAlign& b)
 
 inline bool operator!=(const ScrollSnapAlign& a, const ScrollSnapAlign& b) { return !(a == b); }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -40,7 +40,7 @@
 #endif
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 RemoteDisplayListRecorder::RemoteDisplayListRecorder(ImageBuffer& imageBuffer, QualifiedRenderingResourceIdentifier imageBufferIdentifier, ProcessIdentifier webProcessIdentifier, RemoteRenderingBackend& renderingBackend)
     : m_imageBuffer(imageBuffer)
@@ -187,14 +187,14 @@ void RemoteDisplayListRecorder::clipOut(const FloatRect& rect)
     handleItem(DisplayList::ClipOut(rect));
 }
 
-void RemoteDisplayListRecorder::clipToImageBuffer(RenderingResourceIdentifier imageBufferIdentifier, const WebCore::FloatRect& destinationRect)
+void RemoteDisplayListRecorder::clipToImageBuffer(RenderingResourceIdentifier imageBufferIdentifier, const CyberCore::FloatRect& destinationRect)
 {
     // Immediately turn the RenderingResourceIdentifier (which is error-prone) to a QualifiedRenderingResourceIdentifier,
     // and use a helper function to make sure that don't accidentally use the RenderingResourceIdentifier (because the helper function can't see it).
     clipToImageBufferWithQualifiedIdentifier({ imageBufferIdentifier, m_webProcessIdentifier }, destinationRect);
 }
 
-void RemoteDisplayListRecorder::clipToImageBufferWithQualifiedIdentifier(QualifiedRenderingResourceIdentifier imageBufferIdentifier, const WebCore::FloatRect& destinationRect)
+void RemoteDisplayListRecorder::clipToImageBufferWithQualifiedIdentifier(QualifiedRenderingResourceIdentifier imageBufferIdentifier, const CyberCore::FloatRect& destinationRect)
 {
     RefPtr imageBuffer = resourceCache().cachedImageBuffer(imageBufferIdentifier);
     if (!imageBuffer) {
@@ -473,7 +473,7 @@ void RemoteDisplayListRecorder::convertToLuminanceMask()
     m_imageBuffer->convertToLuminanceMask();
 }
 
-void RemoteDisplayListRecorder::transformToColorSpace(const WebCore::DestinationColorSpace& colorSpace)
+void RemoteDisplayListRecorder::transformToColorSpace(const CyberCore::DestinationColorSpace& colorSpace)
 {
     m_imageBuffer->transformToColorSpace(colorSpace);
 }
@@ -489,7 +489,7 @@ void RemoteDisplayListRecorder::paintFrameForMedia(MediaPlayerIdentifier identif
 #endif
 
 #if PLATFORM(COCOA) && ENABLE(VIDEO)
-void RemoteDisplayListRecorder::paintVideoFrame(SharedVideoFrame&& frame, const WebCore::FloatRect& destination, bool shouldDiscardAlpha)
+void RemoteDisplayListRecorder::paintVideoFrame(SharedVideoFrame&& frame, const CyberCore::FloatRect& destination, bool shouldDiscardAlpha)
 {
     if (auto videoFrame = m_sharedVideoFrameReader.read(WTFMove(frame)))
         drawingContext().paintVideoFrame(*videoFrame, destination, shouldDiscardAlpha);
@@ -518,7 +518,7 @@ void RemoteDisplayListRecorder::strokeLine(const LineData& data)
     handleItem(DisplayList::StrokeLine(data));
 }
 
-void RemoteDisplayListRecorder::strokeLineWithColorAndThickness(WebCore::DisplayList::SetInlineStrokeColor&& item, float thickness, const WebCore::LineData& data)
+void RemoteDisplayListRecorder::strokeLineWithColorAndThickness(CyberCore::DisplayList::SetInlineStrokeColor&& item, float thickness, const CyberCore::LineData& data)
 {
     handleItem(WTFMove(item));
     handleItem(DisplayList::SetStrokeThickness(thickness));

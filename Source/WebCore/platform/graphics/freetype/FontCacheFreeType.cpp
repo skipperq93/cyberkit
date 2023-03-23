@@ -52,7 +52,7 @@
 #include FT_MULTIPLE_MASTERS_H
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 void FontCache::platformInit()
 {
@@ -422,7 +422,7 @@ std::unique_ptr<FontPlatformData> FontCache::createFontPlatformData(const FontDe
         ASSERT(value.type == FcTypeString);
         String familyNameAfterMatching = String::fromUTF8(reinterpret_cast<const char*>(value.u.s));
         // If Fontconfig gave us a different font family than the one we requested, we should ignore it
-        // and allow WebCore to give us the next font on the CSS fallback list. The exceptions are if
+        // and allow CyberCore to give us the next font on the CSS fallback list. The exceptions are if
         // this family name is a commonly-used generic family, or if the families are strongly-aliased.
         if (binding == FcValueBindingStrong || equalIgnoringASCIICase(familyNameAfterConfiguration, familyNameAfterMatching) || isCommonlyUsedGenericFamily(familyNameString)) {
             matchedFontFamily = true;

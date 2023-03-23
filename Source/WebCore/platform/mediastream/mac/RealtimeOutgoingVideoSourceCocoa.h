@@ -33,7 +33,7 @@
 using CVPixelBufferPoolRef = struct __CVPixelBufferPool*;
 using CVPixelBufferRef = struct __CVBuffer*;
 
-namespace WebCore {
+namespace CyberCore {
 
 class ImageRotationSessionVT;
 
@@ -63,6 +63,6 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(LIBWEBRTC)

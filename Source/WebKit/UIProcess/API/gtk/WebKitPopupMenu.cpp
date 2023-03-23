@@ -25,7 +25,7 @@
 #include "WebKitWebViewPrivate.h"
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 WebKitPopupMenu::WebKitPopupMenu(GtkWidget* webView, WebPopupMenuProxy::Client& client)
     : WebPopupMenuProxyGtk(webView, client)

@@ -36,13 +36,13 @@ namespace IPC {
 class Connection;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class GPUProcessConnection;
 class WebProcess;
 
 class RemoteAudioSession final
-    : public WebCore::AudioSession
+    : public CyberCore::AudioSession
     , public GPUProcessConnection::Client
     , IPC::MessageReceiver {
     WTF_MAKE_FAST_ALLOCATED;
@@ -65,10 +65,10 @@ private:
     void gpuProcessConnectionDidClose(GPUProcessConnection&) final;
 
     // AudioSession
-    void setCategory(CategoryType, WebCore::RouteSharingPolicy) final;
+    void setCategory(CategoryType, CyberCore::RouteSharingPolicy) final;
     CategoryType category() const final;
 
-    WebCore::RouteSharingPolicy routeSharingPolicy() const final { return m_routeSharingPolicy; }
+    CyberCore::RouteSharingPolicy routeSharingPolicy() const final { return m_routeSharingPolicy; }
     String routingContextUID() const final { return configuration().routingContextUID; }
 
     float sampleRate() const final { return configuration().sampleRate; }
@@ -102,7 +102,7 @@ private:
 
     WeakHashSet<ConfigurationChangeObserver> m_configurationChangeObservers;
     CategoryType m_category { CategoryType::None };
-    WebCore::RouteSharingPolicy m_routeSharingPolicy { WebCore::RouteSharingPolicy::Default };
+    CyberCore::RouteSharingPolicy m_routeSharingPolicy { CyberCore::RouteSharingPolicy::Default };
     bool m_isPlayingToBluetoothOverrideChanged { false };
     std::optional<RemoteAudioSessionConfiguration> m_configuration;
     WeakPtr<GPUProcessConnection> m_gpuProcessConnection;

@@ -29,7 +29,7 @@
 #import "WebViewInternal.h"
 #import <CyberCore/Element.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 WebValidationMessageClient::WebValidationMessageClient(WebView* view)
     : m_view(view)

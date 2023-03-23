@@ -39,7 +39,7 @@
 #include <assert.h>
 #include <math.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 constexpr unsigned MaxBusChannels = 32;
 
@@ -610,6 +610,6 @@ void AudioBus::clearSilentFlag()
         m_channels[i]->clearSilentFlag();
 }
 
-} // WebCore
+} // CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

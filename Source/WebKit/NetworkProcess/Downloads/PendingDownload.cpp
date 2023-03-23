@@ -31,12 +31,12 @@
 #include "DownloadProxyMessages.h"
 #include "NetworkLoad.h"
 #include "NetworkProcess.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
-PendingDownload::PendingDownload(IPC::Connection* parentProcessConnection, NetworkLoadParameters&& parameters, DownloadID downloadID, NetworkSession& networkSession, WebCore::BlobRegistryImpl* blobRegistry, const String& suggestedName)
+PendingDownload::PendingDownload(IPC::Connection* parentProcessConnection, NetworkLoadParameters&& parameters, DownloadID downloadID, NetworkSession& networkSession, CyberCore::BlobRegistryImpl* blobRegistry, const String& suggestedName)
     : m_networkLoad(makeUnique<NetworkLoad>(*this, blobRegistry, WTFMove(parameters), networkSession))
     , m_parentProcessConnection(parentProcessConnection)
 {
@@ -62,12 +62,12 @@ PendingDownload::PendingDownload(IPC::Connection* parentProcessConnection, std::
     m_networkLoad->convertTaskToDownload(*this, request, response, WTFMove(completionHandler));
 }
 
-void PendingDownload::willSendRedirectedRequest(WebCore::ResourceRequest&&, WebCore::ResourceRequest&& redirectRequest, WebCore::ResourceResponse&& redirectResponse)
+void PendingDownload::willSendRedirectedRequest(CyberCore::ResourceRequest&&, CyberCore::ResourceRequest&& redirectRequest, CyberCore::ResourceResponse&& redirectResponse)
 {
     send(Messages::DownloadProxy::WillSendRequest(WTFMove(redirectRequest), WTFMove(redirectResponse)));
 };
     
-void PendingDownload::continueWillSendRequest(WebCore::ResourceRequest&& newRequest)
+void PendingDownload::continueWillSendRequest(CyberCore::ResourceRequest&& newRequest)
 {
     m_networkLoad->continueWillSendRequest(WTFMove(newRequest));
 }
@@ -94,7 +94,7 @@ void PendingDownload::didBecomeDownload(const std::unique_ptr<Download>& downloa
 }
 #endif // PLATFORM(COCOA)
 
-void PendingDownload::didFailLoading(const WebCore::ResourceError& error)
+void PendingDownload::didFailLoading(const CyberCore::ResourceError& error)
 {
     send(Messages::DownloadProxy::DidFail(error, { }));
 }
@@ -104,9 +104,9 @@ IPC::Connection* PendingDownload::messageSenderConnection() const
     return m_parentProcessConnection.get();
 }
 
-void PendingDownload::didReceiveResponse(WebCore::ResourceResponse&& response, PrivateRelayed, ResponseCompletionHandler&& completionHandler)
+void PendingDownload::didReceiveResponse(CyberCore::ResourceResponse&& response, PrivateRelayed, ResponseCompletionHandler&& completionHandler)
 {
-    completionHandler(WebCore::PolicyAction::Download);
+    completionHandler(CyberCore::PolicyAction::Download);
 }
 
 uint64_t PendingDownload::messageSenderDestinationID() const

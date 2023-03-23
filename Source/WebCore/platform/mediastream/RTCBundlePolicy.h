@@ -26,7 +26,7 @@
 
 #if ENABLE(WEB_RTC)
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class RTCBundlePolicy {
     Balanced,
@@ -34,6 +34,6 @@ enum class RTCBundlePolicy {
     MaxBundle
 };
 
-}; // namespace WebCore
+}; // namespace CyberCore
 
 #endif

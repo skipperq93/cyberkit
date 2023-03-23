@@ -37,7 +37,7 @@ class Connection;
 class Decoder;
 }
 
-namespace WebCore {
+namespace CyberCore {
 struct ExceptionData;
 struct MediaRecorderPrivateOptions;
 }
@@ -61,7 +61,7 @@ public:
 private:
     // IPC::MessageReceiver
     void didReceiveMessage(IPC::Connection&, IPC::Decoder&) final;
-    void createRecorder(MediaRecorderIdentifier, bool recordAudio, bool recordVideo, const WebCore::MediaRecorderPrivateOptions&, CompletionHandler<void(std::optional<WebCore::ExceptionData>&&, String&&, unsigned, unsigned)>&&);
+    void createRecorder(MediaRecorderIdentifier, bool recordAudio, bool recordVideo, const CyberCore::MediaRecorderPrivateOptions&, CompletionHandler<void(std::optional<CyberCore::ExceptionData>&&, String&&, unsigned, unsigned)>&&);
     void releaseRecorder(MediaRecorderIdentifier);
 
     GPUConnectionToWebProcess& m_gpuConnectionToWebProcess;

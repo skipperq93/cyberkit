@@ -29,7 +29,7 @@
 
 #include "GamepadProvider.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class EmptyGamepadProvider final : public GamepadProvider {
 public:

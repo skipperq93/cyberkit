@@ -37,18 +37,18 @@ class AuthenticationChallengeProxy;
 
 class AuthenticationDecisionListener : public API::ObjectImpl<API::Object::Type::AuthenticationDecisionListener> {
 public:
-    static Ref<AuthenticationDecisionListener> create(CompletionHandler<void(AuthenticationChallengeDisposition, const WebCore::Credential&)>&& completionHandler)
+    static Ref<AuthenticationDecisionListener> create(CompletionHandler<void(AuthenticationChallengeDisposition, const CyberCore::Credential&)>&& completionHandler)
     {
         return adoptRef(*new AuthenticationDecisionListener(WTFMove(completionHandler)));
     }
     ~AuthenticationDecisionListener();
     
-    void completeChallenge(AuthenticationChallengeDisposition, const WebCore::Credential& = { });
+    void completeChallenge(AuthenticationChallengeDisposition, const CyberCore::Credential& = { });
 
 private:
-    explicit AuthenticationDecisionListener(CompletionHandler<void(AuthenticationChallengeDisposition, const WebCore::Credential&)>&&);
+    explicit AuthenticationDecisionListener(CompletionHandler<void(AuthenticationChallengeDisposition, const CyberCore::Credential&)>&&);
 
-    CompletionHandler<void(AuthenticationChallengeDisposition, const WebCore::Credential&)> m_completionHandler;
+    CompletionHandler<void(AuthenticationChallengeDisposition, const CyberCore::Credential&)> m_completionHandler;
 };
 
 } // namespace WebKit

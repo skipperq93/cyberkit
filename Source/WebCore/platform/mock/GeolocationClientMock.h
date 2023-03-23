@@ -38,11 +38,11 @@
 #include <wtf/RefPtr.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class GeolocationController;
 
-// FIXME: this should not be in WebCore. It should be moved to WebKit.
+// FIXME: this should not be in CyberCore. It should be moved to WebKit.
 // Provides a mock object for the geolocation client.
 class GeolocationClientMock : public GeolocationClient {
 public:

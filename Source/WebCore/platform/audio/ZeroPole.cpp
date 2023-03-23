@@ -34,7 +34,7 @@
 
 #include "DenormalDisabler.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 void ZeroPole::process(const float *source, float *destination, unsigned framesToProcess)
 {
@@ -69,6 +69,6 @@ void ZeroPole::process(const float *source, float *destination, unsigned framesT
     m_lastY = DenormalDisabler::flushDenormalFloatToZero(lastY);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

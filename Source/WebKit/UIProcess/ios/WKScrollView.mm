@@ -605,7 +605,7 @@ static void addDebugOverlays(CALayer *layer, const Vector<CGRect>& overlayRegion
     for (CGRect rect : overlayRegions) {
         auto debugLayer = adoptNS([[CALayer alloc] init]);
         [debugLayer setFrame:rect];
-        [debugLayer setBackgroundColor:WebCore::cachedCGColor({ WebCore::SRGBA<float>(1, 0, 0, .3) }).get()];
+        [debugLayer setBackgroundColor:CyberCore::cachedCGColor({ CyberCore::SRGBA<float>(1, 0, 0, .3) }).get()];
         [debugLayer setValue:@YES forKey:overlayDebugKey];
         [layer addSublayer:debugLayer.get()];
     }

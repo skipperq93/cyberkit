@@ -32,7 +32,7 @@
 // <http://msdn.microsoft.com/en-us/windows/hardware/gg463119> for more information about the PE
 // image format.
 
-namespace WebCore {
+namespace CyberCore {
 
 ImportedModulesEnumerator::ImportedModulesEnumerator(const PEImage& image)
     : m_image(image)
@@ -70,4 +70,4 @@ ImportedFunctionsEnumerator ImportedModulesEnumerator::functionsEnumerator() con
     return ImportedFunctionsEnumerator(m_image, importNameTable, importAddressTable);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

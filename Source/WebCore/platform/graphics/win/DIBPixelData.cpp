@@ -26,7 +26,7 @@
 #include "config.h"
 #include "DIBPixelData.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 #ifndef NDEBUG
 static const WORD bitmapType = 0x4d42; // BMP format
@@ -134,4 +134,4 @@ void DIBPixelData::setRGBABitmapAlpha(HDC hdc, const IntRect& dstRect, unsigned 
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore

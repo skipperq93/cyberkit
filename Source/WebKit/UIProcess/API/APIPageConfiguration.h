@@ -192,8 +192,8 @@ public:
     void setHTTPSUpgradeEnabled(bool enabled) { m_httpsUpgradeEnabled = enabled; }
     bool httpsUpgradeEnabled() const { return m_httpsUpgradeEnabled; }
 
-    void setShouldRelaxThirdPartyCookieBlocking(WebCore::ShouldRelaxThirdPartyCookieBlocking value) { m_shouldRelaxThirdPartyCookieBlocking = value; }
-    WebCore::ShouldRelaxThirdPartyCookieBlocking shouldRelaxThirdPartyCookieBlocking() const { return m_shouldRelaxThirdPartyCookieBlocking; }
+    void setShouldRelaxThirdPartyCookieBlocking(CyberCore::ShouldRelaxThirdPartyCookieBlocking value) { m_shouldRelaxThirdPartyCookieBlocking = value; }
+    CyberCore::ShouldRelaxThirdPartyCookieBlocking shouldRelaxThirdPartyCookieBlocking() const { return m_shouldRelaxThirdPartyCookieBlocking; }
 
     void setAttributedBundleIdentifier(WTF::String&& identifier) { m_attributedBundleIdentifier = WTFMove(identifier); }
     const WTF::String& attributedBundleIdentifier() const { return m_attributedBundleIdentifier; }
@@ -211,8 +211,8 @@ public:
     bool isLockdownModeExplicitlySet() const;
     bool lockdownModeEnabled() const;
 
-    void setContentSecurityPolicyModeForExtension(WebCore::ContentSecurityPolicyModeForExtension mode) { m_contentSecurityPolicyModeForExtension = mode; }
-    WebCore::ContentSecurityPolicyModeForExtension contentSecurityPolicyModeForExtension() const { return m_contentSecurityPolicyModeForExtension; }
+    void setContentSecurityPolicyModeForExtension(CyberCore::ContentSecurityPolicyModeForExtension mode) { m_contentSecurityPolicyModeForExtension = mode; }
+    CyberCore::ContentSecurityPolicyModeForExtension contentSecurityPolicyModeForExtension() const { return m_contentSecurityPolicyModeForExtension; }
 
 private:
 
@@ -269,7 +269,7 @@ private:
     bool m_mediaCaptureEnabled { false };
     bool m_httpsUpgradeEnabled { true };
 
-    WebCore::ShouldRelaxThirdPartyCookieBlocking m_shouldRelaxThirdPartyCookieBlocking { WebCore::ShouldRelaxThirdPartyCookieBlocking::No };
+    CyberCore::ShouldRelaxThirdPartyCookieBlocking m_shouldRelaxThirdPartyCookieBlocking { CyberCore::ShouldRelaxThirdPartyCookieBlocking::No };
     WTF::String m_attributedBundleIdentifier;
 
 #if PLATFORM(IOS_FAMILY)
@@ -280,7 +280,7 @@ private:
     bool m_requiresUserActionForEditingControlsManager { false };
 #endif
 
-    WebCore::ContentSecurityPolicyModeForExtension m_contentSecurityPolicyModeForExtension { WebCore::ContentSecurityPolicyModeForExtension::None };
+    CyberCore::ContentSecurityPolicyModeForExtension m_contentSecurityPolicyModeForExtension { CyberCore::ContentSecurityPolicyModeForExtension::None };
 };
 
 } // namespace API

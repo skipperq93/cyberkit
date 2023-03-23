@@ -41,7 +41,7 @@
 #include "CDMOpenCDMTypes.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class MediaPlayer;
 class SharedBuffer;
@@ -274,6 +274,6 @@ public:
     virtual ~CDMProxyDecryptionClient() = default;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ENCRYPTED_MEDIA)

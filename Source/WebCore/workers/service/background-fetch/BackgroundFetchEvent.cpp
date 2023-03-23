@@ -30,7 +30,7 @@
 
 #if ENABLE(SERVICE_WORKER)
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(BackgroundFetchEvent);
 
@@ -55,7 +55,7 @@ RefPtr<BackgroundFetchRegistration> BackgroundFetchEvent::registration() const
     return m_registration;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)
 

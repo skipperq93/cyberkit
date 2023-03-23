@@ -34,7 +34,7 @@
 #import "PlatformGamepad.h"
 #import <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static size_t numberOfGamepadProviders = 2;
 
@@ -143,6 +143,6 @@ void MultiGamepadProvider::platformGamepadInputActivity(EventMakesGamepadsVisibl
         client->platformGamepadInputActivity(eventVisibility);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(GAMEPAD) && HAVE(MULTIGAMEPADPROVIDER_SUPPORT)

@@ -32,7 +32,7 @@
 
 namespace TestWebKitAPI {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 // Test constructors
 TEST(STUNMessageParsing, MessageLength)

@@ -32,7 +32,7 @@
 
 #if USE(CURL)
 
-namespace WebCore {
+namespace CyberCore {
 
 CurlStream::CurlStream(CurlStreamScheduler& scheduler, CurlStreamID streamID, URL&& url)
     : m_scheduler(scheduler)

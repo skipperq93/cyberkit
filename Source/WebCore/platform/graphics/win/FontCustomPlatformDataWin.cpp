@@ -32,7 +32,7 @@
 #include <wtf/text/Base64.h>
 #include <wtf/win/GDIObject.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 FontCustomPlatformData::FontCustomPlatformData(const String& name, FontPlatformData::CreationData&& creationData)
     : name(name)

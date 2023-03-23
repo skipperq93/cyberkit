@@ -39,34 +39,34 @@ class WebResourceLoadScheduler;
 
 WebResourceLoadScheduler& webResourceLoadScheduler();
 
-class WebResourceLoadScheduler final : public WebCore::LoaderStrategy {
+class WebResourceLoadScheduler final : public CyberCore::LoaderStrategy {
     WTF_MAKE_NONCOPYABLE(WebResourceLoadScheduler); WTF_MAKE_FAST_ALLOCATED;
 public:
     WebResourceLoadScheduler();
 
-    void loadResource(WebCore::Frame&, WebCore::CachedResource&, WebCore::ResourceRequest&&, const WebCore::ResourceLoaderOptions&, CompletionHandler<void(RefPtr<WebCore::SubresourceLoader>&&)>&&) final;
-    void loadResourceSynchronously(WebCore::FrameLoader&, WebCore::ResourceLoaderIdentifier, const WebCore::ResourceRequest&, WebCore::ClientCredentialPolicy, const WebCore::FetchOptions&, const WebCore::HTTPHeaderMap&, WebCore::ResourceError&, WebCore::ResourceResponse&, Vector<uint8_t>&) final;
-    void pageLoadCompleted(WebCore::Page&) final;
-    void browsingContextRemoved(WebCore::Frame&) final;
+    void loadResource(CyberCore::Frame&, CyberCore::CachedResource&, CyberCore::ResourceRequest&&, const CyberCore::ResourceLoaderOptions&, CompletionHandler<void(RefPtr<CyberCore::SubresourceLoader>&&)>&&) final;
+    void loadResourceSynchronously(CyberCore::FrameLoader&, CyberCore::ResourceLoaderIdentifier, const CyberCore::ResourceRequest&, CyberCore::ClientCredentialPolicy, const CyberCore::FetchOptions&, const CyberCore::HTTPHeaderMap&, CyberCore::ResourceError&, CyberCore::ResourceResponse&, Vector<uint8_t>&) final;
+    void pageLoadCompleted(CyberCore::Page&) final;
+    void browsingContextRemoved(CyberCore::Frame&) final;
 
-    void remove(WebCore::ResourceLoader*) final;
-    void setDefersLoading(WebCore::ResourceLoader&, bool) final;
-    void crossOriginRedirectReceived(WebCore::ResourceLoader*, const URL& redirectURL) final;
+    void remove(CyberCore::ResourceLoader*) final;
+    void setDefersLoading(CyberCore::ResourceLoader&, bool) final;
+    void crossOriginRedirectReceived(CyberCore::ResourceLoader*, const URL& redirectURL) final;
     
-    void servePendingRequests(WebCore::ResourceLoadPriority minimumPriority = WebCore::ResourceLoadPriority::VeryLow) final;
+    void servePendingRequests(CyberCore::ResourceLoadPriority minimumPriority = CyberCore::ResourceLoadPriority::VeryLow) final;
     void suspendPendingRequests() final;
     void resumePendingRequests() final;
 
-    void startPingLoad(WebCore::Frame&, WebCore::ResourceRequest&, const WebCore::HTTPHeaderMap&, const WebCore::FetchOptions&, WebCore::ContentSecurityPolicyImposition, PingLoadCompletionHandler&&) final;
+    void startPingLoad(CyberCore::Frame&, CyberCore::ResourceRequest&, const CyberCore::HTTPHeaderMap&, const CyberCore::FetchOptions&, CyberCore::ContentSecurityPolicyImposition, PingLoadCompletionHandler&&) final;
 
-    void preconnectTo(WebCore::FrameLoader&, const URL&, WebCore::StoredCredentialsPolicy, ShouldPreconnectAsFirstParty, PreconnectCompletionHandler&&) final;
+    void preconnectTo(CyberCore::FrameLoader&, const URL&, CyberCore::StoredCredentialsPolicy, ShouldPreconnectAsFirstParty, PreconnectCompletionHandler&&) final;
 
     void setCaptureExtraNetworkLoadMetricsEnabled(bool) final { }
 
     bool isSerialLoadingEnabled() const { return m_isSerialLoadingEnabled; }
     void setSerialLoadingEnabled(bool b) { m_isSerialLoadingEnabled = b; }
 
-    void schedulePluginStreamLoad(WebCore::Frame&, WebCore::NetscapePlugInStreamLoaderClient&, WebCore::ResourceRequest&&, CompletionHandler<void(RefPtr<WebCore::NetscapePlugInStreamLoader>&&)>&&);
+    void schedulePluginStreamLoad(CyberCore::Frame&, CyberCore::NetscapePlugInStreamLoaderClient&, CyberCore::ResourceRequest&&, CompletionHandler<void(RefPtr<CyberCore::NetscapePlugInStreamLoader>&&)>&&);
 
     bool isOnLine() const final;
     void addOnlineStateChangeListener(WTF::Function<void(bool)>&&) final;
@@ -74,12 +74,12 @@ public:
 private:
     virtual ~WebResourceLoadScheduler();
 
-    void scheduleLoad(WebCore::ResourceLoader*);
+    void scheduleLoad(CyberCore::ResourceLoader*);
     void scheduleServePendingRequests();
     void requestTimerFired();
 
     bool isSuspendingPendingRequests() const { return !!m_suspendPendingRequestsCount; }
-    void isResourceLoadFinished(WebCore::CachedResource&, CompletionHandler<void(bool)>&&) final;
+    void isResourceLoadFinished(CyberCore::CachedResource&, CompletionHandler<void(bool)>&&) final;
 
     class HostInformation {
         WTF_MAKE_NONCOPYABLE(HostInformation); WTF_MAKE_FAST_ALLOCATED;
@@ -88,20 +88,20 @@ private:
         ~HostInformation();
         
         const String& name() const { return m_name; }
-        void schedule(WebCore::ResourceLoader*, WebCore::ResourceLoadPriority = WebCore::ResourceLoadPriority::VeryLow);
-        void addLoadInProgress(WebCore::ResourceLoader*);
-        void remove(WebCore::ResourceLoader*);
+        void schedule(CyberCore::ResourceLoader*, CyberCore::ResourceLoadPriority = CyberCore::ResourceLoadPriority::VeryLow);
+        void addLoadInProgress(CyberCore::ResourceLoader*);
+        void remove(CyberCore::ResourceLoader*);
         bool hasRequests() const;
-        bool limitRequests(WebCore::ResourceLoadPriority) const;
+        bool limitRequests(CyberCore::ResourceLoadPriority) const;
 
-        typedef Deque<RefPtr<WebCore::ResourceLoader>> RequestQueue;
-        RequestQueue& requestsPending(WebCore::ResourceLoadPriority priority) { return m_requestsPending[priorityToIndex(priority)]; }
+        typedef Deque<RefPtr<CyberCore::ResourceLoader>> RequestQueue;
+        RequestQueue& requestsPending(CyberCore::ResourceLoadPriority priority) { return m_requestsPending[priorityToIndex(priority)]; }
 
     private:
-        static unsigned priorityToIndex(WebCore::ResourceLoadPriority);
+        static unsigned priorityToIndex(CyberCore::ResourceLoadPriority);
 
-        std::array<RequestQueue, WebCore::resourceLoadPriorityCount> m_requestsPending;
-        typedef HashSet<RefPtr<WebCore::ResourceLoader>> RequestMap;
+        std::array<RequestQueue, CyberCore::resourceLoadPriorityCount> m_requestsPending;
+        typedef HashSet<RefPtr<CyberCore::ResourceLoader>> RequestMap;
         RequestMap m_requestsLoading;
         const String m_name;
         const unsigned m_maxRequestsInFlight;
@@ -113,13 +113,13 @@ private:
     };
     
     HostInformation* hostForURL(const URL&, CreateHostPolicy = FindOnly);
-    void servePendingRequests(HostInformation*, WebCore::ResourceLoadPriority);
+    void servePendingRequests(HostInformation*, CyberCore::ResourceLoadPriority);
 
     typedef HashMap<String, HostInformation*, StringHash> HostMap;
     HostMap m_hosts;
     HostInformation* m_nonHTTPProtocolHost;
         
-    WebCore::Timer m_requestTimer;
+    CyberCore::Timer m_requestTimer;
 
     unsigned m_suspendPendingRequestsCount;
     bool m_isSerialLoadingEnabled;

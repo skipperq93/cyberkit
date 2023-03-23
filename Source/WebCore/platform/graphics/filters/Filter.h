@@ -29,7 +29,7 @@
 #include "ImageBuffer.h"
 #include "RenderingMode.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class FilterEffect;
 class FilterImage;
@@ -87,21 +87,21 @@ private:
     FloatRect m_filterRegion;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::Filter::ClipOperation> {
+template<> struct EnumTraits<CyberCore::Filter::ClipOperation> {
     using values = EnumValues<
-        WebCore::Filter::ClipOperation,
+        CyberCore::Filter::ClipOperation,
 
-        WebCore::Filter::ClipOperation::Intersect,
-        WebCore::Filter::ClipOperation::Unite
+        CyberCore::Filter::ClipOperation::Intersect,
+        CyberCore::Filter::ClipOperation::Unite
     >;
 };
 
 } // namespace WTF
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::Filter)
-    static bool isType(const WebCore::FilterFunction& function) { return function.isFilter(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::Filter)
+    static bool isType(const CyberCore::FilterFunction& function) { return function.isFilter(); }
 SPECIALIZE_TYPE_TRAITS_END()

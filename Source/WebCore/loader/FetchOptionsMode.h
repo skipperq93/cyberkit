@@ -25,8 +25,8 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
     
 enum class FetchOptionsMode : uint8_t { Navigate, SameOrigin, NoCors, Cors };
 
-} // namespace WebCore
+} // namespace CyberCore

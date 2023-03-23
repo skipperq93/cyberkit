@@ -41,7 +41,7 @@
 #include FT_MULTIPLE_MASTERS_H
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 static inline float harfBuzzPositionToFloat(hb_position_t value)
 {
@@ -387,4 +387,4 @@ void ComplexTextController::collectComplexTextRunsForCharacters(const UChar* cha
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore

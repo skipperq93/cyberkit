@@ -25,8 +25,8 @@
 
 #import <CyberKitLegacy/DOMHTMLOptionsCollection.h>
 
-namespace WebCore {
+namespace CyberCore {
 class HTMLOptionsCollection;
 }
 
-DOMHTMLOptionsCollection *kit(WebCore::HTMLOptionsCollection*);
+DOMHTMLOptionsCollection *kit(CyberCore::HTMLOptionsCollection*);

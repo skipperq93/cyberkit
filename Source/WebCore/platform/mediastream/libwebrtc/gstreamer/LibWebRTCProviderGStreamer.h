@@ -31,7 +31,7 @@
 #include "GStreamerVideoEncoderFactory.h"
 #include "LibWebRTCProvider.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class WEBCORE_EXPORT LibWebRTCProviderGStreamer : public LibWebRTCProvider {
 public:
@@ -41,6 +41,6 @@ public:
     std::unique_ptr<webrtc::VideoDecoderFactory> createDecoderFactory() final;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

@@ -32,28 +32,28 @@
 
 WKTypeID WKBundleInspectorGetTypeID()
 {
-    return WebKit::toAPI(WebKit::WebInspector::APIType);
+    return CyberKit::toAPI(CyberKit::WebInspector::APIType);
 }
 
 void WKBundleInspectorShow(WKBundleInspectorRef inspectorRef)
 {
-    WebKit::toImpl(inspectorRef)->show();
+    CyberKit::toImpl(inspectorRef)->show();
 }
 
 void WKBundleInspectorClose(WKBundleInspectorRef inspectorRef)
 {
-    WebKit::toImpl(inspectorRef)->close();
+    CyberKit::toImpl(inspectorRef)->close();
 }
 
 void WKBundleInspectorEvaluateScriptForTest(WKBundleInspectorRef inspectorRef, WKStringRef script)
 {
-    WebKit::toImpl(inspectorRef)->evaluateScriptForTest(WebKit::toWTFString(script));
+    CyberKit::toImpl(inspectorRef)->evaluateScriptForTest(CyberKit::toWTFString(script));
 }
 
 void WKBundleInspectorSetPageProfilingEnabled(WKBundleInspectorRef inspectorRef, bool enabled)
 {
     if (enabled)
-        WebKit::toImpl(inspectorRef)->startPageProfiling();
+        CyberKit::toImpl(inspectorRef)->startPageProfiling();
     else
-        WebKit::toImpl(inspectorRef)->stopPageProfiling();
+        CyberKit::toImpl(inspectorRef)->stopPageProfiling();
 }

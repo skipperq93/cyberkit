@@ -29,7 +29,7 @@
 #include "TransferredMessagePort.h"
 #include <wtf/HashMap.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScriptExecutionContext;
 class SharedWorkerThreadProxy;
@@ -82,4 +82,4 @@ private:
     HashMap<SharedWorkerIdentifier, Ref<SharedWorkerThreadProxy>> m_workerMap;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

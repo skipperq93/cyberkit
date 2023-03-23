@@ -34,7 +34,7 @@
 #include "UndoItem.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(UndoManager);
 
@@ -73,4 +73,4 @@ void UndoManager::removeAllItems()
     m_items.clear();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

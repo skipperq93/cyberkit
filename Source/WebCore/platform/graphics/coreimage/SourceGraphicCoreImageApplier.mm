@@ -34,7 +34,7 @@
 #import <CoreImage/CIFilter.h>
 #import <CoreImage/CoreImage.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 bool SourceGraphicCoreImageApplier::apply(const Filter&, const FilterImageVector& inputs, FilterImage& result) const
 {
@@ -57,6 +57,6 @@ bool SourceGraphicCoreImageApplier::apply(const Filter&, const FilterImageVector
     return true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(CORE_IMAGE)

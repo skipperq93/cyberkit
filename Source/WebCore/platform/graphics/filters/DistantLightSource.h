@@ -26,7 +26,7 @@
 #include <wtf/ArgumentCoder.h>
 #include <wtf/Ref.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DistantLightSource : public LightSource {
 public:
@@ -52,6 +52,6 @@ private:
     float m_elevation;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_LIGHTSOURCE(DistantLightSource, LS_DISTANT)

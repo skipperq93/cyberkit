@@ -37,7 +37,7 @@
 #include "VideoFrameGStreamer.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 RealtimeVideoSource::RealtimeVideoSource(Ref<RealtimeVideoCaptureSource>&& source, bool shouldUseIOSurface)
     : RealtimeMediaSource(source->captureDevice(), MediaDeviceHashSalts { source->deviceIDHashSalts() }, source->pageIdentifier())
@@ -247,6 +247,6 @@ void RealtimeVideoSource::setLogger(const Logger& logger, const void* identifier
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM)

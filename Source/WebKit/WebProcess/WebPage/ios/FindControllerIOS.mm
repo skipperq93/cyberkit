@@ -30,7 +30,7 @@
 #import "FindController.h"
 #import "FindIndicatorOverlayClientIOS.h"
 #import "SmartMagnificationControllerMessages.h"
-#import "WebCoreArgumentCoders.h"
+#import "CyberCoreArgumentCoders.h"
 #import "WebPage.h"
 #import "WebPageProxyMessages.h"
 #import <CyberCore/Editor.h>
@@ -45,8 +45,8 @@
 #import <CyberCore/Settings.h>
 #import <CyberCore/TextIndicator.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 const int cornerRadius = 3;
 const int totalHorizontalMargin = 1;
@@ -172,7 +172,7 @@ void FindController::didFindString()
     // Many sites have overlay headers or footers that may overlap with the highlighted
     // text, so we reveal the text at the center of the viewport.
     // FIXME: Find a better way to estimate the obscured area (https://webkit.org/b/183889).
-    frame->selection().revealSelection(SelectionRevealMode::RevealUpToMainFrame, ScrollAlignment::alignCenterAlways, WebCore::DoNotRevealExtent);
+    frame->selection().revealSelection(SelectionRevealMode::RevealUpToMainFrame, ScrollAlignment::alignCenterAlways, CyberCore::DoNotRevealExtent);
 }
 
 void FindController::didFailToFindString()
@@ -195,6 +195,6 @@ bool FindController::shouldHideFindIndicatorOnScroll() const
     return false;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

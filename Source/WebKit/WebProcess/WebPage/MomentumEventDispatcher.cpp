@@ -32,11 +32,11 @@
 #include <CyberCore/Scrollbar.h>
 #include <wtf/SystemTracing.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 static constexpr Seconds deltaHistoryMaximumAge = 500_ms;
 static constexpr Seconds deltaHistoryMaximumInterval = 150_ms;
-static constexpr WebCore::FramesPerSecond idealCurveFrameRate = 60;
+static constexpr CyberCore::FramesPerSecond idealCurveFrameRate = 60;
 static constexpr Seconds idealCurveFrameInterval = 1_s / idealCurveFrameRate;
 
 MomentumEventDispatcher::MomentumEventDispatcher(Client& client)
@@ -49,7 +49,7 @@ MomentumEventDispatcher::~MomentumEventDispatcher()
     stopDisplayLink();
 }
 
-bool MomentumEventDispatcher::eventShouldStartSyntheticMomentumPhase(WebCore::PageIdentifier pageIdentifier, const WebWheelEvent& event) const
+bool MomentumEventDispatcher::eventShouldStartSyntheticMomentumPhase(CyberCore::PageIdentifier pageIdentifier, const WebWheelEvent& event) const
 {
     if (event.momentumPhase() != WebWheelEvent::PhaseBegan)
         return false;
@@ -68,7 +68,7 @@ bool MomentumEventDispatcher::eventShouldStartSyntheticMomentumPhase(WebCore::Pa
     return true;
 }
 
-bool MomentumEventDispatcher::handleWheelEvent(WebCore::PageIdentifier pageIdentifier, const WebWheelEvent& event, WebCore::RectEdges<bool> rubberBandableEdges)
+bool MomentumEventDispatcher::handleWheelEvent(CyberCore::PageIdentifier pageIdentifier, const WebWheelEvent& event, CyberCore::RectEdges<bool> rubberBandableEdges)
 {
     m_lastRubberBandableEdges = rubberBandableEdges;
     m_lastIncomingEvent = event;
@@ -158,7 +158,7 @@ static float appKitScrollMultiplierForEvent(const WebWheelEvent& event)
     return multiplier;
 }
 
-void MomentumEventDispatcher::dispatchSyntheticMomentumEvent(WebWheelEvent::Phase phase, WebCore::FloatSize delta)
+void MomentumEventDispatcher::dispatchSyntheticMomentumEvent(WebWheelEvent::Phase phase, CyberCore::FloatSize delta)
 {
     tracePoint(SyntheticMomentumEvent, static_cast<uint64_t>(phase), std::abs(delta.width()), std::abs(delta.height()));
 
@@ -167,7 +167,7 @@ void MomentumEventDispatcher::dispatchSyntheticMomentumEvent(WebWheelEvent::Phas
 
     auto appKitScrollMultiplier = appKitScrollMultiplierForEvent(*m_currentGesture.initiatingEvent);
     auto appKitAcceleratedDelta = delta * appKitScrollMultiplier;
-    auto wheelTicks = appKitAcceleratedDelta / WebCore::Scrollbar::pixelsPerLineStep();
+    auto wheelTicks = appKitAcceleratedDelta / CyberCore::Scrollbar::pixelsPerLineStep();
     auto time = WallTime::now();
 
     // FIXME: Ideally we would stick legitimate rawPlatformDeltas on the event,
@@ -197,7 +197,7 @@ void MomentumEventDispatcher::dispatchSyntheticMomentumEvent(WebWheelEvent::Phas
 #endif
 }
 
-void MomentumEventDispatcher::didStartMomentumPhase(WebCore::PageIdentifier pageIdentifier, const WebWheelEvent& event)
+void MomentumEventDispatcher::didStartMomentumPhase(CyberCore::PageIdentifier pageIdentifier, const WebWheelEvent& event)
 {
     auto displayProperties = this->displayProperties(pageIdentifier);
     if (!displayProperties)
@@ -221,7 +221,7 @@ void MomentumEventDispatcher::didStartMomentumPhase(WebCore::PageIdentifier page
     float idealCurveMultiplier = m_currentGesture.accelerationCurve->frameRate() / idealCurveFrameRate;
     buildOffsetTableWithInitialDelta(*event.rawPlatformDelta() * idealCurveMultiplier);
 
-    WebCore::FloatSize consumedDelta = event.delta();
+    CyberCore::FloatSize consumedDelta = event.delta();
     if (m_currentGesture.initiatingEvent->directionInvertedFromDevice())
         consumedDelta.scale(-1);
     m_currentGesture.currentOffset += consumedDelta;
@@ -246,7 +246,7 @@ void MomentumEventDispatcher::didEndMomentumPhase()
     tracePoint(SyntheticMomentumEnd);
 }
 
-void MomentumEventDispatcher::setScrollingAccelerationCurve(WebCore::PageIdentifier pageIdentifier, std::optional<ScrollingAccelerationCurve> curve)
+void MomentumEventDispatcher::setScrollingAccelerationCurve(CyberCore::PageIdentifier pageIdentifier, std::optional<ScrollingAccelerationCurve> curve)
 {
     Locker locker { m_accelerationCurvesLock };
     m_accelerationCurves.set(pageIdentifier, curve);
@@ -258,7 +258,7 @@ void MomentumEventDispatcher::setScrollingAccelerationCurve(WebCore::PageIdentif
 #endif
 }
 
-std::optional<ScrollingAccelerationCurve> MomentumEventDispatcher::scrollingAccelerationCurveForPage(WebCore::PageIdentifier pageIdentifier) const
+std::optional<ScrollingAccelerationCurve> MomentumEventDispatcher::scrollingAccelerationCurveForPage(CyberCore::PageIdentifier pageIdentifier) const
 {
     Locker locker { m_accelerationCurvesLock };
 
@@ -268,7 +268,7 @@ std::optional<ScrollingAccelerationCurve> MomentumEventDispatcher::scrollingAcce
     return curveIterator->value;
 }
 
-std::optional<MomentumEventDispatcher::DisplayProperties> MomentumEventDispatcher::displayProperties(WebCore::PageIdentifier pageIdentifier) const
+std::optional<MomentumEventDispatcher::DisplayProperties> MomentumEventDispatcher::displayProperties(CyberCore::PageIdentifier pageIdentifier) const
 {
     ASSERT(pageIdentifier);
     auto displayPropertiesIterator = m_displayProperties.find(pageIdentifier);
@@ -306,7 +306,7 @@ void MomentumEventDispatcher::stopDisplayLink()
 #endif
 }
 
-void MomentumEventDispatcher::pageScreenDidChange(WebCore::PageIdentifier pageID, WebCore::PlatformDisplayID displayID, std::optional<unsigned> nominalFramesPerSecond)
+void MomentumEventDispatcher::pageScreenDidChange(CyberCore::PageIdentifier pageID, CyberCore::PlatformDisplayID displayID, std::optional<unsigned> nominalFramesPerSecond)
 {
     bool affectsCurrentGesture = (pageID == m_currentGesture.pageIdentifier);
     if (affectsCurrentGesture)
@@ -314,16 +314,16 @@ void MomentumEventDispatcher::pageScreenDidChange(WebCore::PageIdentifier pageID
 
     DisplayProperties properties;
     properties.displayID = displayID;
-    properties.nominalFrameRate = nominalFramesPerSecond.value_or(WebCore::FullSpeedFramesPerSecond);
+    properties.nominalFrameRate = nominalFramesPerSecond.value_or(CyberCore::FullSpeedFramesPerSecond);
     m_displayProperties.set(pageID, WTFMove(properties));
 
     if (affectsCurrentGesture)
         startDisplayLink();
 }
 
-std::optional<WebCore::FloatSize> MomentumEventDispatcher::consumeDeltaForCurrentTime()
+std::optional<CyberCore::FloatSize> MomentumEventDispatcher::consumeDeltaForCurrentTime()
 {
-    WebCore::FloatSize delta;
+    CyberCore::FloatSize delta;
 
     auto animationTime = MonotonicTime::now() - m_currentGesture.startTime;
     if (animationTime < m_currentGesture.tailStartDelay) {
@@ -344,7 +344,7 @@ std::optional<WebCore::FloatSize> MomentumEventDispatcher::consumeDeltaForCurren
     return delta;
 }
 
-void MomentumEventDispatcher::displayDidRefresh(WebCore::PlatformDisplayID displayID)
+void MomentumEventDispatcher::displayDidRefresh(CyberCore::PlatformDisplayID displayID)
 {
     if (!m_currentGesture.active)
         return;
@@ -365,7 +365,7 @@ void MomentumEventDispatcher::displayDidRefresh(WebCore::PlatformDisplayID displ
     dispatchSyntheticMomentumEvent(WebWheelEvent::PhaseChanged, *delta);
 }
 
-void MomentumEventDispatcher::didReceiveScrollEventWithInterval(WebCore::FloatSize size, Seconds frameInterval)
+void MomentumEventDispatcher::didReceiveScrollEventWithInterval(CyberCore::FloatSize size, Seconds frameInterval)
 {
     auto push = [](HistoricalDeltas& deltas, Delta newDelta) {
         bool directionChanged = deltas.size() && (deltas.first().rawPlatformDelta > 0) != (newDelta.rawPlatformDelta > 0);
@@ -403,21 +403,21 @@ void MomentumEventDispatcher::didReceiveScrollEvent(const WebWheelEvent& event)
     didReceiveScrollEventWithInterval(delta, frameInterval);
 }
 
-void MomentumEventDispatcher::buildOffsetTableWithInitialDelta(WebCore::FloatSize initialUnacceleratedDelta)
+void MomentumEventDispatcher::buildOffsetTableWithInitialDelta(CyberCore::FloatSize initialUnacceleratedDelta)
 {
     m_currentGesture.offsetTable.clear();
 
-    WebCore::FloatSize accumulatedOffset;
-    WebCore::FloatSize unacceleratedDelta = initialUnacceleratedDelta;
+    CyberCore::FloatSize accumulatedOffset;
+    CyberCore::FloatSize unacceleratedDelta = initialUnacceleratedDelta;
 
     // Tail deltas will be dispatched at the screen refresh rate, not the momentum
     // dispatch rate, so we need to scale from 60Hz into screen refresh rate.
     float tailCurveMultiplier = static_cast<float>(idealCurveFrameRate) / m_currentGesture.displayNominalFrameRate;
     bool inTail = false;
-    WebCore::FloatSize tailCarry;
+    CyberCore::FloatSize tailCarry;
 
     do {
-        WebCore::FloatSize acceleratedDelta;
+        CyberCore::FloatSize acceleratedDelta;
         std::tie(unacceleratedDelta, acceleratedDelta) = computeNextDelta(unacceleratedDelta);
 
         const float tailStartUnacceleratedDelta = 6.f;
@@ -527,7 +527,7 @@ void MomentumEventDispatcher::equalizeTailGaps()
     table.shrink(0);
 
     while (originalTableIndex[Horizontal] < initialTableSize || originalTableIndex[Vertical] < initialTableSize) {
-        WebCore::FloatSize delta(takeNextDelta(Horizontal), takeNextDelta(Vertical));
+        CyberCore::FloatSize delta(takeNextDelta(Horizontal), takeNextDelta(Vertical));
         table.append(delta);
 
         if (!delta.isZero())
@@ -542,7 +542,7 @@ static float interpolate(float a, float b, float t)
     return a + t * (b - a);
 }
 
-WebCore::FloatSize MomentumEventDispatcher::offsetAtTime(Seconds time)
+CyberCore::FloatSize MomentumEventDispatcher::offsetAtTime(Seconds time)
 {
     if (!m_currentGesture.offsetTable.size())
         return { };
@@ -558,7 +558,7 @@ WebCore::FloatSize MomentumEventDispatcher::offsetAtTime(Seconds time)
     };
 }
 
-static float momentumDecayRate(WebCore::FloatSize delta, Seconds frameInterval)
+static float momentumDecayRate(CyberCore::FloatSize delta, Seconds frameInterval)
 {
     constexpr float defaultDecay = 0.975f;
     constexpr float tailVelocity = 250.f;
@@ -579,9 +579,9 @@ static constexpr float fromFixedPoint(float value)
     return value / 65536.0f;
 }
 
-std::pair<WebCore::FloatSize, WebCore::FloatSize> MomentumEventDispatcher::computeNextDelta(WebCore::FloatSize currentUnacceleratedDelta)
+std::pair<CyberCore::FloatSize, CyberCore::FloatSize> MomentumEventDispatcher::computeNextDelta(CyberCore::FloatSize currentUnacceleratedDelta)
 {
-    WebCore::FloatSize unacceleratedDelta = currentUnacceleratedDelta;
+    CyberCore::FloatSize unacceleratedDelta = currentUnacceleratedDelta;
 
     float decayRate = momentumDecayRate(unacceleratedDelta, idealCurveFrameInterval);
     unacceleratedDelta.scale(decayRate);
@@ -631,7 +631,7 @@ std::pair<WebCore::FloatSize, WebCore::FloatSize> MomentumEventDispatcher::compu
         return value * multiplier;
     };
 
-    WebCore::FloatSize acceleratedDelta(
+    CyberCore::FloatSize acceleratedDelta(
         accelerateAxis(m_deltaHistoryX, unacceleratedDelta.width()),
         accelerateAxis(m_deltaHistoryY, unacceleratedDelta.height())
     );
@@ -672,6 +672,6 @@ void MomentumEventDispatcher::flushLog()
 
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

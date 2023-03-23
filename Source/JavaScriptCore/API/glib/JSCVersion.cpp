@@ -22,14 +22,14 @@
 
 /**
  * JSCVersion:
- * @Short_description: Provides the JavaScriptCore version
+ * @Short_description: Provides the CyberScriptCore version
  * @Title: JSCVersion
  *
- * Provides convenience functions returning JavaScriptCore's major, minor and
- * micro versions of the JavaScriptCore library your code is running
+ * Provides convenience functions returning CyberScriptCore's major, minor and
+ * micro versions of the CyberScriptCore library your code is running
  * against. This is not necessarily the same as the
  * #JSC_MAJOR_VERSION, #JSC_MINOR_VERSION or
- * #JSC_MICRO_VERSION, which represent the version of the JavaScriptCore
+ * #JSC_MICRO_VERSION, which represent the version of the CyberScriptCore
  * headers included when compiling the code.
  *
  */
@@ -37,15 +37,15 @@
 /**
  * jsc_get_major_version:
  *
- * Returns the major version number of the JavaScriptCore library.
- * (e.g. in JavaScriptCore version 1.8.3 this is 1.)
+ * Returns the major version number of the CyberScriptCore library.
+ * (e.g. in CyberScriptCore version 1.8.3 this is 1.)
  *
- * This function is in the library, so it represents the JavaScriptCore library
+ * This function is in the library, so it represents the CyberScriptCore library
  * your code is running against. Contrast with the #JSC_MAJOR_VERSION
- * macro, which represents the major version of the JavaScriptCore headers you
+ * macro, which represents the major version of the CyberScriptCore headers you
  * have included when compiling your code.
  *
- * Returns: the major version number of the JavaScriptCore library
+ * Returns: the major version number of the CyberScriptCore library
  */
 guint jsc_get_major_version(void)
 {
@@ -55,15 +55,15 @@ guint jsc_get_major_version(void)
 /**
  * jsc_get_minor_version:
  *
- * Returns the minor version number of the JavaScriptCore library.
- * (e.g. in JavaScriptCore version 1.8.3 this is 8.)
+ * Returns the minor version number of the CyberScriptCore library.
+ * (e.g. in CyberScriptCore version 1.8.3 this is 8.)
  *
- * This function is in the library, so it represents the JavaScriptCore library
+ * This function is in the library, so it represents the CyberScriptCore library
  * your code is running against. Contrast with the #JSC_MINOR_VERSION
- * macro, which represents the minor version of the JavaScriptCore headers you
+ * macro, which represents the minor version of the CyberScriptCore headers you
  * have included when compiling your code.
  *
- * Returns: the minor version number of the JavaScriptCore library
+ * Returns: the minor version number of the CyberScriptCore library
  */
 guint jsc_get_minor_version(void)
 {
@@ -73,15 +73,15 @@ guint jsc_get_minor_version(void)
 /**
  * jsc_get_micro_version:
  *
- * Returns the micro version number of the JavaScriptCore library.
- * (e.g. in JavaScriptCore version 1.8.3 this is 3.)
+ * Returns the micro version number of the CyberScriptCore library.
+ * (e.g. in CyberScriptCore version 1.8.3 this is 3.)
  *
- * This function is in the library, so it represents the JavaScriptCore library
+ * This function is in the library, so it represents the CyberScriptCore library
  * your code is running against. Contrast with the #JSC_MICRO_VERSION
- * macro, which represents the micro version of the JavaScriptCore headers you
+ * macro, which represents the micro version of the CyberScriptCore headers you
  * have included when compiling your code.
  *
- * Returns: the micro version number of the JavaScriptCore library
+ * Returns: the micro version number of the CyberScriptCore library
  */
 guint jsc_get_micro_version(void)
 {

@@ -30,7 +30,7 @@
 #include "Font.h"
 #include "GlyphBuffer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 DrawGlyphsRecorder::DrawGlyphsRecorder(GraphicsContext& owner, float, DeriveFontFromContext deriveFontFromContext)
     : m_owner(owner)
@@ -43,4 +43,4 @@ void DrawGlyphsRecorder::drawGlyphs(const Font& font, const GlyphBufferGlyph* gl
     m_owner.drawGlyphsAndCacheResources(font, glyphs, advances, numGlyphs, startPoint, smoothingMode);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

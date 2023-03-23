@@ -30,7 +30,7 @@
 
 #include "SWServerRegistration.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 RegistrationStore::RegistrationStore(SWServer& server, String&& databaseDirectory)
     : m_server(server)
@@ -144,6 +144,6 @@ void RegistrationStore::databaseOpenedAndRecordsImported()
     m_server.registrationStoreImportComplete();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

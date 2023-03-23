@@ -28,15 +28,15 @@
 
 #if ENABLE(DATALIST_ELEMENT)
 
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebPage.h"
 #include "WebPageProxyMessages.h"
 #include "WebProcess.h"
 #include <CyberCore/DataListSuggestionsClient.h>
 
-namespace WebKit {
+namespace CyberKit {
 
-WebDataListSuggestionPicker::WebDataListSuggestionPicker(WebPage& page, WebCore::DataListSuggestionsClient& client)
+WebDataListSuggestionPicker::WebDataListSuggestionPicker(WebPage& page, CyberCore::DataListSuggestionsClient& client)
     : m_client(client)
     , m_page(page)
 {
@@ -62,7 +62,7 @@ void WebDataListSuggestionPicker::close()
     WebProcess::singleton().parentProcessConnection()->send(Messages::WebPageProxy::EndDataListSuggestions(), m_page.identifier());
 }
 
-void WebDataListSuggestionPicker::displayWithActivationType(WebCore::DataListSuggestionActivationType type)
+void WebDataListSuggestionPicker::displayWithActivationType(CyberCore::DataListSuggestionActivationType type)
 {
     auto suggestions = m_client.suggestions();
     if (suggestions.isEmpty()) {
@@ -72,10 +72,10 @@ void WebDataListSuggestionPicker::displayWithActivationType(WebCore::DataListSug
 
     m_page.setActiveDataListSuggestionPicker(*this);
 
-    WebCore::DataListSuggestionInformation info { type, WTFMove(suggestions), m_client.elementRectInRootViewCoordinates() };
+    CyberCore::DataListSuggestionInformation info { type, WTFMove(suggestions), m_client.elementRectInRootViewCoordinates() };
     WebProcess::singleton().parentProcessConnection()->send(Messages::WebPageProxy::ShowDataListSuggestions(info), m_page.identifier());
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

@@ -43,7 +43,7 @@
 
 #define IO_BUFFERSIZE 4096
 
-namespace WebCore {
+namespace CyberCore {
 
 CurlCacheManager& CurlCacheManager::singleton()
 {

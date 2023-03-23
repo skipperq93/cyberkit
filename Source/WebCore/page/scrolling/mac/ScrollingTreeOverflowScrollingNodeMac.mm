@@ -32,11 +32,11 @@
 #import "ScrollingStateOverflowScrollingNode.h"
 #import "ScrollingTree.h"
 #import "ScrollingTreeScrollingNodeDelegateMac.h"
-#import "WebCoreCALayerExtras.h"
+#import "CyberCoreCALayerExtras.h"
 #import <wtf/BlockObjCExceptions.h>
 #import <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<ScrollingTreeOverflowScrollingNodeMac> ScrollingTreeOverflowScrollingNodeMac::create(ScrollingTree& scrollingTree, ScrollingNodeID nodeID)
 {
@@ -103,6 +103,6 @@ void ScrollingTreeOverflowScrollingNodeMac::repositionRelatedLayers()
     delegate().updateScrollbarPainters();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ASYNC_SCROLLING) && PLATFORM(MAC)

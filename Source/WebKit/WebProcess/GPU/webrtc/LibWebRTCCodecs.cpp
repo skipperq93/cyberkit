@@ -35,7 +35,7 @@
 #include "Logging.h"
 #include "RemoteVideoFrameObjectHeapProxy.h"
 #include "RemoteVideoFrameProxy.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebProcess.h"
 #include <CyberCore/CVUtilities.h>
 #include <CyberCore/LibWebRTCDav1dDecoder.h>
@@ -48,21 +48,21 @@
 
 ALLOW_COMMA_BEGIN
 
-#include <webrtc/sdk/WebKit/WebKitDecoder.h>
-#include <webrtc/sdk/WebKit/WebKitEncoder.h>
+#include <webrtc/sdk/CyberKit/CyberKitDecoder.h>
+#include <webrtc/sdk/CyberKit/CyberKitEncoder.h>
 
 ALLOW_COMMA_END
 
 #include <pal/cf/CoreMediaSoftLink.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 #if USE(APPLE_INTERNAL_SDK)
-#include <WebKitAdditions/LibWebRTCCodecsAdditions.mm>
+#include <CyberKitAdditions/LibWebRTCCodecsAdditions.mm>
 #else
 
-static webrtc::WebKitVideoDecoder createVideoDecoder(const webrtc::SdpVideoFormat& format)
+static webrtc::CyberKitVideoDecoder createVideoDecoder(const webrtc::SdpVideoFormat& format)
 {
     auto& codecs = WebProcess::singleton().libWebRTCCodecs();
     if (format.name == "H264")
@@ -104,23 +104,23 @@ void LibWebRTCCodecs::setHasVP9ExtensionSupport(bool hasVP9ExtensionSupport)
 
 #endif
 
-static int32_t releaseVideoDecoder(webrtc::WebKitVideoDecoder::Value decoder)
+static int32_t releaseVideoDecoder(webrtc::CyberKitVideoDecoder::Value decoder)
 {
     return WebProcess::singleton().libWebRTCCodecs().releaseDecoder(*static_cast<LibWebRTCCodecs::Decoder*>(decoder));
 }
 
-static int32_t decodeVideoFrame(webrtc::WebKitVideoDecoder::Value decoder, uint32_t timeStamp, const uint8_t* data, size_t size, uint16_t width,  uint16_t height)
+static int32_t decodeVideoFrame(webrtc::CyberKitVideoDecoder::Value decoder, uint32_t timeStamp, const uint8_t* data, size_t size, uint16_t width,  uint16_t height)
 {
     return WebProcess::singleton().libWebRTCCodecs().decodeFrame(*static_cast<LibWebRTCCodecs::Decoder*>(decoder), timeStamp, data, size, width, height);
 }
 
-static int32_t registerDecodeCompleteCallback(webrtc::WebKitVideoDecoder::Value decoder, void* decodedImageCallback)
+static int32_t registerDecodeCompleteCallback(webrtc::CyberKitVideoDecoder::Value decoder, void* decodedImageCallback)
 {
     WebProcess::singleton().libWebRTCCodecs().registerDecodeFrameCallback(*static_cast<LibWebRTCCodecs::Decoder*>(decoder), decodedImageCallback);
     return 0;
 }
 
-static webrtc::WebKitVideoEncoder createVideoEncoder(const webrtc::SdpVideoFormat& format)
+static webrtc::CyberKitVideoEncoder createVideoEncoder(const webrtc::SdpVideoFormat& format)
 {
     if (format.name == "H264")
         return WebProcess::singleton().libWebRTCCodecs().createEncoder(VideoCodecType::H264, format.parameters);
@@ -131,12 +131,12 @@ static webrtc::WebKitVideoEncoder createVideoEncoder(const webrtc::SdpVideoForma
     return nullptr;
 }
 
-static int32_t releaseVideoEncoder(webrtc::WebKitVideoEncoder encoder)
+static int32_t releaseVideoEncoder(webrtc::CyberKitVideoEncoder encoder)
 {
     return WebProcess::singleton().libWebRTCCodecs().releaseEncoder(*static_cast<LibWebRTCCodecs::Encoder*>(encoder));
 }
 
-static int32_t initializeVideoEncoder(webrtc::WebKitVideoEncoder encoder, const webrtc::VideoCodec& codec)
+static int32_t initializeVideoEncoder(webrtc::CyberKitVideoEncoder encoder, const webrtc::VideoCodec& codec)
 {
     return WebProcess::singleton().libWebRTCCodecs().initializeEncoder(*static_cast<LibWebRTCCodecs::Encoder*>(encoder), codec.width, codec.height, codec.startBitrate, codec.maxBitrate, codec.minBitrate, codec.maxFramerate);
 }
@@ -162,18 +162,18 @@ static void createRemoteDecoder(LibWebRTCCodecs::Decoder& decoder, IPC::Connecti
     connection.send(Messages::LibWebRTCCodecsProxy::CreateDecoder { decoder.identifier, decoder.type, useRemoteFrames, enableAdditionalLogging }, 0);
 }
 
-static int32_t encodeVideoFrame(webrtc::WebKitVideoEncoder encoder, const webrtc::VideoFrame& frame, bool shouldEncodeAsKeyFrame)
+static int32_t encodeVideoFrame(webrtc::CyberKitVideoEncoder encoder, const webrtc::VideoFrame& frame, bool shouldEncodeAsKeyFrame)
 {
     return WebProcess::singleton().libWebRTCCodecs().encodeFrame(*static_cast<LibWebRTCCodecs::Encoder*>(encoder), frame, shouldEncodeAsKeyFrame);
 }
 
-static int32_t registerEncodeCompleteCallback(webrtc::WebKitVideoEncoder encoder, void* encodedImageCallback)
+static int32_t registerEncodeCompleteCallback(webrtc::CyberKitVideoEncoder encoder, void* encodedImageCallback)
 {
     WebProcess::singleton().libWebRTCCodecs().registerEncodeFrameCallback(*static_cast<LibWebRTCCodecs::Encoder*>(encoder), encodedImageCallback);
     return 0;
 }
 
-static void setEncodeRatesCallback(webrtc::WebKitVideoEncoder encoder, const webrtc::VideoEncoder::RateControlParameters& parameters)
+static void setEncodeRatesCallback(webrtc::CyberKitVideoEncoder encoder, const webrtc::VideoEncoder::RateControlParameters& parameters)
 {
     uint32_t bitRate = parameters.bitrate.get_sum_kbps();
     uint32_t frameRate = static_cast<uint32_t>(parameters.framerate_fps + 0.5);
@@ -588,7 +588,7 @@ int32_t LibWebRTCCodecs::initializeEncoder(Encoder& encoder, uint16_t width, uin
     return 0;
 }
 
-template<typename Frame> int32_t LibWebRTCCodecs::encodeFrameInternal(Encoder& encoder, const Frame& frame, bool shouldEncodeAsKeyFrame, WebCore::VideoFrame::Rotation rotation, MediaTime mediaTime, uint32_t timestamp)
+template<typename Frame> int32_t LibWebRTCCodecs::encodeFrameInternal(Encoder& encoder, const Frame& frame, bool shouldEncodeAsKeyFrame, CyberCore::VideoFrame::Rotation rotation, MediaTime mediaTime, uint32_t timestamp)
 {
     Locker locker { m_encodersConnectionLock };
     auto* connection = encoderConnection(encoder);
@@ -611,7 +611,7 @@ int32_t LibWebRTCCodecs::encodeFrame(Encoder& encoder, const webrtc::VideoFrame&
     return encodeFrameInternal(encoder, frame, shouldEncodeAsKeyFrame, toVideoRotation(frame.rotation()), MediaTime(frame.timestamp_us() * 1000, 1000000), frame.timestamp());
 }
 
-int32_t LibWebRTCCodecs::encodeFrame(Encoder& encoder, const WebCore::VideoFrame& frame, uint32_t timestamp, bool shouldEncodeAsKeyFrame)
+int32_t LibWebRTCCodecs::encodeFrame(Encoder& encoder, const CyberCore::VideoFrame& frame, uint32_t timestamp, bool shouldEncodeAsKeyFrame)
 {
     return encodeFrameInternal(encoder, frame, shouldEncodeAsKeyFrame, frame.rotation(), frame.presentationTime(), timestamp);
 }
@@ -694,7 +694,7 @@ void LibWebRTCCodecs::setEncodeRates(Encoder& encoder, uint32_t bitRate, uint32_
     connection->send(Messages::LibWebRTCCodecsProxy::SetEncodeRates { encoder.identifier, bitRate, frameRate }, 0);
 }
 
-void LibWebRTCCodecs::completedEncoding(VideoEncoderIdentifier identifier, IPC::DataReference&& data, const webrtc::WebKitEncodedFrameInfo& info)
+void LibWebRTCCodecs::completedEncoding(VideoEncoderIdentifier identifier, IPC::DataReference&& data, const webrtc::CyberKitEncodedFrameInfo& info)
 {
     assertIsCurrent(workQueue());
 
@@ -719,7 +719,7 @@ void LibWebRTCCodecs::completedEncoding(VideoEncoderIdentifier identifier, IPC::
     webrtc::encoderVideoTaskComplete(encoder->encodedImageCallback, toWebRTCCodecType(encoder->type), data.data(), data.size(), info);
 }
 
-void LibWebRTCCodecs::setEncodingDescription(WebKit::VideoEncoderIdentifier identifier, IPC::DataReference&& data)
+void LibWebRTCCodecs::setEncodingDescription(CyberKit::VideoEncoderIdentifier identifier, IPC::DataReference&& data)
 {
     assertIsCurrent(workQueue());
 
@@ -743,7 +743,7 @@ CVPixelBufferPoolRef LibWebRTCCodecs::pixelBufferPool(size_t width, size_t heigh
         m_pixelBufferPool = nullptr;
         m_pixelBufferPoolWidth = 0;
         m_pixelBufferPoolHeight = 0;
-        if (auto pool = WebCore::createIOSurfaceCVPixelBufferPool(width, height, type)) {
+        if (auto pool = CyberCore::createIOSurfaceCVPixelBufferPool(width, height, type)) {
             m_pixelBufferPool = WTFMove(*pool);
             m_pixelBufferPoolWidth = width;
             m_pixelBufferPoolHeight = height;

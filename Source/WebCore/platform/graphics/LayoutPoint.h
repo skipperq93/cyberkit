@@ -33,7 +33,7 @@
 #include "FloatPoint.h"
 #include "LayoutSize.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class LayoutPoint {
 public:
@@ -233,5 +233,5 @@ inline FloatSize snapSizeToDevicePixel(const LayoutSize& size, const LayoutPoint
 
 WEBCORE_EXPORT WTF::TextStream& operator<<(WTF::TextStream&, const LayoutPoint&);
 
-} // namespace WebCore
+} // namespace CyberCore
 

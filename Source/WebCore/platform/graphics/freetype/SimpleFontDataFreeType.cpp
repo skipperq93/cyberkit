@@ -51,7 +51,7 @@
 #include FT_TRUETYPE_TAGS_H
 #include <wtf/MathExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static RefPtr<cairo_scaled_font_t> scaledFontWithoutMetricsHinting(cairo_scaled_font_t* scaledFont)
 {

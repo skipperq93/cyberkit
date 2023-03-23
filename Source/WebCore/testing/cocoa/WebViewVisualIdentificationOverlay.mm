@@ -29,7 +29,7 @@
 #if PLATFORM(COCOA)
 
 #import "Color.h"
-#import "WebCoreCALayerExtras.h"
+#import "CyberCoreCALayerExtras.h"
 #import <CoreText/CoreText.h>
 #import <wtf/WeakObjCPtr.h>
 
@@ -93,7 +93,7 @@ const void* const webViewVisualIdentificationOverlayKey = &webViewVisualIdentifi
     _layer = adoptNS([[CATiledLayer alloc] init]);
     [_layer setName:@"WebViewVisualIdentificationOverlay"];
     [_layer setFrame:CGRectMake(0, 0, [_view bounds].size.width, [_view bounds].size.height)];
-    auto viewColor = isDeprecated ? WebCore::Color::red.colorWithAlphaByte(50) : WebCore::Color::blue.colorWithAlphaByte(32);
+    auto viewColor = isDeprecated ? CyberCore::Color::red.colorWithAlphaByte(50) : CyberCore::Color::blue.colorWithAlphaByte(32);
     [_layer setBackgroundColor:cachedCGColor(viewColor).get()];
     [_layer setZPosition:999];
     [_layer setDelegate:self];
@@ -153,11 +153,11 @@ static void drawPattern(void *overlayPtr, CGContextRef ctx)
     CGContextSetTextDrawingMode(ctx, kCGTextFill);
 
     CGContextSetTextPosition(ctx, 0, 0);
-    CGContextSetFillColorWithColor(ctx, cachedCGColor(WebCore::Color::black).get());
+    CGContextSetFillColorWithColor(ctx, cachedCGColor(CyberCore::Color::black).get());
     CTLineDraw(line.get(), ctx);
 
     CGContextSetTextPosition(ctx, 0, textSize.height + 5);
-    CGContextSetFillColorWithColor(ctx, cachedCGColor(WebCore::Color::white).get());
+    CGContextSetFillColorWithColor(ctx, cachedCGColor(CyberCore::Color::white).get());
     CTLineDraw(line.get(), ctx);
 }
 

@@ -90,7 +90,7 @@ static constexpr CGFloat kTargetFullscreenAspectRatio = 1.7778;
 #endif
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 void WebPageProxy::platformInitialize()
 {
@@ -153,7 +153,7 @@ String WebPageProxy::stringSelectionForPasteboard()
     return String();
 }
 
-RefPtr<WebCore::SharedBuffer> WebPageProxy::dataSelectionForPasteboard(const String&)
+RefPtr<CyberCore::SharedBuffer> WebPageProxy::dataSelectionForPasteboard(const String&)
 {
     notImplemented();
     return nullptr;
@@ -215,7 +215,7 @@ static inline float adjustedUnexposedMaxEdge(float documentEdge, float exposedRe
     return exposedRectEdge;
 }
 
-WebCore::FloatRect WebPageProxy::computeLayoutViewportRect(const FloatRect& unobscuredContentRect, const FloatRect& unobscuredContentRectRespectingInputViewBounds, const FloatRect& currentLayoutViewportRect, double displayedContentScale, FrameView::LayoutViewportConstraint constraint) const
+CyberCore::FloatRect WebPageProxy::computeLayoutViewportRect(const FloatRect& unobscuredContentRect, const FloatRect& unobscuredContentRectRespectingInputViewBounds, const FloatRect& currentLayoutViewportRect, double displayedContentScale, FrameView::LayoutViewportConstraint constraint) const
 {
     FloatRect constrainedUnobscuredRect = unobscuredContentRect;
     FloatRect documentRect = pageClient().documentRect();
@@ -271,7 +271,7 @@ void WebPageProxy::scrollingNodeScrollDidEndScroll(ScrollingNodeID nodeID)
     pageClient().scrollingNodeScrollDidEndScroll(nodeID);
 }
 
-void WebPageProxy::dynamicViewportSizeUpdate(const FloatSize& viewLayoutSize, const WebCore::FloatSize& minimumUnobscuredSize, const WebCore::FloatSize& maximumUnobscuredSize, const FloatRect& targetExposedContentRect, const FloatRect& targetUnobscuredRect, const FloatRect& targetUnobscuredRectInScrollViewCoordinates, const WebCore::FloatBoxExtent& unobscuredSafeAreaInsets, double targetScale, int32_t deviceOrientation, double minimumEffectiveDeviceWidth, DynamicViewportSizeUpdateID dynamicViewportSizeUpdateID)
+void WebPageProxy::dynamicViewportSizeUpdate(const FloatSize& viewLayoutSize, const CyberCore::FloatSize& minimumUnobscuredSize, const CyberCore::FloatSize& maximumUnobscuredSize, const FloatRect& targetExposedContentRect, const FloatRect& targetUnobscuredRect, const FloatRect& targetUnobscuredRectInScrollViewCoordinates, const CyberCore::FloatBoxExtent& unobscuredSafeAreaInsets, double targetScale, int32_t deviceOrientation, double minimumEffectiveDeviceWidth, DynamicViewportSizeUpdateID dynamicViewportSizeUpdateID)
 {
     if (!hasRunningProcess())
         return;
@@ -290,7 +290,7 @@ void WebPageProxy::dynamicViewportSizeUpdate(const FloatSize& viewLayoutSize, co
     setDeviceOrientation(deviceOrientation);
 }
 
-void WebPageProxy::setViewportConfigurationViewLayoutSize(const WebCore::FloatSize& size, double scaleFactor, double minimumEffectiveDeviceWidth)
+void WebPageProxy::setViewportConfigurationViewLayoutSize(const CyberCore::FloatSize& size, double scaleFactor, double minimumEffectiveDeviceWidth)
 {
     m_viewportConfigurationViewLayoutSize = size;
     m_viewportConfigurationLayoutSizeScaleFactor = scaleFactor;
@@ -348,7 +348,7 @@ bool WebPageProxy::updateLayoutViewportParameters(const WebKit::RemoteLayerTreeT
     return true;
 }
 
-void WebPageProxy::selectWithGesture(const WebCore::IntPoint point, GestureType gestureType, GestureRecognizerState gestureState, bool isInteractingWithFocusedElement, CompletionHandler<void(const WebCore::IntPoint&, GestureType, GestureRecognizerState, OptionSet<WebKit::SelectionFlags>)>&& callback)
+void WebPageProxy::selectWithGesture(const CyberCore::IntPoint point, GestureType gestureType, GestureRecognizerState gestureState, bool isInteractingWithFocusedElement, CompletionHandler<void(const CyberCore::IntPoint&, GestureType, GestureRecognizerState, OptionSet<WebKit::SelectionFlags>)>&& callback)
 {
     if (!hasRunningProcess())
         return callback({ }, GestureType::Loupe, GestureRecognizerState::Possible, { });
@@ -356,10 +356,10 @@ void WebPageProxy::selectWithGesture(const WebCore::IntPoint point, GestureType 
     sendWithAsyncReply(Messages::WebPage::SelectWithGesture(point, gestureType, gestureState, isInteractingWithFocusedElement), WTFMove(callback));
 }
 
-void WebPageProxy::updateSelectionWithTouches(const WebCore::IntPoint point, SelectionTouch touches, bool baseIsStart, CompletionHandler<void(const WebCore::IntPoint&, SelectionTouch, OptionSet<SelectionFlags>)>&& callback)
+void WebPageProxy::updateSelectionWithTouches(const CyberCore::IntPoint point, SelectionTouch touches, bool baseIsStart, CompletionHandler<void(const CyberCore::IntPoint&, SelectionTouch, OptionSet<SelectionFlags>)>&& callback)
 {
     if (!hasRunningProcess())
-        return callback(WebCore::IntPoint(), SelectionTouch::Started, { });
+        return callback(CyberCore::IntPoint(), SelectionTouch::Started, { });
 
     sendWithAsyncReply(Messages::WebPage::UpdateSelectionWithTouches(point, touches, baseIsStart), WTFMove(callback));
 }
@@ -423,7 +423,7 @@ bool WebPageProxy::applyAutocorrection(const String& correction, const String& o
     return autocorrectionApplied;
 }
 
-void WebPageProxy::selectTextWithGranularityAtPoint(const WebCore::IntPoint point, WebCore::TextGranularity granularity, bool isInteractingWithFocusedElement, CompletionHandler<void()>&& callbackFunction)
+void WebPageProxy::selectTextWithGranularityAtPoint(const CyberCore::IntPoint point, CyberCore::TextGranularity granularity, bool isInteractingWithFocusedElement, CompletionHandler<void()>&& callbackFunction)
 {
     if (!hasRunningProcess()) {
         callbackFunction();
@@ -435,7 +435,7 @@ void WebPageProxy::selectTextWithGranularityAtPoint(const WebCore::IntPoint poin
     });
 }
 
-void WebPageProxy::selectPositionAtBoundaryWithDirection(const WebCore::IntPoint point, WebCore::TextGranularity granularity, WebCore::SelectionDirection direction, bool isInteractingWithFocusedElement, CompletionHandler<void()>&& callbackFunction)
+void WebPageProxy::selectPositionAtBoundaryWithDirection(const CyberCore::IntPoint point, CyberCore::TextGranularity granularity, CyberCore::SelectionDirection direction, bool isInteractingWithFocusedElement, CompletionHandler<void()>&& callbackFunction)
 {
     if (!hasRunningProcess()) {
         callbackFunction();
@@ -447,7 +447,7 @@ void WebPageProxy::selectPositionAtBoundaryWithDirection(const WebCore::IntPoint
     });
 }
 
-void WebPageProxy::moveSelectionAtBoundaryWithDirection(WebCore::TextGranularity granularity, WebCore::SelectionDirection direction, CompletionHandler<void()>&& callbackFunction)
+void WebPageProxy::moveSelectionAtBoundaryWithDirection(CyberCore::TextGranularity granularity, CyberCore::SelectionDirection direction, CompletionHandler<void()>&& callbackFunction)
 {
     if (!hasRunningProcess()) {
         callbackFunction();
@@ -459,7 +459,7 @@ void WebPageProxy::moveSelectionAtBoundaryWithDirection(WebCore::TextGranularity
     });
 }
     
-void WebPageProxy::selectPositionAtPoint(const WebCore::IntPoint point, bool isInteractingWithFocusedElement, CompletionHandler<void()>&& callbackFunction)
+void WebPageProxy::selectPositionAtPoint(const CyberCore::IntPoint point, bool isInteractingWithFocusedElement, CompletionHandler<void()>&& callbackFunction)
 {
     if (!hasRunningProcess()) {
         callbackFunction();
@@ -471,17 +471,17 @@ void WebPageProxy::selectPositionAtPoint(const WebCore::IntPoint point, bool isI
     });
 }
 
-void WebPageProxy::beginSelectionInDirection(WebCore::SelectionDirection direction, CompletionHandler<void(bool)>&& callback)
+void WebPageProxy::beginSelectionInDirection(CyberCore::SelectionDirection direction, CompletionHandler<void(bool)>&& callback)
 {
     sendWithAsyncReply(Messages::WebPage::BeginSelectionInDirection(direction), WTFMove(callback));
 }
 
-void WebPageProxy::updateSelectionWithExtentPoint(const WebCore::IntPoint point, bool isInteractingWithFocusedElement, RespectSelectionAnchor respectSelectionAnchor, CompletionHandler<void(bool)>&& callback)
+void WebPageProxy::updateSelectionWithExtentPoint(const CyberCore::IntPoint point, bool isInteractingWithFocusedElement, RespectSelectionAnchor respectSelectionAnchor, CompletionHandler<void(bool)>&& callback)
 {
     sendWithAsyncReply(Messages::WebPage::UpdateSelectionWithExtentPoint(point, isInteractingWithFocusedElement, respectSelectionAnchor), WTFMove(callback));
 }
 
-void WebPageProxy::updateSelectionWithExtentPointAndBoundary(const WebCore::IntPoint point, WebCore::TextGranularity granularity, bool isInteractingWithFocusedElement, CompletionHandler<void(bool)>&& callback)
+void WebPageProxy::updateSelectionWithExtentPointAndBoundary(const CyberCore::IntPoint point, CyberCore::TextGranularity granularity, bool isInteractingWithFocusedElement, CompletionHandler<void(bool)>&& callback)
 {
     sendWithAsyncReply(Messages::WebPage::UpdateSelectionWithExtentPointAndBoundary(point, granularity, isInteractingWithFocusedElement), WTFMove(callback));
 }
@@ -536,12 +536,12 @@ void WebPageProxy::getSelectionContext(CompletionHandler<void(const String&, con
     sendWithAsyncReply(Messages::WebPage::GetSelectionContext(), WTFMove(callbackFunction));
 }
 
-void WebPageProxy::handleTwoFingerTapAtPoint(const WebCore::IntPoint& point, OptionSet<WebEventModifier> modifiers, WebKit::TapIdentifier requestID)
+void WebPageProxy::handleTwoFingerTapAtPoint(const CyberCore::IntPoint& point, OptionSet<WebEventModifier> modifiers, WebKit::TapIdentifier requestID)
 {
     send(Messages::WebPage::HandleTwoFingerTapAtPoint(point, modifiers, requestID));
 }
 
-void WebPageProxy::selectWithTwoTouches(const WebCore::IntPoint from, const WebCore::IntPoint to, GestureType gestureType, GestureRecognizerState gestureState, CompletionHandler<void(const WebCore::IntPoint&, GestureType, GestureRecognizerState, OptionSet<SelectionFlags>)>&& callback)
+void WebPageProxy::selectWithTwoTouches(const CyberCore::IntPoint from, const CyberCore::IntPoint to, GestureType gestureType, GestureRecognizerState gestureState, CompletionHandler<void(const CyberCore::IntPoint&, GestureType, GestureRecognizerState, OptionSet<SelectionFlags>)>&& callback)
 {
     if (!hasRunningProcess())
         return callback({ }, GestureType::Loupe, GestureRecognizerState::Possible, { });
@@ -674,7 +674,7 @@ void WebPageProxy::applicationDidBecomeActive()
     m_process->send(Messages::WebPage::ApplicationDidBecomeActive(), m_webPageID);
 }
 
-void WebPageProxy::extendSelection(WebCore::TextGranularity granularity, CompletionHandler<void()>&& completionHandler)
+void WebPageProxy::extendSelection(CyberCore::TextGranularity granularity, CompletionHandler<void()>&& completionHandler)
 {
     sendWithAsyncReply(Messages::WebPage::ExtendSelection(granularity), [completionHandler = WTFMove(completionHandler)]() mutable {
         if (completionHandler)
@@ -692,7 +692,7 @@ void WebPageProxy::extendSelectionForReplacement(CompletionHandler<void()>&& com
     sendWithAsyncReply(Messages::WebPage::ExtendSelectionForReplacement(), WTFMove(completion));
 }
 
-void WebPageProxy::requestRectsForGranularityWithSelectionOffset(WebCore::TextGranularity granularity, uint32_t offset, CompletionHandler<void(const Vector<WebCore::SelectionGeometry>&)>&& callback)
+void WebPageProxy::requestRectsForGranularityWithSelectionOffset(CyberCore::TextGranularity granularity, uint32_t offset, CompletionHandler<void(const Vector<CyberCore::SelectionGeometry>&)>&& callback)
 {
     if (!hasRunningProcess())
         return callback({ });
@@ -700,7 +700,7 @@ void WebPageProxy::requestRectsForGranularityWithSelectionOffset(WebCore::TextGr
     sendWithAsyncReply(Messages::WebPage::GetRectsForGranularityWithSelectionOffset(granularity, offset), WTFMove(callback));
 }
 
-void WebPageProxy::requestRectsAtSelectionOffsetWithText(int32_t offset, const String& text, CompletionHandler<void(const Vector<WebCore::SelectionGeometry>&)>&& callback)
+void WebPageProxy::requestRectsAtSelectionOffsetWithText(int32_t offset, const String& text, CompletionHandler<void(const Vector<CyberCore::SelectionGeometry>&)>&& callback)
 {
     if (!hasRunningProcess())
         return callback({ });
@@ -713,7 +713,7 @@ void WebPageProxy::storeSelectionForAccessibility(bool shouldStore)
     m_process->send(Messages::WebPage::StoreSelectionForAccessibility(shouldStore), m_webPageID);
 }
 
-void WebPageProxy::startAutoscrollAtPosition(const WebCore::FloatPoint& positionInWindow)
+void WebPageProxy::startAutoscrollAtPosition(const CyberCore::FloatPoint& positionInWindow)
 {
     m_process->send(Messages::WebPage::StartAutoscrollAtPosition(positionInWindow), m_webPageID);
 }
@@ -789,13 +789,13 @@ void WebPageProxy::willStartUserTriggeredZooming()
     send(Messages::WebPage::WillStartUserTriggeredZooming());
 }
 
-void WebPageProxy::potentialTapAtPosition(const WebCore::FloatPoint& position, bool shouldRequestMagnificationInformation, WebKit::TapIdentifier requestID)
+void WebPageProxy::potentialTapAtPosition(const CyberCore::FloatPoint& position, bool shouldRequestMagnificationInformation, WebKit::TapIdentifier requestID)
 {
     hideValidationMessage();
     send(Messages::WebPage::PotentialTapAtPosition(requestID, position, shouldRequestMagnificationInformation));
 }
 
-void WebPageProxy::commitPotentialTap(OptionSet<WebEventModifier> modifiers, TransactionID layerTreeTransactionIdAtLastTouchStart, WebCore::PointerID pointerId)
+void WebPageProxy::commitPotentialTap(OptionSet<WebEventModifier> modifiers, TransactionID layerTreeTransactionIdAtLastTouchStart, CyberCore::PointerID pointerId)
 {
     send(Messages::WebPage::CommitPotentialTap(modifiers, layerTreeTransactionIdAtLastTouchStart, pointerId));
 }
@@ -805,7 +805,7 @@ void WebPageProxy::cancelPotentialTap()
     send(Messages::WebPage::CancelPotentialTap());
 }
 
-void WebPageProxy::tapHighlightAtPosition(const WebCore::FloatPoint& position, WebKit::TapIdentifier requestID)
+void WebPageProxy::tapHighlightAtPosition(const CyberCore::FloatPoint& position, WebKit::TapIdentifier requestID)
 {
     send(Messages::WebPage::TapHighlightAtPosition(requestID, position));
 }
@@ -820,17 +820,17 @@ void WebPageProxy::didRecognizeLongPress()
     send(Messages::WebPage::DidRecognizeLongPress());
 }
 
-void WebPageProxy::handleDoubleTapForDoubleClickAtPoint(const WebCore::IntPoint& point, OptionSet<WebEventModifier> modifiers, TransactionID layerTreeTransactionIdAtLastTouchStart)
+void WebPageProxy::handleDoubleTapForDoubleClickAtPoint(const CyberCore::IntPoint& point, OptionSet<WebEventModifier> modifiers, TransactionID layerTreeTransactionIdAtLastTouchStart)
 {
     send(Messages::WebPage::HandleDoubleTapForDoubleClickAtPoint(point, modifiers, layerTreeTransactionIdAtLastTouchStart));
 }
 
-void WebPageProxy::inspectorNodeSearchMovedToPosition(const WebCore::FloatPoint& position)
+void WebPageProxy::inspectorNodeSearchMovedToPosition(const CyberCore::FloatPoint& position)
 {
     send(Messages::WebPage::InspectorNodeSearchMovedToPosition(position));
 }
 
-void WebPageProxy::inspectorNodeSearchEndedAtPosition(const WebCore::FloatPoint& position)
+void WebPageProxy::inspectorNodeSearchEndedAtPosition(const CyberCore::FloatPoint& position)
 {
     send(Messages::WebPage::InspectorNodeSearchEndedAtPosition(position));
 }
@@ -842,12 +842,12 @@ void WebPageProxy::blurFocusedElement()
 
 FloatSize WebPageProxy::screenSize()
 {
-    return WebCore::screenSize();
+    return CyberCore::screenSize();
 }
 
 FloatSize WebPageProxy::availableScreenSize()
 {
-    return WebCore::availableScreenSize();
+    return CyberCore::availableScreenSize();
 }
 
 FloatSize WebPageProxy::overrideScreenSize()
@@ -859,12 +859,12 @@ FloatSize WebPageProxy::overrideScreenSize()
     return FloatSize(CGSizeMake(preferredWidth, preferredHeight));
 #endif
 
-    return WebCore::overrideScreenSize();
+    return CyberCore::overrideScreenSize();
 }
 
 float WebPageProxy::textAutosizingWidth()
 {
-    return WebCore::screenSize().width();
+    return CyberCore::screenSize().width();
 }
 
 void WebPageProxy::couldNotRestorePageState()
@@ -872,17 +872,17 @@ void WebPageProxy::couldNotRestorePageState()
     pageClient().couldNotRestorePageState();
 }
 
-void WebPageProxy::restorePageState(std::optional<WebCore::FloatPoint> scrollPosition, const WebCore::FloatPoint& scrollOrigin, const WebCore::FloatBoxExtent& obscuredInsetsOnSave, double scale)
+void WebPageProxy::restorePageState(std::optional<CyberCore::FloatPoint> scrollPosition, const CyberCore::FloatPoint& scrollOrigin, const CyberCore::FloatBoxExtent& obscuredInsetsOnSave, double scale)
 {
     pageClient().restorePageState(scrollPosition, scrollOrigin, obscuredInsetsOnSave, scale);
 }
 
-void WebPageProxy::restorePageCenterAndScale(std::optional<WebCore::FloatPoint> center, double scale)
+void WebPageProxy::restorePageCenterAndScale(std::optional<CyberCore::FloatPoint> center, double scale)
 {
     pageClient().restorePageCenterAndScale(center, scale);
 }
 
-void WebPageProxy::didGetTapHighlightGeometries(WebKit::TapIdentifier requestID, const WebCore::Color& color, const Vector<WebCore::FloatQuad>& highlightedQuads, const WebCore::IntSize& topLeftRadius, const WebCore::IntSize& topRightRadius, const WebCore::IntSize& bottomLeftRadius, const WebCore::IntSize& bottomRightRadius, bool nodeHasBuiltInClickHandling)
+void WebPageProxy::didGetTapHighlightGeometries(WebKit::TapIdentifier requestID, const CyberCore::Color& color, const Vector<CyberCore::FloatQuad>& highlightedQuads, const CyberCore::IntSize& topLeftRadius, const CyberCore::IntSize& topRightRadius, const CyberCore::IntSize& bottomLeftRadius, const CyberCore::IntSize& bottomRightRadius, bool nodeHasBuiltInClickHandling)
 {
     pageClient().didGetTapHighlightGeometries(requestID, color, highlightedQuads, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius, nodeHasBuiltInClickHandling);
 }
@@ -897,7 +897,7 @@ void WebPageProxy::updateInputContextAfterBlurringAndRefocusingElement()
     pageClient().updateInputContextAfterBlurringAndRefocusingElement();
 }
 
-void WebPageProxy::elementDidFocus(const FocusedElementInformation& information, bool userIsInteracting, bool blurPreviousNode, OptionSet<WebCore::ActivityState::Flag> activityStateChanges, const UserData& userData)
+void WebPageProxy::elementDidFocus(const FocusedElementInformation& information, bool userIsInteracting, bool blurPreviousNode, OptionSet<CyberCore::ActivityState::Flag> activityStateChanges, const UserData& userData)
 {
     m_pendingInputModeChange = std::nullopt;
 
@@ -911,7 +911,7 @@ void WebPageProxy::elementDidBlur()
     pageClient().elementDidBlur();
 }
 
-void WebPageProxy::focusedElementDidChangeInputMode(WebCore::InputMode mode)
+void WebPageProxy::focusedElementDidChangeInputMode(CyberCore::InputMode mode)
 {
 #if ENABLE(TOUCH_EVENTS)
     if (m_touchAndPointerEventTracking.isTrackingAnything()) {
@@ -937,7 +937,7 @@ void WebPageProxy::autofillLoginCredentials(const String& username, const String
     m_process->send(Messages::WebPage::AutofillLoginCredentials(username, password), m_webPageID);
 }
 
-void WebPageProxy::showInspectorHighlight(const WebCore::InspectorOverlay::Highlight& highlight)
+void WebPageProxy::showInspectorHighlight(const CyberCore::InspectorOverlay::Highlight& highlight)
 {
     pageClient().showInspectorHighlight(highlight);
 }
@@ -979,12 +979,12 @@ void WebPageProxy::focusNextFocusedElement(bool isForward, CompletionHandler<voi
     });
 }
 
-void WebPageProxy::setFocusedElementValue(const WebCore::ElementContext& context, const String& value)
+void WebPageProxy::setFocusedElementValue(const CyberCore::ElementContext& context, const String& value)
 {
     send(Messages::WebPage::SetFocusedElementValue(context, value));
 }
 
-void WebPageProxy::setFocusedElementSelectedIndex(const WebCore::ElementContext& context, uint32_t index, bool allowMultipleSelection)
+void WebPageProxy::setFocusedElementSelectedIndex(const CyberCore::ElementContext& context, uint32_t index, bool allowMultipleSelection)
 {
     send(Messages::WebPage::SetFocusedElementSelectedIndex(context, index, allowMultipleSelection));
 }
@@ -1000,7 +1000,7 @@ void WebPageProxy::setRemoteLayerTreeRootNode(RemoteLayerTreeNode* rootNode)
     m_frozenRemoteLayerTreeHost = nullptr;
 }
 
-void WebPageProxy::showPlaybackTargetPicker(bool hasVideo, const IntRect& elementRect, WebCore::RouteSharingPolicy policy, const String& contextUID)
+void WebPageProxy::showPlaybackTargetPicker(bool hasVideo, const IntRect& elementRect, CyberCore::RouteSharingPolicy policy, const String& contextUID)
 {
     pageClient().showPlaybackTargetPicker(hasVideo, elementRect, policy, contextUID);
 }
@@ -1010,7 +1010,7 @@ void WebPageProxy::commitPotentialTapFailed()
     pageClient().commitPotentialTapFailed();
 }
 
-void WebPageProxy::didNotHandleTapAsClick(const WebCore::IntPoint& point)
+void WebPageProxy::didNotHandleTapAsClick(const CyberCore::IntPoint& point)
 {
     pageClient().didNotHandleTapAsClick(point);
     m_uiClient->didNotHandleTapAsClick(point);
@@ -1026,7 +1026,7 @@ void WebPageProxy::disableDoubleTapGesturesDuringTapIfNecessary(WebKit::TapIdent
     pageClient().disableDoubleTapGesturesDuringTapIfNecessary(requestID);
 }
 
-void WebPageProxy::handleSmartMagnificationInformationForPotentialTap(WebKit::TapIdentifier requestID, const WebCore::FloatRect& renderRect, bool fitEntireRect, double viewportMinimumScale, double viewportMaximumScale, bool nodeIsRootLevel)
+void WebPageProxy::handleSmartMagnificationInformationForPotentialTap(WebKit::TapIdentifier requestID, const CyberCore::FloatRect& renderRect, bool fitEntireRect, double viewportMinimumScale, double viewportMaximumScale, bool nodeIsRootLevel)
 {
     pageClient().handleSmartMagnificationInformationForPotentialTap(requestID, renderRect, fitEntireRect, viewportMinimumScale, viewportMaximumScale, nodeIsRootLevel);
 }
@@ -1043,7 +1043,7 @@ size_t WebPageProxy::computePagesForPrintingiOS(FrameIdentifier frameID, const P
     return pageCount;
 }
 
-IPC::Connection::AsyncReplyID WebPageProxy::drawToPDFiOS(FrameIdentifier frameID, const PrintInfo& printInfo, size_t pageCount, CompletionHandler<void(RefPtr<WebCore::SharedBuffer>&&)>&& completionHandler)
+IPC::Connection::AsyncReplyID WebPageProxy::drawToPDFiOS(FrameIdentifier frameID, const PrintInfo& printInfo, size_t pageCount, CompletionHandler<void(RefPtr<CyberCore::SharedBuffer>&&)>&& completionHandler)
 {
     if (!hasRunningProcess()) {
         completionHandler({ });
@@ -1129,7 +1129,7 @@ void WebPageProxy::hardwareKeyboardAvailabilityChanged(bool keyboardIsAttached)
     m_process->send(Messages::WebPage::HardwareKeyboardAvailabilityChanged(keyboardIsAttached), m_webPageID);
 }
 
-void WebPageProxy::requestEvasionRectsAboveSelection(CompletionHandler<void(const Vector<WebCore::FloatRect>&)>&& callback)
+void WebPageProxy::requestEvasionRectsAboveSelection(CompletionHandler<void(const Vector<CyberCore::FloatRect>&)>&& callback)
 {
     if (!hasRunningProcess()) {
         callback({ });
@@ -1149,7 +1149,7 @@ void WebPageProxy::updateSelectionWithDelta(int64_t locationDelta, int64_t lengt
     sendWithAsyncReply(Messages::WebPage::UpdateSelectionWithDelta(locationDelta, lengthDelta), WTFMove(completionHandler));
 }
 
-WebCore::FloatRect WebPageProxy::selectionBoundingRectInRootViewCoordinates() const
+CyberCore::FloatRect WebPageProxy::selectionBoundingRectInRootViewCoordinates() const
 {
     if (m_editorState.selectionIsNone)
         return { };
@@ -1157,7 +1157,7 @@ WebCore::FloatRect WebPageProxy::selectionBoundingRectInRootViewCoordinates() co
     if (!m_editorState.hasVisualData())
         return { };
 
-    WebCore::FloatRect bounds;
+    CyberCore::FloatRect bounds;
     auto& visualData = *m_editorState.visualData;
     if (m_editorState.selectionIsRange) {
         for (auto& geometry : visualData.selectionGeometries)
@@ -1190,19 +1190,19 @@ void WebPageProxy::didHandleAdditionalDragItemsRequest(bool added)
     pageClient().didHandleAdditionalDragItemsRequest(added);
 }
 
-void WebPageProxy::requestDragStart(const WebCore::IntPoint& clientPosition, const WebCore::IntPoint& globalPosition, OptionSet<WebCore::DragSourceAction> allowedActionsMask)
+void WebPageProxy::requestDragStart(const CyberCore::IntPoint& clientPosition, const CyberCore::IntPoint& globalPosition, OptionSet<CyberCore::DragSourceAction> allowedActionsMask)
 {
     if (hasRunningProcess())
         m_process->send(Messages::WebPage::RequestDragStart(clientPosition, globalPosition, allowedActionsMask), m_webPageID);
 }
 
-void WebPageProxy::requestAdditionalItemsForDragSession(const IntPoint& clientPosition, const IntPoint& globalPosition, OptionSet<WebCore::DragSourceAction> allowedActionsMask)
+void WebPageProxy::requestAdditionalItemsForDragSession(const IntPoint& clientPosition, const IntPoint& globalPosition, OptionSet<CyberCore::DragSourceAction> allowedActionsMask)
 {
     if (hasRunningProcess())
         m_process->send(Messages::WebPage::RequestAdditionalItemsForDragSession(clientPosition, globalPosition, allowedActionsMask), m_webPageID);
 }
 
-void WebPageProxy::insertDroppedImagePlaceholders(const Vector<IntSize>& imageSizes, CompletionHandler<void(const Vector<IntRect>&, std::optional<WebCore::TextIndicatorData>)>&& completionHandler)
+void WebPageProxy::insertDroppedImagePlaceholders(const Vector<IntSize>& imageSizes, CompletionHandler<void(const Vector<IntRect>&, std::optional<CyberCore::TextIndicatorData>)>&& completionHandler)
 {
     if (hasRunningProcess())
         sendWithAsyncReply(Messages::WebPage::InsertDroppedImagePlaceholders(imageSizes), WTFMove(completionHandler));
@@ -1296,7 +1296,7 @@ static bool desktopClassBrowsingSupported()
 
 #if !PLATFORM(MACCATALYST)
 
-static bool webViewSizeIsNarrow(WebCore::IntSize viewSize)
+static bool webViewSizeIsNarrow(CyberCore::IntSize viewSize)
 {
     return !viewSize.isEmpty() && viewSize.width() <= 375;
 }
@@ -1304,7 +1304,7 @@ static bool webViewSizeIsNarrow(WebCore::IntSize viewSize)
 #endif // !PLATFORM(MACCATALYST)
 
 enum class RecommendDesktopClassBrowsingForRequest { No, Yes, Auto };
-static RecommendDesktopClassBrowsingForRequest desktopClassBrowsingRecommendedForRequest(const WebCore::ResourceRequest& request)
+static RecommendDesktopClassBrowsingForRequest desktopClassBrowsingRecommendedForRequest(const CyberCore::ResourceRequest& request)
 {
     // FIXME: This should be additionally gated on site-specific quirks being enabled. However, site-specific quirks are already
     // disabled by default in WKWebView, so we would need a new preference for controlling site-specific quirks that are on-by-default
@@ -1382,7 +1382,7 @@ static RecommendDesktopClassBrowsingForRequest desktopClassBrowsingRecommendedFo
     return RecommendDesktopClassBrowsingForRequest::Auto;
 }
 
-bool WebPageProxy::isDesktopClassBrowsingRecommended(const WebCore::ResourceRequest& request) const
+bool WebPageProxy::isDesktopClassBrowsingRecommended(const CyberCore::ResourceRequest& request) const
 {
     auto desktopClassBrowsingRecommendation = desktopClassBrowsingRecommendedForRequest(request);
     if (desktopClassBrowsingRecommendation == RecommendDesktopClassBrowsingForRequest::Yes)
@@ -1415,7 +1415,7 @@ bool WebPageProxy::isDesktopClassBrowsingRecommended(const WebCore::ResourceRequ
     return shouldRecommendDesktopClassBrowsing;
 }
 
-bool WebPageProxy::useDesktopClassBrowsing(const API::WebsitePolicies& policies, const WebCore::ResourceRequest& request) const
+bool WebPageProxy::useDesktopClassBrowsing(const API::WebsitePolicies& policies, const CyberCore::ResourceRequest& request) const
 {
     switch (policies.preferredContentMode()) {
     case WebContentMode::Recommended: {
@@ -1431,7 +1431,7 @@ bool WebPageProxy::useDesktopClassBrowsing(const API::WebsitePolicies& policies,
     }
 }
 
-String WebPageProxy::predictedUserAgentForRequest(const WebCore::ResourceRequest& request) const
+String WebPageProxy::predictedUserAgentForRequest(const CyberCore::ResourceRequest& request) const
 {
     if (!customUserAgent().isEmpty())
         return customUserAgent();
@@ -1451,7 +1451,7 @@ String WebPageProxy::predictedUserAgentForRequest(const WebCore::ResourceRequest
     return standardUserAgentWithApplicationName(policies.applicationNameForDesktopUserAgent(), emptyString(), UserAgentType::Desktop);
 }
 
-WebContentMode WebPageProxy::effectiveContentModeAfterAdjustingPolicies(API::WebsitePolicies& policies, const WebCore::ResourceRequest& request)
+WebContentMode WebPageProxy::effectiveContentModeAfterAdjustingPolicies(API::WebsitePolicies& policies, const CyberCore::ResourceRequest& request)
 {
     if (m_preferences->mediaSourceEnabled()) {
         // FIXME: This is a compatibility hack to ensure that turning MSE on via the existing preference still enables MSE.
@@ -1476,7 +1476,7 @@ WebContentMode WebPageProxy::effectiveContentModeAfterAdjustingPolicies(API::Web
     }
 
     if (policies.customNavigatorPlatform().isEmpty()) {
-        // FIXME: Grab this from WebCore instead of hard-coding it here.
+        // FIXME: Grab this from CyberCore instead of hard-coding it here.
         policies.setCustomNavigatorPlatform("MacIntel"_s);
     }
 
@@ -1601,7 +1601,7 @@ void WebPageProxy::willPerformPasteCommand(DOMPasteAccessCategory pasteAccessCat
 
 void WebPageProxy::setDeviceHasAGXCompilerServiceForTesting() const
 {
-    WebCore::setDeviceHasAGXCompilerServiceForTesting();
+    CyberCore::setDeviceHasAGXCompilerServiceForTesting();
 }
 
 void WebPageProxy::showDataDetectorsUIForPositionInformation(const InteractionInformationAtPosition& positionInfo)
@@ -1614,7 +1614,7 @@ Color WebPageProxy::platformUnderPageBackgroundColor() const
     if (auto contentViewBackgroundColor = pageClient().contentViewBackgroundColor(); contentViewBackgroundColor.isValid())
         return contentViewBackgroundColor;
 
-    return WebCore::Color::white;
+    return CyberCore::Color::white;
 }
 
 void WebPageProxy::statusBarWasTapped()

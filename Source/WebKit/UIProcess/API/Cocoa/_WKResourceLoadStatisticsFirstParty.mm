@@ -26,13 +26,13 @@
 #import "config.h"
 #import "_WKResourceLoadStatisticsFirstPartyInternal.h"
 
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 
 @implementation _WKResourceLoadStatisticsFirstParty
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainRunLoop(_WKResourceLoadStatisticsFirstParty.class, self))
+    if (CyberCoreObjCScheduleDeallocateOnMainRunLoop(_WKResourceLoadStatisticsFirstParty.class, self))
         return;
     _firstParty->API::ResourceLoadStatisticsFirstParty::~ResourceLoadStatisticsFirstParty();
     [super dealloc];

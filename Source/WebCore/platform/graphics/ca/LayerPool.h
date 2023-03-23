@@ -35,7 +35,7 @@
 #include <wtf/RetainPtr.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
     
 class LayerPool {
     WTF_MAKE_NONCOPYABLE(LayerPool);

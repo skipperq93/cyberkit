@@ -27,7 +27,7 @@
 #include "LightSource.h"
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<FEDiffuseLighting> FEDiffuseLighting::create(const Color& lightingColor, float surfaceScale, float diffuseConstant, float kernelUnitLengthX, float kernelUnitLengthY, Ref<LightSource>&& lightSource)
 {
@@ -60,4 +60,4 @@ TextStream& FEDiffuseLighting::externalRepresentation(TextStream& ts, FilterRepr
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

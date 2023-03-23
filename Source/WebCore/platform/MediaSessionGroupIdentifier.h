@@ -27,7 +27,7 @@
 
 #include <wtf/ObjectIdentifier.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum MediaSessionGroupIdentifierType { };
 using MediaSessionGroupIdentifier = ObjectIdentifier<MediaSessionGroupIdentifierType>;

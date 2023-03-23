@@ -31,7 +31,7 @@
 #include <wtf/ThreadSafeWeakPtr.h>
 #include <wtf/WorkQueue.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class StorageQuotaManager final
     : public ThreadSafeRefCountedAndCanMakeThreadSafeWeakPtr<StorageQuotaManager> {
@@ -74,4 +74,4 @@ private:
     uint64_t m_initialQuota { 0 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

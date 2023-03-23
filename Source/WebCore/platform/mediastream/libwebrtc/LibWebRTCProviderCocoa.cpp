@@ -45,7 +45,7 @@ ALLOW_COMMA_END
 
 WTF_WEAK_LINK_FORCE_IMPORT(webrtc::setApplicationStatus);
 
-namespace WebCore {
+namespace CyberCore {
 
 UniqueRef<WebRTCProvider> WebRTCProvider::create()
 {
@@ -86,12 +86,12 @@ std::unique_ptr<webrtc::VideoEncoderFactory> LibWebRTCProviderCocoa::createEncod
 
 std::optional<MediaCapabilitiesInfo> LibWebRTCProviderCocoa::computeVPParameters(const VideoConfiguration& configuration)
 {
-    return WebCore::computeVPParameters(configuration);
+    return CyberCore::computeVPParameters(configuration);
 }
 
 bool LibWebRTCProviderCocoa::isVPSoftwareDecoderSmooth(const VideoConfiguration& configuration)
 {
-    return WebCore::isVPSoftwareDecoderSmooth(configuration);
+    return CyberCore::isVPSoftwareDecoderSmooth(configuration);
 }
 
 void LibWebRTCProviderCocoa::setActive(bool value)
@@ -121,6 +121,6 @@ void LibWebRTCProvider::registerWebKitVP8Decoder()
         webrtc::registerWebKitVP8Decoder();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(LIBWEBRTC)

@@ -56,7 +56,7 @@
 #include <wtf/SetForScope.h>
 #include <wtf/StackStats.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 

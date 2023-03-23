@@ -70,10 +70,10 @@
     }
 }
 
-static bool findIntersectionOnLineBetweenPoints(const WebCore::FloatPoint& p1, const WebCore::FloatPoint& p2, const WebCore::FloatPoint& d1, const WebCore::FloatPoint& d2, WebCore::FloatPoint& intersection) 
+static bool findIntersectionOnLineBetweenPoints(const CyberCore::FloatPoint& p1, const CyberCore::FloatPoint& p2, const CyberCore::FloatPoint& d1, const CyberCore::FloatPoint& d2, CyberCore::FloatPoint& intersection) 
 {
     // Do the lines intersect?
-    WebCore::FloatPoint temporaryIntersectionPoint;
+    CyberCore::FloatPoint temporaryIntersectionPoint;
     if (!findIntersection(p1, p2, d1, d2, temporaryIntersectionPoint))
         return false;
 
@@ -99,10 +99,10 @@ static bool findIntersectionOnLineBetweenPoints(const WebCore::FloatPoint& p1, c
 
 // This quad intersection works because the two quads are known to be at the same
 // rotation and clockwise-ness.
-static WebCore::FloatQuad quadIntersection(WebCore::FloatQuad bounds, WebCore::FloatQuad toClamp)
+static CyberCore::FloatQuad quadIntersection(CyberCore::FloatQuad bounds, CyberCore::FloatQuad toClamp)
 {
     // Resulting points.
-    WebCore::FloatPoint p1, p2, p3, p4;
+    CyberCore::FloatPoint p1, p2, p3, p4;
     bool containsPoint1 = false;
     bool containsPoint2 = false;
     bool containsPoint3 = false;
@@ -164,10 +164,10 @@ static WebCore::FloatQuad quadIntersection(WebCore::FloatQuad bounds, WebCore::F
     if (!containsPoint4 && !intersectForPoint4)
         findIntersectionOnLineBetweenPoints(bounds.p1(), bounds.p4(), p4, p3, p4);
 
-    return WebCore::FloatQuad(p1, p2, p3, p4);
+    return CyberCore::FloatQuad(p1, p2, p3, p4);
 }
 
-static void layerPathWithHole(CAShapeLayer *layer, const WebCore::FloatQuad& outerQuad, const WebCore::FloatQuad& holeQuad)
+static void layerPathWithHole(CAShapeLayer *layer, const CyberCore::FloatQuad& outerQuad, const CyberCore::FloatQuad& holeQuad)
 {
     // Nothing to show.
     if (outerQuad == holeQuad || holeQuad.containsQuad(outerQuad)) {
@@ -178,7 +178,7 @@ static void layerPathWithHole(CAShapeLayer *layer, const WebCore::FloatQuad& out
     // If there is a negative margin / padding then the outer box might not
     // fully contain the hole box. In such cases we recalculate the hole to
     // be the intersection of the two quads.
-    WebCore::FloatQuad innerHole;
+    CyberCore::FloatQuad innerHole;
     if (outerQuad.containsQuad(holeQuad))
         innerHole = holeQuad;
     else
@@ -197,7 +197,7 @@ static void layerPathWithHole(CAShapeLayer *layer, const WebCore::FloatQuad& out
     layer.path = path.get();
 }
 
-static void layerPath(CAShapeLayer *layer, const WebCore::FloatQuad& outerQuad)
+static void layerPath(CAShapeLayer *layer, const CyberCore::FloatQuad& outerQuad)
 {
     auto path = adoptCF(CGPathCreateMutable());
     CGPathMoveToPoint(path.get(), 0, outerQuad.p1().x(), outerQuad.p1().y());
@@ -208,7 +208,7 @@ static void layerPath(CAShapeLayer *layer, const WebCore::FloatQuad& outerQuad)
     layer.path = path.get();
 }
 
-- (void)_layoutForNodeHighlight:(const WebCore::InspectorOverlay::Highlight&)highlight offset:(unsigned)offset
+- (void)_layoutForNodeHighlight:(const CyberCore::InspectorOverlay::Highlight&)highlight offset:(unsigned)offset
 {
     ASSERT([_layers count] >= offset + 4);
     ASSERT(highlight.quads.size() >= offset + 4);
@@ -220,10 +220,10 @@ static void layerPath(CAShapeLayer *layer, const WebCore::FloatQuad& outerQuad)
     CAShapeLayer *paddingLayer = [_layers objectAtIndex:offset + 2];
     CAShapeLayer *contentLayer = [_layers objectAtIndex:offset + 3];
 
-    WebCore::FloatQuad marginQuad = highlight.quads[offset];
-    WebCore::FloatQuad borderQuad = highlight.quads[offset + 1];
-    WebCore::FloatQuad paddingQuad = highlight.quads[offset + 2];
-    WebCore::FloatQuad contentQuad = highlight.quads[offset + 3];
+    CyberCore::FloatQuad marginQuad = highlight.quads[offset];
+    CyberCore::FloatQuad borderQuad = highlight.quads[offset + 1];
+    CyberCore::FloatQuad paddingQuad = highlight.quads[offset + 2];
+    CyberCore::FloatQuad contentQuad = highlight.quads[offset + 3];
 
     marginLayer.fillColor = cachedCGColor(highlight.marginColor).get();
     borderLayer.fillColor = cachedCGColor(highlight.borderColor).get();
@@ -236,7 +236,7 @@ static void layerPath(CAShapeLayer *layer, const WebCore::FloatQuad& outerQuad)
     layerPath(contentLayer, contentQuad);
 }
 
-- (void)_layoutForNodeListHighlight:(const WebCore::InspectorOverlay::Highlight&)highlight
+- (void)_layoutForNodeListHighlight:(const CyberCore::InspectorOverlay::Highlight&)highlight
 {
     if (!highlight.quads.size())
         return;
@@ -248,7 +248,7 @@ static void layerPath(CAShapeLayer *layer, const WebCore::FloatQuad& outerQuad)
         [self _layoutForNodeHighlight:highlight offset:i * 4];
 }
 
-- (void)_layoutForRectsHighlight:(const WebCore::InspectorOverlay::Highlight&)highlight
+- (void)_layoutForRectsHighlight:(const CyberCore::InspectorOverlay::Highlight&)highlight
 {
     NSUInteger numLayers = highlight.quads.size();
     if (!numLayers)
@@ -271,18 +271,18 @@ static void layerPath(CAShapeLayer *layer, const WebCore::FloatQuad& outerQuad)
     if (!_highlight)
         return;
 
-    auto context = WebCore::GraphicsContextCG(UIGraphicsGetCurrentContext());
+    auto context = CyberCore::GraphicsContextCG(UIGraphicsGetCurrentContext());
     context.clip({ dirtyRect });
     context.translate(-self.frame.origin.x, -self.frame.origin.y);
 
     for (auto gridHighlightOverlay : _highlight->gridHighlightOverlays)
-        WebCore::InspectorOverlay::drawGridOverlay(context, gridHighlightOverlay);
+        CyberCore::InspectorOverlay::drawGridOverlay(context, gridHighlightOverlay);
 
     for (auto flexHighlightOverlay : _highlight->flexHighlightOverlays)
-        WebCore::InspectorOverlay::drawFlexOverlay(context, flexHighlightOverlay);
+        CyberCore::InspectorOverlay::drawFlexOverlay(context, flexHighlightOverlay);
 }
 
-- (void)update:(const WebCore::InspectorOverlay::Highlight&)highlight scale:(double)scale frame:(const WebCore::FloatRect&)frame
+- (void)update:(const CyberCore::InspectorOverlay::Highlight&)highlight scale:(double)scale frame:(const CyberCore::FloatRect&)frame
 {
     [self _removeAllLayers];
 
@@ -290,9 +290,9 @@ static void layerPath(CAShapeLayer *layer, const WebCore::FloatQuad& outerQuad)
     self.contentScaleFactor = UIScreen.mainScreen.scale * scale;
     self.frame = frame;
 
-    if (highlight.type == WebCore::InspectorOverlay::Highlight::Type::Node || highlight.type == WebCore::InspectorOverlay::Highlight::Type::NodeList)
+    if (highlight.type == CyberCore::InspectorOverlay::Highlight::Type::Node || highlight.type == CyberCore::InspectorOverlay::Highlight::Type::NodeList)
         [self _layoutForNodeListHighlight:highlight];
-    else if (highlight.type == WebCore::InspectorOverlay::Highlight::Type::Rects)
+    else if (highlight.type == CyberCore::InspectorOverlay::Highlight::Type::Rects)
         [self _layoutForRectsHighlight:highlight];
 
     

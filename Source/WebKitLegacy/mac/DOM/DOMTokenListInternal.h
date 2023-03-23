@@ -26,8 +26,8 @@
 
 #import <CyberKitLegacy/DOMTokenList.h>
 
-namespace WebCore {
+namespace CyberCore {
 class DOMTokenList;
 }
 
-DOMTokenList *kit(WebCore::DOMTokenList*);
+DOMTokenList *kit(CyberCore::DOMTokenList*);

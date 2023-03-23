@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 class PopupOpeningObserver {
 public:
@@ -35,4 +35,4 @@ protected:
     virtual ~PopupOpeningObserver() = default;
 };
     
-} // namespace WebCore
+} // namespace CyberCore

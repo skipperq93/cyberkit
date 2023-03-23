@@ -22,5 +22,5 @@
 #include "WebKitColor.h"
 #include <CyberCore/Color.h>
 
-void webkitColorFillFromWebCoreColor(const WebCore::Color&, WebKitColor*);
-const WebCore::Color webkitColorToWebCoreColor(WebKitColor*);
+void webkitColorFillFromCyberCoreColor(const CyberCore::Color&, WebKitColor*);
+const CyberCore::Color webkitColorToCyberCoreColor(WebKitColor*);

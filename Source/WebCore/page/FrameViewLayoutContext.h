@@ -29,7 +29,7 @@
 #include "Timer.h"
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class Frame;
@@ -183,4 +183,4 @@ private:
     std::unique_ptr<Layout::LayoutState> m_layoutState;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

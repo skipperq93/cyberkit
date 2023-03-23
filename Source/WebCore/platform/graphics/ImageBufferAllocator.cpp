@@ -29,7 +29,7 @@
 #include "ByteArrayPixelBuffer.h"
 #include "ImageBuffer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 ImageBufferAllocator::ImageBufferAllocator() = default;
 
@@ -43,4 +43,4 @@ RefPtr<PixelBuffer> ImageBufferAllocator::createPixelBuffer(const PixelBufferFor
     return ByteArrayPixelBuffer::tryCreate(format, size);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

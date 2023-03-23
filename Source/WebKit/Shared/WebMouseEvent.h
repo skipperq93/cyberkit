@@ -26,7 +26,7 @@
 
 #pragma once
 
-// FIXME: We should probably move to making the WebCore/PlatformFooEvents trivial classes so that
+// FIXME: We should probably move to making the CyberCore/PlatformFooEvents trivial classes so that
 // we can use them as the event type.
 
 #include "WebEvent.h"
@@ -35,7 +35,7 @@
 #include <CyberCore/PointerEventTypeNames.h>
 #include <CyberCore/PointerID.h>
 
-namespace WebCore {
+namespace CyberCore {
 class NavigationAction;
 }
 
@@ -49,14 +49,14 @@ enum class WebMouseEventButton : int32_t {
     RightButton,
     NoButton = -2
 };
-WebMouseEventButton mouseButton(const WebCore::NavigationAction&);
+WebMouseEventButton mouseButton(const CyberCore::NavigationAction&);
 
 enum class WebMouseEventSyntheticClickType : uint32_t {
     NoTap,
     OneFingerTap,
     TwoFingerTap
 };
-WebMouseEventSyntheticClickType syntheticClickType(const WebCore::NavigationAction&);
+WebMouseEventSyntheticClickType syntheticClickType(const CyberCore::NavigationAction&);
 
 class WebMouseEvent : public WebEvent {
 public:
@@ -64,17 +64,17 @@ public:
     WebMouseEvent();
 
 #if PLATFORM(MAC)
-    WebMouseEvent(WebEvent&&, WebMouseEventButton, unsigned short buttons, const WebCore::IntPoint& positionInView, const WebCore::IntPoint& globalPosition, float deltaX, float deltaY, float deltaZ, int clickCount, double force, WebMouseEventSyntheticClickType = WebMouseEventSyntheticClickType::NoTap, int eventNumber = -1, int menuType = 0, GestureWasCancelled = GestureWasCancelled::No);
+    WebMouseEvent(WebEvent&&, WebMouseEventButton, unsigned short buttons, const CyberCore::IntPoint& positionInView, const CyberCore::IntPoint& globalPosition, float deltaX, float deltaY, float deltaZ, int clickCount, double force, WebMouseEventSyntheticClickType = WebMouseEventSyntheticClickType::NoTap, int eventNumber = -1, int menuType = 0, GestureWasCancelled = GestureWasCancelled::No);
 #elif PLATFORM(GTK)
-    WebMouseEvent(WebEvent&&, WebMouseEventButton, unsigned short buttons, const WebCore::IntPoint& positionInView, const WebCore::IntPoint& globalPosition, float deltaX, float deltaY, float deltaZ, int clickCount, double force = 0, WebMouseEventSyntheticClickType = WebMouseEventSyntheticClickType::NoTap, WebCore::PlatformMouseEvent::IsTouch m_isTouchEvent = WebCore::PlatformMouseEvent::IsTouch::No, WebCore::PointerID = WebCore::mousePointerID, const String& pointerType = WebCore::mousePointerEventType(), GestureWasCancelled = GestureWasCancelled::No);
+    WebMouseEvent(WebEvent&&, WebMouseEventButton, unsigned short buttons, const CyberCore::IntPoint& positionInView, const CyberCore::IntPoint& globalPosition, float deltaX, float deltaY, float deltaZ, int clickCount, double force = 0, WebMouseEventSyntheticClickType = WebMouseEventSyntheticClickType::NoTap, CyberCore::PlatformMouseEvent::IsTouch m_isTouchEvent = CyberCore::PlatformMouseEvent::IsTouch::No, CyberCore::PointerID = CyberCore::mousePointerID, const String& pointerType = CyberCore::mousePointerEventType(), GestureWasCancelled = GestureWasCancelled::No);
 #else
-    WebMouseEvent(WebEvent&&, WebMouseEventButton, unsigned short buttons, const WebCore::IntPoint& positionInView, const WebCore::IntPoint& globalPosition, float deltaX, float deltaY, float deltaZ, int clickCount, double force = 0, WebMouseEventSyntheticClickType = WebMouseEventSyntheticClickType::NoTap, WebCore::PointerID = WebCore::mousePointerID, const String& pointerType = WebCore::mousePointerEventType(), GestureWasCancelled = GestureWasCancelled::No);
+    WebMouseEvent(WebEvent&&, WebMouseEventButton, unsigned short buttons, const CyberCore::IntPoint& positionInView, const CyberCore::IntPoint& globalPosition, float deltaX, float deltaY, float deltaZ, int clickCount, double force = 0, WebMouseEventSyntheticClickType = WebMouseEventSyntheticClickType::NoTap, CyberCore::PointerID = CyberCore::mousePointerID, const String& pointerType = CyberCore::mousePointerEventType(), GestureWasCancelled = GestureWasCancelled::No);
 #endif
 
     WebMouseEventButton button() const { return static_cast<WebMouseEventButton>(m_button); }
     unsigned short buttons() const { return m_buttons; }
-    const WebCore::IntPoint& position() const { return m_position; } // Relative to the view.
-    const WebCore::IntPoint& globalPosition() const { return m_globalPosition; }
+    const CyberCore::IntPoint& position() const { return m_position; } // Relative to the view.
+    const CyberCore::IntPoint& globalPosition() const { return m_globalPosition; }
     float deltaX() const { return m_deltaX; }
     float deltaY() const { return m_deltaY; }
     float deltaZ() const { return m_deltaZ; }
@@ -83,11 +83,11 @@ public:
     int32_t eventNumber() const { return m_eventNumber; }
     int32_t menuTypeForEvent() const { return m_menuTypeForEvent; }
 #elif PLATFORM(GTK)
-    WebCore::PlatformMouseEvent::IsTouch isTouchEvent() const { return m_isTouchEvent; }
+    CyberCore::PlatformMouseEvent::IsTouch isTouchEvent() const { return m_isTouchEvent; }
 #endif
     double force() const { return m_force; }
     WebMouseEventSyntheticClickType syntheticClickType() const { return m_syntheticClickType; }
-    WebCore::PointerID pointerId() const { return m_pointerId; }
+    CyberCore::PointerID pointerId() const { return m_pointerId; }
     const String& pointerType() const { return m_pointerType; }
     GestureWasCancelled gestureWasCancelled() const { return m_gestureWasCancelled; }
 
@@ -96,8 +96,8 @@ private:
 
     WebMouseEventButton m_button { WebMouseEventButton::NoButton };
     unsigned short m_buttons { 0 };
-    WebCore::IntPoint m_position; // Relative to the view.
-    WebCore::IntPoint m_globalPosition;
+    CyberCore::IntPoint m_position; // Relative to the view.
+    CyberCore::IntPoint m_globalPosition;
     float m_deltaX { 0 };
     float m_deltaY { 0 };
     float m_deltaZ { 0 };
@@ -106,12 +106,12 @@ private:
     int32_t m_eventNumber { -1 };
     int32_t m_menuTypeForEvent { 0 };
 #elif PLATFORM(GTK)
-    WebCore::PlatformMouseEvent::IsTouch m_isTouchEvent { WebCore::PlatformMouseEvent::IsTouch::No };
+    CyberCore::PlatformMouseEvent::IsTouch m_isTouchEvent { CyberCore::PlatformMouseEvent::IsTouch::No };
 #endif
     double m_force { 0 };
     WebMouseEventSyntheticClickType m_syntheticClickType { WebMouseEventSyntheticClickType::NoTap };
-    WebCore::PointerID m_pointerId { WebCore::mousePointerID };
-    String m_pointerType { WebCore::mousePointerEventType() };
+    CyberCore::PointerID m_pointerId { CyberCore::mousePointerID };
+    String m_pointerType { CyberCore::mousePointerEventType() };
     GestureWasCancelled m_gestureWasCancelled { GestureWasCancelled::No };
 };
 

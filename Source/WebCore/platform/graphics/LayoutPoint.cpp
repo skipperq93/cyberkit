@@ -28,7 +28,7 @@
 
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 LayoutPoint LayoutPoint::constrainedBetween(const LayoutPoint& min, const LayoutPoint& max) const
 {
@@ -46,4 +46,4 @@ TextStream& operator<<(TextStream& ts, const LayoutPoint& p)
     return ts << "(" << p.x().toFloat() << "," << p.y().toFloat() << ")";
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -35,7 +35,7 @@ class Array;
 
 class OpenPanelParameters : public API::ObjectImpl<API::Object::Type::OpenPanelParameters> {
 public:
-    static Ref<OpenPanelParameters> create(const WebCore::FileChooserSettings&);
+    static Ref<OpenPanelParameters> create(const CyberCore::FileChooserSettings&);
     ~OpenPanelParameters();
 
     bool allowDirectories() const { return m_settings.allowsDirectories; }
@@ -46,13 +46,13 @@ public:
     Ref<API::Array> allowedFileExtensions() const;
     Ref<API::Array> selectedFileNames() const;
 #if ENABLE(MEDIA_CAPTURE)
-    WebCore::MediaCaptureType mediaCaptureType() const { return m_settings.mediaCaptureType; }
+    CyberCore::MediaCaptureType mediaCaptureType() const { return m_settings.mediaCaptureType; }
 #endif
 
 private:
-    explicit OpenPanelParameters(const WebCore::FileChooserSettings&);
+    explicit OpenPanelParameters(const CyberCore::FileChooserSettings&);
 
-    WebCore::FileChooserSettings m_settings;
+    CyberCore::FileChooserSettings m_settings;
 };
 
 } // namespace API

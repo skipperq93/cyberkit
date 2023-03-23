@@ -36,7 +36,7 @@
 #include "WebProcessProxy.h"
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 static HMENU createMenu(const ContextMenuContextData &context)
 {

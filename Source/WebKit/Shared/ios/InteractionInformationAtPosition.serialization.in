@@ -20,7 +20,7 @@
 # OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-headers: "WebCoreArgumentCoders.h"
+headers: "CyberCoreArgumentCoders.h"
 
 #if PLATFORM(IOS_FAMILY)
 
@@ -53,7 +53,7 @@ struct WebKit::InteractionInformationAtPosition {
     bool isPausedVideo;
     bool isElement;
     bool isContentEditable;
-    WebCore::ScrollingNodeID containerScrollingNodeID;
+    CyberCore::ScrollingNodeID containerScrollingNodeID;
 #if ENABLE(DATA_DETECTION)
     bool isDataDetectorLink;
 #endif
@@ -64,34 +64,34 @@ struct WebKit::InteractionInformationAtPosition {
     bool shouldNotUseIBeamInEditableContent;
     bool isImageOverlayText;
     bool isVerticalWritingMode;
-    WebCore::FloatPoint adjustedPointForNodeRespondingToClickEvents;
+    CyberCore::FloatPoint adjustedPointForNodeRespondingToClickEvents;
     URL url;
     URL imageURL;
     String imageMIMEType;
     String title;
     String idAttribute;
-    WebCore::IntRect bounds;
+    CyberCore::IntRect bounds;
 #if PLATFORM(MACCATALYST)
-    WebCore::IntRect caretRect;
+    CyberCore::IntRect caretRect;
 #endif
     RefPtr<WebKit::ShareableBitmap> image;
     String textBefore;
     String textAfter;
 
     float caretLength;
-    WebCore::FloatRect lineCaretExtent;
+    CyberCore::FloatRect lineCaretExtent;
 
-    std::optional<WebCore::Cursor> cursor;
+    std::optional<CyberCore::Cursor> cursor;
 
-    WebCore::TextIndicatorData linkIndicator;
+    CyberCore::TextIndicatorData linkIndicator;
 #if ENABLE(DATA_DETECTION)
     String dataDetectorIdentifier;
     [SecureCodingAllowed=[NSArray.class, PAL::getDDScannerResultClass()]] RetainPtr<NSArray> dataDetectorResults;
-    WebCore::IntRect dataDetectorBounds;
+    CyberCore::IntRect dataDetectorBounds;
 #endif
 
-    std::optional<WebCore::ElementContext> elementContext;
-    std::optional<WebCore::ElementContext> hostImageOrVideoElementContext;
+    std::optional<CyberCore::ElementContext> elementContext;
+    std::optional<CyberCore::ElementContext> hostImageOrVideoElementContext;
 };
 
 #endif

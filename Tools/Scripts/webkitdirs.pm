@@ -314,8 +314,8 @@ sub determineSourceDir
     $sourceDir =~ s|/+$||; # Remove trailing '/' as we would die later
 
     # walks up path checking each directory to see if it is the main WebKit project dir, 
-    # defined by containing Sources, WebCore, and JavaScriptCore.
-    until ((-d File::Spec->catdir($sourceDir, "Source") && -d File::Spec->catdir($sourceDir, "Source", "WebCore") && -d File::Spec->catdir($sourceDir, "Source", "JavaScriptCore")) || (-d File::Spec->catdir($sourceDir, "Internal") && -d File::Spec->catdir($sourceDir, "OpenSource")))
+    # defined by containing Sources, CyberCore, and JavaScriptCore.
+    until ((-d File::Spec->catdir($sourceDir, "Source") && -d File::Spec->catdir($sourceDir, "Source", "CyberCore") && -d File::Spec->catdir($sourceDir, "Source", "JavaScriptCore")) || (-d File::Spec->catdir($sourceDir, "Internal") && -d File::Spec->catdir($sourceDir, "OpenSource")))
     {
         if ($sourceDir !~ s|/[^/]+$||) {
             die "Could not find top level webkit directory above source directory using FindBin.\n";
@@ -1448,10 +1448,10 @@ sub builtDylibPathForName
 }
 
 # Check to see that all the frameworks are built.
-sub checkFrameworks # FIXME: This is a poor name since only the Mac calls built WebCore a Framework.
+sub checkFrameworks # FIXME: This is a poor name since only the Mac calls built CyberCore a Framework.
 {
     return if isAnyWindows();
-    my @frameworks = ("JavaScriptCore", "WebCore");
+    my @frameworks = ("JavaScriptCore", "CyberCore");
     push(@frameworks, "WebKit") if isAppleCocoaWebKit(); # FIXME: This seems wrong, all ports should have a WebKit these days.
     for my $framework (@frameworks) {
         my $path = builtDylibPathForName($framework);

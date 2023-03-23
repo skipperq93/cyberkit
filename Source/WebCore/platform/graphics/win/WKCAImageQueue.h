@@ -32,7 +32,7 @@ typedef const struct __CFDictionary * CFDictionaryRef;
 #include <memory>
 #include <stdint.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WKCAImageQueuePrivate;
 

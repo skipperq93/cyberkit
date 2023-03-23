@@ -30,14 +30,14 @@
 
 #import "DisplayUpdate.h"
 #import "Logging.h"
-#import "WebCoreThread.h"
+#import "CyberCoreThread.h"
 #import <QuartzCore/CADisplayLink.h>
 #import <wtf/MainThread.h>
 #import <wtf/text/TextStream.h>
 
-using WebCore::DisplayRefreshMonitorIOS;
+using CyberCore::DisplayRefreshMonitorIOS;
 
-constexpr WebCore::FramesPerSecond DisplayLinkFramesPerSecond = 60;
+constexpr CyberCore::FramesPerSecond DisplayLinkFramesPerSecond = 60;
 
 @interface WebDisplayLinkHandler : NSObject
 {
@@ -93,7 +93,7 @@ constexpr WebCore::FramesPerSecond DisplayLinkFramesPerSecond = 60;
 
 @end
 
-namespace WebCore {
+namespace CyberCore {
 
 constexpr unsigned maxUnscheduledFireCount { 1 };
 
@@ -154,6 +154,6 @@ std::optional<FramesPerSecond> DisplayRefreshMonitorIOS::displayNominalFramesPer
     return DisplayLinkFramesPerSecond;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(IOS_FAMILY)

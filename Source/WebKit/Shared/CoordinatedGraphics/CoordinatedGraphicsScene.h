@@ -46,7 +46,7 @@ namespace Nicosia {
 class Buffer;
 }
 
-namespace WebCore {
+namespace CyberCore {
 class CoordinatedBackingStore;
 class TextureMapperGL;
 }
@@ -59,13 +59,13 @@ public:
     virtual void updateViewport() = 0;
 };
 
-class CoordinatedGraphicsScene : public ThreadSafeRefCounted<CoordinatedGraphicsScene>, public WebCore::TextureMapperPlatformLayerProxy::Compositor {
+class CoordinatedGraphicsScene : public ThreadSafeRefCounted<CoordinatedGraphicsScene>, public CyberCore::TextureMapperPlatformLayerProxy::Compositor {
 public:
     explicit CoordinatedGraphicsScene(CoordinatedGraphicsSceneClient*);
     virtual ~CoordinatedGraphicsScene();
 
     void applyStateChanges(const Vector<RefPtr<Nicosia::Scene>>&);
-    void paintToCurrentGLContext(const WebCore::TransformationMatrix&, const WebCore::FloatRect&, WebCore::TextureMapper::PaintFlags = 0);
+    void paintToCurrentGLContext(const CyberCore::TransformationMatrix&, const CyberCore::FloatRect&, CyberCore::TextureMapper::PaintFlags = 0);
     void updateSceneState();
     void detach();
 
@@ -79,7 +79,7 @@ public:
 private:
     void commitSceneState(const RefPtr<Nicosia::Scene>&);
 
-    WebCore::TextureMapperLayer* rootLayer() { return m_rootLayer.get(); }
+    CyberCore::TextureMapperLayer* rootLayer() { return m_rootLayer.get(); }
 
     void updateViewport();
 
@@ -92,18 +92,18 @@ private:
         Nicosia::Scene::State state;
     } m_nicosia;
 
-    std::unique_ptr<WebCore::TextureMapper> m_textureMapper;
+    std::unique_ptr<CyberCore::TextureMapper> m_textureMapper;
     HashSet<Ref<Nicosia::ImageBackingStore::BackingStoreContainer>> m_imageBackingStoreContainers;
 
     // Below two members are accessed by only the main thread. The painting thread must lock the main thread to access both members.
     CoordinatedGraphicsSceneClient* m_client;
     bool m_isActive { false };
 
-    std::unique_ptr<WebCore::TextureMapperLayer> m_rootLayer;
+    std::unique_ptr<CyberCore::TextureMapperLayer> m_rootLayer;
 
     Nicosia::PlatformLayer::LayerID m_rootLayerID { 0 };
 
-    WebCore::TextureMapperFPSCounter m_fpsCounter;
+    CyberCore::TextureMapperFPSCounter m_fpsCounter;
 };
 
 } // namespace WebKit

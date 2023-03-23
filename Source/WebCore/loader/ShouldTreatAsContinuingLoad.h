@@ -27,20 +27,20 @@
 
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class ShouldTreatAsContinuingLoad : uint8_t { No, YesAfterNavigationPolicyDecision, YesAfterProvisionalLoadStarted };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::ShouldTreatAsContinuingLoad> {
+template<> struct EnumTraits<CyberCore::ShouldTreatAsContinuingLoad> {
     using values = EnumValues<
-        WebCore::ShouldTreatAsContinuingLoad,
-        WebCore::ShouldTreatAsContinuingLoad::No,
-        WebCore::ShouldTreatAsContinuingLoad::YesAfterNavigationPolicyDecision,
-        WebCore::ShouldTreatAsContinuingLoad::YesAfterProvisionalLoadStarted
+        CyberCore::ShouldTreatAsContinuingLoad,
+        CyberCore::ShouldTreatAsContinuingLoad::No,
+        CyberCore::ShouldTreatAsContinuingLoad::YesAfterNavigationPolicyDecision,
+        CyberCore::ShouldTreatAsContinuingLoad::YesAfterProvisionalLoadStarted
     >;
 };
 

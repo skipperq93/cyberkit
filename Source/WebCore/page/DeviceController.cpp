@@ -30,7 +30,7 @@
 #include "DeviceClient.h"
 #include "Document.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 DeviceController::DeviceController(DeviceClient& client)
     : m_client(client)
@@ -99,4 +99,4 @@ void DeviceController::fireDeviceEvent()
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore

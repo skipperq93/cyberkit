@@ -52,7 +52,7 @@
 #include "UserAgentStyle.h"
 #include <wtf/SetForScope.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace Style {
 
 static const StyleProperties& leftToRightDeclaration()
@@ -702,4 +702,4 @@ void ElementRuleCollector::addAuthorKeyframeRules(const StyleRuleKeyframe& keyfr
 }
 
 }
-} // namespace WebCore
+} // namespace CyberCore

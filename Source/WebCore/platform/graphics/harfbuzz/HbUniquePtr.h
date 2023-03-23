@@ -28,7 +28,7 @@
 
 #include <hb.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename T>
 struct HbPtrDeleter {
@@ -59,8 +59,8 @@ template<> struct HbPtrDeleter<hb_face_t> {
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-using WebCore::HbUniquePtr;
+using CyberCore::HbUniquePtr;
 
 #endif // USE(HARFBUZZ)

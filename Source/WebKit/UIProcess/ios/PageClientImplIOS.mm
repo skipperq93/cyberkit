@@ -81,7 +81,7 @@
 @end
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 PageClientImpl::PageClientImpl(WKContentView *contentView, WKWebView *webView)
     : PageClientImplCocoa(webView)
@@ -109,7 +109,7 @@ void PageClientImpl::requestScroll(const FloatPoint& scrollPosition, const IntPo
     [m_webView _scrollToContentScrollPosition:scrollPosition scrollOrigin:scrollOrigin animated:animated == ScrollIsAnimated::Yes];
 }
 
-WebCore::FloatPoint PageClientImpl::viewScrollPosition()
+CyberCore::FloatPoint PageClientImpl::viewScrollPosition()
 {
     if (UIScrollView *scroller = [m_contentView _scroller])
         return scroller.contentOffset;
@@ -230,7 +230,7 @@ void PageClientImpl::toolTipChanged(const String&, const String&)
     notImplemented();
 }
 
-void PageClientImpl::didNotHandleTapAsClick(const WebCore::IntPoint& point)
+void PageClientImpl::didNotHandleTapAsClick(const CyberCore::IntPoint& point)
 {
     [m_contentView _didNotHandleTapAsClick:point];
 }
@@ -264,7 +264,7 @@ void PageClientImpl::didCommitLoadForMainFrame(const String& mimeType, bool useC
     [m_contentView _didCommitLoadForMainFrame];
 }
 
-void PageClientImpl::didChangeContentSize(const WebCore::IntSize&)
+void PageClientImpl::didChangeContentSize(const CyberCore::IntSize&)
 {
     notImplemented();
 }
@@ -274,7 +274,7 @@ void PageClientImpl::disableDoubleTapGesturesDuringTapIfNecessary(WebKit::TapIde
     [m_contentView _disableDoubleTapGesturesDuringTapIfNecessary:requestID];
 }
 
-void PageClientImpl::handleSmartMagnificationInformationForPotentialTap(WebKit::TapIdentifier requestID, const WebCore::FloatRect& renderRect, bool fitEntireRect, double viewportMinimumScale, double viewportMaximumScale, bool nodeIsRootLevel)
+void PageClientImpl::handleSmartMagnificationInformationForPotentialTap(WebKit::TapIdentifier requestID, const CyberCore::FloatRect& renderRect, bool fitEntireRect, double viewportMinimumScale, double viewportMaximumScale, bool nodeIsRootLevel)
 {
     [m_contentView _handleSmartMagnificationInformationForPotentialTap:requestID renderRect:renderRect fitEntireRect:fitEntireRect viewportMinimumScale:viewportMinimumScale viewportMaximumScale:viewportMaximumScale nodeIsRootLevel:nodeIsRootLevel];
 }
@@ -287,7 +287,7 @@ double PageClientImpl::minimumZoomScale() const
     return 1;
 }
 
-WebCore::FloatRect PageClientImpl::documentRect() const
+CyberCore::FloatRect PageClientImpl::documentRect() const
 {
     return [m_contentView bounds];
 }
@@ -472,7 +472,7 @@ void PageClientImpl::requestTextRecognition(const URL& imageURL, const Shareable
 
 #endif // ENABLE(IMAGE_ANALYSIS)
 
-WebCore::DataOwnerType PageClientImpl::dataOwnerForPasteboard(PasteboardAccessIntent intent) const
+CyberCore::DataOwnerType PageClientImpl::dataOwnerForPasteboard(PasteboardAccessIntent intent) const
 {
     return [m_contentView _dataOwnerForPasteboard:intent];
 }
@@ -482,12 +482,12 @@ RefPtr<WebPopupMenuProxy> PageClientImpl::createPopupMenuProxy(WebPageProxy&)
     return nullptr;
 }
 
-void PageClientImpl::setTextIndicator(Ref<TextIndicator> textIndicator, WebCore::TextIndicatorLifetime)
+void PageClientImpl::setTextIndicator(Ref<TextIndicator> textIndicator, CyberCore::TextIndicatorLifetime)
 {
     [m_contentView setUpTextIndicator:textIndicator];
 }
 
-void PageClientImpl::clearTextIndicator(WebCore::TextIndicatorDismissalAnimation dismissalAnimation)
+void PageClientImpl::clearTextIndicator(CyberCore::TextIndicatorDismissalAnimation dismissalAnimation)
 {
     [m_contentView clearTextIndicator:dismissalAnimation];
 }
@@ -563,12 +563,12 @@ CALayer *PageClientImpl::acceleratedCompositingRootLayer() const
     return nullptr;
 }
 
-RefPtr<ViewSnapshot> PageClientImpl::takeViewSnapshot(std::optional<WebCore::IntRect>&&)
+RefPtr<ViewSnapshot> PageClientImpl::takeViewSnapshot(std::optional<CyberCore::IntRect>&&)
 {
     return [m_webView _takeViewSnapshot];
 }
 
-void PageClientImpl::wheelEventWasNotHandledByWebCore(const NativeWebWheelEvent& event)
+void PageClientImpl::wheelEventWasNotHandledByCyberCore(const NativeWebWheelEvent& event)
 {
     notImplemented();
 }
@@ -578,7 +578,7 @@ void PageClientImpl::commitPotentialTapFailed()
     [m_contentView _commitPotentialTapFailed];
 }
 
-void PageClientImpl::didGetTapHighlightGeometries(WebKit::TapIdentifier requestID, const WebCore::Color& color, const Vector<WebCore::FloatQuad>& highlightedQuads, const WebCore::IntSize& topLeftRadius, const WebCore::IntSize& topRightRadius, const WebCore::IntSize& bottomLeftRadius, const WebCore::IntSize& bottomRightRadius, bool nodeHasBuiltInClickHandling)
+void PageClientImpl::didGetTapHighlightGeometries(WebKit::TapIdentifier requestID, const CyberCore::Color& color, const Vector<CyberCore::FloatQuad>& highlightedQuads, const CyberCore::IntSize& topLeftRadius, const CyberCore::IntSize& topRightRadius, const CyberCore::IntSize& bottomLeftRadius, const CyberCore::IntSize& bottomRightRadius, bool nodeHasBuiltInClickHandling)
 {
     [m_contentView _didGetTapHighlightForRequest:requestID color:color quads:highlightedQuads topLeftRadius:topLeftRadius topRightRadius:topRightRadius bottomLeftRadius:bottomLeftRadius bottomRightRadius:bottomRightRadius nodeHasBuiltInClickHandling:nodeHasBuiltInClickHandling];
 }
@@ -598,17 +598,17 @@ void PageClientImpl::couldNotRestorePageState()
     [m_webView _couldNotRestorePageState];
 }
 
-void PageClientImpl::restorePageState(std::optional<WebCore::FloatPoint> scrollPosition, const WebCore::FloatPoint& scrollOrigin, const WebCore::FloatBoxExtent& obscuredInsetsOnSave, double scale)
+void PageClientImpl::restorePageState(std::optional<CyberCore::FloatPoint> scrollPosition, const CyberCore::FloatPoint& scrollOrigin, const CyberCore::FloatBoxExtent& obscuredInsetsOnSave, double scale)
 {
     [m_webView _restorePageScrollPosition:scrollPosition scrollOrigin:scrollOrigin previousObscuredInset:obscuredInsetsOnSave scale:scale];
 }
 
-void PageClientImpl::restorePageCenterAndScale(std::optional<WebCore::FloatPoint> center, double scale)
+void PageClientImpl::restorePageCenterAndScale(std::optional<CyberCore::FloatPoint> center, double scale)
 {
     [m_webView _restorePageStateToUnobscuredCenter:center scale:scale];
 }
 
-void PageClientImpl::elementDidFocus(const FocusedElementInformation& nodeInformation, bool userIsInteracting, bool blurPreviousNode, OptionSet<WebCore::ActivityState::Flag> activityStateChanges, API::Object* userData)
+void PageClientImpl::elementDidFocus(const FocusedElementInformation& nodeInformation, bool userIsInteracting, bool blurPreviousNode, OptionSet<CyberCore::ActivityState::Flag> activityStateChanges, API::Object* userData)
 {
     MESSAGE_CHECK(!userData || userData->type() == API::Object::Type::Data);
 
@@ -643,7 +643,7 @@ void PageClientImpl::elementDidBlur()
     [m_contentView _elementDidBlur];
 }
 
-void PageClientImpl::focusedElementDidChangeInputMode(WebCore::InputMode mode)
+void PageClientImpl::focusedElementDidChangeInputMode(CyberCore::InputMode mode)
 {
     [m_contentView _didUpdateInputMode:mode];
 }
@@ -653,7 +653,7 @@ void PageClientImpl::didUpdateEditorState()
     [m_contentView _didUpdateEditorState];
 }
 
-void PageClientImpl::showPlaybackTargetPicker(bool hasVideo, const IntRect& elementRect, WebCore::RouteSharingPolicy policy, const String& contextUID)
+void PageClientImpl::showPlaybackTargetPicker(bool hasVideo, const IntRect& elementRect, CyberCore::RouteSharingPolicy policy, const String& contextUID)
 {
     [m_contentView _showPlaybackTargetPicker:hasVideo fromRect:elementRect routeSharingPolicy:policy routingContextUID:contextUID];
 }
@@ -670,12 +670,12 @@ bool PageClientImpl::showShareSheet(const ShareDataWithParsedURL& shareData, WTF
     return true;
 }
 
-void PageClientImpl::showContactPicker(const WebCore::ContactsRequestData& requestData, WTF::CompletionHandler<void(std::optional<Vector<WebCore::ContactInfo>>&&)>&& completionHandler)
+void PageClientImpl::showContactPicker(const CyberCore::ContactsRequestData& requestData, WTF::CompletionHandler<void(std::optional<Vector<CyberCore::ContactInfo>>&&)>&& completionHandler)
 {
     [m_contentView _showContactPicker:requestData completionHandler:WTFMove(completionHandler)];
 }
 
-void PageClientImpl::showInspectorHighlight(const WebCore::InspectorOverlay::Highlight& highlight)
+void PageClientImpl::showInspectorHighlight(const CyberCore::InspectorOverlay::Highlight& highlight)
 {
     [m_contentView _showInspectorHighlight:highlight];
 }
@@ -737,23 +737,23 @@ void PageClientImpl::exitFullScreen()
     [[m_webView fullScreenWindowController] exitFullScreen];
 }
 
-static UIInterfaceOrientationMask toUIInterfaceOrientationMask(WebCore::ScreenOrientationType orientation)
+static UIInterfaceOrientationMask toUIInterfaceOrientationMask(CyberCore::ScreenOrientationType orientation)
 {
     switch (orientation) {
-    case WebCore::ScreenOrientationType::PortraitPrimary:
+    case CyberCore::ScreenOrientationType::PortraitPrimary:
         return UIInterfaceOrientationMaskPortrait;
-    case WebCore::ScreenOrientationType::PortraitSecondary:
+    case CyberCore::ScreenOrientationType::PortraitSecondary:
         return UIInterfaceOrientationMaskPortraitUpsideDown;
-    case WebCore::ScreenOrientationType::LandscapePrimary:
+    case CyberCore::ScreenOrientationType::LandscapePrimary:
         return UIInterfaceOrientationMaskLandscapeLeft;
-    case WebCore::ScreenOrientationType::LandscapeSecondary:
+    case CyberCore::ScreenOrientationType::LandscapeSecondary:
         return UIInterfaceOrientationMaskLandscapeRight;
     }
     ASSERT_NOT_REACHED();
     return UIInterfaceOrientationMaskPortrait;
 }
 
-bool PageClientImpl::lockFullscreenOrientation(WebCore::ScreenOrientationType orientation)
+bool PageClientImpl::lockFullscreenOrientation(CyberCore::ScreenOrientationType orientation)
 {
     [[m_webView fullScreenWindowController] setSupportedOrientations:toUIInterfaceOrientationMask(orientation)];
     return true;
@@ -884,11 +884,11 @@ void PageClientImpl::didRestoreScrollPosition()
 {
 }
 
-WebCore::UserInterfaceLayoutDirection PageClientImpl::userInterfaceLayoutDirection()
+CyberCore::UserInterfaceLayoutDirection PageClientImpl::userInterfaceLayoutDirection()
 {
     if (!m_webView)
-        return WebCore::UserInterfaceLayoutDirection::LTR;
-    return ([UIView userInterfaceLayoutDirectionForSemanticContentAttribute:[m_webView semanticContentAttribute]] == UIUserInterfaceLayoutDirectionLeftToRight) ? WebCore::UserInterfaceLayoutDirection::LTR : WebCore::UserInterfaceLayoutDirection::RTL;
+        return CyberCore::UserInterfaceLayoutDirection::LTR;
+    return ([UIView userInterfaceLayoutDirectionForSemanticContentAttribute:[m_webView semanticContentAttribute]] == UIUserInterfaceLayoutDirectionLeftToRight) ? CyberCore::UserInterfaceLayoutDirection::LTR : CyberCore::UserInterfaceLayoutDirection::RTL;
 }
 
 Ref<ValidationBubble> PageClientImpl::createValidationBubble(const String& message, const ValidationBubble::Settings& settings)
@@ -897,7 +897,7 @@ Ref<ValidationBubble> PageClientImpl::createValidationBubble(const String& messa
 }
 
 #if ENABLE(INPUT_TYPE_COLOR)
-RefPtr<WebColorPicker> PageClientImpl::createColorPicker(WebPageProxy*, const WebCore::Color& initialColor, const WebCore::IntRect&, Vector<WebCore::Color>&&)
+RefPtr<WebColorPicker> PageClientImpl::createColorPicker(WebPageProxy*, const CyberCore::Color& initialColor, const CyberCore::IntRect&, Vector<CyberCore::Color>&&)
 {
     return nullptr;
 }
@@ -976,7 +976,7 @@ void PageClientImpl::requestPasswordForQuickLookDocument(const String& fileName,
 }
 #endif
 
-void PageClientImpl::requestDOMPasteAccess(WebCore::DOMPasteAccessCategory pasteAccessCategory, const WebCore::IntRect& elementRect, const String& originIdentifier, CompletionHandler<void(WebCore::DOMPasteAccessResponse)>&& completionHandler)
+void PageClientImpl::requestDOMPasteAccess(CyberCore::DOMPasteAccessCategory pasteAccessCategory, const CyberCore::IntRect& elementRect, const String& originIdentifier, CompletionHandler<void(CyberCore::DOMPasteAccessResponse)>&& completionHandler)
 {
     [m_contentView _requestDOMPasteAccessForCategory:pasteAccessCategory elementRect:elementRect originIdentifier:originIdentifier completionHandler:WTFMove(completionHandler)];
 }
@@ -996,7 +996,7 @@ void PageClientImpl::handleAutocorrectionContext(const WebAutocorrectionContext&
     [m_contentView _handleAutocorrectionContext:context];
 }
 
-void PageClientImpl::showDictationAlternativeUI(const WebCore::FloatRect&, WebCore::DictationContext)
+void PageClientImpl::showDictationAlternativeUI(const CyberCore::FloatRect&, CyberCore::DictationContext)
 {
     notImplemented();
 }
@@ -1022,14 +1022,14 @@ void PageClientImpl::didExitFullscreen()
 
 #if ENABLE(ATTACHMENT_ELEMENT)
 
-void PageClientImpl::writePromisedAttachmentToPasteboard(WebCore::PromisedAttachmentInfo&& info)
+void PageClientImpl::writePromisedAttachmentToPasteboard(CyberCore::PromisedAttachmentInfo&& info)
 {
     [m_contentView _writePromisedAttachmentToPasteboard:WTFMove(info)];
 }
 
 #endif // ENABLE(ATTACHMENT_ELEMENT)
 
-void PageClientImpl::setMouseEventPolicy(WebCore::MouseEventPolicy policy)
+void PageClientImpl::setMouseEventPolicy(CyberCore::MouseEventPolicy policy)
 {
 #if HAVE(UIKIT_WITH_MOUSE_SUPPORT)
     [m_contentView _setMouseEventPolicy:policy];
@@ -1055,16 +1055,16 @@ void PageClientImpl::runModalJavaScriptDialog(CompletionHandler<void()>&& callba
     [m_contentView runModalJavaScriptDialog:WTFMove(callback)];
 }
 
-WebCore::Color PageClientImpl::contentViewBackgroundColor()
+CyberCore::Color PageClientImpl::contentViewBackgroundColor()
 {
-    WebCore::Color color;
+    CyberCore::Color color;
     auto computeContentViewBackgroundColor = [&]() {
-        color = WebCore::roundAndClampToSRGBALossy([m_contentView backgroundColor].CGColor);
+        color = CyberCore::roundAndClampToSRGBALossy([m_contentView backgroundColor].CGColor);
         if (color.isValid())
             return;
 
 #if HAVE(OS_DARK_MODE_SUPPORT)
-        color = WebCore::roundAndClampToSRGBALossy(UIColor.systemBackgroundColor.CGColor);
+        color = CyberCore::roundAndClampToSRGBALossy(UIColor.systemBackgroundColor.CGColor);
 #else
         color = { };
 #endif

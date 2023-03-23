@@ -26,7 +26,7 @@
 #include "config.h"
 #include "ProcessCapabilities.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 #if USE(CG)
 static bool s_HEICDecodingEnabled = false;
@@ -78,4 +78,4 @@ bool ProcessCapabilities::canUseAcceleratedBuffers()
     return s_canUseAcceleratedBuffers;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

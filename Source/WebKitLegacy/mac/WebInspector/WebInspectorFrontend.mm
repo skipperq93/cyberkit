@@ -28,7 +28,7 @@
 #import "WebInspectorClient.h"
 #import <CyberCore/InspectorFrontendClient.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 @implementation WebInspectorFrontend
 

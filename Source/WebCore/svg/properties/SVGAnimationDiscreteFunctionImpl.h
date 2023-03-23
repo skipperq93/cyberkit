@@ -28,7 +28,7 @@
 #include "SVGAnimationDiscreteFunction.h"
 #include "SVGPropertyTraits.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGAnimationBooleanFunction : public SVGAnimationDiscreteFunction<bool> {
 public:
@@ -97,4 +97,4 @@ public:
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

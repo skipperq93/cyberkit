@@ -29,7 +29,7 @@
 #include "GStreamerVideoCapturer.h"
 #include "RealtimeMediaSourceFactory.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using NodeAndFD = GStreamerVideoCapturer::NodeAndFD;
 

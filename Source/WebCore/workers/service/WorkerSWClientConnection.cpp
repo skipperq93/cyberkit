@@ -43,7 +43,7 @@
 #include "WorkerGlobalScope.h"
 #include "WorkerThread.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 WorkerSWClientConnection::WorkerSWClientConnection(WorkerGlobalScope& scope)
     : m_thread(scope.thread())
@@ -552,6 +552,6 @@ void WorkerSWClientConnection::retrieveRecordResponseBody(BackgroundFetchRecordI
     });
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

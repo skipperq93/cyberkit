@@ -37,7 +37,7 @@
 typedef struct __CVBuffer *CVPixelBufferRef;
 typedef struct opaqueCMSampleBuffer *CMSampleBufferRef;
 
-namespace WebCore {
+namespace CyberCore {
 
 class CGDisplayStreamCaptureSource : public DisplayCaptureSourceCocoa::Capturer, public CanMakeWeakPtr<CGDisplayStreamCaptureSource> {
 public:
@@ -86,6 +86,6 @@ private:
     bool m_observingDisplayChanges { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM) && PLATFORM(MAC)

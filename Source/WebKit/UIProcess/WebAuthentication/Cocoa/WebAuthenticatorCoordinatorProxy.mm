@@ -44,7 +44,7 @@
 #import "AuthenticationServicesCoreSoftLink.h"
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 static inline Ref<ArrayBuffer> toArrayBuffer(NSData *data)
 {
@@ -171,7 +171,7 @@ static inline RetainPtr<ASCPublicKeyCredentialDescriptor> toASCDescriptor(Public
         }
     }
 
-    return adoptNS([allocASCPublicKeyCredentialDescriptorInstance() initWithCredentialID:WebCore::toNSData(descriptor.id).get() transports:transports.get()]);
+    return adoptNS([allocASCPublicKeyCredentialDescriptorInstance() initWithCredentialID:CyberCore::toNSData(descriptor.id).get() transports:transports.get()]);
 }
 
 static inline RetainPtr<ASCWebAuthenticationExtensionsClientInputs> toASCExtensions(const AuthenticationExtensionsClientInputs& extensions)
@@ -182,7 +182,7 @@ static inline RetainPtr<ASCWebAuthenticationExtensionsClientInputs> toASCExtensi
     return nil;
 }
 
-static inline void setGlobalFrameIDForContext(RetainPtr<ASCCredentialRequestContext> requestContext, std::optional<WebCore::GlobalFrameIdentifier> globalFrameID)
+static inline void setGlobalFrameIDForContext(RetainPtr<ASCCredentialRequestContext> requestContext, std::optional<CyberCore::GlobalFrameIdentifier> globalFrameID)
 {
     if (globalFrameID && [requestContext respondsToSelector:@selector(setGlobalFrameID:)]) {
         auto asGlobalFrameID = adoptNS([allocASGlobalFrameIdentifierInstance() initWithPageID:[NSNumber numberWithUnsignedLong:globalFrameID->pageID.toUInt64()] frameID:[NSNumber numberWithUnsignedLong:globalFrameID->frameID.object().toUInt64()]]);
@@ -206,7 +206,7 @@ static inline ASPublicKeyCredentialResidentKeyPreference toASCResidentKeyPrefere
     return ASPublicKeyCredentialResidentKeyPreferenceNotPresent;
 }
 
-static RetainPtr<ASCCredentialRequestContext> configureRegistrationRequestContext(const PublicKeyCredentialCreationOptions& options, const Vector<uint8_t>& hash, std::optional<WebCore::GlobalFrameIdentifier> globalFrameID)
+static RetainPtr<ASCCredentialRequestContext> configureRegistrationRequestContext(const PublicKeyCredentialCreationOptions& options, const Vector<uint8_t>& hash, std::optional<CyberCore::GlobalFrameIdentifier> globalFrameID)
 {
     ASCCredentialRequestTypes requestTypes = ASCCredentialRequestTypePlatformPublicKeyRegistration | ASCCredentialRequestTypeSecurityKeyPublicKeyRegistration;
 
@@ -239,10 +239,10 @@ static RetainPtr<ASCCredentialRequestContext> configureRegistrationRequestContex
     if ([credentialCreationOptions respondsToSelector:@selector(setClientDataHash:)])
         [credentialCreationOptions setClientDataHash:toNSData(hash).get()];
     else
-        [credentialCreationOptions setChallenge:WebCore::toNSData(options.challenge).get()];
+        [credentialCreationOptions setChallenge:CyberCore::toNSData(options.challenge).get()];
     [credentialCreationOptions setRelyingPartyIdentifier:*options.rp.id];
     [credentialCreationOptions setUserName:options.user.name];
-    [credentialCreationOptions setUserIdentifier:WebCore::toNSData(options.user.id).get()];
+    [credentialCreationOptions setUserIdentifier:CyberCore::toNSData(options.user.id).get()];
     [credentialCreationOptions setUserDisplayName:options.user.displayName];
     [credentialCreationOptions setUserVerificationPreference:userVerification.get()];
     if ([credentialCreationOptions respondsToSelector:@selector(setResidentKeyPreference:)])
@@ -293,7 +293,7 @@ static inline RetainPtr<ASCPublicKeyCredentialAssertionOptions> configureAsserti
         auto nsHash = toNSData(hash);
         [assertionOptions initWithKind:kind relyingPartyIdentifier:options.rpId clientDataHash:nsHash.get() userVerificationPreference:userVerification.get() allowedCredentials:allowedCredentials.get()];
     } else {
-        auto challenge = WebCore::toNSData(options.challenge);
+        auto challenge = CyberCore::toNSData(options.challenge);
         [assertionOptions initWithKind:kind relyingPartyIdentifier:options.rpId challenge:challenge.get() userVerificationPreference:userVerification.get() allowedCredentials:allowedCredentials.get()];
     }
     if (options.extensions) {
@@ -311,7 +311,7 @@ static inline RetainPtr<ASCPublicKeyCredentialAssertionOptions> configureAsserti
     return assertionOptions;
 }
 
-static RetainPtr<ASCCredentialRequestContext> configurationAssertionRequestContext(const PublicKeyCredentialRequestOptions& options, const Vector<uint8_t>& hash, std::optional<WebCore::MediationRequirement> mediation, std::optional<WebCore::GlobalFrameIdentifier> globalFrameID, std::optional<WebCore::SecurityOriginData>& parentOrigin)
+static RetainPtr<ASCCredentialRequestContext> configurationAssertionRequestContext(const PublicKeyCredentialRequestOptions& options, const Vector<uint8_t>& hash, std::optional<CyberCore::MediationRequirement> mediation, std::optional<CyberCore::GlobalFrameIdentifier> globalFrameID, std::optional<CyberCore::SecurityOriginData>& parentOrigin)
 {
     ASCCredentialRequestTypes requestTypes = ASCCredentialRequestTypePlatformPublicKeyAssertion | ASCCredentialRequestTypeSecurityKeyPublicKeyAssertion;
 
@@ -359,13 +359,13 @@ static RetainPtr<ASCCredentialRequestContext> configurationAssertionRequestConte
     return requestContext;
 }
 
-static Vector<WebCore::AuthenticatorTransport> toAuthenticatorTransports(NSArray<NSNumber *> *ascTransports)
+static Vector<CyberCore::AuthenticatorTransport> toAuthenticatorTransports(NSArray<NSNumber *> *ascTransports)
 {
-    Vector<WebCore::AuthenticatorTransport> transports;
+    Vector<CyberCore::AuthenticatorTransport> transports;
     transports.reserveInitialCapacity(ascTransports.count);
     for (NSNumber *ascTransport : ascTransports) {
-        if (WTF::isValidEnum<WebCore::AuthenticatorTransport>(ascTransport.intValue))
-            transports.uncheckedAppend(static_cast<WebCore::AuthenticatorTransport>(ascTransport.intValue));
+        if (WTF::isValidEnum<CyberCore::AuthenticatorTransport>(ascTransport.intValue))
+            transports.uncheckedAppend(static_cast<CyberCore::AuthenticatorTransport>(ascTransport.intValue));
     }
     return transports;
 }
@@ -523,14 +523,14 @@ void WebAuthenticatorCoordinatorProxy::performRequest(RetainPtr<ASCCredentialReq
     }).get()];
 }
 
-static inline bool canCurrentProcessAccessPasskeysForRelyingParty(const WebCore::SecurityOriginData& data)
+static inline bool canCurrentProcessAccessPasskeysForRelyingParty(const CyberCore::SecurityOriginData& data)
 {
     if ([getASCWebKitSPISupportClass() respondsToSelector:@selector(canCurrentProcessAccessPasskeysForRelyingParty:)])
         return [getASCWebKitSPISupportClass() canCurrentProcessAccessPasskeysForRelyingParty:data.securityOrigin()->domain()];
     return false;
 }
 
-void WebAuthenticatorCoordinatorProxy::isConditionalMediationAvailable(const WebCore::SecurityOriginData& data, QueryCompletionHandler&& handler)
+void WebAuthenticatorCoordinatorProxy::isConditionalMediationAvailable(const CyberCore::SecurityOriginData& data, QueryCompletionHandler&& handler)
 {
     if (canCurrentProcessAccessPasskeysForRelyingParty(data)) {
         handler([getASCWebKitSPISupportClass() shouldUseAlternateCredentialStore]);

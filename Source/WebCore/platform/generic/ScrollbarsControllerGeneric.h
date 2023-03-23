@@ -33,7 +33,7 @@
 #include "ScrollbarsController.h"
 #include "Timer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScrollbarsControllerGeneric final : public ScrollbarsController {
 public:
@@ -70,4 +70,4 @@ private:
     MonotonicTime m_overlayScrollbarAnimationEndTime;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

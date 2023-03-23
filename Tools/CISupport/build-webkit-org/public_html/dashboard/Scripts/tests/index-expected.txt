@@ -1,4 +1,4 @@
-WebKit Bot Watcher's Dashboard QUnit Test Runner noglobalsnotrycatch
+CyberKit Bot Watcher's Dashboard QUnit Test Runner noglobalsnotrycatch
 Hide passed tests
 Trac: _parseRevisionFromURL (0, 3, 3)Rerun
 Trac: nextRevision (0, 2, 2)Rerun

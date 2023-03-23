@@ -30,7 +30,7 @@
 #include "ApplePayPaymentContact.h"
 #include "PaymentContact.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class MockPaymentContact final : public PaymentContact {
 public:
@@ -45,6 +45,6 @@ private:
     ApplePayPaymentContact m_applePayPaymentContact;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(APPLE_PAY)

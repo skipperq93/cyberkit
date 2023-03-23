@@ -27,9 +27,9 @@
 
 #include <wtf/ObjectIdentifier.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 enum MDNSRegisterIdentifierType { };
 using MDNSRegisterIdentifier = ObjectIdentifier<MDNSRegisterIdentifierType>;
 
-} // namespace WebKit
+} // namespace CyberKit

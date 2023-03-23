@@ -51,23 +51,23 @@ public:
     DisplayLink& displayLink();
 
 private:
-    WebCore::DelegatedScrollingMode delegatedScrollingMode() const override;
+    CyberCore::DelegatedScrollingMode delegatedScrollingMode() const override;
     std::unique_ptr<RemoteScrollingCoordinatorProxy> createScrollingCoordinatorProxy() const override;
 
     bool isRemoteLayerTreeDrawingAreaProxyMac() const override { return true; }
 
     void didCommitLayerTree(IPC::Connection&, const RemoteLayerTreeTransaction&, const RemoteScrollingCoordinatorTransaction&) override;
 
-    void adjustTransientZoom(double, WebCore::FloatPoint) override;
-    void commitTransientZoom(double, WebCore::FloatPoint) override;
+    void adjustTransientZoom(double, CyberCore::FloatPoint) override;
+    void commitTransientZoom(double, CyberCore::FloatPoint) override;
     
     void applyTransientZoomToLayer();
     void removeTransientZoomFromLayer();
 
     void scheduleDisplayRefreshCallbacks() override;
     void pauseDisplayRefreshCallbacks() override;
-    void setPreferredFramesPerSecond(WebCore::FramesPerSecond) override;
-    void windowScreenDidChange(WebCore::PlatformDisplayID, std::optional<WebCore::FramesPerSecond>) override;
+    void setPreferredFramesPerSecond(CyberCore::FramesPerSecond) override;
+    void windowScreenDidChange(CyberCore::PlatformDisplayID, std::optional<CyberCore::FramesPerSecond>) override;
     void colorSpaceDidChange() override;
 
     void didChangeViewExposedRect() override;
@@ -78,18 +78,18 @@ private:
 
     DisplayLink* exisingDisplayLink();
 
-    std::optional<WebCore::PlatformDisplayID> m_displayID; // Would be nice to make this non-optional, and ensure we always get one on creation.
-    std::optional<WebCore::FramesPerSecond> m_displayNominalFramesPerSecond;
-    WebCore::FramesPerSecond m_clientPreferredFramesPerSecond { WebCore::FullSpeedFramesPerSecond };
+    std::optional<CyberCore::PlatformDisplayID> m_displayID; // Would be nice to make this non-optional, and ensure we always get one on creation.
+    std::optional<CyberCore::FramesPerSecond> m_displayNominalFramesPerSecond;
+    CyberCore::FramesPerSecond m_clientPreferredFramesPerSecond { CyberCore::FullSpeedFramesPerSecond };
 
     std::optional<DisplayLinkObserverID> m_displayRefreshObserverID;
     std::optional<DisplayLinkObserverID> m_fullSpeedUpdateObserverID;
     std::unique_ptr<RemoteLayerTreeDisplayLinkClient> m_displayLinkClient;
-    WebCore::GraphicsLayer::PlatformLayerID m_pageScalingLayerID;
+    CyberCore::GraphicsLayer::PlatformLayerID m_pageScalingLayerID;
 
     std::optional<TransactionID> m_transactionIDAfterEndingTransientZoom;
     std::optional<double> m_transientZoomScale;
-    std::optional<WebCore::FloatPoint> m_transientZoomOrigin;
+    std::optional<CyberCore::FloatPoint> m_transientZoomOrigin;
 };
 
 } // namespace WebKit

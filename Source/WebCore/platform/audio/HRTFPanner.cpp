@@ -36,7 +36,7 @@
 #include <algorithm>
 #include <wtf/MathExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // The value of 2 milliseconds is larger than the largest delay which exists in any HRTFKernel from the default HRTFDatabase (0.0136 seconds).
 // We ASSERT the delay values used in process() with this value.
@@ -339,6 +339,6 @@ bool HRTFPanner::requiresTailProcessing() const
     return true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

@@ -69,13 +69,13 @@ class WebPageProxy;
 
 namespace WebKit {
 
-OptionSet<WebCore::TouchAction> touchActionsForPoint(UIView *rootView, const WebCore::IntPoint&);
+OptionSet<CyberCore::TouchAction> touchActionsForPoint(UIView *rootView, const CyberCore::IntPoint&);
 UIScrollView *findActingScrollParent(UIScrollView *, const RemoteLayerTreeHost&);
 
-OptionSet<WebCore::EventListenerRegionType> eventListenerTypesAtPoint(UIView *rootView, const WebCore::IntPoint&);
+OptionSet<CyberCore::EventListenerRegionType> eventListenerTypesAtPoint(UIView *rootView, const CyberCore::IntPoint&);
 
 #if ENABLE(EDITABLE_REGION)
-bool mayContainEditableElementsInRect(UIView *rootView, const WebCore::FloatRect&);
+bool mayContainEditableElementsInRect(UIView *rootView, const CyberCore::FloatRect&);
 #endif
 
 }

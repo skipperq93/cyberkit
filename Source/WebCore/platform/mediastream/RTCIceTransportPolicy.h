@@ -26,13 +26,13 @@
 
 #if ENABLE(WEB_RTC)
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class RTCIceTransportPolicy {
     Relay,
     All
 };
 
-}; // namespace WebCore
+}; // namespace CyberCore
 
 #endif

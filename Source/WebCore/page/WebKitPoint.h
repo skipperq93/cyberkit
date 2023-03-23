@@ -27,7 +27,7 @@
 
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WebKitPoint : public RefCounted<WebKitPoint> {
 public:
@@ -61,4 +61,4 @@ private:
     float m_y { 0 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

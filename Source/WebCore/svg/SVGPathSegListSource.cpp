@@ -26,7 +26,7 @@
 #include "SVGPathSegValue.h"
 #include <wtf/text/StringConcatenateNumbers.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 SVGPathSegListSource::SVGPathSegListSource(const SVGPathSegList& pathSegList)
     : m_pathSegList(pathSegList)

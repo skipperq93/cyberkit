@@ -64,7 +64,7 @@ OBJC_CLASS NSDictionary;
 OBJC_CLASS NSView;
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class AuthenticationChallenge;
 class CachedFrame;
@@ -349,7 +349,7 @@ public:
 
     virtual void didRestoreScrollPosition() { }
 
-    virtual void getLoadDecisionForIcons(const Vector<std::pair<WebCore::LinkIcon&, uint64_t>>&) { }
+    virtual void getLoadDecisionForIcons(const Vector<std::pair<CyberCore::LinkIcon&, uint64_t>>&) { }
 
 #if ENABLE(APPLICATION_MANIFEST)
     virtual void finishedLoadingApplicationManifest(uint64_t, const std::optional<ApplicationManifest>&) { }
@@ -379,4 +379,4 @@ public:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore

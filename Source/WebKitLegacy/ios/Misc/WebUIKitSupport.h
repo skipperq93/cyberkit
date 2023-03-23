@@ -30,7 +30,7 @@
 extern "C" {
 #endif
 
-// To be able to use background tasks from within WebKit, we need to expose that UIKit functionality
+// To be able to use background tasks from within CyberKit, we need to expose that UIKit functionality
 // without linking to UIKit.
 // We accomplish this by giving UIKit 3 methods to set up:
 //   - The invalid task ID value
@@ -41,21 +41,21 @@ typedef void (^VoidBlock)(void);
 typedef WebBackgroundTaskIdentifier (^StartBackgroundTaskBlock)(VoidBlock);
 typedef void (^EndBackgroundTaskBlock)(WebBackgroundTaskIdentifier);
 
-void WebKitSetInvalidWebBackgroundTaskIdentifier(WebBackgroundTaskIdentifier);
-void WebKitSetStartBackgroundTaskBlock(StartBackgroundTaskBlock);
-void WebKitSetEndBackgroundTaskBlock(EndBackgroundTaskBlock);
+void CyberKitSetInvalidWebBackgroundTaskIdentifier(WebBackgroundTaskIdentifier);
+void CyberKitSetStartBackgroundTaskBlock(StartBackgroundTaskBlock);
+void CyberKitSetEndBackgroundTaskBlock(EndBackgroundTaskBlock);
 
-// This method gives WebKit the notifications to listen to so it knows about app Suspend/Resume
-void WebKitSetBackgroundAndForegroundNotificationNames(NSString *, NSString *);
+// This method gives CyberKit the notifications to listen to so it knows about app Suspend/Resume
+void CyberKitSetBackgroundAndForegroundNotificationNames(NSString *, NSString *);
 
-void WebKitInitialize(void);
-float WebKitGetMinimumZoomFontSize(void);
+void CyberKitInitialize(void);
+float CyberKitGetMinimumZoomFontSize(void);
     
-int WebKitGetLastLineBreakInBuffer(UChar *characters, int position, int length);
+int CyberKitGetLastLineBreakInBuffer(UChar *characters, int position, int length);
 
-const char *WebKitPlatformSystemRootDirectory(void);
+const char *CyberKitPlatformSystemRootDirectory(void);
 
-CGPathRef WebKitCreatePathWithShrinkWrappedRects(NSArray* cgRects, CGFloat radius);
+CGPathRef CyberKitCreatePathWithShrinkWrappedRects(NSArray* cgRects, CGFloat radius);
 
 #ifdef __cplusplus
 }

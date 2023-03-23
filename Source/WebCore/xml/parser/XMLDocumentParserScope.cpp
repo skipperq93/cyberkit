@@ -26,7 +26,7 @@
 #include "config.h"
 #include "XMLDocumentParserScope.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 CachedResourceLoader* XMLDocumentParserScope::currentCachedResourceLoader = nullptr;
 

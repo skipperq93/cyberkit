@@ -82,7 +82,7 @@ static void raiseExceptionIfNecessary(WebKit::WebURLSchemeTask::ExceptionType ex
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainRunLoop(WKURLSchemeTaskImpl.class, self))
+    if (CyberCoreObjCScheduleDeallocateOnMainRunLoop(WKURLSchemeTaskImpl.class, self))
         return;
     _urlSchemeTask->WebURLSchemeTask::~WebURLSchemeTask();
     [super dealloc];
@@ -101,8 +101,8 @@ static void raiseExceptionIfNecessary(WebKit::WebURLSchemeTask::ExceptionType ex
 - (void)_willPerformRedirection:(NSURLResponse *)response newRequest:(NSURLRequest *)request completionHandler:(void (^)(NSURLRequest *))completionHandler
 {
     auto function = [protectedSelf = retainPtr(self), self, protectedResponse = retainPtr(response), response, protectedRequest = retainPtr(request), request, handler = makeBlockPtr(completionHandler)] () mutable {
-        return _urlSchemeTask->willPerformRedirection(response, request, [handler = WTFMove(handler)] (WebCore::ResourceRequest&& actualNewRequest) {
-            handler.get()(actualNewRequest.nsURLRequest(WebCore::HTTPBodyUpdatePolicy::UpdateHTTPBody));
+        return _urlSchemeTask->willPerformRedirection(response, request, [handler = WTFMove(handler)] (CyberCore::ResourceRequest&& actualNewRequest) {
+            handler.get()(actualNewRequest.nsURLRequest(CyberCore::HTTPBodyUpdatePolicy::UpdateHTTPBody));
         });
     };
 
@@ -123,7 +123,7 @@ static void raiseExceptionIfNecessary(WebKit::WebURLSchemeTask::ExceptionType ex
 - (void)didReceiveData:(NSData *)data
 {
     auto function = [protectedSelf = retainPtr(self), self, protectedData = retainPtr(data), data] () mutable {
-        return _urlSchemeTask->didReceiveData(WebCore::SharedBuffer::create(data));
+        return _urlSchemeTask->didReceiveData(CyberCore::SharedBuffer::create(data));
     };
 
     auto result = getExceptionTypeFromMainRunLoop(WTFMove(function));

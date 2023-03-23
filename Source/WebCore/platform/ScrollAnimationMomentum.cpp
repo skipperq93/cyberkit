@@ -29,7 +29,7 @@
 #include "ScrollingMomentumCalculator.h"
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 ScrollAnimationMomentum::ScrollAnimationMomentum(ScrollAnimationClient& client)
     : ScrollAnimation(Type::Momentum, client)
@@ -125,4 +125,4 @@ String ScrollAnimationMomentum::debugDescription() const
     return textStream.release();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

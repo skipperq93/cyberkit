@@ -54,7 +54,7 @@
 #import <pal/ios/UIKitSoftLink.h>
 #import <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 #if ENABLE(DRAG_SUPPORT)
 
@@ -294,6 +294,6 @@ DragImageRef createDragImageForRange(Frame&, const SimpleRange&, bool)
 
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(IOS_FAMILY)

@@ -29,7 +29,7 @@
 #include "SVGPathSegList.h"
 #include <wtf/text/StringConcatenateNumbers.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 SVGPathSegListBuilder::SVGPathSegListBuilder(SVGPathSegList& pathSegList)
     : m_pathSegList(pathSegList)

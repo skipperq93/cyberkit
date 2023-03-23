@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 // DataPayloadType describes the nature of an invocation of the ResourceLoader::didReceiveData callback.
 //  - DataPayloadWholeResource indicates that the buffer points to a whole resource. There will only be one such didReceiveData callback for the load.
@@ -37,4 +37,4 @@ enum DataPayloadType {
     DataPayloadBytes,
 };
 
-} // namespace WebCore
+} // namespace CyberCore

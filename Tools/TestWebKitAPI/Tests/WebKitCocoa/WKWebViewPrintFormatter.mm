@@ -32,7 +32,7 @@
 #import "TestNavigationDelegate.h"
 #import "TestPDFDocument.h"
 #import "TestWKWebView.h"
-#import "WebCore/Color.h"
+#import "CyberCore/Color.h"
 #import <CyberKit/WebKit.h>
 #import <CyberKit/WebKitPrivate.h>
 #import <CyberKit/_WKWebViewPrintFormatter.h>
@@ -165,7 +165,7 @@ TEST(WKWebView, PrintToPDFShouldPrintBackgrounds)
         auto pdf = TestWebKitAPI::TestPDFDocument::createFromData(pdfData);
         auto page = pdf->page(0);
         
-        WebCore::Color expected = WebCore::Color({ 0xFF, 0x00, 0x00 });
+        CyberCore::Color expected = CyberCore::Color({ 0xFF, 0x00, 0x00 });
         
         if (shouldPrintBackgrounds)
             EXPECT_EQ(page->colorAtPoint(99, 99), expected);

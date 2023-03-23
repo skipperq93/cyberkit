@@ -34,7 +34,7 @@
 #include <Accelerate/Accelerate.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 FEColorMatrixSoftwareApplier::FEColorMatrixSoftwareApplier(const FEColorMatrix& effect)
     : Base(effect)
@@ -279,4 +279,4 @@ bool FEColorMatrixSoftwareApplier::apply(const Filter&, const FilterImageVector&
     return true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

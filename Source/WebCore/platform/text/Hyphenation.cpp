@@ -31,7 +31,7 @@
 #include "NotImplemented.h"
 #include <wtf/text/StringView.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 bool canHyphenate(const AtomString& /* localeIdentifier */)
 {
@@ -44,6 +44,6 @@ size_t lastHyphenLocation(StringView, size_t /* beforeIndex */, const AtomString
     return 0;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // !USE(LIBHYPHEN)

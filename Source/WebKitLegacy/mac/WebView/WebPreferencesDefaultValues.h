@@ -34,7 +34,7 @@
 #define EXPERIMENTAL_FULLSCREEN_API_HIDDEN true
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 #if PLATFORM(IOS_FAMILY)
 bool defaultAllowsInlineMediaPlayback();
@@ -76,4 +76,4 @@ bool defaultWheelEventGesturesBecomeNonBlocking();
 bool defaultMediaSourceEnabled();
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit

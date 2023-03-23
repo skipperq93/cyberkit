@@ -40,7 +40,7 @@
 
 #if USE(CAIRO)
 
-namespace WebCore {
+namespace CyberCore {
 
 void ImageBufferCairoBackend::clipToMask(GraphicsContext& destContext, const FloatRect& destRect)
 {
@@ -91,6 +91,6 @@ void ImageBufferCairoBackend::transformToColorSpace(const DestinationColorSpace&
 #endif
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(CAIRO)

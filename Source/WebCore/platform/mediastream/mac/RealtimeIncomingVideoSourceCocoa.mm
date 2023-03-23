@@ -43,7 +43,7 @@ ALLOW_UNUSED_PARAMETERS_END
 #import "CoreVideoSoftLink.h"
 #import <pal/cf/CoreMediaSoftLink.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<RealtimeIncomingVideoSource> RealtimeIncomingVideoSource::create(rtc::scoped_refptr<webrtc::VideoTrackInterface>&& videoTrack, String&& trackId)
 {
@@ -176,6 +176,6 @@ void RealtimeIncomingVideoSourceCocoa::OnFrame(const webrtc::VideoFrame& webrtcV
     videoFrameAvailable(*videoFrame, metadataFromVideoFrame(webrtcVideoFrame));
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(LIBWEBRTC)

@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -21,28 +21,28 @@
 #error "Only <webkitdom/webkitdom.h> can be included directly."
 #endif
 
-#ifndef WebKitDOMHTMLQuoteElement_h
-#define WebKitDOMHTMLQuoteElement_h
+#ifndef CyberKitDOMHTMLQuoteElement_h
+#define CyberKitDOMHTMLQuoteElement_h
 
 #include <glib-object.h>
-#include <webkitdom/WebKitDOMHTMLElement.h>
+#include <webkitdom/CyberKitDOMHTMLElement.h>
 #include <webkitdom/webkitdomdefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_DOM_TYPE_HTML_QUOTE_ELEMENT            (webkit_dom_html_quote_element_get_type())
-#define WEBKIT_DOM_HTML_QUOTE_ELEMENT(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_HTML_QUOTE_ELEMENT, WebKitDOMHTMLQuoteElement))
-#define WEBKIT_DOM_HTML_QUOTE_ELEMENT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_HTML_QUOTE_ELEMENT, WebKitDOMHTMLQuoteElementClass)
+#define WEBKIT_DOM_HTML_QUOTE_ELEMENT(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_HTML_QUOTE_ELEMENT, CyberKitDOMHTMLQuoteElement))
+#define WEBKIT_DOM_HTML_QUOTE_ELEMENT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_HTML_QUOTE_ELEMENT, CyberKitDOMHTMLQuoteElementClass)
 #define WEBKIT_DOM_IS_HTML_QUOTE_ELEMENT(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_DOM_TYPE_HTML_QUOTE_ELEMENT))
 #define WEBKIT_DOM_IS_HTML_QUOTE_ELEMENT_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_DOM_TYPE_HTML_QUOTE_ELEMENT))
-#define WEBKIT_DOM_HTML_QUOTE_ELEMENT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_HTML_QUOTE_ELEMENT, WebKitDOMHTMLQuoteElementClass))
+#define WEBKIT_DOM_HTML_QUOTE_ELEMENT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_HTML_QUOTE_ELEMENT, CyberKitDOMHTMLQuoteElementClass))
 
-struct _WebKitDOMHTMLQuoteElement {
-    WebKitDOMHTMLElement parent_instance;
+struct _CyberKitDOMHTMLQuoteElement {
+    CyberKitDOMHTMLElement parent_instance;
 };
 
-struct _WebKitDOMHTMLQuoteElementClass {
-    WebKitDOMHTMLElementClass parent_class;
+struct _CyberKitDOMHTMLQuoteElementClass {
+    CyberKitDOMHTMLElementClass parent_class;
 };
 
 WEBKIT_DEPRECATED GType
@@ -50,26 +50,26 @@ webkit_dom_html_quote_element_get_type(void);
 
 /**
  * webkit_dom_html_quote_element_get_cite:
- * @self: A #WebKitDOMHTMLQuoteElement
+ * @self: A #CyberKitDOMHTMLQuoteElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_quote_element_get_cite(WebKitDOMHTMLQuoteElement* self);
+webkit_dom_html_quote_element_get_cite(CyberKitDOMHTMLQuoteElement* self);
 
 /**
  * webkit_dom_html_quote_element_set_cite:
- * @self: A #WebKitDOMHTMLQuoteElement
+ * @self: A #CyberKitDOMHTMLQuoteElement
  * @value: A #gchar
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_quote_element_set_cite(WebKitDOMHTMLQuoteElement* self, const gchar* value);
+webkit_dom_html_quote_element_set_cite(CyberKitDOMHTMLQuoteElement* self, const gchar* value);
 
 G_END_DECLS
 
-#endif /* WebKitDOMHTMLQuoteElement_h */
+#endif /* CyberKitDOMHTMLQuoteElement_h */

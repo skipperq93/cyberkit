@@ -29,7 +29,7 @@
 
 #if ENABLE(RESOURCE_USAGE)
 
-namespace WebCore {
+namespace CyberCore {
 
 void ResourceUsageOverlay::platformInitialize()
 {

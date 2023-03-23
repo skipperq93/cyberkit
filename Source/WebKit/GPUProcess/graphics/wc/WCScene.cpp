@@ -57,9 +57,9 @@ public:
         texmapLayer.setContentsLayer(nullptr);
     }
 
-    WebCore::TextureMapperLayer texmapLayer;
-    std::unique_ptr<WebCore::TextureMapperSparseBackingStore> backingStore;
-    std::unique_ptr<WebCore::TextureMapperLayer> backdropLayer;
+    CyberCore::TextureMapperLayer texmapLayer;
+    std::unique_ptr<CyberCore::TextureMapperSparseBackingStore> backingStore;
+    std::unique_ptr<CyberCore::TextureMapperLayer> backdropLayer;
     WCContentBuffer* contentBuffer { nullptr };
 };
 
@@ -71,7 +71,7 @@ void WCScene::initialize(WCSceneContext& context)
     m_textureMapper = m_context->createTextureMapper();
 }
 
-WCScene::WCScene(WebCore::ProcessIdentifier webProcessIdentifier, bool usesOffscreenRendering)
+WCScene::WCScene(CyberCore::ProcessIdentifier webProcessIdentifier, bool usesOffscreenRendering)
     : m_webProcessIdentifier(webProcessIdentifier)
     , m_usesOffscreenRendering(usesOffscreenRendering)
 {
@@ -101,13 +101,13 @@ std::optional<UpdateInfo> WCScene::update(WCUpateInfo&& update)
             }));
         }
         if (layerUpdate.changes & WCLayerChange::MaskLayer) {
-            WebCore::TextureMapperLayer* maskLayer = nullptr;
+            CyberCore::TextureMapperLayer* maskLayer = nullptr;
             if (layerUpdate.maskLayer)
                 maskLayer = &m_layers.get(*layerUpdate.maskLayer)->texmapLayer;
             layer->texmapLayer.setMaskLayer(maskLayer);
         }
         if (layerUpdate.changes & WCLayerChange::ReplicaLayer) {
-            WebCore::TextureMapperLayer* replicaLayer = nullptr;
+            CyberCore::TextureMapperLayer* replicaLayer = nullptr;
             if (layerUpdate.replicaLayer)
                 replicaLayer = &m_layers.get(*layerUpdate.replicaLayer)->texmapLayer;
             layer->texmapLayer.setReplicaLayer(replicaLayer);
@@ -135,13 +135,13 @@ std::optional<UpdateInfo> WCScene::update(WCUpateInfo&& update)
         if (layerUpdate.changes & WCLayerChange::Background) {
             if (layerUpdate.hasBackingStore) {
                 if (!layer->backingStore) {
-                    layer->backingStore = makeUnique<WebCore::TextureMapperSparseBackingStore>();
+                    layer->backingStore = makeUnique<CyberCore::TextureMapperSparseBackingStore>();
                     auto& backingStore = *layer->backingStore;
                     layer->texmapLayer.setBackgroundColor({ });
                     layer->texmapLayer.setBackingStore(&backingStore);
                 }
                 auto& backingStore = *layer->backingStore;
-                backingStore.setSize(WebCore::IntSize(layer->texmapLayer.size()));
+                backingStore.setSize(CyberCore::IntSize(layer->texmapLayer.size()));
                 for (auto& tileUpdate : layerUpdate.tileUpdate) {
                     if (tileUpdate.willRemove)
                         backingStore.removeTile(tileUpdate.index);
@@ -178,7 +178,7 @@ std::optional<UpdateInfo> WCScene::update(WCUpateInfo&& update)
                 layer->backdropLayer.reset();
             else {
                 if (!layer->backdropLayer) {
-                    layer->backdropLayer = makeUnique<WebCore::TextureMapperLayer>();
+                    layer->backdropLayer = makeUnique<CyberCore::TextureMapperLayer>();
                     layer->backdropLayer->setAnchorPoint({ });
                     layer->backdropLayer->setContentsVisible(true);
                     layer->backdropLayer->setMasksToBounds(true);
@@ -218,10 +218,10 @@ std::optional<UpdateInfo> WCScene::update(WCUpateInfo&& update)
     auto rootLayer = &m_layers.get(update.rootLayer)->texmapLayer;
     rootLayer->applyAnimationsRecursively(MonotonicTime::now());
 
-    WebCore::IntSize windowSize = expandedIntSize(rootLayer->size());
+    CyberCore::IntSize windowSize = expandedIntSize(rootLayer->size());
     glViewport(0, 0, windowSize.width(), windowSize.height());
 
-    m_textureMapper->beginPainting(m_usesOffscreenRendering ? WebCore::TextureMapper::PaintingMirrored : 0);
+    m_textureMapper->beginPainting(m_usesOffscreenRendering ? CyberCore::TextureMapper::PaintingMirrored : 0);
     rootLayer->paint(*m_textureMapper);
     m_fpsCounter.updateFPSAndDisplay(*m_textureMapper);
     m_textureMapper->endPainting();
@@ -235,7 +235,7 @@ std::optional<UpdateInfo> WCScene::update(WCUpateInfo&& update)
             result->viewSize = windowSize;
             result->deviceScaleFactor = 1;
             result->updateScaleFactor = 1;
-            WebCore::IntRect viewport = { { }, windowSize };
+            CyberCore::IntRect viewport = { { }, windowSize };
             result->updateRectBounds = viewport;
             result->updateRects.append(viewport);
             result->bitmapHandle = WTFMove(*handle);

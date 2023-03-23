@@ -48,8 +48,8 @@
 #include "DrawingAreaWC.h"
 #endif
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 std::unique_ptr<DrawingArea> DrawingArea::create(WebPage& webPage, const WebPageCreationParameters& parameters)
 {
@@ -115,7 +115,7 @@ void DrawingArea::removeMessageReceiverIfNeeded()
     WebProcess::singleton().removeMessageReceiver(Messages::DrawingArea::messageReceiverName(), m_identifier);
 }
 
-RefPtr<WebCore::DisplayRefreshMonitor> DrawingArea::createDisplayRefreshMonitor(WebCore::PlatformDisplayID)
+RefPtr<CyberCore::DisplayRefreshMonitor> DrawingArea::createDisplayRefreshMonitor(CyberCore::PlatformDisplayID)
 {
     return nullptr;
 }
@@ -158,13 +158,13 @@ bool DrawingArea::supportsGPUProcessRendering(DrawingAreaType type)
     }
 }
 
-WebCore::TiledBacking* DrawingArea::mainFrameTiledBacking() const
+CyberCore::TiledBacking* DrawingArea::mainFrameTiledBacking() const
 {
     auto* frameView = m_webPage.mainFrameView();
     return frameView ? frameView->tiledBacking() : nullptr;
 }
 
-void DrawingArea::prepopulateRectForZoom(double scale, WebCore::FloatPoint origin)
+void DrawingArea::prepopulateRectForZoom(double scale, CyberCore::FloatPoint origin)
 {
     double currentPageScale = m_webPage.totalScaleFactor();
     auto* frameView = m_webPage.mainFrameView();
@@ -278,4 +278,4 @@ void DrawingArea::setShouldScaleViewToFitDocument(bool shouldScaleView)
     triggerRenderingUpdate();
 }
 
-} // namespace WebKit
+} // namespace CyberKit

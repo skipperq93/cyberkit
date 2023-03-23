@@ -30,7 +30,7 @@
 #include "BackgroundFetchEvent.h"
 #include "JSDOMPromiseDeferred.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct BackgroundFetchUIOptions;
 
@@ -50,6 +50,6 @@ private:
     BackgroundFetchUpdateUIEvent(const AtomString&, ExtendableEventInit&&, RefPtr<BackgroundFetchRegistration>&&, IsTrusted);
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

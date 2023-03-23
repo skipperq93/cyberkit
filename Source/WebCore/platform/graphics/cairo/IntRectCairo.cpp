@@ -25,7 +25,7 @@
 
 #include <cairo.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 IntRect::IntRect(const cairo_rectangle_int_t& r)
     : m_location(IntPoint(r.x, r.y))
@@ -39,6 +39,6 @@ IntRect::operator cairo_rectangle_int_t() const
     return r;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(CAIRO)

@@ -24,7 +24,7 @@
 #include "GRefPtrGStreamer.h"
 #include "RealtimeMediaSource.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RealtimeIncomingSourceGStreamer : public RealtimeMediaSource {
 public:
@@ -50,6 +50,6 @@ private:
     GRefPtr<GstElement> m_tee;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(GSTREAMER_WEBRTC)

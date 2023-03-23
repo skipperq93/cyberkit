@@ -26,7 +26,7 @@
 #include "FilterEffect.h"
 #include "GraphicsTypes.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class FEBlend : public FilterEffect {
 public:
@@ -47,6 +47,6 @@ private:
     BlendMode m_mode;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_FILTER_EFFECT(FEBlend)

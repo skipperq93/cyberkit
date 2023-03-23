@@ -41,19 +41,19 @@ struct RemoteMediaPlayerProxyConfiguration {
     String userAgent;
     String sourceApplicationIdentifier;
     String networkInterfaceName;
-    Vector<WebCore::ContentType> mediaContentTypesRequiringHardwareSupport;
+    Vector<CyberCore::ContentType> mediaContentTypesRequiringHardwareSupport;
     std::optional<Vector<String>> allowedMediaContainerTypes;
     std::optional<Vector<String>> allowedMediaCodecTypes;
-    std::optional<Vector<WebCore::FourCC>> allowedMediaVideoCodecIDs;
-    std::optional<Vector<WebCore::FourCC>> allowedMediaAudioCodecIDs;
-    std::optional<Vector<WebCore::FourCC>> allowedMediaCaptionFormatTypes;
-    WebCore::LayoutRect playerContentBoxRect;
+    std::optional<Vector<CyberCore::FourCC>> allowedMediaVideoCodecIDs;
+    std::optional<Vector<CyberCore::FourCC>> allowedMediaAudioCodecIDs;
+    std::optional<Vector<CyberCore::FourCC>> allowedMediaCaptionFormatTypes;
+    CyberCore::LayoutRect playerContentBoxRect;
     Vector<String> preferredAudioCharacteristics;
 #if ENABLE(AVF_CAPTIONS)
-    Vector<WebCore::PlatformTextTrackData> outOfBandTrackData;
+    Vector<CyberCore::PlatformTextTrackData> outOfBandTrackData;
 #endif
-    WebCore::SecurityOriginData documentSecurityOrigin;
-    WebCore::IntSize presentationSize { };
+    CyberCore::SecurityOriginData documentSecurityOrigin;
+    CyberCore::IntSize presentationSize { };
     uint64_t logIdentifier { 0 };
     bool shouldUsePersistentCache { false };
     bool isVideo { false };

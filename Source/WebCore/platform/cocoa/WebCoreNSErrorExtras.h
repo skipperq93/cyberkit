@@ -23,13 +23,13 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef WebCoreNSErrorExtras_h
-#define WebCoreNSErrorExtras_h
+#ifndef CyberCoreNSErrorExtras_h
+#define CyberCoreNSErrorExtras_h
 
-namespace WebCore {
+namespace CyberCore {
 
 WEBCORE_EXPORT long mediaKeyErrorSystemCode(NSError *);
 
 }
 
-#endif // WebCoreNSErrorExtras_h
+#endif // CyberCoreNSErrorExtras_h

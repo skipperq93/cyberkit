@@ -30,7 +30,7 @@
 #include "PixelBuffer.h"
 #include "VideoFrameGStreamer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 CaptureSourceOrError MockRealtimeVideoSource::create(String&& deviceID, AtomString&& name, MediaDeviceHashSalts&& hashSalts, const MediaConstraints* constraints, PageIdentifier)
 {
@@ -168,6 +168,6 @@ void MockRealtimeVideoSourceGStreamer::updateSampleBuffer()
     dispatchVideoFrameToObservers(videoFrame.get(), { });
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM) && USE(GSTREAMER)

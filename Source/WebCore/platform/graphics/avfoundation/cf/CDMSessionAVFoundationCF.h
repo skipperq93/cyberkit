@@ -33,7 +33,7 @@
 
 typedef struct OpaqueAVCFAssetResourceLoadingRequest* AVCFAssetResourceLoadingRequestRef;
 
-namespace WebCore {
+namespace CyberCore {
 
 class MediaPlayerPrivateAVFoundationCF;
 

@@ -30,51 +30,51 @@
 #include <wtf/Deque.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 class ResourceError;
 class ResourceLoader;
 class ResourceResponse;
 class SharedBuffer;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebFrame;
 class WebURLSchemeHandlerProxy;
 
 class WebURLSchemeTaskProxy : public RefCounted<WebURLSchemeTaskProxy> {
 public:
-    static Ref<WebURLSchemeTaskProxy> create(WebURLSchemeHandlerProxy& handler, WebCore::ResourceLoader& loader, WebFrame& webFrame)
+    static Ref<WebURLSchemeTaskProxy> create(WebURLSchemeHandlerProxy& handler, CyberCore::ResourceLoader& loader, WebFrame& webFrame)
     {
         return adoptRef(*new WebURLSchemeTaskProxy(handler, loader, webFrame));
     }
     
-    const WebCore::ResourceRequest& request() const { return m_request; }
+    const CyberCore::ResourceRequest& request() const { return m_request; }
 
     void startLoading();
     void stopLoading();
 
-    void didPerformRedirection(WebCore::ResourceResponse&&, WebCore::ResourceRequest&&, CompletionHandler<void(WebCore::ResourceRequest&&)>&&);
-    void didReceiveResponse(const WebCore::ResourceResponse&);
-    void didReceiveData(const WebCore::SharedBuffer&);
-    void didComplete(const WebCore::ResourceError&);
+    void didPerformRedirection(CyberCore::ResourceResponse&&, CyberCore::ResourceRequest&&, CompletionHandler<void(CyberCore::ResourceRequest&&)>&&);
+    void didReceiveResponse(const CyberCore::ResourceResponse&);
+    void didReceiveData(const CyberCore::SharedBuffer&);
+    void didComplete(const CyberCore::ResourceError&);
 
-    WebCore::ResourceLoaderIdentifier identifier() const { return m_identifier; }
+    CyberCore::ResourceLoaderIdentifier identifier() const { return m_identifier; }
 
 private:
-    WebURLSchemeTaskProxy(WebURLSchemeHandlerProxy&, WebCore::ResourceLoader&, WebFrame&);
+    WebURLSchemeTaskProxy(WebURLSchemeHandlerProxy&, CyberCore::ResourceLoader&, WebFrame&);
     bool hasLoader();
 
     void queueTask(Function<void()>&& task) { m_queuedTasks.append(WTFMove(task)); }
     void processNextPendingTask();
 
     WebURLSchemeHandlerProxy& m_urlSchemeHandler;
-    RefPtr<WebCore::ResourceLoader> m_coreLoader;
+    RefPtr<CyberCore::ResourceLoader> m_coreLoader;
     RefPtr<WebFrame> m_frame;
-    WebCore::ResourceRequest m_request;
-    WebCore::ResourceLoaderIdentifier m_identifier;
+    CyberCore::ResourceRequest m_request;
+    CyberCore::ResourceLoaderIdentifier m_identifier;
     bool m_waitingForCompletionHandler { false };
     Deque<Function<void()>> m_queuedTasks;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

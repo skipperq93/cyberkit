@@ -27,7 +27,7 @@
 
 #include "TextureMapperBackingStore.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class TextureMapperSolidColorLayer : public TextureMapperBackingStore {
 public:
@@ -42,4 +42,4 @@ private:
     Color m_color;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

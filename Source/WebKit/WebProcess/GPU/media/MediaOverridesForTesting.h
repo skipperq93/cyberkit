@@ -37,7 +37,7 @@ struct MediaOverridesForTesting {
 
     std::optional<bool> vp9HardwareDecoderDisabled;
     std::optional<bool> vp9DecoderDisabled;
-    std::optional<WebCore::ScreenDataOverrides> vp9ScreenSizeAndScale;
+    std::optional<CyberCore::ScreenDataOverrides> vp9ScreenSizeAndScale;
 
     template<class Encoder>
     void encode(Encoder& encoder) const
@@ -72,7 +72,7 @@ struct MediaOverridesForTesting {
         if (!vp9DecoderDisabled)
             return std::nullopt;
 
-        std::optional<std::optional<WebCore::ScreenDataOverrides>> vp9ScreenSizeAndScale;
+        std::optional<std::optional<CyberCore::ScreenDataOverrides>> vp9ScreenSizeAndScale;
         decoder >> vp9ScreenSizeAndScale;
         if (!vp9ScreenSizeAndScale)
             return std::nullopt;

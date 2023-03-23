@@ -29,7 +29,7 @@
 #include <CyberScriptCore/RuntimeFlags.h>
 #include <wtf/URL.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct WorkletParameters {
     URL windowURL;
@@ -45,4 +45,4 @@ struct WorkletParameters {
     WorkletParameters isolatedCopy() && { return { WTFMove(windowURL).isolatedCopy(), jsRuntimeFlags, sampleRate, WTFMove(identifier).isolatedCopy(), sessionID, WTFMove(settingsValues).isolatedCopy(), referrerPolicy, isAudioContextRealTime }; }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

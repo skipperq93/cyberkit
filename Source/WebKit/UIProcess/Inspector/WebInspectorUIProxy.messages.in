@@ -32,23 +32,23 @@ messages -> WebInspectorUIProxy {
     Reopen()
     ResetState()
 
-    SetForcedAppearance(WebCore::InspectorFrontendClient::Appearance appearance)
+    SetForcedAppearance(CyberCore::InspectorFrontendClient::Appearance appearance)
     OpenURLExternally(String url)
     RevealFileExternally(String path)
 
     InspectedURLChanged(String urlString)
-    ShowCertificate(WebCore::CertificateInfo certificateInfo)
+    ShowCertificate(CyberCore::CertificateInfo certificateInfo)
     ElementSelectionChanged(bool active)
     TimelineRecordingChanged(bool active)
 
-    SetDeveloperPreferenceOverride(WebCore::InspectorClient::DeveloperPreference developerPreference, std::optional<bool> overrideValue)
+    SetDeveloperPreferenceOverride(CyberCore::InspectorClient::DeveloperPreference developerPreference, std::optional<bool> overrideValue)
 #if ENABLE(INSPECTOR_NETWORK_THROTTLING)
     SetEmulatedConditions(std::optional<int64_t> bytesPerSecondLimit)
 #endif
 
-    Save(Vector<WebCore::InspectorFrontendClient::SaveData> saveDatas, bool forceSaveAs)
+    Save(Vector<CyberCore::InspectorFrontendClient::SaveData> saveDatas, bool forceSaveAs)
     Load(String path) -> (String content)
-    PickColorFromScreen() -> (std::optional<WebCore::Color> color)
+    PickColorFromScreen() -> (std::optional<CyberCore::Color> color)
 
     AttachBottom()
     AttachRight()
@@ -60,7 +60,7 @@ messages -> WebInspectorUIProxy {
     SetAttachedWindowHeight(unsigned height)
     SetAttachedWindowWidth(unsigned width)
 
-    SetSheetRect(WebCore::FloatRect rect)
+    SetSheetRect(CyberCore::FloatRect rect)
 
     StartWindowDrag()
 

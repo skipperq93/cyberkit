@@ -24,7 +24,7 @@
 #include "SVGFitToViewBox.h"
 #include "SVGGraphicsElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGSymbolElement final : public SVGGraphicsElement, public SVGFitToViewBox {
     WTF_MAKE_ISO_ALLOCATED(SVGSymbolElement);
@@ -42,4 +42,4 @@ private:
     bool selfHasRelativeLengths() const override;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

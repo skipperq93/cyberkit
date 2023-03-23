@@ -52,7 +52,7 @@ public:
     };
 
     WebPlatformTouchPoint() = default;
-    WebPlatformTouchPoint(unsigned identifier, WebCore::IntPoint location, TouchPointState phase)
+    WebPlatformTouchPoint(unsigned identifier, CyberCore::IntPoint location, TouchPointState phase)
         : m_identifier(identifier)
         , m_location(location)
         , m_phase(phase)
@@ -60,7 +60,7 @@ public:
     }
 
     unsigned identifier() const { return m_identifier; }
-    WebCore::IntPoint location() const { return m_location; }
+    CyberCore::IntPoint location() const { return m_location; }
     TouchPointState phase() const { return static_cast<TouchPointState>(m_phase); }
     TouchPointState state() const { return phase(); }
 
@@ -86,7 +86,7 @@ public:
 
 private:
     unsigned m_identifier { 0 };
-    WebCore::IntPoint m_location;
+    CyberCore::IntPoint m_location;
     uint32_t m_phase { TouchReleased };
 #if ENABLE(IOS_TOUCH_EVENTS)
     double m_radiusX { 0 };
@@ -102,7 +102,7 @@ private:
 class WebTouchEvent : public WebEvent {
 public:
     WebTouchEvent() = default;
-    WebTouchEvent(WebEvent&& event, const Vector<WebPlatformTouchPoint>& touchPoints, WebCore::IntPoint position, bool isPotentialTap, bool isGesture, float gestureScale, float gestureRotation, bool canPreventNativeGestures = true)
+    WebTouchEvent(WebEvent&& event, const Vector<WebPlatformTouchPoint>& touchPoints, CyberCore::IntPoint position, bool isPotentialTap, bool isGesture, float gestureScale, float gestureRotation, bool canPreventNativeGestures = true)
         : WebEvent(WTFMove(event))
         , m_touchPoints(touchPoints)
         , m_position(position)
@@ -117,7 +117,7 @@ public:
 
     const Vector<WebPlatformTouchPoint>& touchPoints() const { return m_touchPoints; }
 
-    WebCore::IntPoint position() const { return m_position; }
+    CyberCore::IntPoint position() const { return m_position; }
 
     bool isPotentialTap() const { return m_isPotentialTap; }
 
@@ -136,7 +136,7 @@ public:
 private:
     Vector<WebPlatformTouchPoint> m_touchPoints;
     
-    WebCore::IntPoint m_position;
+    CyberCore::IntPoint m_position;
     bool m_canPreventNativeGestures { false };
     bool m_isPotentialTap { false };
     bool m_isGesture { false };
@@ -159,16 +159,16 @@ public:
     WebPlatformTouchPoint()
         : m_rotationAngle(0.0), m_force(0.0) { }
 
-    WebPlatformTouchPoint(uint32_t id, TouchPointState, const WebCore::IntPoint& screenPosition, const WebCore::IntPoint& position);
+    WebPlatformTouchPoint(uint32_t id, TouchPointState, const CyberCore::IntPoint& screenPosition, const CyberCore::IntPoint& position);
 
-    WebPlatformTouchPoint(uint32_t id, TouchPointState, const WebCore::IntPoint& screenPosition, const WebCore::IntPoint& position, const WebCore::IntSize& radius, float rotationAngle = 0.0, float force = 0.0);
+    WebPlatformTouchPoint(uint32_t id, TouchPointState, const CyberCore::IntPoint& screenPosition, const CyberCore::IntPoint& position, const CyberCore::IntSize& radius, float rotationAngle = 0.0, float force = 0.0);
     
     uint32_t id() const { return m_id; }
     TouchPointState state() const { return static_cast<TouchPointState>(m_state); }
 
-    const WebCore::IntPoint& screenPosition() const { return m_screenPosition; }
-    const WebCore::IntPoint& position() const { return m_position; }
-    const WebCore::IntSize& radius() const { return m_radius; }
+    const CyberCore::IntPoint& screenPosition() const { return m_screenPosition; }
+    const CyberCore::IntPoint& position() const { return m_position; }
+    const CyberCore::IntSize& radius() const { return m_radius; }
     float rotationAngle() const { return m_rotationAngle; }
     float force() const { return m_force; }
 
@@ -180,9 +180,9 @@ public:
 private:
     uint32_t m_id;
     uint32_t m_state;
-    WebCore::IntPoint m_screenPosition;
-    WebCore::IntPoint m_position;
-    WebCore::IntSize m_radius;
+    CyberCore::IntPoint m_screenPosition;
+    CyberCore::IntPoint m_position;
+    CyberCore::IntSize m_radius;
     float m_rotationAngle;
     float m_force;
 };

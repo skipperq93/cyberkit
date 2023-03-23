@@ -23,7 +23,7 @@
 
 #include "RenderBoxModelObject.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class LegacyInlineElementBox;
 class HTMLElement;
@@ -91,6 +91,6 @@ private:
     bool m_isWBR;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderLineBreak, isLineBreak())

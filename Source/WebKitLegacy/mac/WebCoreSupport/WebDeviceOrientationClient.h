@@ -26,7 +26,7 @@
 #import "WebDeviceOrientationProvider.h"
 #import <CyberCore/DeviceOrientationClient.h>
 
-namespace WebCore {
+namespace CyberCore {
 class DeviceOrientationController;
 }
 
@@ -38,21 +38,21 @@ class DeviceOrientationController;
 // required because the WebView must pass a client to the Page constructor,
 // but the real or mock client can not be specified until after the Page has
 // been constructed.
-class WebDeviceOrientationClient : public WebCore::DeviceOrientationClient {
+class WebDeviceOrientationClient : public CyberCore::DeviceOrientationClient {
 public:
     WebDeviceOrientationClient(WebView*);
 
     // DeviceOrientationClient methods
-    void setController(WebCore::DeviceOrientationController*) override;
+    void setController(CyberCore::DeviceOrientationController*) override;
     void startUpdating() override;
     void stopUpdating() override;
-    WebCore::DeviceOrientationData* lastOrientation() const override;
+    CyberCore::DeviceOrientationData* lastOrientation() const override;
     void deviceOrientationControllerDestroyed() override;
 
 private:
     id<WebDeviceOrientationProvider> getProvider() const;
 
     WebView* m_webView;
-    WebCore::DeviceOrientationController* m_controller;
+    CyberCore::DeviceOrientationController* m_controller;
     mutable id<WebDeviceOrientationProvider> m_provider;
 };

@@ -32,7 +32,7 @@
 #include "CAAudioStreamDescription.h"
 #include "WebAudioBufferList.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 const int kRenderBufferSize = 128;
 
@@ -74,6 +74,6 @@ void MockAudioDestinationCocoa::tick()
     });
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

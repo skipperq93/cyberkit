@@ -28,7 +28,7 @@
 #include "GraphicsLayerContentsDisplayDelegate.h"
 #include "PlatformLayer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class PlatformLayerDisplayDelegate final : public GraphicsLayerContentsDisplayDelegate {
 public:
@@ -52,4 +52,4 @@ private:
     PlatformLayer* m_platformLayer;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

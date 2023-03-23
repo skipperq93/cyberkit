@@ -34,7 +34,7 @@ OBJC_CLASS AVAsset;
 OBJC_CLASS AVMediaSelectionGroup;
 OBJC_CLASS AVMediaSelectionOption;
 
-namespace WebCore {
+namespace CyberCore {
 
 class InbandTextTrackPrivateAVFObjC : public InbandTextTrackPrivateAVF {
 public:

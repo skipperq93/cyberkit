@@ -42,7 +42,7 @@
 
 ALLOW_COMMA_BEGIN
 
-#include <webrtc/sdk/WebKit/WebKitUtilities.h>
+#include <webrtc/sdk/CyberKit/CyberKitUtilities.h>
 
 ALLOW_COMMA_END
 
@@ -51,8 +51,8 @@ ALLOW_COMMA_END
 #include <pal/cf/CoreMediaSoftLink.h>
 #include <CyberCore/CoreVideoSoftLink.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 SharedVideoFrameWriter::SharedVideoFrameWriter()
     : m_semaphore(makeUniqueRef<IPC::Semaphore>())
@@ -256,18 +256,18 @@ RetainPtr<CVPixelBufferRef> SharedVideoFrameReader::readBuffer(SharedVideoFrame:
         ASSERT(sample->pixelBuffer());
         return sample->pixelBuffer();
     } , [](MachSendRight&& sendRight) -> RetainPtr<CVPixelBufferRef> {
-        auto surface = WebCore::IOSurface::createFromSendRight(WTFMove(sendRight));
+        auto surface = CyberCore::IOSurface::createFromSendRight(WTFMove(sendRight));
         if (!surface) {
             RELEASE_LOG_ERROR(WebRTC, "SharedVideoFrameReader::readBuffer no surface");
             return nullptr;
         }
-        return WebCore::createCVPixelBuffer(surface->surface()).value_or(nullptr);
+        return CyberCore::createCVPixelBuffer(surface->surface()).value_or(nullptr);
     }, [this](std::nullptr_t representation) -> RetainPtr<CVPixelBufferRef> {
         return readBufferFromSharedMemory();
     }, [this](IntSize size) -> RetainPtr<CVPixelBufferRef> {
         if (m_blackFrameSize != size) {
             m_blackFrameSize = size;
-            m_blackFrame = WebCore::createBlackPixelBuffer(m_blackFrameSize.width(), m_blackFrameSize.height(), m_useIOSurfaceBufferPool == UseIOSurfaceBufferPool::Yes);
+            m_blackFrame = CyberCore::createBlackPixelBuffer(m_blackFrameSize.width(), m_blackFrameSize.height(), m_useIOSurfaceBufferPool == UseIOSurfaceBufferPool::Yes);
             if (m_resourceOwner && m_useIOSurfaceBufferPool == UseIOSurfaceBufferPool::Yes)
                 setOwnershipIdentityForCVPixelBuffer(m_blackFrame.get(), m_resourceOwner);
         }

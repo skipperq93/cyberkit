@@ -48,21 +48,21 @@ public:
 
     struct Entry {
         WTF_MAKE_STRUCT_FAST_ALLOCATED;
-        Entry(WebCore::ResourceResponse&&, PrivateRelayed, RefPtr<WebCore::FragmentedSharedBuffer>&&);
-        Entry(WebCore::ResourceResponse&&, WebCore::ResourceRequest&&);
+        Entry(CyberCore::ResourceResponse&&, PrivateRelayed, RefPtr<CyberCore::FragmentedSharedBuffer>&&);
+        Entry(CyberCore::ResourceResponse&&, CyberCore::ResourceRequest&&);
 
-        Ref<WebCore::FragmentedSharedBuffer> releaseBuffer() { return buffer.releaseNonNull(); }
+        Ref<CyberCore::FragmentedSharedBuffer> releaseBuffer() { return buffer.releaseNonNull(); }
 
-        WebCore::ResourceResponse response;
+        CyberCore::ResourceResponse response;
         PrivateRelayed privateRelayed { PrivateRelayed::No };
         // FIXME: This should probably be a variant<RefPtr, ResourceRequest> because we have one or the other but never both.
-        RefPtr<WebCore::FragmentedSharedBuffer> buffer;
-        WebCore::ResourceRequest redirectRequest;
+        RefPtr<CyberCore::FragmentedSharedBuffer> buffer;
+        CyberCore::ResourceRequest redirectRequest;
     };
 
     std::unique_ptr<Entry> take(const URL&);
-    void store(const URL&, WebCore::ResourceResponse&&, PrivateRelayed, RefPtr<WebCore::FragmentedSharedBuffer>&&);
-    void storeRedirect(const URL&, WebCore::ResourceResponse&&, WebCore::ResourceRequest&&);
+    void store(const URL&, CyberCore::ResourceResponse&&, PrivateRelayed, RefPtr<CyberCore::FragmentedSharedBuffer>&&);
+    void storeRedirect(const URL&, CyberCore::ResourceResponse&&, CyberCore::ResourceRequest&&);
 
 private:
     void clearExpiredEntries();
@@ -73,7 +73,7 @@ private:
     using SessionPrefetchExpirationList = Deque<std::tuple<URL, WallTime>>;
     SessionPrefetchExpirationList m_sessionExpirationList;
 
-    WebCore::Timer m_expirationTimer;
+    CyberCore::Timer m_expirationTimer;
 };
 
 } // namespace WebKit

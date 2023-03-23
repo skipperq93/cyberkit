@@ -30,7 +30,7 @@
 #include "GPUProcessConnection.h"
 #include "RemoteAudioDestinationProxy.h"
 #include "RemoteCDMFactory.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebProcess.h"
 #include <CyberCore/AudioDestination.h>
 #include <CyberCore/AudioIOCallback.h>
@@ -41,34 +41,34 @@
 #include <CyberCore/MediaSessionManagerCocoa.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 WebMediaStrategy::~WebMediaStrategy() = default;
 
 #if ENABLE(WEB_AUDIO)
-Ref<WebCore::AudioDestination> WebMediaStrategy::createAudioDestination(WebCore::AudioIOCallback& callback, const String& inputDeviceId,
+Ref<CyberCore::AudioDestination> WebMediaStrategy::createAudioDestination(CyberCore::AudioIOCallback& callback, const String& inputDeviceId,
     unsigned numberOfInputChannels, unsigned numberOfOutputChannels, float sampleRate)
 {
 #if ENABLE(GPU_PROCESS)
     if (m_useGPUProcess)
         return RemoteAudioDestinationProxy::create(callback, inputDeviceId, numberOfInputChannels, numberOfOutputChannels, sampleRate);
 #endif
-    return WebCore::AudioDestination::create(callback, inputDeviceId, numberOfInputChannels, numberOfOutputChannels, sampleRate);
+    return CyberCore::AudioDestination::create(callback, inputDeviceId, numberOfInputChannels, numberOfOutputChannels, sampleRate);
 }
 #endif
 
-std::unique_ptr<WebCore::NowPlayingManager> WebMediaStrategy::createNowPlayingManager() const
+std::unique_ptr<CyberCore::NowPlayingManager> WebMediaStrategy::createNowPlayingManager() const
 {
 #if ENABLE(GPU_PROCESS)
     if (m_useGPUProcess) {
-        class NowPlayingInfoForGPUManager : public WebCore::NowPlayingManager {
+        class NowPlayingInfoForGPUManager : public CyberCore::NowPlayingManager {
             void clearNowPlayingInfoPrivate() final
             {
                 if (auto* connection = WebProcess::singleton().existingGPUProcessConnection())
                     connection->connection().send(Messages::GPUConnectionToWebProcess::ClearNowPlayingInfo { }, 0);
             }
 
-            void setNowPlayingInfoPrivate(const WebCore::NowPlayingInfo& nowPlayingInfo) final
+            void setNowPlayingInfoPrivate(const CyberCore::NowPlayingInfo& nowPlayingInfo) final
             {
                 auto& connection = WebProcess::singleton().ensureGPUProcessConnection().connection();
                 connection.send(Messages::GPUConnectionToWebProcess::SetNowPlayingInfo { nowPlayingInfo }, 0);
@@ -77,7 +77,7 @@ std::unique_ptr<WebCore::NowPlayingManager> WebMediaStrategy::createNowPlayingMa
         return makeUnique<NowPlayingInfoForGPUManager>();
     }
 #endif
-    return WebCore::MediaStrategy::createNowPlayingManager();
+    return CyberCore::MediaStrategy::createNowPlayingManager();
 }
 
-} // namespace WebKit
+} // namespace CyberKit

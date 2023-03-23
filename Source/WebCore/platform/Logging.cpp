@@ -26,7 +26,7 @@
 #include "config.h"
 #include "Logging.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 #if !LOG_DISABLED || !RELEASE_LOG_DISABLED
 
@@ -35,4 +35,4 @@ WEBCORE_LOG_CHANNELS(DEFINE_WEBCORE_LOG_CHANNEL)
 
 #endif // !LOG_DISABLED || !RELEASE_LOG_DISABLED
 
-} // namespace WebCore
+} // namespace CyberCore

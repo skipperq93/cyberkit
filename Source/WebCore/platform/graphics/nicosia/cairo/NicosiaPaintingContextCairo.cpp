@@ -68,7 +68,7 @@ PaintingContextCairo::ForPainting::ForPainting(Buffer& buffer)
             delete userData;
         });
 
-    m_graphicsContext = makeUnique<WebCore::GraphicsContextCairo>(m_surface.get());
+    m_graphicsContext = makeUnique<CyberCore::GraphicsContextCairo>(m_surface.get());
 }
 
 PaintingContextCairo::ForPainting::~ForPainting()
@@ -85,7 +85,7 @@ PaintingContextCairo::ForPainting::~ForPainting()
     ASSERT(m_deletionComplete);
 }
 
-WebCore::GraphicsContext& PaintingContextCairo::ForPainting::graphicsContext()
+CyberCore::GraphicsContext& PaintingContextCairo::ForPainting::graphicsContext()
 {
     return *m_graphicsContext;
 }
@@ -104,7 +104,7 @@ PaintingContextCairo::ForRecording::ForRecording(PaintingOperations& paintingOpe
 
 PaintingContextCairo::ForRecording::~ForRecording() = default;
 
-WebCore::GraphicsContext& PaintingContextCairo::ForRecording::graphicsContext()
+CyberCore::GraphicsContext& PaintingContextCairo::ForRecording::graphicsContext()
 {
     return *m_graphicsContext;
 }

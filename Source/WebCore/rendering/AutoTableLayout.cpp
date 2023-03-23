@@ -31,7 +31,7 @@
 #include "RenderTableSection.h"
 #include "RenderView.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 AutoTableLayout::AutoTableLayout(RenderTable* table)
     : TableLayout(table)

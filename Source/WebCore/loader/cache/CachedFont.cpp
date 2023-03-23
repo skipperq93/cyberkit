@@ -45,7 +45,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/Base64.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 CachedFont::CachedFont(CachedResourceRequest&& request, PAL::SessionID sessionID, const CookieJar* cookieJar, Type type)
     : CachedResource(WTFMove(request), type, sessionID, cookieJar)

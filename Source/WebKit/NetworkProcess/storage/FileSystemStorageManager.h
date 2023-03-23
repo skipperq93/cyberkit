@@ -42,14 +42,14 @@ public:
 
     bool isActive() const;
     uint64_t allocatedUnusedCapacity() const;
-    Expected<WebCore::FileSystemHandleIdentifier, FileSystemStorageError> createHandle(IPC::Connection::UniqueID, FileSystemStorageHandle::Type, String&& path, String&& name, bool createIfNecessary);
-    const String& getPath(WebCore::FileSystemHandleIdentifier);
-    FileSystemStorageHandle::Type getType(WebCore::FileSystemHandleIdentifier);
+    Expected<CyberCore::FileSystemHandleIdentifier, FileSystemStorageError> createHandle(IPC::Connection::UniqueID, FileSystemStorageHandle::Type, String&& path, String&& name, bool createIfNecessary);
+    const String& getPath(CyberCore::FileSystemHandleIdentifier);
+    FileSystemStorageHandle::Type getType(CyberCore::FileSystemHandleIdentifier);
     void closeHandle(FileSystemStorageHandle&);
     void connectionClosed(IPC::Connection::UniqueID);
-    Expected<WebCore::FileSystemHandleIdentifier, FileSystemStorageError> getDirectory(IPC::Connection::UniqueID);
-    bool acquireLockForFile(const String& path, WebCore::FileSystemHandleIdentifier);
-    bool releaseLockForFile(const String& path, WebCore::FileSystemHandleIdentifier);
+    Expected<CyberCore::FileSystemHandleIdentifier, FileSystemStorageError> getDirectory(IPC::Connection::UniqueID);
+    bool acquireLockForFile(const String& path, CyberCore::FileSystemHandleIdentifier);
+    bool releaseLockForFile(const String& path, CyberCore::FileSystemHandleIdentifier);
     void requestSpace(uint64_t spaceRequested, CompletionHandler<void(bool)>&&);
 
 private:
@@ -58,9 +58,9 @@ private:
     String m_path;
     FileSystemStorageHandleRegistry& m_registry;
     QuotaCheckFunction m_quotaCheckFunction;
-    HashMap<IPC::Connection::UniqueID, HashSet<WebCore::FileSystemHandleIdentifier>> m_handlesByConnection;
-    HashMap<WebCore::FileSystemHandleIdentifier, std::unique_ptr<FileSystemStorageHandle>> m_handles;
-    HashMap<String, WebCore::FileSystemHandleIdentifier> m_lockMap;
+    HashMap<IPC::Connection::UniqueID, HashSet<CyberCore::FileSystemHandleIdentifier>> m_handlesByConnection;
+    HashMap<CyberCore::FileSystemHandleIdentifier, std::unique_ptr<FileSystemStorageHandle>> m_handles;
+    HashMap<String, CyberCore::FileSystemHandleIdentifier> m_lockMap;
 };
 
 } // namespace WebKit

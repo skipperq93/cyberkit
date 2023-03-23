@@ -48,8 +48,8 @@
 #include <wtf/glib/RunLoopSourcePriority.h>
 #endif
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 CompositingCoordinator::CompositingCoordinator(WebPage& page, CompositingCoordinator::Client& client)
     : m_page(page)
@@ -186,7 +186,7 @@ bool CompositingCoordinator::flushPendingLayerChanges(OptionSet<FinalizeRenderin
 
 double CompositingCoordinator::timestamp() const
 {
-    auto* localMainFrame = dynamicDowncast<WebCore::LocalFrame>(m_page.corePage()->mainFrame());
+    auto* localMainFrame = dynamicDowncast<CyberCore::LocalFrame>(m_page.corePage()->mainFrame());
     auto* document = localMainFrame ? localMainFrame->document() : nullptr;
     if (!document)
         return 0;
@@ -195,7 +195,7 @@ double CompositingCoordinator::timestamp() const
 
 void CompositingCoordinator::syncDisplayState()
 {
-    if (auto* localMainFrame = dynamicDowncast<WebCore::LocalFrame>(m_page.corePage()->mainFrame()))
+    if (auto* localMainFrame = dynamicDowncast<CyberCore::LocalFrame>(m_page.corePage()->mainFrame()))
         localMainFrame->view()->updateLayoutAndStyleIfNeededRecursive();
 }
 
@@ -260,7 +260,7 @@ void CompositingCoordinator::setVisibleContentsRect(const FloatRect& rect)
             registeredLayer->setNeedsVisibleRectAdjustment();
     }
 
-    auto* localMainFrame = dynamicDowncast<WebCore::LocalFrame>(m_page.corePage()->mainFrame());
+    auto* localMainFrame = dynamicDowncast<CyberCore::LocalFrame>(m_page.corePage()->mainFrame());
     FrameView* view = localMainFrame ? localMainFrame->view() : nullptr;
     if (view->useFixedLayout() && contentsRectDidChange) {
         // Round the rect instead of enclosing it to make sure that its size stays
@@ -333,6 +333,6 @@ void CompositingCoordinator::requestUpdate()
     m_client.updateScene();
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(COORDINATED_GRAPHICS)

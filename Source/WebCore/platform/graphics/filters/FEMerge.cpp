@@ -27,7 +27,7 @@
 #include "ImageBuffer.h"
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<FEMerge> FEMerge::create(unsigned numberOfEffectInputs)
 {
@@ -56,4 +56,4 @@ TextStream& FEMerge::externalRepresentation(TextStream& ts, FilterRepresentation
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

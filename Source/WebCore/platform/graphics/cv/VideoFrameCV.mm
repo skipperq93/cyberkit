@@ -52,7 +52,7 @@ ALLOW_UNUSED_PARAMETERS_END
 ALLOW_COMMA_END
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 RefPtr<VideoFrame> VideoFrame::fromNativeImage(NativeImage& image)
 {
@@ -503,7 +503,7 @@ VideoFrameCV::VideoFrameCV(MediaTime presentationTime, bool isMirrored, Rotation
 
 VideoFrameCV::~VideoFrameCV() = default;
 
-WebCore::FloatSize VideoFrameCV::presentationSize() const
+CyberCore::FloatSize VideoFrameCV::presentationSize() const
 {
     return { static_cast<float>(CVPixelBufferGetWidth(m_pixelBuffer.get())), static_cast<float>(CVPixelBufferGetHeight(m_pixelBuffer.get())) };
 }

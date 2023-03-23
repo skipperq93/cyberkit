@@ -55,7 +55,7 @@ static const GUID MFSamplePresenterSampleCounter =
 
 static const double tenMegahertz = 10000000;
 
-namespace WebCore {
+namespace CyberCore {
 
 class MediaPlayerPrivateMediaFoundation::AsyncCallback : public IMFAsyncCallback {
     WTF_MAKE_FAST_ALLOCATED;
@@ -2782,7 +2782,7 @@ HRESULT MediaPlayerPrivateMediaFoundation::Direct3DPresenter::presentSample(IMFS
     return hr;
 }
 
-void MediaPlayerPrivateMediaFoundation::Direct3DPresenter::paintCurrentFrame(WebCore::GraphicsContext& context, const WebCore::FloatRect& destRect)
+void MediaPlayerPrivateMediaFoundation::Direct3DPresenter::paintCurrentFrame(CyberCore::GraphicsContext& context, const CyberCore::FloatRect& destRect)
 {
     UINT width = m_destRect.right - m_destRect.left;
     UINT height = m_destRect.bottom - m_destRect.top;
@@ -2969,6 +2969,6 @@ HRESULT MediaPlayerPrivateMediaFoundation::Direct3DPresenter::getSwapChainPresen
     return S_OK;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(VIDEO) && USE(MEDIA_FOUNDATION)

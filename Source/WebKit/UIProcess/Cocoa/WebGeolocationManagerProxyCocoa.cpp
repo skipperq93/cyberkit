@@ -34,9 +34,9 @@ namespace WebKit {
 // FIXME: This should be used by all Cocoa ports
 #if PLATFORM(IOS_FAMILY)
 
-void WebGeolocationManagerProxy::positionChanged(const String& websiteIdentifier, WebCore::GeolocationPositionData&& position)
+void WebGeolocationManagerProxy::positionChanged(const String& websiteIdentifier, CyberCore::GeolocationPositionData&& position)
 {
-    auto registrableDomain = WebCore::RegistrableDomain::uncheckedCreateFromRegistrableDomainString(websiteIdentifier);
+    auto registrableDomain = CyberCore::RegistrableDomain::uncheckedCreateFromRegistrableDomainString(websiteIdentifier);
     auto it = m_perDomainData.find(registrableDomain);
     if (it == m_perDomainData.end())
         return;
@@ -49,7 +49,7 @@ void WebGeolocationManagerProxy::positionChanged(const String& websiteIdentifier
 
 void WebGeolocationManagerProxy::errorOccurred(const String& websiteIdentifier, const String& errorMessage)
 {
-    auto registrableDomain = WebCore::RegistrableDomain::uncheckedCreateFromRegistrableDomainString(websiteIdentifier);
+    auto registrableDomain = CyberCore::RegistrableDomain::uncheckedCreateFromRegistrableDomainString(websiteIdentifier);
     auto it = m_perDomainData.find(registrableDomain);
     if (it == m_perDomainData.end())
         return;
@@ -61,7 +61,7 @@ void WebGeolocationManagerProxy::errorOccurred(const String& websiteIdentifier, 
 
 void WebGeolocationManagerProxy::resetGeolocation(const String& websiteIdentifier)
 {
-    auto registrableDomain = WebCore::RegistrableDomain::uncheckedCreateFromRegistrableDomainString(websiteIdentifier);
+    auto registrableDomain = CyberCore::RegistrableDomain::uncheckedCreateFromRegistrableDomainString(websiteIdentifier);
     auto it = m_perDomainData.find(registrableDomain);
     if (it == m_perDomainData.end())
         return;

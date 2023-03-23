@@ -33,7 +33,7 @@
 #include "SharedBuffer.h"
 #include "TextResourceDecoder.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 CachedScript::CachedScript(CachedResourceRequest&& request, PAL::SessionID sessionID, const CookieJar* cookieJar)
     : CachedResource(WTFMove(request), Type::Script, sessionID, cookieJar)
@@ -154,4 +154,4 @@ bool CachedScript::shouldIgnoreHTTPStatusCodeErrors() const
     return CachedResource::shouldIgnoreHTTPStatusCodeErrors();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

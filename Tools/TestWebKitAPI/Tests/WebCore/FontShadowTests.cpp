@@ -30,7 +30,7 @@
 #include <CyberCore/FontShadow.h>
 #include <wtf/text/AtomString.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 namespace TestWebKitAPI {
 
@@ -38,7 +38,7 @@ class FontShadowTest : public testing::Test {
 public:
     void SetUp() override
     {
-        WebCore::initializeCommonAtomStrings();
+        CyberCore::initializeCommonAtomStrings();
     }
 };
 

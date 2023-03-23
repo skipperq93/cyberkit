@@ -42,14 +42,14 @@
 #import "LocalAuthenticationSoftLink.h"
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 VirtualLocalConnection::VirtualLocalConnection(const VirtualAuthenticatorConfiguration& configuration)
     : m_configuration(configuration)
 {
 }
 
-void VirtualLocalConnection::verifyUser(const String&, ClientDataType, SecAccessControlRef, WebCore::UserVerificationRequirement, UserVerificationCallback&& callback)
+void VirtualLocalConnection::verifyUser(const String&, ClientDataType, SecAccessControlRef, CyberCore::UserVerificationRequirement, UserVerificationCallback&& callback)
 {
     // Mock async operations.
     RunLoop::main().dispatch([weakThis = WeakPtr { *this }, callback = WTFMove(callback)]() mutable {

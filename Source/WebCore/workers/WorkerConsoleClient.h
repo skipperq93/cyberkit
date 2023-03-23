@@ -35,7 +35,7 @@ class CallFrame;
 
 using JSC::MessageType;
 
-namespace WebCore {
+namespace CyberCore {
 
 class WorkerConsoleClient final : public JSC::ConsoleClient {
     WTF_MAKE_FAST_ALLOCATED;
@@ -61,4 +61,4 @@ private:
     WorkerOrWorkletGlobalScope& m_globalScope;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

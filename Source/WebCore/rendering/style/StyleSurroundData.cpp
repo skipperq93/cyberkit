@@ -22,7 +22,7 @@
 #include "config.h"
 #include "StyleSurroundData.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 DEFINE_ALLOCATOR_WITH_HEAP_IDENTIFIER(StyleSurroundData);
 
@@ -63,4 +63,4 @@ bool StyleSurroundData::operator==(const StyleSurroundData& o) const
         && hasExplicitlySetBorderTopRightRadius == o.hasExplicitlySetBorderTopRightRadius;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

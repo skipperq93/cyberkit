@@ -34,7 +34,7 @@
 
 #include "RTCSessionDescriptionDescriptor.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<RTCSessionDescriptionDescriptor> RTCSessionDescriptionDescriptor::create(const String& type, const String& sdp)
 {
@@ -49,6 +49,6 @@ RTCSessionDescriptionDescriptor::RTCSessionDescriptionDescriptor(const String& t
 
 RTCSessionDescriptionDescriptor::~RTCSessionDescriptionDescriptor() = default;
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

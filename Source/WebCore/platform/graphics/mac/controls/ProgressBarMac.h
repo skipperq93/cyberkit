@@ -30,7 +30,7 @@
 #import "ControlMac.h"
 #import "ProgressBarPart.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ProgressBarPart;
 
@@ -49,6 +49,6 @@ private:
     void draw(GraphicsContext&, const FloatRoundedRect& borderRect, float deviceScaleFactor, const ControlStyle&) override;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(MAC)

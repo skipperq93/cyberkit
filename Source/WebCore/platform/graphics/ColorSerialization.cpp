@@ -34,7 +34,7 @@
 #include <wtf/text/StringBuilder.h>
 #include <wtf/text/StringConcatenateNumbers.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct NumericComponent { float value; };
 
@@ -47,9 +47,9 @@ static NumericComponent numericComponent(float value)
 
 namespace WTF {
 
-template<> class StringTypeAdapter<WebCore::NumericComponent> {
+template<> class StringTypeAdapter<CyberCore::NumericComponent> {
 public:
-    StringTypeAdapter(WebCore::NumericComponent number)
+    StringTypeAdapter(CyberCore::NumericComponent number)
     {
         if (std::isnan(number.value)) {
             m_buffer = { 'n', 'o', 'n', 'e' };
@@ -73,7 +73,7 @@ private:
 
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 static String serializationForCSS(const A98RGB<float>&, bool useColorFunctionSerialization);
 static String serializationForHTML(const A98RGB<float>&, bool useColorFunctionSerialization);

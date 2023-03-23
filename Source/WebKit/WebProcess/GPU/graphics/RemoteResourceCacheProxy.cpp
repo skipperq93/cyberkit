@@ -33,7 +33,7 @@
 #include "RemoteRenderingBackendProxy.h"
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 RemoteResourceCacheProxy::RemoteResourceCacheProxy(RemoteRenderingBackendProxy& remoteRenderingBackendProxy)
     : m_remoteRenderingBackendProxy(remoteRenderingBackendProxy)
@@ -94,11 +94,11 @@ inline static RefPtr<ShareableBitmap> createShareableBitmapFromNativeImage(Nativ
     if (!context)
         return nullptr;
 
-    context->drawNativeImage(image, imageSize, FloatRect({ }, imageSize), FloatRect({ }, imageSize), { WebCore::CompositeOperator::Copy });
+    context->drawNativeImage(image, imageSize, FloatRect({ }, imageSize), FloatRect({ }, imageSize), { CyberCore::CompositeOperator::Copy });
     return bitmap;
 }
 
-void RemoteResourceCacheProxy::recordImageBufferUse(WebCore::ImageBuffer& imageBuffer)
+void RemoteResourceCacheProxy::recordImageBufferUse(CyberCore::ImageBuffer& imageBuffer)
 {
     auto iterator = m_imageBuffers.find(imageBuffer.renderingResourceIdentifier());
     ASSERT_UNUSED(iterator, iterator != m_imageBuffers.end());
@@ -217,7 +217,7 @@ void RemoteResourceCacheProxy::finalizeRenderingUpdateForFonts()
     if (totalFontCount == m_numberOfFontsUsedInCurrentRenderingUpdate)
         return;
 
-    HashSet<WebCore::RenderingResourceIdentifier> toRemove;
+    HashSet<CyberCore::RenderingResourceIdentifier> toRemove;
     auto renderingUpdateID = m_renderingUpdateID;
     for (auto& item : m_fonts) {
         if (renderingUpdateID - item.value >= minimumRenderingUpdateCountToKeepFontAlive) {

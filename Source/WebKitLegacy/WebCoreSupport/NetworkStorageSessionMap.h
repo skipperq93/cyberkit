@@ -31,14 +31,14 @@ namespace PAL {
 class SessionID;
 }
 
-namespace WebCore {
+namespace CyberCore {
 class NetworkStorageSession;
 }
 
 class NetworkStorageSessionMap {
 public:
-    static WebCore::NetworkStorageSession* storageSession(PAL::SessionID);
-    static WebCore::NetworkStorageSession& defaultStorageSession();
+    static CyberCore::NetworkStorageSession* storageSession(PAL::SessionID);
+    static CyberCore::NetworkStorageSession& defaultStorageSession();
     static void switchToNewTestingSession();
     static void ensureSession(PAL::SessionID, const String& identifierBase = String());
     static void destroySession(PAL::SessionID);

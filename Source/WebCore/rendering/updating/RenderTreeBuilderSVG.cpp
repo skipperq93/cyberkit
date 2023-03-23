@@ -37,7 +37,7 @@
 #include "RenderTreeBuilderInline.h"
 #include "SVGResourcesCache.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 RenderTreeBuilder::SVG::SVG(RenderTreeBuilder& builder)
     : m_builder(builder)

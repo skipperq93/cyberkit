@@ -34,7 +34,7 @@
 #include "LocaleToScriptMapping.h"
 #include <wtf/Language.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 FontDescription::FontDescription()
     : m_variantAlternates(FontCascadeDescription::initialVariantAlternates())
@@ -118,4 +118,4 @@ AtomString FontDescription::platformResolveGenericFamily(UScriptCode, const Atom
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

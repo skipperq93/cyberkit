@@ -25,7 +25,7 @@
 
 // Would TargetedMouseEvent be a better name?
 
-namespace WebCore {
+namespace CyberCore {
 
 MouseEventWithHitTestResults::MouseEventWithHitTestResults(const PlatformMouseEvent& event, const HitTestResult& hitTestResult)
     : m_event(event)

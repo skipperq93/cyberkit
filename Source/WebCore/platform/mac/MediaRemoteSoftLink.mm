@@ -28,38 +28,38 @@
 #include <pal/spi/mac/MediaRemoteSPI.h>
 #include <wtf/SoftLinking.h>
 
-SOFT_LINK_PRIVATE_FRAMEWORK_FOR_SOURCE(WebCore, MediaRemote)
+SOFT_LINK_PRIVATE_FRAMEWORK_FOR_SOURCE(CyberCore, MediaRemote)
 
-SOFT_LINK_FUNCTION_FOR_SOURCE(WebCore, MediaRemote, MRMediaRemoteGetLocalOrigin, MROriginRef, (), ())
-SOFT_LINK_FUNCTION_FOR_SOURCE(WebCore, MediaRemote, MRMediaRemoteAddAsyncCommandHandlerBlock, void*, (MRMediaRemoteAsyncCommandHandlerBlock block), (block))
-SOFT_LINK_FUNCTION_FOR_SOURCE(WebCore, MediaRemote, MRMediaRemoteRemoveCommandHandlerBlock, void, (void* observer), (observer))
-SOFT_LINK_FUNCTION_FOR_SOURCE(WebCore, MediaRemote, MRMediaRemoteSetSupportedCommands, void, (CFArrayRef commands, MROriginRef origin, dispatch_queue_t replyQ, void(^completion)(MRMediaRemoteError err)), (commands, origin, replyQ, completion))
-SOFT_LINK_FUNCTION_MAY_FAIL_FOR_SOURCE(WebCore, MediaRemote, MRMediaRemoteSetNowPlayingVisibility, void, (MROriginRef origin, MRNowPlayingClientVisibility visibility), (origin, visibility))
-SOFT_LINK_FUNCTION_FOR_SOURCE(WebCore, MediaRemote, MRMediaRemoteCommandInfoCreate, MRMediaRemoteCommandInfoRef, (CFAllocatorRef allocator), (allocator));
-SOFT_LINK_FUNCTION_FOR_SOURCE(WebCore, MediaRemote, MRMediaRemoteCommandInfoSetCommand, void, (MRMediaRemoteCommandInfoRef commandInfo, MRMediaRemoteCommand command), (commandInfo, command))
-SOFT_LINK_FUNCTION_FOR_SOURCE(WebCore, MediaRemote, MRMediaRemoteCommandInfoSetEnabled, void, (MRMediaRemoteCommandInfoRef commandInfo, Boolean enabled), (commandInfo, enabled))
-SOFT_LINK_FUNCTION_FOR_SOURCE(WebCore, MediaRemote, MRMediaRemoteCommandInfoSetOptions, void, (MRMediaRemoteCommandInfoRef commandInfo, CFDictionaryRef options), (commandInfo, options))
-SOFT_LINK_FUNCTION_FOR_SOURCE(WebCore, MediaRemote, MRMediaRemoteSetCanBeNowPlayingApplication, Boolean, (Boolean flag), (flag))
-SOFT_LINK_FUNCTION_FOR_SOURCE(WebCore, MediaRemote, MRMediaRemoteSetNowPlayingInfo, void, (CFDictionaryRef info), (info))
-SOFT_LINK_FUNCTION_FOR_SOURCE(WebCore, MediaRemote, MRMediaRemoteSetNowPlayingInfoWithMergePolicy, void, (CFDictionaryRef info, MRMediaRemoteMergePolicy mergePolicy), (info, mergePolicy))
-SOFT_LINK_FUNCTION_FOR_SOURCE(WebCore, MediaRemote, MRMediaRemoteSetNowPlayingApplicationPlaybackStateForOrigin, void, (MROriginRef origin, MRPlaybackState playbackState, dispatch_queue_t replyQ, void(^completion)(MRMediaRemoteError)), (origin, playbackState, replyQ, completion))
-SOFT_LINK_FUNCTION_MAY_FAIL_FOR_SOURCE(WebCore, MediaRemote, MRMediaRemoteSetParentApplication, void, (MROriginRef origin, CFStringRef parentAppDisplayID), (origin, parentAppDisplayID))
-SOFT_LINK_CONSTANT_FOR_SOURCE(WebCore, MediaRemote, kMRMediaRemoteNowPlayingInfoTitle, CFStringRef);
-SOFT_LINK_CONSTANT_FOR_SOURCE(WebCore, MediaRemote, kMRMediaRemoteNowPlayingInfoArtist, CFStringRef);
-SOFT_LINK_CONSTANT_FOR_SOURCE(WebCore, MediaRemote, kMRMediaRemoteNowPlayingInfoAlbum, CFStringRef);
-SOFT_LINK_CONSTANT_FOR_SOURCE(WebCore, MediaRemote, kMRMediaRemoteNowPlayingInfoArtworkData, CFStringRef);
-SOFT_LINK_CONSTANT_FOR_SOURCE(WebCore, MediaRemote, kMRMediaRemoteNowPlayingInfoArtworkDataHeight, CFStringRef);
-SOFT_LINK_CONSTANT_FOR_SOURCE(WebCore, MediaRemote, kMRMediaRemoteNowPlayingInfoArtworkDataWidth, CFStringRef);
-SOFT_LINK_CONSTANT_FOR_SOURCE(WebCore, MediaRemote, kMRMediaRemoteNowPlayingInfoArtworkMIMEType, CFStringRef);
-SOFT_LINK_CONSTANT_FOR_SOURCE(WebCore, MediaRemote, kMRMediaRemoteNowPlayingInfoArtworkIdentifier, CFStringRef);
-SOFT_LINK_CONSTANT_FOR_SOURCE(WebCore, MediaRemote, kMRMediaRemoteNowPlayingInfoDuration, CFStringRef);
-SOFT_LINK_CONSTANT_FOR_SOURCE(WebCore, MediaRemote, kMRMediaRemoteNowPlayingInfoElapsedTime, CFStringRef);
-SOFT_LINK_CONSTANT_FOR_SOURCE(WebCore, MediaRemote, kMRMediaRemoteNowPlayingInfoPlaybackRate, CFStringRef);
-SOFT_LINK_CONSTANT_FOR_SOURCE(WebCore, MediaRemote, kMRMediaRemoteOptionPlaybackPosition, CFStringRef);
-SOFT_LINK_CONSTANT_FOR_SOURCE(WebCore, MediaRemote, kMRMediaRemoteNowPlayingInfoUniqueIdentifier, CFStringRef);
-SOFT_LINK_CONSTANT_FOR_SOURCE(WebCore, MediaRemote, kMRMediaRemoteOptionSkipInterval, CFStringRef);
-SOFT_LINK_CONSTANT_FOR_SOURCE(WebCore, MediaRemote, kMRMediaRemoteCommandInfoPreferredIntervalsKey, CFStringRef);
+SOFT_LINK_FUNCTION_FOR_SOURCE(CyberCore, MediaRemote, MRMediaRemoteGetLocalOrigin, MROriginRef, (), ())
+SOFT_LINK_FUNCTION_FOR_SOURCE(CyberCore, MediaRemote, MRMediaRemoteAddAsyncCommandHandlerBlock, void*, (MRMediaRemoteAsyncCommandHandlerBlock block), (block))
+SOFT_LINK_FUNCTION_FOR_SOURCE(CyberCore, MediaRemote, MRMediaRemoteRemoveCommandHandlerBlock, void, (void* observer), (observer))
+SOFT_LINK_FUNCTION_FOR_SOURCE(CyberCore, MediaRemote, MRMediaRemoteSetSupportedCommands, void, (CFArrayRef commands, MROriginRef origin, dispatch_queue_t replyQ, void(^completion)(MRMediaRemoteError err)), (commands, origin, replyQ, completion))
+SOFT_LINK_FUNCTION_MAY_FAIL_FOR_SOURCE(CyberCore, MediaRemote, MRMediaRemoteSetNowPlayingVisibility, void, (MROriginRef origin, MRNowPlayingClientVisibility visibility), (origin, visibility))
+SOFT_LINK_FUNCTION_FOR_SOURCE(CyberCore, MediaRemote, MRMediaRemoteCommandInfoCreate, MRMediaRemoteCommandInfoRef, (CFAllocatorRef allocator), (allocator));
+SOFT_LINK_FUNCTION_FOR_SOURCE(CyberCore, MediaRemote, MRMediaRemoteCommandInfoSetCommand, void, (MRMediaRemoteCommandInfoRef commandInfo, MRMediaRemoteCommand command), (commandInfo, command))
+SOFT_LINK_FUNCTION_FOR_SOURCE(CyberCore, MediaRemote, MRMediaRemoteCommandInfoSetEnabled, void, (MRMediaRemoteCommandInfoRef commandInfo, Boolean enabled), (commandInfo, enabled))
+SOFT_LINK_FUNCTION_FOR_SOURCE(CyberCore, MediaRemote, MRMediaRemoteCommandInfoSetOptions, void, (MRMediaRemoteCommandInfoRef commandInfo, CFDictionaryRef options), (commandInfo, options))
+SOFT_LINK_FUNCTION_FOR_SOURCE(CyberCore, MediaRemote, MRMediaRemoteSetCanBeNowPlayingApplication, Boolean, (Boolean flag), (flag))
+SOFT_LINK_FUNCTION_FOR_SOURCE(CyberCore, MediaRemote, MRMediaRemoteSetNowPlayingInfo, void, (CFDictionaryRef info), (info))
+SOFT_LINK_FUNCTION_FOR_SOURCE(CyberCore, MediaRemote, MRMediaRemoteSetNowPlayingInfoWithMergePolicy, void, (CFDictionaryRef info, MRMediaRemoteMergePolicy mergePolicy), (info, mergePolicy))
+SOFT_LINK_FUNCTION_FOR_SOURCE(CyberCore, MediaRemote, MRMediaRemoteSetNowPlayingApplicationPlaybackStateForOrigin, void, (MROriginRef origin, MRPlaybackState playbackState, dispatch_queue_t replyQ, void(^completion)(MRMediaRemoteError)), (origin, playbackState, replyQ, completion))
+SOFT_LINK_FUNCTION_MAY_FAIL_FOR_SOURCE(CyberCore, MediaRemote, MRMediaRemoteSetParentApplication, void, (MROriginRef origin, CFStringRef parentAppDisplayID), (origin, parentAppDisplayID))
+SOFT_LINK_CONSTANT_FOR_SOURCE(CyberCore, MediaRemote, kMRMediaRemoteNowPlayingInfoTitle, CFStringRef);
+SOFT_LINK_CONSTANT_FOR_SOURCE(CyberCore, MediaRemote, kMRMediaRemoteNowPlayingInfoArtist, CFStringRef);
+SOFT_LINK_CONSTANT_FOR_SOURCE(CyberCore, MediaRemote, kMRMediaRemoteNowPlayingInfoAlbum, CFStringRef);
+SOFT_LINK_CONSTANT_FOR_SOURCE(CyberCore, MediaRemote, kMRMediaRemoteNowPlayingInfoArtworkData, CFStringRef);
+SOFT_LINK_CONSTANT_FOR_SOURCE(CyberCore, MediaRemote, kMRMediaRemoteNowPlayingInfoArtworkDataHeight, CFStringRef);
+SOFT_LINK_CONSTANT_FOR_SOURCE(CyberCore, MediaRemote, kMRMediaRemoteNowPlayingInfoArtworkDataWidth, CFStringRef);
+SOFT_LINK_CONSTANT_FOR_SOURCE(CyberCore, MediaRemote, kMRMediaRemoteNowPlayingInfoArtworkMIMEType, CFStringRef);
+SOFT_LINK_CONSTANT_FOR_SOURCE(CyberCore, MediaRemote, kMRMediaRemoteNowPlayingInfoArtworkIdentifier, CFStringRef);
+SOFT_LINK_CONSTANT_FOR_SOURCE(CyberCore, MediaRemote, kMRMediaRemoteNowPlayingInfoDuration, CFStringRef);
+SOFT_LINK_CONSTANT_FOR_SOURCE(CyberCore, MediaRemote, kMRMediaRemoteNowPlayingInfoElapsedTime, CFStringRef);
+SOFT_LINK_CONSTANT_FOR_SOURCE(CyberCore, MediaRemote, kMRMediaRemoteNowPlayingInfoPlaybackRate, CFStringRef);
+SOFT_LINK_CONSTANT_FOR_SOURCE(CyberCore, MediaRemote, kMRMediaRemoteOptionPlaybackPosition, CFStringRef);
+SOFT_LINK_CONSTANT_FOR_SOURCE(CyberCore, MediaRemote, kMRMediaRemoteNowPlayingInfoUniqueIdentifier, CFStringRef);
+SOFT_LINK_CONSTANT_FOR_SOURCE(CyberCore, MediaRemote, kMRMediaRemoteOptionSkipInterval, CFStringRef);
+SOFT_LINK_CONSTANT_FOR_SOURCE(CyberCore, MediaRemote, kMRMediaRemoteCommandInfoPreferredIntervalsKey, CFStringRef);
 
 #if PLATFORM(IOS_FAMILY)
-SOFT_LINK_FUNCTION_FOR_SOURCE(WebCore, MediaRemote, MRMediaRemoteCopyPickableRoutes, CFArrayRef, (), ());
+SOFT_LINK_FUNCTION_FOR_SOURCE(CyberCore, MediaRemote, MRMediaRemoteCopyPickableRoutes, CFArrayRef, (), ());
 #endif

@@ -52,7 +52,7 @@
 #import <pal/cocoa/AVFoundationSoftLink.h>
 #import <pal/cocoa/MediaToolboxSoftLink.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static const double kRingBufferDuration = 1;
 

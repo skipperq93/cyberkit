@@ -33,7 +33,7 @@
 #include "FontCache.h"
 #include "FontCascadeDescription.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 FontFamilyName::FontFamilyName() = default;
 
@@ -137,4 +137,4 @@ Ref<FontCascadeFonts> FontCascadeCache::retrieveOrAddCachedFonts(const FontCasca
     return glyphs;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

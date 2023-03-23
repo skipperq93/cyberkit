@@ -27,7 +27,7 @@
 
 #include <wtf/EnumTraits.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class StorageType : uint8_t {
     Session,
@@ -45,16 +45,16 @@ inline bool isPersistentLocalStorage(StorageType storageType)
     return storageType == StorageType::Local || storageType == StorageType::TransientLocal;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::StorageType> {
+template<> struct EnumTraits<CyberCore::StorageType> {
     using values = EnumValues<
-        WebCore::StorageType,
-        WebCore::StorageType::Session,
-        WebCore::StorageType::Local,
-        WebCore::StorageType::TransientLocal
+        CyberCore::StorageType,
+        CyberCore::StorageType::Session,
+        CyberCore::StorageType::Local,
+        CyberCore::StorageType::TransientLocal
     >;
 };
 

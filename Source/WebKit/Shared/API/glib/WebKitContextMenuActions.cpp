@@ -24,7 +24,7 @@
 #include <CyberCore/LocalizedStrings.h>
 #include <wtf/text/WTFString.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 bool webkitContextMenuActionIsCheckable(WebKitContextMenuAction action)
 {

@@ -37,7 +37,7 @@
 
 #if ENABLE(SERVICE_WORKER)
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(FetchEvent);
 
@@ -205,6 +205,6 @@ void FetchEvent::navigationPreloadFailed(ResourceError&& error)
     m_preloadResponsePromise->reject(Exception { TypeError, error.sanitizedDescription() });
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

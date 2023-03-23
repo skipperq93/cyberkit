@@ -29,7 +29,7 @@
 #include <variant>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct PerformanceMeasureOptions {
     JSC::JSValue detail;

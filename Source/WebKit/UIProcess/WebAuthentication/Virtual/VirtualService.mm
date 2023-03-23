@@ -41,14 +41,14 @@
 
 namespace WebKit {
 using namespace fido;
-using namespace WebCore;
+using namespace CyberCore;
 
 VirtualService::VirtualService(Observer& observer, Vector<std::pair<String, VirtualAuthenticatorConfiguration>>& authenticators)
     : AuthenticatorTransportService(observer), m_authenticators(authenticators)
 {
 }
 
-UniqueRef<AuthenticatorTransportService> VirtualService::createVirtual(WebCore::AuthenticatorTransport transport, Observer& observer, Vector<std::pair<String, VirtualAuthenticatorConfiguration>>& authenticators)
+UniqueRef<AuthenticatorTransportService> VirtualService::createVirtual(CyberCore::AuthenticatorTransport transport, Observer& observer, Vector<std::pair<String, VirtualAuthenticatorConfiguration>>& authenticators)
 {
     return makeUniqueRef<VirtualService>(observer, authenticators);
 }
@@ -70,12 +70,12 @@ void VirtualService::startDiscoveryInternal()
         auto config = authenticator.second;
         auto authenticatorId = authenticator.first;
         switch (config.transport) {
-        case WebCore::AuthenticatorTransport::Nfc:
-        case WebCore::AuthenticatorTransport::Ble:
-        case WebCore::AuthenticatorTransport::Usb:
+        case CyberCore::AuthenticatorTransport::Nfc:
+        case CyberCore::AuthenticatorTransport::Ble:
+        case CyberCore::AuthenticatorTransport::Usb:
             observer()->authenticatorAdded(CtapAuthenticator::create(WTF::makeUnique<CtapHidDriver>(makeUniqueRef<VirtualHidConnection>(authenticatorId, config, WeakPtr { static_cast<VirtualAuthenticatorManager *>(observer()) })), authenticatorInfoForConfig(config)));
             break;
-        case WebCore::AuthenticatorTransport::Internal:
+        case CyberCore::AuthenticatorTransport::Internal:
             observer()->authenticatorAdded(LocalAuthenticator::create(makeUniqueRef<VirtualLocalConnection>(config)));
             break;
         default:

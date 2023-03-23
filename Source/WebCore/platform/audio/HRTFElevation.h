@@ -35,7 +35,7 @@
 #include <wtf/RefPtr.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // HRTFElevation contains all of the HRTFKernels (one left ear and one right ear per azimuth angle) for a particular elevation.
 
@@ -104,6 +104,6 @@ private:
     float m_sampleRate;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // HRTFElevation_h

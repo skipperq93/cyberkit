@@ -25,8 +25,8 @@
 
 #import <CyberKitLegacy/DOMCDATASection.h>
 
-namespace WebCore {
+namespace CyberCore {
 class CDATASection;
 }
 
-DOMCDATASection *kit(WebCore::CDATASection*);
+DOMCDATASection *kit(CyberCore::CDATASection*);

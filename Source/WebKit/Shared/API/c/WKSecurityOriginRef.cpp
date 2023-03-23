@@ -37,12 +37,12 @@ WKTypeID WKSecurityOriginGetTypeID()
 
 WKSecurityOriginRef WKSecurityOriginCreateFromString(WKStringRef string)
 {
-    return WebKit::toAPI(&API::SecurityOrigin::create(WebCore::SecurityOrigin::createFromString(WebKit::toImpl(string)->string())).leakRef());
+    return WebKit::toAPI(&API::SecurityOrigin::create(CyberCore::SecurityOrigin::createFromString(WebKit::toImpl(string)->string())).leakRef());
 }
 
 WKSecurityOriginRef WKSecurityOriginCreateFromDatabaseIdentifier(WKStringRef identifier)
 {
-    auto origin = WebCore::SecurityOriginData::fromDatabaseIdentifier(WebKit::toImpl(identifier)->string());
+    auto origin = CyberCore::SecurityOriginData::fromDatabaseIdentifier(WebKit::toImpl(identifier)->string());
     if (!origin)
         return nullptr;
     return WebKit::toAPI(&API::SecurityOrigin::create(origin.value().securityOrigin()).leakRef());

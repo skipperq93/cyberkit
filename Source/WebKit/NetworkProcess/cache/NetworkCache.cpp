@@ -105,7 +105,7 @@ Cache::Cache(NetworkProcess& networkProcess, const String& storageDirectory, Ref
 {
 #if ENABLE(NETWORK_CACHE_SPECULATIVE_REVALIDATION)
     if (options.contains(CacheOption::SpeculativeRevalidation)) {
-        m_lowPowerModeNotifier = makeUnique<WebCore::LowPowerModeNotifier>([this](bool isLowPowerModeEnabled) {
+        m_lowPowerModeNotifier = makeUnique<CyberCore::LowPowerModeNotifier>([this](bool isLowPowerModeEnabled) {
             ASSERT(WTF::RunLoop::isMain());
             if (isLowPowerModeEnabled)
                 m_speculativeLoadManager = nullptr;
@@ -152,38 +152,38 @@ void Cache::updateCapacity()
     m_storage->setCapacity(newCapacity);
 }
 
-Key Cache::makeCacheKey(const WebCore::ResourceRequest& request)
+Key Cache::makeCacheKey(const CyberCore::ResourceRequest& request)
 {
     // FIXME: This implements minimal Range header disk cache support. We don't parse
     // ranges so only the same exact range request will be served from the cache.
-    String range = request.httpHeaderField(WebCore::HTTPHeaderName::Range);
+    String range = request.httpHeaderField(CyberCore::HTTPHeaderName::Range);
     return { request.cachePartition(), resourceType(), range, request.url().stringWithoutFragmentIdentifier(), m_storage->salt() };
 }
 
-static bool cachePolicyAllowsExpired(WebCore::ResourceRequestCachePolicy policy)
+static bool cachePolicyAllowsExpired(CyberCore::ResourceRequestCachePolicy policy)
 {
     switch (policy) {
-    case WebCore::ResourceRequestCachePolicy::ReturnCacheDataElseLoad:
-    case WebCore::ResourceRequestCachePolicy::ReturnCacheDataDontLoad:
+    case CyberCore::ResourceRequestCachePolicy::ReturnCacheDataElseLoad:
+    case CyberCore::ResourceRequestCachePolicy::ReturnCacheDataDontLoad:
         return true;
-    case WebCore::ResourceRequestCachePolicy::UseProtocolCachePolicy:
-    case WebCore::ResourceRequestCachePolicy::ReloadIgnoringCacheData:
-    case WebCore::ResourceRequestCachePolicy::RefreshAnyCacheData:
+    case CyberCore::ResourceRequestCachePolicy::UseProtocolCachePolicy:
+    case CyberCore::ResourceRequestCachePolicy::ReloadIgnoringCacheData:
+    case CyberCore::ResourceRequestCachePolicy::RefreshAnyCacheData:
         return false;
-    case WebCore::ResourceRequestCachePolicy::DoNotUseAnyCache:
+    case CyberCore::ResourceRequestCachePolicy::DoNotUseAnyCache:
         ASSERT_NOT_REACHED();
         return false;
     }
     return false;
 }
 
-static UseDecision responseNeedsRevalidation(NetworkSession& networkSession, const WebCore::ResourceResponse& response, WallTime timestamp, std::optional<Seconds> maxStale)
+static UseDecision responseNeedsRevalidation(NetworkSession& networkSession, const CyberCore::ResourceResponse& response, WallTime timestamp, std::optional<Seconds> maxStale)
 {
     if (response.cacheControlContainsNoCache())
         return UseDecision::Validate;
 
-    auto age = WebCore::computeCurrentAge(response, timestamp);
-    auto lifetime = WebCore::computeFreshnessLifetimeForHTTPFamily(response, timestamp);
+    auto age = CyberCore::computeCurrentAge(response, timestamp);
+    auto lifetime = CyberCore::computeFreshnessLifetimeForHTTPFamily(response, timestamp);
 
     auto maximumStaleness = maxStale ? maxStale.value() : 0_ms;
     bool hasExpired = age - lifetime > maximumStaleness;
@@ -207,9 +207,9 @@ static UseDecision responseNeedsRevalidation(NetworkSession& networkSession, con
     return UseDecision::Use;
 }
 
-static UseDecision responseNeedsRevalidation(NetworkSession& networkSession, const WebCore::ResourceResponse& response, const WebCore::ResourceRequest& request, WallTime timestamp)
+static UseDecision responseNeedsRevalidation(NetworkSession& networkSession, const CyberCore::ResourceResponse& response, const CyberCore::ResourceRequest& request, WallTime timestamp)
 {
-    auto requestDirectives = WebCore::parseCacheControlDirectives(request.httpHeaderFields());
+    auto requestDirectives = CyberCore::parseCacheControlDirectives(request.httpHeaderFields());
     if (requestDirectives.noCache)
         return UseDecision::Validate;
     // For requests we ignore max-age values other than zero.
@@ -219,14 +219,14 @@ static UseDecision responseNeedsRevalidation(NetworkSession& networkSession, con
     return responseNeedsRevalidation(networkSession, response, timestamp, requestDirectives.maxStale);
 }
 
-static UseDecision makeUseDecision(NetworkProcess& networkProcess, PAL::SessionID sessionID, const Entry& entry, const WebCore::ResourceRequest& request)
+static UseDecision makeUseDecision(NetworkProcess& networkProcess, PAL::SessionID sessionID, const Entry& entry, const CyberCore::ResourceRequest& request)
 {
     // The request is conditional so we force revalidation from the network. We merely check the disk cache
     // so we can update the cache entry.
     if (request.isConditional() && !entry.redirectRequest())
         return UseDecision::Validate;
 
-    if (!WebCore::verifyVaryingRequestHeaders(networkProcess.storageSession(sessionID), entry.varyingRequestHeaders(), request))
+    if (!CyberCore::verifyVaryingRequestHeaders(networkProcess.storageSession(sessionID), entry.varyingRequestHeaders(), request))
         return UseDecision::NoDueToVaryingHeaderMismatch;
 
     // We never revalidate in the case of a history navigation.
@@ -243,14 +243,14 @@ static UseDecision makeUseDecision(NetworkProcess& networkProcess, PAL::SessionI
     return entry.redirectRequest() ? UseDecision::NoDueToExpiredRedirect : UseDecision::Validate;
 }
 
-static RetrieveDecision makeRetrieveDecision(const WebCore::ResourceRequest& request)
+static RetrieveDecision makeRetrieveDecision(const CyberCore::ResourceRequest& request)
 {
-    ASSERT(request.cachePolicy() != WebCore::ResourceRequestCachePolicy::DoNotUseAnyCache);
+    ASSERT(request.cachePolicy() != CyberCore::ResourceRequestCachePolicy::DoNotUseAnyCache);
 
     // FIXME: Support HEAD requests.
     if (request.httpMethod() != "GET"_s)
         return RetrieveDecision::NoDueToHTTPMethod;
-    if (request.cachePolicy() == WebCore::ResourceRequestCachePolicy::ReloadIgnoringCacheData && !request.isConditional())
+    if (request.cachePolicy() == CyberCore::ResourceRequestCachePolicy::ReloadIgnoringCacheData && !request.isConditional())
         return RetrieveDecision::NoDueToReloadIgnoringCache;
 
     return RetrieveDecision::Yes;
@@ -261,7 +261,7 @@ static bool isMediaMIMEType(const String& type)
     return startsWithLettersIgnoringASCIICase(type, "video/"_s) || startsWithLettersIgnoringASCIICase(type, "audio/"_s);
 }
 
-static StoreDecision makeStoreDecision(const WebCore::ResourceRequest& originalRequest, const WebCore::ResourceResponse& response, size_t bodySize)
+static StoreDecision makeStoreDecision(const CyberCore::ResourceRequest& originalRequest, const CyberCore::ResourceResponse& response, size_t bodySize)
 {
     if (!originalRequest.url().protocolIsInHTTPFamily() || !response.isInHTTPFamily())
         return StoreDecision::NoDueToProtocol;
@@ -269,23 +269,23 @@ static StoreDecision makeStoreDecision(const WebCore::ResourceRequest& originalR
     if (originalRequest.httpMethod() != "GET"_s)
         return StoreDecision::NoDueToHTTPMethod;
 
-    auto requestDirectives = WebCore::parseCacheControlDirectives(originalRequest.httpHeaderFields());
+    auto requestDirectives = CyberCore::parseCacheControlDirectives(originalRequest.httpHeaderFields());
     if (requestDirectives.noStore)
         return StoreDecision::NoDueToNoStoreRequest;
 
     if (response.cacheControlContainsNoStore())
         return StoreDecision::NoDueToNoStoreResponse;
 
-    if (!WebCore::isStatusCodeCacheableByDefault(response.httpStatusCode())) {
+    if (!CyberCore::isStatusCodeCacheableByDefault(response.httpStatusCode())) {
         // http://tools.ietf.org/html/rfc7234#section-4.3.2
         bool hasExpirationHeaders = response.expires() || response.cacheControlMaxAge();
-        bool expirationHeadersAllowCaching = WebCore::isStatusCodePotentiallyCacheable(response.httpStatusCode()) && hasExpirationHeaders;
+        bool expirationHeadersAllowCaching = CyberCore::isStatusCodePotentiallyCacheable(response.httpStatusCode()) && hasExpirationHeaders;
         if (!expirationHeadersAllowCaching)
             return StoreDecision::NoDueToHTTPStatusCode;
     }
 
-    bool isMainResource = originalRequest.requester() == WebCore::ResourceRequestRequester::Main;
-    bool storeUnconditionallyForHistoryNavigation = isMainResource || originalRequest.priority() == WebCore::ResourceLoadPriority::VeryHigh;
+    bool isMainResource = originalRequest.requester() == CyberCore::ResourceRequestRequester::Main;
+    bool storeUnconditionallyForHistoryNavigation = isMainResource || originalRequest.priority() == CyberCore::ResourceLoadPriority::VeryHigh;
     if (!storeUnconditionallyForHistoryNavigation) {
         auto now = WallTime::now();
         Seconds allowedStale { 0_ms };
@@ -293,7 +293,7 @@ static StoreDecision makeStoreDecision(const WebCore::ResourceRequest& originalR
         if (auto value = response.cacheControlStaleWhileRevalidate())
             allowedStale = value.value();
 #endif
-        bool hasNonZeroLifetime = !response.cacheControlContainsNoCache() && (WebCore::computeFreshnessLifetimeForHTTPFamily(response, now) > 0_ms || allowedStale > 0_ms);
+        bool hasNonZeroLifetime = !response.cacheControlContainsNoCache() && (CyberCore::computeFreshnessLifetimeForHTTPFamily(response, now) > 0_ms || allowedStale > 0_ms);
         bool possiblyReusable = response.hasCacheValidatorFields() || hasNonZeroLifetime;
         if (!possiblyReusable)
             return StoreDecision::NoDueToUnlikelyToReuse;
@@ -304,8 +304,8 @@ static StoreDecision makeStoreDecision(const WebCore::ResourceRequest& originalR
     // FIXME: We should introduce a separate media cache partition that doesn't affect other resources.
     // FIXME: We should also make sure make the MSE paths are copy-free so we can use mapped buffers from disk effectively.
     auto requester = originalRequest.requester();
-    bool isDefinitelyStreamingMedia = requester == WebCore::ResourceRequestRequester::Media;
-    bool isLikelyStreamingMedia = requester == WebCore::ResourceRequestRequester::XHR && isMediaMIMEType(response.mimeType());
+    bool isDefinitelyStreamingMedia = requester == CyberCore::ResourceRequestRequester::Media;
+    bool isLikelyStreamingMedia = requester == CyberCore::ResourceRequestRequester::XHR && isMediaMIMEType(response.mimeType());
     if (isLikelyStreamingMedia || isDefinitelyStreamingMedia)
         return StoreDecision::NoDueToStreamingMedia;
 
@@ -313,23 +313,23 @@ static StoreDecision makeStoreDecision(const WebCore::ResourceRequest& originalR
 }
 
 #if ENABLE(NETWORK_CACHE_SPECULATIVE_REVALIDATION)
-static bool inline canRequestUseSpeculativeRevalidation(const WebCore::ResourceRequest& request)
+static bool inline canRequestUseSpeculativeRevalidation(const CyberCore::ResourceRequest& request)
 {
     if (request.isConditional())
         return false;
 
-    if (request.requester() == WebCore::ResourceRequestRequester::XHR || request.requester() == WebCore::ResourceRequestRequester::Fetch)
+    if (request.requester() == CyberCore::ResourceRequestRequester::XHR || request.requester() == CyberCore::ResourceRequestRequester::Fetch)
         return false;
 
     switch (request.cachePolicy()) {
-    case WebCore::ResourceRequestCachePolicy::ReturnCacheDataElseLoad:
-    case WebCore::ResourceRequestCachePolicy::ReturnCacheDataDontLoad:
-    case WebCore::ResourceRequestCachePolicy::ReloadIgnoringCacheData:
+    case CyberCore::ResourceRequestCachePolicy::ReturnCacheDataElseLoad:
+    case CyberCore::ResourceRequestCachePolicy::ReturnCacheDataDontLoad:
+    case CyberCore::ResourceRequestCachePolicy::ReloadIgnoringCacheData:
         return false;
-    case WebCore::ResourceRequestCachePolicy::UseProtocolCachePolicy:
-    case WebCore::ResourceRequestCachePolicy::RefreshAnyCacheData:
+    case CyberCore::ResourceRequestCachePolicy::UseProtocolCachePolicy:
+    case CyberCore::ResourceRequestCachePolicy::RefreshAnyCacheData:
         return true;
-    case WebCore::ResourceRequestCachePolicy::DoNotUseAnyCache:
+    case CyberCore::ResourceRequestCachePolicy::DoNotUseAnyCache:
         ASSERT_NOT_REACHED();
         return false;
     }
@@ -338,7 +338,7 @@ static bool inline canRequestUseSpeculativeRevalidation(const WebCore::ResourceR
 #endif
 
 #if ENABLE(NETWORK_CACHE_STALE_WHILE_REVALIDATE)
-void Cache::startAsyncRevalidationIfNeeded(const WebCore::ResourceRequest& request, const NetworkCache::Key& key, std::unique_ptr<Entry>&& entry, const GlobalFrameID& frameID, std::optional<NavigatingToAppBoundDomain> isNavigatingToAppBoundDomain, bool allowPrivacyProxy, OptionSet<WebCore::NetworkConnectionIntegrity> networkConnectionIntegrityPolicy)
+void Cache::startAsyncRevalidationIfNeeded(const CyberCore::ResourceRequest& request, const NetworkCache::Key& key, std::unique_ptr<Entry>&& entry, const GlobalFrameID& frameID, std::optional<NavigatingToAppBoundDomain> isNavigatingToAppBoundDomain, bool allowPrivacyProxy, OptionSet<CyberCore::NetworkConnectionIntegrity> networkConnectionIntegrityPolicy)
 {
     m_pendingAsyncRevalidations.ensure(key, [&] {
         auto addResult = m_pendingAsyncRevalidationByPage.ensure(frameID, [] {
@@ -355,7 +355,7 @@ void Cache::startAsyncRevalidationIfNeeded(const WebCore::ResourceRequest& reque
 }
 #endif
 
-void Cache::browsingContextRemoved(WebPageProxyIdentifier webPageProxyID, WebCore::PageIdentifier webPageID, WebCore::FrameIdentifier webFrameID)
+void Cache::browsingContextRemoved(WebPageProxyIdentifier webPageProxyID, CyberCore::PageIdentifier webPageID, CyberCore::FrameIdentifier webFrameID)
 {
 #if ENABLE(NETWORK_CACHE_STALE_WHILE_REVALIDATE)
     auto loaders = m_pendingAsyncRevalidationByPage.take({ webPageProxyID, webPageID, webFrameID });
@@ -364,7 +364,7 @@ void Cache::browsingContextRemoved(WebPageProxyIdentifier webPageProxyID, WebCor
 #endif
 }
 
-void Cache::retrieve(const WebCore::ResourceRequest& request, const GlobalFrameID& frameID, std::optional<NavigatingToAppBoundDomain> isNavigatingToAppBoundDomain, bool allowPrivacyProxy, OptionSet<WebCore::NetworkConnectionIntegrity> networkConnectionIntegrityPolicy, RetrieveCompletionHandler&& completionHandler)
+void Cache::retrieve(const CyberCore::ResourceRequest& request, const GlobalFrameID& frameID, std::optional<NavigatingToAppBoundDomain> isNavigatingToAppBoundDomain, bool allowPrivacyProxy, OptionSet<CyberCore::NetworkConnectionIntegrity> networkConnectionIntegrityPolicy, RetrieveCompletionHandler&& completionHandler)
 {
     ASSERT(request.url().protocolIsInHTTPFamily());
 
@@ -393,7 +393,7 @@ void Cache::retrieve(const WebCore::ResourceRequest& request, const GlobalFrameI
     if (canUseSpeculativeRevalidation && m_speculativeLoadManager->canRetrieve(storageKey, request, frameID)) {
         m_speculativeLoadManager->retrieve(storageKey, [networkProcess = Ref { networkProcess() }, request, completionHandler = WTFMove(completionHandler), info = WTFMove(info), sessionID = m_sessionID](std::unique_ptr<Entry> entry) mutable {
             info.wasSpeculativeLoad = true;
-            if (entry && WebCore::verifyVaryingRequestHeaders(networkProcess->storageSession(sessionID), entry->varyingRequestHeaders(), request))
+            if (entry && CyberCore::verifyVaryingRequestHeaders(networkProcess->storageSession(sessionID), entry->varyingRequestHeaders(), request))
                 completeRetrieve(WTFMove(completionHandler), WTFMove(entry), info);
             else
                 completeRetrieve(WTFMove(completionHandler), nullptr, info);
@@ -453,19 +453,19 @@ void Cache::completeRetrieve(RetrieveCompletionHandler&& handler, std::unique_pt
     handler(WTFMove(entry), info);
 }
     
-std::unique_ptr<Entry> Cache::makeEntry(const WebCore::ResourceRequest& request, const WebCore::ResourceResponse& response, PrivateRelayed privateRelayed, RefPtr<WebCore::FragmentedSharedBuffer>&& responseData)
+std::unique_ptr<Entry> Cache::makeEntry(const CyberCore::ResourceRequest& request, const CyberCore::ResourceResponse& response, PrivateRelayed privateRelayed, RefPtr<CyberCore::FragmentedSharedBuffer>&& responseData)
 {
-    return makeUnique<Entry>(makeCacheKey(request), response, privateRelayed, WTFMove(responseData), WebCore::collectVaryingRequestHeaders(networkProcess().storageSession(m_sessionID), request, response));
+    return makeUnique<Entry>(makeCacheKey(request), response, privateRelayed, WTFMove(responseData), CyberCore::collectVaryingRequestHeaders(networkProcess().storageSession(m_sessionID), request, response));
 }
 
-std::unique_ptr<Entry> Cache::makeRedirectEntry(const WebCore::ResourceRequest& request, const WebCore::ResourceResponse& response, const WebCore::ResourceRequest& redirectRequest)
+std::unique_ptr<Entry> Cache::makeRedirectEntry(const CyberCore::ResourceRequest& request, const CyberCore::ResourceResponse& response, const CyberCore::ResourceRequest& redirectRequest)
 {
     auto cachedRedirectRequest = redirectRequest;
     cachedRedirectRequest.clearHTTPAuthorization();
-    return makeUnique<Entry>(makeCacheKey(request), response, WTFMove(cachedRedirectRequest), WebCore::collectVaryingRequestHeaders(networkProcess().storageSession(m_sessionID), request, response));
+    return makeUnique<Entry>(makeCacheKey(request), response, WTFMove(cachedRedirectRequest), CyberCore::collectVaryingRequestHeaders(networkProcess().storageSession(m_sessionID), request, response));
 }
 
-std::unique_ptr<Entry> Cache::store(const WebCore::ResourceRequest& request, const WebCore::ResourceResponse& response, PrivateRelayed privateRelayed, RefPtr<WebCore::FragmentedSharedBuffer>&& responseData, Function<void(MappedBody&)>&& completionHandler)
+std::unique_ptr<Entry> Cache::store(const CyberCore::ResourceRequest& request, const CyberCore::ResourceResponse& response, PrivateRelayed privateRelayed, RefPtr<CyberCore::FragmentedSharedBuffer>&& responseData, Function<void(MappedBody&)>&& completionHandler)
 {
     ASSERT(responseData);
 
@@ -510,7 +510,7 @@ std::unique_ptr<Entry> Cache::store(const WebCore::ResourceRequest& request, con
     return cacheEntry;
 }
 
-std::unique_ptr<Entry> Cache::storeRedirect(const WebCore::ResourceRequest& request, const WebCore::ResourceResponse& response, const WebCore::ResourceRequest& redirectRequest, std::optional<Seconds> maxAgeCap)
+std::unique_ptr<Entry> Cache::storeRedirect(const CyberCore::ResourceRequest& request, const CyberCore::ResourceResponse& response, const CyberCore::ResourceRequest& redirectRequest, std::optional<Seconds> maxAgeCap)
 {
     LOG(NetworkCache, "(NetworkProcess) storing redirect %s -> %s", request.url().string().latin1().data(), redirectRequest.url().string().latin1().data());
 
@@ -538,14 +538,14 @@ std::unique_ptr<Entry> Cache::storeRedirect(const WebCore::ResourceRequest& requ
     return cacheEntry;
 }
 
-std::unique_ptr<Entry> Cache::update(const WebCore::ResourceRequest& originalRequest, const Entry& existingEntry, const WebCore::ResourceResponse& validatingResponse, PrivateRelayed privateRelayed)
+std::unique_ptr<Entry> Cache::update(const CyberCore::ResourceRequest& originalRequest, const Entry& existingEntry, const CyberCore::ResourceResponse& validatingResponse, PrivateRelayed privateRelayed)
 {
     LOG(NetworkCache, "(NetworkProcess) updating %s", originalRequest.url().string().latin1().data());
 
-    WebCore::ResourceResponse response = existingEntry.response();
-    WebCore::updateResponseHeadersAfterRevalidation(response, validatingResponse);
+    CyberCore::ResourceResponse response = existingEntry.response();
+    CyberCore::updateResponseHeadersAfterRevalidation(response, validatingResponse);
 
-    auto updateEntry = makeUnique<Entry>(existingEntry.key(), response, privateRelayed, existingEntry.buffer(), WebCore::collectVaryingRequestHeaders(networkProcess().storageSession(m_sessionID), originalRequest, response));
+    auto updateEntry = makeUnique<Entry>(existingEntry.key(), response, privateRelayed, existingEntry.buffer(), CyberCore::collectVaryingRequestHeaders(networkProcess().storageSession(m_sessionID), originalRequest, response));
     auto updateRecord = updateEntry->encodeAsStorageRecord();
 
     m_storage->store(updateRecord, { });
@@ -558,7 +558,7 @@ void Cache::remove(const Key& key)
     m_storage->remove(key);
 }
 
-void Cache::remove(const WebCore::ResourceRequest& request)
+void Cache::remove(const CyberCore::ResourceRequest& request)
 {
     remove(makeCacheKey(request));
 }
@@ -718,7 +718,7 @@ void Cache::storeData(const DataKey& dataKey, const uint8_t* data, size_t size)
 
 void Cache::fetchData(bool shouldComputeSize, CompletionHandler<void(Vector<WebsiteData::Entry>&&)>&& completionHandler)
 {
-    HashMap<WebCore::SecurityOriginData, uint64_t> originsAndSizes;
+    HashMap<CyberCore::SecurityOriginData, uint64_t> originsAndSizes;
     traverse([protectedThis = Ref { *this }, shouldComputeSize, completionHandler = WTFMove(completionHandler), originsAndSizes = WTFMove(originsAndSizes)](auto* traversalEntry) mutable {
         if (traversalEntry) {
             auto url = traversalEntry->entry.response().url();
@@ -735,16 +735,16 @@ void Cache::fetchData(bool shouldComputeSize, CompletionHandler<void(Vector<Webs
     });
 }
 
-void Cache::deleteData(const Vector<WebCore::SecurityOriginData>& origins, CompletionHandler<void()>&& completionHandler)
+void Cache::deleteData(const Vector<CyberCore::SecurityOriginData>& origins, CompletionHandler<void()>&& completionHandler)
 {
-    HashSet<WebCore::SecurityOriginData> originSet;
+    HashSet<CyberCore::SecurityOriginData> originSet;
     for (auto& origin : origins)
         originSet.add(origin);
 
     Vector<NetworkCache::Key> keysToDelete;
     traverse([this, protectedThis = Ref { *this }, originSet = WTFMove(originSet), completionHandler = WTFMove(completionHandler), keysToDelete = WTFMove(keysToDelete)](auto* traversalEntry) mutable {
         if (traversalEntry) {
-            auto origin = WebCore::SecurityOriginData::fromURLWithoutStrictOpaqueness(traversalEntry->entry.response().url());
+            auto origin = CyberCore::SecurityOriginData::fromURLWithoutStrictOpaqueness(traversalEntry->entry.response().url());
             if (originSet.contains(origin))
                 keysToDelete.append(traversalEntry->entry.key());
             return;
@@ -754,17 +754,17 @@ void Cache::deleteData(const Vector<WebCore::SecurityOriginData>& origins, Compl
     });
 }
 
-void Cache::deleteDataForRegistrableDomains(const Vector<WebCore::RegistrableDomain>& domains, CompletionHandler<void(HashSet<WebCore::RegistrableDomain>&&)>&& completionHandler)
+void Cache::deleteDataForRegistrableDomains(const Vector<CyberCore::RegistrableDomain>& domains, CompletionHandler<void(HashSet<CyberCore::RegistrableDomain>&&)>&& completionHandler)
 {
-    HashSet<WebCore::RegistrableDomain> domainSet;
+    HashSet<CyberCore::RegistrableDomain> domainSet;
     for (auto& domain : domains)
         domainSet.add(domain);
 
     Vector<NetworkCache::Key> keysToDelete;
-    HashSet<WebCore::RegistrableDomain> domainsDeleted;
+    HashSet<CyberCore::RegistrableDomain> domainsDeleted;
     traverse([this, protectedThis = Ref { *this }, domainSet = WTFMove(domainSet), completionHandler = WTFMove(completionHandler), keysToDelete = WTFMove(keysToDelete), domainsDeleted = WTFMove(domainsDeleted)](auto* traversalEntry) mutable {
         if (traversalEntry) {
-            auto domain = WebCore::RegistrableDomain { traversalEntry->entry.response().url() };
+            auto domain = CyberCore::RegistrableDomain { traversalEntry->entry.response().url() };
             if (domainSet.contains(domain)) {
                 keysToDelete.append(traversalEntry->entry.key());
                 domainsDeleted.add(domain);

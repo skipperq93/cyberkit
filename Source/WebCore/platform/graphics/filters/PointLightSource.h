@@ -26,7 +26,7 @@
 #include "LightSource.h"
 #include <wtf/Ref.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class PointLightSource : public LightSource {
 public:
@@ -49,6 +49,6 @@ private:
     mutable FloatPoint3D m_bufferPosition;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_LIGHTSOURCE(PointLightSource, LS_POINT)

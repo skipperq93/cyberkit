@@ -29,7 +29,7 @@
 #include <wtf/MainThread.h>
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 FloatingPointEnvironment& FloatingPointEnvironment::singleton()
 {
@@ -73,4 +73,4 @@ void FloatingPointEnvironment::propagateMainThreadEnvironment()
 
 #endif // PLATFORM(IOS_FAMILY) && (CPU(ARM) || CPU(ARM64))
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -22,7 +22,7 @@
 
 #include "SVGAnimateElementBase.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // SVGAnimateElement implements superset of the functionality.
 class SVGSetElement final : public SVGAnimateElementBase {
@@ -35,4 +35,4 @@ private:
     void updateAnimationMode() override;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

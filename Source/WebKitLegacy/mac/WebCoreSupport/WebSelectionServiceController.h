@@ -37,7 +37,7 @@ OBJC_CLASS NSImage;
 OBJC_CLASS NSWindow;
 OBJC_CLASS WebView;
 
-namespace WebCore {
+namespace CyberCore {
 class FrameSelection;
 class IntPoint;
 }
@@ -47,7 +47,7 @@ class WebSelectionServiceController : public WebSharingServicePickerClient {
 public:
     WebSelectionServiceController(WebView*);
 
-    void handleSelectionServiceClick(WebCore::FrameSelection&, const Vector<String>& telephoneNumbers, const WebCore::IntPoint&);
+    void handleSelectionServiceClick(CyberCore::FrameSelection&, const Vector<String>& telephoneNumbers, const CyberCore::IntPoint&);
     bool hasRelevantSelectionServices(bool isTextOnly) const;
 
     // WebSharingServicePickerClient

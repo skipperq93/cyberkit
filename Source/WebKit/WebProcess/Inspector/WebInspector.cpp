@@ -51,8 +51,8 @@ static const float minimumAttachedHeight = 250;
 static const float maximumAttachedHeightRatio = 0.75;
 static const float minimumAttachedWidth = 500;
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 Ref<WebInspector> WebInspector::create(WebPage* page)
 {
@@ -179,7 +179,7 @@ void WebInspector::showResources()
     });
 }
 
-void WebInspector::showMainResourceForFrame(WebCore::FrameIdentifier frameIdentifier)
+void WebInspector::showMainResourceForFrame(CyberCore::FrameIdentifier frameIdentifier)
 {
     WebFrame* frame = WebProcess::singleton().webFrame(frameIdentifier);
     if (!frame)
@@ -302,4 +302,4 @@ void WebInspector::updateDockingAvailability()
     WebProcess::singleton().parentProcessConnection()->send(Messages::WebInspectorUIProxy::AttachAvailabilityChanged(canAttachWindow), m_page->identifier());
 }
 
-} // namespace WebKit
+} // namespace CyberKit

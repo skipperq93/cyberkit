@@ -31,8 +31,8 @@
 
 #if PLATFORM(COCOA) && ENABLE(GPU_PROCESS) && ENABLE(MEDIA_STREAM)
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 void SampleBufferDisplayLayerManager::didReceiveLayerMessage(IPC::Connection& connection, IPC::Decoder& decoder)
 {
@@ -40,7 +40,7 @@ void SampleBufferDisplayLayerManager::didReceiveLayerMessage(IPC::Connection& co
         layer->didReceiveMessage(connection, decoder);
 }
 
-std::unique_ptr<WebCore::SampleBufferDisplayLayer> SampleBufferDisplayLayerManager::createLayer(WebCore::SampleBufferDisplayLayer::Client& client)
+std::unique_ptr<CyberCore::SampleBufferDisplayLayer> SampleBufferDisplayLayerManager::createLayer(CyberCore::SampleBufferDisplayLayer::Client& client)
 {
     auto layer = SampleBufferDisplayLayer::create(*this, client);
     if (!layer)

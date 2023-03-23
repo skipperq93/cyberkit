@@ -32,7 +32,7 @@
 
 namespace WebKit {
 
-_WKContentSecurityPolicyModeForExtension toWKContentSecurityPolicyModeForExtension(WebCore::ContentSecurityPolicyModeForExtension);
-WebCore::ContentSecurityPolicyModeForExtension toContentSecurityPolicyModeForExtension(_WKContentSecurityPolicyModeForExtension);
+_WKContentSecurityPolicyModeForExtension toWKContentSecurityPolicyModeForExtension(CyberCore::ContentSecurityPolicyModeForExtension);
+CyberCore::ContentSecurityPolicyModeForExtension toContentSecurityPolicyModeForExtension(_WKContentSecurityPolicyModeForExtension);
 
 } // namespace WebKit

@@ -75,7 +75,7 @@
     if (!m_page)
         return nil;
     
-    WebCore::IntPoint convertedPoint = m_page->accessibilityScreenToRootView(WebCore::IntPoint(point));
+    CyberCore::IntPoint convertedPoint = m_page->accessibilityScreenToRootView(CyberCore::IntPoint(point));
     return [[self accessibilityRootObjectWrapper] accessibilityHitTest:convertedPoint];
 }
 

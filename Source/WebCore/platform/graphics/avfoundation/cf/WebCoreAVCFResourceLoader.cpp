@@ -24,7 +24,7 @@
  */
 
 #include "config.h"
-#include "WebCoreAVCFResourceLoader.h"
+#include "CyberCoreAVCFResourceLoader.h"
 
 #if ENABLE(VIDEO) && USE(AVFOUNDATION) && HAVE(AVFOUNDATION_LOADER_DELEGATE)
 
@@ -38,27 +38,27 @@
 #include <wtf/SoftLinking.h>
 #include <wtf/text/CString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
-Ref<WebCoreAVCFResourceLoader> WebCoreAVCFResourceLoader::create(MediaPlayerPrivateAVFoundationCF* parent, AVCFAssetResourceLoadingRequestRef avRequest)
+Ref<CyberCoreAVCFResourceLoader> CyberCoreAVCFResourceLoader::create(MediaPlayerPrivateAVFoundationCF* parent, AVCFAssetResourceLoadingRequestRef avRequest)
 {
     ASSERT(avRequest);
     ASSERT(parent);
-    return adoptRef(*new WebCoreAVCFResourceLoader(parent, avRequest));
+    return adoptRef(*new CyberCoreAVCFResourceLoader(parent, avRequest));
 }
 
-WebCoreAVCFResourceLoader::WebCoreAVCFResourceLoader(MediaPlayerPrivateAVFoundationCF* parent, AVCFAssetResourceLoadingRequestRef avRequest)
+CyberCoreAVCFResourceLoader::CyberCoreAVCFResourceLoader(MediaPlayerPrivateAVFoundationCF* parent, AVCFAssetResourceLoadingRequestRef avRequest)
     : m_parent(parent)
     , m_avRequest(avRequest)
 {
 }
 
-WebCoreAVCFResourceLoader::~WebCoreAVCFResourceLoader()
+CyberCoreAVCFResourceLoader::~CyberCoreAVCFResourceLoader()
 {
     stopLoading();
 }
 
-void WebCoreAVCFResourceLoader::startLoading()
+void CyberCoreAVCFResourceLoader::startLoading()
 {
     if (m_resource || !m_parent)
         return;
@@ -94,7 +94,7 @@ void WebCoreAVCFResourceLoader::startLoading()
     }
 }
 
-void WebCoreAVCFResourceLoader::stopLoading()
+void CyberCoreAVCFResourceLoader::stopLoading()
 {
     if (!m_resource)
         return;
@@ -106,7 +106,7 @@ void WebCoreAVCFResourceLoader::stopLoading()
         m_parent->didStopLoadingRequest(m_avRequest.get());
 }
 
-void WebCoreAVCFResourceLoader::invalidate()
+void CyberCoreAVCFResourceLoader::invalidate()
 {
     if (!m_parent)
         return;
@@ -118,7 +118,7 @@ void WebCoreAVCFResourceLoader::invalidate()
     });
 }
 
-void WebCoreAVCFResourceLoader::responseReceived(CachedResource& resource, const ResourceResponse& response, CompletionHandler<void()>&& completionHandler)
+void CyberCoreAVCFResourceLoader::responseReceived(CachedResource& resource, const ResourceResponse& response, CompletionHandler<void()>&& completionHandler)
 {
     ASSERT_UNUSED(resource, &resource == m_resource);
     CompletionHandlerCallingScope completionHandlerCaller(WTFMove(completionHandler));
@@ -133,12 +133,12 @@ void WebCoreAVCFResourceLoader::responseReceived(CachedResource& resource, const
     notImplemented();
 }
 
-void WebCoreAVCFResourceLoader::dataReceived(CachedResource& resource, const SharedBuffer&)
+void CyberCoreAVCFResourceLoader::dataReceived(CachedResource& resource, const SharedBuffer&)
 {
     fulfillRequestWithResource(resource);
 }
 
-void WebCoreAVCFResourceLoader::notifyFinished(CachedResource& resource, const NetworkLoadMetrics&)
+void CyberCoreAVCFResourceLoader::notifyFinished(CachedResource& resource, const NetworkLoadMetrics&)
 {
     if (resource.loadFailedOrCanceled()) {
         // <rdar://problem/13987417> Set the contentType of the contentInformationRequest to an empty
@@ -157,7 +157,7 @@ void WebCoreAVCFResourceLoader::notifyFinished(CachedResource& resource, const N
     stopLoading();
 }
 
-void WebCoreAVCFResourceLoader::fulfillRequestWithResource(CachedResource& resource)
+void CyberCoreAVCFResourceLoader::fulfillRequestWithResource(CachedResource& resource)
 {
     ASSERT_UNUSED(resource, &resource == m_resource);
     notImplemented();

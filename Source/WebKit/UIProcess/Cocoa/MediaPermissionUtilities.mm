@@ -112,7 +112,7 @@ static NSString* visibleDomain(const String& host)
     return startsWithLettersIgnoringASCIICase(domain, "www."_s) ? StringView(domain).substring(4).createNSString().autorelease() : static_cast<NSString *>(domain);
 }
 
-NSString *applicationVisibleNameFromOrigin(const WebCore::SecurityOriginData& origin)
+NSString *applicationVisibleNameFromOrigin(const CyberCore::SecurityOriginData& origin)
 {
     if (origin.protocol() != "http"_s && origin.protocol() != "https"_s)
         return nil;
@@ -128,7 +128,7 @@ NSString *applicationVisibleName()
     return displayName ?: readableName;
 }
 
-static NSString *alertMessageText(MediaPermissionReason reason, const WebCore::SecurityOriginData& origin)
+static NSString *alertMessageText(MediaPermissionReason reason, const CyberCore::SecurityOriginData& origin)
 {
     NSString *visibleOrigin = applicationVisibleNameFromOrigin(origin);
     if (!visibleOrigin)
@@ -188,7 +188,7 @@ static NSString *doNotAllowButtonText(MediaPermissionReason reason)
     }
 }
 
-void alertForPermission(WebPageProxy& page, MediaPermissionReason reason, const WebCore::SecurityOriginData& origin, CompletionHandler<void(bool)>&& completionHandler)
+void alertForPermission(WebPageProxy& page, MediaPermissionReason reason, const CyberCore::SecurityOriginData& origin, CompletionHandler<void(bool)>&& completionHandler)
 {
     ASSERT(isMainRunLoop());
 

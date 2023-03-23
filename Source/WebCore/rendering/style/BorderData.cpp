@@ -30,7 +30,7 @@
 #include "RenderStyle.h"
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 bool BorderData::isEquivalentForPainting(const BorderData& other, bool currentColorDiffers) const
 {
@@ -89,4 +89,4 @@ TextStream& operator<<(TextStream& ts, const BorderData& borderData)
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

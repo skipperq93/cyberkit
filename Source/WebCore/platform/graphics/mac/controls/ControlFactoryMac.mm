@@ -53,7 +53,7 @@
 #import <pal/spi/mac/NSViewSPI.h>
 #import <wtf/BlockObjCExceptions.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 std::unique_ptr<ControlFactory> ControlFactory::createControlFactory()
 {
@@ -217,7 +217,7 @@ NSTextFieldCell *ControlFactoryMac::textFieldCell() const
         [m_textFieldCell setBezeled:YES];
         [m_textFieldCell setEditable:YES];
         [m_textFieldCell setFocusRingType:NSFocusRingTypeExterior];
-        // Post-Lion, WebCore can be in charge of paintinng the background thanks to
+        // Post-Lion, CyberCore can be in charge of paintinng the background thanks to
         // the workaround in place for <rdar://problem/11385461>, which is implemented
         // above as _coreUIDrawOptionsWithFrame.
         [m_textFieldCell setDrawsBackground:NO];
@@ -310,6 +310,6 @@ std::unique_ptr<PlatformControl> ControlFactoryMac::createPlatformToggleButton(T
     return makeUnique<ToggleButtonMac>(part, *this, part.type() == StyleAppearance::Checkbox ? checkboxCell() : radioCell());
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(MAC)

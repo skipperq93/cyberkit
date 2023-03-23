@@ -29,7 +29,7 @@
 #include <unicode/uchar.h>
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
     inline bool requiresContextForWordBoundary(UChar32 character)
     {

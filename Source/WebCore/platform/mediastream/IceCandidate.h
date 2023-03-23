@@ -34,7 +34,7 @@
 
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct IceCandidate {
     String type;
@@ -49,6 +49,6 @@ struct IceCandidate {
     unsigned relatedPort { 0 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

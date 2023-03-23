@@ -127,9 +127,9 @@ ALLOW_DEPRECATED_DECLARATIONS_END
     _waitingForSnapshot = YES;
 
     RetainPtr<_WKThumbnailView> thumbnailView = self;
-    WebCore::IntRect snapshotRect(WebCore::IntPoint(), _webPageProxy->viewSize() - WebCore::IntSize(0, _webPageProxy->topContentInset()));
+    CyberCore::IntRect snapshotRect(CyberCore::IntPoint(), _webPageProxy->viewSize() - CyberCore::IntSize(0, _webPageProxy->topContentInset()));
     WebKit::SnapshotOptions options = WebKit::SnapshotOptionsInViewCoordinates | WebKit::SnapshotOptionsUseScreenColorSpace;
-    WebCore::IntSize bitmapSize = snapshotRect.size();
+    CyberCore::IntSize bitmapSize = snapshotRect.size();
     bitmapSize.scale(_scale * _webPageProxy->deviceScaleFactor());
 
     if (!CGSizeEqualToSize(_maximumSnapshotSize, CGSizeZero)) {
@@ -138,7 +138,7 @@ ALLOW_DEPRECATED_DECLARATIONS_END
             sizeConstraintScale = CGFloatMin(sizeConstraintScale, _maximumSnapshotSize.width / bitmapSize.width());
         if (_maximumSnapshotSize.height)
             sizeConstraintScale = CGFloatMin(sizeConstraintScale, _maximumSnapshotSize.height / bitmapSize.height());
-        bitmapSize = WebCore::IntSize(CGCeiling(bitmapSize.width() * sizeConstraintScale), CGCeiling(bitmapSize.height() * sizeConstraintScale));
+        bitmapSize = CyberCore::IntSize(CGCeiling(bitmapSize.width() * sizeConstraintScale), CGCeiling(bitmapSize.height() * sizeConstraintScale));
     }
 
     _lastSnapshotScale = _scale;

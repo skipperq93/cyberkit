@@ -25,7 +25,7 @@
 #include "SVGParsingError.h"
 #include "SVGPropertyTraits.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSPrimitiveValue;
 class Element;
@@ -113,4 +113,4 @@ inline bool operator!=(const SVGLengthValue& a, const SVGLengthValue& b)
 
 WTF::TextStream& operator<<(WTF::TextStream&, const SVGLengthValue&);
 
-} // namespace WebCore
+} // namespace CyberCore

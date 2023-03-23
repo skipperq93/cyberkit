@@ -33,7 +33,7 @@
 #include <wtf/CompletionHandler.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 class BlobRegistryImpl;
 }
 
@@ -45,7 +45,7 @@ class NetworkProcess;
 class NetworkLoad final : private NetworkDataTaskClient {
     WTF_MAKE_FAST_ALLOCATED;
 public:
-    NetworkLoad(NetworkLoadClient&, WebCore::BlobRegistryImpl*, NetworkLoadParameters&&, NetworkSession&);
+    NetworkLoad(NetworkLoadClient&, CyberCore::BlobRegistryImpl*, NetworkLoadParameters&&, NetworkSession&);
     NetworkLoad(NetworkLoadClient&, NetworkSession&, const Function<RefPtr<NetworkDataTask>(NetworkDataTaskClient&)>&);
     ~NetworkLoad();
 
@@ -55,17 +55,17 @@ public:
 
     bool isAllowedToAskUserForCredentials() const;
 
-    const WebCore::ResourceRequest& currentRequest() const { return m_currentRequest; }
-    void updateRequestAfterRedirection(WebCore::ResourceRequest&) const;
-    void reprioritizeRequest(WebCore::ResourceLoadPriority);
+    const CyberCore::ResourceRequest& currentRequest() const { return m_currentRequest; }
+    void updateRequestAfterRedirection(CyberCore::ResourceRequest&) const;
+    void reprioritizeRequest(CyberCore::ResourceLoadPriority);
 
     const NetworkLoadParameters& parameters() const { return m_parameters; }
     const URL& url() const { return parameters().request.url(); }
     String attributedBundleIdentifier(WebPageProxyIdentifier);
 
-    void continueWillSendRequest(WebCore::ResourceRequest&&);
+    void continueWillSendRequest(CyberCore::ResourceRequest&&);
 
-    void convertTaskToDownload(PendingDownload&, const WebCore::ResourceRequest&, const WebCore::ResourceResponse&, ResponseCompletionHandler&&);
+    void convertTaskToDownload(PendingDownload&, const CyberCore::ResourceRequest&, const CyberCore::ResourceResponse&, ResponseCompletionHandler&&);
     void setPendingDownloadID(DownloadID);
     void setSuggestedFilename(const String&);
     void setPendingDownload(PendingDownload&);
@@ -74,15 +74,15 @@ public:
     bool shouldCaptureExtraNetworkLoadMetrics() const final;
 
     String description() const;
-    void setH2PingCallback(const URL&, CompletionHandler<void(Expected<WTF::Seconds, WebCore::ResourceError>&&)>&&);
+    void setH2PingCallback(const URL&, CompletionHandler<void(Expected<WTF::Seconds, CyberCore::ResourceError>&&)>&&);
 
 private:
     // NetworkDataTaskClient
-    void willPerformHTTPRedirection(WebCore::ResourceResponse&&, WebCore::ResourceRequest&&, RedirectCompletionHandler&&) final;
-    void didReceiveChallenge(WebCore::AuthenticationChallenge&&, NegotiatedLegacyTLS, ChallengeCompletionHandler&&) final;
-    void didReceiveResponse(WebCore::ResourceResponse&&, NegotiatedLegacyTLS, PrivateRelayed, ResponseCompletionHandler&&) final;
-    void didReceiveData(const WebCore::SharedBuffer&) final;
-    void didCompleteWithError(const WebCore::ResourceError&, const WebCore::NetworkLoadMetrics&) final;
+    void willPerformHTTPRedirection(CyberCore::ResourceResponse&&, CyberCore::ResourceRequest&&, RedirectCompletionHandler&&) final;
+    void didReceiveChallenge(CyberCore::AuthenticationChallenge&&, NegotiatedLegacyTLS, ChallengeCompletionHandler&&) final;
+    void didReceiveResponse(CyberCore::ResourceResponse&&, NegotiatedLegacyTLS, PrivateRelayed, ResponseCompletionHandler&&) final;
+    void didReceiveData(const CyberCore::SharedBuffer&) final;
+    void didCompleteWithError(const CyberCore::ResourceError&, const CyberCore::NetworkLoadMetrics&) final;
     void didSendData(uint64_t totalBytesSent, uint64_t totalBytesExpectedToSend) final;
     void wasBlocked() final;
     void cannotShowURL() final;
@@ -90,16 +90,16 @@ private:
     void wasBlockedByDisabledFTP() final;
     void didNegotiateModernTLS(const URL&) final;
 
-    void notifyDidReceiveResponse(WebCore::ResourceResponse&&, NegotiatedLegacyTLS, PrivateRelayed, ResponseCompletionHandler&&);
+    void notifyDidReceiveResponse(CyberCore::ResourceResponse&&, NegotiatedLegacyTLS, PrivateRelayed, ResponseCompletionHandler&&);
 
     std::reference_wrapper<NetworkLoadClient> m_client;
     Ref<NetworkProcess> m_networkProcess;
     const NetworkLoadParameters m_parameters;
-    CompletionHandler<void(WebCore::ResourceRequest&&)> m_redirectCompletionHandler;
+    CompletionHandler<void(CyberCore::ResourceRequest&&)> m_redirectCompletionHandler;
     RefPtr<NetworkDataTask> m_task;
     WeakPtr<NetworkLoadScheduler> m_scheduler;
 
-    WebCore::ResourceRequest m_currentRequest; // Updated on redirects.
+    CyberCore::ResourceRequest m_currentRequest; // Updated on redirects.
 };
 
 } // namespace WebKit

@@ -32,7 +32,7 @@
 #include "Page.h"
 #include "WindowProxy.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static AbstractFrame* parentFrame(HTMLFrameOwnerElement* ownerElement)
 {
@@ -88,4 +88,4 @@ void AbstractFrame::disconnectOwnerElement()
         document->frameWasDisconnectedFromOwner();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -25,9 +25,9 @@
 
 #import <CyberKitLegacy/DOMAttr.h>
 
-namespace WebCore {
+namespace CyberCore {
 class Attr;
 }
 
-WebCore::Attr* core(DOMAttr *);
-DOMAttr *kit(WebCore::Attr*);
+CyberCore::Attr* core(DOMAttr *);
+DOMAttr *kit(CyberCore::Attr*);

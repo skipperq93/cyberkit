@@ -31,7 +31,7 @@
 #import <CoreLocation/CLLocationManagerDelegate.h>
 #import <CoreLocation/CoreLocation.h>
 #import <CyberCore/GeolocationPositionData.h>
-#import <WebKitLogging.h>
+#import <CyberKitLogging.h>
 #import <objc/objc-runtime.h>
 #import <wtf/RefPtr.h>
 #import <wtf/RetainPtr.h>
@@ -48,7 +48,7 @@ SOFT_LINK_CONSTANT(CoreLocation, kCLLocationAccuracyHundredMeters, double)
 #define kCLLocationAccuracyBest getkCLLocationAccuracyBest()
 #define kCLLocationAccuracyHundredMeters getkCLLocationAccuracyHundredMeters()
 
-using namespace WebCore;
+using namespace CyberCore;
 
 @interface WebGeolocationCoreLocationProvider () <CLLocationManagerDelegate>
 @end

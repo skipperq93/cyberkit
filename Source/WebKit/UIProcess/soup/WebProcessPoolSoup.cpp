@@ -29,7 +29,7 @@
 #include "MemoryPressureMonitor.h"
 #include "NetworkProcessCreationParameters.h"
 #include "NetworkProcessMessages.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebProcessMessages.h"
 #include <wtf/Language.h>
 

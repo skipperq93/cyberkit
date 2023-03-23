@@ -395,7 +395,7 @@ Could be worth adding to the API.
 /*
  @method _reportException:inContext:
  @abstract Logs the exception to the Web Inspector. This only needs called for exceptions that
- occur while using the JavaScriptCore APIs with a context owned by a WebKit.
+ occur while using the JavaScriptCore APIs with a context owned by a CyberKit.
  @param exception The exception value to log.
  @param context   The context the exception occured in.
 */
@@ -415,9 +415,9 @@ Could be worth adding to the API.
 
 /*!
     @method canShowFile:
-    @abstract Checks if the WebKit can show the content of the file at the specified path.
+    @abstract Checks if the CyberKit can show the content of the file at the specified path.
     @param path The path of the file to check
-    @result YES if the WebKit can show the content of the file at the specified path.
+    @result YES if the CyberKit can show the content of the file at the specified path.
 */
 + (BOOL)canShowFile:(NSString *)path;
 
@@ -696,7 +696,7 @@ Could be worth adding to the API.
 
 /*!
  @method _setWantsTelephoneNumberParsing
- @abstract Explicitly disable WebKit phone number parsing on this WebView, or say that you want it enabled if possible.
+ @abstract Explicitly disable CyberKit phone number parsing on this WebView, or say that you want it enabled if possible.
  */
 
 - (void)_setWantsTelephoneNumberParsing:(BOOL)flag;

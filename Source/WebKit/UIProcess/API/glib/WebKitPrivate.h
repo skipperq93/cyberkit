@@ -30,10 +30,10 @@
 #include <CyberCore/FrameLoaderTypes.h>
 
 unsigned toPlatformModifiers(OptionSet<WebKit::WebEventModifier>);
-WebKitNavigationType toWebKitNavigationType(WebCore::NavigationType);
+WebKitNavigationType toWebKitNavigationType(CyberCore::NavigationType);
 unsigned toWebKitMouseButton(WebKit::WebMouseEventButton);
 unsigned toWebKitError(unsigned webCoreError);
-unsigned toWebCoreError(unsigned webKitError);
+unsigned toCyberCoreError(unsigned webKitError);
 
 enum SnapshotRegion {
     SnapshotRegionVisible,

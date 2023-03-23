@@ -31,7 +31,7 @@
 #include <memory>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CalcExpressionOperation final : public CalcExpressionNode {
 public:
@@ -65,4 +65,4 @@ bool operator==(const CalcExpressionOperation&, const CalcExpressionOperation&);
 
 }
 
-SPECIALIZE_TYPE_TRAITS_CALCEXPRESSION_NODE(CalcExpressionOperation, type() == WebCore::CalcExpressionNodeType::Operation)
+SPECIALIZE_TYPE_TRAITS_CALCEXPRESSION_NODE(CalcExpressionOperation, type() == CyberCore::CalcExpressionNodeType::Operation)

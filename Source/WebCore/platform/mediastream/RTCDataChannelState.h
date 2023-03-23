@@ -27,7 +27,7 @@
 
 #if ENABLE(WEB_RTC)
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class RTCDataChannelState : uint8_t {
     Connecting,
@@ -36,6 +36,6 @@ enum class RTCDataChannelState : uint8_t {
     Closed
 };
 
-}; // namespace WebCore
+}; // namespace CyberCore
 
 #endif

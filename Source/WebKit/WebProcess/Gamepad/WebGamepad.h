@@ -29,24 +29,24 @@
 
 #include <CyberCore/PlatformGamepad.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class SharedMemory;
 
 class GamepadData;
 
-class WebGamepad : public WebCore::PlatformGamepad {
+class WebGamepad : public CyberCore::PlatformGamepad {
 public:
     WebGamepad(const GamepadData&);
 
-    const Vector<WebCore::SharedGamepadValue>& axisValues() const override;
-    const Vector<WebCore::SharedGamepadValue>& buttonValues() const override;
+    const Vector<CyberCore::SharedGamepadValue>& axisValues() const override;
+    const Vector<CyberCore::SharedGamepadValue>& buttonValues() const override;
 
     void updateValues(const GamepadData&);
 
 private:
-    Vector<WebCore::SharedGamepadValue> m_axisValues;
-    Vector<WebCore::SharedGamepadValue> m_buttonValues;
+    Vector<CyberCore::SharedGamepadValue> m_axisValues;
+    Vector<CyberCore::SharedGamepadValue> m_buttonValues;
 };
 
 }

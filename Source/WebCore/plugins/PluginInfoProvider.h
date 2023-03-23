@@ -28,7 +28,7 @@
 #include "PluginData.h"
 #include <wtf/WeakHashSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WEBCORE_EXPORT PluginInfoProvider : public RefCounted<PluginInfoProvider> {
 public:

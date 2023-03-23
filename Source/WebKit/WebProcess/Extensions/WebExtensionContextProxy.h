@@ -70,23 +70,23 @@ public:
 
     bool inTestingMode() { return m_testingMode; }
 
-    WebCore::DOMWrapperWorld* contentScriptWorld() { return m_contentScriptWorld.get(); }
-    void setContentScriptWorld(WebCore::DOMWrapperWorld* world) { m_contentScriptWorld = world; }
+    CyberCore::DOMWrapperWorld* contentScriptWorld() { return m_contentScriptWorld.get(); }
+    void setContentScriptWorld(CyberCore::DOMWrapperWorld* world) { m_contentScriptWorld = world; }
 
     void addFrameWithExtensionContent(WebFrame&);
 
-    void enumerateNamespaceObjects(const Function<void(WebExtensionAPINamespace&)>&, WebCore::DOMWrapperWorld& = WebCore::mainThreadNormalWorld());
+    void enumerateNamespaceObjects(const Function<void(WebExtensionAPINamespace&)>&, CyberCore::DOMWrapperWorld& = CyberCore::mainThreadNormalWorld());
     void enumerateContentScriptNamespaceObjects(const Function<void(WebExtensionAPINamespace&)>& function) { ASSERT(contentScriptWorld()); enumerateNamespaceObjects(function, *contentScriptWorld()); };
 
 private:
     explicit WebExtensionContextProxy(WebExtensionContextParameters);
 
     // webNavigation support
-    void dispatchWebNavigationOnBeforeNavigateEvent(WebPageProxyIdentifier, WebCore::FrameIdentifier, URL);
-    void dispatchWebNavigationOnCommittedEvent(WebPageProxyIdentifier, WebCore::FrameIdentifier, URL);
-    void dispatchWebNavigationOnDOMContentLoadedEvent(WebPageProxyIdentifier, WebCore::FrameIdentifier, URL);
-    void dispatchWebNavigationOnCompletedEvent(WebPageProxyIdentifier, WebCore::FrameIdentifier, URL);
-    void dispatchWebNavigationOnErrorOccurredEvent(WebPageProxyIdentifier, WebCore::FrameIdentifier, URL);
+    void dispatchWebNavigationOnBeforeNavigateEvent(WebPageProxyIdentifier, CyberCore::FrameIdentifier, URL);
+    void dispatchWebNavigationOnCommittedEvent(WebPageProxyIdentifier, CyberCore::FrameIdentifier, URL);
+    void dispatchWebNavigationOnDOMContentLoadedEvent(WebPageProxyIdentifier, CyberCore::FrameIdentifier, URL);
+    void dispatchWebNavigationOnCompletedEvent(WebPageProxyIdentifier, CyberCore::FrameIdentifier, URL);
+    void dispatchWebNavigationOnErrorOccurredEvent(WebPageProxyIdentifier, CyberCore::FrameIdentifier, URL);
 
     // Permissions support
     void dispatchPermissionsEvent(const WebKit::WebExtensionEventListenerType&, HashSet<String> permissions, HashSet<String> origins);
@@ -100,7 +100,7 @@ private:
     RetainPtr<NSDictionary> m_manifest;
     double m_manifestVersion { 0 };
     bool m_testingMode { false };
-    RefPtr<WebCore::DOMWrapperWorld> m_contentScriptWorld;
+    RefPtr<CyberCore::DOMWrapperWorld> m_contentScriptWorld;
     WeakFrameSet m_extensionContentFrames;
 };
 

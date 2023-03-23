@@ -28,7 +28,7 @@
 #include "CSSPropertyNames.h"
 #include "RenderStyleConstants.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace Style {
 

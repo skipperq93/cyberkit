@@ -40,7 +40,7 @@
 #include "SVGFilterElement.h"
 #include "SourceGraphic.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 RefPtr<CSSFilter> CSSFilter::create(RenderElement& renderer, const FilterOperations& operations, OptionSet<FilterRenderingMode> preferredFilterRenderingModes, const FloatSize& filterScale, ClipOperation clipOperation, const FloatRect& targetBoundingBox, const GraphicsContext& destinationContext)
 {
@@ -422,4 +422,4 @@ TextStream& CSSFilter::externalRepresentation(TextStream& ts, FilterRepresentati
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

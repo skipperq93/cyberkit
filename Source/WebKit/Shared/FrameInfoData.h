@@ -33,11 +33,11 @@ namespace WebKit {
 
 struct FrameInfoData {
     bool isMainFrame { false };
-    WebCore::ResourceRequest request;
-    WebCore::SecurityOriginData securityOrigin;
+    CyberCore::ResourceRequest request;
+    CyberCore::SecurityOriginData securityOrigin;
     String frameName;
-    std::optional<WebCore::FrameIdentifier> frameID;
-    std::optional<WebCore::FrameIdentifier> parentFrameID;
+    std::optional<CyberCore::FrameIdentifier> frameID;
+    std::optional<CyberCore::FrameIdentifier> parentFrameID;
 };
 
 }

@@ -23,7 +23,7 @@
 #include "SVGNames.h"
 #include "SVGURIReference.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGForeignObjectElement final : public SVGGraphicsElement {
     WTF_MAKE_ISO_ALLOCATED(SVGForeignObjectElement);
@@ -61,4 +61,4 @@ private:
     Ref<SVGAnimatedLength> m_height { SVGAnimatedLength::create(this, SVGLengthMode::Height) };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

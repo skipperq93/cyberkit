@@ -25,7 +25,7 @@
 #include "ImageObserver.h"
 #include "TextureMapper.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class GraphicsLayer;
 
@@ -163,4 +163,4 @@ void TextureMapperTiledBackingStore::updateContents(TextureMapper& textureMapper
         tile.updateContents(textureMapper, sourceLayer, dirtyRect, m_contentsScale);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

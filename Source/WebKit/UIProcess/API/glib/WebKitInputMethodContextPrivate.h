@@ -24,7 +24,7 @@
 #include <CyberCore/CompositionUnderline.h>
 
 struct _WebKitInputMethodUnderline {
-    explicit _WebKitInputMethodUnderline(const WebCore::CompositionUnderline& underline)
+    explicit _WebKitInputMethodUnderline(const CyberCore::CompositionUnderline& underline)
         : underline(underline)
     {
     }
@@ -35,9 +35,9 @@ struct _WebKitInputMethodUnderline {
         underline.endOffset = endOffset;
     }
 
-    WebCore::CompositionUnderline underline;
+    CyberCore::CompositionUnderline underline;
 };
 
-const WebCore::CompositionUnderline& webkitInputMethodUnderlineGetCompositionUnderline(WebKitInputMethodUnderline*);
+const CyberCore::CompositionUnderline& webkitInputMethodUnderlineGetCompositionUnderline(WebKitInputMethodUnderline*);
 void webkitInputMethodContextSetWebView(WebKitInputMethodContext*, WebKitWebView*);
 WebKitWebView* webkitInputMethodContextGetWebView(WebKitInputMethodContext*);

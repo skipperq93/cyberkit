@@ -38,8 +38,8 @@
 #include <CyberCore/RenderImage.h>
 #include <CyberCore/RenderVideo.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 RefPtr<ShareableBitmap> createShareableBitmap(RenderImage& renderImage, CreateShareableBitmapFromImageOptions&& options)
 {

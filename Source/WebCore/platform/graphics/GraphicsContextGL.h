@@ -56,7 +56,7 @@ class GCGLSpan;
 template<typename... Types>
 struct GCGLSpanTuple;
 
-namespace WebCore {
+namespace CyberCore {
 class ImageBuffer;
 class PixelBuffer;
 
@@ -1666,6 +1666,6 @@ IMPLEMENT_GCGL_OWNED(Texture)
 
 #undef IMPLEMENT_GCGL_OWNED
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

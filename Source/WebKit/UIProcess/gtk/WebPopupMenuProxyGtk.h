@@ -35,7 +35,7 @@ typedef struct _GdkEvent GdkEvent;
 typedef union _GdkEvent GdkEvent;
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 class IntRect;
 }
 
@@ -51,7 +51,7 @@ public:
     }
     ~WebPopupMenuProxyGtk();
 
-    void showPopupMenu(const WebCore::IntRect&, WebCore::TextDirection, double pageScaleFactor, const Vector<WebPopupItem>&, const PlatformPopupMenuData&, int32_t selectedIndex) override;
+    void showPopupMenu(const CyberCore::IntRect&, CyberCore::TextDirection, double pageScaleFactor, const Vector<WebPopupItem>&, const PlatformPopupMenuData&, int32_t selectedIndex) override;
     void hidePopupMenu() override;
     void cancelTracking() override;
 

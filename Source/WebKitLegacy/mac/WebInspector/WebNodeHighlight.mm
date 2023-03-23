@@ -41,7 +41,7 @@
 #import <pal/spi/cocoa/QuartzCoreSPI.h>
 #endif
 
-using namespace WebCore;
+using namespace CyberCore;
 
 #if !PLATFORM(IOS_FAMILY)
 @interface WebNodeHighlight (FileInternal)

@@ -48,8 +48,8 @@
 #include <wtf/glib/RunLoopSourcePriority.h>
 #endif
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 DrawingAreaCoordinatedGraphics::DrawingAreaCoordinatedGraphics(WebPage& webPage, const WebPageCreationParameters& parameters)
     : DrawingArea(DrawingAreaType::CoordinatedGraphics, parameters.drawingAreaIdentifier, webPage)
@@ -145,21 +145,21 @@ void DrawingAreaCoordinatedGraphics::scroll(const IntRect& scrollRect, const Int
     }
 
     // Get the part of the dirty region that is in the scroll rect.
-    WebCore::Region dirtyRegionInScrollRect = intersect(scrollRect, m_dirtyRegion);
+    CyberCore::Region dirtyRegionInScrollRect = intersect(scrollRect, m_dirtyRegion);
     if (!dirtyRegionInScrollRect.isEmpty()) {
         // There are parts of the dirty region that are inside the scroll rect.
         // We need to subtract them from the region, move them and re-add them.
         m_dirtyRegion.subtract(scrollRect);
 
         // Move the dirty parts.
-        WebCore::Region movedDirtyRegionInScrollRect = intersect(translate(dirtyRegionInScrollRect, scrollDelta), scrollRect);
+        CyberCore::Region movedDirtyRegionInScrollRect = intersect(translate(dirtyRegionInScrollRect, scrollDelta), scrollRect);
 
         // And add them back.
         m_dirtyRegion.unite(movedDirtyRegionInScrollRect);
     }
 
     // Compute the scroll repaint region.
-    WebCore::Region scrollRepaintRegion = subtract(scrollRect, translate(scrollRect, scrollDelta));
+    CyberCore::Region scrollRepaintRegion = subtract(scrollRect, translate(scrollRect, scrollDelta));
 
     m_dirtyRegion.unite(scrollRepaintRegion);
     scheduleDisplay();
@@ -682,7 +682,7 @@ void DrawingAreaCoordinatedGraphics::enterAcceleratedCompositingMode(GraphicsLay
     m_layerTreeHost->setRootCompositingLayer(graphicsLayer);
 
     // Non-composited content will now be handled exclusively by the layer tree host.
-    m_dirtyRegion = WebCore::Region();
+    m_dirtyRegion = CyberCore::Region();
     m_scrollRect = IntRect();
     m_scrollOffset = IntSize();
     m_displayTimer.stop();
@@ -864,7 +864,7 @@ void DrawingAreaCoordinatedGraphics::display(UpdateInfo& updateInfo)
     updateInfo.scrollRect = m_scrollRect;
     updateInfo.scrollOffset = m_scrollOffset;
 
-    m_dirtyRegion = WebCore::Region();
+    m_dirtyRegion = CyberCore::Region();
     m_scrollRect = IntRect();
     m_scrollOffset = IntSize();
 
@@ -889,4 +889,4 @@ void DrawingAreaCoordinatedGraphics::display(UpdateInfo& updateInfo)
     m_displayTimer.stop();
 }
 
-} // namespace WebKit
+} // namespace CyberKit

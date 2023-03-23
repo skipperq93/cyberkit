@@ -24,7 +24,7 @@
 #include "FETurbulence.h"
 #include "SVGFilterPrimitiveStandardAttributes.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 enum SVGStitchOptions {
     SVG_STITCHTYPE_UNKNOWN  = 0,
@@ -128,4 +128,4 @@ private:
     Ref<SVGAnimatedEnumeration> m_type { SVGAnimatedEnumeration::create(this, TurbulenceType::Turbulence) };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

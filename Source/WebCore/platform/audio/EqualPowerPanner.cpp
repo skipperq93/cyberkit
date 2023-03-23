@@ -34,7 +34,7 @@
 #include <algorithm>
 #include <wtf/MathExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 EqualPowerPanner::EqualPowerPanner()
     : Panner(PanningModelType::Equalpower)
@@ -199,6 +199,6 @@ void EqualPowerPanner::panWithSampleAccurateValues(double* azimuth, double*, con
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

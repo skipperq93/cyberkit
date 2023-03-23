@@ -31,7 +31,7 @@
 #include "ShapeOutsideInfo.h"
 #include <wtf/TypeCasts.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class LegacyInlineElementBox;
 class RenderBlockFlow;
@@ -939,6 +939,6 @@ inline void RenderBox::setInlineBoxWrapper(LegacyInlineElementBox* boxWrapper)
 
 LayoutUnit synthesizedBaseline(const RenderBox&, const RenderStyle& parentStyle, LineDirectionMode, BaselineSynthesisEdge);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderBox, isBox())

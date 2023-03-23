@@ -29,7 +29,7 @@
 
 #include <wtf/Function.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct MediaCapabilitiesDecodingInfo;
 struct MediaCapabilitiesEncodingInfo;
@@ -63,4 +63,4 @@ public:
     WEBCORE_EXPORT static void disableMock();
 };
 
-} // namespace WebCore
+} // namespace CyberCore

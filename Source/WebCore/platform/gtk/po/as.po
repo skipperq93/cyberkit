@@ -1883,8 +1883,8 @@ msgstr "ৱেব নীৰিক্ষক"
 #~ msgid "Enable Timeline profiling"
 #~ msgstr "টাইমলাইন আলেখ্যন সামৰ্থবান কৰক"
 
-#~ msgid "Profile the WebCore instrumentation."
-#~ msgstr "WebCore যন্ত্ৰীকৰণ আলেখ্যন কৰক।"
+#~ msgid "Profile the CyberCore instrumentation."
+#~ msgstr "CyberCore যন্ত্ৰীকৰণ আলেখ্যন কৰক।"
 
 #~ msgid "Reason"
 #~ msgstr "কাৰণ"

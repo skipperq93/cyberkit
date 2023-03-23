@@ -31,7 +31,7 @@
 #include <CyberCore/ImageBuffer.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 RefPtr<WebImage> WebImage::create(const IntSize& size, ImageOptions options, const DestinationColorSpace& colorSpace, ChromeClient* client)
 {

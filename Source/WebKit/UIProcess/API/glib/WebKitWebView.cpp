@@ -109,7 +109,7 @@
 #endif
 
 using namespace WebKit;
-using namespace WebCore;
+using namespace CyberCore;
 
 /**
  * WebKitWebView:
@@ -380,7 +380,7 @@ void webkitWebViewIsPlayingAudioChanged(WebKitWebView* webView)
     g_object_notify_by_pspec(G_OBJECT(webView), sObjProperties[PROP_IS_PLAYING_AUDIO]);
 }
 
-void webkitWebViewMediaCaptureStateDidChange(WebKitWebView* webView, WebCore::MediaProducer::MediaStateFlags mediaStateFlags)
+void webkitWebViewMediaCaptureStateDidChange(WebKitWebView* webView, CyberCore::MediaProducer::MediaStateFlags mediaStateFlags)
 {
     if (mediaStateFlags.isEmpty()) {
         g_object_notify_by_pspec(G_OBJECT(webView), sObjProperties[PROP_CAMERA_CAPTURE_STATE]);
@@ -388,11 +388,11 @@ void webkitWebViewMediaCaptureStateDidChange(WebKitWebView* webView, WebCore::Me
         g_object_notify_by_pspec(G_OBJECT(webView), sObjProperties[PROP_MICROPHONE_CAPTURE_STATE]);
         return;
     }
-    if (mediaStateFlags.containsAny(WebCore::MediaProducer::MicrophoneCaptureMask))
+    if (mediaStateFlags.containsAny(CyberCore::MediaProducer::MicrophoneCaptureMask))
         g_object_notify_by_pspec(G_OBJECT(webView), sObjProperties[PROP_MICROPHONE_CAPTURE_STATE]);
-    if (mediaStateFlags.containsAny(WebCore::MediaProducer::VideoCaptureMask))
+    if (mediaStateFlags.containsAny(CyberCore::MediaProducer::VideoCaptureMask))
         g_object_notify_by_pspec(G_OBJECT(webView), sObjProperties[PROP_CAMERA_CAPTURE_STATE]);
-    if (mediaStateFlags.containsAny(WebCore::MediaProducer::DisplayCaptureMask))
+    if (mediaStateFlags.containsAny(CyberCore::MediaProducer::DisplayCaptureMask))
         g_object_notify_by_pspec(G_OBJECT(webView), sObjProperties[PROP_DISPLAY_CAPTURE_STATE]);
 }
 
@@ -474,7 +474,7 @@ WebKitWebViewClient::WebKitWebViewClient(WebKitWebView* webView)
     : m_webView(webView)
 { }
 
-GRefPtr<WebKitOptionMenu> WebKitWebViewClient::showOptionMenu(WebKitPopupMenu& popupMenu, const WebCore::IntRect& rect, const Vector<WebPopupItem>& items, int32_t selectedIndex)
+GRefPtr<WebKitOptionMenu> WebKitWebViewClient::showOptionMenu(WebKitPopupMenu& popupMenu, const CyberCore::IntRect& rect, const Vector<WebPopupItem>& items, int32_t selectedIndex)
 {
     GRefPtr<WebKitOptionMenu> menu = adoptGRef(webkitOptionMenuCreate(popupMenu, items, selectedIndex));
     if (webkitWebViewShowOptionMenu(WEBKIT_WEB_VIEW(m_webView), rect, menu.get()))
@@ -850,12 +850,12 @@ static void webkitWebViewConstructed(GObject* object)
     priv->backForwardList = adoptGRef(webkitBackForwardListCreate(&getPage(webView).backForwardList()));
     priv->windowProperties = adoptGRef(webkitWindowPropertiesCreate());
 
-    priv->textScaleFactor = WebCore::screenDPI() / 96.;
+    priv->textScaleFactor = CyberCore::screenDPI() / 96.;
     getPage(webView).setTextZoomFactor(priv->textScaleFactor);
-    WebCore::setScreenDPIObserverHandler([webView] {
+    CyberCore::setScreenDPIObserverHandler([webView] {
         auto& page = getPage(webView);
         auto zoomFactor = page.textZoomFactor() / webView->priv->textScaleFactor;
-        webView->priv->textScaleFactor = WebCore::screenDPI() / 96.;
+        webView->priv->textScaleFactor = CyberCore::screenDPI() / 96.;
         page.setTextZoomFactor(zoomFactor * webView->priv->textScaleFactor);
     }, webView);
 
@@ -1071,7 +1071,7 @@ static void webkitWebViewDispose(GObject* object)
     webView->priv->view->close();
 #endif
 
-    WebCore::setScreenDPIObserverHandler(nullptr, webView);
+    CyberCore::setScreenDPIObserverHandler(nullptr, webView);
 
     G_OBJECT_CLASS(webkit_web_view_parent_class)->dispose(object);
 }
@@ -3215,7 +3215,7 @@ void webkit_web_view_load_alternate_html(WebKitWebView* webView, const gchar* co
     g_return_if_fail(content);
     g_return_if_fail(contentURI);
 
-    getPage(webView).loadAlternateHTML(WebCore::DataSegment::create(Vector<uint8_t>(reinterpret_cast<const uint8_t*>(content), content ? strlen(content) : 0)), "UTF-8"_s, URL { String::fromUTF8(baseURI) }, URL { String::fromUTF8(contentURI) });
+    getPage(webView).loadAlternateHTML(CyberCore::DataSegment::create(Vector<uint8_t>(reinterpret_cast<const uint8_t*>(content), content ? strlen(content) : 0)), "UTF-8"_s, URL { String::fromUTF8(baseURI) }, URL { String::fromUTF8(contentURI) });
 }
 
 /**
@@ -3426,9 +3426,9 @@ void webkit_web_view_set_is_muted(WebKitWebView* webView, gboolean muted)
     if (webkit_web_view_get_is_muted (webView) == muted)
         return;
 
-    WebCore::MediaProducer::MutedStateFlags audioMutedFlag;
+    CyberCore::MediaProducer::MutedStateFlags audioMutedFlag;
     if (muted)
-        audioMutedFlag.add(WebCore::MediaProducer::MutedState::AudioIsMuted);
+        audioMutedFlag.add(CyberCore::MediaProducer::MutedState::AudioIsMuted);
     getPage(webView).setMuted(audioMutedFlag);
     g_object_notify_by_pspec(G_OBJECT(webView), sObjProperties[PROP_IS_MUTED]);
 }
@@ -5314,7 +5314,7 @@ void webkit_web_view_set_cors_allowlist(WebKitWebView* webView, const gchar* con
     getPage(webView).setCORSDisablingPatterns(WTFMove(allowListVector));
 }
 
-static void webkitWebViewConfigureMediaCapture(WebKitWebView* webView, WebCore::MediaProducerMediaCaptureKind captureKind, WebKitMediaCaptureState captureState)
+static void webkitWebViewConfigureMediaCapture(WebKitWebView* webView, CyberCore::MediaProducerMediaCaptureKind captureKind, WebKitMediaCaptureState captureState)
 {
     auto& page = getPage(webView);
     auto mutedState = page.mutedStateFlags();
@@ -5323,16 +5323,16 @@ static void webkitWebViewConfigureMediaCapture(WebKitWebView* webView, WebCore::
     case WEBKIT_MEDIA_CAPTURE_STATE_NONE:
         page.stopMediaCapture(captureKind, [webView, captureKind] {
             switch (captureKind) {
-            case WebCore::MediaProducerMediaCaptureKind::Microphone:
+            case CyberCore::MediaProducerMediaCaptureKind::Microphone:
                 g_object_notify_by_pspec(G_OBJECT(webView), sObjProperties[PROP_MICROPHONE_CAPTURE_STATE]);
                 break;
-            case WebCore::MediaProducerMediaCaptureKind::Display:
+            case CyberCore::MediaProducerMediaCaptureKind::Display:
                 break;
-            case WebCore::MediaProducerMediaCaptureKind::Camera:
+            case CyberCore::MediaProducerMediaCaptureKind::Camera:
                 g_object_notify_by_pspec(G_OBJECT(webView), sObjProperties[PROP_CAMERA_CAPTURE_STATE]);
                 break;
-            case WebCore::MediaProducerMediaCaptureKind::SystemAudio:
-            case WebCore::MediaProducerMediaCaptureKind::EveryKind:
+            case CyberCore::MediaProducerMediaCaptureKind::SystemAudio:
+            case CyberCore::MediaProducerMediaCaptureKind::EveryKind:
                 ASSERT_NOT_REACHED();
                 return;
             }
@@ -5340,17 +5340,17 @@ static void webkitWebViewConfigureMediaCapture(WebKitWebView* webView, WebCore::
         break;
     case WEBKIT_MEDIA_CAPTURE_STATE_ACTIVE:
         switch (captureKind) {
-        case WebCore::MediaProducerMediaCaptureKind::Microphone:
-            mutedState.remove(WebCore::MediaProducer::MutedState::AudioCaptureIsMuted);
+        case CyberCore::MediaProducerMediaCaptureKind::Microphone:
+            mutedState.remove(CyberCore::MediaProducer::MutedState::AudioCaptureIsMuted);
             break;
-        case WebCore::MediaProducerMediaCaptureKind::Camera:
-            mutedState.remove(WebCore::MediaProducer::MutedState::VideoCaptureIsMuted);
+        case CyberCore::MediaProducerMediaCaptureKind::Camera:
+            mutedState.remove(CyberCore::MediaProducer::MutedState::VideoCaptureIsMuted);
             break;
-        case WebCore::MediaProducerMediaCaptureKind::Display:
-            mutedState.remove(WebCore::MediaProducer::MutedState::ScreenCaptureIsMuted);
+        case CyberCore::MediaProducerMediaCaptureKind::Display:
+            mutedState.remove(CyberCore::MediaProducer::MutedState::ScreenCaptureIsMuted);
             break;
-        case WebCore::MediaProducerMediaCaptureKind::SystemAudio:
-        case WebCore::MediaProducerMediaCaptureKind::EveryKind:
+        case CyberCore::MediaProducerMediaCaptureKind::SystemAudio:
+        case CyberCore::MediaProducerMediaCaptureKind::EveryKind:
             ASSERT_NOT_REACHED();
             return;
         }
@@ -5358,17 +5358,17 @@ static void webkitWebViewConfigureMediaCapture(WebKitWebView* webView, WebCore::
         break;
     case WEBKIT_MEDIA_CAPTURE_STATE_MUTED:
         switch (captureKind) {
-        case WebCore::MediaProducerMediaCaptureKind::Microphone:
-            mutedState.add(WebCore::MediaProducer::MutedState::AudioCaptureIsMuted);
+        case CyberCore::MediaProducerMediaCaptureKind::Microphone:
+            mutedState.add(CyberCore::MediaProducer::MutedState::AudioCaptureIsMuted);
             break;
-        case WebCore::MediaProducerMediaCaptureKind::Camera:
-            mutedState.add(WebCore::MediaProducer::MutedState::VideoCaptureIsMuted);
+        case CyberCore::MediaProducerMediaCaptureKind::Camera:
+            mutedState.add(CyberCore::MediaProducer::MutedState::VideoCaptureIsMuted);
             break;
-        case WebCore::MediaProducerMediaCaptureKind::Display:
-            mutedState.add(WebCore::MediaProducer::MutedState::ScreenCaptureIsMuted);
+        case CyberCore::MediaProducerMediaCaptureKind::Display:
+            mutedState.add(CyberCore::MediaProducer::MutedState::ScreenCaptureIsMuted);
             break;
-        case WebCore::MediaProducerMediaCaptureKind::SystemAudio:
-        case WebCore::MediaProducerMediaCaptureKind::EveryKind:
+        case CyberCore::MediaProducerMediaCaptureKind::SystemAudio:
+        case CyberCore::MediaProducerMediaCaptureKind::EveryKind:
             ASSERT_NOT_REACHED();
             return;
         }
@@ -5391,9 +5391,9 @@ static void webkitWebViewConfigureMediaCapture(WebKitWebView* webView, WebCore::
 WebKitMediaCaptureState webkit_web_view_get_camera_capture_state(WebKitWebView* webView)
 {
     auto state = getPage(webView).reportedMediaState();
-    if (state & WebCore::MediaProducer::MediaState::HasActiveVideoCaptureDevice)
+    if (state & CyberCore::MediaProducer::MediaState::HasActiveVideoCaptureDevice)
         return WEBKIT_MEDIA_CAPTURE_STATE_ACTIVE;
-    if (state & WebCore::MediaProducer::MediaState::HasMutedVideoCaptureDevice)
+    if (state & CyberCore::MediaProducer::MediaState::HasMutedVideoCaptureDevice)
         return WEBKIT_MEDIA_CAPTURE_STATE_MUTED;
     return WEBKIT_MEDIA_CAPTURE_STATE_NONE;
 }
@@ -5416,7 +5416,7 @@ void webkit_web_view_set_camera_capture_state(WebKitWebView* webView, WebKitMedi
     if (webkit_web_view_get_camera_capture_state(webView) == WEBKIT_MEDIA_CAPTURE_STATE_NONE)
         return;
 
-    webkitWebViewConfigureMediaCapture(webView, WebCore::MediaProducerMediaCaptureKind::Camera, state);
+    webkitWebViewConfigureMediaCapture(webView, CyberCore::MediaProducerMediaCaptureKind::Camera, state);
 }
 
 /**
@@ -5433,9 +5433,9 @@ void webkit_web_view_set_camera_capture_state(WebKitWebView* webView, WebKitMedi
 WebKitMediaCaptureState webkit_web_view_get_microphone_capture_state(WebKitWebView* webView)
 {
     auto state = getPage(webView).reportedMediaState();
-    if (state & WebCore::MediaProducer::MediaState::HasActiveAudioCaptureDevice)
+    if (state & CyberCore::MediaProducer::MediaState::HasActiveAudioCaptureDevice)
         return WEBKIT_MEDIA_CAPTURE_STATE_ACTIVE;
-    if (state & WebCore::MediaProducer::MediaState::HasMutedAudioCaptureDevice)
+    if (state & CyberCore::MediaProducer::MediaState::HasMutedAudioCaptureDevice)
         return WEBKIT_MEDIA_CAPTURE_STATE_MUTED;
     return WEBKIT_MEDIA_CAPTURE_STATE_NONE;
 }
@@ -5458,7 +5458,7 @@ void webkit_web_view_set_microphone_capture_state(WebKitWebView* webView, WebKit
     if (webkit_web_view_get_microphone_capture_state(webView) == WEBKIT_MEDIA_CAPTURE_STATE_NONE)
         return;
 
-    webkitWebViewConfigureMediaCapture(webView, WebCore::MediaProducerMediaCaptureKind::Microphone, state);
+    webkitWebViewConfigureMediaCapture(webView, CyberCore::MediaProducerMediaCaptureKind::Microphone, state);
 }
 
 /**
@@ -5475,9 +5475,9 @@ void webkit_web_view_set_microphone_capture_state(WebKitWebView* webView, WebKit
 WebKitMediaCaptureState webkit_web_view_get_display_capture_state(WebKitWebView* webView)
 {
     auto state = getPage(webView).reportedMediaState();
-    if (state & WebCore::MediaProducer::MediaState::HasActiveScreenCaptureDevice)
+    if (state & CyberCore::MediaProducer::MediaState::HasActiveScreenCaptureDevice)
         return WEBKIT_MEDIA_CAPTURE_STATE_ACTIVE;
-    if (state & WebCore::MediaProducer::MediaState::HasMutedScreenCaptureDevice)
+    if (state & CyberCore::MediaProducer::MediaState::HasMutedScreenCaptureDevice)
         return WEBKIT_MEDIA_CAPTURE_STATE_MUTED;
     return WEBKIT_MEDIA_CAPTURE_STATE_NONE;
 }
@@ -5500,7 +5500,7 @@ void webkit_web_view_set_display_capture_state(WebKitWebView* webView, WebKitMed
     if (webkit_web_view_get_display_capture_state(webView) == WEBKIT_MEDIA_CAPTURE_STATE_NONE)
         return;
 
-    webkitWebViewConfigureMediaCapture(webView, WebCore::MediaProducerMediaCaptureKind::Display, state);
+    webkitWebViewConfigureMediaCapture(webView, CyberCore::MediaProducerMediaCaptureKind::Display, state);
 }
 
 void webkitWebViewForceRepaintForTesting(WebKitWebView* webView, ForceRepaintCallback callback, gpointer userData)

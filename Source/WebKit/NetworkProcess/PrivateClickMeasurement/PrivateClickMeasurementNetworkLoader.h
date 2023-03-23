@@ -29,7 +29,7 @@
 #include <wtf/CompletionHandler.h>
 #include <wtf/JSONValues.h>
 
-namespace WebCore {
+namespace CyberCore {
 class CertificateInfo;
 class ResourceError;
 class ResourceResponse;
@@ -41,8 +41,8 @@ class NetworkLoader {
     WTF_MAKE_FAST_ALLOCATED;
 public:
     using Callback = CompletionHandler<void(const String&, const RefPtr<JSON::Object>&)>;
-    static void start(URL&&, RefPtr<JSON::Object>&&, WebCore::PrivateClickMeasurement::PcmDataCarried, Callback&&);
-    static void allowTLSCertificateChainForLocalPCMTesting(const WebCore::CertificateInfo&);
+    static void start(URL&&, RefPtr<JSON::Object>&&, CyberCore::PrivateClickMeasurement::PcmDataCarried, Callback&&);
+    static void allowTLSCertificateChainForLocalPCMTesting(const CyberCore::CertificateInfo&);
 };
 
 } // namespace WebKit::PCM

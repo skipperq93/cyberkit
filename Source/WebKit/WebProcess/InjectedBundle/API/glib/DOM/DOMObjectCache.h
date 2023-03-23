@@ -18,16 +18,16 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 class Node;
 };
 
-namespace WebKit {
+namespace CyberKit {
 class DOMObjectCache {
 public:
     static void* get(void* objectHandle);
     static void put(void* objectHandle, void* wrapper);
-    static void put(WebCore::Node* objectHandle, void* wrapper);
+    static void put(CyberCore::Node* objectHandle, void* wrapper);
     static void forget(void* objectHandle);
 };
-} // namespace WebKit
+} // namespace CyberKit

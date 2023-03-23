@@ -28,7 +28,7 @@
 
 #include <CyberScriptCore/InitializeThreading.h>
 #include <CyberCore/CommonAtomStrings.h>
-#include <CyberCore/WebCoreJITOperations.h>
+#include <CyberCore/CyberCoreJITOperations.h>
 #include <wtf/GenerateProfiles.h>
 #include <wtf/MainThread.h>
 #include <wtf/RefCounted.h>
@@ -42,11 +42,11 @@ void InitializeWebKit2()
 {
     JSC::initialize();
     WTF::initializeMainThread();
-    WebCore::initializeCommonAtomStrings();
+    CyberCore::initializeCommonAtomStrings();
 
     WTF::RefCountedBase::enableThreadingChecksGlobally();
 
-    WebCore::populateJITOperations();
+    CyberCore::populateJITOperations();
 }
 
 #endif // !PLATFORM(COCOA)

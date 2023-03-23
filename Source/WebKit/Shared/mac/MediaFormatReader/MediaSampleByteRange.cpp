@@ -31,7 +31,7 @@
 
 namespace WebKit {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 MediaSampleByteRange::MediaSampleByteRange(MediaSamplesBlock&& sample, MTPluginByteSourceRef byteSource)
     : m_block(WTFMove(sample))
@@ -75,7 +75,7 @@ size_t MediaSampleByteRange::sizeInBytes() const
     return std::get<MediaSample::ByteRange>(m_block.last().data).byteLength;
 }
 
-WebCore::FloatSize MediaSampleByteRange::presentationSize() const
+CyberCore::FloatSize MediaSampleByteRange::presentationSize() const
 {
     if (m_block.isVideo())
         return downcast<const VideoInfo>(m_block.info())->displaySize;

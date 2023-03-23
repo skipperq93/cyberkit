@@ -38,7 +38,7 @@
 #import <pal/cocoa/AVFoundationSoftLink.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 #if USE(OS_STATE)
 

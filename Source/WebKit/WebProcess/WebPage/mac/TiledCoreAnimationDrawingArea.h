@@ -38,14 +38,14 @@
 
 OBJC_CLASS CALayer;
 
-namespace WebCore {
+namespace CyberCore {
 class FrameView;
 class PlatformCALayer;
 class RunLoopObserver;
 class TiledBacking;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class LayerHostingContext;
 
@@ -57,24 +57,24 @@ public:
 private:
     // DrawingArea
     void setNeedsDisplay() override;
-    void setNeedsDisplayInRect(const WebCore::IntRect&) override;
-    void scroll(const WebCore::IntRect& scrollRect, const WebCore::IntSize& scrollDelta) override { }
+    void setNeedsDisplayInRect(const CyberCore::IntRect&) override;
+    void scroll(const CyberCore::IntRect& scrollRect, const CyberCore::IntSize& scrollDelta) override { }
 
     void forceRepaint() override;
     void forceRepaintAsync(WebPage&, CompletionHandler<void()>&&) override;
     void setLayerTreeStateIsFrozen(bool) override;
     bool layerTreeStateIsFrozen() const override;
-    void setRootCompositingLayer(WebCore::GraphicsLayer*) override;
+    void setRootCompositingLayer(CyberCore::GraphicsLayer*) override;
     void triggerRenderingUpdate() override;
 
     void updatePreferences(const WebPreferencesStore&) override;
-    void mainFrameContentSizeChanged(const WebCore::IntSize&) override;
+    void mainFrameContentSizeChanged(const CyberCore::IntSize&) override;
 
-    void setViewExposedRect(std::optional<WebCore::FloatRect>) override;
-    std::optional<WebCore::FloatRect> viewExposedRect() const override { return m_viewExposedRect; }
+    void setViewExposedRect(std::optional<CyberCore::FloatRect>) override;
+    std::optional<CyberCore::FloatRect> viewExposedRect() const override { return m_viewExposedRect; }
 
-    WebCore::FloatRect exposedContentRect() const override;
-    void setExposedContentRect(const WebCore::FloatRect&) override;
+    CyberCore::FloatRect exposedContentRect() const override;
+    void setExposedContentRect(const CyberCore::FloatRect&) override;
 
     bool supportsAsyncScrolling() const override { return true; }
 
@@ -83,13 +83,13 @@ private:
 
     void dispatchAfterEnsuringUpdatedScrollPosition(WTF::Function<void ()>&&) override;
 
-    bool shouldUseTiledBackingForFrameView(const WebCore::FrameView&) const override;
+    bool shouldUseTiledBackingForFrameView(const CyberCore::FrameView&) const override;
 
-    void activityStateDidChange(OptionSet<WebCore::ActivityState::Flag> changed, ActivityStateChangeID, CompletionHandler<void()>&&) override;
+    void activityStateDidChange(OptionSet<CyberCore::ActivityState::Flag> changed, ActivityStateChangeID, CompletionHandler<void()>&&) override;
 
-    void attachViewOverlayGraphicsLayer(WebCore::GraphicsLayer*) override;
+    void attachViewOverlayGraphicsLayer(CyberCore::GraphicsLayer*) override;
 
-    bool addMilestonesToDispatch(OptionSet<WebCore::LayoutMilestone> paintMilestones) override;
+    bool addMilestonesToDispatch(OptionSet<CyberCore::LayoutMilestone> paintMilestones) override;
 
     void addCommitHandlers();
 
@@ -98,13 +98,13 @@ private:
     void didCompleteRenderingUpdateDisplay() override;
 
     // Message handlers.
-    void updateGeometry(const WebCore::IntSize& viewSize, bool flushSynchronously, const WTF::MachSendRight& fencePort, CompletionHandler<void()>&&) override;
+    void updateGeometry(const CyberCore::IntSize& viewSize, bool flushSynchronously, const WTF::MachSendRight& fencePort, CompletionHandler<void()>&&) override;
     void setDeviceScaleFactor(float) override;
     void suspendPainting();
     void resumePainting();
     void setLayerHostingMode(LayerHostingMode) override;
-    void setColorSpace(std::optional<WebCore::DestinationColorSpace>) override;
-    std::optional<WebCore::DestinationColorSpace> displayColorSpace() const override;
+    void setColorSpace(std::optional<CyberCore::DestinationColorSpace>) override;
+    std::optional<CyberCore::DestinationColorSpace> displayColorSpace() const override;
     void addFence(const WTF::MachSendRight&) override;
 
     void dispatchAfterEnsuringDrawing(IPC::AsyncReplyID) final;
@@ -114,15 +114,15 @@ private:
     void handleActivityStateChangeCallbacksIfNeeded();
     void handleActivityStateChangeCallbacks();
 
-    void adjustTransientZoom(double scale, WebCore::FloatPoint origin) override;
-    void commitTransientZoom(double scale, WebCore::FloatPoint origin) override;
-    void applyTransientZoomToPage(double scale, WebCore::FloatPoint origin);
-    WebCore::PlatformCALayer* layerForTransientZoom() const;
-    WebCore::PlatformCALayer* shadowLayerForTransientZoom() const;
+    void adjustTransientZoom(double scale, CyberCore::FloatPoint origin) override;
+    void commitTransientZoom(double scale, CyberCore::FloatPoint origin) override;
+    void applyTransientZoomToPage(double scale, CyberCore::FloatPoint origin);
+    CyberCore::PlatformCALayer* layerForTransientZoom() const;
+    CyberCore::PlatformCALayer* shadowLayerForTransientZoom() const;
 
-    void applyTransientZoomToLayers(double scale, WebCore::FloatPoint origin);
+    void applyTransientZoomToLayers(double scale, CyberCore::FloatPoint origin);
 
-    RefPtr<WebCore::DisplayRefreshMonitor> createDisplayRefreshMonitor(WebCore::PlatformDisplayID) final;
+    RefPtr<CyberCore::DisplayRefreshMonitor> createDisplayRefreshMonitor(CyberCore::PlatformDisplayID) final;
 
     void updateLayerHostingContext();
 
@@ -151,21 +151,21 @@ private:
     RetainPtr<CALayer> m_debugInfoLayer;
     RetainPtr<CALayer> m_pendingRootLayer;
 
-    std::optional<WebCore::FloatRect> m_viewExposedRect;
+    std::optional<CyberCore::FloatRect> m_viewExposedRect;
 
     double m_transientZoomScale { 1 };
-    WebCore::FloatPoint m_transientZoomOrigin;
+    CyberCore::FloatPoint m_transientZoomOrigin;
 
     Vector<CompletionHandler<void()>> m_nextActivityStateChangeCallbacks;
     ActivityStateChangeID m_activityStateChangeID { ActivityStateChangeAsynchronous };
 
-    RefPtr<WebCore::GraphicsLayer> m_viewOverlayRootLayer;
+    RefPtr<CyberCore::GraphicsLayer> m_viewOverlayRootLayer;
 
-    OptionSet<WebCore::LayoutMilestone> m_pendingNewlyReachedPaintingMilestones;
+    OptionSet<CyberCore::LayoutMilestone> m_pendingNewlyReachedPaintingMilestones;
     Vector<IPC::AsyncReplyID> m_pendingCallbackIDs;
 
-    std::unique_ptr<WebCore::RunLoopObserver> m_renderingUpdateRunLoopObserver;
-    std::unique_ptr<WebCore::RunLoopObserver> m_postRenderingUpdateRunLoopObserver;
+    std::unique_ptr<CyberCore::RunLoopObserver> m_renderingUpdateRunLoopObserver;
+    std::unique_ptr<CyberCore::RunLoopObserver> m_postRenderingUpdateRunLoopObserver;
 
     bool m_isPaintingSuspended { false };
     bool m_inUpdateGeometry { false };
@@ -176,13 +176,13 @@ private:
     bool m_haveRegisteredHandlersForNextCommit { false };
 };
 
-inline bool TiledCoreAnimationDrawingArea::addMilestonesToDispatch(OptionSet<WebCore::LayoutMilestone> paintMilestones)
+inline bool TiledCoreAnimationDrawingArea::addMilestonesToDispatch(OptionSet<CyberCore::LayoutMilestone> paintMilestones)
 {
     m_pendingNewlyReachedPaintingMilestones.add(paintMilestones);
     return true;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 SPECIALIZE_TYPE_TRAITS_DRAWING_AREA(TiledCoreAnimationDrawingArea, DrawingAreaType::TiledCoreAnimation)
 

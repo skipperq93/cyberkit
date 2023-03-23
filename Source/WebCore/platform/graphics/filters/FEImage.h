@@ -29,7 +29,7 @@
 #include "SVGPreserveAspectRatioValue.h"
 #include "SourceImage.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class Image;
 class ImageBuffer;
@@ -63,6 +63,6 @@ private:
     SVGPreserveAspectRatioValue m_preserveAspectRatio;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_FILTER_EFFECT(FEImage)

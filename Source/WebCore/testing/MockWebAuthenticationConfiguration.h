@@ -30,7 +30,7 @@
 #include <wtf/Forward.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct MockWebAuthenticationConfiguration {
     enum class HidStage : bool {
@@ -292,57 +292,57 @@ std::optional<MockWebAuthenticationConfiguration> MockWebAuthenticationConfigura
     return result;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::MockWebAuthenticationConfiguration::HidStage> {
+template<> struct EnumTraits<CyberCore::MockWebAuthenticationConfiguration::HidStage> {
     using values = EnumValues<
-        WebCore::MockWebAuthenticationConfiguration::HidStage,
-        WebCore::MockWebAuthenticationConfiguration::HidStage::Info,
-        WebCore::MockWebAuthenticationConfiguration::HidStage::Request
+        CyberCore::MockWebAuthenticationConfiguration::HidStage,
+        CyberCore::MockWebAuthenticationConfiguration::HidStage::Info,
+        CyberCore::MockWebAuthenticationConfiguration::HidStage::Request
     >;
 };
 
-template<> struct EnumTraits<WebCore::MockWebAuthenticationConfiguration::HidSubStage> {
+template<> struct EnumTraits<CyberCore::MockWebAuthenticationConfiguration::HidSubStage> {
     using values = EnumValues<
-        WebCore::MockWebAuthenticationConfiguration::HidSubStage,
-        WebCore::MockWebAuthenticationConfiguration::HidSubStage::Init,
-        WebCore::MockWebAuthenticationConfiguration::HidSubStage::Msg
+        CyberCore::MockWebAuthenticationConfiguration::HidSubStage,
+        CyberCore::MockWebAuthenticationConfiguration::HidSubStage::Init,
+        CyberCore::MockWebAuthenticationConfiguration::HidSubStage::Msg
     >;
 };
 
-template<> struct EnumTraits<WebCore::MockWebAuthenticationConfiguration::HidError> {
+template<> struct EnumTraits<CyberCore::MockWebAuthenticationConfiguration::HidError> {
     using values = EnumValues<
-        WebCore::MockWebAuthenticationConfiguration::HidError,
-        WebCore::MockWebAuthenticationConfiguration::HidError::Success,
-        WebCore::MockWebAuthenticationConfiguration::HidError::DataNotSent,
-        WebCore::MockWebAuthenticationConfiguration::HidError::EmptyReport,
-        WebCore::MockWebAuthenticationConfiguration::HidError::WrongChannelId,
-        WebCore::MockWebAuthenticationConfiguration::HidError::MaliciousPayload,
-        WebCore::MockWebAuthenticationConfiguration::HidError::UnsupportedOptions,
-        WebCore::MockWebAuthenticationConfiguration::HidError::WrongNonce
+        CyberCore::MockWebAuthenticationConfiguration::HidError,
+        CyberCore::MockWebAuthenticationConfiguration::HidError::Success,
+        CyberCore::MockWebAuthenticationConfiguration::HidError::DataNotSent,
+        CyberCore::MockWebAuthenticationConfiguration::HidError::EmptyReport,
+        CyberCore::MockWebAuthenticationConfiguration::HidError::WrongChannelId,
+        CyberCore::MockWebAuthenticationConfiguration::HidError::MaliciousPayload,
+        CyberCore::MockWebAuthenticationConfiguration::HidError::UnsupportedOptions,
+        CyberCore::MockWebAuthenticationConfiguration::HidError::WrongNonce
     >;
 };
 
-template<> struct EnumTraits<WebCore::MockWebAuthenticationConfiguration::NfcError> {
+template<> struct EnumTraits<CyberCore::MockWebAuthenticationConfiguration::NfcError> {
     using values = EnumValues<
-        WebCore::MockWebAuthenticationConfiguration::NfcError,
-        WebCore::MockWebAuthenticationConfiguration::NfcError::Success,
-        WebCore::MockWebAuthenticationConfiguration::NfcError::NoTags,
-        WebCore::MockWebAuthenticationConfiguration::NfcError::WrongTagType,
-        WebCore::MockWebAuthenticationConfiguration::NfcError::NoConnections,
-        WebCore::MockWebAuthenticationConfiguration::NfcError::MaliciousPayload
+        CyberCore::MockWebAuthenticationConfiguration::NfcError,
+        CyberCore::MockWebAuthenticationConfiguration::NfcError::Success,
+        CyberCore::MockWebAuthenticationConfiguration::NfcError::NoTags,
+        CyberCore::MockWebAuthenticationConfiguration::NfcError::WrongTagType,
+        CyberCore::MockWebAuthenticationConfiguration::NfcError::NoConnections,
+        CyberCore::MockWebAuthenticationConfiguration::NfcError::MaliciousPayload
     >;
 };
 
-template<> struct EnumTraits<WebCore::MockWebAuthenticationConfiguration::UserVerification> {
+template<> struct EnumTraits<CyberCore::MockWebAuthenticationConfiguration::UserVerification> {
     using values = EnumValues<
-        WebCore::MockWebAuthenticationConfiguration::UserVerification,
-        WebCore::MockWebAuthenticationConfiguration::UserVerification::No,
-        WebCore::MockWebAuthenticationConfiguration::UserVerification::Yes,
-        WebCore::MockWebAuthenticationConfiguration::UserVerification::Cancel,
-        WebCore::MockWebAuthenticationConfiguration::UserVerification::Presence
+        CyberCore::MockWebAuthenticationConfiguration::UserVerification,
+        CyberCore::MockWebAuthenticationConfiguration::UserVerification::No,
+        CyberCore::MockWebAuthenticationConfiguration::UserVerification::Yes,
+        CyberCore::MockWebAuthenticationConfiguration::UserVerification::Cancel,
+        CyberCore::MockWebAuthenticationConfiguration::UserVerification::Presence
     >;
 };
 

@@ -29,7 +29,7 @@
 #include <wtf/ThreadSafeRefCounted.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ThreadSafeDataBuffer;
 
@@ -155,4 +155,4 @@ inline void add(Hasher& hasher, const ThreadSafeDataBuffer& buffer)
     add(hasher, *data);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

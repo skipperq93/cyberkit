@@ -30,7 +30,7 @@
 #include "ImageOrientation.h"
 #include <wtf/ArgumentCoder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ImagePaintingOptions {
     template<typename Type> static constexpr bool isOptionType =

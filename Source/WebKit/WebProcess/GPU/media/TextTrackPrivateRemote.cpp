@@ -34,11 +34,11 @@
 #include "MediaPlayerPrivateRemote.h"
 #include "RemoteMediaPlayerProxyMessages.h"
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 TextTrackPrivateRemote::TextTrackPrivateRemote(GPUProcessConnection& gpuProcessConnection, MediaPlayerIdentifier playerIdentifier, TrackPrivateRemoteIdentifier identifier, TextTrackPrivateRemoteConfiguration&& configuration)
-    : WebCore::InbandTextTrackPrivate(configuration.cueFormat)
+    : CyberCore::InbandTextTrackPrivate(configuration.cueFormat)
     , m_gpuProcessConnection(gpuProcessConnection)
     , m_playerIdentifier(playerIdentifier)
     , m_identifier(identifier)
@@ -148,24 +148,24 @@ void TextTrackPrivateRemote::addDataCueWithType(MediaTime&& start, MediaTime&& e
 {
     ASSERT(client());
     if (auto* client = this->client())
-        client->addDataCue(WTFMove(start), WTFMove(end), WebCore::SerializedPlatformDataCue::create(WTFMove(dataValue)), type);
+        client->addDataCue(WTFMove(start), WTFMove(end), CyberCore::SerializedPlatformDataCue::create(WTFMove(dataValue)), type);
 }
 
 void TextTrackPrivateRemote::updateDataCue(MediaTime&& start, MediaTime&& end, SerializedPlatformDataCueValue&& dataValue)
 {
     ASSERT(client());
     if (auto* client = this->client())
-        client->updateDataCue(WTFMove(start), WTFMove(end), WebCore::SerializedPlatformDataCue::create(WTFMove(dataValue)));
+        client->updateDataCue(WTFMove(start), WTFMove(end), CyberCore::SerializedPlatformDataCue::create(WTFMove(dataValue)));
 }
 
 void TextTrackPrivateRemote::removeDataCue(MediaTime&& start, MediaTime&& end, SerializedPlatformDataCueValue&& dataValue)
 {
     ASSERT(client());
     if (auto* client = this->client())
-        client->removeDataCue(WTFMove(start), WTFMove(end), WebCore::SerializedPlatformDataCue::create(WTFMove(dataValue)));
+        client->removeDataCue(WTFMove(start), WTFMove(end), CyberCore::SerializedPlatformDataCue::create(WTFMove(dataValue)));
 }
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS) && ENABLE(VIDEO)

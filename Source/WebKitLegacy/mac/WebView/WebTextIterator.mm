@@ -30,14 +30,14 @@
 #import <CyberScriptCore/InitializeThreading.h>
 #import <CyberCore/Range.h>
 #import <CyberCore/TextIterator.h>
-#import <CyberCore/WebCoreJITOperations.h>
+#import <CyberCore/CyberCoreJITOperations.h>
 #import <wtf/MainThread.h>
 #import <wtf/RunLoop.h>
 #import <wtf/Vector.h>
 
 @interface WebTextIteratorPrivate : NSObject {
 @public
-    std::unique_ptr<WebCore::TextIterator> _textIterator;
+    std::unique_ptr<CyberCore::TextIterator> _textIterator;
     Vector<unichar> _upconvertedText;
 }
 @end
@@ -49,7 +49,7 @@
 #if !PLATFORM(IOS_FAMILY)
     JSC::initialize();
     WTF::initializeMainThread();
-    WebCore::populateJITOperations();
+    CyberCore::populateJITOperations();
 #endif
 }
 
@@ -73,7 +73,7 @@
     if (!range)
         return self;
 
-    _private->_textIterator = makeUnique<WebCore::TextIterator>(makeSimpleRange(*core(range)));
+    _private->_textIterator = makeUnique<CyberCore::TextIterator>(makeSimpleRange(*core(range)));
     return self;
 }
 

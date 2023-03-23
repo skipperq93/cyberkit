@@ -30,13 +30,13 @@
 #include "RenderSVGShape.h"
 #include "SVGGraphicsElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 inline SVGGraphicsElement& RenderSVGShape::graphicsElement() const
 {
     return downcast<SVGGraphicsElement>(RenderSVGModelObject::element());
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // LAYER_BASED_SVG_ENGINE

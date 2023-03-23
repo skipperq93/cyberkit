@@ -34,7 +34,7 @@
 #include <wtf/text/StringHash.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ContentSecurityPolicy;
 
@@ -105,4 +105,4 @@ private:
     bool m_reportSample { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

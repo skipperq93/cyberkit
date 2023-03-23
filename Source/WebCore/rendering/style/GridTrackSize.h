@@ -33,7 +33,7 @@
 
 #include "GridLength.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 enum GridTrackSizeType {
     LengthTrackSizing,
@@ -145,4 +145,4 @@ private:
 
 WTF::TextStream& operator<<(WTF::TextStream&, const GridTrackSize&);
 
-} // namespace WebCore
+} // namespace CyberCore

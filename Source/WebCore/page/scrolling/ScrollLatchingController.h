@@ -37,7 +37,7 @@ namespace WTF {
 class TextStream;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class Element;
 class Frame;
@@ -92,7 +92,7 @@ private:
 
 WTF::TextStream& operator<<(WTF::TextStream&, const ScrollLatchingController&);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WHEEL_EVENT_LATCHING)
 

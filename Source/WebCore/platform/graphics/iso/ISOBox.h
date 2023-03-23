@@ -34,7 +34,7 @@ namespace JSC {
 class DataView;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class ISOBox {
     WTF_MAKE_FAST_ALLOCATED;
@@ -102,6 +102,6 @@ protected:
 }
 
 #define SPECIALIZE_TYPE_TRAITS_ISOBOX(ISOBoxType) \
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::ISOBoxType) \
-static bool isType(const WebCore::ISOBox& box) { return box.boxType() == WebCore::ISOBoxType::boxTypeName(); } \
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::ISOBoxType) \
+static bool isType(const CyberCore::ISOBox& box) { return box.boxType() == CyberCore::ISOBoxType::boxTypeName(); } \
 SPECIALIZE_TYPE_TRAITS_END()

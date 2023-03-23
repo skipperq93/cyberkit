@@ -29,7 +29,7 @@
 #include "Filter.h"
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<FEFlood> FEFlood::create(const Color& floodColor, float floodOpacity)
 {
@@ -81,4 +81,4 @@ TextStream& FEFlood::externalRepresentation(TextStream& ts, FilterRepresentation
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

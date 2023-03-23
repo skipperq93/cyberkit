@@ -32,7 +32,7 @@
 #include "SubstituteData.h"
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class Frame;
@@ -132,4 +132,4 @@ private:
     bool m_isInitialFrameSrcLoad { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

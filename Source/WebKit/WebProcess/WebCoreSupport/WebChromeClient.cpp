@@ -46,7 +46,7 @@
 #include "SharedBufferReference.h"
 #include "UserData.h"
 #include "WebColorChooser.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebDataListSuggestionPicker.h"
 #include "WebDateTimeChooser.h"
 #include "WebFrame.h"
@@ -137,8 +137,8 @@
 #include "WebIconUtilities.h"
 #endif
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 using namespace HTMLNames;
 
 WebChromeClient::WebChromeClient(WebPage& page)
@@ -320,8 +320,8 @@ Page* WebChromeClient::createWindow(Frame& frame, const WindowFeatures& windowFe
         { }, /* requesterOrigin */
         std::nullopt, /* targetBackForwardItemIdentifier */
         std::nullopt, /* sourceBackForwardItemIdentifier */
-        WebCore::LockHistory::No,
-        WebCore::LockBackForwardList::No,
+        CyberCore::LockHistory::No,
+        CyberCore::LockBackForwardList::No,
         { }, /* clientRedirectSourceForHistory */
         0, /* effectiveSandboxFlags */
         navigationAction.privateClickMeasurement(),
@@ -765,7 +765,7 @@ void WebChromeClient::print(Frame& frame, const StringWithDirection& title)
     WebFrame* webFrame = WebFrame::fromCoreFrame(frame);
     ASSERT(webFrame);
 
-    WebCore::FloatSize pdfFirstPageSize;
+    CyberCore::FloatSize pdfFirstPageSize;
 #if ENABLE(PDFKIT_PLUGIN)
     if (auto* pluginView = WebPage::pluginViewForFrame(&frame))
         pdfFirstPageSize = pluginView->pdfDocumentSizeForPrinting();
@@ -852,7 +852,7 @@ void WebChromeClient::showShareSheet(ShareDataWithParsedURL& shareData, Completi
     m_page.showShareSheet(shareData, WTFMove(callback));
 }
 
-void WebChromeClient::showContactPicker(const WebCore::ContactsRequestData& requestData, WTF::CompletionHandler<void(std::optional<Vector<WebCore::ContactInfo>>&&)>&& callback)
+void WebChromeClient::showContactPicker(const CyberCore::ContactsRequestData& requestData, WTF::CompletionHandler<void(std::optional<Vector<CyberCore::ContactInfo>>&&)>&& callback)
 {
     m_page.showContactPicker(requestData, WTFMove(callback));
 }
@@ -881,7 +881,7 @@ RefPtr<Icon> WebChromeClient::createIconForFiles(const Vector<String>& filenames
 
 #endif
 
-void WebChromeClient::didAssociateFormControls(const Vector<RefPtr<Element>>& elements, WebCore::Frame& frame)
+void WebChromeClient::didAssociateFormControls(const Vector<RefPtr<Element>>& elements, CyberCore::Frame& frame)
 {
     WebFrame* webFrame = WebFrame::fromCoreFrame(frame);
     ASSERT(webFrame);
@@ -920,7 +920,7 @@ GraphicsLayerFactory* WebChromeClient::graphicsLayerFactory() const
     return nullptr;
 }
 
-WebCore::DisplayRefreshMonitorFactory* WebChromeClient::displayRefreshMonitorFactory() const
+CyberCore::DisplayRefreshMonitorFactory* WebChromeClient::displayRefreshMonitorFactory() const
 {
     return m_page.drawingArea();
 }
@@ -947,7 +947,7 @@ RefPtr<ImageBuffer> WebChromeClient::sinkIntoImageBuffer(std::unique_ptr<Seriali
 }
 #endif
 
-std::unique_ptr<WebCore::WorkerClient> WebChromeClient::createWorkerClient(SerialFunctionDispatcher& dispatcher)
+std::unique_ptr<CyberCore::WorkerClient> WebChromeClient::createWorkerClient(SerialFunctionDispatcher& dispatcher)
 {
     return makeUnique<WebWorkerClient>(&m_page, dispatcher);
 }
@@ -963,7 +963,7 @@ RefPtr<GraphicsContextGL> WebChromeClient::createGraphicsContextGL(const Graphic
 #endif
         );
 #endif
-    return WebCore::createWebProcessGraphicsContextGL(attributes);
+    return CyberCore::createWebProcessGraphicsContextGL(attributes);
 }
 #endif
 
@@ -1219,7 +1219,7 @@ void WebChromeClient::sampledPageTopColorChanged() const
 }
 
 #if ENABLE(APP_HIGHLIGHTS)
-WebCore::HighlightVisibility WebChromeClient::appHighlightsVisiblility() const
+CyberCore::HighlightVisibility WebChromeClient::appHighlightsVisiblility() const
 {
     return m_page.appHighlightsVisiblility();
 }
@@ -1329,7 +1329,7 @@ bool WebChromeClient::unwrapCryptoKey(const Vector<uint8_t>& wrappedKey, Vector<
 #endif
 
 #if ENABLE(APP_HIGHLIGHTS)
-void WebChromeClient::storeAppHighlight(WebCore::AppHighlight&& highlight) const
+void WebChromeClient::storeAppHighlight(CyberCore::AppHighlight&& highlight) const
 {
     highlight.isNewGroup = m_page.highlightIsNewGroup();
     highlight.requestOriginatedInApp = m_page.highlightRequestOriginatedInApp();
@@ -1337,7 +1337,7 @@ void WebChromeClient::storeAppHighlight(WebCore::AppHighlight&& highlight) const
 }
 #endif
 
-void WebChromeClient::setTextIndicator(const WebCore::TextIndicatorData& indicatorData) const
+void WebChromeClient::setTextIndicator(const CyberCore::TextIndicatorData& indicatorData) const
 {
     m_page.setTextIndicator(indicatorData);
 }
@@ -1478,7 +1478,7 @@ void WebChromeClient::requestStorageAccess(RegistrableDomain&& subFrameDomain, R
     m_page.requestStorageAccess(WTFMove(subFrameDomain), WTFMove(topFrameDomain), *webFrame, scope, WTFMove(completionHandler));
 }
 
-bool WebChromeClient::hasPageLevelStorageAccess(const WebCore::RegistrableDomain& topLevelDomain, const WebCore::RegistrableDomain& resourceDomain) const
+bool WebChromeClient::hasPageLevelStorageAccess(const CyberCore::RegistrableDomain& topLevelDomain, const CyberCore::RegistrableDomain& resourceDomain) const
 {
     return m_page.hasPageLevelStorageAccess(topLevelDomain, resourceDomain);
 }
@@ -1529,7 +1529,7 @@ void WebChromeClient::animationDidFinishForElement(const Element& element)
 }
 
 #if PLATFORM(MAC)
-void WebChromeClient::changeUniversalAccessZoomFocus(const WebCore::IntRect& viewRect, const WebCore::IntRect& selectionRect)
+void WebChromeClient::changeUniversalAccessZoomFocus(const CyberCore::IntRect& viewRect, const CyberCore::IntRect& selectionRect)
 {
     m_page.send(Messages::WebPageProxy::ChangeUniversalAccessZoomFocus(viewRect, selectionRect));
 }
@@ -1614,7 +1614,7 @@ void WebChromeClient::decidePolicyForModalContainer(OptionSet<ModalContainerCont
 }
 
 #if USE(APPLE_INTERNAL_SDK)
-#include <WebKitAdditions/WebChromeClientAdditions.cpp>
+#include <CyberKitAdditions/WebChromeClientAdditions.cpp>
 #else
 const AtomString& WebChromeClient::searchStringForModalContainerObserver() const
 {
@@ -1622,4 +1622,4 @@ const AtomString& WebChromeClient::searchStringForModalContainerObserver() const
 }
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit

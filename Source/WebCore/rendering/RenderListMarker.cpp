@@ -41,7 +41,7 @@
 #include <wtf/text/StringConcatenateNumbers.h>
 #include <wtf/unicode/CharacterNames.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // As of June 2021, the Microsoft C++ compiler seems unable to include std::initializer_list in a constexpr.
 #if COMPILER(MSVC)
@@ -2025,4 +2025,4 @@ CSSCounterStyle* RenderListMarker::counterStyle() const
     return document().counterStyleRegistry().resolvedCounterStyle(style().listStyleStringValue()).get();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

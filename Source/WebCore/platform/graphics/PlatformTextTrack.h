@@ -30,7 +30,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class TextTrack;
 class InbandTextTrackPrivate;
@@ -215,37 +215,37 @@ protected:
     PlatformTextTrackClient* m_client;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::PlatformTextTrackData::TrackKind> {
+template<> struct EnumTraits<CyberCore::PlatformTextTrackData::TrackKind> {
     using values = EnumValues<
-        WebCore::PlatformTextTrackData::TrackKind,
-        WebCore::PlatformTextTrackData::TrackKind::Subtitle,
-        WebCore::PlatformTextTrackData::TrackKind::Caption,
-        WebCore::PlatformTextTrackData::TrackKind::Description,
-        WebCore::PlatformTextTrackData::TrackKind::Chapter,
-        WebCore::PlatformTextTrackData::TrackKind::MetaData,
-        WebCore::PlatformTextTrackData::TrackKind::Forced
+        CyberCore::PlatformTextTrackData::TrackKind,
+        CyberCore::PlatformTextTrackData::TrackKind::Subtitle,
+        CyberCore::PlatformTextTrackData::TrackKind::Caption,
+        CyberCore::PlatformTextTrackData::TrackKind::Description,
+        CyberCore::PlatformTextTrackData::TrackKind::Chapter,
+        CyberCore::PlatformTextTrackData::TrackKind::MetaData,
+        CyberCore::PlatformTextTrackData::TrackKind::Forced
     >;
 };
 
-template<> struct EnumTraits<WebCore::PlatformTextTrackData::TrackType> {
+template<> struct EnumTraits<CyberCore::PlatformTextTrackData::TrackType> {
     using values = EnumValues<
-        WebCore::PlatformTextTrackData::TrackType,
-        WebCore::PlatformTextTrackData::TrackType::InBand,
-        WebCore::PlatformTextTrackData::TrackType::OutOfBand,
-        WebCore::PlatformTextTrackData::TrackType::Script
+        CyberCore::PlatformTextTrackData::TrackType,
+        CyberCore::PlatformTextTrackData::TrackType::InBand,
+        CyberCore::PlatformTextTrackData::TrackType::OutOfBand,
+        CyberCore::PlatformTextTrackData::TrackType::Script
     >;
 };
 
-template<> struct EnumTraits<WebCore::PlatformTextTrackData::TrackMode> {
+template<> struct EnumTraits<CyberCore::PlatformTextTrackData::TrackMode> {
     using values = EnumValues<
-        WebCore::PlatformTextTrackData::TrackMode,
-        WebCore::PlatformTextTrackData::TrackMode::Disabled,
-        WebCore::PlatformTextTrackData::TrackMode::Hidden,
-        WebCore::PlatformTextTrackData::TrackMode::Showing
+        CyberCore::PlatformTextTrackData::TrackMode,
+        CyberCore::PlatformTextTrackData::TrackMode::Disabled,
+        CyberCore::PlatformTextTrackData::TrackMode::Hidden,
+        CyberCore::PlatformTextTrackData::TrackMode::Showing
     >;
 };
 

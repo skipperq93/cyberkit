@@ -46,7 +46,7 @@
 #include <math.h>
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(LegacyInlineFlowBox);
 
@@ -1332,4 +1332,4 @@ void LegacyInlineFlowBox::checkConsistency() const
 
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

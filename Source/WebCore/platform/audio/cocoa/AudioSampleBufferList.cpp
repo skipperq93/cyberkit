@@ -33,7 +33,7 @@
 #include <pal/cf/AudioToolboxSoftLink.h>
 #include <wtf/SetForScope.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<AudioSampleBufferList> AudioSampleBufferList::create(const CAAudioStreamDescription& format, size_t maximumSampleCount)
 {
@@ -312,4 +312,4 @@ OSStatus AudioSampleBufferList::copyFrom(CARingBuffer& ringBuffer, size_t sample
     return 0;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

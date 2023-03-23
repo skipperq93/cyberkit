@@ -37,25 +37,25 @@ template<> struct WrapperTraits<API::UserScript> {
 
 namespace API {
 
-inline WebCore::UserScriptInjectionTime toWebCoreUserScriptInjectionTime(WKUserScriptInjectionTime injectionTime)
+inline CyberCore::UserScriptInjectionTime toCyberCoreUserScriptInjectionTime(WKUserScriptInjectionTime injectionTime)
 {
     switch (injectionTime) {
     case WKUserScriptInjectionTimeAtDocumentStart:
-        return WebCore::UserScriptInjectionTime::DocumentStart;
+        return CyberCore::UserScriptInjectionTime::DocumentStart;
     case WKUserScriptInjectionTimeAtDocumentEnd:
-        return WebCore::UserScriptInjectionTime::DocumentEnd;
+        return CyberCore::UserScriptInjectionTime::DocumentEnd;
     }
 
     ASSERT_NOT_REACHED();
-    return WebCore::UserScriptInjectionTime::DocumentEnd;
+    return CyberCore::UserScriptInjectionTime::DocumentEnd;
 }
 
-inline WKUserScriptInjectionTime toWKUserScriptInjectionTime(WebCore::UserScriptInjectionTime injectionTime)
+inline WKUserScriptInjectionTime toWKUserScriptInjectionTime(CyberCore::UserScriptInjectionTime injectionTime)
 {
     switch (injectionTime) {
-    case WebCore::UserScriptInjectionTime::DocumentStart:
+    case CyberCore::UserScriptInjectionTime::DocumentStart:
         return WKUserScriptInjectionTimeAtDocumentStart;
-    case WebCore::UserScriptInjectionTime::DocumentEnd:
+    case CyberCore::UserScriptInjectionTime::DocumentEnd:
         return WKUserScriptInjectionTimeAtDocumentEnd;
     }
 

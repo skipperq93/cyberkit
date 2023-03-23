@@ -40,7 +40,7 @@
 #include "WKAPICast.h"
 #include "WKBundleAPICast.h"
 #include "WebChromeClient.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebDocumentLoader.h"
 #include "WebFrameMessages.h"
 #include "WebFrameProxyMessages.h"
@@ -100,9 +100,9 @@
 #include <wtf/RefCountedLeakCounter.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 using namespace JSC;
-using namespace WebCore;
+using namespace CyberCore;
 
 DEFINE_DEBUG_ONLY_GLOBAL(WTF::RefCountedLeakCounter, webFrameCounter, ("WebFrame"));
 
@@ -130,7 +130,7 @@ void WebFrame::initWithCoreMainFrame(WebPage& page, Frame& coreFrame, bool recei
 Ref<WebFrame> WebFrame::createSubframe(WebPage& page, WebFrame& parent, const AtomString& frameName, HTMLFrameOwnerElement& ownerElement)
 {
     auto frame = create(page);
-    auto coreFrame = Frame::create(page.corePage(), &ownerElement, makeUniqueRef<WebFrameLoaderClient>(frame.get()), WebCore::FrameIdentifier::generate());
+    auto coreFrame = Frame::create(page.corePage(), &ownerElement, makeUniqueRef<WebFrameLoaderClient>(frame.get()), CyberCore::FrameIdentifier::generate());
     frame->m_coreFrame = coreFrame.get();
 
     ASSERT(!frame->m_frameID);
@@ -201,12 +201,12 @@ WebFrame* WebFrame::fromCoreFrame(const AbstractFrame& frame)
     return nullptr;
 }
 
-WebCore::Frame* WebFrame::coreFrame() const
+CyberCore::Frame* WebFrame::coreFrame() const
 {
     return dynamicDowncast<LocalFrame>(m_coreFrame.get());
 }
 
-WebCore::RemoteFrame* WebFrame::coreRemoteFrame() const
+CyberCore::RemoteFrame* WebFrame::coreRemoteFrame() const
 {
     return dynamicDowncast<RemoteFrame>(m_coreFrame.get());
 }
@@ -222,7 +222,7 @@ FrameInfoData WebFrame::info() const
         SecurityOriginData::fromFrame(dynamicDowncast<LocalFrame>(m_coreFrame.get())),
         m_coreFrame ? m_coreFrame->tree().name().string() : String(),
         frameID(),
-        parent ? std::optional<WebCore::FrameIdentifier> { parent->frameID() } : std::nullopt,
+        parent ? std::optional<CyberCore::FrameIdentifier> { parent->frameID() } : std::nullopt,
     };
 
     return info;
@@ -233,7 +233,7 @@ void WebFrame::getFrameInfo(CompletionHandler<void(FrameInfoData&&)>&& completio
     completionHandler(info());
 }
 
-WebCore::FrameIdentifier WebFrame::frameID() const
+CyberCore::FrameIdentifier WebFrame::frameID() const
 {
     ASSERT(m_frameID);
     return m_frameID;
@@ -245,7 +245,7 @@ void WebFrame::invalidate()
     m_coreFrame = 0;
 }
 
-uint64_t WebFrame::setUpPolicyListener(WebCore::PolicyCheckIdentifier identifier, WebCore::FramePolicyFunction&& policyFunction, ForNavigationAction forNavigationAction)
+uint64_t WebFrame::setUpPolicyListener(CyberCore::PolicyCheckIdentifier identifier, CyberCore::FramePolicyFunction&& policyFunction, ForNavigationAction forNavigationAction)
 {
     auto policyListenerID = generateListenerID();
     m_pendingPolicyChecks.add(policyListenerID, PolicyCheck {
@@ -271,7 +271,7 @@ void WebFrame::continueWillSubmitForm(FormSubmitListenerIdentifier listenerID)
         completionHandler();
 }
 
-void WebFrame::didCommitLoadInAnotherProcess(WebCore::LayerHostingContextIdentifier layerHostingContextIdentifier)
+void WebFrame::didCommitLoadInAnotherProcess(CyberCore::LayerHostingContextIdentifier layerHostingContextIdentifier)
 {
     RefPtr coreFrame = m_coreFrame.get();
     if (!coreFrame)
@@ -289,7 +289,7 @@ void WebFrame::didCommitLoadInAnotherProcess(WebCore::LayerHostingContextIdentif
     if (!parent)
         return;
 
-    auto* localFrame = dynamicDowncast<WebCore::LocalFrame>(coreFrame.get());
+    auto* localFrame = dynamicDowncast<CyberCore::LocalFrame>(coreFrame.get());
     if (!localFrame)
         return;
 
@@ -306,8 +306,8 @@ void WebFrame::didCommitLoadInAnotherProcess(WebCore::LayerHostingContextIdentif
     coreFrame->disconnectOwnerElement();
     auto client = makeUniqueRef<WebRemoteFrameClient>(*this, WTFMove(invalidator));
 
-    auto newFrame = WebCore::RemoteFrame::create(*corePage, m_frameID, ownerElement.get(), WTFMove(client), layerHostingContextIdentifier);
-    auto remoteFrameView = WebCore::RemoteFrameView::create(newFrame);
+    auto newFrame = CyberCore::RemoteFrame::create(*corePage, m_frameID, ownerElement.get(), WTFMove(client), layerHostingContextIdentifier);
+    auto remoteFrameView = CyberCore::RemoteFrameView::create(newFrame);
     // FIXME: We need a corresponding setView(nullptr) during teardown to break the ref cycle.
     newFrame->setView(remoteFrameView.ptr());
     if (ownerRenderer)
@@ -315,7 +315,7 @@ void WebFrame::didCommitLoadInAnotherProcess(WebCore::LayerHostingContextIdentif
 
     m_coreFrame = newFrame.get();
     if (ownerElement) {
-        // FIXME: This is also done in the WebCore::Frame constructor. Move one to make this more symmetric.
+        // FIXME: This is also done in the CyberCore::Frame constructor. Move one to make this more symmetric.
         ownerElement->setContentFrame(*m_coreFrame);
 
         ownerElement->scheduleInvalidateStyleAndLayerComposition();
@@ -324,7 +324,7 @@ void WebFrame::didCommitLoadInAnotherProcess(WebCore::LayerHostingContextIdentif
 
 void WebFrame::didFinishLoadInAnotherProcess()
 {
-    if (auto* remoteFrame = dynamicDowncast<WebCore::RemoteFrame>(m_coreFrame.get()))
+    if (auto* remoteFrame = dynamicDowncast<CyberCore::RemoteFrame>(m_coreFrame.get()))
         remoteFrame->didFinishLoadInAnotherProcess();
 }
 
@@ -379,7 +379,7 @@ void WebFrame::didReceivePolicyDecision(uint64_t listenerID, PolicyDecision&& po
     function(policyDecision.policyAction, policyDecision.identifier);
 }
 
-void WebFrame::startDownload(const WebCore::ResourceRequest& request, const String& suggestedName)
+void WebFrame::startDownload(const CyberCore::ResourceRequest& request, const String& suggestedName)
 {
     if (!m_policyDownloadID) {
         ASSERT_NOT_REACHED();
@@ -404,9 +404,9 @@ void WebFrame::convertMainResourceLoadToDownload(DocumentLoader* documentLoader,
 
     auto& webProcess = WebProcess::singleton();
     // Use std::nullopt to indicate that the resource load can't be converted and a new download must be started.
-    // This can happen if there is no loader because the main resource is in the WebCore memory cache,
+    // This can happen if there is no loader because the main resource is in the CyberCore memory cache,
     // or because the conversion was attempted when not calling SubresourceLoader::didReceiveResponse().
-    std::optional<WebCore::ResourceLoaderIdentifier> mainResourceLoadIdentifier;
+    std::optional<CyberCore::ResourceLoaderIdentifier> mainResourceLoadIdentifier;
     if (mainResourceLoader)
         mainResourceLoadIdentifier = mainResourceLoader->identifier();
 
@@ -952,7 +952,7 @@ String WebFrame::mimeTypeForResourceWithURL(const URL& url) const
     return String();
 }
 
-void WebFrame::updateRemoteFrameSize(WebCore::IntSize size)
+void WebFrame::updateRemoteFrameSize(CyberCore::IntSize size)
 {
     // FIXME: This should probably be a WebFrameProxy message, but WebFrameProxy::commitProvisionalFrame currently removes the parent frame's process as a message receiver.
     if (m_page)
@@ -1001,7 +1001,7 @@ RetainPtr<CFDataRef> WebFrame::webArchiveData(FrameFilterFunction callback, void
 
 RefPtr<WebImage> WebFrame::createSelectionSnapshot() const
 {
-    auto snapshot = snapshotSelection(*coreFrame(), { { WebCore::SnapshotFlags::ForceBlackText, WebCore::SnapshotFlags::Shareable }, PixelFormat::BGRA8, DestinationColorSpace::SRGB() });
+    auto snapshot = snapshotSelection(*coreFrame(), { { CyberCore::SnapshotFlags::ForceBlackText, CyberCore::SnapshotFlags::Shareable }, PixelFormat::BGRA8, DestinationColorSpace::SRGB() });
     if (!snapshot)
         return nullptr;
 
@@ -1048,4 +1048,4 @@ uint64_t WebFrame::messageSenderDestinationID() const
     return m_frameID.object().toUInt64();
 }
 
-} // namespace WebKit
+} // namespace CyberKit

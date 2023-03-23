@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -21,28 +21,28 @@
 #error "Only <webkitdom/webkitdom.h> can be included directly."
 #endif
 
-#ifndef WebKitDOMNodeIterator_h
-#define WebKitDOMNodeIterator_h
+#ifndef CyberKitDOMNodeIterator_h
+#define CyberKitDOMNodeIterator_h
 
 #include <glib-object.h>
-#include <webkitdom/WebKitDOMObject.h>
+#include <webkitdom/CyberKitDOMObject.h>
 #include <webkitdom/webkitdomdefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_DOM_TYPE_NODE_ITERATOR            (webkit_dom_node_iterator_get_type())
-#define WEBKIT_DOM_NODE_ITERATOR(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_NODE_ITERATOR, WebKitDOMNodeIterator))
-#define WEBKIT_DOM_NODE_ITERATOR_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_NODE_ITERATOR, WebKitDOMNodeIteratorClass)
+#define WEBKIT_DOM_NODE_ITERATOR(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_NODE_ITERATOR, CyberKitDOMNodeIterator))
+#define WEBKIT_DOM_NODE_ITERATOR_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_NODE_ITERATOR, CyberKitDOMNodeIteratorClass)
 #define WEBKIT_DOM_IS_NODE_ITERATOR(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_DOM_TYPE_NODE_ITERATOR))
 #define WEBKIT_DOM_IS_NODE_ITERATOR_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_DOM_TYPE_NODE_ITERATOR))
-#define WEBKIT_DOM_NODE_ITERATOR_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_NODE_ITERATOR, WebKitDOMNodeIteratorClass))
+#define WEBKIT_DOM_NODE_ITERATOR_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_NODE_ITERATOR, CyberKitDOMNodeIteratorClass))
 
-struct _WebKitDOMNodeIterator {
-    WebKitDOMObject parent_instance;
+struct _CyberKitDOMNodeIterator {
+    CyberKitDOMObject parent_instance;
 };
 
-struct _WebKitDOMNodeIteratorClass {
-    WebKitDOMObjectClass parent_class;
+struct _CyberKitDOMNodeIteratorClass {
+    CyberKitDOMObjectClass parent_class;
 };
 
 WEBKIT_DEPRECATED GType
@@ -50,93 +50,93 @@ webkit_dom_node_iterator_get_type(void);
 
 /**
  * webkit_dom_node_iterator_next_node:
- * @self: A #WebKitDOMNodeIterator
+ * @self: A #CyberKitDOMNodeIterator
  * @error: #GError
  *
- * Returns: (transfer none): A #WebKitDOMNode
+ * Returns: (transfer none): A #CyberKitDOMNode
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMNode*
-webkit_dom_node_iterator_next_node(WebKitDOMNodeIterator* self, GError** error);
+WEBKIT_DEPRECATED CyberKitDOMNode*
+webkit_dom_node_iterator_next_node(CyberKitDOMNodeIterator* self, GError** error);
 
 /**
  * webkit_dom_node_iterator_previous_node:
- * @self: A #WebKitDOMNodeIterator
+ * @self: A #CyberKitDOMNodeIterator
  * @error: #GError
  *
- * Returns: (transfer none): A #WebKitDOMNode
+ * Returns: (transfer none): A #CyberKitDOMNode
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMNode*
-webkit_dom_node_iterator_previous_node(WebKitDOMNodeIterator* self, GError** error);
+WEBKIT_DEPRECATED CyberKitDOMNode*
+webkit_dom_node_iterator_previous_node(CyberKitDOMNodeIterator* self, GError** error);
 
 /**
  * webkit_dom_node_iterator_detach:
- * @self: A #WebKitDOMNodeIterator
+ * @self: A #CyberKitDOMNodeIterator
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_node_iterator_detach(WebKitDOMNodeIterator* self);
+webkit_dom_node_iterator_detach(CyberKitDOMNodeIterator* self);
 
 /**
  * webkit_dom_node_iterator_get_root:
- * @self: A #WebKitDOMNodeIterator
+ * @self: A #CyberKitDOMNodeIterator
  *
- * Returns: (transfer none): A #WebKitDOMNode
+ * Returns: (transfer none): A #CyberKitDOMNode
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMNode*
-webkit_dom_node_iterator_get_root(WebKitDOMNodeIterator* self);
+WEBKIT_DEPRECATED CyberKitDOMNode*
+webkit_dom_node_iterator_get_root(CyberKitDOMNodeIterator* self);
 
 /**
  * webkit_dom_node_iterator_get_what_to_show:
- * @self: A #WebKitDOMNodeIterator
+ * @self: A #CyberKitDOMNodeIterator
  *
  * Returns: A #gulong
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gulong
-webkit_dom_node_iterator_get_what_to_show(WebKitDOMNodeIterator* self);
+webkit_dom_node_iterator_get_what_to_show(CyberKitDOMNodeIterator* self);
 
 /**
  * webkit_dom_node_iterator_get_filter:
- * @self: A #WebKitDOMNodeIterator
+ * @self: A #CyberKitDOMNodeIterator
  *
- * Returns: (transfer full): A #WebKitDOMNodeFilter
+ * Returns: (transfer full): A #CyberKitDOMNodeFilter
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMNodeFilter*
-webkit_dom_node_iterator_get_filter(WebKitDOMNodeIterator* self);
+WEBKIT_DEPRECATED CyberKitDOMNodeFilter*
+webkit_dom_node_iterator_get_filter(CyberKitDOMNodeIterator* self);
 
 /**
  * webkit_dom_node_iterator_get_reference_node:
- * @self: A #WebKitDOMNodeIterator
+ * @self: A #CyberKitDOMNodeIterator
  *
- * Returns: (transfer none): A #WebKitDOMNode
+ * Returns: (transfer none): A #CyberKitDOMNode
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMNode*
-webkit_dom_node_iterator_get_reference_node(WebKitDOMNodeIterator* self);
+WEBKIT_DEPRECATED CyberKitDOMNode*
+webkit_dom_node_iterator_get_reference_node(CyberKitDOMNodeIterator* self);
 
 /**
  * webkit_dom_node_iterator_get_pointer_before_reference_node:
- * @self: A #WebKitDOMNodeIterator
+ * @self: A #CyberKitDOMNodeIterator
  *
  * Returns: A #gboolean
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
-webkit_dom_node_iterator_get_pointer_before_reference_node(WebKitDOMNodeIterator* self);
+webkit_dom_node_iterator_get_pointer_before_reference_node(CyberKitDOMNodeIterator* self);
 
 G_END_DECLS
 
-#endif /* WebKitDOMNodeIterator_h */
+#endif /* CyberKitDOMNodeIterator_h */

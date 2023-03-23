@@ -27,7 +27,7 @@
 #include <wtf/SortedArrayMap.h>
 #include <wtf/glib/GUniquePtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 #define DBUS_MPRIS_OBJECT_PATH "/org/mpris/MediaPlayer2"
 #define DBUS_MPRIS_PLAYER_INTERFACE "org.mpris.MediaPlayer2.Player"
@@ -375,6 +375,6 @@ GVariant* MediaSessionGLib::canSeekAsGVariant()
     return g_variant_new_boolean(canSeek);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(GLIB) && ENABLE(MEDIA_SESSION)

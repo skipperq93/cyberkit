@@ -33,7 +33,7 @@
 #include <array>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class TextureMapperGLData;
 class TextureMapperShaderProgram;
@@ -108,7 +108,7 @@ private:
     ClipStack m_clipStack;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(TEXTURE_MAPPER_GL)
 

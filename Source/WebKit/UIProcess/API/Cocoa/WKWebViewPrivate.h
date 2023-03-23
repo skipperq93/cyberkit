@@ -726,7 +726,7 @@ typedef NS_OPTIONS(NSUInteger, WKDisplayCaptureSurfaces) {
 - (void)_dismissContentRelativeChildWindows WK_API_AVAILABLE(macos(10.13.4));
 - (void)_setFrame:(NSRect)rect andScrollBy:(NSSize)offset WK_API_AVAILABLE(macos(10.13.4));
 
-- (void)_gestureEventWasNotHandledByWebCore:(NSEvent *)event WK_API_AVAILABLE(macos(10.13.4));
+- (void)_gestureEventWasNotHandledByCyberCore:(NSEvent *)event WK_API_AVAILABLE(macos(10.13.4));
 
 - (void)_disableFrameSizeUpdates WK_API_AVAILABLE(macos(10.13.4));
 - (void)_enableFrameSizeUpdates WK_API_AVAILABLE(macos(10.13.4));

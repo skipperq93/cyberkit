@@ -43,7 +43,7 @@
 #include <wtf/text/TextStream.h>
 #include <wtf/threads/BinarySemaphore.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 ThreadedScrollingTree::ThreadedScrollingTree(AsyncScrollingCoordinator& scrollingCoordinator)
     : m_scrollingCoordinator(&scrollingCoordinator)
@@ -601,6 +601,6 @@ void ThreadedScrollingTree::removeWheelEventTestCompletionDeferralForReason(Scro
     });
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ASYNC_SCROLLING) && ENABLE(SCROLLING_THREAD)

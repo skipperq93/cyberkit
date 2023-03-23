@@ -31,31 +31,31 @@
 #include "RemoteRealtimeMediaSourceProxy.h"
 #include <CyberCore/RealtimeMediaSource.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class UserMediaCaptureManager;
 
-class RemoteRealtimeMediaSource : public WebCore::RealtimeMediaSource
+class RemoteRealtimeMediaSource : public CyberCore::RealtimeMediaSource
 #if ENABLE(GPU_PROCESS)
     , public GPUProcessConnection::Client
 #endif
 {
 public:
-    RemoteRealtimeMediaSource(WebCore::RealtimeMediaSourceIdentifier, const WebCore::CaptureDevice&, const WebCore::MediaConstraints*, WebCore::MediaDeviceHashSalts&&, UserMediaCaptureManager&, bool shouldCaptureInGPUProcess, WebCore::PageIdentifier);
-    RemoteRealtimeMediaSource(RemoteRealtimeMediaSourceProxy&&, WebCore::MediaDeviceHashSalts&&, UserMediaCaptureManager&, WebCore::PageIdentifier);
+    RemoteRealtimeMediaSource(CyberCore::RealtimeMediaSourceIdentifier, const CyberCore::CaptureDevice&, const CyberCore::MediaConstraints*, CyberCore::MediaDeviceHashSalts&&, UserMediaCaptureManager&, bool shouldCaptureInGPUProcess, CyberCore::PageIdentifier);
+    RemoteRealtimeMediaSource(RemoteRealtimeMediaSourceProxy&&, CyberCore::MediaDeviceHashSalts&&, UserMediaCaptureManager&, CyberCore::PageIdentifier);
 
-    WebCore::RealtimeMediaSourceIdentifier identifier() const { return m_proxy.identifier(); }
+    CyberCore::RealtimeMediaSourceIdentifier identifier() const { return m_proxy.identifier(); }
     IPC::Connection& connection() { return m_proxy.connection(); }
 
-    void setSettings(WebCore::RealtimeMediaSourceSettings&&);
+    void setSettings(CyberCore::RealtimeMediaSourceSettings&&);
 
-    void applyConstraintsSucceeded(WebCore::RealtimeMediaSourceSettings&&);
+    void applyConstraintsSucceeded(CyberCore::RealtimeMediaSourceSettings&&);
     void applyConstraintsFailed(String&& failedConstraint, String&& errorMessage) { m_proxy.applyConstraintsFailed(WTFMove(failedConstraint), WTFMove(errorMessage)); }
 
     void captureStopped(bool didFail);
     void sourceMutedChanged(bool value, bool interrupted);
 
-    void configurationChanged(String&& persistentID, WebCore::RealtimeMediaSourceSettings&&, WebCore::RealtimeMediaSourceCapabilities&&);
+    void configurationChanged(String&& persistentID, CyberCore::RealtimeMediaSourceSettings&&, CyberCore::RealtimeMediaSourceCapabilities&&);
 
 protected:
     void createRemoteMediaSource();
@@ -64,20 +64,20 @@ protected:
     RemoteRealtimeMediaSourceProxy& proxy() { return m_proxy; }
     UserMediaCaptureManager& manager() { return m_manager; }
 
-    void setCapabilities(WebCore::RealtimeMediaSourceCapabilities&&);
+    void setCapabilities(CyberCore::RealtimeMediaSourceCapabilities&&);
 
-    const WebCore::RealtimeMediaSourceSettings& settings() final { return m_settings; }
-    const WebCore::RealtimeMediaSourceCapabilities& capabilities() final { return m_capabilities; }
+    const CyberCore::RealtimeMediaSourceSettings& settings() final { return m_settings; }
+    const CyberCore::RealtimeMediaSourceCapabilities& capabilities() final { return m_capabilities; }
 
 private:
     // RealtimeMediaSource
     void startProducingData() final { m_proxy.startProducingData(); }
     void stopProducingData() final { m_proxy.stopProducingData(); }
     bool isCaptureSource() const final { return true; }
-    void applyConstraints(const WebCore::MediaConstraints&, ApplyConstraintsHandler&&) final;
+    void applyConstraints(const CyberCore::MediaConstraints&, ApplyConstraintsHandler&&) final;
     void didEnd() final;
     void whenReady(CompletionHandler<void(String)>&& callback) final { m_proxy.whenReady(WTFMove(callback)); }
-    WebCore::CaptureDevice::DeviceType deviceType() const final { return m_proxy.deviceType(); }
+    CyberCore::CaptureDevice::DeviceType deviceType() const final { return m_proxy.deviceType(); }
     bool interrupted() const final { return m_proxy.interrupted(); }
 
 #if ENABLE(GPU_PROCESS)
@@ -87,9 +87,9 @@ private:
 
     RemoteRealtimeMediaSourceProxy m_proxy;
     UserMediaCaptureManager& m_manager;
-    std::optional<WebCore::MediaConstraints> m_constraints;
-    WebCore::RealtimeMediaSourceCapabilities m_capabilities;
-    WebCore::RealtimeMediaSourceSettings m_settings;
+    std::optional<CyberCore::MediaConstraints> m_constraints;
+    CyberCore::RealtimeMediaSourceCapabilities m_capabilities;
+    CyberCore::RealtimeMediaSourceSettings m_settings;
 };
 
 inline void RemoteRealtimeMediaSource::sourceMutedChanged(bool muted, bool interrupted)
@@ -98,6 +98,6 @@ inline void RemoteRealtimeMediaSource::sourceMutedChanged(bool muted, bool inter
     notifyMutedChange(muted);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

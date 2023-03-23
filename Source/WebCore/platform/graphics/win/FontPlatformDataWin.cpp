@@ -35,7 +35,7 @@
 
 using std::min;
 
-namespace WebCore {
+namespace CyberCore {
 
 FontPlatformData::FontPlatformData(GDIObject<HFONT> font, float size, bool bold, bool oblique, bool useGDI, const CreationData* creationData)
     : FontPlatformData(size, bold, oblique, FontOrientation::Horizontal, FontWidthVariant::RegularWidth, TextRenderingMode::AutoTextRendering, creationData)

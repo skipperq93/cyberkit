@@ -35,7 +35,7 @@
 #include <wtf/Forward.h>
 #include <wtf/UniqueRef.h>
 
-namespace WebCore {
+namespace CyberCore {
 class SharedBuffer;
 enum class CDMRequirement : uint8_t;
 enum class CDMSessionType : uint8_t;
@@ -51,15 +51,15 @@ struct RemoteCDMConfiguration;
 
 class RemoteCDMProxy : public IPC::MessageReceiver {
 public:
-    static std::unique_ptr<RemoteCDMProxy> create(RemoteCDMFactoryProxy&, std::unique_ptr<WebCore::CDMPrivate>&&);
+    static std::unique_ptr<RemoteCDMProxy> create(RemoteCDMFactoryProxy&, std::unique_ptr<CyberCore::CDMPrivate>&&);
     ~RemoteCDMProxy();
 
     const RemoteCDMConfiguration& configuration() const { return m_configuration.get(); }
 
     RemoteCDMFactoryProxy* factory() const { return m_factory.get(); }
 
-    bool supportsInitData(const AtomString&, const WebCore::SharedBuffer&);
-    RefPtr<WebCore::SharedBuffer> sanitizeResponse(const WebCore::SharedBuffer& response);
+    bool supportsInitData(const AtomString&, const CyberCore::SharedBuffer&);
+    RefPtr<CyberCore::SharedBuffer> sanitizeResponse(const CyberCore::SharedBuffer& response);
     std::optional<String> sanitizeSessionId(const String& sessionId);
 
 #if !RELEASE_LOG_DISABLED
@@ -69,20 +69,20 @@ public:
 
 private:
     friend class RemoteCDMFactoryProxy;
-    RemoteCDMProxy(RemoteCDMFactoryProxy&, std::unique_ptr<WebCore::CDMPrivate>&&, UniqueRef<RemoteCDMConfiguration>&&);
+    RemoteCDMProxy(RemoteCDMFactoryProxy&, std::unique_ptr<CyberCore::CDMPrivate>&&, UniqueRef<RemoteCDMConfiguration>&&);
 
     // IPC::MessageReceiver
     void didReceiveMessage(IPC::Connection&, IPC::Decoder&) final;
     bool didReceiveSyncMessage(IPC::Connection&, IPC::Decoder&, UniqueRef<IPC::Encoder>&) final;
 
     // Messages
-    void getSupportedConfiguration(WebCore::CDMKeySystemConfiguration&&, WebCore::CDMPrivate::LocalStorageAccess, CompletionHandler<void(std::optional<WebCore::CDMKeySystemConfiguration>)>&&);
+    void getSupportedConfiguration(CyberCore::CDMKeySystemConfiguration&&, CyberCore::CDMPrivate::LocalStorageAccess, CompletionHandler<void(std::optional<CyberCore::CDMKeySystemConfiguration>)>&&);
     void createInstance(CompletionHandler<void(RemoteCDMInstanceIdentifier, RemoteCDMInstanceConfiguration&&)>&&);
     void loadAndInitialize();
     void setLogIdentifier(uint64_t);
 
     WeakPtr<RemoteCDMFactoryProxy> m_factory;
-    std::unique_ptr<WebCore::CDMPrivate> m_private;
+    std::unique_ptr<CyberCore::CDMPrivate> m_private;
     UniqueRef<RemoteCDMConfiguration> m_configuration;
 
 #if !RELEASE_LOG_DISABLED

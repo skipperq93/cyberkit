@@ -30,7 +30,7 @@
 #include "NavigationPreloadState.h"
 #include "ServiceWorkerRegistration.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class NavigationPreloadManager {
     WTF_MAKE_FAST_ALLOCATED;
@@ -59,6 +59,6 @@ inline NavigationPreloadManager::NavigationPreloadManager(ServiceWorkerRegistrat
 {
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

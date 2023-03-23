@@ -28,7 +28,7 @@
 GST_DEBUG_CATEGORY_EXTERN(webkit_media_common_encryption_decrypt_debug_category);
 #define GST_CAT_DEFAULT webkit_media_common_encryption_decrypt_debug_category
 
-namespace WebCore {
+namespace CyberCore {
 
 struct GMarkupParseContextUserData {
     bool isParsingPssh { false };

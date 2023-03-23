@@ -31,7 +31,7 @@
 #import <pal/spi/ios/UIKitSPI.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 #if PLATFORM(IOS_FAMILY)
 
@@ -47,4 +47,4 @@ RetainPtr<CocoaColor> cocoaColorOrNil(const Color& color)
     return color.isValid() ? cocoaColor(color) : nil;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

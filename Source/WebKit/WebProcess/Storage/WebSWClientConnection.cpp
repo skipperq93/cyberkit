@@ -35,7 +35,7 @@
 #include "NetworkProcessConnection.h"
 #include "NetworkProcessMessages.h"
 #include "SharedBufferReference.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebMessagePortChannelProvider.h"
 #include "WebPage.h"
 #include "WebPageProxyMessages.h"
@@ -60,10 +60,10 @@
 #include <CyberCore/WorkerFetchResult.h>
 #include <CyberCore/WorkerScriptLoader.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace PAL;
-using namespace WebCore;
+using namespace CyberCore;
 
 WebSWClientConnection::WebSWClientConnection()
     : m_identifier(Process::identifier())
@@ -106,7 +106,7 @@ void WebSWClientConnection::removeServiceWorkerRegistrationInServer(ServiceWorke
         send(Messages::WebSWServerConnection::RemoveServiceWorkerRegistrationInServer { identifier });
 }
 
-void WebSWClientConnection::scheduleUnregisterJobInServer(ServiceWorkerRegistrationIdentifier registrationIdentifier, WebCore::ServiceWorkerOrClientIdentifier documentIdentifier, CompletionHandler<void(ExceptionOr<bool>&&)>&& completionHandler)
+void WebSWClientConnection::scheduleUnregisterJobInServer(ServiceWorkerRegistrationIdentifier registrationIdentifier, CyberCore::ServiceWorkerOrClientIdentifier documentIdentifier, CompletionHandler<void(ExceptionOr<bool>&&)>&& completionHandler)
 {
     sendWithAsyncReply(Messages::WebSWServerConnection::ScheduleUnregisterJobInServer { ServiceWorkerJobIdentifier::generateThreadSafe(), registrationIdentifier, documentIdentifier }, [completionHandler = WTFMove(completionHandler)](auto&& result) mutable {
         if (!result.has_value())
@@ -123,7 +123,7 @@ void WebSWClientConnection::postMessageToServiceWorker(ServiceWorkerIdentifier d
     send(Messages::WebSWServerConnection::PostMessageToServiceWorker { destinationIdentifier, WTFMove(message), sourceIdentifier });
 }
 
-void WebSWClientConnection::registerServiceWorkerClient(const ClientOrigin& clientOrigin, WebCore::ServiceWorkerClientData&& data, const std::optional<WebCore::ServiceWorkerRegistrationIdentifier>& controllingServiceWorkerRegistrationIdentifier, String&& userAgent)
+void WebSWClientConnection::registerServiceWorkerClient(const ClientOrigin& clientOrigin, CyberCore::ServiceWorkerClientData&& data, const std::optional<CyberCore::ServiceWorkerRegistrationIdentifier>& controllingServiceWorkerRegistrationIdentifier, String&& userAgent)
 {
     send(Messages::WebSWServerConnection::RegisterServiceWorkerClient { clientOrigin, data, controllingServiceWorkerRegistrationIdentifier, userAgent });
 }
@@ -262,28 +262,28 @@ template<typename C, typename U> void callExceptionOrResultCallback(C&& callback
     callback(WTFMove(*valueOrException));
 }
 
-void WebSWClientConnection::subscribeToPushService(WebCore::ServiceWorkerRegistrationIdentifier registrationIdentifier, const Vector<uint8_t>& applicationServerKey, SubscribeToPushServiceCallback&& callback)
+void WebSWClientConnection::subscribeToPushService(CyberCore::ServiceWorkerRegistrationIdentifier registrationIdentifier, const Vector<uint8_t>& applicationServerKey, SubscribeToPushServiceCallback&& callback)
 {
     sendWithAsyncReply(Messages::WebSWServerConnection::SubscribeToPushService { registrationIdentifier, applicationServerKey }, [callback = WTFMove(callback)](auto&& result) mutable {
         callExceptionOrResultCallback(WTFMove(callback), WTFMove(result));
     });
 }
 
-void WebSWClientConnection::unsubscribeFromPushService(WebCore::ServiceWorkerRegistrationIdentifier registrationIdentifier, WebCore::PushSubscriptionIdentifier subscriptionIdentifier, UnsubscribeFromPushServiceCallback&& callback)
+void WebSWClientConnection::unsubscribeFromPushService(CyberCore::ServiceWorkerRegistrationIdentifier registrationIdentifier, CyberCore::PushSubscriptionIdentifier subscriptionIdentifier, UnsubscribeFromPushServiceCallback&& callback)
 {
     sendWithAsyncReply(Messages::WebSWServerConnection::UnsubscribeFromPushService { registrationIdentifier, subscriptionIdentifier }, [callback = WTFMove(callback)](auto&& result) mutable {
         callExceptionOrResultCallback(WTFMove(callback), WTFMove(result));
     });
 }
 
-void WebSWClientConnection::getPushSubscription(WebCore::ServiceWorkerRegistrationIdentifier registrationIdentifier, GetPushSubscriptionCallback&& callback)
+void WebSWClientConnection::getPushSubscription(CyberCore::ServiceWorkerRegistrationIdentifier registrationIdentifier, GetPushSubscriptionCallback&& callback)
 {
     sendWithAsyncReply(Messages::WebSWServerConnection::GetPushSubscription { registrationIdentifier }, [callback = WTFMove(callback)](auto&& result) mutable {
         callExceptionOrResultCallback(WTFMove(callback), WTFMove(result));
     });
 }
 
-void WebSWClientConnection::getPushPermissionState(WebCore::ServiceWorkerRegistrationIdentifier registrationIdentifier, GetPushPermissionStateCallback&& callback)
+void WebSWClientConnection::getPushPermissionState(CyberCore::ServiceWorkerRegistrationIdentifier registrationIdentifier, GetPushPermissionStateCallback&& callback)
 {
     sendWithAsyncReply(Messages::WebSWServerConnection::GetPushPermissionState { registrationIdentifier }, [callback = WTFMove(callback)](auto&& result) mutable {
         if (!result.has_value())
@@ -297,7 +297,7 @@ void WebSWClientConnection::getNotifications(const URL& registrationURL, const S
     WebProcess::singleton().parentProcessConnection()->sendWithAsyncReply(Messages::WebProcessProxy::GetNotifications { registrationURL, tag }, WTFMove(callback));
 }
 
-void WebSWClientConnection::enableNavigationPreload(WebCore::ServiceWorkerRegistrationIdentifier registrationIdentifier, ExceptionOrVoidCallback&& callback)
+void WebSWClientConnection::enableNavigationPreload(CyberCore::ServiceWorkerRegistrationIdentifier registrationIdentifier, ExceptionOrVoidCallback&& callback)
 {
     sendWithAsyncReply(Messages::WebSWServerConnection::EnableNavigationPreload { registrationIdentifier }, [callback = WTFMove(callback)](auto&& error) mutable {
         if (error)
@@ -306,7 +306,7 @@ void WebSWClientConnection::enableNavigationPreload(WebCore::ServiceWorkerRegist
     });
 }
 
-void WebSWClientConnection::disableNavigationPreload(WebCore::ServiceWorkerRegistrationIdentifier registrationIdentifier, ExceptionOrVoidCallback&& callback)
+void WebSWClientConnection::disableNavigationPreload(CyberCore::ServiceWorkerRegistrationIdentifier registrationIdentifier, ExceptionOrVoidCallback&& callback)
 {
     sendWithAsyncReply(Messages::WebSWServerConnection::DisableNavigationPreload { registrationIdentifier }, [callback = WTFMove(callback)](auto&& error) mutable {
         if (error)
@@ -315,7 +315,7 @@ void WebSWClientConnection::disableNavigationPreload(WebCore::ServiceWorkerRegis
     });
 }
 
-void WebSWClientConnection::setNavigationPreloadHeaderValue(WebCore::ServiceWorkerRegistrationIdentifier registrationIdentifier, String&& headerValue, ExceptionOrVoidCallback&& callback)
+void WebSWClientConnection::setNavigationPreloadHeaderValue(CyberCore::ServiceWorkerRegistrationIdentifier registrationIdentifier, String&& headerValue, ExceptionOrVoidCallback&& callback)
 {
     sendWithAsyncReply(Messages::WebSWServerConnection::SetNavigationPreloadHeaderValue { registrationIdentifier, headerValue }, [callback = WTFMove(callback)](auto&& error) mutable {
         if (error)
@@ -324,7 +324,7 @@ void WebSWClientConnection::setNavigationPreloadHeaderValue(WebCore::ServiceWork
     });
 }
 
-void WebSWClientConnection::getNavigationPreloadState(WebCore::ServiceWorkerRegistrationIdentifier registrationIdentifier, ExceptionOrNavigationPreloadStateCallback&& callback)
+void WebSWClientConnection::getNavigationPreloadState(CyberCore::ServiceWorkerRegistrationIdentifier registrationIdentifier, ExceptionOrNavigationPreloadStateCallback&& callback)
 {
     sendWithAsyncReply(Messages::WebSWServerConnection::GetNavigationPreloadState { registrationIdentifier }, [callback = WTFMove(callback)](auto&& result) mutable {
         callExceptionOrResultCallback(WTFMove(callback), WTFMove(result));
@@ -386,7 +386,7 @@ void WebSWClientConnection::notifyRecordResponseBodyChunk(RetrieveRecordResponse
         m_retrieveRecordResponseBodyCallbacks.remove(iterator);
 }
 
-void WebSWClientConnection::notifyRecordResponseBodyEnd(RetrieveRecordResponseBodyCallbackIdentifier identifier, WebCore::ResourceError&& error)
+void WebSWClientConnection::notifyRecordResponseBodyEnd(RetrieveRecordResponseBodyCallbackIdentifier identifier, CyberCore::ResourceError&& error)
 {
     if (auto callback = m_retrieveRecordResponseBodyCallbacks.take(identifier))
         callback(makeUnexpected(WTFMove(error)));
@@ -414,6 +414,6 @@ void WebSWClientConnection::focusServiceWorkerClient(ScriptExecutionContextIdent
     });
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(SERVICE_WORKER)

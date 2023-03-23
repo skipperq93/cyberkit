@@ -91,7 +91,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/StackStats.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(RenderBox);
 
@@ -5659,4 +5659,4 @@ const RenderBlockFlow* RenderBox::blockFormattingContextRoot() const
     return dynamicDowncast<RenderBlockFlow>(blockContainer);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -38,7 +38,7 @@
 #include "SharedBuffer.h"
 #include <wtf/StringExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 std::unique_ptr<CurlMultipartHandle> CurlMultipartHandle::createIfNeeded(CurlMultipartHandleClient& client, const CurlResponse& response)
 {
@@ -355,6 +355,6 @@ bool CurlMultipartHandle::parseHeadersIfPossible()
     return true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

@@ -37,7 +37,7 @@
 #include <CyberCore/SharedBuffer.h>
 #include <wtf/HashMap.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class RemoteImageDecoderAVF;
 class WebProcess;
@@ -51,7 +51,7 @@ public:
     explicit RemoteImageDecoderAVFManager(WebProcess&);
     virtual ~RemoteImageDecoderAVFManager();
 
-    void deleteRemoteImageDecoder(const WebCore::ImageDecoderIdentifier&);
+    void deleteRemoteImageDecoder(const CyberCore::ImageDecoderIdentifier&);
 
     static const char* supplementName();
 
@@ -59,15 +59,15 @@ public:
     GPUProcessConnection& ensureGPUProcessConnection();
 
 private:
-    RefPtr<RemoteImageDecoderAVF> createImageDecoder(WebCore::FragmentedSharedBuffer& data, const String& mimeType, WebCore::AlphaOption, WebCore::GammaAndColorProfileOption);
+    RefPtr<RemoteImageDecoderAVF> createImageDecoder(CyberCore::FragmentedSharedBuffer& data, const String& mimeType, CyberCore::AlphaOption, CyberCore::GammaAndColorProfileOption);
 
     // GPUProcessConnection::Client.
     void gpuProcessConnectionDidClose(GPUProcessConnection&) final;
 
     void didReceiveMessage(IPC::Connection&, IPC::Decoder&) final;
-    void encodedDataStatusChanged(const WebCore::ImageDecoderIdentifier&, size_t frameCount, const WebCore::IntSize&, bool hasTrack);
+    void encodedDataStatusChanged(const CyberCore::ImageDecoderIdentifier&, size_t frameCount, const CyberCore::IntSize&, bool hasTrack);
 
-    HashMap<WebCore::ImageDecoderIdentifier, WeakPtr<RemoteImageDecoderAVF>> m_remoteImageDecoders;
+    HashMap<CyberCore::ImageDecoderIdentifier, WeakPtr<RemoteImageDecoderAVF>> m_remoteImageDecoders;
 
     WebProcess& m_process;
     WeakPtr<GPUProcessConnection> m_gpuProcessConnection;

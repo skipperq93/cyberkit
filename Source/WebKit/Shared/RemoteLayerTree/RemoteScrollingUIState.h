@@ -33,7 +33,7 @@ class Decoder;
 class Encoder;
 }
 
-namespace WebCore {
+namespace CyberCore {
 using ScrollingNodeID = uint64_t;
 }
 
@@ -57,18 +57,18 @@ public:
     
     void reset();
 
-    const HashSet<WebCore::ScrollingNodeID>& nodesWithActiveScrollSnap() const { return m_nodesWithActiveScrollSnap; }
-    void addNodeWithActiveScrollSnap(WebCore::ScrollingNodeID);
-    void removeNodeWithActiveScrollSnap(WebCore::ScrollingNodeID);
+    const HashSet<CyberCore::ScrollingNodeID>& nodesWithActiveScrollSnap() const { return m_nodesWithActiveScrollSnap; }
+    void addNodeWithActiveScrollSnap(CyberCore::ScrollingNodeID);
+    void removeNodeWithActiveScrollSnap(CyberCore::ScrollingNodeID);
     
-    const HashSet<WebCore::ScrollingNodeID>& nodesWithActiveUserScrolls() const { return m_nodesWithActiveUserScrolls; }
-    void addNodeWithActiveUserScroll(WebCore::ScrollingNodeID);
-    void removeNodeWithActiveUserScroll(WebCore::ScrollingNodeID);
+    const HashSet<CyberCore::ScrollingNodeID>& nodesWithActiveUserScrolls() const { return m_nodesWithActiveUserScrolls; }
+    void addNodeWithActiveUserScroll(CyberCore::ScrollingNodeID);
+    void removeNodeWithActiveUserScroll(CyberCore::ScrollingNodeID);
 
 private:
     OptionSet<RemoteScrollingUIStateChanges> m_changes;
-    HashSet<WebCore::ScrollingNodeID> m_nodesWithActiveScrollSnap;
-    HashSet<WebCore::ScrollingNodeID> m_nodesWithActiveUserScrolls;
+    HashSet<CyberCore::ScrollingNodeID> m_nodesWithActiveScrollSnap;
+    HashSet<CyberCore::ScrollingNodeID> m_nodesWithActiveUserScrolls;
 };
 
 } // namespace WebKit

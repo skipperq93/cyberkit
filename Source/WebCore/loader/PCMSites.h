@@ -28,7 +28,7 @@
 #include "RegistrableDomain.h"
 #include <wtf/text/StringHash.h>
 
-namespace WebCore::PCM {
+namespace CyberCore::PCM {
 
 struct SourceSite {
     explicit SourceSite(const URL& url)
@@ -123,24 +123,24 @@ struct AttributionDestinationSiteHash {
     static const bool safeToCompareToEmptyOrDeleted = false;
 };
 
-} // namespace WebCore::PCM
+} // namespace CyberCore::PCM
 
 namespace WTF {
 
 template<typename T> struct DefaultHash;
 
-template<> struct DefaultHash<WebCore::PCM::SourceSite> : WebCore::PCM::SourceSiteHash { };
-template<> struct HashTraits<WebCore::PCM::SourceSite> : GenericHashTraits<WebCore::PCM::SourceSite> {
-    static WebCore::PCM::SourceSite emptyValue() { return WebCore::PCM::SourceSite(WebCore::RegistrableDomain()); }
-    static void constructDeletedValue(WebCore::PCM::SourceSite& slot) { new (NotNull, &slot.registrableDomain) WebCore::RegistrableDomain(WTF::HashTableDeletedValue); }
-    static bool isDeletedValue(const WebCore::PCM::SourceSite& slot) { return slot.registrableDomain.isHashTableDeletedValue(); }
+template<> struct DefaultHash<CyberCore::PCM::SourceSite> : CyberCore::PCM::SourceSiteHash { };
+template<> struct HashTraits<CyberCore::PCM::SourceSite> : GenericHashTraits<CyberCore::PCM::SourceSite> {
+    static CyberCore::PCM::SourceSite emptyValue() { return CyberCore::PCM::SourceSite(CyberCore::RegistrableDomain()); }
+    static void constructDeletedValue(CyberCore::PCM::SourceSite& slot) { new (NotNull, &slot.registrableDomain) CyberCore::RegistrableDomain(WTF::HashTableDeletedValue); }
+    static bool isDeletedValue(const CyberCore::PCM::SourceSite& slot) { return slot.registrableDomain.isHashTableDeletedValue(); }
 };
 
-template<> struct DefaultHash<WebCore::PCM::AttributionDestinationSite> : WebCore::PCM::AttributionDestinationSiteHash { };
-template<> struct HashTraits<WebCore::PCM::AttributionDestinationSite> : GenericHashTraits<WebCore::PCM::AttributionDestinationSite> {
-    static WebCore::PCM::AttributionDestinationSite emptyValue() { return { }; }
-    static void constructDeletedValue(WebCore::PCM::AttributionDestinationSite& slot) { new (NotNull, &slot.registrableDomain) WebCore::RegistrableDomain(WTF::HashTableDeletedValue); }
-    static bool isDeletedValue(const WebCore::PCM::AttributionDestinationSite& slot) { return slot.registrableDomain.isHashTableDeletedValue(); }
+template<> struct DefaultHash<CyberCore::PCM::AttributionDestinationSite> : CyberCore::PCM::AttributionDestinationSiteHash { };
+template<> struct HashTraits<CyberCore::PCM::AttributionDestinationSite> : GenericHashTraits<CyberCore::PCM::AttributionDestinationSite> {
+    static CyberCore::PCM::AttributionDestinationSite emptyValue() { return { }; }
+    static void constructDeletedValue(CyberCore::PCM::AttributionDestinationSite& slot) { new (NotNull, &slot.registrableDomain) CyberCore::RegistrableDomain(WTF::HashTableDeletedValue); }
+    static bool isDeletedValue(const CyberCore::PCM::AttributionDestinationSite& slot) { return slot.registrableDomain.isHashTableDeletedValue(); }
 };
 
 } // namespace WTF

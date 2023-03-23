@@ -81,7 +81,7 @@ typedef struct _GstVideoInfo GstVideoInfo;
 struct wpe_video_plane_display_dmabuf_source;
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class BitmapTextureGL;
 class GLContext;

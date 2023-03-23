@@ -33,14 +33,14 @@
 #include <CyberCore/GStreamerElementHarness.h>
 #include <wtf/FileSystem.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 namespace TestWebKitAPI {
 
 TEST_F(GStreamerTest, harnessBasic)
 {
     GRefPtr<GstElement> element = gst_element_factory_make("identity", nullptr);
-    auto harness = WebCore::GStreamerElementHarness::create(WTFMove(element), [](auto&, const auto&) { });
+    auto harness = CyberCore::GStreamerElementHarness::create(WTFMove(element), [](auto&, const auto&) { });
 
     // The identity element has a single source pad. Fetch the corresponding stream.
     ASSERT_FALSE(harness->outputStreams().isEmpty());
@@ -92,7 +92,7 @@ TEST_F(GStreamerTest, harnessBasic)
 TEST_F(GStreamerTest, harnessManualStart)
 {
     GRefPtr<GstElement> element = gst_element_factory_make("identity", nullptr);
-    auto harness = WebCore::GStreamerElementHarness::create(WTFMove(element), [](auto&, const auto&) { });
+    auto harness = CyberCore::GStreamerElementHarness::create(WTFMove(element), [](auto&, const auto&) { });
 
     // The identity element has a single source pad. Fetch the corresponding stream.
     ASSERT_FALSE(harness->outputStreams().isEmpty());
@@ -149,7 +149,7 @@ TEST_F(GStreamerTest, harnessBufferProcessing)
 {
     GRefPtr<GstElement> element = gst_element_factory_make("identity", nullptr);
     unsigned counter = 0;
-    auto harness = WebCore::GStreamerElementHarness::create(WTFMove(element), [&counter](auto&, const auto& outputBuffer) mutable {
+    auto harness = CyberCore::GStreamerElementHarness::create(WTFMove(element), [&counter](auto&, const auto& outputBuffer) mutable {
         GstMappedBuffer mappedOutputBuffer(outputBuffer.get(), GST_MAP_READ);
         ASSERT_TRUE(mappedOutputBuffer);
         EXPECT_EQ(mappedOutputBuffer.size(), 64);
@@ -182,7 +182,7 @@ TEST_F(GStreamerTest, harnessFlush)
 {
     GRefPtr<GstElement> element = gst_element_factory_make("identity", nullptr);
     unsigned counter = 0;
-    auto harness = WebCore::GStreamerElementHarness::create(WTFMove(element), [&counter](auto&, const auto& outputBuffer) mutable {
+    auto harness = CyberCore::GStreamerElementHarness::create(WTFMove(element), [&counter](auto&, const auto& outputBuffer) mutable {
         GstMappedBuffer mappedOutputBuffer(outputBuffer.get(), GST_MAP_READ);
         ASSERT_TRUE(mappedOutputBuffer);
         EXPECT_EQ(mappedOutputBuffer.size(), 64);
@@ -235,7 +235,7 @@ TEST_F(GStreamerTest, harnessParseMP4)
         uint64_t totalAudioBuffers { 0 };
         uint64_t totalVideoBuffers { 0 };
     } bufferTracker;
-    auto harness = WebCore::GStreamerElementHarness::create(WTFMove(element), [&bufferTracker](auto& stream, const auto&) mutable {
+    auto harness = CyberCore::GStreamerElementHarness::create(WTFMove(element), [&bufferTracker](auto& stream, const auto&) mutable {
         auto gstStream = adoptGRef(gst_pad_get_stream(stream.pad().get()));
         auto streamType = gst_stream_get_stream_type(gstStream.get());
         if (streamType == GST_STREAM_TYPE_AUDIO)
@@ -311,7 +311,7 @@ TEST_F(GStreamerTest, harnessDecodeMP4Video)
     struct BufferTracker {
         uint64_t totalVideoBuffers { 0 };
     } bufferTracker;
-    auto harness = WebCore::GStreamerElementHarness::create(WTFMove(element), [&bufferTracker](auto& stream, const auto&) mutable {
+    auto harness = CyberCore::GStreamerElementHarness::create(WTFMove(element), [&bufferTracker](auto& stream, const auto&) mutable {
         auto gstStream = adoptGRef(gst_pad_get_stream(stream.pad().get()));
         auto streamType = gst_stream_get_stream_type(gstStream.get());
         if (streamType == GST_STREAM_TYPE_VIDEO)

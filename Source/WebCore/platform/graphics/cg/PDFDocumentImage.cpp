@@ -37,7 +37,7 @@
 #include <wtf/RetainPtr.h>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 PDFDocumentImage::PDFDocumentImage(ImageObserver* observer)
     : Image(observer)

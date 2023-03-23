@@ -30,7 +30,7 @@
 #include <CyberCore/WindowFeatures.h>
 
 WebKitWindowProperties* webkitWindowPropertiesCreate();
-void webkitWindowPropertiesUpdateFromWebWindowFeatures(WebKitWindowProperties*, const WebCore::WindowFeatures&);
+void webkitWindowPropertiesUpdateFromWebWindowFeatures(WebKitWindowProperties*, const CyberCore::WindowFeatures&);
 #if PLATFORM(GTK)
 void webkitWindowPropertiesSetGeometry(WebKitWindowProperties*, GdkRectangle*);
 #endif

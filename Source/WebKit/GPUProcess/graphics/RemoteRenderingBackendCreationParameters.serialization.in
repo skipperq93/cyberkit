@@ -25,7 +25,7 @@
 struct WebKit::RemoteRenderingBackendCreationParameters {
     WebKit::RenderingBackendIdentifier identifier;
     WebKit::WebPageProxyIdentifier pageProxyID;
-    WebCore::PageIdentifier pageID;
+    CyberCore::PageIdentifier pageID;
 };
 
 #endif

@@ -47,7 +47,7 @@ namespace PAL {
 class SessionID;
 }
 
-namespace WebCore {
+namespace CyberCore {
 class AuthenticationChallenge;
 class Credential;
 class SecurityOriginData;
@@ -61,7 +61,7 @@ class WebFrame;
 enum class NegotiatedLegacyTLS : bool { No, Yes };
 
 enum class AuthenticationChallengeDisposition : uint8_t;
-using ChallengeCompletionHandler = CompletionHandler<void(AuthenticationChallengeDisposition, const WebCore::Credential&)>;
+using ChallengeCompletionHandler = CompletionHandler<void(AuthenticationChallengeDisposition, const CyberCore::Credential&)>;
 
 class AuthenticationManager : public NetworkProcessSupplement, public IPC::MessageReceiver {
     WTF_MAKE_FAST_ALLOCATED;
@@ -71,23 +71,23 @@ public:
 
     static const char* supplementName();
 
-    void didReceiveAuthenticationChallenge(PAL::SessionID, WebPageProxyIdentifier, const WebCore::SecurityOriginData* , const WebCore::AuthenticationChallenge&, NegotiatedLegacyTLS, ChallengeCompletionHandler&&);
-    void didReceiveAuthenticationChallenge(IPC::MessageSender& download, const WebCore::AuthenticationChallenge&, ChallengeCompletionHandler&&);
+    void didReceiveAuthenticationChallenge(PAL::SessionID, WebPageProxyIdentifier, const CyberCore::SecurityOriginData* , const CyberCore::AuthenticationChallenge&, NegotiatedLegacyTLS, ChallengeCompletionHandler&&);
+    void didReceiveAuthenticationChallenge(IPC::MessageSender& download, const CyberCore::AuthenticationChallenge&, ChallengeCompletionHandler&&);
 
-    void completeAuthenticationChallenge(AuthenticationChallengeIdentifier, AuthenticationChallengeDisposition, WebCore::Credential&&);
+    void completeAuthenticationChallenge(AuthenticationChallengeIdentifier, AuthenticationChallengeDisposition, CyberCore::Credential&&);
 
     void negotiatedLegacyTLS(WebPageProxyIdentifier) const;
 
 private:
     struct Challenge {
         WTF_MAKE_STRUCT_FAST_ALLOCATED;
-        Challenge(WebPageProxyIdentifier pageID, const WebCore::AuthenticationChallenge& challenge, ChallengeCompletionHandler&& completionHandler)
+        Challenge(WebPageProxyIdentifier pageID, const CyberCore::AuthenticationChallenge& challenge, ChallengeCompletionHandler&& completionHandler)
             : pageID(pageID)
             , challenge(challenge)
             , completionHandler(WTFMove(completionHandler)) { }
         
         WebPageProxyIdentifier pageID;
-        WebCore::AuthenticationChallenge challenge;
+        CyberCore::AuthenticationChallenge challenge;
         ChallengeCompletionHandler completionHandler;
     };
 
@@ -100,7 +100,7 @@ private:
     void didReceiveMessage(IPC::Connection&, IPC::Decoder&) override;
 
     AuthenticationChallengeIdentifier addChallengeToChallengeMap(UniqueRef<Challenge>&&);
-    bool shouldCoalesceChallenge(WebPageProxyIdentifier, AuthenticationChallengeIdentifier, const WebCore::AuthenticationChallenge&) const;
+    bool shouldCoalesceChallenge(WebPageProxyIdentifier, AuthenticationChallengeIdentifier, const CyberCore::AuthenticationChallenge&) const;
 
     Vector<AuthenticationChallengeIdentifier> coalesceChallengesMatching(AuthenticationChallengeIdentifier) const;
 

@@ -33,8 +33,8 @@
 #include "WebProcess.h"
 #include <CyberCore/Document.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 void WebMDNSRegister::finishedRegisteringMDNSName(MDNSRegisterIdentifier identifier, String&& name, std::optional<MDNSRegisterError> error)
 {
@@ -45,7 +45,7 @@ void WebMDNSRegister::finishedRegisteringMDNSName(MDNSRegisterIdentifier identif
     if (!error) {
         auto iterator = m_registeringDocuments.find(pendingRegistration.documentIdentifier);
         if (iterator == m_registeringDocuments.end()) {
-            pendingRegistration.callback(name, WebCore::MDNSRegisterError::DNSSD);
+            pendingRegistration.callback(name, CyberCore::MDNSRegisterError::DNSSD);
             return;
         }
         iterator->value.add(pendingRegistration.ipAddress, name);
@@ -84,6 +84,6 @@ void WebMDNSRegister::registerMDNSName(ScriptExecutionContextIdentifier identifi
         finishedRegisteringMDNSName(requestIdentifier, { }, MDNSRegisterError::Internal);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_RTC)

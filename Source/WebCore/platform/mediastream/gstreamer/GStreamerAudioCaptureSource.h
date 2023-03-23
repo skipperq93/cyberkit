@@ -28,7 +28,7 @@
 #include "GStreamerCaptureDevice.h"
 #include "RealtimeMediaSource.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class GStreamerAudioCaptureSource : public RealtimeMediaSource {
 public:
@@ -64,6 +64,6 @@ private:
     void triggerSampleAvailable(GstSample*);
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM) && USE(GSTREAMER)

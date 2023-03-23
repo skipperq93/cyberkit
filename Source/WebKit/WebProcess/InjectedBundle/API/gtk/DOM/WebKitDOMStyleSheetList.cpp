@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -18,31 +18,31 @@
  */
 
 #include "config.h"
-#include "WebKitDOMStyleSheetList.h"
+#include "CyberKitDOMStyleSheetList.h"
 
 #include <CyberCore/CSSImportRule.h>
 #include "DOMObjectCache.h"
 #include <CyberCore/Document.h>
 #include <CyberCore/ExceptionCode.h>
 #include <CyberCore/JSExecState.h>
-#include "WebKitDOMPrivate.h"
-#include "WebKitDOMStyleSheetListPrivate.h"
-#include "WebKitDOMStyleSheetPrivate.h"
+#include "CyberKitDOMPrivate.h"
+#include "CyberKitDOMStyleSheetListPrivate.h"
+#include "CyberKitDOMStyleSheetPrivate.h"
 #include "ConvertToUTF8String.h"
 #include <wtf/GetPtr.h>
 #include <wtf/RefPtr.h>
 
-#define WEBKIT_DOM_STYLE_SHEET_LIST_GET_PRIVATE(obj) G_TYPE_INSTANCE_GET_PRIVATE(obj, WEBKIT_DOM_TYPE_STYLE_SHEET_LIST, WebKitDOMStyleSheetListPrivate)
+#define WEBKIT_DOM_STYLE_SHEET_LIST_GET_PRIVATE(obj) G_TYPE_INSTANCE_GET_PRIVATE(obj, WEBKIT_DOM_TYPE_STYLE_SHEET_LIST, CyberKitDOMStyleSheetListPrivate)
 
-typedef struct _WebKitDOMStyleSheetListPrivate {
-    RefPtr<WebCore::StyleSheetList> coreObject;
-} WebKitDOMStyleSheetListPrivate;
+typedef struct _CyberKitDOMStyleSheetListPrivate {
+    RefPtr<CyberCore::StyleSheetList> coreObject;
+} CyberKitDOMStyleSheetListPrivate;
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
-namespace WebKit {
+namespace CyberKit {
 
-WebKitDOMStyleSheetList* kit(WebCore::StyleSheetList* obj)
+CyberKitDOMStyleSheetList* kit(CyberCore::StyleSheetList* obj)
 {
     if (!obj)
         return 0;
@@ -53,20 +53,20 @@ WebKitDOMStyleSheetList* kit(WebCore::StyleSheetList* obj)
     return wrapStyleSheetList(obj);
 }
 
-WebCore::StyleSheetList* core(WebKitDOMStyleSheetList* request)
+CyberCore::StyleSheetList* core(CyberKitDOMStyleSheetList* request)
 {
-    return request ? static_cast<WebCore::StyleSheetList*>(WEBKIT_DOM_OBJECT(request)->coreObject) : 0;
+    return request ? static_cast<CyberCore::StyleSheetList*>(WEBKIT_DOM_OBJECT(request)->coreObject) : 0;
 }
 
-WebKitDOMStyleSheetList* wrapStyleSheetList(WebCore::StyleSheetList* coreObject)
+CyberKitDOMStyleSheetList* wrapStyleSheetList(CyberCore::StyleSheetList* coreObject)
 {
     ASSERT(coreObject);
     return WEBKIT_DOM_STYLE_SHEET_LIST(g_object_new(WEBKIT_DOM_TYPE_STYLE_SHEET_LIST, "core-object", coreObject, nullptr));
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
-G_DEFINE_TYPE(WebKitDOMStyleSheetList, webkit_dom_style_sheet_list, WEBKIT_DOM_TYPE_OBJECT)
+G_DEFINE_TYPE(CyberKitDOMStyleSheetList, webkit_dom_style_sheet_list, WEBKIT_DOM_TYPE_OBJECT)
 
 enum {
     DOM_STYLE_SHEET_LIST_PROP_0,
@@ -75,17 +75,17 @@ enum {
 
 static void webkit_dom_style_sheet_list_finalize(GObject* object)
 {
-    WebKitDOMStyleSheetListPrivate* priv = WEBKIT_DOM_STYLE_SHEET_LIST_GET_PRIVATE(object);
+    CyberKitDOMStyleSheetListPrivate* priv = WEBKIT_DOM_STYLE_SHEET_LIST_GET_PRIVATE(object);
 
-    WebKit::DOMObjectCache::forget(priv->coreObject.get());
+    CyberKit::DOMObjectCache::forget(priv->coreObject.get());
 
-    priv->~WebKitDOMStyleSheetListPrivate();
+    priv->~CyberKitDOMStyleSheetListPrivate();
     G_OBJECT_CLASS(webkit_dom_style_sheet_list_parent_class)->finalize(object);
 }
 
 static void webkit_dom_style_sheet_list_get_property(GObject* object, guint propertyId, GValue* value, GParamSpec* pspec)
 {
-    WebKitDOMStyleSheetList* self = WEBKIT_DOM_STYLE_SHEET_LIST(object);
+    CyberKitDOMStyleSheetList* self = WEBKIT_DOM_STYLE_SHEET_LIST(object);
 
     switch (propertyId) {
     case DOM_STYLE_SHEET_LIST_PROP_LENGTH:
@@ -101,17 +101,17 @@ static GObject* webkit_dom_style_sheet_list_constructor(GType type, guint constr
 {
     GObject* object = G_OBJECT_CLASS(webkit_dom_style_sheet_list_parent_class)->constructor(type, constructPropertiesCount, constructProperties);
 
-    WebKitDOMStyleSheetListPrivate* priv = WEBKIT_DOM_STYLE_SHEET_LIST_GET_PRIVATE(object);
-    priv->coreObject = static_cast<WebCore::StyleSheetList*>(WEBKIT_DOM_OBJECT(object)->coreObject);
-    WebKit::DOMObjectCache::put(priv->coreObject.get(), object);
+    CyberKitDOMStyleSheetListPrivate* priv = WEBKIT_DOM_STYLE_SHEET_LIST_GET_PRIVATE(object);
+    priv->coreObject = static_cast<CyberCore::StyleSheetList*>(WEBKIT_DOM_OBJECT(object)->coreObject);
+    CyberKit::DOMObjectCache::put(priv->coreObject.get(), object);
 
     return object;
 }
 
-static void webkit_dom_style_sheet_list_class_init(WebKitDOMStyleSheetListClass* requestClass)
+static void webkit_dom_style_sheet_list_class_init(CyberKitDOMStyleSheetListClass* requestClass)
 {
     GObjectClass* gobjectClass = G_OBJECT_CLASS(requestClass);
-    g_type_class_add_private(gobjectClass, sizeof(WebKitDOMStyleSheetListPrivate));
+    g_type_class_add_private(gobjectClass, sizeof(CyberKitDOMStyleSheetListPrivate));
     gobjectClass->constructor = webkit_dom_style_sheet_list_constructor;
     gobjectClass->finalize = webkit_dom_style_sheet_list_finalize;
     gobjectClass->get_property = webkit_dom_style_sheet_list_get_property;
@@ -128,26 +128,26 @@ static void webkit_dom_style_sheet_list_class_init(WebKitDOMStyleSheetListClass*
 
 }
 
-static void webkit_dom_style_sheet_list_init(WebKitDOMStyleSheetList* request)
+static void webkit_dom_style_sheet_list_init(CyberKitDOMStyleSheetList* request)
 {
-    WebKitDOMStyleSheetListPrivate* priv = WEBKIT_DOM_STYLE_SHEET_LIST_GET_PRIVATE(request);
-    new (priv) WebKitDOMStyleSheetListPrivate();
+    CyberKitDOMStyleSheetListPrivate* priv = WEBKIT_DOM_STYLE_SHEET_LIST_GET_PRIVATE(request);
+    new (priv) CyberKitDOMStyleSheetListPrivate();
 }
 
-WebKitDOMStyleSheet* webkit_dom_style_sheet_list_item(WebKitDOMStyleSheetList* self, gulong index)
+CyberKitDOMStyleSheet* webkit_dom_style_sheet_list_item(CyberKitDOMStyleSheetList* self, gulong index)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_STYLE_SHEET_LIST(self), 0);
-    WebCore::StyleSheetList* item = WebKit::core(self);
-    RefPtr<WebCore::StyleSheet> gobjectResult = WTF::getPtr(item->item(index));
-    return WebKit::kit(gobjectResult.get());
+    CyberCore::StyleSheetList* item = CyberKit::core(self);
+    RefPtr<CyberCore::StyleSheet> gobjectResult = WTF::getPtr(item->item(index));
+    return CyberKit::kit(gobjectResult.get());
 }
 
-gulong webkit_dom_style_sheet_list_get_length(WebKitDOMStyleSheetList* self)
+gulong webkit_dom_style_sheet_list_get_length(CyberKitDOMStyleSheetList* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_STYLE_SHEET_LIST(self), 0);
-    WebCore::StyleSheetList* item = WebKit::core(self);
+    CyberCore::StyleSheetList* item = CyberKit::core(self);
     gulong result = item->length();
     return result;
 }

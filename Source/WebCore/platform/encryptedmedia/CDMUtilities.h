@@ -33,7 +33,7 @@
 #include <wtf/JSONValues.h>
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SharedBuffer;
 

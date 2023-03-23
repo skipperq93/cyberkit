@@ -26,7 +26,7 @@
 #include "config.h"
 #include "WebPrintOperationGtk.h"
 
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebErrors.h"
 #include "WebPage.h"
 #include "WebPageProxyMessages.h"
@@ -49,7 +49,7 @@
 #include <wtf/Vector.h>
 #include <wtf/glib/GUniquePtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 WebPrintOperationGtk::PrintPagesData::PrintPagesData(WebPrintOperationGtk* printOperation)
     : printOperation(printOperation)
@@ -195,7 +195,7 @@ WebPrintOperationGtk::~WebPrintOperationGtk()
         g_source_remove(m_printPagesIdleId);
 }
 
-void WebPrintOperationGtk::startPrint(WebCore::PrintContext* printContext, CompletionHandler<void(RefPtr<WebCore::FragmentedSharedBuffer>&&, WebCore::ResourceError&&)>&& completionHandler)
+void WebPrintOperationGtk::startPrint(CyberCore::PrintContext* printContext, CompletionHandler<void(RefPtr<CyberCore::FragmentedSharedBuffer>&&, CyberCore::ResourceError&&)>&& completionHandler)
 {
     m_printContext = printContext;
     m_completionHandler = WTFMove(completionHandler);
@@ -318,7 +318,7 @@ URL WebPrintOperationGtk::frameURL() const
     if (!m_printContext)
         return URL();
 
-    WebCore::DocumentLoader* documentLoader = m_printContext->frame()->loader().documentLoader();
+    CyberCore::DocumentLoader* documentLoader = m_printContext->frame()->loader().documentLoader();
     return documentLoader ? documentLoader->url() : URL();
 }
 
@@ -534,7 +534,7 @@ void WebPrintOperationGtk::renderPage(int pageNumber)
     prepareContextToDraw();
 
     double pageWidth = gtk_page_setup_get_page_width(m_pageSetup.get(), GTK_UNIT_INCH) * m_xDPI;
-    WebCore::GraphicsContextCairo graphicsContext(m_cairoContext.get());
+    CyberCore::GraphicsContextCairo graphicsContext(m_cairoContext.get());
     m_printContext->spoolPage(graphicsContext, pageNumber, pageWidth / m_scale);
 
     cairo_restore(m_cairoContext.get());
@@ -568,7 +568,7 @@ void WebPrintOperationGtk::printPagesDone()
     m_cairoContext = nullptr;
 }
 
-void WebPrintOperationGtk::printDone(RefPtr<WebCore::FragmentedSharedBuffer>&& buffer, WebCore::ResourceError&& error)
+void WebPrintOperationGtk::printDone(RefPtr<CyberCore::FragmentedSharedBuffer>&& buffer, CyberCore::ResourceError&& error)
 {
     if (m_printPagesIdleId)
         g_source_remove(m_printPagesIdleId);
@@ -606,4 +606,4 @@ void WebPrintOperationGtk::print(cairo_surface_t* surface, double xDPI, double y
     }
 }
 
-} // namespace WebKit
+} // namespace CyberKit

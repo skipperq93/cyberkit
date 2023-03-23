@@ -67,7 +67,7 @@ public:
     void evaluateScriptInExtensionTab(const Inspector::ExtensionTabID&, const String& scriptSource, WTF::CompletionHandler<void(Inspector::ExtensionEvaluationResult)>&&);
 
     // WebInspectorUIExtensionControllerProxy IPC messages.
-    void didShowExtensionTab(const Inspector::ExtensionID&, const Inspector::ExtensionTabID&, WebCore::FrameIdentifier);
+    void didShowExtensionTab(const Inspector::ExtensionID&, const Inspector::ExtensionTabID&, CyberCore::FrameIdentifier);
     void didHideExtensionTab(const Inspector::ExtensionID&, const Inspector::ExtensionTabID&);
     void didNavigateExtensionTab(const Inspector::ExtensionID&, const Inspector::ExtensionTabID&, const URL&);
     void inspectedPageDidNavigate(const URL&);

@@ -39,7 +39,7 @@
 namespace WebKit {
 
 namespace CacheStorage {
-using namespace WebCore::DOMCacheEngine;
+using namespace CyberCore::DOMCacheEngine;
 using namespace NetworkCache;
 
 static inline String cachesListFilename(const String& cachesRootPath)
@@ -57,12 +57,12 @@ String Caches::cachesSizeFilename(const String& cachesRootsPath)
     return FileSystem::pathByAppendingComponent(cachesRootsPath, "estimatedsize"_s);
 }
 
-Ref<Caches> Caches::create(Engine& engine, WebCore::ClientOrigin&& origin, String&& rootPath)
+Ref<Caches> Caches::create(Engine& engine, CyberCore::ClientOrigin&& origin, String&& rootPath)
 {
     return adoptRef(*new Caches { engine, WTFMove(origin), WTFMove(rootPath) });
 }
 
-Caches::Caches(Engine& engine, WebCore::ClientOrigin&& origin, String&& rootPath)
+Caches::Caches(Engine& engine, CyberCore::ClientOrigin&& origin, String&& rootPath)
     : m_engine(&engine)
     , m_origin(WTFMove(origin))
     , m_rootPath(WTFMove(rootPath))
@@ -74,7 +74,7 @@ Caches::~Caches()
     ASSERT(m_pendingWritingCachesToDiskCallbacks.isEmpty());
 }
 
-void Caches::retrieveOriginFromDirectory(const String& folderPath, WorkQueue& queue, WTF::CompletionHandler<void(std::optional<WebCore::ClientOrigin>&&)>&& completionHandler)
+void Caches::retrieveOriginFromDirectory(const String& folderPath, WorkQueue& queue, WTF::CompletionHandler<void(std::optional<CyberCore::ClientOrigin>&&)>&& completionHandler)
 {
     queue.dispatch([completionHandler = WTFMove(completionHandler), filename = cachesOriginFilename(folderPath)]() mutable {
         if (!FileSystem::fileExists(filename)) {
@@ -111,16 +111,16 @@ void Caches::storeOrigin(CompletionCallback&& completionHandler)
     });
 }
 
-std::optional<WebCore::ClientOrigin> Caches::readOrigin(const Data& data)
+std::optional<CyberCore::ClientOrigin> Caches::readOrigin(const Data& data)
 {
     WTF::Persistence::Decoder decoder(data.span());
 
-    std::optional<WebCore::SecurityOriginData> topOrigin;
+    std::optional<CyberCore::SecurityOriginData> topOrigin;
     decoder >> topOrigin;
     if (!topOrigin)
         return std::nullopt;
 
-    std::optional<WebCore::SecurityOriginData> clientOrigin;
+    std::optional<CyberCore::SecurityOriginData> clientOrigin;
     decoder >> clientOrigin;
     if (!clientOrigin)
         return std::nullopt;
@@ -131,7 +131,7 @@ std::optional<WebCore::ClientOrigin> Caches::readOrigin(const Data& data)
     }};
 }
 
-void Caches::initialize(WebCore::DOMCacheEngine::CompletionCallback&& callback)
+void Caches::initialize(CyberCore::DOMCacheEngine::CompletionCallback&& callback)
 {
     if (m_isInitialized) {
         callback(std::nullopt);
@@ -285,7 +285,7 @@ Cache* Caches::find(const String& name)
     return (position != notFound) ? &m_caches[position] : nullptr;
 }
 
-Cache* Caches::find(WebCore::DOMCacheIdentifier identifier)
+Cache* Caches::find(CyberCore::DOMCacheIdentifier identifier)
 {
     auto position = m_caches.findIf([&](const auto& item) { return item.identifier() == identifier; });
     if (position != notFound)
@@ -324,7 +324,7 @@ void Caches::open(const String& name, CacheIdentifierCallback&& callback)
 
     makeDirty();
 
-    auto cacheIdentifier = WebCore::DOMCacheIdentifier::generate();
+    auto cacheIdentifier = CyberCore::DOMCacheIdentifier::generate();
     m_caches.append(Cache { *this, cacheIdentifier, Cache::State::Open, String { name }, createVersion4UUIDString() });
 
     writeCachesToDisk([callback = WTFMove(callback), cacheIdentifier](std::optional<Error>&& error) mutable {
@@ -332,7 +332,7 @@ void Caches::open(const String& name, CacheIdentifierCallback&& callback)
     });
 }
 
-void Caches::remove(WebCore::DOMCacheIdentifier identifier, RemoveCacheIdentifierCallback&& callback)
+void Caches::remove(CyberCore::DOMCacheIdentifier identifier, RemoveCacheIdentifierCallback&& callback)
 {
     ASSERT(m_isInitialized);
     ASSERT(m_engine);
@@ -472,7 +472,7 @@ void Caches::readCachesFromDisk(WTF::Function<void(Expected<Vector<Cache>, Error
             return;
         }
         callback(WTF::map(WTFMove(result.value()), [this] (auto&& pair) {
-            return Cache { *this, WebCore::DOMCacheIdentifier::generate(), Cache::State::Uninitialized, WTFMove(pair.first), WTFMove(pair.second) };
+            return Cache { *this, CyberCore::DOMCacheIdentifier::generate(), Cache::State::Uninitialized, WTFMove(pair.first), WTFMove(pair.second) };
         }));
     });
 }
@@ -519,7 +519,7 @@ void Caches::readRecordsList(Cache& cache, NetworkCache::Storage::TraverseHandle
     });
 }
 
-void Caches::requestSpace(uint64_t spaceRequired, WebCore::DOMCacheEngine::CompletionCallback&& callback)
+void Caches::requestSpace(uint64_t spaceRequired, CyberCore::DOMCacheEngine::CompletionCallback&& callback)
 {
     if (!m_engine) {
         callback(Error::QuotaExceeded);

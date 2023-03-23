@@ -33,7 +33,7 @@
 #include <wtf/HashMap.h>
 #include <wtf/glib/GRefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DNSResolveQueueGLib final : public DNSResolveQueue {
 public:
@@ -64,6 +64,6 @@ private:
 
 using DNSResolveQueuePlatform = DNSResolveQueueGLib;
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(GLIB)

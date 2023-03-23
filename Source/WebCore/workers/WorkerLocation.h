@@ -29,9 +29,9 @@
 #include <wtf/URL.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
-class WebCoreOpaqueRoot;
+class CyberCoreOpaqueRoot;
 
 class WorkerLocation : public RefCounted<WorkerLocation> {
 public:
@@ -61,6 +61,6 @@ private:
     String m_origin;
 };
 
-WebCoreOpaqueRoot root(WorkerLocation*);
+CyberCoreOpaqueRoot root(WorkerLocation*);
 
-} // namespace WebCore
+} // namespace CyberCore

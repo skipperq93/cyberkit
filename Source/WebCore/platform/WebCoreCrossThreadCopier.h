@@ -37,7 +37,7 @@ namespace PAL {
 class SessionID;
 }
 
-namespace WebCore {
+namespace CyberCore {
 class ThreadSafeDataBuffer;
 }
 
@@ -48,9 +48,9 @@ template<> struct CrossThreadCopierBase<false, false, PAL::SessionID> {
     static Type copy(PAL::SessionID);
 };
 
-template<> struct CrossThreadCopierBase<false, false, WebCore::ThreadSafeDataBuffer> {
-    typedef WebCore::ThreadSafeDataBuffer Type;
-    static Type copy(const WebCore::ThreadSafeDataBuffer&);
+template<> struct CrossThreadCopierBase<false, false, CyberCore::ThreadSafeDataBuffer> {
+    typedef CyberCore::ThreadSafeDataBuffer Type;
+    static Type copy(const CyberCore::ThreadSafeDataBuffer&);
 };
 
 } // namespace WTF

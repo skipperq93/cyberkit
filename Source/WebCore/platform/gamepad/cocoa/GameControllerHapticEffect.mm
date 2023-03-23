@@ -36,7 +36,7 @@
 
 #import "CoreHapticsSoftLink.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static double magnitudeToIntensity(double magnitude)
 {
@@ -148,6 +148,6 @@ void GameControllerHapticEffect::rightEffectFinishedPlaying()
         m_completionHandler(true);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(GAMEPAD) && HAVE(WIDE_GAMECONTROLLER_SUPPORT)

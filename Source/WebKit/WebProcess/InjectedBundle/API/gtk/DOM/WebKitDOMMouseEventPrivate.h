@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -17,16 +17,16 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitDOMMouseEventPrivate_h
-#define WebKitDOMMouseEventPrivate_h
+#ifndef CyberKitDOMMouseEventPrivate_h
+#define CyberKitDOMMouseEventPrivate_h
 
 #include <CyberCore/MouseEvent.h>
-#include <webkitdom/WebKitDOMMouseEvent.h>
+#include <webkitdom/CyberKitDOMMouseEvent.h>
 
-namespace WebKit {
-WebKitDOMMouseEvent* wrapMouseEvent(WebCore::MouseEvent*);
-WebKitDOMMouseEvent* kit(WebCore::MouseEvent*);
-WebCore::MouseEvent* core(WebKitDOMMouseEvent*);
-} // namespace WebKit
+namespace CyberKit {
+CyberKitDOMMouseEvent* wrapMouseEvent(CyberCore::MouseEvent*);
+CyberKitDOMMouseEvent* kit(CyberCore::MouseEvent*);
+CyberCore::MouseEvent* core(CyberKitDOMMouseEvent*);
+} // namespace CyberKit
 
-#endif /* WebKitDOMMouseEventPrivate_h */
+#endif /* CyberKitDOMMouseEventPrivate_h */

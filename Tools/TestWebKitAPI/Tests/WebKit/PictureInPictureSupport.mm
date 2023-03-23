@@ -42,7 +42,7 @@ TEST(WebKit, PictureInPictureSupport)
         return [webView stringByEvaluatingJavaScript:@"window.internals.supportsPictureInPicture()"].boolValue;
     };
 
-    ASSERT_TRUE(supportsPictureInPicture() == WebCore::supportsPictureInPicture());
+    ASSERT_TRUE(supportsPictureInPicture() == CyberCore::supportsPictureInPicture());
 }
 
 #endif // WK_HAVE_C_SPI

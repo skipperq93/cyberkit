@@ -24,7 +24,7 @@
 #include <wtf/Noncopyable.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderSVGInlineText;
 
@@ -72,4 +72,4 @@ inline SVGCharacterData::SVGCharacterData()
 {
 }
 
-} // namespace WebCore
+} // namespace CyberCore

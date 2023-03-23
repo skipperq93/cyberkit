@@ -29,7 +29,7 @@
 #include <optional>
 #include <wtf/EnumTraits.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class GraphicsContextGLPowerPreference : uint8_t {
     Default,

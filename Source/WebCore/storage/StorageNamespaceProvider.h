@@ -33,7 +33,7 @@ namespace PAL {
 class SessionID;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class Page;
@@ -75,4 +75,4 @@ private:
     unsigned m_sessionStorageQuota { 0 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

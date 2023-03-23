@@ -27,17 +27,17 @@
 
 #include <CyberCore/MediaRecorderProvider.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPage;
 
-class MediaRecorderProvider final : public WebCore::MediaRecorderProvider {
+class MediaRecorderProvider final : public CyberCore::MediaRecorderProvider {
 public:
     explicit MediaRecorderProvider(WebPage&);
 
 private:
 #if ENABLE(MEDIA_STREAM) && PLATFORM(COCOA)
-    std::unique_ptr<WebCore::MediaRecorderPrivate> createMediaRecorderPrivate(WebCore::MediaStreamPrivate&, const WebCore::MediaRecorderPrivateOptions&) final;
+    std::unique_ptr<CyberCore::MediaRecorderPrivate> createMediaRecorderPrivate(CyberCore::MediaStreamPrivate&, const CyberCore::MediaRecorderPrivateOptions&) final;
 #endif
 
 #if ENABLE(MEDIA_STREAM) && PLATFORM(COCOA) && ENABLE(GPU_PROCESS)

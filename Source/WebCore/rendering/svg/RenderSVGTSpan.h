@@ -24,7 +24,7 @@
 #include "RenderSVGInline.h"
 #include "SVGTextPositioningElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderSVGTSpan final : public RenderSVGInline {
     WTF_MAKE_ISO_ALLOCATED(RenderSVGTSpan);
@@ -41,6 +41,6 @@ private:
     bool isSVGTSpan() const override { return true; }
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderSVGTSpan, isSVGTSpan())

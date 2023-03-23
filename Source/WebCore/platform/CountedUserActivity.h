@@ -28,7 +28,7 @@
 
 #include "UserActivity.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CountedUserActivity {
 public:
@@ -54,8 +54,8 @@ private:
     size_t m_count { 0 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-using WebCore::CountedUserActivity;
+using CyberCore::CountedUserActivity;
 
 #endif // CountedUserActivity_h

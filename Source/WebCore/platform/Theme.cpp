@@ -31,7 +31,7 @@
 #include "LengthBox.h"
 #include "LengthSize.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 int Theme::baselinePositionAdjustment(StyleAppearance) const
 {

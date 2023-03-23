@@ -31,9 +31,9 @@
 #import <UIKit/UIGeometry.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
-id makeNSArrayElement(const WebCore::FloatRect& rect)
+id makeNSArrayElement(const CyberCore::FloatRect& rect)
 {
 #if PLATFORM(MAC)
     return [NSValue valueWithRect:rect];

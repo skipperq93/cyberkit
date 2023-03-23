@@ -53,7 +53,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/StackStats.h>
 #include <wtf/TypeCasts.h>
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(RenderReplaced);
 

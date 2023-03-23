@@ -28,7 +28,7 @@
 #if PLATFORM(MAC)
 #import "PowerObserverMac.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 PowerObserver::PowerObserver(Function<void()>&& powerOnHander)
     : m_powerOnHander(WTFMove(powerOnHander))
@@ -72,6 +72,6 @@ void PowerObserver::didReceiveSystemPowerNotification(io_service_t, uint32_t mes
     });
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

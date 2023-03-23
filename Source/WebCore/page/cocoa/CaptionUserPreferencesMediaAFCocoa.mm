@@ -32,29 +32,29 @@
 #import <wtf/spi/cocoa/NSObjCRuntimeSPI.h>
 
 @interface WebCaptionUserPreferencesMediaAFWeakObserver : NSObject {
-    WeakPtr<WebCore::CaptionUserPreferencesMediaAF> m_weakPtr;
+    WeakPtr<CyberCore::CaptionUserPreferencesMediaAF> m_weakPtr;
 }
-@property (nonatomic, readonly, direct) RefPtr<WebCore::CaptionUserPreferencesMediaAF> userPreferences;
+@property (nonatomic, readonly, direct) RefPtr<CyberCore::CaptionUserPreferencesMediaAF> userPreferences;
 - (instancetype)init NS_UNAVAILABLE;
-- (instancetype)initWithWeakPtr:(WeakPtr<WebCore::CaptionUserPreferencesMediaAF>&&)weakPtr NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithWeakPtr:(WeakPtr<CyberCore::CaptionUserPreferencesMediaAF>&&)weakPtr NS_DESIGNATED_INITIALIZER;
 @end
 
 NS_DIRECT_MEMBERS
 @implementation WebCaptionUserPreferencesMediaAFWeakObserver
-- (instancetype)initWithWeakPtr:(WeakPtr<WebCore::CaptionUserPreferencesMediaAF>&&)weakPtr
+- (instancetype)initWithWeakPtr:(WeakPtr<CyberCore::CaptionUserPreferencesMediaAF>&&)weakPtr
 {
     if ((self = [super init]))
         m_weakPtr = WTFMove(weakPtr);
     return self;
 }
 
-- (RefPtr<WebCore::CaptionUserPreferencesMediaAF>)userPreferences
+- (RefPtr<CyberCore::CaptionUserPreferencesMediaAF>)userPreferences
 {
     return m_weakPtr.get();
 }
 @end
 
-namespace WebCore {
+namespace CyberCore {
 
 RetainPtr<WebCaptionUserPreferencesMediaAFWeakObserver> CaptionUserPreferencesMediaAF::createWeakObserver(CaptionUserPreferencesMediaAF* thisPtr)
 {
@@ -69,6 +69,6 @@ RefPtr<CaptionUserPreferencesMediaAF> CaptionUserPreferencesMediaAF::extractCapt
     return [strongObserver userPreferences];
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(VIDEO) && PLATFORM(COCOA)

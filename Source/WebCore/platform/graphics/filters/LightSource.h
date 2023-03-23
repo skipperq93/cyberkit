@@ -31,7 +31,7 @@ namespace WTF {
 class TextStream;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 enum LightType {
     LS_DISTANT,
@@ -91,23 +91,23 @@ private:
     LightType m_type;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::LightType> {
+template<> struct EnumTraits<CyberCore::LightType> {
     using values = EnumValues<
-        WebCore::LightType,
+        CyberCore::LightType,
 
-        WebCore::LS_DISTANT,
-        WebCore::LS_POINT,
-        WebCore::LS_SPOT
+        CyberCore::LS_DISTANT,
+        CyberCore::LS_POINT,
+        CyberCore::LS_SPOT
     >;
 };
 
 } // namespace WTF
 
 #define SPECIALIZE_TYPE_TRAITS_LIGHTSOURCE(ClassName, Type) \
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::ClassName) \
-    static bool isType(const WebCore::LightSource& source) { return source.type() == WebCore::Type; } \
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::ClassName) \
+    static bool isType(const CyberCore::LightSource& source) { return source.type() == CyberCore::Type; } \
 SPECIALIZE_TYPE_TRAITS_END()

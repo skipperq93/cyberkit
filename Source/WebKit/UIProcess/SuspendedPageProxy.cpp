@@ -39,7 +39,7 @@
 #include <wtf/URL.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 static const Seconds suspensionTimeout { 10_s };
 

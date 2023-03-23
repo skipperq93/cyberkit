@@ -56,8 +56,8 @@ static GBytes* webkitDirectoryInputStreamCreateHeader(WebKitDirectoryInputStream
         "<th align=\"left\">%s</th><th align=\"right\">%s</th><th align=\"right\">%s</th>"
         "</thead>",
         stream->priv->uri.data(),
-        WebCore::directoryUserAgentStyleSheet,
-        WebCore::directoryJavaScript,
+        CyberCore::directoryUserAgentStyleSheet,
+        CyberCore::directoryJavaScript,
         _("Name"),
         _("Size"),
         _("Date Modified"));

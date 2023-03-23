@@ -40,10 +40,10 @@
 #import <CyberCore/NodeList.h>
 #import <CyberCore/SVGTests.h>
 #import <CyberCore/ThreadCheck.h>
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 #import <CyberCore/WebScriptObjectPrivate.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 static inline Node& unwrap(DOMNode& wrapper)
 {
@@ -58,7 +58,7 @@ Node* core(DOMNode *wrapper)
 
 DOMNode *kit(Node* value)
 {
-    WebCoreThreadViolationCheckRoundOne();
+    CyberCoreThreadViolationCheckRoundOne();
     if (!value)
         return nil;
     if (DOMNode *wrapper = getDOMWrapper(value))
@@ -76,7 +76,7 @@ DOMNode *kit(Node* value)
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainThread([DOMNode class], self))
+    if (CyberCoreObjCScheduleDeallocateOnMainThread([DOMNode class], self))
         return;
     if (_internal)
         unwrap(*self).deref();

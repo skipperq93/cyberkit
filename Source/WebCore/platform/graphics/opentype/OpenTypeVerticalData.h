@@ -32,7 +32,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Font;
 class FontPlatformData;
@@ -62,7 +62,7 @@ private:
     HashMap<Glyph, int16_t> m_vertOriginY;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(OPENTYPE_VERTICAL)
 

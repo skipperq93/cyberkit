@@ -28,7 +28,7 @@
 #include <wtf/Assertions.h>
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 #if !LOG_DISABLED || !RELEASE_LOG_DISABLED
 
@@ -146,4 +146,4 @@ WEBCORE_LOG_CHANNELS(DECLARE_LOG_CHANNEL)
 
 #endif // !LOG_DISABLED || !RELEASE_LOG_DISABLED
 
-} // namespace WebCore
+} // namespace CyberCore

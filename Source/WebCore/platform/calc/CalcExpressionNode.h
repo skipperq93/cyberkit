@@ -27,7 +27,7 @@
 
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class CalcExpressionNodeType : uint8_t {
     Undefined,
@@ -65,6 +65,6 @@ TextStream& operator<<(TextStream&, const CalcExpressionNode&);
 }
 
 #define SPECIALIZE_TYPE_TRAITS_CALCEXPRESSION_NODE(ToValueTypeName, predicate) \
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::ToValueTypeName) \
-    static bool isType(const WebCore::CalcExpressionNode& node) { return node.predicate; } \
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::ToValueTypeName) \
+    static bool isType(const CyberCore::CalcExpressionNode& node) { return node.predicate; } \
 SPECIALIZE_TYPE_TRAITS_END()

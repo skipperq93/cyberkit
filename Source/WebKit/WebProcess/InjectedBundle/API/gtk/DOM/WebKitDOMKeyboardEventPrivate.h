@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -17,16 +17,16 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitDOMKeyboardEventPrivate_h
-#define WebKitDOMKeyboardEventPrivate_h
+#ifndef CyberKitDOMKeyboardEventPrivate_h
+#define CyberKitDOMKeyboardEventPrivate_h
 
 #include <CyberCore/KeyboardEvent.h>
-#include <webkitdom/WebKitDOMKeyboardEvent.h>
+#include <webkitdom/CyberKitDOMKeyboardEvent.h>
 
-namespace WebKit {
-WebKitDOMKeyboardEvent* wrapKeyboardEvent(WebCore::KeyboardEvent*);
-WebKitDOMKeyboardEvent* kit(WebCore::KeyboardEvent*);
-WebCore::KeyboardEvent* core(WebKitDOMKeyboardEvent*);
-} // namespace WebKit
+namespace CyberKit {
+CyberKitDOMKeyboardEvent* wrapKeyboardEvent(CyberCore::KeyboardEvent*);
+CyberKitDOMKeyboardEvent* kit(CyberCore::KeyboardEvent*);
+CyberCore::KeyboardEvent* core(CyberKitDOMKeyboardEvent*);
+} // namespace CyberKit
 
-#endif /* WebKitDOMKeyboardEventPrivate_h */
+#endif /* CyberKitDOMKeyboardEventPrivate_h */

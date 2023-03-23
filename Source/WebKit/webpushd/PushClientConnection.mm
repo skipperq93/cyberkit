@@ -38,7 +38,7 @@
 #import <wtf/Vector.h>
 #import <wtf/cocoa/Entitlements.h>
 
-using WebKit::Daemon::Encoder;
+using CyberKit::Daemon::Encoder;
 
 namespace WebPushD {
 
@@ -83,7 +83,7 @@ void ClientConnection::setHostAppAuditTokenData(const Vector<uint8_t>& tokenData
     Daemon::singleton().broadcastAllConnectionIdentities();
 }
 
-WebCore::PushSubscriptionSetIdentifier ClientConnection::subscriptionSetIdentifier()
+CyberCore::PushSubscriptionSetIdentifier ClientConnection::subscriptionSetIdentifier()
 {
     return {
         hostAppCodeSigningIdentifier(),
@@ -96,13 +96,13 @@ const String& ClientConnection::hostAppCodeSigningIdentifier()
 {
     if (!m_hostAppCodeSigningIdentifier) {
 #if PLATFORM(MAC) && !USE(APPLE_INTERNAL_SDK)
-        // This isn't great, but currently the only user of webpushd in open source builds is TestWebKitAPI and codeSigningIdentifier returns the null String on x86_64 Macs.
-        m_hostAppCodeSigningIdentifier = "com.apple.WebKit.TestWebKitAPI"_s;
+        // This isn't great, but currently the only user of webpushd in open source builds is TestCyberKitAPI and codeSigningIdentifier returns the null String on x86_64 Macs.
+        m_hostAppCodeSigningIdentifier = "com.apple.CyberKit.TestCyberKitAPI"_s;
 #else
         if (!m_hostAppAuditToken)
             m_hostAppCodeSigningIdentifier = String();
         else
-            m_hostAppCodeSigningIdentifier = WebKit::codeSigningIdentifier(*m_hostAppAuditToken);
+            m_hostAppCodeSigningIdentifier = CyberKit::codeSigningIdentifier(*m_hostAppAuditToken);
 #endif
     }
 
@@ -159,8 +159,8 @@ void ClientConnection::sendDebugMessage(const String& message)
     // FIXME: We currently send the debug message twice.
     // After getting all debug message clients onto the encoder/decoder mechanism, remove the old style message.
     auto dictionary = adoptOSObject(xpc_dictionary_create(nullptr, nullptr, 0));
-    xpc_dictionary_set_uint64(dictionary.get(), WebKit::WebPushD::protocolDebugMessageLevelKey, static_cast<uint64_t>(JSC::MessageLevel::Info));
-    xpc_dictionary_set_string(dictionary.get(), WebKit::WebPushD::protocolDebugMessageKey, message.utf8().data());
+    xpc_dictionary_set_uint64(dictionary.get(), CyberKit::WebPushD::protocolDebugMessageLevelKey, static_cast<uint64_t>(JSC::MessageLevel::Info));
+    xpc_dictionary_set_string(dictionary.get(), CyberKit::WebPushD::protocolDebugMessageKey, message.utf8().data());
     xpc_connection_send_message(m_xpcConnection.get(), dictionary.get());
 
     sendDaemonMessage<DaemonMessageType::DebugMessage>(message);
@@ -223,9 +223,9 @@ void ClientConnection::sendDaemonMessage(Args&&... args) const
     encoder.encode(std::forward<Args>(args)...);
 
     auto dictionary = adoptNS(xpc_dictionary_create(nullptr, nullptr, 0));
-    xpc_dictionary_set_uint64(dictionary.get(), WebKit::WebPushD::protocolVersionKey, WebKit::WebPushD::protocolVersionValue);
-    xpc_dictionary_set_value(dictionary.get(), WebKit::WebPushD::protocolEncodedMessageKey, WebKit::vectorToXPCData(encoder.takeBuffer()).get());
-    xpc_dictionary_set_uint64(dictionary.get(), WebKit::WebPushD::protocolMessageTypeKey, static_cast<uint64_t>(messageType));
+    xpc_dictionary_set_uint64(dictionary.get(), CyberKit::WebPushD::protocolVersionKey, CyberKit::WebPushD::protocolVersionValue);
+    xpc_dictionary_set_value(dictionary.get(), CyberKit::WebPushD::protocolEncodedMessageKey, CyberKit::vectorToXPCData(encoder.takeBuffer()).get());
+    xpc_dictionary_set_uint64(dictionary.get(), CyberKit::WebPushD::protocolMessageTypeKey, static_cast<uint64_t>(messageType));
 
     xpc_connection_send_message(m_xpcConnection.get(), dictionary.get());
 }

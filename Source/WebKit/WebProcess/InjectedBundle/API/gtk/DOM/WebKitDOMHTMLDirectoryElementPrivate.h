@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -17,16 +17,16 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitDOMHTMLDirectoryElementPrivate_h
-#define WebKitDOMHTMLDirectoryElementPrivate_h
+#ifndef CyberKitDOMHTMLDirectoryElementPrivate_h
+#define CyberKitDOMHTMLDirectoryElementPrivate_h
 
 #include <CyberCore/HTMLDirectoryElement.h>
-#include <webkitdom/WebKitDOMHTMLDirectoryElement.h>
+#include <webkitdom/CyberKitDOMHTMLDirectoryElement.h>
 
-namespace WebKit {
-WebKitDOMHTMLDirectoryElement* wrapHTMLDirectoryElement(WebCore::HTMLDirectoryElement*);
-WebKitDOMHTMLDirectoryElement* kit(WebCore::HTMLDirectoryElement*);
-WebCore::HTMLDirectoryElement* core(WebKitDOMHTMLDirectoryElement*);
-} // namespace WebKit
+namespace CyberKit {
+CyberKitDOMHTMLDirectoryElement* wrapHTMLDirectoryElement(CyberCore::HTMLDirectoryElement*);
+CyberKitDOMHTMLDirectoryElement* kit(CyberCore::HTMLDirectoryElement*);
+CyberCore::HTMLDirectoryElement* core(CyberKitDOMHTMLDirectoryElement*);
+} // namespace CyberKit
 
-#endif /* WebKitDOMHTMLDirectoryElementPrivate_h */
+#endif /* CyberKitDOMHTMLDirectoryElementPrivate_h */

@@ -35,7 +35,7 @@
 #import <pal/cf/CoreMediaSoftLink.h>
 #import <pal/cocoa/AVFoundationSoftLink.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 AVAssetMIMETypeCache& AVAssetMIMETypeCache::singleton()
 {

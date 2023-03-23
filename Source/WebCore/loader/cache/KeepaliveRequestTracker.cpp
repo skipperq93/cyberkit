@@ -26,7 +26,7 @@
 #include "config.h"
 #include "KeepaliveRequestTracker.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 const uint64_t maxInflightKeepaliveBytes { 65536 }; // 64 kibibytes as per Fetch specification.
 

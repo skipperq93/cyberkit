@@ -41,7 +41,7 @@
 #include "RTCIceTransportState.h"
 #include "RTCSignalingState.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace PeerConnectionStates {
 
@@ -54,6 +54,6 @@ using SignalingState = RTCSignalingState;
 
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

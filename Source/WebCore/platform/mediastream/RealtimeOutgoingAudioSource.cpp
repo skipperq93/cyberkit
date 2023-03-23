@@ -35,7 +35,7 @@
 #include "LibWebRTCProvider.h"
 #include "Logging.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 RealtimeOutgoingAudioSource::RealtimeOutgoingAudioSource(Ref<MediaStreamTrackPrivate>&& source)
     : m_audioSource(WTFMove(source))
@@ -123,6 +123,6 @@ WTFLogChannel& RealtimeOutgoingAudioSource::logChannel() const
 }
 #endif
     
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(LIBWEBRTC)

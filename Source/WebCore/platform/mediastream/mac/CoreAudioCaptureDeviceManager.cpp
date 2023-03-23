@@ -41,7 +41,7 @@
 
 #import <pal/cf/CoreMediaSoftLink.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 CoreAudioCaptureDeviceManager& CoreAudioCaptureDeviceManager::singleton()
 {
@@ -381,6 +381,6 @@ void CoreAudioCaptureDeviceManager::refreshAudioCaptureDevices(NotifyIfDevicesHa
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM) && PLATFORM(MAC)

@@ -33,8 +33,8 @@
 #import "WebFrameView.h"
 #import "WebHTMLViewInternal.h"
 #import "WebIconDatabase.h"
-#import "WebKitLogging.h"
-#import "WebKitNSStringExtras.h"
+#import "CyberKitLogging.h"
+#import "CyberKitNSStringExtras.h"
 #import "WebNSDictionaryExtras.h"
 #import "WebNSObjectExtras.h"
 #import "WebNSURLExtras.h"
@@ -46,8 +46,8 @@
 #import <CyberCore/HistoryItem.h>
 #import <CyberCore/Image.h>
 #import <CyberCore/ThreadCheck.h>
-#import <CyberCore/WebCoreJITOperations.h>
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreJITOperations.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 #import <wtf/Assertions.h>
 #import <wtf/MainThread.h>
 #import <wtf/NeverDestroyed.h>
@@ -58,7 +58,7 @@
 #import <wtf/text/WTFString.h>
 
 #if PLATFORM(IOS_FAMILY)
-#import <CyberCore/WebCoreThreadMessage.h>
+#import <CyberCore/CyberCoreThreadMessage.h>
 
 NSString *WebViewportInitialScaleKey = @"initial-scale";
 NSString *WebViewportMinimumScaleKey = @"minimum-scale";
@@ -91,7 +91,7 @@ static NSString *redirectURLsKey = @"redirectURLs";
 // Notification strings.
 NSString *WebHistoryItemChangedNotification = @"WebHistoryItemChangedNotification";
 
-using namespace WebCore;
+using namespace CyberCore;
 
 @implementation WebHistoryItemPrivate
 
@@ -99,7 +99,7 @@ using namespace WebCore;
 
 typedef HashMap<HistoryItem*, WebHistoryItem*> HistoryItemMap;
 
-static inline WebCoreHistoryItem* core(WebHistoryItemPrivate* itemPrivate)
+static inline CyberCoreHistoryItem* core(WebHistoryItemPrivate* itemPrivate)
 {
     return itemPrivate->_historyItem.get();
 }
@@ -127,20 +127,20 @@ void WKNotifyHistoryItemChanged(HistoryItem&)
 #if !PLATFORM(IOS_FAMILY)
     JSC::initialize();
     WTF::initializeMainThread();
-    WebCore::populateJITOperations();
+    CyberCore::populateJITOperations();
 #endif
 }
 
 - (instancetype)init
 {
-    return [self initWithWebCoreHistoryItem:HistoryItem::create()];
+    return [self initWithCyberCoreHistoryItem:HistoryItem::create()];
 }
 
 - (instancetype)initWithURLString:(NSString *)URLString title:(NSString *)title lastVisitedTimeInterval:(NSTimeInterval)time
 {
-    WebCoreThreadViolationCheckRoundOne();
+    CyberCoreThreadViolationCheckRoundOne();
 
-    WebHistoryItem *item = [self initWithWebCoreHistoryItem:HistoryItem::create(URLString, title)];
+    WebHistoryItem *item = [self initWithCyberCoreHistoryItem:HistoryItem::create(URLString, title)];
     item->_private->_lastVisitedTime = time;
 
     return item;
@@ -148,7 +148,7 @@ void WKNotifyHistoryItemChanged(HistoryItem&)
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainThread([WebHistoryItem class], self))
+    if (CyberCoreObjCScheduleDeallocateOnMainThread([WebHistoryItem class], self))
         return;
 
     historyItemWrappers().remove(_private->_historyItem.get());
@@ -159,8 +159,8 @@ void WKNotifyHistoryItemChanged(HistoryItem&)
 
 - (id)copyWithZone:(NSZone *)zone
 {
-    WebCoreThreadViolationCheckRoundOne();
-    RetainPtr<WebHistoryItem> copy = adoptNS([[[self class] alloc] initWithWebCoreHistoryItem:core(_private)->copy()]);
+    CyberCoreThreadViolationCheckRoundOne();
+    RetainPtr<WebHistoryItem> copy = adoptNS([[[self class] alloc] initWithCyberCoreHistoryItem:core(_private)->copy()]);
 
     copy->_private->_lastVisitedTime = _private->_lastVisitedTime;
 
@@ -270,7 +270,7 @@ WebHistoryItem *kit(HistoryItem* item)
         return nil;
     if (auto wrapper = historyItemWrappers().get(item))
         return retainPtr(wrapper).autorelease();
-    return adoptNS([[WebHistoryItem alloc] initWithWebCoreHistoryItem:*item]).autorelease();
+    return adoptNS([[WebHistoryItem alloc] initWithCyberCoreHistoryItem:*item]).autorelease();
 }
 
 + (WebHistoryItem *)entryWithURL:(NSURL *)URL
@@ -280,24 +280,24 @@ WebHistoryItem *kit(HistoryItem* item)
 
 - (id)initWithURLString:(NSString *)URLString title:(NSString *)title displayTitle:(NSString *)displayTitle lastVisitedTimeInterval:(NSTimeInterval)time
 {
-    auto item = [self initWithWebCoreHistoryItem:HistoryItem::create(URLString, title, displayTitle)];
+    auto item = [self initWithCyberCoreHistoryItem:HistoryItem::create(URLString, title, displayTitle)];
     if (!item)
         return nil;
     item->_private->_lastVisitedTime = time;
     return item;
 }
 
-- (id)initWithWebCoreHistoryItem:(Ref<HistoryItem>&&)item
+- (id)initWithCyberCoreHistoryItem:(Ref<HistoryItem>&&)item
 {   
-    WebCoreThreadViolationCheckRoundOne();
+    CyberCoreThreadViolationCheckRoundOne();
 
-    // Need to tell WebCore what function to call for the 
+    // Need to tell CyberCore what function to call for the 
     // "History Item has Changed" notification - no harm in doing this
     // everytime a WebHistoryItem is created
     // Note: We also do this in [WebFrameView initWithFrame:] where we do
-    // other "init before WebKit is used" type things
-    // FIXME: This means that if we mix legacy WebKit and modern WebKit in the same process, we won't get both notifications.
-    WebCore::notifyHistoryItemChanged = WKNotifyHistoryItemChanged;
+    // other "init before CyberKit is used" type things
+    // FIXME: This means that if we mix legacy CyberKit and modern CyberKit in the same process, we won't get both notifications.
+    CyberCore::notifyHistoryItemChanged = WKNotifyHistoryItemChanged;
 
     if (!(self = [super init]))
         return nil;

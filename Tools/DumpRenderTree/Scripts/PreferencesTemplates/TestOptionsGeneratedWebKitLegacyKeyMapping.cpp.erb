@@ -30,7 +30,7 @@
 
 namespace WTR {
 
-std::string TestOptions::toWebKitLegacyPreferenceKey(const std::string& webPreferencesKey)
+std::string TestOptions::toCyberKitLegacyPreferenceKey(const std::string& webPreferencesKey)
 {
     static std::unordered_map<std::string, std::string> nonStandardKeys = {
 <%- for @pref in @exposedPreferences.select { |p| p.opts["webKitLegacyPreferenceKey"] } do -%>

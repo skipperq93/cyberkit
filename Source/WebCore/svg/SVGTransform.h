@@ -30,7 +30,7 @@
 #include "SVGTransformValue.h"
 #include "SVGValueProperty.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGTransform : public SVGValueProperty<SVGTransformValue>, public SVGPropertyOwner {
 public:
@@ -193,4 +193,4 @@ private:
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

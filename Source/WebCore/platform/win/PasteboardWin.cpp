@@ -45,7 +45,7 @@
 #include "Range.h"
 #include "RenderImage.h"
 #include "SharedBuffer.h"
-#include "WebCoreInstanceHandle.h"
+#include "CyberCoreInstanceHandle.h"
 #include "markup.h"
 #include <pal/text/TextEncoding.h>
 #include <wtf/URL.h>
@@ -55,7 +55,7 @@
 #include <wtf/text/win/WCharStringExtras.h>
 #include <wtf/win/GDIObject.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // We provide the IE clipboard types (URL and Text), and the clipboard types specified in the WHATWG Web Applications 1.0 draft
 // see http://www.whatwg.org/specs/web-apps/current-work/ Section 6.3.5.3
@@ -125,7 +125,7 @@ void Pasteboard::finishCreatingPasteboard()
     WNDCLASS wc;
     memset(&wc, 0, sizeof(WNDCLASS));
     wc.lpfnWndProc    = PasteboardOwnerWndProc;
-    wc.hInstance      = WebCore::instanceHandle();
+    wc.hInstance      = CyberCore::instanceHandle();
     wc.lpszClassName  = L"PasteboardOwnerWindowClass";
     RegisterClass(&wc);
 
@@ -452,7 +452,7 @@ void Pasteboard::writeString(const String& type, const String& data)
     ClipboardDataType winType = clipboardTypeFromMIMEType(type);
 
     if (winType == ClipboardDataTypeURL) {
-        WebCore::writeURL(m_writableDataObject.get(), URL { data }, String(), false, true);
+        CyberCore::writeURL(m_writableDataObject.get(), URL { data }, String(), false, true);
         return;
     }
 
@@ -687,7 +687,7 @@ void Pasteboard::writeURLToDataObject(const URL& kurl, const String& titleStr)
 {
     if (!m_writableDataObject)
         return;
-    WebCore::writeURL(m_writableDataObject.get(), kurl, titleStr, true, true);
+    CyberCore::writeURL(m_writableDataObject.get(), kurl, titleStr, true, true);
 
     String url = kurl.string();
     ASSERT(url.isAllASCII()); // URL::string() is URL encoded.
@@ -1089,7 +1089,7 @@ void Pasteboard::writeImageToDataObject(Element& element, const URL& url)
 
 void Pasteboard::writeURLToWritableDataObject(const URL& url, const String& title)
 {
-    WebCore::writeURL(m_writableDataObject.get(), url, title, true, false);
+    CyberCore::writeURL(m_writableDataObject.get(), url, title, true, false);
 }
 
 void Pasteboard::writeMarkup(const String& markup)
@@ -1168,4 +1168,4 @@ void Pasteboard::write(const Color&)
 {
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -44,7 +44,7 @@ OBJC_CLASS UIPasteboard;
 struct wpe_pasteboard;
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class Color;
 class SharedBuffer;
@@ -129,4 +129,4 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -34,7 +34,7 @@
 #include <algorithm>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 LayoutRect::LayoutRect(const FloatRect& r)
     : m_location(LayoutPoint(r.location()))
@@ -222,4 +222,4 @@ TextStream& operator<<(TextStream& ts, const LayoutRect& r)
     return ts << FloatRect(r);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

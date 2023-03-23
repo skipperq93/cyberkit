@@ -34,7 +34,7 @@
 #include "RenderTextControl.h"
 #include "RenderTreeBuilderMultiColumn.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static void moveAllChildrenToInternal(RenderBoxModelObject& from, RenderElement& newParent)
 {

@@ -43,7 +43,7 @@ OBJC_CLASS AVMediaSelectionOption;
 
 typedef const struct opaqueCMFormatDescription* CMFormatDescriptionRef;
 
-namespace WebCore {
+namespace CyberCore {
 
 class MediaSelectionOptionAVFObjC;
 struct PlatformVideoTrackConfiguration;

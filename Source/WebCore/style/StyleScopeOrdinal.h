@@ -24,7 +24,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 namespace Style {
 
 // This is used to identify style scopes that can affect an element.

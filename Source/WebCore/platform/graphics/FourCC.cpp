@@ -26,7 +26,7 @@
 #include "config.h"
 #include "FourCC.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 std::optional<FourCC> FourCC::fromString(StringView string)
 {

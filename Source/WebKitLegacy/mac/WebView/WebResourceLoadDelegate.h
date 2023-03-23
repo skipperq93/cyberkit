@@ -27,7 +27,7 @@
  */
 
 #import <Foundation/NSObjCRuntime.h>
-#import <CyberKitLegacy/WebKitAvailability.h>
+#import <CyberKitLegacy/CyberKitAvailability.h>
 
 @class WebView;
 @class WebDataSource;
@@ -91,7 +91,7 @@ WEBKIT_DEPRECATED_MAC(10_3, 10_14)
     @discussion Call useCredential::, continueWithoutCredential or
     cancel on the challenge when done.
     @param challenge The NSURLAuthenticationChallenge to start authentication for
-    @discussion If you do not implement this delegate method, WebKit will handle authentication
+    @discussion If you do not implement this delegate method, CyberKit will handle authentication
     automatically by prompting with a sheet on the window that the WebView is associated with.
 */
 - (void)webView:(WebView *)sender resource:(id)identifier didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge fromDataSource:(WebDataSource *)dataSource;
@@ -155,9 +155,9 @@ WEBKIT_DEPRECATED_MAC(10_3, 10_14)
     @discussion Called when a plug-in is not found, fails to load or is not available for some reason.
     @param sender The WebView sending the message.
     @param error The plug-in error. In the userInfo dictionary of the error, the object for the
-    NSErrorFailingURLKey key is a URL string of the SRC attribute, the object for the WebKitErrorPlugInNameKey
-    key is a string of the plug-in's name, the object for the WebKitErrorPlugInPageURLStringKey key is a URL string
-    of the PLUGINSPAGE attribute and the object for the WebKitErrorMIMETypeKey key is a string of the TYPE attribute.
+    NSErrorFailingURLKey key is a URL string of the SRC attribute, the object for the CyberKitErrorPlugInNameKey
+    key is a string of the plug-in's name, the object for the CyberKitErrorPlugInPageURLStringKey key is a URL string
+    of the PLUGINSPAGE attribute and the object for the CyberKitErrorMIMETypeKey key is a string of the TYPE attribute.
     Some, none or all of the mentioned attributes can be present in the userInfo. The error returns nil for userInfo
     when none are present.
     @param dataSource The dataSource that contains the plug-in.

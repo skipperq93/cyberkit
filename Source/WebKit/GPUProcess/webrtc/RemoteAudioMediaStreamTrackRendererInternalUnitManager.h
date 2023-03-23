@@ -37,7 +37,7 @@ namespace IPC {
 class Semaphore;
 }
 
-namespace WebCore {
+namespace CyberCore {
 class CAAudioStreamDescription;
 }
 
@@ -62,7 +62,7 @@ public:
 
 private:
     // Messages
-    void createUnit(AudioMediaStreamTrackRendererInternalUnitIdentifier, CompletionHandler<void(std::optional<WebCore::CAAudioStreamDescription>, size_t)>&& callback);
+    void createUnit(AudioMediaStreamTrackRendererInternalUnitIdentifier, CompletionHandler<void(std::optional<CyberCore::CAAudioStreamDescription>, size_t)>&& callback);
     void deleteUnit(AudioMediaStreamTrackRendererInternalUnitIdentifier);
     void startUnit(AudioMediaStreamTrackRendererInternalUnitIdentifier, ConsumerSharedCARingBuffer::Handle&&, IPC::Semaphore&&);
     void stopUnit(AudioMediaStreamTrackRendererInternalUnitIdentifier);

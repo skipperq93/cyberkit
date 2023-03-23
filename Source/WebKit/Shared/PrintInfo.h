@@ -67,7 +67,7 @@ struct PrintInfo {
     float pageSetupScaleFactor { 0 };
     float availablePaperWidth { 0 };
     float availablePaperHeight { 0 };
-    WebCore::FloatBoxExtent margin;
+    CyberCore::FloatBoxExtent margin;
 #if PLATFORM(IOS_FAMILY)
     bool snapshotFirstPage { false };
 #endif

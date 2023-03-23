@@ -34,7 +34,7 @@
 #import "WKError.h"
 #import "WKWebViewInternal.h"
 #import <CyberCore/ExceptionDetails.h>
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 #import <wtf/BlockPtr.h>
 #import <wtf/URL.h>
 
@@ -42,7 +42,7 @@
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainRunLoop(_WKInspectorExtension.class, self))
+    if (CyberCoreObjCScheduleDeallocateOnMainRunLoop(_WKInspectorExtension.class, self))
         return;
 
     _extension->API::InspectorExtension::~InspectorExtension();

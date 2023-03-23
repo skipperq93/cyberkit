@@ -24,7 +24,7 @@
 #include "DistantLightSource.h"
 #include "SVGNames.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 inline SVGFEDistantLightElement::SVGFEDistantLightElement(const QualifiedName& tagName, Document& document)
     : SVGFELightElement(tagName, document)

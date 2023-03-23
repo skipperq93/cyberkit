@@ -34,7 +34,7 @@
 #include "NativeImage.h"
 #include <wtf/Seconds.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScalableImageDecoderFrame {
 public:

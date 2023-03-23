@@ -35,7 +35,7 @@
 #include <wtf/text/CString.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static inline SoupMessagePriority toSoupMessagePriority(ResourceLoadPriority priority)
 {
@@ -238,6 +238,6 @@ ResourceRequestData ResourceRequest::getRequestDataToSerialize() const
     return m_requestData;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(SOUP)

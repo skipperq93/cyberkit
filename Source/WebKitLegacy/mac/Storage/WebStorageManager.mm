@@ -26,7 +26,7 @@
 #import "WebStorageManagerInternal.h"
 
 #import "StorageTracker.h"
-#import "WebKitVersionChecks.h"
+#import "CyberKitVersionChecks.h"
 #import "WebSecurityOriginInternal.h"
 #import "WebStorageNamespaceProvider.h"
 #import "WebStorageTrackerClient.h"
@@ -34,9 +34,9 @@
 #import <CyberCore/SecurityOriginData.h>
 #import <wtf/cocoa/VectorCocoa.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
-NSString * const WebStorageDirectoryDefaultsKey = @"WebKitLocalStorageDatabasePathPreferenceKey";
+NSString * const WebStorageDirectoryDefaultsKey = @"CyberKitLocalStorageDatabasePathPreferenceKey";
 NSString * const WebStorageDidModifyOriginNotification = @"WebStorageDidModifyOriginNotification";
 
 @implementation WebStorageManager
@@ -52,21 +52,21 @@ NSString * const WebStorageDidModifyOriginNotification = @"WebStorageDidModifyOr
     if (!(self = [super init]))
         return nil;
     
-    WebKitInitializeStorageIfNecessary();
+    CyberKitInitializeStorageIfNecessary();
     
     return self;
 }
 
 - (NSArray *)origins
 {
-    return createNSArray(WebKit::StorageTracker::tracker().origins(), [] (auto& origin) {
-        return adoptNS([[WebSecurityOrigin alloc] _initWithWebCoreSecurityOrigin:origin.securityOrigin().ptr()]);
+    return createNSArray(CyberKit::StorageTracker::tracker().origins(), [] (auto& origin) {
+        return adoptNS([[WebSecurityOrigin alloc] _initWithCyberCoreSecurityOrigin:origin.securityOrigin().ptr()]);
     }).autorelease();
 }
 
 - (void)deleteAllOrigins
 {
-    WebKit::StorageTracker::tracker().deleteAllOrigins();
+    CyberKit::StorageTracker::tracker().deleteAllOrigins();
 #if PLATFORM(IOS_FAMILY)
     // FIXME: This needs to be removed once StorageTrackers in multiple processes
     // are in sync: <rdar://problem/9567500> Remove Website Data pane is not kept in sync with Safari
@@ -76,22 +76,22 @@ NSString * const WebStorageDidModifyOriginNotification = @"WebStorageDidModifyOr
 
 - (void)deleteOrigin:(WebSecurityOrigin *)origin
 {
-    WebKit::StorageTracker::tracker().deleteOrigin([origin _core]->data());
+    CyberKit::StorageTracker::tracker().deleteOrigin([origin _core]->data());
 }
 
 - (unsigned long long)diskUsageForOrigin:(WebSecurityOrigin *)origin
 {
-    return WebKit::StorageTracker::tracker().diskUsageForOrigin([origin _core]);
+    return CyberKit::StorageTracker::tracker().diskUsageForOrigin([origin _core]);
 }
 
 - (void)syncLocalStorage
 {
-    WebKit::WebStorageNamespaceProvider::syncLocalStorage();
+    CyberKit::WebStorageNamespaceProvider::syncLocalStorage();
 }
 
 - (void)syncFileSystemAndTrackerDatabase
 {
-    WebKit::StorageTracker::tracker().syncFileSystemAndTrackerDatabase();
+    CyberKit::StorageTracker::tracker().syncFileSystemAndTrackerDatabase();
 }
 
 + (NSString *)_storageDirectoryPath
@@ -104,7 +104,7 @@ NSString * const WebStorageDidModifyOriginNotification = @"WebStorageDidModifyOr
         if (!localStoragePath || ![localStoragePath isKindOfClass:[NSString class]]) {
             NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
             NSString *libraryDirectory = [paths objectAtIndex:0];
-            localStoragePath = [libraryDirectory stringByAppendingPathComponent:@"WebKit/LocalStorage"];
+            localStoragePath = [libraryDirectory stringByAppendingPathComponent:@"CyberKit/LocalStorage"];
         }
         sLocalStoragePath.get() = [localStoragePath stringByStandardizingPath];
     });
@@ -113,22 +113,22 @@ NSString * const WebStorageDidModifyOriginNotification = @"WebStorageDidModifyOr
 
 + (void)setStorageDatabaseIdleInterval:(double)interval
 {
-    WebKit::StorageTracker::tracker().setStorageDatabaseIdleInterval(1_s * interval);
+    CyberKit::StorageTracker::tracker().setStorageDatabaseIdleInterval(1_s * interval);
 }
 
 + (void)closeIdleLocalStorageDatabases
 {
-    WebKit::WebStorageNamespaceProvider::closeIdleLocalStorageDatabases();
+    CyberKit::WebStorageNamespaceProvider::closeIdleLocalStorageDatabases();
 }
 
-void WebKitInitializeStorageIfNecessary()
+void CyberKitInitializeStorageIfNecessary()
 {
     static BOOL initialized = NO;
     if (initialized)
         return;
 
     auto *storagePath = [WebStorageManager _storageDirectoryPath];
-    WebKit::StorageTracker::initializeTracker(storagePath, WebStorageTrackerClient::sharedWebStorageTrackerClient());
+    CyberKit::StorageTracker::initializeTracker(storagePath, WebStorageTrackerClient::sharedWebStorageTrackerClient());
 
 #if PLATFORM(IOS_FAMILY)
     [[NSURL fileURLWithPath:storagePath] setResourceValue:@YES forKey:NSURLIsExcludedFromBackupKey error:nil];

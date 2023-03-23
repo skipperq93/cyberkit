@@ -42,7 +42,7 @@
 #include <wtf/text/CString.h>
 #include <wtf/text/StringToIntegerConversion.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 // Never pause download of media resources smaller than 2MiB.
 #define SMALL_MEDIA_RESOURCE_MAX_SIZE 2 * 1024 * 1024
@@ -62,7 +62,7 @@ public:
     CachedResourceStreamingClient(WebKitWebSrc*, ResourceRequest&&, unsigned requestNumber);
     virtual ~CachedResourceStreamingClient();
 
-    const HashSet<RefPtr<WebCore::SecurityOrigin>>& securityOrigins() const { return m_origins; }
+    const HashSet<RefPtr<CyberCore::SecurityOrigin>>& securityOrigins() const { return m_origins; }
 
     void setSourceElement(WebKitWebSrc* src) { m_src = GST_ELEMENT_CAST(src); }
 
@@ -89,7 +89,7 @@ private:
 
     GRefPtr<GstElement> m_src;
     ResourceRequest m_request;
-    HashSet<RefPtr<WebCore::SecurityOrigin>> m_origins;
+    HashSet<RefPtr<CyberCore::SecurityOrigin>> m_origins;
 };
 
 struct WebKitWebSrcPrivate {
@@ -134,7 +134,7 @@ struct WebKitWebSrcPrivate {
         // Obtained by means of GstContext queries before making the first HTTP request.
         // We use it for getting access to WebKit networking objects: the PlatformMediaResourceLoader factory [createResourceLoader()]
         // and the player HTTP referrer string.
-        WebCore::MediaPlayer* player;
+        CyberCore::MediaPlayer* player;
 
         // MediaPlayer referrer cached value. The corresponding method has to be called from the
         // main thread, so the value needs to be cached before use in non-main thread.
@@ -930,7 +930,7 @@ static void webKitWebSrcUriHandlerInit(gpointer gIface, gpointer)
     iface->set_uri = webKitWebSrcSetUri;
 }
 
-void webKitWebSrcSetMediaPlayer(WebKitWebSrc* src, WebCore::MediaPlayer* player, const String& referrer)
+void webKitWebSrcSetMediaPlayer(WebKitWebSrc* src, CyberCore::MediaPlayer* player, const String& referrer)
 {
     ASSERT(player);
     DataMutexLocker members { src->priv->dataMutex };

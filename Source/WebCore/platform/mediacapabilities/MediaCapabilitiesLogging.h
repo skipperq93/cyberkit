@@ -27,7 +27,7 @@
 
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct VideoConfiguration;
 struct AudioConfiguration;
@@ -52,68 +52,68 @@ template<typename>
 struct LogArgument;
 
 template <>
-struct LogArgument<WebCore::VideoConfiguration> {
-    static String toString(const WebCore::VideoConfiguration&);
+struct LogArgument<CyberCore::VideoConfiguration> {
+    static String toString(const CyberCore::VideoConfiguration&);
 };
 
 template <>
-struct LogArgument<WebCore::AudioConfiguration> {
-    static String toString(const WebCore::AudioConfiguration&);
+struct LogArgument<CyberCore::AudioConfiguration> {
+    static String toString(const CyberCore::AudioConfiguration&);
 };
 
 template <>
-struct LogArgument<WebCore::MediaConfiguration> {
-    static String toString(const WebCore::MediaConfiguration&);
+struct LogArgument<CyberCore::MediaConfiguration> {
+    static String toString(const CyberCore::MediaConfiguration&);
 };
 
 template <>
-struct LogArgument<WebCore::MediaDecodingConfiguration> {
-    static String toString(const WebCore::MediaDecodingConfiguration&);
+struct LogArgument<CyberCore::MediaDecodingConfiguration> {
+    static String toString(const CyberCore::MediaDecodingConfiguration&);
 };
 
 template <>
-struct LogArgument<WebCore::MediaEncodingConfiguration> {
-    static String toString(const WebCore::MediaEncodingConfiguration&);
+struct LogArgument<CyberCore::MediaEncodingConfiguration> {
+    static String toString(const CyberCore::MediaEncodingConfiguration&);
 };
 
 template <>
-struct LogArgument<WebCore::MediaCapabilitiesInfo> {
-    static String toString(const WebCore::MediaCapabilitiesInfo&);
+struct LogArgument<CyberCore::MediaCapabilitiesInfo> {
+    static String toString(const CyberCore::MediaCapabilitiesInfo&);
 };
 
 template <>
-struct LogArgument<WebCore::MediaCapabilitiesDecodingInfo> {
-    static String toString(const WebCore::MediaCapabilitiesDecodingInfo&);
+struct LogArgument<CyberCore::MediaCapabilitiesDecodingInfo> {
+    static String toString(const CyberCore::MediaCapabilitiesDecodingInfo&);
 };
 
 template <>
-struct LogArgument<WebCore::MediaCapabilitiesEncodingInfo> {
-    static String toString(const WebCore::MediaCapabilitiesEncodingInfo&);
+struct LogArgument<CyberCore::MediaCapabilitiesEncodingInfo> {
+    static String toString(const CyberCore::MediaCapabilitiesEncodingInfo&);
 };
 
 template <>
-struct LogArgument<WebCore::ColorGamut> {
-    static String toString(const WebCore::ColorGamut&);
+struct LogArgument<CyberCore::ColorGamut> {
+    static String toString(const CyberCore::ColorGamut&);
 };
 
 template <>
-struct LogArgument<WebCore::HdrMetadataType> {
-    static String toString(const WebCore::HdrMetadataType&);
+struct LogArgument<CyberCore::HdrMetadataType> {
+    static String toString(const CyberCore::HdrMetadataType&);
 };
 
 template <>
-struct LogArgument<WebCore::TransferFunction> {
-    static String toString(const WebCore::TransferFunction&);
+struct LogArgument<CyberCore::TransferFunction> {
+    static String toString(const CyberCore::TransferFunction&);
 };
 
 template <>
-struct LogArgument<WebCore::MediaDecodingType> {
-    static String toString(const WebCore::MediaDecodingType&);
+struct LogArgument<CyberCore::MediaDecodingType> {
+    static String toString(const CyberCore::MediaDecodingType&);
 };
 
 template <>
-struct LogArgument<WebCore::MediaEncodingType> {
-    static String toString(const WebCore::MediaEncodingType&);
+struct LogArgument<CyberCore::MediaEncodingType> {
+    static String toString(const CyberCore::MediaEncodingType&);
 };
 
 }

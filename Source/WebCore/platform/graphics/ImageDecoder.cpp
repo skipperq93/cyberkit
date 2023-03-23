@@ -44,7 +44,7 @@
 #include "ImageDecoderGStreamer.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 #if ENABLE(GPU_PROCESS) && HAVE(AVASSETREADER)
 using FactoryVector = Vector<ImageDecoder::ImageDecoderFactory>;

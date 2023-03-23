@@ -27,7 +27,7 @@
 
 #import <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WEBCORE_EXPORT String MIMETypeFromUTI(const String&);
 RetainPtr<CFStringRef> mimeTypeFromUTITree(CFStringRef);

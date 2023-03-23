@@ -26,7 +26,7 @@
 #include <wtf/EnumeratedArray.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum ComponentTransferType {
     FECOMPONENTTRANSFER_TYPE_UNKNOWN  = 0,
@@ -87,20 +87,20 @@ private:
     ComponentTransferFunctions m_functions;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::ComponentTransferType> {
+template<> struct EnumTraits<CyberCore::ComponentTransferType> {
     using values = EnumValues<
-        WebCore::ComponentTransferType,
+        CyberCore::ComponentTransferType,
 
-        WebCore::FECOMPONENTTRANSFER_TYPE_UNKNOWN,
-        WebCore::FECOMPONENTTRANSFER_TYPE_IDENTITY,
-        WebCore::FECOMPONENTTRANSFER_TYPE_TABLE,
-        WebCore::FECOMPONENTTRANSFER_TYPE_DISCRETE,
-        WebCore::FECOMPONENTTRANSFER_TYPE_LINEAR,
-        WebCore::FECOMPONENTTRANSFER_TYPE_GAMMA
+        CyberCore::FECOMPONENTTRANSFER_TYPE_UNKNOWN,
+        CyberCore::FECOMPONENTTRANSFER_TYPE_IDENTITY,
+        CyberCore::FECOMPONENTTRANSFER_TYPE_TABLE,
+        CyberCore::FECOMPONENTTRANSFER_TYPE_DISCRETE,
+        CyberCore::FECOMPONENTTRANSFER_TYPE_LINEAR,
+        CyberCore::FECOMPONENTTRANSFER_TYPE_GAMMA
     >;
 };
 

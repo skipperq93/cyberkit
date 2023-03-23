@@ -28,7 +28,7 @@
 
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 VelocityData HistoricalVelocityData::velocityForNewData(FloatPoint newPosition, double scale, MonotonicTime timestamp)
 {
@@ -82,4 +82,4 @@ TextStream& operator<<(TextStream& ts, const VelocityData& velocityData)
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

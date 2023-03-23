@@ -33,7 +33,7 @@
 
 struct WebKitMediaSrc;
 
-namespace WebCore {
+namespace CyberCore {
 
 class AppendPipeline;
 class TrackQueue;
@@ -89,7 +89,7 @@ public:
     WebKitMediaSrc* webKitMediaSrc() { return reinterpret_cast<WebKitMediaSrc*>(m_source.get()); }
 
 #if !RELEASE_LOG_DISABLED
-    WTFLogChannel& logChannel() const final { return WebCore::LogMediaSource; }
+    WTFLogChannel& logChannel() const final { return CyberCore::LogMediaSource; }
 #endif
 
 private:
@@ -124,6 +124,6 @@ private:
     MediaPlayer::NetworkState m_mediaSourceNetworkState = MediaPlayer::NetworkState::Empty;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(GSTREAMER)

@@ -37,7 +37,7 @@
 #include "RegistrableDomain.h"
 #include "Settings.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 #define PERFMONITOR_RELEASE_LOG(channel, fmt, ...) RELEASE_LOG(channel, "%p - PerformanceMonitor::" fmt, this, ##__VA_ARGS__)
 
@@ -326,4 +326,4 @@ void PerformanceMonitor::updateProcessStateForMemoryPressure()
     MemoryPressureHandler::singleton().setProcessState(isActiveProcess ? WebsamProcessState::Active : WebsamProcessState::Inactive);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

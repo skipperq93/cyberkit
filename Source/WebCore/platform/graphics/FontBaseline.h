@@ -26,12 +26,12 @@
 #ifndef FontBaseline_h
 #define FontBaseline_h
 
-namespace WebCore {
+namespace CyberCore {
 
 enum FontBaseline { AlphabeticBaseline, IdeographicBaseline, CentralBaseline };
 
 enum BaselineSynthesisEdge { ContentBox, BorderBox, MarginBox };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // FontBaseline_h

@@ -31,7 +31,7 @@
 #include "MathOperator.h"
 #include "RenderMathMLToken.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class MathMLOperatorElement;
 
@@ -92,7 +92,7 @@ private:
     MathOperator m_mathOperator;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderMathMLOperator, isRenderMathMLOperator())
 

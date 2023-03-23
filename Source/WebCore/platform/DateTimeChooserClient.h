@@ -32,7 +32,7 @@
 
 #if ENABLE(DATE_AND_TIME_INPUT_TYPES)
 
-namespace WebCore {
+namespace CyberCore {
 
 class DateTimeChooserClient {
 public:
@@ -44,6 +44,6 @@ public:
     virtual void didEndChooser() = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(DATE_AND_TIME_INPUT_TYPES)

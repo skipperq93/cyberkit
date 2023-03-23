@@ -28,7 +28,7 @@
 
 #include <wtf/text/StringToIntegerConversion.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 int SVGPropertyTraits<int>::fromString(const String& string)
 {

@@ -70,9 +70,9 @@
     if (auto unwrappedURL = dynamic_objc_cast<NSURL>(object))
         return adoptNS([[WKSecureCodingURLWrapper alloc] initWithURL:unwrappedURL]).autorelease();
 
-    // We can't just return a WebCore::CocoaColor here, because the decoder would
-    // have no way of distinguishing an authentic WebCore::CocoaColor vs a CGColor
-    // masquerading as a WebCore::CocoaColor.
+    // We can't just return a CyberCore::CocoaColor here, because the decoder would
+    // have no way of distinguishing an authentic CyberCore::CocoaColor vs a CGColor
+    // masquerading as a CyberCore::CocoaColor.
     if (CFGetTypeID(object) == CGColorGetTypeID())
         return adoptNS([[WKSecureCodingCGColorWrapper alloc] initWithCGColor:static_cast<CGColorRef>(object)]).autorelease();
 
@@ -178,7 +178,7 @@ static constexpr NSString *innerColorKey = @"WK.CocoaColor";
 - (void)encodeWithCoder:(NSCoder *)coder
 {
     RELEASE_ASSERT(m_wrappedColor);
-    [coder encodeObject:[WebCore::CocoaColor colorWithCGColor:m_wrappedColor.get()] forKey:innerColorKey];
+    [coder encodeObject:[CyberCore::CocoaColor colorWithCGColor:m_wrappedColor.get()] forKey:innerColorKey];
 }
 
 - (instancetype)initWithCoder:(NSCoder *)coder
@@ -187,7 +187,7 @@ static constexpr NSString *innerColorKey = @"WK.CocoaColor";
     if (!selfPtr)
         return nil;
 
-    RetainPtr<WebCore::CocoaColor> color = static_cast<WebCore::CocoaColor *>([coder decodeObjectOfClass:[WebCore::CocoaColor class] forKey:innerColorKey]);
+    RetainPtr<CyberCore::CocoaColor> color = static_cast<CyberCore::CocoaColor *>([coder decodeObjectOfClass:[CyberCore::CocoaColor class] forKey:innerColorKey]);
     m_wrappedColor = color.get().CGColor;
 
     return selfPtr.leakRef();
@@ -204,7 +204,7 @@ static constexpr NSString *innerColorKey = @"WK.CocoaColor";
 @end
 
 namespace IPC {
-using namespace WebCore;
+using namespace CyberCore;
 
 #pragma mark - Types
 
@@ -232,7 +232,7 @@ static NSType typeFromObject(id object)
     // Specific classes handled.
     if ([object isKindOfClass:[NSArray class]])
         return NSType::Array;
-    if ([object isKindOfClass:[WebCore::CocoaColor class]])
+    if ([object isKindOfClass:[CyberCore::CocoaColor class]])
         return NSType::Color;
     if ([object isKindOfClass:[NSData class]])
         return NSType::Data;
@@ -325,7 +325,7 @@ static std::optional<RetainPtr<id>> decodeArrayInternal(Decoder& decoder, NSArra
 
 #pragma mark - NSColor / UIColor
 
-static inline void encodeColorInternal(Encoder& encoder, WebCore::CocoaColor *color)
+static inline void encodeColorInternal(Encoder& encoder, CyberCore::CocoaColor *color)
 {
     encoder << colorFromCocoaColor(color);
 }
@@ -575,7 +575,7 @@ void encodeObject(Encoder& encoder, id object)
         encodeArrayInternal(encoder, static_cast<NSArray *>(object));
         return;
     case NSType::Color:
-        encodeColorInternal(encoder, static_cast<WebCore::CocoaColor *>(object));
+        encodeColorInternal(encoder, static_cast<CyberCore::CocoaColor *>(object));
         return;
     case NSType::Dictionary:
         encodeDictionaryInternal(encoder, static_cast<NSDictionary *>(object));

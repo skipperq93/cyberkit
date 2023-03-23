@@ -32,7 +32,7 @@
 
 #include <wtf/FileSystem.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // All methods are synchronous.
 class FileStream {
@@ -63,4 +63,4 @@ private:
     long long m_totalBytesToRead;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

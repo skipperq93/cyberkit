@@ -35,8 +35,8 @@
 #include <CyberCore/MediaStreamRequest.h>
 #include <CyberCore/RealtimeMediaSourceCenter.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 UserMediaCaptureManager::UserMediaCaptureManager(WebProcess& process)
     : m_process(process)
@@ -49,7 +49,7 @@ UserMediaCaptureManager::~UserMediaCaptureManager()
     m_process.removeMessageReceiver(Messages::UserMediaCaptureManager::messageReceiverName());
 }
 
-void UserMediaCaptureManager::validateUserMediaRequestConstraints(WebCore::MediaStreamRequest request, WebCore::MediaDeviceHashSalts&& deviceIdentifierHashSalts, ValidateUserMediaRequestConstraintsCallback&& completionHandler)
+void UserMediaCaptureManager::validateUserMediaRequestConstraints(CyberCore::MediaStreamRequest request, CyberCore::MediaDeviceHashSalts&& deviceIdentifierHashSalts, ValidateUserMediaRequestConstraintsCallback&& completionHandler)
 {
     m_validateUserMediaRequestConstraintsCallback = WTFMove(completionHandler);
     auto invalidHandler = [this](const String& invalidConstraint) mutable {

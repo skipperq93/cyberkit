@@ -25,7 +25,7 @@
 
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class GStreamerRegistryScannerMSE : public GStreamerRegistryScanner {
 public:
@@ -34,6 +34,6 @@ public:
     GStreamerRegistryScannerMSE();
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(GSTREAMER)

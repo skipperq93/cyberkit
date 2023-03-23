@@ -23,7 +23,7 @@
 
 #include "RenderThemeAdwaita.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderThemeGtk final : public RenderThemeAdwaita {
 private:
@@ -32,4 +32,4 @@ private:
     Seconds caretBlinkInterval() const override;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

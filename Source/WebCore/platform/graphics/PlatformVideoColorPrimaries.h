@@ -27,7 +27,7 @@
 
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class PlatformVideoColorPrimaries : uint8_t {
     Bt709,
@@ -44,4 +44,4 @@ enum class PlatformVideoColorPrimaries : uint8_t {
     Unspecified,
 };
 
-} // namespace WebCore
+} // namespace CyberCore

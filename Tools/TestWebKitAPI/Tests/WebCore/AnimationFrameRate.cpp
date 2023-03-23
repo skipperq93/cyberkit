@@ -27,7 +27,7 @@
 #include <CyberCore/AnimationFrameRate.h>
 #include <CyberCore/DisplayUpdate.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 namespace TestWebKitAPI {
 

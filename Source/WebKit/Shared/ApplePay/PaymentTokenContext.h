@@ -31,14 +31,14 @@
 
 OBJC_CLASS PKPaymentTokenContext;
 
-namespace WebCore {
+namespace CyberCore {
 struct ApplePayPaymentTokenContext;
 }
 
 namespace WebKit {
 
-RetainPtr<PKPaymentTokenContext> platformPaymentTokenContext(const WebCore::ApplePayPaymentTokenContext&);
-RetainPtr<NSArray<PKPaymentTokenContext *>> platformPaymentTokenContexts(const Vector<WebCore::ApplePayPaymentTokenContext>&);
+RetainPtr<PKPaymentTokenContext> platformPaymentTokenContext(const CyberCore::ApplePayPaymentTokenContext&);
+RetainPtr<NSArray<PKPaymentTokenContext *>> platformPaymentTokenContexts(const Vector<CyberCore::ApplePayPaymentTokenContext>&);
 
 } // namespace WebKit
 

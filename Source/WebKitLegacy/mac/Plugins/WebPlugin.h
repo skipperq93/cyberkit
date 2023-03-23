@@ -28,7 +28,7 @@
 
 #import <CoreGraphics/CoreGraphics.h>
 #import <Foundation/Foundation.h>
-#import <CyberKitLegacy/WebKitAvailability.h>
+#import <CyberKitLegacy/CyberKitAvailability.h>
 
 #if !TARGET_OS_IPHONE
 #import <AppKit/AppKit.h>
@@ -102,7 +102,7 @@
 
 /*!
     @method webPlugInMainResourceDidReceiveResponse:
-    @abstract Called on the plug-in when WebKit receives -connection:didReceiveResponse:
+    @abstract Called on the plug-in when CyberKit receives -connection:didReceiveResponse:
     for the plug-in's main resource.
     @discussion This method is only sent to the plug-in if the
     WebPlugInShouldLoadMainResourceKey argument passed to the plug-in was NO.
@@ -111,7 +111,7 @@
 
 /*!
     @method webPlugInMainResourceDidReceiveData:
-    @abstract Called on the plug-in when WebKit recieves -connection:didReceiveData:
+    @abstract Called on the plug-in when CyberKit recieves -connection:didReceiveData:
     for the plug-in's main resource.
     @discussion This method is only sent to the plug-in if the
     WebPlugInShouldLoadMainResourceKey argument passed to the plug-in was NO.
@@ -120,7 +120,7 @@
 
 /*!
     @method webPlugInMainResourceDidFailWithError:
-    @abstract Called on the plug-in when WebKit receives -connection:didFailWithError:
+    @abstract Called on the plug-in when CyberKit receives -connection:didFailWithError:
     for the plug-in's main resource.
     @discussion This method is only sent to the plug-in if the
     WebPlugInShouldLoadMainResourceKey argument passed to the plug-in was NO.
@@ -129,7 +129,7 @@
 
 /*!
     @method webPlugInMainResourceDidFinishLoading
-    @abstract Called on the plug-in when WebKit receives -connectionDidFinishLoading:
+    @abstract Called on the plug-in when CyberKit receives -connectionDidFinishLoading:
     for the plug-in's main resource.
     @discussion This method is only sent to the plug-in if the
     WebPlugInShouldLoadMainResourceKey argument passed to the plug-in was NO.

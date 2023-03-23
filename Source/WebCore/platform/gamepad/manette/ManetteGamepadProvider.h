@@ -33,7 +33,7 @@
 #include <wtf/HashMap.h>
 #include <wtf/RunLoop.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ManetteGamepad;
 class GamepadProviderClient;
@@ -76,6 +76,6 @@ private:
     RunLoop::Timer m_inputNotificationTimer;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(GAMEPAD) && OS(LINUX)

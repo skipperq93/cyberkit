@@ -28,7 +28,7 @@
 #include <wtf/RobinHoodHashSet.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 const MemoryCompactLookupOnlyRobinHoodHashSet<String>& defaultSupportedImageTypes();
 MemoryCompactRobinHoodHashSet<String>& additionalSupportedImageTypes();

@@ -70,7 +70,7 @@ extern "C" EXCEPTION_DISPOSITION __stdcall exceptionHandler(struct _EXCEPTION_RE
     return ExceptionContinueSearch;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 #pragma warning(push)
 #pragma warning(disable: 4733) // Disable "not registered as safe handler" warning

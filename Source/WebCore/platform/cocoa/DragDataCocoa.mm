@@ -36,14 +36,14 @@
 #import "PasteboardStrategy.h"
 #import "PlatformPasteboard.h"
 #import "PlatformStrategies.h"
-#import "WebCoreNSURLExtras.h"
+#import "CyberCoreNSURLExtras.h"
 #import <wtf/cocoa/NSURLExtras.h>
 
 #if PLATFORM(IOS_FAMILY)
 #import <MobileCoreServices/MobileCoreServices.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 static inline String rtfPasteboardType()
 {
@@ -349,6 +349,6 @@ String DragData::asURL(FilenameConversionPolicy, String* title) const
     return { };
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(DRAG_SUPPORT)

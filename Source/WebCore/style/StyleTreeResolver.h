@@ -34,7 +34,7 @@
 #include <wtf/Function.h>
 #include <wtf/Ref.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class Element;

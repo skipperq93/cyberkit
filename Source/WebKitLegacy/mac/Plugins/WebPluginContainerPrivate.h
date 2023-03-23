@@ -48,7 +48,7 @@
  @discussion The processingUserGesture method allows the plug-in to find out if
  a user gesture is currently being processed. The plug-in may use this information
  to allow or deny certain actions.  This method will not be implemented by containers that
- are not WebKit based.
+ are not CyberKit based.
  @result Returns a boolean value, YES to indicate that a user gesture is being processed,
  NO otherwise.
  */

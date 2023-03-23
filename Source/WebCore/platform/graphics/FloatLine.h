@@ -33,7 +33,7 @@
 #include "FloatRect.h"
 #include <optional>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FloatLine {
 public:

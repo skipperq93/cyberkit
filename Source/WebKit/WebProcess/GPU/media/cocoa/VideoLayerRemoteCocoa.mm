@@ -44,11 +44,11 @@
 static const Seconds PostAnimationDelay { 100_ms };
 
 @implementation WKVideoLayerRemote {
-    WeakPtr<WebKit::MediaPlayerPrivateRemote> _mediaPlayerPrivateRemote;
+    WeakPtr<CyberKit::MediaPlayerPrivateRemote> _mediaPlayerPrivateRemote;
     RetainPtr<CAContext> _context;
-    WebCore::MediaPlayerEnums::VideoGravity _videoGravity;
+    CyberCore::MediaPlayerEnums::VideoGravity _videoGravity;
 
-    std::unique_ptr<WebCore::Timer> _resolveBoundsTimer;
+    std::unique_ptr<CyberCore::Timer> _resolveBoundsTimer;
     bool _shouldRestartWhenTimerFires;
     Seconds _delay;
 }
@@ -60,7 +60,7 @@ static const Seconds PostAnimationDelay { 100_ms };
         return nil;
 
     self.masksToBounds = YES;
-    _resolveBoundsTimer = makeUnique<WebCore::Timer>([weakSelf = WeakObjCPtr<WKVideoLayerRemote>(self)] {
+    _resolveBoundsTimer = makeUnique<CyberCore::Timer>([weakSelf = WeakObjCPtr<WKVideoLayerRemote>(self)] {
         auto localSelf = weakSelf.get();
         if (!localSelf)
             return;
@@ -72,22 +72,22 @@ static const Seconds PostAnimationDelay { 100_ms };
     return self;
 }
 
-- (WebKit::MediaPlayerPrivateRemote*)mediaPlayerPrivateRemote
+- (CyberKit::MediaPlayerPrivateRemote*)mediaPlayerPrivateRemote
 {
     return _mediaPlayerPrivateRemote.get();
 }
 
-- (void)setMediaPlayerPrivateRemote:(WebKit::MediaPlayerPrivateRemote*)mediaPlayerPrivateRemote
+- (void)setMediaPlayerPrivateRemote:(CyberKit::MediaPlayerPrivateRemote*)mediaPlayerPrivateRemote
 {
     _mediaPlayerPrivateRemote = *mediaPlayerPrivateRemote;
 }
 
-- (WebCore::MediaPlayerEnums::VideoGravity)videoGravity
+- (CyberCore::MediaPlayerEnums::VideoGravity)videoGravity
 {
     return _videoGravity;
 }
 
-- (void)setVideoGravity:(WebCore::MediaPlayerEnums::VideoGravity)videoGravity
+- (void)setVideoGravity:(CyberCore::MediaPlayerEnums::VideoGravity)videoGravity
 {
     _videoGravity = videoGravity;
 }
@@ -98,7 +98,7 @@ static const Seconds PostAnimationDelay { 100_ms };
     if (player && player->inVideoFullscreenOrPictureInPicture())
         return true;
     
-    return _videoGravity != WebCore::MediaPlayer::VideoGravity::Resize;
+    return _videoGravity != CyberCore::MediaPlayer::VideoGravity::Resize;
 }
 
 - (void)layoutSublayers
@@ -110,8 +110,8 @@ static const Seconds PostAnimationDelay { 100_ms };
         return;
     }
 
-    WebCore::FloatRect sourceVideoFrame = self.videoLayerFrame;
-    WebCore::FloatRect targetVideoFrame = self.bounds;
+    CyberCore::FloatRect sourceVideoFrame = self.videoLayerFrame;
+    CyberCore::FloatRect targetVideoFrame = self.bounds;
 
     if (sourceVideoFrame == targetVideoFrame && CGAffineTransformIsIdentity(self.affineTransform))
         return;
@@ -126,7 +126,7 @@ static const Seconds PostAnimationDelay { 100_ms };
 
     CGAffineTransform transform = CGAffineTransformIdentity;
     if ([self resizePreservingGravity]) {
-        WebCore::FloatSize naturalSize { };
+        CyberCore::FloatSize naturalSize { };
         if (auto *mediaPlayer = _mediaPlayerPrivateRemote.get())
             naturalSize = mediaPlayer->naturalSize();
 
@@ -187,7 +187,7 @@ static const Seconds PostAnimationDelay { 100_ms };
         self.videoLayerFrame = self.bounds;
         if (auto* mediaPlayerPrivateRemote = self.mediaPlayerPrivateRemote) {
             MachSendRight fenceSendRight = MachSendRight::adopt([_context createFencePort]);
-            mediaPlayerPrivateRemote->setVideoInlineSizeFenced(WebCore::FloatSize(self.videoLayerFrame.size), fenceSendRight);
+            mediaPlayerPrivateRemote->setVideoInlineSizeFenced(CyberCore::FloatSize(self.videoLayerFrame.size), fenceSendRight);
         }
     }
 
@@ -200,9 +200,9 @@ static const Seconds PostAnimationDelay { 100_ms };
 
 @end
 
-namespace WebKit {
+namespace CyberKit {
 
-PlatformLayerContainer createVideoLayerRemote(MediaPlayerPrivateRemote* mediaPlayerPrivateRemote, LayerHostingContextID contextId, WebCore::MediaPlayerEnums::VideoGravity videoGravity, IntSize contentSize)
+PlatformLayerContainer createVideoLayerRemote(MediaPlayerPrivateRemote* mediaPlayerPrivateRemote, LayerHostingContextID contextId, CyberCore::MediaPlayerEnums::VideoGravity videoGravity, IntSize contentSize)
 {
     // Initially, all the layers will be empty (both width and height are 0) and invisible.
     // The renderer will change the sizes of WKVideoLayerRemote to trigger layout of sublayers and make them visible.
@@ -219,6 +219,6 @@ PlatformLayerContainer createVideoLayerRemote(MediaPlayerPrivateRemote* mediaPla
     return videoLayerRemote;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

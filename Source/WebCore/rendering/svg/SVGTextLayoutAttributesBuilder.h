@@ -21,7 +21,7 @@
 
 #include "SVGTextMetricsBuilder.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderBoxModelObject;
 class RenderObject;
@@ -75,4 +75,4 @@ private:
     SVGTextMetricsBuilder m_metricsBuilder;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

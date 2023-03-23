@@ -44,16 +44,16 @@ Ref<WebBroadcastChannelRegistry> WebBroadcastChannelRegistry::getOrCreate(bool p
     return registry;
 }
 
-void WebBroadcastChannelRegistry::registerChannel(const WebCore::PartitionedSecurityOrigin& origin, const String& name, WebCore::BroadcastChannelIdentifier identifier)
+void WebBroadcastChannelRegistry::registerChannel(const CyberCore::PartitionedSecurityOrigin& origin, const String& name, CyberCore::BroadcastChannelIdentifier identifier)
 {
     ASSERT(isMainThread());
     auto& channelsForOrigin = m_channels.ensure(origin, [] { return NameToChannelIdentifiersMap { }; }).iterator->value;
-    auto& channelsForName = channelsForOrigin.ensure(name, [] { return Vector<WebCore::BroadcastChannelIdentifier> { }; }).iterator->value;
+    auto& channelsForName = channelsForOrigin.ensure(name, [] { return Vector<CyberCore::BroadcastChannelIdentifier> { }; }).iterator->value;
     ASSERT(!channelsForName.contains(identifier));
     channelsForName.append(identifier);
 }
 
-void WebBroadcastChannelRegistry::unregisterChannel(const WebCore::PartitionedSecurityOrigin& origin, const String& name, WebCore::BroadcastChannelIdentifier identifier)
+void WebBroadcastChannelRegistry::unregisterChannel(const CyberCore::PartitionedSecurityOrigin& origin, const String& name, CyberCore::BroadcastChannelIdentifier identifier)
 {
     ASSERT(isMainThread());
     auto channelsForOriginIterator = m_channels.find(origin);
@@ -66,7 +66,7 @@ void WebBroadcastChannelRegistry::unregisterChannel(const WebCore::PartitionedSe
     channelsForNameIterator->value.removeFirst(identifier);
 }
 
-void WebBroadcastChannelRegistry::postMessage(const WebCore::PartitionedSecurityOrigin& origin, const String& name, WebCore::BroadcastChannelIdentifier source, Ref<WebCore::SerializedScriptValue>&& message, CompletionHandler<void()>&& completionHandler)
+void WebBroadcastChannelRegistry::postMessage(const CyberCore::PartitionedSecurityOrigin& origin, const String& name, CyberCore::BroadcastChannelIdentifier source, Ref<CyberCore::SerializedScriptValue>&& message, CompletionHandler<void()>&& completionHandler)
 {
     ASSERT(isMainThread());
     auto callbackAggregator = CallbackAggregator::create(WTFMove(completionHandler));
@@ -81,6 +81,6 @@ void WebBroadcastChannelRegistry::postMessage(const WebCore::PartitionedSecurity
     for (auto& channelIdentifier : channelsForNameIterator->value) {
         if (channelIdentifier == source)
             continue;
-        WebCore::BroadcastChannel::dispatchMessageTo(channelIdentifier, message.copyRef(), [callbackAggregator] { });
+        CyberCore::BroadcastChannel::dispatchMessageTo(channelIdentifier, message.copyRef(), [callbackAggregator] { });
     }
 }

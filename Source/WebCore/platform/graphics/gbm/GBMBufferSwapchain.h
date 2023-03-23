@@ -40,7 +40,7 @@
 
 struct gbm_bo;
 
-namespace WebCore {
+namespace CyberCore {
 
 class GBMBufferSwapchain : public ThreadSafeRefCounted<GBMBufferSwapchain> {
     WTF_MAKE_FAST_ALLOCATED;
@@ -132,6 +132,6 @@ private:
     } m_array;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(LIBGBM)

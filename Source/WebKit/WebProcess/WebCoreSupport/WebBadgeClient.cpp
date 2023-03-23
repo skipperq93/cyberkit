@@ -30,9 +30,9 @@
 #include "WebProcess.h"
 #include "WebProcessProxyMessages.h"
 
-using namespace WebCore;
+using namespace CyberCore;
 
-namespace WebKit {
+namespace CyberKit {
 
 void WebBadgeClient::setAppBadge(Page* page, const SecurityOriginData& origin, std::optional<uint64_t> badge)
 {
@@ -48,4 +48,4 @@ void WebBadgeClient::setClientBadge(Page& page, const SecurityOriginData& origin
     WebProcess::singleton().setClientBadge(WebPage::fromCorePage(page).webPageProxyIdentifier(), origin, badge);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

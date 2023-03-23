@@ -37,8 +37,8 @@
 #include <CyberCore/Settings.h>
 #include <CyberCore/SoupNetworkSession.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 void WebFrameNetworkingContext::ensureWebsiteDataStoreSession(const WebsiteDataStoreParameters&)
 {

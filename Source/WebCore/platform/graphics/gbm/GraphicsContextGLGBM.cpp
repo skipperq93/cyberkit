@@ -38,7 +38,7 @@
 #include "VideoFrame.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 static inline bool isDMABufSupportedByANGLEPlatform(const GraphicsContextGLGBM::EGLExtensions& eglExtensions)
 {
@@ -327,6 +327,6 @@ GraphicsContextGLGBM::Swapchain::~Swapchain()
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBGL) && USE(LIBGBM)

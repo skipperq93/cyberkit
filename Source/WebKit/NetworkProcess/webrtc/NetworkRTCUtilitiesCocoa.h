@@ -31,7 +31,7 @@
 #include <optional>
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 class RegistrableDomain;
 }
 
@@ -39,7 +39,7 @@ namespace WebKit {
 
 void setNWParametersApplicationIdentifiers(nw_parameters_t, const char* sourceApplicationBundleIdentifier, std::optional<audit_token_t>, const String& attributedBundleIdentifier);
 void setNWParametersTrackerOptions(nw_parameters_t, bool shouldBypassRelay, bool isFirstParty, bool isKnownTracker);
-bool isKnownTracker(const WebCore::RegistrableDomain&);
+bool isKnownTracker(const CyberCore::RegistrableDomain&);
 
 } // namespace WebKit
 

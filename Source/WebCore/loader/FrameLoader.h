@@ -52,7 +52,7 @@
 #include <wtf/WallTime.h>
 #include <wtf/WeakHashSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AbstractFrame;
 class Archive;
@@ -526,4 +526,4 @@ private:
 // and moving it to a more appropriate location.
 RefPtr<Frame> createWindow(Frame& openerFrame, Frame& lookupFrame, FrameLoadRequest&&, WindowFeatures&, bool& created);
 
-} // namespace WebCore
+} // namespace CyberCore

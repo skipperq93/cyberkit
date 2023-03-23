@@ -49,8 +49,8 @@
 #include <CyberCore/UserAgent.h>
 #include <CyberCore/WindowsKeyboardCodes.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 void WebPage::platformInitialize(const WebPageCreationParameters&)
 {
@@ -162,7 +162,7 @@ static const KeyDownEntry keyDownEntries[] = {
     { VK_RETURN, AltKey | ShiftKey,  "InsertNewline" },
 
     // It's not quite clear whether clipboard shortcuts and Undo/Redo should be handled
-    // in the application or in WebKit. We chose WebKit.
+    // in the application or in CyberKit. We chose CyberKit.
     { 'C',       CtrlKey,            "Copy" },
     { 'V',       CtrlKey,            "Paste" },
     { 'X',       CtrlKey,            "Cut" },
@@ -184,7 +184,7 @@ static const KeyPressEntry keyPressEntries[] = {
     { '\r',   AltKey | ShiftKey,  "InsertNewline" },
 };
 
-const char* WebPage::interpretKeyEvent(const WebCore::KeyboardEvent* evt)
+const char* WebPage::interpretKeyEvent(const CyberCore::KeyboardEvent* evt)
 {
     ASSERT(evt->type() == eventNames().keydownEvent || evt->type() == eventNames().keypressEvent);
 
@@ -219,7 +219,7 @@ const char* WebPage::interpretKeyEvent(const WebCore::KeyboardEvent* evt)
     return mapKey ? keyPressCommandsMap->get(mapKey) : 0;
 }
 
-bool WebPage::handleEditingKeyboardEvent(WebCore::KeyboardEvent& event)
+bool WebPage::handleEditingKeyboardEvent(CyberCore::KeyboardEvent& event)
 {
     auto* frame = downcast<Node>(event.target())->document().frame();
     ASSERT(frame);
@@ -234,9 +234,9 @@ bool WebPage::handleEditingKeyboardEvent(WebCore::KeyboardEvent& event)
     auto command = frame->editor().command(String::fromLatin1(interpretKeyEvent(&event)));
 
     if (keyEvent->type() == PlatformEvent::Type::RawKeyDown) {
-        // WebKit doesn't have enough information about mode to decide
+        // CyberKit doesn't have enough information about mode to decide
         // how commands that just insert text if executed via Editor
-        // should be treated, so we leave it upon WebCore to either
+        // should be treated, so we leave it upon CyberCore to either
         // handle them immediately (e.g. Tab that changes focus) or
         // let a keypress event be generated (e.g. Tab that inserts a
         // Tab character, or Enter).
@@ -253,4 +253,4 @@ bool WebPage::handleEditingKeyboardEvent(WebCore::KeyboardEvent& event)
     return frame->editor().insertText(keyEvent->text(), &event);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

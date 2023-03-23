@@ -30,7 +30,7 @@
 #include "ThemeTypes.h"
 #include <wtf/HashMap.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class DocumentMarkerLineStyleMode : uint8_t;
 
@@ -455,4 +455,4 @@ private:
     mutable HashMap<uint8_t, ColorCache, DefaultHash<uint8_t>, WTF::UnsignedWithZeroKeyHashTraits<uint8_t>> m_colorCacheMap;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -147,7 +147,7 @@ static bool writeSizeFile(const String& sizeDirectoryPath, uint64_t size)
     return FileSystem::overwriteEntireFile(sizeFilePath, Span { reinterpret_cast<uint8_t*>(const_cast<char*>(value.data())), value.length() }) != -1;
 }
 
-String CacheStorageManager::cacheStorageOriginDirectory(const String& rootDirectory, const WebCore::ClientOrigin& origin)
+String CacheStorageManager::cacheStorageOriginDirectory(const String& rootDirectory, const CyberCore::ClientOrigin& origin)
 {
     if (rootDirectory.isEmpty())
         return emptyString();
@@ -171,9 +171,9 @@ void CacheStorageManager::copySaltFileToOriginDirectory(const String& rootDirect
     FileSystem::hardLinkOrCopyFile(sourceFilePath, targetFilePath);
 }
 
-HashSet<WebCore::ClientOrigin> CacheStorageManager::originsOfCacheStorageData(const String& rootDirectory)
+HashSet<CyberCore::ClientOrigin> CacheStorageManager::originsOfCacheStorageData(const String& rootDirectory)
 {
-    HashSet<WebCore::ClientOrigin> result;
+    HashSet<CyberCore::ClientOrigin> result;
     for (auto& originName : FileSystem::listDirectory(rootDirectory)) {
         auto originFile = FileSystem::pathByAppendingComponents(rootDirectory, { originName, originFileName });
         if (auto origin = readOriginFromFile(originFile))
@@ -228,7 +228,7 @@ String CacheStorageManager::saltFilePath() const
     return FileSystem::pathByAppendingComponent(m_path, originSaltFileName);
 }
 
-CacheStorageManager::CacheStorageManager(const String& path, CacheStorageRegistry& registry, const std::optional<WebCore::ClientOrigin>& origin, QuotaCheckFunction&& quotaCheckFunction, Ref<WorkQueue>&& queue)
+CacheStorageManager::CacheStorageManager(const String& path, CacheStorageRegistry& registry, const std::optional<CyberCore::ClientOrigin>& origin, QuotaCheckFunction&& quotaCheckFunction, Ref<WorkQueue>&& queue)
     : m_updateCounter(nextUpdateNumber())
     , m_path(path)
     , m_salt(valueOrDefault(FileSystem::readOrMakeSalt(saltFilePath())))
@@ -274,10 +274,10 @@ bool CacheStorageManager::initializeCaches()
     return true;
 }
 
-void CacheStorageManager::openCache(const String& name, WebCore::DOMCacheEngine::CacheIdentifierCallback&& callback)
+void CacheStorageManager::openCache(const String& name, CyberCore::DOMCacheEngine::CacheIdentifierCallback&& callback)
 {
     if (!initializeCaches())
-        return callback(makeUnexpected(WebCore::DOMCacheEngine::Error::ReadDisk));
+        return callback(makeUnexpected(CyberCore::DOMCacheEngine::Error::ReadDisk));
 
     auto index = m_caches.findIf([&](auto& cache) {
         return cache->name() == name;
@@ -289,7 +289,7 @@ void CacheStorageManager::openCache(const String& name, WebCore::DOMCacheEngine:
     bool written = writeCachesList(m_path, m_caches);
     if (!written) {
         m_caches.removeLast();
-        return callback(makeUnexpected(WebCore::DOMCacheEngine::Error::WriteDisk));
+        return callback(makeUnexpected(CyberCore::DOMCacheEngine::Error::WriteDisk));
     }
 
     makeDirty();
@@ -298,7 +298,7 @@ void CacheStorageManager::openCache(const String& name, WebCore::DOMCacheEngine:
     cache->open(WTFMove(callback));
 }
 
-void CacheStorageManager::removeCache(WebCore::DOMCacheIdentifier cacheIdentifier, WebCore::DOMCacheEngine::RemoveCacheIdentifierCallback&& callback)
+void CacheStorageManager::removeCache(CyberCore::DOMCacheIdentifier cacheIdentifier, CyberCore::DOMCacheEngine::RemoveCacheIdentifierCallback&& callback)
 {
     auto index = m_caches.findIf([&](auto& cache) {
         return cache->identifier() == cacheIdentifier;
@@ -307,7 +307,7 @@ void CacheStorageManager::removeCache(WebCore::DOMCacheIdentifier cacheIdentifie
         return callback(false);
 
     if (!writeCachesList(m_path, m_caches, index))
-        return callback(makeUnexpected(WebCore::DOMCacheEngine::Error::WriteDisk));
+        return callback(makeUnexpected(CyberCore::DOMCacheEngine::Error::WriteDisk));
 
     makeDirty();
     m_removedCaches.set(cacheIdentifier, WTFMove(m_caches[index]));
@@ -315,16 +315,16 @@ void CacheStorageManager::removeCache(WebCore::DOMCacheIdentifier cacheIdentifie
     return callback(true);
 }
 
-void CacheStorageManager::allCaches(uint64_t updateCounter, WebCore::DOMCacheEngine::CacheInfosCallback&& callback)
+void CacheStorageManager::allCaches(uint64_t updateCounter, CyberCore::DOMCacheEngine::CacheInfosCallback&& callback)
 {
     if (!initializeCaches())
-        return callback(makeUnexpected(WebCore::DOMCacheEngine::Error::ReadDisk));
+        return callback(makeUnexpected(CyberCore::DOMCacheEngine::Error::ReadDisk));
 
     auto cacheInfos = WTF::map(m_caches, [](const auto& cache) {
-        return WebCore::DOMCacheEngine::CacheInfo { cache->identifier(), cache->name() };
+        return CyberCore::DOMCacheEngine::CacheInfo { cache->identifier(), cache->name() };
     });
     auto callbackAggregator = CallbackAggregator::create([callback = WTFMove(callback), cacheInfos = WTFMove(cacheInfos), updateCounter = m_updateCounter]() mutable {
-        callback(WebCore::DOMCacheEngine::CacheInfos { WTFMove(cacheInfos), updateCounter });
+        callback(CyberCore::DOMCacheEngine::CacheInfos { WTFMove(cacheInfos), updateCounter });
     });
     for (auto& cache : m_caches)
         cache->open([callbackAggregator](auto) { });
@@ -393,7 +393,7 @@ void CacheStorageManager::sizeDecreased(uint64_t amount)
     writeSizeFile(m_path, *m_size);
 }
 
-void CacheStorageManager::reference(IPC::Connection::UniqueID connection, WebCore::DOMCacheIdentifier cacheIdentifier)
+void CacheStorageManager::reference(IPC::Connection::UniqueID connection, CyberCore::DOMCacheIdentifier cacheIdentifier)
 {
     auto& references = m_cacheRefConnections.ensure(cacheIdentifier, []() {
         return Vector<IPC::Connection::UniqueID> { };
@@ -401,7 +401,7 @@ void CacheStorageManager::reference(IPC::Connection::UniqueID connection, WebCor
     references.append(connection);
 }
 
-void CacheStorageManager::dereference(IPC::Connection::UniqueID connection, WebCore::DOMCacheIdentifier cacheIdentifier)
+void CacheStorageManager::dereference(IPC::Connection::UniqueID connection, CyberCore::DOMCacheIdentifier cacheIdentifier)
 {
     auto iter = m_cacheRefConnections.find(cacheIdentifier);
     if (iter == m_cacheRefConnections.end())
@@ -423,7 +423,7 @@ void CacheStorageManager::dereference(IPC::Connection::UniqueID connection, WebC
 
 void CacheStorageManager::connectionClosed(IPC::Connection::UniqueID connection)
 {
-    HashSet<WebCore::DOMCacheIdentifier> unusedCacheIdentifiers;
+    HashSet<CyberCore::DOMCacheIdentifier> unusedCacheIdentifiers;
     for (auto& [identifier, refConnections] : m_cacheRefConnections) {
         refConnections.removeAllMatching([&](auto refConnection) {
             return refConnection == connection;
@@ -438,7 +438,7 @@ void CacheStorageManager::connectionClosed(IPC::Connection::UniqueID connection)
         m_cacheRefConnections.remove(identifier);
 }
 
-void CacheStorageManager::removeUnusedCache(WebCore::DOMCacheIdentifier cacheIdentifier)
+void CacheStorageManager::removeUnusedCache(CyberCore::DOMCacheIdentifier cacheIdentifier)
 {
     if (auto cache = m_removedCaches.take(cacheIdentifier)) {
         cache->removeAllRecords();

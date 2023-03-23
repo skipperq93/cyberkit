@@ -47,7 +47,7 @@
 static bool shouldCallOnNetworkThread()
 {
 #if PLATFORM(MAC)
-    static bool isOldEpsonSoftwareUpdater = WebCore::MacApplication::isEpsonSoftwareUpdater() && !linkedOnOrAfterSDKWithBehavior(SDKAlignedBehavior::DownloadDelegatesCalledOnTheMainThread);
+    static bool isOldEpsonSoftwareUpdater = CyberCore::MacApplication::isEpsonSoftwareUpdater() && !linkedOnOrAfterSDKWithBehavior(SDKAlignedBehavior::DownloadDelegatesCalledOnTheMainThread);
     return isOldEpsonSoftwareUpdater;
 #else
     return false;
@@ -73,7 +73,7 @@ static void callOnDelegateThreadAndWait(Callable&& work)
     }
 }
 
-using namespace WebCore;
+using namespace CyberCore;
 
 @interface WebDownloadInternal : NSObject <NSURLDownloadDelegate> {
     RetainPtr<id> realDelegate;

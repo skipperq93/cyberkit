@@ -28,7 +28,7 @@
 #include "DisplayList.h"
 #include <memory>
 
-namespace WebCore {
+namespace CyberCore {
 namespace DisplayList {
 
 class InMemoryDisplayList : public DisplayList {

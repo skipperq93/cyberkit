@@ -37,7 +37,7 @@ OBJC_CLASS AVPlayerItemTrack;
 OBJC_CLASS AVMediaSelectionGroup;
 OBJC_CLASS AVMediaSelectionOption;
 
-namespace WebCore {
+namespace CyberCore {
 
 class AVTrackPrivateAVFObjCImpl;
 class MediaSelectionOptionAVFObjC;

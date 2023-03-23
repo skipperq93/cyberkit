@@ -36,7 +36,7 @@ sys.path.insert(0, os.path.join(tools_directory, "lldb"))
 
 from lldb_dump_class_layout import LLDBDebuggerInstance, ClassLayout
 
-framework = "WebCore"
+framework = "CyberCore"
 build_directory = ""
 target_path = ""
 config = "Release"
@@ -49,7 +49,7 @@ def webkit_build_dir():
 def main():
     parser = argparse.ArgumentParser(description='Dumps the in-memory layout of the given class or classes, showing padding holes.')
     parser.add_argument('framework', metavar='framework',
-        help='name of the framework containing the class (e.g. "WebCore")')
+        help='name of the framework containing the class (e.g. "CyberCore")')
     parser.add_argument('classname', metavar='classname',
         help='name of the class or struct to dump')
 

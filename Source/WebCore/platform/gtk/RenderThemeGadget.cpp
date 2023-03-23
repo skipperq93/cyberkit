@@ -31,7 +31,7 @@
 #include "FloatRect.h"
 #include "GRefPtrGtk.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 std::unique_ptr<RenderThemeGadget> RenderThemeGadget::create(const RenderThemeGadget::Info& info, RenderThemeGadget* parent, const Vector<RenderThemeGadget::Info> siblings, unsigned position)
 {
@@ -256,6 +256,6 @@ void RenderThemeScrollbarGadget::renderStepper(cairo_t* cr, const FloatRect& pai
         contentsRect.y() + (contentsRect.height() - stepperSize) / 2, stepperSize);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // !USE(GTK4)

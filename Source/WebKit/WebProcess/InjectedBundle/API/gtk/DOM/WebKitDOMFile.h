@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -21,28 +21,28 @@
 #error "Only <webkitdom/webkitdom.h> can be included directly."
 #endif
 
-#ifndef WebKitDOMFile_h
-#define WebKitDOMFile_h
+#ifndef CyberKitDOMFile_h
+#define CyberKitDOMFile_h
 
 #include <glib-object.h>
-#include <webkitdom/WebKitDOMBlob.h>
+#include <webkitdom/CyberKitDOMBlob.h>
 #include <webkitdom/webkitdomdefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_DOM_TYPE_FILE            (webkit_dom_file_get_type())
-#define WEBKIT_DOM_FILE(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_FILE, WebKitDOMFile))
-#define WEBKIT_DOM_FILE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_FILE, WebKitDOMFileClass)
+#define WEBKIT_DOM_FILE(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_FILE, CyberKitDOMFile))
+#define WEBKIT_DOM_FILE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_FILE, CyberKitDOMFileClass)
 #define WEBKIT_DOM_IS_FILE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_DOM_TYPE_FILE))
 #define WEBKIT_DOM_IS_FILE_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_DOM_TYPE_FILE))
-#define WEBKIT_DOM_FILE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_FILE, WebKitDOMFileClass))
+#define WEBKIT_DOM_FILE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_FILE, CyberKitDOMFileClass))
 
-struct _WebKitDOMFile {
-    WebKitDOMBlob parent_instance;
+struct _CyberKitDOMFile {
+    CyberKitDOMBlob parent_instance;
 };
 
-struct _WebKitDOMFileClass {
-    WebKitDOMBlobClass parent_class;
+struct _CyberKitDOMFileClass {
+    CyberKitDOMBlobClass parent_class;
 };
 
 WEBKIT_DEPRECATED GType
@@ -50,15 +50,15 @@ webkit_dom_file_get_type(void);
 
 /**
  * webkit_dom_file_get_name:
- * @self: A #WebKitDOMFile
+ * @self: A #CyberKitDOMFile
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_file_get_name(WebKitDOMFile* self);
+webkit_dom_file_get_name(CyberKitDOMFile* self);
 
 G_END_DECLS
 
-#endif /* WebKitDOMFile_h */
+#endif /* CyberKitDOMFile_h */

@@ -30,7 +30,7 @@
 
 namespace WebKit {
 
-class ImageBufferBackendHandleSharing : public WebCore::ImageBufferBackendSharing {
+class ImageBufferBackendHandleSharing : public CyberCore::ImageBufferBackendSharing {
 public:
     virtual ImageBufferBackendHandle createBackendHandle(SharedMemory::Protection = SharedMemory::Protection::ReadWrite) const = 0;
     virtual RefPtr<ShareableBitmap> bitmap() const { return nullptr; }
@@ -47,7 +47,7 @@ private:
 
 #define SPECIALIZE_TYPE_TRAITS_IMAGE_BUFFER_BACKEND_SHARING(ToValueTypeName, predicate) \
 SPECIALIZE_TYPE_TRAITS_BEGIN(ToValueTypeName) \
-    static bool isType(const WebCore::ImageBufferBackendSharing& backendSharing) { return backendSharing.predicate; } \
+    static bool isType(const CyberCore::ImageBufferBackendSharing& backendSharing) { return backendSharing.predicate; } \
 SPECIALIZE_TYPE_TRAITS_END()
 
 SPECIALIZE_TYPE_TRAITS_IMAGE_BUFFER_BACKEND_SHARING(WebKit::ImageBufferBackendHandleSharing, isImageBufferBackendHandleSharing())

@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class RenderingPurpose : uint8_t {
     Unspecified,
@@ -41,4 +41,4 @@ enum class RenderingPurpose : uint8_t {
 enum class RenderingMode : bool { Unaccelerated, Accelerated };
 enum class RenderingMethod : bool { Local, DisplayList };
 
-} // namespace WebCore
+} // namespace CyberCore

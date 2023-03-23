@@ -32,7 +32,7 @@
 #include "URLKeepingBlobAlive.h"
 #include <wtf/MonotonicTime.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class MessagePort;
 class ResourceError;
@@ -79,4 +79,4 @@ private:
     bool m_isSuspendedForBackForwardCache { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

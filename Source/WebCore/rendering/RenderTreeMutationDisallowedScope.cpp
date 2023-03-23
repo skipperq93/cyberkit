@@ -26,7 +26,7 @@
 #include "config.h"
 #include "RenderTreeMutationDisallowedScope.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 RenderTreeMutationDisallowedScope* RenderTreeMutationDisallowedScope::s_currentMutationAssertion = nullptr;
 

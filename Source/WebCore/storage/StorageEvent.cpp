@@ -29,7 +29,7 @@
 #include "Storage.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(StorageEvent);
 
@@ -91,4 +91,4 @@ EventInterface StorageEvent::eventInterface() const
     return StorageEventInterfaceType;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

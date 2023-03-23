@@ -29,7 +29,7 @@
 #include <wtf/MathExtras.h>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 GraphicsContextState::GraphicsContextState(const ChangeFlags& changeFlags, InterpolationQuality imageInterpolationQuality)
     : m_changeFlags(changeFlags)
@@ -284,4 +284,4 @@ TextStream& operator<<(TextStream& ts, const GraphicsContextState& state)
     return state.dump(ts);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

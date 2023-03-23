@@ -39,7 +39,7 @@
 #include <wtf/text/StringView.h>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static Length parseLength(const UChar* data, unsigned length)
 {
@@ -335,12 +335,12 @@ Length blend(const Length& from, const Length& to, const BlendingContext& contex
     if (resultType == LengthType::Percent) {
         float fromPercent = from.isZero() ? 0 : from.percent();
         float toPercent = to.isZero() ? 0 : to.percent();
-        return Length(WebCore::blend(fromPercent, toPercent, context), LengthType::Percent);
+        return Length(CyberCore::blend(fromPercent, toPercent, context), LengthType::Percent);
     }
 
     float fromValue = from.isZero() ? 0 : from.value();
     float toValue = to.isZero() ? 0 : to.value();
-    return Length(WebCore::blend(fromValue, toValue, context), resultType);
+    return Length(CyberCore::blend(fromValue, toValue, context), resultType);
 }
 
 Length blend(const Length& from, const Length& to, const BlendingContext& context, ValueRange valueRange)
@@ -415,4 +415,4 @@ TextStream& operator<<(TextStream& ts, Length length)
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -32,7 +32,7 @@
 
 typedef struct CGRect CGRect;
 
-namespace WebCore {
+namespace CyberCore {
 class FloatPoint;
 class FloatRect;
 }
@@ -173,8 +173,8 @@ private:
 
     void waitForModalTransitionToFinish() const;
     void waitForSingleTapToReset() const;
-    WebCore::FloatRect rectForMenuAction(CFStringRef) const;
-    void singleTapAtPointWithModifiers(WebCore::FloatPoint location, Vector<String>&& modifierFlags, BlockPtr<void()>&&);
+    CyberCore::FloatRect rectForMenuAction(CFStringRef) const;
+    void singleTapAtPointWithModifiers(CyberCore::FloatPoint location, Vector<String>&& modifierFlags, BlockPtr<void()>&&);
 
     JSObjectRef toObject(CGRect) const;
 

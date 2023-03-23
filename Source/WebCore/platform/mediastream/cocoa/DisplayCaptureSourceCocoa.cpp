@@ -59,7 +59,7 @@
 #include "CoreVideoSoftLink.h"
 #include <pal/cf/CoreMediaSoftLink.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 CaptureSourceOrError DisplayCaptureSourceCocoa::create(const CaptureDevice& device, MediaDeviceHashSalts&& hashSalts, const MediaConstraints* constraints, PageIdentifier pageIdentifier)
 {
@@ -339,6 +339,6 @@ void DisplayCaptureSourceCocoa::Capturer::setObserver(CapturerObserver* observer
     m_observer = WeakPtr { observer };
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM) && PLATFORM(COCOA)

@@ -23,14 +23,14 @@
 #include "config.h"
 #include "WebSearchPopupMenu.h"
 
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebPage.h"
 #include "WebPageProxyMessages.h"
 #include "WebProcess.h"
 #include <wtf/text/AtomString.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 Ref<WebSearchPopupMenu> WebSearchPopupMenu::create(WebPage* page, PopupMenuClient* client)
 {
@@ -78,4 +78,4 @@ bool WebSearchPopupMenu::enabled()
     return true;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

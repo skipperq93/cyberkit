@@ -27,7 +27,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class TextureMapper;
 
@@ -66,6 +66,6 @@ private:
     bool m_isScaleDirty { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

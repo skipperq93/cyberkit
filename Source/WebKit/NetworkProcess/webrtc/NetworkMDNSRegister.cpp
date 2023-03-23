@@ -54,7 +54,7 @@ NetworkMDNSRegister::~NetworkMDNSRegister()
 }
 
 #if ENABLE_MDNS
-void NetworkMDNSRegister::unregisterMDNSNames(WebCore::ScriptExecutionContextIdentifier documentIdentifier)
+void NetworkMDNSRegister::unregisterMDNSNames(CyberCore::ScriptExecutionContextIdentifier documentIdentifier)
 {
     auto iterator = m_services.find(documentIdentifier);
     if (iterator == m_services.end())
@@ -98,13 +98,13 @@ static void registerMDNSNameCallback(DNSServiceRef, DNSRecordRef record, DNSServ
     MDNS_RELEASE_LOG_IN_CALLBACK(request->sessionID, "registerMDNSNameCallback with error %d", errorCode);
 
     if (errorCode) {
-        request->connection->send(Messages::WebMDNSRegister::FinishedRegisteringMDNSName { request->requestIdentifier, request->name, WebCore::MDNSRegisterError::DNSSD }, 0);
+        request->connection->send(Messages::WebMDNSRegister::FinishedRegisteringMDNSName { request->requestIdentifier, request->name, CyberCore::MDNSRegisterError::DNSSD }, 0);
         return;
     }
     request->connection->send(Messages::WebMDNSRegister::FinishedRegisteringMDNSName { request->requestIdentifier, request->name, { } }, 0);
 }
 
-void NetworkMDNSRegister::registerMDNSName(MDNSRegisterIdentifier requestIdentifier, WebCore::ScriptExecutionContextIdentifier documentIdentifier, const String& ipAddress)
+void NetworkMDNSRegister::registerMDNSName(MDNSRegisterIdentifier requestIdentifier, CyberCore::ScriptExecutionContextIdentifier documentIdentifier, const String& ipAddress)
 {
     auto name = makeString(UUID::createVersion4(), ".local"_s);
 
@@ -114,13 +114,13 @@ void NetworkMDNSRegister::registerMDNSName(MDNSRegisterIdentifier requestIdentif
         auto error = DNSServiceCreateConnection(&service);
         if (error) {
             MDNS_RELEASE_LOG("registerMDNSName DNSServiceCreateConnection error %d", error);
-            m_connection.connection().send(Messages::WebMDNSRegister::FinishedRegisteringMDNSName { requestIdentifier, name, WebCore::MDNSRegisterError::DNSSD }, 0);
+            m_connection.connection().send(Messages::WebMDNSRegister::FinishedRegisteringMDNSName { requestIdentifier, name, CyberCore::MDNSRegisterError::DNSSD }, 0);
             return;
         }
         error = DNSServiceSetDispatchQueue(service, dispatch_get_main_queue());
         if (error) {
             MDNS_RELEASE_LOG("registerMDNSName DNSServiceCreateConnection error %d", error);
-            m_connection.connection().send(Messages::WebMDNSRegister::FinishedRegisteringMDNSName { requestIdentifier, name, WebCore::MDNSRegisterError::DNSSD }, 0);
+            m_connection.connection().send(Messages::WebMDNSRegister::FinishedRegisteringMDNSName { requestIdentifier, name, CyberCore::MDNSRegisterError::DNSSD }, 0);
             return;
         }
         ASSERT(service);
@@ -133,7 +133,7 @@ void NetworkMDNSRegister::registerMDNSName(MDNSRegisterIdentifier requestIdentif
     // FIXME: Add IPv6 support.
     if (ip == ( in_addr_t)(-1)) {
         MDNS_RELEASE_LOG("registerMDNSName inet_addr error");
-        m_connection.connection().send(Messages::WebMDNSRegister::FinishedRegisteringMDNSName { requestIdentifier, name, WebCore::MDNSRegisterError::BadParameter }, 0);
+        m_connection.connection().send(Messages::WebMDNSRegister::FinishedRegisteringMDNSName { requestIdentifier, name, CyberCore::MDNSRegisterError::BadParameter }, 0);
         return;
     }
 
@@ -157,7 +157,7 @@ void NetworkMDNSRegister::registerMDNSName(MDNSRegisterIdentifier requestIdentif
         reinterpret_cast<void*>(pendingRegistrationRequestCount));
     if (error) {
         MDNS_RELEASE_LOG("registerMDNSName DNSServiceRegisterRecord error %d", error);
-        m_connection.connection().send(Messages::WebMDNSRegister::FinishedRegisteringMDNSName { requestIdentifier, pendingRequest->name, WebCore::MDNSRegisterError::DNSSD }, 0);
+        m_connection.connection().send(Messages::WebMDNSRegister::FinishedRegisteringMDNSName { requestIdentifier, pendingRequest->name, CyberCore::MDNSRegisterError::DNSSD }, 0);
         return;
     }
     pendingRegistrationRequests().add(pendingRegistrationRequestCount++, WTFMove(pendingRequest));
@@ -165,16 +165,16 @@ void NetworkMDNSRegister::registerMDNSName(MDNSRegisterIdentifier requestIdentif
 
 #else
 
-void NetworkMDNSRegister::unregisterMDNSNames(WebCore::ScriptExecutionContextIdentifier)
+void NetworkMDNSRegister::unregisterMDNSNames(CyberCore::ScriptExecutionContextIdentifier)
 {
 }
 
-void NetworkMDNSRegister::registerMDNSName(MDNSRegisterIdentifier requestIdentifier, WebCore::ScriptExecutionContextIdentifier documentIdentifier, const String& ipAddress)
+void NetworkMDNSRegister::registerMDNSName(MDNSRegisterIdentifier requestIdentifier, CyberCore::ScriptExecutionContextIdentifier documentIdentifier, const String& ipAddress)
 {
     MDNS_RELEASE_LOG("registerMDNSName not implemented");
     auto name = makeString(UUID::createVersion4(), ".local"_s);
 
-    m_connection.connection().send(Messages::WebMDNSRegister::FinishedRegisteringMDNSName { requestIdentifier, name, WebCore::MDNSRegisterError::NotImplemented }, 0);
+    m_connection.connection().send(Messages::WebMDNSRegister::FinishedRegisteringMDNSName { requestIdentifier, name, CyberCore::MDNSRegisterError::NotImplemented }, 0);
 }
 
 #endif

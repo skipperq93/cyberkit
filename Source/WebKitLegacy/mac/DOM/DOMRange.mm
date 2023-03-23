@@ -35,18 +35,18 @@
 #import <CyberCore/SimpleRange.h>
 #import <CyberCore/TextIterator.h>
 #import <CyberCore/ThreadCheck.h>
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 #import <CyberCore/WebScriptObjectPrivate.h>
 #import <wtf/GetPtr.h>
 #import <wtf/URL.h>
 
-#define IMPL reinterpret_cast<WebCore::Range*>(_internal)
+#define IMPL reinterpret_cast<CyberCore::Range*>(_internal)
 
 @implementation DOMRange
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainThread([DOMRange class], self))
+    if (CyberCoreObjCScheduleDeallocateOnMainThread([DOMRange class], self))
         return;
 
     if (_internal)
@@ -56,43 +56,43 @@
 
 - (DOMNode *)startContainer
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->startContainer()));
 }
 
 - (int)startOffset
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->startOffset();
 }
 
 - (DOMNode *)endContainer
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->endContainer()));
 }
 
 - (int)endOffset
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->endOffset();
 }
 
 - (BOOL)collapsed
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->collapsed();
 }
 
 - (DOMNode *)commonAncestorContainer
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->commonAncestorContainer()));
 }
 
 - (NSString *)text
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     auto range = makeSimpleRange(*IMPL);
     range.start.document().updateLayout();
     return plainText(range);
@@ -100,7 +100,7 @@
 
 - (void)setStart:(DOMNode *)refNode offset:(int)offset
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     if (!refNode)
         raiseTypeErrorException();
     raiseOnDOMError(IMPL->setStart(*core(refNode), offset));
@@ -108,7 +108,7 @@
 
 - (void)setEnd:(DOMNode *)refNode offset:(int)offset
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     if (!refNode)
         raiseTypeErrorException();
     raiseOnDOMError(IMPL->setEnd(*core(refNode), offset));
@@ -116,7 +116,7 @@
 
 - (void)setStartBefore:(DOMNode *)refNode
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     if (!refNode)
         raiseTypeErrorException();
     raiseOnDOMError(IMPL->setStartBefore(*core(refNode)));
@@ -124,7 +124,7 @@
 
 - (void)setStartAfter:(DOMNode *)refNode
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     if (!refNode)
         raiseTypeErrorException();
     raiseOnDOMError(IMPL->setStartAfter(*core(refNode)));
@@ -132,7 +132,7 @@
 
 - (void)setEndBefore:(DOMNode *)refNode
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     if (!refNode)
         raiseTypeErrorException();
     raiseOnDOMError(IMPL->setEndBefore(*core(refNode)));
@@ -140,7 +140,7 @@
 
 - (void)setEndAfter:(DOMNode *)refNode
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     if (!refNode)
         raiseTypeErrorException();
     raiseOnDOMError(IMPL->setEndAfter(*core(refNode)));
@@ -148,13 +148,13 @@
 
 - (void)collapse:(BOOL)toStart
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->collapse(toStart);
 }
 
 - (void)selectNode:(DOMNode *)refNode
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     if (!refNode)
         raiseTypeErrorException();
     raiseOnDOMError(IMPL->selectNode(*core(refNode)));
@@ -162,7 +162,7 @@
 
 - (void)selectNodeContents:(DOMNode *)refNode
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     if (!refNode)
         raiseTypeErrorException();
     raiseOnDOMError(IMPL->selectNodeContents(*core(refNode)));
@@ -170,7 +170,7 @@
 
 - (short)compareBoundaryPoints:(unsigned short)how sourceRange:(DOMRange *)sourceRange
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     if (!sourceRange)
         raiseTypeErrorException();
     return raiseOnDOMError(IMPL->compareBoundaryPoints(how, *core(sourceRange)));
@@ -178,25 +178,25 @@
 
 - (void)deleteContents
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     raiseOnDOMError(IMPL->deleteContents());
 }
 
 - (DOMDocumentFragment *)extractContents
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(raiseOnDOMError(IMPL->extractContents()).ptr());
 }
 
 - (DOMDocumentFragment *)cloneContents
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(raiseOnDOMError(IMPL->cloneContents()).ptr());
 }
 
 - (void)insertNode:(DOMNode *)newNode
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     if (!newNode)
         raiseTypeErrorException();
     raiseOnDOMError(IMPL->insertNode(*core(newNode)));
@@ -204,7 +204,7 @@
 
 - (void)surroundContents:(DOMNode *)newParent
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     if (!newParent)
         raiseTypeErrorException();
     raiseOnDOMError(IMPL->surroundContents(*core(newParent)));
@@ -212,31 +212,31 @@
 
 - (DOMRange *)cloneRange
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->cloneRange()));
 }
 
 - (NSString *)toString
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->toString();
 }
 
 - (void)detach
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->detach();
 }
 
 - (DOMDocumentFragment *)createContextualFragment:(NSString *)html
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(raiseOnDOMError(IMPL->createContextualFragment(html)).ptr());
 }
 
 - (short)compareNode:(DOMNode *)refNode
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     if (!refNode)
         raiseTypeErrorException();
     return raiseOnDOMError(IMPL->compareNode(*core(refNode)));
@@ -244,7 +244,7 @@
 
 - (BOOL)intersectsNode:(DOMNode *)refNode
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     if (!refNode)
         raiseTypeErrorException();
     return IMPL->intersectsNode(*core(refNode));
@@ -252,7 +252,7 @@
 
 - (short)comparePoint:(DOMNode *)refNode offset:(int)offset
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     if (!refNode)
         raiseTypeErrorException();
     return raiseOnDOMError(IMPL->comparePoint(*core(refNode), offset));
@@ -260,7 +260,7 @@
 
 - (BOOL)isPointInRange:(DOMNode *)refNode offset:(int)offset
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     if (!refNode)
         raiseTypeErrorException();
     return raiseOnDOMError(IMPL->isPointInRange(*core(refNode), offset));
@@ -268,7 +268,7 @@
 
 - (void)expand:(NSString *)unit
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     raiseOnDOMError(IMPL->expand(unit));
 }
 
@@ -293,14 +293,14 @@
 
 @end
 
-WebCore::Range* core(DOMRange *wrapper)
+CyberCore::Range* core(DOMRange *wrapper)
 {
-    return wrapper ? reinterpret_cast<WebCore::Range*>(wrapper->_internal) : 0;
+    return wrapper ? reinterpret_cast<CyberCore::Range*>(wrapper->_internal) : 0;
 }
 
-DOMRange *kit(WebCore::Range* value)
+DOMRange *kit(CyberCore::Range* value)
 {
-    WebCoreThreadViolationCheckRoundOne();
+    CyberCoreThreadViolationCheckRoundOne();
     if (!value)
         return nil;
     if (DOMRange *wrapper = getDOMWrapper(value))
@@ -312,7 +312,7 @@ DOMRange *kit(WebCore::Range* value)
     return wrapper.autorelease();
 }
 
-DOMRange *kit(const std::optional<WebCore::SimpleRange>& value)
+DOMRange *kit(const std::optional<CyberCore::SimpleRange>& value)
 {
     return kit(createLiveRange(value).get());
 }

@@ -27,7 +27,7 @@
  */
 
 #import <Foundation/Foundation.h>
-#import <CyberKitLegacy/WebKitAvailability.h>
+#import <CyberKitLegacy/CyberKitAvailability.h>
 
 #if !TARGET_OS_IPHONE
 #import <AppKit/AppKit.h>
@@ -107,7 +107,7 @@ WEBKIT_DEPRECATED_MAC(10_3, 10_14)
 /*!
     @method ignore
     @abstract Do nothing (but the client may choose to handle the request itself)
-    @discussion A policy of ignore prevents WebKit from doing anything
+    @discussion A policy of ignore prevents CyberKit from doing anything
     further with the load, however, the client is still free to handle
     the request in some other way, such as opening a new window,
     opening a new window behind the current one, opening the URL in an
@@ -120,7 +120,7 @@ WEBKIT_DEPRECATED_MAC(10_3, 10_14)
 
 /*!
     @category WebPolicyDelegate
-    @discussion While loading a URL, WebKit asks the WebPolicyDelegate for
+    @discussion While loading a URL, CyberKit asks the WebPolicyDelegate for
     policies that determine the action of what to do with the URL or the data that
     the URL represents. Typically, the policy handler methods are called in this order:
 

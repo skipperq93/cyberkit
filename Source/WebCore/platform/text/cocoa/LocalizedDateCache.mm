@@ -34,7 +34,7 @@
 #import <wtf/NeverDestroyed.h>
 #import <wtf/StdLibExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 LocalizedDateCache& localizedDateCache()
 {
@@ -170,5 +170,5 @@ float LocalizedDateCache::calculateMaximumWidth(DateComponentsType type, const M
     return maximumWidth;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 

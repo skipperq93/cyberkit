@@ -29,7 +29,7 @@
 #include <wtf/FastMalloc.h>
 #include <wtf/FunctionDispatcher.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WorkerClient : public GraphicsClient {
     WTF_MAKE_FAST_ALLOCATED;
@@ -40,4 +40,4 @@ public:
     virtual ~WorkerClient() = default;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

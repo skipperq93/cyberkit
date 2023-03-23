@@ -43,7 +43,7 @@
 #endif
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 static const unsigned DefaultCapacity = 100;
 
@@ -194,7 +194,7 @@ void WebBackForwardList::goToItem(WebBackForwardListItem& item)
     if (targetIndex < *m_currentIndex) {
         unsigned delta = m_entries.size() - targetIndex - 1;
         String deltaValue = delta > 10 ? "over10"_s : String::number(delta);
-        m_page->logDiagnosticMessage(WebCore::DiagnosticLoggingKeys::backNavigationDeltaKey(), deltaValue, ShouldSample::No);
+        m_page->logDiagnosticMessage(CyberCore::DiagnosticLoggingKeys::backNavigationDeltaKey(), deltaValue, ShouldSample::No);
     }
 
     // If we're going to an item different from the current item, ask the client if the current

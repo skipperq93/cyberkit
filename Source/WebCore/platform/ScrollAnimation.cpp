@@ -28,7 +28,7 @@
 
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 TextStream& operator<<(TextStream& ts, ScrollAnimation::Type animationType)
 {
@@ -48,4 +48,4 @@ TextStream& operator<<(TextStream& ts, const ScrollAnimation& animation)
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

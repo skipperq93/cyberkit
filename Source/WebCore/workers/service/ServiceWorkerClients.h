@@ -34,11 +34,11 @@
 #include <wtf/Ref.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DeferredPromise;
 class ScriptExecutionContext;
-class WebCoreOpaqueRoot;
+class CyberCoreOpaqueRoot;
 struct ServiceWorkerClientData;
 
 class ServiceWorkerClients : public RefCounted<ServiceWorkerClients> {
@@ -67,8 +67,8 @@ private:
     HashMap<PromiseIdentifier, Ref<DeferredPromise>> m_pendingPromises;
 };
 
-WebCoreOpaqueRoot root(ServiceWorkerClients*);
+CyberCoreOpaqueRoot root(ServiceWorkerClients*);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

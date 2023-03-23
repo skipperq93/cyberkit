@@ -27,7 +27,7 @@
 
 #include "SVGAttributeAnimator.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGElement;
 
@@ -53,4 +53,4 @@ protected:
     AnimationMode m_animationMode;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

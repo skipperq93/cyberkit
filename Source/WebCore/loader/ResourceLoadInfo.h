@@ -31,7 +31,7 @@
 #include <wtf/OptionSet.h>
 #include <wtf/URL.h>
 
-namespace WebCore::ContentExtensions {
+namespace CyberCore::ContentExtensions {
 
 enum class ActionCondition : uint32_t {
     None = 0x00000,
@@ -95,6 +95,6 @@ struct ResourceLoadInfo {
     ResourceFlags getResourceFlags() const;
 };
 
-} // namespace WebCore::ContentExtensions
+} // namespace CyberCore::ContentExtensions
 
 #endif

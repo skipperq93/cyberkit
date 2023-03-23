@@ -26,11 +26,11 @@
 #include "config.h"
 #include "SharedWorkerProvider.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static SharedWorkerProvider* sharedProvider;
 
-// For WebKitLegacy.
+// For CyberKitLegacy.
 class DummySharedWorkerProvider final : public SharedWorkerProvider {
 public:
     SharedWorkerObjectConnection* sharedWorkerConnection() final { return nullptr; }
@@ -49,4 +49,4 @@ void SharedWorkerProvider::setSharedProvider(SharedWorkerProvider& newProvider)
     sharedProvider = &newProvider;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

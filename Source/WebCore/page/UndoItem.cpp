@@ -30,7 +30,7 @@
 #include "UndoManager.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(UndoItem);
 
@@ -63,4 +63,4 @@ Document* UndoItem::document() const
     return m_document.get();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

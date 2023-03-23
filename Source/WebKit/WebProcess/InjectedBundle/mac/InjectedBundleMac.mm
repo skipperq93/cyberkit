@@ -49,8 +49,8 @@
 - (CFBundleRef)_cfBundle;
 @end
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 #if PLATFORM(MAC)
 static NSEventModifierFlags currentModifierFlags(id self, SEL _cmd)
@@ -194,7 +194,7 @@ bool InjectedBundle::initialize(const WebProcessCreationParameters& parameters, 
         return false;
     }
 
-    WKWebProcessPlugInController* plugInController = WebKit::wrapper(*this);
+    WKWebProcessPlugInController* plugInController = CyberKit::wrapper(*this);
     [plugInController _setPrincipalClassInstance:instance.get()];
 
     if ([instance respondsToSelector:@selector(additionalClassesForParameterCoder)])
@@ -297,4 +297,4 @@ void InjectedBundle::setBundleParameters(const IPC::DataReference& value)
     [m_bundleParameters setParametersForKeyWithDictionary:parameters];
 }
 
-} // namespace WebKit
+} // namespace CyberKit

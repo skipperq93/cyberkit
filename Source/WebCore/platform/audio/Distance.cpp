@@ -35,7 +35,7 @@
 #include <algorithm>
 #include <math.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 DistanceEffect::DistanceEffect() = default;
 
@@ -78,6 +78,6 @@ double DistanceEffect::exponentialGain(double distance) const
     return pow(distance / m_refDistance, -m_rolloffFactor);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

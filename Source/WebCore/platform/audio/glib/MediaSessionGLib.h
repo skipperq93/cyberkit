@@ -24,7 +24,7 @@
 #include "PlatformMediaSession.h"
 #include <wtf/glib/GRefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class MediaSessionManagerGLib;
 
@@ -62,6 +62,6 @@ private:
     unsigned m_playerRegistrationId { 0 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(GLIB) && ENABLE(MEDIA_SESSION)

@@ -35,38 +35,38 @@
 namespace WebKit {
 
 #if ENABLE(SPEECH_SYNTHESIS)
-void WebPageProxy::didStartSpeaking(WebCore::PlatformSpeechSynthesisUtterance&)
+void WebPageProxy::didStartSpeaking(CyberCore::PlatformSpeechSynthesisUtterance&)
 {
     if (speechSynthesisData().speakingStartedCompletionHandler)
         speechSynthesisData().speakingStartedCompletionHandler();
 }
 
-void WebPageProxy::didFinishSpeaking(WebCore::PlatformSpeechSynthesisUtterance&)
+void WebPageProxy::didFinishSpeaking(CyberCore::PlatformSpeechSynthesisUtterance&)
 {
     if (speechSynthesisData().speakingFinishedCompletionHandler)
         speechSynthesisData().speakingFinishedCompletionHandler();
 }
 
-void WebPageProxy::didPauseSpeaking(WebCore::PlatformSpeechSynthesisUtterance&)
+void WebPageProxy::didPauseSpeaking(CyberCore::PlatformSpeechSynthesisUtterance&)
 {
     if (speechSynthesisData().speakingPausedCompletionHandler)
         speechSynthesisData().speakingPausedCompletionHandler();
 }
 
-void WebPageProxy::didResumeSpeaking(WebCore::PlatformSpeechSynthesisUtterance&)
+void WebPageProxy::didResumeSpeaking(CyberCore::PlatformSpeechSynthesisUtterance&)
 {
     if (speechSynthesisData().speakingResumedCompletionHandler)
         speechSynthesisData().speakingResumedCompletionHandler();
 }
 
-void WebPageProxy::speakingErrorOccurred(WebCore::PlatformSpeechSynthesisUtterance&)
+void WebPageProxy::speakingErrorOccurred(CyberCore::PlatformSpeechSynthesisUtterance&)
 {
     send(Messages::WebPage::SpeakingErrorOccurred());
 }
 
-void WebPageProxy::boundaryEventOccurred(WebCore::PlatformSpeechSynthesisUtterance&, WebCore::SpeechBoundary speechBoundary, unsigned charIndex, unsigned charLength)
+void WebPageProxy::boundaryEventOccurred(CyberCore::PlatformSpeechSynthesisUtterance&, CyberCore::SpeechBoundary speechBoundary, unsigned charIndex, unsigned charLength)
 {
-    send(Messages::WebPage::BoundaryEventOccurred(speechBoundary == WebCore::SpeechBoundary::SpeechWordBoundary, charIndex, charLength));
+    send(Messages::WebPage::BoundaryEventOccurred(speechBoundary == CyberCore::SpeechBoundary::SpeechWordBoundary, charIndex, charLength));
 }
 
 void WebPageProxy::voicesDidChange()

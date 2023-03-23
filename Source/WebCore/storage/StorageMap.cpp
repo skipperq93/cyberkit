@@ -29,7 +29,7 @@
 #include <wtf/CheckedArithmetic.h>
 #include <wtf/SetForScope.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 StorageMap::StorageMap(unsigned quota)
     : m_impl(Impl::create())

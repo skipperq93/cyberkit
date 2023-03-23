@@ -26,7 +26,7 @@
 #include "SVGNames.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(SVGFEColorMatrixElement);
 
@@ -148,4 +148,4 @@ RefPtr<FilterEffect> SVGFEColorMatrixElement::createFilterEffect(const FilterEff
     return FEColorMatrix::create(filterType, WTFMove(filterValues));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

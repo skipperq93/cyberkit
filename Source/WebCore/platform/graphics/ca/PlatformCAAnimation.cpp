@@ -29,7 +29,7 @@
 #include <wtf/text/StringToIntegerConversion.h>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 TextStream& operator<<(TextStream& ts, PlatformCAAnimation::AnimationType type)
 {
@@ -156,4 +156,4 @@ bool PlatformCAAnimation::isValidKeyPath(const String& keyPath, AnimationType ty
     return false;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

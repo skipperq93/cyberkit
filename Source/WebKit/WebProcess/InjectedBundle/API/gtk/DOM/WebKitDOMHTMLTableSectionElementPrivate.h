@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -17,16 +17,16 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitDOMHTMLTableSectionElementPrivate_h
-#define WebKitDOMHTMLTableSectionElementPrivate_h
+#ifndef CyberKitDOMHTMLTableSectionElementPrivate_h
+#define CyberKitDOMHTMLTableSectionElementPrivate_h
 
 #include <CyberCore/HTMLTableSectionElement.h>
-#include <webkitdom/WebKitDOMHTMLTableSectionElement.h>
+#include <webkitdom/CyberKitDOMHTMLTableSectionElement.h>
 
-namespace WebKit {
-WebKitDOMHTMLTableSectionElement* wrapHTMLTableSectionElement(WebCore::HTMLTableSectionElement*);
-WebKitDOMHTMLTableSectionElement* kit(WebCore::HTMLTableSectionElement*);
-WebCore::HTMLTableSectionElement* core(WebKitDOMHTMLTableSectionElement*);
-} // namespace WebKit
+namespace CyberKit {
+CyberKitDOMHTMLTableSectionElement* wrapHTMLTableSectionElement(CyberCore::HTMLTableSectionElement*);
+CyberKitDOMHTMLTableSectionElement* kit(CyberCore::HTMLTableSectionElement*);
+CyberCore::HTMLTableSectionElement* core(CyberKitDOMHTMLTableSectionElement*);
+} // namespace CyberKit
 
-#endif /* WebKitDOMHTMLTableSectionElementPrivate_h */
+#endif /* CyberKitDOMHTMLTableSectionElementPrivate_h */

@@ -31,7 +31,7 @@
 #include "Logging.h"
 #include "NetworkConnectionToWebProcessMessages.h"
 #include "NetworkProcessConnection.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebPage.h"
 #include "WebProcess.h"
 #include <CyberCore/Frame.h>
@@ -41,9 +41,9 @@
 #include <CyberCore/HTMLFrameOwnerElement.h>
 #include <CyberCore/Page.h>
 
-namespace WebKit {
+namespace CyberKit {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 static const Seconds minimumNotificationInterval { 5_s };
 
@@ -436,7 +436,7 @@ void WebResourceLoadObserver::setDomainsWithCrossPageStorageAccess(HashMap<TopFr
             }).iterator->value.add(domains.get(topDomain));
 
         // Some sites have quirks where multiple login domains require storage access.
-        if (auto additionalLoginDomain = WebCore::NetworkStorageSession::findAdditionalLoginDomain(topDomain, domains.get(topDomain))) {
+        if (auto additionalLoginDomain = CyberCore::NetworkStorageSession::findAdditionalLoginDomain(topDomain, domains.get(topDomain))) {
             m_domainsWithCrossPageStorageAccess.ensure(topDomain, [] { return HashSet<RegistrableDomain> { };
                 }).iterator->value.add(*additionalLoginDomain);
         }
@@ -444,6 +444,6 @@ void WebResourceLoadObserver::setDomainsWithCrossPageStorageAccess(HashMap<TopFr
     completionHandler();
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(TRACKING_PREVENTION)

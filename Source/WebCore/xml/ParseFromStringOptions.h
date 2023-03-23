@@ -19,7 +19,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ParseFromStringOptions {
     bool includeShadowRoots { false };

@@ -27,7 +27,7 @@
  */
 
 #import <Foundation/Foundation.h>
-#import <CyberKitLegacy/WebKitAvailability.h>
+#import <CyberKitLegacy/CyberKitAvailability.h>
 
 #if !TARGET_OS_IPHONE
 #import <AppKit/AppKit.h>
@@ -46,10 +46,10 @@ extern NSString *WebHistoryItemChangedNotification WEBKIT_DEPRECATED_MAC(10_3, 1
 
 /*!
     @class WebHistoryItem
-    @discussion  WebHistoryItems are created by WebKit to represent pages visited.
+    @discussion  WebHistoryItems are created by CyberKit to represent pages visited.
     The WebBackForwardList and WebHistory classes both use WebHistoryItems to represent
     pages visited.  With the exception of the displayTitle, the properties of 
-    WebHistoryItems are set by WebKit.  WebHistoryItems are normally never created directly.
+    WebHistoryItems are set by CyberKit.  WebHistoryItems are normally never created directly.
 */
 WEBKIT_CLASS_DEPRECATED_MAC(10_3, 10_14)
 @interface WebHistoryItem : NSObject <NSCopying>
@@ -64,7 +64,7 @@ WEBKIT_CLASS_DEPRECATED_MAC(10_3, 10_14)
     @param title The title to use for the item.  This is normally the <title> of a page.
     @param time The time used to indicate when the item was used.
     @abstract Initialize a new WebHistoryItem
-    @discussion WebHistoryItems are normally created for you by the WebKit.
+    @discussion WebHistoryItems are normally created for you by the CyberKit.
     You may use this method to prepopulate a WebBackForwardList, or create
     'artificial' items to add to a WebBackForwardList.  When first initialized
     the URLString and originalURLString will be the same.
@@ -74,7 +74,7 @@ WEBKIT_CLASS_DEPRECATED_MAC(10_3, 10_14)
 /*!
     @property originalURLString
     @abstract The string representation of the initial URL of this item.
-    This value is normally set by the WebKit.
+    This value is normally set by the CyberKit.
 */
 @property (nonatomic, readonly, copy) NSString *originalURLString;
 
@@ -82,7 +82,7 @@ WEBKIT_CLASS_DEPRECATED_MAC(10_3, 10_14)
     @property URLString
     @abstract The string representation of the URL represented by this item.
     @discussion The URLString may be different than the originalURLString if the page
-    redirected to a new location.  This value is normally set by the WebKit.
+    redirected to a new location.  This value is normally set by the CyberKit.
 */
 @property (nonatomic, readonly, copy) NSString *URLString;
 
@@ -91,7 +91,7 @@ WEBKIT_CLASS_DEPRECATED_MAC(10_3, 10_14)
     @property title
     @abstract The title of the page represented by this item.
     @discussion This title cannot be changed by the client.  This value
-    is normally set by the WebKit when a page title for the item is received.
+    is normally set by the CyberKit when a page title for the item is received.
 */
 @property (nonatomic, readonly, copy) NSString *title;
 
@@ -99,7 +99,7 @@ WEBKIT_CLASS_DEPRECATED_MAC(10_3, 10_14)
     @property lastVisitedTimeInterval
     @abstract The last time the page represented by this item was visited. The interval
     is since the reference date as determined by NSDate.  This value is normally set by
-    the WebKit.
+    the CyberKit.
 */
 @property (nonatomic, readonly) NSTimeInterval lastVisitedTimeInterval;
 
@@ -113,7 +113,7 @@ WEBKIT_CLASS_DEPRECATED_MAC(10_3, 10_14)
 /*!
     @property icon
     @abstract The favorite icon of the page represented by this item.
-    @discussion This icon returned will be determined by the WebKit.
+    @discussion This icon returned will be determined by the CyberKit.
 */
 @property (nonatomic, readonly, strong) NSImage *icon;
 #endif

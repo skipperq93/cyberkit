@@ -32,7 +32,7 @@
 #include "CurlResponse.h"
 #include "HTTPParsers.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 bool ResourceResponse::isAppendableHeader(const String &key)
 {

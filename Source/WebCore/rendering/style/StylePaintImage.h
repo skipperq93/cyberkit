@@ -31,7 +31,7 @@
 #include "StyleGeneratedImage.h"
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSVariableData;
 
@@ -63,7 +63,7 @@ private:
     Ref<CSSVariableData> m_arguments;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_STYLE_IMAGE(StylePaintImage, isPaintImage)
 

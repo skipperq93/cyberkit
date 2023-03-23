@@ -25,9 +25,9 @@
 
 #import <CyberKitLegacy/DOMHTMLInputElement.h>
 
-namespace WebCore {
+namespace CyberCore {
 class HTMLInputElement;
 }
 
-WebCore::HTMLInputElement* core(DOMHTMLInputElement *);
-DOMHTMLInputElement *kit(WebCore::HTMLInputElement*);
+CyberCore::HTMLInputElement* core(DOMHTMLInputElement *);
+DOMHTMLInputElement *kit(CyberCore::HTMLInputElement*);

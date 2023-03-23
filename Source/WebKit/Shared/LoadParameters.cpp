@@ -27,7 +27,7 @@
 #include "LoadParameters.h"
 
 #include "FormDataReference.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 
 namespace WebKit {
 
@@ -77,7 +77,7 @@ bool LoadParameters::decode(IPC::Decoder& decoder, LoadParameters& data)
     if (!decoder.decode(data.host))
         return false;
 
-    WebCore::setTopPrivatelyControlledDomain(data.host, data.topPrivatelyControlledDomain);
+    CyberCore::setTopPrivatelyControlledDomain(data.host, data.topPrivatelyControlledDomain);
 #endif
 
     if (!decoder.decode(data.navigationID))
@@ -151,7 +151,7 @@ bool LoadParameters::decode(IPC::Decoder& decoder, LoadParameters& data)
         return false;
     data.clientRedirectSourceForHistory = WTFMove(*clientRedirectSourceForHistory);
 
-    std::optional<WebCore::SandboxFlags> effectiveSandboxFlags;
+    std::optional<CyberCore::SandboxFlags> effectiveSandboxFlags;
     decoder >> effectiveSandboxFlags;
     if (!effectiveSandboxFlags)
         return false;

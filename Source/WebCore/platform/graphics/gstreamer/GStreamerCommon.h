@@ -30,7 +30,7 @@
 #include <wtf/MediaTime.h>
 #include <wtf/ThreadSafeRefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class IntSize;
 class SharedBuffer;
@@ -71,7 +71,7 @@ void webkitGstVideoFormatInfoComponent(const GstVideoFormatInfo*, guint, gint co
 
 GstPad* webkitGstGhostPadFromStaticTemplate(GstStaticPadTemplate*, const gchar* name, GstPad* target);
 #if ENABLE(VIDEO)
-bool getVideoSizeAndFormatFromCaps(const GstCaps*, WebCore::IntSize&, GstVideoFormat&, int& pixelAspectRatioNumerator, int& pixelAspectRatioDenominator, int& stride);
+bool getVideoSizeAndFormatFromCaps(const GstCaps*, CyberCore::IntSize&, GstVideoFormat&, int& pixelAspectRatioNumerator, int& pixelAspectRatioDenominator, int& stride);
 std::optional<FloatSize> getVideoResolutionFromCaps(const GstCaps*);
 bool getSampleVideoInfo(GstSample*, GstVideoInfo&);
 #endif
@@ -348,7 +348,7 @@ void configureVideoDecoderForHarnessing(const GRefPtr<GstElement>&);
 bool gstObjectHasProperty(GstElement*, const char* name);
 bool gstObjectHasProperty(GstPad*, const char* name);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #ifndef GST_BUFFER_DTS_OR_PTS
 #define GST_BUFFER_DTS_OR_PTS(buffer) (GST_BUFFER_DTS_IS_VALID(buffer) ? GST_BUFFER_DTS(buffer) : GST_BUFFER_PTS(buffer))

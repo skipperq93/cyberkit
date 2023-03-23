@@ -36,7 +36,7 @@
 #include "NetworkSession.h"
 #include "ServiceWorkerFetchTask.h"
 #include "ServiceWorkerFetchTaskMessages.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebSWContextManagerConnectionMessages.h"
 #include "WebSWServerConnection.h"
 #include <CyberCore/NotificationData.h>
@@ -44,7 +44,7 @@
 #include <CyberCore/ServiceWorkerContextData.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 WebSWServerToContextConnection::WebSWServerToContextConnection(NetworkConnectionToWebProcess& connection, WebPageProxyIdentifier webPageProxyID, RegistrableDomain&& registrableDomain, std::optional<ScriptExecutionContextIdentifier> serviceWorkerPageIdentifier, SWServer& server)
     : SWServerToContextConnection(server, WTFMove(registrableDomain), serviceWorkerPageIdentifier)
@@ -110,7 +110,7 @@ void WebSWServerToContextConnection::installServiceWorkerContext(const ServiceWo
     send(Messages::WebSWContextManagerConnection::InstallServiceWorker { contextData, workerData, userAgent, workerThreadMode });
 }
 
-void WebSWServerToContextConnection::updateAppInitiatedValue(ServiceWorkerIdentifier serviceWorkerIdentifier, WebCore::LastNavigationWasAppInitiated lastNavigationWasAppInitiated)
+void WebSWServerToContextConnection::updateAppInitiatedValue(ServiceWorkerIdentifier serviceWorkerIdentifier, CyberCore::LastNavigationWasAppInitiated lastNavigationWasAppInitiated)
 {
     send(Messages::WebSWContextManagerConnection::UpdateAppInitiatedValue(serviceWorkerIdentifier, lastNavigationWasAppInitiated));
 }
@@ -192,7 +192,7 @@ void WebSWServerToContextConnection::terminateDueToUnresponsiveness()
     m_connection.networkProcess().parentProcessConnection()->send(Messages::NetworkProcessProxy::TerminateUnresponsiveServiceWorkerProcesses { webProcessIdentifier() }, 0);
 }
 
-void WebSWServerToContextConnection::openWindow(WebCore::ServiceWorkerIdentifier identifier, const URL& url, OpenWindowCallback&& callback)
+void WebSWServerToContextConnection::openWindow(CyberCore::ServiceWorkerIdentifier identifier, const URL& url, OpenWindowCallback&& callback)
 {
     auto* server = this->server();
     if (!server) {
@@ -206,7 +206,7 @@ void WebSWServerToContextConnection::openWindow(WebCore::ServiceWorkerIdentifier
         return;
     }
 
-    auto innerCallback = [callback = WTFMove(callback), server = WeakPtr { *server }, origin = worker->origin()](std::optional<WebCore::PageIdentifier>&& pageIdentifier) mutable {
+    auto innerCallback = [callback = WTFMove(callback), server = WeakPtr { *server }, origin = worker->origin()](std::optional<CyberCore::PageIdentifier>&& pageIdentifier) mutable {
         if (!pageIdentifier) {
             // FIXME: validate whether we should reject or resolve with null, https://github.com/w3c/ServiceWorker/issues/1639
             callback({ });
@@ -277,12 +277,12 @@ void WebSWServerToContextConnection::unregisterDownload(ServiceWorkerDownloadTas
     m_ongoingDownloads.remove(task.fetchIdentifier());
 }
 
-WebCore::ProcessIdentifier WebSWServerToContextConnection::webProcessIdentifier() const
+CyberCore::ProcessIdentifier WebSWServerToContextConnection::webProcessIdentifier() const
 {
     return m_connection.webProcessIdentifier();
 }
 
-void WebSWServerToContextConnection::focus(ScriptExecutionContextIdentifier clientIdentifier, CompletionHandler<void(std::optional<WebCore::ServiceWorkerClientData>&&)>&& callback)
+void WebSWServerToContextConnection::focus(ScriptExecutionContextIdentifier clientIdentifier, CompletionHandler<void(std::optional<CyberCore::ServiceWorkerClientData>&&)>&& callback)
 {
     auto* server = this->server();
     auto* connection = server ? server->connection(clientIdentifier.processIdentifier()) : nullptr;

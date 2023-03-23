@@ -27,7 +27,7 @@
 
 #include "SVGPropertyAnimator.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename ListType, typename AnimationFunction>
 class SVGValuePropertyListAnimator : public SVGPropertyAnimator<AnimationFunction> {
@@ -61,4 +61,4 @@ protected:
     RefPtr<ListType> m_list;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

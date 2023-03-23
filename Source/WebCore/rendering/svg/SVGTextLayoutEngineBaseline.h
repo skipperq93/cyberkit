@@ -22,7 +22,7 @@
 #include "SVGRenderStyleDefs.h"
 #include <wtf/Noncopyable.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FontCascade;
 class RenderObject;
@@ -47,4 +47,4 @@ private:
     const FontCascade& m_font;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

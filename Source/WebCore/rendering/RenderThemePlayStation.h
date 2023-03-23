@@ -28,11 +28,11 @@
 
 #include "RenderTheme.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderThemePlayStation final : public RenderTheme {
 public:
     friend NeverDestroyed<RenderThemePlayStation>;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

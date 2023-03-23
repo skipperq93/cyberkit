@@ -52,8 +52,8 @@
 #include <gtk/gtk.h>
 #include <wtf/glib/GUniquePtr.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 void WebPage::platformReinitialize()
 {
@@ -121,9 +121,9 @@ void WebPage::showEmojiPicker(Frame& frame)
     sendWithAsyncReply(Messages::WebPageProxy::ShowEmojiPicker(frame.view()->contentsToRootView(frame.selection().absoluteCaretBounds())), WTFMove(completionHandler));
 }
 
-void WebPage::setAccentColor(WebCore::Color color)
+void WebPage::setAccentColor(CyberCore::Color color)
 {
     static_cast<RenderThemeAdwaita&>(RenderTheme::singleton()).setAccentColor(color);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

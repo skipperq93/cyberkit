@@ -30,7 +30,7 @@
 
 #include "DOMWrapperWorld.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 UserMessageHandlerDescriptor::UserMessageHandlerDescriptor(const AtomString& name, DOMWrapperWorld& world)
     : m_name(name)
@@ -55,6 +55,6 @@ const DOMWrapperWorld& UserMessageHandlerDescriptor::world() const
     return m_world.get();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(USER_MESSAGE_HANDLERS)

@@ -28,7 +28,7 @@
 #include "SVGPoint.h"
 #include "SVGValuePropertyList.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGPointList final : public SVGValuePropertyList<SVGPoint> {
     using Base = SVGValuePropertyList<SVGPoint>;

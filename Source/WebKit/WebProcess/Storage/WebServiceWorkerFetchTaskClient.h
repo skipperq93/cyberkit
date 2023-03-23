@@ -38,69 +38,69 @@
 #include <CyberCore/SharedBuffer.h>
 #include <wtf/UniqueRef.h>
 
-namespace WebKit {
+namespace CyberKit {
 
-class WebServiceWorkerFetchTaskClient final : public WebCore::ServiceWorkerFetch::Client {
+class WebServiceWorkerFetchTaskClient final : public CyberCore::ServiceWorkerFetch::Client {
 public:
-    static Ref<WebServiceWorkerFetchTaskClient> create(Ref<IPC::Connection>&& connection, WebCore::ServiceWorkerIdentifier serviceWorkerIdentifier,  WebCore::SWServerConnectionIdentifier serverConnectionIdentifier, WebCore::FetchIdentifier fetchTaskIdentifier, bool needsContinueDidReceiveResponseMessage)
+    static Ref<WebServiceWorkerFetchTaskClient> create(Ref<IPC::Connection>&& connection, CyberCore::ServiceWorkerIdentifier serviceWorkerIdentifier,  CyberCore::SWServerConnectionIdentifier serverConnectionIdentifier, CyberCore::FetchIdentifier fetchTaskIdentifier, bool needsContinueDidReceiveResponseMessage)
     {
         return adoptRef(*new WebServiceWorkerFetchTaskClient(WTFMove(connection), serviceWorkerIdentifier, serverConnectionIdentifier, fetchTaskIdentifier, needsContinueDidReceiveResponseMessage));
     }
 
 private:
-    WebServiceWorkerFetchTaskClient(Ref<IPC::Connection>&&, WebCore::ServiceWorkerIdentifier, WebCore::SWServerConnectionIdentifier, WebCore::FetchIdentifier, bool needsContinueDidReceiveResponseMessage);
+    WebServiceWorkerFetchTaskClient(Ref<IPC::Connection>&&, CyberCore::ServiceWorkerIdentifier, CyberCore::SWServerConnectionIdentifier, CyberCore::FetchIdentifier, bool needsContinueDidReceiveResponseMessage);
 
-    void didReceiveResponse(const WebCore::ResourceResponse&) final;
-    void didReceiveRedirection(const WebCore::ResourceResponse&) final;
-    void didReceiveData(const WebCore::SharedBuffer&) final;
-    void didReceiveFormDataAndFinish(Ref<WebCore::FormData>&&) final;
-    void didFail(const WebCore::ResourceError&) final;
-    void didFinish(const WebCore::NetworkLoadMetrics&) final;
+    void didReceiveResponse(const CyberCore::ResourceResponse&) final;
+    void didReceiveRedirection(const CyberCore::ResourceResponse&) final;
+    void didReceiveData(const CyberCore::SharedBuffer&) final;
+    void didReceiveFormDataAndFinish(Ref<CyberCore::FormData>&&) final;
+    void didFail(const CyberCore::ResourceError&) final;
+    void didFinish(const CyberCore::NetworkLoadMetrics&) final;
     void didNotHandle() final;
     void cancel() final;
     void continueDidReceiveResponse() final;
     void convertFetchToDownload() final;
     void setCancelledCallback(Function<void()>&&) final;
-    void setFetchEvent(Ref<WebCore::FetchEvent>&&);
-    void navigationPreloadIsReady(WebCore::ResourceResponse::CrossThreadData&&) final;
-    void navigationPreloadFailed(WebCore::ResourceError&&) final;
+    void setFetchEvent(Ref<CyberCore::FetchEvent>&&);
+    void navigationPreloadIsReady(CyberCore::ResourceResponse::CrossThreadData&&) final;
+    void navigationPreloadFailed(CyberCore::ResourceError&&) final;
     void usePreload() final;
 
     void cleanup();
 
-    void didReceiveBlobChunk(const WebCore::SharedBuffer&);
+    void didReceiveBlobChunk(const CyberCore::SharedBuffer&);
     void didFinishBlobLoading();
 
-    struct BlobLoader final : WebCore::FetchLoaderClient {
+    struct BlobLoader final : CyberCore::FetchLoaderClient {
         explicit BlobLoader(WebServiceWorkerFetchTaskClient& client) : client(client) { }
 
         // FetchLoaderClient API
-        void didReceiveResponse(const WebCore::ResourceResponse&) final { }
-        void didReceiveData(const WebCore::SharedBuffer& data) final { client->didReceiveBlobChunk(data); }
-        void didFail(const WebCore::ResourceError& error) final { client->didFail(error); }
-        void didSucceed(const WebCore::NetworkLoadMetrics&) final { client->didFinishBlobLoading(); }
+        void didReceiveResponse(const CyberCore::ResourceResponse&) final { }
+        void didReceiveData(const CyberCore::SharedBuffer& data) final { client->didReceiveBlobChunk(data); }
+        void didFail(const CyberCore::ResourceError& error) final { client->didFail(error); }
+        void didSucceed(const CyberCore::NetworkLoadMetrics&) final { client->didFinishBlobLoading(); }
 
         Ref<WebServiceWorkerFetchTaskClient> client;
-        std::unique_ptr<WebCore::FetchLoader> loader;
+        std::unique_ptr<CyberCore::FetchLoader> loader;
     };
 
     RefPtr<IPC::Connection> m_connection;
-    WebCore::SWServerConnectionIdentifier m_serverConnectionIdentifier;
-    WebCore::ServiceWorkerIdentifier m_serviceWorkerIdentifier;
-    WebCore::FetchIdentifier m_fetchIdentifier;
+    CyberCore::SWServerConnectionIdentifier m_serverConnectionIdentifier;
+    CyberCore::ServiceWorkerIdentifier m_serviceWorkerIdentifier;
+    CyberCore::FetchIdentifier m_fetchIdentifier;
     std::optional<BlobLoader> m_blobLoader;
     bool m_needsContinueDidReceiveResponseMessage { false };
     bool m_waitingForContinueDidReceiveResponseMessage { false };
-    std::variant<std::nullptr_t, WebCore::SharedBufferBuilder, Ref<WebCore::FormData>, UniqueRef<WebCore::ResourceError>> m_responseData;
-    WebCore::NetworkLoadMetrics m_networkLoadMetrics;
+    std::variant<std::nullptr_t, CyberCore::SharedBufferBuilder, Ref<CyberCore::FormData>, UniqueRef<CyberCore::ResourceError>> m_responseData;
+    CyberCore::NetworkLoadMetrics m_networkLoadMetrics;
     bool m_didFinish { false };
     bool m_isDownload { false };
-    RefPtr<WebCore::FetchEvent> m_event;
+    RefPtr<CyberCore::FetchEvent> m_event;
     Function<void()> m_cancelledCallback;
-    std::optional<WebCore::ResourceResponse::CrossThreadData> m_preloadResponse;
-    WebCore::ResourceError m_preloadError;
+    std::optional<CyberCore::ResourceResponse::CrossThreadData> m_preloadResponse;
+    CyberCore::ResourceError m_preloadError;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(SERVICE_WORKER)

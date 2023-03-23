@@ -42,7 +42,7 @@ TEST(WebKit, SystemHasBattery)
         return [webView stringByEvaluatingJavaScript:@"window.internals.systemHasBattery()"].boolValue;
     };
 
-    ASSERT_TRUE(hasBattery() == WebCore::systemHasBattery());
+    ASSERT_TRUE(hasBattery() == CyberCore::systemHasBattery());
 }
 
 #endif // WK_HAVE_C_SPI

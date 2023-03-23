@@ -32,7 +32,7 @@
 
 #if USE(APPKIT)
 
-namespace WebCore {
+namespace CyberCore {
 
 Color semanticColorFromNSColor(NSColor *);
 

@@ -27,10 +27,10 @@
 
 #include "EventTarget.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class XMLHttpRequestEventTarget : public EventTarget {
 };
 static_assert(sizeof(XMLHttpRequestEventTarget) == sizeof(EventTarget));
 
-} // namespace WebCore
+} // namespace CyberCore

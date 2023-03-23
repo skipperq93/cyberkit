@@ -30,7 +30,7 @@
 #import "PlatformUtilities.h"
 #import "Test.h"
 #import "TestWKWebView.h"
-#import "WebCoreTestSupport.h"
+#import "CyberCoreTestSupport.h"
 #import <CyberScriptCore/JSContext.h>
 #import <CyberKit/WKPreferencesPrivate.h>
 #import <CyberKit/WKUIDelegatePrivate.h>

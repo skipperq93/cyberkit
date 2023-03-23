@@ -44,7 +44,7 @@ class RemoteCDMInstanceSessionProxy;
 class RemoteCDMProxy;
 struct RemoteCDMConfiguration;
 
-class RemoteCDMFactoryProxy final : public IPC::MessageReceiver, WebCore::CDMPrivateClient {
+class RemoteCDMFactoryProxy final : public IPC::MessageReceiver, CyberCore::CDMPrivateClient {
     WTF_MAKE_FAST_ALLOCATED;
 public:
     RemoteCDMFactoryProxy(GPUConnectionToWebProcess&);

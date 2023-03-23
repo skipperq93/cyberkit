@@ -44,7 +44,7 @@
 #include "WebKitMediaSourceGStreamer.h"
 #include <wtf/LoggerHelper.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AppendPipeline;
 class MediaSourcePrivateGStreamer;

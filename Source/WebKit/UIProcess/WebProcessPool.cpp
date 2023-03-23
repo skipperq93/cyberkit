@@ -66,7 +66,7 @@
 #include "WebBackForwardList.h"
 #include "WebBackForwardListItem.h"
 #include "WebContextSupplement.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebGeolocationManagerProxy.h"
 #include "WebInspectorUtilities.h"
 #include "WebKit2Initialize.h"
@@ -149,7 +149,7 @@
 #define WEBPROCESSPOOL_RELEASE_LOG_ERROR(channel, fmt, ...) RELEASE_LOG_ERROR(channel, "%p - WebProcessPool::" fmt, this, ##__VA_ARGS__)
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 DEFINE_DEBUG_ONLY_GLOBAL(WTF::RefCountedLeakCounter, processPoolCounter, ("WebProcessPool"));
 
@@ -223,16 +223,16 @@ WebProcessPool::WebProcessPool(API::ProcessPoolConfiguration& configuration)
 {
     if (!s_didGlobalStaticInitialization) {
         WTF::setProcessPrivileges(allPrivileges());
-        WebCore::NetworkStorageSession::permitProcessToUseCookieAPI(true);
-        Process::setIdentifier(WebCore::ProcessIdentifier::generate());
+        CyberCore::NetworkStorageSession::permitProcessToUseCookieAPI(true);
+        Process::setIdentifier(CyberCore::ProcessIdentifier::generate());
 #if PLATFORM(COCOA)
         determineTrackingPreventionState();
 
         // This can be removed once Safari calls _setLinkedOnOrAfterEverything everywhere that WebKit deploys.
 #if PLATFORM(IOS_FAMILY)
-        bool isSafari = WebCore::IOSApplication::isMobileSafari();
+        bool isSafari = CyberCore::IOSApplication::isMobileSafari();
 #elif PLATFORM(MAC)
-        bool isSafari = WebCore::MacApplication::isSafari();
+        bool isSafari = CyberCore::MacApplication::isSafari();
 #endif
         if (isSafari)
             enableAllSDKAlignedBehaviors();
@@ -277,7 +277,7 @@ WebProcessPool::WebProcessPool(API::ProcessPoolConfiguration& configuration)
     updateBackForwardCacheCapacity();
 
 #if PLATFORM(IOS)
-    if (WebCore::IOSApplication::isLutron() && !linkedOnOrAfterSDKWithBehavior(SDKAlignedBehavior::SharedNetworkProcess)) {
+    if (CyberCore::IOSApplication::isLutron() && !linkedOnOrAfterSDKWithBehavior(SDKAlignedBehavior::SharedNetworkProcess)) {
         callOnMainRunLoop([] {
             if (WebsiteDataStore::defaultDataStoreExists())
                 WebsiteDataStore::defaultDataStore()->terminateNetworkProcess();
@@ -508,7 +508,7 @@ void WebProcessPool::createGPUProcessConnection(WebProcessProxy& webProcessProxy
 
 bool WebProcessPool::s_useSeparateServiceWorkerProcess = false;
 
-void WebProcessPool::establishRemoteWorkerContextConnectionToNetworkProcess(RemoteWorkerType workerType, RegistrableDomain&& registrableDomain, std::optional<WebCore::ProcessIdentifier> requestingProcessIdentifier, std::optional<ScriptExecutionContextIdentifier> serviceWorkerPageIdentifier, PAL::SessionID sessionID, CompletionHandler<void(WebCore::ProcessIdentifier)>&& completionHandler)
+void WebProcessPool::establishRemoteWorkerContextConnectionToNetworkProcess(RemoteWorkerType workerType, RegistrableDomain&& registrableDomain, std::optional<CyberCore::ProcessIdentifier> requestingProcessIdentifier, std::optional<ScriptExecutionContextIdentifier> serviceWorkerPageIdentifier, PAL::SessionID sessionID, CompletionHandler<void(CyberCore::ProcessIdentifier)>&& completionHandler)
 {
     auto* websiteDataStore = WebsiteDataStore::existingDataStoreForSessionID(sessionID);
     if (!websiteDataStore)
@@ -1130,7 +1130,7 @@ Ref<WebPageProxy> WebProcessPool::createWebPage(PageClient& pageClient, Ref<API:
 
     bool enableProcessSwapOnCrossSiteNavigation = page->preferences().processSwapOnCrossSiteNavigationEnabled();
 #if PLATFORM(IOS_FAMILY)
-    if (WebCore::IOSApplication::isFirefox() && !linkedOnOrAfterSDKWithBehavior(SDKAlignedBehavior::ProcessSwapOnCrossSiteNavigation))
+    if (CyberCore::IOSApplication::isFirefox() && !linkedOnOrAfterSDKWithBehavior(SDKAlignedBehavior::ProcessSwapOnCrossSiteNavigation))
         enableProcessSwapOnCrossSiteNavigation = false;
 #endif
 
@@ -1616,7 +1616,7 @@ void WebProcessPool::stoppedUsingGamepads(IPC::Connection& connection, Completio
     processStoppedUsingGamepads(*proxy);
 }
 
-void WebProcessPool::playGamepadEffect(unsigned gamepadIndex, const String& gamepadID, WebCore::GamepadHapticEffectType type, const WebCore::GamepadEffectParameters& parameters, CompletionHandler<void(bool)>&& completionHandler)
+void WebProcessPool::playGamepadEffect(unsigned gamepadIndex, const String& gamepadID, CyberCore::GamepadHapticEffectType type, const CyberCore::GamepadEffectParameters& parameters, CompletionHandler<void(bool)>&& completionHandler)
 {
     GamepadProvider::singleton().playEffect(gamepadIndex, gamepadID, type, parameters, WTFMove(completionHandler));
 }
@@ -1741,7 +1741,7 @@ void WebProcessPool::reportWebContentCPUTime(Seconds cpuTime, uint64_t activityS
 {
 #if PLATFORM(MAC)
     if (m_perActivityStateCPUUsageSampler)
-        m_perActivityStateCPUUsageSampler->reportWebContentCPUTime(cpuTime, static_cast<WebCore::ActivityStateForCPUSampling>(activityState));
+        m_perActivityStateCPUUsageSampler->reportWebContentCPUTime(cpuTime, static_cast<CyberCore::ActivityStateForCPUSampling>(activityState));
 #else
     UNUSED_PARAM(cpuTime);
     UNUSED_PARAM(activityState);
@@ -1790,7 +1790,7 @@ bool WebProcessPool::isServiceWorkerPageID(WebPageProxyIdentifier pageID) const
 
 void WebProcessPool::addProcessToOriginCacheSet(WebProcessProxy& process, const URL& url)
 {
-    auto registrableDomain = WebCore::RegistrableDomain { url };
+    auto registrableDomain = CyberCore::RegistrableDomain { url };
     auto result = m_swappedProcessesPerRegistrableDomain.add(registrableDomain, &process);
     if (!result.isNewEntry)
         result.iterator->value = &process;
@@ -1848,7 +1848,7 @@ void WebProcessPool::processForNavigation(WebPageProxy& page, const API::Navigat
 void WebProcessPool::processForNavigationInternal(WebPageProxy& page, const API::Navigation& navigation, Ref<WebProcessProxy>&& sourceProcess, const URL& pageSourceURL, ProcessSwapRequestedByClient processSwapRequestedByClient, WebProcessProxy::LockdownMode lockdownMode, const FrameInfoData& frameInfo, Ref<WebsiteDataStore>&& dataStore, CompletionHandler<void(Ref<WebProcessProxy>&&, SuspendedPageProxy*, const String&)>&& completionHandler)
 {
     auto& targetURL = navigation.currentRequest().url();
-    auto targetRegistrableDomain = WebCore::RegistrableDomain { targetURL };
+    auto targetRegistrableDomain = CyberCore::RegistrableDomain { targetURL };
 
     auto createNewProcess = [this, protectedThis = Ref { *this }, targetRegistrableDomain, dataStore, lockdownMode] () -> Ref<WebProcessProxy> {
         return processForRegistrableDomain(dataStore, targetRegistrableDomain, lockdownMode);
@@ -2021,14 +2021,14 @@ void WebProcessPool::sendDisplayConfigurationChangedMessageForTesting()
 #endif
 }
 
-void WebProcessPool::didCollectPrewarmInformation(const WebCore::RegistrableDomain& registrableDomain, const WebCore::PrewarmInformation& prewarmInformation)
+void WebProcessPool::didCollectPrewarmInformation(const CyberCore::RegistrableDomain& registrableDomain, const CyberCore::PrewarmInformation& prewarmInformation)
 {
     static const size_t maximumSizeToPreventUnlimitedGrowth = 100;
     if (m_prewarmInformationPerRegistrableDomain.size() == maximumSizeToPreventUnlimitedGrowth)
         m_prewarmInformationPerRegistrableDomain.remove(m_prewarmInformationPerRegistrableDomain.random());
 
     auto& value = m_prewarmInformationPerRegistrableDomain.ensure(registrableDomain, [] {
-        return makeUnique<WebCore::PrewarmInformation>();
+        return makeUnique<CyberCore::PrewarmInformation>();
     }).iterator->value;
 
     *value = prewarmInformation;
@@ -2048,7 +2048,7 @@ void WebProcessPool::clearCurrentModifierStateForTesting()
 }
 
 #if ENABLE(TRACKING_PREVENTION)
-void WebProcessPool::setDomainsWithUserInteraction(HashSet<WebCore::RegistrableDomain>&& domains)
+void WebProcessPool::setDomainsWithUserInteraction(HashSet<CyberCore::RegistrableDomain>&& domains)
 {
     sendToAllProcesses(Messages::WebProcess::SetDomainsWithUserInteraction(domains));
     m_domainsWithUserInteraction = WTFMove(domains);

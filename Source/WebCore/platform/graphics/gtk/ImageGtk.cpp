@@ -32,7 +32,7 @@
 #include <gdk/gdk.h>
 #include <wtf/glib/GUniquePtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static Ref<Image> loadImageFromGResource(const char* iconName)
 {

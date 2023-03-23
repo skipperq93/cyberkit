@@ -24,7 +24,7 @@
 #include "FEConvolveMatrix.h"
 #include "SVGFilterPrimitiveStandardAttributes.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 template<>
 struct SVGPropertyTraits<EdgeModeType> {
@@ -120,4 +120,4 @@ private:
     Ref<SVGAnimatedBoolean> m_preserveAlpha { SVGAnimatedBoolean::create(this) };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

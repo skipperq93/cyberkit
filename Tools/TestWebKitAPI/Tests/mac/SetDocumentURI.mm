@@ -47,7 +47,7 @@ static bool didFinishLoad;
 
 namespace TestWebKitAPI {
 
-TEST(WebKitLegacy, SetDocumentURITestFile)
+TEST(CyberKitLegacy, SetDocumentURITestFile)
 {
     RetainPtr<WebView> webView = adoptNS([[WebView alloc] initWithFrame:NSMakeRect(0, 0, 120, 200) frameName:nil groupName:nil]);
     RetainPtr<SetDocumentURITest> testController = adoptNS([SetDocumentURITest new]);
@@ -64,7 +64,7 @@ TEST(WebKitLegacy, SetDocumentURITestFile)
     EXPECT_WK_STREQ(@"file:///test", [document baseURI]);
 }
 
-TEST(WebKitLegacy, SetDocumentURITestURL)
+TEST(CyberKitLegacy, SetDocumentURITestURL)
 {
     RetainPtr<WebView> webView = adoptNS([[WebView alloc] initWithFrame:NSMakeRect(0, 0, 120, 200) frameName:nil groupName:nil]);
     RetainPtr<SetDocumentURITest> testController = adoptNS([SetDocumentURITest new]);
@@ -84,7 +84,7 @@ TEST(WebKitLegacy, SetDocumentURITestURL)
     EXPECT_WK_STREQ(@"http://example.com/relativeURL.html", result);
 }
 
-TEST(WebKitLegacy, SetDocumentURITestString)
+TEST(CyberKitLegacy, SetDocumentURITestString)
 {
     RetainPtr<WebView> webView = adoptNS([[WebView alloc] initWithFrame:NSMakeRect(0, 0, 120, 200) frameName:nil groupName:nil]);
     RetainPtr<SetDocumentURITest> testController = adoptNS([SetDocumentURITest new]);
@@ -100,7 +100,7 @@ TEST(WebKitLegacy, SetDocumentURITestString)
     EXPECT_WK_STREQ(@"about:blank", [document baseURI]);
 }
 
-TEST(WebKitLegacy, SetDocumentURITestNull)
+TEST(CyberKitLegacy, SetDocumentURITestNull)
 {
     RetainPtr<WebView> webView = adoptNS([[WebView alloc] initWithFrame:NSMakeRect(0, 0, 120, 200) frameName:nil groupName:nil]);
     RetainPtr<SetDocumentURITest> testController = adoptNS([SetDocumentURITest new]);

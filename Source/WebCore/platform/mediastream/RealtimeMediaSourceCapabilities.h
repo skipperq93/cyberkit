@@ -34,7 +34,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/AtomString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CapabilityValueOrRange {
 public:
@@ -240,18 +240,18 @@ private:
     RealtimeMediaSourceSupportedConstraints m_supportedConstraints;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::CapabilityValueOrRange::Type> {
+template<> struct EnumTraits<CyberCore::CapabilityValueOrRange::Type> {
     using values = EnumValues<
-        WebCore::CapabilityValueOrRange::Type,
-        WebCore::CapabilityValueOrRange::Type::Undefined,
-        WebCore::CapabilityValueOrRange::Type::Double,
-        WebCore::CapabilityValueOrRange::Type::ULong,
-        WebCore::CapabilityValueOrRange::Type::DoubleRange,
-        WebCore::CapabilityValueOrRange::Type::ULongRange
+        CyberCore::CapabilityValueOrRange::Type,
+        CyberCore::CapabilityValueOrRange::Type::Undefined,
+        CyberCore::CapabilityValueOrRange::Type::Double,
+        CyberCore::CapabilityValueOrRange::Type::ULong,
+        CyberCore::CapabilityValueOrRange::Type::DoubleRange,
+        CyberCore::CapabilityValueOrRange::Type::ULongRange
     >;
 };
 

@@ -82,12 +82,12 @@
     [super dealloc];
 }
 
-- (void)_continueWithPolicy:(WebCore::PolicyAction)policy
+- (void)_continueWithPolicy:(CyberCore::PolicyAction)policy
 {
     if (_contextInfo)
-        wtfObjCMsgSend<void>(_resultObject, _resultSelector, (policy == WebCore::PolicyAction::Use), _contextInfo);
+        wtfObjCMsgSend<void>(_resultObject, _resultSelector, (policy == CyberCore::PolicyAction::Use), _contextInfo);
     else     
-        wtfObjCMsgSend<void>(_resultObject, _resultSelector, (policy == WebCore::PolicyAction::Use));
+        wtfObjCMsgSend<void>(_resultObject, _resultSelector, (policy == CyberCore::PolicyAction::Use));
 
     // this will call indirectly call cancel
     [_controller _webPluginContainerCancelCheckIfAllowedToLoadRequest:self];
@@ -98,7 +98,7 @@
     auto* coreFrame = core([_controller webFrame]);
     ASSERT(coreFrame);
     if (!coreFrame->document()->securityOrigin().canDisplay([_request URL])) {
-        [self _continueWithPolicy:WebCore::PolicyAction::Ignore];
+        [self _continueWithPolicy:CyberCore::PolicyAction::Ignore];
         return YES;
     }
 

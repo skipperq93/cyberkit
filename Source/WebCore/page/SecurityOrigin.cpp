@@ -48,7 +48,7 @@
 #include <wtf/cocoa/RuntimeApplicationChecksCocoa.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 constexpr unsigned maximumURLSize = 0x04000000;
 
@@ -563,7 +563,7 @@ Ref<SecurityOrigin> SecurityOrigin::create(SecurityOriginData&& data)
     return adoptRef(*new SecurityOrigin(WTFMove(data)));
 }
 
-Ref<SecurityOrigin> SecurityOrigin::create(WebCore::SecurityOriginData&& data, String&& domain, String&& filePath, bool universalAccess, bool domainWasSetInDOM, bool canLoadLocalResources, bool enforcesFilePathSeparation, bool needsStorageAccessFromFileURLsQuirk, std::optional<bool> isPotentiallyTrustworthy, bool isLocal)
+Ref<SecurityOrigin> SecurityOrigin::create(CyberCore::SecurityOriginData&& data, String&& domain, String&& filePath, bool universalAccess, bool domainWasSetInDOM, bool canLoadLocalResources, bool enforcesFilePathSeparation, bool needsStorageAccessFromFileURLsQuirk, std::optional<bool> isPotentiallyTrustworthy, bool isLocal)
 {
     auto origin = adoptRef(*new SecurityOrigin);
     origin->m_data = WTFMove(data);
@@ -623,4 +623,4 @@ bool SecurityOrigin::isLocalHostOrLoopbackIPAddress(StringView host)
     return false;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

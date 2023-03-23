@@ -39,7 +39,7 @@
 #include <wtf/glib/GRefPtr.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class FileMonitor {
     WTF_MAKE_FAST_ALLOCATED;
@@ -63,4 +63,4 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore

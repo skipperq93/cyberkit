@@ -21,7 +21,7 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 [Nested] struct WebKit::WebsiteData::Entry {
-    WebCore::SecurityOriginData origin;
+    CyberCore::SecurityOriginData origin;
     [Validator='typeAsOptionSet->hasExactlyOneBitSet()'] OptionSet<WebKit::WebsiteDataType> typeAsOptionSet();
     uint64_t size;
 };
@@ -31,6 +31,6 @@ struct WebKit::WebsiteData {
     HashSet<String> hostNamesWithCookies;
     HashSet<String> hostNamesWithHSTSCache;
 #if ENABLE(TRACKING_PREVENTION)
-    HashSet<WebCore::RegistrableDomain> registrableDomainsWithResourceLoadStatistics;
+    HashSet<CyberCore::RegistrableDomain> registrableDomainsWithResourceLoadStatistics;
 #endif
 };

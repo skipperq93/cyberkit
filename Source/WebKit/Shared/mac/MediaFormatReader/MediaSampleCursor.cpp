@@ -45,7 +45,7 @@ WTF_DECLARE_CF_TYPE_TRAIT(MTPluginSampleCursor);
 
 namespace WebKit {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 static MediaTime assumedDecodeTime(const MediaTime& presentationTime, DecodeOrderSampleMap& map)
 {

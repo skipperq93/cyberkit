@@ -22,7 +22,7 @@
 #include "Path.h"
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGSubpathData {
 public:
@@ -86,4 +86,4 @@ private:
     bool m_pathIsZeroLength { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

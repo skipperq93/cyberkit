@@ -30,7 +30,7 @@
 #include "FloatRoundedRect.h"
 #include "GraphicsContext.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 ControlPart::ControlPart(StyleAppearance type)
     : m_type(type)
@@ -85,4 +85,4 @@ void ControlPart::draw(GraphicsContext& context, const FloatRoundedRect& borderR
     platformControl->setFocusRingClipRect({ });
 }
 
-} // namespace WebCore
+} // namespace CyberCore

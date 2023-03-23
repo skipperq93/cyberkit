@@ -32,7 +32,7 @@
 #include <GL/glx.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 #if !defined(PFNGLXSWAPINTERVALSGIPROC)
 typedef int (*PFNGLXSWAPINTERVALSGIPROC) (int);
@@ -405,6 +405,6 @@ GCGLContext GLContextGLX::platformContext()
     return m_context.get();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(GLX)

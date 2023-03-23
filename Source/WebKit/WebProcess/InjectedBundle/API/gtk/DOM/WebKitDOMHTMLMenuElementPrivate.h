@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -17,16 +17,16 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitDOMHTMLMenuElementPrivate_h
-#define WebKitDOMHTMLMenuElementPrivate_h
+#ifndef CyberKitDOMHTMLMenuElementPrivate_h
+#define CyberKitDOMHTMLMenuElementPrivate_h
 
 #include <CyberCore/HTMLMenuElement.h>
-#include <webkitdom/WebKitDOMHTMLMenuElement.h>
+#include <webkitdom/CyberKitDOMHTMLMenuElement.h>
 
-namespace WebKit {
-WebKitDOMHTMLMenuElement* wrapHTMLMenuElement(WebCore::HTMLMenuElement*);
-WebKitDOMHTMLMenuElement* kit(WebCore::HTMLMenuElement*);
-WebCore::HTMLMenuElement* core(WebKitDOMHTMLMenuElement*);
-} // namespace WebKit
+namespace CyberKit {
+CyberKitDOMHTMLMenuElement* wrapHTMLMenuElement(CyberCore::HTMLMenuElement*);
+CyberKitDOMHTMLMenuElement* kit(CyberCore::HTMLMenuElement*);
+CyberCore::HTMLMenuElement* core(CyberKitDOMHTMLMenuElement*);
+} // namespace CyberKit
 
-#endif /* WebKitDOMHTMLMenuElementPrivate_h */
+#endif /* CyberKitDOMHTMLMenuElementPrivate_h */

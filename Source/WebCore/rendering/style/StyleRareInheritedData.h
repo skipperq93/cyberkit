@@ -46,7 +46,7 @@
 #include "StyleColorScheme.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class CursorList;
 class QuotesData;
@@ -217,4 +217,4 @@ private:
     StyleRareInheritedData(const StyleRareInheritedData&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

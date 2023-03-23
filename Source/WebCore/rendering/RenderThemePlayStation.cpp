@@ -29,7 +29,7 @@
 
 #include "NotImplemented.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 RenderTheme& RenderTheme::singleton()
 {
@@ -37,4 +37,4 @@ RenderTheme& RenderTheme::singleton()
     return theme;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

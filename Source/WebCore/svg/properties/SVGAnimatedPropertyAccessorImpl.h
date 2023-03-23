@@ -30,7 +30,7 @@
 #include "SVGAnimatedPropertyImpl.h"
 #include "SVGNames.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename OwnerType>
 class SVGAnimatedAngleAccessor final : public SVGAnimatedPropertyAccessor<OwnerType, SVGAnimatedAngle> {

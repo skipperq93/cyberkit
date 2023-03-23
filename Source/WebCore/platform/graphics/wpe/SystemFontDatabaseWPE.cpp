@@ -31,7 +31,7 @@
 #include "WebKitFontFamilyNames.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 SystemFontDatabase& SystemFontDatabase::singleton()
 {
@@ -49,4 +49,4 @@ void SystemFontDatabase::platformInvalidate()
 {
 }
 
-} // namespace WebCore
+} // namespace CyberCore

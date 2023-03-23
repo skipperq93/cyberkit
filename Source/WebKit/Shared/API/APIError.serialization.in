@@ -23,5 +23,5 @@
 headers: "APIError.h"
 
 [RefCounted, CustomHeader=True] class API::Error {
-    WebCore::ResourceError platformError()
+    CyberCore::ResourceError platformError()
 };

@@ -45,7 +45,7 @@ static bool trustsServerForLocalTests(NSURLAuthenticationChallenge *challenge)
         || !allowedLocalTestServerTrust())
         return false;
 
-    return WebCore::certificatesMatch(allowedLocalTestServerTrust().get(), challenge.protectionSpace.serverTrust);
+    return CyberCore::certificatesMatch(allowedLocalTestServerTrust().get(), challenge.protectionSpace.serverTrust);
 }
 
 @interface WKNetworkSessionDelegateAllowingOnlyNonRedirectedJSON : NSObject <NSURLSessionDataDelegate>
@@ -60,7 +60,7 @@ static bool trustsServerForLocalTests(NSURLAuthenticationChallenge *challenge)
 
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveResponse:(NSURLResponse *)response completionHandler:(void (^)(NSURLSessionResponseDisposition disposition))completionHandler
 {
-    if (WebCore::MIMETypeRegistry::isSupportedJSONMIMEType(response.MIMEType))
+    if (CyberCore::MIMETypeRegistry::isSupportedJSONMIMEType(response.MIMEType))
         return completionHandler(NSURLSessionResponseAllow);
     completionHandler(NSURLSessionResponseCancel);
 }
@@ -100,12 +100,12 @@ static NSURLSession *statelessSessionWithoutRedirects()
     return session.get().get();
 }
 
-void NetworkLoader::allowTLSCertificateChainForLocalPCMTesting(const WebCore::CertificateInfo& certificateInfo)
+void NetworkLoader::allowTLSCertificateChainForLocalPCMTesting(const CyberCore::CertificateInfo& certificateInfo)
 {
     allowedLocalTestServerTrust() = certificateInfo.trust();
 }
 
-void NetworkLoader::start(URL&& url, RefPtr<JSON::Object>&& jsonPayload, WebCore::PrivateClickMeasurement::PcmDataCarried pcmDataCarried, Callback&& callback)
+void NetworkLoader::start(URL&& url, RefPtr<JSON::Object>&& jsonPayload, CyberCore::PrivateClickMeasurement::PcmDataCarried pcmDataCarried, Callback&& callback)
 {
     // Prevent contacting non-local servers when a test certificate chain is used for 127.0.0.1.
     // FIXME: Use a proxy server to have tests cover the reports sent to the destination, too.
@@ -113,10 +113,10 @@ void NetworkLoader::start(URL&& url, RefPtr<JSON::Object>&& jsonPayload, WebCore
         return callback({ }, { });
 
     auto request = adoptNS([[NSMutableURLRequest alloc] initWithURL:url]);
-    [request setValue:WebCore::HTTPHeaderValues::maxAge0() forHTTPHeaderField:@"Cache-Control"];
+    [request setValue:CyberCore::HTTPHeaderValues::maxAge0() forHTTPHeaderField:@"Cache-Control"];
     if (jsonPayload) {
         request.get().HTTPMethod = @"POST";
-        [request setValue:WebCore::HTTPHeaderValues::applicationJSONContentType() forHTTPHeaderField:@"Content-Type"];
+        [request setValue:CyberCore::HTTPHeaderValues::applicationJSONContentType() forHTTPHeaderField:@"Content-Type"];
         auto body = jsonPayload->toJSONString().utf8();
         request.get().HTTPBody = adoptNS([[NSData alloc] initWithBytes:body.data() length:body.length()]).get();
     }

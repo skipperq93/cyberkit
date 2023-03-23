@@ -35,7 +35,7 @@
 #include <wtf/JSONValues.h>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 FloatSize FloatSize::constrainedBetween(const FloatSize& min, const FloatSize& max) const
 {

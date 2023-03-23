@@ -38,7 +38,7 @@ namespace WTF {
 class TextStream;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class Page;
 class ScrollingEffectsController;
@@ -120,4 +120,4 @@ private:
 
 WTF::TextStream& operator<<(WTF::TextStream&, const ScrollSnapAnimatorState&);
 
-} // namespace WebCore
+} // namespace CyberCore

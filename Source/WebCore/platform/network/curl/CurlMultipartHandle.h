@@ -30,7 +30,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CurlMultipartHandleClient;
 class CurlResponse;
@@ -74,4 +74,4 @@ private:
     State m_state { State::CheckBoundary };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

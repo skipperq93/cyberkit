@@ -40,10 +40,10 @@
 @end
 
 @implementation WKDOMDocumentParserYieldToken {
-    std::unique_ptr<WebCore::DocumentParserYieldToken> _token;
+    std::unique_ptr<CyberCore::DocumentParserYieldToken> _token;
 }
 
-- (instancetype)initWithDocument:(NakedRef<WebCore::Document>)document
+- (instancetype)initWithDocument:(NakedRef<CyberCore::Document>)document
 {
     if (self = [super init])
         _token = document->createParserYieldToken();
@@ -57,35 +57,35 @@
 - (WKDOMElement *)createElement:(NSString *)tagName
 {
     // FIXME: Do something about the exception.
-    auto result = downcast<WebCore::Document>(*_impl).createElementForBindings(tagName);
+    auto result = downcast<CyberCore::Document>(*_impl).createElementForBindings(tagName);
     if (result.hasException())
         return nil;
-    return WebKit::toWKDOMElement(result.releaseReturnValue().ptr());
+    return CyberKit::toWKDOMElement(result.releaseReturnValue().ptr());
 }
 
 - (WKDOMText *)createTextNode:(NSString *)data
 {
-    return WebKit::toWKDOMText(downcast<WebCore::Document>(*_impl).createTextNode(data).ptr());
+    return CyberKit::toWKDOMText(downcast<CyberCore::Document>(*_impl).createTextNode(data).ptr());
 }
 
 - (WKDOMElement *)body
 {
-    return WebKit::toWKDOMElement(downcast<WebCore::Document>(*_impl).bodyOrFrameset());
+    return CyberKit::toWKDOMElement(downcast<CyberCore::Document>(*_impl).bodyOrFrameset());
 }
 
 - (WKDOMNode *)createDocumentFragmentWithMarkupString:(NSString *)markupString baseURL:(NSURL *)baseURL
 {
-    return WebKit::toWKDOMNode(createFragmentFromMarkup(downcast<WebCore::Document>(*_impl), markupString, baseURL.absoluteString).ptr());
+    return CyberKit::toWKDOMNode(createFragmentFromMarkup(downcast<CyberCore::Document>(*_impl), markupString, baseURL.absoluteString).ptr());
 }
 
 - (WKDOMNode *)createDocumentFragmentWithText:(NSString *)text
 {
-    return WebKit::toWKDOMNode(createFragmentFromText(makeRangeSelectingNodeContents(downcast<WebCore::Document>(*_impl)), text).ptr());
+    return CyberKit::toWKDOMNode(createFragmentFromText(makeRangeSelectingNodeContents(downcast<CyberCore::Document>(*_impl)), text).ptr());
 }
 
 - (id)parserYieldToken
 {
-    return adoptNS([[WKDOMDocumentParserYieldToken alloc] initWithDocument:downcast<WebCore::Document>(*_impl)]).autorelease();
+    return adoptNS([[WKDOMDocumentParserYieldToken alloc] initWithDocument:downcast<CyberCore::Document>(*_impl)]).autorelease();
 }
 
 @end

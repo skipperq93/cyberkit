@@ -32,7 +32,7 @@
 # THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 # This script reads Version.xcconfig and returns either or both of the major and minor
-# WebKit version numbers. It is currently used by WebKit.pri.
+# CyberKit version numbers. It is currently used by CyberKit.pri.
 
 use strict;
 
@@ -44,7 +44,7 @@ my $usage = "generate-webkitversion.pl --config Configurations/Version.xcconfig 
 
 my $major_version = "";
 my $minor_version = "";
-# The appropriate Apple-maintained Version.xcconfig file for WebKit version information is in Configurations/.
+# The appropriate Apple-maintained Version.xcconfig file for CyberKit version information is in Configurations/.
 my $configFile = "./Configurations/Version.xcconfig";
 my $outputDir = "";
 
@@ -73,9 +73,9 @@ while (my $line = <INPUT>) {
 $major_version = "531" unless (length($major_version));
 $minor_version = "3" unless (length($minor_version));
 
-my $webKitVersionPath = "$outputDir/WebKitVersion.h";
+my $webKitVersionPath = "$outputDir/CyberKitVersion.h";
 
-printWebKitVersionHeaderFile("$webKitVersionPath");
+printCyberKitVersionHeaderFile("$webKitVersionPath");
 
 sub printLicenseHeader
 {
@@ -112,7 +112,7 @@ sub printLicenseHeader
 ";
 }
 
-sub printWebKitVersionHeaderFile
+sub printCyberKitVersionHeaderFile
 {
     my $headerPath = shift;
     my $F;
@@ -120,13 +120,13 @@ sub printWebKitVersionHeaderFile
 
     printLicenseHeader($F);
 
-    print F "#ifndef WebKitVersion_h\n";
-    print F "#define WebKitVersion_h\n\n";
+    print F "#ifndef CyberKitVersion_h\n";
+    print F "#define CyberKitVersion_h\n\n";
 
     print F "#define WEBKIT_MAJOR_VERSION $major_version\n";
     print F "#define WEBKIT_MINOR_VERSION $minor_version\n\n";
 
-    print F "#endif //WebKitVersion_h\n";
+    print F "#endif //CyberKitVersion_h\n";
 
     close F;
 }

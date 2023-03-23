@@ -38,7 +38,7 @@
 #endif
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 static std::optional<String> getBase64EncodedPNGData(const RetainPtr<CGImageRef>&& cgImage)
 {

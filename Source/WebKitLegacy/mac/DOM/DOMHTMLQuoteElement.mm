@@ -35,20 +35,20 @@
 #import <wtf/GetPtr.h>
 #import <wtf/URL.h>
 
-#define IMPL static_cast<WebCore::HTMLQuoteElement*>(reinterpret_cast<WebCore::Node*>(_internal))
+#define IMPL static_cast<CyberCore::HTMLQuoteElement*>(reinterpret_cast<CyberCore::Node*>(_internal))
 
 @implementation DOMHTMLQuoteElement
 
 - (NSString *)cite
 {
-    WebCore::JSMainThreadNullState state;
-    return IMPL->getURLAttribute(WebCore::HTMLNames::citeAttr).string();
+    CyberCore::JSMainThreadNullState state;
+    return IMPL->getURLAttribute(CyberCore::HTMLNames::citeAttr).string();
 }
 
 - (void)setCite:(NSString *)newCite
 {
-    WebCore::JSMainThreadNullState state;
-    IMPL->setAttributeWithoutSynchronization(WebCore::HTMLNames::citeAttr, newCite);
+    CyberCore::JSMainThreadNullState state;
+    IMPL->setAttributeWithoutSynchronization(CyberCore::HTMLNames::citeAttr, newCite);
 }
 
 @end

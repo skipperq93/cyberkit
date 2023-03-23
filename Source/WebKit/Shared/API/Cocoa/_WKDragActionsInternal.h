@@ -28,34 +28,34 @@
 
 namespace WebKit {
 
-inline OptionSet<WebCore::DragDestinationAction> coreDragDestinationActionMask(WKDragDestinationAction action)
+inline OptionSet<CyberCore::DragDestinationAction> coreDragDestinationActionMask(WKDragDestinationAction action)
 {
-    OptionSet<WebCore::DragDestinationAction> result;
+    OptionSet<CyberCore::DragDestinationAction> result;
     if (action & WKDragDestinationActionDHTML)
-        result.add(WebCore::DragDestinationAction::DHTML);
+        result.add(CyberCore::DragDestinationAction::DHTML);
     if (action & WKDragDestinationActionEdit)
-        result.add(WebCore::DragDestinationAction::Edit);
+        result.add(CyberCore::DragDestinationAction::Edit);
     if (action & WKDragDestinationActionLoad)
-        result.add(WebCore::DragDestinationAction::Load);
+        result.add(CyberCore::DragDestinationAction::Load);
     return result;
 }
 
 #if USE(APPKIT)
-inline OptionSet<WebCore::DragOperation> coreDragOperationMask(NSDragOperation operation)
+inline OptionSet<CyberCore::DragOperation> coreDragOperationMask(NSDragOperation operation)
 {
-    OptionSet<WebCore::DragOperation> result;
+    OptionSet<CyberCore::DragOperation> result;
     if (operation & NSDragOperationCopy)
-        result.add(WebCore::DragOperation::Copy);
+        result.add(CyberCore::DragOperation::Copy);
     if (operation & NSDragOperationLink)
-        result.add(WebCore::DragOperation::Link);
+        result.add(CyberCore::DragOperation::Link);
     if (operation & NSDragOperationGeneric)
-        result.add(WebCore::DragOperation::Generic);
+        result.add(CyberCore::DragOperation::Generic);
     if (operation & NSDragOperationPrivate)
-        result.add(WebCore::DragOperation::Private);
+        result.add(CyberCore::DragOperation::Private);
     if (operation & NSDragOperationMove)
-        result.add(WebCore::DragOperation::Move);
+        result.add(CyberCore::DragOperation::Move);
     if (operation & NSDragOperationDelete)
-        result.add(WebCore::DragOperation::Delete);
+        result.add(CyberCore::DragOperation::Delete);
     return result;
 }
 #endif // USE(APPKIT)

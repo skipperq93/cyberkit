@@ -31,7 +31,7 @@
 
 #include "WindowMessageListener.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 typedef HashMap<HWND, WindowMessageBroadcaster*> InstanceMap;
 
@@ -123,4 +123,4 @@ LRESULT CALLBACK WindowMessageBroadcaster::SubclassedWndProc(HWND hwnd, UINT mes
     return CallWindowProc(originalWndProc, hwnd, message, wParam, lParam);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

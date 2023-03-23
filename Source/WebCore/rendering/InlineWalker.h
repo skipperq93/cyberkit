@@ -28,7 +28,7 @@
 #include "RenderDescendantIterator.h"
 #include "RenderInline.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class InlineWalker {
 public:
@@ -53,4 +53,4 @@ private:
     RenderDescendantIterator<RenderObject> m_iterator;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

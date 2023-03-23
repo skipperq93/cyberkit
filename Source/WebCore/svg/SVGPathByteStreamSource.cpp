@@ -21,7 +21,7 @@
 #include "SVGPathByteStreamSource.h"
 #include <wtf/text/StringConcatenateNumbers.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 SVGPathByteStreamSource::SVGPathByteStreamSource(const SVGPathByteStream& stream)
 {

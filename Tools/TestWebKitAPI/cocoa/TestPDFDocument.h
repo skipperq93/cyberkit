@@ -33,7 +33,7 @@
 #import <wtf/Vector.h>
 #import <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 class Color;
 }
 
@@ -63,7 +63,7 @@ public:
     size_t characterIndexAtPoint(CGPoint) const;
     CGRect bounds() const;
 
-    WebCore::Color colorAtPoint(int x, int y) const;
+    CyberCore::Color colorAtPoint(int x, int y) const;
     
 private:
     TestPDFPage(PDFPage *);

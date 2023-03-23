@@ -27,7 +27,7 @@
 
 #include "CSSPropertyNames.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSValue;
 struct CSSRegisteredCustomProperty;

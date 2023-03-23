@@ -36,7 +36,7 @@
 #include "VideoDecoderGStreamer.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 VideoDecoder::CreatorFunction VideoDecoder::s_customCreator = nullptr;
 

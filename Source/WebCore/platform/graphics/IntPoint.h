@@ -51,7 +51,7 @@ namespace WTF {
 class TextStream;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class FloatPoint;
 class IntRect;
@@ -200,9 +200,9 @@ inline int IntPoint::distanceSquaredToPoint(const IntPoint& point) const
 
 WEBCORE_EXPORT WTF::TextStream& operator<<(WTF::TextStream&, const IntPoint&);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
-template<> struct DefaultHash<WebCore::IntPoint>;
-template<> struct HashTraits<WebCore::IntPoint>;
+template<> struct DefaultHash<CyberCore::IntPoint>;
+template<> struct HashTraits<CyberCore::IntPoint>;
 }

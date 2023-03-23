@@ -27,7 +27,7 @@
 
 #include "PageOverlay.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class MockPageOverlay : public RefCounted<MockPageOverlay> {
 public:
@@ -43,4 +43,4 @@ private:
     RefPtr<PageOverlay> m_overlay;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

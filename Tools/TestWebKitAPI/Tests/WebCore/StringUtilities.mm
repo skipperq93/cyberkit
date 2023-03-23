@@ -29,11 +29,11 @@
 #import <CyberCore/StringUtilities.h>
 #import <wtf/text/WTFString.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 namespace TestWebKitAPI {
 
-TEST(WebCore, WildcardStringMatching)
+TEST(CyberCore, WildcardStringMatching)
 {
     JSC::initialize();
 

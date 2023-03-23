@@ -47,11 +47,11 @@ SOFT_LINK_OPTIONAL(libnetwork, nw_parameters_allow_sharing_port_with_listener, v
 
 namespace WebKit {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 class NetworkRTCUDPSocketCocoaConnections : public ThreadSafeRefCounted<NetworkRTCUDPSocketCocoaConnections> {
 public:
-    static Ref<NetworkRTCUDPSocketCocoaConnections> create(WebCore::LibWebRTCSocketIdentifier identifier, NetworkRTCProvider& provider, const rtc::SocketAddress& address, Ref<IPC::Connection>&& connection, String&& attributedBundleIdentifier, bool isFirstParty, bool isRelayDisabled, const WebCore::RegistrableDomain& domain) { return adoptRef(*new NetworkRTCUDPSocketCocoaConnections(identifier, provider, address, WTFMove(connection), WTFMove(attributedBundleIdentifier), isFirstParty, isRelayDisabled, domain)); }
+    static Ref<NetworkRTCUDPSocketCocoaConnections> create(CyberCore::LibWebRTCSocketIdentifier identifier, NetworkRTCProvider& provider, const rtc::SocketAddress& address, Ref<IPC::Connection>&& connection, String&& attributedBundleIdentifier, bool isFirstParty, bool isRelayDisabled, const CyberCore::RegistrableDomain& domain) { return adoptRef(*new NetworkRTCUDPSocketCocoaConnections(identifier, provider, address, WTFMove(connection), WTFMove(attributedBundleIdentifier), isFirstParty, isRelayDisabled, domain)); }
 
     void close();
     void setOption(int option, int value);
@@ -69,13 +69,13 @@ public:
     };
 
 private:
-    NetworkRTCUDPSocketCocoaConnections(WebCore::LibWebRTCSocketIdentifier, NetworkRTCProvider&, const rtc::SocketAddress&, Ref<IPC::Connection>&&, String&& attributedBundleIdentifier, bool isFirstParty, bool isRelayDisabled, const WebCore::RegistrableDomain&);
+    NetworkRTCUDPSocketCocoaConnections(CyberCore::LibWebRTCSocketIdentifier, NetworkRTCProvider&, const rtc::SocketAddress&, Ref<IPC::Connection>&&, String&& attributedBundleIdentifier, bool isFirstParty, bool isRelayDisabled, const CyberCore::RegistrableDomain&);
 
     std::pair<RetainPtr<nw_connection_t>, Ref<ConnectionStateTracker>> createNWConnection(const rtc::SocketAddress&);
     void setupNWConnection(nw_connection_t, ConnectionStateTracker&, const rtc::SocketAddress&);
     void configureParameters(nw_parameters_t, nw_ip_version_t);
 
-    WebCore::LibWebRTCSocketIdentifier m_identifier;
+    CyberCore::LibWebRTCSocketIdentifier m_identifier;
     Ref<IPC::Connection> m_connection;
     bool m_isFirstParty { false };
     bool m_isKnownTracker { false };
@@ -102,7 +102,7 @@ static dispatch_queue_t udpSocketQueue()
     return queue;
 }
 
-NetworkRTCUDPSocketCocoa::NetworkRTCUDPSocketCocoa(WebCore::LibWebRTCSocketIdentifier identifier, NetworkRTCProvider& rtcProvider, const rtc::SocketAddress& address, Ref<IPC::Connection>&& connection, String&& attributedBundleIdentifier, bool isFirstParty, bool isRelayDisabled, const WebCore::RegistrableDomain& domain)
+NetworkRTCUDPSocketCocoa::NetworkRTCUDPSocketCocoa(CyberCore::LibWebRTCSocketIdentifier identifier, NetworkRTCProvider& rtcProvider, const rtc::SocketAddress& address, Ref<IPC::Connection>&& connection, String&& attributedBundleIdentifier, bool isFirstParty, bool isRelayDisabled, const CyberCore::RegistrableDomain& domain)
     : m_rtcProvider(rtcProvider)
     , m_identifier(identifier)
     , m_connections(NetworkRTCUDPSocketCocoaConnections::create(identifier, rtcProvider, address, WTFMove(connection), WTFMove(attributedBundleIdentifier), isFirstParty, isRelayDisabled, domain))
@@ -182,7 +182,7 @@ static std::string computeHostAddress(const rtc::SocketAddress& address)
     return "0.0.0.0";
 }
 
-NetworkRTCUDPSocketCocoaConnections::NetworkRTCUDPSocketCocoaConnections(WebCore::LibWebRTCSocketIdentifier identifier, NetworkRTCProvider& rtcProvider, const rtc::SocketAddress& address, Ref<IPC::Connection>&& connection, String&& attributedBundleIdentifier, bool isFirstParty, bool isRelayDisabled, const WebCore::RegistrableDomain& domain)
+NetworkRTCUDPSocketCocoaConnections::NetworkRTCUDPSocketCocoaConnections(CyberCore::LibWebRTCSocketIdentifier identifier, NetworkRTCProvider& rtcProvider, const rtc::SocketAddress& address, Ref<IPC::Connection>&& connection, String&& attributedBundleIdentifier, bool isFirstParty, bool isRelayDisabled, const CyberCore::RegistrableDomain& domain)
     : m_identifier(identifier)
     , m_connection(WTFMove(connection))
     , m_isFirstParty(isFirstParty)

@@ -152,7 +152,7 @@ static _WKWebAuthenticationSource wkWebAuthenticationSource(WebAuthenticationSou
     return _WKWebAuthenticationSourceLocal;
 }
 
-void WebAuthenticationPanelClient::selectAssertionResponse(Vector<Ref<WebCore::AuthenticatorAssertionResponse>>&& responses, WebAuthenticationSource source, CompletionHandler<void(WebCore::AuthenticatorAssertionResponse*)>&& completionHandler) const
+void WebAuthenticationPanelClient::selectAssertionResponse(Vector<Ref<CyberCore::AuthenticatorAssertionResponse>>&& responses, WebAuthenticationSource source, CompletionHandler<void(CyberCore::AuthenticatorAssertionResponse*)>&& completionHandler) const
 {
     ASSERT(!responses.isEmpty());
 

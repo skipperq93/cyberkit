@@ -39,7 +39,7 @@
 #include "ResourceLoadInfo.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 // FIXME: Skip Content Security Policy check when associated plugin element is in a user agent shadow tree.
 // See <https://bugs.webkit.org/show_bug.cgi?id=146663>.

@@ -32,7 +32,7 @@
 #include "RemoteDisplayListRecorder.h"
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 RemoteImageBuffer::RemoteImageBuffer(const ImageBufferBackend::Parameters& parameters, const ImageBufferBackend::Info& info, std::unique_ptr<ImageBufferBackend>&& backend, RemoteRenderingBackend& remoteRenderingBackend, QualifiedRenderingResourceIdentifier renderingResourceIdentifier)
     : ImageBuffer(parameters, info, WTFMove(backend), renderingResourceIdentifier.object())
@@ -63,7 +63,7 @@ void RemoteImageBuffer::setOwnershipIdentity(const ProcessIdentity& resourceOwne
 
 RefPtr<RemoteImageBuffer> RemoteImageBuffer::createTransfer(std::unique_ptr<ImageBufferBackend>&& backend, const ImageBufferBackend::Info& backendInfo, RemoteRenderingBackend& remoteRenderingBackend, QualifiedRenderingResourceIdentifier renderingResourceIdentifier)
 {
-    auto context = WebCore::ImageBufferCreationContext { nullptr
+    auto context = CyberCore::ImageBufferCreationContext { nullptr
 #if HAVE(IOSURFACE)
         , &remoteRenderingBackend.ioSurfacePool()
 #endif

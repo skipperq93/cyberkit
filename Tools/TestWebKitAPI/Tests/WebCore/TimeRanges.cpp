@@ -31,7 +31,7 @@
 #include "config.h"
 #include <CyberCore/TimeRanges.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 namespace TestWebKitAPI {
 

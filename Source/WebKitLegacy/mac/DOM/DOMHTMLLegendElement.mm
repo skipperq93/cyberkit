@@ -37,38 +37,38 @@
 #import <wtf/GetPtr.h>
 #import <wtf/URL.h>
 
-#define IMPL static_cast<WebCore::HTMLLegendElement*>(reinterpret_cast<WebCore::Node*>(_internal))
+#define IMPL static_cast<CyberCore::HTMLLegendElement*>(reinterpret_cast<CyberCore::Node*>(_internal))
 
 @implementation DOMHTMLLegendElement
 
 - (DOMHTMLFormElement *)form
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->form()));
 }
 
 - (NSString *)align
 {
-    WebCore::JSMainThreadNullState state;
-    return IMPL->getAttribute(WebCore::HTMLNames::alignAttr);
+    CyberCore::JSMainThreadNullState state;
+    return IMPL->getAttribute(CyberCore::HTMLNames::alignAttr);
 }
 
 - (void)setAlign:(NSString *)newAlign
 {
-    WebCore::JSMainThreadNullState state;
-    IMPL->setAttributeWithoutSynchronization(WebCore::HTMLNames::alignAttr, newAlign);
+    CyberCore::JSMainThreadNullState state;
+    IMPL->setAttributeWithoutSynchronization(CyberCore::HTMLNames::alignAttr, newAlign);
 }
 
 - (NSString *)accessKey
 {
-    WebCore::JSMainThreadNullState state;
-    return IMPL->getAttribute(WebCore::HTMLNames::accesskeyAttr);
+    CyberCore::JSMainThreadNullState state;
+    return IMPL->getAttribute(CyberCore::HTMLNames::accesskeyAttr);
 }
 
 - (void)setAccessKey:(NSString *)newAccessKey
 {
-    WebCore::JSMainThreadNullState state;
-    IMPL->setAttributeWithoutSynchronization(WebCore::HTMLNames::accesskeyAttr, newAccessKey);
+    CyberCore::JSMainThreadNullState state;
+    IMPL->setAttributeWithoutSynchronization(CyberCore::HTMLNames::accesskeyAttr, newAccessKey);
 }
 
 @end

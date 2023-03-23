@@ -31,7 +31,7 @@
 #include "ContentSecurityPolicyDirectiveList.h"
 #include <wtf/URL.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 ContentSecurityPolicySourceListDirective::ContentSecurityPolicySourceListDirective(const ContentSecurityPolicyDirectiveList& directiveList, const String& name, const String& value)
     : ContentSecurityPolicyDirective(directiveList, name, value)
@@ -67,4 +67,4 @@ bool ContentSecurityPolicySourceListDirective::allowUnsafeHashes(const Vector<Co
     return m_sourceList.allowUnsafeHashes() && allows(hashes);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

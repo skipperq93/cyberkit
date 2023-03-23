@@ -28,7 +28,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ContentSecurityPolicy;
 class ResourceResponse;
@@ -123,4 +123,4 @@ std::optional<ContentSecurityPolicyResponseHeaders> ContentSecurityPolicyRespons
     return headers;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

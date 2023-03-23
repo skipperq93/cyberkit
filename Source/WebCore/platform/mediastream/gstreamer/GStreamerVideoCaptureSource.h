@@ -28,7 +28,7 @@
 #include "RealtimeVideoCaptureSource.h"
 #include "VideoFrameGStreamer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using NodeAndFD = GStreamerVideoCapturer::NodeAndFD;
 
@@ -74,6 +74,6 @@ private:
     CaptureDevice::DeviceType m_deviceType;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM) && USE(GSTREAMER)

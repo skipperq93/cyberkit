@@ -31,7 +31,7 @@
 
 struct wpe_renderer_backend_egl_target;
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPage;
 
@@ -43,7 +43,7 @@ public:
 
     uint64_t window() const override;
     uint64_t surfaceID() const override;
-    void clientResize(const WebCore::IntSize&) override;
+    void clientResize(const CyberCore::IntSize&) override;
     bool shouldPaintMirrored() const override
     {
 #if PLATFORM(GTK) && !USE(GTK4)
@@ -64,6 +64,6 @@ private:
     struct wpe_renderer_backend_egl_target* m_backend { nullptr };
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(WPE_RENDERER)

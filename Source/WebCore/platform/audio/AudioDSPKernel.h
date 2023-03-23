@@ -33,7 +33,7 @@
 
 #include "AudioDSPKernelProcessor.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // AudioDSPKernel does the processing for one channel of an AudioDSPKernelProcessor.
 
@@ -78,6 +78,6 @@ protected:
     float m_sampleRate;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // AudioDSPKernel_h

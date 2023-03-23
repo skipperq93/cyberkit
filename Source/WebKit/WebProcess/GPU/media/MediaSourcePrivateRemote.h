@@ -50,25 +50,25 @@ class MediaPlayerPrivateRemote;
 class SourceBufferPrivateRemote;
 
 class MediaSourcePrivateRemote final
-    : public WebCore::MediaSourcePrivate
+    : public CyberCore::MediaSourcePrivate
     , public IPC::MessageReceiver
 #if !RELEASE_LOG_DISABLED
     , private LoggerHelper
 #endif
 {
 public:
-    static Ref<MediaSourcePrivateRemote> create(GPUProcessConnection&, RemoteMediaSourceIdentifier, RemoteMediaPlayerMIMETypeCache&, const MediaPlayerPrivateRemote&, WebCore::MediaSourcePrivateClient&);
+    static Ref<MediaSourcePrivateRemote> create(GPUProcessConnection&, RemoteMediaSourceIdentifier, RemoteMediaPlayerMIMETypeCache&, const MediaPlayerPrivateRemote&, CyberCore::MediaSourcePrivateClient&);
     virtual ~MediaSourcePrivateRemote();
 
     // MediaSourcePrivate overrides
-    AddStatus addSourceBuffer(const WebCore::ContentType&, bool webMParserEnabled, RefPtr<WebCore::SourceBufferPrivate>&) final;
+    AddStatus addSourceBuffer(const CyberCore::ContentType&, bool webMParserEnabled, RefPtr<CyberCore::SourceBufferPrivate>&) final;
     void durationChanged(const MediaTime&) final;
-    void bufferedChanged(const WebCore::PlatformTimeRanges&) final;
+    void bufferedChanged(const CyberCore::PlatformTimeRanges&) final;
     void markEndOfStream(EndOfStreamStatus) final;
     void unmarkEndOfStream() final;
     bool isEnded() const final;
-    WebCore::MediaPlayer::ReadyState readyState() const final;
-    void setReadyState(WebCore::MediaPlayer::ReadyState) final;
+    CyberCore::MediaPlayer::ReadyState readyState() const final;
+    void setReadyState(CyberCore::MediaPlayer::ReadyState) final;
     void setIsSeeking(bool) final;
     void waitForSeekCompleted() final;
     void seekCompleted() final;
@@ -82,7 +82,7 @@ public:
 #endif
 
 private:
-    MediaSourcePrivateRemote(GPUProcessConnection&, RemoteMediaSourceIdentifier, RemoteMediaPlayerMIMETypeCache&, const MediaPlayerPrivateRemote&, WebCore::MediaSourcePrivateClient&);
+    MediaSourcePrivateRemote(GPUProcessConnection&, RemoteMediaSourceIdentifier, RemoteMediaPlayerMIMETypeCache&, const MediaPlayerPrivateRemote&, CyberCore::MediaSourcePrivateClient&);
 
     void didReceiveMessage(IPC::Connection&, IPC::Decoder&) final;
     void seekToTime(const MediaTime&);
@@ -91,7 +91,7 @@ private:
     RemoteMediaSourceIdentifier m_identifier;
     RemoteMediaPlayerMIMETypeCache& m_mimeTypeCache;
     WeakPtr<MediaPlayerPrivateRemote> m_mediaPlayerPrivate;
-    WeakPtr<WebCore::MediaSourcePrivateClient> m_client;
+    WeakPtr<CyberCore::MediaSourcePrivateClient> m_client;
     Vector<RefPtr<SourceBufferPrivateRemote>> m_sourceBuffers;
 
 #if !RELEASE_LOG_DISABLED

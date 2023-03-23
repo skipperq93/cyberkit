@@ -85,7 +85,7 @@ static void contextMenuCopyLink(WebView* webView, int itemIndex)
     }
 }
 
-TEST(WebKitLegacy, ContextMenuCanCopyURL)
+TEST(CyberKitLegacy, ContextMenuCanCopyURL)
 {
     RetainPtr<WebView> webView = adoptNS([[WebView alloc] initWithFrame:NSMakeRect(0,0,800,600) frameName:nil groupName:nil]);
     RetainPtr<NSWindow> window = adoptNS([[NSWindow alloc] initWithContentRect:NSMakeRect(100, 100, 800, 600) styleMask:NSWindowStyleMaskBorderless backing:NSBackingStoreBuffered defer:YES]);

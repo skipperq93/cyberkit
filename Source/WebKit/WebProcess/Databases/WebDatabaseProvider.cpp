@@ -33,7 +33,7 @@
 #include <wtf/NeverDestroyed.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 static HashMap<PageGroupIdentifier, WebDatabaseProvider*>& databaseProviders()
 {
@@ -66,7 +66,7 @@ WebDatabaseProvider::~WebDatabaseProvider()
     databaseProviders().remove(m_identifier);
 }
 
-WebCore::IDBClient::IDBConnectionToServer& WebDatabaseProvider::idbConnectionToServerForSession(PAL::SessionID)
+CyberCore::IDBClient::IDBConnectionToServer& WebDatabaseProvider::idbConnectionToServerForSession(PAL::SessionID)
 {
     return WebProcess::singleton().ensureNetworkProcessConnection().idbConnectionToServer().coreConnectionToServer();
 }

@@ -48,7 +48,7 @@
 #include "OpenGLShims.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 TemporaryOpenGLSetting::TemporaryOpenGLSetting(GLenum capability, GLenum scopedState)
     : m_capability(capability)

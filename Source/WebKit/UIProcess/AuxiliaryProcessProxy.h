@@ -139,7 +139,7 @@ public:
 
     void shutDownProcess();
 
-    WebCore::ProcessIdentifier coreProcessIdentifier() const { return m_processIdentifier; }
+    CyberCore::ProcessIdentifier coreProcessIdentifier() const { return m_processIdentifier; }
 
     void setProcessSuppressionEnabled(bool);
     bool platformIsBeingDebugged() const;
@@ -196,7 +196,7 @@ protected:
     bool mayBecomeUnresponsive() override;
 
 #if HAVE(AUDIO_COMPONENT_SERVER_REGISTRATIONS)
-    static RefPtr<WebCore::SharedBuffer> fetchAudioComponentServerRegistrations();
+    static RefPtr<CyberCore::SharedBuffer> fetchAudioComponentServerRegistrations();
 #endif
 
 private:
@@ -214,7 +214,7 @@ private:
     IPC::MessageReceiverMap m_messageReceiverMap;
     bool m_alwaysRunsAtBackgroundPriority { false };
     bool m_didBeginResponsivenessChecks { false };
-    WebCore::ProcessIdentifier m_processIdentifier { WebCore::ProcessIdentifier::generate() };
+    CyberCore::ProcessIdentifier m_processIdentifier { CyberCore::ProcessIdentifier::generate() };
     std::optional<UseLazyStop> m_delayedResponsivenessCheck;
     MonotonicTime m_processStart;
 #if PLATFORM(MAC) && USE(RUNNINGBOARD)

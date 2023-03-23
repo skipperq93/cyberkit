@@ -30,7 +30,7 @@
 #include <wtf/Forward.h>
 #include <wtf/Lock.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ContentType;
 class ImageDecoderGStreamerSample;
@@ -90,6 +90,6 @@ private:
     RefPtr<GStreamerElementHarness> m_decoderHarness;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(GSTREAMER) && ENABLE(VIDEO)

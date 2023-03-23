@@ -31,7 +31,7 @@
 #import <CyberScriptCore/JSVirtualMachine.h>
 #import <CyberScriptCore/JSVirtualMachineInternal.h>
 #import <UIKit/UIKit.h>
-#import <CyberCore/WebCoreThread.h>
+#import <CyberCore/CyberCoreThread.h>
 #import <stdlib.h>
 #import <wtf/RetainPtr.h>
 
@@ -124,7 +124,7 @@ namespace TestWebKitAPI {
 // 2) WebGL can be run on client main thread.
 // 3) WebGL run on client thread is not affected by client changing
 //    the EAGL/CGL context.
-TEST(WebKitLegacy, WebGLNoCrashOnOtherThreadAccess)
+TEST(CyberKitLegacy, WebGLNoCrashOnOtherThreadAccess)
 {
     const unsigned testIterations = 10;
 

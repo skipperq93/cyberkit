@@ -28,7 +28,7 @@
 
 #include <CyberCore/ChromeClient.h>
 
-namespace WebCore {
+namespace CyberCore {
 class HTMLImageElement;
 class RegistrableDomain;
 enum class CookieConsentDecisionResult : uint8_t;
@@ -37,12 +37,12 @@ enum class StorageAccessWasGranted : bool;
 struct TextRecognitionOptions;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebFrame;
 class WebPage;
 
-class WebChromeClient final : public WebCore::ChromeClient {
+class WebChromeClient final : public CyberCore::ChromeClient {
     WTF_MAKE_FAST_ALLOCATED;
 public:
     WebChromeClient(WebPage&);
@@ -52,38 +52,38 @@ public:
 private:
     ~WebChromeClient();
 
-    void didInsertMenuElement(WebCore::HTMLMenuElement&) final;
-    void didRemoveMenuElement(WebCore::HTMLMenuElement&) final;
-    void didInsertMenuItemElement(WebCore::HTMLMenuItemElement&) final;
-    void didRemoveMenuItemElement(WebCore::HTMLMenuItemElement&) final;
+    void didInsertMenuElement(CyberCore::HTMLMenuElement&) final;
+    void didRemoveMenuElement(CyberCore::HTMLMenuElement&) final;
+    void didInsertMenuItemElement(CyberCore::HTMLMenuItemElement&) final;
+    void didRemoveMenuItemElement(CyberCore::HTMLMenuItemElement&) final;
 
     void chromeDestroyed() final;
     
-    void setWindowRect(const WebCore::FloatRect&) final;
-    WebCore::FloatRect windowRect() final;
+    void setWindowRect(const CyberCore::FloatRect&) final;
+    CyberCore::FloatRect windowRect() final;
     
-    WebCore::FloatRect pageRect() final;
+    CyberCore::FloatRect pageRect() final;
     
     void focus() final;
     void unfocus() final;
     
-    bool canTakeFocus(WebCore::FocusDirection) final;
-    void takeFocus(WebCore::FocusDirection) final;
+    bool canTakeFocus(CyberCore::FocusDirection) final;
+    void takeFocus(CyberCore::FocusDirection) final;
 
-    void focusedElementChanged(WebCore::Element*) final;
-    void focusedFrameChanged(WebCore::Frame*) final;
+    void focusedElementChanged(CyberCore::Element*) final;
+    void focusedFrameChanged(CyberCore::Frame*) final;
 
     // The Frame pointer provides the ChromeClient with context about which
     // Frame wants to create the new Page.  Also, the newly created window
     // should not be shown to the user until the ChromeClient of the newly
     // created Page has its show method called.
-    WebCore::Page* createWindow(WebCore::Frame&, const WebCore::WindowFeatures&, const WebCore::NavigationAction&) final;
+    CyberCore::Page* createWindow(CyberCore::Frame&, const CyberCore::WindowFeatures&, const CyberCore::NavigationAction&) final;
     void show() final;
     
     bool canRunModal() final;
     void runModal() final;
 
-    void reportProcessCPUTime(Seconds, WebCore::ActivityStateForCPUSampling) final;
+    void reportProcessCPUTime(Seconds, CyberCore::ActivityStateForCPUSampling) final;
     
     void setToolbarsVisible(bool) final;
     bool toolbarsVisible() final;
@@ -103,66 +103,66 @@ private:
     void addMessageWithArgumentsToConsole(JSC::MessageSource, JSC::MessageLevel, const String& message, Span<const String> messageArguments, unsigned lineNumber, unsigned columnNumber, const String& sourceID) final;
     
     bool canRunBeforeUnloadConfirmPanel() final;
-    bool runBeforeUnloadConfirmPanel(const String& message, WebCore::Frame&) final;
+    bool runBeforeUnloadConfirmPanel(const String& message, CyberCore::Frame&) final;
     
     void closeWindow() final;
     
-    void runJavaScriptAlert(WebCore::Frame&, const String&) final;
-    bool runJavaScriptConfirm(WebCore::Frame&, const String&) final;
-    bool runJavaScriptPrompt(WebCore::Frame&, const String& message, const String& defaultValue, String& result) final;
+    void runJavaScriptAlert(CyberCore::Frame&, const String&) final;
+    bool runJavaScriptConfirm(CyberCore::Frame&, const String&) final;
+    bool runJavaScriptPrompt(CyberCore::Frame&, const String& message, const String& defaultValue, String& result) final;
     void setStatusbarText(const String&) final;
 
-    WebCore::KeyboardUIMode keyboardUIMode() final;
+    CyberCore::KeyboardUIMode keyboardUIMode() final;
 
     bool hoverSupportedByPrimaryPointingDevice() const final;
     bool hoverSupportedByAnyAvailablePointingDevice() const final;
-    std::optional<WebCore::PointerCharacteristics> pointerCharacteristicsOfPrimaryPointingDevice() const final;
-    OptionSet<WebCore::PointerCharacteristics> pointerCharacteristicsOfAllAvailablePointingDevices() const final;
+    std::optional<CyberCore::PointerCharacteristics> pointerCharacteristicsOfPrimaryPointingDevice() const final;
+    OptionSet<CyberCore::PointerCharacteristics> pointerCharacteristicsOfAllAvailablePointingDevices() const final;
 
     // HostWindow member function finals.
-    void invalidateRootView(const WebCore::IntRect&) final;
-    void invalidateContentsAndRootView(const WebCore::IntRect&) final;
-    void invalidateContentsForSlowScroll(const WebCore::IntRect&) final;
-    void scroll(const WebCore::IntSize& scrollDelta, const WebCore::IntRect& scrollRect, const WebCore::IntRect& clipRect) final;
+    void invalidateRootView(const CyberCore::IntRect&) final;
+    void invalidateContentsAndRootView(const CyberCore::IntRect&) final;
+    void invalidateContentsForSlowScroll(const CyberCore::IntRect&) final;
+    void scroll(const CyberCore::IntSize& scrollDelta, const CyberCore::IntRect& scrollRect, const CyberCore::IntRect& clipRect) final;
 
-    WebCore::IntPoint screenToRootView(const WebCore::IntPoint&) const final;
-    WebCore::IntRect rootViewToScreen(const WebCore::IntRect&) const final;
+    CyberCore::IntPoint screenToRootView(const CyberCore::IntPoint&) const final;
+    CyberCore::IntRect rootViewToScreen(const CyberCore::IntRect&) const final;
 
-    WebCore::IntPoint accessibilityScreenToRootView(const WebCore::IntPoint&) const final;
-    WebCore::IntRect rootViewToAccessibilityScreen(const WebCore::IntRect&) const final;
+    CyberCore::IntPoint accessibilityScreenToRootView(const CyberCore::IntPoint&) const final;
+    CyberCore::IntRect rootViewToAccessibilityScreen(const CyberCore::IntRect&) const final;
 
-    void didFinishLoadingImageForElement(WebCore::HTMLImageElement&) final;
+    void didFinishLoadingImageForElement(CyberCore::HTMLImageElement&) final;
 
     PlatformPageClient platformPageClient() const final;
-    void contentsSizeChanged(WebCore::Frame&, const WebCore::IntSize&) const final;
-    void intrinsicContentsSizeChanged(const WebCore::IntSize&) const final;
+    void contentsSizeChanged(CyberCore::Frame&, const CyberCore::IntSize&) const final;
+    void intrinsicContentsSizeChanged(const CyberCore::IntSize&) const final;
 
-    void scrollContainingScrollViewsToRevealRect(const WebCore::IntRect&) const final; // Currently only Mac has a non empty implementation.
-    void scrollMainFrameToRevealRect(const WebCore::IntRect&) const final;
+    void scrollContainingScrollViewsToRevealRect(const CyberCore::IntRect&) const final; // Currently only Mac has a non empty implementation.
+    void scrollMainFrameToRevealRect(const CyberCore::IntRect&) const final;
 
-    bool shouldUnavailablePluginMessageBeButton(WebCore::RenderEmbeddedObject::PluginUnavailabilityReason) const final;
-    void unavailablePluginButtonClicked(WebCore::Element&, WebCore::RenderEmbeddedObject::PluginUnavailabilityReason) const final;
+    bool shouldUnavailablePluginMessageBeButton(CyberCore::RenderEmbeddedObject::PluginUnavailabilityReason) const final;
+    void unavailablePluginButtonClicked(CyberCore::Element&, CyberCore::RenderEmbeddedObject::PluginUnavailabilityReason) const final;
 
-    void mouseDidMoveOverElement(const WebCore::HitTestResult&, unsigned modifierFlags, const String& toolTip, WebCore::TextDirection) final;
+    void mouseDidMoveOverElement(const CyberCore::HitTestResult&, unsigned modifierFlags, const String& toolTip, CyberCore::TextDirection) final;
 
-    void print(WebCore::Frame&, const WebCore::StringWithDirection&) final;
+    void print(CyberCore::Frame&, const CyberCore::StringWithDirection&) final;
 
-    void exceededDatabaseQuota(WebCore::Frame&, const String& databaseName, WebCore::DatabaseDetails) final { }
+    void exceededDatabaseQuota(CyberCore::Frame&, const String& databaseName, CyberCore::DatabaseDetails) final { }
 
     void reachedMaxAppCacheSize(int64_t spaceNeeded) final;
-    void reachedApplicationCacheOriginQuota(WebCore::SecurityOrigin&, int64_t spaceNeeded) final;
+    void reachedApplicationCacheOriginQuota(CyberCore::SecurityOrigin&, int64_t spaceNeeded) final;
     
 #if ENABLE(INPUT_TYPE_COLOR)
-    std::unique_ptr<WebCore::ColorChooser> createColorChooser(WebCore::ColorChooserClient&, const WebCore::Color&) final;
+    std::unique_ptr<CyberCore::ColorChooser> createColorChooser(CyberCore::ColorChooserClient&, const CyberCore::Color&) final;
 #endif
 
 #if ENABLE(DATALIST_ELEMENT)
-    std::unique_ptr<WebCore::DataListSuggestionPicker> createDataListSuggestionPicker(WebCore::DataListSuggestionsClient&) final;
+    std::unique_ptr<CyberCore::DataListSuggestionPicker> createDataListSuggestionPicker(CyberCore::DataListSuggestionsClient&) final;
     bool canShowDataListSuggestionLabels() const final;
 #endif
 
 #if ENABLE(DATE_AND_TIME_INPUT_TYPES)
-    std::unique_ptr<WebCore::DateTimeChooser> createDateTimeChooser(WebCore::DateTimeChooserClient&) final;
+    std::unique_ptr<CyberCore::DateTimeChooser> createDateTimeChooser(CyberCore::DateTimeChooserClient&) final;
 #endif
 
 #if ENABLE(IOS_TOUCH_EVENTS)
@@ -171,9 +171,9 @@ private:
 
 #if PLATFORM(IOS_FAMILY)
     void didReceiveMobileDocType(bool) final;
-    void setNeedsScrollNotifications(WebCore::Frame&, bool) final;
-    void didFinishContentChangeObserving(WebCore::Frame&, WKContentChange) final;
-    void notifyRevealedSelectionByScrollingFrame(WebCore::Frame&) final;
+    void setNeedsScrollNotifications(CyberCore::Frame&, bool) final;
+    void didFinishContentChangeObserving(CyberCore::Frame&, WKContentChange) final;
+    void notifyRevealedSelectionByScrollingFrame(CyberCore::Frame&) final;
     bool isStopping() final;
 
     void didLayout(LayoutType = NormalLayout) final;
@@ -185,29 +185,29 @@ private:
     void suppressFormNotifications() final;
     void restoreFormNotifications() final;
 
-    void addOrUpdateScrollingLayer(WebCore::Node*, PlatformLayer* scrollingLayer, PlatformLayer* contentsLayer, const WebCore::IntSize& scrollSize, bool allowHorizontalScrollbar, bool allowVerticalScrollbar) final;
-    void removeScrollingLayer(WebCore::Node*, PlatformLayer* scrollingLayer, PlatformLayer* contentsLayer) final;
+    void addOrUpdateScrollingLayer(CyberCore::Node*, PlatformLayer* scrollingLayer, PlatformLayer* contentsLayer, const CyberCore::IntSize& scrollSize, bool allowHorizontalScrollbar, bool allowVerticalScrollbar) final;
+    void removeScrollingLayer(CyberCore::Node*, PlatformLayer* scrollingLayer, PlatformLayer* contentsLayer) final;
 
     void webAppOrientationsUpdated() final;
-    void showPlaybackTargetPicker(bool hasVideo, WebCore::RouteSharingPolicy, const String&) final;
+    void showPlaybackTargetPicker(bool hasVideo, CyberCore::RouteSharingPolicy, const String&) final;
 
     Seconds eventThrottlingDelay() final;
 
-    bool shouldUseMouseEventForSelection(const WebCore::PlatformMouseEvent&) final;
+    bool shouldUseMouseEventForSelection(const CyberCore::PlatformMouseEvent&) final;
 
-    bool showDataDetectorsUIForElement(const WebCore::Element&, const WebCore::Event&) final;
+    bool showDataDetectorsUIForElement(const CyberCore::Element&, const CyberCore::Event&) final;
 #endif
 
 #if ENABLE(ORIENTATION_EVENTS)
     int deviceOrientation() const final;
 #endif
 
-    void runOpenPanel(WebCore::Frame&, WebCore::FileChooser&) final;
-    void showShareSheet(WebCore::ShareDataWithParsedURL&, WTF::CompletionHandler<void(bool)>&&) final;
-    void showContactPicker(const WebCore::ContactsRequestData&, WTF::CompletionHandler<void(std::optional<Vector<WebCore::ContactInfo>>&&)>&&) final;
-    void loadIconForFiles(const Vector<String>&, WebCore::FileIconLoader&) final;
+    void runOpenPanel(CyberCore::Frame&, CyberCore::FileChooser&) final;
+    void showShareSheet(CyberCore::ShareDataWithParsedURL&, WTF::CompletionHandler<void(bool)>&&) final;
+    void showContactPicker(const CyberCore::ContactsRequestData&, WTF::CompletionHandler<void(std::optional<Vector<CyberCore::ContactInfo>>&&)>&&) final;
+    void loadIconForFiles(const Vector<String>&, CyberCore::FileIconLoader&) final;
 
-    void setCursor(const WebCore::Cursor&) final;
+    void setCursor(const CyberCore::Cursor&) final;
     void setCursorHiddenUntilMouseMoves(bool) final;
 #if !HAVE(NSCURSOR) && !PLATFORM(GTK)
     bool supportsSettingCursor() final { return false; }
@@ -218,23 +218,23 @@ private:
     void requestPointerUnlock() final;
 #endif
 
-    void didAssociateFormControls(const Vector<RefPtr<WebCore::Element>>&, WebCore::Frame&) final;
+    void didAssociateFormControls(const Vector<RefPtr<CyberCore::Element>>&, CyberCore::Frame&) final;
     bool shouldNotifyOnFormChanges() final;
 
     bool selectItemWritingDirectionIsNatural() final;
     bool selectItemAlignmentFollowsMenuWritingDirection() final;
-    RefPtr<WebCore::PopupMenu> createPopupMenu(WebCore::PopupMenuClient&) const final;
-    RefPtr<WebCore::SearchPopupMenu> createSearchPopupMenu(WebCore::PopupMenuClient&) const final;
+    RefPtr<CyberCore::PopupMenu> createPopupMenu(CyberCore::PopupMenuClient&) const final;
+    RefPtr<CyberCore::SearchPopupMenu> createSearchPopupMenu(CyberCore::PopupMenuClient&) const final;
 
-    WebCore::GraphicsLayerFactory* graphicsLayerFactory() const final;
-    void attachRootGraphicsLayer(WebCore::Frame&, WebCore::GraphicsLayer*) final;
-    void attachViewOverlayGraphicsLayer(WebCore::GraphicsLayer*) final;
+    CyberCore::GraphicsLayerFactory* graphicsLayerFactory() const final;
+    void attachRootGraphicsLayer(CyberCore::Frame&, CyberCore::GraphicsLayer*) final;
+    void attachViewOverlayGraphicsLayer(CyberCore::GraphicsLayer*) final;
     void setNeedsOneShotDrawingSynchronization() final;
     bool shouldTriggerRenderingUpdate(unsigned rescheduledRenderingUpdateCount) const final;
     void triggerRenderingUpdate() final;
     unsigned remoteImagesCountForTesting() const final; 
 
-    void contentRuleListNotification(const URL&, const WebCore::ContentRuleListResults&) final;
+    void contentRuleListNotification(const URL&, const CyberCore::ContentRuleListResults&) final;
 
     bool testProcessIncomingSyncMessagesWhenWaitingForSyncReply() final;
 
@@ -244,18 +244,18 @@ private:
     void AXFinishFrameLoad() final { }
 #endif
 
-    void animationDidFinishForElement(const WebCore::Element&) final;
+    void animationDidFinishForElement(const CyberCore::Element&) final;
 
-    WebCore::DisplayRefreshMonitorFactory* displayRefreshMonitorFactory() const final;
+    CyberCore::DisplayRefreshMonitorFactory* displayRefreshMonitorFactory() const final;
 
 #if ENABLE(GPU_PROCESS)
-    RefPtr<WebCore::ImageBuffer> createImageBuffer(const WebCore::FloatSize&, WebCore::RenderingMode, WebCore::RenderingPurpose, float resolutionScale, const WebCore::DestinationColorSpace&, WebCore::PixelFormat, bool avoidBackendSizeCheck = false) const final;
-    RefPtr<WebCore::ImageBuffer> sinkIntoImageBuffer(std::unique_ptr<WebCore::SerializedImageBuffer>) final;
+    RefPtr<CyberCore::ImageBuffer> createImageBuffer(const CyberCore::FloatSize&, CyberCore::RenderingMode, CyberCore::RenderingPurpose, float resolutionScale, const CyberCore::DestinationColorSpace&, CyberCore::PixelFormat, bool avoidBackendSizeCheck = false) const final;
+    RefPtr<CyberCore::ImageBuffer> sinkIntoImageBuffer(std::unique_ptr<CyberCore::SerializedImageBuffer>) final;
 #endif
-    std::unique_ptr<WebCore::WorkerClient> createWorkerClient(SerialFunctionDispatcher&) final;
+    std::unique_ptr<CyberCore::WorkerClient> createWorkerClient(SerialFunctionDispatcher&) final;
 
 #if ENABLE(WEBGL)
-    RefPtr<WebCore::GraphicsContextGL> createGraphicsContextGL(const WebCore::GraphicsContextGLAttributes&) const final;
+    RefPtr<CyberCore::GraphicsContextGL> createGraphicsContextGL(const CyberCore::GraphicsContextGLAttributes&) const final;
 #endif
 
     RefPtr<PAL::WebGPU::GPU> createGPUForWebGPU() const final;
@@ -279,43 +279,43 @@ private:
     bool layerTreeStateIsFrozen() const final;
 
 #if ENABLE(ASYNC_SCROLLING)
-    RefPtr<WebCore::ScrollingCoordinator> createScrollingCoordinator(WebCore::Page&) const final;
+    RefPtr<CyberCore::ScrollingCoordinator> createScrollingCoordinator(CyberCore::Page&) const final;
 #endif
 
 #if ENABLE(VIDEO_PRESENTATION_MODE)
     void prepareForVideoFullscreen() final;
-    bool canEnterVideoFullscreen(WebCore::HTMLMediaElementEnums::VideoFullscreenMode) const final;
-    bool supportsVideoFullscreen(WebCore::HTMLMediaElementEnums::VideoFullscreenMode) final;
+    bool canEnterVideoFullscreen(CyberCore::HTMLMediaElementEnums::VideoFullscreenMode) const final;
+    bool supportsVideoFullscreen(CyberCore::HTMLMediaElementEnums::VideoFullscreenMode) final;
     bool supportsVideoFullscreenStandby() final;
     void setMockVideoPresentationModeEnabled(bool) final;
-    void enterVideoFullscreenForVideoElement(WebCore::HTMLVideoElement&, WebCore::HTMLMediaElementEnums::VideoFullscreenMode, bool standby) final;
-    void exitVideoFullscreenForVideoElement(WebCore::HTMLVideoElement&, WTF::CompletionHandler<void(bool)>&& = [](bool) { }) final;
-    void setUpPlaybackControlsManager(WebCore::HTMLMediaElement&) final;
+    void enterVideoFullscreenForVideoElement(CyberCore::HTMLVideoElement&, CyberCore::HTMLMediaElementEnums::VideoFullscreenMode, bool standby) final;
+    void exitVideoFullscreenForVideoElement(CyberCore::HTMLVideoElement&, WTF::CompletionHandler<void(bool)>&& = [](bool) { }) final;
+    void setUpPlaybackControlsManager(CyberCore::HTMLMediaElement&) final;
     void clearPlaybackControlsManager() final;
     void playbackControlsMediaEngineChanged() final;
 #endif
 
 #if ENABLE(MEDIA_USAGE)
-    void addMediaUsageManagerSession(WebCore::MediaSessionIdentifier, const String&, const URL&) final;
-    void updateMediaUsageManagerSessionState(WebCore::MediaSessionIdentifier, const WebCore::MediaUsageInfo&) final;
-    void removeMediaUsageManagerSession(WebCore::MediaSessionIdentifier) final;
+    void addMediaUsageManagerSession(CyberCore::MediaSessionIdentifier, const String&, const URL&) final;
+    void updateMediaUsageManagerSessionState(CyberCore::MediaSessionIdentifier, const CyberCore::MediaUsageInfo&) final;
+    void removeMediaUsageManagerSession(CyberCore::MediaSessionIdentifier) final;
 #endif
 
 #if ENABLE(VIDEO_PRESENTATION_MODE)
-    void exitVideoFullscreenToModeWithoutAnimation(WebCore::HTMLVideoElement&, WebCore::HTMLMediaElementEnums::VideoFullscreenMode) final;
+    void exitVideoFullscreenToModeWithoutAnimation(CyberCore::HTMLVideoElement&, CyberCore::HTMLMediaElementEnums::VideoFullscreenMode) final;
 #endif
 
 #if ENABLE(FULLSCREEN_API)
-    bool supportsFullScreenForElement(const WebCore::Element&, bool withKeyboard) final;
-    void enterFullScreenForElement(WebCore::Element&) final;
-    void exitFullScreenForElement(WebCore::Element*) final;
+    bool supportsFullScreenForElement(const CyberCore::Element&, bool withKeyboard) final;
+    void enterFullScreenForElement(CyberCore::Element&) final;
+    void exitFullScreenForElement(CyberCore::Element*) final;
 #endif
 
 #if PLATFORM(COCOA)
-    void elementDidFocus(WebCore::Element&, const WebCore::FocusOptions&) final;
-    void elementDidBlur(WebCore::Element&) final;
-    void elementDidRefocus(WebCore::Element&, const WebCore::FocusOptions&) final;
-    void focusedElementDidChangeInputMode(WebCore::Element&, WebCore::InputMode) final;
+    void elementDidFocus(CyberCore::Element&, const CyberCore::FocusOptions&) final;
+    void elementDidBlur(CyberCore::Element&) final;
+    void elementDidRefocus(CyberCore::Element&, const CyberCore::FocusOptions&) final;
+    void focusedElementDidChangeInputMode(CyberCore::Element&, CyberCore::InputMode) final;
 
     void makeFirstResponder() final;
     void assistiveTechnologyMakeFirstResponder() final;
@@ -325,27 +325,27 @@ private:
     void disableSuddenTermination() final;
 
 #if PLATFORM(IOS_FAMILY)
-    WebCore::FloatSize screenSize() const final;
-    WebCore::FloatSize availableScreenSize() const final;
-    WebCore::FloatSize overrideScreenSize() const final;
+    CyberCore::FloatSize screenSize() const final;
+    CyberCore::FloatSize availableScreenSize() const final;
+    CyberCore::FloatSize overrideScreenSize() const final;
 #endif
 
-    void dispatchDisabledAdaptationsDidChange(const OptionSet<WebCore::DisabledAdaptations>&) const final;
-    void dispatchViewportPropertiesDidChange(const WebCore::ViewportArguments&) const final;
+    void dispatchDisabledAdaptationsDidChange(const OptionSet<CyberCore::DisabledAdaptations>&) const final;
+    void dispatchViewportPropertiesDidChange(const CyberCore::ViewportArguments&) const final;
 
-    void notifyScrollerThumbIsVisibleInRect(const WebCore::IntRect&) final;
-    void recommendedScrollbarStyleDidChange(WebCore::ScrollbarStyle newStyle) final;
+    void notifyScrollerThumbIsVisibleInRect(const CyberCore::IntRect&) final;
+    void recommendedScrollbarStyleDidChange(CyberCore::ScrollbarStyle newStyle) final;
 
-    std::optional<WebCore::ScrollbarOverlayStyle> preferredScrollbarOverlayStyle() final;
+    std::optional<CyberCore::ScrollbarOverlayStyle> preferredScrollbarOverlayStyle() final;
 
-    WebCore::Color underlayColor() const final;
+    CyberCore::Color underlayColor() const final;
 
     void themeColorChanged() const final;
     void pageExtendedBackgroundColorDidChange() const final;
     void sampledPageTopColorChanged() const final;
     
 #if ENABLE(APP_HIGHLIGHTS)
-    WebCore::HighlightVisibility appHighlightsVisiblility() const final;
+    CyberCore::HighlightVisibility appHighlightsVisiblility() const final;
 #endif
     
     void wheelEventHandlersChanged(bool) final;
@@ -355,22 +355,22 @@ private:
     String plugInExtraStyleSheet() const final;
     String plugInExtraScript() const final;
 
-    void didAddHeaderLayer(WebCore::GraphicsLayer&) final;
-    void didAddFooterLayer(WebCore::GraphicsLayer&) final;
+    void didAddHeaderLayer(CyberCore::GraphicsLayer&) final;
+    void didAddFooterLayer(CyberCore::GraphicsLayer&) final;
 
-    bool shouldUseTiledBackingForFrameView(const WebCore::FrameView&) const final;
+    bool shouldUseTiledBackingForFrameView(const CyberCore::FrameView&) const final;
 
 #if ENABLE(ACCESSIBILITY_ANIMATION_CONTROL)
     void isAnyAnimationAllowedToPlayDidChange(bool /* anyAnimationCanPlay */) final;
 #endif
-    void isPlayingMediaDidChange(WebCore::MediaProducerMediaStateFlags) final;
-    void handleAutoplayEvent(WebCore::AutoplayEvent, OptionSet<WebCore::AutoplayEventFlags>) final;
+    void isPlayingMediaDidChange(CyberCore::MediaProducerMediaStateFlags) final;
+    void handleAutoplayEvent(CyberCore::AutoplayEvent, OptionSet<CyberCore::AutoplayEventFlags>) final;
 
 #if ENABLE(APP_HIGHLIGHTS)
-    void storeAppHighlight(WebCore::AppHighlight&&) const final;
+    void storeAppHighlight(CyberCore::AppHighlight&&) const final;
 #endif
 
-    void setTextIndicator(const WebCore::TextIndicatorData&) const final;
+    void setTextIndicator(const CyberCore::TextIndicatorData&) const final;
 
 #if ENABLE(WEB_CRYPTO)
     bool wrapCryptoKey(const Vector<uint8_t>&, Vector<uint8_t>&) const final;
@@ -378,50 +378,50 @@ private:
 #endif
 
 #if ENABLE(TELEPHONE_NUMBER_DETECTION) && PLATFORM(MAC)
-    void handleTelephoneNumberClick(const String& number, const WebCore::IntPoint&, const WebCore::IntRect&) final;
+    void handleTelephoneNumberClick(const String& number, const CyberCore::IntPoint&, const CyberCore::IntRect&) final;
 #endif
 
 #if ENABLE(DATA_DETECTION)
-    void handleClickForDataDetectionResult(const WebCore::DataDetectorElementInfo&, const WebCore::IntPoint&) final;
+    void handleClickForDataDetectionResult(const CyberCore::DataDetectorElementInfo&, const CyberCore::IntPoint&) final;
 #endif
 
 #if ENABLE(SERVICE_CONTROLS)
-    void handleSelectionServiceClick(WebCore::FrameSelection&, const Vector<String>& telephoneNumbers, const WebCore::IntPoint&) final;
+    void handleSelectionServiceClick(CyberCore::FrameSelection&, const Vector<String>& telephoneNumbers, const CyberCore::IntPoint&) final;
     bool hasRelevantSelectionServices(bool isTextOnly) const final;
-    void handleImageServiceClick(const WebCore::IntPoint&, WebCore::Image&, WebCore::HTMLImageElement&) final;
-    void handlePDFServiceClick(const WebCore::IntPoint&, WebCore::HTMLAttachmentElement&);
+    void handleImageServiceClick(const CyberCore::IntPoint&, CyberCore::Image&, CyberCore::HTMLImageElement&) final;
+    void handlePDFServiceClick(const CyberCore::IntPoint&, CyberCore::HTMLAttachmentElement&);
 #endif
 
     bool shouldDispatchFakeMouseMoveEvents() const final;
 
-    void handleAutoFillButtonClick(WebCore::HTMLInputElement&) final;
+    void handleAutoFillButtonClick(CyberCore::HTMLInputElement&) final;
 
-    void inputElementDidResignStrongPasswordAppearance(WebCore::HTMLInputElement&) final;
+    void inputElementDidResignStrongPasswordAppearance(CyberCore::HTMLInputElement&) final;
 
 #if ENABLE(WIRELESS_PLAYBACK_TARGET) && !PLATFORM(IOS_FAMILY)
-    void addPlaybackTargetPickerClient(WebCore::PlaybackTargetClientContextIdentifier) final;
-    void removePlaybackTargetPickerClient(WebCore::PlaybackTargetClientContextIdentifier) final;
-    void showPlaybackTargetPicker(WebCore::PlaybackTargetClientContextIdentifier, const WebCore::IntPoint&, bool) final;
-    void playbackTargetPickerClientStateDidChange(WebCore::PlaybackTargetClientContextIdentifier, WebCore::MediaProducerMediaStateFlags) final;
+    void addPlaybackTargetPickerClient(CyberCore::PlaybackTargetClientContextIdentifier) final;
+    void removePlaybackTargetPickerClient(CyberCore::PlaybackTargetClientContextIdentifier) final;
+    void showPlaybackTargetPicker(CyberCore::PlaybackTargetClientContextIdentifier, const CyberCore::IntPoint&, bool) final;
+    void playbackTargetPickerClientStateDidChange(CyberCore::PlaybackTargetClientContextIdentifier, CyberCore::MediaProducerMediaStateFlags) final;
     void setMockMediaPlaybackTargetPickerEnabled(bool) final;
-    void setMockMediaPlaybackTargetPickerState(const String&, WebCore::MediaPlaybackTargetContext::MockState) final;
+    void setMockMediaPlaybackTargetPickerState(const String&, CyberCore::MediaPlaybackTargetContext::MockState) final;
     void mockMediaPlaybackTargetPickerDismissPopup() final;
 #endif
 
-    void imageOrMediaDocumentSizeChanged(const WebCore::IntSize&) final;
+    void imageOrMediaDocumentSizeChanged(const CyberCore::IntSize&) final;
 
-    RefPtr<WebCore::Icon> createIconForFiles(const Vector<String>& filenames) final;
+    RefPtr<CyberCore::Icon> createIconForFiles(const Vector<String>& filenames) final;
 
     void didInvalidateDocumentMarkerRects() final;
 
 #if ENABLE(TRACKING_PREVENTION)
-    void hasStorageAccess(WebCore::RegistrableDomain&& subFrameDomain, WebCore::RegistrableDomain&& topFrameDomain, WebCore::Frame&, WTF::CompletionHandler<void(bool)>&&) final;
-    void requestStorageAccess(WebCore::RegistrableDomain&& subFrameDomain, WebCore::RegistrableDomain&& topFrameDomain, WebCore::Frame&, WebCore::StorageAccessScope, WTF::CompletionHandler<void(WebCore::RequestStorageAccessResult)>&&) final;
-    bool hasPageLevelStorageAccess(const WebCore::RegistrableDomain& topLevelDomain, const WebCore::RegistrableDomain& resourceDomain) const final;
+    void hasStorageAccess(CyberCore::RegistrableDomain&& subFrameDomain, CyberCore::RegistrableDomain&& topFrameDomain, CyberCore::Frame&, WTF::CompletionHandler<void(bool)>&&) final;
+    void requestStorageAccess(CyberCore::RegistrableDomain&& subFrameDomain, CyberCore::RegistrableDomain&& topFrameDomain, CyberCore::Frame&, CyberCore::StorageAccessScope, WTF::CompletionHandler<void(CyberCore::RequestStorageAccessResult)>&&) final;
+    bool hasPageLevelStorageAccess(const CyberCore::RegistrableDomain& topLevelDomain, const CyberCore::RegistrableDomain& resourceDomain) const final;
 #endif
 
 #if ENABLE(DEVICE_ORIENTATION)
-    void shouldAllowDeviceOrientationAndMotionAccess(WebCore::Frame&, bool mayPrompt, CompletionHandler<void(WebCore::DeviceOrientationOrMotionPermissionState)>&&) final;
+    void shouldAllowDeviceOrientationAndMotionAccess(CyberCore::Frame&, bool mayPrompt, CompletionHandler<void(CyberCore::DeviceOrientationOrMotionPermissionState)>&&) final;
 #endif
 
     void configureLoggingChannel(const String&, WTFLogChannelState, WTFLogLevel) final;
@@ -430,15 +430,15 @@ private:
     void setUserIsInteracting(bool) final;
 
 #if ENABLE(WEB_AUTHN)
-    void setMockWebAuthenticationConfiguration(const WebCore::MockWebAuthenticationConfiguration&) final;
+    void setMockWebAuthenticationConfiguration(const CyberCore::MockWebAuthenticationConfiguration&) final;
 #endif
 
 #if PLATFORM(MAC)
-    void changeUniversalAccessZoomFocus(const WebCore::IntRect&, const WebCore::IntRect&) final;
+    void changeUniversalAccessZoomFocus(const CyberCore::IntRect&, const CyberCore::IntRect&) final;
 #endif
 
 #if ENABLE(IMAGE_ANALYSIS)
-    void requestTextRecognition(WebCore::Element&, WebCore::TextRecognitionOptions&&, CompletionHandler<void(RefPtr<WebCore::Element>&&)>&& = { }) final;
+    void requestTextRecognition(CyberCore::Element&, CyberCore::TextRecognitionOptions&&, CompletionHandler<void(RefPtr<CyberCore::Element>&&)>&& = { }) final;
 #endif
 
     bool needsImageOverlayControllerForSelectionPainting() const final
@@ -454,28 +454,28 @@ private:
     void textAutosizingUsesIdempotentModeChanged() final;
 #endif
 
-    URL sanitizeLookalikeCharacters(const URL&, WebCore::LookalikeCharacterSanitizationTrigger) const final;
+    URL sanitizeLookalikeCharacters(const URL&, CyberCore::LookalikeCharacterSanitizationTrigger) const final;
     URL allowedLookalikeCharacters(const URL&) const final;
 
 #if ENABLE(MEDIA_CONTROLS_CONTEXT_MENUS) && USE(UICONTEXTMENU)
-    void showMediaControlsContextMenu(WebCore::FloatRect&&, Vector<WebCore::MediaControlsContextMenuItem>&&, CompletionHandler<void(WebCore::MediaControlsContextMenuItem::ID)>&&) final;
+    void showMediaControlsContextMenu(CyberCore::FloatRect&&, Vector<CyberCore::MediaControlsContextMenuItem>&&, CompletionHandler<void(CyberCore::MediaControlsContextMenuItem::ID)>&&) final;
 #endif // ENABLE(MEDIA_CONTROLS_CONTEXT_MENUS) && USE(UICONTEXTMENU)
 
 #if ENABLE(WEBXR) && !USE(OPENXR)
     void enumerateImmersiveXRDevices(CompletionHandler<void(const PlatformXR::Instance::DeviceList&)>&&) final;
-    void requestPermissionOnXRSessionFeatures(const WebCore::SecurityOriginData&, PlatformXR::SessionMode, const PlatformXR::Device::FeatureList& /* granted */, const PlatformXR::Device::FeatureList& /* consentRequired */, const PlatformXR::Device::FeatureList& /* consentOptional */, CompletionHandler<void(std::optional<PlatformXR::Device::FeatureList>&&)>&&) final;
+    void requestPermissionOnXRSessionFeatures(const CyberCore::SecurityOriginData&, PlatformXR::SessionMode, const PlatformXR::Device::FeatureList& /* granted */, const PlatformXR::Device::FeatureList& /* consentRequired */, const PlatformXR::Device::FeatureList& /* consentOptional */, CompletionHandler<void(std::optional<PlatformXR::Device::FeatureList>&&)>&&) final;
 #endif
 
 #if ENABLE(APPLE_PAY_AMS_UI)
-    void startApplePayAMSUISession(const URL&, const WebCore::ApplePayAMSUIRequest&, CompletionHandler<void(std::optional<bool>&&)>&&) final;
+    void startApplePayAMSUISession(const URL&, const CyberCore::ApplePayAMSUIRequest&, CompletionHandler<void(std::optional<bool>&&)>&&) final;
     void abortApplePayAMSUISession() final;
 #endif
 
-    void requestCookieConsent(CompletionHandler<void(WebCore::CookieConsentDecisionResult)>&&) final;
+    void requestCookieConsent(CompletionHandler<void(CyberCore::CookieConsentDecisionResult)>&&) final;
 
-    void classifyModalContainerControls(Vector<String>&&, CompletionHandler<void(Vector<WebCore::ModalContainerControlType>&&)>&&) final;
+    void classifyModalContainerControls(Vector<String>&&, CompletionHandler<void(Vector<CyberCore::ModalContainerControlType>&&)>&&) final;
 
-    void decidePolicyForModalContainer(OptionSet<WebCore::ModalContainerControlType>, CompletionHandler<void(WebCore::ModalContainerDecision)>&&) final;
+    void decidePolicyForModalContainer(OptionSet<CyberCore::ModalContainerControlType>, CompletionHandler<void(CyberCore::ModalContainerDecision)>&&) final;
 
     const AtomString& searchStringForModalContainerObserver() const final;
 
@@ -485,4 +485,4 @@ private:
     WebPage& m_page;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

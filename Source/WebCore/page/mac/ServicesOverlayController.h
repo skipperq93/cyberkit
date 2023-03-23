@@ -35,7 +35,7 @@
 #include <wtf/OptionSet.h>
 #include <wtf/WeakHashSet.h>
 
-namespace WebCore {
+namespace CyberCore {
     
 class LayoutRect;
 class Page;
@@ -114,6 +114,6 @@ private:
     Timer m_buildHighlightsTimer;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // (ENABLE(SERVICE_CONTROLS) || ENABLE(TELEPHONE_NUMBER_DETECTION)) && PLATFORM(MAC)

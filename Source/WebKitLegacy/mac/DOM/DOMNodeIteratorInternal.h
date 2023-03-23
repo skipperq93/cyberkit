@@ -26,8 +26,8 @@
 
 #import <CyberKitLegacy/DOMNodeIterator.h>
 
-namespace WebCore {
+namespace CyberCore {
 class NodeIterator;
 }
 
-DOMNodeIterator *kit(WebCore::NodeIterator*);
+DOMNodeIterator *kit(CyberCore::NodeIterator*);

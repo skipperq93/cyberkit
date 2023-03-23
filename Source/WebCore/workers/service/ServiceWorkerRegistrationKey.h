@@ -31,7 +31,7 @@
 #include <wtf/Hasher.h>
 #include <wtf/URL.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RegistrableDomain;
 
@@ -78,24 +78,24 @@ inline void add(Hasher& hasher, const ServiceWorkerRegistrationKey& key)
     add(hasher, key.topOrigin(), key.scope());
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
 struct ServiceWorkerRegistrationKeyHash {
-    static unsigned hash(const WebCore::ServiceWorkerRegistrationKey& key) { return computeHash(key); }
-    static bool equal(const WebCore::ServiceWorkerRegistrationKey& a, const WebCore::ServiceWorkerRegistrationKey& b) { return a == b; }
+    static unsigned hash(const CyberCore::ServiceWorkerRegistrationKey& key) { return computeHash(key); }
+    static bool equal(const CyberCore::ServiceWorkerRegistrationKey& a, const CyberCore::ServiceWorkerRegistrationKey& b) { return a == b; }
     static const bool safeToCompareToEmptyOrDeleted = false;
 };
 
-template<> struct HashTraits<WebCore::ServiceWorkerRegistrationKey> : GenericHashTraits<WebCore::ServiceWorkerRegistrationKey> {
-    static WebCore::ServiceWorkerRegistrationKey emptyValue() { return WebCore::ServiceWorkerRegistrationKey::emptyKey(); }
+template<> struct HashTraits<CyberCore::ServiceWorkerRegistrationKey> : GenericHashTraits<CyberCore::ServiceWorkerRegistrationKey> {
+    static CyberCore::ServiceWorkerRegistrationKey emptyValue() { return CyberCore::ServiceWorkerRegistrationKey::emptyKey(); }
 
-    static void constructDeletedValue(WebCore::ServiceWorkerRegistrationKey& slot) { new (NotNull, &slot.m_topOrigin) WebCore::SecurityOriginData(HashTableDeletedValue); }
-    static bool isDeletedValue(const WebCore::ServiceWorkerRegistrationKey& slot) { return slot.m_topOrigin.isHashTableDeletedValue(); }
+    static void constructDeletedValue(CyberCore::ServiceWorkerRegistrationKey& slot) { new (NotNull, &slot.m_topOrigin) CyberCore::SecurityOriginData(HashTableDeletedValue); }
+    static bool isDeletedValue(const CyberCore::ServiceWorkerRegistrationKey& slot) { return slot.m_topOrigin.isHashTableDeletedValue(); }
 };
 
-template<> struct DefaultHash<WebCore::ServiceWorkerRegistrationKey> : ServiceWorkerRegistrationKeyHash { };
+template<> struct DefaultHash<CyberCore::ServiceWorkerRegistrationKey> : ServiceWorkerRegistrationKeyHash { };
 
 } // namespace WTF
 

@@ -27,7 +27,7 @@
 #include "CSSSelector.h"
 #include <wtf/BloomFilter.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Element;
 

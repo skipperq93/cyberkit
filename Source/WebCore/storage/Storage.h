@@ -29,7 +29,7 @@
 #include "ExceptionOr.h"
 #include "ScriptWrappable.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class StorageArea;
 
@@ -59,4 +59,4 @@ private:
     const Ref<StorageArea> m_storageArea;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

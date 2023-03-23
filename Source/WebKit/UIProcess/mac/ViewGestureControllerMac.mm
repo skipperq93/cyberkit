@@ -77,7 +77,7 @@ static const CGFloat swipeOverlayShadowWidth = 81;
 @end
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 void ViewGestureController::platformTeardown()
 {
@@ -107,7 +107,7 @@ double ViewGestureController::resistanceForDelta(double deltaScale, double curre
     return resistance;
 }
 
-void ViewGestureController::gestureEventWasNotHandledByWebCore(NSEvent *event, FloatPoint origin)
+void ViewGestureController::gestureEventWasNotHandledByCyberCore(NSEvent *event, FloatPoint origin)
 {
     if (event.type == NSEventTypeMagnify)
         handleMagnificationGestureEvent(event, origin);

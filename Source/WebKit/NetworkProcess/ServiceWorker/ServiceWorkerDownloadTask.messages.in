@@ -23,7 +23,7 @@
 #if ENABLE(SERVICE_WORKER)
 
 messages -> ServiceWorkerDownloadTask NotRefCounted {
-    DidFail(WebCore::ResourceError error)
+    DidFail(CyberCore::ResourceError error)
     DidReceiveData(IPC::SharedBufferReference data, uint64_t encodedDataLength)
     DidReceiveFormData(IPC::FormDataReference data)
     DidFinish()

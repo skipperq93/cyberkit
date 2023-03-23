@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -18,32 +18,32 @@
  */
 
 #include "config.h"
-#include "WebKitDOMTreeWalker.h"
+#include "CyberKitDOMTreeWalker.h"
 
 #include <CyberCore/CSSImportRule.h>
 #include "DOMObjectCache.h"
 #include <CyberCore/Document.h>
 #include <CyberCore/ExceptionCode.h>
 #include <CyberCore/JSExecState.h>
-#include "WebKitDOMNodeFilterPrivate.h"
-#include "WebKitDOMNodePrivate.h"
-#include "WebKitDOMPrivate.h"
-#include "WebKitDOMTreeWalkerPrivate.h"
+#include "CyberKitDOMNodeFilterPrivate.h"
+#include "CyberKitDOMNodePrivate.h"
+#include "CyberKitDOMPrivate.h"
+#include "CyberKitDOMTreeWalkerPrivate.h"
 #include "ConvertToUTF8String.h"
 #include <wtf/GetPtr.h>
 #include <wtf/RefPtr.h>
 
-#define WEBKIT_DOM_TREE_WALKER_GET_PRIVATE(obj) G_TYPE_INSTANCE_GET_PRIVATE(obj, WEBKIT_DOM_TYPE_TREE_WALKER, WebKitDOMTreeWalkerPrivate)
+#define WEBKIT_DOM_TREE_WALKER_GET_PRIVATE(obj) G_TYPE_INSTANCE_GET_PRIVATE(obj, WEBKIT_DOM_TYPE_TREE_WALKER, CyberKitDOMTreeWalkerPrivate)
 
-typedef struct _WebKitDOMTreeWalkerPrivate {
-    RefPtr<WebCore::TreeWalker> coreObject;
-} WebKitDOMTreeWalkerPrivate;
+typedef struct _CyberKitDOMTreeWalkerPrivate {
+    RefPtr<CyberCore::TreeWalker> coreObject;
+} CyberKitDOMTreeWalkerPrivate;
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
-namespace WebKit {
+namespace CyberKit {
 
-WebKitDOMTreeWalker* kit(WebCore::TreeWalker* obj)
+CyberKitDOMTreeWalker* kit(CyberCore::TreeWalker* obj)
 {
     if (!obj)
         return 0;
@@ -54,20 +54,20 @@ WebKitDOMTreeWalker* kit(WebCore::TreeWalker* obj)
     return wrapTreeWalker(obj);
 }
 
-WebCore::TreeWalker* core(WebKitDOMTreeWalker* request)
+CyberCore::TreeWalker* core(CyberKitDOMTreeWalker* request)
 {
-    return request ? static_cast<WebCore::TreeWalker*>(WEBKIT_DOM_OBJECT(request)->coreObject) : 0;
+    return request ? static_cast<CyberCore::TreeWalker*>(WEBKIT_DOM_OBJECT(request)->coreObject) : 0;
 }
 
-WebKitDOMTreeWalker* wrapTreeWalker(WebCore::TreeWalker* coreObject)
+CyberKitDOMTreeWalker* wrapTreeWalker(CyberCore::TreeWalker* coreObject)
 {
     ASSERT(coreObject);
     return WEBKIT_DOM_TREE_WALKER(g_object_new(WEBKIT_DOM_TYPE_TREE_WALKER, "core-object", coreObject, nullptr));
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
-G_DEFINE_TYPE(WebKitDOMTreeWalker, webkit_dom_tree_walker, WEBKIT_DOM_TYPE_OBJECT)
+G_DEFINE_TYPE(CyberKitDOMTreeWalker, webkit_dom_tree_walker, WEBKIT_DOM_TYPE_OBJECT)
 
 enum {
     DOM_TREE_WALKER_PROP_0,
@@ -79,17 +79,17 @@ enum {
 
 static void webkit_dom_tree_walker_finalize(GObject* object)
 {
-    WebKitDOMTreeWalkerPrivate* priv = WEBKIT_DOM_TREE_WALKER_GET_PRIVATE(object);
+    CyberKitDOMTreeWalkerPrivate* priv = WEBKIT_DOM_TREE_WALKER_GET_PRIVATE(object);
 
-    WebKit::DOMObjectCache::forget(priv->coreObject.get());
+    CyberKit::DOMObjectCache::forget(priv->coreObject.get());
 
-    priv->~WebKitDOMTreeWalkerPrivate();
+    priv->~CyberKitDOMTreeWalkerPrivate();
     G_OBJECT_CLASS(webkit_dom_tree_walker_parent_class)->finalize(object);
 }
 
 static void webkit_dom_tree_walker_get_property(GObject* object, guint propertyId, GValue* value, GParamSpec* pspec)
 {
-    WebKitDOMTreeWalker* self = WEBKIT_DOM_TREE_WALKER(object);
+    CyberKitDOMTreeWalker* self = WEBKIT_DOM_TREE_WALKER(object);
 
     switch (propertyId) {
     case DOM_TREE_WALKER_PROP_ROOT:
@@ -114,17 +114,17 @@ static GObject* webkit_dom_tree_walker_constructor(GType type, guint constructPr
 {
     GObject* object = G_OBJECT_CLASS(webkit_dom_tree_walker_parent_class)->constructor(type, constructPropertiesCount, constructProperties);
 
-    WebKitDOMTreeWalkerPrivate* priv = WEBKIT_DOM_TREE_WALKER_GET_PRIVATE(object);
-    priv->coreObject = static_cast<WebCore::TreeWalker*>(WEBKIT_DOM_OBJECT(object)->coreObject);
-    WebKit::DOMObjectCache::put(priv->coreObject.get(), object);
+    CyberKitDOMTreeWalkerPrivate* priv = WEBKIT_DOM_TREE_WALKER_GET_PRIVATE(object);
+    priv->coreObject = static_cast<CyberCore::TreeWalker*>(WEBKIT_DOM_OBJECT(object)->coreObject);
+    CyberKit::DOMObjectCache::put(priv->coreObject.get(), object);
 
     return object;
 }
 
-static void webkit_dom_tree_walker_class_init(WebKitDOMTreeWalkerClass* requestClass)
+static void webkit_dom_tree_walker_class_init(CyberKitDOMTreeWalkerClass* requestClass)
 {
     GObjectClass* gobjectClass = G_OBJECT_CLASS(requestClass);
-    g_type_class_add_private(gobjectClass, sizeof(WebKitDOMTreeWalkerPrivate));
+    g_type_class_add_private(gobjectClass, sizeof(CyberKitDOMTreeWalkerPrivate));
     gobjectClass->constructor = webkit_dom_tree_walker_constructor;
     gobjectClass->finalize = webkit_dom_tree_walker_finalize;
     gobjectClass->get_property = webkit_dom_tree_walker_get_property;
@@ -135,7 +135,7 @@ static void webkit_dom_tree_walker_class_init(WebKitDOMTreeWalkerClass* requestC
         g_param_spec_object(
             "root",
             "TreeWalker:root",
-            "read-only WebKitDOMNode* TreeWalker:root",
+            "read-only CyberKitDOMNode* TreeWalker:root",
             WEBKIT_DOM_TYPE_NODE,
             WEBKIT_PARAM_READABLE));
 
@@ -155,7 +155,7 @@ static void webkit_dom_tree_walker_class_init(WebKitDOMTreeWalkerClass* requestC
         g_param_spec_object(
             "filter",
             "TreeWalker:filter",
-            "read-only WebKitDOMNodeFilter* TreeWalker:filter",
+            "read-only CyberKitDOMNodeFilter* TreeWalker:filter",
             WEBKIT_DOM_TYPE_NODE_FILTER,
             WEBKIT_PARAM_READABLE));
 
@@ -165,160 +165,160 @@ static void webkit_dom_tree_walker_class_init(WebKitDOMTreeWalkerClass* requestC
         g_param_spec_object(
             "current-node",
             "TreeWalker:current-node",
-            "read-only WebKitDOMNode* TreeWalker:current-node",
+            "read-only CyberKitDOMNode* TreeWalker:current-node",
             WEBKIT_DOM_TYPE_NODE,
             WEBKIT_PARAM_READABLE));
 
 }
 
-static void webkit_dom_tree_walker_init(WebKitDOMTreeWalker* request)
+static void webkit_dom_tree_walker_init(CyberKitDOMTreeWalker* request)
 {
-    WebKitDOMTreeWalkerPrivate* priv = WEBKIT_DOM_TREE_WALKER_GET_PRIVATE(request);
-    new (priv) WebKitDOMTreeWalkerPrivate();
+    CyberKitDOMTreeWalkerPrivate* priv = WEBKIT_DOM_TREE_WALKER_GET_PRIVATE(request);
+    new (priv) CyberKitDOMTreeWalkerPrivate();
 }
 
-WebKitDOMNode* webkit_dom_tree_walker_parent_node(WebKitDOMTreeWalker* self)
+CyberKitDOMNode* webkit_dom_tree_walker_parent_node(CyberKitDOMTreeWalker* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_TREE_WALKER(self), 0);
-    WebCore::TreeWalker* item = WebKit::core(self);
+    CyberCore::TreeWalker* item = CyberKit::core(self);
 
     auto result = item->parentNode();
     if (result.hasException())
         return nullptr;
 
-    RefPtr<WebCore::Node> gobjectResult = WTF::getPtr(result.releaseReturnValue());
-    return WebKit::kit(gobjectResult.get());
+    RefPtr<CyberCore::Node> gobjectResult = WTF::getPtr(result.releaseReturnValue());
+    return CyberKit::kit(gobjectResult.get());
 }
 
-WebKitDOMNode* webkit_dom_tree_walker_first_child(WebKitDOMTreeWalker* self)
+CyberKitDOMNode* webkit_dom_tree_walker_first_child(CyberKitDOMTreeWalker* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_TREE_WALKER(self), 0);
-    WebCore::TreeWalker* item = WebKit::core(self);
+    CyberCore::TreeWalker* item = CyberKit::core(self);
 
     auto result = item->firstChild();
     if (result.hasException())
         return nullptr;
 
-    RefPtr<WebCore::Node> gobjectResult = WTF::getPtr(result.releaseReturnValue());
-    return WebKit::kit(gobjectResult.get());
+    RefPtr<CyberCore::Node> gobjectResult = WTF::getPtr(result.releaseReturnValue());
+    return CyberKit::kit(gobjectResult.get());
 }
 
-WebKitDOMNode* webkit_dom_tree_walker_last_child(WebKitDOMTreeWalker* self)
+CyberKitDOMNode* webkit_dom_tree_walker_last_child(CyberKitDOMTreeWalker* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_TREE_WALKER(self), 0);
-    WebCore::TreeWalker* item = WebKit::core(self);
+    CyberCore::TreeWalker* item = CyberKit::core(self);
 
     auto result = item->lastChild();
     if (result.hasException())
         return nullptr;
 
-    RefPtr<WebCore::Node> gobjectResult = WTF::getPtr(result.releaseReturnValue());
-    return WebKit::kit(gobjectResult.get());
+    RefPtr<CyberCore::Node> gobjectResult = WTF::getPtr(result.releaseReturnValue());
+    return CyberKit::kit(gobjectResult.get());
 }
 
-WebKitDOMNode* webkit_dom_tree_walker_previous_sibling(WebKitDOMTreeWalker* self)
+CyberKitDOMNode* webkit_dom_tree_walker_previous_sibling(CyberKitDOMTreeWalker* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_TREE_WALKER(self), 0);
-    WebCore::TreeWalker* item = WebKit::core(self);
+    CyberCore::TreeWalker* item = CyberKit::core(self);
 
     auto result = item->previousSibling();
     if (result.hasException())
         return nullptr;
 
-    RefPtr<WebCore::Node> gobjectResult = WTF::getPtr(result.releaseReturnValue());
-    return WebKit::kit(gobjectResult.get());
+    RefPtr<CyberCore::Node> gobjectResult = WTF::getPtr(result.releaseReturnValue());
+    return CyberKit::kit(gobjectResult.get());
 }
 
-WebKitDOMNode* webkit_dom_tree_walker_next_sibling(WebKitDOMTreeWalker* self)
+CyberKitDOMNode* webkit_dom_tree_walker_next_sibling(CyberKitDOMTreeWalker* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_TREE_WALKER(self), 0);
-    WebCore::TreeWalker* item = WebKit::core(self);
+    CyberCore::TreeWalker* item = CyberKit::core(self);
 
     auto result = item->nextSibling();
     if (result.hasException())
         return nullptr;
 
-    RefPtr<WebCore::Node> gobjectResult = WTF::getPtr(result.releaseReturnValue());
-    return WebKit::kit(gobjectResult.get());
+    RefPtr<CyberCore::Node> gobjectResult = WTF::getPtr(result.releaseReturnValue());
+    return CyberKit::kit(gobjectResult.get());
 }
 
-WebKitDOMNode* webkit_dom_tree_walker_previous_node(WebKitDOMTreeWalker* self)
+CyberKitDOMNode* webkit_dom_tree_walker_previous_node(CyberKitDOMTreeWalker* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_TREE_WALKER(self), 0);
-    WebCore::TreeWalker* item = WebKit::core(self);
+    CyberCore::TreeWalker* item = CyberKit::core(self);
 
     auto result = item->previousNode();
     if (result.hasException())
         return nullptr;
 
-    RefPtr<WebCore::Node> gobjectResult = WTF::getPtr(result.releaseReturnValue());
-    return WebKit::kit(gobjectResult.get());
+    RefPtr<CyberCore::Node> gobjectResult = WTF::getPtr(result.releaseReturnValue());
+    return CyberKit::kit(gobjectResult.get());
 }
 
-WebKitDOMNode* webkit_dom_tree_walker_next_node(WebKitDOMTreeWalker* self)
+CyberKitDOMNode* webkit_dom_tree_walker_next_node(CyberKitDOMTreeWalker* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_TREE_WALKER(self), 0);
-    WebCore::TreeWalker* item = WebKit::core(self);
+    CyberCore::TreeWalker* item = CyberKit::core(self);
 
     auto result = item->nextNode();
     if (result.hasException())
         return nullptr;
 
-    RefPtr<WebCore::Node> gobjectResult = WTF::getPtr(result.releaseReturnValue());
-    return WebKit::kit(gobjectResult.get());
+    RefPtr<CyberCore::Node> gobjectResult = WTF::getPtr(result.releaseReturnValue());
+    return CyberKit::kit(gobjectResult.get());
 }
 
-WebKitDOMNode* webkit_dom_tree_walker_get_root(WebKitDOMTreeWalker* self)
+CyberKitDOMNode* webkit_dom_tree_walker_get_root(CyberKitDOMTreeWalker* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_TREE_WALKER(self), 0);
-    WebCore::TreeWalker* item = WebKit::core(self);
-    RefPtr<WebCore::Node> gobjectResult = WTF::getPtr(item->root());
-    return WebKit::kit(gobjectResult.get());
+    CyberCore::TreeWalker* item = CyberKit::core(self);
+    RefPtr<CyberCore::Node> gobjectResult = WTF::getPtr(item->root());
+    return CyberKit::kit(gobjectResult.get());
 }
 
-gulong webkit_dom_tree_walker_get_what_to_show(WebKitDOMTreeWalker* self)
+gulong webkit_dom_tree_walker_get_what_to_show(CyberKitDOMTreeWalker* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_TREE_WALKER(self), 0);
-    WebCore::TreeWalker* item = WebKit::core(self);
+    CyberCore::TreeWalker* item = CyberKit::core(self);
     gulong result = item->whatToShow();
     return result;
 }
 
-WebKitDOMNodeFilter* webkit_dom_tree_walker_get_filter(WebKitDOMTreeWalker* self)
+CyberKitDOMNodeFilter* webkit_dom_tree_walker_get_filter(CyberKitDOMTreeWalker* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_TREE_WALKER(self), 0);
-    WebCore::TreeWalker* item = WebKit::core(self);
-    RefPtr<WebCore::NodeFilter> gobjectResult = WTF::getPtr(item->filter());
-    return WebKit::kit(gobjectResult.get());
+    CyberCore::TreeWalker* item = CyberKit::core(self);
+    RefPtr<CyberCore::NodeFilter> gobjectResult = WTF::getPtr(item->filter());
+    return CyberKit::kit(gobjectResult.get());
 }
 
-WebKitDOMNode* webkit_dom_tree_walker_get_current_node(WebKitDOMTreeWalker* self)
+CyberKitDOMNode* webkit_dom_tree_walker_get_current_node(CyberKitDOMTreeWalker* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_TREE_WALKER(self), 0);
-    WebCore::TreeWalker* item = WebKit::core(self);
-    RefPtr<WebCore::Node> gobjectResult = WTF::getPtr(item->currentNode());
-    return WebKit::kit(gobjectResult.get());
+    CyberCore::TreeWalker* item = CyberKit::core(self);
+    RefPtr<CyberCore::Node> gobjectResult = WTF::getPtr(item->currentNode());
+    return CyberKit::kit(gobjectResult.get());
 }
 
-void webkit_dom_tree_walker_set_current_node(WebKitDOMTreeWalker* self, WebKitDOMNode* value, GError** error)
+void webkit_dom_tree_walker_set_current_node(CyberKitDOMTreeWalker* self, CyberKitDOMNode* value, GError** error)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_TREE_WALKER(self));
     g_return_if_fail(WEBKIT_DOM_IS_NODE(value));
     UNUSED_PARAM(error);
-    WebCore::TreeWalker* item = WebKit::core(self);
-    WebCore::Node* convertedValue = WebKit::core(value);
+    CyberCore::TreeWalker* item = CyberKit::core(self);
+    CyberCore::Node* convertedValue = CyberKit::core(value);
     item->setCurrentNode(*convertedValue);
 }
 

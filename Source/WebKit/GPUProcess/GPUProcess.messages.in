@@ -25,7 +25,7 @@
 messages -> GPUProcess LegacyReceiver {
     InitializeGPUProcess(struct WebKit::GPUProcessCreationParameters processCreationParameters)
 
-    CreateGPUConnectionToWebProcess(WebCore::ProcessIdentifier processIdentifier, PAL::SessionID sessionID, IPC::Connection::Handle connectionHandle, struct WebKit::GPUProcessConnectionParameters parameters) -> () AllowedWhenWaitingForSyncReply
+    CreateGPUConnectionToWebProcess(CyberCore::ProcessIdentifier processIdentifier, PAL::SessionID sessionID, IPC::Connection::Handle connectionHandle, struct WebKit::GPUProcessConnectionParameters parameters) -> () AllowedWhenWaitingForSyncReply
     
     UpdateGPUProcessPreferences(struct WebKit::GPUProcessPreferences preferences)
 
@@ -39,9 +39,9 @@ messages -> GPUProcess LegacyReceiver {
     SetMockCaptureDevicesEnabled(bool isEnabled)
     SetOrientationForMediaCapture(uint64_t orientation);
     UpdateSandboxAccess(Vector<WebKit::SandboxExtension::Handle> extensions);
-    UpdateCaptureAccess(bool allowAudioCapture, bool allowVideoCapture, bool allowDisplayCapture, WebCore::ProcessIdentifier processID) -> ()
-    UpdateCaptureOrigin(WebCore::SecurityOriginData originData, WebCore::ProcessIdentifier processID)
-    AddMockMediaDevice(struct WebCore::MockMediaDevice device)
+    UpdateCaptureAccess(bool allowAudioCapture, bool allowVideoCapture, bool allowDisplayCapture, CyberCore::ProcessIdentifier processID) -> ()
+    UpdateCaptureOrigin(CyberCore::SecurityOriginData originData, CyberCore::ProcessIdentifier processID)
+    AddMockMediaDevice(struct CyberCore::MockMediaDevice device)
     ClearMockMediaDevices()
     RemoveMockMediaDevice(String persistentId)
     SetMockMediaDeviceIsEphemeral(String persistentId, bool isEphemeral)
@@ -51,18 +51,18 @@ messages -> GPUProcess LegacyReceiver {
 #endif
 #if PLATFORM(MAC)
     DisplayConfigurationChanged(CGDirectDisplayID displayID, CGDisplayChangeSummaryFlags flags)
-    SetScreenProperties(struct WebCore::ScreenProperties screenProperties)
+    SetScreenProperties(struct CyberCore::ScreenProperties screenProperties)
 #endif
 
 #endif
 
 #if HAVE(SC_CONTENT_SHARING_SESSION)
-    ShowWindowPicker() -> (std::optional<WebCore::CaptureDevice> device)
-    ShowScreenPicker() -> (std::optional<WebCore::CaptureDevice> device)
+    ShowWindowPicker() -> (std::optional<CyberCore::CaptureDevice> device)
+    ShowScreenPicker() -> (std::optional<CyberCore::CaptureDevice> device)
 #endif
 
 #if ENABLE(VIDEO)
-    RequestBitmapImageForCurrentTime(WebCore::ProcessIdentifier processIdentifier, WebCore::MediaPlayerIdentifier playerIdentifier) -> (WebKit::ShareableBitmapHandle handle)
+    RequestBitmapImageForCurrentTime(CyberCore::ProcessIdentifier processIdentifier, CyberCore::MediaPlayerIdentifier playerIdentifier) -> (WebKit::ShareableBitmapHandle handle)
 #endif
 
 #if ENABLE(CFPREFS_DIRECT_MODE)

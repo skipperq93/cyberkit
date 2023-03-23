@@ -64,7 +64,7 @@
 #include <wtf/RobinHoodHashMap.h>
 #include <wtf/StdLibExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(SVGElement);
 

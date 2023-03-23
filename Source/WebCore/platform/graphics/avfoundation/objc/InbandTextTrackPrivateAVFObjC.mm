@@ -42,7 +42,7 @@
 
 #import <pal/cocoa/AVFoundationSoftLink.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 InbandTextTrackPrivateAVFObjC::InbandTextTrackPrivateAVFObjC(AVFInbandTrackParent* player, AVMediaSelectionGroup *group, AVMediaSelectionOption *selection, InbandTextTrackPrivate::CueFormat format)
     : InbandTextTrackPrivateAVF(player, format)
@@ -165,6 +165,6 @@ bool InbandTextTrackPrivateAVFObjC::isDefault() const
     return [m_mediaSelectionGroup defaultOption] == m_mediaSelectionOption.get();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

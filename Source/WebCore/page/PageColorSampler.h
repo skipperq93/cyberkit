@@ -28,7 +28,7 @@
 #include "Color.h"
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Page;
 
@@ -37,4 +37,4 @@ public:
     static std::optional<Color> sampleTop(Page&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

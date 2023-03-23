@@ -41,7 +41,7 @@
 
 #if ENABLE(SERVICE_WORKER)
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class LastNavigationWasAppInitiated : bool;
 
@@ -68,6 +68,6 @@ struct ServiceWorkerContextData {
     WEBCORE_EXPORT ServiceWorkerContextData isolatedCopy() &&;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

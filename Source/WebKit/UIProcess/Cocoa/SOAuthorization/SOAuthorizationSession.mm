@@ -70,19 +70,19 @@ static const char* toString(const SOAuthorizationSession::InitiatingAction& acti
     return nullptr;
 }
 
-static Vector<WebCore::Cookie> toCookieVector(NSArray<NSHTTPCookie *> *cookies)
+static Vector<CyberCore::Cookie> toCookieVector(NSArray<NSHTTPCookie *> *cookies)
 {
-    Vector<WebCore::Cookie> result;
+    Vector<CyberCore::Cookie> result;
     result.reserveInitialCapacity(cookies.count);
     for (id cookie in cookies)
         result.uncheckedAppend(cookie);
     return result;
 }
 
-static bool isSameOrigin(const WebCore::ResourceRequest& request, const WebCore::ResourceResponse& response)
+static bool isSameOrigin(const CyberCore::ResourceRequest& request, const CyberCore::ResourceResponse& response)
 {
-    auto requestOrigin = WebCore::SecurityOrigin::create(request.url());
-    return requestOrigin->isSameOriginAs(WebCore::SecurityOrigin::create(response.url()).get());
+    auto requestOrigin = CyberCore::SecurityOrigin::create(request.url());
+    return requestOrigin->isSameOriginAs(CyberCore::SecurityOrigin::create(response.url()).get());
 }
 
 } // namespace
@@ -228,7 +228,7 @@ void SOAuthorizationSession::continueStartAfterDecidePolicy(const SOAuthorizatio
     if (m_navigationAction->sourceFrame())
         initiatorOrigin = m_navigationAction->sourceFrame()->securityOrigin().securityOrigin()->toString();
     if (m_action == InitiatingAction::SubFrame && m_page->mainFrame())
-        initiatorOrigin = WebCore::SecurityOrigin::create(m_page->mainFrame()->url())->toString();
+        initiatorOrigin = CyberCore::SecurityOrigin::create(m_page->mainFrame()->url())->toString();
     NSDictionary *authorizationOptions = @{
         SOAuthorizationOptionUserActionInitiated: @(m_navigationAction->isProcessingUserGesture()),
         SOAuthorizationOptionInitiatorOrigin: (NSString *)initiatorOrigin,
@@ -241,7 +241,7 @@ void SOAuthorizationSession::continueStartAfterDecidePolicy(const SOAuthorizatio
         [m_soAuthorization setEnableEmbeddedAuthorizationViewController:NO];
 #endif
 
-    auto *nsRequest = m_navigationAction->request().nsURLRequest(WebCore::HTTPBodyUpdatePolicy::UpdateHTTPBody);
+    auto *nsRequest = m_navigationAction->request().nsURLRequest(CyberCore::HTTPBodyUpdatePolicy::UpdateHTTPBody);
     AUTHORIZATIONSESSION_RELEASE_LOG("continueStartAfterGetAuthorizationHints: Beginning authorization with AppSSO.");
     [m_soAuthorization beginAuthorizationWithURL:nsRequest.URL httpHeaders:nsRequest.allHTTPHeaderFields httpBody:nsRequest.HTTPBody];
 }
@@ -293,7 +293,7 @@ void SOAuthorizationSession::complete(NSHTTPURLResponse *httpResponse, NSData *d
     ASSERT(m_navigationAction);
     becomeCompleted();
 
-    auto response = WebCore::ResourceResponse(httpResponse);
+    auto response = CyberCore::ResourceResponse(httpResponse);
     if (!isSameOrigin(m_navigationAction->request(), response)) {
         AUTHORIZATIONSESSION_RELEASE_LOG("complete:  Origins don't match. Falling back to web path.");
         fallBackToWebPathInternal();

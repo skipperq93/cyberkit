@@ -31,18 +31,18 @@
 #import "ExceptionHandlers.h"
 #import <CyberCore/JSExecState.h>
 #import <CyberCore/ThreadCheck.h>
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 #import <CyberCore/WebScriptObjectPrivate.h>
 #import <wtf/GetPtr.h>
 #import <wtf/URL.h>
 
-#define IMPL reinterpret_cast<WebCore::DeprecatedCSSOMCounter*>(_internal)
+#define IMPL reinterpret_cast<CyberCore::DeprecatedCSSOMCounter*>(_internal)
 
 @implementation DOMCounter
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainThread([DOMCounter class], self))
+    if (CyberCoreObjCScheduleDeallocateOnMainThread([DOMCounter class], self))
         return;
 
     if (_internal)
@@ -52,27 +52,27 @@
 
 - (NSString *)identifier
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->identifier();
 }
 
 - (NSString *)listStyle
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->listStyle();
 }
 
 - (NSString *)separator
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->separator();
 }
 
 @end
 
-DOMCounter *kit(WebCore::DeprecatedCSSOMCounter* value)
+DOMCounter *kit(CyberCore::DeprecatedCSSOMCounter* value)
 {
-    WebCoreThreadViolationCheckRoundOne();
+    CyberCoreThreadViolationCheckRoundOne();
     if (!value)
         return nil;
     if (DOMCounter *wrapper = getDOMWrapper(value))

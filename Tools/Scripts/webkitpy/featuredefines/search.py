@@ -80,9 +80,9 @@ class FeatureDefinesSearch(object):
         return [
             os.path.join(root, "Source", "WTF"),
             os.path.join(root, "Source", "WebDriver"),
-            os.path.join(root, "Source", "WebCore"),
+            os.path.join(root, "Source", "CyberCore"),
             os.path.join(root, "Source", "WebKit"),
-            os.path.join(root, "Source", "WebKitLegacy"),
+            os.path.join(root, "Source", "CyberKitLegacy"),
             os.path.join(root, "Source", "JavaScriptCore"),
             os.path.join(root, "Tools"),
         ]

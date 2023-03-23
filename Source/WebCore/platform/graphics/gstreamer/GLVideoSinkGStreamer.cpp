@@ -34,7 +34,7 @@
 #undef None
 #endif // PLATFORM(X11) && GST_GL_HAVE_PLATFORM_EGL
 
-using namespace WebCore;
+using namespace CyberCore;
 
 enum {
     PROP_0,

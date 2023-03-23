@@ -29,7 +29,7 @@
 
 #import "ControlMac.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SearchControlMac : public ControlMac {
 public:
@@ -41,6 +41,6 @@ protected:
     RetainPtr<NSSearchFieldCell> m_searchFieldCell;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(MAC)

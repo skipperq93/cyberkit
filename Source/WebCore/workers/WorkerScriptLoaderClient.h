@@ -28,7 +28,7 @@
 
 #include "ResourceLoaderIdentifier.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ResourceResponse;
 
@@ -41,4 +41,4 @@ protected:
     virtual ~WorkerScriptLoaderClient() = default;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

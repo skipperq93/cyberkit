@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 struct ResourceLoadStatistics;
 }
 
@@ -41,7 +41,7 @@ class ResourceLoadStatisticsClassifier {
 public:
     ResourceLoadStatisticsClassifier() = default;
     virtual ~ResourceLoadStatisticsClassifier() = default;
-    ResourceLoadPrevalence calculateResourcePrevalence(const WebCore::ResourceLoadStatistics& resourceStatistic, ResourceLoadPrevalence currentPrevalence);
+    ResourceLoadPrevalence calculateResourcePrevalence(const CyberCore::ResourceLoadStatistics& resourceStatistic, ResourceLoadPrevalence currentPrevalence);
     ResourceLoadPrevalence calculateResourcePrevalence(unsigned subresourceUnderTopFrameDomainsCount, unsigned subresourceUniqueRedirectsToCount, unsigned subframeUnderTopFrameOriginsCount, unsigned topFrameUniqueRedirectsToCount, ResourceLoadPrevalence currentPrevalence);
 protected:
     virtual bool classify(unsigned subresourceUnderTopFrameDomainsCount, unsigned subresourceUniqueRedirectsToCount, unsigned subframeUnderTopFrameOriginsCount)

@@ -32,7 +32,7 @@
 #include "NicosiaPlatformLayer.h"
 #include "ScrollingTreeFrameScrollingNode.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 ScrollingTreeScrollingNodeDelegateNicosia::ScrollingTreeScrollingNodeDelegateNicosia(ScrollingTreeScrollingNode& scrollingNode, bool scrollAnimatorEnabled)
     : ThreadedScrollingTreeScrollingNodeDelegate(scrollingNode)
@@ -56,6 +56,6 @@ bool ScrollingTreeScrollingNodeDelegateNicosia::handleWheelEvent(const PlatformW
     return m_scrollController.handleWheelEvent(wheelEvent);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ASYNC_SCROLLING) && USE(NICOSIA)

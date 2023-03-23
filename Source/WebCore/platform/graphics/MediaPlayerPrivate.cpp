@@ -30,7 +30,7 @@
 
 #include "VideoFrameMetadata.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 MediaPlayerPrivateInterface::MediaPlayerPrivateInterface() = default;
 MediaPlayerPrivateInterface::~MediaPlayerPrivateInterface() = default;

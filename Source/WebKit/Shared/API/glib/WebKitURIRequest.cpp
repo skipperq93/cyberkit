@@ -34,7 +34,7 @@ enum {
 
 static GParamSpec* sObjProperties[N_PROPERTIES] = { nullptr, };
 
-using namespace WebCore;
+using namespace CyberCore;
 
 /**
  * WebKitURIRequest:
@@ -47,7 +47,7 @@ using namespace WebCore;
  */
 
 struct _WebKitURIRequestPrivate {
-    WebCore::ResourceRequest resourceRequest;
+    CyberCore::ResourceRequest resourceRequest;
     CString uri;
     const char* httpMethod;
     GUniquePtr<SoupMessageHeaders> httpHeaders;

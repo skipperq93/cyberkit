@@ -33,7 +33,7 @@
 
 OBJC_CLASS NSAppearance;
 
-namespace WebCore {
+namespace CyberCore {
 
 class Color;
     

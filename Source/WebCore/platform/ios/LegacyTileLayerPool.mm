@@ -34,7 +34,7 @@
 #import <wtf/MemoryPressureHandler.h>
 #import <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static const Seconds capacityDecayTime { 5_s };
 
@@ -167,6 +167,6 @@ void LegacyTileLayerPool::drain()
     m_totalBytes = 0;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(IOS_FAMILY)

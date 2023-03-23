@@ -27,7 +27,7 @@
  */
 
 #import <Foundation/Foundation.h>
-#import <CyberKitLegacy/WebKitAvailability.h>
+#import <CyberKitLegacy/CyberKitAvailability.h>
 
 #if !TARGET_OS_IPHONE
 #import <AppKit/AppKit.h>
@@ -62,7 +62,7 @@ WEBKIT_DEPRECATED_MAC(10_3, 10_14)
 
 /*!
     @method setNeedsLayout:
-    @discussion Called when WebKit has determined that the document view needs to layout.
+    @discussion Called when CyberKit has determined that the document view needs to layout.
     This method should simply set a flag and call layout from drawRect if the flag is YES.
     @param flag YES to cause a layout, no to not cause a layout.
 */

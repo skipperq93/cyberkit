@@ -25,7 +25,7 @@
 #include "FloatSize.h"
 #include "TransformationMatrix.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class GraphicsLayerTransform {
 public:

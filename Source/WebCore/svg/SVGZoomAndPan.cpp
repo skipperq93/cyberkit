@@ -25,7 +25,7 @@
 #include <wtf/text/StringConcatenateNumbers.h>
 #include <wtf/text/StringParsingBuffer.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename CharacterType> static constexpr CharacterType disable[] = { 'd', 'i', 's', 'a', 'b', 'l', 'e' };
 template<typename CharacterType> static constexpr CharacterType magnify[] = { 'm', 'a', 'g', 'n', 'i', 'f', 'y' };

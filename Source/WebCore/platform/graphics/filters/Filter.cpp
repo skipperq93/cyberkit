@@ -32,7 +32,7 @@
 #include "FilterStyle.h"
 #include "ImageBuffer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Filter::Filter(Filter::Type filterType, const FloatSize& filterScale, ClipOperation clipOperation, const FloatRect& filterRegion)
     : FilterFunction(filterType)
@@ -129,4 +129,4 @@ FilterStyleVector Filter::createFilterStyles(const FloatRect& sourceImageRect) c
     return result;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

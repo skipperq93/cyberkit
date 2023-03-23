@@ -35,9 +35,9 @@
 #include "WebProcess.h"
 #include <CyberCore/Settings.h>
 
-namespace WebKit {
+namespace CyberKit {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 RemoteCDMFactory::RemoteCDMFactory(WebProcess& process)
     : m_process(process)

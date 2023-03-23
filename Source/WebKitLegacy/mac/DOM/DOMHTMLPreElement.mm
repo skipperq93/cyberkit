@@ -34,32 +34,32 @@
 #import <CyberCore/WebScriptObjectPrivate.h>
 #import <wtf/GetPtr.h>
 
-#define IMPL static_cast<WebCore::HTMLPreElement*>(reinterpret_cast<WebCore::Node*>(_internal))
+#define IMPL static_cast<CyberCore::HTMLPreElement*>(reinterpret_cast<CyberCore::Node*>(_internal))
 
 @implementation DOMHTMLPreElement
 
 - (int)width
 {
-    WebCore::JSMainThreadNullState state;
-    return IMPL->getIntegralAttribute(WebCore::HTMLNames::widthAttr);
+    CyberCore::JSMainThreadNullState state;
+    return IMPL->getIntegralAttribute(CyberCore::HTMLNames::widthAttr);
 }
 
 - (void)setWidth:(int)newWidth
 {
-    WebCore::JSMainThreadNullState state;
-    IMPL->setIntegralAttribute(WebCore::HTMLNames::widthAttr, newWidth);
+    CyberCore::JSMainThreadNullState state;
+    IMPL->setIntegralAttribute(CyberCore::HTMLNames::widthAttr, newWidth);
 }
 
 - (BOOL)wrap
 {
-    WebCore::JSMainThreadNullState state;
-    return IMPL->hasAttributeWithoutSynchronization(WebCore::HTMLNames::wrapAttr);
+    CyberCore::JSMainThreadNullState state;
+    return IMPL->hasAttributeWithoutSynchronization(CyberCore::HTMLNames::wrapAttr);
 }
 
 - (void)setWrap:(BOOL)newWrap
 {
-    WebCore::JSMainThreadNullState state;
-    IMPL->setBooleanAttribute(WebCore::HTMLNames::wrapAttr, newWrap);
+    CyberCore::JSMainThreadNullState state;
+    IMPL->setBooleanAttribute(CyberCore::HTMLNames::wrapAttr, newWrap);
 }
 
 @end

@@ -51,8 +51,8 @@
 #define WEBAUTHN_RELEASE_LOG_ERROR(fmt, ...) RELEASE_LOG_ERROR(WebAuthn, "%p - [webPageID=%" PRIu64 ", webFrameID=%" PRIu64 "] WebAuthenticatorCoordinator::" fmt, this, PAGE_ID, FRAME_ID, ##__VA_ARGS__)
 #define WEBAUTHN_RELEASE_LOG_ERROR_NO_FRAME(fmt, ...) RELEASE_LOG_ERROR(WebAuthn, "%p - [webPageID=%" PRIu64 "] WebAuthenticatorCoordinator::" fmt, this, PAGE_ID, ##__VA_ARGS__)
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 namespace {
 inline bool isWebBrowser()
@@ -115,7 +115,7 @@ bool WebAuthenticatorCoordinator::processingUserGesture(const Frame& frame, cons
     return processingUserGestureOrFreebie;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #undef WEBAUTHN_RELEASE_LOG_ERROR_NO_FRAME
 #undef WEBAUTHN_RELEASE_LOG_ERROR

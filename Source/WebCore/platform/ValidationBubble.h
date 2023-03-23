@@ -55,7 +55,7 @@ using PlatformView = GtkWidget;
 using PlatformView = void;
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class ValidationBubble : public RefCounted<ValidationBubble> {
 public:

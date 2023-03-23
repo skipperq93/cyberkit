@@ -53,7 +53,7 @@
 #include "VisitedLinkStore.h"
 #include <wtf/text/CString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static inline void addVisitedLink(Page& page, const URL& url)
 {
@@ -93,7 +93,7 @@ void FrameLoader::HistoryController::saveScrollPositionAndViewStateToItem(Histor
 #endif
     }
 
-    // FIXME: It would be great to work out a way to put this code in WebCore instead of calling through to the client.
+    // FIXME: It would be great to work out a way to put this code in CyberCore instead of calling through to the client.
     m_frame.loader().client().saveViewStateToItem(*item);
 
     // Notify clients that the HistoryItem has changed.
@@ -150,7 +150,7 @@ void FrameLoader::HistoryController::restoreScrollPositionAndViewState()
         }
     }
 
-    // FIXME: It would be great to work out a way to put this code in WebCore instead of calling
+    // FIXME: It would be great to work out a way to put this code in CyberCore instead of calling
     // through to the client.
     m_frame.loader().client().restoreViewState();
 
@@ -211,7 +211,7 @@ void FrameLoader::HistoryController::saveDocumentState()
         if (DocumentLoader* documentLoader = document.loader())
             item->setShouldOpenExternalURLsPolicy(documentLoader->shouldOpenExternalURLsPolicyToPropagate());
 
-        LOG(Loading, "WebCoreLoading frame %" PRIu64 ": saving form state to %p", m_frame.frameID().object().toUInt64(), item);
+        LOG(Loading, "CyberCoreLoading frame %" PRIu64 ": saving form state to %p", m_frame.frameID().object().toUInt64(), item);
         item->setDocumentState(document.formElementsState());
     }
 }
@@ -256,7 +256,7 @@ void FrameLoader::HistoryController::restoreDocumentState()
 
     m_frame.loader().documentLoader()->setShouldOpenExternalURLsPolicy(m_currentItem->shouldOpenExternalURLsPolicy());
 
-    LOG(Loading, "WebCoreLoading frame %" PRIu64 ": restoring form state from %p", m_frame.frameID().object().toUInt64(), m_currentItem.get());
+    LOG(Loading, "CyberCoreLoading frame %" PRIu64 ": restoring form state from %p", m_frame.frameID().object().toUInt64(), m_currentItem.get());
     m_frame.document()->setStateForNewFormElements(m_currentItem->documentState());
 }
 
@@ -947,4 +947,4 @@ void FrameLoader::HistoryController::replaceCurrentItem(HistoryItem* item)
         m_currentItem = item;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

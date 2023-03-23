@@ -24,6 +24,6 @@
  */
 
 messages -> RemoteWebLockRegistry {
-    DidCompleteLockRequest(WebCore::WebLockIdentifier lockIdentifier, WebCore::ScriptExecutionContextIdentifier clientID, bool success);
-    DidStealLock(WebCore::WebLockIdentifier lockIdentifier, WebCore::ScriptExecutionContextIdentifier clientID);
+    DidCompleteLockRequest(CyberCore::WebLockIdentifier lockIdentifier, CyberCore::ScriptExecutionContextIdentifier clientID, bool success);
+    DidStealLock(CyberCore::WebLockIdentifier lockIdentifier, CyberCore::ScriptExecutionContextIdentifier clientID);
 }

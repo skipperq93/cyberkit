@@ -33,7 +33,7 @@ namespace WTF {
 class MediaTime;
 }
 
-namespace WebCore {
+namespace CyberCore {
 class IntSize;
 class VideoFrame;
 

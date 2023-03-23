@@ -30,7 +30,7 @@
 #include "RemoteCommandListener.h"
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Image;
 struct NowPlayingInfo;

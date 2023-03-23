@@ -36,7 +36,7 @@ namespace JSC {
 class ArrayBufferView;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class SubtleCrypto;
 

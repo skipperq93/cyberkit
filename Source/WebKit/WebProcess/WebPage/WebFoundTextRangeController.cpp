@@ -46,8 +46,8 @@
 #include <CyberCore/TextIterator.h>
 #include <wtf/Scope.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 WebFoundTextRangeController::WebFoundTextRangeController(WebPage& webPage)
     : m_webPage(webPage)
@@ -57,7 +57,7 @@ WebFoundTextRangeController::WebFoundTextRangeController(WebPage& webPage)
 void WebFoundTextRangeController::findTextRangesForStringMatches(const String& string, OptionSet<FindOptions> options, uint32_t maxMatchCount, CompletionHandler<void(Vector<WebFoundTextRange>&&)>&& completionHandler)
 {
     auto result = m_webPage->corePage()->findTextMatches(string, core(options), maxMatchCount, false);
-    Vector<WebCore::SimpleRange> findMatches = WTFMove(result.ranges);
+    Vector<CyberCore::SimpleRange> findMatches = WTFMove(result.ranges);
 
     if (!findMatches.isEmpty())
         m_cachedFoundRanges.clear();
@@ -79,7 +79,7 @@ void WebFoundTextRangeController::findTextRangesForStringMatches(const String& s
         }
 
         // FIXME: We should get the character ranges at the same time as the SimpleRanges to avoid additional traversals.
-        auto range = characterRange(makeBoundaryPointBeforeNodeContents(*element), simpleRange, WebCore::findIteratorOptions());
+        auto range = characterRange(makeBoundaryPointBeforeNodeContents(*element), simpleRange, CyberCore::findIteratorOptions());
         auto foundTextRange = WebFoundTextRange { range.location, range.length, frameName.length() ? frameName : emptyAtom(), order };
 
         m_cachedFoundRanges.add(foundTextRange, simpleRange);
@@ -103,11 +103,11 @@ void WebFoundTextRangeController::replaceFoundTextRangeWithString(const WebFound
     if (!frame)
         return;
 
-    WebCore::VisibleSelection visibleSelection(*simpleRange);
-    OptionSet temporarySelectionOptions { WebCore::TemporarySelectionOption::DoNotSetFocus, WebCore::TemporarySelectionOption::IgnoreSelectionChanges };
-    WebCore::TemporarySelectionChange selectionChange(*document, visibleSelection, temporarySelectionOptions);
+    CyberCore::VisibleSelection visibleSelection(*simpleRange);
+    OptionSet temporarySelectionOptions { CyberCore::TemporarySelectionOption::DoNotSetFocus, CyberCore::TemporarySelectionOption::IgnoreSelectionChanges };
+    CyberCore::TemporarySelectionChange selectionChange(*document, visibleSelection, temporarySelectionOptions);
 
-    frame->editor().replaceSelectionWithText(string, WebCore::Editor::SelectReplacement::Yes, WebCore::Editor::SmartReplace::No, WebCore::EditAction::InsertReplacement);
+    frame->editor().replaceSelectionWithText(string, CyberCore::Editor::SelectReplacement::Yes, CyberCore::Editor::SmartReplace::No, CyberCore::EditAction::InsertReplacement);
 }
 
 void WebFoundTextRangeController::decorateTextRangeWithStyle(const WebFoundTextRange& range, FindDecorationStyle style)
@@ -128,9 +128,9 @@ void WebFoundTextRangeController::decorateTextRangeWithStyle(const WebFoundTextR
     }
 
     if (style == FindDecorationStyle::Normal)
-        simpleRange->start.document().markers().removeMarkers(*simpleRange, WebCore::DocumentMarker::TextMatch);
+        simpleRange->start.document().markers().removeMarkers(*simpleRange, CyberCore::DocumentMarker::TextMatch);
     else if (style == FindDecorationStyle::Found)
-        simpleRange->start.document().markers().addMarker(*simpleRange, WebCore::DocumentMarker::TextMatch);
+        simpleRange->start.document().markers().addMarker(*simpleRange, CyberCore::DocumentMarker::TextMatch);
     else if (style == FindDecorationStyle::Highlighted) {
         m_highlightedRange = range;
 
@@ -154,13 +154,13 @@ void WebFoundTextRangeController::scrollTextRangeToVisible(const WebFoundTextRan
     if (!document)
         return;
 
-    WebCore::VisibleSelection visibleSelection(*simpleRange);
-    OptionSet temporarySelectionOptions { WebCore::TemporarySelectionOption::DelegateMainFrameScroll, WebCore::TemporarySelectionOption::RevealSelectionBounds, WebCore::TemporarySelectionOption::DoNotSetFocus, WebCore::TemporarySelectionOption::UserTriggered };
+    CyberCore::VisibleSelection visibleSelection(*simpleRange);
+    OptionSet temporarySelectionOptions { CyberCore::TemporarySelectionOption::DelegateMainFrameScroll, CyberCore::TemporarySelectionOption::RevealSelectionBounds, CyberCore::TemporarySelectionOption::DoNotSetFocus, CyberCore::TemporarySelectionOption::UserTriggered };
 
     if (document->isTopDocument())
-        temporarySelectionOptions.add(WebCore::TemporarySelectionOption::SmoothScroll);
+        temporarySelectionOptions.add(CyberCore::TemporarySelectionOption::SmoothScroll);
 
-    WebCore::TemporarySelectionChange selectionChange(*document, visibleSelection, temporarySelectionOptions);
+    CyberCore::TemporarySelectionChange selectionChange(*document, visibleSelection, temporarySelectionOptions);
 }
 
 void WebFoundTextRangeController::clearAllDecoratedFoundText()
@@ -181,8 +181,8 @@ void WebFoundTextRangeController::didBeginTextSearchOperation()
     if (m_findPageOverlay)
         m_findPageOverlay->stopFadeOutAnimation();
     else {
-        m_findPageOverlay = WebCore::PageOverlay::create(*this, WebCore::PageOverlay::OverlayType::Document);
-        m_webPage->corePage()->pageOverlayController().installPageOverlay(*m_findPageOverlay, WebCore::PageOverlay::FadeMode::Fade);
+        m_findPageOverlay = CyberCore::PageOverlay::create(*this, CyberCore::PageOverlay::OverlayType::Document);
+        m_webPage->corePage()->pageOverlayController().installPageOverlay(*m_findPageOverlay, CyberCore::PageOverlay::FadeMode::Fade);
     }
 
     m_findPageOverlay->setNeedsDisplay();
@@ -191,14 +191,14 @@ void WebFoundTextRangeController::didBeginTextSearchOperation()
 void WebFoundTextRangeController::didEndTextSearchOperation()
 {
     if (m_findPageOverlay)
-        m_webPage->corePage()->pageOverlayController().uninstallPageOverlay(*m_findPageOverlay, WebCore::PageOverlay::FadeMode::Fade);
+        m_webPage->corePage()->pageOverlayController().uninstallPageOverlay(*m_findPageOverlay, CyberCore::PageOverlay::FadeMode::Fade);
 }
 
-void WebFoundTextRangeController::addLayerForFindOverlay(CompletionHandler<void(WebCore::GraphicsLayer::PlatformLayerID)>&& completionHandler)
+void WebFoundTextRangeController::addLayerForFindOverlay(CompletionHandler<void(CyberCore::GraphicsLayer::PlatformLayerID)>&& completionHandler)
 {
     if (!m_findPageOverlay) {
-        m_findPageOverlay = WebCore::PageOverlay::create(*this, WebCore::PageOverlay::OverlayType::Document, WebCore::PageOverlay::AlwaysTileOverlayLayer::Yes);
-        m_webPage->corePage()->pageOverlayController().installPageOverlay(*m_findPageOverlay, WebCore::PageOverlay::FadeMode::DoNotFade);
+        m_findPageOverlay = CyberCore::PageOverlay::create(*this, CyberCore::PageOverlay::OverlayType::Document, CyberCore::PageOverlay::AlwaysTileOverlayLayer::Yes);
+        m_webPage->corePage()->pageOverlayController().installPageOverlay(*m_findPageOverlay, CyberCore::PageOverlay::FadeMode::DoNotFade);
         m_findPageOverlay->layer().setOpacity(0);
     }
 
@@ -210,10 +210,10 @@ void WebFoundTextRangeController::addLayerForFindOverlay(CompletionHandler<void(
 void WebFoundTextRangeController::removeLayerForFindOverlay()
 {
     if (m_findPageOverlay)
-        m_webPage->corePage()->pageOverlayController().uninstallPageOverlay(*m_findPageOverlay, WebCore::PageOverlay::FadeMode::DoNotFade);
+        m_webPage->corePage()->pageOverlayController().uninstallPageOverlay(*m_findPageOverlay, CyberCore::PageOverlay::FadeMode::DoNotFade);
 }
 
-void WebFoundTextRangeController::requestRectForFoundTextRange(const WebFoundTextRange& range, CompletionHandler<void(WebCore::FloatRect)>&& completionHandler)
+void WebFoundTextRangeController::requestRectForFoundTextRange(const WebFoundTextRange& range, CompletionHandler<void(CyberCore::FloatRect)>&& completionHandler)
 {
     auto simpleRange = simpleRangeFromFoundTextRange(range);
     if (!simpleRange) {
@@ -222,7 +222,7 @@ void WebFoundTextRangeController::requestRectForFoundTextRange(const WebFoundTex
     }
 
     auto* frameView = simpleRange->startContainer().document().frame()->view();
-    completionHandler(frameView->contentsToRootView(unionRect(WebCore::RenderObject::absoluteTextRects(*simpleRange))));
+    completionHandler(frameView->contentsToRootView(unionRect(CyberCore::RenderObject::absoluteTextRects(*simpleRange))));
 }
 
 void WebFoundTextRangeController::redraw()
@@ -244,7 +244,7 @@ void WebFoundTextRangeController::redraw()
     setTextIndicatorWithRange(*simpleRange);
 }
 
-void WebFoundTextRangeController::willMoveToPage(WebCore::PageOverlay&, WebCore::Page* page)
+void WebFoundTextRangeController::willMoveToPage(CyberCore::PageOverlay&, CyberCore::Page* page)
 {
     if (page)
         return;
@@ -253,40 +253,40 @@ void WebFoundTextRangeController::willMoveToPage(WebCore::PageOverlay&, WebCore:
     m_findPageOverlay = nullptr;
 }
 
-void WebFoundTextRangeController::didMoveToPage(WebCore::PageOverlay&, WebCore::Page*)
+void WebFoundTextRangeController::didMoveToPage(CyberCore::PageOverlay&, CyberCore::Page*)
 {
 }
 
-bool WebFoundTextRangeController::mouseEvent(WebCore::PageOverlay&, const WebCore::PlatformMouseEvent&)
+bool WebFoundTextRangeController::mouseEvent(CyberCore::PageOverlay&, const CyberCore::PlatformMouseEvent&)
 {
     return false;
 }
 
-void WebFoundTextRangeController::drawRect(WebCore::PageOverlay&, WebCore::GraphicsContext& graphicsContext, const WebCore::IntRect& dirtyRect)
+void WebFoundTextRangeController::drawRect(CyberCore::PageOverlay&, CyberCore::GraphicsContext& graphicsContext, const CyberCore::IntRect& dirtyRect)
 {
     constexpr int indicatorRadius = 3;
     constexpr int indicatorBorderWidth = 1;
 
-    constexpr auto highlightColor = WebCore::SRGBA<uint8_t> { 255, 228, 56 };
-    constexpr auto foundColor = WebCore::Color::white;
-    constexpr auto overlayBackgroundColor = WebCore::SRGBA<uint8_t> { 26, 26, 26, 64 };
-    constexpr auto shadowColor = WebCore::Color::black.colorWithAlphaByte(128);
+    constexpr auto highlightColor = CyberCore::SRGBA<uint8_t> { 255, 228, 56 };
+    constexpr auto foundColor = CyberCore::Color::white;
+    constexpr auto overlayBackgroundColor = CyberCore::SRGBA<uint8_t> { 26, 26, 26, 64 };
+    constexpr auto shadowColor = CyberCore::Color::black.colorWithAlphaByte(128);
 
     constexpr float shadowOffsetX = 0;
     constexpr float shadowOffsetY = 0;
     constexpr float shadowBlurRadius = 1;
 
-    WebCore::IntRect borderInflatedDirtyRect = dirtyRect;
+    CyberCore::IntRect borderInflatedDirtyRect = dirtyRect;
     borderInflatedDirtyRect.inflate(indicatorBorderWidth);
-    Vector<WebCore::FloatRect> rects = rectsForTextMatchesInRect(borderInflatedDirtyRect);
+    Vector<CyberCore::FloatRect> rects = rectsForTextMatchesInRect(borderInflatedDirtyRect);
 
     graphicsContext.fillRect(dirtyRect, overlayBackgroundColor);
 
-    auto foundFramePaths = WebCore::PathUtilities::pathsWithShrinkWrappedRects(rects, indicatorRadius);
+    auto foundFramePaths = CyberCore::PathUtilities::pathsWithShrinkWrappedRects(rects, indicatorRadius);
 
-    WebCore::GraphicsContextStateSaver stateSaver(graphicsContext);
+    CyberCore::GraphicsContextStateSaver stateSaver(graphicsContext);
 
-    graphicsContext.setShadow(WebCore::FloatSize(shadowOffsetX, shadowOffsetY), shadowBlurRadius, shadowColor);
+    graphicsContext.setShadow(CyberCore::FloatSize(shadowOffsetX, shadowOffsetY), shadowBlurRadius, shadowColor);
     graphicsContext.setStrokeColor(foundColor);
     graphicsContext.setStrokeThickness(indicatorBorderWidth * 2);
     for (auto& path : foundFramePaths)
@@ -294,7 +294,7 @@ void WebFoundTextRangeController::drawRect(WebCore::PageOverlay&, WebCore::Graph
 
     graphicsContext.clearShadow();
 
-    graphicsContext.setCompositeOperation(WebCore::CompositeOperator::Clear);
+    graphicsContext.setCompositeOperation(CyberCore::CompositeOperator::Clear);
     for (auto& path : foundFramePaths)
         graphicsContext.fillPath(path);
 
@@ -311,9 +311,9 @@ void WebFoundTextRangeController::drawRect(WebCore::PageOverlay&, WebCore::Graph
             return rect;
         });
 
-        auto paths = WebCore::PathUtilities::pathsWithShrinkWrappedRects(textRectsInRootViewCoordinates, indicatorRadius);
+        auto paths = CyberCore::PathUtilities::pathsWithShrinkWrappedRects(textRectsInRootViewCoordinates, indicatorRadius);
 
-        graphicsContext.setCompositeOperation(WebCore::CompositeOperator::SourceOver);
+        graphicsContext.setCompositeOperation(CyberCore::CompositeOperator::SourceOver);
         graphicsContext.setFillColor(highlightColor);
         for (const auto& path : paths)
             graphicsContext.fillPath(path);
@@ -322,13 +322,13 @@ void WebFoundTextRangeController::drawRect(WebCore::PageOverlay&, WebCore::Graph
     }
 }
 
-RefPtr<WebCore::TextIndicator> WebFoundTextRangeController::createTextIndicatorForRange(const WebCore::SimpleRange& range, WebCore::TextIndicatorPresentationTransition transition)
+RefPtr<CyberCore::TextIndicator> WebFoundTextRangeController::createTextIndicatorForRange(const CyberCore::SimpleRange& range, CyberCore::TextIndicatorPresentationTransition transition)
 {
     constexpr int indicatorMargin = 1;
 
-    OptionSet options { WebCore::TextIndicatorOption::IncludeMarginIfRangeMatchesSelection, WebCore::TextIndicatorOption::DoNotClipToVisibleRect };
-    if (WebCore::ImageOverlay::isInsideOverlay(range))
-        options.add({ WebCore::TextIndicatorOption::PaintAllContent, WebCore::TextIndicatorOption::PaintBackgrounds });
+    OptionSet options { CyberCore::TextIndicatorOption::IncludeMarginIfRangeMatchesSelection, CyberCore::TextIndicatorOption::DoNotClipToVisibleRect };
+    if (CyberCore::ImageOverlay::isInsideOverlay(range))
+        options.add({ CyberCore::TextIndicatorOption::PaintAllContent, CyberCore::TextIndicatorOption::PaintBackgrounds });
 
 #if PLATFORM(IOS_FAMILY)
     Ref frame = CheckedRef(m_webPage->corePage()->focusController())->focusedOrMainFrame();
@@ -337,41 +337,41 @@ RefPtr<WebCore::TextIndicator> WebFoundTextRangeController::createTextIndicatorF
     frame->selection().setUpdateAppearanceEnabled(false);
 #endif
 
-    return WebCore::TextIndicator::createWithRange(range, options, transition, WebCore::FloatSize(indicatorMargin, indicatorMargin));
+    return CyberCore::TextIndicator::createWithRange(range, options, transition, CyberCore::FloatSize(indicatorMargin, indicatorMargin));
 }
 
-void WebFoundTextRangeController::setTextIndicatorWithRange(const WebCore::SimpleRange& range)
+void WebFoundTextRangeController::setTextIndicatorWithRange(const CyberCore::SimpleRange& range)
 {
-    m_textIndicator = createTextIndicatorForRange(range, WebCore::TextIndicatorPresentationTransition::None);
+    m_textIndicator = createTextIndicatorForRange(range, CyberCore::TextIndicatorPresentationTransition::None);
 }
 
-void WebFoundTextRangeController::flashTextIndicatorAndUpdateSelectionWithRange(const WebCore::SimpleRange& range)
+void WebFoundTextRangeController::flashTextIndicatorAndUpdateSelectionWithRange(const CyberCore::SimpleRange& range)
 {
     auto& document = range.startContainer().document();
-    document.selection().setSelection(WebCore::VisibleSelection(range), WebCore::FrameSelection::defaultSetSelectionOptions(WebCore::UserTriggered));
+    document.selection().setSelection(CyberCore::VisibleSelection(range), CyberCore::FrameSelection::defaultSetSelectionOptions(CyberCore::UserTriggered));
 
-    if (auto textIndicator = createTextIndicatorForRange(range, WebCore::TextIndicatorPresentationTransition::Bounce))
+    if (auto textIndicator = createTextIndicatorForRange(range, CyberCore::TextIndicatorPresentationTransition::Bounce))
         m_webPage->setTextIndicator(textIndicator->data());
 }
 
-Vector<WebCore::FloatRect> WebFoundTextRangeController::rectsForTextMatchesInRect(WebCore::IntRect clipRect)
+Vector<CyberCore::FloatRect> WebFoundTextRangeController::rectsForTextMatchesInRect(CyberCore::IntRect clipRect)
 {
-    Vector<WebCore::FloatRect> rects;
-    auto* localMainFrame = dynamicDowncast<WebCore::LocalFrame>(m_webPage->corePage()->mainFrame());
+    Vector<CyberCore::FloatRect> rects;
+    auto* localMainFrame = dynamicDowncast<CyberCore::LocalFrame>(m_webPage->corePage()->mainFrame());
     if (!localMainFrame)
         return rects;
 
     RefPtr mainFrameView = localMainFrame->view();
 
-    for (WebCore::AbstractFrame* frame = localMainFrame; frame; frame = frame->tree().traverseNext()) {
-        auto* localFrame = dynamicDowncast<WebCore::LocalFrame>(frame);
+    for (CyberCore::AbstractFrame* frame = localMainFrame; frame; frame = frame->tree().traverseNext()) {
+        auto* localFrame = dynamicDowncast<CyberCore::LocalFrame>(frame);
         if (!localFrame)
             continue;
         RefPtr document = localFrame->document();
         if (!document)
             continue;
 
-        for (auto rect : document->markers().renderedRectsForMarkers(WebCore::DocumentMarker::TextMatch)) {
+        for (auto rect : document->markers().renderedRectsForMarkers(CyberCore::DocumentMarker::TextMatch)) {
             if (!localFrame->isMainFrame())
                 rect = mainFrameView->windowToContents(localFrame->view()->contentsToWindow(enclosingIntRect(rect)));
 
@@ -385,7 +385,7 @@ Vector<WebCore::FloatRect> WebFoundTextRangeController::rectsForTextMatchesInRec
     return rects;
 }
 
-WebCore::Document* WebFoundTextRangeController::documentForFoundTextRange(const WebFoundTextRange& range) const
+CyberCore::Document* WebFoundTextRangeController::documentForFoundTextRange(const WebFoundTextRange& range) const
 {
     auto* localMainFrame = dynamicDowncast<LocalFrame>(m_webPage->corePage()->mainFrame());
     if (!localMainFrame)
@@ -395,21 +395,21 @@ WebCore::Document* WebFoundTextRangeController::documentForFoundTextRange(const 
     if (range.frameIdentifier.isEmpty())
         return mainFrame.document();
 
-    if (auto* frame = dynamicDowncast<WebCore::LocalFrame>(mainFrame.tree().find(AtomString { range.frameIdentifier }, mainFrame)))
+    if (auto* frame = dynamicDowncast<CyberCore::LocalFrame>(mainFrame.tree().find(AtomString { range.frameIdentifier }, mainFrame)))
         return frame->document();
 
     return nullptr;
 }
 
-std::optional<WebCore::SimpleRange> WebFoundTextRangeController::simpleRangeFromFoundTextRange(WebFoundTextRange range)
+std::optional<CyberCore::SimpleRange> WebFoundTextRangeController::simpleRangeFromFoundTextRange(WebFoundTextRange range)
 {
-    return m_cachedFoundRanges.ensure(range, [&] () -> std::optional<WebCore::SimpleRange> {
+    return m_cachedFoundRanges.ensure(range, [&] () -> std::optional<CyberCore::SimpleRange> {
         auto* document = documentForFoundTextRange(range);
         if (!document)
             return std::nullopt;
 
-        return resolveCharacterRange(makeRangeSelectingNodeContents(*document->documentElement()), { range.location, range.length }, WebCore::findIteratorOptions());
+        return resolveCharacterRange(makeRangeSelectingNodeContents(*document->documentElement()), { range.location, range.length }, CyberCore::findIteratorOptions());
     }).iterator->value;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

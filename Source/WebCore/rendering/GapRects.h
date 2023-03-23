@@ -24,7 +24,7 @@
 
 #include "LayoutRect.h"
 
-namespace WebCore {
+namespace CyberCore {
 
     struct GapRects {
         const LayoutRect& left() const { return m_left; }
@@ -56,4 +56,4 @@ namespace WebCore {
         LayoutRect m_right;
     };
 
-} // namespace WebCore
+} // namespace CyberCore

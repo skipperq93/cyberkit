@@ -33,7 +33,7 @@
 #include "SharedBuffer.h"
 #include "TextResourceDecoder.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 CachedTextTrack::CachedTextTrack(CachedResourceRequest&& request, PAL::SessionID sessionID, const CookieJar* cookieJar)
     : CachedResource(WTFMove(request), Type::TextTrackResource, sessionID, cookieJar)

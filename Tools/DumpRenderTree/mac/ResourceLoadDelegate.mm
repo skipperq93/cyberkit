@@ -34,7 +34,7 @@
 #import <CyberScriptCore/RegularExpression.h>
 #import <CyberCore/ProtectionSpaceCocoa.h>
 #import <CyberKit/WebDataSourcePrivate.h>
-#import <CyberKit/WebKitLegacy.h>
+#import <CyberKit/CyberKitLegacy.h>
 #import <wtf/Assertions.h>
 
 using namespace std;
@@ -301,13 +301,13 @@ BOOL canAuthenticateServerTrustAgainstProtectionSpace(NSString *host)
         printf("%s\n", [string UTF8String]);
     }
 
-    WebCore::ProtectionSpace protectionSpace(protectionSpaceNS);
+    CyberCore::ProtectionSpace protectionSpace(protectionSpaceNS);
 
     auto scheme = protectionSpace.authenticationScheme();
-    if (scheme == WebCore::ProtectionSpaceBase::AuthenticationScheme::ServerTrustEvaluationRequested)
+    if (scheme == CyberCore::ProtectionSpaceBase::AuthenticationScheme::ServerTrustEvaluationRequested)
         return canAuthenticateServerTrustAgainstProtectionSpace(protectionSpaceNS.host);
 
-    return scheme <= WebCore::ProtectionSpaceBase::AuthenticationScheme::HTTPDigest || scheme == WebCore::ProtectionSpaceBase::AuthenticationScheme::OAuth;
+    return scheme <= CyberCore::ProtectionSpaceBase::AuthenticationScheme::HTTPDigest || scheme == CyberCore::ProtectionSpaceBase::AuthenticationScheme::OAuth;
 }
 
 @end

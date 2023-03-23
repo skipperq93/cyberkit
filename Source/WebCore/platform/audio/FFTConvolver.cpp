@@ -34,7 +34,7 @@
 
 #include "VectorMath.h"
 
-namespace WebCore {
+namespace CyberCore {
     
 FFTConvolver::FFTConvolver(size_t fftSize)
     : m_frame(fftSize)
@@ -112,6 +112,6 @@ void FFTConvolver::reset()
     m_readWriteIndex = 0;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

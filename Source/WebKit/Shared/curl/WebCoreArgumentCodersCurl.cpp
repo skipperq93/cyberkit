@@ -24,7 +24,7 @@
  */
 
 #include "config.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 
 #include "DataReference.h"
 #include <CyberCore/CertificateInfo.h>
@@ -38,7 +38,7 @@
 
 namespace IPC {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 void ArgumentCoder<ResourceError>::encodePlatformData(Encoder& encoder, const ResourceError& resourceError)
 {
@@ -168,7 +168,7 @@ void ArgumentCoder<SerializedPlatformDataCueValue>::encodePlatformData(Encoder& 
     ASSERT_NOT_REACHED();
 }
 
-std::optional<SerializedPlatformDataCueValue>  ArgumentCoder<SerializedPlatformDataCueValue>::decodePlatformData(Decoder& decoder, WebCore::SerializedPlatformDataCueValue::PlatformType platformType)
+std::optional<SerializedPlatformDataCueValue>  ArgumentCoder<SerializedPlatformDataCueValue>::decodePlatformData(Decoder& decoder, CyberCore::SerializedPlatformDataCueValue::PlatformType platformType)
 {
     ASSERT_NOT_REACHED();
     return std::nullopt;

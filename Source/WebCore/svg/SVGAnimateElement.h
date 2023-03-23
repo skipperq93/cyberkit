@@ -27,7 +27,7 @@
 
 #include "SVGAnimateElementBase.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGLegacyAnimatedProperty;
 
@@ -40,4 +40,4 @@ private:
     SVGAnimateElement(const QualifiedName&, Document&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

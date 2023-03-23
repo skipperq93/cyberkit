@@ -35,7 +35,7 @@ OBJC_CLASS UIFont;
 OBJC_CLASS UIFontDescriptor;
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 #if USE(APPKIT)
 using CocoaFont = NSFont;
@@ -45,4 +45,4 @@ using CocoaFont = UIFont;
 using CocoaFontDescriptor = UIFontDescriptor;
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

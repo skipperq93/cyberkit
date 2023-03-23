@@ -29,7 +29,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AnimationList : public RefCounted<AnimationList> {
 public:
@@ -75,4 +75,4 @@ private:
 
 WTF::TextStream& operator<<(WTF::TextStream&, const AnimationList&);
 
-} // namespace WebCore
+} // namespace CyberCore

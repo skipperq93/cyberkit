@@ -41,8 +41,8 @@
 #include <CyberCore/FrameView.h>
 #include <CyberCore/ImageBuffer.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 DrawingAreaWC::DrawingAreaWC(WebPage& webPage, const WebPageCreationParameters& parameters)
     : DrawingArea(DrawingAreaType::WC, parameters.drawingAreaIdentifier, webPage)
@@ -99,9 +99,9 @@ void DrawingAreaWC::updatePreferences(const WebPreferencesStore&)
     settings.setAcceleratedCompositingForFixedPositionEnabled(settings.acceleratedCompositingEnabled());
 }
 
-bool DrawingAreaWC::shouldUseTiledBackingForFrameView(const WebCore::FrameView& frameView) const
+bool DrawingAreaWC::shouldUseTiledBackingForFrameView(const CyberCore::FrameView& frameView) const
 {
-    auto* localFrame = dynamicDowncast<WebCore::LocalFrame>(frameView.frame());
+    auto* localFrame = dynamicDowncast<CyberCore::LocalFrame>(frameView.frame());
     return localFrame && localFrame->isMainFrame();
 }
 
@@ -388,6 +388,6 @@ void DrawingAreaWC::displayDidRefresh()
     }
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(GRAPHICS_LAYER_WC)

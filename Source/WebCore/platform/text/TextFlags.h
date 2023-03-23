@@ -36,7 +36,7 @@ namespace WTF {
 class TextStream;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class FontFeatureValues;
 

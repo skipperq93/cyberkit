@@ -38,7 +38,7 @@
 #include "SVGResources.h"
 #include "SVGResourcesCache.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 SVGBoundingBoxComputation::SVGBoundingBoxComputation(const RenderLayerModelObject& renderer)
     : m_renderer(renderer)

@@ -33,7 +33,7 @@
 #include <optional>
 #include <wtf/Noncopyable.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AuthenticationChallenge;
 class CachedResource;
@@ -79,4 +79,4 @@ private:
     std::optional<ResourceLoaderIdentifier> m_initialRequestIdentifier;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

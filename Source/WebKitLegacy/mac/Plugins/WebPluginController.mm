@@ -34,8 +34,8 @@
 #import "WebFrameInternal.h"
 #import "WebFrameView.h"
 #import "WebHTMLViewPrivate.h"
-#import "WebKitErrorsPrivate.h"
-#import "WebKitLogging.h"
+#import "CyberKitErrorsPrivate.h"
+#import "CyberKitLogging.h"
 #import "WebNSObjectExtras.h"
 #import "WebNSURLExtras.h"
 #import "WebNSViewExtras.h"
@@ -58,7 +58,7 @@
 #import <CyberCore/ResourceRequest.h>
 #import <CyberCore/ScriptController.h>
 #import <CyberCore/UserGestureIndicator.h>
-#import <CyberCore/WebCoreURLResponse.h>
+#import <CyberCore/CyberCoreURLResponse.h>
 #import <objc/runtime.h>
 #import <wtf/text/WTFString.h>
 
@@ -69,7 +69,7 @@
 #import <CyberCore/FrameView.h>
 #import <CyberCore/GraphicsLayer.h>
 #import <CyberCore/RuntimeApplicationChecks.h>
-#import <CyberCore/WebCoreThreadRun.h>
+#import <CyberCore/CyberCoreThreadRun.h>
 #import <wtf/SoftLinking.h>
 #endif
 
@@ -166,7 +166,7 @@ static RetainPtr<NSMutableSet>& pluginViews()
         return nil;
 
     // Get a GraphicsLayer;
-    WebCore::GraphicsLayer* layerForWidget = coreView->graphicsLayerForPlatformWidget(view);
+    CyberCore::GraphicsLayer* layerForWidget = coreView->graphicsLayerForPlatformWidget(view);
     if (!layerForWidget)
         return nil;
     
@@ -177,10 +177,10 @@ static RetainPtr<NSMutableSet>& pluginViews()
 - (void)stopOnePlugin:(NSView *)view
 {
     if ([view respondsToSelector:@selector(webPlugInStop)]) {
-        JSC::JSLock::DropAllLocks dropAllLocks(WebCore::commonVM());
+        JSC::JSLock::DropAllLocks dropAllLocks(CyberCore::commonVM());
         [view webPlugInStop];
     } else if ([view respondsToSelector:@selector(pluginStop)]) {
-        JSC::JSLock::DropAllLocks dropAllLocks(WebCore::commonVM());
+        JSC::JSLock::DropAllLocks dropAllLocks(CyberCore::commonVM());
         [view pluginStop];
     }
 }
@@ -189,7 +189,7 @@ static RetainPtr<NSMutableSet>& pluginViews()
 - (void)stopOnePluginForPageCache:(NSView *)view
 {
     if ([view respondsToSelector:@selector(webPlugInStopForPageCache)]) {
-        JSC::JSLock::DropAllLocks dropAllLocks(WebCore::commonVM());
+        JSC::JSLock::DropAllLocks dropAllLocks(CyberCore::commonVM());
         [view webPlugInStopForPageCache];
     } else
         [self stopOnePlugin:view];
@@ -199,10 +199,10 @@ static RetainPtr<NSMutableSet>& pluginViews()
 - (void)destroyOnePlugin:(NSView *)view
 {
     if ([view respondsToSelector:@selector(webPlugInDestroy)]) {
-        JSC::JSLock::DropAllLocks dropAllLocks(WebCore::commonVM());
+        JSC::JSLock::DropAllLocks dropAllLocks(CyberCore::commonVM());
         [view webPlugInDestroy];
     } else if ([view respondsToSelector:@selector(pluginDestroy)]) {
-        JSC::JSLock::DropAllLocks dropAllLocks(WebCore::commonVM());
+        JSC::JSLock::DropAllLocks dropAllLocks(CyberCore::commonVM());
         [view pluginDestroy];
     }
 }
@@ -213,16 +213,16 @@ static RetainPtr<NSMutableSet>& pluginViews()
         return;
     
     if ([_views count] > 0)
-        LOG(Plugins, "starting WebKit plugins : %@", [_views description]);
+        LOG(Plugins, "starting CyberKit plugins : %@", [_views description]);
     
     int count = [_views count];
     for (int i = 0; i < count; i++) {
         id aView = [_views objectAtIndex:i];
         if ([aView respondsToSelector:@selector(webPlugInStart)]) {
-            JSC::JSLock::DropAllLocks dropAllLocks(WebCore::commonVM());
+            JSC::JSLock::DropAllLocks dropAllLocks(CyberCore::commonVM());
             [aView webPlugInStart];
         } else if ([aView respondsToSelector:@selector(pluginStart)]) {
-            JSC::JSLock::DropAllLocks dropAllLocks(WebCore::commonVM());
+            JSC::JSLock::DropAllLocks dropAllLocks(CyberCore::commonVM());
             [aView pluginStart];
         }
     }
@@ -235,7 +235,7 @@ static RetainPtr<NSMutableSet>& pluginViews()
         return;
 
     if ([_views count] > 0) {
-        LOG(Plugins, "stopping WebKit plugins: %@", [_views description]);
+        LOG(Plugins, "stopping CyberKit plugins: %@", [_views description]);
     }
     
     int viewsCount = [_views count];
@@ -253,7 +253,7 @@ static RetainPtr<NSMutableSet>& pluginViews()
 
     NSUInteger viewsCount = [_views count];
     if (viewsCount > 0)
-        LOG(Plugins, "stopping WebKit plugins for PageCache: %@", [_views description]);
+        LOG(Plugins, "stopping CyberKit plugins for PageCache: %@", [_views description]);
 
     for (NSUInteger i = 0; i < viewsCount; ++i)
         [self stopOnePluginForPageCache:[_views objectAtIndex:i]];
@@ -267,7 +267,7 @@ static RetainPtr<NSMutableSet>& pluginViews()
 
     NSUInteger viewsCount = [_views count];
     if (viewsCount > 0)
-        LOG(Plugins, "restoring WebKit plugins from PageCache: %@", [_views description]);
+        LOG(Plugins, "restoring CyberKit plugins from PageCache: %@", [_views description]);
 
     for (NSUInteger i = 0; i < viewsCount; ++i)
         [[webView _UIKitDelegateForwarder] webView:webView willAddPlugInView:[_views objectAtIndex:i]];
@@ -298,10 +298,10 @@ static RetainPtr<NSMutableSet>& pluginViews()
 
         LOG(Plugins, "initializing plug-in %@", view);
         if ([view respondsToSelector:@selector(webPlugInInitialize)]) {
-            JSC::JSLock::DropAllLocks dropAllLocks(WebCore::commonVM());
+            JSC::JSLock::DropAllLocks dropAllLocks(CyberCore::commonVM());
             [view webPlugInInitialize];
         } else if ([view respondsToSelector:@selector(pluginInitialize)]) {
-            JSC::JSLock::DropAllLocks dropAllLocks(WebCore::commonVM());
+            JSC::JSLock::DropAllLocks dropAllLocks(CyberCore::commonVM());
             [view pluginInitialize];
         }
 
@@ -313,15 +313,15 @@ static RetainPtr<NSMutableSet>& pluginViews()
         if (_started) {
             LOG(Plugins, "starting plug-in %@", view);
             if ([view respondsToSelector:@selector(webPlugInStart)]) {
-                JSC::JSLock::DropAllLocks dropAllLocks(WebCore::commonVM());
+                JSC::JSLock::DropAllLocks dropAllLocks(CyberCore::commonVM());
                 [view webPlugInStart];
             } else if ([view respondsToSelector:@selector(pluginStart)]) {
-                JSC::JSLock::DropAllLocks dropAllLocks(WebCore::commonVM());
+                JSC::JSLock::DropAllLocks dropAllLocks(CyberCore::commonVM());
                 [view pluginStart];
             }
             
             if ([view respondsToSelector:@selector(setContainingWindow:)]) {
-                JSC::JSLock::DropAllLocks dropAllLocks(WebCore::commonVM());
+                JSC::JSLock::DropAllLocks dropAllLocks(CyberCore::commonVM());
                 [view setContainingWindow:[_documentView window]];
             }
         }
@@ -368,7 +368,7 @@ static void cancelOutstandingCheck(const void *item, void *context)
     [self stopAllPlugins];
 
     if ([_views count] > 0) {
-        LOG(Plugins, "destroying WebKit plugins: %@", [_views description]);
+        LOG(Plugins, "destroying CyberKit plugins: %@", [_views description]);
     }
 
     [self _cancelOutstandingChecks];
@@ -398,7 +398,7 @@ static void cancelOutstandingCheck(const void *item, void *context)
 #if PLATFORM(IOS_FAMILY)
 - (BOOL)processingUserGesture
 {
-    return WebCore::UserGestureIndicator::processingUserGesture();
+    return CyberCore::UserGestureIndicator::processingUserGesture();
 }
 #endif
 
@@ -441,7 +441,7 @@ static void cancelOutstandingCheck(const void *item, void *context)
             LOG_ERROR("could not load URL %@", [request URL]);
             return;
         }
-        WebCore::FrameLoadRequest frameLoadRequest { *core(frame), request };
+        CyberCore::FrameLoadRequest frameLoadRequest { *core(frame), request };
         frameLoadRequest.setFrameName(target);
         frameLoadRequest.setShouldCheckNewWindowPolicy(true);
         core(frame)->loader().load(WTFMove(frameLoadRequest));
@@ -517,7 +517,7 @@ static void cancelOutstandingCheck(const void *item, void *context)
     else {
         // Cancel the load since this plug-in does its own loading.
         // FIXME: See <rdar://problem/4258008> for a problem with this.
-        auto error = adoptNS([[NSError alloc] _initWithPluginErrorCode:WebKitErrorPlugInWillHandleLoad
+        auto error = adoptNS([[NSError alloc] _initWithPluginErrorCode:CyberKitErrorPlugInWillHandleLoad
                                                         contentURL:[response URL]
                                                      pluginPageURL:nil
                                                         pluginName:nil // FIXME: Get this from somewhere
@@ -558,13 +558,13 @@ static bool isKindOfClass(id object, NSString *className)
 }
 
 
-// Existing versions of the Flip4Mac WebKit plug-in have an object lifetime bug related to an NSAlert that is
+// Existing versions of the Flip4Mac CyberKit plug-in have an object lifetime bug related to an NSAlert that is
 // used to notify the user about updates to the plug-in. This bug can result in Safari crashing if the page
 // containing the plug-in navigates while the alert is displayed (<rdar://problem/7313430>).
 //
 // The gist of the bug is thus: Flip4Mac sets an instance of the TSUpdateCheck class as the modal delegate of the
 // NSAlert instance. This TSUpdateCheck instance itself has a delegate. The delegate is set to the WmvPlugin
-// instance which is the NSView subclass that is exposed to WebKit as the plug-in view. Since this relationship
+// instance which is the NSView subclass that is exposed to CyberKit as the plug-in view. Since this relationship
 // is that of delegates the TSUpdateCheck does not retain the WmvPlugin. This leads to a bug if the WmvPlugin
 // instance is destroyed before the TSUpdateCheck instance as the TSUpdateCheck instance will be left with a
 // pointer to a stale object. This will happen if a page containing the Flip4Mac plug-in triggers a navigation
@@ -593,7 +593,7 @@ static alertDidEndIMP original_TSUpdateCheck_alertDidEnd_returnCode_contextInfo_
 
 @class TSUpdateCheck;
 
-static void WebKit_TSUpdateCheck_alertDidEnd_returnCode_contextInfo_(id object, SEL selector, NSAlert *alert, NSInteger returnCode, void* contextInfo)
+static void CyberKit_TSUpdateCheck_alertDidEnd_returnCode_contextInfo_(id object, SEL selector, NSAlert *alert, NSInteger returnCode, void* contextInfo)
 {
     ALLOW_DEPRECATED_DECLARATIONS_BEGIN
     [[(TSUpdateCheck *)object delegate] autorelease];
@@ -602,7 +602,7 @@ static void WebKit_TSUpdateCheck_alertDidEnd_returnCode_contextInfo_(id object, 
     original_TSUpdateCheck_alertDidEnd_returnCode_contextInfo_(object, selector, alert, returnCode, contextInfo);
 }
 
-static void WebKit_NSAlert_beginSheetModalForWindow_modalDelegate_didEndSelector_contextInfo_(id object, SEL selector, NSWindow *window, id modalDelegate, SEL didEndSelector, void* contextInfo)
+static void CyberKit_NSAlert_beginSheetModalForWindow_modalDelegate_didEndSelector_contextInfo_(id object, SEL selector, NSWindow *window, id modalDelegate, SEL didEndSelector, void* contextInfo)
 {
     ALLOW_DEPRECATED_DECLARATIONS_BEGIN
     if (isKindOfClass(modalDelegate, @"TSUpdateCheck"))
@@ -626,11 +626,11 @@ IGNORE_WARNINGS_END
         if (!methodToPatch)
             return;
 
-        IMP originalMethod = method_setImplementation(methodToPatch, reinterpret_cast<IMP>(WebKit_TSUpdateCheck_alertDidEnd_returnCode_contextInfo_));
+        IMP originalMethod = method_setImplementation(methodToPatch, reinterpret_cast<IMP>(CyberKit_TSUpdateCheck_alertDidEnd_returnCode_contextInfo_));
         original_TSUpdateCheck_alertDidEnd_returnCode_contextInfo_ = reinterpret_cast<alertDidEndIMP>(originalMethod);
 
         methodToPatch = class_getInstanceMethod(objc_getRequiredClass("NSAlert"), @selector(beginSheetModalForWindow:modalDelegate:didEndSelector:contextInfo:));
-        originalMethod = method_setImplementation(methodToPatch, reinterpret_cast<IMP>(WebKit_NSAlert_beginSheetModalForWindow_modalDelegate_didEndSelector_contextInfo_));
+        originalMethod = method_setImplementation(methodToPatch, reinterpret_cast<IMP>(CyberKit_NSAlert_beginSheetModalForWindow_modalDelegate_didEndSelector_contextInfo_));
         original_NSAlert_beginSheetModalForWindow_modalDelegate_didEndSelector_contextInfo_ = reinterpret_cast<beginSheetModalForWindowIMP>(originalMethod);
 
         hasInstalledFlip4MacPlugInWorkaround = true;

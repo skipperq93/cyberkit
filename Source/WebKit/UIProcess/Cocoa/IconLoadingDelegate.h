@@ -55,7 +55,7 @@ private:
         ~IconLoadingClient();
 
     private:
-        void getLoadDecisionForIcon(const WebCore::LinkIcon&, CompletionHandler<void(CompletionHandler<void(API::Data*)>&&)>&&) override;
+        void getLoadDecisionForIcon(const CyberCore::LinkIcon&, CompletionHandler<void(CompletionHandler<void(API::Data*)>&&)>&&) override;
 
         IconLoadingDelegate& m_iconLoadingDelegate;
     };

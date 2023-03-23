@@ -40,8 +40,8 @@
 #include <CyberCore/HTMLMediaElement.h>
 #include <wtf/URL.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 Ref<InjectedBundleHitTestResult> InjectedBundleHitTestResult::create(const HitTestResult& hitTestResult)
 {
@@ -148,7 +148,7 @@ IntRect InjectedBundleHitTestResult::imageRect() const
         return imageRect;
         
     // The image rect in HitTestResult is in frame coordinates, but we need it in WKView
-    // coordinates since WebKit2 clients don't have enough context to do the conversion themselves.
+    // coordinates since CyberKit2 clients don't have enough context to do the conversion themselves.
     WebFrame* webFrame = frame();
     if (!webFrame)
         return imageRect;
@@ -189,4 +189,4 @@ bool InjectedBundleHitTestResult::isSelected() const
     return m_hitTestResult.isSelected();
 }
 
-} // WebKit
+} // CyberKit

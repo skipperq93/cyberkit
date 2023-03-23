@@ -50,7 +50,7 @@ namespace WTF {
 class WorkQueue;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioTrackPrivateWebM;
 class FragmentedSharedBuffer;
@@ -66,7 +66,7 @@ class TrackBuffer;
 class VideoFrame;
 class VideoLayerManagerObjC;
 class VideoTrackPrivateWebM;
-class WebCoreDecompressionSession;
+class CyberCoreDecompressionSession;
 
 class MediaPlayerPrivateWebM
     : public MediaPlayerPrivateInterface
@@ -261,7 +261,7 @@ private:
     RetainPtr<CVPixelBufferRef> m_lastPixelBuffer;
     RefPtr<NativeImage> m_lastImage;
     std::unique_ptr<PixelBufferConformerCV> m_rgbConformer;
-    RefPtr<WebCoreDecompressionSession> m_decompressionSession;
+    RefPtr<CyberCoreDecompressionSession> m_decompressionSession;
     WeakPtr<WebMResourceClient> m_resourceClient;
 
     Vector<RefPtr<VideoTrackPrivateWebM>> m_videoTracks;
@@ -317,6 +317,6 @@ private:
     bool m_processingInitializationSegment { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ALTERNATE_WEBM_PLAYER)

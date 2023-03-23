@@ -37,7 +37,7 @@
 OBJC_CLASS NSCachedURLResponse;
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 class AuthenticationChallenge;
 class Credential;
 class FragmentedSharedBuffer;

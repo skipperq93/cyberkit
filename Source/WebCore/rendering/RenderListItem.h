@@ -25,7 +25,7 @@
 #include "RenderBlockFlow.h"
 #include "RenderListMarker.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLOListElement;
 
@@ -94,6 +94,6 @@ inline int RenderListItem::value() const
     return m_value.value();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderListItem, isListItem())

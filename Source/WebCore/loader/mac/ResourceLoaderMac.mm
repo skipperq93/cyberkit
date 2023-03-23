@@ -33,7 +33,7 @@
 #import "FrameLoaderClient.h"
 #import <wtf/CompletionHandler.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 void ResourceLoader::willCacheResponseAsync(ResourceHandle*, NSCachedURLResponse* response, CompletionHandler<void(NSCachedURLResponse *)>&& completionHandler)
 {

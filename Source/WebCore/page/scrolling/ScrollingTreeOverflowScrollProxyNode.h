@@ -30,7 +30,7 @@
 #include "PlatformLayer.h"
 #include "ScrollingTreeNode.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScrollingTreeOverflowScrollProxyNode : public ScrollingTreeNode {
 public:
@@ -54,7 +54,7 @@ protected:
     ScrollingNodeID m_overflowScrollingNodeID { 0 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_SCROLLING_NODE(ScrollingTreeOverflowScrollProxyNode, isOverflowScrollProxyNode())
 

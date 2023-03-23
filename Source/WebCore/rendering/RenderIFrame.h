@@ -27,7 +27,7 @@
 
 #include "RenderFrameBase.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderView;
 
@@ -57,6 +57,6 @@ private:
     bool isFullScreenIFrame() const;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderIFrame, isRenderIFrame())

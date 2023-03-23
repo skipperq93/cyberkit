@@ -122,8 +122,8 @@ SOFT_LINK_CLASS(ContactsUI, CNContactPickerViewController)
     WeakObjCPtr<WKWebView> _webView;
     WeakObjCPtr<id<WKContactPickerDelegate>> _delegate;
 
-    Vector<WebCore::ContactProperty> _properties;
-    WTF::CompletionHandler<void(std::optional<Vector<WebCore::ContactInfo>>&&)> _completionHandler;
+    Vector<CyberCore::ContactProperty> _properties;
+    WTF::CompletionHandler<void(std::optional<Vector<CyberCore::ContactInfo>>&&)> _completionHandler;
 
     RetainPtr<WKCNContactPickerDelegate> _contactPickerDelegate;
 #if HAVE(CNCONTACTPICKERVIEWCONTROLLER)
@@ -151,7 +151,7 @@ SOFT_LINK_CLASS(ContactsUI, CNContactPickerViewController)
     return self;
 }
 
-- (void)presentWithRequestData:(const WebCore::ContactsRequestData&)requestData completionHandler:(WTF::CompletionHandler<void(std::optional<Vector<WebCore::ContactInfo>>&&)>&&)completionHandler
+- (void)presentWithRequestData:(const CyberCore::ContactsRequestData&)requestData completionHandler:(WTF::CompletionHandler<void(std::optional<Vector<CyberCore::ContactInfo>>&&)>&&)completionHandler
 {
     _properties = requestData.properties;
     _completionHandler = WTFMove(completionHandler);
@@ -184,19 +184,19 @@ SOFT_LINK_CLASS(ContactsUI, CNContactPickerViewController)
 
 - (void)contactPickerDidCancel:(CNContactPickerViewController *)picker
 {
-    Vector<WebCore::ContactInfo> info;
+    Vector<CyberCore::ContactInfo> info;
     [self _contactPickerDidDismissWithContactInfo:WTFMove(info)];
 }
 
 - (void)contactPicker:(CNContactPickerViewController *)picker didSelectContact:(CNContact *)contact
 {
-    Vector<WebCore::ContactInfo> info = { [self _contactInfoFromCNContact:contact] };
+    Vector<CyberCore::ContactInfo> info = { [self _contactInfoFromCNContact:contact] };
     [self _contactPickerDidDismissWithContactInfo:WTFMove(info)];
 }
 
 - (void)contactPicker:(CNContactPickerViewController *)picker didSelectContacts:(NSArray<CNContact*> *)contacts
 {
-    Vector<WebCore::ContactInfo> info;
+    Vector<CyberCore::ContactInfo> info;
     info.reserveInitialCapacity(contacts.count);
     for (CNContact *contact in contacts)
         info.uncheckedAppend([self _contactInfoFromCNContact:contact]);
@@ -205,7 +205,7 @@ SOFT_LINK_CLASS(ContactsUI, CNContactPickerViewController)
 
 #endif
 
-- (void)_contactPickerDidDismissWithContactInfo:(Vector<WebCore::ContactInfo>&&)info
+- (void)_contactPickerDidDismissWithContactInfo:(Vector<CyberCore::ContactInfo>&&)info
 {
     _completionHandler(WTFMove(info));
 
@@ -213,21 +213,21 @@ SOFT_LINK_CLASS(ContactsUI, CNContactPickerViewController)
         [_delegate contactPickerDidDismiss:self];
 }
 
-- (WebCore::ContactInfo)_contactInfoFromCNContact:(CNContact *)contact
+- (CyberCore::ContactInfo)_contactInfoFromCNContact:(CNContact *)contact
 {
-    WebCore::ContactInfo contactInfo;
+    CyberCore::ContactInfo contactInfo;
 
-    if (_properties.contains(WebCore::ContactProperty::Name)) {
+    if (_properties.contains(CyberCore::ContactProperty::Name)) {
         NSString *contactName = [getCNContactFormatterClass() stringFromContact:contact style:CNContactFormatterStyleFullName];
         contactInfo.name = { contactName };
     }
 
-    if (_properties.contains(WebCore::ContactProperty::Email)) {
+    if (_properties.contains(CyberCore::ContactProperty::Email)) {
         for (CNLabeledValue<NSString *> *emailAddress in contact.emailAddresses)
             contactInfo.email.append(emailAddress.value);
     }
 
-    if (_properties.contains(WebCore::ContactProperty::Tel)) {
+    if (_properties.contains(CyberCore::ContactProperty::Tel)) {
         for (CNLabeledValue<CNPhoneNumber *> *phoneNumber in contact.phoneNumbers)
             contactInfo.tel.append(phoneNumber.value.stringValue);
     }

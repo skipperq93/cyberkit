@@ -27,7 +27,7 @@
 
 #include "LegacyRenderSVGShape.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class LegacyRenderSVGPath final : public LegacyRenderSVGShape {
     WTF_MAKE_ISO_ALLOCATED(LegacyRenderSVGPath);
@@ -55,6 +55,6 @@ private:
     Vector<FloatPoint> m_zeroLengthLinecapLocations;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(LegacyRenderSVGPath, isLegacySVGPath())

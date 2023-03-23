@@ -31,7 +31,7 @@
 
 #include "ThreadedScrollingCoordinator.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScrollingCoordinatorNicosia final : public ThreadedScrollingCoordinator {
 public:
@@ -39,6 +39,6 @@ public:
     virtual ~ScrollingCoordinatorNicosia();
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ASYNC_SCROLLING) && USE(NICOSIA)

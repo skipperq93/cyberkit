@@ -29,7 +29,7 @@
 #include <wtf/glib/WTFGType.h>
 
 using namespace WebKit;
-using namespace WebCore;
+using namespace CyberCore;
 
 /**
  * WebKitGeolocationManager:

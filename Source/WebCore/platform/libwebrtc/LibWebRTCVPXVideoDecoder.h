@@ -31,7 +31,7 @@
 #include <wtf/FastMalloc.h>
 #include <wtf/UniqueRef.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class LibWebRTCVPXInternalVideoDecoder;
 

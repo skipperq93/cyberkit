@@ -81,7 +81,7 @@ static void webkitScriptDialogImplUnmap(GtkWidget* widget)
         return;
 
     auto* toplevel = gtk_widget_get_toplevel(GTK_WIDGET(widget));
-    if (WebCore::widgetIsOnscreenToplevelWindow(toplevel))
+    if (CyberCore::widgetIsOnscreenToplevelWindow(toplevel))
         gtk_window_set_default(GTK_WINDOW(toplevel), nullptr);
 
     GTK_WIDGET_CLASS(webkit_script_dialog_impl_parent_class)->unmap(widget);
@@ -92,7 +92,7 @@ static void webkitScriptDialogImplMap(GtkWidget* widget)
 {
     WebKitScriptDialogImplPrivate* priv = WEBKIT_SCRIPT_DIALOG_IMPL(widget)->priv;
     auto* toplevel = gtk_widget_get_toplevel(widget);
-    if (WebCore::widgetIsOnscreenToplevelWindow(toplevel))
+    if (CyberCore::widgetIsOnscreenToplevelWindow(toplevel))
         gtk_window_set_default(GTK_WINDOW(toplevel), priv->defaultButton);
 
     switch (priv->dialog->type) {

@@ -36,8 +36,8 @@
 #import "WebDataSourceInternal.h"
 #import "WebDocumentPrivate.h"
 #import "WebFrameInternal.h"
-#import "WebKitNSStringExtras.h"
-#import "WebKitStatisticsPrivate.h"
+#import "CyberKitNSStringExtras.h"
+#import "CyberKitStatisticsPrivate.h"
 #import "WebNSObjectExtras.h"
 #import "WebView.h"
 #import <Foundation/NSURLResponse.h>
@@ -69,7 +69,7 @@
 #import <wtf/cocoa/VectorCocoa.h>
 #import <wtf/text/StringBuilder.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 using namespace HTMLNames;
 using JSC::Yarr::RegularExpression;
 
@@ -78,7 +78,7 @@ using JSC::Yarr::RegularExpression;
     WebDataSource *dataSource;
     
     BOOL hasSentResponseToPlugin;
-    BOOL includedInWebKitStatistics;
+    BOOL includedInCyberKitStatistics;
 
     id <WebPluginManualLoader> manualLoader;
     NSView *pluginView;
@@ -140,7 +140,7 @@ static RetainPtr<NSArray> createNSArray(const HashSet<String, ASCIICaseInsensiti
 
 - (void)dealloc
 {
-    if (_private && _private->includedInWebKitStatistics)
+    if (_private && _private->includedInCyberKitStatistics)
         --WebHTMLRepresentationCount;
 
     [_private release];
@@ -158,8 +158,8 @@ static RetainPtr<NSArray> createNSArray(const HashSet<String, ASCIICaseInsensiti
 {
     _private->dataSource = dataSource;
 
-    if (!_private->includedInWebKitStatistics && [[dataSource webFrame] _isIncludedInWebKitStatistics]) {
-        _private->includedInWebKitStatistics = YES;
+    if (!_private->includedInCyberKitStatistics && [[dataSource webFrame] _isIncludedInCyberKitStatistics]) {
+        _private->includedInCyberKitStatistics = YES;
         ++WebHTMLRepresentationCount;
     }
 }
@@ -179,7 +179,7 @@ static RetainPtr<NSArray> createNSArray(const HashSet<String, ASCIICaseInsensiti
     if (!_private->pluginView)
         [webFrame _commitData:data];
 
-    // If the document is a stand-alone media document, now is the right time to cancel the WebKit load
+    // If the document is a stand-alone media document, now is the right time to cancel the CyberKit load
     Frame* coreFrame = core(webFrame);
     if (coreFrame->document()->isMediaDocument() && coreFrame->loader().documentLoader())
         coreFrame->loader().documentLoader()->cancelMainResourceLoad(coreFrame->loader().client().pluginWillHandleLoadError(coreFrame->loader().documentLoader()->response()));

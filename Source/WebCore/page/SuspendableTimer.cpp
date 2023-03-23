@@ -29,7 +29,7 @@
 
 #include "ScriptExecutionContext.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 SuspendableTimerBase::SuspendableTimerBase(ScriptExecutionContext* context)
     : ActiveDOMObject(context)
@@ -153,4 +153,4 @@ const char* SuspendableTimer::activeDOMObjectName() const
     return "SuspendableTimer";
 }
 
-} // namespace WebCore
+} // namespace CyberCore

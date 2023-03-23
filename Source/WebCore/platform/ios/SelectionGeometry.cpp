@@ -29,7 +29,7 @@
 #include "FloatQuad.h"
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 SelectionGeometry::SelectionGeometry(const FloatQuad& quad, SelectionRenderingBehavior behavior, bool isHorizontal, int pageNumber)
     : m_quad(quad)
@@ -178,4 +178,4 @@ TextStream& operator<<(TextStream& stream, SelectionGeometry rect)
     return stream;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

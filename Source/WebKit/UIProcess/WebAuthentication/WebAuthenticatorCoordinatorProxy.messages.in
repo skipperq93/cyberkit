@@ -26,10 +26,10 @@
 
 messages -> WebAuthenticatorCoordinatorProxy NotRefCounted {
 
-    MakeCredential(WebCore::FrameIdentifier frameID, struct WebKit::FrameInfoData frameInfo, Vector<uint8_t> hash, struct WebCore::PublicKeyCredentialCreationOptions options, bool processingUserGesture) -> (struct WebCore::AuthenticatorResponseData data, enum:uint8_t WebCore::AuthenticatorAttachment attachment, struct WebCore::ExceptionData exception)
-    GetAssertion(WebCore::FrameIdentifier frameID, struct WebKit::FrameInfoData frameInfo, Vector<uint8_t> hash, struct WebCore::PublicKeyCredentialRequestOptions options, enum:uint8_t WebCore::CredentialRequestOptions::MediationRequirement mediation, std::optional<WebCore::SecurityOriginData> parentOrigin, bool processingUserGesture) -> (struct WebCore::AuthenticatorResponseData data, enum:uint8_t WebCore::AuthenticatorAttachment attachment, struct WebCore::ExceptionData exception)
-    isConditionalMediationAvailable(WebCore::SecurityOriginData origin) -> (bool result)
-    IsUserVerifyingPlatformAuthenticatorAvailable(WebCore::SecurityOriginData origin) -> (bool result)
+    MakeCredential(CyberCore::FrameIdentifier frameID, struct WebKit::FrameInfoData frameInfo, Vector<uint8_t> hash, struct CyberCore::PublicKeyCredentialCreationOptions options, bool processingUserGesture) -> (struct CyberCore::AuthenticatorResponseData data, enum:uint8_t CyberCore::AuthenticatorAttachment attachment, struct CyberCore::ExceptionData exception)
+    GetAssertion(CyberCore::FrameIdentifier frameID, struct WebKit::FrameInfoData frameInfo, Vector<uint8_t> hash, struct CyberCore::PublicKeyCredentialRequestOptions options, enum:uint8_t CyberCore::CredentialRequestOptions::MediationRequirement mediation, std::optional<CyberCore::SecurityOriginData> parentOrigin, bool processingUserGesture) -> (struct CyberCore::AuthenticatorResponseData data, enum:uint8_t CyberCore::AuthenticatorAttachment attachment, struct CyberCore::ExceptionData exception)
+    isConditionalMediationAvailable(CyberCore::SecurityOriginData origin) -> (bool result)
+    IsUserVerifyingPlatformAuthenticatorAvailable(CyberCore::SecurityOriginData origin) -> (bool result)
     Cancel()
 }
 

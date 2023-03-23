@@ -39,7 +39,7 @@
 
 namespace WebKit {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 static HashMap<WebExtensionContextIdentifier, WeakPtr<WebExtensionContextProxy>>& webExtensionContextProxies()
 {

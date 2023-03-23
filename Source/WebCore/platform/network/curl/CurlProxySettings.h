@@ -31,7 +31,7 @@
 #define kCURLAUTH_DIGEST_IE    (((unsigned long) 1) << 4)
 #define kCURLAUTH_ANY          (~kCURLAUTH_DIGEST_IE)
 
-namespace WebCore {
+namespace CyberCore {
 
 class CurlProxySettings {
 public:
@@ -78,4 +78,4 @@ private:
 
 bool protocolIsInSocksFamily(const URL&);
 
-} // namespace WebCore
+} // namespace CyberCore

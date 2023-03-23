@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -18,7 +18,7 @@
  */
 
 #include "config.h"
-#include "WebKitDOMHTMLScriptElement.h"
+#include "CyberKitDOMHTMLScriptElement.h"
 
 #include <CyberCore/CSSImportRule.h>
 #include "DOMObjectCache.h"
@@ -28,73 +28,73 @@
 #include <CyberCore/HTMLNames.h>
 #include <CyberCore/JSExecState.h>
 #include "GObjectEventListener.h"
-#include "WebKitDOMEventPrivate.h"
-#include "WebKitDOMEventTarget.h"
-#include "WebKitDOMHTMLScriptElementPrivate.h"
-#include "WebKitDOMNodePrivate.h"
-#include "WebKitDOMPrivate.h"
+#include "CyberKitDOMEventPrivate.h"
+#include "CyberKitDOMEventTarget.h"
+#include "CyberKitDOMHTMLScriptElementPrivate.h"
+#include "CyberKitDOMNodePrivate.h"
+#include "CyberKitDOMPrivate.h"
 #include "ConvertToUTF8String.h"
 #include <wtf/GetPtr.h>
 #include <wtf/RefPtr.h>
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
-namespace WebKit {
+namespace CyberKit {
 
-WebKitDOMHTMLScriptElement* kit(WebCore::HTMLScriptElement* obj)
+CyberKitDOMHTMLScriptElement* kit(CyberCore::HTMLScriptElement* obj)
 {
-    return WEBKIT_DOM_HTML_SCRIPT_ELEMENT(kit(static_cast<WebCore::Node*>(obj)));
+    return WEBKIT_DOM_HTML_SCRIPT_ELEMENT(kit(static_cast<CyberCore::Node*>(obj)));
 }
 
-WebCore::HTMLScriptElement* core(WebKitDOMHTMLScriptElement* request)
+CyberCore::HTMLScriptElement* core(CyberKitDOMHTMLScriptElement* request)
 {
-    return request ? static_cast<WebCore::HTMLScriptElement*>(WEBKIT_DOM_OBJECT(request)->coreObject) : 0;
+    return request ? static_cast<CyberCore::HTMLScriptElement*>(WEBKIT_DOM_OBJECT(request)->coreObject) : 0;
 }
 
-WebKitDOMHTMLScriptElement* wrapHTMLScriptElement(WebCore::HTMLScriptElement* coreObject)
+CyberKitDOMHTMLScriptElement* wrapHTMLScriptElement(CyberCore::HTMLScriptElement* coreObject)
 {
     ASSERT(coreObject);
     return WEBKIT_DOM_HTML_SCRIPT_ELEMENT(g_object_new(WEBKIT_DOM_TYPE_HTML_SCRIPT_ELEMENT, "core-object", coreObject, nullptr));
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
-static gboolean webkit_dom_html_script_element_dispatch_event(WebKitDOMEventTarget* target, WebKitDOMEvent* event, GError** error)
+static gboolean webkit_dom_html_script_element_dispatch_event(CyberKitDOMEventTarget* target, CyberKitDOMEvent* event, GError** error)
 {
-    WebCore::Event* coreEvent = WebKit::core(event);
+    CyberCore::Event* coreEvent = CyberKit::core(event);
     if (!coreEvent)
         return false;
-    WebCore::HTMLScriptElement* coreTarget = static_cast<WebCore::HTMLScriptElement*>(WEBKIT_DOM_OBJECT(target)->coreObject);
+    CyberCore::HTMLScriptElement* coreTarget = static_cast<CyberCore::HTMLScriptElement*>(WEBKIT_DOM_OBJECT(target)->coreObject);
 
     auto result = coreTarget->dispatchEventForBindings(*coreEvent);
     if (result.hasException()) {
-        auto description = WebCore::DOMException::description(result.releaseException().code());
+        auto description = CyberCore::DOMException::description(result.releaseException().code());
         g_set_error_literal(error, g_quark_from_string("WEBKIT_DOM"), description.legacyCode, description.name);
         return false;
     }
     return result.releaseReturnValue();
 }
 
-static gboolean webkit_dom_html_script_element_add_event_listener(WebKitDOMEventTarget* target, const char* eventName, GClosure* handler, gboolean useCapture)
+static gboolean webkit_dom_html_script_element_add_event_listener(CyberKitDOMEventTarget* target, const char* eventName, GClosure* handler, gboolean useCapture)
 {
-    WebCore::HTMLScriptElement* coreTarget = static_cast<WebCore::HTMLScriptElement*>(WEBKIT_DOM_OBJECT(target)->coreObject);
-    return WebKit::GObjectEventListener::addEventListener(G_OBJECT(target), coreTarget, eventName, handler, useCapture);
+    CyberCore::HTMLScriptElement* coreTarget = static_cast<CyberCore::HTMLScriptElement*>(WEBKIT_DOM_OBJECT(target)->coreObject);
+    return CyberKit::GObjectEventListener::addEventListener(G_OBJECT(target), coreTarget, eventName, handler, useCapture);
 }
 
-static gboolean webkit_dom_html_script_element_remove_event_listener(WebKitDOMEventTarget* target, const char* eventName, GClosure* handler, gboolean useCapture)
+static gboolean webkit_dom_html_script_element_remove_event_listener(CyberKitDOMEventTarget* target, const char* eventName, GClosure* handler, gboolean useCapture)
 {
-    WebCore::HTMLScriptElement* coreTarget = static_cast<WebCore::HTMLScriptElement*>(WEBKIT_DOM_OBJECT(target)->coreObject);
-    return WebKit::GObjectEventListener::removeEventListener(G_OBJECT(target), coreTarget, eventName, handler, useCapture);
+    CyberCore::HTMLScriptElement* coreTarget = static_cast<CyberCore::HTMLScriptElement*>(WEBKIT_DOM_OBJECT(target)->coreObject);
+    return CyberKit::GObjectEventListener::removeEventListener(G_OBJECT(target), coreTarget, eventName, handler, useCapture);
 }
 
-static void webkit_dom_html_script_element_dom_event_target_init(WebKitDOMEventTargetIface* iface)
+static void webkit_dom_html_script_element_dom_event_target_init(CyberKitDOMEventTargetIface* iface)
 {
     iface->dispatch_event = webkit_dom_html_script_element_dispatch_event;
     iface->add_event_listener = webkit_dom_html_script_element_add_event_listener;
     iface->remove_event_listener = webkit_dom_html_script_element_remove_event_listener;
 }
 
-G_DEFINE_TYPE_WITH_CODE(WebKitDOMHTMLScriptElement, webkit_dom_html_script_element, WEBKIT_DOM_TYPE_HTML_ELEMENT, G_IMPLEMENT_INTERFACE(WEBKIT_DOM_TYPE_EVENT_TARGET, webkit_dom_html_script_element_dom_event_target_init))
+G_DEFINE_TYPE_WITH_CODE(CyberKitDOMHTMLScriptElement, webkit_dom_html_script_element, WEBKIT_DOM_TYPE_HTML_ELEMENT, G_IMPLEMENT_INTERFACE(WEBKIT_DOM_TYPE_EVENT_TARGET, webkit_dom_html_script_element_dom_event_target_init))
 
 enum {
     DOM_HTML_SCRIPT_ELEMENT_PROP_0,
@@ -109,7 +109,7 @@ enum {
 
 static void webkit_dom_html_script_element_set_property(GObject* object, guint propertyId, const GValue* value, GParamSpec* pspec)
 {
-    WebKitDOMHTMLScriptElement* self = WEBKIT_DOM_HTML_SCRIPT_ELEMENT(object);
+    CyberKitDOMHTMLScriptElement* self = WEBKIT_DOM_HTML_SCRIPT_ELEMENT(object);
 
     switch (propertyId) {
     case DOM_HTML_SCRIPT_ELEMENT_PROP_TEXT:
@@ -141,7 +141,7 @@ static void webkit_dom_html_script_element_set_property(GObject* object, guint p
 
 static void webkit_dom_html_script_element_get_property(GObject* object, guint propertyId, GValue* value, GParamSpec* pspec)
 {
-    WebKitDOMHTMLScriptElement* self = WEBKIT_DOM_HTML_SCRIPT_ELEMENT(object);
+    CyberKitDOMHTMLScriptElement* self = WEBKIT_DOM_HTML_SCRIPT_ELEMENT(object);
 
     switch (propertyId) {
     case DOM_HTML_SCRIPT_ELEMENT_PROP_TEXT:
@@ -171,7 +171,7 @@ static void webkit_dom_html_script_element_get_property(GObject* object, guint p
     }
 }
 
-static void webkit_dom_html_script_element_class_init(WebKitDOMHTMLScriptElementClass* requestClass)
+static void webkit_dom_html_script_element_class_init(CyberKitDOMHTMLScriptElementClass* requestClass)
 {
     GObjectClass* gobjectClass = G_OBJECT_CLASS(requestClass);
     gobjectClass->set_property = webkit_dom_html_script_element_set_property;
@@ -248,133 +248,133 @@ static void webkit_dom_html_script_element_class_init(WebKitDOMHTMLScriptElement
             WEBKIT_PARAM_READWRITE));
 }
 
-static void webkit_dom_html_script_element_init(WebKitDOMHTMLScriptElement* request)
+static void webkit_dom_html_script_element_init(CyberKitDOMHTMLScriptElement* request)
 {
     UNUSED_PARAM(request);
 }
 
-gchar* webkit_dom_html_script_element_get_text(WebKitDOMHTMLScriptElement* self)
+gchar* webkit_dom_html_script_element_get_text(CyberKitDOMHTMLScriptElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_SCRIPT_ELEMENT(self), 0);
-    WebCore::HTMLScriptElement* item = WebKit::core(self);
+    CyberCore::HTMLScriptElement* item = CyberKit::core(self);
     gchar* result = convertToUTF8String(item->text());
     return result;
 }
 
-void webkit_dom_html_script_element_set_text(WebKitDOMHTMLScriptElement* self, const gchar* value)
+void webkit_dom_html_script_element_set_text(CyberKitDOMHTMLScriptElement* self, const gchar* value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_SCRIPT_ELEMENT(self));
     g_return_if_fail(value);
-    WebCore::HTMLScriptElement* item = WebKit::core(self);
+    CyberCore::HTMLScriptElement* item = CyberKit::core(self);
     item->setText(WTF::String::fromUTF8(value));
 }
 
-gchar* webkit_dom_html_script_element_get_html_for(WebKitDOMHTMLScriptElement* self)
+gchar* webkit_dom_html_script_element_get_html_for(CyberKitDOMHTMLScriptElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_SCRIPT_ELEMENT(self), 0);
-    WebCore::HTMLScriptElement* item = WebKit::core(self);
-    gchar* result = convertToUTF8String(item->attributeWithoutSynchronization(WebCore::HTMLNames::forAttr));
+    CyberCore::HTMLScriptElement* item = CyberKit::core(self);
+    gchar* result = convertToUTF8String(item->attributeWithoutSynchronization(CyberCore::HTMLNames::forAttr));
     return result;
 }
 
-void webkit_dom_html_script_element_set_html_for(WebKitDOMHTMLScriptElement* self, const gchar* value)
+void webkit_dom_html_script_element_set_html_for(CyberKitDOMHTMLScriptElement* self, const gchar* value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_SCRIPT_ELEMENT(self));
     g_return_if_fail(value);
-    WebCore::HTMLScriptElement* item = WebKit::core(self);
-    item->setAttributeWithoutSynchronization(WebCore::HTMLNames::forAttr, WTF::AtomString::fromUTF8(value));
+    CyberCore::HTMLScriptElement* item = CyberKit::core(self);
+    item->setAttributeWithoutSynchronization(CyberCore::HTMLNames::forAttr, WTF::AtomString::fromUTF8(value));
 }
 
-gchar* webkit_dom_html_script_element_get_event(WebKitDOMHTMLScriptElement* self)
+gchar* webkit_dom_html_script_element_get_event(CyberKitDOMHTMLScriptElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_SCRIPT_ELEMENT(self), 0);
-    WebCore::HTMLScriptElement* item = WebKit::core(self);
-    gchar* result = convertToUTF8String(item->attributeWithoutSynchronization(WebCore::HTMLNames::eventAttr));
+    CyberCore::HTMLScriptElement* item = CyberKit::core(self);
+    gchar* result = convertToUTF8String(item->attributeWithoutSynchronization(CyberCore::HTMLNames::eventAttr));
     return result;
 }
 
-void webkit_dom_html_script_element_set_event(WebKitDOMHTMLScriptElement* self, const gchar* value)
+void webkit_dom_html_script_element_set_event(CyberKitDOMHTMLScriptElement* self, const gchar* value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_SCRIPT_ELEMENT(self));
     g_return_if_fail(value);
-    WebCore::HTMLScriptElement* item = WebKit::core(self);
-    item->setAttributeWithoutSynchronization(WebCore::HTMLNames::eventAttr, WTF::AtomString::fromUTF8(value));
+    CyberCore::HTMLScriptElement* item = CyberKit::core(self);
+    item->setAttributeWithoutSynchronization(CyberCore::HTMLNames::eventAttr, WTF::AtomString::fromUTF8(value));
 }
 
-gchar* webkit_dom_html_script_element_get_charset(WebKitDOMHTMLScriptElement* self)
+gchar* webkit_dom_html_script_element_get_charset(CyberKitDOMHTMLScriptElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_SCRIPT_ELEMENT(self), 0);
-    WebCore::HTMLScriptElement* item = WebKit::core(self);
-    gchar* result = convertToUTF8String(item->attributeWithoutSynchronization(WebCore::HTMLNames::charsetAttr));
+    CyberCore::HTMLScriptElement* item = CyberKit::core(self);
+    gchar* result = convertToUTF8String(item->attributeWithoutSynchronization(CyberCore::HTMLNames::charsetAttr));
     return result;
 }
 
-void webkit_dom_html_script_element_set_charset(WebKitDOMHTMLScriptElement* self, const gchar* value)
+void webkit_dom_html_script_element_set_charset(CyberKitDOMHTMLScriptElement* self, const gchar* value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_SCRIPT_ELEMENT(self));
     g_return_if_fail(value);
-    WebCore::HTMLScriptElement* item = WebKit::core(self);
-    item->setAttributeWithoutSynchronization(WebCore::HTMLNames::charsetAttr, WTF::AtomString::fromUTF8(value));
+    CyberCore::HTMLScriptElement* item = CyberKit::core(self);
+    item->setAttributeWithoutSynchronization(CyberCore::HTMLNames::charsetAttr, WTF::AtomString::fromUTF8(value));
 }
 
-gboolean webkit_dom_html_script_element_get_defer(WebKitDOMHTMLScriptElement* self)
+gboolean webkit_dom_html_script_element_get_defer(CyberKitDOMHTMLScriptElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_SCRIPT_ELEMENT(self), FALSE);
-    WebCore::HTMLScriptElement* item = WebKit::core(self);
-    gboolean result = item->hasAttributeWithoutSynchronization(WebCore::HTMLNames::deferAttr);
+    CyberCore::HTMLScriptElement* item = CyberKit::core(self);
+    gboolean result = item->hasAttributeWithoutSynchronization(CyberCore::HTMLNames::deferAttr);
     return result;
 }
 
-void webkit_dom_html_script_element_set_defer(WebKitDOMHTMLScriptElement* self, gboolean value)
+void webkit_dom_html_script_element_set_defer(CyberKitDOMHTMLScriptElement* self, gboolean value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_SCRIPT_ELEMENT(self));
-    WebCore::HTMLScriptElement* item = WebKit::core(self);
-    item->setBooleanAttribute(WebCore::HTMLNames::deferAttr, value);
+    CyberCore::HTMLScriptElement* item = CyberKit::core(self);
+    item->setBooleanAttribute(CyberCore::HTMLNames::deferAttr, value);
 }
 
-gchar* webkit_dom_html_script_element_get_src(WebKitDOMHTMLScriptElement* self)
+gchar* webkit_dom_html_script_element_get_src(CyberKitDOMHTMLScriptElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_SCRIPT_ELEMENT(self), 0);
-    WebCore::HTMLScriptElement* item = WebKit::core(self);
-    gchar* result = convertToUTF8String(item->getURLAttribute(WebCore::HTMLNames::srcAttr));
+    CyberCore::HTMLScriptElement* item = CyberKit::core(self);
+    gchar* result = convertToUTF8String(item->getURLAttribute(CyberCore::HTMLNames::srcAttr));
     return result;
 }
 
-void webkit_dom_html_script_element_set_src(WebKitDOMHTMLScriptElement* self, const gchar* value)
+void webkit_dom_html_script_element_set_src(CyberKitDOMHTMLScriptElement* self, const gchar* value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_SCRIPT_ELEMENT(self));
     g_return_if_fail(value);
-    WebCore::HTMLScriptElement* item = WebKit::core(self);
-    item->setAttributeWithoutSynchronization(WebCore::HTMLNames::srcAttr, WTF::AtomString::fromUTF8(value));
+    CyberCore::HTMLScriptElement* item = CyberKit::core(self);
+    item->setAttributeWithoutSynchronization(CyberCore::HTMLNames::srcAttr, WTF::AtomString::fromUTF8(value));
 }
 
-gchar* webkit_dom_html_script_element_get_type_attr(WebKitDOMHTMLScriptElement* self)
+gchar* webkit_dom_html_script_element_get_type_attr(CyberKitDOMHTMLScriptElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_SCRIPT_ELEMENT(self), 0);
-    WebCore::HTMLScriptElement* item = WebKit::core(self);
-    gchar* result = convertToUTF8String(item->attributeWithoutSynchronization(WebCore::HTMLNames::typeAttr));
+    CyberCore::HTMLScriptElement* item = CyberKit::core(self);
+    gchar* result = convertToUTF8String(item->attributeWithoutSynchronization(CyberCore::HTMLNames::typeAttr));
     return result;
 }
 
-void webkit_dom_html_script_element_set_type_attr(WebKitDOMHTMLScriptElement* self, const gchar* value)
+void webkit_dom_html_script_element_set_type_attr(CyberKitDOMHTMLScriptElement* self, const gchar* value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_SCRIPT_ELEMENT(self));
     g_return_if_fail(value);
-    WebCore::HTMLScriptElement* item = WebKit::core(self);
-    item->setAttributeWithoutSynchronization(WebCore::HTMLNames::typeAttr, WTF::AtomString::fromUTF8(value));
+    CyberCore::HTMLScriptElement* item = CyberKit::core(self);
+    item->setAttributeWithoutSynchronization(CyberCore::HTMLNames::typeAttr, WTF::AtomString::fromUTF8(value));
 }
 G_GNUC_END_IGNORE_DEPRECATIONS;

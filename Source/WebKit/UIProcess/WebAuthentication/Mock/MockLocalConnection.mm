@@ -40,14 +40,14 @@
 #import "LocalAuthenticationSoftLink.h"
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 MockLocalConnection::MockLocalConnection(const MockWebAuthenticationConfiguration& configuration)
     : m_configuration(configuration)
 {
 }
 
-void MockLocalConnection::verifyUser(const String&, ClientDataType, SecAccessControlRef, WebCore::UserVerificationRequirement, UserVerificationCallback&& callback)
+void MockLocalConnection::verifyUser(const String&, ClientDataType, SecAccessControlRef, CyberCore::UserVerificationRequirement, UserVerificationCallback&& callback)
 {
     // Mock async operations.
     RunLoop::main().dispatch([configuration = m_configuration, callback = WTFMove(callback)]() mutable {

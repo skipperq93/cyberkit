@@ -42,7 +42,7 @@
 
 #if USE(CURL)
 
-namespace WebCore {
+namespace CyberCore {
 
 CurlResourceHandleDelegate::CurlResourceHandleDelegate(ResourceHandle& handle)
     : m_handle(handle)
@@ -191,6 +191,6 @@ void CurlResourceHandleDelegate::updateNetworkLoadMetrics(NetworkLoadMetrics& ne
     networkLoadMetrics.hasCrossOriginRedirect = m_handle.hasCrossOriginRedirect();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

@@ -48,7 +48,7 @@
 #include "RenderThemeIOS.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 

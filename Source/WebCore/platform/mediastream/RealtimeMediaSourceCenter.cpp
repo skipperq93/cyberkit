@@ -43,7 +43,7 @@
 #include <wtf/HexNumber.h>
 #include <wtf/SHA1.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static const Seconds deviceChangeDebounceTimerInterval { 200_ms };
 
@@ -388,6 +388,6 @@ bool RealtimeMediaSourceCenter::shouldInterruptAudioOnPageVisibilityChange()
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM)

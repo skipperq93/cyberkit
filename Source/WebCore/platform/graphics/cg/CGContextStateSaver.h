@@ -27,7 +27,7 @@
 
 #if USE(CG)
 
-namespace WebCore {
+namespace CyberCore {
 
 class CGContextStateSaver {
 public:
@@ -69,6 +69,6 @@ private:
     bool m_saveAndRestore;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(CG)

@@ -28,7 +28,7 @@
 #include <wtf/Forward.h>
 #include <wtf/WorkQueue.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WEBCORE_EXPORT WorkQueue& sharedImageTranscodingQueue();
 
@@ -44,5 +44,5 @@ WEBCORE_EXPORT Vector<String> findImagesForTranscoding(const Vector<String>& pat
 // happens while transcoding, a null string will be added to the returned list.
 WEBCORE_EXPORT Vector<String> transcodeImages(const Vector<String>& paths, const String& destinationUTI, const String& destinationExtension);
 
-} // namespace WebCore
+} // namespace CyberCore
 

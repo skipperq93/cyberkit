@@ -37,7 +37,7 @@
 #include "DOMWindow.h"
 #include "UserMessageHandlersNamespace.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 WebKitNamespace::WebKitNamespace(DOMWindow& window, UserContentProvider& userContentProvider)
     : DOMWindowProperty(&window)
@@ -63,7 +63,7 @@ UserMessageHandlersNamespace* WebKitNamespace::messageHandlers()
     return &m_messageHandlerNamespace.get();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(USER_MESSAGE_HANDLERS)
 

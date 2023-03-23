@@ -33,7 +33,7 @@
 #include <wtf/text/AtomStringHash.h>
 #include <wtf/text/Base64.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static const MemoryCompactLookupOnlyRobinHoodHashSet<AtomString>& allowedFontHashesInLockdownMode()
 {
@@ -842,4 +842,4 @@ bool isFontBinaryAllowed(Span<const uint8_t> data, DownloadableBinaryFontAllowed
     return isFontBinaryAllowed(data.data(), data.size(), allowedType);
 }
 
-}; // namespace WebCore
+}; // namespace CyberCore

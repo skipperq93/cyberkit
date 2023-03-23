@@ -55,7 +55,7 @@ static CFDictionaryRef makeContextOptions(const CGDisplayListImageBufferBackend:
     };
 }
 
-class GraphicsContextCGDisplayList : public WebCore::GraphicsContextCG {
+class GraphicsContextCGDisplayList : public CyberCore::GraphicsContextCG {
 public:
     GraphicsContextCGDisplayList(const CGDisplayListImageBufferBackend::Parameters& parameters)
         : GraphicsContextCG(adoptCF(WKCGCommandsContextCreate(parameters.logicalSize, makeContextOptions(parameters))).autorelease())
@@ -69,37 +69,37 @@ public:
         m_resolutionScale = parameters.resolutionScale;
     }
 
-    void setCTM(const WebCore::AffineTransform& transform) final
+    void setCTM(const CyberCore::AffineTransform& transform) final
     {
         GraphicsContextCG::setCTM(m_inverseImmutableBaseTransform * transform);
     }
 
-    WebCore::AffineTransform getCTM(IncludeDeviceScale includeDeviceScale) const final
+    CyberCore::AffineTransform getCTM(IncludeDeviceScale includeDeviceScale) const final
     {
         return m_immutableBaseTransform * GraphicsContextCG::getCTM(includeDeviceScale);
     }
 
-    WebCore::FloatRect roundToDevicePixels(const WebCore::FloatRect& rect, RoundingMode = RoundAllSides) const final
+    CyberCore::FloatRect roundToDevicePixels(const CyberCore::FloatRect& rect, RoundingMode = RoundAllSides) const final
     {
         return rect;
     }
 
     bool canUseShadowBlur() const final { return false; }
 
-    bool needsCachedNativeImageInvalidationWorkaround(WebCore::RenderingMode) override { return true; }
+    bool needsCachedNativeImageInvalidationWorkaround(CyberCore::RenderingMode) override { return true; }
 
 protected:
-    void setCGShadow(WebCore::RenderingMode renderingMode, const WebCore::FloatSize& offset, float blur, const WebCore::Color& color, bool shadowsIgnoreTransforms) override
+    void setCGShadow(CyberCore::RenderingMode renderingMode, const CyberCore::FloatSize& offset, float blur, const CyberCore::Color& color, bool shadowsIgnoreTransforms) override
     {
         // This doesn't use `m_immutableBaseTransform.mapSize` because it doesn't output negative lengths.
-        WebCore::FloatSize scaledOffset = offset;
+        CyberCore::FloatSize scaledOffset = offset;
         scaledOffset.scale(m_resolutionScale, -m_resolutionScale);
         GraphicsContextCG::setCGShadow(renderingMode, scaledOffset, blur * m_resolutionScale, color, shadowsIgnoreTransforms);
     }
 
 private:
-    WebCore::AffineTransform m_immutableBaseTransform;
-    WebCore::AffineTransform m_inverseImmutableBaseTransform;
+    CyberCore::AffineTransform m_immutableBaseTransform;
+    CyberCore::AffineTransform m_inverseImmutableBaseTransform;
     float m_resolutionScale;
 };
 
@@ -110,10 +110,10 @@ size_t CGDisplayListImageBufferBackend::calculateMemoryCost(const Parameters& pa
     // FIXME: This is fairly meaningless, because we don't actually have a bitmap, and
     // should really be based on the encoded data size.
     auto backendSize = calculateBackendSize(parameters);
-    return WebCore::ImageBufferBackend::calculateMemoryCost(backendSize, calculateBytesPerRow(backendSize));
+    return CyberCore::ImageBufferBackend::calculateMemoryCost(backendSize, calculateBytesPerRow(backendSize));
 }
 
-std::unique_ptr<CGDisplayListImageBufferBackend> CGDisplayListImageBufferBackend::create(const Parameters& parameters, const WebCore::ImageBufferCreationContext& creationContext)
+std::unique_ptr<CGDisplayListImageBufferBackend> CGDisplayListImageBufferBackend::create(const Parameters& parameters, const CyberCore::ImageBufferCreationContext& creationContext)
 {
     if (parameters.logicalSize.isEmpty())
         return nullptr;
@@ -121,7 +121,7 @@ std::unique_ptr<CGDisplayListImageBufferBackend> CGDisplayListImageBufferBackend
     return std::unique_ptr<CGDisplayListImageBufferBackend>(new CGDisplayListImageBufferBackend(parameters, creationContext));
 }
 
-CGDisplayListImageBufferBackend::CGDisplayListImageBufferBackend(const Parameters& parameters, const WebCore::ImageBufferCreationContext& creationContext)
+CGDisplayListImageBufferBackend::CGDisplayListImageBufferBackend(const Parameters& parameters, const CyberCore::ImageBufferCreationContext& creationContext)
     : ImageBufferCGBackend { parameters }
 {
     if (creationContext.useCGDisplayListImageCache == UseCGDisplayListImageCache::Yes)
@@ -158,17 +158,17 @@ ImageBufferBackendHandle CGDisplayListImageBufferBackend::createBackendHandle(Sh
         });
     }
 
-    return CGDisplayList { WebCore::SharedBuffer::create(data.get()), WTFMove(sendRights) };
+    return CGDisplayList { CyberCore::SharedBuffer::create(data.get()), WTFMove(sendRights) };
 }
 
-WebCore::GraphicsContext& CGDisplayListImageBufferBackend::context() const
+CyberCore::GraphicsContext& CGDisplayListImageBufferBackend::context() const
 {
     if (!m_context)
         m_context = makeUnique<GraphicsContextCGDisplayList>(m_parameters);
     return *m_context;
 }
 
-WebCore::IntSize CGDisplayListImageBufferBackend::backendSize() const
+CyberCore::IntSize CGDisplayListImageBufferBackend::backendSize() const
 {
     return calculateBackendSize(m_parameters);
 }
@@ -183,19 +183,19 @@ void CGDisplayListImageBufferBackend::clearContents()
     m_context = nullptr;
 }
 
-RefPtr<WebCore::NativeImage> CGDisplayListImageBufferBackend::copyNativeImage(WebCore::BackingStoreCopy) const
+RefPtr<CyberCore::NativeImage> CGDisplayListImageBufferBackend::copyNativeImage(CyberCore::BackingStoreCopy) const
 {
     ASSERT_NOT_REACHED();
     return nullptr;
 }
 
-RefPtr<WebCore::PixelBuffer> CGDisplayListImageBufferBackend::getPixelBuffer(const WebCore::PixelBufferFormat&, const WebCore::IntRect&, const WebCore::ImageBufferAllocator&) const
+RefPtr<CyberCore::PixelBuffer> CGDisplayListImageBufferBackend::getPixelBuffer(const CyberCore::PixelBufferFormat&, const CyberCore::IntRect&, const CyberCore::ImageBufferAllocator&) const
 {
     ASSERT_NOT_REACHED();
     return nullptr;
 }
 
-void CGDisplayListImageBufferBackend::putPixelBuffer(const WebCore::PixelBuffer&, const WebCore::IntRect&, const WebCore::IntPoint&, WebCore::AlphaPremultiplication)
+void CGDisplayListImageBufferBackend::putPixelBuffer(const CyberCore::PixelBuffer&, const CyberCore::IntRect&, const CyberCore::IntPoint&, CyberCore::AlphaPremultiplication)
 {
     ASSERT_NOT_REACHED();
 }

@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -18,13 +18,13 @@
  */
 
 #include "config.h"
-#include "WebKitDOMNamedNodeMap.h"
+#include "CyberKitDOMNamedNodeMap.h"
 
 #include "ConvertToUTF8String.h"
 #include "DOMObjectCache.h"
-#include "WebKitDOMNamedNodeMapPrivate.h"
-#include "WebKitDOMNodePrivate.h"
-#include "WebKitDOMPrivate.h"
+#include "CyberKitDOMNamedNodeMapPrivate.h"
+#include "CyberKitDOMNodePrivate.h"
+#include "CyberKitDOMPrivate.h"
 #include <CyberCore/Attr.h>
 #include <CyberCore/CSSImportRule.h>
 #include <CyberCore/DOMException.h>
@@ -34,17 +34,17 @@
 #include <wtf/GetPtr.h>
 #include <wtf/RefPtr.h>
 
-#define WEBKIT_DOM_NAMED_NODE_MAP_GET_PRIVATE(obj) G_TYPE_INSTANCE_GET_PRIVATE(obj, WEBKIT_DOM_TYPE_NAMED_NODE_MAP, WebKitDOMNamedNodeMapPrivate)
+#define WEBKIT_DOM_NAMED_NODE_MAP_GET_PRIVATE(obj) G_TYPE_INSTANCE_GET_PRIVATE(obj, WEBKIT_DOM_TYPE_NAMED_NODE_MAP, CyberKitDOMNamedNodeMapPrivate)
 
-typedef struct _WebKitDOMNamedNodeMapPrivate {
-    RefPtr<WebCore::NamedNodeMap> coreObject;
-} WebKitDOMNamedNodeMapPrivate;
+typedef struct _CyberKitDOMNamedNodeMapPrivate {
+    RefPtr<CyberCore::NamedNodeMap> coreObject;
+} CyberKitDOMNamedNodeMapPrivate;
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
-namespace WebKit {
+namespace CyberKit {
 
-WebKitDOMNamedNodeMap* kit(WebCore::NamedNodeMap* obj)
+CyberKitDOMNamedNodeMap* kit(CyberCore::NamedNodeMap* obj)
 {
     if (!obj)
         return 0;
@@ -55,20 +55,20 @@ WebKitDOMNamedNodeMap* kit(WebCore::NamedNodeMap* obj)
     return wrapNamedNodeMap(obj);
 }
 
-WebCore::NamedNodeMap* core(WebKitDOMNamedNodeMap* request)
+CyberCore::NamedNodeMap* core(CyberKitDOMNamedNodeMap* request)
 {
-    return request ? static_cast<WebCore::NamedNodeMap*>(WEBKIT_DOM_OBJECT(request)->coreObject) : 0;
+    return request ? static_cast<CyberCore::NamedNodeMap*>(WEBKIT_DOM_OBJECT(request)->coreObject) : 0;
 }
 
-WebKitDOMNamedNodeMap* wrapNamedNodeMap(WebCore::NamedNodeMap* coreObject)
+CyberKitDOMNamedNodeMap* wrapNamedNodeMap(CyberCore::NamedNodeMap* coreObject)
 {
     ASSERT(coreObject);
     return WEBKIT_DOM_NAMED_NODE_MAP(g_object_new(WEBKIT_DOM_TYPE_NAMED_NODE_MAP, "core-object", coreObject, nullptr));
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
-G_DEFINE_TYPE(WebKitDOMNamedNodeMap, webkit_dom_named_node_map, WEBKIT_DOM_TYPE_OBJECT)
+G_DEFINE_TYPE(CyberKitDOMNamedNodeMap, webkit_dom_named_node_map, WEBKIT_DOM_TYPE_OBJECT)
 
 enum {
     DOM_NAMED_NODE_MAP_PROP_0,
@@ -77,17 +77,17 @@ enum {
 
 static void webkit_dom_named_node_map_finalize(GObject* object)
 {
-    WebKitDOMNamedNodeMapPrivate* priv = WEBKIT_DOM_NAMED_NODE_MAP_GET_PRIVATE(object);
+    CyberKitDOMNamedNodeMapPrivate* priv = WEBKIT_DOM_NAMED_NODE_MAP_GET_PRIVATE(object);
 
-    WebKit::DOMObjectCache::forget(priv->coreObject.get());
+    CyberKit::DOMObjectCache::forget(priv->coreObject.get());
 
-    priv->~WebKitDOMNamedNodeMapPrivate();
+    priv->~CyberKitDOMNamedNodeMapPrivate();
     G_OBJECT_CLASS(webkit_dom_named_node_map_parent_class)->finalize(object);
 }
 
 static void webkit_dom_named_node_map_get_property(GObject* object, guint propertyId, GValue* value, GParamSpec* pspec)
 {
-    WebKitDOMNamedNodeMap* self = WEBKIT_DOM_NAMED_NODE_MAP(object);
+    CyberKitDOMNamedNodeMap* self = WEBKIT_DOM_NAMED_NODE_MAP(object);
 
     switch (propertyId) {
     case DOM_NAMED_NODE_MAP_PROP_LENGTH:
@@ -103,17 +103,17 @@ static GObject* webkit_dom_named_node_map_constructor(GType type, guint construc
 {
     GObject* object = G_OBJECT_CLASS(webkit_dom_named_node_map_parent_class)->constructor(type, constructPropertiesCount, constructProperties);
 
-    WebKitDOMNamedNodeMapPrivate* priv = WEBKIT_DOM_NAMED_NODE_MAP_GET_PRIVATE(object);
-    priv->coreObject = static_cast<WebCore::NamedNodeMap*>(WEBKIT_DOM_OBJECT(object)->coreObject);
-    WebKit::DOMObjectCache::put(priv->coreObject.get(), object);
+    CyberKitDOMNamedNodeMapPrivate* priv = WEBKIT_DOM_NAMED_NODE_MAP_GET_PRIVATE(object);
+    priv->coreObject = static_cast<CyberCore::NamedNodeMap*>(WEBKIT_DOM_OBJECT(object)->coreObject);
+    CyberKit::DOMObjectCache::put(priv->coreObject.get(), object);
 
     return object;
 }
 
-static void webkit_dom_named_node_map_class_init(WebKitDOMNamedNodeMapClass* requestClass)
+static void webkit_dom_named_node_map_class_init(CyberKitDOMNamedNodeMapClass* requestClass)
 {
     GObjectClass* gobjectClass = G_OBJECT_CLASS(requestClass);
-    g_type_class_add_private(gobjectClass, sizeof(WebKitDOMNamedNodeMapPrivate));
+    g_type_class_add_private(gobjectClass, sizeof(CyberKitDOMNamedNodeMapPrivate));
     gobjectClass->constructor = webkit_dom_named_node_map_constructor;
     gobjectClass->finalize = webkit_dom_named_node_map_finalize;
     gobjectClass->get_property = webkit_dom_named_node_map_get_property;
@@ -130,111 +130,111 @@ static void webkit_dom_named_node_map_class_init(WebKitDOMNamedNodeMapClass* req
 
 }
 
-static void webkit_dom_named_node_map_init(WebKitDOMNamedNodeMap* request)
+static void webkit_dom_named_node_map_init(CyberKitDOMNamedNodeMap* request)
 {
-    WebKitDOMNamedNodeMapPrivate* priv = WEBKIT_DOM_NAMED_NODE_MAP_GET_PRIVATE(request);
-    new (priv) WebKitDOMNamedNodeMapPrivate();
+    CyberKitDOMNamedNodeMapPrivate* priv = WEBKIT_DOM_NAMED_NODE_MAP_GET_PRIVATE(request);
+    new (priv) CyberKitDOMNamedNodeMapPrivate();
 }
 
-WebKitDOMNode* webkit_dom_named_node_map_get_named_item(WebKitDOMNamedNodeMap* self, const gchar* name)
+CyberKitDOMNode* webkit_dom_named_node_map_get_named_item(CyberKitDOMNamedNodeMap* self, const gchar* name)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_NAMED_NODE_MAP(self), 0);
     g_return_val_if_fail(name, 0);
-    WebCore::NamedNodeMap* item = WebKit::core(self);
-    RefPtr<WebCore::Node> gobjectResult = WTF::getPtr(item->getNamedItem(WTF::AtomString::fromUTF8(name)));
-    return WebKit::kit(gobjectResult.get());
+    CyberCore::NamedNodeMap* item = CyberKit::core(self);
+    RefPtr<CyberCore::Node> gobjectResult = WTF::getPtr(item->getNamedItem(WTF::AtomString::fromUTF8(name)));
+    return CyberKit::kit(gobjectResult.get());
 }
 
-WebKitDOMNode* webkit_dom_named_node_map_set_named_item(WebKitDOMNamedNodeMap* self, WebKitDOMNode* node, GError** error)
+CyberKitDOMNode* webkit_dom_named_node_map_set_named_item(CyberKitDOMNamedNodeMap* self, CyberKitDOMNode* node, GError** error)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_NAMED_NODE_MAP(self), 0);
     g_return_val_if_fail(WEBKIT_DOM_IS_NODE(node), 0);
     g_return_val_if_fail(!error || !*error, 0);
-    WebCore::NamedNodeMap* item = WebKit::core(self);
-    WebCore::Node* convertedNode = WebKit::core(node);
-    if (!is<WebCore::Attr>(*convertedNode)) {
-        auto description = WebCore::DOMException::description(WebCore::TypeError);
+    CyberCore::NamedNodeMap* item = CyberKit::core(self);
+    CyberCore::Node* convertedNode = CyberKit::core(node);
+    if (!is<CyberCore::Attr>(*convertedNode)) {
+        auto description = CyberCore::DOMException::description(CyberCore::TypeError);
         g_set_error_literal(error, g_quark_from_string("WEBKIT_DOM"), description.legacyCode, description.name);
         return nullptr;
     }
-    auto result = item->setNamedItem(downcast<WebCore::Attr>(*convertedNode));
+    auto result = item->setNamedItem(downcast<CyberCore::Attr>(*convertedNode));
     if (result.hasException()) {
-        auto description = WebCore::DOMException::description(result.releaseException().code());
+        auto description = CyberCore::DOMException::description(result.releaseException().code());
         g_set_error_literal(error, g_quark_from_string("WEBKIT_DOM"), description.legacyCode, description.name);
         return nullptr;
     }
-    return WebKit::kit(result.releaseReturnValue().get());
+    return CyberKit::kit(result.releaseReturnValue().get());
 }
 
-WebKitDOMNode* webkit_dom_named_node_map_remove_named_item(WebKitDOMNamedNodeMap* self, const gchar* name, GError** error)
+CyberKitDOMNode* webkit_dom_named_node_map_remove_named_item(CyberKitDOMNamedNodeMap* self, const gchar* name, GError** error)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_NAMED_NODE_MAP(self), 0);
     g_return_val_if_fail(name, 0);
     g_return_val_if_fail(!error || !*error, 0);
-    WebCore::NamedNodeMap* item = WebKit::core(self);
+    CyberCore::NamedNodeMap* item = CyberKit::core(self);
     auto result = item->removeNamedItem(WTF::AtomString::fromUTF8(name));
     if (result.hasException()) {
-        auto description = WebCore::DOMException::description(result.releaseException().code());
+        auto description = CyberCore::DOMException::description(result.releaseException().code());
         g_set_error_literal(error, g_quark_from_string("WEBKIT_DOM"), description.legacyCode, description.name);
         return nullptr;
     }
-    return WebKit::kit(result.releaseReturnValue().ptr());
+    return CyberKit::kit(result.releaseReturnValue().ptr());
 }
 
-WebKitDOMNode* webkit_dom_named_node_map_item(WebKitDOMNamedNodeMap* self, gulong index)
+CyberKitDOMNode* webkit_dom_named_node_map_item(CyberKitDOMNamedNodeMap* self, gulong index)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_NAMED_NODE_MAP(self), 0);
-    WebCore::NamedNodeMap* item = WebKit::core(self);
-    RefPtr<WebCore::Node> gobjectResult = WTF::getPtr(item->item(index));
-    return WebKit::kit(gobjectResult.get());
+    CyberCore::NamedNodeMap* item = CyberKit::core(self);
+    RefPtr<CyberCore::Node> gobjectResult = WTF::getPtr(item->item(index));
+    return CyberKit::kit(gobjectResult.get());
 }
 
-WebKitDOMNode* webkit_dom_named_node_map_get_named_item_ns(WebKitDOMNamedNodeMap* self, const gchar* namespaceURI, const gchar* localName)
+CyberKitDOMNode* webkit_dom_named_node_map_get_named_item_ns(CyberKitDOMNamedNodeMap* self, const gchar* namespaceURI, const gchar* localName)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_NAMED_NODE_MAP(self), 0);
     g_return_val_if_fail(namespaceURI, 0);
     g_return_val_if_fail(localName, 0);
-    WebCore::NamedNodeMap* item = WebKit::core(self);
+    CyberCore::NamedNodeMap* item = CyberKit::core(self);
     auto convertedNamespaceURI = WTF::AtomString::fromUTF8(namespaceURI);
     auto convertedLocalName = WTF::AtomString::fromUTF8(localName);
-    RefPtr<WebCore::Node> gobjectResult = WTF::getPtr(item->getNamedItemNS(convertedNamespaceURI, convertedLocalName));
-    return WebKit::kit(gobjectResult.get());
+    RefPtr<CyberCore::Node> gobjectResult = WTF::getPtr(item->getNamedItemNS(convertedNamespaceURI, convertedLocalName));
+    return CyberKit::kit(gobjectResult.get());
 }
 
-WebKitDOMNode* webkit_dom_named_node_map_set_named_item_ns(WebKitDOMNamedNodeMap* self, WebKitDOMNode* node, GError** error)
+CyberKitDOMNode* webkit_dom_named_node_map_set_named_item_ns(CyberKitDOMNamedNodeMap* self, CyberKitDOMNode* node, GError** error)
 {
     return webkit_dom_named_node_map_set_named_item(self, node, error);
 }
 
-WebKitDOMNode* webkit_dom_named_node_map_remove_named_item_ns(WebKitDOMNamedNodeMap* self, const gchar* namespaceURI, const gchar* localName, GError** error)
+CyberKitDOMNode* webkit_dom_named_node_map_remove_named_item_ns(CyberKitDOMNamedNodeMap* self, const gchar* namespaceURI, const gchar* localName, GError** error)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_NAMED_NODE_MAP(self), 0);
     g_return_val_if_fail(namespaceURI, 0);
     g_return_val_if_fail(localName, 0);
     g_return_val_if_fail(!error || !*error, 0);
-    WebCore::NamedNodeMap* item = WebKit::core(self);
+    CyberCore::NamedNodeMap* item = CyberKit::core(self);
     auto convertedNamespaceURI = WTF::AtomString::fromUTF8(namespaceURI);
     auto convertedLocalName = WTF::AtomString::fromUTF8(localName);
     auto result = item->removeNamedItemNS(convertedNamespaceURI, convertedLocalName);
     if (result.hasException()) {
-        auto description = WebCore::DOMException::description(result.releaseException().code());
+        auto description = CyberCore::DOMException::description(result.releaseException().code());
         g_set_error_literal(error, g_quark_from_string("WEBKIT_DOM"), description.legacyCode, description.name);
         return nullptr;
     }
-    return WebKit::kit(result.releaseReturnValue().ptr());
+    return CyberKit::kit(result.releaseReturnValue().ptr());
 }
 
-gulong webkit_dom_named_node_map_get_length(WebKitDOMNamedNodeMap* self)
+gulong webkit_dom_named_node_map_get_length(CyberKitDOMNamedNodeMap* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_NAMED_NODE_MAP(self), 0);
-    WebCore::NamedNodeMap* item = WebKit::core(self);
+    CyberCore::NamedNodeMap* item = CyberKit::core(self);
     gulong result = item->length();
     return result;
 }

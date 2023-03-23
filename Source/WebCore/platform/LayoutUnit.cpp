@@ -28,11 +28,11 @@
 
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 TextStream& operator<<(TextStream& ts, const LayoutUnit& v)
 {
     return ts << TextStream::FormatNumberRespectingIntegers(v.toFloat());
 }
 
-} // namespace WebCore
+} // namespace CyberCore

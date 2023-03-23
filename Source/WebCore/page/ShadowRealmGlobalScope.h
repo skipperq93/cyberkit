@@ -31,7 +31,7 @@
 #include <wtf/IsoMalloc.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSDOMGlobalObject;
 class ScriptExecutionContext;
@@ -69,4 +69,4 @@ inline JSShadowRealmGlobalScopeBase* ShadowRealmGlobalScope::wrapper()
     return m_wrapper.get();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

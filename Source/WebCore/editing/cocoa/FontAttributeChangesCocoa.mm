@@ -41,7 +41,7 @@ const String& FontChanges::platformFontFamilyNameForCSS() const
     // the Postscript name. If we don't find a font with the same Postscript name,
     // then we'll have to use the Postscript name to make the CSS specific enough.
     // This logic was originally from WebHTMLView, and is now in WebCore so that it can
-    // be shared between WebKitLegacy and WebKit.
+    // be shared between CyberKitLegacy and WebKit.
     auto cfFontName = m_fontName.createCFString();
     RetainPtr<CFStringRef> fontNameFromDescription;
 

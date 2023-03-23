@@ -40,16 +40,16 @@
 
 namespace WebKit {
 
-UniqueRef<AuthenticatorTransportService> AuthenticatorTransportService::create(WebCore::AuthenticatorTransport transport, Observer& observer)
+UniqueRef<AuthenticatorTransportService> AuthenticatorTransportService::create(CyberCore::AuthenticatorTransport transport, Observer& observer)
 {
     switch (transport) {
-    case WebCore::AuthenticatorTransport::Internal:
+    case CyberCore::AuthenticatorTransport::Internal:
         return makeUniqueRef<LocalService>(observer);
-    case WebCore::AuthenticatorTransport::Usb:
+    case CyberCore::AuthenticatorTransport::Usb:
         return makeUniqueRef<HidService>(observer);
-    case WebCore::AuthenticatorTransport::Nfc:
+    case CyberCore::AuthenticatorTransport::Nfc:
         return makeUniqueRef<NfcService>(observer);
-    case WebCore::AuthenticatorTransport::SmartCard:
+    case CyberCore::AuthenticatorTransport::SmartCard:
         return makeUniqueRef<CcidService>(observer);
     default:
         ASSERT_NOT_REACHED();
@@ -57,16 +57,16 @@ UniqueRef<AuthenticatorTransportService> AuthenticatorTransportService::create(W
     }
 }
 
-UniqueRef<AuthenticatorTransportService> AuthenticatorTransportService::createMock(WebCore::AuthenticatorTransport transport, Observer& observer, const WebCore::MockWebAuthenticationConfiguration& configuration)
+UniqueRef<AuthenticatorTransportService> AuthenticatorTransportService::createMock(CyberCore::AuthenticatorTransport transport, Observer& observer, const CyberCore::MockWebAuthenticationConfiguration& configuration)
 {
     switch (transport) {
-    case WebCore::AuthenticatorTransport::Internal:
+    case CyberCore::AuthenticatorTransport::Internal:
         return makeUniqueRef<MockLocalService>(observer, configuration);
-    case WebCore::AuthenticatorTransport::Usb:
+    case CyberCore::AuthenticatorTransport::Usb:
         return makeUniqueRef<MockHidService>(observer, configuration);
-    case WebCore::AuthenticatorTransport::Nfc:
+    case CyberCore::AuthenticatorTransport::Nfc:
         return makeUniqueRef<MockNfcService>(observer, configuration);
-    case WebCore::AuthenticatorTransport::SmartCard:
+    case CyberCore::AuthenticatorTransport::SmartCard:
         return makeUniqueRef<MockCcidService>(observer, configuration);
     default:
         ASSERT_NOT_REACHED();

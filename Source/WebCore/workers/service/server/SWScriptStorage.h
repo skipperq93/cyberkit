@@ -30,7 +30,7 @@
 #include <wtf/Forward.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ServiceWorkerRegistrationKey;
 class ScriptBuffer;
@@ -55,6 +55,6 @@ private:
     FileSystem::Salt m_salt;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

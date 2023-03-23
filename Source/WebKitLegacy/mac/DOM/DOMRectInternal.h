@@ -25,8 +25,8 @@
 
 #import <CyberKitLegacy/DOMRect.h>
 
-namespace WebCore {
+namespace CyberCore {
 class DeprecatedCSSOMRect;
 }
 
-DOMRect *kit(WebCore::DeprecatedCSSOMRect*);
+DOMRect *kit(CyberCore::DeprecatedCSSOMRect*);

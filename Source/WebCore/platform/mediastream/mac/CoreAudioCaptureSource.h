@@ -42,7 +42,7 @@ namespace WTF {
 class MediaTime;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioSampleBufferList;
 class AudioSampleDataSource;
@@ -163,6 +163,6 @@ inline CaptureSourceOrError CoreAudioCaptureSourceFactory::createAudioCaptureSou
     return CoreAudioCaptureSource::create(String { device.persistentId() }, WTFMove(hashSalts), constraints, pageIdentifier);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM)

@@ -28,7 +28,7 @@
 #include "FilterStyle.h"
 #include "FilterTargetSwitcher.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class FilterStyleTargetSwitcher : public FilterTargetSwitcher {
     WTF_MAKE_FAST_ALLOCATED;
@@ -44,4 +44,4 @@ private:
     FilterStyleVector m_filterStyles;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

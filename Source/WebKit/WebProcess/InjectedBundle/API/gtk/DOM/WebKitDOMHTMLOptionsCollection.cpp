@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -18,45 +18,45 @@
  */
 
 #include "config.h"
-#include "WebKitDOMHTMLOptionsCollection.h"
+#include "CyberKitDOMHTMLOptionsCollection.h"
 
 #include <CyberCore/CSSImportRule.h>
 #include "DOMObjectCache.h"
 #include <CyberCore/Document.h>
 #include <CyberCore/ExceptionCode.h>
 #include <CyberCore/JSExecState.h>
-#include "WebKitDOMHTMLCollectionPrivate.h"
-#include "WebKitDOMHTMLOptionElementPrivate.h"
-#include "WebKitDOMHTMLOptionsCollectionPrivate.h"
-#include "WebKitDOMNodePrivate.h"
-#include "WebKitDOMPrivate.h"
+#include "CyberKitDOMHTMLCollectionPrivate.h"
+#include "CyberKitDOMHTMLOptionElementPrivate.h"
+#include "CyberKitDOMHTMLOptionsCollectionPrivate.h"
+#include "CyberKitDOMNodePrivate.h"
+#include "CyberKitDOMPrivate.h"
 #include "ConvertToUTF8String.h"
 #include <wtf/GetPtr.h>
 #include <wtf/RefPtr.h>
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
-namespace WebKit {
+namespace CyberKit {
 
-WebKitDOMHTMLOptionsCollection* kit(WebCore::HTMLOptionsCollection* obj)
+CyberKitDOMHTMLOptionsCollection* kit(CyberCore::HTMLOptionsCollection* obj)
 {
-    return WEBKIT_DOM_HTML_OPTIONS_COLLECTION(kit(static_cast<WebCore::HTMLCollection*>(obj)));
+    return WEBKIT_DOM_HTML_OPTIONS_COLLECTION(kit(static_cast<CyberCore::HTMLCollection*>(obj)));
 }
 
-WebCore::HTMLOptionsCollection* core(WebKitDOMHTMLOptionsCollection* request)
+CyberCore::HTMLOptionsCollection* core(CyberKitDOMHTMLOptionsCollection* request)
 {
-    return request ? static_cast<WebCore::HTMLOptionsCollection*>(WEBKIT_DOM_OBJECT(request)->coreObject) : 0;
+    return request ? static_cast<CyberCore::HTMLOptionsCollection*>(WEBKIT_DOM_OBJECT(request)->coreObject) : 0;
 }
 
-WebKitDOMHTMLOptionsCollection* wrapHTMLOptionsCollection(WebCore::HTMLOptionsCollection* coreObject)
+CyberKitDOMHTMLOptionsCollection* wrapHTMLOptionsCollection(CyberCore::HTMLOptionsCollection* coreObject)
 {
     ASSERT(coreObject);
     return WEBKIT_DOM_HTML_OPTIONS_COLLECTION(g_object_new(WEBKIT_DOM_TYPE_HTML_OPTIONS_COLLECTION, "core-object", coreObject, nullptr));
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
-G_DEFINE_TYPE(WebKitDOMHTMLOptionsCollection, webkit_dom_html_options_collection, WEBKIT_DOM_TYPE_HTML_COLLECTION)
+G_DEFINE_TYPE(CyberKitDOMHTMLOptionsCollection, webkit_dom_html_options_collection, WEBKIT_DOM_TYPE_HTML_COLLECTION)
 
 enum {
     DOM_HTML_OPTIONS_COLLECTION_PROP_0,
@@ -66,7 +66,7 @@ enum {
 
 static void webkit_dom_html_options_collection_set_property(GObject* object, guint propertyId, const GValue* value, GParamSpec* pspec)
 {
-    WebKitDOMHTMLOptionsCollection* self = WEBKIT_DOM_HTML_OPTIONS_COLLECTION(object);
+    CyberKitDOMHTMLOptionsCollection* self = WEBKIT_DOM_HTML_OPTIONS_COLLECTION(object);
 
     switch (propertyId) {
     case DOM_HTML_OPTIONS_COLLECTION_PROP_SELECTED_INDEX:
@@ -80,7 +80,7 @@ static void webkit_dom_html_options_collection_set_property(GObject* object, gui
 
 static void webkit_dom_html_options_collection_get_property(GObject* object, guint propertyId, GValue* value, GParamSpec* pspec)
 {
-    WebKitDOMHTMLOptionsCollection* self = WEBKIT_DOM_HTML_OPTIONS_COLLECTION(object);
+    CyberKitDOMHTMLOptionsCollection* self = WEBKIT_DOM_HTML_OPTIONS_COLLECTION(object);
 
     switch (propertyId) {
     case DOM_HTML_OPTIONS_COLLECTION_PROP_SELECTED_INDEX:
@@ -95,7 +95,7 @@ static void webkit_dom_html_options_collection_get_property(GObject* object, gui
     }
 }
 
-static void webkit_dom_html_options_collection_class_init(WebKitDOMHTMLOptionsCollectionClass* requestClass)
+static void webkit_dom_html_options_collection_class_init(CyberKitDOMHTMLOptionsCollectionClass* requestClass)
 {
     GObjectClass* gobjectClass = G_OBJECT_CLASS(requestClass);
     gobjectClass->set_property = webkit_dom_html_options_collection_set_property;
@@ -123,43 +123,43 @@ static void webkit_dom_html_options_collection_class_init(WebKitDOMHTMLOptionsCo
 
 }
 
-static void webkit_dom_html_options_collection_init(WebKitDOMHTMLOptionsCollection* request)
+static void webkit_dom_html_options_collection_init(CyberKitDOMHTMLOptionsCollection* request)
 {
     UNUSED_PARAM(request);
 }
 
-WebKitDOMNode* webkit_dom_html_options_collection_named_item(WebKitDOMHTMLOptionsCollection* self, const gchar* name)
+CyberKitDOMNode* webkit_dom_html_options_collection_named_item(CyberKitDOMHTMLOptionsCollection* self, const gchar* name)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_OPTIONS_COLLECTION(self), 0);
     g_return_val_if_fail(name, 0);
-    WebCore::HTMLOptionsCollection* item = WebKit::core(self);
-    RefPtr<WebCore::Node> gobjectResult = WTF::getPtr(item->namedItem(WTF::AtomString::fromUTF8(name)));
-    return WebKit::kit(gobjectResult.get());
+    CyberCore::HTMLOptionsCollection* item = CyberKit::core(self);
+    RefPtr<CyberCore::Node> gobjectResult = WTF::getPtr(item->namedItem(WTF::AtomString::fromUTF8(name)));
+    return CyberKit::kit(gobjectResult.get());
 }
 
-glong webkit_dom_html_options_collection_get_selected_index(WebKitDOMHTMLOptionsCollection* self)
+glong webkit_dom_html_options_collection_get_selected_index(CyberKitDOMHTMLOptionsCollection* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_OPTIONS_COLLECTION(self), 0);
-    WebCore::HTMLOptionsCollection* item = WebKit::core(self);
+    CyberCore::HTMLOptionsCollection* item = CyberKit::core(self);
     glong result = item->selectedIndex();
     return result;
 }
 
-void webkit_dom_html_options_collection_set_selected_index(WebKitDOMHTMLOptionsCollection* self, glong value)
+void webkit_dom_html_options_collection_set_selected_index(CyberKitDOMHTMLOptionsCollection* self, glong value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_OPTIONS_COLLECTION(self));
-    WebCore::HTMLOptionsCollection* item = WebKit::core(self);
+    CyberCore::HTMLOptionsCollection* item = CyberKit::core(self);
     item->setSelectedIndex(value);
 }
 
-gulong webkit_dom_html_options_collection_get_length(WebKitDOMHTMLOptionsCollection* self)
+gulong webkit_dom_html_options_collection_get_length(CyberKitDOMHTMLOptionsCollection* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_OPTIONS_COLLECTION(self), 0);
-    WebCore::HTMLOptionsCollection* item = WebKit::core(self);
+    CyberCore::HTMLOptionsCollection* item = CyberKit::core(self);
     gulong result = item->length();
     return result;
 }

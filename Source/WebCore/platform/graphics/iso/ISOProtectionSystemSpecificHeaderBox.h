@@ -29,7 +29,7 @@
 
 #include "ISOBox.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class WEBCORE_EXPORT ISOProtectionSystemSpecificHeaderBox : public ISOFullBox {
 public:

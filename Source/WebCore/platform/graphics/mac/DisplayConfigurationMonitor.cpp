@@ -30,7 +30,7 @@
 
 #include <wtf/MainThread.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 DisplayConfigurationMonitor::Client::Client()
 {

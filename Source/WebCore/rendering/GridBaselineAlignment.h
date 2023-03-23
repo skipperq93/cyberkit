@@ -31,7 +31,7 @@
 #include <wtf/HashMap.h>
 #include <wtf/HashSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // These classes are used to implement the Baseline Alignment logic, as described in the CSS Box Alignment
 // specification.
@@ -176,4 +176,4 @@ private:
     BaselineContextsMap m_colAxisAlignmentContext;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -42,7 +42,7 @@
 #include "VisibleSelection.h"
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace {
 
@@ -319,4 +319,4 @@ void SelectionRangeData::apply(const RenderRange& newSelection, RepaintMode bloc
         selectedBlockInfo.value->repaint();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

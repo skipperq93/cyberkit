@@ -20,10 +20,10 @@
 #pragma once
 
 #include <CyberCore/DOMRect.h>
-#include <webkitdom/WebKitDOMClientRect.h>
+#include <webkitdom/CyberKitDOMClientRect.h>
 
-namespace WebKit {
-WebKitDOMClientRect* wrapClientRect(WebCore::DOMRect*);
-WebKitDOMClientRect* kit(WebCore::DOMRect*);
-WebCore::DOMRect* core(WebKitDOMClientRect*);
-} // namespace WebKit
+namespace CyberKit {
+CyberKitDOMClientRect* wrapClientRect(CyberCore::DOMRect*);
+CyberKitDOMClientRect* kit(CyberCore::DOMRect*);
+CyberCore::DOMRect* core(CyberKitDOMClientRect*);
+} // namespace CyberKit

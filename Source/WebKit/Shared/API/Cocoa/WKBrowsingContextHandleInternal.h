@@ -40,5 +40,5 @@ class WebPageProxy;
 
 - (id)_initWithPageProxy:(NakedRef<WebKit::WebPageProxy>)page;
 - (id)_initWithPage:(NakedRef<WebKit::WebPage>)page;
-- (id)_initWithPageProxyID:(WebKit::WebPageProxyIdentifier)pageProxyID andWebPageID:(WebCore::PageIdentifier)webPageID;
+- (id)_initWithPageProxyID:(WebKit::WebPageProxyIdentifier)pageProxyID andWebPageID:(CyberCore::PageIdentifier)webPageID;
 @end

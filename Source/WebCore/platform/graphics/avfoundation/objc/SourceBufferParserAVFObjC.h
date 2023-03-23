@@ -43,7 +43,7 @@ OBJC_CLASS WebAVStreamDataParserListener;
 
 typedef struct opaqueCMSampleBuffer *CMSampleBufferRef;
 
-namespace WebCore {
+namespace CyberCore {
 
 class SourceBufferParserAVFObjC final
     : public SourceBufferParser
@@ -95,8 +95,8 @@ private:
 };
 }
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::SourceBufferParserAVFObjC)
-    static bool isType(const WebCore::SourceBufferParser& parser) { return parser.type() == WebCore::SourceBufferParser::Type::AVFObjC; }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::SourceBufferParserAVFObjC)
+    static bool isType(const CyberCore::SourceBufferParser& parser) { return parser.type() == CyberCore::SourceBufferParser::Type::AVFObjC; }
 SPECIALIZE_TYPE_TRAITS_END()
 
 #endif // ENABLE(MEDIA_SOURCE)

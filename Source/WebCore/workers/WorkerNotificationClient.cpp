@@ -35,7 +35,7 @@
 #include "WorkerThread.h"
 #include <wtf/threads/BinarySemaphore.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<WorkerNotificationClient> WorkerNotificationClient::create(WorkerGlobalScope& workerScope)
 {
@@ -121,6 +121,6 @@ void WorkerNotificationClient::postToWorkerThread(Function<void(ScriptExecutionC
     ScriptExecutionContext::postTaskTo(m_workerScopeIdentifier, WTFMove(task));
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(NOTIFICATIONS)

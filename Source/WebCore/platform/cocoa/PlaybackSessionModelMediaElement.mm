@@ -45,7 +45,7 @@
 #import <wtf/NeverDestroyed.h>
 #import <wtf/SoftLinking.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 PlaybackSessionModelMediaElement::PlaybackSessionModelMediaElement()
     : EventListener(EventListener::CPPEventListenerType)
@@ -118,7 +118,7 @@ void PlaybackSessionModelMediaElement::mediaEngineChanged()
         client->wirelessVideoPlaybackDisabledChanged(wirelessVideoPlaybackDisabled);
 }
 
-void PlaybackSessionModelMediaElement::handleEvent(WebCore::ScriptExecutionContext&, WebCore::Event& event)
+void PlaybackSessionModelMediaElement::handleEvent(CyberCore::ScriptExecutionContext&, CyberCore::Event& event)
 {
     updateForEventName(event.type());
 }

@@ -29,7 +29,7 @@
 #import <CyberScriptCore/RegularExpression.h>
 #import <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
     
 static String wildcardRegexPatternString(const String& string)
 {

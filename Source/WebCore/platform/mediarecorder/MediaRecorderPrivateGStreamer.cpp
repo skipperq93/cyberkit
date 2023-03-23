@@ -32,7 +32,7 @@
 #include <gst/app/gstappsink.h>
 #include <wtf/Scope.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 GST_DEBUG_CATEGORY(webkit_media_recorder_debug);
 #define GST_CAT_DEFAULT webkit_media_recorder_debug
@@ -359,6 +359,6 @@ void MediaRecorderPrivateGStreamer::notifyEOS()
     m_eosCondition.notifyAll();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(GSTREAMER_TRANSCODER)

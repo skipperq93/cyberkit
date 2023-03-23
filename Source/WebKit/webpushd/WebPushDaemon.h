@@ -47,12 +47,12 @@ namespace JSC {
 enum class MessageLevel : uint8_t;
 }
 
-namespace WebCore {
+namespace CyberCore {
 class SecurityOriginData;
 }
 
-using WebKit::WebPushD::PushMessageForTesting;
-using WebKit::WebPushD::WebPushDaemonConnectionConfiguration;
+using CyberKit::WebPushD::PushMessageForTesting;
+using CyberKit::WebPushD::WebPushDaemonConnectionConfiguration;
 
 namespace WebPushD {
 
@@ -69,7 +69,7 @@ public:
 
     void startMockPushService();
     void startPushService(const String& incomingPushServiceName, const String& pushDatabasePath);
-    void handleIncomingPush(const WebCore::PushSubscriptionSetIdentifier&, WebKit::WebPushMessage&&);
+    void handleIncomingPush(const CyberCore::PushSubscriptionSetIdentifier&, CyberKit::WebPushMessage&&);
 
     // Message handlers
     void echoTwice(ClientConnection*, const String&, CompletionHandler<void(const String&)>&& replySender);
@@ -81,15 +81,15 @@ public:
     void updateConnectionConfiguration(ClientConnection*, const WebPushDaemonConnectionConfiguration&);
     void injectPushMessageForTesting(ClientConnection*, const PushMessageForTesting&, CompletionHandler<void(bool)>&&);
     void injectEncryptedPushMessageForTesting(ClientConnection*, const String&, CompletionHandler<void(bool)>&&);
-    void getPendingPushMessages(ClientConnection*, CompletionHandler<void(const Vector<WebKit::WebPushMessage>&)>&& replySender);
+    void getPendingPushMessages(ClientConnection*, CompletionHandler<void(const Vector<CyberKit::WebPushMessage>&)>&& replySender);
     void getPushTopicsForTesting(OSObjectPtr<xpc_object_t>&&);
-    void subscribeToPushService(ClientConnection*, const URL& scopeURL, const Vector<uint8_t>& applicationServerKey, CompletionHandler<void(const Expected<WebCore::PushSubscriptionData, WebCore::ExceptionData>&)>&& replySender);
-    void unsubscribeFromPushService(ClientConnection*, const URL& scopeURL, std::optional<WebCore::PushSubscriptionIdentifier>, CompletionHandler<void(const Expected<bool, WebCore::ExceptionData>&)>&& replySender);
-    void getPushSubscription(ClientConnection*, const URL& scopeURL, CompletionHandler<void(const Expected<std::optional<WebCore::PushSubscriptionData>, WebCore::ExceptionData>&)>&& replySender);
-    void getPushPermissionState(ClientConnection*, const URL& scopeURL, CompletionHandler<void(const Expected<uint8_t, WebCore::ExceptionData>&)>&& replySender);
-    void incrementSilentPushCount(ClientConnection*, const WebCore::SecurityOriginData&, CompletionHandler<void(unsigned)>&&);
+    void subscribeToPushService(ClientConnection*, const URL& scopeURL, const Vector<uint8_t>& applicationServerKey, CompletionHandler<void(const Expected<CyberCore::PushSubscriptionData, CyberCore::ExceptionData>&)>&& replySender);
+    void unsubscribeFromPushService(ClientConnection*, const URL& scopeURL, std::optional<CyberCore::PushSubscriptionIdentifier>, CompletionHandler<void(const Expected<bool, CyberCore::ExceptionData>&)>&& replySender);
+    void getPushSubscription(ClientConnection*, const URL& scopeURL, CompletionHandler<void(const Expected<std::optional<CyberCore::PushSubscriptionData>, CyberCore::ExceptionData>&)>&& replySender);
+    void getPushPermissionState(ClientConnection*, const URL& scopeURL, CompletionHandler<void(const Expected<uint8_t, CyberCore::ExceptionData>&)>&& replySender);
+    void incrementSilentPushCount(ClientConnection*, const CyberCore::SecurityOriginData&, CompletionHandler<void(unsigned)>&&);
     void removeAllPushSubscriptions(ClientConnection*, CompletionHandler<void(unsigned)>&&);
-    void removePushSubscriptionsForOrigin(ClientConnection*, const WebCore::SecurityOriginData&, CompletionHandler<void(unsigned)>&&);
+    void removePushSubscriptionsForOrigin(ClientConnection*, const CyberCore::SecurityOriginData&, CompletionHandler<void(unsigned)>&&);
     void setPublicTokenForTesting(ClientConnection*, const String& publicToken, CompletionHandler<void()>&&);
 
     void broadcastDebugMessage(const String&);
@@ -98,13 +98,13 @@ public:
 private:
     Daemon();
 
-    CompletionHandler<void(EncodedMessage&&)> createReplySender(WebKit::WebPushD::MessageType, OSObjectPtr<xpc_object_t>&& request);
-    void decodeAndHandleRawXPCMessage(WebKit::WebPushD::RawXPCMessageType, OSObjectPtr<xpc_object_t>&&);
-    void decodeAndHandleMessage(xpc_connection_t, WebKit::WebPushD::MessageType, Span<const uint8_t> encodedMessage, CompletionHandler<void(EncodedMessage&&)>&&);
+    CompletionHandler<void(EncodedMessage&&)> createReplySender(CyberKit::WebPushD::MessageType, OSObjectPtr<xpc_object_t>&& request);
+    void decodeAndHandleRawXPCMessage(CyberKit::WebPushD::RawXPCMessageType, OSObjectPtr<xpc_object_t>&&);
+    void decodeAndHandleMessage(xpc_connection_t, CyberKit::WebPushD::MessageType, Span<const uint8_t> encodedMessage, CompletionHandler<void(EncodedMessage&&)>&&);
 
     bool canRegisterForNotifications(ClientConnection&);
 
-    void notifyClientPushMessageIsAvailable(const WebCore::PushSubscriptionSetIdentifier&);
+    void notifyClientPushMessageIsAvailable(const CyberCore::PushSubscriptionSetIdentifier&);
 
     void setPushService(std::unique_ptr<PushService>&&);
     void runAfterStartingPushService(Function<void()>&&);
@@ -113,7 +113,7 @@ private:
     void releaseIncomingPushTransaction();
     void incomingPushTransactionTimerFired();
 
-    void deletePushRegistration(const WebCore::PushSubscriptionSetIdentifier&, const String&, CompletionHandler<void()>&&);
+    void deletePushRegistration(const CyberCore::PushSubscriptionSetIdentifier&, const String&, CompletionHandler<void()>&&);
 
     ClientConnection* toClientConnection(xpc_connection_t);
     HashMap<xpc_connection_t, Ref<ClientConnection>> m_connectionMap;
@@ -122,10 +122,10 @@ private:
     bool m_pushServiceStarted { false };
     Deque<Function<void()>> m_pendingPushServiceFunctions;
 
-    HashMap<WebCore::PushSubscriptionSetIdentifier, Vector<WebKit::WebPushMessage>> m_pushMessages;
+    HashMap<CyberCore::PushSubscriptionSetIdentifier, Vector<CyberKit::WebPushMessage>> m_pushMessages;
     HashMap<String, Deque<PushMessageForTesting>> m_testingPushMessages;
     
-    WebCore::Timer m_incomingPushTransactionTimer;
+    CyberCore::Timer m_incomingPushTransactionTimer;
     OSObjectPtr<os_transaction_t> m_incomingPushTransaction;
 };
 

@@ -37,13 +37,13 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #endif
 
-@interface WebCoreBundleFinder : NSObject
+@interface CyberCoreBundleFinder : NSObject
 @end
 
-@implementation WebCoreBundleFinder
+@implementation CyberCoreBundleFinder
 @end
 
-namespace WebCore {
+namespace CyberCore {
 
 void BitmapImage::invalidatePlatformData()
 {
@@ -58,7 +58,7 @@ void BitmapImage::invalidatePlatformData()
 
 Ref<Image> Image::loadPlatformResource(const char *name)
 {
-    NSBundle *bundle = [NSBundle bundleForClass:[WebCoreBundleFinder class]];
+    NSBundle *bundle = [NSBundle bundleForClass:[CyberCoreBundleFinder class]];
     NSString *imagePath = [bundle pathForResource:[NSString stringWithUTF8String:name] ofType:@"png"];
     NSData *namedImageData = [NSData dataWithContentsOfFile:imagePath];
     if (namedImageData) {

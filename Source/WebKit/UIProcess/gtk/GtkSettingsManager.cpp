@@ -30,7 +30,7 @@
 #include "WebProcessPool.h"
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 GtkSettingsManager& GtkSettingsManager::singleton()
 {

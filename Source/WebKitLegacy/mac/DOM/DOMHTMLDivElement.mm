@@ -35,20 +35,20 @@
 #import <wtf/GetPtr.h>
 #import <wtf/URL.h>
 
-#define IMPL static_cast<WebCore::HTMLDivElement*>(reinterpret_cast<WebCore::Node*>(_internal))
+#define IMPL static_cast<CyberCore::HTMLDivElement*>(reinterpret_cast<CyberCore::Node*>(_internal))
 
 @implementation DOMHTMLDivElement
 
 - (NSString *)align
 {
-    WebCore::JSMainThreadNullState state;
-    return IMPL->getAttribute(WebCore::HTMLNames::alignAttr);
+    CyberCore::JSMainThreadNullState state;
+    return IMPL->getAttribute(CyberCore::HTMLNames::alignAttr);
 }
 
 - (void)setAlign:(NSString *)newAlign
 {
-    WebCore::JSMainThreadNullState state;
-    IMPL->setAttributeWithoutSynchronization(WebCore::HTMLNames::alignAttr, newAlign);
+    CyberCore::JSMainThreadNullState state;
+    IMPL->setAttributeWithoutSynchronization(CyberCore::HTMLNames::alignAttr, newAlign);
 }
 
 @end

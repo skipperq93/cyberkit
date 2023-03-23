@@ -29,7 +29,7 @@
 
 #import "ButtonControlMac.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ColorWellPart;
 
@@ -43,6 +43,6 @@ private:
     void draw(GraphicsContext&, const FloatRoundedRect& borderRect, float deviceScaleFactor, const ControlStyle&) override;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(MAC) && ENABLE(INPUT_TYPE_COLOR)

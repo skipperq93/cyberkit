@@ -95,7 +95,7 @@
 #include "MediaPlayerPrivateHolePunch.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 // a null player to make MediaPlayer logic simpler
 
@@ -171,9 +171,9 @@ static RefPtr<Logger>& nullLogger()
 }
 #endif
 
-static const Vector<WebCore::ContentType>& nullContentTypeVector()
+static const Vector<CyberCore::ContentType>& nullContentTypeVector()
 {
-    static NeverDestroyed<Vector<WebCore::ContentType>> vector;
+    static NeverDestroyed<Vector<CyberCore::ContentType>> vector;
     return vector;
 }
 
@@ -203,7 +203,7 @@ private:
     }
 #endif
 
-    const Vector<WebCore::ContentType>& mediaContentTypesRequiringHardwareSupport() const final { return nullContentTypeVector(); }
+    const Vector<CyberCore::ContentType>& mediaContentTypesRequiringHardwareSupport() const final { return nullContentTypeVector(); }
 
     RefPtr<PlatformMediaResourceLoader> mediaPlayerCreateResourceLoader() final { return nullptr; }
 

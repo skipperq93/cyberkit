@@ -40,7 +40,7 @@
 #import "MediaSampleAVFObjC.h"
 #import "SharedBuffer.h"
 #import "UTIUtilities.h"
-#import "WebCoreDecompressionSession.h"
+#import "CyberCoreDecompressionSession.h"
 #import <AVFoundation/AVAsset.h>
 #import <AVFoundation/AVAssetReader.h>
 #import <AVFoundation/AVAssetReaderOutput.h>
@@ -62,8 +62,8 @@
 
 #pragma mark -
 
-@interface WebCoreSharedBufferResourceLoaderDelegate : NSObject<AVAssetResourceLoaderDelegate> {
-    WebCore::ImageDecoderAVFObjC* _parent;
+@interface CyberCoreSharedBufferResourceLoaderDelegate : NSObject<AVAssetResourceLoaderDelegate> {
+    CyberCore::ImageDecoderAVFObjC* _parent;
     long long _expectedContentSize;
     RetainPtr<NSData> _data;
     bool _complete;
@@ -71,7 +71,7 @@
     Lock _dataLock;
 }
 @property (readonly) NSData* data;
-- (id)initWithParent:(WebCore::ImageDecoderAVFObjC*)parent;
+- (id)initWithParent:(CyberCore::ImageDecoderAVFObjC*)parent;
 - (void)setExpectedContentSize:(long long)expectedContentSize;
 - (void)updateData:(NSData *)data complete:(BOOL)complete;
 - (BOOL)canFulfillRequest:(AVAssetResourceLoadingRequest *)loadingRequest;
@@ -80,8 +80,8 @@
 - (void)fulfillRequest:(AVAssetResourceLoadingRequest *)loadingRequest;
 @end
 
-@implementation WebCoreSharedBufferResourceLoaderDelegate
-- (id)initWithParent:(WebCore::ImageDecoderAVFObjC*)parent
+@implementation CyberCoreSharedBufferResourceLoaderDelegate
+- (id)initWithParent:(CyberCore::ImageDecoderAVFObjC*)parent
 {
     if (!(self = [super init]))
         return nil;
@@ -213,7 +213,7 @@
 }
 @end
 
-namespace WebCore {
+namespace CyberCore {
 
 #pragma mark - Static Methods
 
@@ -325,10 +325,10 @@ RefPtr<ImageDecoderAVFObjC> ImageDecoderAVFObjC::create(const FragmentedSharedBu
 ImageDecoderAVFObjC::ImageDecoderAVFObjC(const FragmentedSharedBuffer& data, const String& mimeType, AlphaOption, GammaAndColorProfileOption)
     : ImageDecoder()
     , m_mimeType(mimeType)
-    , m_uti(WebCore::UTIFromMIMEType(mimeType))
+    , m_uti(CyberCore::UTIFromMIMEType(mimeType))
     , m_asset(adoptNS([PAL::allocAVURLAssetInstance() initWithURL:customSchemeURL() options:imageDecoderAssetOptions()]))
-    , m_loader(adoptNS([[WebCoreSharedBufferResourceLoaderDelegate alloc] initWithParent:this]))
-    , m_decompressionSession(WebCoreDecompressionSession::createRGB())
+    , m_loader(adoptNS([[CyberCoreSharedBufferResourceLoaderDelegate alloc] initWithParent:this]))
+    , m_decompressionSession(CyberCoreDecompressionSession::createRGB())
 {
     [m_loader updateData:data.makeContiguous()->createNSData().get() complete:NO];
 

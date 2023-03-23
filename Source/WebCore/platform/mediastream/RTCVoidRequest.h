@@ -36,7 +36,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RTCVoidRequest : public RefCounted<RTCVoidRequest> {
 public:
@@ -49,6 +49,6 @@ protected:
     RTCVoidRequest() = default;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

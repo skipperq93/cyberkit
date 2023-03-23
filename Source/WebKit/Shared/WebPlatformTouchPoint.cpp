@@ -29,11 +29,11 @@
 
 #if ENABLE(TOUCH_EVENTS) && !PLATFORM(IOS_FAMILY)
 
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 
 namespace WebKit {
 
-WebPlatformTouchPoint::WebPlatformTouchPoint(unsigned id, TouchPointState state, const WebCore::IntPoint& screenPosition, const WebCore::IntPoint& position)
+WebPlatformTouchPoint::WebPlatformTouchPoint(unsigned id, TouchPointState state, const CyberCore::IntPoint& screenPosition, const CyberCore::IntPoint& position)
     : m_id(id)
     , m_state(state)
     , m_screenPosition(screenPosition)
@@ -43,7 +43,7 @@ WebPlatformTouchPoint::WebPlatformTouchPoint(unsigned id, TouchPointState state,
 {
 }
 
-WebPlatformTouchPoint::WebPlatformTouchPoint(unsigned id, TouchPointState state, const WebCore::IntPoint& screenPosition, const WebCore::IntPoint& position, const WebCore::IntSize& radius, float rotationAngle, float force)
+WebPlatformTouchPoint::WebPlatformTouchPoint(unsigned id, TouchPointState state, const CyberCore::IntPoint& screenPosition, const CyberCore::IntPoint& position, const CyberCore::IntSize& radius, float rotationAngle, float force)
     : m_id(id)
     , m_state(state)
     , m_screenPosition(screenPosition)

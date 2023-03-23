@@ -44,7 +44,7 @@ namespace WebKit {
 class WebGestureEvent : public WebEvent {
 public:
     WebGestureEvent() { }
-    WebGestureEvent(WebEvent&& event, WebCore::IntPoint position, float gestureScale, float gestureRotation)
+    WebGestureEvent(WebEvent&& event, CyberCore::IntPoint position, float gestureScale, float gestureRotation)
         : WebEvent(WTFMove(event))
         , m_position(position)
         , m_gestureScale(gestureScale)
@@ -53,7 +53,7 @@ public:
         ASSERT(isGestureEventType(type()));
     }
 
-    WebCore::IntPoint position() const { return m_position; }
+    CyberCore::IntPoint position() const { return m_position; }
 
     float gestureScale() const { return m_gestureScale; }
     float gestureRotation() const { return m_gestureRotation; }
@@ -61,7 +61,7 @@ public:
 private:
     bool isGestureEventType(WebEventType) const;
 
-    WebCore::IntPoint m_position;
+    CyberCore::IntPoint m_position;
     float m_gestureScale;
     float m_gestureRotation;
 };

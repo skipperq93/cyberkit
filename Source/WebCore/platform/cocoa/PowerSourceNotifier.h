@@ -28,7 +28,7 @@
 #include <wtf/Function.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class PowerSourceNotifier : public CanMakeWeakPtr<PowerSourceNotifier> {
     WTF_MAKE_FAST_ALLOCATED;

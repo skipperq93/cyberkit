@@ -34,17 +34,17 @@
 #include <CyberCore/Page.h>
 #include <CyberCore/Settings.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
-std::unique_ptr<WebCore::MediaRecorderPrivate> MediaRecorderProvider::createMediaRecorderPrivate(MediaStreamPrivate& stream, const MediaRecorderPrivateOptions& options)
+std::unique_ptr<CyberCore::MediaRecorderPrivate> MediaRecorderProvider::createMediaRecorderPrivate(MediaStreamPrivate& stream, const MediaRecorderPrivateOptions& options)
 {
 #if ENABLE(GPU_PROCESS)
     auto* page = m_webPage.corePage();
     if (page && page->settings().webRTCPlatformCodecsInGPUProcessEnabled())
         return makeUnique<MediaRecorderPrivate>(stream, options);
 #endif
-    return WebCore::MediaRecorderProvider::createMediaRecorderPrivate(stream, options);
+    return CyberCore::MediaRecorderProvider::createMediaRecorderPrivate(stream, options);
 }
 
 }

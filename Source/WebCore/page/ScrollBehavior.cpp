@@ -31,7 +31,7 @@
 #include "RenderStyle.h"
 #include "Settings.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 bool useSmoothScrolling(ScrollBehavior behavior, Element* associatedElement)
 {
@@ -59,4 +59,4 @@ bool useSmoothScrolling(ScrollBehavior behavior, Element* associatedElement)
     return false;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

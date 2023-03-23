@@ -23,7 +23,7 @@
 #include "SVGPathConsumer.h"
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FloatPoint;
 class Path;
@@ -61,4 +61,4 @@ FloatPoint getPointAtLengthOfSVGPathByteStream(const SVGPathByteStream&, float l
 // such that all draw commands are absolute. Returns nullptr if an error occurs.
 std::optional<SVGPathByteStream> convertSVGPathByteStreamToAbsoluteCoordinates(const SVGPathByteStream&);
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -28,7 +28,7 @@
 
 #include "ControlFactory.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<MeterPart> MeterPart::create(GaugeRegion gaugeRegion, double value, double minimum, double maximum)
 {
@@ -49,4 +49,4 @@ std::unique_ptr<PlatformControl> MeterPart::createPlatformControl()
     return controlFactory().createPlatformMeter(*this);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

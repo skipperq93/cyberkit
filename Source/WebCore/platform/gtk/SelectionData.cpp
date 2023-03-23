@@ -24,7 +24,7 @@
 #include <wtf/text/StringBuilder.h>
 #include <wtf/unicode/CharacterNames.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static void replaceNonBreakingSpaceWithSpace(String& string)
 {
@@ -130,4 +130,4 @@ void SelectionData::clearAll()
     m_filenames.clear();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

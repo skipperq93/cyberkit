@@ -54,14 +54,14 @@ class Decoder;
 
 namespace webrtc {
 class VideoFrame;
-struct WebKitEncodedFrameInfo;
+struct CyberKitEncodedFrameInfo;
 }
 
-namespace WebCore {
+namespace CyberCore {
 enum class VideoFrameRotation : uint16_t;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class RemoteVideoFrameObjectHeapProxy;
 
@@ -77,7 +77,7 @@ public:
 
     std::optional<VideoCodecType> videoCodecTypeFromWebCodec(const String&);
 
-    using DecoderCallback = Function<void(RefPtr<WebCore::VideoFrame>&&, int64_t timestamp)>;
+    using DecoderCallback = Function<void(RefPtr<CyberCore::VideoFrame>&&, int64_t timestamp)>;
     struct Decoder {
         WTF_MAKE_FAST_ALLOCATED;
     public:
@@ -136,7 +136,7 @@ public:
     void createEncoderAndWaitUntilReady(VideoCodecType, const std::map<std::string, std::string>&, bool isRealtime, bool useAnnexB, Function<void(Encoder&)>&&);
     int32_t releaseEncoder(Encoder&);
     int32_t initializeEncoder(Encoder&, uint16_t width, uint16_t height, unsigned startBitrate, unsigned maxBitrate, unsigned minBitrate, uint32_t maxFramerate);
-    int32_t encodeFrame(Encoder&, const WebCore::VideoFrame&, uint32_t timestamp, bool shouldEncodeAsKeyFrame);
+    int32_t encodeFrame(Encoder&, const CyberCore::VideoFrame&, uint32_t timestamp, bool shouldEncodeAsKeyFrame);
     int32_t encodeFrame(Encoder&, const webrtc::VideoFrame&, bool shouldEncodeAsKeyFrame);
     void flushEncoder(Encoder&, Function<void()>&&);
     void registerEncodeFrameCallback(Encoder&, void* encodedImageCallback);
@@ -166,9 +166,9 @@ private:
     void completedDecoding(VideoDecoderIdentifier, int64_t timeStamp, int64_t timeStampNs, RemoteVideoFrameProxy::Properties&&);
     // FIXME: Will be removed once RemoteVideoFrameProxy providers are the only ones sending data.
     void completedDecodingCV(VideoDecoderIdentifier, int64_t timeStamp, int64_t timeStampNs, RetainPtr<CVPixelBufferRef>&&);
-    void completedEncoding(VideoEncoderIdentifier, IPC::DataReference&&, const webrtc::WebKitEncodedFrameInfo&);
+    void completedEncoding(VideoEncoderIdentifier, IPC::DataReference&&, const webrtc::CyberKitEncodedFrameInfo&);
     void flushEncoderCompleted(VideoEncoderIdentifier);
-    void setEncodingDescription(WebKit::VideoEncoderIdentifier, IPC::DataReference&&);
+    void setEncodingDescription(CyberKit::VideoEncoderIdentifier, IPC::DataReference&&);
     RetainPtr<CVPixelBufferRef> convertToBGRA(CVPixelBufferRef);
 
     // GPUProcessConnection::Client
@@ -184,7 +184,7 @@ private:
 
     Decoder* createDecoderInternal(VideoCodecType, Function<void(Decoder&)>&&);
     Encoder* createEncoderInternal(VideoCodecType, const std::map<std::string, std::string>&, bool isRealtime, bool useAnnexB, Function<void(Encoder&)>&&);
-    template<typename Frame> int32_t encodeFrameInternal(Encoder&, const Frame&, bool shouldEncodeAsKeyFrame, WebCore::VideoFrameRotation, MediaTime, uint32_t);
+    template<typename Frame> int32_t encodeFrameInternal(Encoder&, const Frame&, bool shouldEncodeAsKeyFrame, CyberCore::VideoFrameRotation, MediaTime, uint32_t);
 
 private:
     HashMap<VideoDecoderIdentifier, std::unique_ptr<Decoder>> m_decoders WTF_GUARDED_BY_CAPABILITY(workQueue());
@@ -211,6 +211,6 @@ private:
     bool m_enableAdditionalLogging { false };
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

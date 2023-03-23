@@ -77,7 +77,7 @@ static const Seconds unexpectedActivityDuration = 10_s;
 const MemoryCompactLookupOnlyRobinHoodHashSet<String>& WebProcessProxy::platformPathsWithAssumedReadAccess()
 {
     static NeverDestroyed<MemoryCompactLookupOnlyRobinHoodHashSet<String>> platformPathsWithAssumedReadAccess(std::initializer_list<String> {
-        [NSBundle bundleWithIdentifier:@"com.apple.WebCore"].resourcePath.stringByStandardizingPath,
+        [NSBundle bundleWithIdentifier:@"com.apple.CyberCore"].resourcePath.stringByStandardizingPath,
         [NSBundle bundleWithIdentifier:@"com.apple.WebKit"].resourcePath.stringByStandardizingPath
     });
 
@@ -224,14 +224,14 @@ void WebProcessProxy::enableRemoteInspectorIfNeeded()
 #endif
 
 #if HAVE(MEDIA_ACCESSIBILITY_FRAMEWORK)
-void WebProcessProxy::setCaptionDisplayMode(WebCore::CaptionUserPreferences::CaptionDisplayMode displayMode)
+void WebProcessProxy::setCaptionDisplayMode(CyberCore::CaptionUserPreferences::CaptionDisplayMode displayMode)
 {
-    WebCore::CaptionUserPreferencesMediaAF::platformSetCaptionDisplayMode(displayMode);
+    CyberCore::CaptionUserPreferencesMediaAF::platformSetCaptionDisplayMode(displayMode);
 }
 
 void WebProcessProxy::setCaptionLanguage(const String& language)
 {
-    WebCore::CaptionUserPreferencesMediaAF::platformSetPreferredLanguage(language);
+    CyberCore::CaptionUserPreferencesMediaAF::platformSetPreferredLanguage(language);
 }
 #endif
 
@@ -271,7 +271,7 @@ void WebProcessProxy::hardwareConsoleStateChanged()
 {
     m_isConnectedToHardwareConsole = WindowServerConnection::singleton().hardwareConsoleState() == WindowServerConnection::HardwareConsoleState::Connected;
     for (const auto& page : m_pageMap.values())
-        page->activityStateDidChange(WebCore::ActivityState::IsConnectedToHardwareConsole);
+        page->activityStateDidChange(CyberCore::ActivityState::IsConnectedToHardwareConsole);
 }
 #endif
 
@@ -309,7 +309,7 @@ bool WebProcessProxy::messageSourceIsValidWebContentProcess()
 #endif
 
     // WebKitTestRunner does not pass the isPlatformBinary check, we should return early in this case.
-    if (isRunningTest(WebCore::applicationBundleIdentifier()))
+    if (isRunningTest(CyberCore::applicationBundleIdentifier()))
         return true;
 
     // Confirm that the connection is from a WebContent process:

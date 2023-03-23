@@ -33,7 +33,7 @@
 #include <wtf/Noncopyable.h>
 #include <wtf/OptionSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Frame;
 class FrameLoadRequest;
@@ -45,7 +45,7 @@ class PlatformWheelEvent;
 enum class WheelEventProcessingSteps : uint8_t;
 
 // Real user inputs come from WebKit or WebKit2.
-// Synthetic inputs come from within WebCore (i.e., from web replay or fake mouse moves).
+// Synthetic inputs come from within CyberCore (i.e., from web replay or fake mouse moves).
 enum class InputSource {
     User,
     Synthetic
@@ -84,4 +84,4 @@ private:
     Page& m_page;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

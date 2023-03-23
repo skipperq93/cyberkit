@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -18,7 +18,7 @@
  */
 
 #include "config.h"
-#include "WebKitDOMHTMLAppletElement.h"
+#include "CyberKitDOMHTMLAppletElement.h"
 
 #include <CyberCore/CSSImportRule.h>
 #include "DOMObjectCache.h"
@@ -27,39 +27,39 @@
 #include "GObjectEventListener.h"
 #include <CyberCore/HTMLNames.h>
 #include <CyberCore/JSExecState.h>
-#include "WebKitDOMEventPrivate.h"
-#include "WebKitDOMEventTarget.h"
-#include "WebKitDOMNodePrivate.h"
-#include "WebKitDOMPrivate.h"
+#include "CyberKitDOMEventPrivate.h"
+#include "CyberKitDOMEventTarget.h"
+#include "CyberKitDOMNodePrivate.h"
+#include "CyberKitDOMPrivate.h"
 #include "ConvertToUTF8String.h"
 #include <wtf/GetPtr.h>
 #include <wtf/RefPtr.h>
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
-static gboolean webkit_dom_html_applet_element_dispatch_event(WebKitDOMEventTarget*, WebKitDOMEvent*, GError**)
+static gboolean webkit_dom_html_applet_element_dispatch_event(CyberKitDOMEventTarget*, CyberKitDOMEvent*, GError**)
 {
     return false;
 }
 
-static gboolean webkit_dom_html_applet_element_add_event_listener(WebKitDOMEventTarget*, const char*, GClosure*, gboolean)
+static gboolean webkit_dom_html_applet_element_add_event_listener(CyberKitDOMEventTarget*, const char*, GClosure*, gboolean)
 {
     return false;
 }
 
-static gboolean webkit_dom_html_applet_element_remove_event_listener(WebKitDOMEventTarget*, const char*, GClosure*, gboolean)
+static gboolean webkit_dom_html_applet_element_remove_event_listener(CyberKitDOMEventTarget*, const char*, GClosure*, gboolean)
 {
     return false;
 }
 
-static void webkit_dom_html_applet_element_dom_event_target_init(WebKitDOMEventTargetIface* iface)
+static void webkit_dom_html_applet_element_dom_event_target_init(CyberKitDOMEventTargetIface* iface)
 {
     iface->dispatch_event = webkit_dom_html_applet_element_dispatch_event;
     iface->add_event_listener = webkit_dom_html_applet_element_add_event_listener;
     iface->remove_event_listener = webkit_dom_html_applet_element_remove_event_listener;
 }
 
-G_DEFINE_TYPE_WITH_CODE(WebKitDOMHTMLAppletElement, webkit_dom_html_applet_element, WEBKIT_DOM_TYPE_HTML_ELEMENT, G_IMPLEMENT_INTERFACE(WEBKIT_DOM_TYPE_EVENT_TARGET, webkit_dom_html_applet_element_dom_event_target_init))
+G_DEFINE_TYPE_WITH_CODE(CyberKitDOMHTMLAppletElement, webkit_dom_html_applet_element, WEBKIT_DOM_TYPE_HTML_ELEMENT, G_IMPLEMENT_INTERFACE(WEBKIT_DOM_TYPE_EVENT_TARGET, webkit_dom_html_applet_element_dom_event_target_init))
 
 enum {
     DOM_HTML_APPLET_ELEMENT_PROP_0,
@@ -78,7 +78,7 @@ enum {
 
 static void webkit_dom_html_applet_element_set_property(GObject* object, guint propertyId, const GValue* value, GParamSpec* pspec)
 {
-    WebKitDOMHTMLAppletElement* self = WEBKIT_DOM_HTML_APPLET_ELEMENT(object);
+    CyberKitDOMHTMLAppletElement* self = WEBKIT_DOM_HTML_APPLET_ELEMENT(object);
 
     switch (propertyId) {
     case DOM_HTML_APPLET_ELEMENT_PROP_ALIGN:
@@ -122,7 +122,7 @@ static void webkit_dom_html_applet_element_set_property(GObject* object, guint p
 
 static void webkit_dom_html_applet_element_get_property(GObject* object, guint propertyId, GValue* value, GParamSpec* pspec)
 {
-    WebKitDOMHTMLAppletElement* self = WEBKIT_DOM_HTML_APPLET_ELEMENT(object);
+    CyberKitDOMHTMLAppletElement* self = WEBKIT_DOM_HTML_APPLET_ELEMENT(object);
 
     switch (propertyId) {
     case DOM_HTML_APPLET_ELEMENT_PROP_ALIGN:
@@ -164,7 +164,7 @@ static void webkit_dom_html_applet_element_get_property(GObject* object, guint p
     }
 }
 
-static void webkit_dom_html_applet_element_class_init(WebKitDOMHTMLAppletElementClass* requestClass)
+static void webkit_dom_html_applet_element_class_init(CyberKitDOMHTMLAppletElementClass* requestClass)
 {
     GObjectClass* gobjectClass = G_OBJECT_CLASS(requestClass);
     gobjectClass->set_property = webkit_dom_html_applet_element_set_property;
@@ -282,107 +282,107 @@ static void webkit_dom_html_applet_element_class_init(WebKitDOMHTMLAppletElement
 
 }
 
-static void webkit_dom_html_applet_element_init(WebKitDOMHTMLAppletElement* request)
+static void webkit_dom_html_applet_element_init(CyberKitDOMHTMLAppletElement* request)
 {
     UNUSED_PARAM(request);
 }
 
-gchar* webkit_dom_html_applet_element_get_align(WebKitDOMHTMLAppletElement*)
+gchar* webkit_dom_html_applet_element_get_align(CyberKitDOMHTMLAppletElement*)
 {
     return nullptr;
 }
 
-void webkit_dom_html_applet_element_set_align(WebKitDOMHTMLAppletElement*, const gchar*)
+void webkit_dom_html_applet_element_set_align(CyberKitDOMHTMLAppletElement*, const gchar*)
 {
 }
 
-gchar* webkit_dom_html_applet_element_get_alt(WebKitDOMHTMLAppletElement*)
-{
-    return nullptr;
-}
-
-void webkit_dom_html_applet_element_set_alt(WebKitDOMHTMLAppletElement*, const gchar*)
-{
-}
-
-gchar* webkit_dom_html_applet_element_get_archive(WebKitDOMHTMLAppletElement*)
+gchar* webkit_dom_html_applet_element_get_alt(CyberKitDOMHTMLAppletElement*)
 {
     return nullptr;
 }
 
-void webkit_dom_html_applet_element_set_archive(WebKitDOMHTMLAppletElement*, const gchar*)
+void webkit_dom_html_applet_element_set_alt(CyberKitDOMHTMLAppletElement*, const gchar*)
 {
 }
 
-gchar* webkit_dom_html_applet_element_get_code(WebKitDOMHTMLAppletElement*)
-{
-    return nullptr;
-}
-
-void webkit_dom_html_applet_element_set_code(WebKitDOMHTMLAppletElement*, const gchar*)
-{
-}
-
-gchar* webkit_dom_html_applet_element_get_code_base(WebKitDOMHTMLAppletElement*)
+gchar* webkit_dom_html_applet_element_get_archive(CyberKitDOMHTMLAppletElement*)
 {
     return nullptr;
 }
 
-void webkit_dom_html_applet_element_set_code_base(WebKitDOMHTMLAppletElement*, const gchar*)
+void webkit_dom_html_applet_element_set_archive(CyberKitDOMHTMLAppletElement*, const gchar*)
 {
 }
 
-gchar* webkit_dom_html_applet_element_get_height(WebKitDOMHTMLAppletElement*)
+gchar* webkit_dom_html_applet_element_get_code(CyberKitDOMHTMLAppletElement*)
 {
     return nullptr;
 }
 
-void webkit_dom_html_applet_element_set_height(WebKitDOMHTMLAppletElement*, const gchar*)
+void webkit_dom_html_applet_element_set_code(CyberKitDOMHTMLAppletElement*, const gchar*)
 {
 }
 
-glong webkit_dom_html_applet_element_get_hspace(WebKitDOMHTMLAppletElement*)
+gchar* webkit_dom_html_applet_element_get_code_base(CyberKitDOMHTMLAppletElement*)
+{
+    return nullptr;
+}
+
+void webkit_dom_html_applet_element_set_code_base(CyberKitDOMHTMLAppletElement*, const gchar*)
+{
+}
+
+gchar* webkit_dom_html_applet_element_get_height(CyberKitDOMHTMLAppletElement*)
+{
+    return nullptr;
+}
+
+void webkit_dom_html_applet_element_set_height(CyberKitDOMHTMLAppletElement*, const gchar*)
+{
+}
+
+glong webkit_dom_html_applet_element_get_hspace(CyberKitDOMHTMLAppletElement*)
 {
     return 0;
 }
 
-void webkit_dom_html_applet_element_set_hspace(WebKitDOMHTMLAppletElement*, glong)
+void webkit_dom_html_applet_element_set_hspace(CyberKitDOMHTMLAppletElement*, glong)
 {
 }
 
-gchar* webkit_dom_html_applet_element_get_name(WebKitDOMHTMLAppletElement*)
-{
-    return nullptr;
-}
-
-void webkit_dom_html_applet_element_set_name(WebKitDOMHTMLAppletElement*, const gchar*)
-{
-}
-
-gchar* webkit_dom_html_applet_element_get_object(WebKitDOMHTMLAppletElement*)
+gchar* webkit_dom_html_applet_element_get_name(CyberKitDOMHTMLAppletElement*)
 {
     return nullptr;
 }
 
-void webkit_dom_html_applet_element_set_object(WebKitDOMHTMLAppletElement*, const gchar*)
+void webkit_dom_html_applet_element_set_name(CyberKitDOMHTMLAppletElement*, const gchar*)
 {
 }
 
-glong webkit_dom_html_applet_element_get_vspace(WebKitDOMHTMLAppletElement*)
+gchar* webkit_dom_html_applet_element_get_object(CyberKitDOMHTMLAppletElement*)
+{
+    return nullptr;
+}
+
+void webkit_dom_html_applet_element_set_object(CyberKitDOMHTMLAppletElement*, const gchar*)
+{
+}
+
+glong webkit_dom_html_applet_element_get_vspace(CyberKitDOMHTMLAppletElement*)
 {
     return 0;
 }
 
-void webkit_dom_html_applet_element_set_vspace(WebKitDOMHTMLAppletElement*, glong)
+void webkit_dom_html_applet_element_set_vspace(CyberKitDOMHTMLAppletElement*, glong)
 {
 }
 
-gchar* webkit_dom_html_applet_element_get_width(WebKitDOMHTMLAppletElement*)
+gchar* webkit_dom_html_applet_element_get_width(CyberKitDOMHTMLAppletElement*)
 {
     return nullptr;
 }
 
-void webkit_dom_html_applet_element_set_width(WebKitDOMHTMLAppletElement*, const gchar*)
+void webkit_dom_html_applet_element_set_width(CyberKitDOMHTMLAppletElement*, const gchar*)
 {
 }
 

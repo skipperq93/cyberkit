@@ -29,7 +29,7 @@
 #include <wtf/Assertions.h>
 #include <wtf/HashMap.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class GraphicsContext;
 class TiledBackingStoreClient;

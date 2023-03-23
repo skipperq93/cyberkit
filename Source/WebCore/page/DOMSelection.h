@@ -35,7 +35,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Node;
 class Position;
@@ -105,4 +105,4 @@ private:
     bool isValidForPosition(Node*) const;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -33,7 +33,7 @@
 #include <CyberCore/ScrollingTreeScrollingNodeDelegate.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 Ref<ScrollingTreeOverflowScrollingNodeRemoteMac> ScrollingTreeOverflowScrollingNodeRemoteMac::create(ScrollingTree& tree, ScrollingNodeID nodeID)
 {

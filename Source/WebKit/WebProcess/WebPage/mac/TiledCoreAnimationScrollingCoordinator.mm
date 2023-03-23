@@ -30,7 +30,7 @@
 
 #import "WebPage.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 TiledCoreAnimationScrollingCoordinator::TiledCoreAnimationScrollingCoordinator(WebPage* page)
     : ScrollingCoordinatorMac(page->corePage())
@@ -55,6 +55,6 @@ void TiledCoreAnimationScrollingCoordinator::hasNodeWithAnimatedScrollChanged(bo
     m_page->setHasActiveAnimatedScrolls(haveAnimatedScrollingNodes);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(ASYNC_SCROLLING) && ENABLE(SCROLLING_THREAD)

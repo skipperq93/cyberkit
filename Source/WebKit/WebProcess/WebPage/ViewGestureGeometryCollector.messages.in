@@ -22,7 +22,7 @@
 
 messages -> ViewGestureGeometryCollector NotRefCounted {
 #if PLATFORM(COCOA)
-    CollectGeometryForSmartMagnificationGesture(WebCore::FloatPoint origin)
+    CollectGeometryForSmartMagnificationGesture(CyberCore::FloatPoint origin)
 #endif
 
 #if !PLATFORM(IOS_FAMILY)

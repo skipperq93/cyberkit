@@ -31,7 +31,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class GCObservation final : public RefCounted<GCObservation> {
 public:
@@ -48,4 +48,4 @@ private:
     mutable JSC::Weak<JSC::JSObject> m_observedValue;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

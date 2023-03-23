@@ -39,7 +39,7 @@
 #include <wtf/WallTime.h>
 #include <wtf/text/StringConcatenateNumbers.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 #define CORRUPT_MARKER_SUFFIX "-corrupted"
 
@@ -671,4 +671,4 @@ bool CookieJarDB::executeSQLStatement(Expected<SQLiteStatement, int>&& statement
     return true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

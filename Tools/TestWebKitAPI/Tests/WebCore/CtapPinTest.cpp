@@ -44,7 +44,7 @@
 #include <pal/crypto/CryptoDigest.h>
 
 namespace TestWebKitAPI {
-using namespace WebCore;
+using namespace CyberCore;
 using namespace cbor;
 using namespace fido;
 using namespace fido::pin;

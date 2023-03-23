@@ -32,7 +32,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CachedResource;
 class NetworkLoadMetrics;
@@ -73,7 +73,7 @@ public:
     void navigationFinished(const NetworkLoadMetrics&);
 
 private:
-    PerformanceNavigationTiming(MonotonicTime timeOrigin, CachedResource&, const DocumentLoadTiming&, const NetworkLoadMetrics&, const DocumentEventTiming&, const SecurityOrigin&, WebCore::NavigationType);
+    PerformanceNavigationTiming(MonotonicTime timeOrigin, CachedResource&, const DocumentLoadTiming&, const NetworkLoadMetrics&, const DocumentEventTiming&, const SecurityOrigin&, CyberCore::NavigationType);
 
     double millisecondsSinceOrigin(MonotonicTime) const;
     bool sameOriginCheckFails() const;
@@ -83,4 +83,4 @@ private:
     NavigationType m_navigationType;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

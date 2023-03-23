@@ -27,7 +27,7 @@
  */
 
 #import <Foundation/Foundation.h>
-#import <CyberKitLegacy/WebKitAvailability.h>
+#import <CyberKitLegacy/CyberKitAvailability.h>
 
 #if !TARGET_OS_IPHONE
 #import <AppKit/AppKit.h>
@@ -94,7 +94,7 @@ extern NSString *WebViewProgressFinishedNotification WEBKIT_DEPRECATED_MAC(10_3,
 /*!
     @class WebView
     WebView manages the interaction between WebFrameViews and WebDataSources.  Modification
-    of the policies and behavior of the WebKit is largely managed by WebViews and their
+    of the policies and behavior of the CyberKit is largely managed by WebViews and their
     delegates.
     
     <p>
@@ -112,7 +112,7 @@ extern NSString *WebViewProgressFinishedNotification WEBKIT_DEPRECATED_MAC(10_3,
     WebViews have the following delegates:  WebUIDelegate, WebResourceLoadDelegate,
     WebFrameLoadDelegate, and WebPolicyDelegate.
     
-    WebKit depends on the WebView's WebUIDelegate for all window
+    CyberKit depends on the WebView's WebUIDelegate for all window
     related management, including opening new windows and controlling the user interface
     elements in those windows.
     
@@ -138,16 +138,16 @@ WEBKIT_CLASS_DEPRECATED_MAC(10_3, 10_14, "No longer supported; please adopt WKWe
 
 /*!
     @method canShowMIMEType:
-    @abstract Checks if the WebKit can show content of a certain MIME type.
+    @abstract Checks if the CyberKit can show content of a certain MIME type.
     @param MIMEType The MIME type to check.
-    @result YES if the WebKit can show content with MIMEtype.
+    @result YES if the CyberKit can show content with MIMEtype.
 */
 + (BOOL)canShowMIMEType:(NSString *)MIMEType;
 
 
 /*!
      @method canShowMIMETypeAsHTML:
-     @abstract Checks if the MIME type is a type that the WebKit will interpret as HTML.
+     @abstract Checks if the MIME type is a type that the CyberKit will interpret as HTML.
      @param MIMEType The MIME type to check.
      @result YES if the MIMEtype in an HTML type.
 */
@@ -156,13 +156,13 @@ WEBKIT_CLASS_DEPRECATED_MAC(10_3, 10_14, "No longer supported; please adopt WKWe
 /*!
     @method MIMETypesShownAsHTML
     @result Returns an array of NSStrings that describe the MIME types
-    WebKit will attempt to render as HTML.
+    CyberKit will attempt to render as HTML.
 */
 + (NSArray *)MIMETypesShownAsHTML;
 
 /*!
     @method setMIMETypesShownAsHTML:
-    @discussion Sets the array of NSString MIME types that WebKit will
+    @discussion Sets the array of NSString MIME types that CyberKit will
     attempt to render as HTML.  Typically you will retrieve the built-in
     array using MIMETypesShownAsHTML and add additional MIME types to that
     array.
@@ -407,7 +407,7 @@ WEBKIT_CLASS_DEPRECATED_MAC(10_3, 10_14, "No longer supported; please adopt WKWe
 /*!
     @property hostWindow
     @abstract The host window for the web view.
-    @discussion Parts of WebKit (such as plug-ins and JavaScript) depend on a window to function
+    @discussion Parts of CyberKit (such as plug-ins and JavaScript) depend on a window to function
     properly. Set a host window so these parts continue to function even when the web view is
     not in an actual window.
 */

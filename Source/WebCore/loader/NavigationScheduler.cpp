@@ -57,7 +57,7 @@
 #include "UserGestureIndicator.h"
 #include <wtf/Ref.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 unsigned NavigationDisabler::s_globalNavigationDisableCount = 0;
 
@@ -661,4 +661,4 @@ bool NavigationScheduler::hasQueuedNavigation() const
     return m_redirect && !m_redirect->delay();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

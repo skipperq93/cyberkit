@@ -39,7 +39,7 @@
 #include "ServiceWorkerTypes.h"
 #include <wtf/URLHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct BackgroundFetchInformation;
 struct NotificationData;
@@ -85,7 +85,7 @@ public:
     WEBCORE_EXPORT void setScriptResource(ServiceWorkerIdentifier, URL&& scriptURL, ServiceWorkerContextData::ImportedScript&&);
     WEBCORE_EXPORT void didFailHeartBeatCheck(ServiceWorkerIdentifier);
     WEBCORE_EXPORT void setAsInspected(ServiceWorkerIdentifier, bool);
-    WEBCORE_EXPORT void findClientByVisibleIdentifier(ServiceWorkerIdentifier, const String& clientIdentifier, CompletionHandler<void(std::optional<WebCore::ServiceWorkerClientData>&&)>&&);
+    WEBCORE_EXPORT void findClientByVisibleIdentifier(ServiceWorkerIdentifier, const String& clientIdentifier, CompletionHandler<void(std::optional<CyberCore::ServiceWorkerClientData>&&)>&&);
 
     using OpenWindowCallback = CompletionHandler<void(Expected<std::optional<ServiceWorkerClientData>, ExceptionData>&&)>;
     virtual void openWindow(ServiceWorkerIdentifier, const URL&, OpenWindowCallback&&) = 0;
@@ -102,13 +102,13 @@ protected:
     virtual void close() = 0;
 
 private:
-    WeakPtr<WebCore::SWServer> m_server;
+    WeakPtr<CyberCore::SWServer> m_server;
     SWServerToContextConnectionIdentifier m_identifier;
     RegistrableDomain m_registrableDomain;
     std::optional<ScriptExecutionContextIdentifier> m_serviceWorkerPageIdentifier;
     bool m_shouldTerminateWhenPossible { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

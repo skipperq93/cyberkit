@@ -33,7 +33,7 @@
 #include <windows.h>
 #include <windowsx.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 #define HIGH_BIT_MASK_SHORT 0x8000
 #define SPI_GETWHEELSCROLLCHARS 0x006C

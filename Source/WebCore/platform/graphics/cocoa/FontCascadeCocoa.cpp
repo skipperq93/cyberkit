@@ -23,7 +23,7 @@
 #include "config.h"
 #include "FontCascade.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 bool FontCascade::canReturnFallbackFontsForComplexText()
 {

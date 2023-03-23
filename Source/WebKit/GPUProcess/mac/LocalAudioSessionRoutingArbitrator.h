@@ -34,7 +34,7 @@ namespace WebKit {
 class GPUConnectionToWebProcess;
 
 class LocalAudioSessionRoutingArbitrator final
-    : public WebCore::AudioSessionRoutingArbitrationClient {
+    : public CyberCore::AudioSessionRoutingArbitrationClient {
     WTF_MAKE_FAST_ALLOCATED;
 
     friend UniqueRef<LocalAudioSessionRoutingArbitrator> WTF::makeUniqueRefWithoutFastMallocCheck<LocalAudioSessionRoutingArbitrator>(GPUConnectionToWebProcess&);
@@ -42,7 +42,7 @@ public:
     static UniqueRef<LocalAudioSessionRoutingArbitrator> create(GPUConnectionToWebProcess&);
     virtual ~LocalAudioSessionRoutingArbitrator();
 
-    using WeakValueType = WebCore::AudioSessionRoutingArbitrationClient;
+    using WeakValueType = CyberCore::AudioSessionRoutingArbitrationClient;
 
     void processDidTerminate();
 
@@ -50,7 +50,7 @@ private:
     LocalAudioSessionRoutingArbitrator(GPUConnectionToWebProcess&);
 
     // AudioSessionRoutingArbitrationClient
-    void beginRoutingArbitrationWithCategory(WebCore::AudioSession::CategoryType, ArbitrationCallback&&) final;
+    void beginRoutingArbitrationWithCategory(CyberCore::AudioSession::CategoryType, ArbitrationCallback&&) final;
     void leaveRoutingAbritration() final;
 
     GPUConnectionToWebProcess& m_connectionToWebProcess;

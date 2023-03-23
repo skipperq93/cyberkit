@@ -33,7 +33,7 @@
 #include <wtf/Hasher.h>
 #include <wtf/MathExtras.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 namespace TestWebKitAPI {
 

@@ -34,7 +34,7 @@
 
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 ScrollingStateNode::ScrollingStateNode(ScrollingNodeType nodeType, ScrollingStateTree& scrollingStateTree, ScrollingNodeID nodeID)
     : m_nodeType(nodeType)
@@ -227,6 +227,6 @@ String ScrollingStateNode::scrollingStateTreeAsText(OptionSet<ScrollingStateTree
     return ts.release();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ASYNC_SCROLLING)

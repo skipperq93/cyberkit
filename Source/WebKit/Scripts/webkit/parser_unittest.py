@@ -143,7 +143,7 @@ _expected_model_base = {
                 ('bool', 'refresh'),
             ),
             'reply_parameters': (
-                ('Vector<WebCore::PluginInfo>', 'plugins'),
+                ('Vector<CyberCore::PluginInfo>', 'plugins'),
             ),
             'conditions': (None),
         },
@@ -184,7 +184,7 @@ _expected_model_base = {
         {
             'name': 'SetVideoLayerID',
             'parameters': (
-                ('WebCore::GraphicsLayer::PlatformLayerID', 'videoLayerID'),
+                ('CyberCore::GraphicsLayer::PlatformLayerID', 'videoLayerID'),
             ),
             'conditions': (None),
         },
@@ -202,7 +202,7 @@ _expected_model_base = {
                 ('uint32_t', 'type'),
             ),
             'reply_parameters': (
-                ('Vector<WebCore::KeypressCommand>', 'commandName'),
+                ('Vector<CyberCore::KeypressCommand>', 'commandName'),
             ),
             'conditions': ('PLATFORM(MAC)'),
         },

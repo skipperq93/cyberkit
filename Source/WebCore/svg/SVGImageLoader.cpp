@@ -28,7 +28,7 @@
 #include "SVGElementTypeHelpers.h"
 #include "SVGImageElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 SVGImageLoader::SVGImageLoader(SVGImageElement& element)
     : ImageLoader(element)

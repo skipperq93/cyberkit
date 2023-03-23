@@ -44,7 +44,7 @@
 #include <wtf/linux/CurrentProcessMemoryStatus.h>
 #include <wtf/text/StringToIntegerConversion.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static float cpuPeriod()
 {
@@ -323,6 +323,6 @@ void ResourceUsageThread::platformCollectMemoryData(JSC::VM* vm, ResourceUsageDa
     data.timeOfNextFullCollection = data.timestamp + vm->heap.fullActivityCallback()->timeUntilFire().value_or(Seconds(std::numeric_limits<double>::infinity()));
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(RESOURCE_USAGE) && OS(LINUX)

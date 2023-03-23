@@ -32,7 +32,7 @@
 #import "TextAreaPart.h"
 #import <pal/spi/mac/NSCellSPI.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 TextAreaMac::TextAreaMac(TextAreaPart& owningPart)
     : PlatformControl(owningPart)
@@ -52,6 +52,6 @@ void TextAreaMac::draw(GraphicsContext& context, const FloatRoundedRect& borderR
     _NSDrawCarbonThemeListBox(borderRect.rect(), enabled && !readOnly, YES, YES);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(MAC)

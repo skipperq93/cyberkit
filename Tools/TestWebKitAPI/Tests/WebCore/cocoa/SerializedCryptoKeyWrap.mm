@@ -35,21 +35,21 @@ public:
     virtual void SetUp()
     {
         WTF::initializeMainThread();
-        WebCore::deleteDefaultWebCryptoMasterKey();
+        CyberCore::deleteDefaultWebCryptoMasterKey();
     }
 
     virtual void TearDown()
     {
-        WebCore::deleteDefaultWebCryptoMasterKey();
+        CyberCore::deleteDefaultWebCryptoMasterKey();
     }
 };
 
 TEST_F(SerializedCryptoKeyWrapTest, DefaultWebCryptoMasterKey)
 {
-    auto masterKey1 = WebCore::defaultWebCryptoMasterKey();
+    auto masterKey1 = CyberCore::defaultWebCryptoMasterKey();
     EXPECT_TRUE(masterKey1);
 
-    auto masterKey2 = WebCore::defaultWebCryptoMasterKey();
+    auto masterKey2 = CyberCore::defaultWebCryptoMasterKey();
     EXPECT_TRUE(masterKey2);
 
     EXPECT_TRUE(masterKey1 == masterKey2);
@@ -57,11 +57,11 @@ TEST_F(SerializedCryptoKeyWrapTest, DefaultWebCryptoMasterKey)
 
 TEST_F(SerializedCryptoKeyWrapTest, DeleteDefaultWebCryptoMasterKey)
 {
-    auto masterKey1 = WebCore::defaultWebCryptoMasterKey();
+    auto masterKey1 = CyberCore::defaultWebCryptoMasterKey();
     EXPECT_TRUE(masterKey1);
-    EXPECT_TRUE(WebCore::deleteDefaultWebCryptoMasterKey());
+    EXPECT_TRUE(CyberCore::deleteDefaultWebCryptoMasterKey());
 
-    auto masterKey2 = WebCore::defaultWebCryptoMasterKey();
+    auto masterKey2 = CyberCore::defaultWebCryptoMasterKey();
     EXPECT_TRUE(masterKey2);
 
     EXPECT_TRUE(masterKey1 != masterKey2);
@@ -69,12 +69,12 @@ TEST_F(SerializedCryptoKeyWrapTest, DeleteDefaultWebCryptoMasterKey)
 
 TEST_F(SerializedCryptoKeyWrapTest, SerializedCryptoKeyWrapUnwrap)
 {
-    auto masterKey = WebCore::defaultWebCryptoMasterKey();
+    auto masterKey = CyberCore::defaultWebCryptoMasterKey();
     EXPECT_TRUE(masterKey);
 
     Vector<uint8_t> cryptoKey(16, 1);
     Vector<uint8_t> wrappedKey;
-    EXPECT_TRUE(WebCore::wrapSerializedCryptoKey(*masterKey, cryptoKey, wrappedKey));
+    EXPECT_TRUE(CyberCore::wrapSerializedCryptoKey(*masterKey, cryptoKey, wrappedKey));
     EXPECT_TRUE(cryptoKey != wrappedKey);
     // ensure wrappedKey doesn't contain cryptoKey
     bool notContained = true;
@@ -90,7 +90,7 @@ TEST_F(SerializedCryptoKeyWrapTest, SerializedCryptoKeyWrapUnwrap)
     EXPECT_TRUE(notContained);
 
     Vector<uint8_t> unwrappedKey;
-    EXPECT_TRUE(WebCore::unwrapSerializedCryptoKey(*masterKey, wrappedKey, unwrappedKey));
+    EXPECT_TRUE(CyberCore::unwrapSerializedCryptoKey(*masterKey, wrappedKey, unwrappedKey));
     EXPECT_TRUE(unwrappedKey == cryptoKey);
 }
 

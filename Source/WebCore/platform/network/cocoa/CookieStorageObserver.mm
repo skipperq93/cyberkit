@@ -44,16 +44,16 @@
 @end
 
 @interface WebCookieObserverAdapter : NSObject {
-    WebCore::CookieStorageObserver* observer;
+    CyberCore::CookieStorageObserver* observer;
 }
-- (instancetype)initWithObserver:(WebCore::CookieStorageObserver&)theObserver;
+- (instancetype)initWithObserver:(CyberCore::CookieStorageObserver&)theObserver;
 - (void)cookiesChangedNotificationHandler:(NSNotification *)notification;
 
 @end
 
 @implementation WebCookieObserverAdapter
 
-- (instancetype)initWithObserver:(WebCore::CookieStorageObserver&)theObserver
+- (instancetype)initWithObserver:(CyberCore::CookieStorageObserver&)theObserver
 {
     self = [super init];
     if (!self)
@@ -72,7 +72,7 @@
 
 @end
 
-namespace WebCore {
+namespace CyberCore {
 
 CookieStorageObserver::CookieStorageObserver(NSHTTPCookieStorage *cookieStorage)
     : m_cookieStorage(cookieStorage)
@@ -135,4 +135,4 @@ void CookieStorageObserver::cookiesDidChange()
     });
 }
 
-} // namespace WebCore
+} // namespace CyberCore

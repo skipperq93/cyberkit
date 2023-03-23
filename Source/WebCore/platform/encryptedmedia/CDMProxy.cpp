@@ -39,7 +39,7 @@
 #include <wtf/StringPrintStream.h>
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Vector<CDMProxyFactory*>& CDMProxyFactory::registeredFactories()
 {
@@ -401,6 +401,6 @@ CDMInstanceSessionProxy::CDMInstanceSessionProxy(CDMInstanceProxy& instance)
 {
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ENCRYPTED_MEDIA)

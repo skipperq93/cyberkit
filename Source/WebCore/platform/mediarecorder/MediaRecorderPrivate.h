@@ -36,7 +36,7 @@ namespace WTF {
 class MediaTime;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioStreamDescription;
 class MediaSample;
@@ -135,6 +135,6 @@ inline MediaRecorderPrivate::~MediaRecorderPrivate()
         m_videoSource->removeVideoFrameObserver(*this);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_RECORDER)

@@ -29,7 +29,7 @@
 #include "RenderStyleConstants.h"
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // CSS3 Multi Column Layout
 
@@ -67,4 +67,4 @@ private:
     StyleMultiColData(const StyleMultiColData&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -30,7 +30,7 @@
 
 #include <IOKit/hid/IOHIDElement.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 #pragma mark HIDGamepadElement
 
@@ -127,6 +127,6 @@ double HIDGamepadHatswitch::normalizedValue()
     RELEASE_ASSERT_NOT_REACHED();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(GAMEPAD) && PLATFORM(MAC)

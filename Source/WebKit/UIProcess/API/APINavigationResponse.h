@@ -43,14 +43,14 @@ public:
 
     FrameInfo& frame() { return m_frame.get(); }
 
-    const WebCore::ResourceRequest& request() const { return m_request; }
-    const WebCore::ResourceResponse& response() const { return m_response; }
+    const CyberCore::ResourceRequest& request() const { return m_request; }
+    const CyberCore::ResourceResponse& response() const { return m_response; }
 
     bool canShowMIMEType() const { return m_canShowMIMEType; }
     const WTF::String& downloadAttribute() const { return m_downloadAttribute; }
 
 private:
-    NavigationResponse(API::FrameInfo& frame, const WebCore::ResourceRequest& request, const WebCore::ResourceResponse& response, bool canShowMIMEType, const WTF::String& downloadAttribute)
+    NavigationResponse(API::FrameInfo& frame, const CyberCore::ResourceRequest& request, const CyberCore::ResourceResponse& response, bool canShowMIMEType, const WTF::String& downloadAttribute)
         : m_frame(frame)
         , m_request(request)
         , m_response(response)
@@ -59,8 +59,8 @@ private:
 
     Ref<FrameInfo> m_frame;
 
-    WebCore::ResourceRequest m_request;
-    WebCore::ResourceResponse m_response;
+    CyberCore::ResourceRequest m_request;
+    CyberCore::ResourceResponse m_response;
     bool m_canShowMIMEType;
     WTF::String m_downloadAttribute;
 };

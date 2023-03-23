@@ -31,7 +31,7 @@
 #import <objc/runtime.h>
 #import <pal/cocoa/RevealSoftLink.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 RetainPtr<RVPresentingContext> createRVPresentingContextWithRetainedDelegate(NSPoint point, NSView *view, id<RVPresenterHighlightDelegate> delegate)
 {
@@ -41,6 +41,6 @@ RetainPtr<RVPresentingContext> createRVPresentingContextWithRetainedDelegate(NSP
     return context;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(MAC)

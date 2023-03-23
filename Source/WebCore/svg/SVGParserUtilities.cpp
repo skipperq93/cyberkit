@@ -30,7 +30,7 @@
 #include <wtf/text/StringParsingBuffer.h>
 #include <wtf/text/StringView.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 template <typename FloatType> static inline bool isValidRange(const FloatType& x)
 {

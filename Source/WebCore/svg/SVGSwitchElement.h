@@ -23,7 +23,7 @@
 
 #include "SVGGraphicsElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGSwitchElement final : public SVGGraphicsElement {
     WTF_MAKE_ISO_ALLOCATED(SVGSwitchElement);
@@ -41,4 +41,4 @@ private:
     RenderPtr<RenderElement> createElementRenderer(RenderStyle&&, const RenderTreePosition&) final;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

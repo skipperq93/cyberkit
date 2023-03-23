@@ -25,14 +25,14 @@
 
 #import "WebGeolocationPrivate.h"
 
-namespace WebCore {
+namespace CyberCore {
 class Geolocation;
 }
 
-typedef WebCore::Geolocation WebCoreGeolocation;
+typedef CyberCore::Geolocation CyberCoreGeolocation;
 
 @interface WebGeolocation (WebInternal)
 
-- (id)_initWithWebCoreGeolocation:(WebCoreGeolocation *)geolocation;
+- (id)_initWithCyberCoreGeolocation:(CyberCoreGeolocation *)geolocation;
 
 @end

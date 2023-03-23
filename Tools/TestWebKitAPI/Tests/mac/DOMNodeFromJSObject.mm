@@ -34,7 +34,7 @@
 
 namespace TestWebKitAPI {
 
-TEST(WebKitLegacy, DOMNodeFromJSObject)
+TEST(CyberKitLegacy, DOMNodeFromJSObject)
 {
     auto webView = adoptNS([[WebView alloc] initWithFrame:NSZeroRect frameName:nil groupName:nil]);
 

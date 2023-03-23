@@ -32,7 +32,7 @@
 
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DeviceOrientationController;
 
@@ -61,6 +61,6 @@ private:
     bool m_isUpdating;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // DeviceOrientationClientMock_h

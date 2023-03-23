@@ -31,7 +31,7 @@
 #include "PlatformWheelEvent.h"
 #include "ScrollingTree.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 
 ScrollingTreeGestureState::ScrollingTreeGestureState(ScrollingTree& scrollingTree)

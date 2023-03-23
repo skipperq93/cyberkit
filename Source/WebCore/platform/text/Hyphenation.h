@@ -29,7 +29,7 @@
 #include <unicode/utypes.h>
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 inline static bool enoughWidthForHyphenation(float availableWidth, float fontPixelSize)
 {
@@ -41,6 +41,6 @@ inline static bool enoughWidthForHyphenation(float availableWidth, float fontPix
 bool canHyphenate(const AtomString& localeIdentifier);
 size_t lastHyphenLocation(StringView, size_t beforeIndex, const AtomString& localeIdentifier);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // Hyphenation_h

@@ -32,7 +32,7 @@
 #include "IntSize.h"
 #include <windows.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct BitmapInfo : public BITMAPINFO {
     enum BitCount {
@@ -59,6 +59,6 @@ struct BitmapInfo : public BITMAPINFO {
     unsigned numPixels() const { return paddedWidth() * height(); }
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // BitmapInfo_h

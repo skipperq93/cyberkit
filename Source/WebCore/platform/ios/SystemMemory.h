@@ -31,7 +31,7 @@
 
 #if TARGET_OS_IPHONE
 
-namespace WebCore {
+namespace CyberCore {
 WEBCORE_EXPORT int systemMemoryLevel(); // In [0, 100]
 }
 

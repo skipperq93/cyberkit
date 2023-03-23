@@ -30,7 +30,7 @@
 #include "PlatformTrackConfiguration.h"
 #include "PlatformVideoColorSpace.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct PlatformVideoTrackConfiguration : PlatformTrackConfiguration {
     uint32_t width { 0 };

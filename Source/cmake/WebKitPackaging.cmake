@@ -1,8 +1,8 @@
 # -----------------------------------------------------------------------------
-# This file defines the basics of CPack behavior for WebKit
+# This file defines the basics of CPack behavior for CyberKit
 #
 # The following CPack variables will be defined if they were unset:
-#   - CPACK_PACKAGE_NAME to WebKit-${PORT}
+#   - CPACK_PACKAGE_NAME to CyberKit-${PORT}
 #   - CPACK_SOURCE_IGNORE_FILES to a known pattern of good files
 #
 # The following variables affect the behavior of packaging:
@@ -18,7 +18,7 @@
 # -----------------------------------------------------------------------------
 
 if (NOT DEFINED CPACK_PACKAGE_NAME)
-    set(CPACK_PACKAGE_NAME WebKit-${PORT})
+    set(CPACK_PACKAGE_NAME CyberKit-${PORT})
 endif ()
 
 if (NOT DEFINED CPACK_SOURCE_IGNORE_FILES)
@@ -63,7 +63,7 @@ if (NOT DEFINED CPACK_SOURCE_IGNORE_FILES)
         "\\\\.pyo$"
         "/cmake-build/"
         "/build/"
-        "/WebKitBuild/"
+        "/CyberKitBuild/"
         "/Tools/Scripts/webkitpy/thirdparty/autoinstalled/"
         )
 
@@ -108,9 +108,9 @@ if (NOT DEFINED CPACK_SOURCE_IGNORE_FILES)
             "/qt4/" "/Qt4/" "qt4\\\\." "Qt4\\\\."
             "/win/" "/Win/" "win\\\\." "Win\\\\."
             "/wxcode/" "/Wxcode/" "wxcode\\\\." "Wxcode\\\\."
-            "/WebKitLibraries/"
+            "/CyberKitLibraries/"
             "/English\\\\.lproj/"
-            "/Source/WebKitLegacy/"
+            "/Source/CyberKitLegacy/"
             "\\\\.a$"
             "\\\\.exe$"
             "\\\\.mm$"

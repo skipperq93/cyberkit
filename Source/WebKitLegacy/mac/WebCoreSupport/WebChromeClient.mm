@@ -43,8 +43,8 @@
 #import "WebFrameView.h"
 #import "WebHTMLViewInternal.h"
 #import "WebHistoryInternal.h"
-#import "WebKitFullScreenListener.h"
-#import "WebKitPrefix.h"
+#import "CyberKitFullScreenListener.h"
+#import "CyberKitPrefix.h"
 #import "WebNSURLRequestExtras.h"
 #import "WebOpenPanelResultListener.h"
 #import "WebPlugin.h"
@@ -108,7 +108,7 @@
 #if PLATFORM(IOS_FAMILY)
 #import <CyberCore/WAKClipView.h>
 #import <CyberCore/WAKWindow.h>
-#import <CyberCore/WebCoreThreadMessage.h>
+#import <CyberCore/CyberCoreThreadMessage.h>
 #endif
 
 NSString *WebConsoleMessageXMLMessageSource = @"XMLMessageSource";
@@ -143,11 +143,11 @@ NSString *WebConsoleMessageErrorMessageLevel = @"ErrorMessageLevel";
 #endif
 
 // For compatibility with old SPI.
-@interface NSView (WebOldWebKitPlugInDetails)
+@interface NSView (WebOldCyberKitPlugInDetails)
 - (void)setIsSelected:(BOOL)isSelected;
 @end
 
-using namespace WebCore;
+using namespace CyberCore;
 using namespace HTMLNames;
 
 WebChromeClient::WebChromeClient(WebView *webView) 
@@ -598,7 +598,7 @@ void WebChromeClient::contentsSizeChanged(Frame&, const IntSize&) const
 void WebChromeClient::scrollContainingScrollViewsToRevealRect(const IntRect& r) const
 {
     // FIXME: This scrolling behavior should be under the control of the embedding client,
-    // perhaps in a delegate method, rather than something WebKit does unconditionally.
+    // perhaps in a delegate method, rather than something CyberKit does unconditionally.
     NSView *coordinateView = [[[m_webView mainFrame] frameView] documentView];
     NSRect rect = r;
     for (NSView *view = m_webView; view; view = [view superview]) {
@@ -655,7 +655,7 @@ void WebChromeClient::exceededDatabaseQuota(Frame& frame, const String& database
 {
     BEGIN_BLOCK_OBJC_EXCEPTIONS
 
-    auto webOrigin = adoptNS([[WebSecurityOrigin alloc] _initWithWebCoreSecurityOrigin:&frame.document()->securityOrigin()]);
+    auto webOrigin = adoptNS([[WebSecurityOrigin alloc] _initWithCyberCoreSecurityOrigin:&frame.document()->securityOrigin()]);
     CallUIDelegate(m_webView, @selector(webView:frame:exceededDatabaseQuotaForSecurityOrigin:database:), kit(&frame), webOrigin.get(), (NSString *)databaseName);
 
     END_BLOCK_OBJC_EXCEPTIONS
@@ -670,7 +670,7 @@ void WebChromeClient::reachedApplicationCacheOriginQuota(SecurityOrigin& origin,
 {
     BEGIN_BLOCK_OBJC_EXCEPTIONS
 
-    auto webOrigin = adoptNS([[WebSecurityOrigin alloc] _initWithWebCoreSecurityOrigin:&origin]);
+    auto webOrigin = adoptNS([[WebSecurityOrigin alloc] _initWithCyberCoreSecurityOrigin:&origin]);
     CallUIDelegate(m_webView, @selector(webView:exceededApplicationCacheOriginQuotaForSecurityOrigin:totalSpaceNeeded:), webOrigin.get(), static_cast<NSUInteger>(totalSpaceNeeded));
 
     END_BLOCK_OBJC_EXCEPTIONS
@@ -704,12 +704,12 @@ std::unique_ptr<DateTimeChooser> WebChromeClient::createDateTimeChooser(DateTime
 #endif
 
 #if ENABLE(APP_HIGHLIGHTS)
-void WebChromeClient::storeAppHighlight(WebCore::AppHighlight&&) const
+void WebChromeClient::storeAppHighlight(CyberCore::AppHighlight&&) const
 {
 }
 #endif
 
-void WebChromeClient::setTextIndicator(const WebCore::TextIndicatorData& indicatorData) const
+void WebChromeClient::setTextIndicator(const CyberCore::TextIndicatorData& indicatorData) const
 {
 }
 
@@ -772,9 +772,9 @@ RefPtr<Icon> WebChromeClient::createIconForFiles(const Vector<String>& filenames
 
 #if !PLATFORM(IOS_FAMILY)
 
-void WebChromeClient::setCursor(const WebCore::Cursor& cursor)
+void WebChromeClient::setCursor(const CyberCore::Cursor& cursor)
 {
-    // FIXME: Would be nice to share this code with WebKit2's PageClientImpl.
+    // FIXME: Would be nice to share this code with CyberKit2's PageClientImpl.
 
     if ([NSApp _cursorRectCursor])
         return;
@@ -843,12 +843,12 @@ void WebChromeClient::disableSuddenTermination()
 }
 
 #if !PLATFORM(IOS_FAMILY)
-void WebChromeClient::elementDidFocus(WebCore::Element& element, const WebCore::FocusOptions&)
+void WebChromeClient::elementDidFocus(CyberCore::Element& element, const CyberCore::FocusOptions&)
 {
     CallUIDelegate(m_webView, @selector(webView:formDidFocusNode:), kit(&element));
 }
 
-void WebChromeClient::elementDidBlur(WebCore::Element& element)
+void WebChromeClient::elementDidBlur(CyberCore::Element& element)
 {
     CallUIDelegate(m_webView, @selector(webView:formDidBlurNode:), kit(&element));
 }
@@ -864,7 +864,7 @@ bool WebChromeClient::selectItemAlignmentFollowsMenuWritingDirection()
     return true;
 }
 
-RefPtr<WebCore::PopupMenu> WebChromeClient::createPopupMenu(WebCore::PopupMenuClient& client) const
+RefPtr<CyberCore::PopupMenu> WebChromeClient::createPopupMenu(CyberCore::PopupMenuClient& client) const
 {
 #if !PLATFORM(IOS_FAMILY)
     return adoptRef(*new PopupMenuMac(&client));
@@ -873,7 +873,7 @@ RefPtr<WebCore::PopupMenu> WebChromeClient::createPopupMenu(WebCore::PopupMenuCl
 #endif
 }
 
-RefPtr<WebCore::SearchPopupMenu> WebChromeClient::createSearchPopupMenu(WebCore::PopupMenuClient& client) const
+RefPtr<CyberCore::SearchPopupMenu> WebChromeClient::createSearchPopupMenu(CyberCore::PopupMenuClient& client) const
 {
 #if !PLATFORM(IOS_FAMILY)
     return adoptRef(*new SearchPopupMenuMac(&client));
@@ -918,7 +918,7 @@ void WebChromeClient::attachRootGraphicsLayer(Frame& frame, GraphicsLayer* graph
 
 void WebChromeClient::attachViewOverlayGraphicsLayer(GraphicsLayer*)
 {
-    // FIXME: If we want view-relative page overlays in Legacy WebKit, this would be the place to hook them up.
+    // FIXME: If we want view-relative page overlays in Legacy CyberKit, this would be the place to hook them up.
 }
 
 void WebChromeClient::setNeedsOneShotDrawingSynchronization()
@@ -937,7 +937,7 @@ void WebChromeClient::triggerRenderingUpdate()
 
 #if ENABLE(VIDEO)
 
-bool WebChromeClient::canEnterVideoFullscreen(WebCore::HTMLMediaElementEnums::VideoFullscreenMode) const
+bool WebChromeClient::canEnterVideoFullscreen(CyberCore::HTMLMediaElementEnums::VideoFullscreenMode) const
 {
 #if !PLATFORM(IOS_FAMILY) || HAVE(AVKIT)
     return true;
@@ -974,7 +974,7 @@ void WebChromeClient::enterVideoFullscreenForVideoElement(HTMLVideoElement& vide
     END_BLOCK_OBJC_EXCEPTIONS
 }
 
-void WebChromeClient::exitVideoFullscreenForVideoElement(WebCore::HTMLVideoElement& videoElement, CompletionHandler<void(bool)>&& completionHandler)
+void WebChromeClient::exitVideoFullscreenForVideoElement(CyberCore::HTMLVideoElement& videoElement, CompletionHandler<void(bool)>&& completionHandler)
 {
     BEGIN_BLOCK_OBJC_EXCEPTIONS
     if (m_mockVideoPresentationModeEnabled)
@@ -1024,9 +1024,9 @@ bool WebChromeClient::supportsFullScreenForElement(const Element& element, bool 
 {
     SEL selector = @selector(webView:supportsFullScreenForElement:withKeyboard:);
     if ([[m_webView UIDelegate] respondsToSelector:selector])
-        return CallUIDelegateReturningBoolean(false, m_webView, selector, kit(const_cast<WebCore::Element*>(&element)), withKeyboard);
+        return CallUIDelegateReturningBoolean(false, m_webView, selector, kit(const_cast<CyberCore::Element*>(&element)), withKeyboard);
 #if !PLATFORM(IOS_FAMILY)
-    return [m_webView _supportsFullScreenForElement:const_cast<WebCore::Element*>(&element) withKeyboard:withKeyboard];
+    return [m_webView _supportsFullScreenForElement:const_cast<CyberCore::Element*>(&element) withKeyboard:withKeyboard];
 #else
     return NO;
 #endif
@@ -1036,7 +1036,7 @@ void WebChromeClient::enterFullScreenForElement(Element& element)
 {
     SEL selector = @selector(webView:enterFullScreenForElement:listener:);
     if ([[m_webView UIDelegate] respondsToSelector:selector]) {
-        auto listener = adoptNS([[WebKitFullScreenListener alloc] initWithElement:&element]);
+        auto listener = adoptNS([[CyberKitFullScreenListener alloc] initWithElement:&element]);
         CallUIDelegate(m_webView, selector, kit(&element), listener.get());
     }
 #if !PLATFORM(IOS_FAMILY)
@@ -1049,7 +1049,7 @@ void WebChromeClient::exitFullScreenForElement(Element* element)
 {
     SEL selector = @selector(webView:exitFullScreenForElement:listener:);
     if ([[m_webView UIDelegate] respondsToSelector:selector]) {
-        auto listener = adoptNS([[WebKitFullScreenListener alloc] initWithElement:element]);
+        auto listener = adoptNS([[CyberKitFullScreenListener alloc] initWithElement:element]);
         CallUIDelegate(m_webView, selector, kit(element), listener.get());
     }
 #if !PLATFORM(IOS_FAMILY)
@@ -1098,7 +1098,7 @@ bool WebChromeClient::unwrapCryptoKey(const Vector<uint8_t>& wrappedKey, Vector<
 
 #if ENABLE(SERVICE_CONTROLS)
 
-void WebChromeClient::handleSelectionServiceClick(WebCore::FrameSelection& selection, const Vector<String>& telephoneNumbers, const WebCore::IntPoint& point)
+void WebChromeClient::handleSelectionServiceClick(CyberCore::FrameSelection& selection, const Vector<String>& telephoneNumbers, const CyberCore::IntPoint& point)
 {
     [m_webView _selectionServiceController].handleSelectionServiceClick(selection, telephoneNumbers, point);
 }
@@ -1122,7 +1122,7 @@ void WebChromeClient::removePlaybackTargetPickerClient(PlaybackTargetClientConte
     [m_webView _removePlaybackTargetPickerClient:contextId];
 }
 
-void WebChromeClient::showPlaybackTargetPicker(PlaybackTargetClientContextIdentifier contextId, const WebCore::IntPoint& location, bool hasVideo)
+void WebChromeClient::showPlaybackTargetPicker(PlaybackTargetClientContextIdentifier contextId, const CyberCore::IntPoint& location, bool hasVideo)
 {
     [m_webView _showPlaybackTargetPicker:contextId location:location hasVideo:hasVideo];
 }
@@ -1149,9 +1149,9 @@ void WebChromeClient::mockMediaPlaybackTargetPickerDismissPopup()
 #endif
 
 #if PLATFORM(MAC)
-void WebChromeClient::changeUniversalAccessZoomFocus(const WebCore::IntRect& viewRect, const WebCore::IntRect& selectionRect)
+void WebChromeClient::changeUniversalAccessZoomFocus(const CyberCore::IntRect& viewRect, const CyberCore::IntRect& selectionRect)
 {
-    WebCore::changeUniversalAccessZoomFocus(viewRect, selectionRect);
+    CyberCore::changeUniversalAccessZoomFocus(viewRect, selectionRect);
 }
 #endif
 

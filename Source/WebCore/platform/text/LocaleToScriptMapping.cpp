@@ -35,7 +35,7 @@
 #include <wtf/SortedArrayMap.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 UScriptCode scriptNameToCode(StringView scriptName)
 {
@@ -379,4 +379,4 @@ UScriptCode localeToScriptCodeForFontSelection(const String& locale)
     return USCRIPT_COMMON;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

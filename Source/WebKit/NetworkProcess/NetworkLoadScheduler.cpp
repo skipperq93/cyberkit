@@ -57,7 +57,7 @@ void NetworkLoadScheduler::HostContext::schedule(NetworkLoad& load)
 {
     auto startImmediately = [&] {
         auto& request = load.currentRequest();
-        if (request.priority() > WebCore::ResourceLoadPriority::Low)
+        if (request.priority() > CyberCore::ResourceLoadPriority::Low)
             return true;
         
         if (request.isConditional())
@@ -126,7 +126,7 @@ void NetworkLoadScheduler::schedule(NetworkLoad& load)
         scheduleLoad(load);
 }
 
-void NetworkLoadScheduler::unschedule(NetworkLoad& load, const WebCore::NetworkLoadMetrics* metrics)
+void NetworkLoadScheduler::unschedule(NetworkLoad& load, const CyberCore::NetworkLoadMetrics* metrics)
 {
     bool isMainFrameMainResource = load.currentRequest().isTopSite();
     if (isMainFrameMainResource)
@@ -185,7 +185,7 @@ void NetworkLoadScheduler::scheduleMainResourceLoad(NetworkLoad& load)
     RELEASE_LOG(Network, "%p - NetworkLoadScheduler::scheduleMainResourceLoad deferring load %p; %u pending preconnects; %u pending loads", this, &load, info.pendingPreconnects, info.pendingLoads.size());
 }
 
-void NetworkLoadScheduler::unscheduleMainResourceLoad(NetworkLoad& load, const WebCore::NetworkLoadMetrics* metrics)
+void NetworkLoadScheduler::unscheduleMainResourceLoad(NetworkLoad& load, const CyberCore::NetworkLoadMetrics* metrics)
 {
     String protocolHostAndPort = load.url().protocolHostAndPort();
 
@@ -215,7 +215,7 @@ void NetworkLoadScheduler::startedPreconnectForMainResource(const URL& url, cons
     m_pendingMainResourcePreconnects.add(key, WTFMove(info));
 }
 
-void NetworkLoadScheduler::finishedPreconnectForMainResource(const URL& url, const String& userAgent, const WebCore::ResourceError& error)
+void NetworkLoadScheduler::finishedPreconnectForMainResource(const URL& url, const String& userAgent, const CyberCore::ResourceError& error)
 {
     auto iter = m_pendingMainResourcePreconnects.find(mainResourceLoadKey(url.protocolHostAndPort(), userAgent));
     if (iter == m_pendingMainResourcePreconnects.end())
@@ -258,15 +258,15 @@ void NetworkLoadScheduler::updateOriginProtocolInfo(const String& protocolHostAn
     m_http1XOrigins.add(protocolHostAndPort);
 }
 
-void NetworkLoadScheduler::setResourceLoadSchedulingMode(WebCore::PageIdentifier pageIdentifier, WebCore::LoadSchedulingMode mode)
+void NetworkLoadScheduler::setResourceLoadSchedulingMode(CyberCore::PageIdentifier pageIdentifier, CyberCore::LoadSchedulingMode mode)
 {
     switch (mode) {
-    case WebCore::LoadSchedulingMode::Prioritized:
+    case CyberCore::LoadSchedulingMode::Prioritized:
         m_pageContexts.ensure(pageIdentifier, [&] {
             return makeUnique<PageContext>();
         });
         break;
-    case WebCore::LoadSchedulingMode::Direct:
+    case CyberCore::LoadSchedulingMode::Direct:
         m_pageContexts.remove(pageIdentifier);
         break;
     }
@@ -280,7 +280,7 @@ void NetworkLoadScheduler::prioritizeLoads(const Vector<NetworkLoad*>& loads)
     }
 }
 
-void NetworkLoadScheduler::clearPageData(WebCore::PageIdentifier pageIdentifier)
+void NetworkLoadScheduler::clearPageData(CyberCore::PageIdentifier pageIdentifier)
 {
     m_pageContexts.remove(pageIdentifier);
 }

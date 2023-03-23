@@ -32,7 +32,7 @@
 #include <wtf/Noncopyable.h>
 #include <wtf/text/StringHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class CookieAcceptPolicy {
     Always,
@@ -107,4 +107,4 @@ private:
     HashMap<String, std::unique_ptr<SQLiteStatement>> m_statements;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

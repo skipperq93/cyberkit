@@ -35,7 +35,7 @@
 #include <CyberCore/NotImplemented.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 static const cairo_format_t cairoFormat = CAIRO_FORMAT_ARGB32;
 
@@ -43,7 +43,7 @@ void ShareableBitmap::validateConfiguration(ShareableBitmapConfiguration&)
 {
 }
 
-CheckedUint32 ShareableBitmap::calculateBytesPerRow(WebCore::IntSize size, const ShareableBitmapConfiguration&)
+CheckedUint32 ShareableBitmap::calculateBytesPerRow(CyberCore::IntSize size, const ShareableBitmapConfiguration&)
 {
     return cairo_format_stride_for_width(cairoFormat, size.width());
 }
@@ -53,7 +53,7 @@ CheckedUint32 ShareableBitmap::calculateBytesPerPixel(const ShareableBitmapConfi
     return 4;
 }
 
-static inline RefPtr<cairo_surface_t> createSurfaceFromData(void* data, const WebCore::IntSize& size)
+static inline RefPtr<cairo_surface_t> createSurfaceFromData(void* data, const CyberCore::IntSize& size)
 {
     const int stride = cairo_format_stride_for_width(cairoFormat, size.width());
     return adoptRef(cairo_image_surface_create_for_data(static_cast<unsigned char*>(data), cairoFormat, size.width(), size.height(), stride));

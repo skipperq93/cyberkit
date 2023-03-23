@@ -1,4 +1,4 @@
-;; atomic operations more for JavaScriptCore
+;; atomic operations more for CyberScriptCore
 
 (module
   (memory 1 1 shared)

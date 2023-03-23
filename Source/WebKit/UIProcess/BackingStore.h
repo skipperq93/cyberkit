@@ -43,32 +43,32 @@ class BackingStore {
     WTF_MAKE_NONCOPYABLE(BackingStore);
 
 public:
-    BackingStore(const WebCore::IntSize&, float deviceScaleFactor, WebPageProxy&);
+    BackingStore(const CyberCore::IntSize&, float deviceScaleFactor, WebPageProxy&);
     ~BackingStore();
 
-    const WebCore::IntSize& size() const { return m_size; }
+    const CyberCore::IntSize& size() const { return m_size; }
     float deviceScaleFactor() const { return m_deviceScaleFactor; }
 
 #if USE(CAIRO)
     typedef cairo_t* PlatformGraphicsContext;
 #endif
 
-    void paint(PlatformGraphicsContext, const WebCore::IntRect&);
+    void paint(PlatformGraphicsContext, const CyberCore::IntRect&);
     void incorporateUpdate(const UpdateInfo&);
 
 private:
     void incorporateUpdate(ShareableBitmap*, const UpdateInfo&);
-    void scroll(const WebCore::IntRect& scrollRect, const WebCore::IntSize& scrollOffset);
+    void scroll(const CyberCore::IntRect& scrollRect, const CyberCore::IntSize& scrollOffset);
 
 #if USE(CAIRO)
-    std::unique_ptr<WebCore::BackingStoreBackendCairo> createBackend();
+    std::unique_ptr<CyberCore::BackingStoreBackendCairo> createBackend();
 #endif
 
-    WebCore::IntSize m_size;
+    CyberCore::IntSize m_size;
     float m_deviceScaleFactor;
     WebPageProxy& m_webPageProxy;
 #if USE(CAIRO)
-    std::unique_ptr<WebCore::BackingStoreBackendCairo> m_backend;
+    std::unique_ptr<CyberCore::BackingStoreBackendCairo> m_backend;
 #endif
 };
 

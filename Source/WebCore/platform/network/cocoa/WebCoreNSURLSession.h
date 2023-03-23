@@ -40,9 +40,9 @@
 @class NSURL;
 @class NSURLRequest;
 @class NSURLResponse;
-@class WebCoreNSURLSessionDataTask;
+@class CyberCoreNSURLSessionDataTask;
 
-namespace WebCore {
+namespace CyberCore {
 class CachedResourceRequest;
 class NetworkLoadMetrics;
 class PlatformMediaResource;
@@ -52,11 +52,11 @@ class ResourceRequest;
 class ResourceResponse;
 class FragmentedSharedBuffer;
 class SharedBufferDataView;
-class WebCoreNSURLSessionDataTaskClient;
+class CyberCoreNSURLSessionDataTaskClient;
 enum class ShouldContinuePolicyCheck : bool;
 }
 
-enum class WebCoreNSURLSessionCORSAccessCheckResults : uint8_t {
+enum class CyberCoreNSURLSessionCORSAccessCheckResults : uint8_t {
     Unknown,
     Pass,
     Fail,
@@ -64,22 +64,22 @@ enum class WebCoreNSURLSessionCORSAccessCheckResults : uint8_t {
 
 NS_ASSUME_NONNULL_BEGIN
 
-WEBCORE_EXPORT @interface WebCoreNSURLSession : NSObject {
+WEBCORE_EXPORT @interface CyberCoreNSURLSession : NSObject {
 @private
-    RefPtr<WebCore::PlatformMediaResourceLoader> _loader;
+    RefPtr<CyberCore::PlatformMediaResourceLoader> _loader;
     WeakObjCPtr<id<NSURLSessionDelegate>> _delegate;
     RetainPtr<NSOperationQueue> _queue;
     RetainPtr<NSString> _sessionDescription;
-    HashSet<RetainPtr<WebCoreNSURLSessionDataTask>> _dataTasks;
-    HashSet<RefPtr<WebCore::SecurityOrigin>> _origins;
+    HashSet<RetainPtr<CyberCoreNSURLSessionDataTask>> _dataTasks;
+    HashSet<RefPtr<CyberCore::SecurityOrigin>> _origins;
     Lock _dataTasksLock;
     BOOL _invalidated;
     std::atomic<uint64_t> _nextTaskIdentifier;
     OSObjectPtr<dispatch_queue_t> _internalQueue;
-    WebCoreNSURLSessionCORSAccessCheckResults _corsResults;
-    RefPtr<WebCore::RangeResponseGenerator> _rangeResponseGenerator;
+    CyberCoreNSURLSessionCORSAccessCheckResults _corsResults;
+    RefPtr<CyberCore::RangeResponseGenerator> _rangeResponseGenerator;
 }
-- (id)initWithResourceLoader:(WebCore::PlatformMediaResourceLoader&)loader delegate:(id<NSURLSessionTaskDelegate>)delegate delegateQueue:(NSOperationQueue*)queue;
+- (id)initWithResourceLoader:(CyberCore::PlatformMediaResourceLoader&)loader delegate:(id<NSURLSessionTaskDelegate>)delegate delegateQueue:(NSOperationQueue*)queue;
 @property (readonly, retain) NSOperationQueue *delegateQueue;
 @property (nullable, readonly) id <NSURLSessionDelegate> delegate;
 @property (readonly, copy) NSURLSessionConfiguration *configuration;
@@ -87,7 +87,7 @@ WEBCORE_EXPORT @interface WebCoreNSURLSession : NSObject {
 @property (readonly) BOOL didPassCORSAccessChecks;
 - (void)finishTasksAndInvalidate;
 - (void)invalidateAndCancel;
-- (BOOL)isCrossOrigin:(const WebCore::SecurityOrigin&)origin;
+- (BOOL)isCrossOrigin:(const CyberCore::SecurityOrigin&)origin;
 
 - (void)resetWithCompletionHandler:(void (^)(void))completionHandler;
 - (void)flushWithCompletionHandler:(void (^)(void))completionHandler;
@@ -106,7 +106,7 @@ WEBCORE_EXPORT @interface WebCoreNSURLSession : NSObject {
 - (NSURLSessionStreamTask *)streamTaskWithNetService:(NSNetService *)service;
 @end
 
-@interface WebCoreNSURLSession (NSURLSessionAsynchronousConvenience)
+@interface CyberCoreNSURLSession (NSURLSessionAsynchronousConvenience)
 - (NSURLSessionDataTask *)dataTaskWithRequest:(NSURLRequest *)request completionHandler:(void (^)(NSData * data, NSURLResponse * response, NSError * error))completionHandler;
 - (NSURLSessionDataTask *)dataTaskWithURL:(NSURL *)url completionHandler:(void (^)(NSData * data, NSURLResponse * response, NSError * error))completionHandler;
 - (NSURLSessionUploadTask *)uploadTaskWithRequest:(NSURLRequest *)request fromFile:(NSURL *)fileURL completionHandler:(void (^)(NSData * data, NSURLResponse * response, NSError * error))completionHandler;
@@ -116,13 +116,13 @@ WEBCORE_EXPORT @interface WebCoreNSURLSession : NSObject {
 - (NSURLSessionDownloadTask *)downloadTaskWithResumeData:(NSData *)resumeData completionHandler:(void (^)(NSURL * location, NSURLResponse * response, NSError * error))completionHandler;
 @end
 
-@interface WebCoreNSURLSession (WebKitAwesomeness)
+@interface CyberCoreNSURLSession (WebKitAwesomeness)
 - (void)sendH2Ping:(NSURL *)url pongHandler:(void (^)(NSError * _Nullable error, NSTimeInterval interval))pongHandler;
 @end
 
-@interface WebCoreNSURLSessionDataTask : NSObject {
-    WeakObjCPtr<WebCoreNSURLSession> _session;
-    RefPtr<WebCore::PlatformMediaResource> _resource;
+@interface CyberCoreNSURLSessionDataTask : NSObject {
+    WeakObjCPtr<CyberCoreNSURLSession> _session;
+    RefPtr<CyberCore::PlatformMediaResource> _resource;
     RetainPtr<NSURLResponse> _response;
     NSUInteger _taskIdentifier;
     RetainPtr<NSURLRequest> _originalRequest;
@@ -154,15 +154,15 @@ WEBCORE_EXPORT @interface WebCoreNSURLSession : NSObject {
 - (void)resume;
 @end
 
-@interface WebCoreNSURLSessionDataTask (WebKitInternal)
-- (void)resource:(nullable WebCore::PlatformMediaResource*)resource sentBytes:(unsigned long long)bytesSent totalBytesToBeSent:(unsigned long long)totalBytesToBeSent;
-- (void)resource:(nullable WebCore::PlatformMediaResource*)resource receivedResponse:(const WebCore::ResourceResponse&)response completionHandler:(CompletionHandler<void(WebCore::ShouldContinuePolicyCheck)>&&)completionHandler;
-- (BOOL)resource:(nullable WebCore::PlatformMediaResource*)resource shouldCacheResponse:(const WebCore::ResourceResponse&)response;
-- (void)resource:(nullable WebCore::PlatformMediaResource*)resource receivedData:(RetainPtr<NSData>&&)data;
-- (void)resource:(nullable WebCore::PlatformMediaResource*)resource receivedRedirect:(const WebCore::ResourceResponse&)response request:(WebCore::ResourceRequest&&)request completionHandler:(CompletionHandler<void(WebCore::ResourceRequest&&)>&&)completionHandler;
-- (void)resource:(nullable WebCore::PlatformMediaResource*)resource accessControlCheckFailedWithError:(const WebCore::ResourceError&)error;
-- (void)resource:(nullable WebCore::PlatformMediaResource*)resource loadFailedWithError:(const WebCore::ResourceError&)error;
-- (void)resourceFinished:(nullable WebCore::PlatformMediaResource*)resource metrics:(const WebCore::NetworkLoadMetrics&)metrics;
+@interface CyberCoreNSURLSessionDataTask (WebKitInternal)
+- (void)resource:(nullable CyberCore::PlatformMediaResource*)resource sentBytes:(unsigned long long)bytesSent totalBytesToBeSent:(unsigned long long)totalBytesToBeSent;
+- (void)resource:(nullable CyberCore::PlatformMediaResource*)resource receivedResponse:(const CyberCore::ResourceResponse&)response completionHandler:(CompletionHandler<void(CyberCore::ShouldContinuePolicyCheck)>&&)completionHandler;
+- (BOOL)resource:(nullable CyberCore::PlatformMediaResource*)resource shouldCacheResponse:(const CyberCore::ResourceResponse&)response;
+- (void)resource:(nullable CyberCore::PlatformMediaResource*)resource receivedData:(RetainPtr<NSData>&&)data;
+- (void)resource:(nullable CyberCore::PlatformMediaResource*)resource receivedRedirect:(const CyberCore::ResourceResponse&)response request:(CyberCore::ResourceRequest&&)request completionHandler:(CompletionHandler<void(CyberCore::ResourceRequest&&)>&&)completionHandler;
+- (void)resource:(nullable CyberCore::PlatformMediaResource*)resource accessControlCheckFailedWithError:(const CyberCore::ResourceError&)error;
+- (void)resource:(nullable CyberCore::PlatformMediaResource*)resource loadFailedWithError:(const CyberCore::ResourceError&)error;
+- (void)resourceFinished:(nullable CyberCore::PlatformMediaResource*)resource metrics:(const CyberCore::NetworkLoadMetrics&)metrics;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -23,7 +23,7 @@
 #include "Color.h"
 #include "FilterEffect.h"
 
-namespace WebCore {
+namespace CyberCore {
     
 class FEDropShadow : public FilterEffect {
 public:
@@ -69,6 +69,6 @@ private:
     float m_shadowOpacity;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_FILTER_EFFECT(FEDropShadow)

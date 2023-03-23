@@ -33,7 +33,7 @@
 #include "GraphicsContext.h"
 #include "ImageBuffer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 bool FEBlendSoftwareApplier::apply(const Filter&, const FilterImageVector& inputs, FilterImage& result) const
 {
@@ -58,6 +58,6 @@ bool FEBlendSoftwareApplier::apply(const Filter&, const FilterImageVector& input
     return true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // !HAVE(ARM_NEON_INTRINSICS)

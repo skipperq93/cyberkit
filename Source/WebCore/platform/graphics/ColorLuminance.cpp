@@ -28,7 +28,7 @@
 
 #include "Color.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 double contrastRatio(const Color& colorA, const Color& colorB)
 {

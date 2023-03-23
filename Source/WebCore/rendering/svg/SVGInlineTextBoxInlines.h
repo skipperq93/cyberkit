@@ -28,7 +28,7 @@
 #include "RenderSVGInlineText.h"
 #include "SVGInlineTextBox.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 inline RenderSVGInlineText& SVGInlineTextBox::renderer() const
 {
@@ -40,5 +40,5 @@ inline SVGInlineTextBox* SVGInlineTextBox::nextTextBox() const
     return downcast<SVGInlineTextBox>(LegacyInlineTextBox::nextTextBox());
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 

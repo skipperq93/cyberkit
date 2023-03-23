@@ -28,7 +28,7 @@
 
 #if PLATFORM(IOS_FAMILY)
 
-namespace WebCore {
+namespace CyberCore {
 
 RefPtr<Icon> Icon::createIconForFiles(const Vector<String>& /*filenames*/)
 {

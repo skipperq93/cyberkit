@@ -38,7 +38,7 @@
 #include "SVGNames.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(RenderSVGResourceFilterPrimitive);
 
@@ -97,4 +97,4 @@ void RenderSVGResourceFilterPrimitive::markFilterEffectForRebuild()
     filterRenderer.markAllClientLayersForInvalidation();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -17,16 +17,16 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitDOMNodeListPrivate_h
-#define WebKitDOMNodeListPrivate_h
+#ifndef CyberKitDOMNodeListPrivate_h
+#define CyberKitDOMNodeListPrivate_h
 
 #include <CyberCore/NodeList.h>
-#include <webkitdom/WebKitDOMNodeList.h>
+#include <webkitdom/CyberKitDOMNodeList.h>
 
-namespace WebKit {
-WebKitDOMNodeList* wrapNodeList(WebCore::NodeList*);
-WebKitDOMNodeList* kit(WebCore::NodeList*);
-WebCore::NodeList* core(WebKitDOMNodeList*);
-} // namespace WebKit
+namespace CyberKit {
+CyberKitDOMNodeList* wrapNodeList(CyberCore::NodeList*);
+CyberKitDOMNodeList* kit(CyberCore::NodeList*);
+CyberCore::NodeList* core(CyberKitDOMNodeList*);
+} // namespace CyberKit
 
-#endif /* WebKitDOMNodeListPrivate_h */
+#endif /* CyberKitDOMNodeListPrivate_h */

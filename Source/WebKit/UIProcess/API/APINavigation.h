@@ -40,7 +40,7 @@
 #include <CyberCore/SubstituteData.h>
 #include <wtf/Ref.h>
 
-namespace WebCore {
+namespace CyberCore {
 enum class FrameLoadType : uint8_t;
 class ResourceResponse;
 }
@@ -54,7 +54,7 @@ namespace API {
 struct SubstituteData {
     WTF_MAKE_STRUCT_FAST_ALLOCATED;
 
-    SubstituteData(Vector<uint8_t>&& content, const WTF::String& MIMEType, const WTF::String& encoding, const WTF::String& baseURL, API::Object* userData, WebCore::SubstituteData::SessionHistoryVisibility sessionHistoryVisibility = WebCore::SubstituteData::SessionHistoryVisibility::Hidden)
+    SubstituteData(Vector<uint8_t>&& content, const WTF::String& MIMEType, const WTF::String& encoding, const WTF::String& baseURL, API::Object* userData, CyberCore::SubstituteData::SessionHistoryVisibility sessionHistoryVisibility = CyberCore::SubstituteData::SessionHistoryVisibility::Hidden)
         : content(WTFMove(content))
         , MIMEType(MIMEType)
         , encoding(encoding)
@@ -63,14 +63,14 @@ struct SubstituteData {
         , sessionHistoryVisibility(sessionHistoryVisibility)
     { }
 
-    SubstituteData(Vector<uint8_t>&& content, const WebCore::ResourceResponse&, WebCore::SubstituteData::SessionHistoryVisibility);
+    SubstituteData(Vector<uint8_t>&& content, const CyberCore::ResourceResponse&, CyberCore::SubstituteData::SessionHistoryVisibility);
 
     Vector<uint8_t> content;
     WTF::String MIMEType;
     WTF::String encoding;
     WTF::String baseURL;
     RefPtr<API::Object> userData;
-    WebCore::SubstituteData::SessionHistoryVisibility sessionHistoryVisibility { WebCore::SubstituteData::SessionHistoryVisibility::Hidden };
+    CyberCore::SubstituteData::SessionHistoryVisibility sessionHistoryVisibility { CyberCore::SubstituteData::SessionHistoryVisibility::Hidden };
 };
 
 class Navigation : public ObjectImpl<Object::Type::Navigation> {
@@ -81,12 +81,12 @@ public:
         return adoptRef(*new Navigation(state, currentAndTargetItem));
     }
 
-    static Ref<Navigation> create(WebKit::WebNavigationState& state, WebKit::WebBackForwardListItem& targetItem, WebKit::WebBackForwardListItem* fromItem, WebCore::FrameLoadType backForwardFrameLoadType)
+    static Ref<Navigation> create(WebKit::WebNavigationState& state, WebKit::WebBackForwardListItem& targetItem, WebKit::WebBackForwardListItem* fromItem, CyberCore::FrameLoadType backForwardFrameLoadType)
     {
         return adoptRef(*new Navigation(state, targetItem, fromItem, backForwardFrameLoadType));
     }
 
-    static Ref<Navigation> create(WebKit::WebNavigationState& state, WebCore::ResourceRequest&& request, WebKit::WebBackForwardListItem* fromItem)
+    static Ref<Navigation> create(WebKit::WebNavigationState& state, CyberCore::ResourceRequest&& request, WebKit::WebBackForwardListItem* fromItem)
     {
         return adoptRef(*new Navigation(state, WTFMove(request), fromItem));
     }
@@ -96,7 +96,7 @@ public:
         return adoptRef(*new Navigation(state, WTFMove(substituteData)));
     }
 
-    static Ref<Navigation> create(WebKit::WebNavigationState& state, WebCore::ResourceRequest&& simulatedRequest, std::unique_ptr<SubstituteData>&& substituteData, WebKit::WebBackForwardListItem* fromItem)
+    static Ref<Navigation> create(WebKit::WebNavigationState& state, CyberCore::ResourceRequest&& simulatedRequest, std::unique_ptr<SubstituteData>&& substituteData, WebKit::WebBackForwardListItem* fromItem)
     {
         return adoptRef(*new Navigation(state, WTFMove(simulatedRequest), WTFMove(substituteData), fromItem));
     }
@@ -105,16 +105,16 @@ public:
 
     uint64_t navigationID() const { return m_navigationID; }
 
-    const WebCore::ResourceRequest& originalRequest() const { return m_originalRequest; }
-    void setCurrentRequest(WebCore::ResourceRequest&&, WebCore::ProcessIdentifier);
-    const WebCore::ResourceRequest& currentRequest() const { return m_currentRequest; }
-    std::optional<WebCore::ProcessIdentifier> currentRequestProcessIdentifier() const { return m_currentRequestProcessIdentifier; }
+    const CyberCore::ResourceRequest& originalRequest() const { return m_originalRequest; }
+    void setCurrentRequest(CyberCore::ResourceRequest&&, CyberCore::ProcessIdentifier);
+    const CyberCore::ResourceRequest& currentRequest() const { return m_currentRequest; }
+    std::optional<CyberCore::ProcessIdentifier> currentRequestProcessIdentifier() const { return m_currentRequestProcessIdentifier; }
 
     bool currentRequestIsRedirect() const { return m_lastNavigationAction.isRedirect; }
 
     WebKit::WebBackForwardListItem* targetItem() const { return m_targetItem.get(); }
     WebKit::WebBackForwardListItem* fromItem() const { return m_fromItem.get(); }
-    std::optional<WebCore::FrameLoadType> backForwardFrameLoadType() const { return m_backForwardFrameLoadType; }
+    std::optional<CyberCore::FrameLoadType> backForwardFrameLoadType() const { return m_backForwardFrameLoadType; }
     WebKit::WebBackForwardListItem* reloadItem() const { return m_reloadItem.get(); }
 
     void appendRedirectionURL(const WTF::URL&);
@@ -136,16 +136,16 @@ public:
     bool treatAsSameOriginNavigation() const { return m_lastNavigationAction.treatAsSameOriginNavigation; }
     bool hasOpenedFrames() const { return m_lastNavigationAction.hasOpenedFrames; }
     bool openedByDOMWithOpener() const { return m_lastNavigationAction.openedByDOMWithOpener; }
-    const WebCore::SecurityOriginData& requesterOrigin() const { return m_lastNavigationAction.requesterOrigin; }
+    const CyberCore::SecurityOriginData& requesterOrigin() const { return m_lastNavigationAction.requesterOrigin; }
 
     void setUserContentExtensionsEnabled(bool enabled) { m_userContentExtensionsEnabled = enabled; }
     bool userContentExtensionsEnabled() const { return m_userContentExtensionsEnabled; }
 
-    WebCore::LockHistory lockHistory() const { return m_lastNavigationAction.lockHistory; }
-    WebCore::LockBackForwardList lockBackForwardList() const { return m_lastNavigationAction.lockBackForwardList; }
+    CyberCore::LockHistory lockHistory() const { return m_lastNavigationAction.lockHistory; }
+    CyberCore::LockBackForwardList lockBackForwardList() const { return m_lastNavigationAction.lockBackForwardList; }
 
     WTF::String clientRedirectSourceForHistory() const { return m_lastNavigationAction.clientRedirectSourceForHistory; }
-    WebCore::SandboxFlags effectiveSandboxFlags() const { return m_lastNavigationAction.effectiveSandboxFlags; }
+    CyberCore::SandboxFlags effectiveSandboxFlags() const { return m_lastNavigationAction.effectiveSandboxFlags; }
 
     void setLastNavigationAction(const WebKit::NavigationActionData& navigationAction) { m_lastNavigationAction = navigationAction; }
     const WebKit::NavigationActionData& lastNavigationAction() const { return m_lastNavigationAction; }
@@ -153,8 +153,8 @@ public:
     void setOriginatingFrameInfo(const WebKit::FrameInfoData& frameInfo) { m_originatingFrameInfo = frameInfo; }
     const WebKit::FrameInfoData& originatingFrameInfo() const { return m_originatingFrameInfo; }
 
-    void setDestinationFrameSecurityOrigin(const WebCore::SecurityOriginData& origin) { m_destinationFrameSecurityOrigin = origin; }
-    const WebCore::SecurityOriginData& destinationFrameSecurityOrigin() const { return m_destinationFrameSecurityOrigin; }
+    void setDestinationFrameSecurityOrigin(const CyberCore::SecurityOriginData& origin) { m_destinationFrameSecurityOrigin = origin; }
+    const CyberCore::SecurityOriginData& destinationFrameSecurityOrigin() const { return m_destinationFrameSecurityOrigin; }
 
     void setEffectiveContentMode(WebKit::WebContentMode mode) { m_effectiveContentMode = mode; }
     WebKit::WebContentMode effectiveContentMode() const { return m_effectiveContentMode; }
@@ -165,7 +165,7 @@ public:
 
     const std::unique_ptr<SubstituteData>& substituteData() const { return m_substituteData; }
 
-    const std::optional<WebCore::PrivateClickMeasurement>& privateClickMeasurement() const { return m_lastNavigationAction.privateClickMeasurement; }
+    const std::optional<CyberCore::PrivateClickMeasurement>& privateClickMeasurement() const { return m_lastNavigationAction.privateClickMeasurement; }
 
     void setClientNavigationActivity(WebKit::ProcessThrottler::ActivityVariant&& activity) { m_clientNavigationActivity = WTFMove(activity); }
 
@@ -178,25 +178,25 @@ public:
 private:
     explicit Navigation(WebKit::WebNavigationState&);
     Navigation(WebKit::WebNavigationState&, WebKit::WebBackForwardListItem*);
-    Navigation(WebKit::WebNavigationState&, WebCore::ResourceRequest&&, WebKit::WebBackForwardListItem* fromItem);
-    Navigation(WebKit::WebNavigationState&, WebKit::WebBackForwardListItem& targetItem, WebKit::WebBackForwardListItem* fromItem, WebCore::FrameLoadType);
+    Navigation(WebKit::WebNavigationState&, CyberCore::ResourceRequest&&, WebKit::WebBackForwardListItem* fromItem);
+    Navigation(WebKit::WebNavigationState&, WebKit::WebBackForwardListItem& targetItem, WebKit::WebBackForwardListItem* fromItem, CyberCore::FrameLoadType);
     Navigation(WebKit::WebNavigationState&, std::unique_ptr<SubstituteData>&&);
-    Navigation(WebKit::WebNavigationState&, WebCore::ResourceRequest&&, std::unique_ptr<SubstituteData>&&, WebKit::WebBackForwardListItem* fromItem);
+    Navigation(WebKit::WebNavigationState&, CyberCore::ResourceRequest&&, std::unique_ptr<SubstituteData>&&, WebKit::WebBackForwardListItem* fromItem);
 
     uint64_t m_navigationID;
-    WebCore::ResourceRequest m_originalRequest;
-    WebCore::ResourceRequest m_currentRequest;
-    std::optional<WebCore::ProcessIdentifier> m_currentRequestProcessIdentifier;
+    CyberCore::ResourceRequest m_originalRequest;
+    CyberCore::ResourceRequest m_currentRequest;
+    std::optional<CyberCore::ProcessIdentifier> m_currentRequestProcessIdentifier;
     Vector<WTF::URL> m_redirectChain;
 
     RefPtr<WebKit::WebBackForwardListItem> m_targetItem;
     RefPtr<WebKit::WebBackForwardListItem> m_fromItem;
     RefPtr<WebKit::WebBackForwardListItem> m_reloadItem;
-    std::optional<WebCore::FrameLoadType> m_backForwardFrameLoadType;
+    std::optional<CyberCore::FrameLoadType> m_backForwardFrameLoadType;
     std::unique_ptr<SubstituteData> m_substituteData;
     WebKit::NavigationActionData m_lastNavigationAction;
     WebKit::FrameInfoData m_originatingFrameInfo;
-    WebCore::SecurityOriginData m_destinationFrameSecurityOrigin;
+    CyberCore::SecurityOriginData m_destinationFrameSecurityOrigin;
     bool m_userContentExtensionsEnabled { true };
     WebKit::WebContentMode m_effectiveContentMode { WebKit::WebContentMode::Recommended };
     WebKit::ProcessThrottler::TimedActivity m_clientNavigationActivity;

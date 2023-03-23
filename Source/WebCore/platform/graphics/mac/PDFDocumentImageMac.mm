@@ -44,7 +44,7 @@ bool CGContextGetAllowsFontSmoothing(CGContextRef context);
 bool CGContextGetAllowsFontSubpixelQuantization(CGContextRef context);
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 void PDFDocumentImage::createPDFDocument()
 {

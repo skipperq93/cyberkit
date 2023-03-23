@@ -49,7 +49,7 @@
 
 namespace TestWebKitAPI {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 static Ref<Document> createDocument()
 {

@@ -29,7 +29,7 @@
 
 #include "MathMLRowElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class RootType;
 

@@ -31,7 +31,7 @@
 #include <wtf/WallTime.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 class DOMWindowExtension;
 class DOMWrapperWorld;
 class ResourceError;
@@ -39,7 +39,7 @@ class ResourceRequest;
 class FragmentedSharedBuffer;
 }
 
-namespace WebKit {
+namespace CyberKit {
 class InjectedBundleBackForwardListItem;
 class WebFrame;
 class WebPage;
@@ -55,48 +55,48 @@ class PageLoaderClient {
 public:
     virtual ~PageLoaderClient() = default;
 
-    virtual void willLoadURLRequest(WebKit::WebPage&, const WebCore::ResourceRequest&, API::Object*) { }
-    virtual void willLoadDataRequest(WebKit::WebPage&, const WebCore::ResourceRequest&, RefPtr<WebCore::FragmentedSharedBuffer>, const WTF::String&, const WTF::String&, const WTF::URL&, API::Object*) { }
+    virtual void willLoadURLRequest(CyberKit::WebPage&, const CyberCore::ResourceRequest&, API::Object*) { }
+    virtual void willLoadDataRequest(CyberKit::WebPage&, const CyberCore::ResourceRequest&, RefPtr<CyberCore::FragmentedSharedBuffer>, const WTF::String&, const WTF::String&, const WTF::URL&, API::Object*) { }
 
-    virtual void didStartProvisionalLoadForFrame(WebKit::WebPage&, WebKit::WebFrame&, RefPtr<API::Object>&) { }
-    virtual void didReceiveServerRedirectForProvisionalLoadForFrame(WebKit::WebPage&, WebKit::WebFrame&, RefPtr<API::Object>&) { }
-    virtual void didFailProvisionalLoadWithErrorForFrame(WebKit::WebPage&, WebKit::WebFrame&, const WebCore::ResourceError&, RefPtr<API::Object>&) { }
-    virtual void didCommitLoadForFrame(WebKit::WebPage&, WebKit::WebFrame&, RefPtr<API::Object>&) { }
-    virtual void didFinishDocumentLoadForFrame(WebKit::WebPage&, WebKit::WebFrame&, RefPtr<API::Object>&) { }
-    virtual void didFinishLoadForFrame(WebKit::WebPage&, WebKit::WebFrame&, RefPtr<API::Object>&) { }
-    virtual void didFinishProgress(WebKit::WebPage&) { }
-    virtual void didFailLoadWithErrorForFrame(WebKit::WebPage&, WebKit::WebFrame&, const WebCore::ResourceError&, RefPtr<API::Object>&) { }
-    virtual void didSameDocumentNavigationForFrame(WebKit::WebPage&, WebKit::WebFrame&, WebKit::SameDocumentNavigationType, RefPtr<API::Object>&) { }
-    virtual void didReceiveTitleForFrame(WebKit::WebPage&, const WTF::String&, WebKit::WebFrame&, RefPtr<API::Object>&) { }
-    virtual void didRemoveFrameFromHierarchy(WebKit::WebPage&, WebKit::WebFrame&, RefPtr<API::Object>&) { }
-    virtual void didDisplayInsecureContentForFrame(WebKit::WebPage&, WebKit::WebFrame&, RefPtr<API::Object>&) { }
-    virtual void didRunInsecureContentForFrame(WebKit::WebPage&, WebKit::WebFrame&, RefPtr<API::Object>&) { }
+    virtual void didStartProvisionalLoadForFrame(CyberKit::WebPage&, CyberKit::WebFrame&, RefPtr<API::Object>&) { }
+    virtual void didReceiveServerRedirectForProvisionalLoadForFrame(CyberKit::WebPage&, CyberKit::WebFrame&, RefPtr<API::Object>&) { }
+    virtual void didFailProvisionalLoadWithErrorForFrame(CyberKit::WebPage&, CyberKit::WebFrame&, const CyberCore::ResourceError&, RefPtr<API::Object>&) { }
+    virtual void didCommitLoadForFrame(CyberKit::WebPage&, CyberKit::WebFrame&, RefPtr<API::Object>&) { }
+    virtual void didFinishDocumentLoadForFrame(CyberKit::WebPage&, CyberKit::WebFrame&, RefPtr<API::Object>&) { }
+    virtual void didFinishLoadForFrame(CyberKit::WebPage&, CyberKit::WebFrame&, RefPtr<API::Object>&) { }
+    virtual void didFinishProgress(CyberKit::WebPage&) { }
+    virtual void didFailLoadWithErrorForFrame(CyberKit::WebPage&, CyberKit::WebFrame&, const CyberCore::ResourceError&, RefPtr<API::Object>&) { }
+    virtual void didSameDocumentNavigationForFrame(CyberKit::WebPage&, CyberKit::WebFrame&, CyberKit::SameDocumentNavigationType, RefPtr<API::Object>&) { }
+    virtual void didReceiveTitleForFrame(CyberKit::WebPage&, const WTF::String&, CyberKit::WebFrame&, RefPtr<API::Object>&) { }
+    virtual void didRemoveFrameFromHierarchy(CyberKit::WebPage&, CyberKit::WebFrame&, RefPtr<API::Object>&) { }
+    virtual void didDisplayInsecureContentForFrame(CyberKit::WebPage&, CyberKit::WebFrame&, RefPtr<API::Object>&) { }
+    virtual void didRunInsecureContentForFrame(CyberKit::WebPage&, CyberKit::WebFrame&, RefPtr<API::Object>&) { }
 
-    virtual void didFirstLayoutForFrame(WebKit::WebPage&, WebKit::WebFrame&, RefPtr<API::Object>&) { }
-    virtual void didFirstVisuallyNonEmptyLayoutForFrame(WebKit::WebPage&, WebKit::WebFrame&, RefPtr<API::Object>&) { }
-    virtual void didLayoutForFrame(WebKit::WebPage&, WebKit::WebFrame&) { }
-    virtual void didReachLayoutMilestone(WebKit::WebPage&, OptionSet<WebCore::LayoutMilestone>, RefPtr<API::Object>&) { }
+    virtual void didFirstLayoutForFrame(CyberKit::WebPage&, CyberKit::WebFrame&, RefPtr<API::Object>&) { }
+    virtual void didFirstVisuallyNonEmptyLayoutForFrame(CyberKit::WebPage&, CyberKit::WebFrame&, RefPtr<API::Object>&) { }
+    virtual void didLayoutForFrame(CyberKit::WebPage&, CyberKit::WebFrame&) { }
+    virtual void didReachLayoutMilestone(CyberKit::WebPage&, OptionSet<CyberCore::LayoutMilestone>, RefPtr<API::Object>&) { }
 
-    virtual void didClearWindowObjectForFrame(WebKit::WebPage&, WebKit::WebFrame&, WebCore::DOMWrapperWorld&) { }
-    virtual void didCancelClientRedirectForFrame(WebKit::WebPage&, WebKit::WebFrame&) { }
-    virtual void willPerformClientRedirectForFrame(WebKit::WebPage&, WebKit::WebFrame&, const WTF::String&, double /*delay*/, WallTime /*date*/) { }
-    virtual void didHandleOnloadEventsForFrame(WebKit::WebPage&, WebKit::WebFrame&) { }
+    virtual void didClearWindowObjectForFrame(CyberKit::WebPage&, CyberKit::WebFrame&, CyberCore::DOMWrapperWorld&) { }
+    virtual void didCancelClientRedirectForFrame(CyberKit::WebPage&, CyberKit::WebFrame&) { }
+    virtual void willPerformClientRedirectForFrame(CyberKit::WebPage&, CyberKit::WebFrame&, const WTF::String&, double /*delay*/, WallTime /*date*/) { }
+    virtual void didHandleOnloadEventsForFrame(CyberKit::WebPage&, CyberKit::WebFrame&) { }
 
-    virtual void globalObjectIsAvailableForFrame(WebKit::WebPage&, WebKit::WebFrame&, WebCore::DOMWrapperWorld&) { }
-    virtual void serviceWorkerGlobalObjectIsAvailableForFrame(WebKit::WebPage&, WebKit::WebFrame&, WebCore::DOMWrapperWorld&) { }
-    virtual void willDisconnectDOMWindowExtensionFromGlobalObject(WebKit::WebPage&, WebCore::DOMWindowExtension*) { }
-    virtual void didReconnectDOMWindowExtensionToGlobalObject(WebKit::WebPage&, WebCore::DOMWindowExtension*) { }
-    virtual void willDestroyGlobalObjectForDOMWindowExtension(WebKit::WebPage&, WebCore::DOMWindowExtension*) { }
+    virtual void globalObjectIsAvailableForFrame(CyberKit::WebPage&, CyberKit::WebFrame&, CyberCore::DOMWrapperWorld&) { }
+    virtual void serviceWorkerGlobalObjectIsAvailableForFrame(CyberKit::WebPage&, CyberKit::WebFrame&, CyberCore::DOMWrapperWorld&) { }
+    virtual void willDisconnectDOMWindowExtensionFromGlobalObject(CyberKit::WebPage&, CyberCore::DOMWindowExtension*) { }
+    virtual void didReconnectDOMWindowExtensionToGlobalObject(CyberKit::WebPage&, CyberCore::DOMWindowExtension*) { }
+    virtual void willDestroyGlobalObjectForDOMWindowExtension(CyberKit::WebPage&, CyberCore::DOMWindowExtension*) { }
 
-    virtual void willInjectUserScriptForFrame(WebKit::WebPage&, WebKit::WebFrame&, WebCore::DOMWrapperWorld&) { }
+    virtual void willInjectUserScriptForFrame(CyberKit::WebPage&, CyberKit::WebFrame&, CyberCore::DOMWrapperWorld&) { }
 
-    virtual bool shouldForceUniversalAccessFromLocalURL(WebKit::WebPage&, const WTF::String&) { return false; }
+    virtual bool shouldForceUniversalAccessFromLocalURL(CyberKit::WebPage&, const WTF::String&) { return false; }
 
-    virtual void featuresUsedInPage(WebKit::WebPage&, const Vector<WTF::String>&) { }
+    virtual void featuresUsedInPage(CyberKit::WebPage&, const Vector<WTF::String>&) { }
 
-    virtual void willDestroyFrame(WebKit::WebPage&, WebKit::WebFrame&) { }
+    virtual void willDestroyFrame(CyberKit::WebPage&, CyberKit::WebFrame&) { }
 
-    virtual OptionSet<WebCore::LayoutMilestone> layoutMilestones() const { return { }; }
+    virtual OptionSet<CyberCore::LayoutMilestone> layoutMilestones() const { return { }; }
 };
 
 } // namespace InjectedBundle

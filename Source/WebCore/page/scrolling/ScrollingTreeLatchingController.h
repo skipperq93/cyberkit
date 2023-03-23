@@ -33,7 +33,7 @@
 #include <wtf/MonotonicTime.h>
 #include <wtf/OptionSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class PlatformWheelEvent;
 enum class WheelEventProcessingSteps : uint8_t;

@@ -32,7 +32,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/JSONValues.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using Init = SecurityPolicyViolationEventInit;
 
@@ -141,4 +141,4 @@ Ref<FormData> CSPViolationReportBody::createReportFormDataForViolation(bool uses
     return FormData::create(reportObject->toJSONString().utf8());
 }
 
-} // namespace WebCore
+} // namespace CyberCore

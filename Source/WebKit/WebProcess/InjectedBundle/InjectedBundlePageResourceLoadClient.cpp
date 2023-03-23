@@ -31,15 +31,15 @@
 #include "WebFrame.h"
 #include "WebPage.h"
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 InjectedBundlePageResourceLoadClient::InjectedBundlePageResourceLoadClient(const WKBundlePageResourceLoadClientBase* client)
 {
     initialize(client);
 }
 
-void InjectedBundlePageResourceLoadClient::didInitiateLoadForResource(WebPage& page, WebFrame& frame, WebCore::ResourceLoaderIdentifier identifier, const ResourceRequest& request, bool pageIsProvisionallyLoading)
+void InjectedBundlePageResourceLoadClient::didInitiateLoadForResource(WebPage& page, WebFrame& frame, CyberCore::ResourceLoaderIdentifier identifier, const ResourceRequest& request, bool pageIsProvisionallyLoading)
 {
     if (!m_client.didInitiateLoadForResource)
         return;
@@ -47,7 +47,7 @@ void InjectedBundlePageResourceLoadClient::didInitiateLoadForResource(WebPage& p
     m_client.didInitiateLoadForResource(toAPI(&page), toAPI(&frame), identifier.toUInt64(), toAPI(request), pageIsProvisionallyLoading, m_client.base.clientInfo);
 }
 
-void InjectedBundlePageResourceLoadClient::willSendRequestForFrame(WebPage& page, WebFrame& frame, WebCore::ResourceLoaderIdentifier identifier, ResourceRequest& request, const ResourceResponse& redirectResponse)
+void InjectedBundlePageResourceLoadClient::willSendRequestForFrame(WebPage& page, WebFrame& frame, CyberCore::ResourceLoaderIdentifier identifier, ResourceRequest& request, const ResourceResponse& redirectResponse)
 {
     if (!m_client.willSendRequestForFrame)
         return;
@@ -64,7 +64,7 @@ void InjectedBundlePageResourceLoadClient::willSendRequestForFrame(WebPage& page
         request = { };
 }
 
-void InjectedBundlePageResourceLoadClient::didReceiveResponseForResource(WebPage& page, WebFrame& frame, WebCore::ResourceLoaderIdentifier identifier, const ResourceResponse& response)
+void InjectedBundlePageResourceLoadClient::didReceiveResponseForResource(WebPage& page, WebFrame& frame, CyberCore::ResourceLoaderIdentifier identifier, const ResourceResponse& response)
 {
     if (!m_client.didReceiveResponseForResource)
         return;
@@ -72,7 +72,7 @@ void InjectedBundlePageResourceLoadClient::didReceiveResponseForResource(WebPage
     m_client.didReceiveResponseForResource(toAPI(&page), toAPI(&frame), identifier.toUInt64(), toAPI(response), m_client.base.clientInfo);
 }
 
-void InjectedBundlePageResourceLoadClient::didReceiveContentLengthForResource(WebPage& page, WebFrame& frame, WebCore::ResourceLoaderIdentifier identifier, uint64_t contentLength)
+void InjectedBundlePageResourceLoadClient::didReceiveContentLengthForResource(WebPage& page, WebFrame& frame, CyberCore::ResourceLoaderIdentifier identifier, uint64_t contentLength)
 {
     if (!m_client.didReceiveContentLengthForResource)
         return;
@@ -80,7 +80,7 @@ void InjectedBundlePageResourceLoadClient::didReceiveContentLengthForResource(We
     m_client.didReceiveContentLengthForResource(toAPI(&page), toAPI(&frame), identifier.toUInt64(), contentLength, m_client.base.clientInfo);
 }
 
-void InjectedBundlePageResourceLoadClient::didFinishLoadForResource(WebPage& page, WebFrame& frame, WebCore::ResourceLoaderIdentifier identifier)
+void InjectedBundlePageResourceLoadClient::didFinishLoadForResource(WebPage& page, WebFrame& frame, CyberCore::ResourceLoaderIdentifier identifier)
 {
     if (!m_client.didFinishLoadForResource)
         return;
@@ -88,7 +88,7 @@ void InjectedBundlePageResourceLoadClient::didFinishLoadForResource(WebPage& pag
     m_client.didFinishLoadForResource(toAPI(&page), toAPI(&frame), identifier.toUInt64(), m_client.base.clientInfo);
 }
 
-void InjectedBundlePageResourceLoadClient::didFailLoadForResource(WebPage& page, WebFrame& frame, WebCore::ResourceLoaderIdentifier identifier, const ResourceError& error)
+void InjectedBundlePageResourceLoadClient::didFailLoadForResource(WebPage& page, WebFrame& frame, CyberCore::ResourceLoaderIdentifier identifier, const ResourceError& error)
 {
     if (!m_client.didFailLoadForResource)
         return;
@@ -96,7 +96,7 @@ void InjectedBundlePageResourceLoadClient::didFailLoadForResource(WebPage& page,
     m_client.didFailLoadForResource(toAPI(&page), toAPI(&frame), identifier.toUInt64(), toAPI(error), m_client.base.clientInfo);
 }
 
-bool InjectedBundlePageResourceLoadClient::shouldCacheResponse(WebPage& page, WebFrame& frame, WebCore::ResourceLoaderIdentifier identifier)
+bool InjectedBundlePageResourceLoadClient::shouldCacheResponse(WebPage& page, WebFrame& frame, CyberCore::ResourceLoaderIdentifier identifier)
 {
     if (!m_client.shouldCacheResponse)
         return true;
@@ -104,7 +104,7 @@ bool InjectedBundlePageResourceLoadClient::shouldCacheResponse(WebPage& page, We
     return m_client.shouldCacheResponse(toAPI(&page), toAPI(&frame), identifier.toUInt64(), m_client.base.clientInfo);
 }
 
-bool InjectedBundlePageResourceLoadClient::shouldUseCredentialStorage(WebPage& page, WebFrame& frame, WebCore::ResourceLoaderIdentifier identifier)
+bool InjectedBundlePageResourceLoadClient::shouldUseCredentialStorage(WebPage& page, WebFrame& frame, CyberCore::ResourceLoaderIdentifier identifier)
 {
     if (!m_client.shouldUseCredentialStorage)
         return true;
@@ -112,4 +112,4 @@ bool InjectedBundlePageResourceLoadClient::shouldUseCredentialStorage(WebPage& p
     return m_client.shouldUseCredentialStorage(toAPI(&page), toAPI(&frame), identifier.toUInt64(), m_client.base.clientInfo);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

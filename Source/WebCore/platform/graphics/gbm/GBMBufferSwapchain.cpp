@@ -33,7 +33,7 @@
 #include "GBMDevice.h"
 #include <gbm.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 GBMBufferSwapchain::GBMBufferSwapchain(BufferSwapchainSize size)
 {
@@ -176,6 +176,6 @@ GBMBufferSwapchain::Buffer::PlaneData::~PlaneData()
         gbm_bo_destroy(bo);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(LIBGBM)

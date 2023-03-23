@@ -34,7 +34,7 @@
 #include "SelectorChecker.h"
 #include <wtf/Bitmap.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class StyleImage;
 class StyleResolver;

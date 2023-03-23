@@ -35,9 +35,9 @@
 #include "WebProcess.h"
 #include <CyberCore/PlatformMediaSessionManager.h>
 
-namespace WebKit {
+namespace CyberKit {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 UniqueRef<RemoteAudioSession> RemoteAudioSession::create(WebProcess& process)
 {

@@ -38,7 +38,7 @@ namespace API {
 class NavigationAction;
 }
 
-namespace WebCore {
+namespace CyberCore {
 class ResourceRequest;
 }
 

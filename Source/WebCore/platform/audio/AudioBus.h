@@ -35,7 +35,7 @@
 #include <wtf/ThreadSafeRefCounted.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // An AudioBus represents a collection of one or more AudioChannels.
 // The data layout is "planar" as opposed to "interleaved".
@@ -165,6 +165,6 @@ private:
     float m_sampleRate { 0 }; // 0.0 if unknown or N/A
 };
 
-} // WebCore
+} // CyberCore
 
 #endif // AudioBus_h

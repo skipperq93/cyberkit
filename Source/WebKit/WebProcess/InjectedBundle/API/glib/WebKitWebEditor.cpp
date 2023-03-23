@@ -18,24 +18,24 @@
  */
 
 #include "config.h"
-#include "WebKitWebEditor.h"
+#include "CyberKitWebEditor.h"
 
-#include "WebKitWebEditorPrivate.h"
-#include "WebKitWebPagePrivate.h"
+#include "CyberKitWebEditorPrivate.h"
+#include "CyberKitWebPagePrivate.h"
 #include <wtf/glib/WTFGType.h>
 
-using namespace WebKit;
-using namespace WebCore;
+using namespace CyberKit;
+using namespace CyberCore;
 
 /**
- * WebKitWebEditor:
- * @See_also: #WebKitWebPage
+ * CyberKitWebEditor:
+ * @See_also: #CyberKitWebPage
  *
- * Access to editing capabilities of a #WebKitWebPage.
+ * Access to editing capabilities of a #CyberKitWebPage.
  *
- * The WebKitWebEditor provides access to various editing capabilities of
- * a #WebKitWebPage such as a possibility to react to the current selection in
- * #WebKitWebPage.
+ * The CyberKitWebEditor provides access to various editing capabilities of
+ * a #CyberKitWebPage such as a possibility to react to the current selection in
+ * #CyberKitWebPage.
  *
  * Since: 2.10
  */
@@ -45,21 +45,21 @@ enum {
     LAST_SIGNAL
 };
 
-struct _WebKitWebEditorPrivate {
-    WebKitWebPage* webPage;
+struct _CyberKitWebEditorPrivate {
+    CyberKitWebPage* webPage;
 };
 
 static guint signals[LAST_SIGNAL] = { 0, };
 
-WEBKIT_DEFINE_FINAL_TYPE(WebKitWebEditor, webkit_web_editor, G_TYPE_OBJECT, GObject)
+WEBKIT_DEFINE_FINAL_TYPE(CyberKitWebEditor, webkit_web_editor, G_TYPE_OBJECT, GObject)
 
-static void webkit_web_editor_class_init(WebKitWebEditorClass* klass)
+static void webkit_web_editor_class_init(CyberKitWebEditorClass* klass)
 {
     /**
-     * WebKitWebEditor::selection-changed:
-     * @editor: the #WebKitWebEditor on which the signal is emitted
+     * CyberKitWebEditor::selection-changed:
+     * @editor: the #CyberKitWebEditor on which the signal is emitted
      *
-     * This signal is emitted for every selection change inside a #WebKitWebPage
+     * This signal is emitted for every selection change inside a #CyberKitWebPage
      * as well as for every caret position change as the caret is a collapsed
      * selection.
      *
@@ -76,7 +76,7 @@ static void webkit_web_editor_class_init(WebKitWebEditorClass* klass)
 
 class PageEditorClient final : public API::InjectedBundle::EditorClient {
 public:
-    explicit PageEditorClient(WebKitWebEditor* editor)
+    explicit PageEditorClient(CyberKitWebEditor* editor)
         : m_editor(editor)
     {
     }
@@ -87,12 +87,12 @@ private:
         g_signal_emit(m_editor, signals[SELECTION_CHANGED], 0);
     }
 
-    WebKitWebEditor* m_editor;
+    CyberKitWebEditor* m_editor;
 };
 
-WebKitWebEditor* webkitWebEditorCreate(WebKitWebPage* webPage)
+CyberKitWebEditor* webkitWebEditorCreate(CyberKitWebPage* webPage)
 {
-    WebKitWebEditor* editor = WEBKIT_WEB_EDITOR(g_object_new(WEBKIT_TYPE_WEB_EDITOR, nullptr));
+    CyberKitWebEditor* editor = WEBKIT_WEB_EDITOR(g_object_new(WEBKIT_TYPE_WEB_EDITOR, nullptr));
     editor->priv->webPage = webPage;
     webkitWebPageGetPage(webPage)->setInjectedBundleEditorClient(makeUnique<PageEditorClient>(editor));
     return editor;
@@ -100,15 +100,15 @@ WebKitWebEditor* webkitWebEditorCreate(WebKitWebPage* webPage)
 
 /**
  * webkit_web_editor_get_page:
- * @editor: a #WebKitWebEditor
+ * @editor: a #CyberKitWebEditor
  *
- * Gets the #WebKitWebPage that is associated with the #WebKitWebEditor.
+ * Gets the #CyberKitWebPage that is associated with the #CyberKitWebEditor.
  *
- * Returns: (transfer none): the associated #WebKitWebPage
+ * Returns: (transfer none): the associated #CyberKitWebPage
  *
  * Since: 2.10
  */
-WebKitWebPage* webkit_web_editor_get_page(WebKitWebEditor* editor)
+CyberKitWebPage* webkit_web_editor_get_page(CyberKitWebEditor* editor)
 {
     g_return_val_if_fail(WEBKIT_IS_WEB_EDITOR(editor), nullptr);
 

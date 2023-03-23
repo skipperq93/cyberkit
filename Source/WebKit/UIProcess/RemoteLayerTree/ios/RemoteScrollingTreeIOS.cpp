@@ -32,7 +32,7 @@
 #include "ScrollingTreeOverflowScrollingNodeIOS.h"
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 Ref<RemoteScrollingTree> RemoteScrollingTree::create(RemoteScrollingCoordinatorProxy& scrollingCoordinator)
 {

@@ -28,7 +28,7 @@
 #include "RenderSVGResourceClipper.h"
 #include "SVGClipPathElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 inline SVGClipPathElement& RenderSVGResourceClipper::clipPathElement() const
 {
@@ -40,4 +40,4 @@ inline SVGUnitTypes::SVGUnitType RenderSVGResourceClipper::clipPathUnits() const
     return clipPathElement().clipPathUnits();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

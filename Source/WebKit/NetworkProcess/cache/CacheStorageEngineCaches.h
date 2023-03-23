@@ -40,35 +40,35 @@ class Engine;
 class Caches final : public RefCounted<Caches> {
 public:
     static String cachesSizeFilename(const String& cachesRootsPath);
-    static Ref<Caches> create(Engine&, WebCore::ClientOrigin&&, String&& rootPath);
+    static Ref<Caches> create(Engine&, CyberCore::ClientOrigin&&, String&& rootPath);
     ~Caches();
 
-    static void retrieveOriginFromDirectory(const String& folderPath, WorkQueue&, WTF::CompletionHandler<void(std::optional<WebCore::ClientOrigin>&&)>&&);
+    static void retrieveOriginFromDirectory(const String& folderPath, WorkQueue&, WTF::CompletionHandler<void(std::optional<CyberCore::ClientOrigin>&&)>&&);
 
-    void initialize(WebCore::DOMCacheEngine::CompletionCallback&&);
-    void open(const String& name, WebCore::DOMCacheEngine::CacheIdentifierCallback&&);
-    void remove(WebCore::DOMCacheIdentifier, WebCore::DOMCacheEngine::RemoveCacheIdentifierCallback&&);
+    void initialize(CyberCore::DOMCacheEngine::CompletionCallback&&);
+    void open(const String& name, CyberCore::DOMCacheEngine::CacheIdentifierCallback&&);
+    void remove(CyberCore::DOMCacheIdentifier, CyberCore::DOMCacheEngine::RemoveCacheIdentifierCallback&&);
     void dispose(Cache&);
 
     void detach();
 
     bool isInitialized() const { return m_isInitialized; }
-    void cacheInfos(uint64_t updateCounter, WebCore::DOMCacheEngine::CacheInfosCallback&&);
+    void cacheInfos(uint64_t updateCounter, CyberCore::DOMCacheEngine::CacheInfosCallback&&);
 
-    Cache* find(WebCore::DOMCacheIdentifier);
+    Cache* find(CyberCore::DOMCacheIdentifier);
     void appendRepresentation(StringBuilder&) const;
 
     void readRecordsList(Cache&, NetworkCache::Storage::TraverseHandler&&);
-    void readRecord(const NetworkCache::Key&, WTF::Function<void(Expected<WebCore::DOMCacheEngine::Record, WebCore::DOMCacheEngine::Error>&&)>&&);
+    void readRecord(const NetworkCache::Key&, WTF::Function<void(Expected<CyberCore::DOMCacheEngine::Record, CyberCore::DOMCacheEngine::Error>&&)>&&);
 
-    void requestSpace(uint64_t spaceRequired, WebCore::DOMCacheEngine::CompletionCallback&&);
-    void writeRecord(const Cache&, const RecordInformation&, WebCore::DOMCacheEngine::Record&&, uint64_t previousRecordSize, WebCore::DOMCacheEngine::CompletionCallback&&);
+    void requestSpace(uint64_t spaceRequired, CyberCore::DOMCacheEngine::CompletionCallback&&);
+    void writeRecord(const Cache&, const RecordInformation&, CyberCore::DOMCacheEngine::Record&&, uint64_t previousRecordSize, CyberCore::DOMCacheEngine::CompletionCallback&&);
 
     void removeCacheEntry(const NetworkCache::Key&);
     void removeRecord(const RecordInformation&);
 
     const NetworkCache::Salt& salt() const;
-    const WebCore::ClientOrigin& origin() const { return m_origin; }
+    const CyberCore::ClientOrigin& origin() const { return m_origin; }
 
     bool shouldPersist() const { return !m_rootPath.isNull(); }
 
@@ -79,14 +79,14 @@ public:
     void updateSizeFile(CompletionHandler<void()>&&);
 
 private:
-    Caches(Engine&, WebCore::ClientOrigin&&, String&& rootPath);
+    Caches(Engine&, CyberCore::ClientOrigin&&, String&& rootPath);
 
     void initializeSize();
-    void readCachesFromDisk(WTF::Function<void(Expected<Vector<Cache>, WebCore::DOMCacheEngine::Error>&&)>&&);
-    void writeCachesToDisk(WebCore::DOMCacheEngine::CompletionCallback&&);
+    void readCachesFromDisk(WTF::Function<void(Expected<Vector<Cache>, CyberCore::DOMCacheEngine::Error>&&)>&&);
+    void writeCachesToDisk(CyberCore::DOMCacheEngine::CompletionCallback&&);
 
-    void storeOrigin(WebCore::DOMCacheEngine::CompletionCallback&&);
-    static std::optional<WebCore::ClientOrigin> readOrigin(const NetworkCache::Data&);
+    void storeOrigin(CyberCore::DOMCacheEngine::CompletionCallback&&);
+    static std::optional<CyberCore::ClientOrigin> readOrigin(const NetworkCache::Data&);
 
     Cache* find(const String& name);
     void clearPendingWritingCachesToDiskCallbacks();
@@ -99,17 +99,17 @@ private:
     bool m_isInitialized { false };
     Engine* m_engine { nullptr };
     uint64_t m_updateCounter { 0 };
-    WebCore::ClientOrigin m_origin;
+    CyberCore::ClientOrigin m_origin;
     String m_rootPath;
     uint64_t m_size { 0 };
     Vector<Cache> m_caches;
     Vector<Cache> m_removedCaches;
     RefPtr<NetworkCache::Storage> m_storage;
-    HashMap<NetworkCache::Key, std::unique_ptr<WebCore::DOMCacheEngine::Record>> m_volatileStorage;
+    HashMap<NetworkCache::Key, std::unique_ptr<CyberCore::DOMCacheEngine::Record>> m_volatileStorage;
     mutable std::optional<NetworkCache::Salt> m_volatileSalt;
-    Vector<WebCore::DOMCacheEngine::CompletionCallback> m_pendingInitializationCallbacks;
+    Vector<CyberCore::DOMCacheEngine::CompletionCallback> m_pendingInitializationCallbacks;
     bool m_isWritingCachesToDisk { false };
-    Deque<CompletionHandler<void(std::optional<WebCore::DOMCacheEngine::Error>)>> m_pendingWritingCachesToDiskCallbacks;
+    Deque<CompletionHandler<void(std::optional<CyberCore::DOMCacheEngine::Error>)>> m_pendingWritingCachesToDiskCallbacks;
 };
 
 } // namespace CacheStorage

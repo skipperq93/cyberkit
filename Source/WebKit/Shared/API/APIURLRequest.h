@@ -33,20 +33,20 @@ namespace API {
 
 class URLRequest : public ObjectImpl<Object::Type::URLRequest> {
 public:
-    static Ref<URLRequest> create(const WebCore::ResourceRequest& request)
+    static Ref<URLRequest> create(const CyberCore::ResourceRequest& request)
     {
         return adoptRef(*new URLRequest(request));
     }
 
-    const WebCore::ResourceRequest& resourceRequest() const { return m_request; }
+    const CyberCore::ResourceRequest& resourceRequest() const { return m_request; }
 
     static double defaultTimeoutInterval(); // May return 0 when using platform default.
     static void setDefaultTimeoutInterval(double);
 
 private:
-    explicit URLRequest(const WebCore::ResourceRequest&);
+    explicit URLRequest(const CyberCore::ResourceRequest&);
 
-    WebCore::ResourceRequest m_request;
+    CyberCore::ResourceRequest m_request;
 };
 
 } // namespace API

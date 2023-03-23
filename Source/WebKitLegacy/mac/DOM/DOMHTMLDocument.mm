@@ -36,183 +36,183 @@
 #import <wtf/GetPtr.h>
 #import <wtf/URL.h>
 
-#define IMPL static_cast<WebCore::HTMLDocument*>(reinterpret_cast<WebCore::Node*>(_internal))
+#define IMPL static_cast<CyberCore::HTMLDocument*>(reinterpret_cast<CyberCore::Node*>(_internal))
 
 @implementation DOMHTMLDocument
 
 - (DOMHTMLCollection *)embeds
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->embeds()));
 }
 
 - (DOMHTMLCollection *)plugins
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->plugins()));
 }
 
 - (DOMHTMLCollection *)scripts
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->scripts()));
 }
 
 - (int)width
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->width();
 }
 
 - (int)height
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->height();
 }
 
 - (NSString *)dir
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->dir();
 }
 
 - (void)setDir:(NSString *)newDir
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->setDir(newDir);
 }
 
 - (NSString *)designMode
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->designMode();
 }
 
 - (void)setDesignMode:(NSString *)newDesignMode
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->setDesignMode(newDesignMode);
 }
 
 - (NSString *)compatMode
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->compatMode();
 }
 
 - (NSString *)bgColor
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->bgColor();
 }
 
 - (void)setBgColor:(NSString *)newBgColor
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->setBgColor(newBgColor);
 }
 
 - (NSString *)fgColor
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->fgColor();
 }
 
 - (void)setFgColor:(NSString *)newFgColor
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->setFgColor(newFgColor);
 }
 
 - (NSString *)alinkColor
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->alinkColor();
 }
 
 - (void)setAlinkColor:(NSString *)newAlinkColor
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->setAlinkColor(newAlinkColor);
 }
 
 - (NSString *)linkColor
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->linkColorForBindings();
 }
 
 - (void)setLinkColor:(NSString *)newLinkColor
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->setLinkColorForBindings(newLinkColor);
 }
 
 - (NSString *)vlinkColor
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->vlinkColor();
 }
 
 - (void)setVlinkColor:(NSString *)newVlinkColor
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->setVlinkColor(newVlinkColor);
 }
 
 - (void)open
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->open();
 }
 
 - (void)close
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->close();
 }
 
 - (void)write:(NSString *)text
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->write(nullptr, { String { text } });
 }
 
 - (void)writeln:(NSString *)text
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->writeln(nullptr, { String { text} });
 }
 
 - (void)clear
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->clear();
 }
 
 - (void)captureEvents
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->captureEvents();
 }
 
 - (void)releaseEvents
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->releaseEvents();
 }
 
 @end
 
-WebCore::HTMLDocument* core(DOMHTMLDocument *wrapper)
+CyberCore::HTMLDocument* core(DOMHTMLDocument *wrapper)
 {
-    return wrapper ? reinterpret_cast<WebCore::HTMLDocument*>(wrapper->_internal) : 0;
+    return wrapper ? reinterpret_cast<CyberCore::HTMLDocument*>(wrapper->_internal) : 0;
 }
 
-DOMHTMLDocument *kit(WebCore::HTMLDocument* value)
+DOMHTMLDocument *kit(CyberCore::HTMLDocument* value)
 {
-    WebCoreThreadViolationCheckRoundOne();
-    return static_cast<DOMHTMLDocument*>(kit(static_cast<WebCore::Node*>(value)));
+    CyberCoreThreadViolationCheckRoundOne();
+    return static_cast<DOMHTMLDocument*>(kit(static_cast<CyberCore::Node*>(value)));
 }
 
 #undef IMPL

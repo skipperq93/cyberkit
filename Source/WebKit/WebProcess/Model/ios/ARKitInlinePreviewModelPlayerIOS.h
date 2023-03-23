@@ -31,29 +31,29 @@
 #include <CyberCore/ModelPlayer.h>
 #include <CyberCore/ModelPlayerClient.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class ARKitInlinePreviewModelPlayerIOS final : public ARKitInlinePreviewModelPlayer {
 public:
-    static Ref<ARKitInlinePreviewModelPlayerIOS> create(WebPage&, WebCore::ModelPlayerClient&);
+    static Ref<ARKitInlinePreviewModelPlayerIOS> create(WebPage&, CyberCore::ModelPlayerClient&);
     virtual ~ARKitInlinePreviewModelPlayerIOS();
 
-    static void pageLoadedModelInlinePreview(WebPage&, WebCore::GraphicsLayer::PlatformLayerID);
-    static void pageFailedToLoadModelInlinePreview(WebPage&, WebCore::GraphicsLayer::PlatformLayerID, const WebCore::ResourceError&);
+    static void pageLoadedModelInlinePreview(WebPage&, CyberCore::GraphicsLayer::PlatformLayerID);
+    static void pageFailedToLoadModelInlinePreview(WebPage&, CyberCore::GraphicsLayer::PlatformLayerID, const CyberCore::ResourceError&);
 
 private:
-    ARKitInlinePreviewModelPlayerIOS(WebPage&, WebCore::ModelPlayerClient&);
+    ARKitInlinePreviewModelPlayerIOS(WebPage&, CyberCore::ModelPlayerClient&);
 
     std::optional<ModelIdentifier> modelIdentifier() override;
 
-    static ARKitInlinePreviewModelPlayerIOS* modelPlayerForPageAndLayerID(WebPage&, WebCore::GraphicsLayer::PlatformLayerID);
+    static ARKitInlinePreviewModelPlayerIOS* modelPlayerForPageAndLayerID(WebPage&, CyberCore::GraphicsLayer::PlatformLayerID);
 
-    // WebCore::ModelPlayer overrides.
+    // CyberCore::ModelPlayer overrides.
     void enterFullscreen() override;
     void setInteractionEnabled(bool) override;
-    void handleMouseDown(const WebCore::LayoutPoint&, MonotonicTime) override;
-    void handleMouseMove(const WebCore::LayoutPoint&, MonotonicTime) override;
-    void handleMouseUp(const WebCore::LayoutPoint&, MonotonicTime) override;
+    void handleMouseDown(const CyberCore::LayoutPoint&, MonotonicTime) override;
+    void handleMouseMove(const CyberCore::LayoutPoint&, MonotonicTime) override;
+    void handleMouseUp(const CyberCore::LayoutPoint&, MonotonicTime) override;
 };
 
 }

@@ -40,7 +40,7 @@
 #include "ScrollingTreeOverflowScrollingNode.h"
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 ScrollingTreeStickyNode::ScrollingTreeStickyNode(ScrollingTree& scrollingTree, ScrollingNodeID nodeID)
     : ScrollingTreeNode(scrollingTree, ScrollingNodeType::Sticky, nodeID)
@@ -118,6 +118,6 @@ FloatSize ScrollingTreeStickyNode::scrollDeltaSinceLastCommit() const
     return layerPosition - m_constraints.layerPositionAtLastLayout();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ASYNC_SCROLLING) && USE(NICOSIA)

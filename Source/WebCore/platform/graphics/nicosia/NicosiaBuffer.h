@@ -45,11 +45,11 @@ public:
     };
     using Flags = unsigned;
 
-    WEBCORE_EXPORT static Ref<Buffer> create(const WebCore::IntSize&, Flags);
+    WEBCORE_EXPORT static Ref<Buffer> create(const CyberCore::IntSize&, Flags);
     WEBCORE_EXPORT ~Buffer();
 
     bool supportsAlpha() const { return m_flags & SupportsAlpha; }
-    const WebCore::IntSize& size() const { return m_size; }
+    const CyberCore::IntSize& size() const { return m_size; }
     int stride() const { return m_size.width() * 4; }
     unsigned char* data() const { return m_data.get(); }
 
@@ -58,10 +58,10 @@ public:
     void waitUntilPaintingComplete();
 
 private:
-    Buffer(const WebCore::IntSize&, Flags);
+    Buffer(const CyberCore::IntSize&, Flags);
 
     MallocPtr<unsigned char> m_data;
-    WebCore::IntSize m_size;
+    CyberCore::IntSize m_size;
     Flags m_flags;
 
     enum class PaintingState {

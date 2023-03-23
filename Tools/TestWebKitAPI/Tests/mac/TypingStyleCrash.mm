@@ -29,7 +29,7 @@
 
 namespace TestWebKitAPI {
 
-TEST(WebKitLegacy, TypingStyleCrash)
+TEST(CyberKitLegacy, TypingStyleCrash)
 {
     auto webView = adoptNS([[WebView alloc] init]);
     (void)[webView typingStyle];

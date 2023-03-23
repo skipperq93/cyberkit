@@ -22,7 +22,7 @@
 
 #include "SVGElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGMetadataElement final : public SVGElement {
     WTF_MAKE_ISO_ALLOCATED(SVGMetadataElement);
@@ -35,4 +35,4 @@ private:
     bool rendererIsNeeded(const RenderStyle&) final { return false; }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

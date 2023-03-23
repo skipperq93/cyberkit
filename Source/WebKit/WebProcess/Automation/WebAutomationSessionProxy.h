@@ -34,7 +34,7 @@
 #include <CyberCore/PageIdentifier.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 struct Cookie;
 class AccessibilityObject;
 class Element;
@@ -55,16 +55,16 @@ public:
     String sessionIdentifier() const { return m_sessionIdentifier; }
 
     void didClearWindowObjectForFrame(WebFrame&);
-    void willDestroyGlobalObjectForFrame(WebCore::FrameIdentifier);
+    void willDestroyGlobalObjectForFrame(CyberCore::FrameIdentifier);
 
-    void didEvaluateJavaScriptFunction(WebCore::FrameIdentifier, uint64_t callbackID, const String& result, const String& errorType);
+    void didEvaluateJavaScriptFunction(CyberCore::FrameIdentifier, uint64_t callbackID, const String& result, const String& errorType);
 
 private:
     JSObjectRef scriptObject(JSGlobalContextRef);
     void setScriptObject(JSGlobalContextRef, JSObjectRef);
     JSObjectRef scriptObjectForFrame(WebFrame&);
-    WebCore::Element* elementForNodeHandle(WebFrame&, const String&);
-    WebCore::AccessibilityObject* getAccessibilityObjectForNode(WebCore::PageIdentifier, std::optional<WebCore::FrameIdentifier>, String nodeHandle, String& error);
+    CyberCore::Element* elementForNodeHandle(WebFrame&, const String&);
+    CyberCore::AccessibilityObject* getAccessibilityObjectForNode(CyberCore::PageIdentifier, std::optional<CyberCore::FrameIdentifier>, String nodeHandle, String& error);
 
     void ensureObserverForFrame(WebFrame&);
 
@@ -72,26 +72,26 @@ private:
     void didReceiveMessage(IPC::Connection&, IPC::Decoder&) override;
 
     // Called by WebAutomationSessionProxy messages
-    void evaluateJavaScriptFunction(WebCore::PageIdentifier, std::optional<WebCore::FrameIdentifier>, const String& function, Vector<String> arguments, bool expectsImplicitCallbackArgument, std::optional<double> callbackTimeout, uint64_t callbackID);
-    void resolveChildFrameWithOrdinal(WebCore::PageIdentifier, std::optional<WebCore::FrameIdentifier>, uint32_t ordinal, CompletionHandler<void(std::optional<String>, std::optional<WebCore::FrameIdentifier>)>&&);
-    void resolveChildFrameWithNodeHandle(WebCore::PageIdentifier, std::optional<WebCore::FrameIdentifier>, const String& nodeHandle, CompletionHandler<void(std::optional<String>, std::optional<WebCore::FrameIdentifier>)>&&);
-    void resolveChildFrameWithName(WebCore::PageIdentifier, std::optional<WebCore::FrameIdentifier>, const String& name, CompletionHandler<void(std::optional<String>, std::optional<WebCore::FrameIdentifier>)>&&);
-    void resolveParentFrame(WebCore::PageIdentifier, std::optional<WebCore::FrameIdentifier>, CompletionHandler<void(std::optional<String>, std::optional<WebCore::FrameIdentifier>)>&&);
-    void computeElementLayout(WebCore::PageIdentifier, std::optional<WebCore::FrameIdentifier>, String nodeHandle, bool scrollIntoViewIfNeeded, CoordinateSystem, CompletionHandler<void(std::optional<String>, WebCore::FloatRect, std::optional<WebCore::IntPoint>, bool)>&&);
-    void getComputedRole(WebCore::PageIdentifier, std::optional<WebCore::FrameIdentifier>, String nodeHandle, CompletionHandler<void(std::optional<String>, std::optional<String>)>&&);
-    void getComputedLabel(WebCore::PageIdentifier, std::optional<WebCore::FrameIdentifier>, String nodeHandle, CompletionHandler<void(std::optional<String>, std::optional<String>)>&&);
-    void selectOptionElement(WebCore::PageIdentifier, std::optional<WebCore::FrameIdentifier>, String nodeHandle, CompletionHandler<void(std::optional<String>)>&&);
-    void setFilesForInputFileUpload(WebCore::PageIdentifier, std::optional<WebCore::FrameIdentifier>, String nodeHandle, Vector<String>&& filenames, CompletionHandler<void(std::optional<String>)>&&);
-    void takeScreenshot(WebCore::PageIdentifier, std::optional<WebCore::FrameIdentifier>, String nodeHandle, bool scrollIntoViewIfNeeded, bool clipToViewport, uint64_t callbackID);
-    void snapshotRectForScreenshot(WebCore::PageIdentifier, std::optional<WebCore::FrameIdentifier>, String nodeHandle, bool scrollIntoViewIfNeeded, bool clipToViewport, CompletionHandler<void(std::optional<String>, WebCore::IntRect&&)>&&);
-    void getCookiesForFrame(WebCore::PageIdentifier, std::optional<WebCore::FrameIdentifier>, CompletionHandler<void(std::optional<String>, Vector<WebCore::Cookie>)>&&);
-    void deleteCookie(WebCore::PageIdentifier, std::optional<WebCore::FrameIdentifier>, String cookieName, CompletionHandler<void(std::optional<String>)>&&);
+    void evaluateJavaScriptFunction(CyberCore::PageIdentifier, std::optional<CyberCore::FrameIdentifier>, const String& function, Vector<String> arguments, bool expectsImplicitCallbackArgument, std::optional<double> callbackTimeout, uint64_t callbackID);
+    void resolveChildFrameWithOrdinal(CyberCore::PageIdentifier, std::optional<CyberCore::FrameIdentifier>, uint32_t ordinal, CompletionHandler<void(std::optional<String>, std::optional<CyberCore::FrameIdentifier>)>&&);
+    void resolveChildFrameWithNodeHandle(CyberCore::PageIdentifier, std::optional<CyberCore::FrameIdentifier>, const String& nodeHandle, CompletionHandler<void(std::optional<String>, std::optional<CyberCore::FrameIdentifier>)>&&);
+    void resolveChildFrameWithName(CyberCore::PageIdentifier, std::optional<CyberCore::FrameIdentifier>, const String& name, CompletionHandler<void(std::optional<String>, std::optional<CyberCore::FrameIdentifier>)>&&);
+    void resolveParentFrame(CyberCore::PageIdentifier, std::optional<CyberCore::FrameIdentifier>, CompletionHandler<void(std::optional<String>, std::optional<CyberCore::FrameIdentifier>)>&&);
+    void computeElementLayout(CyberCore::PageIdentifier, std::optional<CyberCore::FrameIdentifier>, String nodeHandle, bool scrollIntoViewIfNeeded, CoordinateSystem, CompletionHandler<void(std::optional<String>, CyberCore::FloatRect, std::optional<CyberCore::IntPoint>, bool)>&&);
+    void getComputedRole(CyberCore::PageIdentifier, std::optional<CyberCore::FrameIdentifier>, String nodeHandle, CompletionHandler<void(std::optional<String>, std::optional<String>)>&&);
+    void getComputedLabel(CyberCore::PageIdentifier, std::optional<CyberCore::FrameIdentifier>, String nodeHandle, CompletionHandler<void(std::optional<String>, std::optional<String>)>&&);
+    void selectOptionElement(CyberCore::PageIdentifier, std::optional<CyberCore::FrameIdentifier>, String nodeHandle, CompletionHandler<void(std::optional<String>)>&&);
+    void setFilesForInputFileUpload(CyberCore::PageIdentifier, std::optional<CyberCore::FrameIdentifier>, String nodeHandle, Vector<String>&& filenames, CompletionHandler<void(std::optional<String>)>&&);
+    void takeScreenshot(CyberCore::PageIdentifier, std::optional<CyberCore::FrameIdentifier>, String nodeHandle, bool scrollIntoViewIfNeeded, bool clipToViewport, uint64_t callbackID);
+    void snapshotRectForScreenshot(CyberCore::PageIdentifier, std::optional<CyberCore::FrameIdentifier>, String nodeHandle, bool scrollIntoViewIfNeeded, bool clipToViewport, CompletionHandler<void(std::optional<String>, CyberCore::IntRect&&)>&&);
+    void getCookiesForFrame(CyberCore::PageIdentifier, std::optional<CyberCore::FrameIdentifier>, CompletionHandler<void(std::optional<String>, Vector<CyberCore::Cookie>)>&&);
+    void deleteCookie(CyberCore::PageIdentifier, std::optional<CyberCore::FrameIdentifier>, String cookieName, CompletionHandler<void(std::optional<String>)>&&);
 
     String m_sessionIdentifier;
     JSC::PrivateName m_scriptObjectIdentifier;
 
-    HashMap<WebCore::FrameIdentifier, Vector<uint64_t>> m_webFramePendingEvaluateJavaScriptCallbacksMap;
-    HashMap<WebCore::FrameIdentifier, RefPtr<WebAutomationDOMWindowObserver>> m_frameObservers;
+    HashMap<CyberCore::FrameIdentifier, Vector<uint64_t>> m_webFramePendingEvaluateJavaScriptCallbacksMap;
+    HashMap<CyberCore::FrameIdentifier, RefPtr<WebAutomationDOMWindowObserver>> m_frameObservers;
 };
 
 } // namespace WebKit

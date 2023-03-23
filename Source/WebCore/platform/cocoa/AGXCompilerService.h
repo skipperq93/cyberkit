@@ -29,7 +29,7 @@
 
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WEBCORE_EXPORT bool deviceHasAGXCompilerService();
 WEBCORE_EXPORT void setDeviceHasAGXCompilerServiceForTesting();

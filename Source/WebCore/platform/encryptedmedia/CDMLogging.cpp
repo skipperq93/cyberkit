@@ -40,7 +40,7 @@
 #include "JSMediaKeysRequirement.h"
 #include <wtf/JSONValues.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static Ref<JSON::Object> toJSONObject(const CDMMediaCapability& capability)
 {
@@ -114,42 +114,42 @@ static String toJSONString(const CDMRestrictions& restrictions)
 
 namespace WTF {
 
-String LogArgument<WebCore::CDMKeySystemConfiguration>::toString(const WebCore::CDMKeySystemConfiguration& configuration)
+String LogArgument<CyberCore::CDMKeySystemConfiguration>::toString(const CyberCore::CDMKeySystemConfiguration& configuration)
 {
     return toJSONString(configuration);
 }
 
-String LogArgument<WebCore::CDMMediaCapability>::toString(const WebCore::CDMMediaCapability& capability)
+String LogArgument<CyberCore::CDMMediaCapability>::toString(const CyberCore::CDMMediaCapability& capability)
 {
     return toJSONString(capability);
 }
 
-String LogArgument<WebCore::CDMRestrictions>::toString(const WebCore::CDMRestrictions& restrictions)
+String LogArgument<CyberCore::CDMRestrictions>::toString(const CyberCore::CDMRestrictions& restrictions)
 {
     return toJSONString(restrictions);
 }
 
-String LogArgument<WebCore::CDMEncryptionScheme>::toString(const WebCore::CDMEncryptionScheme& type)
+String LogArgument<CyberCore::CDMEncryptionScheme>::toString(const CyberCore::CDMEncryptionScheme& type)
 {
     return convertEnumerationToString(type);
 }
 
-String LogArgument<WebCore::CDMKeyStatus>::toString(const WebCore::CDMKeyStatus& type)
+String LogArgument<CyberCore::CDMKeyStatus>::toString(const CyberCore::CDMKeyStatus& type)
 {
     return convertEnumerationToString(type);
 }
 
-String LogArgument<WebCore::CDMMessageType>::toString(const WebCore::CDMMessageType& type)
+String LogArgument<CyberCore::CDMMessageType>::toString(const CyberCore::CDMMessageType& type)
 {
     return convertEnumerationToString(type);
 }
 
-String LogArgument<WebCore::CDMRequirement>::toString(const WebCore::CDMRequirement& type)
+String LogArgument<CyberCore::CDMRequirement>::toString(const CyberCore::CDMRequirement& type)
 {
     return convertEnumerationToString(type);
 }
 
-String LogArgument<WebCore::CDMSessionType>::toString(const WebCore::CDMSessionType& type)
+String LogArgument<CyberCore::CDMSessionType>::toString(const CyberCore::CDMSessionType& type)
 {
     return convertEnumerationToString(type);
 }

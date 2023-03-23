@@ -33,7 +33,7 @@
 using CVPixelBufferRef = struct __CVBuffer*;
 typedef const struct opaqueCMFormatDescription* CMFormatDescriptionRef;
 
-namespace WebCore {
+namespace CyberCore {
 
 class MediaStreamPrivate;
 class WebAudioBufferList;
@@ -65,6 +65,6 @@ private:
     std::unique_ptr<WebAudioBufferList> m_audioBuffer;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_RECORDER)

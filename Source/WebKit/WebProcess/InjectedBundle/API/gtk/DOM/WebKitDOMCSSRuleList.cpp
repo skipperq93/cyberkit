@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -18,30 +18,30 @@
  */
 
 #include "config.h"
-#include "WebKitDOMCSSRuleList.h"
+#include "CyberKitDOMCSSRuleList.h"
 
 #include <CyberCore/CSSImportRule.h>
 #include "DOMObjectCache.h"
 #include <CyberCore/Document.h>
 #include <CyberCore/JSExecState.h>
-#include "WebKitDOMCSSRuleListPrivate.h"
-#include "WebKitDOMCSSRulePrivate.h"
-#include "WebKitDOMPrivate.h"
+#include "CyberKitDOMCSSRuleListPrivate.h"
+#include "CyberKitDOMCSSRulePrivate.h"
+#include "CyberKitDOMPrivate.h"
 #include "ConvertToUTF8String.h"
 #include <wtf/GetPtr.h>
 #include <wtf/RefPtr.h>
 
-#define WEBKIT_DOM_CSS_RULE_LIST_GET_PRIVATE(obj) G_TYPE_INSTANCE_GET_PRIVATE(obj, WEBKIT_DOM_TYPE_CSS_RULE_LIST, WebKitDOMCSSRuleListPrivate)
+#define WEBKIT_DOM_CSS_RULE_LIST_GET_PRIVATE(obj) G_TYPE_INSTANCE_GET_PRIVATE(obj, WEBKIT_DOM_TYPE_CSS_RULE_LIST, CyberKitDOMCSSRuleListPrivate)
 
-typedef struct _WebKitDOMCSSRuleListPrivate {
-    RefPtr<WebCore::CSSRuleList> coreObject;
-} WebKitDOMCSSRuleListPrivate;
+typedef struct _CyberKitDOMCSSRuleListPrivate {
+    RefPtr<CyberCore::CSSRuleList> coreObject;
+} CyberKitDOMCSSRuleListPrivate;
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
-namespace WebKit {
+namespace CyberKit {
 
-WebKitDOMCSSRuleList* kit(WebCore::CSSRuleList* obj)
+CyberKitDOMCSSRuleList* kit(CyberCore::CSSRuleList* obj)
 {
     if (!obj)
         return 0;
@@ -52,20 +52,20 @@ WebKitDOMCSSRuleList* kit(WebCore::CSSRuleList* obj)
     return wrapCSSRuleList(obj);
 }
 
-WebCore::CSSRuleList* core(WebKitDOMCSSRuleList* request)
+CyberCore::CSSRuleList* core(CyberKitDOMCSSRuleList* request)
 {
-    return request ? static_cast<WebCore::CSSRuleList*>(WEBKIT_DOM_OBJECT(request)->coreObject) : 0;
+    return request ? static_cast<CyberCore::CSSRuleList*>(WEBKIT_DOM_OBJECT(request)->coreObject) : 0;
 }
 
-WebKitDOMCSSRuleList* wrapCSSRuleList(WebCore::CSSRuleList* coreObject)
+CyberKitDOMCSSRuleList* wrapCSSRuleList(CyberCore::CSSRuleList* coreObject)
 {
     ASSERT(coreObject);
     return WEBKIT_DOM_CSS_RULE_LIST(g_object_new(WEBKIT_DOM_TYPE_CSS_RULE_LIST, "core-object", coreObject, nullptr));
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
-G_DEFINE_TYPE(WebKitDOMCSSRuleList, webkit_dom_css_rule_list, WEBKIT_DOM_TYPE_OBJECT)
+G_DEFINE_TYPE(CyberKitDOMCSSRuleList, webkit_dom_css_rule_list, WEBKIT_DOM_TYPE_OBJECT)
 
 enum {
     DOM_CSS_RULE_LIST_PROP_0,
@@ -74,17 +74,17 @@ enum {
 
 static void webkit_dom_css_rule_list_finalize(GObject* object)
 {
-    WebKitDOMCSSRuleListPrivate* priv = WEBKIT_DOM_CSS_RULE_LIST_GET_PRIVATE(object);
+    CyberKitDOMCSSRuleListPrivate* priv = WEBKIT_DOM_CSS_RULE_LIST_GET_PRIVATE(object);
 
-    WebKit::DOMObjectCache::forget(priv->coreObject.get());
+    CyberKit::DOMObjectCache::forget(priv->coreObject.get());
 
-    priv->~WebKitDOMCSSRuleListPrivate();
+    priv->~CyberKitDOMCSSRuleListPrivate();
     G_OBJECT_CLASS(webkit_dom_css_rule_list_parent_class)->finalize(object);
 }
 
 static void webkit_dom_css_rule_list_get_property(GObject* object, guint propertyId, GValue* value, GParamSpec* pspec)
 {
-    WebKitDOMCSSRuleList* self = WEBKIT_DOM_CSS_RULE_LIST(object);
+    CyberKitDOMCSSRuleList* self = WEBKIT_DOM_CSS_RULE_LIST(object);
 
     switch (propertyId) {
     case DOM_CSS_RULE_LIST_PROP_LENGTH:
@@ -100,17 +100,17 @@ static GObject* webkit_dom_css_rule_list_constructor(GType type, guint construct
 {
     GObject* object = G_OBJECT_CLASS(webkit_dom_css_rule_list_parent_class)->constructor(type, constructPropertiesCount, constructProperties);
 
-    WebKitDOMCSSRuleListPrivate* priv = WEBKIT_DOM_CSS_RULE_LIST_GET_PRIVATE(object);
-    priv->coreObject = static_cast<WebCore::CSSRuleList*>(WEBKIT_DOM_OBJECT(object)->coreObject);
-    WebKit::DOMObjectCache::put(priv->coreObject.get(), object);
+    CyberKitDOMCSSRuleListPrivate* priv = WEBKIT_DOM_CSS_RULE_LIST_GET_PRIVATE(object);
+    priv->coreObject = static_cast<CyberCore::CSSRuleList*>(WEBKIT_DOM_OBJECT(object)->coreObject);
+    CyberKit::DOMObjectCache::put(priv->coreObject.get(), object);
 
     return object;
 }
 
-static void webkit_dom_css_rule_list_class_init(WebKitDOMCSSRuleListClass* requestClass)
+static void webkit_dom_css_rule_list_class_init(CyberKitDOMCSSRuleListClass* requestClass)
 {
     GObjectClass* gobjectClass = G_OBJECT_CLASS(requestClass);
-    g_type_class_add_private(gobjectClass, sizeof(WebKitDOMCSSRuleListPrivate));
+    g_type_class_add_private(gobjectClass, sizeof(CyberKitDOMCSSRuleListPrivate));
     gobjectClass->constructor = webkit_dom_css_rule_list_constructor;
     gobjectClass->finalize = webkit_dom_css_rule_list_finalize;
     gobjectClass->get_property = webkit_dom_css_rule_list_get_property;
@@ -127,26 +127,26 @@ static void webkit_dom_css_rule_list_class_init(WebKitDOMCSSRuleListClass* reque
 
 }
 
-static void webkit_dom_css_rule_list_init(WebKitDOMCSSRuleList* request)
+static void webkit_dom_css_rule_list_init(CyberKitDOMCSSRuleList* request)
 {
-    WebKitDOMCSSRuleListPrivate* priv = WEBKIT_DOM_CSS_RULE_LIST_GET_PRIVATE(request);
-    new (priv) WebKitDOMCSSRuleListPrivate();
+    CyberKitDOMCSSRuleListPrivate* priv = WEBKIT_DOM_CSS_RULE_LIST_GET_PRIVATE(request);
+    new (priv) CyberKitDOMCSSRuleListPrivate();
 }
 
-WebKitDOMCSSRule* webkit_dom_css_rule_list_item(WebKitDOMCSSRuleList* self, gulong index)
+CyberKitDOMCSSRule* webkit_dom_css_rule_list_item(CyberKitDOMCSSRuleList* self, gulong index)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_CSS_RULE_LIST(self), 0);
-    WebCore::CSSRuleList* item = WebKit::core(self);
-    RefPtr<WebCore::CSSRule> gobjectResult = WTF::getPtr(item->item(index));
-    return WebKit::kit(gobjectResult.get());
+    CyberCore::CSSRuleList* item = CyberKit::core(self);
+    RefPtr<CyberCore::CSSRule> gobjectResult = WTF::getPtr(item->item(index));
+    return CyberKit::kit(gobjectResult.get());
 }
 
-gulong webkit_dom_css_rule_list_get_length(WebKitDOMCSSRuleList* self)
+gulong webkit_dom_css_rule_list_get_length(CyberKitDOMCSSRuleList* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_CSS_RULE_LIST(self), 0);
-    WebCore::CSSRuleList* item = WebKit::core(self);
+    CyberCore::CSSRuleList* item = CyberKit::core(self);
     gulong result = item->length();
     return result;
 }

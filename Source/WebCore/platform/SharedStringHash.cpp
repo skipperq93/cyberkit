@@ -29,7 +29,7 @@
 #include <wtf/text/StringHash.h>
 #include <wtf/text/StringView.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 template <typename CharacterType>
 static inline size_t findSlashDotDotSlash(const CharacterType* characters, size_t length, size_t position)
@@ -304,4 +304,4 @@ SharedStringHash computeVisitedLinkHash(const URL& base, const AtomString& attri
     return computeSharedStringHashInline(url.data(), url.size());
 }
 
-} // namespace WebCore
+} // namespace CyberCore

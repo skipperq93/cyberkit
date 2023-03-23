@@ -23,7 +23,7 @@ set(MiniBrowser_FRAMEWORKS
     JavaScriptCore
     PAL
     WTF
-    WebCore
+    CyberCore
     WebKit
 )
 

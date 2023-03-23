@@ -53,7 +53,7 @@
 #import <AVKit/AVPictureInPictureController.h>
 #endif
 
-using namespace WebCore;
+using namespace CyberCore;
 
 #import <pal/cf/CoreMediaSoftLink.h>
 #import <pal/cocoa/AVFoundationSoftLink.h>
@@ -1692,17 +1692,17 @@ void VideoFullscreenInterfaceAVKit::clearMode(HTMLMediaElementEnums::VideoFullsc
 
 bool VideoFullscreenInterfaceAVKit::isPlayingVideoInEnhancedFullscreen() const
 {
-    return hasMode(WebCore::HTMLMediaElementEnums::VideoFullscreenModePictureInPicture) && [playerController() isPlaying];
+    return hasMode(CyberCore::HTMLMediaElementEnums::VideoFullscreenModePictureInPicture) && [playerController() isPlaying];
 }
 
 static std::optional<bool> isPictureInPictureSupported;
 
-void WebCore::setSupportsPictureInPicture(bool isSupported)
+void CyberCore::setSupportsPictureInPicture(bool isSupported)
 {
     isPictureInPictureSupported = isSupported;
 }
 
-bool WebCore::supportsPictureInPicture()
+bool CyberCore::supportsPictureInPicture()
 {
 #if ENABLE(VIDEO_PRESENTATION_MODE) && !PLATFORM(WATCHOS)
     if (isPictureInPictureSupported.has_value())

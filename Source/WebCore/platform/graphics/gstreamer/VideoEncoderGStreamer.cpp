@@ -36,7 +36,7 @@
 #include <gst/gl/gstglmemory.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 GST_DEBUG_CATEGORY(webkit_video_encoder_debug);
 #define GST_CAT_DEFAULT webkit_video_encoder_debug

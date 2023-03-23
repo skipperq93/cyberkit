@@ -29,7 +29,7 @@
 
 #include <wtf/EnumTraits.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class BackgroundFetchFailureReason : uint8_t {
     EmptyString,
@@ -40,19 +40,19 @@ enum class BackgroundFetchFailureReason : uint8_t {
     DownloadTotalExceeded
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::BackgroundFetchFailureReason> {
+template<> struct EnumTraits<CyberCore::BackgroundFetchFailureReason> {
     using values = EnumValues<
-    WebCore::BackgroundFetchFailureReason,
-    WebCore::BackgroundFetchFailureReason::EmptyString,
-    WebCore::BackgroundFetchFailureReason::Aborted,
-    WebCore::BackgroundFetchFailureReason::BadStatus,
-    WebCore::BackgroundFetchFailureReason::FetchError,
-    WebCore::BackgroundFetchFailureReason::QuotaExceeded,
-    WebCore::BackgroundFetchFailureReason::DownloadTotalExceeded
+    CyberCore::BackgroundFetchFailureReason,
+    CyberCore::BackgroundFetchFailureReason::EmptyString,
+    CyberCore::BackgroundFetchFailureReason::Aborted,
+    CyberCore::BackgroundFetchFailureReason::BadStatus,
+    CyberCore::BackgroundFetchFailureReason::FetchError,
+    CyberCore::BackgroundFetchFailureReason::QuotaExceeded,
+    CyberCore::BackgroundFetchFailureReason::DownloadTotalExceeded
     >;
 };
 

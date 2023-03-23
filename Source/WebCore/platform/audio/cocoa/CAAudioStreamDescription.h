@@ -28,7 +28,7 @@
 #include "AudioStreamDescription.h"
 #include <CoreAudio/CoreAudioTypes.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WEBCORE_EXPORT bool operator==(const AudioStreamBasicDescription&, const AudioStreamBasicDescription&);
 inline bool operator!=(const AudioStreamBasicDescription& a, const AudioStreamBasicDescription& b) { return !(a == b); }

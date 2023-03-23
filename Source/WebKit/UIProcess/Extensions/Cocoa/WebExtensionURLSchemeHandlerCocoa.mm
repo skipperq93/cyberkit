@@ -105,7 +105,7 @@ void WebExtensionURLSchemeHandler::platformStartTask(WebPageProxy& page, WebURLS
         }];
 
         task.didReceiveResponse(urlResponse);
-        task.didReceiveData(WebCore::SharedBuffer::create(fileData));
+        task.didReceiveData(CyberCore::SharedBuffer::create(fileData));
         task.didComplete({ });
     }).get()];
 

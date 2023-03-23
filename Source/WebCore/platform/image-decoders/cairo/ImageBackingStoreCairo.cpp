@@ -28,7 +28,7 @@
 
 #include <cairo.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 PlatformImagePtr ImageBackingStore::image() const
 {
@@ -44,4 +44,4 @@ PlatformImagePtr ImageBackingStore::image() const
     return surface;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -32,7 +32,7 @@
 
 #include <wtf/ThreadSafeRefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 class TransformationMatrix;
 }
 
@@ -51,7 +51,7 @@ public:
 
     Type type() const { return m_type; }
     virtual ~AnimatedBackingStoreClient() = default;
-    virtual void requestBackingStoreUpdateIfNeeded(const WebCore::TransformationMatrix&) = 0;
+    virtual void requestBackingStoreUpdateIfNeeded(const CyberCore::TransformationMatrix&) = 0;
 
 private:
     Type m_type;

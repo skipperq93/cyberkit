@@ -31,7 +31,7 @@
 #include <wtf/RefPtr.h>
 #include <wtf/ThreadSafeRefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ImageBuffer;
 
@@ -53,4 +53,4 @@ public:
     virtual void setContentsToLayer(GraphicsLayer&) = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

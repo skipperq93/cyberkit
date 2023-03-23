@@ -33,7 +33,7 @@
 #include <wtf/Vector.h>
 
 namespace API {
-using namespace WebCore;
+using namespace CyberCore;
 
 Ref<OpenPanelParameters> OpenPanelParameters::create(const FileChooserSettings& settings)
 {
@@ -61,7 +61,7 @@ Ref<API::Array> OpenPanelParameters::acceptFileExtensions() const
 
 Ref<API::Array> OpenPanelParameters::allowedMIMETypes() const
 {
-    return API::Array::createStringArray(WebCore::MIMETypeRegistry::allowedMIMETypes(m_settings.acceptMIMETypes, m_settings.acceptFileExtensions));
+    return API::Array::createStringArray(CyberCore::MIMETypeRegistry::allowedMIMETypes(m_settings.acceptMIMETypes, m_settings.acceptFileExtensions));
 }
 
 Ref<API::Array> OpenPanelParameters::allowedFileExtensions() const
@@ -76,9 +76,9 @@ Ref<API::Array> OpenPanelParameters::allowedFileExtensions() const
         acceptMIMETypes.append("image/heic"_s);
     }
     
-    return API::Array::createStringArray(WebCore::MIMETypeRegistry::allowedFileExtensions(acceptMIMETypes, m_settings.acceptFileExtensions));
+    return API::Array::createStringArray(CyberCore::MIMETypeRegistry::allowedFileExtensions(acceptMIMETypes, m_settings.acceptFileExtensions));
 #else
-    return API::Array::createStringArray(WebCore::MIMETypeRegistry::allowedFileExtensions(m_settings.acceptMIMETypes, m_settings.acceptFileExtensions));
+    return API::Array::createStringArray(CyberCore::MIMETypeRegistry::allowedFileExtensions(m_settings.acceptMIMETypes, m_settings.acceptFileExtensions));
 #endif
 }
 
@@ -87,4 +87,4 @@ Ref<API::Array> OpenPanelParameters::selectedFileNames() const
     return API::Array::createStringArray(m_settings.selectedFiles);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

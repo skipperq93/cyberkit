@@ -23,26 +23,26 @@
 headers: "ArgumentCodersCocoa.h"
 
 header: <CyberCore/DictionaryPopupInfo.h>
-[CustomHeader=True] struct WebCore::DictionaryPopupInfoCocoa {
+[CustomHeader=True] struct CyberCore::DictionaryPopupInfoCocoa {
     RetainPtr<NSDictionary> options;
     RetainPtr<NSAttributedString> attributedString;
 };
 
 header: <CyberCore/ResourceRequest.h>
-[CustomHeader=True] struct WebCore::ResourceRequestPlatformData {
+[CustomHeader=True] struct CyberCore::ResourceRequestPlatformData {
     RetainPtr<NSURLRequest> m_urlRequest;
     std::optional<bool> m_isAppInitiated;
-    std::optional<WebCore::ResourceRequestRequester> m_requester
+    std::optional<CyberCore::ResourceRequestRequester> m_requester
 };
 
-struct WebCore::AttributedString {
+struct CyberCore::AttributedString {
     RetainPtr<NSAttributedString> string;
     RetainPtr<NSDictionary> documentAttributes;
 };
 #endif
 
 #if ENABLE(MEDIA_RECORDER)
-struct WebCore::MediaRecorderPrivateOptions {
+struct CyberCore::MediaRecorderPrivateOptions {
     String mimeType;
     std::optional<unsigned> audioBitsPerSecond;
     std::optional<unsigned> videoBitsPerSecond;

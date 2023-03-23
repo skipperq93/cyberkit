@@ -33,7 +33,7 @@
 #include "CDMEncryptionScheme.h"
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct CDMMediaCapability {
     String contentType;
@@ -41,6 +41,6 @@ struct CDMMediaCapability {
     std::optional<CDMEncryptionScheme> encryptionScheme;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ENCRYPTED_MEDIA)

@@ -30,7 +30,7 @@
 #include "DragActions.h"
 #include "Element.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct DragState {
     RefPtr<Element> source; // Element that may be a drag source, for the current mouse gesture.
@@ -40,4 +40,4 @@ struct DragState {
     RefPtr<SecurityOrigin> restrictedOriginForImageData;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

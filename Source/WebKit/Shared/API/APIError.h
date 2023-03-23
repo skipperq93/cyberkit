@@ -37,7 +37,7 @@ public:
         return adoptRef(*new Error);
     }
 
-    static Ref<Error> create(const WebCore::ResourceError& error)
+    static Ref<Error> create(const CyberCore::ResourceError& error)
     {
         return adoptRef(*new Error(error));
     }
@@ -97,19 +97,19 @@ public:
     const WTF::String& failingURL() const { return m_platformError.failingURL().string(); }
     const WTF::String& localizedDescription() const { return m_platformError.localizedDescription(); }
 
-    const WebCore::ResourceError& platformError() const { return m_platformError; }
+    const CyberCore::ResourceError& platformError() const { return m_platformError; }
 
 private:
     Error()
     {
     }
 
-    Error(const WebCore::ResourceError& error)
+    Error(const CyberCore::ResourceError& error)
         : m_platformError(error)
     {
     }
 
-    WebCore::ResourceError m_platformError;
+    CyberCore::ResourceError m_platformError;
 };
 
 } // namespace API

@@ -33,7 +33,7 @@ typedef struct _GTlsPassword GTlsPassword;
 typedef struct _SoupAuth SoupAuth;
 typedef struct _SoupMessage SoupMessage;
 
-namespace WebCore {
+namespace CyberCore {
 
 class AuthenticationChallenge final : public AuthenticationChallengeBase {
 public:
@@ -81,5 +81,5 @@ private:
     uint32_t m_tlsPasswordFlags { 0 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 

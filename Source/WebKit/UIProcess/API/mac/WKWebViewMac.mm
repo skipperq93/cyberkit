@@ -42,32 +42,32 @@
 #import <pal/spi/mac/NSViewSPI.h>
 #import <wtf/cocoa/RuntimeApplicationChecksCocoa.h>
 
-_WKOverlayScrollbarStyle toAPIScrollbarStyle(std::optional<WebCore::ScrollbarOverlayStyle> coreScrollbarStyle)
+_WKOverlayScrollbarStyle toAPIScrollbarStyle(std::optional<CyberCore::ScrollbarOverlayStyle> coreScrollbarStyle)
 {
     if (!coreScrollbarStyle)
         return _WKOverlayScrollbarStyleAutomatic;
     
     switch (coreScrollbarStyle.value()) {
-    case WebCore::ScrollbarOverlayStyleDark:
+    case CyberCore::ScrollbarOverlayStyleDark:
         return _WKOverlayScrollbarStyleDark;
-    case WebCore::ScrollbarOverlayStyleLight:
+    case CyberCore::ScrollbarOverlayStyleLight:
         return _WKOverlayScrollbarStyleLight;
-    case WebCore::ScrollbarOverlayStyleDefault:
+    case CyberCore::ScrollbarOverlayStyleDefault:
         return _WKOverlayScrollbarStyleDefault;
     }
     ASSERT_NOT_REACHED();
     return _WKOverlayScrollbarStyleAutomatic;
 }
 
-std::optional<WebCore::ScrollbarOverlayStyle> toCoreScrollbarStyle(_WKOverlayScrollbarStyle scrollbarStyle)
+std::optional<CyberCore::ScrollbarOverlayStyle> toCoreScrollbarStyle(_WKOverlayScrollbarStyle scrollbarStyle)
 {
     switch (scrollbarStyle) {
     case _WKOverlayScrollbarStyleDark:
-        return WebCore::ScrollbarOverlayStyleDark;
+        return CyberCore::ScrollbarOverlayStyleDark;
     case _WKOverlayScrollbarStyleLight:
-        return WebCore::ScrollbarOverlayStyleLight;
+        return CyberCore::ScrollbarOverlayStyleLight;
     case _WKOverlayScrollbarStyleDefault:
-        return WebCore::ScrollbarOverlayStyleDefault;
+        return CyberCore::ScrollbarOverlayStyleDefault;
     case _WKOverlayScrollbarStyleAutomatic:
         break;
     }
@@ -1214,9 +1214,9 @@ ALLOW_DEPRECATED_IMPLEMENTATIONS_END
     [self _didChangeEditorState];
 }
 
-- (void)_web_gestureEventWasNotHandledByWebCore:(NSEvent *)event
+- (void)_web_gestureEventWasNotHandledByCyberCore:(NSEvent *)event
 {
-    [self _gestureEventWasNotHandledByWebCore:event];
+    [self _gestureEventWasNotHandledByCyberCore:event];
 }
 
 - (void)_takeFindStringFromSelectionInternal:(id)sender
@@ -1401,7 +1401,7 @@ ALLOW_DEPRECATED_IMPLEMENTATIONS_END
 {
     BOOL expandsToFit = width > 0;
 
-    _page->setMinimumSizeForAutoLayout(WebCore::IntSize(width, 0));
+    _page->setMinimumSizeForAutoLayout(CyberCore::IntSize(width, 0));
     _page->setMainFrameIsScrollable(!expandsToFit);
 
     _impl->setClipsToVisibleRect(expandsToFit);
@@ -1416,7 +1416,7 @@ ALLOW_DEPRECATED_IMPLEMENTATIONS_END
 {
     BOOL expandsToFit = size.width > 0 && size.height > 0;
 
-    _page->setSizeToContentAutoSizeMaximumSize(WebCore::IntSize(size.width, size.height));
+    _page->setSizeToContentAutoSizeMaximumSize(CyberCore::IntSize(size.width, size.height));
     _page->setMainFrameIsScrollable(!expandsToFit);
 
     _impl->setClipsToVisibleRect(expandsToFit);
@@ -1545,9 +1545,9 @@ ALLOW_DEPRECATED_IMPLEMENTATIONS_END
     _impl->setFrameAndScrollBy(NSRectToCGRect(rect), NSSizeToCGSize(offset));
 }
 
-- (void)_gestureEventWasNotHandledByWebCore:(NSEvent *)event
+- (void)_gestureEventWasNotHandledByCyberCore:(NSEvent *)event
 {
-    _impl->gestureEventWasNotHandledByWebCoreFromViewOnly(event);
+    _impl->gestureEventWasNotHandledByCyberCoreFromViewOnly(event);
 }
 
 - (void)_disableFrameSizeUpdates

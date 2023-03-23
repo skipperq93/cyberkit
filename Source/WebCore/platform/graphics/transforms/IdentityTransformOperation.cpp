@@ -26,7 +26,7 @@
 #include "config.h"
 #include "IdentityTransformOperation.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<IdentityTransformOperation> IdentityTransformOperation::create()
 {
@@ -38,4 +38,4 @@ IdentityTransformOperation::IdentityTransformOperation()
 {
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -41,17 +41,17 @@
 #import <pal/cocoa/AVFoundationSoftLink.h>
 
 @interface WebInterruptionObserverHelper : NSObject {
-    WebCore::AudioSession* _callback;
+    CyberCore::AudioSession* _callback;
 }
 
-- (id)initWithCallback:(WebCore::AudioSession*)callback;
+- (id)initWithCallback:(CyberCore::AudioSession*)callback;
 - (void)clearCallback;
 - (void)interruption:(NSNotification *)notification;
 @end
 
 @implementation WebInterruptionObserverHelper
 
-- (id)initWithCallback:(WebCore::AudioSession*)callback
+- (id)initWithCallback:(CyberCore::AudioSession*)callback
 {
     if (!(self = [super init]))
         return nil;
@@ -81,7 +81,7 @@
         return;
 
     NSUInteger type = [[[notification userInfo] objectForKey:AVAudioSessionInterruptionTypeKey] unsignedIntegerValue];
-    auto flags = (type == AVAudioSessionInterruptionTypeEnded && [[[notification userInfo] objectForKey:AVAudioSessionInterruptionOptionKey] unsignedIntegerValue] == AVAudioSessionInterruptionOptionShouldResume) ? WebCore::AudioSession::MayResume::Yes : WebCore::AudioSession::MayResume::No;
+    auto flags = (type == AVAudioSessionInterruptionTypeEnded && [[[notification userInfo] objectForKey:AVAudioSessionInterruptionOptionKey] unsignedIntegerValue] == AVAudioSessionInterruptionOptionShouldResume) ? CyberCore::AudioSession::MayResume::Yes : CyberCore::AudioSession::MayResume::No;
 
     callOnWebThreadOrDispatchAsyncOnMainThread([protectedSelf = retainPtr(self), type, flags]() mutable {
         auto* callback = protectedSelf->_callback;
@@ -96,7 +96,7 @@
 }
 @end
 
-namespace WebCore {
+namespace CyberCore {
 
 static WeakHashSet<AudioSessionIOS::CategoryChangedObserver>& audioSessionCategoryChangedObservers()
 {

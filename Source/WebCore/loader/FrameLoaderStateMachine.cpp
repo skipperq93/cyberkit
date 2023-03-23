@@ -31,7 +31,7 @@
 
 #include <wtf/Assertions.h>
 
-namespace WebCore {
+namespace CyberCore {
 
     
 FrameLoaderStateMachine::FrameLoaderStateMachine() 
@@ -70,4 +70,4 @@ void FrameLoaderStateMachine::advanceTo(State state)
     m_state = state;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

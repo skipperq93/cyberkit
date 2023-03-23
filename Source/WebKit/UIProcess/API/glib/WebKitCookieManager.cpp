@@ -110,30 +110,30 @@ static inline SoupCookiePersistentStorageType toSoupCookiePersistentStorageType(
     }
 }
 
-static inline WebKitCookieAcceptPolicy toWebKitCookieAcceptPolicy(WebCore::HTTPCookieAcceptPolicy httpPolicy)
+static inline WebKitCookieAcceptPolicy toWebKitCookieAcceptPolicy(CyberCore::HTTPCookieAcceptPolicy httpPolicy)
 {
     switch (httpPolicy) {
-    case WebCore::HTTPCookieAcceptPolicy::AlwaysAccept:
+    case CyberCore::HTTPCookieAcceptPolicy::AlwaysAccept:
         return WEBKIT_COOKIE_POLICY_ACCEPT_ALWAYS;
-    case WebCore::HTTPCookieAcceptPolicy::Never:
+    case CyberCore::HTTPCookieAcceptPolicy::Never:
         return WEBKIT_COOKIE_POLICY_ACCEPT_NEVER;
-    case WebCore::HTTPCookieAcceptPolicy::ExclusivelyFromMainDocumentDomain:
+    case CyberCore::HTTPCookieAcceptPolicy::ExclusivelyFromMainDocumentDomain:
         return WEBKIT_COOKIE_POLICY_ACCEPT_NO_THIRD_PARTY;
-    case WebCore::HTTPCookieAcceptPolicy::OnlyFromMainDocumentDomain:
+    case CyberCore::HTTPCookieAcceptPolicy::OnlyFromMainDocumentDomain:
         break;
     }
     RELEASE_ASSERT_NOT_REACHED();
 }
 
-static inline WebCore::HTTPCookieAcceptPolicy toHTTPCookieAcceptPolicy(WebKitCookieAcceptPolicy kitPolicy)
+static inline CyberCore::HTTPCookieAcceptPolicy toHTTPCookieAcceptPolicy(WebKitCookieAcceptPolicy kitPolicy)
 {
     switch (kitPolicy) {
     case WEBKIT_COOKIE_POLICY_ACCEPT_ALWAYS:
-        return WebCore::HTTPCookieAcceptPolicy::AlwaysAccept;
+        return CyberCore::HTTPCookieAcceptPolicy::AlwaysAccept;
     case WEBKIT_COOKIE_POLICY_ACCEPT_NEVER:
-        return WebCore::HTTPCookieAcceptPolicy::Never;
+        return CyberCore::HTTPCookieAcceptPolicy::Never;
     case WEBKIT_COOKIE_POLICY_ACCEPT_NO_THIRD_PARTY:
-        return WebCore::HTTPCookieAcceptPolicy::ExclusivelyFromMainDocumentDomain;
+        return CyberCore::HTTPCookieAcceptPolicy::ExclusivelyFromMainDocumentDomain;
     }
     RELEASE_ASSERT_NOT_REACHED();
 }
@@ -242,7 +242,7 @@ void webkit_cookie_manager_get_accept_policy(WebKitCookieManager* manager, GCanc
 
     GRefPtr<GTask> task = adoptGRef(g_task_new(manager, cancellable, callback, userData));
 
-    manager->priv->cookieStore().getHTTPCookieAcceptPolicy([task = WTFMove(task)](WebCore::HTTPCookieAcceptPolicy policy) {
+    manager->priv->cookieStore().getHTTPCookieAcceptPolicy([task = WTFMove(task)](CyberCore::HTTPCookieAcceptPolicy policy) {
         g_task_return_int(task.get(), toWebKitCookieAcceptPolicy(policy));
     });
 }
@@ -287,7 +287,7 @@ void webkit_cookie_manager_add_cookie(WebKitCookieManager* manager, SoupCookie* 
     g_return_if_fail(cookie);
 
     GRefPtr<GTask> task = adoptGRef(g_task_new(manager, cancellable, callback, userData));
-    manager->priv->cookieStore().setCookies({ WebCore::Cookie(cookie) }, [task = WTFMove(task)]() {
+    manager->priv->cookieStore().setCookies({ CyberCore::Cookie(cookie) }, [task = WTFMove(task)]() {
         g_task_return_boolean(task.get(), TRUE);
     });
 }
@@ -336,7 +336,7 @@ void webkit_cookie_manager_get_cookies(WebKitCookieManager* manager, const gchar
     g_return_if_fail(uri);
 
     GRefPtr<GTask> task = adoptGRef(g_task_new(manager, cancellable, callback, userData));
-    manager->priv->cookieStore().cookiesForURL(URL { String::fromUTF8(uri) }, [task = WTFMove(task)](const Vector<WebCore::Cookie>& cookies) {
+    manager->priv->cookieStore().cookiesForURL(URL { String::fromUTF8(uri) }, [task = WTFMove(task)](const Vector<CyberCore::Cookie>& cookies) {
         GList* cookiesList = nullptr;
         for (auto& cookie : cookies)
             cookiesList = g_list_prepend(cookiesList, cookie.toSoupCookie());
@@ -391,7 +391,7 @@ void webkit_cookie_manager_delete_cookie(WebKitCookieManager* manager, SoupCooki
     g_return_if_fail(cookie);
 
     GRefPtr<GTask> task = adoptGRef(g_task_new(manager, cancellable, callback, userData));
-    manager->priv->cookieStore().deleteCookie(WebCore::Cookie(cookie), [task = WTFMove(task)]() {
+    manager->priv->cookieStore().deleteCookie(CyberCore::Cookie(cookie), [task = WTFMove(task)]() {
         g_task_return_boolean(task.get(), TRUE);
     });
 }

@@ -93,9 +93,9 @@ class Application(object):
 
         self.project_specific_generators = {
             "JavaScriptCore":   Generators.JavaScriptCoreGenerator,
-            "WebCore":          Generators.WebCoreGenerator,
+            "CyberCore":          Generators.CyberCoreGenerator,
             "WebKit":           Generators.WebKitGenerator,
-            "WebKitLegacy":     Generators.WebKitLegacyGenerator,
+            "CyberKitLegacy":     Generators.CyberKitLegacyGenerator,
             "DumpRenderTree":   Generators.DumpRenderTreeGenerator,
             "WebKitTestRunner": Generators.WebKitTestRunnerGenerator,
             "TestWebKitAPI":    Generators.TestWebKitAPIGenerator,

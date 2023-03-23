@@ -37,7 +37,7 @@
 #include <wtf/text/WTFString.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ArchiveResource;
 class MHTMLArchive;
@@ -67,6 +67,6 @@ private:
     Vector<RefPtr<MHTMLArchive>> m_frames;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MHTML)

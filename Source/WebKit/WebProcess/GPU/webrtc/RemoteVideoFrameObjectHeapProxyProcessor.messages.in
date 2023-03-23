@@ -24,9 +24,9 @@
 
 messages -> RemoteVideoFrameObjectHeapProxyProcessor {
     SetSharedVideoFrameSemaphore(IPC::Semaphore semaphore)
-    SetSharedVideoFrameMemory(WebKit::SharedMemory::Handle storageHandle)
-    NewVideoFrameBuffer(WebKit::RemoteVideoFrameIdentifier identifier, std::optional<WebKit::SharedVideoFrame::Buffer> frame)
-    NewConvertedVideoFrameBuffer(std::optional<WebKit::SharedVideoFrame::Buffer> frame)
+    SetSharedVideoFrameMemory(CyberKit::SharedMemory::Handle storageHandle)
+    NewVideoFrameBuffer(CyberKit::RemoteVideoFrameIdentifier identifier, std::optional<CyberKit::SharedVideoFrame::Buffer> frame)
+    NewConvertedVideoFrameBuffer(std::optional<CyberKit::SharedVideoFrame::Buffer> frame)
 }
 
 #endif

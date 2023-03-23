@@ -22,7 +22,7 @@
 #include "FloatConversion.h"
 #include "Path.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderSVGResourceMarker;
 
@@ -152,4 +152,4 @@ private:
     bool m_reverseStart;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

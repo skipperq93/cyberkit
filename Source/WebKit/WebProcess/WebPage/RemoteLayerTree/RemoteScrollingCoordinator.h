@@ -38,13 +38,13 @@ class Decoder;
 class Encoder;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPage;
 class RemoteScrollingCoordinatorTransaction;
 class RemoteScrollingUIState;
 
-class RemoteScrollingCoordinator : public WebCore::AsyncScrollingCoordinator, public IPC::MessageReceiver {
+class RemoteScrollingCoordinator : public CyberCore::AsyncScrollingCoordinator, public IPC::MessageReceiver {
 public:
     static Ref<RemoteScrollingCoordinator> create(WebPage* page)
     {
@@ -55,8 +55,8 @@ public:
 
     void scrollingStateInUIProcessChanged(const RemoteScrollingUIState&);
 
-    void addNodeWithActiveRubberBanding(WebCore::ScrollingNodeID);
-    void removeNodeWithActiveRubberBanding(WebCore::ScrollingNodeID);
+    void addNodeWithActiveRubberBanding(CyberCore::ScrollingNodeID);
+    void removeNodeWithActiveRubberBanding(CyberCore::ScrollingNodeID);
 
 private:
     RemoteScrollingCoordinator(WebPage*);
@@ -65,14 +65,14 @@ private:
     bool isRemoteScrollingCoordinator() const override { return true; }
     
     // ScrollingCoordinator
-    bool coordinatesScrollingForFrameView(const WebCore::FrameView&) const override;
+    bool coordinatesScrollingForFrameView(const CyberCore::FrameView&) const override;
     void scheduleTreeStateCommit() override;
 
-    bool isRubberBandInProgress(WebCore::ScrollingNodeID) const final;
-    bool isUserScrollInProgress(WebCore::ScrollingNodeID) const final;
-    bool isScrollSnapInProgress(WebCore::ScrollingNodeID) const final;
+    bool isRubberBandInProgress(CyberCore::ScrollingNodeID) const final;
+    bool isUserScrollInProgress(CyberCore::ScrollingNodeID) const final;
+    bool isScrollSnapInProgress(CyberCore::ScrollingNodeID) const final;
 
-    void setScrollPinningBehavior(WebCore::ScrollPinningBehavior) override;
+    void setScrollPinningBehavior(CyberCore::ScrollPinningBehavior) override;
     
     void startMonitoringWheelEvents(bool clearLatchingState) final;
 
@@ -80,25 +80,25 @@ private:
     void didReceiveMessage(IPC::Connection&, IPC::Decoder&) override;
     
     // Respond to UI process changes.
-    void scrollPositionChangedForNode(WebCore::ScrollingNodeID, const WebCore::FloatPoint& scrollPosition, bool syncLayerPosition, CompletionHandler<void()>&&);
-    void animatedScrollDidEndForNode(WebCore::ScrollingNodeID);
-    void currentSnapPointIndicesChangedForNode(WebCore::ScrollingNodeID, std::optional<unsigned> horizontal, std::optional<unsigned> vertical);
+    void scrollPositionChangedForNode(CyberCore::ScrollingNodeID, const CyberCore::FloatPoint& scrollPosition, bool syncLayerPosition, CompletionHandler<void()>&&);
+    void animatedScrollDidEndForNode(CyberCore::ScrollingNodeID);
+    void currentSnapPointIndicesChangedForNode(CyberCore::ScrollingNodeID, std::optional<unsigned> horizontal, std::optional<unsigned> vertical);
 
-    void receivedWheelEventWithPhases(WebCore::PlatformWheelEventPhase phase, WebCore::PlatformWheelEventPhase momentumPhase);
-    void startDeferringScrollingTestCompletionForNode(WebCore::ScrollingNodeID, WebCore::WheelEventTestMonitor::DeferReason);
-    void stopDeferringScrollingTestCompletionForNode(WebCore::ScrollingNodeID, WebCore::WheelEventTestMonitor::DeferReason);
+    void receivedWheelEventWithPhases(CyberCore::PlatformWheelEventPhase phase, CyberCore::PlatformWheelEventPhase momentumPhase);
+    void startDeferringScrollingTestCompletionForNode(CyberCore::ScrollingNodeID, CyberCore::WheelEventTestMonitor::DeferReason);
+    void stopDeferringScrollingTestCompletionForNode(CyberCore::ScrollingNodeID, CyberCore::WheelEventTestMonitor::DeferReason);
 
     WebPage* m_webPage;
 
-    HashSet<WebCore::ScrollingNodeID> m_nodesWithActiveRubberBanding;
-    HashSet<WebCore::ScrollingNodeID> m_nodesWithActiveScrollSnap;
-    HashSet<WebCore::ScrollingNodeID> m_nodesWithActiveUserScrolls;
+    HashSet<CyberCore::ScrollingNodeID> m_nodesWithActiveRubberBanding;
+    HashSet<CyberCore::ScrollingNodeID> m_nodesWithActiveScrollSnap;
+    HashSet<CyberCore::ScrollingNodeID> m_nodesWithActiveUserScrolls;
     
     bool m_clearScrollLatchingInNextTransaction { false };
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
-SPECIALIZE_TYPE_TRAITS_SCROLLING_COORDINATOR(WebKit::RemoteScrollingCoordinator, isRemoteScrollingCoordinator());
+SPECIALIZE_TYPE_TRAITS_SCROLLING_COORDINATOR(CyberKit::RemoteScrollingCoordinator, isRemoteScrollingCoordinator());
 
 #endif // ENABLE(ASYNC_SCROLLING)

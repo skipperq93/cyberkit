@@ -27,7 +27,7 @@
 #include <windows.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static const int shell32MultipleFileIconIndex = 54;
 

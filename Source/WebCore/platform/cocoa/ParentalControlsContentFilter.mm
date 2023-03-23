@@ -39,7 +39,7 @@
 SOFT_LINK_PRIVATE_FRAMEWORK_OPTIONAL(WebContentAnalysis);
 SOFT_LINK_CLASS_OPTIONAL(WebContentAnalysis, WebFilterEvaluator);
 
-namespace WebCore {
+namespace CyberCore {
 
 #if PLATFORM(IOS)
 ParentalControlsContentFilter::SandboxExtensionState ParentalControlsContentFilter::m_sandboxExtensionState = SandboxExtensionState::NotSet;
@@ -157,6 +157,6 @@ void ParentalControlsContentFilter::setHasConsumedSandboxExtension(bool hasConsu
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // HAVE(PARENTAL_CONTROLS)

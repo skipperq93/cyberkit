@@ -31,7 +31,7 @@
 #include "ScrollingStateNode.h"
 #include <wtf/RefPtr.h>
  
-namespace WebCore {
+namespace CyberCore {
 
 class AsyncScrollingCoordinator;
 class ScrollingStateFrameScrollingNode;
@@ -111,11 +111,11 @@ private:
     bool m_hasNewRootStateNode { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #ifndef NDEBUG
-void showScrollingStateTree(const WebCore::ScrollingStateTree&);
-void showScrollingStateTree(const WebCore::ScrollingStateNode&);
+void showScrollingStateTree(const CyberCore::ScrollingStateTree&);
+void showScrollingStateTree(const CyberCore::ScrollingStateNode&);
 #endif
 
 #endif // ENABLE(ASYNC_SCROLLING)

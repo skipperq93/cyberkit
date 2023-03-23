@@ -30,7 +30,7 @@
 #include <wtf/PointerComparison.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 DECLARE_ALLOCATOR_WITH_HEAP_IDENTIFIER(Region);
 class Region {
@@ -306,6 +306,6 @@ bool Region::decode(Decoder& decoder, Region& region)
     return true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // Region_h

@@ -31,7 +31,7 @@
 #include <wtf/Noncopyable.h>
 #include <wtf/RefPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class MediaDeviceSandboxExtensions {
     WTF_MAKE_NONCOPYABLE(MediaDeviceSandboxExtensions);
@@ -58,6 +58,6 @@ private:
     SandboxExtension::Handle m_machBootstrapHandle;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(MEDIA_STREAM)

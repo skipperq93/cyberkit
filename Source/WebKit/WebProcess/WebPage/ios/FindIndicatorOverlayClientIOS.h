@@ -31,27 +31,27 @@
 #import <CyberCore/PageOverlay.h>
 #import <CyberCore/TextIndicator.h>
 
-namespace WebKit {
+namespace CyberKit {
 
-class FindIndicatorOverlayClientIOS : public WebCore::PageOverlay::Client {
+class FindIndicatorOverlayClientIOS : public CyberCore::PageOverlay::Client {
     WTF_MAKE_FAST_ALLOCATED;
 public:
-    FindIndicatorOverlayClientIOS(WebCore::Frame& frame, WebCore::TextIndicator* textIndicator)
+    FindIndicatorOverlayClientIOS(CyberCore::Frame& frame, CyberCore::TextIndicator* textIndicator)
         : m_frame(frame)
         , m_textIndicator(textIndicator)
     {
     }
 
 private:
-    void willMoveToPage(WebCore::PageOverlay&, WebCore::Page*) override { }
-    void didMoveToPage(WebCore::PageOverlay&, WebCore::Page*) override { }
-    void drawRect(WebCore::PageOverlay&, WebCore::GraphicsContext&, const WebCore::IntRect& dirtyRect) override;
-    bool mouseEvent(WebCore::PageOverlay&, const WebCore::PlatformMouseEvent&) override { return false; }
+    void willMoveToPage(CyberCore::PageOverlay&, CyberCore::Page*) override { }
+    void didMoveToPage(CyberCore::PageOverlay&, CyberCore::Page*) override { }
+    void drawRect(CyberCore::PageOverlay&, CyberCore::GraphicsContext&, const CyberCore::IntRect& dirtyRect) override;
+    bool mouseEvent(CyberCore::PageOverlay&, const CyberCore::PlatformMouseEvent&) override { return false; }
 
-    WebCore::Frame& m_frame;
-    RefPtr<WebCore::TextIndicator> m_textIndicator;
+    CyberCore::Frame& m_frame;
+    RefPtr<CyberCore::TextIndicator> m_textIndicator;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // FindIndicatorOverlayClientIOS_h

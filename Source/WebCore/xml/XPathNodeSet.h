@@ -28,7 +28,7 @@
 
 #include "Node.h"
 
-namespace WebCore {
+namespace CyberCore {
     namespace XPath {
 
         class NodeSet {
@@ -76,4 +76,4 @@ namespace WebCore {
         };
 
     } // namespace XPath
-} // namespace WebCore
+} // namespace CyberCore

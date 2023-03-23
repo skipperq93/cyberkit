@@ -500,7 +500,7 @@ class TestExpectedBuildSteps(unittest.TestCase):
             'validate-change',
             'bindings-tests'
         ],
-        'WebKitPy-Tests-EWS': [
+        'CyberKitPy-Tests-EWS': [
             'configure-build',
             'check-change-relevance',
             'validate-change',
@@ -517,7 +517,7 @@ class TestExpectedBuildSteps(unittest.TestCase):
             'webkitpy-tests-python3',
             'set-build-summary'
         ],
-        'WebKitPerl-Tests-EWS': [
+        'CyberKitPerl-Tests-EWS': [
             'configure-build',
             'validate-change',
             'configuration',

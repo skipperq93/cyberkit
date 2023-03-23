@@ -31,9 +31,9 @@
 #include "GamepadData.h"
 #include "Logging.h"
 
-using WebCore::SharedGamepadValue;
+using CyberCore::SharedGamepadValue;
 
-namespace WebKit {
+namespace CyberKit {
 
 WebGamepad::WebGamepad(const GamepadData& gamepadData)
     : PlatformGamepad(gamepadData.index())

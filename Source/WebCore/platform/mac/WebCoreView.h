@@ -23,6 +23,6 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
  */
 
-@interface NSView (WebCoreView)
+@interface NSView (CyberCoreView)
 - (NSView *)_webcore_effectiveFirstResponder;
 @end

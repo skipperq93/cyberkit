@@ -33,7 +33,7 @@
 #include <wtf/text/StringParsingBuffer.h>
 #include <wtf/text/StringView.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 SVGFitToViewBox::SVGFitToViewBox(SVGElement* contextElement, SVGPropertyAccess access)
     : m_viewBox(SVGAnimatedRect::create(contextElement, access))

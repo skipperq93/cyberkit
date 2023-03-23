@@ -28,7 +28,7 @@
 
 #include "DataReference.h"
 #include "ShareableBitmap.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include <CyberCore/GraphicsContext.h>
 #include <CyberCore/Image.h>
 #include <CyberCore/SelectionData.h>
@@ -36,7 +36,7 @@
 #include <wtf/glib/GUniquePtr.h>
 
 namespace IPC {
-using namespace WebCore;
+using namespace CyberCore;
 using namespace WebKit;
 
 static void encodeImage(Encoder& encoder, Image& image)

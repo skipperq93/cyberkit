@@ -33,7 +33,7 @@
 #include <wtf/CompletionHandler.h>
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static SWServerToContextConnectionIdentifier generateServerToContextConnectionIdentifier()
 {
@@ -102,7 +102,7 @@ void SWServerToContextConnection::matchAll(uint64_t requestIdentifier, ServiceWo
     }
 }
 
-void SWServerToContextConnection::findClientByVisibleIdentifier(ServiceWorkerIdentifier serviceWorkerIdentifier, const String& clientIdentifier, CompletionHandler<void(std::optional<WebCore::ServiceWorkerClientData>&&)>&& callback)
+void SWServerToContextConnection::findClientByVisibleIdentifier(ServiceWorkerIdentifier serviceWorkerIdentifier, const String& clientIdentifier, CompletionHandler<void(std::optional<CyberCore::ServiceWorkerClientData>&&)>&& callback)
 {
     if (auto* worker = SWServerWorker::existingWorkerForIdentifier(serviceWorkerIdentifier))
         worker->findClientByVisibleIdentifier(clientIdentifier, WTFMove(callback));
@@ -154,6 +154,6 @@ void SWServerToContextConnection::terminateWhenPossible()
         close();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

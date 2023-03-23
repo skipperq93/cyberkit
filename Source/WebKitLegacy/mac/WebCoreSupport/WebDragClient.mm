@@ -34,9 +34,9 @@
 #import "WebFrameInternal.h"
 #import "WebFrameView.h"
 #import "WebHTMLViewInternal.h"
-#import "WebKitLogInitialization.h"
-#import "WebKitLogging.h"
-#import "WebKitNSStringExtras.h"
+#import "CyberKitLogInitialization.h"
+#import "CyberKitLogging.h"
+#import "CyberKitNSStringExtras.h"
 #import "WebNSURLExtras.h"
 #import "WebUIDelegate.h"
 #import "WebUIDelegatePrivate.h"
@@ -61,7 +61,7 @@
 #import <CyberCore/PasteboardWriter.h>
 #import <wtf/cocoa/TypeCastsCocoa.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 WebDragClient::WebDragClient(WebView* webView)
     : m_webView(webView) 
@@ -71,30 +71,30 @@ WebDragClient::WebDragClient(WebView* webView)
 
 #if PLATFORM(MAC)
 
-static OptionSet<WebCore::DragSourceAction> coreDragSourceActionMask(WebDragSourceAction action)
+static OptionSet<CyberCore::DragSourceAction> coreDragSourceActionMask(WebDragSourceAction action)
 {
-    OptionSet<WebCore::DragSourceAction> result;
+    OptionSet<CyberCore::DragSourceAction> result;
 
     if (action & WebDragSourceActionDHTML)
-        result.add(WebCore::DragSourceAction::DHTML);
+        result.add(CyberCore::DragSourceAction::DHTML);
     if (action & WebDragSourceActionImage)
-        result.add(WebCore::DragSourceAction::Image);
+        result.add(CyberCore::DragSourceAction::Image);
     if (action & WebDragSourceActionLink)
-        result.add(WebCore::DragSourceAction::Link);
+        result.add(CyberCore::DragSourceAction::Link);
     if (action & WebDragSourceActionSelection)
-        result.add(WebCore::DragSourceAction::Selection);
+        result.add(CyberCore::DragSourceAction::Selection);
 
     return result;
 }
 
-static WebDragDestinationAction kit(WebCore::DragDestinationAction action)
+static WebDragDestinationAction kit(CyberCore::DragDestinationAction action)
 {
     switch (action) {
-    case WebCore::DragDestinationAction::DHTML:
+    case CyberCore::DragDestinationAction::DHTML:
         return WebDragDestinationActionDHTML;
-    case WebCore::DragDestinationAction::Edit:
+    case CyberCore::DragDestinationAction::Edit:
         return WebDragDestinationActionEdit;
-    case WebCore::DragDestinationAction::Load:
+    case CyberCore::DragDestinationAction::Load:
         return WebDragDestinationActionLoad;
     }
     ASSERT_NOT_REACHED();
@@ -114,22 +114,22 @@ static WebHTMLView *getTopHTMLView(Frame* frame)
 {
     ASSERT(frame);
     ASSERT(frame->page());
-    return (WebHTMLView*)[[kit(dynamicDowncast<WebCore::LocalFrame>(frame->page()->mainFrame())) frameView] documentView];
+    return (WebHTMLView*)[[kit(dynamicDowncast<CyberCore::LocalFrame>(frame->page()->mainFrame())) frameView] documentView];
 }
 
-void WebDragClient::willPerformDragDestinationAction(WebCore::DragDestinationAction action, const WebCore::DragData& dragData)
+void WebDragClient::willPerformDragDestinationAction(CyberCore::DragDestinationAction action, const CyberCore::DragData& dragData)
 {
     [[m_webView _UIDelegateForwarder] webView:m_webView willPerformDragDestinationAction:kit(action) forDraggingInfo:dragData.platformData()];
 }
 
 
-OptionSet<WebCore::DragSourceAction> WebDragClient::dragSourceActionMaskForPoint(const IntPoint& rootViewPoint)
+OptionSet<CyberCore::DragSourceAction> WebDragClient::dragSourceActionMaskForPoint(const IntPoint& rootViewPoint)
 {
     NSPoint viewPoint = [m_webView _convertPointFromRootView:rootViewPoint];
     return coreDragSourceActionMask([[m_webView _UIDelegateForwarder] webView:m_webView dragSourceActionMaskForPoint:viewPoint]);
 }
 
-void WebDragClient::willPerformDragSourceAction(WebCore::DragSourceAction action, const WebCore::IntPoint& mouseDownPoint, WebCore::DataTransfer& dataTransfer)
+void WebDragClient::willPerformDragSourceAction(CyberCore::DragSourceAction action, const CyberCore::IntPoint& mouseDownPoint, CyberCore::DataTransfer& dataTransfer)
 {
     [[m_webView _UIDelegateForwarder] webView:m_webView willPerformDragSourceAction:kit(action) fromPoint:mouseDownPoint withPasteboard:[NSPasteboard pasteboardWithName:dataTransfer.pasteboard().name()]];
 }
@@ -195,7 +195,7 @@ void WebDragClient::beginDrag(DragItem dragItem, Frame& frame, const IntPoint& m
     [topWebHTMLView.get() beginDraggingSessionWithItems:@[ draggingItem.get() ] event:event source:topWebHTMLView.get()];
 }
 
-void WebDragClient::declareAndWriteDragImage(const String& pasteboardName, Element& element, const URL& url, const String& title, WebCore::Frame* frame)
+void WebDragClient::declareAndWriteDragImage(const String& pasteboardName, Element& element, const URL& url, const String& title, CyberCore::Frame* frame)
 {
     ASSERT(pasteboardName);
     [[NSPasteboard pasteboardWithName:pasteboardName] _web_declareAndWriteDragImageForElement:kit(&element) URL:url title:title archive:[kit(&element) webArchive] source:getTopHTMLView(frame)];
@@ -212,20 +212,20 @@ void WebDragClient::didConcludeEditDrag()
 {
 }
 
-void WebDragClient::willPerformDragDestinationAction(WebCore::DragDestinationAction, const WebCore::DragData&)
+void WebDragClient::willPerformDragDestinationAction(CyberCore::DragDestinationAction, const CyberCore::DragData&)
 {
 }
 
-OptionSet<WebCore::DragSourceAction> WebDragClient::dragSourceActionMaskForPoint(const IntPoint&)
+OptionSet<CyberCore::DragSourceAction> WebDragClient::dragSourceActionMaskForPoint(const IntPoint&)
 {
     return { };
 }
 
-void WebDragClient::willPerformDragSourceAction(WebCore::DragSourceAction, const WebCore::IntPoint&, WebCore::DataTransfer&)
+void WebDragClient::willPerformDragSourceAction(CyberCore::DragSourceAction, const CyberCore::IntPoint&, CyberCore::DataTransfer&)
 {
 }
 
-void WebDragClient::startDrag(WebCore::DragItem, DataTransfer&, Frame&)
+void WebDragClient::startDrag(CyberCore::DragItem, DataTransfer&, Frame&)
 {
 }
 
@@ -233,7 +233,7 @@ void WebDragClient::beginDrag(DragItem, Frame&, const IntPoint&, const IntPoint&
 {
 }
 
-void WebDragClient::declareAndWriteDragImage(const String&, Element&, const URL&, const String&, WebCore::Frame*)
+void WebDragClient::declareAndWriteDragImage(const String&, Element&, const URL&, const String&, CyberCore::Frame*)
 {
 }
 
@@ -243,20 +243,20 @@ void WebDragClient::declareAndWriteDragImage(const String&, Element&, const URL&
 
 bool WebDragClient::useLegacyDragClient()
 {
-    // FIXME: Move the iOS drag and drop implementation for WebKit1 off of the legacy drag client.
+    // FIXME: Move the iOS drag and drop implementation for CyberKit1 off of the legacy drag client.
     return true;
 }
 
-void WebDragClient::willPerformDragDestinationAction(WebCore::DragDestinationAction, const DragData&)
+void WebDragClient::willPerformDragDestinationAction(CyberCore::DragDestinationAction, const DragData&)
 {
 }
 
-OptionSet<WebCore::DragSourceAction> WebDragClient::dragSourceActionMaskForPoint(const IntPoint&)
+OptionSet<CyberCore::DragSourceAction> WebDragClient::dragSourceActionMaskForPoint(const IntPoint&)
 {
-    return WebCore::anyDragSourceAction();
+    return CyberCore::anyDragSourceAction();
 }
 
-void WebDragClient::willPerformDragSourceAction(WebCore::DragSourceAction, const IntPoint&, DataTransfer&)
+void WebDragClient::willPerformDragSourceAction(CyberCore::DragSourceAction, const IntPoint&, DataTransfer&)
 {
 }
 

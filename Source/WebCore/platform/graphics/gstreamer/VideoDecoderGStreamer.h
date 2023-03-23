@@ -27,7 +27,7 @@
 #include <wtf/FastMalloc.h>
 #include <wtf/ThreadSafeRefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class GStreamerInternalVideoDecoder;
 

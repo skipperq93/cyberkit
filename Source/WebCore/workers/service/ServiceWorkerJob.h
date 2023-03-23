@@ -40,7 +40,7 @@
 #include <wtf/ThreadSafeRefCounted.h>
 #include <wtf/Threading.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DeferredPromise;
 class Exception;
@@ -93,7 +93,7 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)
 

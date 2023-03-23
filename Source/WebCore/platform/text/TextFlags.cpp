@@ -33,7 +33,7 @@
 #include <numeric>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF::TextStream& operator<<(TextStream& ts, FontSmoothingMode mode)
 {
@@ -378,4 +378,4 @@ FeaturesMap computeFeatureSettingsFromVariants(const FontVariantSettings& varian
     return features;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

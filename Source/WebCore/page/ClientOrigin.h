@@ -31,7 +31,7 @@
 #include <wtf/Hasher.h>
 #include <wtf/URL.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ClientOrigin {
     static ClientOrigin emptyKey() { return { }; }
@@ -61,23 +61,23 @@ inline bool ClientOrigin::operator==(const ClientOrigin& other) const
     return topOrigin == other.topOrigin && clientOrigin == other.clientOrigin;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
 struct ClientOriginKeyHash {
-    static unsigned hash(const WebCore::ClientOrigin& key) { return computeHash(key); }
-    static bool equal(const WebCore::ClientOrigin& a, const WebCore::ClientOrigin& b) { return a == b; }
+    static unsigned hash(const CyberCore::ClientOrigin& key) { return computeHash(key); }
+    static bool equal(const CyberCore::ClientOrigin& a, const CyberCore::ClientOrigin& b) { return a == b; }
     static const bool safeToCompareToEmptyOrDeleted = false;
 };
 
-template<> struct HashTraits<WebCore::ClientOrigin> : GenericHashTraits<WebCore::ClientOrigin> {
-    static WebCore::ClientOrigin emptyValue() { return WebCore::ClientOrigin::emptyKey(); }
+template<> struct HashTraits<CyberCore::ClientOrigin> : GenericHashTraits<CyberCore::ClientOrigin> {
+    static CyberCore::ClientOrigin emptyValue() { return CyberCore::ClientOrigin::emptyKey(); }
 
-    static void constructDeletedValue(WebCore::ClientOrigin& slot) { new (NotNull, &slot.topOrigin) WebCore::SecurityOriginData(WTF::HashTableDeletedValue); }
-    static bool isDeletedValue(const WebCore::ClientOrigin& slot) { return slot.topOrigin.isHashTableDeletedValue(); }
+    static void constructDeletedValue(CyberCore::ClientOrigin& slot) { new (NotNull, &slot.topOrigin) CyberCore::SecurityOriginData(WTF::HashTableDeletedValue); }
+    static bool isDeletedValue(const CyberCore::ClientOrigin& slot) { return slot.topOrigin.isHashTableDeletedValue(); }
 };
 
-template<> struct DefaultHash<WebCore::ClientOrigin> : ClientOriginKeyHash { };
+template<> struct DefaultHash<CyberCore::ClientOrigin> : ClientOriginKeyHash { };
 
 } // namespace WTF

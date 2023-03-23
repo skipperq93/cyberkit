@@ -34,7 +34,7 @@
 #include "MediaDecodingConfiguration.h"
 #include "MediaEncodingConfiguration.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static bool canDecodeMedia(const MediaDecodingConfiguration& configuration)
 {
@@ -169,4 +169,4 @@ void MediaEngineConfigurationFactoryMock::createEncodingConfiguration(MediaEncod
     callback({{ true, canSmoothlyEncodeMedia(configuration), canPowerEfficientlyEncodeMedia(configuration) }, WTFMove(configuration)});
 }
 
-} // namespace WebCore
+} // namespace CyberCore

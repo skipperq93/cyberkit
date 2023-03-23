@@ -32,13 +32,13 @@
 #include "RemoteVideoFrameObjectHeapMessages.h"
 #include "RemoteVideoFrameObjectHeapProxyProcessorMessages.h"
 #include "RemoteVideoFrameProxy.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebProcess.h"
 #include <CyberCore/PixelBufferConformerCV.h>
 
-namespace WebKit {
+namespace CyberKit {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 Ref<RemoteVideoFrameObjectHeapProxyProcessor> RemoteVideoFrameObjectHeapProxyProcessor::create(GPUProcessConnection& connection)
 {
@@ -147,7 +147,7 @@ void RemoteVideoFrameObjectHeapProxyProcessor::newConvertedVideoFrameBuffer(std:
     m_conversionSemaphore.signal();
 }
 
-RefPtr<NativeImage> RemoteVideoFrameObjectHeapProxyProcessor::getNativeImage(const WebCore::VideoFrame& videoFrame)
+RefPtr<NativeImage> RemoteVideoFrameObjectHeapProxyProcessor::getNativeImage(const CyberCore::VideoFrame& videoFrame)
 {
     auto& connection = WebProcess::singleton().ensureGPUProcessConnection().connection();
 

@@ -1,4 +1,4 @@
-Selectors' sibling combinators ("+" or "~") create style update relation between elements. This test the case were such relation exists and is removed. This test relies on WebCore's internals.
+Selectors' sibling combinators ("+" or "~") create style update relation between elements. This test the case were such relation exists and is removed. This test relies on CyberCore's internals.
 
 On success, you will see a series of "PASS" messages, followed by "TEST COMPLETE".
 

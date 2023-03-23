@@ -28,7 +28,7 @@
 #include <wtf/Forward.h>
 #include <wtf/win/GDIObject.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Frame;
 class IntRect;
@@ -37,4 +37,4 @@ GDIObject<HBITMAP> imageFromRect(const Frame*, IntRect&);
 WEBCORE_EXPORT GDIObject<HBITMAP> imageFromSelection(Frame*, bool forceBlackText);
 WEBCORE_EXPORT void computePageRectsForFrame(Frame*, const IntRect& printRect, float headerHeight, float footerHeight, float userScaleFactor, Vector<IntRect>& outPages, int& outPageHeight);
 
-} // namespace WebCore
+} // namespace CyberCore

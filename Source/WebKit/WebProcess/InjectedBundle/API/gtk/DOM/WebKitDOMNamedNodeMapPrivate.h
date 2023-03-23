@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -17,16 +17,16 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitDOMNamedNodeMapPrivate_h
-#define WebKitDOMNamedNodeMapPrivate_h
+#ifndef CyberKitDOMNamedNodeMapPrivate_h
+#define CyberKitDOMNamedNodeMapPrivate_h
 
 #include <CyberCore/NamedNodeMap.h>
-#include <webkitdom/WebKitDOMNamedNodeMap.h>
+#include <webkitdom/CyberKitDOMNamedNodeMap.h>
 
-namespace WebKit {
-WebKitDOMNamedNodeMap* wrapNamedNodeMap(WebCore::NamedNodeMap*);
-WebKitDOMNamedNodeMap* kit(WebCore::NamedNodeMap*);
-WebCore::NamedNodeMap* core(WebKitDOMNamedNodeMap*);
-} // namespace WebKit
+namespace CyberKit {
+CyberKitDOMNamedNodeMap* wrapNamedNodeMap(CyberCore::NamedNodeMap*);
+CyberKitDOMNamedNodeMap* kit(CyberCore::NamedNodeMap*);
+CyberCore::NamedNodeMap* core(CyberKitDOMNamedNodeMap*);
+} // namespace CyberKit
 
-#endif /* WebKitDOMNamedNodeMapPrivate_h */
+#endif /* CyberKitDOMNamedNodeMapPrivate_h */

@@ -51,7 +51,7 @@
 #include <wtf/RunLoop.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 static const unsigned bufferSize = 512 * 1024;
 
@@ -68,7 +68,7 @@ static constexpr auto httpInternalErrorText = "Internal Server Error"_s;
 
 static constexpr auto webKitBlobResourceDomain = "WebKitBlobResource"_s;
 
-NetworkDataTaskBlob::NetworkDataTaskBlob(NetworkSession& session, BlobRegistryImpl& blobRegistry, NetworkDataTaskClient& client, const ResourceRequest& request, ContentSniffingPolicy shouldContentSniff, const Vector<RefPtr<WebCore::BlobDataFileReference>>& fileReferences)
+NetworkDataTaskBlob::NetworkDataTaskBlob(NetworkSession& session, BlobRegistryImpl& blobRegistry, NetworkDataTaskClient& client, const ResourceRequest& request, ContentSniffingPolicy shouldContentSniff, const Vector<RefPtr<CyberCore::BlobDataFileReference>>& fileReferences)
     : NetworkDataTask(session, client, request, StoredCredentialsPolicy::DoNotUse, false, false)
     , m_stream(makeUnique<AsyncFileStream>(*this))
     , m_fileReferences(fileReferences)

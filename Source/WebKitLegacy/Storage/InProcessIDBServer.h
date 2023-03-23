@@ -36,7 +36,7 @@ namespace PAL {
 class SessionID;
 }
 
-namespace WebCore {
+namespace CyberCore {
 struct ClientOrigin;
 class StorageQuotaManager;
 
@@ -47,9 +47,9 @@ class IDBConnectionToServer;
 namespace IDBServer {
 class IDBServer;
 }
-} // namespace WebCore
+} // namespace CyberCore
 
-class InProcessIDBServer final : public WebCore::IDBClient::IDBConnectionToServerDelegate, public WebCore::IDBServer::IDBConnectionToClientDelegate, public ThreadSafeRefCounted<InProcessIDBServer> {
+class InProcessIDBServer final : public CyberCore::IDBClient::IDBConnectionToServerDelegate, public CyberCore::IDBServer::IDBConnectionToClientDelegate, public ThreadSafeRefCounted<InProcessIDBServer> {
 public:
 
     static Ref<InProcessIDBServer> create(PAL::SessionID);
@@ -57,79 +57,79 @@ public:
 
     virtual ~InProcessIDBServer();
 
-    WebCore::IDBClient::IDBConnectionToServer& connectionToServer() const;
-    WebCore::IDBServer::IDBConnectionToClient& connectionToClient() const;
-    WebCore::IDBServer::IDBServer& server() { return *m_server; }
+    CyberCore::IDBClient::IDBConnectionToServer& connectionToServer() const;
+    CyberCore::IDBServer::IDBConnectionToClient& connectionToClient() const;
+    CyberCore::IDBServer::IDBServer& server() { return *m_server; }
 
     // IDBConnectionToServer
-    void deleteDatabase(const WebCore::IDBRequestData&) final;
-    void openDatabase(const WebCore::IDBRequestData&) final;
-    void abortTransaction(const WebCore::IDBResourceIdentifier&) final;
-    void commitTransaction(const WebCore::IDBResourceIdentifier&, uint64_t pendingCountRequest) final;
-    void didFinishHandlingVersionChangeTransaction(uint64_t databaseConnectionIdentifier, const WebCore::IDBResourceIdentifier&) final;
-    void createObjectStore(const WebCore::IDBRequestData&, const WebCore::IDBObjectStoreInfo&) final;
-    void deleteObjectStore(const WebCore::IDBRequestData&, const String& objectStoreName) final;
-    void renameObjectStore(const WebCore::IDBRequestData&, uint64_t objectStoreIdentifier, const String& newName) final;
-    void clearObjectStore(const WebCore::IDBRequestData&, uint64_t objectStoreIdentifier) final;
-    void createIndex(const WebCore::IDBRequestData&, const WebCore::IDBIndexInfo&) final;
-    void deleteIndex(const WebCore::IDBRequestData&, uint64_t objectStoreIdentifier, const String& indexName) final;
-    void renameIndex(const WebCore::IDBRequestData&, uint64_t objectStoreIdentifier, uint64_t indexIdentifier, const String& newName) final;
-    void putOrAdd(const WebCore::IDBRequestData&, const WebCore::IDBKeyData&, const WebCore::IDBValue&, const WebCore::IndexedDB::ObjectStoreOverwriteMode) final;
-    void getRecord(const WebCore::IDBRequestData&, const WebCore::IDBGetRecordData&) final;
-    void getAllRecords(const WebCore::IDBRequestData&, const WebCore::IDBGetAllRecordsData&) final;
-    void getCount(const WebCore::IDBRequestData&, const WebCore::IDBKeyRangeData&) final;
-    void deleteRecord(const WebCore::IDBRequestData&, const WebCore::IDBKeyRangeData&) final;
-    void openCursor(const WebCore::IDBRequestData&, const WebCore::IDBCursorInfo&) final;
-    void iterateCursor(const WebCore::IDBRequestData&, const WebCore::IDBIterateCursorData&) final;
-    void establishTransaction(uint64_t databaseConnectionIdentifier, const WebCore::IDBTransactionInfo&) final;
+    void deleteDatabase(const CyberCore::IDBRequestData&) final;
+    void openDatabase(const CyberCore::IDBRequestData&) final;
+    void abortTransaction(const CyberCore::IDBResourceIdentifier&) final;
+    void commitTransaction(const CyberCore::IDBResourceIdentifier&, uint64_t pendingCountRequest) final;
+    void didFinishHandlingVersionChangeTransaction(uint64_t databaseConnectionIdentifier, const CyberCore::IDBResourceIdentifier&) final;
+    void createObjectStore(const CyberCore::IDBRequestData&, const CyberCore::IDBObjectStoreInfo&) final;
+    void deleteObjectStore(const CyberCore::IDBRequestData&, const String& objectStoreName) final;
+    void renameObjectStore(const CyberCore::IDBRequestData&, uint64_t objectStoreIdentifier, const String& newName) final;
+    void clearObjectStore(const CyberCore::IDBRequestData&, uint64_t objectStoreIdentifier) final;
+    void createIndex(const CyberCore::IDBRequestData&, const CyberCore::IDBIndexInfo&) final;
+    void deleteIndex(const CyberCore::IDBRequestData&, uint64_t objectStoreIdentifier, const String& indexName) final;
+    void renameIndex(const CyberCore::IDBRequestData&, uint64_t objectStoreIdentifier, uint64_t indexIdentifier, const String& newName) final;
+    void putOrAdd(const CyberCore::IDBRequestData&, const CyberCore::IDBKeyData&, const CyberCore::IDBValue&, const CyberCore::IndexedDB::ObjectStoreOverwriteMode) final;
+    void getRecord(const CyberCore::IDBRequestData&, const CyberCore::IDBGetRecordData&) final;
+    void getAllRecords(const CyberCore::IDBRequestData&, const CyberCore::IDBGetAllRecordsData&) final;
+    void getCount(const CyberCore::IDBRequestData&, const CyberCore::IDBKeyRangeData&) final;
+    void deleteRecord(const CyberCore::IDBRequestData&, const CyberCore::IDBKeyRangeData&) final;
+    void openCursor(const CyberCore::IDBRequestData&, const CyberCore::IDBCursorInfo&) final;
+    void iterateCursor(const CyberCore::IDBRequestData&, const CyberCore::IDBIterateCursorData&) final;
+    void establishTransaction(uint64_t databaseConnectionIdentifier, const CyberCore::IDBTransactionInfo&) final;
     void databaseConnectionPendingClose(uint64_t databaseConnectionIdentifier) final;
     void databaseConnectionClosed(uint64_t databaseConnectionIdentifier) final;
-    void abortOpenAndUpgradeNeeded(uint64_t databaseConnectionIdentifier, const std::optional<WebCore::IDBResourceIdentifier>& transactionIdentifier) final;
-    void didFireVersionChangeEvent(uint64_t databaseConnectionIdentifier, const WebCore::IDBResourceIdentifier& requestIdentifier, const WebCore::IndexedDB::ConnectionClosedOnBehalfOfServer) final;
-    void openDBRequestCancelled(const WebCore::IDBRequestData&) final;
-    void getAllDatabaseNamesAndVersions(const WebCore::IDBResourceIdentifier&, const WebCore::ClientOrigin&) final;
+    void abortOpenAndUpgradeNeeded(uint64_t databaseConnectionIdentifier, const std::optional<CyberCore::IDBResourceIdentifier>& transactionIdentifier) final;
+    void didFireVersionChangeEvent(uint64_t databaseConnectionIdentifier, const CyberCore::IDBResourceIdentifier& requestIdentifier, const CyberCore::IndexedDB::ConnectionClosedOnBehalfOfServer) final;
+    void openDBRequestCancelled(const CyberCore::IDBRequestData&) final;
+    void getAllDatabaseNamesAndVersions(const CyberCore::IDBResourceIdentifier&, const CyberCore::ClientOrigin&) final;
 
     // IDBConnectionToClient
-    WebCore::IDBConnectionIdentifier identifier() const final;
-    void didDeleteDatabase(const WebCore::IDBResultData&) final;
-    void didOpenDatabase(const WebCore::IDBResultData&) final;
-    void didAbortTransaction(const WebCore::IDBResourceIdentifier& transactionIdentifier, const WebCore::IDBError&) final;
-    void didCommitTransaction(const WebCore::IDBResourceIdentifier& transactionIdentifier, const WebCore::IDBError&) final;
-    void didCreateObjectStore(const WebCore::IDBResultData&) final;
-    void didDeleteObjectStore(const WebCore::IDBResultData&) final;
-    void didRenameObjectStore(const WebCore::IDBResultData&) final;
-    void didClearObjectStore(const WebCore::IDBResultData&) final;
-    void didCreateIndex(const WebCore::IDBResultData&) final;
-    void didDeleteIndex(const WebCore::IDBResultData&) final;
-    void didRenameIndex(const WebCore::IDBResultData&) final;
-    void didPutOrAdd(const WebCore::IDBResultData&) final;
-    void didGetRecord(const WebCore::IDBResultData&) final;
-    void didGetAllRecords(const WebCore::IDBResultData&) final;
-    void didGetCount(const WebCore::IDBResultData&) final;
-    void didDeleteRecord(const WebCore::IDBResultData&) final;
-    void didOpenCursor(const WebCore::IDBResultData&) final;
-    void didIterateCursor(const WebCore::IDBResultData&) final;
-    void fireVersionChangeEvent(WebCore::IDBServer::UniqueIDBDatabaseConnection&, const WebCore::IDBResourceIdentifier& requestIdentifier, uint64_t requestedVersion) final;
-    void didStartTransaction(const WebCore::IDBResourceIdentifier& transactionIdentifier, const WebCore::IDBError&) final;
-    void didCloseFromServer(WebCore::IDBServer::UniqueIDBDatabaseConnection&, const WebCore::IDBError&) final;
-    void notifyOpenDBRequestBlocked(const WebCore::IDBResourceIdentifier& requestIdentifier, uint64_t oldVersion, uint64_t newVersion) final;
-    void didGetAllDatabaseNamesAndVersions(const WebCore::IDBResourceIdentifier&, Vector<WebCore::IDBDatabaseNameAndVersion>&&) final;
+    CyberCore::IDBConnectionIdentifier identifier() const final;
+    void didDeleteDatabase(const CyberCore::IDBResultData&) final;
+    void didOpenDatabase(const CyberCore::IDBResultData&) final;
+    void didAbortTransaction(const CyberCore::IDBResourceIdentifier& transactionIdentifier, const CyberCore::IDBError&) final;
+    void didCommitTransaction(const CyberCore::IDBResourceIdentifier& transactionIdentifier, const CyberCore::IDBError&) final;
+    void didCreateObjectStore(const CyberCore::IDBResultData&) final;
+    void didDeleteObjectStore(const CyberCore::IDBResultData&) final;
+    void didRenameObjectStore(const CyberCore::IDBResultData&) final;
+    void didClearObjectStore(const CyberCore::IDBResultData&) final;
+    void didCreateIndex(const CyberCore::IDBResultData&) final;
+    void didDeleteIndex(const CyberCore::IDBResultData&) final;
+    void didRenameIndex(const CyberCore::IDBResultData&) final;
+    void didPutOrAdd(const CyberCore::IDBResultData&) final;
+    void didGetRecord(const CyberCore::IDBResultData&) final;
+    void didGetAllRecords(const CyberCore::IDBResultData&) final;
+    void didGetCount(const CyberCore::IDBResultData&) final;
+    void didDeleteRecord(const CyberCore::IDBResultData&) final;
+    void didOpenCursor(const CyberCore::IDBResultData&) final;
+    void didIterateCursor(const CyberCore::IDBResultData&) final;
+    void fireVersionChangeEvent(CyberCore::IDBServer::UniqueIDBDatabaseConnection&, const CyberCore::IDBResourceIdentifier& requestIdentifier, uint64_t requestedVersion) final;
+    void didStartTransaction(const CyberCore::IDBResourceIdentifier& transactionIdentifier, const CyberCore::IDBError&) final;
+    void didCloseFromServer(CyberCore::IDBServer::UniqueIDBDatabaseConnection&, const CyberCore::IDBError&) final;
+    void notifyOpenDBRequestBlocked(const CyberCore::IDBResourceIdentifier& requestIdentifier, uint64_t oldVersion, uint64_t newVersion) final;
+    void didGetAllDatabaseNamesAndVersions(const CyberCore::IDBResourceIdentifier&, Vector<CyberCore::IDBDatabaseNameAndVersion>&&) final;
 
     void closeAndDeleteDatabasesModifiedSince(WallTime);
 
     void dispatchTask(Function<void()>&&);
     void dispatchTaskReply(Function<void()>&&);
 
-    WebCore::StorageQuotaManager* quotaManager(const WebCore::ClientOrigin&);
+    CyberCore::StorageQuotaManager* quotaManager(const CyberCore::ClientOrigin&);
 
 private:
     InProcessIDBServer(PAL::SessionID, const String& databaseDirectoryPath = nullString());
 
     Lock m_serverLock;
-    std::unique_ptr<WebCore::IDBServer::IDBServer> m_server;
-    RefPtr<WebCore::IDBClient::IDBConnectionToServer> m_connectionToServer;
-    RefPtr<WebCore::IDBServer::IDBConnectionToClient> m_connectionToClient;
+    std::unique_ptr<CyberCore::IDBServer::IDBServer> m_server;
+    RefPtr<CyberCore::IDBClient::IDBConnectionToServer> m_connectionToServer;
+    RefPtr<CyberCore::IDBServer::IDBConnectionToClient> m_connectionToClient;
     Ref<WorkQueue> m_queue;
 
-    HashMap<WebCore::ClientOrigin, RefPtr<WebCore::StorageQuotaManager>> m_quotaManagers;
+    HashMap<CyberCore::ClientOrigin, RefPtr<CyberCore::StorageQuotaManager>> m_quotaManagers;
 };

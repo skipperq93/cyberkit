@@ -49,7 +49,7 @@
 #include "WCSharedSceneContextHolder.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 class CaptureDevice;
 class NowPlayingManager;
 struct MockMediaDevice;
@@ -70,7 +70,7 @@ class GPUProcess : public AuxiliaryProcess, public ThreadSafeRefCounted<GPUProce
 public:
     explicit GPUProcess(AuxiliaryProcessInitializationParameters&&);
     ~GPUProcess();
-    static constexpr WebCore::AuxiliaryProcessType processType = WebCore::AuxiliaryProcessType::GPU;
+    static constexpr CyberCore::AuxiliaryProcessType processType = CyberCore::AuxiliaryProcessType::GPU;
 
     void removeGPUConnectionToWebProcess(GPUConnectionToWebProcess&);
 
@@ -80,7 +80,7 @@ public:
 
     void connectionToWebProcessClosed(IPC::Connection&);
 
-    GPUConnectionToWebProcess* webProcessConnection(WebCore::ProcessIdentifier) const;
+    GPUConnectionToWebProcess* webProcessConnection(CyberCore::ProcessIdentifier) const;
 
     const String& mediaCacheDirectory(PAL::SessionID) const;
 #if ENABLE(LEGACY_ENCRYPTED_MEDIA)
@@ -91,7 +91,7 @@ public:
     RemoteAudioSessionProxyManager& audioSessionManager() const;
 #endif
 
-    WebCore::NowPlayingManager& nowPlayingManager();
+    CyberCore::NowPlayingManager& nowPlayingManager();
 
 #if ENABLE(MEDIA_STREAM) && PLATFORM(COCOA)
     WorkQueue& videoMediaStreamTrackRendererQueue();
@@ -121,7 +121,7 @@ public:
 #endif
 
 #if ENABLE(VIDEO)
-    void requestBitmapImageForCurrentTime(WebCore::ProcessIdentifier, WebCore::MediaPlayerIdentifier, CompletionHandler<void(const ShareableBitmapHandle&)>&&);
+    void requestBitmapImageForCurrentTime(CyberCore::ProcessIdentifier, CyberCore::MediaPlayerIdentifier, CompletionHandler<void(const ShareableBitmapHandle&)>&&);
 #endif
 
 private:
@@ -143,7 +143,7 @@ private:
     // Message Handlers
     void initializeGPUProcess(GPUProcessCreationParameters&&);
     void updateGPUProcessPreferences(GPUProcessPreferences&&);
-    void createGPUConnectionToWebProcess(WebCore::ProcessIdentifier, PAL::SessionID, IPC::Connection::Handle&&, GPUProcessConnectionParameters&&, CompletionHandler<void()>&&);
+    void createGPUConnectionToWebProcess(CyberCore::ProcessIdentifier, PAL::SessionID, IPC::Connection::Handle&&, GPUProcessConnectionParameters&&, CompletionHandler<void()>&&);
     void addSession(PAL::SessionID, GPUProcessSessionParameters&&);
     void removeSession(PAL::SessionID);
     
@@ -152,10 +152,10 @@ private:
 #if ENABLE(MEDIA_STREAM)
     void setMockCaptureDevicesEnabled(bool);
     void setOrientationForMediaCapture(uint64_t orientation);
-    void updateCaptureAccess(bool allowAudioCapture, bool allowVideoCapture, bool allowDisplayCapture, WebCore::ProcessIdentifier, CompletionHandler<void()>&&);
-    void updateCaptureOrigin(const WebCore::SecurityOriginData&, WebCore::ProcessIdentifier);
+    void updateCaptureAccess(bool allowAudioCapture, bool allowVideoCapture, bool allowDisplayCapture, CyberCore::ProcessIdentifier, CompletionHandler<void()>&&);
+    void updateCaptureOrigin(const CyberCore::SecurityOriginData&, CyberCore::ProcessIdentifier);
     void updateSandboxAccess(const Vector<SandboxExtension::Handle>&);
-    void addMockMediaDevice(const WebCore::MockMediaDevice&);
+    void addMockMediaDevice(const CyberCore::MockMediaDevice&);
     void clearMockMediaDevices();
     void removeMockMediaDevice(const String&);
     void setMockMediaDeviceIsEphemeral(const String&, bool);
@@ -164,12 +164,12 @@ private:
     void triggerMockMicrophoneConfigurationChange();
 #endif
 #if HAVE(SC_CONTENT_SHARING_SESSION)
-    void showWindowPicker(CompletionHandler<void(std::optional<WebCore::CaptureDevice>)>&&);
-    void showScreenPicker(CompletionHandler<void(std::optional<WebCore::CaptureDevice>)>&&);
+    void showWindowPicker(CompletionHandler<void(std::optional<CyberCore::CaptureDevice>)>&&);
+    void showScreenPicker(CompletionHandler<void(std::optional<CyberCore::CaptureDevice>)>&&);
 #endif
 #if PLATFORM(MAC)
     void displayConfigurationChanged(CGDirectDisplayID, CGDisplayChangeSummaryFlags);
-    void setScreenProperties(const WebCore::ScreenProperties&);
+    void setScreenProperties(const CyberCore::ScreenProperties&);
 #endif
 
 #if USE(OS_STATE)
@@ -190,7 +190,7 @@ private:
 #endif
 
     // Connections to WebProcesses.
-    HashMap<WebCore::ProcessIdentifier, Ref<GPUConnectionToWebProcess>> m_webProcessConnections;
+    HashMap<CyberCore::ProcessIdentifier, Ref<GPUConnectionToWebProcess>> m_webProcessConnections;
     MonotonicTime m_creationTime { MonotonicTime::now() };
     
     GPUProcessPreferences m_preferences;
@@ -201,7 +201,7 @@ private:
         bool allowVideoCapture { false };
         bool allowDisplayCapture { false };
     };
-    HashMap<WebCore::ProcessIdentifier, MediaCaptureAccess> m_mediaCaptureAccessMap;
+    HashMap<CyberCore::ProcessIdentifier, MediaCaptureAccess> m_mediaCaptureAccessMap;
 #if ENABLE(MEDIA_STREAM) && PLATFORM(COCOA)
     RefPtr<WorkQueue> m_videoMediaStreamTrackRendererQueue;
 #endif
@@ -222,8 +222,8 @@ private:
 #endif
     };
     HashMap<PAL::SessionID, GPUSession> m_sessions;
-    WebCore::Timer m_idleExitTimer;
-    std::unique_ptr<WebCore::NowPlayingManager> m_nowPlayingManager;
+    CyberCore::Timer m_idleExitTimer;
+    std::unique_ptr<CyberCore::NowPlayingManager> m_nowPlayingManager;
     String m_applicationVisibleName;
 #if ENABLE(GPU_PROCESS) && USE(AUDIO_SESSION)
     mutable std::unique_ptr<RemoteAudioSessionProxyManager> m_audioSessionManager;

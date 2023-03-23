@@ -29,31 +29,31 @@
 
 #if ENABLE(MODEL_ELEMENT)
 
-namespace WebKit {
+namespace CyberKit {
 
 class PlatformCALayerRemoteModelHosting final : public PlatformCALayerRemote {
     friend class PlatformCALayerRemote;
 public:
-    static Ref<PlatformCALayerRemote> create(Ref<WebCore::Model>, WebCore::PlatformCALayerClient*, RemoteLayerTreeContext&);
+    static Ref<PlatformCALayerRemote> create(Ref<CyberCore::Model>, CyberCore::PlatformCALayerClient*, RemoteLayerTreeContext&);
 
     virtual ~PlatformCALayerRemoteModelHosting();
 
 private:
-    PlatformCALayerRemoteModelHosting(Ref<WebCore::Model>, WebCore::PlatformCALayerClient* owner, RemoteLayerTreeContext&);
+    PlatformCALayerRemoteModelHosting(Ref<CyberCore::Model>, CyberCore::PlatformCALayerClient* owner, RemoteLayerTreeContext&);
 
     Type type() const final { return Type::RemoteModel; }
 
-    Ref<WebCore::PlatformCALayer> clone(WebCore::PlatformCALayerClient* owner) const override;
+    Ref<CyberCore::PlatformCALayer> clone(CyberCore::PlatformCALayerClient* owner) const override;
     
-    void populateCreationProperties(RemoteLayerTreeTransaction::LayerCreationProperties&, const RemoteLayerTreeContext&, WebCore::PlatformCALayer::LayerType) override;
+    void populateCreationProperties(RemoteLayerTreeTransaction::LayerCreationProperties&, const RemoteLayerTreeContext&, CyberCore::PlatformCALayer::LayerType) override;
     
-    void dumpAdditionalProperties(TextStream&, OptionSet<WebCore::PlatformLayerTreeAsTextFlags>) final;
+    void dumpAdditionalProperties(TextStream&, OptionSet<CyberCore::PlatformLayerTreeAsTextFlags>) final;
 
-    Ref<WebCore::Model> m_model;
+    Ref<CyberCore::Model> m_model;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
-SPECIALIZE_TYPE_TRAITS_PLATFORM_CALAYER(WebKit::PlatformCALayerRemoteModelHosting, type() == WebCore::PlatformCALayer::Type::RemoteModel)
+SPECIALIZE_TYPE_TRAITS_PLATFORM_CALAYER(CyberKit::PlatformCALayerRemoteModelHosting, type() == CyberCore::PlatformCALayer::Type::RemoteModel)
 
 #endif // ENABLE(MODEL_ELEMENT)

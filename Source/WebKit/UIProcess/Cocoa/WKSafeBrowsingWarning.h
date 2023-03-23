@@ -55,10 +55,10 @@ using RectType = CGRect;
 @interface WKSafeBrowsingBox : ViewType {
 @package
 #if PLATFORM(MAC)
-    RetainPtr<WebCore::CocoaColor> _backgroundColor;
+    RetainPtr<CyberCore::CocoaColor> _backgroundColor;
 #endif
 }
-- (void)setSafeBrowsingBackgroundColor:(WebCore::CocoaColor *)color;
+- (void)setSafeBrowsingBackgroundColor:(CyberCore::CocoaColor *)color;
 @end
 
 #if PLATFORM(MAC)

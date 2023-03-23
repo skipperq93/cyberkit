@@ -35,7 +35,7 @@
 #include "RenderTheme.h"
 #include <pal/spi/cf/CoreTextSPI.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 #if PLATFORM(MAC)
 
@@ -408,6 +408,6 @@ void AttachmentLayout::buildSingleLine(const String& text, CTFontRef font, NSDic
     addLine(font, adoptCF(CTLineCreateWithAttributedString((CFAttributedStringRef)attributedText.get())).get(), true);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ATTACHMENT_ELEMENT) && PLATFORM(COCOA)

@@ -29,7 +29,7 @@
 #include "SVGAngleValue.h"
 #include "SVGPropertyTraits.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 enum SVGMarkerUnitsType {
     SVGMarkerUnitsUnknown = 0,
@@ -115,4 +115,4 @@ struct SVGPropertyTraits<std::pair<SVGAngleValue, SVGMarkerOrientType>> {
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

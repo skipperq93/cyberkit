@@ -36,7 +36,7 @@
 
 namespace WebKit {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 void NetworkProcess::platformInitializeNetworkProcess(const NetworkProcessCreationParameters&)
 {
@@ -61,7 +61,7 @@ void NetworkProcess::platformTerminate()
     notImplemented();
 }
 
-void NetworkProcess::setNetworkProxySettings(PAL::SessionID sessionID, WebCore::CurlProxySettings&& settings)
+void NetworkProcess::setNetworkProxySettings(PAL::SessionID sessionID, CyberCore::CurlProxySettings&& settings)
 {
     if (auto* networkStorageSession = storageSession(sessionID))
         networkStorageSession->setProxySettings(settings);

@@ -26,23 +26,23 @@
 
 messages -> RemoteMediaSessionCoordinatorProxy NotRefCounted {
 
-    Join() -> (std::optional<WebCore::ExceptionData> error)
+    Join() -> (std::optional<CyberCore::ExceptionData> error)
 
     Leave()
 
-    CoordinateSeekTo(double time) -> (std::optional<WebCore::ExceptionData> error)
+    CoordinateSeekTo(double time) -> (std::optional<CyberCore::ExceptionData> error)
 
-    CoordinatePlay() -> (std::optional<WebCore::ExceptionData> error)
+    CoordinatePlay() -> (std::optional<CyberCore::ExceptionData> error)
 
-    CoordinatePause() -> (std::optional<WebCore::ExceptionData> error)
+    CoordinatePause() -> (std::optional<CyberCore::ExceptionData> error)
 
-    CoordinateSetTrack(String trackIdentifier) -> (std::optional<WebCore::ExceptionData> error)
+    CoordinateSetTrack(String trackIdentifier) -> (std::optional<CyberCore::ExceptionData> error)
 
-    PositionStateChanged(std::optional<WebCore::MediaPositionState> state);
+    PositionStateChanged(std::optional<CyberCore::MediaPositionState> state);
 
-    ReadyStateChanged(enum:uint8_t WebCore::MediaSessionReadyState state);
+    ReadyStateChanged(enum:uint8_t CyberCore::MediaSessionReadyState state);
 
-    PlaybackStateChanged(enum:uint8_t WebCore::MediaSessionPlaybackState state);
+    PlaybackStateChanged(enum:uint8_t CyberCore::MediaSessionPlaybackState state);
 
     TrackIdentifierChanged(String trackIdentifier) final
 }

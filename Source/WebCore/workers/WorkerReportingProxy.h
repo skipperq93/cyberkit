@@ -30,7 +30,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 class WorkerReportingProxy {
 public:
@@ -45,4 +45,4 @@ public:
     virtual void workerGlobalScopeDestroyed() = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -32,7 +32,7 @@
 #include "ContentSecurityPolicySourceListDirective.h"
 #include <wtf/URL.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Frame;
 
@@ -161,4 +161,4 @@ private:
     String m_webAssemblyDisabledErrorMessage;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

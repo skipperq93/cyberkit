@@ -52,7 +52,7 @@
 #import "VideoFrameCV.h"
 #import "VideoLayerManagerObjC.h"
 #import "VideoTrackPrivateWebM.h"
-#import "WebCoreDecompressionSession.h"
+#import "CyberCoreDecompressionSession.h"
 #import "WebMResourceClient.h"
 #import <pal/avfoundation/MediaTimeAVFoundation.h>
 #import <pal/spi/cocoa/AVFoundationSPI.h>
@@ -67,7 +67,7 @@
 #import <pal/cf/CoreMediaSoftLink.h>
 #import <pal/cocoa/AVFoundationSoftLink.h>
 
-@interface AVSampleBufferDisplayLayer (WebCoreAVSampleBufferDisplayLayerQueueManagementPrivate)
+@interface AVSampleBufferDisplayLayer (CyberCoreAVSampleBufferDisplayLayerQueueManagementPrivate)
 - (void)prerollDecodeWithCompletionHandler:(void (^)(BOOL success))block;
 - (void)expectMinimumUpcomingSampleBufferPresentationTime: (CMTime)minimumUpcomingPresentationTime;
 - (void)resetUpcomingSampleBufferPresentationTimeExpectations;
@@ -79,7 +79,7 @@
 
 #pragma mark -
 
-namespace WebCore {
+namespace CyberCore {
 
 static const MediaTime discontinuityTolerance = MediaTime(1, 1);
 
@@ -415,7 +415,7 @@ bool MediaPlayerPrivateWebM::updateLastPixelBuffer()
     if (m_displayLayer || !m_decompressionSession)
         return false;
 
-    auto flags = !m_lastPixelBuffer ? WebCoreDecompressionSession::AllowLater : WebCoreDecompressionSession::ExactTime;
+    auto flags = !m_lastPixelBuffer ? CyberCoreDecompressionSession::AllowLater : CyberCoreDecompressionSession::ExactTime;
     auto newPixelBuffer = m_decompressionSession->imageForTime(currentMediaTime(), flags);
     if (!newPixelBuffer)
         return false;
@@ -1308,7 +1308,7 @@ void MediaPlayerPrivateWebM::ensureDecompressionSession()
     
     m_hasAvailableVideoFrameSemaphore = makeUnique<BinarySemaphore>();
 
-    m_decompressionSession = WebCoreDecompressionSession::createOpenGL();
+    m_decompressionSession = CyberCoreDecompressionSession::createOpenGL();
     m_decompressionSession->setTimebase([m_synchronizer timebase]);
     
     m_decompressionSession->requestMediaDataWhenReady([weakThis = WeakPtr { *this }, this] {
@@ -1548,6 +1548,6 @@ bool MediaPlayerPrivateWebM::isAvailable()
         && class_getInstanceMethod(PAL::getAVSampleBufferAudioRendererClass(), @selector(setMuted:));
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ALTERNATE_WEBM_PLAYER)

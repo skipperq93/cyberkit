@@ -42,7 +42,7 @@
 #include <wtf/WeakHashMap.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CachedResourceClient;
 class CachedResourceHandleBase;
@@ -448,9 +448,9 @@ inline bool CachedResource::isMainOrMediaOrIconOrRawResource() const
         || type() == Type::Ping;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #define SPECIALIZE_TYPE_TRAITS_CACHED_RESOURCE(ToClassName, CachedResourceType) \
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::ToClassName) \
-    static bool isType(const WebCore::CachedResource& resource) { return resource.type() == WebCore::CachedResourceType; } \
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::ToClassName) \
+    static bool isType(const CyberCore::CachedResource& resource) { return resource.type() == CyberCore::CachedResourceType; } \
 SPECIALIZE_TYPE_TRAITS_END()

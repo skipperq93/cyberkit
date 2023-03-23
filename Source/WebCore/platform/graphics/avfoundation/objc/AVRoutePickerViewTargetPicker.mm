@@ -41,7 +41,7 @@
 SOFTLINK_AVKIT_FRAMEWORK()
 SOFT_LINK_CLASS_OPTIONAL(AVKit, AVRoutePickerView)
 
-using namespace WebCore;
+using namespace CyberCore;
 
 @interface WebAVRoutePickerViewHelper : NSObject <AVRoutePickerViewDelegate> {
     WeakPtr<AVRoutePickerViewTargetPicker> m_callback;
@@ -53,7 +53,7 @@ using namespace WebCore;
 - (void)routePickerViewDidEndPresentingRoutes:(AVRoutePickerView *)routePickerView;
 @end
 
-namespace WebCore {
+namespace CyberCore {
 
 bool AVRoutePickerViewTargetPicker::isAvailable()
 {
@@ -235,7 +235,7 @@ void AVRoutePickerViewTargetPicker::devicePickerWasDismissed()
     currentDeviceDidChange();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 @implementation WebAVRoutePickerViewHelper
 - (instancetype)initWithCallback:(WeakPtr<AVRoutePickerViewTargetPicker>&&)callback

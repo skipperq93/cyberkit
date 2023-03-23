@@ -32,7 +32,7 @@
 
 #if ENABLE(REMOTE_INSPECTOR)
 #include <JavaScriptCore/RemoteInspectorServer.h>
-#include <CyberCore/WebCoreBundleWin.h>
+#include <CyberCore/CyberCoreBundleWin.h>
 #include <wtf/text/StringToIntegerConversion.h>
 #endif
 
@@ -53,7 +53,7 @@ static void initializeRemoteInspectorServer(StringView address)
     if (!port)
         return;
 
-    auto backendCommands = WebCore::webKitBundlePath({ "WebKit.Resources"_s, "WebInspectorUI"_s, "Protocol"_s, "InspectorBackendCommands.js"_s });
+    auto backendCommands = CyberCore::webKitBundlePath({ "WebKit.Resources"_s, "WebInspectorUI"_s, "Protocol"_s, "InspectorBackendCommands.js"_s });
     Inspector::RemoteInspector::singleton().setBackendCommandsPath(backendCommands);
     Inspector::RemoteInspectorServer::singleton().start(host.utf8().data(), port.value());
 }

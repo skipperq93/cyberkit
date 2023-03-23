@@ -29,7 +29,7 @@
 #include "Filter.h"
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<FEConvolveMatrix> FEConvolveMatrix::create(const IntSize& kernelSize, float divisor, float bias, const IntPoint& targetOffset, EdgeModeType edgeMode, const FloatPoint& kernelUnitLength, bool preserveAlpha, const Vector<float>& kernelMatrix)
 {
@@ -161,4 +161,4 @@ TextStream& FEConvolveMatrix::externalRepresentation(TextStream& ts, FilterRepre
     return ts;
 }
 
-}; // namespace WebCore
+}; // namespace CyberCore

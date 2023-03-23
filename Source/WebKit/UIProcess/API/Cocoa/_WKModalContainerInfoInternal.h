@@ -28,12 +28,12 @@
 #import "_WKModalContainerInfo.h"
 #import <wtf/OptionSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 enum class ModalContainerControlType : uint8_t;
 }
 
 @interface _WKModalContainerInfo (WebKitInternal)
 
-- (instancetype)initWithTypes:(OptionSet<WebCore::ModalContainerControlType>)types;
+- (instancetype)initWithTypes:(OptionSet<CyberCore::ModalContainerControlType>)types;
 
 @end

@@ -34,7 +34,7 @@
 #import "_WKWebExtensionContextInternal.h"
 #import "_WKWebExtensionControllerConfigurationInternal.h"
 #import "_WKWebExtensionInternal.h"
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 
 @implementation _WKWebExtensionController
 
@@ -64,7 +64,7 @@
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainRunLoop(_WKWebExtensionController.class, self))
+    if (CyberCoreObjCScheduleDeallocateOnMainRunLoop(_WKWebExtensionController.class, self))
         return;
 
     _webExtensionController->~WebExtensionController();

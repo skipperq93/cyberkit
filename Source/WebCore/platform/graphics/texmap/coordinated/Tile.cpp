@@ -32,7 +32,7 @@
 #include "TiledBackingStore.h"
 #include "TiledBackingStoreClient.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static const uint32_t InvalidTileID = 0;
 
@@ -91,6 +91,6 @@ void Tile::resize(const IntSize& newSize)
     m_dirtyRect = m_rect;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(COORDINATED_GRAPHICS)

@@ -43,7 +43,7 @@
 #include "ServiceWorkerThread.h"
 #include "WorkerGlobalScope.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace ServiceWorkerFetch {
 
@@ -239,6 +239,6 @@ void dispatchFetchEvent(Ref<Client>&& client, ServiceWorkerGlobalScope& globalSc
 
 } // namespace ServiceWorkerFetch
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

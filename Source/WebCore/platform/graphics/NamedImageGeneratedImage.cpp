@@ -32,7 +32,7 @@
 #include "Theme.h"
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 NamedImageGeneratedImage::NamedImageGeneratedImage(String name, const FloatSize& size)
     : m_name(name)

@@ -31,7 +31,7 @@
 #include <wtf/FastMalloc.h>
 #include <wtf/MonotonicTime.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FloatPoint;
 class ScrollAnimation;
@@ -116,9 +116,9 @@ protected:
 WTF::TextStream& operator<<(WTF::TextStream&, ScrollAnimation::Type);
 WTF::TextStream& operator<<(WTF::TextStream&, const ScrollAnimation&);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #define SPECIALIZE_TYPE_TRAITS_SCROLL_ANIMATION(ToValueTypeName, predicate) \
 SPECIALIZE_TYPE_TRAITS_BEGIN(ToValueTypeName) \
-    static bool isType(const WebCore::ScrollAnimation& scrollAnimation) { return scrollAnimation.predicate; } \
+    static bool isType(const CyberCore::ScrollAnimation& scrollAnimation) { return scrollAnimation.predicate; } \
 SPECIALIZE_TYPE_TRAITS_END()

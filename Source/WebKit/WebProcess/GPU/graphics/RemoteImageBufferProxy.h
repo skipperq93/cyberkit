@@ -41,20 +41,20 @@ namespace WebKit {
 class RemoteRenderingBackendProxy;
 class RemoteImageBufferProxyFlushState;
 
-class RemoteImageBufferProxy : public WebCore::ImageBuffer {
+class RemoteImageBufferProxy : public CyberCore::ImageBuffer {
     friend class RemoteSerializedImageBufferProxy;
 public:
     template<typename BackendType>
-    static RefPtr<RemoteImageBufferProxy> create(const WebCore::FloatSize& size, float resolutionScale, const WebCore::DestinationColorSpace& colorSpace, WebCore::PixelFormat pixelFormat, WebCore::RenderingPurpose purpose, RemoteRenderingBackendProxy& remoteRenderingBackendProxy, bool avoidBackendSizeCheck = false)
+    static RefPtr<RemoteImageBufferProxy> create(const CyberCore::FloatSize& size, float resolutionScale, const CyberCore::DestinationColorSpace& colorSpace, CyberCore::PixelFormat pixelFormat, CyberCore::RenderingPurpose purpose, RemoteRenderingBackendProxy& remoteRenderingBackendProxy, bool avoidBackendSizeCheck = false)
     {
-        auto parameters = WebCore::ImageBufferBackend::Parameters { size, resolutionScale, colorSpace, pixelFormat, purpose };
+        auto parameters = CyberCore::ImageBufferBackend::Parameters { size, resolutionScale, colorSpace, pixelFormat, purpose };
         if (!avoidBackendSizeCheck && BackendType::calculateSafeBackendSize(parameters).isEmpty())
             return nullptr;
         auto info = populateBackendInfo<BackendType>(parameters);
         return adoptRef(new RemoteImageBufferProxy(parameters, info, remoteRenderingBackendProxy));
     }
 
-    static RefPtr<RemoteImageBufferProxy> create(const WebCore::ImageBufferBackend::Parameters& parameters, const WebCore::ImageBufferBackend::Info& info, RemoteRenderingBackendProxy& remoteRenderingBackendProxy, std::unique_ptr<WebCore::ImageBufferBackend>&& backend, WebCore::RenderingResourceIdentifier identifier)
+    static RefPtr<RemoteImageBufferProxy> create(const CyberCore::ImageBufferBackend::Parameters& parameters, const CyberCore::ImageBufferBackend::Info& info, RemoteRenderingBackendProxy& remoteRenderingBackendProxy, std::unique_ptr<CyberCore::ImageBufferBackend>&& backend, CyberCore::RenderingResourceIdentifier identifier)
     {
         return adoptRef(new RemoteImageBufferProxy(parameters, info, remoteRenderingBackendProxy, WTFMove(backend), identifier));
     }
@@ -63,39 +63,39 @@ public:
 
     DisplayListRecorderFlushIdentifier lastSentFlushIdentifier() const { return m_sentFlushIdentifier; }
 
-    WebCore::ImageBufferBackend* ensureBackendCreated() const final;
+    CyberCore::ImageBufferBackend* ensureBackendCreated() const final;
 
     void clearBackend();
     void backingStoreWillChange();
     void didCreateImageBufferBackend(ImageBufferBackendHandle&&);
 
-    std::unique_ptr<WebCore::SerializedImageBuffer> sinkIntoSerializedImageBuffer() final;
+    std::unique_ptr<CyberCore::SerializedImageBuffer> sinkIntoSerializedImageBuffer() final;
 
 private:
-    RemoteImageBufferProxy(const WebCore::ImageBufferBackend::Parameters&, const WebCore::ImageBufferBackend::Info&, RemoteRenderingBackendProxy&, std::unique_ptr<WebCore::ImageBufferBackend>&& = nullptr, WebCore::RenderingResourceIdentifier = WebCore::RenderingResourceIdentifier::generate());
+    RemoteImageBufferProxy(const CyberCore::ImageBufferBackend::Parameters&, const CyberCore::ImageBufferBackend::Info&, RemoteRenderingBackendProxy&, std::unique_ptr<CyberCore::ImageBufferBackend>&& = nullptr, CyberCore::RenderingResourceIdentifier = CyberCore::RenderingResourceIdentifier::generate());
 
     bool hasPendingFlush() const;
 
     void waitForDidFlushWithTimeout();
 
-    RefPtr<WebCore::NativeImage> copyNativeImage(WebCore::BackingStoreCopy = WebCore::CopyBackingStore) const final;
-    RefPtr<WebCore::NativeImage> copyNativeImageForDrawing(WebCore::BackingStoreCopy = WebCore::CopyBackingStore) const final;
-    RefPtr<WebCore::NativeImage> sinkIntoNativeImage() final;
+    RefPtr<CyberCore::NativeImage> copyNativeImage(CyberCore::BackingStoreCopy = CyberCore::CopyBackingStore) const final;
+    RefPtr<CyberCore::NativeImage> copyNativeImageForDrawing(CyberCore::BackingStoreCopy = CyberCore::CopyBackingStore) const final;
+    RefPtr<CyberCore::NativeImage> sinkIntoNativeImage() final;
 
     RefPtr<ImageBuffer> sinkIntoBufferForDifferentThread() final;
     RefPtr<ImageBuffer> cloneForDifferentThread() final;
 
-    RefPtr<WebCore::Image> filteredImage(WebCore::Filter&) final;
+    RefPtr<CyberCore::Image> filteredImage(CyberCore::Filter&) final;
 
-    void drawConsuming(WebCore::GraphicsContext& destContext, const WebCore::FloatRect& destRect, const WebCore::FloatRect& srcRect, const WebCore::ImagePaintingOptions&) final;
+    void drawConsuming(CyberCore::GraphicsContext& destContext, const CyberCore::FloatRect& destRect, const CyberCore::FloatRect& srcRect, const CyberCore::ImagePaintingOptions&) final;
 
-    WebCore::GraphicsContext& context() const final;
+    CyberCore::GraphicsContext& context() const final;
 
-    RefPtr<WebCore::PixelBuffer> getPixelBuffer(const WebCore::PixelBufferFormat& destinationFormat, const WebCore::IntRect& srcRect, const WebCore::ImageBufferAllocator&) const final;
-    void putPixelBuffer(const WebCore::PixelBuffer&, const WebCore::IntRect& srcRect, const WebCore::IntPoint& destPoint = { }, WebCore::AlphaPremultiplication = WebCore::AlphaPremultiplication::Premultiplied) final;
+    RefPtr<CyberCore::PixelBuffer> getPixelBuffer(const CyberCore::PixelBufferFormat& destinationFormat, const CyberCore::IntRect& srcRect, const CyberCore::ImageBufferAllocator&) const final;
+    void putPixelBuffer(const CyberCore::PixelBuffer&, const CyberCore::IntRect& srcRect, const CyberCore::IntPoint& destPoint = { }, CyberCore::AlphaPremultiplication = CyberCore::AlphaPremultiplication::Premultiplied) final;
 
     void convertToLuminanceMask() final;
-    void transformToColorSpace(const WebCore::DestinationColorSpace&) final;
+    void transformToColorSpace(const CyberCore::DestinationColorSpace&) final;
 
     bool prefersPreparationForDisplay() final { return true; }
     
@@ -103,7 +103,7 @@ private:
     void flushDrawingContext() final;
     bool flushDrawingContextAsync() final;
 
-    std::unique_ptr<WebCore::ThreadSafeImageBufferFlusher> createFlusher() final;
+    std::unique_ptr<CyberCore::ThreadSafeImageBufferFlusher> createFlusher() final;
     void prepareForBackingStoreChange();
 
     void assertDispatcherIsCurrent() const;
@@ -131,16 +131,16 @@ private:
     DisplayListRecorderFlushIdentifier m_identifier WTF_GUARDED_BY_LOCK(m_lock);
 };
 
-class RemoteSerializedImageBufferProxy : public WebCore::SerializedImageBuffer {
+class RemoteSerializedImageBufferProxy : public CyberCore::SerializedImageBuffer {
     friend class RemoteRenderingBackendProxy;
 public:
     ~RemoteSerializedImageBufferProxy();
 
-    static RefPtr<WebCore::ImageBuffer> sinkIntoImageBuffer(std::unique_ptr<RemoteSerializedImageBufferProxy>, RemoteRenderingBackendProxy&);
+    static RefPtr<CyberCore::ImageBuffer> sinkIntoImageBuffer(std::unique_ptr<RemoteSerializedImageBufferProxy>, RemoteRenderingBackendProxy&);
 
-    WebCore::RenderingResourceIdentifier renderingResourceIdentifier() { return m_renderingResourceIdentifier; }
+    CyberCore::RenderingResourceIdentifier renderingResourceIdentifier() { return m_renderingResourceIdentifier; }
 
-    RemoteSerializedImageBufferProxy(const WebCore::ImageBufferBackend::Parameters&, const WebCore::ImageBufferBackend::Info&, const WebCore::RenderingResourceIdentifier&, RemoteRenderingBackendProxy&);
+    RemoteSerializedImageBufferProxy(const CyberCore::ImageBufferBackend::Parameters&, const CyberCore::ImageBufferBackend::Info&, const CyberCore::RenderingResourceIdentifier&, RemoteRenderingBackendProxy&);
 
     size_t memoryCost() final
     {
@@ -148,7 +148,7 @@ public:
     }
 
 private:
-    RefPtr<WebCore::ImageBuffer> sinkIntoImageBuffer() final
+    RefPtr<CyberCore::ImageBuffer> sinkIntoImageBuffer() final
     {
         ASSERT_NOT_REACHED();
         return nullptr;
@@ -158,17 +158,17 @@ private:
 
     RemoteSerializedImageBufferReferenceTracker m_referenceTracker;
 
-    WebCore::ImageBufferBackend::Parameters m_parameters;
-    WebCore::ImageBufferBackend::Info m_info;
+    CyberCore::ImageBufferBackend::Parameters m_parameters;
+    CyberCore::ImageBufferBackend::Info m_info;
 
-    WebCore::RenderingResourceIdentifier m_renderingResourceIdentifier;
+    CyberCore::RenderingResourceIdentifier m_renderingResourceIdentifier;
     RefPtr<IPC::Connection> m_connection;
 };
 
 } // namespace WebKit
 
 SPECIALIZE_TYPE_TRAITS_BEGIN(WebKit::RemoteSerializedImageBufferProxy)
-    static bool isType(const WebCore::SerializedImageBuffer& buffer) { return buffer.isRemoteSerializedImageBufferProxy(); }
+    static bool isType(const CyberCore::SerializedImageBuffer& buffer) { return buffer.isRemoteSerializedImageBufferProxy(); }
 SPECIALIZE_TYPE_TRAITS_END()
 
 

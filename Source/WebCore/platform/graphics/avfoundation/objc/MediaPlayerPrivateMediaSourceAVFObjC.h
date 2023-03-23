@@ -48,7 +48,7 @@ typedef struct OpaqueCMTimebase* CMTimebaseRef;
 typedef struct __CVBuffer *CVPixelBufferRef;
 typedef struct __CVBuffer *CVOpenGLTextureRef;
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioTrackPrivate;
 class CDMSessionMediaSourceAVFObjC;
@@ -58,7 +58,7 @@ class MediaSourcePrivateAVFObjC;
 class PixelBufferConformerCV;
 class VideoLayerManagerObjC;
 class VideoTrackPrivate;
-class WebCoreDecompressionSession;
+class CyberCoreDecompressionSession;
 
 
 class MediaPlayerPrivateMediaSourceAVFObjC
@@ -112,7 +112,7 @@ public:
 
     MediaTime currentMediaTime() const override;
     AVSampleBufferDisplayLayer* sampleBufferDisplayLayer() const { return m_sampleBufferDisplayLayer.get(); }
-    WebCoreDecompressionSession* decompressionSession() const { return m_decompressionSession.get(); }
+    CyberCoreDecompressionSession* decompressionSession() const { return m_decompressionSession.get(); }
 
     RetainPtr<PlatformLayer> createVideoFullscreenLayer() override;
     void setVideoFullscreenLayer(PlatformLayer*, Function<void()>&& completionHandler) override;
@@ -341,7 +341,7 @@ private:
     RetainPtr<CVPixelBufferRef> m_lastPixelBuffer;
     RefPtr<NativeImage> m_lastImage;
     std::unique_ptr<PixelBufferConformerCV> m_rgbConformer;
-    RefPtr<WebCoreDecompressionSession> m_decompressionSession;
+    RefPtr<CyberCoreDecompressionSession> m_decompressionSession;
     Deque<RetainPtr<id>> m_sizeChangeObservers;
     Timer m_seekTimer;
 #if ENABLE(LEGACY_ENCRYPTED_MEDIA)
@@ -390,8 +390,8 @@ template<typename Type>
 struct LogArgument;
 
 template <>
-struct LogArgument<WebCore::MediaPlayerPrivateMediaSourceAVFObjC::SeekState> {
-    static String toString(const WebCore::MediaPlayerPrivateMediaSourceAVFObjC::SeekState state)
+struct LogArgument<CyberCore::MediaPlayerPrivateMediaSourceAVFObjC::SeekState> {
+    static String toString(const CyberCore::MediaPlayerPrivateMediaSourceAVFObjC::SeekState state)
     {
         return convertEnumerationToString(state);
     }

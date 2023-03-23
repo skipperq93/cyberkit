@@ -37,9 +37,9 @@
 
 namespace WebKit {
 
-using namespace WebCore;
+using namespace CyberCore;
 
-std::unique_ptr<RemoteCDMProxy> RemoteCDMProxy::create(RemoteCDMFactoryProxy& factory, std::unique_ptr<WebCore::CDMPrivate>&& priv)
+std::unique_ptr<RemoteCDMProxy> RemoteCDMProxy::create(RemoteCDMFactoryProxy& factory, std::unique_ptr<CyberCore::CDMPrivate>&& priv)
 {
     if (!priv)
         return nullptr;
@@ -81,7 +81,7 @@ std::optional<String> RemoteCDMProxy::sanitizeSessionId(const String& sessionId)
     return m_private->sanitizeSessionId(sessionId);
 }
 
-void RemoteCDMProxy::getSupportedConfiguration(WebCore::CDMKeySystemConfiguration&& configuration, WebCore::CDMPrivate::LocalStorageAccess access, CompletionHandler<void(std::optional<WebCore::CDMKeySystemConfiguration>)>&& callback)
+void RemoteCDMProxy::getSupportedConfiguration(CyberCore::CDMKeySystemConfiguration&& configuration, CyberCore::CDMPrivate::LocalStorageAccess access, CompletionHandler<void(std::optional<CyberCore::CDMKeySystemConfiguration>)>&& callback)
 {
     m_private->getSupportedConfiguration(WTFMove(configuration), access, WTFMove(callback));
 }

@@ -38,7 +38,7 @@
 #include "StyleScrollSnapPoints.h"
 #include <wtf/text/StringConcatenateNumbers.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 template <typename UnitType, typename RectType>
 static std::pair<UnitType, UnitType> rangeForAxis(RectType rect, ScrollEventAxis axis)

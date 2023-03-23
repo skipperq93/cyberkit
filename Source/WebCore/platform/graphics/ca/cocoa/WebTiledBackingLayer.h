@@ -25,7 +25,7 @@
 
 #import <QuartzCore/QuartzCore.h>
 
-namespace WebCore {
+namespace CyberCore {
 class IntRect;
 class PlatformCALayer;
 class TileController;
@@ -33,11 +33,11 @@ class TiledBacking;
 }
 
 @interface WebTiledBackingLayer : CALayer {
-    std::unique_ptr<WebCore::TileController> _tileController;
+    std::unique_ptr<CyberCore::TileController> _tileController;
 }
 
-- (WebCore::TileController*)createTileController:(WebCore::PlatformCALayer*)rootLayer;
-- (WebCore::TiledBacking*)tiledBacking;
+- (CyberCore::TileController*)createTileController:(CyberCore::PlatformCALayer*)rootLayer;
+- (CyberCore::TiledBacking*)tiledBacking;
 - (void)invalidate;
 
 - (void)setWantsDeepColorBackingStore:(BOOL)wantsDeepColor;

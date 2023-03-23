@@ -27,7 +27,7 @@
 #import "WKContentWorldInternal.h"
 
 #import "_WKUserContentWorldInternal.h"
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 
 @implementation WKContentWorld
 
@@ -48,7 +48,7 @@
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainRunLoop(WKContentWorld.class, self))
+    if (CyberCoreObjCScheduleDeallocateOnMainRunLoop(WKContentWorld.class, self))
         return;
 
     _contentWorld->~ContentWorld();

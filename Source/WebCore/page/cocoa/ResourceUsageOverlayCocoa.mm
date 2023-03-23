@@ -43,7 +43,7 @@
 #import <wtf/NeverDestroyed.h>
 #import <wtf/text/StringConcatenateNumbers.h>
 
-using WebCore::ResourceUsageOverlay;
+using CyberCore::ResourceUsageOverlay;
 
 @interface WebResourceUsageOverlayLayer : CALayer {
     ResourceUsageOverlay* m_overlay;
@@ -68,7 +68,7 @@ using WebCore::ResourceUsageOverlay;
 
 @end
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename T, size_t size = 70>
 class RingBuffer {

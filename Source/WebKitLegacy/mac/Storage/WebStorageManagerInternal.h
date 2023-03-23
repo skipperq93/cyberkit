@@ -25,4 +25,4 @@
 
 #import "WebStorageManagerPrivate.h"
 
-void WebKitInitializeStorageIfNecessary();
+void CyberKitInitializeStorageIfNecessary();

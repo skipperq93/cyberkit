@@ -23,20 +23,20 @@
 
 #include <CyberCore/SearchPopupMenuCocoa.h>
 
-namespace WebCore {
+namespace CyberCore {
 class PopupMenuClient;
 }
 
 class PopupMenuMac;
 
-class SearchPopupMenuMac : public WebCore::SearchPopupMenu {
+class SearchPopupMenuMac : public CyberCore::SearchPopupMenu {
 public:
-    SearchPopupMenuMac(WebCore::PopupMenuClient*);
+    SearchPopupMenuMac(CyberCore::PopupMenuClient*);
     ~SearchPopupMenuMac();
 
-    WebCore::PopupMenu* popupMenu() override;
-    void saveRecentSearches(const AtomString& name, const Vector<WebCore::RecentSearch>&) override;
-    void loadRecentSearches(const AtomString& name, Vector<WebCore::RecentSearch>&) override;
+    CyberCore::PopupMenu* popupMenu() override;
+    void saveRecentSearches(const AtomString& name, const Vector<CyberCore::RecentSearch>&) override;
+    void loadRecentSearches(const AtomString& name, Vector<CyberCore::RecentSearch>&) override;
     bool enabled() override;
 
 private:

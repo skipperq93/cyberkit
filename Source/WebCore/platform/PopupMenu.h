@@ -23,7 +23,7 @@
 
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FrameView;
 class IntRect;

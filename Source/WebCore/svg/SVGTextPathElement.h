@@ -25,7 +25,7 @@
 #include "SVGTextContentElement.h"
 #include "SVGURIReference.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 enum SVGTextPathMethodType {
     SVGTextPathMethodUnknown = 0,
@@ -147,4 +147,4 @@ private:
     Ref<SVGAnimatedEnumeration> m_spacing { SVGAnimatedEnumeration::create(this, SVGTextPathSpacingExact) };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

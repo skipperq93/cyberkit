@@ -30,7 +30,7 @@
 #include <wtf/FileSystem.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CurlFormDataStream {
 public:
@@ -68,4 +68,4 @@ private:
     size_t m_dataOffset { 0 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

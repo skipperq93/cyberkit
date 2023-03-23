@@ -33,7 +33,7 @@
 #include <wtf/HexNumber.h>
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // FIXME: This is incomplete. We should change this to mirror
 // more like what Firefox does, and generate these switch statements
@@ -1345,6 +1345,6 @@ OptionSet<PlatformEvent::Modifier> PlatformKeyboardEvent::currentStateOfModifier
     return { }; // FIXME: Implement.
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(LIBWPE)

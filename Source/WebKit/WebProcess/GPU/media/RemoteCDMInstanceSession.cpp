@@ -33,9 +33,9 @@
 #include <CyberCore/SharedBuffer.h>
 #include <wtf/Ref.h>
 
-namespace WebKit {
+namespace CyberKit {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 Ref<RemoteCDMInstanceSession> RemoteCDMInstanceSession::create(WeakPtr<RemoteCDMFactory>&& factory, RemoteCDMInstanceSessionIdentifier&& identifier)
 {
@@ -138,7 +138,7 @@ void RemoteCDMInstanceSession::updateKeyStatuses(KeyStatusVector&& keyStatuses)
         m_client->updateKeyStatuses(WTFMove(keyStatuses));
 }
 
-void RemoteCDMInstanceSession::sendMessage(WebCore::CDMMessageType type, RefPtr<SharedBuffer>&& message)
+void RemoteCDMInstanceSession::sendMessage(CyberCore::CDMMessageType type, RefPtr<SharedBuffer>&& message)
 {
     if (m_client && message)
         m_client->sendMessage(type, message.releaseNonNull());

@@ -35,7 +35,7 @@
 #include "LCMSUniquePtr.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 // This class decodes the JPEG XL image format.
 class JPEGXLImageDecoder final : public ScalableImageDecoder {
@@ -108,6 +108,6 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(JPEGXL)

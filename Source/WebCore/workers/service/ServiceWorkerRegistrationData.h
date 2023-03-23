@@ -34,7 +34,7 @@
 #include "ServiceWorkerUpdateViaCache.h"
 #include <wtf/WallTime.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class ServiceWorkerUpdateViaCache : uint8_t;
 

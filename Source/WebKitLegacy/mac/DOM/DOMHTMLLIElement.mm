@@ -35,32 +35,32 @@
 #import <wtf/GetPtr.h>
 #import <wtf/URL.h>
 
-#define IMPL static_cast<WebCore::HTMLLIElement*>(reinterpret_cast<WebCore::Node*>(_internal))
+#define IMPL static_cast<CyberCore::HTMLLIElement*>(reinterpret_cast<CyberCore::Node*>(_internal))
 
 @implementation DOMHTMLLIElement
 
 - (NSString *)type
 {
-    WebCore::JSMainThreadNullState state;
-    return IMPL->getAttribute(WebCore::HTMLNames::typeAttr);
+    CyberCore::JSMainThreadNullState state;
+    return IMPL->getAttribute(CyberCore::HTMLNames::typeAttr);
 }
 
 - (void)setType:(NSString *)newType
 {
-    WebCore::JSMainThreadNullState state;
-    IMPL->setAttributeWithoutSynchronization(WebCore::HTMLNames::typeAttr, newType);
+    CyberCore::JSMainThreadNullState state;
+    IMPL->setAttributeWithoutSynchronization(CyberCore::HTMLNames::typeAttr, newType);
 }
 
 - (int)value
 {
-    WebCore::JSMainThreadNullState state;
-    return IMPL->getIntegralAttribute(WebCore::HTMLNames::valueAttr);
+    CyberCore::JSMainThreadNullState state;
+    return IMPL->getIntegralAttribute(CyberCore::HTMLNames::valueAttr);
 }
 
 - (void)setValue:(int)newValue
 {
-    WebCore::JSMainThreadNullState state;
-    IMPL->setIntegralAttribute(WebCore::HTMLNames::valueAttr, newValue);
+    CyberCore::JSMainThreadNullState state;
+    IMPL->setIntegralAttribute(CyberCore::HTMLNames::valueAttr, newValue);
 }
 
 @end

@@ -39,7 +39,7 @@
 #include "GraphicsContextPlatformPrivateCG.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 namespace DisplayList {
 
 void Save::apply(GraphicsContext& context) const
@@ -137,7 +137,7 @@ void ClipOut::apply(GraphicsContext& context) const
     context.clipOut(m_rect);
 }
 
-void ClipToImageBuffer::apply(GraphicsContext& context, WebCore::ImageBuffer& imageBuffer) const
+void ClipToImageBuffer::apply(GraphicsContext& context, CyberCore::ImageBuffer& imageBuffer) const
 {
     context.clipToImageBuffer(imageBuffer, m_destinationRect);
 }
@@ -186,7 +186,7 @@ void DrawDecomposedGlyphs::apply(GraphicsContext& context, const Font& font, con
     return context.drawDecomposedGlyphs(font, decomposedGlyphs);
 }
 
-void DrawImageBuffer::apply(GraphicsContext& context, WebCore::ImageBuffer& imageBuffer) const
+void DrawImageBuffer::apply(GraphicsContext& context, CyberCore::ImageBuffer& imageBuffer) const
 {
     context.drawImageBuffer(imageBuffer, m_destinationRect, m_srcRect, m_options);
 }
@@ -1074,4 +1074,4 @@ void dumpItemHandle(TextStream& ts, const ItemHandle& item, OptionSet<AsTextFlag
 #endif
 
 } // namespace DisplayList
-} // namespace WebCore
+} // namespace CyberCore

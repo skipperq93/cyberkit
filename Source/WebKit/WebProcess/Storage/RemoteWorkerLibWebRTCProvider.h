@@ -33,14 +33,14 @@
 #include <CyberCore/GStreamerWebRTCProvider.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 #if ENABLE(WEB_RTC)
 
 #if USE(LIBWEBRTC)
-using LibWebRTCProviderBase = WebCore::LibWebRTCProvider;
+using LibWebRTCProviderBase = CyberCore::LibWebRTCProvider;
 #else
-using LibWebRTCProviderBase = WebCore::GStreamerWebRTCProvider;
+using LibWebRTCProviderBase = CyberCore::GStreamerWebRTCProvider;
 #endif
 
 class RemoteWorkerLibWebRTCProvider final : public LibWebRTCProviderBase {
@@ -48,8 +48,8 @@ public:
     RemoteWorkerLibWebRTCProvider() = default;
 
 private:
-    RefPtr<WebCore::RTCDataChannelRemoteHandlerConnection> createRTCDataChannelRemoteHandlerConnection() final { return &RTCDataChannelRemoteManager::sharedManager().remoteHandlerConnection(); }
+    RefPtr<CyberCore::RTCDataChannelRemoteHandlerConnection> createRTCDataChannelRemoteHandlerConnection() final { return &RTCDataChannelRemoteManager::sharedManager().remoteHandlerConnection(); }
 };
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit

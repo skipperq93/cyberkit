@@ -28,7 +28,7 @@
 #include "SVGParserUtilities.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(SVGFEDiffuseLightingElement);
 
@@ -168,4 +168,4 @@ RefPtr<FilterEffect> SVGFEDiffuseLightingElement::createFilterEffect(const Filte
     return FEDiffuseLighting::create(color, surfaceScale(), diffuseConstant(), kernelUnitLengthX(), kernelUnitLengthY(), WTFMove(lightSource));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -36,7 +36,7 @@
 #include <wtf/MediaTime.h>
 #include <wtf/UniqueRef.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class TrackBuffer final
 #if !RELEASE_LOG_DISABLED
@@ -117,7 +117,7 @@ public:
 #endif
     
 private:
-    friend UniqueRef<TrackBuffer> WTF::makeUniqueRefWithoutFastMallocCheck<TrackBuffer>(RefPtr<WebCore::MediaDescription>&&, const WTF::MediaTime&);
+    friend UniqueRef<TrackBuffer> WTF::makeUniqueRefWithoutFastMallocCheck<TrackBuffer>(RefPtr<CyberCore::MediaDescription>&&, const WTF::MediaTime&);
     TrackBuffer(RefPtr<MediaDescription>&&, const MediaTime&);
     
     SampleMap m_samples;
@@ -154,6 +154,6 @@ private:
     bool m_needsMinimumUpcomingPresentationTimeUpdating { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_SOURCE)

@@ -63,7 +63,7 @@
 #include <wtf/text/CString.h>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(LegacyInlineTextBox);
 
@@ -494,4 +494,4 @@ void LegacyInlineTextBox::outputLineBox(TextStream& stream, bool mark, int depth
 
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -41,7 +41,7 @@
 #include <wtf/glib/GUniquePtr.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 #if PLATFORM(COCOA)
 String formatLocalizedString(CFStringRef format, ...)
@@ -90,7 +90,7 @@ String formatLocalizedString(const char* format, ...)
 #if PLATFORM(COCOA)
 static CFBundleRef webCoreBundle()
 {
-    static NeverDestroyed<RetainPtr<CFBundleRef>> bundle = CFBundleGetBundleWithIdentifier(CFSTR("com.apple.WebCore"));
+    static NeverDestroyed<RetainPtr<CFBundleRef>> bundle = CFBundleGetBundleWithIdentifier(CFSTR("com.apple.CyberCore"));
     ASSERT(bundle.get());
     return bundle.get().get();
 }
@@ -1496,4 +1496,4 @@ String genericTouchIDPromptTitle()
 }
 #endif // ENABLE(WEB_AUTHN)
 
-} // namespace WebCore
+} // namespace CyberCore

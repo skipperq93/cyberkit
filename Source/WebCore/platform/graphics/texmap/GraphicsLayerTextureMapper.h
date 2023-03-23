@@ -30,7 +30,7 @@
 #include "TextureMapperPlatformLayer.h"
 #include "TextureMapperTiledBackingStore.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class GraphicsLayerTextureMapper final : public GraphicsLayer, TextureMapperPlatformLayer::Client {
 public:
@@ -174,8 +174,8 @@ private:
     MonotonicTime m_animationStartTime;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_GRAPHICSLAYER(WebCore::GraphicsLayerTextureMapper, isGraphicsLayerTextureMapper())
+SPECIALIZE_TYPE_TRAITS_GRAPHICSLAYER(CyberCore::GraphicsLayerTextureMapper, isGraphicsLayerTextureMapper())
 
 #endif // !USE(COORDINATED_GRAPHICS)

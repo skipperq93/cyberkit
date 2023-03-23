@@ -47,7 +47,7 @@
 #include "XLinkNames.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(SVGAElement);
 
@@ -244,4 +244,4 @@ DOMTokenList& SVGAElement::relList()
     return *m_relList;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

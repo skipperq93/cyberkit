@@ -279,7 +279,7 @@ void GeoclueGeolocationProvider::createLocation(const char* locationPath)
 
 void GeoclueGeolocationProvider::locationUpdated(GRefPtr<GDBusProxy>&& proxy)
 {
-    WebCore::GeolocationPositionData position;
+    CyberCore::GeolocationPositionData position;
     GRefPtr<GVariant> property = adoptGRef(g_dbus_proxy_get_cached_property(proxy.get(), "Latitude"));
     position.latitude = g_variant_get_double(property.get());
     property = adoptGRef(g_dbus_proxy_get_cached_property(proxy.get(), "Longitude"));

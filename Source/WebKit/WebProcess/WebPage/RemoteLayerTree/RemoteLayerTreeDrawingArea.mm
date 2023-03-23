@@ -55,8 +55,8 @@
 #import <wtf/SetForScope.h>
 #import <wtf/SystemTracing.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 RemoteLayerTreeDrawingArea::RemoteLayerTreeDrawingArea(WebPage& webPage, const WebPageCreationParameters& parameters)
     : DrawingArea(DrawingAreaType::RemoteLayerTree, parameters.drawingAreaIdentifier, webPage)
@@ -67,7 +67,7 @@ RemoteLayerTreeDrawingArea::RemoteLayerTreeDrawingArea(WebPage& webPage, const W
     webPage.corePage()->settings().setForceCompositingMode(true);
     m_rootLayer->setName(MAKE_STATIC_STRING_IMPL("drawing area root"));
 
-    m_commitQueue = adoptOSObject(dispatch_queue_create("com.apple.WebKit.WebContent.RemoteLayerTreeDrawingArea.CommitQueue", nullptr));
+    m_commitQueue = adoptOSObject(dispatch_queue_create("com.apple.CyberKit.WebContent.RemoteLayerTreeDrawingArea.CommitQueue", nullptr));
 
     if (auto viewExposedRect = parameters.viewExposedRect)
         setViewExposedRect(viewExposedRect);
@@ -218,17 +218,17 @@ void RemoteLayerTreeDrawingArea::forceRepaint()
     updateRendering();
 }
 
-void RemoteLayerTreeDrawingArea::acceleratedAnimationDidStart(WebCore::GraphicsLayer::PlatformLayerID layerID, const String& key, MonotonicTime startTime)
+void RemoteLayerTreeDrawingArea::acceleratedAnimationDidStart(CyberCore::GraphicsLayer::PlatformLayerID layerID, const String& key, MonotonicTime startTime)
 {
     m_remoteLayerTreeContext->animationDidStart(layerID, key, startTime);
 }
 
-void RemoteLayerTreeDrawingArea::acceleratedAnimationDidEnd(WebCore::GraphicsLayer::PlatformLayerID layerID, const String& key)
+void RemoteLayerTreeDrawingArea::acceleratedAnimationDidEnd(CyberCore::GraphicsLayer::PlatformLayerID layerID, const String& key)
 {
     m_remoteLayerTreeContext->animationDidEnd(layerID, key);
 }
 
-void RemoteLayerTreeDrawingArea::setViewExposedRect(std::optional<WebCore::FloatRect> viewExposedRect)
+void RemoteLayerTreeDrawingArea::setViewExposedRect(std::optional<CyberCore::FloatRect> viewExposedRect)
 {
     m_viewExposedRect = viewExposedRect;
 
@@ -236,7 +236,7 @@ void RemoteLayerTreeDrawingArea::setViewExposedRect(std::optional<WebCore::Float
         frameView->setViewExposedRect(m_viewExposedRect);
 }
 
-WebCore::FloatRect RemoteLayerTreeDrawingArea::exposedContentRect() const
+CyberCore::FloatRect RemoteLayerTreeDrawingArea::exposedContentRect() const
 {
     FrameView* frameView = m_webPage.mainFrameView();
     if (!frameView)
@@ -392,7 +392,7 @@ void RemoteLayerTreeDrawingArea::displayDidRefresh()
         m_deferredRenderingUpdateWhileWaitingForBackingStoreSwap = false;
     }
 
-    if (!WebProcess::singleton().shouldUseRemoteRenderingFor(WebCore::RenderingPurpose::DOM)) {
+    if (!WebProcess::singleton().shouldUseRemoteRenderingFor(CyberCore::RenderingPurpose::DOM)) {
         // This empty transaction serves to trigger CA's garbage collection of IOSurfaces. See <rdar://problem/16110687>
         [CATransaction begin];
         [CATransaction commit];
@@ -416,12 +416,12 @@ void RemoteLayerTreeDrawingArea::tryMarkLayersVolatile(CompletionHandler<void(bo
     m_remoteLayerTreeContext->backingStoreCollection().tryMarkAllBackingStoreVolatile(WTFMove(completionFunction));
 }
 
-Ref<RemoteLayerTreeDrawingArea::BackingStoreFlusher> RemoteLayerTreeDrawingArea::BackingStoreFlusher::create(IPC::Connection* connection, UniqueRef<IPC::Encoder>&& encoder, Vector<std::unique_ptr<WebCore::ThreadSafeImageBufferFlusher>> flushers)
+Ref<RemoteLayerTreeDrawingArea::BackingStoreFlusher> RemoteLayerTreeDrawingArea::BackingStoreFlusher::create(IPC::Connection* connection, UniqueRef<IPC::Encoder>&& encoder, Vector<std::unique_ptr<CyberCore::ThreadSafeImageBufferFlusher>> flushers)
 {
     return adoptRef(*new RemoteLayerTreeDrawingArea::BackingStoreFlusher(connection, WTFMove(encoder), WTFMove(flushers)));
 }
 
-RemoteLayerTreeDrawingArea::BackingStoreFlusher::BackingStoreFlusher(IPC::Connection* connection, UniqueRef<IPC::Encoder>&& encoder, Vector<std::unique_ptr<WebCore::ThreadSafeImageBufferFlusher>> flushers)
+RemoteLayerTreeDrawingArea::BackingStoreFlusher::BackingStoreFlusher(IPC::Connection* connection, UniqueRef<IPC::Encoder>&& encoder, Vector<std::unique_ptr<CyberCore::ThreadSafeImageBufferFlusher>> flushers)
     : m_connection(connection)
     , m_commitEncoder(encoder.moveToUniquePtr())
     , m_flushers(WTFMove(flushers))
@@ -443,7 +443,7 @@ void RemoteLayerTreeDrawingArea::BackingStoreFlusher::flush()
     m_connection->sendMessage(makeUniqueRefFromNonNullUniquePtr(WTFMove(m_commitEncoder)), { });
 }
 
-void RemoteLayerTreeDrawingArea::activityStateDidChange(OptionSet<WebCore::ActivityState::Flag>, ActivityStateChangeID activityStateChangeID, CompletionHandler<void()>&& callback)
+void RemoteLayerTreeDrawingArea::activityStateDidChange(OptionSet<CyberCore::ActivityState::Flag>, ActivityStateChangeID activityStateChangeID, CompletionHandler<void()>&& callback)
 {
     // FIXME: Should we suspend painting while not visible, like TiledCoreAnimationDrawingArea? Probably.
 
@@ -477,4 +477,4 @@ void RemoteLayerTreeDrawingArea::adoptLayersFromDrawingArea(DrawingArea& oldDraw
     m_remoteLayerTreeContext->adoptLayersFromContext(*oldRemoteDrawingArea.m_remoteLayerTreeContext);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

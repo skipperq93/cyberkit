@@ -28,7 +28,7 @@
 #include <CyberCore/IntSize.h>
 #include <wtf/Noncopyable.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPage;
 
@@ -45,8 +45,8 @@ public:
 
     virtual uint64_t window() const { ASSERT_NOT_REACHED(); return 0; }
     virtual uint64_t surfaceID() const { ASSERT_NOT_REACHED(); return 0; }
-    virtual bool hostResize(const WebCore::IntSize&);
-    virtual void clientResize(const WebCore::IntSize&) { };
+    virtual bool hostResize(const CyberCore::IntSize&);
+    virtual void clientResize(const CyberCore::IntSize&) { };
     virtual bool shouldPaintMirrored() const { return false; }
 
     virtual void initialize() { }
@@ -59,7 +59,7 @@ protected:
 
     WebPage& m_webPage;
     Client& m_client;
-    WebCore::IntSize m_size;
+    CyberCore::IntSize m_size;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

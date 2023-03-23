@@ -34,7 +34,7 @@
 #include <variant>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 // Object to access proof of process identity.
 // ProcessIdentifier identifies a process.

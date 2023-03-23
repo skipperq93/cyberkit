@@ -29,7 +29,7 @@
 #include <wtf/Markable.h>
 #include <wtf/WallTime.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CookieJar;
 class HTTPHeaderMap;

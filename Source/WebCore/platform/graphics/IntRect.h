@@ -58,7 +58,7 @@ namespace WTF {
 class TextStream;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class FloatRect;
 class LayoutRect;
@@ -263,4 +263,4 @@ WEBCORE_EXPORT WTF::TextStream& operator<<(WTF::TextStream&, const IntRect&);
 WEBCORE_EXPORT id makeNSArrayElement(const IntRect&);
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -59,7 +59,7 @@ class LeakDetector(object):
         callstacks = [
             'WTF::BitVector::OutOfLineBits::create', # https://bugs.webkit.org/show_bug.cgi?id=121662
             'WTF::BitVector::resizeOutOfLine', # https://bugs.webkit.org/show_bug.cgi?id=121662
-            'WebCore::createPrivateStorageSession', # <rdar://problem/35189565>
+            'CyberCore::createPrivateStorageSession', # <rdar://problem/35189565>
             'CIDeviceManagerStartMonitoring', # <rdar://problem/35711052>
             'NSSpellChecker init', # <rdar://problem/35434615>
             'NSColor controlHighlightColor', # <rdar://problem/35816332>

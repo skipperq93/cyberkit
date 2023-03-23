@@ -64,7 +64,7 @@
 #include <wtf/spi/darwin/OSVariantSPI.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 static void releaseNoncriticalMemory(MaintainMemoryCache maintainMemoryCache)
 {
@@ -238,4 +238,4 @@ void jettisonExpensiveObjectsOnTopLevelNavigation() { }
 void registerMemoryReleaseNotifyCallbacks() { }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

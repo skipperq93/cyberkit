@@ -40,7 +40,7 @@
 #include "ProcessIdentity.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 // Base class for GraphicsContextGL contexts that use ANGLE.
 class WEBCORE_EXPORT GraphicsContextGLANGLE : public GraphicsContextGL {

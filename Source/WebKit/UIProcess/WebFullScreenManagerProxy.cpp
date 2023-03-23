@@ -39,7 +39,7 @@
 #include <CyberCore/ScreenOrientationType.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 WebFullScreenManagerProxy::WebFullScreenManagerProxy(WebPageProxy& page, WebFullScreenManagerProxyClient& client)
     : m_page(page)
@@ -141,7 +141,7 @@ void WebFullScreenManagerProxy::restoreScrollPosition()
     m_page.send(Messages::WebFullScreenManager::RestoreScrollPosition());
 }
 
-void WebFullScreenManagerProxy::setFullscreenInsets(const WebCore::FloatBoxExtent& insets)
+void WebFullScreenManagerProxy::setFullscreenInsets(const CyberCore::FloatBoxExtent& insets)
 {
     m_page.send(Messages::WebFullScreenManager::SetFullscreenInsets(insets));
 }
@@ -212,7 +212,7 @@ void WebFullScreenManagerProxy::beganExitFullScreen(const IntRect& initialFrame,
     m_client.beganExitFullScreen(initialFrame, finalFrame);
 }
 
-bool WebFullScreenManagerProxy::lockFullscreenOrientation(WebCore::ScreenOrientationType orientation)
+bool WebFullScreenManagerProxy::lockFullscreenOrientation(CyberCore::ScreenOrientationType orientation)
 {
     return m_client.lockFullscreenOrientation(orientation);
 }

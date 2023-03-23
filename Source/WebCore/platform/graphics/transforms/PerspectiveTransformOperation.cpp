@@ -30,7 +30,7 @@
 #include <wtf/MathExtras.h>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<PerspectiveTransformOperation> PerspectiveTransformOperation::create(const std::optional<Length>& p)
 {
@@ -74,7 +74,7 @@ Ref<TransformOperation> PerspectiveTransformOperation::blend(const TransformOper
         toPInverse = ourInverse;
     }
 
-    double pInverse = WebCore::blend(fromPInverse, toPInverse, context);
+    double pInverse = CyberCore::blend(fromPInverse, toPInverse, context);
     std::optional<Length> p;
     if (pInverse > 0.0 && std::isnormal(pInverse)) {
         p = Length(1.0 / pInverse, LengthType::Fixed);
@@ -92,4 +92,4 @@ void PerspectiveTransformOperation::dump(TextStream& ts) const
     ts << ")";
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -27,15 +27,15 @@
 #import "WKWebProcessPlugInHitTestResultInternal.h"
 
 #import "WKWebProcessPlugInNodeHandleInternal.h"
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 
 @implementation WKWebProcessPlugInHitTestResult {
-    API::ObjectStorage<WebKit::InjectedBundleHitTestResult> _hitTestResult;
+    API::ObjectStorage<CyberKit::InjectedBundleHitTestResult> _hitTestResult;
 }
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainRunLoop(WKWebProcessPlugInHitTestResult.class, self))
+    if (CyberCoreObjCScheduleDeallocateOnMainRunLoop(WKWebProcessPlugInHitTestResult.class, self))
         return;
     _hitTestResult->~InjectedBundleHitTestResult();
     [super dealloc];
@@ -43,7 +43,7 @@
 
 - (WKWebProcessPlugInNodeHandle *)nodeHandle
 {
-    return WebKit::wrapper(_hitTestResult->nodeHandle());
+    return CyberKit::wrapper(_hitTestResult->nodeHandle());
 }
 
 #pragma mark WKObject protocol implementation

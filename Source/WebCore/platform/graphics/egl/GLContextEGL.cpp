@@ -54,7 +54,7 @@
 
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 #if USE(OPENGL_ES)
 static const char* gEGLAPIName = "OpenGL ES";
@@ -592,6 +592,6 @@ GCGLContext GLContextEGL::platformContext()
     return m_context;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(EGL)

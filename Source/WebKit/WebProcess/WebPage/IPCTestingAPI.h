@@ -27,24 +27,24 @@
 
 #if ENABLE(IPC_TESTING_API)
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMWrapperWorld;
 class Frame;
 
 };
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebFrame;
 class WebPage;
 
 namespace IPCTestingAPI {
 
-void inject(WebPage&, WebFrame&, WebCore::DOMWrapperWorld&);
+void inject(WebPage&, WebFrame&, CyberCore::DOMWrapperWorld&);
 
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

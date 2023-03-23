@@ -48,19 +48,19 @@ DatabaseUtilities::~DatabaseUtilities()
     ASSERT(!RunLoop::isMain());
 }
 
-WebCore::SQLiteStatementAutoResetScope DatabaseUtilities::scopedStatement(std::unique_ptr<WebCore::SQLiteStatement>& statement, ASCIILiteral query, ASCIILiteral logString) const
+CyberCore::SQLiteStatementAutoResetScope DatabaseUtilities::scopedStatement(std::unique_ptr<CyberCore::SQLiteStatement>& statement, ASCIILiteral query, ASCIILiteral logString) const
 {
     ASSERT(!RunLoop::isMain());
     if (!statement) {
         auto statementOrError = m_database.prepareHeapStatement(query);
         if (!statementOrError) {
             RELEASE_LOG_ERROR(PrivateClickMeasurement, "%p - DatabaseUtilities::%s failed to prepare statement, error message: %" PUBLIC_LOG_STRING, this, logString.characters(), m_database.lastErrorMsg());
-            return WebCore::SQLiteStatementAutoResetScope { };
+            return CyberCore::SQLiteStatementAutoResetScope { };
         }
         statement = statementOrError.value().moveToUniquePtr();
         ASSERT(m_database.isOpen());
     }
-    return WebCore::SQLiteStatementAutoResetScope { statement.get() };
+    return CyberCore::SQLiteStatementAutoResetScope { statement.get() };
 }
 
 ScopeExit<Function<void()>> DatabaseUtilities::beginTransactionIfNecessary()
@@ -131,7 +131,7 @@ void DatabaseUtilities::interrupt()
         m_database.interrupt();
 }
 
-WebCore::PrivateClickMeasurement DatabaseUtilities::buildPrivateClickMeasurementFromDatabase(WebCore::SQLiteStatement& statement, PrivateClickMeasurementAttributionType attributionType) const
+CyberCore::PrivateClickMeasurement DatabaseUtilities::buildPrivateClickMeasurementFromDatabase(CyberCore::SQLiteStatement& statement, PrivateClickMeasurementAttributionType attributionType) const
 {
     ASSERT(!RunLoop::isMain());
     auto sourceSiteDomain = getDomainStringFromDomainID(statement.columnInt(0));
@@ -152,7 +152,7 @@ WebCore::PrivateClickMeasurement DatabaseUtilities::buildPrivateClickMeasurement
     if (bundleID.isEmpty())
         bundleID = safariBundleID;
 
-    WebCore::PrivateClickMeasurement attribution(WebCore::PrivateClickMeasurement::SourceID(sourceID), WebCore::PCM::SourceSite(WebCore::RegistrableDomain::uncheckedCreateFromRegistrableDomainString(sourceSiteDomain)), WebCore::PCM::AttributionDestinationSite(WebCore::RegistrableDomain::uncheckedCreateFromRegistrableDomainString(destinationSiteDomain)), bundleID, WallTime::fromRawSeconds(timeOfAdClick), WebCore::PCM::AttributionEphemeral::No);
+    CyberCore::PrivateClickMeasurement attribution(CyberCore::PrivateClickMeasurement::SourceID(sourceID), CyberCore::PCM::SourceSite(CyberCore::RegistrableDomain::uncheckedCreateFromRegistrableDomainString(sourceSiteDomain)), CyberCore::PCM::AttributionDestinationSite(CyberCore::RegistrableDomain::uncheckedCreateFromRegistrableDomainString(destinationSiteDomain)), bundleID, WallTime::fromRawSeconds(timeOfAdClick), CyberCore::PCM::AttributionEphemeral::No);
 
     // These indices are zero-based: https://www.sqlite.org/c3ref/column_blob.html "The leftmost column of the result set has the index 0".
     if (attributionType == PrivateClickMeasurementAttributionType::Attributed) {
@@ -165,9 +165,9 @@ WebCore::PrivateClickMeasurement DatabaseUtilities::buildPrivateClickMeasurement
         auto destinationKeyID = statement.columnText(14);
 
         if (attributionTriggerData != -1)
-            attribution.setAttribution(WebCore::PCM::AttributionTriggerData { static_cast<uint8_t>(attributionTriggerData), WebCore::PCM::AttributionTriggerData::Priority::PriorityValue(priority), { }, { }, { }, { }, { }, { } });
+            attribution.setAttribution(CyberCore::PCM::AttributionTriggerData { static_cast<uint8_t>(attributionTriggerData), CyberCore::PCM::AttributionTriggerData::Priority::PriorityValue(priority), { }, { }, { }, { }, { }, { } });
 
-        WebCore::PCM::DestinationSecretToken destinationSecretToken;
+        CyberCore::PCM::DestinationSecretToken destinationSecretToken;
         destinationSecretToken.tokenBase64URL = destinationToken;
         destinationSecretToken.signatureBase64URL = destinationSignature;
         destinationSecretToken.keyIDBase64URL = destinationKeyID;
@@ -187,7 +187,7 @@ WebCore::PrivateClickMeasurement DatabaseUtilities::buildPrivateClickMeasurement
         attribution.setTimesToSend({ sourceEarliestTimeToSend, destinationEarliestTimeToSend });
     }
 
-    WebCore::PCM::SourceSecretToken sourceSecretToken;
+    CyberCore::PCM::SourceSecretToken sourceSecretToken;
     sourceSecretToken.tokenBase64URL = token;
     sourceSecretToken.signatureBase64URL = signature;
     sourceSecretToken.keyIDBase64URL = keyID;
@@ -243,7 +243,7 @@ TableAndIndexPair DatabaseUtilities::currentTableAndIndexQueries(const String& t
     return std::make_pair<String, std::optional<String>>(WTFMove(createTableQuery), WTFMove(index));
 }
 
-static Expected<WebCore::SQLiteStatement, int> insertDistinctValuesInTableStatement(WebCore::SQLiteDatabase& database, const String& table)
+static Expected<CyberCore::SQLiteStatement, int> insertDistinctValuesInTableStatement(CyberCore::SQLiteDatabase& database, const String& table)
 {
     if (table == "SubframeUnderTopFrameDomains"_s)
         return database.prepareStatement("INSERT INTO SubframeUnderTopFrameDomains SELECT subFrameDomainID, MAX(lastUpdated), topFrameDomainID FROM _SubframeUnderTopFrameDomains GROUP BY subFrameDomainID, topFrameDomainID"_s);
@@ -266,7 +266,7 @@ void DatabaseUtilities::migrateDataToNewTablesIfNecessary()
     if (!needsUpdatedSchema())
         return;
 
-    WebCore::SQLiteTransaction transaction(m_database);
+    CyberCore::SQLiteTransaction transaction(m_database);
     transaction.begin();
 
     for (auto& table : expectedTableAndIndexQueries().keys()) {

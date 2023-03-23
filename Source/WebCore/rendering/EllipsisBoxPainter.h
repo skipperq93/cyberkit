@@ -26,7 +26,7 @@
 
 #include "InlineIteratorLineBox.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct PaintInfo;
 

@@ -37,10 +37,10 @@
 #include <CyberCore/Settings.h>
 #include <CyberCore/StorageType.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
-Ref<StorageNamespaceImpl> StorageNamespaceImpl::createSessionStorageNamespace(Identifier identifier, PageIdentifier pageID, const WebCore::SecurityOrigin& topLevelOrigin, unsigned quotaInBytes)
+Ref<StorageNamespaceImpl> StorageNamespaceImpl::createSessionStorageNamespace(Identifier identifier, PageIdentifier pageID, const CyberCore::SecurityOrigin& topLevelOrigin, unsigned quotaInBytes)
 {
     return adoptRef(*new StorageNamespaceImpl(StorageType::Session, pageID, &topLevelOrigin, quotaInBytes, identifier));
 }
@@ -50,12 +50,12 @@ Ref<StorageNamespaceImpl> StorageNamespaceImpl::createLocalStorageNamespace(unsi
     return adoptRef(*new StorageNamespaceImpl(StorageType::Local, std::nullopt, nullptr, quotaInBytes));
 }
 
-Ref<StorageNamespaceImpl> StorageNamespaceImpl::createTransientLocalStorageNamespace(WebCore::SecurityOrigin& topLevelOrigin, uint64_t quotaInBytes)
+Ref<StorageNamespaceImpl> StorageNamespaceImpl::createTransientLocalStorageNamespace(CyberCore::SecurityOrigin& topLevelOrigin, uint64_t quotaInBytes)
 {
     return adoptRef(*new StorageNamespaceImpl(StorageType::TransientLocal, std::nullopt, &topLevelOrigin, quotaInBytes));
 }
 
-StorageNamespaceImpl::StorageNamespaceImpl(WebCore::StorageType storageType, const std::optional<PageIdentifier>& pageIdentifier, const WebCore::SecurityOrigin* topLevelOrigin, unsigned quotaInBytes, std::optional<Identifier> storageNamespaceID)
+StorageNamespaceImpl::StorageNamespaceImpl(CyberCore::StorageType storageType, const std::optional<PageIdentifier>& pageIdentifier, const CyberCore::SecurityOrigin* topLevelOrigin, unsigned quotaInBytes, std::optional<Identifier> storageNamespaceID)
     : m_storageType(storageType)
     , m_sessionPageID(pageIdentifier)
     , m_topLevelOrigin(topLevelOrigin)
@@ -102,4 +102,4 @@ PageIdentifier StorageNamespaceImpl::sessionStoragePageID() const
     return *m_sessionPageID;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

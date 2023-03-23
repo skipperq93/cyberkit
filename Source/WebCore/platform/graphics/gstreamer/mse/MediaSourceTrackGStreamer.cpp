@@ -37,7 +37,7 @@
 GST_DEBUG_CATEGORY_EXTERN(webkit_mse_debug);
 #define GST_CAT_DEFAULT webkit_mse_debug
 
-namespace WebCore {
+namespace CyberCore {
 
 MediaSourceTrackGStreamer::MediaSourceTrackGStreamer(TrackPrivateBaseGStreamer::TrackType type, AtomString trackId, GRefPtr<GstCaps>&& initialCaps)
     : m_type(type)

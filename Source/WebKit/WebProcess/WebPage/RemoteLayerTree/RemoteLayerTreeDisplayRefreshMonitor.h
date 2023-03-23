@@ -29,12 +29,12 @@
 #include <CyberCore/AnimationFrameRate.h>
 #include <CyberCore/DisplayRefreshMonitor.h>
 
-namespace WebKit {
+namespace CyberKit {
 
-class RemoteLayerTreeDisplayRefreshMonitor : public WebCore::DisplayRefreshMonitor {
+class RemoteLayerTreeDisplayRefreshMonitor : public CyberCore::DisplayRefreshMonitor {
 friend class RemoteLayerTreeDrawingArea;
 public:
-    static Ref<RemoteLayerTreeDisplayRefreshMonitor> create(WebCore::PlatformDisplayID displayID, RemoteLayerTreeDrawingArea& drawingArea)
+    static Ref<RemoteLayerTreeDisplayRefreshMonitor> create(CyberCore::PlatformDisplayID displayID, RemoteLayerTreeDrawingArea& drawingArea)
     {
         return adoptRef(*new RemoteLayerTreeDisplayRefreshMonitor(displayID, drawingArea));
     }
@@ -46,20 +46,20 @@ public:
     void updateDrawingArea(RemoteLayerTreeDrawingArea&);
 
 private:
-    explicit RemoteLayerTreeDisplayRefreshMonitor(WebCore::PlatformDisplayID, RemoteLayerTreeDrawingArea&);
+    explicit RemoteLayerTreeDisplayRefreshMonitor(CyberCore::PlatformDisplayID, RemoteLayerTreeDrawingArea&);
 
     bool startNotificationMechanism() final { return true; }
     void stopNotificationMechanism() final { }
-    std::optional<WebCore::FramesPerSecond> displayNominalFramesPerSecond() final;
+    std::optional<CyberCore::FramesPerSecond> displayNominalFramesPerSecond() final;
 
     void triggerDisplayDidRefresh();
 
-    void adjustPreferredFramesPerSecond(WebCore::FramesPerSecond) final;
+    void adjustPreferredFramesPerSecond(CyberCore::FramesPerSecond) final;
 
     WeakPtr<RemoteLayerTreeDrawingArea> m_drawingArea;
 
-    WebCore::FramesPerSecond m_preferredFramesPerSecond;
-    WebCore::DisplayUpdate m_currentUpdate;
+    CyberCore::FramesPerSecond m_preferredFramesPerSecond;
+    CyberCore::DisplayUpdate m_currentUpdate;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

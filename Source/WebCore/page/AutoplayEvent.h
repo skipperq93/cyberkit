@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class AutoplayEvent : uint8_t {
     DidPreventMediaFromPlaying,
@@ -40,4 +40,4 @@ enum class AutoplayEventFlags : uint8_t {
     MediaIsMainContent = 1 << 2,
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -29,7 +29,7 @@
 
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FloatSize;
 
@@ -40,6 +40,6 @@ public:
     virtual void requestAttachmentIcon(const String& identifier, const FloatSize&) = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ATTACHMENT_ELEMENT)

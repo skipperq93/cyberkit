@@ -36,7 +36,7 @@
 #include <arm_neon.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 RefPtr<FilterImage> FilterImage::create(const FloatRect& primitiveSubregion, const FloatRect& imageRect, const IntRect& absoluteImageRect, bool isAlphaImage, bool isValidPremultiplied, RenderingMode renderingMode, const DestinationColorSpace& colorSpace, ImageBufferAllocator& allocator)
 {
@@ -369,4 +369,4 @@ void FilterImage::transformToColorSpace(const DestinationColorSpace& colorSpace)
 #endif
 }
 
-} // namespace WebCore
+} // namespace CyberCore

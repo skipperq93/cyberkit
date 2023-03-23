@@ -476,7 +476,7 @@ void webkit_network_session_allow_tls_certificate_for_host(WebKitNetworkSession*
     g_return_if_fail(G_IS_TLS_CERTIFICATE(certificate));
     g_return_if_fail(host);
 
-    auto certificateInfo = WebCore::CertificateInfo(certificate, static_cast<GTlsCertificateFlags>(0));
+    auto certificateInfo = CyberCore::CertificateInfo(certificate, static_cast<GTlsCertificateFlags>(0));
     auto& websiteDataStore = webkitWebsiteDataManagerGetDataStore(session->priv->websiteDataManager.get());
     websiteDataStore.allowSpecificHTTPSCertificateForHost(certificateInfo, String::fromUTF8(host));
 }
@@ -510,7 +510,7 @@ void webkit_network_session_set_proxy_settings(WebKitNetworkSession* session, We
         websiteDataStore.setNetworkProxySettings({ });
         break;
     case WEBKIT_NETWORK_PROXY_MODE_NO_PROXY:
-        websiteDataStore.setNetworkProxySettings(WebCore::SoupNetworkProxySettings(WebCore::SoupNetworkProxySettings::Mode::NoProxy));
+        websiteDataStore.setNetworkProxySettings(CyberCore::SoupNetworkProxySettings(CyberCore::SoupNetworkProxySettings::Mode::NoProxy));
         break;
     case WEBKIT_NETWORK_PROXY_MODE_CUSTOM:
         auto settings = webkitNetworkProxySettingsGetNetworkProxySettings(proxySettings);
@@ -646,7 +646,7 @@ WebKitDownload* webkit_network_session_download_uri(WebKitNetworkSession* sessio
     g_return_val_if_fail(WEBKIT_IS_NETWORK_SESSION(session), nullptr);
     g_return_val_if_fail(uri, nullptr);
 
-    WebCore::ResourceRequest request(String::fromUTF8(uri));
+    CyberCore::ResourceRequest request(String::fromUTF8(uri));
     auto& websiteDataStore = webkitWebsiteDataManagerGetDataStore(session->priv->websiteDataManager.get());
     auto& downloadProxy = websiteDataStore.createDownloadProxy(adoptRef(*new API::DownloadClient), request, nullptr, { });
     auto download = webkitDownloadCreate(downloadProxy);

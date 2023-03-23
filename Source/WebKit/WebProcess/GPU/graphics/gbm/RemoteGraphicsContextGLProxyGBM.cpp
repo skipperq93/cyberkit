@@ -44,18 +44,18 @@
 
 namespace WebKit {
 
-class NicosiaDisplayDelegate final : public WebCore::GraphicsLayerContentsDisplayDelegate, public Nicosia::ContentLayerTextureMapperImpl::Client {
+class NicosiaDisplayDelegate final : public CyberCore::GraphicsLayerContentsDisplayDelegate, public Nicosia::ContentLayerTextureMapperImpl::Client {
 public:
     explicit NicosiaDisplayDelegate(bool isOpaque);
     virtual ~NicosiaDisplayDelegate();
 
-    void present(WebCore::DMABufObject&& dmabufObject)
+    void present(CyberCore::DMABufObject&& dmabufObject)
     {
         m_pending = WTFMove(dmabufObject);
     }
 
 private:
-    // WebCore::GraphicsLayerContentsDisplayDelegate
+    // CyberCore::GraphicsLayerContentsDisplayDelegate
     Nicosia::PlatformLayer* platformLayer() const final;
 
     // Nicosia::ContentLayerTextureMapperImpl::Client
@@ -63,13 +63,13 @@ private:
 
     bool m_isOpaque { false };
     RefPtr<Nicosia::ContentLayer> m_contentLayer;
-    WebCore::DMABufObject m_pending { WebCore::DMABufObject(0) };
+    CyberCore::DMABufObject m_pending { CyberCore::DMABufObject(0) };
 };
 
 NicosiaDisplayDelegate::NicosiaDisplayDelegate(bool isOpaque)
     : m_isOpaque(isOpaque)
 {
-    m_contentLayer = Nicosia::ContentLayer::create(Nicosia::ContentLayerTextureMapperImpl::createFactory(*this, adoptRef(*new WebCore::TextureMapperPlatformLayerProxyDMABuf)));
+    m_contentLayer = Nicosia::ContentLayer::create(Nicosia::ContentLayerTextureMapperImpl::createFactory(*this, adoptRef(*new CyberCore::TextureMapperPlatformLayerProxyDMABuf)));
 }
 
 NicosiaDisplayDelegate::~NicosiaDisplayDelegate()
@@ -83,40 +83,40 @@ Nicosia::PlatformLayer* NicosiaDisplayDelegate::platformLayer() const
 void NicosiaDisplayDelegate::swapBuffersIfNeeded()
 {
     auto& proxy = downcast<Nicosia::ContentLayerTextureMapperImpl>(m_contentLayer->impl()).proxy();
-    ASSERT(is<WebCore::TextureMapperPlatformLayerProxyDMABuf>(proxy));
+    ASSERT(is<CyberCore::TextureMapperPlatformLayerProxyDMABuf>(proxy));
 
     if (!!m_pending.handle) {
         Locker locker { proxy.lock() };
 
-        WebCore::TextureMapperGL::Flags flags = WebCore::TextureMapperGL::ShouldFlipTexture;
+        CyberCore::TextureMapperGL::Flags flags = CyberCore::TextureMapperGL::ShouldFlipTexture;
         if (!m_isOpaque)
-            flags |= WebCore::TextureMapperGL::ShouldBlend;
+            flags |= CyberCore::TextureMapperGL::ShouldBlend;
 
-        downcast<WebCore::TextureMapperPlatformLayerProxyDMABuf>(proxy).pushDMABuf(WTFMove(m_pending),
+        downcast<CyberCore::TextureMapperPlatformLayerProxyDMABuf>(proxy).pushDMABuf(WTFMove(m_pending),
             [](auto&& object) { return object; }, flags);
     }
-    m_pending = WebCore::DMABufObject(0);
+    m_pending = CyberCore::DMABufObject(0);
 }
 
 class RemoteGraphicsContextGLProxyGBM final : public RemoteGraphicsContextGLProxy {
 public:
-    RemoteGraphicsContextGLProxyGBM(IPC::Connection&, Ref<IPC::StreamClientConnection>, const WebCore::GraphicsContextGLAttributes&, Ref<RemoteVideoFrameObjectHeapProxy>&&);
+    RemoteGraphicsContextGLProxyGBM(IPC::Connection&, Ref<IPC::StreamClientConnection>, const CyberCore::GraphicsContextGLAttributes&, Ref<RemoteVideoFrameObjectHeapProxy>&&);
     virtual ~RemoteGraphicsContextGLProxyGBM() = default;
 
 private:
-    // WebCore::GraphicsContextGL
-    RefPtr<WebCore::GraphicsLayerContentsDisplayDelegate> layerContentsDisplayDelegate() final;
+    // CyberCore::GraphicsContextGL
+    RefPtr<CyberCore::GraphicsLayerContentsDisplayDelegate> layerContentsDisplayDelegate() final;
     void prepareForDisplay() final;
 
     Ref<NicosiaDisplayDelegate> m_layerContentsDisplayDelegate;
 };
 
-RemoteGraphicsContextGLProxyGBM::RemoteGraphicsContextGLProxyGBM(IPC::Connection& connection, Ref<IPC::StreamClientConnection> streamConnection, const WebCore::GraphicsContextGLAttributes& attributes, Ref<RemoteVideoFrameObjectHeapProxy>&& videoFrameObjectHeapProxy)
+RemoteGraphicsContextGLProxyGBM::RemoteGraphicsContextGLProxyGBM(IPC::Connection& connection, Ref<IPC::StreamClientConnection> streamConnection, const CyberCore::GraphicsContextGLAttributes& attributes, Ref<RemoteVideoFrameObjectHeapProxy>&& videoFrameObjectHeapProxy)
     : RemoteGraphicsContextGLProxy(connection, WTFMove(streamConnection), attributes, WTFMove(videoFrameObjectHeapProxy))
     , m_layerContentsDisplayDelegate(adoptRef(*new NicosiaDisplayDelegate(!attributes.alpha)))
 { }
 
-RefPtr<WebCore::GraphicsLayerContentsDisplayDelegate> RemoteGraphicsContextGLProxyGBM::layerContentsDisplayDelegate()
+RefPtr<CyberCore::GraphicsLayerContentsDisplayDelegate> RemoteGraphicsContextGLProxyGBM::layerContentsDisplayDelegate()
 {
     return m_layerContentsDisplayDelegate.copyRef();
 }
@@ -137,7 +137,7 @@ void RemoteGraphicsContextGLProxyGBM::prepareForDisplay()
     markLayerComposited();
 }
 
-Ref<RemoteGraphicsContextGLProxy> RemoteGraphicsContextGLProxy::platformCreate(IPC::Connection& connection, Ref<IPC::StreamClientConnection> streamConnection, const WebCore::GraphicsContextGLAttributes& attributes, Ref<RemoteVideoFrameObjectHeapProxy>&& videoFrameObjectHeapProxy)
+Ref<RemoteGraphicsContextGLProxy> RemoteGraphicsContextGLProxy::platformCreate(IPC::Connection& connection, Ref<IPC::StreamClientConnection> streamConnection, const CyberCore::GraphicsContextGLAttributes& attributes, Ref<RemoteVideoFrameObjectHeapProxy>&& videoFrameObjectHeapProxy)
 {
     return adoptRef(*new RemoteGraphicsContextGLProxyGBM(connection, WTFMove(streamConnection), attributes, WTFMove(videoFrameObjectHeapProxy)));
 }

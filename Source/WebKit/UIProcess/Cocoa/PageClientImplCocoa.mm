@@ -38,7 +38,7 @@ namespace WebKit {
 
 PageClientImplCocoa::PageClientImplCocoa(WKWebView *webView)
     : m_webView { webView }
-    , m_alternativeTextUIController { makeUnique<WebCore::AlternativeTextUIController>() }
+    , m_alternativeTextUIController { makeUnique<CyberCore::AlternativeTextUIController>() }
 {
 }
 
@@ -147,7 +147,7 @@ NSSet *PageClientImplCocoa::serializableFileWrapperClasses() const
 #endif
 
 #if ENABLE(APP_HIGHLIGHTS)
-void PageClientImplCocoa::storeAppHighlight(const WebCore::AppHighlight &highlight)
+void PageClientImplCocoa::storeAppHighlight(const CyberCore::AppHighlight &highlight)
 {
     [m_webView _storeAppHighlight:highlight];
 }
@@ -172,27 +172,27 @@ void PageClientImplCocoa::gpuProcessDidExit()
 }
 #endif
 
-WebCore::DictationContext PageClientImplCocoa::addDictationAlternatives(NSTextAlternatives *alternatives)
+CyberCore::DictationContext PageClientImplCocoa::addDictationAlternatives(NSTextAlternatives *alternatives)
 {
     return m_alternativeTextUIController->addAlternatives(alternatives);
 }
 
-void PageClientImplCocoa::replaceDictationAlternatives(NSTextAlternatives *alternatives, WebCore::DictationContext context)
+void PageClientImplCocoa::replaceDictationAlternatives(NSTextAlternatives *alternatives, CyberCore::DictationContext context)
 {
     m_alternativeTextUIController->replaceAlternatives(alternatives, context);
 }
 
-void PageClientImplCocoa::removeDictationAlternatives(WebCore::DictationContext dictationContext)
+void PageClientImplCocoa::removeDictationAlternatives(CyberCore::DictationContext dictationContext)
 {
     m_alternativeTextUIController->removeAlternatives(dictationContext);
 }
 
-Vector<String> PageClientImplCocoa::dictationAlternatives(WebCore::DictationContext dictationContext)
+Vector<String> PageClientImplCocoa::dictationAlternatives(CyberCore::DictationContext dictationContext)
 {
     return makeVector<String>(platformDictationAlternatives(dictationContext).alternativeStrings);
 }
 
-NSTextAlternatives *PageClientImplCocoa::platformDictationAlternatives(WebCore::DictationContext dictationContext)
+NSTextAlternatives *PageClientImplCocoa::platformDictationAlternatives(CyberCore::DictationContext dictationContext)
 {
     return m_alternativeTextUIController->alternativesForContext(dictationContext);
 }

@@ -28,7 +28,7 @@
 
 #include "XPathExpressionNode.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace XPath {
 
 class Function : public Expression {
@@ -46,4 +46,4 @@ private:
 };
 
 } // namespace XPath
-} // namespace WebCore
+} // namespace CyberCore

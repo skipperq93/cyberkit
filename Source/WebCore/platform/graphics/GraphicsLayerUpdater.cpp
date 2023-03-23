@@ -29,7 +29,7 @@
 #include "DisplayRefreshMonitorManager.h"
 #include "GraphicsLayer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 GraphicsLayerUpdater::GraphicsLayerUpdater(GraphicsLayerUpdaterClient& client, PlatformDisplayID displayID)
     : m_client(client)
@@ -68,4 +68,4 @@ DisplayRefreshMonitorFactory* GraphicsLayerUpdater::displayRefreshMonitorFactory
     return m_client.displayRefreshMonitorFactory();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

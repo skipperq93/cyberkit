@@ -37,8 +37,8 @@
 #include <CyberCore/RunLoopObserver.h>
 #include <wtf/text/TextStream.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 // Avoid repeated start/stop IPC when rescheduled inside the callback.
 constexpr unsigned maxUnscheduledFireCount { 1 };
@@ -109,6 +109,6 @@ void DisplayRefreshMonitorMac::adjustPreferredFramesPerSecond(FramesPerSecond pr
 
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(MAC)

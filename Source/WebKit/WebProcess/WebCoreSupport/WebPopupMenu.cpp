@@ -23,7 +23,7 @@
 #include "WebPopupMenu.h"
 
 #include "PlatformPopupMenuData.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebPage.h"
 #include "WebPageProxyMessages.h"
 #include "WebProcess.h"
@@ -31,8 +31,8 @@
 #include <CyberCore/NotImplemented.h>
 #include <CyberCore/PopupMenuClient.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 Ref<WebPopupMenu> WebPopupMenu::create(WebPage* page, PopupMenuClient* client)
 {
@@ -132,10 +132,10 @@ void WebPopupMenu::updateFromElement()
 }
 
 #if !PLATFORM(COCOA) && !PLATFORM(WIN)
-void WebPopupMenu::setUpPlatformData(const WebCore::IntRect&, PlatformPopupMenuData&)
+void WebPopupMenu::setUpPlatformData(const CyberCore::IntRect&, PlatformPopupMenuData&)
 {
     notImplemented();
 }
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit

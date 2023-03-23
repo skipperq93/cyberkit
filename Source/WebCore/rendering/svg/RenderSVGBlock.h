@@ -21,7 +21,7 @@
 
 #include "RenderBlockFlow.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGElement;
 class SVGGraphicsElement;
@@ -68,6 +68,6 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderSVGBlock, isRenderSVGBlock())

@@ -45,7 +45,7 @@
 
 namespace WebKit {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 static inline bool isSameOrigin(const URL& url, const SecurityOrigin* origin)
 {
@@ -284,7 +284,7 @@ void NetworkLoadChecker::continueCheckingRequestOrDoSyntheticRedirect(ResourceRe
     this->continueCheckingRequest(WTFMove(currentRequest), WTFMove(handler));
 }
 
-bool NetworkLoadChecker::isAllowedByContentSecurityPolicy(const ResourceRequest& request, WebCore::ContentSecurityPolicyClient* client)
+bool NetworkLoadChecker::isAllowedByContentSecurityPolicy(const ResourceRequest& request, CyberCore::ContentSecurityPolicyClient* client)
 {
     auto* contentSecurityPolicy = this->contentSecurityPolicy();
     contentSecurityPolicy->setClient(client);
@@ -487,7 +487,7 @@ void NetworkLoadChecker::processContentRuleListsForLoad(ResourceRequest&& reques
         }
 
         auto results = backend.processContentRuleListsForPingLoad(request.url(), m_mainDocumentURL, m_frameURL);
-        WebCore::ContentExtensions::applyResultsToRequest(ContentRuleListResults { results }, nullptr, request);
+        CyberCore::ContentExtensions::applyResultsToRequest(ContentRuleListResults { results }, nullptr, request);
         callback(ContentExtensionResult { WTFMove(request), results });
     });
 }

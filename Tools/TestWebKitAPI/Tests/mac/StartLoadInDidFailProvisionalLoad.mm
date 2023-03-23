@@ -53,7 +53,7 @@ static WebView *testView = nullptr;
 
 namespace TestWebKitAPI {
 
-TEST(WebKitLegacy, StartLoadInDidFailProvisionalLoad)
+TEST(CyberKitLegacy, StartLoadInDidFailProvisionalLoad)
 {
     auto webView = adoptNS([[WebView alloc] init]);
     testView = webView.get();

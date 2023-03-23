@@ -24,14 +24,14 @@
 #if ENABLE(GPU_PROCESS) && PLATFORM(IOS_FAMILY)
 
 messages -> RemoteMediaSessionHelper NotRefCounted {
-    ApplicationWillEnterForeground(enum:bool WebKit::RemoteMediaSessionHelper::SuspendedUnderLock suspendedUnderLock)
-    ApplicationDidEnterBackground(enum:bool WebKit::RemoteMediaSessionHelper::SuspendedUnderLock suspendedUnderLock)
+    ApplicationWillEnterForeground(enum:bool CyberKit::RemoteMediaSessionHelper::SuspendedUnderLock suspendedUnderLock)
+    ApplicationDidEnterBackground(enum:bool CyberKit::RemoteMediaSessionHelper::SuspendedUnderLock suspendedUnderLock)
     ApplicationWillBecomeInactive()
     ApplicationDidBecomeActive()
-    ExternalOutputDeviceAvailableDidChange(enum:bool WebKit::RemoteMediaSessionHelper::HasAvailableTargets hasAvailableTargets)
-    IsPlayingToAutomotiveHeadUnitDidChange(enum:bool WebKit::RemoteMediaSessionHelper::PlayingToAutomotiveHeadUnit isPlayingToAutomotiveHeadUnit)
-    ActiveAudioRouteDidChange(enum:bool WebKit::RemoteMediaSessionHelper::ShouldPause shouldPause)
-    ActiveVideoRouteDidChange(enum:bool WebKit::RemoteMediaSessionHelper::SupportsAirPlayVideo supportsAirPlayVideo, WebCore::MediaPlaybackTargetContext target)
+    ExternalOutputDeviceAvailableDidChange(enum:bool CyberKit::RemoteMediaSessionHelper::HasAvailableTargets hasAvailableTargets)
+    IsPlayingToAutomotiveHeadUnitDidChange(enum:bool CyberKit::RemoteMediaSessionHelper::PlayingToAutomotiveHeadUnit isPlayingToAutomotiveHeadUnit)
+    ActiveAudioRouteDidChange(enum:bool CyberKit::RemoteMediaSessionHelper::ShouldPause shouldPause)
+    ActiveVideoRouteDidChange(enum:bool CyberKit::RemoteMediaSessionHelper::SupportsAirPlayVideo supportsAirPlayVideo, CyberCore::MediaPlaybackTargetContext target)
 }
 
 #endif

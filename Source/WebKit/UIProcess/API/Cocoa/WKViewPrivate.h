@@ -130,7 +130,7 @@
 
 - (void)_didChangeContentSize:(NSSize)newSize;
 
-- (void)_gestureEventWasNotHandledByWebCore:(NSEvent *)event;
+- (void)_gestureEventWasNotHandledByCyberCore:(NSEvent *)event;
 - (void)_simulateMouseMove:(NSEvent *)event;
 
 - (void)_setShouldSuppressFirstResponderChanges:(BOOL)shouldSuppress WK_API_AVAILABLE(macos(10.13.4));

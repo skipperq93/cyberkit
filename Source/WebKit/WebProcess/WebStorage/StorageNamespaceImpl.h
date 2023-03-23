@@ -36,25 +36,25 @@
 #include <pal/SessionID.h>
 #include <wtf/HashMap.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class StorageAreaMap;
 class WebPage;
 
-class StorageNamespaceImpl final : public WebCore::StorageNamespace {
+class StorageNamespaceImpl final : public CyberCore::StorageNamespace {
 public:
     using Identifier = StorageNamespaceIdentifier;
 
-    static Ref<StorageNamespaceImpl> createSessionStorageNamespace(Identifier, WebCore::PageIdentifier, const WebCore::SecurityOrigin&, unsigned quotaInBytes);
+    static Ref<StorageNamespaceImpl> createSessionStorageNamespace(Identifier, CyberCore::PageIdentifier, const CyberCore::SecurityOrigin&, unsigned quotaInBytes);
     static Ref<StorageNamespaceImpl> createLocalStorageNamespace(unsigned quotaInBytes);
-    static Ref<StorageNamespaceImpl> createTransientLocalStorageNamespace(WebCore::SecurityOrigin& topLevelOrigin, uint64_t quotaInBytes);
+    static Ref<StorageNamespaceImpl> createTransientLocalStorageNamespace(CyberCore::SecurityOrigin& topLevelOrigin, uint64_t quotaInBytes);
 
     virtual ~StorageNamespaceImpl() = default;
 
-    WebCore::StorageType storageType() const { return m_storageType; }
+    CyberCore::StorageType storageType() const { return m_storageType; }
     std::optional<Identifier> storageNamespaceID() const { return m_storageNamespaceID; }
-    WebCore::PageIdentifier sessionStoragePageID() const;
-    const WebCore::SecurityOrigin* topLevelOrigin() const final { return m_topLevelOrigin.get(); }
+    CyberCore::PageIdentifier sessionStoragePageID() const;
+    const CyberCore::SecurityOrigin* topLevelOrigin() const final { return m_topLevelOrigin.get(); }
     unsigned quotaInBytes() const { return m_quotaInBytes; }
     PAL::SessionID sessionID() const override;
 
@@ -63,23 +63,23 @@ public:
     void setSessionIDForTesting(PAL::SessionID) override;
 
 private:
-    StorageNamespaceImpl(WebCore::StorageType, const std::optional<WebCore::PageIdentifier>&, const WebCore::SecurityOrigin* topLevelOrigin, unsigned quotaInBytes, std::optional<Identifier> = std::nullopt);
+    StorageNamespaceImpl(CyberCore::StorageType, const std::optional<CyberCore::PageIdentifier>&, const CyberCore::SecurityOrigin* topLevelOrigin, unsigned quotaInBytes, std::optional<Identifier> = std::nullopt);
 
-    Ref<WebCore::StorageArea> storageArea(const WebCore::SecurityOrigin&) final;
+    Ref<CyberCore::StorageArea> storageArea(const CyberCore::SecurityOrigin&) final;
     uint64_t storageAreaMapCountForTesting() const final { return m_storageAreaMaps.size(); }
 
     // FIXME: This is only valid for session storage and should probably be moved to a subclass.
-    Ref<WebCore::StorageNamespace> copy(WebCore::Page&) override;
+    Ref<CyberCore::StorageNamespace> copy(CyberCore::Page&) override;
 
-    const WebCore::StorageType m_storageType;
-    std::optional<WebCore::PageIdentifier> m_sessionPageID;
+    const CyberCore::StorageType m_storageType;
+    std::optional<CyberCore::PageIdentifier> m_sessionPageID;
 
     // Used for transient local storage and session storage namespaces, nullptr otherwise.
-    const RefPtr<const WebCore::SecurityOrigin> m_topLevelOrigin;
+    const RefPtr<const CyberCore::SecurityOrigin> m_topLevelOrigin;
     const unsigned m_quotaInBytes;
     std::optional<Identifier> m_storageNamespaceID;
 
-    HashMap<WebCore::SecurityOriginData, std::unique_ptr<StorageAreaMap>> m_storageAreaMaps;
+    HashMap<CyberCore::SecurityOriginData, std::unique_ptr<StorageAreaMap>> m_storageAreaMaps;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

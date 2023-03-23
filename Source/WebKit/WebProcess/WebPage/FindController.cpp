@@ -30,7 +30,7 @@
 #include "PluginView.h"
 #include "ShareableBitmap.h"
 #include "WKPage.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebFrame.h"
 #include "WebImage.h"
 #include "WebPage.h"
@@ -58,8 +58,8 @@
 #include <CyberCore/TextIndicatorWindow.h>
 #endif
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 FindController::FindController(WebPage* webPage)
     : m_webPage(webPage)
@@ -242,7 +242,7 @@ void FindController::findString(const String& string, OptionSet<FindOptions> opt
     auto* pluginView = mainFramePlugIn();
 #endif
 
-    WebCore::FindOptions coreOptions = core(options);
+    CyberCore::FindOptions coreOptions = core(options);
 
     // iOS will reveal the selection through a different mechanism, and
     // we need to avoid sending the non-painted selection change to the UI process
@@ -434,7 +434,7 @@ bool FindController::updateFindIndicator(Frame& selectedFrame, bool isShowingOve
 
     m_findIndicatorRect = enclosingIntRect(indicator->selectionRectInRootViewCoordinates());
 #if PLATFORM(COCOA)
-    m_webPage->send(Messages::WebPageProxy::SetTextIndicator(indicator->data(), static_cast<uint64_t>(isShowingOverlay ? WebCore::TextIndicatorLifetime::Permanent : WebCore::TextIndicatorLifetime::Temporary)));
+    m_webPage->send(Messages::WebPageProxy::SetTextIndicator(indicator->data(), static_cast<uint64_t>(isShowingOverlay ? CyberCore::TextIndicatorLifetime::Permanent : CyberCore::TextIndicatorLifetime::Temporary)));
 #endif
     m_isShowingFindIndicator = true;
 
@@ -638,4 +638,4 @@ void FindController::didInvalidateDocumentMarkerRects()
         m_findPageOverlay->setNeedsDisplay();
 }
 
-} // namespace WebKit
+} // namespace CyberKit

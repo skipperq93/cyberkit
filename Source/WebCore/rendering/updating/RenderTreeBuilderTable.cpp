@@ -32,7 +32,7 @@
 #include "RenderTableRow.h"
 #include "RenderTreeBuilder.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 RenderTreeBuilder::Table::Table(RenderTreeBuilder& builder)
     : m_builder(builder)

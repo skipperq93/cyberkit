@@ -296,18 +296,18 @@
         assertIsCurrent(workQueue());
         m_context->generateMipmap(target);
     }
-    void getActiveAttrib(uint32_t program, uint32_t index, CompletionHandler<void(bool, struct WebCore::GraphicsContextGLActiveInfo&&)>&& completionHandler)
+    void getActiveAttrib(uint32_t program, uint32_t index, CompletionHandler<void(bool, struct CyberCore::GraphicsContextGLActiveInfo&&)>&& completionHandler)
     {
         bool returnValue = { };
-        struct WebCore::GraphicsContextGLActiveInfo arg2 { };
+        struct CyberCore::GraphicsContextGLActiveInfo arg2 { };
         assertIsCurrent(workQueue());
         returnValue = m_context->getActiveAttrib(program, index, arg2);
         completionHandler(returnValue, WTFMove(arg2));
     }
-    void getActiveUniform(uint32_t program, uint32_t index, CompletionHandler<void(bool, struct WebCore::GraphicsContextGLActiveInfo&&)>&& completionHandler)
+    void getActiveUniform(uint32_t program, uint32_t index, CompletionHandler<void(bool, struct CyberCore::GraphicsContextGLActiveInfo&&)>&& completionHandler)
     {
         bool returnValue = { };
-        struct WebCore::GraphicsContextGLActiveInfo arg2 { };
+        struct CyberCore::GraphicsContextGLActiveInfo arg2 { };
         assertIsCurrent(workQueue());
         returnValue = m_context->getActiveUniform(program, index, arg2);
         completionHandler(returnValue, WTFMove(arg2));
@@ -1261,9 +1261,9 @@
         assertIsCurrent(workQueue());
         m_context->transformFeedbackVaryings(program, varyings, bufferMode);
     }
-    void getTransformFeedbackVarying(uint32_t program, uint32_t index, CompletionHandler<void(struct WebCore::GraphicsContextGLActiveInfo&&)>&& completionHandler)
+    void getTransformFeedbackVarying(uint32_t program, uint32_t index, CompletionHandler<void(struct CyberCore::GraphicsContextGLActiveInfo&&)>&& completionHandler)
     {
-        struct WebCore::GraphicsContextGLActiveInfo arg2 { };
+        struct CyberCore::GraphicsContextGLActiveInfo arg2 { };
         assertIsCurrent(workQueue());
         m_context->getTransformFeedbackVarying(program, index, arg2);
         completionHandler(WTFMove(arg2));
@@ -1459,14 +1459,14 @@
         m_context->getInternalformativ(target, internalformat, pname, params);
         completionHandler(IPC::ArrayReference<int32_t>(reinterpret_cast<int32_t*>(params.data()), params.size()));
     }
-    void setDrawingBufferColorSpace(WebCore::DestinationColorSpace&& arg0)
+    void setDrawingBufferColorSpace(CyberCore::DestinationColorSpace&& arg0)
     {
         assertIsCurrent(workQueue());
         m_context->setDrawingBufferColorSpace(arg0);
     }
-    void paintRenderingResultsToPixelBuffer(CompletionHandler<void(RefPtr<WebCore::PixelBuffer>&&)>&& completionHandler)
+    void paintRenderingResultsToPixelBuffer(CompletionHandler<void(RefPtr<CyberCore::PixelBuffer>&&)>&& completionHandler)
     {
-        RefPtr<WebCore::PixelBuffer> returnValue = { };
+        RefPtr<CyberCore::PixelBuffer> returnValue = { };
         assertIsCurrent(workQueue());
         returnValue = m_context->paintRenderingResultsToPixelBuffer();
         completionHandler(WTFMove(returnValue));

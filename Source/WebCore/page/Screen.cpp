@@ -43,7 +43,7 @@
 #include "ScreenOrientation.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(Screen);
 
@@ -180,4 +180,4 @@ ScreenOrientation& Screen::orientation()
     return *m_screenOrientation;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

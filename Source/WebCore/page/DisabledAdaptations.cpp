@@ -28,11 +28,11 @@
 
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 String watchAdaptationName()
 {
     return "watch"_s;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

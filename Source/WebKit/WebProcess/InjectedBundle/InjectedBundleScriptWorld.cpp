@@ -33,8 +33,8 @@
 #include <wtf/text/StringConcatenate.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 typedef HashMap<DOMWrapperWorld*, InjectedBundleScriptWorld*> WorldMap;
 
@@ -125,4 +125,4 @@ void InjectedBundleScriptWorld::disableOverrideBuiltinsBehavior()
     m_world->disableLegacyOverrideBuiltInsBehavior();
 }
 
-} // namespace WebKit
+} // namespace CyberKit

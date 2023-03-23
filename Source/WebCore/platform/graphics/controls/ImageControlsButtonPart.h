@@ -30,7 +30,7 @@
 #include "ControlFactory.h"
 #include "ControlPart.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ImageControlsButtonPart final : public ControlPart {
 public:
@@ -51,6 +51,6 @@ private:
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_CONTROLS)

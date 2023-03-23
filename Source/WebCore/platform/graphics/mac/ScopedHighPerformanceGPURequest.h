@@ -28,7 +28,7 @@
 #include "GraphicsChecksMac.h"
 #include "SwitchingGPUClient.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScopedHighPerformanceGPURequest {
 public:

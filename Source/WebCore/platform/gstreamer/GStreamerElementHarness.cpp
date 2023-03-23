@@ -31,7 +31,7 @@
 #include <wtf/text/StringConcatenate.h>
 #include <wtf/text/StringConcatenateNumbers.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 GST_DEBUG_CATEGORY(webkit_element_harness_debug);
 #define GST_CAT_DEFAULT webkit_element_harness_debug
@@ -613,6 +613,6 @@ void GStreamerElementHarness::dumpGraph(const char* filenamePrefix)
 #endif
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(GSTREAMER)

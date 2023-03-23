@@ -32,7 +32,7 @@
 #include <wtf/HashMap.h>
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static HashMap<unsigned, std::unique_ptr<RenderThemeScrollbar>>& widgetMap()
 {
@@ -133,6 +133,6 @@ RenderThemeGadget* RenderThemeScrollbar::stepper(RenderThemeScrollbarGadget::Ste
     return nullptr;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // !USE(GTK4)

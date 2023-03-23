@@ -32,9 +32,9 @@
 #include <CyberCore/PlatformGamepad.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
-UIGamepad::UIGamepad(WebCore::PlatformGamepad& platformGamepad)
+UIGamepad::UIGamepad(CyberCore::PlatformGamepad& platformGamepad)
     : m_index(platformGamepad.index())
     , m_id(platformGamepad.id())
     , m_mapping(platformGamepad.mapping())
@@ -47,7 +47,7 @@ UIGamepad::UIGamepad(WebCore::PlatformGamepad& platformGamepad)
     updateFromPlatformGamepad(platformGamepad);
 }
 
-void UIGamepad::updateFromPlatformGamepad(WebCore::PlatformGamepad& platformGamepad)
+void UIGamepad::updateFromPlatformGamepad(CyberCore::PlatformGamepad& platformGamepad)
 {
     ASSERT(m_index == platformGamepad.index());
     ASSERT(m_axisValues.size() == platformGamepad.axisValues().size());

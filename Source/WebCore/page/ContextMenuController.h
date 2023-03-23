@@ -32,7 +32,7 @@
 #include "HitTestRequest.h"
 #include <wtf/OptionSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ContextMenuClient;
 class ContextMenuProvider;
@@ -104,6 +104,6 @@ private:
     bool m_isHandlingContextMenuEvent { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(CONTEXT_MENUS)

@@ -32,43 +32,43 @@
 
 namespace WebKit {
 
-void InputMethodState::setPurposeOrHintForInputMode(WebCore::InputMode inputMode)
+void InputMethodState::setPurposeOrHintForInputMode(CyberCore::InputMode inputMode)
 {
     switch (inputMode) {
-    case WebCore::InputMode::None:
+    case CyberCore::InputMode::None:
         hints.add(InputMethodState::Hint::InhibitOnScreenKeyboard);
         break;
-    case WebCore::InputMode::Unspecified:
-    case WebCore::InputMode::Text:
+    case CyberCore::InputMode::Unspecified:
+    case CyberCore::InputMode::Text:
         purpose = Purpose::FreeForm;
         break;
-    case WebCore::InputMode::Telephone:
+    case CyberCore::InputMode::Telephone:
         purpose = Purpose::Phone;
         break;
-    case WebCore::InputMode::Url:
+    case CyberCore::InputMode::Url:
         purpose = Purpose::Url;
         break;
-    case WebCore::InputMode::Email:
+    case CyberCore::InputMode::Email:
         purpose = Purpose::Email;
         break;
-    case WebCore::InputMode::Numeric:
+    case CyberCore::InputMode::Numeric:
         purpose = Purpose::Digits;
         break;
-    case WebCore::InputMode::Decimal:
+    case CyberCore::InputMode::Decimal:
         purpose = Purpose::Number;
         break;
-    case WebCore::InputMode::Search:
+    case CyberCore::InputMode::Search:
         break;
     }
 }
 
-static bool inputElementHasDigitsPattern(WebCore::HTMLInputElement& element)
+static bool inputElementHasDigitsPattern(CyberCore::HTMLInputElement& element)
 {
-    const auto& pattern = element.attributeWithoutSynchronization(WebCore::HTMLNames::patternAttr);
+    const auto& pattern = element.attributeWithoutSynchronization(CyberCore::HTMLNames::patternAttr);
     return pattern == "\\d*"_s || pattern == "[0-9]*"_s;
 }
 
-void InputMethodState::setPurposeForInputElement(WebCore::HTMLInputElement& element)
+void InputMethodState::setPurposeForInputElement(CyberCore::HTMLInputElement& element)
 {
     if (element.isPasswordField())
         purpose = Purpose::Password;
@@ -84,21 +84,21 @@ void InputMethodState::setPurposeForInputElement(WebCore::HTMLInputElement& elem
         purpose = Purpose::Digits;
 }
 
-void InputMethodState::addHintsForAutocapitalizeType(WebCore::AutocapitalizeType autocapitalizeType)
+void InputMethodState::addHintsForAutocapitalizeType(CyberCore::AutocapitalizeType autocapitalizeType)
 {
     switch (autocapitalizeType) {
-    case WebCore::AutocapitalizeType::Default:
+    case CyberCore::AutocapitalizeType::Default:
         break;
-    case WebCore::AutocapitalizeType::None:
+    case CyberCore::AutocapitalizeType::None:
         hints.add(InputMethodState::Hint::Lowercase);
         break;
-    case WebCore::AutocapitalizeType::Words:
+    case CyberCore::AutocapitalizeType::Words:
         hints.add(InputMethodState::Hint::UppercaseWords);
         break;
-    case WebCore::AutocapitalizeType::Sentences:
+    case CyberCore::AutocapitalizeType::Sentences:
         hints.add(InputMethodState::Hint::UppercaseSentences);
         break;
-    case WebCore::AutocapitalizeType::AllCharacters:
+    case CyberCore::AutocapitalizeType::AllCharacters:
         hints.add(InputMethodState::Hint::UppercaseChars);
         break;
     }

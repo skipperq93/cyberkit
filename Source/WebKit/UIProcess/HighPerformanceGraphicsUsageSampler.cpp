@@ -31,7 +31,7 @@
 #include <CyberCore/DiagnosticLoggingKeys.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 static const Seconds samplingInterval { 10_min };
 

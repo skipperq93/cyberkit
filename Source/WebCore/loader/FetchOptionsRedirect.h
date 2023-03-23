@@ -25,8 +25,8 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
     
 enum class FetchOptionsRedirect : uint8_t { Follow, Error, Manual };
 
-} // namespace WebCore
+} // namespace CyberCore

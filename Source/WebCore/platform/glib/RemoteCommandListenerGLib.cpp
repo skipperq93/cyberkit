@@ -21,7 +21,7 @@
 
 #if USE(GLIB) && ENABLE(MEDIA_SESSION)
 
-namespace WebCore {
+namespace CyberCore {
 
 std::unique_ptr<RemoteCommandListenerGLib> RemoteCommandListenerGLib::create(RemoteCommandListenerClient& client)
 {

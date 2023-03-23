@@ -29,7 +29,7 @@
 #include "RenderingMode.h"
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FloatSize;
 class ImageBuffer;
@@ -46,4 +46,4 @@ public:
     WEBCORE_EXPORT virtual RefPtr<PixelBuffer> createPixelBuffer(const PixelBufferFormat&, const IntSize&) const;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

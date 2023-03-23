@@ -30,11 +30,11 @@
 #include <wtf/WallTime.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 class SecurityOriginData;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebProcess;
 
@@ -48,10 +48,10 @@ public:
     static const char* supplementName();
 
     const String& mediaKeyStorageDirectory() const { return m_mediaKeyStorageDirectory; }
-    String mediaKeyStorageDirectoryForOrigin(const WebCore::SecurityOriginData&);
+    String mediaKeyStorageDirectoryForOrigin(const CyberCore::SecurityOriginData&);
 
-    Vector<WebCore::SecurityOriginData> getMediaKeyOrigins();
-    void deleteMediaKeyEntriesForOrigin(const WebCore::SecurityOriginData&);
+    Vector<CyberCore::SecurityOriginData> getMediaKeyOrigins();
+    void deleteMediaKeyEntriesForOrigin(const CyberCore::SecurityOriginData&);
     void deleteMediaKeyEntriesModifiedBetweenDates(WallTime startDate, WallTime endDate);
     void deleteAllMediaKeyEntries();
 

@@ -38,7 +38,7 @@ namespace webrtc {
 enum class BufferType;
 };
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class VideoFrameRotation : uint16_t;
 
@@ -69,6 +69,6 @@ private:
     webrtc::BufferType m_pixelBufferPoolBufferType;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(LIBWEBRTC)

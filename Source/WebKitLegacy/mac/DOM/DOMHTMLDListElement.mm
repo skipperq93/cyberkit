@@ -34,20 +34,20 @@
 #import <CyberCore/WebScriptObjectPrivate.h>
 #import <wtf/GetPtr.h>
 
-#define IMPL static_cast<WebCore::HTMLDListElement*>(reinterpret_cast<WebCore::Node*>(_internal))
+#define IMPL static_cast<CyberCore::HTMLDListElement*>(reinterpret_cast<CyberCore::Node*>(_internal))
 
 @implementation DOMHTMLDListElement
 
 - (BOOL)compact
 {
-    WebCore::JSMainThreadNullState state;
-    return IMPL->hasAttributeWithoutSynchronization(WebCore::HTMLNames::compactAttr);
+    CyberCore::JSMainThreadNullState state;
+    return IMPL->hasAttributeWithoutSynchronization(CyberCore::HTMLNames::compactAttr);
 }
 
 - (void)setCompact:(BOOL)newCompact
 {
-    WebCore::JSMainThreadNullState state;
-    IMPL->setBooleanAttribute(WebCore::HTMLNames::compactAttr, newCompact);
+    CyberCore::JSMainThreadNullState state;
+    IMPL->setBooleanAttribute(CyberCore::HTMLNames::compactAttr, newCompact);
 }
 
 @end

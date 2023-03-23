@@ -27,7 +27,7 @@
 
 #include "CachedResource.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class TextResourceDecoder;
 
@@ -64,6 +64,6 @@ private:
     RefPtr<TextResourceDecoder> m_decoder;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CACHED_RESOURCE(CachedScript, CachedResource::Type::Script)

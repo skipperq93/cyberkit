@@ -33,7 +33,7 @@
 #include <wtf/CompletionHandler.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 class SecurityOrigin;
 }
 
@@ -47,17 +47,17 @@ public:
     DisplayCaptureSessionManager();
     ~DisplayCaptureSessionManager();
 
-    void promptForGetDisplayMedia(UserMediaPermissionRequestProxy::UserMediaDisplayCapturePromptType, WebPageProxy&, const WebCore::SecurityOriginData&, CompletionHandler<void(std::optional<WebCore::CaptureDevice>)>&&);
+    void promptForGetDisplayMedia(UserMediaPermissionRequestProxy::UserMediaDisplayCapturePromptType, WebPageProxy&, const CyberCore::SecurityOriginData&, CompletionHandler<void(std::optional<CyberCore::CaptureDevice>)>&&);
     void setIndexOfDeviceSelectedForTesting(std::optional<unsigned> index) { m_indexOfDeviceSelectedForTesting = index; }
 
 private:
 
 #if HAVE(SCREEN_CAPTURE_KIT)
     enum class CaptureSessionType { None, Screen, Window };
-    void alertForGetDisplayMedia(WebPageProxy&, const WebCore::SecurityOriginData&, CompletionHandler<void(DisplayCaptureSessionManager::CaptureSessionType)>&&);
-    void showWindowPicker(WebPageProxy&, const WebCore::SecurityOriginData&, CompletionHandler<void(std::optional<WebCore::CaptureDevice>)>&&);
-    void showScreenPicker(WebPageProxy&, const WebCore::SecurityOriginData&, CompletionHandler<void(std::optional<WebCore::CaptureDevice>)>&&);
-    std::optional<WebCore::CaptureDevice> deviceSelectedForTesting(WebCore::CaptureDevice::DeviceType, unsigned);
+    void alertForGetDisplayMedia(WebPageProxy&, const CyberCore::SecurityOriginData&, CompletionHandler<void(DisplayCaptureSessionManager::CaptureSessionType)>&&);
+    void showWindowPicker(WebPageProxy&, const CyberCore::SecurityOriginData&, CompletionHandler<void(std::optional<CyberCore::CaptureDevice>)>&&);
+    void showScreenPicker(WebPageProxy&, const CyberCore::SecurityOriginData&, CompletionHandler<void(std::optional<CyberCore::CaptureDevice>)>&&);
+    std::optional<CyberCore::CaptureDevice> deviceSelectedForTesting(CyberCore::CaptureDevice::DeviceType, unsigned);
 #endif
 
     std::optional<unsigned> m_indexOfDeviceSelectedForTesting;

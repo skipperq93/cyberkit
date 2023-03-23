@@ -3042,8 +3042,8 @@ msgstr "El URI activo actual de la vista"
 #~ msgid "Enable Timeline profiling"
 #~ msgstr "Activar perfilado de tiempo"
 
-#~ msgid "Profile the WebCore instrumentation."
-#~ msgstr "Perfilar la instrumentación de WebCore."
+#~ msgid "Profile the CyberCore instrumentation."
+#~ msgstr "Perfilar la instrumentación de CyberCore."
 
 #~ msgid "Reason"
 #~ msgstr "Razón"

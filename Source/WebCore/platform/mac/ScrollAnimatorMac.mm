@@ -37,7 +37,7 @@
 #import "ScrollbarsController.h"
 #import <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 std::unique_ptr<ScrollAnimator> ScrollAnimator::create(ScrollableArea& scrollableArea)
 {
@@ -165,6 +165,6 @@ bool ScrollAnimatorMac::processWheelEventForScrollSnap(const PlatformWheelEvent&
     return m_scrollController.processWheelEventForScrollSnap(wheelEvent);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(MAC)

@@ -40,7 +40,7 @@
 
 #include <pal/cf/CoreMediaSoftLink.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<RealtimeIncomingAudioSource> RealtimeIncomingAudioSource::create(rtc::scoped_refptr<webrtc::AudioTrackInterface>&& audioTrack, String&& audioTrackId)
 {

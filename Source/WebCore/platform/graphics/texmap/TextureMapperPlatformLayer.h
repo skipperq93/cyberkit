@@ -24,7 +24,7 @@
 #include "TextureMapper.h"
 #include "TransformationMatrix.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class TextureMapperPlatformLayer {
 public:
@@ -53,6 +53,6 @@ private:
     TextureMapperPlatformLayer::Client* m_client { nullptr };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(TEXTURE_MAPPER)

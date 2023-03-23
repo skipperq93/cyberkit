@@ -24,11 +24,11 @@
 #if ENABLE(GPU_PROCESS) && ENABLE(VIDEO)
 
 messages -> RemoteMediaPlayerProxy NotRefCounted {
-    PrepareForPlayback(bool privateMode, enum:uint8_t WebCore::MediaPlayerEnums::Preload preload, bool preservesPitch, bool prepareForRendering, WebCore::IntSize presentationSize, float videoContentScale, enum:uint8_t WebCore::DynamicRangeMode mode)
+    PrepareForPlayback(bool privateMode, enum:uint8_t CyberCore::MediaPlayerEnums::Preload preload, bool preservesPitch, bool prepareForRendering, CyberCore::IntSize presentationSize, float videoContentScale, enum:uint8_t CyberCore::DynamicRangeMode mode)
 
-    Load(URL url, std::optional<WebKit::SandboxExtension::Handle> sandboxExtension, WebCore::ContentType contentType, String keySystem, bool requiresRemotePlayback) -> (struct WebKit::RemoteMediaPlayerConfiguration playerConfiguration)
+    Load(URL url, std::optional<WebKit::SandboxExtension::Handle> sandboxExtension, CyberCore::ContentType contentType, String keySystem, bool requiresRemotePlayback) -> (struct WebKit::RemoteMediaPlayerConfiguration playerConfiguration)
 #if ENABLE(MEDIA_SOURCE)
-    LoadMediaSource(URL url, WebCore::ContentType contentType, bool webMParserEnabled, WebKit::RemoteMediaSourceIdentifier mediaSourceIdentifier) -> (struct WebKit::RemoteMediaPlayerConfiguration playerConfiguration)
+    LoadMediaSource(URL url, CyberCore::ContentType contentType, bool webMParserEnabled, WebKit::RemoteMediaSourceIdentifier mediaSourceIdentifier) -> (struct WebKit::RemoteMediaPlayerConfiguration playerConfiguration)
 #endif
     CancelLoad()
 
@@ -43,10 +43,10 @@ messages -> RemoteMediaPlayerProxy NotRefCounted {
     Seek(MediaTime time)
     SeekWithTolerance(MediaTime time, MediaTime negativeTolerance, MediaTime positiveTolerance)
 
-    SetPreload(enum:uint8_t WebCore::MediaPlayerEnums::Preload preload)
+    SetPreload(enum:uint8_t CyberCore::MediaPlayerEnums::Preload preload)
     SetPrivateBrowsingMode(bool privateMode)
     SetPreservesPitch(bool preservesPitch)
-    SetPitchCorrectionAlgorithm(WebCore::MediaPlayer::PitchCorrectionAlgorithm algorithm)
+    SetPitchCorrectionAlgorithm(CyberCore::MediaPlayer::PitchCorrectionAlgorithm algorithm)
 
     PrepareForRendering()
     SetPageIsVisible(bool visible)
@@ -58,21 +58,21 @@ messages -> RemoteMediaPlayerProxy NotRefCounted {
 
 #if ENABLE(VIDEO_PRESENTATION_MODE)
     UpdateVideoFullscreenInlineImage()
-    SetVideoFullscreenMode(WebCore::MediaPlayer::VideoFullscreenMode mode)
-    SetVideoFullscreenGravity(enum:uint8_t WebCore::MediaPlayerEnums::VideoGravity gravity)
+    SetVideoFullscreenMode(CyberCore::MediaPlayer::VideoFullscreenMode mode)
+    SetVideoFullscreenGravity(enum:uint8_t CyberCore::MediaPlayerEnums::VideoGravity gravity)
     VideoFullscreenStandbyChanged(bool standby)
 #endif
 
-    SetBufferingPolicy(WebCore::MediaPlayer::BufferingPolicy policy)
-    SetPresentationSize(WebCore::IntSize size)
+    SetBufferingPolicy(CyberCore::MediaPlayer::BufferingPolicy policy)
+    SetPresentationSize(CyberCore::IntSize size)
 
 #if PLATFORM(COCOA)
-    SetVideoInlineSizeFenced(WebCore::FloatSize size, MachSendRight machSendRight)
+    SetVideoInlineSizeFenced(CyberCore::FloatSize size, MachSendRight machSendRight)
 #endif
 
 #if ENABLE(WIRELESS_PLAYBACK_TARGET)
     SetWirelessVideoPlaybackDisabled(bool disabled)
-    SetWirelessPlaybackTarget(WebCore::MediaPlaybackTargetContext target)
+    SetWirelessPlaybackTarget(CyberCore::MediaPlaybackTargetContext target)
     SetShouldPlayToPlaybackTarget(bool shouldPlay)
 #endif
 
@@ -104,14 +104,14 @@ messages -> RemoteMediaPlayerProxy NotRefCounted {
 
     AudioTrackSetEnabled(WebKit::TrackPrivateRemoteIdentifier identifier, bool enabled)
     VideoTrackSetSelected(WebKit::TrackPrivateRemoteIdentifier identifier, bool selected)
-    TextTrackSetMode(WebKit::TrackPrivateRemoteIdentifier identifier, enum:uint8_t WebCore::InbandTextTrackPrivate::Mode mode)
+    TextTrackSetMode(WebKit::TrackPrivateRemoteIdentifier identifier, enum:uint8_t CyberCore::InbandTextTrackPrivate::Mode mode)
 
     PerformTaskAtMediaTime(MediaTime mediaTime, MonotonicTime messageTime) -> (std::optional<MediaTime> mediaTime, std::optional<MonotonicTime> monotonicTime)
-    IsCrossOrigin(WebCore::SecurityOriginData origin) -> (std::optional<bool> crossOrigin) Synchronous
+    IsCrossOrigin(CyberCore::SecurityOriginData origin) -> (std::optional<bool> crossOrigin) Synchronous
 
     SetVideoPlaybackMetricsUpdateInterval(double interval)
 
-    SetPreferredDynamicRangeMode(enum:uint8_t WebCore::DynamicRangeMode mode)
+    SetPreferredDynamicRangeMode(enum:uint8_t CyberCore::DynamicRangeMode mode)
 
 #if PLATFORM(IOS_FAMILY)
     ErrorLog() -> (String errorLog) Synchronous
@@ -124,8 +124,8 @@ messages -> RemoteMediaPlayerProxy NotRefCounted {
 #endif
 
 #if PLATFORM(COCOA)
-    NativeImageForCurrentTime() -> (std::optional<MachSendRight> sendRight, WebCore::DestinationColorSpace colorSpace) Synchronous
-    ColorSpace() -> (WebCore::DestinationColorSpace colorSpace) Synchronous
+    NativeImageForCurrentTime() -> (std::optional<MachSendRight> sendRight, CyberCore::DestinationColorSpace colorSpace) Synchronous
+    ColorSpace() -> (CyberCore::DestinationColorSpace colorSpace) Synchronous
 #if !HAVE(AVSAMPLEBUFFERDISPLAYLAYER_COPYDISPLAYEDPIXELBUFFER)
     void WillBeAskedToPaintGL()
 #endif
@@ -138,7 +138,7 @@ messages -> RemoteMediaPlayerProxy NotRefCounted {
     StartVideoFrameMetadataGathering()
     StopVideoFrameMetadataGathering()
 
-    PlayerContentBoxRectChanged(WebCore::LayoutRect contentRect)
+    PlayerContentBoxRectChanged(CyberCore::LayoutRect contentRect)
 
     SetShouldDisableHDR(bool shouldDisable)
 }

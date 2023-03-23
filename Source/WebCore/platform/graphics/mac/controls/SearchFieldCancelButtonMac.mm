@@ -34,7 +34,7 @@
 #import "LocalDefaultSystemAppearance.h"
 #import "SearchFieldCancelButtonPart.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 SearchFieldCancelButtonMac::SearchFieldCancelButtonMac(SearchFieldCancelButtonPart& owningPart, ControlFactoryMac& controlFactory, NSSearchFieldCell *searchFieldCell)
     : SearchControlMac(owningPart, controlFactory, searchFieldCell)
@@ -97,6 +97,6 @@ void SearchFieldCancelButtonMac::draw(GraphicsContext& context, const FloatRound
     drawCell(context, logicalRect, deviceScaleFactor, styleForDrawing, [m_searchFieldCell cancelButtonCell], true);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(MAC)

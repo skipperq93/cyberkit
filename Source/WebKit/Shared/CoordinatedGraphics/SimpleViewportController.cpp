@@ -25,7 +25,7 @@
 #if USE(COORDINATED_GRAPHICS)
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 SimpleViewportController::SimpleViewportController(const IntSize& size)
     : m_viewportSize(size)
@@ -166,6 +166,6 @@ void SimpleViewportController::resetViewportToDefaultState()
     m_rawAttributes.initialScale = -1;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(COORDINATED_GRAPHICS)

@@ -68,7 +68,7 @@
 #include <wtf/text/StringParsingBuffer.h>
 #include <wtf/text/TextPosition.h>
 
-namespace WebCore {
+namespace CyberCore {
 using namespace Inspector;
 
 static String consoleMessageForViolation(const ContentSecurityPolicyDirective& violatedDirective, const URL& blockedURL, const char* prefix, const char* subject = "it")

@@ -31,7 +31,7 @@
 
 using JSC::DataView;
 
-namespace WebCore {
+namespace CyberCore {
 
 bool ISOSchemeInformationBox::parse(DataView& view, unsigned& offset)
 {

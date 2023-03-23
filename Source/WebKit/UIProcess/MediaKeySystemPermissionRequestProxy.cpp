@@ -32,9 +32,9 @@
 #include <wtf/text/StringHash.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
-MediaKeySystemPermissionRequestProxy::MediaKeySystemPermissionRequestProxy(MediaKeySystemPermissionRequestManagerProxy& manager, MediaKeySystemRequestIdentifier mediaKeySystemID, FrameIdentifier mainFrameID, FrameIdentifier frameID, Ref<WebCore::SecurityOrigin>&& topLevelDocumentOrigin, const String& keySystem)
+MediaKeySystemPermissionRequestProxy::MediaKeySystemPermissionRequestProxy(MediaKeySystemPermissionRequestManagerProxy& manager, MediaKeySystemRequestIdentifier mediaKeySystemID, FrameIdentifier mainFrameID, FrameIdentifier frameID, Ref<CyberCore::SecurityOrigin>&& topLevelDocumentOrigin, const String& keySystem)
     : m_manager(manager)
     , m_mediaKeySystemID(mediaKeySystemID)
     , m_mainFrameID(mainFrameID)

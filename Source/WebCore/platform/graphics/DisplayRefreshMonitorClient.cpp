@@ -29,7 +29,7 @@
 #include "DisplayRefreshMonitor.h"
 #include "DisplayRefreshMonitorManager.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 DisplayRefreshMonitorClient::DisplayRefreshMonitorClient() = default;
 

@@ -34,7 +34,7 @@
 #import <CyberCore/MultiGamepadProvider.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 #if HAVE(WIDE_GAMECONTROLLER_SUPPORT)
 static bool useGameControllerFramework = true;

@@ -30,7 +30,7 @@
 
 #include <pal/cf/AudioToolboxSoftLink.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 AudioOutputUnitAdaptor::AudioOutputUnitAdaptor(AudioUnitRenderer& renderer)
     : m_outputUnit(0)
@@ -71,6 +71,6 @@ OSStatus AudioOutputUnitAdaptor::inputProc(void* userData, AudioUnitRenderAction
     return adaptor->m_audioUnitRenderer.render(sampleTime, hostTime, numberOfFrames, ioData);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

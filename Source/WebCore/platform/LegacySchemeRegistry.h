@@ -30,7 +30,7 @@
 #include <wtf/text/StringHash.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // FIXME: Make HashSet<String>::contains(StringView) work and use StringViews here.
 using URLSchemesMap = HashSet<String, ASCIICaseInsensitiveHash>;
@@ -103,4 +103,4 @@ public:
     static bool isUserExtensionScheme(StringView scheme);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

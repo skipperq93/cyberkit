@@ -34,7 +34,7 @@
 #include <pal/SessionID.h>
 #include <wtf/CompletionHandler.h>
 
-namespace WebCore {
+namespace CyberCore {
 enum class NetworkConnectionIntegrity : uint16_t;
 class ResourceError;
 class SecurityOrigin;
@@ -50,33 +50,33 @@ class NetworkCORSPreflightChecker final : private NetworkDataTaskClient {
     WTF_MAKE_FAST_ALLOCATED;
 public:
     struct Parameters {
-        WebCore::ResourceRequest originalRequest;
-        Ref<WebCore::SecurityOrigin> sourceOrigin;
-        RefPtr<WebCore::SecurityOrigin> topOrigin;
+        CyberCore::ResourceRequest originalRequest;
+        Ref<CyberCore::SecurityOrigin> sourceOrigin;
+        RefPtr<CyberCore::SecurityOrigin> topOrigin;
         String referrer;
         String userAgent;
         PAL::SessionID sessionID;
         WebPageProxyIdentifier webPageProxyID;
-        WebCore::StoredCredentialsPolicy storedCredentialsPolicy;
+        CyberCore::StoredCredentialsPolicy storedCredentialsPolicy;
         bool allowPrivacyProxy { true };
-        OptionSet<WebCore::NetworkConnectionIntegrity> networkConnectionIntegrityPolicy;
+        OptionSet<CyberCore::NetworkConnectionIntegrity> networkConnectionIntegrityPolicy;
     };
-    using CompletionCallback = CompletionHandler<void(WebCore::ResourceError&&)>;
+    using CompletionCallback = CompletionHandler<void(CyberCore::ResourceError&&)>;
 
     NetworkCORSPreflightChecker(NetworkProcess&, NetworkResourceLoader*, Parameters&&, bool shouldCaptureExtraNetworkLoadMetrics, CompletionCallback&&);
     ~NetworkCORSPreflightChecker();
-    const WebCore::ResourceRequest& originalRequest() const { return m_parameters.originalRequest; }
+    const CyberCore::ResourceRequest& originalRequest() const { return m_parameters.originalRequest; }
 
     void startPreflight();
 
-    WebCore::NetworkTransactionInformation takeInformation();
+    CyberCore::NetworkTransactionInformation takeInformation();
 
 private:
-    void willPerformHTTPRedirection(WebCore::ResourceResponse&&, WebCore::ResourceRequest&&, RedirectCompletionHandler&&) final;
-    void didReceiveChallenge(WebCore::AuthenticationChallenge&&, NegotiatedLegacyTLS, ChallengeCompletionHandler&&) final;
-    void didReceiveResponse(WebCore::ResourceResponse&&, NegotiatedLegacyTLS, PrivateRelayed, ResponseCompletionHandler&&) final;
-    void didReceiveData(const WebCore::SharedBuffer&) final;
-    void didCompleteWithError(const WebCore::ResourceError&, const WebCore::NetworkLoadMetrics&) final;
+    void willPerformHTTPRedirection(CyberCore::ResourceResponse&&, CyberCore::ResourceRequest&&, RedirectCompletionHandler&&) final;
+    void didReceiveChallenge(CyberCore::AuthenticationChallenge&&, NegotiatedLegacyTLS, ChallengeCompletionHandler&&) final;
+    void didReceiveResponse(CyberCore::ResourceResponse&&, NegotiatedLegacyTLS, PrivateRelayed, ResponseCompletionHandler&&) final;
+    void didReceiveData(const CyberCore::SharedBuffer&) final;
+    void didCompleteWithError(const CyberCore::ResourceError&, const CyberCore::NetworkLoadMetrics&) final;
     void didSendData(uint64_t totalBytesSent, uint64_t totalBytesExpectedToSend) final;
     void wasBlocked() final;
     void cannotShowURL() final;
@@ -85,11 +85,11 @@ private:
 
     Parameters m_parameters;
     Ref<NetworkProcess> m_networkProcess;
-    WebCore::ResourceResponse m_response;
+    CyberCore::ResourceResponse m_response;
     CompletionCallback m_completionCallback;
     RefPtr<NetworkDataTask> m_task;
     bool m_shouldCaptureExtraNetworkLoadMetrics { false };
-    WebCore::NetworkTransactionInformation m_loadInformation;
+    CyberCore::NetworkTransactionInformation m_loadInformation;
     WeakPtr<NetworkResourceLoader> m_networkResourceLoader;
 };
 

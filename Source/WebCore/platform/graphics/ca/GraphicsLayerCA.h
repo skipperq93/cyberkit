@@ -38,7 +38,7 @@
 // by flushCompositingState().
 // #define VISIBLE_TILE_WASH
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace DisplayList {
 class InMemoryDisplayList;
@@ -258,7 +258,7 @@ private:
     virtual Ref<PlatformCALayer> createPlatformCALayer(PlatformCALayer::LayerType, PlatformCALayerClient* owner);
     virtual Ref<PlatformCALayer> createPlatformCALayer(PlatformLayer*, PlatformCALayerClient* owner);
 #if ENABLE(MODEL_ELEMENT)
-    virtual Ref<PlatformCALayer> createPlatformCALayer(Ref<WebCore::Model>, PlatformCALayerClient* owner);
+    virtual Ref<PlatformCALayer> createPlatformCALayer(Ref<CyberCore::Model>, PlatformCALayerClient* owner);
 #endif
     virtual Ref<PlatformCALayer> createPlatformCALayerHost(LayerHostingContextIdentifier, PlatformCALayerClient*);
     virtual Ref<PlatformCAAnimation> createPlatformCAAnimation(PlatformCAAnimation::AnimationType, const String& keyPath);
@@ -679,6 +679,6 @@ private:
     bool m_hasDescendantsWithUncommittedChanges : 1;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_GRAPHICSLAYER(WebCore::GraphicsLayerCA, isGraphicsLayerCA())
+SPECIALIZE_TYPE_TRAITS_GRAPHICSLAYER(CyberCore::GraphicsLayerCA, isGraphicsLayerCA())

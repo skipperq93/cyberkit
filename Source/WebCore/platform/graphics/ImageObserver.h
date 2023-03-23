@@ -28,7 +28,7 @@
 #include "ImageTypes.h"
 #include <wtf/URL.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Image;
 class IntRect;

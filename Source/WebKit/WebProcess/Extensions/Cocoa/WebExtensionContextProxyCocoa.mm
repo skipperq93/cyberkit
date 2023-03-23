@@ -41,7 +41,7 @@
 
 namespace WebKit {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 // MARK: Permissions support
 
@@ -61,7 +61,7 @@ void WebExtensionContextProxy::dispatchPermissionsEvent(const WebKit::WebExtensi
 
 // MARK: webNavigation support
 
-void WebExtensionContextProxy::dispatchWebNavigationOnBeforeNavigateEvent(WebPageProxyIdentifier pageID, WebCore::FrameIdentifier frameID, URL targetURL)
+void WebExtensionContextProxy::dispatchWebNavigationOnBeforeNavigateEvent(WebPageProxyIdentifier pageID, CyberCore::FrameIdentifier frameID, URL targetURL)
 {
     NSDictionary *navigationDetails = @{
         @"url": [(NSURL *)targetURL absoluteString],
@@ -77,7 +77,7 @@ void WebExtensionContextProxy::dispatchWebNavigationOnBeforeNavigateEvent(WebPag
     });
 }
 
-void WebExtensionContextProxy::dispatchWebNavigationOnCommittedEvent(WebPageProxyIdentifier pageID, WebCore::FrameIdentifier frameID, URL frameURL)
+void WebExtensionContextProxy::dispatchWebNavigationOnCommittedEvent(WebPageProxyIdentifier pageID, CyberCore::FrameIdentifier frameID, URL frameURL)
 {
     NSDictionary *navigationDetails = @{
         @"url": [(NSURL *)frameURL absoluteString],
@@ -93,7 +93,7 @@ void WebExtensionContextProxy::dispatchWebNavigationOnCommittedEvent(WebPageProx
     });
 }
 
-void WebExtensionContextProxy::dispatchWebNavigationOnDOMContentLoadedEvent(WebPageProxyIdentifier pageID, WebCore::FrameIdentifier frameID, URL frameURL)
+void WebExtensionContextProxy::dispatchWebNavigationOnDOMContentLoadedEvent(WebPageProxyIdentifier pageID, CyberCore::FrameIdentifier frameID, URL frameURL)
 {
     NSDictionary *navigationDetails = @{
         @"url": [(NSURL *)frameURL absoluteString],
@@ -109,7 +109,7 @@ void WebExtensionContextProxy::dispatchWebNavigationOnDOMContentLoadedEvent(WebP
     });
 }
 
-void WebExtensionContextProxy::dispatchWebNavigationOnCompletedEvent(WebPageProxyIdentifier pageID, WebCore::FrameIdentifier frameID, URL frameURL)
+void WebExtensionContextProxy::dispatchWebNavigationOnCompletedEvent(WebPageProxyIdentifier pageID, CyberCore::FrameIdentifier frameID, URL frameURL)
 {
     NSDictionary *navigationDetails = @{
         @"url": [(NSURL *)frameURL absoluteString],
@@ -125,7 +125,7 @@ void WebExtensionContextProxy::dispatchWebNavigationOnCompletedEvent(WebPageProx
     });
 }
 
-void WebExtensionContextProxy::dispatchWebNavigationOnErrorOccurredEvent(WebPageProxyIdentifier pageID, WebCore::FrameIdentifier frameID, URL frameURL)
+void WebExtensionContextProxy::dispatchWebNavigationOnErrorOccurredEvent(WebPageProxyIdentifier pageID, CyberCore::FrameIdentifier frameID, URL frameURL)
 {
     NSDictionary *navigationDetails = @{
         @"url": [(NSURL *)frameURL absoluteString],

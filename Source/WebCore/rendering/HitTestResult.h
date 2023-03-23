@@ -26,7 +26,7 @@
 #include <wtf/Forward.h>
 #include <wtf/ListHashSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Element;
 class Frame;
@@ -184,4 +184,4 @@ private:
 
 WEBCORE_EXPORT String displayString(const String&, const Node*);
 
-} // namespace WebCore
+} // namespace CyberCore

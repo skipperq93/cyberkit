@@ -137,7 +137,7 @@ class ExpectationsTest(unittest.TestCase):
             }
         }
     },
-    "TestWebCore": {
+    "TestCyberCore": {
         "expected": {"all@Debug": {"status": ["CRASH"]}},
         "subtests": {
             "ComplexTextControllerTest.InitialAdvanceWithLeftRunInRTL": {
@@ -261,9 +261,9 @@ class ExpectationsTest(unittest.TestCase):
         self.assert_exp('TestCookieManager', '/webkit2/WebKitCookieManager/persistent-storage', 'FAIL')
         self.assert_exp('TestWebKit', 'WebKit.MouseMoveAfterCrash', 'CRASH')
         self.assert_exp('TestWebKit', 'WebKit.WKConnection', 'CRASH')
-        self.assert_exp('TestWebCore', 'ComplexTextControllerTest.InitialAdvanceWithLeftRunInRTL', 'PASS')
-        self.assert_exp('TestWebCore', 'FileMonitorTest.DetectChange', 'CRASH')
-        self.assert_exp('TestWebCore', 'FileSystemTest.MappingMissingFile', 'CRASH')
+        self.assert_exp('TestCyberCore', 'ComplexTextControllerTest.InitialAdvanceWithLeftRunInRTL', 'PASS')
+        self.assert_exp('TestCyberCore', 'FileMonitorTest.DetectChange', 'CRASH')
+        self.assert_exp('TestCyberCore', 'FileSystemTest.MappingMissingFile', 'CRASH')
         self.assert_skip('TestWebViewEditor', None, False)
         self.assert_skip('TestWebViewEditor', '/webkit2/WebKitWebView/editable/editable', False)
         self.assert_exp('TestWebViewEditor', '/webkit2/WebKitWebView/editable/editable', 'FAIL')
@@ -272,9 +272,9 @@ class ExpectationsTest(unittest.TestCase):
         self.assert_exp('TestCookieManager', '/webkit2/WebKitCookieManager/persistent-storage', 'FAIL')
         self.assert_exp('TestWebKit', 'WebKit.MouseMoveAfterCrash', 'PASS')
         self.assert_exp('TestWebKit', 'WebKit.WKConnection', 'FAIL')
-        self.assert_exp('TestWebCore', 'ComplexTextControllerTest.InitialAdvanceWithLeftRunInRTL', 'PASS')
-        self.assert_exp('TestWebCore', 'FileMonitorTest.DetectChange', 'FAIL')
-        self.assert_exp('TestWebCore', 'FileSystemTest.MappingMissingFile', 'PASS')
+        self.assert_exp('TestCyberCore', 'ComplexTextControllerTest.InitialAdvanceWithLeftRunInRTL', 'PASS')
+        self.assert_exp('TestCyberCore', 'FileMonitorTest.DetectChange', 'FAIL')
+        self.assert_exp('TestCyberCore', 'FileSystemTest.MappingMissingFile', 'PASS')
         self.assert_skip('TestWebViewEditor', None, True)
         self.assert_skip('TestWebViewEditor', '/webkit2/WebKitWebView/editable/editable', True)
 

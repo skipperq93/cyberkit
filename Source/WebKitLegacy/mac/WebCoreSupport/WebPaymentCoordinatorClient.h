@@ -29,7 +29,7 @@
 
 #if ENABLE(APPLE_PAY)
 
-class WebPaymentCoordinatorClient final : public WebCore::PaymentCoordinatorClient {
+class WebPaymentCoordinatorClient final : public CyberCore::PaymentCoordinatorClient {
 public:
     WebPaymentCoordinatorClient();
 
@@ -40,15 +40,15 @@ private:
     bool canMakePayments() override;
     void canMakePaymentsWithActiveCard(const String&, const String&, CompletionHandler<void(bool)>&&) override;
     void openPaymentSetup(const String& merchantIdentifier, const String& domainName, CompletionHandler<void(bool)>&&) override;
-    bool showPaymentUI(const URL&, const Vector<URL>& linkIconURLs, const WebCore::ApplePaySessionPaymentRequest&) override;
-    void completeMerchantValidation(const WebCore::PaymentMerchantSession&) override;
-    void completeShippingMethodSelection(std::optional<WebCore::ApplePayShippingMethodUpdate>&&) override;
-    void completeShippingContactSelection(std::optional<WebCore::ApplePayShippingContactUpdate>&&) override;
-    void completePaymentMethodSelection(std::optional<WebCore::ApplePayPaymentMethodUpdate>&&) override;
+    bool showPaymentUI(const URL&, const Vector<URL>& linkIconURLs, const CyberCore::ApplePaySessionPaymentRequest&) override;
+    void completeMerchantValidation(const CyberCore::PaymentMerchantSession&) override;
+    void completeShippingMethodSelection(std::optional<CyberCore::ApplePayShippingMethodUpdate>&&) override;
+    void completeShippingContactSelection(std::optional<CyberCore::ApplePayShippingContactUpdate>&&) override;
+    void completePaymentMethodSelection(std::optional<CyberCore::ApplePayPaymentMethodUpdate>&&) override;
 #if ENABLE(APPLE_PAY_COUPON_CODE)
-    void completeCouponCodeChange(std::optional<WebCore::ApplePayCouponCodeUpdate>&&) override;
+    void completeCouponCodeChange(std::optional<CyberCore::ApplePayCouponCodeUpdate>&&) override;
 #endif
-    void completePaymentSession(WebCore::ApplePayPaymentAuthorizationResult&&) override;
+    void completePaymentSession(CyberCore::ApplePayPaymentAuthorizationResult&&) override;
     void abortPaymentSession() override;
     void cancelPaymentSession() override;
     void paymentCoordinatorDestroyed() override;

@@ -49,7 +49,7 @@
 #include <wtf/SetForScope.h>
 #include <wtf/text/StringToIntegerConversion.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(EventSource);
 
@@ -439,4 +439,4 @@ void EventSource::dispatchMessageEvent()
     dispatchEvent(MessageEvent::create(name, WTFMove(data), m_eventStreamOrigin, m_lastEventId));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

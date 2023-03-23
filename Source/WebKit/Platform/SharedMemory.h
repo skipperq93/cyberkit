@@ -47,7 +47,7 @@ class Encoder;
 class Connection;
 }
 
-namespace WebCore {
+namespace CyberCore {
 class FragmentedSharedBuffer;
 class ProcessIdentity;
 class SharedBuffer;
@@ -72,7 +72,7 @@ public:
 
         // Take/Set ownership of the memory for jetsam purposes.
         void takeOwnershipOfMemory(MemoryLedger) const;
-        void setOwnershipOfMemory(const WebCore::ProcessIdentity&, MemoryLedger) const;
+        void setOwnershipOfMemory(const CyberCore::ProcessIdentity&, MemoryLedger) const;
 
         void clear();
 
@@ -99,7 +99,7 @@ public:
 
     // FIXME: Change these factory functions to return Ref<SharedMemory> and crash on failure.
     static RefPtr<SharedMemory> allocate(size_t);
-    static RefPtr<SharedMemory> copyBuffer(const WebCore::FragmentedSharedBuffer&);
+    static RefPtr<SharedMemory> copyBuffer(const CyberCore::FragmentedSharedBuffer&);
     static RefPtr<SharedMemory> map(const Handle&, Protection);
 #if USE(UNIX_DOMAIN_SOCKETS)
     static RefPtr<SharedMemory> wrapMap(void*, size_t, int fileDescriptor);
@@ -129,7 +129,7 @@ public:
     Protection protection() const { return m_protection; }
 #endif
 
-    Ref<WebCore::SharedBuffer> createSharedBuffer(size_t) const;
+    Ref<CyberCore::SharedBuffer> createSharedBuffer(size_t) const;
 
 private:
 #if OS(DARWIN)

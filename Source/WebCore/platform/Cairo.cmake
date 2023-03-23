@@ -1,12 +1,12 @@
-list(APPEND WebCore_PRIVATE_INCLUDE_DIRECTORIES
+list(APPEND CyberCore_PRIVATE_INCLUDE_DIRECTORIES
     "${WEBCORE_DIR}/platform/graphics/cairo"
 )
 
-list(APPEND WebCore_UNIFIED_SOURCE_LIST_FILES
+list(APPEND CyberCore_UNIFIED_SOURCE_LIST_FILES
     "platform/SourcesCairo.txt"
 )
 
-list(APPEND WebCore_PRIVATE_FRAMEWORK_HEADERS
+list(APPEND CyberCore_PRIVATE_FRAMEWORK_HEADERS
     platform/graphics/cairo/BackingStoreBackendCairo.h
     platform/graphics/cairo/BackingStoreBackendCairoImpl.h
     platform/graphics/cairo/BackingStoreBackendCairoX11.h
@@ -20,6 +20,6 @@ list(APPEND WebCore_PRIVATE_FRAMEWORK_HEADERS
     platform/graphics/cairo/RefPtrCairo.h
 )
 
-list(APPEND WebCore_LIBRARIES
+list(APPEND CyberCore_LIBRARIES
     Cairo::Cairo
 )

@@ -22,7 +22,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 class Element;
 class StyleSheetContents;
@@ -79,4 +79,4 @@ private:
 };
 
 } // namespace Style
-} // namespace WebCore
+} // namespace CyberCore

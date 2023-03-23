@@ -48,7 +48,7 @@ static size_t loadsFinished;
 
 namespace TestWebKitAPI {
 
-TEST(WebKitLegacy, ScheduleInRunLoop)
+TEST(CyberKitLegacy, ScheduleInRunLoop)
 {
     const size_t webViewCount = 50;
     Vector<RetainPtr<WebView>> webViews;

@@ -41,7 +41,7 @@
 #include <cstdlib>
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(RenderGrid);
 
@@ -2486,4 +2486,4 @@ void RenderGrid::GridWrapper::resetCurrentGrid() const
     m_currentGrid = std::ref(const_cast<Grid&>(m_layoutGrid));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

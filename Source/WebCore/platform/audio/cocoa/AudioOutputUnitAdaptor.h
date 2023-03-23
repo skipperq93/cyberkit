@@ -29,7 +29,7 @@
 
 #include <AudioUnit/AudioUnit.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioUnitRenderer {
 public:
@@ -53,6 +53,6 @@ private:
     AudioUnitRenderer& m_audioUnitRenderer;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

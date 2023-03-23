@@ -29,16 +29,16 @@
 #include "WebProcess.h"
 #include "WebProcessProxyMessages.h"
 
-namespace WebKit {
+namespace CyberKit {
 
-void WebSleepDisablerClient::didCreateSleepDisabler(WebCore::SleepDisablerIdentifier identifier, const String& reason, bool display)
+void WebSleepDisablerClient::didCreateSleepDisabler(CyberCore::SleepDisablerIdentifier identifier, const String& reason, bool display)
 {
     WebProcess::singleton().parentProcessConnection()->send(Messages::WebProcessProxy::DidCreateSleepDisabler(identifier, reason, display), 0);
 }
 
-void WebSleepDisablerClient::didDestroySleepDisabler(WebCore::SleepDisablerIdentifier identifier)
+void WebSleepDisablerClient::didDestroySleepDisabler(CyberCore::SleepDisablerIdentifier identifier)
 {
     WebProcess::singleton().parentProcessConnection()->send(Messages::WebProcessProxy::DidDestroySleepDisabler(identifier), 0);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

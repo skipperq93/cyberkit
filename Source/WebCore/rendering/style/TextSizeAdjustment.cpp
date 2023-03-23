@@ -30,7 +30,7 @@
 
 #include "RenderStyle.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 AutosizeStatus::AutosizeStatus(OptionSet<Fields> fields)
     : m_fields(fields)

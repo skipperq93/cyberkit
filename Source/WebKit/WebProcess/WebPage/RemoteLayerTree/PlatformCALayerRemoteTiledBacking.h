@@ -28,7 +28,7 @@
 #include "PlatformCALayerRemote.h"
 #include <CyberCore/TileController.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class PlatformCALayerRemoteTiledBacking final : public PlatformCALayerRemote {
     friend class PlatformCALayerRemote;
@@ -36,16 +36,16 @@ public:
     virtual ~PlatformCALayerRemoteTiledBacking();
 
 private:
-    PlatformCALayerRemoteTiledBacking(WebCore::PlatformCALayer::LayerType, WebCore::PlatformCALayerClient* owner, RemoteLayerTreeContext&);
+    PlatformCALayerRemoteTiledBacking(CyberCore::PlatformCALayer::LayerType, CyberCore::PlatformCALayerClient* owner, RemoteLayerTreeContext&);
 
-    WebCore::TiledBacking* tiledBacking() override { return m_tileController.get(); }
+    CyberCore::TiledBacking* tiledBacking() override { return m_tileController.get(); }
 
-    void setNeedsDisplayInRect(const WebCore::FloatRect& dirtyRect) override;
+    void setNeedsDisplayInRect(const CyberCore::FloatRect& dirtyRect) override;
     void setNeedsDisplay() override;
 
-    const WebCore::PlatformCALayerList* customSublayers() const override;
+    const CyberCore::PlatformCALayerList* customSublayers() const override;
 
-    void setBounds(const WebCore::FloatRect&) override;
+    void setBounds(const CyberCore::FloatRect&) override;
     
     bool isOpaque() const override;
     void setOpaque(bool) override;
@@ -60,10 +60,10 @@ private:
     void setContentsScale(float) override;
     
     void setBorderWidth(float) override;
-    void setBorderColor(const WebCore::Color&) override;
+    void setBorderColor(const CyberCore::Color&) override;
 
-    std::unique_ptr<WebCore::TileController> m_tileController;
-    mutable WebCore::PlatformCALayerList m_customSublayers;
+    std::unique_ptr<CyberCore::TileController> m_tileController;
+    mutable CyberCore::PlatformCALayerList m_customSublayers;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

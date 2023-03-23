@@ -34,18 +34,18 @@
 #import "ExceptionHandlers.h"
 #import <CyberCore/JSExecState.h>
 #import <CyberCore/ThreadCheck.h>
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 #import <CyberCore/WebScriptObjectPrivate.h>
 #import <wtf/GetPtr.h>
 #import <wtf/URL.h>
 
-#define IMPL reinterpret_cast<WebCore::CSSRule*>(_internal)
+#define IMPL reinterpret_cast<CyberCore::CSSRule*>(_internal)
 
 @implementation DOMCSSRule
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainThread([DOMCSSRule class], self))
+    if (CyberCoreObjCScheduleDeallocateOnMainThread([DOMCSSRule class], self))
         return;
 
     if (_internal)
@@ -55,39 +55,39 @@
 
 - (unsigned short)type
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->typeForCSSOM();
 }
 
 - (NSString *)cssText
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->cssText();
 }
 
 - (void)setCssText:(NSString *)newCssText
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     raiseOnDOMError(IMPL->setCssText(newCssText));
 }
 
 - (DOMCSSStyleSheet *)parentStyleSheet
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->parentStyleSheet()));
 }
 
 - (DOMCSSRule *)parentRule
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->parentRule()));
 }
 
 @end
 
-DOMCSSRule *kit(WebCore::CSSRule* value)
+DOMCSSRule *kit(CyberCore::CSSRule* value)
 {
-    WebCoreThreadViolationCheckRoundOne();
+    CyberCoreThreadViolationCheckRoundOne();
     if (!value)
         return nil;
     if (DOMCSSRule *wrapper = getDOMWrapper(value))

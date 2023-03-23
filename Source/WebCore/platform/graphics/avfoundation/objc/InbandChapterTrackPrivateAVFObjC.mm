@@ -38,7 +38,7 @@
 #import <pal/cf/CoreMediaSoftLink.h>
 #import <pal/cocoa/AVFoundationSoftLink.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 InbandChapterTrackPrivateAVFObjC::InbandChapterTrackPrivateAVFObjC(RetainPtr<NSLocale> locale)
     : InbandTextTrackPrivate(CueFormat::WebVTT)
@@ -100,6 +100,6 @@ AtomString InbandChapterTrackPrivateAVFObjC::language() const
     return m_language;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(VIDEO) && (USE(AVFOUNDATION) || PLATFORM(IOS_FAMILY))

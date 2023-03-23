@@ -50,8 +50,8 @@
 #import <UIKit/UIApplication.h>
 #endif
 
-using namespace WebKit::WebPushD;
-using WebCore::PushSubscriptionSetIdentifier;
+using namespace CyberKit::WebPushD;
+using CyberCore::PushSubscriptionSetIdentifier;
 
 namespace WebPushD {
 
@@ -92,7 +92,7 @@ END
 
 FUNCTION(getPendingPushMessages)
 ARGUMENTS()
-REPLY(const Vector<WebKit::WebPushMessage>&)
+REPLY(const Vector<CyberKit::WebPushMessage>&)
 END
 
 FUNCTION(setDebugModeIsEnabled)
@@ -115,26 +115,26 @@ END
 
 FUNCTION(subscribeToPushService)
 ARGUMENTS(URL, Vector<uint8_t>)
-REPLY(const Expected<WebCore::PushSubscriptionData, WebCore::ExceptionData>&)
+REPLY(const Expected<CyberCore::PushSubscriptionData, CyberCore::ExceptionData>&)
 END
 
 FUNCTION(unsubscribeFromPushService)
-ARGUMENTS(URL, std::optional<WebCore::PushSubscriptionIdentifier>)
-REPLY(const Expected<bool, WebCore::ExceptionData>&)
+ARGUMENTS(URL, std::optional<CyberCore::PushSubscriptionIdentifier>)
+REPLY(const Expected<bool, CyberCore::ExceptionData>&)
 END
 
 FUNCTION(getPushSubscription)
 ARGUMENTS(URL)
-REPLY(const Expected<std::optional<WebCore::PushSubscriptionData>, WebCore::ExceptionData>&)
+REPLY(const Expected<std::optional<CyberCore::PushSubscriptionData>, CyberCore::ExceptionData>&)
 END
 
 FUNCTION(getPushPermissionState)
 ARGUMENTS(URL)
-REPLY(const Expected<uint8_t, WebCore::ExceptionData>&)
+REPLY(const Expected<uint8_t, CyberCore::ExceptionData>&)
 END
 
 FUNCTION(incrementSilentPushCount)
-ARGUMENTS(WebCore::SecurityOriginData)
+ARGUMENTS(CyberCore::SecurityOriginData)
 REPLY(unsigned)
 END
 
@@ -144,7 +144,7 @@ REPLY(unsigned)
 END
 
 FUNCTION(removePushSubscriptionsForOrigin)
-ARGUMENTS(WebCore::SecurityOriginData)
+ARGUMENTS(CyberCore::SecurityOriginData)
 REPLY(unsigned)
 END
 
@@ -166,98 +166,98 @@ EMPTY_REPLY(setPublicTokenForTesting);
 
 WebPushD::EncodedMessage echoTwice::encodeReply(String reply)
 {
-    WebKit::Daemon::Encoder encoder;
+    CyberKit::Daemon::Encoder encoder;
     encoder << reply;
     return encoder.takeBuffer();
 }
 
 WebPushD::EncodedMessage getOriginsWithPushAndNotificationPermissions::encodeReply(const Vector<String>& reply)
 {
-    WebKit::Daemon::Encoder encoder;
+    CyberKit::Daemon::Encoder encoder;
     encoder << reply;
     return encoder.takeBuffer();
 }
 
 WebPushD::EncodedMessage deletePushAndNotificationRegistration::encodeReply(String reply)
 {
-    WebKit::Daemon::Encoder encoder;
+    CyberKit::Daemon::Encoder encoder;
     encoder << reply;
     return encoder.takeBuffer();
 }
 
 WebPushD::EncodedMessage requestSystemNotificationPermission::encodeReply(bool reply)
 {
-    WebKit::Daemon::Encoder encoder;
+    CyberKit::Daemon::Encoder encoder;
     encoder << reply;
     return encoder.takeBuffer();
 }
 
 WebPushD::EncodedMessage injectPushMessageForTesting::encodeReply(bool reply)
 {
-    WebKit::Daemon::Encoder encoder;
+    CyberKit::Daemon::Encoder encoder;
     encoder << reply;
     return encoder.takeBuffer();
 }
 
 WebPushD::EncodedMessage injectEncryptedPushMessageForTesting::encodeReply(bool reply)
 {
-    WebKit::Daemon::Encoder encoder;
+    CyberKit::Daemon::Encoder encoder;
     encoder << reply;
     return encoder.takeBuffer();
 }
 
-WebPushD::EncodedMessage getPendingPushMessages::encodeReply(const Vector<WebKit::WebPushMessage>& reply)
+WebPushD::EncodedMessage getPendingPushMessages::encodeReply(const Vector<CyberKit::WebPushMessage>& reply)
 {
-    WebKit::Daemon::Encoder encoder;
+    CyberKit::Daemon::Encoder encoder;
     encoder << reply;
     return encoder.takeBuffer();
 }
 
-WebPushD::EncodedMessage subscribeToPushService::encodeReply(const Expected<WebCore::PushSubscriptionData, WebCore::ExceptionData>& reply)
+WebPushD::EncodedMessage subscribeToPushService::encodeReply(const Expected<CyberCore::PushSubscriptionData, CyberCore::ExceptionData>& reply)
 {
-    WebKit::Daemon::Encoder encoder;
+    CyberKit::Daemon::Encoder encoder;
     encoder << reply;
     return encoder.takeBuffer();
 }
 
-WebPushD::EncodedMessage unsubscribeFromPushService::encodeReply(const Expected<bool, WebCore::ExceptionData>& reply)
+WebPushD::EncodedMessage unsubscribeFromPushService::encodeReply(const Expected<bool, CyberCore::ExceptionData>& reply)
 {
-    WebKit::Daemon::Encoder encoder;
+    CyberKit::Daemon::Encoder encoder;
     encoder << reply;
     return encoder.takeBuffer();
 }
 
-WebPushD::EncodedMessage getPushSubscription::encodeReply(const Expected<std::optional<WebCore::PushSubscriptionData>, WebCore::ExceptionData>& reply)
+WebPushD::EncodedMessage getPushSubscription::encodeReply(const Expected<std::optional<CyberCore::PushSubscriptionData>, CyberCore::ExceptionData>& reply)
 {
-    WebKit::Daemon::Encoder encoder;
+    CyberKit::Daemon::Encoder encoder;
     encoder << reply;
     return encoder.takeBuffer();
 }
 
-WebPushD::EncodedMessage getPushPermissionState::encodeReply(const Expected<uint8_t, WebCore::ExceptionData>& reply)
+WebPushD::EncodedMessage getPushPermissionState::encodeReply(const Expected<uint8_t, CyberCore::ExceptionData>& reply)
 {
-    WebKit::Daemon::Encoder encoder;
+    CyberKit::Daemon::Encoder encoder;
     encoder << reply;
     return encoder.takeBuffer();
 }
 
 WebPushD::EncodedMessage incrementSilentPushCount::encodeReply(unsigned reply)
 {
-    WebKit::Daemon::Encoder encoder;
+    CyberKit::Daemon::Encoder encoder;
     encoder << reply;
     return encoder.takeBuffer();
 }
 
 WebPushD::EncodedMessage removeAllPushSubscriptions::encodeReply(unsigned reply)
 {
-    WebKit::Daemon::Encoder encoder;
+    CyberKit::Daemon::Encoder encoder;
     encoder << reply;
     return encoder.takeBuffer();
 }
 
 WebPushD::EncodedMessage removePushSubscriptionsForOrigin::encodeReply(unsigned reply)
 {
-    WebKit::Daemon::Encoder encoder;
+    CyberKit::Daemon::Encoder encoder;
     encoder << reply;
     return encoder.takeBuffer();
 }
@@ -267,7 +267,7 @@ WebPushD::EncodedMessage removePushSubscriptionsForOrigin::encodeReply(unsigned 
 template<typename Info>
 void handleWebPushDMessageWithReply(ClientConnection* connection, Span<const uint8_t> encodedMessage, CompletionHandler<void(WebPushD::EncodedMessage&&)>&& replySender)
 {
-    WebKit::Daemon::Decoder decoder(encodedMessage);
+    CyberKit::Daemon::Decoder decoder(encodedMessage);
 
     std::optional<typename Info::ArgsTuple> arguments;
     decoder >> arguments;
@@ -284,7 +284,7 @@ void handleWebPushDMessageWithReply(ClientConnection* connection, Span<const uin
 template<typename Info>
 void handleWebPushDMessage(ClientConnection* connection, Span<const uint8_t> encodedMessage)
 {
-    WebKit::Daemon::Decoder decoder(encodedMessage);
+    CyberKit::Daemon::Decoder decoder(encodedMessage);
 
     std::optional<typename Info::ArgsTuple> arguments;
     decoder >> arguments;
@@ -307,7 +307,7 @@ Daemon::Daemon()
 
 void Daemon::startMockPushService()
 {
-    auto messageHandler = [this](const PushSubscriptionSetIdentifier& identifier, WebKit::WebPushMessage&& message) {
+    auto messageHandler = [this](const PushSubscriptionSetIdentifier& identifier, CyberKit::WebPushMessage&& message) {
         handleIncomingPush(identifier, WTFMove(message));
     };
     PushService::createMockService(WTFMove(messageHandler), [this](auto&& pushService) mutable {
@@ -317,7 +317,7 @@ void Daemon::startMockPushService()
 
 void Daemon::startPushService(const String& incomingPushServiceName, const String& databasePath)
 {
-    auto messageHandler = [this](const PushSubscriptionSetIdentifier& identifier, WebKit::WebPushMessage&& message) {
+    auto messageHandler = [this](const PushSubscriptionSetIdentifier& identifier, CyberKit::WebPushMessage&& message) {
         handleIncomingPush(identifier, WTFMove(message));
     };
     PushService::create(incomingPushServiceName, databasePath, WTFMove(messageHandler), [this](auto&& pushService) mutable {
@@ -442,7 +442,7 @@ CompletionHandler<void(EncodedMessage&&)> Daemon::createReplySender(MessageType 
         auto reply = adoptNS(xpc_dictionary_create_reply(request.get()));
         ASSERT(xpc_get_type(reply.get()) == XPC_TYPE_DICTIONARY);
         xpc_dictionary_set_uint64(reply.get(), protocolVersionKey, protocolVersionValue);
-        xpc_dictionary_set_value(reply.get(), protocolEncodedMessageKey, WebKit::vectorToXPCData(WTFMove(message)).get());
+        xpc_dictionary_set_value(reply.get(), protocolEncodedMessageKey, CyberKit::vectorToXPCData(WTFMove(message)).get());
         xpc_connection_send_message(xpc_dictionary_get_remote_connection(request.get()), reply.get());
     };
 }
@@ -681,19 +681,19 @@ void Daemon::injectEncryptedPushMessageForTesting(ClientConnection* connection, 
     });
 }
 
-void Daemon::handleIncomingPush(const PushSubscriptionSetIdentifier& identifier, WebKit::WebPushMessage&& message)
+void Daemon::handleIncomingPush(const PushSubscriptionSetIdentifier& identifier, CyberKit::WebPushMessage&& message)
 {
     ensureIncomingPushTransaction();
 
     auto addResult = m_pushMessages.ensure(identifier, [] {
-        return Vector<WebKit::WebPushMessage> { };
+        return Vector<CyberKit::WebPushMessage> { };
     });
     addResult.iterator->value.append(WTFMove(message));
 
     notifyClientPushMessageIsAvailable(identifier);
 }
 
-void Daemon::notifyClientPushMessageIsAvailable(const WebCore::PushSubscriptionSetIdentifier& subscriptionSetIdentifier)
+void Daemon::notifyClientPushMessageIsAvailable(const CyberCore::PushSubscriptionSetIdentifier& subscriptionSetIdentifier)
 {
     const auto& bundleIdentifier = subscriptionSetIdentifier.bundleIdentifier;
     RELEASE_LOG(Push, "Launching %{public}s in response to push", bundleIdentifier.utf8().data());
@@ -720,7 +720,7 @@ void Daemon::notifyClientPushMessageIsAvailable(const WebCore::PushSubscriptionS
     NSDictionary *options = @{
         FBSOpenApplicationOptionKeyActivateForEvent: @{ FBSActivateForEventOptionTypeBackgroundContentFetching: @{ } },
         FBSOpenApplicationOptionKeyPayloadURL : launchURL,
-        FBSOpenApplicationOptionKeyPayloadOptions : @{ UIApplicationLaunchOptionsSourceApplicationKey : @"com.apple.WebKit.webpushd" },
+        FBSOpenApplicationOptionKeyPayloadOptions : @{ UIApplicationLaunchOptionsSourceApplicationKey : @"com.apple.CyberKit.webpushd" },
     };
 
     _LSOpenConfiguration *configuration = [[_LSOpenConfiguration alloc] init];
@@ -735,7 +735,7 @@ void Daemon::notifyClientPushMessageIsAvailable(const WebCore::PushSubscriptionS
 #endif
 }
 
-void Daemon::getPendingPushMessages(ClientConnection* connection, CompletionHandler<void(const Vector<WebKit::WebPushMessage>&)>&& replySender)
+void Daemon::getPendingPushMessages(ClientConnection* connection, CompletionHandler<void(const Vector<CyberKit::WebPushMessage>&)>&& replySender)
 {
     auto hostAppCodeSigningIdentifier = connection->hostAppCodeSigningIdentifier();
     if (hostAppCodeSigningIdentifier.isEmpty()) {
@@ -743,7 +743,7 @@ void Daemon::getPendingPushMessages(ClientConnection* connection, CompletionHand
         return;
     }
 
-    Vector<WebKit::WebPushMessage> resultMessages;
+    Vector<CyberKit::WebPushMessage> resultMessages;
 
     if (auto iterator = m_pushMessages.find(connection->subscriptionSetIdentifier()); iterator != m_pushMessages.end()) {
         resultMessages = WTFMove(iterator->value);
@@ -754,7 +754,7 @@ void Daemon::getPendingPushMessages(ClientConnection* connection, CompletionHand
     if (iterator != m_testingPushMessages.end()) {
         for (auto& message : iterator->value) {
             auto data = message.message.utf8();
-            resultMessages.append(WebKit::WebPushMessage { Vector<uint8_t> { reinterpret_cast<const uint8_t*>(data.data()), data.length() }, message.pushPartitionString, message.registrationURL });
+            resultMessages.append(CyberKit::WebPushMessage { Vector<uint8_t> { reinterpret_cast<const uint8_t*>(data.data()), data.length() }, message.pushPartitionString, message.registrationURL });
         }
         m_testingPushMessages.remove(iterator);
     }
@@ -795,11 +795,11 @@ void Daemon::getPushTopicsForTesting(OSObjectPtr<xpc_object_t>&& request)
     });
 }
 
-void Daemon::subscribeToPushService(ClientConnection* connection, const URL& scopeURL, const Vector<uint8_t>& vapidPublicKey, CompletionHandler<void(const Expected<WebCore::PushSubscriptionData, WebCore::ExceptionData>&)>&& replySender)
+void Daemon::subscribeToPushService(ClientConnection* connection, const URL& scopeURL, const Vector<uint8_t>& vapidPublicKey, CompletionHandler<void(const Expected<CyberCore::PushSubscriptionData, CyberCore::ExceptionData>&)>&& replySender)
 {
     runAfterStartingPushService([this, identifier = connection->subscriptionSetIdentifier(), scope = scopeURL.string(), vapidPublicKey, replySender = WTFMove(replySender)]() mutable {
         if (!m_pushService) {
-            replySender(makeUnexpected(WebCore::ExceptionData { WebCore::InvalidStateError, "Push service initialization failed"_s }));
+            replySender(makeUnexpected(CyberCore::ExceptionData { CyberCore::InvalidStateError, "Push service initialization failed"_s }));
             return;
         }
 
@@ -807,11 +807,11 @@ void Daemon::subscribeToPushService(ClientConnection* connection, const URL& sco
     });
 }
 
-void Daemon::unsubscribeFromPushService(ClientConnection* connection, const URL& scopeURL, std::optional<WebCore::PushSubscriptionIdentifier> subscriptionIdentifier, CompletionHandler<void(const Expected<bool, WebCore::ExceptionData>&)>&& replySender)
+void Daemon::unsubscribeFromPushService(ClientConnection* connection, const URL& scopeURL, std::optional<CyberCore::PushSubscriptionIdentifier> subscriptionIdentifier, CompletionHandler<void(const Expected<bool, CyberCore::ExceptionData>&)>&& replySender)
 {
     runAfterStartingPushService([this, identifier = connection->subscriptionSetIdentifier(), scope = scopeURL.string(), subscriptionIdentifier, replySender = WTFMove(replySender)]() mutable {
         if (!m_pushService) {
-            replySender(makeUnexpected(WebCore::ExceptionData { WebCore::InvalidStateError, "Push service initialization failed"_s }));
+            replySender(makeUnexpected(CyberCore::ExceptionData { CyberCore::InvalidStateError, "Push service initialization failed"_s }));
             return;
         }
 
@@ -819,11 +819,11 @@ void Daemon::unsubscribeFromPushService(ClientConnection* connection, const URL&
     });
 }
 
-void Daemon::getPushSubscription(ClientConnection* connection, const URL& scopeURL, CompletionHandler<void(const Expected<std::optional<WebCore::PushSubscriptionData>, WebCore::ExceptionData>&)>&& replySender)
+void Daemon::getPushSubscription(ClientConnection* connection, const URL& scopeURL, CompletionHandler<void(const Expected<std::optional<CyberCore::PushSubscriptionData>, CyberCore::ExceptionData>&)>&& replySender)
 {
     runAfterStartingPushService([this, identifier = connection->subscriptionSetIdentifier(), scope = scopeURL.string(), replySender = WTFMove(replySender)]() mutable {
         if (!m_pushService) {
-            replySender(makeUnexpected(WebCore::ExceptionData { WebCore::InvalidStateError, "Push service initialization failed"_s }));
+            replySender(makeUnexpected(CyberCore::ExceptionData { CyberCore::InvalidStateError, "Push service initialization failed"_s }));
             return;
         }
 
@@ -831,15 +831,15 @@ void Daemon::getPushSubscription(ClientConnection* connection, const URL& scopeU
     });
 }
 
-void Daemon::getPushPermissionState(ClientConnection* connection, const URL& scopeURL, CompletionHandler<void(const Expected<uint8_t, WebCore::ExceptionData>&)>&& replySender)
+void Daemon::getPushPermissionState(ClientConnection* connection, const URL& scopeURL, CompletionHandler<void(const Expected<uint8_t, CyberCore::ExceptionData>&)>&& replySender)
 {
     // FIXME: This doesn't actually get called right now, since the permission is currently checked
     // in WebProcess. However, we've left this stub in for now because there is a chance that we
     // will move the permission check into webpushd when supporting other platforms.
-    replySender(static_cast<uint8_t>(WebCore::PushPermissionState::Denied));
+    replySender(static_cast<uint8_t>(CyberCore::PushPermissionState::Denied));
 }
 
-void Daemon::incrementSilentPushCount(ClientConnection* connection, const WebCore::SecurityOriginData& securityOrigin, CompletionHandler<void(unsigned)>&& replySender)
+void Daemon::incrementSilentPushCount(ClientConnection* connection, const CyberCore::SecurityOriginData& securityOrigin, CompletionHandler<void(unsigned)>&& replySender)
 {
     runAfterStartingPushService([this, identifier = connection->subscriptionSetIdentifier(), securityOrigin = securityOrigin.toString(), replySender = WTFMove(replySender)]() mutable {
         if (!m_pushService) {
@@ -863,7 +863,7 @@ void Daemon::removeAllPushSubscriptions(ClientConnection* connection, Completion
     });
 }
 
-void Daemon::removePushSubscriptionsForOrigin(ClientConnection* connection, const WebCore::SecurityOriginData& securityOrigin, CompletionHandler<void(unsigned)>&& replySender)
+void Daemon::removePushSubscriptionsForOrigin(ClientConnection* connection, const CyberCore::SecurityOriginData& securityOrigin, CompletionHandler<void(unsigned)>&& replySender)
 {
     runAfterStartingPushService([this, identifier = connection->subscriptionSetIdentifier(), securityOrigin = securityOrigin.toString(), replySender = WTFMove(replySender)]() mutable {
         if (!m_pushService) {

@@ -28,7 +28,7 @@
 
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 String keyForCharCode(unichar charCode);
 String keyIdentifierForCharCode(unichar charCode);

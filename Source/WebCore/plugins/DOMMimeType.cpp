@@ -23,7 +23,7 @@
 #include "Navigator.h"
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<DOMMimeType> DOMMimeType::create(Navigator& navigator, const MimeClassInfo& info, DOMPlugin& enabledPlugin)
 {
@@ -65,4 +65,4 @@ RefPtr<DOMPlugin> DOMMimeType::enabledPlugin() const
     return m_enabledPlugin.get();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

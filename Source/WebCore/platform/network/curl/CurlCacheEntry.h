@@ -37,7 +37,7 @@
 #include <wtf/text/CString.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CurlCacheEntry {
     WTF_MAKE_FAST_ALLOCATED;
@@ -95,4 +95,4 @@ private:
     bool closeContentFile();
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -51,7 +51,7 @@
 #include <wtf/FileSystem.h>
 #include <wtf/text/Base64.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 ResourceHandleInternal::~ResourceHandleInternal()
 {
@@ -264,7 +264,7 @@ void ResourceHandle::receivedCredential(const AuthenticationChallenge& challenge
 {
     ASSERT(isMainThread());
 
-    if (!AuthenticationChallengeBase::equalForWebKitLegacyChallengeComparison(challenge, d->m_currentWebChallenge))
+    if (!AuthenticationChallengeBase::equalForCyberKitLegacyChallengeComparison(challenge, d->m_currentWebChallenge))
         return;
 
     if (credential.isEmpty()) {
@@ -290,7 +290,7 @@ void ResourceHandle::receivedRequestToContinueWithoutCredential(const Authentica
 {
     ASSERT(isMainThread());
 
-    if (!AuthenticationChallengeBase::equalForWebKitLegacyChallengeComparison(challenge, d->m_currentWebChallenge))
+    if (!AuthenticationChallengeBase::equalForCyberKitLegacyChallengeComparison(challenge, d->m_currentWebChallenge))
         return;
 
     clearAuthentication();
@@ -304,7 +304,7 @@ void ResourceHandle::receivedCancellation(const AuthenticationChallenge& challen
 {
     ASSERT(isMainThread());
 
-    if (!AuthenticationChallengeBase::equalForWebKitLegacyChallengeComparison(challenge, d->m_currentWebChallenge))
+    if (!AuthenticationChallengeBase::equalForCyberKitLegacyChallengeComparison(challenge, d->m_currentWebChallenge))
         return;
 
     if (client()) {
@@ -482,7 +482,7 @@ void ResourceHandle::willSendRequest()
     }
 
     // Check if the redirected url is allowed to access the redirecting url's timing information.
-    if (!hasCrossOriginRedirect() && !WebCore::SecurityOrigin::create(newRequest.url())->canRequest(delegate()->response().url()))
+    if (!hasCrossOriginRedirect() && !CyberCore::SecurityOrigin::create(newRequest.url())->canRequest(delegate()->response().url()))
         markAsHavingCrossOriginRedirect();
 
     incrementRedirectCount();
@@ -584,6 +584,6 @@ void ResourceHandle::handleDataURL()
         client()->didFinishLoading(this, { });
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

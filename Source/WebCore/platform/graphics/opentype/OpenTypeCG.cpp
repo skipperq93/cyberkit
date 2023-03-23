@@ -29,7 +29,7 @@
 
 #include "OpenTypeTypes.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace OpenType {
 
 static inline short readShortFromTable(const UInt8* os2Data, CFIndex offset)
@@ -63,4 +63,4 @@ bool tryGetTypoMetrics(CTFontRef font, short& ascent, short& descent, short& lin
 }
 
 } // namespace OpenType
-} // namespace WebCore
+} // namespace CyberCore

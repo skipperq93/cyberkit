@@ -30,7 +30,7 @@
 #include "Page.h"
 #include "PluginInfoProvider.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 #if PLATFORM(COCOA)
 static inline bool isBuiltInPDFPlugIn(const PluginInfo& plugin)
@@ -152,4 +152,4 @@ PluginInfo PluginData::dummyPDFPluginInfo()
     return info;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

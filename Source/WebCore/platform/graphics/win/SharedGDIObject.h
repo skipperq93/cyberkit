@@ -30,7 +30,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/win/GDIObject.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 template <typename T> class SharedGDIObject : public RefCounted<SharedGDIObject<T>> {
 public:
@@ -58,6 +58,6 @@ private:
     GDIObject<T> m_object;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // SharedGDIObject_h

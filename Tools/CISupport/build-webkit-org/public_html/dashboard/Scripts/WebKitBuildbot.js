@@ -23,32 +23,32 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-WebKitBuildbot = function()
+CyberKitBuildbot = function()
 {
     const queueInfo = {
         "Apple-Ventura-Release-Build": {platform: Dashboard.Platform.macOSVentura, debug: false, builder: true, architecture: Buildbot.BuildArchitecture.SixtyFourBit},
         "Apple-Ventura-Debug-Build": {platform: Dashboard.Platform.macOSVentura, debug: true, builder: true, architecture: Buildbot.BuildArchitecture.SixtyFourBit},
-        "Apple-Ventura-Debug-WK1-Tests": {platform: Dashboard.Platform.macOSVentura, debug: true, tester: true, testCategory: Buildbot.TestCategory.WebKit1},
-        "Apple-Ventura-Debug-WK2-Tests": {platform: Dashboard.Platform.macOSVentura, debug: true, tester: true, testCategory: Buildbot.TestCategory.WebKit2},
-        "Apple-Ventura-Release-WK1-Tests": {platform: Dashboard.Platform.macOSVentura, debug: false, tester: true, testCategory: Buildbot.TestCategory.WebKit1},
-        "Apple-Ventura-Release-WK2-Tests": {platform: Dashboard.Platform.macOSVentura, debug: false, tester: true, testCategory: Buildbot.TestCategory.WebKit2},
-        "Apple-Ventura-Debug-AppleSilicon-WK1-Tests": {platform: Dashboard.Platform.macOSVentura, debug: true, tester: true, testCategory: Buildbot.TestCategory.WebKit1, heading: "Debug AppleSilicon"},
-        "Apple-Ventura-Debug-AppleSilicon-WK2-Tests": {platform: Dashboard.Platform.macOSVentura, debug: true, tester: true, testCategory: Buildbot.TestCategory.WebKit2, heading: "Debug AppleSilicon"},
-        "Apple-Ventura-Release-AppleSilicon-WK1-Tests": {platform: Dashboard.Platform.macOSVentura, debug: false, tester: true, testCategory: Buildbot.TestCategory.WebKit1, heading: "Release AppleSilicon"},
-        "Apple-Ventura-Release-AppleSilicon-WK2-Tests": {platform: Dashboard.Platform.macOSVentura, debug: false, tester: true, testCategory: Buildbot.TestCategory.WebKit2, heading: "Release AppleSilicon"},
+        "Apple-Ventura-Debug-WK1-Tests": {platform: Dashboard.Platform.macOSVentura, debug: true, tester: true, testCategory: Buildbot.TestCategory.CyberKit1},
+        "Apple-Ventura-Debug-WK2-Tests": {platform: Dashboard.Platform.macOSVentura, debug: true, tester: true, testCategory: Buildbot.TestCategory.CyberKit2},
+        "Apple-Ventura-Release-WK1-Tests": {platform: Dashboard.Platform.macOSVentura, debug: false, tester: true, testCategory: Buildbot.TestCategory.CyberKit1},
+        "Apple-Ventura-Release-WK2-Tests": {platform: Dashboard.Platform.macOSVentura, debug: false, tester: true, testCategory: Buildbot.TestCategory.CyberKit2},
+        "Apple-Ventura-Debug-AppleSilicon-WK1-Tests": {platform: Dashboard.Platform.macOSVentura, debug: true, tester: true, testCategory: Buildbot.TestCategory.CyberKit1, heading: "Debug AppleSilicon"},
+        "Apple-Ventura-Debug-AppleSilicon-WK2-Tests": {platform: Dashboard.Platform.macOSVentura, debug: true, tester: true, testCategory: Buildbot.TestCategory.CyberKit2, heading: "Debug AppleSilicon"},
+        "Apple-Ventura-Release-AppleSilicon-WK1-Tests": {platform: Dashboard.Platform.macOSVentura, debug: false, tester: true, testCategory: Buildbot.TestCategory.CyberKit1, heading: "Release AppleSilicon"},
+        "Apple-Ventura-Release-AppleSilicon-WK2-Tests": {platform: Dashboard.Platform.macOSVentura, debug: false, tester: true, testCategory: Buildbot.TestCategory.CyberKit2, heading: "Release AppleSilicon"},
         "Apple-Ventura JSC": {platform: Dashboard.Platform.macOSVentura, heading: "JavaScript", combinedQueues: {
             "Apple-Ventura-AppleSilicon-Release-Test262-Tests": {heading: "Release arm64 Test262 (Tests)"},
         }},
         "Apple-Monterey-Release-Build": {platform: Dashboard.Platform.macOSMonterey, debug: false, builder: true, architecture: Buildbot.BuildArchitecture.SixtyFourBit},
         "Apple-Monterey-Debug-Build": {platform: Dashboard.Platform.macOSMonterey, debug: true, builder: true, architecture: Buildbot.BuildArchitecture.SixtyFourBit},
-        "Apple-Monterey-Debug-WK1-Tests": {platform: Dashboard.Platform.macOSMonterey, debug: true, tester: true, testCategory: Buildbot.TestCategory.WebKit1},
-        "Apple-Monterey-Debug-WK2-Tests": {platform: Dashboard.Platform.macOSMonterey, debug: true, tester: true, testCategory: Buildbot.TestCategory.WebKit2},
-        "Apple-Monterey-Release-WK1-Tests": {platform: Dashboard.Platform.macOSMonterey, debug: false, tester: true, testCategory: Buildbot.TestCategory.WebKit1},
-        "Apple-Monterey-Release-WK2-Tests": {platform: Dashboard.Platform.macOSMonterey, debug: false, tester: true, testCategory: Buildbot.TestCategory.WebKit2},
-        "Apple-Monterey-Debug-AppleSilicon-WK1-Tests": {platform: Dashboard.Platform.macOSMonterey, debug: true, tester: true, testCategory: Buildbot.TestCategory.WebKit1, heading: "Debug AppleSilicon"},
-        "Apple-Monterey-Debug-AppleSilicon-WK2-Tests": {platform: Dashboard.Platform.macOSMonterey, debug: true, tester: true, testCategory: Buildbot.TestCategory.WebKit2, heading: "Debug AppleSilicon"},
-        "Apple-Monterey-Release-AppleSilicon-WK1-Tests": {platform: Dashboard.Platform.macOSMonterey, debug: false, tester: true, testCategory: Buildbot.TestCategory.WebKit1, heading: "Release AppleSilicon"},
-        "Apple-Monterey-Release-AppleSilicon-WK2-Tests": {platform: Dashboard.Platform.macOSMonterey, debug: false, tester: true, testCategory: Buildbot.TestCategory.WebKit2, heading: "Release AppleSilicon"},
+        "Apple-Monterey-Debug-WK1-Tests": {platform: Dashboard.Platform.macOSMonterey, debug: true, tester: true, testCategory: Buildbot.TestCategory.CyberKit1},
+        "Apple-Monterey-Debug-WK2-Tests": {platform: Dashboard.Platform.macOSMonterey, debug: true, tester: true, testCategory: Buildbot.TestCategory.CyberKit2},
+        "Apple-Monterey-Release-WK1-Tests": {platform: Dashboard.Platform.macOSMonterey, debug: false, tester: true, testCategory: Buildbot.TestCategory.CyberKit1},
+        "Apple-Monterey-Release-WK2-Tests": {platform: Dashboard.Platform.macOSMonterey, debug: false, tester: true, testCategory: Buildbot.TestCategory.CyberKit2},
+        "Apple-Monterey-Debug-AppleSilicon-WK1-Tests": {platform: Dashboard.Platform.macOSMonterey, debug: true, tester: true, testCategory: Buildbot.TestCategory.CyberKit1, heading: "Debug AppleSilicon"},
+        "Apple-Monterey-Debug-AppleSilicon-WK2-Tests": {platform: Dashboard.Platform.macOSMonterey, debug: true, tester: true, testCategory: Buildbot.TestCategory.CyberKit2, heading: "Debug AppleSilicon"},
+        "Apple-Monterey-Release-AppleSilicon-WK1-Tests": {platform: Dashboard.Platform.macOSMonterey, debug: false, tester: true, testCategory: Buildbot.TestCategory.CyberKit1, heading: "Release AppleSilicon"},
+        "Apple-Monterey-Release-AppleSilicon-WK2-Tests": {platform: Dashboard.Platform.macOSMonterey, debug: false, tester: true, testCategory: Buildbot.TestCategory.CyberKit2, heading: "Release AppleSilicon"},
         "Apple-Monterey JSC": {platform: Dashboard.Platform.macOSMonterey, heading: "JavaScript", combinedQueues: {
             "Apple-Monterey-Debug-Test262-Tests": {heading: "Debug Test262 (Tests)"},
             "Apple-Monterey-Release-Test262-Tests": {heading: "Release Test262 (Tests)"},
@@ -57,11 +57,11 @@ WebKitBuildbot = function()
         }},
         "Apple-BigSur-Release-Build": {platform: Dashboard.Platform.macOSBigSur, debug: false, builder: true, architecture: Buildbot.BuildArchitecture.SixtyFourBit},
         "Apple-BigSur-Debug-Build": {platform: Dashboard.Platform.macOSBigSur, debug: true, builder: true, architecture: Buildbot.BuildArchitecture.SixtyFourBit},
-        "Apple-BigSur-Debug-WK1-Tests": {platform: Dashboard.Platform.macOSBigSur, debug: true, tester: true, testCategory: Buildbot.TestCategory.WebKit1},
-        "Apple-BigSur-Debug-WK2-Tests": {platform: Dashboard.Platform.macOSBigSur, debug: true, tester: true, testCategory: Buildbot.TestCategory.WebKit2},
+        "Apple-BigSur-Debug-WK1-Tests": {platform: Dashboard.Platform.macOSBigSur, debug: true, tester: true, testCategory: Buildbot.TestCategory.CyberKit1},
+        "Apple-BigSur-Debug-WK2-Tests": {platform: Dashboard.Platform.macOSBigSur, debug: true, tester: true, testCategory: Buildbot.TestCategory.CyberKit2},
         "Apple-BigSur-Release-WK2-Perf": {platform: Dashboard.Platform.macOSBigSur, debug: false, performance: true, heading: "Performance"},
-        "Apple-BigSur-Release-WK1-Tests": {platform: Dashboard.Platform.macOSBigSur, debug: false, tester: true, testCategory: Buildbot.TestCategory.WebKit1},
-        "Apple-BigSur-Release-WK2-Tests": {platform: Dashboard.Platform.macOSBigSur, debug: false, tester: true, testCategory: Buildbot.TestCategory.WebKit2},
+        "Apple-BigSur-Release-WK1-Tests": {platform: Dashboard.Platform.macOSBigSur, debug: false, tester: true, testCategory: Buildbot.TestCategory.CyberKit1},
+        "Apple-BigSur-Release-WK2-Tests": {platform: Dashboard.Platform.macOSBigSur, debug: false, tester: true, testCategory: Buildbot.TestCategory.CyberKit2},
         "Apple-BigSur JSC": {platform: Dashboard.Platform.macOSBigSur, heading: "JavaScript", combinedQueues: {
             "Apple-BigSur-LLINT-CLoop-BuildAndTest": {heading: "LLINT CLoop (BuildAndTest)"},
             "Apple-BigSur-Debug-JSC-Tests": {heading: "Debug JSC (Tests)"},
@@ -69,30 +69,30 @@ WebKitBuildbot = function()
         }},
         "Apple-iOS-16-Release-Build": {platform: Dashboard.Platform.iOS16Device, debug: false, builder: true, architecture: Buildbot.BuildArchitecture.SixtyFourBit},
         "Apple-iOS-16-Simulator-Release-Build": {platform: Dashboard.Platform.iOS16Simulator, debug: false, builder: true, architecture: Buildbot.BuildArchitecture.SixtyFourBit},
-        "Apple-iOS-16-Simulator-Release-arm64-WK2-Tests": {platform: Dashboard.Platform.iOS16Simulator, heading:"iOS Release (arm64)", debug: false, tester: true, testCategory: Buildbot.TestCategory.WebKit2},
-        "Apple-iOS-16-Simulator-Release-WK2-Tests": {platform: Dashboard.Platform.iOS16Simulator, heading:"iOS Release", debug: false, tester: true, testCategory: Buildbot.TestCategory.WebKit2},
+        "Apple-iOS-16-Simulator-Release-arm64-WK2-Tests": {platform: Dashboard.Platform.iOS16Simulator, heading:"iOS Release (arm64)", debug: false, tester: true, testCategory: Buildbot.TestCategory.CyberKit2},
+        "Apple-iOS-16-Simulator-Release-WK2-Tests": {platform: Dashboard.Platform.iOS16Simulator, heading:"iOS Release", debug: false, tester: true, testCategory: Buildbot.TestCategory.CyberKit2},
         "Apple-iOS-16-Simulator-Debug-Build": {platform: Dashboard.Platform.iOS16Simulator, debug: true, builder: true, architecture: Buildbot.BuildArchitecture.SixtyFourBit},
-        "Apple-iOS-16-Simulator-Debug-WK2-Tests": {platform: Dashboard.Platform.iOS16Simulator, debug: true, heading:"iOS Debug", tester: true, testCategory: Buildbot.TestCategory.WebKit2},
-        "Apple-iPadOS-16-Simulator-Release-WK2-Tests": {platform: Dashboard.Platform.iOS16Simulator, heading:"iPadOS Release", debug: false, tester: true, testCategory: Buildbot.TestCategory.WebKit2},
-        "Apple-iPadOS-16-Simulator-Debug-WK2-Tests": {platform: Dashboard.Platform.iOS16Simulator, heading:"iPadOS Debug", debug: true, tester: true, testCategory: Buildbot.TestCategory.WebKit2},
+        "Apple-iOS-16-Simulator-Debug-WK2-Tests": {platform: Dashboard.Platform.iOS16Simulator, debug: true, heading:"iOS Debug", tester: true, testCategory: Buildbot.TestCategory.CyberKit2},
+        "Apple-iPadOS-16-Simulator-Release-WK2-Tests": {platform: Dashboard.Platform.iOS16Simulator, heading:"iPadOS Release", debug: false, tester: true, testCategory: Buildbot.TestCategory.CyberKit2},
+        "Apple-iPadOS-16-Simulator-Debug-WK2-Tests": {platform: Dashboard.Platform.iOS16Simulator, heading:"iPadOS Debug", debug: true, tester: true, testCategory: Buildbot.TestCategory.CyberKit2},
         "Apple-tvOS-16-Release-Build": {platform: Dashboard.Platform.tvOS16Device, debug: false, builder: true, architecture: Buildbot.BuildArchitecture.SixtyFourBit},
         "Apple-tvOS-Simulator-16-Release-Build": {platform: Dashboard.Platform.tvOS16Simulator, debug: false, builder: true, architecture: Buildbot.BuildArchitecture.SixtyFourBit},
         "Apple-watchOS-9-Release-Build": {platform: Dashboard.Platform.watchOS9Device, debug: false, builder: true, architecture: Buildbot.BuildArchitecture.ThirtyTwoBit},
         "Apple-watchOS-Simulator-9-Release-Build": {platform: Dashboard.Platform.watchOS9Simulator, debug: false, builder: true, architecture: Buildbot.BuildArchitecture.SixtyFourBit},
         "WinCairo-64-bit-Release-Build": {platform: Dashboard.Platform.WinCairo, builder: true, architecture: Buildbot.BuildArchitecture.SixtyFourBit},
-        "WinCairo-64-bit-Release-Tests": {platform: Dashboard.Platform.WinCairo, tester: true, testCategory: Buildbot.TestCategory.WebKit2},
-        "WinCairo-64-bit-WKL-Release-Tests": {platform: Dashboard.Platform.WinCairo, tester: true, testCategory: Buildbot.TestCategory.WebKit1},
+        "WinCairo-64-bit-Release-Tests": {platform: Dashboard.Platform.WinCairo, tester: true, testCategory: Buildbot.TestCategory.CyberKit2},
+        "WinCairo-64-bit-WKL-Release-Tests": {platform: Dashboard.Platform.WinCairo, tester: true, testCategory: Buildbot.TestCategory.CyberKit1},
         "WinCairo-64-bit-Debug-Build": {platform: Dashboard.Platform.WinCairo, debug: true, builder: true, architecture: Buildbot.BuildArchitecture.SixtyFourBit},
-        "WinCairo-64-bit-Debug-Tests": {platform: Dashboard.Platform.WinCairo, debug: true, tester: true, testCategory: Buildbot.TestCategory.WebKit2},
-        "WinCairo-64-bit-WKL-Debug-Tests": {platform: Dashboard.Platform.WinCairo, debug: true, tester: true, testCategory: Buildbot.TestCategory.WebKit1},
+        "WinCairo-64-bit-Debug-Tests": {platform: Dashboard.Platform.WinCairo, debug: true, tester: true, testCategory: Buildbot.TestCategory.CyberKit2},
+        "WinCairo-64-bit-WKL-Debug-Tests": {platform: Dashboard.Platform.WinCairo, debug: true, tester: true, testCategory: Buildbot.TestCategory.CyberKit1},
         "WPE-Linux-64-bit-Release-Build": {platform: Dashboard.Platform.LinuxWPE, debug: false, builder: true, architecture: Buildbot.BuildArchitecture.SixtyFourBit},
-        "WPE-Linux-64-bit-Release-Tests": {platform: Dashboard.Platform.LinuxWPE, debug: false, tester: true, testCategory: Buildbot.TestCategory.WebKit2},
+        "WPE-Linux-64-bit-Release-Tests": {platform: Dashboard.Platform.LinuxWPE, debug: false, tester: true, testCategory: Buildbot.TestCategory.CyberKit2},
         "WPE-Linux-64-bit-Debug-Build": {platform: Dashboard.Platform.LinuxWPE, debug: true, builder: true, architecture: Buildbot.BuildArchitecture.SixtyFourBit},
-        "WPE-Linux-64-bit-Debug-Tests": {platform: Dashboard.Platform.LinuxWPE, debug: true, tester: true, testCategory: Buildbot.TestCategory.WebKit2},
+        "WPE-Linux-64-bit-Debug-Tests": {platform: Dashboard.Platform.LinuxWPE, debug: true, tester: true, testCategory: Buildbot.TestCategory.CyberKit2},
         "GTK-Linux-64-bit-Release-Build": {platform: Dashboard.Platform.LinuxGTK, debug: false, builder: true, architecture: Buildbot.BuildArchitecture.SixtyFourBit},
-        "GTK-Linux-64-bit-Release-Tests": {platform: Dashboard.Platform.LinuxGTK, debug: false, tester: true, testCategory: Buildbot.TestCategory.WebKit2},
+        "GTK-Linux-64-bit-Release-Tests": {platform: Dashboard.Platform.LinuxGTK, debug: false, tester: true, testCategory: Buildbot.TestCategory.CyberKit2},
         "GTK-Linux-64-bit-Debug-Build": {platform: Dashboard.Platform.LinuxGTK, debug: true, builder: true, architecture: Buildbot.BuildArchitecture.SixtyFourBit},
-        "GTK-Linux-64-bit-Debug-Tests": {platform: Dashboard.Platform.LinuxGTK, debug: true, tester: true, testCategory: Buildbot.TestCategory.WebKit2},
+        "GTK-Linux-64-bit-Debug-Tests": {platform: Dashboard.Platform.LinuxGTK, debug: true, tester: true, testCategory: Buildbot.TestCategory.CyberKit2},
         "GTK-Linux-64-bit-Release-Perf": {platform: Dashboard.Platform.LinuxGTK, debug: false, performance: true, heading: "Performance"},
         "GTK LTS Builders": {platform: Dashboard.Platform.LinuxGTK, heading: "LTS Builders", combinedQueues: {
             "GTK-Linux-64-bit-Release-Debian-Stable-Build": {heading: "Debian Stable (Build)"},
@@ -117,10 +117,10 @@ WebKitBuildbot = function()
     Buildbot.call(this, "https://build.webkit.org/", queueInfo, {});
 };
 
-BaseObject.addConstructorFunctions(WebKitBuildbot);
+BaseObject.addConstructorFunctions(CyberKitBuildbot);
 
-WebKitBuildbot.prototype = {
-    constructor: WebKitBuildbot,
+CyberKitBuildbot.prototype = {
+    constructor: CyberKitBuildbot,
     __proto__: Buildbot.prototype,
     performanceDashboardURL:  "https://perf.webkit.org",
 

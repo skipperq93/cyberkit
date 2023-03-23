@@ -33,7 +33,7 @@
 #include "RealtimeMediaSource.h"
 #include "RealtimeVideoSource.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct MockMicrophoneProperties {
     template<class Encoder>
@@ -271,6 +271,6 @@ struct MockMediaDevice {
     std::variant<MockMicrophoneProperties, MockSpeakerProperties, MockCameraProperties, MockDisplayProperties> properties;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM)

@@ -31,7 +31,7 @@
 
 OBJC_CLASS NSServicesRolloverButtonCell;
 
-namespace WebCore {
+namespace CyberCore {
 
 class ImageControlsButtonPart;
 
@@ -47,6 +47,6 @@ private:
     RetainPtr<NSServicesRolloverButtonCell> m_servicesRolloverButtonCell;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(MAC) && ENABLE(SERVICE_CONTROLS)

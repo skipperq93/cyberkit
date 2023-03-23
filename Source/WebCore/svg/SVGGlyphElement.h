@@ -23,7 +23,7 @@
 
 #include "SVGElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGGlyphElement final : public SVGElement {
     WTF_MAKE_ISO_ALLOCATED(SVGGlyphElement);
@@ -39,4 +39,4 @@ private:
     bool rendererIsNeeded(const RenderStyle&) final { return false; }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -30,13 +30,13 @@
 
 #include "NetworkConnectionToWebProcessMessages.h"
 #include "NetworkProcessConnection.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebProcess.h"
 #include <CyberCore/MockContentFilterManager.h>
 #include <CyberCore/MockContentFilterSettings.h>
 #include <wtf/NeverDestroyed.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 WebMockContentFilterManager& WebMockContentFilterManager::singleton()
 {
@@ -46,10 +46,10 @@ WebMockContentFilterManager& WebMockContentFilterManager::singleton()
 
 void WebMockContentFilterManager::startObservingSettings()
 {
-    WebCore::MockContentFilterManager::singleton().setClient(this);
+    CyberCore::MockContentFilterManager::singleton().setClient(this);
 }
 
-void WebMockContentFilterManager::mockContentFilterSettingsChanged(WebCore::MockContentFilterSettings& settings)
+void WebMockContentFilterManager::mockContentFilterSettingsChanged(CyberCore::MockContentFilterSettings& settings)
 {
     if (auto connection = WebProcess::singleton().existingNetworkProcessConnection())
         connection->connection().send(Messages::NetworkConnectionToWebProcess::InstallMockContentFilter(settings), 0);

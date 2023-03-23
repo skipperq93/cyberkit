@@ -36,7 +36,7 @@ OBJC_CLASS NSURLConnection;
 OBJC_CLASS NSURLSessionTaskMetrics;
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class ResourceHandle;
 
@@ -423,4 +423,4 @@ RefPtr<AdditionalNetworkLoadMetricsForWebInspector> AdditionalNetworkLoadMetrics
     return decoded;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

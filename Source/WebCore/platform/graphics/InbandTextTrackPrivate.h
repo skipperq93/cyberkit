@@ -29,7 +29,7 @@
 
 #include "InbandTextTrackPrivateClient.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class InbandTextTrackPrivate : public TrackPrivateBase {
 public:
@@ -107,38 +107,38 @@ private:
     Mode m_mode { Mode::Disabled };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::InbandTextTrackPrivate::CueFormat> {
+template<> struct EnumTraits<CyberCore::InbandTextTrackPrivate::CueFormat> {
     using values = EnumValues<
-        WebCore::InbandTextTrackPrivate::CueFormat,
-        WebCore::InbandTextTrackPrivate::CueFormat::Data,
-        WebCore::InbandTextTrackPrivate::CueFormat::Generic,
-        WebCore::InbandTextTrackPrivate::CueFormat::WebVTT
+        CyberCore::InbandTextTrackPrivate::CueFormat,
+        CyberCore::InbandTextTrackPrivate::CueFormat::Data,
+        CyberCore::InbandTextTrackPrivate::CueFormat::Generic,
+        CyberCore::InbandTextTrackPrivate::CueFormat::WebVTT
     >;
 };
 
-template<> struct EnumTraits<WebCore::InbandTextTrackPrivate::Mode> {
+template<> struct EnumTraits<CyberCore::InbandTextTrackPrivate::Mode> {
     using values = EnumValues<
-        WebCore::InbandTextTrackPrivate::Mode,
-        WebCore::InbandTextTrackPrivate::Mode::Disabled,
-        WebCore::InbandTextTrackPrivate::Mode::Hidden,
-        WebCore::InbandTextTrackPrivate::Mode::Showing
+        CyberCore::InbandTextTrackPrivate::Mode,
+        CyberCore::InbandTextTrackPrivate::Mode::Disabled,
+        CyberCore::InbandTextTrackPrivate::Mode::Hidden,
+        CyberCore::InbandTextTrackPrivate::Mode::Showing
     >;
 };
 
-template<> struct EnumTraits<WebCore::InbandTextTrackPrivate::Kind> {
+template<> struct EnumTraits<CyberCore::InbandTextTrackPrivate::Kind> {
     using values = EnumValues<
-        WebCore::InbandTextTrackPrivate::Kind,
-        WebCore::InbandTextTrackPrivate::Kind::Subtitles,
-        WebCore::InbandTextTrackPrivate::Kind::Captions,
-        WebCore::InbandTextTrackPrivate::Kind::Descriptions,
-        WebCore::InbandTextTrackPrivate::Kind::Chapters,
-        WebCore::InbandTextTrackPrivate::Kind::Metadata,
-        WebCore::InbandTextTrackPrivate::Kind::Forced,
-        WebCore::InbandTextTrackPrivate::Kind::None
+        CyberCore::InbandTextTrackPrivate::Kind,
+        CyberCore::InbandTextTrackPrivate::Kind::Subtitles,
+        CyberCore::InbandTextTrackPrivate::Kind::Captions,
+        CyberCore::InbandTextTrackPrivate::Kind::Descriptions,
+        CyberCore::InbandTextTrackPrivate::Kind::Chapters,
+        CyberCore::InbandTextTrackPrivate::Kind::Metadata,
+        CyberCore::InbandTextTrackPrivate::Kind::Forced,
+        CyberCore::InbandTextTrackPrivate::Kind::None
     >;
 };
 

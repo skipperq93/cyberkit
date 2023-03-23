@@ -56,7 +56,7 @@
 #include <wtf/Scope.h>
 #include <wtf/URL.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static constexpr size_t maxLengthForClickableElementText = 100;
 static constexpr double maxWidthForElementsThatLookClickable = 200;
@@ -137,7 +137,7 @@ static bool matchesSearchTerm(const Text& textNode, const AtomString& searchTerm
 
 static AccessibilityRole accessibilityRole(const HTMLElement& element)
 {
-    return AccessibilityObject::ariaRoleToWebCoreRole(element.attributeWithoutSynchronization(HTMLNames::roleAttr));
+    return AccessibilityObject::ariaRoleToCyberCoreRole(element.attributeWithoutSynchronization(HTMLNames::roleAttr));
 }
 
 static bool isInsideNavigationElement(const Text& textNode)
@@ -781,4 +781,4 @@ bool ModalContainerObserver::shouldMakeVerticallyScrollable(const Element& eleme
     return false;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

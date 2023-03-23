@@ -25,8 +25,8 @@
 
 #import <CyberKitLegacy/DOMNodeList.h>
 
-namespace WebCore {
+namespace CyberCore {
 class NodeList;
 }
 
-DOMNodeList *kit(WebCore::NodeList*);
+DOMNodeList *kit(CyberCore::NodeList*);

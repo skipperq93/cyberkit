@@ -28,7 +28,7 @@
 #import "PlatformExportMacros.h"
 #import <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WEBCORE_EXPORT bool stringMatchesWildcardString(const String& stringToBeMatched, const String& wildcardString);
 

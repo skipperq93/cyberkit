@@ -45,7 +45,7 @@ ALLOW_COMMA_END
 
 #include <wtf/RetainPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class LibWebRTCAudioModule;
 
@@ -94,10 +94,10 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::RealtimeIncomingAudioSource)
-    static bool isType(const WebCore::RealtimeMediaSource& source) { return source.isIncomingAudioSource(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::RealtimeIncomingAudioSource)
+    static bool isType(const CyberCore::RealtimeMediaSource& source) { return source.isIncomingAudioSource(); }
 SPECIALIZE_TYPE_TRAITS_END()
 
 #endif // USE(LIBWEBRTC)

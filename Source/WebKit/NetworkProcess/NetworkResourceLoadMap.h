@@ -40,20 +40,20 @@ class NetworkConnectionToWebProcess;
 
 class NetworkResourceLoadMap {
 public:
-    using MapType = HashMap<WebCore::ResourceLoaderIdentifier, Ref<NetworkResourceLoader>>;
+    using MapType = HashMap<CyberCore::ResourceLoaderIdentifier, Ref<NetworkResourceLoader>>;
     NetworkResourceLoadMap(Function<void(bool hasUpload)>&&);
     ~NetworkResourceLoadMap();
 
     bool isEmpty() const { return m_loaders.isEmpty(); }
-    bool contains(WebCore::ResourceLoaderIdentifier identifier) const { return m_loaders.contains(identifier); }
+    bool contains(CyberCore::ResourceLoaderIdentifier identifier) const { return m_loaders.contains(identifier); }
     MapType::iterator begin() { return m_loaders.begin(); }
     MapType::ValuesIteratorRange values() { return m_loaders.values(); }
     void clear();
 
-    MapType::AddResult add(WebCore::ResourceLoaderIdentifier, Ref<NetworkResourceLoader>&&);
-    NetworkResourceLoader* get(WebCore::ResourceLoaderIdentifier) const;
-    bool remove(WebCore::ResourceLoaderIdentifier);
-    RefPtr<NetworkResourceLoader> take(WebCore::ResourceLoaderIdentifier);
+    MapType::AddResult add(CyberCore::ResourceLoaderIdentifier, Ref<NetworkResourceLoader>&&);
+    NetworkResourceLoader* get(CyberCore::ResourceLoaderIdentifier) const;
+    bool remove(CyberCore::ResourceLoaderIdentifier);
+    RefPtr<NetworkResourceLoader> take(CyberCore::ResourceLoaderIdentifier);
 
     bool hasUpload() const { return m_hasUpload; }
 

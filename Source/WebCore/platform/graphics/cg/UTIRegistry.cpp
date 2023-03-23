@@ -40,7 +40,7 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 const MemoryCompactLookupOnlyRobinHoodHashSet<String>& defaultSupportedImageTypes()
 {

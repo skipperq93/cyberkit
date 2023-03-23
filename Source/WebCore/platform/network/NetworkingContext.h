@@ -35,7 +35,7 @@ OBJC_CLASS NSOperationQueue;
 typedef struct _SoupSession SoupSession;
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class NetworkStorageSession;
 class ResourceError;

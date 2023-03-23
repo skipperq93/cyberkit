@@ -33,7 +33,7 @@
 
 namespace WebKit {
 
-class NetworkStorageSessionProvider final : public WebCore::StorageSessionProvider {
+class NetworkStorageSessionProvider final : public CyberCore::StorageSessionProvider {
 public:
     static Ref<NetworkStorageSessionProvider> create(NetworkProcess& networkProcess, PAL::SessionID sessionID) { return adoptRef(*new NetworkStorageSessionProvider(networkProcess, sessionID)); }
     
@@ -42,7 +42,7 @@ private:
         : m_networkProcess(networkProcess)
         , m_sessionID(sessionID) { }
 
-    WebCore::NetworkStorageSession* storageSession() const final
+    CyberCore::NetworkStorageSession* storageSession() const final
     {
         if (m_networkProcess)
             return m_networkProcess->storageSession(m_sessionID);

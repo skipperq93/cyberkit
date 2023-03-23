@@ -63,7 +63,7 @@ namespace PAL {
 class SessionID;
 }
 
-namespace WebCore {
+namespace CyberCore {
 class BlobDataFileReference;
 class BlobPart;
 class BlobRegistryImpl;
@@ -109,13 +109,13 @@ class NetworkConnectionToWebProcess
     , public WebPaymentCoordinatorProxy::Client
 #endif
 #if HAVE(COOKIE_CHANGE_LISTENER_API)
-    , public WebCore::CookieChangeObserver
+    , public CyberCore::CookieChangeObserver
 #endif
     , IPC::Connection::Client {
 public:
-    using RegistrableDomain = WebCore::RegistrableDomain;
+    using RegistrableDomain = CyberCore::RegistrableDomain;
 
-    static Ref<NetworkConnectionToWebProcess> create(NetworkProcess&, WebCore::ProcessIdentifier, PAL::SessionID, IPC::Connection::Identifier);
+    static Ref<NetworkConnectionToWebProcess> create(NetworkProcess&, CyberCore::ProcessIdentifier, PAL::SessionID, IPC::Connection::Identifier);
     virtual ~NetworkConnectionToWebProcess();
     
     PAL::SessionID sessionID() const { return m_sessionID; }
@@ -130,63 +130,63 @@ public:
 
     bool captureExtraNetworkLoadMetricsEnabled() const { return m_captureExtraNetworkLoadMetricsEnabled; }
 
-    RefPtr<WebCore::BlobDataFileReference> getBlobDataFileReferenceForPath(const String& path);
+    RefPtr<CyberCore::BlobDataFileReference> getBlobDataFileReferenceForPath(const String& path);
 
     void endSuspension();
 
-    void getNetworkLoadInformationResponse(WebCore::ResourceLoaderIdentifier identifier, CompletionHandler<void(const WebCore::ResourceResponse&)>&& completionHandler)
+    void getNetworkLoadInformationResponse(CyberCore::ResourceLoaderIdentifier identifier, CompletionHandler<void(const CyberCore::ResourceResponse&)>&& completionHandler)
     {
         if (auto* info = m_networkLoadInformationByID.get(identifier))
             return completionHandler(info->response);
         completionHandler({ });
     }
 
-    void getNetworkLoadIntermediateInformation(WebCore::ResourceLoaderIdentifier identifier, CompletionHandler<void(const Vector<WebCore::NetworkTransactionInformation>&)>&& completionHandler)
+    void getNetworkLoadIntermediateInformation(CyberCore::ResourceLoaderIdentifier identifier, CompletionHandler<void(const Vector<CyberCore::NetworkTransactionInformation>&)>&& completionHandler)
     {
         if (auto* info = m_networkLoadInformationByID.get(identifier))
             return completionHandler(info->transactions);
         completionHandler({ });
     }
 
-    void takeNetworkLoadInformationMetrics(WebCore::ResourceLoaderIdentifier identifier, CompletionHandler<void(const WebCore::NetworkLoadMetrics&)>&& completionHandler)
+    void takeNetworkLoadInformationMetrics(CyberCore::ResourceLoaderIdentifier identifier, CompletionHandler<void(const CyberCore::NetworkLoadMetrics&)>&& completionHandler)
     {
         if (auto info = m_networkLoadInformationByID.take(identifier))
             return completionHandler(info->metrics);
         completionHandler({ });
     }
 
-    void addNetworkLoadInformation(WebCore::ResourceLoaderIdentifier identifier, WebCore::NetworkLoadInformation&& information)
+    void addNetworkLoadInformation(CyberCore::ResourceLoaderIdentifier identifier, CyberCore::NetworkLoadInformation&& information)
     {
         ASSERT(!m_networkLoadInformationByID.contains(identifier));
-        m_networkLoadInformationByID.add(identifier, makeUnique<WebCore::NetworkLoadInformation>(WTFMove(information)));
+        m_networkLoadInformationByID.add(identifier, makeUnique<CyberCore::NetworkLoadInformation>(WTFMove(information)));
     }
 
-    void addNetworkLoadInformationMetrics(WebCore::ResourceLoaderIdentifier identifier, const WebCore::NetworkLoadMetrics& metrics)
+    void addNetworkLoadInformationMetrics(CyberCore::ResourceLoaderIdentifier identifier, const CyberCore::NetworkLoadMetrics& metrics)
     {
         ASSERT(m_networkLoadInformationByID.contains(identifier));
         m_networkLoadInformationByID.ensure(identifier, [] {
-            return makeUnique<WebCore::NetworkLoadInformation>();
+            return makeUnique<CyberCore::NetworkLoadInformation>();
         }).iterator->value->metrics = metrics;
     }
 
-    void removeNetworkLoadInformation(WebCore::ResourceLoaderIdentifier identifier)
+    void removeNetworkLoadInformation(CyberCore::ResourceLoaderIdentifier identifier)
     {
         m_networkLoadInformationByID.remove(identifier);
     }
 
-    std::optional<NetworkActivityTracker> startTrackingResourceLoad(WebCore::PageIdentifier, WebCore::ResourceLoaderIdentifier resourceID, bool isTopResource);
-    void stopTrackingResourceLoad(WebCore::ResourceLoaderIdentifier resourceID, NetworkActivityTracker::CompletionCode);
+    std::optional<NetworkActivityTracker> startTrackingResourceLoad(CyberCore::PageIdentifier, CyberCore::ResourceLoaderIdentifier resourceID, bool isTopResource);
+    void stopTrackingResourceLoad(CyberCore::ResourceLoaderIdentifier resourceID, NetworkActivityTracker::CompletionCode);
 
-    Vector<RefPtr<WebCore::BlobDataFileReference>> resolveBlobReferences(const NetworkResourceLoadParameters&);
+    Vector<RefPtr<CyberCore::BlobDataFileReference>> resolveBlobReferences(const NetworkResourceLoadParameters&);
 
-    void removeSocketChannel(WebCore::WebSocketIdentifier);
+    void removeSocketChannel(CyberCore::WebSocketIdentifier);
 
-    WebCore::ProcessIdentifier webProcessIdentifier() const { return m_webProcessIdentifier; }
+    CyberCore::ProcessIdentifier webProcessIdentifier() const { return m_webProcessIdentifier; }
 
 #if ENABLE(SERVICE_WORKER)
     void serviceWorkerServerToContextConnectionNoLongerNeeded();
     WebSWServerConnection* swConnection();
-    std::unique_ptr<ServiceWorkerFetchTask> createFetchTask(NetworkResourceLoader&, const WebCore::ResourceRequest&);
+    std::unique_ptr<ServiceWorkerFetchTask> createFetchTask(NetworkResourceLoader&, const CyberCore::ResourceRequest&);
 #endif
     void sharedWorkerServerToContextConnectionIsNoLongerNeeded();
 
@@ -194,20 +194,20 @@ public:
 
     NetworkSchemeRegistry& schemeRegistry() { return m_schemeRegistry.get(); }
 
-    void cookieAcceptPolicyChanged(WebCore::HTTPCookieAcceptPolicy);
+    void cookieAcceptPolicyChanged(CyberCore::HTTPCookieAcceptPolicy);
 
     void broadcastConsoleMessage(JSC::MessageSource, JSC::MessageLevel, const String& message);
-    RefPtr<NetworkResourceLoader> takeNetworkResourceLoader(WebCore::ResourceLoaderIdentifier);
+    RefPtr<NetworkResourceLoader> takeNetworkResourceLoader(CyberCore::ResourceLoaderIdentifier);
 
 #if ENABLE(CONTENT_FILTERING_IN_NETWORKING_PROCESS)
-    void installMockContentFilter(WebCore::MockContentFilterSettings&&);
+    void installMockContentFilter(CyberCore::MockContentFilterSettings&&);
 #endif
 
 private:
-    NetworkConnectionToWebProcess(NetworkProcess&, WebCore::ProcessIdentifier, PAL::SessionID, IPC::Connection::Identifier);
+    NetworkConnectionToWebProcess(NetworkProcess&, CyberCore::ProcessIdentifier, PAL::SessionID, IPC::Connection::Identifier);
 
-    void didFinishPreconnection(WebCore::ResourceLoaderIdentifier preconnectionIdentifier, const WebCore::ResourceError&);
-    WebCore::NetworkStorageSession* storageSession();
+    void didFinishPreconnection(CyberCore::ResourceLoaderIdentifier preconnectionIdentifier, const CyberCore::ResourceError&);
+    CyberCore::NetworkStorageSession* storageSession();
 
     // IPC::Connection::Client
     void didReceiveMessage(IPC::Connection&, IPC::Decoder&) override;
@@ -220,33 +220,33 @@ private:
     bool didReceiveSyncNetworkConnectionToWebProcessMessage(IPC::Connection&, IPC::Decoder&, UniqueRef<IPC::Encoder>&);
 
     void scheduleResourceLoad(NetworkResourceLoadParameters&&, std::optional<NetworkResourceLoadIdentifier> existingLoaderToResume);
-    void performSynchronousLoad(NetworkResourceLoadParameters&&, CompletionHandler<void(const WebCore::ResourceError&, const WebCore::ResourceResponse, Vector<uint8_t>&&)>&&);
+    void performSynchronousLoad(NetworkResourceLoadParameters&&, CompletionHandler<void(const CyberCore::ResourceError&, const CyberCore::ResourceResponse, Vector<uint8_t>&&)>&&);
     void testProcessIncomingSyncMessagesWhenWaitingForSyncReply(WebPageProxyIdentifier, CompletionHandler<void(bool)>&&);
     void loadPing(NetworkResourceLoadParameters&&);
     void prefetchDNS(const String&);
-    void sendH2Ping(NetworkResourceLoadParameters&&, CompletionHandler<void(Expected<WTF::Seconds, WebCore::ResourceError>&&)>&&);
-    void preconnectTo(std::optional<WebCore::ResourceLoaderIdentifier> preconnectionIdentifier, NetworkResourceLoadParameters&&);
-    void isResourceLoadFinished(WebCore::ResourceLoaderIdentifier, CompletionHandler<void(bool)>&&);
+    void sendH2Ping(NetworkResourceLoadParameters&&, CompletionHandler<void(Expected<WTF::Seconds, CyberCore::ResourceError>&&)>&&);
+    void preconnectTo(std::optional<CyberCore::ResourceLoaderIdentifier> preconnectionIdentifier, NetworkResourceLoadParameters&&);
+    void isResourceLoadFinished(CyberCore::ResourceLoaderIdentifier, CompletionHandler<void(bool)>&&);
 
-    void removeLoadIdentifier(WebCore::ResourceLoaderIdentifier);
-    void pageLoadCompleted(WebCore::PageIdentifier);
-    void browsingContextRemoved(WebPageProxyIdentifier, WebCore::PageIdentifier, WebCore::FrameIdentifier);
-    void crossOriginRedirectReceived(WebCore::ResourceLoaderIdentifier, const URL& redirectURL);
-    void startDownload(DownloadID, const WebCore::ResourceRequest&, std::optional<NavigatingToAppBoundDomain>, const String& suggestedName = { });
-    void convertMainResourceLoadToDownload(std::optional<WebCore::ResourceLoaderIdentifier> mainResourceLoadIdentifier, DownloadID, const WebCore::ResourceRequest&, const WebCore::ResourceResponse&, std::optional<NavigatingToAppBoundDomain>);
+    void removeLoadIdentifier(CyberCore::ResourceLoaderIdentifier);
+    void pageLoadCompleted(CyberCore::PageIdentifier);
+    void browsingContextRemoved(WebPageProxyIdentifier, CyberCore::PageIdentifier, CyberCore::FrameIdentifier);
+    void crossOriginRedirectReceived(CyberCore::ResourceLoaderIdentifier, const URL& redirectURL);
+    void startDownload(DownloadID, const CyberCore::ResourceRequest&, std::optional<NavigatingToAppBoundDomain>, const String& suggestedName = { });
+    void convertMainResourceLoadToDownload(std::optional<CyberCore::ResourceLoaderIdentifier> mainResourceLoadIdentifier, DownloadID, const CyberCore::ResourceRequest&, const CyberCore::ResourceResponse&, std::optional<NavigatingToAppBoundDomain>);
 
     void registerURLSchemesAsCORSEnabled(Vector<String>&& schemes);
 
-    void cookiesForDOM(const URL& firstParty, const WebCore::SameSiteInfo&, const URL&, WebCore::FrameIdentifier, WebCore::PageIdentifier, WebCore::IncludeSecureCookies, WebCore::ApplyTrackingPrevention, WebCore::ShouldRelaxThirdPartyCookieBlocking, CompletionHandler<void(String cookieString, bool secureCookiesAccessed)>&&);
-    void setCookiesFromDOM(const URL& firstParty, const WebCore::SameSiteInfo&, const URL&, WebCore::FrameIdentifier, WebCore::PageIdentifier, WebCore::ApplyTrackingPrevention, const String&, WebCore::ShouldRelaxThirdPartyCookieBlocking);
-    void cookieRequestHeaderFieldValue(const URL& firstParty, const WebCore::SameSiteInfo&, const URL&, std::optional<WebCore::FrameIdentifier>, std::optional<WebCore::PageIdentifier>, WebCore::IncludeSecureCookies, WebCore::ApplyTrackingPrevention, WebCore::ShouldRelaxThirdPartyCookieBlocking, CompletionHandler<void(String cookieString, bool secureCookiesAccessed)>&&);
-    void getRawCookies(const URL& firstParty, const WebCore::SameSiteInfo&, const URL&, std::optional<WebCore::FrameIdentifier>, std::optional<WebCore::PageIdentifier>, WebCore::ApplyTrackingPrevention, WebCore::ShouldRelaxThirdPartyCookieBlocking, CompletionHandler<void(Vector<WebCore::Cookie>&&)>&&);
-    void setRawCookie(const WebCore::Cookie&);
+    void cookiesForDOM(const URL& firstParty, const CyberCore::SameSiteInfo&, const URL&, CyberCore::FrameIdentifier, CyberCore::PageIdentifier, CyberCore::IncludeSecureCookies, CyberCore::ApplyTrackingPrevention, CyberCore::ShouldRelaxThirdPartyCookieBlocking, CompletionHandler<void(String cookieString, bool secureCookiesAccessed)>&&);
+    void setCookiesFromDOM(const URL& firstParty, const CyberCore::SameSiteInfo&, const URL&, CyberCore::FrameIdentifier, CyberCore::PageIdentifier, CyberCore::ApplyTrackingPrevention, const String&, CyberCore::ShouldRelaxThirdPartyCookieBlocking);
+    void cookieRequestHeaderFieldValue(const URL& firstParty, const CyberCore::SameSiteInfo&, const URL&, std::optional<CyberCore::FrameIdentifier>, std::optional<CyberCore::PageIdentifier>, CyberCore::IncludeSecureCookies, CyberCore::ApplyTrackingPrevention, CyberCore::ShouldRelaxThirdPartyCookieBlocking, CompletionHandler<void(String cookieString, bool secureCookiesAccessed)>&&);
+    void getRawCookies(const URL& firstParty, const CyberCore::SameSiteInfo&, const URL&, std::optional<CyberCore::FrameIdentifier>, std::optional<CyberCore::PageIdentifier>, CyberCore::ApplyTrackingPrevention, CyberCore::ShouldRelaxThirdPartyCookieBlocking, CompletionHandler<void(Vector<CyberCore::Cookie>&&)>&&);
+    void setRawCookie(const CyberCore::Cookie&);
     void deleteCookie(const URL&, const String& cookieName, CompletionHandler<void()>&&);
 
     void registerFileBlobURL(const URL&, const String& path, const String& replacementPath, SandboxExtension::Handle&&, const String& contentType);
-    void registerBlobURL(const URL&, Vector<WebCore::BlobPart>&&, const String& contentType);
-    void registerBlobURLFromURL(const URL&, const URL& srcURL, WebCore::PolicyContainer&&);
+    void registerBlobURL(const URL&, Vector<CyberCore::BlobPart>&&, const String& contentType);
+    void registerBlobURLFromURL(const URL&, const URL& srcURL, CyberCore::PolicyContainer&&);
     void registerBlobURLOptionallyFileBacked(const URL&, const URL& srcURL, const String& fileBackedPath, const String& contentType);
     void registerBlobURLForSlice(const URL&, const URL& srcURL, int64_t start, int64_t end, const String& contentType);
     void blobSize(const URL&, CompletionHandler<void(uint64_t)>&&);
@@ -258,38 +258,38 @@ private:
 
     void setCaptureExtraNetworkLoadMetricsEnabled(bool);
 
-    void createSocketStream(URL&&, String cachePartition, WebCore::WebSocketIdentifier);
+    void createSocketStream(URL&&, String cachePartition, CyberCore::WebSocketIdentifier);
 
-    void createSocketChannel(const WebCore::ResourceRequest&, const String& protocol, WebCore::WebSocketIdentifier, WebPageProxyIdentifier, const WebCore::ClientOrigin&, bool hadMainFrameMainResourcePrivateRelayed, bool allowPrivacyProxy, OptionSet<WebCore::NetworkConnectionIntegrity> networkConnectionIntegrityPolicy);
-    void updateQuotaBasedOnSpaceUsageForTesting(WebCore::ClientOrigin&&);
+    void createSocketChannel(const CyberCore::ResourceRequest&, const String& protocol, CyberCore::WebSocketIdentifier, WebPageProxyIdentifier, const CyberCore::ClientOrigin&, bool hadMainFrameMainResourcePrivateRelayed, bool allowPrivacyProxy, OptionSet<CyberCore::NetworkConnectionIntegrity> networkConnectionIntegrityPolicy);
+    void updateQuotaBasedOnSpaceUsageForTesting(CyberCore::ClientOrigin&&);
 
     void establishSharedWorkerServerConnection();
     void unregisterSharedWorkerConnection();
 
 #if ENABLE(SERVICE_WORKER)
     void establishSWServerConnection();
-    void establishSWContextConnection(WebPageProxyIdentifier, WebCore::RegistrableDomain&&, std::optional<WebCore::ScriptExecutionContextIdentifier> serviceWorkerPageIdentifier, CompletionHandler<void()>&&);
+    void establishSWContextConnection(WebPageProxyIdentifier, CyberCore::RegistrableDomain&&, std::optional<CyberCore::ScriptExecutionContextIdentifier> serviceWorkerPageIdentifier, CompletionHandler<void()>&&);
     void closeSWContextConnection();
     void unregisterSWConnection();
 #endif
 
-    void establishSharedWorkerContextConnection(WebPageProxyIdentifier, WebCore::RegistrableDomain&&, CompletionHandler<void()>&&);
+    void establishSharedWorkerContextConnection(WebPageProxyIdentifier, CyberCore::RegistrableDomain&&, CompletionHandler<void()>&&);
     void closeSharedWorkerContextConnection();
 
     void createRTCProvider(CompletionHandler<void()>&&);
 #if ENABLE(WEB_RTC)
-    void connectToRTCDataChannelRemoteSource(WebCore::RTCDataChannelIdentifier source, WebCore::RTCDataChannelIdentifier handler, CompletionHandler<void(std::optional<bool>)>&&);
+    void connectToRTCDataChannelRemoteSource(CyberCore::RTCDataChannelIdentifier source, CyberCore::RTCDataChannelIdentifier handler, CompletionHandler<void(std::optional<bool>)>&&);
 #endif
 
-    void createNewMessagePortChannel(const WebCore::MessagePortIdentifier& port1, const WebCore::MessagePortIdentifier& port2);
-    void entangleLocalPortInThisProcessToRemote(const WebCore::MessagePortIdentifier& local, const WebCore::MessagePortIdentifier& remote);
-    void messagePortDisentangled(const WebCore::MessagePortIdentifier&);
-    void messagePortClosed(const WebCore::MessagePortIdentifier&);
-    void takeAllMessagesForPort(const WebCore::MessagePortIdentifier&, CompletionHandler<void(Vector<WebCore::MessageWithMessagePorts>&&, uint64_t)>&&);
-    void postMessageToRemote(WebCore::MessageWithMessagePorts&&, const WebCore::MessagePortIdentifier&);
+    void createNewMessagePortChannel(const CyberCore::MessagePortIdentifier& port1, const CyberCore::MessagePortIdentifier& port2);
+    void entangleLocalPortInThisProcessToRemote(const CyberCore::MessagePortIdentifier& local, const CyberCore::MessagePortIdentifier& remote);
+    void messagePortDisentangled(const CyberCore::MessagePortIdentifier&);
+    void messagePortClosed(const CyberCore::MessagePortIdentifier&);
+    void takeAllMessagesForPort(const CyberCore::MessagePortIdentifier&, CompletionHandler<void(Vector<CyberCore::MessageWithMessagePorts>&&, uint64_t)>&&);
+    void postMessageToRemote(CyberCore::MessageWithMessagePorts&&, const CyberCore::MessagePortIdentifier&);
     void didDeliverMessagePortMessages(uint64_t messageBatchIdentifier);
 
-    void setCORSDisablingPatterns(WebCore::PageIdentifier, Vector<String>&&);
+    void setCORSDisablingPatterns(CyberCore::PageIdentifier, Vector<String>&&);
 
 #if PLATFORM(MAC)
     void updateActivePages(const String& name, const Vector<String>& activePagesOrigins, audit_token_t);
@@ -307,16 +307,16 @@ private:
 
     CacheStorageEngineConnection& cacheStorageConnection();
 
-    void clearPageSpecificData(WebCore::PageIdentifier);
+    void clearPageSpecificData(CyberCore::PageIdentifier);
 
 #if ENABLE(TRACKING_PREVENTION)
-    void removeStorageAccessForFrame(WebCore::FrameIdentifier, WebCore::PageIdentifier);
+    void removeStorageAccessForFrame(CyberCore::FrameIdentifier, CyberCore::PageIdentifier);
 
     void logUserInteraction(RegistrableDomain&&);
-    void resourceLoadStatisticsUpdated(Vector<WebCore::ResourceLoadStatistics>&&, CompletionHandler<void()>&&);
-    void hasStorageAccess(RegistrableDomain&& subFrameDomain, RegistrableDomain&& topFrameDomain, WebCore::FrameIdentifier, WebCore::PageIdentifier, CompletionHandler<void(bool)>&&);
-    void requestStorageAccess(RegistrableDomain&& subFrameDomain, RegistrableDomain&& topFrameDomain, WebCore::FrameIdentifier, WebCore::PageIdentifier, WebPageProxyIdentifier, WebCore::StorageAccessScope, CompletionHandler<void(WebCore::RequestStorageAccessResult)>&&);
-    void requestStorageAccessUnderOpener(WebCore::RegistrableDomain&& domainInNeedOfStorageAccess, WebCore::PageIdentifier openerPageID, WebCore::RegistrableDomain&& openerDomain);
+    void resourceLoadStatisticsUpdated(Vector<CyberCore::ResourceLoadStatistics>&&, CompletionHandler<void()>&&);
+    void hasStorageAccess(RegistrableDomain&& subFrameDomain, RegistrableDomain&& topFrameDomain, CyberCore::FrameIdentifier, CyberCore::PageIdentifier, CompletionHandler<void(bool)>&&);
+    void requestStorageAccess(RegistrableDomain&& subFrameDomain, RegistrableDomain&& topFrameDomain, CyberCore::FrameIdentifier, CyberCore::PageIdentifier, WebPageProxyIdentifier, CyberCore::StorageAccessScope, CompletionHandler<void(CyberCore::RequestStorageAccessResult)>&&);
+    void requestStorageAccessUnderOpener(CyberCore::RegistrableDomain&& domainInNeedOfStorageAccess, CyberCore::PageIdentifier openerPageID, CyberCore::RegistrableDomain&& openerDomain);
 #endif
 
     void addOriginAccessAllowListEntry(const String& sourceOrigin, const String& destinationProtocol, const String& destinationHost, bool allowDestinationSubdomains);
@@ -325,14 +325,14 @@ private:
 
     uint64_t nextMessageBatchIdentifier(CompletionHandler<void()>&&);
 
-    void domCookiesForHost(const URL& host, bool subscribeToCookieChangeNotifications, CompletionHandler<void(const Vector<WebCore::Cookie>&)>&&);
+    void domCookiesForHost(const URL& host, bool subscribeToCookieChangeNotifications, CompletionHandler<void(const Vector<CyberCore::Cookie>&)>&&);
 
 #if HAVE(COOKIE_CHANGE_LISTENER_API)
     void unsubscribeFromCookieChangeNotifications(const HashSet<String>& hosts);
 
-    // WebCore::CookieChangeObserver.
-    void cookiesAdded(const String& host, const Vector<WebCore::Cookie>&) final;
-    void cookiesDeleted(const String& host, const Vector<WebCore::Cookie>&) final;
+    // CyberCore::CookieChangeObserver.
+    void cookiesAdded(const String& host, const Vector<CyberCore::Cookie>&) final;
+    void cookiesDeleted(const String& host, const Vector<CyberCore::Cookie>&) final;
     void allCookiesDeleted() final;
 #endif
 
@@ -340,35 +340,35 @@ private:
         ResourceNetworkActivityTracker() = default;
         ResourceNetworkActivityTracker(const ResourceNetworkActivityTracker&) = default;
         ResourceNetworkActivityTracker(ResourceNetworkActivityTracker&&) = default;
-        ResourceNetworkActivityTracker(WebCore::PageIdentifier pageID)
+        ResourceNetworkActivityTracker(CyberCore::PageIdentifier pageID)
             : pageID { pageID }
             , isRootActivity { true }
             , networkActivity { NetworkActivityTracker::Label::LoadPage }
         {
         }
 
-        ResourceNetworkActivityTracker(WebCore::PageIdentifier pageID, WebCore::ResourceLoaderIdentifier resourceID)
+        ResourceNetworkActivityTracker(CyberCore::PageIdentifier pageID, CyberCore::ResourceLoaderIdentifier resourceID)
             : pageID { pageID }
             , resourceID { resourceID }
             , networkActivity { NetworkActivityTracker::Label::LoadResource }
         {
         }
 
-        WebCore::PageIdentifier pageID;
-        WebCore::ResourceLoaderIdentifier resourceID;
+        CyberCore::PageIdentifier pageID;
+        CyberCore::ResourceLoaderIdentifier resourceID;
         bool isRootActivity { false };
         NetworkActivityTracker networkActivity;
     };
 
     void stopAllNetworkActivityTracking();
-    void stopAllNetworkActivityTrackingForPage(WebCore::PageIdentifier);
-    size_t findRootNetworkActivity(WebCore::PageIdentifier);
-    size_t findNetworkActivityTracker(WebCore::ResourceLoaderIdentifier resourceID);
+    void stopAllNetworkActivityTrackingForPage(CyberCore::PageIdentifier);
+    size_t findRootNetworkActivity(CyberCore::PageIdentifier);
+    size_t findNetworkActivityTracker(CyberCore::ResourceLoaderIdentifier resourceID);
 
     void hasUploadStateChanged(bool);
 
-    void setResourceLoadSchedulingMode(WebCore::PageIdentifier, WebCore::LoadSchedulingMode);
-    void prioritizeResourceLoads(const Vector<WebCore::ResourceLoaderIdentifier>&);
+    void setResourceLoadSchedulingMode(CyberCore::PageIdentifier, CyberCore::LoadSchedulingMode);
+    void prioritizeResourceLoads(const Vector<CyberCore::ResourceLoaderIdentifier>&);
 
 #if ENABLE(APPLE_PAY_REMOTE_UI)
     WebPaymentCoordinatorProxy& paymentCoordinator();
@@ -392,13 +392,13 @@ private:
     Ref<NetworkProcess> m_networkProcess;
     PAL::SessionID m_sessionID;
 
-    HashMap<WebCore::WebSocketIdentifier, RefPtr<NetworkSocketStream>> m_networkSocketStreams;
-    HashMap<WebCore::WebSocketIdentifier, std::unique_ptr<NetworkSocketChannel>> m_networkSocketChannels;
+    HashMap<CyberCore::WebSocketIdentifier, RefPtr<NetworkSocketStream>> m_networkSocketStreams;
+    HashMap<CyberCore::WebSocketIdentifier, std::unique_ptr<NetworkSocketChannel>> m_networkSocketChannels;
     NetworkResourceLoadMap m_networkResourceLoaders;
-    HashMap<String, RefPtr<WebCore::BlobDataFileReference>> m_blobDataFileReferences;
+    HashMap<String, RefPtr<CyberCore::BlobDataFileReference>> m_blobDataFileReferences;
     Vector<ResourceNetworkActivityTracker> m_networkActivityTrackers;
 
-    HashMap<WebCore::ResourceLoaderIdentifier, std::unique_ptr<WebCore::NetworkLoadInformation>> m_networkLoadInformationByID;
+    HashMap<CyberCore::ResourceLoaderIdentifier, std::unique_ptr<CyberCore::NetworkLoadInformation>> m_networkLoadInformationByID;
 
 
 #if USE(LIBWEBRTC)
@@ -429,9 +429,9 @@ private:
 #if ENABLE(APPLE_PAY_REMOTE_UI)
     std::unique_ptr<WebPaymentCoordinatorProxy> m_paymentCoordinator;
 #endif
-    const WebCore::ProcessIdentifier m_webProcessIdentifier;
+    const CyberCore::ProcessIdentifier m_webProcessIdentifier;
 
-    HashSet<WebCore::MessagePortIdentifier> m_processEntangledPorts;
+    HashSet<CyberCore::MessagePortIdentifier> m_processEntangledPorts;
     HashMap<uint64_t, CompletionHandler<void()>> m_messageBatchDeliveryCompletionHandlers;
     Ref<NetworkSchemeRegistry> m_schemeRegistry;
         

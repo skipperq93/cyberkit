@@ -31,9 +31,9 @@
 
 namespace WebKit {
 
-class MediaSampleByteRange final : public WebCore::MediaSample {
+class MediaSampleByteRange final : public CyberCore::MediaSample {
 public:
-    static Ref<MediaSampleByteRange> create(WebCore::MediaSamplesBlock&& sample, MTPluginByteSourceRef byteSource)
+    static Ref<MediaSampleByteRange> create(CyberCore::MediaSamplesBlock&& sample, MTPluginByteSourceRef byteSource)
     {
         return adoptRef(*new MediaSampleByteRange(WTFMove(sample), byteSource));
     }
@@ -42,25 +42,25 @@ public:
     MediaTime decodeTime() const final;
     MediaTime duration() const final;
     size_t sizeInBytes() const final;
-    WebCore::FloatSize presentationSize() const final;
+    CyberCore::FloatSize presentationSize() const final;
     SampleFlags flags() const final;
     std::optional<ByteRange> byteRange() const final;
 
     AtomString trackID() const final;
-    WebCore::PlatformSample platformSample() const final;
-    WebCore::PlatformSample::Type platformSampleType() const final { return WebCore::PlatformSample::ByteRangeSampleType; }
+    CyberCore::PlatformSample platformSample() const final;
+    CyberCore::PlatformSample::Type platformSampleType() const final { return CyberCore::PlatformSample::ByteRangeSampleType; }
     void offsetTimestampsBy(const MediaTime&) final;
     void setTimestamps(const MediaTime&, const MediaTime&) final;
     Ref<MediaSample> createNonDisplayingCopy() const final { return *const_cast<MediaSampleByteRange*>(this); }
 
-    using const_iterator = WebCore::MediaSamplesBlock::SamplesVector::const_iterator;
+    using const_iterator = CyberCore::MediaSamplesBlock::SamplesVector::const_iterator;
     const_iterator begin() const { return m_block.begin(); }
     const_iterator end() const { return m_block.end(); }
 
 private:
-    MediaSampleByteRange(WebCore::MediaSamplesBlock&&, MTPluginByteSourceRef);
+    MediaSampleByteRange(CyberCore::MediaSamplesBlock&&, MTPluginByteSourceRef);
 
-    const WebCore::MediaSamplesBlock m_block;
+    const CyberCore::MediaSamplesBlock m_block;
     RetainPtr<MTPluginByteSourceRef> m_byteSource;
 };
 

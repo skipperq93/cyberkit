@@ -40,7 +40,7 @@
 - (void)_setForceActiveControls:(BOOL)flag;
 @end
 
-using namespace WebCore;
+using namespace CyberCore;
 
 // This class handles the complete: operation.
 // It counts on its host view to call endRevertingChange: whenever the current completion needs to be aborted.

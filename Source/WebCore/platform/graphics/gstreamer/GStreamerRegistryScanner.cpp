@@ -39,7 +39,7 @@
 #include "VideoEncoderPrivateGStreamer.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 GST_DEBUG_CATEGORY_STATIC(webkit_media_gst_registry_scanner_debug);
 #define GST_CAT_DEFAULT webkit_media_gst_registry_scanner_debug

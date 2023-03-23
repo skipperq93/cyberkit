@@ -87,7 +87,7 @@ public:
     int64_t documentSequenceNumber { 0 };
     int64_t itemSequenceNumber { 0 };
 
-    WebCore::IntPoint scrollPosition;
+    CyberCore::IntPoint scrollPosition;
     bool shouldRestoreScrollPosition { true };
     float pageScaleFactor { 0 };
 
@@ -95,12 +95,12 @@ public:
 
     // FIXME: These should not be per frame.
 #if PLATFORM(IOS_FAMILY)
-    WebCore::FloatRect exposedContentRect;
-    WebCore::IntRect unobscuredContentRect;
-    WebCore::FloatSize minimumLayoutSizeInScrollViewCoordinates;
-    WebCore::IntSize contentSize;
+    CyberCore::FloatRect exposedContentRect;
+    CyberCore::IntRect unobscuredContentRect;
+    CyberCore::FloatSize minimumLayoutSizeInScrollViewCoordinates;
+    CyberCore::IntSize contentSize;
     bool scaleIsInitial { false };
-    WebCore::FloatBoxExtent obscuredInsets;
+    CyberCore::FloatBoxExtent obscuredInsets;
 #endif
 
     Vector<FrameState> children;
@@ -113,13 +113,13 @@ private:
 struct PageState {
     String title;
     FrameState mainFrameState;
-    WebCore::ShouldOpenExternalURLsPolicy shouldOpenExternalURLsPolicy { WebCore::ShouldOpenExternalURLsPolicy::ShouldNotAllow };
-    RefPtr<WebCore::SerializedScriptValue> sessionStateObject;
+    CyberCore::ShouldOpenExternalURLsPolicy shouldOpenExternalURLsPolicy { CyberCore::ShouldOpenExternalURLsPolicy::ShouldNotAllow };
+    RefPtr<CyberCore::SerializedScriptValue> sessionStateObject;
     bool wasCreatedByJSWithoutUserInteraction { false };
 };
 
 struct BackForwardListItemState {
-    WebCore::BackForwardItemIdentifier identifier;
+    CyberCore::BackForwardItemIdentifier identifier;
 
     PageState pageState;
     bool hasCachedPage { false };

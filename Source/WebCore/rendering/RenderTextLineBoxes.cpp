@@ -34,7 +34,7 @@
 #include "RenderView.h"
 #include "VisiblePosition.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 RenderTextLineBoxes::RenderTextLineBoxes()
     : m_first(nullptr)

@@ -33,7 +33,7 @@
 #include <wtf/HashSet.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class MockGamepadProvider : public GamepadProvider {
     WTF_MAKE_NONCOPYABLE(MockGamepadProvider);

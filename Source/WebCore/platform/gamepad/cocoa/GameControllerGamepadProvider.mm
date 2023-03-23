@@ -39,7 +39,7 @@
 
 #import "GameControllerSoftLink.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 #if !HAVE(GCCONTROLLER_HID_DEVICE_CHECK)
 
@@ -292,6 +292,6 @@ void GameControllerGamepadProvider::stopEffects(unsigned gamepadIndex, const Str
     gamepad->stopEffects(WTFMove(completionHandler));
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(GAMEPAD)

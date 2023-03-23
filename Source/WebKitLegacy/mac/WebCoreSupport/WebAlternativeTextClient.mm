@@ -27,7 +27,7 @@
 
 #import "WebViewInternal.h"
 
-using namespace WebCore;
+using namespace CyberCore;
 
 WebAlternativeTextClient::WebAlternativeTextClient(WebView* webView)
     : m_webView(webView)
@@ -60,11 +60,11 @@ String WebAlternativeTextClient::dismissAlternativeSoon(ReasonForDismissingAlter
 static inline NSCorrectionResponse toCorrectionResponse(AutocorrectionResponse response)
 {
     switch (response) {
-    case WebCore::AutocorrectionResponse::Reverted:
+    case CyberCore::AutocorrectionResponse::Reverted:
         return NSCorrectionResponseReverted;
-    case WebCore::AutocorrectionResponse::Edited:
+    case CyberCore::AutocorrectionResponse::Edited:
         return NSCorrectionResponseEdited;
-    case WebCore::AutocorrectionResponse::Accepted:
+    case CyberCore::AutocorrectionResponse::Accepted:
         return NSCorrectionResponseAccepted;
     }
 
@@ -83,7 +83,7 @@ void WebAlternativeTextClient::removeDictationAlternatives(DictationContext dict
     [m_webView _removeDictationAlternatives:dictationContext];
 }
 
-void WebAlternativeTextClient::showDictationAlternativeUI(const WebCore::FloatRect& boundingBoxOfDictatedText, DictationContext dictationContext)
+void WebAlternativeTextClient::showDictationAlternativeUI(const CyberCore::FloatRect& boundingBoxOfDictatedText, DictationContext dictationContext)
 {
     [m_webView _showDictationAlternativeUI:boundingBoxOfDictatedText forDictationContext:dictationContext];
 }

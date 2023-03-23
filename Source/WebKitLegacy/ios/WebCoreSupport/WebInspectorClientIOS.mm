@@ -40,9 +40,9 @@
 #import <CyberCore/NotImplemented.h>
 #import <CyberCore/Page.h>
 #import <CyberCore/Settings.h>
-#import <CyberCore/WebCoreThread.h>
+#import <CyberCore/CyberCoreThread.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 WebInspectorClient::WebInspectorClient(WebView* inspectedWebView)
     : m_inspectedWebView(inspectedWebView)
@@ -138,9 +138,9 @@ void WebInspectorFrontendClient::startWindowDrag() { }
 void WebInspectorFrontendClient::inspectedURLChanged(const String&) { }
 void WebInspectorFrontendClient::showCertificate(const CertificateInfo&) { }
 bool WebInspectorFrontendClient::supportsDiagnosticLogging() { return false; }
-void WebInspectorFrontendClient::logDiagnosticEvent(const String& eventName, const WebCore::DiagnosticLoggingClient::ValueDictionary&) { }
+void WebInspectorFrontendClient::logDiagnosticEvent(const String& eventName, const CyberCore::DiagnosticLoggingClient::ValueDictionary&) { }
 void WebInspectorFrontendClient::updateWindowTitle() const { }
-bool WebInspectorFrontendClient::canSave(WebCore::InspectorFrontendClient::SaveMode) { return false; }
+bool WebInspectorFrontendClient::canSave(CyberCore::InspectorFrontendClient::SaveMode) { return false; }
 void WebInspectorFrontendClient::save(Vector<InspectorFrontendClient::SaveData>&&, bool /* forceSaveAs */) { }
 
 #endif // PLATFORM(IOS_FAMILY)

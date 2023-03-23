@@ -26,7 +26,7 @@
 #include "FloatConversion.h"
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<TranslateTransformOperation> TranslateTransformOperation::create(const Length& tx, const Length& ty, const Length& tz, TransformOperation::Type type)
 {
@@ -54,7 +54,7 @@ Ref<TransformOperation> TranslateTransformOperation::blend(const TransformOperat
 {
     Length zeroLength(0, LengthType::Fixed);
     if (blendToIdentity)
-        return TranslateTransformOperation::create(WebCore::blend(m_x, zeroLength, context), WebCore::blend(m_y, zeroLength, context), WebCore::blend(m_z, zeroLength, context), type());
+        return TranslateTransformOperation::create(CyberCore::blend(m_x, zeroLength, context), CyberCore::blend(m_y, zeroLength, context), CyberCore::blend(m_z, zeroLength, context), type());
 
     auto outputType = sharedPrimitiveType(from);
     if (!outputType)
@@ -64,7 +64,7 @@ Ref<TransformOperation> TranslateTransformOperation::blend(const TransformOperat
     Length fromX = fromOp ? fromOp->m_x : zeroLength;
     Length fromY = fromOp ? fromOp->m_y : zeroLength;
     Length fromZ = fromOp ? fromOp->m_z : zeroLength;
-    return TranslateTransformOperation::create(WebCore::blend(fromX, x(), context), WebCore::blend(fromY, y(), context), WebCore::blend(fromZ, z(), context), *outputType);
+    return TranslateTransformOperation::create(CyberCore::blend(fromX, x(), context), CyberCore::blend(fromY, y(), context), CyberCore::blend(fromZ, z(), context), *outputType);
 }
 
 void TranslateTransformOperation::dump(TextStream& ts) const
@@ -72,4 +72,4 @@ void TranslateTransformOperation::dump(TextStream& ts) const
     ts << type() << "(" << m_x << ", " << m_y << ", " << m_z << ")";
 }
 
-} // namespace WebCore
+} // namespace CyberCore

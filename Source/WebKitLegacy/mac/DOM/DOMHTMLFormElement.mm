@@ -37,154 +37,154 @@
 #import <wtf/GetPtr.h>
 #import <wtf/URL.h>
 
-#define IMPL static_cast<WebCore::HTMLFormElement*>(reinterpret_cast<WebCore::Node*>(_internal))
+#define IMPL static_cast<CyberCore::HTMLFormElement*>(reinterpret_cast<CyberCore::Node*>(_internal))
 
 @implementation DOMHTMLFormElement
 
 - (NSString *)acceptCharset
 {
-    WebCore::JSMainThreadNullState state;
-    return IMPL->getAttribute(WebCore::HTMLNames::accept_charsetAttr);
+    CyberCore::JSMainThreadNullState state;
+    return IMPL->getAttribute(CyberCore::HTMLNames::accept_charsetAttr);
 }
 
 - (void)setAcceptCharset:(NSString *)newAcceptCharset
 {
-    WebCore::JSMainThreadNullState state;
-    IMPL->setAttributeWithoutSynchronization(WebCore::HTMLNames::accept_charsetAttr, newAcceptCharset);
+    CyberCore::JSMainThreadNullState state;
+    IMPL->setAttributeWithoutSynchronization(CyberCore::HTMLNames::accept_charsetAttr, newAcceptCharset);
 }
 
 - (NSString *)action
 {
-    WebCore::JSMainThreadNullState state;
-    return IMPL->getURLAttribute(WebCore::HTMLNames::actionAttr).string();
+    CyberCore::JSMainThreadNullState state;
+    return IMPL->getURLAttribute(CyberCore::HTMLNames::actionAttr).string();
 }
 
 - (void)setAction:(NSString *)newAction
 {
-    WebCore::JSMainThreadNullState state;
-    IMPL->setAttributeWithoutSynchronization(WebCore::HTMLNames::actionAttr, newAction);
+    CyberCore::JSMainThreadNullState state;
+    IMPL->setAttributeWithoutSynchronization(CyberCore::HTMLNames::actionAttr, newAction);
 }
 
 - (NSString *)autocomplete
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->autocomplete();
 }
 
 - (void)setAutocomplete:(NSString *)newAutocomplete
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->setAutocomplete(newAutocomplete);
 }
 
 - (NSString *)enctype
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->enctype();
 }
 
 - (void)setEnctype:(NSString *)newEnctype
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->setEnctype(newEnctype);
 }
 
 - (NSString *)encoding
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->enctype();
 }
 
 - (void)setEncoding:(NSString *)newEncoding
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->setEnctype(newEncoding);
 }
 
 - (NSString *)method
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->method();
 }
 
 - (void)setMethod:(NSString *)newMethod
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->setMethod(newMethod);
 }
 
 - (NSString *)name
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->getNameAttribute();
 }
 
 - (void)setName:(NSString *)newName
 {
-    WebCore::JSMainThreadNullState state;
-    IMPL->setAttributeWithoutSynchronization(WebCore::HTMLNames::nameAttr, newName);
+    CyberCore::JSMainThreadNullState state;
+    IMPL->setAttributeWithoutSynchronization(CyberCore::HTMLNames::nameAttr, newName);
 }
 
 - (BOOL)noValidate
 {
-    WebCore::JSMainThreadNullState state;
-    return IMPL->hasAttributeWithoutSynchronization(WebCore::HTMLNames::novalidateAttr);
+    CyberCore::JSMainThreadNullState state;
+    return IMPL->hasAttributeWithoutSynchronization(CyberCore::HTMLNames::novalidateAttr);
 }
 
 - (void)setNoValidate:(BOOL)newNoValidate
 {
-    WebCore::JSMainThreadNullState state;
-    IMPL->setBooleanAttribute(WebCore::HTMLNames::novalidateAttr, newNoValidate);
+    CyberCore::JSMainThreadNullState state;
+    IMPL->setBooleanAttribute(CyberCore::HTMLNames::novalidateAttr, newNoValidate);
 }
 
 - (NSString *)target
 {
-    WebCore::JSMainThreadNullState state;
-    return IMPL->getAttribute(WebCore::HTMLNames::targetAttr);
+    CyberCore::JSMainThreadNullState state;
+    return IMPL->getAttribute(CyberCore::HTMLNames::targetAttr);
 }
 
 - (void)setTarget:(NSString *)newTarget
 {
-    WebCore::JSMainThreadNullState state;
-    IMPL->setAttributeWithoutSynchronization(WebCore::HTMLNames::targetAttr, newTarget);
+    CyberCore::JSMainThreadNullState state;
+    IMPL->setAttributeWithoutSynchronization(CyberCore::HTMLNames::targetAttr, newTarget);
 }
 
 - (DOMHTMLCollection *)elements
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->elementsForNativeBindings()));
 }
 
 - (int)length
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->length();
 }
 
 - (void)submit
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->submit();
 }
 
 - (void)reset
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->reset();
 }
 
 - (BOOL)checkValidity
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->checkValidity();
 }
 
 @end
 
-DOMHTMLFormElement *kit(WebCore::HTMLFormElement* value)
+DOMHTMLFormElement *kit(CyberCore::HTMLFormElement* value)
 {
-    WebCoreThreadViolationCheckRoundOne();
-    return static_cast<DOMHTMLFormElement*>(kit(static_cast<WebCore::Node*>(value)));
+    CyberCoreThreadViolationCheckRoundOne();
+    return static_cast<DOMHTMLFormElement*>(kit(static_cast<CyberCore::Node*>(value)));
 }
 
 #undef IMPL

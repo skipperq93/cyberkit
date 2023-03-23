@@ -29,7 +29,7 @@
 #include <optional>
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DestinationColorSpace {
 public:

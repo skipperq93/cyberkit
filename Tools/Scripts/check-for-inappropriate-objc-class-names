@@ -82,7 +82,7 @@ if (!defined $executablePathAge || !defined $buildTimestampAge || $executablePat
     # be caught and should be fixed immediately. Fixing these is covered by:
     # <rdar://problem/10365008> Fix Inappropriate Objective-C Class Names found by build phase
     my %exceptions = (
-        # WebCore
+        # CyberCore
         "WKQuadObject" => 1,
         "LegacyTileCacheTombstone" => 1,
         "LegacyTileHostLayer" => 1,

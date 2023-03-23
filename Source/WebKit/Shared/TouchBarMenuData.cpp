@@ -32,14 +32,14 @@
 #include "Decoder.h"
 #include "Encoder.h"
 #include "TouchBarMenuItemData.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include <CyberCore/ElementInlines.h>
 #include <CyberCore/HTMLMenuElement.h>
 #include <CyberCore/HTMLNames.h>
 
 namespace WebKit {
     
-TouchBarMenuData::TouchBarMenuData(const WebCore::HTMLMenuElement& element)
+TouchBarMenuData::TouchBarMenuData(const CyberCore::HTMLMenuElement& element)
 {
     if (!element.isTouchBarMenu())
         return;
@@ -47,7 +47,7 @@ TouchBarMenuData::TouchBarMenuData(const WebCore::HTMLMenuElement& element)
     // FIXME: We can't rely on using the 'id' attribute of the element here to distinguish
     // between different menu items. For instance, a menuitem may have the same 'id' as
     // another, or have no 'id' at all.
-    m_id = element.attributeWithoutSynchronization(WebCore::HTMLNames::idAttr);
+    m_id = element.attributeWithoutSynchronization(CyberCore::HTMLNames::idAttr);
     m_isPageCustomized = true;
 }
     

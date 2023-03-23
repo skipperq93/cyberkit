@@ -23,7 +23,7 @@
 
 #include "SVGFilterPrimitiveStandardAttributes.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGFEFloodElement final : public SVGFilterPrimitiveStandardAttributes {
     WTF_MAKE_ISO_ALLOCATED(SVGFEFloodElement);
@@ -39,4 +39,4 @@ private:
     RefPtr<FilterEffect> createFilterEffect(const FilterEffectVector&, const GraphicsContext& destinationContext) const override;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

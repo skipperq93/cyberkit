@@ -30,7 +30,7 @@
 
 #import "NotImplemented.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 std::unique_ptr<ControlFactory> ControlFactory::createControlFactory()
 {
@@ -129,6 +129,6 @@ std::unique_ptr<PlatformControl> ControlFactoryIOS::createPlatformToggleButton(T
     return nullptr;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(IOS_FAMILY)

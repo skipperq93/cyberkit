@@ -44,8 +44,8 @@
 #include <pal/crypto/gcrypt/Initialization.h>
 #endif
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 class WebProcessMainGtk final: public AuxiliaryProcessMainBase<WebProcess> {
 public:
@@ -98,4 +98,4 @@ int WebProcessMain(int argc, char** argv)
     return AuxiliaryProcessMain<WebProcessMainGtk>(argc, argv);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

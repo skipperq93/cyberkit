@@ -29,7 +29,7 @@
 #include <gtk/gtk.h>
 #include <wtf/glib/GUniquePtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 RenderTheme& RenderTheme::singleton()
 {
@@ -45,4 +45,4 @@ Seconds RenderThemeGtk::caretBlinkInterval() const
     return shouldBlink ? 500_us * time : 0_s;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

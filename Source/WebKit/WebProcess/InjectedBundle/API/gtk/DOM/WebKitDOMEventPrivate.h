@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -17,16 +17,16 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitDOMEventPrivate_h
-#define WebKitDOMEventPrivate_h
+#ifndef CyberKitDOMEventPrivate_h
+#define CyberKitDOMEventPrivate_h
 
 #include <CyberCore/Event.h>
-#include <webkitdom/WebKitDOMEvent.h>
+#include <webkitdom/CyberKitDOMEvent.h>
 
-namespace WebKit {
-WebKitDOMEvent* wrapEvent(WebCore::Event*);
-WebKitDOMEvent* kit(WebCore::Event*);
-WebCore::Event* core(WebKitDOMEvent*);
-} // namespace WebKit
+namespace CyberKit {
+CyberKitDOMEvent* wrapEvent(CyberCore::Event*);
+CyberKitDOMEvent* kit(CyberCore::Event*);
+CyberCore::Event* core(CyberKitDOMEvent*);
+} // namespace CyberKit
 
-#endif /* WebKitDOMEventPrivate_h */
+#endif /* CyberKitDOMEventPrivate_h */

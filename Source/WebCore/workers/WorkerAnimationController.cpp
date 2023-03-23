@@ -35,7 +35,7 @@
 #include "WorkerGlobalScope.h"
 #include <wtf/Ref.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<WorkerAnimationController> WorkerAnimationController::create(WorkerGlobalScope& workerGlobalScope)
 {
@@ -152,6 +152,6 @@ void WorkerAnimationController::serviceRequestAnimationFrameCallbacks(DOMHighRes
         scheduleAnimation();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

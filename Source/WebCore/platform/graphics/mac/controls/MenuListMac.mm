@@ -33,7 +33,7 @@
 #import "LocalDefaultSystemAppearance.h"
 #import "MenuListPart.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 MenuListMac::MenuListMac(MenuListPart& owningPart, ControlFactoryMac& controlFactory, NSPopUpButtonCell *popUpButtonCell)
     : ControlMac(owningPart, controlFactory)
@@ -117,6 +117,6 @@ void MenuListMac::draw(GraphicsContext& context, const FloatRoundedRect& borderR
     drawCell(context, inflatedRect, deviceScaleFactor, style, m_popUpButtonCell.get(), true);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(MAC)

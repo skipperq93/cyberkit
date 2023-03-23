@@ -36,11 +36,11 @@ NSString * const DOMRangeException = @"DOMRangeException";
 NSString * const DOMEventException = @"DOMEventException";
 NSString * const DOMXPathException = @"DOMXPathException";
 
-static NO_RETURN void raiseDOMErrorException(WebCore::ExceptionCode ec)
+static NO_RETURN void raiseDOMErrorException(CyberCore::ExceptionCode ec)
 {
     ASSERT(ec);
 
-    auto description = WebCore::DOMException::description(ec);
+    auto description = CyberCore::DOMException::description(ec);
 
     RetainPtr<NSString> reason;
     if (description.name)
@@ -57,15 +57,15 @@ static NO_RETURN void raiseDOMErrorException(WebCore::ExceptionCode ec)
 
 void raiseTypeErrorException()
 {
-    raiseDOMErrorException(WebCore::TypeError);
+    raiseDOMErrorException(CyberCore::TypeError);
 }
 
 void raiseNotSupportedErrorException()
 {
-    raiseDOMErrorException(WebCore::NotSupportedError);
+    raiseDOMErrorException(CyberCore::NotSupportedError);
 }
 
-void raiseDOMErrorException(WebCore::Exception&& exception)
+void raiseDOMErrorException(CyberCore::Exception&& exception)
 {
     raiseDOMErrorException(exception.code());
 }

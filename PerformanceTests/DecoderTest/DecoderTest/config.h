@@ -25,7 +25,7 @@
 
 #pragma once
 
-#include <JavaScriptCore/JSExportMacros.h>
+#include <CyberScriptCore/JSExportMacros.h>
 #include <CyberCore/PlatformExportMacros.h>
 #include <pal/ExportMacros.h>
 #include <wtf/Platform.h>

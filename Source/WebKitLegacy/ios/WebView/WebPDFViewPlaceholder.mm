@@ -51,7 +51,7 @@
 #import <wtf/SoftLinking.h>
 #import <wtf/Vector.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 #pragma mark Constants
 

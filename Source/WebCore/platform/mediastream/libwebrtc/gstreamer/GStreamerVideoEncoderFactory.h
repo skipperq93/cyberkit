@@ -24,7 +24,7 @@
 #include "LibWebRTCMacros.h"
 #include "api/video_codecs/video_encoder_factory.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class GStreamerVideoEncoderFactory final : public webrtc::VideoEncoderFactory {
     WTF_MAKE_FAST_ALLOCATED;

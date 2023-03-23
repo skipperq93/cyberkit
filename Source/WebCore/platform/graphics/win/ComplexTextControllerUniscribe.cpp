@@ -30,7 +30,7 @@
 #include "HWndDC.h"
 #include <usp10.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static bool shapeByUniscribe(const UChar* str, int len, SCRIPT_ITEM& item, const Font* fontData,
     Vector<WORD>& glyphs, Vector<WORD>& clusters,

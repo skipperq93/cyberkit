@@ -34,7 +34,7 @@
 #include "RenderStyleConstants.h"
 #include "StyleImage.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct BlendingContext;
 

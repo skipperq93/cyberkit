@@ -27,7 +27,7 @@
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-// This header contains WebView declarations that can be used anywhere in WebKit, but are neither SPI nor API.
+// This header contains WebView declarations that can be used anywhere in CyberKit, but are neither SPI nor API.
 
 #import "WebPreferences.h"
 #import "WebViewPrivate.h"
@@ -46,14 +46,14 @@
 #import <CyberCore/TextAlternativeWithRange.h>
 #import <CyberCore/TextIndicator.h>
 #import <CyberCore/TextIndicatorWindow.h>
-#import <CyberCore/WebCoreKeyboardUIMode.h>
+#import <CyberCore/CyberCoreKeyboardUIMode.h>
 #import <functional>
 #import <wtf/Forward.h>
 #import <wtf/NakedPtr.h>
 #import <wtf/NakedRef.h>
 #import <wtf/RetainPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 class Element;
 class Event;
 class Frame;
@@ -72,7 +72,7 @@ struct TranslationContextMenuInfo;
 }
 
 #if PLATFORM(IOS_FAMILY) && ENABLE(DRAG_SUPPORT)
-namespace WebCore {
+namespace CyberCore {
 struct DragItem;
 }
 #endif
@@ -103,19 +103,19 @@ using CocoaDragOperation = NSDragOperation;
 using CocoaDragOperation = uint64_t;
 #endif
 
-OptionSet<WebCore::DragOperation> coreDragOperationMask(CocoaDragOperation);
+OptionSet<CyberCore::DragOperation> coreDragOperationMask(CocoaDragOperation);
 
-WebDragSourceAction kit(std::optional<WebCore::DragSourceAction>);
+WebDragSourceAction kit(std::optional<CyberCore::DragSourceAction>);
 #endif // ENABLE(DRAG_SUPPORT)
 
-WebCore::FindOptions coreOptions(WebFindOptions);
+CyberCore::FindOptions coreOptions(WebFindOptions);
 
-OptionSet<WebCore::LayoutMilestone> coreLayoutMilestones(WebLayoutMilestones);
-WebLayoutMilestones kitLayoutMilestones(OptionSet<WebCore::LayoutMilestone>);
+OptionSet<CyberCore::LayoutMilestone> coreLayoutMilestones(WebLayoutMilestones);
+WebLayoutMilestones kitLayoutMilestones(OptionSet<CyberCore::LayoutMilestone>);
 
 #if PLATFORM(IOS_FAMILY) && ENABLE(DRAG_SUPPORT) && defined(__cplusplus)
 @interface WebUITextIndicatorData (WebUITextIndicatorInternal)
-- (WebUITextIndicatorData *)initWithImage:(CGImageRef)image textIndicatorData:(const WebCore::TextIndicatorData&)indicatorData scale:(CGFloat)scale;
+- (WebUITextIndicatorData *)initWithImage:(CGImageRef)image textIndicatorData:(const CyberCore::TextIndicatorData&)indicatorData scale:(CGFloat)scale;
 - (WebUITextIndicatorData *)initWithImage:(CGImageRef)image scale:(CGFloat)scale;
 @end
 #endif
@@ -132,14 +132,14 @@ WebLayoutMilestones kitLayoutMilestones(OptionSet<WebCore::LayoutMilestone>);
 
 @interface WebView (WebViewInternal)
 
-+ (BOOL)shouldIncludeInWebKitStatistics;
++ (BOOL)shouldIncludeInCyberKitStatistics;
 
-- (WebCore::Frame*)_mainCoreFrame;
+- (CyberCore::Frame*)_mainCoreFrame;
 - (WebFrame *)_selectedOrMainFrame;
 
 - (void)_clearCredentials;
 
-- (WebCore::KeyboardUIMode)_keyboardUIMode;
+- (CyberCore::KeyboardUIMode)_keyboardUIMode;
 
 - (BOOL)_becomingFirstResponderFromOutside;
 
@@ -159,10 +159,10 @@ WebLayoutMilestones kitLayoutMilestones(OptionSet<WebCore::LayoutMilestone>);
 - (void)handleAcceptedAlternativeText:(NSString*)text;
 #endif
 
-- (void)_getWebCoreDictationAlternatives:(Vector<WebCore::DictationAlternative>&)alternatives fromTextAlternatives:(const Vector<WebCore::TextAlternativeWithRange>&)alternativesWithRange;
-- (void)_showDictationAlternativeUI:(const WebCore::FloatRect&)boundingBoxOfDictatedText forDictationContext:(WebCore::DictationContext)dictationContext;
-- (void)_removeDictationAlternatives:(WebCore::DictationContext)dictationContext;
-- (Vector<String>)_dictationAlternatives:(WebCore::DictationContext)dictationContext;
+- (void)_getCyberCoreDictationAlternatives:(Vector<CyberCore::DictationAlternative>&)alternatives fromTextAlternatives:(const Vector<CyberCore::TextAlternativeWithRange>&)alternativesWithRange;
+- (void)_showDictationAlternativeUI:(const CyberCore::FloatRect&)boundingBoxOfDictatedText forDictationContext:(CyberCore::DictationContext)dictationContext;
+- (void)_removeDictationAlternatives:(CyberCore::DictationContext)dictationContext;
+- (Vector<String>)_dictationAlternatives:(CyberCore::DictationContext)dictationContext;
 
 #if ENABLE(SERVICE_CONTROLS)
 - (WebSelectionServiceController&)_selectionServiceController;
@@ -170,7 +170,7 @@ WebLayoutMilestones kitLayoutMilestones(OptionSet<WebCore::LayoutMilestone>);
 
 #if HAVE(TRANSLATION_UI_SERVICES) && ENABLE(CONTEXT_MENUS)
 @property (class, nonatomic, readonly) BOOL _canHandleContextMenuTranslation;
-- (void)_handleContextMenuTranslation:(const WebCore::TranslationContextMenuInfo&)info;
+- (void)_handleContextMenuTranslation:(const CyberCore::TranslationContextMenuInfo&)info;
 #endif
 
 - (void)_windowVisibilityChanged:(NSNotification *)notification;
@@ -194,7 +194,7 @@ WebLayoutMilestones kitLayoutMilestones(OptionSet<WebCore::LayoutMilestone>);
 + (WebCacheModel)_cacheModel;
 
 #ifdef __cplusplus
-- (NakedPtr<WebCore::Page>)page;
+- (NakedPtr<CyberCore::Page>)page;
 - (WTF::String)_userAgentString;
 #endif
 
@@ -259,9 +259,9 @@ WebLayoutMilestones kitLayoutMilestones(OptionSet<WebCore::LayoutMilestone>);
 #endif
 
 #ifdef __cplusplus
-- (void)_addObject:(id)object forIdentifier:(WebCore::ResourceLoaderIdentifier)identifier;
-- (id)_objectForIdentifier:(WebCore::ResourceLoaderIdentifier)identifier;
-- (void)_removeObjectForIdentifier:(WebCore::ResourceLoaderIdentifier)identifier;
+- (void)_addObject:(id)object forIdentifier:(CyberCore::ResourceLoaderIdentifier)identifier;
+- (id)_objectForIdentifier:(CyberCore::ResourceLoaderIdentifier)identifier;
+- (void)_removeObjectForIdentifier:(CyberCore::ResourceLoaderIdentifier)identifier;
 #endif
 
 - (void)_setZoomMultiplier:(float)multiplier isTextOnly:(BOOL)isTextOnly;
@@ -294,7 +294,7 @@ WebLayoutMilestones kitLayoutMilestones(OptionSet<WebCore::LayoutMilestone>);
 #endif
 
 #if PLATFORM(IOS_FAMILY) && ENABLE(DRAG_SUPPORT) && defined(__cplusplus)
-- (void)_startDrag:(const WebCore::DragItem&)dragItem;
+- (void)_startDrag:(const CyberCore::DragItem&)dragItem;
 - (void)_didConcludeEditDrag;
 #endif
 
@@ -303,11 +303,11 @@ WebLayoutMilestones kitLayoutMilestones(OptionSet<WebCore::LayoutMilestone>);
 
 #if ENABLE(VIDEO) && defined(__cplusplus)
 #if ENABLE(VIDEO_PRESENTATION_MODE)
-- (void)_enterVideoFullscreenForVideoElement:(NakedPtr<WebCore::HTMLVideoElement>)videoElement mode:(WebCore::HTMLMediaElementEnums::VideoFullscreenMode)mode;
+- (void)_enterVideoFullscreenForVideoElement:(NakedPtr<CyberCore::HTMLVideoElement>)videoElement mode:(CyberCore::HTMLMediaElementEnums::VideoFullscreenMode)mode;
 - (void)_exitVideoFullscreen;
 #if PLATFORM(MAC)
 - (BOOL)_hasActiveVideoForControlsInterface;
-- (void)_setUpPlaybackControlsManagerForMediaElement:(NakedRef<WebCore::HTMLMediaElement>)mediaElement;
+- (void)_setUpPlaybackControlsManagerForMediaElement:(NakedRef<CyberCore::HTMLMediaElement>)mediaElement;
 - (void)_clearPlaybackControlsManager;
 - (void)_playbackControlsMediaEngineChanged;
 #endif
@@ -315,24 +315,24 @@ WebLayoutMilestones kitLayoutMilestones(OptionSet<WebCore::LayoutMilestone>);
 #endif
 
 #if ENABLE(FULLSCREEN_API) && !PLATFORM(IOS_FAMILY) && defined(__cplusplus)
-- (BOOL)_supportsFullScreenForElement:(NakedPtr<WebCore::Element>)element withKeyboard:(BOOL)withKeyboard;
-- (void)_enterFullScreenForElement:(NakedPtr<WebCore::Element>)element;
-- (void)_exitFullScreenForElement:(NakedPtr<WebCore::Element>)element;
+- (BOOL)_supportsFullScreenForElement:(NakedPtr<CyberCore::Element>)element withKeyboard:(BOOL)withKeyboard;
+- (void)_enterFullScreenForElement:(NakedPtr<CyberCore::Element>)element;
+- (void)_exitFullScreenForElement:(NakedPtr<CyberCore::Element>)element;
 #endif
 
-// Conversion functions between WebCore root view coordinates and web view coordinates.
+// Conversion functions between CyberCore root view coordinates and web view coordinates.
 - (NSPoint)_convertPointFromRootView:(NSPoint)point;
 - (NSRect)_convertRectFromRootView:(NSRect)rect;
 
 - (void)_setMaintainsInactiveSelection:(BOOL)shouldMaintainInactiveSelection;
 
 #if PLATFORM(MAC) && defined(__cplusplus)
-- (void)_setTextIndicator:(WebCore::TextIndicator&)textIndicator;
-- (void)_setTextIndicator:(WebCore::TextIndicator&)textIndicator withLifetime:(WebCore::TextIndicatorLifetime)lifetime;
-- (void)_clearTextIndicatorWithAnimation:(WebCore::TextIndicatorDismissalAnimation)animation;
+- (void)_setTextIndicator:(CyberCore::TextIndicator&)textIndicator;
+- (void)_setTextIndicator:(CyberCore::TextIndicator&)textIndicator withLifetime:(CyberCore::TextIndicatorLifetime)lifetime;
+- (void)_clearTextIndicatorWithAnimation:(CyberCore::TextIndicatorDismissalAnimation)animation;
 - (void)_setTextIndicatorAnimationProgress:(float)progress;
-- (void)_showDictionaryLookupPopup:(const WebCore::DictionaryPopupInfo&)dictionaryPopupInfo;
-- (id)_animationControllerForDictionaryLookupPopupInfo:(const WebCore::DictionaryPopupInfo&)dictionaryPopupInfo;
+- (void)_showDictionaryLookupPopup:(const CyberCore::DictionaryPopupInfo&)dictionaryPopupInfo;
+- (id)_animationControllerForDictionaryLookupPopupInfo:(const CyberCore::DictionaryPopupInfo&)dictionaryPopupInfo;
 - (WebImmediateActionController *)_immediateActionController;
 - (NSEvent *)_pressureEvent;
 - (void)_setPressureEvent:(NSEvent *)event;
@@ -340,12 +340,12 @@ WebLayoutMilestones kitLayoutMilestones(OptionSet<WebCore::LayoutMilestone>);
 
 #if ENABLE(WIRELESS_PLAYBACK_TARGET) && !PLATFORM(IOS_FAMILY) && defined(__cplusplus)
 - (WebMediaPlaybackTargetPicker *) _devicePicker;
-- (void)_addPlaybackTargetPickerClient:(WebCore::PlaybackTargetClientContextIdentifier)contextId;
-- (void)_removePlaybackTargetPickerClient:(WebCore::PlaybackTargetClientContextIdentifier)contextId;
-- (void)_showPlaybackTargetPicker:(WebCore::PlaybackTargetClientContextIdentifier)contextId location:(const WebCore::IntPoint&)location hasVideo:(BOOL)hasVideo;
-- (void)_playbackTargetPickerClientStateDidChange:(WebCore::PlaybackTargetClientContextIdentifier)contextId state:(WebCore::MediaProducerMediaStateFlags)state;
+- (void)_addPlaybackTargetPickerClient:(CyberCore::PlaybackTargetClientContextIdentifier)contextId;
+- (void)_removePlaybackTargetPickerClient:(CyberCore::PlaybackTargetClientContextIdentifier)contextId;
+- (void)_showPlaybackTargetPicker:(CyberCore::PlaybackTargetClientContextIdentifier)contextId location:(const CyberCore::IntPoint&)location hasVideo:(BOOL)hasVideo;
+- (void)_playbackTargetPickerClientStateDidChange:(CyberCore::PlaybackTargetClientContextIdentifier)contextId state:(CyberCore::MediaProducerMediaStateFlags)state;
 - (void)_setMockMediaPlaybackTargetPickerEnabled:(bool)enabled;
-- (void)_setMockMediaPlaybackTargetPickerName:(NSString *)name state:(WebCore::MediaPlaybackTargetContext::MockState)state;
+- (void)_setMockMediaPlaybackTargetPickerName:(NSString *)name state:(CyberCore::MediaPlaybackTargetContext::MockState)state;
 - (void)_mockMediaPlaybackTargetPickerDismissPopup;
 #endif
 

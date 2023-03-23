@@ -36,7 +36,7 @@ class Decoder;
 class Encoder;
 }
 
-namespace WebCore {
+namespace CyberCore {
 class HTMLMenuItemElement;
 }
 
@@ -49,7 +49,7 @@ enum class ItemType : uint8_t {
 
 struct TouchBarMenuItemData {
     explicit TouchBarMenuItemData() = default;
-    explicit TouchBarMenuItemData(const WebCore::HTMLMenuItemElement&);
+    explicit TouchBarMenuItemData(const CyberCore::HTMLMenuItemElement&);
     explicit TouchBarMenuItemData(ItemType, String&& identifier, float priority);
     
     ItemType type { ItemType::Button };

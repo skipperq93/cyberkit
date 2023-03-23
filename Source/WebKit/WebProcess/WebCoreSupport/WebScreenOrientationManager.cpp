@@ -31,7 +31,7 @@
 #include "WebScreenOrientationManagerMessages.h"
 #include "WebScreenOrientationManagerProxyMessages.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 WebScreenOrientationManager::WebScreenOrientationManager(WebPage& page)
     : m_page(page)
@@ -44,26 +44,26 @@ WebScreenOrientationManager::~WebScreenOrientationManager()
     WebProcess::singleton().removeMessageReceiver(Messages::WebScreenOrientationManager::messageReceiverName(), m_page.identifier());
 }
 
-WebCore::ScreenOrientationType WebScreenOrientationManager::currentOrientation()
+CyberCore::ScreenOrientationType WebScreenOrientationManager::currentOrientation()
 {
     if (m_currentOrientation)
         return *m_currentOrientation;
 
     auto sendResult = m_page.sendSync(Messages::WebScreenOrientationManagerProxy::CurrentOrientation { });
-    auto [currentOrientation] = sendResult.takeReplyOr(WebCore::ScreenOrientationType::PortraitPrimary);
+    auto [currentOrientation] = sendResult.takeReplyOr(CyberCore::ScreenOrientationType::PortraitPrimary);
     if (!m_observers.isEmptyIgnoringNullReferences())
         m_currentOrientation = currentOrientation;
     return currentOrientation;
 }
 
-void WebScreenOrientationManager::orientationDidChange(WebCore::ScreenOrientationType orientation)
+void WebScreenOrientationManager::orientationDidChange(CyberCore::ScreenOrientationType orientation)
 {
     m_currentOrientation = orientation;
     for (auto& observer : m_observers)
         observer.screenOrientationDidChange(orientation);
 }
 
-void WebScreenOrientationManager::lock(WebCore::ScreenOrientationLockType lockType, CompletionHandler<void(std::optional<WebCore::Exception>&&)>&& completionHandler)
+void WebScreenOrientationManager::lock(CyberCore::ScreenOrientationLockType lockType, CompletionHandler<void(std::optional<CyberCore::Exception>&&)>&& completionHandler)
 {
     m_page.sendWithAsyncReply(Messages::WebScreenOrientationManagerProxy::Lock { lockType }, WTFMove(completionHandler));
 }
@@ -90,4 +90,4 @@ void WebScreenOrientationManager::removeObserver(Observer& observer)
     }
 }
 
-} // namespace WebKit
+} // namespace CyberKit

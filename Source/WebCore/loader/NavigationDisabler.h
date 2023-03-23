@@ -27,7 +27,7 @@
 
 #include "Frame.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class NavigationDisabler {
     WTF_MAKE_FAST_ALLOCATED;

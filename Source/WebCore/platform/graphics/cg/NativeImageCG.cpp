@@ -32,7 +32,7 @@
 #include "GeometryUtilities.h"
 #include "GraphicsContextCG.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 IntSize NativeImage::size() const
 {
@@ -126,6 +126,6 @@ void NativeImage::clearSubimages()
 #endif
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(CG)

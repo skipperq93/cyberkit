@@ -29,7 +29,7 @@
 #import <CyberKit/WKDOMRange.h>
 #import <wtf/HashMap.h>
 
-namespace WebCore {
+namespace CyberCore {
 class Element;
 class Document;
 }
@@ -40,40 +40,40 @@ class Document;
 
 @interface WKDOMNode () {
 @package
-    RefPtr<WebCore::Node> _impl;
+    RefPtr<CyberCore::Node> _impl;
 }
 
-- (id)_initWithImpl:(WebCore::Node*)impl;
+- (id)_initWithImpl:(CyberCore::Node*)impl;
 @end
 
 @interface WKDOMRange () {
 @package
-    RefPtr<WebCore::Range> _impl;
+    RefPtr<CyberCore::Range> _impl;
 }
 
-- (id)_initWithImpl:(WebCore::Range*)impl;
+- (id)_initWithImpl:(CyberCore::Range*)impl;
 @end
 
-namespace WebKit {
+namespace CyberKit {
 
-template<typename WebCoreType, typename WKDOMType>
+template<typename CyberCoreType, typename WKDOMType>
 class DOMCache {
 public:
     DOMCache()
     {
     }
 
-    void add(WebCoreType core, WKDOMType kit)
+    void add(CyberCoreType core, WKDOMType kit)
     {
         m_map.add(core, kit);
     }
     
-    WKDOMType get(WebCoreType core)
+    WKDOMType get(CyberCoreType core)
     {
         return m_map.get(core);
     }
 
-    void remove(WebCoreType core)
+    void remove(CyberCoreType core)
     {
         m_map.remove(core);
     }
@@ -82,31 +82,31 @@ private:
     // This class should only ever be used as a singleton.
     ~DOMCache() = delete;
 
-    HashMap<WebCoreType, WKDOMType> m_map;
+    HashMap<CyberCoreType, WKDOMType> m_map;
 };
 
 // -- Caches --
 
-DOMCache<WebCore::Node*, __unsafe_unretained WKDOMNode *>& WKDOMNodeCache();
-DOMCache<WebCore::Range*, __unsafe_unretained WKDOMRange *>& WKDOMRangeCache();
+DOMCache<CyberCore::Node*, __unsafe_unretained WKDOMNode *>& WKDOMNodeCache();
+DOMCache<CyberCore::Range*, __unsafe_unretained WKDOMRange *>& WKDOMRangeCache();
 
 // -- Node and classes derived from Node. --
 
-WebCore::Node* toWebCoreNode(WKDOMNode *);
-WKDOMNode *toWKDOMNode(WebCore::Node*);
+CyberCore::Node* toCyberCoreNode(WKDOMNode *);
+WKDOMNode *toWKDOMNode(CyberCore::Node*);
 
-WebCore::Element* toWebCoreElement(WKDOMElement *);
-WKDOMElement *toWKDOMElement(WebCore::Element*);
+CyberCore::Element* toCyberCoreElement(WKDOMElement *);
+WKDOMElement *toWKDOMElement(CyberCore::Element*);
 
-WebCore::Document* toWebCoreDocument(WKDOMDocument *);
-WKDOMDocument *toWKDOMDocument(WebCore::Document*);
+CyberCore::Document* toCyberCoreDocument(WKDOMDocument *);
+WKDOMDocument *toWKDOMDocument(CyberCore::Document*);
 
-WebCore::Text* toWebCoreText(WKDOMText *);
-WKDOMText *toWKDOMText(WebCore::Text*);
+CyberCore::Text* toCyberCoreText(WKDOMText *);
+WKDOMText *toWKDOMText(CyberCore::Text*);
 
 // -- Range. --
 
-WebCore::Range* toWebCoreRange(WKDOMRange *);
-WKDOMRange *toWKDOMRange(WebCore::Range*);
+CyberCore::Range* toCyberCoreRange(WKDOMRange *);
+WKDOMRange *toWKDOMRange(CyberCore::Range*);
 
-} // namespace WebKit
+} // namespace CyberKit

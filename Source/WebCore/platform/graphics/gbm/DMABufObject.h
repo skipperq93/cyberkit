@@ -37,7 +37,7 @@
 #include <wtf/Noncopyable.h>
 #include <wtf/unix/UnixFileDescriptor.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct DMABufObject {
     WTF_MAKE_NONCOPYABLE(DMABufObject);
@@ -150,4 +150,4 @@ std::optional<DMABufObject> DMABufObject::decode(Decoder& decoder)
     return dmabufObject;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

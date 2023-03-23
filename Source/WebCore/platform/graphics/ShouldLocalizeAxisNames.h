@@ -27,7 +27,7 @@
 
 #include <cstdint>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class ShouldLocalizeAxisNames : uint8_t {
     No,

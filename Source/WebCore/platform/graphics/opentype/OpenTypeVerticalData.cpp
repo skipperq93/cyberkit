@@ -34,7 +34,7 @@
 #include <wtf/RefPtr.h>
 
 
-namespace WebCore {
+namespace CyberCore {
 using namespace std;
 namespace OpenType {
 
@@ -565,5 +565,5 @@ void OpenTypeVerticalData::substituteWithVerticalGlyphs(const Font* font, GlyphP
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 #endif // ENABLE(OPENTYPE_VERTICAL)

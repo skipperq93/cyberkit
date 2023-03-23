@@ -32,10 +32,10 @@
 #import "ScrollingStateStickyNode.h"
 #import "ScrollingThread.h"
 #import "ScrollingTree.h"
-#import "WebCoreCALayerExtras.h"
+#import "CyberCoreCALayerExtras.h"
 #import <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<ScrollingTreeStickyNodeCocoa> ScrollingTreeStickyNodeCocoa::create(ScrollingTree& scrollingTree, ScrollingNodeID nodeID)
 {
@@ -90,6 +90,6 @@ FloatPoint ScrollingTreeStickyNodeCocoa::layerTopLeft() const
     return position - toFloatSize(anchorPoint) * layerBounds.size() + m_constraints.alignmentOffset();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ASYNC_SCROLLING)

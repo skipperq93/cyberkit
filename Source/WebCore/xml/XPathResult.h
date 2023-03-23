@@ -29,7 +29,7 @@
 #include "ExceptionOr.h"
 #include "XPathValue.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class XPathResult : public RefCounted<XPathResult> {
 public:
@@ -76,4 +76,4 @@ private:
     uint64_t m_domTreeVersion { 0 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

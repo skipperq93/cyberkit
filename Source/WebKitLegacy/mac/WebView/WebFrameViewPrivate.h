@@ -33,9 +33,9 @@
 
 @interface WebFrameView (WebPrivate)
 
-// FIXME: This method was used by Safari 4.0.x and older versions, but has not been used by any other WebKit
+// FIXME: This method was used by Safari 4.0.x and older versions, but has not been used by any other CyberKit
 // clients to my knowledge, and will not be used by future versions of Safari. It can probably be removed 
-// once we no longer need to keep nightly WebKit builds working with Safari 4.0.x and earlier.
+// once we no longer need to keep nightly CyberKit builds working with Safari 4.0.x and earlier.
 /*!
     @method _largestChildWithScrollBars
     @abstract Of the child WebFrameViews that are displaying scroll bars, determines which has the largest area.
@@ -43,9 +43,9 @@
  */
 - (WebFrameView *)_largestChildWithScrollBars;
 
-// FIXME: This method was used by Safari 4.0.x and older versions, but has not been used by any other WebKit
+// FIXME: This method was used by Safari 4.0.x and older versions, but has not been used by any other CyberKit
 // clients to my knowledge, and will not be used by future versions of Safari. It can probably be removed 
-// once we no longer need to keep nightly WebKit builds working with Safari 4.0.x and earlier.
+// once we no longer need to keep nightly CyberKit builds working with Safari 4.0.x and earlier.
 /*!
     @method _hasScrollBars
     @result YES if at least one scroll bar is currently displayed

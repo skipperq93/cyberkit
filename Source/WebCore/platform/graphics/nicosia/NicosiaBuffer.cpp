@@ -33,12 +33,12 @@
 
 namespace Nicosia {
 
-Ref<Buffer> Buffer::create(const WebCore::IntSize& size, Flags flags)
+Ref<Buffer> Buffer::create(const CyberCore::IntSize& size, Flags flags)
 {
     return adoptRef(*new Buffer(size, flags));
 }
 
-Buffer::Buffer(const WebCore::IntSize& size, Flags flags)
+Buffer::Buffer(const CyberCore::IntSize& size, Flags flags)
     : m_size(size)
     , m_flags(flags)
 {

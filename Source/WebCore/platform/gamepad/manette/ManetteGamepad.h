@@ -33,7 +33,7 @@
 #include <wtf/HashMap.h>
 #include <wtf/glib/GRefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ManetteGamepad final : public PlatformGamepad {
 public:
@@ -83,6 +83,6 @@ private:
     Vector<SharedGamepadValue> m_axisValues;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(GAMEPAD) && OS(LINUX)

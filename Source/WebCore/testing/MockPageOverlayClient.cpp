@@ -36,7 +36,7 @@
 #include <wtf/NeverDestroyed.h>
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 MockPageOverlayClient& MockPageOverlayClient::singleton()
 {

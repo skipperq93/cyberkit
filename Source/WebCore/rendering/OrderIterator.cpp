@@ -34,7 +34,7 @@
 
 #include "RenderBox.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 OrderIterator::OrderIterator(RenderBox& containerBox)
     : m_containerBox(containerBox)
@@ -108,4 +108,4 @@ bool OrderIteratorPopulator::collectChild(const RenderBox& child)
 }
 
 
-} // namespace WebCore
+} // namespace CyberCore

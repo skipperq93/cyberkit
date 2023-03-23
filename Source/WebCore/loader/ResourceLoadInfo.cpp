@@ -32,7 +32,7 @@
 #include "RegistrableDomain.h"
 #include "SecurityOrigin.h"
 
-namespace WebCore::ContentExtensions {
+namespace CyberCore::ContentExtensions {
 
 static_assert(!(ResourceTypeMask & LoadTypeMask), "ResourceTypeMask and LoadTypeMask should be mutually exclusive because they are stored in the same uint32_t");
 static_assert(!(ResourceTypeMask & LoadContextMask), "ResourceTypeMask and LoadContextMask should be mutually exclusive because they are stored in the same uint32_t");
@@ -158,6 +158,6 @@ ResourceFlags ResourceLoadInfo::getResourceFlags() const
     return flags;
 }
 
-} // namespace WebCore::ContentExtensions
+} // namespace CyberCore::ContentExtensions
 
 #endif // ENABLE(CONTENT_EXTENSIONS)

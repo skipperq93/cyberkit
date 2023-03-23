@@ -32,9 +32,9 @@ struct WebKit::WebProcessDataStoreParameters {
     String javaScriptConfigurationDirectory;
     WebKit::SandboxExtension::Handle javaScriptConfigurationDirectoryExtensionHandle;
 #if ENABLE(TRACKING_PREVENTION)
-    WebCore::ThirdPartyCookieBlockingMode thirdPartyCookieBlockingMode;
-    HashSet<WebCore::RegistrableDomain> domainsWithUserInteraction;
-    HashMap<WebCore::RegistrableDomain, WebCore::RegistrableDomain> domainsWithStorageAccessQuirk;
+    CyberCore::ThirdPartyCookieBlockingMode thirdPartyCookieBlockingMode;
+    HashSet<CyberCore::RegistrableDomain> domainsWithUserInteraction;
+    HashMap<CyberCore::RegistrableDomain, CyberCore::RegistrableDomain> domainsWithStorageAccessQuirk;
 #endif
 #if ENABLE(ARKIT_INLINE_PREVIEW)
     String modelElementCacheDirectory;

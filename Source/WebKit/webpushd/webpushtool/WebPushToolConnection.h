@@ -32,7 +32,7 @@
 #include <wtf/WeakPtr.h>
 #include <wtf/spi/darwin/XPCSPI.h>
 
-using WebKit::WebPushD::PushMessageForTesting;
+using CyberKit::WebPushD::PushMessageForTesting;
 
 namespace WebPushTool {
 

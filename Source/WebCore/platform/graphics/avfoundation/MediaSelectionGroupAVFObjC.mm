@@ -43,7 +43,7 @@
 
 #import <pal/cocoa/AVFoundationSoftLink.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<MediaSelectionOptionAVFObjC> MediaSelectionOptionAVFObjC::create(MediaSelectionGroupAVFObjC& group, AVMediaSelectionOption *option)
 {

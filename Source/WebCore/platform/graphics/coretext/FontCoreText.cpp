@@ -47,7 +47,7 @@
 
 #include <pal/cf/CoreTextSoftLink.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static inline bool caseInsensitiveCompare(CFStringRef a, CFStringRef b)
 {
@@ -952,4 +952,4 @@ bool Font::hasAnyComplexColorFormatGlyphs(const GlyphBufferGlyph* glyphs, unsign
     return false;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

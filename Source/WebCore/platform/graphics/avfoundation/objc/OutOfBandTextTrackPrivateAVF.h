@@ -32,7 +32,7 @@
 
 OBJC_CLASS AVMediaSelectionOption;
 
-namespace WebCore {
+namespace CyberCore {
     
 class OutOfBandTextTrackPrivateAVF : public InbandTextTrackPrivateAVF {
 public:

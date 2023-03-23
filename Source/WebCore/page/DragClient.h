@@ -31,7 +31,7 @@
 #include "FloatPoint.h"
 #include "IntPoint.h"
 
-namespace WebCore {
+namespace CyberCore {
     
 class DataTransfer;
 class Element;
@@ -66,4 +66,4 @@ public:
     virtual ~DragClient() = default;
 };
     
-} // namespace WebCore
+} // namespace CyberCore

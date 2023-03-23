@@ -21,8 +21,8 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitDOMObject_h
-#define WebKitDOMObject_h
+#ifndef CyberKitDOMObject_h
+#define CyberKitDOMObject_h
 
 #include <glib-object.h>
 #include <webkitdom/webkitdomdefines.h>
@@ -30,19 +30,19 @@
 G_BEGIN_DECLS
 
 #define WEBKIT_DOM_TYPE_OBJECT            (webkit_dom_object_get_type())
-#define WEBKIT_DOM_OBJECT(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_OBJECT, WebKitDOMObject))
-#define WEBKIT_DOM_OBJECT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_OBJECT, WebKitDOMObjectClass))
+#define WEBKIT_DOM_OBJECT(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_OBJECT, CyberKitDOMObject))
+#define WEBKIT_DOM_OBJECT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_OBJECT, CyberKitDOMObjectClass))
 #define WEBKIT_DOM_IS_OBJECT(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_DOM_TYPE_OBJECT))
 #define WEBKIT_DOM_IS_OBJECT_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_DOM_TYPE_OBJECT))
-#define WEBKIT_DOM_OBJECT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_OBJECT, WebKitDOMObjectClass))
+#define WEBKIT_DOM_OBJECT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_OBJECT, CyberKitDOMObjectClass))
 
-struct _WebKitDOMObject {
+struct _CyberKitDOMObject {
     GObject parentInstance;
 
     gpointer coreObject;
 };
 
-struct _WebKitDOMObjectClass {
+struct _CyberKitDOMObjectClass {
     GObjectClass parentClass;
 };
 
@@ -51,4 +51,4 @@ webkit_dom_object_get_type(void);
 
 G_END_DECLS
 
-#endif /* WebKitDOMObject_h */
+#endif /* CyberKitDOMObject_h */

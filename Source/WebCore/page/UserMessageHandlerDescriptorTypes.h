@@ -32,13 +32,13 @@
 #include <wtf/text/AtomString.h>
 #include <wtf/text/AtomStringHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMWrapperWorld;
 class UserMessageHandlerDescriptor;
 
 typedef HashMap<std::pair<AtomString, RefPtr<DOMWrapperWorld>>, RefPtr<UserMessageHandlerDescriptor>> UserMessageHandlerDescriptorMap;
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(USER_MESSAGE_HANDLERS)

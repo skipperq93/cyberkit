@@ -34,7 +34,7 @@
 #import <Carbon/Carbon.h>
 #import <wtf/MainThread.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 int windowsKeyCodeForKeyCode(uint16_t keyCode)
 {
@@ -282,6 +282,6 @@ OptionSet<PlatformEvent::Modifier> PlatformKeyboardEvent::currentStateOfModifier
     return modifiers;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(MAC)

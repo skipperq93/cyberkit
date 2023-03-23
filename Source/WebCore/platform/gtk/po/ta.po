@@ -1888,8 +1888,8 @@ msgstr "வலை ஆய்வி"
 #~ msgid "Enable Timeline profiling"
 #~ msgstr "டைம்லைன் விவரத்தொகுப்பாக்கத்தை செயல்படுத்து"
 
-#~ msgid "Profile the WebCore instrumentation."
-#~ msgstr "WebCore கருவியாக்கத்தை விவரத்தொகுப்பாக்கவும்."
+#~ msgid "Profile the CyberCore instrumentation."
+#~ msgstr "CyberCore கருவியாக்கத்தை விவரத்தொகுப்பாக்கவும்."
 
 #~ msgid "Reason"
 #~ msgstr "காரணம்"

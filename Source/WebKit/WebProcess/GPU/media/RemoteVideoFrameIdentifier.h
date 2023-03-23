@@ -30,7 +30,7 @@
 #include "ObjectIdentifierReferenceTracker.h"
 #include <wtf/ObjectIdentifier.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 enum RemoteVideoFrameIdentifierType { };
 using RemoteVideoFrameIdentifier = ObjectIdentifier<RemoteVideoFrameIdentifierType>;
@@ -39,6 +39,6 @@ using RemoteVideoFrameWriteReference = ObjectIdentifierWriteReference<RemoteVide
 using RemoteVideoFrameReference = ObjectIdentifierReference<RemoteVideoFrameIdentifier>;
 using RemoteVideoFrameReferenceTracker = ObjectIdentifierReferenceTracker<RemoteVideoFrameIdentifier>;
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

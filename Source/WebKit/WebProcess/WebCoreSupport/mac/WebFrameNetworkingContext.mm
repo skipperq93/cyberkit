@@ -39,8 +39,8 @@
 #import <CyberCore/Settings.h>
 #import <wtf/ProcessPrivilege.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 bool WebFrameNetworkingContext::localFileContentSniffingEnabled() const
 {

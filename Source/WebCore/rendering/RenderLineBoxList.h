@@ -30,7 +30,7 @@
 
 #include "RenderObject.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class LegacyInlineFlowBox;
 class RenderBlockFlow;
@@ -86,4 +86,4 @@ inline void RenderLineBoxList::checkConsistency() const
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

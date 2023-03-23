@@ -31,7 +31,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/StringHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ContentType;
 
@@ -63,4 +63,4 @@ private:
     std::optional<HashMap<String, MediaPlayerEnums::SupportsType, ASCIICaseInsensitiveHash>> m_cachedResults;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

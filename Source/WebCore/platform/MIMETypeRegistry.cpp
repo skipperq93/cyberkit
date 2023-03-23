@@ -63,12 +63,12 @@
 #include "ImageDecoderGStreamer.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 static String normalizedImageMIMEType(const String&);
 
 // On iOS, we include malformed image MIME types for compatibility with Mail.
-// These were removed for <rdar://problem/6564538> Re-enable UTI code in WebCore now that
+// These were removed for <rdar://problem/6564538> Re-enable UTI code in CyberCore now that
 // MobileCoreServices exists. But Mail relies on at least image/tif reported as being
 // supported (should be image/tiff). This can be removed when Mail addresses:
 // <rdar://problem/7879510> Mail should use standard image mimetypes
@@ -848,4 +848,4 @@ bool MIMETypeRegistry::isJPEGMIMEType(const String& mimeType)
 #endif
 }
 
-} // namespace WebCore
+} // namespace CyberCore

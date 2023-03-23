@@ -28,7 +28,7 @@
 #include <cairo.h>
 #include <memory>
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename T> struct CairoPtrDeleter {
     void operator()(T* ptr) const = delete;
@@ -51,4 +51,4 @@ template<> struct CairoPtrDeleter<cairo_path_t> {
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -29,7 +29,7 @@
 
 #include "MathMLPresentationElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class MathMLScriptsElement : public MathMLPresentationElement {
     WTF_MAKE_ISO_ALLOCATED(MathMLScriptsElement);

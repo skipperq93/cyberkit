@@ -45,7 +45,7 @@
 #include "WKBundleAPICast.h"
 #include "WebAutomationSessionProxy.h"
 #include "WebBackForwardListProxy.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebDocumentLoader.h"
 #include "WebErrors.h"
 #include "WebEvent.h"
@@ -114,8 +114,8 @@
 #define WEBFRAMELOADERCLIENT_RELEASE_LOG_ERROR(channel, fmt, ...) RELEASE_LOG_ERROR(channel, PREFIX_PARAMETERS fmt, this, WEBFRAME, WEBFRAMEID, WEBPAGE, WEBPAGEID, ##__VA_ARGS__)
 #define WEBFRAMELOADERCLIENT_RELEASE_LOG_FAULT(channel, fmt, ...) RELEASE_LOG_FAULT(channel, PREFIX_PARAMETERS fmt, this, WEBFRAME, WEBFRAMEID, WEBPAGE, WEBPAGEID, ##__VA_ARGS__)
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 WebFrameLoaderClient::WebFrameLoaderClient(Ref<WebFrame>&& frame)
     : m_frame(WTFMove(frame))
@@ -270,15 +270,15 @@ bool WebFrameLoaderClient::shouldUseCredentialStorage(DocumentLoader*, ResourceL
     return webPage->injectedBundleResourceLoadClient().shouldUseCredentialStorage(*webPage, m_frame, identifier);
 }
 
-void WebFrameLoaderClient::dispatchDidReceiveAuthenticationChallenge(DocumentLoader*, WebCore::ResourceLoaderIdentifier, const AuthenticationChallenge&)
+void WebFrameLoaderClient::dispatchDidReceiveAuthenticationChallenge(DocumentLoader*, CyberCore::ResourceLoaderIdentifier, const AuthenticationChallenge&)
 {
     ASSERT_NOT_REACHED();
 }
 
 #if USE(PROTECTION_SPACE_AUTH_CALLBACK)
-bool WebFrameLoaderClient::canAuthenticateAgainstProtectionSpace(DocumentLoader*, WebCore::ResourceLoaderIdentifier, const ProtectionSpace& protectionSpace)
+bool WebFrameLoaderClient::canAuthenticateAgainstProtectionSpace(DocumentLoader*, CyberCore::ResourceLoaderIdentifier, const ProtectionSpace& protectionSpace)
 {
-    // The WebKit 2 Networking process asks the UIProcess directly, so the WebContent process should never receive this callback.
+    // The CyberKit 2 Networking process asks the UIProcess directly, so the WebContent process should never receive this callback.
     ASSERT_NOT_REACHED();
     return false;
 }
@@ -457,7 +457,7 @@ void WebFrameLoaderClient::dispatchWillChangeDocument(const URL& currentUrl, con
     if (!webPage)
         return;
 
-    if (m_frameSpecificStorageAccessIdentifier && !WebCore::areRegistrableDomainsEqual(currentUrl, newUrl)) {
+    if (m_frameSpecificStorageAccessIdentifier && !CyberCore::areRegistrableDomainsEqual(currentUrl, newUrl)) {
         WebProcess::singleton().ensureNetworkProcessConnection().connection().send(Messages::NetworkConnectionToWebProcess::RemoveStorageAccessForFrame(
             m_frameSpecificStorageAccessIdentifier->frameID, m_frameSpecificStorageAccessIdentifier->pageID), 0);
         m_frameSpecificStorageAccessIdentifier = std::nullopt;
@@ -477,13 +477,13 @@ void WebFrameLoaderClient::didSameDocumentNavigationForFrameViaJSHistoryAPI(Same
     webPage->injectedBundleLoaderClient().didSameDocumentNavigationForFrame(*webPage, m_frame, SameDocumentNavigationType::SessionStatePush, userData);
 
     NavigationActionData navigationActionData {
-        WebCore::NavigationType::Other,
+        CyberCore::NavigationType::Other,
         { }, /* modifiers */
         WebMouseEventButton::NoButton,
         WebMouseEventSyntheticClickType::NoTap,
         WebProcess::singleton().userGestureTokenIdentifier(UserGestureIndicator::currentUserGesture()),
         true, /* canHandleRequest */
-        WebCore::ShouldOpenExternalURLsPolicy::ShouldNotAllow,
+        CyberCore::ShouldOpenExternalURLsPolicy::ShouldNotAllow,
         { }, /* downloadAttribute */
         { }, /* clickLocationInRootViewCoordinates */
         false, /* isRedirect */
@@ -494,8 +494,8 @@ void WebFrameLoaderClient::didSameDocumentNavigationForFrameViaJSHistoryAPI(Same
         { }, /* requesterOrigin */
         std::nullopt, /* targetBackForwardItemIdentifier */
         std::nullopt, /* sourceBackForwardItemIdentifier */
-        WebCore::LockHistory::No,
-        WebCore::LockBackForwardList::No,
+        CyberCore::LockHistory::No,
+        CyberCore::LockBackForwardList::No,
         { }, /* clientRedirectSourceForHistory */
         0, /* effectiveSandboxFlags */
         std::nullopt, /* privateClickMeasurement */
@@ -671,7 +671,7 @@ void WebFrameLoaderClient::dispatchDidFailProvisionalLoad(const ResourceError& e
     }
 
     // Notify the UIProcess.
-    WebCore::Frame* coreFrame = m_frame->coreFrame();
+    CyberCore::Frame* coreFrame = m_frame->coreFrame();
     webPage->send(Messages::WebPageProxy::DidFailProvisionalLoadForFrame(m_frame->frameID(), m_frame->info(), request, navigationID, coreFrame->loader().provisionalLoadErrorBeingHandledURL().string(), error, willContinueLoading, UserData(WebProcess::singleton().transformObjectsToHandles(userData.get()).get()), willInternallyHandleFailure));
 
     // If we have a load listener, notify it.
@@ -772,7 +772,7 @@ void WebFrameLoaderClient::completePageTransitionIfNeeded()
     WEBFRAMELOADERCLIENT_RELEASE_LOG(Layout, "completePageTransitionIfNeeded: dispatching didCompletePageTransition");
 }
 
-void WebFrameLoaderClient::dispatchDidReachLayoutMilestone(OptionSet<WebCore::LayoutMilestone> milestones)
+void WebFrameLoaderClient::dispatchDidReachLayoutMilestone(OptionSet<CyberCore::LayoutMilestone> milestones)
 {
     WebPage* webPage = m_frame->page();
     if (!webPage)
@@ -796,7 +796,7 @@ void WebFrameLoaderClient::dispatchDidReachLayoutMilestone(OptionSet<WebCore::La
 
 #if !RELEASE_LOG_DISABLED
     StringBuilder builder;
-    auto addIfSet = [&milestones, &builder] (WebCore::LayoutMilestone milestone, const String& toAdd) {
+    auto addIfSet = [&milestones, &builder] (CyberCore::LayoutMilestone milestone, const String& toAdd) {
         if (milestones.contains(milestone)) {
             if (!builder.isEmpty())
                 builder.append(", ");
@@ -891,7 +891,7 @@ void WebFrameLoaderClient::dispatchShow()
     webPage->show();
 }
 
-void WebFrameLoaderClient::dispatchDecidePolicyForResponse(const ResourceResponse& response, const ResourceRequest& request, WebCore::PolicyCheckIdentifier identifier, const String& downloadAttribute, FramePolicyFunction&& function)
+void WebFrameLoaderClient::dispatchDecidePolicyForResponse(const ResourceResponse& response, const ResourceRequest& request, CyberCore::PolicyCheckIdentifier identifier, const String& downloadAttribute, FramePolicyFunction&& function)
 {
     auto* webPage = m_frame->page();
     if (!webPage) {
@@ -927,7 +927,7 @@ void WebFrameLoaderClient::dispatchDecidePolicyForResponse(const ResourceRespons
 }
 
 #if PLATFORM(MAC) || HAVE(UIKIT_WITH_MOUSE_SUPPORT)
-static std::optional<WebKit::WebHitTestResultData> webHitTestResultDataInNavigationActionData(const NavigationAction& navigationAction, NavigationActionData& navigationActionData, WebCore::Frame* coreFrame)
+static std::optional<CyberKit::WebHitTestResultData> webHitTestResultDataInNavigationActionData(const NavigationAction& navigationAction, NavigationActionData& navigationActionData, CyberCore::Frame* coreFrame)
 {
     if (!coreFrame)
         return std::nullopt;
@@ -939,12 +939,12 @@ static std::optional<WebKit::WebHitTestResultData> webHitTestResultDataInNavigat
     constexpr OptionSet<HitTestRequest::Type> hitType { HitTestRequest::Type::ReadOnly, HitTestRequest::Type::Active, HitTestRequest::Type::DisallowUserAgentShadowContent, HitTestRequest::Type::AllowChildFrameContent };
     HitTestResult hitTestResult = coreFrame->eventHandler().hitTestResultAtPoint(mouseEventData->absoluteLocation, hitType);
 
-    return WebKit::WebHitTestResultData(hitTestResult, false);
+    return CyberKit::WebHitTestResultData(hitTestResult, false);
 }
 #endif
 
 void WebFrameLoaderClient::dispatchDecidePolicyForNewWindowAction(const NavigationAction& navigationAction, const ResourceRequest& request,
-    FormState* formState, const String& frameName, WebCore::PolicyCheckIdentifier identifier, FramePolicyFunction&& function)
+    FormState* formState, const String& frameName, CyberCore::PolicyCheckIdentifier identifier, FramePolicyFunction&& function)
 {
     auto* webPage = m_frame->page();
     if (!webPage) {
@@ -973,8 +973,8 @@ void WebFrameLoaderClient::dispatchDecidePolicyForNewWindowAction(const Navigati
         { }, /* requesterOrigin */
         std::nullopt, /* targetBackForwardItemIdentifier */
         std::nullopt, /* sourceBackForwardItemIdentifier */
-        WebCore::LockHistory::No,
-        WebCore::LockBackForwardList::No,
+        CyberCore::LockHistory::No,
+        CyberCore::LockBackForwardList::No,
         { }, /* clientRedirectSourceForHistory */
         0, /* effectiveSandboxFlags */
         navigationAction.privateClickMeasurement(),
@@ -1003,14 +1003,14 @@ void WebFrameLoaderClient::applyToDocumentLoader(WebsitePoliciesData&& websitePo
     WebsitePoliciesData::applyToDocumentLoader(WTFMove(websitePolicies), *documentLoader);
 }
 
-WebCore::AllowsContentJavaScript WebFrameLoaderClient::allowsContentJavaScriptFromMostRecentNavigation() const
+CyberCore::AllowsContentJavaScript WebFrameLoaderClient::allowsContentJavaScriptFromMostRecentNavigation() const
 {
     auto* webPage = m_frame->page();
-    return webPage ? webPage->allowsContentJavaScriptFromMostRecentNavigation() : WebCore::AllowsContentJavaScript::No;
+    return webPage ? webPage->allowsContentJavaScriptFromMostRecentNavigation() : CyberCore::AllowsContentJavaScript::No;
 }
 
 void WebFrameLoaderClient::dispatchDecidePolicyForNavigationAction(const NavigationAction& navigationAction, const ResourceRequest& request, const ResourceResponse& redirectResponse,
-    FormState* formState, PolicyDecisionMode policyDecisionMode, WebCore::PolicyCheckIdentifier requestIdentifier, FramePolicyFunction&& function)
+    FormState* formState, PolicyDecisionMode policyDecisionMode, CyberCore::PolicyCheckIdentifier requestIdentifier, FramePolicyFunction&& function)
 {
     auto* webPage = m_frame->page();
     if (!webPage) {
@@ -1034,8 +1034,8 @@ void WebFrameLoaderClient::dispatchDecidePolicyForNavigationAction(const Navigat
     auto& requester = navigationAction.requester().value();
 
     auto* requestingFrame = requester.globalFrameIdentifier && requester.globalFrameIdentifier->frameID ? WebProcess::singleton().webFrame(requester.globalFrameIdentifier->frameID) : nullptr;
-    std::optional<WebCore::FrameIdentifier> originatingFrameID;
-    std::optional<WebCore::FrameIdentifier> parentFrameID;
+    std::optional<CyberCore::FrameIdentifier> originatingFrameID;
+    std::optional<CyberCore::FrameIdentifier> parentFrameID;
     if (requestingFrame) {
         originatingFrameID = requestingFrame->frameID();
         if (auto* parentFrame = requestingFrame->parentFrame())
@@ -1239,7 +1239,7 @@ void WebFrameLoaderClient::committedLoad(DocumentLoader* loader, const SharedBuf
     if (!hasPlugInView())
         loader->commitData(data);
 
-    // If the document is a stand-alone media document, now is the right time to cancel the WebKit load.
+    // If the document is a stand-alone media document, now is the right time to cancel the CyberKit load.
     // FIXME: This code should be shared across all ports. <http://webkit.org/b/48762>.
 #if ENABLE(VIDEO)
     if (is<MediaDocument>(m_frame->coreFrame()->document()))
@@ -1376,49 +1376,49 @@ void WebFrameLoaderClient::didRunInsecureContent(SecurityOrigin&, const URL&)
 
 ResourceError WebFrameLoaderClient::cancelledError(const ResourceRequest& request) const
 {
-    return WebKit::cancelledError(request);
+    return CyberKit::cancelledError(request);
 }
 
 ResourceError WebFrameLoaderClient::blockedError(const ResourceRequest& request) const
 {
-    return WebKit::blockedError(request);
+    return CyberKit::blockedError(request);
 }
 
 ResourceError WebFrameLoaderClient::blockedByContentBlockerError(const ResourceRequest& request) const
 {
-    return WebKit::blockedByContentBlockerError(request);
+    return CyberKit::blockedByContentBlockerError(request);
 }
 
 ResourceError WebFrameLoaderClient::cannotShowURLError(const ResourceRequest& request) const
 {
-    return WebKit::cannotShowURLError(request);
+    return CyberKit::cannotShowURLError(request);
 }
 
 ResourceError WebFrameLoaderClient::interruptedForPolicyChangeError(const ResourceRequest& request) const
 {
-    return WebKit::interruptedForPolicyChangeError(request);
+    return CyberKit::interruptedForPolicyChangeError(request);
 }
 
 #if ENABLE(CONTENT_FILTERING)
 ResourceError WebFrameLoaderClient::blockedByContentFilterError(const ResourceRequest& request) const
 {
-    return WebKit::blockedByContentFilterError(request);
+    return CyberKit::blockedByContentFilterError(request);
 }
 #endif
 
 ResourceError WebFrameLoaderClient::cannotShowMIMETypeError(const ResourceResponse& response) const
 {
-    return WebKit::cannotShowMIMETypeError(response);
+    return CyberKit::cannotShowMIMETypeError(response);
 }
 
 ResourceError WebFrameLoaderClient::fileDoesNotExistError(const ResourceResponse& response) const
 {
-    return WebKit::fileDoesNotExistError(response);
+    return CyberKit::fileDoesNotExistError(response);
 }
 
 ResourceError WebFrameLoaderClient::pluginWillHandleLoadError(const ResourceResponse& response) const
 {
-    return WebKit::pluginWillHandleLoadError(response);
+    return CyberKit::pluginWillHandleLoadError(response);
 }
 
 bool WebFrameLoaderClient::shouldFallBack(const ResourceError& error) const
@@ -1501,7 +1501,7 @@ void WebFrameLoaderClient::restoreViewState()
     if (scaleFactor)
         m_frame->page()->send(Messages::WebPageProxy::PageScaleFactorDidChange(scaleFactor));
 
-    // FIXME: This should not be necessary. WebCore should be correctly invalidating
+    // FIXME: This should not be necessary. CyberCore should be correctly invalidating
     // the view on restores from the back/forward cache.
     if (m_frame->page() && m_frame.ptr() == &m_frame->page()->mainWebFrame())
         m_frame->page()->drawingArea()->setNeedsDisplay();
@@ -1537,7 +1537,7 @@ Ref<DocumentLoader> WebFrameLoaderClient::createDocumentLoader(const ResourceReq
     return m_frame->page()->createDocumentLoader(*m_frame->coreFrame(), request, substituteData);
 }
 
-void WebFrameLoaderClient::updateCachedDocumentLoader(WebCore::DocumentLoader& loader)
+void WebFrameLoaderClient::updateCachedDocumentLoader(CyberCore::DocumentLoader& loader)
 {
     m_frame->page()->updateCachedDocumentLoader(static_cast<WebDocumentLoader&>(loader), *m_frame->coreFrame());
 }
@@ -1741,7 +1741,7 @@ static bool pluginSupportsExtension(const PluginData& pluginData, const String& 
 
 ObjectContentType WebFrameLoaderClient::objectContentType(const URL& url, const String& mimeTypeIn)
 {
-    // FIXME: This should eventually be merged with WebCore::FrameLoader::defaultObjectContentType.
+    // FIXME: This should eventually be merged with CyberCore::FrameLoader::defaultObjectContentType.
 
     String mimeType = mimeTypeIn;
     if (mimeType.isEmpty()) {
@@ -1853,7 +1853,7 @@ void WebFrameLoaderClient::willInjectUserScript(DOMWrapperWorld& world)
     webPage->injectedBundleLoaderClient().willInjectUserScriptForFrame(*webPage, m_frame, world);
 }
 
-void WebFrameLoaderClient::dispatchWillDisconnectDOMWindowExtensionFromGlobalObject(WebCore::DOMWindowExtension* extension)
+void WebFrameLoaderClient::dispatchWillDisconnectDOMWindowExtensionFromGlobalObject(CyberCore::DOMWindowExtension* extension)
 {
     WebPage* webPage = m_frame->page();
     if (!webPage)
@@ -1862,7 +1862,7 @@ void WebFrameLoaderClient::dispatchWillDisconnectDOMWindowExtensionFromGlobalObj
     webPage->injectedBundleLoaderClient().willDisconnectDOMWindowExtensionFromGlobalObject(*webPage, extension);
 }
 
-void WebFrameLoaderClient::dispatchDidReconnectDOMWindowExtensionToGlobalObject(WebCore::DOMWindowExtension* extension)
+void WebFrameLoaderClient::dispatchDidReconnectDOMWindowExtensionToGlobalObject(CyberCore::DOMWindowExtension* extension)
 {
     WebPage* webPage = m_frame->page();
     if (!webPage)
@@ -1871,7 +1871,7 @@ void WebFrameLoaderClient::dispatchDidReconnectDOMWindowExtensionToGlobalObject(
     webPage->injectedBundleLoaderClient().didReconnectDOMWindowExtensionToGlobalObject(*webPage, extension);
 }
 
-void WebFrameLoaderClient::dispatchWillDestroyGlobalObjectForDOMWindowExtension(WebCore::DOMWindowExtension* extension)
+void WebFrameLoaderClient::dispatchWillDestroyGlobalObjectForDOMWindowExtension(CyberCore::DOMWindowExtension* extension)
 {
     WebPage* webPage = m_frame->page();
     if (!webPage)
@@ -1942,7 +1942,7 @@ Ref<FrameNetworkingContext> WebFrameLoaderClient::createNetworkingContext()
 
 #if ENABLE(CONTENT_FILTERING)
 
-void WebFrameLoaderClient::contentFilterDidBlockLoad(WebCore::ContentFilterUnblockHandler unblockHandler)
+void WebFrameLoaderClient::contentFilterDidBlockLoad(CyberCore::ContentFilterUnblockHandler unblockHandler)
 {
     if (!unblockHandler.needsUIProcess()) {
         m_frame->coreFrame()->loader().policyChecker().setContentFilterUnblockHandler(WTFMove(unblockHandler));
@@ -1968,7 +1968,7 @@ void WebFrameLoaderClient::sendH2Ping(const URL& url, CompletionHandler<void(Exp
 
     NetworkResourceLoadParameters parameters;
     parameters.request = ResourceRequest(url);
-    parameters.identifier = WebCore::ResourceLoaderIdentifier::generate();
+    parameters.identifier = CyberCore::ResourceLoaderIdentifier::generate();
     parameters.webPageProxyID = webPage->webPageProxyIdentifier();
     parameters.webPageID = webPage->identifier();
     parameters.webFrameID = m_frame->frameID();
@@ -1993,7 +1993,7 @@ void WebFrameLoaderClient::didRestoreScrollPosition()
     webPage->didRestoreScrollPosition();
 }
 
-void WebFrameLoaderClient::getLoadDecisionForIcons(const Vector<std::pair<WebCore::LinkIcon&, uint64_t>>& icons)
+void WebFrameLoaderClient::getLoadDecisionForIcons(const Vector<std::pair<CyberCore::LinkIcon&, uint64_t>>& icons)
 {
     auto* webPage = m_frame->page();
     if (!webPage)
@@ -2062,7 +2062,7 @@ void WebFrameLoaderClient::modelInlinePreviewUUIDs(CompletionHandler<void(Vector
 }
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #undef PREFIX_PARAMETERS
 #undef WEBFRAME

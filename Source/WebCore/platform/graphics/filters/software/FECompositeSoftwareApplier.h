@@ -24,7 +24,7 @@
 
 #include "FilterEffectApplier.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class FEComposite;
 
@@ -52,4 +52,4 @@ private:
     bool applyNonArithmetic(FilterImage& input, FilterImage& input2, FilterImage& result) const;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

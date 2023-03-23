@@ -24,7 +24,7 @@
 
 #include "RenderBox.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSCounterStyle;
 class RenderListItem;
@@ -91,6 +91,6 @@ private:
     LayoutUnit m_lineLogicalOffsetForListItem;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderListMarker, isListMarker())

@@ -38,7 +38,7 @@
 #include "SVGPathStringSource.h"
 #include "SVGPathTraversalStateBuilder.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Path buildPathFromString(const String& d)
 {

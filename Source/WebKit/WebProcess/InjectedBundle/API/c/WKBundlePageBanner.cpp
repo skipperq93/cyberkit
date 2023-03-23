@@ -32,5 +32,5 @@
 
 WKTypeID WKBundlePageBannerGetTypeID()
 {
-    return WebKit::toAPI(WebKit::PageBanner::APIType);
+    return CyberKit::toAPI(CyberKit::PageBanner::APIType);
 }

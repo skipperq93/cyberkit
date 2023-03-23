@@ -22,7 +22,7 @@
 #include "Animation.h"
 #include "GraphicsLayer.h"
 
-namespace WebCore {
+namespace CyberCore {
 class TransformationMatrix;
 }
 
@@ -33,16 +33,16 @@ public:
     enum class AnimationState { Playing, Paused, Stopped };
 
     struct ApplicationResult {
-        std::optional<WebCore::TransformationMatrix> transform;
+        std::optional<CyberCore::TransformationMatrix> transform;
         std::optional<double> opacity;
-        std::optional<WebCore::FilterOperations> filters;
+        std::optional<CyberCore::FilterOperations> filters;
         bool hasRunningAnimations { false };
     };
 
     Animation()
-        : m_keyframes(WebCore::AnimatedProperty::Invalid)
+        : m_keyframes(CyberCore::AnimatedProperty::Invalid)
     { }
-    Animation(const String&, const WebCore::KeyframeValueList&, const WebCore::FloatSize&, const WebCore::Animation&, MonotonicTime, Seconds, AnimationState);
+    Animation(const String&, const CyberCore::KeyframeValueList&, const CyberCore::FloatSize&, const CyberCore::Animation&, MonotonicTime, Seconds, AnimationState);
 
     WEBCORE_EXPORT Animation(const Animation&);
     Animation& operator=(const Animation&);
@@ -55,21 +55,21 @@ public:
     void resume();
 
     const String& name() const { return m_name; }
-    const WebCore::KeyframeValueList& keyframes() const { return m_keyframes; }
+    const CyberCore::KeyframeValueList& keyframes() const { return m_keyframes; }
     AnimationState state() const { return m_state; }
-    WebCore::TimingFunction* timingFunction() const { return m_timingFunction.get(); }
+    CyberCore::TimingFunction* timingFunction() const { return m_timingFunction.get(); }
 
 private:
-    void applyInternal(ApplicationResult&, const WebCore::AnimationValue& from, const WebCore::AnimationValue& to, float progress);
+    void applyInternal(ApplicationResult&, const CyberCore::AnimationValue& from, const CyberCore::AnimationValue& to, float progress);
     Seconds computeTotalRunningTime(MonotonicTime);
 
     String m_name;
-    WebCore::KeyframeValueList m_keyframes;
-    WebCore::FloatSize m_boxSize;
-    RefPtr<WebCore::TimingFunction> m_timingFunction;
+    CyberCore::KeyframeValueList m_keyframes;
+    CyberCore::FloatSize m_boxSize;
+    RefPtr<CyberCore::TimingFunction> m_timingFunction;
     double m_iterationCount;
     double m_duration;
-    WebCore::Animation::AnimationDirection m_direction;
+    CyberCore::Animation::AnimationDirection m_direction;
     bool m_fillsForwards;
     MonotonicTime m_startTime;
     Seconds m_pauseTime;
@@ -84,7 +84,7 @@ public:
 
     void add(const Animation&);
     void remove(const String& name);
-    void remove(const String& name, WebCore::AnimatedProperty);
+    void remove(const String& name, CyberCore::AnimatedProperty);
     void pause(const String&, Seconds);
     void suspend(MonotonicTime);
     void resume();
@@ -98,7 +98,7 @@ public:
     Vector<Animation>& animations() { return m_animations; }
 
     bool hasRunningAnimations() const;
-    bool hasActiveAnimationsOfType(WebCore::AnimatedProperty type) const;
+    bool hasActiveAnimationsOfType(CyberCore::AnimatedProperty type) const;
 
 private:
     Vector<Animation> m_animations;

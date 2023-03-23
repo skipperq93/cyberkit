@@ -41,7 +41,7 @@
 #include <wtf/StdLibExtras.h>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 ScrollView::ScrollView() = default;
 
@@ -423,7 +423,7 @@ ScrollPosition ScrollView::documentScrollPositionRelativeToViewOrigin() const
 {
     return scrollPosition() - IntSize(
         shouldPlaceVerticalScrollbarOnLeft() && m_verticalScrollbar ? m_verticalScrollbar->occupiedWidth() : 0,
-        headerHeight() + topContentInset(TopContentInsetType::WebCoreOrPlatformContentInset));
+        headerHeight() + topContentInset(TopContentInsetType::CyberCoreOrPlatformContentInset));
 }
 
 ScrollPosition ScrollView::documentScrollPositionRelativeToScrollableAreaOrigin() const
@@ -1021,7 +1021,7 @@ IntPoint ScrollView::rootViewToTotalContents(const IntPoint& rootViewPoint) cons
 
     IntPoint viewPoint = convertFromRootView(rootViewPoint);
     // Like rootViewToContents(), but ignores headerHeight.
-    return viewPoint + toIntSize(scrollPosition()) - IntSize(0, topContentInset(TopContentInsetType::WebCoreOrPlatformContentInset));
+    return viewPoint + toIntSize(scrollPosition()) - IntSize(0, topContentInset(TopContentInsetType::CyberCoreOrPlatformContentInset));
 }
 
 IntRect ScrollView::contentsToRootView(const IntRect& contentsRect) const

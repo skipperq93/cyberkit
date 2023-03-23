@@ -28,11 +28,11 @@
 #include "WebFrame.h"
 #include <CyberCore/FrameNetworkingContext.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 struct WebsiteDataStoreParameters;
 
-class WebFrameNetworkingContext : public WebCore::FrameNetworkingContext {
+class WebFrameNetworkingContext : public CyberCore::FrameNetworkingContext {
 public:
     static Ref<WebFrameNetworkingContext> create(WebFrame* frame)
     {
@@ -46,7 +46,7 @@ public:
 
 private:
     WebFrameNetworkingContext(WebFrame* frame)
-        : WebCore::FrameNetworkingContext(frame->coreFrame())
+        : CyberCore::FrameNetworkingContext(frame->coreFrame())
     {
     }
 
@@ -54,8 +54,8 @@ private:
     SchedulePairHashSet* scheduledRunLoopPairs() const override;
     RetainPtr<CFDataRef> sourceApplicationAuditData() const override;
     String sourceApplicationIdentifier() const override;
-    WebCore::ResourceError blockedError(const WebCore::ResourceRequest&) const override;
-    WebCore::NetworkStorageSession* storageSession() const override { return nullptr; }
+    CyberCore::ResourceError blockedError(const CyberCore::ResourceRequest&) const override;
+    CyberCore::NetworkStorageSession* storageSession() const override { return nullptr; }
 };
 
 }

@@ -27,10 +27,10 @@
 
 #if ENABLE(WEB_RTC)
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class RTCPriorityType : uint8_t { VeryLow, Low, Medium, High };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

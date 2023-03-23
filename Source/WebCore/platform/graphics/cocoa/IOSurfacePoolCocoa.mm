@@ -28,7 +28,7 @@
 
 #import <QuartzCore/QuartzCore.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 void IOSurfacePool::platformGarbageCollectNow()
 {

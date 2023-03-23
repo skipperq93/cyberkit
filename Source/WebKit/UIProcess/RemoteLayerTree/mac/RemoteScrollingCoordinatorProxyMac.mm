@@ -43,7 +43,7 @@
 #import <CyberCore/WheelEventDeltaFilter.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 RemoteScrollingCoordinatorProxyMac::RemoteScrollingCoordinatorProxyMac(WebPageProxy& webPageProxy)
     : RemoteScrollingCoordinatorProxy(webPageProxy)

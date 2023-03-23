@@ -32,7 +32,7 @@
 
 #import <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 void handleXPCEndpointMessages(xpc_object_t event, const char* messageName)
 {

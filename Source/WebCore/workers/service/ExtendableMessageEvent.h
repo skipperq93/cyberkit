@@ -39,7 +39,7 @@ class CallFrame;
 class JSValue;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class MessagePort;
 class ServiceWorker;
@@ -86,6 +86,6 @@ private:
     Vector<RefPtr<MessagePort>> m_ports;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

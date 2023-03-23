@@ -29,11 +29,11 @@
 #include "Decoder.h"
 #include "Encoder.h"
 #include "SharedMemory.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 
 namespace IPC {
 
-using namespace WebCore;
+using namespace CyberCore;
 using namespace WebKit;
 
 void SharedBufferReference::encode(Encoder& encoder) const
@@ -98,7 +98,7 @@ std::optional<SharedBufferReference> SharedBufferReference::decode(Decoder& deco
 #endif
 }
 
-RefPtr<WebCore::SharedBuffer> SharedBufferReference::unsafeBuffer() const
+RefPtr<CyberCore::SharedBuffer> SharedBufferReference::unsafeBuffer() const
 {
 #if !USE(UNIX_DOMAIN_SOCKETS)
     RELEASE_ASSERT_WITH_MESSAGE(isEmpty() || (!m_buffer && m_memory), "Must only be called on IPC's receiver side");

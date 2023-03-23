@@ -22,7 +22,7 @@
 
 #if ENABLE(GPU_PROCESS) && USE(AUDIO_SESSION)
 
-struct WebKit::RemoteAudioSessionConfiguration {
+struct CyberKit::RemoteAudioSessionConfiguration {
     String routingContextUID;
     float sampleRate;
     size_t bufferSize;

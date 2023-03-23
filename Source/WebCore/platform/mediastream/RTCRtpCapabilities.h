@@ -30,7 +30,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct RTCRtpCapabilities {
     struct HeaderExtensionCapability {
@@ -41,6 +41,6 @@ struct RTCRtpCapabilities {
     Vector<HeaderExtensionCapability> headerExtensions;
 };
 
-}; // namespace WebCore
+}; // namespace CyberCore
 
 #endif

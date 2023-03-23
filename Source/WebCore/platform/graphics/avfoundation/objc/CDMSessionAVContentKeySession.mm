@@ -34,7 +34,7 @@
 #import "MediaPlayer.h"
 #import "SharedBuffer.h"
 #import "SourceBufferPrivateAVFObjC.h"
-#import "WebCoreNSErrorExtras.h"
+#import "CyberCoreNSErrorExtras.h"
 #import <AVFoundation/AVError.h>
 #import <CoreMedia/CMBase.h>
 #import <CyberScriptCore/HeapInlines.h>
@@ -50,7 +50,7 @@
 
 typedef NSString *AVContentKeySystem;
 
-@interface AVContentKeySession (WebCorePrivate)
+@interface AVContentKeySession (CyberCorePrivate)
 - (instancetype)initWithStorageDirectoryAtURL:(NSURL *)storageURL;
 @property (assign) id delegate;
 - (void)addStreamDataParser:(AVStreamDataParser *)streamDataParser;
@@ -58,20 +58,20 @@ typedef NSString *AVContentKeySystem;
 - (void)processContentKeyRequestInitializationData:(NSData *)initializationData options:(NSDictionary *)options;
 @end
 
-@interface AVContentKeyRequest (WebCorePrivate)
+@interface AVContentKeyRequest (CyberCorePrivate)
 - (NSData *)contentKeyRequestDataForApp:(NSData *)appIdentifier contentIdentifier:(NSData *)contentIdentifier options:(NSDictionary *)options error:(NSError **)outError;
 - (void)processContentKeyResponseData:(NSData *)contentKeyResponseData;
 - (void)renewExpiringContentKeyResponseData;
 @end
 
 @interface WebCDMSessionAVContentKeySessionDelegate : NSObject<AVContentKeySessionDelegate> {
-    WebCore::CDMSessionAVContentKeySession *m_parent;
+    CyberCore::CDMSessionAVContentKeySession *m_parent;
 }
 - (void)invalidate;
 @end
 
 @implementation WebCDMSessionAVContentKeySessionDelegate
-- (id)initWithParent:(WebCore::CDMSessionAVContentKeySession *)parent
+- (id)initWithParent:(CyberCore::CDMSessionAVContentKeySession *)parent
 {
     if ((self = [super init]))
         m_parent = parent;
@@ -103,7 +103,7 @@ typedef NSString *AVContentKeySystem;
 }
 @end
 
-namespace WebCore {
+namespace CyberCore {
 
 CDMSessionAVContentKeySession::CDMSessionAVContentKeySession(Vector<int>&& protocolVersions, int cdmVersion, CDMPrivateMediaSourceAVFObjC& cdm, LegacyCDMSessionClient& client)
     : CDMSessionMediaSourceAVFObjC(cdm, client)

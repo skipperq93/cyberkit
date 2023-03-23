@@ -40,7 +40,7 @@
 #endif
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 PageClientImpl::PageClientImpl(WebView& view)
     : m_view(view)
@@ -57,23 +57,23 @@ std::unique_ptr<DrawingAreaProxy> PageClientImpl::createDrawingAreaProxy(WebProc
     return makeUnique<DrawingAreaProxyCoordinatedGraphics>(*m_view.page());
 }
 
-void PageClientImpl::setViewNeedsDisplay(const WebCore::Region& region)
+void PageClientImpl::setViewNeedsDisplay(const CyberCore::Region& region)
 {
     m_view.setViewNeedsDisplay(region);
 }
 
-void PageClientImpl::requestScroll(const WebCore::FloatPoint&, const WebCore::IntPoint&, WebCore::ScrollIsAnimated)
+void PageClientImpl::requestScroll(const CyberCore::FloatPoint&, const CyberCore::IntPoint&, CyberCore::ScrollIsAnimated)
 {
     notImplemented();
 }
 
-WebCore::FloatPoint PageClientImpl::viewScrollPosition()
+CyberCore::FloatPoint PageClientImpl::viewScrollPosition()
 {
     notImplemented();
     return { };
 }
 
-WebCore::IntSize PageClientImpl::viewSize()
+CyberCore::IntSize PageClientImpl::viewSize()
 {
     RECT clientRect;
     GetClientRect(m_view.window(), &clientRect);
@@ -116,7 +116,7 @@ void PageClientImpl::toolTipChanged(const String&, const String& newToolTip)
     m_view.setToolTip(newToolTip);
 }
 
-void PageClientImpl::setCursor(const WebCore::Cursor& cursor)
+void PageClientImpl::setCursor(const CyberCore::Cursor& cursor)
 {
     m_view.setCursor(cursor);
 }
@@ -126,7 +126,7 @@ void PageClientImpl::setCursorHiddenUntilMouseMoves(bool /* hiddenUntilMouseMove
     notImplemented();
 }
 
-void PageClientImpl::didChangeViewportProperties(const WebCore::ViewportAttributes&)
+void PageClientImpl::didChangeViewportProperties(const CyberCore::ViewportAttributes&)
 {
     notImplemented();
 }
@@ -173,12 +173,12 @@ IntRect PageClientImpl::rootViewToScreen(const IntRect& rect)
     return IntRect();
 }
 
-WebCore::IntPoint PageClientImpl::accessibilityScreenToRootView(const WebCore::IntPoint& point)
+CyberCore::IntPoint PageClientImpl::accessibilityScreenToRootView(const CyberCore::IntPoint& point)
 {
     return screenToRootView(point);
 }
 
-WebCore::IntRect PageClientImpl::rootViewToAccessibilityScreen(const WebCore::IntRect& rect)    
+CyberCore::IntRect PageClientImpl::rootViewToAccessibilityScreen(const CyberCore::IntRect& rect)    
 {
     return rootViewToScreen(rect);
 }
@@ -201,7 +201,7 @@ Ref<WebContextMenuProxy> PageClientImpl::createContextMenuProxy(WebPageProxy& pa
 #endif
 
 #if ENABLE(INPUT_TYPE_COLOR)
-RefPtr<WebColorPicker> createColorPicker(WebPageProxy*, const WebCore::Color& intialColor, const WebCore::IntRect&)
+RefPtr<WebColorPicker> createColorPicker(WebPageProxy*, const CyberCore::Color& intialColor, const CyberCore::IntRect&)
 {
     return nullptr;
 }
@@ -287,7 +287,7 @@ void PageClientImpl::doneWithTouchEvent(const NativeWebTouchEvent& event, bool w
 }
 #endif // ENABLE(TOUCH_EVENTS)
 
-void PageClientImpl::wheelEventWasNotHandledByWebCore(const NativeWebWheelEvent& event)
+void PageClientImpl::wheelEventWasNotHandledByCyberCore(const NativeWebWheelEvent& event)
 {
     notImplemented();
 }
@@ -379,9 +379,9 @@ HWND PageClientImpl::viewWidget()
     return m_view.window();
 }
 
-void PageClientImpl::requestDOMPasteAccess(WebCore::DOMPasteAccessCategory, const IntRect&, const String&, CompletionHandler<void(WebCore::DOMPasteAccessResponse)>&& completionHandler)
+void PageClientImpl::requestDOMPasteAccess(CyberCore::DOMPasteAccessCategory, const IntRect&, const String&, CompletionHandler<void(CyberCore::DOMPasteAccessResponse)>&& completionHandler)
 {
-    completionHandler(WebCore::DOMPasteAccessResponse::DeniedForGesture);
+    completionHandler(CyberCore::DOMPasteAccessResponse::DeniedForGesture);
 }
 
 } // namespace WebKit

@@ -38,7 +38,7 @@
 #include "FakeXRJointStateInit.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 struct FakeXRInputSourceInit {
     XRHandedness handedness;
@@ -54,6 +54,6 @@ struct FakeXRInputSourceInit {
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBXR)

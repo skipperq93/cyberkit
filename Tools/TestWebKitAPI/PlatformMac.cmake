@@ -31,13 +31,13 @@ list(APPEND TestWebKitAPI_LIBRARIES
     ${CARBON_LIBRARY}
 )
 
-list(APPEND TestWebKitLegacy_LIBRARIES
+list(APPEND TestCyberKitLegacy_LIBRARIES
     WTF
     WebKit
     ${CARBON_LIBRARY}
 )
 
-list(APPEND TestWebCore_LIBRARIES
+list(APPEND TestCyberCore_LIBRARIES
     JavaScriptCore
     WTF
     WebKit
@@ -53,7 +53,7 @@ set(bundle_harness_SOURCES
     ${TESTWEBKITAPI_DIR}/mac/TestBrowsingContextLoadDelegate.mm
 )
 
-list(APPEND TestWebKitLegacy_SOURCES
+list(APPEND TestCyberKitLegacy_SOURCES
     ${test_main_SOURCES}
 )
 set(CMAKE_SHARED_LINKER_FLAGS ${CMAKE_SHARED_LINKER_FLAGS} "-framework Cocoa")
@@ -65,11 +65,11 @@ list(APPEND TestWebKit_LIBRARIES
     ${CARBON_LIBRARY}
 )
 
-list(APPEND TestWebCore_LIBRARIES
+list(APPEND TestCyberCore_LIBRARIES
     ${QUARTZCORE_LIBRARY}
 )
 
-list(APPEND TestWebCore_SOURCES
+list(APPEND TestCyberCore_SOURCES
     cocoa/UtilitiesCocoa.mm
 )
 

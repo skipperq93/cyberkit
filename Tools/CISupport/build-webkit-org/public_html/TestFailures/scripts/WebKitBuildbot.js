@@ -23,11 +23,11 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-function WebKitBuildbot() {
+function CyberKitBuildbot() {
     Buildbot.call(this, 'https://build.webkit.org/');
 }
 
-WebKitBuildbot.prototype = {
+CyberKitBuildbot.prototype = {
     parseBuildName: function(buildName) {
         var match = /^r(\d+) \((\d+)\)$/.exec(buildName);
         if (!match)
@@ -39,4 +39,4 @@ WebKitBuildbot.prototype = {
     },
 };
 
-WebKitBuildbot.prototype.__proto__ = Buildbot.prototype;
+CyberKitBuildbot.prototype.__proto__ = Buildbot.prototype;

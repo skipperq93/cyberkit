@@ -37,7 +37,7 @@
 typedef struct _cairo cairo_t;
 typedef struct _cairo_surface cairo_surface_t;
 
-namespace WebCore {
+namespace CyberCore {
 class GraphicsContext;
 }
 
@@ -51,11 +51,11 @@ public:
         virtual ~ForPainting();
 
     private:
-        WebCore::GraphicsContext& graphicsContext() override;
+        CyberCore::GraphicsContext& graphicsContext() override;
         void replay(const PaintingOperations&) override;
 
         RefPtr<cairo_surface_t> m_surface;
-        std::unique_ptr<WebCore::GraphicsContext> m_graphicsContext;
+        std::unique_ptr<CyberCore::GraphicsContext> m_graphicsContext;
 
 #ifndef NDEBUG
         bool m_deletionComplete { false };
@@ -68,10 +68,10 @@ public:
         virtual ~ForRecording();
 
     private:
-        WebCore::GraphicsContext& graphicsContext() override;
+        CyberCore::GraphicsContext& graphicsContext() override;
         void replay(const PaintingOperations&) override;
 
-        std::unique_ptr<WebCore::GraphicsContext> m_graphicsContext;
+        std::unique_ptr<CyberCore::GraphicsContext> m_graphicsContext;
     };
 };
 

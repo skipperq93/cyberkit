@@ -36,7 +36,7 @@ namespace WTF {
 class TextStream;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 // This class wraps the lenght of a gap used by properties column-gap and row-gap.
 // The valid values are "normal" or a non-negative <length-percentage>.
@@ -73,4 +73,4 @@ private:
 
 WTF::TextStream& operator<<(WTF::TextStream&, const GapLength&);
 
-} // namespace WebCore
+} // namespace CyberCore

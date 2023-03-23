@@ -36,7 +36,7 @@
 #include <wtf/NeverDestroyed.h>
 
 
-namespace WebCore {
+namespace CyberCore {
 using namespace Inspector;
 
 static Lock proxiesLock;
@@ -156,4 +156,4 @@ void WorkerInspectorProxy::sendMessageFromWorkerToFrontend(String&& message)
     m_pageChannel->sendMessageFromWorkerToFrontend(*this, WTFMove(message));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

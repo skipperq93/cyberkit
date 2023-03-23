@@ -31,7 +31,7 @@
 #include "MathMLOperatorElement.h"
 #include "RenderMathMLOperator.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderMathMLFencedOperator final : public RenderMathMLOperator {
     WTF_MAKE_ISO_ALLOCATED(RenderMathMLFencedOperator);
@@ -64,7 +64,7 @@ private:
     unsigned short m_operatorFlags;
 };
 
-}; // namespace WebCore
+}; // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderMathMLFencedOperator, isRenderMathMLFencedOperator())
 

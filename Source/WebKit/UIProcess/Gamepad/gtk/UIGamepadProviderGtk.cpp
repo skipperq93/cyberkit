@@ -36,7 +36,7 @@
 
 namespace WebKit {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 static WebPageProxy* getWebPageProxy(GtkWidget* widget)
 {
@@ -72,7 +72,7 @@ WebPageProxy* UIGamepadProvider::platformWebPageProxyForGamepadInput()
 {
     GUniquePtr<GList> toplevels(gtk_window_list_toplevels());
     for (GList* iter = toplevels.get(); iter; iter = g_list_next(iter)) {
-        if (!WebCore::widgetIsOnscreenToplevelWindow(GTK_WIDGET(iter->data)))
+        if (!CyberCore::widgetIsOnscreenToplevelWindow(GTK_WIDGET(iter->data)))
             continue;
 
 #if USE(GTK4)

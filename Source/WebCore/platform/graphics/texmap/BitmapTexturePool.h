@@ -31,7 +31,7 @@
 #include "TextureMapperContextAttributes.h"
 #include <wtf/RunLoop.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class IntSize;
 
@@ -70,6 +70,6 @@ private:
     RunLoop::Timer m_releaseUnusedTexturesTimer;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // BitmapTexturePool_h

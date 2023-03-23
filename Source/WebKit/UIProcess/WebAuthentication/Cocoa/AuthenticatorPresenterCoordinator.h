@@ -52,15 +52,15 @@ class AuthenticatorPresenterCoordinator : public CanMakeWeakPtr<AuthenticatorPre
     WTF_MAKE_FAST_ALLOCATED;
     WTF_MAKE_NONCOPYABLE(AuthenticatorPresenterCoordinator);
 public:
-    using TransportSet = HashSet<WebCore::AuthenticatorTransport, WTF::IntHash<WebCore::AuthenticatorTransport>, WTF::StrongEnumHashTraits<WebCore::AuthenticatorTransport>>;
+    using TransportSet = HashSet<CyberCore::AuthenticatorTransport, WTF::IntHash<CyberCore::AuthenticatorTransport>, WTF::StrongEnumHashTraits<CyberCore::AuthenticatorTransport>>;
     using CredentialRequestHandler = Function<void(ASCAppleIDCredential *, NSError *)>;
 
-    AuthenticatorPresenterCoordinator(const AuthenticatorManager&, const String& rpId, const TransportSet&, WebCore::ClientDataType, const String& username);
+    AuthenticatorPresenterCoordinator(const AuthenticatorManager&, const String& rpId, const TransportSet&, CyberCore::ClientDataType, const String& username);
     ~AuthenticatorPresenterCoordinator();
 
     void updatePresenter(WebAuthenticationStatus);
     void requestPin(uint64_t retries, CompletionHandler<void(const String&)>&&);
-    void selectAssertionResponse(Vector<Ref<WebCore::AuthenticatorAssertionResponse>>&&, WebAuthenticationSource, CompletionHandler<void(WebCore::AuthenticatorAssertionResponse*)>&&);
+    void selectAssertionResponse(Vector<Ref<CyberCore::AuthenticatorAssertionResponse>>&&, WebAuthenticationSource, CompletionHandler<void(CyberCore::AuthenticatorAssertionResponse*)>&&);
     void requestLAContextForUserVerification(CompletionHandler<void(LAContext *)>&&);
     void dimissPresenter(WebAuthenticationResult);
 
@@ -84,8 +84,8 @@ private:
     CompletionHandler<void(LAContext *)> m_laContextHandler;
     RetainPtr<LAContext> m_laContext;
 
-    CompletionHandler<void(WebCore::AuthenticatorAssertionResponse*)> m_responseHandler;
-    HashMap<String, RefPtr<WebCore::AuthenticatorAssertionResponse>> m_credentials;
+    CompletionHandler<void(CyberCore::AuthenticatorAssertionResponse*)> m_responseHandler;
+    HashMap<String, RefPtr<CyberCore::AuthenticatorAssertionResponse>> m_credentials;
 
     CompletionHandler<void(const String&)> m_pinHandler;
 #if HAVE(ASC_AUTH_UI)

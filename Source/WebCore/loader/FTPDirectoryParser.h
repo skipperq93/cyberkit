@@ -83,7 +83,7 @@
 #define SUPPORT_OS2  /* Support for IBM TCP/IP for OS/2 - FTP Server */
 #define SUPPORT_W16  /* Support for win16 hosts: SuperTCP or NetManage Chameleon */
 
-namespace WebCore {
+namespace CyberCore {
 
 typedef struct tm FTPTime;
 
@@ -151,4 +151,4 @@ struct ListResult
 
 FTPEntryType parseOneFTPLine(const char* inputLine, ListState&, ListResult&);
                  
-} // namespace WebCore
+} // namespace CyberCore

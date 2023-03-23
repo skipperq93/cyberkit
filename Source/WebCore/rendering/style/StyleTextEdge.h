@@ -27,7 +27,7 @@
 
 #include "RenderStyleConstants.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct TextEdge {
     TextEdgeType over { TextEdgeType::Leading };
@@ -41,4 +41,4 @@ inline bool operator==(const TextEdge& a, const TextEdge& b)
 
 inline bool operator!=(const TextEdge& a, const TextEdge& b) { return !(a == b); }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -67,42 +67,42 @@ std::unique_ptr<DrawingAreaProxy> PageClientImpl::createDrawingAreaProxy(WebProc
     return makeUnique<DrawingAreaProxyCoordinatedGraphics>(m_view.page());
 }
 
-void PageClientImpl::setViewNeedsDisplay(const WebCore::Region&)
+void PageClientImpl::setViewNeedsDisplay(const CyberCore::Region&)
 {
 }
 
-void PageClientImpl::requestScroll(const WebCore::FloatPoint&, const WebCore::IntPoint&, WebCore::ScrollIsAnimated)
+void PageClientImpl::requestScroll(const CyberCore::FloatPoint&, const CyberCore::IntPoint&, CyberCore::ScrollIsAnimated)
 {
 }
 
-WebCore::FloatPoint PageClientImpl::viewScrollPosition()
+CyberCore::FloatPoint PageClientImpl::viewScrollPosition()
 {
     return { };
 }
 
-WebCore::IntSize PageClientImpl::viewSize()
+CyberCore::IntSize PageClientImpl::viewSize()
 {
     return m_view.size();
 }
 
 bool PageClientImpl::isViewWindowActive()
 {
-    return m_view.viewState().contains(WebCore::ActivityState::WindowIsActive);
+    return m_view.viewState().contains(CyberCore::ActivityState::WindowIsActive);
 }
 
 bool PageClientImpl::isViewFocused()
 {
-    return m_view.viewState().contains(WebCore::ActivityState::IsFocused);
+    return m_view.viewState().contains(CyberCore::ActivityState::IsFocused);
 }
 
 bool PageClientImpl::isViewVisible()
 {
-    return m_view.viewState().contains(WebCore::ActivityState::IsVisible);
+    return m_view.viewState().contains(CyberCore::ActivityState::IsVisible);
 }
 
 bool PageClientImpl::isViewInWindow()
 {
-    return m_view.viewState().contains(WebCore::ActivityState::IsInWindow);
+    return m_view.viewState().contains(CyberCore::ActivityState::IsInWindow);
 }
 
 void PageClientImpl::processDidExit()
@@ -129,11 +129,11 @@ void PageClientImpl::didCommitLoadForMainFrame(const String&, bool)
 {
 }
 
-void PageClientImpl::didChangeContentSize(const WebCore::IntSize&)
+void PageClientImpl::didChangeContentSize(const CyberCore::IntSize&)
 {
 }
 
-void PageClientImpl::setCursor(const WebCore::Cursor&)
+void PageClientImpl::setCursor(const CyberCore::Cursor&)
 {
 }
 
@@ -141,7 +141,7 @@ void PageClientImpl::setCursorHiddenUntilMouseMoves(bool)
 {
 }
 
-void PageClientImpl::didChangeViewportProperties(const WebCore::ViewportAttributes&)
+void PageClientImpl::didChangeViewportProperties(const CyberCore::ViewportAttributes&)
 {
 }
 
@@ -162,32 +162,32 @@ void PageClientImpl::executeUndoRedo(UndoOrRedo)
 {
 }
 
-WebCore::FloatRect PageClientImpl::convertToDeviceSpace(const WebCore::FloatRect& rect)
+CyberCore::FloatRect PageClientImpl::convertToDeviceSpace(const CyberCore::FloatRect& rect)
 {
     return rect;
 }
 
-WebCore::FloatRect PageClientImpl::convertToUserSpace(const WebCore::FloatRect& rect)
+CyberCore::FloatRect PageClientImpl::convertToUserSpace(const CyberCore::FloatRect& rect)
 {
     return rect;
 }
 
-WebCore::IntPoint PageClientImpl::screenToRootView(const WebCore::IntPoint& point)
+CyberCore::IntPoint PageClientImpl::screenToRootView(const CyberCore::IntPoint& point)
 {
     return point;
 }
 
-WebCore::IntRect PageClientImpl::rootViewToScreen(const WebCore::IntRect& rect)
+CyberCore::IntRect PageClientImpl::rootViewToScreen(const CyberCore::IntRect& rect)
 {
     return rect;
 }
 
-WebCore::IntPoint PageClientImpl::accessibilityScreenToRootView(const WebCore::IntPoint& point)
+CyberCore::IntPoint PageClientImpl::accessibilityScreenToRootView(const CyberCore::IntPoint& point)
 {
     return screenToRootView(point);
 }
 
-WebCore::IntRect PageClientImpl::rootViewToAccessibilityScreen(const WebCore::IntRect& rect)
+CyberCore::IntRect PageClientImpl::rootViewToAccessibilityScreen(const CyberCore::IntRect& rect)
 {
     return rootViewToScreen(rect);    
 }
@@ -248,7 +248,7 @@ void PageClientImpl::doneWithTouchEvent(const NativeWebTouchEvent& touchEvent, b
 }
 #endif
 
-void PageClientImpl::wheelEventWasNotHandledByWebCore(const NativeWebWheelEvent&)
+void PageClientImpl::wheelEventWasNotHandledByCyberCore(const NativeWebWheelEvent&)
 {
 }
 
@@ -343,9 +343,9 @@ void PageClientImpl::didRestoreScrollPosition()
 {
 }
 
-WebCore::UserInterfaceLayoutDirection PageClientImpl::userInterfaceLayoutDirection()
+CyberCore::UserInterfaceLayoutDirection PageClientImpl::userInterfaceLayoutDirection()
 {
-    return WebCore::UserInterfaceLayoutDirection::LTR;
+    return CyberCore::UserInterfaceLayoutDirection::LTR;
 }
 
 #if ENABLE(FULLSCREEN_API)
@@ -391,21 +391,21 @@ void PageClientImpl::exitFullScreen()
     }
 }
 
-void PageClientImpl::beganEnterFullScreen(const WebCore::IntRect& /* initialFrame */, const WebCore::IntRect& /* finalFrame */)
+void PageClientImpl::beganEnterFullScreen(const CyberCore::IntRect& /* initialFrame */, const CyberCore::IntRect& /* finalFrame */)
 {
     notImplemented();
 }
 
-void PageClientImpl::beganExitFullScreen(const WebCore::IntRect& /* initialFrame */, const WebCore::IntRect& /* finalFrame */)
+void PageClientImpl::beganExitFullScreen(const CyberCore::IntRect& /* initialFrame */, const CyberCore::IntRect& /* finalFrame */)
 {
     notImplemented();
 }
 
 #endif // ENABLE(FULLSCREEN_API)
 
-void PageClientImpl::requestDOMPasteAccess(WebCore::DOMPasteAccessCategory, const WebCore::IntRect&, const String&, CompletionHandler<void(WebCore::DOMPasteAccessResponse)>&& completionHandler)
+void PageClientImpl::requestDOMPasteAccess(CyberCore::DOMPasteAccessCategory, const CyberCore::IntRect&, const String&, CompletionHandler<void(CyberCore::DOMPasteAccessResponse)>&& completionHandler)
 {
-    completionHandler(WebCore::DOMPasteAccessResponse::DeniedForGesture);
+    completionHandler(CyberCore::DOMPasteAccessResponse::DeniedForGesture);
 }
 
 #if ENABLE(ACCESSIBILITY)

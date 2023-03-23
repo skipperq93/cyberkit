@@ -37,11 +37,11 @@ template<> inline constexpr AudioFormatFlags formatFlag<double> = kAudioFormatFl
 template<> inline constexpr AudioFormatFlags formatFlag<int32_t> = kAudioFormatFlagIsSignedInteger;
 template<> inline constexpr AudioFormatFlags formatFlag<int16_t> = kAudioFormatFlagIsSignedInteger;
 
-template<typename T> inline constexpr WebCore::AudioStreamDescription::PCMFormat pcmFormat = WebCore::AudioStreamDescription::None;
-template<> inline constexpr WebCore::AudioStreamDescription::PCMFormat pcmFormat<float> = WebCore::AudioStreamDescription::Float32;
-template<> inline constexpr WebCore::AudioStreamDescription::PCMFormat pcmFormat<double> = WebCore::AudioStreamDescription::Float64;
-template<> inline constexpr WebCore::AudioStreamDescription::PCMFormat pcmFormat<int16_t> = WebCore::AudioStreamDescription::Int16;
-template<> inline constexpr WebCore::AudioStreamDescription::PCMFormat pcmFormat<int32_t> = WebCore::AudioStreamDescription::Int32;
+template<typename T> inline constexpr CyberCore::AudioStreamDescription::PCMFormat pcmFormat = CyberCore::AudioStreamDescription::None;
+template<> inline constexpr CyberCore::AudioStreamDescription::PCMFormat pcmFormat<float> = CyberCore::AudioStreamDescription::Float32;
+template<> inline constexpr CyberCore::AudioStreamDescription::PCMFormat pcmFormat<double> = CyberCore::AudioStreamDescription::Float64;
+template<> inline constexpr CyberCore::AudioStreamDescription::PCMFormat pcmFormat<int16_t> = CyberCore::AudioStreamDescription::Int16;
+template<> inline constexpr CyberCore::AudioStreamDescription::PCMFormat pcmFormat<int32_t> = CyberCore::AudioStreamDescription::Int32;
 
 template<typename T> AudioStreamBasicDescription createASBD(uint32_t numChannels = 1)
 {
@@ -75,7 +75,7 @@ TYPED_TEST_SUITE_P(EachSampleTypeTest);
 
 TYPED_TEST_P(EachSampleTypeTest, CreateWorks)
 {
-    WebCore::CAAudioStreamDescription d = createASBD<TypeParam>();
+    CyberCore::CAAudioStreamDescription d = createASBD<TypeParam>();
     EXPECT_EQ(d.format(), pcmFormat<TypeParam>);
 }
 
@@ -84,8 +84,8 @@ TYPED_TEST_P(EachSampleTypeTest, FormatFailsBytesPerFrame)
     for (auto increment : failPropertyIncrements) {
         auto asbd = createASBD<TypeParam>();
         asbd.mBytesPerFrame += increment;
-        WebCore::CAAudioStreamDescription d = asbd;
-        EXPECT_EQ(d.format(), WebCore::AudioStreamDescription::None) << increment;
+        CyberCore::CAAudioStreamDescription d = asbd;
+        EXPECT_EQ(d.format(), CyberCore::AudioStreamDescription::None) << increment;
     }
 }
 
@@ -94,8 +94,8 @@ TYPED_TEST_P(EachSampleTypeTest, FormatFailsBitsPerChannel)
     for (auto increment : failPropertyIncrements) {
         auto asbd = createASBD<TypeParam>();
         asbd.mBitsPerChannel += increment;
-        WebCore::CAAudioStreamDescription d = asbd;
-        EXPECT_EQ(d.format(), WebCore::AudioStreamDescription::None) << increment;
+        CyberCore::CAAudioStreamDescription d = asbd;
+        EXPECT_EQ(d.format(), CyberCore::AudioStreamDescription::None) << increment;
     }
 }
 
@@ -104,8 +104,8 @@ TYPED_TEST_P(EachSampleTypeTest, FormatFailsChannelsPerFrame)
     for (auto increment : failPropertyIncrements) {
         auto asbd = createASBD<TypeParam>();
         asbd.mChannelsPerFrame += increment;
-        WebCore::CAAudioStreamDescription d = asbd;
-        EXPECT_EQ(d.format(), WebCore::AudioStreamDescription::None) << increment;
+        CyberCore::CAAudioStreamDescription d = asbd;
+        EXPECT_EQ(d.format(), CyberCore::AudioStreamDescription::None) << increment;
     }
 }
 

@@ -30,7 +30,7 @@
 #include <wtf/Forward.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class TrackPrivateBaseClient : public CanMakeWeakPtr<TrackPrivateBaseClient> {
 public:

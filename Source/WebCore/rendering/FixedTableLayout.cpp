@@ -68,7 +68,7 @@
   overflow content.
 */
 
-namespace WebCore {
+namespace CyberCore {
 
 FixedTableLayout::FixedTableLayout(RenderTable* table)
     : TableLayout(table)
@@ -310,4 +310,4 @@ void FixedTableLayout::layout()
         m_table->setColumnPosition(colPositionsSize - 1, LayoutUnit(pos));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

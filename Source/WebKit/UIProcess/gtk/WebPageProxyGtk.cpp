@@ -80,12 +80,12 @@ bool WebPageProxy::makeGLContextCurrent()
     return webkitWebViewBaseMakeGLContextCurrent(WEBKIT_WEB_VIEW_BASE(viewWidget()));
 }
 
-void WebPageProxy::showEmojiPicker(const WebCore::IntRect& caretRect, CompletionHandler<void(String)>&& completionHandler)
+void WebPageProxy::showEmojiPicker(const CyberCore::IntRect& caretRect, CompletionHandler<void(String)>&& completionHandler)
 {
     webkitWebViewBaseShowEmojiChooser(WEBKIT_WEB_VIEW_BASE(viewWidget()), caretRect, WTFMove(completionHandler));
 }
 
-void WebPageProxy::showValidationMessage(const WebCore::IntRect& anchorClientRect, const String& message)
+void WebPageProxy::showValidationMessage(const CyberCore::IntRect& anchorClientRect, const String& message)
 {
     m_validationBubble = pageClient().createValidationBubble(message, { m_preferences->minimumFontSize() });
     m_validationBubble->showRelativeTo(anchorClientRect);
@@ -111,7 +111,7 @@ void WebPageProxy::accentColorDidChange()
     if (!hasRunningProcess())
         return;
 
-    WebCore::Color accentColor = pageClient().accentColor();
+    CyberCore::Color accentColor = pageClient().accentColor();
 
     send(Messages::WebPage::SetAccentColor(accentColor));
 }

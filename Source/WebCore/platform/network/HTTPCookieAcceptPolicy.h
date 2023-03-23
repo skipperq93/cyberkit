@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class HTTPCookieAcceptPolicy : uint8_t {
     AlwaysAccept = 0,

@@ -35,32 +35,32 @@
 #import <wtf/GetPtr.h>
 #import <wtf/URL.h>
 
-#define IMPL static_cast<WebCore::HTMLHtmlElement*>(reinterpret_cast<WebCore::Node*>(_internal))
+#define IMPL static_cast<CyberCore::HTMLHtmlElement*>(reinterpret_cast<CyberCore::Node*>(_internal))
 
 @implementation DOMHTMLHtmlElement
 
 - (NSString *)version
 {
-    WebCore::JSMainThreadNullState state;
-    return IMPL->getAttribute(WebCore::HTMLNames::versionAttr);
+    CyberCore::JSMainThreadNullState state;
+    return IMPL->getAttribute(CyberCore::HTMLNames::versionAttr);
 }
 
 - (void)setVersion:(NSString *)newVersion
 {
-    WebCore::JSMainThreadNullState state;
-    IMPL->setAttributeWithoutSynchronization(WebCore::HTMLNames::versionAttr, newVersion);
+    CyberCore::JSMainThreadNullState state;
+    IMPL->setAttributeWithoutSynchronization(CyberCore::HTMLNames::versionAttr, newVersion);
 }
 
 - (NSString *)manifest
 {
-    WebCore::JSMainThreadNullState state;
-    return IMPL->getURLAttribute(WebCore::HTMLNames::manifestAttr).string();
+    CyberCore::JSMainThreadNullState state;
+    return IMPL->getURLAttribute(CyberCore::HTMLNames::manifestAttr).string();
 }
 
 - (void)setManifest:(NSString *)newManifest
 {
-    WebCore::JSMainThreadNullState state;
-    IMPL->setAttributeWithoutSynchronization(WebCore::HTMLNames::manifestAttr, newManifest);
+    CyberCore::JSMainThreadNullState state;
+    IMPL->setAttributeWithoutSynchronization(CyberCore::HTMLNames::manifestAttr, newManifest);
 }
 
 @end

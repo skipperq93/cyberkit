@@ -1171,8 +1171,8 @@ msgid "Enable Timeline profiling"
 msgstr "Įjungti chronologinį profiliavimą"
 
 #: ../../../WebKit/gtk/webkit/webkitwebinspector.cpp:321
-msgid "Profile the WebCore instrumentation."
-msgstr "Profiliuoti „WebCore“ instrumentuotę."
+msgid "Profile the CyberCore instrumentation."
+msgstr "Profiliuoti „CyberCore“ instrumentuotę."
 
 #: ../../../WebKit/gtk/webkit/webkitwebnavigationaction.cpp:148
 msgid "Reason"

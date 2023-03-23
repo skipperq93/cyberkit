@@ -34,8 +34,8 @@
 #include <variant>
 #include <wtf/glib/GRefPtr.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 bool WebEditorClient::handleGtkEditorCommand(Frame& frame, const String& command, bool allowTextInsertion)
 {

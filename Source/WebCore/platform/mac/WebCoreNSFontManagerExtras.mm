@@ -24,7 +24,7 @@
  */
 
 #import "config.h"
-#import "WebCoreNSFontManagerExtras.h"
+#import "CyberCoreNSFontManagerExtras.h"
 
 #if PLATFORM(MAC)
 
@@ -33,7 +33,7 @@
 #import "LayoutUnit.h"
 #import <AppKit/NSFontManager.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static NSFont *firstFontConversionSpecimen(NSFontManager *fontManager)
 {
@@ -56,8 +56,8 @@ static FontChanges computedFontChanges(NSFontManager *fontManager, NSFont *origi
     // to do we instead pass two "specimen" fonts to it and let it change them. We then deduce
     // what style change it was doing by looking at what happened to each of the two fonts.
     // So if it was making the text bold, both fonts will be bold after the fact.
-    // This logic was originally from WebHTMLView, and is now in WebCore so that it is shared
-    // between WebKitLegacy and WebKit.
+    // This logic was originally from WebHTMLView, and is now in CyberCore so that it is shared
+    // between CyberKitLegacy and WebKit.
     const double minimumBoldWeight = 7.;
 
     NSString *convertedFamilyNameA = convertedFontA.familyName;
@@ -163,6 +163,6 @@ FontAttributeChanges computedFontAttributeChanges(NSFontManager *fontManager, id
     return changes;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(MAC)

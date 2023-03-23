@@ -30,7 +30,7 @@
 #include <wtf/SortedArrayMap.h>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 FilterFunction::FilterFunction(Type filterType)
     : m_filterType(filterType)
@@ -76,4 +76,4 @@ TextStream& operator<<(TextStream& ts, const FilterFunction& filterFunction)
     return filterFunction.externalRepresentation(ts, FilterRepresentation::Debugging);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

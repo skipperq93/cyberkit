@@ -80,7 +80,7 @@ void WebGeolocationManagerProxy::processPoolDestroyed()
 
 void WebGeolocationManagerProxy::webProcessIsGoingAway(WebProcessProxy& proxy)
 {
-    Vector<WebCore::RegistrableDomain> affectedDomains;
+    Vector<CyberCore::RegistrableDomain> affectedDomains;
     for (auto& [registrableDomain, perDomainData] : m_perDomainData) {
         if (perDomainData->watchers.contains(proxy))
             affectedDomains.append(registrableDomain);
@@ -127,12 +127,12 @@ void WebGeolocationManagerProxy::resetPermissions()
 }
 #endif
 
-void WebGeolocationManagerProxy::startUpdating(IPC::Connection& connection, const WebCore::RegistrableDomain& registrableDomain, WebPageProxyIdentifier pageProxyID, const String& authorizationToken, bool enableHighAccuracy)
+void WebGeolocationManagerProxy::startUpdating(IPC::Connection& connection, const CyberCore::RegistrableDomain& registrableDomain, WebPageProxyIdentifier pageProxyID, const String& authorizationToken, bool enableHighAccuracy)
 {
     startUpdatingWithProxy(connectionToWebProcessProxy(connection), registrableDomain, pageProxyID, authorizationToken, enableHighAccuracy);
 }
 
-void WebGeolocationManagerProxy::startUpdatingWithProxy(WebProcessProxy& proxy, const WebCore::RegistrableDomain& registrableDomain, WebPageProxyIdentifier pageProxyID, const String& authorizationToken, bool enableHighAccuracy)
+void WebGeolocationManagerProxy::startUpdatingWithProxy(WebProcessProxy& proxy, const CyberCore::RegistrableDomain& registrableDomain, WebPageProxyIdentifier pageProxyID, const String& authorizationToken, bool enableHighAccuracy)
 {
     auto page = WebProcessProxy::webPage(pageProxyID);
     MESSAGE_CHECK(proxy.connection(), !!page);
@@ -162,12 +162,12 @@ void WebGeolocationManagerProxy::startUpdatingWithProxy(WebProcessProxy& proxy, 
         proxy.send(Messages::WebGeolocationManager::DidChangePosition(registrableDomain, perDomainData.lastPosition.value()), 0);
 }
 
-void WebGeolocationManagerProxy::stopUpdating(IPC::Connection& connection, const WebCore::RegistrableDomain& registrableDomain)
+void WebGeolocationManagerProxy::stopUpdating(IPC::Connection& connection, const CyberCore::RegistrableDomain& registrableDomain)
 {
     stopUpdatingWithProxy(connectionToWebProcessProxy(connection), registrableDomain);
 }
 
-void WebGeolocationManagerProxy::stopUpdatingWithProxy(WebProcessProxy& proxy, const WebCore::RegistrableDomain& registrableDomain)
+void WebGeolocationManagerProxy::stopUpdatingWithProxy(WebProcessProxy& proxy, const CyberCore::RegistrableDomain& registrableDomain)
 {
     auto it = m_perDomainData.find(registrableDomain);
     if (it == m_perDomainData.end())
@@ -192,12 +192,12 @@ void WebGeolocationManagerProxy::stopUpdatingWithProxy(WebProcessProxy& proxy, c
         m_perDomainData.remove(it);
 }
 
-void WebGeolocationManagerProxy::setEnableHighAccuracy(IPC::Connection& connection, const WebCore::RegistrableDomain& registrableDomain, bool enabled)
+void WebGeolocationManagerProxy::setEnableHighAccuracy(IPC::Connection& connection, const CyberCore::RegistrableDomain& registrableDomain, bool enabled)
 {
     setEnableHighAccuracyWithProxy(connectionToWebProcessProxy(connection), registrableDomain, enabled);
 }
 
-void WebGeolocationManagerProxy::setEnableHighAccuracyWithProxy(WebProcessProxy& proxy, const WebCore::RegistrableDomain& registrableDomain, bool enabled)
+void WebGeolocationManagerProxy::setEnableHighAccuracyWithProxy(WebProcessProxy& proxy, const CyberCore::RegistrableDomain& registrableDomain, bool enabled)
 {
     auto it = m_perDomainData.find(registrableDomain);
     ASSERT(it != m_perDomainData.end());
@@ -249,12 +249,12 @@ bool WebGeolocationManagerProxy::isHighAccuracyEnabled(const PerDomainData& perD
     return false;
 }
 
-void WebGeolocationManagerProxy::providerStartUpdating(PerDomainData& perDomainData, const WebCore::RegistrableDomain& registrableDomain)
+void WebGeolocationManagerProxy::providerStartUpdating(PerDomainData& perDomainData, const CyberCore::RegistrableDomain& registrableDomain)
 {
 #if PLATFORM(IOS_FAMILY)
     if (!m_clientProvider) {
         ASSERT(!perDomainData.provider);
-        perDomainData.provider = makeUnique<WebCore::CoreLocationGeolocationProvider>(registrableDomain, *this);
+        perDomainData.provider = makeUnique<CyberCore::CoreLocationGeolocationProvider>(registrableDomain, *this);
         perDomainData.provider->setEnableHighAccuracy(!perDomainData.watchersNeedingHighAccuracy.isEmptyIgnoringNullReferences());
         return;
     }

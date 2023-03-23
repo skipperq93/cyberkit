@@ -37,7 +37,7 @@ namespace PAL {
 class HysteresisActivity;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class HTMLImageElement;
@@ -95,6 +95,6 @@ inline bool ImageAnalysisQueue::firstIsHigherPriority(const Task& first, const T
     return first.taskNumber < second.taskNumber;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(IMAGE_ANALYSIS)

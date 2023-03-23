@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -17,16 +17,16 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitDOMHTMLAnchorElementPrivate_h
-#define WebKitDOMHTMLAnchorElementPrivate_h
+#ifndef CyberKitDOMHTMLAnchorElementPrivate_h
+#define CyberKitDOMHTMLAnchorElementPrivate_h
 
 #include <CyberCore/HTMLAnchorElement.h>
-#include <webkitdom/WebKitDOMHTMLAnchorElement.h>
+#include <webkitdom/CyberKitDOMHTMLAnchorElement.h>
 
-namespace WebKit {
-WebKitDOMHTMLAnchorElement* wrapHTMLAnchorElement(WebCore::HTMLAnchorElement*);
-WebKitDOMHTMLAnchorElement* kit(WebCore::HTMLAnchorElement*);
-WebCore::HTMLAnchorElement* core(WebKitDOMHTMLAnchorElement*);
-} // namespace WebKit
+namespace CyberKit {
+CyberKitDOMHTMLAnchorElement* wrapHTMLAnchorElement(CyberCore::HTMLAnchorElement*);
+CyberKitDOMHTMLAnchorElement* kit(CyberCore::HTMLAnchorElement*);
+CyberCore::HTMLAnchorElement* core(CyberKitDOMHTMLAnchorElement*);
+} // namespace CyberKit
 
-#endif /* WebKitDOMHTMLAnchorElementPrivate_h */
+#endif /* CyberKitDOMHTMLAnchorElementPrivate_h */

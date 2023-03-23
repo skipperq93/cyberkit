@@ -74,7 +74,7 @@ VPATH = \
     $(WebKit2)/WebProcess/Storage \
     $(WebKit2)/WebProcess/UserContent \
     $(WebKit2)/WebProcess/WebAuthentication \
-    $(WebKit2)/WebProcess/WebCoreSupport \
+    $(WebKit2)/WebProcess/CyberCoreSupport \
     $(WebKit2)/WebProcess/WebPage \
     $(WebKit2)/WebProcess/WebPage/Cocoa \
     $(WebKit2)/WebProcess/WebPage/RemoteLayerTree \
@@ -229,13 +229,13 @@ MESSAGE_RECEIVERS = \
 	WebProcess/Network/webrtc/WebRTCMonitor \
 	WebProcess/Network/webrtc/WebMDNSRegister \
 	WebProcess/Network/webrtc/WebRTCResolver \
-	WebProcess/WebCoreSupport/RemoteWebLockRegistry \
-	WebProcess/WebCoreSupport/WebBroadcastChannelRegistry \
-	WebProcess/WebCoreSupport/WebDeviceOrientationUpdateProvider \
-	WebProcess/WebCoreSupport/WebFileSystemStorageConnection \
-	WebProcess/WebCoreSupport/WebPermissionController \
-	WebProcess/WebCoreSupport/WebScreenOrientationManager \
-	WebProcess/WebCoreSupport/WebSpeechRecognitionConnection \
+	WebProcess/CyberCoreSupport/RemoteWebLockRegistry \
+	WebProcess/CyberCoreSupport/WebBroadcastChannelRegistry \
+	WebProcess/CyberCoreSupport/WebDeviceOrientationUpdateProvider \
+	WebProcess/CyberCoreSupport/WebFileSystemStorageConnection \
+	WebProcess/CyberCoreSupport/WebPermissionController \
+	WebProcess/CyberCoreSupport/WebScreenOrientationManager \
+	WebProcess/CyberCoreSupport/WebSpeechRecognitionConnection \
 	WebProcess/Speech/SpeechRecognitionRealtimeMediaSourceManager \
 	WebProcess/Storage/WebSharedWorkerContextManagerConnection \
 	WebProcess/Storage/WebSharedWorkerObjectConnection \
@@ -475,7 +475,7 @@ SERIALIZATION_DESCRIPTION_FILES = \
 	Shared/Cocoa/CacheStoragePolicy.serialization.in \
 	Shared/Cocoa/DataDetectionResult.serialization.in \
 	Shared/Cocoa/RevealItem.serialization.in \
-	Shared/Cocoa/WebCoreArgumentCodersCocoa.serialization.in \
+	Shared/Cocoa/CyberCoreArgumentCodersCocoa.serialization.in \
 	Shared/CallbackID.serialization.in \
 	Shared/EditorState.serialization.in \
 	Shared/Extensions/WebExtensionEventListenerType.serialization.in \
@@ -501,7 +501,7 @@ SERIALIZATION_DESCRIPTION_FILES = \
 	Shared/TextRecognitionResult.serialization.in \
 	Shared/TouchBarMenuItemData.serialization.in \
 	Shared/WTFArgumentCoders.serialization.in \
-	Shared/WebCoreArgumentCoders.serialization.in \
+	Shared/CyberCoreArgumentCoders.serialization.in \
 	Shared/WebExtensionContextParameters.serialization.in \
 	Shared/WebEvent.serialization.in \
 	Shared/WebExtensionControllerParameters.serialization.in \
@@ -608,9 +608,9 @@ EXTENSIONS_INTERFACES_DIR = $(EXTENSIONS_DIR)/Interfaces
 IDL_ATTRIBUTES_FILE = $(EXTENSIONS_SCRIPTS_DIR)/IDLAttributes.json
 
 BINDINGS_SCRIPTS = \
-    $(WebCorePrivateHeaders)/generate-bindings.pl \
-    $(WebCorePrivateHeaders)/IDLParser.pm \
-    $(WebCorePrivateHeaders)/CodeGenerator.pm \
+    $(CyberCorePrivateHeaders)/generate-bindings.pl \
+    $(CyberCorePrivateHeaders)/IDLParser.pm \
+    $(CyberCorePrivateHeaders)/CodeGenerator.pm \
     $(EXTENSIONS_SCRIPTS_DIR)/CodeGeneratorExtensions.pm \
 #
 
@@ -627,6 +627,6 @@ EXTENSION_INTERFACES = \
 
 JS%.h JS%.mm : %.idl $(BINDINGS_SCRIPTS) $(IDL_ATTRIBUTES_FILE) $(FEATURE_AND_PLATFORM_DEFINE_DEPENDENCIES)
 	@echo Generating bindings for $*...
-	$(PERL) -I $(WebCorePrivateHeaders) -I $(EXTENSIONS_SCRIPTS_DIR) $(WebCorePrivateHeaders)/generate-bindings.pl --defines "$(FEATURE_AND_PLATFORM_DEFINES)" --include $(EXTENSIONS_INTERFACES_DIR) --outputDir . --generator Extensions --idlAttributesFile $(IDL_ATTRIBUTES_FILE) $<
+	$(PERL) -I $(CyberCorePrivateHeaders) -I $(EXTENSIONS_SCRIPTS_DIR) $(CyberCorePrivateHeaders)/generate-bindings.pl --defines "$(FEATURE_AND_PLATFORM_DEFINES)" --include $(EXTENSIONS_INTERFACES_DIR) --outputDir . --generator Extensions --idlAttributesFile $(IDL_ATTRIBUTES_FILE) $<
 
 all : $(EXTENSION_INTERFACES:%=JS%.h) $(EXTENSION_INTERFACES:%=JS%.mm)

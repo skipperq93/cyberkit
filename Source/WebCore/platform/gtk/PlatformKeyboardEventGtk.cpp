@@ -40,7 +40,7 @@
 #include <wtf/HexNumber.h>
 #include <wtf/glib/GUniquePtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // FIXME: This is incomplete.  We should change this to mirror
 // more like what Firefox does, and generate these switch statements

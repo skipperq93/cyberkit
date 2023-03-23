@@ -38,12 +38,12 @@ class Decoder;
 class Encoder;
 }
 
-namespace WebCore {
+namespace CyberCore {
 class VisiblePosition;
 struct AttributedString;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPage;
 
@@ -53,25 +53,25 @@ public:
     TextCheckingControllerProxy(WebPage&);
     ~TextCheckingControllerProxy();
 
-    static WebCore::AttributedString annotatedSubstringBetweenPositions(const WebCore::VisiblePosition&, const WebCore::VisiblePosition&);
+    static CyberCore::AttributedString annotatedSubstringBetweenPositions(const CyberCore::VisiblePosition&, const CyberCore::VisiblePosition&);
 
 private:
     // IPC::MessageReceiver
     void didReceiveMessage(IPC::Connection&, IPC::Decoder&) override;
 
     struct RangeAndOffset {
-        WebCore::SimpleRange range;
+        CyberCore::SimpleRange range;
         size_t locationInRoot;    
     };
     std::optional<RangeAndOffset> rangeAndOffsetRelativeToSelection(int64_t offset, uint64_t length);
 
     // Message handlers.
-    void replaceRelativeToSelection(const WebCore::AttributedString&, int64_t selectionOffset, uint64_t length, uint64_t relativeReplacementLocation, uint64_t relativeReplacementLength);
+    void replaceRelativeToSelection(const CyberCore::AttributedString&, int64_t selectionOffset, uint64_t length, uint64_t relativeReplacementLocation, uint64_t relativeReplacementLength);
     void removeAnnotationRelativeToSelection(const String& annotationName, int64_t selectionOffset, uint64_t length);
 
     WebPage& m_page;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(PLATFORM_DRIVEN_TEXT_CHECKING)

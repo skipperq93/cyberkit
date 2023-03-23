@@ -54,7 +54,7 @@ OBJC_CLASS WebAVPlayerViewController;
 OBJC_CLASS WebAVPlayerViewControllerDelegate;
 OBJC_CLASS NSError;
 
-namespace WebCore {
+namespace CyberCore {
 class FloatRect;
 class FloatSize;
 class VideoFullscreenModel;

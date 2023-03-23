@@ -34,9 +34,9 @@
 namespace WebKit {
 
 struct PolicyDecision {
-    WebCore::PolicyCheckIdentifier identifier { };
+    CyberCore::PolicyCheckIdentifier identifier { };
     std::optional<NavigatingToAppBoundDomain> isNavigatingToAppBoundDomain { std::nullopt };
-    WebCore::PolicyAction policyAction { WebCore::PolicyAction::Ignore };
+    CyberCore::PolicyAction policyAction { CyberCore::PolicyAction::Ignore };
     uint64_t navigationID { 0 };
     std::optional<DownloadID> downloadID { std::nullopt };
     std::optional<WebsitePoliciesData> websitePoliciesData { std::nullopt };

@@ -30,7 +30,7 @@
 
 #include "ControlFactory.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<ApplePayButtonPart> ApplePayButtonPart::create(ApplePayButtonType buttonType, ApplePayButtonStyle buttonStyle, const String& locale)
 {
@@ -50,6 +50,6 @@ std::unique_ptr<PlatformControl> ApplePayButtonPart::createPlatformControl()
     return controlFactory().createPlatformApplePayButton(*this);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(APPLE_PAY)

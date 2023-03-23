@@ -31,13 +31,13 @@
 #include <wtf/HashMap.h>
 #include <wtf/RefPtr.h>
 
-class WebDatabaseProvider final : public WebCore::DatabaseProvider {
+class WebDatabaseProvider final : public CyberCore::DatabaseProvider {
     friend class NeverDestroyed<WebDatabaseProvider>;
 public:
     static WebDatabaseProvider& singleton();
     virtual ~WebDatabaseProvider();
 
-    WebCore::IDBClient::IDBConnectionToServer& idbConnectionToServerForSession(PAL::SessionID) override;
+    CyberCore::IDBClient::IDBConnectionToServer& idbConnectionToServerForSession(PAL::SessionID) override;
 
     void deleteAllDatabases();
 

@@ -38,7 +38,7 @@
 #include <wtf/ThreadSafeRefCounted.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class BlobDataItem {
 public:
@@ -130,6 +130,6 @@ private:
     BlobDataItemList m_items;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // BlobData_h

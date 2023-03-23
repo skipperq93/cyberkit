@@ -81,7 +81,7 @@
 #include "WebGLRenderingContext.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 using namespace Inspector;
 
 PageConsoleClient::PageConsoleClient(Page& page)
@@ -384,7 +384,7 @@ void PageConsoleClient::screenshot(JSC::JSGlobalObject* lexicalGlobalObject, Ref
                 if (dataURL.isEmpty()) {
                     if (!snapshot) {
                         if (auto* localMainFrame = dynamicDowncast<LocalFrame>(m_page.mainFrame()))
-                            snapshot = WebCore::snapshotNode(*localMainFrame, *node, { { }, PixelFormat::BGRA8, DestinationColorSpace::SRGB() });
+                            snapshot = CyberCore::snapshotNode(*localMainFrame, *node, { { }, PixelFormat::BGRA8, DestinationColorSpace::SRGB() });
                     }
 
                     if (snapshot)
@@ -432,7 +432,7 @@ void PageConsoleClient::screenshot(JSC::JSGlobalObject* lexicalGlobalObject, Ref
             if (auto* localMainFrame = dynamicDowncast<LocalFrame>(m_page.mainFrame())) {
                 // If no target is provided, capture an image of the viewport.
                 auto viewportRect = localMainFrame->view()->unobscuredContentRect();
-                if (auto snapshot = WebCore::snapshotFrameRect(*localMainFrame, viewportRect, { { }, PixelFormat::BGRA8, DestinationColorSpace::SRGB() }))
+                if (auto snapshot = CyberCore::snapshotFrameRect(*localMainFrame, viewportRect, { { }, PixelFormat::BGRA8, DestinationColorSpace::SRGB() }))
                     dataURL = snapshot->toDataURL("image/png"_s, std::nullopt, PreserveResolution::Yes);
             }
         }
@@ -451,4 +451,4 @@ void PageConsoleClient::screenshot(JSC::JSGlobalObject* lexicalGlobalObject, Ref
     addMessage(makeUnique<Inspector::ConsoleMessage>(MessageSource::ConsoleAPI, MessageType::Image, MessageLevel::Log, dataURL, WTFMove(arguments), lexicalGlobalObject, 0, timestamp));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -33,7 +33,7 @@
 #include "SecurityOrigin.h"
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct SecurityOriginHash {
     static unsigned hash(SecurityOrigin* origin)
@@ -67,11 +67,11 @@ struct SecurityOriginHash {
     static const bool safeToCompareToEmptyOrDeleted = false;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
 template<typename> struct DefaultHash;
-template<> struct DefaultHash<RefPtr<WebCore::SecurityOrigin>> : WebCore::SecurityOriginHash { };
+template<> struct DefaultHash<RefPtr<CyberCore::SecurityOrigin>> : CyberCore::SecurityOriginHash { };
 
 } // namespace WTF

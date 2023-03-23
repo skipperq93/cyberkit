@@ -41,7 +41,7 @@
 #import "JSValueInternal.h"
 #import "JSVirtualMachineInternal.h"
 #import "JSWrapperMap.h"
-#import "JavaScriptCore.h"
+#import "CyberScriptCore.h"
 #import "ObjcRuntimeExtras.h"
 #import "StrongInlines.h"
 #import <wtf/RetainPtr.h>

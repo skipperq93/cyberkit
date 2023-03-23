@@ -30,14 +30,14 @@
 #import "WebPageProxy.h"
 #import "_WKFrameHandleInternal.h"
 #import "_WKFrameTreeNodeInternal.h"
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 #import <wtf/cocoa/VectorCocoa.h>
 
 @implementation _WKFrameTreeNode
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainRunLoop(_WKFrameTreeNode.class, self))
+    if (CyberCoreObjCScheduleDeallocateOnMainRunLoop(_WKFrameTreeNode.class, self))
         return;
     _node->API::FrameTreeNode::~FrameTreeNode();
     [super dealloc];
@@ -50,7 +50,7 @@
 
 - (NSURLRequest *)request
 {
-    return _node->request().nsURLRequest(WebCore::HTTPBodyUpdatePolicy::DoNotUpdateHTTPBody);
+    return _node->request().nsURLRequest(CyberCore::HTTPBodyUpdatePolicy::DoNotUpdateHTTPBody);
 }
 
 - (WKSecurityOrigin *)securityOrigin

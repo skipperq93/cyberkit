@@ -136,7 +136,7 @@ static void testWebKitSettings(Test*, gconstpointer)
     // Set DPI explicitly to avoid the tests failing for users that use a
     // different default DPI. This doesn't affect the system's DPI outside
     // of the tests scope, so we don't need to change it back to the original
-    // value. We can control DPI only on GTK. On WPE, WebCore defaults it to 96.
+    // value. We can control DPI only on GTK. On WPE, CyberCore defaults it to 96.
 #if PLATFORM(GTK)
     GtkSettings* gtkSettings = gtk_settings_get_default();
     if (gtkSettings)

@@ -70,7 +70,7 @@
 #include "ShadowRoot.h"
 #include <wtf/SetForScope.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 RenderLayerScrollableArea::RenderLayerScrollableArea(RenderLayer& layer)
     : m_layer(layer)
@@ -1962,4 +1962,4 @@ void RenderLayerScrollableArea::animatedScrollDidEnd()
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore

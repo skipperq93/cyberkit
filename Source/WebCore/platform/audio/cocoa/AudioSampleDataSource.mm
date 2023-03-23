@@ -41,7 +41,7 @@
 #import <pal/cf/AudioToolboxSoftLink.h>
 #import <pal/cf/CoreMediaSoftLink.h>
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 Ref<AudioSampleDataSource> AudioSampleDataSource::create(size_t maximumSampleCount, LoggerHelper& loggerHelper, size_t waitToStartForPushCount)
@@ -342,4 +342,4 @@ WTFLogChannel& AudioSampleDataSource::logChannel() const
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

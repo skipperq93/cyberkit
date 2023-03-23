@@ -39,7 +39,7 @@
 #include "GraphicsTypes.h"
 #include <cairo.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AffineTransform;
 class Color;
@@ -169,6 +169,6 @@ void clipPath(GraphicsContextCairo&, const Path&, WindRule);
 void clipToImageBuffer(GraphicsContextCairo&, cairo_surface_t*, const FloatRect&);
 
 } // namespace Cairo
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(CAIRO)

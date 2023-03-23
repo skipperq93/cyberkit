@@ -31,7 +31,7 @@
 
 @protocol DOMNodeFilter;
 
-namespace WebCore {
+namespace CyberCore {
 
 class Node;
 
@@ -53,4 +53,4 @@ private:
     RetainPtr<id <DOMNodeFilter> > m_filter;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

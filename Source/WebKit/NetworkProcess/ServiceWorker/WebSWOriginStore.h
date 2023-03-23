@@ -35,7 +35,7 @@ namespace WebKit {
 
 class WebSWServerConnection;
 
-class WebSWOriginStore final : public WebCore::SWOriginStore, private SharedStringHashStore::Client {
+class WebSWOriginStore final : public CyberCore::SWOriginStore, private SharedStringHashStore::Client {
 public:
     WebSWOriginStore();
 
@@ -46,8 +46,8 @@ public:
 private:
     void sendStoreHandle(WebSWServerConnection&);
 
-    void addToStore(const WebCore::SecurityOriginData&) final;
-    void removeFromStore(const WebCore::SecurityOriginData&) final;
+    void addToStore(const CyberCore::SecurityOriginData&) final;
+    void removeFromStore(const CyberCore::SecurityOriginData&) final;
     void clearStore() final;
 
     // SharedStringHashStore::Client.

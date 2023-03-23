@@ -26,10 +26,10 @@
 #include "config.h"
 #include "DefWndProcWindowClass.h"
 
-#include "WebCoreInstanceHandle.h"
+#include "CyberCoreInstanceHandle.h"
 #include <windows.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static const wchar_t className[] = L"DefWndProcWindowClass";
 
@@ -49,4 +49,4 @@ const wchar_t* defWndProcWindowClassName()
     return className;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -34,7 +34,7 @@
 #include "MockMediaPlayerMediaSource.h"
 #include "MockSourceBufferPrivate.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<MockMediaSourcePrivate> MockMediaSourcePrivate::create(MockMediaPlayerMediaSource& parent, MediaSourcePrivateClient& client)
 {

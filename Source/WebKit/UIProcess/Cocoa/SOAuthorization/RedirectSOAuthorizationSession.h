@@ -43,7 +43,7 @@ private:
     // SOAuthorizationSession
     void fallBackToWebPathInternal() final;
     void abortInternal() final;
-    void completeInternal(const WebCore::ResourceResponse&, NSData *) final;
+    void completeInternal(const CyberCore::ResourceResponse&, NSData *) final;
 
     // NavigationSOAuthorizationSession
     void beforeStart() final;

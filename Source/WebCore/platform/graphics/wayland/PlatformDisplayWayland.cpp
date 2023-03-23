@@ -50,7 +50,7 @@
 #endif
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 const struct wl_registry_listener PlatformDisplayWayland::s_registryListener = {
     // globalCallback
@@ -163,6 +163,6 @@ WlUniquePtr<struct wl_surface> PlatformDisplayWayland::createSurface() const
     return WlUniquePtr<struct wl_surface>(wl_compositor_create_surface(m_compositor.get()));
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(WAYLAND)

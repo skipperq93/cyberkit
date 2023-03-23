@@ -30,7 +30,7 @@
 #include "WebsiteDataType.h"
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 struct ClientOrigin;
 struct StorageEstimate;
 }
@@ -60,7 +60,7 @@ public:
     void connectionClosed(IPC::Connection::UniqueID);
     bool persisted() const { return m_persisted; }
     void setPersisted(bool value);
-    WebCore::StorageEstimate estimate();
+    CyberCore::StorageEstimate estimate();
     const String& path() const { return m_path; }
     QuotaManager& quotaManager();
     FileSystemStorageManager& fileSystemStorageManager(FileSystemStorageHandleRegistry&);
@@ -71,7 +71,7 @@ public:
     SessionStorageManager* existingSessionStorageManager();
     IDBStorageManager& idbStorageManager(IDBStorageRegistry&);
     IDBStorageManager* existingIDBStorageManager();
-    CacheStorageManager& cacheStorageManager(CacheStorageRegistry&, const WebCore::ClientOrigin&, Ref<WorkQueue>&&);
+    CacheStorageManager& cacheStorageManager(CacheStorageRegistry&, const CyberCore::ClientOrigin&, Ref<WorkQueue>&&);
     CacheStorageManager* existingCacheStorageManager();
     uint64_t cacheStorageSize();
     void closeCacheStorageManager();

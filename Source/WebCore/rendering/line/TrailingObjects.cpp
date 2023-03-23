@@ -27,7 +27,7 @@
 
 #include "LegacyInlineIterator.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 void TrailingObjects::updateWhitespaceCollapsingTransitionsForTrailingBoxes(LineWhitespaceCollapsingState& lineWhitespaceCollapsingState, const LegacyInlineIterator& lBreak, CollapseFirstSpace collapseFirstSpace)
 {

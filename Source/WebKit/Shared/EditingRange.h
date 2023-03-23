@@ -29,7 +29,7 @@
 #include <wtf/EnumTraits.h>
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 class Frame;
 struct SimpleRange;
 }
@@ -58,8 +58,8 @@ struct EditingRange {
     // (notFound, 0) is notably valid.
     bool isValid() const { return location + length >= location; }
 
-    static std::optional<WebCore::SimpleRange> toRange(WebCore::Frame&, const EditingRange&, EditingRangeIsRelativeTo = EditingRangeIsRelativeTo::EditableRoot);
-    static EditingRange fromRange(WebCore::Frame&, const std::optional<WebCore::SimpleRange>&, EditingRangeIsRelativeTo = EditingRangeIsRelativeTo::EditableRoot);
+    static std::optional<CyberCore::SimpleRange> toRange(CyberCore::Frame&, const EditingRange&, EditingRangeIsRelativeTo = EditingRangeIsRelativeTo::EditableRoot);
+    static EditingRange fromRange(CyberCore::Frame&, const std::optional<CyberCore::SimpleRange>&, EditingRangeIsRelativeTo = EditingRangeIsRelativeTo::EditableRoot);
 
 #if defined(__OBJC__)
     EditingRange(NSRange range)

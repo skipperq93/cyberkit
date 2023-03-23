@@ -30,7 +30,7 @@
 
 #include "FrameInfoData.h"
 #include "GeolocationIdentifier.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebFrame.h"
 #include "WebPage.h"
 #include "WebPageProxyMessages.h"
@@ -41,8 +41,8 @@
 #include <CyberCore/SecurityOrigin.h>
 #include <CyberCore/SecurityOriginData.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 GeolocationPermissionRequestManager::GeolocationPermissionRequestManager(WebPage& page)
     : m_page(page)
@@ -93,6 +93,6 @@ void GeolocationPermissionRequestManager::didReceiveGeolocationPermissionDecisio
     geolocation->setIsAllowed(!authorizationToken.isNull(), authorizationToken);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GEOLOCATION)

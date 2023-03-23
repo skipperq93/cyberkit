@@ -29,7 +29,7 @@
 #include "SystemInfo.h"
 #include <wtf/text/StringConcatenate.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 String standardUserAgent(const String& applicationName, const String& applicationVersion)
 {
@@ -38,4 +38,4 @@ String standardUserAgent(const String& applicationName, const String& applicatio
         applicationName.isEmpty() ? "" : " ", applicationName, version.isEmpty() ? "" : "/", version);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

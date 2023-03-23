@@ -25,7 +25,7 @@
 #include "SVGElement.h"
 #include "Timer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGStyleElement final : public SVGElement {
     WTF_MAKE_ISO_ALLOCATED(SVGStyleElement);
@@ -67,4 +67,4 @@ private:
     Timer m_loadEventTimer;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

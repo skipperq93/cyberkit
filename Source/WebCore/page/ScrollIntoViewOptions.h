@@ -22,11 +22,11 @@
 #include "ScrollLogicalPosition.h"
 #include "ScrollOptions.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ScrollIntoViewOptions : ScrollOptions {
     std::optional<ScrollLogicalPosition> blockPosition { ScrollLogicalPosition::Start };
     std::optional<ScrollLogicalPosition> inlinePosition { ScrollLogicalPosition::Nearest };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

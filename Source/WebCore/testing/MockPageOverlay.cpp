@@ -33,7 +33,7 @@
 #include "PageOverlayController.h"
 #include "PlatformMouseEvent.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<MockPageOverlay> MockPageOverlay::create(PageOverlay* overlay)
 {

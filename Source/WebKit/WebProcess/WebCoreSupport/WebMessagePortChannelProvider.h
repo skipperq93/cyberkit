@@ -29,27 +29,27 @@
 #include <CyberCore/MessagePortIdentifier.h>
 #include <CyberCore/MessageWithMessagePorts.h>
 
-namespace WebKit {
+namespace CyberKit {
 
-class WebMessagePortChannelProvider final : public WebCore::MessagePortChannelProvider {
+class WebMessagePortChannelProvider final : public CyberCore::MessagePortChannelProvider {
     WTF_MAKE_FAST_ALLOCATED;
 public:
     static WebMessagePortChannelProvider& singleton();
 
-    void messagePortSentToRemote(const WebCore::MessagePortIdentifier&);
+    void messagePortSentToRemote(const CyberCore::MessagePortIdentifier&);
 
 private:
     WebMessagePortChannelProvider();
     ~WebMessagePortChannelProvider() final;
 
-    void createNewMessagePortChannel(const WebCore::MessagePortIdentifier& local, const WebCore::MessagePortIdentifier& remote) final;
-    void entangleLocalPortInThisProcessToRemote(const WebCore::MessagePortIdentifier& local, const WebCore::MessagePortIdentifier& remote) final;
-    void messagePortDisentangled(const WebCore::MessagePortIdentifier& local) final;
-    void messagePortClosed(const WebCore::MessagePortIdentifier& local) final;
-    void takeAllMessagesForPort(const WebCore::MessagePortIdentifier&, CompletionHandler<void(Vector<WebCore::MessageWithMessagePorts>&&, CompletionHandler<void()>&&)>&&) final;
-    void postMessageToRemote(WebCore::MessageWithMessagePorts&&, const WebCore::MessagePortIdentifier& remoteTarget) final;
+    void createNewMessagePortChannel(const CyberCore::MessagePortIdentifier& local, const CyberCore::MessagePortIdentifier& remote) final;
+    void entangleLocalPortInThisProcessToRemote(const CyberCore::MessagePortIdentifier& local, const CyberCore::MessagePortIdentifier& remote) final;
+    void messagePortDisentangled(const CyberCore::MessagePortIdentifier& local) final;
+    void messagePortClosed(const CyberCore::MessagePortIdentifier& local) final;
+    void takeAllMessagesForPort(const CyberCore::MessagePortIdentifier&, CompletionHandler<void(Vector<CyberCore::MessageWithMessagePorts>&&, CompletionHandler<void()>&&)>&&) final;
+    void postMessageToRemote(CyberCore::MessageWithMessagePorts&&, const CyberCore::MessagePortIdentifier& remoteTarget) final;
 
-    HashMap<WebCore::MessagePortIdentifier, Vector<WebCore::MessageWithMessagePorts>> m_inProcessPortMessages;
+    HashMap<CyberCore::MessagePortIdentifier, Vector<CyberCore::MessageWithMessagePorts>> m_inProcessPortMessages;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

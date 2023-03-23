@@ -3106,7 +3106,7 @@
                 { "name": "requestId", "$ref": "RequestId" }
             ],
             "returns": [
-                { "name": "serializedCertificate", "type": "string", "description": "Represents a base64 encoded WebCore::CertificateInfo object." }
+                { "name": "serializedCertificate", "type": "string", "description": "Represents a base64 encoded CyberCore::CertificateInfo object." }
             ]
         },
         {

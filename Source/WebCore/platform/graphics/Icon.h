@@ -43,7 +43,7 @@ using CocoaImage = UIImage;
 typedef struct HICON__* HICON;
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class GraphicsContext;
 class FloatRect;

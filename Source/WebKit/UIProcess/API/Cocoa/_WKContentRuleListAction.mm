@@ -26,14 +26,14 @@
 #import "config.h"
 #import "_WKContentRuleListActionInternal.h"
 
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 #import <wtf/cocoa/VectorCocoa.h>
 
 @implementation _WKContentRuleListAction
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainRunLoop(_WKContentRuleListAction.class, self))
+    if (CyberCoreObjCScheduleDeallocateOnMainRunLoop(_WKContentRuleListAction.class, self))
         return;
 
     _action->~ContentRuleListAction();

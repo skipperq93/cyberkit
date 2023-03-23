@@ -35,32 +35,32 @@
 #import <wtf/GetPtr.h>
 #import <wtf/URL.h>
 
-#define IMPL static_cast<WebCore::HTMLOptGroupElement*>(reinterpret_cast<WebCore::Node*>(_internal))
+#define IMPL static_cast<CyberCore::HTMLOptGroupElement*>(reinterpret_cast<CyberCore::Node*>(_internal))
 
 @implementation DOMHTMLOptGroupElement
 
 - (BOOL)disabled
 {
-    WebCore::JSMainThreadNullState state;
-    return IMPL->hasAttributeWithoutSynchronization(WebCore::HTMLNames::disabledAttr);
+    CyberCore::JSMainThreadNullState state;
+    return IMPL->hasAttributeWithoutSynchronization(CyberCore::HTMLNames::disabledAttr);
 }
 
 - (void)setDisabled:(BOOL)newDisabled
 {
-    WebCore::JSMainThreadNullState state;
-    IMPL->setBooleanAttribute(WebCore::HTMLNames::disabledAttr, newDisabled);
+    CyberCore::JSMainThreadNullState state;
+    IMPL->setBooleanAttribute(CyberCore::HTMLNames::disabledAttr, newDisabled);
 }
 
 - (NSString *)label
 {
-    WebCore::JSMainThreadNullState state;
-    return IMPL->getAttribute(WebCore::HTMLNames::labelAttr);
+    CyberCore::JSMainThreadNullState state;
+    return IMPL->getAttribute(CyberCore::HTMLNames::labelAttr);
 }
 
 - (void)setLabel:(NSString *)newLabel
 {
-    WebCore::JSMainThreadNullState state;
-    IMPL->setAttributeWithoutSynchronization(WebCore::HTMLNames::labelAttr, newLabel);
+    CyberCore::JSMainThreadNullState state;
+    IMPL->setAttributeWithoutSynchronization(CyberCore::HTMLNames::labelAttr, newLabel);
 }
 
 @end

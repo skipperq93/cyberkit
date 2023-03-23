@@ -35,7 +35,7 @@
 OBJC_CLASS GCController;
 OBJC_CLASS NSObject;
 
-namespace WebCore {
+namespace CyberCore {
 
 class GameControllerGamepad;
 class GamepadProviderClient;
@@ -92,6 +92,6 @@ private:
     bool m_shouldMakeInvisibleGamepadsVisible { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(GAMEPAD)

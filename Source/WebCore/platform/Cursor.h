@@ -50,7 +50,7 @@ typedef struct HICON__ *HICON;
 typedef HICON HCURSOR;
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class Image;
 
@@ -228,57 +228,57 @@ inline Cursor::Type Cursor::type() const
     return m_type;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::Cursor::Type> {
+template<> struct EnumTraits<CyberCore::Cursor::Type> {
     using values = EnumValues<
-        WebCore::Cursor::Type,
-        WebCore::Cursor::Type::Pointer,
-        WebCore::Cursor::Type::Cross,
-        WebCore::Cursor::Type::Hand,
-        WebCore::Cursor::Type::IBeam,
-        WebCore::Cursor::Type::Wait,
-        WebCore::Cursor::Type::Help,
-        WebCore::Cursor::Type::EastResize,
-        WebCore::Cursor::Type::NorthResize,
-        WebCore::Cursor::Type::NorthEastResize,
-        WebCore::Cursor::Type::NorthWestResize,
-        WebCore::Cursor::Type::SouthResize,
-        WebCore::Cursor::Type::SouthEastResize,
-        WebCore::Cursor::Type::SouthWestResize,
-        WebCore::Cursor::Type::WestResize,
-        WebCore::Cursor::Type::NorthSouthResize,
-        WebCore::Cursor::Type::EastWestResize,
-        WebCore::Cursor::Type::NorthEastSouthWestResize,
-        WebCore::Cursor::Type::NorthWestSouthEastResize,
-        WebCore::Cursor::Type::ColumnResize,
-        WebCore::Cursor::Type::RowResize,
-        WebCore::Cursor::Type::MiddlePanning,
-        WebCore::Cursor::Type::EastPanning,
-        WebCore::Cursor::Type::NorthPanning,
-        WebCore::Cursor::Type::NorthEastPanning,
-        WebCore::Cursor::Type::NorthWestPanning,
-        WebCore::Cursor::Type::SouthPanning,
-        WebCore::Cursor::Type::SouthEastPanning,
-        WebCore::Cursor::Type::SouthWestPanning,
-        WebCore::Cursor::Type::WestPanning,
-        WebCore::Cursor::Type::Move,
-        WebCore::Cursor::Type::VerticalText,
-        WebCore::Cursor::Type::Cell,
-        WebCore::Cursor::Type::ContextMenu,
-        WebCore::Cursor::Type::Alias,
-        WebCore::Cursor::Type::Progress,
-        WebCore::Cursor::Type::NoDrop,
-        WebCore::Cursor::Type::Copy,
-        WebCore::Cursor::Type::None,
-        WebCore::Cursor::Type::NotAllowed,
-        WebCore::Cursor::Type::ZoomIn,
-        WebCore::Cursor::Type::ZoomOut,
-        WebCore::Cursor::Type::Grab,
-        WebCore::Cursor::Type::Grabbing,
-        WebCore::Cursor::Type::Custom
+        CyberCore::Cursor::Type,
+        CyberCore::Cursor::Type::Pointer,
+        CyberCore::Cursor::Type::Cross,
+        CyberCore::Cursor::Type::Hand,
+        CyberCore::Cursor::Type::IBeam,
+        CyberCore::Cursor::Type::Wait,
+        CyberCore::Cursor::Type::Help,
+        CyberCore::Cursor::Type::EastResize,
+        CyberCore::Cursor::Type::NorthResize,
+        CyberCore::Cursor::Type::NorthEastResize,
+        CyberCore::Cursor::Type::NorthWestResize,
+        CyberCore::Cursor::Type::SouthResize,
+        CyberCore::Cursor::Type::SouthEastResize,
+        CyberCore::Cursor::Type::SouthWestResize,
+        CyberCore::Cursor::Type::WestResize,
+        CyberCore::Cursor::Type::NorthSouthResize,
+        CyberCore::Cursor::Type::EastWestResize,
+        CyberCore::Cursor::Type::NorthEastSouthWestResize,
+        CyberCore::Cursor::Type::NorthWestSouthEastResize,
+        CyberCore::Cursor::Type::ColumnResize,
+        CyberCore::Cursor::Type::RowResize,
+        CyberCore::Cursor::Type::MiddlePanning,
+        CyberCore::Cursor::Type::EastPanning,
+        CyberCore::Cursor::Type::NorthPanning,
+        CyberCore::Cursor::Type::NorthEastPanning,
+        CyberCore::Cursor::Type::NorthWestPanning,
+        CyberCore::Cursor::Type::SouthPanning,
+        CyberCore::Cursor::Type::SouthEastPanning,
+        CyberCore::Cursor::Type::SouthWestPanning,
+        CyberCore::Cursor::Type::WestPanning,
+        CyberCore::Cursor::Type::Move,
+        CyberCore::Cursor::Type::VerticalText,
+        CyberCore::Cursor::Type::Cell,
+        CyberCore::Cursor::Type::ContextMenu,
+        CyberCore::Cursor::Type::Alias,
+        CyberCore::Cursor::Type::Progress,
+        CyberCore::Cursor::Type::NoDrop,
+        CyberCore::Cursor::Type::Copy,
+        CyberCore::Cursor::Type::None,
+        CyberCore::Cursor::Type::NotAllowed,
+        CyberCore::Cursor::Type::ZoomIn,
+        CyberCore::Cursor::Type::ZoomOut,
+        CyberCore::Cursor::Type::Grab,
+        CyberCore::Cursor::Type::Grabbing,
+        CyberCore::Cursor::Type::Custom
     >;
 };
 

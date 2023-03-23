@@ -34,7 +34,7 @@
 typedef struct _GTlsCertificate GTlsCertificate;
 typedef struct _SoupMessage SoupMessage;
 
-namespace WebCore {
+namespace CyberCore {
 
 class ResourceError : public ResourceErrorBase {
 public:
@@ -72,6 +72,6 @@ private:
     GRefPtr<GTlsCertificate> m_certificate;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(SOUP)

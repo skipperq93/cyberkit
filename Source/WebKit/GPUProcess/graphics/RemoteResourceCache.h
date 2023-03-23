@@ -38,20 +38,20 @@ class RemoteRenderingBackend;
 
 class RemoteResourceCache {
 public:
-    RemoteResourceCache(WebCore::ProcessIdentifier webProcessIdentifier);
+    RemoteResourceCache(CyberCore::ProcessIdentifier webProcessIdentifier);
 
     void cacheImageBuffer(Ref<RemoteImageBuffer>&&, QualifiedRenderingResourceIdentifier);
-    void cacheNativeImage(Ref<WebCore::NativeImage>&&, QualifiedRenderingResourceIdentifier);
-    void cacheFont(Ref<WebCore::Font>&&, QualifiedRenderingResourceIdentifier);
-    void cacheDecomposedGlyphs(Ref<WebCore::DecomposedGlyphs>&&, QualifiedRenderingResourceIdentifier);
+    void cacheNativeImage(Ref<CyberCore::NativeImage>&&, QualifiedRenderingResourceIdentifier);
+    void cacheFont(Ref<CyberCore::Font>&&, QualifiedRenderingResourceIdentifier);
+    void cacheDecomposedGlyphs(Ref<CyberCore::DecomposedGlyphs>&&, QualifiedRenderingResourceIdentifier);
 
     RemoteImageBuffer* cachedImageBuffer(QualifiedRenderingResourceIdentifier) const;
     RefPtr<RemoteImageBuffer> takeImageBuffer(QualifiedRenderingResourceIdentifier);
-    WebCore::NativeImage* cachedNativeImage(QualifiedRenderingResourceIdentifier) const;
-    WebCore::Font* cachedFont(QualifiedRenderingResourceIdentifier) const;
-    WebCore::DecomposedGlyphs* cachedDecomposedGlyphs(QualifiedRenderingResourceIdentifier) const;
+    CyberCore::NativeImage* cachedNativeImage(QualifiedRenderingResourceIdentifier) const;
+    CyberCore::Font* cachedFont(QualifiedRenderingResourceIdentifier) const;
+    CyberCore::DecomposedGlyphs* cachedDecomposedGlyphs(QualifiedRenderingResourceIdentifier) const;
 
-    std::optional<WebCore::SourceImage> cachedSourceImage(QualifiedRenderingResourceIdentifier) const;
+    std::optional<CyberCore::SourceImage> cachedSourceImage(QualifiedRenderingResourceIdentifier) const;
 
     void releaseAllResources();
     bool releaseResource(QualifiedRenderingResourceIdentifier);

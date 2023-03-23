@@ -49,7 +49,7 @@
 #import <pal/spi/cocoa/NSAccessibilitySPI.h>
 #import <wtf/cocoa/VectorCocoa.h>
 
-namespace ax = WebCore::Accessibility;
+namespace ax = CyberCore::Accessibility;
 
 @interface WKAccessibilityWebPageObject()
 #if ENABLE(ACCESSIBILITY_ISOLATED_TREE)
@@ -133,7 +133,7 @@ ALLOW_DEPRECATED_IMPLEMENTATIONS_END
     return ax::retrieveValueFromMainThread<NSPoint>([&point, PROTECTED_SELF] () -> NSPoint {
         if (!protectedSelf->m_page)
             return point;
-        return protectedSelf->m_page->screenToRootView(WebCore::IntPoint(point.x, point.y));
+        return protectedSelf->m_page->screenToRootView(CyberCore::IntPoint(point.x, point.y));
     });
 }
 
@@ -162,8 +162,8 @@ ALLOW_DEPRECATED_IMPLEMENTATIONS_BEGIN
 - (id)accessibilityAttributeValue:(NSString *)attribute
 ALLOW_DEPRECATED_IMPLEMENTATIONS_END
 {
-    if (!WebCore::AXObjectCache::accessibilityEnabled())
-        WebCore::AXObjectCache::enableAccessibility();
+    if (!CyberCore::AXObjectCache::accessibilityEnabled())
+        CyberCore::AXObjectCache::enableAccessibility();
     
     if ([attribute isEqualToString:NSAccessibilityParentAttribute])
         return m_parent.get();
@@ -190,7 +190,7 @@ ALLOW_DEPRECATED_IMPLEMENTATIONS_END
         return [self accessibilityAttributePositionValue];
     
     if ([attribute isEqualToString:NSAccessibilityPrimaryScreenHeightAttribute])
-        return @(WebCore::screenRectForPrimaryScreen().size().height());
+        return @(CyberCore::screenRectForPrimaryScreen().size().height());
     
     if ([attribute isEqualToString:NSAccessibilitySizeAttribute])
         return [self accessibilityAttributeSizeValue];
@@ -223,7 +223,7 @@ ALLOW_DEPRECATED_IMPLEMENTATIONS_END
     }).autorelease();
 }
 
-- (id)accessibilityDataDetectorValue:(NSString *)attribute point:(WebCore::FloatPoint&)point
+- (id)accessibilityDataDetectorValue:(NSString *)attribute point:(CyberCore::FloatPoint&)point
 {
     return ax::retrieveValueFromMainThread<RetainPtr<id>>([&attribute, &point, PROTECTED_SELF] () -> RetainPtr<id> {
         if (!protectedSelf->m_page)
@@ -247,7 +247,7 @@ ALLOW_DEPRECATED_IMPLEMENTATIONS_BEGIN
 - (id)accessibilityAttributeValue:(NSString *)attribute forParameter:(id)parameter
 ALLOW_DEPRECATED_IMPLEMENTATIONS_END
 {
-    WebCore::FloatPoint pageOverlayPoint;
+    CyberCore::FloatPoint pageOverlayPoint;
     if ([parameter isKindOfClass:[NSValue class]] && !strcmp([(NSValue *)parameter objCType], @encode(NSPoint)))
         pageOverlayPoint = [self convertScreenPointToRootView:[(NSValue *)parameter pointValue]];
     else
@@ -267,11 +267,11 @@ ALLOW_DEPRECATED_IMPLEMENTATIONS_END
 ALLOW_DEPRECATED_DECLARATIONS_BEGIN
 - (id)accessibilityHitTest:(NSPoint)point
 {
-    auto convertedPoint = ax::retrieveValueFromMainThread<WebCore::IntPoint>([&point, PROTECTED_SELF] () -> WebCore::IntPoint {
+    auto convertedPoint = ax::retrieveValueFromMainThread<CyberCore::IntPoint>([&point, PROTECTED_SELF] () -> CyberCore::IntPoint {
         if (!protectedSelf->m_page)
-            return WebCore::IntPoint(point);
+            return CyberCore::IntPoint(point);
 
-        auto convertedPoint = protectedSelf->m_page->screenToRootView(WebCore::IntPoint(point));
+        auto convertedPoint = protectedSelf->m_page->screenToRootView(CyberCore::IntPoint(point));
 
         // PDF plug-in handles the scroll view offset natively as part of the layer conversions.
         if (protectedSelf->m_page->mainFramePlugIn())

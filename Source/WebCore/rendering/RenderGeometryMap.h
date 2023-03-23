@@ -32,7 +32,7 @@
 #include "TransformationMatrix.h"
 #include <memory>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderFragmentedFlow;
 class RenderLayer;
@@ -136,10 +136,10 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 // This is required for a struct with std::unique_ptr<>. We know RenderGeometryMapStep is simple enough that
 // initializing to 0 and moving with memcpy (and then not destructing the original) will work.
-template<> struct VectorTraits<WebCore::RenderGeometryMapStep> : SimpleClassVectorTraits { };
+template<> struct VectorTraits<CyberCore::RenderGeometryMapStep> : SimpleClassVectorTraits { };
 }

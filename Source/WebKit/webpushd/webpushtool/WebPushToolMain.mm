@@ -30,7 +30,7 @@
 #import <optional>
 #import <wtf/MainThread.h>
 
-using WebKit::WebPushD::PushMessageForTesting;
+using CyberKit::WebPushD::PushMessageForTesting;
 
 __attribute__((__noreturn__))
 static void printUsageAndTerminate(NSString *message)
@@ -89,7 +89,7 @@ static std::unique_ptr<PushMessageForTesting> pushMessageFromArguments(NSEnumera
 static bool registerDaemonWithLaunchD(WebPushTool::PreferTestService preferTestService)
 {
     // For now webpushtool only knows how to host webpushd when they're in the same directory
-    // e.g. the build directory of a WebKit contributor.
+    // e.g. the build directory of a CyberKit contributor.
     NSString *currentExecutablePath = [[NSBundle mainBundle] executablePath];
     NSURL *currentExecutableDirectoryURL = [[NSURL fileURLWithPath:currentExecutablePath isDirectory:NO] URLByDeletingLastPathComponent];
     NSURL *daemonExecutablePathURL = [currentExecutableDirectoryURL URLByAppendingPathComponent:@"webpushd"];

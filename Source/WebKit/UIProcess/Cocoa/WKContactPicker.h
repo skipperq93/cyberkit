@@ -33,7 +33,7 @@
 @class WKWebView;
 @protocol WKContactPickerDelegate;
 
-namespace WebCore {
+namespace CyberCore {
 struct ContactInfo;
 struct ContactsRequestData;
 }
@@ -42,7 +42,7 @@ struct ContactsRequestData;
 
 - (instancetype)initWithView:(WKWebView *)view;
 
-- (void)presentWithRequestData:(const WebCore::ContactsRequestData&)requestData completionHandler:(WTF::CompletionHandler<void(std::optional<Vector<WebCore::ContactInfo>>&&)>&&)completionHandler;
+- (void)presentWithRequestData:(const CyberCore::ContactsRequestData&)requestData completionHandler:(WTF::CompletionHandler<void(std::optional<Vector<CyberCore::ContactInfo>>&&)>&&)completionHandler;
 
 @property (nonatomic, weak) id<WKContactPickerDelegate> delegate;
 

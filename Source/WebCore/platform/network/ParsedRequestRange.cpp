@@ -28,7 +28,7 @@
 
 #include <wtf/text/StringToIntegerConversion.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 std::optional<ParsedRequestRange> ParsedRequestRange::parse(StringView input)
 {

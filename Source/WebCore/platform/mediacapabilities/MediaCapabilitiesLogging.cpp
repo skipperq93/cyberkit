@@ -41,7 +41,7 @@
 #include "VideoConfiguration.h"
 #include <wtf/JSONValues.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static Ref<JSON::Object> toJSONObject(const VideoConfiguration& configuration)
 {
@@ -168,67 +168,67 @@ static String toJSONString(const MediaCapabilitiesEncodingInfo& info)
 
 namespace WTF {
 
-String LogArgument<WebCore::VideoConfiguration>::toString(const WebCore::VideoConfiguration& configuration)
+String LogArgument<CyberCore::VideoConfiguration>::toString(const CyberCore::VideoConfiguration& configuration)
 {
     return toJSONString(configuration);
 }
 
-String LogArgument<WebCore::AudioConfiguration>::toString(const WebCore::AudioConfiguration& configuration)
+String LogArgument<CyberCore::AudioConfiguration>::toString(const CyberCore::AudioConfiguration& configuration)
 {
     return toJSONString(configuration);
 }
 
-String LogArgument<WebCore::MediaConfiguration>::toString(const WebCore::MediaConfiguration& configuration)
+String LogArgument<CyberCore::MediaConfiguration>::toString(const CyberCore::MediaConfiguration& configuration)
 {
     return toJSONString(configuration);
 }
 
-String LogArgument<WebCore::MediaDecodingConfiguration>::toString(const WebCore::MediaDecodingConfiguration& configuration)
+String LogArgument<CyberCore::MediaDecodingConfiguration>::toString(const CyberCore::MediaDecodingConfiguration& configuration)
 {
     return toJSONString(configuration);
 }
 
-String LogArgument<WebCore::MediaEncodingConfiguration>::toString(const WebCore::MediaEncodingConfiguration& configuration)
+String LogArgument<CyberCore::MediaEncodingConfiguration>::toString(const CyberCore::MediaEncodingConfiguration& configuration)
 {
     return toJSONString(configuration);
 }
 
-String LogArgument<WebCore::MediaCapabilitiesInfo>::toString(const WebCore::MediaCapabilitiesInfo& info)
+String LogArgument<CyberCore::MediaCapabilitiesInfo>::toString(const CyberCore::MediaCapabilitiesInfo& info)
 {
     return toJSONString(info);
 }
 
-String LogArgument<WebCore::MediaCapabilitiesDecodingInfo>::toString(const WebCore::MediaCapabilitiesDecodingInfo& info)
+String LogArgument<CyberCore::MediaCapabilitiesDecodingInfo>::toString(const CyberCore::MediaCapabilitiesDecodingInfo& info)
 {
     return toJSONString(info);
 }
 
-String LogArgument<WebCore::MediaCapabilitiesEncodingInfo>::toString(const WebCore::MediaCapabilitiesEncodingInfo& info)
+String LogArgument<CyberCore::MediaCapabilitiesEncodingInfo>::toString(const CyberCore::MediaCapabilitiesEncodingInfo& info)
 {
     return toJSONString(info);
 }
 
-String LogArgument<WebCore::ColorGamut>::toString(const WebCore::ColorGamut& type)
+String LogArgument<CyberCore::ColorGamut>::toString(const CyberCore::ColorGamut& type)
 {
     return convertEnumerationToString(type);
 }
 
-String LogArgument<WebCore::HdrMetadataType>::toString(const WebCore::HdrMetadataType& type)
+String LogArgument<CyberCore::HdrMetadataType>::toString(const CyberCore::HdrMetadataType& type)
 {
     return convertEnumerationToString(type);
 }
 
-String LogArgument<WebCore::TransferFunction>::toString(const WebCore::TransferFunction& type)
+String LogArgument<CyberCore::TransferFunction>::toString(const CyberCore::TransferFunction& type)
 {
     return convertEnumerationToString(type);
 }
 
-String LogArgument<WebCore::MediaDecodingType>::toString(const WebCore::MediaDecodingType& type)
+String LogArgument<CyberCore::MediaDecodingType>::toString(const CyberCore::MediaDecodingType& type)
 {
     return convertEnumerationToString(type);
 }
 
-String LogArgument<WebCore::MediaEncodingType>::toString(const WebCore::MediaEncodingType& type)
+String LogArgument<CyberCore::MediaEncodingType>::toString(const CyberCore::MediaEncodingType& type)
 {
     return convertEnumerationToString(type);
 }

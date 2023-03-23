@@ -37,7 +37,7 @@
 namespace WebKit {
 
 struct InteractionInformationRequest {
-    WebCore::IntPoint point;
+    CyberCore::IntPoint point;
 
     bool includeSnapshot { false };
     bool includeLinkIndicator { false };
@@ -49,7 +49,7 @@ struct InteractionInformationRequest {
     bool disallowUserAgentShadowContent { false };
 
     InteractionInformationRequest() { }
-    explicit InteractionInformationRequest(WebCore::IntPoint point)
+    explicit InteractionInformationRequest(CyberCore::IntPoint point)
     {
         this->point = point;
     }

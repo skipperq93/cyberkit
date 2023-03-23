@@ -38,7 +38,7 @@
 
 #define CACHE_SUBIMAGES 1
 
-namespace WebCore {
+namespace CyberCore {
 
 #if CACHE_SUBIMAGES
 

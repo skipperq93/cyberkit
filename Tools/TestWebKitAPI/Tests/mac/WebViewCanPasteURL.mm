@@ -32,7 +32,7 @@
 
 namespace TestWebKitAPI {
 
-TEST(WebKitLegacy, WebViewCanPasteURL)
+TEST(CyberKitLegacy, WebViewCanPasteURL)
 {
     auto webView = adoptNS([[WebView alloc] initWithFrame:NSZeroRect frameName:nil groupName:nil]);
     [webView setEditable:YES];

@@ -35,7 +35,7 @@
 
 namespace RFC8941 {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 template<typename CharacterType> constexpr bool isEndOfToken(CharacterType character)
 {

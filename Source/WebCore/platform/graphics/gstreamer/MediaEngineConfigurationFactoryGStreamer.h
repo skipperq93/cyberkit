@@ -31,7 +31,7 @@
 
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct MediaCapabilitiesDecodingInfo;
 struct MediaCapabilitiesEncodingInfo;

@@ -36,7 +36,7 @@
 #include <gtk/gtk.h>
 #include <memory>
 
-namespace WebCore {
+namespace CyberCore {
 enum class DOMPasteAccessPolicy : uint8_t;
 }
 
@@ -61,11 +61,11 @@ public:
 private:
     // PageClient
     std::unique_ptr<DrawingAreaProxy> createDrawingAreaProxy(WebProcessProxy&) override;
-    void setViewNeedsDisplay(const WebCore::Region&) override;
-    void requestScroll(const WebCore::FloatPoint& scrollPosition, const WebCore::IntPoint& scrollOrigin, WebCore::ScrollIsAnimated) override;
-    void requestScrollToRect(const WebCore::FloatRect& targetRect, const WebCore::FloatPoint& origin) override;
-    WebCore::FloatPoint viewScrollPosition() override;
-    WebCore::IntSize viewSize() override;
+    void setViewNeedsDisplay(const CyberCore::Region&) override;
+    void requestScroll(const CyberCore::FloatPoint& scrollPosition, const CyberCore::IntPoint& scrollOrigin, CyberCore::ScrollIsAnimated) override;
+    void requestScrollToRect(const CyberCore::FloatRect& targetRect, const CyberCore::FloatPoint& origin) override;
+    CyberCore::FloatPoint viewScrollPosition() override;
+    CyberCore::IntSize viewSize() override;
     bool isViewWindowActive() override;
     bool isViewFocused() override;
     bool isViewVisible() override;
@@ -76,24 +76,24 @@ private:
     void pageClosed() override;
     void preferencesDidChange() override;
     void toolTipChanged(const WTF::String&, const WTF::String&) override;
-    void setCursor(const WebCore::Cursor&) override;
+    void setCursor(const CyberCore::Cursor&) override;
     void setCursorHiddenUntilMouseMoves(bool) override;
-    void didChangeViewportProperties(const WebCore::ViewportAttributes&) override;
+    void didChangeViewportProperties(const CyberCore::ViewportAttributes&) override;
     void registerEditCommand(Ref<WebEditCommandProxy>&&, UndoOrRedo) override;
     void clearAllEditCommands() override;
     bool canUndoRedo(UndoOrRedo) override;
     void executeUndoRedo(UndoOrRedo) override;
-    WebCore::FloatRect convertToDeviceSpace(const WebCore::FloatRect&) override;
-    WebCore::FloatRect convertToUserSpace(const WebCore::FloatRect&) override;
-    WebCore::IntPoint screenToRootView(const WebCore::IntPoint&) override;
-    WebCore::IntRect rootViewToScreen(const WebCore::IntRect&) override;
-    WebCore::IntPoint accessibilityScreenToRootView(const WebCore::IntPoint&) override;
-    WebCore::IntRect rootViewToAccessibilityScreen(const WebCore::IntRect&) override;
+    CyberCore::FloatRect convertToDeviceSpace(const CyberCore::FloatRect&) override;
+    CyberCore::FloatRect convertToUserSpace(const CyberCore::FloatRect&) override;
+    CyberCore::IntPoint screenToRootView(const CyberCore::IntPoint&) override;
+    CyberCore::IntRect rootViewToScreen(const CyberCore::IntRect&) override;
+    CyberCore::IntPoint accessibilityScreenToRootView(const CyberCore::IntPoint&) override;
+    CyberCore::IntRect rootViewToAccessibilityScreen(const CyberCore::IntRect&) override;
     void doneWithKeyEvent(const NativeWebKeyboardEvent&, bool wasEventHandled) override;
     RefPtr<WebPopupMenuProxy> createPopupMenuProxy(WebPageProxy&) override;
     Ref<WebContextMenuProxy> createContextMenuProxy(WebPageProxy&, ContextMenuContextData&&, const UserData&) override;
 #if ENABLE(INPUT_TYPE_COLOR)
-    RefPtr<WebColorPicker> createColorPicker(WebPageProxy*, const WebCore::Color& initialColor, const WebCore::IntRect&, Vector<WebCore::Color>&&) override;
+    RefPtr<WebColorPicker> createColorPicker(WebPageProxy*, const CyberCore::Color& initialColor, const CyberCore::IntRect&, Vector<CyberCore::Color>&&) override;
 #endif
 #if ENABLE(DATE_AND_TIME_INPUT_TYPES)
     RefPtr<WebDateTimePicker> createDateTimePicker(WebPageProxy&) override;
@@ -101,11 +101,11 @@ private:
 #if ENABLE(DATALIST_ELEMENT)
     RefPtr<WebDataListSuggestionsDropdown> createDataListSuggestionsDropdown(WebPageProxy&) override;
 #endif
-    Ref<WebCore::ValidationBubble> createValidationBubble(const String& message, const WebCore::ValidationBubble::Settings&) final;
+    Ref<CyberCore::ValidationBubble> createValidationBubble(const String& message, const CyberCore::ValidationBubble::Settings&) final;
     void selectionDidChange() override;
-    RefPtr<ViewSnapshot> takeViewSnapshot(std::optional<WebCore::IntRect>&&) override;
+    RefPtr<ViewSnapshot> takeViewSnapshot(std::optional<CyberCore::IntRect>&&) override;
 #if ENABLE(DRAG_SUPPORT)
-    void startDrag(WebCore::SelectionData&&, OptionSet<WebCore::DragOperation>, RefPtr<ShareableBitmap>&& dragImage, WebCore::IntPoint&& dragImageHotspot) override;
+    void startDrag(CyberCore::SelectionData&&, OptionSet<CyberCore::DragOperation>, RefPtr<ShareableBitmap>&& dragImage, CyberCore::IntPoint&& dragImageHotspot) override;
     void didPerformDragControllerAction() override;
 #endif
 
@@ -113,7 +113,7 @@ private:
     void exitAcceleratedCompositingMode() override;
     void updateAcceleratedCompositingMode(const LayerTreeContext&) override;
 
-    void didChangeContentSize(const WebCore::IntSize&) override;
+    void didChangeContentSize(const CyberCore::IntSize&) override;
     void didCommitLoadForMainFrame(const String& mimeType, bool useCustomContentProvider) override;
     void didStartProvisionalLoadForMainFrame() override;
     void didFirstVisuallyNonEmptyLayoutForMainFrame() override;
@@ -132,8 +132,8 @@ private:
     bool isFullScreen() override;
     void enterFullScreen() override;
     void exitFullScreen() override;
-    void beganEnterFullScreen(const WebCore::IntRect& initialFrame, const WebCore::IntRect& finalFrame) override;
-    void beganExitFullScreen(const WebCore::IntRect& initialFrame, const WebCore::IntRect& finalFrame) override;
+    void beganEnterFullScreen(const CyberCore::IntRect& initialFrame, const CyberCore::IntRect& finalFrame) override;
+    void beganExitFullScreen(const CyberCore::IntRect& initialFrame, const CyberCore::IntRect& finalFrame) override;
 #endif
 
     void didFinishLoadingDataForCustomContentProvider(const String& suggestedFilename, const IPC::DataReference&) override;
@@ -149,7 +149,7 @@ private:
     void doneWithTouchEvent(const NativeWebTouchEvent&, bool wasEventHandled) override;
 #endif
 
-    void wheelEventWasNotHandledByWebCore(const NativeWebWheelEvent&) override;
+    void wheelEventWasNotHandledByCyberCore(const NativeWebWheelEvent&) override;
 
     void didChangeBackgroundColor() override;
 
@@ -160,9 +160,9 @@ private:
     void isPlayingAudioWillChange() final { }
     void isPlayingAudioDidChange() final { }
 
-    void requestDOMPasteAccess(WebCore::DOMPasteAccessCategory, const WebCore::IntRect&, const String&, CompletionHandler<void(WebCore::DOMPasteAccessResponse)>&&) final;
+    void requestDOMPasteAccess(CyberCore::DOMPasteAccessCategory, const CyberCore::IntRect&, const String&, CompletionHandler<void(CyberCore::DOMPasteAccessResponse)>&&) final;
 
-    WebCore::UserInterfaceLayoutDirection userInterfaceLayoutDirection() override;
+    CyberCore::UserInterfaceLayoutDirection userInterfaceLayoutDirection() override;
 
     bool effectiveAppearanceIsDark() const override;
 
@@ -174,7 +174,7 @@ private:
 
     void makeViewBlank(bool) override;
 
-    WebCore::Color accentColor() override;
+    CyberCore::Color accentColor() override;
 
     WebKitWebResourceLoadManager* webResourceLoadManager() override;
 

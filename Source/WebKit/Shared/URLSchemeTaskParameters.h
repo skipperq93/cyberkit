@@ -39,8 +39,8 @@ namespace WebKit {
 
 struct URLSchemeTaskParameters {
     WebURLSchemeHandlerIdentifier handlerIdentifier;
-    WebCore::ResourceLoaderIdentifier taskIdentifier;
-    WebCore::ResourceRequest request;
+    CyberCore::ResourceLoaderIdentifier taskIdentifier;
+    CyberCore::ResourceRequest request;
     FrameInfoData frameInfo;
     
     void encode(IPC::Encoder&) const;

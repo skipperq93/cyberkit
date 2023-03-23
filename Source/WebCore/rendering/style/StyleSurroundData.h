@@ -29,7 +29,7 @@
 #include <wtf/Ref.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 DECLARE_ALLOCATOR_WITH_HEAP_IDENTIFIER(StyleSurroundData);
 class StyleSurroundData : public RefCounted<StyleSurroundData> {
@@ -60,4 +60,4 @@ private:
     StyleSurroundData(const StyleSurroundData&);    
 };
 
-} // namespace WebCore
+} // namespace CyberCore

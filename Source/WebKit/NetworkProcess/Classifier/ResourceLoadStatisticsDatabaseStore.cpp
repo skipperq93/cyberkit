@@ -54,7 +54,7 @@
 #include <wtf/text/StringBuilder.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 #define ITP_RELEASE_LOG(sessionID, fmt, ...) RELEASE_LOG(Network, "%p - ResourceLoadStatisticsDatabaseStore::" fmt, this, ##__VA_ARGS__)
 #define ITP_RELEASE_LOG_ERROR(sessionID, fmt, ...) RELEASE_LOG_ERROR(Network, "%p - ResourceLoadStatisticsDatabaseStore::" fmt, this, ##__VA_ARGS__)
@@ -410,7 +410,7 @@ void ResourceLoadStatisticsDatabaseStore::migrateDataToPCMDatabaseIfNecessary()
         && !tableExists("AttributedPrivateClickMeasurement"_s))
         return;
 
-    Vector<WebCore::PrivateClickMeasurement> unattributed;
+    Vector<CyberCore::PrivateClickMeasurement> unattributed;
     {
         constexpr auto allUnattributedPrivateClickMeasurementAttributionsQuery = "SELECT * FROM UnattributedPrivateClickMeasurement"_s;
         auto unattributedScopedStatement = m_database.prepareStatement(allUnattributedPrivateClickMeasurementAttributionsQuery);
@@ -422,7 +422,7 @@ void ResourceLoadStatisticsDatabaseStore::migrateDataToPCMDatabaseIfNecessary()
             unattributed.append(buildPrivateClickMeasurementFromDatabase(unattributedScopedStatement.value(), PrivateClickMeasurementAttributionType::Unattributed));
     }
 
-    Vector<WebCore::PrivateClickMeasurement> attributed;
+    Vector<CyberCore::PrivateClickMeasurement> attributed;
     {
         constexpr auto allAttributedPrivateClickMeasurementQuery = "SELECT * FROM AttributedPrivateClickMeasurement"_s;
         auto attributedScopedStatement = m_database.prepareStatement(allAttributedPrivateClickMeasurementQuery);
@@ -822,7 +822,7 @@ void ResourceLoadStatisticsDatabaseStore::insertDomainRelationships(const Resour
     insertDomainRelationshipList(topFrameLoadedThirdPartyScriptsQuery, loadStatistics.topFrameLoadedThirdPartyScripts, registrableDomainID.value());
 }
 
-void ResourceLoadStatisticsDatabaseStore::merge(WebCore::SQLiteStatement* current, const ResourceLoadStatistics& other)
+void ResourceLoadStatisticsDatabaseStore::merge(CyberCore::SQLiteStatement* current, const ResourceLoadStatistics& other)
 {
     ASSERT(!RunLoop::isMain());
 
@@ -2147,7 +2147,7 @@ HashMap<TopFrameDomain, SubResourceDomain> ResourceLoadStatisticsDatabaseStore::
 {
     ASSERT(!RunLoop::isMain());
 
-    HashMap<WebCore::RegistrableDomain, WebCore::RegistrableDomain> results;
+    HashMap<CyberCore::RegistrableDomain, CyberCore::RegistrableDomain> results;
     auto statement = m_database.prepareStatement("SELECT subFrameDomain, registrableDomain FROM (SELECT o.registrableDomain as subFrameDomain, s.topLevelDomainID as topLevelDomainID FROM ObservedDomains as o INNER JOIN StorageAccessUnderTopFrameDomains as s WHERE o.domainID = s.domainID) as z INNER JOIN ObservedDomains ON domainID = z.topLevelDomainID;"_s);
     if (!statement)
         return results;

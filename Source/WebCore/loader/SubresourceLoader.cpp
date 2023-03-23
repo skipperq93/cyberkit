@@ -78,7 +78,7 @@
 #define SUBRESOURCELOADER_RELEASE_LOG_ERROR(fmt, ...) RELEASE_LOG_ERROR(ResourceLoading, "%p - [pageID=%" PRIu64 ", frameID=%" PRIu64 ", frameLoader=%p, resourceID=%" PRIu64 "] SubresourceLoader::" fmt, this, PAGE_ID, FRAME_ID, frameLoader(), identifier().toUInt64(), ##__VA_ARGS__)
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 DEFINE_DEBUG_ONLY_GLOBAL(WTF::RefCountedLeakCounter, subresourceLoaderCounter, ("SubresourceLoader"));
 
@@ -919,7 +919,7 @@ const HTTPHeaderMap* SubresourceLoader::originalHeaders() const
     return (m_resource && m_resource->originalRequest()) ? &m_resource->originalRequest()->httpHeaderFields() : nullptr;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #undef PAGE_ID
 #undef FRAME_ID

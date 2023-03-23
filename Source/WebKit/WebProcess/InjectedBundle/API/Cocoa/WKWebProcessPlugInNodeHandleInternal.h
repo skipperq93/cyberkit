@@ -28,7 +28,7 @@
 #import "InjectedBundleNodeHandle.h"
 #import "WKObject.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 template<> struct WrapperTraits<InjectedBundleNodeHandle> {
     using WrapperClass = WKWebProcessPlugInNodeHandle;
@@ -38,6 +38,6 @@ template<> struct WrapperTraits<InjectedBundleNodeHandle> {
 
 @interface WKWebProcessPlugInNodeHandle () <WKObject>
 
-@property (readonly) WebKit::InjectedBundleNodeHandle& _nodeHandle;
+@property (readonly) CyberKit::InjectedBundleNodeHandle& _nodeHandle;
 
 @end

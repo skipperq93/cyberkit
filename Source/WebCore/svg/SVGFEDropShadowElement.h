@@ -23,7 +23,7 @@
 #include "FEDropShadow.h"
 #include "SVGFilterPrimitiveStandardAttributes.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGFEDropShadowElement final : public SVGFilterPrimitiveStandardAttributes {
     WTF_MAKE_ISO_ALLOCATED(SVGFEDropShadowElement);
@@ -65,4 +65,4 @@ private:
     Ref<SVGAnimatedNumber> m_stdDeviationY { SVGAnimatedNumber::create(this, 2) };
 };
     
-} // namespace WebCore
+} // namespace CyberCore

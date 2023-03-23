@@ -25,9 +25,9 @@
 
 #import <CyberKitLegacy/DOMHTMLTableCaptionElement.h>
 
-namespace WebCore {
+namespace CyberCore {
 class HTMLTableCaptionElement;
 }
 
-WebCore::HTMLTableCaptionElement* core(DOMHTMLTableCaptionElement *);
-DOMHTMLTableCaptionElement *kit(WebCore::HTMLTableCaptionElement*);
+CyberCore::HTMLTableCaptionElement* core(DOMHTMLTableCaptionElement *);
+DOMHTMLTableCaptionElement *kit(CyberCore::HTMLTableCaptionElement*);

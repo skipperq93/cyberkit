@@ -31,7 +31,7 @@
 
 OBJC_CLASS AVAssetTrack;
 
-namespace WebCore {
+namespace CyberCore {
 
 class AVTrackPrivateAVFObjCImpl;
 class SourceBufferPrivateAVFObjC;

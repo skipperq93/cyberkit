@@ -32,7 +32,7 @@
 #import "FormDataStreamCFNet.h"
 #import <pal/spi/cf/CFNetworkSPI.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 void setHTTPBody(NSMutableURLRequest *request, const RefPtr<FormData>& formData)
 {
@@ -49,4 +49,4 @@ FormData* httpBodyFromStream(NSInputStream *stream)
     return httpBodyFromStream((__bridge CFReadStreamRef)stream);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

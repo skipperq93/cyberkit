@@ -28,7 +28,7 @@
 
 #include "Color.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 std::pair<float, float> fixupHueComponentsPriorToInterpolation(HueInterpolationMethod method, float component1, float component2)
 {

@@ -38,35 +38,35 @@ class Decoder;
 class Encoder;
 }
 
-namespace WebCore {
+namespace CyberCore {
 typedef int SandboxFlags;
 }
 
 namespace WebKit {
 
 struct NavigationActionData {
-    WebCore::NavigationType navigationType { WebCore::NavigationType::Other };
+    CyberCore::NavigationType navigationType { CyberCore::NavigationType::Other };
     OptionSet<WebEventModifier> modifiers;
     WebMouseEventButton mouseButton { WebMouseEventButton::NoButton };
     WebMouseEventSyntheticClickType syntheticClickType { WebMouseEventSyntheticClickType::NoTap };
     uint64_t userGestureTokenIdentifier { 0 };
     bool canHandleRequest { false };
-    WebCore::ShouldOpenExternalURLsPolicy shouldOpenExternalURLsPolicy { WebCore::ShouldOpenExternalURLsPolicy::ShouldNotAllow };
+    CyberCore::ShouldOpenExternalURLsPolicy shouldOpenExternalURLsPolicy { CyberCore::ShouldOpenExternalURLsPolicy::ShouldNotAllow };
     WTF::String downloadAttribute;
-    WebCore::FloatPoint clickLocationInRootViewCoordinates;
+    CyberCore::FloatPoint clickLocationInRootViewCoordinates;
     bool isRedirect { false };
     bool treatAsSameOriginNavigation { false };
     bool hasOpenedFrames { false };
     bool openedByDOMWithOpener { false };
     bool hasOpener { false };
-    WebCore::SecurityOriginData requesterOrigin;
-    std::optional<WebCore::BackForwardItemIdentifier> targetBackForwardItemIdentifier;
-    std::optional<WebCore::BackForwardItemIdentifier> sourceBackForwardItemIdentifier;
-    WebCore::LockHistory lockHistory { WebCore::LockHistory::No };
-    WebCore::LockBackForwardList lockBackForwardList { WebCore::LockBackForwardList::No };
+    CyberCore::SecurityOriginData requesterOrigin;
+    std::optional<CyberCore::BackForwardItemIdentifier> targetBackForwardItemIdentifier;
+    std::optional<CyberCore::BackForwardItemIdentifier> sourceBackForwardItemIdentifier;
+    CyberCore::LockHistory lockHistory { CyberCore::LockHistory::No };
+    CyberCore::LockBackForwardList lockBackForwardList { CyberCore::LockBackForwardList::No };
     WTF::String clientRedirectSourceForHistory;
-    WebCore::SandboxFlags effectiveSandboxFlags { 0 };
-    std::optional<WebCore::PrivateClickMeasurement> privateClickMeasurement;
+    CyberCore::SandboxFlags effectiveSandboxFlags { 0 };
+    std::optional<CyberCore::PrivateClickMeasurement> privateClickMeasurement;
 #if PLATFORM(MAC) || HAVE(UIKIT_WITH_MOUSE_SUPPORT)
     std::optional<WebKit::WebHitTestResultData> webHitTestResultData;
 #endif

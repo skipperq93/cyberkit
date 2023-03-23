@@ -29,7 +29,7 @@
 #include <X11/Xlib.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class XErrorTrapper {
     WTF_MAKE_NONCOPYABLE(XErrorTrapper);
@@ -50,6 +50,6 @@ private:
     unsigned char m_errorCode { 0 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(X11)

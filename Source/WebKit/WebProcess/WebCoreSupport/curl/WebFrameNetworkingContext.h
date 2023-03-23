@@ -28,13 +28,13 @@
 
 #include <CyberCore/FrameNetworkingContext.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebFrame;
 class WebFrameLoaderClient;
 struct WebsiteDataStoreParameters;
 
-class WebFrameNetworkingContext : public WebCore::FrameNetworkingContext {
+class WebFrameNetworkingContext : public CyberCore::FrameNetworkingContext {
 public:
     static Ref<WebFrameNetworkingContext> create(WebFrame* frame)
     {
@@ -46,13 +46,13 @@ public:
     WebFrameLoaderClient* webFrameLoaderClient() const;
 
 #if PLATFORM(WIN)
-    WebCore::ResourceError blockedError(const WebCore::ResourceRequest&) const override;
+    CyberCore::ResourceError blockedError(const CyberCore::ResourceRequest&) const override;
 #endif
 
 private:
     WebFrameNetworkingContext(WebFrame*);
 
-    WebCore::NetworkStorageSession* storageSession() const override { return nullptr; }
+    CyberCore::NetworkStorageSession* storageSession() const override { return nullptr; }
 };
 
 }

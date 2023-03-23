@@ -26,46 +26,46 @@
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <CyberKitLegacy/WebKitErrors.h>
+#import <CyberKitLegacy/CyberKitErrors.h>
 
 #import "WebLocalizableStringsInternal.h"
 #import <Foundation/NSURLError.h>
-#import <CyberKitLegacy/WebKitErrorsPrivate.h>
+#import <CyberKitLegacy/CyberKitErrorsPrivate.h>
 #import <CyberKitLegacy/WebNSURLExtras.h>
 
 #import <dispatch/dispatch.h>
 
-NSString *WebKitErrorDomain = @"WebKitErrorDomain";
+NSString *CyberKitErrorDomain = @"CyberKitErrorDomain";
 
-NSString * const WebKitErrorMIMETypeKey =               @"WebKitErrorMIMETypeKey";
-NSString * const WebKitErrorPlugInNameKey =             @"WebKitErrorPlugInNameKey";
-NSString * const WebKitErrorPlugInPageURLStringKey =    @"WebKitErrorPlugInPageURLStringKey";
+NSString * const CyberKitErrorMIMETypeKey =               @"CyberKitErrorMIMETypeKey";
+NSString * const CyberKitErrorPlugInNameKey =             @"CyberKitErrorPlugInNameKey";
+NSString * const CyberKitErrorPlugInPageURLStringKey =    @"CyberKitErrorPlugInPageURLStringKey";
 
 // Policy errors
-#define WebKitErrorDescriptionCannotShowMIMEType UI_STRING_INTERNAL("Content with specified MIME type can’t be shown", "WebKitErrorCannotShowMIMEType description")
-#define WebKitErrorDescriptionCannotShowURL UI_STRING_INTERNAL("The URL can’t be shown", "WebKitErrorCannotShowURL description")
-#define WebKitErrorDescriptionFrameLoadInterruptedByPolicyChange UI_STRING_INTERNAL("Frame load interrupted", "WebKitErrorFrameLoadInterruptedByPolicyChange description")
-#define WebKitErrorDescriptionCannotUseRestrictedPort UI_STRING_INTERNAL("Not allowed to use restricted network port", "WebKitErrorCannotUseRestrictedPort description")
-#define WebKitErrorDescriptionFrameLoadBlockedByContentFilter UI_STRING_INTERNAL("The URL was blocked by a content filter", "WebKitErrorFrameLoadBlockedByContentFilter description")
+#define CyberKitErrorDescriptionCannotShowMIMEType UI_STRING_INTERNAL("Content with specified MIME type can’t be shown", "CyberKitErrorCannotShowMIMEType description")
+#define CyberKitErrorDescriptionCannotShowURL UI_STRING_INTERNAL("The URL can’t be shown", "CyberKitErrorCannotShowURL description")
+#define CyberKitErrorDescriptionFrameLoadInterruptedByPolicyChange UI_STRING_INTERNAL("Frame load interrupted", "CyberKitErrorFrameLoadInterruptedByPolicyChange description")
+#define CyberKitErrorDescriptionCannotUseRestrictedPort UI_STRING_INTERNAL("Not allowed to use restricted network port", "CyberKitErrorCannotUseRestrictedPort description")
+#define CyberKitErrorDescriptionFrameLoadBlockedByContentFilter UI_STRING_INTERNAL("The URL was blocked by a content filter", "CyberKitErrorFrameLoadBlockedByContentFilter description")
 
 // Plug-in and java errors
-#define WebKitErrorDescriptionCannotFindPlugin UI_STRING_INTERNAL("The plug-in can’t be found", "WebKitErrorCannotFindPlugin description")
-#define WebKitErrorDescriptionCannotLoadPlugin UI_STRING_INTERNAL("The plug-in can’t be loaded", "WebKitErrorCannotLoadPlugin description")
-#define WebKitErrorDescriptionJavaUnavailable UI_STRING_INTERNAL("Java is unavailable", "WebKitErrorJavaUnavailable description")
-#define WebKitErrorDescriptionPlugInCancelledConnection UI_STRING_INTERNAL("Plug-in cancelled", "WebKitErrorPlugInCancelledConnection description")
-#define WebKitErrorDescriptionPlugInWillHandleLoad UI_STRING_INTERNAL("Plug-in handled load", "WebKitErrorPlugInWillHandleLoad description")
+#define CyberKitErrorDescriptionCannotFindPlugin UI_STRING_INTERNAL("The plug-in can’t be found", "CyberKitErrorCannotFindPlugin description")
+#define CyberKitErrorDescriptionCannotLoadPlugin UI_STRING_INTERNAL("The plug-in can’t be loaded", "CyberKitErrorCannotLoadPlugin description")
+#define CyberKitErrorDescriptionJavaUnavailable UI_STRING_INTERNAL("Java is unavailable", "CyberKitErrorJavaUnavailable description")
+#define CyberKitErrorDescriptionPlugInCancelledConnection UI_STRING_INTERNAL("Plug-in cancelled", "CyberKitErrorPlugInCancelledConnection description")
+#define CyberKitErrorDescriptionPlugInWillHandleLoad UI_STRING_INTERNAL("Plug-in handled load", "CyberKitErrorPlugInWillHandleLoad description")
 
 // Geolocations errors
 
-#define WebKitErrorDescriptionGeolocationLocationUnknown UI_STRING_INTERNAL("The current location cannot be found.", "WebKitErrorGeolocationLocationUnknown description")
+#define CyberKitErrorDescriptionGeolocationLocationUnknown UI_STRING_INTERNAL("The current location cannot be found.", "CyberKitErrorGeolocationLocationUnknown description")
 
 static NSMutableDictionary *descriptions = nil;
 
-@interface NSError (WebKitInternal)
+@interface NSError (CyberKitInternal)
 - (instancetype)_webkit_initWithDomain:(NSString *)domain code:(int)code URL:(NSURL *)URL __attribute__((objc_method_family(init)));
 @end
 
-@implementation NSError (WebKitInternal)
+@implementation NSError (CyberKitInternal)
 
 - (instancetype)_webkit_initWithDomain:(NSString *)domain code:(int)code URL:(NSURL *)URL
 {
@@ -81,33 +81,33 @@ static NSMutableDictionary *descriptions = nil;
 
 @end
 
-@implementation NSError (WebKitExtras)
+@implementation NSError (CyberKitExtras)
 
-+ (void)_registerWebKitErrors
++ (void)_registerCyberKitErrors
 {
     static dispatch_once_t flag;
     dispatch_once(&flag, ^{
         @autoreleasepool {
             NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
                 // Policy errors
-                WebKitErrorDescriptionCannotShowMIMEType,                   @(WebKitErrorCannotShowMIMEType),
-                WebKitErrorDescriptionCannotShowURL,                        @(WebKitErrorCannotShowURL),
-                WebKitErrorDescriptionFrameLoadInterruptedByPolicyChange,   @(WebKitErrorFrameLoadInterruptedByPolicyChange),
-                WebKitErrorDescriptionCannotUseRestrictedPort,              @(WebKitErrorCannotUseRestrictedPort),
-                WebKitErrorDescriptionFrameLoadBlockedByContentFilter,      @(WebKitErrorFrameLoadBlockedByContentFilter),
+                CyberKitErrorDescriptionCannotShowMIMEType,                   @(CyberKitErrorCannotShowMIMEType),
+                CyberKitErrorDescriptionCannotShowURL,                        @(CyberKitErrorCannotShowURL),
+                CyberKitErrorDescriptionFrameLoadInterruptedByPolicyChange,   @(CyberKitErrorFrameLoadInterruptedByPolicyChange),
+                CyberKitErrorDescriptionCannotUseRestrictedPort,              @(CyberKitErrorCannotUseRestrictedPort),
+                CyberKitErrorDescriptionFrameLoadBlockedByContentFilter,      @(CyberKitErrorFrameLoadBlockedByContentFilter),
 
                 // Plug-in and java errors
-                WebKitErrorDescriptionCannotFindPlugin,                     @(WebKitErrorCannotFindPlugIn),
-                WebKitErrorDescriptionCannotLoadPlugin,                     @(WebKitErrorCannotLoadPlugIn),
-                WebKitErrorDescriptionJavaUnavailable,                      @(WebKitErrorJavaUnavailable),
-                WebKitErrorDescriptionPlugInCancelledConnection,            @(WebKitErrorPlugInCancelledConnection),
-                WebKitErrorDescriptionPlugInWillHandleLoad,                 @(WebKitErrorPlugInWillHandleLoad),
+                CyberKitErrorDescriptionCannotFindPlugin,                     @(CyberKitErrorCannotFindPlugIn),
+                CyberKitErrorDescriptionCannotLoadPlugin,                     @(CyberKitErrorCannotLoadPlugIn),
+                CyberKitErrorDescriptionJavaUnavailable,                      @(CyberKitErrorJavaUnavailable),
+                CyberKitErrorDescriptionPlugInCancelledConnection,            @(CyberKitErrorPlugInCancelledConnection),
+                CyberKitErrorDescriptionPlugInWillHandleLoad,                 @(CyberKitErrorPlugInWillHandleLoad),
 
                 // Geolocation errors
-                WebKitErrorDescriptionGeolocationLocationUnknown,           @(WebKitErrorGeolocationLocationUnknown),
+                CyberKitErrorDescriptionGeolocationLocationUnknown,           @(CyberKitErrorGeolocationLocationUnknown),
                 nil];
 
-            [NSError _webkit_addErrorsWithCodesAndDescriptions:dict inDomain:WebKitErrorDomain];
+            [NSError _webkit_addErrorsWithCodesAndDescriptions:dict inDomain:CyberKitErrorDomain];
         }
     });
 }
@@ -119,13 +119,13 @@ static NSMutableDictionary *descriptions = nil;
 
 + (NSError *)_webKitErrorWithDomain:(NSString *)domain code:(int)code URL:(NSURL *)URL
 {
-    [self _registerWebKitErrors];
+    [self _registerCyberKitErrors];
     return [self _webkit_errorWithDomain:domain code:code URL:URL];
 }
 
 + (NSError *)_webKitErrorWithCode:(int)code failingURL:(NSString *)URLString
 {
-    return [self _webKitErrorWithDomain:WebKitErrorDomain code:code URL:[NSURL _webkit_URLWithUserTypedString:URLString]];
+    return [self _webKitErrorWithDomain:CyberKitErrorDomain code:code URL:[NSURL _webkit_URLWithUserTypedString:URLString]];
 }
 
 - (id)_initWithPluginErrorCode:(int)code
@@ -134,11 +134,11 @@ static NSMutableDictionary *descriptions = nil;
                     pluginName:(NSString *)pluginName
                       MIMEType:(NSString *)MIMEType
 {
-    [[self class] _registerWebKitErrors];
+    [[self class] _registerCyberKitErrors];
     
     NSMutableDictionary *userInfo = [[NSMutableDictionary alloc] init];
-    NSDictionary *descriptionsForWebKitErrorDomain = [descriptions objectForKey:WebKitErrorDomain];
-    NSString *localizedDescription = [descriptionsForWebKitErrorDomain objectForKey:@(code)];
+    NSDictionary *descriptionsForCyberKitErrorDomain = [descriptions objectForKey:CyberKitErrorDomain];
+    NSString *localizedDescription = [descriptionsForCyberKitErrorDomain objectForKey:@(code)];
     if (localizedDescription)
         [userInfo setObject:localizedDescription forKey:NSLocalizedDescriptionKey];
     if (contentURL) {
@@ -146,18 +146,18 @@ static NSMutableDictionary *descriptions = nil;
         [userInfo setObject:[contentURL _web_userVisibleString] forKey:NSURLErrorFailingURLStringErrorKey];
     }
     if (pluginPageURL) {
-        [userInfo setObject:[pluginPageURL _web_userVisibleString] forKey:WebKitErrorPlugInPageURLStringKey];
+        [userInfo setObject:[pluginPageURL _web_userVisibleString] forKey:CyberKitErrorPlugInPageURLStringKey];
     }
     if (pluginName) {
-        [userInfo setObject:pluginName forKey:WebKitErrorPlugInNameKey];
+        [userInfo setObject:pluginName forKey:CyberKitErrorPlugInNameKey];
     }
     if (MIMEType) {
-        [userInfo setObject:MIMEType forKey:WebKitErrorMIMETypeKey];
+        [userInfo setObject:MIMEType forKey:CyberKitErrorMIMETypeKey];
     }
 
     NSDictionary *userInfoCopy = [userInfo count] > 0 ? [[NSDictionary alloc] initWithDictionary:userInfo] : nil;
     [userInfo release];
-    NSError *error = [self initWithDomain:WebKitErrorDomain code:code userInfo:userInfoCopy];
+    NSError *error = [self initWithDomain:CyberKitErrorDomain code:code userInfo:userInfoCopy];
     [userInfoCopy release];
     
     return error;

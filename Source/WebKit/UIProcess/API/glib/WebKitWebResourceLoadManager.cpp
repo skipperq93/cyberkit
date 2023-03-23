@@ -25,7 +25,7 @@
 #include "WebKitWebViewPrivate.h"
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 WebKitWebResourceLoadManager::WebKitWebResourceLoadManager(WebKitWebView* webView)
     : m_webView(webView)

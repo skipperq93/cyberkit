@@ -28,7 +28,7 @@
 #import <wtf/RetainPtr.h>
 #import <wtf/WeakObjCPtr.h>
 
-WEBCORE_EXPORT @interface WebCoreFullScreenPlaceholderView : NSView {
+WEBCORE_EXPORT @interface CyberCoreFullScreenPlaceholderView : NSView {
 @private
     RetainPtr<NSVisualEffectView> _effectView;
     RetainPtr<NSTextField> _exitWarning;

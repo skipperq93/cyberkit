@@ -50,7 +50,7 @@ function test()
         static fromPayload(payload)
         {
             let {version, nodes, nodeClassNames, edges, edgeTypes, edgeNames} = payload;
-            console.assert(version === 1, "Only know how to handle JavaScriptCore Heap Snapshot Format Version 1");
+            console.assert(version === 1, "Only know how to handle CyberScriptCore Heap Snapshot Format Version 1");
 
             let nodeMap = new Map;
 

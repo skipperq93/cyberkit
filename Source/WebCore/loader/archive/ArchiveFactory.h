@@ -32,7 +32,7 @@
 
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FragmentedSharedBuffer;
 
@@ -43,4 +43,4 @@ public:
     static void registerKnownArchiveMIMETypes(HashSet<String, ASCIICaseInsensitiveHash>&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

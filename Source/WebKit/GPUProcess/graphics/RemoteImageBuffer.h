@@ -38,12 +38,12 @@ namespace WebKit {
 class RemoteDisplayListRecorder;
 class RemoteRenderingBackend;
 
-class RemoteImageBuffer : public WebCore::ImageBuffer {
+class RemoteImageBuffer : public CyberCore::ImageBuffer {
 public:
     template<typename BackendType>
-    static RefPtr<RemoteImageBuffer> create(const WebCore::FloatSize& size, float resolutionScale, const WebCore::DestinationColorSpace& colorSpace, WebCore::PixelFormat pixelFormat, WebCore::RenderingPurpose purpose, RemoteRenderingBackend& remoteRenderingBackend, QualifiedRenderingResourceIdentifier renderingResourceIdentifier)
+    static RefPtr<RemoteImageBuffer> create(const CyberCore::FloatSize& size, float resolutionScale, const CyberCore::DestinationColorSpace& colorSpace, CyberCore::PixelFormat pixelFormat, CyberCore::RenderingPurpose purpose, RemoteRenderingBackend& remoteRenderingBackend, QualifiedRenderingResourceIdentifier renderingResourceIdentifier)
     {
-        auto context = WebCore::ImageBufferCreationContext { nullptr
+        auto context = CyberCore::ImageBufferCreationContext { nullptr
 #if HAVE(IOSURFACE)
             , &remoteRenderingBackend.ioSurfacePool()
 #endif
@@ -60,12 +60,12 @@ public:
         return imageBuffer;
     }
 
-    static RefPtr<RemoteImageBuffer> createTransfer(std::unique_ptr<WebCore::ImageBufferBackend>&&, const WebCore::ImageBufferBackend::Info&, RemoteRenderingBackend&, QualifiedRenderingResourceIdentifier);
+    static RefPtr<RemoteImageBuffer> createTransfer(std::unique_ptr<CyberCore::ImageBufferBackend>&&, const CyberCore::ImageBufferBackend::Info&, RemoteRenderingBackend&, QualifiedRenderingResourceIdentifier);
 
-    RemoteImageBuffer(const WebCore::ImageBufferBackend::Parameters&, const WebCore::ImageBufferBackend::Info&, std::unique_ptr<WebCore::ImageBufferBackend>&&, RemoteRenderingBackend&, QualifiedRenderingResourceIdentifier);
+    RemoteImageBuffer(const CyberCore::ImageBufferBackend::Parameters&, const CyberCore::ImageBufferBackend::Info&, std::unique_ptr<CyberCore::ImageBufferBackend>&&, RemoteRenderingBackend&, QualifiedRenderingResourceIdentifier);
     ~RemoteImageBuffer();
 
-    void setOwnershipIdentity(const WebCore::ProcessIdentity& resourceOwner);
+    void setOwnershipIdentity(const CyberCore::ProcessIdentity& resourceOwner);
 
 private:
     QualifiedRenderingResourceIdentifier m_renderingResourceIdentifier;
@@ -74,13 +74,13 @@ private:
 };
 
 struct RemoteSerializedImageBuffer : public ThreadSafeRefCounted<RemoteSerializedImageBuffer> {
-    RemoteSerializedImageBuffer(std::unique_ptr<WebCore::ImageBufferBackend>&& backend, const WebCore::ImageBufferBackend::Info& info)
+    RemoteSerializedImageBuffer(std::unique_ptr<CyberCore::ImageBufferBackend>&& backend, const CyberCore::ImageBufferBackend::Info& info)
         : m_backend(WTFMove(backend))
         , m_info(info)
     { }
 
-    std::unique_ptr<WebCore::ImageBufferBackend> m_backend;
-    WebCore::ImageBufferBackend::Info m_info;
+    std::unique_ptr<CyberCore::ImageBufferBackend> m_backend;
+    CyberCore::ImageBufferBackend::Info m_info;
 };
 
 } // namespace WebKit

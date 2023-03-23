@@ -30,9 +30,9 @@
 #include "NetworkProcessConnection.h"
 #include "WebProcess.h"
 
-namespace WebKit {
+namespace CyberKit {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 bool WebCookieCache::isSupported()
 {
@@ -77,7 +77,7 @@ void WebCookieCache::cookiesAdded(const String& host, const Vector<Cookie>& cook
         inMemoryStorageSession().setCookie(cookie);
 }
 
-void WebCookieCache::cookiesDeleted(const String& host, const Vector<WebCore::Cookie>& cookies)
+void WebCookieCache::cookiesDeleted(const String& host, const Vector<CyberCore::Cookie>& cookies)
 {
     if (!m_hostsWithInMemoryStorage.contains(host))
         return;
@@ -130,4 +130,4 @@ NetworkStorageSession& WebCookieCache::inMemoryStorageSession()
 }
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit

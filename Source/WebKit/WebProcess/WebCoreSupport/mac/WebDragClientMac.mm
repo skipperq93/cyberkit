@@ -30,7 +30,7 @@
 
 #import "PasteboardTypes.h"
 #import "ShareableBitmap.h"
-#import "WebCoreArgumentCoders.h"
+#import "CyberCoreArgumentCoders.h"
 #import "WebPage.h"
 #import "WebPageProxyMessages.h"
 #import <CyberCore/CachedImage.h>
@@ -57,8 +57,8 @@
 #import "UIKitSPI.h"
 #endif
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 #if USE(APPKIT)
 using DragImage = NSImage *;
@@ -119,12 +119,12 @@ void WebDragClient::didConcludeEditDrag()
 
 #if USE(APPKIT)
 
-static WebCore::CachedImage* cachedImage(Element& element)
+static CyberCore::CachedImage* cachedImage(Element& element)
 {
     auto* renderer = element.renderer();
-    if (!is<WebCore::RenderImage>(renderer))
+    if (!is<CyberCore::RenderImage>(renderer))
         return nullptr;
-    WebCore::CachedImage* image = downcast<WebCore::RenderImage>(*renderer).cachedImage();
+    CyberCore::CachedImage* image = downcast<CyberCore::RenderImage>(*renderer).cachedImage();
     if (!image || image->errorOccurred()) 
         return nullptr;
     return image;
@@ -134,7 +134,7 @@ void WebDragClient::declareAndWriteDragImage(const String& pasteboardName, Eleme
 {
     ASSERT(pasteboardName == String(NSPasteboardNameDrag));
 
-    WebCore::CachedImage* image = cachedImage(element);
+    CyberCore::CachedImage* image = cachedImage(element);
 
     String extension;
     if (image) {
@@ -195,6 +195,6 @@ void WebDragClient::declareAndWriteDragImage(const String& pasteboardName, Eleme
 
 #endif // USE(APPKIT)
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(DRAG_SUPPORT)

@@ -32,7 +32,7 @@
 
 namespace Nicosia {
 
-class NicosiaImageBufferPipeSourceDisplayDelegate final : public WebCore::GraphicsLayerContentsDisplayDelegate {
+class NicosiaImageBufferPipeSourceDisplayDelegate final : public CyberCore::GraphicsLayerContentsDisplayDelegate {
 public:
     static Ref<NicosiaImageBufferPipeSourceDisplayDelegate> create(RefPtr<ContentLayer>&& nicosiaLayer)
     {
@@ -50,13 +50,13 @@ private:
     RefPtr<ContentLayer> m_nicosiaLayer;
 };
 
-class NicosiaImageBufferPipeSource : public WebCore::ImageBufferPipe::Source, public ContentLayerTextureMapperImpl::Client {
+class NicosiaImageBufferPipeSource : public CyberCore::ImageBufferPipe::Source, public ContentLayerTextureMapperImpl::Client {
 public:
     NicosiaImageBufferPipeSource();
     virtual ~NicosiaImageBufferPipeSource();
 
     // ImageBufferPipe::Source overrides.
-    void handle(WebCore::ImageBuffer&) final;
+    void handle(CyberCore::ImageBuffer&) final;
 
     // ContentLayerTextureMapperImpl::Client overrides.
     void swapBuffersIfNeeded() override;
@@ -66,16 +66,16 @@ private:
     RefPtr<ContentLayer> m_nicosiaLayer;
 
     mutable Lock m_imageBufferLock;
-    RefPtr<WebCore::ImageBuffer> m_imageBuffer;
+    RefPtr<CyberCore::ImageBuffer> m_imageBuffer;
 };
 
-class NicosiaImageBufferPipe final : public WebCore::ImageBufferPipe {
+class NicosiaImageBufferPipe final : public CyberCore::ImageBufferPipe {
 public:
     NicosiaImageBufferPipe();
 
     // ImageBufferPipe overrides.
-    RefPtr<WebCore::ImageBufferPipe::Source> source() const final;
-    void setContentsToLayer(WebCore::GraphicsLayer&) final;
+    RefPtr<CyberCore::ImageBufferPipe::Source> source() const final;
+    void setContentsToLayer(CyberCore::GraphicsLayer&) final;
 private:
     Ref<NicosiaImageBufferPipeSource> m_source;
     Ref<NicosiaImageBufferPipeSourceDisplayDelegate> m_layerContentsDisplayDelegate;

@@ -29,7 +29,7 @@
 #if PLATFORM(IOS_FAMILY)
 
 #import <CoreLocation/CLLocation.h>
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 
 @implementation _WKGeolocationPosition
 
@@ -38,12 +38,12 @@
     if (!location)
         return nil;
 
-    return wrapper(WebKit::WebGeolocationPosition::create(WebCore::GeolocationPositionData { location }));
+    return wrapper(WebKit::WebGeolocationPosition::create(CyberCore::GeolocationPositionData { location }));
 }
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainRunLoop(_WKGeolocationPosition.class, self))
+    if (CyberCoreObjCScheduleDeallocateOnMainRunLoop(_WKGeolocationPosition.class, self))
         return;
 
     _geolocationPosition->~WebGeolocationPosition();

@@ -35,7 +35,7 @@
 
 namespace TestWebKitAPI {
 
-static void testGetAndSet(WebCore::IntPoint point)
+static void testGetAndSet(CyberCore::IntPoint point)
 {
     point.setX(1);
     EXPECT_EQ(1, point.x());
@@ -45,7 +45,7 @@ static void testGetAndSet(WebCore::IntPoint point)
 
 TEST(IntPoint, DefaultConstruction)
 {
-    WebCore::IntPoint test;
+    CyberCore::IntPoint test;
 
     EXPECT_EQ(0, test.x());
     EXPECT_EQ(0, test.y());
@@ -56,7 +56,7 @@ TEST(IntPoint, DefaultConstruction)
 
 TEST(IntPoint, ValueConstruction)
 {
-    WebCore::IntPoint test(10, 9);
+    CyberCore::IntPoint test(10, 9);
 
     EXPECT_EQ(10, test.x());
     EXPECT_EQ(9, test.y());
@@ -66,7 +66,7 @@ TEST(IntPoint, ValueConstruction)
 
 TEST(IntPoint, ZeroConstruction)
 {
-    WebCore::IntPoint test = WebCore::IntPoint::zero();
+    CyberCore::IntPoint test = CyberCore::IntPoint::zero();
 
     EXPECT_EQ(0, test.x());
     EXPECT_EQ(0, test.y());
@@ -75,8 +75,8 @@ TEST(IntPoint, ZeroConstruction)
 
 TEST(IntPoint, IntSizeConstruction)
 {
-    WebCore::IntSize testInput(2003, 1997);
-    WebCore::IntPoint test(testInput);
+    CyberCore::IntSize testInput(2003, 1997);
+    CyberCore::IntPoint test(testInput);
 
     EXPECT_EQ(2003, test.x());
     EXPECT_EQ(1997, test.y());
@@ -85,8 +85,8 @@ TEST(IntPoint, IntSizeConstruction)
 
 TEST(IntPoint, FloatPointConstruction)
 {
-    WebCore::FloatPoint testInput(2003.2f, 1997.3f);
-    WebCore::IntPoint test(testInput);
+    CyberCore::FloatPoint testInput(2003.2f, 1997.3f);
+    CyberCore::IntPoint test(testInput);
 
     EXPECT_EQ(2003, test.x());
     EXPECT_EQ(1997, test.y());
@@ -95,8 +95,8 @@ TEST(IntPoint, FloatPointConstruction)
 
 TEST(IntPoint, Move)
 {
-    WebCore::IntPoint test(10, 20);
-    WebCore::IntSize size(30, 50);
+    CyberCore::IntPoint test(10, 20);
+    CyberCore::IntSize size(30, 50);
 
     test.move(size);
 
@@ -108,7 +108,7 @@ TEST(IntPoint, Move)
     EXPECT_EQ(38, test.x());
     EXPECT_EQ(78, test.y());
 
-    WebCore::IntPoint offset(100, 100);
+    CyberCore::IntPoint offset(100, 100);
 
     test.moveBy(offset);
 
@@ -118,7 +118,7 @@ TEST(IntPoint, Move)
 
 TEST(IntPoint, Scale)
 {
-    WebCore::IntPoint test(10, 20);
+    CyberCore::IntPoint test(10, 20);
 
     test.scale(2.0);
 
@@ -133,8 +133,8 @@ TEST(IntPoint, Scale)
 
 TEST(IntPoint, Expand)
 {
-    WebCore::IntPoint a(10, 20);
-    WebCore::IntPoint b(20, 40);
+    CyberCore::IntPoint a(10, 20);
+    CyberCore::IntPoint b(20, 40);
 
     auto c = a.expandedTo(b);
 
@@ -144,8 +144,8 @@ TEST(IntPoint, Expand)
 
 TEST(IntPoint, Shrink)
 {
-    WebCore::IntPoint a(10, 20);
-    WebCore::IntPoint b(20, 40);
+    CyberCore::IntPoint a(10, 20);
+    CyberCore::IntPoint b(20, 40);
 
     auto c = b.shrunkTo(a);
 
@@ -155,7 +155,7 @@ TEST(IntPoint, Shrink)
 
 TEST(IntPoint, Transpose)
 {
-    WebCore::IntPoint a(10, 20);
+    CyberCore::IntPoint a(10, 20);
 
     auto b = a.transposedPoint();
 
@@ -165,9 +165,9 @@ TEST(IntPoint, Transpose)
 
 TEST(IntPoint, Cast)
 {
-    WebCore::IntPoint a(10, 20);
+    CyberCore::IntPoint a(10, 20);
 
-    WebCore::IntSize as = WebCore::toIntSize(a);
+    CyberCore::IntSize as = CyberCore::toIntSize(a);
     EXPECT_EQ(10, as.width());
     EXPECT_EQ(20, as.height());
 
@@ -177,7 +177,7 @@ TEST(IntPoint, Cast)
     ASSERT_FLOAT_EQ(10.0f, cgPoint.x);
     ASSERT_FLOAT_EQ(20.0f, cgPoint.y);
 
-    WebCore::IntPoint fromCGPoint(cgPoint);
+    CyberCore::IntPoint fromCGPoint(cgPoint);
     EXPECT_EQ(10, fromCGPoint.x());
     EXPECT_EQ(20, fromCGPoint.y());
     ASSERT_TRUE(a == fromCGPoint);
@@ -189,7 +189,7 @@ TEST(IntPoint, Cast)
     ASSERT_FLOAT_EQ(10.0f, gdiPoint.x);
     ASSERT_FLOAT_EQ(20.0f, gdiPoint.y);
 
-    WebCore::IntPoint fromGDIPoint(gdiPoint);
+    CyberCore::IntPoint fromGDIPoint(gdiPoint);
     EXPECT_EQ(10, fromGDIPoint.x());
     EXPECT_EQ(20, fromGDIPoint.y());
     ASSERT_TRUE(a == fromGDIPoint);
@@ -198,9 +198,9 @@ TEST(IntPoint, Cast)
 
 TEST(IntPoint, Addition)
 {
-    WebCore::IntPoint a(10, 20);
-    WebCore::IntPoint b(50, 60);
-    WebCore::IntSize bs(50, 60);
+    CyberCore::IntPoint a(10, 20);
+    CyberCore::IntPoint b(50, 60);
+    CyberCore::IntSize bs(50, 60);
 
     auto c = a + b;
 
@@ -215,16 +215,16 @@ TEST(IntPoint, Addition)
 
 TEST(IntPoint, Subtraction)
 {
-    WebCore::IntPoint a(100, 80);
-    WebCore::IntPoint b(50, 60);
-    WebCore::IntSize bs(50, 60);
+    CyberCore::IntPoint a(100, 80);
+    CyberCore::IntPoint b(50, 60);
+    CyberCore::IntSize bs(50, 60);
 
-    WebCore::IntSize c = a - b;
+    CyberCore::IntSize c = a - b;
 
     EXPECT_EQ(50, c.width());
     EXPECT_EQ(20, c.height());
 
-    WebCore::IntPoint d = a - bs;
+    CyberCore::IntPoint d = a - bs;
 
     EXPECT_EQ(50, d.x());
     EXPECT_EQ(20, d.y());
@@ -237,7 +237,7 @@ TEST(IntPoint, Subtraction)
 
 TEST(IntPoint, Negation)
 {
-    WebCore::IntPoint a(100, 80);
+    CyberCore::IntPoint a(100, 80);
     auto b = -a;
 
     EXPECT_EQ(-100, b.x());
@@ -246,9 +246,9 @@ TEST(IntPoint, Negation)
 
 TEST(IntPoint, Equality)
 {
-    WebCore::IntPoint a(100, 80);
-    WebCore::IntPoint b(70, 50);
-    WebCore::IntPoint c(100, 80);
+    CyberCore::IntPoint a(100, 80);
+    CyberCore::IntPoint b(70, 50);
+    CyberCore::IntPoint c(100, 80);
 
     ASSERT_TRUE(a == c);
     ASSERT_FALSE(a == b);

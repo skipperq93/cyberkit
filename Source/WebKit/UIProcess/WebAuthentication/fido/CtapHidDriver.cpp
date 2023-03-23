@@ -157,7 +157,7 @@ void CtapHidDriver::Worker::cancel(fido::FidoHidMessage&& requestMessage)
 }
 
 CtapHidDriver::CtapHidDriver(UniqueRef<HidConnection>&& connection)
-    : CtapDriver(WebCore::AuthenticatorTransport::Usb)
+    : CtapDriver(CyberCore::AuthenticatorTransport::Usb)
     , m_worker(makeUniqueRef<Worker>(WTFMove(connection)))
     , m_nonce(kHidInitNonceLength)
 {

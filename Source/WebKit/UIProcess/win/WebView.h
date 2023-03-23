@@ -35,7 +35,7 @@
 #include <wtf/Forward.h>
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 class IntSize;
 }
 
@@ -45,7 +45,7 @@ class DrawingAreaProxy;
 
 class WebView
     : public API::ObjectImpl<API::Object::Type::View>
-    , WebCore::WindowMessageListener {
+    , CyberCore::WindowMessageListener {
 public:
     static Ref<WebView> create(RECT rect, const API::PageConfiguration& configuration, HWND parentWindow)
     {
@@ -64,15 +64,15 @@ public:
     bool isFocused();
     bool isVisible();
     bool isInWindow();
-    void setCursor(const WebCore::Cursor&);
+    void setCursor(const CyberCore::Cursor&);
     void setOverrideCursor(HCURSOR);
-    void setScrollOffsetOnNextResize(const WebCore::IntSize&);
+    void setScrollOffsetOnNextResize(const CyberCore::IntSize&);
     void initialize();
     void setToolTip(const String&);
     void setUsesOffscreenRendering(bool);
     bool usesOffscreenRendering() const;
 
-    void setViewNeedsDisplay(const WebCore::Region&);
+    void setViewNeedsDisplay(const CyberCore::Region&);
 
     WebPageProxy* page() const { return m_page.get(); }
 
@@ -101,7 +101,7 @@ private:
     LRESULT onSetCursor(HWND hWnd, UINT message, WPARAM, LPARAM, bool& handled);
     LRESULT onMenuCommand(HWND hWnd, UINT message, WPARAM, LPARAM, bool& handled);
 
-    void paint(HDC, const WebCore::IntRect& dirtyRect);
+    void paint(HDC, const CyberCore::IntRect& dirtyRect);
     void setWasActivatedByMouseEvent(bool flag) { m_wasActivatedByMouseEvent = flag; }
 
     void updateActiveState();
@@ -131,7 +131,7 @@ private:
 
     virtual HWND nativeWindow();
 
-    // WebCore::WindowMessageListener
+    // CyberCore::WindowMessageListener
     virtual void windowReceivedMessage(HWND, UINT message, WPARAM, LPARAM);
 
     HWND m_window { nullptr };
@@ -139,7 +139,7 @@ private:
     HWND m_toolTipWindow { nullptr };
     WTF::String m_toolTip;
 
-    WebCore::IntSize m_nextResizeScrollOffset;
+    CyberCore::IntSize m_nextResizeScrollOffset;
 
     HCURSOR m_lastCursorSet { nullptr };
     HCURSOR m_webCoreCursor { nullptr };

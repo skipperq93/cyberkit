@@ -44,37 +44,37 @@ namespace WebKit {
 
 class NetworkProcess;
 
-class NetworkSocketStream : public RefCounted<NetworkSocketStream>, public IPC::MessageSender, public IPC::MessageReceiver, public WebCore::SocketStreamHandleClient {
+class NetworkSocketStream : public RefCounted<NetworkSocketStream>, public IPC::MessageSender, public IPC::MessageReceiver, public CyberCore::SocketStreamHandleClient {
 public:
-    static Ref<NetworkSocketStream> create(NetworkProcess&, URL&&, PAL::SessionID, const String& credentialPartition, WebCore::WebSocketIdentifier, IPC::Connection&, WebCore::SourceApplicationAuditToken&&, bool shouldAcceptInsecureCertificates);
+    static Ref<NetworkSocketStream> create(NetworkProcess&, URL&&, PAL::SessionID, const String& credentialPartition, CyberCore::WebSocketIdentifier, IPC::Connection&, CyberCore::SourceApplicationAuditToken&&, bool shouldAcceptInsecureCertificates);
     ~NetworkSocketStream();
 
     void didReceiveMessage(IPC::Connection&, IPC::Decoder&);
 
     void sendData(const IPC::DataReference&, uint64_t);
-    void sendHandshake(const IPC::DataReference&, const std::optional<WebCore::CookieRequestHeaderFieldProxy>&, uint64_t);
+    void sendHandshake(const IPC::DataReference&, const std::optional<CyberCore::CookieRequestHeaderFieldProxy>&, uint64_t);
     void close();
     
     // SocketStreamHandleClient
-    void didOpenSocketStream(WebCore::SocketStreamHandle&) final;
-    void didCloseSocketStream(WebCore::SocketStreamHandle&) final;
-    void didReceiveSocketStreamData(WebCore::SocketStreamHandle&, const uint8_t*, size_t) final;
-    void didFailToReceiveSocketStreamData(WebCore::SocketStreamHandle&) final;
-    void didUpdateBufferedAmount(WebCore::SocketStreamHandle&, size_t) final;
-    void didFailSocketStream(WebCore::SocketStreamHandle&, const WebCore::SocketStreamError&) final;
+    void didOpenSocketStream(CyberCore::SocketStreamHandle&) final;
+    void didCloseSocketStream(CyberCore::SocketStreamHandle&) final;
+    void didReceiveSocketStreamData(CyberCore::SocketStreamHandle&, const uint8_t*, size_t) final;
+    void didFailToReceiveSocketStreamData(CyberCore::SocketStreamHandle&) final;
+    void didUpdateBufferedAmount(CyberCore::SocketStreamHandle&, size_t) final;
+    void didFailSocketStream(CyberCore::SocketStreamHandle&, const CyberCore::SocketStreamError&) final;
 
 private:
     void sendDelayedFailMessage();
     IPC::Connection* messageSenderConnection() const final;
     uint64_t messageSenderDestinationID() const final;
 
-    NetworkSocketStream(NetworkProcess&, URL&&, PAL::SessionID, const String& credentialPartition, WebCore::WebSocketIdentifier, IPC::Connection&, WebCore::SourceApplicationAuditToken&&, bool shouldAcceptInsecureCertificates);
+    NetworkSocketStream(NetworkProcess&, URL&&, PAL::SessionID, const String& credentialPartition, CyberCore::WebSocketIdentifier, IPC::Connection&, CyberCore::SourceApplicationAuditToken&&, bool shouldAcceptInsecureCertificates);
 
-    WebCore::WebSocketIdentifier m_identifier;
+    CyberCore::WebSocketIdentifier m_identifier;
     IPC::Connection& m_connection;
-    Ref<WebCore::SocketStreamHandleImpl> m_impl;
-    WebCore::Timer m_delayFailTimer;
-    WebCore::SocketStreamError m_closedPortError;
+    Ref<CyberCore::SocketStreamHandleImpl> m_impl;
+    CyberCore::Timer m_delayFailTimer;
+    CyberCore::SocketStreamError m_closedPortError;
 };
 
 } // namespace WebKit

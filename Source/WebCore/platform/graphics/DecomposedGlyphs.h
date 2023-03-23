@@ -31,7 +31,7 @@
 #include <wtf/HashSet.h>
 #include <wtf/ThreadSafeWeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DecomposedGlyphs final
     : public ThreadSafeRefCountedAndCanMakeThreadSafeWeakPtr<DecomposedGlyphs, WTF::DestructionThread::Main> {
@@ -65,4 +65,4 @@ private:
     RenderingResourceIdentifier m_renderingResourceIdentifier;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

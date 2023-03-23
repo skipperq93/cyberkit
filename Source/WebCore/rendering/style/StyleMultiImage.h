@@ -26,7 +26,7 @@
 
 #include "StyleImage.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 
@@ -86,4 +86,4 @@ private:
     bool m_isPending { true };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

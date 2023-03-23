@@ -29,7 +29,7 @@
 
 #if ENABLE(SERVICE_WORKER)
 
-namespace WebCore {
+namespace CyberCore {
 
 ServiceWorkerContextData ServiceWorkerContextData::isolatedCopy() const &
 {
@@ -73,6 +73,6 @@ ServiceWorkerContextData ServiceWorkerContextData::isolatedCopy() &&
     };
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

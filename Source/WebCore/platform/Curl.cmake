@@ -1,8 +1,8 @@
-list(APPEND WebCore_PRIVATE_INCLUDE_DIRECTORIES
+list(APPEND CyberCore_PRIVATE_INCLUDE_DIRECTORIES
     "${WEBCORE_DIR}/platform/network/curl"
 )
 
-list(APPEND WebCore_SOURCES
+list(APPEND CyberCore_SOURCES
     platform/network/curl/AuthenticationChallengeCurl.cpp
     platform/network/curl/CertificateInfoCurl.cpp
     platform/network/curl/CookieJarDB.cpp
@@ -36,7 +36,7 @@ list(APPEND WebCore_SOURCES
     platform/network/curl/SynchronousLoaderClientCurl.cpp
 )
 
-list(APPEND WebCore_PRIVATE_FRAMEWORK_HEADERS
+list(APPEND CyberCore_PRIVATE_FRAMEWORK_HEADERS
     platform/network/curl/AuthenticationChallenge.h
     platform/network/curl/CertificateInfo.h
     platform/network/curl/CookieJarDB.h
@@ -69,7 +69,7 @@ list(APPEND WebCore_PRIVATE_FRAMEWORK_HEADERS
     platform/network/curl/SocketStreamHandleImpl.h
 )
 
-list(APPEND WebCore_LIBRARIES
+list(APPEND CyberCore_LIBRARIES
     CURL::libcurl
     LibPSL::LibPSL
     OpenSSL::SSL

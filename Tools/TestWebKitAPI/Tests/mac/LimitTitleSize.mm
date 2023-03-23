@@ -56,7 +56,7 @@ static size_t maxTitleLength = 4096;
 }
 @end
 
-TEST(WebKitLegacy, LimitTitleSize)
+TEST(CyberKitLegacy, LimitTitleSize)
 {
     RetainPtr<WebView> webView = adoptNS([[WebView alloc] initWithFrame:NSMakeRect(0, 0, 120, 200) frameName:nil groupName:nil]);
     RetainPtr<LimitTitleSizeTest> testController = adoptNS([LimitTitleSizeTest new]);

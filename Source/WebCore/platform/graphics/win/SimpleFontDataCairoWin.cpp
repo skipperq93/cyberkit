@@ -39,7 +39,7 @@
 #include <mlang.h>
 #include <wtf/MathExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 void Font::platformInit()
 {

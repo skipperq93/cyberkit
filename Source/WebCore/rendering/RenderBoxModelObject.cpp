@@ -73,7 +73,7 @@
 #include "RuntimeApplicationChecks.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -935,4 +935,4 @@ void RenderBoxModelObject::applyTransform(TransformationMatrix&, const RenderSty
     ASSERT_NOT_REACHED();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

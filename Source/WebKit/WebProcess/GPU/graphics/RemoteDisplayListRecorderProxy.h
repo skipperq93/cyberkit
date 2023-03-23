@@ -43,109 +43,109 @@ namespace WebKit {
 class RemoteRenderingBackendProxy;
 class RemoteImageBufferProxy;
 
-class RemoteDisplayListRecorderProxy : public WebCore::DisplayList::Recorder {
+class RemoteDisplayListRecorderProxy : public CyberCore::DisplayList::Recorder {
 public:
-    RemoteDisplayListRecorderProxy(RemoteImageBufferProxy&, RemoteRenderingBackendProxy&, const WebCore::FloatRect& initialClip, const WebCore::AffineTransform&);
+    RemoteDisplayListRecorderProxy(RemoteImageBufferProxy&, RemoteRenderingBackendProxy&, const CyberCore::FloatRect& initialClip, const CyberCore::AffineTransform&);
     ~RemoteDisplayListRecorderProxy() = default;
 
     void convertToLuminanceMask() final;
-    void transformToColorSpace(const WebCore::DestinationColorSpace&) final;
+    void transformToColorSpace(const CyberCore::DestinationColorSpace&) final;
     void flushContext(DisplayListRecorderFlushIdentifier);
     void disconnect();
 
 private:
     template<typename T> void send(T&& message);
 
-    friend class WebCore::DrawGlyphsRecorder;
+    friend class CyberCore::DrawGlyphsRecorder;
 
-    WebCore::RenderingMode renderingMode() const final;
+    CyberCore::RenderingMode renderingMode() const final;
 
     void recordSave() final;
     void recordRestore() final;
     void recordTranslate(float x, float y) final;
     void recordRotate(float angle) final;
-    void recordScale(const WebCore::FloatSize&) final;
-    void recordSetCTM(const WebCore::AffineTransform&) final;
-    void recordConcatenateCTM(const WebCore::AffineTransform&) final;
-    void recordSetInlineFillColor(WebCore::SRGBA<uint8_t>) final;
-    void recordSetInlineStrokeColor(WebCore::SRGBA<uint8_t>) final;
+    void recordScale(const CyberCore::FloatSize&) final;
+    void recordSetCTM(const CyberCore::AffineTransform&) final;
+    void recordConcatenateCTM(const CyberCore::AffineTransform&) final;
+    void recordSetInlineFillColor(CyberCore::SRGBA<uint8_t>) final;
+    void recordSetInlineStrokeColor(CyberCore::SRGBA<uint8_t>) final;
     void recordSetStrokeThickness(float) final;
-    void recordSetState(const WebCore::GraphicsContextState&) final;
-    void recordSetLineCap(WebCore::LineCap) final;
-    void recordSetLineDash(const WebCore::DashArray&, float dashOffset) final;
-    void recordSetLineJoin(WebCore::LineJoin) final;
+    void recordSetState(const CyberCore::GraphicsContextState&) final;
+    void recordSetLineCap(CyberCore::LineCap) final;
+    void recordSetLineDash(const CyberCore::DashArray&, float dashOffset) final;
+    void recordSetLineJoin(CyberCore::LineJoin) final;
     void recordSetMiterLimit(float) final;
     void recordClearShadow() final;
-    void recordClip(const WebCore::FloatRect&) final;
-    void recordClipOut(const WebCore::FloatRect&) final;
-    void recordClipToImageBuffer(WebCore::ImageBuffer&, const WebCore::FloatRect& destinationRect) final;
-    void recordClipOutToPath(const WebCore::Path&) final;
-    void recordClipPath(const WebCore::Path&, WebCore::WindRule) final;
-    void recordDrawFilteredImageBuffer(WebCore::ImageBuffer*, const WebCore::FloatRect& sourceImageRect, WebCore::Filter&) final;
-    void recordDrawGlyphs(const WebCore::Font&, const WebCore::GlyphBufferGlyph*, const WebCore::GlyphBufferAdvance*, unsigned count, const WebCore::FloatPoint& localAnchor, WebCore::FontSmoothingMode) final;
-    void recordDrawDecomposedGlyphs(const WebCore::Font&, const WebCore::DecomposedGlyphs&) final;
-    void recordDrawImageBuffer(WebCore::ImageBuffer&, const WebCore::FloatRect& destRect, const WebCore::FloatRect& srcRect, const WebCore::ImagePaintingOptions&) final;
-    void recordDrawNativeImage(WebCore::RenderingResourceIdentifier imageIdentifier, const WebCore::FloatSize& imageSize, const WebCore::FloatRect& destRect, const WebCore::FloatRect& srcRect, const WebCore::ImagePaintingOptions&) final;
-    void recordDrawSystemImage(WebCore::SystemImage&, const WebCore::FloatRect&);
-    void recordDrawPattern(WebCore::RenderingResourceIdentifier, const WebCore::FloatRect& destRect, const WebCore::FloatRect& tileRect, const WebCore::AffineTransform&, const WebCore::FloatPoint& phase, const WebCore::FloatSize& spacing, const WebCore::ImagePaintingOptions& = { }) final;
+    void recordClip(const CyberCore::FloatRect&) final;
+    void recordClipOut(const CyberCore::FloatRect&) final;
+    void recordClipToImageBuffer(CyberCore::ImageBuffer&, const CyberCore::FloatRect& destinationRect) final;
+    void recordClipOutToPath(const CyberCore::Path&) final;
+    void recordClipPath(const CyberCore::Path&, CyberCore::WindRule) final;
+    void recordDrawFilteredImageBuffer(CyberCore::ImageBuffer*, const CyberCore::FloatRect& sourceImageRect, CyberCore::Filter&) final;
+    void recordDrawGlyphs(const CyberCore::Font&, const CyberCore::GlyphBufferGlyph*, const CyberCore::GlyphBufferAdvance*, unsigned count, const CyberCore::FloatPoint& localAnchor, CyberCore::FontSmoothingMode) final;
+    void recordDrawDecomposedGlyphs(const CyberCore::Font&, const CyberCore::DecomposedGlyphs&) final;
+    void recordDrawImageBuffer(CyberCore::ImageBuffer&, const CyberCore::FloatRect& destRect, const CyberCore::FloatRect& srcRect, const CyberCore::ImagePaintingOptions&) final;
+    void recordDrawNativeImage(CyberCore::RenderingResourceIdentifier imageIdentifier, const CyberCore::FloatSize& imageSize, const CyberCore::FloatRect& destRect, const CyberCore::FloatRect& srcRect, const CyberCore::ImagePaintingOptions&) final;
+    void recordDrawSystemImage(CyberCore::SystemImage&, const CyberCore::FloatRect&);
+    void recordDrawPattern(CyberCore::RenderingResourceIdentifier, const CyberCore::FloatRect& destRect, const CyberCore::FloatRect& tileRect, const CyberCore::AffineTransform&, const CyberCore::FloatPoint& phase, const CyberCore::FloatSize& spacing, const CyberCore::ImagePaintingOptions& = { }) final;
     void recordBeginTransparencyLayer(float) final;
     void recordEndTransparencyLayer() final;
-    void recordDrawRect(const WebCore::FloatRect&, float) final;
-    void recordDrawLine(const WebCore::FloatPoint& point1, const WebCore::FloatPoint& point2) final;
-    void recordDrawLinesForText(const WebCore::FloatPoint& blockLocation, const WebCore::FloatSize& localAnchor, float thickness, const WebCore::DashArray& widths, bool printing, bool doubleLines, WebCore::StrokeStyle) final;
-    void recordDrawDotsForDocumentMarker(const WebCore::FloatRect&, const WebCore::DocumentMarkerLineStyle&) final;
-    void recordDrawEllipse(const WebCore::FloatRect&) final;
-    void recordDrawPath(const WebCore::Path&) final;
-    void recordDrawFocusRingPath(const WebCore::Path&, float outlineWidth, const WebCore::Color&) final;
-    void recordDrawFocusRingRects(const Vector<WebCore::FloatRect>&, float outlineOffset, float outlineWidth, const WebCore::Color&) final;
-    void recordFillRect(const WebCore::FloatRect&) final;
-    void recordFillRectWithColor(const WebCore::FloatRect&, const WebCore::Color&) final;
-    void recordFillRectWithGradient(const WebCore::FloatRect&, WebCore::Gradient&) final;
-    void recordFillCompositedRect(const WebCore::FloatRect&, const WebCore::Color&, WebCore::CompositeOperator, WebCore::BlendMode) final;
-    void recordFillRoundedRect(const WebCore::FloatRoundedRect&, const WebCore::Color&, WebCore::BlendMode) final;
-    void recordFillRectWithRoundedHole(const WebCore::FloatRect&, const WebCore::FloatRoundedRect&, const WebCore::Color&) final;
+    void recordDrawRect(const CyberCore::FloatRect&, float) final;
+    void recordDrawLine(const CyberCore::FloatPoint& point1, const CyberCore::FloatPoint& point2) final;
+    void recordDrawLinesForText(const CyberCore::FloatPoint& blockLocation, const CyberCore::FloatSize& localAnchor, float thickness, const CyberCore::DashArray& widths, bool printing, bool doubleLines, CyberCore::StrokeStyle) final;
+    void recordDrawDotsForDocumentMarker(const CyberCore::FloatRect&, const CyberCore::DocumentMarkerLineStyle&) final;
+    void recordDrawEllipse(const CyberCore::FloatRect&) final;
+    void recordDrawPath(const CyberCore::Path&) final;
+    void recordDrawFocusRingPath(const CyberCore::Path&, float outlineWidth, const CyberCore::Color&) final;
+    void recordDrawFocusRingRects(const Vector<CyberCore::FloatRect>&, float outlineOffset, float outlineWidth, const CyberCore::Color&) final;
+    void recordFillRect(const CyberCore::FloatRect&) final;
+    void recordFillRectWithColor(const CyberCore::FloatRect&, const CyberCore::Color&) final;
+    void recordFillRectWithGradient(const CyberCore::FloatRect&, CyberCore::Gradient&) final;
+    void recordFillCompositedRect(const CyberCore::FloatRect&, const CyberCore::Color&, CyberCore::CompositeOperator, CyberCore::BlendMode) final;
+    void recordFillRoundedRect(const CyberCore::FloatRoundedRect&, const CyberCore::Color&, CyberCore::BlendMode) final;
+    void recordFillRectWithRoundedHole(const CyberCore::FloatRect&, const CyberCore::FloatRoundedRect&, const CyberCore::Color&) final;
 #if ENABLE(INLINE_PATH_DATA)
-    void recordFillLine(const WebCore::LineData&) final;
-    void recordFillArc(const WebCore::ArcData&) final;
-    void recordFillQuadCurve(const WebCore::QuadCurveData&) final;
-    void recordFillBezierCurve(const WebCore::BezierCurveData&) final;
+    void recordFillLine(const CyberCore::LineData&) final;
+    void recordFillArc(const CyberCore::ArcData&) final;
+    void recordFillQuadCurve(const CyberCore::QuadCurveData&) final;
+    void recordFillBezierCurve(const CyberCore::BezierCurveData&) final;
 #endif
-    void recordFillPath(const WebCore::Path&) final;
-    void recordFillEllipse(const WebCore::FloatRect&) final;
+    void recordFillPath(const CyberCore::Path&) final;
+    void recordFillEllipse(const CyberCore::FloatRect&) final;
 #if ENABLE(VIDEO)
-    void recordPaintFrameForMedia(WebCore::MediaPlayer&, const WebCore::FloatRect& destination) final;
-    void recordPaintVideoFrame(WebCore::VideoFrame&, const WebCore::FloatRect&, bool shouldDiscardAlpha) final;
+    void recordPaintFrameForMedia(CyberCore::MediaPlayer&, const CyberCore::FloatRect& destination) final;
+    void recordPaintVideoFrame(CyberCore::VideoFrame&, const CyberCore::FloatRect&, bool shouldDiscardAlpha) final;
 #endif
-    void recordStrokeRect(const WebCore::FloatRect&, float) final;
+    void recordStrokeRect(const CyberCore::FloatRect&, float) final;
 #if ENABLE(INLINE_PATH_DATA)
-    void recordStrokeLine(const WebCore::LineData&) final;
-    void recordStrokeLineWithColorAndThickness(WebCore::SRGBA<uint8_t>, float, const WebCore::LineData&) final;
-    void recordStrokeArc(const WebCore::ArcData&) final;
-    void recordStrokeQuadCurve(const WebCore::QuadCurveData&) final;
-    void recordStrokeBezierCurve(const WebCore::BezierCurveData&) final;
+    void recordStrokeLine(const CyberCore::LineData&) final;
+    void recordStrokeLineWithColorAndThickness(CyberCore::SRGBA<uint8_t>, float, const CyberCore::LineData&) final;
+    void recordStrokeArc(const CyberCore::ArcData&) final;
+    void recordStrokeQuadCurve(const CyberCore::QuadCurveData&) final;
+    void recordStrokeBezierCurve(const CyberCore::BezierCurveData&) final;
 #endif
-    void recordStrokePath(const WebCore::Path&) final;
-    void recordStrokeEllipse(const WebCore::FloatRect&) final;
-    void recordClearRect(const WebCore::FloatRect&) final;
-    void recordDrawControlPart(WebCore::ControlPart&, const WebCore::FloatRoundedRect& borderRect, float deviceScaleFactor, const WebCore::ControlStyle&) final;
+    void recordStrokePath(const CyberCore::Path&) final;
+    void recordStrokeEllipse(const CyberCore::FloatRect&) final;
+    void recordClearRect(const CyberCore::FloatRect&) final;
+    void recordDrawControlPart(CyberCore::ControlPart&, const CyberCore::FloatRoundedRect& borderRect, float deviceScaleFactor, const CyberCore::ControlStyle&) final;
 #if USE(CG)
     void recordApplyStrokePattern() final;
     void recordApplyFillPattern() final;
 #endif
     void recordApplyDeviceScaleFactor(float) final;
 
-    bool recordResourceUse(WebCore::NativeImage&) final;
-    bool recordResourceUse(WebCore::ImageBuffer&) final;
-    bool recordResourceUse(const WebCore::SourceImage&) final;
-    bool recordResourceUse(WebCore::Font&) final;
-    bool recordResourceUse(WebCore::DecomposedGlyphs&) final;
+    bool recordResourceUse(CyberCore::NativeImage&) final;
+    bool recordResourceUse(CyberCore::ImageBuffer&) final;
+    bool recordResourceUse(const CyberCore::SourceImage&) final;
+    bool recordResourceUse(CyberCore::Font&) final;
+    bool recordResourceUse(CyberCore::DecomposedGlyphs&) final;
 
-    RefPtr<WebCore::ImageBuffer> createImageBuffer(const WebCore::FloatSize&, float resolutionScale, const WebCore::DestinationColorSpace&, std::optional<WebCore::RenderingMode>, std::optional<WebCore::RenderingMethod>) const final;
-    RefPtr<WebCore::ImageBuffer> createAlignedImageBuffer(const WebCore::FloatSize&, const WebCore::DestinationColorSpace&, std::optional<WebCore::RenderingMethod>) const final;
-    RefPtr<WebCore::ImageBuffer> createAlignedImageBuffer(const WebCore::FloatRect&, const WebCore::DestinationColorSpace&, std::optional<WebCore::RenderingMethod>) const final;
+    RefPtr<CyberCore::ImageBuffer> createImageBuffer(const CyberCore::FloatSize&, float resolutionScale, const CyberCore::DestinationColorSpace&, std::optional<CyberCore::RenderingMode>, std::optional<CyberCore::RenderingMethod>) const final;
+    RefPtr<CyberCore::ImageBuffer> createAlignedImageBuffer(const CyberCore::FloatSize&, const CyberCore::DestinationColorSpace&, std::optional<CyberCore::RenderingMethod>) const final;
+    RefPtr<CyberCore::ImageBuffer> createAlignedImageBuffer(const CyberCore::FloatRect&, const CyberCore::DestinationColorSpace&, std::optional<CyberCore::RenderingMethod>) const final;
 
     static inline constexpr Seconds defaultSendTimeout = 3_s;
-    WebCore::RenderingResourceIdentifier m_destinationBufferIdentifier;
+    CyberCore::RenderingResourceIdentifier m_destinationBufferIdentifier;
     WeakPtr<RemoteImageBufferProxy> m_imageBuffer;
     WeakPtr<RemoteRenderingBackendProxy> m_renderingBackend;
 #if PLATFORM(COCOA) && ENABLE(VIDEO)

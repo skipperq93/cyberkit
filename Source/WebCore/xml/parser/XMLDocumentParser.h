@@ -35,7 +35,7 @@
 #include <wtf/text/AtomStringHash.h>
 #include <wtf/text/CString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ContainerNode;
 class CachedResourceLoader;
@@ -192,4 +192,4 @@ xmlDocPtr xmlDocPtrForString(CachedResourceLoader&, const String& source, const 
 
 std::optional<HashMap<String, String>> parseAttributes(const String&);
 
-} // namespace WebCore
+} // namespace CyberCore

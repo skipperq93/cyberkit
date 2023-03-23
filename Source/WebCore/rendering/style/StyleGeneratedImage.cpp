@@ -28,7 +28,7 @@
 #include "RenderElement.h"
 #include "StyleResolver.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static const Seconds timeToKeepCachedGeneratedImages { 3_s };
 
@@ -163,4 +163,4 @@ bool StyleGeneratedImage::hasClient(RenderElement& renderer) const
     return m_clients.contains(&renderer);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

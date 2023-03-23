@@ -27,7 +27,7 @@
 
 #include "SVGPathSegValue.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGPathSegClosePath final : public SVGPathSeg {
 public:

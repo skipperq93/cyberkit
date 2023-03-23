@@ -31,7 +31,7 @@
 #include "RenderStyle.h"
 #include "StyleUpdate.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace Style {
 
 std::unique_ptr<Relations> commitRelationsToRenderStyle(RenderStyle& style, const Element& element, const Relations& relations)

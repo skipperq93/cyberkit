@@ -27,7 +27,7 @@
 
 #include "SVGPathSeg.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 template<class... Arguments>
 class SVGPathSegValue : public SVGPathSeg {

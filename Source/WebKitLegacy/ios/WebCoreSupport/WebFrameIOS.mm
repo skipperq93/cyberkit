@@ -61,7 +61,7 @@
 #import <unicode/uchar.h>
 #import <wtf/cocoa/VectorCocoa.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 //-------------------
 
@@ -73,7 +73,7 @@ using namespace WebCore;
 
 //-------------------
 
-- (WebCore::Frame *)coreFrame
+- (CyberCore::Frame *)coreFrame
 {
     return _private->coreFrame;
 }
@@ -540,7 +540,7 @@ using namespace WebCore;
             updated = WKWritingDirectionLeftToRight;
             break;
         default:
-            // WebCore should never return anything else, including WKWritingDirectionNatural
+            // CyberCore should never return anything else, including WKWritingDirectionNatural
             ASSERT_NOT_REACHED();
             break;
     }

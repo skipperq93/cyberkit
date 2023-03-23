@@ -39,7 +39,7 @@
 #include <wtf/Seconds.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Animation;
 class DOMTimer;

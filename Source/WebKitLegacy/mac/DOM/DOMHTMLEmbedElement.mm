@@ -35,80 +35,80 @@
 #import <wtf/GetPtr.h>
 #import <wtf/URL.h>
 
-#define IMPL static_cast<WebCore::HTMLEmbedElement*>(reinterpret_cast<WebCore::Node*>(_internal))
+#define IMPL static_cast<CyberCore::HTMLEmbedElement*>(reinterpret_cast<CyberCore::Node*>(_internal))
 
 @implementation DOMHTMLEmbedElement
 
 - (NSString *)align
 {
-    WebCore::JSMainThreadNullState state;
-    return IMPL->getAttribute(WebCore::HTMLNames::alignAttr);
+    CyberCore::JSMainThreadNullState state;
+    return IMPL->getAttribute(CyberCore::HTMLNames::alignAttr);
 }
 
 - (void)setAlign:(NSString *)newAlign
 {
-    WebCore::JSMainThreadNullState state;
-    IMPL->setAttributeWithoutSynchronization(WebCore::HTMLNames::alignAttr, newAlign);
+    CyberCore::JSMainThreadNullState state;
+    IMPL->setAttributeWithoutSynchronization(CyberCore::HTMLNames::alignAttr, newAlign);
 }
 
 - (int)height
 {
-    WebCore::JSMainThreadNullState state;
-    return IMPL->getIntegralAttribute(WebCore::HTMLNames::heightAttr);
+    CyberCore::JSMainThreadNullState state;
+    return IMPL->getIntegralAttribute(CyberCore::HTMLNames::heightAttr);
 }
 
 - (void)setHeight:(int)newHeight
 {
-    WebCore::JSMainThreadNullState state;
-    IMPL->setIntegralAttribute(WebCore::HTMLNames::heightAttr, newHeight);
+    CyberCore::JSMainThreadNullState state;
+    IMPL->setIntegralAttribute(CyberCore::HTMLNames::heightAttr, newHeight);
 }
 
 - (NSString *)name
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->getNameAttribute();
 }
 
 - (void)setName:(NSString *)newName
 {
-    WebCore::JSMainThreadNullState state;
-    IMPL->setAttributeWithoutSynchronization(WebCore::HTMLNames::nameAttr, newName);
+    CyberCore::JSMainThreadNullState state;
+    IMPL->setAttributeWithoutSynchronization(CyberCore::HTMLNames::nameAttr, newName);
 }
 
 - (NSString *)src
 {
-    WebCore::JSMainThreadNullState state;
-    return IMPL->getURLAttribute(WebCore::HTMLNames::srcAttr).string();
+    CyberCore::JSMainThreadNullState state;
+    return IMPL->getURLAttribute(CyberCore::HTMLNames::srcAttr).string();
 }
 
 - (void)setSrc:(NSString *)newSrc
 {
-    WebCore::JSMainThreadNullState state;
-    IMPL->setAttributeWithoutSynchronization(WebCore::HTMLNames::srcAttr, newSrc);
+    CyberCore::JSMainThreadNullState state;
+    IMPL->setAttributeWithoutSynchronization(CyberCore::HTMLNames::srcAttr, newSrc);
 }
 
 - (NSString *)type
 {
-    WebCore::JSMainThreadNullState state;
-    return IMPL->getAttribute(WebCore::HTMLNames::typeAttr);
+    CyberCore::JSMainThreadNullState state;
+    return IMPL->getAttribute(CyberCore::HTMLNames::typeAttr);
 }
 
 - (void)setType:(NSString *)newType
 {
-    WebCore::JSMainThreadNullState state;
-    IMPL->setAttributeWithoutSynchronization(WebCore::HTMLNames::typeAttr, newType);
+    CyberCore::JSMainThreadNullState state;
+    IMPL->setAttributeWithoutSynchronization(CyberCore::HTMLNames::typeAttr, newType);
 }
 
 - (int)width
 {
-    WebCore::JSMainThreadNullState state;
-    return IMPL->getIntegralAttribute(WebCore::HTMLNames::widthAttr);
+    CyberCore::JSMainThreadNullState state;
+    return IMPL->getIntegralAttribute(CyberCore::HTMLNames::widthAttr);
 }
 
 - (void)setWidth:(int)newWidth
 {
-    WebCore::JSMainThreadNullState state;
-    IMPL->setIntegralAttribute(WebCore::HTMLNames::widthAttr, newWidth);
+    CyberCore::JSMainThreadNullState state;
+    IMPL->setIntegralAttribute(CyberCore::HTMLNames::widthAttr, newWidth);
 }
 
 @end

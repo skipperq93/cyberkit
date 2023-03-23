@@ -27,7 +27,7 @@
 
 #include <wtf/MonotonicTime.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FloatPoint;
 class FloatRect;
@@ -139,4 +139,4 @@ public:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore

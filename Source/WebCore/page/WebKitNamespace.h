@@ -31,7 +31,7 @@
 #include <wtf/Ref.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class UserContentProvider;
 class UserMessageHandlersNamespace;
@@ -53,6 +53,6 @@ private:
     Ref<UserMessageHandlersNamespace> m_messageHandlerNamespace;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(USER_MESSAGE_HANDLERS)

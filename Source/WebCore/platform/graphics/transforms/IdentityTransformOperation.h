@@ -27,7 +27,7 @@
 #include "TransformOperation.h"
 #include <wtf/Ref.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct BlendingContext;
 
@@ -63,6 +63,6 @@ private:
     IdentityTransformOperation();
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_TRANSFORMOPERATION(WebCore::IdentityTransformOperation, type() == WebCore::TransformOperation::Type::Identity)
+SPECIALIZE_TYPE_TRAITS_TRANSFORMOPERATION(CyberCore::IdentityTransformOperation, type() == CyberCore::TransformOperation::Type::Identity)

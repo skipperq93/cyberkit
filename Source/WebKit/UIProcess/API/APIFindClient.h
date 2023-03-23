@@ -31,7 +31,7 @@
 
 OBJC_CLASS CALayer;
 
-namespace WebCore {
+namespace CyberCore {
 class IntRect;
 }
 
@@ -47,7 +47,7 @@ public:
     virtual ~FindClient() { }
 
     virtual void didCountStringMatches(WebKit::WebPageProxy*, const WTF::String&, uint32_t) { }
-    virtual void didFindString(WebKit::WebPageProxy*, const WTF::String&, const Vector<WebCore::IntRect>& matchRects, uint32_t, int32_t, bool didWrapAround) { }
+    virtual void didFindString(WebKit::WebPageProxy*, const WTF::String&, const Vector<CyberCore::IntRect>& matchRects, uint32_t, int32_t, bool didWrapAround) { }
     virtual void didFailToFindString(WebKit::WebPageProxy*, const WTF::String&) { }
 
     virtual void didAddLayerForFindOverlay(WebKit::WebPageProxy*, PlatformLayer*) { }

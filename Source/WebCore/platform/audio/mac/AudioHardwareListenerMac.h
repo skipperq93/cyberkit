@@ -33,7 +33,7 @@
 
 #include <CoreAudio/AudioHardware.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioHardwareListenerMac : public AudioHardwareListener, public CanMakeWeakPtr<AudioHardwareListenerMac> {
 public:

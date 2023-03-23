@@ -58,7 +58,7 @@ static Ref<CacheStorageStore> createStore(const String& uniqueName, const String
 
 CacheStorageCache::CacheStorageCache(CacheStorageManager& manager, const String& name, const String& uniqueName, const String& path, Ref<WorkQueue>&& queue)
     : m_manager(manager)
-    , m_identifier(WebCore::DOMCacheIdentifier::generateThreadSafe())
+    , m_identifier(CyberCore::DOMCacheIdentifier::generateThreadSafe())
     , m_name(name)
     , m_uniqueName(uniqueName)
     , m_store(createStore(uniqueName, path, WTFMove(queue)))
@@ -90,14 +90,14 @@ void CacheStorageCache::getSize(CompletionHandler<void(uint64_t)>&& callback)
     });
 }
 
-void CacheStorageCache::open(WebCore::DOMCacheEngine::CacheIdentifierCallback&& callback)
+void CacheStorageCache::open(CyberCore::DOMCacheEngine::CacheIdentifierCallback&& callback)
 {
     if (m_isInitialized)
-        return callback(WebCore::DOMCacheEngine::CacheIdentifierOperationResult { m_identifier, false });
+        return callback(CyberCore::DOMCacheEngine::CacheIdentifierOperationResult { m_identifier, false });
 
     m_store->readAllRecordInfos([this, weakThis = WeakPtr { *this }, callback = WTFMove(callback)](auto&& recordInfos) mutable {
         if (!weakThis)
-            return callback(makeUnexpected(WebCore::DOMCacheEngine::Error::Internal));
+            return callback(makeUnexpected(CyberCore::DOMCacheEngine::Error::Internal));
 
         std::sort(recordInfos.begin(), recordInfos.end(), [](auto& a, auto& b) {
             return a.insertionTime < b.insertionTime;
@@ -111,20 +111,20 @@ void CacheStorageCache::open(WebCore::DOMCacheEngine::CacheIdentifierCallback&& 
         }
 
         m_isInitialized = true;
-        callback(WebCore::DOMCacheEngine::CacheIdentifierOperationResult { m_identifier, false });
+        callback(CyberCore::DOMCacheEngine::CacheIdentifierOperationResult { m_identifier, false });
     });
 }
 
-static CacheStorageRecord toCacheStorageRecord(WebCore::DOMCacheEngine::Record&& record, FileSystem::Salt salt, const String& uniqueName)
+static CacheStorageRecord toCacheStorageRecord(CyberCore::DOMCacheEngine::Record&& record, FileSystem::Salt salt, const String& uniqueName)
 {
     NetworkCache::Key key { "record"_s, uniqueName, { }, createVersion4UUIDString(), salt };
     CacheStorageRecordInformation recordInfo { WTFMove(key), MonotonicTime::now().secondsSinceEpoch().milliseconds(), record.identifier, 0 , record.responseBodySize, record.request.url(), false, { } };
-    recordInfo.updateVaryHeaders(record.request, record.response.httpHeaderField(WebCore::HTTPHeaderName::Vary));
+    recordInfo.updateVaryHeaders(record.request, record.response.httpHeaderField(CyberCore::HTTPHeaderName::Vary));
 
     return CacheStorageRecord { WTFMove(recordInfo), record.requestHeadersGuard, WTFMove(record.request), record.options, WTFMove(record.referrer), record.responseHeadersGuard, record.response.crossThreadData(), record.responseBodySize, WTFMove(record.responseBody) };
 }
 
-void CacheStorageCache::retrieveRecords(WebCore::RetrieveRecordsOptions&& options, WebCore::DOMCacheEngine::RecordsCallback&& callback)
+void CacheStorageCache::retrieveRecords(CyberCore::RetrieveRecordsOptions&& options, CyberCore::DOMCacheEngine::RecordsCallback&& callback)
 {
     ASSERT(m_isInitialized);
 
@@ -145,9 +145,9 @@ void CacheStorageCache::retrieveRecords(WebCore::RetrieveRecordsOptions&& option
         if (iterator == m_records.end())
             return callback({ });
 
-        WebCore::CacheQueryOptions queryOptions { options.ignoreSearch, options.ignoreMethod, options.ignoreVary };
+        CyberCore::CacheQueryOptions queryOptions { options.ignoreSearch, options.ignoreMethod, options.ignoreVary };
         for (auto& record : iterator->value) {
-            if (WebCore::DOMCacheEngine::queryCacheMatch(options.request, record.url, record.hasVaryStar, record.varyHeaders, queryOptions))
+            if (CyberCore::DOMCacheEngine::queryCacheMatch(options.request, record.url, record.hasVaryStar, record.varyHeaders, queryOptions))
                 targetRecordInfos.append(record);
         }
     }
@@ -156,22 +156,22 @@ void CacheStorageCache::retrieveRecords(WebCore::RetrieveRecordsOptions&& option
         return callback({ });
     
     m_store->readRecords(targetRecordInfos, [options = WTFMove(options), callback = WTFMove(callback)](auto&& cacheStorageRecords) mutable {
-        Vector<WebCore::DOMCacheEngine::Record> result;
+        Vector<CyberCore::DOMCacheEngine::Record> result;
         result.reserveInitialCapacity(cacheStorageRecords.size());
         for (auto& cacheStorageRecord : cacheStorageRecords) {
             if (!cacheStorageRecord)
                 continue;
     
-            WebCore::DOMCacheEngine::Record record { cacheStorageRecord->info.identifier, 0, cacheStorageRecord->requestHeadersGuard, cacheStorageRecord->request, cacheStorageRecord->options, cacheStorageRecord->referrer, cacheStorageRecord->responseHeadersGuard, { }, nullptr, 0 };
+            CyberCore::DOMCacheEngine::Record record { cacheStorageRecord->info.identifier, 0, cacheStorageRecord->requestHeadersGuard, cacheStorageRecord->request, cacheStorageRecord->options, cacheStorageRecord->referrer, cacheStorageRecord->responseHeadersGuard, { }, nullptr, 0 };
             if (options.shouldProvideResponse) {
-                record.response = WebCore::ResourceResponse::fromCrossThreadData(WTFMove(cacheStorageRecord->responseData));
+                record.response = CyberCore::ResourceResponse::fromCrossThreadData(WTFMove(cacheStorageRecord->responseData));
                 record.responseBody = WTFMove(cacheStorageRecord->responseBody);
                 record.responseBodySize = cacheStorageRecord->responseBodySize;
             }
 
-            if (record.response.type() == WebCore::ResourceResponse::Type::Opaque) {
-                if (WebCore::validateCrossOriginResourcePolicy(options.crossOriginEmbedderPolicy.value, options.sourceOrigin, record.request.url(), record.response, WebCore::ForNavigation::No))
-                    return callback(makeUnexpected(WebCore::DOMCacheEngine::Error::CORP));
+            if (record.response.type() == CyberCore::ResourceResponse::Type::Opaque) {
+                if (CyberCore::validateCrossOriginResourcePolicy(options.crossOriginEmbedderPolicy.value, options.sourceOrigin, record.request.url(), record.response, CyberCore::ForNavigation::No))
+                    return callback(makeUnexpected(CyberCore::DOMCacheEngine::Error::CORP));
             }
 
             result.uncheckedAppend(WTFMove(record));
@@ -185,7 +185,7 @@ void CacheStorageCache::retrieveRecords(WebCore::RetrieveRecordsOptions&& option
     });
 }
 
-void CacheStorageCache::removeRecords(WebCore::ResourceRequest&& request, WebCore::CacheQueryOptions&& options, WebCore::DOMCacheEngine::RecordIdentifiersCallback&& callback)
+void CacheStorageCache::removeRecords(CyberCore::ResourceRequest&& request, CyberCore::CacheQueryOptions&& options, CyberCore::DOMCacheEngine::RecordIdentifiersCallback&& callback)
 {
     ASSERT(m_isInitialized);
     
@@ -200,7 +200,7 @@ void CacheStorageCache::removeRecords(WebCore::ResourceRequest&& request, WebCor
     Vector<CacheStorageRecordInformation> targetRecordInfos;
     uint64_t sizeDecreased = 0;
     iterator->value.removeAllMatching([&](auto& record) {
-        if (!WebCore::DOMCacheEngine::queryCacheMatch(request, record.url, record.hasVaryStar, record.varyHeaders, options))
+        if (!CyberCore::DOMCacheEngine::queryCacheMatch(request, record.url, record.hasVaryStar, record.varyHeaders, options))
             return false;
 
         targetRecordIdentifiers.append(record.identifier);
@@ -216,22 +216,22 @@ void CacheStorageCache::removeRecords(WebCore::ResourceRequest&& request, WebCor
 
     m_store->deleteRecords(targetRecordInfos, [targetIdentifiers = WTFMove(targetRecordIdentifiers), callback = WTFMove(callback)](bool succeeded) mutable {
         if (!succeeded)
-            return callback(makeUnexpected(WebCore::DOMCacheEngine::Error::WriteDisk));
+            return callback(makeUnexpected(CyberCore::DOMCacheEngine::Error::WriteDisk));
 
         callback(WTFMove(targetIdentifiers));
     });
 }
 
-CacheStorageRecordInformation* CacheStorageCache::findExistingRecord(const WebCore::ResourceRequest& request, std::optional<uint64_t> identifier)
+CacheStorageRecordInformation* CacheStorageCache::findExistingRecord(const CyberCore::ResourceRequest& request, std::optional<uint64_t> identifier)
 {
     auto iterator = m_records.find(computeKeyURL(request.url()));
     if (iterator == m_records.end())
         return nullptr;
 
-    WebCore::CacheQueryOptions options;
+    CyberCore::CacheQueryOptions options;
     auto index = iterator->value.findIf([&] (auto& record) {
         bool hasMatchedIdentifier = !identifier || identifier == record.identifier;
-        return hasMatchedIdentifier && WebCore::DOMCacheEngine::queryCacheMatch(request, record.url, record.hasVaryStar, record.varyHeaders, options);
+        return hasMatchedIdentifier && CyberCore::DOMCacheEngine::queryCacheMatch(request, record.url, record.hasVaryStar, record.varyHeaders, options);
     });
     if (index == notFound)
         return nullptr;
@@ -239,12 +239,12 @@ CacheStorageRecordInformation* CacheStorageCache::findExistingRecord(const WebCo
     return &iterator->value[index];
 }
 
-void CacheStorageCache::putRecords(Vector<WebCore::DOMCacheEngine::Record>&& records, WebCore::DOMCacheEngine::RecordIdentifiersCallback&& callback)
+void CacheStorageCache::putRecords(Vector<CyberCore::DOMCacheEngine::Record>&& records, CyberCore::DOMCacheEngine::RecordIdentifiersCallback&& callback)
 {
     ASSERT(m_isInitialized);
 
     if (!m_manager)
-        return callback(makeUnexpected(WebCore::DOMCacheEngine::Error::Internal));
+        return callback(makeUnexpected(CyberCore::DOMCacheEngine::Error::Internal));
 
     int64_t spaceRequested = 0;
     auto cacheStorageRecords = WTF::map(records, [&](auto&& record) {
@@ -260,16 +260,16 @@ void CacheStorageCache::putRecords(Vector<WebCore::DOMCacheEngine::Record>&& rec
 
     m_manager->requestSpace(spaceRequested, [this, weakThis = WeakPtr { *this }, records = WTFMove(cacheStorageRecords), callback = WTFMove(callback)](bool granted) mutable {
         if (!weakThis)
-            return callback(makeUnexpected(WebCore::DOMCacheEngine::Error::Internal));
+            return callback(makeUnexpected(CyberCore::DOMCacheEngine::Error::Internal));
 
         if (!granted)
-            return callback(makeUnexpected(WebCore::DOMCacheEngine::Error::QuotaExceeded));
+            return callback(makeUnexpected(CyberCore::DOMCacheEngine::Error::QuotaExceeded));
 
         putRecordsAfterQuotaCheck(WTFMove(records), WTFMove(callback));
     });
 }
 
-void CacheStorageCache::putRecordsAfterQuotaCheck(Vector<CacheStorageRecord>&& records, WebCore::DOMCacheEngine::RecordIdentifiersCallback&& callback)
+void CacheStorageCache::putRecordsAfterQuotaCheck(Vector<CacheStorageRecord>&& records, CyberCore::DOMCacheEngine::RecordIdentifiersCallback&& callback)
 {
     ASSERT(m_isInitialized);
 
@@ -283,7 +283,7 @@ void CacheStorageCache::putRecordsAfterQuotaCheck(Vector<CacheStorageRecord>&& r
 
     auto readRecordsCallback = [this, weakThis = WeakPtr { *this }, records = WTFMove(records), callback = WTFMove(callback)](auto existingCacheStorageRecords) mutable {
         if (!weakThis)
-            return callback(makeUnexpected(WebCore::DOMCacheEngine::Error::Internal));
+            return callback(makeUnexpected(CyberCore::DOMCacheEngine::Error::Internal));
 
         putRecordsInStore(WTFMove(records), WTFMove(existingCacheStorageRecords), WTFMove(callback));
     };
@@ -291,7 +291,7 @@ void CacheStorageCache::putRecordsAfterQuotaCheck(Vector<CacheStorageRecord>&& r
     m_store->readRecords(targetRecordInfos, WTFMove(readRecordsCallback));
 }
 
-void CacheStorageCache::putRecordsInStore(Vector<CacheStorageRecord>&& records, Vector<std::optional<CacheStorageRecord>>&& existingRecords, WebCore::DOMCacheEngine::RecordIdentifiersCallback&& callback)
+void CacheStorageCache::putRecordsInStore(Vector<CacheStorageRecord>&& records, Vector<std::optional<CacheStorageRecord>>&& existingRecords, CyberCore::DOMCacheEngine::RecordIdentifiersCallback&& callback)
 {
     Vector<uint64_t> targetIdentifiers;
     uint64_t sizeIncreased = 0, sizeDecreased = 0;
@@ -327,7 +327,7 @@ void CacheStorageCache::putRecordsInStore(Vector<CacheStorageRecord>&& records, 
             record.request = WTFMove(existingRecord->request);
             record.options = WTFMove(existingRecord->options);
             record.referrer = WTFMove(existingRecord->referrer);
-            record.info.updateVaryHeaders(record.request, record.responseData.httpHeaderFields.get(WebCore::HTTPHeaderName::Vary));
+            record.info.updateVaryHeaders(record.request, record.responseData.httpHeaderFields.get(CyberCore::HTTPHeaderName::Vary));
             sizeIncreased += record.info.size;
             sizeDecreased += existingRecordInfo->size;
             existingRecordInfo->size = record.info.size;
@@ -349,7 +349,7 @@ void CacheStorageCache::putRecordsInStore(Vector<CacheStorageRecord>&& records, 
 
     m_store->writeRecords(WTFMove(records), [targetIdentifiers = WTFMove(targetIdentifiers), callback = WTFMove(callback)](bool succeeded) mutable {
         if (!succeeded)
-            return callback(makeUnexpected(WebCore::DOMCacheEngine::Error::WriteDisk));
+            return callback(makeUnexpected(CyberCore::DOMCacheEngine::Error::WriteDisk));
 
         callback(WTFMove(targetIdentifiers));
     });

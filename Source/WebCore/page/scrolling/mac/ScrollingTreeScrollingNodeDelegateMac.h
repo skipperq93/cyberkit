@@ -34,7 +34,7 @@
 
 OBJC_CLASS NSScrollerImp;
 
-namespace WebCore {
+namespace CyberCore {
 
 class FloatPoint;
 class FloatSize;
@@ -85,6 +85,6 @@ private:
     bool m_inMomentumPhase { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(MAC) && ENABLE(ASYNC_SCROLLING)

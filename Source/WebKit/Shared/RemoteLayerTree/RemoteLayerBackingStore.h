@@ -35,10 +35,10 @@
 OBJC_CLASS CALayer;
 
 // FIXME: Make PlatformCALayerRemote.cpp Objective-C so we can include WebLayer.h here and share the typedef.
-namespace WebCore {
+namespace CyberCore {
 class NativeImage;
 class ThreadSafeImageBufferFlusher;
-typedef Vector<WebCore::FloatRect, 5> RepaintRectList;
+typedef Vector<CyberCore::FloatRect, 5> RepaintRectList;
 }
 
 namespace WebKit {
@@ -48,7 +48,7 @@ class RemoteLayerBackingStoreCollection;
 enum class SwapBuffersDisplayRequirement : uint8_t;
 
 #if ENABLE(CG_DISPLAY_LIST_BACKED_IMAGE_BUFFER)
-using UseCGDisplayListImageCache = WebCore::ImageBufferCreationContext::UseCGDisplayListImageCache;
+using UseCGDisplayListImageCache = CyberCore::ImageBufferCreationContext::UseCGDisplayListImageCache;
 #endif
 
 class RemoteLayerBackingStore {
@@ -69,8 +69,8 @@ public:
 
     struct Parameters {
         Type type { Type::Bitmap };
-        WebCore::FloatSize size;
-        WebCore::DestinationColorSpace colorSpace { WebCore::DestinationColorSpace::SRGB() };
+        CyberCore::FloatSize size;
+        CyberCore::DestinationColorSpace colorSpace { CyberCore::DestinationColorSpace::SRGB() };
         float scale { 1.0f };
         bool deepColor { false };
         bool isOpaque { false };
@@ -101,7 +101,7 @@ public:
 
     void ensureBackingStore(const Parameters&);
 
-    void setNeedsDisplay(const WebCore::IntRect);
+    void setNeedsDisplay(const CyberCore::IntRect);
     void setNeedsDisplay();
 
     void setContents(WTF::MachSendRight&& surfaceHandle);
@@ -114,11 +114,11 @@ public:
     void prepareToDisplay();
     void paintContents();
 
-    WebCore::FloatSize size() const { return m_parameters.size; }
+    CyberCore::FloatSize size() const { return m_parameters.size; }
     float scale() const { return m_parameters.scale; }
     bool usesDeepColorBackingStore() const;
-    WebCore::DestinationColorSpace colorSpace() const { return m_parameters.colorSpace; }
-    WebCore::PixelFormat pixelFormat() const;
+    CyberCore::DestinationColorSpace colorSpace() const { return m_parameters.colorSpace; }
+    CyberCore::PixelFormat pixelFormat() const;
     Type type() const { return m_parameters.type; }
     bool isOpaque() const { return m_parameters.isOpaque; }
     unsigned bytesPerPixel() const;
@@ -131,7 +131,7 @@ public:
     void encode(IPC::Encoder&) const;
     static WARN_UNUSED_RETURN bool decode(IPC::Decoder&, RemoteLayerBackingStore&);
 
-    void enumerateRectsBeingDrawn(WebCore::GraphicsContext&, void (^)(WebCore::FloatRect));
+    void enumerateRectsBeingDrawn(CyberCore::GraphicsContext&, void (^)(CyberCore::FloatRect));
 
     bool hasFrontBuffer() const
     {
@@ -139,10 +139,10 @@ public:
     }
 
     // Just for RemoteBackingStoreCollection.
-    void applySwappedBuffers(RefPtr<WebCore::ImageBuffer>&& front, RefPtr<WebCore::ImageBuffer>&& back, RefPtr<WebCore::ImageBuffer>&& secondaryBack, SwapBuffersDisplayRequirement);
-    WebCore::SetNonVolatileResult swapToValidFrontBuffer();
+    void applySwappedBuffers(RefPtr<CyberCore::ImageBuffer>&& front, RefPtr<CyberCore::ImageBuffer>&& back, RefPtr<CyberCore::ImageBuffer>&& secondaryBack, SwapBuffersDisplayRequirement);
+    CyberCore::SetNonVolatileResult swapToValidFrontBuffer();
 
-    Vector<std::unique_ptr<WebCore::ThreadSafeImageBufferFlusher>> takePendingFlushers();
+    Vector<std::unique_ptr<CyberCore::ThreadSafeImageBufferFlusher>> takePendingFlushers();
 
     enum class BufferType {
         Front,
@@ -150,11 +150,11 @@ public:
         SecondaryBack
     };
 
-    RefPtr<WebCore::ImageBuffer> bufferForType(BufferType) const;
+    RefPtr<CyberCore::ImageBuffer> bufferForType(BufferType) const;
 
     // Returns true if it was able to fulfill the request. This can fail when trying to mark an in-use surface as volatile.
     bool setBufferVolatile(BufferType);
-    WebCore::SetNonVolatileResult setFrontBufferNonVolatile();
+    CyberCore::SetNonVolatileResult setFrontBufferNonVolatile();
 
     bool hasEmptyDirtyRegion() const { return m_dirtyRegion.isEmpty() || m_parameters.size.isEmpty(); }
     bool supportsPartialRepaint() const;
@@ -168,10 +168,10 @@ public:
 private:
     RemoteLayerBackingStoreCollection* backingStoreCollection() const;
 
-    void drawInContext(WebCore::GraphicsContext&, WTF::Function<void()>&& additionalContextSetupCallback = nullptr);
+    void drawInContext(CyberCore::GraphicsContext&, WTF::Function<void()>&& additionalContextSetupCallback = nullptr);
 
     struct Buffer {
-        RefPtr<WebCore::ImageBuffer> imageBuffer;
+        RefPtr<CyberCore::ImageBuffer> imageBuffer;
 
         explicit operator bool() const
         {
@@ -182,7 +182,7 @@ private:
     };
 
     bool setBufferVolatile(Buffer&);
-    WebCore::SetNonVolatileResult setBufferNonVolatile(Buffer&);
+    CyberCore::SetNonVolatileResult setBufferNonVolatile(Buffer&);
     
     SwapBuffersDisplayRequirement prepareBuffers();
     void ensureFrontBuffer();
@@ -192,7 +192,7 @@ private:
 
     Parameters m_parameters;
 
-    WebCore::Region m_dirtyRegion;
+    CyberCore::Region m_dirtyRegion;
 
     // Used in the WebContent Process.
     Buffer m_frontBuffer;
@@ -206,13 +206,13 @@ private:
     std::optional<MachSendRight> m_contentsBufferHandle;
 
 #if ENABLE(CG_DISPLAY_LIST_BACKED_IMAGE_BUFFER)
-    RefPtr<WebCore::ImageBuffer> m_displayListBuffer;
+    RefPtr<CyberCore::ImageBuffer> m_displayListBuffer;
     std::optional<ImageBufferBackendHandle> m_displayListBufferHandle;
 #endif
 
-    Vector<std::unique_ptr<WebCore::ThreadSafeImageBufferFlusher>> m_frontBufferFlushers;
+    Vector<std::unique_ptr<CyberCore::ThreadSafeImageBufferFlusher>> m_frontBufferFlushers;
 
-    WebCore::RepaintRectList m_paintingRects;
+    CyberCore::RepaintRectList m_paintingRects;
 
     MonotonicTime m_lastDisplayTime;
 };

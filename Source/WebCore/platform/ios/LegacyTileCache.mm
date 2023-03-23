@@ -38,7 +38,7 @@
 #import "SystemMemory.h"
 #import "WAKWindow.h"
 #import "WKGraphics.h"
-#import "WebCoreThreadRun.h"
+#import "CyberCoreThreadRun.h"
 #import <CoreText/CoreText.h>
 #import <pal/spi/cocoa/QuartzCoreSPI.h>
 #import <wtf/MemoryPressureHandler.h>
@@ -62,7 +62,7 @@
 @synthesize dead;
 @end
 
-namespace WebCore {
+namespace CyberCore {
 
 LegacyTileCache::LegacyTileCache(WAKWindow* window)
     : m_window(window)
@@ -811,6 +811,6 @@ void LegacyTileCache::dumpTiles()
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(IOS_FAMILY)

@@ -35,7 +35,7 @@
 #import <CyberKitLegacy/DOMRange.h>
 
 typedef enum { 
-    // The first four match SelectionDirection.  The last two don't have WebKit counterparts because
+    // The first four match SelectionDirection.  The last two don't have CyberKit counterparts because
     // they aren't necessary until there is support vertical layout.
     WebTextAdjustmentForward,
     WebTextAdjustmentBackward,

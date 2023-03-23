@@ -30,7 +30,7 @@
 
 #include <wtf/OptionSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FontCascade;
 class FontCascadeDescription;

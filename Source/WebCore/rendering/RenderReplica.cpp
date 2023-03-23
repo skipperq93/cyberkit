@@ -33,7 +33,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/StackStats.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(RenderReplica);
 
@@ -83,4 +83,4 @@ void RenderReplica::paint(PaintInfo& paintInfo, const LayoutPoint& paintOffset)
         paintMask(paintInfo, adjustedPaintOffset);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

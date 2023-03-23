@@ -30,7 +30,7 @@
 #include "DOMWindow.h"
 #include "Frame.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 DOMWindowProperty::DOMWindowProperty(DOMWindow* window)
     : m_window(window)

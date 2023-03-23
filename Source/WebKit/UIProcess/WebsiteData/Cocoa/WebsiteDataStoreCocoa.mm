@@ -111,13 +111,13 @@ static NSString* applicationOrProcessIdentifier()
 }
 
 #if ENABLE(TRACKING_PREVENTION)
-WebCore::ThirdPartyCookieBlockingMode WebsiteDataStore::thirdPartyCookieBlockingMode() const
+CyberCore::ThirdPartyCookieBlockingMode WebsiteDataStore::thirdPartyCookieBlockingMode() const
 {
     if (!m_thirdPartyCookieBlockingMode) {
         if (experimentalFeatureEnabled(WebPreferencesKey::isThirdPartyCookieBlockingDisabledKey()))
-            m_thirdPartyCookieBlockingMode = WebCore::ThirdPartyCookieBlockingMode::AllOnSitesWithoutUserInteraction;
+            m_thirdPartyCookieBlockingMode = CyberCore::ThirdPartyCookieBlockingMode::AllOnSitesWithoutUserInteraction;
         else
-            m_thirdPartyCookieBlockingMode = WebCore::ThirdPartyCookieBlockingMode::All;
+            m_thirdPartyCookieBlockingMode = CyberCore::ThirdPartyCookieBlockingMode::All;
     }
     return *m_thirdPartyCookieBlockingMode;
 }
@@ -129,22 +129,22 @@ void WebsiteDataStore::platformSetNetworkParameters(WebsiteDataStoreParameters& 
 
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     bool shouldLogCookieInformation = false;
-    auto sameSiteStrictEnforcementEnabled = WebCore::SameSiteStrictEnforcementEnabled::No;
-    auto firstPartyWebsiteDataRemovalMode = WebCore::FirstPartyWebsiteDataRemovalMode::AllButCookies;
-    WebCore::RegistrableDomain resourceLoadStatisticsManualPrevalentResource { };
+    auto sameSiteStrictEnforcementEnabled = CyberCore::SameSiteStrictEnforcementEnabled::No;
+    auto firstPartyWebsiteDataRemovalMode = CyberCore::FirstPartyWebsiteDataRemovalMode::AllButCookies;
+    CyberCore::RegistrableDomain resourceLoadStatisticsManualPrevalentResource { };
 #if ENABLE(TRACKING_PREVENTION)
     if (experimentalFeatureEnabled(WebPreferencesKey::isSameSiteStrictEnforcementEnabledKey()))
-        sameSiteStrictEnforcementEnabled = WebCore::SameSiteStrictEnforcementEnabled::Yes;
+        sameSiteStrictEnforcementEnabled = CyberCore::SameSiteStrictEnforcementEnabled::Yes;
 
     if (experimentalFeatureEnabled(WebPreferencesKey::isFirstPartyWebsiteDataRemovalDisabledKey()))
-        firstPartyWebsiteDataRemovalMode = WebCore::FirstPartyWebsiteDataRemovalMode::None;
+        firstPartyWebsiteDataRemovalMode = CyberCore::FirstPartyWebsiteDataRemovalMode::None;
     else {
         if ([defaults boolForKey:[NSString stringWithFormat:@"InternalDebug%@", WebPreferencesKey::isFirstPartyWebsiteDataRemovalReproTestingEnabledKey().createCFString().get()]])
-            firstPartyWebsiteDataRemovalMode = WebCore::FirstPartyWebsiteDataRemovalMode::AllButCookiesReproTestingTimeout;
+            firstPartyWebsiteDataRemovalMode = CyberCore::FirstPartyWebsiteDataRemovalMode::AllButCookiesReproTestingTimeout;
         else if ([defaults boolForKey:[NSString stringWithFormat:@"InternalDebug%@", WebPreferencesKey::isFirstPartyWebsiteDataRemovalLiveOnTestingEnabledKey().createCFString().get()]])
-            firstPartyWebsiteDataRemovalMode = WebCore::FirstPartyWebsiteDataRemovalMode::AllButCookiesLiveOnTestingTimeout;
+            firstPartyWebsiteDataRemovalMode = CyberCore::FirstPartyWebsiteDataRemovalMode::AllButCookiesLiveOnTestingTimeout;
         else
-            firstPartyWebsiteDataRemovalMode = WebCore::FirstPartyWebsiteDataRemovalMode::AllButCookies;
+            firstPartyWebsiteDataRemovalMode = CyberCore::FirstPartyWebsiteDataRemovalMode::AllButCookies;
     }
 
     if (auto manualPrevalentResource = [defaults stringForKey:@"ITPManualPrevalentResource"]) {
@@ -152,7 +152,7 @@ void WebsiteDataStore::platformSetNetworkParameters(WebsiteDataStoreParameters& 
         if (!url.isValid())
             url = { { }, makeString("http://", manualPrevalentResource) };
         if (url.isValid())
-            resourceLoadStatisticsManualPrevalentResource = WebCore::RegistrableDomain { url };
+            resourceLoadStatisticsManualPrevalentResource = CyberCore::RegistrableDomain { url };
     }
 #if !RELEASE_LOG_DISABLED
     static NSString * const WebKitLogCookieInformationDefaultsKey = @"WebKitLogCookieInformation";
@@ -166,11 +166,11 @@ void WebsiteDataStore::platformSetNetworkParameters(WebsiteDataStoreParameters& 
     bool isSafari = false;
     bool isMiniBrowser = false;
 #if PLATFORM(IOS_FAMILY)
-    isSafari = WebCore::IOSApplication::isMobileSafari();
-    isMiniBrowser = WebCore::IOSApplication::isMiniBrowser();
+    isSafari = CyberCore::IOSApplication::isMobileSafari();
+    isMiniBrowser = CyberCore::IOSApplication::isMiniBrowser();
 #elif PLATFORM(MAC)
-    isSafari = WebCore::MacApplication::isSafari();
-    isMiniBrowser = WebCore::MacApplication::isMiniBrowser();
+    isSafari = CyberCore::MacApplication::isSafari();
+    isMiniBrowser = CyberCore::MacApplication::isMiniBrowser();
 #endif
     // FIXME: Remove these once Safari adopts _WKWebsiteDataStoreConfiguration.httpProxy and .httpsProxy.
     if (!httpProxy.isValid() && (isSafari || isMiniBrowser))
@@ -199,7 +199,7 @@ void WebsiteDataStore::platformSetNetworkParameters(WebsiteDataStoreParameters& 
     parameters.networkSessionParameters.resourceLoadStatisticsParameters.shouldIncludeLocalhost = shouldIncludeLocalhostInResourceLoadStatistics;
     parameters.networkSessionParameters.resourceLoadStatisticsParameters.sameSiteStrictEnforcementEnabled = sameSiteStrictEnforcementEnabled;
     parameters.networkSessionParameters.resourceLoadStatisticsParameters.firstPartyWebsiteDataRemovalMode = firstPartyWebsiteDataRemovalMode;
-    parameters.networkSessionParameters.resourceLoadStatisticsParameters.standaloneApplicationDomain = WebCore::RegistrableDomain { m_configuration->standaloneApplicationURL() };
+    parameters.networkSessionParameters.resourceLoadStatisticsParameters.standaloneApplicationDomain = CyberCore::RegistrableDomain { m_configuration->standaloneApplicationURL() };
     parameters.networkSessionParameters.resourceLoadStatisticsParameters.manualPrevalentResource = WTFMove(resourceLoadStatisticsManualPrevalentResource);
 
     auto cookieFile = resolvedCookieStorageFile();
@@ -313,7 +313,7 @@ String WebsiteDataStore::defaultApplicationCacheDirectory(const String& baseDire
     // Preserving it avoids the need to migrate data when upgrading.
     // FIXME: Ideally we should just have Safari, WebApp, and webbookmarksd create a data store with
     // this application cache path.
-    if (WebCore::IOSApplication::isMobileSafari() || WebCore::IOSApplication::isWebBookmarksD()) {
+    if (CyberCore::IOSApplication::isMobileSafari() || CyberCore::IOSApplication::isWebBookmarksD()) {
         NSString *cachePath = [NSHomeDirectory() stringByAppendingPathComponent:@"Library/Caches/com.apple.WebAppCache"];
 
         return WebKit::stringByResolvingSymlinksInPath(String { cachePath.stringByStandardizingPath });
@@ -542,10 +542,10 @@ String WebsiteDataStore::websiteDataDirectoryFileSystemRepresentation(const Stri
 }
 
 #if ENABLE(APP_BOUND_DOMAINS)
-static HashSet<WebCore::RegistrableDomain>& appBoundDomains()
+static HashSet<CyberCore::RegistrableDomain>& appBoundDomains()
 {
     ASSERT(RunLoop::isMain());
-    static NeverDestroyed<HashSet<WebCore::RegistrableDomain>> appBoundDomains;
+    static NeverDestroyed<HashSet<CyberCore::RegistrableDomain>> appBoundDomains;
     return appBoundDomains;
 }
 
@@ -595,7 +595,7 @@ void WebsiteDataStore::initializeAppBoundDomains(ForceReinitialization forceRein
                     url.setProtocol("https"_s);
                 if (!url.isValid())
                     continue;
-                WebCore::RegistrableDomain appBoundDomain { url };
+                CyberCore::RegistrableDomain appBoundDomain { url };
                 if (appBoundDomain.isEmpty())
                     continue;
                 appBoundDomains().add(appBoundDomain);
@@ -610,12 +610,12 @@ void WebsiteDataStore::initializeAppBoundDomains(ForceReinitialization forceRein
 void WebsiteDataStore::addTestDomains() const
 {
     if (appBoundDomains().isEmpty()) {
-        for (auto& domain : appBoundDomainsForTesting(WebCore::applicationBundleIdentifier()))
+        for (auto& domain : appBoundDomainsForTesting(CyberCore::applicationBundleIdentifier()))
             appBoundDomains().add(domain);
     }
 }
 
-void WebsiteDataStore::ensureAppBoundDomains(CompletionHandler<void(const HashSet<WebCore::RegistrableDomain>&, const HashSet<String>&)>&& completionHandler) const
+void WebsiteDataStore::ensureAppBoundDomains(CompletionHandler<void(const HashSet<CyberCore::RegistrableDomain>&, const HashSet<String>&)>&& completionHandler) const
 {
     if (hasInitializedAppBoundDomains) {
         if (m_configuration->enableInAppBrowserPrivacyForTesting())
@@ -636,10 +636,10 @@ void WebsiteDataStore::ensureAppBoundDomains(CompletionHandler<void(const HashSe
     });
 }
 
-static NavigatingToAppBoundDomain schemeOrDomainIsAppBound(const String& host, const String& protocol, const HashSet<WebCore::RegistrableDomain>& domains, const HashSet<String>& schemes)
+static NavigatingToAppBoundDomain schemeOrDomainIsAppBound(const String& host, const String& protocol, const HashSet<CyberCore::RegistrableDomain>& domains, const HashSet<String>& schemes)
 {
     auto schemeIsAppBound = !protocol.isNull() && schemes.contains(protocol);
-    auto domainIsAppBound = domains.contains(WebCore::RegistrableDomain::uncheckedCreateFromHost(host));
+    auto domainIsAppBound = domains.contains(CyberCore::RegistrableDomain::uncheckedCreateFromHost(host));
     return schemeIsAppBound || domainIsAppBound ? NavigatingToAppBoundDomain::Yes : NavigatingToAppBoundDomain::No;
 }
 
@@ -659,7 +659,7 @@ void WebsiteDataStore::beginAppBoundDomainCheck(const String& host, const String
     });
 }
 
-void WebsiteDataStore::getAppBoundDomains(CompletionHandler<void(const HashSet<WebCore::RegistrableDomain>&)>&& completionHandler) const
+void WebsiteDataStore::getAppBoundDomains(CompletionHandler<void(const HashSet<CyberCore::RegistrableDomain>&)>&& completionHandler) const
 {
     ASSERT(RunLoop::isMain());
 
@@ -677,7 +677,7 @@ void WebsiteDataStore::getAppBoundSchemes(CompletionHandler<void(const HashSet<S
     });
 }
 
-std::optional<HashSet<WebCore::RegistrableDomain>> WebsiteDataStore::appBoundDomainsIfInitialized()
+std::optional<HashSet<CyberCore::RegistrableDomain>> WebsiteDataStore::appBoundDomainsIfInitialized()
 {
     ASSERT(RunLoop::isMain());
     if (!hasInitializedAppBoundDomains)
@@ -685,7 +685,7 @@ std::optional<HashSet<WebCore::RegistrableDomain>> WebsiteDataStore::appBoundDom
     return appBoundDomains();
 }
 
-void WebsiteDataStore::setAppBoundDomainsForTesting(HashSet<WebCore::RegistrableDomain>&& domains, CompletionHandler<void()>&& completionHandler)
+void WebsiteDataStore::setAppBoundDomainsForTesting(HashSet<CyberCore::RegistrableDomain>&& domains, CompletionHandler<void()>&& completionHandler)
 {
     for (auto& domain : domains)
         RELEASE_ASSERT(domain == "localhost"_s || domain == "127.0.0.1"_s);
@@ -704,10 +704,10 @@ void WebsiteDataStore::reinitializeAppBoundDomains()
 
 
 #if ENABLE(MANAGED_DOMAINS)
-static HashSet<WebCore::RegistrableDomain>& managedDomains()
+static HashSet<CyberCore::RegistrableDomain>& managedDomains()
 {
     ASSERT(RunLoop::isMain());
-    static NeverDestroyed<HashSet<WebCore::RegistrableDomain>> managedDomains;
+    static NeverDestroyed<HashSet<CyberCore::RegistrableDomain>> managedDomains;
     return managedDomains;
 }
 
@@ -753,7 +753,7 @@ void WebsiteDataStore::initializeManagedDomains(ForceReinitialization forceReini
                     url.setProtocol("https"_s);
                 if (!url.isValid())
                     continue;
-                WebCore::RegistrableDomain managedDomain { url };
+                CyberCore::RegistrableDomain managedDomain { url };
                 if (managedDomain.isEmpty())
                     continue;
                 managedDomains().add(managedDomain);
@@ -764,7 +764,7 @@ void WebsiteDataStore::initializeManagedDomains(ForceReinitialization forceReini
     });
 }
 
-void WebsiteDataStore::ensureManagedDomains(CompletionHandler<void(const HashSet<WebCore::RegistrableDomain>&)>&& completionHandler) const
+void WebsiteDataStore::ensureManagedDomains(CompletionHandler<void(const HashSet<CyberCore::RegistrableDomain>&)>&& completionHandler) const
 {
     if (hasInitializedManagedDomains) {
         completionHandler(managedDomains());
@@ -781,7 +781,7 @@ void WebsiteDataStore::ensureManagedDomains(CompletionHandler<void(const HashSet
     });
 }
 
-void WebsiteDataStore::getManagedDomains(CompletionHandler<void(const HashSet<WebCore::RegistrableDomain>&)>&& completionHandler) const
+void WebsiteDataStore::getManagedDomains(CompletionHandler<void(const HashSet<CyberCore::RegistrableDomain>&)>&& completionHandler) const
 {
     ASSERT(RunLoop::isMain());
 
@@ -790,7 +790,7 @@ void WebsiteDataStore::getManagedDomains(CompletionHandler<void(const HashSet<We
     });
 }
 
-const HashSet<WebCore::RegistrableDomain>* WebsiteDataStore::managedDomainsIfInitialized()
+const HashSet<CyberCore::RegistrableDomain>* WebsiteDataStore::managedDomainsIfInitialized()
 {
     ASSERT(RunLoop::isMain());
     if (!hasInitializedManagedDomains)
@@ -798,7 +798,7 @@ const HashSet<WebCore::RegistrableDomain>* WebsiteDataStore::managedDomainsIfIni
     return &managedDomains();
 }
 
-void WebsiteDataStore::setManagedDomainsForTesting(HashSet<WebCore::RegistrableDomain>&& domains, CompletionHandler<void()>&& completionHandler)
+void WebsiteDataStore::setManagedDomainsForTesting(HashSet<CyberCore::RegistrableDomain>&& domains, CompletionHandler<void()>&& completionHandler)
 {
     for (auto& domain : domains)
         RELEASE_ASSERT(domain == "localhost"_s || domain == "127.0.0.1"_s);
@@ -920,17 +920,17 @@ void WebsiteDataStore::setBackupExclusionPeriodForTesting(Seconds period, Comple
 
 #endif
 
-void WebsiteDataStore::saveRecentSearches(const String& name, const Vector<WebCore::RecentSearch>& searchItems)
+void WebsiteDataStore::saveRecentSearches(const String& name, const Vector<CyberCore::RecentSearch>& searchItems)
 {
     m_queue->dispatch([name = name.isolatedCopy(), searchItems = crossThreadCopy(searchItems), directory = resolvedSearchFieldHistoryDirectory().isolatedCopy()] {
-        WebCore::saveRecentSearchesToFile(name, searchItems, directory);
+        CyberCore::saveRecentSearchesToFile(name, searchItems, directory);
     });
 }
 
-void WebsiteDataStore::loadRecentSearches(const String& name, CompletionHandler<void(Vector<WebCore::RecentSearch>&&)>&& completionHandler)
+void WebsiteDataStore::loadRecentSearches(const String& name, CompletionHandler<void(Vector<CyberCore::RecentSearch>&&)>&& completionHandler)
 {
     m_queue->dispatch([name = name.isolatedCopy(), completionHandler = WTFMove(completionHandler), directory = resolvedSearchFieldHistoryDirectory().isolatedCopy()]() mutable {
-        auto result = WebCore::loadRecentSearchesFromFile(name, directory);
+        auto result = CyberCore::loadRecentSearchesFromFile(name, directory);
         RunLoop::main().dispatch([completionHandler = WTFMove(completionHandler), result = crossThreadCopy(result)]() mutable {
             completionHandler(WTFMove(result));
         });
@@ -940,7 +940,7 @@ void WebsiteDataStore::loadRecentSearches(const String& name, CompletionHandler<
 void WebsiteDataStore::removeRecentSearches(WallTime oldestTimeToRemove, CompletionHandler<void()>&& completionHandler)
 {
     m_queue->dispatch([time = oldestTimeToRemove.isolatedCopy(), directory = resolvedSearchFieldHistoryDirectory().isolatedCopy(), completionHandler = WTFMove(completionHandler)]() mutable {
-        WebCore::removeRecentlyModifiedRecentSearchesFromFile(time, directory);
+        CyberCore::removeRecentlyModifiedRecentSearchesFromFile(time, directory);
         RunLoop::main().dispatch(WTFMove(completionHandler));
     });
 }

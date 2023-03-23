@@ -27,7 +27,7 @@
 #include "StreamConnectionBuffer.h"
 
 #include "Decoder.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 
 namespace IPC {
 

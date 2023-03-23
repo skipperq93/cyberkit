@@ -36,13 +36,13 @@
 #import <wtf/GetPtr.h>
 #import <wtf/URL.h>
 
-#define IMPL static_cast<WebCore::DocumentType*>(reinterpret_cast<WebCore::Node*>(_internal))
+#define IMPL static_cast<CyberCore::DocumentType*>(reinterpret_cast<CyberCore::Node*>(_internal))
 
 @implementation DOMDocumentType
 
 - (NSString *)name
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->name();
 }
 
@@ -58,13 +58,13 @@
 
 - (NSString *)publicId
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->publicId();
 }
 
 - (NSString *)systemId
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->systemId();
 }
 
@@ -75,21 +75,21 @@
 
 - (void)remove
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     raiseOnDOMError(IMPL->remove());
 }
 
 @end
 
-WebCore::DocumentType* core(DOMDocumentType *wrapper)
+CyberCore::DocumentType* core(DOMDocumentType *wrapper)
 {
-    return wrapper ? reinterpret_cast<WebCore::DocumentType*>(wrapper->_internal) : 0;
+    return wrapper ? reinterpret_cast<CyberCore::DocumentType*>(wrapper->_internal) : 0;
 }
 
-DOMDocumentType *kit(WebCore::DocumentType* value)
+DOMDocumentType *kit(CyberCore::DocumentType* value)
 {
-    WebCoreThreadViolationCheckRoundOne();
-    return static_cast<DOMDocumentType*>(kit(static_cast<WebCore::Node*>(value)));
+    CyberCoreThreadViolationCheckRoundOne();
+    return static_cast<DOMDocumentType*>(kit(static_cast<CyberCore::Node*>(value)));
 }
 
 #undef IMPL

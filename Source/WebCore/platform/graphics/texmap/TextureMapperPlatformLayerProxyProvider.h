@@ -27,7 +27,7 @@
 
 #if USE(COORDINATED_GRAPHICS)
 
-namespace WebCore {
+namespace CyberCore {
 
 class TextureMapperPlatformLayerProxy;
 
@@ -37,6 +37,6 @@ public:
     virtual void swapBuffersIfNeeded() = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(COORDINATED_GRAPHICS)

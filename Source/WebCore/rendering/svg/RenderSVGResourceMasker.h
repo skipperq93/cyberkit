@@ -25,7 +25,7 @@
 
 #include <wtf/HashMap.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class GraphicsContext;
 class SVGMaskElement;

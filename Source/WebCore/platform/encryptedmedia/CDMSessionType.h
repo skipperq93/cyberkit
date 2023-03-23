@@ -32,7 +32,7 @@
 
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class CDMSessionType : uint8_t {
     Temporary,
@@ -40,6 +40,6 @@ enum class CDMSessionType : uint8_t {
     PersistentLicense
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ENCRYPTED_MEDIA)

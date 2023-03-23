@@ -40,11 +40,11 @@ class GCGLANGLELayer;
 }
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class GraphicsContextGLGBM : public GraphicsContextGLANGLE {
 public:
-    static RefPtr<GraphicsContextGLGBM> create(WebCore::GraphicsContextGLAttributes&&);
+    static RefPtr<GraphicsContextGLGBM> create(CyberCore::GraphicsContextGLAttributes&&);
     virtual ~GraphicsContextGLGBM();
 
     // GraphicsContextGL overrides
@@ -95,7 +95,7 @@ public:
     const EGLExtensions& eglExtensions() { return m_eglExtensions; }
 
 protected:
-    GraphicsContextGLGBM(WebCore::GraphicsContextGLAttributes&&);
+    GraphicsContextGLGBM(CyberCore::GraphicsContextGLAttributes&&);
 
 private:
     void allocateDrawBufferObject();
@@ -108,6 +108,6 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBGL) && USE(LIBGBM)

@@ -35,7 +35,7 @@
 #include "PageOverlayController.h"
 #include "PlatformMouseEvent.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 ResourceUsageOverlay::ResourceUsageOverlay(Page& page)
     : m_page(page)

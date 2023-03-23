@@ -20,7 +20,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 class FrameView;
 

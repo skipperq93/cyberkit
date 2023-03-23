@@ -43,9 +43,9 @@
 #include <mach/mach_time.h>
 #include <wtf/Deque.h>
 
-namespace WebKit {
+namespace CyberKit {
 
-class AudioMediaStreamTrackRendererInternalUnitManager::Proxy final : public WebCore::AudioMediaStreamTrackRendererInternalUnit, public CanMakeWeakPtr<Proxy> {
+class AudioMediaStreamTrackRendererInternalUnitManager::Proxy final : public CyberCore::AudioMediaStreamTrackRendererInternalUnit, public CanMakeWeakPtr<Proxy> {
     WTF_MAKE_FAST_ALLOCATED;
 public:
     explicit Proxy(Client&);
@@ -60,11 +60,11 @@ private:
     // AudioMediaStreamTrackRendererUnit::InternalUnit API.
     void start() final;
     void stop() final;
-    void retrieveFormatDescription(CompletionHandler<void(std::optional<WebCore::CAAudioStreamDescription>)>&&) final;
+    void retrieveFormatDescription(CompletionHandler<void(std::optional<CyberCore::CAAudioStreamDescription>)>&&) final;
     void setAudioOutputDevice(const String&) final;
 
-    void initialize(const WebCore::CAAudioStreamDescription&, size_t frameChunkSize);
-    void storageChanged(SharedMemory*, const WebCore::CAAudioStreamDescription&, size_t);
+    void initialize(const CyberCore::CAAudioStreamDescription&, size_t frameChunkSize);
+    void storageChanged(SharedMemory*, const CyberCore::CAAudioStreamDescription&, size_t);
 
     void stopThread();
     void startThread();
@@ -73,13 +73,13 @@ private:
     Client& m_client;
     AudioMediaStreamTrackRendererInternalUnitIdentifier m_identifier;
 
-    Deque<CompletionHandler<void(std::optional<WebCore::CAAudioStreamDescription>)>> m_descriptionCallbacks;
+    Deque<CompletionHandler<void(std::optional<CyberCore::CAAudioStreamDescription>)>> m_descriptionCallbacks;
 
     String m_deviceId;
     bool m_isPlaying { false };
 
-    std::optional<WebCore::CAAudioStreamDescription> m_description;
-    std::unique_ptr<WebCore::WebAudioBufferList> m_buffer;
+    std::optional<CyberCore::CAAudioStreamDescription> m_description;
+    std::unique_ptr<CyberCore::WebAudioBufferList> m_buffer;
     std::unique_ptr<ProducerSharedCARingBuffer> m_ringBuffer;
     int64_t m_writeOffset { 0 };
     size_t m_frameChunkSize { 0 };
@@ -101,7 +101,7 @@ void AudioMediaStreamTrackRendererInternalUnitManager::remove(Proxy& proxy)
     m_proxies.remove(proxy.identifier());
 }
 
-UniqueRef<WebCore::AudioMediaStreamTrackRendererInternalUnit> createRemoteAudioMediaStreamTrackRendererInternalUnitProxy(WebCore::AudioMediaStreamTrackRendererInternalUnit::Client& client)
+UniqueRef<CyberCore::AudioMediaStreamTrackRendererInternalUnit> createRemoteAudioMediaStreamTrackRendererInternalUnitProxy(CyberCore::AudioMediaStreamTrackRendererInternalUnit::Client& client)
 {
     return makeUniqueRef<AudioMediaStreamTrackRendererInternalUnitManager::Proxy>(client);
 }
@@ -144,7 +144,7 @@ void AudioMediaStreamTrackRendererInternalUnitManager::Proxy::createRemoteUnit()
     }, 0);
 }
 
-void AudioMediaStreamTrackRendererInternalUnitManager::Proxy::initialize(const WebCore::CAAudioStreamDescription& description, size_t frameChunkSize)
+void AudioMediaStreamTrackRendererInternalUnitManager::Proxy::initialize(const CyberCore::CAAudioStreamDescription& description, size_t frameChunkSize)
 {
     if (m_semaphore)
         stopThread();
@@ -185,7 +185,7 @@ void AudioMediaStreamTrackRendererInternalUnitManager::Proxy::start()
     m_ringBuffer = WTFMove(ringBuffer);
     WebProcess::singleton().ensureGPUProcessConnection().connection().send(Messages::RemoteAudioMediaStreamTrackRendererInternalUnitManager::StartUnit { m_identifier, WTFMove(handle), *m_semaphore }, 0);
 
-    m_buffer = makeUnique<WebCore::WebAudioBufferList>(*m_description, m_numberOfFrames);
+    m_buffer = makeUnique<CyberCore::WebAudioBufferList>(*m_description, m_numberOfFrames);
     m_buffer->setSampleCount(m_frameChunkSize);
 
     startThread();
@@ -203,7 +203,7 @@ void AudioMediaStreamTrackRendererInternalUnitManager::Proxy::setAudioOutputDevi
     WebProcess::singleton().ensureGPUProcessConnection().connection().send(Messages::RemoteAudioMediaStreamTrackRendererInternalUnitManager::SetAudioOutputDevice { m_identifier, deviceId }, 0);
 }
 
-void AudioMediaStreamTrackRendererInternalUnitManager::Proxy::retrieveFormatDescription(CompletionHandler<void(std::optional<WebCore::CAAudioStreamDescription>)>&& callback)
+void AudioMediaStreamTrackRendererInternalUnitManager::Proxy::retrieveFormatDescription(CompletionHandler<void(std::optional<CyberCore::CAAudioStreamDescription>)>&& callback)
 {
     if (!m_description || !m_descriptionCallbacks.isEmpty()) {
         m_descriptionCallbacks.append(WTFMove(callback));
@@ -242,7 +242,7 @@ void AudioMediaStreamTrackRendererInternalUnitManager::Proxy::startThread()
             m_client.render(m_frameChunkSize, bufferList, m_writeOffset, mach_absolute_time(), flags);
 
             if (flags == kAudioUnitRenderAction_OutputIsSilence)
-                WebCore::AudioSampleBufferList::zeroABL(bufferList, static_cast<size_t>(m_frameChunkSize * m_description->bytesPerFrame()));
+                CyberCore::AudioSampleBufferList::zeroABL(bufferList, static_cast<size_t>(m_frameChunkSize * m_description->bytesPerFrame()));
 
             m_ringBuffer->store(&bufferList, m_frameChunkSize, m_writeOffset);
             m_writeOffset += m_frameChunkSize;
@@ -260,6 +260,6 @@ void AudioMediaStreamTrackRendererInternalUnitManager::Proxy::reset(IsClosed isC
         start();
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(MEDIA_STREAM) && ENABLE(GPU_PROCESS) && PLATFORM(COCOA)

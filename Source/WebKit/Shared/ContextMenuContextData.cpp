@@ -29,11 +29,11 @@
 
 #if ENABLE(CONTEXT_MENUS)
 
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include <CyberCore/GraphicsContext.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 ContextMenuContextData::ContextMenuContextData()
     : m_type(Type::ContextMenu)
@@ -67,7 +67,7 @@ ContextMenuContextData::ContextMenuContextData(const IntPoint& menuLocation, con
 }
 
 #if ENABLE(SERVICE_CONTROLS)
-ContextMenuContextData::ContextMenuContextData(const WebCore::IntPoint& menuLocation, WebCore::Image& image, bool isEditable, const WebCore::IntRect& imageRect, const String& attachmentID, std::optional<ElementContext>&& elementContext, const String& sourceImageMIMEType)
+ContextMenuContextData::ContextMenuContextData(const CyberCore::IntPoint& menuLocation, CyberCore::Image& image, bool isEditable, const CyberCore::IntRect& imageRect, const String& attachmentID, std::optional<ElementContext>&& elementContext, const String& sourceImageMIMEType)
     : m_type(Type::ServicesMenu)
     , m_menuLocation(menuLocation)
     , m_selectionIsEditable(isEditable)
@@ -79,7 +79,7 @@ ContextMenuContextData::ContextMenuContextData(const WebCore::IntPoint& menuLoca
     setImage(&image);
 }
 
-void ContextMenuContextData::setImage(WebCore::Image* image)
+void ContextMenuContextData::setImage(CyberCore::Image* image)
 {
     // FIXME: figure out the rounding strategy for ShareableBitmap.
     m_controlledImage = ShareableBitmap::create(IntSize(image->size()), { });

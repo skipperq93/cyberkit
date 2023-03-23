@@ -26,7 +26,7 @@
 #include "config.h"
 #include "Cookie.h"
 
-namespace WebCore {
+namespace CyberCore {
     
 #if !PLATFORM(COCOA)
 bool Cookie::operator==(const Cookie& other) const
@@ -43,5 +43,5 @@ unsigned Cookie::hash() const
 }
 #endif
     
-} // namespace WebCore
+} // namespace CyberCore
 

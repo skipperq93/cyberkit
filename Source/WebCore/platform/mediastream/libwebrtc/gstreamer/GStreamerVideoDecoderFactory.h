@@ -26,7 +26,7 @@
 #include "api/video_codecs/video_decoder_factory.h"
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class GStreamerVideoDecoderFactory : public webrtc::VideoDecoderFactory {
     WTF_MAKE_FAST_ALLOCATED;

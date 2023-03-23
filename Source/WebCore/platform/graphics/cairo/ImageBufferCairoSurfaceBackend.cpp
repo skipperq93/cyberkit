@@ -40,7 +40,7 @@
 
 #if USE(CAIRO)
 
-namespace WebCore {
+namespace CyberCore {
 
 ImageBufferCairoSurfaceBackend::ImageBufferCairoSurfaceBackend(const Parameters& parameters, RefPtr<cairo_surface_t>&& surface)
     : ImageBufferCairoBackend(parameters)
@@ -118,6 +118,6 @@ void ImageBufferCairoSurfaceBackend::putPixelBuffer(const PixelBuffer& pixelBuff
     cairo_surface_mark_dirty_rectangle(m_surface.get(), destPointScaled.x(), destPointScaled.y(), srcRectScaled.width(), srcRectScaled.height());
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(CAIRO)

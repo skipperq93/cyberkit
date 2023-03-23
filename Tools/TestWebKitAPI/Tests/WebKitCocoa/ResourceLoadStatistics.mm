@@ -1298,7 +1298,7 @@ TEST(ResourceLoadStatistics, MigrateDistinctDataFromTableWithMissingIndexes)
     [defaultFileManager removeItemAtPath:itpRootURL.path error:nil];
 }
 
-static Vector<String> columnsForTable(WebCore::SQLiteDatabase& database, ASCIILiteral tableName)
+static Vector<String> columnsForTable(CyberCore::SQLiteDatabase& database, ASCIILiteral tableName)
 {
     auto statement = database.prepareStatementSlow(makeString("PRAGMA table_info(", tableName, ")"));
     EXPECT_NOT_NULL(statement);
@@ -1322,7 +1322,7 @@ TEST(ResourceLoadStatistics, DatabaseSchemeUpdate)
     EXPECT_NULL(error);
     
     NSURL *targetURL = [dataStoreConfiguration.get()._resourceLoadStatisticsDirectory URLByAppendingPathComponent:@"observations.db"];
-    WebCore::SQLiteDatabase database;
+    CyberCore::SQLiteDatabase database;
     EXPECT_TRUE(database.open(targetURL.path));
 
     constexpr auto createObservedDomain = "CREATE TABLE ObservedDomains ("
@@ -1343,7 +1343,7 @@ TEST(ResourceLoadStatistics, DatabaseSchemeUpdate)
     }];
     TestWebKitAPI::Util::run(&done);
     
-    WebCore::SQLiteDatabase databaseAfterMigration;
+    CyberCore::SQLiteDatabase databaseAfterMigration;
     EXPECT_TRUE(databaseAfterMigration.open(targetURL.path));
     auto columns = columnsForTable(databaseAfterMigration, "ObservedDomains"_s);
     databaseAfterMigration.close();

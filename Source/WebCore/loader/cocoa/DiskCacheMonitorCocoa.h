@@ -30,7 +30,7 @@
 
 typedef const struct _CFCachedURLResponse* CFCachedURLResponseRef;
 
-namespace WebCore {
+namespace CyberCore {
 
 class SharedBuffer;
 

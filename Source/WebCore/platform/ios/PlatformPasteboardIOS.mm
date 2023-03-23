@@ -52,7 +52,7 @@
 #define PASTEBOARD_SUPPORTS_PRESENTATION_STYLE_AND_TEAM_DATA (PASTEBOARD_SUPPORTS_ITEM_PROVIDERS && !PLATFORM(MACCATALYST))
 #define NSURL_SUPPORTS_TITLE (!PLATFORM(MACCATALYST))
 
-namespace WebCore {
+namespace CyberCore {
 
 PlatformPasteboard::PlatformPasteboard()
     : m_pasteboard([PAL::getUIPasteboardClass() generalPasteboard])

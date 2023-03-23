@@ -23,7 +23,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import "WebKitFullScreenListener.h"
+#import "CyberKitFullScreenListener.h"
 
 #import <CyberCore/Element.h>
 
@@ -31,9 +31,9 @@
 
 #import <CyberCore/FullscreenManager.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
-@implementation WebKitFullScreenListener
+@implementation CyberKitFullScreenListener
 
 - (id)initWithElement:(Element*)element
 {

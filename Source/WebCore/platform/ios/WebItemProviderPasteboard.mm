@@ -46,8 +46,8 @@ typedef void(^ItemProviderDataLoadCompletionHandler)(NSData *, NSError *);
 typedef void(^ItemProviderFileLoadCompletionHandler)(NSURL *, BOOL, NSError *);
 typedef NSMutableDictionary<NSString *, NSURL *> TypeToFileURLMap;
 
-using WebCore::Pasteboard;
-using WebCore::PasteboardCustomData;
+using CyberCore::Pasteboard;
+using CyberCore::PasteboardCustomData;
 
 static BOOL typeConformsToTypes(NSString *type, NSArray *conformsToTypes)
 {
@@ -60,7 +60,7 @@ ALLOW_DEPRECATED_DECLARATIONS_END
     return NO;
 }
 
-@implementation NSItemProvider (WebCoreExtras)
+@implementation NSItemProvider (CyberCoreExtras)
 
 - (BOOL)web_containsFileURLAndFileUploadContent
 {

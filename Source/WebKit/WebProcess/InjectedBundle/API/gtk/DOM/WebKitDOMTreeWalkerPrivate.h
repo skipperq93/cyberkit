@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -17,16 +17,16 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitDOMTreeWalkerPrivate_h
-#define WebKitDOMTreeWalkerPrivate_h
+#ifndef CyberKitDOMTreeWalkerPrivate_h
+#define CyberKitDOMTreeWalkerPrivate_h
 
 #include <CyberCore/TreeWalker.h>
-#include <webkitdom/WebKitDOMTreeWalker.h>
+#include <webkitdom/CyberKitDOMTreeWalker.h>
 
-namespace WebKit {
-WebKitDOMTreeWalker* wrapTreeWalker(WebCore::TreeWalker*);
-WebKitDOMTreeWalker* kit(WebCore::TreeWalker*);
-WebCore::TreeWalker* core(WebKitDOMTreeWalker*);
-} // namespace WebKit
+namespace CyberKit {
+CyberKitDOMTreeWalker* wrapTreeWalker(CyberCore::TreeWalker*);
+CyberKitDOMTreeWalker* kit(CyberCore::TreeWalker*);
+CyberCore::TreeWalker* core(CyberKitDOMTreeWalker*);
+} // namespace CyberKit
 
-#endif /* WebKitDOMTreeWalkerPrivate_h */
+#endif /* CyberKitDOMTreeWalkerPrivate_h */

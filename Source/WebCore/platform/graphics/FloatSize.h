@@ -53,7 +53,7 @@ namespace WTF {
 class TextStream;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class IntSize;
 
@@ -261,16 +261,16 @@ inline IntPoint flooredIntPoint(const FloatSize& p)
 
 WEBCORE_EXPORT WTF::TextStream& operator<<(WTF::TextStream&, const FloatSize&);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
-template<> struct DefaultHash<WebCore::FloatSize>;
-template<> struct HashTraits<WebCore::FloatSize>;
+template<> struct DefaultHash<CyberCore::FloatSize>;
+template<> struct HashTraits<CyberCore::FloatSize>;
 
 template<typename Type> struct LogArgument;
 template <>
-struct LogArgument<WebCore::FloatSize> {
-    static String toString(const WebCore::FloatSize& size)
+struct LogArgument<CyberCore::FloatSize> {
+    static String toString(const CyberCore::FloatSize& size)
     {
         return size.toJSONString();
     }

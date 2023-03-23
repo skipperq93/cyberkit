@@ -31,7 +31,7 @@
 #include <wtf/HashMap.h>
 #include <wtf/HashSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FilterEffect;
 class FilterImage;
@@ -56,4 +56,4 @@ private:
     std::unique_ptr<ImageBufferAllocator> m_allocator;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

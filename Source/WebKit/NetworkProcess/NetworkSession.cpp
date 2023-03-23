@@ -67,7 +67,7 @@
 #endif
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 constexpr Seconds cachedNetworkResourceLoaderLifetime { 30_s };
 
@@ -281,7 +281,7 @@ void NetworkSession::notifyResourceLoadStatisticsProcessed()
     m_networkProcess->parentProcessConnection()->send(Messages::NetworkProcessProxy::NotifyResourceLoadStatisticsProcessed(), 0);
 }
 
-void NetworkSession::logDiagnosticMessageWithValue(const String& message, const String& description, unsigned value, unsigned significantFigures, WebCore::ShouldSample shouldSample)
+void NetworkSession::logDiagnosticMessageWithValue(const String& message, const String& description, unsigned value, unsigned significantFigures, CyberCore::ShouldSample shouldSample)
 {
     m_networkProcess->parentProcessConnection()->send(Messages::WebPageProxy::LogDiagnosticMessageWithValueFromWebProcess(message, description, value, significantFigures, shouldSample), 0);
 }
@@ -320,7 +320,7 @@ void NetworkSession::setThirdPartyCookieBlockingMode(ThirdPartyCookieBlockingMod
         m_resourceLoadStatistics->setThirdPartyCookieBlockingMode(blockingMode);
 }
 
-void NetworkSession::setShouldEnbleSameSiteStrictEnforcement(WebCore::SameSiteStrictEnforcementEnabled enabled)
+void NetworkSession::setShouldEnbleSameSiteStrictEnforcement(CyberCore::SameSiteStrictEnforcementEnabled enabled)
 {
     ASSERT(m_resourceLoadStatistics);
     m_sameSiteStrictEnforcementEnabled = enabled;
@@ -328,7 +328,7 @@ void NetworkSession::setShouldEnbleSameSiteStrictEnforcement(WebCore::SameSiteSt
         m_resourceLoadStatistics->setSameSiteStrictEnforcementEnabled(enabled);
 }
 
-void NetworkSession::setFirstPartyHostCNAMEDomain(String&& firstPartyHost, WebCore::RegistrableDomain&& cnameDomain)
+void NetworkSession::setFirstPartyHostCNAMEDomain(String&& firstPartyHost, CyberCore::RegistrableDomain&& cnameDomain)
 {
     ASSERT(!firstPartyHost.isEmpty() && !cnameDomain.isEmpty() && firstPartyHost != cnameDomain.string());
     if (firstPartyHost.isEmpty() || cnameDomain.isEmpty() || firstPartyHost == cnameDomain.string())
@@ -336,7 +336,7 @@ void NetworkSession::setFirstPartyHostCNAMEDomain(String&& firstPartyHost, WebCo
     m_firstPartyHostCNAMEDomains.add(WTFMove(firstPartyHost), WTFMove(cnameDomain));
 }
 
-std::optional<WebCore::RegistrableDomain> NetworkSession::firstPartyHostCNAMEDomain(const String& firstPartyHost)
+std::optional<CyberCore::RegistrableDomain> NetworkSession::firstPartyHostCNAMEDomain(const String& firstPartyHost)
 {
     if (!decltype(m_firstPartyHostCNAMEDomains)::isValidKey(firstPartyHost))
         return std::nullopt;
@@ -359,11 +359,11 @@ void NetworkSession::setFirstPartyHostIPAddress(const String& firstPartyHost, co
     if (firstPartyHost.isEmpty() || addressString.isEmpty())
         return;
 
-    if (auto address = WebCore::IPAddress::fromString(addressString))
+    if (auto address = CyberCore::IPAddress::fromString(addressString))
         m_firstPartyHostIPAddresses.set(firstPartyHost, WTFMove(*address));
 }
 
-std::optional<WebCore::IPAddress> NetworkSession::firstPartyHostIPAddress(const String& firstPartyHost)
+std::optional<CyberCore::IPAddress> NetworkSession::firstPartyHostIPAddress(const String& firstPartyHost)
 {
     if (firstPartyHost.isEmpty())
         return std::nullopt;
@@ -376,11 +376,11 @@ std::optional<WebCore::IPAddress> NetworkSession::firstPartyHostIPAddress(const 
 }
 #endif // ENABLE(TRACKING_PREVENTION)
 
-void NetworkSession::storePrivateClickMeasurement(WebCore::PrivateClickMeasurement&& unattributedPrivateClickMeasurement)
+void NetworkSession::storePrivateClickMeasurement(CyberCore::PrivateClickMeasurement&& unattributedPrivateClickMeasurement)
 {
     if (m_isRunningEphemeralMeasurementTest)
-        unattributedPrivateClickMeasurement.setEphemeral(WebCore::PCM::AttributionEphemeral::Yes);
-    if (unattributedPrivateClickMeasurement.isEphemeral() == WebCore::PCM::AttributionEphemeral::Yes) {
+        unattributedPrivateClickMeasurement.setEphemeral(CyberCore::PCM::AttributionEphemeral::Yes);
+    if (unattributedPrivateClickMeasurement.isEphemeral() == CyberCore::PCM::AttributionEphemeral::Yes) {
         m_ephemeralMeasurement = WTFMove(unattributedPrivateClickMeasurement);
         return;
     }
@@ -391,12 +391,12 @@ void NetworkSession::storePrivateClickMeasurement(WebCore::PrivateClickMeasureme
     privateClickMeasurement().storeUnattributed(WTFMove(unattributedPrivateClickMeasurement), [] { });
 }
 
-void NetworkSession::handlePrivateClickMeasurementConversion(WebCore::PCM::AttributionTriggerData&& attributionTriggerData, const URL& requestURL, const WebCore::ResourceRequest& redirectRequest, String&& attributedBundleIdentifier)
+void NetworkSession::handlePrivateClickMeasurementConversion(CyberCore::PCM::AttributionTriggerData&& attributionTriggerData, const URL& requestURL, const CyberCore::ResourceRequest& redirectRequest, String&& attributedBundleIdentifier)
 {
     String appBundleID = WTFMove(attributedBundleIdentifier);
 #if PLATFORM(COCOA)
     if (appBundleID.isEmpty())
-        appBundleID = WebCore::applicationBundleIdentifier();
+        appBundleID = CyberCore::applicationBundleIdentifier();
 #endif
 
     if (m_ephemeralMeasurement) {
@@ -435,7 +435,7 @@ void NetworkSession::clearPrivateClickMeasurement(CompletionHandler<void()>&& co
     m_isRunningEphemeralMeasurementTest = false;
 }
 
-void NetworkSession::clearPrivateClickMeasurementForRegistrableDomain(WebCore::RegistrableDomain&& domain, CompletionHandler<void()>&& completionHandler)
+void NetworkSession::clearPrivateClickMeasurementForRegistrableDomain(CyberCore::RegistrableDomain&& domain, CompletionHandler<void()>&& completionHandler)
 {
     privateClickMeasurement().clearForRegistrableDomain(WTFMove(domain), WTFMove(completionHandler));
 }
@@ -495,7 +495,7 @@ void NetworkSession::firePrivateClickMeasurementTimerImmediatelyForTesting()
     privateClickMeasurement().startTimerImmediatelyForTesting();
 }
 
-void NetworkSession::allowTLSCertificateChainForLocalPCMTesting(const WebCore::CertificateInfo& certificateInfo)
+void NetworkSession::allowTLSCertificateChainForLocalPCMTesting(const CyberCore::CertificateInfo& certificateInfo)
 {
     privateClickMeasurement().allowTLSCertificateChainForLocalPCMTesting(certificateInfo);
 }
@@ -503,10 +503,10 @@ void NetworkSession::allowTLSCertificateChainForLocalPCMTesting(const WebCore::C
 void NetworkSession::setPrivateClickMeasurementAppBundleIDForTesting(String&& appBundleIDForTesting)
 {
 #if PLATFORM(COCOA)
-    auto appBundleID = WebCore::applicationBundleIdentifier();
+    auto appBundleID = CyberCore::applicationBundleIdentifier();
     if (!isRunningTest(appBundleID))
         WTFLogAlways("isRunningTest() returned false. appBundleID is %s.", appBundleID.isEmpty() ? "empty" : appBundleID.utf8().data());
-    RELEASE_ASSERT(isRunningTest(WebCore::applicationBundleIdentifier()));
+    RELEASE_ASSERT(isRunningTest(CyberCore::applicationBundleIdentifier()));
 #endif
     privateClickMeasurement().setPrivateClickMeasurementAppBundleIDForTesting(WTFMove(appBundleIDForTesting));
 }
@@ -567,7 +567,7 @@ void NetworkSession::removeLoaderWaitingWebProcessTransfer(NetworkResourceLoadId
         cachedResourceLoader->takeLoader()->abort();
 }
 
-std::unique_ptr<WebSocketTask> NetworkSession::createWebSocketTask(WebPageProxyIdentifier, NetworkSocketChannel&, const WebCore::ResourceRequest&, const String& protocol, const WebCore::ClientOrigin&, bool, bool, OptionSet<WebCore::NetworkConnectionIntegrity>)
+std::unique_ptr<WebSocketTask> NetworkSession::createWebSocketTask(WebPageProxyIdentifier, NetworkSocketChannel&, const CyberCore::ResourceRequest&, const String& protocol, const CyberCore::ClientOrigin&, bool, bool, OptionSet<CyberCore::NetworkConnectionIntegrity>)
 {
     return nullptr;
 }
@@ -708,12 +708,12 @@ void NetworkSession::setEmulatedConditions(std::optional<int64_t>&& bytesPerSeco
 #endif // ENABLE(INSPECTOR_NETWORK_THROTTLING)
 
 #if ENABLE(SERVICE_WORKER)
-void NetworkSession::softUpdate(ServiceWorkerJobData&& jobData, bool shouldRefreshCache, WebCore::ResourceRequest&& request, CompletionHandler<void(WebCore::WorkerFetchResult&&)>&& completionHandler)
+void NetworkSession::softUpdate(ServiceWorkerJobData&& jobData, bool shouldRefreshCache, CyberCore::ResourceRequest&& request, CompletionHandler<void(CyberCore::WorkerFetchResult&&)>&& completionHandler)
 {
     m_softUpdateLoaders.add(makeUnique<ServiceWorkerSoftUpdateLoader>(*this, WTFMove(jobData), shouldRefreshCache, WTFMove(request), WTFMove(completionHandler)));
 }
 
-void NetworkSession::createContextConnection(const WebCore::RegistrableDomain& registrableDomain, std::optional<WebCore::ProcessIdentifier> requestingProcessIdentifier, std::optional<WebCore::ScriptExecutionContextIdentifier> serviceWorkerPageIdentifier, CompletionHandler<void()>&& completionHandler)
+void NetworkSession::createContextConnection(const CyberCore::RegistrableDomain& registrableDomain, std::optional<CyberCore::ProcessIdentifier> requestingProcessIdentifier, std::optional<CyberCore::ScriptExecutionContextIdentifier> serviceWorkerPageIdentifier, CompletionHandler<void()>&& completionHandler)
 {
     ASSERT(!registrableDomain.isEmpty());
     m_networkProcess->parentProcessConnection()->sendWithAsyncReply(Messages::NetworkProcessProxy::EstablishRemoteWorkerContextConnectionToNetworkProcess { RemoteWorkerType::ServiceWorker, registrableDomain, requestingProcessIdentifier, serviceWorkerPageIdentifier, m_sessionID }, [completionHandler = WTFMove(completionHandler)] (auto) mutable {
@@ -721,7 +721,7 @@ void NetworkSession::createContextConnection(const WebCore::RegistrableDomain& r
     }, 0);
 }
 
-void NetworkSession::appBoundDomains(CompletionHandler<void(HashSet<WebCore::RegistrableDomain>&&)>&& completionHandler)
+void NetworkSession::appBoundDomains(CompletionHandler<void(HashSet<CyberCore::RegistrableDomain>&&)>&& completionHandler)
 {
 #if ENABLE(APP_BOUND_DOMAINS)
     m_networkProcess->parentProcessConnection()->sendWithAsyncReply(Messages::NetworkProcessProxy::GetAppBoundDomains { m_sessionID }, WTFMove(completionHandler), 0);
@@ -730,7 +730,7 @@ void NetworkSession::appBoundDomains(CompletionHandler<void(HashSet<WebCore::Reg
 #endif
 }
 
-void NetworkSession::addAllowedFirstPartyForCookies(WebCore::ProcessIdentifier webProcessIdentifier, std::optional<WebCore::ProcessIdentifier> requestingProcessIdentifier, WebCore::RegistrableDomain&& firstPartyForCookies)
+void NetworkSession::addAllowedFirstPartyForCookies(CyberCore::ProcessIdentifier webProcessIdentifier, std::optional<CyberCore::ProcessIdentifier> requestingProcessIdentifier, CyberCore::RegistrableDomain&& firstPartyForCookies)
 {
     if (requestingProcessIdentifier && (requestingProcessIdentifier != webProcessIdentifier) && !m_networkProcess->allowsFirstPartyForCookies(requestingProcessIdentifier.value(), firstPartyForCookies)) {
         ASSERT_NOT_REACHED();

@@ -35,10 +35,10 @@ ALLOW_COMMA_BEGIN
 ALLOW_UNUSED_PARAMETERS_END
 ALLOW_COMMA_END
 
-namespace WebCore {
+namespace CyberCore {
 
 WEBCORE_EXPORT UniqueRef<webrtc::VideoDecoder> createLibWebRTCDav1dDecoder();
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

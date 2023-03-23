@@ -25,22 +25,22 @@
 
 #include "webkitdomdefines.h"
 
-#define WEBKIT_WARN_FEATURE_NOT_PRESENT(Feature) g_warning("WebKitGTK was not compiled with support for " Feature);
+#define WEBKIT_WARN_FEATURE_NOT_PRESENT(Feature) g_warning("CyberKitGTK was not compiled with support for " Feature);
 
-namespace WebCore {
+namespace CyberCore {
 class Node;
 class Event;
 class StyleSheet;
 class HTMLCollection;
 class EventTarget;
 class Blob;
-} // namespace WebCore
+} // namespace CyberCore
 
-namespace WebKit {
-WebKitDOMNode* wrapNodeGtk(WebCore::Node*);
-WebKitDOMEvent* wrap(WebCore::Event*);
-WebKitDOMStyleSheet* wrap(WebCore::StyleSheet*);
-WebKitDOMHTMLCollection* wrap(WebCore::HTMLCollection*);
-WebKitDOMEventTarget* wrap(WebCore::EventTarget*);
-WebKitDOMBlob* wrap(WebCore::Blob*);
-} // namespace WebKit
+namespace CyberKit {
+CyberKitDOMNode* wrapNodeGtk(CyberCore::Node*);
+CyberKitDOMEvent* wrap(CyberCore::Event*);
+CyberKitDOMStyleSheet* wrap(CyberCore::StyleSheet*);
+CyberKitDOMHTMLCollection* wrap(CyberCore::HTMLCollection*);
+CyberKitDOMEventTarget* wrap(CyberCore::EventTarget*);
+CyberKitDOMBlob* wrap(CyberCore::Blob*);
+} // namespace CyberKit

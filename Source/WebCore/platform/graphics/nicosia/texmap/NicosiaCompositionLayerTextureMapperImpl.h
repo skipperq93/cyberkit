@@ -33,7 +33,7 @@
 #include "NicosiaPlatformLayer.h"
 #include <memory>
 
-namespace WebCore {
+namespace CyberCore {
 class TextureMapperLayer;
 }
 
@@ -49,7 +49,7 @@ public:
     bool isTextureMapperImpl() const override { return true; }
 
     struct CompositionState {
-        std::unique_ptr<WebCore::TextureMapperLayer> layer;
+        std::unique_ptr<CyberCore::TextureMapperLayer> layer;
     };
     CompositionState& compositionState() { return m_compositionState; }
 

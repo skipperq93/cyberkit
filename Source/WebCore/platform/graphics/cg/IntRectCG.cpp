@@ -30,7 +30,7 @@
 
 #include <CoreGraphics/CoreGraphics.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 IntRect::operator CGRect() const
 {

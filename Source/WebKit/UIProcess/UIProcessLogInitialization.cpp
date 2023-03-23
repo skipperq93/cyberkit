@@ -41,7 +41,7 @@ void initializeLoggingIfNecessary()
     static std::once_flag onceFlag;
     std::call_once(onceFlag, [] {
         WTF::logChannels().initializeLogChannelsIfNecessary(wtfLogLevelString());
-        WebCore::logChannels().initializeLogChannelsIfNecessary(webCoreLogLevelString());
+        CyberCore::logChannels().initializeLogChannelsIfNecessary(webCoreLogLevelString());
         WebKit::logChannels().initializeLogChannelsIfNecessary(webKitLogLevelString());
     });
 }
@@ -54,7 +54,7 @@ String wtfLogLevelString()
 
 String webCoreLogLevelString()
 {
-    return WebCore::logLevelString();
+    return CyberCore::logLevelString();
 }
 
 String webKitLogLevelString()

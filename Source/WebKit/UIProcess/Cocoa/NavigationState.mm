@@ -90,7 +90,7 @@
 #endif
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 static HashMap<WebPageProxy*, WeakPtr<NavigationState>>& navigationStates()
 {
@@ -617,7 +617,7 @@ void NavigationState::NavigationClient::decidePolicyForNavigationResponse(WebPag
     }).get()];
 }
 
-void NavigationState::NavigationClient::didStartProvisionalNavigation(WebPageProxy&, const WebCore::ResourceRequest& request, API::Navigation* navigation, API::Object* userInfo)
+void NavigationState::NavigationClient::didStartProvisionalNavigation(WebPageProxy&, const CyberCore::ResourceRequest& request, API::Navigation* navigation, API::Object* userInfo)
 {
     if (!m_navigationState)
         return;
@@ -631,7 +631,7 @@ void NavigationState::NavigationClient::didStartProvisionalNavigation(WebPagePro
         [navigationDelegate webView:m_navigationState->m_webView didStartProvisionalNavigation:wrapper(navigation)];
 }
 
-void NavigationState::NavigationClient::didStartProvisionalLoadForFrame(WebPageProxy& page, WebCore::ResourceRequest&& request, FrameInfoData&& frameInfo)
+void NavigationState::NavigationClient::didStartProvisionalLoadForFrame(WebPageProxy& page, CyberCore::ResourceRequest&& request, FrameInfoData&& frameInfo)
 {
     if (!m_navigationState)
         return;
@@ -730,7 +730,7 @@ static RetainPtr<NSError> createErrorWithRecoveryAttempter(WKWebView *webView, c
     return adoptNS([[NSError alloc] initWithDomain:originalError.domain code:originalError.code userInfo:userInfo.get()]);
 }
 
-void NavigationState::NavigationClient::didFailProvisionalNavigationWithError(WebPageProxy& page, FrameInfoData&& frameInfo, API::Navigation* navigation, const WebCore::ResourceError& error, API::Object*)
+void NavigationState::NavigationClient::didFailProvisionalNavigationWithError(WebPageProxy& page, FrameInfoData&& frameInfo, API::Navigation* navigation, const CyberCore::ResourceError& error, API::Object*)
 {
     if (!m_navigationState)
         return;
@@ -739,7 +739,7 @@ void NavigationState::NavigationClient::didFailProvisionalNavigationWithError(We
     if (!navigationDelegate)
         return;
 
-    bool isHTTPSOnlyEnabled = navigation && navigation->websitePolicies() && navigation->websitePolicies()->networkConnectionIntegrityPolicy().contains(WebCore::NetworkConnectionIntegrity::HTTPSOnly) && !navigation->websitePolicies()->networkConnectionIntegrityPolicy().contains(WebCore::NetworkConnectionIntegrity::HTTPSOnlyExplicitlyBypassedForDomain);
+    bool isHTTPSOnlyEnabled = navigation && navigation->websitePolicies() && navigation->websitePolicies()->networkConnectionIntegrityPolicy().contains(CyberCore::NetworkConnectionIntegrity::HTTPSOnly) && !navigation->websitePolicies()->networkConnectionIntegrityPolicy().contains(CyberCore::NetworkConnectionIntegrity::HTTPSOnlyExplicitlyBypassedForDomain);
     bool isHTTPSOnlyError = isHTTPSOnlyEnabled && error.errorRecoveryMethod() == ResourceError::ErrorRecoveryMethod::HTTPFallback && frameInfo.isMainFrame;
     auto errorWithRecoveryAttempter = createErrorWithRecoveryAttempter(m_navigationState->m_webView, frameInfo, error, isHTTPSOnlyError);
 
@@ -753,7 +753,7 @@ void NavigationState::NavigationClient::didFailProvisionalNavigationWithError(We
     }
 }
 
-void NavigationState::NavigationClient::didFailProvisionalLoadWithErrorForFrame(WebPageProxy& page, WebCore::ResourceRequest&& request, const WebCore::ResourceError& error, FrameInfoData&& frameInfo)
+void NavigationState::NavigationClient::didFailProvisionalLoadWithErrorForFrame(WebPageProxy& page, CyberCore::ResourceRequest&& request, const CyberCore::ResourceError& error, FrameInfoData&& frameInfo)
 {
     if (!m_navigationState)
         return;
@@ -782,7 +782,7 @@ void NavigationState::NavigationClient::didCommitNavigation(WebPageProxy& page, 
         [navigationDelegate webView:m_navigationState->m_webView didCommitNavigation:wrapper(navigation)];
 }
 
-void NavigationState::NavigationClient::didCommitLoadForFrame(WebKit::WebPageProxy& page, WebCore::ResourceRequest&& request, FrameInfoData&& frameInfo)
+void NavigationState::NavigationClient::didCommitLoadForFrame(WebKit::WebPageProxy& page, CyberCore::ResourceRequest&& request, FrameInfoData&& frameInfo)
 {
     if (!m_navigationState)
         return;
@@ -826,7 +826,7 @@ void NavigationState::NavigationClient::didFinishNavigation(WebPageProxy&, API::
         [navigationDelegate webView:m_navigationState->m_webView didFinishNavigation:wrapper(navigation)];
 }
 
-void NavigationState::NavigationClient::didFinishLoadForFrame(WebPageProxy& page, WebCore::ResourceRequest&& request, FrameInfoData&& frameInfo)
+void NavigationState::NavigationClient::didFinishLoadForFrame(WebPageProxy& page, CyberCore::ResourceRequest&& request, FrameInfoData&& frameInfo)
 {
     if (!m_navigationState)
         return;
@@ -865,7 +865,7 @@ void NavigationState::NavigationClient::didChangeLookalikeCharacters(WebPageProx
         [(id<WKNavigationDelegatePrivate>)navigationDelegate _webView:m_navigationState->m_webView didChangeLookalikeCharactersFromURL:originalURL toURL:adjustedURL];
 }
 
-void NavigationState::NavigationClient::didFailNavigationWithError(WebPageProxy& page, const FrameInfoData& frameInfo, API::Navigation* navigation, const WebCore::ResourceError& error, API::Object* userInfo)
+void NavigationState::NavigationClient::didFailNavigationWithError(WebPageProxy& page, const FrameInfoData& frameInfo, API::Navigation* navigation, const CyberCore::ResourceError& error, API::Object* userInfo)
 {
     if (!m_navigationState)
         return;
@@ -883,7 +883,7 @@ void NavigationState::NavigationClient::didFailNavigationWithError(WebPageProxy&
         [navigationDelegate webView:m_navigationState->m_webView didFailNavigation:wrapper(navigation) withError:errorWithRecoveryAttempter.get()];
 }
 
-void NavigationState::NavigationClient::didFailLoadWithErrorForFrame(WebPageProxy& page, WebCore::ResourceRequest&& request, const WebCore::ResourceError& error, FrameInfoData&& frameInfo)
+void NavigationState::NavigationClient::didFailLoadWithErrorForFrame(WebPageProxy& page, CyberCore::ResourceRequest&& request, const CyberCore::ResourceError& error, FrameInfoData&& frameInfo)
 {
     if (!m_navigationState)
         return;
@@ -915,7 +915,7 @@ void NavigationState::NavigationClient::didSameDocumentNavigation(WebPageProxy&,
     [static_cast<id <WKNavigationDelegatePrivate>>(navigationDelegate.get()) _webView:m_navigationState->m_webView navigation:wrapper(navigation) didSameDocumentNavigation:toWKSameDocumentNavigationType(navigationType)];
 }
 
-void NavigationState::NavigationClient::renderingProgressDidChange(WebPageProxy&, OptionSet<WebCore::LayoutMilestone> layoutMilestones)
+void NavigationState::NavigationClient::renderingProgressDidChange(WebPageProxy&, OptionSet<CyberCore::LayoutMilestone> layoutMilestones)
 {
     if (!m_navigationState)
         return;

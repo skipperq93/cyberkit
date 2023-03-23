@@ -35,37 +35,37 @@
 #import <wtf/GetPtr.h>
 #import <wtf/URL.h>
 
-#define IMPL static_cast<WebCore::HTMLCanvasElement*>(reinterpret_cast<WebCore::Node*>(_internal))
+#define IMPL static_cast<CyberCore::HTMLCanvasElement*>(reinterpret_cast<CyberCore::Node*>(_internal))
 
 @implementation DOMHTMLCanvasElement
 
 - (int)width
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->width();
 }
 
 - (void)setWidth:(int)newWidth
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->setWidth(newWidth);
 }
 
 - (int)height
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->height();
 }
 
 - (void)setHeight:(int)newHeight
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->setHeight(newHeight);
 }
 
 - (NSString *)toDataURL:(NSString *)type
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
 
     auto exceptionOrReturnValue = IMPL->toDataURL(type);
     if (exceptionOrReturnValue.hasException())

@@ -29,7 +29,7 @@
 #include "DisplayListRecorderImpl.h"
 #include "GraphicsContext.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace DisplayList {
 
 class InMemoryDisplayList;
@@ -57,4 +57,4 @@ protected:
 };
 
 } // DisplayList
-} // WebCore
+} // CyberCore

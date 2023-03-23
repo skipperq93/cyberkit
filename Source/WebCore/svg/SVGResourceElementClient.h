@@ -27,7 +27,7 @@
 
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGElement;
 
@@ -39,4 +39,4 @@ public:
 
 };
 
-} // namespace WebCore
+} // namespace CyberCore

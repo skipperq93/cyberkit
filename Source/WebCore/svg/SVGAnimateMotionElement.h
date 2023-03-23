@@ -23,7 +23,7 @@
 #include "Path.h"
 #include "SVGAnimationElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class AffineTransform;
             
@@ -69,4 +69,4 @@ private:
     Path m_animationPath;
 };
     
-} // namespace WebCore
+} // namespace CyberCore

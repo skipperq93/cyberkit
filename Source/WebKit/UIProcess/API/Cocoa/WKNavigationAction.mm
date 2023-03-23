@@ -34,7 +34,7 @@
 #import "_WKHitTestResultInternal.h"
 #import "_WKUserInitiatedActionInternal.h"
 #import <CyberCore/FloatPoint.h>
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 #import <wtf/RetainPtr.h>
 
 #if PLATFORM(IOS_FAMILY)
@@ -43,20 +43,20 @@
 
 @implementation WKNavigationAction
 
-static WKNavigationType toWKNavigationType(WebCore::NavigationType navigationType)
+static WKNavigationType toWKNavigationType(CyberCore::NavigationType navigationType)
 {
     switch (navigationType) {
-    case WebCore::NavigationType::LinkClicked:
+    case CyberCore::NavigationType::LinkClicked:
         return WKNavigationTypeLinkActivated;
-    case WebCore::NavigationType::FormSubmitted:
+    case CyberCore::NavigationType::FormSubmitted:
         return WKNavigationTypeFormSubmitted;
-    case WebCore::NavigationType::BackForward:
+    case CyberCore::NavigationType::BackForward:
         return WKNavigationTypeBackForward;
-    case WebCore::NavigationType::Reload:
+    case CyberCore::NavigationType::Reload:
         return WKNavigationTypeReload;
-    case WebCore::NavigationType::FormResubmitted:
+    case CyberCore::NavigationType::FormResubmitted:
         return WKNavigationTypeFormResubmitted;
-    case WebCore::NavigationType::Other:
+    case CyberCore::NavigationType::Other:
         return WKNavigationTypeOther;
     }
 
@@ -82,7 +82,7 @@ static WKSyntheticClickType toWKSyntheticClickType(WebKit::WebMouseEventSyntheti
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainRunLoop(WKNavigationAction.class, self))
+    if (CyberCoreObjCScheduleDeallocateOnMainRunLoop(WKNavigationAction.class, self))
         return;
 
     _navigationAction->~NavigationAction();
@@ -119,7 +119,7 @@ static WKSyntheticClickType toWKSyntheticClickType(WebKit::WebMouseEventSyntheti
 
 - (NSURLRequest *)request
 {
-    return _navigationAction->request().nsURLRequest(WebCore::HTTPBodyUpdatePolicy::UpdateHTTPBody);
+    return _navigationAction->request().nsURLRequest(CyberCore::HTTPBodyUpdatePolicy::UpdateHTTPBody);
 }
 
 - (BOOL)shouldPerformDownload

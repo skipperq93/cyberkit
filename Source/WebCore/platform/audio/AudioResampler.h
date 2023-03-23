@@ -31,7 +31,7 @@
 #include <memory>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // AudioResampler resamples the audio stream from an AudioSourceProvider.
 // The audio stream may be single or multi-channel.
@@ -64,6 +64,6 @@ private:
     RefPtr<AudioBus> m_sourceBus;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // AudioResampler_h

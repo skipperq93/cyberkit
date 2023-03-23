@@ -32,7 +32,7 @@
 #include <wtf/text/Base64.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 static std::optional<String> base64EncodedPNGData(cairo_surface_t* surface)
 {

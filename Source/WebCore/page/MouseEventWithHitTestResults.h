@@ -23,7 +23,7 @@
 #include "HitTestResult.h"
 #include "PlatformMouseEvent.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class Scrollbar;
 
@@ -44,4 +44,4 @@ private:
     HitTestResult m_hitTestResult;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

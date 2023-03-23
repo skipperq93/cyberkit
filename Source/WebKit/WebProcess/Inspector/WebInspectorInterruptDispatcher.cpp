@@ -32,10 +32,10 @@
 #include <CyberCore/CommonVM.h>
 #include <wtf/WorkQueue.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 WebInspectorInterruptDispatcher::WebInspectorInterruptDispatcher()
-    : m_queue(WorkQueue::create("com.apple.WebKit.WebInspectorInterruptDispatcher"))
+    : m_queue(WorkQueue::create("com.apple.CyberKit.WebInspectorInterruptDispatcher"))
 {
 }
 
@@ -53,11 +53,11 @@ void WebInspectorInterruptDispatcher::notifyNeedDebuggerBreak()
 {
     // If the web process has not been fully initialized yet, then there
     // is no VM to be notified and thus no infinite loop to break. Bail out.
-    if (!WebCore::commonVMOrNull())
+    if (!CyberCore::commonVMOrNull())
         return;
 
-    JSC::VM& vm = WebCore::commonVM();
+    JSC::VM& vm = CyberCore::commonVM();
     vm.notifyNeedDebuggerBreak();
 }
 
-} // namespace WebKit
+} // namespace CyberKit

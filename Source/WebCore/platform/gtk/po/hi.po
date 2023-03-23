@@ -1904,8 +1904,8 @@ msgstr "वेब इंस्पेक्टर"
 #~ msgid "Enable Timeline profiling"
 #~ msgstr "समयरेखा प्रोफाइलिंग सक्षम करें"
 
-#~ msgid "Profile the WebCore instrumentation."
-#~ msgstr " WebCore इंस्ट्रुमेंटेशन प्रोफ़ाइल देखें"
+#~ msgid "Profile the CyberCore instrumentation."
+#~ msgstr " CyberCore इंस्ट्रुमेंटेशन प्रोफ़ाइल देखें"
 
 #~ msgid "Reason"
 #~ msgstr "कारण"

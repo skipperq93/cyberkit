@@ -30,7 +30,7 @@
 #include "StyleAppearance.h"
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FloatRect;
 class GraphicsContext;
@@ -61,9 +61,9 @@ protected:
     ControlFactory* m_controlFactory { nullptr };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #define SPECIALIZE_TYPE_TRAITS_CONTROL_PART(PartName) \
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::PartName##Part) \
-    static bool isType(const WebCore::ControlPart& part) { return part.type() == WebCore::StyleAppearance::PartName; } \
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::PartName##Part) \
+    static bool isType(const CyberCore::ControlPart& part) { return part.type() == CyberCore::StyleAppearance::PartName; } \
 SPECIALIZE_TYPE_TRAITS_END()

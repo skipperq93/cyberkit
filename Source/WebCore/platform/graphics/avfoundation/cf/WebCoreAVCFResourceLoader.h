@@ -36,17 +36,17 @@
 
 typedef struct OpaqueAVCFAssetResourceLoadingRequest* AVCFAssetResourceLoadingRequestRef;
 
-namespace WebCore {
+namespace CyberCore {
 
 class CachedRawResource;
 class CachedResourceLoader;
 class MediaPlayerPrivateAVFoundationCF;
 
-class WebCoreAVCFResourceLoader : public RefCounted<WebCoreAVCFResourceLoader>, CachedRawResourceClient {
-    WTF_MAKE_NONCOPYABLE(WebCoreAVCFResourceLoader); WTF_MAKE_FAST_ALLOCATED;
+class CyberCoreAVCFResourceLoader : public RefCounted<CyberCoreAVCFResourceLoader>, CachedRawResourceClient {
+    WTF_MAKE_NONCOPYABLE(CyberCoreAVCFResourceLoader); WTF_MAKE_FAST_ALLOCATED;
 public:
-    static Ref<WebCoreAVCFResourceLoader> create(MediaPlayerPrivateAVFoundationCF* parent, AVCFAssetResourceLoadingRequestRef);
-    virtual ~WebCoreAVCFResourceLoader();
+    static Ref<CyberCoreAVCFResourceLoader> create(MediaPlayerPrivateAVFoundationCF* parent, AVCFAssetResourceLoadingRequestRef);
+    virtual ~CyberCoreAVCFResourceLoader();
 
     void startLoading();
     void stopLoading();
@@ -62,7 +62,7 @@ private:
 
     void fulfillRequestWithResource(CachedResource&);
 
-    WebCoreAVCFResourceLoader(MediaPlayerPrivateAVFoundationCF* parent, AVCFAssetResourceLoadingRequestRef);
+    CyberCoreAVCFResourceLoader(MediaPlayerPrivateAVFoundationCF* parent, AVCFAssetResourceLoadingRequestRef);
     MediaPlayerPrivateAVFoundationCF* m_parent;
     RetainPtr<AVCFAssetResourceLoadingRequestRef> m_avRequest;
     CachedResourceHandle<CachedRawResource> m_resource;

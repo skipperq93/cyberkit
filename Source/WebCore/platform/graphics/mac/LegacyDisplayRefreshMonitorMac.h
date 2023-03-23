@@ -32,7 +32,7 @@
 
 typedef struct __CVDisplayLink *CVDisplayLinkRef;
 
-namespace WebCore {
+namespace CyberCore {
 
 class LegacyDisplayRefreshMonitorMac : public DisplayRefreshMonitor {
 public:
@@ -66,6 +66,6 @@ private:
     bool m_displayLinkIsActive { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(MAC)

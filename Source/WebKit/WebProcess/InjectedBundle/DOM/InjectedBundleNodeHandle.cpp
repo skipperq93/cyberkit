@@ -58,8 +58,8 @@
 #include <wtf/NeverDestroyed.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 using namespace HTMLNames;
 
 typedef HashMap<Node*, InjectedBundleNodeHandle*> DOMNodeHandleCache;
@@ -446,4 +446,4 @@ const char* InjectedBundleNodeHandle::activeDOMObjectName() const
     return "InjectedBundleNodeHandle";
 }
 
-} // namespace WebKit
+} // namespace CyberKit

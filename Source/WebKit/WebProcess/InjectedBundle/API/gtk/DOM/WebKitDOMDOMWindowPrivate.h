@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -17,19 +17,19 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitDOMDOMWindowPrivate_h
-#define WebKitDOMDOMWindowPrivate_h
+#ifndef CyberKitDOMDOMWindowPrivate_h
+#define CyberKitDOMDOMWindowPrivate_h
 
 #include <CyberCore/DOMWindow.h>
 #include <CyberCore/WindowProxy.h>
-#include <webkitdom/WebKitDOMDOMWindow.h>
+#include <webkitdom/CyberKitDOMDOMWindow.h>
 
-namespace WebKit {
-WebKitDOMDOMWindow* wrapDOMWindow(WebCore::DOMWindow*);
-WebKitDOMDOMWindow* kit(WebCore::DOMWindow*);
-WebKitDOMDOMWindow* kit(WebCore::WindowProxy*);
-WebCore::DOMWindow* core(WebKitDOMDOMWindow*);
-WebCore::WindowProxy* toWindowProxy(WebKitDOMDOMWindow*);
-} // namespace WebKit
+namespace CyberKit {
+CyberKitDOMDOMWindow* wrapDOMWindow(CyberCore::DOMWindow*);
+CyberKitDOMDOMWindow* kit(CyberCore::DOMWindow*);
+CyberKitDOMDOMWindow* kit(CyberCore::WindowProxy*);
+CyberCore::DOMWindow* core(CyberKitDOMDOMWindow*);
+CyberCore::WindowProxy* toWindowProxy(CyberKitDOMDOMWindow*);
+} // namespace CyberKit
 
-#endif /* WebKitDOMDOMWindowPrivate_h */
+#endif /* CyberKitDOMDOMWindowPrivate_h */

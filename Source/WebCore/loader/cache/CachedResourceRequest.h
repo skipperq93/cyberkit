@@ -35,7 +35,7 @@
 #include <wtf/RefPtr.h>
 #include <wtf/text/AtomString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ContentRuleListResults;
 class Document;
@@ -131,4 +131,4 @@ private:
 
 void upgradeInsecureResourceRequestIfNeeded(ResourceRequest&, Document&);
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -37,7 +37,7 @@
 #include "StyleRule.h"
 #include "StyleScope.h"
 
-namespace WebCore::Style {
+namespace CyberCore::Style {
 
 ContainerQueryEvaluator::ContainerQueryEvaluator(const Element& element, SelectionMode selectionMode, ScopeOrdinal scopeOrdinal, SelectorMatchingState* selectorMatchingState)
     : m_element(element)

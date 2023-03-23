@@ -28,7 +28,7 @@
 
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class StorageTrackerClient {
 public:
@@ -37,6 +37,6 @@ public:
     virtual void didFinishLoadingOrigins() = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // StorageTrackerClient_h

@@ -34,8 +34,8 @@ namespace WebKit {
 
 struct VideoTrackPrivateRemoteConfiguration : TrackPrivateRemoteConfiguration {
     bool selected;
-    WebCore::VideoTrackPrivate::Kind kind { WebCore::VideoTrackPrivate::Kind::None };
-    WebCore::PlatformVideoTrackConfiguration trackConfiguration;
+    CyberCore::VideoTrackPrivate::Kind kind { CyberCore::VideoTrackPrivate::Kind::None };
+    CyberCore::PlatformVideoTrackConfiguration trackConfiguration;
 
     template<class Encoder>
     void encode(Encoder& encoder) const

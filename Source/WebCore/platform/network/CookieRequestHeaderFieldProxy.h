@@ -31,7 +31,7 @@
 #include "SameSiteInfo.h"
 #include <wtf/URL.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct CookieRequestHeaderFieldProxy {
     URL firstParty;
@@ -42,4 +42,4 @@ struct CookieRequestHeaderFieldProxy {
     IncludeSecureCookies includeSecureCookies { IncludeSecureCookies::No };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

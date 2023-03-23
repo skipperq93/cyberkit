@@ -35,7 +35,7 @@
 #include <CyberScriptCore/TypedArrayInlines.h>
 #include <CyberScriptCore/Uint8Array.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class MockCDMSession : public LegacyCDMSession {
     WTF_MAKE_FAST_ALLOCATED;

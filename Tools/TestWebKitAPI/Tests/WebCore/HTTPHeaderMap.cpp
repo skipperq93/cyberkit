@@ -28,7 +28,7 @@
 #include "Test.h"
 #include <CyberCore/HTTPHeaderMap.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 namespace TestWebKitAPI {
 

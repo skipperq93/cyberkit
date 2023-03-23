@@ -27,7 +27,7 @@
 
 #include "ColorConversion.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class Color;
 

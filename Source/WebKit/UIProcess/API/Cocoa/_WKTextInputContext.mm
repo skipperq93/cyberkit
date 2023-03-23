@@ -30,7 +30,7 @@
 #import <CyberCore/ElementContext.h>
 
 @implementation _WKTextInputContext {
-    WebCore::ElementContext _textInputContext;
+    CyberCore::ElementContext _textInputContext;
 }
 
 - (instancetype)init
@@ -38,7 +38,7 @@
     return nil;
 }
 
-- (instancetype)_initWithTextInputContext:(const WebCore::ElementContext&)context
+- (instancetype)_initWithTextInputContext:(const CyberCore::ElementContext&)context
 {
     self = [super init];
     if (!self)
@@ -54,7 +54,7 @@
     return _textInputContext.boundingRect;
 }
 
-- (const WebCore::ElementContext&)_textInputContext
+- (const CyberCore::ElementContext&)_textInputContext
 {
     return _textInputContext;
 }

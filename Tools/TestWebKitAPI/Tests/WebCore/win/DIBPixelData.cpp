@@ -27,13 +27,13 @@
 
 #include <CyberCore/DIBPixelData.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 namespace TestWebKitAPI {
 
 // This test passes if DIBPixelData::setRGBABitmapAlpha does not crash when the HDC parameter is null.
 
-TEST(WebCore, DIBPixelDataInvalidHdcTest)
+TEST(CyberCore, DIBPixelDataInvalidHdcTest)
 {
     DIBPixelData::setRGBABitmapAlpha(nullptr, IntRect(), 0);
 }

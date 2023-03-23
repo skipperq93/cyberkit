@@ -28,7 +28,7 @@
 
 #include "Page.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 VisitedLinkStore::VisitedLinkStore()
 {
@@ -65,4 +65,4 @@ void VisitedLinkStore::invalidateStylesForLink(SharedStringHash linkHash)
         page.invalidateStylesForLink(linkHash);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

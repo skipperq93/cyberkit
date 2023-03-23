@@ -28,7 +28,7 @@
 
 #include "Logging.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 #if !LOG_DISABLED
 

@@ -31,7 +31,7 @@
 #include "SVGFilterPrimitiveStandardAttributes.h"
 #include "SourceGraphic.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static constexpr unsigned maxTotalNumberFilterEffects = 100;
 static constexpr unsigned maxCountChildNodes = 200;
@@ -318,4 +318,4 @@ TextStream& SVGFilter::externalRepresentation(TextStream& ts, FilterRepresentati
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

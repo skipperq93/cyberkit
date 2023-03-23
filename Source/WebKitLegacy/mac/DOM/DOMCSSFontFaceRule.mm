@@ -37,13 +37,13 @@
 #import <CyberCore/WebScriptObjectPrivate.h>
 #import <wtf/GetPtr.h>
 
-#define IMPL static_cast<WebCore::CSSFontFaceRule*>(reinterpret_cast<WebCore::CSSRule*>(_internal))
+#define IMPL static_cast<CyberCore::CSSFontFaceRule*>(reinterpret_cast<CyberCore::CSSRule*>(_internal))
 
 @implementation DOMCSSFontFaceRule
 
 - (DOMCSSStyleDeclaration *)style
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->style()));
 }
 

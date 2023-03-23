@@ -29,7 +29,7 @@
 #include "HitTestLocation.h"
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 bool ClipRect::intersects(const HitTestLocation& hitTestLocation) const
 {

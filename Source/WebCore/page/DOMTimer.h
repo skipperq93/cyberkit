@@ -34,7 +34,7 @@
 #include <wtf/Seconds.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMTimerFireState;
 class Document;
@@ -97,4 +97,4 @@ private:
     RefPtr<UserGestureToken> m_userGestureTokenToForward;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

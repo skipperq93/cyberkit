@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class WorkerThreadType : uint8_t {
     Main,
@@ -35,4 +35,4 @@ enum class WorkerThreadType : uint8_t {
     SharedWorker
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -31,13 +31,13 @@
 #import "ArgumentCodersCocoa.h"
 #import "Decoder.h"
 #import "Encoder.h"
-#import <CyberCore/ApplePaySetupFeatureWebCore.h>
+#import <CyberCore/ApplePaySetupFeatureCyberCore.h>
 
 #import <pal/cocoa/PassKitSoftLink.h>
 
 namespace WebKit {
 
-static NSArray<PKPaymentSetupFeature *> *toPlatformFeatures(Vector<RefPtr<WebCore::ApplePaySetupFeature>>&& features)
+static NSArray<PKPaymentSetupFeature *> *toPlatformFeatures(Vector<RefPtr<CyberCore::ApplePaySetupFeature>>&& features)
 {
     NSMutableArray *platformFeatures = [NSMutableArray arrayWithCapacity:features.size()];
     for (auto& feature : features) {
@@ -47,7 +47,7 @@ static NSArray<PKPaymentSetupFeature *> *toPlatformFeatures(Vector<RefPtr<WebCor
     return platformFeatures;
 }
 
-PaymentSetupFeatures::PaymentSetupFeatures(Vector<RefPtr<WebCore::ApplePaySetupFeature>>&& features)
+PaymentSetupFeatures::PaymentSetupFeatures(Vector<RefPtr<CyberCore::ApplePaySetupFeature>>&& features)
     : m_platformFeatures { toPlatformFeatures(WTFMove(features)) }
 {
 }
@@ -57,13 +57,13 @@ PaymentSetupFeatures::PaymentSetupFeatures(RetainPtr<NSArray>&& platformFeatures
 {
 }
 
-PaymentSetupFeatures::operator Vector<Ref<WebCore::ApplePaySetupFeature>>() const
+PaymentSetupFeatures::operator Vector<Ref<CyberCore::ApplePaySetupFeature>>() const
 {
-    Vector<Ref<WebCore::ApplePaySetupFeature>> features;
+    Vector<Ref<CyberCore::ApplePaySetupFeature>> features;
     features.reserveInitialCapacity([m_platformFeatures count]);
     for (PKPaymentSetupFeature *platformFeature in m_platformFeatures.get()) {
-        if (WebCore::ApplePaySetupFeature::supportsFeature(platformFeature))
-            features.uncheckedAppend(WebCore::ApplePaySetupFeature::create(platformFeature));
+        if (CyberCore::ApplePaySetupFeature::supportsFeature(platformFeature))
+            features.uncheckedAppend(CyberCore::ApplePaySetupFeature::create(platformFeature));
     }
     return features;
 }

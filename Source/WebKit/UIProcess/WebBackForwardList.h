@@ -51,7 +51,7 @@ public:
 
     virtual ~WebBackForwardList();
 
-    WebBackForwardListItem* itemForID(const WebCore::BackForwardItemIdentifier&);
+    WebBackForwardListItem* itemForID(const CyberCore::BackForwardItemIdentifier&);
 
     void addItem(Ref<WebBackForwardListItem>&&);
     void goToItem(WebBackForwardListItem&);

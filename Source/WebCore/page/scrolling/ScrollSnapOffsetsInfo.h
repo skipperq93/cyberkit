@@ -34,7 +34,7 @@
 #include <utility>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScrollableArea;
 class RenderBox;
@@ -113,4 +113,4 @@ template <typename T> WTF::TextStream& operator<<(WTF::TextStream& ts, SnapOffse
     return ts;
 }
 
-}; // namespace WebCore
+}; // namespace CyberCore

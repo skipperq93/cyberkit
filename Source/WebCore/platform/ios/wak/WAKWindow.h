@@ -38,10 +38,10 @@
 @class WebEvent;
 
 #ifdef __cplusplus
-namespace WebCore {
+namespace CyberCore {
     class LegacyTileCache;
 }
-typedef WebCore::LegacyTileCache LegacyTileCache;
+typedef CyberCore::LegacyTileCache LegacyTileCache;
 #else
 typedef struct LegacyTileCache LegacyTileCache;
 #endif

@@ -33,7 +33,7 @@
 #include <wtf/text/StringHash.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
     
 class SVGElement;
 class SVGSMILElement;
@@ -91,4 +91,4 @@ private:
     SVGSVGElement& m_ownerSVGElement;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

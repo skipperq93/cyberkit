@@ -32,9 +32,9 @@
 #include <wtf/RetainPtr.h>
 
 OBJC_CLASS RPScreenRecorder;
-OBJC_CLASS WebCoreReplayKitScreenRecorderHelper;
+OBJC_CLASS CyberCoreReplayKitScreenRecorderHelper;
 
-namespace WebCore {
+namespace CyberCore {
 
 class ReplayKitCaptureSource final : public DisplayCaptureSourceCocoa::Capturer, public CanMakeWeakPtr<ReplayKitCaptureSource> {
 public:
@@ -70,7 +70,7 @@ private:
 
     RetainPtr<CMSampleBufferRef> m_currentFrame;
     RetainPtr<RPScreenRecorder> m_screenRecorder;
-    RetainPtr<WebCoreReplayKitScreenRecorderHelper> m_recorderHelper;
+    RetainPtr<CyberCoreReplayKitScreenRecorderHelper> m_recorderHelper;
 
     Timer m_captureWatchdogTimer;
     uint64_t m_frameCount { 0 };
@@ -80,6 +80,6 @@ private:
     bool m_interrupted { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM) && PLATFORM(IOS)

@@ -50,7 +50,7 @@
 #include "SliderThumbElement.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 InteractionRegion::~InteractionRegion() = default;
 

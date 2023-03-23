@@ -29,7 +29,7 @@
 #include <wtf/CrossThreadCopier.h>
 #include <wtf/Language.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace WebKitFontFamilyNames;
 

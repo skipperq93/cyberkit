@@ -30,7 +30,7 @@
 
 namespace WebKit {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 Ref<WebGeolocationPosition> WebGeolocationPosition::create(GeolocationPositionData&& geolocationPosition)
 {

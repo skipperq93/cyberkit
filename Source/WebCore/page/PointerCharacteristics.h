@@ -25,11 +25,11 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class PointerCharacteristics : uint8_t {
     Coarse = 1 << 0,
     Fine = 1 << 1,
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -27,7 +27,7 @@
 #include "MainThreadSharedTimer.h"
 
 #include "DeprecatedGlobalSettings.h"
-#include "WebCoreInstanceHandle.h"
+#include "CyberCoreInstanceHandle.h"
 #include "Widget.h"
 #include <wtf/Assertions.h>
 #include <wtf/WindowsExtras.h>
@@ -48,7 +48,7 @@
 #define QS_RAWINPUT         0x0400
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 static UINT timerID;
 
@@ -103,12 +103,12 @@ static void initializeOffScreenTimerWindow()
     wcex.cbSize = sizeof(WNDCLASSEX);
 
     wcex.lpfnWndProc    = TimerWindowWndProc;
-    wcex.hInstance      = WebCore::instanceHandle();
+    wcex.hInstance      = CyberCore::instanceHandle();
     wcex.lpszClassName  = kTimerWindowClassName;
     RegisterClassEx(&wcex);
 
     timerWindowHandle = CreateWindow(kTimerWindowClassName, 0, 0,
-       CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, HWND_MESSAGE, 0, WebCore::instanceHandle(), 0);
+       CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, HWND_MESSAGE, 0, CyberCore::instanceHandle(), 0);
 
     timerFiredMessage = RegisterWindowMessage(L"com.apple.WebKit.TimerFired");
 }

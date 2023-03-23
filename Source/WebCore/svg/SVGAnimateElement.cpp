@@ -28,7 +28,7 @@
 
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(SVGAnimateElement);
 
@@ -43,4 +43,4 @@ Ref<SVGAnimateElement> SVGAnimateElement::create(const QualifiedName& tagName, D
     return adoptRef(*new SVGAnimateElement(tagName, document));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -35,7 +35,7 @@
 #include <wtf/StdLibExtras.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(ImageBufferRemoteIOSurfaceBackend);
 

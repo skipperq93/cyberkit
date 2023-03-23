@@ -24,7 +24,7 @@
 #include "RTCDTMFSenderBackend.h"
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // Use eager initialization for the WeakPtrFactory since we call makeWeakPtr() from another thread.
 class GStreamerDTMFSenderBackend final : public RTCDTMFSenderBackend, public CanMakeWeakPtr<GStreamerDTMFSenderBackend, WeakPtrFactoryInitialization::Eager> {
@@ -45,6 +45,6 @@ private:
     Function<void()> m_onTonePlayed;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC) && USE(GSTREAMER_WEBRTC)

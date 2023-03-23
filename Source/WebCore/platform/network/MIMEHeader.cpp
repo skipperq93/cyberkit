@@ -41,11 +41,11 @@
 #include <wtf/text/StringConcatenate.h>
 #include <wtf/text/StringHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 typedef HashMap<String, String> KeyValueMap;
 
-static KeyValueMap retrieveKeyValuePairs(WebCore::SharedBufferChunkReader& buffer)
+static KeyValueMap retrieveKeyValuePairs(CyberCore::SharedBufferChunkReader& buffer)
 {
     KeyValueMap keyValuePairs;
     String line;

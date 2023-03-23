@@ -34,7 +34,7 @@
 #include <wtf/RefPtr.h>
 #include <wtf/UniqueRef.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Frame;
 class ResourceResponse;
@@ -94,4 +94,4 @@ private:
     bool m_isMainLoad { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

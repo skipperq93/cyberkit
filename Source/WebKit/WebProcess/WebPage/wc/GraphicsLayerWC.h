@@ -31,31 +31,31 @@
 #include <CyberCore/GraphicsLayerContentsDisplayDelegate.h>
 #include <wtf/DoublyLinkedList.h>
 
-namespace WebCore {
+namespace CyberCore {
 class TransformState;
 }
 
-namespace WebKit {
+namespace CyberKit {
 class WCTiledBacking;
 
-class GraphicsLayerWC final : public WebCore::GraphicsLayer, public DoublyLinkedListNode<GraphicsLayerWC> {
+class GraphicsLayerWC final : public CyberCore::GraphicsLayer, public DoublyLinkedListNode<GraphicsLayerWC> {
 public:
     struct Observer {
         virtual void graphicsLayerAdded(GraphicsLayerWC&) = 0;
         virtual void graphicsLayerRemoved(GraphicsLayerWC&) = 0;
         virtual void commitLayerUpateInfo(WCLayerUpateInfo&&) = 0;
-        virtual RefPtr<WebCore::ImageBuffer> createImageBuffer(WebCore::FloatSize) = 0;
+        virtual RefPtr<CyberCore::ImageBuffer> createImageBuffer(CyberCore::FloatSize) = 0;
     };
 
-    GraphicsLayerWC(Type layerType, WebCore::GraphicsLayerClient&, Observer&);
+    GraphicsLayerWC(Type layerType, CyberCore::GraphicsLayerClient&, Observer&);
     ~GraphicsLayerWC() override;
 
     void clearObserver() { m_observer = nullptr; }
 
     // GraphicsLayer
-    WebCore::GraphicsLayer::PlatformLayerID primaryLayerID() const override;
+    CyberCore::GraphicsLayer::PlatformLayerID primaryLayerID() const override;
     void setNeedsDisplay() override;
-    void setNeedsDisplayInRect(const WebCore::FloatRect&, ShouldClipToLayer) override;
+    void setNeedsDisplayInRect(const CyberCore::FloatRect&, ShouldClipToLayer) override;
     void setContentsNeedsDisplay() override;
     bool setChildren(Vector<Ref<GraphicsLayer>>&&) override;
     void addChild(Ref<GraphicsLayer>&&) override;
@@ -67,71 +67,71 @@ public:
     void setMaskLayer(RefPtr<GraphicsLayer>&&) override;
     void setReplicatedLayer(GraphicsLayer*) override;
     void setReplicatedByLayer(RefPtr<GraphicsLayer>&&) override;
-    void setPosition(const WebCore::FloatPoint&) override;
-    void setAnchorPoint(const WebCore::FloatPoint3D&) override;
-    void setSize(const WebCore::FloatSize&) override;
-    void setBoundsOrigin(const WebCore::FloatPoint&) override;
-    void setTransform(const WebCore::TransformationMatrix&) override;
-    void setChildrenTransform(const WebCore::TransformationMatrix&) override;
+    void setPosition(const CyberCore::FloatPoint&) override;
+    void setAnchorPoint(const CyberCore::FloatPoint3D&) override;
+    void setSize(const CyberCore::FloatSize&) override;
+    void setBoundsOrigin(const CyberCore::FloatPoint&) override;
+    void setTransform(const CyberCore::TransformationMatrix&) override;
+    void setChildrenTransform(const CyberCore::TransformationMatrix&) override;
     void setPreserves3D(bool) override;
     void setMasksToBounds(bool) override;
-    void setBackgroundColor(const WebCore::Color&) override;
+    void setBackgroundColor(const CyberCore::Color&) override;
     void setOpacity(float) override;
-    void setContentsRect(const WebCore::FloatRect&) override;
-    void setContentsClippingRect(const WebCore::FloatRoundedRect&) override;
+    void setContentsRect(const CyberCore::FloatRect&) override;
+    void setContentsClippingRect(const CyberCore::FloatRoundedRect&) override;
     void setContentsRectClipsDescendants(bool) override;
     void setDrawsContent(bool) override;
     void setContentsVisible(bool) override;
     void setBackfaceVisibility(bool) override;
-    void setContentsToSolidColor(const WebCore::Color&) override;
+    void setContentsToSolidColor(const CyberCore::Color&) override;
     void setContentsToPlatformLayer(PlatformLayer*, ContentsLayerPurpose) override;
-    void setContentsDisplayDelegate(RefPtr<WebCore::GraphicsLayerContentsDisplayDelegate>&&, ContentsLayerPurpose) override;
-    bool shouldDirectlyCompositeImage(WebCore::Image*) const override { return false; }
+    void setContentsDisplayDelegate(RefPtr<CyberCore::GraphicsLayerContentsDisplayDelegate>&&, ContentsLayerPurpose) override;
+    bool shouldDirectlyCompositeImage(CyberCore::Image*) const override { return false; }
     bool usesContentsLayer() const override;
     void setShowDebugBorder(bool) override;
-    void setDebugBorder(const WebCore::Color&, float width) override;
+    void setDebugBorder(const CyberCore::Color&, float width) override;
     void setShowRepaintCounter(bool) override;
-    bool setFilters(const WebCore::FilterOperations&) override;
-    bool setBackdropFilters(const WebCore::FilterOperations&) override;
-    void setBackdropFiltersRect(const WebCore::FloatRoundedRect&) override;
-    void flushCompositingState(const WebCore::FloatRect& clipRect) override;
+    bool setFilters(const CyberCore::FilterOperations&) override;
+    bool setBackdropFilters(const CyberCore::FilterOperations&) override;
+    void setBackdropFiltersRect(const CyberCore::FloatRoundedRect&) override;
+    void flushCompositingState(const CyberCore::FloatRect& clipRect) override;
     void flushCompositingStateForThisLayerOnly() override;
-    WebCore::TiledBacking* tiledBacking() const override;
+    CyberCore::TiledBacking* tiledBacking() const override;
 
 protected:
     friend WCTiledBacking;
 
-    RefPtr<WebCore::ImageBuffer> createImageBuffer(WebCore::FloatSize);
+    RefPtr<CyberCore::ImageBuffer> createImageBuffer(CyberCore::FloatSize);
     
 private:
     struct VisibleAndCoverageRects {
         WTF_MAKE_STRUCT_FAST_ALLOCATED;
-        WebCore::FloatRect visibleRect;
-        WebCore::FloatRect coverageRect;
-        WebCore::TransformationMatrix animatingTransform;
+        CyberCore::FloatRect visibleRect;
+        CyberCore::FloatRect coverageRect;
+        CyberCore::TransformationMatrix animatingTransform;
     };
 
     enum ScheduleFlushOrNot { ScheduleFlush, DontScheduleFlush };
     void noteLayerPropertyChanged(OptionSet<WCLayerChange>, ScheduleFlushOrNot = ScheduleFlush);
-    WebCore::TransformationMatrix transformByApplyingAnchorPoint(const WebCore::TransformationMatrix&) const;
-    WebCore::TransformationMatrix layerTransform(const WebCore::FloatPoint&, const WebCore::TransformationMatrix* = nullptr) const;
-    VisibleAndCoverageRects computeVisibleAndCoverageRect(WebCore::TransformState&, bool preserves3D) const;
-    void recursiveCommitChanges(const WebCore::TransformState&);
+    CyberCore::TransformationMatrix transformByApplyingAnchorPoint(const CyberCore::TransformationMatrix&) const;
+    CyberCore::TransformationMatrix layerTransform(const CyberCore::FloatPoint&, const CyberCore::TransformationMatrix* = nullptr) const;
+    VisibleAndCoverageRects computeVisibleAndCoverageRect(CyberCore::TransformState&, bool preserves3D) const;
+    void recursiveCommitChanges(const CyberCore::TransformState&);
 
     friend class WTF::DoublyLinkedListNode<GraphicsLayerWC>;
 
     GraphicsLayerWC* m_prev;
     GraphicsLayerWC* m_next;
-    WebCore::GraphicsLayer::PlatformLayerID m_layerID { WebCore::GraphicsLayer::PlatformLayerID::generate() };
+    CyberCore::GraphicsLayer::PlatformLayerID m_layerID { CyberCore::GraphicsLayer::PlatformLayerID::generate() };
     Observer* m_observer;
     std::unique_ptr<WCTiledBacking> m_tiledBacking;
     PlatformLayer* m_platformLayer { nullptr };
-    WebCore::Color m_solidColor;
-    WebCore::Color m_debugBorderColor;
+    CyberCore::Color m_solidColor;
+    CyberCore::Color m_debugBorderColor;
     OptionSet<WCLayerChange> m_uncommittedChanges;
     float m_debugBorderWidth { 0 };
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(GRAPHICS_LAYER_WC)

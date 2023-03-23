@@ -27,7 +27,7 @@
 #include <wtf/ListHashSet.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderBlockFlow;
 class RenderBox;
@@ -195,4 +195,4 @@ private:
 TextStream& operator<<(TextStream&, const FloatingObject&);
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -27,7 +27,7 @@
 
 #include "Element.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace Style {
 

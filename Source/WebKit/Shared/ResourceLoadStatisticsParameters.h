@@ -43,14 +43,14 @@ struct ResourceLoadStatisticsParameters {
     bool shouldIncludeLocalhost { true };
     bool enableDebugMode { false };
 #if ENABLE(TRACKING_PREVENTION)
-    WebCore::ThirdPartyCookieBlockingMode thirdPartyCookieBlockingMode { WebCore::ThirdPartyCookieBlockingMode::All };
-    WebCore::SameSiteStrictEnforcementEnabled sameSiteStrictEnforcementEnabled { WebCore::SameSiteStrictEnforcementEnabled::No };
+    CyberCore::ThirdPartyCookieBlockingMode thirdPartyCookieBlockingMode { CyberCore::ThirdPartyCookieBlockingMode::All };
+    CyberCore::SameSiteStrictEnforcementEnabled sameSiteStrictEnforcementEnabled { CyberCore::SameSiteStrictEnforcementEnabled::No };
 #endif
-    WebCore::FirstPartyWebsiteDataRemovalMode firstPartyWebsiteDataRemovalMode { WebCore::FirstPartyWebsiteDataRemovalMode::AllButCookies };
-    WebCore::RegistrableDomain standaloneApplicationDomain;
-    HashSet<WebCore::RegistrableDomain> appBoundDomains;
-    HashSet<WebCore::RegistrableDomain> managedDomains;
-    WebCore::RegistrableDomain manualPrevalentResource;
+    CyberCore::FirstPartyWebsiteDataRemovalMode firstPartyWebsiteDataRemovalMode { CyberCore::FirstPartyWebsiteDataRemovalMode::AllButCookies };
+    CyberCore::RegistrableDomain standaloneApplicationDomain;
+    HashSet<CyberCore::RegistrableDomain> appBoundDomains;
+    HashSet<CyberCore::RegistrableDomain> managedDomains;
+    CyberCore::RegistrableDomain manualPrevalentResource;
     
     void encode(IPC::Encoder& encoder) const
     {
@@ -110,38 +110,38 @@ struct ResourceLoadStatisticsParameters {
             return std::nullopt;
 
 #if ENABLE(TRACKING_PREVENTION)
-        std::optional<WebCore::ThirdPartyCookieBlockingMode> thirdPartyCookieBlockingMode;
+        std::optional<CyberCore::ThirdPartyCookieBlockingMode> thirdPartyCookieBlockingMode;
         decoder >> thirdPartyCookieBlockingMode;
         if (!thirdPartyCookieBlockingMode)
             return std::nullopt;
 
-        std::optional<WebCore::SameSiteStrictEnforcementEnabled> sameSiteStrictEnforcementEnabled;
+        std::optional<CyberCore::SameSiteStrictEnforcementEnabled> sameSiteStrictEnforcementEnabled;
         decoder >> sameSiteStrictEnforcementEnabled;
         if (!sameSiteStrictEnforcementEnabled)
             return std::nullopt;
 #endif
 
-        std::optional<WebCore::FirstPartyWebsiteDataRemovalMode> firstPartyWebsiteDataRemovalMode;
+        std::optional<CyberCore::FirstPartyWebsiteDataRemovalMode> firstPartyWebsiteDataRemovalMode;
         decoder >> firstPartyWebsiteDataRemovalMode;
         if (!firstPartyWebsiteDataRemovalMode)
             return std::nullopt;
 
-        std::optional<WebCore::RegistrableDomain> standaloneApplicationDomain;
+        std::optional<CyberCore::RegistrableDomain> standaloneApplicationDomain;
         decoder >> standaloneApplicationDomain;
         if (!standaloneApplicationDomain)
             return std::nullopt;
 
-        std::optional<HashSet<WebCore::RegistrableDomain>> appBoundDomains;
+        std::optional<HashSet<CyberCore::RegistrableDomain>> appBoundDomains;
         decoder >> appBoundDomains;
         if (!appBoundDomains)
             return std::nullopt;
 
-        std::optional<HashSet<WebCore::RegistrableDomain>> managedDomains;
+        std::optional<HashSet<CyberCore::RegistrableDomain>> managedDomains;
         decoder >> managedDomains;
         if (!managedDomains)
             return std::nullopt;
 
-        std::optional<WebCore::RegistrableDomain> manualPrevalentResource;
+        std::optional<CyberCore::RegistrableDomain> manualPrevalentResource;
         decoder >> manualPrevalentResource;
         if (!manualPrevalentResource)
             return std::nullopt;

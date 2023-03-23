@@ -26,8 +26,8 @@
 
 #import <CyberKitLegacy/DOMWheelEvent.h>
 
-namespace WebCore {
+namespace CyberCore {
 class WheelEvent;
 }
 
-WebCore::WheelEvent* core(DOMWheelEvent *);
+CyberCore::WheelEvent* core(DOMWheelEvent *);

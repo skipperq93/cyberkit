@@ -35,7 +35,7 @@
 #include "RenderFragmentContainer.h"
 #include <wtf/ListHashSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CurrentRenderFragmentContainerMaintainer;
 class RenderFragmentedFlow;
@@ -258,6 +258,6 @@ protected:
     bool m_pageLogicalSizeChanged : 1;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderFragmentedFlow, isRenderFragmentedFlow())

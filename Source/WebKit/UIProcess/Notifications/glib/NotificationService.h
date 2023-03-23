@@ -34,7 +34,7 @@
 typedef struct _GDBusProxy GDBusProxy;
 typedef struct _GVariant GVariant;
 
-namespace WebCore {
+namespace CyberCore {
 class NotificationResources;
 }
 
@@ -49,7 +49,7 @@ class NotificationService {
 public:
     static NotificationService& singleton();
 
-    bool showNotification(const WebNotification&, const RefPtr<WebCore::NotificationResources>&);
+    bool showNotification(const WebNotification&, const RefPtr<CyberCore::NotificationResources>&);
     void cancelNotification(uint64_t);
 
     class Observer {

@@ -33,7 +33,7 @@ namespace Inspector {
 class InspectorTarget;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPage;
 
@@ -56,4 +56,4 @@ private:
     HashMap<String, Inspector::InspectorTarget*> m_targets;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

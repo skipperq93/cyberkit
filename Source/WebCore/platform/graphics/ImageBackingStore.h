@@ -31,7 +31,7 @@
 #include "NativeImage.h"
 #include "SharedBuffer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 #if USE(CAIRO)
 // Due to the pixman 16.16 floating point representation, cairo is not able to handle

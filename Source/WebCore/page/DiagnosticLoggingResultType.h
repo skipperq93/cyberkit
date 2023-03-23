@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 enum DiagnosticLoggingResultType {
     DiagnosticLoggingResultPass,
@@ -33,4 +33,4 @@ enum DiagnosticLoggingResultType {
     DiagnosticLoggingResultNoop,
 };
 
-} // namespace WebCore
+} // namespace CyberCore

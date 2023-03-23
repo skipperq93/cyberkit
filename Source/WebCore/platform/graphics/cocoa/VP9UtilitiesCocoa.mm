@@ -46,7 +46,7 @@
 #import "CoreVideoSoftLink.h"
 #import "VideoToolboxSoftLink.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace webm;
 

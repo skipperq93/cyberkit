@@ -31,14 +31,14 @@
 #include <CyberCore/PopupMenuClient.h>
 #include <CyberCore/RenderTheme.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 static const int separatorPadding = 4;
 static const int separatorHeight = 1;
 static const int popupWindowBorderWidth = 1;
 
-void WebPopupMenu::setUpPlatformData(const WebCore::IntRect& pageCoordinates, PlatformPopupMenuData& data)
+void WebPopupMenu::setUpPlatformData(const CyberCore::IntRect& pageCoordinates, PlatformPopupMenuData& data)
 {
     int itemCount = m_popupClient->listSize();
 
@@ -145,4 +145,4 @@ void WebPopupMenu::setUpPlatformData(const WebCore::IntRect& pageCoordinates, Pl
     }
 }
 
-} // namespace WebKit
+} // namespace CyberKit

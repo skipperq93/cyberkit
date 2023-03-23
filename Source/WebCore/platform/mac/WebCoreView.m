@@ -27,17 +27,17 @@
 
 #if USE(APPKIT)
 
-#import "WebCoreView.h"
+#import "CyberCoreView.h"
 
-@interface NSClipView (WebCoreView)
+@interface NSClipView (CyberCoreView)
 - (NSView *)_webcore_effectiveFirstResponder;
 @end
 
-@interface NSScrollView (WebCoreView)
+@interface NSScrollView (CyberCoreView)
 - (NSView *)_webcore_effectiveFirstResponder;
 @end
 
-@implementation NSView (WebCoreView)
+@implementation NSView (CyberCoreView)
 
 - (NSView *)_webcore_effectiveFirstResponder
 {
@@ -46,7 +46,7 @@
 
 @end
 
-@implementation NSClipView (WebCoreView)
+@implementation NSClipView (CyberCoreView)
 
 - (NSView *)_webcore_effectiveFirstResponder
 {
@@ -56,7 +56,7 @@
 
 @end
 
-@implementation NSScrollView (WebCoreView)
+@implementation NSScrollView (CyberCoreView)
 
 - (NSView *)_webcore_effectiveFirstResponder
 {

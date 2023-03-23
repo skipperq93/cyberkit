@@ -58,7 +58,7 @@
 GST_DEBUG_CATEGORY_EXTERN(webkit_mse_debug);
 #define GST_CAT_DEFAULT webkit_mse_debug
 
-namespace WebCore {
+namespace CyberCore {
 
 bool SourceBufferPrivateGStreamer::isContentTypeSupported(const ContentType& type)
 {
@@ -167,8 +167,8 @@ void SourceBufferPrivateGStreamer::enqueueSample(Ref<MediaSample>&& sample, cons
 
     GST_TRACE_OBJECT(m_playerPrivate.pipeline(), "enqueing sample trackId=%s presentationSize=%.0fx%.0f at PTS %" GST_TIME_FORMAT " duration: %" GST_TIME_FORMAT,
         trackId.string().utf8().data(), sample->presentationSize().width(), sample->presentationSize().height(),
-        GST_TIME_ARGS(WebCore::toGstClockTime(sample->presentationTime())),
-        GST_TIME_ARGS(WebCore::toGstClockTime(sample->duration())));
+        GST_TIME_ARGS(CyberCore::toGstClockTime(sample->presentationTime())),
+        GST_TIME_ARGS(CyberCore::toGstClockTime(sample->duration())));
 
     MediaSourceTrackGStreamer* track = m_tracks.get(trackId);
     track->enqueueObject(adoptGRef(GST_MINI_OBJECT(gstSample.leakRef())));

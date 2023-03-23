@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -21,28 +21,28 @@
 #error "Only <webkitdom/webkitdom.h> can be included directly."
 #endif
 
-#ifndef WebKitDOMHTMLDListElement_h
-#define WebKitDOMHTMLDListElement_h
+#ifndef CyberKitDOMHTMLDListElement_h
+#define CyberKitDOMHTMLDListElement_h
 
 #include <glib-object.h>
-#include <webkitdom/WebKitDOMHTMLElement.h>
+#include <webkitdom/CyberKitDOMHTMLElement.h>
 #include <webkitdom/webkitdomdefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_DOM_TYPE_HTML_D_LIST_ELEMENT            (webkit_dom_html_d_list_element_get_type())
-#define WEBKIT_DOM_HTML_D_LIST_ELEMENT(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_HTML_D_LIST_ELEMENT, WebKitDOMHTMLDListElement))
-#define WEBKIT_DOM_HTML_D_LIST_ELEMENT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_HTML_D_LIST_ELEMENT, WebKitDOMHTMLDListElementClass)
+#define WEBKIT_DOM_HTML_D_LIST_ELEMENT(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_HTML_D_LIST_ELEMENT, CyberKitDOMHTMLDListElement))
+#define WEBKIT_DOM_HTML_D_LIST_ELEMENT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_HTML_D_LIST_ELEMENT, CyberKitDOMHTMLDListElementClass)
 #define WEBKIT_DOM_IS_HTML_D_LIST_ELEMENT(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_DOM_TYPE_HTML_D_LIST_ELEMENT))
 #define WEBKIT_DOM_IS_HTML_D_LIST_ELEMENT_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_DOM_TYPE_HTML_D_LIST_ELEMENT))
-#define WEBKIT_DOM_HTML_D_LIST_ELEMENT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_HTML_D_LIST_ELEMENT, WebKitDOMHTMLDListElementClass))
+#define WEBKIT_DOM_HTML_D_LIST_ELEMENT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_HTML_D_LIST_ELEMENT, CyberKitDOMHTMLDListElementClass))
 
-struct _WebKitDOMHTMLDListElement {
-    WebKitDOMHTMLElement parent_instance;
+struct _CyberKitDOMHTMLDListElement {
+    CyberKitDOMHTMLElement parent_instance;
 };
 
-struct _WebKitDOMHTMLDListElementClass {
-    WebKitDOMHTMLElementClass parent_class;
+struct _CyberKitDOMHTMLDListElementClass {
+    CyberKitDOMHTMLElementClass parent_class;
 };
 
 WEBKIT_DEPRECATED GType
@@ -50,26 +50,26 @@ webkit_dom_html_d_list_element_get_type(void);
 
 /**
  * webkit_dom_html_d_list_element_get_compact:
- * @self: A #WebKitDOMHTMLDListElement
+ * @self: A #CyberKitDOMHTMLDListElement
  *
  * Returns: A #gboolean
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
-webkit_dom_html_d_list_element_get_compact(WebKitDOMHTMLDListElement* self);
+webkit_dom_html_d_list_element_get_compact(CyberKitDOMHTMLDListElement* self);
 
 /**
  * webkit_dom_html_d_list_element_set_compact:
- * @self: A #WebKitDOMHTMLDListElement
+ * @self: A #CyberKitDOMHTMLDListElement
  * @value: A #gboolean
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_d_list_element_set_compact(WebKitDOMHTMLDListElement* self, gboolean value);
+webkit_dom_html_d_list_element_set_compact(CyberKitDOMHTMLDListElement* self, gboolean value);
 
 G_END_DECLS
 
-#endif /* WebKitDOMHTMLDListElement_h */
+#endif /* CyberKitDOMHTMLDListElement_h */

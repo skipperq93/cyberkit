@@ -37,7 +37,7 @@
 @class WebNotificationPolicyListener;
 @class WebView;
 
-class WebNotificationClient final : public WebCore::NotificationClient {
+class WebNotificationClient final : public CyberCore::NotificationClient {
     WTF_MAKE_FAST_ALLOCATED;
 public:
     WebNotificationClient(WebView *);
@@ -45,18 +45,18 @@ public:
     void clearNotificationPermissionState();
 
 private:
-    bool show(WebCore::ScriptExecutionContext&, WebCore::NotificationData&&, RefPtr<WebCore::NotificationResources>&&, CompletionHandler<void()>&&) final;
-    void cancel(WebCore::NotificationData&&) final;
-    void notificationObjectDestroyed(WebCore::NotificationData&&) final;
+    bool show(CyberCore::ScriptExecutionContext&, CyberCore::NotificationData&&, RefPtr<CyberCore::NotificationResources>&&, CompletionHandler<void()>&&) final;
+    void cancel(CyberCore::NotificationData&&) final;
+    void notificationObjectDestroyed(CyberCore::NotificationData&&) final;
     void notificationControllerDestroyed() final;
-    void requestPermission(WebCore::ScriptExecutionContext&, PermissionHandler&&) final;
-    WebCore::NotificationClient::Permission checkPermission(WebCore::ScriptExecutionContext*) final;
+    void requestPermission(CyberCore::ScriptExecutionContext&, PermissionHandler&&) final;
+    CyberCore::NotificationClient::Permission checkPermission(CyberCore::ScriptExecutionContext*) final;
 
-    void requestPermission(WebCore::ScriptExecutionContext&, WebNotificationPolicyListener *);
+    void requestPermission(CyberCore::ScriptExecutionContext&, WebNotificationPolicyListener *);
 
     WebView *m_webView;
     HashMap<UUID, RetainPtr<WebNotification>> m_notificationMap;
-    HashSet<WebCore::SecurityOriginData> m_notificationPermissionRequesters;
+    HashSet<CyberCore::SecurityOriginData> m_notificationPermissionRequesters;
 
     bool m_everRequestedPermission { false };
 };

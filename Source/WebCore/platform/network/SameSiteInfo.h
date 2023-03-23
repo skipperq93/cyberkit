@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 class ResourceRequest;
 
@@ -39,4 +39,4 @@ struct SameSiteInfo {
     bool isSafeHTTPMethod { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

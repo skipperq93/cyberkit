@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 WEBCORE_EXPORT bool hasLowAndHighPowerGPUs();
 

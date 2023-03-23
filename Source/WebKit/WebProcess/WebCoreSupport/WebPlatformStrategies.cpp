@@ -34,7 +34,7 @@
 #include "NetworkProcessConnection.h"
 #include "NetworkResourceLoadParameters.h"
 #include "SharedBufferReference.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebErrors.h"
 #include "WebFrame.h"
 #include "WebFrameLoaderClient.h"
@@ -74,8 +74,8 @@
 #include <CyberCore/SelectionData.h>
 #endif
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 class RemoteAudioDestination;
 
@@ -134,7 +134,7 @@ void WebPlatformStrategies::getTypes(Vector<String>& types, const String& pasteb
         std::tie(types) = sendResult.takeReply();
 }
 
-RefPtr<WebCore::SharedBuffer> WebPlatformStrategies::bufferForType(const String& pasteboardType, const String& pasteboardName, const PasteboardContext* context)
+RefPtr<CyberCore::SharedBuffer> WebPlatformStrategies::bufferForType(const String& pasteboardType, const String& pasteboardName, const PasteboardContext* context)
 {
     // First check the overrides.
     Vector<uint8_t> overrideBuffer;
@@ -269,13 +269,13 @@ void WebPlatformStrategies::writeToPasteboard(const PasteboardURL& url, const St
     WebProcess::singleton().parentProcessConnection()->send(Messages::WebPasteboardProxy::WriteURLToPasteboard(url, pasteboardName, pageIdentifier(context)), 0);
 }
 
-void WebPlatformStrategies::writeToPasteboard(const WebCore::PasteboardWebContent& content, const String& pasteboardName, const PasteboardContext* context)
+void WebPlatformStrategies::writeToPasteboard(const CyberCore::PasteboardWebContent& content, const String& pasteboardName, const PasteboardContext* context)
 {
     WebProcess::singleton().willWriteToPasteboardAsynchronously(pasteboardName);
     WebProcess::singleton().parentProcessConnection()->send(Messages::WebPasteboardProxy::WriteWebContentToPasteboard(content, pasteboardName, pageIdentifier(context)), 0);
 }
 
-void WebPlatformStrategies::writeToPasteboard(const WebCore::PasteboardImage& image, const String& pasteboardName, const PasteboardContext* context)
+void WebPlatformStrategies::writeToPasteboard(const CyberCore::PasteboardImage& image, const String& pasteboardName, const PasteboardContext* context)
 {
     WebProcess::singleton().willWriteToPasteboardAsynchronously(pasteboardName);
     WebProcess::singleton().parentProcessConnection()->send(Messages::WebPasteboardProxy::WriteImageToPasteboard(image, pasteboardName, pageIdentifier(context)), 0);
@@ -348,7 +348,7 @@ void WebPlatformStrategies::getTypes(Vector<String>& types)
         std::tie(types) = sendResult.takeReply();
 }
 
-void WebPlatformStrategies::writeToPasteboard(const WebCore::PasteboardWebContent& content)
+void WebPlatformStrategies::writeToPasteboard(const CyberCore::PasteboardWebContent& content)
 {
     WebProcess::singleton().parentProcessConnection()->send(Messages::WebPasteboardProxy::WriteWebContentToPasteboard(content), 0);
 }
@@ -413,7 +413,7 @@ std::optional<PasteboardItemInfo> WebPlatformStrategies::informationForItemAtInd
     return info;
 }
 
-RefPtr<WebCore::SharedBuffer> WebPlatformStrategies::readBufferFromPasteboard(std::optional<size_t> index, const String& pasteboardType, const String& pasteboardName, const PasteboardContext* context)
+RefPtr<CyberCore::SharedBuffer> WebPlatformStrategies::readBufferFromPasteboard(std::optional<size_t> index, const String& pasteboardType, const String& pasteboardName, const PasteboardContext* context)
 {
     Vector<uint8_t> overrideBuffer;
     if (WebPasteboardOverrides::sharedPasteboardOverrides().getDataForOverride(pasteboardName, pasteboardType, overrideBuffer))
@@ -440,4 +440,4 @@ String WebPlatformStrategies::readStringFromPasteboard(size_t index, const Strin
     return value;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

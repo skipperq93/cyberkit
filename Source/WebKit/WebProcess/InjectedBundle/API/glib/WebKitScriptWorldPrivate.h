@@ -17,16 +17,16 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitScriptWorldPrivate_h
-#define WebKitScriptWorldPrivate_h
+#ifndef CyberKitScriptWorldPrivate_h
+#define CyberKitScriptWorldPrivate_h
 
 #include "InjectedBundleScriptWorld.h"
-#include "WebKitFrame.h"
-#include "WebKitScriptWorld.h"
-#include "WebKitWebPage.h"
+#include "CyberKitFrame.h"
+#include "CyberKitScriptWorld.h"
+#include "CyberKitWebPage.h"
 
-WebKitScriptWorld* webkitScriptWorldGet(WebKit::InjectedBundleScriptWorld*);
-void webkitScriptWorldWindowObjectCleared(WebKitScriptWorld*, WebKitWebPage*, WebKitFrame*);
-WebKit::InjectedBundleScriptWorld* webkitScriptWorldGetInjectedBundleScriptWorld(WebKitScriptWorld*);
+CyberKitScriptWorld* webkitScriptWorldGet(CyberKit::InjectedBundleScriptWorld*);
+void webkitScriptWorldWindowObjectCleared(CyberKitScriptWorld*, CyberKitWebPage*, CyberKitFrame*);
+CyberKit::InjectedBundleScriptWorld* webkitScriptWorldGetInjectedBundleScriptWorld(CyberKitScriptWorld*);
 
-#endif // WebKitScriptWorldPrivate_h
+#endif // CyberKitScriptWorldPrivate_h

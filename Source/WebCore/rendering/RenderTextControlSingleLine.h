@@ -25,7 +25,7 @@
 #include "HTMLInputElement.h"
 #include "RenderTextControl.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderTextControlSingleLine : public RenderTextControl {
     WTF_MAKE_ISO_ALLOCATED(RenderTextControlSingleLine);
@@ -104,7 +104,7 @@ private:
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderTextControlSingleLine, isTextField())
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderTextControlInnerBlock, isTextControlInnerBlock())

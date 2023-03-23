@@ -28,7 +28,7 @@
 
 #include "SerializedScriptValue.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 ExceptionOr<Ref<PerformanceMeasure>> PerformanceMeasure::create(const String& name, double startTime, double endTime, Ref<SerializedScriptValue>&& serializedDetail)
 {

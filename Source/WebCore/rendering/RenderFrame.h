@@ -25,7 +25,7 @@
 #include "HTMLFrameElement.h"
 #include "RenderFrameBase.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct FrameEdgeInfo;
 
@@ -51,6 +51,6 @@ inline RenderFrame* HTMLFrameElement::renderer() const
     return downcast<RenderFrame>(HTMLFrameElementBase::renderer());
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderFrame, isFrame())

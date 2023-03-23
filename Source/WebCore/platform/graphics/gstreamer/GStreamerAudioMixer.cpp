@@ -25,7 +25,7 @@
 #include "GStreamerCommon.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 GST_DEBUG_CATEGORY_STATIC(webkit_media_gst_audio_mixer_debug);
 #define GST_CAT_DEFAULT webkit_media_gst_audio_mixer_debug

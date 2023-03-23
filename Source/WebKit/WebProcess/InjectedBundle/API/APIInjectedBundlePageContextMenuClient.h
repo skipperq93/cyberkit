@@ -30,13 +30,13 @@
 
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 class ContextMenuContext;
 class ContextMenuItem;
 class HitTestResult;
 }
 
-namespace WebKit {
+namespace CyberKit {
 class WebContextMenuItemData;
 class WebFrame;
 class WebPage;
@@ -53,8 +53,8 @@ class PageContextMenuClient {
 public:
     virtual ~PageContextMenuClient() { }
 
-    virtual bool getCustomMenuFromDefaultItems(WebKit::WebPage&, const WebCore::HitTestResult&, const Vector<WebCore::ContextMenuItem>& /* defaultMenu */, Vector<WebKit::WebContextMenuItemData>& /* newMenu */, const WebCore::ContextMenuContext&, RefPtr<API::Object>& /* userData */) { return false; }
-    virtual void prepareForImmediateAction(WebKit::WebPage&, const WebCore::HitTestResult&, RefPtr<API::Object>& /* userData */) { }
+    virtual bool getCustomMenuFromDefaultItems(CyberKit::WebPage&, const CyberCore::HitTestResult&, const Vector<CyberCore::ContextMenuItem>& /* defaultMenu */, Vector<CyberKit::WebContextMenuItemData>& /* newMenu */, const CyberCore::ContextMenuContext&, RefPtr<API::Object>& /* userData */) { return false; }
+    virtual void prepareForImmediateAction(CyberKit::WebPage&, const CyberCore::HitTestResult&, RefPtr<API::Object>& /* userData */) { }
 };
 
 } // namespace InjectedBundle

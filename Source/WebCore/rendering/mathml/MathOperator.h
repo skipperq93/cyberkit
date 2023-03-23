@@ -34,7 +34,7 @@
 #include "PaintInfo.h"
 #include <unicode/utypes.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderStyle;
 

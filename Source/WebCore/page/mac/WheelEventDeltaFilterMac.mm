@@ -33,7 +33,7 @@
 #import "PlatformWheelEvent.h"
 #import <pal/spi/mac/NSScrollingInputFilterSPI.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WheelEventDeltaFilterMac::WheelEventDeltaFilterMac()
     : WheelEventDeltaFilter()

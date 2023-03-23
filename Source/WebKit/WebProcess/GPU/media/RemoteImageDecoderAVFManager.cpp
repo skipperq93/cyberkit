@@ -35,9 +35,9 @@
 #include "SharedBufferReference.h"
 #include "WebProcess.h"
 
-namespace WebKit {
+namespace CyberKit {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 RefPtr<RemoteImageDecoderAVF> RemoteImageDecoderAVFManager::createImageDecoder(FragmentedSharedBuffer& data, const String& mimeType, AlphaOption alphaOption, GammaAndColorProfileOption gammaAndColorProfileOption)
 {
@@ -111,7 +111,7 @@ void RemoteImageDecoderAVFManager::setUseGPUProcess(bool useGPUProcess)
     });
 }
 
-void RemoteImageDecoderAVFManager::encodedDataStatusChanged(const ImageDecoderIdentifier& identifier, size_t frameCount, const WebCore::IntSize& size, bool hasTrack)
+void RemoteImageDecoderAVFManager::encodedDataStatusChanged(const ImageDecoderIdentifier& identifier, size_t frameCount, const CyberCore::IntSize& size, bool hasTrack)
 {
     if (!m_remoteImageDecoders.contains(identifier))
         return;

@@ -32,7 +32,7 @@
 
 typedef struct _GDBusProxy GDBusProxy;
 
-namespace WebCore {
+namespace CyberCore {
 class GeolocationPositionData;
 }
 
@@ -44,7 +44,7 @@ public:
     GeoclueGeolocationProvider();
     ~GeoclueGeolocationProvider();
 
-    using UpdateNotifyFunction = Function<void(WebCore::GeolocationPositionData&&, std::optional<CString> error)>;
+    using UpdateNotifyFunction = Function<void(CyberCore::GeolocationPositionData&&, std::optional<CString> error)>;
     void start(UpdateNotifyFunction&&);
     void stop();
     void setEnableHighAccuracy(bool);

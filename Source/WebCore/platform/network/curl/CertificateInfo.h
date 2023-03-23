@@ -32,7 +32,7 @@
 #include <wtf/persistence/PersistentDecoder.h>
 #include <wtf/persistence/PersistentEncoder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CertificateInfo {
     WTF_MAKE_FAST_ALLOCATED;
@@ -69,4 +69,4 @@ private:
     CertificateChain m_certificateChain;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

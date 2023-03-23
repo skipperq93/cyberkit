@@ -25,7 +25,7 @@
 #include "Color.h"
 #include "FilterEffect.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class FEFlood : public FilterEffect {
 public:
@@ -58,6 +58,6 @@ private:
     float m_floodOpacity;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_FILTER_EFFECT(FEFlood)

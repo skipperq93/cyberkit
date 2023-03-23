@@ -27,17 +27,17 @@
 
 #include <CyberCore/PluginInfoProvider.h>
 
-namespace WebKit {
+namespace CyberKit {
 
-class WebPluginInfoProvider final : public WebCore::PluginInfoProvider {
+class WebPluginInfoProvider final : public CyberCore::PluginInfoProvider {
 public:
     static WebPluginInfoProvider& singleton();
 
 private:
     WebPluginInfoProvider() = default;
 
-    Vector<WebCore::PluginInfo> pluginInfo(WebCore::Page&, std::optional<Vector<WebCore::SupportedPluginIdentifier>>&) final;
-    Vector<WebCore::PluginInfo> webVisiblePluginInfo(WebCore::Page&, const URL&) final;
+    Vector<CyberCore::PluginInfo> pluginInfo(CyberCore::Page&, std::optional<Vector<CyberCore::SupportedPluginIdentifier>>&) final;
+    Vector<CyberCore::PluginInfo> webVisiblePluginInfo(CyberCore::Page&, const URL&) final;
     void refreshPlugins() final;
 };
 

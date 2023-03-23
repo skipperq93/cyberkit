@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -21,21 +21,21 @@
 #error "Only <webkitdom/webkitdom.h> can be included directly."
 #endif
 
-#ifndef WebKitDOMCSSRule_h
-#define WebKitDOMCSSRule_h
+#ifndef CyberKitDOMCSSRule_h
+#define CyberKitDOMCSSRule_h
 
 #include <glib-object.h>
-#include <webkitdom/WebKitDOMObject.h>
+#include <webkitdom/CyberKitDOMObject.h>
 #include <webkitdom/webkitdomdefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_DOM_TYPE_CSS_RULE            (webkit_dom_css_rule_get_type())
-#define WEBKIT_DOM_CSS_RULE(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_CSS_RULE, WebKitDOMCSSRule))
-#define WEBKIT_DOM_CSS_RULE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_CSS_RULE, WebKitDOMCSSRuleClass)
+#define WEBKIT_DOM_CSS_RULE(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_CSS_RULE, CyberKitDOMCSSRule))
+#define WEBKIT_DOM_CSS_RULE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_CSS_RULE, CyberKitDOMCSSRuleClass)
 #define WEBKIT_DOM_IS_CSS_RULE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_DOM_TYPE_CSS_RULE))
 #define WEBKIT_DOM_IS_CSS_RULE_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_DOM_TYPE_CSS_RULE))
-#define WEBKIT_DOM_CSS_RULE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_CSS_RULE, WebKitDOMCSSRuleClass))
+#define WEBKIT_DOM_CSS_RULE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_CSS_RULE, CyberKitDOMCSSRuleClass))
 
 #ifndef WEBKIT_DISABLE_DEPRECATED
 
@@ -90,12 +90,12 @@ G_BEGIN_DECLS
 
 #endif /* WEBKIT_DISABLE_DEPRECATED */
 
-struct _WebKitDOMCSSRule {
-    WebKitDOMObject parent_instance;
+struct _CyberKitDOMCSSRule {
+    CyberKitDOMObject parent_instance;
 };
 
-struct _WebKitDOMCSSRuleClass {
-    WebKitDOMObjectClass parent_class;
+struct _CyberKitDOMCSSRuleClass {
+    CyberKitDOMObjectClass parent_class;
 };
 
 WEBKIT_DEPRECATED GType
@@ -103,29 +103,29 @@ webkit_dom_css_rule_get_type(void);
 
 /**
  * webkit_dom_css_rule_get_rule_type:
- * @self: A #WebKitDOMCSSRule
+ * @self: A #CyberKitDOMCSSRule
  *
  * Returns: A #gushort
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gushort
-webkit_dom_css_rule_get_rule_type(WebKitDOMCSSRule* self);
+webkit_dom_css_rule_get_rule_type(CyberKitDOMCSSRule* self);
 
 /**
  * webkit_dom_css_rule_get_css_text:
- * @self: A #WebKitDOMCSSRule
+ * @self: A #CyberKitDOMCSSRule
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_css_rule_get_css_text(WebKitDOMCSSRule* self);
+webkit_dom_css_rule_get_css_text(CyberKitDOMCSSRule* self);
 
 /**
  * webkit_dom_css_rule_set_css_text:
- * @self: A #WebKitDOMCSSRule
+ * @self: A #CyberKitDOMCSSRule
  * @value: A #gchar
  * @error: #GError
  *
@@ -133,30 +133,30 @@ webkit_dom_css_rule_get_css_text(WebKitDOMCSSRule* self);
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_css_rule_set_css_text(WebKitDOMCSSRule* self, const gchar* value, GError** error);
+webkit_dom_css_rule_set_css_text(CyberKitDOMCSSRule* self, const gchar* value, GError** error);
 
 /**
  * webkit_dom_css_rule_get_parent_style_sheet:
- * @self: A #WebKitDOMCSSRule
+ * @self: A #CyberKitDOMCSSRule
  *
- * Returns: (transfer full): A #WebKitDOMCSSStyleSheet
+ * Returns: (transfer full): A #CyberKitDOMCSSStyleSheet
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMCSSStyleSheet*
-webkit_dom_css_rule_get_parent_style_sheet(WebKitDOMCSSRule* self);
+WEBKIT_DEPRECATED CyberKitDOMCSSStyleSheet*
+webkit_dom_css_rule_get_parent_style_sheet(CyberKitDOMCSSRule* self);
 
 /**
  * webkit_dom_css_rule_get_parent_rule:
- * @self: A #WebKitDOMCSSRule
+ * @self: A #CyberKitDOMCSSRule
  *
- * Returns: (transfer full): A #WebKitDOMCSSRule
+ * Returns: (transfer full): A #CyberKitDOMCSSRule
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMCSSRule*
-webkit_dom_css_rule_get_parent_rule(WebKitDOMCSSRule* self);
+WEBKIT_DEPRECATED CyberKitDOMCSSRule*
+webkit_dom_css_rule_get_parent_rule(CyberKitDOMCSSRule* self);
 
 G_END_DECLS
 
-#endif /* WebKitDOMCSSRule_h */
+#endif /* CyberKitDOMCSSRule_h */

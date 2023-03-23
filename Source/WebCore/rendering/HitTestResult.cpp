@@ -59,7 +59,7 @@
 #include "ImageControlsMac.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -874,4 +874,4 @@ void HitTestResult::setAllowsAnimation(bool allowAnimation) const
 }
 #endif // ENABLE(ACCESSIBILITY_ANIMATION_CONTROL)
 
-} // namespace WebCore
+} // namespace CyberCore

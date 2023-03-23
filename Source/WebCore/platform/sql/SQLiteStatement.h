@@ -31,7 +31,7 @@
 
 struct sqlite3_stmt;
 
-namespace WebCore {
+namespace CyberCore {
 
 class SQLiteStatement {
     WTF_MAKE_NONCOPYABLE(SQLiteStatement); WTF_MAKE_FAST_ALLOCATED;
@@ -125,4 +125,4 @@ inline bool SQLiteStatement::bindImpl(int i, T value)
         return bindInt64(i, value) == SQLITE_OK;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

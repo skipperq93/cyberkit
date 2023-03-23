@@ -25,7 +25,7 @@
 #include "CachedResourceClient.h"
 #include <wtf/CompletionHandler.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CachedResource;
 class ResourceRequest;
@@ -56,6 +56,6 @@ public:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CACHED_RESOURCE_CLIENT(CachedRawResourceClient, RawResourceType);

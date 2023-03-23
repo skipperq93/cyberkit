@@ -27,7 +27,7 @@
 
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CachedResource;
 
@@ -95,4 +95,4 @@ template <class R, class RR> bool operator!=(const RR* res, const CachedResource
     return h.get() != res; 
 }
 
-} // namespace WebCore
+} // namespace CyberCore

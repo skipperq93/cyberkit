@@ -35,7 +35,7 @@
 #include <wtf/Noncopyable.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class HRTFKernel;
 
@@ -78,6 +78,6 @@ private:
     float m_sampleRate;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // HRTFDatabase_h

@@ -32,7 +32,7 @@
 
 #include "RenderBlockFlow.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderRubyRun;
 
@@ -71,6 +71,6 @@ private:
     unsigned m_isAfterExpansion : 1;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderRubyBase, isRubyBase())

@@ -29,7 +29,7 @@
 
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // Buttons in the "standard" gamepad layout in the Web Gamepad spec
 // https://www.w3.org/TR/gamepad/#dfn-standard-gamepad-layout
@@ -64,6 +64,6 @@ const String& standardGamepadMappingString();
 const String& xrStandardGamepadMappingString();
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(GAMEPAD)

@@ -39,7 +39,7 @@
 #include <wtf/URL.h>
 #include <wtf/text/StringToIntegerConversion.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(Location);
 
@@ -294,4 +294,4 @@ ExceptionOr<void> Location::setLocation(DOMWindow& incumbentWindow, DOMWindow& f
     return { };
 }
 
-} // namespace WebCore
+} // namespace CyberCore

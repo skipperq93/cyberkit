@@ -29,7 +29,7 @@
 #import <CyberCore/GeolocationPositionData.h>
 #import <wtf/RefPtr.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 @interface WebGeolocationPositionInternal : NSObject
 {

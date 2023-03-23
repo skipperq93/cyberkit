@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 class BlobRegistry;
 class LoaderStrategy;
@@ -85,4 +85,4 @@ bool hasPlatformStrategies();
 WEBCORE_EXPORT PlatformStrategies* platformStrategies();
 WEBCORE_EXPORT void setPlatformStrategies(PlatformStrategies*);
     
-} // namespace WebCore
+} // namespace CyberCore

@@ -36,7 +36,7 @@
 #include "FrameLoader.h"
 #include "FrameLoaderTypes.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 PerformanceNavigation::PerformanceNavigation(DOMWindow* window)
     : DOMWindowProperty(window)
@@ -53,7 +53,7 @@ unsigned short PerformanceNavigation::type() const
     if (!documentLoader)
         return TYPE_NAVIGATE;
 
-    WebCore::NavigationType navigationType = documentLoader->triggeringAction().type();
+    CyberCore::NavigationType navigationType = documentLoader->triggeringAction().type();
     switch (navigationType) {
     case NavigationType::Reload:
         return TYPE_RELOAD;
@@ -84,4 +84,4 @@ unsigned short PerformanceNavigation::redirectCount() const
     return metrics->redirectCount;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

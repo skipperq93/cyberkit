@@ -29,7 +29,7 @@
 #import "config.h"
 #import "LegacyWebArchive.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static NSString * const LegacyWebArchiveResourceResponseKey = @"WebResourceResponse";
 

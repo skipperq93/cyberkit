@@ -31,7 +31,7 @@
 #include "ImageBuffer.h"
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<FEBlend> FEBlend::create(BlendMode mode)
 {
@@ -72,4 +72,4 @@ TextStream& FEBlend::externalRepresentation(TextStream& ts, FilterRepresentation
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

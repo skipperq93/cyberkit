@@ -51,17 +51,17 @@ private:
     void didReceiveMessage(IPC::Connection&, IPC::Decoder&) final;
 
     // To source
-    void sendData(WebCore::RTCDataChannelIdentifier, bool isRaw, const IPC::DataReference&);
-    void close(WebCore::RTCDataChannelIdentifier);
+    void sendData(CyberCore::RTCDataChannelIdentifier, bool isRaw, const IPC::DataReference&);
+    void close(CyberCore::RTCDataChannelIdentifier);
 
     // To handler
-    void changeReadyState(WebCore::RTCDataChannelIdentifier, WebCore::RTCDataChannelState);
-    void receiveData(WebCore::RTCDataChannelIdentifier, bool isRaw, const IPC::DataReference&);
-    void detectError(WebCore::RTCDataChannelIdentifier, WebCore::RTCErrorDetailType, const String&);
-    void bufferedAmountIsDecreasing(WebCore::RTCDataChannelIdentifier, size_t amount);
+    void changeReadyState(CyberCore::RTCDataChannelIdentifier, CyberCore::RTCDataChannelState);
+    void receiveData(CyberCore::RTCDataChannelIdentifier, bool isRaw, const IPC::DataReference&);
+    void detectError(CyberCore::RTCDataChannelIdentifier, CyberCore::RTCErrorDetailType, const String&);
+    void bufferedAmountIsDecreasing(CyberCore::RTCDataChannelIdentifier, size_t amount);
 
     Ref<WorkQueue> m_queue;
-    HashMap<WebCore::ProcessIdentifier, IPC::Connection::UniqueID> m_webProcessConnections;
+    HashMap<CyberCore::ProcessIdentifier, IPC::Connection::UniqueID> m_webProcessConnections;
 };
 
 } // namespace WebKit

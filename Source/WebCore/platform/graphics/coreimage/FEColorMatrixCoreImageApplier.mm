@@ -34,7 +34,7 @@
 #import <CoreImage/CIFilter.h>
 #import <CoreImage/CoreImage.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 FEColorMatrixCoreImageApplier::FEColorMatrixCoreImageApplier(const FEColorMatrix& effect)
     : Base(effect)
@@ -109,6 +109,6 @@ bool FEColorMatrixCoreImageApplier::apply(const Filter&, const FilterImageVector
     return true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(CORE_IMAGE)

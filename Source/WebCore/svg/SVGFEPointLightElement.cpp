@@ -24,7 +24,7 @@
 #include "PointLightSource.h"
 #include "SVGNames.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 inline SVGFEPointLightElement::SVGFEPointLightElement(const QualifiedName& tagName, Document& document)
     : SVGFELightElement(tagName, document)
@@ -42,4 +42,4 @@ Ref<LightSource> SVGFEPointLightElement::lightSource() const
     return PointLightSource::create({ x(), y(), z() });
 }
 
-} // namespace WebCore
+} // namespace CyberCore

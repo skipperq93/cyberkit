@@ -35,7 +35,7 @@
 #include <wtf/ThreadSafeRefCounted.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SecurityOrigin : public ThreadSafeRefCounted<SecurityOrigin> {
 public:
@@ -51,7 +51,7 @@ public:
     WEBCORE_EXPORT static Ref<SecurityOrigin> createFromString(const String&);
     WEBCORE_EXPORT static Ref<SecurityOrigin> create(const String& protocol, const String& host, std::optional<uint16_t> port);
     WEBCORE_EXPORT static Ref<SecurityOrigin> create(SecurityOriginData&&);
-    WEBCORE_EXPORT static Ref<SecurityOrigin> create(WebCore::SecurityOriginData&&, String&& domain, String&& filePath, bool universalAccess, bool domainWasSetInDOM, bool canLoadLocalResources, bool enforcesFilePathSeparation, bool needsStorageAccessFromFileURLsQuirk, std::optional<bool> isPotentiallyTrustworthy, bool isLocal);
+    WEBCORE_EXPORT static Ref<SecurityOrigin> create(CyberCore::SecurityOriginData&&, String&& domain, String&& filePath, bool universalAccess, bool domainWasSetInDOM, bool canLoadLocalResources, bool enforcesFilePathSeparation, bool needsStorageAccessFromFileURLsQuirk, std::optional<bool> isPotentiallyTrustworthy, bool isLocal);
 
     // QuickLook documents are in non-local origins even when loaded from file: URLs. They need to
     // be allowed to display their own file: URLs in order to perform reloads and same-document
@@ -258,4 +258,4 @@ inline void add(Hasher& hasher, const SecurityOrigin& origin)
     add(hasher, origin.data());
 }
 
-} // namespace WebCore
+} // namespace CyberCore

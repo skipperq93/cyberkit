@@ -33,7 +33,7 @@
 #include <wtf/persistence/PersistentDecoder.h>
 #include <wtf/text/StringHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class KeyedDecoderGeneric::Dictionary {
     WTF_MAKE_FAST_ALLOCATED;
@@ -337,4 +337,4 @@ void KeyedDecoderGeneric::endArray()
     m_arrayIndexStack.removeLast();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

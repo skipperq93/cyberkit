@@ -34,7 +34,7 @@
 #include <wtf/text/StringToIntegerConversion.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 class ScriptMessageClient final : public WebScriptMessageHandler::Client {
     WTF_MAKE_FAST_ALLOCATED;
@@ -44,7 +44,7 @@ public:
     {
     }
 
-    void didPostMessage(WebPageProxy& page, FrameInfoData&&, API::ContentWorld&, WebCore::SerializedScriptValue& serializedScriptValue) override
+    void didPostMessage(WebPageProxy& page, FrameInfoData&&, API::ContentWorld&, CyberCore::SerializedScriptValue& serializedScriptValue) override
     {
         String message = serializedScriptValue.toString();
         Vector<String> tokens = message.split(':');
@@ -60,7 +60,7 @@ public:
         return false;
     }
     
-    void didPostMessageWithAsyncReply(WebPageProxy&, FrameInfoData&&, API::ContentWorld&, WebCore::SerializedScriptValue&, WTF::Function<void(API::SerializedScriptValue*, const String&)>&&) override
+    void didPostMessageWithAsyncReply(WebPageProxy&, FrameInfoData&&, API::ContentWorld&, CyberCore::SerializedScriptValue&, WTF::Function<void(API::SerializedScriptValue*, const String&)>&&) override
     {
     }
 

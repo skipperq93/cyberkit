@@ -36,7 +36,7 @@
 
 WTF_WEAK_LINK_FORCE_IMPORT(EGL_Initialize);
 
-namespace WebCore {
+namespace CyberCore {
 
 bool platformIsANGLEAvailable()
 {

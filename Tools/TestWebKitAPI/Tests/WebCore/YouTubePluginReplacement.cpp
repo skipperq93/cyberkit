@@ -29,7 +29,7 @@
 #include <wtf/MainThread.h>
 #include <wtf/URL.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 namespace TestWebKitAPI {
 

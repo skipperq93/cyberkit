@@ -39,7 +39,7 @@
 #include <CoreGraphics/CGGeometry.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 // The CG ports use the CG types directly, so an array of these types can be fed directly into CTFontShapeGlyphs().
 // When you write code that interacts with these types, use the functions below!

@@ -33,7 +33,7 @@
 
 namespace WebKit {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 RemoteMediaResourceLoader::RemoteMediaResourceLoader(RemoteMediaPlayerProxy& remoteMediaPlayerProxy)
     : m_remoteMediaPlayerProxy(remoteMediaPlayerProxy)

@@ -34,7 +34,7 @@
 #include <wtf/WorkQueue.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RegistrationStore;
 class SQLiteDatabase;
@@ -98,6 +98,6 @@ struct ImportedScriptAttributes {
     String mimeType;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

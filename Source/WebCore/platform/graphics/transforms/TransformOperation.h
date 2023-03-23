@@ -32,7 +32,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/TypeCasts.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct BlendingContext;
 
@@ -136,36 +136,36 @@ private:
 WTF::TextStream& operator<<(WTF::TextStream&, TransformOperation::Type);
 WTF::TextStream& operator<<(WTF::TextStream&, const TransformOperation&);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::TransformOperation::Type> {
+template<> struct EnumTraits<CyberCore::TransformOperation::Type> {
     using values = EnumValues<
-        WebCore::TransformOperation::Type,
-        WebCore::TransformOperation::Type::ScaleX,
-        WebCore::TransformOperation::Type::ScaleY,
-        WebCore::TransformOperation::Type::Scale,
-        WebCore::TransformOperation::Type::TranslateX,
-        WebCore::TransformOperation::Type::TranslateY,
-        WebCore::TransformOperation::Type::Translate,
-        WebCore::TransformOperation::Type::RotateX,
-        WebCore::TransformOperation::Type::RotateY,
-        WebCore::TransformOperation::Type::Rotate,
-        WebCore::TransformOperation::Type::SkewX,
-        WebCore::TransformOperation::Type::SkewY,
-        WebCore::TransformOperation::Type::Skew,
-        WebCore::TransformOperation::Type::Matrix,
-        WebCore::TransformOperation::Type::ScaleZ,
-        WebCore::TransformOperation::Type::Scale3D,
-        WebCore::TransformOperation::Type::TranslateZ,
-        WebCore::TransformOperation::Type::Translate3D,
-        WebCore::TransformOperation::Type::RotateZ,
-        WebCore::TransformOperation::Type::Rotate3D,
-        WebCore::TransformOperation::Type::Matrix3D,
-        WebCore::TransformOperation::Type::Perspective,
-        WebCore::TransformOperation::Type::Identity,
-        WebCore::TransformOperation::Type::None
+        CyberCore::TransformOperation::Type,
+        CyberCore::TransformOperation::Type::ScaleX,
+        CyberCore::TransformOperation::Type::ScaleY,
+        CyberCore::TransformOperation::Type::Scale,
+        CyberCore::TransformOperation::Type::TranslateX,
+        CyberCore::TransformOperation::Type::TranslateY,
+        CyberCore::TransformOperation::Type::Translate,
+        CyberCore::TransformOperation::Type::RotateX,
+        CyberCore::TransformOperation::Type::RotateY,
+        CyberCore::TransformOperation::Type::Rotate,
+        CyberCore::TransformOperation::Type::SkewX,
+        CyberCore::TransformOperation::Type::SkewY,
+        CyberCore::TransformOperation::Type::Skew,
+        CyberCore::TransformOperation::Type::Matrix,
+        CyberCore::TransformOperation::Type::ScaleZ,
+        CyberCore::TransformOperation::Type::Scale3D,
+        CyberCore::TransformOperation::Type::TranslateZ,
+        CyberCore::TransformOperation::Type::Translate3D,
+        CyberCore::TransformOperation::Type::RotateZ,
+        CyberCore::TransformOperation::Type::Rotate3D,
+        CyberCore::TransformOperation::Type::Matrix3D,
+        CyberCore::TransformOperation::Type::Perspective,
+        CyberCore::TransformOperation::Type::Identity,
+        CyberCore::TransformOperation::Type::None
     >;
 };
 
@@ -173,5 +173,5 @@ template<> struct EnumTraits<WebCore::TransformOperation::Type> {
 
 #define SPECIALIZE_TYPE_TRAITS_TRANSFORMOPERATION(ToValueTypeName, predicate) \
 SPECIALIZE_TYPE_TRAITS_BEGIN(ToValueTypeName) \
-    static bool isType(const WebCore::TransformOperation& operation) { return operation.predicate; } \
+    static bool isType(const CyberCore::TransformOperation& operation) { return operation.predicate; } \
 SPECIALIZE_TYPE_TRAITS_END()

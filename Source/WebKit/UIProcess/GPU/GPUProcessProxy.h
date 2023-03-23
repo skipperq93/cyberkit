@@ -47,7 +47,7 @@
 #include <CoreGraphics/CGDisplayConfiguration.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 class CaptureDevice;
 struct MockMediaDevice;
 struct ScreenProperties;
@@ -78,9 +78,9 @@ public:
 #if ENABLE(MEDIA_STREAM)
     void setUseMockCaptureDevices(bool);
     void setOrientationForMediaCapture(uint64_t orientation);
-    void updateCaptureAccess(bool allowAudioCapture, bool allowVideoCapture, bool allowDisplayCapture, WebCore::ProcessIdentifier, CompletionHandler<void()>&&);
-    void updateCaptureOrigin(const WebCore::SecurityOriginData&, WebCore::ProcessIdentifier);
-    void addMockMediaDevice(const WebCore::MockMediaDevice&);
+    void updateCaptureAccess(bool allowAudioCapture, bool allowVideoCapture, bool allowDisplayCapture, CyberCore::ProcessIdentifier, CompletionHandler<void()>&&);
+    void updateCaptureOrigin(const CyberCore::SecurityOriginData&, CyberCore::ProcessIdentifier);
+    void addMockMediaDevice(const CyberCore::MockMediaDevice&);
     void clearMockMediaDevices();
     void removeMockMediaDevice(const String&);
     void setMockMediaDeviceIsEphemeral(const String&, bool);
@@ -91,15 +91,15 @@ public:
 #endif
 
 #if HAVE(SC_CONTENT_SHARING_SESSION)
-    void showWindowPicker(CompletionHandler<void(std::optional<WebCore::CaptureDevice>)>&&);
-    void showScreenPicker(CompletionHandler<void(std::optional<WebCore::CaptureDevice>)>&&);
+    void showWindowPicker(CompletionHandler<void(std::optional<CyberCore::CaptureDevice>)>&&);
+    void showScreenPicker(CompletionHandler<void(std::optional<CyberCore::CaptureDevice>)>&&);
 #endif
 
     void removeSession(PAL::SessionID);
 
 #if PLATFORM(MAC)
     void displayConfigurationChanged(CGDirectDisplayID, CGDisplayChangeSummaryFlags);
-    void setScreenProperties(const WebCore::ScreenProperties&);
+    void setScreenProperties(const CyberCore::ScreenProperties&);
 #endif
 
 #if HAVE(POWERLOG_TASK_MODE_QUERY)
@@ -114,7 +114,7 @@ public:
     void webProcessConnectionCountForTesting(CompletionHandler<void(uint64_t)>&&);
 
 #if ENABLE(VIDEO)
-    void requestBitmapImageForCurrentTime(WebCore::ProcessIdentifier, WebCore::MediaPlayerIdentifier, CompletionHandler<void(const ShareableBitmapHandle&)>&&);
+    void requestBitmapImageForCurrentTime(CyberCore::ProcessIdentifier, CyberCore::MediaPlayerIdentifier, CompletionHandler<void(const ShareableBitmapHandle&)>&&);
 #endif
 
 private:
@@ -147,11 +147,11 @@ private:
     // ResponsivenessTimer::Client
     void didBecomeUnresponsive() final;
 
-    void terminateWebProcess(WebCore::ProcessIdentifier);
+    void terminateWebProcess(CyberCore::ProcessIdentifier);
     void processIsReadyToExit();
 
 #if HAVE(VISIBILITY_PROPAGATION_VIEW)
-    void didCreateContextForVisibilityPropagation(WebPageProxyIdentifier, WebCore::PageIdentifier, LayerHostingContextID);
+    void didCreateContextForVisibilityPropagation(WebPageProxyIdentifier, CyberCore::PageIdentifier, LayerHostingContextID);
 #endif
 
 #if ENABLE(VP9)

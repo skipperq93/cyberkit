@@ -41,9 +41,9 @@ public:
 
 private:
     void reset() final;
-    void addMediaSession(WebCore::MediaSessionIdentifier, const String&, const URL&) final;
-    void updateMediaUsage(WebCore::MediaSessionIdentifier, const WebCore::MediaUsageInfo&) final;
-    void removeMediaSession(WebCore::MediaSessionIdentifier) final;
+    void addMediaSession(CyberCore::MediaSessionIdentifier, const String&, const URL&) final;
+    void updateMediaUsage(CyberCore::MediaSessionIdentifier, const CyberCore::MediaUsageInfo&) final;
+    void removeMediaSession(CyberCore::MediaSessionIdentifier) final;
 #if !HAVE(CGS_FIX_FOR_RADAR_97530095)
     bool isPlayingVideoInViewport() const final;
 #endif
@@ -51,21 +51,21 @@ private:
     struct SessionMediaUsage {
         WTF_MAKE_STRUCT_FAST_ALLOCATED;
 
-        SessionMediaUsage(WebCore::MediaSessionIdentifier identifier, const String& bundleIdentifier, const URL& pageURL)
+        SessionMediaUsage(CyberCore::MediaSessionIdentifier identifier, const String& bundleIdentifier, const URL& pageURL)
             : identifier(identifier)
             , bundleIdentifier(bundleIdentifier)
             , pageURL(pageURL)
         {
         }
 
-        WebCore::MediaSessionIdentifier identifier;
+        CyberCore::MediaSessionIdentifier identifier;
         String bundleIdentifier;
         URL pageURL;
-        std::optional<WebCore::MediaUsageInfo> mediaUsageInfo;
+        std::optional<CyberCore::MediaUsageInfo> mediaUsageInfo;
         RetainPtr<USVideoUsage> usageTracker;
     };
 
-    HashMap<WebCore::MediaSessionIdentifier, std::unique_ptr<SessionMediaUsage>> m_mediaSessions;
+    HashMap<CyberCore::MediaSessionIdentifier, std::unique_ptr<SessionMediaUsage>> m_mediaSessions;
 };
 
 } // namespace WebKit

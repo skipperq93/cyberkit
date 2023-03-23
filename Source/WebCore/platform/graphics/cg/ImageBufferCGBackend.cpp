@@ -37,7 +37,7 @@
 #include <CoreGraphics/CoreGraphics.h>
 #include <pal/spi/cg/CoreGraphicsSPI.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ThreadSafeImageBufferFlusherCG : public ThreadSafeImageBufferFlusher {
     WTF_MAKE_FAST_ALLOCATED;
@@ -97,6 +97,6 @@ void ImageBufferCGBackend::applyBaseTransform(GraphicsContextCG& context) const
     context.setCTM(calculateBaseTransform(m_parameters, originAtBottomLeftCorner()));
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(CG)

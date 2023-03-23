@@ -27,9 +27,9 @@
 
 #include <wtf/ObjectIdentifier.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum ImageDecoderIdentifierType { };
 using ImageDecoderIdentifier = ObjectIdentifier<ImageDecoderIdentifierType>;
 
-} // namespace WebCore
+} // namespace CyberCore

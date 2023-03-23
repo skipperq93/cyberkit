@@ -48,8 +48,8 @@ class MediaTrackReader;
 
 class MediaSampleCursor : public CoreMediaWrapped<MediaSampleCursor>, ThreadSafeIdentified<MediaSampleCursor> {
 public:
-    using DecodeOrderIterator = WebCore::DecodeOrderSampleMap::iterator;
-    using PresentationOrderIterator = WebCore::PresentationOrderSampleMap::iterator;
+    using DecodeOrderIterator = CyberCore::DecodeOrderSampleMap::iterator;
+    using PresentationOrderIterator = CyberCore::PresentationOrderSampleMap::iterator;
     using Locator = std::variant<MediaTime, DecodeOrderIterator, PresentationOrderIterator>;
 
     struct Timing {
@@ -72,9 +72,9 @@ private:
     MediaSampleCursor(Allocator&&, const MediaSampleCursor&);
 
     template<typename OrderedMap> std::optional<typename OrderedMap::iterator> locateIterator(OrderedMap&, bool hasAllSamples) const WTF_REQUIRES_LOCK(m_locatorLock);
-    using SampleType = std::optional<std::pair<const WebCore::MediaSample*, const WebCore::MediaSamplesBlock::MediaSampleItem*>>;
-    SampleType locateMediaSample(WebCore::SampleMap&, bool hasAllSamples) const WTF_REQUIRES_LOCK(m_locatorLock);
-    Timing locateTiming(WebCore::SampleMap&, bool hasAllSamples) const WTF_REQUIRES_LOCK(m_locatorLock);
+    using SampleType = std::optional<std::pair<const CyberCore::MediaSample*, const CyberCore::MediaSamplesBlock::MediaSampleItem*>>;
+    SampleType locateMediaSample(CyberCore::SampleMap&, bool hasAllSamples) const WTF_REQUIRES_LOCK(m_locatorLock);
+    Timing locateTiming(CyberCore::SampleMap&, bool hasAllSamples) const WTF_REQUIRES_LOCK(m_locatorLock);
 
     template<typename Function> OSStatus getSampleMap(Function&&) const;
     template<typename Function> OSStatus getMediaSample(Function&&) const;

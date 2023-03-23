@@ -37,7 +37,7 @@
 #include "Logging.h"
 #include "Page.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 #if !RELEASE_LOG_DISABLED
 static const char* toString(PerformanceLogging::PointOfInterest poi)

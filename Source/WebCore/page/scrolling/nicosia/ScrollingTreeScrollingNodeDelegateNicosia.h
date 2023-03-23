@@ -33,7 +33,7 @@
 #include "NicosiaSceneIntegration.h"
 #include "ThreadedScrollingTreeScrollingNodeDelegate.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScrollingTreeScrollingNodeDelegateNicosia final : public ThreadedScrollingTreeScrollingNodeDelegate {
 public:
@@ -50,6 +50,6 @@ private:
     bool m_scrollAnimatorEnabled { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ASYNC_SCROLLING) && USE(NICOSIA)

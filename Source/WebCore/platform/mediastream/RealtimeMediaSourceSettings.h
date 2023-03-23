@@ -33,7 +33,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/AtomString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class VideoFacingMode : uint8_t {
     Unknown,
@@ -181,7 +181,7 @@ private:
 
 String convertEnumerationToString(VideoFacingMode);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
@@ -189,18 +189,18 @@ template<typename Type>
 struct LogArgument;
 
 template <>
-struct LogArgument<WebCore::VideoFacingMode> {
-    static String toString(const WebCore::VideoFacingMode mode)
+struct LogArgument<CyberCore::VideoFacingMode> {
+    static String toString(const CyberCore::VideoFacingMode mode)
     {
         return convertEnumerationToString(mode);
     }
 };
 
 template <>
-struct LogArgument<OptionSet<WebCore::RealtimeMediaSourceSettings::Flag>> {
-    static String toString(const OptionSet<WebCore::RealtimeMediaSourceSettings::Flag> flags)
+struct LogArgument<OptionSet<CyberCore::RealtimeMediaSourceSettings::Flag>> {
+    static String toString(const OptionSet<CyberCore::RealtimeMediaSourceSettings::Flag> flags)
     {
-        return WebCore::RealtimeMediaSourceSettings::convertFlagsToString(flags);
+        return CyberCore::RealtimeMediaSourceSettings::convertFlagsToString(flags);
     }
 };
 

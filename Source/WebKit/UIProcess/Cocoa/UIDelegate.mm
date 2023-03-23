@@ -293,7 +293,7 @@ void UIDelegate::UIClient::mouseDidMoveOverElement(WebPageProxy&, const WebHitTe
 }
 #endif
 
-void UIDelegate::UIClient::createNewPage(WebKit::WebPageProxy&, WebCore::WindowFeatures&& windowFeatures, Ref<API::NavigationAction>&& navigationAction, CompletionHandler<void(RefPtr<WebPageProxy>&&)>&& completionHandler)
+void UIDelegate::UIClient::createNewPage(WebKit::WebPageProxy&, CyberCore::WindowFeatures&& windowFeatures, Ref<API::NavigationAction>&& navigationAction, CompletionHandler<void(RefPtr<WebPageProxy>&&)>&& completionHandler)
 {
     if (!m_uiDelegate)
         return completionHandler(nullptr);
@@ -419,7 +419,7 @@ void UIDelegate::UIClient::runJavaScriptPrompt(WebPageProxy& page, const WTF::St
     }).get()];
 }
 
-void UIDelegate::UIClient::requestStorageAccessConfirm(WebPageProxy& webPageProxy, WebFrameProxy*, const WebCore::RegistrableDomain& requestingDomain, const WebCore::RegistrableDomain& currentDomain, CompletionHandler<void(bool)>&& completionHandler)
+void UIDelegate::UIClient::requestStorageAccessConfirm(WebPageProxy& webPageProxy, WebFrameProxy*, const CyberCore::RegistrableDomain& requestingDomain, const CyberCore::RegistrableDomain& currentDomain, CompletionHandler<void(bool)>&& completionHandler)
 {
     if (!m_uiDelegate)
         return completionHandler(false);
@@ -431,7 +431,7 @@ void UIDelegate::UIClient::requestStorageAccessConfirm(WebPageProxy& webPageProx
     }
 
     // Some sites have quirks where multiple login domains require storage access.
-    if (auto additionalLoginDomain = WebCore::NetworkStorageSession::findAdditionalLoginDomain(currentDomain, requestingDomain)) {
+    if (auto additionalLoginDomain = CyberCore::NetworkStorageSession::findAdditionalLoginDomain(currentDomain, requestingDomain)) {
 #if !PLATFORM(WATCHOS) && !PLATFORM(APPLETV)
         presentStorageAccessAlertQuirk(m_uiDelegate->m_webView.get().get(), requestingDomain, *additionalLoginDomain, currentDomain, WTFMove(completionHandler));
 #endif
@@ -464,7 +464,7 @@ void UIDelegate::UIClient::decidePolicyForGeolocationPermissionRequest(WebKit::W
         return;
 
     if (m_uiDelegate->m_delegateMethods.webViewRequestGeolocationPermissionForOriginDecisionHandler) {
-        auto securityOrigin = WebCore::SecurityOrigin::createFromString(page.pageLoadState().activeURL());
+        auto securityOrigin = CyberCore::SecurityOrigin::createFromString(page.pageLoadState().activeURL());
         auto checker = CompletionHandlerCallChecker::create(delegate.get(), @selector(_webView:requestGeolocationPermissionForOrigin:initiatedByFrame:decisionHandler:));
         auto decisionHandler = makeBlockPtr([completionHandler = std::exchange(completionHandler, nullptr), securityOrigin = securityOrigin->data(), checker = WTFMove(checker), page = WeakPtr { page }] (WKPermissionDecision decision) mutable {
             if (checker->completionHandlerHasBeenCalled())
@@ -588,23 +588,23 @@ void UIDelegate::UIClient::exceededDatabaseQuota(WebPageProxy*, WebFrameProxy*, 
 }
 
 #if PLATFORM(IOS)
-static _WKScreenOrientationType toWKScreenOrientationType(WebCore::ScreenOrientationType lockType)
+static _WKScreenOrientationType toWKScreenOrientationType(CyberCore::ScreenOrientationType lockType)
 {
     switch (lockType) {
-    case WebCore::ScreenOrientationType::PortraitSecondary:
+    case CyberCore::ScreenOrientationType::PortraitSecondary:
         return _WKScreenOrientationTypePortraitSecondary;
-    case WebCore::ScreenOrientationType::LandscapePrimary:
+    case CyberCore::ScreenOrientationType::LandscapePrimary:
         return _WKScreenOrientationTypeLandscapePrimary;
-    case WebCore::ScreenOrientationType::LandscapeSecondary:
+    case CyberCore::ScreenOrientationType::LandscapeSecondary:
         return _WKScreenOrientationTypeLandscapeSecondary;
-    case WebCore::ScreenOrientationType::PortraitPrimary:
+    case CyberCore::ScreenOrientationType::PortraitPrimary:
         break;
     }
     return _WKScreenOrientationTypePortraitPrimary;
 }
 #endif
 
-bool UIDelegate::UIClient::lockScreenOrientation(WebPageProxy&, WebCore::ScreenOrientationType orientation)
+bool UIDelegate::UIClient::lockScreenOrientation(WebPageProxy&, CyberCore::ScreenOrientationType orientation)
 {
 #if PLATFORM(IOS)
     if (!m_uiDelegate)
@@ -662,36 +662,36 @@ bool UIDelegate::UIClient::takeFocus(WebPageProxy*, WKFocusDirection direction)
     return true;
 }
 
-static _WKAutoplayEventFlags toWKAutoplayEventFlags(OptionSet<WebCore::AutoplayEventFlags> flags)
+static _WKAutoplayEventFlags toWKAutoplayEventFlags(OptionSet<CyberCore::AutoplayEventFlags> flags)
 {
     _WKAutoplayEventFlags wkFlags = _WKAutoplayEventFlagsNone;
-    if (flags.contains(WebCore::AutoplayEventFlags::HasAudio))
+    if (flags.contains(CyberCore::AutoplayEventFlags::HasAudio))
         wkFlags |= _WKAutoplayEventFlagsHasAudio;
-    if (flags.contains(WebCore::AutoplayEventFlags::PlaybackWasPrevented))
+    if (flags.contains(CyberCore::AutoplayEventFlags::PlaybackWasPrevented))
         wkFlags |= _WKAutoplayEventFlagsPlaybackWasPrevented;
-    if (flags.contains(WebCore::AutoplayEventFlags::MediaIsMainContent))
+    if (flags.contains(CyberCore::AutoplayEventFlags::MediaIsMainContent))
         wkFlags |= _WKAutoplayEventFlagsMediaIsMainContent;
     
     return wkFlags;
 }
 
-static _WKAutoplayEvent toWKAutoplayEvent(WebCore::AutoplayEvent event)
+static _WKAutoplayEvent toWKAutoplayEvent(CyberCore::AutoplayEvent event)
 {
     switch (event) {
-    case WebCore::AutoplayEvent::DidPreventMediaFromPlaying:
+    case CyberCore::AutoplayEvent::DidPreventMediaFromPlaying:
         return _WKAutoplayEventDidPreventFromAutoplaying;
-    case WebCore::AutoplayEvent::DidPlayMediaWithUserGesture:
+    case CyberCore::AutoplayEvent::DidPlayMediaWithUserGesture:
         return _WKAutoplayEventDidPlayMediaWithUserGesture;
-    case WebCore::AutoplayEvent::DidAutoplayMediaPastThresholdWithoutUserInterference:
+    case CyberCore::AutoplayEvent::DidAutoplayMediaPastThresholdWithoutUserInterference:
         return _WKAutoplayEventDidAutoplayMediaPastThresholdWithoutUserInterference;
-    case WebCore::AutoplayEvent::UserDidInterfereWithPlayback:
+    case CyberCore::AutoplayEvent::UserDidInterfereWithPlayback:
         return _WKAutoplayEventUserDidInterfereWithPlayback;
     }
     ASSERT_NOT_REACHED();
     return _WKAutoplayEventDidPlayMediaWithUserGesture;
 }
 
-void UIDelegate::UIClient::handleAutoplayEvent(WebPageProxy&, WebCore::AutoplayEvent event, OptionSet<WebCore::AutoplayEventFlags> flags)
+void UIDelegate::UIClient::handleAutoplayEvent(WebPageProxy&, CyberCore::AutoplayEvent event, OptionSet<CyberCore::AutoplayEventFlags> flags)
 {
     if (!m_uiDelegate)
         return;
@@ -728,17 +728,17 @@ void UIDelegate::UIClient::decidePolicyForNotificationPermissionRequest(WebKit::
     }).get()];
 }
 
-void UIDelegate::UIClient::requestCookieConsent(CompletionHandler<void(WebCore::CookieConsentDecisionResult)>&& completion)
+void UIDelegate::UIClient::requestCookieConsent(CompletionHandler<void(CyberCore::CookieConsentDecisionResult)>&& completion)
 {
     if (!m_uiDelegate)
-        return completion(WebCore::CookieConsentDecisionResult::NotSupported);
+        return completion(CyberCore::CookieConsentDecisionResult::NotSupported);
 
     if (!m_uiDelegate->m_delegateMethods.webViewRequestCookieConsentWithMoreInfoHandlerDecisionHandler)
-        return completion(WebCore::CookieConsentDecisionResult::NotSupported);
+        return completion(CyberCore::CookieConsentDecisionResult::NotSupported);
 
     auto delegate = m_uiDelegate->m_delegate.get();
     if (!delegate)
-        return completion(WebCore::CookieConsentDecisionResult::NotSupported);
+        return completion(CyberCore::CookieConsentDecisionResult::NotSupported);
 
     // FIXME: Add support for the 'more info' handler.
     auto checker = CompletionHandlerCallChecker::create(delegate.get(), @selector(_webView:requestCookieConsentWithMoreInfoHandler:decisionHandler:));
@@ -746,36 +746,36 @@ void UIDelegate::UIClient::requestCookieConsent(CompletionHandler<void(WebCore::
         if (checker->completionHandlerHasBeenCalled())
             return;
         checker->didCallCompletionHandler();
-        completion(decision ? WebCore::CookieConsentDecisionResult::Consent : WebCore::CookieConsentDecisionResult::Dissent);
+        completion(decision ? CyberCore::CookieConsentDecisionResult::Consent : CyberCore::CookieConsentDecisionResult::Dissent);
     }).get()];
 }
 
-static WebCore::ModalContainerDecision coreModalContainerDecision(_WKModalContainerDecision decision)
+static CyberCore::ModalContainerDecision coreModalContainerDecision(_WKModalContainerDecision decision)
 {
     switch (decision) {
     case _WKModalContainerDecisionShow:
-        return WebCore::ModalContainerDecision::Show;
+        return CyberCore::ModalContainerDecision::Show;
     case _WKModalContainerDecisionHideAndIgnore:
-        return WebCore::ModalContainerDecision::HideAndIgnore;
+        return CyberCore::ModalContainerDecision::HideAndIgnore;
     case _WKModalContainerDecisionHideAndAllow:
-        return WebCore::ModalContainerDecision::HideAndAllow;
+        return CyberCore::ModalContainerDecision::HideAndAllow;
     case _WKModalContainerDecisionHideAndDisallow:
-        return WebCore::ModalContainerDecision::HideAndDisallow;
+        return CyberCore::ModalContainerDecision::HideAndDisallow;
     }
-    return WebCore::ModalContainerDecision::Show;
+    return CyberCore::ModalContainerDecision::Show;
 }
 
-void UIDelegate::UIClient::decidePolicyForModalContainer(OptionSet<WebCore::ModalContainerControlType> controlTypes, CompletionHandler<void(WebCore::ModalContainerDecision)>&& completion)
+void UIDelegate::UIClient::decidePolicyForModalContainer(OptionSet<CyberCore::ModalContainerControlType> controlTypes, CompletionHandler<void(CyberCore::ModalContainerDecision)>&& completion)
 {
     if (!m_uiDelegate)
-        return completion(WebCore::ModalContainerDecision::Show);
+        return completion(CyberCore::ModalContainerDecision::Show);
 
     if (!m_uiDelegate->m_delegateMethods.webViewDecidePolicyForModalContainerDecisionHandler)
-        return completion(WebCore::ModalContainerDecision::Show);
+        return completion(CyberCore::ModalContainerDecision::Show);
 
     auto delegate = m_uiDelegate->m_delegate.get();
     if (!delegate)
-        return completion(WebCore::ModalContainerDecision::Show);
+        return completion(CyberCore::ModalContainerDecision::Show);
 
     auto checker = CompletionHandlerCallChecker::create(delegate.get(), @selector(_webView:decidePolicyForModalContainer:decisionHandler:));
     auto info = adoptNS([[_WKModalContainerInfo alloc] initWithTypes:controlTypes]);
@@ -842,7 +842,7 @@ float UIDelegate::UIClient::footerHeight(WebPageProxy&, WebFrameProxy&)
     return [(id <WKUIDelegatePrivate>)delegate _webViewFooterHeight:m_uiDelegate->m_webView.get().get()];
 }
 
-void UIDelegate::UIClient::drawHeader(WebPageProxy&, WebFrameProxy& frame, WebCore::FloatRect&& rect)
+void UIDelegate::UIClient::drawHeader(WebPageProxy&, WebFrameProxy& frame, CyberCore::FloatRect&& rect)
 {
     if (!m_uiDelegate)
         return;
@@ -857,7 +857,7 @@ void UIDelegate::UIClient::drawHeader(WebPageProxy&, WebFrameProxy& frame, WebCo
     [(id <WKUIDelegatePrivate>)delegate _webView:m_uiDelegate->m_webView.get().get() drawHeaderInRect:rect forPageWithTitle:frame.title() URL:frame.url()];
 }
 
-void UIDelegate::UIClient::drawFooter(WebPageProxy&, WebFrameProxy& frame, WebCore::FloatRect&& rect)
+void UIDelegate::UIClient::drawFooter(WebPageProxy&, WebFrameProxy& frame, CyberCore::FloatRect&& rect)
 {
     if (!m_uiDelegate)
         return;
@@ -967,7 +967,7 @@ void UIDelegate::UIClient::setIsResizable(WebKit::WebPageProxy&, bool resizable)
     [(id <WKUIDelegatePrivate>)delegate _webView:m_uiDelegate->m_webView.get().get() setResizable:resizable];
 }
 
-void UIDelegate::UIClient::setWindowFrame(WebKit::WebPageProxy&, const WebCore::FloatRect& frame)
+void UIDelegate::UIClient::setWindowFrame(WebKit::WebPageProxy&, const CyberCore::FloatRect& frame)
 {
     if (!m_uiDelegate)
         return;
@@ -982,7 +982,7 @@ void UIDelegate::UIClient::setWindowFrame(WebKit::WebPageProxy&, const WebCore::
     [(id <WKUIDelegatePrivate>)delegate _webView:m_uiDelegate->m_webView.get().get() setWindowFrame:frame];
 }
 
-void UIDelegate::UIClient::windowFrame(WebKit::WebPageProxy&, Function<void(WebCore::FloatRect)>&& completionHandler)
+void UIDelegate::UIClient::windowFrame(WebKit::WebPageProxy&, Function<void(CyberCore::FloatRect)>&& completionHandler)
 {
     if (!m_uiDelegate)
         return completionHandler({ });
@@ -1152,7 +1152,7 @@ bool UIDelegate::UIClient::runOpenPanel(WebPageProxy& page, WebFrameProxy* webFr
 #if ENABLE(DEVICE_ORIENTATION)
 void UIDelegate::UIClient::shouldAllowDeviceOrientationAndMotionAccess(WebKit::WebPageProxy& page, WebFrameProxy& webFrameProxy, FrameInfoData&& frameInfo, CompletionHandler<void(bool)>&& completionHandler)
 {
-    auto securityOrigin = WebCore::SecurityOrigin::createFromString(page.pageLoadState().activeURL());
+    auto securityOrigin = CyberCore::SecurityOrigin::createFromString(page.pageLoadState().activeURL());
     if (!m_uiDelegate || !m_uiDelegate->m_delegate.get() || !m_uiDelegate->m_delegateMethods.webViewRequestDeviceOrientationAndMotionPermissionForOriginDecisionHandler) {
         alertForPermission(page, MediaPermissionReason::DeviceOrientation, securityOrigin->data(), WTFMove(completionHandler));
         return;
@@ -1184,7 +1184,7 @@ void UIDelegate::UIClient::shouldAllowDeviceOrientationAndMotionAccess(WebKit::W
 }
 #endif
 
-void UIDelegate::UIClient::didChangeFontAttributes(const WebCore::FontAttributes& fontAttributes)
+void UIDelegate::UIClient::didChangeFontAttributes(const CyberCore::FontAttributes& fontAttributes)
 {
     if (!m_uiDelegate)
         return;
@@ -1225,7 +1225,7 @@ void UIDelegate::UIClient::promptForDisplayCapturePermission(WebPageProxy& page,
         });
     });
 
-    std::optional<WebCore::FrameIdentifier> mainFrameID;
+    std::optional<CyberCore::FrameIdentifier> mainFrameID;
     if (auto* mainFrame = frame.page() ? frame.page()->mainFrame() : nullptr)
         mainFrameID = mainFrame->frameID();
     FrameInfoData frameInfo { frame.isMainFrame(), { }, userMediaOrigin.securityOrigin(), { }, frame.frameID(), mainFrameID };
@@ -1286,7 +1286,7 @@ void UIDelegate::UIClient::decidePolicyForUserMediaPermissionRequest(WebPageProx
             });
         });
 
-        std::optional<WebCore::FrameIdentifier> mainFrameID;
+        std::optional<CyberCore::FrameIdentifier> mainFrameID;
         if (auto* mainFrame = frame.page() ? frame.page()->mainFrame() : nullptr)
             mainFrameID = mainFrame->frameID();
         FrameInfoData frameInfo { frame.isMainFrame(), { }, userMediaOrigin.securityOrigin(), { }, frame.frameID(), mainFrameID };
@@ -1391,7 +1391,7 @@ void UIDelegate::UIClient::checkUserMediaPermissionForOrigin(WebPageProxy& page,
     [(id<WKUIDelegatePrivate>)delegate _webView:m_uiDelegate->m_webView.get().get() checkUserMediaPermissionForURL:requestFrameURL mainFrameURL:mainFrameURL frameIdentifier:frame.frameID().object().toUInt64() decisionHandler:decisionHandler.get()];
 }
 
-void UIDelegate::UIClient::mediaCaptureStateDidChange(WebCore::MediaProducerMediaStateFlags state)
+void UIDelegate::UIClient::mediaCaptureStateDidChange(CyberCore::MediaProducerMediaStateFlags state)
 {
     if (!m_uiDelegate)
         return;
@@ -1407,7 +1407,7 @@ void UIDelegate::UIClient::mediaCaptureStateDidChange(WebCore::MediaProducerMedi
     [(id <WKUIDelegatePrivate>)delegate _webView:webView.get().get() mediaCaptureStateDidChange:toWKMediaCaptureStateDeprecated(state)];
 }
 
-void UIDelegate::UIClient::reachedApplicationCacheOriginQuota(WebPageProxy*, const WebCore::SecurityOrigin& securityOrigin, uint64_t currentQuota, uint64_t totalBytesNeeded, Function<void (unsigned long long)>&& completionHandler)
+void UIDelegate::UIClient::reachedApplicationCacheOriginQuota(WebPageProxy*, const CyberCore::SecurityOrigin& securityOrigin, uint64_t currentQuota, uint64_t totalBytesNeeded, Function<void (unsigned long long)>&& completionHandler)
 {
     if (!m_uiDelegate)
         return completionHandler(currentQuota);
@@ -1434,7 +1434,7 @@ void UIDelegate::UIClient::reachedApplicationCacheOriginQuota(WebPageProxy*, con
     }).get()];
 }
 
-void UIDelegate::UIClient::printFrame(WebPageProxy&, WebFrameProxy& webFrameProxy, const WebCore::FloatSize& pdfFirstPageSize, CompletionHandler<void()>&& completionHandler)
+void UIDelegate::UIClient::printFrame(WebPageProxy&, WebFrameProxy& webFrameProxy, const CyberCore::FloatSize& pdfFirstPageSize, CompletionHandler<void()>&& completionHandler)
 {
     if (!m_uiDelegate)
         return completionHandler();
@@ -1562,7 +1562,7 @@ RetainPtr<NSArray> UIDelegate::UIClient::actionsForElement(_WKActivatedElementIn
     return [(id <WKUIDelegatePrivate>)delegate _webView:m_uiDelegate->m_webView.get().get() actionsForElement:elementInfo defaultActions:defaultActions.get()];
 }
 
-void UIDelegate::UIClient::didNotHandleTapAsClick(const WebCore::IntPoint& point)
+void UIDelegate::UIClient::didNotHandleTapAsClick(const CyberCore::IntPoint& point)
 {
     if (!m_uiDelegate)
         return;
@@ -1787,7 +1787,7 @@ void UIDelegate::UIClient::hasVideoInPictureInPictureDidChange(WebPageProxy*, bo
     [static_cast<id <WKUIDelegatePrivate>>(delegate) _webView:m_uiDelegate->m_webView.get().get() hasVideoInPictureInPictureDidChange:hasVideoInPictureInPicture];
 }
 
-void UIDelegate::UIClient::imageOrMediaDocumentSizeChanged(const WebCore::IntSize& newSize)
+void UIDelegate::UIClient::imageOrMediaDocumentSizeChanged(const CyberCore::IntSize& newSize)
 {
     if (!m_uiDelegate)
         return;
@@ -1802,21 +1802,21 @@ void UIDelegate::UIClient::imageOrMediaDocumentSizeChanged(const WebCore::IntSiz
     [static_cast<id <WKUIDelegatePrivate>>(delegate) _webView:m_uiDelegate->m_webView.get().get() imageOrMediaDocumentSizeChanged:newSize];
 }
 
-void UIDelegate::UIClient::queryPermission(const String& permissionName, API::SecurityOrigin& origin, CompletionHandler<void(std::optional<WebCore::PermissionState>)>&& callback)
+void UIDelegate::UIClient::queryPermission(const String& permissionName, API::SecurityOrigin& origin, CompletionHandler<void(std::optional<CyberCore::PermissionState>)>&& callback)
 {
     if (!m_uiDelegate) {
-        callback(WebCore::PermissionState::Prompt);
+        callback(CyberCore::PermissionState::Prompt);
         return;
     }
 
     auto delegate = (id <WKUIDelegatePrivate>)m_uiDelegate->m_delegate.get();
     if (!delegate) {
-        callback(WebCore::PermissionState::Prompt);
+        callback(CyberCore::PermissionState::Prompt);
         return;
     }
 
     if (![delegate respondsToSelector:@selector(_webView:queryPermission:forOrigin:completionHandler:)]) {
-        callback(WebCore::PermissionState::Prompt);
+        callback(CyberCore::PermissionState::Prompt);
         return;
     }
 
@@ -1827,13 +1827,13 @@ void UIDelegate::UIClient::queryPermission(const String& permissionName, API::Se
         checker->didCallCompletionHandler();
         switch (permissionState) {
         case WKPermissionDecisionPrompt:
-            callback(WebCore::PermissionState::Prompt);
+            callback(CyberCore::PermissionState::Prompt);
             break;
         case WKPermissionDecisionGrant:
-            callback(WebCore::PermissionState::Granted);
+            callback(CyberCore::PermissionState::Granted);
             break;
         case WKPermissionDecisionDeny:
-            callback(WebCore::PermissionState::Denied);
+            callback(CyberCore::PermissionState::Denied);
             break;
         }
     }).get()];
@@ -1869,7 +1869,7 @@ void UIDelegate::UIClient::didDisableInspectorBrowserDomain(WebPageProxy&)
     [delegate _webViewDidDisableInspectorBrowserDomain:m_uiDelegate->m_webView.get().get()];
 }
 
-void UIDelegate::UIClient::updateAppBadge(WebPageProxy&, const WebCore::SecurityOriginData& origin, std::optional<uint64_t> badge)
+void UIDelegate::UIClient::updateAppBadge(WebPageProxy&, const CyberCore::SecurityOriginData& origin, std::optional<uint64_t> badge)
 {
     if (!m_uiDelegate)
         return;
@@ -1890,7 +1890,7 @@ void UIDelegate::UIClient::updateAppBadge(WebPageProxy&, const WebCore::Security
     [delegate _webView:m_uiDelegate->m_webView.get().get() updatedAppBadge:nsBadge fromSecurityOrigin:wrapper(apiOrigin.get())];
 }
 
-void UIDelegate::UIClient::updateClientBadge(WebPageProxy&, const WebCore::SecurityOriginData& origin, std::optional<uint64_t> badge)
+void UIDelegate::UIClient::updateClientBadge(WebPageProxy&, const CyberCore::SecurityOriginData& origin, std::optional<uint64_t> badge)
 {
     if (!m_uiDelegate)
         return;
@@ -1974,7 +1974,7 @@ static std::optional<PlatformXR::Device::FeatureList> toPlatformXRFeatures(_WKXR
     return features;
 }
 
-void UIDelegate::UIClient::requestPermissionOnXRSessionFeatures(WebPageProxy&, const WebCore::SecurityOriginData& securityOriginData, PlatformXR::SessionMode mode, const PlatformXR::Device::FeatureList& granted, const PlatformXR::Device::FeatureList& consentRequired, const PlatformXR::Device::FeatureList& consentOptional, CompletionHandler<void(std::optional<PlatformXR::Device::FeatureList>&&)>&& completionHandler)
+void UIDelegate::UIClient::requestPermissionOnXRSessionFeatures(WebPageProxy&, const CyberCore::SecurityOriginData& securityOriginData, PlatformXR::SessionMode mode, const PlatformXR::Device::FeatureList& granted, const PlatformXR::Device::FeatureList& consentRequired, const PlatformXR::Device::FeatureList& consentOptional, CompletionHandler<void(std::optional<PlatformXR::Device::FeatureList>&&)>&& completionHandler)
 {
     if (!m_uiDelegate || !m_uiDelegate->m_delegateMethods.webViewRequestPermissionForXRSessionOriginModeAndFeaturesWithCompletionHandler) {
         completionHandler(granted);

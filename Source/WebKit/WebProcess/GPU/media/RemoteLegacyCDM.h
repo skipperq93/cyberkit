@@ -32,26 +32,26 @@
 #include <CyberCore/MediaPlayerIdentifier.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 class Settings;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class RemoteLegacyCDMFactory;
 class RemoteLegacyCDMSession;
 
 
 class RemoteLegacyCDM final
-    : public WebCore::CDMPrivateInterface
+    : public CyberCore::CDMPrivateInterface
     , public CanMakeWeakPtr<RemoteLegacyCDM> {
 public:
     static std::unique_ptr<RemoteLegacyCDM> create(WeakPtr<RemoteLegacyCDMFactory>&&, RemoteLegacyCDMIdentifier);
     virtual ~RemoteLegacyCDM();
 
     bool supportsMIMEType(const String&) final;
-    std::unique_ptr<WebCore::LegacyCDMSession> createSession(WebCore::LegacyCDMSessionClient&) final;
-    void setPlayerId(WebCore::MediaPlayerIdentifier);
+    std::unique_ptr<CyberCore::LegacyCDMSession> createSession(CyberCore::LegacyCDMSessionClient&) final;
+    void setPlayerId(CyberCore::MediaPlayerIdentifier);
 
 private:
     RemoteLegacyCDM(WeakPtr<RemoteLegacyCDMFactory>&&, RemoteLegacyCDMIdentifier&&);

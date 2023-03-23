@@ -68,7 +68,7 @@ void setAllowsDeprecatedSynchronousXMLHttpRequestDuringUnload(bool allowsRequest
 
 bool defaultMediaSourceEnabled()
 {
-    return !WebCore::deviceClassIsSmallScreen();
+    return !CyberCore::deviceClassIsSmallScreen();
 }
 
 #endif

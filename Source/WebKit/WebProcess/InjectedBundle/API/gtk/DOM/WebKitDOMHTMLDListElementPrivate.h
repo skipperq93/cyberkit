@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -17,16 +17,16 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitDOMHTMLDListElementPrivate_h
-#define WebKitDOMHTMLDListElementPrivate_h
+#ifndef CyberKitDOMHTMLDListElementPrivate_h
+#define CyberKitDOMHTMLDListElementPrivate_h
 
 #include <CyberCore/HTMLDListElement.h>
-#include <webkitdom/WebKitDOMHTMLDListElement.h>
+#include <webkitdom/CyberKitDOMHTMLDListElement.h>
 
-namespace WebKit {
-WebKitDOMHTMLDListElement* wrapHTMLDListElement(WebCore::HTMLDListElement*);
-WebKitDOMHTMLDListElement* kit(WebCore::HTMLDListElement*);
-WebCore::HTMLDListElement* core(WebKitDOMHTMLDListElement*);
-} // namespace WebKit
+namespace CyberKit {
+CyberKitDOMHTMLDListElement* wrapHTMLDListElement(CyberCore::HTMLDListElement*);
+CyberKitDOMHTMLDListElement* kit(CyberCore::HTMLDListElement*);
+CyberCore::HTMLDListElement* core(CyberKitDOMHTMLDListElement*);
+} // namespace CyberKit
 
-#endif /* WebKitDOMHTMLDListElementPrivate_h */
+#endif /* CyberKitDOMHTMLDListElementPrivate_h */

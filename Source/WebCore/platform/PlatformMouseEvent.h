@@ -30,7 +30,7 @@
 #include "PointerID.h"
 #include <wtf/WindowsExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 const double ForceAtClick = 1;
 const double ForceAtForceClick = 2;
@@ -129,4 +129,4 @@ const double ForceAtForceClick = 2;
     }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

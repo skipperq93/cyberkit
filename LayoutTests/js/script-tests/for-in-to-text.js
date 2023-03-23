@@ -1,5 +1,5 @@
 description(
-"This tests that JavaScriptCore ForInNodes are converted correctly to text."
+"This tests that CyberScriptCore ForInNodes are converted correctly to text."
 );
 
 function test() {

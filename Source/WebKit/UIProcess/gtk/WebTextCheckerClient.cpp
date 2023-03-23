@@ -102,7 +102,7 @@ void WebTextCheckerClient::checkSpellingOfString(uint64_t tag, const String& tex
     m_client.checkSpellingOfString(tag, toAPI(text.impl()), &misspellingLocation, &misspellingLength, m_client.base.clientInfo);
 }
 
-void WebTextCheckerClient::checkGrammarOfString(uint64_t tag, const String& text, Vector<WebCore::GrammarDetail>& grammarDetails, int32_t& badGrammarLocation, int32_t& badGrammarLength)
+void WebTextCheckerClient::checkGrammarOfString(uint64_t tag, const String& text, Vector<CyberCore::GrammarDetail>& grammarDetails, int32_t& badGrammarLocation, int32_t& badGrammarLength)
 {
     badGrammarLocation = -1;
     badGrammarLength = 0;
@@ -143,7 +143,7 @@ void WebTextCheckerClient::updateSpellingUIWithMisspelledWord(uint64_t tag, cons
     m_client.updateSpellingUIWithMisspelledWord(tag, toAPI(misspelledWord.impl()), m_client.base.clientInfo);
 }
 
-void WebTextCheckerClient::updateSpellingUIWithGrammarString(uint64_t tag, const String& badGrammarPhrase, const WebCore::GrammarDetail& grammarDetail)
+void WebTextCheckerClient::updateSpellingUIWithGrammarString(uint64_t tag, const String& badGrammarPhrase, const CyberCore::GrammarDetail& grammarDetail)
 {
     if (!m_client.updateSpellingUIWithGrammarString)
         return;

@@ -27,7 +27,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "config.h"
 #include "LegacyInlineIterator.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 UCharDirection LegacyInlineIterator::surrogateTextDirection(UChar currentCodeUnit) const
 {

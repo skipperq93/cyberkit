@@ -34,7 +34,7 @@
 #include <wtf/MathExtras.h>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 FloatRect::FloatRect(const IntRect& r)
     : m_location(r.location())

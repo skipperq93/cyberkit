@@ -35,7 +35,7 @@ class CallFrame;
 class JSGlobalObject;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class FontCache;
 class QualifiedNameCache;
@@ -88,7 +88,7 @@ public:
     void setCurrentState(JSC::JSGlobalObject* state) { m_currentState = state; }
 
 #if USE(WEB_THREAD)
-    void setWebCoreThreadData();
+    void setCyberCoreThreadData();
 #endif
 
     bool isInRemoveAllEventListeners() const { return m_isInRemoveAllEventListeners; }
@@ -137,4 +137,4 @@ WEBCORE_EXPORT ThreadGlobalData& threadGlobalData();
 WEBCORE_EXPORT ThreadGlobalData& threadGlobalData() PURE_FUNCTION;
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

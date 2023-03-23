@@ -27,7 +27,7 @@
 
 #include "StyleColor.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 DECLARE_ALLOCATOR_WITH_HEAP_IDENTIFIER(StyleVisitedLinkColorData);
 class StyleVisitedLinkColorData : public RefCounted<StyleVisitedLinkColorData> {
@@ -53,4 +53,4 @@ private:
     StyleVisitedLinkColorData(const StyleVisitedLinkColorData&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

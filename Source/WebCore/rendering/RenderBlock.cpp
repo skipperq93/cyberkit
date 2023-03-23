@@ -80,7 +80,7 @@
 #include <wtf/StackStats.h>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 #if USE(APPLE_INTERNAL_SDK) && __has_include(<WebKitAdditions/RenderBlockAdditions.h>)
 #include <WebKitAdditions/RenderBlockAdditions.h>
@@ -3574,4 +3574,4 @@ LayoutUnit RenderBlock::layoutOverflowLogicalBottom(const RenderBlock& renderer)
     return std::max(renderer.clientLogicalBottom(), maxChildLogicalBottom + renderer.paddingAfter());
 }
 
-} // namespace WebCore
+} // namespace CyberCore

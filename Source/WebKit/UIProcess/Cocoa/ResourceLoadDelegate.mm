@@ -74,7 +74,7 @@ ResourceLoadDelegate::ResourceLoadClient::ResourceLoadClient(ResourceLoadDelegat
 
 ResourceLoadDelegate::ResourceLoadClient::~ResourceLoadClient() = default;
 
-void ResourceLoadDelegate::ResourceLoadClient::didSendRequest(WebKit::ResourceLoadInfo&& loadInfo, WebCore::ResourceRequest&& request) const
+void ResourceLoadDelegate::ResourceLoadClient::didSendRequest(WebKit::ResourceLoadInfo&& loadInfo, CyberCore::ResourceRequest&& request) const
 {
     if (!m_resourceLoadDelegate.m_delegateMethods.didSendRequest)
         return;
@@ -83,10 +83,10 @@ void ResourceLoadDelegate::ResourceLoadClient::didSendRequest(WebKit::ResourceLo
     if (!delegate)
         return;
 
-    [delegate webView:m_resourceLoadDelegate.m_webView.get().get() resourceLoad:wrapper(API::ResourceLoadInfo::create(WTFMove(loadInfo)).get()) didSendRequest:request.nsURLRequest(WebCore::HTTPBodyUpdatePolicy::UpdateHTTPBody)];
+    [delegate webView:m_resourceLoadDelegate.m_webView.get().get() resourceLoad:wrapper(API::ResourceLoadInfo::create(WTFMove(loadInfo)).get()) didSendRequest:request.nsURLRequest(CyberCore::HTTPBodyUpdatePolicy::UpdateHTTPBody)];
 }
 
-void ResourceLoadDelegate::ResourceLoadClient::didPerformHTTPRedirection(WebKit::ResourceLoadInfo&& loadInfo, WebCore::ResourceResponse&& response, WebCore::ResourceRequest&& request) const
+void ResourceLoadDelegate::ResourceLoadClient::didPerformHTTPRedirection(WebKit::ResourceLoadInfo&& loadInfo, CyberCore::ResourceResponse&& response, CyberCore::ResourceRequest&& request) const
 {
     if (!m_resourceLoadDelegate.m_delegateMethods.didPerformHTTPRedirection)
         return;
@@ -95,10 +95,10 @@ void ResourceLoadDelegate::ResourceLoadClient::didPerformHTTPRedirection(WebKit:
     if (!delegate)
         return;
 
-    [delegate webView:m_resourceLoadDelegate.m_webView.get().get() resourceLoad:wrapper(API::ResourceLoadInfo::create(WTFMove(loadInfo)).get()) didPerformHTTPRedirection:response.nsURLResponse() newRequest:request.nsURLRequest(WebCore::HTTPBodyUpdatePolicy::DoNotUpdateHTTPBody)];
+    [delegate webView:m_resourceLoadDelegate.m_webView.get().get() resourceLoad:wrapper(API::ResourceLoadInfo::create(WTFMove(loadInfo)).get()) didPerformHTTPRedirection:response.nsURLResponse() newRequest:request.nsURLRequest(CyberCore::HTTPBodyUpdatePolicy::DoNotUpdateHTTPBody)];
 }
 
-void ResourceLoadDelegate::ResourceLoadClient::didReceiveChallenge(WebKit::ResourceLoadInfo&& loadInfo, WebCore::AuthenticationChallenge&& challenge) const
+void ResourceLoadDelegate::ResourceLoadClient::didReceiveChallenge(WebKit::ResourceLoadInfo&& loadInfo, CyberCore::AuthenticationChallenge&& challenge) const
 {
     if (!m_resourceLoadDelegate.m_delegateMethods.didReceiveChallenge)
         return;
@@ -110,7 +110,7 @@ void ResourceLoadDelegate::ResourceLoadClient::didReceiveChallenge(WebKit::Resou
     [delegate webView:m_resourceLoadDelegate.m_webView.get().get() resourceLoad:wrapper(API::ResourceLoadInfo::create(WTFMove(loadInfo)).get()) didReceiveChallenge:mac(challenge)];
 }
 
-void ResourceLoadDelegate::ResourceLoadClient::didReceiveResponse(WebKit::ResourceLoadInfo&& loadInfo, WebCore::ResourceResponse&& response) const
+void ResourceLoadDelegate::ResourceLoadClient::didReceiveResponse(WebKit::ResourceLoadInfo&& loadInfo, CyberCore::ResourceResponse&& response) const
 {
     if (!m_resourceLoadDelegate.m_delegateMethods.didReceiveResponse)
         return;
@@ -122,7 +122,7 @@ void ResourceLoadDelegate::ResourceLoadClient::didReceiveResponse(WebKit::Resour
     [delegate webView:m_resourceLoadDelegate.m_webView.get().get() resourceLoad:wrapper(API::ResourceLoadInfo::create(WTFMove(loadInfo)).get()) didReceiveResponse:response.nsURLResponse()];
 }
 
-void ResourceLoadDelegate::ResourceLoadClient::didCompleteWithError(WebKit::ResourceLoadInfo&& loadInfo, WebCore::ResourceResponse&& response, WebCore::ResourceError&& error) const
+void ResourceLoadDelegate::ResourceLoadClient::didCompleteWithError(WebKit::ResourceLoadInfo&& loadInfo, CyberCore::ResourceResponse&& response, CyberCore::ResourceError&& error) const
 {
     if (!m_resourceLoadDelegate.m_delegateMethods.didCompleteWithError)
         return;

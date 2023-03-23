@@ -48,7 +48,7 @@ void AudioSessionRoutingArbitratorProxy::processDidTerminate()
     notImplemented();
 }
 
-void AudioSessionRoutingArbitratorProxy::beginRoutingArbitrationWithCategory(WebCore::AudioSession::CategoryType, ArbitrationCallback&& callback)
+void AudioSessionRoutingArbitratorProxy::beginRoutingArbitrationWithCategory(CyberCore::AudioSession::CategoryType, ArbitrationCallback&& callback)
 {
     notImplemented();
     callback(RoutingArbitrationError::Failed, DefaultRouteChanged::No);

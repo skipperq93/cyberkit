@@ -27,7 +27,7 @@
 
 #include "Settings.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class RenderStyle;

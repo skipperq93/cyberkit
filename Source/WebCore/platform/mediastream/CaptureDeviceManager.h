@@ -30,7 +30,7 @@
 #include "CaptureDevice.h"
 #include "RealtimeMediaSource.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class WEBCORE_EXPORT CaptureDeviceManager {
 public:
@@ -44,6 +44,6 @@ protected:
     void deviceChanged();
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM)

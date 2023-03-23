@@ -28,13 +28,13 @@
 #import "_WKExperimentalFeature.h"
 #import "_WKInternalDebugFeature.h"
 
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 
 @implementation _WKFeature
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainRunLoop(_WKFeature.class, self))
+    if (CyberCoreObjCScheduleDeallocateOnMainRunLoop(_WKFeature.class, self))
         return;
 
     _wrappedFeature->API::Feature::~Feature();

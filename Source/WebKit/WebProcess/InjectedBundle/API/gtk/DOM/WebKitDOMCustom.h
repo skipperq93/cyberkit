@@ -20,7 +20,7 @@
 #error "Only <webkitdom/webkitdom.h> can be included directly."
 #endif
 
-#ifndef WebKitDOMCustom_h
-#define WebKitDOMCustom_h
+#ifndef CyberKitDOMCustom_h
+#define CyberKitDOMCustom_h
 
-#endif /* WebKitDOMCustom_h */
+#endif /* CyberKitDOMCustom_h */

@@ -31,7 +31,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/text/AtomString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMWrapperWorld;
 class SerializedScriptValue;
@@ -53,6 +53,6 @@ private:
     Ref<DOMWrapperWorld> m_world;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(USER_MESSAGE_HANDLERS)

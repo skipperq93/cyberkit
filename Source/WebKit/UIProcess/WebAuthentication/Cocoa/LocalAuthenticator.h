@@ -33,7 +33,7 @@
 
 OBJC_CLASS LAContext;
 
-namespace WebCore {
+namespace CyberCore {
 class AuthenticatorAttestationResponse;
 class AuthenticatorAssertionResponse;
 }
@@ -64,7 +64,7 @@ public:
 private:
     explicit LocalAuthenticator(UniqueRef<LocalConnection>&&);
 
-    void processClientExtensions(std::variant<Ref<WebCore::AuthenticatorAttestationResponse>, Ref<WebCore::AuthenticatorAssertionResponse>>);
+    void processClientExtensions(std::variant<Ref<CyberCore::AuthenticatorAttestationResponse>, Ref<CyberCore::AuthenticatorAssertionResponse>>);
 
     void makeCredential() final;
     void continueMakeCredentialAfterReceivingLAContext(LAContext *);
@@ -72,16 +72,16 @@ private:
     void continueMakeCredentialAfterAttested(Vector<uint8_t>&& credentialId, Vector<uint8_t>&& authData, NSArray *certificates, NSError *);
 
     void getAssertion() final;
-    void continueGetAssertionAfterResponseSelected(Ref<WebCore::AuthenticatorAssertionResponse>&&);
-    void continueGetAssertionAfterUserVerification(Ref<WebCore::AuthenticatorAssertionResponse>&&, LocalConnection::UserVerification, LAContext *);
+    void continueGetAssertionAfterResponseSelected(Ref<CyberCore::AuthenticatorAssertionResponse>&&);
+    void continueGetAssertionAfterUserVerification(Ref<CyberCore::AuthenticatorAssertionResponse>&&, LocalConnection::UserVerification, LAContext *);
 
-    void receiveException(WebCore::ExceptionData&&, WebAuthenticationStatus = WebAuthenticationStatus::LAError) const;
+    void receiveException(CyberCore::ExceptionData&&, WebAuthenticationStatus = WebAuthenticationStatus::LAError) const;
     void deleteDuplicateCredential() const;
     bool validateUserVerification(LocalConnection::UserVerification) const;
 
     State m_state { State::Init };
     UniqueRef<LocalConnection> m_connection;
-    Vector<Ref<WebCore::AuthenticatorAssertionResponse>> m_existingCredentials;
+    Vector<Ref<CyberCore::AuthenticatorAssertionResponse>> m_existingCredentials;
     RetainPtr<NSData> m_provisionalCredentialId;
 };
 

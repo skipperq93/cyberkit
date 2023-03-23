@@ -32,7 +32,7 @@
 #include <wtf/CompletionHandler.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 class ResourceError;
 class ResourceRequest;
 class ResourceResponse;
@@ -59,13 +59,13 @@ public:
     virtual void legacyDidStart(WebKit::DownloadProxy&) { }
     virtual void didReceiveAuthenticationChallenge(WebKit::DownloadProxy&, WebKit::AuthenticationChallengeProxy& challenge) { challenge.listener().completeChallenge(WebKit::AuthenticationChallengeDisposition::Cancel); }
     virtual void didReceiveData(WebKit::DownloadProxy&, uint64_t, uint64_t, uint64_t) { }
-    virtual void decideDestinationWithSuggestedFilename(WebKit::DownloadProxy&, const WebCore::ResourceResponse&, const WTF::String&, CompletionHandler<void(WebKit::AllowOverwrite, WTF::String)>&& completionHandler) { completionHandler(WebKit::AllowOverwrite::No, { }); }
+    virtual void decideDestinationWithSuggestedFilename(WebKit::DownloadProxy&, const CyberCore::ResourceResponse&, const WTF::String&, CompletionHandler<void(WebKit::AllowOverwrite, WTF::String)>&& completionHandler) { completionHandler(WebKit::AllowOverwrite::No, { }); }
     virtual void didCreateDestination(WebKit::DownloadProxy&, const WTF::String&) { }
     virtual void didFinish(WebKit::DownloadProxy&) { }
-    virtual void didFail(WebKit::DownloadProxy&, const WebCore::ResourceError&, API::Data* resumeData) { }
+    virtual void didFail(WebKit::DownloadProxy&, const CyberCore::ResourceError&, API::Data* resumeData) { }
     virtual void legacyDidCancel(WebKit::DownloadProxy&) { }
     virtual void processDidCrash(WebKit::DownloadProxy&) { }
-    virtual void willSendRequest(WebKit::DownloadProxy&, WebCore::ResourceRequest&& request, const WebCore::ResourceResponse&, CompletionHandler<void(WebCore::ResourceRequest&&)>&& completionHandler) { completionHandler(WTFMove(request)); }
+    virtual void willSendRequest(WebKit::DownloadProxy&, CyberCore::ResourceRequest&& request, const CyberCore::ResourceResponse&, CompletionHandler<void(CyberCore::ResourceRequest&&)>&& completionHandler) { completionHandler(WTFMove(request)); }
 };
 
 } // namespace API

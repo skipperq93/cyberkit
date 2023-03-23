@@ -23,7 +23,7 @@
 #include <wtf/HashMap.h>
 #include <wtf/text/AtomStringHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct CounterDirectives {
     std::optional<int> resetValue;
@@ -42,4 +42,4 @@ constexpr bool operator!=(const CounterDirectives& a, const CounterDirectives& b
 
 using CounterDirectiveMap = HashMap<AtomString, CounterDirectives>;
 
-} // namespace WebCore
+} // namespace CyberCore

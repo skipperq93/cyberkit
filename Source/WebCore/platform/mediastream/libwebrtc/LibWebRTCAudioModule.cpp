@@ -36,7 +36,7 @@
 #include "IncomingAudioMediaStreamTrackRendererUnit.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 LibWebRTCAudioModule::LibWebRTCAudioModule()
     : m_queue(WorkQueue::create("WebKitWebRTCAudioModule", WorkQueue::QOS::UserInteractive))
@@ -161,6 +161,6 @@ BaseAudioMediaStreamTrackRendererUnit& LibWebRTCAudioModule::incomingAudioMediaS
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(LIBWEBRTC)

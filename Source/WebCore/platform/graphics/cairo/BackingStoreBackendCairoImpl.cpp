@@ -24,7 +24,7 @@
 
 #include "CairoUtilities.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static const Seconds scrollHysteresisDuration { 300_ms };
 
@@ -71,6 +71,6 @@ void BackingStoreBackendCairoImpl::scroll(const IntRect& scrollRect, const IntSi
     m_scrolledHysteresis.impulse();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(CAIRO)

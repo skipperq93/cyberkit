@@ -29,7 +29,7 @@
 
 #include "PlatformTrackConfiguration.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct PlatformAudioTrackConfiguration : PlatformTrackConfiguration {
     uint32_t sampleRate { 0 };

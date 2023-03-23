@@ -31,7 +31,7 @@
 #include "TrailingObjects.h"
 #include <memory>
 
-namespace WebCore {
+namespace CyberCore {
 
 class LineBreaker;
 class RenderMultiColumnFlow;
@@ -631,6 +631,6 @@ inline LayoutUnit RenderBlockFlow::endPaddingWidthForCaret() const
     return { };
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderBlockFlow, isRenderBlockFlow())

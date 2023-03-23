@@ -29,7 +29,7 @@
 #include <wtf/MainThread.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class MainThreadDeferrableTask : public CanMakeWeakPtr<MainThreadDeferrableTask> {
 public:
@@ -71,4 +71,4 @@ private:
     bool m_isClosed { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

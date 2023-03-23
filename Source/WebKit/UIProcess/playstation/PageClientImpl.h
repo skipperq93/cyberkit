@@ -49,16 +49,16 @@ private:
     std::unique_ptr<DrawingAreaProxy> createDrawingAreaProxy(WebProcessProxy&) override;
 
     // Tell the view to invalidate the given region. The region is in view coordinates.
-    void setViewNeedsDisplay(const WebCore::Region&) override;
+    void setViewNeedsDisplay(const CyberCore::Region&) override;
 
     // Tell the view to scroll to the given position, and whether this was a programmatic scroll.
-    void requestScroll(const WebCore::FloatPoint& scrollPosition, const WebCore::IntPoint& scrollOrigin, WebCore::ScrollIsAnimated) override;
+    void requestScroll(const CyberCore::FloatPoint& scrollPosition, const CyberCore::IntPoint& scrollOrigin, CyberCore::ScrollIsAnimated) override;
 
-    // Return the current scroll position (not necessarily the same as the WebCore scroll position, because of scaling, insets etc.)
-    WebCore::FloatPoint viewScrollPosition() override;
+    // Return the current scroll position (not necessarily the same as the CyberCore scroll position, because of scaling, insets etc.)
+    CyberCore::FloatPoint viewScrollPosition() override;
 
     // Return the size of the view the page is associated with.
-    WebCore::IntSize viewSize() override;
+    CyberCore::IntSize viewSize() override;
 
     // Return whether the view's containing window is active.
     bool isViewWindowActive() override;
@@ -82,24 +82,24 @@ private:
 
     void didCommitLoadForMainFrame(const String& mimeType, bool useCustomContentProvider) override;
 
-    void didChangeContentSize(const WebCore::IntSize&) override;
+    void didChangeContentSize(const CyberCore::IntSize&) override;
 
-    void setCursor(const WebCore::Cursor&) override;
+    void setCursor(const CyberCore::Cursor&) override;
     void setCursorHiddenUntilMouseMoves(bool) override;
-    void didChangeViewportProperties(const WebCore::ViewportAttributes&) override;
+    void didChangeViewportProperties(const CyberCore::ViewportAttributes&) override;
 
     void registerEditCommand(Ref<WebEditCommandProxy>&&, UndoOrRedo) override;
     void clearAllEditCommands() override;
     bool canUndoRedo(UndoOrRedo) override;
     void executeUndoRedo(UndoOrRedo) override;
-    void wheelEventWasNotHandledByWebCore(const NativeWebWheelEvent&) override;
+    void wheelEventWasNotHandledByCyberCore(const NativeWebWheelEvent&) override;
 
-    WebCore::FloatRect convertToDeviceSpace(const WebCore::FloatRect&) override;
-    WebCore::FloatRect convertToUserSpace(const WebCore::FloatRect&) override;
-    WebCore::IntPoint screenToRootView(const WebCore::IntPoint&) override;
-    WebCore::IntRect rootViewToScreen(const WebCore::IntRect&) override;
-    WebCore::IntPoint accessibilityScreenToRootView(const WebCore::IntPoint&) override;
-    WebCore::IntRect rootViewToAccessibilityScreen(const WebCore::IntRect&) override;
+    CyberCore::FloatRect convertToDeviceSpace(const CyberCore::FloatRect&) override;
+    CyberCore::FloatRect convertToUserSpace(const CyberCore::FloatRect&) override;
+    CyberCore::IntPoint screenToRootView(const CyberCore::IntPoint&) override;
+    CyberCore::IntRect rootViewToScreen(const CyberCore::IntRect&) override;
+    CyberCore::IntPoint accessibilityScreenToRootView(const CyberCore::IntPoint&) override;
+    CyberCore::IntRect rootViewToAccessibilityScreen(const CyberCore::IntRect&) override;
 
     void doneWithKeyEvent(const NativeWebKeyboardEvent&, bool wasEventHandled) override;
 
@@ -121,8 +121,8 @@ private:
     bool isFullScreen() override;
     void enterFullScreen() override;
     void exitFullScreen() override;
-    void beganEnterFullScreen(const WebCore::IntRect& initialFrame, const WebCore::IntRect& finalFrame) override;
-    void beganExitFullScreen(const WebCore::IntRect& initialFrame, const WebCore::IntRect& finalFrame) override;
+    void beganEnterFullScreen(const CyberCore::IntRect& initialFrame, const CyberCore::IntRect& finalFrame) override;
+    void beganExitFullScreen(const CyberCore::IntRect& initialFrame, const CyberCore::IntRect& finalFrame) override;
 #endif
 
     // Custom representations.
@@ -149,9 +149,9 @@ private:
 
     void didRestoreScrollPosition() override;
 
-    WebCore::UserInterfaceLayoutDirection userInterfaceLayoutDirection() override;
+    CyberCore::UserInterfaceLayoutDirection userInterfaceLayoutDirection() override;
 
-    void requestDOMPasteAccess(WebCore::DOMPasteAccessCategory, const WebCore::IntRect&, const String&, CompletionHandler<void(WebCore::DOMPasteAccessResponse)>&&) override;
+    void requestDOMPasteAccess(CyberCore::DOMPasteAccessCategory, const CyberCore::IntRect&, const String&, CompletionHandler<void(CyberCore::DOMPasteAccessResponse)>&&) override;
 
     PlayStationWebView& m_view;
 };

@@ -42,7 +42,7 @@
 #include <CyberCore/WheelEventDeltaFilter.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 class RemoteLayerTreeEventDispatcherDisplayLinkClient final : public DisplayLink::Client {
 public:
@@ -82,12 +82,12 @@ private:
 };
 
 
-Ref<RemoteLayerTreeEventDispatcher> RemoteLayerTreeEventDispatcher::create(RemoteScrollingCoordinatorProxyMac& scrollingCoordinator, WebCore::PageIdentifier pageIdentifier)
+Ref<RemoteLayerTreeEventDispatcher> RemoteLayerTreeEventDispatcher::create(RemoteScrollingCoordinatorProxyMac& scrollingCoordinator, CyberCore::PageIdentifier pageIdentifier)
 {
     return adoptRef(*new RemoteLayerTreeEventDispatcher(scrollingCoordinator, pageIdentifier));
 }
 
-RemoteLayerTreeEventDispatcher::RemoteLayerTreeEventDispatcher(RemoteScrollingCoordinatorProxyMac& scrollingCoordinator, WebCore::PageIdentifier pageIdentifier)
+RemoteLayerTreeEventDispatcher::RemoteLayerTreeEventDispatcher(RemoteScrollingCoordinatorProxyMac& scrollingCoordinator, CyberCore::PageIdentifier pageIdentifier)
     : m_scrollingCoordinator(WeakPtr { scrollingCoordinator })
     , m_pageIdentifier(pageIdentifier)
     , m_wheelEventDeltaFilter(WheelEventDeltaFilter::create())
@@ -267,7 +267,7 @@ void RemoteLayerTreeEventDispatcher::didRefreshDisplay(PlatformDisplayID display
     scrollingTree->displayDidRefresh(displayID);
 }
 
-void RemoteLayerTreeEventDispatcher::windowScreenDidChange(WebCore::PlatformDisplayID, std::optional<WebCore::FramesPerSecond>)
+void RemoteLayerTreeEventDispatcher::windowScreenDidChange(CyberCore::PlatformDisplayID, std::optional<CyberCore::FramesPerSecond>)
 {
     // FIXME: Restart the displayLink if necessary.
 }

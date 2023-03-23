@@ -33,7 +33,7 @@
 #include <wtf/ThreadSpecific.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static ThreadSpecific<TextureMapperContextAttributes>& threadSpecificAttributes()
 {
@@ -66,6 +66,6 @@ const TextureMapperContextAttributes& TextureMapperContextAttributes::get()
     return attributes;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(TEXTURE_MAPPER_GL)

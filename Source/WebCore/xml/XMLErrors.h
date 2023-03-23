@@ -32,7 +32,7 @@
 #include <wtf/text/StringBuilder.h>
 #include <wtf/text/TextPosition.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 
@@ -56,4 +56,4 @@ private:
     StringBuilder m_errorMessages;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

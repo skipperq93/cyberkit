@@ -28,7 +28,7 @@
 
 #import "VisitedLinkStore.h"
 #import <CyberCore/SharedStringHash.h>
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 
 @implementation _WKVisitedLinkStore
 
@@ -44,7 +44,7 @@
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainRunLoop(_WKVisitedLinkStore.class, self))
+    if (CyberCoreObjCScheduleDeallocateOnMainRunLoop(_WKVisitedLinkStore.class, self))
         return;
 
     _visitedLinkStore->~VisitedLinkStore();
@@ -54,14 +54,14 @@
 
 - (void)addVisitedLinkWithURL:(NSURL *)URL
 {
-    auto linkHash = WebCore::computeSharedStringHash(URL.absoluteString);
+    auto linkHash = CyberCore::computeSharedStringHash(URL.absoluteString);
 
     _visitedLinkStore->addVisitedLinkHash(linkHash);
 }
 
 - (void)addVisitedLinkWithString:(NSString *)string
 {
-    _visitedLinkStore->addVisitedLinkHash(WebCore::computeSharedStringHash(string));
+    _visitedLinkStore->addVisitedLinkHash(CyberCore::computeSharedStringHash(string));
 }
 
 - (void)removeAll
@@ -71,14 +71,14 @@
 
 - (BOOL)containsVisitedLinkWithURL:(NSURL *)URL
 {
-    auto linkHash = WebCore::computeSharedStringHash(URL.absoluteString);
+    auto linkHash = CyberCore::computeSharedStringHash(URL.absoluteString);
 
     return _visitedLinkStore->containsVisitedLinkHash(linkHash);
 }
 
 - (void)removeVisitedLinkWithURL:(NSURL *)URL
 {
-    auto linkHash = WebCore::computeSharedStringHash(URL.absoluteString);
+    auto linkHash = CyberCore::computeSharedStringHash(URL.absoluteString);
 
     _visitedLinkStore->removeVisitedLinkHash(linkHash);
 }

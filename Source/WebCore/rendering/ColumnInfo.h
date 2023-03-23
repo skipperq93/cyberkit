@@ -27,7 +27,7 @@
 
 #include "LayoutUnit.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ColumnInfo {
     WTF_MAKE_NONCOPYABLE(ColumnInfo); WTF_MAKE_FAST_ALLOCATED;
@@ -113,4 +113,4 @@ private:
     PaginationUnit m_paginationUnit;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -43,7 +43,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/StackStats.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(LegacyRenderSVGImage);
 
@@ -267,4 +267,4 @@ void LegacyRenderSVGImage::addFocusRingRects(Vector<LayoutRect>& rects, const La
         rects.append(contentRect);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

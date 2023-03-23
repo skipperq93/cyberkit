@@ -29,7 +29,7 @@
 #include "FEMorphologySoftwareApplier.h"
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<FEMorphology> FEMorphology::create(MorphologyOperatorType type, float radiusX, float radiusY)
 {
@@ -113,4 +113,4 @@ TextStream& FEMorphology::externalRepresentation(TextStream& ts, FilterRepresent
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -51,10 +51,10 @@
 #include <pal/cocoa/AVFoundationSoftLink.h>
 
 @interface WebAVAssetWriterDelegate : NSObject <AVAssetWriterDelegate> {
-    WebCore::MediaRecorderPrivateWriter* m_writer;
+    CyberCore::MediaRecorderPrivateWriter* m_writer;
 }
 
-- (instancetype)initWithWriter:(WebCore::MediaRecorderPrivateWriter&)writer;
+- (instancetype)initWithWriter:(CyberCore::MediaRecorderPrivateWriter&)writer;
 - (void)close;
 
 @end
@@ -62,7 +62,7 @@
 @implementation WebAVAssetWriterDelegate {
 };
 
-- (instancetype)initWithWriter:(WebCore::MediaRecorderPrivateWriter&)writer
+- (instancetype)initWithWriter:(CyberCore::MediaRecorderPrivateWriter&)writer
 {
     ASSERT(isMainThread());
     self = [super init];
@@ -92,7 +92,7 @@
 
 @end
 
-namespace WebCore {
+namespace CyberCore {
 
 RefPtr<MediaRecorderPrivateWriter> MediaRecorderPrivateWriter::create(bool hasAudio, bool hasVideo, const MediaRecorderPrivateOptions& options)
 {
@@ -566,6 +566,6 @@ unsigned MediaRecorderPrivateWriter::videoBitRate() const
     return m_videoCompressor ? m_videoCompressor->bitRate() : 0;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_RECORDER)

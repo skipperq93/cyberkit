@@ -36,7 +36,7 @@
 #include <wtf/text/StringConcatenateNumbers.h>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 TextStream& operator<<(TextStream& ts, const TimingFunction& timingFunction)
 {
@@ -222,4 +222,4 @@ String TimingFunction::cssText() const
     return stream.release();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

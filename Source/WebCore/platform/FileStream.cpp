@@ -33,7 +33,7 @@
 
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 FileStream::FileStream()
     : m_handle(FileSystem::invalidPlatformFileHandle)
@@ -114,4 +114,4 @@ int FileStream::read(void* buffer, int bufferSize)
     return bytesRead;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

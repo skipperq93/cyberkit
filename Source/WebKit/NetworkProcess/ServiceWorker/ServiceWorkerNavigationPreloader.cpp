@@ -38,9 +38,9 @@
 
 namespace WebKit {
 
-using namespace WebCore;
+using namespace CyberCore;
 
-ServiceWorkerNavigationPreloader::ServiceWorkerNavigationPreloader(NetworkSession& session, NetworkLoadParameters&& parameters, const WebCore::NavigationPreloadState& state, bool shouldCaptureExtraNetworkLoadMetric)
+ServiceWorkerNavigationPreloader::ServiceWorkerNavigationPreloader(NetworkSession& session, NetworkLoadParameters&& parameters, const CyberCore::NavigationPreloadState& state, bool shouldCaptureExtraNetworkLoadMetric)
     : m_session(session)
     , m_parameters(WTFMove(parameters))
     , m_state(state)
@@ -129,7 +129,7 @@ void ServiceWorkerNavigationPreloader::loadWithCacheEntry(NetworkCache::Entry& e
         networkLoadMetrics.responseBodyBytesReceived = 0;
         networkLoadMetrics.responseBodyDecodedSize = size;
         if (weakThis->shouldCaptureExtraNetworkLoadMetrics()) {
-            auto additionalMetrics = WebCore::AdditionalNetworkLoadMetricsForWebInspector::create();
+            auto additionalMetrics = CyberCore::AdditionalNetworkLoadMetricsForWebInspector::create();
             additionalMetrics->requestHeaderBytesSent = 0;
             additionalMetrics->requestBodyBytesSent = 0;
             additionalMetrics->responseHeaderBytesReceived = 0;
@@ -245,7 +245,7 @@ void ServiceWorkerNavigationPreloader::waitForBody(BodyCallback&& callback)
     m_responseCompletionHandler(PolicyAction::Use);
 }
 
-bool ServiceWorkerNavigationPreloader::convertToDownload(DownloadManager& manager, DownloadID downloadID, const WebCore::ResourceRequest& request, const WebCore::ResourceResponse& response)
+bool ServiceWorkerNavigationPreloader::convertToDownload(DownloadManager& manager, DownloadID downloadID, const CyberCore::ResourceRequest& request, const CyberCore::ResourceResponse& response)
 {
     if (!m_networkLoad)
         return false;

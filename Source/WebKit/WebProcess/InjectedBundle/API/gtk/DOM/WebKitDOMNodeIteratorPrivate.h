@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -17,16 +17,16 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitDOMNodeIteratorPrivate_h
-#define WebKitDOMNodeIteratorPrivate_h
+#ifndef CyberKitDOMNodeIteratorPrivate_h
+#define CyberKitDOMNodeIteratorPrivate_h
 
 #include <CyberCore/NodeIterator.h>
-#include <webkitdom/WebKitDOMNodeIterator.h>
+#include <webkitdom/CyberKitDOMNodeIterator.h>
 
-namespace WebKit {
-WebKitDOMNodeIterator* wrapNodeIterator(WebCore::NodeIterator*);
-WebKitDOMNodeIterator* kit(WebCore::NodeIterator*);
-WebCore::NodeIterator* core(WebKitDOMNodeIterator*);
-} // namespace WebKit
+namespace CyberKit {
+CyberKitDOMNodeIterator* wrapNodeIterator(CyberCore::NodeIterator*);
+CyberKitDOMNodeIterator* kit(CyberCore::NodeIterator*);
+CyberCore::NodeIterator* core(CyberKitDOMNodeIterator*);
+} // namespace CyberKit
 
-#endif /* WebKitDOMNodeIteratorPrivate_h */
+#endif /* CyberKitDOMNodeIteratorPrivate_h */

@@ -33,8 +33,8 @@ namespace WebKit {
 #ifdef __OBJC__
 
 // NOTE: This does not use String::operator NSString*() since that function
-// expects to be called on the thread running WebCore.
-NSString *nsStringFromWebCoreString(const String&);
+// expects to be called on the thread running CyberCore.
+NSString *nsStringFromCyberCoreString(const String&);
 NSString *formattedPhoneNumberString(NSString *originalPhoneNumber);
 
 #endif // defined(__OBJC__)

@@ -27,7 +27,7 @@
 #include "SVGURIReference.h"
 #include "SVGUnitTypes.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 enum SVGSpreadMethodType {
     SVGSpreadMethodUnknown = 0,
@@ -106,15 +106,15 @@ private:
     Ref<SVGAnimatedTransformList> m_gradientTransform { SVGAnimatedTransformList::create(this) };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::SVGGradientElement)
-static bool isType(const WebCore::SVGElement& element)
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::SVGGradientElement)
+static bool isType(const CyberCore::SVGElement& element)
 {
-    return element.hasTagName(WebCore::SVGNames::radialGradientTag) || element.hasTagName(WebCore::SVGNames::linearGradientTag);
+    return element.hasTagName(CyberCore::SVGNames::radialGradientTag) || element.hasTagName(CyberCore::SVGNames::linearGradientTag);
 }
-static bool isType(const WebCore::Node& node)
+static bool isType(const CyberCore::Node& node)
 {
-    return is<WebCore::SVGElement>(node) && isType(downcast<WebCore::SVGElement>(node));
+    return is<CyberCore::SVGElement>(node) && isType(downcast<CyberCore::SVGElement>(node));
 }
 SPECIALIZE_TYPE_TRAITS_END()

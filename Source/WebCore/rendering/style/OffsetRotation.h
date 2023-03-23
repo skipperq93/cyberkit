@@ -27,7 +27,7 @@
 
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct BlendingContext;
 
@@ -51,4 +51,4 @@ private:
 
 WTF::TextStream& operator<<(WTF::TextStream&, const OffsetRotation&);
 
-} // namespace WebCore
+} // namespace CyberCore

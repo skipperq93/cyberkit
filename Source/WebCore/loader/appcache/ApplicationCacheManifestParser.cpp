@@ -32,7 +32,7 @@
 #include <wtf/text/StringParsingBuffer.h>
 #include <wtf/text/StringView.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class ApplicationCacheParserMode { Explicit, Fallback, OnlineAllowlist, Unknown };
 
@@ -76,7 +76,7 @@ std::optional<ApplicationCacheManifest> parseApplicationCacheManifest(const URL&
 {
     static constexpr auto cacheManifestMIMEType = "text/cache-manifest"_s;
     bool allowFallbackNamespaceOutsideManifestPath = equalLettersIgnoringASCIICase(manifestMIMEType, cacheManifestMIMEType);
-    auto manifestPath = WebCore::manifestPath(manifestURL);
+    auto manifestPath = CyberCore::manifestPath(manifestURL);
 
     auto manifestString = TextResourceDecoder::create(cacheManifestMIMEType, "UTF-8")->decodeAndFlush(data, length);
 

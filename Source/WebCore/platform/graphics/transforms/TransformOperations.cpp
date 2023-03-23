@@ -28,7 +28,7 @@
 #include <algorithm>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 TransformOperations::TransformOperations(bool makeIdentity)
 {
@@ -162,4 +162,4 @@ TextStream& operator<<(TextStream& ts, const TransformOperations& ops)
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

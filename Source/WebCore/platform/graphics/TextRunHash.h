@@ -30,7 +30,7 @@
 #include <wtf/HashTraits.h>
 #include <wtf/Hasher.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 inline void add(Hasher& hasher, const ExpansionBehavior& expansionBehavior)
 {
@@ -63,17 +63,17 @@ struct TextRunHash {
     static constexpr bool safeToCompareToEmptyOrDeleted = false;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct DefaultHash<WebCore::TextRun> : WebCore::TextRunHash { };
+template<> struct DefaultHash<CyberCore::TextRun> : CyberCore::TextRunHash { };
 
-template<> struct HashTraits<WebCore::TextRun> : GenericHashTraits<WebCore::TextRun> {
-    static bool isDeletedValue(const WebCore::TextRun& value) { return value.isHashTableDeletedValue(); }
-    static bool isEmptyValue(const WebCore::TextRun& value) { return value.isHashTableEmptyValue(); }
-    static void constructDeletedValue(WebCore::TextRun& slot) { new (NotNull, &slot) WebCore::TextRun(WTF::HashTableDeletedValue); }
-    static WebCore::TextRun emptyValue() { return WebCore::TextRun(WTF::HashTableEmptyValue); }
+template<> struct HashTraits<CyberCore::TextRun> : GenericHashTraits<CyberCore::TextRun> {
+    static bool isDeletedValue(const CyberCore::TextRun& value) { return value.isHashTableDeletedValue(); }
+    static bool isEmptyValue(const CyberCore::TextRun& value) { return value.isHashTableEmptyValue(); }
+    static void constructDeletedValue(CyberCore::TextRun& slot) { new (NotNull, &slot) CyberCore::TextRun(WTF::HashTableDeletedValue); }
+    static CyberCore::TextRun emptyValue() { return CyberCore::TextRun(WTF::HashTableEmptyValue); }
 };
 
 } // namespace WTF

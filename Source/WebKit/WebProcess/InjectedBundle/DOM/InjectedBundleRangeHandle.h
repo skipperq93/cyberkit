@@ -31,13 +31,13 @@
 #include <wtf/Forward.h>
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 class IntRect;
 class Range;
 struct SimpleRange;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class InjectedBundleNodeHandle;
 class InjectedBundleScriptWorld;
@@ -46,24 +46,24 @@ class WebImage;
 class InjectedBundleRangeHandle : public API::ObjectImpl<API::Object::Type::BundleRangeHandle> {
 public:
     static RefPtr<InjectedBundleRangeHandle> getOrCreate(JSContextRef, JSObjectRef);
-    static RefPtr<InjectedBundleRangeHandle> getOrCreate(WebCore::Range*);
+    static RefPtr<InjectedBundleRangeHandle> getOrCreate(CyberCore::Range*);
 
     virtual ~InjectedBundleRangeHandle();
 
     Ref<InjectedBundleNodeHandle> document();
 
-    WebCore::IntRect boundingRectInWindowCoordinates() const;
+    CyberCore::IntRect boundingRectInWindowCoordinates() const;
     RefPtr<WebImage> renderedImage(SnapshotOptions);
     String text() const;
 
-    WebCore::Range& coreRange() const;
+    CyberCore::Range& coreRange() const;
 
 private:
-    InjectedBundleRangeHandle(WebCore::Range&);
+    InjectedBundleRangeHandle(CyberCore::Range&);
 
-    Ref<WebCore::Range> m_range;
+    Ref<CyberCore::Range> m_range;
 };
 
-RefPtr<InjectedBundleRangeHandle> createHandle(const std::optional<WebCore::SimpleRange>&);
+RefPtr<InjectedBundleRangeHandle> createHandle(const std::optional<CyberCore::SimpleRange>&);
 
-} // namespace WebKit
+} // namespace CyberKit

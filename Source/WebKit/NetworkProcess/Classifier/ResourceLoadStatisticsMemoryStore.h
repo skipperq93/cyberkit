@@ -33,7 +33,7 @@
 #include <wtf/Vector.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 class KeyedDecoder;
 class KeyedEncoder;
 enum class StorageAccessPromptWasShown : bool;
@@ -52,10 +52,10 @@ public:
     bool isEmpty() const override;
 
     Vector<WebResourceLoadStatisticsStore::ThirdPartyData> aggregatedThirdPartyData() const override;
-    const HashMap<RegistrableDomain, UniqueRef<WebCore::ResourceLoadStatistics>>& data() const { return m_resourceStatisticsMap; }
+    const HashMap<RegistrableDomain, UniqueRef<CyberCore::ResourceLoadStatistics>>& data() const { return m_resourceStatisticsMap; }
 
-    std::unique_ptr<WebCore::KeyedEncoder> createEncoderFromData() const;
-    void mergeWithDataFromDecoder(WebCore::KeyedDecoder&);
+    std::unique_ptr<CyberCore::KeyedEncoder> createEncoderFromData() const;
+    void mergeWithDataFromDecoder(CyberCore::KeyedDecoder&);
 
     void mergeStatistics(Vector<ResourceLoadStatistics>&&) override;
     void processStatistics(const Function<void(const ResourceLoadStatistics&)>&) const;
@@ -64,7 +64,7 @@ public:
 
     void classifyPrevalentResources() override;
 
-    void requestStorageAccessUnderOpener(DomainInNeedOfStorageAccess&&, WebCore::PageIdentifier, OpenerDomain&&) override;
+    void requestStorageAccessUnderOpener(DomainInNeedOfStorageAccess&&, CyberCore::PageIdentifier, OpenerDomain&&) override;
 
     void grandfatherDataForDomains(const HashSet<RegistrableDomain>&) override;
 
@@ -91,9 +91,9 @@ public:
 
     bool areAllThirdPartyCookiesBlockedUnder(const TopFrameDomain&) override;
     CookieAccess cookieAccess(const ResourceLoadStatistics&, const TopFrameDomain&);
-    void hasStorageAccess(SubFrameDomain&&, TopFrameDomain&&, std::optional<WebCore::FrameIdentifier>, WebCore::PageIdentifier, CompletionHandler<void(bool)>&&) override;
-    void requestStorageAccess(SubFrameDomain&&, TopFrameDomain&&, WebCore::FrameIdentifier, WebCore::PageIdentifier, WebCore::StorageAccessScope, CompletionHandler<void(StorageAccessStatus)>&&) override;
-    void grantStorageAccess(SubFrameDomain&&, TopFrameDomain&&, WebCore::FrameIdentifier, WebCore::PageIdentifier, WebCore::StorageAccessPromptWasShown, WebCore::StorageAccessScope, CompletionHandler<void(WebCore::StorageAccessWasGranted)>&&) override;
+    void hasStorageAccess(SubFrameDomain&&, TopFrameDomain&&, std::optional<CyberCore::FrameIdentifier>, CyberCore::PageIdentifier, CompletionHandler<void(bool)>&&) override;
+    void requestStorageAccess(SubFrameDomain&&, TopFrameDomain&&, CyberCore::FrameIdentifier, CyberCore::PageIdentifier, CyberCore::StorageAccessScope, CompletionHandler<void(StorageAccessStatus)>&&) override;
+    void grantStorageAccess(SubFrameDomain&&, TopFrameDomain&&, CyberCore::FrameIdentifier, CyberCore::PageIdentifier, CyberCore::StorageAccessPromptWasShown, CyberCore::StorageAccessScope, CompletionHandler<void(CyberCore::StorageAccessWasGranted)>&&) override;
 
     void logFrameNavigation(const NavigatedToDomain&, const TopFrameDomain&, const NavigatedFromDomain&, bool isRedirect, bool isMainFrame, Seconds delayAfterMainFrameDocumentLoad, bool wasPotentiallyInitiatedByUser) override;
     void logUserInteraction(const TopFrameDomain&, CompletionHandler<void()>&&) override;
@@ -118,7 +118,7 @@ private:
 
     static bool shouldBlockAndKeepCookies(const ResourceLoadStatistics&);
     static bool shouldBlockAndPurgeCookies(const ResourceLoadStatistics&);
-    static WebCore::StorageAccessPromptWasShown hasUserGrantedStorageAccessThroughPrompt(const ResourceLoadStatistics&, const RegistrableDomain&);
+    static CyberCore::StorageAccessPromptWasShown hasUserGrantedStorageAccessThroughPrompt(const ResourceLoadStatistics&, const RegistrableDomain&);
     bool hasHadUnexpiredRecentUserInteraction(ResourceLoadStatistics&, OperatingDatesWindow) const;
     bool shouldRemoveAllWebsiteDataFor(ResourceLoadStatistics&, bool shouldCheckForGrandfathering) const;
     bool shouldRemoveAllButCookiesFor(ResourceLoadStatistics&, bool shouldCheckForGrandfathering) const;
@@ -126,7 +126,7 @@ private:
     void incrementRecordsDeletedCountForDomains(HashSet<RegistrableDomain>&&) override;
     void setPrevalentResource(ResourceLoadStatistics&, ResourceLoadPrevalence);
     unsigned recursivelyGetAllDomainsThatHaveRedirectedToThisDomain(const ResourceLoadStatistics&, HashSet<RedirectedToDomain>&, unsigned numberOfRecursiveCalls) const;
-    void grantStorageAccessInternal(SubFrameDomain&&, TopFrameDomain&&, std::optional<WebCore::FrameIdentifier>, WebCore::PageIdentifier, WebCore::StorageAccessPromptWasShown, WebCore::StorageAccessScope, CompletionHandler<void(WebCore::StorageAccessWasGranted)>&&);
+    void grantStorageAccessInternal(SubFrameDomain&&, TopFrameDomain&&, std::optional<CyberCore::FrameIdentifier>, CyberCore::PageIdentifier, CyberCore::StorageAccessPromptWasShown, CyberCore::StorageAccessScope, CompletionHandler<void(CyberCore::StorageAccessWasGranted)>&&);
     void markAsPrevalentIfHasRedirectedToPrevalent(ResourceLoadStatistics&);
     bool isPrevalentDueToDebugMode(ResourceLoadStatistics&);
     Vector<RegistrableDomain> ensurePrevalentResourcesForDebugMode() override;

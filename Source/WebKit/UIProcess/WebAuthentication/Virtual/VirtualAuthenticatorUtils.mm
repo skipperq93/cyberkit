@@ -36,7 +36,7 @@
 #include <wtf/cocoa/VectorCocoa.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 uint8_t flagsForConfig(const VirtualAuthenticatorConfiguration& config)
 {

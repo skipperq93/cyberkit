@@ -68,22 +68,22 @@ enum class TapHandlingResult : uint8_t;
 - (void)_layerTreeCommitComplete;
 
 - (void)_couldNotRestorePageState;
-- (void)_restorePageScrollPosition:(std::optional<WebCore::FloatPoint>)scrollPosition scrollOrigin:(WebCore::FloatPoint)scrollOrigin previousObscuredInset:(WebCore::FloatBoxExtent)insets scale:(double)scale;
-- (void)_restorePageStateToUnobscuredCenter:(std::optional<WebCore::FloatPoint>)center scale:(double)scale; // FIXME: needs scroll origin?
+- (void)_restorePageScrollPosition:(std::optional<CyberCore::FloatPoint>)scrollPosition scrollOrigin:(CyberCore::FloatPoint)scrollOrigin previousObscuredInset:(CyberCore::FloatBoxExtent)insets scale:(double)scale;
+- (void)_restorePageStateToUnobscuredCenter:(std::optional<CyberCore::FloatPoint>)center scale:(double)scale; // FIXME: needs scroll origin?
 
 - (RefPtr<WebKit::ViewSnapshot>)_takeViewSnapshot;
 
-- (void)_scrollToContentScrollPosition:(WebCore::FloatPoint)scrollPosition scrollOrigin:(WebCore::IntPoint)scrollOrigin animated:(BOOL)animated;
-- (BOOL)_scrollToRect:(WebCore::FloatRect)targetRect origin:(WebCore::FloatPoint)origin minimumScrollDistance:(float)minimumScrollDistance;
+- (void)_scrollToContentScrollPosition:(CyberCore::FloatPoint)scrollPosition scrollOrigin:(CyberCore::IntPoint)scrollOrigin animated:(BOOL)animated;
+- (BOOL)_scrollToRect:(CyberCore::FloatRect)targetRect origin:(CyberCore::FloatPoint)origin minimumScrollDistance:(float)minimumScrollDistance;
 
 - (double)_initialScaleFactor;
 - (double)_contentZoomScale;
 
-- (double)_targetContentZoomScaleForRect:(const WebCore::FloatRect&)targetRect currentScale:(double)currentScale fitEntireRect:(BOOL)fitEntireRect minimumScale:(double)minimumScale maximumScale:(double)maximumScale;
-- (void)_zoomToFocusRect:(const WebCore::FloatRect&)focusedElementRect selectionRect:(const WebCore::FloatRect&)selectionRectInDocumentCoordinates fontSize:(float)fontSize minimumScale:(double)minimumScale maximumScale:(double)maximumScale allowScaling:(BOOL)allowScaling forceScroll:(BOOL)forceScroll;
-- (BOOL)_zoomToRect:(WebCore::FloatRect)targetRect withOrigin:(WebCore::FloatPoint)origin fitEntireRect:(BOOL)fitEntireRect minimumScale:(double)minimumScale maximumScale:(double)maximumScale minimumScrollDistance:(float)minimumScrollDistance;
-- (void)_zoomOutWithOrigin:(WebCore::FloatPoint)origin animated:(BOOL)animated;
-- (void)_zoomToInitialScaleWithOrigin:(WebCore::FloatPoint)origin animated:(BOOL)animated;
+- (double)_targetContentZoomScaleForRect:(const CyberCore::FloatRect&)targetRect currentScale:(double)currentScale fitEntireRect:(BOOL)fitEntireRect minimumScale:(double)minimumScale maximumScale:(double)maximumScale;
+- (void)_zoomToFocusRect:(const CyberCore::FloatRect&)focusedElementRect selectionRect:(const CyberCore::FloatRect&)selectionRectInDocumentCoordinates fontSize:(float)fontSize minimumScale:(double)minimumScale maximumScale:(double)maximumScale allowScaling:(BOOL)allowScaling forceScroll:(BOOL)forceScroll;
+- (BOOL)_zoomToRect:(CyberCore::FloatRect)targetRect withOrigin:(CyberCore::FloatPoint)origin fitEntireRect:(BOOL)fitEntireRect minimumScale:(double)minimumScale maximumScale:(double)maximumScale minimumScrollDistance:(float)minimumScrollDistance;
+- (void)_zoomOutWithOrigin:(CyberCore::FloatPoint)origin animated:(BOOL)animated;
+- (void)_zoomToInitialScaleWithOrigin:(CyberCore::FloatPoint)origin animated:(BOOL)animated;
 - (void)_didFinishScrolling:(UIScrollView *)scrollView;
 
 - (void)_setHasCustomContentView:(BOOL)hasCustomContentView loadedMIMEType:(const WTF::String&)mimeType;
@@ -149,7 +149,7 @@ enum class TapHandlingResult : uint8_t;
 - (void)_setOpaqueInternal:(BOOL)opaque;
 - (NSString *)_contentSizeCategory;
 - (void)_dispatchSetDeviceOrientation:(int32_t)deviceOrientation;
-- (WebCore::FloatSize)activeViewLayoutSize:(const CGRect&)bounds;
+- (CyberCore::FloatSize)activeViewLayoutSize:(const CGRect&)bounds;
 - (void)_updateScrollViewInsetAdjustmentBehavior;
 
 - (BOOL)_effectiveAppearanceIsDark;

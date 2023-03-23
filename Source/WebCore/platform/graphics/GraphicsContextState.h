@@ -31,7 +31,7 @@
 #include "WindRule.h"
 #include <wtf/OptionSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class GraphicsContextState {
     friend class GraphicsContextCairo;
@@ -298,35 +298,35 @@ std::optional<GraphicsContextState> GraphicsContextState::decode(Decoder& decode
 TextStream& operator<<(TextStream&, GraphicsContextState::Change);
 TextStream& operator<<(TextStream&, const GraphicsContextState&);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::GraphicsContextState::Change> {
+template<> struct EnumTraits<CyberCore::GraphicsContextState::Change> {
     using values = EnumValues<
-        WebCore::GraphicsContextState::Change,
-        WebCore::GraphicsContextState::Change::FillBrush,
-        WebCore::GraphicsContextState::Change::FillRule,
+        CyberCore::GraphicsContextState::Change,
+        CyberCore::GraphicsContextState::Change::FillBrush,
+        CyberCore::GraphicsContextState::Change::FillRule,
 
-        WebCore::GraphicsContextState::Change::StrokeBrush,
-        WebCore::GraphicsContextState::Change::StrokeThickness,
-        WebCore::GraphicsContextState::Change::StrokeStyle,
+        CyberCore::GraphicsContextState::Change::StrokeBrush,
+        CyberCore::GraphicsContextState::Change::StrokeThickness,
+        CyberCore::GraphicsContextState::Change::StrokeStyle,
 
-        WebCore::GraphicsContextState::Change::CompositeMode,
-        WebCore::GraphicsContextState::Change::DropShadow,
-        WebCore::GraphicsContextState::Change::Style,
+        CyberCore::GraphicsContextState::Change::CompositeMode,
+        CyberCore::GraphicsContextState::Change::DropShadow,
+        CyberCore::GraphicsContextState::Change::Style,
 
-        WebCore::GraphicsContextState::Change::Alpha,
-        WebCore::GraphicsContextState::Change::TextDrawingMode,
-        WebCore::GraphicsContextState::Change::ImageInterpolationQuality,
+        CyberCore::GraphicsContextState::Change::Alpha,
+        CyberCore::GraphicsContextState::Change::TextDrawingMode,
+        CyberCore::GraphicsContextState::Change::ImageInterpolationQuality,
 
-        WebCore::GraphicsContextState::Change::ShouldAntialias,
-        WebCore::GraphicsContextState::Change::ShouldSmoothFonts,
-        WebCore::GraphicsContextState::Change::ShouldSubpixelQuantizeFonts,
-        WebCore::GraphicsContextState::Change::ShadowsIgnoreTransforms,
-        WebCore::GraphicsContextState::Change::DrawLuminanceMask
+        CyberCore::GraphicsContextState::Change::ShouldAntialias,
+        CyberCore::GraphicsContextState::Change::ShouldSmoothFonts,
+        CyberCore::GraphicsContextState::Change::ShouldSubpixelQuantizeFonts,
+        CyberCore::GraphicsContextState::Change::ShadowsIgnoreTransforms,
+        CyberCore::GraphicsContextState::Change::DrawLuminanceMask
 #if HAVE(OS_DARK_MODE_SUPPORT)
-        , WebCore::GraphicsContextState::Change::UseDarkAppearance
+        , CyberCore::GraphicsContextState::Change::UseDarkAppearance
 #endif
     >;
 };

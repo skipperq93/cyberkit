@@ -30,17 +30,17 @@
 
 #pragma once
 
-class WebBroadcastChannelRegistry : public WebCore::BroadcastChannelRegistry, public CanMakeWeakPtr<WebBroadcastChannelRegistry> {
+class WebBroadcastChannelRegistry : public CyberCore::BroadcastChannelRegistry, public CanMakeWeakPtr<WebBroadcastChannelRegistry> {
 public:
     static Ref<WebBroadcastChannelRegistry> getOrCreate(bool privateSession);
 
-    void registerChannel(const WebCore::PartitionedSecurityOrigin&, const String& name, WebCore::BroadcastChannelIdentifier) final;
-    void unregisterChannel(const WebCore::PartitionedSecurityOrigin&, const String& name, WebCore::BroadcastChannelIdentifier) final;
-    void postMessage(const WebCore::PartitionedSecurityOrigin&, const String& name, WebCore::BroadcastChannelIdentifier source, Ref<WebCore::SerializedScriptValue>&&, CompletionHandler<void()>&&) final;
+    void registerChannel(const CyberCore::PartitionedSecurityOrigin&, const String& name, CyberCore::BroadcastChannelIdentifier) final;
+    void unregisterChannel(const CyberCore::PartitionedSecurityOrigin&, const String& name, CyberCore::BroadcastChannelIdentifier) final;
+    void postMessage(const CyberCore::PartitionedSecurityOrigin&, const String& name, CyberCore::BroadcastChannelIdentifier source, Ref<CyberCore::SerializedScriptValue>&&, CompletionHandler<void()>&&) final;
 
 private:
     WebBroadcastChannelRegistry() = default;
 
-    using NameToChannelIdentifiersMap = HashMap<String, Vector<WebCore::BroadcastChannelIdentifier>>;
-    HashMap<WebCore::PartitionedSecurityOrigin, NameToChannelIdentifiersMap> m_channels;
+    using NameToChannelIdentifiersMap = HashMap<String, Vector<CyberCore::BroadcastChannelIdentifier>>;
+    HashMap<CyberCore::PartitionedSecurityOrigin, NameToChannelIdentifiersMap> m_channels;
 };

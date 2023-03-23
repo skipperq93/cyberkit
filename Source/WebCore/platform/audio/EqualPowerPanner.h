@@ -27,7 +27,7 @@
 
 #include "Panner.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // Common type of stereo panner as found in normal audio mixing equipment.
 
@@ -48,6 +48,6 @@ private:
     void calculateDesiredGain(double& desiredGainL, double& desiredGainR, double azimuth, unsigned numberOfChannels);
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // EqualPowerPanner_h

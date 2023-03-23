@@ -32,7 +32,7 @@
 #include "SharedWorkerThreadProxy.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 SharedWorkerContextManager& SharedWorkerContextManager::singleton()
 {
@@ -149,4 +149,4 @@ void SharedWorkerContextManager::forEachSharedWorker(const Function<Function<voi
         worker->thread().runLoop().postTask(createTask());
 }
 
-} // namespace WebCore
+} // namespace CyberCore

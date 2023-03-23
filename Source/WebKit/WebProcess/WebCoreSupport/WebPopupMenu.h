@@ -27,19 +27,19 @@
 #include <wtf/Forward.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 class PopupMenuClient;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPage;
 struct PlatformPopupMenuData;
 struct WebPopupItem;
 
-class WebPopupMenu : public WebCore::PopupMenu {
+class WebPopupMenu : public CyberCore::PopupMenu {
 public:
-    static Ref<WebPopupMenu> create(WebPage*, WebCore::PopupMenuClient*);
+    static Ref<WebPopupMenu> create(WebPage*, CyberCore::PopupMenuClient*);
     ~WebPopupMenu();
 
     WebPage* page() { return m_page; }
@@ -48,24 +48,24 @@ public:
     void didChangeSelectedIndex(int newIndex);
     void setTextForIndex(int newIndex);
 #if PLATFORM(GTK)
-    WebCore::PopupMenuClient* client() const { return m_popupClient; }
+    CyberCore::PopupMenuClient* client() const { return m_popupClient; }
 #endif
 
-    void show(const WebCore::IntRect&, WebCore::FrameView*, int selectedIndex) override;
+    void show(const CyberCore::IntRect&, CyberCore::FrameView*, int selectedIndex) override;
     void hide() override;
     void updateFromElement() override;
     void disconnectClient() override;
 
 private:
-    WebPopupMenu(WebPage*, WebCore::PopupMenuClient*);
+    WebPopupMenu(WebPage*, CyberCore::PopupMenuClient*);
 
     Vector<WebPopupItem> populateItems();
-    void setUpPlatformData(const WebCore::IntRect& pageCoordinates, PlatformPopupMenuData&);
+    void setUpPlatformData(const CyberCore::IntRect& pageCoordinates, PlatformPopupMenuData&);
 
-    WebCore::PopupMenuClient* m_popupClient;
+    CyberCore::PopupMenuClient* m_popupClient;
     WebPage* m_page;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // WebPopupMenu_h

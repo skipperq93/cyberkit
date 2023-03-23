@@ -29,7 +29,7 @@
 #include <wtf/HashMap.h>
 #include <wtf/RetainPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
     
 enum class DateComponentsType : uint8_t;
 
@@ -68,4 +68,4 @@ private:
 // Singleton.
 LocalizedDateCache& localizedDateCache();
 
-} // namespace WebCore
+} // namespace CyberCore

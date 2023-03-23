@@ -39,7 +39,7 @@
 #include <wtf/Lock.h>
 #include <wtf/URLHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SerializedScriptValue;
 class ServiceWorkerGlobalScope;
@@ -72,7 +72,7 @@ public:
         using OpenWindowCallback = CompletionHandler<void(ExceptionOr<std::optional<ServiceWorkerClientData>>&&)>;
         virtual void openWindow(ServiceWorkerIdentifier, const URL&, OpenWindowCallback&&) = 0;
 
-        using NavigateCallback = CompletionHandler<void(ExceptionOr<std::optional<WebCore::ServiceWorkerClientData>>&&)>;
+        using NavigateCallback = CompletionHandler<void(ExceptionOr<std::optional<CyberCore::ServiceWorkerClientData>>&&)>;
         virtual void navigate(ScriptExecutionContextIdentifier, ServiceWorkerIdentifier, const URL&, NavigateCallback&&) = 0;
 
         virtual void didFailHeartBeatCheck(ServiceWorkerIdentifier) = 0;
@@ -146,6 +146,6 @@ private:
     HashMap<ServiceWorkerIdentifier, std::unique_ptr<ServiceWorkerTerminationRequest>> m_pendingServiceWorkerTerminationRequests;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

@@ -28,7 +28,7 @@
 #include <wtf/RetainPtr.h>
 #include <CoreGraphics/CGContext.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class GraphicsContextCGFlag : uint8_t {
     IsLayerCGContext        = 1 << 0,

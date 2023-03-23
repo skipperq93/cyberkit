@@ -30,7 +30,7 @@
 #include "StyleInvalidator.h"
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace Style {
 
 class PseudoClassChangeInvalidation {

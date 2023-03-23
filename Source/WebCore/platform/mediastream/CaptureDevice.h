@@ -28,7 +28,7 @@
 #include <wtf/NeverDestroyed.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CaptureDevice {
 public:
@@ -128,21 +128,21 @@ inline CaptureDevice CaptureDevice::isolatedCopy() &&
     };
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #if ENABLE(MEDIA_STREAM)
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::CaptureDevice::DeviceType> {
+template<> struct EnumTraits<CyberCore::CaptureDevice::DeviceType> {
     using values = EnumValues<
-        WebCore::CaptureDevice::DeviceType,
-        WebCore::CaptureDevice::DeviceType::Unknown,
-        WebCore::CaptureDevice::DeviceType::Microphone,
-        WebCore::CaptureDevice::DeviceType::Speaker,
-        WebCore::CaptureDevice::DeviceType::Camera,
-        WebCore::CaptureDevice::DeviceType::Screen,
-        WebCore::CaptureDevice::DeviceType::Window,
-        WebCore::CaptureDevice::DeviceType::SystemAudio
+        CyberCore::CaptureDevice::DeviceType,
+        CyberCore::CaptureDevice::DeviceType::Unknown,
+        CyberCore::CaptureDevice::DeviceType::Microphone,
+        CyberCore::CaptureDevice::DeviceType::Speaker,
+        CyberCore::CaptureDevice::DeviceType::Camera,
+        CyberCore::CaptureDevice::DeviceType::Screen,
+        CyberCore::CaptureDevice::DeviceType::Window,
+        CyberCore::CaptureDevice::DeviceType::SystemAudio
     >;
 };
 

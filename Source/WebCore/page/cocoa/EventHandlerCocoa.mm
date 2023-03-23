@@ -31,7 +31,7 @@
 
 #if PLATFORM(COCOA)
 
-namespace WebCore {
+namespace CyberCore {
 
 #if ENABLE(REVEAL)
 

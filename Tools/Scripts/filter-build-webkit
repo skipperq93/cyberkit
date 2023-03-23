@@ -196,7 +196,7 @@ sub main() {
         } elsif ($line =~ /python(\d\.\d+)? (\S+) (.+)/) {
             my ($command, $path) = (basename($2), basename($3));
             printLine("python $command $path", STYLE_PLAIN);
-        } elsif ($line =~ /^\/\S+?(strip|WebCoreExportFileGenerator) .*?(\/|\> )(\S+)/) {
+        } elsif ($line =~ /^\/\S+?(strip|CyberCoreExportFileGenerator) .*?(\/|\> )(\S+)/) {
             my ($command, $path) = (basename($1), basename($3));
             printLine("$command $path", STYLE_PLAIN);
         } elsif ($line =~ /^offlineasm\: /) {
@@ -223,10 +223,10 @@ sub main() {
             printLine("Generating bytecode list", STYLE_PLAIN);
         } elsif ($line =~ /^ruby JavaScriptCore\/b3\/air\/opcode_generator.rb JavaScriptCore\/b3\/air\/AirOpcode.opcodes$/) {
             printLine("Generating opcodes", STYLE_PLAIN);
-        } elsif ($line =~ /^.*ruby WebCore\/Scripts\/GenerateSettings.rb\s+.*\s+--template\s+.*(\/\S+).erb/) {
+        } elsif ($line =~ /^.*ruby CyberCore\/Scripts\/GenerateSettings.rb\s+.*\s+--template\s+.*(\/\S+).erb/) {
             my $path = basename($1);
             printLine("Generating settings $path", STYLE_PLAIN);
-        } elsif ($line =~ /^ruby "?WebCore\/domjit\/generate-abstract-heap.rb"? (\S+) (\S+)/) {
+        } elsif ($line =~ /^ruby "?CyberCore\/domjit\/generate-abstract-heap.rb"? (\S+) (\S+)/) {
             printLine("Generating abstract heap", STYLE_PLAIN);
         } elsif ($line =~ /^.*\/generate-inspector-protocol-bindings.py\s+--framework\s+(\S+).*(\/\S+).json/) {
             my $path = basename($2);
@@ -446,7 +446,7 @@ sub shouldIgnoreLine($$)
     return 1 if $line =~ /warning: \(.*\)  could not find object file symbol for symbol/;
 
     if ($platform eq "win") {
-        return 1 if $line =~ /^\s*(touch|perl|cat|rm -f|del|python|\/usr\/bin\/g\+\+|gperf|echo|sed|if \[ \-f|WebCore\/generate-export-file) /;
+        return 1 if $line =~ /^\s*(touch|perl|cat|rm -f|del|python|\/usr\/bin\/g\+\+|gperf|echo|sed|if \[ \-f|CyberCore\/generate-export-file) /;
         return 1 if $line =~ /^\s*(if not exist \"|if errorlevel 1)/;
         return 1 if $line =~ /(^\s*|MSB3073:\s+)(set |REM |cmd \/c)/;
         return 1 if $line =~ /^\s*[cC]:\\[pP]rogram [fF]iles.*\\.*\\(CL|midl)\.exe /;
@@ -464,7 +464,7 @@ sub shouldIgnoreLine($$)
         return 1 if $line =~ /MSB3073:\s+if not exist/;
         return 1 if $line =~ /which.exe bash/;
     } else {
-        return 1 if $line =~ /^(touch|perl|cat|rm -f|python|\/usr\/bin\/g\+\+|\/bin\/ln|gperf|echo|sed|if \[ \-f|WebCore\/generate-export-file|write-file|chmod) /;
+        return 1 if $line =~ /^(touch|perl|cat|rm -f|python|\/usr\/bin\/g\+\+|\/bin\/ln|gperf|echo|sed|if \[ \-f|CyberCore\/generate-export-file|write-file|chmod) /;
         return 1 if $line =~ /^    / && !shouldShowSubsequentLine($previousLine);
         return 1 if $line =~ /^printf /;
         return 1 if $line =~ /^offlineasm: Nothing changed/;

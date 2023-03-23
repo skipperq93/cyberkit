@@ -33,7 +33,7 @@
 #import "GraphicsContext.h"
 #import "LocalDefaultSystemAppearance.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 ButtonMac::ButtonMac(ButtonPart& owningPart, ControlFactoryMac& controlFactory, NSButtonCell *buttonCell)
     : ButtonControlMac(owningPart, controlFactory, buttonCell)
@@ -127,6 +127,6 @@ void ButtonMac::draw(GraphicsContext& context, const FloatRoundedRect& borderRec
     drawCell(context, inflatedRect, deviceScaleFactor, style, m_buttonCell.get(), true);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(MAC)

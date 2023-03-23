@@ -30,7 +30,7 @@
 #include "PlatformMediaResourceLoader.h"
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WebMResourceClientParent : public CanMakeWeakPtr<WebMResourceClientParent> {
 public:
@@ -63,6 +63,6 @@ private:
     SharedBufferBuilder m_buffer;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ALTERNATE_WEBM_PLAYER)

@@ -29,7 +29,7 @@
 #include <CyberScriptCore/Strong.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct StructuredSerializeOptions {
     StructuredSerializeOptions() = default;
@@ -40,4 +40,4 @@ struct StructuredSerializeOptions {
     Vector<JSC::Strong<JSC::JSObject>> transfer;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

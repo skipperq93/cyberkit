@@ -31,7 +31,7 @@
 #include "TextFlags.h"
 #include <pal/SessionID.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CachedResourceLoader;
 class FontCreationContext;
@@ -89,6 +89,6 @@ private:
     friend class MemoryCache;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CACHED_RESOURCE(CachedFont, CachedResource::Type::FontResource)

@@ -28,7 +28,7 @@
 
 #if USE(COORDINATED_GRAPHICS)
 
-namespace WebCore {
+namespace CyberCore {
 
 TextureMapperPlatformLayerProxy::TextureMapperPlatformLayerProxy() = default;
 TextureMapperPlatformLayerProxy::~TextureMapperPlatformLayerProxy() = default;
@@ -39,6 +39,6 @@ bool TextureMapperPlatformLayerProxy::isActive()
     return !!m_targetLayer && !!m_compositor;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(COORDINATED_GRAPHICS)

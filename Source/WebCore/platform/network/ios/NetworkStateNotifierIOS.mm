@@ -29,7 +29,7 @@
 #if PLATFORM(IOS_FAMILY)
 
 #import "DeprecatedGlobalSettings.h"
-#import "WebCoreThreadRun.h"
+#import "CyberCoreThreadRun.h"
 #import <wtf/BlockPtr.h>
 
 #if USE(APPLE_INTERNAL_SDK)
@@ -67,7 +67,7 @@
 
 @end
 
-namespace WebCore {
+namespace CyberCore {
 
 void NetworkStateNotifier::updateStateWithoutNotifying()
 {
@@ -85,6 +85,6 @@ void NetworkStateNotifier::startObserving()
     }]);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(IOS_FAMILY)

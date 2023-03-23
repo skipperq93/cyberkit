@@ -24,7 +24,7 @@
 #include "LayoutRect.h"
 #include <wtf/RefCounted.h>
 
-namespace WebCore
+namespace CyberCore
 {
 // RenderOverflow is a class for tracking content that spills out of a box.  This class is used by RenderBox and
 // LegacyInlineFlowBox.
@@ -107,4 +107,4 @@ inline void RenderOverflow::setVisualOverflow(const LayoutRect& rect)
     m_visualOverflow = rect;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

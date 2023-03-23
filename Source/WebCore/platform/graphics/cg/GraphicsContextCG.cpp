@@ -48,7 +48,7 @@
 #include <wtf/URL.h>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static void setCGFillColor(CGContextRef context, const Color& color)
 {

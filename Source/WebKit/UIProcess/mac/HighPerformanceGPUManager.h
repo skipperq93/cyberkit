@@ -51,7 +51,7 @@ private:
 
     WeakHashSet<WebProcessProxy> m_processesRequiringHighPerformance;
     CGLPixelFormatObj m_pixelFormatObj { nullptr };
-    WebCore::Timer m_updateStateTimer;
+    CyberCore::Timer m_updateStateTimer;
 };
 
 }

@@ -23,25 +23,25 @@
 messages -> NetworkProcessConnection LegacyReceiver {
 
 #if ENABLE(SHAREABLE_RESOURCE)
-    DidCacheResource(WebCore::ResourceRequest request, WebKit::ShareableResource::Handle resource)
+    DidCacheResource(CyberCore::ResourceRequest request, CyberKit::ShareableResource::Handle resource)
 #endif
 
-    DidFinishPingLoad(WebCore::ResourceLoaderIdentifier pingLoadIdentifier, WebCore::ResourceError error, WebCore::ResourceResponse response)
-    DidFinishPreconnection(WebCore::ResourceLoaderIdentifier preconnectionIdentifier, WebCore::ResourceError error)
+    DidFinishPingLoad(CyberCore::ResourceLoaderIdentifier pingLoadIdentifier, CyberCore::ResourceError error, CyberCore::ResourceResponse response)
+    DidFinishPreconnection(CyberCore::ResourceLoaderIdentifier preconnectionIdentifier, CyberCore::ResourceError error)
     SetOnLineState(bool isOnLine);
-    CookieAcceptPolicyChanged(enum:uint8_t WebCore::HTTPCookieAcceptPolicy policy);
+    CookieAcceptPolicyChanged(enum:uint8_t CyberCore::HTTPCookieAcceptPolicy policy);
 
 #if HAVE(COOKIE_CHANGE_LISTENER_API)
-    CookiesAdded(String host, Vector<WebCore::Cookie> cookies);
-    CookiesDeleted(String host, Vector<WebCore::Cookie> cookies);
+    CookiesAdded(String host, Vector<CyberCore::Cookie> cookies);
+    CookiesDeleted(String host, Vector<CyberCore::Cookie> cookies);
     AllCookiesDeleted();
 #endif
 
 #if ENABLE(WEB_RTC)
-    ConnectToRTCDataChannelRemoteSource(struct WebCore::RTCDataChannelIdentifier source, struct WebCore::RTCDataChannelIdentifier handler) -> (std::optional<bool> result)
+    ConnectToRTCDataChannelRemoteSource(struct CyberCore::RTCDataChannelIdentifier source, struct CyberCore::RTCDataChannelIdentifier handler) -> (std::optional<bool> result)
 #endif
 
-    MessagesAvailableForPort(struct WebCore::MessagePortIdentifier port)
+    MessagesAvailableForPort(struct CyberCore::MessagePortIdentifier port)
 
     BroadcastConsoleMessage(enum:uint8_t JSC::MessageSource messageSource, enum:uint8_t JSC::MessageLevel messageLevel, String message)
 }

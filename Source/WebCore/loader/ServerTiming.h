@@ -27,7 +27,7 @@
 
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ServerTiming {
     String name;
@@ -67,4 +67,4 @@ inline ServerTiming::ServerTiming(String&& name, double duration, String&& descr
 {
 }
 
-} // namespace WebCore
+} // namespace CyberCore

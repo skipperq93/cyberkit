@@ -32,11 +32,11 @@
 #include "XRDeviceProxy.h"
 #include <CyberCore/PlatformXR.h>
 
-namespace WebCore {
+namespace CyberCore {
 class SecurityOriginData;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPage;
 
@@ -46,8 +46,8 @@ public:
     virtual ~PlatformXRSystemProxy();
 
     void enumerateImmersiveXRDevices(CompletionHandler<void(const PlatformXR::Instance::DeviceList&)>&&);
-    void requestPermissionOnSessionFeatures(const WebCore::SecurityOriginData&, PlatformXR::SessionMode, const PlatformXR::Device::FeatureList& /* granted */, const PlatformXR::Device::FeatureList& /* consentRequired */, const PlatformXR::Device::FeatureList& /* consentOptional */, CompletionHandler<void(std::optional<PlatformXR::Device::FeatureList>&&)>&&);
-    void initializeTrackingAndRendering(const WebCore::SecurityOriginData&, PlatformXR::SessionMode, const PlatformXR::Device::FeatureList&);
+    void requestPermissionOnSessionFeatures(const CyberCore::SecurityOriginData&, PlatformXR::SessionMode, const PlatformXR::Device::FeatureList& /* granted */, const PlatformXR::Device::FeatureList& /* consentRequired */, const PlatformXR::Device::FeatureList& /* consentOptional */, CompletionHandler<void(std::optional<PlatformXR::Device::FeatureList>&&)>&&);
+    void initializeTrackingAndRendering(const CyberCore::SecurityOriginData&, PlatformXR::SessionMode, const PlatformXR::Device::FeatureList&);
     void shutDownTrackingAndRendering();
     void requestFrame(PlatformXR::Device::RequestFrameCallback&&);
     std::optional<PlatformXR::LayerHandle> createLayerProjection(uint32_t, uint32_t, bool);

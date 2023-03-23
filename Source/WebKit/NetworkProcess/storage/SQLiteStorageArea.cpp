@@ -62,7 +62,7 @@ ASCIILiteral SQLiteStorageArea::statementString(StatementType type) const
     return ""_s;
 }
 
-SQLiteStorageArea::SQLiteStorageArea(unsigned quota, const WebCore::ClientOrigin& origin, const String& path, Ref<WorkQueue>&& workQueue)
+SQLiteStorageArea::SQLiteStorageArea(unsigned quota, const CyberCore::ClientOrigin& origin, const String& path, Ref<WorkQueue>&& workQueue)
     : StorageAreaBase(quota, origin)
     , m_path(path)
     , m_queue(WTFMove(workQueue))
@@ -90,7 +90,7 @@ SQLiteStorageArea::~SQLiteStorageArea()
     bool databaseIsEmpty = isEmpty();
     close();
     if (databaseIsEmpty)
-        WebCore::SQLiteFileSystem::deleteDatabaseFile(m_path);
+        CyberCore::SQLiteFileSystem::deleteDatabaseFile(m_path);
 }
 
 bool SQLiteStorageArea::isEmpty()
@@ -120,7 +120,7 @@ void SQLiteStorageArea::clear()
     ASSERT(!isMainRunLoop());
 
     close();
-    WebCore::SQLiteFileSystem::deleteDatabaseFile(m_path);
+    CyberCore::SQLiteFileSystem::deleteDatabaseFile(m_path);
     notifyListenersAboutClear();
 }
 
@@ -160,7 +160,7 @@ bool SQLiteStorageArea::prepareDatabase(ShouldCreateIfNotExists shouldCreateIfNo
     if (shouldCreateIfNotExists == ShouldCreateIfNotExists::No && !databaseExists)
         return true;
 
-    m_database = makeUnique<WebCore::SQLiteDatabase>();
+    m_database = makeUnique<CyberCore::SQLiteDatabase>();
     FileSystem::makeAllDirectories(FileSystem::parentPath(m_path));
     auto openResult  = m_database->open(m_path);
     if (!openResult && handleDatabaseCorruptionIfNeeded(m_database->lastError())) {
@@ -196,7 +196,7 @@ void SQLiteStorageArea::startTransactionIfNecessary()
     ASSERT(m_database);
 
     if (!m_transaction || m_transaction->wasRolledBackBySqlite())
-        m_transaction = makeUnique<WebCore::SQLiteTransaction>(*m_database);
+        m_transaction = makeUnique<CyberCore::SQLiteTransaction>(*m_database);
 
     if (m_transaction->inProgress())
         return;
@@ -208,7 +208,7 @@ void SQLiteStorageArea::startTransactionIfNecessary()
     });
 }
 
-WebCore::SQLiteStatementAutoResetScope SQLiteStorageArea::cachedStatement(StatementType type)
+CyberCore::SQLiteStatementAutoResetScope SQLiteStorageArea::cachedStatement(StatementType type)
 {
     ASSERT(m_database);
     ASSERT(type < StatementType::Invalid);
@@ -219,7 +219,7 @@ WebCore::SQLiteStatementAutoResetScope SQLiteStorageArea::cachedStatement(Statem
             m_cachedStatements[index] = result.value().moveToUniquePtr();
     }
 
-    return WebCore::SQLiteStatementAutoResetScope { m_cachedStatements[index].get() };
+    return CyberCore::SQLiteStatementAutoResetScope { m_cachedStatements[index].get() };
 }
 
 Expected<String, StorageError> SQLiteStorageArea::getItem(const String& key)
@@ -452,7 +452,7 @@ bool SQLiteStorageArea::handleDatabaseCorruptionIfNeeded(int databaseError)
     m_cache = std::nullopt;
     m_cacheSize = std::nullopt;
     RELEASE_LOG(Storage, "SQLiteStorageArea::handleDatabaseCorruption deletes corrupted database file '%s'", m_path.utf8().data());
-    WebCore::SQLiteFileSystem::deleteDatabaseFile(m_path);
+    CyberCore::SQLiteFileSystem::deleteDatabaseFile(m_path);
     return true;
 }
 

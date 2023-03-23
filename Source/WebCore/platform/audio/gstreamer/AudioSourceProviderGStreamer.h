@@ -38,7 +38,7 @@
 typedef struct _GstAdapter GstAdapter;
 typedef struct _GstAppSink GstAppSink;
 
-namespace WebCore {
+namespace CyberCore {
 
 #if ENABLE(MEDIA_STREAM)
 class AudioSourceProviderGStreamer final : public WebAudioSourceProvider {

@@ -38,11 +38,11 @@
 #include <wtf/Function.h>
 #include <wtf/MainThread.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 LibWebRTCSocket::LibWebRTCSocket(LibWebRTCSocketFactory& factory, const void* socketGroup, Type type, const rtc::SocketAddress& localAddress, const rtc::SocketAddress& remoteAddress)
     : m_factory(factory)
-    , m_identifier(WebCore::LibWebRTCSocketIdentifier::generate())
+    , m_identifier(CyberCore::LibWebRTCSocketIdentifier::generate())
     , m_type(type)
     , m_localAddress(localAddress)
     , m_remoteAddress(remoteAddress)
@@ -187,6 +187,6 @@ void LibWebRTCSocket::suspend()
         connection->send(Messages::NetworkRTCProvider::CloseSocket { m_identifier }, 0);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(LIBWEBRTC)

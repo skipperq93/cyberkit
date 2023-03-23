@@ -23,7 +23,7 @@
 
 #include "RoundedRect.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HitTestLocation {
 public:
@@ -75,4 +75,4 @@ private:
     bool m_isRectilinear { true };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

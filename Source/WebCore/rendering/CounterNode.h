@@ -34,7 +34,7 @@
 
 // Not that render tree children are often counter tree siblings due to counter scoping rules.
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderCounter;
 class RenderElement;
@@ -89,9 +89,9 @@ private:
     CheckedPtr<CounterNode> m_lastChild;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #if ENABLE(TREE_DEBUGGING)
-// Outside the WebCore namespace for ease of invocation from the debugger.
-void showCounterTree(const WebCore::CounterNode*);
+// Outside the CyberCore namespace for ease of invocation from the debugger.
+void showCounterTree(const CyberCore::CounterNode*);
 #endif

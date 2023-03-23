@@ -27,7 +27,7 @@
 
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class Element;
@@ -58,4 +58,4 @@ public:
     virtual void documentDetached(Document&) = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

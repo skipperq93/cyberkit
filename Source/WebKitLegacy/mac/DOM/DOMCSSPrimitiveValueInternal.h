@@ -25,8 +25,8 @@
 
 #import <CyberKitLegacy/DOMCSSPrimitiveValue.h>
 
-namespace WebCore {
+namespace CyberCore {
 class DeprecatedCSSOMPrimitiveValue;
 }
 
-DOMCSSPrimitiveValue *kit(WebCore::DeprecatedCSSOMPrimitiveValue*);
+DOMCSSPrimitiveValue *kit(CyberCore::DeprecatedCSSOMPrimitiveValue*);

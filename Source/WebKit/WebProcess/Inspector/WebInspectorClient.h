@@ -29,19 +29,19 @@
 #include <CyberCore/PageOverlay.h>
 #include <wtf/HashSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 class GraphicsContext;
 class GraphicsLayer;
 class IntRect;
 class PageOverlay;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPage;
 class RepaintIndicatorLayerClient;
 
-class WebInspectorClient : public WebCore::InspectorClient, private WebCore::PageOverlay::Client {
+class WebInspectorClient : public CyberCore::InspectorClient, private CyberCore::PageOverlay::Client {
     WTF_MAKE_FAST_ALLOCATED;
 friend class RepaintIndicatorLayerClient;
 public:
@@ -49,13 +49,13 @@ public:
     virtual ~WebInspectorClient();
 
 private:
-    // WebCore::InspectorClient
+    // CyberCore::InspectorClient
     void inspectedPageDestroyed() override;
     void frontendCountChanged(unsigned) override;
 
-    Inspector::FrontendChannel* openLocalFrontend(WebCore::InspectorController*) override;
+    Inspector::FrontendChannel* openLocalFrontend(CyberCore::InspectorController*) override;
     void bringFrontendToFront() override;
-    void didResizeMainFrame(WebCore::Frame*) override;
+    void didResizeMainFrame(CyberCore::Frame*) override;
 
     void highlight() override;
     void hideHighlight() override;
@@ -71,28 +71,28 @@ private:
     void timelineRecordingChanged(bool) override;
 
     bool overridesShowPaintRects() const override { return true; }
-    void showPaintRect(const WebCore::FloatRect&) override;
+    void showPaintRect(const CyberCore::FloatRect&) override;
     unsigned paintRectCount() const override { return m_paintRectLayers.size(); }
 
-    void setDeveloperPreferenceOverride(WebCore::InspectorClient::DeveloperPreference, std::optional<bool>) final;
+    void setDeveloperPreferenceOverride(CyberCore::InspectorClient::DeveloperPreference, std::optional<bool>) final;
 #if ENABLE(INSPECTOR_NETWORK_THROTTLING)
     bool setEmulatedConditions(std::optional<int64_t>&& bytesPerSecondLimit) final;
 #endif
 
     // PageOverlay::Client
-    void willMoveToPage(WebCore::PageOverlay&, WebCore::Page*) override;
-    void didMoveToPage(WebCore::PageOverlay&, WebCore::Page*) override;
-    void drawRect(WebCore::PageOverlay&, WebCore::GraphicsContext&, const WebCore::IntRect&) override;
-    bool mouseEvent(WebCore::PageOverlay&, const WebCore::PlatformMouseEvent&) override;
+    void willMoveToPage(CyberCore::PageOverlay&, CyberCore::Page*) override;
+    void didMoveToPage(CyberCore::PageOverlay&, CyberCore::Page*) override;
+    void drawRect(CyberCore::PageOverlay&, CyberCore::GraphicsContext&, const CyberCore::IntRect&) override;
+    bool mouseEvent(CyberCore::PageOverlay&, const CyberCore::PlatformMouseEvent&) override;
 
-    void animationEndedForLayer(const WebCore::GraphicsLayer*);
+    void animationEndedForLayer(const CyberCore::GraphicsLayer*);
 
     WebPage* m_page;
-    WebCore::PageOverlay* m_highlightOverlay;
+    CyberCore::PageOverlay* m_highlightOverlay;
     
-    RefPtr<WebCore::PageOverlay> m_paintRectOverlay;
+    RefPtr<CyberCore::PageOverlay> m_paintRectOverlay;
     std::unique_ptr<RepaintIndicatorLayerClient> m_paintIndicatorLayerClient;
-    HashSet<Ref<WebCore::GraphicsLayer>> m_paintRectLayers;
+    HashSet<Ref<CyberCore::GraphicsLayer>> m_paintRectLayers;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

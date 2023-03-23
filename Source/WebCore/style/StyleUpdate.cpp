@@ -34,7 +34,7 @@
 #include "SVGElement.h"
 #include "Text.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace Style {
 
 Update::Update(Document& document)

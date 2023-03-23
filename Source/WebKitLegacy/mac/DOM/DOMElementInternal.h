@@ -25,9 +25,9 @@
 
 #import <CyberKitLegacy/DOMElement.h>
 
-namespace WebCore {
+namespace CyberCore {
 class Element;
 }
 
-WebCore::Element* core(DOMElement *);
-DOMElement *kit(WebCore::Element*);
+CyberCore::Element* core(DOMElement *);
+DOMElement *kit(CyberCore::Element*);

@@ -25,7 +25,7 @@
 #include "SVGResources.h"
 #include "SVGResourcesCycleSolver.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 SVGResourcesCache::SVGResourcesCache() = default;
 

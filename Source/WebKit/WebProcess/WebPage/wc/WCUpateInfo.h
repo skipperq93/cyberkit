@@ -29,20 +29,20 @@
 
 #include "WCBackingStore.h"
 #include "WCContentBufferIdentifier.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include <CyberCore/GraphicsLayer.h>
 #include <CyberCore/TextureMapperSparseBackingStore.h>
 #include <optional>
 #include <wtf/EnumTraits.h>
 #include <wtf/OptionSet.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 struct WCTileUpdate {
-    WebCore::TextureMapperSparseBackingStore::TileIndex index;
+    CyberCore::TextureMapperSparseBackingStore::TileIndex index;
     bool willRemove { false };
     WCBackingStore backingStore;
-    WebCore::IntRect dirtyRect;
+    CyberCore::IntRect dirtyRect;
 
     template<class Encoder>
     void encode(Encoder& encoder) const
@@ -94,15 +94,15 @@ enum class WCLayerChange : uint32_t {
 };
 
 struct WCLayerUpateInfo {
-    WebCore::GraphicsLayer::PlatformLayerID id;
+    CyberCore::GraphicsLayer::PlatformLayerID id;
     OptionSet<WCLayerChange> changes;
-    Vector<WebCore::GraphicsLayer::PlatformLayerID> children;
-    std::optional<WebCore::GraphicsLayer::PlatformLayerID> maskLayer;
-    std::optional<WebCore::GraphicsLayer::PlatformLayerID> replicaLayer;
-    WebCore::FloatPoint position;
-    WebCore::FloatPoint3D anchorPoint;
-    WebCore::FloatSize size;
-    WebCore::FloatPoint boundsOrigin;
+    Vector<CyberCore::GraphicsLayer::PlatformLayerID> children;
+    std::optional<CyberCore::GraphicsLayer::PlatformLayerID> maskLayer;
+    std::optional<CyberCore::GraphicsLayer::PlatformLayerID> replicaLayer;
+    CyberCore::FloatPoint position;
+    CyberCore::FloatPoint3D anchorPoint;
+    CyberCore::FloatSize size;
+    CyberCore::FloatPoint boundsOrigin;
     bool masksToBounds;
     bool contentsRectClipsDescendants;
     bool showDebugBorder;
@@ -112,19 +112,19 @@ struct WCLayerUpateInfo {
     bool preserves3D;
     bool hasPlatformLayer;
     bool hasBackingStore;
-    WebCore::Color solidColor;
-    WebCore::Color backgroundColor;
-    WebCore::Color debugBorderColor;
+    CyberCore::Color solidColor;
+    CyberCore::Color backgroundColor;
+    CyberCore::Color debugBorderColor;
     float opacity;
     float debugBorderWidth;
     int repaintCount;
-    WebCore::FloatRect contentsRect;
-    WebCore::TransformationMatrix transform;
-    WebCore::TransformationMatrix childrenTransform;
-    WebCore::FilterOperations filters;
-    WebCore::FilterOperations backdropFilters;
-    WebCore::FloatRoundedRect backdropFiltersRect;
-    WebCore::FloatRoundedRect contentsClippingRect;
+    CyberCore::FloatRect contentsRect;
+    CyberCore::TransformationMatrix transform;
+    CyberCore::TransformationMatrix childrenTransform;
+    CyberCore::FilterOperations filters;
+    CyberCore::FilterOperations backdropFilters;
+    CyberCore::FloatRoundedRect backdropFiltersRect;
+    CyberCore::FloatRoundedRect contentsClippingRect;
     Vector<WCTileUpdate> tileUpdate;
     Vector<WCContentBufferIdentifier> contentBufferIdentifiers;
 
@@ -291,9 +291,9 @@ struct WCLayerUpateInfo {
 };
 
 struct WCUpateInfo {
-    WebCore::GraphicsLayer::PlatformLayerID rootLayer;
-    Vector<WebCore::GraphicsLayer::PlatformLayerID> addedLayers;
-    Vector<WebCore::GraphicsLayer::PlatformLayerID> removedLayers;
+    CyberCore::GraphicsLayer::PlatformLayerID rootLayer;
+    Vector<CyberCore::GraphicsLayer::PlatformLayerID> addedLayers;
+    Vector<CyberCore::GraphicsLayer::PlatformLayerID> removedLayers;
     Vector<WCLayerUpateInfo> changedLayers;
 
     template<class Encoder>
@@ -320,36 +320,36 @@ struct WCUpateInfo {
     }
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 namespace WTF {
 
-template<> struct EnumTraits<WebKit::WCLayerChange> {
+template<> struct EnumTraits<CyberKit::WCLayerChange> {
     using values = EnumValues<
-        WebKit::WCLayerChange,
-        WebKit::WCLayerChange::Children,
-        WebKit::WCLayerChange::MaskLayer,
-        WebKit::WCLayerChange::ReplicaLayer,
-        WebKit::WCLayerChange::Geometry,
-        WebKit::WCLayerChange::Preserves3D,
-        WebKit::WCLayerChange::ContentsVisible,
-        WebKit::WCLayerChange::BackfaceVisibility,
-        WebKit::WCLayerChange::MasksToBounds,
-        WebKit::WCLayerChange::SolidColor,
-        WebKit::WCLayerChange::DebugVisuals,
-        WebKit::WCLayerChange::RepaintCount,
-        WebKit::WCLayerChange::ContentsRect,
-        WebKit::WCLayerChange::ContentsClippingRect,
-        WebKit::WCLayerChange::Opacity,
-        WebKit::WCLayerChange::Background,
-        WebKit::WCLayerChange::Transform,
-        WebKit::WCLayerChange::ChildrenTransform,
-        WebKit::WCLayerChange::Filters,
-        WebKit::WCLayerChange::BackdropFilters,
-        WebKit::WCLayerChange::PlatformLayer
+        CyberKit::WCLayerChange,
+        CyberKit::WCLayerChange::Children,
+        CyberKit::WCLayerChange::MaskLayer,
+        CyberKit::WCLayerChange::ReplicaLayer,
+        CyberKit::WCLayerChange::Geometry,
+        CyberKit::WCLayerChange::Preserves3D,
+        CyberKit::WCLayerChange::ContentsVisible,
+        CyberKit::WCLayerChange::BackfaceVisibility,
+        CyberKit::WCLayerChange::MasksToBounds,
+        CyberKit::WCLayerChange::SolidColor,
+        CyberKit::WCLayerChange::DebugVisuals,
+        CyberKit::WCLayerChange::RepaintCount,
+        CyberKit::WCLayerChange::ContentsRect,
+        CyberKit::WCLayerChange::ContentsClippingRect,
+        CyberKit::WCLayerChange::Opacity,
+        CyberKit::WCLayerChange::Background,
+        CyberKit::WCLayerChange::Transform,
+        CyberKit::WCLayerChange::ChildrenTransform,
+        CyberKit::WCLayerChange::Filters,
+        CyberKit::WCLayerChange::BackdropFilters,
+        CyberKit::WCLayerChange::PlatformLayer
     >;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(GRAPHICS_LAYER_WC)

@@ -33,7 +33,7 @@
 #import "Decoder.h"
 #import "Encoder.h"
 #import "Logging.h"
-#import "WebCoreArgumentCoders.h"
+#import "CyberCoreArgumentCoders.h"
 #import <string.h>
 #import <wtf/FileSystem.h>
 #import <wtf/spi/darwin/SandboxSPI.h>

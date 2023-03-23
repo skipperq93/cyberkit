@@ -36,7 +36,7 @@
 #import "ScrollingTreeOverflowScrollingNodeMac.h"
 #import "ScrollingTreePositionedNodeCocoa.h"
 #import "ScrollingTreeStickyNodeCocoa.h"
-#import "WebCoreCALayerExtras.h"
+#import "CyberCoreCALayerExtras.h"
 #import "WebLayer.h"
 #import "WheelEventTestMonitor.h"
 #import <pal/spi/cocoa/QuartzCoreSPI.h>
@@ -44,7 +44,7 @@
 
 #if ENABLE(ASYNC_SCROLLING) && ENABLE(SCROLLING_THREAD)
 
-using namespace WebCore;
+using namespace CyberCore;
 
 Ref<ScrollingTreeMac> ScrollingTreeMac::create(AsyncScrollingCoordinator& scrollingCoordinator)
 {

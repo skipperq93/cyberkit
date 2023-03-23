@@ -30,7 +30,7 @@
 #include "ServerTiming.h"
 #include <wtf/URL.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CachedResource;
 class PerformanceServerTiming;
@@ -79,4 +79,4 @@ private:
     bool m_isSameOriginRequest { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

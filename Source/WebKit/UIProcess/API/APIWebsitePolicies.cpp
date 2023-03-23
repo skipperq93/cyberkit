@@ -60,7 +60,7 @@ Ref<WebsitePolicies> WebsitePolicies::copy() const
     policies->setUserContentController(m_userContentController.get());
     policies->setNetworkConnectionIntegrityPolicy(m_networkConnectionIntegrityPolicy);
     policies->setIdempotentModeAutosizingOnlyHonorsPercentages(m_idempotentModeAutosizingOnlyHonorsPercentages);
-    policies->setCustomHeaderFields(Vector<WebCore::CustomHeaderFields> { m_customHeaderFields });
+    policies->setCustomHeaderFields(Vector<CyberCore::CustomHeaderFields> { m_customHeaderFields });
     policies->setAllowSiteSpecificQuirksToOverrideContentMode(m_allowSiteSpecificQuirksToOverrideContentMode);
     policies->setApplicationNameForDesktopUserAgent(m_applicationNameForDesktopUserAgent);
     policies->setAllowsContentJavaScript(m_allowsContentJavaScript);
@@ -86,7 +86,7 @@ void WebsitePolicies::setUserContentController(RefPtr<WebKit::WebUserContentCont
 
 WebKit::WebsitePoliciesData WebsitePolicies::data()
 {
-    Vector<WebCore::CustomHeaderFields> customHeaderFields;
+    Vector<CyberCore::CustomHeaderFields> customHeaderFields;
     customHeaderFields.reserveInitialCapacity(this->customHeaderFields().size());
     customHeaderFields.appendVector(this->customHeaderFields());
 

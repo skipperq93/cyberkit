@@ -35,7 +35,7 @@
 #include <wtf/text/StringConcatenateNumbers.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 static const char separator = '\t';
 

@@ -44,7 +44,7 @@
 
 namespace WebKit {
 
-// FIXME: This is a huge copy/paste from WebCore/PlatformEventFactoryMac.mm. The code should be merged.
+// FIXME: This is a huge copy/paste from CyberCore/PlatformEventFactoryMac.mm. The code should be merged.
 
 static WebMouseEventButton currentMouseButton()
 {
@@ -145,7 +145,7 @@ static NSPoint globalPointForEvent(NSEvent *event)
     case NSEventTypeRightMouseUp:
     case NSEventTypeRightMouseDragged:
     case NSEventTypeScrollWheel:
-        return WebCore::globalPoint([event locationInWindow], [event window]);
+        return CyberCore::globalPoint([event locationInWindow], [event window]);
     default:
         return NSZeroPoint;
     }
@@ -309,7 +309,7 @@ static int typeForEvent(NSEvent *event)
     return static_cast<int>([NSMenu menuTypeForEvent:event]);
 }
 
-bool WebEventFactory::shouldBeHandledAsContextClick(const WebCore::PlatformMouseEvent& event)
+bool WebEventFactory::shouldBeHandledAsContextClick(const CyberCore::PlatformMouseEvent& event)
 {
     return (static_cast<NSMenuType>(event.menuTypeForEvent()) == NSMenuTypeContextMenu);
 }
@@ -338,7 +338,7 @@ WebMouseEvent WebEventFactory::createWebMouseEvent(NSEvent *event, NSEvent *last
     float deltaZ = [event deltaZ];
     int clickCount = clickCountForEvent(event);
     auto modifiers = webEventModifiersForNSEventModifierFlags(event.modifierFlags);
-    auto timestamp = WebCore::eventTimeStampSince1970(event.timestamp);
+    auto timestamp = CyberCore::eventTimeStampSince1970(event.timestamp);
     int eventNumber = [event eventNumber];
     int menuTypeForEvent = typeForEvent(event);
 
@@ -346,7 +346,7 @@ WebMouseEvent WebEventFactory::createWebMouseEvent(NSEvent *event, NSEvent *last
     double pressure = [event type] == NSEventTypePressure ? event.pressure : lastPressureEvent.pressure;
     double force = pressure + stage;
 
-    return WebMouseEvent({ type, modifiers, timestamp }, button, buttons, WebCore::IntPoint(position), WebCore::IntPoint(globalPosition), deltaX, deltaY, deltaZ, clickCount, force, WebMouseEventSyntheticClickType::NoTap, eventNumber, menuTypeForEvent);
+    return WebMouseEvent({ type, modifiers, timestamp }, button, buttons, CyberCore::IntPoint(position), CyberCore::IntPoint(globalPosition), deltaX, deltaY, deltaZ, clickCount, force, WebMouseEventSyntheticClickType::NoTap, eventNumber, menuTypeForEvent);
 }
 
 WebWheelEvent WebEventFactory::createWebWheelEvent(NSEvent *event, NSView *windowView)
@@ -360,18 +360,18 @@ WebWheelEvent WebEventFactory::createWebWheelEvent(NSEvent *event, NSView *windo
     float wheelTicksX = 0;
     float wheelTicksY = 0;
 
-    WebCore::getWheelEventDeltas(event, deltaX, deltaY, continuous);
+    CyberCore::getWheelEventDeltas(event, deltaX, deltaY, continuous);
     
     if (continuous) {
         // smooth scroll events
-        wheelTicksX = deltaX / static_cast<float>(WebCore::Scrollbar::pixelsPerLineStep());
-        wheelTicksY = deltaY / static_cast<float>(WebCore::Scrollbar::pixelsPerLineStep());
+        wheelTicksX = deltaX / static_cast<float>(CyberCore::Scrollbar::pixelsPerLineStep());
+        wheelTicksY = deltaY / static_cast<float>(CyberCore::Scrollbar::pixelsPerLineStep());
     } else {
         // plain old wheel events
         wheelTicksX = deltaX;
         wheelTicksY = deltaY;
-        deltaX *= static_cast<float>(WebCore::Scrollbar::pixelsPerLineStep());
-        deltaY *= static_cast<float>(WebCore::Scrollbar::pixelsPerLineStep());
+        deltaX *= static_cast<float>(CyberCore::Scrollbar::pixelsPerLineStep());
+        deltaY *= static_cast<float>(CyberCore::Scrollbar::pixelsPerLineStep());
     }
 
     WebWheelEvent::Granularity granularity  = WebWheelEvent::ScrollByPixelWheelEvent;
@@ -381,22 +381,22 @@ WebWheelEvent WebEventFactory::createWebWheelEvent(NSEvent *event, NSView *windo
     bool hasPreciseScrollingDeltas          = continuous;
 
     uint32_t scrollCount;
-    WebCore::FloatSize unacceleratedScrollingDelta;
+    CyberCore::FloatSize unacceleratedScrollingDelta;
 
     static bool nsEventSupportsScrollCount = [NSEvent instancesRespondToSelector:@selector(_scrollCount)];
     if (nsEventSupportsScrollCount) {
         scrollCount = [event _scrollCount];
-        unacceleratedScrollingDelta = WebCore::FloatSize([event _unacceleratedScrollingDeltaX], [event _unacceleratedScrollingDeltaY]);
+        unacceleratedScrollingDelta = CyberCore::FloatSize([event _unacceleratedScrollingDeltaX], [event _unacceleratedScrollingDeltaY]);
     } else {
         scrollCount = 0;
-        unacceleratedScrollingDelta = WebCore::FloatSize(deltaX, deltaY);
+        unacceleratedScrollingDelta = CyberCore::FloatSize(deltaX, deltaY);
     }
 
     auto modifiers = webEventModifiersForNSEventModifierFlags(event.modifierFlags);
-    auto timestamp = WebCore::eventTimeStampSince1970(event.timestamp);
+    auto timestamp = CyberCore::eventTimeStampSince1970(event.timestamp);
     
     auto ioHIDEventWallTime = timestamp;
-    std::optional<WebCore::FloatSize> rawPlatformDelta;
+    std::optional<CyberCore::FloatSize> rawPlatformDelta;
     auto momentumEndType = WebWheelEvent::MomentumEndType::Unknown;
     
     ([&] {
@@ -410,9 +410,9 @@ WebWheelEvent WebEventFactory::createWebWheelEvent(NSEvent *event, NSView *windo
 
         auto ioHIDEventTimestamp = IOHIDEventGetTimeStamp(ioHIDEvent.get()); // IOEventRef timestamp is mach_absolute_time units.
         auto monotonicIOHIDEventTimestamp = MonotonicTime::fromMachAbsoluteTime(ioHIDEventTimestamp).secondsSinceEpoch().seconds();
-        ioHIDEventWallTime = WebCore::eventTimeStampSince1970(monotonicIOHIDEventTimestamp);
+        ioHIDEventWallTime = CyberCore::eventTimeStampSince1970(monotonicIOHIDEventTimestamp);
         
-        rawPlatformDelta = { WebCore::FloatSize(-IOHIDEventGetFloatValue(ioHIDEvent.get(), kIOHIDEventFieldScrollX), -IOHIDEventGetFloatValue(ioHIDEvent.get(), kIOHIDEventFieldScrollY)) };
+        rawPlatformDelta = { CyberCore::FloatSize(-IOHIDEventGetFloatValue(ioHIDEvent.get(), kIOHIDEventFieldScrollX), -IOHIDEventGetFloatValue(ioHIDEvent.get(), kIOHIDEventFieldScrollY)) };
 
 #if HAVE(PLATFORM_SCROLL_MOMENTUM_INTERRUPTION_REASON)
         bool momentumWasInterrupted = IOHIDEventGetScrollMomentum(ioHIDEvent.get()) & kIOHIDEventScrollMomentumInterrupted;
@@ -429,27 +429,27 @@ WebWheelEvent WebEventFactory::createWebWheelEvent(NSEvent *event, NSView *windo
         rawPlatformDelta = std::nullopt;
     }
 
-    return WebWheelEvent({ WebEventType::Wheel, modifiers, timestamp }, WebCore::IntPoint(position), WebCore::IntPoint(globalPosition), WebCore::FloatSize(deltaX, deltaY), WebCore::FloatSize(wheelTicksX, wheelTicksY),
+    return WebWheelEvent({ WebEventType::Wheel, modifiers, timestamp }, CyberCore::IntPoint(position), CyberCore::IntPoint(globalPosition), CyberCore::FloatSize(deltaX, deltaY), CyberCore::FloatSize(wheelTicksX, wheelTicksY),
         granularity, directionInvertedFromDevice, phase, momentumPhase, hasPreciseScrollingDeltas,
         scrollCount, unacceleratedScrollingDelta, ioHIDEventWallTime, rawPlatformDelta, momentumEndType);
 }
 
-WebKeyboardEvent WebEventFactory::createWebKeyboardEvent(NSEvent *event, bool handledByInputMethod, bool replacesSoftSpace, const Vector<WebCore::KeypressCommand>& commands)
+WebKeyboardEvent WebEventFactory::createWebKeyboardEvent(NSEvent *event, bool handledByInputMethod, bool replacesSoftSpace, const Vector<CyberCore::KeypressCommand>& commands)
 {
     WebEventType type               = isKeyUpEvent(event) ? WebEventType::KeyUp : WebEventType::KeyDown;
     String text                     = textFromEvent(event, replacesSoftSpace);
     String unmodifiedText           = unmodifiedTextFromEvent(event, replacesSoftSpace);
-    String key                      = WebCore::keyForKeyEvent(event);
-    String code                     = WebCore::codeForKeyEvent(event);
-    String keyIdentifier            = WebCore::keyIdentifierForKeyEvent(event);
-    int windowsVirtualKeyCode       = WebCore::windowsKeyCodeForKeyEvent(event);
+    String key                      = CyberCore::keyForKeyEvent(event);
+    String code                     = CyberCore::codeForKeyEvent(event);
+    String keyIdentifier            = CyberCore::keyIdentifierForKeyEvent(event);
+    int windowsVirtualKeyCode       = CyberCore::windowsKeyCodeForKeyEvent(event);
     int nativeVirtualKeyCode        = [event keyCode];
-    int macCharCode                 = WebCore::keyCharForEvent(event);
+    int macCharCode                 = CyberCore::keyCharForEvent(event);
     bool autoRepeat                 = [event type] != NSEventTypeFlagsChanged && [event isARepeat];
     bool isKeypad                   = isKeypadEvent(event);
     bool isSystemKey                = false; // SystemKey is always false on the Mac.
     auto modifiers = webEventModifiersForNSEventModifierFlags(event.modifierFlags);
-    auto timestamp                  = WebCore::eventTimeStampSince1970(event.timestamp);
+    auto timestamp                  = CyberCore::eventTimeStampSince1970(event.timestamp);
 
     // Always use 13 for Enter/Return -- we don't want to use AppKit's different character for Enter.
     if (windowsVirtualKeyCode == VK_RETURN) {

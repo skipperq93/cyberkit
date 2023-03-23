@@ -30,7 +30,7 @@
 #include "PlatformSpeechSynthesisVoice.h"
 #include <wtf/MonotonicTime.h>
 
-namespace WebCore {
+namespace CyberCore {
     
 class PlatformSpeechSynthesisUtteranceClient {
 };
@@ -88,6 +88,6 @@ private:
 #endif
 };
     
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SPEECH_SYNTHESIS)

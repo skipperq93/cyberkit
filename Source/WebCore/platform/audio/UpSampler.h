@@ -32,7 +32,7 @@
 #include "AudioArray.h"
 #include "DirectConvolver.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // UpSampler up-samples the source stream by a factor of 2x.
 
@@ -70,6 +70,6 @@ private:
     AudioFloatArray m_inputBuffer;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // UpSampler_h

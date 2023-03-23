@@ -32,7 +32,7 @@
 
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class CDMKeyStatus : uint8_t {
     Usable,
@@ -44,6 +44,6 @@ enum class CDMKeyStatus : uint8_t {
     InternalError
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ENCRYPTED_MEDIA)

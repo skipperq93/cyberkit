@@ -34,17 +34,17 @@
 #import "ExceptionHandlers.h"
 #import <CyberCore/JSExecState.h>
 #import <CyberCore/ThreadCheck.h>
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 #import <CyberCore/WebScriptObjectPrivate.h>
 #import <wtf/GetPtr.h>
 
-#define IMPL reinterpret_cast<WebCore::CSSRuleList*>(_internal)
+#define IMPL reinterpret_cast<CyberCore::CSSRuleList*>(_internal)
 
 @implementation DOMCSSRuleList
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainThread([DOMCSSRuleList class], self))
+    if (CyberCoreObjCScheduleDeallocateOnMainThread([DOMCSSRuleList class], self))
         return;
 
     if (_internal)
@@ -54,21 +54,21 @@
 
 - (unsigned)length
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->length();
 }
 
 - (DOMCSSRule *)item:(unsigned)index
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->item(index)));
 }
 
 @end
 
-DOMCSSRuleList *kit(WebCore::CSSRuleList* value)
+DOMCSSRuleList *kit(CyberCore::CSSRuleList* value)
 {
-    WebCoreThreadViolationCheckRoundOne();
+    CyberCoreThreadViolationCheckRoundOne();
     if (!value)
         return nil;
     if (DOMCSSRuleList *wrapper = getDOMWrapper(value))

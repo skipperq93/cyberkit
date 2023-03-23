@@ -40,7 +40,7 @@
 #include "QuotedPrintable.h"
 #include <wtf/text/Base64.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static bool skipLinesUntilBoundaryFound(SharedBufferChunkReader& lineReader, const String& boundary)
 {

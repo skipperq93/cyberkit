@@ -30,7 +30,7 @@
 #include "LocalizedStrings.h"
 #include "Logging.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 const ASCIILiteral errorDomainWebKitInternal = "WebKitInternal"_s;
 const ASCIILiteral errorDomainWebKitServiceWorker = "WebKitServiceWorker"_s;
@@ -99,4 +99,4 @@ ResourceError internalError(const URL& url)
     return ResourceError("WebKitErrorDomain"_s, 300, url, WEB_UI_STRING("WebKit encountered an internal error", "WebKitErrorInternal description"));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

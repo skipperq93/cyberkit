@@ -29,7 +29,7 @@
 #include <glib/gi18n-lib.h>
 #include <wtf/glib/WTFGType.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 /**
  * WebKitWindowProperties:

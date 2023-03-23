@@ -59,7 +59,7 @@
 OBJC_CLASS DDScannerResult;
 OBJC_CLASS VKCImageAnalysis;
 
-namespace WebCore {
+namespace CyberCore {
 
 class AbstractRange;
 class AnimationTimeline;
@@ -933,8 +933,8 @@ public:
 
 
 #if USE(AUDIO_SESSION)
-    using AudioSessionCategory = WebCore::AudioSessionCategory;
-    using RouteSharingPolicy = WebCore::RouteSharingPolicy;
+    using AudioSessionCategory = CyberCore::AudioSessionCategory;
+    using RouteSharingPolicy = CyberCore::RouteSharingPolicy;
 #else
     enum class AudioSessionCategory : uint8_t {
         None,
@@ -1102,7 +1102,7 @@ public:
     RefPtr<HTMLMediaElement> bestMediaElementForRemoteControls(PlaybackControlsPurpose);
 
     // Same values as PlatformMediaSession::State, but re-declared to avoid redefinitions when linking
-    // directly with libWebCore (e.g. with non-unified builds)
+    // directly with libCyberCore (e.g. with non-unified builds)
     enum MediaSessionState {
         Idle,
         Autoplaying,
@@ -1138,8 +1138,8 @@ public:
 
     bool capsLockIsOn();
         
-    using HEVCParameterSet = WebCore::HEVCParameters;
-    using HEVCParameterCodec = WebCore::HEVCParameters::Codec;
+    using HEVCParameterSet = CyberCore::HEVCParameters;
+    using HEVCParameterCodec = CyberCore::HEVCParameters::Codec;
     std::optional<HEVCParameterSet> parseHEVCCodecParameters(StringView);
     String createHEVCCodecParametersString(const HEVCParameterSet& parameters);
 
@@ -1151,7 +1151,7 @@ public:
     std::optional<DoViParameterSet> parseDoViCodecParameters(StringView);
     String createDoViCodecParametersString(const DoViParameterSet& parameters);
 
-    using VPCodecConfigurationRecord = WebCore::VPCodecConfigurationRecord;
+    using VPCodecConfigurationRecord = CyberCore::VPCodecConfigurationRecord;
     std::optional<VPCodecConfigurationRecord> parseVPCodecParameters(StringView);
 
     struct CookieData {
@@ -1206,7 +1206,7 @@ public:
         RefPtr<DOMRectList> textRectsInBoundingRectCoordinates;
         
         TextIndicatorInfo();
-        TextIndicatorInfo(const WebCore::TextIndicatorData&);
+        TextIndicatorInfo(const CyberCore::TextIndicatorData&);
         ~TextIndicatorInfo();
     };
         
@@ -1216,9 +1216,9 @@ public:
         bool respectTextColor { false };
         bool useUserSelectAllCommonAncestor { false };
 
-        OptionSet<WebCore::TextIndicatorOption> coreOptions()
+        OptionSet<CyberCore::TextIndicatorOption> coreOptions()
         {
-            OptionSet<WebCore::TextIndicatorOption> options;
+            OptionSet<CyberCore::TextIndicatorOption> options;
             if (useBoundingRectAndPaintAllContentForComplexRanges)
                 options.add(TextIndicatorOption::UseBoundingRectAndPaintAllContentForComplexRanges);
             if (computeEstimatedBackgroundColor)
@@ -1412,7 +1412,7 @@ private:
     std::unique_ptr<InspectorStubFrontend> m_inspectorFrontend;
     RefPtr<CacheStorageConnection> m_cacheStorageConnection;
 
-    HashMap<unsigned, std::unique_ptr<WebCore::SleepDisabler>> m_sleepDisablers;
+    HashMap<unsigned, std::unique_ptr<CyberCore::SleepDisabler>> m_sleepDisablers;
 
     std::unique_ptr<TextIterator> m_textIterator;
 
@@ -1431,4 +1431,4 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore

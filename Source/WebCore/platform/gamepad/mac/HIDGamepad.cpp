@@ -41,7 +41,7 @@
 #include <wtf/cf/TypeCastsCF.h>
 #include <wtf/text/CString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 std::unique_ptr<HIDGamepad> HIDGamepad::create(IOHIDDeviceRef rawDevice, unsigned index)
 {
@@ -99,6 +99,6 @@ HIDInputType HIDGamepad::valueChanged(IOHIDValueRef value)
     return element->gamepadValueChanged(value);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(GAMEPAD) && PLATFORM(MAC)

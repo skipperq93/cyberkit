@@ -41,7 +41,7 @@ struct MediaDescriptionInfo {
     {
     }
 
-    MediaDescriptionInfo(const WebCore::MediaDescription& description)
+    MediaDescriptionInfo(const CyberCore::MediaDescription& description)
         : m_codec(description.codec())
         , m_isVideo(description.isVideo())
         , m_isAudio(description.isAudio())

@@ -33,7 +33,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class Text;
@@ -127,6 +127,6 @@ private:
     HashMap<TextAutoSizingKey, std::unique_ptr<TextAutoSizingValue>, TextAutoSizingHash, TextAutoSizingTraits> m_textNodes;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(TEXT_AUTOSIZING)

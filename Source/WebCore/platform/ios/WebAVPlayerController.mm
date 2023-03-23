@@ -47,7 +47,7 @@ SOFT_LINK_CLASS_OPTIONAL(AVKit, AVValueTiming)
 OBJC_CLASS AVAssetTrack;
 OBJC_CLASS AVMetadataItem;
 
-using namespace WebCore;
+using namespace CyberCore;
 
 static void * WebAVPlayerControllerSeekableTimeRangesObserverContext = &WebAVPlayerControllerSeekableTimeRangesObserverContext;
 static void * WebAVPlayerControllerHasLiveStreamingContentObserverContext = &WebAVPlayerControllerHasLiveStreamingContentObserverContext;
@@ -192,8 +192,8 @@ Class webAVPlayerControllerClass()
 }
 
 @implementation WebAVPlayerController {
-    WeakPtr<WebCore::PlaybackSessionModel> _delegate;
-    WeakPtr<WebCore::PlaybackSessionInterfaceAVKit> _playbackSessionInterface;
+    WeakPtr<CyberCore::PlaybackSessionModel> _delegate;
+    WeakPtr<CyberCore::PlaybackSessionInterfaceAVKit> _playbackSessionInterface;
     double _defaultPlaybackRate;
     double _rate;
     BOOL _liveStreamEventModePossible;
@@ -304,22 +304,22 @@ Class webAVPlayerControllerClass()
         self.delegate->pause();
 }
 
-- (WebCore::PlaybackSessionModel*)delegate
+- (CyberCore::PlaybackSessionModel*)delegate
 {
     return _delegate.get();
 }
 
-- (void)setDelegate:(WebCore::PlaybackSessionModel*)delegate
+- (void)setDelegate:(CyberCore::PlaybackSessionModel*)delegate
 {
     _delegate = WeakPtr { delegate };
 }
 
-- (WebCore::PlaybackSessionInterfaceAVKit*)playbackSessionInterface
+- (CyberCore::PlaybackSessionInterfaceAVKit*)playbackSessionInterface
 {
     return _playbackSessionInterface.get();
 }
 
-- (void)setPlaybackSessionInterface:(WebCore::PlaybackSessionInterfaceAVKit*)playbackSessionInterface
+- (void)setPlaybackSessionInterface:(CyberCore::PlaybackSessionInterfaceAVKit*)playbackSessionInterface
 {
     _playbackSessionInterface = WeakPtr { playbackSessionInterface };
 }

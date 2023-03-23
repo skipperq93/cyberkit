@@ -31,7 +31,7 @@
 #include "ExtendableEventInit.h"
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMPromise;
 
@@ -64,6 +64,6 @@ private:
     Function<void(HashSet<Ref<DOMPromise>>&&)> m_whenAllExtendLifetimePromisesAreSettledHandler;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

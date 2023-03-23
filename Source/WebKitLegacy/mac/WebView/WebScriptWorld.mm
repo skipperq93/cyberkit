@@ -33,14 +33,14 @@
 
 @interface WebScriptWorldPrivate : NSObject {
 @public
-    RefPtr<WebCore::DOMWrapperWorld> world;
+    RefPtr<CyberCore::DOMWrapperWorld> world;
 }
 @end
 
 @implementation WebScriptWorldPrivate
 @end
 
-typedef HashMap<WebCore::DOMWrapperWorld*, WebScriptWorld*> WorldMap;
+typedef HashMap<CyberCore::DOMWrapperWorld*, WebScriptWorld*> WorldMap;
 static WorldMap& allWorlds()
 {
     static WorldMap& map = *new WorldMap;
@@ -49,7 +49,7 @@ static WorldMap& allWorlds()
 
 @implementation WebScriptWorld
 
-- (id)initWithWorld:(Ref<WebCore::DOMWrapperWorld>&&)world
+- (id)initWithWorld:(Ref<CyberCore::DOMWrapperWorld>&&)world
 {
     self = [super init];
     if (!self)
@@ -66,7 +66,7 @@ static WorldMap& allWorlds()
 
 - (id)init
 {
-    return [self initWithWorld:WebCore::ScriptController::createWorld("WebScriptWorld"_s, WebCore::ScriptController::WorldType::User)];
+    return [self initWithWorld:CyberCore::ScriptController::createWorld("WebScriptWorld"_s, CyberCore::ScriptController::WorldType::User)];
 }
 
 - (void)unregisterWorld
@@ -86,7 +86,7 @@ static WorldMap& allWorlds()
 
 + (WebScriptWorld *)standardWorld
 {
-    static WebScriptWorld *world = [[WebScriptWorld alloc] initWithWorld:WebCore::mainThreadNormalWorld()];
+    static WebScriptWorld *world = [[WebScriptWorld alloc] initWithWorld:CyberCore::mainThreadNormalWorld()];
     return world;
 }
 
@@ -97,7 +97,7 @@ static WorldMap& allWorlds()
 
 + (WebScriptWorld *)scriptWorldForGlobalContext:(JSGlobalContextRef)context
 {
-    return [self findOrCreateWorld:WebCore::currentWorld(*toJS(context))];
+    return [self findOrCreateWorld:CyberCore::currentWorld(*toJS(context))];
 }
 
 #if JSC_OBJC_API_ENABLED
@@ -111,14 +111,14 @@ static WorldMap& allWorlds()
 
 @implementation WebScriptWorld (WebInternal)
 
-WebCore::DOMWrapperWorld* core(WebScriptWorld *world)
+CyberCore::DOMWrapperWorld* core(WebScriptWorld *world)
 {
     return world ? world->_private->world.get() : 0;
 }
 
-+ (WebScriptWorld *)findOrCreateWorld:(WebCore::DOMWrapperWorld&)world
++ (WebScriptWorld *)findOrCreateWorld:(CyberCore::DOMWrapperWorld&)world
 {
-    if (&world == &WebCore::mainThreadNormalWorld())
+    if (&world == &CyberCore::mainThreadNormalWorld())
         return [self standardWorld];
 
     if (WebScriptWorld *existingWorld = allWorlds().get(&world))

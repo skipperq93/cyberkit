@@ -40,7 +40,7 @@
     RetainPtr<NSURL> _URL;
     RetainPtr<NSURL> _imageURL;
     RetainPtr<NSString> _title;
-    WebCore::IntPoint _interactionLocation;
+    CyberCore::IntPoint _interactionLocation;
     RetainPtr<NSString> _ID;
     RefPtr<WebKit::ShareableBitmap> _image;
     RetainPtr<NSString> _imageMIMEType;
@@ -95,12 +95,12 @@
 }
 #endif
 
-- (instancetype)_initWithType:(_WKActivatedElementType)type URL:(NSURL *)url imageURL:(NSURL *)imageURL location:(const WebCore::IntPoint&)location title:(NSString *)title ID:(NSString *)ID rect:(CGRect)rect image:(WebKit::ShareableBitmap*)image imageMIMEType:(NSString *)imageMIMEType
+- (instancetype)_initWithType:(_WKActivatedElementType)type URL:(NSURL *)url imageURL:(NSURL *)imageURL location:(const CyberCore::IntPoint&)location title:(NSString *)title ID:(NSString *)ID rect:(CGRect)rect image:(WebKit::ShareableBitmap*)image imageMIMEType:(NSString *)imageMIMEType
 {
     return [self _initWithType:type URL:url imageURL:imageURL location:location title:title ID:ID rect:rect image:image imageMIMEType:imageMIMEType userInfo:nil];
 }
 
-- (instancetype)_initWithType:(_WKActivatedElementType)type URL:(NSURL *)url imageURL:(NSURL *)imageURL location:(const WebCore::IntPoint&)location title:(NSString *)title ID:(NSString *)ID rect:(CGRect)rect image:(WebKit::ShareableBitmap*)image imageMIMEType:(NSString *)imageMIMEType userInfo:(NSDictionary *)userInfo
+- (instancetype)_initWithType:(_WKActivatedElementType)type URL:(NSURL *)url imageURL:(NSURL *)imageURL location:(const CyberCore::IntPoint&)location title:(NSString *)title ID:(NSString *)ID rect:(CGRect)rect image:(WebKit::ShareableBitmap*)image imageMIMEType:(NSString *)imageMIMEType userInfo:(NSDictionary *)userInfo
 {
     if (!(self = [super init]))
         return nil;
@@ -146,7 +146,7 @@
     return _ID.get();
 }
 
-- (WebCore::IntPoint)_interactionLocation
+- (CyberCore::IntPoint)_interactionLocation
 {
     return _interactionLocation;
 }

@@ -44,8 +44,8 @@
 #import <CyberCore/TiledBacking.h>
 #import <wtf/PointerComparison.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 Ref<PlatformCALayerRemote> PlatformCALayerRemote::create(LayerType layerType, PlatformCALayerClient* owner, RemoteLayerTreeContext& context)
 {
@@ -67,13 +67,13 @@ Ref<PlatformCALayerRemote> PlatformCALayerRemote::create(PlatformLayer *platform
 }
 
 #if ENABLE(MODEL_ELEMENT)
-Ref<PlatformCALayerRemote> PlatformCALayerRemote::create(Ref<WebCore::Model> model, WebCore::PlatformCALayerClient* owner, RemoteLayerTreeContext& context)
+Ref<PlatformCALayerRemote> PlatformCALayerRemote::create(Ref<CyberCore::Model> model, CyberCore::PlatformCALayerClient* owner, RemoteLayerTreeContext& context)
 {
     return PlatformCALayerRemoteModelHosting::create(model, owner, context);
 }
 #endif
 
-Ref<PlatformCALayerRemote> PlatformCALayerRemote::create(const PlatformCALayerRemote& other, WebCore::PlatformCALayerClient* owner, RemoteLayerTreeContext& context)
+Ref<PlatformCALayerRemote> PlatformCALayerRemote::create(const PlatformCALayerRemote& other, CyberCore::PlatformCALayerClient* owner, RemoteLayerTreeContext& context)
 {
     auto layer = adoptRef(*new PlatformCALayerRemote(other, owner, context));
 
@@ -710,7 +710,7 @@ void PlatformCALayerRemote::setContents(CFTypeRef value)
 }
 
 #if HAVE(IOSURFACE)
-void PlatformCALayerRemote::setContents(const WebCore::IOSurface& surface)
+void PlatformCALayerRemote::setContents(const CyberCore::IOSurface& surface)
 {
     ASSERT(m_acceleratesDrawing);
     ensureBackingStore();
@@ -1007,7 +1007,7 @@ Ref<PlatformCALayer> PlatformCALayerRemote::createCompatibleLayer(PlatformCALaye
     return PlatformCALayerRemote::create(layerType, client, *m_context);
 }
 
-void PlatformCALayerRemote::enumerateRectsBeingDrawn(WebCore::GraphicsContext& context, void (^block)(WebCore::FloatRect))
+void PlatformCALayerRemote::enumerateRectsBeingDrawn(CyberCore::GraphicsContext& context, void (^block)(CyberCore::FloatRect))
 {
     m_properties.backingStore->enumerateRectsBeingDrawn(context, block);
 }
@@ -1031,4 +1031,4 @@ LayerPool& PlatformCALayerRemote::layerPool()
     return m_context->layerPool();
 }
 
-} // namespace WebKit
+} // namespace CyberKit

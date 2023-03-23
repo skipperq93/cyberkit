@@ -27,7 +27,7 @@
 #include "GLContext.h"
 #include "ImageOrientation.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 VideoTextureCopierGStreamer::VideoTextureCopierGStreamer(ColorConversion colorConversion)
 {
@@ -310,6 +310,6 @@ bool VideoTextureCopierGStreamer::copyVideoTextureToPlatformTexture(TextureMappe
     return ok;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(GSTREAMER_GL)

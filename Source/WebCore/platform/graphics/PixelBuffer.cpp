@@ -29,7 +29,7 @@
 #include <CyberScriptCore/TypedArrayInlines.h>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 bool PixelBuffer::supportedPixelFormat(PixelFormat pixelFormat)
 {
@@ -98,4 +98,4 @@ void PixelBuffer::set(size_t index, double value)
     m_bytes[index] = JSC::Uint8ClampedAdaptor::toNativeFromDouble(value);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

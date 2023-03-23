@@ -29,7 +29,7 @@
 #include "SVGImage.h"
 #include "SVGImageForContainer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 SVGImageCache::SVGImageCache(SVGImage* svgImage)
     : m_svgImage(svgImage)
@@ -82,4 +82,4 @@ Image* SVGImageCache::imageForRenderer(const RenderObject* renderer) const
     return image;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

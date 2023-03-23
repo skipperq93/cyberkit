@@ -18,52 +18,52 @@
  */
 
 #include "config.h"
-#include "WebKitDOMDocument.h"
+#include "CyberKitDOMDocument.h"
 
 #include "DOMObjectCache.h"
-#include "WebKitDOMDocumentPrivate.h"
-#include "WebKitDOMNodePrivate.h"
-#include "WebKitDOMPrivate.h"
+#include "CyberKitDOMDocumentPrivate.h"
+#include "CyberKitDOMNodePrivate.h"
+#include "CyberKitDOMPrivate.h"
 
 #if PLATFORM(GTK)
-#include "WebKitDOMEventTarget.h"
+#include "CyberKitDOMEventTarget.h"
 #endif
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
-namespace WebKit {
+namespace CyberKit {
 
-WebKitDOMDocument* kit(WebCore::Document* obj)
+CyberKitDOMDocument* kit(CyberCore::Document* obj)
 {
-    return WEBKIT_DOM_DOCUMENT(kit(static_cast<WebCore::Node*>(obj)));
+    return WEBKIT_DOM_DOCUMENT(kit(static_cast<CyberCore::Node*>(obj)));
 }
 
-WebCore::Document* core(WebKitDOMDocument* document)
+CyberCore::Document* core(CyberKitDOMDocument* document)
 {
-    return document ? static_cast<WebCore::Document*>(webkitDOMNodeGetCoreObject(WEBKIT_DOM_NODE(document))) : nullptr;
+    return document ? static_cast<CyberCore::Document*>(webkitDOMNodeGetCoreObject(WEBKIT_DOM_NODE(document))) : nullptr;
 }
 
-WebKitDOMDocument* wrapDocument(WebCore::Document* coreObject)
+CyberKitDOMDocument* wrapDocument(CyberCore::Document* coreObject)
 {
     ASSERT(coreObject);
 #if PLATFORM(GTK)
     return WEBKIT_DOM_DOCUMENT(g_object_new(WEBKIT_DOM_TYPE_DOCUMENT, "core-object", coreObject, nullptr));
 #else
     auto* document = WEBKIT_DOM_DOCUMENT(g_object_new(WEBKIT_DOM_TYPE_DOCUMENT, nullptr));
-    webkitDOMNodeSetCoreObject(WEBKIT_DOM_NODE(document), static_cast<WebCore::Node*>(coreObject));
+    webkitDOMNodeSetCoreObject(WEBKIT_DOM_NODE(document), static_cast<CyberCore::Node*>(coreObject));
     return document;
 #endif
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #if PLATFORM(GTK)
-G_DEFINE_TYPE_WITH_CODE(WebKitDOMDocument, webkit_dom_document, WEBKIT_DOM_TYPE_NODE, G_IMPLEMENT_INTERFACE(WEBKIT_DOM_TYPE_EVENT_TARGET, webkitDOMDocumentDOMEventTargetInit))
+G_DEFINE_TYPE_WITH_CODE(CyberKitDOMDocument, webkit_dom_document, WEBKIT_DOM_TYPE_NODE, G_IMPLEMENT_INTERFACE(WEBKIT_DOM_TYPE_EVENT_TARGET, webkitDOMDocumentDOMEventTargetInit))
 #else
-G_DEFINE_TYPE(WebKitDOMDocument, webkit_dom_document, WEBKIT_DOM_TYPE_NODE)
+G_DEFINE_TYPE(CyberKitDOMDocument, webkit_dom_document, WEBKIT_DOM_TYPE_NODE)
 #endif
 
-static void webkit_dom_document_class_init(WebKitDOMDocumentClass* documentClass)
+static void webkit_dom_document_class_init(CyberKitDOMDocumentClass* documentClass)
 {
 #if PLATFORM(GTK)
     GObjectClass* gobjectClass = G_OBJECT_CLASS(documentClass);
@@ -71,7 +71,7 @@ static void webkit_dom_document_class_init(WebKitDOMDocumentClass* documentClass
 #endif
 }
 
-static void webkit_dom_document_init(WebKitDOMDocument*)
+static void webkit_dom_document_init(CyberKitDOMDocument*)
 {
 }
 

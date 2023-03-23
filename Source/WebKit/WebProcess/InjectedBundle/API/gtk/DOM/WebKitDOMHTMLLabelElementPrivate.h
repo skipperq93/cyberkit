@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -17,16 +17,16 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitDOMHTMLLabelElementPrivate_h
-#define WebKitDOMHTMLLabelElementPrivate_h
+#ifndef CyberKitDOMHTMLLabelElementPrivate_h
+#define CyberKitDOMHTMLLabelElementPrivate_h
 
 #include <CyberCore/HTMLLabelElement.h>
-#include <webkitdom/WebKitDOMHTMLLabelElement.h>
+#include <webkitdom/CyberKitDOMHTMLLabelElement.h>
 
-namespace WebKit {
-WebKitDOMHTMLLabelElement* wrapHTMLLabelElement(WebCore::HTMLLabelElement*);
-WebKitDOMHTMLLabelElement* kit(WebCore::HTMLLabelElement*);
-WebCore::HTMLLabelElement* core(WebKitDOMHTMLLabelElement*);
-} // namespace WebKit
+namespace CyberKit {
+CyberKitDOMHTMLLabelElement* wrapHTMLLabelElement(CyberCore::HTMLLabelElement*);
+CyberKitDOMHTMLLabelElement* kit(CyberCore::HTMLLabelElement*);
+CyberCore::HTMLLabelElement* core(CyberKitDOMHTMLLabelElement*);
+} // namespace CyberKit
 
-#endif /* WebKitDOMHTMLLabelElementPrivate_h */
+#endif /* CyberKitDOMHTMLLabelElementPrivate_h */

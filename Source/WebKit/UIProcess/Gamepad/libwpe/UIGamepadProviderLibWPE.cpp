@@ -34,7 +34,7 @@
 #include "WPEView.h"
 #endif
 
-using namespace WebCore;
+using namespace CyberCore;
 
 namespace WebKit {
 

@@ -38,7 +38,7 @@ SpeechRecognitionRemoteRealtimeMediaSourceManager::SpeechRecognitionRemoteRealti
 {
 }
 
-void SpeechRecognitionRemoteRealtimeMediaSourceManager::addSource(SpeechRecognitionRemoteRealtimeMediaSource& source, const WebCore::CaptureDevice& captureDevice)
+void SpeechRecognitionRemoteRealtimeMediaSourceManager::addSource(SpeechRecognitionRemoteRealtimeMediaSource& source, const CyberCore::CaptureDevice& captureDevice)
 {
     auto identifier = source.identifier();
     ASSERT(!m_sources.contains(identifier));
@@ -79,19 +79,19 @@ void SpeechRecognitionRemoteRealtimeMediaSourceManager::removeSource(SpeechRecog
     send(Messages::SpeechRecognitionRealtimeMediaSourceManager::DeleteSource(identifier));
 }
 
-void SpeechRecognitionRemoteRealtimeMediaSourceManager::remoteAudioSamplesAvailable(WebCore::RealtimeMediaSourceIdentifier identifier, const WTF::MediaTime& time, uint64_t numberOfFrames)
+void SpeechRecognitionRemoteRealtimeMediaSourceManager::remoteAudioSamplesAvailable(CyberCore::RealtimeMediaSourceIdentifier identifier, const WTF::MediaTime& time, uint64_t numberOfFrames)
 {
     if (auto source = m_sources.get(identifier))
         source->remoteAudioSamplesAvailable(time, numberOfFrames);
 }
 
-void SpeechRecognitionRemoteRealtimeMediaSourceManager::remoteCaptureFailed(WebCore::RealtimeMediaSourceIdentifier identifier)
+void SpeechRecognitionRemoteRealtimeMediaSourceManager::remoteCaptureFailed(CyberCore::RealtimeMediaSourceIdentifier identifier)
 {
     if (auto source = m_sources.get(identifier))
         source->remoteCaptureFailed();
 }
 
-void SpeechRecognitionRemoteRealtimeMediaSourceManager::remoteSourceStopped(WebCore::RealtimeMediaSourceIdentifier identifier)
+void SpeechRecognitionRemoteRealtimeMediaSourceManager::remoteSourceStopped(CyberCore::RealtimeMediaSourceIdentifier identifier)
 {
     if (auto source = m_sources.get(identifier))
         source->remoteSourceStopped();
@@ -109,7 +109,7 @@ uint64_t SpeechRecognitionRemoteRealtimeMediaSourceManager::messageSenderDestina
 
 #if PLATFORM(COCOA)
 
-void SpeechRecognitionRemoteRealtimeMediaSourceManager::setStorage(WebCore::RealtimeMediaSourceIdentifier identifier, ConsumerSharedCARingBuffer::Handle&& handle, const WebCore::CAAudioStreamDescription& description)
+void SpeechRecognitionRemoteRealtimeMediaSourceManager::setStorage(CyberCore::RealtimeMediaSourceIdentifier identifier, ConsumerSharedCARingBuffer::Handle&& handle, const CyberCore::CAAudioStreamDescription& description)
 {
     if (auto source = m_sources.get(identifier))
         source->setStorage(WTFMove(handle), description);

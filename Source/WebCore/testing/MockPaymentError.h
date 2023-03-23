@@ -30,7 +30,7 @@
 #include "ApplePayErrorCode.h"
 #include "ApplePayErrorContactField.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct MockPaymentError {
     ApplePayErrorCode code;
@@ -38,6 +38,6 @@ struct MockPaymentError {
     std::optional<ApplePayErrorContactField> contactField;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(APPLE_PAY)

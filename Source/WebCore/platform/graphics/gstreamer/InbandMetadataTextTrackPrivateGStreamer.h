@@ -29,7 +29,7 @@
 
 #include "InbandTextTrackPrivate.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class InbandMetadataTextTrackPrivateGStreamer : public InbandTextTrackPrivate {
 public:
@@ -71,6 +71,6 @@ private:
     AtomString m_inBandMetadataTrackDispatchType;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(VIDEO) && USE(GSTREAMER)

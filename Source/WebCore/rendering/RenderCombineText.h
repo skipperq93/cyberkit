@@ -24,7 +24,7 @@
 #include "RenderText.h"
 #include "Text.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderCombineText final : public RenderText {
     WTF_MAKE_ISO_ALLOCATED(RenderCombineText);
@@ -57,6 +57,6 @@ private:
     bool m_needsFontUpdate : 1;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderCombineText, isCombineText())

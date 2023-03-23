@@ -31,7 +31,7 @@
 #include "InternalSettingsGenerated.h"
 #include "Settings.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class Page;
 
@@ -56,22 +56,22 @@ public:
     ExceptionOr<void> setMinimumTimerInterval(double intervalInSeconds);
     ExceptionOr<void> setTimeWithoutMouseMovementBeforeHidingControls(double intervalInSeconds);
 
-    using EditingBehaviorType = WebCore::EditingBehaviorType;
+    using EditingBehaviorType = CyberCore::EditingBehaviorType;
     ExceptionOr<void> setEditingBehavior(EditingBehaviorType);
     
-    using StorageBlockingPolicy = WebCore::StorageBlockingPolicy;
+    using StorageBlockingPolicy = CyberCore::StorageBlockingPolicy;
     ExceptionOr<void> setStorageBlockingPolicy(StorageBlockingPolicy);
     
-    using UserInterfaceDirectionPolicy = WebCore::UserInterfaceDirectionPolicy;
+    using UserInterfaceDirectionPolicy = CyberCore::UserInterfaceDirectionPolicy;
     ExceptionOr<void> setUserInterfaceDirectionPolicy(UserInterfaceDirectionPolicy);
 
     using SystemLayoutDirection = TextDirection;
     ExceptionOr<void> setSystemLayoutDirection(SystemLayoutDirection);
 
-    using FontLoadTimingOverride = WebCore::FontLoadTimingOverride;
+    using FontLoadTimingOverride = CyberCore::FontLoadTimingOverride;
     ExceptionOr<void> setFontLoadTimingOverride(FontLoadTimingOverride);
 
-    using ForcedAccessibilityValue = WebCore::ForcedAccessibilityValue;
+    using ForcedAccessibilityValue = CyberCore::ForcedAccessibilityValue;
     ForcedAccessibilityValue forcedColorsAreInvertedAccessibilityValue() const;
     void setForcedColorsAreInvertedAccessibilityValue(ForcedAccessibilityValue);
     ForcedAccessibilityValue forcedDisplayIsMonochromeAccessibilityValue() const;
@@ -143,15 +143,15 @@ private:
         ScriptFontFamilyMap m_pictographFontFamilies;
         Seconds m_minimumDOMTimerInterval;
         Seconds m_originalTimeWithoutMouseMovementBeforeHidingControls;
-        WebCore::EditingBehaviorType m_originalEditingBehavior;
-        WebCore::StorageBlockingPolicy m_storageBlockingPolicy;
-        WebCore::UserInterfaceDirectionPolicy m_userInterfaceDirectionPolicy;
+        CyberCore::EditingBehaviorType m_originalEditingBehavior;
+        CyberCore::StorageBlockingPolicy m_storageBlockingPolicy;
+        CyberCore::UserInterfaceDirectionPolicy m_userInterfaceDirectionPolicy;
         TextDirection m_systemLayoutDirection;
-        WebCore::ForcedAccessibilityValue m_forcedColorsAreInvertedAccessibilityValue;
-        WebCore::ForcedAccessibilityValue m_forcedDisplayIsMonochromeAccessibilityValue;
-        WebCore::ForcedAccessibilityValue m_forcedPrefersContrastAccessibilityValue;
-        WebCore::ForcedAccessibilityValue m_forcedPrefersReducedMotionAccessibilityValue;
-        WebCore::FontLoadTimingOverride m_fontLoadTimingOverride;
+        CyberCore::ForcedAccessibilityValue m_forcedColorsAreInvertedAccessibilityValue;
+        CyberCore::ForcedAccessibilityValue m_forcedDisplayIsMonochromeAccessibilityValue;
+        CyberCore::ForcedAccessibilityValue m_forcedPrefersContrastAccessibilityValue;
+        CyberCore::ForcedAccessibilityValue m_forcedPrefersReducedMotionAccessibilityValue;
+        CyberCore::FontLoadTimingOverride m_fontLoadTimingOverride;
 
         // DeprecatedGlobalSettings
         bool m_fetchAPIKeepAliveAPIEnabled;
@@ -169,4 +169,4 @@ private:
     Backup m_backup;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

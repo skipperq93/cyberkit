@@ -28,7 +28,7 @@
 #include "CachedStyleSheetClient.h"
 #include "XSLStyleSheet.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CachedXSLStyleSheet;
 
@@ -57,6 +57,6 @@ private:
     bool m_loading { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(XSLT)

@@ -38,7 +38,7 @@ namespace NetworkCache {
 
 bool SubresourceInfo::isFirstParty() const
 {
-    WebCore::RegistrableDomain firstPartyDomain { m_firstPartyForCookies };
+    CyberCore::RegistrableDomain firstPartyDomain { m_firstPartyForCookies };
     return firstPartyDomain.matches(URL(URL(), key().identifier()));
 }
 
@@ -78,7 +78,7 @@ SubresourcesEntry::SubresourcesEntry(const Storage::Record& storageEntry)
     ASSERT(m_key.type() == "SubResources"_s);
 }
 
-SubresourceInfo::SubresourceInfo(const Key& key, const WebCore::ResourceRequest& request, const SubresourceInfo* previousInfo)
+SubresourceInfo::SubresourceInfo(const Key& key, const CyberCore::ResourceRequest& request, const SubresourceInfo* previousInfo)
     : m_key(key)
     , m_lastSeen(WallTime::now())
     , m_firstSeen(previousInfo ? previousInfo->firstSeen() : m_lastSeen)

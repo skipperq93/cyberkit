@@ -81,7 +81,7 @@ IGNORE_WARNINGS_END
 
 - (NSURLRequest *)request
 {
-    return _download->_download->request().nsURLRequest(WebCore::HTTPBodyUpdatePolicy::DoNotUpdateHTTPBody);
+    return _download->_download->request().nsURLRequest(CyberCore::HTTPBodyUpdatePolicy::DoNotUpdateHTTPBody);
 }
 
 - (WKWebView *)originatingWebView

@@ -70,27 +70,27 @@ void RemoteScrollingUIState::reset()
     m_nodesWithActiveUserScrolls.clear();
 }
 
-void RemoteScrollingUIState::addNodeWithActiveScrollSnap(WebCore::ScrollingNodeID nodeID)
+void RemoteScrollingUIState::addNodeWithActiveScrollSnap(CyberCore::ScrollingNodeID nodeID)
 {
     auto addResult = m_nodesWithActiveScrollSnap.add(nodeID);
     if (addResult.isNewEntry)
         m_changes.add(Changes::ScrollSnapNodes);
 }
 
-void RemoteScrollingUIState::removeNodeWithActiveScrollSnap(WebCore::ScrollingNodeID nodeID)
+void RemoteScrollingUIState::removeNodeWithActiveScrollSnap(CyberCore::ScrollingNodeID nodeID)
 {
     if (m_nodesWithActiveScrollSnap.remove(nodeID))
         m_changes.add(Changes::ScrollSnapNodes);
 }
 
-void RemoteScrollingUIState::addNodeWithActiveUserScroll(WebCore::ScrollingNodeID nodeID)
+void RemoteScrollingUIState::addNodeWithActiveUserScroll(CyberCore::ScrollingNodeID nodeID)
 {
     auto addResult = m_nodesWithActiveUserScrolls.add(nodeID);
     if (addResult.isNewEntry)
         m_changes.add(Changes::UserScrollNodes);
 }
 
-void RemoteScrollingUIState::removeNodeWithActiveUserScroll(WebCore::ScrollingNodeID nodeID)
+void RemoteScrollingUIState::removeNodeWithActiveUserScroll(CyberCore::ScrollingNodeID nodeID)
 {
     if (m_nodesWithActiveUserScrolls.remove(nodeID))
         m_changes.add(Changes::UserScrollNodes);

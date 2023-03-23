@@ -35,7 +35,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/unicode/CharacterNames.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(RenderTextControl);
 WTF_MAKE_ISO_ALLOCATED_IMPL(RenderTextControlInnerContainer);
@@ -233,4 +233,4 @@ int RenderTextControl::innerLineHeight() const
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

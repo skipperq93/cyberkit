@@ -34,7 +34,7 @@
 #include <wtf/DataRef.h>
 #include <wtf/PointerComparison.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct GreaterThanOrSameSizeAsStyleRareInheritedData : public RefCounted<GreaterThanOrSameSizeAsStyleRareInheritedData> {
     float firstFloat;
@@ -399,4 +399,4 @@ bool StyleRareInheritedData::hasColorFilters() const
     return !appleColorFilter->operations.isEmpty();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

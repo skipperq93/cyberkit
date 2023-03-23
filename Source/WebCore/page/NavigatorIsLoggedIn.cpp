@@ -29,7 +29,7 @@
 #include "JSDOMPromiseDeferred.h"
 #include "Navigator.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 NavigatorIsLoggedIn* NavigatorIsLoggedIn::from(Navigator& navigator)
 {
@@ -83,4 +83,4 @@ void NavigatorIsLoggedIn::isLoggedIn(Ref<DeferredPromise>&& promise)
         promise->resolve<IDLBoolean>(false);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

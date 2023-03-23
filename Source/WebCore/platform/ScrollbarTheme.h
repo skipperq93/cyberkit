@@ -29,7 +29,7 @@
 #include "IntRect.h"
 #include "ScrollTypes.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class PlatformMouseEvent;
 class ScrollableArea;

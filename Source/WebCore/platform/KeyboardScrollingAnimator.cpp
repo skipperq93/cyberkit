@@ -33,7 +33,7 @@
 #include "ScrollTypes.h"
 #include <wtf/SortedArrayMap.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 KeyboardScrollingAnimator::KeyboardScrollingAnimator(ScrollableArea& scrollableArea)
     : m_scrollableArea(scrollableArea)
@@ -238,4 +238,4 @@ void KeyboardScrollingAnimator::stopScrollingImmediately()
     m_scrollableArea.endKeyboardScroll(true);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

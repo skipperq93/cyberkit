@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -17,16 +17,16 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitDOMHTMLFontElementPrivate_h
-#define WebKitDOMHTMLFontElementPrivate_h
+#ifndef CyberKitDOMHTMLFontElementPrivate_h
+#define CyberKitDOMHTMLFontElementPrivate_h
 
 #include <CyberCore/HTMLFontElement.h>
-#include <webkitdom/WebKitDOMHTMLFontElement.h>
+#include <webkitdom/CyberKitDOMHTMLFontElement.h>
 
-namespace WebKit {
-WebKitDOMHTMLFontElement* wrapHTMLFontElement(WebCore::HTMLFontElement*);
-WebKitDOMHTMLFontElement* kit(WebCore::HTMLFontElement*);
-WebCore::HTMLFontElement* core(WebKitDOMHTMLFontElement*);
-} // namespace WebKit
+namespace CyberKit {
+CyberKitDOMHTMLFontElement* wrapHTMLFontElement(CyberCore::HTMLFontElement*);
+CyberKitDOMHTMLFontElement* kit(CyberCore::HTMLFontElement*);
+CyberCore::HTMLFontElement* core(CyberKitDOMHTMLFontElement*);
+} // namespace CyberKit
 
-#endif /* WebKitDOMHTMLFontElementPrivate_h */
+#endif /* CyberKitDOMHTMLFontElementPrivate_h */

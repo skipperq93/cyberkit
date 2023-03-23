@@ -30,7 +30,7 @@
 #include "BackingStore.h"
 #include "DrawingAreaProxy.h"
 
-namespace WebCore {
+namespace CyberCore {
 class Region;
 }
 
@@ -40,7 +40,7 @@ class DrawingAreaProxyWC final : public DrawingAreaProxy {
 public:
     DrawingAreaProxyWC(WebPageProxy&);
 
-    void paint(BackingStore::PlatformGraphicsContext, const WebCore::IntRect&, WebCore::Region& unpaintedRegion);
+    void paint(BackingStore::PlatformGraphicsContext, const CyberCore::IntRect&, CyberCore::Region& unpaintedRegion);
 
 private:
     // DrawingAreaProxy

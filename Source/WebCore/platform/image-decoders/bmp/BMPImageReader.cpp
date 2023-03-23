@@ -31,7 +31,7 @@
 #include "config.h"
 #include "BMPImageReader.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 BMPImageReader::BMPImageReader(ScalableImageDecoder* parent, size_t decodedAndHeaderOffset, size_t imgDataOffset, bool usesAndMask)
     : m_parent(parent)
@@ -730,4 +730,4 @@ void BMPImageReader::moveBufferToNextRow()
     m_coord.move(-m_coord.x(), m_isTopDown ? 1 : -1);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

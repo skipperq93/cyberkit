@@ -35,7 +35,7 @@
 namespace WebKit {
 
 // Use eager initialization for the WeakPtrFactory since we construct WeakPtrs from a non-main thread.
-class WebSQLiteDatabaseTracker final : public WebCore::SQLiteDatabaseTrackerClient, public CanMakeWeakPtr<WebSQLiteDatabaseTracker, WeakPtrFactoryInitialization::Eager> {
+class WebSQLiteDatabaseTracker final : public CyberCore::SQLiteDatabaseTrackerClient, public CanMakeWeakPtr<WebSQLiteDatabaseTracker, WeakPtrFactoryInitialization::Eager> {
     WTF_MAKE_NONCOPYABLE(WebSQLiteDatabaseTracker)
 public:
     // IsHoldingLockedFilesHandler may get called on a non-main thread, but while holding a Lock.
@@ -49,7 +49,7 @@ public:
 private:
     void setIsHoldingLockedFiles(bool) WTF_REQUIRES_LOCK(m_lock);
 
-    // WebCore::SQLiteDatabaseTrackerClient.
+    // CyberCore::SQLiteDatabaseTrackerClient.
     void willBeginFirstTransaction() final;
     void didFinishLastTransaction() final;
 

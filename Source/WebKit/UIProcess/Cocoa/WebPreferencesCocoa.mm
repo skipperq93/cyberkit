@@ -151,7 +151,7 @@ void WebPreferences::platformInitializeStore()
         // If other preferences need to dynamically set the initial value based on host app state, we should extended
         // the declarative format rather than adding more special cases here.
         m_store.setBoolValueForKey(WebPreferencesKey::mediaDevicesEnabledKey(), UserMediaPermissionRequestManagerProxy::permittedToCaptureAudio() || UserMediaPermissionRequestManagerProxy::permittedToCaptureVideo());
-        m_store.setBoolValueForKey(WebPreferencesKey::interruptAudioOnPageVisibilityChangeEnabledKey(),  WebCore::RealtimeMediaSourceCenter::shouldInterruptAudioOnPageVisibilityChange());
+        m_store.setBoolValueForKey(WebPreferencesKey::interruptAudioOnPageVisibilityChangeEnabledKey(),  CyberCore::RealtimeMediaSourceCenter::shouldInterruptAudioOnPageVisibilityChange());
 #endif
 
 #define INITIALIZE_DEFAULT_OVERRIDABLE_PREFERENCE_FROM_NSUSERDEFAULTS(KeyUpper, KeyLower, TypeName, Type, DefaultValue, HumanReadableName, HumanReadableDescription) \
@@ -180,7 +180,7 @@ void WebPreferences::platformUpdateStringValueForKey(const String& key, const St
     if (!m_identifier)
         return;
 
-    [[NSUserDefaults standardUserDefaults] setObject:nsStringFromWebCoreString(value) forKey:makeKey(m_identifier, m_keyPrefix, key)];
+    [[NSUserDefaults standardUserDefaults] setObject:nsStringFromCyberCoreString(value) forKey:makeKey(m_identifier, m_keyPrefix, key)];
 }
 
 void WebPreferences::platformUpdateBoolValueForKey(const String& key, bool value)

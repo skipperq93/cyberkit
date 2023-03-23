@@ -27,10 +27,10 @@
 
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FilterImage;
 
 using FilterImageVector = Vector<Ref<FilterImage>>;
 
-} // namespace WebCore
+} // namespace CyberCore

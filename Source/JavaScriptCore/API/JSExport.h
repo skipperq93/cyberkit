@@ -23,7 +23,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
  */
 
-#import <CyberScriptCore/JavaScriptCore.h>
+#import <CyberScriptCore/CyberScriptCore.h>
 
 #if JSC_OBJC_API_ENABLED
 
@@ -46,21 +46,21 @@
  prototype chain for a JavaScript wrapper object will reflect the wrapped
  Objective-C type's inheritance hierarchy.
 
- JavaScriptCore also produces a constructor for each Objective-C class. The
+ CyberScriptCore also produces a constructor for each Objective-C class. The
  constructor has a property named 'prototype' that references the prototype,
  and the prototype has a property named 'constructor' that references the
  constructor.
 
- By default JavaScriptCore does not export any methods or properties from an
+ By default CyberScriptCore does not export any methods or properties from an
  Objective-C class to JavaScript; however methods and properties may be exported
  explicitly using JSExport. For each protocol that a class conforms to, if the
- protocol incorporates the protocol JSExport, JavaScriptCore exports the methods
+ protocol incorporates the protocol JSExport, CyberScriptCore exports the methods
  and properties in that protocol to JavaScript
 
- For each exported instance method JavaScriptCore will assign a corresponding
+ For each exported instance method CyberScriptCore will assign a corresponding
  JavaScript function to the prototype. For each exported Objective-C property
- JavaScriptCore will assign a corresponding JavaScript accessor to the prototype.
- For each exported class method JavaScriptCore will assign a corresponding
+ CyberScriptCore will assign a corresponding JavaScript accessor to the prototype.
+ For each exported class method CyberScriptCore will assign a corresponding
  JavaScript function to the constructor. For example:
 
 <pre>

@@ -43,8 +43,8 @@
 #include <CyberCore/TextureMapperGL.h>
 #include <CyberCore/TextureMapperLayer.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 bool LayerTreeHost::prepareForRendering()
 {
@@ -75,7 +75,7 @@ void LayerTreeHost::compositeLayersToContext()
 
 bool LayerTreeHost::flushPendingLayerChanges()
 {
-    auto* localMainFrame = dynamicDowncast<WebCore::LocalFrame>(m_webPage.corePage()->mainFrame());
+    auto* localMainFrame = dynamicDowncast<CyberCore::LocalFrame>(m_webPage.corePage()->mainFrame());
     if (!localMainFrame)
         return false;
     FrameView* frameView = localMainFrame->view();
@@ -165,7 +165,7 @@ void LayerTreeHost::cancelPendingLayerFlush()
     m_layerFlushTimer.stop();
 }
 
-void LayerTreeHost::setRootCompositingLayer(WebCore::GraphicsLayer* graphicsLayer)
+void LayerTreeHost::setRootCompositingLayer(CyberCore::GraphicsLayer* graphicsLayer)
 {
     if (m_rootCompositingLayer == graphicsLayer)
         return;
@@ -178,7 +178,7 @@ void LayerTreeHost::setRootCompositingLayer(WebCore::GraphicsLayer* graphicsLaye
         m_rootLayer->addChild(*m_rootCompositingLayer);
 }
 
-void LayerTreeHost::setViewOverlayRootLayer(WebCore::GraphicsLayer* graphicsLayer)
+void LayerTreeHost::setViewOverlayRootLayer(CyberCore::GraphicsLayer* graphicsLayer)
 {
     if (m_overlayCompositingLayer == graphicsLayer)
         return;
@@ -191,7 +191,7 @@ void LayerTreeHost::setViewOverlayRootLayer(WebCore::GraphicsLayer* graphicsLaye
         m_rootLayer->addChild(*m_rootCompositingLayer);
 }
 
-void LayerTreeHost::setNonCompositedContentsNeedDisplay(const WebCore::IntRect& rect)
+void LayerTreeHost::setNonCompositedContentsNeedDisplay(const CyberCore::IntRect& rect)
 {
     if (!enabled())
         return;
@@ -199,7 +199,7 @@ void LayerTreeHost::setNonCompositedContentsNeedDisplay(const WebCore::IntRect& 
     scheduleLayerFlush();
 }
 
-void LayerTreeHost::scrollNonCompositedContents(const WebCore::IntRect& scrollRect)
+void LayerTreeHost::scrollNonCompositedContents(const CyberCore::IntRect& scrollRect)
 {
     setNonCompositedContentsNeedDisplay(scrollRect);
 }
@@ -230,7 +230,7 @@ void LayerTreeHost::forceRepaintAsync(CompletionHandler<void()>&& completionHand
     completionHandler();
 }
 
-void LayerTreeHost::sizeDidChange(const WebCore::IntSize& newSize)
+void LayerTreeHost::sizeDidChange(const CyberCore::IntSize& newSize)
 {
     if (!enabled())
         return;
@@ -253,16 +253,16 @@ void LayerTreeHost::resumeRendering()
     m_isSuspended = false;
 }
 
-WebCore::GraphicsLayerFactory* LayerTreeHost::graphicsLayerFactory()
+CyberCore::GraphicsLayerFactory* LayerTreeHost::graphicsLayerFactory()
 {
     return nullptr;
 }
 
-void LayerTreeHost::contentsSizeChanged(const WebCore::IntSize&)
+void LayerTreeHost::contentsSizeChanged(const CyberCore::IntSize&)
 {
 }
 
-void LayerTreeHost::didChangeViewportAttributes(WebCore::ViewportAttributes&&)
+void LayerTreeHost::didChangeViewportAttributes(CyberCore::ViewportAttributes&&)
 {
 }
 
@@ -274,7 +274,7 @@ void LayerTreeHost::deviceOrPageScaleFactorChanged()
 {
 }
 
-RefPtr<WebCore::DisplayRefreshMonitor> LayerTreeHost::createDisplayRefreshMonitor(WebCore::PlatformDisplayID)
+RefPtr<CyberCore::DisplayRefreshMonitor> LayerTreeHost::createDisplayRefreshMonitor(CyberCore::PlatformDisplayID)
 {
     return nullptr;
 }
@@ -293,7 +293,7 @@ void LayerTreeHost::paintContents(const GraphicsLayer*, GraphicsContext& context
 {
     context.save();
     context.clip(rectToPaint);
-    if (auto* localMainFrame = dynamicDowncast<WebCore::LocalFrame>(m_webPage.corePage()->mainFrame()))
+    if (auto* localMainFrame = dynamicDowncast<CyberCore::LocalFrame>(m_webPage.corePage()->mainFrame()))
         localMainFrame->view()->paint(context, enclosingIntRect(rectToPaint));
     context.restore();
 }
@@ -316,6 +316,6 @@ void LayerTreeHost::applyDeviceScaleFactor()
     m_rootLayer->setTransform(m);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(GRAPHICS_LAYER_TEXTURE_MAPPER)

@@ -51,9 +51,9 @@ class AuthenticatorManager : public AuthenticatorTransportService::Observer, pub
     WTF_MAKE_FAST_ALLOCATED;
     WTF_MAKE_NONCOPYABLE(AuthenticatorManager);
 public:
-    using Respond = std::variant<Ref<WebCore::AuthenticatorResponse>, WebCore::ExceptionData>;
+    using Respond = std::variant<Ref<CyberCore::AuthenticatorResponse>, CyberCore::ExceptionData>;
     using Callback = CompletionHandler<void(Respond&&)>;
-    using TransportSet = HashSet<WebCore::AuthenticatorTransport, WTF::IntHash<WebCore::AuthenticatorTransport>, WTF::StrongEnumHashTraits<WebCore::AuthenticatorTransport>>;
+    using TransportSet = HashSet<CyberCore::AuthenticatorTransport, WTF::IntHash<CyberCore::AuthenticatorTransport>, WTF::StrongEnumHashTraits<CyberCore::AuthenticatorTransport>>;
 
     using AuthenticatorTransportService::Observer::weakPtrFactory;
     using AuthenticatorTransportService::Observer::WeakValueType;
@@ -65,7 +65,7 @@ public:
     virtual ~AuthenticatorManager() = default;
 
     void handleRequest(WebAuthenticationRequestData&&, Callback&&);
-    void cancelRequest(const WebCore::PageIdentifier&, const std::optional<WebCore::FrameIdentifier>&); // Called from WebPageProxy/WebProcessProxy.
+    void cancelRequest(const CyberCore::PageIdentifier&, const std::optional<CyberCore::FrameIdentifier>&); // Called from WebPageProxy/WebProcessProxy.
     void cancelRequest(const API::WebAuthenticationPanel&); // Called from panel clients.
     void cancel(); // Called from the presenter.
 
@@ -83,7 +83,7 @@ protected:
     void decidePolicyForLocalAuthenticator(CompletionHandler<void(LocalAuthenticatorPolicy)>&&);
     TransportSet getTransports() const;
     virtual void runPanel();
-    void selectAssertionResponse(Vector<Ref<WebCore::AuthenticatorAssertionResponse>>&&, WebAuthenticationSource, CompletionHandler<void(WebCore::AuthenticatorAssertionResponse*)>&&);
+    void selectAssertionResponse(Vector<Ref<CyberCore::AuthenticatorAssertionResponse>>&&, WebAuthenticationSource, CompletionHandler<void(CyberCore::AuthenticatorAssertionResponse*)>&&);
     void startDiscovery(const TransportSet&);
 
 private:
@@ -105,7 +105,7 @@ private:
     void cancelRequest() final;
 
     // Overriden by MockAuthenticatorManager.
-    virtual UniqueRef<AuthenticatorTransportService> createService(WebCore::AuthenticatorTransport, AuthenticatorTransportService::Observer&) const;
+    virtual UniqueRef<AuthenticatorTransportService> createService(CyberCore::AuthenticatorTransport, AuthenticatorTransportService::Observer&) const;
     // Overriden to return every exception for tests to confirm.
     virtual void respondReceivedInternal(Respond&&) { }
     virtual void filterTransports(TransportSet&) const;

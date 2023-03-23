@@ -51,8 +51,8 @@
 #include <CyberCore/UserMessageHandlerDescriptor.h>
 #endif
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 static HashMap<UserContentControllerIdentifier, WebUserContentController*>& userContentControllers()
 {
@@ -249,7 +249,7 @@ void WebUserContentController::removeAllUserStyleSheets(const Vector<ContentWorl
 }
 
 #if ENABLE(USER_MESSAGE_HANDLERS)
-class WebUserMessageHandlerDescriptorProxy : public WebCore::UserMessageHandlerDescriptor {
+class WebUserMessageHandlerDescriptorProxy : public CyberCore::UserMessageHandlerDescriptor {
 public:
     static Ref<WebUserMessageHandlerDescriptorProxy> create(WebUserContentController* controller, const AtomString& name, InjectedBundleScriptWorld& world, uint64_t identifier)
     {
@@ -264,16 +264,16 @@ public:
 
 private:
     WebUserMessageHandlerDescriptorProxy(WebUserContentController* controller, const AtomString& name, InjectedBundleScriptWorld& world, uint64_t identifier)
-        : WebCore::UserMessageHandlerDescriptor(name, world.coreWorld())
+        : CyberCore::UserMessageHandlerDescriptor(name, world.coreWorld())
         , m_controller(controller)
         , m_identifier(identifier)
     {
     }
 
-    // WebCore::UserMessageHandlerDescriptor
-    void didPostMessage(WebCore::UserMessageHandler& handler, WebCore::SerializedScriptValue* value, WTF::Function<void(SerializedScriptValue*, const String&)>&& completionHandler) override
+    // CyberCore::UserMessageHandlerDescriptor
+    void didPostMessage(CyberCore::UserMessageHandler& handler, CyberCore::SerializedScriptValue* value, WTF::Function<void(SerializedScriptValue*, const String&)>&& completionHandler) override
     {
-        WebCore::Frame* frame = handler.frame();
+        CyberCore::Frame* frame = handler.frame();
         if (!frame)
             return;
     
@@ -449,7 +449,7 @@ void WebUserContentController::addUserScriptInternal(InjectedBundleScriptWorld& 
         });
     }
 
-    auto& scriptsInWorld = m_userScripts.ensure(&world, [] { return Vector<std::pair<std::optional<uint64_t>, WebCore::UserScript>>(); }).iterator->value;
+    auto& scriptsInWorld = m_userScripts.ensure(&world, [] { return Vector<std::pair<std::optional<uint64_t>, CyberCore::UserScript>>(); }).iterator->value;
     if (userScriptIdentifier && scriptsInWorld.findIf([&](auto& pair) { return pair.first == userScriptIdentifier; }) != notFound)
         return;
 
@@ -498,7 +498,7 @@ void WebUserContentController::removeUserScripts(InjectedBundleScriptWorld& worl
 
 void WebUserContentController::addUserStyleSheetInternal(InjectedBundleScriptWorld& world, const std::optional<uint64_t>& userStyleSheetIdentifier, UserStyleSheet&& userStyleSheet)
 {
-    auto& styleSheetsInWorld = m_userStyleSheets.ensure(&world, [] { return Vector<std::pair<std::optional<uint64_t>, WebCore::UserStyleSheet>>(); }).iterator->value;
+    auto& styleSheetsInWorld = m_userStyleSheets.ensure(&world, [] { return Vector<std::pair<std::optional<uint64_t>, CyberCore::UserStyleSheet>>(); }).iterator->value;
     if (userStyleSheetIdentifier && styleSheetsInWorld.findIf([&](auto& pair) { return pair.first == userStyleSheetIdentifier; }) != notFound)
         return;
 
@@ -587,7 +587,7 @@ void WebUserContentController::removeAllUserContent()
     }
 }
 
-void WebUserContentController::forEachUserScript(Function<void(WebCore::DOMWrapperWorld&, const WebCore::UserScript&)>&& functor) const
+void WebUserContentController::forEachUserScript(Function<void(CyberCore::DOMWrapperWorld&, const CyberCore::UserScript&)>&& functor) const
 {
     for (const auto& worldAndUserScriptVector : m_userScripts) {
         auto& world = worldAndUserScriptVector.key->coreWorld();
@@ -596,7 +596,7 @@ void WebUserContentController::forEachUserScript(Function<void(WebCore::DOMWrapp
     }
 }
 
-void WebUserContentController::forEachUserStyleSheet(Function<void(const WebCore::UserStyleSheet&)>&& functor) const
+void WebUserContentController::forEachUserStyleSheet(Function<void(const CyberCore::UserStyleSheet&)>&& functor) const
 {
     for (auto& styleSheetVector : m_userStyleSheets.values()) {
         for (const auto& identifierUserStyleSheetPair : styleSheetVector)
@@ -605,7 +605,7 @@ void WebUserContentController::forEachUserStyleSheet(Function<void(const WebCore
 }
 
 #if ENABLE(USER_MESSAGE_HANDLERS)
-void WebUserContentController::forEachUserMessageHandler(Function<void(const WebCore::UserMessageHandlerDescriptor&)>&& functor) const
+void WebUserContentController::forEachUserMessageHandler(Function<void(const CyberCore::UserMessageHandlerDescriptor&)>&& functor) const
 {
     for (auto& userMessageHandlerVector : m_userMessageHandlers.values()) {
         for (auto& pair : userMessageHandlerVector)
@@ -614,4 +614,4 @@ void WebUserContentController::forEachUserMessageHandler(Function<void(const Web
 }
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit

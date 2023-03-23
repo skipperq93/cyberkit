@@ -25,8 +25,8 @@
 
 #import <CyberKitLegacy/DOMImplementation.h>
 
-namespace WebCore {
+namespace CyberCore {
 class DOMImplementation;
 }
 
-DOMImplementation *kit(WebCore::DOMImplementation*);
+DOMImplementation *kit(CyberCore::DOMImplementation*);

@@ -45,7 +45,7 @@
 #include <wtf/HexNumber.h>
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(RenderFragmentContainer);
 
@@ -566,4 +566,4 @@ TextStream& operator<<(TextStream& stream, const RenderFragmentContainer& contai
 
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

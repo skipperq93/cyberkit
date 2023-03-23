@@ -30,7 +30,7 @@
 #include "SandboxExtension.h"
 #include "SessionState.h"
 #include "UserContentControllerParameters.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebPageGroupData.h"
 #include "WebPageProxyIdentifier.h"
 #include "WebPreferencesStore.h"
@@ -78,9 +78,9 @@ struct WebPageCreationParameters {
     void encode(IPC::Encoder&) const;
     static std::optional<WebPageCreationParameters> decode(IPC::Decoder&);
 
-    WebCore::IntSize viewSize;
+    CyberCore::IntSize viewSize;
 
-    OptionSet<WebCore::ActivityState::Flag> activityState;
+    OptionSet<CyberCore::ActivityState::Flag> activityState;
     
     WebPreferencesStore store;
     DrawingAreaType drawingAreaType;
@@ -90,23 +90,23 @@ struct WebPageCreationParameters {
 
     bool isEditable;
 
-    WebCore::Color underlayColor;
+    CyberCore::Color underlayColor;
 
     bool useFixedLayout;
-    WebCore::IntSize fixedLayoutSize;
+    CyberCore::IntSize fixedLayoutSize;
 
-    WebCore::FloatSize defaultUnobscuredSize;
-    WebCore::FloatSize minimumUnobscuredSize;
-    WebCore::FloatSize maximumUnobscuredSize;
+    CyberCore::FloatSize defaultUnobscuredSize;
+    CyberCore::FloatSize minimumUnobscuredSize;
+    CyberCore::FloatSize maximumUnobscuredSize;
 
-    std::optional<WebCore::FloatRect> viewExposedRect;
+    std::optional<CyberCore::FloatRect> viewExposedRect;
 
     bool alwaysShowsHorizontalScroller;
     bool alwaysShowsVerticalScroller;
 
     bool suppressScrollbarAnimations;
 
-    WebCore::Pagination::Mode paginationMode;
+    CyberCore::Pagination::Mode paginationMode;
     bool paginationBehavesLikeColumns;
     double pageLength;
     double gapBetweenPages;
@@ -129,19 +129,19 @@ struct WebPageCreationParameters {
     float topContentInset;
     
     float mediaVolume;
-    WebCore::MediaProducerMutedStateFlags muted;
+    CyberCore::MediaProducerMutedStateFlags muted;
     bool openedByDOM { false };
     bool mayStartMediaWhenInWindow;
     bool mediaPlaybackIsSuspended { false };
 
-    WebCore::IntSize minimumSizeForAutoLayout;
-    WebCore::IntSize sizeToContentAutoSizeMaximumSize;
+    CyberCore::IntSize minimumSizeForAutoLayout;
+    CyberCore::IntSize sizeToContentAutoSizeMaximumSize;
     bool autoSizingShouldExpandToViewHeight;
-    std::optional<WebCore::FloatSize> viewportSizeForCSSViewportUnits;
+    std::optional<CyberCore::FloatSize> viewportSizeForCSSViewportUnits;
     
-    WebCore::ScrollPinningBehavior scrollPinningBehavior;
+    CyberCore::ScrollPinningBehavior scrollPinningBehavior;
 
-    // FIXME: This should be std::optional<WebCore::ScrollbarOverlayStyle>, but we would need to
+    // FIXME: This should be std::optional<CyberCore::ScrollbarOverlayStyle>, but we would need to
     // correctly handle enums inside Optionals when encoding and decoding. 
     std::optional<uint32_t> scrollbarOverlayStyle;
 
@@ -160,22 +160,22 @@ struct WebPageCreationParameters {
     bool useElevatedUserInterfaceLevel { false };
 
 #if PLATFORM(MAC)
-    std::optional<WebCore::DestinationColorSpace> colorSpace;
+    std::optional<CyberCore::DestinationColorSpace> colorSpace;
     bool useSystemAppearance { false };
     bool useFormSemanticContext { false };
 #endif
 #if ENABLE(META_VIEWPORT)
     bool ignoresViewportScaleLimits;
-    WebCore::FloatSize viewportConfigurationViewLayoutSize;
+    CyberCore::FloatSize viewportConfigurationViewLayoutSize;
     double viewportConfigurationLayoutSizeScaleFactor;
     double viewportConfigurationMinimumEffectiveDeviceWidth;
-    WebCore::FloatSize viewportConfigurationViewSize;
-    std::optional<WebCore::ViewportArguments> overrideViewportArguments;
+    CyberCore::FloatSize viewportConfigurationViewSize;
+    std::optional<CyberCore::ViewportArguments> overrideViewportArguments;
 #endif
 #if PLATFORM(IOS_FAMILY)
-    WebCore::FloatSize screenSize;
-    WebCore::FloatSize availableScreenSize;
-    WebCore::FloatSize overrideScreenSize;
+    CyberCore::FloatSize screenSize;
+    CyberCore::FloatSize availableScreenSize;
+    CyberCore::FloatSize overrideScreenSize;
     float textAutosizingWidth;
     int32_t deviceOrientation { 0 };
     bool keyboardIsAttached { false };
@@ -192,7 +192,7 @@ struct WebPageCreationParameters {
     Vector<SandboxExtension::Handle> fontMachExtensionHandles;
 #endif
 #if HAVE(APP_ACCENT_COLORS)
-    WebCore::Color accentColor;
+    CyberCore::Color accentColor;
 #endif
 #if USE(WPE_RENDERER)
     UnixFileDescriptor hostFileDescriptor;
@@ -205,8 +205,8 @@ struct WebPageCreationParameters {
 #endif
     bool shouldScaleViewToFitDocument;
 
-    WebCore::UserInterfaceLayoutDirection userInterfaceLayoutDirection;
-    OptionSet<WebCore::LayoutMilestone> observedLayoutMilestones;
+    CyberCore::UserInterfaceLayoutDirection userInterfaceLayoutDirection;
+    OptionSet<CyberCore::LayoutMilestone> observedLayoutMilestones;
 
     String overrideContentSecurityPolicy;
     std::optional<double> cpuLimit;
@@ -215,7 +215,7 @@ struct WebPageCreationParameters {
     Vector<String> urlSchemesWithLegacyCustomProtocolHandlers;
 
 #if ENABLE(APPLICATION_MANIFEST)
-    std::optional<WebCore::ApplicationManifest> applicationManifest;
+    std::optional<CyberCore::ApplicationManifest> applicationManifest;
 #endif
 
     bool needsFontAttributes { false };
@@ -230,9 +230,9 @@ struct WebPageCreationParameters {
     std::optional<WebExtensionControllerParameters> webExtensionControllerParameters;
 #endif
 
-    std::optional<WebCore::Color> backgroundColor;
+    std::optional<CyberCore::Color> backgroundColor;
 
-    std::optional<WebCore::PageIdentifier> oldPageID;
+    std::optional<CyberCore::PageIdentifier> oldPageID;
 
     String overriddenMediaType;
     Vector<String> corsDisablingPatterns;
@@ -265,7 +265,7 @@ struct WebPageCreationParameters {
     bool lastNavigationWasAppInitiated { true };
     bool canUseCredentialStorage { true };
 
-    WebCore::ShouldRelaxThirdPartyCookieBlocking shouldRelaxThirdPartyCookieBlocking { WebCore::ShouldRelaxThirdPartyCookieBlocking::No };
+    CyberCore::ShouldRelaxThirdPartyCookieBlocking shouldRelaxThirdPartyCookieBlocking { CyberCore::ShouldRelaxThirdPartyCookieBlocking::No };
     
     bool httpsUpgradeEnabled { true };
 
@@ -274,7 +274,7 @@ struct WebPageCreationParameters {
 #endif
     
 #if ENABLE(APP_HIGHLIGHTS)
-    WebCore::HighlightVisibility appHighlightsVisible { WebCore::HighlightVisibility::Hidden };
+    CyberCore::HighlightVisibility appHighlightsVisible { CyberCore::HighlightVisibility::Hidden };
 #endif
 
 #if HAVE(TOUCH_BAR)
@@ -283,14 +283,14 @@ struct WebPageCreationParameters {
 
     bool hasResizableWindows { false };
 
-    WebCore::ContentSecurityPolicyModeForExtension contentSecurityPolicyModeForExtension { WebCore::ContentSecurityPolicyModeForExtension::None };
+    CyberCore::ContentSecurityPolicyModeForExtension contentSecurityPolicyModeForExtension { CyberCore::ContentSecurityPolicyModeForExtension::None };
 
-    std::optional<WebCore::FrameIdentifier> mainFrameIdentifier;
-    Markable<WebCore::LayerHostingContextIdentifier> layerHostingContextIdentifier;
+    std::optional<CyberCore::FrameIdentifier> mainFrameIdentifier;
+    Markable<CyberCore::LayerHostingContextIdentifier> layerHostingContextIdentifier;
 
 #if ENABLE(NETWORK_CONNECTION_INTEGRITY)
     Vector<String> lookalikeCharacterStrings;
-    Vector<WebCore::LookalikeCharactersSanitizationData> allowedLookalikeCharacterStrings;
+    Vector<CyberCore::LookalikeCharactersSanitizationData> allowedLookalikeCharacterStrings;
 #endif
 
 #if HAVE(MACH_BOOTSTRAP_EXTENSION)

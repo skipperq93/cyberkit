@@ -49,13 +49,13 @@ WKWebsitePoliciesRef WKWebsitePoliciesCreate()
 
 void WKWebsitePoliciesSetContentBlockersEnabled(WKWebsitePoliciesRef websitePolicies, bool enabled)
 {
-    auto defaultEnablement = enabled ? WebCore::ContentExtensionDefaultEnablement::Enabled : WebCore::ContentExtensionDefaultEnablement::Disabled;
+    auto defaultEnablement = enabled ? CyberCore::ContentExtensionDefaultEnablement::Enabled : CyberCore::ContentExtensionDefaultEnablement::Disabled;
     toImpl(websitePolicies)->setContentExtensionEnablement({ defaultEnablement, { } });
 }
 
 bool WKWebsitePoliciesGetContentBlockersEnabled(WKWebsitePoliciesRef websitePolicies)
 {
-    return toImpl(websitePolicies)->contentExtensionEnablement().first == WebCore::ContentExtensionDefaultEnablement::Enabled;
+    return toImpl(websitePolicies)->contentExtensionEnablement().first == CyberCore::ContentExtensionDefaultEnablement::Enabled;
 }
 
 WK_EXPORT WKDictionaryRef WKWebsitePoliciesCopyCustomHeaderFields(WKWebsitePoliciesRef)

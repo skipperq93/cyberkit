@@ -53,7 +53,7 @@
 #include "RenderLayerScrollableArea.h"
 #include "RenderView.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -304,4 +304,4 @@ void RenderMarquee::timerFired()
         scrollableArea->scrollToYOffset(newPos);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

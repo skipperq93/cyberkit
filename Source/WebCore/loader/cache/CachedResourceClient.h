@@ -28,7 +28,7 @@
 #include <wtf/WeakHashSet.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CachedResource;
 class NetworkLoadMetrics;
@@ -68,9 +68,9 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #define SPECIALIZE_TYPE_TRAITS_CACHED_RESOURCE_CLIENT(ToClassName, CachedResourceTypeValue) \
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::ToClassName) \
-    static bool isType(const WebCore::CachedResourceClient& client) { return client.resourceClientType() == WebCore::CachedResourceClient::CachedResourceTypeValue; } \
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::ToClassName) \
+    static bool isType(const CyberCore::CachedResourceClient& client) { return client.resourceClientType() == CyberCore::CachedResourceClient::CachedResourceTypeValue; } \
 SPECIALIZE_TYPE_TRAITS_END()

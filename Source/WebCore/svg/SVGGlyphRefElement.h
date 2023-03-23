@@ -23,7 +23,7 @@
 #include "SVGElement.h"
 #include "SVGURIReference.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGGlyphRefElement final : public SVGElement, public SVGURIReference {
     WTF_MAKE_ISO_ALLOCATED(SVGGlyphRefElement);

@@ -32,7 +32,7 @@
 #include <wtf/MathExtras.h>
 #include <wtf/StdLibExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 void FEComponentTransferSoftwareApplier::computeIdentityTable(LookupTable&, const ComponentTransferFunction&)
 {
@@ -145,4 +145,4 @@ bool FEComponentTransferSoftwareApplier::apply(const Filter&, const FilterImageV
     return true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

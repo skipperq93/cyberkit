@@ -26,14 +26,14 @@
 #include "config.h"
 #include "WebValidationMessageClient.h"
 
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebPage.h"
 #include "WebPageProxyMessages.h"
 #include <CyberCore/Element.h>
 #include <CyberCore/Frame.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 WebValidationMessageClient::WebValidationMessageClient(WebPage& page)
     : m_page(page)
@@ -100,4 +100,4 @@ void WebValidationMessageClient::updateValidationBubbleStateIfNeeded()
         hideValidationMessage(*m_currentAnchor);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

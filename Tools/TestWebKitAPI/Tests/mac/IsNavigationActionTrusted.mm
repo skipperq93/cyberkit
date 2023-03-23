@@ -26,7 +26,7 @@
 #import "config.h"
 
 #import "PlatformUtilities.h"
-#import <CyberKit/WebKitLegacy.h>
+#import <CyberKit/CyberKitLegacy.h>
 #import <CyberKit/WKWebView.h>
 #import <wtf/RetainPtr.h>
 
@@ -91,7 +91,7 @@ TEST(WebKit, IsNavigationActionTrusted)
     }
 }
 
-TEST(WebKitLegacy, IsNavigationActionTrusted)
+TEST(CyberKitLegacy, IsNavigationActionTrusted)
 {
     @autoreleasepool {
         RetainPtr<WebView> webView = adoptNS([[WebView alloc] init]);

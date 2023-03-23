@@ -28,11 +28,11 @@
 
 #include <CyberCore/DocumentLoader.h>
 
-namespace WebKit {
+namespace CyberKit {
 
-class WebDocumentLoader : public WebCore::DocumentLoader {
+class WebDocumentLoader : public CyberCore::DocumentLoader {
 public:
-    static Ref<WebDocumentLoader> create(const WebCore::ResourceRequest& request, const WebCore::SubstituteData& data)
+    static Ref<WebDocumentLoader> create(const CyberCore::ResourceRequest& request, const CyberCore::SubstituteData& data)
     {
         return adoptRef(*new WebDocumentLoader(request, data));
     }
@@ -41,13 +41,13 @@ public:
     void setNavigationID(uint64_t);
 
 private:
-    WebDocumentLoader(const WebCore::ResourceRequest&, const WebCore::SubstituteData&);
+    WebDocumentLoader(const CyberCore::ResourceRequest&, const CyberCore::SubstituteData&);
 
     void detachFromFrame() override;
 
     uint64_t m_navigationID;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // WebDocumentLoader_h

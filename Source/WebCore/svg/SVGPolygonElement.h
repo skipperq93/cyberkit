@@ -22,7 +22,7 @@
 
 #include "SVGPolyElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGPolygonElement final : public SVGPolyElement {
     WTF_MAKE_ISO_ALLOCATED(SVGPolygonElement);
@@ -33,4 +33,4 @@ private:
     SVGPolygonElement(const QualifiedName&, Document&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

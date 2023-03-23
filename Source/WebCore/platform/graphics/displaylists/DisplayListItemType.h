@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 namespace DisplayList {
 
 enum class AsTextFlag : uint8_t {
@@ -112,4 +112,4 @@ WEBCORE_EXPORT bool isInlineItem(ItemType);
 WEBCORE_EXPORT bool isDrawingItem(ItemType);
 
 } // namespace DisplayList
-} // namespace WebCore
+} // namespace CyberCore

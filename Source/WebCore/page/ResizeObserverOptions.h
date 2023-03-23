@@ -30,10 +30,10 @@
 
 #include "ResizeObserverBoxOptions.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ResizeObserverOptions {
     ResizeObserverBoxOptions box;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -29,7 +29,7 @@
 
 #import <wtf/RetainPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class PasteboardWriterData;
 

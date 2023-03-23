@@ -30,7 +30,7 @@
 #include <wtf/Forward.h>
 #include <wtf/Hasher.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct GradientColorStop {
     float offset { 0 };
@@ -44,4 +44,4 @@ inline void add(Hasher& hasher, const GradientColorStop& stop)
 
 TextStream& operator<<(TextStream&, const GradientColorStop&);
 
-} // namespace WebCore
+} // namespace CyberCore

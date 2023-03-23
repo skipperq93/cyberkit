@@ -1,6 +1,6 @@
 # -----------------------------------------------------------------------------
 # This file is included individually from various subdirectories (JSC, WTF,
-# WebCore, WebKit) in order to allow scripts to build only part of WebKit.
+# CyberCore, CyberKit) in order to allow scripts to build only part of CyberKit.
 # We want to run this file only once.
 # -----------------------------------------------------------------------------
 if (NOT HAS_RUN_WEBKIT_COMMON)
@@ -15,7 +15,7 @@ if (NOT HAS_RUN_WEBKIT_COMMON)
 
     option(ENABLE_JAVASCRIPTCORE "Enable building JavaScriptCore" ON)
     option(ENABLE_WEBCORE "Enable building JavaScriptCore" ON)
-    option(ENABLE_WEBKIT "Enable building WebKit" ON)
+    option(ENABLE_WEBKIT "Enable building CyberKit" ON)
 
     if (NOT ENABLE_JAVASCRIPTCORE)
         set(ENABLE_WEBCORE OFF)
@@ -46,14 +46,14 @@ if (NOT HAS_RUN_WEBKIT_COMMON)
         WPE
         WinCairo
     )
-    set(PORT "NOPORT" CACHE STRING "choose which WebKit port to build (one of ${ALL_PORTS})")
+    set(PORT "NOPORT" CACHE STRING "choose which CyberKit port to build (one of ${ALL_PORTS})")
 
     list(FIND ALL_PORTS ${PORT} RET)
     if (${RET} EQUAL -1)
         if (APPLE)
             set(PORT "Mac")
         else ()
-            message(FATAL_ERROR "Please choose which WebKit port to build (one of ${ALL_PORTS})")
+            message(FATAL_ERROR "Please choose which CyberKit port to build (one of ${ALL_PORTS})")
         endif ()
     endif ()
 
@@ -68,7 +68,7 @@ if (NOT HAS_RUN_WEBKIT_COMMON)
 
     if (${CMAKE_CXX_COMPILER_ID} STREQUAL "GNU")
         if (${CMAKE_CXX_COMPILER_VERSION} VERSION_LESS "9.3.0")
-            message(FATAL_ERROR "GCC 9.3 or newer is required to build WebKit. Use a newer GCC version or Clang.")
+            message(FATAL_ERROR "GCC 9.3 or newer is required to build CyberKit. Use a newer GCC version or Clang.")
         endif ()
     endif ()
 
@@ -146,17 +146,17 @@ if (NOT HAS_RUN_WEBKIT_COMMON)
     # -----------------------------------------------------------------------------
     # Default library types
     # -----------------------------------------------------------------------------
-    # By default, only the highest-level libraries, WebKitLegacy and WebKit, are
+    # By default, only the highest-level libraries, CyberKitLegacy and CyberKit, are
     # shared, because properly building shared libraries that depend on each other
     # can be tricky. Override these in Options*.cmake for your port as needed.
     set(bmalloc_LIBRARY_TYPE STATIC)
     set(WTF_LIBRARY_TYPE STATIC)
     set(JavaScriptCore_LIBRARY_TYPE STATIC)
     set(PAL_LIBRARY_TYPE STATIC)
-    set(WebCore_LIBRARY_TYPE STATIC)
-    set(WebKitLegacy_LIBRARY_TYPE SHARED)
-    set(WebKit_LIBRARY_TYPE SHARED)
-    set(WebCoreTestSupport_LIBRARY_TYPE STATIC)
+    set(CyberCore_LIBRARY_TYPE STATIC)
+    set(CyberKitLegacy_LIBRARY_TYPE SHARED)
+    set(CyberKit_LIBRARY_TYPE SHARED)
+    set(CyberCoreTestSupport_LIBRARY_TYPE STATIC)
 
     set(CMAKE_POSITION_INDEPENDENT_CODE True)
 
@@ -214,14 +214,14 @@ if (NOT HAS_RUN_WEBKIT_COMMON)
     include(CMakePushCheckState)
     include(ProcessorCount)
 
-    include(WebKitPackaging)
-    include(WebKitMacros)
-    include(WebKitFS)
-    include(WebKitCCache)
-    include(WebKitCompilerFlags)
-    include(WebKitStaticAnalysis)
-    include(WebKitFeatures)
-    include(WebKitFindPackage)
+    include(CyberKitPackaging)
+    include(CyberKitMacros)
+    include(CyberKitFS)
+    include(CyberKitCCache)
+    include(CyberKitCompilerFlags)
+    include(CyberKitStaticAnalysis)
+    include(CyberKitFeatures)
+    include(CyberKitFindPackage)
 
     include(OptionsCommon)
     include(Options${PORT})
@@ -259,15 +259,15 @@ if (NOT HAS_RUN_WEBKIT_COMMON)
 
     if (ENABLE_WEBCORE)
         file(MAKE_DIRECTORY ${PAL_DERIVED_SOURCES_DIR})
-        file(MAKE_DIRECTORY ${WebCore_DERIVED_SOURCES_DIR})
+        file(MAKE_DIRECTORY ${CyberCore_DERIVED_SOURCES_DIR})
     endif ()
 
     if (ENABLE_WEBKIT)
-        file(MAKE_DIRECTORY ${WebKit_DERIVED_SOURCES_DIR})
+        file(MAKE_DIRECTORY ${CyberKit_DERIVED_SOURCES_DIR})
     endif ()
 
     if (ENABLE_WEBKIT_LEGACY)
-        file(MAKE_DIRECTORY ${WebKitLegacy_DERIVED_SOURCES_DIR})
+        file(MAKE_DIRECTORY ${CyberKitLegacy_DERIVED_SOURCES_DIR})
     endif ()
 
     if (ENABLE_WEBDRIVER)

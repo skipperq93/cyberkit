@@ -93,7 +93,7 @@
 #include "LocalDefaultSystemAppearance.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -4201,4 +4201,4 @@ TransformationMatrix RenderLayerBacking::transformMatrixForProperty(AnimatedProp
     return matrix;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -21,7 +21,7 @@
 
 #include "LegacyRenderSVGContainer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGElement;
 
@@ -47,4 +47,4 @@ private:
     bool nodeAtFloatPoint(const HitTestRequest&, HitTestResult&, const FloatPoint& pointInParent, HitTestAction) final;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

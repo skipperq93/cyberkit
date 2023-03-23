@@ -32,7 +32,7 @@ namespace WTF {
 class TextStream;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class Element;
 class Frame;
@@ -73,4 +73,4 @@ String quoteAndEscapeNonPrintables(StringView);
 WEBCORE_EXPORT String counterValueForElement(Element*);
 WEBCORE_EXPORT String markerTextForListItem(Element*);
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -58,7 +58,7 @@ typedef void (*BP_CreatePluginMIMETypesPreferencesFuncPtr)(void);
     NSMutableSet *pluginDatabases;
     
     WTF::String path;
-    WebCore::PluginInfo pluginInfo;
+    CyberCore::PluginInfo pluginInfo;
 
     RetainPtr<CFBundleRef> cfBundle;
 
@@ -75,7 +75,7 @@ typedef void (*BP_CreatePluginMIMETypesPreferencesFuncPtr)(void);
 
 - (const WTF::String&)path;
 
-- (const WebCore::PluginInfo&)pluginInfo;
+- (const CyberCore::PluginInfo&)pluginInfo;
 
 - (String)bundleIdentifier;
 - (String)bundleVersion;

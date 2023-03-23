@@ -33,7 +33,7 @@
 #include <wtf/CompletionHandler.h>
 #include <wtf/URL.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DataTransfer;
 class Document;
@@ -71,7 +71,7 @@ public:
     unsigned numberOfItemsToBeAccepted() const { return m_numberOfItemsToBeAccepted; }
 
     // FIXME: It should be possible to remove a number of these accessors once all
-    // drag logic is in WebCore.
+    // drag logic is in CyberCore.
     void setDidInitiateDrag(bool initiated) { m_didInitiateDrag = initiated; }
     bool didInitiateDrag() const { return m_didInitiateDrag; }
     OptionSet<DragOperation> sourceDragOperationMask() const { return m_sourceDragOperationMask; }
@@ -169,4 +169,4 @@ private:
 
 WEBCORE_EXPORT bool isDraggableLink(const Element&);
 
-} // namespace WebCore
+} // namespace CyberCore

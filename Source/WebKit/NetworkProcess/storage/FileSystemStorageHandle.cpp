@@ -67,7 +67,7 @@ std::unique_ptr<FileSystemStorageHandle> FileSystemStorageHandle::create(FileSys
 }
 
 FileSystemStorageHandle::FileSystemStorageHandle(FileSystemStorageManager& manager, Type type, String&& path, String&& name)
-    : m_identifier(WebCore::FileSystemHandleIdentifier::generateThreadSafe())
+    : m_identifier(CyberCore::FileSystemHandleIdentifier::generateThreadSafe())
     , m_manager(manager)
     , m_type(type)
     , m_path(WTFMove(path))
@@ -86,7 +86,7 @@ void FileSystemStorageHandle::close()
     m_manager->closeHandle(*this);
 }
 
-bool FileSystemStorageHandle::isSameEntry(WebCore::FileSystemHandleIdentifier identifier)
+bool FileSystemStorageHandle::isSameEntry(CyberCore::FileSystemHandleIdentifier identifier)
 {
     auto path = m_manager->getPath(identifier);
     if (path.isEmpty())
@@ -104,7 +104,7 @@ static bool isValidFileName(const String& directory, const String& name)
     return FileSystem::pathFileName(FileSystem::pathByAppendingComponent(directory, name)) == name;
 }
 
-Expected<WebCore::FileSystemHandleIdentifier, FileSystemStorageError> FileSystemStorageHandle::requestCreateHandle(IPC::Connection::UniqueID connection, Type type, String&& name, bool createIfNecessary)
+Expected<CyberCore::FileSystemHandleIdentifier, FileSystemStorageError> FileSystemStorageHandle::requestCreateHandle(IPC::Connection::UniqueID connection, Type type, String&& name, bool createIfNecessary)
 {
     if (m_type != FileSystemStorageHandle::Type::Directory)
         return makeUnexpected(FileSystemStorageError::TypeMismatch);
@@ -119,12 +119,12 @@ Expected<WebCore::FileSystemHandleIdentifier, FileSystemStorageError> FileSystem
     return m_manager->createHandle(connection, type, WTFMove(path), WTFMove(name), createIfNecessary);
 }
 
-Expected<WebCore::FileSystemHandleIdentifier, FileSystemStorageError> FileSystemStorageHandle::getFileHandle(IPC::Connection::UniqueID connection, String&& name, bool createIfNecessary)
+Expected<CyberCore::FileSystemHandleIdentifier, FileSystemStorageError> FileSystemStorageHandle::getFileHandle(IPC::Connection::UniqueID connection, String&& name, bool createIfNecessary)
 {
     return requestCreateHandle(connection, FileSystemStorageHandle::Type::File, WTFMove(name), createIfNecessary);
 }
 
-Expected<WebCore::FileSystemHandleIdentifier, FileSystemStorageError> FileSystemStorageHandle::getDirectoryHandle(IPC::Connection::UniqueID connection, String&& name, bool createIfNecessary)
+Expected<CyberCore::FileSystemHandleIdentifier, FileSystemStorageError> FileSystemStorageHandle::getDirectoryHandle(IPC::Connection::UniqueID connection, String&& name, bool createIfNecessary)
 {
     return requestCreateHandle(connection, FileSystemStorageHandle::Type::Directory, WTFMove(name), createIfNecessary);
 }
@@ -165,7 +165,7 @@ std::optional<FileSystemStorageError> FileSystemStorageHandle::removeEntry(const
     return result;
 }
 
-Expected<Vector<String>, FileSystemStorageError> FileSystemStorageHandle::resolve(WebCore::FileSystemHandleIdentifier identifier)
+Expected<Vector<String>, FileSystemStorageError> FileSystemStorageHandle::resolve(CyberCore::FileSystemHandleIdentifier identifier)
 {
     if (!m_manager)
         return makeUnexpected(FileSystemStorageError::Unknown);
@@ -201,12 +201,12 @@ Expected<FileSystemSyncAccessHandleInfo, FileSystemStorageError> FileSystemStora
     }
 
     ASSERT(!m_activeSyncAccessHandle);
-    m_activeSyncAccessHandle = SyncAccessHandleInfo { WebCore::FileSystemSyncAccessHandleIdentifier::generateThreadSafe() };
+    m_activeSyncAccessHandle = SyncAccessHandleInfo { CyberCore::FileSystemSyncAccessHandleIdentifier::generateThreadSafe() };
     uint64_t initialCapacity = valueOrDefault(FileSystem::fileSize(m_path));
     return FileSystemSyncAccessHandleInfo { m_activeSyncAccessHandle->identifier, WTFMove(*ipcHandle), initialCapacity };
 }
 
-std::optional<FileSystemStorageError> FileSystemStorageHandle::closeSyncAccessHandle(WebCore::FileSystemSyncAccessHandleIdentifier accessHandleIdentifier)
+std::optional<FileSystemStorageError> FileSystemStorageHandle::closeSyncAccessHandle(CyberCore::FileSystemSyncAccessHandleIdentifier accessHandleIdentifier)
 {
     if (!m_activeSyncAccessHandle || m_activeSyncAccessHandle->identifier != accessHandleIdentifier)
         return FileSystemStorageError::Unknown;
@@ -228,7 +228,7 @@ Expected<Vector<String>, FileSystemStorageError> FileSystemStorageHandle::getHan
     return FileSystem::listDirectory(m_path);
 }
 
-Expected<std::pair<WebCore::FileSystemHandleIdentifier, bool>, FileSystemStorageError> FileSystemStorageHandle::getHandle(IPC::Connection::UniqueID connection, String&& name)
+Expected<std::pair<CyberCore::FileSystemHandleIdentifier, bool>, FileSystemStorageError> FileSystemStorageHandle::getHandle(IPC::Connection::UniqueID connection, String&& name)
 {
     bool createIfNecessary = false;
     auto result = requestCreateHandle(connection, FileSystemStorageHandle::Type::Any, WTFMove(name), createIfNecessary);
@@ -240,7 +240,7 @@ Expected<std::pair<WebCore::FileSystemHandleIdentifier, bool>, FileSystemStorage
     return std::pair { result.value(), resultType == FileSystemStorageHandle::Type::Directory };
 }
 
-std::optional<FileSystemStorageError> FileSystemStorageHandle::move(WebCore::FileSystemHandleIdentifier destinationIdentifier, const String& newName)
+std::optional<FileSystemStorageError> FileSystemStorageHandle::move(CyberCore::FileSystemHandleIdentifier destinationIdentifier, const String& newName)
 {
     if (!m_manager)
         return FileSystemStorageError::Unknown;
@@ -269,7 +269,7 @@ std::optional<FileSystemStorageError> FileSystemStorageHandle::move(WebCore::Fil
     return std::nullopt;
 }
 
-std::optional<WebCore::FileSystemSyncAccessHandleIdentifier> FileSystemStorageHandle::activeSyncAccessHandle()
+std::optional<CyberCore::FileSystemSyncAccessHandleIdentifier> FileSystemStorageHandle::activeSyncAccessHandle()
 {
     if (!m_activeSyncAccessHandle)
         return std::nullopt;
@@ -277,7 +277,7 @@ std::optional<WebCore::FileSystemSyncAccessHandleIdentifier> FileSystemStorageHa
     return m_activeSyncAccessHandle->identifier;
 }
 
-bool FileSystemStorageHandle::isActiveSyncAccessHandle(WebCore::FileSystemSyncAccessHandleIdentifier accessHandleIdentifier)
+bool FileSystemStorageHandle::isActiveSyncAccessHandle(CyberCore::FileSystemSyncAccessHandleIdentifier accessHandleIdentifier)
 {
     return m_activeSyncAccessHandle && m_activeSyncAccessHandle->identifier == accessHandleIdentifier;
 }
@@ -291,7 +291,7 @@ uint64_t FileSystemStorageHandle::allocatedUnusedCapacity()
     return actualSize > m_activeSyncAccessHandle->capacity ? 0 : m_activeSyncAccessHandle->capacity - actualSize;
 }
 
-void FileSystemStorageHandle::requestNewCapacityForSyncAccessHandle(WebCore::FileSystemSyncAccessHandleIdentifier accessHandleIdentifier, uint64_t newCapacity, CompletionHandler<void(std::optional<uint64_t>)>&& completionHandler)
+void FileSystemStorageHandle::requestNewCapacityForSyncAccessHandle(CyberCore::FileSystemSyncAccessHandleIdentifier accessHandleIdentifier, uint64_t newCapacity, CompletionHandler<void(std::optional<uint64_t>)>&& completionHandler)
 {
     if (!isActiveSyncAccessHandle(accessHandleIdentifier))
         return completionHandler(std::nullopt);

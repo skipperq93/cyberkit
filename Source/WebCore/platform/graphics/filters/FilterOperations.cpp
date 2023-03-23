@@ -33,7 +33,7 @@
 #include "LengthFunctions.h"
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 bool FilterOperations::operator==(const FilterOperations& other) const
 {
@@ -226,4 +226,4 @@ TextStream& operator<<(TextStream& ts, const FilterOperations& filters)
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

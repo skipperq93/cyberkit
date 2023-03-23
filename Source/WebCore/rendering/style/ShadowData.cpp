@@ -25,7 +25,7 @@
 #include <wtf/PointerComparison.h>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 ShadowData::ShadowData(const ShadowData& o)
     : m_location(o.m_location.x(), o.m_location.y())
@@ -129,4 +129,4 @@ TextStream& operator<<(TextStream& ts, const ShadowData& data)
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

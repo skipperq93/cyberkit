@@ -25,9 +25,9 @@
 
 #import "WebApplicationCache.h"
 
-namespace WebCore {
+namespace CyberCore {
 class ApplicationCacheStorage;
 }
 
-WebCore::ApplicationCacheStorage& webApplicationCacheStorage();
+CyberCore::ApplicationCacheStorage& webApplicationCacheStorage();
 

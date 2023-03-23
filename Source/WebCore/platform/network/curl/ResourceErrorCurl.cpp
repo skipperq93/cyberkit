@@ -30,7 +30,7 @@
 
 #include "CurlContext.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static const String& curlErrorDomain()
 {
@@ -57,6 +57,6 @@ bool ResourceError::platformCompare(const ResourceError&, const ResourceError&)
     return true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

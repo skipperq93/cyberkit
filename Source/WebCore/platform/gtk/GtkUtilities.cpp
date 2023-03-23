@@ -28,7 +28,7 @@
 #include <gdk/x11/gdkx.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 static IntPoint gtkWindowGetOrigin(GtkWidget* window)
 {
@@ -221,4 +221,4 @@ bool shouldUseOverlayScrollbars()
     return !!overlayScrolling;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

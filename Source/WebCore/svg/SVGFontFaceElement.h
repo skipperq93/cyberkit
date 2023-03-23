@@ -23,7 +23,7 @@
 
 #include "SVGElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGFontElement;
 class StyleRuleFontFace;
@@ -67,4 +67,4 @@ private:
     WeakPtr<SVGFontElement, WeakPtrImplWithEventTargetData> m_fontElement;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

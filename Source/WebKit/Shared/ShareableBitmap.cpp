@@ -27,12 +27,12 @@
 #include "ShareableBitmap.h"
 
 #include "SharedMemory.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include <CyberCore/GraphicsContext.h>
 #include <wtf/DebugHeap.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 DECLARE_ALLOCATOR_WITH_HEAP_IDENTIFIER(ShareableBitmap);
 DEFINE_ALLOCATOR_WITH_HEAP_IDENTIFIER(ShareableBitmap);
@@ -122,7 +122,7 @@ void* ShareableBitmap::data() const
     return m_sharedMemory->data();
 }
 
-CheckedUint32 ShareableBitmap::numBytesForSize(WebCore::IntSize size, const ShareableBitmapConfiguration& configuration)
+CheckedUint32 ShareableBitmap::numBytesForSize(CyberCore::IntSize size, const ShareableBitmapConfiguration& configuration)
 {
     return calculateBytesPerRow(size, configuration) * size.height();
 }

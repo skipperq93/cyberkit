@@ -31,7 +31,7 @@
 #include <wtf/TypeCasts.h>
 #include <wtf/UniqueRef.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RemoteDOMWindow;
 class RemoteFrameClient;
@@ -77,8 +77,8 @@ private:
     LayerHostingContextIdentifier m_layerHostingContextIdentifier;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::RemoteFrame)
-static bool isType(const WebCore::AbstractFrame& frame) { return frame.frameType() == WebCore::AbstractFrame::FrameType::Remote; }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::RemoteFrame)
+static bool isType(const CyberCore::AbstractFrame& frame) { return frame.frameType() == CyberCore::AbstractFrame::FrameType::Remote; }
 SPECIALIZE_TYPE_TRAITS_END()

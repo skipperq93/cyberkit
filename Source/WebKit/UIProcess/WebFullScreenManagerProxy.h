@@ -34,7 +34,7 @@
 #include <wtf/Seconds.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 class FloatSize;
 class IntRect;
 
@@ -55,15 +55,15 @@ public:
     virtual void closeFullScreenManager() = 0;
     virtual bool isFullScreen() = 0;
 #if PLATFORM(IOS_FAMILY)
-    virtual void enterFullScreen(WebCore::FloatSize videoDimensions) = 0;
+    virtual void enterFullScreen(CyberCore::FloatSize videoDimensions) = 0;
 #else
     virtual void enterFullScreen() = 0;
 #endif
     virtual void exitFullScreen() = 0;
-    virtual void beganEnterFullScreen(const WebCore::IntRect& initialFrame, const WebCore::IntRect& finalFrame) = 0;
-    virtual void beganExitFullScreen(const WebCore::IntRect& initialFrame, const WebCore::IntRect& finalFrame) = 0;
+    virtual void beganEnterFullScreen(const CyberCore::IntRect& initialFrame, const CyberCore::IntRect& finalFrame) = 0;
+    virtual void beganExitFullScreen(const CyberCore::IntRect& initialFrame, const CyberCore::IntRect& finalFrame) = 0;
 
-    virtual bool lockFullscreenOrientation(WebCore::ScreenOrientationType) { return false; }
+    virtual bool lockFullscreenOrientation(CyberCore::ScreenOrientationType) { return false; }
     virtual void unlockFullscreenOrientation() { }
 };
 
@@ -97,19 +97,19 @@ public:
     void requestExitFullScreen();
     void saveScrollPosition();
     void restoreScrollPosition();
-    void setFullscreenInsets(const WebCore::FloatBoxExtent&);
+    void setFullscreenInsets(const CyberCore::FloatBoxExtent&);
     void setFullscreenAutoHideDuration(Seconds);
     void setFullscreenControlsHidden(bool);
     void closeWithCallback(CompletionHandler<void()>&&);
-    bool lockFullscreenOrientation(WebCore::ScreenOrientationType);
+    bool lockFullscreenOrientation(CyberCore::ScreenOrientationType);
     void unlockFullscreenOrientation();
 
 private:
     void supportsFullScreen(bool withKeyboard, CompletionHandler<void(bool)>&&);
-    void enterFullScreen(bool blocksReturnToFullscreenFromPictureInPicture, bool isVideoElementWithControls, WebCore::FloatSize videoDimensions);
+    void enterFullScreen(bool blocksReturnToFullscreenFromPictureInPicture, bool isVideoElementWithControls, CyberCore::FloatSize videoDimensions);
     void exitFullScreen();
-    void beganEnterFullScreen(const WebCore::IntRect& initialFrame, const WebCore::IntRect& finalFrame);
-    void beganExitFullScreen(const WebCore::IntRect& initialFrame, const WebCore::IntRect& finalFrame);
+    void beganEnterFullScreen(const CyberCore::IntRect& initialFrame, const CyberCore::IntRect& finalFrame);
+    void beganExitFullScreen(const CyberCore::IntRect& initialFrame, const CyberCore::IntRect& finalFrame);
     void callCloseCompletionHandlers();
 
     void didReceiveMessage(IPC::Connection&, IPC::Decoder&) override;

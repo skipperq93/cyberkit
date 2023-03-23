@@ -39,7 +39,7 @@
 
 namespace WebKit {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 RemoteMediaSourceProxy::RemoteMediaSourceProxy(GPUConnectionToWebProcess& connectionToWebProcess, RemoteMediaSourceIdentifier identifier, bool webMParserEnabled, RemoteMediaPlayerProxy& remoteMediaPlayerProxy)
     : m_connectionToWebProcess(connectionToWebProcess)
@@ -100,7 +100,7 @@ void RemoteMediaSourceProxy::failedToCreateRenderer(RendererType)
     notImplemented();
 }
 
-void RemoteMediaSourceProxy::addSourceBuffer(const WebCore::ContentType& contentType, AddSourceBufferCallback&& callback)
+void RemoteMediaSourceProxy::addSourceBuffer(const CyberCore::ContentType& contentType, AddSourceBufferCallback&& callback)
 {
     if (!m_remoteMediaPlayerProxy || !m_connectionToWebProcess)
         return;
@@ -129,12 +129,12 @@ void RemoteMediaSourceProxy::durationChanged(const MediaTime& duration)
         m_private->durationChanged(duration);
 }
 
-void RemoteMediaSourceProxy::bufferedChanged(const WebCore::PlatformTimeRanges& buffered)
+void RemoteMediaSourceProxy::bufferedChanged(const CyberCore::PlatformTimeRanges& buffered)
 {
     m_buffered = buffered;
 }
 
-void RemoteMediaSourceProxy::setReadyState(WebCore::MediaPlayerEnums::ReadyState readyState)
+void RemoteMediaSourceProxy::setReadyState(CyberCore::MediaPlayerEnums::ReadyState readyState)
 {
     if (m_private)
         m_private->setReadyState(readyState);

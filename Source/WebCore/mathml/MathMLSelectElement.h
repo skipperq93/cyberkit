@@ -29,7 +29,7 @@
 
 #include "MathMLRowElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class MathMLSelectElement final : public MathMLRowElement {
     WTF_MAKE_ISO_ALLOCATED(MathMLSelectElement);

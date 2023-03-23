@@ -29,10 +29,10 @@
 #import "WebViewInternal.h"
 
 #if PLATFORM(IOS_FAMILY)
-#import <CyberCore/WebCoreThreadMessage.h>
+#import <CyberCore/CyberCoreThreadMessage.h>
 #endif
 
-using namespace WebCore;
+using namespace CyberCore;
 
 WebProgressTrackerClient::WebProgressTrackerClient(WebView *webView)
     : m_webView(webView)
@@ -51,7 +51,7 @@ void WebProgressTrackerClient::didChangeEstimatedProgress()
 }
 #endif
 
-void WebProgressTrackerClient::progressStarted(WebCore::Frame& originatingProgressFrame)
+void WebProgressTrackerClient::progressStarted(CyberCore::Frame& originatingProgressFrame)
 {
 #if !PLATFORM(IOS_FAMILY)
     [[NSNotificationCenter defaultCenter] postNotificationName:WebViewProgressStartedNotification object:m_webView];
@@ -60,7 +60,7 @@ void WebProgressTrackerClient::progressStarted(WebCore::Frame& originatingProgre
 #endif
 }
 
-void WebProgressTrackerClient::progressEstimateChanged(WebCore::Frame&)
+void WebProgressTrackerClient::progressEstimateChanged(CyberCore::Frame&)
 {
 #if !PLATFORM(IOS_FAMILY)
     [[NSNotificationCenter defaultCenter] postNotificationName:WebViewProgressEstimateChangedNotification object:m_webView];

@@ -89,211 +89,211 @@
 #import <CyberCore/XPathResult.h>
 #import <wtf/URL.h>
 
-#define IMPL static_cast<WebCore::Document*>(reinterpret_cast<WebCore::Node*>(_internal))
+#define IMPL static_cast<CyberCore::Document*>(reinterpret_cast<CyberCore::Node*>(_internal))
 
 @implementation DOMDocument
 
 - (DOMDocumentType *)doctype
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->doctype()));
 }
 
 - (DOMImplementation *)implementation
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->implementation()));
 }
 
 - (DOMElement *)documentElement
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->documentElement()));
 }
 
 - (NSString *)inputEncoding
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->characterSetWithUTF8Fallback();
 }
 
 - (NSString *)xmlEncoding
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->xmlEncoding();
 }
 
 - (NSString *)xmlVersion
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->xmlVersion();
 }
 
 - (void)setXmlVersion:(NSString *)newXmlVersion
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     raiseOnDOMError(IMPL->setXMLVersion(newXmlVersion));
 }
 
 - (BOOL)xmlStandalone
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->xmlStandalone();
 }
 
 - (void)setXmlStandalone:(BOOL)newXmlStandalone
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->setXMLStandalone(newXmlStandalone);
 }
 
 - (NSString *)documentURI
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->documentURI();
 }
 
 - (void)setDocumentURI:(NSString *)newDocumentURI
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->setDocumentURI(newDocumentURI);
 }
 
 - (DOMAbstractView *)defaultView
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->windowProxy()));
 }
 
 - (DOMStyleSheetList *)styleSheets
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->styleSheets()));
 }
 
 - (NSString *)contentType
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->contentType();
 }
 
 - (NSString *)title
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->title();
 }
 
 - (void)setTitle:(NSString *)newTitle
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->setTitle(newTitle);
 }
 
 - (NSString *)dir
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->dir();
 }
 
 - (void)setDir:(NSString *)newDir
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->setDir(newDir);
 }
 
 - (NSString *)referrer
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->referrer();
 }
 
 - (NSString *)domain
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->domain();
 }
 
 - (NSString *)URL
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->urlForBindings().string();
 }
 
 - (NSString *)cookie
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return raiseOnDOMError(IMPL->cookie());
 }
 
 - (void)setCookie:(NSString *)newCookie
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     raiseOnDOMError(IMPL->setCookie(newCookie));
 }
 
 - (DOMHTMLElement *)body
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->bodyOrFrameset()));
 }
 
 - (void)setBody:(DOMHTMLElement *)newBody
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     raiseOnDOMError(IMPL->setBodyOrFrameset(core(newBody)));
 }
 
 - (DOMHTMLHeadElement *)head
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->head()));
 }
 
 - (DOMHTMLCollection *)images
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->images()));
 }
 
 - (DOMHTMLCollection *)applets
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->applets()));
 }
 
 - (DOMHTMLCollection *)links
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->links()));
 }
 
 - (DOMHTMLCollection *)forms
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->forms()));
 }
 
 - (DOMHTMLCollection *)anchors
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->anchors()));
 }
 
 - (NSString *)lastModified
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->lastModified();
 }
 
 - (NSString *)charset
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->charset();
 }
 
 - (void)setCharset:(NSString *)newCharset
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->setCharset(newCharset);
 }
 
@@ -304,14 +304,14 @@
 
 - (NSString *)readyState
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     auto readyState = IMPL->readyState();
     switch (readyState) {
-    case WebCore::Document::Loading:
+    case CyberCore::Document::Loading:
         return @"loading";
-    case WebCore::Document::Interactive:
+    case CyberCore::Document::Interactive:
         return @"interactive";
-    case WebCore::Document::Complete:
+    case CyberCore::Document::Complete:
         return @"complete";
     }
     ASSERT_NOT_REACHED();
@@ -320,7 +320,7 @@
 
 - (NSString *)characterSet
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->characterSetWithUTF8Fallback();
 }
 
@@ -340,13 +340,13 @@
 
 - (DOMElement *)activeElement
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->activeElement()));
 }
 
 - (NSString *)compatMode
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->compatMode();
 }
 
@@ -354,137 +354,137 @@
 
 - (BOOL)webkitIsFullScreen
 {
-    WebCore::JSMainThreadNullState state;
-    return WebCore::DocumentFullscreen::webkitIsFullScreen(*IMPL);
+    CyberCore::JSMainThreadNullState state;
+    return CyberCore::DocumentFullscreen::webkitIsFullScreen(*IMPL);
 }
 
 - (BOOL)webkitFullScreenKeyboardInputAllowed
 {
-    WebCore::JSMainThreadNullState state;
-    return WebCore::DocumentFullscreen::webkitFullScreenKeyboardInputAllowed(*IMPL);
+    CyberCore::JSMainThreadNullState state;
+    return CyberCore::DocumentFullscreen::webkitFullScreenKeyboardInputAllowed(*IMPL);
 }
 
 - (DOMElement *)webkitCurrentFullScreenElement
 {
-    WebCore::JSMainThreadNullState state;
-    return kit(WTF::getPtr(WebCore::DocumentFullscreen::webkitCurrentFullScreenElement(*IMPL)));
+    CyberCore::JSMainThreadNullState state;
+    return kit(WTF::getPtr(CyberCore::DocumentFullscreen::webkitCurrentFullScreenElement(*IMPL)));
 }
 
 - (BOOL)webkitFullscreenEnabled
 {
-    WebCore::JSMainThreadNullState state;
-    return WebCore::DocumentFullscreen::webkitFullscreenEnabled(*IMPL);
+    CyberCore::JSMainThreadNullState state;
+    return CyberCore::DocumentFullscreen::webkitFullscreenEnabled(*IMPL);
 }
 
 - (DOMElement *)webkitFullscreenElement
 {
-    WebCore::JSMainThreadNullState state;
-    return kit(WTF::getPtr(WebCore::DocumentFullscreen::webkitFullscreenElement(*IMPL)));
+    CyberCore::JSMainThreadNullState state;
+    return kit(WTF::getPtr(CyberCore::DocumentFullscreen::webkitFullscreenElement(*IMPL)));
 }
 
 #endif
 
 - (NSString *)visibilityState
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     switch (IMPL->visibilityState()) {
-    case WebCore::VisibilityState::Hidden:
+    case CyberCore::VisibilityState::Hidden:
         return @"hidden";
-    case WebCore::VisibilityState::Visible:
+    case CyberCore::VisibilityState::Visible:
         return @"visible";
     }
 }
 
 - (BOOL)hidden
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->hidden();
 }
 
 - (DOMHTMLScriptElement *)currentScript
 {
-    WebCore::JSMainThreadNullState state;
-    WebCore::Element* element = IMPL->currentScript();
-    if (!is<WebCore::HTMLScriptElement>(element))
+    CyberCore::JSMainThreadNullState state;
+    CyberCore::Element* element = IMPL->currentScript();
+    if (!is<CyberCore::HTMLScriptElement>(element))
         return nil;
-    return kit(WTF::getPtr(downcast<WebCore::HTMLScriptElement>(element)));
+    return kit(WTF::getPtr(downcast<CyberCore::HTMLScriptElement>(element)));
 }
 
 - (NSString *)origin
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->securityOrigin().toString();
 }
 
 - (DOMElement *)scrollingElement
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->scrollingElementForAPI()));
 }
 
 - (DOMHTMLCollection *)children
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->children()));
 }
 
 - (DOMElement *)firstElementChild
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->firstElementChild()));
 }
 
 - (DOMElement *)lastElementChild
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->lastElementChild()));
 }
 
 - (unsigned)childElementCount
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->childElementCount();
 }
 
 - (DOMElement *)createElement:(NSString *)tagName
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(raiseOnDOMError(IMPL->createElementForBindings(tagName)).ptr());
 }
 
 - (DOMDocumentFragment *)createDocumentFragment
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->createDocumentFragment()));
 }
 
 - (DOMText *)createTextNode:(NSString *)data
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->createTextNode(data)));
 }
 
 - (DOMComment *)createComment:(NSString *)data
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->createComment(data)));
 }
 
 - (DOMCDATASection *)createCDATASection:(NSString *)data
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(raiseOnDOMError(IMPL->createCDATASection(data)).ptr());
 }
 
 - (DOMProcessingInstruction *)createProcessingInstruction:(NSString *)target data:(NSString *)data
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(raiseOnDOMError(IMPL->createProcessingInstruction(target, data)).ptr());
 }
 
 - (DOMAttr *)createAttribute:(NSString *)name
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(raiseOnDOMError(IMPL->createAttribute(name)).ptr());
 }
 
@@ -499,13 +499,13 @@
     if (!tagname)
         return nullptr;
 
-    WebCore::JSMainThreadNullState state;
-    return kit(static_cast<WebCore::NodeList*>(WTF::getPtr(IMPL->getElementsByTagName(tagname))));
+    CyberCore::JSMainThreadNullState state;
+    return kit(static_cast<CyberCore::NodeList*>(WTF::getPtr(IMPL->getElementsByTagName(tagname))));
 }
 
 - (DOMNode *)importNode:(DOMNode *)importedNode deep:(BOOL)deep
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     if (!importedNode)
         raiseTypeErrorException();
     return kit(raiseOnDOMError(IMPL->importNode(*core(importedNode), deep)).ptr());
@@ -513,13 +513,13 @@
 
 - (DOMElement *)createElementNS:(NSString *)namespaceURI qualifiedName:(NSString *)qualifiedName
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(raiseOnDOMError(IMPL->createElementNS(namespaceURI, qualifiedName)).ptr());
 }
 
 - (DOMAttr *)createAttributeNS:(NSString *)namespaceURI qualifiedName:(NSString *)qualifiedName
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(raiseOnDOMError(IMPL->createAttributeNS(namespaceURI, qualifiedName)).ptr());
 }
 
@@ -527,13 +527,13 @@
 {
     if (!localName)
         return nullptr;
-    WebCore::JSMainThreadNullState state;
-    return kit(static_cast<WebCore::NodeList*>(WTF::getPtr(IMPL->getElementsByTagNameNS(namespaceURI, localName))));
+    CyberCore::JSMainThreadNullState state;
+    return kit(static_cast<CyberCore::NodeList*>(WTF::getPtr(IMPL->getElementsByTagNameNS(namespaceURI, localName))));
 }
 
 - (DOMNode *)adoptNode:(DOMNode *)source
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     if (!source)
         raiseTypeErrorException();
     return kit(raiseOnDOMError(IMPL->adoptNode(*core(source))).ptr());
@@ -541,35 +541,35 @@
 
 - (DOMEvent *)createEvent:(NSString *)eventType
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(raiseOnDOMError(IMPL->createEvent(eventType)).ptr());
 }
 
 - (DOMRange *)createRange
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->createRange()));
 }
 
 - (DOMNodeIterator *)createNodeIterator:(DOMNode *)root whatToShow:(unsigned)whatToShow filter:(id <DOMNodeFilter>)filter expandEntityReferences:(BOOL)expandEntityReferences
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     if (!root)
         raiseTypeErrorException();
-    RefPtr<WebCore::NodeFilter> nativeNodeFilter;
+    RefPtr<CyberCore::NodeFilter> nativeNodeFilter;
     if (filter)
-        nativeNodeFilter = WebCore::NativeNodeFilter::create(IMPL, WebCore::ObjCNodeFilterCondition::create(filter));
+        nativeNodeFilter = CyberCore::NativeNodeFilter::create(IMPL, CyberCore::ObjCNodeFilterCondition::create(filter));
     return kit(WTF::getPtr(IMPL->createNodeIterator(*core(root), whatToShow, WTF::getPtr(nativeNodeFilter), expandEntityReferences)));
 }
 
 - (DOMTreeWalker *)createTreeWalker:(DOMNode *)root whatToShow:(unsigned)whatToShow filter:(id <DOMNodeFilter>)filter expandEntityReferences:(BOOL)expandEntityReferences
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     if (!root)
         raiseTypeErrorException();
-    RefPtr<WebCore::NodeFilter> nativeNodeFilter;
+    RefPtr<CyberCore::NodeFilter> nativeNodeFilter;
     if (filter)
-        nativeNodeFilter = WebCore::NativeNodeFilter::create(IMPL, WebCore::ObjCNodeFilterCondition::create(filter));
+        nativeNodeFilter = CyberCore::NativeNodeFilter::create(IMPL, CyberCore::ObjCNodeFilterCondition::create(filter));
     return kit(WTF::getPtr(IMPL->createTreeWalker(*core(root), whatToShow, WTF::getPtr(nativeNodeFilter), expandEntityReferences)));
 }
 
@@ -578,7 +578,7 @@
     return nil;
 }
 
-static RefPtr<WebCore::XPathNSResolver> wrap(id <DOMXPathNSResolver> resolver)
+static RefPtr<CyberCore::XPathNSResolver> wrap(id <DOMXPathNSResolver> resolver)
 {
     if (!resolver)
         return nullptr;
@@ -589,13 +589,13 @@ static RefPtr<WebCore::XPathNSResolver> wrap(id <DOMXPathNSResolver> resolver)
 
 - (DOMXPathExpression *)createExpression:(NSString *)expression resolver:(id <DOMXPathNSResolver>)resolver
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(raiseOnDOMError(IMPL->createExpression(expression, wrap(resolver))).ptr());
 }
 
 - (id <DOMXPathNSResolver>)createNSResolver:(DOMNode *)nodeResolver
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     if (!nodeResolver)
         return nullptr;
 
@@ -607,13 +607,13 @@ static RefPtr<WebCore::XPathNSResolver> wrap(id <DOMXPathNSResolver> resolver)
     if (!contextNode)
         return nullptr;
 
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(raiseOnDOMError(IMPL->evaluate(expression, *core(contextNode), wrap(resolver), type, core(inResult))).ptr());
 }
 
 - (BOOL)execCommand:(NSString *)command userInterface:(BOOL)userInterface value:(NSString *)value
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     auto result = IMPL->execCommand(command, userInterface, value);
     return result.hasException() ? NO : result.returnValue();
 }
@@ -630,69 +630,69 @@ static RefPtr<WebCore::XPathNSResolver> wrap(id <DOMXPathNSResolver> resolver)
 
 - (BOOL)queryCommandEnabled:(NSString *)command
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     auto result = IMPL->queryCommandEnabled(command);
     return result.hasException() ? NO : result.returnValue();
 }
 
 - (BOOL)queryCommandIndeterm:(NSString *)command
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     auto result = IMPL->queryCommandIndeterm(command);
     return result.hasException() ? NO : result.returnValue();
 }
 
 - (BOOL)queryCommandState:(NSString *)command
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     auto result = IMPL->queryCommandState(command);
     return result.hasException() ? NO : result.returnValue();
 }
 
 - (BOOL)queryCommandSupported:(NSString *)command
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     auto result = IMPL->queryCommandSupported(command);
     return result.hasException() ? NO : result.returnValue();
 }
 
 - (NSString *)queryCommandValue:(NSString *)command
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     auto result = IMPL->queryCommandValue(command);
     return result.hasException() ? String() : result.returnValue();
 }
 
 - (DOMNodeList *)getElementsByName:(NSString *)elementName
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->getElementsByName(elementName)));
 }
 
 - (DOMElement *)elementFromPoint:(int)x y:(int)y
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->elementFromPoint(x, y)));
 }
 
 - (DOMRange *)caretRangeFromPoint:(int)x y:(int)y
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->caretRangeFromPoint(x, y)));
 }
 
 - (DOMCSSStyleDeclaration *)createCSSStyleDeclaration
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->createCSSStyleDeclaration()));
 }
 
 - (DOMCSSStyleDeclaration *)getComputedStyle:(DOMElement *)element pseudoElement:(NSString *)pseudoElement
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     if (!element)
         raiseTypeErrorException();
-    WebCore::DOMWindow* dv = IMPL->domWindow();
+    CyberCore::DOMWindow* dv = IMPL->domWindow();
     if (!dv)
         return nil;
     return kit(WTF::getPtr(dv->getComputedStyle(*core(element), pseudoElement)));
@@ -705,8 +705,8 @@ static RefPtr<WebCore::XPathNSResolver> wrap(id <DOMXPathNSResolver> resolver)
 
 - (DOMCSSRuleList *)getMatchedCSSRules:(DOMElement *)element pseudoElement:(NSString *)pseudoElement authorOnly:(BOOL)authorOnly
 {
-    WebCore::JSMainThreadNullState state;
-    WebCore::DOMWindow* dv = IMPL->domWindow();
+    CyberCore::JSMainThreadNullState state;
+    CyberCore::DOMWindow* dv = IMPL->domWindow();
     if (!dv)
         return nil;
     return kit(WTF::getPtr(dv->getMatchedCSSRules(core(element), pseudoElement, authorOnly)));
@@ -714,13 +714,13 @@ static RefPtr<WebCore::XPathNSResolver> wrap(id <DOMXPathNSResolver> resolver)
 
 - (DOMNodeList *)getElementsByClassName:(NSString *)classNames
 {
-    WebCore::JSMainThreadNullState state;
-    return kit(static_cast<WebCore::NodeList*>(WTF::getPtr(IMPL->getElementsByClassName(classNames))));
+    CyberCore::JSMainThreadNullState state;
+    return kit(static_cast<CyberCore::NodeList*>(WTF::getPtr(IMPL->getElementsByClassName(classNames))));
 }
 
 - (BOOL)hasFocus
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->hasFocus();
 }
 
@@ -728,33 +728,33 @@ static RefPtr<WebCore::XPathNSResolver> wrap(id <DOMXPathNSResolver> resolver)
 
 - (void)webkitCancelFullScreen
 {
-    WebCore::JSMainThreadNullState state;
-    WebCore::DocumentFullscreen::webkitCancelFullScreen(*IMPL);
+    CyberCore::JSMainThreadNullState state;
+    CyberCore::DocumentFullscreen::webkitCancelFullScreen(*IMPL);
 }
 
 - (void)webkitExitFullscreen
 {
-    WebCore::JSMainThreadNullState state;
-    WebCore::DocumentFullscreen::webkitExitFullscreen(*IMPL);
+    CyberCore::JSMainThreadNullState state;
+    CyberCore::DocumentFullscreen::webkitExitFullscreen(*IMPL);
 }
 
 #endif
 
 - (DOMElement *)getElementById:(NSString *)elementId
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->getElementById(AtomString(elementId))));
 }
 
 - (DOMElement *)querySelector:(NSString *)selectors
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(raiseOnDOMError(IMPL->querySelector(selectors)));
 }
 
 - (DOMNodeList *)querySelectorAll:(NSString *)selectors
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(raiseOnDOMError(IMPL->querySelectorAll(selectors)).ptr());
 }
 
@@ -819,15 +819,15 @@ static RefPtr<WebCore::XPathNSResolver> wrap(id <DOMXPathNSResolver> resolver)
 
 @end
 
-WebCore::Document* core(DOMDocument *wrapper)
+CyberCore::Document* core(DOMDocument *wrapper)
 {
-    return wrapper ? reinterpret_cast<WebCore::Document*>(wrapper->_internal) : 0;
+    return wrapper ? reinterpret_cast<CyberCore::Document*>(wrapper->_internal) : 0;
 }
 
-DOMDocument *kit(WebCore::Document* value)
+DOMDocument *kit(CyberCore::Document* value)
 {
-    WebCoreThreadViolationCheckRoundOne();
-    return static_cast<DOMDocument*>(kit(static_cast<WebCore::Node*>(value)));
+    CyberCoreThreadViolationCheckRoundOne();
+    return static_cast<DOMDocument*>(kit(static_cast<CyberCore::Node*>(value)));
 }
 
 #undef IMPL

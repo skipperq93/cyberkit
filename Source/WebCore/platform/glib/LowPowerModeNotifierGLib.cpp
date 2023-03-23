@@ -24,7 +24,7 @@
 #include <gio/gio.h>
 #include <wtf/glib/GUniquePtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 
 LowPowerModeNotifier::LowPowerModeNotifier(LowPowerModeChangeCallback&& callback)
@@ -57,4 +57,4 @@ bool LowPowerModeNotifier::isLowPowerModeEnabled() const
     return m_lowPowerModeEnabled;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -35,7 +35,7 @@
 
 #include "FrameRateMonitor.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 RealtimeIncomingVideoSource::RealtimeIncomingVideoSource(rtc::scoped_refptr<webrtc::VideoTrackInterface>&& videoTrack, String&& videoTrackId)
     : RealtimeMediaSource(CaptureDevice { WTFMove(videoTrackId), CaptureDevice::DeviceType::Camera, "remote video"_s })
@@ -145,6 +145,6 @@ void RealtimeIncomingVideoSource::notifyNewFrame()
 #endif
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(LIBWEBRTC)

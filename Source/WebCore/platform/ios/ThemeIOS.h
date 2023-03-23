@@ -29,7 +29,7 @@
 
 #include "ThemeCocoa.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ThemeIOS final : public ThemeCocoa {
 private:
@@ -37,6 +37,6 @@ private:
     bool userPrefersContrast() const final;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(IOS_FAMILY)

@@ -34,7 +34,7 @@
 #include "FloatSize.h"
 #include "RoundedRect.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class FloatRoundedRect {
     WTF_MAKE_FAST_ALLOCATED;
@@ -203,6 +203,6 @@ inline float calcBorderRadiiConstraintScaleFor(const FloatRect& rect, const Floa
 
 WEBCORE_EXPORT WTF::TextStream& operator<<(WTF::TextStream&, const FloatRoundedRect&);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // FloatRoundedRect_h

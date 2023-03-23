@@ -28,8 +28,8 @@
 #include "FilterEffect.h"
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using FilterEffectVector = Vector<Ref<FilterEffect>>;
 
-} // namespace WebCore
+} // namespace CyberCore

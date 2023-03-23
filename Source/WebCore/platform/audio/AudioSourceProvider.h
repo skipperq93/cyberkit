@@ -30,7 +30,7 @@
 
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioBus;
 class AudioSourceProviderClient;
@@ -49,4 +49,4 @@ public:
     virtual ~AudioSourceProvider() = default;
 };
 
-} // WebCore
+} // CyberCore

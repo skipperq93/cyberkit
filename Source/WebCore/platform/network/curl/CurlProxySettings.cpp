@@ -35,7 +35,7 @@
 #include <curl/curl.h>
 #include <wtf/text/StringConcatenateNumbers.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static constexpr uint16_t SocksProxyPort = 1080;
 

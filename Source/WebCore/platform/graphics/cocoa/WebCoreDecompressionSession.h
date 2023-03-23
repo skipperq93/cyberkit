@@ -46,12 +46,12 @@ typedef struct __CVBuffer *CVImageBufferRef;
 typedef UInt32 VTDecodeInfoFlags;
 typedef struct OpaqueVTDecompressionSession*  VTDecompressionSessionRef;
 
-namespace WebCore {
+namespace CyberCore {
 
-class WEBCORE_EXPORT WebCoreDecompressionSession : public ThreadSafeRefCounted<WebCoreDecompressionSession> {
+class WEBCORE_EXPORT CyberCoreDecompressionSession : public ThreadSafeRefCounted<CyberCoreDecompressionSession> {
 public:
-    static Ref<WebCoreDecompressionSession> createOpenGL() { return adoptRef(*new WebCoreDecompressionSession(OpenGL)); }
-    static Ref<WebCoreDecompressionSession> createRGB() { return adoptRef(*new WebCoreDecompressionSession(RGB)); }
+    static Ref<CyberCoreDecompressionSession> createOpenGL() { return adoptRef(*new CyberCoreDecompressionSession(OpenGL)); }
+    static Ref<CyberCoreDecompressionSession> createRGB() { return adoptRef(*new CyberCoreDecompressionSession(RGB)); }
 
     void invalidate();
     bool isInvalidated() const { return m_invalidated; }
@@ -84,7 +84,7 @@ private:
         OpenGL,
         RGB,
     };
-    WebCoreDecompressionSession(Mode);
+    CyberCoreDecompressionSession(Mode);
 
     void ensureDecompressionSessionForSample(CMSampleBufferRef);
 

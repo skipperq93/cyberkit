@@ -46,7 +46,7 @@
 #include "WorkerThreadableLoader.h"
 #include <wtf/Ref.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 #if ENABLE(SERVICE_WORKER)
 static Lock workerScriptLoaderControlledCallbackMapLock;
@@ -407,4 +407,4 @@ std::optional<ServiceWorkerData> WorkerScriptLoader::ServiceWorkerDataManager::t
 
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

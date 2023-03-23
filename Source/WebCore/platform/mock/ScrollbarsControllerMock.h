@@ -33,7 +33,7 @@
 
 #include "ScrollbarsController.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // A Mock implementation of ScrollbarsController used to test the scroll events
 // received by the scrollbar controller. Tests can enable this mock object using
@@ -65,5 +65,5 @@ private:
     Scrollbar* m_horizontalScrollbar { nullptr };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 

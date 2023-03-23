@@ -602,13 +602,13 @@ void AccessibilityProcessSuspendedNotification(bool suspended)
 
 void Connection::willSendSyncMessage(OptionSet<SendSyncOption> sendSyncOptions)
 {
-    if (sendSyncOptions.contains(IPC::SendSyncOption::InformPlatformProcessWillSuspend) && WebCore::AXObjectCache::accessibilityEnabled())
+    if (sendSyncOptions.contains(IPC::SendSyncOption::InformPlatformProcessWillSuspend) && CyberCore::AXObjectCache::accessibilityEnabled())
         AccessibilityProcessSuspendedNotification(true);
 }
 
 void Connection::didReceiveSyncReply(OptionSet<SendSyncOption> sendSyncOptions)
 {
-    if (sendSyncOptions.contains(IPC::SendSyncOption::InformPlatformProcessWillSuspend) && WebCore::AXObjectCache::accessibilityEnabled())
+    if (sendSyncOptions.contains(IPC::SendSyncOption::InformPlatformProcessWillSuspend) && CyberCore::AXObjectCache::accessibilityEnabled())
         AccessibilityProcessSuspendedNotification(false);
 }
 

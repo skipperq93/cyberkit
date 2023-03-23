@@ -36,7 +36,7 @@ class Connection;
 class Decoder;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class LibWebRTCSocketFactory;
 
@@ -55,6 +55,6 @@ private:
     LibWebRTCResolverIdentifier m_identifier;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(LIBWEBRTC)

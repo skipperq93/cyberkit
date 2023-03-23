@@ -21,7 +21,7 @@
 
 #include "ImageLoader.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGImageElement;
 
@@ -35,4 +35,4 @@ private:
     String sourceURI(const AtomString&) const override;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

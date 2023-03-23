@@ -25,7 +25,7 @@
 #include "FontCache.h"
 #include "UTF16UChar32Iterator.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 FontSetCache::FontSet::FontSet(RefPtr<FcPattern>&& fontPattern)
     : pattern(WTFMove(fontPattern))
@@ -114,4 +114,4 @@ void FontSetCache::clear()
     m_cache.clear();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -286,9 +286,9 @@ static NSString * const WKInspectorResourceScheme = @"inspector-resource";
     if (!_inspectedPage)
         return;
 
-    OptionSet<WebCore::ReloadOption> reloadOptions;
+    OptionSet<CyberCore::ReloadOption> reloadOptions;
     if (linkedOnOrAfterSDKWithBehavior(SDKAlignedBehavior::ExpiredOnlyReloadBehavior))
-        reloadOptions.add(WebCore::ReloadOption::ExpiredOnly);
+        reloadOptions.add(CyberCore::ReloadOption::ExpiredOnly);
 
     _inspectedPage->reload(reloadOptions);
 }
@@ -298,7 +298,7 @@ static NSString * const WKInspectorResourceScheme = @"inspector-resource";
     if (!_inspectedPage)
         return;
 
-    _inspectedPage->reload(WebCore::ReloadOption::FromOrigin);
+    _inspectedPage->reload(CyberCore::ReloadOption::FromOrigin);
 }
 
 - (void)inspectorWKWebView:(WKInspectorWKWebView *)webView willMoveToWindow:(NSWindow *)newWindow

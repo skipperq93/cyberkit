@@ -29,7 +29,7 @@
 
 #if ENABLE(MEDIA_SOURCE)
 
-namespace WebCore {
+namespace CyberCore {
 
 String convertEnumerationToString(SourceBufferPrivateClient::ReceiveResult enumerationValue)
 {
@@ -49,6 +49,6 @@ String convertEnumerationToString(SourceBufferPrivateClient::ReceiveResult enume
     return values[static_cast<size_t>(enumerationValue)];
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_SOURCE)

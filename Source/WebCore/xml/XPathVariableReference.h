@@ -27,7 +27,7 @@
 
 #include "XPathExpressionNode.h"
 
-namespace WebCore {
+namespace CyberCore {
     namespace XPath {
 
         // Variable references are not used with XPathEvaluator.
@@ -41,4 +41,4 @@ namespace WebCore {
         };
 
     } // namespace XPath
-} // namespace WebCore
+} // namespace CyberCore

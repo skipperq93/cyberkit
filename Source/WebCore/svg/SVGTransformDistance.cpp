@@ -27,7 +27,7 @@
 
 #include <math.h>
 
-namespace WebCore {
+namespace CyberCore {
     
 SVGTransformDistance::SVGTransformDistance()
     : m_type(SVGTransformValue::SVG_TRANSFORM_UNKNOWN)

@@ -27,7 +27,7 @@
 
 #include <optional>
 
-namespace WebCore {
+namespace CyberCore {
 
 #if ENABLE(APP_HIGHLIGHTS)
 class AppHighlightRangeData;
@@ -60,22 +60,22 @@ template<> struct Coder<class> { \
 }
 
 #if ENABLE(APP_HIGHLIGHTS)
-DECLARE_CODER(WebCore::AppHighlightRangeData);
+DECLARE_CODER(CyberCore::AppHighlightRangeData);
 #endif
-DECLARE_CODER(WebCore::CertificateInfo);
-DECLARE_CODER(WebCore::ClientOrigin);
-DECLARE_CODER(WebCore::ContentSecurityPolicyResponseHeaders);
-DECLARE_CODER(WebCore::CrossOriginEmbedderPolicy);
-DECLARE_CODER(WebCore::FetchOptions);
-DECLARE_CODER(WebCore::HTTPHeaderMap);
+DECLARE_CODER(CyberCore::CertificateInfo);
+DECLARE_CODER(CyberCore::ClientOrigin);
+DECLARE_CODER(CyberCore::ContentSecurityPolicyResponseHeaders);
+DECLARE_CODER(CyberCore::CrossOriginEmbedderPolicy);
+DECLARE_CODER(CyberCore::FetchOptions);
+DECLARE_CODER(CyberCore::HTTPHeaderMap);
 #if ENABLE(SERVICE_WORKER)
-DECLARE_CODER(WebCore::ImportedScriptAttributes);
+DECLARE_CODER(CyberCore::ImportedScriptAttributes);
 #endif
-DECLARE_CODER(WebCore::ResourceResponse);
-DECLARE_CODER(WebCore::ResourceRequest);
-DECLARE_CODER(WebCore::SecurityOriginData);
+DECLARE_CODER(CyberCore::ResourceResponse);
+DECLARE_CODER(CyberCore::ResourceRequest);
+DECLARE_CODER(CyberCore::SecurityOriginData);
 #if ENABLE(SERVICE_WORKER)
-DECLARE_CODER(WebCore::NavigationPreloadState);
+DECLARE_CODER(CyberCore::NavigationPreloadState);
 #endif
 #undef DECLARE_CODER
 

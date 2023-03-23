@@ -37,7 +37,7 @@
 #include <wtf/text/CString.h>
 
 using namespace WebKit;
-using namespace WebCore;
+using namespace CyberCore;
 
 /**
  * WebKitURISchemeRequest:
@@ -311,6 +311,6 @@ void webkit_uri_scheme_request_finish_error(WebKitURISchemeRequest* request, GEr
 
     WebKitURISchemeRequestPrivate* priv = request->priv;
     priv->response = nullptr;
-    ResourceError resourceError(String::fromLatin1(g_quark_to_string(error->domain)), toWebCoreError(error->code), priv->task->request().url(), String::fromUTF8(error->message));
+    ResourceError resourceError(String::fromLatin1(g_quark_to_string(error->domain)), toCyberCoreError(error->code), priv->task->request().url(), String::fromUTF8(error->message));
     priv->task->didComplete(resourceError);
 }

@@ -29,7 +29,7 @@
 
 #include "MathMLScriptsElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class MathMLUnderOverElement final : public MathMLScriptsElement {
     WTF_MAKE_ISO_ALLOCATED(MathMLUnderOverElement);

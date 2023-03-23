@@ -26,7 +26,7 @@
 
 #if ENABLE(WEB_RTC)
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class RTCIceConnectionState {
     New,
@@ -40,7 +40,7 @@ enum class RTCIceConnectionState {
 
 String convertEnumerationToString(RTCIceConnectionState); // in JSCRTCIceConnectionState.cpp
 
-}; // namespace WebCore
+}; // namespace CyberCore
 
 namespace WTF {
 
@@ -48,8 +48,8 @@ template<typename Type>
 struct LogArgument;
 
 template <>
-struct LogArgument<WebCore::RTCIceConnectionState> {
-    static String toString(const WebCore::RTCIceConnectionState state)
+struct LogArgument<CyberCore::RTCIceConnectionState> {
+    static String toString(const CyberCore::RTCIceConnectionState state)
     {
         return convertEnumerationToString(state);
     }

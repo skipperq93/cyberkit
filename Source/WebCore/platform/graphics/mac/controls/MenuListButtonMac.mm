@@ -33,7 +33,7 @@
 #import "GraphicsContext.h"
 #import "MenuListButtonPart.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 MenuListButtonMac::MenuListButtonMac(MenuListButtonPart& owningPart, ControlFactoryMac& controlFactory)
     : ControlMac(owningPart, controlFactory)
@@ -210,6 +210,6 @@ void MenuListButtonMac::draw(GraphicsContext& context, const FloatRoundedRect& b
     context.drawLine(IntPoint(leftEdgeOfSeparator + separatorSpace, bounds.y()), IntPoint(leftEdgeOfSeparator + separatorSpace, bounds.maxY()));
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(MAC)

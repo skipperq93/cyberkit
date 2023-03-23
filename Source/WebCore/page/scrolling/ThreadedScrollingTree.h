@@ -34,7 +34,7 @@
 #include <wtf/RefPtr.h>
 #include <wtf/RunLoop.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AsyncScrollingCoordinator;
 
@@ -152,8 +152,8 @@ private:
     std::atomic<bool> m_renderingUpdateWasScheduled;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_SCROLLING_TREE(WebCore::ThreadedScrollingTree, isThreadedScrollingTree())
+SPECIALIZE_TYPE_TRAITS_SCROLLING_TREE(CyberCore::ThreadedScrollingTree, isThreadedScrollingTree())
 
 #endif // ENABLE(ASYNC_SCROLLING) && ENABLE(SCROLLING_THREAD)

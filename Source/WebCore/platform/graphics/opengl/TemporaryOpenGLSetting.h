@@ -32,7 +32,7 @@
 
 #include <wtf/Noncopyable.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // TemporaryOpenGLSetting<> is useful for temporarily disabling (or enabling) a particular OpenGL
 // feature with a particular scope. A TemporaryOpenGLSetting<> object returns the flag to its original
@@ -55,6 +55,6 @@ private:
 
 }
 
-using WebCore::TemporaryOpenGLSetting;
+using CyberCore::TemporaryOpenGLSetting;
 
 #endif // USE(OPENGL) || USE(OPENGL_ES)

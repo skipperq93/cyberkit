@@ -33,7 +33,7 @@
 #include <wtf/MainThread.h>
 #include <wtf/Scope.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 GST_DEBUG_CATEGORY(webkit_image_decoder_debug);
 #define GST_CAT_DEFAULT webkit_image_decoder_debug
@@ -301,6 +301,6 @@ void ImageDecoderGStreamer::pushEncodedData(const FragmentedSharedBuffer& shared
     m_eos = true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(GSTREAMER) && ENABLE(VIDEO)

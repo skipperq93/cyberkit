@@ -35,7 +35,7 @@ namespace WTF {
 class WorkQueue;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioSessionIOS final : public AudioSession {
 public:

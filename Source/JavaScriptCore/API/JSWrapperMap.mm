@@ -24,7 +24,7 @@
  */
 
 #import "config.h"
-#import "JavaScriptCore.h"
+#import "CyberScriptCore.h"
 
 #if JSC_OBJC_API_ENABLED
 #import "APICast.h"
@@ -49,7 +49,7 @@
 
 #if PLATFORM(APPLETV)
 #else
-static constexpr int32_t firstJavaScriptCoreVersionWithInitConstructorSupport = 0x21A0400; // 538.4.0
+static constexpr int32_t firstCyberScriptCoreVersionWithInitConstructorSupport = 0x21A0400; // 538.4.0
 #endif
 
 @class JSObjCClassInfo;
@@ -697,12 +697,12 @@ bool supportsInitMethodConstructors()
     return true;
 #else
     static const bool supportsInitMethodConstructors = []() -> bool {
-        // First check to see the version of JavaScriptCore we directly linked against.
-        int32_t versionOfLinkTimeJavaScriptCore = NSVersionOfLinkTimeLibrary("JavaScriptCore");
+        // First check to see the version of CyberScriptCore we directly linked against.
+        int32_t versionOfLinkTimeCyberScriptCore = NSVersionOfLinkTimeLibrary("CyberScriptCore");
 
-        // Only do the link time version comparison if we linked directly with JavaScriptCore
-        if (versionOfLinkTimeJavaScriptCore != -1)
-            return versionOfLinkTimeJavaScriptCore >= firstJavaScriptCoreVersionWithInitConstructorSupport;
+        // Only do the link time version comparison if we linked directly with CyberScriptCore
+        if (versionOfLinkTimeCyberScriptCore != -1)
+            return versionOfLinkTimeCyberScriptCore >= firstCyberScriptCoreVersionWithInitConstructorSupport;
 
         return linkedOnOrAfterSDKWithBehavior(SDKAlignedBehavior::SupportsInitConstructors);
     }();

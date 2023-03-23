@@ -28,7 +28,7 @@
 
 #if ENABLE(MATHML)
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace MathMLOperatorDictionary;
 

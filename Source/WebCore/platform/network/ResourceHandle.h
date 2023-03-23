@@ -64,7 +64,7 @@ class SchedulePair;
 template<typename T> class MessageQueue;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class AuthenticationChallenge;
 class Credential;

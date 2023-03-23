@@ -31,7 +31,7 @@
 #include "InbandGenericCueIdentifier.h"
 #include <wtf/MediaTime.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct GenericCueData {
 
@@ -150,14 +150,14 @@ private:
     GenericCueData m_cueData;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
 template<typename Type> struct LogArgument;
 template <>
-struct LogArgument<WebCore::InbandGenericCue> {
-    static String toString(const WebCore::InbandGenericCue& cue)
+struct LogArgument<CyberCore::InbandGenericCue> {
+    static String toString(const CyberCore::InbandGenericCue& cue)
     {
         return cue.toJSONString();
     }

@@ -28,7 +28,7 @@
 #import "ObjCPlugin.h"
 
 #import <objc/runtime.h>
-#import <CyberKit/WebKitLegacy.h>
+#import <CyberKit/CyberKitLegacy.h>
 
 // === NSObject category to expose almost everything to JavaScript ===
 

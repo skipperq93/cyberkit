@@ -23,15 +23,15 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef WebCoreThreadMessage_h
-#define WebCoreThreadMessage_h
+#ifndef CyberCoreThreadMessage_h
+#define CyberCoreThreadMessage_h
 
 #if TARGET_OS_IPHONE
 
 #import <Foundation/Foundation.h>
 
 #ifdef __OBJC__
-#import <CyberCore/WebCoreThread.h>
+#import <CyberCore/CyberCoreThread.h>
 #endif // __OBJC__
 
 #if defined(__cplusplus)
@@ -41,12 +41,12 @@ extern "C" {
 //
 // Release an object on the main thread.
 //
-@interface NSObject(WebCoreThreadAdditions)
+@interface NSObject(CyberCoreThreadAdditions)
 - (void)releaseOnMainThread;
 @end
 
 // Register a class for deallocation on the WebThread
-WEBCORE_EXPORT void WebCoreObjCDeallocOnWebThread(Class cls);
+WEBCORE_EXPORT void CyberCoreObjCDeallocOnWebThread(Class cls);
 
 // Asynchronous from main thread to web thread.
 WEBCORE_EXPORT void WebThreadAdoptAndRelease(id obj);
@@ -70,4 +70,4 @@ WEBCORE_EXPORT NSInvocation *WebThreadMakeNSInvocation(id target, SEL selector);
 
 #endif // TARGET_OS_IPHONE
 
-#endif // WebCoreThreadMessage_h
+#endif // CyberCoreThreadMessage_h

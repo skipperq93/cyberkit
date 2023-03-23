@@ -26,7 +26,7 @@
 
 #include "GStreamerCapturer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class GStreamerVideoCapturer final : public GStreamerCapturer {
     friend class GStreamerVideoCaptureSource;
@@ -54,6 +54,6 @@ private:
     GRefPtr<GstElement> m_videoSrcMIMETypeFilter;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM) && USE(GSTREAMER)

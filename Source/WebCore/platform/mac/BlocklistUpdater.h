@@ -29,7 +29,7 @@
 
 #import <wtf/WorkQueue.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class PluginBlocklist;
 class WebGLBlocklist;

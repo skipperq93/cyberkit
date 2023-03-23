@@ -33,7 +33,7 @@
 #include <wtf/text/StringHash.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class KeyedDecoderGlib final : public KeyedDecoder {
 public:
@@ -67,6 +67,6 @@ private:
     Vector<unsigned> m_arrayIndexStack;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // KeyedDecoderGlib_h

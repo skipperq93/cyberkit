@@ -30,7 +30,7 @@
 // <http://msdn.microsoft.com/en-us/windows/hardware/gg463119> for more information about the PE
 // image format.
 
-namespace WebCore {
+namespace CyberCore {
 
 PEImage::PEImage(HMODULE module)
     : m_module(module)
@@ -71,4 +71,4 @@ const void* PEImage::dataDirectoryEntryAddress(DWORD entryIndex) const
     return convertRVAToAddress(directory.VirtualAddress);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

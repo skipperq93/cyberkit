@@ -27,24 +27,24 @@
 
 #import <QuartzCore/CALayer.h>
 
-namespace WebCore {
+namespace CyberCore {
 class LegacyTileGrid;
 }
 
 @interface LegacyTileLayer : CALayer {
-    WebCore::LegacyTileGrid* _tileGrid;
+    CyberCore::LegacyTileGrid* _tileGrid;
     unsigned _paintCount;
     BOOL _isRenderingInContext;
 }
 @property (nonatomic) unsigned paintCount;
-@property (nonatomic) WebCore::LegacyTileGrid* tileGrid;
+@property (nonatomic) CyberCore::LegacyTileGrid* tileGrid;
 @property (nonatomic, readonly) BOOL isRenderingInContext;
 @end
 
 @interface LegacyTileHostLayer : CALayer {
-    WebCore::LegacyTileGrid* _tileGrid;
+    CyberCore::LegacyTileGrid* _tileGrid;
 }
-- (id)initWithTileGrid:(WebCore::LegacyTileGrid*)tileGrid;
+- (id)initWithTileGrid:(CyberCore::LegacyTileGrid*)tileGrid;
 @end
 
 #endif // PLATFORM(IOS_FAMILY)

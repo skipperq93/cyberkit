@@ -35,7 +35,7 @@
 #include "RenderRubyRun.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(RenderRubyText);
 
@@ -135,4 +135,4 @@ bool RenderRubyText::canBreakBefore(const LazyLineBreakIterator& iterator) const
     return true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

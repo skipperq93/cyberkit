@@ -28,7 +28,7 @@
 #include "CalcExpressionNode.h"
 #include "Length.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CalcExpressionLength final : public CalcExpressionNode {
 public:
@@ -57,4 +57,4 @@ inline bool operator==(const CalcExpressionLength& a, const CalcExpressionLength
 
 }
 
-SPECIALIZE_TYPE_TRAITS_CALCEXPRESSION_NODE(CalcExpressionLength, type() == WebCore::CalcExpressionNodeType::Length)
+SPECIALIZE_TYPE_TRAITS_CALCEXPRESSION_NODE(CalcExpressionLength, type() == CyberCore::CalcExpressionNodeType::Length)

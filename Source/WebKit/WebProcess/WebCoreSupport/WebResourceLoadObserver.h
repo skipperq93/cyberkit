@@ -33,27 +33,27 @@
 #include <CyberCore/Timer.h>
 #include <wtf/Forward.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPage;
 
-class WebResourceLoadObserver final : public WebCore::ResourceLoadObserver {
+class WebResourceLoadObserver final : public CyberCore::ResourceLoadObserver {
 public:
-    using TopFrameDomain = WebCore::RegistrableDomain;
-    using SubFrameDomain = WebCore::RegistrableDomain;
+    using TopFrameDomain = CyberCore::RegistrableDomain;
+    using SubFrameDomain = CyberCore::RegistrableDomain;
 
-    WebResourceLoadObserver(WebCore::ResourceLoadStatistics::IsEphemeral);
+    WebResourceLoadObserver(CyberCore::ResourceLoadStatistics::IsEphemeral);
     ~WebResourceLoadObserver();
 
-    void logSubresourceLoading(const WebCore::Frame*, const WebCore::ResourceRequest& newRequest, const WebCore::ResourceResponse& redirectResponse, FetchDestinationIsScriptLike) final;
+    void logSubresourceLoading(const CyberCore::Frame*, const CyberCore::ResourceRequest& newRequest, const CyberCore::ResourceResponse& redirectResponse, FetchDestinationIsScriptLike) final;
     void logWebSocketLoading(const URL& targetURL, const URL& mainFrameURL) final;
-    void logUserInteractionWithReducedTimeResolution(const WebCore::Document&) final;
-    void logFontLoad(const WebCore::Document&, const String& familyName, bool loadStatus) final;
-    void logCanvasRead(const WebCore::Document&) final;
-    void logCanvasWriteOrMeasure(const WebCore::Document&, const String& textWritten) final;
-    void logNavigatorAPIAccessed(const WebCore::Document&, const WebCore::NavigatorAPIsAccessed) final;
-    void logScreenAPIAccessed(const WebCore::Document&, const WebCore::ScreenAPIsAccessed) final;
-    void logSubresourceLoadingForTesting(const WebCore::RegistrableDomain& firstPartyDomain, const WebCore::RegistrableDomain& thirdPartyDomain, bool shouldScheduleNotification);
+    void logUserInteractionWithReducedTimeResolution(const CyberCore::Document&) final;
+    void logFontLoad(const CyberCore::Document&, const String& familyName, bool loadStatus) final;
+    void logCanvasRead(const CyberCore::Document&) final;
+    void logCanvasWriteOrMeasure(const CyberCore::Document&, const String& textWritten) final;
+    void logNavigatorAPIAccessed(const CyberCore::Document&, const CyberCore::NavigatorAPIsAccessed) final;
+    void logScreenAPIAccessed(const CyberCore::Document&, const CyberCore::ScreenAPIsAccessed) final;
+    void logSubresourceLoadingForTesting(const CyberCore::RegistrableDomain& firstPartyDomain, const CyberCore::RegistrableDomain& thirdPartyDomain, bool shouldScheduleNotification);
 
 #if !RELEASE_LOG_DISABLED
     static void setShouldLogUserInteraction(bool);
@@ -65,28 +65,28 @@ public:
     
     bool hasStatistics() const final { return !m_resourceStatisticsMap.isEmpty(); }
 
-    void setDomainsWithUserInteraction(HashSet<WebCore::RegistrableDomain>&& domains) final { m_domainsWithUserInteraction = WTFMove(domains); }
+    void setDomainsWithUserInteraction(HashSet<CyberCore::RegistrableDomain>&& domains) final { m_domainsWithUserInteraction = WTFMove(domains); }
     void setDomainsWithCrossPageStorageAccess(HashMap<TopFrameDomain, SubFrameDomain>&&, CompletionHandler<void()>&&) final;
-    bool hasHadUserInteraction(const WebCore::RegistrableDomain&) const final;
+    bool hasHadUserInteraction(const CyberCore::RegistrableDomain&) const final;
     bool hasCrossPageStorageAccess(const SubFrameDomain&, const TopFrameDomain&) const final;
 
 private:
-    WebCore::ResourceLoadStatistics& ensureResourceStatisticsForRegistrableDomain(const WebCore::RegistrableDomain&);
+    CyberCore::ResourceLoadStatistics& ensureResourceStatisticsForRegistrableDomain(const CyberCore::RegistrableDomain&);
     void scheduleNotificationIfNeeded();
 
-    Vector<WebCore::ResourceLoadStatistics> takeStatistics();
-    void requestStorageAccessUnderOpener(const WebCore::RegistrableDomain& domainInNeedOfStorageAccess, WebPage& openerPage, WebCore::Document& openerDocument);
+    Vector<CyberCore::ResourceLoadStatistics> takeStatistics();
+    void requestStorageAccessUnderOpener(const CyberCore::RegistrableDomain& domainInNeedOfStorageAccess, WebPage& openerPage, CyberCore::Document& openerDocument);
 
-    bool isEphemeral() const { return m_isEphemeral == WebCore::ResourceLoadStatistics::IsEphemeral::Yes; }
+    bool isEphemeral() const { return m_isEphemeral == CyberCore::ResourceLoadStatistics::IsEphemeral::Yes; }
 
-    WebCore::ResourceLoadStatistics::IsEphemeral m_isEphemeral { WebCore::ResourceLoadStatistics::IsEphemeral::No };
+    CyberCore::ResourceLoadStatistics::IsEphemeral m_isEphemeral { CyberCore::ResourceLoadStatistics::IsEphemeral::No };
 
-    HashMap<WebCore::RegistrableDomain, std::unique_ptr<WebCore::ResourceLoadStatistics>> m_resourceStatisticsMap;
-    HashMap<WebCore::RegistrableDomain, WTF::WallTime> m_lastReportedUserInteractionMap;
+    HashMap<CyberCore::RegistrableDomain, std::unique_ptr<CyberCore::ResourceLoadStatistics>> m_resourceStatisticsMap;
+    HashMap<CyberCore::RegistrableDomain, WTF::WallTime> m_lastReportedUserInteractionMap;
 
-    WebCore::Timer m_notificationTimer;
+    CyberCore::Timer m_notificationTimer;
 
-    HashSet<WebCore::RegistrableDomain> m_domainsWithUserInteraction;
+    HashSet<CyberCore::RegistrableDomain> m_domainsWithUserInteraction;
     HashMap<TopFrameDomain, HashSet<SubFrameDomain>> m_domainsWithCrossPageStorageAccess;
 #if !RELEASE_LOG_DISABLED
     uint64_t m_loggingCounter { 0 };
@@ -94,6 +94,6 @@ private:
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(TRACKING_PREVENTION)

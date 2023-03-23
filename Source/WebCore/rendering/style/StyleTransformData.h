@@ -30,7 +30,7 @@
 #include <wtf/Ref.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 DECLARE_ALLOCATOR_WITH_HEAP_IDENTIFIER(StyleTransformData);
 class StyleTransformData : public RefCounted<StyleTransformData> {
@@ -60,4 +60,4 @@ private:
     StyleTransformData(const StyleTransformData&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

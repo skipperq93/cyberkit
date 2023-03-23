@@ -32,7 +32,7 @@
 #include "RenderStyleConstants.h"
 #include <wtf/OptionSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderStyle;
 
@@ -81,4 +81,4 @@ inline bool includesAdjacentEdges(OptionSet<BoxSideFlag> flags)
         && flags.containsAny({ BoxSideFlag::Left, BoxSideFlag::Right });
 }
 
-} // namespace WebCore
+} // namespace CyberCore

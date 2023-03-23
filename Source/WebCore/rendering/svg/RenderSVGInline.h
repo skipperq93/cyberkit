@@ -22,7 +22,7 @@
 
 #include "RenderInline.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGGraphicsElement;
 
@@ -70,6 +70,6 @@ private:
     void styleDidChange(StyleDifference, const RenderStyle* oldStyle) final;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderSVGInline, isSVGInline())

@@ -31,12 +31,12 @@
 
 #include "WebPage.h"
 
-namespace WebKit {
+namespace CyberKit {
 
-void WebContextMenuClient::insertEmoji(WebCore::Frame& frame)
+void WebContextMenuClient::insertEmoji(CyberCore::Frame& frame)
 {
     m_page->showEmojiPicker(frame);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 #endif // ENABLE(CONTEXT_MENUS)

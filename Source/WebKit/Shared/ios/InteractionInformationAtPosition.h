@@ -77,7 +77,7 @@ struct InteractionInformationAtPosition {
     bool isPausedVideo { false };
     bool isElement { false };
     bool isContentEditable { false };
-    WebCore::ScrollingNodeID containerScrollingNodeID { 0 };
+    CyberCore::ScrollingNodeID containerScrollingNodeID { 0 };
 #if ENABLE(DATA_DETECTION)
     bool isDataDetectorLink { false };
 #endif
@@ -88,34 +88,34 @@ struct InteractionInformationAtPosition {
     bool shouldNotUseIBeamInEditableContent { false };
     bool isImageOverlayText { false };
     bool isVerticalWritingMode { false };
-    WebCore::FloatPoint adjustedPointForNodeRespondingToClickEvents;
+    CyberCore::FloatPoint adjustedPointForNodeRespondingToClickEvents;
     URL url;
     URL imageURL;
     String imageMIMEType;
     String title;
     String idAttribute;
-    WebCore::IntRect bounds;
+    CyberCore::IntRect bounds;
 #if PLATFORM(MACCATALYST)
-    WebCore::IntRect caretRect;
+    CyberCore::IntRect caretRect;
 #endif
     RefPtr<ShareableBitmap> image;
     String textBefore;
     String textAfter;
 
     float caretLength { 0 };
-    WebCore::FloatRect lineCaretExtent;
+    CyberCore::FloatRect lineCaretExtent;
 
-    std::optional<WebCore::Cursor> cursor;
+    std::optional<CyberCore::Cursor> cursor;
 
-    WebCore::TextIndicatorData linkIndicator;
+    CyberCore::TextIndicatorData linkIndicator;
 #if ENABLE(DATA_DETECTION)
     String dataDetectorIdentifier;
     RetainPtr<NSArray> dataDetectorResults;
-    WebCore::IntRect dataDetectorBounds;
+    CyberCore::IntRect dataDetectorBounds;
 #endif
 
-    std::optional<WebCore::ElementContext> elementContext;
-    std::optional<WebCore::ElementContext> hostImageOrVideoElementContext;
+    std::optional<CyberCore::ElementContext> elementContext;
+    std::optional<CyberCore::ElementContext> hostImageOrVideoElementContext;
 
     // Copy compatible optional bits forward (for example, if we have a InteractionInformationAtPosition
     // with snapshots in it, and perform another request for the same point without requesting the snapshots,

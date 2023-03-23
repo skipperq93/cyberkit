@@ -44,7 +44,7 @@ namespace WTF {
 class LoggerHelper;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioSampleDataSource;
 class CAAudioStreamDescription;

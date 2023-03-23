@@ -28,7 +28,7 @@
 #include "MessageReceiver.h"
 #include "WebPageProxyIdentifier.h"
 
-namespace WebCore {
+namespace CyberCore {
 enum class PermissionQuerySource : uint8_t;
 enum class PermissionState : uint8_t;
 struct ClientOrigin;
@@ -51,10 +51,10 @@ public:
     void didReceiveMessage(IPC::Connection&, IPC::Decoder&) final;
 
 private:
-    RefPtr<WebPageProxy> mostReasonableWebPageProxy(const WebCore::SecurityOriginData&, WebCore::PermissionQuerySource) const;
+    RefPtr<WebPageProxy> mostReasonableWebPageProxy(const CyberCore::SecurityOriginData&, CyberCore::PermissionQuerySource) const;
 
     // IPC Message handlers.
-    void query(const WebCore::ClientOrigin&, const WebCore::PermissionDescriptor&, std::optional<WebPageProxyIdentifier>, WebCore::PermissionQuerySource, CompletionHandler<void(std::optional<WebCore::PermissionState>)>&&);
+    void query(const CyberCore::ClientOrigin&, const CyberCore::PermissionDescriptor&, std::optional<WebPageProxyIdentifier>, CyberCore::PermissionQuerySource, CompletionHandler<void(std::optional<CyberCore::PermissionState>)>&&);
 
     WebProcessProxy& m_process;
 };

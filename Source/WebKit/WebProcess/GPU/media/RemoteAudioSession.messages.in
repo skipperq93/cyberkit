@@ -26,9 +26,9 @@
 #if ENABLE(GPU_PROCESS) && USE(AUDIO_SESSION)
 
 messages -> RemoteAudioSession NotRefCounted {
-    ConfigurationChanged(struct WebKit::RemoteAudioSessionConfiguration configuration)
+    ConfigurationChanged(struct CyberKit::RemoteAudioSessionConfiguration configuration)
     BeginInterruption()
-    EndInterruption(WebCore::AudioSession::MayResume flags)
+    EndInterruption(CyberCore::AudioSession::MayResume flags)
 }
 
 #endif

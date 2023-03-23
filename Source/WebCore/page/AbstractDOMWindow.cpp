@@ -30,7 +30,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(AbstractDOMWindow);
 
@@ -54,4 +54,4 @@ AbstractDOMWindow::~AbstractDOMWindow()
     allWindows().remove(identifier());
 }
 
-} // namespace WebCore
+} // namespace CyberCore

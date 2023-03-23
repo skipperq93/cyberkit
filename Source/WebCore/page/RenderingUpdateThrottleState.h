@@ -25,11 +25,11 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class RenderingUpdateThrottleState {
     Enabled             = 1 << 0,
     UserIsInteracting   = 1 << 1
 };
 
-} // namespace WebCore
+} // namespace CyberCore

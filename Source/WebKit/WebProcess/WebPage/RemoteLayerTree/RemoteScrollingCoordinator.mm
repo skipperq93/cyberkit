@@ -34,7 +34,7 @@
 #import "RemoteScrollingCoordinatorMessages.h"
 #import "RemoteScrollingCoordinatorTransaction.h"
 #import "RemoteScrollingUIState.h"
-#import "WebCoreArgumentCoders.h"
+#import "CyberCoreArgumentCoders.h"
 #import "WebPage.h"
 #import "WebProcess.h"
 #import <CyberCore/Frame.h>
@@ -48,8 +48,8 @@
 #import <CyberCore/ScrollingTreeStickyNodeCocoa.h>
 #import <CyberCore/WheelEventTestMonitor.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 RemoteScrollingCoordinator::RemoteScrollingCoordinator(WebPage* page)
     : AsyncScrollingCoordinator(page->corePage())
@@ -156,24 +156,24 @@ void RemoteScrollingCoordinator::startMonitoringWheelEvents(bool clearLatchingSt
         m_clearScrollLatchingInNextTransaction = true;
 }
 
-void RemoteScrollingCoordinator::receivedWheelEventWithPhases(WebCore::PlatformWheelEventPhase phase, WebCore::PlatformWheelEventPhase momentumPhase)
+void RemoteScrollingCoordinator::receivedWheelEventWithPhases(CyberCore::PlatformWheelEventPhase phase, CyberCore::PlatformWheelEventPhase momentumPhase)
 {
     if (auto monitor = m_page->wheelEventTestMonitor())
         monitor->receivedWheelEventWithPhases(phase, momentumPhase);
 }
 
-void RemoteScrollingCoordinator::startDeferringScrollingTestCompletionForNode(WebCore::ScrollingNodeID nodeID, WebCore::WheelEventTestMonitor::DeferReason reason)
+void RemoteScrollingCoordinator::startDeferringScrollingTestCompletionForNode(CyberCore::ScrollingNodeID nodeID, CyberCore::WheelEventTestMonitor::DeferReason reason)
 {
     if (auto monitor = m_page->wheelEventTestMonitor())
         monitor->deferForReason(reinterpret_cast<WheelEventTestMonitor::ScrollableAreaIdentifier>(nodeID), reason);
 }
 
-void RemoteScrollingCoordinator::stopDeferringScrollingTestCompletionForNode(WebCore::ScrollingNodeID nodeID, WebCore::WheelEventTestMonitor::DeferReason reason)
+void RemoteScrollingCoordinator::stopDeferringScrollingTestCompletionForNode(CyberCore::ScrollingNodeID nodeID, CyberCore::WheelEventTestMonitor::DeferReason reason)
 {
     if (auto monitor = m_page->wheelEventTestMonitor())
         monitor->removeDeferralForReason(reinterpret_cast<WheelEventTestMonitor::ScrollableAreaIdentifier>(nodeID), reason);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(ASYNC_SCROLLING)

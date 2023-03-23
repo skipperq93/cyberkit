@@ -126,7 +126,7 @@ CGRect TestPDFPage::bounds() const
 }
 
 
-WebCore::Color TestPDFPage::colorAtPoint(int x, int y) const
+CyberCore::Color TestPDFPage::colorAtPoint(int x, int y) const
 {
     auto boundsRect = bounds();
     auto colorSpace = adoptCF(CGColorSpaceCreateWithName(kCGColorSpaceSRGB));
@@ -144,8 +144,8 @@ WebCore::Color TestPDFPage::colorAtPoint(int x, int y) const
     auto a = pixel[i + 3];
 
     if (!a)
-        return WebCore::Color::transparentBlack;
-    return WebCore::makeFromComponentsClampingExceptAlpha<WebCore::SRGBA<uint8_t>>(r * 255 / a, g * 255 / a, b * 255 / a, a);
+        return CyberCore::Color::transparentBlack;
+    return CyberCore::makeFromComponentsClampingExceptAlpha<CyberCore::SRGBA<uint8_t>>(r * 255 / a, g * 255 / a, b * 255 / a, a);
 }
 
 // Documents

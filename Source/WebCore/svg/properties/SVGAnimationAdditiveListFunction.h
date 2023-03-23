@@ -27,7 +27,7 @@
 
 #include "SVGAnimationAdditiveFunction.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename ListType>
 class SVGAnimationAdditiveListFunction : public SVGAnimationAdditiveFunction {

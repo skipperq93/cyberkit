@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -18,7 +18,7 @@
  */
 
 #include "config.h"
-#include "WebKitDOMHTMLSelectElement.h"
+#include "CyberKitDOMHTMLSelectElement.h"
 
 #include <CyberCore/CSSImportRule.h>
 #include "DOMObjectCache.h"
@@ -28,78 +28,78 @@
 #include <CyberCore/HTMLNames.h>
 #include <CyberCore/HTMLOptGroupElement.h>
 #include <CyberCore/JSExecState.h>
-#include "WebKitDOMEventPrivate.h"
-#include "WebKitDOMEventTarget.h"
-#include "WebKitDOMHTMLCollectionPrivate.h"
-#include "WebKitDOMHTMLElementPrivate.h"
-#include "WebKitDOMHTMLFormElementPrivate.h"
-#include "WebKitDOMHTMLOptionsCollectionPrivate.h"
-#include "WebKitDOMHTMLSelectElementPrivate.h"
-#include "WebKitDOMNodeListPrivate.h"
-#include "WebKitDOMNodePrivate.h"
-#include "WebKitDOMPrivate.h"
+#include "CyberKitDOMEventPrivate.h"
+#include "CyberKitDOMEventTarget.h"
+#include "CyberKitDOMHTMLCollectionPrivate.h"
+#include "CyberKitDOMHTMLElementPrivate.h"
+#include "CyberKitDOMHTMLFormElementPrivate.h"
+#include "CyberKitDOMHTMLOptionsCollectionPrivate.h"
+#include "CyberKitDOMHTMLSelectElementPrivate.h"
+#include "CyberKitDOMNodeListPrivate.h"
+#include "CyberKitDOMNodePrivate.h"
+#include "CyberKitDOMPrivate.h"
 #include "ConvertToUTF8String.h"
 #include <wtf/GetPtr.h>
 #include <wtf/RefPtr.h>
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
-namespace WebKit {
+namespace CyberKit {
 
-WebKitDOMHTMLSelectElement* kit(WebCore::HTMLSelectElement* obj)
+CyberKitDOMHTMLSelectElement* kit(CyberCore::HTMLSelectElement* obj)
 {
-    return WEBKIT_DOM_HTML_SELECT_ELEMENT(kit(static_cast<WebCore::Node*>(obj)));
+    return WEBKIT_DOM_HTML_SELECT_ELEMENT(kit(static_cast<CyberCore::Node*>(obj)));
 }
 
-WebCore::HTMLSelectElement* core(WebKitDOMHTMLSelectElement* request)
+CyberCore::HTMLSelectElement* core(CyberKitDOMHTMLSelectElement* request)
 {
-    return request ? static_cast<WebCore::HTMLSelectElement*>(WEBKIT_DOM_OBJECT(request)->coreObject) : 0;
+    return request ? static_cast<CyberCore::HTMLSelectElement*>(WEBKIT_DOM_OBJECT(request)->coreObject) : 0;
 }
 
-WebKitDOMHTMLSelectElement* wrapHTMLSelectElement(WebCore::HTMLSelectElement* coreObject)
+CyberKitDOMHTMLSelectElement* wrapHTMLSelectElement(CyberCore::HTMLSelectElement* coreObject)
 {
     ASSERT(coreObject);
     return WEBKIT_DOM_HTML_SELECT_ELEMENT(g_object_new(WEBKIT_DOM_TYPE_HTML_SELECT_ELEMENT, "core-object", coreObject, nullptr));
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
-static gboolean webkit_dom_html_select_element_dispatch_event(WebKitDOMEventTarget* target, WebKitDOMEvent* event, GError** error)
+static gboolean webkit_dom_html_select_element_dispatch_event(CyberKitDOMEventTarget* target, CyberKitDOMEvent* event, GError** error)
 {
-    WebCore::Event* coreEvent = WebKit::core(event);
+    CyberCore::Event* coreEvent = CyberKit::core(event);
     if (!coreEvent)
         return false;
-    WebCore::HTMLSelectElement* coreTarget = static_cast<WebCore::HTMLSelectElement*>(WEBKIT_DOM_OBJECT(target)->coreObject);
+    CyberCore::HTMLSelectElement* coreTarget = static_cast<CyberCore::HTMLSelectElement*>(WEBKIT_DOM_OBJECT(target)->coreObject);
 
     auto result = coreTarget->dispatchEventForBindings(*coreEvent);
     if (result.hasException()) {
-        auto description = WebCore::DOMException::description(result.releaseException().code());
+        auto description = CyberCore::DOMException::description(result.releaseException().code());
         g_set_error_literal(error, g_quark_from_string("WEBKIT_DOM"), description.legacyCode, description.name);
         return false;
     }
     return result.releaseReturnValue();
 }
 
-static gboolean webkit_dom_html_select_element_add_event_listener(WebKitDOMEventTarget* target, const char* eventName, GClosure* handler, gboolean useCapture)
+static gboolean webkit_dom_html_select_element_add_event_listener(CyberKitDOMEventTarget* target, const char* eventName, GClosure* handler, gboolean useCapture)
 {
-    WebCore::HTMLSelectElement* coreTarget = static_cast<WebCore::HTMLSelectElement*>(WEBKIT_DOM_OBJECT(target)->coreObject);
-    return WebKit::GObjectEventListener::addEventListener(G_OBJECT(target), coreTarget, eventName, handler, useCapture);
+    CyberCore::HTMLSelectElement* coreTarget = static_cast<CyberCore::HTMLSelectElement*>(WEBKIT_DOM_OBJECT(target)->coreObject);
+    return CyberKit::GObjectEventListener::addEventListener(G_OBJECT(target), coreTarget, eventName, handler, useCapture);
 }
 
-static gboolean webkit_dom_html_select_element_remove_event_listener(WebKitDOMEventTarget* target, const char* eventName, GClosure* handler, gboolean useCapture)
+static gboolean webkit_dom_html_select_element_remove_event_listener(CyberKitDOMEventTarget* target, const char* eventName, GClosure* handler, gboolean useCapture)
 {
-    WebCore::HTMLSelectElement* coreTarget = static_cast<WebCore::HTMLSelectElement*>(WEBKIT_DOM_OBJECT(target)->coreObject);
-    return WebKit::GObjectEventListener::removeEventListener(G_OBJECT(target), coreTarget, eventName, handler, useCapture);
+    CyberCore::HTMLSelectElement* coreTarget = static_cast<CyberCore::HTMLSelectElement*>(WEBKIT_DOM_OBJECT(target)->coreObject);
+    return CyberKit::GObjectEventListener::removeEventListener(G_OBJECT(target), coreTarget, eventName, handler, useCapture);
 }
 
-static void webkit_dom_html_select_element_dom_event_target_init(WebKitDOMEventTargetIface* iface)
+static void webkit_dom_html_select_element_dom_event_target_init(CyberKitDOMEventTargetIface* iface)
 {
     iface->dispatch_event = webkit_dom_html_select_element_dispatch_event;
     iface->add_event_listener = webkit_dom_html_select_element_add_event_listener;
     iface->remove_event_listener = webkit_dom_html_select_element_remove_event_listener;
 }
 
-G_DEFINE_TYPE_WITH_CODE(WebKitDOMHTMLSelectElement, webkit_dom_html_select_element, WEBKIT_DOM_TYPE_HTML_ELEMENT, G_IMPLEMENT_INTERFACE(WEBKIT_DOM_TYPE_EVENT_TARGET, webkit_dom_html_select_element_dom_event_target_init))
+G_DEFINE_TYPE_WITH_CODE(CyberKitDOMHTMLSelectElement, webkit_dom_html_select_element, WEBKIT_DOM_TYPE_HTML_ELEMENT, G_IMPLEMENT_INTERFACE(WEBKIT_DOM_TYPE_EVENT_TARGET, webkit_dom_html_select_element_dom_event_target_init))
 
 enum {
     DOM_HTML_SELECT_ELEMENT_PROP_0,
@@ -119,7 +119,7 @@ enum {
 
 static void webkit_dom_html_select_element_set_property(GObject* object, guint propertyId, const GValue* value, GParamSpec* pspec)
 {
-    WebKitDOMHTMLSelectElement* self = WEBKIT_DOM_HTML_SELECT_ELEMENT(object);
+    CyberKitDOMHTMLSelectElement* self = WEBKIT_DOM_HTML_SELECT_ELEMENT(object);
 
     switch (propertyId) {
     case DOM_HTML_SELECT_ELEMENT_PROP_AUTOFOCUS:
@@ -154,7 +154,7 @@ static void webkit_dom_html_select_element_set_property(GObject* object, guint p
 
 static void webkit_dom_html_select_element_get_property(GObject* object, guint propertyId, GValue* value, GParamSpec* pspec)
 {
-    WebKitDOMHTMLSelectElement* self = WEBKIT_DOM_HTML_SELECT_ELEMENT(object);
+    CyberKitDOMHTMLSelectElement* self = WEBKIT_DOM_HTML_SELECT_ELEMENT(object);
 
     switch (propertyId) {
     case DOM_HTML_SELECT_ELEMENT_PROP_AUTOFOCUS:
@@ -199,7 +199,7 @@ static void webkit_dom_html_select_element_get_property(GObject* object, guint p
     }
 }
 
-static void webkit_dom_html_select_element_class_init(WebKitDOMHTMLSelectElementClass* requestClass)
+static void webkit_dom_html_select_element_class_init(CyberKitDOMHTMLSelectElementClass* requestClass)
 {
     GObjectClass* gobjectClass = G_OBJECT_CLASS(requestClass);
     gobjectClass->set_property = webkit_dom_html_select_element_set_property;
@@ -231,7 +231,7 @@ static void webkit_dom_html_select_element_class_init(WebKitDOMHTMLSelectElement
         g_param_spec_object(
             "form",
             "HTMLSelectElement:form",
-            "read-only WebKitDOMHTMLFormElement* HTMLSelectElement:form",
+            "read-only CyberKitDOMHTMLFormElement* HTMLSelectElement:form",
             WEBKIT_DOM_TYPE_HTML_FORM_ELEMENT,
             WEBKIT_PARAM_READABLE));
 
@@ -281,7 +281,7 @@ static void webkit_dom_html_select_element_class_init(WebKitDOMHTMLSelectElement
         g_param_spec_object(
             "options",
             "HTMLSelectElement:options",
-            "read-only WebKitDOMHTMLOptionsCollection* HTMLSelectElement:options",
+            "read-only CyberKitDOMHTMLOptionsCollection* HTMLSelectElement:options",
             WEBKIT_DOM_TYPE_HTML_OPTIONS_COLLECTION,
             WEBKIT_PARAM_READABLE));
 
@@ -326,242 +326,242 @@ static void webkit_dom_html_select_element_class_init(WebKitDOMHTMLSelectElement
             WEBKIT_PARAM_READABLE));
 }
 
-static void webkit_dom_html_select_element_init(WebKitDOMHTMLSelectElement* request)
+static void webkit_dom_html_select_element_init(CyberKitDOMHTMLSelectElement* request)
 {
     UNUSED_PARAM(request);
 }
 
-WebKitDOMNode* webkit_dom_html_select_element_item(WebKitDOMHTMLSelectElement* self, gulong index)
+CyberKitDOMNode* webkit_dom_html_select_element_item(CyberKitDOMHTMLSelectElement* self, gulong index)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_SELECT_ELEMENT(self), 0);
-    WebCore::HTMLSelectElement* item = WebKit::core(self);
-    RefPtr<WebCore::Node> gobjectResult = WTF::getPtr(item->item(index));
-    return WebKit::kit(gobjectResult.get());
+    CyberCore::HTMLSelectElement* item = CyberKit::core(self);
+    RefPtr<CyberCore::Node> gobjectResult = WTF::getPtr(item->item(index));
+    return CyberKit::kit(gobjectResult.get());
 }
 
-WebKitDOMNode* webkit_dom_html_select_element_named_item(WebKitDOMHTMLSelectElement* self, const gchar* name)
+CyberKitDOMNode* webkit_dom_html_select_element_named_item(CyberKitDOMHTMLSelectElement* self, const gchar* name)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_SELECT_ELEMENT(self), 0);
     g_return_val_if_fail(name, 0);
-    WebCore::HTMLSelectElement* item = WebKit::core(self);
-    RefPtr<WebCore::Node> gobjectResult = WTF::getPtr(item->namedItem(WTF::AtomString::fromUTF8(name)));
-    return WebKit::kit(gobjectResult.get());
+    CyberCore::HTMLSelectElement* item = CyberKit::core(self);
+    RefPtr<CyberCore::Node> gobjectResult = WTF::getPtr(item->namedItem(WTF::AtomString::fromUTF8(name)));
+    return CyberKit::kit(gobjectResult.get());
 }
 
-void webkit_dom_html_select_element_add(WebKitDOMHTMLSelectElement* self, WebKitDOMHTMLElement* element, WebKitDOMHTMLElement* before, GError** error)
+void webkit_dom_html_select_element_add(CyberKitDOMHTMLSelectElement* self, CyberKitDOMHTMLElement* element, CyberKitDOMHTMLElement* before, GError** error)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_SELECT_ELEMENT(self));
     g_return_if_fail(WEBKIT_DOM_IS_HTML_ELEMENT(element));
     g_return_if_fail(WEBKIT_DOM_IS_HTML_ELEMENT(before));
     g_return_if_fail(!error || !*error);
-    WebCore::HTMLSelectElement* item = WebKit::core(self);
-    WebCore::HTMLElement* convertedElement = WebKit::core(element);
-    WebCore::HTMLElement* convertedBefore = WebKit::core(before);
-    std::variant<RefPtr<WebCore::HTMLOptionElement>, RefPtr<WebCore::HTMLOptGroupElement>> variantElement;
-    if (is<WebCore::HTMLOptionElement>(convertedElement))
-        variantElement = &downcast<WebCore::HTMLOptionElement>(*convertedElement);
-    else if (is<WebCore::HTMLOptGroupElement>(convertedElement))
-        variantElement = &downcast<WebCore::HTMLOptGroupElement>(*convertedElement);
+    CyberCore::HTMLSelectElement* item = CyberKit::core(self);
+    CyberCore::HTMLElement* convertedElement = CyberKit::core(element);
+    CyberCore::HTMLElement* convertedBefore = CyberKit::core(before);
+    std::variant<RefPtr<CyberCore::HTMLOptionElement>, RefPtr<CyberCore::HTMLOptGroupElement>> variantElement;
+    if (is<CyberCore::HTMLOptionElement>(convertedElement))
+        variantElement = &downcast<CyberCore::HTMLOptionElement>(*convertedElement);
+    else if (is<CyberCore::HTMLOptGroupElement>(convertedElement))
+        variantElement = &downcast<CyberCore::HTMLOptGroupElement>(*convertedElement);
     else {
-        auto description = WebCore::DOMException::description(WebCore::TypeError);
+        auto description = CyberCore::DOMException::description(CyberCore::TypeError);
         g_set_error_literal(error, g_quark_from_string("WEBKIT_DOM"), description.legacyCode, description.name);
         return;
     }
 
-    auto exception = item->add(WTFMove(variantElement), WebCore::HTMLSelectElement::HTMLElementOrInt(convertedBefore));
+    auto exception = item->add(WTFMove(variantElement), CyberCore::HTMLSelectElement::HTMLElementOrInt(convertedBefore));
     if (exception.hasException()) {
-        auto description = WebCore::DOMException::description(exception.releaseException().code());
+        auto description = CyberCore::DOMException::description(exception.releaseException().code());
         g_set_error_literal(error, g_quark_from_string("WEBKIT_DOM"), description.legacyCode, description.name);
     }
 }
 
-void webkit_dom_html_select_element_remove(WebKitDOMHTMLSelectElement* self, glong index)
+void webkit_dom_html_select_element_remove(CyberKitDOMHTMLSelectElement* self, glong index)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_SELECT_ELEMENT(self));
-    WebCore::HTMLSelectElement* item = WebKit::core(self);
+    CyberCore::HTMLSelectElement* item = CyberKit::core(self);
     item->remove(index);
 }
 
-gboolean webkit_dom_html_select_element_get_autofocus(WebKitDOMHTMLSelectElement* self)
+gboolean webkit_dom_html_select_element_get_autofocus(CyberKitDOMHTMLSelectElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_SELECT_ELEMENT(self), FALSE);
-    WebCore::HTMLSelectElement* item = WebKit::core(self);
-    gboolean result = item->hasAttributeWithoutSynchronization(WebCore::HTMLNames::autofocusAttr);
+    CyberCore::HTMLSelectElement* item = CyberKit::core(self);
+    gboolean result = item->hasAttributeWithoutSynchronization(CyberCore::HTMLNames::autofocusAttr);
     return result;
 }
 
-void webkit_dom_html_select_element_set_autofocus(WebKitDOMHTMLSelectElement* self, gboolean value)
+void webkit_dom_html_select_element_set_autofocus(CyberKitDOMHTMLSelectElement* self, gboolean value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_SELECT_ELEMENT(self));
-    WebCore::HTMLSelectElement* item = WebKit::core(self);
-    item->setBooleanAttribute(WebCore::HTMLNames::autofocusAttr, value);
+    CyberCore::HTMLSelectElement* item = CyberKit::core(self);
+    item->setBooleanAttribute(CyberCore::HTMLNames::autofocusAttr, value);
 }
 
-gboolean webkit_dom_html_select_element_get_disabled(WebKitDOMHTMLSelectElement* self)
+gboolean webkit_dom_html_select_element_get_disabled(CyberKitDOMHTMLSelectElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_SELECT_ELEMENT(self), FALSE);
-    WebCore::HTMLSelectElement* item = WebKit::core(self);
-    gboolean result = item->hasAttributeWithoutSynchronization(WebCore::HTMLNames::disabledAttr);
+    CyberCore::HTMLSelectElement* item = CyberKit::core(self);
+    gboolean result = item->hasAttributeWithoutSynchronization(CyberCore::HTMLNames::disabledAttr);
     return result;
 }
 
-void webkit_dom_html_select_element_set_disabled(WebKitDOMHTMLSelectElement* self, gboolean value)
+void webkit_dom_html_select_element_set_disabled(CyberKitDOMHTMLSelectElement* self, gboolean value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_SELECT_ELEMENT(self));
-    WebCore::HTMLSelectElement* item = WebKit::core(self);
-    item->setBooleanAttribute(WebCore::HTMLNames::disabledAttr, value);
+    CyberCore::HTMLSelectElement* item = CyberKit::core(self);
+    item->setBooleanAttribute(CyberCore::HTMLNames::disabledAttr, value);
 }
 
-WebKitDOMHTMLFormElement* webkit_dom_html_select_element_get_form(WebKitDOMHTMLSelectElement* self)
+CyberKitDOMHTMLFormElement* webkit_dom_html_select_element_get_form(CyberKitDOMHTMLSelectElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_SELECT_ELEMENT(self), 0);
-    WebCore::HTMLSelectElement* item = WebKit::core(self);
-    RefPtr<WebCore::HTMLFormElement> gobjectResult = WTF::getPtr(item->form());
-    return WebKit::kit(gobjectResult.get());
+    CyberCore::HTMLSelectElement* item = CyberKit::core(self);
+    RefPtr<CyberCore::HTMLFormElement> gobjectResult = WTF::getPtr(item->form());
+    return CyberKit::kit(gobjectResult.get());
 }
 
-gboolean webkit_dom_html_select_element_get_multiple(WebKitDOMHTMLSelectElement* self)
+gboolean webkit_dom_html_select_element_get_multiple(CyberKitDOMHTMLSelectElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_SELECT_ELEMENT(self), FALSE);
-    WebCore::HTMLSelectElement* item = WebKit::core(self);
+    CyberCore::HTMLSelectElement* item = CyberKit::core(self);
     gboolean result = item->multiple();
     return result;
 }
 
-void webkit_dom_html_select_element_set_multiple(WebKitDOMHTMLSelectElement* self, gboolean value)
+void webkit_dom_html_select_element_set_multiple(CyberKitDOMHTMLSelectElement* self, gboolean value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_SELECT_ELEMENT(self));
-    WebCore::HTMLSelectElement* item = WebKit::core(self);
+    CyberCore::HTMLSelectElement* item = CyberKit::core(self);
     item->setMultiple(value);
 }
 
-gchar* webkit_dom_html_select_element_get_name(WebKitDOMHTMLSelectElement* self)
+gchar* webkit_dom_html_select_element_get_name(CyberKitDOMHTMLSelectElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_SELECT_ELEMENT(self), 0);
-    WebCore::HTMLSelectElement* item = WebKit::core(self);
+    CyberCore::HTMLSelectElement* item = CyberKit::core(self);
     gchar* result = convertToUTF8String(item->getNameAttribute());
     return result;
 }
 
-void webkit_dom_html_select_element_set_name(WebKitDOMHTMLSelectElement* self, const gchar* value)
+void webkit_dom_html_select_element_set_name(CyberKitDOMHTMLSelectElement* self, const gchar* value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_SELECT_ELEMENT(self));
     g_return_if_fail(value);
-    WebCore::HTMLSelectElement* item = WebKit::core(self);
-    item->setAttributeWithoutSynchronization(WebCore::HTMLNames::nameAttr, WTF::AtomString::fromUTF8(value));
+    CyberCore::HTMLSelectElement* item = CyberKit::core(self);
+    item->setAttributeWithoutSynchronization(CyberCore::HTMLNames::nameAttr, WTF::AtomString::fromUTF8(value));
 }
 
-glong webkit_dom_html_select_element_get_size(WebKitDOMHTMLSelectElement* self)
+glong webkit_dom_html_select_element_get_size(CyberKitDOMHTMLSelectElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_SELECT_ELEMENT(self), 0);
-    WebCore::HTMLSelectElement* item = WebKit::core(self);
+    CyberCore::HTMLSelectElement* item = CyberKit::core(self);
     glong result = item->size();
     return result;
 }
 
-void webkit_dom_html_select_element_set_size(WebKitDOMHTMLSelectElement* self, glong value)
+void webkit_dom_html_select_element_set_size(CyberKitDOMHTMLSelectElement* self, glong value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_SELECT_ELEMENT(self));
-    WebCore::HTMLSelectElement* item = WebKit::core(self);
+    CyberCore::HTMLSelectElement* item = CyberKit::core(self);
     item->setSize(value);
 }
 
-gchar* webkit_dom_html_select_element_get_select_type(WebKitDOMHTMLSelectElement* self)
+gchar* webkit_dom_html_select_element_get_select_type(CyberKitDOMHTMLSelectElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_SELECT_ELEMENT(self), 0);
-    WebCore::HTMLSelectElement* item = WebKit::core(self);
+    CyberCore::HTMLSelectElement* item = CyberKit::core(self);
     gchar* result = convertToUTF8String(item->type());
     return result;
 }
 
-WebKitDOMHTMLOptionsCollection* webkit_dom_html_select_element_get_options(WebKitDOMHTMLSelectElement* self)
+CyberKitDOMHTMLOptionsCollection* webkit_dom_html_select_element_get_options(CyberKitDOMHTMLSelectElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_SELECT_ELEMENT(self), 0);
-    WebCore::HTMLSelectElement* item = WebKit::core(self);
-    RefPtr<WebCore::HTMLOptionsCollection> gobjectResult = WTF::getPtr(item->options());
-    return WebKit::kit(gobjectResult.get());
+    CyberCore::HTMLSelectElement* item = CyberKit::core(self);
+    RefPtr<CyberCore::HTMLOptionsCollection> gobjectResult = WTF::getPtr(item->options());
+    return CyberKit::kit(gobjectResult.get());
 }
 
-gulong webkit_dom_html_select_element_get_length(WebKitDOMHTMLSelectElement* self)
+gulong webkit_dom_html_select_element_get_length(CyberKitDOMHTMLSelectElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_SELECT_ELEMENT(self), 0);
-    WebCore::HTMLSelectElement* item = WebKit::core(self);
+    CyberCore::HTMLSelectElement* item = CyberKit::core(self);
     gulong result = item->length();
     return result;
 }
 
-void webkit_dom_html_select_element_set_length(WebKitDOMHTMLSelectElement* self, gulong value, GError** error)
+void webkit_dom_html_select_element_set_length(CyberKitDOMHTMLSelectElement* self, gulong value, GError** error)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_SELECT_ELEMENT(self));
     g_return_if_fail(!error || !*error);
-    WebCore::HTMLSelectElement* item = WebKit::core(self);
+    CyberCore::HTMLSelectElement* item = CyberKit::core(self);
     auto result = item->setLength(value);
     if (result.hasException()) {
-        auto description = WebCore::DOMException::description(result.releaseException().code());
+        auto description = CyberCore::DOMException::description(result.releaseException().code());
         g_set_error_literal(error, g_quark_from_string("WEBKIT_DOM"), description.legacyCode, description.name);
     }
 }
 
-glong webkit_dom_html_select_element_get_selected_index(WebKitDOMHTMLSelectElement* self)
+glong webkit_dom_html_select_element_get_selected_index(CyberKitDOMHTMLSelectElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_SELECT_ELEMENT(self), 0);
-    WebCore::HTMLSelectElement* item = WebKit::core(self);
+    CyberCore::HTMLSelectElement* item = CyberKit::core(self);
     glong result = item->selectedIndex();
     return result;
 }
 
-void webkit_dom_html_select_element_set_selected_index(WebKitDOMHTMLSelectElement* self, glong value)
+void webkit_dom_html_select_element_set_selected_index(CyberKitDOMHTMLSelectElement* self, glong value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_SELECT_ELEMENT(self));
-    WebCore::HTMLSelectElement* item = WebKit::core(self);
+    CyberCore::HTMLSelectElement* item = CyberKit::core(self);
     item->setSelectedIndex(value);
 }
 
-gchar* webkit_dom_html_select_element_get_value(WebKitDOMHTMLSelectElement* self)
+gchar* webkit_dom_html_select_element_get_value(CyberKitDOMHTMLSelectElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_SELECT_ELEMENT(self), 0);
-    WebCore::HTMLSelectElement* item = WebKit::core(self);
+    CyberCore::HTMLSelectElement* item = CyberKit::core(self);
     gchar* result = convertToUTF8String(item->value());
     return result;
 }
 
-void webkit_dom_html_select_element_set_value(WebKitDOMHTMLSelectElement* self, const gchar* value)
+void webkit_dom_html_select_element_set_value(CyberKitDOMHTMLSelectElement* self, const gchar* value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_SELECT_ELEMENT(self));
     g_return_if_fail(value);
-    WebCore::HTMLSelectElement* item = WebKit::core(self);
+    CyberCore::HTMLSelectElement* item = CyberKit::core(self);
     WTF::String convertedValue = WTF::String::fromUTF8(value);
     item->setValue(convertedValue);
 }
 
-gboolean webkit_dom_html_select_element_get_will_validate(WebKitDOMHTMLSelectElement* self)
+gboolean webkit_dom_html_select_element_get_will_validate(CyberKitDOMHTMLSelectElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_SELECT_ELEMENT(self), FALSE);
-    WebCore::HTMLSelectElement* item = WebKit::core(self);
+    CyberCore::HTMLSelectElement* item = CyberKit::core(self);
     gboolean result = item->willValidate();
     return result;
 }

@@ -26,7 +26,7 @@
 #pragma once
 
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class RenderStyle;

@@ -33,7 +33,7 @@
 #include <wtf/Vector.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 WebOpenPanelResultListenerProxy::WebOpenPanelResultListenerProxy(WebPageProxy* page)
     : m_page(page)

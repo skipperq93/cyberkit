@@ -35,7 +35,7 @@
 OBJC_CLASS DDScannerResult;
 OBJC_CLASS NSArray;
 
-namespace WebCore {
+namespace CyberCore {
 
 class DataDetectionResultsStorage {
     WTF_MAKE_NONCOPYABLE(DataDetectionResultsStorage);
@@ -59,6 +59,6 @@ private:
     HashMap<ImageOverlayDataDetectionResultIdentifier, RetainPtr<DDScannerResult>> m_imageOverlayResults;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(DATA_DETECTION)

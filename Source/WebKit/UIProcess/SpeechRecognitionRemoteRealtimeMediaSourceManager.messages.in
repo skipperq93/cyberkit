@@ -24,11 +24,11 @@
 #if ENABLE(MEDIA_STREAM)
 
 messages -> SpeechRecognitionRemoteRealtimeMediaSourceManager NotRefCounted {
-    RemoteAudioSamplesAvailable(WebCore::RealtimeMediaSourceIdentifier identifier, MediaTime time, uint64_t numberOfFrames)
-    RemoteCaptureFailed(WebCore::RealtimeMediaSourceIdentifier identifier)
-    RemoteSourceStopped(WebCore::RealtimeMediaSourceIdentifier identifier)
+    RemoteAudioSamplesAvailable(CyberCore::RealtimeMediaSourceIdentifier identifier, MediaTime time, uint64_t numberOfFrames)
+    RemoteCaptureFailed(CyberCore::RealtimeMediaSourceIdentifier identifier)
+    RemoteSourceStopped(CyberCore::RealtimeMediaSourceIdentifier identifier)
 #if PLATFORM(COCOA)
-    SetStorage(WebCore::RealtimeMediaSourceIdentifier identifier, WebKit::ConsumerSharedCARingBuffer::Handle storageHandle, WebCore::CAAudioStreamDescription description)
+    SetStorage(CyberCore::RealtimeMediaSourceIdentifier identifier, WebKit::ConsumerSharedCARingBuffer::Handle storageHandle, CyberCore::CAAudioStreamDescription description)
 #endif
 }
 

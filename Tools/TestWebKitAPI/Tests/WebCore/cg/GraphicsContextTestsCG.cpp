@@ -31,7 +31,7 @@
 #include <CyberCore/GraphicsContextCG.h>
 
 namespace TestWebKitAPI {
-using namespace WebCore;
+using namespace CyberCore;
 
 constexpr CGFloat contextWidth = 1;
 constexpr CGFloat contextHeight = 1;
@@ -58,7 +58,7 @@ TEST(GraphicsContextTests, DrawNativeImageDoesNotLeakCompositeOperator)
     auto greenPixelNative = NativeImage::create(greenPixelCG.get());
     FloatRect rect(0, 0, contextWidth, contextHeight);
     FloatRect sourceRect(0, 0, contextWidth / 2, contextHeight / 2);
-    ctx.drawNativeImage(*greenPixelNative, { contextWidth, contextHeight }, rect, sourceRect, { WebCore::CompositeOperator::Copy });
+    ctx.drawNativeImage(*greenPixelNative, { contextWidth, contextHeight }, rect, sourceRect, { CyberCore::CompositeOperator::Copy });
 
     CGContextSetRGBFillColor(cgContext.get(), 0, 0, 0, 0);
     CGContextFillRect(cgContext.get(), rect);

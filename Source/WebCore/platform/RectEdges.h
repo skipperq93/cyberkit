@@ -30,7 +30,7 @@
 #include <wtf/OptionSet.h>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class BoxSideFlag : uint8_t {
     Top     = 1 << static_cast<unsigned>(BoxSide::Top),

@@ -32,7 +32,7 @@ namespace WTF {
 class WorkQueue;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebInspectorInterruptDispatcher final : private IPC::MessageReceiver {
 public:
@@ -50,4 +50,4 @@ private:
     Ref<WTF::WorkQueue> m_queue;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

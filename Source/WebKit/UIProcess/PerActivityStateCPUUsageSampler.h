@@ -40,7 +40,7 @@ public:
     explicit PerActivityStateCPUUsageSampler(WebProcessPool&);
     ~PerActivityStateCPUUsageSampler();
 
-    void reportWebContentCPUTime(Seconds cpuTime, WebCore::ActivityStateForCPUSampling);
+    void reportWebContentCPUTime(Seconds cpuTime, CyberCore::ActivityStateForCPUSampling);
 
 private:
     void loggingTimerFired();
@@ -48,7 +48,7 @@ private:
 
     WebProcessPool& m_processPool;
     RunLoop::Timer m_loggingTimer;
-    typedef HashMap<WebCore::ActivityStateForCPUSampling, Seconds, WTF::IntHash<WebCore::ActivityStateForCPUSampling>, WTF::StrongEnumHashTraits<WebCore::ActivityStateForCPUSampling>> CPUTimeInActivityStateMap;
+    typedef HashMap<CyberCore::ActivityStateForCPUSampling, Seconds, WTF::IntHash<CyberCore::ActivityStateForCPUSampling>, WTF::StrongEnumHashTraits<CyberCore::ActivityStateForCPUSampling>> CPUTimeInActivityStateMap;
     CPUTimeInActivityStateMap m_cpuTimeInActivityState;
     MonotonicTime m_lastCPUTime;
 };

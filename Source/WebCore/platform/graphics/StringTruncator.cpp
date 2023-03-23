@@ -38,7 +38,7 @@
 #include <wtf/text/StringView.h>
 #include <wtf/unicode/CharacterNames.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 #define STRING_BUFFER_SIZE 2048
 
@@ -334,4 +334,4 @@ String StringTruncator::rightClipToWord(const String& string, float maxWidth, co
     return truncateString(string, maxWidth, font, rightClipToWordBuffer, &resultWidth, shouldInsertEllipsis, customTruncationElementWidth, alwaysTruncate);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

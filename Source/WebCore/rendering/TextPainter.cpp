@@ -36,7 +36,7 @@
 #include "ShadowData.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 ShadowApplier::ShadowApplier(GraphicsContext& context, const ShadowData* shadow, const FilterOperations* colorFilter, const FloatRect& textRect, bool lastShadowIterationShouldDrawText, bool opaque, FontOrientation orientation)
     : m_context { context }
@@ -261,4 +261,4 @@ String TextPainter::cachedGlyphDisplayListsForTextNodeAsText(Text& textNode, Opt
     return builder.toString();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

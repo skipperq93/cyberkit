@@ -30,7 +30,7 @@
 #include <gst/video/video.h>
 #include <wtf/glib/GUniquePtr.h>
 
-#if defined(BUILDING_WebCore) && USE(GSTREAMER_WEBRTC)
+#if defined(BUILDING_CyberCore) && USE(GSTREAMER_WEBRTC)
 #define GST_USE_UNSTABLE_API
 #include <gst/webrtc/webrtc.h>
 #undef GST_USE_UNSTABLE_API
@@ -40,7 +40,7 @@
 #include <wpe/extensions/video-plane-display-dmabuf.h>
 #endif
 
-#if defined(BUILDING_WebCore) && PLATFORM(WPE) && USE(WPEBACKEND_FDO_AUDIO_EXTENSION)
+#if defined(BUILDING_CyberCore) && PLATFORM(WPE) && USE(WPEBACKEND_FDO_AUDIO_EXTENSION)
 #include <wpe/extensions/audio.h>
 #endif
 
@@ -55,7 +55,7 @@ WTF_DEFINE_GPTR_DELETER(GstByteReader, gst_byte_reader_free)
 WTF_DEFINE_GPTR_DELETER(GstVideoConverter, gst_video_converter_free)
 WTF_DEFINE_GPTR_DELETER(GstAudioConverter, gst_audio_converter_free)
 
-#if defined(BUILDING_WebCore) && USE(GSTREAMER_WEBRTC)
+#if defined(BUILDING_CyberCore) && USE(GSTREAMER_WEBRTC)
 WTF_DEFINE_GPTR_DELETER(GstWebRTCSessionDescription, gst_webrtc_session_description_free)
 WTF_DEFINE_GPTR_DELETER(GstSDPMessage, gst_sdp_message_free)
 #endif
@@ -64,7 +64,7 @@ WTF_DEFINE_GPTR_DELETER(GstSDPMessage, gst_sdp_message_free)
 WTF_DEFINE_GPTR_DELETER(struct wpe_video_plane_display_dmabuf_source, wpe_video_plane_display_dmabuf_source_destroy)
 #endif
 
-#if defined(BUILDING_WebCore) && PLATFORM(WPE) && USE(WPEBACKEND_FDO_AUDIO_EXTENSION)
+#if defined(BUILDING_CyberCore) && PLATFORM(WPE) && USE(WPEBACKEND_FDO_AUDIO_EXTENSION)
 WTF_DEFINE_GPTR_DELETER(struct wpe_audio_source, wpe_audio_source_destroy)
 #endif
 }

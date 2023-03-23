@@ -35,7 +35,7 @@ class RemoteLayerTreeHost;
 
 class RemoteLayerTreePropertyApplier {
 public:
-    using RelatedLayerMap = HashMap<WebCore::GraphicsLayer::PlatformLayerID, std::unique_ptr<RemoteLayerTreeNode>>;
+    using RelatedLayerMap = HashMap<CyberCore::GraphicsLayer::PlatformLayerID, std::unique_ptr<RemoteLayerTreeNode>>;
     
     static void applyHierarchyUpdates(RemoteLayerTreeNode&, const RemoteLayerTreeTransaction::LayerProperties&, const RelatedLayerMap&);
     static void applyProperties(RemoteLayerTreeNode&, RemoteLayerTreeHost*, const RemoteLayerTreeTransaction::LayerProperties&, const RelatedLayerMap&, RemoteLayerBackingStore::LayerContentsType);

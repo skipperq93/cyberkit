@@ -28,7 +28,7 @@
 #include "RenderReplaced.h"
 #include "SVGBoundingBoxComputation.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderSVGResourceContainer;
 class RenderSVGViewportContainer;
@@ -128,7 +128,7 @@ private:
     WeakHashSet<RenderSVGResourceContainer> m_resourcesNeedingToInvalidateClients;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderSVGRoot, isSVGRoot())
 

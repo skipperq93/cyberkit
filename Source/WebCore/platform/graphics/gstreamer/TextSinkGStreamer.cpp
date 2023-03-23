@@ -37,7 +37,7 @@
 GST_DEBUG_CATEGORY_STATIC(webkitTextSinkDebug);
 #define GST_CAT_DEFAULT webkitTextSinkDebug
 
-using namespace WebCore;
+using namespace CyberCore;
 
 struct _WebKitTextSinkPrivate {
     GRefPtr<GstElement> appSink;
@@ -61,7 +61,7 @@ static void webkitTextSinkHandleSample(WebKitTextSink* self, GRefPtr<GstSample>&
     }
 
     if (priv->streamId) {
-        // Player private methods that interact with WebCore must run from the main thread. Things can be destroyed before that
+        // Player private methods that interact with CyberCore must run from the main thread. Things can be destroyed before that
         // code runs, including the text sink and priv, so pass everything in a safe way.
         callOnMainThread([mediaPlayerPrivate = WeakPtr<MediaPlayerPrivateGStreamer>(priv->mediaPlayerPrivate),
             streamId = priv->streamId, sample = WTFMove(sample)] {

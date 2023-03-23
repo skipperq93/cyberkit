@@ -36,7 +36,7 @@
 #include <wtf/NeverDestroyed.h>
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 String RealtimeMediaSourceSettings::facingMode(VideoFacingMode mode)
 {
@@ -202,6 +202,6 @@ String RealtimeMediaSourceSettings::displaySurface(DisplaySurfaceType surface)
     return values[static_cast<size_t>(surface)];
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM)

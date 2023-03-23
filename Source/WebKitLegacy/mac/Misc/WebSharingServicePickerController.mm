@@ -38,7 +38,7 @@
 #import <CyberCore/FrameSelection.h>
 #import <CyberCore/Page.h>
 
-static NSString *serviceControlsPasteboardName = @"WebKitServiceControlsPasteboard";
+static NSString *serviceControlsPasteboardName = @"CyberKitServiceControlsPasteboard";
 
 WebSharingServicePickerClient::WebSharingServicePickerClient(WebView *webView)
     : m_webView(webView)
@@ -49,7 +49,7 @@ void WebSharingServicePickerClient::sharingServicePickerWillBeDestroyed(WebShari
 {
 }
 
-WebCore::Page* WebSharingServicePickerClient::pageForSharingServicePicker(WebSharingServicePickerController &)
+CyberCore::Page* WebSharingServicePickerClient::pageForSharingServicePicker(WebSharingServicePickerController &)
 {
     return [m_webView page];
 }
@@ -59,9 +59,9 @@ RetainPtr<NSWindow> WebSharingServicePickerClient::windowForSharingServicePicker
     return [m_webView window];
 }
 
-WebCore::FloatRect WebSharingServicePickerClient::screenRectForCurrentSharingServicePickerItem(WebSharingServicePickerController &)
+CyberCore::FloatRect WebSharingServicePickerClient::screenRectForCurrentSharingServicePickerItem(WebSharingServicePickerController &)
 {
-    return WebCore::FloatRect();
+    return CyberCore::FloatRect();
 }
 
 RetainPtr<NSImage> WebSharingServicePickerClient::imageForCurrentSharingServicePickerItem(WebSharingServicePickerController &)

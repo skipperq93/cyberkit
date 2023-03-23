@@ -30,7 +30,7 @@
 #include "PlatformLayer.h"
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Image;
 class IntRect;

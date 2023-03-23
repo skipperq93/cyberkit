@@ -30,10 +30,10 @@
 #include <wtf/URL.h>
 #include <wtf/glib/ChassisType.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // When editing the quirks in this file, be sure to update
-// Tools/TestWebKitAPI/Tests/WebCore/UserAgentQuirks.cpp.
+// Tools/TestWebKitAPI/Tests/CyberCore/UserAgentQuirks.cpp.
 //
 // When testing changes, be sure to test with application branding enabled.
 // Otherwise, we will not notice when urlRequiresUnbrandedUserAgent is needed.

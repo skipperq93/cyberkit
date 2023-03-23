@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 // This class is used to detect when we are painting frequently so that - even in a painting model
 // without display lists - we can build and cache portions of display lists and reuse them only when

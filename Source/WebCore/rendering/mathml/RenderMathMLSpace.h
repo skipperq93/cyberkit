@@ -30,7 +30,7 @@
 #include "MathMLSpaceElement.h"
 #include "RenderMathMLBlock.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderMathMLSpace final : public RenderMathMLBlock {
     WTF_MAKE_ISO_ALLOCATED(RenderMathMLSpace);
@@ -50,7 +50,7 @@ private:
     void getSpaceHeightAndDepth(LayoutUnit& height, LayoutUnit& depth) const;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderMathMLSpace, isRenderMathMLSpace())
 

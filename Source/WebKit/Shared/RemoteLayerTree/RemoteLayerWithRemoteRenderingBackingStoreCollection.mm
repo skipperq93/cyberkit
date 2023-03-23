@@ -56,7 +56,7 @@ bool RemoteLayerWithRemoteRenderingBackingStoreCollection::backingStoreNeedsDisp
     if (!frontBuffer)
         return true;
 
-    if (frontBuffer->volatilityState() == WebCore::VolatilityState::Volatile)
+    if (frontBuffer->volatilityState() == CyberCore::VolatilityState::Volatile)
         return true;
 
     if (auto* backend = frontBuffer->ensureBackendCreated()) {
@@ -109,13 +109,13 @@ void RemoteLayerWithRemoteRenderingBackingStoreCollection::prepareBackingStoresF
     }
 }
 
-RefPtr<WebCore::ImageBuffer> RemoteLayerWithRemoteRenderingBackingStoreCollection::allocateBufferForBackingStore(const RemoteLayerBackingStore& backingStore)
+RefPtr<CyberCore::ImageBuffer> RemoteLayerWithRemoteRenderingBackingStoreCollection::allocateBufferForBackingStore(const RemoteLayerBackingStore& backingStore)
 {
-    auto renderingMode = backingStore.type() == RemoteLayerBackingStore::Type::IOSurface ? WebCore::RenderingMode::Accelerated : WebCore::RenderingMode::Unaccelerated;
-    return remoteRenderingBackendProxy().createImageBuffer(backingStore.size(), renderingMode, WebCore::RenderingPurpose::LayerBacking, backingStore.scale(), backingStore.colorSpace(), backingStore.pixelFormat());
+    auto renderingMode = backingStore.type() == RemoteLayerBackingStore::Type::IOSurface ? CyberCore::RenderingMode::Accelerated : CyberCore::RenderingMode::Unaccelerated;
+    return remoteRenderingBackendProxy().createImageBuffer(backingStore.size(), renderingMode, CyberCore::RenderingPurpose::LayerBacking, backingStore.scale(), backingStore.colorSpace(), backingStore.pixelFormat());
 }
 
-bool RemoteLayerWithRemoteRenderingBackingStoreCollection::collectBackingStoreBufferIdentifiersToMarkVolatile(RemoteLayerBackingStore& backingStore, OptionSet<VolatilityMarkingBehavior> markingBehavior, MonotonicTime now, Vector<WebCore::RenderingResourceIdentifier>& identifiers)
+bool RemoteLayerWithRemoteRenderingBackingStoreCollection::collectBackingStoreBufferIdentifiersToMarkVolatile(RemoteLayerBackingStore& backingStore, OptionSet<VolatilityMarkingBehavior> markingBehavior, MonotonicTime now, Vector<CyberCore::RenderingResourceIdentifier>& identifiers)
 {
     ASSERT(!m_inLayerFlush);
 
@@ -124,7 +124,7 @@ bool RemoteLayerWithRemoteRenderingBackingStoreCollection::collectBackingStoreBu
         if (!buffer)
             return;
 
-        if (buffer->volatilityState() != WebCore::VolatilityState::NonVolatile)
+        if (buffer->volatilityState() != CyberCore::VolatilityState::NonVolatile)
             return;
 
         // Clearing the backend handle in the webcontent process is necessary to have the surface in-use count drop to zero.
@@ -156,7 +156,7 @@ bool RemoteLayerWithRemoteRenderingBackingStoreCollection::collectBackingStoreBu
     return true;
 }
 
-bool RemoteLayerWithRemoteRenderingBackingStoreCollection::collectAllBufferIdentifiersToMarkVolatile(OptionSet<VolatilityMarkingBehavior> liveBackingStoreMarkingBehavior, OptionSet<VolatilityMarkingBehavior> unparentedBackingStoreMarkingBehavior, Vector<WebCore::RenderingResourceIdentifier>& identifiers)
+bool RemoteLayerWithRemoteRenderingBackingStoreCollection::collectAllBufferIdentifiersToMarkVolatile(OptionSet<VolatilityMarkingBehavior> liveBackingStoreMarkingBehavior, OptionSet<VolatilityMarkingBehavior> unparentedBackingStoreMarkingBehavior, Vector<CyberCore::RenderingResourceIdentifier>& identifiers)
 {
     bool completed = true;
     auto now = MonotonicTime::now();
@@ -172,7 +172,7 @@ bool RemoteLayerWithRemoteRenderingBackingStoreCollection::collectAllBufferIdent
 
 void RemoteLayerWithRemoteRenderingBackingStoreCollection::markBackingStoreVolatileAfterReachabilityChange(RemoteLayerBackingStore& backingStore)
 {
-    Vector<WebCore::RenderingResourceIdentifier> identifiers;
+    Vector<CyberCore::RenderingResourceIdentifier> identifiers;
     collectBackingStoreBufferIdentifiersToMarkVolatile(backingStore, { }, { }, identifiers);
 
     if (identifiers.isEmpty())
@@ -185,7 +185,7 @@ void RemoteLayerWithRemoteRenderingBackingStoreCollection::markBackingStoreVolat
 
 void RemoteLayerWithRemoteRenderingBackingStoreCollection::tryMarkAllBackingStoreVolatile(CompletionHandler<void(bool)>&& completionHandler)
 {
-    Vector<WebCore::RenderingResourceIdentifier> identifiers;
+    Vector<CyberCore::RenderingResourceIdentifier> identifiers;
     bool completed = collectAllBufferIdentifiersToMarkVolatile(VolatilityMarkingBehavior::IgnoreReachability, VolatilityMarkingBehavior::IgnoreReachability, identifiers);
 
     LOG_WITH_STREAM(RemoteRenderingBufferVolatility, stream << "RemoteLayerWithRemoteRenderingBackingStoreCollection::tryMarkAllBackingStoreVolatile pid " << getpid() << " - live " << m_liveBackingStore.size() << ", unparented " << m_unparentedBackingStore.size() << " " << identifiers);
@@ -203,7 +203,7 @@ void RemoteLayerWithRemoteRenderingBackingStoreCollection::tryMarkAllBackingStor
 
 void RemoteLayerWithRemoteRenderingBackingStoreCollection::markAllBackingStoreVolatileFromTimer()
 {
-    Vector<WebCore::RenderingResourceIdentifier> identifiers;
+    Vector<CyberCore::RenderingResourceIdentifier> identifiers;
     bool completed = collectAllBufferIdentifiersToMarkVolatile(VolatilityMarkingBehavior::ConsiderTimeSinceLastDisplay, { }, identifiers);
 
     LOG_WITH_STREAM(RemoteRenderingBufferVolatility, stream << "RemoteLayerWithRemoteRenderingBackingStoreCollection::markAllBackingStoreVolatileFromTimer pid " << getpid() << " - live " << m_liveBackingStore.size() << ", unparented " << m_unparentedBackingStore.size() << ", " << identifiers.size() << " buffers to set volatile: " << identifiers);
@@ -224,7 +224,7 @@ void RemoteLayerWithRemoteRenderingBackingStoreCollection::markAllBackingStoreVo
     });
 }
 
-void RemoteLayerWithRemoteRenderingBackingStoreCollection::sendMarkBuffersVolatile(Vector<WebCore::RenderingResourceIdentifier>&& identifiers, CompletionHandler<void(bool)>&& completionHandler)
+void RemoteLayerWithRemoteRenderingBackingStoreCollection::sendMarkBuffersVolatile(Vector<CyberCore::RenderingResourceIdentifier>&& identifiers, CompletionHandler<void(bool)>&& completionHandler)
 {
     auto& remoteRenderingBackend = m_layerTreeContext.ensureRemoteRenderingBackendProxy();
     

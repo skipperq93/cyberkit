@@ -26,7 +26,7 @@
 #include "config.h"
 #include "FontCascadeDescription.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 unsigned FontCascadeDescription::effectiveFamilyCount() const
 {

@@ -44,7 +44,7 @@
 #import <pal/cocoa/MediaToolboxSoftLink.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 // These functions scale between screen and page coordinates because JavaScript/DOM operations
 // assume that the screen and the page share the same coordinate system.
@@ -149,7 +149,7 @@ ScreenProperties collectScreenProperties()
 
     for (NSScreen *screen in [NSScreen screens]) {
         ScreenData screenData;
-        auto displayID = WebCore::displayID(screen);
+        auto displayID = CyberCore::displayID(screen);
 
         auto screenAvailableRect = FloatRect { screen.visibleFrame };
         screenAvailableRect.setY(NSMaxY(screen.frame) - (screenAvailableRect.y() + screenAvailableRect.height())); // flip
@@ -342,7 +342,7 @@ NSScreen *screen(PlatformDisplayID displayID)
 {
     ASSERT(hasProcessPrivilege(ProcessPrivilege::CanCommunicateWithWindowServer));
     for (NSScreen *screen in [NSScreen screens]) {
-        if (WebCore::displayID(screen) == displayID)
+        if (CyberCore::displayID(screen) == displayID)
             return screen;
     }
     return firstScreen();
@@ -374,7 +374,7 @@ bool screenSupportsHighDynamicRange(Widget* widget)
     ASSERT(hasProcessPrivilege(ProcessPrivilege::CanCommunicateWithWindowServer));
 #if USE(MEDIATOOLBOX)
     if (PAL::isMediaToolboxFrameworkAvailable() && PAL::canLoad_MediaToolbox_MTShouldPlayHDRVideo()) {
-        auto displayID = WebCore::displayID(screen(widget));
+        auto displayID = CyberCore::displayID(screen(widget));
         return PAL::softLink_MediaToolbox_MTShouldPlayHDRVideo((__bridge CFArrayRef)@[ @(displayID) ]);
     }
 #endif
@@ -389,7 +389,7 @@ DynamicRangeMode preferredDynamicRangeMode(Widget* widget)
 
     ASSERT(hasProcessPrivilege(ProcessPrivilege::CanCommunicateWithWindowServer));
     if (PAL::isAVFoundationFrameworkAvailable() && [PAL::getAVPlayerClass() respondsToSelector:@selector(preferredVideoRangeForDisplays:)]) {
-        auto displayID = WebCore::displayID(screen(widget));
+        auto displayID = CyberCore::displayID(screen(widget));
         return convertAVVideoRangeToEnum([PAL::getAVPlayerClass() preferredVideoRangeForDisplays:@[ @(displayID) ]]);
     }
 
@@ -437,6 +437,6 @@ FloatRect safeScreenFrame(NSScreen* screen)
 }
 
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(MAC)

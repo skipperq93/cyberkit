@@ -33,13 +33,13 @@
 namespace WebKit::PCM {
 
 #if !PLATFORM(COCOA)
-void NetworkLoader::start(URL&&, RefPtr<JSON::Object>&&, WebCore::PrivateClickMeasurement::PcmDataCarried, Callback&& completionHandler)
+void NetworkLoader::start(URL&&, RefPtr<JSON::Object>&&, CyberCore::PrivateClickMeasurement::PcmDataCarried, Callback&& completionHandler)
 {
     notImplemented();
     completionHandler({ }, { });
 }
 
-void NetworkLoader::allowTLSCertificateChainForLocalPCMTesting(const WebCore::CertificateInfo&)
+void NetworkLoader::allowTLSCertificateChainForLocalPCMTesting(const CyberCore::CertificateInfo&)
 {
     notImplemented();
 }

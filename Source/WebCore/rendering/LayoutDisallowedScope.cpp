@@ -26,7 +26,7 @@
 #include "config.h"
 #include "LayoutDisallowedScope.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 #if ASSERT_ENABLED
 

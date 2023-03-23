@@ -26,7 +26,7 @@
 #include "config.h"
 #include "DisplayRefreshMonitorWin.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 constexpr FramesPerSecond DefaultFramesPerSecond = 60;
 
@@ -61,4 +61,4 @@ void DisplayRefreshMonitorWin::stopNotificationMechanism()
     m_timer.stop();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

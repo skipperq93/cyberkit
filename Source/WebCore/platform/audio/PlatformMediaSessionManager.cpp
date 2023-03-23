@@ -31,7 +31,7 @@
 #include "Logging.h"
 #include "PlatformMediaSession.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 #if ENABLE(VIDEO) || ENABLE(WEB_AUDIO)
 
@@ -778,4 +778,4 @@ WTFLogChannel& PlatformMediaSessionManager::logChannel() const
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

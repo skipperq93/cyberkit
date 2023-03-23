@@ -40,7 +40,7 @@
 
 namespace WebKit {
 
-void presentStorageAccessAlert(WKWebView *webView, const WebCore::RegistrableDomain& requesting, const WebCore::RegistrableDomain& current, CompletionHandler<void(bool)>&& completionHandler)
+void presentStorageAccessAlert(WKWebView *webView, const CyberCore::RegistrableDomain& requesting, const CyberCore::RegistrableDomain& current, CompletionHandler<void(bool)>&& completionHandler)
 {
     auto requestingDomain = requesting.string().createCFString();
     auto currentDomain = current.string().createCFString();
@@ -56,7 +56,7 @@ void presentStorageAccessAlert(WKWebView *webView, const WebCore::RegistrableDom
     displayStorageAccessAlert(webView, alertTitle, informativeText, WTFMove(completionHandler));
 }
 
-void presentStorageAccessAlertQuirk(WKWebView *webView, const WebCore::RegistrableDomain& firstRequesting, const WebCore::RegistrableDomain& secondRequesting, const WebCore::RegistrableDomain& current, CompletionHandler<void(bool)>&& completionHandler)
+void presentStorageAccessAlertQuirk(WKWebView *webView, const CyberCore::RegistrableDomain& firstRequesting, const CyberCore::RegistrableDomain& secondRequesting, const CyberCore::RegistrableDomain& current, CompletionHandler<void(bool)>&& completionHandler)
 {
     auto firstRequestingDomain = firstRequesting.string().createCFString();
     auto secondRequestingDomain = secondRequesting.string().createCFString();

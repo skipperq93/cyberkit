@@ -33,7 +33,7 @@
 #include <wtf/HashSet.h>
 #include <wtf/Noncopyable.h>
 
-namespace WebCore {
+namespace CyberCore {
 
     class WindowMessageListener;
 
@@ -65,6 +65,6 @@ namespace WebCore {
         ListenerSet m_listeners;
     };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // WindowMessageBroadcaster_h

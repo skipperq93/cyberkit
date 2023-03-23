@@ -40,7 +40,7 @@
 #include <wtf/text/CString.h>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static bool nodeTypeAndParentMatch(ScrollingStateNode& node, ScrollingNodeType nodeType, ScrollingStateNode* parentNode)
 {
@@ -388,10 +388,10 @@ String ScrollingStateTree::scrollingStateTreeAsText(OptionSet<ScrollingStateTree
     return stateTreeAsString.toString();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #ifndef NDEBUG
-void showScrollingStateTree(const WebCore::ScrollingStateTree& tree)
+void showScrollingStateTree(const CyberCore::ScrollingStateTree& tree)
 {
     auto rootNode = tree.rootStateNode();
     if (!rootNode) {
@@ -399,11 +399,11 @@ void showScrollingStateTree(const WebCore::ScrollingStateTree& tree)
         return;
     }
 
-    String output = rootNode->scrollingStateTreeAsText(WebCore::debugScrollingStateTreeAsTextBehaviors);
+    String output = rootNode->scrollingStateTreeAsText(CyberCore::debugScrollingStateTreeAsTextBehaviors);
     WTFLogAlways("%s\n", output.utf8().data());
 }
 
-void showScrollingStateTree(const WebCore::ScrollingStateNode& node)
+void showScrollingStateTree(const CyberCore::ScrollingStateNode& node)
 {
     showScrollingStateTree(node.scrollingStateTree());
 }

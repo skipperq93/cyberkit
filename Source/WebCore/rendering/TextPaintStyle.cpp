@@ -38,7 +38,7 @@
 #include "RenderView.h"
 #include "Settings.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 TextPaintStyle::TextPaintStyle(const Color& color)
     : fillColor(color)

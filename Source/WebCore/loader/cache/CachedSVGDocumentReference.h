@@ -29,7 +29,7 @@
 #include "CachedSVGDocumentClient.h"
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CachedSVGDocument;
 class CachedResourceLoader;
@@ -53,4 +53,4 @@ private:
     bool m_loadRequested;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -81,7 +81,7 @@
 #include "ScrollbarThemeMac.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -1010,4 +1010,4 @@ String markerTextForListItem(Element* element)
     return downcast<RenderListItem>(*renderer).markerTextWithoutSuffix().toString();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

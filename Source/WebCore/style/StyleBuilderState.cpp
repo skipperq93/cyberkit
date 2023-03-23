@@ -66,7 +66,7 @@
 #include "StylePaintImage.h"
 #include "TransformFunctions.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace Style {
 
 BuilderState::BuilderState(Builder& builder, RenderStyle& style, BuilderContext&& context)
@@ -135,7 +135,7 @@ RefPtr<StyleImage> BuilderState::createStyleImage(const CSSValue& value)
 
 std::optional<FilterOperations> BuilderState::createFilterOperations(const CSSValue& inValue)
 {
-    return WebCore::Style::createFilterOperations(document(), m_style, m_cssToLengthConversionData, inValue);
+    return CyberCore::Style::createFilterOperations(document(), m_style, m_cssToLengthConversionData, inValue);
 }
 
 bool BuilderState::isColorFromPrimitiveValueDerivedFromElement(const CSSPrimitiveValue& value)
@@ -155,12 +155,12 @@ StyleColor BuilderState::colorFromPrimitiveValue(const CSSPrimitiveValue& value,
 {
     if (!element() || !element()->isLink())
         forVisitedLink = ForVisitedLink::No;
-    return { WebCore::Style::colorFromPrimitiveValue(document(), m_style, value, forVisitedLink) };
+    return { CyberCore::Style::colorFromPrimitiveValue(document(), m_style, value, forVisitedLink) };
 }
 
 Color BuilderState::colorFromPrimitiveValueWithResolvedCurrentColor(const CSSPrimitiveValue& value) const
 {
-    return WebCore::Style::colorFromPrimitiveValueWithResolvedCurrentColor(document(), m_style, value);
+    return CyberCore::Style::colorFromPrimitiveValueWithResolvedCurrentColor(document(), m_style, value);
 }
 
 void BuilderState::registerContentAttribute(const AtomString& attributeLocalName)

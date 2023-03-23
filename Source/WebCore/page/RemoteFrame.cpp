@@ -32,7 +32,7 @@
 #include "RemoteFrameClient.h"
 #include "RemoteFrameView.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 RemoteFrame::RemoteFrame(Page& page, FrameIdentifier frameID, HTMLFrameOwnerElement* ownerElement, UniqueRef<RemoteFrameClient>&& client, LayerHostingContextIdentifier layerHostingContextIdentifier)
     : AbstractFrame(page, frameID, ownerElement)
@@ -80,4 +80,4 @@ void RemoteFrame::frameDetached()
     m_client->frameDetached();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

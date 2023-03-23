@@ -36,7 +36,7 @@
 #include "SourceBufferPrivateRemote.h"
 #include <CyberCore/NotImplemented.h>
 
-namespace WebCore {
+namespace CyberCore {
 #if !RELEASE_LOG_DISABLED
 extern WTFLogChannel LogMedia;
 #endif
@@ -44,7 +44,7 @@ extern WTFLogChannel LogMedia;
 
 namespace WebKit {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 Ref<MediaSourcePrivateRemote> MediaSourcePrivateRemote::create(GPUProcessConnection& gpuProcessConnection, RemoteMediaSourceIdentifier identifier, RemoteMediaPlayerMIMETypeCache& mimeTypeCache, const MediaPlayerPrivateRemote& mediaPlayerPrivate, MediaSourcePrivateClient& client)
 {

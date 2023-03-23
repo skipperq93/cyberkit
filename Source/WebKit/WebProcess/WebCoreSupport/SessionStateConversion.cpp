@@ -32,8 +32,8 @@
 #include <CyberCore/HistoryItem.h>
 #include <wtf/FileSystem.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 static HTTPBody toHTTPBody(const FormData& formData)
 {
@@ -107,7 +107,7 @@ static FrameState toFrameState(const HistoryItem& historyItem)
     return frameState;
 }
 
-BackForwardListItemState toBackForwardListItemState(const WebCore::HistoryItem& historyItem)
+BackForwardListItemState toBackForwardListItemState(const CyberCore::HistoryItem& historyItem)
 {
     static constexpr unsigned maxTitleLength = 1000; // Closest power of 10 above the W3C recommendation for Title length.
 
@@ -193,4 +193,4 @@ Ref<HistoryItem> toHistoryItem(const BackForwardListItemState& itemState)
     return historyItem;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

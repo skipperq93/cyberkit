@@ -33,30 +33,30 @@
 #include <CyberCore/PolicyChecker.h>
 #include <CyberCore/ResourceResponse.h>
 
-namespace WebKit {
+namespace CyberKit {
 
-class RemoteMediaResourceProxy final : public WebCore::PlatformMediaResourceClient {
+class RemoteMediaResourceProxy final : public CyberCore::PlatformMediaResourceClient {
     WTF_MAKE_FAST_ALLOCATED;
 public:
-    RemoteMediaResourceProxy(Ref<IPC::Connection>&&, WebCore::PlatformMediaResource&, RemoteMediaResourceIdentifier);
+    RemoteMediaResourceProxy(Ref<IPC::Connection>&&, CyberCore::PlatformMediaResource&, RemoteMediaResourceIdentifier);
     ~RemoteMediaResourceProxy();
 
 private:
     // PlatformMediaResourceClient
-    void responseReceived(WebCore::PlatformMediaResource&, const WebCore::ResourceResponse&, CompletionHandler<void(WebCore::ShouldContinuePolicyCheck)>&&) final;
-    void redirectReceived(WebCore::PlatformMediaResource&, WebCore::ResourceRequest&&, const WebCore::ResourceResponse&, CompletionHandler<void(WebCore::ResourceRequest&&)>&&) final;
-    bool shouldCacheResponse(WebCore::PlatformMediaResource&, const WebCore::ResourceResponse&) final;
-    void dataSent(WebCore::PlatformMediaResource&, unsigned long long, unsigned long long) final;
-    void dataReceived(WebCore::PlatformMediaResource&, const WebCore::SharedBuffer&) final;
-    void accessControlCheckFailed(WebCore::PlatformMediaResource&, const WebCore::ResourceError&) final;
-    void loadFailed(WebCore::PlatformMediaResource&, const WebCore::ResourceError&) final;
-    void loadFinished(WebCore::PlatformMediaResource&, const WebCore::NetworkLoadMetrics&) final;
+    void responseReceived(CyberCore::PlatformMediaResource&, const CyberCore::ResourceResponse&, CompletionHandler<void(CyberCore::ShouldContinuePolicyCheck)>&&) final;
+    void redirectReceived(CyberCore::PlatformMediaResource&, CyberCore::ResourceRequest&&, const CyberCore::ResourceResponse&, CompletionHandler<void(CyberCore::ResourceRequest&&)>&&) final;
+    bool shouldCacheResponse(CyberCore::PlatformMediaResource&, const CyberCore::ResourceResponse&) final;
+    void dataSent(CyberCore::PlatformMediaResource&, unsigned long long, unsigned long long) final;
+    void dataReceived(CyberCore::PlatformMediaResource&, const CyberCore::SharedBuffer&) final;
+    void accessControlCheckFailed(CyberCore::PlatformMediaResource&, const CyberCore::ResourceError&) final;
+    void loadFailed(CyberCore::PlatformMediaResource&, const CyberCore::ResourceError&) final;
+    void loadFinished(CyberCore::PlatformMediaResource&, const CyberCore::NetworkLoadMetrics&) final;
 
     Ref<IPC::Connection> m_connection;
-    WebCore::PlatformMediaResource& m_platformMediaResource;
+    CyberCore::PlatformMediaResource& m_platformMediaResource;
     RemoteMediaResourceIdentifier m_id;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS) && ENABLE(VIDEO)

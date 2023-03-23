@@ -29,7 +29,7 @@
 #include "ResourceResponse.h"
 #include "SharedBuffer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SubstituteResource : public RefCounted<SubstituteResource> {
 public:
@@ -57,4 +57,4 @@ private:
     SharedBufferBuilder m_data;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

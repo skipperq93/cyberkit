@@ -18,12 +18,12 @@
  */
 
 #include "config.h"
-#include "WebKitDOMClientRect.h"
+#include "CyberKitDOMClientRect.h"
 
 #include "ConvertToUTF8String.h"
 #include "DOMObjectCache.h"
-#include "WebKitDOMClientRectPrivate.h"
-#include "WebKitDOMPrivate.h"
+#include "CyberKitDOMClientRectPrivate.h"
+#include "CyberKitDOMPrivate.h"
 #include <CyberCore/CSSImportRule.h>
 #include <CyberCore/Document.h>
 #include <CyberCore/ExceptionCode.h>
@@ -31,17 +31,17 @@
 #include <wtf/GetPtr.h>
 #include <wtf/RefPtr.h>
 
-#define WEBKIT_DOM_CLIENT_RECT_GET_PRIVATE(obj) G_TYPE_INSTANCE_GET_PRIVATE(obj, WEBKIT_DOM_TYPE_CLIENT_RECT, WebKitDOMClientRectPrivate)
+#define WEBKIT_DOM_CLIENT_RECT_GET_PRIVATE(obj) G_TYPE_INSTANCE_GET_PRIVATE(obj, WEBKIT_DOM_TYPE_CLIENT_RECT, CyberKitDOMClientRectPrivate)
 
-typedef struct _WebKitDOMClientRectPrivate {
-    RefPtr<WebCore::DOMRect> coreObject;
-} WebKitDOMClientRectPrivate;
+typedef struct _CyberKitDOMClientRectPrivate {
+    RefPtr<CyberCore::DOMRect> coreObject;
+} CyberKitDOMClientRectPrivate;
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
-namespace WebKit {
+namespace CyberKit {
 
-WebKitDOMClientRect* kit(WebCore::DOMRect* obj)
+CyberKitDOMClientRect* kit(CyberCore::DOMRect* obj)
 {
     if (!obj)
         return nullptr;
@@ -52,20 +52,20 @@ WebKitDOMClientRect* kit(WebCore::DOMRect* obj)
     return wrapClientRect(obj);
 }
 
-WebCore::DOMRect* core(WebKitDOMClientRect* request)
+CyberCore::DOMRect* core(CyberKitDOMClientRect* request)
 {
-    return request ? static_cast<WebCore::DOMRect*>(WEBKIT_DOM_OBJECT(request)->coreObject) : nullptr;
+    return request ? static_cast<CyberCore::DOMRect*>(WEBKIT_DOM_OBJECT(request)->coreObject) : nullptr;
 }
 
-WebKitDOMClientRect* wrapClientRect(WebCore::DOMRect* coreObject)
+CyberKitDOMClientRect* wrapClientRect(CyberCore::DOMRect* coreObject)
 {
     ASSERT(coreObject);
     return WEBKIT_DOM_CLIENT_RECT(g_object_new(WEBKIT_DOM_TYPE_CLIENT_RECT, "core-object", coreObject, nullptr));
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
-G_DEFINE_TYPE(WebKitDOMClientRect, webkit_dom_client_rect, WEBKIT_DOM_TYPE_OBJECT)
+G_DEFINE_TYPE(CyberKitDOMClientRect, webkit_dom_client_rect, WEBKIT_DOM_TYPE_OBJECT)
 
 enum {
     DOM_CLIENT_RECT_PROP_0,
@@ -79,17 +79,17 @@ enum {
 
 static void webkit_dom_client_rect_finalize(GObject* object)
 {
-    WebKitDOMClientRectPrivate* priv = WEBKIT_DOM_CLIENT_RECT_GET_PRIVATE(object);
+    CyberKitDOMClientRectPrivate* priv = WEBKIT_DOM_CLIENT_RECT_GET_PRIVATE(object);
 
-    WebKit::DOMObjectCache::forget(priv->coreObject.get());
+    CyberKit::DOMObjectCache::forget(priv->coreObject.get());
 
-    priv->~WebKitDOMClientRectPrivate();
+    priv->~CyberKitDOMClientRectPrivate();
     G_OBJECT_CLASS(webkit_dom_client_rect_parent_class)->finalize(object);
 }
 
 static void webkit_dom_client_rect_get_property(GObject* object, guint propertyId, GValue* value, GParamSpec* pspec)
 {
-    WebKitDOMClientRect* self = WEBKIT_DOM_CLIENT_RECT(object);
+    CyberKitDOMClientRect* self = WEBKIT_DOM_CLIENT_RECT(object);
 
     switch (propertyId) {
     case DOM_CLIENT_RECT_PROP_TOP:
@@ -120,15 +120,15 @@ static void webkit_dom_client_rect_constructed(GObject* object)
 {
     G_OBJECT_CLASS(webkit_dom_client_rect_parent_class)->constructed(object);
 
-    WebKitDOMClientRectPrivate* priv = WEBKIT_DOM_CLIENT_RECT_GET_PRIVATE(object);
-    priv->coreObject = static_cast<WebCore::DOMRect*>(WEBKIT_DOM_OBJECT(object)->coreObject);
-    WebKit::DOMObjectCache::put(priv->coreObject.get(), object);
+    CyberKitDOMClientRectPrivate* priv = WEBKIT_DOM_CLIENT_RECT_GET_PRIVATE(object);
+    priv->coreObject = static_cast<CyberCore::DOMRect*>(WEBKIT_DOM_OBJECT(object)->coreObject);
+    CyberKit::DOMObjectCache::put(priv->coreObject.get(), object);
 }
 
-static void webkit_dom_client_rect_class_init(WebKitDOMClientRectClass* requestClass)
+static void webkit_dom_client_rect_class_init(CyberKitDOMClientRectClass* requestClass)
 {
     GObjectClass* gobjectClass = G_OBJECT_CLASS(requestClass);
-    g_type_class_add_private(gobjectClass, sizeof(WebKitDOMClientRectPrivate));
+    g_type_class_add_private(gobjectClass, sizeof(CyberKitDOMClientRectPrivate));
     gobjectClass->constructed = webkit_dom_client_rect_constructed;
     gobjectClass->finalize = webkit_dom_client_rect_finalize;
     gobjectClass->get_property = webkit_dom_client_rect_get_property;
@@ -195,51 +195,51 @@ static void webkit_dom_client_rect_class_init(WebKitDOMClientRectClass* requestC
 
 }
 
-static void webkit_dom_client_rect_init(WebKitDOMClientRect* request)
+static void webkit_dom_client_rect_init(CyberKitDOMClientRect* request)
 {
-    WebKitDOMClientRectPrivate* priv = WEBKIT_DOM_CLIENT_RECT_GET_PRIVATE(request);
-    new (priv) WebKitDOMClientRectPrivate();
+    CyberKitDOMClientRectPrivate* priv = WEBKIT_DOM_CLIENT_RECT_GET_PRIVATE(request);
+    new (priv) CyberKitDOMClientRectPrivate();
 }
 
-gfloat webkit_dom_client_rect_get_top(WebKitDOMClientRect* self)
+gfloat webkit_dom_client_rect_get_top(CyberKitDOMClientRect* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_CLIENT_RECT(self), 0);
-    return WebKit::core(self)->top();
+    return CyberKit::core(self)->top();
 }
 
-gfloat webkit_dom_client_rect_get_right(WebKitDOMClientRect* self)
+gfloat webkit_dom_client_rect_get_right(CyberKitDOMClientRect* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_CLIENT_RECT(self), 0);
-    return WebKit::core(self)->right();
+    return CyberKit::core(self)->right();
 }
 
-gfloat webkit_dom_client_rect_get_bottom(WebKitDOMClientRect* self)
+gfloat webkit_dom_client_rect_get_bottom(CyberKitDOMClientRect* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_CLIENT_RECT(self), 0);
-    return WebKit::core(self)->bottom();
+    return CyberKit::core(self)->bottom();
 }
 
-gfloat webkit_dom_client_rect_get_left(WebKitDOMClientRect* self)
+gfloat webkit_dom_client_rect_get_left(CyberKitDOMClientRect* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_CLIENT_RECT(self), 0);
-    return WebKit::core(self)->left();
+    return CyberKit::core(self)->left();
 }
 
-gfloat webkit_dom_client_rect_get_width(WebKitDOMClientRect* self)
+gfloat webkit_dom_client_rect_get_width(CyberKitDOMClientRect* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_CLIENT_RECT(self), 0);
-    return WebKit::core(self)->width();
+    return CyberKit::core(self)->width();
 }
 
-gfloat webkit_dom_client_rect_get_height(WebKitDOMClientRect* self)
+gfloat webkit_dom_client_rect_get_height(CyberKitDOMClientRect* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_CLIENT_RECT(self), 0);
-    return WebKit::core(self)->height();
+    return CyberKit::core(self)->height();
 }
 G_GNUC_END_IGNORE_DEPRECATIONS;

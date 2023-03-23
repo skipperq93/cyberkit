@@ -60,20 +60,20 @@
 // ImageLoader objects are allocated as members of other objects, so generic pointer check would always fail.
 namespace WTF {
 
-template<> struct ValueCheck<WebCore::ImageLoader*> {
-    typedef WebCore::ImageLoader* TraitType;
-    static void checkConsistency(const WebCore::ImageLoader* p)
+template<> struct ValueCheck<CyberCore::ImageLoader*> {
+    typedef CyberCore::ImageLoader* TraitType;
+    static void checkConsistency(const CyberCore::ImageLoader* p)
     {
         if (!p)
             return;
-        ValueCheck<WebCore::Element*>::checkConsistency(&p->element());
+        ValueCheck<CyberCore::Element*>::checkConsistency(&p->element());
     }
 };
 
 } // namespace WTF
 #endif // ASSERT_ENABLED
 
-namespace WebCore {
+namespace CyberCore {
 
 #if !LOG_DISABLED
 static TextStream& operator<<(TextStream& ts, LazyImageLoadState state)

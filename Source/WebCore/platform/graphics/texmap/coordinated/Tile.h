@@ -32,7 +32,7 @@
 #include "IntPointHash.h"
 #include "IntRect.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class TiledBackingStore;
 
@@ -65,7 +65,7 @@ private:
     IntRect m_dirtyRect;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(COORDINATED_GRAPHICS)
 

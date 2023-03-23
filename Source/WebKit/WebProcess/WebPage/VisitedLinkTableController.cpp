@@ -33,8 +33,8 @@
 #include <CyberCore/BackForwardCache.h>
 #include <wtf/NeverDestroyed.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 static HashMap<uint64_t, VisitedLinkTableController*>& visitedLinkTableControllers()
 {
@@ -95,7 +95,7 @@ void VisitedLinkTableController::setVisitedLinkTable(const SharedMemory::Handle&
     invalidateStylesForAllLinks();
 }
 
-void VisitedLinkTableController::visitedLinkStateChanged(const Vector<WebCore::SharedStringHash>& linkHashes)
+void VisitedLinkTableController::visitedLinkStateChanged(const Vector<CyberCore::SharedStringHash>& linkHashes)
 {
     for (auto linkHash : linkHashes)
         invalidateStylesForLink(linkHash);
@@ -113,4 +113,4 @@ void VisitedLinkTableController::removeAllVisitedLinks()
     invalidateStylesForAllLinks();
 }
 
-} // namespace WebKit
+} // namespace CyberKit

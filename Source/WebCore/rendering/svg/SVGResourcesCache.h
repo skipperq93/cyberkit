@@ -24,7 +24,7 @@
 #include <wtf/HashMap.h>
 #include <wtf/Noncopyable.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderElement;
 class RenderObject;
@@ -79,4 +79,4 @@ private:
     CacheMap m_cache;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

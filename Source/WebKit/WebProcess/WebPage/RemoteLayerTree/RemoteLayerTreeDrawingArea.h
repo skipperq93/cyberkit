@@ -38,17 +38,17 @@
 #include <wtf/OSObjectPtr.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 class PlatformCALayer;
 class ThreadSafeImageBufferFlusher;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class RemoteLayerTreeContext;
 class RemoteLayerTreeDisplayRefreshMonitor;
 
-class RemoteLayerTreeDrawingArea : public DrawingArea, public WebCore::GraphicsLayerClient {
+class RemoteLayerTreeDrawingArea : public DrawingArea, public CyberCore::GraphicsLayerClient {
     friend class RemoteLayerTreeDisplayRefreshMonitor;
 public:
     RemoteLayerTreeDrawingArea(WebPage&, const WebPageCreationParameters&);
@@ -63,30 +63,30 @@ protected:
 private:
     // DrawingArea
     void setNeedsDisplay() override;
-    void setNeedsDisplayInRect(const WebCore::IntRect&) override;
-    void scroll(const WebCore::IntRect& scrollRect, const WebCore::IntSize& scrollDelta) override;
-    void updateGeometry(const WebCore::IntSize& viewSize, bool flushSynchronously, const WTF::MachSendRight& fencePort, CompletionHandler<void()>&&) override;
+    void setNeedsDisplayInRect(const CyberCore::IntRect&) override;
+    void scroll(const CyberCore::IntRect& scrollRect, const CyberCore::IntSize& scrollDelta) override;
+    void updateGeometry(const CyberCore::IntSize& viewSize, bool flushSynchronously, const WTF::MachSendRight& fencePort, CompletionHandler<void()>&&) override;
     void adoptDisplayRefreshMonitorsFromDrawingArea(DrawingArea&) override;
 
-    WebCore::GraphicsLayerFactory* graphicsLayerFactory() override;
-    void setRootCompositingLayer(WebCore::GraphicsLayer*) override;
+    CyberCore::GraphicsLayerFactory* graphicsLayerFactory() override;
+    void setRootCompositingLayer(CyberCore::GraphicsLayer*) override;
     void triggerRenderingUpdate() override;
-    void attachViewOverlayGraphicsLayer(WebCore::GraphicsLayer*) override;
+    void attachViewOverlayGraphicsLayer(CyberCore::GraphicsLayer*) override;
 
     void dispatchAfterEnsuringDrawing(IPC::AsyncReplyID) final;
     virtual void willCommitLayerTree(RemoteLayerTreeTransaction&) { };
 
-    RefPtr<WebCore::DisplayRefreshMonitor> createDisplayRefreshMonitor(WebCore::PlatformDisplayID) final;
-    void willDestroyDisplayRefreshMonitor(WebCore::DisplayRefreshMonitor*);
-    void setPreferredFramesPerSecond(WebCore::FramesPerSecond);
+    RefPtr<CyberCore::DisplayRefreshMonitor> createDisplayRefreshMonitor(CyberCore::PlatformDisplayID) final;
+    void willDestroyDisplayRefreshMonitor(CyberCore::DisplayRefreshMonitor*);
+    void setPreferredFramesPerSecond(CyberCore::FramesPerSecond);
 
-    bool shouldUseTiledBackingForFrameView(const WebCore::FrameView&) const override;
+    bool shouldUseTiledBackingForFrameView(const CyberCore::FrameView&) const override;
 
     void updatePreferences(const WebPreferencesStore&) override;
 
     bool supportsAsyncScrolling() const override { return true; }
     bool usesDelegatedPageScaling() const override { return true; }
-    WebCore::DelegatedScrollingMode delegatedScrollingMode() const override;
+    CyberCore::DelegatedScrollingMode delegatedScrollingMode() const override;
 
     void setLayerTreeStateIsFrozen(bool) override;
     bool layerTreeStateIsFrozen() const override { return m_isRenderingSuspended; }
@@ -94,24 +94,24 @@ private:
     void forceRepaint() override;
     void forceRepaintAsync(WebPage&, CompletionHandler<void()>&&) override;
 
-    void setViewExposedRect(std::optional<WebCore::FloatRect>) override;
-    std::optional<WebCore::FloatRect> viewExposedRect() const override { return m_viewExposedRect; }
+    void setViewExposedRect(std::optional<CyberCore::FloatRect>) override;
+    std::optional<CyberCore::FloatRect> viewExposedRect() const override { return m_viewExposedRect; }
 
-    void acceleratedAnimationDidStart(WebCore::GraphicsLayer::PlatformLayerID, const String& key, MonotonicTime startTime) override;
-    void acceleratedAnimationDidEnd(WebCore::GraphicsLayer::PlatformLayerID, const String& key) override;
+    void acceleratedAnimationDidStart(CyberCore::GraphicsLayer::PlatformLayerID, const String& key, MonotonicTime startTime) override;
+    void acceleratedAnimationDidEnd(CyberCore::GraphicsLayer::PlatformLayerID, const String& key) override;
 
-    WebCore::FloatRect exposedContentRect() const override;
-    void setExposedContentRect(const WebCore::FloatRect&) override;
+    CyberCore::FloatRect exposedContentRect() const override;
+    void setExposedContentRect(const CyberCore::FloatRect&) override;
 
     void displayDidRefresh() override;
 
     void setDeviceScaleFactor(float) override;
 
-    void mainFrameContentSizeChanged(const WebCore::IntSize&) override;
+    void mainFrameContentSizeChanged(const CyberCore::IntSize&) override;
 
-    void activityStateDidChange(OptionSet<WebCore::ActivityState::Flag> changed, ActivityStateChangeID, CompletionHandler<void()>&&) override;
+    void activityStateDidChange(OptionSet<CyberCore::ActivityState::Flag> changed, ActivityStateChangeID, CompletionHandler<void()>&&) override;
 
-    bool addMilestonesToDispatch(OptionSet<WebCore::LayoutMilestone>) override;
+    bool addMilestonesToDispatch(OptionSet<CyberCore::LayoutMilestone>) override;
 
     void updateRootLayers();
 
@@ -127,27 +127,27 @@ private:
 
     class BackingStoreFlusher : public ThreadSafeRefCounted<BackingStoreFlusher> {
     public:
-        static Ref<BackingStoreFlusher> create(IPC::Connection*, UniqueRef<IPC::Encoder>&&, Vector<std::unique_ptr<WebCore::ThreadSafeImageBufferFlusher>>);
+        static Ref<BackingStoreFlusher> create(IPC::Connection*, UniqueRef<IPC::Encoder>&&, Vector<std::unique_ptr<CyberCore::ThreadSafeImageBufferFlusher>>);
 
         void flush();
         bool hasFlushed() const { return m_hasFlushed; }
 
     private:
-        BackingStoreFlusher(IPC::Connection*, UniqueRef<IPC::Encoder>&&, Vector<std::unique_ptr<WebCore::ThreadSafeImageBufferFlusher>>);
+        BackingStoreFlusher(IPC::Connection*, UniqueRef<IPC::Encoder>&&, Vector<std::unique_ptr<CyberCore::ThreadSafeImageBufferFlusher>>);
 
         RefPtr<IPC::Connection> m_connection;
         std::unique_ptr<IPC::Encoder> m_commitEncoder;
-        Vector<std::unique_ptr<WebCore::ThreadSafeImageBufferFlusher>> m_flushers;
+        Vector<std::unique_ptr<CyberCore::ThreadSafeImageBufferFlusher>> m_flushers;
 
         std::atomic<bool> m_hasFlushed;
     };
 
     std::unique_ptr<RemoteLayerTreeContext> m_remoteLayerTreeContext;
-    Ref<WebCore::GraphicsLayer> m_rootLayer;
+    Ref<CyberCore::GraphicsLayer> m_rootLayer;
 
-    std::optional<WebCore::FloatRect> m_viewExposedRect;
+    std::optional<CyberCore::FloatRect> m_viewExposedRect;
 
-    WebCore::Timer m_updateRenderingTimer;
+    CyberCore::Timer m_updateRenderingTimer;
     bool m_isRenderingSuspended { false };
     bool m_hasDeferredRenderingUpdate { false };
     bool m_nextRenderingUpdateRequiresSynchronousImageDecoding { false };
@@ -166,18 +166,18 @@ private:
     Vector<IPC::AsyncReplyID> m_pendingCallbackIDs;
     ActivityStateChangeID m_activityStateChangeID { ActivityStateChangeAsynchronous };
 
-    OptionSet<WebCore::LayoutMilestone> m_pendingNewlyReachedPaintingMilestones;
+    OptionSet<CyberCore::LayoutMilestone> m_pendingNewlyReachedPaintingMilestones;
 
-    RefPtr<WebCore::GraphicsLayer> m_contentLayer;
-    RefPtr<WebCore::GraphicsLayer> m_viewOverlayRootLayer;
+    RefPtr<CyberCore::GraphicsLayer> m_contentLayer;
+    RefPtr<CyberCore::GraphicsLayer> m_viewOverlayRootLayer;
 };
 
-inline bool RemoteLayerTreeDrawingArea::addMilestonesToDispatch(OptionSet<WebCore::LayoutMilestone> paintMilestones)
+inline bool RemoteLayerTreeDrawingArea::addMilestonesToDispatch(OptionSet<CyberCore::LayoutMilestone> paintMilestones)
 {
     m_pendingNewlyReachedPaintingMilestones.add(paintMilestones);
     return true;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 SPECIALIZE_TYPE_TRAITS_DRAWING_AREA(RemoteLayerTreeDrawingArea, DrawingAreaType::RemoteLayerTree)

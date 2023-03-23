@@ -28,8 +28,8 @@
 
 #import <CyberKitLegacy/WebPluginPackage.h>
 
-#import <CyberKitLegacy/WebKitLogging.h>
-#import <CyberKitLegacy/WebKitNSStringExtras.h>
+#import <CyberKitLegacy/CyberKitLogging.h>
+#import <CyberKitLegacy/CyberKitNSStringExtras.h>
 
 NSString *WebPlugInBaseURLKey =                 @"WebPlugInBaseURLKey";
 NSString *WebPlugInAttributesKey =              @"WebPlugInAttributesKey";

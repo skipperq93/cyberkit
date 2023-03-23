@@ -25,7 +25,7 @@
 #include "GraphicsTypes.h"
 #include "SVGFilterPrimitiveStandardAttributes.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 template<>
 struct SVGPropertyTraits<BlendMode> {
@@ -77,4 +77,4 @@ private:
     Ref<SVGAnimatedEnumeration> m_mode { SVGAnimatedEnumeration::create(this, BlendMode::Normal) };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

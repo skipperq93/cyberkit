@@ -33,7 +33,7 @@
 struct wpe_gamepad;
 struct wpe_gamepad_provider;
 
-namespace WebCore {
+namespace CyberCore {
 
 class GamepadLibWPE final : public PlatformGamepad {
 public:
@@ -55,6 +55,6 @@ private:
     std::unique_ptr<struct wpe_gamepad, void(*)(struct wpe_gamepad*)> m_gamepad;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(GAMEPAD) && USE(LIBWPE)

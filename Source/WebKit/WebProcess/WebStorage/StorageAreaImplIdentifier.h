@@ -27,7 +27,7 @@
 
 #include <wtf/ObjectIdentifier.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 enum StorageAreaImplIdentifierType { };
 using StorageAreaImplIdentifier = ObjectIdentifier<StorageAreaImplIdentifierType>;

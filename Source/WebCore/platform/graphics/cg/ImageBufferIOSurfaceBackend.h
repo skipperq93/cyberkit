@@ -33,7 +33,7 @@
 #include "IOSurfacePool.h"
 #include <wtf/IsoMalloc.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WEBCORE_EXPORT ImageBufferIOSurfaceBackend : public ImageBufferCGBackend {
     WTF_MAKE_ISO_ALLOCATED(ImageBufferIOSurfaceBackend);
@@ -90,6 +90,6 @@ protected:
     RefPtr<IOSurfacePool> m_ioSurfacePool;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // HAVE(IOSURFACE)

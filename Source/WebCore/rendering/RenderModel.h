@@ -29,7 +29,7 @@
 
 #include "RenderReplaced.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLModelElement;
 
@@ -52,7 +52,7 @@ private:
     void update();
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderModel, isRenderModel())
 

@@ -34,7 +34,7 @@
 #include <wtf/text/CString.h>
 #include <wtf/text/StringView.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace FormDataBuilder {
 

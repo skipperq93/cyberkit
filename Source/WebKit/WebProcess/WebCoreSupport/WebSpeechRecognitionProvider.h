@@ -29,16 +29,16 @@
 #include "WebSpeechRecognitionConnection.h"
 #include <CyberCore/SpeechRecognitionProvider.h>
 
-namespace WebKit {
+namespace CyberKit {
 
-class WebSpeechRecognitionProvider final : public WebCore::SpeechRecognitionProvider {
+class WebSpeechRecognitionProvider final : public CyberCore::SpeechRecognitionProvider {
 public:
-    explicit WebSpeechRecognitionProvider(WebCore::PageIdentifier identifier)
+    explicit WebSpeechRecognitionProvider(CyberCore::PageIdentifier identifier)
         : m_pageIdentifier(identifier)
     {
     }
 
-    WebCore::SpeechRecognitionConnection& speechRecognitionConnection() final
+    CyberCore::SpeechRecognitionConnection& speechRecognitionConnection() final
     {
         if (!m_connection)
             m_connection = WebSpeechRecognitionConnection::create(m_pageIdentifier);
@@ -47,8 +47,8 @@ public:
     }
 
 private:
-    WebCore::PageIdentifier m_pageIdentifier;
+    CyberCore::PageIdentifier m_pageIdentifier;
     RefPtr<WebSpeechRecognitionConnection> m_connection;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

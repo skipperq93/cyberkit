@@ -33,7 +33,7 @@
 #import <CyberCore/Frame.h>
 #import <CyberCore/IntSize.h>
 #import <CyberCore/ScrollingConstraints.h>
-#import <CyberCore/WebCoreThreadRun.h>
+#import <CyberCore/CyberCoreThreadRun.h>
 #import <pal/spi/cg/CoreGraphicsSPI.h>
 
 #import <wtf/HashMap.h>
@@ -46,7 +46,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import <algorithm>
 
-using namespace WebCore;
+using namespace CyberCore;
 using namespace std;
 
 static Lock webFixedPositionContentDataLock;
@@ -172,7 +172,7 @@ WebFixedPositionContentData::~WebFixedPositionContentData()
     });
 }
 
-- (void)setViewportConstrainedLayers:(WTF::HashMap<CALayer *, std::unique_ptr<WebCore::ViewportConstraints>>&)layerMap stickyContainerMap:(const WTF::HashMap<CALayer*, CALayer*>&)stickyContainers
+- (void)setViewportConstrainedLayers:(WTF::HashMap<CALayer *, std::unique_ptr<CyberCore::ViewportConstraints>>&)layerMap stickyContainerMap:(const WTF::HashMap<CALayer*, CALayer*>&)stickyContainers
 {
     Locker locker { webFixedPositionContentDataLock };
 

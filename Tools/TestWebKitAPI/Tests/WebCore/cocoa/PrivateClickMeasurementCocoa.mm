@@ -34,20 +34,20 @@
 #include <wtf/spi/cocoa/SecuritySPI.h>
 
 namespace TestWebKitAPI {
-using namespace WebCore;
+using namespace CyberCore;
 
 TEST(PrivateClickMeasurement, ValidBlindedSecret)
 {
     auto ephemeralNonce = PCM::EphemeralNonce { "ABCDEFabcdef0123456789"_s };
     EXPECT_TRUE(ephemeralNonce.isValid());
 
-    WebCore::PrivateClickMeasurement pcm(
-        WebCore::PrivateClickMeasurement::SourceID(0),
+    CyberCore::PrivateClickMeasurement pcm(
+        CyberCore::PrivateClickMeasurement::SourceID(0),
         PCM::SourceSite(URL()),
         PCM::AttributionDestinationSite(URL()),
         { },
         WallTime::now(),
-        WebCore::PCM::AttributionEphemeral::No
+        CyberCore::PCM::AttributionEphemeral::No
     );
     pcm.setEphemeralSourceNonce(WTFMove(ephemeralNonce));
 

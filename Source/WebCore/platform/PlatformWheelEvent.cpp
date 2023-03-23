@@ -33,7 +33,7 @@
 #include "PlatformGestureEventMac.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 #if ENABLE(MAC_GESTURE_EVENTS)
 
@@ -129,4 +129,4 @@ TextStream& operator<<(TextStream& ts, WheelScrollGestureState state)
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

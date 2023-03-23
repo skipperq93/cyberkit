@@ -43,7 +43,7 @@ class Decoder;
 class Encoder;
 }
 
-namespace WebCore {
+namespace CyberCore {
 typedef int SandboxFlags;
 }
 
@@ -63,7 +63,7 @@ struct LoadParameters {
 
     uint64_t navigationID { 0 };
 
-    WebCore::ResourceRequest request;
+    CyberCore::ResourceRequest request;
     SandboxExtension::Handle sandboxExtensionHandle;
 
     IPC::DataReference data;
@@ -76,14 +76,14 @@ struct LoadParameters {
 
     std::optional<WebsitePoliciesData> websitePolicies;
 
-    WebCore::ShouldOpenExternalURLsPolicy shouldOpenExternalURLsPolicy { WebCore::ShouldOpenExternalURLsPolicy::ShouldNotAllow };
-    WebCore::ShouldTreatAsContinuingLoad shouldTreatAsContinuingLoad { WebCore::ShouldTreatAsContinuingLoad::No };
+    CyberCore::ShouldOpenExternalURLsPolicy shouldOpenExternalURLsPolicy { CyberCore::ShouldOpenExternalURLsPolicy::ShouldNotAllow };
+    CyberCore::ShouldTreatAsContinuingLoad shouldTreatAsContinuingLoad { CyberCore::ShouldTreatAsContinuingLoad::No };
     UserData userData;
-    WebCore::LockHistory lockHistory { WebCore::LockHistory::No };
-    WebCore::LockBackForwardList lockBackForwardList { WebCore::LockBackForwardList::No };
-    WebCore::SubstituteData::SessionHistoryVisibility sessionHistoryVisibility { WebCore::SubstituteData::SessionHistoryVisibility::Visible };
+    CyberCore::LockHistory lockHistory { CyberCore::LockHistory::No };
+    CyberCore::LockBackForwardList lockBackForwardList { CyberCore::LockBackForwardList::No };
+    CyberCore::SubstituteData::SessionHistoryVisibility sessionHistoryVisibility { CyberCore::SubstituteData::SessionHistoryVisibility::Visible };
     String clientRedirectSourceForHistory;
-    WebCore::SandboxFlags effectiveSandboxFlags { 0 };
+    CyberCore::SandboxFlags effectiveSandboxFlags { 0 };
     std::optional<NavigatingToAppBoundDomain> isNavigatingToAppBoundDomain;
     std::optional<NetworkResourceLoadIdentifier> existingNetworkResourceLoadIdentifierToResume;
     bool isServiceWorkerLoad { false };

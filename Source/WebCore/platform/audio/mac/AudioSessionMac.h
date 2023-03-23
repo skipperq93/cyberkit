@@ -33,7 +33,7 @@
 typedef UInt32 AudioObjectID;
 typedef struct AudioObjectPropertyAddress AudioObjectPropertyAddress;
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioSessionMac final : public AudioSession {
 public:

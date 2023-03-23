@@ -17,19 +17,19 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitDOMNodeFilterPrivate_h
-#define WebKitDOMNodeFilterPrivate_h
+#ifndef CyberKitDOMNodeFilterPrivate_h
+#define CyberKitDOMNodeFilterPrivate_h
 
-#include <webkitdom/WebKitDOMNodeFilter.h>
+#include <webkitdom/CyberKitDOMNodeFilter.h>
 
-namespace WebCore {
+namespace CyberCore {
 class Document;
 class NodeFilter;
 }
 
-namespace WebKit {
-WebKitDOMNodeFilter* kit(WebCore::NodeFilter*);
-RefPtr<WebCore::NodeFilter> core(WebCore::Document*, WebKitDOMNodeFilter*);
-} // namespace WebKit
+namespace CyberKit {
+CyberKitDOMNodeFilter* kit(CyberCore::NodeFilter*);
+RefPtr<CyberCore::NodeFilter> core(CyberCore::Document*, CyberKitDOMNodeFilter*);
+} // namespace CyberKit
 
-#endif /* WebKitDOMNodeFilterPrivate_h */
+#endif /* CyberKitDOMNodeFilterPrivate_h */

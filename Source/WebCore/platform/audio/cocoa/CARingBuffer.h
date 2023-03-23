@@ -37,7 +37,7 @@
 
 typedef struct AudioBufferList AudioBufferList;
 
-namespace WebCore {
+namespace CyberCore {
 
 class CARingBuffer {
     WTF_MAKE_FAST_ALLOCATED;
@@ -117,7 +117,7 @@ inline CARingBuffer::FetchMode CARingBuffer::fetchModeForMixing(AudioStreamDescr
 
 class InProcessCARingBuffer final : public CARingBuffer {
 public:
-    WEBCORE_EXPORT static std::unique_ptr<InProcessCARingBuffer> allocate(const WebCore::CAAudioStreamDescription& format, size_t frameCount);
+    WEBCORE_EXPORT static std::unique_ptr<InProcessCARingBuffer> allocate(const CyberCore::CAAudioStreamDescription& format, size_t frameCount);
     WEBCORE_EXPORT ~InProcessCARingBuffer();
 
 protected:

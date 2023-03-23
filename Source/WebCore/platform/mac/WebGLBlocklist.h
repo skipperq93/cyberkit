@@ -33,7 +33,7 @@
 
 OBJC_CLASS NSDictionary;
 
-namespace WebCore {
+namespace CyberCore {
 
 class WebGLBlocklist {
 public:

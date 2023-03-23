@@ -40,7 +40,7 @@
 namespace WebKit {
 namespace NetworkCache {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 SpeculativeLoad::SpeculativeLoad(Cache& cache, const GlobalFrameID& globalFrameID, const ResourceRequest& request, std::unique_ptr<NetworkCache::Entry> cacheEntryForValidation, std::optional<NavigatingToAppBoundDomain> isNavigatingToAppBoundDomain, bool allowPrivacyProxy, OptionSet<NetworkConnectionIntegrity> networkConnectionIntegrityPolicy, RevalidationCompletionHandler&& completionHandler)
     : m_cache(cache)
@@ -123,7 +123,7 @@ void SpeculativeLoad::didReceiveResponse(ResourceResponse&& receivedResponse, Pr
     completionHandler(PolicyAction::Use);
 }
 
-void SpeculativeLoad::didReceiveBuffer(const WebCore::FragmentedSharedBuffer& buffer, uint64_t reportedEncodedDataLength)
+void SpeculativeLoad::didReceiveBuffer(const CyberCore::FragmentedSharedBuffer& buffer, uint64_t reportedEncodedDataLength)
 {
     ASSERT(!m_cacheEntry);
 
@@ -137,7 +137,7 @@ void SpeculativeLoad::didReceiveBuffer(const WebCore::FragmentedSharedBuffer& bu
     }
 }
 
-void SpeculativeLoad::didFinishLoading(const WebCore::NetworkLoadMetrics&)
+void SpeculativeLoad::didFinishLoading(const CyberCore::NetworkLoadMetrics&)
 {
     if (m_didComplete)
         return;

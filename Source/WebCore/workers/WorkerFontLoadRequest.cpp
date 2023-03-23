@@ -38,7 +38,7 @@
 #include "WorkerGlobalScope.h"
 #include "WorkerThreadableLoader.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 WorkerFontLoadRequest::WorkerFontLoadRequest(URL&& url, LoadedFromOpaqueSource loadedFromOpaqueSource)
     : m_url(WTFMove(url))
@@ -140,4 +140,4 @@ void WorkerFontLoadRequest::didFail(const ResourceError&)
     m_errorOccurred = true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

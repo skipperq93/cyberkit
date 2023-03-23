@@ -31,10 +31,10 @@
 #import "Logging.h"
 #import "ScrollingStateFixedNode.h"
 #import "ScrollingThread.h"
-#import "WebCoreCALayerExtras.h"
+#import "CyberCoreCALayerExtras.h"
 #import <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<ScrollingTreeFixedNodeCocoa> ScrollingTreeFixedNodeCocoa::create(ScrollingTree& scrollingTree, ScrollingNodeID nodeID)
 {
@@ -94,6 +94,6 @@ void ScrollingTreeFixedNodeCocoa::dumpProperties(TextStream& ts, OptionSet<Scrol
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ASYNC_SCROLLING)

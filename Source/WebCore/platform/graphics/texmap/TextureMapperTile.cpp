@@ -23,7 +23,7 @@
 #include "Image.h"
 #include "TextureMapper.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class GraphicsLayer;
 
@@ -73,4 +73,4 @@ void TextureMapperTile::paint(TextureMapper& textureMapper, const Transformation
         textureMapper.drawTexture(*texture().get(), rect(), transform, opacity, exposedEdges);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -28,7 +28,7 @@
 
 #include "Decoder.h"
 #include "Encoder.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include <wtf/UniStdExtras.h>
 
 #if OS(LINUX)

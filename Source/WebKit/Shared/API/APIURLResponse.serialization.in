@@ -23,5 +23,5 @@
 headers: "APIURLResponse.h"
 
 [RefCounted, CustomHeader=True] class API::URLResponse {
-    WebCore::ResourceResponse resourceResponse()
+    CyberCore::ResourceResponse resourceResponse()
 };

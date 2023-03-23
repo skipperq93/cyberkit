@@ -40,7 +40,7 @@
 #import <objc/runtime.h>
 #import <pal/cocoa/AVFoundationSoftLink.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 #if JSC_OBJC_API_ENABLED
 static JSValue *jsValueWithDataInContext(NSData *, JSContext *);
@@ -251,6 +251,6 @@ static RetainPtr<NSDictionary> NSDictionaryWithAVMetadataItem(AVMetadataItem *it
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

@@ -37,7 +37,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DateComponents;
 struct DateFormatToken;
@@ -87,5 +87,5 @@ private:
     bool m_didInitializeNumberData;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 #endif

@@ -72,7 +72,7 @@
 #include "rendering/LegacyRootInlineBox.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(RenderBlockFlow);
 
@@ -3652,7 +3652,7 @@ RenderText* RenderBlockFlow::findClosestTextAtAbsolutePoint(const FloatPoint& po
     if (!block->childrenInline()) {
         // Look among our immediate children for an alternate box that contains the point.
         for (RenderBox* child = block->firstChildBox(); child; child = child->nextSiblingBox()) {
-            if (!child->height() || child->style().visibility() != WebCore::Visibility::Visible || child->isFloatingOrOutOfFlowPositioned())
+            if (!child->height() || child->style().visibility() != CyberCore::Visibility::Visible || child->isFloatingOrOutOfFlowPositioned())
                 continue;
             float top = child->y();
             
@@ -4842,4 +4842,4 @@ LayoutUnit RenderBlockFlow::blockFormattingContextInFlowBlockLevelContentHeight(
 
 
 }
-// namespace WebCore
+// namespace CyberCore

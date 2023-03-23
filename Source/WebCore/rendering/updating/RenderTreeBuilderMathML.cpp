@@ -32,7 +32,7 @@
 #include "RenderMathMLFencedOperator.h"
 #include "RenderTreeBuilderBlock.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 RenderTreeBuilder::MathML::MathML(RenderTreeBuilder& builder)
     : m_builder(builder)

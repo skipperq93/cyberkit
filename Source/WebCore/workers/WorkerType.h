@@ -25,8 +25,8 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class WorkerType : bool { Classic, Module };
 
-} // namespace WebCore
+} // namespace CyberCore

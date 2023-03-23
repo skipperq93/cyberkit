@@ -30,7 +30,7 @@
 #include "GraphicsLayerContentsDisplayDelegate.h"
 #include <wtf/Lock.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 #if !USE(NICOSIA)
 
@@ -79,4 +79,4 @@ RefPtr<ImageBufferPipe> ImageBufferPipe::create()
 
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

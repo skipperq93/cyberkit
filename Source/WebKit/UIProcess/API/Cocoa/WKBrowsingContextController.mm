@@ -57,7 +57,7 @@
 #import "WebProcessPool.h"
 #import "WebProtectionSpace.h"
 #import "_WKRemoteObjectRegistryInternal.h"
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 #import <wtf/BlockPtr.h>
 #import <wtf/NeverDestroyed.h>
 #import <wtf/WeakObjCPtr.h>
@@ -94,7 +94,7 @@ ALLOW_DEPRECATED_DECLARATIONS_END
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainRunLoop(WKBrowsingContextController.class, self))
+    if (CyberCoreObjCScheduleDeallocateOnMainRunLoop(WKBrowsingContextController.class, self))
         return;
 
     ASSERT(browsingContextControllerMap().get(_page.get()) == self);
@@ -142,7 +142,7 @@ ALLOW_DEPRECATED_DECLARATIONS_END
     if (userData)
         wkUserData = WebKit::ObjCObjectGraph::create(userData);
 
-    _page->loadRequest(request, WebCore::ShouldOpenExternalURLsPolicy::ShouldNotAllow, wkUserData.get());
+    _page->loadRequest(request, CyberCore::ShouldOpenExternalURLsPolicy::ShouldNotAllow, wkUserData.get());
 }
 
 - (void)loadFileURL:(NSURL *)URL restrictToFilesWithin:(NSURL *)allowedDirectory
@@ -180,7 +180,7 @@ ALLOW_DEPRECATED_DECLARATIONS_END
 - (void)loadAlternateHTMLString:(NSString *)string baseURL:(NSURL *)baseURL forUnreachableURL:(NSURL *)unreachableURL
 {
     NSData *data = [string dataUsingEncoding:NSUTF8StringEncoding];
-    _page->loadAlternateHTML(WebCore::DataSegment::create((__bridge CFDataRef)data), "UTF-8"_s, baseURL, unreachableURL);
+    _page->loadAlternateHTML(CyberCore::DataSegment::create((__bridge CFDataRef)data), "UTF-8"_s, baseURL, unreachableURL);
 }
 
 - (void)loadData:(NSData *)data MIMEType:(NSString *)MIMEType textEncodingName:(NSString *)encodingName baseURL:(NSURL *)baseURL
@@ -209,7 +209,7 @@ ALLOW_DEPRECATED_DECLARATIONS_END
 
 - (void)reloadFromOrigin
 {
-    _page->reload(WebCore::ReloadOption::FromOrigin);
+    _page->reload(CyberCore::ReloadOption::FromOrigin);
 }
 
 - (NSString *)applicationNameForUserAgent
@@ -314,7 +314,7 @@ ALLOW_DEPRECATED_DECLARATIONS_END
 - (NSArray *)certificateChain
 {
     if (WebKit::WebFrameProxy* mainFrame = _page->mainFrame())
-        return (__bridge NSArray *)WebCore::CertificateInfo::certificateChainFromSecTrust(mainFrame->certificateInfo().trust().get()).autorelease();
+        return (__bridge NSArray *)CyberCore::CertificateInfo::certificateChainFromSecTrust(mainFrame->certificateInfo().trust().get()).autorelease();
 
     return nil;
 }
@@ -649,22 +649,22 @@ ALLOW_DEPRECATED_IMPLEMENTATIONS_END
 
 - (void)setPaginationMode:(WKBrowsingContextPaginationMode)paginationMode
 {
-    WebCore::Pagination::Mode mode;
+    CyberCore::Pagination::Mode mode;
     switch (paginationMode) {
     case WKPaginationModeUnpaginated:
-        mode = WebCore::Pagination::Unpaginated;
+        mode = CyberCore::Pagination::Unpaginated;
         break;
     case WKPaginationModeLeftToRight:
-        mode = WebCore::Pagination::LeftToRightPaginated;
+        mode = CyberCore::Pagination::LeftToRightPaginated;
         break;
     case WKPaginationModeRightToLeft:
-        mode = WebCore::Pagination::RightToLeftPaginated;
+        mode = CyberCore::Pagination::RightToLeftPaginated;
         break;
     case WKPaginationModeTopToBottom:
-        mode = WebCore::Pagination::TopToBottomPaginated;
+        mode = CyberCore::Pagination::TopToBottomPaginated;
         break;
     case WKPaginationModeBottomToTop:
-        mode = WebCore::Pagination::BottomToTopPaginated;
+        mode = CyberCore::Pagination::BottomToTopPaginated;
         break;
     default:
         return;
@@ -676,15 +676,15 @@ ALLOW_DEPRECATED_IMPLEMENTATIONS_END
 - (WKBrowsingContextPaginationMode)paginationMode
 {
     switch (_page->paginationMode()) {
-    case WebCore::Pagination::Unpaginated:
+    case CyberCore::Pagination::Unpaginated:
         return WKPaginationModeUnpaginated;
-    case WebCore::Pagination::LeftToRightPaginated:
+    case CyberCore::Pagination::LeftToRightPaginated:
         return WKPaginationModeLeftToRight;
-    case WebCore::Pagination::RightToLeftPaginated:
+    case CyberCore::Pagination::RightToLeftPaginated:
         return WKPaginationModeRightToLeft;
-    case WebCore::Pagination::TopToBottomPaginated:
+    case CyberCore::Pagination::TopToBottomPaginated:
         return WKPaginationModeTopToBottom;
-    case WebCore::Pagination::BottomToTopPaginated:
+    case CyberCore::Pagination::BottomToTopPaginated:
         return WKPaginationModeBottomToTop;
     }
 

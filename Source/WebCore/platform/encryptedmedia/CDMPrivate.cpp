@@ -38,7 +38,7 @@
 #include "SharedBuffer.h"
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 CDMPrivate::CDMPrivate() = default;
 CDMPrivate::~CDMPrivate() = default;

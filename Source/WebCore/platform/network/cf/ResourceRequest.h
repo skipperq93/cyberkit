@@ -35,7 +35,7 @@ OBJC_CLASS NSURLRequest;
 typedef const struct _CFURLRequest* CFURLRequestRef;
 typedef const struct __CFURLStorageSession* CFURLStorageSessionRef;
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ResourceRequestPlatformData {
     RetainPtr<NSURLRequest> m_urlRequest;
@@ -133,4 +133,4 @@ private:
 RetainPtr<NSURLRequest> copyRequestWithStorageSession(CFURLStorageSessionRef, NSURLRequest *);
 WEBCORE_EXPORT NSCachedURLResponse *cachedResponseForRequest(CFURLStorageSessionRef, NSURLRequest *);
 
-} // namespace WebCore
+} // namespace CyberCore

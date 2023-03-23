@@ -22,7 +22,7 @@
 #include "FloatPoint.h"
 #include "SVGPathSeg.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 
 class SVGPathSource {
@@ -92,4 +92,4 @@ public:
     virtual std::optional<ArcToSegment> parseArcToSegment() = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -31,7 +31,7 @@
 #include <QuartzCore/QuartzCore.h>
 #include <wtf/BlockObjCExceptions.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 RetainPtr<CABasicAnimation> DrawingArea::transientZoomSnapAnimationForKeyPath(ASCIILiteral keyPath)
 {
@@ -49,6 +49,6 @@ RetainPtr<CABasicAnimation> DrawingArea::transientZoomSnapAnimationForKeyPath(AS
     END_BLOCK_OBJC_EXCEPTIONS
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(COCOA)

@@ -36,7 +36,7 @@
 #include "LengthSize.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static const double focusRingOpacity = 0.8; // Keep in sync with focusRingOpacity in RenderThemeAdwaita.
 static const unsigned focusLineWidth = 2;
@@ -547,6 +547,6 @@ Color ThemeAdwaita::accentColor()
     return m_accentColor;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(THEME_ADWAITA)

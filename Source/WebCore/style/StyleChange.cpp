@@ -28,7 +28,7 @@
 
 #include "RenderStyle.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace Style {
 
 Change determineChange(const RenderStyle& s1, const RenderStyle& s2)

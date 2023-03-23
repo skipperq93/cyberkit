@@ -35,7 +35,7 @@ namespace WebKit {
 class GPUConnectionToWebProcess;
 
 class RemoteMediaSessionHelperProxy
-    : public WebCore::MediaSessionHelperClient
+    : public CyberCore::MediaSessionHelperClient
     , public IPC::MessageReceiver {
     WTF_MAKE_FAST_ALLOCATED();
 public:
@@ -61,7 +61,7 @@ private:
     void externalOutputDeviceAvailableDidChange(HasAvailableTargets) final;
     void isPlayingToAutomotiveHeadUnitDidChange(PlayingToAutomotiveHeadUnit) final;
     void activeAudioRouteDidChange(ShouldPause) final;
-    void activeVideoRouteDidChange(SupportsAirPlayVideo, Ref<WebCore::MediaPlaybackTarget>&&) final;
+    void activeVideoRouteDidChange(SupportsAirPlayVideo, Ref<CyberCore::MediaPlaybackTarget>&&) final;
 
     bool m_isMonitoringWirelessRoutes { false };
     GPUConnectionToWebProcess& m_gpuConnection;

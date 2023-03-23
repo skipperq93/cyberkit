@@ -28,14 +28,14 @@
 
 #import <CyberCore/ResourceRequest.h>
 #import <CyberCore/SecurityOrigin.h>
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 #import <wtf/RefPtr.h>
 
 @implementation WKSecurityOrigin
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainRunLoop(WKSecurityOrigin.class, self))
+    if (CyberCoreObjCScheduleDeallocateOnMainRunLoop(WKSecurityOrigin.class, self))
         return;
 
     _securityOrigin->~SecurityOrigin();
@@ -74,7 +74,7 @@
 -(BOOL)isSameSiteAsURL:(NSURL *)url
 {
     auto thisOrigin = _securityOrigin->securityOrigin().securityOrigin();
-    auto otherOrigin = WebCore::SecurityOrigin::create(URL { url });
+    auto otherOrigin = CyberCore::SecurityOrigin::create(URL { url });
 
     return thisOrigin->isSameSiteAs(otherOrigin.get());
 }

@@ -37,7 +37,7 @@
 #include <wtf/StdLibExtras.h>
 #include <wtf/unicode/CharacterNames.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(RenderDeprecatedFlexibleBox);
 
@@ -1304,4 +1304,4 @@ ASCIILiteral RenderDeprecatedFlexibleBox::renderName() const
     return "RenderDeprecatedFlexibleBox"_s;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

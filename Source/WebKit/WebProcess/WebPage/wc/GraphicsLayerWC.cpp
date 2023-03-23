@@ -33,8 +33,8 @@
 #include "WCTileGrid.h"
 #include <CyberCore/TransformState.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 class WCTiledBacking final : public TiledBacking {
     WTF_MAKE_FAST_ALLOCATED;
@@ -76,7 +76,7 @@ public:
         m_tileGrid.setSize(expandedIntSize(size));
     }
 
-    void setDirtyRect(const WebCore::FloatRect& rect)
+    void setDirtyRect(const CyberCore::FloatRect& rect)
     {
         m_tileGrid.addDirtyRect(enclosingIntRect(rect));
     }
@@ -165,7 +165,7 @@ void GraphicsLayerWC::setNeedsDisplay()
     setNeedsDisplayInRect({ { }, m_size }, ClipToLayer);
 }
 
-void GraphicsLayerWC::setNeedsDisplayInRect(const WebCore::FloatRect& rect, ShouldClipToLayer shouldClip)
+void GraphicsLayerWC::setNeedsDisplayInRect(const CyberCore::FloatRect& rect, ShouldClipToLayer shouldClip)
 {
     if (!drawsContent())
         return;
@@ -319,7 +319,7 @@ void GraphicsLayerWC::setMasksToBounds(bool value)
     updateDebugIndicators();
 }
 
-void GraphicsLayerWC::setBackgroundColor(const WebCore::Color& value)
+void GraphicsLayerWC::setBackgroundColor(const CyberCore::Color& value)
 {
     if (value == backgroundColor())
         return;
@@ -402,7 +402,7 @@ void GraphicsLayerWC::setContentsToPlatformLayer(PlatformLayer* platformLayer, C
     updateDebugIndicators();
 }
 
-void GraphicsLayerWC::setContentsDisplayDelegate(RefPtr<WebCore::GraphicsLayerContentsDisplayDelegate>&& displayDelegate, ContentsLayerPurpose purpose)
+void GraphicsLayerWC::setContentsDisplayDelegate(RefPtr<CyberCore::GraphicsLayerContentsDisplayDelegate>&& displayDelegate, ContentsLayerPurpose purpose)
 {
     auto platformLayer = displayDelegate ? displayDelegate->platformLayer() : nullptr;
     setContentsToPlatformLayer(platformLayer, purpose);
@@ -599,7 +599,7 @@ TiledBacking* GraphicsLayerWC::tiledBacking() const
     return m_tiledBacking->tiledBacking();
 }
 
-RefPtr<WebCore::ImageBuffer> GraphicsLayerWC::createImageBuffer(WebCore::FloatSize size)
+RefPtr<CyberCore::ImageBuffer> GraphicsLayerWC::createImageBuffer(CyberCore::FloatSize size)
 {
     return m_observer->createImageBuffer(size);
 }
@@ -714,6 +714,6 @@ void GraphicsLayerWC::recursiveCommitChanges(const TransformState& state)
         static_cast<GraphicsLayerWC*>(child.ptr())->recursiveCommitChanges(localState);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(GRAPHICS_LAYER_WC)

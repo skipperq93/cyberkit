@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -18,44 +18,44 @@
  */
 
 #include "config.h"
-#include "WebKitDOMKeyboardEvent.h"
+#include "CyberKitDOMKeyboardEvent.h"
 
 #include <CyberCore/CSSImportRule.h>
 #include "DOMObjectCache.h"
 #include <CyberCore/Document.h>
 #include <CyberCore/ExceptionCode.h>
 #include <CyberCore/JSExecState.h>
-#include "WebKitDOMDOMWindowPrivate.h"
-#include "WebKitDOMEventPrivate.h"
-#include "WebKitDOMKeyboardEventPrivate.h"
-#include "WebKitDOMPrivate.h"
+#include "CyberKitDOMDOMWindowPrivate.h"
+#include "CyberKitDOMEventPrivate.h"
+#include "CyberKitDOMKeyboardEventPrivate.h"
+#include "CyberKitDOMPrivate.h"
 #include "ConvertToUTF8String.h"
 #include <wtf/GetPtr.h>
 #include <wtf/RefPtr.h>
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
-namespace WebKit {
+namespace CyberKit {
 
-WebKitDOMKeyboardEvent* kit(WebCore::KeyboardEvent* obj)
+CyberKitDOMKeyboardEvent* kit(CyberCore::KeyboardEvent* obj)
 {
-    return WEBKIT_DOM_KEYBOARD_EVENT(kit(static_cast<WebCore::Event*>(obj)));
+    return WEBKIT_DOM_KEYBOARD_EVENT(kit(static_cast<CyberCore::Event*>(obj)));
 }
 
-WebCore::KeyboardEvent* core(WebKitDOMKeyboardEvent* request)
+CyberCore::KeyboardEvent* core(CyberKitDOMKeyboardEvent* request)
 {
-    return request ? static_cast<WebCore::KeyboardEvent*>(WEBKIT_DOM_OBJECT(request)->coreObject) : 0;
+    return request ? static_cast<CyberCore::KeyboardEvent*>(WEBKIT_DOM_OBJECT(request)->coreObject) : 0;
 }
 
-WebKitDOMKeyboardEvent* wrapKeyboardEvent(WebCore::KeyboardEvent* coreObject)
+CyberKitDOMKeyboardEvent* wrapKeyboardEvent(CyberCore::KeyboardEvent* coreObject)
 {
     ASSERT(coreObject);
     return WEBKIT_DOM_KEYBOARD_EVENT(g_object_new(WEBKIT_DOM_TYPE_KEYBOARD_EVENT, "core-object", coreObject, nullptr));
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
-G_DEFINE_TYPE(WebKitDOMKeyboardEvent, webkit_dom_keyboard_event, WEBKIT_DOM_TYPE_UI_EVENT)
+G_DEFINE_TYPE(CyberKitDOMKeyboardEvent, webkit_dom_keyboard_event, WEBKIT_DOM_TYPE_UI_EVENT)
 
 enum {
     DOM_KEYBOARD_EVENT_PROP_0,
@@ -70,7 +70,7 @@ enum {
 
 static void webkit_dom_keyboard_event_get_property(GObject* object, guint propertyId, GValue* value, GParamSpec* pspec)
 {
-    WebKitDOMKeyboardEvent* self = WEBKIT_DOM_KEYBOARD_EVENT(object);
+    CyberKitDOMKeyboardEvent* self = WEBKIT_DOM_KEYBOARD_EVENT(object);
 
     switch (propertyId) {
     case DOM_KEYBOARD_EVENT_PROP_KEY_IDENTIFIER:
@@ -100,7 +100,7 @@ static void webkit_dom_keyboard_event_get_property(GObject* object, guint proper
     }
 }
 
-static void webkit_dom_keyboard_event_class_init(WebKitDOMKeyboardEventClass* requestClass)
+static void webkit_dom_keyboard_event_class_init(CyberKitDOMKeyboardEventClass* requestClass)
 {
     GObjectClass* gobjectClass = G_OBJECT_CLASS(requestClass);
     gobjectClass->get_property = webkit_dom_keyboard_event_get_property;
@@ -177,94 +177,94 @@ static void webkit_dom_keyboard_event_class_init(WebKitDOMKeyboardEventClass* re
 
 }
 
-static void webkit_dom_keyboard_event_init(WebKitDOMKeyboardEvent* request)
+static void webkit_dom_keyboard_event_init(CyberKitDOMKeyboardEvent* request)
 {
     UNUSED_PARAM(request);
 }
 
-gboolean webkit_dom_keyboard_event_get_modifier_state(WebKitDOMKeyboardEvent* self, const gchar* keyIdentifierArg)
+gboolean webkit_dom_keyboard_event_get_modifier_state(CyberKitDOMKeyboardEvent* self, const gchar* keyIdentifierArg)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_KEYBOARD_EVENT(self), FALSE);
     g_return_val_if_fail(keyIdentifierArg, FALSE);
-    WebCore::KeyboardEvent* item = WebKit::core(self);
+    CyberCore::KeyboardEvent* item = CyberKit::core(self);
     WTF::String convertedKeyIdentifierArg = WTF::String::fromUTF8(keyIdentifierArg);
     gboolean result = item->getModifierState(convertedKeyIdentifierArg);
     return result;
 }
 
-void webkit_dom_keyboard_event_init_keyboard_event(WebKitDOMKeyboardEvent* self, const gchar* type, gboolean canBubble, gboolean cancelable, WebKitDOMDOMWindow* view, const gchar* keyIdentifier, gulong location, gboolean ctrlKey, gboolean altKey, gboolean shiftKey, gboolean metaKey, gboolean altGraphKey)
+void webkit_dom_keyboard_event_init_keyboard_event(CyberKitDOMKeyboardEvent* self, const gchar* type, gboolean canBubble, gboolean cancelable, CyberKitDOMDOMWindow* view, const gchar* keyIdentifier, gulong location, gboolean ctrlKey, gboolean altKey, gboolean shiftKey, gboolean metaKey, gboolean altGraphKey)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_KEYBOARD_EVENT(self));
     g_return_if_fail(type);
     g_return_if_fail(WEBKIT_DOM_IS_DOM_WINDOW(view));
     g_return_if_fail(keyIdentifier);
-    WebCore::KeyboardEvent* item = WebKit::core(self);
+    CyberCore::KeyboardEvent* item = CyberKit::core(self);
     auto convertedType = WTF::AtomString::fromUTF8(type);
     auto convertedKeyIdentifier = WTF::AtomString::fromUTF8(keyIdentifier);
-    item->initKeyboardEvent(convertedType, canBubble, cancelable, WebKit::toWindowProxy(view), convertedKeyIdentifier, location, ctrlKey, altKey, shiftKey, metaKey, altGraphKey);
+    item->initKeyboardEvent(convertedType, canBubble, cancelable, CyberKit::toWindowProxy(view), convertedKeyIdentifier, location, ctrlKey, altKey, shiftKey, metaKey, altGraphKey);
 }
 
-gchar* webkit_dom_keyboard_event_get_key_identifier(WebKitDOMKeyboardEvent* self)
+gchar* webkit_dom_keyboard_event_get_key_identifier(CyberKitDOMKeyboardEvent* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_KEYBOARD_EVENT(self), 0);
-    WebCore::KeyboardEvent* item = WebKit::core(self);
+    CyberCore::KeyboardEvent* item = CyberKit::core(self);
     gchar* result = convertToUTF8String(item->keyIdentifier());
     return result;
 }
 
-gulong webkit_dom_keyboard_event_get_key_location(WebKitDOMKeyboardEvent* self)
+gulong webkit_dom_keyboard_event_get_key_location(CyberKitDOMKeyboardEvent* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_KEYBOARD_EVENT(self), 0);
-    WebCore::KeyboardEvent* item = WebKit::core(self);
+    CyberCore::KeyboardEvent* item = CyberKit::core(self);
     gulong result = item->location();
     return result;
 }
 
-gboolean webkit_dom_keyboard_event_get_ctrl_key(WebKitDOMKeyboardEvent* self)
+gboolean webkit_dom_keyboard_event_get_ctrl_key(CyberKitDOMKeyboardEvent* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_KEYBOARD_EVENT(self), FALSE);
-    WebCore::KeyboardEvent* item = WebKit::core(self);
+    CyberCore::KeyboardEvent* item = CyberKit::core(self);
     gboolean result = item->ctrlKey();
     return result;
 }
 
-gboolean webkit_dom_keyboard_event_get_shift_key(WebKitDOMKeyboardEvent* self)
+gboolean webkit_dom_keyboard_event_get_shift_key(CyberKitDOMKeyboardEvent* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_KEYBOARD_EVENT(self), FALSE);
-    WebCore::KeyboardEvent* item = WebKit::core(self);
+    CyberCore::KeyboardEvent* item = CyberKit::core(self);
     gboolean result = item->shiftKey();
     return result;
 }
 
-gboolean webkit_dom_keyboard_event_get_alt_key(WebKitDOMKeyboardEvent* self)
+gboolean webkit_dom_keyboard_event_get_alt_key(CyberKitDOMKeyboardEvent* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_KEYBOARD_EVENT(self), FALSE);
-    WebCore::KeyboardEvent* item = WebKit::core(self);
+    CyberCore::KeyboardEvent* item = CyberKit::core(self);
     gboolean result = item->altKey();
     return result;
 }
 
-gboolean webkit_dom_keyboard_event_get_meta_key(WebKitDOMKeyboardEvent* self)
+gboolean webkit_dom_keyboard_event_get_meta_key(CyberKitDOMKeyboardEvent* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_KEYBOARD_EVENT(self), FALSE);
-    WebCore::KeyboardEvent* item = WebKit::core(self);
+    CyberCore::KeyboardEvent* item = CyberKit::core(self);
     gboolean result = item->metaKey();
     return result;
 }
 
-gboolean webkit_dom_keyboard_event_get_alt_graph_key(WebKitDOMKeyboardEvent* self)
+gboolean webkit_dom_keyboard_event_get_alt_graph_key(CyberKitDOMKeyboardEvent* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_KEYBOARD_EVENT(self), FALSE);
-    WebCore::KeyboardEvent* item = WebKit::core(self);
+    CyberCore::KeyboardEvent* item = CyberKit::core(self);
     gboolean result = item->altGraphKey();
     return result;
 }

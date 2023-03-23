@@ -29,32 +29,32 @@
 #include <wtf/Ref.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 class FileChooser;
 class Icon;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPage;
 
 class WebOpenPanelResultListener : public RefCounted<WebOpenPanelResultListener> {
 public:
-    static Ref<WebOpenPanelResultListener> create(WebPage&, Ref<WebCore::FileChooser>&&);
+    static Ref<WebOpenPanelResultListener> create(WebPage&, Ref<CyberCore::FileChooser>&&);
     ~WebOpenPanelResultListener();
 
     void disconnectFromPage() { m_page = 0; }
     void didChooseFiles(const Vector<String>& files, const Vector<String>& replacementFiles);
     void didCancelFileChoosing();
 #if PLATFORM(IOS_FAMILY)
-    void didChooseFilesWithDisplayStringAndIcon(const Vector<String>&, const String& displayString, WebCore::Icon*);
+    void didChooseFilesWithDisplayStringAndIcon(const Vector<String>&, const String& displayString, CyberCore::Icon*);
 #endif
 
 private:
-    WebOpenPanelResultListener(WebPage&, Ref<WebCore::FileChooser>&&);
+    WebOpenPanelResultListener(WebPage&, Ref<CyberCore::FileChooser>&&);
 
     WebPage* m_page;
-    Ref<WebCore::FileChooser> m_fileChooser;
+    Ref<CyberCore::FileChooser> m_fileChooser;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

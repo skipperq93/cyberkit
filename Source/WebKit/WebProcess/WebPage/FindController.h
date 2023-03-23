@@ -40,19 +40,19 @@
 #include "FindIndicatorOverlayClientIOS.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 class Frame;
 class Range;
 enum class DidWrap : bool;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class CallbackID;
 class PluginView;
 class WebPage;
 
-class FindController final : private WebCore::PageOverlay::Client {
+class FindController final : private CyberCore::PageOverlay::Client {
     WTF_MAKE_FAST_ALLOCATED;
     WTF_MAKE_NONCOPYABLE(FindController);
 
@@ -64,7 +64,7 @@ public:
 
     void findString(const String&, OptionSet<FindOptions>, unsigned maxMatchCount, TriggerImageAnalysis, CompletionHandler<void(bool)>&& = { });
     void findStringMatches(const String&, OptionSet<FindOptions>, unsigned maxMatchCount);
-    void findRectsForStringMatches(const String&, OptionSet<WebKit::FindOptions>, unsigned maxMatchCount, CompletionHandler<void(Vector<WebCore::FloatRect>&&)>&&);
+    void findRectsForStringMatches(const String&, OptionSet<CyberKit::FindOptions>, unsigned maxMatchCount, CompletionHandler<void(Vector<CyberCore::FloatRect>&&)>&&);
     void getImageForFindMatch(uint32_t matchIndex);
     void selectFindMatch(uint32_t matchIndex);
     void indicateFindMatch(uint32_t matchIndex);
@@ -85,16 +85,16 @@ public:
 
 private:
     // PageOverlay::Client.
-    void willMoveToPage(WebCore::PageOverlay&, WebCore::Page*) override;
-    void didMoveToPage(WebCore::PageOverlay&, WebCore::Page*) override;
-    bool mouseEvent(WebCore::PageOverlay&, const WebCore::PlatformMouseEvent&) override;
-    void drawRect(WebCore::PageOverlay&, WebCore::GraphicsContext&, const WebCore::IntRect& dirtyRect) override;
+    void willMoveToPage(CyberCore::PageOverlay&, CyberCore::Page*) override;
+    void didMoveToPage(CyberCore::PageOverlay&, CyberCore::Page*) override;
+    bool mouseEvent(CyberCore::PageOverlay&, const CyberCore::PlatformMouseEvent&) override;
+    void drawRect(CyberCore::PageOverlay&, CyberCore::GraphicsContext&, const CyberCore::IntRect& dirtyRect) override;
 
-    Vector<WebCore::FloatRect> rectsForTextMatchesInRect(WebCore::IntRect clipRect);
-    bool updateFindIndicator(WebCore::Frame& selectedFrame, bool isShowingOverlay, bool shouldAnimate = true);
+    Vector<CyberCore::FloatRect> rectsForTextMatchesInRect(CyberCore::IntRect clipRect);
+    bool updateFindIndicator(CyberCore::Frame& selectedFrame, bool isShowingOverlay, bool shouldAnimate = true);
 
     enum class FindUIOriginator : uint8_t { FindString, FindStringMatches };
-    void updateFindUIAfterPageScroll(bool found, const String&, OptionSet<FindOptions>, unsigned maxMatchCount, WebCore::DidWrap, FindUIOriginator);
+    void updateFindUIAfterPageScroll(bool found, const String&, OptionSet<FindOptions>, unsigned maxMatchCount, CyberCore::DidWrap, FindUIOriginator);
 
     void willFindString();
     void didFindString();
@@ -110,20 +110,20 @@ private:
 #endif
 
     WebPage* m_webPage;
-    WebCore::PageOverlay* m_findPageOverlay { nullptr };
+    CyberCore::PageOverlay* m_findPageOverlay { nullptr };
 
     // Whether the UI process is showing the find indicator. Note that this can be true even if
     // the find indicator isn't showing, but it will never be false when it is showing.
     bool m_isShowingFindIndicator { false };
-    WebCore::IntRect m_findIndicatorRect;
-    Vector<WebCore::SimpleRange> m_findMatches;
+    CyberCore::IntRect m_findIndicatorRect;
+    Vector<CyberCore::SimpleRange> m_findMatches;
     // Index value is -1 if not found or if number of matches exceeds provided maximum.
     int m_foundStringMatchIndex { -1 };
 
 #if PLATFORM(IOS_FAMILY)
-    RefPtr<WebCore::PageOverlay> m_findIndicatorOverlay;
+    RefPtr<CyberCore::PageOverlay> m_findIndicatorOverlay;
     std::unique_ptr<FindIndicatorOverlayClientIOS> m_findIndicatorOverlayClient;
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit

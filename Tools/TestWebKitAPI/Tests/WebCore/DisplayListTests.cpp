@@ -33,7 +33,7 @@
 #include <CyberCore/InMemoryDisplayList.h>
 
 namespace TestWebKitAPI {
-using namespace WebCore;
+using namespace CyberCore;
 using DisplayList::DisplayList;
 using namespace DisplayList;
 

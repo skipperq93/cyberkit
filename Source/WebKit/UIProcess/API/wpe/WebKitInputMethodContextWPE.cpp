@@ -23,7 +23,7 @@
 #include "WebKitColorPrivate.h"
 #include "WebKitInputMethodContextPrivate.h"
 
-using namespace WebCore;
+using namespace CyberCore;
 
 /**
  * webkit_input_method_underline_set_color:
@@ -45,7 +45,7 @@ void webkit_input_method_underline_set_color(WebKitInputMethodUnderline* underli
     }
 
     underline->underline.compositionUnderlineColor = CompositionUnderlineColor::GivenColor;
-    underline->underline.color = webkitColorToWebCoreColor(color);
+    underline->underline.color = webkitColorToCyberCoreColor(color);
 }
 
 /**

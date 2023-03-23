@@ -32,7 +32,7 @@ typedef struct CGImage* CGImageRef;
 typedef struct OpaqueVTPixelBufferConformer* VTPixelBufferConformerRef;
 typedef struct __CVBuffer *CVPixelBufferRef;
 
-namespace WebCore {
+namespace CyberCore {
 
 class PixelBufferConformerCV {
     WTF_MAKE_FAST_ALLOCATED;

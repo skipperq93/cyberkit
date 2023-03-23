@@ -48,7 +48,7 @@ static bool didFinishLoad;
 
 namespace TestWebKitAPI {
 
-TEST(WebKitLegacy, HTMLCollectionNamedItemTest)
+TEST(CyberKitLegacy, HTMLCollectionNamedItemTest)
 {
     RetainPtr<WebView> webView = adoptNS([[WebView alloc] initWithFrame:NSMakeRect(0, 0, 120, 200) frameName:nil groupName:nil]);
     RetainPtr<HTMLCollectionNamedItemTest> testController = adoptNS([HTMLCollectionNamedItemTest new]);

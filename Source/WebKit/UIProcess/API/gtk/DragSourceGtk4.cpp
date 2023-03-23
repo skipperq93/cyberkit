@@ -34,7 +34,7 @@
 #include <gtk/gtk.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 DragSource::DragSource(GtkWidget* webView)
     : m_webView(webView)

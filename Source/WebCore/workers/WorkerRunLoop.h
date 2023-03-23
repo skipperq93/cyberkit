@@ -35,7 +35,7 @@
 #include <memory>
 #include <wtf/MessageQueue.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WeakPtrImplWithEventTargetData;
 class ModePredicate;
@@ -136,12 +136,12 @@ private:
     bool m_terminated { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::WorkerDedicatedRunLoop)
-    static bool isType(const WebCore::WorkerRunLoop& runLoop) { return runLoop.type() == WebCore::WorkerRunLoop::Type::WorkerDedicatedRunLoop; }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::WorkerDedicatedRunLoop)
+    static bool isType(const CyberCore::WorkerRunLoop& runLoop) { return runLoop.type() == CyberCore::WorkerRunLoop::Type::WorkerDedicatedRunLoop; }
 SPECIALIZE_TYPE_TRAITS_END()
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::WorkerMainRunLoop)
-    static bool isType(const WebCore::WorkerRunLoop& runLoop) { return runLoop.type() == WebCore::WorkerRunLoop::Type::WorkerMainRunLoop; }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::WorkerMainRunLoop)
+    static bool isType(const CyberCore::WorkerRunLoop& runLoop) { return runLoop.type() == CyberCore::WorkerRunLoop::Type::WorkerMainRunLoop; }
 SPECIALIZE_TYPE_TRAITS_END()

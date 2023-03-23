@@ -28,7 +28,7 @@
 
 #import <wtf/cocoa/VectorCocoa.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static NSString * const dateKey = @"date";
 static NSString * const itemsKey = @"items";

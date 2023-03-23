@@ -24,12 +24,12 @@
 
 messages -> ServiceWorkerFetchTask NotRefCounted {
     DidNotHandle()
-    DidFail(WebCore::ResourceError error)
-    DidReceiveRedirectResponse(WebCore::ResourceResponse response)
-    DidReceiveResponse(WebCore::ResourceResponse response, bool needsContinueDidReceiveResponseMessage)
+    DidFail(CyberCore::ResourceError error)
+    DidReceiveRedirectResponse(CyberCore::ResourceResponse response)
+    DidReceiveResponse(CyberCore::ResourceResponse response, bool needsContinueDidReceiveResponseMessage)
     DidReceiveData(IPC::SharedBufferReference data, uint64_t encodedDataLength)
     DidReceiveFormData(IPC::FormDataReference data)
-    DidFinish(WebCore::NetworkLoadMetrics metrics)
+    DidFinish(CyberCore::NetworkLoadMetrics metrics)
     UsePreload()
 }
 

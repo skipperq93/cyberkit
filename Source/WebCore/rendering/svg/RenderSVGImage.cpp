@@ -49,7 +49,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/StackStats.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(RenderSVGImage);
 
@@ -414,6 +414,6 @@ void RenderSVGImage::applyTransform(TransformationMatrix& transform, const Rende
     applySVGTransform(transform, imageElement(), style, boundingBox, std::nullopt, std::nullopt, options);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(LAYER_BASED_SVG_ENGINE)

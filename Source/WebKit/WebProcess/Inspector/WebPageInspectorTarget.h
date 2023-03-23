@@ -29,7 +29,7 @@
 #include <CyberCore/PageIdentifier.h>
 #include <wtf/Noncopyable.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPage;
 class WebPageInspectorTargetFrontendChannel;
@@ -49,11 +49,11 @@ public:
     void disconnect() override;
     void sendMessageToTargetBackend(const String&) override;
 
-    static String toTargetID(WebCore::PageIdentifier);
+    static String toTargetID(CyberCore::PageIdentifier);
 
 private:
     WebPage& m_page;
     std::unique_ptr<WebPageInspectorTargetFrontendChannel> m_channel;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

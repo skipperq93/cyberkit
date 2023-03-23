@@ -38,7 +38,7 @@
 OBJC_CLASS NSFileWrapper;
 OBJC_CLASS NSString;
 
-namespace WebCore {
+namespace CyberCore {
 class SharedBuffer;
 class FragmentedSharedBuffer;
 }
@@ -82,7 +82,7 @@ public:
 
     bool isEmpty() const;
 
-    RefPtr<WebCore::FragmentedSharedBuffer> enclosingImageData() const;
+    RefPtr<CyberCore::FragmentedSharedBuffer> enclosingImageData() const;
 #if PLATFORM(COCOA)
     NSData *enclosingImageNSData() const;
 #endif
@@ -91,8 +91,8 @@ public:
     void setHasEnclosingImage(bool hasEnclosingImage) { m_hasEnclosingImage = hasEnclosingImage; }
     bool hasEnclosingImage() const { return m_hasEnclosingImage; }
 
-    RefPtr<WebCore::SharedBuffer> createSerializedRepresentation() const;
-    void updateFromSerializedRepresentation(Ref<WebCore::SharedBuffer>&&, const WTF::String& contentType);
+    RefPtr<CyberCore::SharedBuffer> createSerializedRepresentation() const;
+    void updateFromSerializedRepresentation(Ref<CyberCore::SharedBuffer>&&, const WTF::String& contentType);
 
 private:
     explicit Attachment(const WTF::String& identifier, WebKit::WebPageProxy&);

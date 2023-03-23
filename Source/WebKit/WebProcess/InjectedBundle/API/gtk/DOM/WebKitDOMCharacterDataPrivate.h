@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -17,16 +17,16 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitDOMCharacterDataPrivate_h
-#define WebKitDOMCharacterDataPrivate_h
+#ifndef CyberKitDOMCharacterDataPrivate_h
+#define CyberKitDOMCharacterDataPrivate_h
 
 #include <CyberCore/CharacterData.h>
-#include <webkitdom/WebKitDOMCharacterData.h>
+#include <webkitdom/CyberKitDOMCharacterData.h>
 
-namespace WebKit {
-WebKitDOMCharacterData* wrapCharacterData(WebCore::CharacterData*);
-WebKitDOMCharacterData* kit(WebCore::CharacterData*);
-WebCore::CharacterData* core(WebKitDOMCharacterData*);
-} // namespace WebKit
+namespace CyberKit {
+CyberKitDOMCharacterData* wrapCharacterData(CyberCore::CharacterData*);
+CyberKitDOMCharacterData* kit(CyberCore::CharacterData*);
+CyberCore::CharacterData* core(CyberKitDOMCharacterData*);
+} // namespace CyberKit
 
-#endif /* WebKitDOMCharacterDataPrivate_h */
+#endif /* CyberKitDOMCharacterDataPrivate_h */

@@ -61,7 +61,7 @@
 #endif
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 std::unique_ptr<PlatformDisplay> PlatformDisplayX11::create()
 {
@@ -290,7 +290,7 @@ String PlatformDisplayX11::platformAccessibilityBusAddress() const
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(X11)
 

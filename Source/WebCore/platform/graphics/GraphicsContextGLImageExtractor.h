@@ -29,7 +29,7 @@
 
 #include "GraphicsContextGL.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class GraphicsContextGLImageExtractor {
 public:

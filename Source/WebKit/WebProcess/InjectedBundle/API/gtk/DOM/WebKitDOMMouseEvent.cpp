@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -18,46 +18,46 @@
  */
 
 #include "config.h"
-#include "WebKitDOMMouseEvent.h"
+#include "CyberKitDOMMouseEvent.h"
 
 #include <CyberCore/CSSImportRule.h>
 #include "DOMObjectCache.h"
 #include <CyberCore/Document.h>
 #include <CyberCore/ExceptionCode.h>
 #include <CyberCore/JSExecState.h>
-#include "WebKitDOMDOMWindowPrivate.h"
-#include "WebKitDOMEventPrivate.h"
-#include "WebKitDOMEventTargetPrivate.h"
-#include "WebKitDOMMouseEventPrivate.h"
-#include "WebKitDOMNodePrivate.h"
-#include "WebKitDOMPrivate.h"
+#include "CyberKitDOMDOMWindowPrivate.h"
+#include "CyberKitDOMEventPrivate.h"
+#include "CyberKitDOMEventTargetPrivate.h"
+#include "CyberKitDOMMouseEventPrivate.h"
+#include "CyberKitDOMNodePrivate.h"
+#include "CyberKitDOMPrivate.h"
 #include "ConvertToUTF8String.h"
 #include <wtf/GetPtr.h>
 #include <wtf/RefPtr.h>
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
-namespace WebKit {
+namespace CyberKit {
 
-WebKitDOMMouseEvent* kit(WebCore::MouseEvent* obj)
+CyberKitDOMMouseEvent* kit(CyberCore::MouseEvent* obj)
 {
-    return WEBKIT_DOM_MOUSE_EVENT(kit(static_cast<WebCore::Event*>(obj)));
+    return WEBKIT_DOM_MOUSE_EVENT(kit(static_cast<CyberCore::Event*>(obj)));
 }
 
-WebCore::MouseEvent* core(WebKitDOMMouseEvent* request)
+CyberCore::MouseEvent* core(CyberKitDOMMouseEvent* request)
 {
-    return request ? static_cast<WebCore::MouseEvent*>(WEBKIT_DOM_OBJECT(request)->coreObject) : 0;
+    return request ? static_cast<CyberCore::MouseEvent*>(WEBKIT_DOM_OBJECT(request)->coreObject) : 0;
 }
 
-WebKitDOMMouseEvent* wrapMouseEvent(WebCore::MouseEvent* coreObject)
+CyberKitDOMMouseEvent* wrapMouseEvent(CyberCore::MouseEvent* coreObject)
 {
     ASSERT(coreObject);
     return WEBKIT_DOM_MOUSE_EVENT(g_object_new(WEBKIT_DOM_TYPE_MOUSE_EVENT, "core-object", coreObject, nullptr));
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
-G_DEFINE_TYPE(WebKitDOMMouseEvent, webkit_dom_mouse_event, WEBKIT_DOM_TYPE_UI_EVENT)
+G_DEFINE_TYPE(CyberKitDOMMouseEvent, webkit_dom_mouse_event, WEBKIT_DOM_TYPE_UI_EVENT)
 
 enum {
     DOM_MOUSE_EVENT_PROP_0,
@@ -81,7 +81,7 @@ enum {
 
 static void webkit_dom_mouse_event_get_property(GObject* object, guint propertyId, GValue* value, GParamSpec* pspec)
 {
-    WebKitDOMMouseEvent* self = WEBKIT_DOM_MOUSE_EVENT(object);
+    CyberKitDOMMouseEvent* self = WEBKIT_DOM_MOUSE_EVENT(object);
 
     switch (propertyId) {
     case DOM_MOUSE_EVENT_PROP_SCREEN_X:
@@ -138,7 +138,7 @@ static void webkit_dom_mouse_event_get_property(GObject* object, guint propertyI
     }
 }
 
-static void webkit_dom_mouse_event_class_init(WebKitDOMMouseEventClass* requestClass)
+static void webkit_dom_mouse_event_class_init(CyberKitDOMMouseEventClass* requestClass)
 {
     GObjectClass* gobjectClass = G_OBJECT_CLASS(requestClass);
     gobjectClass->get_property = webkit_dom_mouse_event_get_property;
@@ -239,7 +239,7 @@ static void webkit_dom_mouse_event_class_init(WebKitDOMMouseEventClass* requestC
         g_param_spec_object(
             "related-target",
             "MouseEvent:related-target",
-            "read-only WebKitDOMEventTarget* MouseEvent:related-target",
+            "read-only CyberKitDOMEventTarget* MouseEvent:related-target",
             WEBKIT_DOM_TYPE_EVENT_TARGET,
             WEBKIT_PARAM_READABLE));
 
@@ -289,7 +289,7 @@ static void webkit_dom_mouse_event_class_init(WebKitDOMMouseEventClass* requestC
         g_param_spec_object(
             "from-element",
             "MouseEvent:from-element",
-            "read-only WebKitDOMNode* MouseEvent:from-element",
+            "read-only CyberKitDOMNode* MouseEvent:from-element",
             WEBKIT_DOM_TYPE_NODE,
             WEBKIT_PARAM_READABLE));
 
@@ -299,172 +299,172 @@ static void webkit_dom_mouse_event_class_init(WebKitDOMMouseEventClass* requestC
         g_param_spec_object(
             "to-element",
             "MouseEvent:to-element",
-            "read-only WebKitDOMNode* MouseEvent:to-element",
+            "read-only CyberKitDOMNode* MouseEvent:to-element",
             WEBKIT_DOM_TYPE_NODE,
             WEBKIT_PARAM_READABLE));
 
 }
 
-static void webkit_dom_mouse_event_init(WebKitDOMMouseEvent* request)
+static void webkit_dom_mouse_event_init(CyberKitDOMMouseEvent* request)
 {
     UNUSED_PARAM(request);
 }
 
-void webkit_dom_mouse_event_init_mouse_event(WebKitDOMMouseEvent* self, const gchar* type, gboolean canBubble, gboolean cancelable, WebKitDOMDOMWindow* view, glong detail, glong screenX, glong screenY, glong clientX, glong clientY, gboolean ctrlKey, gboolean altKey, gboolean shiftKey, gboolean metaKey, gushort button, WebKitDOMEventTarget* relatedTarget)
+void webkit_dom_mouse_event_init_mouse_event(CyberKitDOMMouseEvent* self, const gchar* type, gboolean canBubble, gboolean cancelable, CyberKitDOMDOMWindow* view, glong detail, glong screenX, glong screenY, glong clientX, glong clientY, gboolean ctrlKey, gboolean altKey, gboolean shiftKey, gboolean metaKey, gushort button, CyberKitDOMEventTarget* relatedTarget)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_MOUSE_EVENT(self));
     g_return_if_fail(type);
     g_return_if_fail(WEBKIT_DOM_IS_DOM_WINDOW(view));
     g_return_if_fail(WEBKIT_DOM_IS_EVENT_TARGET(relatedTarget));
-    WebCore::MouseEvent* item = WebKit::core(self);
+    CyberCore::MouseEvent* item = CyberKit::core(self);
     auto convertedType = WTF::AtomString::fromUTF8(type);
-    WebCore::EventTarget* convertedRelatedTarget = WebKit::core(relatedTarget);
-    item->initMouseEvent(convertedType, canBubble, cancelable, WebKit::toWindowProxy(view), detail, screenX, screenY, clientX, clientY, ctrlKey, altKey, shiftKey, metaKey, button, convertedRelatedTarget);
+    CyberCore::EventTarget* convertedRelatedTarget = CyberKit::core(relatedTarget);
+    item->initMouseEvent(convertedType, canBubble, cancelable, CyberKit::toWindowProxy(view), detail, screenX, screenY, clientX, clientY, ctrlKey, altKey, shiftKey, metaKey, button, convertedRelatedTarget);
 }
 
-glong webkit_dom_mouse_event_get_screen_x(WebKitDOMMouseEvent* self)
+glong webkit_dom_mouse_event_get_screen_x(CyberKitDOMMouseEvent* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_MOUSE_EVENT(self), 0);
-    WebCore::MouseEvent* item = WebKit::core(self);
+    CyberCore::MouseEvent* item = CyberKit::core(self);
     glong result = item->screenX();
     return result;
 }
 
-glong webkit_dom_mouse_event_get_screen_y(WebKitDOMMouseEvent* self)
+glong webkit_dom_mouse_event_get_screen_y(CyberKitDOMMouseEvent* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_MOUSE_EVENT(self), 0);
-    WebCore::MouseEvent* item = WebKit::core(self);
+    CyberCore::MouseEvent* item = CyberKit::core(self);
     glong result = item->screenY();
     return result;
 }
 
-glong webkit_dom_mouse_event_get_client_x(WebKitDOMMouseEvent* self)
+glong webkit_dom_mouse_event_get_client_x(CyberKitDOMMouseEvent* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_MOUSE_EVENT(self), 0);
-    WebCore::MouseEvent* item = WebKit::core(self);
+    CyberCore::MouseEvent* item = CyberKit::core(self);
     glong result = item->clientX();
     return result;
 }
 
-glong webkit_dom_mouse_event_get_client_y(WebKitDOMMouseEvent* self)
+glong webkit_dom_mouse_event_get_client_y(CyberKitDOMMouseEvent* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_MOUSE_EVENT(self), 0);
-    WebCore::MouseEvent* item = WebKit::core(self);
+    CyberCore::MouseEvent* item = CyberKit::core(self);
     glong result = item->clientY();
     return result;
 }
 
-gboolean webkit_dom_mouse_event_get_ctrl_key(WebKitDOMMouseEvent* self)
+gboolean webkit_dom_mouse_event_get_ctrl_key(CyberKitDOMMouseEvent* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_MOUSE_EVENT(self), FALSE);
-    WebCore::MouseEvent* item = WebKit::core(self);
+    CyberCore::MouseEvent* item = CyberKit::core(self);
     gboolean result = item->ctrlKey();
     return result;
 }
 
-gboolean webkit_dom_mouse_event_get_shift_key(WebKitDOMMouseEvent* self)
+gboolean webkit_dom_mouse_event_get_shift_key(CyberKitDOMMouseEvent* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_MOUSE_EVENT(self), FALSE);
-    WebCore::MouseEvent* item = WebKit::core(self);
+    CyberCore::MouseEvent* item = CyberKit::core(self);
     gboolean result = item->shiftKey();
     return result;
 }
 
-gboolean webkit_dom_mouse_event_get_alt_key(WebKitDOMMouseEvent* self)
+gboolean webkit_dom_mouse_event_get_alt_key(CyberKitDOMMouseEvent* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_MOUSE_EVENT(self), FALSE);
-    WebCore::MouseEvent* item = WebKit::core(self);
+    CyberCore::MouseEvent* item = CyberKit::core(self);
     gboolean result = item->altKey();
     return result;
 }
 
-gboolean webkit_dom_mouse_event_get_meta_key(WebKitDOMMouseEvent* self)
+gboolean webkit_dom_mouse_event_get_meta_key(CyberKitDOMMouseEvent* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_MOUSE_EVENT(self), FALSE);
-    WebCore::MouseEvent* item = WebKit::core(self);
+    CyberCore::MouseEvent* item = CyberKit::core(self);
     gboolean result = item->metaKey();
     return result;
 }
 
-gushort webkit_dom_mouse_event_get_button(WebKitDOMMouseEvent* self)
+gushort webkit_dom_mouse_event_get_button(CyberKitDOMMouseEvent* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_MOUSE_EVENT(self), 0);
-    WebCore::MouseEvent* item = WebKit::core(self);
+    CyberCore::MouseEvent* item = CyberKit::core(self);
     gushort result = item->button();
     return result;
 }
 
-WebKitDOMEventTarget* webkit_dom_mouse_event_get_related_target(WebKitDOMMouseEvent* self)
+CyberKitDOMEventTarget* webkit_dom_mouse_event_get_related_target(CyberKitDOMMouseEvent* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_MOUSE_EVENT(self), 0);
-    WebCore::MouseEvent* item = WebKit::core(self);
-    RefPtr<WebCore::EventTarget> gobjectResult = WTF::getPtr(item->relatedTarget());
-    return WebKit::kit(gobjectResult.get());
+    CyberCore::MouseEvent* item = CyberKit::core(self);
+    RefPtr<CyberCore::EventTarget> gobjectResult = WTF::getPtr(item->relatedTarget());
+    return CyberKit::kit(gobjectResult.get());
 }
 
-glong webkit_dom_mouse_event_get_offset_x(WebKitDOMMouseEvent* self)
+glong webkit_dom_mouse_event_get_offset_x(CyberKitDOMMouseEvent* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_MOUSE_EVENT(self), 0);
-    WebCore::MouseEvent* item = WebKit::core(self);
+    CyberCore::MouseEvent* item = CyberKit::core(self);
     glong result = item->offsetX();
     return result;
 }
 
-glong webkit_dom_mouse_event_get_offset_y(WebKitDOMMouseEvent* self)
+glong webkit_dom_mouse_event_get_offset_y(CyberKitDOMMouseEvent* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_MOUSE_EVENT(self), 0);
-    WebCore::MouseEvent* item = WebKit::core(self);
+    CyberCore::MouseEvent* item = CyberKit::core(self);
     glong result = item->offsetY();
     return result;
 }
 
-glong webkit_dom_mouse_event_get_x(WebKitDOMMouseEvent* self)
+glong webkit_dom_mouse_event_get_x(CyberKitDOMMouseEvent* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_MOUSE_EVENT(self), 0);
-    WebCore::MouseEvent* item = WebKit::core(self);
+    CyberCore::MouseEvent* item = CyberKit::core(self);
     glong result = item->x();
     return result;
 }
 
-glong webkit_dom_mouse_event_get_y(WebKitDOMMouseEvent* self)
+glong webkit_dom_mouse_event_get_y(CyberKitDOMMouseEvent* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_MOUSE_EVENT(self), 0);
-    WebCore::MouseEvent* item = WebKit::core(self);
+    CyberCore::MouseEvent* item = CyberKit::core(self);
     glong result = item->y();
     return result;
 }
 
-WebKitDOMNode* webkit_dom_mouse_event_get_from_element(WebKitDOMMouseEvent* self)
+CyberKitDOMNode* webkit_dom_mouse_event_get_from_element(CyberKitDOMMouseEvent* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_MOUSE_EVENT(self), 0);
-    WebCore::MouseEvent* item = WebKit::core(self);
-    RefPtr<WebCore::Node> gobjectResult = WTF::getPtr(item->fromElement());
-    return WebKit::kit(gobjectResult.get());
+    CyberCore::MouseEvent* item = CyberKit::core(self);
+    RefPtr<CyberCore::Node> gobjectResult = WTF::getPtr(item->fromElement());
+    return CyberKit::kit(gobjectResult.get());
 }
 
-WebKitDOMNode* webkit_dom_mouse_event_get_to_element(WebKitDOMMouseEvent* self)
+CyberKitDOMNode* webkit_dom_mouse_event_get_to_element(CyberKitDOMMouseEvent* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_MOUSE_EVENT(self), 0);
-    WebCore::MouseEvent* item = WebKit::core(self);
-    RefPtr<WebCore::Node> gobjectResult = WTF::getPtr(item->toElement());
-    return WebKit::kit(gobjectResult.get());
+    CyberCore::MouseEvent* item = CyberKit::core(self);
+    RefPtr<CyberCore::Node> gobjectResult = WTF::getPtr(item->toElement());
+    return CyberKit::kit(gobjectResult.get());
 }
 
 G_GNUC_END_IGNORE_DEPRECATIONS;

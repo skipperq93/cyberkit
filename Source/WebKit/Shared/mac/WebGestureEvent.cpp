@@ -29,7 +29,7 @@
 #if ENABLE(MAC_GESTURE_EVENTS)
 
 #include "ArgumentCoders.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 
 namespace WebKit {
 

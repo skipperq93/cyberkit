@@ -40,7 +40,7 @@
 #include <wtf/cocoa/RuntimeApplicationChecksCocoa.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 namespace DataURLDecoder {
 
 static bool shouldRemoveFragmentIdentifier(const String& mediaType)
@@ -220,4 +220,4 @@ std::optional<Result> decode(const URL& url, Mode mode)
 }
 
 } // namespace DataURLDecoder
-} // namespace WebCore
+} // namespace CyberCore

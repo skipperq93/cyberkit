@@ -25,7 +25,7 @@
 #include "FilterEffect.h"
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum ChannelSelectorType {
     CHANNEL_UNKNOWN = 0,
@@ -67,19 +67,19 @@ private:
     float m_scale;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::ChannelSelectorType> {
+template<> struct EnumTraits<CyberCore::ChannelSelectorType> {
     using values = EnumValues<
-        WebCore::ChannelSelectorType,
+        CyberCore::ChannelSelectorType,
 
-        WebCore::CHANNEL_UNKNOWN,
-        WebCore::CHANNEL_R,
-        WebCore::CHANNEL_G,
-        WebCore::CHANNEL_B,
-        WebCore::CHANNEL_A
+        CyberCore::CHANNEL_UNKNOWN,
+        CyberCore::CHANNEL_R,
+        CyberCore::CHANNEL_G,
+        CyberCore::CHANNEL_B,
+        CyberCore::CHANNEL_A
     >;
 };
 

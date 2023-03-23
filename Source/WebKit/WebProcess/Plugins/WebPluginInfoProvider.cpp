@@ -30,7 +30,7 @@
 #include "PDFPlugin.h"
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 WebPluginInfoProvider& WebPluginInfoProvider::singleton()
 {
@@ -42,7 +42,7 @@ void WebPluginInfoProvider::refreshPlugins()
 {
 }
 
-static Vector<WebCore::PluginInfo> pluginInfoVector()
+static Vector<CyberCore::PluginInfo> pluginInfoVector()
 {
 #if ENABLE(PDFKIT_PLUGIN)
     return { PDFPlugin::pluginInfo() };
@@ -51,12 +51,12 @@ static Vector<WebCore::PluginInfo> pluginInfoVector()
 #endif
 }
 
-Vector<WebCore::PluginInfo> WebPluginInfoProvider::pluginInfo(WebCore::Page&, std::optional<Vector<WebCore::SupportedPluginIdentifier>>&)
+Vector<CyberCore::PluginInfo> WebPluginInfoProvider::pluginInfo(CyberCore::Page&, std::optional<Vector<CyberCore::SupportedPluginIdentifier>>&)
 {
     return pluginInfoVector();
 }
 
-Vector<WebCore::PluginInfo> WebPluginInfoProvider::webVisiblePluginInfo(WebCore::Page&, const URL&)
+Vector<CyberCore::PluginInfo> WebPluginInfoProvider::webVisiblePluginInfo(CyberCore::Page&, const URL&)
 {
     return pluginInfoVector();
 }

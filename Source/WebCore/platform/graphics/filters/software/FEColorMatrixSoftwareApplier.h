@@ -24,7 +24,7 @@
 
 #include "FilterEffectApplier.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class FEColorMatrix;
 class PixelBuffer;
@@ -53,4 +53,4 @@ private:
     float m_components[9];
 };
 
-} // namespace WebCore
+} // namespace CyberCore

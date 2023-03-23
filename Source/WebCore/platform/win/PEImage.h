@@ -28,7 +28,7 @@
 
 #include <windows.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class PEImage {
 public:
@@ -49,6 +49,6 @@ private:
     const IMAGE_NT_HEADERS* m_ntHeaders;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PEImage_h

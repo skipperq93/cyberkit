@@ -36,7 +36,7 @@ enum {
 #endif
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 NSAttributedString *attributedStringByStrippingAttachmentCharacters(NSAttributedString *attributedString)
 {

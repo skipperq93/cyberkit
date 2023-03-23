@@ -31,7 +31,7 @@
 #include "CallbackResult.h"
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WebXRFrame;
 
@@ -42,6 +42,6 @@ public:
     virtual CallbackResult<void> handleEvent(void) = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBXR)

@@ -33,18 +33,18 @@
 #include <wtf/Deque.h>
 #include <wtf/WeakHashSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 enum class PermissionQuerySource : uint8_t;
 enum class PermissionState : uint8_t;
 class Page;
 class SecurityOriginData;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebProcess;
 
-class WebPermissionController final : public WebCore::PermissionController, public IPC::MessageReceiver {
+class WebPermissionController final : public CyberCore::PermissionController, public IPC::MessageReceiver {
 public:
     static Ref<WebPermissionController> create(WebProcess&);
     ~WebPermissionController();
@@ -55,13 +55,13 @@ public:
 private:
     explicit WebPermissionController(WebProcess&);
 
-    // WebCore::PermissionController
-    void query(WebCore::ClientOrigin&&, WebCore::PermissionDescriptor, const WeakPtr<WebCore::Page>&, WebCore::PermissionQuerySource, CompletionHandler<void(std::optional<WebCore::PermissionState>)>&&) final;
-    void addObserver(WebCore::PermissionObserver&) final;
-    void removeObserver(WebCore::PermissionObserver&) final;
-    void permissionChanged(WebCore::PermissionName, const WebCore::SecurityOriginData&) final;
+    // CyberCore::PermissionController
+    void query(CyberCore::ClientOrigin&&, CyberCore::PermissionDescriptor, const WeakPtr<CyberCore::Page>&, CyberCore::PermissionQuerySource, CompletionHandler<void(std::optional<CyberCore::PermissionState>)>&&) final;
+    void addObserver(CyberCore::PermissionObserver&) final;
+    void removeObserver(CyberCore::PermissionObserver&) final;
+    void permissionChanged(CyberCore::PermissionName, const CyberCore::SecurityOriginData&) final;
 
-    WeakHashSet<WebCore::PermissionObserver> m_observers;
+    WeakHashSet<CyberCore::PermissionObserver> m_observers;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

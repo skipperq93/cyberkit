@@ -29,7 +29,7 @@
 #include <CyberCore/HTMLParserIdioms.h>
 #include <wtf/text/WTFString.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 namespace TestWebKitAPI {
 
@@ -45,7 +45,7 @@ static bool parseHTMLIntegerFails(StringView input)
     return !parseHTMLInteger(input);
 }
 
-TEST(WebCoreHTMLParserIdioms, parseHTMLInteger)
+TEST(CyberCoreHTMLParserIdioms, parseHTMLInteger)
 {
     EXPECT_EQ(0, testParseHTMLInteger("0"_s));
     EXPECT_EQ(0, testParseHTMLInteger("-0"_s));
@@ -109,7 +109,7 @@ static bool parseHTMLNonNegativeIntegerFails(StringView input)
     return !parseHTMLNonNegativeInteger(input);
 }
 
-TEST(WebCoreHTMLParserIdioms, parseHTMLNonNegativeInteger)
+TEST(CyberCoreHTMLParserIdioms, parseHTMLNonNegativeInteger)
 {
     EXPECT_EQ(123u, testParseHTMLNonNegativeInteger("123"_s));
     EXPECT_EQ(123u, testParseHTMLNonNegativeInteger("+123"_s));

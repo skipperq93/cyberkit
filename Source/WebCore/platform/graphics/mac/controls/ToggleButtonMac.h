@@ -29,7 +29,7 @@
 
 #import "ButtonControlMac.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ToggleButtonPart;
 
@@ -44,6 +44,6 @@ private:
     void draw(GraphicsContext&, const FloatRoundedRect& borderRect, float deviceScaleFactor, const ControlStyle&) override;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(MAC)

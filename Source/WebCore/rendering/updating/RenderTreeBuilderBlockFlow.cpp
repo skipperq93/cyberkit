@@ -30,7 +30,7 @@
 #include "RenderTreeBuilderBlock.h"
 #include "RenderTreeBuilderMultiColumn.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 RenderTreeBuilder::BlockFlow::BlockFlow(RenderTreeBuilder& builder)
     : m_builder(builder)

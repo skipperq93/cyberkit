@@ -25,7 +25,7 @@
 #include "GraphicsContext.h"
 #include "ImageBuffer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 bool SourceGraphicSoftwareApplier::apply(const Filter&, const FilterImageVector& inputs, FilterImage& result) const
 {
@@ -40,4 +40,4 @@ bool SourceGraphicSoftwareApplier::apply(const Filter&, const FilterImageVector&
     return true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -43,7 +43,7 @@
 #include "RenderView.h"
 #include "TextBoxPainter.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 BackgroundImageGeometry::BackgroundImageGeometry(const LayoutRect& destinationRect, const LayoutSize& tileSizeWithoutPixelSnapping, const LayoutSize& tileSize, const LayoutSize& phase, const LayoutSize& spaceSize, bool fixedAttachment)
     : destinationRect(destinationRect)
@@ -572,7 +572,7 @@ BackgroundImageGeometry BackgroundPainter::calculateBackgroundImageGeometry(cons
                 if (!useFixedLayout) {
                     // Shifting location up by topContentInset is needed for layout tests which expect
                     // layout to be shifted down when calling window.internals.setTopContentInset().
-                    topContentInset = frameView.topContentInset(ScrollView::TopContentInsetType::WebCoreOrPlatformContentInset);
+                    topContentInset = frameView.topContentInset(ScrollView::TopContentInsetType::CyberCoreOrPlatformContentInset);
                     viewportRect.setLocation(LayoutPoint(0, -topContentInset));
                 }
             } else if (useFixedLayout || frameView.frameScaleFactor() != 1) {
@@ -582,7 +582,7 @@ BackgroundImageGeometry BackgroundPainter::calculateBackgroundImageGeometry(cons
             } else {
                 // documentScrollPositionRelativeToViewOrigin() includes -topContentInset in its height
                 // so we need to account for that in calculating the phase size
-                topContentInset = frameView.topContentInset(ScrollView::TopContentInsetType::WebCoreOrPlatformContentInset);
+                topContentInset = frameView.topContentInset(ScrollView::TopContentInsetType::CyberCoreOrPlatformContentInset);
                 viewportRect.setLocation(frameView.documentScrollPositionRelativeToViewOrigin());
             }
 

@@ -40,7 +40,7 @@
 #include <wtf/Language.h>
 #include <wtf/MainThread.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 CurlRequest::CurlRequest(const ResourceRequest&request, CurlRequestClient* client, ShouldSuspend shouldSuspend, EnableMultipart enableMultipart, CaptureNetworkLoadMetrics captureExtraMetrics, RefPtr<SynchronousLoaderMessageQueue>&& messageQueue)
     : m_client(client)
@@ -334,7 +334,7 @@ size_t CurlRequest::didReceiveHeader(String&& header)
     // So, in digest authentication, a block of response headers are received twice consecutively from libcurl.
     // For example, when authentication succeeds, the first block is "401 Authorization", and the second block is "200 OK".
     // Also, "100 Continue" and "200 Connection Established" do the same behavior.
-    // In this process, deletes the first block to send a correct headers to WebCore.
+    // In this process, deletes the first block to send a correct headers to CyberCore.
     if (m_didReceiveResponse) {
         m_didReceiveResponse = false;
         m_response = CurlResponse { };

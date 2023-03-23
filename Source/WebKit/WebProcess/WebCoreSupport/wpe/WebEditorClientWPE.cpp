@@ -37,8 +37,8 @@
 #include <CyberCore/WindowsKeyboardCodes.h>
 #include <wtf/NeverDestroyed.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 // The idea for the array/map below comes from Blink's EditingBehavior.cpp.
 
@@ -195,7 +195,7 @@ static void handleKeyDown(Frame& frame, KeyboardEvent& event, const PlatformKeyb
     if (commandName.isEmpty())
         return;
 
-    // We shouldn't insert text through the editor. Let WebCore decide
+    // We shouldn't insert text through the editor. Let CyberCore decide
     // how to handle that (say, Tab, which could also be used to
     // change focus).
     Editor::Command command = frame.editor().command(commandName);
@@ -206,7 +206,7 @@ static void handleKeyDown(Frame& frame, KeyboardEvent& event, const PlatformKeyb
     event.setDefaultHandled();
 }
 
-void WebEditorClient::handleKeyboardEvent(WebCore::KeyboardEvent& event)
+void WebEditorClient::handleKeyboardEvent(CyberCore::KeyboardEvent& event)
 {
     ASSERT(event.target());
     auto* frame = downcast<Node>(event.target())->document().frame();
@@ -235,4 +235,4 @@ void WebEditorClient::handleKeyboardEvent(WebCore::KeyboardEvent& event)
         return handleKeyDown(*frame, event, *platformEvent);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

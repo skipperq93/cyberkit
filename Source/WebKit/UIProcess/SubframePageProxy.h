@@ -53,7 +53,7 @@ private:
     void didReceiveMessage(IPC::Connection&, IPC::Decoder&);
     bool didReceiveSyncMessage(IPC::Connection&, IPC::Decoder&, UniqueRef<IPC::Encoder>&);
 
-    WebCore::PageIdentifier m_webPageID;
+    CyberCore::PageIdentifier m_webPageID;
     Ref<WebProcessProxy> m_process;
     WeakPtr<WebFrameProxy> m_frame;
     WeakPtr<WebPageProxy> m_page;

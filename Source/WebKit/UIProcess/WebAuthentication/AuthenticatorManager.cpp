@@ -45,7 +45,7 @@
 #include <wtf/MonotonicTime.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 namespace {
 
@@ -294,7 +294,7 @@ void AuthenticatorManager::serviceStatusUpdated(WebAuthenticationStatus status)
 void AuthenticatorManager::respondReceived(Respond&& respond)
 {
     ASSERT(RunLoop::isMain());
-    if (!m_requestTimeOutTimer.isActive() && (m_pendingRequestData.mediation != WebCore::CredentialRequestOptions::MediationRequirement::Conditional || !m_pendingCompletionHandler))
+    if (!m_requestTimeOutTimer.isActive() && (m_pendingRequestData.mediation != CyberCore::CredentialRequestOptions::MediationRequirement::Conditional || !m_pendingCompletionHandler))
         return;
     ASSERT(m_pendingCompletionHandler);
 
@@ -369,7 +369,7 @@ void AuthenticatorManager::requestPin(uint64_t retries, CompletionHandler<void(c
     });
 }
 
-void AuthenticatorManager::selectAssertionResponse(Vector<Ref<WebCore::AuthenticatorAssertionResponse>>&& responses, WebAuthenticationSource source, CompletionHandler<void(AuthenticatorAssertionResponse*)>&& completionHandler)
+void AuthenticatorManager::selectAssertionResponse(Vector<Ref<CyberCore::AuthenticatorAssertionResponse>>&& responses, WebAuthenticationSource source, CompletionHandler<void(AuthenticatorAssertionResponse*)>&& completionHandler)
 {
     // This is for the new UI.
     if (m_presenter) {
@@ -440,7 +440,7 @@ void AuthenticatorManager::startDiscovery(const TransportSet& transports)
 
 void AuthenticatorManager::initTimeOutTimer()
 {
-    if (m_pendingRequestData.mediation == WebCore::CredentialRequestOptions::MediationRequirement::Conditional)
+    if (m_pendingRequestData.mediation == CyberCore::CredentialRequestOptions::MediationRequirement::Conditional)
         return;
     std::optional<unsigned> timeOutInMs;
     WTF::switchOn(m_pendingRequestData.options, [&](const PublicKeyCredentialCreationOptions& options) {

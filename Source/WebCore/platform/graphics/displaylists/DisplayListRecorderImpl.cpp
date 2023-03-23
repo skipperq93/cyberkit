@@ -39,7 +39,7 @@
 #include <wtf/MathExtras.h>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace DisplayList {
 
 RecorderImpl::RecorderImpl(DisplayList& displayList, const GraphicsContextState& state, const FloatRect& initialClip, const AffineTransform& initialCTM, const DestinationColorSpace& colorSpace, DrawGlyphsMode drawGlyphsMode)
@@ -434,4 +434,4 @@ bool RecorderImpl::recordResourceUse(DecomposedGlyphs& decomposedGlyphs)
 }
 
 } // namespace DisplayList
-} // namespace WebCore
+} // namespace CyberCore

@@ -29,7 +29,7 @@
 
 #if USE(CG)
 
-namespace WebCore {
+namespace CyberCore {
 
 class SharedBuffer;
 
@@ -83,6 +83,6 @@ private:
     RetainPtr<CGImageSourceRef> m_nativeDecoder;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(CG)

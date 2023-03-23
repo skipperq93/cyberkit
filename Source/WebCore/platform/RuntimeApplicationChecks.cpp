@@ -30,7 +30,7 @@
 #include <wtf/ProcessID.h>
 #include <wtf/RunLoop.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 #if !ASSERT_MSG_DISABLED
 static bool presentingApplicationPIDOverrideWasQueried;
@@ -113,4 +113,4 @@ const char* processTypeDescription(std::optional<AuxiliaryProcessType> type)
     return "Unknown";
 }
 
-} // namespace WebCore
+} // namespace CyberCore

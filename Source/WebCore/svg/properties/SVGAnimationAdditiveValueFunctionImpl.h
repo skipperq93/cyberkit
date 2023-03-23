@@ -34,7 +34,7 @@
 #include "SVGPathByteStream.h"
 #include "SVGPropertyTraits.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGAnimationAngleFunction : public SVGAnimationAdditiveValueFunction<SVGAngleValue> {
 public:
@@ -314,4 +314,4 @@ private:
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

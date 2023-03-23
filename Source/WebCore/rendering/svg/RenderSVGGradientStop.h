@@ -23,7 +23,7 @@
 
 #include "RenderElement.h"
 
-namespace WebCore {
+namespace CyberCore {
     
 class SVGGradientElement;
 class SVGStopElement;
@@ -60,6 +60,6 @@ private:
     SVGGradientElement* gradientElement();
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderSVGGradientStop, isSVGGradientStop())

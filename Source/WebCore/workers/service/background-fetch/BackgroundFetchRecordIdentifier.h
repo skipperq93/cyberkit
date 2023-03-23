@@ -27,10 +27,10 @@
 
 #include <wtf/ObjectIdentifier.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum BackgroundFetchRecordIdentifierType { };
 using BackgroundFetchRecordIdentifier = ObjectIdentifier<BackgroundFetchRecordIdentifierType>;
 
-} // namespace WebCore
+} // namespace CyberCore
 

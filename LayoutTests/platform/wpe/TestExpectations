@@ -480,7 +480,7 @@ imported/w3c/web-platform-tests/xhr/xmlhttprequest-timeout-worker-overridesexpir
 # This list is divided into two parts:
 # a. Tests that we never expect to pass, because they use features we likely
 #    will never implement (Mac-only features, for instance).
-# b. Missing WebCore/WebKit features that we'll want someday.
+# b. Missing CyberCore/WebKit features that we'll want someday.
 
 # 3. UNRESOLVED TESTS
 # These are test groups that we haven't yet unskipped, analyzed and then

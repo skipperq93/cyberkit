@@ -28,16 +28,16 @@
 
 #import "WebSecurityOriginPrivate.h"
 
-namespace WebCore {
+namespace CyberCore {
     class SecurityOrigin;
 }
 
-typedef WebCore::SecurityOrigin WebCoreSecurityOrigin;
+typedef CyberCore::SecurityOrigin CyberCoreSecurityOrigin;
 
 @interface WebSecurityOrigin (WebInternal)
 
-- (id)_initWithWebCoreSecurityOrigin:(WebCoreSecurityOrigin *)origin;
+- (id)_initWithCyberCoreSecurityOrigin:(CyberCoreSecurityOrigin *)origin;
 - (id)_initWithString:(NSString *)originString;
-- (WebCoreSecurityOrigin *)_core;
+- (CyberCoreSecurityOrigin *)_core;
 
 @end

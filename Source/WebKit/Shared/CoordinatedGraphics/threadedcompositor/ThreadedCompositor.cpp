@@ -43,7 +43,7 @@
 #endif
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 Ref<ThreadedCompositor> ThreadedCompositor::create(Client& client, ThreadedDisplayRefreshMonitor::Client& displayRefreshMonitorClient, PlatformDisplayID displayID, const IntSize& viewportSize, float scaleFactor, TextureMapper::PaintFlags paintFlags)
 {
@@ -184,8 +184,8 @@ void ThreadedCompositor::renderLayerTree()
         return;
 
     // Retrieve the scene attributes in a thread-safe manner.
-    WebCore::IntSize viewportSize;
-    WebCore::IntPoint scrollPosition;
+    CyberCore::IntSize viewportSize;
+    CyberCore::IntPoint scrollPosition;
     float scaleFactor;
     bool needsResize;
 
@@ -292,7 +292,7 @@ void ThreadedCompositor::updateSceneWithoutRendering()
     m_scene->updateSceneState();
 }
 
-WebCore::DisplayRefreshMonitor& ThreadedCompositor::displayRefreshMonitor() const
+CyberCore::DisplayRefreshMonitor& ThreadedCompositor::displayRefreshMonitor() const
 {
     return m_displayRefreshMonitor.get();
 }

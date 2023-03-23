@@ -25,8 +25,8 @@
 
 #import <CyberKitLegacy/DOMXPathExpression.h>
 
-namespace WebCore {
+namespace CyberCore {
 class XPathExpression;
 }
 
-DOMXPathExpression *kit(WebCore::XPathExpression*);
+DOMXPathExpression *kit(CyberCore::XPathExpression*);

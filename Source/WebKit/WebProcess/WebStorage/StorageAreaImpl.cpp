@@ -34,8 +34,8 @@
 #include <CyberCore/Settings.h>
 #include <CyberCore/StorageType.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 Ref<StorageAreaImpl> StorageAreaImpl::create(StorageAreaMap& storageAreaMap)
 {
@@ -118,4 +118,4 @@ void StorageAreaImpl::prewarm()
         m_storageAreaMap->connect();
 }
 
-} // namespace WebKit
+} // namespace CyberKit

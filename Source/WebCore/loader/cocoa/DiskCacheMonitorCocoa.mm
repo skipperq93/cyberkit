@@ -34,10 +34,10 @@
 #import <wtf/RefPtr.h>
 
 #if USE(WEB_THREAD)
-#import "WebCoreThreadRun.h"
+#import "CyberCoreThreadRun.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 // The maximum number of seconds we'll try to wait for a resource to be disk cached before we forget the request.
 static const double diskCacheMonitorTimeout = 20;
@@ -123,4 +123,4 @@ void DiskCacheMonitor::resourceBecameFileBacked(SharedBuffer& fileBackedBuffer)
 }
 
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -29,7 +29,7 @@
 #include "ImportedModulesEnumeratorBase.h"
 #include "PEImage.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // Enumerates all non-delay-loaded modules imported by the given PEImage.
 class ImportedModulesEnumerator : public ImportedModulesEnumeratorBase {
@@ -47,6 +47,6 @@ private:
     const IMAGE_IMPORT_DESCRIPTOR* m_descriptor;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ImportedModulesEnumerator_h

@@ -45,18 +45,18 @@ class Decoder;
 class MessageReceiver;
 }
 
-namespace WebCore {
+namespace CyberCore {
 class Node;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPage;
 class PlaybackSessionManager;
 
 class PlaybackSessionInterfaceContext final
     : public RefCounted<PlaybackSessionInterfaceContext>
-    , public WebCore::PlaybackSessionModelClient {
+    , public CyberCore::PlaybackSessionModelClient {
 public:
     static Ref<PlaybackSessionInterfaceContext> create(PlaybackSessionManager& manager, PlaybackSessionContextIdentifier contextId)
     {
@@ -74,14 +74,14 @@ private:
     void currentTimeChanged(double currentTime, double anchorTime) final;
     void bufferedTimeChanged(double) final;
     void playbackStartedTimeChanged(double playbackStartedTime) final;
-    void rateChanged(OptionSet<WebCore::PlaybackSessionModel::PlaybackState>, double playbackRate, double defaultPlaybackRate) final;
-    void seekableRangesChanged(const WebCore::TimeRanges&, double lastModifiedTime, double liveUpdateInterval) final;
+    void rateChanged(OptionSet<CyberCore::PlaybackSessionModel::PlaybackState>, double playbackRate, double defaultPlaybackRate) final;
+    void seekableRangesChanged(const CyberCore::TimeRanges&, double lastModifiedTime, double liveUpdateInterval) final;
     void canPlayFastReverseChanged(bool value) final;
-    void audioMediaSelectionOptionsChanged(const Vector<WebCore::MediaSelectionOption>& options, uint64_t selectedIndex) final;
-    void legibleMediaSelectionOptionsChanged(const Vector<WebCore::MediaSelectionOption>& options, uint64_t selectedIndex) final;
+    void audioMediaSelectionOptionsChanged(const Vector<CyberCore::MediaSelectionOption>& options, uint64_t selectedIndex) final;
+    void legibleMediaSelectionOptionsChanged(const Vector<CyberCore::MediaSelectionOption>& options, uint64_t selectedIndex) final;
     void audioMediaSelectionIndexChanged(uint64_t) final;
     void legibleMediaSelectionIndexChanged(uint64_t) final;
-    void externalPlaybackChanged(bool enabled, WebCore::PlaybackSessionModel::ExternalPlaybackTargetType, const String& localizedDeviceName) final;
+    void externalPlaybackChanged(bool enabled, CyberCore::PlaybackSessionModel::ExternalPlaybackTargetType, const String& localizedDeviceName) final;
     void wirelessVideoPlaybackDisabledChanged(bool) final;
     void mutedChanged(bool) final;
     void volumeChanged(double) final;
@@ -102,12 +102,12 @@ public:
 
     void didReceiveMessage(IPC::Connection&, IPC::Decoder&) final;
 
-    void setUpPlaybackControlsManager(WebCore::HTMLMediaElement&);
+    void setUpPlaybackControlsManager(CyberCore::HTMLMediaElement&);
     void clearPlaybackControlsManager();
     void mediaEngineChanged();
-    PlaybackSessionContextIdentifier contextIdForMediaElement(WebCore::HTMLMediaElement&);
+    PlaybackSessionContextIdentifier contextIdForMediaElement(CyberCore::HTMLMediaElement&);
 
-    WebCore::HTMLMediaElement* currentPlaybackControlsElement() const;
+    CyberCore::HTMLMediaElement* currentPlaybackControlsElement() const;
 
 private:
     friend class PlaybackSessionInterfaceContext;
@@ -115,10 +115,10 @@ private:
 
     explicit PlaybackSessionManager(WebPage&);
 
-    typedef std::tuple<RefPtr<WebCore::PlaybackSessionModelMediaElement>, RefPtr<PlaybackSessionInterfaceContext>> ModelInterfaceTuple;
+    typedef std::tuple<RefPtr<CyberCore::PlaybackSessionModelMediaElement>, RefPtr<PlaybackSessionInterfaceContext>> ModelInterfaceTuple;
     ModelInterfaceTuple createModelAndInterface(PlaybackSessionContextIdentifier);
     ModelInterfaceTuple& ensureModelAndInterface(PlaybackSessionContextIdentifier);
-    WebCore::PlaybackSessionModelMediaElement& ensureModel(PlaybackSessionContextIdentifier);
+    CyberCore::PlaybackSessionModelMediaElement& ensureModel(PlaybackSessionContextIdentifier);
     PlaybackSessionInterfaceContext& ensureInterface(PlaybackSessionContextIdentifier);
     void removeContext(PlaybackSessionContextIdentifier);
     void addClientForContext(PlaybackSessionContextIdentifier);
@@ -129,14 +129,14 @@ private:
     void currentTimeChanged(PlaybackSessionContextIdentifier, double currentTime, double anchorTime);
     void bufferedTimeChanged(PlaybackSessionContextIdentifier, double bufferedTime);
     void playbackStartedTimeChanged(PlaybackSessionContextIdentifier, double playbackStartedTime);
-    void rateChanged(PlaybackSessionContextIdentifier, OptionSet<WebCore::PlaybackSessionModel::PlaybackState>, double playbackRate, double defaultPlaybackRate);
-    void seekableRangesChanged(PlaybackSessionContextIdentifier, const WebCore::TimeRanges&, double lastModifiedTime, double liveUpdateInterval);
+    void rateChanged(PlaybackSessionContextIdentifier, OptionSet<CyberCore::PlaybackSessionModel::PlaybackState>, double playbackRate, double defaultPlaybackRate);
+    void seekableRangesChanged(PlaybackSessionContextIdentifier, const CyberCore::TimeRanges&, double lastModifiedTime, double liveUpdateInterval);
     void canPlayFastReverseChanged(PlaybackSessionContextIdentifier, bool value);
-    void audioMediaSelectionOptionsChanged(PlaybackSessionContextIdentifier, const Vector<WebCore::MediaSelectionOption>& options, uint64_t selectedIndex);
-    void legibleMediaSelectionOptionsChanged(PlaybackSessionContextIdentifier, const Vector<WebCore::MediaSelectionOption>& options, uint64_t selectedIndex);
+    void audioMediaSelectionOptionsChanged(PlaybackSessionContextIdentifier, const Vector<CyberCore::MediaSelectionOption>& options, uint64_t selectedIndex);
+    void legibleMediaSelectionOptionsChanged(PlaybackSessionContextIdentifier, const Vector<CyberCore::MediaSelectionOption>& options, uint64_t selectedIndex);
     void audioMediaSelectionIndexChanged(PlaybackSessionContextIdentifier, uint64_t selectedIndex);
     void legibleMediaSelectionIndexChanged(PlaybackSessionContextIdentifier, uint64_t selectedIndex);
-    void externalPlaybackChanged(PlaybackSessionContextIdentifier, bool enabled, WebCore::PlaybackSessionModel::ExternalPlaybackTargetType, String localizedDeviceName);
+    void externalPlaybackChanged(PlaybackSessionContextIdentifier, bool enabled, CyberCore::PlaybackSessionModel::ExternalPlaybackTargetType, String localizedDeviceName);
     void wirelessVideoPlaybackDisabledChanged(PlaybackSessionContextIdentifier, bool);
     void mutedChanged(PlaybackSessionContextIdentifier, bool);
     void volumeChanged(PlaybackSessionContextIdentifier, double);
@@ -163,15 +163,15 @@ private:
     void setMuted(PlaybackSessionContextIdentifier, bool muted);
     void setVolume(PlaybackSessionContextIdentifier, double volume);
     void setPlayingOnSecondScreen(PlaybackSessionContextIdentifier, bool value);
-    void sendRemoteCommand(PlaybackSessionContextIdentifier, WebCore::PlatformMediaSession::RemoteControlCommandType, const WebCore::PlatformMediaSession::RemoteCommandArgument&);
+    void sendRemoteCommand(PlaybackSessionContextIdentifier, CyberCore::PlatformMediaSession::RemoteControlCommandType, const CyberCore::PlatformMediaSession::RemoteCommandArgument&);
 
     WebPage* m_page;
-    HashMap<WebCore::HTMLMediaElement*, PlaybackSessionContextIdentifier> m_mediaElements;
+    HashMap<CyberCore::HTMLMediaElement*, PlaybackSessionContextIdentifier> m_mediaElements;
     HashMap<PlaybackSessionContextIdentifier, ModelInterfaceTuple> m_contextMap;
     PlaybackSessionContextIdentifier m_controlsManagerContextId;
     HashCountedSet<PlaybackSessionContextIdentifier> m_clientCounts;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(IOS_FAMILY) || (PLATFORM(MAC) && ENABLE(VIDEO_PRESENTATION_MODE))

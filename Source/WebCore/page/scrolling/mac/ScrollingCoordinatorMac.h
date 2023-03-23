@@ -29,7 +29,7 @@
 
 #include "ThreadedScrollingCoordinator.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class WEBCORE_EXPORT ScrollingCoordinatorMac : public ThreadedScrollingCoordinator {
 public:
@@ -45,6 +45,6 @@ private:
     void updateTiledScrollingIndicator();
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ASYNC_SCROLLING) && ENABLE(SCROLLING_THREAD)

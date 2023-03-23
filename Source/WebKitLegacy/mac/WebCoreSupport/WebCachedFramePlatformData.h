@@ -31,7 +31,7 @@
 #import <wtf/ObjCRuntimeExtras.h>
 #import <wtf/RetainPtr.h>
 
-class WebCachedFramePlatformData : public WebCore::CachedFramePlatformData {
+class WebCachedFramePlatformData : public CyberCore::CachedFramePlatformData {
     WTF_MAKE_FAST_ALLOCATED;
 public:
     WebCachedFramePlatformData(id webDocumentView) : m_webDocumentView(webDocumentView) { }

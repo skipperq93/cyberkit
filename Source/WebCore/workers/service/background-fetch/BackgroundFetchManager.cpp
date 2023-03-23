@@ -35,7 +35,7 @@
 #include "SWClientConnection.h"
 #include "ServiceWorkerProvider.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 BackgroundFetchManager::BackgroundFetchManager(ServiceWorkerRegistration& registration)
     : m_identifier(registration.identifier())
@@ -168,6 +168,6 @@ void BackgroundFetchManager::getIds(ScriptExecutionContext& context, DOMPromiseD
     });
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

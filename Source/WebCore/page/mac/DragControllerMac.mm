@@ -51,7 +51,7 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 const int DragController::MaxOriginalImageArea = 1500 * 1500;
 const int DragController::DragIconRightInset = 7;
@@ -158,6 +158,6 @@ void DragController::declareAndWriteDragImage(DataTransfer& dataTransfer, Elemen
     client().declareAndWriteDragImage(dataTransfer.pasteboard().name(), element, url, label, element.document().frame());
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(DRAG_SUPPORT)

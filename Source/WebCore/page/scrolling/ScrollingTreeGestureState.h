@@ -30,7 +30,7 @@
 #include "ScrollTypes.h"
 #include <wtf/Markable.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class PlatformWheelEvent;
 class ScrollingTree;

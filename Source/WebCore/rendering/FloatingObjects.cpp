@@ -31,7 +31,7 @@
 #include <wtf/HexNumber.h>
 #include <wtf/text/StringConcatenateNumbers.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct SameSizeAsFloatingObject {
     WeakPtr<RenderBox> renderer;
@@ -539,4 +539,4 @@ inline bool ComputeFloatOffsetForLineLayoutAdapter<FloatingObject::FloatRight>::
     return false;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

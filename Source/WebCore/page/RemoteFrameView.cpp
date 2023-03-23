@@ -29,7 +29,7 @@
 #include "RemoteFrame.h"
 #include "RemoteFrameClient.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 RemoteFrameView::RemoteFrameView(RemoteFrame& frame)
     : m_frame(frame)
@@ -155,4 +155,4 @@ void RemoteFrameView::updateCompositingLayersAfterScrolling()
 {
 }
 
-} // namespace WebCore
+} // namespace CyberCore

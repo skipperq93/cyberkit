@@ -59,12 +59,12 @@ SOFT_LINK_CLASS_OPTIONAL(PIP, PIPViewController)
 
 @end
 
-using WebCore::VideoFullscreenModel;
-using WebCore::HTMLMediaElementEnums;
-using WebCore::MediaPlayerEnums;
-using WebCore::VideoFullscreenInterfaceMac;
-using WebCore::VideoFullscreenChangeObserver;
-using WebCore::PlaybackSessionModel;
+using CyberCore::VideoFullscreenModel;
+using CyberCore::HTMLMediaElementEnums;
+using CyberCore::MediaPlayerEnums;
+using CyberCore::VideoFullscreenInterfaceMac;
+using CyberCore::VideoFullscreenChangeObserver;
+using CyberCore::PlaybackSessionModel;
 
 @interface WebVideoViewContainer : NSView {
     __unsafe_unretained id <WebVideoViewContainerDelegate> _videoViewContainerDelegate;
@@ -102,7 +102,7 @@ enum class PIPState {
 };
 
 @interface WebVideoFullscreenInterfaceMacObjC : NSObject <PIPViewControllerDelegate, WebVideoViewContainerDelegate> {
-    WebCore::VideoFullscreenInterfaceMac* _videoFullscreenInterfaceMac;
+    CyberCore::VideoFullscreenInterfaceMac* _videoFullscreenInterfaceMac;
     NSSize _videoDimensions;
     RetainPtr<PIPViewController> _pipViewController;
     RetainPtr<NSViewController> _videoViewContainerController;
@@ -114,7 +114,7 @@ enum class PIPState {
     BOOL _exitingToStandardFullscreen;
 }
 
-- (instancetype)initWithVideoFullscreenInterfaceMac:(WebCore::VideoFullscreenInterfaceMac*)videoFullscreenInterfaceMac;
+- (instancetype)initWithVideoFullscreenInterfaceMac:(CyberCore::VideoFullscreenInterfaceMac*)videoFullscreenInterfaceMac;
 - (void)invalidateFullscreenState;
 - (void)invalidate;
 
@@ -139,7 +139,7 @@ enum class PIPState {
 @synthesize videoDimensions = _videoDimensions;
 @synthesize exitingToStandardFullscreen = _exitingToStandardFullscreen;
 
-- (instancetype)initWithVideoFullscreenInterfaceMac:(WebCore::VideoFullscreenInterfaceMac*)videoFullscreenInterfaceMac
+- (instancetype)initWithVideoFullscreenInterfaceMac:(CyberCore::VideoFullscreenInterfaceMac*)videoFullscreenInterfaceMac
 {
     if (!(self = [super init]))
         return nil;
@@ -264,7 +264,7 @@ enum class PIPState {
             model->didEnterPictureInPicture();
 
         if (auto* observer = _videoFullscreenInterfaceMac->videoFullscreenChangeObserver())
-            observer->didEnterFullscreen((WebCore::FloatSize)[_videoViewContainer bounds].size);
+            observer->didEnterFullscreen((CyberCore::FloatSize)[_videoViewContainer bounds].size);
     }
 
     if (auto* model = _videoFullscreenInterfaceMac->videoFullscreenModel())
@@ -372,7 +372,7 @@ enum class PIPState {
 
 @end
 
-namespace WebCore {
+namespace CyberCore {
 
 VideoFullscreenInterfaceMac::VideoFullscreenInterfaceMac(PlaybackSessionInterfaceMac& playbackSessionInterface)
     : m_playbackSessionInterface(playbackSessionInterface)
@@ -586,7 +586,7 @@ void VideoFullscreenInterfaceMac::videoDimensionsChanged(const FloatSize& videoD
 
 bool VideoFullscreenInterfaceMac::isPlayingVideoInEnhancedFullscreen() const
 {
-    return hasMode(WebCore::HTMLMediaElementEnums::VideoFullscreenModePictureInPicture) && [m_webVideoFullscreenInterfaceObjC isPlaying];
+    return hasMode(CyberCore::HTMLMediaElementEnums::VideoFullscreenModePictureInPicture) && [m_webVideoFullscreenInterfaceObjC isPlaying];
 }
 
 bool supportsPictureInPicture()

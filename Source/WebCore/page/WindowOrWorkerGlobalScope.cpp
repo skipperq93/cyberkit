@@ -33,7 +33,7 @@
 #include "SerializedScriptValue.h"
 #include "StructuredSerializeOptions.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 void WindowOrWorkerGlobalScope::reportError(JSDOMGlobalObject& globalObject, JSC::JSValue error)
 {
@@ -64,4 +64,4 @@ ExceptionOr<JSC::JSValue> WindowOrWorkerGlobalScope::structuredClone(JSDOMGlobal
     return messageData.returnValue()->deserialize(lexicalGlobalObject, &relevantGlobalObject, WTFMove(entangledPorts));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

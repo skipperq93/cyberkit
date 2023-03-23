@@ -27,7 +27,7 @@
 
 #include "ContextMenuContextData.h"
 #include "UserData.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebPage.h"
 #include "WebPageProxyMessages.h"
 #include "WebProcess.h"
@@ -37,8 +37,8 @@
 #include <CyberCore/FrameView.h>
 #include <CyberCore/Page.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 WebContextMenu::WebContextMenu(WebPage& page)
     : m_page(page)
@@ -102,6 +102,6 @@ Vector<WebContextMenuItemData> WebContextMenu::items() const
     return menuItems;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(CONTEXT_MENUS)

@@ -31,7 +31,7 @@
 #include <wtf/MainThread.h>
 #include <wtf/RunLoop.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 namespace TestWebKitAPI {
 

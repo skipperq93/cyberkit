@@ -29,7 +29,7 @@
 #include "HTTPParsers.h"
 #include "ResourceRequest.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 SameSiteInfo SameSiteInfo::create(const ResourceRequest& request, IsForDOMCookieAccess isForDOMAccess)
 {
@@ -40,4 +40,4 @@ SameSiteInfo SameSiteInfo::create(const ResourceRequest& request, IsForDOMCookie
     return { isSameSite, request.isTopSite(), isSafeMethod(request.httpMethod()) };
 }
 
-} // namespace WebCore
+} // namespace CyberCore

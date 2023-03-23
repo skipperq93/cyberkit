@@ -34,7 +34,7 @@
 #include <wtf/Ref.h>
 #include <wtf/ThreadSafeRefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ThreadableLoaderClientWrapper : public ThreadSafeRefCounted<ThreadableLoaderClientWrapper> {
 public:
@@ -114,4 +114,4 @@ inline ThreadableLoaderClientWrapper::ThreadableLoaderClientWrapper(ThreadableLo
 {
 }
 
-} // namespace WebCore
+} // namespace CyberCore

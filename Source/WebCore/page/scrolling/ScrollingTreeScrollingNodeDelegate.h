@@ -29,7 +29,7 @@
 
 #include "ScrollingTreeScrollingNode.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScrollingTreeScrollingNodeDelegate {
     WTF_MAKE_FAST_ALLOCATED;
@@ -81,6 +81,6 @@ private:
     ScrollingTreeScrollingNode& m_scrollingNode;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ASYNC_SCROLLING)

@@ -25,7 +25,7 @@
 #include "XUniquePtr.h"
 #include "XUniqueResource.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class BackingStoreBackendCairoX11 final : public BackingStoreBackendCairo {
 public:
@@ -39,7 +39,7 @@ private:
     XUniqueGC m_gc;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(CAIRO) && PLATFORM(X11)
 

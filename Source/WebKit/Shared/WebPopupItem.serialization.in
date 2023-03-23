@@ -25,7 +25,7 @@
 struct WebKit::WebPopupItem {
     WebKit::WebPopupItem::Type m_type;
     String m_text;
-    WebCore::TextDirection m_textDirection;
+    CyberCore::TextDirection m_textDirection;
     bool m_hasTextDirectionOverride;
     String m_toolTip;
     String m_accessibilityText;

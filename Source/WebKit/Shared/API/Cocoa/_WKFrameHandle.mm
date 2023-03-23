@@ -27,13 +27,13 @@
 #import "_WKFrameHandleInternal.h"
 
 #import <CyberCore/FrameIdentifier.h>
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 
 @implementation _WKFrameHandle
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainRunLoop(_WKFrameHandle.class, self))
+    if (CyberCoreObjCScheduleDeallocateOnMainRunLoop(_WKFrameHandle.class, self))
         return;
 
     _frameHandle->~FrameHandle();
@@ -93,9 +93,9 @@
         return nil;
     }
 
-    API::Object::constructInWrapper<API::FrameHandle>(self, WebCore::FrameIdentifier {
-        makeObjectIdentifier<WebCore::FrameIdentifierType>(frameID.unsignedLongLongValue),
-        makeObjectIdentifier<WebCore::ProcessIdentifierType>(processID.unsignedLongLongValue)
+    API::Object::constructInWrapper<API::FrameHandle>(self, CyberCore::FrameIdentifier {
+        makeObjectIdentifier<CyberCore::FrameIdentifierType>(frameID.unsignedLongLongValue),
+        makeObjectIdentifier<CyberCore::ProcessIdentifierType>(processID.unsignedLongLongValue)
     }, false);
 
     return self;

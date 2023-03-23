@@ -35,7 +35,7 @@
 #include <wtf/Forward.h>
 #include <wtf/Noncopyable.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderBox;
 
@@ -94,5 +94,5 @@ private:
     const LayoutUnit m_gapBetweenLines;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 

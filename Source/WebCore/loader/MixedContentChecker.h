@@ -34,7 +34,7 @@
 #include <wtf/Forward.h>
 #include <wtf/Noncopyable.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Frame;
 class FrameLoaderClient;
@@ -61,4 +61,4 @@ public:
     static std::optional<String> checkForMixedContentInFrameTree(const Frame&, const URL&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

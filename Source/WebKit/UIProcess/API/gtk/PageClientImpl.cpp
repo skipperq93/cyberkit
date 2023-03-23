@@ -62,7 +62,7 @@
 #endif
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 PageClientImpl::PageClientImpl(GtkWidget* viewWidget)
     : m_viewWidget(viewWidget)
@@ -75,7 +75,7 @@ std::unique_ptr<DrawingAreaProxy> PageClientImpl::createDrawingAreaProxy(WebProc
     return makeUnique<DrawingAreaProxyCoordinatedGraphics>(*webkitWebViewBaseGetPage(WEBKIT_WEB_VIEW_BASE(m_viewWidget)));
 }
 
-void PageClientImpl::setViewNeedsDisplay(const WebCore::Region& region)
+void PageClientImpl::setViewNeedsDisplay(const CyberCore::Region& region)
 {
 #if USE(GTK4)
     gtk_widget_queue_draw(m_viewWidget);
@@ -94,22 +94,22 @@ void PageClientImpl::setViewNeedsDisplay(const WebCore::Region& region)
 #endif
 }
 
-void PageClientImpl::requestScroll(const WebCore::FloatPoint&, const WebCore::IntPoint&, WebCore::ScrollIsAnimated)
+void PageClientImpl::requestScroll(const CyberCore::FloatPoint&, const CyberCore::IntPoint&, CyberCore::ScrollIsAnimated)
 {
     notImplemented();
 }
 
-void PageClientImpl::requestScrollToRect(const WebCore::FloatRect&, const WebCore::FloatPoint&)
+void PageClientImpl::requestScrollToRect(const CyberCore::FloatRect&, const CyberCore::FloatPoint&)
 {
     notImplemented();
 }
 
-WebCore::FloatPoint PageClientImpl::viewScrollPosition()
+CyberCore::FloatPoint PageClientImpl::viewScrollPosition()
 {
     return { };
 }
 
-WebCore::IntSize PageClientImpl::viewSize()
+CyberCore::IntSize PageClientImpl::viewSize()
 {
     return webkitWebViewBaseGetViewSize(WEBKIT_WEB_VIEW_BASE(m_viewWidget));
 }
@@ -154,7 +154,7 @@ void PageClientImpl::toolTipChanged(const String&, const String& newToolTip)
     webkitWebViewBaseSetTooltipText(WEBKIT_WEB_VIEW_BASE(m_viewWidget), newToolTip.utf8().data());
 }
 
-void PageClientImpl::setCursor(const WebCore::Cursor& cursor)
+void PageClientImpl::setCursor(const CyberCore::Cursor& cursor)
 {
     if (!gtk_widget_get_realized(m_viewWidget))
         return;
@@ -182,13 +182,13 @@ void PageClientImpl::setCursorHiddenUntilMouseMoves(bool hiddenUntilMouseMoves)
     if (!hiddenUntilMouseMoves)
         return;
 
-    setCursor(WebCore::noneCursor());
+    setCursor(CyberCore::noneCursor());
 
     // There's no need to set a timer to restore the cursor by hand. It will
     // be automatically restored when the mouse moves.
 }
 
-void PageClientImpl::didChangeViewportProperties(const WebCore::ViewportAttributes&)
+void PageClientImpl::didChangeViewportProperties(const CyberCore::ViewportAttributes&)
 {
     notImplemented();
 }
@@ -238,12 +238,12 @@ IntRect PageClientImpl::rootViewToScreen(const IntRect& rect)
     return IntRect(convertWidgetPointToScreenPoint(m_viewWidget, rect.location()), rect.size());
 }
 
-WebCore::IntPoint PageClientImpl::accessibilityScreenToRootView(const WebCore::IntPoint& point)
+CyberCore::IntPoint PageClientImpl::accessibilityScreenToRootView(const CyberCore::IntPoint& point)
 {
     return screenToRootView(point);
 }
 
-WebCore::IntRect PageClientImpl::rootViewToAccessibilityScreen(const WebCore::IntRect& rect)    
+CyberCore::IntRect PageClientImpl::rootViewToAccessibilityScreen(const CyberCore::IntRect& rect)    
 {
     return rootViewToScreen(rect);
 }
@@ -286,7 +286,7 @@ Ref<WebContextMenuProxy> PageClientImpl::createContextMenuProxy(WebPageProxy& pa
     return WebContextMenuProxyGtk::create(m_viewWidget, page, WTFMove(context), userData);
 }
 
-RefPtr<WebColorPicker> PageClientImpl::createColorPicker(WebPageProxy* page, const WebCore::Color& color, const WebCore::IntRect& rect, Vector<WebCore::Color>&&)
+RefPtr<WebColorPicker> PageClientImpl::createColorPicker(WebPageProxy* page, const CyberCore::Color& color, const CyberCore::IntRect& rect, Vector<CyberCore::Color>&&)
 {
     if (WEBKIT_IS_WEB_VIEW(m_viewWidget))
         return WebKitColorChooser::create(*page, color, rect);
@@ -346,7 +346,7 @@ void PageClientImpl::selectionDidChange()
         webkitWebViewSelectionDidChange(WEBKIT_WEB_VIEW(m_viewWidget));
 }
 
-RefPtr<ViewSnapshot> PageClientImpl::takeViewSnapshot(std::optional<WebCore::IntRect>&& clipRect)
+RefPtr<ViewSnapshot> PageClientImpl::takeViewSnapshot(std::optional<CyberCore::IntRect>&& clipRect)
 {
     return webkitWebViewBaseTakeViewSnapshot(WEBKIT_WEB_VIEW_BASE(m_viewWidget), WTFMove(clipRect));
 }
@@ -437,7 +437,7 @@ void PageClientImpl::doneWithTouchEvent(const NativeWebTouchEvent& event, bool w
 }
 #endif // ENABLE(TOUCH_EVENTS)
 
-void PageClientImpl::wheelEventWasNotHandledByWebCore(const NativeWebWheelEvent& event)
+void PageClientImpl::wheelEventWasNotHandledByCyberCore(const NativeWebWheelEvent& event)
 {
     if (!event.nativeEvent())
         return;
@@ -454,7 +454,7 @@ void PageClientImpl::wheelEventWasNotHandledByWebCore(const NativeWebWheelEvent&
         bool isEnd = event.phase() == WebWheelEvent::Phase::PhaseEnded;
 
         PlatformGtkScrollData scrollData = { .delta = delta, .eventTime = eventTime, .source = source, .isEnd = isEnd };
-        controller->wheelEventWasNotHandledByWebCore(&scrollData);
+        controller->wheelEventWasNotHandledByCyberCore(&scrollData);
         return;
     }
 
@@ -546,9 +546,9 @@ void PageClientImpl::derefView()
     g_object_unref(m_viewWidget);
 }
 
-void PageClientImpl::requestDOMPasteAccess(WebCore::DOMPasteAccessCategory, const IntRect&, const String&, CompletionHandler<void(WebCore::DOMPasteAccessResponse)>&& completionHandler)
+void PageClientImpl::requestDOMPasteAccess(CyberCore::DOMPasteAccessCategory, const IntRect&, const String&, CompletionHandler<void(CyberCore::DOMPasteAccessResponse)>&& completionHandler)
 {
-    completionHandler(WebCore::DOMPasteAccessResponse::DeniedForGesture);
+    completionHandler(CyberCore::DOMPasteAccessResponse::DeniedForGesture);
 }
 
 UserInterfaceLayoutDirection PageClientImpl::userInterfaceLayoutDirection()
@@ -597,26 +597,26 @@ void PageClientImpl::makeViewBlank(bool makeBlank)
     webkitWebViewBaseMakeBlank(WEBKIT_WEB_VIEW_BASE(m_viewWidget), makeBlank);
 }
 
-WebCore::Color PageClientImpl::accentColor()
+CyberCore::Color PageClientImpl::accentColor()
 {
     auto* context = gtk_widget_get_style_context(m_viewWidget);
     GdkRGBA accentColor;
 
     // libadwaita
     if (gtk_style_context_lookup_color(context, "accent_bg_color", &accentColor))
-        return WebCore::Color(accentColor);
+        return CyberCore::Color(accentColor);
 
     // elementary OS 6.x
     if (gtk_style_context_lookup_color(context, "accent_color", &accentColor))
-        return WebCore::Color(accentColor);
+        return CyberCore::Color(accentColor);
 
     // elementary OS 5.x
     if (gtk_style_context_lookup_color(context, "accentColor", &accentColor))
-        return WebCore::Color(accentColor);
+        return CyberCore::Color(accentColor);
 
     // Legacy
     if (gtk_style_context_lookup_color(context, "theme_selected_bg_color", &accentColor))
-        return WebCore::Color(accentColor);
+        return CyberCore::Color(accentColor);
 
     return SRGBA<uint8_t> { 52, 132, 228 };
 }

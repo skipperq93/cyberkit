@@ -32,7 +32,7 @@
 
 static const float gOneOverThree = 1 / 3.f;
 
-namespace WebCore {
+namespace CyberCore {
 
 bool SVGPathParser::parse(SVGPathSource& source, SVGPathConsumer& consumer, PathParsingMode mode, bool checkForInitialMoveTo)
 {

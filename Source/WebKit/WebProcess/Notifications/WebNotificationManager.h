@@ -38,13 +38,13 @@
 #include <wtf/Vector.h>
 #include <wtf/text/StringHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 class SecurityOrigin;
 
 struct NotificationData;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPage;
 class WebProcess;
@@ -58,16 +58,16 @@ public:
 
     static const char* supplementName();
     
-    bool show(WebCore::NotificationData&&, RefPtr<WebCore::NotificationResources>&&, WebPage*, CompletionHandler<void()>&&);
-    void cancel(WebCore::NotificationData&&, WebPage*);
+    bool show(CyberCore::NotificationData&&, RefPtr<CyberCore::NotificationResources>&&, WebPage*, CompletionHandler<void()>&&);
+    void cancel(CyberCore::NotificationData&&, WebPage*);
 
-    // This callback comes from WebCore, not messaged from the UI process.
-    void didDestroyNotification(WebCore::NotificationData&&, WebPage*);
+    // This callback comes from CyberCore, not messaged from the UI process.
+    void didDestroyNotification(CyberCore::NotificationData&&, WebPage*);
 
     void didUpdateNotificationDecision(const String& originString, bool allowed);
 
     // Looks in local cache for permission. If not found, returns DefaultDenied.
-    WebCore::NotificationClient::Permission policyForOrigin(const String& originString) const;
+    CyberCore::NotificationClient::Permission policyForOrigin(const String& originString) const;
 
     void removeAllPermissionsForTesting();
 
@@ -90,9 +90,9 @@ private:
     WebProcess& m_process;
 
 #if ENABLE(NOTIFICATIONS)
-    HashMap<UUID, WebCore::ScriptExecutionContextIdentifier> m_nonPersistentNotificationsContexts;
+    HashMap<UUID, CyberCore::ScriptExecutionContextIdentifier> m_nonPersistentNotificationsContexts;
     HashMap<String, bool> m_permissionsMap;
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit

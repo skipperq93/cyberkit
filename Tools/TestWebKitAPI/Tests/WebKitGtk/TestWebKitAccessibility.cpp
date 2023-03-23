@@ -83,7 +83,7 @@ public:
 
     GRefPtr<AtspiAccessible> findRootObject(AtspiAccessible* application)
     {
-        // Find the document web, its parent is the scroll view (WebCore root object) and its parent is
+        // Find the document web, its parent is the scroll view (CyberCore root object) and its parent is
         // the GtkPlug (WebProcess root element).
         auto documentWeb = findDocumentWeb(application);
         if (!documentWeb)

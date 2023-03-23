@@ -32,7 +32,7 @@
 #include "AudioUtilities.h"
 #include <algorithm>
 
-namespace WebCore {
+namespace CyberCore {
 
 AudioResamplerKernel::AudioResamplerKernel(AudioResampler* resampler)
     : m_resampler(resampler)
@@ -133,6 +133,6 @@ double AudioResamplerKernel::rate() const
     return m_resampler->rate();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

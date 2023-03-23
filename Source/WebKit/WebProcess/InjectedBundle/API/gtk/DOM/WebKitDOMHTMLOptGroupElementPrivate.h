@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -17,16 +17,16 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitDOMHTMLOptGroupElementPrivate_h
-#define WebKitDOMHTMLOptGroupElementPrivate_h
+#ifndef CyberKitDOMHTMLOptGroupElementPrivate_h
+#define CyberKitDOMHTMLOptGroupElementPrivate_h
 
 #include <CyberCore/HTMLOptGroupElement.h>
-#include <webkitdom/WebKitDOMHTMLOptGroupElement.h>
+#include <webkitdom/CyberKitDOMHTMLOptGroupElement.h>
 
-namespace WebKit {
-WebKitDOMHTMLOptGroupElement* wrapHTMLOptGroupElement(WebCore::HTMLOptGroupElement*);
-WebKitDOMHTMLOptGroupElement* kit(WebCore::HTMLOptGroupElement*);
-WebCore::HTMLOptGroupElement* core(WebKitDOMHTMLOptGroupElement*);
-} // namespace WebKit
+namespace CyberKit {
+CyberKitDOMHTMLOptGroupElement* wrapHTMLOptGroupElement(CyberCore::HTMLOptGroupElement*);
+CyberKitDOMHTMLOptGroupElement* kit(CyberCore::HTMLOptGroupElement*);
+CyberCore::HTMLOptGroupElement* core(CyberKitDOMHTMLOptGroupElement*);
+} // namespace CyberKit
 
-#endif /* WebKitDOMHTMLOptGroupElementPrivate_h */
+#endif /* CyberKitDOMHTMLOptGroupElementPrivate_h */

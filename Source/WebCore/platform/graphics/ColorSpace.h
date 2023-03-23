@@ -30,7 +30,7 @@
 #include <wtf/EnumTraits.h>
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // Tools/lldb/lldb_webkit.py has a copy of this list, which should be kept in sync.
 enum class ColorSpace : uint8_t {
@@ -134,33 +134,33 @@ template<typename T, typename Functor> constexpr decltype(auto) callWithColorTyp
 }
 
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::ColorSpace> {
+template<> struct EnumTraits<CyberCore::ColorSpace> {
     using values = EnumValues<
-        WebCore::ColorSpace,
-        WebCore::ColorSpace::A98RGB,
-        WebCore::ColorSpace::DisplayP3,
-        WebCore::ColorSpace::ExtendedA98RGB,
-        WebCore::ColorSpace::ExtendedDisplayP3,
-        WebCore::ColorSpace::ExtendedLinearSRGB,
-        WebCore::ColorSpace::ExtendedProPhotoRGB,
-        WebCore::ColorSpace::ExtendedRec2020,
-        WebCore::ColorSpace::ExtendedSRGB,
-        WebCore::ColorSpace::HSL,
-        WebCore::ColorSpace::HWB,
-        WebCore::ColorSpace::LCH,
-        WebCore::ColorSpace::Lab,
-        WebCore::ColorSpace::LinearSRGB,
-        WebCore::ColorSpace::OKLCH,
-        WebCore::ColorSpace::OKLab,
-        WebCore::ColorSpace::ProPhotoRGB,
-        WebCore::ColorSpace::Rec2020,
-        WebCore::ColorSpace::SRGB,
-        WebCore::ColorSpace::XYZ_D50,
-        WebCore::ColorSpace::XYZ_D65
+        CyberCore::ColorSpace,
+        CyberCore::ColorSpace::A98RGB,
+        CyberCore::ColorSpace::DisplayP3,
+        CyberCore::ColorSpace::ExtendedA98RGB,
+        CyberCore::ColorSpace::ExtendedDisplayP3,
+        CyberCore::ColorSpace::ExtendedLinearSRGB,
+        CyberCore::ColorSpace::ExtendedProPhotoRGB,
+        CyberCore::ColorSpace::ExtendedRec2020,
+        CyberCore::ColorSpace::ExtendedSRGB,
+        CyberCore::ColorSpace::HSL,
+        CyberCore::ColorSpace::HWB,
+        CyberCore::ColorSpace::LCH,
+        CyberCore::ColorSpace::Lab,
+        CyberCore::ColorSpace::LinearSRGB,
+        CyberCore::ColorSpace::OKLCH,
+        CyberCore::ColorSpace::OKLab,
+        CyberCore::ColorSpace::ProPhotoRGB,
+        CyberCore::ColorSpace::Rec2020,
+        CyberCore::ColorSpace::SRGB,
+        CyberCore::ColorSpace::XYZ_D50,
+        CyberCore::ColorSpace::XYZ_D65
     >;
 };
 

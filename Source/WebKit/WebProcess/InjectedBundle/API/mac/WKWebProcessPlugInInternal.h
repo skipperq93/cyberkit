@@ -28,7 +28,7 @@
 #import "InjectedBundle.h"
 #import "WKObject.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 template<> struct WrapperTraits<InjectedBundle> {
     using WrapperClass = WKWebProcessPlugInController;

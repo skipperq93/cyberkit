@@ -248,7 +248,7 @@ static BOOL _PDFSelectionsAreEqual(PDFSelection *selectionA, PDFSelection *selec
 // jumpToSelection is the old name for what AppKit now calls centerSelectionInVisibleArea. Safari
 // was using the old jumpToSelection selector in its menu. Newer versions of Safari will us the
 // selector centerSelectionInVisibleArea. We'll leave this old selector in place for two reasons:
-// (1) compatibility between older Safari and newer WebKit; (2) other WebKit-based applications
+// (1) compatibility between older Safari and newer CyberKit; (2) other CyberKit-based applications
 // might be using the jumpToSelection: selector, and we don't want to break them.
 - (void)jumpToSelection:(id)sender
 {
@@ -378,7 +378,7 @@ static BOOL _PDFSelectionsAreEqual(PDFSelection *selectionA, PDFSelection *selec
 
 - (NSMenu *)menuForEvent:(NSEvent *)theEvent
 {
-    // Start with the menu items supplied by PDFKit, with WebKit tags applied
+    // Start with the menu items supplied by PDFKit, with CyberKit tags applied
     NSMutableArray *items = [self _menuItemsFromPDFKitForEvent:theEvent];
     
     // Add in an "Open with <default PDF viewer>" item
@@ -400,7 +400,7 @@ static BOOL _PDFSelectionsAreEqual(PDFSelection *selectionA, PDFSelection *selec
     
     [items insertObject:[NSMenuItem separatorItem] atIndex:1];
     
-    // pass the items off to the WebKit context menu mechanism
+    // pass the items off to the CyberKit context menu mechanism
     WebView *webView = [[dataSource webFrame] webView];
     ASSERT(webView);
     return [webView _menuForElement:[self elementAtPoint:[self convertPoint:[theEvent locationInWindow] fromView:nil]] defaultItems:items];
@@ -746,7 +746,7 @@ static BOOL _PDFSelectionsAreEqual(PDFSelection *selectionA, PDFSelection *selec
 
 // MARK: WebDocumentViewState PROTOCOL IMPLEMENTATION
 
-// Even though to WebKit we are the "docView", in reality a PDFView contains its own scrollview and docView.
+// Even though to CyberKit we are the "docView", in reality a PDFView contains its own scrollview and docView.
 // And it even turns out there is another PDFKit view between the docView and its enclosing ScrollView, so
 // we have to be sure to do our calculations based on that view, immediately inside the ClipView.  We try
 // to make as few assumptions about the PDFKit view hierarchy as possible.
@@ -902,28 +902,28 @@ static BOOL _PDFSelectionsAreEqual(PDFSelection *selectionA, PDFSelection *selec
 
 - (NSArray *)pasteboardTypesForSelection
 {
-    return @[WebCore::legacyRTFDPasteboardType(), WebCore::legacyRTFPasteboardType(), WebCore::legacyStringPasteboardType()];
+    return @[CyberCore::legacyRTFDPasteboardType(), CyberCore::legacyRTFPasteboardType(), CyberCore::legacyStringPasteboardType()];
 }
 
 - (void)writeSelectionWithPasteboardTypes:(NSArray *)types toPasteboard:(NSPasteboard *)pasteboard
 {
     NSAttributedString *attributedString = [self selectedAttributedString];
     
-    if ([types containsObject:WebCore::legacyRTFDPasteboardType()]) {
+    if ([types containsObject:CyberCore::legacyRTFDPasteboardType()]) {
         NSData *RTFDData = [attributedString RTFDFromRange:NSMakeRange(0, [attributedString length]) documentAttributes:@{ }];
-        [pasteboard setData:RTFDData forType:WebCore::legacyRTFDPasteboardType()];
+        [pasteboard setData:RTFDData forType:CyberCore::legacyRTFDPasteboardType()];
     }        
     
-    if ([types containsObject:WebCore::legacyRTFPasteboardType()]) {
+    if ([types containsObject:CyberCore::legacyRTFPasteboardType()]) {
         if ([attributedString containsAttachments])
-            attributedString = WebCore::attributedStringByStrippingAttachmentCharacters(attributedString);
+            attributedString = CyberCore::attributedStringByStrippingAttachmentCharacters(attributedString);
 
         NSData *RTFData = [attributedString RTFFromRange:NSMakeRange(0, [attributedString length]) documentAttributes:@{ }];
-        [pasteboard setData:RTFData forType:WebCore::legacyRTFPasteboardType()];
+        [pasteboard setData:RTFData forType:CyberCore::legacyRTFPasteboardType()];
     }
     
-    if ([types containsObject:WebCore::legacyStringPasteboardType()])
-        [pasteboard setString:[self selectedString] forType:WebCore::legacyStringPasteboardType()];
+    if ([types containsObject:CyberCore::legacyStringPasteboardType()])
+        [pasteboard setString:[self selectedString] forType:CyberCore::legacyStringPasteboardType()];
 }
 
 // MARK: PDFView DELEGATE METHODS
@@ -937,7 +937,7 @@ static BOOL _PDFSelectionsAreEqual(PDFSelection *selectionA, PDFSelection *selec
     NSEvent *nsEvent = [window currentEvent];
     const int noButton = -2;
     int button = noButton;
-    RefPtr<WebCore::Event> event;
+    RefPtr<CyberCore::Event> event;
     switch ([nsEvent type]) {
     case NSEventTypeLeftMouseUp:
         button = 0;
@@ -949,9 +949,9 @@ static BOOL _PDFSelectionsAreEqual(PDFSelection *selectionA, PDFSelection *selec
         button = [nsEvent buttonNumber];
         break;
     case NSEventTypeKeyDown: {
-        auto pe = WebCore::PlatformEventFactory::createPlatformKeyboardEvent(nsEvent);
-        pe.disambiguateKeyDownEvent(WebCore::PlatformEvent::Type::RawKeyDown);
-        event = WebCore::KeyboardEvent::create(pe, nullptr);
+        auto pe = CyberCore::PlatformEventFactory::createPlatformKeyboardEvent(nsEvent);
+        pe.disambiguateKeyDownEvent(CyberCore::PlatformEvent::Type::RawKeyDown);
+        event = CyberCore::KeyboardEvent::create(pe, nullptr);
         break;
     }
     default:
@@ -959,15 +959,15 @@ static BOOL _PDFSelectionsAreEqual(PDFSelection *selectionA, PDFSelection *selec
     }
     if (button != noButton) {
         // FIXME: Use createPlatformMouseEvent instead.
-        event = WebCore::MouseEvent::create(WebCore::eventNames().clickEvent, WebCore::Event::CanBubble::Yes, WebCore::Event::IsCancelable::Yes, WebCore::Event::IsComposed::Yes,
-            MonotonicTime::now(), nullptr, [nsEvent clickCount], { }, { }, 0, 0, WebCore::modifiersForEvent(nsEvent),
-            button, [NSEvent pressedMouseButtons], nullptr, WebCore::ForceAtClick, 0, WebCore::MouseEvent::IsSimulated::Yes);
+        event = CyberCore::MouseEvent::create(CyberCore::eventNames().clickEvent, CyberCore::Event::CanBubble::Yes, CyberCore::Event::IsCancelable::Yes, CyberCore::Event::IsComposed::Yes,
+            MonotonicTime::now(), nullptr, [nsEvent clickCount], { }, { }, 0, 0, CyberCore::modifiersForEvent(nsEvent),
+            button, [NSEvent pressedMouseButtons], nullptr, CyberCore::ForceAtClick, 0, CyberCore::MouseEvent::IsSimulated::Yes);
     }
 
     // Call to the frame loader because this is where our security checks are made.
     auto* frame = core([dataSource webFrame]);
-    WebCore::FrameLoadRequest frameLoadRequest { *frame->document(), frame->document()->securityOrigin(), { URL }, { }, WebCore::InitiatedByMainFrame::Unknown };
-    frameLoadRequest.setReferrerPolicy(WebCore::ReferrerPolicy::NoReferrer);
+    CyberCore::FrameLoadRequest frameLoadRequest { *frame->document(), frame->document()->securityOrigin(), { URL }, { }, CyberCore::InitiatedByMainFrame::Unknown };
+    frameLoadRequest.setReferrerPolicy(CyberCore::ReferrerPolicy::NoReferrer);
     frame->loader().loadFrameRequest(WTFMove(frameLoadRequest), event.get(), nullptr);
 }
 
@@ -1064,7 +1064,7 @@ IGNORE_WARNINGS_END
 
 - (void)_lookUpInDictionaryFromMenu:(id)sender
 {
-    // This method is used by WebKit's context menu item. Here we map to the method that
+    // This method is used by CyberKit's context menu item. Here we map to the method that
     // PDFView uses. Since the PDFView method isn't API, and isn't available on all versions
     // of PDFKit, we use performSelector after a respondsToSelector check, rather than calling it directly.
 IGNORE_WARNINGS_BEGIN("undeclared-selector")
@@ -1118,8 +1118,8 @@ IGNORE_WARNINGS_BEGIN("undeclared-selector")
     };
 IGNORE_WARNINGS_END
 
-    // Leave these menu items out, since WebKit inserts equivalent ones. Note that we leave out PDFKit's "Look Up in Dictionary"
-    // item here because WebKit already includes an item with the same title and purpose. We map WebKit's to PDFKit's 
+    // Leave these menu items out, since CyberKit inserts equivalent ones. Note that we leave out PDFKit's "Look Up in Dictionary"
+    // item here because CyberKit already includes an item with the same title and purpose. We map CyberKit's to PDFKit's 
     // "Look Up in Dictionary" via the implementation of -[WebPDFView _lookUpInDictionaryFromMenu:].
     auto unwantedActions = adoptNS([[NSSet alloc] initWithObjects:
 IGNORE_WARNINGS_BEGIN("undeclared-selector")
@@ -1155,10 +1155,10 @@ IGNORE_WARNINGS_END
         if (tagNumber != nil)
             tag = [tagNumber intValue];
         else {
-            // This should happen only if PDFKit updates behind WebKit's back. It's non-ideal because clients that only include tags
-            // that they recognize (like Safari) won't get these PDFKit additions until WebKit is updated to match.
+            // This should happen only if PDFKit updates behind CyberKit's back. It's non-ideal because clients that only include tags
+            // that they recognize (like Safari) won't get these PDFKit additions until CyberKit is updated to match.
             tag = WebMenuItemTagOther;
-            LOG_ERROR("no WebKit menu item tag found for PDF context menu item action \"%@\", using WebMenuItemTagOther", actionString);
+            LOG_ERROR("no CyberKit menu item tag found for PDF context menu item action \"%@\", using WebMenuItemTagOther", actionString);
         }
         
         if ([itemCopy tag] == 0) {
@@ -1169,7 +1169,7 @@ IGNORE_WARNINGS_END
                 [itemCopy setTarget:PDFSubviewProxy];
             }
         } else
-            LOG_ERROR("PDF context menu item %@ came with tag %d, so no WebKit tag was applied. This could mean that the item doesn't appear in clients such as Safari.", [itemCopy title], [itemCopy tag]);
+            LOG_ERROR("PDF context menu item %@ came with tag %d, so no CyberKit tag was applied. This could mean that the item doesn't appear in clients such as Safari.", [itemCopy title], [itemCopy tag]);
     }
     
     // Since we might have removed elements supplied by PDFKit, and we want to minimize our hardwired
@@ -1373,7 +1373,7 @@ IGNORE_WARNINGS_END
     static NSString *_temporaryPDFDirectoryPath = nil;
     
     if (!_temporaryPDFDirectoryPath) {
-        NSString *temporaryDirectoryTemplate = [NSTemporaryDirectory() stringByAppendingPathComponent:@"WebKitPDFs-XXXXXX"];
+        NSString *temporaryDirectoryTemplate = [NSTemporaryDirectory() stringByAppendingPathComponent:@"CyberKitPDFs-XXXXXX"];
         char *cTemplate = strdup([temporaryDirectoryTemplate fileSystemRepresentation]);
         
         if (!mkdtemp(cTemplate)) {

@@ -28,7 +28,7 @@
 #include "SVGNumber.h"
 #include "SVGValuePropertyList.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGNumberList final : public SVGValuePropertyList<SVGNumber> {
     using Base = SVGValuePropertyList<SVGNumber>;
@@ -54,4 +54,4 @@ public:
     String valueAsString() const override;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

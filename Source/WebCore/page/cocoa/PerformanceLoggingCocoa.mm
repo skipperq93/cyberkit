@@ -29,7 +29,7 @@
 #import <mach/mach.h>
 #import <mach/task_info.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 std::optional<uint64_t> PerformanceLogging::physicalFootprint()
 {

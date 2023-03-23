@@ -37,99 +37,99 @@
 #import <wtf/GetPtr.h>
 #import <wtf/URL.h>
 
-#define IMPL static_cast<WebCore::HTMLOptionElement*>(reinterpret_cast<WebCore::Node*>(_internal))
+#define IMPL static_cast<CyberCore::HTMLOptionElement*>(reinterpret_cast<CyberCore::Node*>(_internal))
 
 @implementation DOMHTMLOptionElement
 
 - (BOOL)disabled
 {
-    WebCore::JSMainThreadNullState state;
-    return IMPL->hasAttributeWithoutSynchronization(WebCore::HTMLNames::disabledAttr);
+    CyberCore::JSMainThreadNullState state;
+    return IMPL->hasAttributeWithoutSynchronization(CyberCore::HTMLNames::disabledAttr);
 }
 
 - (void)setDisabled:(BOOL)newDisabled
 {
-    WebCore::JSMainThreadNullState state;
-    IMPL->setBooleanAttribute(WebCore::HTMLNames::disabledAttr, newDisabled);
+    CyberCore::JSMainThreadNullState state;
+    IMPL->setBooleanAttribute(CyberCore::HTMLNames::disabledAttr, newDisabled);
 }
 
 - (DOMHTMLFormElement *)form
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->form()));
 }
 
 - (NSString *)label
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->label();
 }
 
 - (void)setLabel:(NSString *)newLabel
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->setLabel(newLabel);
 }
 
 - (BOOL)defaultSelected
 {
-    WebCore::JSMainThreadNullState state;
-    return IMPL->hasAttributeWithoutSynchronization(WebCore::HTMLNames::selectedAttr);
+    CyberCore::JSMainThreadNullState state;
+    return IMPL->hasAttributeWithoutSynchronization(CyberCore::HTMLNames::selectedAttr);
 }
 
 - (void)setDefaultSelected:(BOOL)newDefaultSelected
 {
-    WebCore::JSMainThreadNullState state;
-    IMPL->setBooleanAttribute(WebCore::HTMLNames::selectedAttr, newDefaultSelected);
+    CyberCore::JSMainThreadNullState state;
+    IMPL->setBooleanAttribute(CyberCore::HTMLNames::selectedAttr, newDefaultSelected);
 }
 
 - (BOOL)selected
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->selected();
 }
 
 - (void)setSelected:(BOOL)newSelected
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->setSelected(newSelected);
 }
 
 - (NSString *)value
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->value();
 }
 
 - (void)setValue:(NSString *)newValue
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->setValue(newValue);
 }
 
 - (NSString *)text
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->text();
 }
 
 - (int)index
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->index();
 }
 
 @end
 
-WebCore::HTMLOptionElement* core(DOMHTMLOptionElement *wrapper)
+CyberCore::HTMLOptionElement* core(DOMHTMLOptionElement *wrapper)
 {
-    return wrapper ? reinterpret_cast<WebCore::HTMLOptionElement*>(wrapper->_internal) : 0;
+    return wrapper ? reinterpret_cast<CyberCore::HTMLOptionElement*>(wrapper->_internal) : 0;
 }
 
-DOMHTMLOptionElement *kit(WebCore::HTMLOptionElement* value)
+DOMHTMLOptionElement *kit(CyberCore::HTMLOptionElement* value)
 {
-    WebCoreThreadViolationCheckRoundOne();
-    return static_cast<DOMHTMLOptionElement*>(kit(static_cast<WebCore::Node*>(value)));
+    CyberCoreThreadViolationCheckRoundOne();
+    return static_cast<DOMHTMLOptionElement*>(kit(static_cast<CyberCore::Node*>(value)));
 }
 
 #undef IMPL

@@ -190,7 +190,7 @@ void WKContextSetDownloadClient(WKContextRef context, const WKContextDownloadCli
                 return;
             m_client.didReceiveAuthenticationChallenge(m_context, WebKit::toAPI(&downloadProxy), WebKit::toAPI(&authenticationChallengeProxy), m_client.base.clientInfo);
         }
-        void didReceiveResponse(WebKit::DownloadProxy& downloadProxy, const WebCore::ResourceResponse& response)
+        void didReceiveResponse(WebKit::DownloadProxy& downloadProxy, const CyberCore::ResourceResponse& response)
         {
             if (!m_client.didReceiveResponse)
                 return;
@@ -202,7 +202,7 @@ void WKContextSetDownloadClient(WKContextRef context, const WKContextDownloadCli
                 return;
             m_client.didReceiveData(m_context, WebKit::toAPI(&downloadProxy), length, m_client.base.clientInfo);
         }
-        void decideDestinationWithSuggestedFilename(WebKit::DownloadProxy& downloadProxy, const WebCore::ResourceResponse& response, const String& filename, CompletionHandler<void(WebKit::AllowOverwrite, WTF::String)>&& completionHandler) final
+        void decideDestinationWithSuggestedFilename(WebKit::DownloadProxy& downloadProxy, const CyberCore::ResourceResponse& response, const String& filename, CompletionHandler<void(WebKit::AllowOverwrite, WTF::String)>&& completionHandler) final
         {
             didReceiveResponse(downloadProxy, response);
             if (!m_client.decideDestinationWithSuggestedFilename)
@@ -223,7 +223,7 @@ void WKContextSetDownloadClient(WKContextRef context, const WKContextDownloadCli
                 return;
             m_client.didFinish(m_context, WebKit::toAPI(&downloadProxy), m_client.base.clientInfo);
         }
-        void didFail(WebKit::DownloadProxy& downloadProxy, const WebCore::ResourceError& error, API::Data*) final
+        void didFail(WebKit::DownloadProxy& downloadProxy, const CyberCore::ResourceError& error, API::Data*) final
         {
             if (!m_client.didFail)
                 return;
@@ -241,7 +241,7 @@ void WKContextSetDownloadClient(WKContextRef context, const WKContextDownloadCli
                 return;
             m_client.processDidCrash(m_context, WebKit::toAPI(&downloadProxy), m_client.base.clientInfo);
         }
-        void willSendRequest(WebKit::DownloadProxy& downloadProxy, WebCore::ResourceRequest&& request, const WebCore::ResourceResponse&, CompletionHandler<void(WebCore::ResourceRequest&&)>&& completionHandler) final
+        void willSendRequest(WebKit::DownloadProxy& downloadProxy, CyberCore::ResourceRequest&& request, const CyberCore::ResourceResponse&, CompletionHandler<void(CyberCore::ResourceRequest&&)>&& completionHandler) final
         {
             if (m_client.didReceiveServerRedirect)
                 m_client.didReceiveServerRedirect(m_context, WebKit::toAPI(&downloadProxy), WebKit::toURLRef(request.url().string().impl()), m_client.base.clientInfo);
@@ -292,7 +292,7 @@ void WKContextAddVisitedLink(WKContextRef contextRef, WKStringRef visitedURL)
     if (visitedURLString.isEmpty())
         return;
 
-    WebKit::toImpl(contextRef)->visitedLinkStore().addVisitedLinkHash(WebCore::computeSharedStringHash(visitedURLString));
+    WebKit::toImpl(contextRef)->visitedLinkStore().addVisitedLinkHash(CyberCore::computeSharedStringHash(visitedURLString));
 }
 
 void WKContextClearVisitedLinks(WKContextRef contextRef)
@@ -586,7 +586,7 @@ void WKContextSetLocalhostAliases(WKContextRef, WKArrayRef localhostAliases)
 void WKContextClearMockGamepadsForTesting(WKContextRef)
 {
 #if ENABLE(GAMEPAD)
-    if (WebCore::GamepadProvider::singleton().isMockGamepadProvider())
-        WebCore::GamepadProvider::singleton().clearGamepadsForTesting();
+    if (CyberCore::GamepadProvider::singleton().isMockGamepadProvider())
+        CyberCore::GamepadProvider::singleton().clearGamepadsForTesting();
 #endif
 }

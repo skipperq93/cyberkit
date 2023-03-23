@@ -27,7 +27,7 @@
 
 #include "ISOBox.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class WEBCORE_EXPORT ISOTrackEncryptionBox final : public ISOFullBox {
 public:

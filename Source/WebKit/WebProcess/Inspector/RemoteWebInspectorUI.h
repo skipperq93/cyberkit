@@ -38,12 +38,12 @@
 #include "InspectorExtensionTypes.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 class CertificateInfo;
 class FloatRect;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPage;
 #if ENABLE(INSPECTOR_EXTENSIONS)
@@ -53,7 +53,7 @@ class WebInspectorUIExtensionController;
 class RemoteWebInspectorUI final
     : public RefCounted<RemoteWebInspectorUI>
     , public IPC::MessageReceiver
-    , public WebCore::InspectorFrontendClient {
+    , public CyberCore::InspectorFrontendClient {
 public:
     static Ref<RemoteWebInspectorUI> create(WebPage&);
     ~RemoteWebInspectorUI();
@@ -72,14 +72,14 @@ public:
     void setDiagnosticLoggingAvailable(bool);
 #endif
 
-    // WebCore::InspectorFrontendClient
+    // CyberCore::InspectorFrontendClient
     void windowObjectCleared() override;
     void frontendLoaded() override;
 
     void pagePaused() override;
     void pageUnpaused() override;
 
-    void changeSheetRect(const WebCore::FloatRect&) override;
+    void changeSheetRect(const CyberCore::FloatRect&) override;
     void startWindowDrag() override;
     void moveWindowBy(float x, float y) override;
 
@@ -92,9 +92,9 @@ public:
     String targetProductVersion() const override;
     bool targetIsSimulator() const override;
 
-    void setForcedAppearance(WebCore::InspectorFrontendClient::Appearance) override;
+    void setForcedAppearance(CyberCore::InspectorFrontendClient::Appearance) override;
 
-    WebCore::UserInterfaceLayoutDirection userInterfaceLayoutDirection() const override;
+    CyberCore::UserInterfaceLayoutDirection userInterfaceLayoutDirection() const override;
 
     bool supportsDockSide(DockSide) override;
 
@@ -105,31 +105,31 @@ public:
 
     void openURLExternally(const String& url) override;
     void revealFileExternally(const String& path) override;
-    void save(Vector<WebCore::InspectorFrontendClient::SaveData>&&, bool forceSaveAs) override;
+    void save(Vector<CyberCore::InspectorFrontendClient::SaveData>&&, bool forceSaveAs) override;
     void load(const String& path, CompletionHandler<void(const String&)>&&) override;
-    void pickColorFromScreen(CompletionHandler<void(const std::optional<WebCore::Color>&)>&&) override;
+    void pickColorFromScreen(CompletionHandler<void(const std::optional<CyberCore::Color>&)>&&) override;
     void inspectedURLChanged(const String&) override;
-    void showCertificate(const WebCore::CertificateInfo&) override;
+    void showCertificate(const CyberCore::CertificateInfo&) override;
     void setInspectorPageDeveloperExtrasEnabled(bool) override;
     void sendMessageToBackend(const String&) override;
-    WebCore::InspectorFrontendAPIDispatcher& frontendAPIDispatcher() override { return m_frontendAPIDispatcher; }
-    WebCore::Page* frontendPage() final;
+    CyberCore::InspectorFrontendAPIDispatcher& frontendAPIDispatcher() override { return m_frontendAPIDispatcher; }
+    CyberCore::Page* frontendPage() final;
 
 #if ENABLE(INSPECTOR_TELEMETRY)
     bool supportsDiagnosticLogging() override;
     bool diagnosticLoggingAvailable() override { return m_diagnosticLoggingAvailable; }
-    void logDiagnosticEvent(const String& eventName, const WebCore::DiagnosticLoggingClient::ValueDictionary&) override;
+    void logDiagnosticEvent(const String& eventName, const CyberCore::DiagnosticLoggingClient::ValueDictionary&) override;
 #endif
         
 #if ENABLE(INSPECTOR_EXTENSIONS)
     bool supportsWebExtensions() override;
-    void didShowExtensionTab(const Inspector::ExtensionID&, const Inspector::ExtensionTabID&, WebCore::FrameIdentifier) override;
+    void didShowExtensionTab(const Inspector::ExtensionID&, const Inspector::ExtensionTabID&, CyberCore::FrameIdentifier) override;
     void didHideExtensionTab(const Inspector::ExtensionID&, const Inspector::ExtensionTabID&) override;
     void didNavigateExtensionTab(const Inspector::ExtensionID&, const Inspector::ExtensionTabID&, const URL&) override;
     void inspectedPageDidNavigate(const URL&) override;
 #endif
 
-    bool canSave(WebCore::InspectorFrontendClient::SaveMode) override;
+    bool canSave(CyberCore::InspectorFrontendClient::SaveMode) override;
     bool canLoad() override;
     bool canPickColorFromScreen() override;
     bool isUnderTest() override { return false; }
@@ -142,8 +142,8 @@ private:
     explicit RemoteWebInspectorUI(WebPage&);
 
     WebPage& m_page;
-    Ref<WebCore::InspectorFrontendAPIDispatcher> m_frontendAPIDispatcher;
-    RefPtr<WebCore::InspectorFrontendHost> m_frontendHost;
+    Ref<CyberCore::InspectorFrontendAPIDispatcher> m_frontendAPIDispatcher;
+    RefPtr<CyberCore::InspectorFrontendHost> m_frontendHost;
 #if ENABLE(INSPECTOR_EXTENSIONS)
     std::unique_ptr<WebInspectorUIExtensionController> m_extensionController;
 #endif
@@ -156,4 +156,4 @@ private:
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit

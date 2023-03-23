@@ -31,7 +31,7 @@
 #import "NetworkProcess.h"
 #import "NetworkProcessProxyMessages.h"
 #import "NetworkSessionCocoa.h"
-#import "WebCoreArgumentCoders.h"
+#import "CyberCoreArgumentCoders.h"
 #import <Foundation/NSURLSession.h>
 #import <CyberCore/AuthenticationChallenge.h>
 #import <CyberCore/Credential.h>
@@ -66,7 +66,7 @@
     auto* connection = [self connection];
     if (!connection)
         return completionHandler(NSURLSessionAuthChallengeRejectProtectionSpace, nil);
-    connection->sendWithAsyncReply(Messages::NetworkProcessProxy::DataTaskReceivedChallenge(_identifier, challenge), [completionHandler = makeBlockPtr(completionHandler)](WebKit::AuthenticationChallengeDisposition disposition, WebCore::Credential&& credential) {
+    connection->sendWithAsyncReply(Messages::NetworkProcessProxy::DataTaskReceivedChallenge(_identifier, challenge), [completionHandler = makeBlockPtr(completionHandler)](WebKit::AuthenticationChallengeDisposition disposition, CyberCore::Credential&& credential) {
         completionHandler(fromAuthenticationChallengeDisposition(disposition), credential.nsCredential());
     });
 }

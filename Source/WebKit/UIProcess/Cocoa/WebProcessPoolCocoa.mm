@@ -217,7 +217,7 @@ NS_DIRECT_MEMBERS
 @end
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 static void registerUserDefaults()
 {
@@ -255,7 +255,7 @@ static AccessibilityPreferences accessibilityPreferences()
 {
     AccessibilityPreferences preferences;
 #if HAVE(PER_APP_ACCESSIBILITY_PREFERENCES)
-    auto appId = WebCore::applicationBundleIdentifier().createCFString();
+    auto appId = CyberCore::applicationBundleIdentifier().createCFString();
 
     preferences.reduceMotionEnabled = _AXSReduceMotionEnabledApp(appId.get());
     preferences.increaseButtonLegibility = _AXSIncreaseButtonLegibilityApp(appId.get());
@@ -275,8 +275,8 @@ static AccessibilityPreferences accessibilityPreferences()
 void WebProcessPool::setMediaAccessibilityPreferences(WebProcessProxy& process)
 {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), [weakProcess = WeakPtr { process }] {
-        auto captionDisplayMode = WebCore::CaptionUserPreferencesMediaAF::platformCaptionDisplayMode();
-        auto preferredLanguages = WebCore::CaptionUserPreferencesMediaAF::platformPreferredLanguages();
+        auto captionDisplayMode = CyberCore::CaptionUserPreferencesMediaAF::platformCaptionDisplayMode();
+        auto preferredLanguages = CyberCore::CaptionUserPreferencesMediaAF::platformPreferredLanguages();
         callOnMainRunLoop([weakProcess, captionDisplayMode, preferredLanguages = crossThreadCopy(WTFMove(preferredLanguages))] {
             if (weakProcess)
                 weakProcess->send(Messages::WebProcess::SetMediaAccessibilityPreferences(captionDisplayMode, preferredLanguages), 0);
@@ -320,9 +320,9 @@ void WebProcessPool::platformInitialize()
 
     registerUserDefaults();
 
-    // FIXME: This should be able to share code with WebCore's MemoryPressureHandler (and be platform independent).
+    // FIXME: This should be able to share code with CyberCore's MemoryPressureHandler (and be platform independent).
     // Right now it cannot because WebKit1 and WebKit2 need to be able to coexist in the UI process,
-    // and you can only have one WebCore::MemoryPressureHandler.
+    // and you can only have one CyberCore::MemoryPressureHandler.
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"WebKitSuppressMemoryPressureHandler"])
         installMemoryPressureHandler();
 
@@ -345,9 +345,9 @@ void WebProcessPool::platformInitialize()
 
 #if ENABLE(WEBCONTENT_CRASH_TESTING)
 #if PLATFORM(IOS_FAMILY)
-    bool isSafari = WebCore::IOSApplication::isMobileSafari();
+    bool isSafari = CyberCore::IOSApplication::isMobileSafari();
 #elif PLATFORM(MAC)
-    bool isSafari = WebCore::MacApplication::isSafari();
+    bool isSafari = CyberCore::MacApplication::isSafari();
 #endif
     if (isSafari)
         s_shouldCrashWhenCreatingWebProcess = determineIfWeShouldCrashWhenCreatingWebProcess();
@@ -433,10 +433,10 @@ void WebProcessPool::platformInitializeWebProcess(const WebProcessProxy& process
 
     bool isSafari = false;
 #if PLATFORM(IOS_FAMILY)
-    if (WebCore::IOSApplication::isMobileSafari())
+    if (CyberCore::IOSApplication::isMobileSafari())
         isSafari = true;
 #elif PLATFORM(MAC)
-    if (WebCore::MacApplication::isSafari())
+    if (CyberCore::MacApplication::isSafari())
         isSafari = true;
 #endif
 
@@ -456,20 +456,20 @@ void WebProcessPool::platformInitializeWebProcess(const WebProcessProxy& process
     parameters.shouldLogUserInteraction = [defaults boolForKey:WebKitLogCookieInformationDefaultsKey];
 #endif
 
-    auto screenProperties = WebCore::collectScreenProperties();
+    auto screenProperties = CyberCore::collectScreenProperties();
     parameters.screenProperties = WTFMove(screenProperties);
 #if PLATFORM(MAC)
     parameters.useOverlayScrollbars = ([NSScroller preferredScrollerStyle] == NSScrollerStyleOverlay);
 #endif
     
 #if PLATFORM(IOS) && HAVE(AGX_COMPILER_SERVICE)
-    if (WebCore::deviceHasAGXCompilerService())
-        parameters.compilerServiceExtensionHandles = SandboxExtension::createHandlesForMachLookup(WebCore::agxCompilerServices(), std::nullopt);
+    if (CyberCore::deviceHasAGXCompilerService())
+        parameters.compilerServiceExtensionHandles = SandboxExtension::createHandlesForMachLookup(CyberCore::agxCompilerServices(), std::nullopt);
 #endif
 
 #if PLATFORM(IOS_FAMILY) && HAVE(AGX_COMPILER_SERVICE)
-    if (WebCore::deviceHasAGXCompilerService())
-        parameters.dynamicIOKitExtensionHandles = SandboxExtension::createHandlesForIOKitClassExtensions(WebCore::agxCompilerClasses(), std::nullopt);
+    if (CyberCore::deviceHasAGXCompilerService())
+        parameters.dynamicIOKitExtensionHandles = SandboxExtension::createHandlesForIOKitClassExtensions(CyberCore::agxCompilerClasses(), std::nullopt);
 #endif
 
     parameters.systemHasBattery = systemHasBattery();
@@ -493,7 +493,7 @@ void WebProcessPool::platformInitializeWebProcess(const WebProcessProxy& process
 
 #if HAVE(VIDEO_RESTRICTED_DECODING)
 #if PLATFORM(MAC)
-    if (!isFullWebBrowser() || isRunningTest(WebCore::applicationBundleIdentifier())) {
+    if (!isFullWebBrowser() || isRunningTest(CyberCore::applicationBundleIdentifier())) {
         if (auto trustdExtensionHandle = SandboxExtension::createHandleForMachLookup("com.apple.trustd.agent"_s, std::nullopt))
             parameters.trustdExtensionHandle = WTFMove(*trustdExtensionHandle);
         parameters.enableDecodingHEIC = true;
@@ -526,8 +526,8 @@ void WebProcessPool::platformInitializeWebProcess(const WebProcessProxy& process
 #endif
 
 #if HAVE(IOSURFACE)
-    parameters.maximumIOSurfaceSize = WebCore::IOSurface::maximumSize();
-    parameters.bytesPerRowIOSurfaceAlignment = WebCore::IOSurface::bytesPerRowAlignment();
+    parameters.maximumIOSurfaceSize = CyberCore::IOSurface::maximumSize();
+    parameters.bytesPerRowIOSurfaceAlignment = CyberCore::IOSurface::bytesPerRowAlignment();
 #endif
 
     parameters.accessibilityPreferences = accessibilityPreferences();
@@ -618,8 +618,8 @@ void WebProcessPool::mediaAccessibilityPreferencesChangedCallback(CFNotification
     auto pool = extractWebProcessPool(observer);
     if (!pool)
         return;
-    auto captionDisplayMode = WebCore::CaptionUserPreferencesMediaAF::platformCaptionDisplayMode();
-    auto preferredLanguages = WebCore::CaptionUserPreferencesMediaAF::platformPreferredLanguages();
+    auto captionDisplayMode = CyberCore::CaptionUserPreferencesMediaAF::platformCaptionDisplayMode();
+    auto preferredLanguages = CyberCore::CaptionUserPreferencesMediaAF::platformPreferredLanguages();
     pool->sendToAllProcesses(Messages::WebProcess::SetMediaAccessibilityPreferences(captionDisplayMode, preferredLanguages));
 }
 #endif
@@ -698,7 +698,7 @@ void WebProcessPool::registerNotificationObservers()
     m_weakObserver = adoptNS([[WKProcessPoolWeakObserver alloc] initWithWeakPtr:*this]);
 
 #if !PLATFORM(IOS_FAMILY)
-    m_powerObserver = makeUnique<WebCore::PowerObserver>([weakThis = WeakPtr { *this }] {
+    m_powerObserver = makeUnique<CyberCore::PowerObserver>([weakThis = WeakPtr { *this }] {
         if (weakThis)
             weakThis->sendToAllProcesses(Messages::WebProcess::SystemWillPowerOn());
     });
@@ -804,7 +804,7 @@ void WebProcessPool::registerNotificationObservers()
     }
 #endif
 
-    m_powerSourceNotifier = WTF::makeUnique<WebCore::PowerSourceNotifier>([this] (bool hasAC) {
+    m_powerSourceNotifier = WTF::makeUnique<CyberCore::PowerSourceNotifier>([this] (bool hasAC) {
         sendToAllProcesses(Messages::WebProcess::PowerSourceDidChange(hasAC));
     });
 
@@ -898,7 +898,7 @@ void WebProcessPool::setCookieStoragePartitioningEnabled(bool enabled)
     m_cookieStoragePartitioningEnabled = enabled;
 }
 
-void WebProcessPool::clearPermanentCredentialsForProtectionSpace(WebCore::ProtectionSpace&& protectionSpace)
+void WebProcessPool::clearPermanentCredentialsForProtectionSpace(CyberCore::ProtectionSpace&& protectionSpace)
 {
     auto sharedStorage = [NSURLCredentialStorage sharedCredentialStorage];
     auto credentials = [sharedStorage credentialsForProtectionSpace:protectionSpace.nsSpace()];
@@ -960,7 +960,7 @@ static bool isLockdownModeEnabledBySystemIgnoringCaching()
 #endif
     
 #if PLATFORM(MAC)
-    if (!WebCore::MacApplication::isSafari() && !WebCore::MacApplication::isMiniBrowser())
+    if (!CyberCore::MacApplication::isSafari() && !CyberCore::MacApplication::isMiniBrowser())
         return false;
 #endif
     
@@ -1112,7 +1112,7 @@ void WebProcessPool::notifyPreferencesChanged(const String& domain, const String
 
 void WebProcessPool::screenPropertiesChanged()
 {
-    auto screenProperties = WebCore::collectScreenProperties();
+    auto screenProperties = CyberCore::collectScreenProperties();
     sendToAllProcesses(Messages::WebProcess::SetScreenProperties(screenProperties));
 
 #if PLATFORM(MAC) && ENABLE(GPU_PROCESS)
@@ -1122,7 +1122,7 @@ void WebProcessPool::screenPropertiesChanged()
 }
 
 #if PLATFORM(MAC)
-void WebProcessPool::displayPropertiesChanged(const WebCore::ScreenProperties& screenProperties, WebCore::PlatformDisplayID displayID, CGDisplayChangeSummaryFlags flags)
+void WebProcessPool::displayPropertiesChanged(const CyberCore::ScreenProperties& screenProperties, CyberCore::PlatformDisplayID displayID, CGDisplayChangeSummaryFlags flags)
 {
     sendToAllProcesses(Messages::WebProcess::SetScreenProperties(screenProperties));
     sendToAllProcesses(Messages::WebProcess::DisplayConfigurationChanged(displayID, flags));
@@ -1141,7 +1141,7 @@ void WebProcessPool::displayPropertiesChanged(const WebCore::ScreenProperties& s
 static void displayReconfigurationCallBack(CGDirectDisplayID displayID, CGDisplayChangeSummaryFlags flags, void *userInfo)
 {
     RunLoop::main().dispatch([displayID, flags]() {
-        auto screenProperties = WebCore::collectScreenProperties();
+        auto screenProperties = CyberCore::collectScreenProperties();
         for (auto& processPool : WebProcessPool::allProcessPools())
             processPool->displayPropertiesChanged(screenProperties, displayID, flags);
     });
@@ -1160,7 +1160,7 @@ void WebProcessPool::registerDisplayConfigurationCallback()
 static void webProcessPoolHighDynamicRangeDidChangeCallback(CMNotificationCenterRef, const void*, CFStringRef notificationName, const void*, CFTypeRef)
 {
     RunLoop::main().dispatch([] {
-        auto properties = WebCore::collectScreenProperties();
+        auto properties = CyberCore::collectScreenProperties();
         for (auto& pool : WebProcessPool::allProcessPools())
             pool->sendToAllProcesses(Messages::WebProcess::SetScreenProperties(properties));
     });
@@ -1204,7 +1204,7 @@ void WebProcessPool::systemDidWake()
 void WebProcessPool::registerHighDynamicRangeChangeCallback()
 {
     static NeverDestroyed<LowPowerModeNotifier> notifier { [](bool) {
-        auto properties = WebCore::collectScreenProperties();
+        auto properties = CyberCore::collectScreenProperties();
         for (auto& pool : WebProcessPool::allProcessPools())
             pool->sendToAllProcesses(Messages::WebProcess::SetScreenProperties(properties));
     } };

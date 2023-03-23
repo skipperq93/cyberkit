@@ -29,7 +29,7 @@
 #include <wtf/FileSystem.h>
 #include <wtf/glib/GUniquePtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 FileMonitor::FileMonitor(const String& path, Ref<WorkQueue>&& handlerQueue, Function<void(FileChangeType)>&& modificationHandler)
     : m_handlerQueue(WTFMove(handlerQueue))
@@ -104,4 +104,4 @@ void FileMonitor::cancel()
     m_platformMonitor = nullptr;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -35,7 +35,7 @@
 #include "ManetteGamepad.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static const Seconds connectionDelayInterval { 500_ms };
 static const Seconds inputNotificationDelay { 50_ms };
@@ -208,6 +208,6 @@ void ManetteGamepadProvider::stopEffects(unsigned, const String&, CompletionHand
     completionHandler();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(GAMEPAD) && OS(LINUX)

@@ -29,7 +29,7 @@
 #include "ImageBuffer.h"
 #include "Pattern.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 bool FETileSoftwareApplier::apply(const Filter& filter, const FilterImageVector& inputs, FilterImage& result) const
 {
@@ -68,4 +68,4 @@ bool FETileSoftwareApplier::apply(const Filter& filter, const FilterImageVector&
     return true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

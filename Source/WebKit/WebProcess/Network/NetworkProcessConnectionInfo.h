@@ -28,11 +28,11 @@
 #include "Connection.h"
 #include <CyberCore/HTTPCookieAcceptPolicy.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 struct NetworkProcessConnectionInfo {
     IPC::Connection::Handle connection;
-    WebCore::HTTPCookieAcceptPolicy cookieAcceptPolicy;
+    CyberCore::HTTPCookieAcceptPolicy cookieAcceptPolicy;
 #if HAVE(AUDIT_TOKEN)
     std::optional<audit_token_t> auditToken;
 #endif

@@ -47,7 +47,7 @@ public:
 private:
     // From API::FindClient
     virtual void didCountStringMatches(WebPageProxy*, const String&, uint32_t matchCount);
-    virtual void didFindString(WebPageProxy*, const String&, const Vector<WebCore::IntRect>&, uint32_t matchCount, int32_t matchIndex, bool didWrapAround);
+    virtual void didFindString(WebPageProxy*, const String&, const Vector<CyberCore::IntRect>&, uint32_t matchCount, int32_t matchIndex, bool didWrapAround);
     virtual void didFailToFindString(WebPageProxy*, const String&);
 
     virtual void didAddLayerForFindOverlay(WebKit::WebPageProxy*, CALayer *);

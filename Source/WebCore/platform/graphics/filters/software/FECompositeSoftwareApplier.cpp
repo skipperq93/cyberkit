@@ -31,7 +31,7 @@
 #include "PixelBuffer.h"
 #include <wtf/MathExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 uint8_t FECompositeSoftwareApplier::clampByte(int c)
 {
@@ -228,4 +228,4 @@ bool FECompositeSoftwareApplier::apply(const Filter&, const FilterImageVector& i
     return applyNonArithmetic(input, input2, result);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

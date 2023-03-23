@@ -40,7 +40,7 @@
 #import "Settings.h"
 #import <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static RefPtr<LegacyPreviewLoaderClient>& testingClient()
 {
@@ -252,6 +252,6 @@ void LegacyPreviewLoader::setClientForTesting(RefPtr<LegacyPreviewLoaderClient>&
     testingClient() = WTFMove(client);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(QUICK_LOOK)

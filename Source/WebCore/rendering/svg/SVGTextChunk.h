@@ -23,7 +23,7 @@
 #include <wtf/HashMap.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AffineTransform;
 class SVGInlineTextBox;
@@ -71,4 +71,4 @@ private:
     float m_desiredTextLength { 0 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

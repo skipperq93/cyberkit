@@ -23,7 +23,7 @@
 
 #include "SVGFilterPrimitiveStandardAttributes.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGFETileElement final : public SVGFilterPrimitiveStandardAttributes {
     WTF_MAKE_ISO_ALLOCATED(SVGFETileElement);
@@ -47,4 +47,4 @@ private:
     Ref<SVGAnimatedString> m_in1 { SVGAnimatedString::create(this) };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

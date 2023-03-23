@@ -36,7 +36,7 @@
 #include "StyleScopeRuleSets.h"
 #include "TypedElementDescendantIterator.h"
 
-namespace WebCore::Style {
+namespace CyberCore::Style {
 
 void ChildChangeInvalidation::invalidateForChangedElement(Element& changedElement, MatchingHasSelectors& matchingHasSelectors)
 {

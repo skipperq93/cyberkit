@@ -33,7 +33,7 @@
 #include "WebCompiledContentRuleList.h"
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 NetworkContentRuleListManager::NetworkContentRuleListManager(NetworkProcess& networkProcess)
     : m_networkProcess(networkProcess)
@@ -46,7 +46,7 @@ NetworkContentRuleListManager::~NetworkContentRuleListManager()
     if (pendingCallbacks.isEmpty())
         return;
 
-    WebCore::ContentExtensions::ContentExtensionsBackend backend;
+    CyberCore::ContentExtensions::ContentExtensionsBackend backend;
     for (auto& callbacks : pendingCallbacks.values()) {
         for (auto& callback : callbacks)
             callback(backend);
@@ -69,7 +69,7 @@ void NetworkContentRuleListManager::contentExtensionsBackend(UserContentControll
 void NetworkContentRuleListManager::addContentRuleLists(UserContentControllerIdentifier identifier, Vector<std::pair<WebCompiledContentRuleListData, URL>>&& contentRuleLists)
 {
     auto& backend = *m_contentExtensionBackends.ensure(identifier, [] {
-        return makeUnique<WebCore::ContentExtensions::ContentExtensionsBackend>();
+        return makeUnique<CyberCore::ContentExtensions::ContentExtensionsBackend>();
     }).iterator->value;
 
     for (auto&& pair : contentRuleLists) {

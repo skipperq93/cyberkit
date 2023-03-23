@@ -24,7 +24,7 @@
 #include "FEColorMatrix.h"
 #include "SVGFilterPrimitiveStandardAttributes.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 template<>
 struct SVGPropertyTraits<ColorMatrixType> {
@@ -95,4 +95,4 @@ private:
     Ref<SVGAnimatedNumberList> m_values { SVGAnimatedNumberList::create(this) };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

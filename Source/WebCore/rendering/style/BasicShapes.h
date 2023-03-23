@@ -41,7 +41,7 @@ namespace WTF {
 class TextStream;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 struct BlendingContext;
 class FloatRect;
@@ -99,7 +99,7 @@ public:
 
     BasicShapeCenterCoordinate blend(const BasicShapeCenterCoordinate& from, const BlendingContext& context) const
     {
-        return BasicShapeCenterCoordinate(Direction::TopLeft, WebCore::blend(from.m_computedLength, m_computedLength, context));
+        return BasicShapeCenterCoordinate(Direction::TopLeft, CyberCore::blend(from.m_computedLength, m_computedLength, context));
     }
     
     bool operator==(const BasicShapeCenterCoordinate& other) const
@@ -154,7 +154,7 @@ public:
         if (m_type != Type::Value || from.type() != Type::Value)
             return BasicShapeRadius(from);
 
-        return BasicShapeRadius(WebCore::blend(from.value(), value(), context));
+        return BasicShapeRadius(CyberCore::blend(from.value(), value(), context));
     }
     
     bool operator==(const BasicShapeRadius& other) const
@@ -364,11 +364,11 @@ WTF::TextStream& operator<<(WTF::TextStream&, const BasicShapeRadius&);
 WTF::TextStream& operator<<(WTF::TextStream&, const BasicShapeCenterCoordinate&);
 WTF::TextStream& operator<<(WTF::TextStream&, const BasicShape&);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #define SPECIALIZE_TYPE_TRAITS_BASIC_SHAPE(ToValueTypeName, predicate) \
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::ToValueTypeName) \
-    static bool isType(const WebCore::BasicShape& basicShape) { return basicShape.type() == WebCore::predicate; } \
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::ToValueTypeName) \
+    static bool isType(const CyberCore::BasicShape& basicShape) { return basicShape.type() == CyberCore::predicate; } \
 SPECIALIZE_TYPE_TRAITS_END()
 
 SPECIALIZE_TYPE_TRAITS_BASIC_SHAPE(BasicShapeCircle, BasicShape::Type::Circle)

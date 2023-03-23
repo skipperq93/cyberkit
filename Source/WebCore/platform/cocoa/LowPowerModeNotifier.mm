@@ -33,14 +33,14 @@
 #import <wtf/MainThread.h>
 
 @interface WebLowPowerModeObserver : NSObject
-@property (nonatomic) WebCore::LowPowerModeNotifier* notifier;
+@property (nonatomic) CyberCore::LowPowerModeNotifier* notifier;
 @property (nonatomic, readonly) BOOL isLowPowerModeEnabled;
 @end
 
 @implementation WebLowPowerModeObserver {
 }
 
-- (WebLowPowerModeObserver *)initWithNotifier:(WebCore::LowPowerModeNotifier&)notifier
+- (WebLowPowerModeObserver *)initWithNotifier:(CyberCore::LowPowerModeNotifier&)notifier
 {
     self = [super init];
     if (!self)
@@ -70,7 +70,7 @@
 
 @end
 
-namespace WebCore {
+namespace CyberCore {
 
 LowPowerModeNotifier::LowPowerModeNotifier(LowPowerModeChangeCallback&& callback)
     : m_observer(adoptNS([[WebLowPowerModeObserver alloc] initWithNotifier:*this]))
@@ -99,6 +99,6 @@ void notifyLowPowerModeChanged(LowPowerModeNotifier& notifier, bool enabled)
     notifier.notifyLowPowerModeChanged(enabled);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(APPLE_LOW_POWER_MODE_SUPPORT)

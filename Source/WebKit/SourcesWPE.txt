@@ -96,7 +96,7 @@ Shared/libwpe/WebEventFactory.cpp
 
 Shared/linux/WebMemorySamplerLinux.cpp
 
-Shared/soup/WebCoreArgumentCodersSoup.cpp
+Shared/soup/CyberCoreArgumentCodersSoup.cpp
 Shared/soup/WebErrorsSoup.cpp
 
 Shared/unix/AuxiliaryProcessMain.cpp
@@ -260,11 +260,11 @@ WebProcess/InjectedBundle/glib/InjectedBundleGlib.cpp
 
 WebProcess/MediaCache/WebMediaKeyStorageManager.cpp
 
-WebProcess/WebCoreSupport/glib/WebEditorClientGLib.cpp
+WebProcess/CyberCoreSupport/glib/WebEditorClientGLib.cpp
 
-WebProcess/WebCoreSupport/soup/WebFrameNetworkingContext.cpp
+WebProcess/CyberCoreSupport/soup/WebFrameNetworkingContext.cpp
 
-WebProcess/WebCoreSupport/wpe/WebEditorClientWPE.cpp
+WebProcess/CyberCoreSupport/wpe/WebEditorClientWPE.cpp
 
 WebProcess/WebPage/AcceleratedSurface.cpp
 

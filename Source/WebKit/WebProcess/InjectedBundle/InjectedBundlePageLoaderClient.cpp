@@ -41,8 +41,8 @@
 #include <CyberCore/SharedBuffer.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 InjectedBundlePageLoaderClient::InjectedBundlePageLoaderClient(const WKBundlePageLoaderClientBase* client)
 {
@@ -236,7 +236,7 @@ void InjectedBundlePageLoaderClient::didLayoutForFrame(WebPage& page, WebFrame& 
     m_client.didLayoutForFrame(toAPI(&page), toAPI(&frame), m_client.base.clientInfo);
 }
 
-void InjectedBundlePageLoaderClient::didReachLayoutMilestone(WebPage& page, OptionSet<WebCore::LayoutMilestone> milestones, RefPtr<API::Object>& userData)
+void InjectedBundlePageLoaderClient::didReachLayoutMilestone(WebPage& page, OptionSet<CyberCore::LayoutMilestone> milestones, RefPtr<API::Object>& userData)
 {
     if (!m_client.didLayout)
         return;
@@ -351,19 +351,19 @@ void InjectedBundlePageLoaderClient::featuresUsedInPage(WebPage& page, const Vec
     return m_client.featuresUsedInPage(toAPI(&page), toAPI(API::Array::createStringArray(features).ptr()), m_client.base.clientInfo);
 }
 
-OptionSet<WebCore::LayoutMilestone> InjectedBundlePageLoaderClient::layoutMilestones() const
+OptionSet<CyberCore::LayoutMilestone> InjectedBundlePageLoaderClient::layoutMilestones() const
 {
     if (m_client.layoutMilestones) {
         auto milestones = m_client.layoutMilestones(m_client.base.clientInfo);
         return toLayoutMilestones(milestones);
     }
     
-    OptionSet<WebCore::LayoutMilestone> milestones;
+    OptionSet<CyberCore::LayoutMilestone> milestones;
     if (m_client.didFirstLayoutForFrame)
-        milestones.add(WebCore::DidFirstLayout);
+        milestones.add(CyberCore::DidFirstLayout);
     if (m_client.didFirstVisuallyNonEmptyLayoutForFrame)
-        milestones.add(WebCore::DidFirstVisuallyNonEmptyLayout);
+        milestones.add(CyberCore::DidFirstVisuallyNonEmptyLayout);
     return milestones;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

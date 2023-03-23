@@ -33,7 +33,7 @@
 #include <wtf/Ref.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class BarProp final : public ScriptWrappable, public RefCounted<BarProp>, public DOMWindowProperty {
     WTF_MAKE_ISO_ALLOCATED(BarProp);
@@ -50,4 +50,4 @@ private:
     Type m_type;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

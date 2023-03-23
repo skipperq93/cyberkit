@@ -38,7 +38,7 @@ namespace WTF {
 class TextStream;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class GraphicsLayer;
 class ScrollingStateTree;
@@ -358,11 +358,11 @@ inline ScrollingNodeID ScrollingStateNode::parentNodeID() const
     return parent->scrollingNodeID();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #define SPECIALIZE_TYPE_TRAITS_SCROLLING_STATE_NODE(ToValueTypeName, predicate) \
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::ToValueTypeName) \
-    static bool isType(const WebCore::ScrollingStateNode& node) { return node.predicate; } \
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::ToValueTypeName) \
+    static bool isType(const CyberCore::ScrollingStateNode& node) { return node.predicate; } \
 SPECIALIZE_TYPE_TRAITS_END()
 
 #endif // ENABLE(ASYNC_SCROLLING)

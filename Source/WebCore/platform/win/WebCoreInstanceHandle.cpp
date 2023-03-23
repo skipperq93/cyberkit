@@ -24,9 +24,9 @@
  */
 
 #include "config.h"
-#include "WebCoreInstanceHandle.h"
+#include "CyberCoreInstanceHandle.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // The global DLL or application instance used for all windows.
 HINSTANCE s_instanceHandle = nullptr;
@@ -41,4 +41,4 @@ HINSTANCE instanceHandle()
     return s_instanceHandle;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

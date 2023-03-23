@@ -32,7 +32,7 @@
 #include "Logging.h"
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 FilterImageVector FilterEffect::takeImageInputs(FilterImageVector& stack) const
 {
@@ -212,4 +212,4 @@ TextStream& operator<<(TextStream& ts, const FilterEffect& effect)
     return ts << filterStream.release();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

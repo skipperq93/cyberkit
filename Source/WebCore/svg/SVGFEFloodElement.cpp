@@ -28,7 +28,7 @@
 #include "SVGRenderStyle.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(SVGFEFloodElement);
 
@@ -74,4 +74,4 @@ RefPtr<FilterEffect> SVGFEFloodElement::createFilterEffect(const FilterEffectVec
     return FEFlood::create(color, opacity);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

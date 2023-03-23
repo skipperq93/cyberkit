@@ -29,7 +29,7 @@
 #include <CyberCore/IDBResourceIdentifier.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace IDBServer {
 class UniqueIDBDatabaseConnection;
 class UniqueIDBDatabaseTransaction;
@@ -44,19 +44,19 @@ class IDBStorageRegistry {
     WTF_MAKE_FAST_ALLOCATED;
 public:
     IDBStorageRegistry();
-    WebCore::IDBServer::IDBConnectionToClient& ensureConnectionToClient(IPC::Connection::UniqueID, WebCore::IDBConnectionIdentifier);
+    CyberCore::IDBServer::IDBConnectionToClient& ensureConnectionToClient(IPC::Connection::UniqueID, CyberCore::IDBConnectionIdentifier);
     void removeConnectionToClient(IPC::Connection::UniqueID);
-    void registerConnection(WebCore::IDBServer::UniqueIDBDatabaseConnection&);
-    void unregisterConnection(WebCore::IDBServer::UniqueIDBDatabaseConnection&);
-    WebCore::IDBServer::UniqueIDBDatabaseConnection* connection(uint64_t identifier);
-    void registerTransaction(WebCore::IDBServer::UniqueIDBDatabaseTransaction&);
-    void unregisterTransaction(WebCore::IDBServer::UniqueIDBDatabaseTransaction&);
-    WebCore::IDBServer::UniqueIDBDatabaseTransaction* transaction(WebCore::IDBResourceIdentifier);
+    void registerConnection(CyberCore::IDBServer::UniqueIDBDatabaseConnection&);
+    void unregisterConnection(CyberCore::IDBServer::UniqueIDBDatabaseConnection&);
+    CyberCore::IDBServer::UniqueIDBDatabaseConnection* connection(uint64_t identifier);
+    void registerTransaction(CyberCore::IDBServer::UniqueIDBDatabaseTransaction&);
+    void unregisterTransaction(CyberCore::IDBServer::UniqueIDBDatabaseTransaction&);
+    CyberCore::IDBServer::UniqueIDBDatabaseTransaction* transaction(CyberCore::IDBResourceIdentifier);
 
 private:
-    HashMap<WebCore::IDBConnectionIdentifier, std::unique_ptr<IDBStorageConnectionToClient>> m_connectionsToClient;
-    HashMap<uint64_t, WeakPtr<WebCore::IDBServer::UniqueIDBDatabaseConnection>> m_connections;
-    HashMap<WebCore::IDBResourceIdentifier, WeakPtr<WebCore::IDBServer::UniqueIDBDatabaseTransaction>> m_transactions;
+    HashMap<CyberCore::IDBConnectionIdentifier, std::unique_ptr<IDBStorageConnectionToClient>> m_connectionsToClient;
+    HashMap<uint64_t, WeakPtr<CyberCore::IDBServer::UniqueIDBDatabaseConnection>> m_connections;
+    HashMap<CyberCore::IDBResourceIdentifier, WeakPtr<CyberCore::IDBServer::UniqueIDBDatabaseTransaction>> m_transactions;
 };
 
 } // namespace WebKit

@@ -73,7 +73,7 @@ class DownloadClient;
 class HTTPCookieStore;
 }
 
-namespace WebCore {
+namespace CyberCore {
 class CertificateInfo;
 class RegistrableDomain;
 class ResourceRequest;
@@ -165,7 +165,7 @@ public:
     void isResourceLoadStatisticsEphemeral(CompletionHandler<void(bool)>&&) const;
 
     void setPrivateClickMeasurementDebugMode(bool);
-    void storePrivateClickMeasurement(const WebCore::PrivateClickMeasurement&);
+    void storePrivateClickMeasurement(const CyberCore::PrivateClickMeasurement&);
 
     uint64_t perOriginStorageQuota() const { return m_resolvedConfiguration->perOriginStorageQuota(); }
     uint64_t perThirdPartyOriginStorageQuota() const;
@@ -192,7 +192,7 @@ public:
     bool hasServiceWorkerBackgroundActivityForTesting() const;
 
 #if ENABLE(TRACKING_PREVENTION)
-    void fetchDataForRegistrableDomains(OptionSet<WebsiteDataType>, OptionSet<WebsiteDataFetchOption>, Vector<WebCore::RegistrableDomain>&&, CompletionHandler<void(Vector<WebsiteDataRecord>&&, HashSet<WebCore::RegistrableDomain>&&)>&&);
+    void fetchDataForRegistrableDomains(OptionSet<WebsiteDataType>, OptionSet<WebsiteDataFetchOption>, Vector<CyberCore::RegistrableDomain>&&, CompletionHandler<void(Vector<WebsiteDataRecord>&&, HashSet<CyberCore::RegistrableDomain>&&)>&&);
     void clearPrevalentResource(const URL&, CompletionHandler<void()>&&);
     void clearUserInteraction(const URL&, CompletionHandler<void()>&&);
     void dumpResourceLoadStatistics(CompletionHandler<void(const String&)>&&);
@@ -247,13 +247,13 @@ public:
     void hasIsolatedSessionForTesting(const URL&, CompletionHandler<void(bool)>&&) const;
     void setResourceLoadStatisticsShouldDowngradeReferrerForTesting(bool, CompletionHandler<void()>&&);
     void setResourceLoadStatisticsShouldBlockThirdPartyCookiesForTesting(bool enabled, bool onlyOnSitesWithoutUserInteraction, CompletionHandler<void()>&&);
-    void setThirdPartyCookieBlockingMode(WebCore::ThirdPartyCookieBlockingMode, CompletionHandler<void()>&&);
+    void setThirdPartyCookieBlockingMode(CyberCore::ThirdPartyCookieBlockingMode, CompletionHandler<void()>&&);
     void setResourceLoadStatisticsShouldEnbleSameSiteStrictEnforcementForTesting(bool enabled, CompletionHandler<void()>&&);
     void setResourceLoadStatisticsFirstPartyWebsiteDataRemovalModeForTesting(bool enabled, CompletionHandler<void()>&&);
     void setResourceLoadStatisticsToSameSiteStrictCookiesForTesting(const URL&, CompletionHandler<void()>&&);
     void setResourceLoadStatisticsFirstPartyHostCNAMEDomainForTesting(const URL& firstPartyURL, const URL& cnameURL, CompletionHandler<void()>&&);
     void setResourceLoadStatisticsThirdPartyCNAMEDomainForTesting(const URL&, CompletionHandler<void()>&&);
-    WebCore::ThirdPartyCookieBlockingMode thirdPartyCookieBlockingMode() const;
+    CyberCore::ThirdPartyCookieBlockingMode thirdPartyCookieBlockingMode() const;
     bool isTrackingPreventionStateExplicitlySet() const { return m_isTrackingPreventionStateExplicitlySet; }
     void useExplicitTrackingPreventionState() { m_isTrackingPreventionStateExplicitlySet = true; }
 #endif // ENABLE(TRACKING_PREVENTION)
@@ -284,8 +284,8 @@ public:
 
     static void setCachedProcessSuspensionDelayForTesting(Seconds);
 
-    void allowSpecificHTTPSCertificateForHost(const WebCore::CertificateInfo&, const String& host);
-    void allowTLSCertificateChainForLocalPCMTesting(const WebCore::CertificateInfo&);
+    void allowSpecificHTTPSCertificateForHost(const CyberCore::CertificateInfo&, const String& host);
+    void allowTLSCertificateChainForLocalPCMTesting(const CyberCore::CertificateInfo&);
 
     DeviceIdHashSaltStorage& deviceIdHashSaltStorage() { return m_deviceIdHashSaltStorage.get(); }
 
@@ -303,8 +303,8 @@ public:
 #endif
 
 #if USE(CURL)
-    void setNetworkProxySettings(WebCore::CurlProxySettings&&);
-    const WebCore::CurlProxySettings& networkProxySettings() const { return m_proxySettings; }
+    void setNetworkProxySettings(CyberCore::CurlProxySettings&&);
+    const CyberCore::CurlProxySettings& networkProxySettings() const { return m_proxySettings; }
 #endif
 
 #if USE(SOUP)
@@ -312,10 +312,10 @@ public:
     bool persistentCredentialStorageEnabled() const { return m_persistentCredentialStorageEnabled && isPersistent(); }
     void setIgnoreTLSErrors(bool);
     bool ignoreTLSErrors() const { return m_ignoreTLSErrors; }
-    void setNetworkProxySettings(WebCore::SoupNetworkProxySettings&&);
-    const WebCore::SoupNetworkProxySettings& networkProxySettings() const { return m_networkProxySettings; }
+    void setNetworkProxySettings(CyberCore::SoupNetworkProxySettings&&);
+    const CyberCore::SoupNetworkProxySettings& networkProxySettings() const { return m_networkProxySettings; }
     void setCookiePersistentStorage(const String&, SoupCookiePersistentStorageType);
-    void setHTTPCookieAcceptPolicy(WebCore::HTTPCookieAcceptPolicy);
+    void setHTTPCookieAcceptPolicy(CyberCore::HTTPCookieAcceptPolicy);
 #endif
 
     static void allowWebsiteDataRecordsForAllOrigins();
@@ -326,7 +326,7 @@ public:
 
 #if ENABLE(WEB_AUTHN)
     AuthenticatorManager& authenticatorManager() { return m_authenticatorManager.get(); }
-    void setMockWebAuthenticationConfiguration(WebCore::MockWebAuthenticationConfiguration&&);
+    void setMockWebAuthenticationConfiguration(CyberCore::MockWebAuthenticationConfiguration&&);
     VirtualAuthenticatorManager& virtualAuthenticatorManager();
 #endif
 
@@ -336,10 +336,10 @@ public:
     void setClient(UniqueRef<WebsiteDataStoreClient>&& client) { m_client = WTFMove(client); }
 
     API::HTTPCookieStore& cookieStore();
-    WebCore::LocalWebLockRegistry& webLockRegistry() { return m_webLockRegistry.get(); }
+    CyberCore::LocalWebLockRegistry& webLockRegistry() { return m_webLockRegistry.get(); }
 
-    void renameOriginInWebsiteData(WebCore::SecurityOriginData&&, WebCore::SecurityOriginData&&, OptionSet<WebsiteDataType>, CompletionHandler<void()>&&);
-    void originDirectoryForTesting(WebCore::ClientOrigin&&, OptionSet<WebsiteDataType>, CompletionHandler<void(const String&)>&&);
+    void renameOriginInWebsiteData(CyberCore::SecurityOriginData&&, CyberCore::SecurityOriginData&&, OptionSet<WebsiteDataType>, CompletionHandler<void()>&&);
+    void originDirectoryForTesting(CyberCore::ClientOrigin&&, OptionSet<WebsiteDataType>, CompletionHandler<void(const String&)>&&);
 
     bool networkProcessHasEntitlementForTesting(const String&);
 
@@ -395,17 +395,17 @@ public:
     void hasAppBoundSession(CompletionHandler<void(bool)>&&) const;
     void clearAppBoundSession(CompletionHandler<void()>&&);
     void beginAppBoundDomainCheck(const String& host, const String& protocol, WebFramePolicyListenerProxy&);
-    void getAppBoundDomains(CompletionHandler<void(const HashSet<WebCore::RegistrableDomain>&)>&&) const;
+    void getAppBoundDomains(CompletionHandler<void(const HashSet<CyberCore::RegistrableDomain>&)>&&) const;
     void getAppBoundSchemes(CompletionHandler<void(const HashSet<String>&)>&&) const;
-    void ensureAppBoundDomains(CompletionHandler<void(const HashSet<WebCore::RegistrableDomain>&, const HashSet<String>&)>&&) const;
+    void ensureAppBoundDomains(CompletionHandler<void(const HashSet<CyberCore::RegistrableDomain>&, const HashSet<String>&)>&&) const;
     void reinitializeAppBoundDomains();
-    static void setAppBoundDomainsForTesting(HashSet<WebCore::RegistrableDomain>&&, CompletionHandler<void()>&&);
+    static void setAppBoundDomainsForTesting(HashSet<CyberCore::RegistrableDomain>&&, CompletionHandler<void()>&&);
 #endif
 #if ENABLE(MANAGED_DOMAINS)
-    void ensureManagedDomains(CompletionHandler<void(const HashSet<WebCore::RegistrableDomain>&)>&&) const;
-    void getManagedDomains(CompletionHandler<void(const HashSet<WebCore::RegistrableDomain>&)>&&) const;
+    void ensureManagedDomains(CompletionHandler<void(const HashSet<CyberCore::RegistrableDomain>&)>&&) const;
+    void getManagedDomains(CompletionHandler<void(const HashSet<CyberCore::RegistrableDomain>&)>&&) const;
     void reinitializeManagedDomains();
-    static void setManagedDomainsForTesting(HashSet<WebCore::RegistrableDomain>&&, CompletionHandler<void()>&&);
+    static void setManagedDomainsForTesting(HashSet<CyberCore::RegistrableDomain>&&, CompletionHandler<void()>&&);
 #endif
 
     void updateBundleIdentifierInNetworkProcess(const String&, CompletionHandler<void()>&&);
@@ -413,14 +413,14 @@ public:
 
     void countNonDefaultSessionSets(CompletionHandler<void(size_t)>&&);
 
-    void showServiceWorkerNotification(IPC::Connection&, const WebCore::NotificationData&);
+    void showServiceWorkerNotification(IPC::Connection&, const CyberCore::NotificationData&);
     void cancelServiceWorkerNotification(const UUID& notificationID);
     void clearServiceWorkerNotification(const UUID& notificationID);
     void didDestroyServiceWorkerNotification(const UUID& notificationID);
 
-    void openWindowFromServiceWorker(const String& urlString, const WebCore::SecurityOriginData& serviceWorkerOrigin, CompletionHandler<void(std::optional<WebCore::PageIdentifier>)>&&);
+    void openWindowFromServiceWorker(const String& urlString, const CyberCore::SecurityOriginData& serviceWorkerOrigin, CompletionHandler<void(std::optional<CyberCore::PageIdentifier>)>&&);
 
-    void workerUpdatedAppBadge(const WebCore::SecurityOriginData&, std::optional<uint64_t>);
+    void workerUpdatedAppBadge(const CyberCore::SecurityOriginData&, std::optional<uint64_t>);
 
 #if ENABLE(INSPECTOR_NETWORK_THROTTLING)
     void setEmulatedConditions(std::optional<int64_t>&& bytesPerSecondLimit);
@@ -431,12 +431,12 @@ public:
     void setServiceWorkerOverridePreferences(WebPreferences* preferences) { m_serviceWorkerOverridePreferences = preferences; }
     WebPreferences* serviceWorkerOverridePreferences() const { return m_serviceWorkerOverridePreferences.get(); }
 
-    DownloadProxy& createDownloadProxy(Ref<API::DownloadClient>&&, const WebCore::ResourceRequest&, WebPageProxy* originatingPage, const FrameInfoData&);
+    DownloadProxy& createDownloadProxy(Ref<API::DownloadClient>&&, const CyberCore::ResourceRequest&, WebPageProxy* originatingPage, const FrameInfoData&);
     void download(const DownloadProxy&, const String& suggestedFilename);
     void resumeDownload(const DownloadProxy&, const API::Data&, const String& path, CallDownloadDidStart);
 
-    void saveRecentSearches(const String& name, const Vector<WebCore::RecentSearch>&);
-    void loadRecentSearches(const String& name, CompletionHandler<void(Vector<WebCore::RecentSearch>&&)>&&);
+    void saveRecentSearches(const String& name, const Vector<CyberCore::RecentSearch>&);
+    void loadRecentSearches(const String& name, CompletionHandler<void(Vector<CyberCore::RecentSearch>&&)>&&);
 
 private:
     enum class ForceReinitialization : bool { No, Yes };
@@ -466,23 +466,23 @@ private:
     // Will create a temporary process pool is none exists yet.
     HashSet<RefPtr<WebProcessPool>> ensureProcessPools() const;
 
-    static Vector<WebCore::SecurityOriginData> mediaKeyOrigins(const String& mediaKeysStorageDirectory);
+    static Vector<CyberCore::SecurityOriginData> mediaKeyOrigins(const String& mediaKeysStorageDirectory);
     static void removeMediaKeys(const String& mediaKeysStorageDirectory, WallTime modifiedSince);
-    static void removeMediaKeys(const String& mediaKeysStorageDirectory, const HashSet<WebCore::SecurityOriginData>&);
+    static void removeMediaKeys(const String& mediaKeysStorageDirectory, const HashSet<CyberCore::SecurityOriginData>&);
 
     void registerWithSessionIDMap();
 
 #if ENABLE(APP_BOUND_DOMAINS)
-    static std::optional<HashSet<WebCore::RegistrableDomain>> appBoundDomainsIfInitialized();
+    static std::optional<HashSet<CyberCore::RegistrableDomain>> appBoundDomainsIfInitialized();
     constexpr static const std::atomic<bool> isAppBoundITPRelaxationEnabled = false;
     static void forwardAppBoundDomainsToITPIfInitialized(CompletionHandler<void()>&&);
-    void setAppBoundDomainsForITP(const HashSet<WebCore::RegistrableDomain>&, CompletionHandler<void()>&&);
+    void setAppBoundDomainsForITP(const HashSet<CyberCore::RegistrableDomain>&, CompletionHandler<void()>&&);
 #endif
 
 #if ENABLE(MANAGED_DOMAINS)
-    static const HashSet<WebCore::RegistrableDomain>* managedDomainsIfInitialized();
+    static const HashSet<CyberCore::RegistrableDomain>* managedDomainsIfInitialized();
     static void forwardManagedDomainsToITPIfInitialized(CompletionHandler<void()>&&);
-    void setManagedDomainsForITP(const HashSet<WebCore::RegistrableDomain>&, CompletionHandler<void()>&&);
+    void setManagedDomainsForITP(const HashSet<CyberCore::RegistrableDomain>&, CompletionHandler<void()>&&);
 #endif
 
 #if PLATFORM(IOS_FAMILY)
@@ -517,16 +517,16 @@ private:
 #endif
 
 #if USE(CURL)
-    WebCore::CurlProxySettings m_proxySettings;
+    CyberCore::CurlProxySettings m_proxySettings;
 #endif
 
 #if USE(SOUP)
     bool m_persistentCredentialStorageEnabled { true };
     bool m_ignoreTLSErrors { true };
-    WebCore::SoupNetworkProxySettings m_networkProxySettings;
+    CyberCore::SoupNetworkProxySettings m_networkProxySettings;
     String m_cookiePersistentStoragePath;
     SoupCookiePersistentStorageType m_cookiePersistentStorageType { SoupCookiePersistentStorageType::SQLite };
-    WebCore::HTTPCookieAcceptPolicy m_cookieAcceptPolicy { WebCore::HTTPCookieAcceptPolicy::ExclusivelyFromMainDocumentDomain };
+    CyberCore::HTTPCookieAcceptPolicy m_cookieAcceptPolicy { CyberCore::HTTPCookieAcceptPolicy::ExclusivelyFromMainDocumentDomain };
 #endif
 
     WeakHashSet<WebProcessProxy> m_processes;
@@ -554,9 +554,9 @@ private:
     std::unique_ptr<SOAuthorizationCoordinator> m_soAuthorizationCoordinator;
 #endif
 #if ENABLE(TRACKING_PREVENTION)
-    mutable std::optional<WebCore::ThirdPartyCookieBlockingMode> m_thirdPartyCookieBlockingMode; // Lazily computed.
+    mutable std::optional<CyberCore::ThirdPartyCookieBlockingMode> m_thirdPartyCookieBlockingMode; // Lazily computed.
 #endif
-    Ref<WebCore::LocalWebLockRegistry> m_webLockRegistry;
+    Ref<CyberCore::LocalWebLockRegistry> m_webLockRegistry;
 
     RefPtr<WebPreferences> m_serviceWorkerOverridePreferences;
 };

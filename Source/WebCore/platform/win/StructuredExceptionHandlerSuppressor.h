@@ -31,7 +31,7 @@
 
 extern "C" EXCEPTION_DISPOSITION __stdcall exceptionHandler(struct _EXCEPTION_RECORD* exceptionRecord, void* establisherFrame, struct _CONTEXT* contextRecord, void* dispatcherContext);
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ExceptionRegistration {
     ExceptionRegistration* prev;
@@ -50,6 +50,6 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // StructuredExceptionHandlerSuppressor_h

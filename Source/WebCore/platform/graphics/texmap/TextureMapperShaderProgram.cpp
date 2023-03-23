@@ -29,7 +29,7 @@
 #include "TextureMapperGL.h"
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static inline bool compositingLogEnabled()
 {
@@ -713,6 +713,6 @@ GLuint TextureMapperShaderProgram::getLocation(VariableID variable, ASCIILiteral
     return addResult.iterator->value;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(TEXTURE_MAPPER_GL)

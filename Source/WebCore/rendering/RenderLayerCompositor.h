@@ -33,7 +33,7 @@
 #include <wtf/HashMap.h>
 #include <wtf/OptionSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DisplayRefreshMonitorFactory;
 class FixedPositionViewportConstraints;
@@ -648,9 +648,9 @@ WTF::TextStream& operator<<(WTF::TextStream&, CompositingUpdateType);
 WTF::TextStream& operator<<(WTF::TextStream&, CompositingPolicy);
 WTF::TextStream& operator<<(WTF::TextStream&, CompositingReason);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #if ENABLE(TREE_DEBUGGING)
-// Outside the WebCore namespace for ease of invocation from the debugger.
-void showGraphicsLayerTreeForCompositor(WebCore::RenderLayerCompositor&);
+// Outside the CyberCore namespace for ease of invocation from the debugger.
+void showGraphicsLayerTreeForCompositor(CyberCore::RenderLayerCompositor&);
 #endif

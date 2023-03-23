@@ -49,7 +49,7 @@ typedef struct HBITMAP__* HBITMAP;
 // We need to #define YOffset as it needs to be shared with WebKit
 #define DragLabelBorderYOffset 2
 
-namespace WebCore {
+namespace CyberCore {
 
 class Element;
 class Frame;

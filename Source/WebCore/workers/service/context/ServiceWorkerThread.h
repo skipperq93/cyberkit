@@ -39,7 +39,7 @@
 #include "WorkerThread.h"
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CacheStorageProvider;
 class ContentSecurityPolicyResponseHeaders;
@@ -93,7 +93,7 @@ protected:
 private:
     WEBCORE_EXPORT ServiceWorkerThread(ServiceWorkerContextData&&, ServiceWorkerData&&, String&& userAgent, WorkerThreadMode, const Settings::Values&, WorkerLoaderProxy&, WorkerDebuggerProxy&, WorkerBadgeProxy&, IDBClient::IDBConnectionProxy*, SocketProvider*, std::unique_ptr<NotificationClient>&&, PAL::SessionID);
 
-    ASCIILiteral threadName() const final { return "WebCore: ServiceWorker"_s; }
+    ASCIILiteral threadName() const final { return "CyberCore: ServiceWorker"_s; }
     void finishedEvaluatingScript() final;
 
     void finishedFiringInstallEvent(bool hasRejectedAnyPromise);
@@ -128,6 +128,6 @@ private:
     std::unique_ptr<NotificationClient> m_notificationClient;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

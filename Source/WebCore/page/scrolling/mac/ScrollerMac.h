@@ -34,7 +34,7 @@ OBJC_CLASS CALayer;
 OBJC_CLASS NSScrollerImp;
 OBJC_CLASS WebScrollerImpDelegateMac;
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScrollerPairMac;
 
@@ -60,7 +60,7 @@ public:
     void setscrollerImp(NSScrollerImp *imp) { m_scrollerImp = imp; }
 
 
-    WebCore::FloatPoint convertFromContent(const WebCore::FloatPoint&) const;
+    CyberCore::FloatPoint convertFromContent(const CyberCore::FloatPoint&) const;
 
     void updateValues();
 

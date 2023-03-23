@@ -34,10 +34,10 @@
 #include <CyberCore/Document.h>
 #include <CyberCore/LibWebRTCUtils.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
-LibWebRTCNetworkManager* LibWebRTCNetworkManager::getOrCreate(WebCore::ScriptExecutionContextIdentifier identifier)
+LibWebRTCNetworkManager* LibWebRTCNetworkManager::getOrCreate(CyberCore::ScriptExecutionContextIdentifier identifier)
 {
     auto* document = Document::allDocumentsMap().get(identifier);
     if (!document)
@@ -54,7 +54,7 @@ LibWebRTCNetworkManager* LibWebRTCNetworkManager::getOrCreate(WebCore::ScriptExe
     return networkManager;
 }
 
-LibWebRTCNetworkManager::LibWebRTCNetworkManager(WebCore::ScriptExecutionContextIdentifier documentIdentifier)
+LibWebRTCNetworkManager::LibWebRTCNetworkManager(CyberCore::ScriptExecutionContextIdentifier documentIdentifier)
     : m_documentIdentifier(documentIdentifier)
 {
 }
@@ -85,7 +85,7 @@ void LibWebRTCNetworkManager::StartUpdating()
 
         auto& monitor = WebProcess::singleton().libWebRTCNetwork().monitor();
         if (m_receivedNetworkList) {
-            WebCore::LibWebRTCProvider::callOnWebRTCNetworkThread([this, protectedThis = Ref { *this }] {
+            CyberCore::LibWebRTCProvider::callOnWebRTCNetworkThread([this, protectedThis = Ref { *this }] {
                 SignalNetworksChanged();
             });
         } else if (monitor.didReceiveNetworkList())
@@ -113,7 +113,7 @@ void LibWebRTCNetworkManager::networksChanged(const Vector<RTCNetwork>& networks
     bool forceSignaling = !m_receivedNetworkList;
     m_receivedNetworkList = true;
 
-    WebCore::LibWebRTCProvider::callOnWebRTCNetworkThread([this, protectedThis = Ref { *this }, networks, ipv4, ipv6, forceSignaling] {
+    CyberCore::LibWebRTCProvider::callOnWebRTCNetworkThread([this, protectedThis = Ref { *this }, networks, ipv4, ipv6, forceSignaling] {
         std::vector<std::unique_ptr<rtc::Network>> networkList(networks.size());
         for (size_t index = 0; index < networks.size(); ++index)
             networkList[index] = std::make_unique<rtc::Network>(networks[index].value());
@@ -130,11 +130,11 @@ void LibWebRTCNetworkManager::networksChanged(const Vector<RTCNetwork>& networks
 void LibWebRTCNetworkManager::networkProcessCrashed()
 {
     m_receivedNetworkList = false;
-    if (!WebCore::LibWebRTCProvider::hasWebRTCThreads())
+    if (!CyberCore::LibWebRTCProvider::hasWebRTCThreads())
         return;
 
     // In case we have clients waiting for networksChanged, we call SignalNetworksChanged to make sure they do not wait for nothing.
-    WebCore::LibWebRTCProvider::callOnWebRTCNetworkThread([this, protectedThis = Ref { *this }] {
+    CyberCore::LibWebRTCProvider::callOnWebRTCNetworkThread([this, protectedThis = Ref { *this }] {
         SignalNetworksChanged();
     });
 }
@@ -146,7 +146,7 @@ void LibWebRTCNetworkManager::CreateNameForAddress(const rtc::IPAddress& address
             return;
 
         WebProcess::singleton().libWebRTCNetwork().mdnsRegister().registerMDNSName(weakThis->m_documentIdentifier, fromStdString(address.ToString()), [address, callback = std::move(callback)](auto name, auto error) mutable {
-            WebCore::LibWebRTCProvider::callOnWebRTCNetworkThread([address, callback = std::move(callback), name = WTFMove(name).isolatedCopy(), error] {
+            CyberCore::LibWebRTCProvider::callOnWebRTCNetworkThread([address, callback = std::move(callback), name = WTFMove(name).isolatedCopy(), error] {
                 RELEASE_LOG_ERROR_IF(error, WebRTC, "MDNS registration of a host candidate failed with error %d", *error);
                 // In case of error, we provide the name to let gathering complete.
                 callback(address, name.utf8().data());
@@ -161,6 +161,6 @@ void LibWebRTCNetworkManager::RemoveNameForAddress(const rtc::IPAddress&, NameRe
     ASSERT_NOT_REACHED();
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(LIBWEBRTC)

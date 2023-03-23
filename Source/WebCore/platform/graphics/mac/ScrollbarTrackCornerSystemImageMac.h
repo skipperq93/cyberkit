@@ -32,7 +32,7 @@
 #include <wtf/Forward.h>
 #include <wtf/Ref.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WEBCORE_EXPORT ScrollbarTrackCornerSystemImageMac final : public AppKitControlSystemImage {
 public:
@@ -50,10 +50,10 @@ private:
 
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::ScrollbarTrackCornerSystemImageMac)
-    static bool isType(const WebCore::AppKitControlSystemImage& systemImage) { return systemImage.controlType() == WebCore::AppKitControlSystemImageType::ScrollbarTrackCorner; }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::ScrollbarTrackCornerSystemImageMac)
+    static bool isType(const CyberCore::AppKitControlSystemImage& systemImage) { return systemImage.controlType() == CyberCore::AppKitControlSystemImageType::ScrollbarTrackCorner; }
 SPECIALIZE_TYPE_TRAITS_END()
 
 #endif // USE(APPKIT)

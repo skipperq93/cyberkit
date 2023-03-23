@@ -24,7 +24,7 @@
  */
 
 // umbrella header
-#import <CyberScriptCore/JavaScriptCore.h>
+#import <CyberScriptCore/CyberScriptCore.h>
 
 // private headers
 #import <CyberScriptCore/JSContextPrivate.h>

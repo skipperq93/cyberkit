@@ -37,7 +37,7 @@
 
 OBJC_CLASS WebPlaybackControlsManager;
 
-namespace WebCore {
+namespace CyberCore {
 class IntRect;
 class PlaybackSessionModel;
 

@@ -33,7 +33,7 @@
 #include "ScrollingCoordinator.h"
 #include "ScrollingStateScrollingNode.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class Scrollbar;
 
@@ -151,7 +151,7 @@ private:
     bool m_scrollingPerformanceTestingEnabled { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_SCROLLING_STATE_NODE(ScrollingStateFrameScrollingNode, isFrameScrollingNode())
 

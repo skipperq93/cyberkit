@@ -54,7 +54,7 @@
 #include "ThemeAdwaita.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 // Encapsulates the additional painting state information we store for each
 // pushed graphics state.
@@ -441,6 +441,6 @@ void GraphicsContextCairo::pushImageMask(cairo_surface_t* surface, const FloatRe
     cairo_push_group(m_cr.get());
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(CAIRO)

@@ -31,7 +31,7 @@
 #include "AuthenticationManager.h"
 #include "AuthenticationManagerMessages.h"
 #include "AuxiliaryProcessProxy.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebCredential.h"
 #include "WebProcessProxy.h"
 #include "WebProtectionSpace.h"
@@ -42,9 +42,9 @@
 
 namespace WebKit {
 
-AuthenticationChallengeProxy::AuthenticationChallengeProxy(WebCore::AuthenticationChallenge&& authenticationChallenge, AuthenticationChallengeIdentifier challengeID, Ref<IPC::Connection>&& connection, WeakPtr<SecKeyProxyStore>&& secKeyProxyStore)
+AuthenticationChallengeProxy::AuthenticationChallengeProxy(CyberCore::AuthenticationChallenge&& authenticationChallenge, AuthenticationChallengeIdentifier challengeID, Ref<IPC::Connection>&& connection, WeakPtr<SecKeyProxyStore>&& secKeyProxyStore)
     : m_coreAuthenticationChallenge(WTFMove(authenticationChallenge))
-    , m_listener(AuthenticationDecisionListener::create([challengeID, connection = WTFMove(connection), secKeyProxyStore = WTFMove(secKeyProxyStore)](AuthenticationChallengeDisposition disposition, const WebCore::Credential& credential) {
+    , m_listener(AuthenticationDecisionListener::create([challengeID, connection = WTFMove(connection), secKeyProxyStore = WTFMove(secKeyProxyStore)](AuthenticationChallengeDisposition disposition, const CyberCore::Credential& credential) {
 #if HAVE(SEC_KEY_PROXY)
         if (secKeyProxyStore && secKeyProxyStore->initialize(credential)) {
             sendClientCertificateCredentialOverXpc(connection, *secKeyProxyStore, challengeID, credential);

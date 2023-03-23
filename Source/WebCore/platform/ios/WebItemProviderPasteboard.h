@@ -39,7 +39,7 @@ typedef NS_ENUM(NSInteger, WebPreferredPresentationStyle) {
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NSItemProvider (WebCoreExtras)
+@interface NSItemProvider (CyberCoreExtras)
 @property (nonatomic, readonly) BOOL web_containsFileURLAndFileUploadContent;
 @property (nonatomic, readonly) NSArray<NSString *> *web_fileUploadContentTypes;
 @end

@@ -28,7 +28,7 @@
 #include "AnimationFrameRate.h"
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static constexpr OptionSet<ThrottlingReason> halfSpeedThrottlingReasons { ThrottlingReason::LowPowerMode, ThrottlingReason::NonInteractedCrossOriginFrame, ThrottlingReason::VisuallyIdle };
 
@@ -124,4 +124,4 @@ TextStream& operator<<(TextStream& ts, const OptionSet<ThrottlingReason>& reason
         ts << "[Unthrottled]";
     return ts;
 }
-} // namespace WebCore
+} // namespace CyberCore

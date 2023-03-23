@@ -48,13 +48,13 @@ OBJC_CLASS UIScreen;
 typedef struct CGColorSpace *CGColorSpaceRef;
 #endif
 
-// X11 headers define a bunch of macros with common terms, interfering with WebCore and WTF enum values.
+// X11 headers define a bunch of macros with common terms, interfering with CyberCore and WTF enum values.
 // As a workaround, we explicitly undef them here.
 #if defined(None)
 #undef None
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class DestinationColorSpace;
 class FloatRect;
@@ -160,18 +160,18 @@ constexpr bool screenIsTouchPrimaryInputDevice() { return true; }
 #endif
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::DynamicRangeMode> {
+template<> struct EnumTraits<CyberCore::DynamicRangeMode> {
     using values = EnumValues<
-        WebCore::DynamicRangeMode,
-        WebCore::DynamicRangeMode::None,
-        WebCore::DynamicRangeMode::Standard,
-        WebCore::DynamicRangeMode::HLG,
-        WebCore::DynamicRangeMode::HDR10,
-        WebCore::DynamicRangeMode::DolbyVisionPQ
+        CyberCore::DynamicRangeMode,
+        CyberCore::DynamicRangeMode::None,
+        CyberCore::DynamicRangeMode::Standard,
+        CyberCore::DynamicRangeMode::HLG,
+        CyberCore::DynamicRangeMode::HDR10,
+        CyberCore::DynamicRangeMode::DolbyVisionPQ
     >;
 };
 

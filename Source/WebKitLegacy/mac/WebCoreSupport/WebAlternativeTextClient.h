@@ -28,20 +28,20 @@
 
 @class WebView;
 
-class WebAlternativeTextClient : public WebCore::AlternativeTextClient {
+class WebAlternativeTextClient : public CyberCore::AlternativeTextClient {
     WTF_MAKE_FAST_ALLOCATED;
 public:
     explicit WebAlternativeTextClient(WebView *);
     virtual ~WebAlternativeTextClient();
 #if USE(AUTOCORRECTION_PANEL)
-    void showCorrectionAlternative(WebCore::AlternativeTextType, const WebCore::FloatRect& boundingBoxOfReplacedString, const String& replacedString, const String& replacementString, const Vector<String>& alternativeReplacementStrings) override;
-    void dismissAlternative(WebCore::ReasonForDismissingAlternativeText) override;
-    String dismissAlternativeSoon(WebCore::ReasonForDismissingAlternativeText) override;
-    void recordAutocorrectionResponse(WebCore::AutocorrectionResponse, const String& replacedString, const String& replacementString) override;
+    void showCorrectionAlternative(CyberCore::AlternativeTextType, const CyberCore::FloatRect& boundingBoxOfReplacedString, const String& replacedString, const String& replacementString, const Vector<String>& alternativeReplacementStrings) override;
+    void dismissAlternative(CyberCore::ReasonForDismissingAlternativeText) override;
+    String dismissAlternativeSoon(CyberCore::ReasonForDismissingAlternativeText) override;
+    void recordAutocorrectionResponse(CyberCore::AutocorrectionResponse, const String& replacedString, const String& replacementString) override;
 #endif
-    void showDictationAlternativeUI(const WebCore::FloatRect& boundingBoxOfDictatedText, WebCore::DictationContext) override;
-    void removeDictationAlternatives(WebCore::DictationContext) override;
-    Vector<String> dictationAlternatives(WebCore::DictationContext) override;
+    void showDictationAlternativeUI(const CyberCore::FloatRect& boundingBoxOfDictatedText, CyberCore::DictationContext) override;
+    void removeDictationAlternatives(CyberCore::DictationContext) override;
+    Vector<String> dictationAlternatives(CyberCore::DictationContext) override;
 
 private:
     WebView *m_webView;

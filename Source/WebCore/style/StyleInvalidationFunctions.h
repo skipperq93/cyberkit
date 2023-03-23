@@ -31,7 +31,7 @@
 #include "StyleScope.h"
 #include "StyleScopeRuleSets.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace Style {
 
 template <typename TraverseFunction>

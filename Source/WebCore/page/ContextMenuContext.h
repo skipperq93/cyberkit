@@ -31,7 +31,7 @@
 #include "HitTestResult.h"
 #include "Image.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class Event;
 
@@ -78,19 +78,19 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::ContextMenuContext::Type> {
+template<> struct EnumTraits<CyberCore::ContextMenuContext::Type> {
     using values = EnumValues<
-        WebCore::ContextMenuContext::Type,
-        WebCore::ContextMenuContext::Type::ContextMenu
+        CyberCore::ContextMenuContext::Type,
+        CyberCore::ContextMenuContext::Type::ContextMenu
 #if ENABLE(SERVICE_CONTROLS)
-        , WebCore::ContextMenuContext::Type::ServicesMenu
+        , CyberCore::ContextMenuContext::Type::ServicesMenu
 #endif // ENABLE(SERVICE_CONTROLS)
 #if ENABLE(MEDIA_CONTROLS_CONTEXT_MENUS)
-        , WebCore::ContextMenuContext::Type::MediaControls
+        , CyberCore::ContextMenuContext::Type::MediaControls
 #endif // ENABLE(MEDIA_CONTROLS_CONTEXT_MENUS)
     >;
 };

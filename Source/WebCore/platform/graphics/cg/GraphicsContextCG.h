@@ -30,7 +30,7 @@
 #include "ColorSpaceCG.h"
 #include "GraphicsContext.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class WEBCORE_EXPORT GraphicsContextCG : public GraphicsContext {
 public:
@@ -144,7 +144,7 @@ private:
 
 CGAffineTransform getUserToBaseCTM(CGContextRef);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #include "CGContextStateSaver.h"
 

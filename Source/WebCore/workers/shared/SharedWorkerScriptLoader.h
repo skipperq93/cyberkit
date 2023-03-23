@@ -34,7 +34,7 @@
 #include <wtf/ObjectIdentifier.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ServiceWorkerRegistrationData;
 class SharedWorker;
@@ -64,4 +64,4 @@ private:
     CompletionHandler<void(WorkerFetchResult&&, WorkerInitializationData&&)> m_completionHandler;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -26,10 +26,10 @@
 #include "config.h"
 #include "ShareableBitmapHandle.h"
 
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 DECLARE_ALLOCATOR_WITH_HEAP_IDENTIFIER(ShareableBitmapHandle);
 DEFINE_ALLOCATOR_WITH_HEAP_IDENTIFIER(ShareableBitmapHandle);
@@ -38,7 +38,7 @@ ShareableBitmapHandle::ShareableBitmapHandle()
 {
 }
 
-ShareableBitmapHandle::ShareableBitmapHandle(SharedMemory::Handle&& handle, const WebCore::IntSize& size, const ShareableBitmapConfiguration& config)
+ShareableBitmapHandle::ShareableBitmapHandle(SharedMemory::Handle&& handle, const CyberCore::IntSize& size, const ShareableBitmapConfiguration& config)
     : m_handle(WTFMove(handle))
     , m_size(size)
     , m_configuration(config)

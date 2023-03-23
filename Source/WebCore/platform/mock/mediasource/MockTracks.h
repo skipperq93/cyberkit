@@ -32,7 +32,7 @@
 #include "MockBox.h"
 #include "VideoTrackPrivate.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class MockAudioTrackPrivate : public AudioTrackPrivate {
 public:

@@ -33,7 +33,7 @@
 #include "WorkerFetchResult.h"
 #include <wtf/Deque.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SWServerWorker;
 class ServiceWorkerJob;
@@ -87,6 +87,6 @@ private:
     WorkerFetchResult m_workerFetchResult;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

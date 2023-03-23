@@ -33,11 +33,11 @@
 #import "WKRetainPtr.h"
 #import "WKStringCF.h"
 #import "WKWebProcessPlugInBrowserContextControllerInternal.h"
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 #import <wtf/RetainPtr.h>
 
 @interface WKWebProcessPlugInController () {
-    API::ObjectStorage<WebKit::InjectedBundle> _bundle;
+    API::ObjectStorage<CyberKit::InjectedBundle> _bundle;
     RetainPtr<id <WKWebProcessPlugIn>> _principalClassInstance;
 }
 @end
@@ -46,7 +46,7 @@
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainRunLoop(WKWebProcessPlugInController.class, self))
+    if (CyberCoreObjCScheduleDeallocateOnMainRunLoop(WKWebProcessPlugInController.class, self))
         return;
 
     _bundle->~InjectedBundle();
@@ -60,7 +60,7 @@ static void didCreatePage(WKBundleRef bundle, WKBundlePageRef page, const void* 
     id <WKWebProcessPlugIn> principalClassInstance = plugInController->_principalClassInstance.get();
 
     if ([principalClassInstance respondsToSelector:@selector(webProcessPlugIn:didCreateBrowserContextController:)])
-        [principalClassInstance webProcessPlugIn:plugInController didCreateBrowserContextController:wrapper(*WebKit::toImpl(page))];
+        [principalClassInstance webProcessPlugIn:plugInController didCreateBrowserContextController:wrapper(*CyberKit::toImpl(page))];
 }
 
 static void willDestroyPage(WKBundleRef bundle, WKBundlePageRef page, const void* clientInfo)
@@ -69,10 +69,10 @@ static void willDestroyPage(WKBundleRef bundle, WKBundlePageRef page, const void
     id <WKWebProcessPlugIn> principalClassInstance = plugInController->_principalClassInstance.get();
 
     if ([principalClassInstance respondsToSelector:@selector(webProcessPlugIn:willDestroyBrowserContextController:)])
-        [principalClassInstance webProcessPlugIn:plugInController willDestroyBrowserContextController:wrapper(*WebKit::toImpl(page))];
+        [principalClassInstance webProcessPlugIn:plugInController willDestroyBrowserContextController:wrapper(*CyberKit::toImpl(page))];
 }
 
-static void setUpBundleClient(WKWebProcessPlugInController *plugInController, WebKit::InjectedBundle& bundle)
+static void setUpBundleClient(WKWebProcessPlugInController *plugInController, CyberKit::InjectedBundle& bundle)
 {
     WKBundleClientV1 bundleClient;
     memset(&bundleClient, 0, sizeof(bundleClient));
@@ -113,7 +113,7 @@ static Ref<API::Array> createWKArray(NSArray *array)
     
     for (id entry in array) {
         if ([entry isKindOfClass:[NSString class]])
-            strings.uncheckedAppend(adoptRef(WebKit::toImpl(WKStringCreateWithCFString((__bridge CFStringRef)entry))));
+            strings.uncheckedAppend(adoptRef(CyberKit::toImpl(WKStringCreateWithCFString((__bridge CFStringRef)entry))));
     }
     
     return API::Array::create(WTFMove(strings));

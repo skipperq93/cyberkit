@@ -32,7 +32,7 @@
 
 #include "ScriptExecutionContext.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CacheStorageConnection;
 class StorageConnection;
@@ -61,4 +61,4 @@ public:
     virtual void postTaskToLoader(ScriptExecutionContext::Task&&) = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -27,7 +27,7 @@
 #include "RenderStyleConstants.h"
 #include <wtf/text/AtomString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CounterContent {
     WTF_MAKE_FAST_ALLOCATED;
@@ -57,4 +57,4 @@ static inline bool operator==(const CounterContent& a, const CounterContent& b)
         && a.separator() == b.separator();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

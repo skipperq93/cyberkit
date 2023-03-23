@@ -31,7 +31,7 @@
 #include "PixelBuffer.h"
 #include "PixelBufferConversion.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 IntSize ImageBufferBackend::calculateBackendSize(const Parameters& parameters)
 {
@@ -174,4 +174,4 @@ AffineTransform ImageBufferBackend::calculateBaseTransform(const Parameters& par
     return baseTransform;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

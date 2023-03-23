@@ -29,7 +29,7 @@
 #import "CookieStorageObserver.h"
 #import "NetworkStorageSession.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 void startObservingCookieChanges(NetworkStorageSession& storageSession, WTF::Function<void()>&& callback)
 {

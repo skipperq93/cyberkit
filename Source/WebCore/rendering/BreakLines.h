@@ -27,7 +27,7 @@
 #include <wtf/text/TextBreakIterator.h>
 #include <wtf/unicode/CharacterNames.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static const UChar lineBreakTableFirstCharacter = '!';
 static const UChar lineBreakTableLastCharacter = 127;
@@ -230,4 +230,4 @@ inline bool isBreakable(LazyLineBreakIterator& lazyBreakIterator, unsigned start
     return startPosition == nextBreakable;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

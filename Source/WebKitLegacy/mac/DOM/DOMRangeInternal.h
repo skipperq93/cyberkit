@@ -26,11 +26,11 @@
 #import "DOMRange.h"
 #import <optional>
 
-namespace WebCore {
+namespace CyberCore {
 class Range;
 struct SimpleRange;
 }
 
-WebCore::Range* core(DOMRange *);
-DOMRange *kit(WebCore::Range*);
-DOMRange *kit(const std::optional<WebCore::SimpleRange>&);
+CyberCore::Range* core(DOMRange *);
+DOMRange *kit(CyberCore::Range*);
+DOMRange *kit(const std::optional<CyberCore::SimpleRange>&);

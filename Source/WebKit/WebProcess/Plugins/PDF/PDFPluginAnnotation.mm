@@ -48,8 +48,8 @@
 #import <CyberCore/HTMLTextAreaElement.h>
 #import <CyberCore/Page.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 using namespace HTMLNames;
 
 RefPtr<PDFPluginAnnotation> PDFPluginAnnotation::create(PDFAnnotation *annotation, PDFLayerController *pdfLayerController, PDFPlugin* plugin)
@@ -129,6 +129,6 @@ void PDFPluginAnnotation::PDFPluginAnnotationEventListener::handleEvent(ScriptEx
         m_annotation->handleEvent(event);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(PDFKIT_PLUGIN)

@@ -29,7 +29,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class PerformanceServerTiming : public RefCounted<PerformanceServerTiming> {
 public:
@@ -47,4 +47,4 @@ private:
     String m_description;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

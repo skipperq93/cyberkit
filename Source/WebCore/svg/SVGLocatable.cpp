@@ -32,7 +32,7 @@
 #include "SVGNames.h"
 #include "TransformState.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static bool isViewportElement(Node* node)
 {

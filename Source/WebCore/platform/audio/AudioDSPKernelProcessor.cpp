@@ -36,7 +36,7 @@
 
 #include "AudioDSPKernel.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // setNumberOfChannels() may later be called if the object is not yet in an "initialized" state.
 AudioDSPKernelProcessor::AudioDSPKernelProcessor(float sampleRate, unsigned numberOfChannels)
@@ -145,6 +145,6 @@ bool AudioDSPKernelProcessor::requiresTailProcessing() const
     return true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

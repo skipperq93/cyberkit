@@ -30,7 +30,7 @@
 #include <wtf/ListHashSet.h>
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class TileController;
 

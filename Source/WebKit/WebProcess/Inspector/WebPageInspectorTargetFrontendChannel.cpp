@@ -29,7 +29,7 @@
 #include "WebPage.h"
 #include "WebPageProxyMessages.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 WebPageInspectorTargetFrontendChannel::WebPageInspectorTargetFrontendChannel(WebPage& page, const String& targetId, Inspector::FrontendChannel::ConnectionType connectionType)
     : m_page(page)
@@ -43,4 +43,4 @@ void WebPageInspectorTargetFrontendChannel::sendMessageToFrontend(const String& 
     m_page.send(Messages::WebPageProxy::SendMessageToInspectorFrontend(m_targetId, message));
 }
 
-} // namespace WebKit
+} // namespace CyberKit

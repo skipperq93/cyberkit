@@ -38,7 +38,7 @@
 #include "PrivateRelayed.h"
 #include "ServiceWorkerNavigationPreloader.h"
 #include "SharedBufferReference.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebResourceLoaderMessages.h"
 #include "WebSWContextManagerConnectionMessages.h"
 #include "WebSWServerConnection.h"
@@ -51,9 +51,9 @@
 
 namespace WebKit {
 
-using namespace WebCore;
+using namespace CyberCore;
 
-std::unique_ptr<ServiceWorkerFetchTask> ServiceWorkerFetchTask::fromNavigationPreloader(WebSWServerConnection& swServerConnection, NetworkResourceLoader& loader, const WebCore::ResourceRequest& request, NetworkSession* session)
+std::unique_ptr<ServiceWorkerFetchTask> ServiceWorkerFetchTask::fromNavigationPreloader(WebSWServerConnection& swServerConnection, NetworkResourceLoader& loader, const CyberCore::ResourceRequest& request, NetworkSession* session)
 {
     if (!loader.parameters().navigationPreloadIdentifier)
         return nullptr;
@@ -71,7 +71,7 @@ std::unique_ptr<ServiceWorkerFetchTask> ServiceWorkerFetchTask::fromNavigationPr
 ServiceWorkerFetchTask::ServiceWorkerFetchTask(WebSWServerConnection& swServerConnection, NetworkResourceLoader& loader, std::unique_ptr<ServiceWorkerNavigationPreloader>&& preloader)
     : m_swServerConnection(swServerConnection)
     , m_loader(loader)
-    , m_fetchIdentifier(WebCore::FetchIdentifier::generate())
+    , m_fetchIdentifier(CyberCore::FetchIdentifier::generate())
     , m_preloader(WTFMove(preloader))
 {
     callOnMainRunLoop([weakThis = WeakPtr { *this }] {
@@ -83,7 +83,7 @@ ServiceWorkerFetchTask::ServiceWorkerFetchTask(WebSWServerConnection& swServerCo
 ServiceWorkerFetchTask::ServiceWorkerFetchTask(WebSWServerConnection& swServerConnection, NetworkResourceLoader& loader, ResourceRequest&& request, SWServerConnectionIdentifier serverConnectionIdentifier, ServiceWorkerIdentifier serviceWorkerIdentifier, SWServerRegistration& registration, NetworkSession* session, bool isWorkerReady)
     : m_swServerConnection(swServerConnection)
     , m_loader(loader)
-    , m_fetchIdentifier(WebCore::FetchIdentifier::generate())
+    , m_fetchIdentifier(CyberCore::FetchIdentifier::generate())
     , m_serverConnectionIdentifier(serverConnectionIdentifier)
     , m_serviceWorkerIdentifier(serviceWorkerIdentifier)
     , m_currentRequest(WTFMove(request))
@@ -93,7 +93,7 @@ ServiceWorkerFetchTask::ServiceWorkerFetchTask(WebSWServerConnection& swServerCo
     SWFETCH_RELEASE_LOG("ServiceWorkerFetchTask: (serverConnectionIdentifier=%" PRIu64 ", serviceWorkerRegistrationIdentifier=%" PRIu64 ", serviceWorkerIdentifier=%" PRIu64 ", %d)", m_serverConnectionIdentifier.toUInt64(), m_serviceWorkerRegistrationIdentifier.toUInt64(), m_serviceWorkerIdentifier.toUInt64(), isWorkerReady);
 
     // We only do the timeout logic for main document navigations because it is not Web-compatible to do so for subresources.
-    if (loader.parameters().request.requester() == WebCore::ResourceRequestRequester::Main) {
+    if (loader.parameters().request.requester() == CyberCore::ResourceRequestRequester::Main) {
         m_timeoutTimer = makeUnique<Timer>(*this, &ServiceWorkerFetchTask::timeoutTimerFired);
         m_timeoutTimer->startOneShot(loader.connectionToWebProcess().networkProcess().serviceWorkerFetchTimeout());
     }
@@ -178,7 +178,7 @@ void ServiceWorkerFetchTask::startFetch()
     ASSERT_UNUSED(isSent, isSent);
 }
 
-void ServiceWorkerFetchTask::didReceiveRedirectResponse(WebCore::ResourceResponse&& response)
+void ServiceWorkerFetchTask::didReceiveRedirectResponse(CyberCore::ResourceResponse&& response)
 {
     cancelPreloadIfNecessary();
 
@@ -203,7 +203,7 @@ void ServiceWorkerFetchTask::processRedirectResponse(ResourceResponse&& response
     m_loader.willSendServiceWorkerRedirectedRequest(ResourceRequest(m_currentRequest), WTFMove(newRequest), WTFMove(response));
 }
 
-void ServiceWorkerFetchTask::didReceiveResponse(WebCore::ResourceResponse&& response, bool needsContinueDidReceiveResponseMessage)
+void ServiceWorkerFetchTask::didReceiveResponse(CyberCore::ResourceResponse&& response, bool needsContinueDidReceiveResponseMessage)
 {
     if (m_preloader && !m_preloader->isServiceWorkerNavigationPreloadEnabled())
         cancelPreloadIfNecessary();
@@ -392,7 +392,7 @@ void ServiceWorkerFetchTask::softUpdateIfNeeded()
     if (!swConnection)
         return;
     if (auto* registration = swConnection->server().getRegistration(m_serviceWorkerRegistrationIdentifier))
-        registration->scheduleSoftUpdate(m_loader.isAppInitiated() ? WebCore::IsAppInitiated::Yes : WebCore::IsAppInitiated::No);
+        registration->scheduleSoftUpdate(m_loader.isAppInitiated() ? CyberCore::IsAppInitiated::Yes : CyberCore::IsAppInitiated::No);
 }
 
 void ServiceWorkerFetchTask::loadResponseFromPreloader()
@@ -460,7 +460,7 @@ void ServiceWorkerFetchTask::loadBodyFromPreloader()
             didFinish(m_preloader->networkLoadMetrics());
             return;
         }
-        didReceiveData(IPC::SharedBufferReference(const_cast<WebCore::FragmentedSharedBuffer&>(*chunk)), length);
+        didReceiveData(IPC::SharedBufferReference(const_cast<CyberCore::FragmentedSharedBuffer&>(*chunk)), length);
     });
 }
 

@@ -29,7 +29,7 @@
 
 #include "GraphicsContextGL.h"
 
-namespace WebCore {
+namespace CyberCore {
 class VideoFrameCV;
 
 // Interface to interact with CV objects and GraphicsContextGL.

@@ -27,7 +27,7 @@
 #import "_WKCustomHeaderFields.h"
 
 #import "_WKCustomHeaderFieldsInternal.h"
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 #import <wtf/BlockPtr.h>
 #import <wtf/cocoa/VectorCocoa.h>
 
@@ -44,7 +44,7 @@
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainRunLoop(_WKCustomHeaderFields.class, self))
+    if (CyberCoreObjCScheduleDeallocateOnMainRunLoop(_WKCustomHeaderFields.class, self))
         return;
     _fields->API::CustomHeaderFields::~CustomHeaderFields();
     [super dealloc];
@@ -61,10 +61,10 @@
 
 - (void)setFields:(NSDictionary<NSString *, NSString *> *)fields
 {
-    Vector<WebCore::HTTPHeaderField> vector;
+    Vector<CyberCore::HTTPHeaderField> vector;
     vector.reserveInitialCapacity(fields.count);
     [fields enumerateKeysAndObjectsUsingBlock:makeBlockPtr([&](id key, id value, BOOL* stop) {
-        if (auto field = WebCore::HTTPHeaderField::create((NSString *)key, (NSString *)value); field && startsWithLettersIgnoringASCIICase(field->name(), "x-"_s))
+        if (auto field = CyberCore::HTTPHeaderField::create((NSString *)key, (NSString *)value); field && startsWithLettersIgnoringASCIICase(field->name(), "x-"_s))
             vector.uncheckedAppend(WTFMove(*field));
     }).get()];
     _fields->setFields(WTFMove(vector));

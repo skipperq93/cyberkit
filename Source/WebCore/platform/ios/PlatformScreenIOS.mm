@@ -44,7 +44,7 @@
 #import <pal/spi/ios/MobileGestaltSPI.h>
 #import <pal/spi/ios/UIKitSPI.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 int screenDepth(Widget*)
 {
@@ -202,12 +202,12 @@ ScreenProperties collectScreenProperties()
         
         screenData.screenRect = screen._referenceBounds;
         screenData.colorSpace = { screenColorSpace(nullptr) };
-        screenData.screenDepth = WebCore::screenDepth(nullptr);
-        screenData.screenDepthPerComponent = WebCore::screenDepthPerComponent(nullptr);
-        screenData.screenSupportsExtendedColor = WebCore::screenSupportsExtendedColor(nullptr);
-        screenData.screenHasInvertedColors = WebCore::screenHasInvertedColors();
+        screenData.screenDepth = CyberCore::screenDepth(nullptr);
+        screenData.screenDepthPerComponent = CyberCore::screenDepthPerComponent(nullptr);
+        screenData.screenSupportsExtendedColor = CyberCore::screenSupportsExtendedColor(nullptr);
+        screenData.screenHasInvertedColors = CyberCore::screenHasInvertedColors();
         screenData.screenSupportsHighDynamicRange = false; // FIXME: Some iOS devices do have HDR displays.
-        screenData.scaleFactor = WebCore::screenPPIFactor();
+        screenData.scaleFactor = CyberCore::screenPPIFactor();
 
         screenProperties.screenDataMap.set(++displayID, WTFMove(screenData));
         
@@ -218,6 +218,6 @@ ScreenProperties collectScreenProperties()
     return screenProperties;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(IOS_FAMILY)

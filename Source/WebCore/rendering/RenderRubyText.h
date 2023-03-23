@@ -32,7 +32,7 @@
 
 #include "RenderBlockFlow.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderRubyText final : public RenderBlockFlow {
     WTF_MAKE_ISO_ALLOCATED(RenderRubyText);
@@ -58,6 +58,6 @@ private:
     void adjustInlineDirectionLineBounds(int expansionOpportunityCount, float& logicalLeft, float& logicalWidth) const override;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderRubyText, isRubyText())

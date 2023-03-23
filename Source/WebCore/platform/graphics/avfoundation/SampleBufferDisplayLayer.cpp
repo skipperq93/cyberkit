@@ -29,7 +29,7 @@
 #include "IntSize.h"
 #include "LocalSampleBufferDisplayLayer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 SampleBufferDisplayLayer::LayerCreator SampleBufferDisplayLayer::m_layerCreator = nullptr;
 void SampleBufferDisplayLayer::setCreator(LayerCreator creator)

@@ -57,16 +57,16 @@ HTTPCookieStore::~HTTPCookieStore()
     ASSERT(m_observers.isEmptyIgnoringNullReferences());
 }
 
-void HTTPCookieStore::filterAppBoundCookies(Vector<WebCore::Cookie>&& cookies, CompletionHandler<void(Vector<WebCore::Cookie>&&)>&& completionHandler)
+void HTTPCookieStore::filterAppBoundCookies(Vector<CyberCore::Cookie>&& cookies, CompletionHandler<void(Vector<CyberCore::Cookie>&&)>&& completionHandler)
 {
 #if ENABLE(APP_BOUND_DOMAINS)
     if (!m_owningDataStore)
         return completionHandler({ });
     m_owningDataStore->getAppBoundDomains([cookies = WTFMove(cookies), completionHandler = WTFMove(completionHandler)] (auto& domains) mutable {
-        Vector<WebCore::Cookie> appBoundCookies;
+        Vector<CyberCore::Cookie> appBoundCookies;
         if (!domains.isEmpty() && !isFullWebBrowser()) {
             for (auto& cookie : WTFMove(cookies)) {
-                if (domains.contains(WebCore::RegistrableDomain::uncheckedCreateFromHost(cookie.domain)))
+                if (domains.contains(CyberCore::RegistrableDomain::uncheckedCreateFromHost(cookie.domain)))
                     appBoundCookies.append(WTFMove(cookie));
             }
         } else
@@ -78,27 +78,27 @@ void HTTPCookieStore::filterAppBoundCookies(Vector<WebCore::Cookie>&& cookies, C
 #endif
 }
 
-void HTTPCookieStore::cookies(CompletionHandler<void(const Vector<WebCore::Cookie>&)>&& completionHandler)
+void HTTPCookieStore::cookies(CompletionHandler<void(const Vector<CyberCore::Cookie>&)>&& completionHandler)
 {
     if (auto* networkProcess = networkProcessIfExists()) {
-        networkProcess->sendWithAsyncReply(Messages::WebCookieManager::GetAllCookies(m_sessionID), [this, protectedThis = Ref { *this }, completionHandler = WTFMove(completionHandler)] (Vector<WebCore::Cookie>&& cookies) mutable {
+        networkProcess->sendWithAsyncReply(Messages::WebCookieManager::GetAllCookies(m_sessionID), [this, protectedThis = Ref { *this }, completionHandler = WTFMove(completionHandler)] (Vector<CyberCore::Cookie>&& cookies) mutable {
             filterAppBoundCookies(WTFMove(cookies), WTFMove(completionHandler));
         });
     } else
         completionHandler({ });
 }
 
-void HTTPCookieStore::cookiesForURL(WTF::URL&& url, CompletionHandler<void(Vector<WebCore::Cookie>&&)>&& completionHandler)
+void HTTPCookieStore::cookiesForURL(WTF::URL&& url, CompletionHandler<void(Vector<CyberCore::Cookie>&&)>&& completionHandler)
 {
     if (auto* networkProcess = networkProcessIfExists()) {
-        networkProcess->sendWithAsyncReply(Messages::WebCookieManager::GetCookies(m_sessionID, url), [this, protectedThis = Ref { *this }, completionHandler = WTFMove(completionHandler)] (Vector<WebCore::Cookie>&& cookies) mutable {
+        networkProcess->sendWithAsyncReply(Messages::WebCookieManager::GetCookies(m_sessionID, url), [this, protectedThis = Ref { *this }, completionHandler = WTFMove(completionHandler)] (Vector<CyberCore::Cookie>&& cookies) mutable {
             filterAppBoundCookies(WTFMove(cookies), WTFMove(completionHandler));
         });
     } else
         completionHandler({ });
 }
 
-void HTTPCookieStore::setCookies(Vector<WebCore::Cookie>&& cookies, CompletionHandler<void()>&& completionHandler)
+void HTTPCookieStore::setCookies(Vector<CyberCore::Cookie>&& cookies, CompletionHandler<void()>&& completionHandler)
 {
     filterAppBoundCookies(WTFMove(cookies), [this, protectedThis = Ref { *this }, completionHandler = WTFMove(completionHandler)] (auto&& appBoundCookies) mutable {
         if (auto* networkProcess = networkProcessLaunchingIfNecessary())
@@ -108,7 +108,7 @@ void HTTPCookieStore::setCookies(Vector<WebCore::Cookie>&& cookies, CompletionHa
     });
 }
 
-void HTTPCookieStore::deleteCookie(const WebCore::Cookie& cookie, CompletionHandler<void()>&& completionHandler)
+void HTTPCookieStore::deleteCookie(const CyberCore::Cookie& cookie, CompletionHandler<void()>&& completionHandler)
 {
     if (auto* networkProcess = networkProcessIfExists())
         networkProcess->sendWithAsyncReply(Messages::WebCookieManager::DeleteCookie(m_sessionID, cookie), WTFMove(completionHandler));
@@ -141,7 +141,7 @@ void HTTPCookieStore::deleteCookiesForHostnames(const Vector<WTF::String>& hostn
         completionHandler();
 }
 
-void HTTPCookieStore::setHTTPCookieAcceptPolicy(WebCore::HTTPCookieAcceptPolicy policy, CompletionHandler<void()>&& completionHandler)
+void HTTPCookieStore::setHTTPCookieAcceptPolicy(CyberCore::HTTPCookieAcceptPolicy policy, CompletionHandler<void()>&& completionHandler)
 {
     if (auto* networkProcess = networkProcessLaunchingIfNecessary())
         networkProcess->sendWithAsyncReply(Messages::WebCookieManager::SetHTTPCookieAcceptPolicy(policy), WTFMove(completionHandler));
@@ -149,7 +149,7 @@ void HTTPCookieStore::setHTTPCookieAcceptPolicy(WebCore::HTTPCookieAcceptPolicy 
         completionHandler();
 }
 
-void HTTPCookieStore::getHTTPCookieAcceptPolicy(CompletionHandler<void(const WebCore::HTTPCookieAcceptPolicy&)>&& completionHandler)
+void HTTPCookieStore::getHTTPCookieAcceptPolicy(CompletionHandler<void(const CyberCore::HTTPCookieAcceptPolicy&)>&& completionHandler)
 {
     if (auto* networkProcess = networkProcessLaunchingIfNecessary())
         networkProcess->sendWithAsyncReply(Messages::WebCookieManager::GetHTTPCookieAcceptPolicy(m_sessionID), WTFMove(completionHandler));

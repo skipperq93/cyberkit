@@ -1,6 +1,6 @@
 # This file is for macros that are used by multiple projects. If your macro is
 # exclusively needed in only one subdirectory of Source (e.g. only needed by
-# WebCore), then put it there instead.
+# CyberCore), then put it there instead.
 
 macro(WEBKIT_COMPUTE_SOURCES _framework)
     set(_derivedSourcesPath ${${_framework}_DERIVED_SOURCES_DIR})
@@ -13,8 +13,8 @@ macro(WEBKIT_COMPUTE_SOURCES _framework)
     endforeach ()
 
     set(gusb_args --derived-sources-path ${_derivedSourcesPath} --source-tree-path ${CMAKE_CURRENT_SOURCE_DIR})
-    # Windows needs a larger bundle size because that helps keep WebCore.lib's size below the 4GB maximum in debug builds.
-    if (MSVC AND ${_framework} STREQUAL "WebCore" AND ${_framework}_LIBRARY_TYPE STREQUAL "STATIC")
+    # Windows needs a larger bundle size because that helps keep CyberCore.lib's size below the 4GB maximum in debug builds.
+    if (MSVC AND ${_framework} STREQUAL "CyberCore" AND ${_framework}_LIBRARY_TYPE STREQUAL "STATIC")
         list(APPEND gusb_args --max-bundle-size 16)
     endif ()
 
@@ -243,9 +243,9 @@ macro(_WEBKIT_FRAMEWORK_LINK_FRAMEWORK _target_name)
     foreach (framework IN LISTS _public_frameworks)
         # FIXME: https://bugs.webkit.org/show_bug.cgi?id=231774
         if (APPLE)
-            list(APPEND ${_target_name}_PRIVATE_LIBRARIES WebKit::${framework})
+            list(APPEND ${_target_name}_PRIVATE_LIBRARIES CyberKit::${framework})
         else ()
-            list(APPEND ${_target_name}_LIBRARIES WebKit::${framework})
+            list(APPEND ${_target_name}_LIBRARIES CyberKit::${framework})
         endif ()
     endforeach ()
 
@@ -263,12 +263,12 @@ macro(_WEBKIT_FRAMEWORK_LINK_FRAMEWORK _target_name)
                 ${${framework}_FRAMEWORK_HEADERS_DIR}
                 ${${framework}_PRIVATE_FRAMEWORK_HEADERS_DIR}
             )
-            list(APPEND ${_target_name}_PRIVATE_LIBRARIES WebKit::${framework})
+            list(APPEND ${_target_name}_PRIVATE_LIBRARIES CyberKit::${framework})
             if (${framework}_LIBRARY_TYPE STREQUAL "OBJECT")
                 list(APPEND ${_target_name}_PRIVATE_LIBRARIES $<TARGET_OBJECTS:${framework}>)
             endif ()
         else ()
-            list(APPEND ${_target_name}_LIBRARIES WebKit::${framework})
+            list(APPEND ${_target_name}_LIBRARIES CyberKit::${framework})
         endif ()
     endforeach ()
 
@@ -282,9 +282,9 @@ macro(_WEBKIT_TARGET_LINK_FRAMEWORK _target)
 
         # See if the target is linking a framework that the specified framework is already linked into
         if ((NOT _linked_into) OR (${framework} STREQUAL ${_linked_into}) OR (NOT ${_linked_into} IN_LIST ${_target}_FRAMEWORKS))
-            list(APPEND ${_target}_PRIVATE_LIBRARIES WebKit::${framework})
+            list(APPEND ${_target}_PRIVATE_LIBRARIES CyberKit::${framework})
 
-            # The WebKit:: alias targets do not propagate OBJECT libraries so the
+            # The CyberKit:: alias targets do not propagate OBJECT libraries so the
             # underyling library's objects are explicitly added to link properly
             if (TARGET ${framework} AND ${framework}_LIBRARY_TYPE STREQUAL "OBJECT")
                 list(APPEND ${_target}_PRIVATE_LIBRARIES $<TARGET_OBJECTS:${framework}>)
@@ -318,7 +318,7 @@ macro(_WEBKIT_TARGET_INTERFACE _target)
     if (NOT ${_target}_LIBRARY_TYPE STREQUAL "SHARED")
         target_compile_definitions(${_target}_PostBuild INTERFACE "STATICALLY_LINKED_WITH_${_target}")
     endif ()
-    add_library(WebKit::${_target} ALIAS ${_target}_PostBuild)
+    add_library(CyberKit::${_target} ALIAS ${_target}_PostBuild)
 endmacro()
 
 macro(WEBKIT_FRAMEWORK _target)

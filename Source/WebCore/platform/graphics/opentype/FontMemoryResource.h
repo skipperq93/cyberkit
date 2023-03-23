@@ -30,7 +30,7 @@
 #include <wtf/Ref.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FontMemoryResource : public RefCounted<FontMemoryResource> {
     WTF_MAKE_FAST_ALLOCATED;
@@ -55,6 +55,6 @@ private:
     HANDLE m_fontResourceHandle;
 };
     
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // OS(WINDOWS)

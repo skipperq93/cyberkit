@@ -25,9 +25,9 @@
 
 #import <CyberKitLegacy/DOMHTMLCollection.h>
 
-namespace WebCore {
+namespace CyberCore {
 class HTMLCollection;
 }
 
-DOMHTMLCollection *kit(WebCore::HTMLCollection*);
-Class kitClass(WebCore::HTMLCollection*);
+DOMHTMLCollection *kit(CyberCore::HTMLCollection*);
+Class kitClass(CyberCore::HTMLCollection*);

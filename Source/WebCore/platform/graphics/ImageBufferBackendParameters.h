@@ -30,7 +30,7 @@
 #include "PixelFormat.h"
 #include "RenderingMode.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ImageBufferBackendParameters {
     FloatSize logicalSize;

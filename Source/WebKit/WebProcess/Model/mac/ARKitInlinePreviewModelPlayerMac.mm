@@ -41,14 +41,14 @@
 SOFT_LINK_PRIVATE_FRAMEWORK(AssetViewer);
 SOFT_LINK_CLASS(AssetViewer, ASVInlinePreview);
 
-namespace WebKit {
+namespace CyberKit {
 
-Ref<ARKitInlinePreviewModelPlayerMac> ARKitInlinePreviewModelPlayerMac::create(WebPage& page, WebCore::ModelPlayerClient& client)
+Ref<ARKitInlinePreviewModelPlayerMac> ARKitInlinePreviewModelPlayerMac::create(WebPage& page, CyberCore::ModelPlayerClient& client)
 {
     return adoptRef(*new ARKitInlinePreviewModelPlayerMac(page, client));
 }
 
-ARKitInlinePreviewModelPlayerMac::ARKitInlinePreviewModelPlayerMac(WebPage& page, WebCore::ModelPlayerClient& client)
+ARKitInlinePreviewModelPlayerMac::ARKitInlinePreviewModelPlayerMac(WebPage& page, CyberCore::ModelPlayerClient& client)
     : ARKitInlinePreviewModelPlayer(page, client)
 {
 }
@@ -85,7 +85,7 @@ void ARKitInlinePreviewModelPlayerMac::setModelElementCacheDirectory(const Strin
     sharedModelElementCacheDirectory() = path;
 }
 
-void ARKitInlinePreviewModelPlayerMac::createFile(WebCore::Model& modelSource)
+void ARKitInlinePreviewModelPlayerMac::createFile(CyberCore::Model& modelSource)
 {
     // The need for a file is only temporary due to the nature of ASVInlinePreview,
     // https://bugs.webkit.org/show_bug.cgi?id=227567.
@@ -127,9 +127,9 @@ void ARKitInlinePreviewModelPlayerMac::clearFile()
     m_filePath = emptyString();
 }
 
-// MARK: - WebCore::ModelPlayer overrides.
+// MARK: - CyberCore::ModelPlayer overrides.
 
-void ARKitInlinePreviewModelPlayerMac::load(WebCore::Model& modelSource, WebCore::LayoutSize size)
+void ARKitInlinePreviewModelPlayerMac::load(CyberCore::Model& modelSource, CyberCore::LayoutSize size)
 {
     m_size = size;
 
@@ -139,7 +139,7 @@ void ARKitInlinePreviewModelPlayerMac::load(WebCore::Model& modelSource, WebCore
 
     RefPtr strongPage = page();
     if (!strongPage) {
-        strongClient->didFailLoading(*this, WebCore::ResourceError { WebCore::errorDomainWebKitInternal, 0, modelSource.url(), "WebPage destroyed"_s });
+        strongClient->didFailLoading(*this, CyberCore::ResourceError { CyberCore::errorDomainCyberKitInternal, 0, modelSource.url(), "WebPage destroyed"_s });
         return;
     }
 
@@ -159,11 +159,11 @@ void ARKitInlinePreviewModelPlayerMac::createPreviewsForModelWithURL(const URL& 
 
     RefPtr strongPage = page();
     if (!strongPage) {
-        strongClient->didFailLoading(*this, WebCore::ResourceError { WebCore::errorDomainWebKitInternal, 0, url, "WebPage destroyed"_s });
+        strongClient->didFailLoading(*this, CyberCore::ResourceError { CyberCore::errorDomainCyberKitInternal, 0, url, "WebPage destroyed"_s });
         return;
     }
 
-    CompletionHandler<void(Expected<std::pair<String, uint32_t>, WebCore::ResourceError>)> completionHandler = [weakSelf = WeakPtr { *this }, url] (Expected<std::pair<String, uint32_t>, WebCore::ResourceError> result) mutable {
+    CompletionHandler<void(Expected<std::pair<String, uint32_t>, CyberCore::ResourceError>)> completionHandler = [weakSelf = WeakPtr { *this }, url] (Expected<std::pair<String, uint32_t>, CyberCore::ResourceError> result) mutable {
         RefPtr strongSelf = weakSelf.get();
         if (!strongSelf)
             return;
@@ -183,7 +183,7 @@ void ARKitInlinePreviewModelPlayerMac::createPreviewsForModelWithURL(const URL& 
 
         if (uuid != expectedUUID) {
             LOG(ModelElement, "ARKitInlinePreviewModelPlayerMac::createPreviewsForModelWithURL() UUID mismatch, received %s but expected %s.", uuid.utf8().data(), expectedUUID.utf8().data());
-            strongClient->didFailLoading(*strongSelf, WebCore::ResourceError { WebCore::errorDomainWebKitInternal, 0, { }, makeString("ARKitInlinePreviewModelPlayer::createPreviewsForModelWithURL() UUID mismatch, received ", uuid, " but expected ", expectedUUID, ".") });
+            strongClient->didFailLoading(*strongSelf, CyberCore::ResourceError { CyberCore::errorDomainCyberKitInternal, 0, { }, makeString("ARKitInlinePreviewModelPlayer::createPreviewsForModelWithURL() UUID mismatch, received ", uuid, " but expected ", expectedUUID, ".") });
             return;
         }
 
@@ -205,11 +205,11 @@ void ARKitInlinePreviewModelPlayerMac::didCreateRemotePreviewForModelWithURL(con
 
     RefPtr strongPage = page();
     if (!strongPage) {
-        strongClient->didFailLoading(*this, WebCore::ResourceError { WebCore::errorDomainWebKitInternal, 0, url, "WebPage destroyed"_s });
+        strongClient->didFailLoading(*this, CyberCore::ResourceError { CyberCore::errorDomainCyberKitInternal, 0, url, "WebPage destroyed"_s });
         return;
     }
 
-    CompletionHandler<void(std::optional<WebCore::ResourceError>&&)> completionHandler = [weakSelf = WeakPtr { *this }] (std::optional<WebCore::ResourceError>&& error) mutable {
+    CompletionHandler<void(std::optional<CyberCore::ResourceError>&&)> completionHandler = [weakSelf = WeakPtr { *this }] (std::optional<CyberCore::ResourceError>&& error) mutable {
         RefPtr strongSelf = weakSelf.get();
         if (!strongSelf)
             return;
@@ -233,7 +233,7 @@ void ARKitInlinePreviewModelPlayerMac::didCreateRemotePreviewForModelWithURL(con
     strongPage->sendWithAsyncReply(Messages::WebPageProxy::ModelElementLoadRemotePreview([m_inlinePreview uuid].UUIDString, URL::fileURLWithFileSystemPath(m_filePath)), WTFMove(completionHandler));
 }
 
-void ARKitInlinePreviewModelPlayerMac::sizeDidChange(WebCore::LayoutSize size)
+void ARKitInlinePreviewModelPlayerMac::sizeDidChange(CyberCore::LayoutSize size)
 {
     if (m_size == size)
         return;
@@ -245,7 +245,7 @@ void ARKitInlinePreviewModelPlayerMac::sizeDidChange(WebCore::LayoutSize size)
         return;
 
     String uuid = [m_inlinePreview uuid].UUIDString;
-    CompletionHandler<void(Expected<MachSendRight, WebCore::ResourceError>)> completionHandler = [weakSelf = WeakPtr { *this }, strongPage, size] (Expected<MachSendRight, WebCore::ResourceError> result) mutable {
+    CompletionHandler<void(Expected<MachSendRight, CyberCore::ResourceError>)> completionHandler = [weakSelf = WeakPtr { *this }, strongPage, size] (Expected<MachSendRight, CyberCore::ResourceError> result) mutable {
         if (!result)
             return;
 

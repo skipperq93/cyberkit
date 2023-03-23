@@ -176,7 +176,7 @@ static void addToReadingList(NSURL *targetURL, NSString *title)
         break;
     case _WKElementActionTypeRevealImage:
 #if ENABLE(IMAGE_ANALYSIS)
-        title = WebCore::contextMenuItemTagLookUpImage();
+        title = CyberCore::contextMenuItemTagLookUpImage();
         handler = ^(WKActionSheetAssistant *assistant, _WKActivatedElementInfo *actionInfo) {
             [assistant handleElementActionWithType:type element:actionInfo needsInteraction:YES];
         };
@@ -184,7 +184,7 @@ static void addToReadingList(NSURL *targetURL, NSString *title)
         break;
     case _WKElementActionTypeCopyCroppedImage:
 #if ENABLE(IMAGE_ANALYSIS_ENHANCEMENTS)
-        title = WebCore::contextMenuItemTagCopySubject();
+        title = CyberCore::contextMenuItemTagCopySubject();
         handler = ^(WKActionSheetAssistant *assistant, _WKActivatedElementInfo *actionInfo) {
             [assistant handleElementActionWithType:type element:actionInfo needsInteraction:YES];
         };

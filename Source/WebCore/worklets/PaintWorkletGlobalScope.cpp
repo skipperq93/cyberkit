@@ -36,7 +36,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/SetForScope.h>
 
-namespace WebCore {
+namespace CyberCore {
 using namespace JSC;
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(PaintWorkletGlobalScope);
@@ -154,6 +154,6 @@ ExceptionOr<void> PaintWorkletGlobalScope::registerPaint(JSC::JSGlobalObject& gl
     return { };
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

@@ -31,7 +31,7 @@
 #include "FELightingSoftwareApplier.h"
 #include "Filter.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 FELighting::FELighting(Type type, const Color& lightingColor, float surfaceScale, float diffuseConstant, float specularConstant, float specularExponent, float kernelUnitLengthX, float kernelUnitLengthY, Ref<LightSource>&& lightSource)
     : FilterEffect(type)
@@ -92,4 +92,4 @@ std::unique_ptr<FilterEffectApplier> FELighting::createSoftwareApplier() const
     return FilterEffectApplier::create<FELightingSoftwareApplier>(*this);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

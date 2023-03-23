@@ -35,7 +35,7 @@
 
 OBJC_CLASS CALayer;
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScrollingTreeScrollingNodeDelegateMac;
 
@@ -84,6 +84,6 @@ private:
     bool m_hadFirstUpdate { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ASYNC_SCROLLING) && PLATFORM(MAC)

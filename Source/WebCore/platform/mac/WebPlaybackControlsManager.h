@@ -29,7 +29,7 @@
 #import <wtf/RetainPtr.h>
 #import <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 class PlaybackSessionInterfaceMac;
 struct MediaSelectionOption;
 }
@@ -49,7 +49,7 @@ WEBCORE_EXPORT
     RetainPtr<AVTouchBarMediaSelectionOption> _currentAudioTouchBarMediaSelectionOption;
     RetainPtr<NSArray<AVTouchBarMediaSelectionOption *>> _legibleTouchBarMediaSelectionOptions;
     RetainPtr<AVTouchBarMediaSelectionOption> _currentLegibleTouchBarMediaSelectionOption;
-    RefPtr<WebCore::PlaybackSessionInterfaceMac> _playbackSessionInterfaceMac;
+    RefPtr<CyberCore::PlaybackSessionInterfaceMac> _playbackSessionInterfaceMac;
     double _defaultPlaybackRate;
     float _rate;
     BOOL _playing;
@@ -59,7 +59,7 @@ WEBCORE_EXPORT
     BOOL _canSeek;
 }
 
-@property (assign) WebCore::PlaybackSessionInterfaceMac* playbackSessionInterfaceMac;
+@property (assign) CyberCore::PlaybackSessionInterfaceMac* playbackSessionInterfaceMac;
 @property (readwrite) NSTimeInterval contentDuration;
 @property (nonatomic, retain, readwrite) AVValueTiming *timing;
 @property (nonatomic) NSTimeInterval seekToTime;
@@ -80,8 +80,8 @@ WEBCORE_EXPORT
 - (void)setCurrentAudioTouchBarMediaSelectionOption:(AVTouchBarMediaSelectionOption *)option;
 - (AVTouchBarMediaSelectionOption *)currentLegibleTouchBarMediaSelectionOption;
 - (void)setCurrentLegibleTouchBarMediaSelectionOption:(AVTouchBarMediaSelectionOption *)option;
-- (void)setAudioMediaSelectionOptions:(const Vector<WebCore::MediaSelectionOption>&)options withSelectedIndex:(NSUInteger)selectedIndex;
-- (void)setLegibleMediaSelectionOptions:(const Vector<WebCore::MediaSelectionOption>&)options withSelectedIndex:(NSUInteger)selectedIndex;
+- (void)setAudioMediaSelectionOptions:(const Vector<CyberCore::MediaSelectionOption>&)options withSelectedIndex:(NSUInteger)selectedIndex;
+- (void)setLegibleMediaSelectionOptions:(const Vector<CyberCore::MediaSelectionOption>&)options withSelectedIndex:(NSUInteger)selectedIndex;
 - (void)setAudioMediaSelectionIndex:(NSUInteger)selectedIndex;
 - (void)setLegibleMediaSelectionIndex:(NSUInteger)selectedIndex;
 

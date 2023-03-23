@@ -36,7 +36,7 @@
 #include "ServiceWorkerTypes.h"
 #include "ServiceWorkerUpdateViaCache.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static ServiceWorkerRegistrationIdentifier generateServiceWorkerRegistrationIdentifier()
 {
@@ -363,7 +363,7 @@ bool SWServerRegistration::shouldSoftUpdate(const FetchOptions& options) const
     if (options.mode == FetchOptions::Mode::Navigate)
         return true;
 
-    return WebCore::isNonSubresourceRequest(options.destination) && isStale();
+    return CyberCore::isNonSubresourceRequest(options.destination) && isStale();
 }
 
 void SWServerRegistration::softUpdate()
@@ -419,6 +419,6 @@ std::optional<ExceptionData> SWServerRegistration::setNavigationPreloadHeaderVal
     return { };
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

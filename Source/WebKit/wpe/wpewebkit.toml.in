@@ -1,9 +1,9 @@
 [library]
-description = "The WPE WebKit library"
+description = "The WPE CyberKit library"
 license = "BSD, LGPL-2.1"
-authors = "The WebKit GTK and WPE teams"
+authors = "The CyberKit GTK and WPE teams"
 version = "@PROJECT_VERSION@"
-repository_url = "https://github.com/WebKit/WebKit"
+repository_url = "https://github.com/CyberKit/CyberKit"
 website_url = "https://webkit.org"
 dependencies = ["GObject-2.0", "Gio-2.0", "Soup-@SOUP_API_VERSION@"]
 devhelp = true
@@ -30,7 +30,7 @@ show_index_summary = true
 show_class_hierarchy = true
 
 [source-location]
-base_url = "https://github.com/WebKit/WebKit/tree/main"
+base_url = "https://github.com/CyberKit/CyberKit/tree/main"
 
 [extra]
 urlmap_file = "urlmap.js"

@@ -31,7 +31,7 @@
 #include "NotImplemented.h"
 #include <wtf/Assertions.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 void Widget::init(PlatformWidget widget)
 {
@@ -320,4 +320,4 @@ void Widget::setIsSelected(bool)
 
 #endif // !PLATFORM(COCOA) && !PLATFORM(GTK) && !PLATFORM(WIN)
 
-} // namespace WebCore
+} // namespace CyberCore

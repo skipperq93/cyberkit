@@ -59,7 +59,7 @@
 #define FRAME_ID (m_frame.loader().frameID().object().toUInt64())
 #define POLICYCHECKER_RELEASE_LOG(fmt, ...) RELEASE_LOG(Loading, "%p - [pageID=%" PRIu64 ", frameID=%" PRIu64 "] PolicyChecker::" fmt, this, PAGE_ID, FRAME_ID, ##__VA_ARGS__)
 
-namespace WebCore {
+namespace CyberCore {
 
 static bool isAllowedByContentSecurityPolicy(const URL& url, const Element* ownerElement, bool didReceiveRedirectResponse)
 {
@@ -320,7 +320,7 @@ void FrameLoader::PolicyChecker::handleUnimplementablePolicy(const ResourceError
     m_delegateIsHandlingUnimplementablePolicy = false;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #undef IS_ALLOWED
 #undef PAGE_ID

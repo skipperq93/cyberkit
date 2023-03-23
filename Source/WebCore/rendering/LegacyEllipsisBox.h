@@ -22,7 +22,7 @@
 #include "LegacyInlineElementBox.h"
 #include "RenderBlockFlow.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace InlineIterator {
 class LineBoxIteratorLegacyPath;
@@ -57,6 +57,6 @@ private:
     AtomString m_str;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_INLINE_BOX(LegacyEllipsisBox, isEllipsisBox())

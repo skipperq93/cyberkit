@@ -28,7 +28,7 @@
 
 #include "ResourceResponse.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 void addPolicyContainerHeaders(ResourceResponse& response, const PolicyContainer& policyContainer)
 {
@@ -38,4 +38,4 @@ void addPolicyContainerHeaders(ResourceResponse& response, const PolicyContainer
     response.setHTTPHeaderField(HTTPHeaderName::ReferrerPolicy, referrerPolicyToString(policyContainer.referrerPolicy));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

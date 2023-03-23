@@ -58,12 +58,12 @@ SOFT_LINK_PRIVATE_FRAMEWORK(AudioSession)
 SOFT_LINK_CONSTANT(AudioSession, AVAudioSessionPortBuiltInMic, NSString *)
 
 @interface WebAVAudioSessionAvailableInputsListener : NSObject {
-    WebCore::AVAudioSessionCaptureDeviceManager* _callback;
+    CyberCore::AVAudioSessionCaptureDeviceManager* _callback;
 }
 @end
 
 @implementation WebAVAudioSessionAvailableInputsListener
-- (id)initWithCallback:(WebCore::AVAudioSessionCaptureDeviceManager *)callback audioSession:(AVAudioSession *)session
+- (id)initWithCallback:(CyberCore::AVAudioSessionCaptureDeviceManager *)callback audioSession:(AVAudioSession *)session
 {
     self = [super init];
     if (!self)
@@ -95,7 +95,7 @@ SOFT_LINK_CONSTANT(AudioSession, AVAudioSessionPortBuiltInMic, NSString *)
 
 @end
 
-namespace WebCore {
+namespace CyberCore {
 
 AVAudioSessionCaptureDeviceManager& AVAudioSessionCaptureDeviceManager::singleton()
 {
@@ -375,6 +375,6 @@ void AVAudioSessionCaptureDeviceManager::disableAllDevicesQuery()
     m_audioSessionState = AudioSessionState::NotNeeded;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM) && PLATFORM(IOS_FAMILY)

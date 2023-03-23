@@ -28,11 +28,11 @@
 #include <CyberCore/FloatSize.h>
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 class RenderImage;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class ShareableBitmap;
 
@@ -40,11 +40,11 @@ enum class UseSnapshotForTransparentImages : bool { No, Yes };
 enum class AllowAnimatedImages : bool { No, Yes };
 
 struct CreateShareableBitmapFromImageOptions {
-    std::optional<WebCore::FloatSize> screenSizeInPixels;
+    std::optional<CyberCore::FloatSize> screenSizeInPixels;
     AllowAnimatedImages allowAnimatedImages { AllowAnimatedImages::Yes };
     UseSnapshotForTransparentImages useSnapshotForTransparentImages { UseSnapshotForTransparentImages::No };
 };
 
-RefPtr<ShareableBitmap> createShareableBitmap(WebCore::RenderImage&, CreateShareableBitmapFromImageOptions&& = { });
+RefPtr<ShareableBitmap> createShareableBitmap(CyberCore::RenderImage&, CreateShareableBitmapFromImageOptions&& = { });
 
 };

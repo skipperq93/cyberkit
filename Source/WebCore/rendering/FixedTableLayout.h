@@ -25,7 +25,7 @@
 #include "TableLayout.h"
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderTable;
 
@@ -43,4 +43,4 @@ private:
     Vector<Length> m_width;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

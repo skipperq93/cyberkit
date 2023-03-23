@@ -31,7 +31,7 @@
 
 class AudioStreamDescription;
 
-namespace WebCore {
+namespace CyberCore {
 
 struct AudioInfo;
 

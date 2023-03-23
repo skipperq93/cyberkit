@@ -24,7 +24,7 @@
  */
 
 #import <Foundation/Foundation.h>
-#import <CyberKitLegacy/WebKitAvailability.h>
+#import <CyberKitLegacy/CyberKitAvailability.h>
 
 #if defined(TARGET_OS_MACCATALYST) && TARGET_OS_MACCATALYST
 #import <CFNetwork/CFNSURLConnection.h>

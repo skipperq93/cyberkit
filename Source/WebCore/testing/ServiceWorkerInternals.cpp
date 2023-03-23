@@ -40,7 +40,7 @@
 #include "ServiceWorkerRegistration.h"
 #include <wtf/ProcessID.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 ServiceWorkerInternals::ServiceWorkerInternals(ServiceWorkerGlobalScope& globalScope, ServiceWorkerIdentifier identifier)
     : m_identifier(identifier)
@@ -208,6 +208,6 @@ void ServiceWorkerInternals::setAsInspected(bool isInspected)
     SWContextManager::singleton().setAsInspected(m_identifier, isInspected);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

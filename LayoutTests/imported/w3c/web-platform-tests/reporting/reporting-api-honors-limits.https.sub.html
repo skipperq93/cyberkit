@@ -31,7 +31,7 @@
           observer.observe();
       });
 
-      // WebKit generates two CSP reports for the blocked image load (https://bugs.webkit.org/show_bug.cgi?id=153162)
+      // CyberKit generates two CSP reports for the blocked image load (https://bugs.webkit.org/show_bug.cgi?id=153162)
       assert_true(cspReports.length > 0 && cspReports.length < 3);
 
       // Ensure that the contents of the report are valid.

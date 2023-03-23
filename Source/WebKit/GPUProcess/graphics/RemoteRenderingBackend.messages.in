@@ -23,26 +23,26 @@
 #if ENABLE(GPU_PROCESS)
 
 messages -> RemoteRenderingBackend NotRefCounted Stream {
-    CreateImageBuffer(WebCore::FloatSize logicalSize, WebCore::RenderingMode renderingMode, WebCore::RenderingPurpose renderingPurpose, float resolutionScale, WebCore::DestinationColorSpace colorSpace, enum:uint8_t WebCore::PixelFormat pixelFormat, WebCore::RenderingResourceIdentifier renderingResourceIdentifier)
-    GetPixelBufferForImageBuffer(WebCore::RenderingResourceIdentifier imageBuffer, struct WebCore::PixelBufferFormat outputFormat, WebCore::IntRect srcRect) -> () Synchronous
-    GetPixelBufferForImageBufferWithNewMemory(WebCore::RenderingResourceIdentifier imageBuffer, WebKit::SharedMemory::Handle handle, struct WebCore::PixelBufferFormat outputFormat, WebCore::IntRect srcRect) -> () Synchronous NotStreamEncodable
+    CreateImageBuffer(CyberCore::FloatSize logicalSize, CyberCore::RenderingMode renderingMode, CyberCore::RenderingPurpose renderingPurpose, float resolutionScale, CyberCore::DestinationColorSpace colorSpace, enum:uint8_t CyberCore::PixelFormat pixelFormat, CyberCore::RenderingResourceIdentifier renderingResourceIdentifier)
+    GetPixelBufferForImageBuffer(CyberCore::RenderingResourceIdentifier imageBuffer, struct CyberCore::PixelBufferFormat outputFormat, CyberCore::IntRect srcRect) -> () Synchronous
+    GetPixelBufferForImageBufferWithNewMemory(CyberCore::RenderingResourceIdentifier imageBuffer, WebKit::SharedMemory::Handle handle, struct CyberCore::PixelBufferFormat outputFormat, CyberCore::IntRect srcRect) -> () Synchronous NotStreamEncodable
     DestroyGetPixelBufferSharedMemory()
-    PutPixelBufferForImageBuffer(WebCore::RenderingResourceIdentifier imageBuffer, Ref<WebCore::PixelBuffer> pixelBuffer,  WebCore::IntRect srcRect, WebCore::IntPoint destPoint, enum:uint8_t WebCore::AlphaPremultiplication destFormat)
-    GetShareableBitmapForImageBuffer(WebCore::RenderingResourceIdentifier imageBuffer, enum:bool WebCore::PreserveResolution preserveResolution) -> (WebKit::ShareableBitmapHandle handle) Synchronous NotStreamEncodableReply
-    GetFilteredImageForImageBuffer(WebCore::RenderingResourceIdentifier imageBuffer, Ref<WebCore::Filter> filter) -> (WebKit::ShareableBitmapHandle handle) Synchronous NotStreamEncodableReply
-    CacheNativeImage(WebKit::ShareableBitmapHandle handle, WebCore::RenderingResourceIdentifier renderingResourceIdentifier) NotStreamEncodable
-    CacheFont(Ref<WebCore::Font> font) NotStreamEncodable
-    CacheDecomposedGlyphs(Ref<WebCore::DecomposedGlyphs> decomposedGlyphs) NotStreamEncodable
+    PutPixelBufferForImageBuffer(CyberCore::RenderingResourceIdentifier imageBuffer, Ref<CyberCore::PixelBuffer> pixelBuffer,  CyberCore::IntRect srcRect, CyberCore::IntPoint destPoint, enum:uint8_t CyberCore::AlphaPremultiplication destFormat)
+    GetShareableBitmapForImageBuffer(CyberCore::RenderingResourceIdentifier imageBuffer, enum:bool CyberCore::PreserveResolution preserveResolution) -> (WebKit::ShareableBitmapHandle handle) Synchronous NotStreamEncodableReply
+    GetFilteredImageForImageBuffer(CyberCore::RenderingResourceIdentifier imageBuffer, Ref<CyberCore::Filter> filter) -> (WebKit::ShareableBitmapHandle handle) Synchronous NotStreamEncodableReply
+    CacheNativeImage(WebKit::ShareableBitmapHandle handle, CyberCore::RenderingResourceIdentifier renderingResourceIdentifier) NotStreamEncodable
+    CacheFont(Ref<CyberCore::Font> font) NotStreamEncodable
+    CacheDecomposedGlyphs(Ref<CyberCore::DecomposedGlyphs> decomposedGlyphs) NotStreamEncodable
     ReleaseAllResources()
-    ReleaseResource(WebCore::RenderingResourceIdentifier renderingResourceIdentifier)
+    ReleaseResource(CyberCore::RenderingResourceIdentifier renderingResourceIdentifier)
 
     PrepareBuffersForDisplay(Vector<WebKit::PrepareBackingStoreBuffersInputData> swapBuffersInput) -> (Vector<WebKit::PrepareBackingStoreBuffersOutputData> swapBuffersOutput) Synchronous NotStreamEncodable NotStreamEncodableReply
 
-    MarkSurfacesVolatile(WebKit::MarkSurfacesAsVolatileRequestIdentifier requestIdentifier, Vector<WebCore::RenderingResourceIdentifier> renderingResourceIdentifiers)
+    MarkSurfacesVolatile(WebKit::MarkSurfacesAsVolatileRequestIdentifier requestIdentifier, Vector<CyberCore::RenderingResourceIdentifier> renderingResourceIdentifiers)
     FinalizeRenderingUpdate(WebKit::RenderingUpdateID renderingUpdateID)
 
-    MoveToSerializedBuffer(WebCore::RenderingResourceIdentifier sourceImageBuffer, WebKit::RemoteSerializedImageBufferWriteReference destination)
-    MoveToImageBuffer(WebKit::RemoteSerializedImageBufferWriteReference source, WebCore::RenderingResourceIdentifier destinationImageBuffer)
+    MoveToSerializedBuffer(CyberCore::RenderingResourceIdentifier sourceImageBuffer, WebKit::RemoteSerializedImageBufferWriteReference destination)
+    MoveToImageBuffer(WebKit::RemoteSerializedImageBufferWriteReference source, CyberCore::RenderingResourceIdentifier destinationImageBuffer)
 }
 
 #endif // ENABLE(GPU_PROCESS)

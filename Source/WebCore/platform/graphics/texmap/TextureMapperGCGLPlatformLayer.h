@@ -26,7 +26,7 @@
 #include "TextureMapperPlatformLayer.h"
 #include "TextureMapperPlatformLayerProxyProvider.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class TextureMapperPlatformLayerProxy;
 
@@ -42,6 +42,6 @@ private:
     GraphicsContextGLTextureMapperANGLE& m_context;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBGL) && USE(TEXTURE_MAPPER)

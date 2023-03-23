@@ -31,7 +31,7 @@
 
 #if PLATFORM(COCOA)
 
-namespace WebCore {
+namespace CyberCore {
 
 struct KeypressCommand {
     KeypressCommand() { }
@@ -42,7 +42,7 @@ struct KeypressCommand {
     String text;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif
 

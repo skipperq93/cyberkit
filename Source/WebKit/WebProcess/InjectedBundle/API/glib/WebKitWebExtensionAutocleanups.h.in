@@ -19,21 +19,21 @@
 
 @INJECTED_BUNDLE_API_SINGLE_HEADER_CHECK@
 
-#ifndef WebKitWebExtensionAutocleanups_h
-#define WebKitWebExtensionAutocleanups_h
+#ifndef CyberKitWebExtensionAutocleanups_h
+#define CyberKitWebExtensionAutocleanups_h
 
 #ifdef G_DEFINE_AUTOPTR_CLEANUP_FUNC
 #ifndef __GI_SCANNER__
 
-G_DEFINE_AUTOPTR_CLEANUP_FUNC (WebKitFrame, g_object_unref)
-G_DEFINE_AUTOPTR_CLEANUP_FUNC (WebKitScriptWorld, g_object_unref)
-G_DEFINE_AUTOPTR_CLEANUP_FUNC (WebKitUserMessage, g_object_unref)
-G_DEFINE_AUTOPTR_CLEANUP_FUNC (WebKitWebEditor, g_object_unref)
-G_DEFINE_AUTOPTR_CLEANUP_FUNC (WebKitWebExtension, g_object_unref)
-G_DEFINE_AUTOPTR_CLEANUP_FUNC (WebKitWebHitTestResult, g_object_unref)
-G_DEFINE_AUTOPTR_CLEANUP_FUNC (WebKitWebPage, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitFrame, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitScriptWorld, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitUserMessage, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitWebEditor, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitWebExtension, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitWebHitTestResult, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (CyberKitWebPage, g_object_unref)
 
 #endif /* __GI_SCANNER__ */
 #endif /* G_DEFINE_AUTOPTR_CLEANUP_FUNC */
 
-#endif /* WebKitWebExtensionAutocleanups_h */
+#endif /* CyberKitWebExtensionAutocleanups_h */

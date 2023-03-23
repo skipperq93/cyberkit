@@ -30,7 +30,7 @@
 #include "CachedResourceHandle.h"
 #include "StyleGeneratedImage.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct BlendingContext;
 
@@ -79,6 +79,6 @@ private:
     bool m_inputImagesAreReady;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_STYLE_IMAGE(StyleCrossfadeImage, isCrossfadeImage)

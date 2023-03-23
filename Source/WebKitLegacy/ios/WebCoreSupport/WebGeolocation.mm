@@ -28,11 +28,11 @@
 #import "WebGeolocationInternal.h"
 #import <CyberCore/Geolocation.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 @implementation WebGeolocation (WebInternal)
 
-- (id)_initWithWebCoreGeolocation:(WebCoreGeolocation *)geolocation
+- (id)_initWithCyberCoreGeolocation:(CyberCoreGeolocation *)geolocation
 {
     ASSERT(geolocation);
 

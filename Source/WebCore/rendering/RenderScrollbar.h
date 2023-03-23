@@ -30,7 +30,7 @@
 #include "Scrollbar.h"
 #include <wtf/HashMap.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Frame;
 class Element;
@@ -89,8 +89,8 @@ private:
     HashMap<unsigned, RenderPtr<RenderScrollbarPart>> m_parts;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::RenderScrollbar)
-    static bool isType(const WebCore::Scrollbar& scrollbar) { return scrollbar.isCustomScrollbar(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::RenderScrollbar)
+    static bool isType(const CyberCore::Scrollbar& scrollbar) { return scrollbar.isCustomScrollbar(); }
 SPECIALIZE_TYPE_TRAITS_END()

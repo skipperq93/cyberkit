@@ -34,7 +34,7 @@
 #include <IOKit/hid/IOHIDUsageTables.h>
 #include <wtf/HexNumber.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Dualshock3HIDGamepad::Dualshock3HIDGamepad(HIDDevice&& device, unsigned index)
     : HIDGamepad(WTFMove(device), index)
@@ -114,6 +114,6 @@ Dualshock3HIDGamepad::Dualshock3HIDGamepad(HIDDevice&& device, unsigned index)
     mapButton(pointerElements[16], GamepadButtonRole::RightClusterLeft);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(GAMEPAD) && PLATFORM(MAC)

@@ -282,7 +282,7 @@ static bool laContextRequested = false;
 @end
 
 namespace TestWebKitAPI {
-using namespace WebCore;
+using namespace CyberCore;
 
 namespace {
 
@@ -1504,7 +1504,7 @@ TEST(WebAuthenticationPanel, PublicKeyCredentialCreationOptionsMinimum)
     EXPECT_WK_STREQ(result.user.displayName, "J Appleseed");
 
     EXPECT_EQ(result.pubKeyCredParams.size(), 1lu);
-    EXPECT_EQ(result.pubKeyCredParams[0].type, WebCore::PublicKeyCredentialType::PublicKey);
+    EXPECT_EQ(result.pubKeyCredParams[0].type, CyberCore::PublicKeyCredentialType::PublicKey);
     EXPECT_EQ(result.pubKeyCredParams[0].alg, -7);
 
     EXPECT_EQ(result.timeout, std::nullopt);
@@ -1548,15 +1548,15 @@ TEST(WebAuthenticationPanel, PublicKeyCredentialCreationOptionsMaximumDefault)
     EXPECT_WK_STREQ(result.user.displayName, "J Appleseed");
 
     EXPECT_EQ(result.pubKeyCredParams.size(), 2lu);
-    EXPECT_EQ(result.pubKeyCredParams[0].type, WebCore::PublicKeyCredentialType::PublicKey);
+    EXPECT_EQ(result.pubKeyCredParams[0].type, CyberCore::PublicKeyCredentialType::PublicKey);
     EXPECT_EQ(result.pubKeyCredParams[0].alg, -7);
-    EXPECT_EQ(result.pubKeyCredParams[1].type, WebCore::PublicKeyCredentialType::PublicKey);
+    EXPECT_EQ(result.pubKeyCredParams[1].type, CyberCore::PublicKeyCredentialType::PublicKey);
     EXPECT_EQ(result.pubKeyCredParams[1].alg, -257);
 
     EXPECT_EQ(result.timeout, 120u);
 
     EXPECT_EQ(result.excludeCredentials.size(), 1lu);
-    EXPECT_EQ(result.excludeCredentials[0].type, WebCore::PublicKeyCredentialType::PublicKey);
+    EXPECT_EQ(result.excludeCredentials[0].type, CyberCore::PublicKeyCredentialType::PublicKey);
     EXPECT_EQ(result.excludeCredentials[0].id.length(), sizeof(identifier));
     EXPECT_EQ(memcmp(result.excludeCredentials[0].id.data(), identifier, sizeof(identifier)), 0);
 
@@ -1616,15 +1616,15 @@ TEST(WebAuthenticationPanel, PublicKeyCredentialCreationOptionsMaximum1)
     EXPECT_WK_STREQ(result.user.displayName, "J Appleseed");
 
     EXPECT_EQ(result.pubKeyCredParams.size(), 2lu);
-    EXPECT_EQ(result.pubKeyCredParams[0].type, WebCore::PublicKeyCredentialType::PublicKey);
+    EXPECT_EQ(result.pubKeyCredParams[0].type, CyberCore::PublicKeyCredentialType::PublicKey);
     EXPECT_EQ(result.pubKeyCredParams[0].alg, -7);
-    EXPECT_EQ(result.pubKeyCredParams[1].type, WebCore::PublicKeyCredentialType::PublicKey);
+    EXPECT_EQ(result.pubKeyCredParams[1].type, CyberCore::PublicKeyCredentialType::PublicKey);
     EXPECT_EQ(result.pubKeyCredParams[1].alg, -257);
 
     EXPECT_EQ(result.timeout, 120u);
 
     EXPECT_EQ(result.excludeCredentials.size(), 2lu);
-    EXPECT_EQ(result.excludeCredentials[0].type, WebCore::PublicKeyCredentialType::PublicKey);
+    EXPECT_EQ(result.excludeCredentials[0].type, CyberCore::PublicKeyCredentialType::PublicKey);
     EXPECT_EQ(result.excludeCredentials[0].id.length(), sizeof(identifier));
     EXPECT_EQ(memcmp(result.excludeCredentials[0].id.data(), identifier, sizeof(identifier)), 0);
     EXPECT_EQ(result.excludeCredentials[0].transports.size(), 4lu);
@@ -1687,15 +1687,15 @@ TEST(WebAuthenticationPanel, PublicKeyCredentialCreationOptionsMaximum2)
     EXPECT_WK_STREQ(result.user.displayName, "J Appleseed");
 
     EXPECT_EQ(result.pubKeyCredParams.size(), 2lu);
-    EXPECT_EQ(result.pubKeyCredParams[0].type, WebCore::PublicKeyCredentialType::PublicKey);
+    EXPECT_EQ(result.pubKeyCredParams[0].type, CyberCore::PublicKeyCredentialType::PublicKey);
     EXPECT_EQ(result.pubKeyCredParams[0].alg, -7);
-    EXPECT_EQ(result.pubKeyCredParams[1].type, WebCore::PublicKeyCredentialType::PublicKey);
+    EXPECT_EQ(result.pubKeyCredParams[1].type, CyberCore::PublicKeyCredentialType::PublicKey);
     EXPECT_EQ(result.pubKeyCredParams[1].alg, -257);
 
     EXPECT_EQ(result.timeout, 120u);
 
     EXPECT_EQ(result.excludeCredentials.size(), 2lu);
-    EXPECT_EQ(result.excludeCredentials[0].type, WebCore::PublicKeyCredentialType::PublicKey);
+    EXPECT_EQ(result.excludeCredentials[0].type, CyberCore::PublicKeyCredentialType::PublicKey);
     EXPECT_EQ(result.excludeCredentials[0].id.length(), sizeof(identifier));
     EXPECT_EQ(memcmp(result.excludeCredentials[0].id.data(), identifier, sizeof(identifier)), 0);
     EXPECT_EQ(result.excludeCredentials[0].transports.size(), 3lu);
@@ -1879,7 +1879,7 @@ TEST(WebAuthenticationPanel, PublicKeyCredentialRequestOptionsMaximumDefault)
     EXPECT_EQ(result.timeout, 120u);
 
     EXPECT_EQ(result.allowCredentials.size(), 1lu);
-    EXPECT_EQ(result.allowCredentials[0].type, WebCore::PublicKeyCredentialType::PublicKey);
+    EXPECT_EQ(result.allowCredentials[0].type, CyberCore::PublicKeyCredentialType::PublicKey);
     EXPECT_EQ(result.allowCredentials[0].id.length(), sizeof(identifier));
     EXPECT_EQ(memcmp(result.allowCredentials[0].id.data(), identifier, sizeof(identifier)), 0);
 
@@ -1913,7 +1913,7 @@ TEST(WebAuthenticationPanel, PublicKeyCredentialRequestOptionsMaximum)
     EXPECT_EQ(result.timeout, 120u);
 
     EXPECT_EQ(result.allowCredentials.size(), 2lu);
-    EXPECT_EQ(result.allowCredentials[0].type, WebCore::PublicKeyCredentialType::PublicKey);
+    EXPECT_EQ(result.allowCredentials[0].type, CyberCore::PublicKeyCredentialType::PublicKey);
     EXPECT_EQ(result.allowCredentials[0].id.length(), sizeof(identifier));
     EXPECT_EQ(memcmp(result.allowCredentials[0].id.data(), identifier, sizeof(identifier)), 0);
     EXPECT_EQ(result.allowCredentials[0].transports.size(), 3lu);

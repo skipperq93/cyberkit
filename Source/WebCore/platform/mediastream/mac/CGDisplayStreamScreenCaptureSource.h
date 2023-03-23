@@ -37,7 +37,7 @@
 typedef struct __CVBuffer *CVPixelBufferRef;
 typedef struct opaqueCMSampleBuffer *CMSampleBufferRef;
 
-namespace WebCore {
+namespace CyberCore {
 
 class CGDisplayStreamScreenCaptureSource final : public CGDisplayStreamCaptureSource {
 public:
@@ -68,6 +68,6 @@ private:
     uint32_t m_displayID { 0 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM) && PLATFORM(MAC)

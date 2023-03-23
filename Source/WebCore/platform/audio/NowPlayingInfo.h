@@ -31,7 +31,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct NowPlayingInfoArtwork {
     String src;
@@ -167,4 +167,4 @@ template<class Decoder> inline std::optional<NowPlayingInfo> NowPlayingInfo::dec
     return NowPlayingInfo { WTFMove(title), WTFMove(artist), WTFMove(album), WTFMove(sourceApplicationIdentifier), duration, currentTime, rate, supportsSeeking, uniqueIdentifier, isPlaying, allowsNowPlayingControlsVisibility, WTFMove(artwork) };
 }
 
-} // namespace WebCore
+} // namespace CyberCore

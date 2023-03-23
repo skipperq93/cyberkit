@@ -37,7 +37,7 @@
 #include "WorkerOptions.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(AbstractWorker);
 
@@ -74,4 +74,4 @@ ExceptionOr<URL> AbstractWorker::resolveURL(const String& url)
     return scriptURL;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

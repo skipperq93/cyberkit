@@ -41,7 +41,7 @@
 #include <wtf/StackStats.h>
 #include <wtf/Ref.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(RenderWidget);
 
@@ -480,4 +480,4 @@ RenderBox* RenderWidget::embeddedContentBox() const
     return downcast<FrameView>(*widget()).embeddedContentBox();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

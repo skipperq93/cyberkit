@@ -28,7 +28,7 @@
 #include "PerformanceEntry.h"
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class PerformancePaintTiming final : public PerformanceEntry {
 public:
@@ -49,4 +49,4 @@ private:
     ~PerformancePaintTiming() = default;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

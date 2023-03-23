@@ -35,7 +35,7 @@
 #include "ScrollingTreeNode.h"
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScrollingTreeStickyNode : public ScrollingTreeNode {
 public:
@@ -57,7 +57,7 @@ protected:
     StickyPositionViewportConstraints m_constraints;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_SCROLLING_NODE(ScrollingTreeStickyNode, isStickyNode())
 

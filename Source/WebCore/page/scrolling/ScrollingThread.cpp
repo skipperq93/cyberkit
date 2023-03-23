@@ -32,7 +32,7 @@
 #include <wtf/MainThread.h>
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 ScrollingThread& ScrollingThread::singleton()
 {
@@ -46,7 +46,7 @@ ScrollingThread& ScrollingThread::singleton()
 }
 
 ScrollingThread::ScrollingThread()
-    : m_runLoop(RunLoop::create("WebCore: Scrolling"_s, ThreadType::Graphics, Thread::QOS::UserInteractive))
+    : m_runLoop(RunLoop::create("CyberCore: Scrolling"_s, ThreadType::Graphics, Thread::QOS::UserInteractive))
 {
 }
 
@@ -67,6 +67,6 @@ void ScrollingThread::dispatchBarrier(Function<void ()>&& function)
     });
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SCROLLING_THREAD)

@@ -29,7 +29,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 class StorageNamespaceProvider;
 class UserContentController;
 }
@@ -48,8 +48,8 @@ public:
     void addWebView(WebView *);
     void removeWebView(WebView *);
 
-    WebCore::StorageNamespaceProvider& storageNamespaceProvider();
-    WebCore::UserContentController& userContentController() { return m_userContentController.get(); }
+    CyberCore::StorageNamespaceProvider& storageNamespaceProvider();
+    CyberCore::UserContentController& userContentController() { return m_userContentController.get(); }
     WebVisitedLinkStore& visitedLinkStore() { return m_visitedLinkStore.get(); }
 
 private:
@@ -59,8 +59,8 @@ private:
     HashSet<WebView *> m_webViews;
 
     String m_localStorageDatabasePath;
-    RefPtr<WebCore::StorageNamespaceProvider> m_storageNamespaceProvider;
+    RefPtr<CyberCore::StorageNamespaceProvider> m_storageNamespaceProvider;
 
-    Ref<WebCore::UserContentController> m_userContentController;
+    Ref<CyberCore::UserContentController> m_userContentController;
     Ref<WebVisitedLinkStore> m_visitedLinkStore;
 };

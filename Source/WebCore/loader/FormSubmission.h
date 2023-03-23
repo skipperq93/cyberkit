@@ -36,7 +36,7 @@
 #include <wtf/URL.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Event;
 class FormData;
@@ -137,4 +137,4 @@ private:
     ReferrerPolicy m_referrerPolicy { ReferrerPolicy::EmptyString };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

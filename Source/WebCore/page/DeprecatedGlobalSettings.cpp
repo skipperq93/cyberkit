@@ -36,7 +36,7 @@
 #include "MediaSessionManagerCocoa.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 DeprecatedGlobalSettings& DeprecatedGlobalSettings::shared()
 {
@@ -167,4 +167,4 @@ bool DeprecatedGlobalSettings::allowsAnySSLCertificate()
     return shared().m_allowsAnySSLCertificate;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

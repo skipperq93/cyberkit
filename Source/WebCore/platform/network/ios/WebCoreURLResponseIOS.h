@@ -31,12 +31,12 @@
 #if PLATFORM(IOS_FAMILY)
 
 #include "MIMETypeRegistry.h"
-#include "WebCoreURLResponse.h"
+#include "CyberCoreURLResponse.h"
 #include <wtf/text/WTFString.h>
 
 #if USE(QUICK_LOOK)
     
-namespace WebCore {
+namespace CyberCore {
 
 inline bool shouldUseQuickLookForMIMEType(const String& mimeType)
 {
@@ -54,7 +54,7 @@ inline bool shouldUseQuickLookForMIMEType(const String& mimeType)
     return false;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(QUICK_LOOK)
 

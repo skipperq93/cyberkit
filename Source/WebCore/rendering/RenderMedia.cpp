@@ -33,7 +33,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/StackStats.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(RenderMedia);
 
@@ -71,6 +71,6 @@ void RenderMedia::styleDidChange(StyleDifference difference, const RenderStyle* 
         mediaElement().visibilityDidChange();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

@@ -39,7 +39,7 @@ enum NEFilterSourceStatus : NSInteger;
 OBJC_CLASS NEFilterSource;
 OBJC_CLASS NSData;
 
-namespace WebCore {
+namespace CyberCore {
 
 class NetworkExtensionContentFilter final : public PlatformContentFilter {
     friend UniqueRef<NetworkExtensionContentFilter> WTF::makeUniqueRefWithoutFastMallocCheck<NetworkExtensionContentFilter>();
@@ -81,6 +81,6 @@ private:
     RetainPtr<NEFilterSource> m_neFilterSource;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(CONTENT_FILTERING)

@@ -24,7 +24,7 @@
 
 #include "SVGFilterPrimitiveStandardAttributes.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGComponentTransferFunctionElement;
 
@@ -55,4 +55,4 @@ private:
     Ref<SVGAnimatedString> m_in1 { SVGAnimatedString::create(this) };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

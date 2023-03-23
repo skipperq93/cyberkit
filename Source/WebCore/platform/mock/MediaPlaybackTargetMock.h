@@ -30,7 +30,7 @@
 #include "MediaPlaybackTarget.h"
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class MediaPlaybackTargetMock : public MediaPlaybackTarget {
 public:

@@ -39,7 +39,7 @@
 #include "LegacyCDMSession.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class VideoFrame;
 

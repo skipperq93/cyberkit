@@ -29,7 +29,7 @@
 #include <CyberCore/HTTPParsers.h>
 #include <CyberCore/RFC8941.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 namespace TestWebKitAPI {
 

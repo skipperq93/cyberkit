@@ -47,7 +47,7 @@
 #include <wtf/glib/GRefPtr.h>
 #include <wtf/glib/GUniquePtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 #if !USE(GTK4)
 static GdkVisual* systemVisual()
@@ -250,4 +250,4 @@ bool screenIsTouchPrimaryInputDevice()
 }
 #endif // ENABLE(TOUCH_EVENTS)
 
-} // namespace WebCore
+} // namespace CyberCore

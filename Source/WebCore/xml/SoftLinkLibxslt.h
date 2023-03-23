@@ -38,54 +38,54 @@
 
 #include <wtf/SoftLinking.h>
 
-SOFT_LINK_LIBRARY_FOR_HEADER(WebCore, libxslt)
+SOFT_LINK_LIBRARY_FOR_HEADER(CyberCore, libxslt)
 
-SOFT_LINK_FUNCTION_FOR_HEADER(WebCore, libxslt, xsltFreeStylesheet, void, (xsltStylesheetPtr sheet), (sheet))
-#define xsltFreeStylesheet WebCore::softLink_libxslt_xsltFreeStylesheet
-SOFT_LINK_FUNCTION_FOR_HEADER(WebCore, libxslt, xsltFreeTransformContext, void, (xsltTransformContextPtr ctxt), (ctxt))
-#define xsltFreeTransformContext WebCore::softLink_libxslt_xsltFreeTransformContext
-SOFT_LINK_FUNCTION_FOR_HEADER(WebCore, libxslt, xsltNewTransformContext, xsltTransformContextPtr, (xsltStylesheetPtr style, xmlDocPtr doc), (style, doc))
-#define xsltNewTransformContext WebCore::softLink_libxslt_xsltNewTransformContext
-SOFT_LINK_FUNCTION_FOR_HEADER(WebCore, libxslt, xsltApplyStylesheetUser, xmlDocPtr, (xsltStylesheetPtr style, xmlDocPtr doc, const char** params, const char* output, FILE* profile, xsltTransformContextPtr userCtxt), (style, doc, params, output, profile, userCtxt))
-#define xsltApplyStylesheetUser WebCore::softLink_libxslt_xsltApplyStylesheetUser
-SOFT_LINK_FUNCTION_FOR_HEADER(WebCore, libxslt, xsltQuoteUserParams, int, (xsltTransformContextPtr ctxt, const char** params), (ctxt, params))
-#define xsltQuoteUserParams WebCore::softLink_libxslt_xsltQuoteUserParams
-SOFT_LINK_FUNCTION_FOR_HEADER(WebCore, libxslt, xsltSetCtxtSortFunc, void, (xsltTransformContextPtr ctxt, xsltSortFunc handler), (ctxt, handler))
-#define xsltSetCtxtSortFunc WebCore::softLink_libxslt_xsltSetCtxtSortFunc
-SOFT_LINK_FUNCTION_FOR_HEADER(WebCore, libxslt, xsltSetLoaderFunc, void, (xsltDocLoaderFunc f), (f))
-#define xsltSetLoaderFunc WebCore::softLink_libxslt_xsltSetLoaderFunc
-SOFT_LINK_FUNCTION_FOR_HEADER(WebCore, libxslt, xsltSaveResultTo, int, (xmlOutputBufferPtr buf, xmlDocPtr result, xsltStylesheetPtr style), (buf, result, style))
-#define xsltSaveResultTo WebCore::softLink_libxslt_xsltSaveResultTo
-SOFT_LINK_FUNCTION_FOR_HEADER(WebCore, libxslt, xsltNextImport, xsltStylesheetPtr, (xsltStylesheetPtr style), (style))
-#define xsltNextImport WebCore::softLink_libxslt_xsltNextImport
-SOFT_LINK_FUNCTION_FOR_HEADER(WebCore, libxslt, xsltNewSecurityPrefs, xsltSecurityPrefsPtr, (), ())
-#define xsltNewSecurityPrefs WebCore::softLink_libxslt_xsltNewSecurityPrefs
-SOFT_LINK_FUNCTION_FOR_HEADER(WebCore, libxslt, xsltFreeSecurityPrefs, void, (xsltSecurityPrefsPtr sec), (sec))
-#define xsltFreeSecurityPrefs WebCore::softLink_libxslt_xsltFreeSecurityPrefs
-SOFT_LINK_FUNCTION_FOR_HEADER(WebCore, libxslt, xsltSetSecurityPrefs, int, (xsltSecurityPrefsPtr sec, xsltSecurityOption option, xsltSecurityCheck func), (sec, option, func))
-#define xsltSetSecurityPrefs WebCore::softLink_libxslt_xsltSetSecurityPrefs
-SOFT_LINK_FUNCTION_FOR_HEADER(WebCore, libxslt, xsltSetCtxtSecurityPrefs, int, (xsltSecurityPrefsPtr sec, xsltTransformContextPtr ctxt), (sec, ctxt))
-#define xsltSetCtxtSecurityPrefs WebCore::softLink_libxslt_xsltSetCtxtSecurityPrefs
-SOFT_LINK_FUNCTION_FOR_HEADER(WebCore, libxslt, xsltSecurityForbid, int, (xsltSecurityPrefsPtr sec, xsltTransformContextPtr ctxt, const char* value), (sec, ctxt, value))
-#define xsltSecurityForbid WebCore::softLink_libxslt_xsltSecurityForbid
+SOFT_LINK_FUNCTION_FOR_HEADER(CyberCore, libxslt, xsltFreeStylesheet, void, (xsltStylesheetPtr sheet), (sheet))
+#define xsltFreeStylesheet CyberCore::softLink_libxslt_xsltFreeStylesheet
+SOFT_LINK_FUNCTION_FOR_HEADER(CyberCore, libxslt, xsltFreeTransformContext, void, (xsltTransformContextPtr ctxt), (ctxt))
+#define xsltFreeTransformContext CyberCore::softLink_libxslt_xsltFreeTransformContext
+SOFT_LINK_FUNCTION_FOR_HEADER(CyberCore, libxslt, xsltNewTransformContext, xsltTransformContextPtr, (xsltStylesheetPtr style, xmlDocPtr doc), (style, doc))
+#define xsltNewTransformContext CyberCore::softLink_libxslt_xsltNewTransformContext
+SOFT_LINK_FUNCTION_FOR_HEADER(CyberCore, libxslt, xsltApplyStylesheetUser, xmlDocPtr, (xsltStylesheetPtr style, xmlDocPtr doc, const char** params, const char* output, FILE* profile, xsltTransformContextPtr userCtxt), (style, doc, params, output, profile, userCtxt))
+#define xsltApplyStylesheetUser CyberCore::softLink_libxslt_xsltApplyStylesheetUser
+SOFT_LINK_FUNCTION_FOR_HEADER(CyberCore, libxslt, xsltQuoteUserParams, int, (xsltTransformContextPtr ctxt, const char** params), (ctxt, params))
+#define xsltQuoteUserParams CyberCore::softLink_libxslt_xsltQuoteUserParams
+SOFT_LINK_FUNCTION_FOR_HEADER(CyberCore, libxslt, xsltSetCtxtSortFunc, void, (xsltTransformContextPtr ctxt, xsltSortFunc handler), (ctxt, handler))
+#define xsltSetCtxtSortFunc CyberCore::softLink_libxslt_xsltSetCtxtSortFunc
+SOFT_LINK_FUNCTION_FOR_HEADER(CyberCore, libxslt, xsltSetLoaderFunc, void, (xsltDocLoaderFunc f), (f))
+#define xsltSetLoaderFunc CyberCore::softLink_libxslt_xsltSetLoaderFunc
+SOFT_LINK_FUNCTION_FOR_HEADER(CyberCore, libxslt, xsltSaveResultTo, int, (xmlOutputBufferPtr buf, xmlDocPtr result, xsltStylesheetPtr style), (buf, result, style))
+#define xsltSaveResultTo CyberCore::softLink_libxslt_xsltSaveResultTo
+SOFT_LINK_FUNCTION_FOR_HEADER(CyberCore, libxslt, xsltNextImport, xsltStylesheetPtr, (xsltStylesheetPtr style), (style))
+#define xsltNextImport CyberCore::softLink_libxslt_xsltNextImport
+SOFT_LINK_FUNCTION_FOR_HEADER(CyberCore, libxslt, xsltNewSecurityPrefs, xsltSecurityPrefsPtr, (), ())
+#define xsltNewSecurityPrefs CyberCore::softLink_libxslt_xsltNewSecurityPrefs
+SOFT_LINK_FUNCTION_FOR_HEADER(CyberCore, libxslt, xsltFreeSecurityPrefs, void, (xsltSecurityPrefsPtr sec), (sec))
+#define xsltFreeSecurityPrefs CyberCore::softLink_libxslt_xsltFreeSecurityPrefs
+SOFT_LINK_FUNCTION_FOR_HEADER(CyberCore, libxslt, xsltSetSecurityPrefs, int, (xsltSecurityPrefsPtr sec, xsltSecurityOption option, xsltSecurityCheck func), (sec, option, func))
+#define xsltSetSecurityPrefs CyberCore::softLink_libxslt_xsltSetSecurityPrefs
+SOFT_LINK_FUNCTION_FOR_HEADER(CyberCore, libxslt, xsltSetCtxtSecurityPrefs, int, (xsltSecurityPrefsPtr sec, xsltTransformContextPtr ctxt), (sec, ctxt))
+#define xsltSetCtxtSecurityPrefs CyberCore::softLink_libxslt_xsltSetCtxtSecurityPrefs
+SOFT_LINK_FUNCTION_FOR_HEADER(CyberCore, libxslt, xsltSecurityForbid, int, (xsltSecurityPrefsPtr sec, xsltTransformContextPtr ctxt, const char* value), (sec, ctxt, value))
+#define xsltSecurityForbid CyberCore::softLink_libxslt_xsltSecurityForbid
 
-SOFT_LINK_FUNCTION_FOR_HEADER(WebCore, libxslt, xsltGetNsProp, xmlChar *, (xmlNodePtr node, const xmlChar *name, const xmlChar *nameSpace), (node, name, nameSpace))
-#define xsltGetNsProp WebCore::softLink_libxslt_xsltGetNsProp
-SOFT_LINK_FUNCTION_FOR_HEADER(WebCore, libxslt, xsltParseStylesheetDoc, xsltStylesheetPtr, (xmlDocPtr doc), (doc))
-#define xsltParseStylesheetDoc WebCore::softLink_libxslt_xsltParseStylesheetDoc
-SOFT_LINK_FUNCTION_FOR_HEADER(WebCore, libxslt, xsltLoadStylesheetPI, xsltStylesheetPtr, (xmlDocPtr doc), (doc))
-#define xsltLoadStylesheetPI WebCore::softLink_libxslt_xsltLoadStylesheetPI
+SOFT_LINK_FUNCTION_FOR_HEADER(CyberCore, libxslt, xsltGetNsProp, xmlChar *, (xmlNodePtr node, const xmlChar *name, const xmlChar *nameSpace), (node, name, nameSpace))
+#define xsltGetNsProp CyberCore::softLink_libxslt_xsltGetNsProp
+SOFT_LINK_FUNCTION_FOR_HEADER(CyberCore, libxslt, xsltParseStylesheetDoc, xsltStylesheetPtr, (xmlDocPtr doc), (doc))
+#define xsltParseStylesheetDoc CyberCore::softLink_libxslt_xsltParseStylesheetDoc
+SOFT_LINK_FUNCTION_FOR_HEADER(CyberCore, libxslt, xsltLoadStylesheetPI, xsltStylesheetPtr, (xmlDocPtr doc), (doc))
+#define xsltLoadStylesheetPI CyberCore::softLink_libxslt_xsltLoadStylesheetPI
 
-SOFT_LINK_FUNCTION_FOR_HEADER(WebCore, libxslt, xsltRegisterExtFunction, int, (xsltTransformContextPtr ctxt, const xmlChar *name, const xmlChar *URI, xmlXPathFunction function), (ctxt, name, URI, function))
-#define xsltRegisterExtFunction WebCore::softLink_libxslt_xsltRegisterExtFunction
-SOFT_LINK_FUNCTION_FOR_HEADER(WebCore, libxslt, xsltFunctionNodeSet, void, (xmlXPathParserContextPtr ctxt, int nargs), (ctxt, nargs))
-#define xsltFunctionNodeSet WebCore::softLink_libxslt_xsltFunctionNodeSet
-SOFT_LINK_FUNCTION_FOR_HEADER(WebCore, libxslt, xsltComputeSortResult, xmlXPathObjectPtr*, (xsltTransformContextPtr ctxt, xmlNodePtr sort), (ctxt, sort))
-#define xsltComputeSortResult WebCore::softLink_libxslt_xsltComputeSortResult
-SOFT_LINK_FUNCTION_FOR_HEADER(WebCore, libxslt, xsltEvalAttrValueTemplate, xmlChar*, (xsltTransformContextPtr ctxt, xmlNodePtr node, const xmlChar *name, const xmlChar *ns), (ctxt, node, name, ns))
-#define xsltEvalAttrValueTemplate WebCore::softLink_libxslt_xsltEvalAttrValueTemplate
+SOFT_LINK_FUNCTION_FOR_HEADER(CyberCore, libxslt, xsltRegisterExtFunction, int, (xsltTransformContextPtr ctxt, const xmlChar *name, const xmlChar *URI, xmlXPathFunction function), (ctxt, name, URI, function))
+#define xsltRegisterExtFunction CyberCore::softLink_libxslt_xsltRegisterExtFunction
+SOFT_LINK_FUNCTION_FOR_HEADER(CyberCore, libxslt, xsltFunctionNodeSet, void, (xmlXPathParserContextPtr ctxt, int nargs), (ctxt, nargs))
+#define xsltFunctionNodeSet CyberCore::softLink_libxslt_xsltFunctionNodeSet
+SOFT_LINK_FUNCTION_FOR_HEADER(CyberCore, libxslt, xsltComputeSortResult, xmlXPathObjectPtr*, (xsltTransformContextPtr ctxt, xmlNodePtr sort), (ctxt, sort))
+#define xsltComputeSortResult CyberCore::softLink_libxslt_xsltComputeSortResult
+SOFT_LINK_FUNCTION_FOR_HEADER(CyberCore, libxslt, xsltEvalAttrValueTemplate, xmlChar*, (xsltTransformContextPtr ctxt, xmlNodePtr node, const xmlChar *name, const xmlChar *ns), (ctxt, node, name, ns))
+#define xsltEvalAttrValueTemplate CyberCore::softLink_libxslt_xsltEvalAttrValueTemplate
 
-SOFT_LINK_VARIABLE_FOR_HEADER(WebCore, libxslt, xsltMaxDepth, int);
+SOFT_LINK_VARIABLE_FOR_HEADER(CyberCore, libxslt, xsltMaxDepth, int);
 #define xsltMaxDepth get_libxslt_xsltMaxDepth()
 
 #endif // OS(DARWIN) && !PLATFORM(GTK)

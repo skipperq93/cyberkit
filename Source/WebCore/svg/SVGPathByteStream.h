@@ -24,7 +24,7 @@
 #include "SVGPropertyTraits.h"
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // Type definitions for the byte stream data
 typedef union {
@@ -110,4 +110,4 @@ private:
     Data m_data;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

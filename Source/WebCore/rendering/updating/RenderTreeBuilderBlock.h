@@ -27,7 +27,7 @@
 
 #include "RenderTreeBuilder.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderBlockFlow;
 

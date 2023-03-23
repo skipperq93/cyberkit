@@ -29,7 +29,7 @@
 
 #include "MathMLElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class MathMLUnknownElement final : public MathMLElement {
     WTF_MAKE_ISO_ALLOCATED(MathMLUnknownElement);
@@ -48,6 +48,6 @@ private:
     bool rendererIsNeeded(const RenderStyle&) final { return false; }
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MATHML)

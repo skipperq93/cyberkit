@@ -33,7 +33,7 @@
 
 #if !defined(WEBCORE_EXPORT)
 
-#if defined(BUILDING_WebCore) || defined(STATICALLY_LINKED_WITH_WebCore)
+#if defined(BUILDING_CyberCore) || defined(STATICALLY_LINKED_WITH_CyberCore)
 #define WEBCORE_EXPORT WTF_EXPORT_DECLARATION
 #else
 #define WEBCORE_EXPORT WTF_IMPORT_DECLARATION
@@ -43,7 +43,7 @@
 
 #if !defined(WEBCORE_TESTSUPPORT_EXPORT)
 
-#if defined(BUILDING_WebCoreTestSupport) || defined(STATICALLY_LINKED_WITH_WebCoreTestSupport)
+#if defined(BUILDING_CyberCoreTestSupport) || defined(STATICALLY_LINKED_WITH_CyberCoreTestSupport)
 #define WEBCORE_TESTSUPPORT_EXPORT WTF_EXPORT_DECLARATION
 #else
 #define WEBCORE_TESTSUPPORT_EXPORT WTF_IMPORT_DECLARATION

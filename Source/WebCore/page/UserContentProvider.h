@@ -36,7 +36,7 @@
 #include "ContentRuleListResults.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMWrapperWorld;
 class DocumentLoader;
@@ -88,4 +88,4 @@ private:
     WeakHashSet<UserContentProviderInvalidationClient> m_userMessageHandlerInvalidationClients;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -25,7 +25,7 @@
 #include <wtf/text/CString.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class IntPoint;
 
@@ -59,4 +59,4 @@ void monitorWorkArea(GdkMonitor*, GdkRectangle*);
 
 bool shouldUseOverlayScrollbars();
 
-} // namespace WebCore
+} // namespace CyberCore

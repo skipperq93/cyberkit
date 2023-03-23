@@ -57,7 +57,7 @@
 #include <pal/cf/AudioToolboxSoftLink.h>
 #include <pal/cf/CoreMediaSoftLink.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static WARN_UNUSED_RETURN AudioBufferList* tryCreateAudioBufferList(size_t numberOfBuffers)
 {
@@ -659,6 +659,6 @@ WTFLogChannel& AudioFileReader::logChannel() const
 }
 #endif
 
-} // WebCore
+} // CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

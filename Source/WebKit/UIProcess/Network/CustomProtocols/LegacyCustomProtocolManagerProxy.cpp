@@ -42,7 +42,7 @@ LegacyCustomProtocolManagerProxy::~LegacyCustomProtocolManagerProxy()
     invalidate();
 }
 
-void LegacyCustomProtocolManagerProxy::startLoading(LegacyCustomProtocolID customProtocolID, const WebCore::ResourceRequest& request)
+void LegacyCustomProtocolManagerProxy::startLoading(LegacyCustomProtocolID customProtocolID, const CyberCore::ResourceRequest& request)
 {
     m_networkProcessProxy.customProtocolManagerClient().startLoading(*this, customProtocolID, request);
 }
@@ -57,12 +57,12 @@ void LegacyCustomProtocolManagerProxy::invalidate()
     m_networkProcessProxy.customProtocolManagerClient().invalidate(*this);
 }
 
-void LegacyCustomProtocolManagerProxy::wasRedirectedToRequest(LegacyCustomProtocolID customProtocolID, const WebCore::ResourceRequest& request, const WebCore::ResourceResponse& redirectResponse)
+void LegacyCustomProtocolManagerProxy::wasRedirectedToRequest(LegacyCustomProtocolID customProtocolID, const CyberCore::ResourceRequest& request, const CyberCore::ResourceResponse& redirectResponse)
 {
     m_networkProcessProxy.send(Messages::LegacyCustomProtocolManager::WasRedirectedToRequest(customProtocolID, request, redirectResponse), 0);
 }
 
-void LegacyCustomProtocolManagerProxy::didReceiveResponse(LegacyCustomProtocolID customProtocolID, const WebCore::ResourceResponse& response, CacheStoragePolicy cacheStoragePolicy)
+void LegacyCustomProtocolManagerProxy::didReceiveResponse(LegacyCustomProtocolID customProtocolID, const CyberCore::ResourceResponse& response, CacheStoragePolicy cacheStoragePolicy)
 {
     m_networkProcessProxy.send(Messages::LegacyCustomProtocolManager::DidReceiveResponse(customProtocolID, response, cacheStoragePolicy), 0);
 }
@@ -72,7 +72,7 @@ void LegacyCustomProtocolManagerProxy::didLoadData(LegacyCustomProtocolID custom
     m_networkProcessProxy.send(Messages::LegacyCustomProtocolManager::DidLoadData(customProtocolID, data), 0);
 }
 
-void LegacyCustomProtocolManagerProxy::didFailWithError(LegacyCustomProtocolID customProtocolID, const WebCore::ResourceError& error)
+void LegacyCustomProtocolManagerProxy::didFailWithError(LegacyCustomProtocolID customProtocolID, const CyberCore::ResourceError& error)
 {
     m_networkProcessProxy.send(Messages::LegacyCustomProtocolManager::DidFailWithError(customProtocolID, error), 0);
 }

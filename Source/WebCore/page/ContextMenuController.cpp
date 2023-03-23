@@ -86,7 +86,7 @@
 #include <wtf/cocoa/RuntimeApplicationChecksCocoa.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace WTF::Unicode;
 
@@ -251,7 +251,7 @@ void ContextMenuController::contextMenuItemSelected(ContextMenuAction action, co
         openNewWindow(m_context.hitTestResult().absoluteLinkURL(), *frame, eventForLoadRequests.get(), ShouldOpenExternalURLsPolicy::ShouldAllowExternalSchemesButNotAppLinks);
         break;
     case ContextMenuItemTagDownloadLinkToDisk:
-        // FIXME: Some day we should be able to do this from within WebCore. (Bug 117709)
+        // FIXME: Some day we should be able to do this from within CyberCore. (Bug 117709)
         m_client.downloadURL(m_context.hitTestResult().absoluteLinkURL());
         break;
     case ContextMenuItemTagCopyLinkToClipboard:
@@ -261,7 +261,7 @@ void ContextMenuController::contextMenuItemSelected(ContextMenuAction action, co
         openNewWindow(m_context.hitTestResult().absoluteImageURL(), *frame, nullptr, ShouldOpenExternalURLsPolicy::ShouldNotAllow);
         break;
     case ContextMenuItemTagDownloadImageToDisk:
-        // FIXME: Some day we should be able to do this from within WebCore. (Bug 117709)
+        // FIXME: Some day we should be able to do this from within CyberCore. (Bug 117709)
         m_client.downloadURL(m_context.hitTestResult().absoluteImageURL());
         break;
     case ContextMenuItemTagCopyImageToClipboard:
@@ -278,7 +278,7 @@ void ContextMenuController::contextMenuItemSelected(ContextMenuAction action, co
         openNewWindow(m_context.hitTestResult().absoluteMediaURL(), *frame, nullptr, ShouldOpenExternalURLsPolicy::ShouldNotAllow);
         break;
     case ContextMenuItemTagDownloadMediaToDisk:
-        // FIXME: Some day we should be able to do this from within WebCore. (Bug 117709)
+        // FIXME: Some day we should be able to do this from within CyberCore. (Bug 117709)
         m_client.downloadURL(m_context.hitTestResult().absoluteMediaURL());
         break;
     case ContextMenuItemTagCopyMediaLinkToClipboard:
@@ -434,7 +434,7 @@ void ContextMenuController::contextMenuItemSelected(ContextMenuAction action, co
         m_client.searchWithGoogle(frame);
         break;
     case ContextMenuItemTagLookUpInDictionary:
-        // FIXME: Some day we may be able to do this from within WebCore.
+        // FIXME: Some day we may be able to do this from within CyberCore.
         m_client.lookUpInDictionary(frame);
         break;
     case ContextMenuItemTagOpenLink:
@@ -1112,7 +1112,7 @@ void ContextMenuController::populate()
                         appendItem(ForwardItem, m_contextMenu.get());
 
                     // Here we use isLoadingInAPISense rather than isLoading because Stop/Reload are
-                    // intended to match WebKit's API, not WebCore's internal notion of loading status.
+                    // intended to match WebKit's API, not CyberCore's internal notion of loading status.
                     if (loader.documentLoader()->isLoadingInAPISense())
                         appendItem(StopItem, m_contextMenu.get());
                     else
@@ -1716,6 +1716,6 @@ void ContextMenuController::performPDFJSAction(Frame& frame, const String& actio
 
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(CONTEXT_MENUS)

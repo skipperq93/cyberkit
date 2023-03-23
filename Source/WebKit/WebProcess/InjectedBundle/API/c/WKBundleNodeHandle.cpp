@@ -34,40 +34,40 @@
 #include "WebImage.h"
 #include <CyberCore/HTMLTextFormControlElement.h>
 
-static WebCore::AutoFillButtonType toAutoFillButtonType(WKAutoFillButtonType wkAutoFillButtonType)
+static CyberCore::AutoFillButtonType toAutoFillButtonType(WKAutoFillButtonType wkAutoFillButtonType)
 {
     switch (wkAutoFillButtonType) {
     case kWKAutoFillButtonTypeNone:
-        return WebCore::AutoFillButtonType::None;
+        return CyberCore::AutoFillButtonType::None;
     case kWKAutoFillButtonTypeContacts:
-        return WebCore::AutoFillButtonType::Contacts;
+        return CyberCore::AutoFillButtonType::Contacts;
     case kWKAutoFillButtonTypeCredentials:
-        return WebCore::AutoFillButtonType::Credentials;
+        return CyberCore::AutoFillButtonType::Credentials;
     case kWKAutoFillButtonTypeStrongPassword:
-        return WebCore::AutoFillButtonType::StrongPassword;
+        return CyberCore::AutoFillButtonType::StrongPassword;
     case kWKAutoFillButtonTypeCreditCard:
-        return WebCore::AutoFillButtonType::CreditCard;
+        return CyberCore::AutoFillButtonType::CreditCard;
     case kWKAutoFillButtonTypeLoading:
-        return WebCore::AutoFillButtonType::Loading;
+        return CyberCore::AutoFillButtonType::Loading;
     }
     ASSERT_NOT_REACHED();
-    return WebCore::AutoFillButtonType::None;
+    return CyberCore::AutoFillButtonType::None;
 }
 
-static WKAutoFillButtonType toWKAutoFillButtonType(WebCore::AutoFillButtonType autoFillButtonType)
+static WKAutoFillButtonType toWKAutoFillButtonType(CyberCore::AutoFillButtonType autoFillButtonType)
 {
     switch (autoFillButtonType) {
-    case WebCore::AutoFillButtonType::None:
+    case CyberCore::AutoFillButtonType::None:
         return kWKAutoFillButtonTypeNone;
-    case WebCore::AutoFillButtonType::Contacts:
+    case CyberCore::AutoFillButtonType::Contacts:
         return kWKAutoFillButtonTypeContacts;
-    case WebCore::AutoFillButtonType::Credentials:
+    case CyberCore::AutoFillButtonType::Credentials:
         return kWKAutoFillButtonTypeCredentials;
-    case WebCore::AutoFillButtonType::StrongPassword:
+    case CyberCore::AutoFillButtonType::StrongPassword:
         return kWKAutoFillButtonTypeStrongPassword;
-    case WebCore::AutoFillButtonType::CreditCard:
+    case CyberCore::AutoFillButtonType::CreditCard:
         return kWKAutoFillButtonTypeCreditCard;
-    case WebCore::AutoFillButtonType::Loading:
+    case CyberCore::AutoFillButtonType::Loading:
         return kWKAutoFillButtonTypeLoading;
     }
     ASSERT_NOT_REACHED();
@@ -76,18 +76,18 @@ static WKAutoFillButtonType toWKAutoFillButtonType(WebCore::AutoFillButtonType a
 
 WKTypeID WKBundleNodeHandleGetTypeID()
 {
-    return WebKit::toAPI(WebKit::InjectedBundleNodeHandle::APIType);
+    return CyberKit::toAPI(CyberKit::InjectedBundleNodeHandle::APIType);
 }
 
 WKBundleNodeHandleRef WKBundleNodeHandleCreate(JSContextRef contextRef, JSObjectRef objectRef)
 {
-    RefPtr<WebKit::InjectedBundleNodeHandle> nodeHandle = WebKit::InjectedBundleNodeHandle::getOrCreate(contextRef, objectRef);
+    RefPtr<CyberKit::InjectedBundleNodeHandle> nodeHandle = CyberKit::InjectedBundleNodeHandle::getOrCreate(contextRef, objectRef);
     return toAPI(nodeHandle.leakRef());
 }
 
 WKBundleNodeHandleRef WKBundleNodeHandleCopyDocument(WKBundleNodeHandleRef nodeHandleRef)
 {
-    RefPtr<WebKit::InjectedBundleNodeHandle> nodeHandle = WebKit::toImpl(nodeHandleRef)->document();
+    RefPtr<CyberKit::InjectedBundleNodeHandle> nodeHandle = CyberKit::toImpl(nodeHandleRef)->document();
     return toAPI(nodeHandle.leakRef());
 }
 
@@ -99,7 +99,7 @@ WKRect WKBundleNodeHandleGetRenderRect(WKBundleNodeHandleRef nodeHandleRef, bool
 
 WKImageRef WKBundleNodeHandleCopySnapshotWithOptions(WKBundleNodeHandleRef nodeHandleRef, WKSnapshotOptions options)
 {
-    RefPtr<WebKit::WebImage> image = WebKit::toImpl(nodeHandleRef)->renderedImage(WebKit::toSnapshotOptions(options), options & kWKSnapshotOptionsExcludeOverflow);
+    RefPtr<CyberKit::WebImage> image = CyberKit::toImpl(nodeHandleRef)->renderedImage(CyberKit::toSnapshotOptions(options), options & kWKSnapshotOptionsExcludeOverflow);
     return toAPI(image.leakRef());
 }
 
@@ -111,17 +111,17 @@ WKBundleRangeHandleRef WKBundleNodeHandleCopyVisibleRange(WKBundleNodeHandleRef)
 
 WKRect WKBundleNodeHandleGetElementBounds(WKBundleNodeHandleRef elementHandleRef)
 {
-    return WebKit::toAPI(WebKit::toImpl(elementHandleRef)->elementBounds());
+    return CyberKit::toAPI(CyberKit::toImpl(elementHandleRef)->elementBounds());
 }
 
 void WKBundleNodeHandleSetHTMLInputElementValueForUser(WKBundleNodeHandleRef htmlInputElementHandleRef, WKStringRef valueRef)
 {
-    WebKit::toImpl(htmlInputElementHandleRef)->setHTMLInputElementValueForUser(WebKit::toWTFString(valueRef));
+    CyberKit::toImpl(htmlInputElementHandleRef)->setHTMLInputElementValueForUser(CyberKit::toWTFString(valueRef));
 }
 
 void WKBundleNodeHandleSetHTMLInputElementSpellcheckEnabled(WKBundleNodeHandleRef htmlInputElementHandleRef, bool enabled)
 {
-    WebKit::toImpl(htmlInputElementHandleRef)->setHTMLInputElementSpellcheckEnabled(enabled);
+    CyberKit::toImpl(htmlInputElementHandleRef)->setHTMLInputElementSpellcheckEnabled(enabled);
 }
 
 bool WKBundleNodeHandleGetHTMLInputElementAutoFilled(WKBundleNodeHandleRef)
@@ -132,17 +132,17 @@ bool WKBundleNodeHandleGetHTMLInputElementAutoFilled(WKBundleNodeHandleRef)
 
 void WKBundleNodeHandleSetHTMLInputElementAutoFilled(WKBundleNodeHandleRef htmlInputElementHandleRef, bool filled)
 {
-    WebKit::toImpl(htmlInputElementHandleRef)->setHTMLInputElementAutoFilled(filled);
+    CyberKit::toImpl(htmlInputElementHandleRef)->setHTMLInputElementAutoFilled(filled);
 }
 
 void WKBundleNodeHandleSetHTMLInputElementAutoFilledAndViewable(WKBundleNodeHandleRef htmlInputElementHandleRef, bool autoFilledAndViewable)
 {
-    WebKit::toImpl(htmlInputElementHandleRef)->setHTMLInputElementAutoFilledAndViewable(autoFilledAndViewable);
+    CyberKit::toImpl(htmlInputElementHandleRef)->setHTMLInputElementAutoFilledAndViewable(autoFilledAndViewable);
 }
 
 void WKBundleNodeHandleSetHTMLInputElementAutoFilledAndObscured(WKBundleNodeHandleRef htmlInputElementHandleRef, bool autoFilledAndObscured)
 {
-    WebKit::toImpl(htmlInputElementHandleRef)->setHTMLInputElementAutoFilledAndObscured(autoFilledAndObscured);
+    CyberKit::toImpl(htmlInputElementHandleRef)->setHTMLInputElementAutoFilledAndObscured(autoFilledAndObscured);
 }
 
 bool WKBundleNodeHandleGetHTMLInputElementAutoFillButtonEnabled(WKBundleNodeHandleRef)
@@ -153,17 +153,17 @@ bool WKBundleNodeHandleGetHTMLInputElementAutoFillButtonEnabled(WKBundleNodeHand
 
 void WKBundleNodeHandleSetHTMLInputElementAutoFillButtonEnabledWithButtonType(WKBundleNodeHandleRef htmlInputElementHandleRef, WKAutoFillButtonType autoFillButtonType)
 {
-    WebKit::toImpl(htmlInputElementHandleRef)->setHTMLInputElementAutoFillButtonEnabled(toAutoFillButtonType(autoFillButtonType));
+    CyberKit::toImpl(htmlInputElementHandleRef)->setHTMLInputElementAutoFillButtonEnabled(toAutoFillButtonType(autoFillButtonType));
 }
 
 WKAutoFillButtonType WKBundleNodeHandleGetHTMLInputElementAutoFillButtonType(WKBundleNodeHandleRef htmlInputElementHandleRef)
 {
-    return toWKAutoFillButtonType(WebKit::toImpl(htmlInputElementHandleRef)->htmlInputElementAutoFillButtonType());
+    return toWKAutoFillButtonType(CyberKit::toImpl(htmlInputElementHandleRef)->htmlInputElementAutoFillButtonType());
 }
 
 WKAutoFillButtonType WKBundleNodeHandleGetHTMLInputElementLastAutoFillButtonType(WKBundleNodeHandleRef htmlInputElementHandleRef)
 {
-    return toWKAutoFillButtonType(WebKit::toImpl(htmlInputElementHandleRef)->htmlInputElementLastAutoFillButtonType());
+    return toWKAutoFillButtonType(CyberKit::toImpl(htmlInputElementHandleRef)->htmlInputElementLastAutoFillButtonType());
 }
 
 bool WKBundleNodeHandleGetHTMLInputElementAutoFillAvailable(WKBundleNodeHandleRef)
@@ -174,7 +174,7 @@ bool WKBundleNodeHandleGetHTMLInputElementAutoFillAvailable(WKBundleNodeHandleRe
 
 void WKBundleNodeHandleSetHTMLInputElementAutoFillAvailable(WKBundleNodeHandleRef htmlInputElementHandleRef, bool autoFillAvailable)
 {
-    WebKit::toImpl(htmlInputElementHandleRef)->setAutoFillAvailable(autoFillAvailable);
+    CyberKit::toImpl(htmlInputElementHandleRef)->setAutoFillAvailable(autoFillAvailable);
 }
 
 WKRect WKBundleNodeHandleGetHTMLInputElementAutoFillButtonBounds(WKBundleNodeHandleRef)
@@ -185,12 +185,12 @@ WKRect WKBundleNodeHandleGetHTMLInputElementAutoFillButtonBounds(WKBundleNodeHan
 
 bool WKBundleNodeHandleGetHTMLInputElementLastChangeWasUserEdit(WKBundleNodeHandleRef htmlInputElementHandleRef)
 {
-    return WebKit::toImpl(htmlInputElementHandleRef)->htmlInputElementLastChangeWasUserEdit();
+    return CyberKit::toImpl(htmlInputElementHandleRef)->htmlInputElementLastChangeWasUserEdit();
 }
 
 bool WKBundleNodeHandleGetHTMLTextAreaElementLastChangeWasUserEdit(WKBundleNodeHandleRef htmlTextAreaElementHandleRef)
 {
-    return WebKit::toImpl(htmlTextAreaElementHandleRef)->htmlTextAreaElementLastChangeWasUserEdit();
+    return CyberKit::toImpl(htmlTextAreaElementHandleRef)->htmlTextAreaElementLastChangeWasUserEdit();
 }
 
 WKBundleNodeHandleRef WKBundleNodeHandleCopyHTMLTableCellElementCellAbove(WKBundleNodeHandleRef)
@@ -201,7 +201,7 @@ WKBundleNodeHandleRef WKBundleNodeHandleCopyHTMLTableCellElementCellAbove(WKBund
 
 WKBundleFrameRef WKBundleNodeHandleCopyDocumentFrame(WKBundleNodeHandleRef documentHandleRef)
 {
-    RefPtr<WebKit::WebFrame> frame = WebKit::toImpl(documentHandleRef)->documentFrame();
+    RefPtr<CyberKit::WebFrame> frame = CyberKit::toImpl(documentHandleRef)->documentFrame();
     return toAPI(frame.leakRef());
 }
 
@@ -213,7 +213,7 @@ WKBundleFrameRef WKBundleNodeHandleCopyHTMLFrameElementContentFrame(WKBundleNode
 
 WKBundleFrameRef WKBundleNodeHandleCopyHTMLIFrameElementContentFrame(WKBundleNodeHandleRef htmlIFrameElementHandleRef)
 {
-    RefPtr<WebKit::WebFrame> frame = WebKit::toImpl(htmlIFrameElementHandleRef)->htmlIFrameElementContentFrame();
+    RefPtr<CyberKit::WebFrame> frame = CyberKit::toImpl(htmlIFrameElementHandleRef)->htmlIFrameElementContentFrame();
     return toAPI(frame.leakRef());
 }
 

@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename ValueType>
 class SVGAnimationDiscreteFunction : public SVGAnimationFunction {
@@ -60,4 +60,4 @@ protected:
     ValueType m_to;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

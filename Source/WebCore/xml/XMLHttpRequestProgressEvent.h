@@ -28,7 +28,7 @@
 
 #include "ProgressEvent.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class XMLHttpRequestProgressEvent final : public ProgressEvent {
     WTF_MAKE_ISO_ALLOCATED(XMLHttpRequestProgressEvent);
@@ -50,4 +50,4 @@ private:
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

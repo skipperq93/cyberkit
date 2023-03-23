@@ -33,7 +33,7 @@
 
 OBJC_CLASS _NSScrollingPredominantAxisFilter;
 
-namespace WebCore {
+namespace CyberCore {
 
 class WheelEventDeltaFilterMac final : public WheelEventDeltaFilter {
     WTF_MAKE_FAST_ALLOCATED;
@@ -52,6 +52,6 @@ private:
     WallTime m_lastIOHIDEventTimestamp;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(MAC)

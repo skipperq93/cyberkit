@@ -28,7 +28,7 @@
 
 #include "SystemFontDatabaseCoreText.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static inline Vector<RetainPtr<CTFontDescriptorRef>> systemFontCascadeList(const FontDescription& description, const AtomString& cssFamily, SystemFontKind systemFontKind, AllowUserInstalledFonts allowUserInstalledFonts)
 {

@@ -36,13 +36,13 @@ template<> struct ClientTraits<WKBundlePageResourceLoadClientBase> {
 };
 }
 
-namespace WebCore {
+namespace CyberCore {
 class ResourceError;
 class ResourceRequest;
 class ResourceResponse;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPage;
 class WebFrame;
@@ -51,16 +51,16 @@ class InjectedBundlePageResourceLoadClient : public API::InjectedBundle::Resourc
 public:
     explicit InjectedBundlePageResourceLoadClient(const WKBundlePageResourceLoadClientBase*);
 
-    void didInitiateLoadForResource(WebPage&, WebFrame&, WebCore::ResourceLoaderIdentifier, const WebCore::ResourceRequest&, bool /*pageIsProvisionallyLoading*/) override;
-    void willSendRequestForFrame(WebPage&, WebFrame&, WebCore::ResourceLoaderIdentifier, WebCore::ResourceRequest&, const WebCore::ResourceResponse&) override;
-    void didReceiveResponseForResource(WebPage&, WebFrame&, WebCore::ResourceLoaderIdentifier, const WebCore::ResourceResponse&) override;
-    void didReceiveContentLengthForResource(WebPage&, WebFrame&, WebCore::ResourceLoaderIdentifier, uint64_t contentLength) override;
-    void didFinishLoadForResource(WebPage&, WebFrame&, WebCore::ResourceLoaderIdentifier) override;
-    void didFailLoadForResource(WebPage&, WebFrame&, WebCore::ResourceLoaderIdentifier, const WebCore::ResourceError&) override;
-    bool shouldCacheResponse(WebPage&, WebFrame&, WebCore::ResourceLoaderIdentifier) override;
-    bool shouldUseCredentialStorage(WebPage&, WebFrame&, WebCore::ResourceLoaderIdentifier) override;
+    void didInitiateLoadForResource(WebPage&, WebFrame&, CyberCore::ResourceLoaderIdentifier, const CyberCore::ResourceRequest&, bool /*pageIsProvisionallyLoading*/) override;
+    void willSendRequestForFrame(WebPage&, WebFrame&, CyberCore::ResourceLoaderIdentifier, CyberCore::ResourceRequest&, const CyberCore::ResourceResponse&) override;
+    void didReceiveResponseForResource(WebPage&, WebFrame&, CyberCore::ResourceLoaderIdentifier, const CyberCore::ResourceResponse&) override;
+    void didReceiveContentLengthForResource(WebPage&, WebFrame&, CyberCore::ResourceLoaderIdentifier, uint64_t contentLength) override;
+    void didFinishLoadForResource(WebPage&, WebFrame&, CyberCore::ResourceLoaderIdentifier) override;
+    void didFailLoadForResource(WebPage&, WebFrame&, CyberCore::ResourceLoaderIdentifier, const CyberCore::ResourceError&) override;
+    bool shouldCacheResponse(WebPage&, WebFrame&, CyberCore::ResourceLoaderIdentifier) override;
+    bool shouldUseCredentialStorage(WebPage&, WebFrame&, CyberCore::ResourceLoaderIdentifier) override;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // InjectedBundlePageResourceLoadClient_h

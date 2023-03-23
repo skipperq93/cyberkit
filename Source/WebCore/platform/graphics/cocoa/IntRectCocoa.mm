@@ -30,7 +30,7 @@
 #import <UIKit/UIGeometry.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 id makeNSArrayElement(const IntRect& rect)
 {

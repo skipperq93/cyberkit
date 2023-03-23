@@ -33,7 +33,7 @@
 #include "StringFunctions.h"
 #include "TestCommand.h"
 #include "TestInvocation.h"
-#include "WebCoreTestSupport.h"
+#include "CyberCoreTestSupport.h"
 #include <CyberScriptCore/InitializeThreading.h>
 #include <CyberKit/WKArray.h>
 #include <CyberKit/WKAuthenticationChallenge.h>
@@ -583,8 +583,8 @@ void TestController::initialize(int argc, const char* argv[])
     JSC::initialize();
     WTF::initializeMainThread();
     WTF::setProcessPrivileges(allPrivileges());
-    WebCoreTestSupport::initializeNames();
-    WebCoreTestSupport::populateJITOperations();
+    CyberCoreTestSupport::initializeNames();
+    CyberCoreTestSupport::populateJITOperations();
 
     Options options;
     OptionsHandler optionsHandler(options);
@@ -626,7 +626,7 @@ void TestController::initialize(int argc, const char* argv[])
     initializeTestPluginDirectory();
 
 #if ENABLE(GAMEPAD)
-    WebCoreTestSupport::installMockGamepadProvider();
+    CyberCoreTestSupport::installMockGamepadProvider();
 #endif
 
     m_pageGroup.adopt(WKPageGroupCreateWithIdentifier(toWK("WebKitTestRunnerPageGroup").get()));

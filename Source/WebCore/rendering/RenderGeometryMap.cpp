@@ -32,7 +32,7 @@
 #include "TransformState.h"
 #include <wtf/SetForScope.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 RenderGeometryMap::RenderGeometryMap(OptionSet<MapCoordinatesMode> flags, bool useCSS3DTransformInterop)
     : m_mapCoordinatesFlags(flags)
@@ -308,4 +308,4 @@ void RenderGeometryMap::stepRemoved(const RenderGeometryMapStep& step)
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -28,7 +28,7 @@ namespace PAL {
 class TextCodec;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLMetaCharsetParser;
 
@@ -106,4 +106,4 @@ inline void TextResourceDecoder::setHintEncoding(const TextResourceDecoder* pare
         m_parentFrameAutoDetectedEncoding = parentFrameDecoder->encoding().name();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

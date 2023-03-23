@@ -30,7 +30,7 @@
 #include "JSDOMMapLike.h"
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 InternalsMapLike::InternalsMapLike()
 {
@@ -72,4 +72,4 @@ Vector<unsigned> InternalsMapLike::inspectValues() const
     return result;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

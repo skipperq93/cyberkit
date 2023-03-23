@@ -32,7 +32,7 @@
 #include "RenderBox.h"
 #include "SVGElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<ResizeObservation> ResizeObservation::create(Element& target, ResizeObserverBoxOptions observedBox)
 {
@@ -152,4 +152,4 @@ TextStream& operator<<(TextStream& ts, const ResizeObservation& observation)
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

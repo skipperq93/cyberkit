@@ -38,7 +38,7 @@ struct PDFContextMenuItem {
 };
 
 struct PDFContextMenu {
-    WebCore::IntPoint point;
+    CyberCore::IntPoint point;
     Vector<PDFContextMenuItem> items;
     std::optional<int> openInPreviewIndex;
 };

@@ -25,7 +25,7 @@
 #include "FloatRect.h"
 #include "RenderSVGBlock.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGForeignObjectElement;
 
@@ -71,6 +71,6 @@ private:
     bool m_needsTransformUpdate { true };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(LegacyRenderSVGForeignObject, isLegacySVGForeignObject())

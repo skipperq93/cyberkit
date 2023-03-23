@@ -37,7 +37,7 @@
 #include "SWScriptStorage.h"
 #include "SWServer.h"
 #include "SecurityOrigin.h"
-#include "WebCorePersistentCoders.h"
+#include "CyberCorePersistentCoders.h"
 #include <wtf/CompletionHandler.h>
 #include <wtf/CrossThreadCopier.h>
 #include <wtf/FileSystem.h>
@@ -49,7 +49,7 @@
 #include <wtf/persistence/PersistentEncoder.h>
 #include <wtf/text/StringConcatenateNumbers.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 #define RECORDS_TABLE_SCHEMA_PREFIX "CREATE TABLE "
 #define RECORDS_TABLE_SCHEMA_SUFFIX "(" \
@@ -657,6 +657,6 @@ void RegistrationDatabase::databaseOpenedAndRecordsImported()
 #undef RECORDS_TABLE_SCHEMA_PREFIX
 #undef RECORDS_TABLE_SCHEMA_SUFFIX
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

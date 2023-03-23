@@ -238,7 +238,7 @@ WebExtensionController::WebExtensionSet WebExtensionController::extensions() con
 
 // MARK: WebNavigation support
 
-void WebExtensionController::didStartProvisionalLoadForFrame(WebPageProxyIdentifier pageID, WebCore::FrameIdentifier frameID, URL targetURL)
+void WebExtensionController::didStartProvisionalLoadForFrame(WebPageProxyIdentifier pageID, CyberCore::FrameIdentifier frameID, URL targetURL)
 {
     auto listenerTypes = WebExtensionContext::EventListenerTypeSet { WebExtensionEventListenerType::WebNavigationOnBeforeNavigate };
 
@@ -253,7 +253,7 @@ void WebExtensionController::didStartProvisionalLoadForFrame(WebPageProxyIdentif
     }
 }
 
-void WebExtensionController::didCommitLoadForFrame(WebPageProxyIdentifier pageID, WebCore::FrameIdentifier frameID, URL frameURL)
+void WebExtensionController::didCommitLoadForFrame(WebPageProxyIdentifier pageID, CyberCore::FrameIdentifier frameID, URL frameURL)
 {
     auto listenerTypes = WebExtensionContext::EventListenerTypeSet { WebExtensionEventListenerType::WebNavigationOnCommitted, WebExtensionEventListenerType::WebNavigationOnDOMContentLoaded };
 
@@ -269,7 +269,7 @@ void WebExtensionController::didCommitLoadForFrame(WebPageProxyIdentifier pageID
     }
 }
 
-void WebExtensionController::didFinishLoadForFrame(WebPageProxyIdentifier pageID, WebCore::FrameIdentifier frameID, URL frameURL)
+void WebExtensionController::didFinishLoadForFrame(WebPageProxyIdentifier pageID, CyberCore::FrameIdentifier frameID, URL frameURL)
 {
     auto listenerTypes = WebExtensionContext::EventListenerTypeSet { WebExtensionEventListenerType::WebNavigationOnCompleted };
 
@@ -284,7 +284,7 @@ void WebExtensionController::didFinishLoadForFrame(WebPageProxyIdentifier pageID
     }
 }
 
-void WebExtensionController::didFailLoadForFrame(WebPageProxyIdentifier pageID, WebCore::FrameIdentifier frameID, URL frameURL)
+void WebExtensionController::didFailLoadForFrame(WebPageProxyIdentifier pageID, CyberCore::FrameIdentifier frameID, URL frameURL)
 {
     auto listenerTypes = WebExtensionContext::EventListenerTypeSet { WebExtensionEventListenerType::WebNavigationOnErrorOccurred };
 

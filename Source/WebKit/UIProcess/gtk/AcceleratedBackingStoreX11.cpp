@@ -142,7 +142,7 @@ private:
 
 bool AcceleratedBackingStoreX11::checkRequirements()
 {
-    auto& display = downcast<WebCore::PlatformDisplayX11>(WebCore::PlatformDisplay::sharedDisplay());
+    auto& display = downcast<CyberCore::PlatformDisplayX11>(CyberCore::PlatformDisplay::sharedDisplay());
 #if USE(GLX)
     // GLX is optional, he we just want the error base.
     display.supportsGLX(s_glxErrorBase);
@@ -180,13 +180,13 @@ AcceleratedBackingStoreX11::~AcceleratedBackingStoreX11()
     if (!m_surface && !m_damage)
         return;
 
-    Display* display = downcast<WebCore::PlatformDisplayX11>(WebCore::PlatformDisplay::sharedDisplay()).native();
+    Display* display = downcast<CyberCore::PlatformDisplayX11>(CyberCore::PlatformDisplay::sharedDisplay()).native();
     Vector<unsigned char> errorList = { BadDrawable, xDamageErrorCode(BadDamage) };
 #if USE(GLX)
     if (s_glxErrorBase)
         errorList.append(glxErrorCode(GLXBadWindow));
 #endif
-    WebCore::XErrorTrapper trapper(display, WebCore::XErrorTrapper::Policy::Crash, WTFMove(errorList));
+    CyberCore::XErrorTrapper trapper(display, CyberCore::XErrorTrapper::Policy::Crash, WTFMove(errorList));
     if (m_damage) {
         XDamageNotifier::singleton().remove(m_damage.get());
         m_damage.reset();
@@ -200,7 +200,7 @@ void AcceleratedBackingStoreX11::update(const LayerTreeContext& layerTreeContext
     if (m_surface && cairo_xlib_surface_get_drawable(m_surface.get()) == pixmap)
         return;
 
-    Display* display = downcast<WebCore::PlatformDisplayX11>(WebCore::PlatformDisplay::sharedDisplay()).native();
+    Display* display = downcast<CyberCore::PlatformDisplayX11>(CyberCore::PlatformDisplay::sharedDisplay()).native();
 
     if (m_surface) {
         Vector<unsigned char> errorList = { BadDrawable, xDamageErrorCode(BadDamage) };
@@ -208,7 +208,7 @@ void AcceleratedBackingStoreX11::update(const LayerTreeContext& layerTreeContext
         if (s_glxErrorBase)
             errorList.append(glxErrorCode(GLXBadWindow));
 #endif
-        WebCore::XErrorTrapper trapper(display, WebCore::XErrorTrapper::Policy::Crash, WTFMove(errorList));
+        CyberCore::XErrorTrapper trapper(display, CyberCore::XErrorTrapper::Policy::Crash, WTFMove(errorList));
         if (m_damage) {
             XDamageNotifier::singleton().remove(m_damage.get());
             m_damage.reset();
@@ -224,7 +224,7 @@ void AcceleratedBackingStoreX11::update(const LayerTreeContext& layerTreeContext
     if (!drawingArea)
         return;
 
-    WebCore::IntSize size = drawingArea->size();
+    CyberCore::IntSize size = drawingArea->size();
     float deviceScaleFactor = m_webPage.deviceScaleFactor();
     size.scale(deviceScaleFactor);
 
@@ -233,10 +233,10 @@ void AcceleratedBackingStoreX11::update(const LayerTreeContext& layerTreeContext
     if (s_glxErrorBase)
         errorList.append(glxErrorCode(GLXBadWindow));
 #endif
-    WebCore::XErrorTrapper trapper(display, WebCore::XErrorTrapper::Policy::Crash, WTFMove(errorList));
-    ASSERT(downcast<WebCore::PlatformDisplayX11>(WebCore::PlatformDisplay::sharedDisplay()).native() == gdk_x11_display_get_xdisplay(gdk_display_get_default()));
+    CyberCore::XErrorTrapper trapper(display, CyberCore::XErrorTrapper::Policy::Crash, WTFMove(errorList));
+    ASSERT(downcast<CyberCore::PlatformDisplayX11>(CyberCore::PlatformDisplay::sharedDisplay()).native() == gdk_x11_display_get_xdisplay(gdk_display_get_default()));
 #if USE(GTK4)
-    auto* visual = WK_XVISUAL(downcast<WebCore::PlatformDisplayX11>(WebCore::PlatformDisplay::sharedDisplay()));
+    auto* visual = WK_XVISUAL(downcast<CyberCore::PlatformDisplayX11>(CyberCore::PlatformDisplay::sharedDisplay()));
 #else
     GdkVisual* gdkVisual = gdk_screen_get_rgba_visual(gdk_screen_get_default());
     if (!gdkVisual)
@@ -263,7 +263,7 @@ void AcceleratedBackingStoreX11::snapshot(GtkSnapshot* gtkSnapshot)
     // as dirty to ensure we always render the updated contents as soon as possible.
     cairo_surface_mark_dirty(m_surface.get());
 
-    WebCore::FloatSize viewSize(gtk_widget_get_width(m_webPage.viewWidget()), gtk_widget_get_height(m_webPage.viewWidget()));
+    CyberCore::FloatSize viewSize(gtk_widget_get_width(m_webPage.viewWidget()), gtk_widget_get_height(m_webPage.viewWidget()));
     graphene_rect_t rect = GRAPHENE_RECT_INIT(0, 0, viewSize.width(), viewSize.height());
     RefPtr<cairo_t> cr = adoptRef(gtk_snapshot_append_cairo(gtkSnapshot, &rect));
     cairo_set_source_surface(cr.get(), m_surface.get(), 0, 0);
@@ -273,7 +273,7 @@ void AcceleratedBackingStoreX11::snapshot(GtkSnapshot* gtkSnapshot)
     cairo_surface_flush(m_surface.get());
 }
 #else
-bool AcceleratedBackingStoreX11::paint(cairo_t* cr, const WebCore::IntRect& clipRect)
+bool AcceleratedBackingStoreX11::paint(cairo_t* cr, const CyberCore::IntRect& clipRect)
 {
     if (!m_surface)
         return false;

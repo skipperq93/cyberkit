@@ -35,7 +35,7 @@
 #include <CyberCore/FileStreamClient.h>
 #include <wtf/FileSystem.h>
 
-namespace WebCore {
+namespace CyberCore {
 class AsyncFileStream;
 class BlobDataFileReference;
 class BlobData;
@@ -47,9 +47,9 @@ namespace WebKit {
 
 class NetworkProcess;
 
-class NetworkDataTaskBlob final : public NetworkDataTask, public WebCore::FileStreamClient {
+class NetworkDataTaskBlob final : public NetworkDataTask, public CyberCore::FileStreamClient {
 public:
-    static Ref<NetworkDataTask> create(NetworkSession& session, WebCore::BlobRegistryImpl& blobRegistry, NetworkDataTaskClient& client, const WebCore::ResourceRequest& request, WebCore::ContentSniffingPolicy shouldContentSniff, const Vector<RefPtr<WebCore::BlobDataFileReference>>& fileReferences)
+    static Ref<NetworkDataTask> create(NetworkSession& session, CyberCore::BlobRegistryImpl& blobRegistry, NetworkDataTaskClient& client, const CyberCore::ResourceRequest& request, CyberCore::ContentSniffingPolicy shouldContentSniff, const Vector<RefPtr<CyberCore::BlobDataFileReference>>& fileReferences)
     {
         return adoptRef(*new NetworkDataTaskBlob(session, blobRegistry, client, request, shouldContentSniff, fileReferences));
     }
@@ -57,7 +57,7 @@ public:
     ~NetworkDataTaskBlob();
 
 private:
-    NetworkDataTaskBlob(NetworkSession&, WebCore::BlobRegistryImpl&, NetworkDataTaskClient&, const WebCore::ResourceRequest&, WebCore::ContentSniffingPolicy, const Vector<RefPtr<WebCore::BlobDataFileReference>>&);
+    NetworkDataTaskBlob(NetworkSession&, CyberCore::BlobRegistryImpl&, NetworkDataTaskClient&, const CyberCore::ResourceRequest&, CyberCore::ContentSniffingPolicy, const Vector<RefPtr<CyberCore::BlobDataFileReference>>&);
 
     void cancel() override;
     void resume() override;
@@ -87,20 +87,20 @@ private:
     void seek();
     void consumeData(const uint8_t* data, int bytesRead);
     void read();
-    void readData(const WebCore::BlobDataItem&);
-    void readFile(const WebCore::BlobDataItem&);
+    void readData(const CyberCore::BlobDataItem&);
+    void readFile(const CyberCore::BlobDataItem&);
     void download();
     bool writeDownload(const uint8_t* data, int bytesRead);
     void cleanDownloadFiles();
-    void didFailDownload(const WebCore::ResourceError&);
+    void didFailDownload(const CyberCore::ResourceError&);
     void didFinishDownload();
     void didFail(Error);
     void didFinish();
 
     enum { kPositionNotSpecified = -1 };
 
-    RefPtr<WebCore::BlobData> m_blobData;
-    std::unique_ptr<WebCore::AsyncFileStream> m_stream; // For asynchronous loading.
+    RefPtr<CyberCore::BlobData> m_blobData;
+    std::unique_ptr<CyberCore::AsyncFileStream> m_stream; // For asynchronous loading.
     Vector<uint8_t> m_buffer;
     Vector<long long> m_itemLengthList;
     State m_state { State::Suspended };
@@ -116,7 +116,7 @@ private:
     bool m_fileOpened { false };
     FileSystem::PlatformFileHandle m_downloadFile { FileSystem::invalidPlatformFileHandle };
 
-    Vector<RefPtr<WebCore::BlobDataFileReference>> m_fileReferences;
+    Vector<RefPtr<CyberCore::BlobDataFileReference>> m_fileReferences;
     RefPtr<SandboxExtension> m_sandboxExtension;
     Ref<NetworkProcess> m_networkProcess;
 };

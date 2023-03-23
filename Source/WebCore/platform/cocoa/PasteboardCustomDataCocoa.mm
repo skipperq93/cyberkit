@@ -28,13 +28,13 @@
 
 #if PLATFORM(COCOA)
 
-namespace WebCore {
+namespace CyberCore {
 
 ASCIILiteral PasteboardCustomData::cocoaType()
 {
     return "com.apple.WebKit.custom-pasteboard-data"_s;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(COCOA)

@@ -29,7 +29,7 @@
 #define XDG_PREFIX _wk_xdg
 #include "xdgmime.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 String MIMETypeRegistry::mimeTypeForExtension(StringView string)
 {

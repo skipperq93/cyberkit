@@ -48,7 +48,7 @@ public:
     PushServiceConnection() = default;
     virtual ~PushServiceConnection() = default;
 
-    virtual WebCore::PushCrypto::ClientKeys generateClientKeys();
+    virtual CyberCore::PushCrypto::ClientKeys generateClientKeys();
 
     using SubscribeHandler = CompletionHandler<void(NSString *, NSError *)>;
     virtual void subscribe(const String& topic, const Vector<uint8_t>& vapidPublicKey, SubscribeHandler&&) = 0;

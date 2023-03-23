@@ -42,13 +42,13 @@
 
 namespace WebKit {
 
-ProvisionalFrameProxy::ProvisionalFrameProxy(WebFrameProxy& frame, Ref<WebProcessProxy>&& process, const WebCore::ResourceRequest& request)
+ProvisionalFrameProxy::ProvisionalFrameProxy(WebFrameProxy& frame, Ref<WebProcessProxy>&& process, const CyberCore::ResourceRequest& request)
     : m_frame(frame)
     , m_process(WTFMove(process))
     , m_visitedLinkStore(frame.page()->visitedLinkStore())
     , m_pageID(frame.page()->webPageID()) // FIXME: Generate a new one? This can conflict. And we probably want something like ProvisionalPageProxy to respond to messages anyways.
     , m_webPageID(frame.page()->identifier())
-    , m_layerHostingContextIdentifier(WebCore::LayerHostingContextIdentifier::generate())
+    , m_layerHostingContextIdentifier(CyberCore::LayerHostingContextIdentifier::generate())
 {
     m_process->markProcessAsRecentlyUsed();
     m_process->addProvisionalFrameProxy(*this);
@@ -74,7 +74,7 @@ ProvisionalFrameProxy::ProvisionalFrameProxy(WebFrameProxy& frame, Ref<WebProces
 
     LoadParameters loadParameters;
     loadParameters.request = request;
-    loadParameters.shouldTreatAsContinuingLoad = WebCore::ShouldTreatAsContinuingLoad::YesAfterNavigationPolicyDecision;
+    loadParameters.shouldTreatAsContinuingLoad = CyberCore::ShouldTreatAsContinuingLoad::YesAfterNavigationPolicyDecision;
     // FIXME: Add more parameters as appropriate.
 
     // FIXME: Do we need a LoadRequestWaitingForProcessLaunch version?
@@ -117,13 +117,13 @@ void ProvisionalFrameProxy::didReceiveMessage(IPC::Connection& connection, IPC::
         page->didReceiveMessage(connection, decoder);
 }
 
-void ProvisionalFrameProxy::decidePolicyForResponse(WebCore::FrameIdentifier frameID, FrameInfoData&& frameInfo, WebCore::PolicyCheckIdentifier identifier, uint64_t navigationID, const WebCore::ResourceResponse& response, const WebCore::ResourceRequest& request, bool canShowMIMEType, const String& downloadAttribute, uint64_t listenerID)
+void ProvisionalFrameProxy::decidePolicyForResponse(CyberCore::FrameIdentifier frameID, FrameInfoData&& frameInfo, CyberCore::PolicyCheckIdentifier identifier, uint64_t navigationID, const CyberCore::ResourceResponse& response, const CyberCore::ResourceRequest& request, bool canShowMIMEType, const String& downloadAttribute, uint64_t listenerID)
 {
     if (auto* page = m_frame.page())
         page->decidePolicyForResponseShared(m_process.copyRef(), m_pageID, frameID, WTFMove(frameInfo), identifier, navigationID, response, request, canShowMIMEType, downloadAttribute, listenerID);
 }
 
-void ProvisionalFrameProxy::didCommitLoadForFrame(WebCore::FrameIdentifier frameID, FrameInfoData&& frameInfo, WebCore::ResourceRequest&& request, uint64_t navigationID, const String& mimeType, bool frameHasCustomContentProvider, WebCore::FrameLoadType frameLoadType, const WebCore::CertificateInfo& certificateInfo, bool usedLegacyTLS, bool privateRelayed, bool containsPluginDocument, WebCore::HasInsecureContent hasInsecureContent, WebCore::MouseEventPolicy mouseEventPolicy, const UserData& userData)
+void ProvisionalFrameProxy::didCommitLoadForFrame(CyberCore::FrameIdentifier frameID, FrameInfoData&& frameInfo, CyberCore::ResourceRequest&& request, uint64_t navigationID, const String& mimeType, bool frameHasCustomContentProvider, CyberCore::FrameLoadType frameLoadType, const CyberCore::CertificateInfo& certificateInfo, bool usedLegacyTLS, bool privateRelayed, bool containsPluginDocument, CyberCore::HasInsecureContent hasInsecureContent, CyberCore::MouseEventPolicy mouseEventPolicy, const UserData& userData)
 {
     m_process->removeMessageReceiver(Messages::WebPageProxy::messageReceiverName(), m_pageID);
     m_process->removeMessageReceiver(Messages::WebFrameProxy::messageReceiverName(), m_frame.frameID().object());

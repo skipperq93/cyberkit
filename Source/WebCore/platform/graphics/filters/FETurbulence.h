@@ -27,7 +27,7 @@
 #include "ColorComponents.h"
 #include "FilterEffect.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class TurbulenceType {
     Unknown,
@@ -76,17 +76,17 @@ private:
     bool m_stitchTiles;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::TurbulenceType> {
+template<> struct EnumTraits<CyberCore::TurbulenceType> {
     using values = EnumValues<
-        WebCore::TurbulenceType,
+        CyberCore::TurbulenceType,
 
-        WebCore::TurbulenceType::Unknown,
-        WebCore::TurbulenceType::FractalNoise,
-        WebCore::TurbulenceType::Turbulence
+        CyberCore::TurbulenceType::Unknown,
+        CyberCore::TurbulenceType::FractalNoise,
+        CyberCore::TurbulenceType::Turbulence
     >;
 };
 

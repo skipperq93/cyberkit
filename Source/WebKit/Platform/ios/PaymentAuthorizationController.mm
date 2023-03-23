@@ -116,7 +116,7 @@
 
 - (NSString *)presentationSceneBundleIdentifierForPaymentAuthorizationController:(PKPaymentAuthorizationController *)controller
 {
-    return nsStringNilIfEmpty(WebCore::applicationBundleIdentifier());
+    return nsStringNilIfEmpty(CyberCore::applicationBundleIdentifier());
 }
 #endif
 

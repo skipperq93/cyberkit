@@ -30,7 +30,7 @@
 #include <wtf/MainThread.h>
 #include <wtf/text/CString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<StorageSyncManager> StorageSyncManager::create(const String& path)
 {
@@ -82,4 +82,4 @@ void StorageSyncManager::close()
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore

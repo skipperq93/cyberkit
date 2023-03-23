@@ -23,7 +23,7 @@
 #include "SVGPathByteStream.h"
 #include "SVGPathSource.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGPathByteStreamSource final : public SVGPathSource {
 public:
@@ -89,4 +89,4 @@ private:
     SVGPathByteStream::DataIterator m_streamEnd;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

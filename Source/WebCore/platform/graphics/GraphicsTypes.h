@@ -36,7 +36,7 @@ namespace WTF {
 class TextStream;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class CompositeOperator : uint8_t {
     Clear,
@@ -196,13 +196,13 @@ enum TextAlign {
     RightTextAlign
 };
 
-String compositeOperatorName(WebCore::CompositeOperator, WebCore::BlendMode);
-String blendModeName(WebCore::BlendMode);
-bool parseBlendMode(const String&, WebCore::BlendMode&);
-bool parseCompositeAndBlendOperator(const String&, WebCore::CompositeOperator&, WebCore::BlendMode&);
+String compositeOperatorName(CyberCore::CompositeOperator, CyberCore::BlendMode);
+String blendModeName(CyberCore::BlendMode);
+bool parseBlendMode(const String&, CyberCore::BlendMode&);
+bool parseCompositeAndBlendOperator(const String&, CyberCore::CompositeOperator&, CyberCore::BlendMode&);
 
-WEBCORE_EXPORT WTF::TextStream& operator<<(WTF::TextStream&, WebCore::BlendMode);
-WEBCORE_EXPORT WTF::TextStream& operator<<(WTF::TextStream&, WebCore::CompositeOperator);
+WEBCORE_EXPORT WTF::TextStream& operator<<(WTF::TextStream&, CyberCore::BlendMode);
+WEBCORE_EXPORT WTF::TextStream& operator<<(WTF::TextStream&, CyberCore::CompositeOperator);
 WEBCORE_EXPORT WTF::TextStream& operator<<(WTF::TextStream&, CompositeMode);
 WEBCORE_EXPORT WTF::TextStream& operator<<(WTF::TextStream&, const DropShadow&);
 WEBCORE_EXPORT WTF::TextStream& operator<<(WTF::TextStream&, GradientSpreadMethod);
@@ -213,4 +213,4 @@ WEBCORE_EXPORT WTF::TextStream& operator<<(WTF::TextStream&, StrokeStyle);
 WEBCORE_EXPORT WTF::TextStream& operator<<(WTF::TextStream&, TextDrawingMode);
 WEBCORE_EXPORT WTF::TextStream& operator<<(WTF::TextStream&, WindRule);
 
-} // namespace WebCore
+} // namespace CyberCore

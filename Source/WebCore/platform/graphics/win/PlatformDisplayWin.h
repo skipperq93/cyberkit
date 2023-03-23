@@ -30,7 +30,7 @@
 
 #include "PlatformDisplay.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class PlatformDisplayWin final : public PlatformDisplay {
 public:
@@ -47,7 +47,7 @@ private:
     void initializeEGLDisplay() final;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_PLATFORM_DISPLAY(PlatformDisplayWin, Windows)
 

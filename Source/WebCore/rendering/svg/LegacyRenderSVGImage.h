@@ -27,7 +27,7 @@
 #include "FloatRect.h"
 #include "LegacyRenderSVGModelObject.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderImageResource;
 class SVGImageElement;
@@ -90,6 +90,6 @@ private:
     RefPtr<ImageBuffer> m_bufferedForeground;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(LegacyRenderSVGImage, isLegacySVGImage())

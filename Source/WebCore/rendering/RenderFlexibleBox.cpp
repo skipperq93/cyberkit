@@ -55,7 +55,7 @@
 #include <wtf/MathExtras.h>
 #include <wtf/SetForScope.h>
 #include <wtf/TypeCasts.h>
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(RenderFlexibleBox);
 

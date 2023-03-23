@@ -96,7 +96,7 @@ std::optional<CString> XDGDBusProxy::accessibilityProxy(const char* baseDirector
     if (!m_accessibilityProxyPath.isNull())
         return m_accessibilityProxyPath;
 
-    auto dbusAddress = WebCore::PlatformDisplay::sharedDisplay().accessibilityBusAddress().utf8();
+    auto dbusAddress = CyberCore::PlatformDisplay::sharedDisplay().accessibilityBusAddress().utf8();
     if (dbusAddress.isNull())
         return std::nullopt;
 

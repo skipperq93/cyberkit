@@ -27,7 +27,7 @@
 
 #include "SVGDecoratedProperty.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename DecorationType, typename PropertyType>
 class SVGDecoratedPrimitive : public SVGDecoratedProperty<DecorationType> {

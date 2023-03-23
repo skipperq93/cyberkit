@@ -29,30 +29,30 @@
 
 #include <CyberCore/DateTimeChooser.h>
 
-namespace WebCore {
+namespace CyberCore {
 class DateTimeChooserClient;
 struct DateTimeChooserParameters;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPage;
 
-class WebDateTimeChooser final : public WebCore::DateTimeChooser {
+class WebDateTimeChooser final : public CyberCore::DateTimeChooser {
 public:
-    WebDateTimeChooser(WebPage&, WebCore::DateTimeChooserClient&);
+    WebDateTimeChooser(WebPage&, CyberCore::DateTimeChooserClient&);
 
     void didChooseDate(StringView);
     void didEndChooser();
 
 private:
     void endChooser() final;
-    void showChooser(const WebCore::DateTimeChooserParameters&) final;
+    void showChooser(const CyberCore::DateTimeChooserParameters&) final;
 
-    WebCore::DateTimeChooserClient& m_client;
+    CyberCore::DateTimeChooserClient& m_client;
     WebPage& m_page;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

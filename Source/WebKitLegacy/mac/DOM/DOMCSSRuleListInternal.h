@@ -25,8 +25,8 @@
 
 #import <CyberKitLegacy/DOMCSSRuleList.h>
 
-namespace WebCore {
+namespace CyberCore {
 class CSSRuleList;
 }
 
-DOMCSSRuleList *kit(WebCore::CSSRuleList*);
+DOMCSSRuleList *kit(CyberCore::CSSRuleList*);

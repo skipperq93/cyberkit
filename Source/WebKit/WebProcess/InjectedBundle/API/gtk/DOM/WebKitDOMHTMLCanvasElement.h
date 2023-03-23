@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -21,28 +21,28 @@
 #error "Only <webkitdom/webkitdom.h> can be included directly."
 #endif
 
-#ifndef WebKitDOMHTMLCanvasElement_h
-#define WebKitDOMHTMLCanvasElement_h
+#ifndef CyberKitDOMHTMLCanvasElement_h
+#define CyberKitDOMHTMLCanvasElement_h
 
 #include <glib-object.h>
-#include <webkitdom/WebKitDOMHTMLElement.h>
+#include <webkitdom/CyberKitDOMHTMLElement.h>
 #include <webkitdom/webkitdomdefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_DOM_TYPE_HTML_CANVAS_ELEMENT            (webkit_dom_html_canvas_element_get_type())
-#define WEBKIT_DOM_HTML_CANVAS_ELEMENT(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_HTML_CANVAS_ELEMENT, WebKitDOMHTMLCanvasElement))
-#define WEBKIT_DOM_HTML_CANVAS_ELEMENT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_HTML_CANVAS_ELEMENT, WebKitDOMHTMLCanvasElementClass)
+#define WEBKIT_DOM_HTML_CANVAS_ELEMENT(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_HTML_CANVAS_ELEMENT, CyberKitDOMHTMLCanvasElement))
+#define WEBKIT_DOM_HTML_CANVAS_ELEMENT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_HTML_CANVAS_ELEMENT, CyberKitDOMHTMLCanvasElementClass)
 #define WEBKIT_DOM_IS_HTML_CANVAS_ELEMENT(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_DOM_TYPE_HTML_CANVAS_ELEMENT))
 #define WEBKIT_DOM_IS_HTML_CANVAS_ELEMENT_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_DOM_TYPE_HTML_CANVAS_ELEMENT))
-#define WEBKIT_DOM_HTML_CANVAS_ELEMENT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_HTML_CANVAS_ELEMENT, WebKitDOMHTMLCanvasElementClass))
+#define WEBKIT_DOM_HTML_CANVAS_ELEMENT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_HTML_CANVAS_ELEMENT, CyberKitDOMHTMLCanvasElementClass))
 
-struct _WebKitDOMHTMLCanvasElement {
-    WebKitDOMHTMLElement parent_instance;
+struct _CyberKitDOMHTMLCanvasElement {
+    CyberKitDOMHTMLElement parent_instance;
 };
 
-struct _WebKitDOMHTMLCanvasElementClass {
-    WebKitDOMHTMLElementClass parent_class;
+struct _CyberKitDOMHTMLCanvasElementClass {
+    CyberKitDOMHTMLElementClass parent_class;
 };
 
 WEBKIT_DEPRECATED GType
@@ -50,48 +50,48 @@ webkit_dom_html_canvas_element_get_type(void);
 
 /**
  * webkit_dom_html_canvas_element_get_width:
- * @self: A #WebKitDOMHTMLCanvasElement
+ * @self: A #CyberKitDOMHTMLCanvasElement
  *
  * Returns: A #glong
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED glong
-webkit_dom_html_canvas_element_get_width(WebKitDOMHTMLCanvasElement* self);
+webkit_dom_html_canvas_element_get_width(CyberKitDOMHTMLCanvasElement* self);
 
 /**
  * webkit_dom_html_canvas_element_set_width:
- * @self: A #WebKitDOMHTMLCanvasElement
+ * @self: A #CyberKitDOMHTMLCanvasElement
  * @value: A #glong
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_canvas_element_set_width(WebKitDOMHTMLCanvasElement* self, glong value);
+webkit_dom_html_canvas_element_set_width(CyberKitDOMHTMLCanvasElement* self, glong value);
 
 /**
  * webkit_dom_html_canvas_element_get_height:
- * @self: A #WebKitDOMHTMLCanvasElement
+ * @self: A #CyberKitDOMHTMLCanvasElement
  *
  * Returns: A #glong
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED glong
-webkit_dom_html_canvas_element_get_height(WebKitDOMHTMLCanvasElement* self);
+webkit_dom_html_canvas_element_get_height(CyberKitDOMHTMLCanvasElement* self);
 
 /**
  * webkit_dom_html_canvas_element_set_height:
- * @self: A #WebKitDOMHTMLCanvasElement
+ * @self: A #CyberKitDOMHTMLCanvasElement
  * @value: A #glong
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_canvas_element_set_height(WebKitDOMHTMLCanvasElement* self, glong value);
+webkit_dom_html_canvas_element_set_height(CyberKitDOMHTMLCanvasElement* self, glong value);
 
 G_END_DECLS
 
-#endif /* WebKitDOMHTMLCanvasElement_h */
+#endif /* CyberKitDOMHTMLCanvasElement_h */

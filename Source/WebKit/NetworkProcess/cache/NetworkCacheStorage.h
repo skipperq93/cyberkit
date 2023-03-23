@@ -193,11 +193,11 @@ private:
 
     PriorityQueue<std::unique_ptr<ReadOperation>, &isHigherPriority> m_pendingReadOperations;
     HashSet<std::unique_ptr<ReadOperation>> m_activeReadOperations;
-    WebCore::Timer m_readOperationTimeoutTimer;
+    CyberCore::Timer m_readOperationTimeoutTimer;
 
     Deque<std::unique_ptr<WriteOperation>> m_pendingWriteOperations;
     HashSet<std::unique_ptr<WriteOperation>> m_activeWriteOperations;
-    WebCore::Timer m_writeOperationDispatchTimer;
+    CyberCore::Timer m_writeOperationDispatchTimer;
 
     struct TraverseOperation;
     HashSet<std::unique_ptr<TraverseOperation>> m_activeTraverseOperations;

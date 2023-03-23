@@ -40,25 +40,25 @@
 #import <wtf/GetPtr.h>
 #import <wtf/URL.h>
 
-#define IMPL static_cast<WebCore::CSSStyleSheet*>(reinterpret_cast<WebCore::StyleSheet*>(_internal))
+#define IMPL static_cast<CyberCore::CSSStyleSheet*>(reinterpret_cast<CyberCore::StyleSheet*>(_internal))
 
 @implementation DOMCSSStyleSheet
 
 - (DOMCSSRule *)ownerRule
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->ownerRule()));
 }
 
 - (DOMCSSRuleList *)cssRules
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->cssRules()));
 }
 
 - (DOMCSSRuleList *)rules
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     // Calling IMPL->cssRules (not IMPL->rules) is intentional, as `rules` should just be an alias for `cssRules`.
     // See https://bugs.webkit.org/show_bug.cgi?id=197725 for more information.
     return kit(WTF::getPtr(IMPL->cssRules()));
@@ -66,25 +66,25 @@
 
 - (unsigned)insertRule:(NSString *)rule index:(unsigned)index
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return raiseOnDOMError(IMPL->insertRule(rule, index));
 }
 
 - (void)deleteRule:(unsigned)index
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     raiseOnDOMError(IMPL->deleteRule(index));
 }
 
 - (int)addRule:(NSString *)selector style:(NSString *)style index:(unsigned)index
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return raiseOnDOMError(IMPL->addRule(selector, style, index));
 }
 
 - (void)removeRule:(unsigned)index
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     raiseOnDOMError(IMPL->removeRule(index));
 }
 
@@ -99,10 +99,10 @@
 
 @end
 
-DOMCSSStyleSheet *kit(WebCore::CSSStyleSheet* value)
+DOMCSSStyleSheet *kit(CyberCore::CSSStyleSheet* value)
 {
-    WebCoreThreadViolationCheckRoundOne();
-    return static_cast<DOMCSSStyleSheet*>(kit(static_cast<WebCore::StyleSheet*>(value)));
+    CyberCoreThreadViolationCheckRoundOne();
+    return static_cast<DOMCSSStyleSheet*>(kit(static_cast<CyberCore::StyleSheet*>(value)));
 }
 
 #undef IMPL

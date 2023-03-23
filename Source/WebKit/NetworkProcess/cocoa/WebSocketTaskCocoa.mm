@@ -39,9 +39,9 @@
 
 namespace WebKit {
 
-using namespace WebCore;
+using namespace CyberCore;
 
-WebSocketTask::WebSocketTask(NetworkSocketChannel& channel, WebPageProxyIdentifier pageID, WeakPtr<SessionSet>&& sessionSet, const WebCore::ResourceRequest& request, const WebCore::ClientOrigin& clientOrigin, RetainPtr<NSURLSessionWebSocketTask>&& task)
+WebSocketTask::WebSocketTask(NetworkSocketChannel& channel, WebPageProxyIdentifier pageID, WeakPtr<SessionSet>&& sessionSet, const CyberCore::ResourceRequest& request, const CyberCore::ClientOrigin& clientOrigin, RetainPtr<NSURLSessionWebSocketTask>&& task)
     : m_channel(channel)
     , m_task(WTFMove(task))
     , m_pageID(pageID)
@@ -79,7 +79,7 @@ void WebSocketTask::readNextMessage()
             }
 
             m_channel.didReceiveMessageError([error localizedDescription]);
-            didClose(WebCore::WebSocketChannel::CloseEventCodeAbnormalClosure, emptyString());
+            didClose(CyberCore::WebSocketChannel::CloseEventCodeAbnormalClosure, emptyString());
             return;
         }
         if (message.type == NSURLSessionWebSocketMessageTypeString)
@@ -146,7 +146,7 @@ void WebSocketTask::sendData(const IPC::DataReference& data, CompletionHandler<v
 
 void WebSocketTask::close(int32_t code, const String& reason)
 {
-    if (code == WebCore::WebSocketChannel::CloseEventCodeNotSpecified)
+    if (code == CyberCore::WebSocketChannel::CloseEventCodeNotSpecified)
         code = NSURLSessionWebSocketCloseCodeInvalid;
     auto utf8 = reason.utf8();
     auto nsData = adoptNS([[NSData alloc] initWithBytes:utf8.data() length:utf8.length()]);

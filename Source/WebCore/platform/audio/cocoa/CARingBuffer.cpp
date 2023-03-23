@@ -35,7 +35,7 @@
 #include <wtf/MathExtras.h>
 #include <wtf/StdLibExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 CARingBuffer::CARingBuffer(size_t bytesPerFrame, size_t frameCount, uint32_t numChannelStreams)
     : m_pointers(numChannelStreams)
@@ -303,7 +303,7 @@ void CARingBuffer::fetchInternal(AudioBufferList* list, size_t nFrames, uint64_t
     }
 }
 
-std::unique_ptr<InProcessCARingBuffer> InProcessCARingBuffer::allocate(const WebCore::CAAudioStreamDescription& format, size_t frameCount)
+std::unique_ptr<InProcessCARingBuffer> InProcessCARingBuffer::allocate(const CyberCore::CAAudioStreamDescription& format, size_t frameCount)
 {
     frameCount = WTF::roundUpToPowerOfTwo(frameCount);
     auto bytesPerFrame = format.bytesPerFrame();

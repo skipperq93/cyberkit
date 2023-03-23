@@ -38,7 +38,7 @@ class AbstractSlotVisitor;
 
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class Element;
@@ -99,4 +99,4 @@ private:
     bool m_hasSkippedObservations { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

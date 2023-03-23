@@ -32,7 +32,7 @@
 #include <IOKit/hid/IOHIDUsageTables.h>
 #include <wtf/HexNumber.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 GenericHIDGamepad::GenericHIDGamepad(HIDDevice&& device, unsigned index)
     : HIDGamepad(WTFMove(device), index)
@@ -86,6 +86,6 @@ void GenericHIDGamepad::maybeAddButtonElement(HIDElement& element)
     m_elementMap.set(element.cookie(), makeUnique<HIDGamepadButton>(element, m_buttonValues.last()));
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(GAMEPAD) && PLATFORM(MAC)

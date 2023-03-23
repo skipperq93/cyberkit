@@ -38,7 +38,7 @@
 #include <wtf/RetainPtr.h>
 #include <wtf/Seconds.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FloatRect;
 class IntPoint;
@@ -248,5 +248,5 @@ private:
     float m_topContentInset { 0 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 

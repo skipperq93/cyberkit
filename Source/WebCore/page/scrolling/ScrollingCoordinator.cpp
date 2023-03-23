@@ -44,7 +44,7 @@
 #include <wtf/MainThread.h>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 #if PLATFORM(IOS_FAMILY) || !ENABLE(ASYNC_SCROLLING)
 Ref<ScrollingCoordinator> ScrollingCoordinator::create(Page* page)
@@ -450,4 +450,4 @@ String ScrollingCoordinator::synchronousScrollingReasonsAsText() const
     return String();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

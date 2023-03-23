@@ -29,7 +29,7 @@
 #include <wtf/Deque.h>
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SharedBuffer;
 
@@ -214,4 +214,4 @@ private:
     virtual void endArray() = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

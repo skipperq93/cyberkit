@@ -25,8 +25,8 @@
 
 #pragma once
 
-namespace WebKit {
+namespace CyberKit {
 
 int WebPushDaemonMain(int, char**);
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -40,7 +40,7 @@
 
 namespace WebKit {
 using namespace IPC;
-using namespace WebCore;
+using namespace CyberCore;
 
 TiledCoreAnimationDrawingAreaProxy::TiledCoreAnimationDrawingAreaProxy(WebPageProxy& webPageProxy)
     : DrawingAreaProxy(DrawingAreaType::TiledCoreAnimation, webPageProxy)

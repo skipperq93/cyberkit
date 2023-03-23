@@ -42,7 +42,7 @@
 #include "PrivateRelayed.h"
 #include "ResourceLoadInfo.h"
 #include "ServiceWorkerFetchTask.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebErrors.h"
 #include "WebLoaderStrategy.h"
 #include "WebPageMessages.h"
@@ -84,7 +84,7 @@
 #define LOADER_RELEASE_LOG_ERROR(fmt, ...) RELEASE_LOG_ERROR(Network, "%p - [pageProxyID=%" PRIu64 ", webPageID=%" PRIu64 ", frameID=%" PRIu64 ", resourceID=%" PRIu64 ", isMainResource=%d, destination=%u, isSynchronous=%d] NetworkResourceLoader::" fmt, this, m_parameters.webPageProxyID.toUInt64(), m_parameters.webPageID.toUInt64(), m_parameters.webFrameID.object().toUInt64(), m_parameters.identifier.toUInt64(), isMainResource(), static_cast<unsigned>(m_parameters.options.destination), isSynchronous(), ##__VA_ARGS__)
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 struct NetworkResourceLoader::SynchronousLoadData {
     WTF_MAKE_STRUCT_FAST_ALLOCATED;
@@ -129,7 +129,7 @@ NetworkResourceLoader::NetworkResourceLoader(NetworkResourceLoadParameters&& par
     if (auto* session = connection.networkProcess().networkSession(sessionID()))
         m_cache = session->cache();
 
-    // FIXME: This is necessary because of the existence of EmptyFrameLoaderClient in WebCore.
+    // FIXME: This is necessary because of the existence of EmptyFrameLoaderClient in CyberCore.
     //        Once bug 116233 is resolved, this ASSERT can just be "m_webPageID && m_webFrameID"
     ASSERT((m_parameters.webPageID && m_parameters.webFrameID) || m_parameters.clientCredentialPolicy == ClientCredentialPolicy::CannotAskClientForCredentials);
 
@@ -166,7 +166,7 @@ bool NetworkResourceLoader::canUseCache(const ResourceRequest& request) const
 
     if (!request.url().protocolIsInHTTPFamily())
         return false;
-    if (originalRequest().cachePolicy() == WebCore::ResourceRequestCachePolicy::DoNotUseAnyCache)
+    if (originalRequest().cachePolicy() == CyberCore::ResourceRequestCachePolicy::DoNotUseAnyCache)
         return false;
 
     return true;
@@ -302,7 +302,7 @@ void NetworkResourceLoader::retrieveCacheEntry(const ResourceRequest& request)
     });
 }
 
-void NetworkResourceLoader::retrieveCacheEntryInternal(std::unique_ptr<NetworkCache::Entry>&& entry, WebCore::ResourceRequest&& request)
+void NetworkResourceLoader::retrieveCacheEntryInternal(std::unique_ptr<NetworkCache::Entry>&& entry, CyberCore::ResourceRequest&& request)
 {
     LOADER_RELEASE_LOG("retrieveCacheEntryInternal:");
 #if ENABLE(TRACKING_PREVENTION)
@@ -324,7 +324,7 @@ void NetworkResourceLoader::retrieveCacheEntryInternal(std::unique_ptr<NetworkCa
         startNetworkLoad(WTFMove(request), FirstLoad::Yes);
         return;
     }
-    if (entry->needsValidation() || request.cachePolicy() == WebCore::ResourceRequestCachePolicy::RefreshAnyCacheData) {
+    if (entry->needsValidation() || request.cachePolicy() == CyberCore::ResourceRequestCachePolicy::RefreshAnyCacheData) {
         LOADER_RELEASE_LOG("retrieveCacheEntryInternal: Cached entry needs revalidation");
         validateCacheEntry(WTFMove(entry));
         return;
@@ -348,14 +348,14 @@ void NetworkResourceLoader::startNetworkLoad(ResourceRequest&& request, FirstLoa
 
     NetworkLoadParameters parameters = m_parameters;
     parameters.networkActivityTracker = m_networkActivityTracker;
-    if (parameters.storedCredentialsPolicy == WebCore::StoredCredentialsPolicy::Use && m_networkLoadChecker)
+    if (parameters.storedCredentialsPolicy == CyberCore::StoredCredentialsPolicy::Use && m_networkLoadChecker)
         parameters.storedCredentialsPolicy = m_networkLoadChecker->storedCredentialsPolicy();
 
     auto* networkSession = m_connection->networkSession();
     if (!networkSession) {
         WTFLogAlways("Attempted to create a NetworkLoad with a session (id=%" PRIu64 ") that does not exist.", sessionID().toUInt64());
         LOADER_RELEASE_LOG_ERROR("startNetworkLoad: Attempted to create a NetworkLoad for a session that does not exist (sessionID=%" PRIu64 ")", sessionID().toUInt64());
-        m_connection->networkProcess().logDiagnosticMessage(m_parameters.webPageProxyID, WebCore::DiagnosticLoggingKeys::internalErrorKey(), WebCore::DiagnosticLoggingKeys::invalidSessionIDKey(), WebCore::ShouldSample::No);
+        m_connection->networkProcess().logDiagnosticMessage(m_parameters.webPageProxyID, CyberCore::DiagnosticLoggingKeys::internalErrorKey(), CyberCore::DiagnosticLoggingKeys::invalidSessionIDKey(), CyberCore::ShouldSample::No);
         didFailLoading(internalError(request.url()));
         return;
     }
@@ -407,61 +407,61 @@ ResourceLoadInfo NetworkResourceLoader::resourceLoadInfo()
         return false;
     };
 
-    auto resourceType = [] (WebCore::ResourceRequestRequester requester, WebCore::FetchOptions::Destination destination) {
+    auto resourceType = [] (CyberCore::ResourceRequestRequester requester, CyberCore::FetchOptions::Destination destination) {
         switch (requester) {
-        case WebCore::ResourceRequestRequester::XHR:
+        case CyberCore::ResourceRequestRequester::XHR:
             return ResourceLoadInfo::Type::XMLHTTPRequest;
-        case WebCore::ResourceRequestRequester::Fetch:
+        case CyberCore::ResourceRequestRequester::Fetch:
             return ResourceLoadInfo::Type::Fetch;
-        case WebCore::ResourceRequestRequester::Ping:
+        case CyberCore::ResourceRequestRequester::Ping:
             return ResourceLoadInfo::Type::Ping;
-        case WebCore::ResourceRequestRequester::Beacon:
+        case CyberCore::ResourceRequestRequester::Beacon:
             return ResourceLoadInfo::Type::Beacon;
         default:
             break;
         }
 
         switch (destination) {
-        case WebCore::FetchOptions::Destination::EmptyString:
+        case CyberCore::FetchOptions::Destination::EmptyString:
             return ResourceLoadInfo::Type::Other;
-        case WebCore::FetchOptions::Destination::Audio:
+        case CyberCore::FetchOptions::Destination::Audio:
             return ResourceLoadInfo::Type::Media;
-        case WebCore::FetchOptions::Destination::Audioworklet:
+        case CyberCore::FetchOptions::Destination::Audioworklet:
             return ResourceLoadInfo::Type::Other;
-        case WebCore::FetchOptions::Destination::Document:
-        case WebCore::FetchOptions::Destination::Iframe:
+        case CyberCore::FetchOptions::Destination::Document:
+        case CyberCore::FetchOptions::Destination::Iframe:
             return ResourceLoadInfo::Type::Document;
-        case WebCore::FetchOptions::Destination::Embed:
+        case CyberCore::FetchOptions::Destination::Embed:
             return ResourceLoadInfo::Type::Object;
-        case WebCore::FetchOptions::Destination::Font:
+        case CyberCore::FetchOptions::Destination::Font:
             return ResourceLoadInfo::Type::Font;
-        case WebCore::FetchOptions::Destination::Image:
+        case CyberCore::FetchOptions::Destination::Image:
             return ResourceLoadInfo::Type::Image;
-        case WebCore::FetchOptions::Destination::Manifest:
+        case CyberCore::FetchOptions::Destination::Manifest:
             return ResourceLoadInfo::Type::ApplicationManifest;
-        case WebCore::FetchOptions::Destination::Model:
+        case CyberCore::FetchOptions::Destination::Model:
             return ResourceLoadInfo::Type::Media;
-        case WebCore::FetchOptions::Destination::Object:
+        case CyberCore::FetchOptions::Destination::Object:
             return ResourceLoadInfo::Type::Object;
-        case WebCore::FetchOptions::Destination::Paintworklet:
+        case CyberCore::FetchOptions::Destination::Paintworklet:
             return ResourceLoadInfo::Type::Other;
-        case WebCore::FetchOptions::Destination::Report:
+        case CyberCore::FetchOptions::Destination::Report:
             return ResourceLoadInfo::Type::CSPReport;
-        case WebCore::FetchOptions::Destination::Script:
+        case CyberCore::FetchOptions::Destination::Script:
             return ResourceLoadInfo::Type::Script;
-        case WebCore::FetchOptions::Destination::Serviceworker:
+        case CyberCore::FetchOptions::Destination::Serviceworker:
             return ResourceLoadInfo::Type::Other;
-        case WebCore::FetchOptions::Destination::Sharedworker:
+        case CyberCore::FetchOptions::Destination::Sharedworker:
             return ResourceLoadInfo::Type::Other;
-        case WebCore::FetchOptions::Destination::Style:
+        case CyberCore::FetchOptions::Destination::Style:
             return ResourceLoadInfo::Type::Stylesheet;
-        case WebCore::FetchOptions::Destination::Track:
+        case CyberCore::FetchOptions::Destination::Track:
             return ResourceLoadInfo::Type::Media;
-        case WebCore::FetchOptions::Destination::Video:
+        case CyberCore::FetchOptions::Destination::Video:
             return ResourceLoadInfo::Type::Media;
-        case WebCore::FetchOptions::Destination::Worker:
+        case CyberCore::FetchOptions::Destination::Worker:
             return ResourceLoadInfo::Type::Other;
-        case WebCore::FetchOptions::Destination::Xslt:
+        case CyberCore::FetchOptions::Destination::Xslt:
             return ResourceLoadInfo::Type::XSLT;
         }
 
@@ -681,12 +681,12 @@ bool NetworkResourceLoader::shouldInterruptNavigationForCrossOriginEmbedderPolic
     ASSERT(isMainResource());
 
     // https://html.spec.whatwg.org/multipage/origin.html#check-a-navigation-response's-adherence-to-its-embedder-policy
-    if (m_parameters.parentCrossOriginEmbedderPolicy.value == WebCore::CrossOriginEmbedderPolicyValue::RequireCORP || m_parameters.parentCrossOriginEmbedderPolicy.reportOnlyValue == WebCore::CrossOriginEmbedderPolicyValue::RequireCORP) {
-        auto responseCOEP = WebCore::obtainCrossOriginEmbedderPolicy(response, nullptr);
-        if (m_parameters.parentCrossOriginEmbedderPolicy.reportOnlyValue == WebCore::CrossOriginEmbedderPolicyValue::RequireCORP && responseCOEP.value != WebCore::CrossOriginEmbedderPolicyValue::RequireCORP)
+    if (m_parameters.parentCrossOriginEmbedderPolicy.value == CyberCore::CrossOriginEmbedderPolicyValue::RequireCORP || m_parameters.parentCrossOriginEmbedderPolicy.reportOnlyValue == CyberCore::CrossOriginEmbedderPolicyValue::RequireCORP) {
+        auto responseCOEP = CyberCore::obtainCrossOriginEmbedderPolicy(response, nullptr);
+        if (m_parameters.parentCrossOriginEmbedderPolicy.reportOnlyValue == CyberCore::CrossOriginEmbedderPolicyValue::RequireCORP && responseCOEP.value != CyberCore::CrossOriginEmbedderPolicyValue::RequireCORP)
             sendCOEPInheritenceViolation(*this, m_parameters.parentFrameURL.isValid() ? m_parameters.parentFrameURL : aboutBlankURL(), m_parameters.parentCrossOriginEmbedderPolicy.reportOnlyReportingEndpoint, COEPDisposition::Reporting, "navigation"_s, m_firstResponseURL);
 
-        if (m_parameters.parentCrossOriginEmbedderPolicy.value != WebCore::CrossOriginEmbedderPolicyValue::UnsafeNone && responseCOEP.value != WebCore::CrossOriginEmbedderPolicyValue::RequireCORP) {
+        if (m_parameters.parentCrossOriginEmbedderPolicy.value != CyberCore::CrossOriginEmbedderPolicyValue::UnsafeNone && responseCOEP.value != CyberCore::CrossOriginEmbedderPolicyValue::RequireCORP) {
             String errorMessage = makeString("Refused to display '", response.url().stringCenterEllipsizedToLength(), "' in a frame because of Cross-Origin-Embedder-Policy.");
             send(Messages::WebPage::AddConsoleMessage { m_parameters.webFrameID,  MessageSource::Security, MessageLevel::Error, errorMessage, coreIdentifier() }, m_parameters.webPageID);
             sendCOEPInheritenceViolation(*this, m_parameters.parentFrameURL.isValid() ? m_parameters.parentFrameURL : aboutBlankURL(), m_parameters.parentCrossOriginEmbedderPolicy.reportingEndpoint, COEPDisposition::Enforce, "navigation"_s, m_firstResponseURL);
@@ -703,12 +703,12 @@ bool NetworkResourceLoader::shouldInterruptWorkerLoadForCrossOriginEmbedderPolic
     if (m_parameters.options.destination != FetchOptions::Destination::Worker)
         return false;
 
-    if (m_parameters.crossOriginEmbedderPolicy.value == WebCore::CrossOriginEmbedderPolicyValue::RequireCORP || m_parameters.crossOriginEmbedderPolicy.reportOnlyValue == WebCore::CrossOriginEmbedderPolicyValue::RequireCORP) {
-        auto responseCOEP = WebCore::obtainCrossOriginEmbedderPolicy(response, nullptr);
-        if (m_parameters.crossOriginEmbedderPolicy.reportOnlyValue == WebCore::CrossOriginEmbedderPolicyValue::RequireCORP && responseCOEP.value == WebCore::CrossOriginEmbedderPolicyValue::UnsafeNone)
+    if (m_parameters.crossOriginEmbedderPolicy.value == CyberCore::CrossOriginEmbedderPolicyValue::RequireCORP || m_parameters.crossOriginEmbedderPolicy.reportOnlyValue == CyberCore::CrossOriginEmbedderPolicyValue::RequireCORP) {
+        auto responseCOEP = CyberCore::obtainCrossOriginEmbedderPolicy(response, nullptr);
+        if (m_parameters.crossOriginEmbedderPolicy.reportOnlyValue == CyberCore::CrossOriginEmbedderPolicyValue::RequireCORP && responseCOEP.value == CyberCore::CrossOriginEmbedderPolicyValue::UnsafeNone)
             sendCOEPInheritenceViolation(*this, m_parameters.frameURL.isValid() ? m_parameters.frameURL : aboutBlankURL(), m_parameters.crossOriginEmbedderPolicy.reportOnlyReportingEndpoint, COEPDisposition::Reporting, "worker initialization"_s, m_firstResponseURL);
 
-        if (m_parameters.crossOriginEmbedderPolicy.value == WebCore::CrossOriginEmbedderPolicyValue::RequireCORP && responseCOEP.value == WebCore::CrossOriginEmbedderPolicyValue::UnsafeNone) {
+        if (m_parameters.crossOriginEmbedderPolicy.value == CyberCore::CrossOriginEmbedderPolicyValue::RequireCORP && responseCOEP.value == CyberCore::CrossOriginEmbedderPolicyValue::UnsafeNone) {
             String errorMessage = makeString("Refused to load '", response.url().stringCenterEllipsizedToLength(), "' worker because of Cross-Origin-Embedder-Policy.");
             send(Messages::WebPage::AddConsoleMessage { m_parameters.webFrameID,  MessageSource::Security, MessageLevel::Error, errorMessage, coreIdentifier() }, m_parameters.webPageID);
             sendCOEPInheritenceViolation(*this, m_parameters.frameURL.isValid() ? m_parameters.frameURL : aboutBlankURL(), m_parameters.crossOriginEmbedderPolicy.reportingEndpoint, COEPDisposition::Enforce, "worker initialization"_s, m_firstResponseURL);
@@ -740,13 +740,13 @@ std::optional<ResourceError> NetworkResourceLoader::doCrossOriginOpenerHandlingO
         m_currentCoopEnforcementResult = CrossOriginOpenerPolicyEnforcementResult::from(m_parameters.documentURL, WTFMove(sourceOrigin), m_parameters.sourceCrossOriginOpenerPolicy, m_parameters.navigationRequester, m_parameters.openerURL);
     }
 
-    m_currentCoopEnforcementResult = WebCore::doCrossOriginOpenerHandlingOfResponse(*this, response, m_parameters.navigationRequester, contentSecurityPolicy.get(), m_parameters.effectiveSandboxFlags, originalRequest().httpReferrer(), m_parameters.isDisplayingInitialEmptyDocument, *m_currentCoopEnforcementResult);
+    m_currentCoopEnforcementResult = CyberCore::doCrossOriginOpenerHandlingOfResponse(*this, response, m_parameters.navigationRequester, contentSecurityPolicy.get(), m_parameters.effectiveSandboxFlags, originalRequest().httpReferrer(), m_parameters.isDisplayingInitialEmptyDocument, *m_currentCoopEnforcementResult);
     if (!m_currentCoopEnforcementResult)
         return ResourceError { errorDomainWebKitInternal, 0, response.url(), "Navigation was blocked by Cross-Origin-Opener-Policy"_s, ResourceError::Type::AccessControl };
     return std::nullopt;
 }
 
-void NetworkResourceLoader::processClearSiteDataHeader(const WebCore::ResourceResponse& response, CompletionHandler<void()>&& completionHandler)
+void NetworkResourceLoader::processClearSiteDataHeader(const CyberCore::ResourceResponse& response, CompletionHandler<void()>&& completionHandler)
 {
     if (!m_parameters.isClearSiteDataHeaderEnabled)
         return completionHandler();
@@ -793,7 +793,7 @@ void NetworkResourceLoader::processClearSiteDataHeader(const WebCore::ResourceRe
         m_connection->networkProcess().parentProcessConnection()->sendWithAsyncReply(Messages::NetworkProcessProxy::DeleteWebsiteDataInWebProcessesForOrigin(typesToRemove, clientOrigin, sessionID(), m_parameters.webPageProxyID), [callbackAggregator] { });
 
     if (shouldReloadExecutionContexts) {
-        std::optional<WebCore::FrameIdentifier> triggeringFrame;
+        std::optional<CyberCore::FrameIdentifier> triggeringFrame;
         if (isMainResource())
             triggeringFrame = frameID();
         m_connection->networkProcess().parentProcessConnection()->sendWithAsyncReply(Messages::NetworkProcessProxy::ReloadExecutionContextsForOrigin(clientOrigin, sessionID(), triggeringFrame), [callbackAggregator] { });
@@ -865,7 +865,7 @@ void NetworkResourceLoader::didReceiveResponse(ResourceResponse&& receivedRespon
         LOADER_RELEASE_LOG("didReceiveResponse: Received revalidation response (validationSucceeded=%d, wasOriginalRequestConditional=%d)", validationSucceeded, originalRequest().isConditional());
         if (validationSucceeded) {
             m_cacheEntryForValidation = m_cache->update(originalRequest(), *m_cacheEntryForValidation, m_response, m_privateRelayed);
-            // If the request was conditional then this revalidation was not triggered by the network cache and we pass the 304 response to WebCore.
+            // If the request was conditional then this revalidation was not triggered by the network cache and we pass the 304 response to CyberCore.
             if (originalRequest().isConditional()) {
                 // Add CORP header to the 304 response if previously set to avoid being blocked by load checker due to COEP.
                 auto crossOriginResourcePolicy = m_cacheEntryForValidation->response().httpHeaderField(HTTPHeaderName::CrossOriginResourcePolicy);
@@ -964,7 +964,7 @@ void NetworkResourceLoader::didReceiveResponse(ResourceResponse&& receivedRespon
     });
 }
 
-void NetworkResourceLoader::sendDidReceiveResponsePotentiallyInNewBrowsingContextGroup(const WebCore::ResourceResponse& response, PrivateRelayed privateRelayed, bool needsContinueDidReceiveResponseMessage)
+void NetworkResourceLoader::sendDidReceiveResponsePotentiallyInNewBrowsingContextGroup(const CyberCore::ResourceResponse& response, PrivateRelayed privateRelayed, bool needsContinueDidReceiveResponseMessage)
 {
     auto browsingContextGroupSwitchDecision = toBrowsingContextGroupSwitchDecision(m_currentCoopEnforcementResult);
     if (browsingContextGroupSwitchDecision == BrowsingContextGroupSwitchDecision::StayInGroup) {
@@ -986,7 +986,7 @@ void NetworkResourceLoader::sendDidReceiveResponsePotentiallyInNewBrowsingContex
     });
 }
 
-void NetworkResourceLoader::didReceiveBuffer(const WebCore::FragmentedSharedBuffer& buffer, uint64_t reportedEncodedDataLength)
+void NetworkResourceLoader::didReceiveBuffer(const CyberCore::FragmentedSharedBuffer& buffer, uint64_t reportedEncodedDataLength)
 {
     if (!m_numBytesReceived)
         LOADER_RELEASE_LOG("didReceiveData: Started receiving data (reportedEncodedDataLength=%" PRIu64 ")", reportedEncodedDataLength);
@@ -1117,7 +1117,7 @@ std::optional<Seconds> NetworkResourceLoader::validateCacheEntryForMaxAgeCapVali
     if (m_cacheEntryForMaxAgeCapValidation) {
         ASSERT(redirectResponse.source() == ResourceResponse::Source::Network);
         ASSERT(redirectResponse.isRedirection());
-        if (redirectResponse.httpHeaderField(WebCore::HTTPHeaderName::Location) == m_cacheEntryForMaxAgeCapValidation->response().httpHeaderField(WebCore::HTTPHeaderName::Location))
+        if (redirectResponse.httpHeaderField(CyberCore::HTTPHeaderName::Location) == m_cacheEntryForMaxAgeCapValidation->response().httpHeaderField(CyberCore::HTTPHeaderName::Location))
             existingCacheEntryMatchesNewResponse = true;
 
         m_cache->remove(m_cacheEntryForMaxAgeCapValidation->key());
@@ -1155,12 +1155,12 @@ void NetworkResourceLoader::willSendRedirectedRequestInternal(ResourceRequest&& 
         return;
 #endif
 
-    std::optional<WebCore::PCM::AttributionTriggerData> privateClickMeasurementAttributionTriggerData;
+    std::optional<CyberCore::PCM::AttributionTriggerData> privateClickMeasurementAttributionTriggerData;
     if (!sessionID().isEphemeral()) {
-        if (auto result = WebCore::PrivateClickMeasurement::parseAttributionRequest(redirectRequest.url())) {
+        if (auto result = CyberCore::PrivateClickMeasurement::parseAttributionRequest(redirectRequest.url())) {
             privateClickMeasurementAttributionTriggerData = result.value();
             if (privateClickMeasurementAttributionTriggerData)
-                privateClickMeasurementAttributionTriggerData->destinationSite = WebCore::RegistrableDomain { request.firstPartyForCookies() };
+                privateClickMeasurementAttributionTriggerData->destinationSite = CyberCore::RegistrableDomain { request.firstPartyForCookies() };
         } else if (!result.error().isEmpty())
             addConsoleMessage(MessageSource::PrivateClickMeasurement, MessageLevel::Error, result.error());
     }
@@ -1181,12 +1181,12 @@ void NetworkResourceLoader::willSendRedirectedRequestInternal(ResourceRequest&& 
         return;
     }
 
-    if (auto authorization = request.httpHeaderField(WebCore::HTTPHeaderName::Authorization); !authorization.isNull()
+    if (auto authorization = request.httpHeaderField(CyberCore::HTTPHeaderName::Authorization); !authorization.isNull()
 #if PLATFORM(COCOA)
         && linkedOnOrAfterSDKWithBehavior(SDKAlignedBehavior::AuthorizationHeaderOnSameOriginRedirects)
 #endif
         && protocolHostAndPortAreEqual(request.url(), redirectRequest.url())) {
-        redirectRequest.setHTTPHeaderField(WebCore::HTTPHeaderName::Authorization, authorization);
+        redirectRequest.setHTTPHeaderField(CyberCore::HTTPHeaderName::Authorization, authorization);
     }
 
     if (m_networkLoadChecker) {
@@ -1235,7 +1235,7 @@ void NetworkResourceLoader::willSendRedirectedRequestInternal(ResourceRequest&& 
     continueWillSendRedirectedRequest(WTFMove(request), WTFMove(redirectRequest), WTFMove(redirectResponse), WTFMove(privateClickMeasurementAttributionTriggerData));
 }
 
-void NetworkResourceLoader::continueWillSendRedirectedRequest(ResourceRequest&& request, ResourceRequest&& redirectRequest, ResourceResponse&& redirectResponse, std::optional<WebCore::PCM::AttributionTriggerData>&& privateClickMeasurementAttributionTriggerData)
+void NetworkResourceLoader::continueWillSendRedirectedRequest(ResourceRequest&& request, ResourceRequest&& redirectRequest, ResourceResponse&& redirectResponse, std::optional<CyberCore::PCM::AttributionTriggerData>&& privateClickMeasurementAttributionTriggerData)
 {
     redirectRequest.setIsAppInitiated(request.isAppInitiated());
 
@@ -1258,7 +1258,7 @@ void NetworkResourceLoader::continueWillSendRedirectedRequest(ResourceRequest&& 
     send(Messages::WebResourceLoader::WillSendRequest(redirectRequest, IPC::FormDataReference { redirectRequest.httpBody() }, sanitizeResponseIfPossible(WTFMove(redirectResponse), ResourceResponse::SanitizationType::Redirection)));
 }
 
-void NetworkResourceLoader::didFinishWithRedirectResponse(WebCore::ResourceRequest&& request, WebCore::ResourceRequest&& redirectRequest, ResourceResponse&& redirectResponse)
+void NetworkResourceLoader::didFinishWithRedirectResponse(CyberCore::ResourceRequest&& request, CyberCore::ResourceRequest&& redirectRequest, ResourceResponse&& redirectResponse)
 {
     LOADER_RELEASE_LOG("didFinishWithRedirectResponse:");
     redirectResponse.setType(ResourceResponse::Type::Opaqueredirect);
@@ -1267,7 +1267,7 @@ void NetworkResourceLoader::didFinishWithRedirectResponse(WebCore::ResourceReque
     else if (auto* session = m_connection->networkProcess().networkSession(sessionID()))
         session->prefetchCache().storeRedirect(request.url(), WTFMove(redirectResponse), WTFMove(redirectRequest));
 
-    WebCore::NetworkLoadMetrics networkLoadMetrics;
+    CyberCore::NetworkLoadMetrics networkLoadMetrics;
     networkLoadMetrics.markComplete();
     networkLoadMetrics.responseBodyBytesReceived = 0;
     networkLoadMetrics.responseBodyDecodedSize = 0;
@@ -1299,7 +1299,7 @@ ResourceResponse NetworkResourceLoader::sanitizeResponseIfPossible(ResourceRespo
     return WTFMove(response);
 }
 
-void NetworkResourceLoader::restartNetworkLoad(WebCore::ResourceRequest&& newRequest)
+void NetworkResourceLoader::restartNetworkLoad(CyberCore::ResourceRequest&& newRequest)
 {
     LOADER_RELEASE_LOG("restartNetworkLoad: (hasNetworkLoad=%d)", !!m_networkLoad);
 
@@ -1492,7 +1492,7 @@ void NetworkResourceLoader::tryStoreAsCacheEntry()
     });
 }
 
-void NetworkResourceLoader::didReceiveMainResourceResponse(const WebCore::ResourceResponse& response)
+void NetworkResourceLoader::didReceiveMainResourceResponse(const CyberCore::ResourceResponse& response)
 {
     LOADER_RELEASE_LOG("didReceiveMainResourceResponse:");
 #if ENABLE(NETWORK_CACHE_SPECULATIVE_REVALIDATION)
@@ -1578,7 +1578,7 @@ void NetworkResourceLoader::sendResultForCacheEntry(std::unique_ptr<NetworkCache
         NetworkLoadMetrics metrics;
         metrics.markComplete();
         if (shouldCaptureExtraNetworkLoadMetrics()) {
-            auto additionalMetrics = WebCore::AdditionalNetworkLoadMetricsForWebInspector::create();
+            auto additionalMetrics = CyberCore::AdditionalNetworkLoadMetricsForWebInspector::create();
             additionalMetrics->requestHeaderBytesSent = 0;
             additionalMetrics->requestBodyBytesSent = 0;
             additionalMetrics->responseHeaderBytesReceived = 0;
@@ -1742,7 +1742,7 @@ void NetworkResourceLoader::logCookieInformation() const
     logCookieInformation(m_connection, "NetworkResourceLoader"_s, reinterpret_cast<const void*>(this), *networkStorageSession, originalRequest().firstPartyForCookies(), SameSiteInfo::create(originalRequest()), originalRequest().url(), originalRequest().httpReferrer(), frameID(), pageID(), coreIdentifier());
 }
 
-static void logBlockedCookieInformation(NetworkConnectionToWebProcess& connection, ASCIILiteral label, const void* loggedObject, const WebCore::NetworkStorageSession& networkStorageSession, const URL& firstParty, const SameSiteInfo& sameSiteInfo, const URL& url, const String& referrer, std::optional<FrameIdentifier> frameID, std::optional<PageIdentifier> pageID, std::optional<WebCore::ResourceLoaderIdentifier> identifier)
+static void logBlockedCookieInformation(NetworkConnectionToWebProcess& connection, ASCIILiteral label, const void* loggedObject, const CyberCore::NetworkStorageSession& networkStorageSession, const URL& firstParty, const SameSiteInfo& sameSiteInfo, const URL& url, const String& referrer, std::optional<FrameIdentifier> frameID, std::optional<PageIdentifier> pageID, std::optional<CyberCore::ResourceLoaderIdentifier> identifier)
 {
     ASSERT(NetworkResourceLoader::shouldLogCookieInformation(connection, networkStorageSession.sessionID()));
 
@@ -1769,11 +1769,11 @@ static void logBlockedCookieInformation(NetworkConnectionToWebProcess& connectio
 #undef LOCAL_LOG_IF_ALLOWED
 }
 
-static void logCookieInformationInternal(NetworkConnectionToWebProcess& connection, ASCIILiteral label, const void* loggedObject, const WebCore::NetworkStorageSession& networkStorageSession, const URL& firstParty, const WebCore::SameSiteInfo& sameSiteInfo, const URL& url, const String& referrer, std::optional<FrameIdentifier> frameID, std::optional<PageIdentifier> pageID, std::optional<WebCore::ResourceLoaderIdentifier> identifier)
+static void logCookieInformationInternal(NetworkConnectionToWebProcess& connection, ASCIILiteral label, const void* loggedObject, const CyberCore::NetworkStorageSession& networkStorageSession, const URL& firstParty, const CyberCore::SameSiteInfo& sameSiteInfo, const URL& url, const String& referrer, std::optional<FrameIdentifier> frameID, std::optional<PageIdentifier> pageID, std::optional<CyberCore::ResourceLoaderIdentifier> identifier)
 {
     ASSERT(NetworkResourceLoader::shouldLogCookieInformation(connection, networkStorageSession.sessionID()));
 
-    Vector<WebCore::Cookie> cookies;
+    Vector<CyberCore::Cookie> cookies;
     if (!networkStorageSession.getRawCookies(firstParty, sameSiteInfo, url, frameID, pageID, ApplyTrackingPrevention::Yes, ShouldRelaxThirdPartyCookieBlocking::No, cookies))
         return;
 
@@ -1783,7 +1783,7 @@ static void logCookieInformationInternal(NetworkConnectionToWebProcess& connecti
     auto escapedFrameID = escapeIDForJSON(frameID);
     auto escapedPageID = escapeIDForJSON(pageID);
     auto escapedIdentifier = escapeIDForJSON(identifier);
-    bool hasStorageAccess = (frameID && pageID) ? networkStorageSession.hasStorageAccess(WebCore::RegistrableDomain { url }, WebCore::RegistrableDomain { firstParty }, frameID.value(), pageID.value()) : false;
+    bool hasStorageAccess = (frameID && pageID) ? networkStorageSession.hasStorageAccess(CyberCore::RegistrableDomain { url }, CyberCore::RegistrableDomain { firstParty }, frameID.value(), pageID.value()) : false;
 
 #define LOCAL_LOG_IF_ALLOWED(fmt, ...) RELEASE_LOG_IF(networkStorageSession.sessionID().isAlwaysOnLoggingAllowed(), Network, "%p - %s::" fmt, loggedObject, label.characters(), ##__VA_ARGS__)
 #define LOCAL_LOG(str, ...) \
@@ -1830,7 +1830,7 @@ static void logCookieInformationInternal(NetworkConnectionToWebProcess& connecti
 #undef LOCAL_LOG_IF_ALLOWED
 }
 
-void NetworkResourceLoader::logCookieInformation(NetworkConnectionToWebProcess& connection, ASCIILiteral label, const void* loggedObject, const NetworkStorageSession& networkStorageSession, const URL& firstParty, const SameSiteInfo& sameSiteInfo, const URL& url, const String& referrer, std::optional<FrameIdentifier> frameID, std::optional<PageIdentifier> pageID, std::optional<WebCore::ResourceLoaderIdentifier> identifier)
+void NetworkResourceLoader::logCookieInformation(NetworkConnectionToWebProcess& connection, ASCIILiteral label, const void* loggedObject, const NetworkStorageSession& networkStorageSession, const URL& firstParty, const SameSiteInfo& sameSiteInfo, const URL& url, const String& referrer, std::optional<FrameIdentifier> frameID, std::optional<PageIdentifier> pageID, std::optional<CyberCore::ResourceLoaderIdentifier> identifier)
 {
     ASSERT(shouldLogCookieInformation(connection, networkStorageSession.sessionID()));
 
@@ -1846,7 +1846,7 @@ void NetworkResourceLoader::addConsoleMessage(MessageSource messageSource, Messa
     send(Messages::WebPage::AddConsoleMessage { m_parameters.webFrameID,  messageSource, messageLevel, message, coreIdentifier() }, m_parameters.webPageID);
 }
 
-void NetworkResourceLoader::enqueueSecurityPolicyViolationEvent(WebCore::SecurityPolicyViolationEventInit&& eventInit)
+void NetworkResourceLoader::enqueueSecurityPolicyViolationEvent(CyberCore::SecurityPolicyViolationEventInit&& eventInit)
 {
     send(Messages::WebPage::EnqueueSecurityPolicyViolationEvent { m_parameters.webFrameID, WTFMove(eventInit) }, m_parameters.webPageID);
 }
@@ -1940,7 +1940,7 @@ bool NetworkResourceLoader::isAppInitiated()
     return m_parameters.request.isAppInitiated();
 }
 
-WebCore::FrameIdentifier NetworkResourceLoader::frameIdentifierForReport() const
+CyberCore::FrameIdentifier NetworkResourceLoader::frameIdentifierForReport() const
 {
     // Reports are sent to the parent frame when they are for a main resource.
     if (isMainResource() && m_parameters.parentFrameID)
@@ -1958,7 +1958,7 @@ String NetworkResourceLoader::endpointURIForToken(const String& reportTo) const
     return m_reportingEndpoints.get(reportTo);
 }
 
-void NetworkResourceLoader::sendReportToEndpoints(const URL& baseURL, const Vector<String>& endpointURIs, const Vector<String>& endpointTokens, Ref<FormData>&& report, WebCore::ViolationReportType reportType)
+void NetworkResourceLoader::sendReportToEndpoints(const URL& baseURL, const Vector<String>& endpointURIs, const Vector<String>& endpointTokens, Ref<FormData>&& report, CyberCore::ViolationReportType reportType)
 {
     Vector<String> updatedEndpointURIs = endpointURIs;
     Vector<String> updatedEndpointTokens;
@@ -1978,7 +1978,7 @@ void NetworkResourceLoader::dataReceivedThroughContentFilter(const SharedBuffer&
     send(Messages::WebResourceLoader::DidReceiveData(IPC::SharedBufferReference(buffer), encodedDataLength));
 }
 
-WebCore::ResourceError NetworkResourceLoader::contentFilterDidBlock(WebCore::ContentFilterUnblockHandler unblockHandler, String&& unblockRequestDeniedScript)
+CyberCore::ResourceError NetworkResourceLoader::contentFilterDidBlock(CyberCore::ContentFilterUnblockHandler unblockHandler, String&& unblockRequestDeniedScript)
 {
     auto error = WebKit::blockedByContentFilterError(m_parameters.request);
 
@@ -2005,14 +2005,14 @@ WebCore::ResourceError NetworkResourceLoader::contentFilterDidBlock(WebCore::Con
     return error;
 }
 
-void NetworkResourceLoader::cancelMainResourceLoadForContentFilter(const WebCore::ResourceError& error)
+void NetworkResourceLoader::cancelMainResourceLoadForContentFilter(const CyberCore::ResourceError& error)
 {
     RELEASE_ASSERT(m_contentFilter);
 }
 
-void NetworkResourceLoader::handleProvisionalLoadFailureFromContentFilter(const URL& blockedPageURL, WebCore::SubstituteData& substituteData)
+void NetworkResourceLoader::handleProvisionalLoadFailureFromContentFilter(const URL& blockedPageURL, CyberCore::SubstituteData& substituteData)
 {
-    m_connection->networkProcess().addAllowedFirstPartyForCookies(m_connection->webProcessIdentifier(), RegistrableDomain { WebCore::ContentFilter::blockedPageURL() }, LoadedWebArchive::No, [] { });
+    m_connection->networkProcess().addAllowedFirstPartyForCookies(m_connection->webProcessIdentifier(), RegistrableDomain { CyberCore::ContentFilter::blockedPageURL() }, LoadedWebArchive::No, [] { });
     send(Messages::WebResourceLoader::ContentFilterDidBlockLoad(m_unblockHandler, m_unblockRequestDeniedScript, m_contentFilter->blockedError(), blockedPageURL, substituteData));
 }
 #endif // ENABLE(CONTENT_FILTERING_IN_NETWORKING_PROCESS)

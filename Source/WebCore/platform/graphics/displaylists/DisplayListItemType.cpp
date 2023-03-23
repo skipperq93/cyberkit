@@ -28,7 +28,7 @@
 
 #include "DisplayListItems.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace DisplayList {
 
 static size_t sizeOfItemInBytes(ItemType type)
@@ -363,4 +363,4 @@ bool isInlineItem(ItemType type)
 }
 
 } // namespace DisplayList
-} // namespace WebCore
+} // namespace CyberCore

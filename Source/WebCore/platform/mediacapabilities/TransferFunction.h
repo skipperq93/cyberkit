@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class TransferFunction : uint8_t {
     SRGB,
@@ -33,16 +33,16 @@ enum class TransferFunction : uint8_t {
     HLG
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::TransferFunction> {
+template<> struct EnumTraits<CyberCore::TransferFunction> {
     using values = EnumValues<
-        WebCore::TransferFunction,
-        WebCore::TransferFunction::SRGB,
-        WebCore::TransferFunction::PQ,
-        WebCore::TransferFunction::HLG
+        CyberCore::TransferFunction,
+        CyberCore::TransferFunction::SRGB,
+        CyberCore::TransferFunction::PQ,
+        CyberCore::TransferFunction::HLG
     >;
 };
 

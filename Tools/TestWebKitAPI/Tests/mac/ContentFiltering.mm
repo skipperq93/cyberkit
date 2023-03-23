@@ -32,8 +32,8 @@
 #import <CyberKit/WebKit.h>
 #import <CyberKit/WebKitErrorsPrivate.h>
 
-using Decision = WebCore::MockContentFilterSettings::Decision;
-using DecisionPoint = WebCore::MockContentFilterSettings::DecisionPoint;
+using Decision = CyberCore::MockContentFilterSettings::Decision;
+using DecisionPoint = CyberCore::MockContentFilterSettings::DecisionPoint;
 
 @interface LoadAlternateFrameLoadDelegate : NSObject <WebFrameLoadDelegate>
 @end
@@ -60,7 +60,7 @@ namespace TestWebKitAPI {
 static void loadAlternateTest(Decision decision, DecisionPoint decisionPoint)
 {
     @autoreleasepool {
-        auto& settings = WebCore::MockContentFilterSettings::singleton();
+        auto& settings = CyberCore::MockContentFilterSettings::singleton();
         settings.setEnabled(true);
         settings.setDecision(decision);
         settings.setDecisionPoint(decisionPoint);

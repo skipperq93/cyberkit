@@ -27,7 +27,7 @@
 #include <wtf/LogInitialization.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 String logLevelString()
 {
@@ -39,6 +39,6 @@ String logLevelString()
     return makeString("NotYetImplemented,"_s, logLevel);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // !LOG_DISABLED || !RELEASE_LOG_DISABLED

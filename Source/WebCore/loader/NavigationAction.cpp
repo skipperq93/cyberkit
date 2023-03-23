@@ -35,7 +35,7 @@
 #include "HistoryItem.h"
 #include "MouseEvent.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 NavigationAction::UIEventWithKeyStateData::UIEventWithKeyStateData(const UIEventWithKeyState& uiEvent)
     : isTrusted { uiEvent.isTrusted() }

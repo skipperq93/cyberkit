@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 // This class exposes process-wide options (e.g. those imposed by sandboxing).
 class ProcessCapabilities {
@@ -45,4 +45,4 @@ public:
     static bool canUseAcceleratedBuffers();
 };
 
-} // namespace WebCore
+} // namespace CyberCore

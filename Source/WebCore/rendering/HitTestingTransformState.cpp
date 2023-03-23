@@ -28,7 +28,7 @@
 
 #include "LayoutRect.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 void HitTestingTransformState::translate(int x, int y, TransformAccumulation accumulate)
 {
@@ -94,4 +94,4 @@ LayoutRect HitTestingTransformState::boundsOfMappedArea() const
     return identity.clampedBoundsOfProjectedQuad(m_lastPlanarArea);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -34,19 +34,19 @@
 #import <wtf/GetPtr.h>
 #import <wtf/URL.h>
 
-#define IMPL static_cast<WebCore::HTMLTitleElement*>(reinterpret_cast<WebCore::Node*>(_internal))
+#define IMPL static_cast<CyberCore::HTMLTitleElement*>(reinterpret_cast<CyberCore::Node*>(_internal))
 
 @implementation DOMHTMLTitleElement
 
 - (NSString *)text
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->text();
 }
 
 - (void)setText:(NSString *)newText
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->setText(newText);
 }
 

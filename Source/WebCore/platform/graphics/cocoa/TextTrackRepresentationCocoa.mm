@@ -33,22 +33,22 @@
 #import "IntRect.h"
 
 #if PLATFORM(IOS_FAMILY)
-#import "WebCoreThread.h"
-#import "WebCoreThreadRun.h"
+#import "CyberCoreThread.h"
+#import "CyberCoreThreadRun.h"
 #endif
 
 #import <pal/spi/cocoa/QuartzCoreSPI.h>
 
 
-@interface WebCoreTextTrackRepresentationCocoaHelper : NSObject <CALayerDelegate> {
-    WebCore::TextTrackRepresentationCocoa* _parent;
+@interface CyberCoreTextTrackRepresentationCocoaHelper : NSObject <CALayerDelegate> {
+    CyberCore::TextTrackRepresentationCocoa* _parent;
 }
-- (id)initWithParent:(WebCore::TextTrackRepresentationCocoa*)parent;
-@property (assign) WebCore::TextTrackRepresentationCocoa* parent;
+- (id)initWithParent:(CyberCore::TextTrackRepresentationCocoa*)parent;
+@property (assign) CyberCore::TextTrackRepresentationCocoa* parent;
 @end
 
-@implementation WebCoreTextTrackRepresentationCocoaHelper
-- (id)initWithParent:(WebCore::TextTrackRepresentationCocoa*)parent
+@implementation CyberCoreTextTrackRepresentationCocoaHelper
+- (id)initWithParent:(CyberCore::TextTrackRepresentationCocoa*)parent
 {
     if (!(self = [super init]))
         return nil;
@@ -64,7 +64,7 @@
     [super dealloc];
 }
 
-- (void)setParent:(WebCore::TextTrackRepresentationCocoa*)parent
+- (void)setParent:(CyberCore::TextTrackRepresentationCocoa*)parent
 {
     if (_parent)
         [_parent->platformLayer() removeObserver:self forKeyPath:@"bounds"];
@@ -75,7 +75,7 @@
         [_parent->platformLayer() addObserver:self forKeyPath:@"bounds" options:0 context:0];
 }
 
-- (WebCore::TextTrackRepresentationCocoa*)parent
+- (CyberCore::TextTrackRepresentationCocoa*)parent
 {
     return _parent;
 }
@@ -105,7 +105,7 @@
 
 @end
 
-namespace WebCore {
+namespace CyberCore {
 
 std::unique_ptr<TextTrackRepresentation> TextTrackRepresentation::create(TextTrackRepresentationClient& client)
 {
@@ -115,7 +115,7 @@ std::unique_ptr<TextTrackRepresentation> TextTrackRepresentation::create(TextTra
 TextTrackRepresentationCocoa::TextTrackRepresentationCocoa(TextTrackRepresentationClient& client)
     : m_client(client)
     , m_layer(adoptNS([[CALayer alloc] init]))
-    , m_delegate(adoptNS([[WebCoreTextTrackRepresentationCocoaHelper alloc] initWithParent:this]))
+    , m_delegate(adoptNS([[CyberCoreTextTrackRepresentationCocoaHelper alloc] initWithParent:this]))
 {
     [m_layer setDelegate:m_delegate.get()];
     [m_layer setContentsGravity:kCAGravityBottom];
@@ -158,6 +158,6 @@ void TextTrackRepresentationCocoa::boundsChanged()
     });
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // (PLATFORM(IOS_FAMILY) || (PLATFORM(MAC) && ENABLE(VIDEO_PRESENTATION_MODE))) && ENABLE(VIDEO)

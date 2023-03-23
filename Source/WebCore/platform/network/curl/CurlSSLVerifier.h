@@ -31,7 +31,7 @@
 #include <wtf/Noncopyable.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CurlSSLVerifier {
     WTF_MAKE_FAST_ALLOCATED;
@@ -39,7 +39,7 @@ class CurlSSLVerifier {
 public:
     CurlSSLVerifier(void* sslCtx);
 
-    std::unique_ptr<WebCore::CertificateInfo> createCertificateInfo(std::optional<long>&&);
+    std::unique_ptr<CyberCore::CertificateInfo> createCertificateInfo(std::optional<long>&&);
 
 private:
     static int verifyCallback(int, X509_STORE_CTX*);
@@ -48,4 +48,4 @@ private:
     CertificateInfo::CertificateChain m_certificateChain;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -34,8 +34,8 @@
 #include <wtf/NeverDestroyed.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 static WeakPtr<WebStorageNamespaceProvider>& existingStorageNameSpaceProvider()
 {
@@ -78,21 +78,21 @@ WebStorageNamespaceProvider::WebStorageNamespaceProvider()
 
 WebStorageNamespaceProvider::~WebStorageNamespaceProvider() = default;
 
-Ref<WebCore::StorageNamespace> WebStorageNamespaceProvider::createLocalStorageNamespace(unsigned quota, PAL::SessionID sessionID)
+Ref<CyberCore::StorageNamespace> WebStorageNamespaceProvider::createLocalStorageNamespace(unsigned quota, PAL::SessionID sessionID)
 {
     ASSERT_UNUSED(sessionID, sessionID == WebProcess::singleton().sessionID());
     return StorageNamespaceImpl::createLocalStorageNamespace(quota);
 }
 
-Ref<WebCore::StorageNamespace> WebStorageNamespaceProvider::createTransientLocalStorageNamespace(WebCore::SecurityOrigin& topLevelOrigin, unsigned quota, PAL::SessionID sessionID)
+Ref<CyberCore::StorageNamespace> WebStorageNamespaceProvider::createTransientLocalStorageNamespace(CyberCore::SecurityOrigin& topLevelOrigin, unsigned quota, PAL::SessionID sessionID)
 {
     ASSERT_UNUSED(sessionID, sessionID == WebProcess::singleton().sessionID());
     return StorageNamespaceImpl::createTransientLocalStorageNamespace(topLevelOrigin, quota);
 }
 
-RefPtr<WebCore::StorageNamespace> WebStorageNamespaceProvider::sessionStorageNamespace(const WebCore::SecurityOrigin& topLevelOrigin, WebCore::Page& page, ShouldCreateNamespace shouldCreate)
+RefPtr<CyberCore::StorageNamespace> WebStorageNamespaceProvider::sessionStorageNamespace(const CyberCore::SecurityOrigin& topLevelOrigin, CyberCore::Page& page, ShouldCreateNamespace shouldCreate)
 {
-    ASSERT(sessionStorageQuota() != WebCore::StorageMap::noQuota);
+    ASSERT(sessionStorageQuota() != CyberCore::StorageMap::noQuota);
 
     auto& webPage = WebPage::fromCorePage(page);
 
@@ -116,9 +116,9 @@ RefPtr<WebCore::StorageNamespace> WebStorageNamespaceProvider::sessionStorageNam
     return it->value;
 }
 
-void WebStorageNamespaceProvider::copySessionStorageNamespace(WebCore::Page& srcPage, WebCore::Page& dstPage)
+void WebStorageNamespaceProvider::copySessionStorageNamespace(CyberCore::Page& srcPage, CyberCore::Page& dstPage)
 {
-    ASSERT(sessionStorageQuota() != WebCore::StorageMap::noQuota);
+    ASSERT(sessionStorageQuota() != CyberCore::StorageMap::noQuota);
 
     const auto& srcWebPage = WebPage::fromCorePage(srcPage);
     const auto& dstWebPage = WebPage::fromCorePage(dstPage);

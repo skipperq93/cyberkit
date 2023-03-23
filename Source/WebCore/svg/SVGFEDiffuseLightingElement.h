@@ -25,7 +25,7 @@
 #include "SVGFELightElement.h"
 #include "SVGFilterPrimitiveStandardAttributes.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class FEDiffuseLighting;
 class SVGColor;
@@ -67,4 +67,4 @@ private:
     Ref<SVGAnimatedNumber> m_kernelUnitLengthY { SVGAnimatedNumber::create(this) };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

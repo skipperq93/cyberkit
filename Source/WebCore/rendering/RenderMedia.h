@@ -30,7 +30,7 @@
 #include "HTMLMediaElement.h"
 #include "RenderImage.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderMedia : public RenderImage {
     WTF_MAKE_ISO_ALLOCATED(RenderMedia);
@@ -66,7 +66,7 @@ inline RenderMedia* HTMLMediaElement::renderer() const
     return downcast<RenderMedia>(HTMLElement::renderer());
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderMedia, isMedia())
 

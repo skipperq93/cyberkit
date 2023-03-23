@@ -31,7 +31,7 @@
 #include "ScrollOptions.h"
 #include <cmath>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ScrollToOptions : ScrollOptions {
     std::optional<double> left;

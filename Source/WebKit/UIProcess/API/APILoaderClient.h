@@ -30,7 +30,7 @@
 #include <CyberCore/LayoutMilestone.h>
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 class ResourceError;
 }
 
@@ -55,11 +55,11 @@ public:
     virtual ~LoaderClient() { }
     virtual void didStartProvisionalLoadForFrame(WebKit::WebPageProxy&, WebKit::WebFrameProxy&, API::Navigation*, API::Object*) { }
     virtual void didReceiveServerRedirectForProvisionalLoadForFrame(WebKit::WebPageProxy&, WebKit::WebFrameProxy&, API::Navigation*, API::Object*) { }
-    virtual void didFailProvisionalLoadWithErrorForFrame(WebKit::WebPageProxy&, WebKit::WebFrameProxy&, API::Navigation*, const WebCore::ResourceError&, API::Object*) { }
+    virtual void didFailProvisionalLoadWithErrorForFrame(WebKit::WebPageProxy&, WebKit::WebFrameProxy&, API::Navigation*, const CyberCore::ResourceError&, API::Object*) { }
     virtual void didFinishLoadForFrame(WebKit::WebPageProxy&, WebKit::WebFrameProxy&, API::Navigation*, API::Object*) { }
-    virtual void didFailLoadWithErrorForFrame(WebKit::WebPageProxy&, WebKit::WebFrameProxy&, API::Navigation*, const WebCore::ResourceError&, API::Object*) { }
+    virtual void didFailLoadWithErrorForFrame(WebKit::WebPageProxy&, WebKit::WebFrameProxy&, API::Navigation*, const CyberCore::ResourceError&, API::Object*) { }
     virtual void didFirstVisuallyNonEmptyLayoutForFrame(WebKit::WebPageProxy&, WebKit::WebFrameProxy&, API::Object*) { }
-    virtual void didReachLayoutMilestone(WebKit::WebPageProxy&, OptionSet<WebCore::LayoutMilestone>) { }
+    virtual void didReachLayoutMilestone(WebKit::WebPageProxy&, OptionSet<CyberCore::LayoutMilestone>) { }
     virtual bool shouldKeepCurrentBackForwardListItemInList(WebKit::WebPageProxy&, WebKit::WebBackForwardListItem&) { return true; }
     virtual bool processDidCrash(WebKit::WebPageProxy&) { return false; }
     virtual void didChangeBackForwardList(WebKit::WebPageProxy&, WebKit::WebBackForwardListItem*, Vector<Ref<WebKit::WebBackForwardListItem>>&&) { }

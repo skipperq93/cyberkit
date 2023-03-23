@@ -26,7 +26,7 @@
 #pragma once
 
 
-namespace WebCore {
+namespace CyberCore {
 
 // This setting is used to provide ways of switching between multiple rendering modes that may have different
 // metrics. It is used to switch between CG and GDI text on Windows.

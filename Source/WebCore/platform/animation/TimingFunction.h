@@ -33,7 +33,7 @@ namespace WTF {
 class TextStream;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class TimingFunction : public RefCounted<TimingFunction> {
 public:
@@ -287,14 +287,14 @@ private:
 
 WEBCORE_EXPORT WTF::TextStream& operator<<(WTF::TextStream&, const TimingFunction&);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #define SPECIALIZE_TYPE_TRAITS_TIMINGFUNCTION(ToValueTypeName, predicate) \
 SPECIALIZE_TYPE_TRAITS_BEGIN(ToValueTypeName) \
-static bool isType(const WebCore::TimingFunction& function) { return function.predicate; } \
+static bool isType(const CyberCore::TimingFunction& function) { return function.predicate; } \
 SPECIALIZE_TYPE_TRAITS_END()
 
-SPECIALIZE_TYPE_TRAITS_TIMINGFUNCTION(WebCore::LinearTimingFunction, isLinearTimingFunction())
-SPECIALIZE_TYPE_TRAITS_TIMINGFUNCTION(WebCore::CubicBezierTimingFunction, isCubicBezierTimingFunction())
-SPECIALIZE_TYPE_TRAITS_TIMINGFUNCTION(WebCore::StepsTimingFunction, isStepsTimingFunction())
-SPECIALIZE_TYPE_TRAITS_TIMINGFUNCTION(WebCore::SpringTimingFunction, isSpringTimingFunction())
+SPECIALIZE_TYPE_TRAITS_TIMINGFUNCTION(CyberCore::LinearTimingFunction, isLinearTimingFunction())
+SPECIALIZE_TYPE_TRAITS_TIMINGFUNCTION(CyberCore::CubicBezierTimingFunction, isCubicBezierTimingFunction())
+SPECIALIZE_TYPE_TRAITS_TIMINGFUNCTION(CyberCore::StepsTimingFunction, isStepsTimingFunction())
+SPECIALIZE_TYPE_TRAITS_TIMINGFUNCTION(CyberCore::SpringTimingFunction, isSpringTimingFunction())

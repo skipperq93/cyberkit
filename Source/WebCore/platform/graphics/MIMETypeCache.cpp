@@ -28,7 +28,7 @@
 
 #include "ContentType.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 HashSet<String, ASCIICaseInsensitiveHash>& MIMETypeCache::supportedTypes()
 {

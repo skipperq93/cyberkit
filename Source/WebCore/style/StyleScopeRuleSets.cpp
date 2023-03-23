@@ -43,7 +43,7 @@
 #include "StyleScope.h"
 #include "StyleSheetContents.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace Style {
 
 ScopeRuleSets::ScopeRuleSets(Resolver& styleResolver)
@@ -361,4 +361,4 @@ bool ScopeRuleSets::hasMatchingUserOrAuthorStyle(const Function<bool(RuleSet&)>&
 }
 
 } // namespace Style
-} // namespace WebCore
+} // namespace CyberCore

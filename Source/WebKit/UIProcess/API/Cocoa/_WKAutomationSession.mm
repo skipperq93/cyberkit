@@ -32,7 +32,7 @@
 #import "WebAutomationSession.h"
 #import "_WKAutomationSessionConfiguration.h"
 #import "_WKAutomationSessionDelegate.h"
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 #import <wtf/WeakObjCPtr.h>
 
 @implementation _WKAutomationSession {
@@ -59,7 +59,7 @@
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainRunLoop(_WKAutomationSession.class, self))
+    if (CyberCoreObjCScheduleDeallocateOnMainRunLoop(_WKAutomationSession.class, self))
         return;
 
     _session->setClient(nullptr);

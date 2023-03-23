@@ -38,7 +38,7 @@ class Logger;
 }
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class CDMPrivate;
 class CDMPrivateClient;
@@ -58,6 +58,6 @@ public:
     WEBCORE_EXPORT static void platformRegisterFactories(Vector<CDMFactory*>&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ENCRYPTED_MEDIA)

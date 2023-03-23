@@ -45,7 +45,7 @@
 #include "DOMTimerHoldingTank.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 static constexpr Seconds minIntervalForNonUserObservableChangeTimers { 1_s }; // Empirically determined to maximize battery life.
 static constexpr Seconds minIntervalForOneShotTimers { 0_ms };
@@ -421,4 +421,4 @@ const char* DOMTimer::activeDOMObjectName() const
     return "DOMTimer";
 }
 
-} // namespace WebCore
+} // namespace CyberCore

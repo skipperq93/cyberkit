@@ -37,7 +37,7 @@
 #include <wtf/glib/GUniquePtr.h>
 #include <wtf/glib/RunLoopSourcePriority.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 void ResourceLoader::loadGResource()
 {
@@ -87,4 +87,4 @@ void ResourceLoader::loadGResource()
     });
 }
 
-} // namespace WebCore
+} // namespace CyberCore

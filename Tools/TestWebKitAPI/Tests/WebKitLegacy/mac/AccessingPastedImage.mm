@@ -79,7 +79,7 @@ static bool didAlert = false;
 
 namespace TestWebKitAPI {
 
-TEST(WebKitLegacy, AccessingImageInPastedRTFD)
+TEST(CyberKitLegacy, AccessingImageInPastedRTFD)
 {
     auto webView = adoptNS([[WebView alloc] initWithFrame:NSMakeRect(0, 0, 400, 400) frameName:nil groupName:nil]);
     auto delegate = adoptNS([[SubresourceForBlobURLFrameLoadDelegate alloc] init]);
@@ -114,7 +114,7 @@ TEST(WebKitLegacy, AccessingImageInPastedRTFD)
     EXPECT_WK_STREQ("image/png", webResource.MIMEType);
 }
 
-TEST(WebKitLegacy, AccessingImageInPastedWebArchive)
+TEST(CyberKitLegacy, AccessingImageInPastedWebArchive)
 {
     auto sourceWebView = adoptNS([[WebView alloc] initWithFrame:NSMakeRect(0, 0, 400, 400) frameName:nil groupName:nil]);
     auto destinationWebView = adoptNS([[WebView alloc] initWithFrame:NSMakeRect(0, 0, 400, 400) frameName:nil groupName:nil]);

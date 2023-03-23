@@ -28,7 +28,7 @@
 #include <wtf/FastMalloc.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class MallocStatistics : public RefCounted<MallocStatistics> {
 public:
@@ -47,4 +47,4 @@ private:
     WTF::FastMallocStatistics m_stats;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

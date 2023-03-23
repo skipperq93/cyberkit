@@ -29,13 +29,13 @@
 
 #include "GraphicsContextGLANGLE.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class TextureMapperGCGLPlatformLayer;
 
 class WEBCORE_EXPORT GraphicsContextGLTextureMapperANGLE : public GraphicsContextGLANGLE {
 public:
-    static RefPtr<GraphicsContextGLTextureMapperANGLE> create(WebCore::GraphicsContextGLAttributes&&);
+    static RefPtr<GraphicsContextGLTextureMapperANGLE> create(CyberCore::GraphicsContextGLAttributes&&);
     virtual ~GraphicsContextGLTextureMapperANGLE();
 
     // GraphicsContextGLANGLE overrides.
@@ -52,7 +52,7 @@ public:
     void prepareForDisplay() final;
 
 private:
-    GraphicsContextGLTextureMapperANGLE(WebCore::GraphicsContextGLAttributes&&);
+    GraphicsContextGLTextureMapperANGLE(CyberCore::GraphicsContextGLAttributes&&);
 
     bool platformInitializeContext() final;
     bool platformInitialize() final;
@@ -71,6 +71,6 @@ private:
     friend class TextureMapperGCGLPlatformLayer;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBGL) && USE(TEXTURE_MAPPER) && !USE(NICOSIA)

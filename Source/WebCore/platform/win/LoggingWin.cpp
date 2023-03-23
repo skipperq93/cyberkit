@@ -33,12 +33,12 @@
 #include <wtf/StdLibExtras.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 String logLevelString()
 {
 #if !LOG_DISABLED
-    static constexpr const char* loggingEnvironmentVariable = "WebCoreLogging";
+    static constexpr const char* loggingEnvironmentVariable = "CyberCoreLogging";
     DWORD length = GetEnvironmentVariableA(loggingEnvironmentVariable, 0, 0);
     if (!length)
         return emptyString();
@@ -54,6 +54,6 @@ String logLevelString()
 #endif
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // !LOG_DISABLED || !RELEASE_LOG_DISABLED

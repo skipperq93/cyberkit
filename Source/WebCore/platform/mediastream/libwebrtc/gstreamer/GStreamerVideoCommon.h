@@ -26,10 +26,10 @@
 #include "api/video_codecs/sdp_video_format.h"
 #include <vector>
 
-namespace WebCore {
+namespace CyberCore {
 
 std::vector<webrtc::SdpVideoFormat> supportedH264Formats();
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

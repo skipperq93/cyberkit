@@ -33,7 +33,7 @@ static String canonicalizeHTTPHeader(const String& string)
     size_t colonLocation = string.find(':');
     if (colonLocation == notFound)
         return { };
-    auto field = WebCore::HTTPHeaderField::create(string.left(colonLocation), string.substring(colonLocation + 1));
+    auto field = CyberCore::HTTPHeaderField::create(string.left(colonLocation), string.substring(colonLocation + 1));
     if (!field)
         return { };
     return makeString(field->name(), ": ", field->value());

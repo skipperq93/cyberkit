@@ -35,26 +35,26 @@ using namespace WebKit;
  */
 
 struct _WebKitCredential {
-    _WebKitCredential(const WebCore::Credential& coreCredential)
+    _WebKitCredential(const CyberCore::Credential& coreCredential)
         : credential(coreCredential)
     {
     }
 
-    WebCore::Credential credential;
+    CyberCore::Credential credential;
     CString username;
     CString password;
 };
 
 G_DEFINE_BOXED_TYPE(WebKitCredential, webkit_credential, webkit_credential_copy, webkit_credential_free)
 
-static inline WebKitCredentialPersistence toWebKitCredentialPersistence(WebCore::CredentialPersistence corePersistence)
+static inline WebKitCredentialPersistence toWebKitCredentialPersistence(CyberCore::CredentialPersistence corePersistence)
 {
     switch (corePersistence) {
-    case WebCore::CredentialPersistenceNone:
+    case CyberCore::CredentialPersistenceNone:
         return WEBKIT_CREDENTIAL_PERSISTENCE_NONE;
-    case WebCore::CredentialPersistenceForSession:
+    case CyberCore::CredentialPersistenceForSession:
         return WEBKIT_CREDENTIAL_PERSISTENCE_FOR_SESSION;
-    case WebCore::CredentialPersistencePermanent:
+    case CyberCore::CredentialPersistencePermanent:
         return WEBKIT_CREDENTIAL_PERSISTENCE_PERMANENT;
     default:
         ASSERT_NOT_REACHED();
@@ -62,29 +62,29 @@ static inline WebKitCredentialPersistence toWebKitCredentialPersistence(WebCore:
     }
 }
 
-static inline WebCore::CredentialPersistence toWebCoreCredentialPersistence(WebKitCredentialPersistence kitPersistence)
+static inline CyberCore::CredentialPersistence toCyberCoreCredentialPersistence(WebKitCredentialPersistence kitPersistence)
 {
     switch (kitPersistence) {
     case WEBKIT_CREDENTIAL_PERSISTENCE_NONE:
-        return WebCore::CredentialPersistenceNone;
+        return CyberCore::CredentialPersistenceNone;
     case WEBKIT_CREDENTIAL_PERSISTENCE_FOR_SESSION:
-        return WebCore::CredentialPersistenceForSession;
+        return CyberCore::CredentialPersistenceForSession;
     case WEBKIT_CREDENTIAL_PERSISTENCE_PERMANENT:
-        return WebCore::CredentialPersistencePermanent;
+        return CyberCore::CredentialPersistencePermanent;
     default:
         ASSERT_NOT_REACHED();
-        return WebCore::CredentialPersistenceNone;
+        return CyberCore::CredentialPersistenceNone;
     }
 }
 
-WebKitCredential* webkitCredentialCreate(const WebCore::Credential& coreCredential)
+WebKitCredential* webkitCredentialCreate(const CyberCore::Credential& coreCredential)
 {
     WebKitCredential* credential = static_cast<WebKitCredential*>(fastMalloc(sizeof(WebKitCredential)));
     new (credential) WebKitCredential(coreCredential);
     return credential;
 }
 
-const WebCore::Credential& webkitCredentialGetCredential(WebKitCredential* credential)
+const CyberCore::Credential& webkitCredentialGetCredential(WebKitCredential* credential)
 {
     ASSERT(credential);
     return credential->credential;
@@ -107,7 +107,7 @@ WebKitCredential* webkit_credential_new(const gchar* username, const gchar* pass
     g_return_val_if_fail(username, 0);
     g_return_val_if_fail(password, 0);
 
-    return webkitCredentialCreate(WebCore::Credential(String::fromUTF8(username), String::fromUTF8(password), toWebCoreCredentialPersistence(persistence)));
+    return webkitCredentialCreate(CyberCore::Credential(String::fromUTF8(username), String::fromUTF8(password), toCyberCoreCredentialPersistence(persistence)));
 }
 
 /**
@@ -132,7 +132,7 @@ WebKitCredential* webkit_credential_new_for_certificate_pin(const gchar* pin, We
         persistence = WEBKIT_CREDENTIAL_PERSISTENCE_FOR_SESSION;
     }
 
-    return webkitCredentialCreate(WebCore::Credential(emptyString(), String::fromUTF8(pin), toWebCoreCredentialPersistence(persistence)));
+    return webkitCredentialCreate(CyberCore::Credential(emptyString(), String::fromUTF8(pin), toCyberCoreCredentialPersistence(persistence)));
 }
 
 /**
@@ -157,7 +157,7 @@ WebKitCredential* webkit_credential_new_for_certificate(GTlsCertificate* certifi
         persistence = WEBKIT_CREDENTIAL_PERSISTENCE_FOR_SESSION;
     }
 
-    return webkitCredentialCreate(WebCore::Credential(certificate, toWebCoreCredentialPersistence(persistence)));
+    return webkitCredentialCreate(CyberCore::Credential(certificate, toCyberCoreCredentialPersistence(persistence)));
 }
 
 /**

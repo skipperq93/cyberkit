@@ -35,7 +35,7 @@
 #include "Frame.h"
 #include "SecurityOrigin.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 FrameLoadRequest::FrameLoadRequest(Document& requester, SecurityOrigin& requesterSecurityOrigin, ResourceRequest&& resourceRequest, const AtomString& frameName, InitiatedByMainFrame initiatedByMainFrame, const AtomString& downloadAttribute, const SystemPreviewInfo& systemPreviewInfo)
     : m_requester { requester }
@@ -71,4 +71,4 @@ const SecurityOrigin& FrameLoadRequest::requesterSecurityOrigin() const
     return m_requesterSecurityOrigin.get();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

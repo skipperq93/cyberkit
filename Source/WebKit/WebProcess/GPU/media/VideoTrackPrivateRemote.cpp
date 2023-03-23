@@ -34,9 +34,9 @@
 #include "RemoteMediaPlayerProxyMessages.h"
 #include "VideoTrackPrivateRemoteConfiguration.h"
 
-namespace WebKit {
+namespace CyberKit {
 
-VideoTrackPrivateRemote::VideoTrackPrivateRemote(GPUProcessConnection& gpuProcessConnection, WebCore::MediaPlayerIdentifier playerIdentifier, TrackPrivateRemoteIdentifier identifier, VideoTrackPrivateRemoteConfiguration&& configuration)
+VideoTrackPrivateRemote::VideoTrackPrivateRemote(GPUProcessConnection& gpuProcessConnection, CyberCore::MediaPlayerIdentifier playerIdentifier, TrackPrivateRemoteIdentifier identifier, VideoTrackPrivateRemoteConfiguration&& configuration)
     : m_gpuProcessConnection(gpuProcessConnection)
     , m_playerIdentifier(playerIdentifier)
     , m_identifier(identifier)
@@ -85,6 +85,6 @@ void VideoTrackPrivateRemote::updateConfiguration(VideoTrackPrivateRemoteConfigu
     VideoTrackPrivate::setSelected(configuration.selected);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS) && ENABLE(VIDEO)

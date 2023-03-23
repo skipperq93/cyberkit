@@ -37,7 +37,7 @@
 #include <wtf/WeakPtr.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct GamepadEffectParameters;
 
@@ -74,6 +74,6 @@ protected:
     GamepadHapticEffectTypeSet m_supportedEffectTypes;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(GAMEPAD)

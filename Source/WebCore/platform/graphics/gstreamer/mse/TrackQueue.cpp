@@ -37,7 +37,7 @@
 GST_DEBUG_CATEGORY_EXTERN(webkit_mse_debug);
 #define GST_CAT_DEFAULT webkit_mse_debug
 
-namespace WebCore {
+namespace CyberCore {
 
 TrackQueue::TrackQueue(AtomString trackId)
     : m_trackId(trackId)

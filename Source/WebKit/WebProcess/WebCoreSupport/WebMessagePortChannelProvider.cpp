@@ -33,8 +33,8 @@
 #include <CyberCore/MessagePortIdentifier.h>
 #include <CyberCore/MessageWithMessagePorts.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 WebMessagePortChannelProvider& WebMessagePortChannelProvider::singleton()
 {
@@ -78,7 +78,7 @@ void WebMessagePortChannelProvider::messagePortDisentangled(const MessagePortIde
     networkProcessConnection().send(Messages::NetworkConnectionToWebProcess::MessagePortDisentangled { port }, 0);
 }
 
-void WebMessagePortChannelProvider::messagePortSentToRemote(const WebCore::MessagePortIdentifier& port)
+void WebMessagePortChannelProvider::messagePortSentToRemote(const CyberCore::MessagePortIdentifier& port)
 {
     auto inProcessPortMessages = m_inProcessPortMessages.take(port);
     for (auto& message : inProcessPortMessages)
@@ -122,4 +122,4 @@ void WebMessagePortChannelProvider::postMessageToRemote(MessageWithMessagePorts&
     networkProcessConnection().send(Messages::NetworkConnectionToWebProcess::PostMessageToRemote { message, remoteTarget }, 0);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

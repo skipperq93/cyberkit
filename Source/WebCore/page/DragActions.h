@@ -30,7 +30,7 @@
 #include <wtf/Forward.h>
 #include <wtf/OptionSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // See WebDragDestinationAction and WKDragDestinationAction.
 enum class DragDestinationAction : uint8_t {
@@ -99,59 +99,59 @@ enum class MayExtendDragSession : bool { No, Yes };
 enum class HasNonDefaultPasteboardData : bool { No, Yes };
 enum class DragHandlingMethod : uint8_t { None, EditPlainText, EditRichText, UploadFile, PageLoad, SetColor, NonDefault };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::DragDestinationAction> {
+template<> struct EnumTraits<CyberCore::DragDestinationAction> {
     using values = EnumValues<
-        WebCore::DragDestinationAction,
-        WebCore::DragDestinationAction::DHTML,
-        WebCore::DragDestinationAction::Edit,
-        WebCore::DragDestinationAction::Load
+        CyberCore::DragDestinationAction,
+        CyberCore::DragDestinationAction::DHTML,
+        CyberCore::DragDestinationAction::Edit,
+        CyberCore::DragDestinationAction::Load
     >;
 };
 
-template<> struct EnumTraits<WebCore::DragHandlingMethod> {
+template<> struct EnumTraits<CyberCore::DragHandlingMethod> {
     using values = EnumValues<
-        WebCore::DragHandlingMethod,
-        WebCore::DragHandlingMethod::None,
-        WebCore::DragHandlingMethod::EditPlainText,
-        WebCore::DragHandlingMethod::EditRichText,
-        WebCore::DragHandlingMethod::UploadFile,
-        WebCore::DragHandlingMethod::PageLoad,
-        WebCore::DragHandlingMethod::SetColor,
-        WebCore::DragHandlingMethod::NonDefault
+        CyberCore::DragHandlingMethod,
+        CyberCore::DragHandlingMethod::None,
+        CyberCore::DragHandlingMethod::EditPlainText,
+        CyberCore::DragHandlingMethod::EditRichText,
+        CyberCore::DragHandlingMethod::UploadFile,
+        CyberCore::DragHandlingMethod::PageLoad,
+        CyberCore::DragHandlingMethod::SetColor,
+        CyberCore::DragHandlingMethod::NonDefault
     >;
 };
 
-template<> struct EnumTraits<WebCore::DragOperation> {
+template<> struct EnumTraits<CyberCore::DragOperation> {
     using values = EnumValues<
-        WebCore::DragOperation,
-        WebCore::DragOperation::Copy,
-        WebCore::DragOperation::Link,
-        WebCore::DragOperation::Generic,
-        WebCore::DragOperation::Private,
-        WebCore::DragOperation::Move,
-        WebCore::DragOperation::Delete
+        CyberCore::DragOperation,
+        CyberCore::DragOperation::Copy,
+        CyberCore::DragOperation::Link,
+        CyberCore::DragOperation::Generic,
+        CyberCore::DragOperation::Private,
+        CyberCore::DragOperation::Move,
+        CyberCore::DragOperation::Delete
     >;
 };
 
-template<> struct EnumTraits<WebCore::DragSourceAction> {
+template<> struct EnumTraits<CyberCore::DragSourceAction> {
     using values = EnumValues<
-        WebCore::DragSourceAction,
-        WebCore::DragSourceAction::DHTML,
-        WebCore::DragSourceAction::Image,
-        WebCore::DragSourceAction::Link,
-        WebCore::DragSourceAction::Selection
+        CyberCore::DragSourceAction,
+        CyberCore::DragSourceAction::DHTML,
+        CyberCore::DragSourceAction::Image,
+        CyberCore::DragSourceAction::Link,
+        CyberCore::DragSourceAction::Selection
 #if ENABLE(ATTACHMENT_ELEMENT)
-        , WebCore::DragSourceAction::Attachment
+        , CyberCore::DragSourceAction::Attachment
 #endif
 #if ENABLE(INPUT_TYPE_COLOR)
-        , WebCore::DragSourceAction::Color
+        , CyberCore::DragSourceAction::Color
 #endif
 #if ENABLE(MODEL_ELEMENT)
-        , WebCore::DragSourceAction::Model
+        , CyberCore::DragSourceAction::Model
 #endif
     >;
 };

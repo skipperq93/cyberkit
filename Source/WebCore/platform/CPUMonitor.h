@@ -30,7 +30,7 @@
 #include <wtf/CPUTime.h>
 #include <wtf/Function.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CPUMonitor {
     WTF_MAKE_FAST_ALLOCATED;
@@ -50,4 +50,4 @@ private:
     std::optional<CPUTime> m_lastCPUTime;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

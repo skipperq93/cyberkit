@@ -45,7 +45,7 @@
 GST_DEBUG_CATEGORY(webkit_video_frame_debug);
 #define GST_CAT_DEFAULT webkit_video_frame_debug
 
-namespace WebCore {
+namespace CyberCore {
 
 static void ensureDebugCategoryInitialized()
 {
@@ -578,6 +578,6 @@ RefPtr<ImageGStreamer> VideoFrameGStreamer::convertToImage()
     return GstSampleColorConverter::singleton().convertSampleToImage(m_sample);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(VIDEO) && USE(GSTREAMER)

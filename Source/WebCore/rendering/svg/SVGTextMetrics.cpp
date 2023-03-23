@@ -22,7 +22,7 @@
 
 #include "RenderSVGInlineText.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 SVGTextMetrics::SVGTextMetrics()
     : m_width(0)

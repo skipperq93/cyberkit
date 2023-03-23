@@ -29,13 +29,13 @@
 #import <CyberCore/HTMLFieldSetElement.h>
 #import <CyberCore/JSExecState.h>
 
-#define IMPL static_cast<WebCore::HTMLFieldSetElement*>(reinterpret_cast<WebCore::Node*>(_internal))
+#define IMPL static_cast<CyberCore::HTMLFieldSetElement*>(reinterpret_cast<CyberCore::Node*>(_internal))
 
 @implementation DOMHTMLFieldSetElement
 
 - (DOMHTMLFormElement *)form
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->form()));
 }
 

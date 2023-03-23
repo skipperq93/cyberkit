@@ -30,7 +30,7 @@
 #include "TextDecorationPainter.h"
 #include "TextPaintStyle.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderText;
 class RenderedDocumentMarker;

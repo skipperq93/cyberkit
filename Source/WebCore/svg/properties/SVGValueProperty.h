@@ -27,7 +27,7 @@
 
 #include "SVGProperty.h"
 
-namespace WebCore {
+namespace CyberCore {
     
 template<typename PropertyType>
 class SVGValueProperty : public SVGProperty {

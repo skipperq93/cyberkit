@@ -30,7 +30,7 @@ import sys
 
 
 def read_content_from_webkit_additions(built_products_directory, sdk_root_directory, filename):
-    additions_path = os.path.join("usr/local/include/WebKitAdditions", filename)
+    additions_path = os.path.join("usr/local/include/CyberKitAdditions", filename)
     try:
         file_in_build_directory = open(os.path.join(built_products_directory, additions_path), "r")
         return file_in_build_directory.read()
@@ -68,7 +68,7 @@ def main(argv=None):
 
     should_do_replacement = check_should_do_replacement(built_products_directory, sdk_root_directory)
 
-    additions_import_pattern = re.compile(r"\#if 0 // API_WEBKIT_ADDITIONS_REPLACEMENT\n#import <WebKitAdditions/(.*)>\n#endif")
+    additions_import_pattern = re.compile(r"\#if 0 // API_WEBKIT_ADDITIONS_REPLACEMENT\n#import <CyberKitAdditions/(.*)>\n#endif")
     header_contents = sys.stdin.read()
     match = additions_import_pattern.search(header_contents)
     while match:

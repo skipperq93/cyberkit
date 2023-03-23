@@ -40,7 +40,7 @@
 #include "markup.h"
 #include <wtf/Assertions.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static inline void transformTextStringToXHTMLDocumentString(String& text)
 {
@@ -168,6 +168,6 @@ void XSLTProcessor::reset()
     m_parameters.clear();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(XSLT)

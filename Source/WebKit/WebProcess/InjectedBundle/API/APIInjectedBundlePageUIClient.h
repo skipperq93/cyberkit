@@ -28,11 +28,11 @@
 #include "WebEvent.h"
 #include <CyberScriptCore/ConsoleTypes.h>
 
-namespace WebCore {
+namespace CyberCore {
 class HitTestResult;
 }
 
-namespace WebKit {
+namespace CyberKit {
 class InjectedBundleNodeHandle;
 class WebFrame;
 class WebPage;
@@ -50,14 +50,14 @@ class PageUIClient {
 public:
     virtual ~PageUIClient() { }
 
-    virtual void willAddMessageToConsole(WebKit::WebPage*, JSC::MessageSource, JSC::MessageLevel, const WTF::String& message, unsigned lineNumber, unsigned columnNumber, const WTF::String& sourceID) { UNUSED_PARAM(message); UNUSED_PARAM(lineNumber); UNUSED_PARAM(columnNumber); UNUSED_PARAM(sourceID); }
-    virtual void willAddMessageWithArgumentsToConsole(WebKit::WebPage*, JSC::MessageSource, JSC::MessageLevel, const WTF::String& message, Span<const WTF::String> messageArguments, unsigned lineNumber, unsigned columnNumber, const WTF::String& sourceID) { UNUSED_PARAM(message); UNUSED_PARAM(messageArguments); UNUSED_PARAM(lineNumber); UNUSED_PARAM(columnNumber); UNUSED_PARAM(sourceID); }
-    virtual void willSetStatusbarText(WebKit::WebPage*, const WTF::String&) { }
-    virtual void willRunJavaScriptAlert(WebKit::WebPage*, const WTF::String&, WebKit::WebFrame*) { }
-    virtual void willRunJavaScriptConfirm(WebKit::WebPage*, const WTF::String&, WebKit::WebFrame*) { }
-    virtual void willRunJavaScriptPrompt(WebKit::WebPage*, const WTF::String&, const WTF::String&, WebKit::WebFrame*) { }
-    virtual void mouseDidMoveOverElement(WebKit::WebPage*, const WebCore::HitTestResult&, OptionSet<WebKit::WebEventModifier>, RefPtr<API::Object>& userData) { UNUSED_PARAM(userData); }
-    virtual void pageDidScroll(WebKit::WebPage*) { }
+    virtual void willAddMessageToConsole(CyberKit::WebPage*, JSC::MessageSource, JSC::MessageLevel, const WTF::String& message, unsigned lineNumber, unsigned columnNumber, const WTF::String& sourceID) { UNUSED_PARAM(message); UNUSED_PARAM(lineNumber); UNUSED_PARAM(columnNumber); UNUSED_PARAM(sourceID); }
+    virtual void willAddMessageWithArgumentsToConsole(CyberKit::WebPage*, JSC::MessageSource, JSC::MessageLevel, const WTF::String& message, Span<const WTF::String> messageArguments, unsigned lineNumber, unsigned columnNumber, const WTF::String& sourceID) { UNUSED_PARAM(message); UNUSED_PARAM(messageArguments); UNUSED_PARAM(lineNumber); UNUSED_PARAM(columnNumber); UNUSED_PARAM(sourceID); }
+    virtual void willSetStatusbarText(CyberKit::WebPage*, const WTF::String&) { }
+    virtual void willRunJavaScriptAlert(CyberKit::WebPage*, const WTF::String&, CyberKit::WebFrame*) { }
+    virtual void willRunJavaScriptConfirm(CyberKit::WebPage*, const WTF::String&, CyberKit::WebFrame*) { }
+    virtual void willRunJavaScriptPrompt(CyberKit::WebPage*, const WTF::String&, const WTF::String&, CyberKit::WebFrame*) { }
+    virtual void mouseDidMoveOverElement(CyberKit::WebPage*, const CyberCore::HitTestResult&, OptionSet<CyberKit::WebEventModifier>, RefPtr<API::Object>& userData) { UNUSED_PARAM(userData); }
+    virtual void pageDidScroll(CyberKit::WebPage*) { }
 
     enum class UIElementVisibility {
         Unknown,
@@ -65,12 +65,12 @@ public:
         Hidden,
     };
 
-    virtual UIElementVisibility statusBarIsVisible(WebKit::WebPage*) { return UIElementVisibility::Unknown; }
-    virtual UIElementVisibility menuBarIsVisible(WebKit::WebPage*) { return UIElementVisibility::Unknown; }
-    virtual UIElementVisibility toolbarsAreVisible(WebKit::WebPage*) { return UIElementVisibility::Unknown; }
+    virtual UIElementVisibility statusBarIsVisible(CyberKit::WebPage*) { return UIElementVisibility::Unknown; }
+    virtual UIElementVisibility menuBarIsVisible(CyberKit::WebPage*) { return UIElementVisibility::Unknown; }
+    virtual UIElementVisibility toolbarsAreVisible(CyberKit::WebPage*) { return UIElementVisibility::Unknown; }
 
-    virtual bool didReachApplicationCacheOriginQuota(WebKit::WebPage*, SecurityOrigin*, int64_t totalBytesNeeded) { UNUSED_PARAM(totalBytesNeeded); return false; }
-    virtual uint64_t didExceedDatabaseQuota(WebKit::WebPage*, SecurityOrigin*, const WTF::String& databaseName, const WTF::String& databaseDisplayName, uint64_t currentQuotaBytes, uint64_t currentOriginUsageBytes, uint64_t currentDatabaseUsageBytes, uint64_t expectedUsageBytes)
+    virtual bool didReachApplicationCacheOriginQuota(CyberKit::WebPage*, SecurityOrigin*, int64_t totalBytesNeeded) { UNUSED_PARAM(totalBytesNeeded); return false; }
+    virtual uint64_t didExceedDatabaseQuota(CyberKit::WebPage*, SecurityOrigin*, const WTF::String& databaseName, const WTF::String& databaseDisplayName, uint64_t currentQuotaBytes, uint64_t currentOriginUsageBytes, uint64_t currentDatabaseUsageBytes, uint64_t expectedUsageBytes)
     {
         UNUSED_PARAM(databaseName);
         UNUSED_PARAM(databaseDisplayName);
@@ -86,9 +86,9 @@ public:
     virtual WTF::String plugInExtraStyleSheet() const { return emptyString(); }
     virtual WTF::String plugInExtraScript() const { return emptyString(); }
 
-    virtual void didClickAutoFillButton(WebKit::WebPage&, WebKit::InjectedBundleNodeHandle&, RefPtr<API::Object>&) { }
+    virtual void didClickAutoFillButton(CyberKit::WebPage&, CyberKit::InjectedBundleNodeHandle&, RefPtr<API::Object>&) { }
 
-    virtual void didResignInputElementStrongPasswordAppearance(WebKit::WebPage&, WebKit::InjectedBundleNodeHandle&, RefPtr<API::Object>&) { };
+    virtual void didResignInputElementStrongPasswordAppearance(CyberKit::WebPage&, CyberKit::InjectedBundleNodeHandle&, RefPtr<API::Object>&) { };
 };
 
 } // namespace InjectedBundle

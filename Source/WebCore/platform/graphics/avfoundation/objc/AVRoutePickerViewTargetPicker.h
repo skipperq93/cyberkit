@@ -33,7 +33,7 @@ OBJC_CLASS AVRouteDetector;
 OBJC_CLASS AVRoutePickerView;
 OBJC_CLASS WebAVRoutePickerViewHelper;
 
-namespace WebCore {
+namespace CyberCore {
 
 class AVRoutePickerViewTargetPicker final : public AVPlaybackTargetPicker {
     WTF_MAKE_FAST_ALLOCATED;
@@ -69,6 +69,6 @@ private:
     bool m_ignoreNextMultipleRoutesDetectedDidChangeNotification { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WIRELESS_PLAYBACK_TARGET)

@@ -30,7 +30,7 @@
 #include "IterationCompositeOperation.h"
 #include "LayoutPoint.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct BlendingContext {
     double progress { 0 };
@@ -123,4 +123,4 @@ inline LayoutPoint blend(const LayoutPoint& from, const LayoutPoint& to, const B
         blend(from.y(), to.y(), context));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

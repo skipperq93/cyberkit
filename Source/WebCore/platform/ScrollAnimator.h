@@ -39,7 +39,7 @@
 #include <wtf/FastMalloc.h>
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FloatPoint;
 class KeyboardScrollingAnimator;
@@ -181,5 +181,5 @@ private:
     bool m_scrollAnimationScheduled { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 

@@ -43,7 +43,7 @@
 #include "StyleFontSizeFunctions.h"
 #include "WebKitFontFamilyNames.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace Style {
 

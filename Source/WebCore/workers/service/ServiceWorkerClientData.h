@@ -35,7 +35,7 @@
 #include "ServiceWorkerTypes.h"
 #include <wtf/URL.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SWClientConnection;
 class ScriptExecutionContext;
@@ -66,6 +66,6 @@ struct ServiceWorkerClientData {
 
 using ServiceWorkerClientsMatchAllCallback = CompletionHandler<void(Vector<ServiceWorkerClientData>&&)>;
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

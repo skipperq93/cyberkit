@@ -34,7 +34,7 @@ namespace WebKit {
 
 class WebPageProxy;
 
-class WebDeviceOrientationUpdateProviderProxy : public WebCore::MotionManagerClient, private IPC::MessageReceiver {
+class WebDeviceOrientationUpdateProviderProxy : public CyberCore::MotionManagerClient, private IPC::MessageReceiver {
     WTF_MAKE_FAST_ALLOCATED;
 public:
     WebDeviceOrientationUpdateProviderProxy(WebPageProxy&);
@@ -47,7 +47,7 @@ public:
     void stopUpdatingDeviceMotion();
 
 private:
-    // WebCore::WebCoreMotionManagerClient
+    // CyberCore::CyberCoreMotionManagerClient
     void orientationChanged(double, double, double, double, double) final;
     void motionChanged(double, double, double, double, double, double, std::optional<double>, std::optional<double>, std::optional<double>) final;
 

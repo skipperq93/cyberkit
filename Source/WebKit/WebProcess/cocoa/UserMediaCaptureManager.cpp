@@ -34,7 +34,7 @@
 #include "RemoteRealtimeVideoSource.h"
 #include "RemoteVideoFrameObjectHeapProxy.h"
 #include "UserMediaCaptureManagerMessages.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebProcess.h"
 #include <CyberCore/AudioMediaStreamTrackRendererUnit.h>
 #include <CyberCore/DeprecatedGlobalSettings.h>
@@ -43,9 +43,9 @@
 #include <CyberCore/RealtimeVideoSource.h>
 #include <wtf/Assertions.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace PAL;
-using namespace WebCore;
+using namespace CyberCore;
 
 UserMediaCaptureManager::UserMediaCaptureManager(WebProcess& process)
     : m_process(process)
@@ -83,7 +83,7 @@ void UserMediaCaptureManager::setupCaptureProcesses(bool shouldCaptureAudioInUIP
     m_displayFactory.setShouldCaptureInGPUProcess(shouldCaptureDisplayInGPUProcess);
 
     if (shouldCaptureAudioInUIProcess || shouldCaptureAudioInGPUProcess)
-        WebCore::AudioMediaStreamTrackRendererInternalUnit::setCreateFunction(createRemoteAudioMediaStreamTrackRendererInternalUnitProxy);
+        CyberCore::AudioMediaStreamTrackRendererInternalUnit::setCreateFunction(createRemoteAudioMediaStreamTrackRendererInternalUnitProxy);
 
     if (shouldCaptureAudioInUIProcess || shouldCaptureAudioInGPUProcess)
         RealtimeMediaSourceCenter::singleton().setAudioCaptureFactory(m_audioFactory);

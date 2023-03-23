@@ -95,7 +95,7 @@ IGNORE_WARNINGS_BEGIN("implicit-fallthrough")
 // Older versions of gperf like to use the `register` keyword.
 #define register
 
-namespace WebCore {
+namespace CyberCore {
 
 static const struct HeaderNameString {
     const char* const name;
@@ -172,7 +172,7 @@ StringView httpHeaderNameString(HTTPHeaderName headerName)
     return StringView { reinterpret_cast<const LChar*>(name.name), static_cast<unsigned>(name.length) };
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #if defined(__clang__)
 IGNORE_WARNINGS_END
@@ -215,7 +215,7 @@ header_file.write('''
 
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class HTTPHeaderName {
 ''')
@@ -231,13 +231,13 @@ header_file.write('''
 bool findHTTPHeaderName(StringView, HTTPHeaderName&);
 WEBCORE_EXPORT StringView httpHeaderNameString(HTTPHeaderName);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::HTTPHeaderName> {
+template<> struct EnumTraits<CyberCore::HTTPHeaderName> {
     using values = EnumValues<
-        WebCore::HTTPHeaderName,
+        CyberCore::HTTPHeaderName,
 ''')
 
 is_first = True
@@ -247,7 +247,7 @@ for http_header_name in http_header_names:
     else:
     	header_file.write(',\n')
 
-    header_file.write('        WebCore::HTTPHeaderName::%s' % http_header_name_to_id[http_header_name])
+    header_file.write('        CyberCore::HTTPHeaderName::%s' % http_header_name_to_id[http_header_name])
 
 header_file.write('''
     >;

@@ -59,7 +59,7 @@ public:
     }
 
 private:
-    void createNewPage(WebPageProxy& page, WebCore::WindowFeatures&& windowFeatures, Ref<API::NavigationAction>&& apiNavigationAction, CompletionHandler<void(RefPtr<WebPageProxy>&&)>&& completionHandler) final
+    void createNewPage(WebPageProxy& page, CyberCore::WindowFeatures&& windowFeatures, Ref<API::NavigationAction>&& apiNavigationAction, CompletionHandler<void(RefPtr<WebPageProxy>&&)>&& completionHandler) final
     {
         WebKitNavigationAction navigationAction(WTFMove(apiNavigationAction));
         completionHandler(webkitWebViewCreateNewPage(m_webView, windowFeatures, &navigationAction));
@@ -146,7 +146,7 @@ private:
         GdkRectangle geometry = { 0, 0, 0, 0 };
         // Position a toplevel window is not supported under wayland.
 #if PLATFORM(WAYLAND)
-        if (WebCore::PlatformDisplay::sharedDisplay().type() != WebCore::PlatformDisplay::Type::Wayland)
+        if (CyberCore::PlatformDisplay::sharedDisplay().type() != CyberCore::PlatformDisplay::Type::Wayland)
 #endif
         {
             gtk_window_get_position(window, &geometry.x, &geometry.y);
@@ -168,18 +168,18 @@ private:
         RunLoop::current().stop();
     }
 
-    void setWindowFrame(WebPageProxy&, const WebCore::FloatRect& frame) final
+    void setWindowFrame(WebPageProxy&, const CyberCore::FloatRect& frame) final
     {
 #if PLATFORM(GTK)
-        GdkRectangle geometry = WebCore::IntRect(frame);
+        GdkRectangle geometry = CyberCore::IntRect(frame);
         GtkWidget* window = gtk_widget_get_toplevel(GTK_WIDGET(m_webView));
-        if (webkit_web_view_is_controlled_by_automation(m_webView) && WebCore::widgetIsOnscreenToplevelWindow(window) && gtk_widget_get_visible(window)) {
+        if (webkit_web_view_is_controlled_by_automation(m_webView) && CyberCore::widgetIsOnscreenToplevelWindow(window) && gtk_widget_get_visible(window)) {
             bool needsMove = false;
             // Querying and setting window positions is not supported in GTK4.
 #if !USE(GTK4)
             // Position a toplevel window is not supported under wayland.
 #if PLATFORM(WAYLAND)
-            if (WebCore::PlatformDisplay::sharedDisplay().type() != WebCore::PlatformDisplay::Type::Wayland)
+            if (CyberCore::PlatformDisplay::sharedDisplay().type() != CyberCore::PlatformDisplay::Type::Wayland)
 #endif // PLATFORM(WAYLAND)
             {
                 if (geometry.x >= 0 && geometry.y >= 0) {
@@ -231,18 +231,18 @@ private:
 #endif // PLATFORM(GTK)
     }
 
-    void windowFrame(WebPageProxy&, Function<void(WebCore::FloatRect)>&& completionHandler) final
+    void windowFrame(WebPageProxy&, Function<void(CyberCore::FloatRect)>&& completionHandler) final
     {
 #if PLATFORM(GTK)
         GdkRectangle geometry = { 0, 0, 0, 0 };
         GtkWidget* window = gtk_widget_get_toplevel(GTK_WIDGET(m_webView));
-        if (WebCore::widgetIsOnscreenToplevelWindow(window) && gtk_widget_get_visible(window)) {
+        if (CyberCore::widgetIsOnscreenToplevelWindow(window) && gtk_widget_get_visible(window)) {
             gtk_window_get_position(GTK_WINDOW(window), &geometry.x, &geometry.y);
             gtk_window_get_size(GTK_WINDOW(window), &geometry.width, &geometry.height);
         } else {
             GdkRectangle defaultGeometry;
             webkit_window_properties_get_geometry(webkit_web_view_get_window_properties(m_webView), &defaultGeometry);
-            if ((!defaultGeometry.width || !defaultGeometry.height) && WebCore::widgetIsOnscreenToplevelWindow(window)) {
+            if ((!defaultGeometry.width || !defaultGeometry.height) && CyberCore::widgetIsOnscreenToplevelWindow(window)) {
                 int defaultWidth, defaultHeight;
                 gtk_window_get_default_size(GTK_WINDOW(window), &defaultWidth, &defaultHeight);
                 if (!defaultGeometry.width && defaultWidth != -1)
@@ -251,10 +251,10 @@ private:
                     geometry.height = defaultHeight;
             }
         }
-        completionHandler(WebCore::FloatRect(geometry));
+        completionHandler(CyberCore::FloatRect(geometry));
 #elif PLATFORM(WPE)
         // FIXME: I guess this is actually the view size in WPE. We need more refactoring here.
-        WebCore::FloatRect rect;
+        CyberCore::FloatRect rect;
         auto& page = webkitWebViewGetPage(m_webView);
         if (page.drawingArea())
             rect.setSize(page.drawingArea()->size());
@@ -306,7 +306,7 @@ private:
         webkitWebViewMakePermissionRequest(m_webView, WEBKIT_PERMISSION_REQUEST(notificationPermissionRequest.get()));
     }
 
-    void requestStorageAccessConfirm(WebPageProxy&, WebFrameProxy*, const WebCore::RegistrableDomain& requestingDomain, const WebCore::RegistrableDomain& currentDomain, CompletionHandler<void(bool)>&& completionHandler) final
+    void requestStorageAccessConfirm(WebPageProxy&, WebFrameProxy*, const CyberCore::RegistrableDomain& requestingDomain, const CyberCore::RegistrableDomain& currentDomain, CompletionHandler<void(bool)>&& completionHandler) final
     {
         GRefPtr<WebKitWebsiteDataAccessPermissionRequest> websiteDataAccessPermissionRequest = adoptGRef(webkitWebsiteDataAccessPermissionRequestCreate(requestingDomain, currentDomain, WTFMove(completionHandler)));
         webkitWebViewMakePermissionRequest(m_webView, WEBKIT_PERMISSION_REQUEST(websiteDataAccessPermissionRequest.get()));
@@ -327,7 +327,7 @@ private:
         gtk_widget_grab_focus(GTK_WIDGET(m_webView));
     }
 
-    void printFrame(WebPageProxy&, WebFrameProxy& frame, const WebCore::FloatSize&, CompletionHandler<void()>&& completionHandler) final
+    void printFrame(WebPageProxy&, WebFrameProxy& frame, const CyberCore::FloatSize&, CompletionHandler<void()>&& completionHandler) final
     {
         webkitWebViewPrintFrame(m_webView, &frame);
         completionHandler();
@@ -346,7 +346,7 @@ private:
         webkitWebViewIsPlayingAudioChanged(m_webView);
     }
 
-    void mediaCaptureStateDidChange(WebCore::MediaProducer::MediaStateFlags mediaStateFlags) final
+    void mediaCaptureStateDidChange(CyberCore::MediaProducer::MediaStateFlags mediaStateFlags) final
     {
         webkitWebViewMediaCaptureStateDidChange(m_webView, mediaStateFlags);
     }
@@ -370,7 +370,7 @@ private:
     }
 #endif
 
-    void queryPermission(const WTF::String& permissionName, API::SecurityOrigin& origin, CompletionHandler<void(std::optional<WebCore::PermissionState>)>&& completionHandler) final
+    void queryPermission(const WTF::String& permissionName, API::SecurityOrigin& origin, CompletionHandler<void(std::optional<CyberCore::PermissionState>)>&& completionHandler) final
     {
         auto* query = webkitPermissionStateQueryCreate(permissionName, origin, WTFMove(completionHandler));
         webkitWebViewPermissionStateQuery(m_webView, query);

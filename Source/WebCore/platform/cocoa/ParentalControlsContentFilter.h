@@ -33,7 +33,7 @@
 OBJC_CLASS NSData;
 OBJC_CLASS WebFilterEvaluator;
 
-namespace WebCore {
+namespace CyberCore {
 
 class ParentalControlsContentFilter final : public PlatformContentFilter {
     friend UniqueRef<ParentalControlsContentFilter> WTF::makeUniqueRefWithoutFastMallocCheck<ParentalControlsContentFilter>();
@@ -74,4 +74,4 @@ private:
 #endif
 };
     
-} // namespace WebCore
+} // namespace CyberCore

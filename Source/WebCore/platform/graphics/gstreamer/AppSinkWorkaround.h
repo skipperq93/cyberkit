@@ -23,11 +23,11 @@
 
 #include <gst/app/gstappsink.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 void registerAppsinkWorkaroundIfNeeded();
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #define WEBKIT_TYPE_APP_SINK_WITH_WORKAROUND (webkit_app_sink_with_workaround_get_type())
 

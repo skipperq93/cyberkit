@@ -27,7 +27,7 @@
 
 #include <wtf/MathExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // Transfer functions for colors that can be gamma encoded.
 

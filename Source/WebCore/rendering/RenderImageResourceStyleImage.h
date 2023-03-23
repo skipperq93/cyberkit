@@ -29,7 +29,7 @@
 #include "StyleImage.h"
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderElement;
 
@@ -56,4 +56,4 @@ private:
     Ref<StyleImage> m_styleImage;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

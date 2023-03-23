@@ -26,7 +26,7 @@
 #include "SVGTransformable.h"
 #include "SVGValuePropertyList.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGTransformList final : public SVGValuePropertyList<SVGTransform> {
     friend class SVGViewSpec;
@@ -68,4 +68,4 @@ private:
     bool parse(StringParsingBuffer<UChar>&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

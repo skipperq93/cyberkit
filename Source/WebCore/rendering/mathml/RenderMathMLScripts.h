@@ -32,7 +32,7 @@
 #include "MathMLScriptsElement.h"
 #include "RenderMathMLBlock.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // Render a base with scripts.
 class RenderMathMLScripts : public RenderMathMLBlock {
@@ -80,7 +80,7 @@ private:
     VerticalMetrics verticalMetrics(const ReferenceChildren&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderMathMLScripts, isRenderMathMLScripts())
 

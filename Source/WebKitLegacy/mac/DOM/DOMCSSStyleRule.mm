@@ -38,25 +38,25 @@
 #import <wtf/GetPtr.h>
 #import <wtf/URL.h>
 
-#define IMPL static_cast<WebCore::CSSStyleRule*>(reinterpret_cast<WebCore::CSSRule*>(_internal))
+#define IMPL static_cast<CyberCore::CSSStyleRule*>(reinterpret_cast<CyberCore::CSSRule*>(_internal))
 
 @implementation DOMCSSStyleRule
 
 - (NSString *)selectorText
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->selectorText();
 }
 
 - (void)setSelectorText:(NSString *)newSelectorText
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->setSelectorText(newSelectorText);
 }
 
 - (DOMCSSStyleDeclaration *)style
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->style()));
 }
 

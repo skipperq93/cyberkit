@@ -255,7 +255,7 @@ typedef void (*WKPageForceRepaintFunction)(WKErrorRef, void*);
 WK_EXPORT void WKPageForceRepaint(WKPageRef page, void* context, WKPageForceRepaintFunction function);
 
 /*
-    Some of the more common command name strings include the following, although any WebCore EditorCommand string is supported:
+    Some of the more common command name strings include the following, although any CyberCore EditorCommand string is supported:
     
     "Cut"
     "Copy"

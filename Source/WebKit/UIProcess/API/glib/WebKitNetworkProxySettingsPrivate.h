@@ -22,4 +22,4 @@
 #include "WebKitNetworkProxySettings.h"
 #include <CyberCore/SoupNetworkProxySettings.h>
 
-const WebCore::SoupNetworkProxySettings& webkitNetworkProxySettingsGetNetworkProxySettings(WebKitNetworkProxySettings*);
+const CyberCore::SoupNetworkProxySettings& webkitNetworkProxySettingsGetNetworkProxySettings(WebKitNetworkProxySettings*);

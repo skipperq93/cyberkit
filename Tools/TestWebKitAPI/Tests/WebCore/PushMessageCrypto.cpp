@@ -32,7 +32,7 @@
 #include <wtf/text/Base64.h>
 
 namespace TestWebKitAPI {
-using namespace WebCore::PushCrypto;
+using namespace CyberCore::PushCrypto;
 
 static Vector<uint8_t> mustBase64URLDecode(const String& encoded)
 {

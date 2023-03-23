@@ -35,7 +35,7 @@
 #include "FilterRenderingMode.h"
 #include "RenderLayer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CachedSVGDocument;
 class Element;
@@ -92,4 +92,4 @@ private:
     std::unique_ptr<FilterTargetSwitcher> m_targetSwitcher;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

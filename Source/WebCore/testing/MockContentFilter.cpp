@@ -37,7 +37,7 @@
 #include <mutex>
 #include <wtf/text/CString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using Decision = MockContentFilterSettings::Decision;
 using DecisionPoint = MockContentFilterSettings::DecisionPoint;
@@ -153,6 +153,6 @@ void MockContentFilter::maybeDetermineStatus(DecisionPoint decisionPoint)
     m_replacementData.append(utf8BlockedString.data(), utf8BlockedString.length());
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(CONTENT_FILTERING)

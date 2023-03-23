@@ -30,11 +30,11 @@
 #include <wtf/text/StringHash.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 struct PasteboardItemInfo;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPasteboardOverrides {
     friend NeverDestroyed<WebPasteboardOverrides>;
@@ -44,7 +44,7 @@ public:
     void addOverride(const String& pasteboardName, const String& type, const Vector<uint8_t>&);
     void removeOverride(const String& pasteboardName, const String& type);
 
-    std::optional<WebCore::PasteboardItemInfo> overriddenInfo(const String& pasteboardName);
+    std::optional<CyberCore::PasteboardItemInfo> overriddenInfo(const String& pasteboardName);
     Vector<String> overriddenTypes(const String& pasteboardName);
 
     bool getDataForOverride(const String& pasteboardName, const String& type, Vector<uint8_t>&) const;
@@ -57,4 +57,4 @@ private:
     HashMap<String, HashMap<String, Vector<uint8_t>>> m_overridesMap;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

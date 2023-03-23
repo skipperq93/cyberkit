@@ -32,21 +32,21 @@
 #include <CyberCore/SharedBuffer.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebFrame;
 
-class WebPreviewLoaderClient final : public WebCore::LegacyPreviewLoaderClient {
+class WebPreviewLoaderClient final : public CyberCore::LegacyPreviewLoaderClient {
 public:
-    static Ref<WebPreviewLoaderClient> create(const String& fileName, const String& uti, WebCore::PageIdentifier pageID)
+    static Ref<WebPreviewLoaderClient> create(const String& fileName, const String& uti, CyberCore::PageIdentifier pageID)
     {
         return adoptRef(*new WebPreviewLoaderClient(fileName, uti, pageID));
     }
     ~WebPreviewLoaderClient();
 
 private:
-    WebPreviewLoaderClient(const String& fileName, const String& uti, WebCore::PageIdentifier);
-    void didReceiveData(const WebCore::SharedBuffer&) override;
+    WebPreviewLoaderClient(const String& fileName, const String& uti, CyberCore::PageIdentifier);
+    void didReceiveData(const CyberCore::SharedBuffer&) override;
     void didFinishLoading() override;
     void didFail() override;
     bool supportsPasswordEntry() const override { return true; }
@@ -54,10 +54,10 @@ private:
 
     const String m_fileName;
     const String m_uti;
-    const WebCore::PageIdentifier m_pageID;
-    WebCore::SharedBufferBuilder m_buffer;
+    const CyberCore::PageIdentifier m_pageID;
+    CyberCore::SharedBufferBuilder m_buffer;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(QUICK_LOOK)

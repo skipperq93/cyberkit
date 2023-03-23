@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -18,7 +18,7 @@
  */
 
 #include "config.h"
-#include "WebKitDOMHTMLStyleElement.h"
+#include "CyberKitDOMHTMLStyleElement.h"
 
 #include <CyberCore/CSSImportRule.h>
 #include "DOMObjectCache.h"
@@ -28,74 +28,74 @@
 #include <CyberCore/HTMLNames.h>
 #include <CyberCore/JSExecState.h>
 #include "GObjectEventListener.h"
-#include "WebKitDOMEventPrivate.h"
-#include "WebKitDOMEventTarget.h"
-#include "WebKitDOMHTMLStyleElementPrivate.h"
-#include "WebKitDOMNodePrivate.h"
-#include "WebKitDOMPrivate.h"
-#include "WebKitDOMStyleSheetPrivate.h"
+#include "CyberKitDOMEventPrivate.h"
+#include "CyberKitDOMEventTarget.h"
+#include "CyberKitDOMHTMLStyleElementPrivate.h"
+#include "CyberKitDOMNodePrivate.h"
+#include "CyberKitDOMPrivate.h"
+#include "CyberKitDOMStyleSheetPrivate.h"
 #include "ConvertToUTF8String.h"
 #include <wtf/GetPtr.h>
 #include <wtf/RefPtr.h>
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
-namespace WebKit {
+namespace CyberKit {
 
-WebKitDOMHTMLStyleElement* kit(WebCore::HTMLStyleElement* obj)
+CyberKitDOMHTMLStyleElement* kit(CyberCore::HTMLStyleElement* obj)
 {
-    return WEBKIT_DOM_HTML_STYLE_ELEMENT(kit(static_cast<WebCore::Node*>(obj)));
+    return WEBKIT_DOM_HTML_STYLE_ELEMENT(kit(static_cast<CyberCore::Node*>(obj)));
 }
 
-WebCore::HTMLStyleElement* core(WebKitDOMHTMLStyleElement* request)
+CyberCore::HTMLStyleElement* core(CyberKitDOMHTMLStyleElement* request)
 {
-    return request ? static_cast<WebCore::HTMLStyleElement*>(WEBKIT_DOM_OBJECT(request)->coreObject) : 0;
+    return request ? static_cast<CyberCore::HTMLStyleElement*>(WEBKIT_DOM_OBJECT(request)->coreObject) : 0;
 }
 
-WebKitDOMHTMLStyleElement* wrapHTMLStyleElement(WebCore::HTMLStyleElement* coreObject)
+CyberKitDOMHTMLStyleElement* wrapHTMLStyleElement(CyberCore::HTMLStyleElement* coreObject)
 {
     ASSERT(coreObject);
     return WEBKIT_DOM_HTML_STYLE_ELEMENT(g_object_new(WEBKIT_DOM_TYPE_HTML_STYLE_ELEMENT, "core-object", coreObject, nullptr));
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
-static gboolean webkit_dom_html_style_element_dispatch_event(WebKitDOMEventTarget* target, WebKitDOMEvent* event, GError** error)
+static gboolean webkit_dom_html_style_element_dispatch_event(CyberKitDOMEventTarget* target, CyberKitDOMEvent* event, GError** error)
 {
-    WebCore::Event* coreEvent = WebKit::core(event);
+    CyberCore::Event* coreEvent = CyberKit::core(event);
     if (!coreEvent)
         return false;
-    WebCore::HTMLStyleElement* coreTarget = static_cast<WebCore::HTMLStyleElement*>(WEBKIT_DOM_OBJECT(target)->coreObject);
+    CyberCore::HTMLStyleElement* coreTarget = static_cast<CyberCore::HTMLStyleElement*>(WEBKIT_DOM_OBJECT(target)->coreObject);
 
     auto result = coreTarget->dispatchEventForBindings(*coreEvent);
     if (result.hasException()) {
-        auto description = WebCore::DOMException::description(result.releaseException().code());
+        auto description = CyberCore::DOMException::description(result.releaseException().code());
         g_set_error_literal(error, g_quark_from_string("WEBKIT_DOM"), description.legacyCode, description.name);
         return false;
     }
     return result.releaseReturnValue();
 }
 
-static gboolean webkit_dom_html_style_element_add_event_listener(WebKitDOMEventTarget* target, const char* eventName, GClosure* handler, gboolean useCapture)
+static gboolean webkit_dom_html_style_element_add_event_listener(CyberKitDOMEventTarget* target, const char* eventName, GClosure* handler, gboolean useCapture)
 {
-    WebCore::HTMLStyleElement* coreTarget = static_cast<WebCore::HTMLStyleElement*>(WEBKIT_DOM_OBJECT(target)->coreObject);
-    return WebKit::GObjectEventListener::addEventListener(G_OBJECT(target), coreTarget, eventName, handler, useCapture);
+    CyberCore::HTMLStyleElement* coreTarget = static_cast<CyberCore::HTMLStyleElement*>(WEBKIT_DOM_OBJECT(target)->coreObject);
+    return CyberKit::GObjectEventListener::addEventListener(G_OBJECT(target), coreTarget, eventName, handler, useCapture);
 }
 
-static gboolean webkit_dom_html_style_element_remove_event_listener(WebKitDOMEventTarget* target, const char* eventName, GClosure* handler, gboolean useCapture)
+static gboolean webkit_dom_html_style_element_remove_event_listener(CyberKitDOMEventTarget* target, const char* eventName, GClosure* handler, gboolean useCapture)
 {
-    WebCore::HTMLStyleElement* coreTarget = static_cast<WebCore::HTMLStyleElement*>(WEBKIT_DOM_OBJECT(target)->coreObject);
-    return WebKit::GObjectEventListener::removeEventListener(G_OBJECT(target), coreTarget, eventName, handler, useCapture);
+    CyberCore::HTMLStyleElement* coreTarget = static_cast<CyberCore::HTMLStyleElement*>(WEBKIT_DOM_OBJECT(target)->coreObject);
+    return CyberKit::GObjectEventListener::removeEventListener(G_OBJECT(target), coreTarget, eventName, handler, useCapture);
 }
 
-static void webkit_dom_html_style_element_dom_event_target_init(WebKitDOMEventTargetIface* iface)
+static void webkit_dom_html_style_element_dom_event_target_init(CyberKitDOMEventTargetIface* iface)
 {
     iface->dispatch_event = webkit_dom_html_style_element_dispatch_event;
     iface->add_event_listener = webkit_dom_html_style_element_add_event_listener;
     iface->remove_event_listener = webkit_dom_html_style_element_remove_event_listener;
 }
 
-G_DEFINE_TYPE_WITH_CODE(WebKitDOMHTMLStyleElement, webkit_dom_html_style_element, WEBKIT_DOM_TYPE_HTML_ELEMENT, G_IMPLEMENT_INTERFACE(WEBKIT_DOM_TYPE_EVENT_TARGET, webkit_dom_html_style_element_dom_event_target_init))
+G_DEFINE_TYPE_WITH_CODE(CyberKitDOMHTMLStyleElement, webkit_dom_html_style_element, WEBKIT_DOM_TYPE_HTML_ELEMENT, G_IMPLEMENT_INTERFACE(WEBKIT_DOM_TYPE_EVENT_TARGET, webkit_dom_html_style_element_dom_event_target_init))
 
 enum {
     DOM_HTML_STYLE_ELEMENT_PROP_0,
@@ -107,7 +107,7 @@ enum {
 
 static void webkit_dom_html_style_element_set_property(GObject* object, guint propertyId, const GValue* value, GParamSpec* pspec)
 {
-    WebKitDOMHTMLStyleElement* self = WEBKIT_DOM_HTML_STYLE_ELEMENT(object);
+    CyberKitDOMHTMLStyleElement* self = WEBKIT_DOM_HTML_STYLE_ELEMENT(object);
 
     switch (propertyId) {
     case DOM_HTML_STYLE_ELEMENT_PROP_DISABLED:
@@ -127,7 +127,7 @@ static void webkit_dom_html_style_element_set_property(GObject* object, guint pr
 
 static void webkit_dom_html_style_element_get_property(GObject* object, guint propertyId, GValue* value, GParamSpec* pspec)
 {
-    WebKitDOMHTMLStyleElement* self = WEBKIT_DOM_HTML_STYLE_ELEMENT(object);
+    CyberKitDOMHTMLStyleElement* self = WEBKIT_DOM_HTML_STYLE_ELEMENT(object);
 
     switch (propertyId) {
     case DOM_HTML_STYLE_ELEMENT_PROP_DISABLED:
@@ -148,7 +148,7 @@ static void webkit_dom_html_style_element_get_property(GObject* object, guint pr
     }
 }
 
-static void webkit_dom_html_style_element_class_init(WebKitDOMHTMLStyleElementClass* requestClass)
+static void webkit_dom_html_style_element_class_init(CyberKitDOMHTMLStyleElementClass* requestClass)
 {
     GObjectClass* gobjectClass = G_OBJECT_CLASS(requestClass);
     gobjectClass->set_property = webkit_dom_html_style_element_set_property;
@@ -190,75 +190,75 @@ static void webkit_dom_html_style_element_class_init(WebKitDOMHTMLStyleElementCl
         g_param_spec_object(
             "sheet",
             "HTMLStyleElement:sheet",
-            "read-only WebKitDOMStyleSheet* HTMLStyleElement:sheet",
+            "read-only CyberKitDOMStyleSheet* HTMLStyleElement:sheet",
             WEBKIT_DOM_TYPE_STYLE_SHEET,
             WEBKIT_PARAM_READABLE));
 }
 
-static void webkit_dom_html_style_element_init(WebKitDOMHTMLStyleElement* request)
+static void webkit_dom_html_style_element_init(CyberKitDOMHTMLStyleElement* request)
 {
     UNUSED_PARAM(request);
 }
 
-gboolean webkit_dom_html_style_element_get_disabled(WebKitDOMHTMLStyleElement* self)
+gboolean webkit_dom_html_style_element_get_disabled(CyberKitDOMHTMLStyleElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_STYLE_ELEMENT(self), FALSE);
-    WebCore::HTMLStyleElement* item = WebKit::core(self);
+    CyberCore::HTMLStyleElement* item = CyberKit::core(self);
     gboolean result = item->disabled();
     return result;
 }
 
-void webkit_dom_html_style_element_set_disabled(WebKitDOMHTMLStyleElement* self, gboolean value)
+void webkit_dom_html_style_element_set_disabled(CyberKitDOMHTMLStyleElement* self, gboolean value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_STYLE_ELEMENT(self));
-    WebCore::HTMLStyleElement* item = WebKit::core(self);
+    CyberCore::HTMLStyleElement* item = CyberKit::core(self);
     item->setDisabled(value);
 }
 
-gchar* webkit_dom_html_style_element_get_media(WebKitDOMHTMLStyleElement* self)
+gchar* webkit_dom_html_style_element_get_media(CyberKitDOMHTMLStyleElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_STYLE_ELEMENT(self), 0);
-    WebCore::HTMLStyleElement* item = WebKit::core(self);
-    gchar* result = convertToUTF8String(item->attributeWithoutSynchronization(WebCore::HTMLNames::mediaAttr));
+    CyberCore::HTMLStyleElement* item = CyberKit::core(self);
+    gchar* result = convertToUTF8String(item->attributeWithoutSynchronization(CyberCore::HTMLNames::mediaAttr));
     return result;
 }
 
-void webkit_dom_html_style_element_set_media(WebKitDOMHTMLStyleElement* self, const gchar* value)
+void webkit_dom_html_style_element_set_media(CyberKitDOMHTMLStyleElement* self, const gchar* value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_STYLE_ELEMENT(self));
     g_return_if_fail(value);
-    WebCore::HTMLStyleElement* item = WebKit::core(self);
-    item->setAttributeWithoutSynchronization(WebCore::HTMLNames::mediaAttr, WTF::AtomString::fromUTF8(value));
+    CyberCore::HTMLStyleElement* item = CyberKit::core(self);
+    item->setAttributeWithoutSynchronization(CyberCore::HTMLNames::mediaAttr, WTF::AtomString::fromUTF8(value));
 }
 
-gchar* webkit_dom_html_style_element_get_type_attr(WebKitDOMHTMLStyleElement* self)
+gchar* webkit_dom_html_style_element_get_type_attr(CyberKitDOMHTMLStyleElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_STYLE_ELEMENT(self), 0);
-    WebCore::HTMLStyleElement* item = WebKit::core(self);
-    gchar* result = convertToUTF8String(item->attributeWithoutSynchronization(WebCore::HTMLNames::typeAttr));
+    CyberCore::HTMLStyleElement* item = CyberKit::core(self);
+    gchar* result = convertToUTF8String(item->attributeWithoutSynchronization(CyberCore::HTMLNames::typeAttr));
     return result;
 }
 
-void webkit_dom_html_style_element_set_type_attr(WebKitDOMHTMLStyleElement* self, const gchar* value)
+void webkit_dom_html_style_element_set_type_attr(CyberKitDOMHTMLStyleElement* self, const gchar* value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_STYLE_ELEMENT(self));
     g_return_if_fail(value);
-    WebCore::HTMLStyleElement* item = WebKit::core(self);
-    item->setAttributeWithoutSynchronization(WebCore::HTMLNames::typeAttr, WTF::AtomString::fromUTF8(value));
+    CyberCore::HTMLStyleElement* item = CyberKit::core(self);
+    item->setAttributeWithoutSynchronization(CyberCore::HTMLNames::typeAttr, WTF::AtomString::fromUTF8(value));
 }
 
-WebKitDOMStyleSheet* webkit_dom_html_style_element_get_sheet(WebKitDOMHTMLStyleElement* self)
+CyberKitDOMStyleSheet* webkit_dom_html_style_element_get_sheet(CyberKitDOMHTMLStyleElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_STYLE_ELEMENT(self), 0);
-    WebCore::HTMLStyleElement* item = WebKit::core(self);
-    RefPtr<WebCore::StyleSheet> gobjectResult = WTF::getPtr(item->sheet());
-    return WebKit::kit(gobjectResult.get());
+    CyberCore::HTMLStyleElement* item = CyberKit::core(self);
+    RefPtr<CyberCore::StyleSheet> gobjectResult = WTF::getPtr(item->sheet());
+    return CyberKit::kit(gobjectResult.get());
 }
 G_GNUC_END_IGNORE_DEPRECATIONS;

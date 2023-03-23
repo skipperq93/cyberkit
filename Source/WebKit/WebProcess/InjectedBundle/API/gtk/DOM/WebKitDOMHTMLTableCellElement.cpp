@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -18,7 +18,7 @@
  */
 
 #include "config.h"
-#include "WebKitDOMHTMLTableCellElement.h"
+#include "CyberKitDOMHTMLTableCellElement.h"
 
 #include <CyberCore/CSSImportRule.h>
 #include "DOMObjectCache.h"
@@ -28,73 +28,73 @@
 #include <CyberCore/HTMLNames.h>
 #include <CyberCore/JSExecState.h>
 #include "GObjectEventListener.h"
-#include "WebKitDOMEventPrivate.h"
-#include "WebKitDOMEventTarget.h"
-#include "WebKitDOMHTMLTableCellElementPrivate.h"
-#include "WebKitDOMNodePrivate.h"
-#include "WebKitDOMPrivate.h"
+#include "CyberKitDOMEventPrivate.h"
+#include "CyberKitDOMEventTarget.h"
+#include "CyberKitDOMHTMLTableCellElementPrivate.h"
+#include "CyberKitDOMNodePrivate.h"
+#include "CyberKitDOMPrivate.h"
 #include "ConvertToUTF8String.h"
 #include <wtf/GetPtr.h>
 #include <wtf/RefPtr.h>
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
-namespace WebKit {
+namespace CyberKit {
 
-WebKitDOMHTMLTableCellElement* kit(WebCore::HTMLTableCellElement* obj)
+CyberKitDOMHTMLTableCellElement* kit(CyberCore::HTMLTableCellElement* obj)
 {
-    return WEBKIT_DOM_HTML_TABLE_CELL_ELEMENT(kit(static_cast<WebCore::Node*>(obj)));
+    return WEBKIT_DOM_HTML_TABLE_CELL_ELEMENT(kit(static_cast<CyberCore::Node*>(obj)));
 }
 
-WebCore::HTMLTableCellElement* core(WebKitDOMHTMLTableCellElement* request)
+CyberCore::HTMLTableCellElement* core(CyberKitDOMHTMLTableCellElement* request)
 {
-    return request ? static_cast<WebCore::HTMLTableCellElement*>(WEBKIT_DOM_OBJECT(request)->coreObject) : 0;
+    return request ? static_cast<CyberCore::HTMLTableCellElement*>(WEBKIT_DOM_OBJECT(request)->coreObject) : 0;
 }
 
-WebKitDOMHTMLTableCellElement* wrapHTMLTableCellElement(WebCore::HTMLTableCellElement* coreObject)
+CyberKitDOMHTMLTableCellElement* wrapHTMLTableCellElement(CyberCore::HTMLTableCellElement* coreObject)
 {
     ASSERT(coreObject);
     return WEBKIT_DOM_HTML_TABLE_CELL_ELEMENT(g_object_new(WEBKIT_DOM_TYPE_HTML_TABLE_CELL_ELEMENT, "core-object", coreObject, nullptr));
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
-static gboolean webkit_dom_html_table_cell_element_dispatch_event(WebKitDOMEventTarget* target, WebKitDOMEvent* event, GError** error)
+static gboolean webkit_dom_html_table_cell_element_dispatch_event(CyberKitDOMEventTarget* target, CyberKitDOMEvent* event, GError** error)
 {
-    WebCore::Event* coreEvent = WebKit::core(event);
+    CyberCore::Event* coreEvent = CyberKit::core(event);
     if (!coreEvent)
         return false;
-    WebCore::HTMLTableCellElement* coreTarget = static_cast<WebCore::HTMLTableCellElement*>(WEBKIT_DOM_OBJECT(target)->coreObject);
+    CyberCore::HTMLTableCellElement* coreTarget = static_cast<CyberCore::HTMLTableCellElement*>(WEBKIT_DOM_OBJECT(target)->coreObject);
 
     auto result = coreTarget->dispatchEventForBindings(*coreEvent);
     if (result.hasException()) {
-        auto description = WebCore::DOMException::description(result.releaseException().code());
+        auto description = CyberCore::DOMException::description(result.releaseException().code());
         g_set_error_literal(error, g_quark_from_string("WEBKIT_DOM"), description.legacyCode, description.name);
         return false;
     }
     return result.releaseReturnValue();
 }
 
-static gboolean webkit_dom_html_table_cell_element_add_event_listener(WebKitDOMEventTarget* target, const char* eventName, GClosure* handler, gboolean useCapture)
+static gboolean webkit_dom_html_table_cell_element_add_event_listener(CyberKitDOMEventTarget* target, const char* eventName, GClosure* handler, gboolean useCapture)
 {
-    WebCore::HTMLTableCellElement* coreTarget = static_cast<WebCore::HTMLTableCellElement*>(WEBKIT_DOM_OBJECT(target)->coreObject);
-    return WebKit::GObjectEventListener::addEventListener(G_OBJECT(target), coreTarget, eventName, handler, useCapture);
+    CyberCore::HTMLTableCellElement* coreTarget = static_cast<CyberCore::HTMLTableCellElement*>(WEBKIT_DOM_OBJECT(target)->coreObject);
+    return CyberKit::GObjectEventListener::addEventListener(G_OBJECT(target), coreTarget, eventName, handler, useCapture);
 }
 
-static gboolean webkit_dom_html_table_cell_element_remove_event_listener(WebKitDOMEventTarget* target, const char* eventName, GClosure* handler, gboolean useCapture)
+static gboolean webkit_dom_html_table_cell_element_remove_event_listener(CyberKitDOMEventTarget* target, const char* eventName, GClosure* handler, gboolean useCapture)
 {
-    WebCore::HTMLTableCellElement* coreTarget = static_cast<WebCore::HTMLTableCellElement*>(WEBKIT_DOM_OBJECT(target)->coreObject);
-    return WebKit::GObjectEventListener::removeEventListener(G_OBJECT(target), coreTarget, eventName, handler, useCapture);
+    CyberCore::HTMLTableCellElement* coreTarget = static_cast<CyberCore::HTMLTableCellElement*>(WEBKIT_DOM_OBJECT(target)->coreObject);
+    return CyberKit::GObjectEventListener::removeEventListener(G_OBJECT(target), coreTarget, eventName, handler, useCapture);
 }
 
-static void webkit_dom_html_table_cell_element_dom_event_target_init(WebKitDOMEventTargetIface* iface)
+static void webkit_dom_html_table_cell_element_dom_event_target_init(CyberKitDOMEventTargetIface* iface)
 {
     iface->dispatch_event = webkit_dom_html_table_cell_element_dispatch_event;
     iface->add_event_listener = webkit_dom_html_table_cell_element_add_event_listener;
     iface->remove_event_listener = webkit_dom_html_table_cell_element_remove_event_listener;
 }
 
-G_DEFINE_TYPE_WITH_CODE(WebKitDOMHTMLTableCellElement, webkit_dom_html_table_cell_element, WEBKIT_DOM_TYPE_HTML_ELEMENT, G_IMPLEMENT_INTERFACE(WEBKIT_DOM_TYPE_EVENT_TARGET, webkit_dom_html_table_cell_element_dom_event_target_init))
+G_DEFINE_TYPE_WITH_CODE(CyberKitDOMHTMLTableCellElement, webkit_dom_html_table_cell_element, WEBKIT_DOM_TYPE_HTML_ELEMENT, G_IMPLEMENT_INTERFACE(WEBKIT_DOM_TYPE_EVENT_TARGET, webkit_dom_html_table_cell_element_dom_event_target_init))
 
 enum {
     DOM_HTML_TABLE_CELL_ELEMENT_PROP_0,
@@ -117,7 +117,7 @@ enum {
 
 static void webkit_dom_html_table_cell_element_set_property(GObject* object, guint propertyId, const GValue* value, GParamSpec* pspec)
 {
-    WebKitDOMHTMLTableCellElement* self = WEBKIT_DOM_HTML_TABLE_CELL_ELEMENT(object);
+    CyberKitDOMHTMLTableCellElement* self = WEBKIT_DOM_HTML_TABLE_CELL_ELEMENT(object);
 
     switch (propertyId) {
     case DOM_HTML_TABLE_CELL_ELEMENT_PROP_ALIGN:
@@ -170,7 +170,7 @@ static void webkit_dom_html_table_cell_element_set_property(GObject* object, gui
 
 static void webkit_dom_html_table_cell_element_get_property(GObject* object, guint propertyId, GValue* value, GParamSpec* pspec)
 {
-    WebKitDOMHTMLTableCellElement* self = WEBKIT_DOM_HTML_TABLE_CELL_ELEMENT(object);
+    CyberKitDOMHTMLTableCellElement* self = WEBKIT_DOM_HTML_TABLE_CELL_ELEMENT(object);
 
     switch (propertyId) {
     case DOM_HTML_TABLE_CELL_ELEMENT_PROP_CELL_INDEX:
@@ -224,7 +224,7 @@ static void webkit_dom_html_table_cell_element_get_property(GObject* object, gui
     }
 }
 
-static void webkit_dom_html_table_cell_element_class_init(WebKitDOMHTMLTableCellElementClass* requestClass)
+static void webkit_dom_html_table_cell_element_class_init(CyberKitDOMHTMLTableCellElementClass* requestClass)
 {
     GObjectClass* gobjectClass = G_OBJECT_CLASS(requestClass);
     gobjectClass->set_property = webkit_dom_html_table_cell_element_set_property;
@@ -382,266 +382,266 @@ static void webkit_dom_html_table_cell_element_class_init(WebKitDOMHTMLTableCell
 
 }
 
-static void webkit_dom_html_table_cell_element_init(WebKitDOMHTMLTableCellElement* request)
+static void webkit_dom_html_table_cell_element_init(CyberKitDOMHTMLTableCellElement* request)
 {
     UNUSED_PARAM(request);
 }
 
-glong webkit_dom_html_table_cell_element_get_cell_index(WebKitDOMHTMLTableCellElement* self)
+glong webkit_dom_html_table_cell_element_get_cell_index(CyberKitDOMHTMLTableCellElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_TABLE_CELL_ELEMENT(self), 0);
-    WebCore::HTMLTableCellElement* item = WebKit::core(self);
+    CyberCore::HTMLTableCellElement* item = CyberKit::core(self);
     glong result = item->cellIndex();
     return result;
 }
 
-gchar* webkit_dom_html_table_cell_element_get_align(WebKitDOMHTMLTableCellElement* self)
+gchar* webkit_dom_html_table_cell_element_get_align(CyberKitDOMHTMLTableCellElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_TABLE_CELL_ELEMENT(self), 0);
-    WebCore::HTMLTableCellElement* item = WebKit::core(self);
-    gchar* result = convertToUTF8String(item->attributeWithoutSynchronization(WebCore::HTMLNames::alignAttr));
+    CyberCore::HTMLTableCellElement* item = CyberKit::core(self);
+    gchar* result = convertToUTF8String(item->attributeWithoutSynchronization(CyberCore::HTMLNames::alignAttr));
     return result;
 }
 
-void webkit_dom_html_table_cell_element_set_align(WebKitDOMHTMLTableCellElement* self, const gchar* value)
+void webkit_dom_html_table_cell_element_set_align(CyberKitDOMHTMLTableCellElement* self, const gchar* value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_TABLE_CELL_ELEMENT(self));
     g_return_if_fail(value);
-    WebCore::HTMLTableCellElement* item = WebKit::core(self);
-    item->setAttributeWithoutSynchronization(WebCore::HTMLNames::alignAttr, WTF::AtomString::fromUTF8(value));
+    CyberCore::HTMLTableCellElement* item = CyberKit::core(self);
+    item->setAttributeWithoutSynchronization(CyberCore::HTMLNames::alignAttr, WTF::AtomString::fromUTF8(value));
 }
 
-gchar* webkit_dom_html_table_cell_element_get_axis(WebKitDOMHTMLTableCellElement* self)
+gchar* webkit_dom_html_table_cell_element_get_axis(CyberKitDOMHTMLTableCellElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_TABLE_CELL_ELEMENT(self), 0);
-    WebCore::HTMLTableCellElement* item = WebKit::core(self);
-    gchar* result = convertToUTF8String(item->attributeWithoutSynchronization(WebCore::HTMLNames::axisAttr));
+    CyberCore::HTMLTableCellElement* item = CyberKit::core(self);
+    gchar* result = convertToUTF8String(item->attributeWithoutSynchronization(CyberCore::HTMLNames::axisAttr));
     return result;
 }
 
-void webkit_dom_html_table_cell_element_set_axis(WebKitDOMHTMLTableCellElement* self, const gchar* value)
+void webkit_dom_html_table_cell_element_set_axis(CyberKitDOMHTMLTableCellElement* self, const gchar* value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_TABLE_CELL_ELEMENT(self));
     g_return_if_fail(value);
-    WebCore::HTMLTableCellElement* item = WebKit::core(self);
-    item->setAttributeWithoutSynchronization(WebCore::HTMLNames::axisAttr, WTF::AtomString::fromUTF8(value));
+    CyberCore::HTMLTableCellElement* item = CyberKit::core(self);
+    item->setAttributeWithoutSynchronization(CyberCore::HTMLNames::axisAttr, WTF::AtomString::fromUTF8(value));
 }
 
-gchar* webkit_dom_html_table_cell_element_get_bg_color(WebKitDOMHTMLTableCellElement* self)
+gchar* webkit_dom_html_table_cell_element_get_bg_color(CyberKitDOMHTMLTableCellElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_TABLE_CELL_ELEMENT(self), 0);
-    WebCore::HTMLTableCellElement* item = WebKit::core(self);
-    gchar* result = convertToUTF8String(item->attributeWithoutSynchronization(WebCore::HTMLNames::bgcolorAttr));
+    CyberCore::HTMLTableCellElement* item = CyberKit::core(self);
+    gchar* result = convertToUTF8String(item->attributeWithoutSynchronization(CyberCore::HTMLNames::bgcolorAttr));
     return result;
 }
 
-void webkit_dom_html_table_cell_element_set_bg_color(WebKitDOMHTMLTableCellElement* self, const gchar* value)
+void webkit_dom_html_table_cell_element_set_bg_color(CyberKitDOMHTMLTableCellElement* self, const gchar* value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_TABLE_CELL_ELEMENT(self));
     g_return_if_fail(value);
-    WebCore::HTMLTableCellElement* item = WebKit::core(self);
-    item->setAttributeWithoutSynchronization(WebCore::HTMLNames::bgcolorAttr, WTF::AtomString::fromUTF8(value));
+    CyberCore::HTMLTableCellElement* item = CyberKit::core(self);
+    item->setAttributeWithoutSynchronization(CyberCore::HTMLNames::bgcolorAttr, WTF::AtomString::fromUTF8(value));
 }
 
-gchar* webkit_dom_html_table_cell_element_get_ch(WebKitDOMHTMLTableCellElement* self)
+gchar* webkit_dom_html_table_cell_element_get_ch(CyberKitDOMHTMLTableCellElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_TABLE_CELL_ELEMENT(self), 0);
-    WebCore::HTMLTableCellElement* item = WebKit::core(self);
-    gchar* result = convertToUTF8String(item->attributeWithoutSynchronization(WebCore::HTMLNames::charAttr));
+    CyberCore::HTMLTableCellElement* item = CyberKit::core(self);
+    gchar* result = convertToUTF8String(item->attributeWithoutSynchronization(CyberCore::HTMLNames::charAttr));
     return result;
 }
 
-void webkit_dom_html_table_cell_element_set_ch(WebKitDOMHTMLTableCellElement* self, const gchar* value)
+void webkit_dom_html_table_cell_element_set_ch(CyberKitDOMHTMLTableCellElement* self, const gchar* value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_TABLE_CELL_ELEMENT(self));
     g_return_if_fail(value);
-    WebCore::HTMLTableCellElement* item = WebKit::core(self);
-    item->setAttributeWithoutSynchronization(WebCore::HTMLNames::charAttr, WTF::AtomString::fromUTF8(value));
+    CyberCore::HTMLTableCellElement* item = CyberKit::core(self);
+    item->setAttributeWithoutSynchronization(CyberCore::HTMLNames::charAttr, WTF::AtomString::fromUTF8(value));
 }
 
-gchar* webkit_dom_html_table_cell_element_get_ch_off(WebKitDOMHTMLTableCellElement* self)
+gchar* webkit_dom_html_table_cell_element_get_ch_off(CyberKitDOMHTMLTableCellElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_TABLE_CELL_ELEMENT(self), 0);
-    WebCore::HTMLTableCellElement* item = WebKit::core(self);
-    gchar* result = convertToUTF8String(item->attributeWithoutSynchronization(WebCore::HTMLNames::charoffAttr));
+    CyberCore::HTMLTableCellElement* item = CyberKit::core(self);
+    gchar* result = convertToUTF8String(item->attributeWithoutSynchronization(CyberCore::HTMLNames::charoffAttr));
     return result;
 }
 
-void webkit_dom_html_table_cell_element_set_ch_off(WebKitDOMHTMLTableCellElement* self, const gchar* value)
+void webkit_dom_html_table_cell_element_set_ch_off(CyberKitDOMHTMLTableCellElement* self, const gchar* value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_TABLE_CELL_ELEMENT(self));
     g_return_if_fail(value);
-    WebCore::HTMLTableCellElement* item = WebKit::core(self);
-    item->setAttributeWithoutSynchronization(WebCore::HTMLNames::charoffAttr, WTF::AtomString::fromUTF8(value));
+    CyberCore::HTMLTableCellElement* item = CyberKit::core(self);
+    item->setAttributeWithoutSynchronization(CyberCore::HTMLNames::charoffAttr, WTF::AtomString::fromUTF8(value));
 }
 
-glong webkit_dom_html_table_cell_element_get_col_span(WebKitDOMHTMLTableCellElement* self)
+glong webkit_dom_html_table_cell_element_get_col_span(CyberKitDOMHTMLTableCellElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_TABLE_CELL_ELEMENT(self), 0);
-    WebCore::HTMLTableCellElement* item = WebKit::core(self);
+    CyberCore::HTMLTableCellElement* item = CyberKit::core(self);
     glong result = item->colSpan();
     return result;
 }
 
-void webkit_dom_html_table_cell_element_set_col_span(WebKitDOMHTMLTableCellElement* self, glong value)
+void webkit_dom_html_table_cell_element_set_col_span(CyberKitDOMHTMLTableCellElement* self, glong value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_TABLE_CELL_ELEMENT(self));
-    WebCore::HTMLTableCellElement* item = WebKit::core(self);
+    CyberCore::HTMLTableCellElement* item = CyberKit::core(self);
     item->setColSpan(value);
 }
 
-glong webkit_dom_html_table_cell_element_get_row_span(WebKitDOMHTMLTableCellElement* self)
+glong webkit_dom_html_table_cell_element_get_row_span(CyberKitDOMHTMLTableCellElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_TABLE_CELL_ELEMENT(self), 0);
-    WebCore::HTMLTableCellElement* item = WebKit::core(self);
+    CyberCore::HTMLTableCellElement* item = CyberKit::core(self);
     glong result = item->rowSpanForBindings();
     return result;
 }
 
-void webkit_dom_html_table_cell_element_set_row_span(WebKitDOMHTMLTableCellElement* self, glong value)
+void webkit_dom_html_table_cell_element_set_row_span(CyberKitDOMHTMLTableCellElement* self, glong value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_TABLE_CELL_ELEMENT(self));
-    WebCore::HTMLTableCellElement* item = WebKit::core(self);
+    CyberCore::HTMLTableCellElement* item = CyberKit::core(self);
     item->setRowSpanForBindings(value);
 }
 
-gchar* webkit_dom_html_table_cell_element_get_headers(WebKitDOMHTMLTableCellElement* self)
+gchar* webkit_dom_html_table_cell_element_get_headers(CyberKitDOMHTMLTableCellElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_TABLE_CELL_ELEMENT(self), 0);
-    WebCore::HTMLTableCellElement* item = WebKit::core(self);
-    gchar* result = convertToUTF8String(item->attributeWithoutSynchronization(WebCore::HTMLNames::headersAttr));
+    CyberCore::HTMLTableCellElement* item = CyberKit::core(self);
+    gchar* result = convertToUTF8String(item->attributeWithoutSynchronization(CyberCore::HTMLNames::headersAttr));
     return result;
 }
 
-void webkit_dom_html_table_cell_element_set_headers(WebKitDOMHTMLTableCellElement* self, const gchar* value)
+void webkit_dom_html_table_cell_element_set_headers(CyberKitDOMHTMLTableCellElement* self, const gchar* value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_TABLE_CELL_ELEMENT(self));
     g_return_if_fail(value);
-    WebCore::HTMLTableCellElement* item = WebKit::core(self);
-    item->setAttributeWithoutSynchronization(WebCore::HTMLNames::headersAttr, WTF::AtomString::fromUTF8(value));
+    CyberCore::HTMLTableCellElement* item = CyberKit::core(self);
+    item->setAttributeWithoutSynchronization(CyberCore::HTMLNames::headersAttr, WTF::AtomString::fromUTF8(value));
 }
 
-gchar* webkit_dom_html_table_cell_element_get_height(WebKitDOMHTMLTableCellElement* self)
+gchar* webkit_dom_html_table_cell_element_get_height(CyberKitDOMHTMLTableCellElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_TABLE_CELL_ELEMENT(self), 0);
-    WebCore::HTMLTableCellElement* item = WebKit::core(self);
-    gchar* result = convertToUTF8String(item->attributeWithoutSynchronization(WebCore::HTMLNames::heightAttr));
+    CyberCore::HTMLTableCellElement* item = CyberKit::core(self);
+    gchar* result = convertToUTF8String(item->attributeWithoutSynchronization(CyberCore::HTMLNames::heightAttr));
     return result;
 }
 
-void webkit_dom_html_table_cell_element_set_height(WebKitDOMHTMLTableCellElement* self, const gchar* value)
+void webkit_dom_html_table_cell_element_set_height(CyberKitDOMHTMLTableCellElement* self, const gchar* value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_TABLE_CELL_ELEMENT(self));
     g_return_if_fail(value);
-    WebCore::HTMLTableCellElement* item = WebKit::core(self);
-    item->setAttributeWithoutSynchronization(WebCore::HTMLNames::heightAttr, WTF::AtomString::fromUTF8(value));
+    CyberCore::HTMLTableCellElement* item = CyberKit::core(self);
+    item->setAttributeWithoutSynchronization(CyberCore::HTMLNames::heightAttr, WTF::AtomString::fromUTF8(value));
 }
 
-gboolean webkit_dom_html_table_cell_element_get_no_wrap(WebKitDOMHTMLTableCellElement* self)
+gboolean webkit_dom_html_table_cell_element_get_no_wrap(CyberKitDOMHTMLTableCellElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_TABLE_CELL_ELEMENT(self), FALSE);
-    WebCore::HTMLTableCellElement* item = WebKit::core(self);
-    gboolean result = item->hasAttributeWithoutSynchronization(WebCore::HTMLNames::nowrapAttr);
+    CyberCore::HTMLTableCellElement* item = CyberKit::core(self);
+    gboolean result = item->hasAttributeWithoutSynchronization(CyberCore::HTMLNames::nowrapAttr);
     return result;
 }
 
-void webkit_dom_html_table_cell_element_set_no_wrap(WebKitDOMHTMLTableCellElement* self, gboolean value)
+void webkit_dom_html_table_cell_element_set_no_wrap(CyberKitDOMHTMLTableCellElement* self, gboolean value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_TABLE_CELL_ELEMENT(self));
-    WebCore::HTMLTableCellElement* item = WebKit::core(self);
-    item->setBooleanAttribute(WebCore::HTMLNames::nowrapAttr, value);
+    CyberCore::HTMLTableCellElement* item = CyberKit::core(self);
+    item->setBooleanAttribute(CyberCore::HTMLNames::nowrapAttr, value);
 }
 
-gchar* webkit_dom_html_table_cell_element_get_v_align(WebKitDOMHTMLTableCellElement* self)
+gchar* webkit_dom_html_table_cell_element_get_v_align(CyberKitDOMHTMLTableCellElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_TABLE_CELL_ELEMENT(self), 0);
-    WebCore::HTMLTableCellElement* item = WebKit::core(self);
-    gchar* result = convertToUTF8String(item->attributeWithoutSynchronization(WebCore::HTMLNames::valignAttr));
+    CyberCore::HTMLTableCellElement* item = CyberKit::core(self);
+    gchar* result = convertToUTF8String(item->attributeWithoutSynchronization(CyberCore::HTMLNames::valignAttr));
     return result;
 }
 
-void webkit_dom_html_table_cell_element_set_v_align(WebKitDOMHTMLTableCellElement* self, const gchar* value)
+void webkit_dom_html_table_cell_element_set_v_align(CyberKitDOMHTMLTableCellElement* self, const gchar* value)
 {
-    WebCore::JSMainThreadNullState state;
-    g_return_if_fail(WEBKIT_DOM_IS_HTML_TABLE_CELL_ELEMENT(self));
-    g_return_if_fail(value);
-    WebCore::HTMLTableCellElement* item = WebKit::core(self);
-    item->setAttributeWithoutSynchronization(WebCore::HTMLNames::valignAttr, WTF::AtomString::fromUTF8(value));
-}
-
-gchar* webkit_dom_html_table_cell_element_get_width(WebKitDOMHTMLTableCellElement* self)
-{
-    WebCore::JSMainThreadNullState state;
-    g_return_val_if_fail(WEBKIT_DOM_IS_HTML_TABLE_CELL_ELEMENT(self), 0);
-    WebCore::HTMLTableCellElement* item = WebKit::core(self);
-    gchar* result = convertToUTF8String(item->attributeWithoutSynchronization(WebCore::HTMLNames::widthAttr));
-    return result;
-}
-
-void webkit_dom_html_table_cell_element_set_width(WebKitDOMHTMLTableCellElement* self, const gchar* value)
-{
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_TABLE_CELL_ELEMENT(self));
     g_return_if_fail(value);
-    WebCore::HTMLTableCellElement* item = WebKit::core(self);
-    item->setAttributeWithoutSynchronization(WebCore::HTMLNames::widthAttr, WTF::AtomString::fromUTF8(value));
+    CyberCore::HTMLTableCellElement* item = CyberKit::core(self);
+    item->setAttributeWithoutSynchronization(CyberCore::HTMLNames::valignAttr, WTF::AtomString::fromUTF8(value));
 }
 
-gchar* webkit_dom_html_table_cell_element_get_abbr(WebKitDOMHTMLTableCellElement* self)
+gchar* webkit_dom_html_table_cell_element_get_width(CyberKitDOMHTMLTableCellElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_TABLE_CELL_ELEMENT(self), 0);
-    WebCore::HTMLTableCellElement* item = WebKit::core(self);
-    gchar* result = convertToUTF8String(item->attributeWithoutSynchronization(WebCore::HTMLNames::abbrAttr));
+    CyberCore::HTMLTableCellElement* item = CyberKit::core(self);
+    gchar* result = convertToUTF8String(item->attributeWithoutSynchronization(CyberCore::HTMLNames::widthAttr));
     return result;
 }
 
-void webkit_dom_html_table_cell_element_set_abbr(WebKitDOMHTMLTableCellElement* self, const gchar* value)
+void webkit_dom_html_table_cell_element_set_width(CyberKitDOMHTMLTableCellElement* self, const gchar* value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_TABLE_CELL_ELEMENT(self));
     g_return_if_fail(value);
-    WebCore::HTMLTableCellElement* item = WebKit::core(self);
-    item->setAttributeWithoutSynchronization(WebCore::HTMLNames::abbrAttr, WTF::AtomString::fromUTF8(value));
+    CyberCore::HTMLTableCellElement* item = CyberKit::core(self);
+    item->setAttributeWithoutSynchronization(CyberCore::HTMLNames::widthAttr, WTF::AtomString::fromUTF8(value));
 }
 
-gchar* webkit_dom_html_table_cell_element_get_scope(WebKitDOMHTMLTableCellElement* self)
+gchar* webkit_dom_html_table_cell_element_get_abbr(CyberKitDOMHTMLTableCellElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_TABLE_CELL_ELEMENT(self), 0);
-    WebCore::HTMLTableCellElement* item = WebKit::core(self);
+    CyberCore::HTMLTableCellElement* item = CyberKit::core(self);
+    gchar* result = convertToUTF8String(item->attributeWithoutSynchronization(CyberCore::HTMLNames::abbrAttr));
+    return result;
+}
+
+void webkit_dom_html_table_cell_element_set_abbr(CyberKitDOMHTMLTableCellElement* self, const gchar* value)
+{
+    CyberCore::JSMainThreadNullState state;
+    g_return_if_fail(WEBKIT_DOM_IS_HTML_TABLE_CELL_ELEMENT(self));
+    g_return_if_fail(value);
+    CyberCore::HTMLTableCellElement* item = CyberKit::core(self);
+    item->setAttributeWithoutSynchronization(CyberCore::HTMLNames::abbrAttr, WTF::AtomString::fromUTF8(value));
+}
+
+gchar* webkit_dom_html_table_cell_element_get_scope(CyberKitDOMHTMLTableCellElement* self)
+{
+    CyberCore::JSMainThreadNullState state;
+    g_return_val_if_fail(WEBKIT_DOM_IS_HTML_TABLE_CELL_ELEMENT(self), 0);
+    CyberCore::HTMLTableCellElement* item = CyberKit::core(self);
     gchar* result = convertToUTF8String(item->scope());
     return result;
 }
 
-void webkit_dom_html_table_cell_element_set_scope(WebKitDOMHTMLTableCellElement* self, const gchar* value)
+void webkit_dom_html_table_cell_element_set_scope(CyberKitDOMHTMLTableCellElement* self, const gchar* value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_TABLE_CELL_ELEMENT(self));
     g_return_if_fail(value);
-    WebCore::HTMLTableCellElement* item = WebKit::core(self);
+    CyberCore::HTMLTableCellElement* item = CyberKit::core(self);
     item->setScope(WTF::AtomString::fromUTF8(value));
 }
 

@@ -41,7 +41,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/StackStats.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(RenderRubyRun);
 
@@ -277,4 +277,4 @@ bool RenderRubyRun::canBreakBefore(const LazyLineBreakIterator& iterator) const
     return rubyText->canBreakBefore(iterator);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

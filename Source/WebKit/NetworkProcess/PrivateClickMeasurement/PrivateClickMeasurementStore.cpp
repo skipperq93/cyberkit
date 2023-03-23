@@ -77,7 +77,7 @@ void Store::postTaskReply(WTF::Function<void()>&& reply) const
     RunLoop::main().dispatch(WTFMove(reply));
 }
 
-void Store::insertPrivateClickMeasurement(WebCore::PrivateClickMeasurement&& attribution, PrivateClickMeasurementAttributionType attributionType, CompletionHandler<void()>&& completionHandler)
+void Store::insertPrivateClickMeasurement(CyberCore::PrivateClickMeasurement&& attribution, PrivateClickMeasurementAttributionType attributionType, CompletionHandler<void()>&& completionHandler)
 {
     postTask([this, protectedThis = Ref { *this }, attribution = WTFMove(attribution), attributionType, completionHandler = WTFMove(completionHandler)] () mutable {
         if (m_database)
@@ -94,7 +94,7 @@ void Store::markAllUnattributedPrivateClickMeasurementAsExpiredForTesting()
     });
 }
 
-void Store::attributePrivateClickMeasurement(WebCore::PCM::SourceSite&& sourceSite, WebCore::PCM::AttributionDestinationSite&& destinationSite, const ApplicationBundleIdentifier& applicationBundleIdentifier, WebCore::PCM::AttributionTriggerData&& attributionTriggerData, WebCore::PrivateClickMeasurement::IsRunningLayoutTest isRunningTest, CompletionHandler<void(std::optional<WebCore::PCM::AttributionSecondsUntilSendData>&&, DebugInfo&&)>&& completionHandler)
+void Store::attributePrivateClickMeasurement(CyberCore::PCM::SourceSite&& sourceSite, CyberCore::PCM::AttributionDestinationSite&& destinationSite, const ApplicationBundleIdentifier& applicationBundleIdentifier, CyberCore::PCM::AttributionTriggerData&& attributionTriggerData, CyberCore::PrivateClickMeasurement::IsRunningLayoutTest isRunningTest, CompletionHandler<void(std::optional<CyberCore::PCM::AttributionSecondsUntilSendData>&&, DebugInfo&&)>&& completionHandler)
 {
     postTask([this, protectedThis = Ref { *this }, sourceSite = WTFMove(sourceSite).isolatedCopy(), destinationSite = WTFMove(destinationSite).isolatedCopy(), applicationBundleIdentifier = applicationBundleIdentifier.isolatedCopy(), attributionTriggerData = WTFMove(attributionTriggerData), isRunningTest, completionHandler = WTFMove(completionHandler)] () mutable {
         if (!m_database) {
@@ -123,10 +123,10 @@ void Store::privateClickMeasurementToStringForTesting(CompletionHandler<void(Str
     });
 }
 
-void Store::allAttributedPrivateClickMeasurement(CompletionHandler<void(Vector<WebCore::PrivateClickMeasurement>&&)>&& completionHandler)
+void Store::allAttributedPrivateClickMeasurement(CompletionHandler<void(Vector<CyberCore::PrivateClickMeasurement>&&)>&& completionHandler)
 {
     postTask([this, protectedThis = Ref { *this }, completionHandler = WTFMove(completionHandler)]() mutable {
-        Vector<WebCore::PrivateClickMeasurement> convertedAttributions;
+        Vector<CyberCore::PrivateClickMeasurement> convertedAttributions;
         if (m_database)
             convertedAttributions = m_database->allAttributedPrivateClickMeasurement();
         postTaskReply([convertedAttributions = crossThreadCopy(WTFMove(convertedAttributions)), completionHandler = WTFMove(completionHandler)]() mutable {
@@ -153,7 +153,7 @@ void Store::clearPrivateClickMeasurement(CompletionHandler<void()>&& completionH
     });
 }
 
-void Store::clearPrivateClickMeasurementForRegistrableDomain(WebCore::RegistrableDomain&& domain, CompletionHandler<void()>&& completionHandler)
+void Store::clearPrivateClickMeasurementForRegistrableDomain(CyberCore::RegistrableDomain&& domain, CompletionHandler<void()>&& completionHandler)
 {
     postTask([this, protectedThis = Ref { *this }, domain = WTFMove(domain).isolatedCopy(), completionHandler = WTFMove(completionHandler)] () mutable {
         if (m_database)
@@ -170,7 +170,7 @@ void Store::clearExpiredPrivateClickMeasurement()
     });
 }
 
-void Store::clearSentAttribution(WebCore::PrivateClickMeasurement&& attributionToClear, WebCore::PCM::AttributionReportEndpoint attributionReportEndpoint)
+void Store::clearSentAttribution(CyberCore::PrivateClickMeasurement&& attributionToClear, CyberCore::PCM::AttributionReportEndpoint attributionReportEndpoint)
 {
     postTask([this, protectedThis = Ref { *this }, attributionToClear = WTFMove(attributionToClear).isolatedCopy(), attributionReportEndpoint]() mutable {
         if (m_database)

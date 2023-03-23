@@ -67,7 +67,7 @@ typedef enum {
     WebFrameLoadTypeReload,
     WebFrameLoadTypeReloadAllowingStaleData,
     WebFrameLoadTypeSame,               // user loads same URL again (but not reload button)
-    WebFrameLoadTypeInternal,           // maps to WebCore::FrameLoadTypeRedirectWithLockedBackForwardList
+    WebFrameLoadTypeInternal,           // maps to CyberCore::FrameLoadTypeRedirectWithLockedBackForwardList
     WebFrameLoadTypeReplace,
     WebFrameLoadTypeReloadFromOrigin,
 } WebFrameLoadType;
@@ -176,7 +176,7 @@ typedef enum {
 - (id)dictationResultMetadataForRange:(DOMRange *)range;
 - (void)recursiveSetUpdateAppearanceEnabled:(BOOL)enabled;
 
-// WebCoreFrameBridge methods used by iOS applications and frameworks
+// CyberCoreFrameBridge methods used by iOS applications and frameworks
 + (NSString *)stringWithData:(NSData *)data textEncodingName:(NSString *)textEncodingName;
 
 - (NSRect)caretRectAtNode:(DOMNode *)node offset:(int)offset affinity:(NSSelectionAffinity)affinity;

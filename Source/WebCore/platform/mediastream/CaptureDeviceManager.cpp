@@ -36,7 +36,7 @@
 #include <wtf/MainThread.h>
 #include <wtf/text/StringHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 CaptureDeviceManager::~CaptureDeviceManager() = default;
 
@@ -67,6 +67,6 @@ void CaptureDeviceManager::deviceChanged()
     });
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM)

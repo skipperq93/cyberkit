@@ -38,7 +38,7 @@
 OBJC_CLASS QLPreviewConverter;
 OBJC_CLASS WebPreviewConverterDelegate;
 
-namespace WebCore {
+namespace CyberCore {
 
 class ResourceError;
 class ResourceRequest;
@@ -132,6 +132,6 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(PREVIEW_CONVERTER)

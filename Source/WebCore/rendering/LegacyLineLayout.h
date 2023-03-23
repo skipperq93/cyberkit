@@ -31,7 +31,7 @@
 #include "RenderStyleConstants.h"
 #include "TrailingObjects.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class BidiContext;
 class FloatingObject;

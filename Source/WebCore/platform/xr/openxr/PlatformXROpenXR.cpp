@@ -29,7 +29,7 @@
 #include <wtf/NeverDestroyed.h>
 #include <wtf/threads/BinarySemaphore.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 namespace PlatformXR {
 
@@ -76,7 +76,7 @@ void OpenXRDevice::initialize(CompletionHandler<void()>&& callback)
     });
 }
 
-WebCore::IntSize OpenXRDevice::recommendedResolution(SessionMode mode)
+CyberCore::IntSize OpenXRDevice::recommendedResolution(SessionMode mode)
 {
     auto configType = toXrViewConfigurationType(mode);
     auto viewsIterator = m_configurationViews.find(configType);
@@ -85,7 +85,7 @@ WebCore::IntSize OpenXRDevice::recommendedResolution(SessionMode mode)
     return Device::recommendedResolution(mode);
 }
 
-void OpenXRDevice::initializeTrackingAndRendering(const WebCore::SecurityOriginData&, SessionMode mode, const Device::FeatureList&)
+void OpenXRDevice::initializeTrackingAndRendering(const CyberCore::SecurityOriginData&, SessionMode mode, const Device::FeatureList&)
 {
     m_queue.dispatch([this, protectedThis = Ref { *this }, mode]() {
         ASSERT(m_instance != XR_NULL_HANDLE);
@@ -563,7 +563,7 @@ void OpenXRDevice::updateStageParameters()
     if (XR_SUCCEEDED(xrGetReferenceSpaceBoundsRect(m_session, XR_REFERENCE_SPACE_TYPE_STAGE, &bounds))) {
         // https://immersive-web.github.io/webxr/#xrboundedreferencespace-native-bounds-geometry
         // Points MUST be given in a clockwise order as viewed from above, looking towards the negative end of the Y axis.
-        m_stageParameters.bounds = Vector<WebCore::FloatPoint> {
+        m_stageParameters.bounds = Vector<CyberCore::FloatPoint> {
             { bounds.width * 0.5f, -bounds.height * 0.5f },
             { bounds.width * 0.5f, bounds.height * 0.5f },
             { -bounds.width * 0.5f, bounds.height * 0.5f },

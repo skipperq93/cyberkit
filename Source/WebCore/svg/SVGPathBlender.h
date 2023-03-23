@@ -22,7 +22,7 @@
 
 #include "SVGPathConsumer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 enum FloatBlendMode {
     BlendHorizontal,
@@ -74,4 +74,4 @@ private:
     bool m_isInFirstHalfOfAnimation { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

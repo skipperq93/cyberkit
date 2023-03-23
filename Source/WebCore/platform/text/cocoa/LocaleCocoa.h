@@ -40,7 +40,7 @@ OBJC_CLASS NSCalendar;
 OBJC_CLASS NSDateFormatter;
 OBJC_CLASS NSLocale;
 
-namespace WebCore {
+namespace CyberCore {
 
 class DateComponents;
 
@@ -97,4 +97,4 @@ private:
     bool m_didInitializeNumberData;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

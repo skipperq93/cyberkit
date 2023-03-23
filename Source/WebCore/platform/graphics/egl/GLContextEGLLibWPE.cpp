@@ -38,7 +38,7 @@
 
 #include <wpe/wpe-egl.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 GLContextEGL::GLContextEGL(PlatformDisplay& display, EGLContext context, EGLSurface surface, EGLConfig config, struct wpe_renderer_backend_egl_offscreen_target* target)
     : GLContext(display)
@@ -99,6 +99,6 @@ void GLContextEGL::destroyWPETarget()
         wpe_renderer_backend_egl_offscreen_target_destroy(m_wpeTarget);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(EGL) && USE(WPE_RENDERER)

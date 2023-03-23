@@ -84,10 +84,10 @@
 
 constexpr Seconds progressAnimationRepeatInterval = 33_ms; // 30 fps
 
-@interface WebCoreRenderThemeNotificationObserver : NSObject
+@interface CyberCoreRenderThemeNotificationObserver : NSObject
 @end
 
-@implementation WebCoreRenderThemeNotificationObserver
+@implementation CyberCoreRenderThemeNotificationObserver
 
 - (id)init
 {
@@ -107,12 +107,12 @@ constexpr Seconds progressAnimationRepeatInterval = 33_ms; // 30 fps
 - (void)systemColorsDidChange:(NSNotification *)notification
 {
     UNUSED_PARAM(notification);
-    WebCore::RenderTheme::singleton().platformColorsDidChange();
+    CyberCore::RenderTheme::singleton().platformColorsDidChange();
 }
 
 @end
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -182,7 +182,7 @@ bool RenderThemeMac::canPaint(const PaintInfo& paintInfo, const Settings&, Style
 }
 
 RenderThemeMac::RenderThemeMac()
-    : m_notificationObserver(adoptNS([[WebCoreRenderThemeNotificationObserver alloc] init]))
+    : m_notificationObserver(adoptNS([[CyberCoreRenderThemeNotificationObserver alloc] init]))
 {
 }
 
@@ -728,7 +728,7 @@ Color RenderThemeMac::systemColor(CSSValueID cssValueID, OptionSet<StyleColorOpt
 
 bool RenderThemeMac::usesTestModeFocusRingColor() const
 {
-    return WebCore::usesTestModeFocusRingColor();
+    return CyberCore::usesTestModeFocusRingColor();
 }
 
 bool RenderThemeMac::isControlStyled(const RenderStyle& style, const RenderStyle& userAgentStyle) const
@@ -1391,7 +1391,7 @@ RetainPtr<NSImage> RenderThemeMac::iconForAttachment(const String& fileName, con
     if (fileName.isNull() && attachmentType.isNull() && title.isNull())
         return nil;
 
-    if (auto icon = WebCore::iconForAttachment(fileName, attachmentType, title))
+    if (auto icon = CyberCore::iconForAttachment(fileName, attachmentType, title))
         return icon->image();
 
     return nil;
@@ -1629,6 +1629,6 @@ bool RenderThemeMac::paintAttachment(const RenderObject& renderer, const PaintIn
 
 #endif // ENABLE(ATTACHMENT_ELEMENT)
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(MAC)

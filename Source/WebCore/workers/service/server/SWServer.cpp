@@ -52,7 +52,7 @@
 #include <wtf/NeverDestroyed.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static const unsigned defaultMaxRegistrationCount = 3;
 
@@ -197,7 +197,7 @@ void SWServer::addRegistrationFromStore(ServiceWorkerContextData&& data, Complet
 
     LOG(ServiceWorker, "Adding registration from store for %s", data.registration.key.loggingString().utf8().data());
 
-    auto registrableDomain = WebCore::RegistrableDomain(data.scriptURL);
+    auto registrableDomain = CyberCore::RegistrableDomain(data.scriptURL);
     validateRegistrationDomain(registrableDomain, ServiceWorkerJobType::Register, m_scopeToRegistrationMap.contains(data.registration.key), [this, weakThis = WeakPtr { *this }, data = WTFMove(data), completionHandler = WTFMove(completionHandler)] (bool isValid) mutable {
         ASSERT(isMainThread());
         if (!weakThis)
@@ -429,7 +429,7 @@ bool SWServer::allowLoopbackIPAddress(const String& domain)
     return true;
 }
 
-void SWServer::validateRegistrationDomain(WebCore::RegistrableDomain domain, ServiceWorkerJobType type, bool isRegisteredDomain, CompletionHandler<void(bool)>&& completionHandler)
+void SWServer::validateRegistrationDomain(CyberCore::RegistrableDomain domain, ServiceWorkerJobType type, bool isRegisteredDomain, CompletionHandler<void(bool)>&& completionHandler)
 {
     bool jobTypeAllowed = type != ServiceWorkerJobType::Register || isRegisteredDomain;
     if (m_hasServiceWorkerEntitlement || m_hasReceivedAppBoundDomains) {
@@ -451,7 +451,7 @@ void SWServer::scheduleJob(ServiceWorkerJobData&& jobData)
 {
     ASSERT(m_connections.contains(jobData.connectionIdentifier()) || jobData.connectionIdentifier() == Process::identifier());
 
-    validateRegistrationDomain(WebCore::RegistrableDomain(jobData.scriptURL), jobData.type, m_scopeToRegistrationMap.contains(jobData.registrationKey()), [this, weakThis = WeakPtr { *this }, jobData = WTFMove(jobData)] (bool isValid) mutable {
+    validateRegistrationDomain(CyberCore::RegistrableDomain(jobData.scriptURL), jobData.type, m_scopeToRegistrationMap.contains(jobData.registrationKey()), [this, weakThis = WeakPtr { *this }, jobData = WTFMove(jobData)] (bool isValid) mutable {
         if (!weakThis)
             return;
         if (m_hasServiceWorkerEntitlement || isValid) {
@@ -1644,6 +1644,6 @@ void SWServer::Connection::retrieveRecordResponseBody(BackgroundFetchRecordIdent
     callback({ });
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

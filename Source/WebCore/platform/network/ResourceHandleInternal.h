@@ -49,9 +49,9 @@ typedef const struct __CFURLStorageSession* CFURLStorageSessionRef;
 
 // The allocations and releases in ResourceHandleInternal are
 // Cocoa-exception-free (either simple Foundation classes or
-// WebCoreResourceLoaderImp which avoids doing work in dealloc).
+// CyberCoreResourceLoaderImp which avoids doing work in dealloc).
 
-namespace WebCore {
+namespace CyberCore {
 
 DECLARE_ALLOCATOR_WITH_HEAP_IDENTIFIER(ResourceHandleInternal);
 class ResourceHandleInternal {
@@ -138,4 +138,4 @@ public:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -25,11 +25,11 @@
 #include <CyberCore/UserMediaRequest.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
-void UserMediaPermissionRequestManagerProxy::platformValidateUserMediaRequestConstraints(RealtimeMediaSourceCenter::ValidConstraintsHandler&& validHandler, RealtimeMediaSourceCenter::InvalidConstraintsHandler&& invalidHandler, WebCore::MediaDeviceHashSalts&& deviceIDHashSalts)
+void UserMediaPermissionRequestManagerProxy::platformValidateUserMediaRequestConstraints(RealtimeMediaSourceCenter::ValidConstraintsHandler&& validHandler, RealtimeMediaSourceCenter::InvalidConstraintsHandler&& invalidHandler, CyberCore::MediaDeviceHashSalts&& deviceIDHashSalts)
 {
-    m_page.process().connection()->sendWithAsyncReply(Messages::UserMediaCaptureManager::ValidateUserMediaRequestConstraints(m_currentUserMediaRequest->userRequest(), WTFMove(deviceIDHashSalts)), [validHandler = WTFMove(validHandler), invalidHandler = WTFMove(invalidHandler)](std::optional<String> invalidConstraint, Vector<WebCore::CaptureDevice> audioDevices, Vector<WebCore::CaptureDevice> videoDevices) mutable {
+    m_page.process().connection()->sendWithAsyncReply(Messages::UserMediaCaptureManager::ValidateUserMediaRequestConstraints(m_currentUserMediaRequest->userRequest(), WTFMove(deviceIDHashSalts)), [validHandler = WTFMove(validHandler), invalidHandler = WTFMove(invalidHandler)](std::optional<String> invalidConstraint, Vector<CyberCore::CaptureDevice> audioDevices, Vector<CyberCore::CaptureDevice> videoDevices) mutable {
         if (invalidConstraint)
             invalidHandler(*invalidConstraint);
         else

@@ -30,8 +30,8 @@
 
 #include <CyberCore/SecurityOrigin.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 bool WebSWOriginTable::contains(const SecurityOriginData& origin) const
 {
@@ -47,6 +47,6 @@ void WebSWOriginTable::setSharedMemory(const SharedMemory::Handle& handle)
     m_serviceWorkerOriginTable.setSharedMemory(sharedMemory.releaseNonNull());
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(SERVICE_WORKER)

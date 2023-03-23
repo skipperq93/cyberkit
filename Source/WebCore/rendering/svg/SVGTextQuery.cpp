@@ -32,7 +32,7 @@
 
 #include <wtf/MathExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // Base structure for callback user data
 struct SVGTextQuery::Data {

@@ -33,14 +33,14 @@
 #import <AVFoundation/AVFoundation.h>
 #import <CyberCore/GraphicsLayerCA.h>
 #import <CyberCore/PlatformCALayerCocoa.h>
-#import <CyberCore/WebCoreCALayerExtras.h>
+#import <CyberCore/CyberCoreCALayerExtras.h>
 #import <CyberCore/WebLayer.h>
 #import <wtf/RetainPtr.h>
 
 #import <pal/cocoa/AVFoundationSoftLink.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 static NSString * const platformCALayerPointer = @"WKPlatformCALayer";
 
@@ -107,7 +107,7 @@ void PlatformCALayerRemoteCustom::populateCreationProperties(RemoteLayerTreeTran
     properties.preservesFlip = YES;
 }
 
-Ref<WebCore::PlatformCALayer> PlatformCALayerRemoteCustom::clone(PlatformCALayerClient* owner) const
+Ref<CyberCore::PlatformCALayer> PlatformCALayerRemoteCustom::clone(PlatformCALayerClient* owner) const
 {
     RetainPtr<CALayer> clonedLayer;
     bool copyContents = true;
@@ -159,4 +159,4 @@ void PlatformCALayerRemoteCustom::setNeedsDisplay()
     PlatformCALayerRemote::setNeedsDisplay();
 }
 
-} // namespace WebKit
+} // namespace CyberKit

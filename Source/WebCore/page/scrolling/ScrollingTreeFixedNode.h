@@ -32,7 +32,7 @@
 #include "ScrollingTree.h"
 #include "ScrollingTreeNode.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class FixedPositionViewportConstraints;
 
@@ -53,7 +53,7 @@ protected:
     FixedPositionViewportConstraints m_constraints;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_SCROLLING_NODE(ScrollingTreeFixedNode, isFixedNode())
 

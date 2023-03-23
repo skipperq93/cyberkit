@@ -25,6 +25,6 @@
 
 #if ENABLE(APPLE_PAY)
 messages -> TestWithIfReceiver NotRefCounted {
-    CompletePaymentSession(struct WebCore::ApplePayPaymentAuthorizationResult result)
+    CompletePaymentSession(struct CyberCore::ApplePayPaymentAuthorizationResult result)
 }
 #endif

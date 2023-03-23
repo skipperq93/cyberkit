@@ -30,7 +30,7 @@
 #include "BackgroundFetchUIOptions.h"
 #include <wtf/CrossThreadCopier.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct BackgroundFetchOptions : BackgroundFetchUIOptions {
     BackgroundFetchOptions() = default;
@@ -46,6 +46,6 @@ struct BackgroundFetchOptions : BackgroundFetchUIOptions {
     uint64_t downloadTotal { 0 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

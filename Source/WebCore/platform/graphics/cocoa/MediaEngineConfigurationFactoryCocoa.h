@@ -27,7 +27,7 @@
 
 #if PLATFORM(COCOA)
 
-namespace WebCore {
+namespace CyberCore {
 
 struct MediaCapabilitiesDecodingInfo;
 struct MediaDecodingConfiguration;

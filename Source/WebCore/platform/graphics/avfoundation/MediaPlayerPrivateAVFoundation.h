@@ -37,7 +37,7 @@
 #include <wtf/LoggerHelper.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class InbandMetadataTextTrackPrivateAVF;
 class InbandTextTrackPrivateAVF;
@@ -384,19 +384,19 @@ private:
 
 String convertEnumerationToString(MediaPlayerPrivateAVFoundation::MediaRenderingMode);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
 template<typename Type>
 struct LogArgument;
 
-template<> struct EnumTraits<WebCore::MediaPlayerPrivateAVFoundation::MediaRenderingMode> {
+template<> struct EnumTraits<CyberCore::MediaPlayerPrivateAVFoundation::MediaRenderingMode> {
 using values = EnumValues<
-    WebCore::MediaPlayerPrivateAVFoundation::MediaRenderingMode,
-    WebCore::MediaPlayerPrivateAVFoundation::MediaRenderingMode::MediaRenderingNone,
-    WebCore::MediaPlayerPrivateAVFoundation::MediaRenderingMode::MediaRenderingToContext,
-    WebCore::MediaPlayerPrivateAVFoundation::MediaRenderingMode::MediaRenderingToLayer
+    CyberCore::MediaPlayerPrivateAVFoundation::MediaRenderingMode,
+    CyberCore::MediaPlayerPrivateAVFoundation::MediaRenderingMode::MediaRenderingNone,
+    CyberCore::MediaPlayerPrivateAVFoundation::MediaRenderingMode::MediaRenderingToContext,
+    CyberCore::MediaPlayerPrivateAVFoundation::MediaRenderingMode::MediaRenderingToLayer
     >;
 };
 

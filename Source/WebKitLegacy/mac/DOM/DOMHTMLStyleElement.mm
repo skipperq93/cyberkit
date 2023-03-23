@@ -37,69 +37,69 @@
 #import <wtf/GetPtr.h>
 #import <wtf/URL.h>
 
-#define IMPL static_cast<WebCore::HTMLStyleElement*>(reinterpret_cast<WebCore::Node*>(_internal))
+#define IMPL static_cast<CyberCore::HTMLStyleElement*>(reinterpret_cast<CyberCore::Node*>(_internal))
 
 @implementation DOMHTMLStyleElement
 
 - (BOOL)disabled
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->disabled();
 }
 
 - (void)setDisabled:(BOOL)newDisabled
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->setDisabled(newDisabled);
 }
 
 - (NSString *)media
 {
-    WebCore::JSMainThreadNullState state;
-    return IMPL->getAttribute(WebCore::HTMLNames::mediaAttr);
+    CyberCore::JSMainThreadNullState state;
+    return IMPL->getAttribute(CyberCore::HTMLNames::mediaAttr);
 }
 
 - (void)setMedia:(NSString *)newMedia
 {
-    WebCore::JSMainThreadNullState state;
-    IMPL->setAttributeWithoutSynchronization(WebCore::HTMLNames::mediaAttr, newMedia);
+    CyberCore::JSMainThreadNullState state;
+    IMPL->setAttributeWithoutSynchronization(CyberCore::HTMLNames::mediaAttr, newMedia);
 }
 
 - (NSString *)type
 {
-    WebCore::JSMainThreadNullState state;
-    return IMPL->getAttribute(WebCore::HTMLNames::typeAttr);
+    CyberCore::JSMainThreadNullState state;
+    return IMPL->getAttribute(CyberCore::HTMLNames::typeAttr);
 }
 
 - (void)setType:(NSString *)newType
 {
-    WebCore::JSMainThreadNullState state;
-    IMPL->setAttributeWithoutSynchronization(WebCore::HTMLNames::typeAttr, newType);
+    CyberCore::JSMainThreadNullState state;
+    IMPL->setAttributeWithoutSynchronization(CyberCore::HTMLNames::typeAttr, newType);
 }
 
 - (DOMStyleSheet *)sheet
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->sheet()));
 }
 
 - (NSString *)nonce
 {
-    WebCore::JSMainThreadNullState state;
-    return IMPL->getAttribute(WebCore::HTMLNames::nonceAttr);
+    CyberCore::JSMainThreadNullState state;
+    return IMPL->getAttribute(CyberCore::HTMLNames::nonceAttr);
 }
 
 - (void)setNonce:(NSString *)newNonce
 {
-    WebCore::JSMainThreadNullState state;
-    IMPL->setAttributeWithoutSynchronization(WebCore::HTMLNames::nonceAttr, newNonce);
+    CyberCore::JSMainThreadNullState state;
+    IMPL->setAttributeWithoutSynchronization(CyberCore::HTMLNames::nonceAttr, newNonce);
 }
 
 @end
 
-WebCore::HTMLStyleElement* core(DOMHTMLStyleElement *wrapper)
+CyberCore::HTMLStyleElement* core(DOMHTMLStyleElement *wrapper)
 {
-    return wrapper ? reinterpret_cast<WebCore::HTMLStyleElement*>(wrapper->_internal) : 0;
+    return wrapper ? reinterpret_cast<CyberCore::HTMLStyleElement*>(wrapper->_internal) : 0;
 }
 
 #undef IMPL

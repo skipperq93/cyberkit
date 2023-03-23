@@ -33,7 +33,7 @@
 #include <wtf/text/AtomStringHash.h>
 #include <wtf/text/StringHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 class ContentType;
 
 class GStreamerRegistryScanner {
@@ -201,6 +201,6 @@ private:
     HashMap<AtomString, RegistryLookupResult> m_encoderCodecMap;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(GSTREAMER)

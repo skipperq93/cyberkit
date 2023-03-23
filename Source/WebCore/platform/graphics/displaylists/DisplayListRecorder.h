@@ -34,7 +34,7 @@
 #include "TextFlags.h"
 #include <wtf/Noncopyable.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FloatPoint;
 class FloatRect;
@@ -291,4 +291,4 @@ private:
 };
 
 } // namespace DisplayList
-} // namespace WebCore
+} // namespace CyberCore

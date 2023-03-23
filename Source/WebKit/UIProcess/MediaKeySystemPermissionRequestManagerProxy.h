@@ -33,7 +33,7 @@
 #include <wtf/RunLoop.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 class SecurityOrigin;
 };
 
@@ -51,7 +51,7 @@ public:
 
     void invalidatePendingRequests();
 
-    Ref<MediaKeySystemPermissionRequestProxy> createRequestForFrame(WebCore::MediaKeySystemRequestIdentifier, WebCore::FrameIdentifier, Ref<WebCore::SecurityOrigin>&& topLevelDocumentOrigin, const String& keySystem);
+    Ref<MediaKeySystemPermissionRequestProxy> createRequestForFrame(CyberCore::MediaKeySystemRequestIdentifier, CyberCore::FrameIdentifier, Ref<CyberCore::SecurityOrigin>&& topLevelDocumentOrigin, const String& keySystem);
 
     void grantRequest(MediaKeySystemPermissionRequestProxy&);
     void denyRequest(MediaKeySystemPermissionRequestProxy&, const String& message = { });
@@ -64,7 +64,7 @@ private:
 
     WebPageProxy& m_page;
 
-    HashMap<WebCore::MediaKeySystemRequestIdentifier, RefPtr<MediaKeySystemPermissionRequestProxy>> m_pendingRequests;
+    HashMap<CyberCore::MediaKeySystemRequestIdentifier, RefPtr<MediaKeySystemPermissionRequestProxy>> m_pendingRequests;
     HashSet<String> m_validAuthorizationTokens;
 
 #if !RELEASE_LOG_DISABLED

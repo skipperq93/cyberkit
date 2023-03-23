@@ -35,7 +35,7 @@
 #include <gtk/gtk.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 enum DragTargetType { Markup, Text, Image, URIList, NetscapeURL, SmartPaste, Custom };
 

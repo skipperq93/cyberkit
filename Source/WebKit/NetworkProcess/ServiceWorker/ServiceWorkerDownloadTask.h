@@ -51,7 +51,7 @@ class WebSWServerToContextConnection;
 class ServiceWorkerDownloadTask : public NetworkDataTask, private FunctionDispatcher, private IPC::MessageReceiver {
     WTF_MAKE_FAST_ALLOCATED;
 public:
-    static Ref<ServiceWorkerDownloadTask> create(NetworkSession& session, NetworkDataTaskClient& client, WebSWServerToContextConnection& connection, WebCore::ServiceWorkerIdentifier serviceWorkerIdentifier, WebCore::SWServerConnectionIdentifier serverConnectionIdentifier, WebCore::FetchIdentifier fetchIdentifier, const WebCore::ResourceRequest& request, DownloadID downloadID)
+    static Ref<ServiceWorkerDownloadTask> create(NetworkSession& session, NetworkDataTaskClient& client, WebSWServerToContextConnection& connection, CyberCore::ServiceWorkerIdentifier serviceWorkerIdentifier, CyberCore::SWServerConnectionIdentifier serverConnectionIdentifier, CyberCore::FetchIdentifier fetchIdentifier, const CyberCore::ResourceRequest& request, DownloadID downloadID)
     {
         auto task = adoptRef(*new ServiceWorkerDownloadTask(session, client, connection, serviceWorkerIdentifier, serverConnectionIdentifier, fetchIdentifier, request, downloadID));
         task->startListeningForIPC();
@@ -59,20 +59,20 @@ public:
     }
     ~ServiceWorkerDownloadTask();
 
-    WebCore::FetchIdentifier fetchIdentifier() const { return m_fetchIdentifier; }
+    CyberCore::FetchIdentifier fetchIdentifier() const { return m_fetchIdentifier; }
     void contextClosed() { cancel(); }
     void start();
     void stop() { cancel(); }
 
 private:
-    ServiceWorkerDownloadTask(NetworkSession&, NetworkDataTaskClient&, WebSWServerToContextConnection&, WebCore::ServiceWorkerIdentifier, WebCore::SWServerConnectionIdentifier, WebCore::FetchIdentifier, const WebCore::ResourceRequest&, DownloadID);
+    ServiceWorkerDownloadTask(NetworkSession&, NetworkDataTaskClient&, WebSWServerToContextConnection&, CyberCore::ServiceWorkerIdentifier, CyberCore::SWServerConnectionIdentifier, CyberCore::FetchIdentifier, const CyberCore::ResourceRequest&, DownloadID);
     void startListeningForIPC();
 
     // IPC Message
     void didReceiveData(const IPC::SharedBufferReference&, uint64_t encodedDataLength);
     void didReceiveFormData(const IPC::FormDataReference&);
     void didFinish();
-    void didFail(WebCore::ResourceError&&);
+    void didFail(CyberCore::ResourceError&&);
 
     // NetworkDataTask
     void cancel() final;
@@ -88,13 +88,13 @@ private:
     void didReceiveMessage(IPC::Connection&, IPC::Decoder&) final;
 
     template<typename Message> bool sendToServiceWorker(Message&&);
-    void didFailDownload(std::optional<WebCore::ResourceError>&& = { });
+    void didFailDownload(std::optional<CyberCore::ResourceError>&& = { });
     void close();
 
     WeakPtr<WebSWServerToContextConnection> m_serviceWorkerConnection;
-    WebCore::ServiceWorkerIdentifier m_serviceWorkerIdentifier;
-    WebCore::SWServerConnectionIdentifier m_serverConnectionIdentifier;
-    WebCore::FetchIdentifier m_fetchIdentifier;
+    CyberCore::ServiceWorkerIdentifier m_serviceWorkerIdentifier;
+    CyberCore::SWServerConnectionIdentifier m_serverConnectionIdentifier;
+    CyberCore::FetchIdentifier m_fetchIdentifier;
     DownloadID m_downloadID;
     Ref<NetworkProcess> m_networkProcess;
     RefPtr<SandboxExtension> m_sandboxExtension;

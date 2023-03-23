@@ -31,7 +31,7 @@
 #include "BitmapTextureGL.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 static const Seconds releaseUnusedSecondsTolerance { 3_s };
 static const Seconds releaseUnusedTexturesTimerInterval { 500_ms };
@@ -97,4 +97,4 @@ RefPtr<BitmapTexture> BitmapTexturePool::createTexture(const BitmapTexture::Flag
 #endif
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -29,7 +29,7 @@
 #if ENABLE(DATE_AND_TIME_INPUT_TYPES)
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // DateTimeFormat parses date time format defined in Unicode Technical
 // standard 35, Locale Data Markup Language (LDML)[1].
@@ -106,7 +106,7 @@ public:
     static void quoteAndAppendLiteral(const String&, StringBuilder&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif
 #endif // DateTimeFormat_h

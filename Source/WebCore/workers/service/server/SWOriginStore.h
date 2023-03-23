@@ -30,7 +30,7 @@
 #include "SecurityOriginData.h"
 #include <wtf/HashMap.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SWOriginStore {
     WTF_MAKE_FAST_ALLOCATED;
@@ -52,6 +52,6 @@ private:
     HashMap<SecurityOriginData, uint64_t> m_originCounts;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

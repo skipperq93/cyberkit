@@ -27,9 +27,9 @@
 
 #include <CyberCore/MediaStrategy.h>
 
-namespace WebKit {
+namespace CyberKit {
 
-class WebMediaStrategy : public WebCore::MediaStrategy {
+class WebMediaStrategy : public CyberCore::MediaStrategy {
 public:
     virtual ~WebMediaStrategy();
 
@@ -39,14 +39,14 @@ public:
 
 private:
 #if ENABLE(WEB_AUDIO)
-    Ref<WebCore::AudioDestination> createAudioDestination(WebCore::AudioIOCallback&,
+    Ref<CyberCore::AudioDestination> createAudioDestination(CyberCore::AudioIOCallback&,
         const String& inputDeviceId, unsigned numberOfInputChannels, unsigned numberOfOutputChannels, float sampleRate) override;
 #endif
-    std::unique_ptr<WebCore::NowPlayingManager> createNowPlayingManager() const final;
+    std::unique_ptr<CyberCore::NowPlayingManager> createNowPlayingManager() const final;
 
 #if ENABLE(GPU_PROCESS)
     bool m_useGPUProcess { false };
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit

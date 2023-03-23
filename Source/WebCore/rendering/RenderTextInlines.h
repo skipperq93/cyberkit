@@ -23,7 +23,7 @@
 #include "RenderText.h"
 #include "WordTrailingSpace.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 template <typename MeasureTextCallback>
 float RenderText::measureTextConsideringPossibleTrailingSpace(bool currentCharacterIsSpace, unsigned startIndex, unsigned wordLength, WordTrailingSpace& wordTrailingSpace, HashSet<const Font*>& fallbackFonts, MeasureTextCallback&& callback)
@@ -36,4 +36,4 @@ float RenderText::measureTextConsideringPossibleTrailingSpace(bool currentCharac
     return callback(startIndex, wordLength);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

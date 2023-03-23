@@ -28,7 +28,7 @@
 #include "RenderFrameSet.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(RenderFrame);
 
@@ -53,4 +53,4 @@ void RenderFrame::updateFromElement()
         downcast<RenderFrameSet>(*parent()).notifyFrameEdgeInfoChanged();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

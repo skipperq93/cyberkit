@@ -22,7 +22,7 @@
 #include "TextureMapperPlatformLayer.h"
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FloatRect;
 class TextureMapper;
@@ -38,4 +38,4 @@ protected:
     WEBCORE_EXPORT static unsigned calculateExposedTileEdges(const FloatRect& totalRect, const FloatRect& tileRect);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

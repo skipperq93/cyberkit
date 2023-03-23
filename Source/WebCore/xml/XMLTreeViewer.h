@@ -31,7 +31,7 @@
 
 #if ENABLE(XSLT)
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 
@@ -45,6 +45,6 @@ private:
     Document& m_document;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(XSLT)

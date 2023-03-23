@@ -30,34 +30,34 @@
 
 #include <CyberCore/ColorChooser.h>
 
-namespace WebCore {
+namespace CyberCore {
 class Color;
 class ColorChooserClient;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPage;
 
-class WebColorChooser : public WebCore::ColorChooser {
+class WebColorChooser : public CyberCore::ColorChooser {
 public:
-    WebColorChooser(WebPage*, WebCore::ColorChooserClient*, const WebCore::Color&);
+    WebColorChooser(WebPage*, CyberCore::ColorChooserClient*, const CyberCore::Color&);
     virtual ~WebColorChooser();
 
-    void didChooseColor(const WebCore::Color&);
+    void didChooseColor(const CyberCore::Color&);
     void didEndChooser();
     void disconnectFromPage();
 
-    void reattachColorChooser(const WebCore::Color&) override;
-    void setSelectedColor(const WebCore::Color&) override;
+    void reattachColorChooser(const CyberCore::Color&) override;
+    void setSelectedColor(const CyberCore::Color&) override;
     void endChooser() override;
 
 private:
-    WebCore::ColorChooserClient* m_colorChooserClient;
+    CyberCore::ColorChooserClient* m_colorChooserClient;
     WebPage* m_page;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(INPUT_TYPE_COLOR)
 

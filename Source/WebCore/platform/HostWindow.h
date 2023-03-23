@@ -28,7 +28,7 @@
 #include "GraphicsClient.h"
 #include "Widget.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class Cursor;
 
@@ -73,4 +73,4 @@ public:
     virtual FloatSize overrideScreenSize() const = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

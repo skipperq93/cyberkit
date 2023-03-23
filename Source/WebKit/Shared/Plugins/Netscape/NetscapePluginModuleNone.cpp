@@ -31,7 +31,7 @@
 
 namespace WebKit {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 bool NetscapePluginModule::getPluginInfo(const String&, PluginModuleInfo&)
 {

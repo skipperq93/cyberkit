@@ -25,7 +25,7 @@
 #include "PlatformMediaSessionManager.h"
 #include <wtf/glib/GRefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct NowPlayingInfo;
 class MediaSessionGLib;
@@ -106,6 +106,6 @@ private:
     bool m_dbusNotificationsEnabled { true };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(GLIB) && ENABLE(MEDIA_SESSION)

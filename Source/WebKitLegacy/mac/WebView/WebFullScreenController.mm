@@ -43,17 +43,17 @@
 #import <CyberCore/RenderLayerBacking.h>
 #import <CyberCore/RenderObject.h>
 #import <CyberCore/RenderView.h>
-#import <CyberCore/WebCoreFullScreenWindow.h>
+#import <CyberCore/CyberCoreFullScreenWindow.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/SoftLinking.h>
 
 static const CFTimeInterval defaultAnimationDuration = 0.5;
 
-static WebCore::IntRect screenRectOfContents(WebCore::Element* element)
+static CyberCore::IntRect screenRectOfContents(CyberCore::Element* element)
 {
     ASSERT(element);
     if (element->renderer() && element->renderer()->hasLayer() && element->renderer()->enclosingLayer()->isComposited()) {
-        WebCore::FloatQuad contentsBox = static_cast<WebCore::FloatRect>(element->renderer()->enclosingLayer()->backing()->contentsBox());
+        CyberCore::FloatQuad contentsBox = static_cast<CyberCore::FloatRect>(element->renderer()->enclosingLayer()->backing()->contentsBox());
         contentsBox = element->renderer()->localToAbsoluteQuad(contentsBox);
         return element->renderer()->view().frameView().contentsToScreen(contentsBox.enclosingBoundingBox());
     }
@@ -63,8 +63,8 @@ static WebCore::IntRect screenRectOfContents(WebCore::Element* element)
 @interface WebFullScreenController(Private)<NSAnimationDelegate>
 - (void)_updateMenuAndDockForFullScreen;
 - (void)_swapView:(NSView*)view with:(NSView*)otherView;
-- (NakedPtr<WebCore::Document>)_document;
-- (WebCore::FullscreenManager*)_manager;
+- (NakedPtr<CyberCore::Document>)_document;
+- (CyberCore::FullscreenManager*)_manager;
 - (void)_startEnterFullScreenAnimationWithDuration:(NSTimeInterval)duration;
 - (void)_startExitFullScreenAnimationWithDuration:(NSTimeInterval)duration;
 @end
@@ -81,7 +81,7 @@ static NSRect convertRectToScreen(NSWindow *window, NSRect rect)
 - (id)init
 {
     // Do not defer window creation, to make sure -windowNumber is created (needed by WebWindowScaleAnimation).
-    auto window = adoptNS([[WebCoreFullScreenWindow alloc] initWithContentRect:NSZeroRect styleMask:NSWindowStyleMaskClosable backing:NSBackingStoreBuffered defer:NO]);
+    auto window = adoptNS([[CyberCoreFullScreenWindow alloc] initWithContentRect:NSZeroRect styleMask:NSWindowStyleMaskClosable backing:NSBackingStoreBuffered defer:NO]);
     self = [super initWithWindow:window.get()];
     if (!self)
         return nil;
@@ -131,12 +131,12 @@ static NSRect convertRectToScreen(NSWindow *window, NSRect rect)
     return _webViewPlaceholder.get();
 }
 
-- (WebCore::Element*)element
+- (CyberCore::Element*)element
 {
     return _element.get();
 }
 
-- (void)setElement:(RefPtr<WebCore::Element>&&)element
+- (void)setElement:(RefPtr<CyberCore::Element>&&)element
 {
     _element = WTFMove(element);
 }
@@ -430,12 +430,12 @@ static void setClipRectForWindow(NSWindow *window, NSRect clipRect)
 #pragma mark -
 #pragma mark Utility Functions
 
-- (NakedPtr<WebCore::Document>)_document
+- (NakedPtr<CyberCore::Document>)_document
 {
     return &_element->document();
 }
 
-- (WebCore::FullscreenManager*)_manager
+- (CyberCore::FullscreenManager*)_manager
 {
     return &_element->document().fullscreenManager();
 }

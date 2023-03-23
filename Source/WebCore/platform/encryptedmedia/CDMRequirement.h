@@ -32,7 +32,7 @@
 
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class CDMRequirement : uint8_t {
     Required,
@@ -40,6 +40,6 @@ enum class CDMRequirement : uint8_t {
     NotAllowed
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ENCRYPTED_MEDIA)

@@ -27,7 +27,7 @@
 
 #include "SVGElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // This type is used for 2 kinds of elements:
 // - Unknown Elements in SVG namespace
@@ -52,4 +52,4 @@ private:
     bool rendererIsNeeded(const RenderStyle&) final { return false; }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

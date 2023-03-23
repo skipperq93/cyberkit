@@ -40,7 +40,7 @@
 #include "ScrollingTreePositionedNodeNicosia.h"
 #include "ScrollingTreeStickyNodeNicosia.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<ScrollingTreeNicosia> ScrollingTreeNicosia::create(AsyncScrollingCoordinator& scrollingCoordinator)
 {
@@ -135,6 +135,6 @@ RefPtr<ScrollingTreeNode> ScrollingTreeNicosia::scrollingNodeForPoint(FloatPoint
     return returnNode ? returnNode : rootScrollingNode;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ASYNC_SCROLLING) && USE(NICOSIA)

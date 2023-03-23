@@ -31,7 +31,7 @@
 #include <memory>
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class GraphicsContextCG;
 
@@ -53,6 +53,6 @@ protected:
     mutable std::unique_ptr<GraphicsContextCG> m_context;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(CG)

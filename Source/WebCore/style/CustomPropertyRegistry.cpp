@@ -36,7 +36,7 @@
 #include "StyleScope.h"
 #include "WebAnimation.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace Style {
 
 CustomPropertyRegistry::CustomPropertyRegistry(Scope& scope)

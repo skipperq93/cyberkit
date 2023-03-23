@@ -36,7 +36,7 @@
 
 namespace Nicosia {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 PaintingEngineBasic::PaintingEngineBasic() = default;
 PaintingEngineBasic::~PaintingEngineBasic() = default;

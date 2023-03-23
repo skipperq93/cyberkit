@@ -42,7 +42,7 @@
 #include "ScrollingEffectsController.h"
 #include <algorithm>
 
-namespace WebCore {
+namespace CyberCore {
 
 #if !PLATFORM(IOS_FAMILY) && !PLATFORM(MAC)
 std::unique_ptr<ScrollAnimator> ScrollAnimator::create(ScrollableArea& scrollableArea)
@@ -446,4 +446,4 @@ ScrollAnimationStatus ScrollAnimator::serviceScrollAnimation(MonotonicTime time)
     return m_scrollAnimationScheduled ? ScrollAnimationStatus::Animating : ScrollAnimationStatus::NotAnimating;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

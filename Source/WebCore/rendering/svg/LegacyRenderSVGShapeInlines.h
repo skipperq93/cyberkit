@@ -28,11 +28,11 @@
 #include "LegacyRenderSVGShape.h"
 #include "SVGGraphicsElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 inline SVGGraphicsElement& LegacyRenderSVGShape::graphicsElement() const
 {
     return downcast<SVGGraphicsElement>(LegacyRenderSVGModelObject::element());
 }
 
-} // namespace WebCore
+} // namespace CyberCore

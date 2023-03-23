@@ -29,7 +29,7 @@
 #include <CyberCore/ResourceRequest.h>
 #include <CyberCore/ResourceResponse.h>
 
-namespace WebCore {
+namespace CyberCore {
 class AuthenticationChallenge;
 }
 
@@ -43,11 +43,11 @@ class ResourceLoadClient {
 public:
     virtual ~ResourceLoadClient() = default;
 
-    virtual void didSendRequest(WebKit::ResourceLoadInfo&&, WebCore::ResourceRequest&&) const = 0;
-    virtual void didPerformHTTPRedirection(WebKit::ResourceLoadInfo&&, WebCore::ResourceResponse&&, WebCore::ResourceRequest&&) const = 0;
-    virtual void didReceiveChallenge(WebKit::ResourceLoadInfo&&, WebCore::AuthenticationChallenge&&) const = 0;
-    virtual void didReceiveResponse(WebKit::ResourceLoadInfo&&, WebCore::ResourceResponse&&) const = 0;
-    virtual void didCompleteWithError(WebKit::ResourceLoadInfo&&, WebCore::ResourceResponse&&, WebCore::ResourceError&&) const = 0;
+    virtual void didSendRequest(WebKit::ResourceLoadInfo&&, CyberCore::ResourceRequest&&) const = 0;
+    virtual void didPerformHTTPRedirection(WebKit::ResourceLoadInfo&&, CyberCore::ResourceResponse&&, CyberCore::ResourceRequest&&) const = 0;
+    virtual void didReceiveChallenge(WebKit::ResourceLoadInfo&&, CyberCore::AuthenticationChallenge&&) const = 0;
+    virtual void didReceiveResponse(WebKit::ResourceLoadInfo&&, CyberCore::ResourceResponse&&) const = 0;
+    virtual void didCompleteWithError(WebKit::ResourceLoadInfo&&, CyberCore::ResourceResponse&&, CyberCore::ResourceError&&) const = 0;
 };
 
 } // namespace API

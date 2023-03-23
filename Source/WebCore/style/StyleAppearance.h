@@ -31,7 +31,7 @@ namespace WTF {
 class TextStream;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 // Must follow CSSValueKeywords.in order
 enum class StyleAppearance : uint8_t {
@@ -82,4 +82,4 @@ enum class StyleAppearance : uint8_t {
 
 WTF::TextStream& operator<<(WTF::TextStream&, StyleAppearance);
 
-} // namespace WebCore
+} // namespace CyberCore

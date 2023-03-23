@@ -32,7 +32,7 @@
 #include <winsock2.h>
 #include <iphlpapi.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 void NetworkStateNotifier::updateStateWithoutNotifying()
 {
@@ -81,4 +81,4 @@ void NetworkStateNotifier::startObserving()
     registerForAddressChange();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

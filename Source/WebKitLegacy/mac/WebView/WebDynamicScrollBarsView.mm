@@ -34,7 +34,7 @@
 #import <CyberCore/FrameView.h>
 #import <CyberCore/PlatformEventFactoryMac.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 #ifndef __OBJC2__
 // In <rdar://problem/7814899> we saw crashes because WebDynamicScrollBarsView increased in size, breaking ABI compatiblity.
@@ -49,8 +49,8 @@ static_assert(sizeof(WebDynamicScrollBarsView) == 0x8c, "WebDynamicScrollBarsVie
 struct WebDynamicScrollBarsViewPrivate {
     unsigned inUpdateScrollersLayoutPass;
 
-    WebCore::ScrollbarMode hScroll;
-    WebCore::ScrollbarMode vScroll;
+    CyberCore::ScrollbarMode hScroll;
+    CyberCore::ScrollbarMode vScroll;
 
     bool hScrollModeLocked;
     bool vScrollModeLocked;
@@ -200,8 +200,8 @@ static BOOL shouldRoundScrollOrigin(WebDynamicScrollBarsView *view)
 - (void)scrollClipView:(NSClipView *)clipView toPoint:(NSPoint)point
 {
     if (shouldRoundScrollOrigin(self)) {
-        // WebCore isn't yet able to handle subpixel scrolling, as can happen on Retina displays. For
-        // now we'll round to the nearest pixel. Once subpixel layout is enabled in WebCore we may be
+        // CyberCore isn't yet able to handle subpixel scrolling, as can happen on Retina displays. For
+        // now we'll round to the nearest pixel. Once subpixel layout is enabled in CyberCore we may be
         // able to remove this method entirely.
         point.x = round(point.x);
         point.y = round(point.y);
@@ -334,7 +334,7 @@ static const unsigned cMaxUpdateScrollbarsPass = 2;
     NSSize frameSize = [self frame].size;
     
     // When in HiDPI with a scale factor > 1, the visibleSize and frameSize may be non-integral values,
-    // while the documentSize (set by WebCore) will be integral.  Round up the non-integral sizes so that
+    // while the documentSize (set by CyberCore) will be integral.  Round up the non-integral sizes so that
     // the mismatch won't cause unwanted scrollbars to appear.  This can result in slightly cut off content,
     // but it will always be less than one pixel, which should not be noticeable.
     visibleSize.width = ceilf(visibleSize.width);
@@ -446,7 +446,7 @@ static const unsigned cMaxUpdateScrollbarsPass = 2;
     return _private->vScroll != ScrollbarMode::AlwaysOff;
 }
 
-- (void)scrollingModes:(WebCore::ScrollbarMode*)hMode vertical:(WebCore::ScrollbarMode*)vMode
+- (void)scrollingModes:(CyberCore::ScrollbarMode*)hMode vertical:(CyberCore::ScrollbarMode*)vMode
 {
     *hMode = _private->hScroll;
     *vMode = _private->vScroll;

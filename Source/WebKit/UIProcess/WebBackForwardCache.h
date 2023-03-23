@@ -57,7 +57,7 @@ public:
     void removeEntriesForSession(PAL::SessionID);
 
     void addEntry(WebBackForwardListItem&, std::unique_ptr<SuspendedPageProxy>&&);
-    void addEntry(WebBackForwardListItem&, WebCore::ProcessIdentifier);
+    void addEntry(WebBackForwardListItem&, CyberCore::ProcessIdentifier);
     void removeEntry(WebBackForwardListItem&);
     void removeEntry(SuspendedPageProxy&);
     std::unique_ptr<SuspendedPageProxy> takeSuspendedPage(WebBackForwardListItem&);

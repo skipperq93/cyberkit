@@ -30,7 +30,7 @@
 #include <gtk/gtk.h>
 #include <wtf/NeverDestroyed.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class GtkSettingsManagerProxy : private IPC::MessageReceiver {
     WTF_MAKE_NONCOPYABLE(GtkSettingsManagerProxy);
@@ -53,4 +53,4 @@ private:
     GtkSettings* m_settings;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

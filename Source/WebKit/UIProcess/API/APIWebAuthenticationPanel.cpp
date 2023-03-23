@@ -34,7 +34,7 @@
 #include <CyberCore/WebAuthenticationConstants.h>
 
 namespace API {
-using namespace WebCore;
+using namespace CyberCore;
 using namespace WebKit;
 
 Ref<WebAuthenticationPanel> WebAuthenticationPanel::create(const AuthenticatorManager& manager, const WTF::String& rpId, const TransportSet& transports, ClientDataType type, const WTF::String& userName)
@@ -84,7 +84,7 @@ void WebAuthenticationPanel::cancel() const
     m_manager->cancel();
 }
 
-void WebAuthenticationPanel::setMockConfiguration(WebCore::MockWebAuthenticationConfiguration&& configuration)
+void WebAuthenticationPanel::setMockConfiguration(CyberCore::MockWebAuthenticationConfiguration&& configuration)
 {
     ASSERT(m_manager);
 

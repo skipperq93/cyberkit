@@ -43,7 +43,7 @@
 #endif
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 static inline Display* sharedDisplay()
 {
@@ -90,6 +90,6 @@ template<> void XUniqueResource<XResource::GLXPixmap>::deleteXResource(unsigned 
 }
 #endif // USE(GLX)
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(X11)

@@ -30,7 +30,7 @@
 #include "SVGParserUtilities.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(SVGFESpecularLightingElement);
 
@@ -177,4 +177,4 @@ RefPtr<FilterEffect> SVGFESpecularLightingElement::createFilterEffect(const Filt
     return FESpecularLighting::create(color, surfaceScale(), specularConstant(), specularExponent(), kernelUnitLengthX(), kernelUnitLengthY(), WTFMove(lightSource));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

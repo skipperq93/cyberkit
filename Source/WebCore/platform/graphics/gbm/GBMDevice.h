@@ -32,7 +32,7 @@
 
 struct gbm_device;
 
-namespace WebCore {
+namespace CyberCore {
 
 class GBMDevice {
     WTF_MAKE_NONCOPYABLE(GBMDevice);
@@ -50,6 +50,6 @@ private:
     struct gbm_device* m_device { nullptr };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(LIBGBM)

@@ -26,7 +26,7 @@
 #include "config.h"
 #include "SwitchingGPUClient.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 SwitchingGPUClient* SwitchingGPUClient::m_singleton = nullptr;
 

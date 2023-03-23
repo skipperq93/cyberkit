@@ -30,7 +30,7 @@
 
 OBJC_CLASS NSURLProtectionSpace;
 
-namespace WebCore {
+namespace CyberCore {
 
 class ProtectionSpace : public ProtectionSpaceBase {
 public:
@@ -57,4 +57,4 @@ private:
     mutable RetainPtr<NSURLProtectionSpace> m_nsSpace;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

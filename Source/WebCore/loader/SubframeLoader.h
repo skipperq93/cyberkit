@@ -32,7 +32,7 @@
 
 #include "FrameLoader.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class Frame;
@@ -77,4 +77,4 @@ private:
     Frame& m_frame;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

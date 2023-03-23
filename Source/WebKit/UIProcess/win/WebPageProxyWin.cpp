@@ -45,24 +45,24 @@ String WebPageProxy::userAgentForURL(const URL&)
 
 String WebPageProxy::standardUserAgent(const String& applicationNameForUserAgent)
 {
-    return WebCore::standardUserAgent(applicationNameForUserAgent);
+    return CyberCore::standardUserAgent(applicationNameForUserAgent);
 }
 
-void WebPageProxy::saveRecentSearches(const String& name, const Vector<WebCore::RecentSearch>& searchItems)
+void WebPageProxy::saveRecentSearches(const String& name, const Vector<CyberCore::RecentSearch>& searchItems)
 {
     if (!name)
         return;
 
-    return WebCore::SearchPopupMenuDB::singleton().saveRecentSearches(name, searchItems);
+    return CyberCore::SearchPopupMenuDB::singleton().saveRecentSearches(name, searchItems);
 }
 
-void WebPageProxy::loadRecentSearches(const String& name, CompletionHandler<void(Vector<WebCore::RecentSearch>&&)>&& completionHandler)
+void WebPageProxy::loadRecentSearches(const String& name, CompletionHandler<void(Vector<CyberCore::RecentSearch>&&)>&& completionHandler)
 {
     if (!name)
         return completionHandler({ });
 
-    Vector<WebCore::RecentSearch> searchItems;
-    WebCore::SearchPopupMenuDB::singleton().loadRecentSearches(name, searchItems);
+    Vector<CyberCore::RecentSearch> searchItems;
+    CyberCore::SearchPopupMenuDB::singleton().loadRecentSearches(name, searchItems);
     completionHandler(WTFMove(searchItems));
 }
 

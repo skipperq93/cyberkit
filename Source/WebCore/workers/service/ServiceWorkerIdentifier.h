@@ -29,11 +29,11 @@
 
 #include <wtf/ObjectIdentifier.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum ServiceWorkerIdentifierType { };
 using ServiceWorkerIdentifier = ObjectIdentifier<ServiceWorkerIdentifierType>;
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

@@ -30,7 +30,7 @@
 #include "InjectedBundle.h"
 #include "StringFunctions.h"
 #include "WPTFunctions.h"
-#include "WebCoreTestSupport.h"
+#include "CyberCoreTestSupport.h"
 #include <cmath>
 #include <CyberScriptCore/JSRetainPtr.h>
 #include <CyberScriptCore/RegularExpression.h>
@@ -150,7 +150,7 @@ static WTF::String string(WKBundlePageRef page, WKBundleScriptWorldRef world, WK
 static WTF::String styleDecToStr(WKBundleCSSStyleDeclarationRef)
 {
     // DumpRenderTree calls -[DOMCSSStyleDeclaration description], which just dumps class name and object address.
-    // No existing tests actually hit this code path at the time of this writing, because WebCore doesn't call
+    // No existing tests actually hit this code path at the time of this writing, because CyberCore doesn't call
     // the editing client if the styling operation source is CommandFromDOM or CommandFromDOMWithUserInterface.
     return "<DOMCSSStyleDeclaration ADDRESS>"_s;
 }
@@ -380,7 +380,7 @@ void InjectedBundlePage::resetAfterTest()
     // (see <https://bugs.webkit.org/show_bug.cgi?id=138334>), however for tests, we want to start each one with a clean state.
     WKBundleFrameFocus(frame);
 
-    WebCoreTestSupport::resetInternalsObject(WKBundleFrameGetJavaScriptContext(frame));
+    CyberCoreTestSupport::resetInternalsObject(WKBundleFrameGetJavaScriptContext(frame));
     assignedUrlsCache().clear();
 
     // User scripts need to be removed after the test and before loading about:blank, as otherwise they would run in about:blank, and potentially leak results into a subsequest test.
@@ -750,7 +750,7 @@ void InjectedBundlePage::dumpDOMAsWebArchive(WKBundleFrameRef frame, StringBuild
 #if USE(CF) && !PLATFORM(WIN)
     auto wkData = adoptWK(WKBundleFrameCopyWebArchive(frame));
     auto cfData = adoptCF(CFDataCreate(0, WKDataGetBytes(wkData.get()), WKDataGetSize(wkData.get())));
-    stringBuilder.append(WebCoreTestSupport::createXMLStringFromWebArchiveData(cfData.get()).get());
+    stringBuilder.append(CyberCoreTestSupport::createXMLStringFromWebArchiveData(cfData.get()).get());
 #endif
 }
 
@@ -886,7 +886,7 @@ void InjectedBundlePage::didClearWindowForFrame(WKBundleFrameRef frame, WKBundle
     injectedBundle.accessibilityController()->makeWindowObject(context);
 #endif
 
-    WebCoreTestSupport::injectInternalsObject(context);
+    CyberCoreTestSupport::injectInternalsObject(context);
 }
 
 void InjectedBundlePage::didCancelClientRedirectForFrame(WKBundleFrameRef frame)

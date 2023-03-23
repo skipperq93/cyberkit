@@ -33,7 +33,7 @@
 #include "NicosiaPlatformLayer.h"
 #include "ScrollingTreePositionedNode.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScrollingTreePositionedNodeNicosia final : public ScrollingTreePositionedNode {
 public:
@@ -51,7 +51,7 @@ private:
     RefPtr<Nicosia::CompositionLayer> m_layer;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_SCROLLING_NODE(ScrollingTreePositionedNodeNicosia, isPositionedNodeNicosia())
 

@@ -54,7 +54,7 @@ IGNORE_WARNINGS_BEGIN("deprecated-implementations")
 
 @end
 
-TEST(WebKitLegacy, ScrollToRevealSelection)
+TEST(CyberKitLegacy, ScrollToRevealSelection)
 {
     auto window = adoptNS([[UIWindow alloc] initWithFrame:CGRectMake(0, 0, 320, 500)]);
     [window setHidden:NO];

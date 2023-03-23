@@ -66,8 +66,8 @@
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunguarded-availability-new"
 
-using namespace WebCore;
-@interface WebCoreScreenCaptureKitHelper : NSObject<SCStreamDelegate,
+using namespace CyberCore;
+@interface CyberCoreScreenCaptureKitHelper : NSObject<SCStreamDelegate,
 #if HAVE(SC_CONTENT_SHARING_SESSION)
     SCContentSharingSessionProtocol,
 #endif
@@ -86,7 +86,7 @@ using namespace WebCore;
 #endif
 @end
 
-@implementation WebCoreScreenCaptureKitHelper
+@implementation CyberCoreScreenCaptureKitHelper
 - (instancetype)initWithCallback:(WeakPtr<ScreenCaptureKitCaptureSource>&&)callback
 {
     self = [super init];
@@ -147,7 +147,7 @@ using namespace WebCore;
 
 #pragma clang diagnostic pop
 
-namespace WebCore {
+namespace CyberCore {
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunguarded-availability-new"
@@ -401,7 +401,7 @@ void ScreenCaptureKitCaptureSource::startContentStream()
     }
 
     if (!m_captureHelper)
-        m_captureHelper = ([[WebCoreScreenCaptureKitHelper alloc] initWithCallback:this]);
+        m_captureHelper = ([[CyberCoreScreenCaptureKitHelper alloc] initWithCallback:this]);
 
     m_contentStream = adoptNS([PAL::allocSCStreamInstance() initWithFilter:m_contentFilter.get() configuration:streamConfiguration().get() delegate:m_captureHelper.get()]);
 
@@ -614,6 +614,6 @@ std::optional<CaptureDevice> ScreenCaptureKitCaptureSource::windowCaptureDeviceW
 
 #pragma clang diagnostic pop
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // HAVE(SCREEN_CAPTURE_KIT)

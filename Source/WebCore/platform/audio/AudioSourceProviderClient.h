@@ -27,7 +27,7 @@
 
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioSourceProviderClient : public CanMakeWeakPtr<AudioSourceProviderClient, WeakPtrFactoryInitialization::Eager> {
 public:
@@ -36,6 +36,6 @@ protected:
     virtual ~AudioSourceProviderClient() = default;
 };
 
-} // WebCore
+} // CyberCore
 
 #endif // AudioSourceProviderClient_h

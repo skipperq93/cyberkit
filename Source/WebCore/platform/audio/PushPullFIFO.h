@@ -28,7 +28,7 @@
 #include <wtf/Noncopyable.h>
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioBus;
 
@@ -76,6 +76,6 @@ private:
     size_t m_indexWrite { 0 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 

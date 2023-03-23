@@ -51,8 +51,8 @@
 #include <wtf/text/StringBuilder.h>
 
 namespace TestWebKitAPI {
-using namespace WebCore;
-using namespace WebCore::ContentExtensions;
+using namespace CyberCore;
+using namespace CyberCore::ContentExtensions;
 
 class ContentExtensionTest : public testing::Test {
 public:
@@ -165,7 +165,7 @@ private:
     CompiledContentExtensionData m_data;
 };
 
-static std::pair<Vector<WebCore::ContentExtensions::Action>, Vector<String>> allActionsForResourceLoad(const ContentExtensions::ContentExtensionsBackend& backend, const ResourceLoadInfo& info)
+static std::pair<Vector<CyberCore::ContentExtensions::Action>, Vector<String>> allActionsForResourceLoad(const ContentExtensions::ContentExtensionsBackend& backend, const ResourceLoadInfo& info)
 {
     Vector<ContentExtensions::Action> actions;
     Vector<String> identifiersApplyingStylesheets;
@@ -214,7 +214,7 @@ static ResourceLoadInfo requestInTopAndFrameURLs(ASCIILiteral url, ASCIILiteral 
 
 ContentExtensions::ContentExtensionsBackend makeBackend(String&& json)
 {
-    WebCore::initializeCommonAtomStrings();
+    CyberCore::initializeCommonAtomStrings();
     auto extension = InMemoryCompiledContentExtension::create(WTFMove(json));
     ContentExtensions::ContentExtensionsBackend backend;
     backend.addContentExtension("testFilter"_s, WTFMove(extension), { });
@@ -890,7 +890,7 @@ TEST_F(ContentExtensionTest, MultipleExtensions)
     testRequest(backendWithIgnore, mainDocumentRequest("http://webkit.org/block_load/block_cookies/ignore1/ignore2.html"_s), { }, 0);
 }
 
-static bool actionsEqual(const std::pair<Vector<WebCore::ContentExtensions::Action>, Vector<String>>& actual, Vector<WebCore::ContentExtensions::Action>&& expected, bool ignorePreviousRules = false)
+static bool actionsEqual(const std::pair<Vector<CyberCore::ContentExtensions::Action>, Vector<String>>& actual, Vector<CyberCore::ContentExtensions::Action>&& expected, bool ignorePreviousRules = false)
 {
     if (ignorePreviousRules) {
         if (actual.second.size())
@@ -3030,7 +3030,7 @@ TEST_F(ContentExtensionTest, CombinedQuantifiedOneOrMoreRangesCase11And13InGroup
 
 TEST_F(ContentExtensionTest, ValidSelector)
 {
-    EXPECT_TRUE(WebCore::ContentExtensions::isValidCSSSelector("a[href*=hsv]"_s));
+    EXPECT_TRUE(CyberCore::ContentExtensions::isValidCSSSelector("a[href*=hsv]"_s));
 }
 
 TEST_F(ContentExtensionTest, Serialization)
@@ -3116,7 +3116,7 @@ TEST_F(ContentExtensionTest, IfFrameURL)
 TEST_F(ContentExtensionTest, RegexSubstitution)
 {
     auto transformURL = [] (String&& regexSubstitution, String&& regexFilter, String&& originalURL, const char* expectedTransformedURL) {
-        WebCore::ContentExtensions::RedirectAction::RegexSubstitutionAction action { WTFMove(regexSubstitution), WTFMove(regexFilter) };
+        CyberCore::ContentExtensions::RedirectAction::RegexSubstitutionAction action { WTFMove(regexSubstitution), WTFMove(regexFilter) };
         URL url(WTFMove(originalURL));
         action.applyToURL(url);
         EXPECT_STREQ(url.string().utf8().data(), expectedTransformedURL);

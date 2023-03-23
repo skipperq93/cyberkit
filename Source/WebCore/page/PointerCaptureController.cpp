@@ -39,7 +39,7 @@
 #include "PointerLockController.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 PointerCaptureController::PointerCaptureController(Page& page)
     : m_page(page)
@@ -496,7 +496,7 @@ void PointerCaptureController::cancelPointer(PointerID pointerId, const IntPoint
     // After firing the pointercancel event, a user agent MUST also fire a pointer event named pointerout
     // followed by firing a pointer event named pointerleave.
     auto isPrimary = capturingData->isPrimary ? PointerEvent::IsPrimary::Yes : PointerEvent::IsPrimary::No;
-    auto& eventNames = WebCore::eventNames();
+    auto& eventNames = CyberCore::eventNames();
     auto cancelEvent = PointerEvent::create(eventNames.pointercancelEvent, pointerId, capturingData->pointerType, isPrimary);
     target->dispatchEvent(cancelEvent);
     target->dispatchEvent(PointerEvent::create(eventNames.pointeroutEvent, pointerId, capturingData->pointerType, isPrimary));
@@ -547,4 +547,4 @@ void PointerCaptureController::processPendingPointerCapture(PointerID pointerId)
     m_processingPendingPointerCapture = false;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

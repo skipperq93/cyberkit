@@ -27,7 +27,7 @@
 
 // Defines the interface for several vector math functions whose implementation will ideally be optimized.
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace VectorMath {
 
@@ -74,4 +74,4 @@ void interpolate(const float* inputVector1, float* inputVector2, float interpola
 
 } // namespace VectorMath
 
-} // namespace WebCore
+} // namespace CyberCore

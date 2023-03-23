@@ -28,7 +28,7 @@
 #include "PixelBuffer.h"
 #include <CyberScriptCore/Uint8ClampedArray.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ByteArrayPixelBuffer : public PixelBuffer {
 public:
@@ -93,8 +93,8 @@ template<class Decoder> std::optional<Ref<ByteArrayPixelBuffer>> ByteArrayPixelB
     return ByteArrayPixelBuffer::create(*format, *size, buffer.releaseNonNull());
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::ByteArrayPixelBuffer)
-    static bool isType(const WebCore::PixelBuffer& pixelBuffer) { return pixelBuffer.isByteArrayPixelBuffer(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::ByteArrayPixelBuffer)
+    static bool isType(const CyberCore::PixelBuffer& pixelBuffer) { return pixelBuffer.isByteArrayPixelBuffer(); }
 SPECIALIZE_TYPE_TRAITS_END()

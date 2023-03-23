@@ -75,7 +75,7 @@
 #include <libxslt/xslt.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 #if ENABLE(XSLT)
 

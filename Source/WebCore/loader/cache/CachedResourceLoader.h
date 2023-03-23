@@ -39,7 +39,7 @@
 #include <wtf/WeakListHashSet.h>
 #include <wtf/text/StringHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 #if ENABLE(APPLICATION_MANIFEST)
 class CachedApplicationManifest;
@@ -243,4 +243,4 @@ private:
     bool m_previousState;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

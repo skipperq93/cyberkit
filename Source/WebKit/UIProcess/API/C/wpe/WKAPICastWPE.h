@@ -42,7 +42,7 @@ namespace WebKit {
 WK_ADD_API_MAPPING(WKGrammarDetailRef, WebGrammarDetail)
 WK_ADD_API_MAPPING(WKViewRef, WKWPE::View)
 
-inline ProxyingRefPtr<WebGrammarDetail> toAPI(const WebCore::GrammarDetail& grammarDetail)
+inline ProxyingRefPtr<WebGrammarDetail> toAPI(const CyberCore::GrammarDetail& grammarDetail)
 {
     return ProxyingRefPtr<WebGrammarDetail>(WebGrammarDetail::create(grammarDetail));
 }

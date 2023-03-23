@@ -32,64 +32,64 @@
 #include <wtf/Ref.h>
 #include <wtf/RefPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPage;
 
-class UserMediaPermissionRequestManager : public WebCore::MediaCanStartListener
+class UserMediaPermissionRequestManager : public CyberCore::MediaCanStartListener
 #if USE(GSTREAMER)
-                                        , public WebCore::RealtimeMediaSourceCenter::Observer
+                                        , public CyberCore::RealtimeMediaSourceCenter::Observer
 #endif
 {
     WTF_MAKE_FAST_ALLOCATED;
 public:
-    using WebCore::MediaCanStartListener::weakPtrFactory;
-    using WebCore::MediaCanStartListener::WeakValueType;
-    using WebCore::MediaCanStartListener::WeakPtrImplType;
+    using CyberCore::MediaCanStartListener::weakPtrFactory;
+    using CyberCore::MediaCanStartListener::WeakValueType;
+    using CyberCore::MediaCanStartListener::WeakPtrImplType;
 
     explicit UserMediaPermissionRequestManager(WebPage&);
     ~UserMediaPermissionRequestManager() = default;
 
-    void startUserMediaRequest(WebCore::UserMediaRequest&);
-    void cancelUserMediaRequest(WebCore::UserMediaRequest&);
-    void userMediaAccessWasGranted(WebCore::UserMediaRequestIdentifier, WebCore::CaptureDevice&& audioDevice, WebCore::CaptureDevice&& videoDevice, WebCore::MediaDeviceHashSalts&&, CompletionHandler<void()>&&);
-    void userMediaAccessWasDenied(WebCore::UserMediaRequestIdentifier, WebCore::UserMediaRequest::MediaAccessDenialReason, String&&);
+    void startUserMediaRequest(CyberCore::UserMediaRequest&);
+    void cancelUserMediaRequest(CyberCore::UserMediaRequest&);
+    void userMediaAccessWasGranted(CyberCore::UserMediaRequestIdentifier, CyberCore::CaptureDevice&& audioDevice, CyberCore::CaptureDevice&& videoDevice, CyberCore::MediaDeviceHashSalts&&, CompletionHandler<void()>&&);
+    void userMediaAccessWasDenied(CyberCore::UserMediaRequestIdentifier, CyberCore::UserMediaRequest::MediaAccessDenialReason, String&&);
 
-    void enumerateMediaDevices(WebCore::Document&, CompletionHandler<void(const Vector<WebCore::CaptureDevice>&, WebCore::MediaDeviceHashSalts&&)>&&);
+    void enumerateMediaDevices(CyberCore::Document&, CompletionHandler<void(const Vector<CyberCore::CaptureDevice>&, CyberCore::MediaDeviceHashSalts&&)>&&);
 
-    WebCore::UserMediaClient::DeviceChangeObserverToken addDeviceChangeObserver(WTF::Function<void()>&&);
-    void removeDeviceChangeObserver(WebCore::UserMediaClient::DeviceChangeObserverToken);
+    CyberCore::UserMediaClient::DeviceChangeObserverToken addDeviceChangeObserver(WTF::Function<void()>&&);
+    void removeDeviceChangeObserver(CyberCore::UserMediaClient::DeviceChangeObserverToken);
 
     void captureDevicesChanged();
 
 private:
 #if USE(GSTREAMER)
-    // WebCore::RealtimeMediaSourceCenter::Observer
+    // CyberCore::RealtimeMediaSourceCenter::Observer
     void devicesChanged() final;
 #endif
 
-    void sendUserMediaRequest(WebCore::UserMediaRequest&);
+    void sendUserMediaRequest(CyberCore::UserMediaRequest&);
 
-    // WebCore::MediaCanStartListener
-    void mediaCanStart(WebCore::Document&) final;
+    // CyberCore::MediaCanStartListener
+    void mediaCanStart(CyberCore::Document&) final;
 
     WebPage& m_page;
 
-    HashMap<WebCore::UserMediaRequestIdentifier, Ref<WebCore::UserMediaRequest>> m_ongoingUserMediaRequests;
-    HashMap<RefPtr<WebCore::Document>, Vector<Ref<WebCore::UserMediaRequest>>> m_pendingUserMediaRequests;
+    HashMap<CyberCore::UserMediaRequestIdentifier, Ref<CyberCore::UserMediaRequest>> m_ongoingUserMediaRequests;
+    HashMap<RefPtr<CyberCore::Document>, Vector<Ref<CyberCore::UserMediaRequest>>> m_pendingUserMediaRequests;
 
-    HashMap<WebCore::UserMediaClient::DeviceChangeObserverToken, Function<void()>> m_deviceChangeObserverMap;
+    HashMap<CyberCore::UserMediaClient::DeviceChangeObserverToken, Function<void()>> m_deviceChangeObserverMap;
     bool m_monitoringDeviceChange { false };
 
 #if USE(GSTREAMER)
     enum class ShouldNotify : bool { No, Yes };
     void updateCaptureDevices(ShouldNotify);
 
-    Vector<WebCore::CaptureDevice> m_captureDevices;
+    Vector<CyberCore::CaptureDevice> m_captureDevices;
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 namespace WTF {
 

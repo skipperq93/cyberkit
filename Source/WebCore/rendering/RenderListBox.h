@@ -1,5 +1,5 @@
 /*
- * This file is part of the select element renderer in WebCore.
+ * This file is part of the select element renderer in CyberCore.
  *
  * Copyright (C) 2006-2023 Apple Inc. All rights reserved.
  * Copyright (C) 2014 Google Inc. All rights reserved.
@@ -34,7 +34,7 @@
 #include "RenderBlockFlow.h"
 #include "ScrollableArea.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLOptGroupElement;
 class HTMLOptionElement;
@@ -200,9 +200,9 @@ private:
 
 };
 
-} // namepace WebCore
+} // namepace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::RenderListBox)
-    static bool isType(const WebCore::RenderObject& widget) { return widget.isListBox(); }
-    static bool isType(const WebCore::ScrollableArea& area) { return area.isListBox(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::RenderListBox)
+    static bool isType(const CyberCore::RenderObject& widget) { return widget.isListBox(); }
+    static bool isType(const CyberCore::ScrollableArea& area) { return area.isListBox(); }
 SPECIALIZE_TYPE_TRAITS_END()

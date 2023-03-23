@@ -29,11 +29,11 @@
 #if ENABLE(LEGACY_ENCRYPTED_MEDIA) && ENABLE(MEDIA_SOURCE)
 
 #import "CDMPrivateMediaSourceAVFObjC.h"
-#import "WebCoreNSErrorExtras.h"
+#import "CyberCoreNSErrorExtras.h"
 #import <AVFoundation/AVError.h>
 #import <wtf/FileSystem.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 CDMSessionMediaSourceAVFObjC::CDMSessionMediaSourceAVFObjC(CDMPrivateMediaSourceAVFObjC& cdm, LegacyCDMSessionClient& client)
     : m_cdm(&cdm)

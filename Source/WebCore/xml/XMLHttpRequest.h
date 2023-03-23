@@ -40,7 +40,7 @@ class ArrayBuffer;
 class ArrayBufferView;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class Blob;
 class Document;
@@ -267,4 +267,4 @@ inline auto XMLHttpRequest::readyState() const -> State
     return static_cast<State>(m_readyState);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

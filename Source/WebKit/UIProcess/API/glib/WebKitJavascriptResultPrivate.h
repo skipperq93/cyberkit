@@ -22,4 +22,4 @@
 #include <CyberCore/SerializedScriptValue.h>
 #include "WebKitJavascriptResult.h"
 
-WebKitJavascriptResult* webkitJavascriptResultCreate(WebCore::SerializedScriptValue&);
+WebKitJavascriptResult* webkitJavascriptResultCreate(CyberCore::SerializedScriptValue&);

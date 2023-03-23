@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -17,16 +17,16 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitDOMHTMLButtonElementPrivate_h
-#define WebKitDOMHTMLButtonElementPrivate_h
+#ifndef CyberKitDOMHTMLButtonElementPrivate_h
+#define CyberKitDOMHTMLButtonElementPrivate_h
 
 #include <CyberCore/HTMLButtonElement.h>
-#include <webkitdom/WebKitDOMHTMLButtonElement.h>
+#include <webkitdom/CyberKitDOMHTMLButtonElement.h>
 
-namespace WebKit {
-WebKitDOMHTMLButtonElement* wrapHTMLButtonElement(WebCore::HTMLButtonElement*);
-WebKitDOMHTMLButtonElement* kit(WebCore::HTMLButtonElement*);
-WebCore::HTMLButtonElement* core(WebKitDOMHTMLButtonElement*);
-} // namespace WebKit
+namespace CyberKit {
+CyberKitDOMHTMLButtonElement* wrapHTMLButtonElement(CyberCore::HTMLButtonElement*);
+CyberKitDOMHTMLButtonElement* kit(CyberCore::HTMLButtonElement*);
+CyberCore::HTMLButtonElement* core(CyberKitDOMHTMLButtonElement*);
+} // namespace CyberKit
 
-#endif /* WebKitDOMHTMLButtonElementPrivate_h */
+#endif /* CyberKitDOMHTMLButtonElementPrivate_h */

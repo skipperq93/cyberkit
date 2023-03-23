@@ -28,7 +28,7 @@
 #include "DOMWindow.h"
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Frame;
 
@@ -45,4 +45,4 @@ private:
     WeakPtr<DOMWindow, WeakPtrImplWithEventTargetData> m_window;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

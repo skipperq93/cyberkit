@@ -31,7 +31,7 @@
 #import <wtf/OptionSet.h>
 #import <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 class ImageBuffer;
 class ThreadSafeImageBufferFlusher;
 enum class SetNonVolatileResult : uint8_t;
@@ -66,13 +66,13 @@ public:
 
     void willFlushLayers();
     void willCommitLayerTree(RemoteLayerTreeTransaction&);
-    Vector<std::unique_ptr<WebCore::ThreadSafeImageBufferFlusher>> didFlushLayers(RemoteLayerTreeTransaction&);
+    Vector<std::unique_ptr<CyberCore::ThreadSafeImageBufferFlusher>> didFlushLayers(RemoteLayerTreeTransaction&);
 
     virtual void tryMarkAllBackingStoreVolatile(CompletionHandler<void(bool)>&&);
 
     void scheduleVolatilityTimer();
 
-    virtual RefPtr<WebCore::ImageBuffer> allocateBufferForBackingStore(const RemoteLayerBackingStore&);
+    virtual RefPtr<CyberCore::ImageBuffer> allocateBufferForBackingStore(const RemoteLayerBackingStore&);
 
 protected:
     RemoteLayerTreeContext& layerTreeContext() const { return m_layerTreeContext; }
@@ -105,7 +105,7 @@ protected:
     HashSet<RemoteLayerBackingStore*> m_reachableBackingStoreInLatestFlush;
     HashSet<RemoteLayerBackingStore*> m_backingStoresNeedingDisplay;
 
-    WebCore::Timer m_volatilityTimer;
+    CyberCore::Timer m_volatilityTimer;
 
     bool m_inLayerFlush { false };
 };

@@ -29,7 +29,7 @@
 #include "config.h"
 #include "FileChooser.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 FileChooser::FileChooser(FileChooserClient& client, const FileChooserSettings& settings)
     : m_client(&client)
@@ -97,4 +97,4 @@ void FileChooser::chooseFiles(const Vector<FileChooserFileInfo>& files)
         m_client->filesChosen(files);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

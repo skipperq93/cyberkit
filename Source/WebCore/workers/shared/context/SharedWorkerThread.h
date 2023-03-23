@@ -28,7 +28,7 @@
 #include "SharedWorkerIdentifier.h"
 #include "WorkerThread.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class WorkerObjectProxy;
 
@@ -42,10 +42,10 @@ private:
     SharedWorkerThread(SharedWorkerIdentifier, const WorkerParameters&, const ScriptBuffer& sourceCode, WorkerLoaderProxy&, WorkerDebuggerProxy&, WorkerObjectProxy&, WorkerBadgeProxy&, WorkerThreadStartMode, const SecurityOrigin& topOrigin, IDBClient::IDBConnectionProxy*, SocketProvider*, JSC::RuntimeFlags);
 
     Ref<WorkerGlobalScope> createWorkerGlobalScope(const WorkerParameters&, Ref<SecurityOrigin>&&, Ref<SecurityOrigin>&& topOrigin) final;
-    ASCIILiteral threadName() const final { return "WebCore: SharedWorker"_s; }
+    ASCIILiteral threadName() const final { return "CyberCore: SharedWorker"_s; }
 
     SharedWorkerIdentifier m_identifier;
     String m_name;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

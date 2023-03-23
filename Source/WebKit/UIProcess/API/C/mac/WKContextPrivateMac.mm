@@ -116,7 +116,7 @@ WKStringRef WKPlugInInfoIsSandboxedKey()
 bool WKContextShouldBlockWebGL()
 {
 #if PLATFORM(MAC)
-    return WebCore::WebGLBlocklist::shouldBlockWebGL();
+    return CyberCore::WebGLBlocklist::shouldBlockWebGL();
 #else
     return false;
 #endif
@@ -125,7 +125,7 @@ bool WKContextShouldBlockWebGL()
 bool WKContextShouldSuggestBlockWebGL()
 {
 #if PLATFORM(MAC)
-    return WebCore::WebGLBlocklist::shouldSuggestBlockingWebGL();
+    return CyberCore::WebGLBlocklist::shouldSuggestBlockingWebGL();
 #else
     return false;
 #endif

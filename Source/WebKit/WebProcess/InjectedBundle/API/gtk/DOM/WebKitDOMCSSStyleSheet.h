@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -21,28 +21,28 @@
 #error "Only <webkitdom/webkitdom.h> can be included directly."
 #endif
 
-#ifndef WebKitDOMCSSStyleSheet_h
-#define WebKitDOMCSSStyleSheet_h
+#ifndef CyberKitDOMCSSStyleSheet_h
+#define CyberKitDOMCSSStyleSheet_h
 
 #include <glib-object.h>
-#include <webkitdom/WebKitDOMStyleSheet.h>
+#include <webkitdom/CyberKitDOMStyleSheet.h>
 #include <webkitdom/webkitdomdefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_DOM_TYPE_CSS_STYLE_SHEET            (webkit_dom_css_style_sheet_get_type())
-#define WEBKIT_DOM_CSS_STYLE_SHEET(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_CSS_STYLE_SHEET, WebKitDOMCSSStyleSheet))
-#define WEBKIT_DOM_CSS_STYLE_SHEET_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_CSS_STYLE_SHEET, WebKitDOMCSSStyleSheetClass)
+#define WEBKIT_DOM_CSS_STYLE_SHEET(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_CSS_STYLE_SHEET, CyberKitDOMCSSStyleSheet))
+#define WEBKIT_DOM_CSS_STYLE_SHEET_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_CSS_STYLE_SHEET, CyberKitDOMCSSStyleSheetClass)
 #define WEBKIT_DOM_IS_CSS_STYLE_SHEET(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_DOM_TYPE_CSS_STYLE_SHEET))
 #define WEBKIT_DOM_IS_CSS_STYLE_SHEET_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_DOM_TYPE_CSS_STYLE_SHEET))
-#define WEBKIT_DOM_CSS_STYLE_SHEET_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_CSS_STYLE_SHEET, WebKitDOMCSSStyleSheetClass))
+#define WEBKIT_DOM_CSS_STYLE_SHEET_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_CSS_STYLE_SHEET, CyberKitDOMCSSStyleSheetClass))
 
-struct _WebKitDOMCSSStyleSheet {
-    WebKitDOMStyleSheet parent_instance;
+struct _CyberKitDOMCSSStyleSheet {
+    CyberKitDOMStyleSheet parent_instance;
 };
 
-struct _WebKitDOMCSSStyleSheetClass {
-    WebKitDOMStyleSheetClass parent_class;
+struct _CyberKitDOMCSSStyleSheetClass {
+    CyberKitDOMStyleSheetClass parent_class;
 };
 
 WEBKIT_DEPRECATED GType
@@ -50,7 +50,7 @@ webkit_dom_css_style_sheet_get_type(void);
 
 /**
  * webkit_dom_css_style_sheet_insert_rule:
- * @self: A #WebKitDOMCSSStyleSheet
+ * @self: A #CyberKitDOMCSSStyleSheet
  * @rule: A #gchar
  * @index: A #gulong
  * @error: #GError
@@ -60,11 +60,11 @@ webkit_dom_css_style_sheet_get_type(void);
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gulong
-webkit_dom_css_style_sheet_insert_rule(WebKitDOMCSSStyleSheet* self, const gchar* rule, gulong index, GError** error);
+webkit_dom_css_style_sheet_insert_rule(CyberKitDOMCSSStyleSheet* self, const gchar* rule, gulong index, GError** error);
 
 /**
  * webkit_dom_css_style_sheet_delete_rule:
- * @self: A #WebKitDOMCSSStyleSheet
+ * @self: A #CyberKitDOMCSSStyleSheet
  * @index: A #gulong
  * @error: #GError
  *
@@ -72,11 +72,11 @@ webkit_dom_css_style_sheet_insert_rule(WebKitDOMCSSStyleSheet* self, const gchar
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_css_style_sheet_delete_rule(WebKitDOMCSSStyleSheet* self, gulong index, GError** error);
+webkit_dom_css_style_sheet_delete_rule(CyberKitDOMCSSStyleSheet* self, gulong index, GError** error);
 
 /**
  * webkit_dom_css_style_sheet_add_rule:
- * @self: A #WebKitDOMCSSStyleSheet
+ * @self: A #CyberKitDOMCSSStyleSheet
  * @selector: A #gchar
  * @style: A #gchar
  * @index: A #gulong
@@ -87,11 +87,11 @@ webkit_dom_css_style_sheet_delete_rule(WebKitDOMCSSStyleSheet* self, gulong inde
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED glong
-webkit_dom_css_style_sheet_add_rule(WebKitDOMCSSStyleSheet* self, const gchar* selector, const gchar* style, gulong index, GError** error);
+webkit_dom_css_style_sheet_add_rule(CyberKitDOMCSSStyleSheet* self, const gchar* selector, const gchar* style, gulong index, GError** error);
 
 /**
  * webkit_dom_css_style_sheet_remove_rule:
- * @self: A #WebKitDOMCSSStyleSheet
+ * @self: A #CyberKitDOMCSSStyleSheet
  * @index: A #gulong
  * @error: #GError
  *
@@ -99,41 +99,41 @@ webkit_dom_css_style_sheet_add_rule(WebKitDOMCSSStyleSheet* self, const gchar* s
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_css_style_sheet_remove_rule(WebKitDOMCSSStyleSheet* self, gulong index, GError** error);
+webkit_dom_css_style_sheet_remove_rule(CyberKitDOMCSSStyleSheet* self, gulong index, GError** error);
 
 /**
  * webkit_dom_css_style_sheet_get_owner_rule:
- * @self: A #WebKitDOMCSSStyleSheet
+ * @self: A #CyberKitDOMCSSStyleSheet
  *
- * Returns: (transfer full): A #WebKitDOMCSSRule
+ * Returns: (transfer full): A #CyberKitDOMCSSRule
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMCSSRule*
-webkit_dom_css_style_sheet_get_owner_rule(WebKitDOMCSSStyleSheet* self);
+WEBKIT_DEPRECATED CyberKitDOMCSSRule*
+webkit_dom_css_style_sheet_get_owner_rule(CyberKitDOMCSSStyleSheet* self);
 
 /**
  * webkit_dom_css_style_sheet_get_css_rules:
- * @self: A #WebKitDOMCSSStyleSheet
+ * @self: A #CyberKitDOMCSSStyleSheet
  *
- * Returns: (transfer full): A #WebKitDOMCSSRuleList
+ * Returns: (transfer full): A #CyberKitDOMCSSRuleList
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMCSSRuleList*
-webkit_dom_css_style_sheet_get_css_rules(WebKitDOMCSSStyleSheet* self);
+WEBKIT_DEPRECATED CyberKitDOMCSSRuleList*
+webkit_dom_css_style_sheet_get_css_rules(CyberKitDOMCSSStyleSheet* self);
 
 /**
  * webkit_dom_css_style_sheet_get_rules:
- * @self: A #WebKitDOMCSSStyleSheet
+ * @self: A #CyberKitDOMCSSStyleSheet
  *
- * Returns: (transfer full): A #WebKitDOMCSSRuleList
+ * Returns: (transfer full): A #CyberKitDOMCSSRuleList
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMCSSRuleList*
-webkit_dom_css_style_sheet_get_rules(WebKitDOMCSSStyleSheet* self);
+WEBKIT_DEPRECATED CyberKitDOMCSSRuleList*
+webkit_dom_css_style_sheet_get_rules(CyberKitDOMCSSStyleSheet* self);
 
 G_END_DECLS
 
-#endif /* WebKitDOMCSSStyleSheet_h */
+#endif /* CyberKitDOMCSSStyleSheet_h */

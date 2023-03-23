@@ -67,7 +67,7 @@ static bool testFinished = false;
 
 namespace TestWebKitAPI {
 
-TEST(WebKitLegacy, CloseNewWindowInNavigationPolicyDelegate)
+TEST(CyberKitLegacy, CloseNewWindowInNavigationPolicyDelegate)
 {
     @autoreleasepool {
         RetainPtr<WebView> webView = adoptNS([[WebView alloc] init]);

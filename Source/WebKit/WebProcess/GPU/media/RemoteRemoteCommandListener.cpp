@@ -34,9 +34,9 @@
 #include "RemoteRemoteCommandListenerProxyMessages.h"
 #include "WebProcess.h"
 
-namespace WebKit {
+namespace CyberKit {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 std::unique_ptr<RemoteRemoteCommandListener> RemoteRemoteCommandListener::create(RemoteCommandListenerClient& client, WebProcess& webProcess)
 {
@@ -80,7 +80,7 @@ void RemoteRemoteCommandListener::gpuProcessConnectionDidClose(GPUProcessConnect
     // FIXME: Should we relaunch the GPUProcess pro-actively and re-create the RemoteCommandListener?
 }
 
-void RemoteRemoteCommandListener::didReceiveRemoteControlCommand(WebCore::PlatformMediaSession::RemoteControlCommandType type, const PlatformMediaSession::RemoteCommandArgument& argument)
+void RemoteRemoteCommandListener::didReceiveRemoteControlCommand(CyberCore::PlatformMediaSession::RemoteControlCommandType type, const PlatformMediaSession::RemoteCommandArgument& argument)
 {
     client().didReceiveRemoteControlCommand(type, argument);
 }

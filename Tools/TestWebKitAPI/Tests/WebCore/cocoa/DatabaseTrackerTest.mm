@@ -32,7 +32,7 @@
 #import <CyberCore/SecurityOriginData.h>
 #import <wtf/FileSystem.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 namespace TestWebKitAPI {
 

@@ -30,7 +30,7 @@
 #include "RenderMultiColumnFlow.h"
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // RenderMultiColumnSet represents a set of columns that all have the same width and height. By combining runs of same-size columns into a single
 // object, we significantly reduce the number of unique RenderObjects required to represent columns.
@@ -240,6 +240,6 @@ private:
     Vector<ContentRun, 1> m_contentRuns;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderMultiColumnSet, isRenderMultiColumnSet())

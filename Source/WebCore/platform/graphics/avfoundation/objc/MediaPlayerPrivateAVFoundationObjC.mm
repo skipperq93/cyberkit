@@ -71,10 +71,10 @@
 #import "VideoFrameCV.h"
 #import "VideoLayerManagerObjC.h"
 #import "VideoTrackPrivateAVFObjC.h"
-#import "WebCoreAVFResourceLoader.h"
-#import "WebCoreCALayerExtras.h"
-#import "WebCoreNSURLExtras.h"
-#import "WebCoreNSURLSession.h"
+#import "CyberCoreAVFResourceLoader.h"
+#import "CyberCoreCALayerExtras.h"
+#import "CyberCoreNSURLExtras.h"
+#import "CyberCoreNSURLSession.h"
 #import <AVFoundation/AVAssetImageGenerator.h>
 #import <AVFoundation/AVAssetTrack.h>
 #import <AVFoundation/AVMediaSelectionGroup.h>
@@ -137,8 +137,8 @@
 #import <pal/cocoa/MediaToolboxSoftLink.h>
 
 namespace std {
-template <> struct iterator_traits<HashSet<RefPtr<WebCore::MediaSelectionOptionAVFObjC>>::iterator> {
-    typedef RefPtr<WebCore::MediaSelectionOptionAVFObjC> value_type;
+template <> struct iterator_traits<HashSet<RefPtr<CyberCore::MediaSelectionOptionAVFObjC>>::iterator> {
+    typedef RefPtr<CyberCore::MediaSelectionOptionAVFObjC> value_type;
 };
 }
 
@@ -179,7 +179,7 @@ SOFT_LINK_CONSTANT(Celestial, AVController_RouteDescriptionKey_AVAudioRouteName,
 
 #endif // PLATFORM(IOS_FAMILY)
 
-using namespace WebCore;
+using namespace CyberCore;
 
 enum MediaPlayerAVFoundationObservationContext {
     MediaPlayerAVFoundationObservationContextPlayerItem,
@@ -188,7 +188,7 @@ enum MediaPlayerAVFoundationObservationContext {
     MediaPlayerAVFoundationObservationContextAVPlayerLayer,
 };
 
-@interface WebCoreAVFMovieObserver : NSObject <AVPlayerItemLegibleOutputPushDelegate, AVPlayerItemMetadataOutputPushDelegate, AVPlayerItemMetadataCollectorPushDelegate>
+@interface CyberCoreAVFMovieObserver : NSObject <AVPlayerItemLegibleOutputPushDelegate, AVPlayerItemMetadataOutputPushDelegate, AVPlayerItemMetadataCollectorPushDelegate>
 {
     WeakPtr<MediaPlayerPrivateAVFoundationObjC> m_player;
     int m_delayCallbacks;
@@ -206,14 +206,14 @@ enum MediaPlayerAVFoundationObservationContext {
 - (void)metadataOutput:(AVPlayerItemMetadataOutput *)output didOutputTimedMetadataGroups:(NSArray<AVTimedMetadataGroup *> *)groups fromPlayerItemTrack:(AVPlayerItemTrack *)track;
 @end
 
-@interface WebCoreAVFLoaderDelegate : NSObject<AVAssetResourceLoaderDelegate> {
+@interface CyberCoreAVFLoaderDelegate : NSObject<AVAssetResourceLoaderDelegate> {
     WeakPtr<MediaPlayerPrivateAVFoundationObjC> m_player;
 }
 - (id)initWithPlayer:(WeakPtr<MediaPlayerPrivateAVFoundationObjC>&&)player;
 - (BOOL)resourceLoader:(AVAssetResourceLoader *)resourceLoader shouldWaitForLoadingOfRequestedResource:(AVAssetResourceLoadingRequest *)loadingRequest;
 @end
 
-namespace WebCore {
+namespace CyberCore {
 static String convertEnumerationToString(AVPlayerTimeControlStatus enumerationValue)
 {
     static const NeverDestroyed<String> values[] = {
@@ -242,7 +242,7 @@ struct LogArgument<AVPlayerTimeControlStatus> {
 };
 }; // namespace WTF
 
-namespace WebCore {
+namespace CyberCore {
 
 static NSArray *assetMetadataKeyNames();
 static NSArray *itemKVOProperties();
@@ -254,7 +254,7 @@ static dispatch_queue_t globalLoaderDelegateQueue()
     static dispatch_queue_t globalQueue;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        globalQueue = dispatch_queue_create("WebCoreAVFLoaderDelegate queue", DISPATCH_QUEUE_SERIAL);
+        globalQueue = dispatch_queue_create("CyberCoreAVFLoaderDelegate queue", DISPATCH_QUEUE_SERIAL);
     });
     return globalQueue;
 }
@@ -441,8 +441,8 @@ void MediaPlayerPrivateAVFoundationObjC::clearMediaCacheForOrigins(const String&
 MediaPlayerPrivateAVFoundationObjC::MediaPlayerPrivateAVFoundationObjC(MediaPlayer* player)
     : MediaPlayerPrivateAVFoundation(player)
     , m_videoLayerManager(makeUnique<VideoLayerManagerObjC>(logger(), logIdentifier()))
-    , m_objcObserver(adoptNS([[WebCoreAVFMovieObserver alloc] initWithPlayer:*this]))
-    , m_loaderDelegate(adoptNS([[WebCoreAVFLoaderDelegate alloc] initWithPlayer:*this]))
+    , m_objcObserver(adoptNS([[CyberCoreAVFMovieObserver alloc] initWithPlayer:*this]))
+    , m_loaderDelegate(adoptNS([[CyberCoreAVFLoaderDelegate alloc] initWithPlayer:*this]))
     , m_cachedItemStatus(MediaPlayerAVPlayerItemStatusDoesNotExist)
 {
     m_muted = player->muted();
@@ -1017,7 +1017,7 @@ void MediaPlayerPrivateAVFoundationObjC::createAVAssetForURL(const URL& url, Ret
     [resourceLoader setDelegate:m_loaderDelegate.get() queue:globalLoaderDelegateQueue()];
 
     if (auto mediaResourceLoader = player()->createResourceLoader())
-        resourceLoader.URLSession = (NSURLSession *)adoptNS([[WebCoreNSURLSession alloc] initWithResourceLoader:*mediaResourceLoader delegate:resourceLoader.URLSessionDataDelegate delegateQueue:resourceLoader.URLSessionDataDelegateQueue]).get();
+        resourceLoader.URLSession = (NSURLSession *)adoptNS([[CyberCoreNSURLSession alloc] initWithResourceLoader:*mediaResourceLoader delegate:resourceLoader.URLSessionDataDelegate delegateQueue:resourceLoader.URLSessionDataDelegateQueue]).get();
 
     [[NSNotificationCenter defaultCenter] addObserver:m_objcObserver.get() selector:@selector(chapterMetadataDidChange:) name:AVAssetChapterMetadataGroupsDidChangeNotification object:m_avAsset.get()];
 
@@ -2201,7 +2201,7 @@ bool MediaPlayerPrivateAVFoundationObjC::shouldWaitForLoadingOfResource(AVAssetR
 #endif
 #endif
 
-    auto resourceLoader = WebCoreAVFResourceLoader::create(this, avRequest);
+    auto resourceLoader = CyberCoreAVFResourceLoader::create(this, avRequest);
     m_resourceLoaderMap.add((__bridge CFTypeRef)avRequest, resourceLoader.copyRef());
     resourceLoader->startLoading();
     return true;
@@ -2211,7 +2211,7 @@ void MediaPlayerPrivateAVFoundationObjC::didCancelLoadingRequest(AVAssetResource
 {
     String scheme = [[[avRequest request] URL] scheme];
 
-    WebCoreAVFResourceLoader* resourceLoader = m_resourceLoaderMap.get((__bridge CFTypeRef)avRequest);
+    CyberCoreAVFResourceLoader* resourceLoader = m_resourceLoaderMap.get((__bridge CFTypeRef)avRequest);
 
     if (resourceLoader)
         resourceLoader->stopLoading();
@@ -2618,8 +2618,8 @@ void MediaPlayerPrivateAVFoundationObjC::resolvedURLChanged()
 bool MediaPlayerPrivateAVFoundationObjC::didPassCORSAccessCheck() const
 {
     AVAssetResourceLoader *resourceLoader = m_avAsset.get().resourceLoader;
-    WebCoreNSURLSession *session = (WebCoreNSURLSession *)resourceLoader.URLSession;
-    if ([session isKindOfClass:[WebCoreNSURLSession class]])
+    CyberCoreNSURLSession *session = (CyberCoreNSURLSession *)resourceLoader.URLSession;
+    if ([session isKindOfClass:[CyberCoreNSURLSession class]])
         return session.didPassCORSAccessChecks;
 
     return false;
@@ -2628,8 +2628,8 @@ bool MediaPlayerPrivateAVFoundationObjC::didPassCORSAccessCheck() const
 std::optional<bool> MediaPlayerPrivateAVFoundationObjC::isCrossOrigin(const SecurityOrigin& origin) const
 {
     AVAssetResourceLoader *resourceLoader = m_avAsset.get().resourceLoader;
-    WebCoreNSURLSession *session = (WebCoreNSURLSession *)resourceLoader.URLSession;
-    if ([session isKindOfClass:[WebCoreNSURLSession class]])
+    CyberCoreNSURLSession *session = (CyberCoreNSURLSession *)resourceLoader.URLSession;
+    if ([session isKindOfClass:[CyberCoreNSURLSession class]])
         return [session isCrossOrigin:origin];
 
     return std::nullopt;
@@ -3652,7 +3652,7 @@ void MediaPlayerPrivateAVFoundationObjC::metadataDidArrive(const RetainPtr<NSArr
         if (item.keySpace)
             type = metadataType(item.keySpace);
 
-        m_metadataTrack->addDataCue(start, end, SerializedPlatformDataCue::create({ WebCore::SerializedPlatformDataCueValue::PlatformType::ObjC, item }), type);
+        m_metadataTrack->addDataCue(start, end, SerializedPlatformDataCue::create({ CyberCore::SerializedPlatformDataCueValue::PlatformType::ObjC, item }), type);
     }
 #endif
 }
@@ -3946,9 +3946,9 @@ NSArray* playerKVOProperties()
     nil];
     return keys;
 }
-} // namespace WebCore
+} // namespace CyberCore
 
-@implementation WebCoreAVFMovieObserver
+@implementation CyberCoreAVFMovieObserver
 
 - (id)initWithPlayer:(WeakPtr<MediaPlayerPrivateAVFoundationObjC>&&)player
 {
@@ -3956,7 +3956,7 @@ NSArray* playerKVOProperties()
     if (!self)
         return nil;
     m_player = WTFMove(player);
-    m_backgroundQueue = WorkQueue::create("WebCoreAVFMovieObserver Background Queue");
+    m_backgroundQueue = WorkQueue::create("CyberCoreAVFMovieObserver Background Queue");
     return self;
 }
 
@@ -4200,7 +4200,7 @@ NSArray* playerKVOProperties()
 }
 @end
 
-@implementation WebCoreAVFLoaderDelegate
+@implementation CyberCoreAVFLoaderDelegate
 
 - (id)initWithPlayer:(WeakPtr<MediaPlayerPrivateAVFoundationObjC>&&)player
 {

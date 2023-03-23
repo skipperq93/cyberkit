@@ -29,14 +29,14 @@
 #import <wtf/NakedPtr.h>
 #import <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 class HTMLVideoElement;
 }
 
 @class WebWindowFadeAnimation;
 
 @interface WebVideoFullscreenController : NSWindowController {
-    RefPtr<WebCore::HTMLVideoElement> _videoElement;
+    RefPtr<CyberCore::HTMLVideoElement> _videoElement;
 
     NSWindow *_backgroundFullscreenWindow; // (retain)
 
@@ -46,8 +46,8 @@ class HTMLVideoElement;
     BOOL _forceDisableAnimation;
 }
 
-- (void)setVideoElement:(NakedPtr<WebCore::HTMLVideoElement>)videoElement;
-- (NakedPtr<WebCore::HTMLVideoElement>)videoElement;
+- (void)setVideoElement:(NakedPtr<CyberCore::HTMLVideoElement>)videoElement;
+- (NakedPtr<CyberCore::HTMLVideoElement>)videoElement;
 
 - (void)enterFullscreen:(NSScreen *)screen;
 - (void)exitFullscreen;

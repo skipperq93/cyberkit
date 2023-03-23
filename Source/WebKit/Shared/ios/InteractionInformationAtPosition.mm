@@ -27,7 +27,7 @@
 #import "InteractionInformationAtPosition.h"
 
 #import "ArgumentCodersCocoa.h"
-#import "WebCoreArgumentCoders.h"
+#import "CyberCoreArgumentCoders.h"
 #import <pal/cocoa/DataDetectorsCoreSoftLink.h>
 
 namespace WebKit {

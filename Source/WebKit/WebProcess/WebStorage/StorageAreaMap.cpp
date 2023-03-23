@@ -45,10 +45,10 @@
 #include <CyberCore/StorageMap.h>
 #include <CyberCore/StorageType.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
-StorageAreaMap::StorageAreaMap(StorageNamespaceImpl& storageNamespace, Ref<const WebCore::SecurityOrigin>&& securityOrigin)
+StorageAreaMap::StorageAreaMap(StorageNamespaceImpl& storageNamespace, Ref<const CyberCore::SecurityOrigin>&& securityOrigin)
     : m_identifier(StorageAreaMapIdentifier::generate())
     , m_namespace(storageNamespace)
     , m_securityOrigin(WTFMove(securityOrigin))
@@ -108,7 +108,7 @@ void StorageAreaMap::setItem(Frame& sourceFrame, StorageAreaImpl* sourceArea, co
     connection.sendWithAsyncReply(Messages::NetworkStorageManager::SetItem(*m_remoteAreaIdentifier, sourceArea->identifier(), key, value, sourceFrame.document()->url().string()), WTFMove(callback));
 }
 
-void StorageAreaMap::removeItem(WebCore::Frame& sourceFrame, StorageAreaImpl* sourceArea, const String& key)
+void StorageAreaMap::removeItem(CyberCore::Frame& sourceFrame, StorageAreaImpl* sourceArea, const String& key)
 {
     auto& map = ensureMap();
     ASSERT(!map.isShared());
@@ -133,7 +133,7 @@ void StorageAreaMap::removeItem(WebCore::Frame& sourceFrame, StorageAreaImpl* so
     WebProcess::singleton().ensureNetworkProcessConnection().connection().sendWithAsyncReply(Messages::NetworkStorageManager::RemoveItem(*m_remoteAreaIdentifier, sourceArea->identifier(), key, sourceFrame.document()->url().string()), WTFMove(callback));
 }
 
-void StorageAreaMap::clear(WebCore::Frame& sourceFrame, StorageAreaImpl* sourceArea)
+void StorageAreaMap::clear(CyberCore::Frame& sourceFrame, StorageAreaImpl* sourceArea)
 {
     ensureMap().clear();
     m_pendingValueChanges.clear();
@@ -270,11 +270,11 @@ StorageType StorageAreaMap::computeStorageType() const
     return type;
 }
 
-WebCore::ClientOrigin StorageAreaMap::clientOrigin() const
+CyberCore::ClientOrigin StorageAreaMap::clientOrigin() const
 {
     auto originData = m_securityOrigin->data();
     auto topOriginData = m_namespace.topLevelOrigin() ? m_namespace.topLevelOrigin()->data() : originData;
-    return WebCore::ClientOrigin { topOriginData, originData };
+    return CyberCore::ClientOrigin { topOriginData, originData };
 }
 
 void StorageAreaMap::sendConnectMessage(SendMode mode)
@@ -393,5 +393,5 @@ void StorageAreaMap::syncItems(HashMap<String, String>&& items)
     }
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 

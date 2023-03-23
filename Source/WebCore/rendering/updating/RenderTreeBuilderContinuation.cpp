@@ -28,7 +28,7 @@
 
 #include "RenderBoxModelObject.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 RenderTreeBuilder::Continuation::Continuation(RenderTreeBuilder& builder)
     : m_builder(builder)

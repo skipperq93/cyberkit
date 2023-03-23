@@ -34,13 +34,13 @@ namespace WebKit {
 
 class MockLocalService final : public LocalService {
 public:
-    MockLocalService(Observer&, const WebCore::MockWebAuthenticationConfiguration&);
+    MockLocalService(Observer&, const CyberCore::MockWebAuthenticationConfiguration&);
 
 private:
     bool platformStartDiscovery() const final;
     UniqueRef<LocalConnection> createLocalConnection() const final;
 
-    WebCore::MockWebAuthenticationConfiguration m_configuration;
+    CyberCore::MockWebAuthenticationConfiguration m_configuration;
 };
 
 } // namespace WebKit

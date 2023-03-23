@@ -30,7 +30,7 @@
 
 #include "PDFPlugin.h"
 #include "ShareableBitmap.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebFrame.h"
 #include "WebKeyboardEvent.h"
 #include "WebLoaderStrategy.h"
@@ -75,9 +75,9 @@
 #include <wtf/CompletionHandler.h>
 #include <wtf/text/StringBuilder.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace JSC;
-using namespace WebCore;
+using namespace CyberCore;
 
 class PluginView::Stream : public RefCounted<PluginView::Stream>, NetscapePlugInStreamLoaderClient {
 public:
@@ -405,7 +405,7 @@ bool PluginView::wantsWheelEvents()
     return true;
 }
 
-void PluginView::setFrameRect(const WebCore::IntRect& rect)
+void PluginView::setFrameRect(const CyberCore::IntRect& rect)
 {
     Widget::setFrameRect(rect);
     viewGeometryDidChange();
@@ -458,7 +458,7 @@ void PluginView::setParent(ScrollView* scrollView)
         initializePlugin();
 }
 
-unsigned PluginView::countFindMatches(const String& target, WebCore::FindOptions options, unsigned maxMatchCount)
+unsigned PluginView::countFindMatches(const String& target, CyberCore::FindOptions options, unsigned maxMatchCount)
 {
     if (!m_isInitialized)
         return 0;
@@ -466,7 +466,7 @@ unsigned PluginView::countFindMatches(const String& target, WebCore::FindOptions
     return m_plugin->countFindMatches(target, options, maxMatchCount);
 }
 
-bool PluginView::findString(const String& target, WebCore::FindOptions options, unsigned maxMatchCount)
+bool PluginView::findString(const String& target, CyberCore::FindOptions options, unsigned maxMatchCount)
 {
     if (!m_isInitialized)
         return false;
@@ -561,7 +561,7 @@ RefPtr<FragmentedSharedBuffer> PluginView::liveResourceData() const
     return m_plugin->liveResourceData();
 }
 
-bool PluginView::performDictionaryLookupAtLocation(const WebCore::FloatPoint& point)
+bool PluginView::performDictionaryLookupAtLocation(const CyberCore::FloatPoint& point)
 {
     if (!m_isInitialized)
         return false;
@@ -569,7 +569,7 @@ bool PluginView::performDictionaryLookupAtLocation(const WebCore::FloatPoint& po
     return m_plugin->performDictionaryLookupAtLocation(point);
 }
 
-bool PluginView::existingSelectionContainsPoint(const WebCore::FloatPoint& point) const
+bool PluginView::existingSelectionContainsPoint(const CyberCore::FloatPoint& point) const
 {
     if (!m_isInitialized)
         return false;
@@ -780,22 +780,22 @@ RetainPtr<PDFDocument> PluginView::pdfDocumentForPrinting() const
     return m_plugin->pdfDocumentForPrinting();
 }
 
-WebCore::FloatSize PluginView::pdfDocumentSizeForPrinting() const
+CyberCore::FloatSize PluginView::pdfDocumentSizeForPrinting() const
 {
     return m_plugin->pdfDocumentSizeForPrinting();
 }
 
-id PluginView::accessibilityHitTest(const WebCore::IntPoint& point) const
+id PluginView::accessibilityHitTest(const CyberCore::IntPoint& point) const
 {
     return m_plugin->accessibilityHitTest(point);
 }
 
-std::tuple<String, PDFSelection *, NSDictionary *> PluginView::lookupTextAtLocation(const WebCore::FloatPoint& point, WebHitTestResultData& data) const
+std::tuple<String, PDFSelection *, NSDictionary *> PluginView::lookupTextAtLocation(const CyberCore::FloatPoint& point, WebHitTestResultData& data) const
 {
     return m_plugin->lookupTextAtLocation(point, data);
 }
 
-WebCore::FloatRect PluginView::rectForSelectionInRootView(PDFSelection *selection) const
+CyberCore::FloatRect PluginView::rectForSelectionInRootView(PDFSelection *selection) const
 {
     return m_plugin->rectForSelectionInRootView(selection);
 }
@@ -810,6 +810,6 @@ bool PluginView::isUsingUISideCompositing() const
     return m_webPage->isUsingUISideCompositing();
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

@@ -23,34 +23,34 @@
 messages -> NetworkConnectionToWebProcess LegacyReceiver {
 
     ScheduleResourceLoad(WebKit::NetworkResourceLoadParameters resourceLoadParameters, std::optional<WebKit::NetworkResourceLoadIdentifier> existingLoaderToResume)
-    PerformSynchronousLoad(WebKit::NetworkResourceLoadParameters resourceLoadParameters) -> (WebCore::ResourceError error, WebCore::ResourceResponse response, Vector<uint8_t> data) Synchronous
+    PerformSynchronousLoad(WebKit::NetworkResourceLoadParameters resourceLoadParameters) -> (CyberCore::ResourceError error, CyberCore::ResourceResponse response, Vector<uint8_t> data) Synchronous
     TestProcessIncomingSyncMessagesWhenWaitingForSyncReply(WebKit::WebPageProxyIdentifier pageID) -> (bool handled) Synchronous
     LoadPing(WebKit::NetworkResourceLoadParameters resourceLoadParameters)
-    RemoveLoadIdentifier(WebCore::ResourceLoaderIdentifier resourceLoadIdentifier)
-    PageLoadCompleted(WebCore::PageIdentifier webPageID)
-    BrowsingContextRemoved(WebKit::WebPageProxyIdentifier webPageProxyID, WebCore::PageIdentifier webPageID, WebCore::FrameIdentifier webFrameID)
+    RemoveLoadIdentifier(CyberCore::ResourceLoaderIdentifier resourceLoadIdentifier)
+    PageLoadCompleted(CyberCore::PageIdentifier webPageID)
+    BrowsingContextRemoved(WebKit::WebPageProxyIdentifier webPageProxyID, CyberCore::PageIdentifier webPageID, CyberCore::FrameIdentifier webFrameID)
     PrefetchDNS(String hostname)
-    SendH2Ping(WebKit::NetworkResourceLoadParameters parameters) -> (Expected<Seconds, WebCore::ResourceError> result)
-    PreconnectTo(std::optional<WebCore::ResourceLoaderIdentifier> preconnectionIdentifier, WebKit::NetworkResourceLoadParameters loadParameters);
-    IsResourceLoadFinished(WebCore::ResourceLoaderIdentifier resourceLoadIdentifier) -> (bool isFinished)
+    SendH2Ping(WebKit::NetworkResourceLoadParameters parameters) -> (Expected<Seconds, CyberCore::ResourceError> result)
+    PreconnectTo(std::optional<CyberCore::ResourceLoaderIdentifier> preconnectionIdentifier, WebKit::NetworkResourceLoadParameters loadParameters);
+    IsResourceLoadFinished(CyberCore::ResourceLoaderIdentifier resourceLoadIdentifier) -> (bool isFinished)
 
-    StartDownload(WebKit::DownloadID downloadID, WebCore::ResourceRequest request, std::optional<WebKit::NavigatingToAppBoundDomain> isNavigatingToAppBoundDomain, String suggestedName)
-    ConvertMainResourceLoadToDownload(std::optional<WebCore::ResourceLoaderIdentifier> mainResourceLoadIdentifier, WebKit::DownloadID downloadID, WebCore::ResourceRequest request, WebCore::ResourceResponse response, std::optional<WebKit::NavigatingToAppBoundDomain> isNavigatingToAppBoundDomain)
+    StartDownload(WebKit::DownloadID downloadID, CyberCore::ResourceRequest request, std::optional<WebKit::NavigatingToAppBoundDomain> isNavigatingToAppBoundDomain, String suggestedName)
+    ConvertMainResourceLoadToDownload(std::optional<CyberCore::ResourceLoaderIdentifier> mainResourceLoadIdentifier, WebKit::DownloadID downloadID, CyberCore::ResourceRequest request, CyberCore::ResourceResponse response, std::optional<WebKit::NavigatingToAppBoundDomain> isNavigatingToAppBoundDomain)
 
-    CookiesForDOM(URL firstParty, struct WebCore::SameSiteInfo sameSiteInfo, URL url, WebCore::FrameIdentifier frameID, WebCore::PageIdentifier pageID, enum:bool WebCore::IncludeSecureCookies includeSecureCookies, enum:bool WebCore::ApplyTrackingPrevention applyTrackingPrevention, enum:bool WebCore::ShouldRelaxThirdPartyCookieBlocking shouldRelaxThirdPartyCookieBlocking) -> (String cookieString, bool didAccessSecureCookies) Synchronous
-    SetCookiesFromDOM(URL firstParty, struct WebCore::SameSiteInfo sameSiteInfo, URL url, WebCore::FrameIdentifier frameID, WebCore::PageIdentifier pageID, enum:bool WebCore::ApplyTrackingPrevention applyTrackingPrevention, String cookieString, enum:bool WebCore::ShouldRelaxThirdPartyCookieBlocking shouldRelaxThirdPartyCookieBlocking)
-    CookieRequestHeaderFieldValue(URL firstParty, struct WebCore::SameSiteInfo sameSiteInfo, URL url, std::optional<WebCore::FrameIdentifier> frameID, std::optional<WebCore::PageIdentifier> pageID, enum:bool WebCore::IncludeSecureCookies includeSecureCookies, enum:bool WebCore::ApplyTrackingPrevention applyTrackingPrevention, enum:bool WebCore::ShouldRelaxThirdPartyCookieBlocking shouldRelaxThirdPartyCookieBlocking) -> (String cookieString, bool didAccessSecureCookies) Synchronous
-    GetRawCookies(URL firstParty, struct WebCore::SameSiteInfo sameSiteInfo, URL url, std::optional<WebCore::FrameIdentifier> frameID, std::optional<WebCore::PageIdentifier> pageID, enum:bool WebCore::ApplyTrackingPrevention applyTrackingPrevention, enum:bool WebCore::ShouldRelaxThirdPartyCookieBlocking shouldRelaxThirdPartyCookieBlocking) -> (Vector<WebCore::Cookie> cookies) Synchronous
-    SetRawCookie(struct WebCore::Cookie cookie)
+    CookiesForDOM(URL firstParty, struct CyberCore::SameSiteInfo sameSiteInfo, URL url, CyberCore::FrameIdentifier frameID, CyberCore::PageIdentifier pageID, enum:bool CyberCore::IncludeSecureCookies includeSecureCookies, enum:bool CyberCore::ApplyTrackingPrevention applyTrackingPrevention, enum:bool CyberCore::ShouldRelaxThirdPartyCookieBlocking shouldRelaxThirdPartyCookieBlocking) -> (String cookieString, bool didAccessSecureCookies) Synchronous
+    SetCookiesFromDOM(URL firstParty, struct CyberCore::SameSiteInfo sameSiteInfo, URL url, CyberCore::FrameIdentifier frameID, CyberCore::PageIdentifier pageID, enum:bool CyberCore::ApplyTrackingPrevention applyTrackingPrevention, String cookieString, enum:bool CyberCore::ShouldRelaxThirdPartyCookieBlocking shouldRelaxThirdPartyCookieBlocking)
+    CookieRequestHeaderFieldValue(URL firstParty, struct CyberCore::SameSiteInfo sameSiteInfo, URL url, std::optional<CyberCore::FrameIdentifier> frameID, std::optional<CyberCore::PageIdentifier> pageID, enum:bool CyberCore::IncludeSecureCookies includeSecureCookies, enum:bool CyberCore::ApplyTrackingPrevention applyTrackingPrevention, enum:bool CyberCore::ShouldRelaxThirdPartyCookieBlocking shouldRelaxThirdPartyCookieBlocking) -> (String cookieString, bool didAccessSecureCookies) Synchronous
+    GetRawCookies(URL firstParty, struct CyberCore::SameSiteInfo sameSiteInfo, URL url, std::optional<CyberCore::FrameIdentifier> frameID, std::optional<CyberCore::PageIdentifier> pageID, enum:bool CyberCore::ApplyTrackingPrevention applyTrackingPrevention, enum:bool CyberCore::ShouldRelaxThirdPartyCookieBlocking shouldRelaxThirdPartyCookieBlocking) -> (Vector<CyberCore::Cookie> cookies) Synchronous
+    SetRawCookie(struct CyberCore::Cookie cookie)
     DeleteCookie(URL url, String cookieName) -> ()
-    DomCookiesForHost(URL host, bool subscribeToCookieChangeNotifications) -> (Vector<WebCore::Cookie> cookies) Synchronous
+    DomCookiesForHost(URL host, bool subscribeToCookieChangeNotifications) -> (Vector<CyberCore::Cookie> cookies) Synchronous
 #if HAVE(COOKIE_CHANGE_LISTENER_API)
     UnsubscribeFromCookieChangeNotifications(HashSet<String> hosts)
 #endif
 
     RegisterFileBlobURL(URL url, String path, String replacementPath, WebKit::SandboxExtension::Handle extensionHandle, String contentType)
-    RegisterBlobURL(URL url, Vector<WebCore::BlobPart> blobParts, String contentType)
-    RegisterBlobURLFromURL(URL url, URL srcURL, struct WebCore::PolicyContainer policyContainer)
+    RegisterBlobURL(URL url, Vector<CyberCore::BlobPart> blobParts, String contentType)
+    RegisterBlobURLFromURL(URL url, URL srcURL, struct CyberCore::PolicyContainer policyContainer)
     RegisterBlobURLOptionallyFileBacked(URL url, URL srcURL, String fileBackedPath, String contentType)
     RegisterBlobURLForSlice(URL url, URL srcURL, int64_t start, int64_t end, String contentType)
     UnregisterBlobURL(URL url)
@@ -61,59 +61,59 @@ messages -> NetworkConnectionToWebProcess LegacyReceiver {
 
     SetCaptureExtraNetworkLoadMetricsEnabled(bool enabled)
 
-    CreateSocketStream(URL url, String cachePartition, WebCore::WebSocketIdentifier identifier)
-    CreateSocketChannel(WebCore::ResourceRequest request, String protocol, WebCore::WebSocketIdentifier identifier, WebKit::WebPageProxyIdentifier webPageProxyID, struct WebCore::ClientOrigin clientOrigin, bool hadMainFrameMainResourcePrivateRelayed, bool allowPrivacyProxy, OptionSet<WebCore::NetworkConnectionIntegrity> networkConnectionIntegrityPolicy)
+    CreateSocketStream(URL url, String cachePartition, CyberCore::WebSocketIdentifier identifier)
+    CreateSocketChannel(CyberCore::ResourceRequest request, String protocol, CyberCore::WebSocketIdentifier identifier, WebKit::WebPageProxyIdentifier webPageProxyID, struct CyberCore::ClientOrigin clientOrigin, bool hadMainFrameMainResourcePrivateRelayed, bool allowPrivacyProxy, OptionSet<CyberCore::NetworkConnectionIntegrity> networkConnectionIntegrityPolicy)
 
-    ClearPageSpecificData(WebCore::PageIdentifier pageID);
+    ClearPageSpecificData(CyberCore::PageIdentifier pageID);
 
 #if ENABLE(TRACKING_PREVENTION)
-    RemoveStorageAccessForFrame(WebCore::FrameIdentifier frameID, WebCore::PageIdentifier pageID);
-    LogUserInteraction(WebCore::RegistrableDomain domain)
-    ResourceLoadStatisticsUpdated(Vector<WebCore::ResourceLoadStatistics> statistics) -> ()
-    HasStorageAccess(WebCore::RegistrableDomain subFrameDomain, WebCore::RegistrableDomain topFrameDomain, WebCore::FrameIdentifier frameID, WebCore::PageIdentifier pageID) -> (bool hasStorageAccess)
-    RequestStorageAccess(WebCore::RegistrableDomain subFrameDomain, WebCore::RegistrableDomain topFrameDomain, WebCore::FrameIdentifier frameID, WebCore::PageIdentifier webPageID, WebKit::WebPageProxyIdentifier webPageProxyID, enum:bool WebCore::StorageAccessScope scope) -> (struct WebCore::RequestStorageAccessResult result)
-    RequestStorageAccessUnderOpener(WebCore::RegistrableDomain domainInNeedOfStorageAccess, WebCore::PageIdentifier openerPageID, WebCore::RegistrableDomain openerDomain)
+    RemoveStorageAccessForFrame(CyberCore::FrameIdentifier frameID, CyberCore::PageIdentifier pageID);
+    LogUserInteraction(CyberCore::RegistrableDomain domain)
+    ResourceLoadStatisticsUpdated(Vector<CyberCore::ResourceLoadStatistics> statistics) -> ()
+    HasStorageAccess(CyberCore::RegistrableDomain subFrameDomain, CyberCore::RegistrableDomain topFrameDomain, CyberCore::FrameIdentifier frameID, CyberCore::PageIdentifier pageID) -> (bool hasStorageAccess)
+    RequestStorageAccess(CyberCore::RegistrableDomain subFrameDomain, CyberCore::RegistrableDomain topFrameDomain, CyberCore::FrameIdentifier frameID, CyberCore::PageIdentifier webPageID, WebKit::WebPageProxyIdentifier webPageProxyID, enum:bool CyberCore::StorageAccessScope scope) -> (struct CyberCore::RequestStorageAccessResult result)
+    RequestStorageAccessUnderOpener(CyberCore::RegistrableDomain domainInNeedOfStorageAccess, CyberCore::PageIdentifier openerPageID, CyberCore::RegistrableDomain openerDomain)
 #endif
 
     AddOriginAccessAllowListEntry(String sourceOrigin, String destinationProtocol, String destinationHost, bool allowDestinationSubdomains);
     RemoveOriginAccessAllowListEntry(String sourceOrigin, String destinationProtocol, String destinationHost, bool allowDestinationSubdomains);
     ResetOriginAccessAllowLists();
 
-    GetNetworkLoadInformationResponse(WebCore::ResourceLoaderIdentifier resourceLoadIdentifier) -> (WebCore::ResourceResponse response) Synchronous
-    GetNetworkLoadIntermediateInformation(WebCore::ResourceLoaderIdentifier resourceLoadIdentifier) -> (Vector<WebCore::NetworkTransactionInformation> transactions) Synchronous
-    TakeNetworkLoadInformationMetrics(WebCore::ResourceLoaderIdentifier resourceLoadIdentifier) -> (WebCore::NetworkLoadMetrics networkMetrics) Synchronous
+    GetNetworkLoadInformationResponse(CyberCore::ResourceLoaderIdentifier resourceLoadIdentifier) -> (CyberCore::ResourceResponse response) Synchronous
+    GetNetworkLoadIntermediateInformation(CyberCore::ResourceLoaderIdentifier resourceLoadIdentifier) -> (Vector<CyberCore::NetworkTransactionInformation> transactions) Synchronous
+    TakeNetworkLoadInformationMetrics(CyberCore::ResourceLoaderIdentifier resourceLoadIdentifier) -> (CyberCore::NetworkLoadMetrics networkMetrics) Synchronous
 
 #if ENABLE(SERVICE_WORKER)
-    EstablishSWContextConnection(WebKit::WebPageProxyIdentifier webPageProxyID, WebCore::RegistrableDomain domain, std::optional<WebCore::ScriptExecutionContextIdentifier> serviceWorkerPageIdentifier) -> ()
+    EstablishSWContextConnection(WebKit::WebPageProxyIdentifier webPageProxyID, CyberCore::RegistrableDomain domain, std::optional<CyberCore::ScriptExecutionContextIdentifier> serviceWorkerPageIdentifier) -> ()
     CloseSWContextConnection()
 #endif
 
-    EstablishSharedWorkerContextConnection(WebKit::WebPageProxyIdentifier webPageProxyID, WebCore::RegistrableDomain domain) -> ()
+    EstablishSharedWorkerContextConnection(WebKit::WebPageProxyIdentifier webPageProxyID, CyberCore::RegistrableDomain domain) -> ()
     CloseSharedWorkerContextConnection()
 
     CreateRTCProvider() -> ()
 #if ENABLE(WEB_RTC)
-    ConnectToRTCDataChannelRemoteSource(struct WebCore::RTCDataChannelIdentifier source, struct WebCore::RTCDataChannelIdentifier handler) -> (std::optional<bool> result)
+    ConnectToRTCDataChannelRemoteSource(struct CyberCore::RTCDataChannelIdentifier source, struct CyberCore::RTCDataChannelIdentifier handler) -> (std::optional<bool> result)
 #endif
 
-    UpdateQuotaBasedOnSpaceUsageForTesting(struct WebCore::ClientOrigin origin)
-    CreateNewMessagePortChannel(struct WebCore::MessagePortIdentifier port1, struct WebCore::MessagePortIdentifier port2)
-    EntangleLocalPortInThisProcessToRemote(struct WebCore::MessagePortIdentifier local, struct WebCore::MessagePortIdentifier remote)
-    MessagePortDisentangled(struct WebCore::MessagePortIdentifier local)
-    MessagePortClosed(struct WebCore::MessagePortIdentifier local)
-    TakeAllMessagesForPort(struct WebCore::MessagePortIdentifier port) -> (Vector<WebCore::MessageWithMessagePorts> messages, uint64_t messageBatchIdentifier)
-    PostMessageToRemote(struct WebCore::MessageWithMessagePorts message, struct WebCore::MessagePortIdentifier remote)
+    UpdateQuotaBasedOnSpaceUsageForTesting(struct CyberCore::ClientOrigin origin)
+    CreateNewMessagePortChannel(struct CyberCore::MessagePortIdentifier port1, struct CyberCore::MessagePortIdentifier port2)
+    EntangleLocalPortInThisProcessToRemote(struct CyberCore::MessagePortIdentifier local, struct CyberCore::MessagePortIdentifier remote)
+    MessagePortDisentangled(struct CyberCore::MessagePortIdentifier local)
+    MessagePortClosed(struct CyberCore::MessagePortIdentifier local)
+    TakeAllMessagesForPort(struct CyberCore::MessagePortIdentifier port) -> (Vector<CyberCore::MessageWithMessagePorts> messages, uint64_t messageBatchIdentifier)
+    PostMessageToRemote(struct CyberCore::MessageWithMessagePorts message, struct CyberCore::MessagePortIdentifier remote)
     DidDeliverMessagePortMessages(uint64_t messageBatchIdentifier)
     RegisterURLSchemesAsCORSEnabled(Vector<String> schemes);
-    SetCORSDisablingPatterns(WebCore::PageIdentifier pageIdentifier, Vector<String> patterns)
+    SetCORSDisablingPatterns(CyberCore::PageIdentifier pageIdentifier, Vector<String> patterns)
 #if PLATFORM(MAC)
     GetProcessDisplayName(audit_token_t auditToken) -> (String displayName)
     UpdateActivePages(String name, Vector<String> activePagesOrigins, audit_token_t auditToken)
 #endif
-    SetResourceLoadSchedulingMode(WebCore::PageIdentifier webPageID, enum:uint8_t WebCore::LoadSchedulingMode mode)
-    PrioritizeResourceLoads(Vector<WebCore::ResourceLoaderIdentifier> loadIdentifiers)
+    SetResourceLoadSchedulingMode(CyberCore::PageIdentifier webPageID, enum:uint8_t CyberCore::LoadSchedulingMode mode)
+    PrioritizeResourceLoads(Vector<CyberCore::ResourceLoaderIdentifier> loadIdentifiers)
 
 #if ENABLE(CONTENT_FILTERING_IN_NETWORKING_PROCESS)
-    InstallMockContentFilter(WebCore::MockContentFilterSettings settings)
+    InstallMockContentFilter(CyberCore::MockContentFilterSettings settings)
 #endif
 }

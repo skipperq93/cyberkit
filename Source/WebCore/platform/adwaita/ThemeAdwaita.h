@@ -31,7 +31,7 @@
 #include "StyleColor.h"
 #include "Theme.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class Path;
 
@@ -65,6 +65,6 @@ private:
     Color m_accentColor { SRGBA<uint8_t> { 52, 132, 228 } };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(THEME_ADWAITA)

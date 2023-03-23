@@ -42,21 +42,21 @@ class SharedBufferReference {
 public:
     SharedBufferReference() = default;
 
-    explicit SharedBufferReference(RefPtr<WebCore::FragmentedSharedBuffer>&& buffer)
+    explicit SharedBufferReference(RefPtr<CyberCore::FragmentedSharedBuffer>&& buffer)
         : m_size(buffer ? buffer->size() : 0)
         , m_buffer(WTFMove(buffer)) { }
-    explicit SharedBufferReference(Ref<WebCore::FragmentedSharedBuffer>&& buffer)
+    explicit SharedBufferReference(Ref<CyberCore::FragmentedSharedBuffer>&& buffer)
         : m_size(buffer->size())
         , m_buffer(WTFMove(buffer)) { }
-    explicit SharedBufferReference(RefPtr<WebCore::SharedBuffer>&& buffer)
+    explicit SharedBufferReference(RefPtr<CyberCore::SharedBuffer>&& buffer)
         : m_size(buffer ? buffer->size() : 0)
         , m_buffer(WTFMove(buffer)) { }
-    explicit SharedBufferReference(Ref<WebCore::SharedBuffer>&& buffer)
+    explicit SharedBufferReference(Ref<CyberCore::SharedBuffer>&& buffer)
         : m_size(buffer->size())
         , m_buffer(WTFMove(buffer)) { }
-    explicit SharedBufferReference(const WebCore::FragmentedSharedBuffer& buffer)
+    explicit SharedBufferReference(const CyberCore::FragmentedSharedBuffer& buffer)
         : m_size(buffer.size())
-        , m_buffer(const_cast<WebCore::FragmentedSharedBuffer*>(&buffer)) { }
+        , m_buffer(const_cast<CyberCore::FragmentedSharedBuffer*>(&buffer)) { }
 
     SharedBufferReference(const SharedBufferReference&) = default;
     SharedBufferReference(SharedBufferReference&&) = default;
@@ -70,7 +70,7 @@ public:
     // The following method must only be used on the receiver's IPC side.
     // It relies on an implementation detail that makes m_buffer become a contiguous SharedBuffer
     // once it's deserialised over IPC.
-    RefPtr<WebCore::SharedBuffer> unsafeBuffer() const;
+    RefPtr<CyberCore::SharedBuffer> unsafeBuffer() const;
     const uint8_t* data() const;
     RefPtr<WebKit::SharedMemory> sharedCopy() const;
 
@@ -83,7 +83,7 @@ private:
         , m_memory(WTFMove(memory)) { }
 
     size_t m_size { 0 };
-    RefPtr<WebCore::FragmentedSharedBuffer> m_buffer;
+    RefPtr<CyberCore::FragmentedSharedBuffer> m_buffer;
     RefPtr<WebKit::SharedMemory> m_memory; // Only set on the receiver side and if m_size isn't 0.
 };
 

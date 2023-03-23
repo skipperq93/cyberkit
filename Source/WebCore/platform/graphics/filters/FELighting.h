@@ -33,7 +33,7 @@
 #include "PointLightSource.h"
 #include "SpotLightSource.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct FELightingPaintingDataForNeon;
 
@@ -79,4 +79,4 @@ protected:
     Ref<LightSource> m_lightSource;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

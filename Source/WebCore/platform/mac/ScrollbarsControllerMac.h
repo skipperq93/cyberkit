@@ -38,7 +38,7 @@ OBJC_CLASS WebScrollerImpDelegate;
 
 typedef id ScrollerImpPair;
 
-namespace WebCore {
+namespace CyberCore {
 
 class WheelEventTestMonitor;
 
@@ -123,6 +123,6 @@ private:
     bool m_needsScrollerStyleUpdate { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(MAC)

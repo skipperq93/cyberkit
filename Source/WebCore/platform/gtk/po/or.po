@@ -1894,7 +1894,7 @@ msgstr "ୱେବ ପରିଦର୍ଶକ"
 #~ msgid "Enable Timeline profiling"
 #~ msgstr "ସମୟ ସୀମା ରୂପରେଖାକୁ ସକ୍ରିୟ କରନ୍ତୁ"
 
-#~ msgid "Profile the WebCore instrumentation."
+#~ msgid "Profile the CyberCore instrumentation."
 #~ msgstr "ୱେବକୋର ଉପକରଣକୁ ରୂପରେଖା ଦିଅନ୍ତୁ।"
 
 #~ msgid "Reason"

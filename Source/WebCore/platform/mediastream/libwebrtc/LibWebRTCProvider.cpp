@@ -63,7 +63,7 @@ ALLOW_COMMA_END
 #include "VP9UtilitiesCocoa.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 LibWebRTCProvider::LibWebRTCProvider()
 {
@@ -601,6 +601,6 @@ std::optional<MediaCapabilitiesEncodingInfo> LibWebRTCProvider::videoEncodingCap
     return { info };
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(LIBWEBRTC)

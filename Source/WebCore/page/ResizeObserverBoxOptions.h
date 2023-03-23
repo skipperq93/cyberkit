@@ -28,11 +28,11 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class ResizeObserverBoxOptions : uint8_t {
     BorderBox,
     ContentBox,
 };
 
-} // namespace WebCore
+} // namespace CyberCore

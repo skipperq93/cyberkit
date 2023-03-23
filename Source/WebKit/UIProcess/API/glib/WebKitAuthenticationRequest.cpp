@@ -34,7 +34,7 @@
 #include <wtf/text/CString.h>
 
 using namespace WebKit;
-using namespace WebCore;
+using namespace CyberCore;
 
 /**
  * WebKitAuthenticationRequest:
@@ -70,8 +70,8 @@ struct _WebKitAuthenticationRequestPrivate {
     bool handledRequest;
     CString host;
     CString realm;
-    std::optional<WebCore::Credential> proposedCredential;
-    std::optional<WebCore::Credential> acceptedCredential;
+    std::optional<CyberCore::Credential> proposedCredential;
+    std::optional<CyberCore::Credential> acceptedCredential;
     std::optional<bool> canSaveCredentials;
 };
 
@@ -79,28 +79,28 @@ static guint signals[LAST_SIGNAL] = { 0, };
 
 WEBKIT_DEFINE_FINAL_TYPE(WebKitAuthenticationRequest, webkit_authentication_request, G_TYPE_OBJECT, GObject)
 
-static inline WebKitAuthenticationScheme toWebKitAuthenticationScheme(WebCore::ProtectionSpace::AuthenticationScheme coreScheme)
+static inline WebKitAuthenticationScheme toWebKitAuthenticationScheme(CyberCore::ProtectionSpace::AuthenticationScheme coreScheme)
 {
     switch (coreScheme) {
-    case WebCore::ProtectionSpace::AuthenticationScheme::Default:
+    case CyberCore::ProtectionSpace::AuthenticationScheme::Default:
         return WEBKIT_AUTHENTICATION_SCHEME_DEFAULT;
-    case WebCore::ProtectionSpace::AuthenticationScheme::HTTPBasic:
+    case CyberCore::ProtectionSpace::AuthenticationScheme::HTTPBasic:
         return WEBKIT_AUTHENTICATION_SCHEME_HTTP_BASIC;
-    case WebCore::ProtectionSpace::AuthenticationScheme::HTTPDigest:
+    case CyberCore::ProtectionSpace::AuthenticationScheme::HTTPDigest:
         return WEBKIT_AUTHENTICATION_SCHEME_HTTP_DIGEST;
-    case WebCore::ProtectionSpace::AuthenticationScheme::HTMLForm:
+    case CyberCore::ProtectionSpace::AuthenticationScheme::HTMLForm:
         return WEBKIT_AUTHENTICATION_SCHEME_HTML_FORM;
-    case WebCore::ProtectionSpace::AuthenticationScheme::NTLM:
+    case CyberCore::ProtectionSpace::AuthenticationScheme::NTLM:
         return WEBKIT_AUTHENTICATION_SCHEME_NTLM;
-    case WebCore::ProtectionSpace::AuthenticationScheme::Negotiate:
+    case CyberCore::ProtectionSpace::AuthenticationScheme::Negotiate:
         return WEBKIT_AUTHENTICATION_SCHEME_NEGOTIATE;
-    case WebCore::ProtectionSpace::AuthenticationScheme::ClientCertificateRequested:
+    case CyberCore::ProtectionSpace::AuthenticationScheme::ClientCertificateRequested:
         return WEBKIT_AUTHENTICATION_SCHEME_CLIENT_CERTIFICATE_REQUESTED;
-    case WebCore::ProtectionSpace::AuthenticationScheme::ServerTrustEvaluationRequested:
+    case CyberCore::ProtectionSpace::AuthenticationScheme::ServerTrustEvaluationRequested:
         return WEBKIT_AUTHENTICATION_SCHEME_SERVER_TRUST_EVALUATION_REQUESTED;
-    case WebCore::ProtectionSpace::AuthenticationScheme::ClientCertificatePINRequested:
+    case CyberCore::ProtectionSpace::AuthenticationScheme::ClientCertificatePINRequested:
         return WEBKIT_AUTHENTICATION_SCHEME_CLIENT_CERTIFICATE_PIN_REQUESTED;
-    case WebCore::ProtectionSpace::AuthenticationScheme::Unknown:
+    case CyberCore::ProtectionSpace::AuthenticationScheme::Unknown:
         return WEBKIT_AUTHENTICATION_SCHEME_UNKNOWN;
     default:
         ASSERT_NOT_REACHED();
@@ -179,12 +179,12 @@ AuthenticationChallengeProxy* webkitAuthenticationRequestGetAuthenticationChalle
 
 void webkitAuthenticationRequestDidAuthenticate(WebKitAuthenticationRequest* request)
 {
-    auto* credential = webkitCredentialCreate(request->priv->acceptedCredential.value_or(WebCore::Credential()));
+    auto* credential = webkitCredentialCreate(request->priv->acceptedCredential.value_or(CyberCore::Credential()));
     g_signal_emit(request, signals[AUTHENTICATED], 0, credential);
     webkit_credential_free(credential);
 }
 
-const WebCore::Credential& webkitAuthenticationRequestGetProposedCredential(WebKitAuthenticationRequest* request)
+const CyberCore::Credential& webkitAuthenticationRequestGetProposedCredential(WebKitAuthenticationRequest* request)
 {
     if (request->priv->proposedCredential)
         return request->priv->proposedCredential.value();
@@ -471,7 +471,7 @@ void webkit_authentication_request_authenticate(WebKitAuthenticationRequest* req
         request->priv->acceptedCredential = webkitCredentialGetCredential(credential);
     else
         request->priv->acceptedCredential = std::nullopt;
-    request->priv->authenticationChallenge->listener().completeChallenge(WebKit::AuthenticationChallengeDisposition::UseCredential, request->priv->acceptedCredential.value_or(WebCore::Credential()));
+    request->priv->authenticationChallenge->listener().completeChallenge(WebKit::AuthenticationChallengeDisposition::UseCredential, request->priv->acceptedCredential.value_or(CyberCore::Credential()));
     request->priv->handledRequest = true;
 }
 

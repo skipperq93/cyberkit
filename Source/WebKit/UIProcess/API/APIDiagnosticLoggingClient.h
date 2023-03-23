@@ -43,13 +43,13 @@ public:
     virtual ~DiagnosticLoggingClient() { }
 
     virtual void logDiagnosticMessage(WebKit::WebPageProxy*, const WTF::String& message, const WTF::String& description) = 0;
-    virtual void logDiagnosticMessageWithResult(WebKit::WebPageProxy*, const WTF::String& message, const WTF::String& description, WebCore::DiagnosticLoggingResultType) = 0;
+    virtual void logDiagnosticMessageWithResult(WebKit::WebPageProxy*, const WTF::String& message, const WTF::String& description, CyberCore::DiagnosticLoggingResultType) = 0;
     virtual void logDiagnosticMessageWithValue(WebKit::WebPageProxy*, const WTF::String& message, const WTF::String& description, const WTF::String& value) = 0;
     virtual void logDiagnosticMessageWithEnhancedPrivacy(WebKit::WebPageProxy*, const WTF::String& message, const WTF::String& description) = 0;
 
     virtual void logDiagnosticMessageWithValueDictionary(WebKit::WebPageProxy*, const WTF::String& message, const WTF::String& description, Ref<API::Dictionary>&&) = 0;
 
-    virtual void logDiagnosticMessageWithDomain(WebKit::WebPageProxy*, const WTF::String&, WebCore::DiagnosticLoggingDomain) { }
+    virtual void logDiagnosticMessageWithDomain(WebKit::WebPageProxy*, const WTF::String&, CyberCore::DiagnosticLoggingDomain) { }
 };
 
 } // namespace API

@@ -97,7 +97,7 @@ messages -> RemoteGraphicsContextGL NotRefCounted Stream {{
     void PrepareForDisplay() -> (std::optional<WebKit::WCContentBufferIdentifier> contentBuffer) Synchronous
 #endif
 #if USE(LIBGBM)
-    void PrepareForDisplay() -> (WebCore::DMABufObject dmabufObject) Synchronous NotStreamEncodableReply
+    void PrepareForDisplay() -> (CyberCore::DMABufObject dmabufObject) Synchronous NotStreamEncodableReply
 #endif
 #if !PLATFORM(COCOA) && !USE(GRAPHICS_LAYER_WC) && !USE(LIBGBM)
     void PrepareForDisplay() -> () Synchronous
@@ -106,8 +106,8 @@ messages -> RemoteGraphicsContextGL NotRefCounted Stream {{
     void MarkContextChanged()
     void SynthesizeGLError(uint32_t error)
     void GetError() -> (uint32_t returnValue) Synchronous
-    void PaintRenderingResultsToCanvas(WebCore::RenderingResourceIdentifier imageBuffer) -> () Synchronous
-    void PaintCompositedResultsToCanvas(WebCore::RenderingResourceIdentifier imageBuffer) -> () Synchronous
+    void PaintRenderingResultsToCanvas(CyberCore::RenderingResourceIdentifier imageBuffer) -> () Synchronous
+    void PaintCompositedResultsToCanvas(CyberCore::RenderingResourceIdentifier imageBuffer) -> () Synchronous
 #if ENABLE(VIDEO) && PLATFORM(COCOA)
     void CopyTextureFromVideoFrame(struct WebKit::SharedVideoFrame frame, uint32_t texture, uint32_t target, int32_t level, uint32_t internalFormat, uint32_t format, uint32_t type, bool premultiplyAlpha, bool flipY) -> (bool success) Synchronous NotStreamEncodable
     void SetSharedVideoFrameSemaphore(IPC::Semaphore semaphore) NotStreamEncodable
@@ -116,7 +116,7 @@ messages -> RemoteGraphicsContextGL NotRefCounted Stream {{
 #if ENABLE(MEDIA_STREAM)
     void PaintCompositedResultsToVideoFrame() -> (std::optional<WebKit::RemoteVideoFrameProxy::Properties> properties) Synchronous
 #endif
-    void SimulateEventForTesting(WebCore::GraphicsContextGL::SimulatedEventForTesting event)
+    void SimulateEventForTesting(CyberCore::GraphicsContextGL::SimulatedEventForTesting event)
     void ReadnPixels0(int32_t x, int32_t y, int32_t width, int32_t height, uint32_t format, uint32_t type, IPC::ArrayReference<uint8_t> data) -> (IPC::ArrayReference<uint8_t> data) Synchronous
     void ReadnPixels1(int32_t x, int32_t y, int32_t width, int32_t height, uint32_t format, uint32_t type, uint64_t offset)
     void ReadnPixels2(int32_t x, int32_t y, int32_t width, int32_t height, uint32_t format, uint32_t type, WebKit::SharedMemory::Handle handle) -> (bool success) Synchronous NotStreamEncodable
@@ -856,7 +856,7 @@ class webkit_ipc_cpp_impl(object):
     def ns(self, type: cpp_type):
         # TODO: namespace info is not stored in names.
         if type.type_name == "ActiveInfo":
-            return "WebCore::GraphicsContextGL::" + str(type)
+            return "CyberCore::GraphicsContextGL::" + str(type)
         return str(type)
 
 def webkit_ipc_resolve_overload_suffix(funcs : Iterable[cpp_func]):
@@ -960,7 +960,7 @@ def main():
     # Initialize WebKit IPC generation. Construct type mappings for the used C++ types -> IPC types.
     # TODO: namespacing issues.
     ai_type = get_cpp_type("ActiveInfo&")
-    ai_transfer_type = get_cpp_type("WebCore::GraphicsContextGL::ActiveInfo")
+    ai_transfer_type = get_cpp_type("CyberCore::GraphicsContextGL::ActiveInfo")
     webkit_ipc_types[ai_type] = ai_transfer_type
 
     with open(types_input_fn) as f:

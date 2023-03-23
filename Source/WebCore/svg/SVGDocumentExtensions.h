@@ -27,7 +27,7 @@
 #include <wtf/WeakHashSet.h>
 #include <wtf/text/AtomStringHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class Element;
@@ -106,4 +106,4 @@ private:
     bool isElementWithPendingResources(SVGElement&) const;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

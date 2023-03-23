@@ -24,7 +24,7 @@
 
 #include "RenderInline.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderQuote final : public RenderInline {
     WTF_MAKE_ISO_ALLOCATED(RenderQuote);
@@ -52,6 +52,6 @@ private:
     bool m_needsTextUpdate { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderQuote, isQuote())

@@ -35,7 +35,7 @@ namespace Nicosia {
 class GCGLANGLELayer;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class GraphicsContextGLGBMTextureMapper final : public GraphicsContextGLGBM {
 public:
@@ -55,6 +55,6 @@ private:
     RefPtr<GraphicsLayerContentsDisplayDelegate> m_layerContentsDisplayDelegate;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBGL) && USE(TEXTURE_MAPPER) && USE(LIBGBM)

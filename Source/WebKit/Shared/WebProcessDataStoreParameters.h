@@ -33,8 +33,8 @@
 namespace WebKit {
 
 struct WebProcessDataStoreParameters {
-    using TopFrameDomain = WebCore::RegistrableDomain;
-    using SubResourceDomain = WebCore::RegistrableDomain;
+    using TopFrameDomain = CyberCore::RegistrableDomain;
+    using SubResourceDomain = CyberCore::RegistrableDomain;
 
     PAL::SessionID sessionID;
     String applicationCacheDirectory;
@@ -47,8 +47,8 @@ struct WebProcessDataStoreParameters {
     String javaScriptConfigurationDirectory;
     SandboxExtension::Handle javaScriptConfigurationDirectoryExtensionHandle;
 #if ENABLE(TRACKING_PREVENTION)
-    WebCore::ThirdPartyCookieBlockingMode thirdPartyCookieBlockingMode { WebCore::ThirdPartyCookieBlockingMode::All };
-    HashSet<WebCore::RegistrableDomain> domainsWithUserInteraction;
+    CyberCore::ThirdPartyCookieBlockingMode thirdPartyCookieBlockingMode { CyberCore::ThirdPartyCookieBlockingMode::All };
+    HashSet<CyberCore::RegistrableDomain> domainsWithUserInteraction;
     HashMap<TopFrameDomain, SubResourceDomain> domainsWithStorageAccessQuirk;
 #endif
 #if ENABLE(ARKIT_INLINE_PREVIEW)

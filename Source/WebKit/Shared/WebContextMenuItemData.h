@@ -44,19 +44,19 @@ namespace WebKit {
 class WebContextMenuItemData {
 public:
     WebContextMenuItemData();
-    WebContextMenuItemData(const WebCore::ContextMenuItem&);
-    WebContextMenuItemData(WebCore::ContextMenuItemType, WebCore::ContextMenuAction, const String& title, bool enabled, bool checked, unsigned indentationLevel = 0);
-    WebContextMenuItemData(WebCore::ContextMenuAction, const String& title, bool enabled, const Vector<WebContextMenuItemData>& submenu, unsigned indentationLevel = 0);
+    WebContextMenuItemData(const CyberCore::ContextMenuItem&);
+    WebContextMenuItemData(CyberCore::ContextMenuItemType, CyberCore::ContextMenuAction, const String& title, bool enabled, bool checked, unsigned indentationLevel = 0);
+    WebContextMenuItemData(CyberCore::ContextMenuAction, const String& title, bool enabled, const Vector<WebContextMenuItemData>& submenu, unsigned indentationLevel = 0);
 
-    WebCore::ContextMenuItemType type() const { return m_type; }
-    WebCore::ContextMenuAction action() const { return m_action; }
+    CyberCore::ContextMenuItemType type() const { return m_type; }
+    CyberCore::ContextMenuAction action() const { return m_action; }
     const String& title() const { return m_title; }
     bool enabled() const { return m_enabled; }
     bool checked() const { return m_checked; }
     unsigned indentationLevel() const { return m_indentationLevel; }
     const Vector<WebContextMenuItemData>& submenu() const { return m_submenu; }
     
-    WebCore::ContextMenuItem core() const;
+    CyberCore::ContextMenuItem core() const;
     
     API::Object* userData() const;
     void setUserData(API::Object*);
@@ -65,8 +65,8 @@ public:
     static std::optional<WebContextMenuItemData> decode(IPC::Decoder&);
 
 private:
-    WebCore::ContextMenuItemType m_type;
-    WebCore::ContextMenuAction m_action;
+    CyberCore::ContextMenuItemType m_type;
+    CyberCore::ContextMenuAction m_action;
     String m_title;
     bool m_enabled;
     bool m_checked;
@@ -75,8 +75,8 @@ private:
     RefPtr<API::Object> m_userData;
 };
 
-Vector<WebContextMenuItemData> kitItems(const Vector<WebCore::ContextMenuItem>&);
-Vector<WebCore::ContextMenuItem> coreItems(const Vector<WebContextMenuItemData>&);
+Vector<WebContextMenuItemData> kitItems(const Vector<CyberCore::ContextMenuItem>&);
+Vector<CyberCore::ContextMenuItem> coreItems(const Vector<WebContextMenuItemData>&);
 
 } // namespace WebKit
 

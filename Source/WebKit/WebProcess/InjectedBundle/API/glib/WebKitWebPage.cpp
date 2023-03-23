@@ -18,23 +18,23 @@
  */
 
 #include "config.h"
-#include "WebKitWebPage.h"
+#include "CyberKitWebPage.h"
 
 #include "APIString.h"
 #include "InjectedBundle.h"
 #include "WebContextMenuItem.h"
-#include "WebKitContextMenuPrivate.h"
-#include "WebKitFramePrivate.h"
-#include "WebKitPrivate.h"
-#include "WebKitScriptWorldPrivate.h"
-#include "WebKitURIRequestPrivate.h"
-#include "WebKitURIResponsePrivate.h"
-#include "WebKitUserMessagePrivate.h"
-#include "WebKitWebEditorPrivate.h"
-#include "WebKitWebFormManagerPrivate.h"
-#include "WebKitWebHitTestResultPrivate.h"
-#include "WebKitWebPagePrivate.h"
-#include "WebKitWebProcessEnumTypes.h"
+#include "CyberKitContextMenuPrivate.h"
+#include "CyberKitFramePrivate.h"
+#include "CyberKitPrivate.h"
+#include "CyberKitScriptWorldPrivate.h"
+#include "CyberKitURIRequestPrivate.h"
+#include "CyberKitURIResponsePrivate.h"
+#include "CyberKitUserMessagePrivate.h"
+#include "CyberKitWebEditorPrivate.h"
+#include "CyberKitWebFormManagerPrivate.h"
+#include "CyberKitWebHitTestResultPrivate.h"
+#include "CyberKitWebPagePrivate.h"
+#include "CyberKitWebProcessEnumTypes.h"
 #include "WebPageProxyMessages.h"
 #include "WebProcess.h"
 #include <CyberCore/ContextMenuContext.h>
@@ -52,17 +52,17 @@
 #include <wtf/text/CString.h>
 
 #if !ENABLE(2022_GLIB_API)
-#include "WebKitConsoleMessagePrivate.h"
-#include "WebKitDOMDocumentPrivate.h"
-#include "WebKitDOMElementPrivate.h"
-#include "WebKitDOMNodePrivate.h"
+#include "CyberKitConsoleMessagePrivate.h"
+#include "CyberKitDOMDocumentPrivate.h"
+#include "CyberKitDOMElementPrivate.h"
+#include "CyberKitDOMNodePrivate.h"
 #endif
 
-using namespace WebKit;
-using namespace WebCore;
+using namespace CyberKit;
+using namespace CyberCore;
 
 /**
- * WebKitWebPage:
+ * CyberKitWebPage:
  *
  * A loaded web page.
  */
@@ -90,31 +90,31 @@ enum {
 
 static GParamSpec* sObjProperties[N_PROPERTIES] = { nullptr, };
 
-struct _WebKitWebPagePrivate {
+struct _CyberKitWebPagePrivate {
     WebPage* webPage;
 
     CString uri;
 
-    GRefPtr<WebKitWebEditor> webEditor;
-    HashMap<WebKitScriptWorld*, GRefPtr<WebKitWebFormManager>> formManagerMap;
+    GRefPtr<CyberKitWebEditor> webEditor;
+    HashMap<CyberKitScriptWorld*, GRefPtr<CyberKitWebFormManager>> formManagerMap;
 };
 
 static guint signals[LAST_SIGNAL] = { 0, };
 
-WEBKIT_DEFINE_FINAL_TYPE(WebKitWebPage, webkit_web_page, G_TYPE_OBJECT, GObject)
+WEBKIT_DEFINE_FINAL_TYPE(CyberKitWebPage, webkit_web_page, G_TYPE_OBJECT, GObject)
 
 static void webFrameDestroyed(WebFrame*);
 
-class WebKitFrameWrapper final: public FrameDestructionObserver {
+class CyberKitFrameWrapper final: public FrameDestructionObserver {
     WTF_MAKE_FAST_ALLOCATED;
 public:
-    WebKitFrameWrapper(WebFrame& webFrame)
+    CyberKitFrameWrapper(WebFrame& webFrame)
         : FrameDestructionObserver(webFrame.coreFrame())
         , m_webkitFrame(adoptGRef(webkitFrameCreate(&webFrame)))
     {
     }
 
-    WebKitFrame* webkitFrame() const { return m_webkitFrame.get(); }
+    CyberKitFrame* webkitFrame() const { return m_webkitFrame.get(); }
 
 private:
     void frameDestroyed() override
@@ -123,10 +123,10 @@ private:
         webFrameDestroyed(webkitFrameGetWebFrame(m_webkitFrame.get()));
     }
 
-    GRefPtr<WebKitFrame> m_webkitFrame;
+    GRefPtr<CyberKitFrame> m_webkitFrame;
 };
 
-typedef HashMap<WebFrame*, std::unique_ptr<WebKitFrameWrapper>> WebFrameMap;
+typedef HashMap<WebFrame*, std::unique_ptr<CyberKitFrameWrapper>> WebFrameMap;
 
 static WebFrameMap& webFrameMap()
 {
@@ -134,7 +134,7 @@ static WebFrameMap& webFrameMap()
     return map;
 }
 
-static WebKitFrame* webkitFrameGet(WebFrame* webFrame)
+static CyberKitFrame* webkitFrameGet(WebFrame* webFrame)
 {
     auto wrapperPtr = webFrameMap().get(webFrame);
     if (wrapperPtr)
@@ -143,12 +143,12 @@ static WebKitFrame* webkitFrameGet(WebFrame* webFrame)
     return nullptr;
 }
 
-static WebKitFrame* webkitFrameGetOrCreate(WebFrame* webFrame)
+static CyberKitFrame* webkitFrameGetOrCreate(WebFrame* webFrame)
 {
     if (auto* webKitFrame = webkitFrameGet(webFrame))
         return webKitFrame;
 
-    std::unique_ptr<WebKitFrameWrapper> wrapper = makeUnique<WebKitFrameWrapper>(*webFrame);
+    std::unique_ptr<CyberKitFrameWrapper> wrapper = makeUnique<CyberKitFrameWrapper>(*webFrame);
     auto wrapperPtr = wrapper.get();
     webFrameMap().set(webFrame, WTFMove(wrapper));
 
@@ -160,7 +160,7 @@ static void webFrameDestroyed(WebFrame* webFrame)
     webFrameMap().remove(webFrame);
 }
 
-static void webkitWebPageSetURI(WebKitWebPage* webPage, const CString& uri)
+static void webkitWebPageSetURI(CyberKitWebPage* webPage, const CString& uri)
 {
     if (webPage->priv->uri == uri)
         return;
@@ -171,7 +171,7 @@ static void webkitWebPageSetURI(WebKitWebPage* webPage, const CString& uri)
 
 class PageLoaderClient final : public API::InjectedBundle::PageLoaderClient {
 public:
-    explicit PageLoaderClient(WebKitWebPage* webPage)
+    explicit PageLoaderClient(CyberKitWebPage* webPage)
         : m_webPage(webPage)
     {
     }
@@ -262,8 +262,8 @@ private:
 
     void globalObjectIsAvailableForFrame(WebPage&, WebFrame& frame, DOMWrapperWorld& world) override
     {
-        // Force the creation of the JavaScript context for existing WebKitScriptWorlds to
-        // ensure WebKitScriptWorld::window-object-cleared signal is emitted.
+        // Force the creation of the JavaScript context for existing CyberKitScriptWorlds to
+        // ensure CyberKitScriptWorld::window-object-cleared signal is emitted.
         auto injectedWorld = InjectedBundleScriptWorld::getOrCreate(world);
         if (webkitScriptWorldGet(injectedWorld.ptr()))
             frame.jsContextForWorld(injectedWorld.ptr());
@@ -273,29 +273,29 @@ private:
     {
     }
 
-    WebKitWebPage* m_webPage;
+    CyberKitWebPage* m_webPage;
 };
 
 #if !ENABLE(2022_GLIB_API)
-static void webkitWebPageDidSendConsoleMessage(WebKitWebPage* webPage, MessageSource source, MessageLevel level, const String& message, unsigned lineNumber, const String& sourceID)
+static void webkitWebPageDidSendConsoleMessage(CyberKitWebPage* webPage, MessageSource source, MessageLevel level, const String& message, unsigned lineNumber, const String& sourceID)
 {
-    WebKitConsoleMessage consoleMessage(source, level, message, lineNumber, sourceID);
+    CyberKitConsoleMessage consoleMessage(source, level, message, lineNumber, sourceID);
     g_signal_emit(webPage, signals[CONSOLE_MESSAGE_SENT], 0, &consoleMessage);
 }
 #endif
 
 class PageResourceLoadClient final : public API::InjectedBundle::ResourceLoadClient {
 public:
-    explicit PageResourceLoadClient(WebKitWebPage* webPage)
+    explicit PageResourceLoadClient(CyberKitWebPage* webPage)
         : m_webPage(webPage)
     {
     }
 
 private:
-    void willSendRequestForFrame(WebPage& page, WebFrame&, WebCore::ResourceLoaderIdentifier identifier, ResourceRequest& resourceRequest, const ResourceResponse& redirectResourceResponse) override
+    void willSendRequestForFrame(WebPage& page, WebFrame&, CyberCore::ResourceLoaderIdentifier identifier, ResourceRequest& resourceRequest, const ResourceResponse& redirectResourceResponse) override
     {
-        GRefPtr<WebKitURIRequest> request = adoptGRef(webkitURIRequestCreateForResourceRequest(resourceRequest));
-        GRefPtr<WebKitURIResponse> redirectResponse = !redirectResourceResponse.isNull() ? adoptGRef(webkitURIResponseCreateForResourceResponse(redirectResourceResponse)) : nullptr;
+        GRefPtr<CyberKitURIRequest> request = adoptGRef(webkitURIRequestCreateForResourceRequest(resourceRequest));
+        GRefPtr<CyberKitURIResponse> redirectResponse = !redirectResourceResponse.isNull() ? adoptGRef(webkitURIResponseCreateForResourceResponse(redirectResourceResponse)) : nullptr;
 
         gboolean returnValue;
         g_signal_emit(m_webPage, signals[SEND_REQUEST], 0, request.get(), redirectResponse.get(), &returnValue);
@@ -308,7 +308,7 @@ private:
     }
 
 #if !ENABLE(2022_GLIB_API)
-    void didReceiveResponseForResource(WebPage& page, WebFrame&, WebCore::ResourceLoaderIdentifier identifier, const ResourceResponse& response) override
+    void didReceiveResponseForResource(WebPage& page, WebFrame&, CyberCore::ResourceLoaderIdentifier identifier, const ResourceResponse& response) override
     {
         // Post on the console as well to be consistent with the inspector.
         if (response.httpStatusCode() >= 400) {
@@ -317,7 +317,7 @@ private:
         }
     }
 
-    void didFailLoadForResource(WebPage& page, WebFrame&, WebCore::ResourceLoaderIdentifier identifier, const ResourceError& error) override
+    void didFailLoadForResource(WebPage& page, WebFrame&, CyberCore::ResourceLoaderIdentifier identifier, const ResourceError& error) override
     {
         // Post on the console as well to be consistent with the inspector.
         if (!error.isCancellation()) {
@@ -328,13 +328,13 @@ private:
     }
 #endif
 
-    WebKitWebPage* m_webPage;
+    CyberKitWebPage* m_webPage;
 };
 
 #if !ENABLE(2022_GLIB_API)
 class PageUIClient final : public API::InjectedBundle::PageUIClient {
 public:
-    explicit PageUIClient(WebKitWebPage* webPage)
+    explicit PageUIClient(CyberKitWebPage* webPage)
         : m_webPage(webPage)
     {
     }
@@ -345,25 +345,25 @@ private:
         webkitWebPageDidSendConsoleMessage(m_webPage, source, level, message, lineNumber, sourceID);
     }
 
-    WebKitWebPage* m_webPage;
+    CyberKitWebPage* m_webPage;
 };
 #endif
 
 class PageContextMenuClient final : public API::InjectedBundle::PageContextMenuClient {
 public:
-    explicit PageContextMenuClient(WebKitWebPage* webPage)
+    explicit PageContextMenuClient(CyberKitWebPage* webPage)
         : m_webPage(webPage)
     {
     }
 
 private:
-    bool getCustomMenuFromDefaultItems(WebPage&, const WebCore::HitTestResult& hitTestResult, const Vector<WebCore::ContextMenuItem>& defaultMenu, Vector<WebContextMenuItemData>& newMenu, const WebCore::ContextMenuContext& context, RefPtr<API::Object>& userData) override
+    bool getCustomMenuFromDefaultItems(WebPage&, const CyberCore::HitTestResult& hitTestResult, const Vector<CyberCore::ContextMenuItem>& defaultMenu, Vector<WebContextMenuItemData>& newMenu, const CyberCore::ContextMenuContext& context, RefPtr<API::Object>& userData) override
     {
         if (context.type() != ContextMenuContext::Type::ContextMenu)
             return false;
 
-        GRefPtr<WebKitContextMenu> contextMenu = adoptGRef(webkitContextMenuCreate(kitItems(defaultMenu)));
-        GRefPtr<WebKitWebHitTestResult> webHitTestResult = adoptGRef(webkitWebHitTestResultCreate(hitTestResult));
+        GRefPtr<CyberKitContextMenu> contextMenu = adoptGRef(webkitContextMenuCreate(kitItems(defaultMenu)));
+        GRefPtr<CyberKitWebHitTestResult> webHitTestResult = adoptGRef(webkitWebHitTestResultCreate(hitTestResult));
         gboolean returnValue;
         g_signal_emit(m_webPage, signals[CONTEXT_MENU], 0, contextMenu.get(), webHitTestResult.get(), &returnValue);
         if (GVariant* variant = webkit_context_menu_get_user_data(contextMenu.get())) {
@@ -378,12 +378,12 @@ private:
         return true;
     }
 
-    WebKitWebPage* m_webPage;
+    CyberKitWebPage* m_webPage;
 };
 
 class PageFormClient final : public API::InjectedBundle::FormClient {
 public:
-    explicit PageFormClient(WebKitWebPage* webPage)
+    explicit PageFormClient(CyberKitWebPage* webPage)
         : m_webPage(webPage)
     {
     }
@@ -434,7 +434,7 @@ public:
 #if !ENABLE(2022_GLIB_API)
         GRefPtr<GPtrArray> formElements = adoptGRef(g_ptr_array_sized_new(elements.size()));
         for (size_t i = 0; i < elements.size(); ++i)
-            g_ptr_array_add(formElements.get(), WebKit::kit(elements[i].get()));
+            g_ptr_array_add(formElements.get(), CyberKit::kit(elements[i].get()));
 
         g_signal_emit(m_webPage, signals[FORM_CONTROLS_ASSOCIATED], 0, formElements.get());
         g_signal_emit(m_webPage, signals[FORM_CONTROLS_ASSOCIATED_FOR_FRAME], 0, formElements.get(), wkFrame);
@@ -445,10 +445,10 @@ public:
 
 private:
 #if !ENABLE(2022_GLIB_API)
-    void fireFormSubmissionEvent(WebKitFormSubmissionStep step, HTMLFormElement* formElement, WebFrame* frame, WebFrame* sourceFrame, const Vector<std::pair<String, String>>& values)
+    void fireFormSubmissionEvent(CyberKitFormSubmissionStep step, HTMLFormElement* formElement, WebFrame* frame, WebFrame* sourceFrame, const Vector<std::pair<String, String>>& values)
     {
-        WebKitFrame* webkitTargetFrame = webkitFrameGetOrCreate(frame);
-        WebKitFrame* webkitSourceFrame = webkitFrameGetOrCreate(sourceFrame);
+        CyberKitFrame* webkitTargetFrame = webkitFrameGetOrCreate(frame);
+        CyberKitFrame* webkitSourceFrame = webkitFrameGetOrCreate(sourceFrame);
 
         GRefPtr<GPtrArray> textFieldNames = adoptGRef(g_ptr_array_new_full(values.size(), g_free));
         GRefPtr<GPtrArray> textFieldValues = adoptGRef(g_ptr_array_new_full(values.size(), g_free));
@@ -458,15 +458,15 @@ private:
         }
 
         ALLOW_DEPRECATED_DECLARATIONS_BEGIN
-        g_signal_emit(m_webPage, signals[WILL_SUBMIT_FORM], 0, WEBKIT_DOM_ELEMENT(WebKit::kit(static_cast<Node*>(formElement))), step, webkitSourceFrame, webkitTargetFrame, textFieldNames.get(), textFieldValues.get());
+        g_signal_emit(m_webPage, signals[WILL_SUBMIT_FORM], 0, WEBKIT_DOM_ELEMENT(CyberKit::kit(static_cast<Node*>(formElement))), step, webkitSourceFrame, webkitTargetFrame, textFieldNames.get(), textFieldValues.get());
         ALLOW_DEPRECATED_DECLARATIONS_END
     }
 #endif
 
-    WebKitWebPage* m_webPage;
+    CyberKitWebPage* m_webPage;
 };
 
-static void worldDestroyed(WebKitWebPage* webPage, WebKitScriptWorld* world)
+static void worldDestroyed(CyberKitWebPage* webPage, CyberKitScriptWorld* world)
 {
     webPage->priv->formManagerMap.remove(world);
 }
@@ -483,7 +483,7 @@ static void webkitWebPageDispose(GObject* object)
 
 static void webkitWebPageGetProperty(GObject* object, guint propId, GValue* value, GParamSpec* paramSpec)
 {
-    WebKitWebPage* webPage = WEBKIT_WEB_PAGE(object);
+    CyberKitWebPage* webPage = WEBKIT_WEB_PAGE(object);
 
     switch (propId) {
     case PROP_URI:
@@ -494,16 +494,16 @@ static void webkitWebPageGetProperty(GObject* object, guint propId, GValue* valu
     }
 }
 
-static void webkit_web_page_class_init(WebKitWebPageClass* klass)
+static void webkit_web_page_class_init(CyberKitWebPageClass* klass)
 {
     GObjectClass* gObjectClass = G_OBJECT_CLASS(klass);
     gObjectClass->dispose = webkitWebPageDispose;
     gObjectClass->get_property = webkitWebPageGetProperty;
 
     /**
-     * WebKitWebPage:uri:
+     * CyberKitWebPage:uri:
      *
-     * The current active URI of the #WebKitWebPage.
+     * The current active URI of the #CyberKitWebPage.
      */
     sObjProperties[PROP_URI] =
         g_param_spec_string(
@@ -515,10 +515,10 @@ static void webkit_web_page_class_init(WebKitWebPageClass* klass)
     g_object_class_install_properties(gObjectClass, N_PROPERTIES, sObjProperties);
 
     /**
-     * WebKitWebPage::document-loaded:
-     * @web_page: the #WebKitWebPage on which the signal is emitted
+     * CyberKitWebPage::document-loaded:
+     * @web_page: the #CyberKitWebPage on which the signal is emitted
      *
-     * This signal is emitted when the DOM document of a #WebKitWebPage has been
+     * This signal is emitted when the DOM document of a #CyberKitWebPage has been
      * loaded.
      *
      * You can wait for this signal to get the DOM document
@@ -532,13 +532,13 @@ static void webkit_web_page_class_init(WebKitWebPageClass* klass)
         G_TYPE_NONE, 0);
 
     /**
-     * WebKitWebPage::send-request:
-     * @web_page: the #WebKitWebPage on which the signal is emitted
-     * @request: a #WebKitURIRequest
-     * @redirected_response: a #WebKitURIResponse, or %NULL
+     * CyberKitWebPage::send-request:
+     * @web_page: the #CyberKitWebPage on which the signal is emitted
+     * @request: a #CyberKitURIRequest
+     * @redirected_response: a #CyberKitURIResponse, or %NULL
      *
      * This signal is emitted when @request is about to be sent to
-     * the server. This signal can be used to modify the #WebKitURIRequest
+     * the server. This signal can be used to modify the #CyberKitURIRequest
      * that will be sent to the server. You can also cancel the resource load
      * operation by connecting to this signal and returning %TRUE.
      *
@@ -548,7 +548,7 @@ static void webkit_web_page_class_init(WebKitWebPageClass* klass)
      * @redirected_response parameter containing the response
      * received by the server for the initial request.
      *
-     * Modifications to the #WebKitURIRequest and its associated
+     * Modifications to the #CyberKitURIRequest and its associated
      * #SoupMessageHeaders will be taken into account when the request
      * is sent over the network.
      *
@@ -567,10 +567,10 @@ static void webkit_web_page_class_init(WebKitWebPageClass* klass)
         WEBKIT_TYPE_URI_RESPONSE);
 
     /**
-     * WebKitWebPage::context-menu:
-     * @web_page: the #WebKitWebPage on which the signal is emitted
-     * @context_menu: the proposed #WebKitContextMenu
-     * @hit_test_result: a #WebKitWebHitTestResult
+     * CyberKitWebPage::context-menu:
+     * @web_page: the #CyberKitWebPage on which the signal is emitted
+     * @context_menu: the proposed #CyberKitContextMenu
+     * @hit_test_result: a #CyberKitWebHitTestResult
      *
      * Emitted before a context menu is displayed in the UI Process to
      * give the application a chance to customize the proposed menu,
@@ -578,7 +578,7 @@ static void webkit_web_page_class_init(WebKitWebPageClass* klass)
      * This signal is useful when the information available in the UI Process
      * is not enough to build or customize the context menu, for example, to
      * add menu entries depending on the node at the coordinates of the
-     * @hit_test_result. Otherwise, it's recommended to use #WebKitWebView::context-menu
+     * @hit_test_result. Otherwise, it's recommended to use #CyberKitWebView::context-menu
      * signal instead.
      *
      * Returns: %TRUE if the proposed @context_menu has been modified, or %FALSE otherwise.
@@ -599,9 +599,9 @@ static void webkit_web_page_class_init(WebKitWebPageClass* klass)
 #if !ENABLE(2022_GLIB_API)
 ALLOW_DEPRECATED_DECLARATIONS_BEGIN
     /**
-     * WebKitWebPage::console-message-sent:
-     * @web_page: the #WebKitWebPage on which the signal is emitted
-     * @console_message: the #WebKitConsoleMessage
+     * CyberKitWebPage::console-message-sent:
+     * @web_page: the #CyberKitWebPage on which the signal is emitted
+     * @console_message: the #CyberKitConsoleMessage
      *
      * Emitted when a message is sent to the console. This can be a message
      * produced by the use of JavaScript console API, a JavaScript exception,
@@ -626,10 +626,10 @@ ALLOW_DEPRECATED_DECLARATIONS_END
 #if !ENABLE(2022_GLIB_API)
 ALLOW_DEPRECATED_DECLARATIONS_BEGIN
     /**
-     * WebKitWebPage::form-controls-associated:
-     * @web_page: the #WebKitWebPage on which the signal is emitted
-     * @elements: (element-type WebKitDOMElement) (transfer none): a #GPtrArray of
-     *     #WebKitDOMElement with the list of forms in the page
+     * CyberKitWebPage::form-controls-associated:
+     * @web_page: the #CyberKitWebPage on which the signal is emitted
+     * @elements: (element-type CyberKitDOMElement) (transfer none): a #GPtrArray of
+     *     #CyberKitDOMElement with the list of forms in the page
      *
      * Emitted after form elements (or form associated elements) are associated to a particular web
      * page. This is useful to implement form auto filling for web pages where form fields are added
@@ -643,7 +643,7 @@ ALLOW_DEPRECATED_DECLARATIONS_BEGIN
      *
      * Since: 2.16
      *
-     * Deprecated: 2.26, use #WebKitWebPage::form-controls-associated-for-frame instead.
+     * Deprecated: 2.26, use #CyberKitWebPage::form-controls-associated-for-frame instead.
      */
     signals[FORM_CONTROLS_ASSOCIATED] = g_signal_new(
         "form-controls-associated",
@@ -655,11 +655,11 @@ ALLOW_DEPRECATED_DECLARATIONS_BEGIN
         G_TYPE_PTR_ARRAY);
 
     /**
-     * WebKitWebPage::form-controls-associated-for-frame:
-     * @web_page: the #WebKitWebPage on which the signal is emitted
-     * @elements: (element-type WebKitDOMElement) (transfer none): a #GPtrArray of
-     *     #WebKitDOMElement with the list of forms in the page
-     * @frame: the #WebKitFrame
+     * CyberKitWebPage::form-controls-associated-for-frame:
+     * @web_page: the #CyberKitWebPage on which the signal is emitted
+     * @elements: (element-type CyberKitDOMElement) (transfer none): a #GPtrArray of
+     *     #CyberKitDOMElement with the list of forms in the page
+     * @frame: the #CyberKitFrame
      *
      * Emitted after form elements (or form associated elements) are associated to a particular web
      * page. This is useful to implement form auto filling for web pages where form fields are added
@@ -673,7 +673,7 @@ ALLOW_DEPRECATED_DECLARATIONS_BEGIN
      *
      * Since: 2.26
      *
-     * Deprecated: 2.40: Use #WebKitWebFormManager::form-controls-associated instead.
+     * Deprecated: 2.40: Use #CyberKitWebFormManager::form-controls-associated instead.
      */
     signals[FORM_CONTROLS_ASSOCIATED_FOR_FRAME] = g_signal_new(
         "form-controls-associated-for-frame",
@@ -686,14 +686,14 @@ ALLOW_DEPRECATED_DECLARATIONS_BEGIN
         WEBKIT_TYPE_FRAME);
 
     /**
-     * WebKitWebPage::will-submit-form:
-     * @web_page: the #WebKitWebPage on which the signal is emitted
-     * @form: the #WebKitDOMElement to be submitted, which will always correspond to an HTMLFormElement
-     * @step: a #WebKitFormSubmissionEventType indicating the current
+     * CyberKitWebPage::will-submit-form:
+     * @web_page: the #CyberKitWebPage on which the signal is emitted
+     * @form: the #CyberKitDOMElement to be submitted, which will always correspond to an HTMLFormElement
+     * @step: a #CyberKitFormSubmissionEventType indicating the current
      * stage of form submission
-     * @source_frame: the #WebKitFrame containing the form to be
+     * @source_frame: the #CyberKitFrame containing the form to be
      * submitted
-     * @target_frame: the #WebKitFrame containing the form's target,
+     * @target_frame: the #CyberKitFrame containing the form's target,
      * which may be the same as @source_frame if no target was specified
      * @text_field_names: (element-type utf8) (transfer none): names of
      * the form's text fields
@@ -730,7 +730,7 @@ ALLOW_DEPRECATED_DECLARATIONS_BEGIN
      *
      * Since: 2.20
      *
-     * Deprecated: 2.40: Use #WebKitWebFormManager::will-send-submit-event and #WebKitWebFormManager::will-submit-form instead.
+     * Deprecated: 2.40: Use #CyberKitWebFormManager::will-send-submit-event and #CyberKitWebFormManager::will-submit-form instead.
      */
     signals[WILL_SUBMIT_FORM] = g_signal_new(
         "will-submit-form",
@@ -749,17 +749,17 @@ ALLOW_DEPRECATED_DECLARATIONS_END
 #endif
 
     /**
-     * WebKitWebPage::user-message-received:
-     * @web_page: the #WebKitWebPage on which the signal is emitted
-     * @message: the #WebKitUserMessage received
+     * CyberKitWebPage::user-message-received:
+     * @web_page: the #CyberKitWebPage on which the signal is emitted
+     * @message: the #CyberKitUserMessage received
      *
-     * This signal is emitted when a #WebKitUserMessage is received from the
-     * #WebKitWebView corresponding to @web_page. You can reply to the message
+     * This signal is emitted when a #CyberKitUserMessage is received from the
+     * #CyberKitWebView corresponding to @web_page. You can reply to the message
      * using webkit_user_message_send_reply().
      *
      * You can handle the user message asynchronously by calling g_object_ref() on
      * @message and returning %TRUE. If the last reference of @message is removed
-     * and the message has been replied, the operation in the #WebKitWebView will
+     * and the message has been replied, the operation in the #CyberKitWebView will
      * finish with error %WEBKIT_USER_MESSAGE_UNHANDLED_MESSAGE.
      *
      * Returns: %TRUE if the message was handled, or %FALSE otherwise.
@@ -777,14 +777,14 @@ ALLOW_DEPRECATED_DECLARATIONS_END
         WEBKIT_TYPE_USER_MESSAGE);
 }
 
-WebPage* webkitWebPageGetPage(WebKitWebPage *webPage)
+WebPage* webkitWebPageGetPage(CyberKitWebPage *webPage)
 {
     return webPage->priv->webPage;
 }
 
-WebKitWebPage* webkitWebPageCreate(WebPage* webPage)
+CyberKitWebPage* webkitWebPageCreate(WebPage* webPage)
 {
-    WebKitWebPage* page = WEBKIT_WEB_PAGE(g_object_new(WEBKIT_TYPE_WEB_PAGE, NULL));
+    CyberKitWebPage* page = WEBKIT_WEB_PAGE(g_object_new(WEBKIT_TYPE_WEB_PAGE, NULL));
     page->priv->webPage = webPage;
 
     webPage->setInjectedBundleResourceLoadClient(makeUnique<PageResourceLoadClient>(page));
@@ -798,10 +798,10 @@ WebKitWebPage* webkitWebPageCreate(WebPage* webPage)
     return page;
 }
 
-void webkitWebPageDidReceiveUserMessage(WebKitWebPage* webPage, UserMessage&& message, CompletionHandler<void(UserMessage&&)>&& completionHandler)
+void webkitWebPageDidReceiveUserMessage(CyberKitWebPage* webPage, UserMessage&& message, CompletionHandler<void(UserMessage&&)>&& completionHandler)
 {
     // Sink the floating ref.
-    GRefPtr<WebKitUserMessage> userMessage = webkitUserMessageCreate(WTFMove(message), WTFMove(completionHandler));
+    GRefPtr<CyberKitUserMessage> userMessage = webkitUserMessageCreate(WTFMove(message), WTFMove(completionHandler));
     gboolean returnValue;
     g_signal_emit(webPage, signals[USER_MESSAGE_RECEIVED], 0, userMessage.get(), &returnValue);
 }
@@ -809,16 +809,16 @@ void webkitWebPageDidReceiveUserMessage(WebKitWebPage* webPage, UserMessage&& me
 #if !ENABLE(2022_GLIB_API)
 /**
  * webkit_web_page_get_dom_document:
- * @web_page: a #WebKitWebPage
+ * @web_page: a #CyberKitWebPage
  *
- * Get the #WebKitDOMDocument currently loaded in @web_page
+ * Get the #CyberKitDOMDocument currently loaded in @web_page
  *
- * Returns: (transfer none): the #WebKitDOMDocument currently loaded, or %NULL
+ * Returns: (transfer none): the #CyberKitDOMDocument currently loaded, or %NULL
  *    if no document is currently loaded.
  *
  * Deprecated: 2.40. Use JavaScriptCore API instead.
  */
-WebKitDOMDocument* webkit_web_page_get_dom_document(WebKitWebPage* webPage)
+CyberKitDOMDocument* webkit_web_page_get_dom_document(CyberKitWebPage* webPage)
 {
     g_return_val_if_fail(WEBKIT_IS_WEB_PAGE(webPage), nullptr);
 
@@ -831,13 +831,13 @@ WebKitDOMDocument* webkit_web_page_get_dom_document(WebKitWebPage* webPage)
 
 /**
  * webkit_web_page_get_id:
- * @web_page: a #WebKitWebPage
+ * @web_page: a #CyberKitWebPage
  *
- * Get the identifier of the #WebKitWebPage
+ * Get the identifier of the #CyberKitWebPage
  *
  * Returns: the identifier of @web_page
  */
-guint64 webkit_web_page_get_id(WebKitWebPage* webPage)
+guint64 webkit_web_page_get_id(CyberKitWebPage* webPage)
 {
     g_return_val_if_fail(WEBKIT_IS_WEB_PAGE(webPage), 0);
 
@@ -846,7 +846,7 @@ guint64 webkit_web_page_get_id(WebKitWebPage* webPage)
 
 /**
  * webkit_web_page_get_uri:
- * @web_page: a #WebKitWebPage
+ * @web_page: a #CyberKitWebPage
  *
  * Returns the current active URI of @web_page.
  *
@@ -856,7 +856,7 @@ guint64 webkit_web_page_get_id(WebKitWebPage* webPage)
  * Returns: the current active URI of @web_view or %NULL if nothing has been
  *    loaded yet.
  */
-const gchar* webkit_web_page_get_uri(WebKitWebPage* webPage)
+const gchar* webkit_web_page_get_uri(CyberKitWebPage* webPage)
 {
     g_return_val_if_fail(WEBKIT_IS_WEB_PAGE(webPage), 0);
 
@@ -865,15 +865,15 @@ const gchar* webkit_web_page_get_uri(WebKitWebPage* webPage)
 
 /**
  * webkit_web_page_get_main_frame:
- * @web_page: a #WebKitWebPage
+ * @web_page: a #CyberKitWebPage
  *
- * Returns the main frame of a #WebKitWebPage.
+ * Returns the main frame of a #CyberKitWebPage.
  *
- * Returns: (transfer none): the #WebKitFrame that is the main frame of @web_page
+ * Returns: (transfer none): the #CyberKitFrame that is the main frame of @web_page
  *
  * Since: 2.2
  */
-WebKitFrame* webkit_web_page_get_main_frame(WebKitWebPage* webPage)
+CyberKitFrame* webkit_web_page_get_main_frame(CyberKitWebPage* webPage)
 {
     g_return_val_if_fail(WEBKIT_IS_WEB_PAGE(webPage), 0);
 
@@ -882,15 +882,15 @@ WebKitFrame* webkit_web_page_get_main_frame(WebKitWebPage* webPage)
 
 /**
  * webkit_web_page_get_editor:
- * @web_page: a #WebKitWebPage
+ * @web_page: a #CyberKitWebPage
  *
- * Gets the #WebKitWebEditor of a #WebKitWebPage.
+ * Gets the #CyberKitWebEditor of a #CyberKitWebPage.
  *
- * Returns: (transfer none): the #WebKitWebEditor
+ * Returns: (transfer none): the #CyberKitWebEditor
  *
  * Since: 2.10
  */
-WebKitWebEditor* webkit_web_page_get_editor(WebKitWebPage* webPage)
+CyberKitWebEditor* webkit_web_page_get_editor(CyberKitWebPage* webPage)
 {
     g_return_val_if_fail(WEBKIT_IS_WEB_PAGE(webPage), nullptr);
 
@@ -902,13 +902,13 @@ WebKitWebEditor* webkit_web_page_get_editor(WebKitWebPage* webPage)
 
 /**
  * webkit_web_page_send_message_to_view:
- * @web_page: a #WebKitWebPage
- * @message: a #WebKitUserMessage
+ * @web_page: a #CyberKitWebPage
+ * @message: a #CyberKitUserMessage
  * @cancellable: (nullable): a #GCancellable or %NULL to ignore
  * @callback: (scope async): (nullable): A #GAsyncReadyCallback to call when the request is satisfied or %NULL
  * @user_data: (closure): the data to pass to callback function
  *
- * Send @message to the #WebKitWebView corresponding to @web_page. If @message is floating, it's consumed.
+ * Send @message to the #CyberKitWebView corresponding to @web_page. If @message is floating, it's consumed.
  *
  * If you don't expect any reply, or you simply want to ignore it, you can pass %NULL as @callback.
  * When the operation is finished, @callback will be called. You can then call
@@ -916,13 +916,13 @@ WebKitWebEditor* webkit_web_page_get_editor(WebKitWebPage* webPage)
  *
  * Since: 2.28
  */
-void webkit_web_page_send_message_to_view(WebKitWebPage* webPage, WebKitUserMessage* message, GCancellable* cancellable, GAsyncReadyCallback callback, gpointer userData)
+void webkit_web_page_send_message_to_view(CyberKitWebPage* webPage, CyberKitUserMessage* message, GCancellable* cancellable, GAsyncReadyCallback callback, gpointer userData)
 {
     g_return_if_fail(WEBKIT_IS_WEB_PAGE(webPage));
     g_return_if_fail(WEBKIT_IS_USER_MESSAGE(message));
 
     // We sink the reference in case of being floating.
-    GRefPtr<WebKitUserMessage> adoptedMessage = message;
+    GRefPtr<CyberKitUserMessage> adoptedMessage = message;
     if (!callback) {
         webPage->priv->webPage->send(Messages::WebPageProxy::SendMessageToWebView(webkitUserMessageGetMessage(message)));
         return;
@@ -947,17 +947,17 @@ void webkit_web_page_send_message_to_view(WebKitWebPage* webPage, WebKitUserMess
 
 /**
  * webkit_web_page_send_message_to_view_finish:
- * @web_page: a #WebKitWebPage
+ * @web_page: a #CyberKitWebPage
  * @result: a #GAsyncResult
  * @error: return location for error or %NULL to ignor
  *
  * Finish an asynchronous operation started with webkit_web_page_send_message_to_view().
  *
- * Returns: (transfer full): a #WebKitUserMessage with the reply or %NULL in case of error.
+ * Returns: (transfer full): a #CyberKitUserMessage with the reply or %NULL in case of error.
  *
  * Since: 2.28
  */
-WebKitUserMessage* webkit_web_page_send_message_to_view_finish(WebKitWebPage* webPage, GAsyncResult* result, GError** error)
+CyberKitUserMessage* webkit_web_page_send_message_to_view_finish(CyberKitWebPage* webPage, GAsyncResult* result, GError** error)
 {
     g_return_val_if_fail(WEBKIT_IS_WEB_PAGE(webPage), nullptr);
     g_return_val_if_fail(g_task_is_valid(result, webPage), nullptr);
@@ -967,16 +967,16 @@ WebKitUserMessage* webkit_web_page_send_message_to_view_finish(WebKitWebPage* we
 
 /**
  * webkit_web_page_get_form_manager:
- * @web_page: a #WebKitWebPage
- * @world: (nullable): a #WebKitScriptWorld
+ * @web_page: a #CyberKitWebPage
+ * @world: (nullable): a #CyberKitScriptWorld
  *
- * Get the #WebKitWebFormManager of @web_page in @world.
+ * Get the #CyberKitWebFormManager of @web_page in @world.
  *
- * Returns: (transfer none): a #WebKitWebFormManager
+ * Returns: (transfer none): a #CyberKitWebFormManager
  *
  * Since: 2.40
  */
-WebKitWebFormManager* webkit_web_page_get_form_manager(WebKitWebPage* webPage, WebKitScriptWorld* world)
+CyberKitWebFormManager* webkit_web_page_get_form_manager(CyberKitWebPage* webPage, CyberKitScriptWorld* world)
 {
     g_return_val_if_fail(WEBKIT_IS_WEB_PAGE(webPage), nullptr);
     g_return_val_if_fail(!world || WEBKIT_IS_SCRIPT_WORLD(world), nullptr);

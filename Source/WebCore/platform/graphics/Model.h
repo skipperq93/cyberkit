@@ -34,7 +34,7 @@ namespace WTF {
 class TextStream;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class Model final : public RefCounted<Model> {
 public:
@@ -87,4 +87,4 @@ RefPtr<Model> Model::decode(Decoder& decoder)
 
 WEBCORE_EXPORT WTF::TextStream& operator<<(WTF::TextStream&, const Model&);
 
-} // namespace WebCore
+} // namespace CyberCore

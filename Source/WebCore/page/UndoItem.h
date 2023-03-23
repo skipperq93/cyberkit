@@ -32,7 +32,7 @@
 #include <wtf/WeakPtr.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class UndoManager;
@@ -78,4 +78,4 @@ private:
     WeakPtr<Document, WeakPtrImplWithEventTargetData> m_document;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

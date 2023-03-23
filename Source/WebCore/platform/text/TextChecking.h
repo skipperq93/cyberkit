@@ -39,7 +39,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class TextCheckingType : uint8_t {
     None                    = 0,
@@ -116,4 +116,4 @@ public:
     virtual void didCancel() = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

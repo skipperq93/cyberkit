@@ -29,7 +29,7 @@
 
 #include "ApplePaySessionPaymentRequest.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct MockPaymentContactFields : public ApplePaySessionPaymentRequest::ContactFields {
     MockPaymentContactFields() = default;
@@ -39,6 +39,6 @@ struct MockPaymentContactFields : public ApplePaySessionPaymentRequest::ContactF
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(APPLE_PAY)

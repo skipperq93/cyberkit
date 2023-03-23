@@ -31,7 +31,7 @@
 #include <optional>
 #include <wtf/FastMalloc.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class SelectionRenderingBehavior : bool { CoalesceBoundingRects, UseIndividualQuads };
 
@@ -114,15 +114,15 @@ private:
 
 WEBCORE_EXPORT WTF::TextStream& operator<<(WTF::TextStream&, SelectionGeometry);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::SelectionRenderingBehavior> {
+template<> struct EnumTraits<CyberCore::SelectionRenderingBehavior> {
     using values = EnumValues<
-        WebCore::SelectionRenderingBehavior,
-        WebCore::SelectionRenderingBehavior::CoalesceBoundingRects,
-        WebCore::SelectionRenderingBehavior::UseIndividualQuads
+        CyberCore::SelectionRenderingBehavior,
+        CyberCore::SelectionRenderingBehavior::CoalesceBoundingRects,
+        CyberCore::SelectionRenderingBehavior::UseIndividualQuads
     >;
 };
 

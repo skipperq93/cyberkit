@@ -36,7 +36,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(FilterData);
 WTF_MAKE_ISO_ALLOCATED_IMPL(RenderSVGResourceFilter);
@@ -272,4 +272,4 @@ TextStream& operator<<(TextStream& ts, FilterData::FilterDataState state)
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

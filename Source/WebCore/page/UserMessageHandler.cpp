@@ -33,7 +33,7 @@
 #include "SerializedScriptValue.h"
 #include <CyberScriptCore/JSCJSValue.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 UserMessageHandler::UserMessageHandler(Frame& frame, UserMessageHandlerDescriptor& descriptor)
     : FrameDestructionObserver(&frame)
@@ -69,6 +69,6 @@ ExceptionOr<void> UserMessageHandler::postMessage(RefPtr<SerializedScriptValue>&
     return { };
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(USER_MESSAGE_HANDLERS)

@@ -52,18 +52,18 @@ public:
     static void prepareForProcessToSuspend(CompletionHandler<void()>&&);
     static void processDidResume();
 
-    void insertPrivateClickMeasurement(WebCore::PrivateClickMeasurement&&, WebKit::PrivateClickMeasurementAttributionType, CompletionHandler<void()>&&);
-    void attributePrivateClickMeasurement(WebCore::PCM::SourceSite&&, WebCore::PCM::AttributionDestinationSite&&, const ApplicationBundleIdentifier&, WebCore::PCM::AttributionTriggerData&&, WebCore::PrivateClickMeasurement::IsRunningLayoutTest, CompletionHandler<void(std::optional<WebCore::PCM::AttributionSecondsUntilSendData>&&, DebugInfo&&)>&&);
+    void insertPrivateClickMeasurement(CyberCore::PrivateClickMeasurement&&, WebKit::PrivateClickMeasurementAttributionType, CompletionHandler<void()>&&);
+    void attributePrivateClickMeasurement(CyberCore::PCM::SourceSite&&, CyberCore::PCM::AttributionDestinationSite&&, const ApplicationBundleIdentifier&, CyberCore::PCM::AttributionTriggerData&&, CyberCore::PrivateClickMeasurement::IsRunningLayoutTest, CompletionHandler<void(std::optional<CyberCore::PCM::AttributionSecondsUntilSendData>&&, DebugInfo&&)>&&);
 
     void privateClickMeasurementToStringForTesting(CompletionHandler<void(String)>&&) const;
     void markAllUnattributedPrivateClickMeasurementAsExpiredForTesting();
     void markAttributedPrivateClickMeasurementsAsExpiredForTesting(CompletionHandler<void()>&&);
 
-    void allAttributedPrivateClickMeasurement(CompletionHandler<void(Vector<WebCore::PrivateClickMeasurement>&&)>&&);
+    void allAttributedPrivateClickMeasurement(CompletionHandler<void(Vector<CyberCore::PrivateClickMeasurement>&&)>&&);
     void clearExpiredPrivateClickMeasurement();
     void clearPrivateClickMeasurement(CompletionHandler<void()>&&);
-    void clearPrivateClickMeasurementForRegistrableDomain(WebCore::RegistrableDomain&&, CompletionHandler<void()>&&);
-    void clearSentAttribution(WebCore::PrivateClickMeasurement&& attributionToClear, WebCore::PCM::AttributionReportEndpoint);
+    void clearPrivateClickMeasurementForRegistrableDomain(CyberCore::RegistrableDomain&&, CompletionHandler<void()>&&);
+    void clearSentAttribution(CyberCore::PrivateClickMeasurement&& attributionToClear, CyberCore::PCM::AttributionReportEndpoint);
 
     void close(CompletionHandler<void()>&&);
 

@@ -31,7 +31,7 @@
 #include <CoreAudio/CoreAudio.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CoreAudioCaptureDevice;
 
@@ -65,6 +65,6 @@ private:
     bool m_filterTapEnabledDevices { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM) && PLATFORM(MAC)

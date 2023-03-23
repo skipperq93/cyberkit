@@ -32,7 +32,7 @@
 #include <wtf/text/AtomString.h>
 #include <wtf/text/AtomStringHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSSelector;
 class StyleSheetContents;
@@ -251,4 +251,4 @@ inline Vector<const CQ::ContainerQuery*> RuleSet::containerQueriesFor(const Rule
 }
 
 } // namespace Style
-} // namespace WebCore
+} // namespace CyberCore

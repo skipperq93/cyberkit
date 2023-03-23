@@ -63,17 +63,17 @@ struct WebsitePoliciesData;
 
 class WebFrameProxy : public API::ObjectImpl<API::Object::Type::Frame>, public IPC::MessageReceiver, public IPC::MessageSender {
 public:
-    static Ref<WebFrameProxy> create(WebPageProxy& page, WebProcessProxy& process, WebCore::FrameIdentifier frameID)
+    static Ref<WebFrameProxy> create(WebPageProxy& page, WebProcessProxy& process, CyberCore::FrameIdentifier frameID)
     {
         return adoptRef(*new WebFrameProxy(page, process, frameID));
     }
 
-    static WebFrameProxy* webFrame(WebCore::FrameIdentifier);
-    static bool canCreateFrame(WebCore::FrameIdentifier);
+    static WebFrameProxy* webFrame(CyberCore::FrameIdentifier);
+    static bool canCreateFrame(CyberCore::FrameIdentifier);
 
     virtual ~WebFrameProxy();
 
-    WebCore::FrameIdentifier frameID() const { return m_frameID; }
+    CyberCore::FrameIdentifier frameID() const { return m_frameID; }
     WebPageProxy* page() const { return m_page.get(); }
 
     bool pageIsClosed() const { return !m_page; } // Needs to be thread-safe.
@@ -84,7 +84,7 @@ public:
 
     FrameLoadState& frameLoadState() { return m_frameLoadState; }
 
-    void navigateServiceWorkerClient(WebCore::ScriptExecutionContextIdentifier, const URL&, CompletionHandler<void(std::optional<WebCore::PageIdentifier>, std::optional<WebCore::FrameIdentifier>)>&&);
+    void navigateServiceWorkerClient(CyberCore::ScriptExecutionContextIdentifier, const URL&, CompletionHandler<void(std::optional<CyberCore::PageIdentifier>, std::optional<CyberCore::FrameIdentifier>)>&&);
 
     void loadURL(const URL&, const String& referrer = String());
     // Sub frames only. For main frames, use WebPageProxy::loadData.
@@ -101,7 +101,7 @@ public:
 
     const String& title() const { return m_title; }
 
-    const WebCore::CertificateInfo& certificateInfo() const { return m_certificateInfo; }
+    const CyberCore::CertificateInfo& certificateInfo() const { return m_certificateInfo; }
 
     bool canProvideSource() const;
 
@@ -118,17 +118,17 @@ public:
     void didExplicitOpen(URL&&, String&& mimeType);
     void didReceiveServerRedirectForProvisionalLoad(const URL&);
     void didFailProvisionalLoad();
-    void didCommitLoad(const String& contentType, const WebCore::CertificateInfo&, bool containsPluginDocument);
+    void didCommitLoad(const String& contentType, const CyberCore::CertificateInfo&, bool containsPluginDocument);
     void didFinishLoad();
     void didFailLoad();
     void didSameDocumentNavigation(const URL&); // eg. anchor navigation, session state change.
     void didChangeTitle(const String&);
 
-    WebFramePolicyListenerProxy& setUpPolicyListenerProxy(CompletionHandler<void(WebCore::PolicyAction, API::WebsitePolicies*, ProcessSwapRequestedByClient, RefPtr<SafeBrowsingWarning>&&, std::optional<NavigatingToAppBoundDomain>)>&&, ShouldExpectSafeBrowsingResult, ShouldExpectAppBoundDomainResult, ShouldWaitForInitialLookalikeCharacterStrings);
+    WebFramePolicyListenerProxy& setUpPolicyListenerProxy(CompletionHandler<void(CyberCore::PolicyAction, API::WebsitePolicies*, ProcessSwapRequestedByClient, RefPtr<SafeBrowsingWarning>&&, std::optional<NavigatingToAppBoundDomain>)>&&, ShouldExpectSafeBrowsingResult, ShouldExpectAppBoundDomainResult, ShouldWaitForInitialLookalikeCharacterStrings);
 
 #if ENABLE(CONTENT_FILTERING)
-    void contentFilterDidBlockLoad(WebCore::ContentFilterUnblockHandler contentFilterUnblockHandler) { m_contentFilterUnblockHandler = WTFMove(contentFilterUnblockHandler); }
-    bool didHandleContentFilterUnblockNavigation(const WebCore::ResourceRequest&);
+    void contentFilterDidBlockLoad(CyberCore::ContentFilterUnblockHandler contentFilterUnblockHandler) { m_contentFilterUnblockHandler = WTFMove(contentFilterUnblockHandler); }
+    bool didHandleContentFilterUnblockNavigation(const CyberCore::ResourceRequest&);
 #endif
 
 #if PLATFORM(GTK)
@@ -136,27 +136,27 @@ public:
 #endif
 
     void transferNavigationCallbackToFrame(WebFrameProxy&);
-    void setNavigationCallback(CompletionHandler<void(std::optional<WebCore::PageIdentifier>, std::optional<WebCore::FrameIdentifier>)>&&);
+    void setNavigationCallback(CompletionHandler<void(std::optional<CyberCore::PageIdentifier>, std::optional<CyberCore::FrameIdentifier>)>&&);
 
     void disconnect();
-    void didCreateSubframe(WebCore::FrameIdentifier);
+    void didCreateSubframe(CyberCore::FrameIdentifier);
     ProcessID processIdentifier() const;
-    void swapToProcess(Ref<WebProcessProxy>&&, const WebCore::ResourceRequest&);
+    void swapToProcess(Ref<WebProcessProxy>&&, const CyberCore::ResourceRequest&);
 
     void didReceiveMessage(IPC::Connection&, IPC::Decoder&);
 
-    void commitProvisionalFrame(WebCore::FrameIdentifier, FrameInfoData&&, WebCore::ResourceRequest&&, uint64_t navigationID, const String& mimeType, bool frameHasCustomContentProvider, WebCore::FrameLoadType, const WebCore::CertificateInfo&, bool usedLegacyTLS, bool privateRelayed, bool containsPluginDocument, WebCore::HasInsecureContent, WebCore::MouseEventPolicy, const UserData&);
+    void commitProvisionalFrame(CyberCore::FrameIdentifier, FrameInfoData&&, CyberCore::ResourceRequest&&, uint64_t navigationID, const String& mimeType, bool frameHasCustomContentProvider, CyberCore::FrameLoadType, const CyberCore::CertificateInfo&, bool usedLegacyTLS, bool privateRelayed, bool containsPluginDocument, CyberCore::HasInsecureContent, CyberCore::MouseEventPolicy, const UserData&);
 
     void getFrameInfo(CompletionHandler<void(FrameTreeNodeData&&)>&&);
 
-    void updateRemoteFrameSize(WebCore::IntSize);
+    void updateRemoteFrameSize(CyberCore::IntSize);
 
     WebFrameProxy* parentFrame() { return m_parentFrame.get(); }
 
 private:
-    WebFrameProxy(WebPageProxy&, WebProcessProxy&, WebCore::FrameIdentifier);
+    WebFrameProxy(WebPageProxy&, WebProcessProxy&, CyberCore::FrameIdentifier);
 
-    std::optional<WebCore::PageIdentifier> pageIdentifier() const;
+    std::optional<CyberCore::PageIdentifier> pageIdentifier() const;
 
     IPC::Connection* messageSenderConnection() const final;
     uint64_t messageSenderDestinationID() const final;
@@ -164,23 +164,23 @@ private:
     WeakPtr<WebPageProxy> m_page;
     Ref<WebProcessProxy> m_process;
     std::unique_ptr<SubframePageProxy> m_subframePage;
-    WebCore::PageIdentifier m_webPageID;
+    CyberCore::PageIdentifier m_webPageID;
 
     FrameLoadState m_frameLoadState;
 
     String m_MIMEType;
     String m_title;
     bool m_containsPluginDocument { false };
-    WebCore::CertificateInfo m_certificateInfo;
+    CyberCore::CertificateInfo m_certificateInfo;
     RefPtr<WebFramePolicyListenerProxy> m_activeListener;
-    WebCore::FrameIdentifier m_frameID;
+    CyberCore::FrameIdentifier m_frameID;
     ListHashSet<Ref<WebFrameProxy>> m_childFrames;
     WeakPtr<WebFrameProxy> m_parentFrame;
     std::unique_ptr<ProvisionalFrameProxy> m_provisionalFrame;
 #if ENABLE(CONTENT_FILTERING)
-    WebCore::ContentFilterUnblockHandler m_contentFilterUnblockHandler;
+    CyberCore::ContentFilterUnblockHandler m_contentFilterUnblockHandler;
 #endif
-    CompletionHandler<void(std::optional<WebCore::PageIdentifier>, std::optional<WebCore::FrameIdentifier>)> m_navigateCallback;
+    CompletionHandler<void(std::optional<CyberCore::PageIdentifier>, std::optional<CyberCore::FrameIdentifier>)> m_navigateCallback;
 };
 
 } // namespace WebKit

@@ -26,7 +26,7 @@
 #ifndef UnicodeBidi_h
 #define UnicodeBidi_h
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class UnicodeBidi : uint8_t {
     Normal,

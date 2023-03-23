@@ -53,7 +53,7 @@ public:
     virtual ~RemoteRemoteCommandListenerProxy();
 
     bool supportsSeeking() const { return m_supportsSeeking; }
-    const WebCore::RemoteCommandListener::RemoteCommandsSet& supportedCommands() const { return m_supportedCommands; }
+    const CyberCore::RemoteCommandListener::RemoteCommandsSet& supportedCommands() const { return m_supportedCommands; }
 
     RemoteRemoteCommandListenerIdentifier identifier() const { return m_identifier; }
 
@@ -64,11 +64,11 @@ private:
     RemoteRemoteCommandListenerProxy(GPUConnectionToWebProcess&, RemoteRemoteCommandListenerIdentifier&&);
 
     // Messages
-    void updateSupportedCommands(Vector<WebCore::PlatformMediaSession::RemoteControlCommandType>&& commands, bool supportsSeeking);
+    void updateSupportedCommands(Vector<CyberCore::PlatformMediaSession::RemoteControlCommandType>&& commands, bool supportsSeeking);
 
     WeakPtr<GPUConnectionToWebProcess> m_gpuConnection;
     RemoteRemoteCommandListenerIdentifier m_identifier;
-    WebCore::RemoteCommandListener::RemoteCommandsSet m_supportedCommands;
+    CyberCore::RemoteCommandListener::RemoteCommandsSet m_supportedCommands;
     bool m_supportsSeeking { false };
 };
 

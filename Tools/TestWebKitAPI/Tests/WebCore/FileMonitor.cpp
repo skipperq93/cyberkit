@@ -39,7 +39,7 @@
 // Note: Disabling iOS since 'system' is not available on that platform.
 #if PLATFORM(MAC) || PLATFORM(GTK) || PLATFORM(WPE)
 
-using namespace WebCore;
+using namespace CyberCore;
 
 namespace TestWebKitAPI {
     

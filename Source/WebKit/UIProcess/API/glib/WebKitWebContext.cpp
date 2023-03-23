@@ -203,7 +203,7 @@ private:
     WebKitURISchemeRequestCallback m_callback { nullptr };
     void* m_userData { nullptr };
     GDestroyNotify m_destroyNotify { nullptr };
-    HashMap<std::pair<WebCore::ResourceLoaderIdentifier, WebPageProxyIdentifier>, GRefPtr<WebKitURISchemeRequest>> m_requests;
+    HashMap<std::pair<CyberCore::ResourceLoaderIdentifier, WebPageProxyIdentifier>, GRefPtr<WebKitURISchemeRequest>> m_requests;
 };
 
 typedef HashMap<String, RefPtr<WebKitURISchemeHandler> > URISchemeHandlerMap;
@@ -941,7 +941,7 @@ WebKitNetworkSession* webkit_web_context_get_network_session_for_automation(WebK
  * built-in caches that take advantage of these patterns,
  * substantially improving document load speed in browsing
  * situations. The WebKit cache model controls the behaviors of all of
- * these caches, including various WebCore caches.
+ * these caches, including various CyberCore caches.
  *
  * Browsers can improve document load speed substantially by
  * specifying %WEBKIT_CACHE_MODEL_WEB_BROWSER. Applications without a
@@ -1067,7 +1067,7 @@ WebKitDownload* webkit_web_context_download_uri(WebKitWebContext* context, const
     g_return_val_if_fail(WEBKIT_IS_WEB_CONTEXT(context), nullptr);
     g_return_val_if_fail(uri, nullptr);
 
-    WebCore::ResourceRequest request(String::fromUTF8(uri));
+    CyberCore::ResourceRequest request(String::fromUTF8(uri));
     auto& websiteDataStore = webkitWebsiteDataManagerGetDataStore(context->priv->websiteDataManager.get());
     auto& downloadProxy = context->priv->processPool->download(websiteDataStore, nullptr, request);
     auto download = webkitDownloadCreate(downloadProxy);
@@ -1616,7 +1616,7 @@ void webkit_web_context_set_preferred_languages(WebKitWebContext* context, const
 
     Vector<String> languages;
     for (size_t i = 0; languageList[i]; ++i) {
-        // Do not propagate the C locale to WebCore.
+        // Do not propagate the C locale to CyberCore.
         if (!g_ascii_strcasecmp(languageList[i], "C") || !g_ascii_strcasecmp(languageList[i], "POSIX"))
             languages.append("en-US"_s);
         else
@@ -1767,7 +1767,7 @@ void webkit_web_context_allow_tls_certificate_for_host(WebKitWebContext* context
     g_return_if_fail(G_IS_TLS_CERTIFICATE(certificate));
     g_return_if_fail(host);
 
-    auto certificateInfo = WebCore::CertificateInfo(certificate, static_cast<GTlsCertificateFlags>(0));
+    auto certificateInfo = CyberCore::CertificateInfo(certificate, static_cast<GTlsCertificateFlags>(0));
     auto& websiteDataStore = webkitWebsiteDataManagerGetDataStore(context->priv->websiteDataManager.get());
     websiteDataStore.allowSpecificHTTPSCertificateForHost(certificateInfo, String::fromUTF8(host));
 }
@@ -2029,9 +2029,9 @@ void webkitWebContextCreatePageForWebView(WebKitWebContext* context, WebKitWebVi
     const char* defaultContentSecurityPolicy = webkit_web_view_get_default_content_security_policy(webView);
 
     if (webExtensionMode == WEBKIT_WEB_EXTENSION_MODE_MANIFESTV3)
-        pageConfiguration->setContentSecurityPolicyModeForExtension(WebCore::ContentSecurityPolicyModeForExtension::ManifestV3);
+        pageConfiguration->setContentSecurityPolicyModeForExtension(CyberCore::ContentSecurityPolicyModeForExtension::ManifestV3);
     else if (webExtensionMode == WEBKIT_WEB_EXTENSION_MODE_MANIFESTV2)
-        pageConfiguration->setContentSecurityPolicyModeForExtension(WebCore::ContentSecurityPolicyModeForExtension::ManifestV2);
+        pageConfiguration->setContentSecurityPolicyModeForExtension(CyberCore::ContentSecurityPolicyModeForExtension::ManifestV2);
 
     if (defaultContentSecurityPolicy)
         pageConfiguration->setOverrideContentSecurityPolicy(String::fromUTF8(defaultContentSecurityPolicy));

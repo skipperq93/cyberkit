@@ -32,7 +32,7 @@
 
 // FIXME: The prefix "POD" here isn't correct; this tree works with non-POD types.
 
-namespace WebCore {
+namespace CyberCore {
 
 struct PODIntervalNodeUpdater;
 
@@ -223,4 +223,4 @@ struct PODIntervalNodeUpdater {
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

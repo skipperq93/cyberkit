@@ -33,17 +33,17 @@
 
 namespace WebKit {
 
-class ImageBufferShareableAllocator final : public WebCore::ImageBufferAllocator {
+class ImageBufferShareableAllocator final : public CyberCore::ImageBufferAllocator {
 public:
-    ImageBufferShareableAllocator(const WebCore::ProcessIdentity&);
+    ImageBufferShareableAllocator(const CyberCore::ProcessIdentity&);
 
 private:
-    RefPtr<WebCore::ImageBuffer> createImageBuffer(const WebCore::FloatSize&, const WebCore::DestinationColorSpace&, WebCore::RenderingMode) const final;
-    RefPtr<WebCore::PixelBuffer> createPixelBuffer(const WebCore::PixelBufferFormat&, const WebCore::IntSize&) const final;
+    RefPtr<CyberCore::ImageBuffer> createImageBuffer(const CyberCore::FloatSize&, const CyberCore::DestinationColorSpace&, CyberCore::RenderingMode) const final;
+    RefPtr<CyberCore::PixelBuffer> createPixelBuffer(const CyberCore::PixelBufferFormat&, const CyberCore::IntSize&) const final;
 
     void transferMemoryOwnership(SharedMemory::Handle&&) const;
 
-    const WebCore::ProcessIdentity m_resourceOwner;
+    const CyberCore::ProcessIdentity m_resourceOwner;
 };
 
 } // namespace WebKit

@@ -29,7 +29,7 @@
 #include "CrossOriginEmbedderPolicy.h"
 #include "CrossOriginOpenerPolicy.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // https://html.spec.whatwg.org/multipage/origin.html#policy-container
 struct PolicyContainer {
@@ -53,4 +53,4 @@ inline bool operator==(const PolicyContainer& a, const PolicyContainer& b)
 
 WEBCORE_EXPORT void addPolicyContainerHeaders(ResourceResponse&, const PolicyContainer&);
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -36,7 +36,7 @@ OBJC_CLASS AVAudioSession;
 OBJC_CLASS AVAudioSessionPortDescription;
 OBJC_CLASS WebAVAudioSessionAvailableInputsListener;
 
-namespace WebCore {
+namespace CyberCore {
 
 class AVAudioSessionCaptureDevice;
 class CaptureDevice;
@@ -88,6 +88,6 @@ private:
     mutable RetainPtr<AVAudioSessionPortDescription> m_lastDefaultMicrophone;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM) && PLATFORM(IOS_FAMILY)

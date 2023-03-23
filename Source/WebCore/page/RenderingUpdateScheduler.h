@@ -29,7 +29,7 @@
 #include "DisplayRefreshMonitorClient.h"
 #include <wtf/Seconds.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Page;
 class Timer;

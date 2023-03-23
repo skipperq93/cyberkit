@@ -31,7 +31,7 @@
 #include <wtf/WallTime.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WEBCORE_EXPORT BlobDataFileReference : public RefCounted<BlobDataFileReference> {
 public:

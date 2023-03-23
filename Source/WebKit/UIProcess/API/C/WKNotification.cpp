@@ -68,11 +68,11 @@ WKStringRef WKNotificationCopyLang(WKNotificationRef notification)
 WKStringRef WKNotificationCopyDir(WKNotificationRef notification)
 {
     switch (toImpl(notification)->dir()) {
-    case WebCore::NotificationDirection::Auto:
+    case CyberCore::NotificationDirection::Auto:
         return WKStringCreateWithUTF8CString("auto");
-    case WebCore::NotificationDirection::Ltr:
+    case CyberCore::NotificationDirection::Ltr:
         return WKStringCreateWithUTF8CString("ltr");
-    case WebCore::NotificationDirection::Rtl:
+    case CyberCore::NotificationDirection::Rtl:
         return WKStringCreateWithUTF8CString("rtl");
     }
 

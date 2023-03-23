@@ -29,7 +29,7 @@
 #if ENABLE(FULLSCREEN_API)
 
 #include "IntRect.h"
-#include "WebCoreInstanceHandle.h"
+#include "CyberCoreInstanceHandle.h"
 #include <windows.h>
 
 #if USE(CG)
@@ -41,7 +41,7 @@
 #include "PlatformCALayer.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 FullScreenWindow::FullScreenWindow(FullScreenClient* client)
     : m_client(client)
@@ -202,6 +202,6 @@ LRESULT FullScreenWindow::wndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM
     return lResult;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(FULLSCREEN_API)

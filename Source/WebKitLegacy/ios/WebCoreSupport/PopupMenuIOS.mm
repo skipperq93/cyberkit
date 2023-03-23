@@ -27,7 +27,7 @@
 
 #if PLATFORM(IOS_FAMILY)
 
-using namespace WebCore;
+using namespace CyberCore;
 
 PopupMenuIOS::PopupMenuIOS(PopupMenuClient* client)
     : m_popupClient(client)

@@ -201,7 +201,7 @@ static void webkitUserContentFilterStoreSaveBytes(GRefPtr<GTask>&& task, String&
             return;
 
         if (error) {
-            ASSERT(error.category() == WebCore::ContentExtensions::contentExtensionErrorCategory());
+            ASSERT(error.category() == CyberCore::ContentExtensions::contentExtensionErrorCategory());
             g_task_return_error(task.get(), toGError(WEBKIT_USER_CONTENT_FILTER_ERROR_INVALID_SOURCE, error));
         } else
             g_task_return_pointer(task.get(), webkitUserContentFilterCreate(WTFMove(contentRuleList)), reinterpret_cast<GDestroyNotify>(webkit_user_content_filter_unref));

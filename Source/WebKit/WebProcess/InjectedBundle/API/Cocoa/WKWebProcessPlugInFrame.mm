@@ -42,31 +42,31 @@
 #import <CyberCore/IntPoint.h>
 #import <CyberCore/LinkIconCollector.h>
 #import <CyberCore/LinkIconType.h>
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 #import <wtf/cocoa/VectorCocoa.h>
 
 @implementation WKWebProcessPlugInFrame {
-    API::ObjectStorage<WebKit::WebFrame> _frame;
+    API::ObjectStorage<CyberKit::WebFrame> _frame;
 }
 
 + (instancetype)lookUpFrameFromHandle:(_WKFrameHandle *)handle
 {
-    return wrapper(WebKit::WebProcess::singleton().webFrame(handle->_frameHandle->frameID()));
+    return wrapper(CyberKit::WebProcess::singleton().webFrame(handle->_frameHandle->frameID()));
 }
 
 + (instancetype)lookUpFrameFromJSContext:(JSContext *)context
 {
-    return wrapper(WebKit::WebFrame::frameForContext(context.JSGlobalContextRef));
+    return wrapper(CyberKit::WebFrame::frameForContext(context.JSGlobalContextRef));
 }
 
 + (instancetype)lookUpContentFrameFromWindowOrFrameElement:(JSValue *)value
 {
-    return wrapper(WebKit::WebFrame::contentFrameForWindowOrFrameElement(value.context.JSGlobalContextRef, value.JSValueRef));
+    return wrapper(CyberKit::WebFrame::contentFrameForWindowOrFrameElement(value.context.JSGlobalContextRef, value.JSValueRef));
 }
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainRunLoop(WKWebProcessPlugInFrame.class, self))
+    if (CyberCoreObjCScheduleDeallocateOnMainRunLoop(WKWebProcessPlugInFrame.class, self))
         return;
     _frame->~WebFrame();
     [super dealloc];
@@ -86,15 +86,15 @@
 
 - (WKWebProcessPlugInHitTestResult *)hitTest:(CGPoint)point
 {
-    return wrapper(_frame->hitTest(WebCore::IntPoint(point)));
+    return wrapper(_frame->hitTest(CyberCore::IntPoint(point)));
 }
 
 - (WKWebProcessPlugInHitTestResult *)hitTest:(CGPoint)point options:(WKHitTestOptions)options
 {
-    auto types = WebKit::WebFrame::defaultHitTestRequestTypes();
+    auto types = CyberKit::WebFrame::defaultHitTestRequestTypes();
     if (options & WKHitTestOptionAllowUserAgentShadowRootContent)
-        types.remove(WebCore::HitTestRequest::Type::DisallowUserAgentShadowContent);
-    return wrapper(_frame->hitTest(WebCore::IntPoint(point), types));
+        types.remove(CyberCore::HitTestRequest::Type::DisallowUserAgentShadowContent);
+    return wrapper(_frame->hitTest(CyberCore::IntPoint(point), types));
 }
 
 - (JSValue *)jsCSSStyleDeclarationForCSSStyleDeclarationHandle:(WKWebProcessPlugInCSSStyleDeclarationHandle *)cssStyleDeclarationHandle inWorld:(WKWebProcessPlugInScriptWorld *)world
@@ -117,7 +117,7 @@
 
 - (WKWebProcessPlugInBrowserContextController *)_browserContextController
 {
-    return WebKit::wrapper(*_frame->page());
+    return CyberKit::wrapper(*_frame->page());
 }
 
 - (NSURL *)URL
@@ -127,7 +127,7 @@
 
 - (NSArray *)childFrames
 {
-    return WebKit::wrapper(_frame->childFrames());
+    return CyberKit::wrapper(_frame->childFrames());
 }
 
 - (BOOL)containsAnyFormElements
@@ -153,26 +153,26 @@
     return coreFrame->document()->securityOrigin().toString();
 }
 
-static RetainPtr<NSArray> collectIcons(WebCore::Frame* frame, OptionSet<WebCore::LinkIconType> iconTypes)
+static RetainPtr<NSArray> collectIcons(CyberCore::Frame* frame, OptionSet<CyberCore::LinkIconType> iconTypes)
 {
     if (!frame)
         return @[];
     auto document = frame->document();
     if (!document)
         return @[];
-    return createNSArray(WebCore::LinkIconCollector(*document).iconsOfTypes(iconTypes), [] (auto& icon) -> NSURL * {
+    return createNSArray(CyberCore::LinkIconCollector(*document).iconsOfTypes(iconTypes), [] (auto& icon) -> NSURL * {
         return icon.url;
     });
 }
 
 - (NSArray *)appleTouchIconURLs
 {
-    return collectIcons(_frame->coreFrame(), { WebCore::LinkIconType::TouchIcon, WebCore::LinkIconType::TouchPrecomposedIcon }).autorelease();
+    return collectIcons(_frame->coreFrame(), { CyberCore::LinkIconType::TouchIcon, CyberCore::LinkIconType::TouchPrecomposedIcon }).autorelease();
 }
 
 - (NSArray *)faviconURLs
 {
-    return collectIcons(_frame->coreFrame(), WebCore::LinkIconType::Favicon).autorelease();
+    return collectIcons(_frame->coreFrame(), CyberCore::LinkIconType::Favicon).autorelease();
 }
 
 - (WKWebProcessPlugInFrame *)_parentFrame
@@ -190,7 +190,7 @@ static RetainPtr<NSArray> collectIcons(WebCore::Frame* frame, OptionSet<WebCore:
 
 - (NSArray *)_certificateChain
 {
-    return (NSArray *)WebCore::CertificateInfo::certificateChainFromSecTrust(_frame->certificateInfo().trust().get()).autorelease();
+    return (NSArray *)CyberCore::CertificateInfo::certificateChainFromSecTrust(_frame->certificateInfo().trust().get()).autorelease();
 }
 
 - (SecTrustRef)_serverTrust

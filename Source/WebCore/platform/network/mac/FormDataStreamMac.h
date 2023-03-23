@@ -34,7 +34,7 @@
 @class NSInputStream;
 @class NSMutableURLRequest;
 
-namespace WebCore {
+namespace CyberCore {
 
 class FormData;
 
@@ -44,4 +44,4 @@ FormData* httpBodyFromStream(NSInputStream *);
 
 CFStringRef formDataStreamLengthPropertyName();
 
-} // namespace WebCore
+} // namespace CyberCore

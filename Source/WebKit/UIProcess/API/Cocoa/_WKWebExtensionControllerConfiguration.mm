@@ -31,7 +31,7 @@
 #import "_WKWebExtensionControllerConfigurationInternal.h"
 
 #import "WebExtensionControllerConfiguration.h"
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 
 static constexpr NSString *persistentCodingKey = @"persistent";
 static constexpr NSString *identifierCodingKey = @"identifier";
@@ -97,7 +97,7 @@ static constexpr NSString *identifierCodingKey = @"identifier";
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainRunLoop(_WKWebExtensionControllerConfiguration.class, self))
+    if (CyberCoreObjCScheduleDeallocateOnMainRunLoop(_WKWebExtensionControllerConfiguration.class, self))
         return;
 
     _webExtensionControllerConfiguration->~WebExtensionControllerConfiguration();

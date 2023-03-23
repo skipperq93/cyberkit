@@ -29,7 +29,7 @@
 #include "RenderSVGModelObject.h"
 #include "SVGBoundingBoxComputation.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGImageElement;
 
@@ -85,7 +85,7 @@ private:
     RefPtr<ImageBuffer> m_bufferedForeground;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderSVGImage, isSVGImage())
 

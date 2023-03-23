@@ -29,9 +29,9 @@
 #include "Logging.h"
 #include "WebDocumentLoader.h"
 
-namespace WebKit {
+namespace CyberKit {
 
-RemoteWorkerFrameLoaderClient::RemoteWorkerFrameLoaderClient(WebPageProxyIdentifier webPageProxyID, WebCore::PageIdentifier pageID, const String& userAgent)
+RemoteWorkerFrameLoaderClient::RemoteWorkerFrameLoaderClient(WebPageProxyIdentifier webPageProxyID, CyberCore::PageIdentifier pageID, const String& userAgent)
     : m_webPageProxyID(webPageProxyID)
     , m_pageID(pageID)
     , m_userAgent(userAgent)
@@ -39,9 +39,9 @@ RemoteWorkerFrameLoaderClient::RemoteWorkerFrameLoaderClient(WebPageProxyIdentif
     RELEASE_LOG(Worker, "RemoteWorkerFrameLoaderClient::RemoteWorkerFrameLoaderClient webPageProxyID %" PRIu64 ", pageID %" PRIu64, webPageProxyID.toUInt64(), pageID.toUInt64());
 }
 
-Ref<WebCore::DocumentLoader> RemoteWorkerFrameLoaderClient::createDocumentLoader(const WebCore::ResourceRequest& request, const WebCore::SubstituteData& substituteData)
+Ref<CyberCore::DocumentLoader> RemoteWorkerFrameLoaderClient::createDocumentLoader(const CyberCore::ResourceRequest& request, const CyberCore::SubstituteData& substituteData)
 {
     return WebDocumentLoader::create(request, substituteData);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

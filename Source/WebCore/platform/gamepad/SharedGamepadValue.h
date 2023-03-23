@@ -32,7 +32,7 @@
 #include <wtf/Ref.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SharedGamepadValue {
 public:
@@ -64,6 +64,6 @@ private:
     Ref<Data> m_data;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(GAMEPAD)

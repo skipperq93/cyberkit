@@ -34,7 +34,7 @@
 #include <wtf/RunLoop.h>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 constexpr unsigned maxUnscheduledFireCount { 20 };
 
@@ -79,7 +79,7 @@ void LegacyDisplayRefreshMonitorMac::dispatchDisplayDidRefresh(const DisplayUpda
     });
 }
 
-WebCore::FramesPerSecond LegacyDisplayRefreshMonitorMac::nominalFramesPerSecondFromDisplayLink(CVDisplayLinkRef displayLink)
+CyberCore::FramesPerSecond LegacyDisplayRefreshMonitorMac::nominalFramesPerSecondFromDisplayLink(CVDisplayLinkRef displayLink)
 {
     CVTime refreshPeriod = CVDisplayLinkGetNominalOutputVideoRefreshPeriod(displayLink);
     return round((double)refreshPeriod.timeScale / (double)refreshPeriod.timeValue);
@@ -143,6 +143,6 @@ std::optional<FramesPerSecond> LegacyDisplayRefreshMonitorMac::displayNominalFra
     return nominalFramesPerSecondFromDisplayLink(m_displayLink);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(MAC)

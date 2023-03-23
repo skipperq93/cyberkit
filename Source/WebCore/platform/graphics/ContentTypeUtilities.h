@@ -28,7 +28,7 @@
 #include "ContentType.h"
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct FourCC;
 

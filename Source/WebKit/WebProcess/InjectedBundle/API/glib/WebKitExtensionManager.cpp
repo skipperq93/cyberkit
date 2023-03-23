@@ -18,28 +18,28 @@
  */
 
 #include "config.h"
-#include "WebKitExtensionManager.h"
+#include "CyberKitExtensionManager.h"
 
 #include "APIString.h"
 #include "InjectedBundle.h"
-#include "WebKitWebExtensionPrivate.h"
+#include "CyberKitWebExtensionPrivate.h"
 #include <memory>
 #include <wtf/FileSystem.h>
 #include <wtf/text/CString.h>
 
-namespace WebKit {
+namespace CyberKit {
 
-WebKitExtensionManager& WebKitExtensionManager::singleton()
+CyberKitExtensionManager& CyberKitExtensionManager::singleton()
 {
-    static NeverDestroyed<WebKitExtensionManager> extensionManager;
+    static NeverDestroyed<CyberKitExtensionManager> extensionManager;
     return extensionManager;
 }
 
-WebKitExtensionManager::WebKitExtensionManager()
+CyberKitExtensionManager::CyberKitExtensionManager()
 {
 }
 
-void WebKitExtensionManager::scanModules(const String& webExtensionsDirectory, Vector<String>& modules)
+void CyberKitExtensionManager::scanModules(const String& webExtensionsDirectory, Vector<String>& modules)
 {
     auto moduleNames = FileSystem::listDirectory(webExtensionsDirectory);
     for (auto& moduleName : moduleNames) {
@@ -71,17 +71,17 @@ static void parseUserData(API::Object* userData, String& webExtensionsDirectory,
     initializationUserData = adoptGRef(data);
 }
 
-bool WebKitExtensionManager::initializeWebExtension(Module* extensionModule, GVariant* userData)
+bool CyberKitExtensionManager::initializeWebExtension(Module* extensionModule, GVariant* userData)
 {
-    WebKitWebExtensionInitializeWithUserDataFunction initializeWithUserDataFunction =
-        extensionModule->functionPointer<WebKitWebExtensionInitializeWithUserDataFunction>("webkit_web_extension_initialize_with_user_data");
+    CyberKitWebExtensionInitializeWithUserDataFunction initializeWithUserDataFunction =
+        extensionModule->functionPointer<CyberKitWebExtensionInitializeWithUserDataFunction>("webkit_web_extension_initialize_with_user_data");
     if (initializeWithUserDataFunction) {
         initializeWithUserDataFunction(m_extension.get(), userData);
         return true;
     }
 
-    WebKitWebExtensionInitializeFunction initializeFunction =
-        extensionModule->functionPointer<WebKitWebExtensionInitializeFunction>("webkit_web_extension_initialize");
+    CyberKitWebExtensionInitializeFunction initializeFunction =
+        extensionModule->functionPointer<CyberKitWebExtensionInitializeFunction>("webkit_web_extension_initialize");
     if (initializeFunction) {
         initializeFunction(m_extension.get());
         return true;
@@ -90,7 +90,7 @@ bool WebKitExtensionManager::initializeWebExtension(Module* extensionModule, GVa
     return false;
 }
 
-void WebKitExtensionManager::initialize(InjectedBundle* bundle, API::Object* userDataObject)
+void CyberKitExtensionManager::initialize(InjectedBundle* bundle, API::Object* userDataObject)
 {
     ASSERT(bundle);
     ASSERT(userDataObject);
@@ -115,4 +115,4 @@ void WebKitExtensionManager::initialize(InjectedBundle* bundle, API::Object* use
     }
 }
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -21,28 +21,28 @@
 #error "Only <webkitdom/webkitdom.h> can be included directly."
 #endif
 
-#ifndef WebKitDOMHTMLInputElement_h
-#define WebKitDOMHTMLInputElement_h
+#ifndef CyberKitDOMHTMLInputElement_h
+#define CyberKitDOMHTMLInputElement_h
 
 #include <glib-object.h>
-#include <webkitdom/WebKitDOMHTMLElement.h>
+#include <webkitdom/CyberKitDOMHTMLElement.h>
 #include <webkitdom/webkitdomdefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_DOM_TYPE_HTML_INPUT_ELEMENT            (webkit_dom_html_input_element_get_type())
-#define WEBKIT_DOM_HTML_INPUT_ELEMENT(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_HTML_INPUT_ELEMENT, WebKitDOMHTMLInputElement))
-#define WEBKIT_DOM_HTML_INPUT_ELEMENT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_HTML_INPUT_ELEMENT, WebKitDOMHTMLInputElementClass)
+#define WEBKIT_DOM_HTML_INPUT_ELEMENT(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_HTML_INPUT_ELEMENT, CyberKitDOMHTMLInputElement))
+#define WEBKIT_DOM_HTML_INPUT_ELEMENT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_HTML_INPUT_ELEMENT, CyberKitDOMHTMLInputElementClass)
 #define WEBKIT_DOM_IS_HTML_INPUT_ELEMENT(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_DOM_TYPE_HTML_INPUT_ELEMENT))
 #define WEBKIT_DOM_IS_HTML_INPUT_ELEMENT_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_DOM_TYPE_HTML_INPUT_ELEMENT))
-#define WEBKIT_DOM_HTML_INPUT_ELEMENT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_HTML_INPUT_ELEMENT, WebKitDOMHTMLInputElementClass))
+#define WEBKIT_DOM_HTML_INPUT_ELEMENT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_HTML_INPUT_ELEMENT, CyberKitDOMHTMLInputElementClass))
 
-struct _WebKitDOMHTMLInputElement {
-    WebKitDOMHTMLElement parent_instance;
+struct _CyberKitDOMHTMLInputElement {
+    CyberKitDOMHTMLElement parent_instance;
 };
 
-struct _WebKitDOMHTMLInputElementClass {
-    WebKitDOMHTMLElementClass parent_class;
+struct _CyberKitDOMHTMLInputElementClass {
+    CyberKitDOMHTMLElementClass parent_class;
 };
 
 WEBKIT_DEPRECATED GType
@@ -50,94 +50,94 @@ webkit_dom_html_input_element_get_type(void);
 
 /**
  * webkit_dom_html_input_element_select:
- * @self: A #WebKitDOMHTMLInputElement
+ * @self: A #CyberKitDOMHTMLInputElement
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_input_element_select(WebKitDOMHTMLInputElement* self);
+webkit_dom_html_input_element_select(CyberKitDOMHTMLInputElement* self);
 
 /**
  * webkit_dom_html_input_element_get_accept:
- * @self: A #WebKitDOMHTMLInputElement
+ * @self: A #CyberKitDOMHTMLInputElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_input_element_get_accept(WebKitDOMHTMLInputElement* self);
+webkit_dom_html_input_element_get_accept(CyberKitDOMHTMLInputElement* self);
 
 /**
  * webkit_dom_html_input_element_set_accept:
- * @self: A #WebKitDOMHTMLInputElement
+ * @self: A #CyberKitDOMHTMLInputElement
  * @value: A #gchar
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_input_element_set_accept(WebKitDOMHTMLInputElement* self, const gchar* value);
+webkit_dom_html_input_element_set_accept(CyberKitDOMHTMLInputElement* self, const gchar* value);
 
 /**
  * webkit_dom_html_input_element_get_alt:
- * @self: A #WebKitDOMHTMLInputElement
+ * @self: A #CyberKitDOMHTMLInputElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_input_element_get_alt(WebKitDOMHTMLInputElement* self);
+webkit_dom_html_input_element_get_alt(CyberKitDOMHTMLInputElement* self);
 
 /**
  * webkit_dom_html_input_element_set_alt:
- * @self: A #WebKitDOMHTMLInputElement
+ * @self: A #CyberKitDOMHTMLInputElement
  * @value: A #gchar
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_input_element_set_alt(WebKitDOMHTMLInputElement* self, const gchar* value);
+webkit_dom_html_input_element_set_alt(CyberKitDOMHTMLInputElement* self, const gchar* value);
 
 /**
  * webkit_dom_html_input_element_get_autofocus:
- * @self: A #WebKitDOMHTMLInputElement
+ * @self: A #CyberKitDOMHTMLInputElement
  *
  * Returns: A #gboolean
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
-webkit_dom_html_input_element_get_autofocus(WebKitDOMHTMLInputElement* self);
+webkit_dom_html_input_element_get_autofocus(CyberKitDOMHTMLInputElement* self);
 
 /**
  * webkit_dom_html_input_element_set_autofocus:
- * @self: A #WebKitDOMHTMLInputElement
+ * @self: A #CyberKitDOMHTMLInputElement
  * @value: A #gboolean
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_input_element_set_autofocus(WebKitDOMHTMLInputElement* self, gboolean value);
+webkit_dom_html_input_element_set_autofocus(CyberKitDOMHTMLInputElement* self, gboolean value);
 
 /**
  * webkit_dom_html_input_element_get_default_checked:
- * @self: A #WebKitDOMHTMLInputElement
+ * @self: A #CyberKitDOMHTMLInputElement
  *
  * Returns: A #gboolean
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
-webkit_dom_html_input_element_get_default_checked(WebKitDOMHTMLInputElement* self);
+webkit_dom_html_input_element_get_default_checked(CyberKitDOMHTMLInputElement* self);
 
 /**
  * webkit_dom_html_input_element_set_default_checked:
- * @self: A #WebKitDOMHTMLInputElement
+ * @self: A #CyberKitDOMHTMLInputElement
  * @value: A #gboolean
  *
  * Since: 2.16
@@ -145,143 +145,143 @@ webkit_dom_html_input_element_get_default_checked(WebKitDOMHTMLInputElement* sel
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_input_element_set_default_checked(WebKitDOMHTMLInputElement* self, gboolean value);
+webkit_dom_html_input_element_set_default_checked(CyberKitDOMHTMLInputElement* self, gboolean value);
 
 /**
  * webkit_dom_html_input_element_get_checked:
- * @self: A #WebKitDOMHTMLInputElement
+ * @self: A #CyberKitDOMHTMLInputElement
  *
  * Returns: A #gboolean
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
-webkit_dom_html_input_element_get_checked(WebKitDOMHTMLInputElement* self);
+webkit_dom_html_input_element_get_checked(CyberKitDOMHTMLInputElement* self);
 
 /**
  * webkit_dom_html_input_element_set_checked:
- * @self: A #WebKitDOMHTMLInputElement
+ * @self: A #CyberKitDOMHTMLInputElement
  * @value: A #gboolean
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_input_element_set_checked(WebKitDOMHTMLInputElement* self, gboolean value);
+webkit_dom_html_input_element_set_checked(CyberKitDOMHTMLInputElement* self, gboolean value);
 
 /**
  * webkit_dom_html_input_element_get_disabled:
- * @self: A #WebKitDOMHTMLInputElement
+ * @self: A #CyberKitDOMHTMLInputElement
  *
  * Returns: A #gboolean
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
-webkit_dom_html_input_element_get_disabled(WebKitDOMHTMLInputElement* self);
+webkit_dom_html_input_element_get_disabled(CyberKitDOMHTMLInputElement* self);
 
 /**
  * webkit_dom_html_input_element_set_disabled:
- * @self: A #WebKitDOMHTMLInputElement
+ * @self: A #CyberKitDOMHTMLInputElement
  * @value: A #gboolean
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_input_element_set_disabled(WebKitDOMHTMLInputElement* self, gboolean value);
+webkit_dom_html_input_element_set_disabled(CyberKitDOMHTMLInputElement* self, gboolean value);
 
 /**
  * webkit_dom_html_input_element_get_form:
- * @self: A #WebKitDOMHTMLInputElement
+ * @self: A #CyberKitDOMHTMLInputElement
  *
- * Returns: (transfer none): A #WebKitDOMHTMLFormElement
+ * Returns: (transfer none): A #CyberKitDOMHTMLFormElement
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMHTMLFormElement*
-webkit_dom_html_input_element_get_form(WebKitDOMHTMLInputElement* self);
+WEBKIT_DEPRECATED CyberKitDOMHTMLFormElement*
+webkit_dom_html_input_element_get_form(CyberKitDOMHTMLInputElement* self);
 
 /**
  * webkit_dom_html_input_element_get_files:
- * @self: A #WebKitDOMHTMLInputElement
+ * @self: A #CyberKitDOMHTMLInputElement
  *
- * Returns: (transfer full): A #WebKitDOMFileList
+ * Returns: (transfer full): A #CyberKitDOMFileList
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMFileList*
-webkit_dom_html_input_element_get_files(WebKitDOMHTMLInputElement* self);
+WEBKIT_DEPRECATED CyberKitDOMFileList*
+webkit_dom_html_input_element_get_files(CyberKitDOMHTMLInputElement* self);
 
 /**
  * webkit_dom_html_input_element_set_files:
- * @self: A #WebKitDOMHTMLInputElement
- * @value: A #WebKitDOMFileList
+ * @self: A #CyberKitDOMHTMLInputElement
+ * @value: A #CyberKitDOMFileList
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_input_element_set_files(WebKitDOMHTMLInputElement* self, WebKitDOMFileList* value);
+webkit_dom_html_input_element_set_files(CyberKitDOMHTMLInputElement* self, CyberKitDOMFileList* value);
 
 /**
  * webkit_dom_html_input_element_get_height:
- * @self: A #WebKitDOMHTMLInputElement
+ * @self: A #CyberKitDOMHTMLInputElement
  *
  * Returns: A #gulong
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gulong
-webkit_dom_html_input_element_get_height(WebKitDOMHTMLInputElement* self);
+webkit_dom_html_input_element_get_height(CyberKitDOMHTMLInputElement* self);
 
 /**
  * webkit_dom_html_input_element_set_height:
- * @self: A #WebKitDOMHTMLInputElement
+ * @self: A #CyberKitDOMHTMLInputElement
  * @value: A #gulong
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_input_element_set_height(WebKitDOMHTMLInputElement* self, gulong value);
+webkit_dom_html_input_element_set_height(CyberKitDOMHTMLInputElement* self, gulong value);
 
 /**
  * webkit_dom_html_input_element_get_indeterminate:
- * @self: A #WebKitDOMHTMLInputElement
+ * @self: A #CyberKitDOMHTMLInputElement
  *
  * Returns: A #gboolean
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
-webkit_dom_html_input_element_get_indeterminate(WebKitDOMHTMLInputElement* self);
+webkit_dom_html_input_element_get_indeterminate(CyberKitDOMHTMLInputElement* self);
 
 /**
  * webkit_dom_html_input_element_set_indeterminate:
- * @self: A #WebKitDOMHTMLInputElement
+ * @self: A #CyberKitDOMHTMLInputElement
  * @value: A #gboolean
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_input_element_set_indeterminate(WebKitDOMHTMLInputElement* self, gboolean value);
+webkit_dom_html_input_element_set_indeterminate(CyberKitDOMHTMLInputElement* self, gboolean value);
 
 /**
  * webkit_dom_html_input_element_get_max_length:
- * @self: A #WebKitDOMHTMLInputElement
+ * @self: A #CyberKitDOMHTMLInputElement
  *
  * Returns: A #glong
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED glong
-webkit_dom_html_input_element_get_max_length(WebKitDOMHTMLInputElement* self);
+webkit_dom_html_input_element_get_max_length(CyberKitDOMHTMLInputElement* self);
 
 /**
  * webkit_dom_html_input_element_set_max_length:
- * @self: A #WebKitDOMHTMLInputElement
+ * @self: A #CyberKitDOMHTMLInputElement
  * @value: A #glong
  * @error: #GError
  *
@@ -289,55 +289,55 @@ webkit_dom_html_input_element_get_max_length(WebKitDOMHTMLInputElement* self);
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_input_element_set_max_length(WebKitDOMHTMLInputElement* self, glong value, GError** error);
+webkit_dom_html_input_element_set_max_length(CyberKitDOMHTMLInputElement* self, glong value, GError** error);
 
 /**
  * webkit_dom_html_input_element_get_multiple:
- * @self: A #WebKitDOMHTMLInputElement
+ * @self: A #CyberKitDOMHTMLInputElement
  *
  * Returns: A #gboolean
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
-webkit_dom_html_input_element_get_multiple(WebKitDOMHTMLInputElement* self);
+webkit_dom_html_input_element_get_multiple(CyberKitDOMHTMLInputElement* self);
 
 /**
  * webkit_dom_html_input_element_set_multiple:
- * @self: A #WebKitDOMHTMLInputElement
+ * @self: A #CyberKitDOMHTMLInputElement
  * @value: A #gboolean
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_input_element_set_multiple(WebKitDOMHTMLInputElement* self, gboolean value);
+webkit_dom_html_input_element_set_multiple(CyberKitDOMHTMLInputElement* self, gboolean value);
 
 /**
  * webkit_dom_html_input_element_get_name:
- * @self: A #WebKitDOMHTMLInputElement
+ * @self: A #CyberKitDOMHTMLInputElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_input_element_get_name(WebKitDOMHTMLInputElement* self);
+webkit_dom_html_input_element_get_name(CyberKitDOMHTMLInputElement* self);
 
 /**
  * webkit_dom_html_input_element_set_name:
- * @self: A #WebKitDOMHTMLInputElement
+ * @self: A #CyberKitDOMHTMLInputElement
  * @value: A #gchar
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_input_element_set_name(WebKitDOMHTMLInputElement* self, const gchar* value);
+webkit_dom_html_input_element_set_name(CyberKitDOMHTMLInputElement* self, const gchar* value);
 
 /**
  * webkit_dom_html_input_element_get_read_only:
- * @self: A #WebKitDOMHTMLInputElement
+ * @self: A #CyberKitDOMHTMLInputElement
  *
  * Returns: A #gboolean
  *
@@ -346,33 +346,33 @@ webkit_dom_html_input_element_set_name(WebKitDOMHTMLInputElement* self, const gc
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
-webkit_dom_html_input_element_get_read_only(WebKitDOMHTMLInputElement* self);
+webkit_dom_html_input_element_get_read_only(CyberKitDOMHTMLInputElement* self);
 
 /**
  * webkit_dom_html_input_element_set_read_only:
- * @self: A #WebKitDOMHTMLInputElement
+ * @self: A #CyberKitDOMHTMLInputElement
  * @value: A #gboolean
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_input_element_set_read_only(WebKitDOMHTMLInputElement* self, gboolean value);
+webkit_dom_html_input_element_set_read_only(CyberKitDOMHTMLInputElement* self, gboolean value);
 
 /**
  * webkit_dom_html_input_element_get_size:
- * @self: A #WebKitDOMHTMLInputElement
+ * @self: A #CyberKitDOMHTMLInputElement
  *
  * Returns: A #gulong
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gulong
-webkit_dom_html_input_element_get_size(WebKitDOMHTMLInputElement* self);
+webkit_dom_html_input_element_get_size(CyberKitDOMHTMLInputElement* self);
 
 /**
  * webkit_dom_html_input_element_set_size:
- * @self: A #WebKitDOMHTMLInputElement
+ * @self: A #CyberKitDOMHTMLInputElement
  * @value: A #gulong
  * @error: #GError
  *
@@ -380,176 +380,176 @@ webkit_dom_html_input_element_get_size(WebKitDOMHTMLInputElement* self);
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_input_element_set_size(WebKitDOMHTMLInputElement* self, gulong value, GError** error);
+webkit_dom_html_input_element_set_size(CyberKitDOMHTMLInputElement* self, gulong value, GError** error);
 
 /**
  * webkit_dom_html_input_element_get_src:
- * @self: A #WebKitDOMHTMLInputElement
+ * @self: A #CyberKitDOMHTMLInputElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_input_element_get_src(WebKitDOMHTMLInputElement* self);
+webkit_dom_html_input_element_get_src(CyberKitDOMHTMLInputElement* self);
 
 /**
  * webkit_dom_html_input_element_set_src:
- * @self: A #WebKitDOMHTMLInputElement
+ * @self: A #CyberKitDOMHTMLInputElement
  * @value: A #gchar
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_input_element_set_src(WebKitDOMHTMLInputElement* self, const gchar* value);
+webkit_dom_html_input_element_set_src(CyberKitDOMHTMLInputElement* self, const gchar* value);
 
 /**
  * webkit_dom_html_input_element_get_input_type:
- * @self: A #WebKitDOMHTMLInputElement
+ * @self: A #CyberKitDOMHTMLInputElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_input_element_get_input_type(WebKitDOMHTMLInputElement* self);
+webkit_dom_html_input_element_get_input_type(CyberKitDOMHTMLInputElement* self);
 
 /**
  * webkit_dom_html_input_element_set_input_type:
- * @self: A #WebKitDOMHTMLInputElement
+ * @self: A #CyberKitDOMHTMLInputElement
  * @value: A #gchar
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_input_element_set_input_type(WebKitDOMHTMLInputElement* self, const gchar* value);
+webkit_dom_html_input_element_set_input_type(CyberKitDOMHTMLInputElement* self, const gchar* value);
 
 /**
  * webkit_dom_html_input_element_get_default_value:
- * @self: A #WebKitDOMHTMLInputElement
+ * @self: A #CyberKitDOMHTMLInputElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_input_element_get_default_value(WebKitDOMHTMLInputElement* self);
+webkit_dom_html_input_element_get_default_value(CyberKitDOMHTMLInputElement* self);
 
 /**
  * webkit_dom_html_input_element_set_default_value:
- * @self: A #WebKitDOMHTMLInputElement
+ * @self: A #CyberKitDOMHTMLInputElement
  * @value: A #gchar
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_input_element_set_default_value(WebKitDOMHTMLInputElement* self, const gchar* value);
+webkit_dom_html_input_element_set_default_value(CyberKitDOMHTMLInputElement* self, const gchar* value);
 
 /**
  * webkit_dom_html_input_element_get_value:
- * @self: A #WebKitDOMHTMLInputElement
+ * @self: A #CyberKitDOMHTMLInputElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_input_element_get_value(WebKitDOMHTMLInputElement* self);
+webkit_dom_html_input_element_get_value(CyberKitDOMHTMLInputElement* self);
 
 /**
  * webkit_dom_html_input_element_set_value:
- * @self: A #WebKitDOMHTMLInputElement
+ * @self: A #CyberKitDOMHTMLInputElement
  * @value: A #gchar
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_input_element_set_value(WebKitDOMHTMLInputElement* self, const gchar* value);
+webkit_dom_html_input_element_set_value(CyberKitDOMHTMLInputElement* self, const gchar* value);
 
 /**
  * webkit_dom_html_input_element_get_width:
- * @self: A #WebKitDOMHTMLInputElement
+ * @self: A #CyberKitDOMHTMLInputElement
  *
  * Returns: A #gulong
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gulong
-webkit_dom_html_input_element_get_width(WebKitDOMHTMLInputElement* self);
+webkit_dom_html_input_element_get_width(CyberKitDOMHTMLInputElement* self);
 
 /**
  * webkit_dom_html_input_element_set_width:
- * @self: A #WebKitDOMHTMLInputElement
+ * @self: A #CyberKitDOMHTMLInputElement
  * @value: A #gulong
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_input_element_set_width(WebKitDOMHTMLInputElement* self, gulong value);
+webkit_dom_html_input_element_set_width(CyberKitDOMHTMLInputElement* self, gulong value);
 
 /**
  * webkit_dom_html_input_element_get_will_validate:
- * @self: A #WebKitDOMHTMLInputElement
+ * @self: A #CyberKitDOMHTMLInputElement
  *
  * Returns: A #gboolean
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
-webkit_dom_html_input_element_get_will_validate(WebKitDOMHTMLInputElement* self);
+webkit_dom_html_input_element_get_will_validate(CyberKitDOMHTMLInputElement* self);
 
 /**
  * webkit_dom_html_input_element_get_align:
- * @self: A #WebKitDOMHTMLInputElement
+ * @self: A #CyberKitDOMHTMLInputElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_input_element_get_align(WebKitDOMHTMLInputElement* self);
+webkit_dom_html_input_element_get_align(CyberKitDOMHTMLInputElement* self);
 
 /**
  * webkit_dom_html_input_element_set_align:
- * @self: A #WebKitDOMHTMLInputElement
+ * @self: A #CyberKitDOMHTMLInputElement
  * @value: A #gchar
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_input_element_set_align(WebKitDOMHTMLInputElement* self, const gchar* value);
+webkit_dom_html_input_element_set_align(CyberKitDOMHTMLInputElement* self, const gchar* value);
 
 /**
  * webkit_dom_html_input_element_get_use_map:
- * @self: A #WebKitDOMHTMLInputElement
+ * @self: A #CyberKitDOMHTMLInputElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_input_element_get_use_map(WebKitDOMHTMLInputElement* self);
+webkit_dom_html_input_element_get_use_map(CyberKitDOMHTMLInputElement* self);
 
 /**
  * webkit_dom_html_input_element_set_use_map:
- * @self: A #WebKitDOMHTMLInputElement
+ * @self: A #CyberKitDOMHTMLInputElement
  * @value: A #gchar
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_input_element_set_use_map(WebKitDOMHTMLInputElement* self, const gchar* value);
+webkit_dom_html_input_element_set_use_map(CyberKitDOMHTMLInputElement* self, const gchar* value);
 
 /**
  * webkit_dom_html_input_element_get_capture_type:
- * @self: A #WebKitDOMHTMLInputElement
+ * @self: A #CyberKitDOMHTMLInputElement
  *
  * Returns: A #gchar
  *
@@ -558,11 +558,11 @@ webkit_dom_html_input_element_set_use_map(WebKitDOMHTMLInputElement* self, const
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_input_element_get_capture_type(WebKitDOMHTMLInputElement* self);
+webkit_dom_html_input_element_get_capture_type(CyberKitDOMHTMLInputElement* self);
 
 /**
  * webkit_dom_html_input_element_set_capture_type:
- * @self: A #WebKitDOMHTMLInputElement
+ * @self: A #CyberKitDOMHTMLInputElement
  * @value: A #gchar
  *
  * Since: 2.16
@@ -570,22 +570,22 @@ webkit_dom_html_input_element_get_capture_type(WebKitDOMHTMLInputElement* self);
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_input_element_set_capture_type(WebKitDOMHTMLInputElement* self, const gchar* value);
+webkit_dom_html_input_element_set_capture_type(CyberKitDOMHTMLInputElement* self, const gchar* value);
 
 /**
  * webkit_dom_html_input_element_is_edited:
- * @input: A #WebKitDOMHTMLInputElement
+ * @input: A #CyberKitDOMHTMLInputElement
  *
  * Returns: A #gboolean
  *
  * Deprecated: 2.22: Use webkit_dom_element_html_input_element_is_user_edited() instead.
  */
 WEBKIT_DEPRECATED_FOR(webkit_dom_element_html_input_element_is_user_edited) gboolean
-webkit_dom_html_input_element_is_edited(WebKitDOMHTMLInputElement* input);
+webkit_dom_html_input_element_is_edited(CyberKitDOMHTMLInputElement* input);
 
 /**
  * webkit_dom_html_input_element_get_auto_filled:
- * @self: A #WebKitDOMHTMLInputElement
+ * @self: A #CyberKitDOMHTMLInputElement
  *
  * Returns: A #gboolean
  *
@@ -594,11 +594,11 @@ webkit_dom_html_input_element_is_edited(WebKitDOMHTMLInputElement* input);
  * Deprecated: 2.22: Use webkit_dom_element_html_input_element_get_auto_filled() instead.
  */
 WEBKIT_DEPRECATED_FOR(webkit_dom_element_html_input_element_get_auto_filled) gboolean
-webkit_dom_html_input_element_get_auto_filled(WebKitDOMHTMLInputElement* self);
+webkit_dom_html_input_element_get_auto_filled(CyberKitDOMHTMLInputElement* self);
 
 /**
  * webkit_dom_html_input_element_set_auto_filled:
- * @self: A #WebKitDOMHTMLInputElement
+ * @self: A #CyberKitDOMHTMLInputElement
  * @value: A #gboolean
  *
  * Since: 2.16
@@ -606,11 +606,11 @@ webkit_dom_html_input_element_get_auto_filled(WebKitDOMHTMLInputElement* self);
  * Deprecated: 2.22: Use webkit_dom_element_html_input_element_set_auto_filled() instead.
  */
 WEBKIT_DEPRECATED_FOR(webkit_dom_element_html_input_element_set_auto_filled) void
-webkit_dom_html_input_element_set_auto_filled(WebKitDOMHTMLInputElement* self, gboolean value);
+webkit_dom_html_input_element_set_auto_filled(CyberKitDOMHTMLInputElement* self, gboolean value);
 
 /**
  * webkit_dom_html_input_element_set_editing_value:
- * @self: A #WebKitDOMHTMLInputElement
+ * @self: A #CyberKitDOMHTMLInputElement
  * @value: A #gchar
  *
  * Since: 2.16
@@ -618,8 +618,8 @@ webkit_dom_html_input_element_set_auto_filled(WebKitDOMHTMLInputElement* self, g
  * Deprecated: 2.22: Use webkit_dom_element_html_input_element_set_editing_value() instead.
  */
 WEBKIT_DEPRECATED_FOR(webkit_dom_element_html_input_element_set_editing_value) void
-webkit_dom_html_input_element_set_editing_value(WebKitDOMHTMLInputElement* self, const gchar* value);
+webkit_dom_html_input_element_set_editing_value(CyberKitDOMHTMLInputElement* self, const gchar* value);
 
 G_END_DECLS
 
-#endif /* WebKitDOMHTMLInputElement_h */
+#endif /* CyberKitDOMHTMLInputElement_h */

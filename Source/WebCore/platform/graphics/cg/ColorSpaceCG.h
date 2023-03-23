@@ -32,7 +32,7 @@
 
 WTF_DECLARE_CF_TYPE_TRAIT(CGColorSpace);
 
-namespace WebCore {
+namespace CyberCore {
 
 template<ColorSpace> struct CGColorSpaceMapping;
 

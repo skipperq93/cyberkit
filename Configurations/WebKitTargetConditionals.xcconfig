@@ -42,7 +42,7 @@
 // macOS 10.13, and a third value in macOS 10.14 and later, write:
 //
 //     EXTRA_PATH = $(EXTRA_PATH$(WK_MACOS_1012_1014));
-//     EXTRA_PATH_MACOS_BEFORE_1012 = "/Library/Application Support/WebKit";
+//     EXTRA_PATH_MACOS_BEFORE_1012 = "/Library/Application Support/CyberKit";
 //     EXTRA_PATH_MACOS_BEFORE_1014 = /System/Library/CoreServices;
 //     EXTRA_PATH_MACOS_SINCE_1014 = /System/Library/PrivateFrameworks;
 

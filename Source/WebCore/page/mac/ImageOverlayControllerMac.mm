@@ -47,7 +47,7 @@
 #import <wtf/text/StringToIntegerConversion.h>
 #import <pal/mac/DataDetectorsSoftLink.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 void ImageOverlayController::updateDataDetectorHighlights(const HTMLElement& overlayHost)
 {
@@ -250,6 +250,6 @@ void ImageOverlayController::elementUnderMouseDidChange(Frame& frame, Element* e
     installPageOverlayIfNeeded();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(MAC)

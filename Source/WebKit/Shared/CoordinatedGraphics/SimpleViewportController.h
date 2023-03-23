@@ -36,33 +36,33 @@ namespace WebKit {
 class SimpleViewportController {
     WTF_MAKE_NONCOPYABLE(SimpleViewportController);
 public:
-    SimpleViewportController(const WebCore::IntSize&);
+    SimpleViewportController(const CyberCore::IntSize&);
 
-    void didChangeViewportSize(const WebCore::IntSize&);
-    void didChangeContentsSize(const WebCore::IntSize&);
-    void didChangeViewportAttributes(WebCore::ViewportAttributes&&);
-    void didScroll(const WebCore::IntPoint&);
+    void didChangeViewportSize(const CyberCore::IntSize&);
+    void didChangeContentsSize(const CyberCore::IntSize&);
+    void didChangeViewportAttributes(CyberCore::ViewportAttributes&&);
+    void didScroll(const CyberCore::IntPoint&);
 
-    WebCore::FloatRect visibleContentsRect() const;
+    CyberCore::FloatRect visibleContentsRect() const;
     float pageScaleFactor() const { return m_pageScaleFactor; }
 
 private:
-    WebCore::FloatSize visibleContentsSize() const;
+    CyberCore::FloatSize visibleContentsSize() const;
 
     void applyScaleAfterRenderingContents(float scale);
-    void applyPositionAfterRenderingContents(const WebCore::FloatPoint& pos);
+    void applyPositionAfterRenderingContents(const CyberCore::FloatPoint& pos);
 
-    WebCore::FloatPoint boundContentsPosition(const WebCore::FloatPoint&) const;
-    WebCore::FloatPoint boundContentsPositionAtScale(const WebCore::FloatPoint&, float scale) const;
+    CyberCore::FloatPoint boundContentsPosition(const CyberCore::FloatPoint&) const;
+    CyberCore::FloatPoint boundContentsPositionAtScale(const CyberCore::FloatPoint&, float scale) const;
 
     bool updateMinimumScaleToFit();
     float innerBoundedViewportScale(float) const;
 
     void resetViewportToDefaultState();
 
-    WebCore::IntPoint m_contentsPosition;
-    WebCore::FloatSize m_contentsSize;
-    WebCore::FloatSize m_viewportSize;
+    CyberCore::IntPoint m_contentsPosition;
+    CyberCore::FloatSize m_contentsSize;
+    CyberCore::FloatSize m_viewportSize;
     float m_pageScaleFactor { 1 };
 
     bool m_allowsUserScaling { false };
@@ -70,7 +70,7 @@ private:
     bool m_initiallyFitToViewport { false };
 
     bool m_hasViewportAttribute { false };
-    WebCore::ViewportAttributes m_rawAttributes;
+    CyberCore::ViewportAttributes m_rawAttributes;
 };
 
 } // namespace WebKit

@@ -33,7 +33,7 @@
 #include <complex>
 #include <sys/types.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // A basic biquad (two-zero / two-pole digital filter)
 //
@@ -105,6 +105,6 @@ private:
     bool m_hasSampleAccurateValues { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // Biquad_h

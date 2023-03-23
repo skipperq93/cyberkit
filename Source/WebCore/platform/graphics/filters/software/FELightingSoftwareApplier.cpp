@@ -33,7 +33,7 @@
 #include "PixelBuffer.h"
 #include <wtf/ParallelJobs.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 inline IntSize FELightingSoftwareApplier::LightingData::topLeftNormal(int offset) const
 {
@@ -435,4 +435,4 @@ bool FELightingSoftwareApplier::apply(const Filter& filter, const FilterImageVec
     return true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

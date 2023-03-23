@@ -34,7 +34,7 @@
 #import <wtf/BlockObjCExceptions.h>
 #import <wtf/NeverDestroyed.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 static bool s_shouldTrackVisitedLinks;
 

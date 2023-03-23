@@ -52,7 +52,7 @@
 SOFT_LINK_PRIVATE_FRAMEWORK_OPTIONAL(LinkPresentation)
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 IntSize dragImageSize(RetainPtr<NSImage> image)
 {
@@ -335,6 +335,6 @@ DragImageRef createDragImageForColor(const Color& color, const FloatRect&, float
     return dragImage;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(DRAG_SUPPORT) && PLATFORM(MAC)

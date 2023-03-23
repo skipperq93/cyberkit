@@ -30,7 +30,7 @@
 
 #include "TextureMapperPlatformLayerBuffer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class TextureMapperPlatformLayerDmabuf : public TextureMapperPlatformLayerBuffer {
     WTF_MAKE_NONCOPYABLE(TextureMapperPlatformLayerDmabuf);
@@ -51,6 +51,6 @@ private:
     int m_fd;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(ANGLE) && USE(NICOSIA)

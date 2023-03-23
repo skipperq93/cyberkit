@@ -27,7 +27,7 @@
 
 #include "RenderStyle.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 BorderValue::BorderValue()
     : m_color(StyleColor::currentColor())
@@ -46,4 +46,4 @@ bool BorderValue::isVisible() const
     return nonZero() && !isTransparent() && style() != BorderStyle::Hidden;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -39,7 +39,7 @@ using PlatformNativeValue = void*;
 using PlatformNativeValueSmartPtr = PlatformNativeValue;
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class SerializedPlatformDataCueValue {
     WTF_MAKE_ISO_ALLOCATED(SerializedPlatformDataCueValue);
@@ -68,6 +68,6 @@ protected:
     PlatformType m_type { PlatformType::None };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(VIDEO)

@@ -31,7 +31,7 @@
     a need for a platform specific scene-graph library like CoreAnimations or QGraphicsView.
 */
 
-namespace WebCore {
+namespace CyberCore {
 
 class BitmapTexturePool;
 class GraphicsLayer;

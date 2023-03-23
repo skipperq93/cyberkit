@@ -37,7 +37,7 @@
 OBJC_CLASS CIImage;
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class Filter;
 class FloatRect;
@@ -111,4 +111,4 @@ private:
     ImageBufferAllocator& m_allocator;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -27,7 +27,7 @@
 
 #include "RenderBox.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderTable;
 class RenderTableCell;
@@ -102,6 +102,6 @@ inline RenderTableCol* RenderTableCol::enclosingColumnGroupIfAdjacentAfter() con
     return enclosingColumnGroup();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderTableCol, isRenderTableCol())

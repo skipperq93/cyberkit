@@ -46,38 +46,38 @@ public:
     enum class Type : uint8_t { File, Directory, Any };
     static std::unique_ptr<FileSystemStorageHandle> create(FileSystemStorageManager&, Type, String&& path, String&& name);
 
-    WebCore::FileSystemHandleIdentifier identifier() const { return m_identifier; }
+    CyberCore::FileSystemHandleIdentifier identifier() const { return m_identifier; }
     const String& path() const { return m_path; }
     Type type() const { return m_type; }
     uint64_t allocatedUnusedCapacity();
 
     void close();
-    bool isSameEntry(WebCore::FileSystemHandleIdentifier);
-    std::optional<FileSystemStorageError> move(WebCore::FileSystemHandleIdentifier, const String& newName);
-    Expected<WebCore::FileSystemHandleIdentifier, FileSystemStorageError> getFileHandle(IPC::Connection::UniqueID, String&& name, bool createIfNecessary);
-    Expected<WebCore::FileSystemHandleIdentifier, FileSystemStorageError> getDirectoryHandle(IPC::Connection::UniqueID, String&& name, bool createIfNecessary);
+    bool isSameEntry(CyberCore::FileSystemHandleIdentifier);
+    std::optional<FileSystemStorageError> move(CyberCore::FileSystemHandleIdentifier, const String& newName);
+    Expected<CyberCore::FileSystemHandleIdentifier, FileSystemStorageError> getFileHandle(IPC::Connection::UniqueID, String&& name, bool createIfNecessary);
+    Expected<CyberCore::FileSystemHandleIdentifier, FileSystemStorageError> getDirectoryHandle(IPC::Connection::UniqueID, String&& name, bool createIfNecessary);
     std::optional<FileSystemStorageError> removeEntry(const String& name, bool deleteRecursively);
-    Expected<Vector<String>, FileSystemStorageError> resolve(WebCore::FileSystemHandleIdentifier);
+    Expected<Vector<String>, FileSystemStorageError> resolve(CyberCore::FileSystemHandleIdentifier);
     Expected<Vector<String>, FileSystemStorageError> getHandleNames();
-    Expected<std::pair<WebCore::FileSystemHandleIdentifier, bool>, FileSystemStorageError> getHandle(IPC::Connection::UniqueID, String&& name);
-    void requestNewCapacityForSyncAccessHandle(WebCore::FileSystemSyncAccessHandleIdentifier, uint64_t newCapacity, CompletionHandler<void(std::optional<uint64_t>)>&&);
+    Expected<std::pair<CyberCore::FileSystemHandleIdentifier, bool>, FileSystemStorageError> getHandle(IPC::Connection::UniqueID, String&& name);
+    void requestNewCapacityForSyncAccessHandle(CyberCore::FileSystemSyncAccessHandleIdentifier, uint64_t newCapacity, CompletionHandler<void(std::optional<uint64_t>)>&&);
 
     Expected<FileSystemSyncAccessHandleInfo, FileSystemStorageError> createSyncAccessHandle();
-    std::optional<FileSystemStorageError> closeSyncAccessHandle(WebCore::FileSystemSyncAccessHandleIdentifier);
-    std::optional<WebCore::FileSystemSyncAccessHandleIdentifier> activeSyncAccessHandle();
+    std::optional<FileSystemStorageError> closeSyncAccessHandle(CyberCore::FileSystemSyncAccessHandleIdentifier);
+    std::optional<CyberCore::FileSystemSyncAccessHandleIdentifier> activeSyncAccessHandle();
 
 private:
     FileSystemStorageHandle(FileSystemStorageManager&, Type, String&& path, String&& name);
-    Expected<WebCore::FileSystemHandleIdentifier, FileSystemStorageError> requestCreateHandle(IPC::Connection::UniqueID, Type, String&& name, bool createIfNecessary);
-    bool isActiveSyncAccessHandle(WebCore::FileSystemSyncAccessHandleIdentifier);
+    Expected<CyberCore::FileSystemHandleIdentifier, FileSystemStorageError> requestCreateHandle(IPC::Connection::UniqueID, Type, String&& name, bool createIfNecessary);
+    bool isActiveSyncAccessHandle(CyberCore::FileSystemSyncAccessHandleIdentifier);
 
-    WebCore::FileSystemHandleIdentifier m_identifier;
+    CyberCore::FileSystemHandleIdentifier m_identifier;
     WeakPtr<FileSystemStorageManager> m_manager;
     Type m_type;
     String m_path;
     String m_name;
     struct SyncAccessHandleInfo {
-        WebCore::FileSystemSyncAccessHandleIdentifier identifier;
+        CyberCore::FileSystemSyncAccessHandleIdentifier identifier;
         uint64_t capacity { 0 };
     };
     std::optional<SyncAccessHandleInfo> m_activeSyncAccessHandle;

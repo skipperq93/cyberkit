@@ -27,7 +27,7 @@
 
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FloatRect;
 class GraphicsContext;
@@ -63,21 +63,21 @@ private:
     SystemImageType m_systemImageType;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::SystemImageType> {
+template<> struct EnumTraits<CyberCore::SystemImageType> {
     using values = EnumValues<
-        WebCore::SystemImageType
+        CyberCore::SystemImageType
 #if ENABLE(APPLE_PAY)
-        , WebCore::SystemImageType::ApplePayLogo
+        , CyberCore::SystemImageType::ApplePayLogo
 #endif
 #if USE(SYSTEM_PREVIEW)
-        , WebCore::SystemImageType::ARKitBadge
+        , CyberCore::SystemImageType::ARKitBadge
 #endif
 #if USE(APPKIT)
-        , WebCore::SystemImageType::AppKitControl
+        , CyberCore::SystemImageType::AppKitControl
 #endif
     >;
 };

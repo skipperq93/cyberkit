@@ -21,7 +21,7 @@
 
 #include "AffineTransform.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // A SVGTextFragment describes a text fragment of a RenderSVGInlineText which can be rendered at once.
 struct SVGTextFragment {
@@ -107,4 +107,4 @@ private:
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

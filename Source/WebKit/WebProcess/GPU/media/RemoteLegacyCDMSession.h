@@ -32,19 +32,19 @@
 #include <CyberCore/LegacyCDMSession.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 class SharedBuffer;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class RemoteLegacyCDMFactory;
 
 class RemoteLegacyCDMSession final
-    : public WebCore::LegacyCDMSession
+    : public CyberCore::LegacyCDMSession
     , public IPC::MessageReceiver {
 public:
-    static std::unique_ptr<RemoteLegacyCDMSession> create(WeakPtr<RemoteLegacyCDMFactory>, RemoteLegacyCDMSessionIdentifier&&, WebCore::LegacyCDMSessionClient&);
+    static std::unique_ptr<RemoteLegacyCDMSession> create(WeakPtr<RemoteLegacyCDMFactory>, RemoteLegacyCDMSessionIdentifier&&, CyberCore::LegacyCDMSessionClient&);
     ~RemoteLegacyCDMSession();
 
     // MessageReceiver
@@ -53,10 +53,10 @@ public:
     const RemoteLegacyCDMSessionIdentifier& identifier() const { return m_identifier; }
 
 private:
-    RemoteLegacyCDMSession(WeakPtr<RemoteLegacyCDMFactory>, RemoteLegacyCDMSessionIdentifier&&, WebCore::LegacyCDMSessionClient&);
+    RemoteLegacyCDMSession(WeakPtr<RemoteLegacyCDMFactory>, RemoteLegacyCDMSessionIdentifier&&, CyberCore::LegacyCDMSessionClient&);
 
     // LegacyCDMSession
-    WebCore::LegacyCDMSessionType type() final { return WebCore::CDMSessionTypeRemote; }
+    CyberCore::LegacyCDMSessionType type() final { return CyberCore::CDMSessionTypeRemote; }
     const String& sessionId() const final { return m_sessionId; }
     RefPtr<Uint8Array> generateKeyRequest(const String& mimeType, Uint8Array* initData, String& destinationURL, unsigned short& errorCode, uint32_t& systemCode) final;
     void releaseKeys() final;
@@ -64,12 +64,12 @@ private:
     RefPtr<ArrayBuffer> cachedKeyForKeyID(const String&) const final;
 
     // Messages
-    void sendMessage(RefPtr<WebCore::SharedBuffer>&& message, const String& destinationURL);
-    void sendError(WebCore::LegacyCDMSessionClient::MediaKeyErrorCode, uint32_t systemCode);
+    void sendMessage(RefPtr<CyberCore::SharedBuffer>&& message, const String& destinationURL);
+    void sendError(CyberCore::LegacyCDMSessionClient::MediaKeyErrorCode, uint32_t systemCode);
 
     WeakPtr<RemoteLegacyCDMFactory> m_factory;
     RemoteLegacyCDMSessionIdentifier m_identifier;
-    WeakPtr<WebCore::LegacyCDMSessionClient> m_client;
+    WeakPtr<CyberCore::LegacyCDMSessionClient> m_client;
     String m_sessionId;
     mutable HashMap<String, RefPtr<ArrayBuffer>> m_cachedKeyCache;
 };

@@ -29,7 +29,7 @@
 
 #include "ScrollingStateNode.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScrollingStateOverflowScrollProxyNode : public ScrollingStateNode {
 public:
@@ -53,7 +53,7 @@ private:
     ScrollingNodeID m_overflowScrollingNodeID { 0 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_SCROLLING_STATE_NODE(ScrollingStateOverflowScrollProxyNode, isOverflowScrollProxyNode())
 

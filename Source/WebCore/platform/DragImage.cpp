@@ -38,7 +38,7 @@
 #include "SimpleRange.h"
 #include "TextIndicator.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 #if PLATFORM(COCOA)
 const float ColorSwatchCornerRadius = 4;
@@ -324,5 +324,5 @@ DragImageRef createDragImageForLink(Element&, URL&, const String&, TextIndicator
 
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 

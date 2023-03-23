@@ -29,7 +29,7 @@
 #include "SVGNames.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(SVGFEMergeElement);
 
@@ -64,4 +64,4 @@ RefPtr<FilterEffect> SVGFEMergeElement::createFilterEffect(const FilterEffectVec
     return FEMerge::create(inputs.size());
 }
 
-} // namespace WebCore
+} // namespace CyberCore

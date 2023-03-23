@@ -35,7 +35,7 @@
 
 OBJC_CLASS LAContext;
 
-namespace WebCore {
+namespace CyberCore {
 class AuthenticatorAssertionResponse;
 enum class ClientDataType : bool;
 enum class UserVerificationRequirement : uint8_t;
@@ -66,11 +66,11 @@ public:
     virtual ~LocalConnection();
 
     // Overrided by MockLocalConnection.
-    virtual void verifyUser(const String& rpId, WebCore::ClientDataType, SecAccessControlRef, WebCore::UserVerificationRequirement, UserVerificationCallback&&);
+    virtual void verifyUser(const String& rpId, CyberCore::ClientDataType, SecAccessControlRef, CyberCore::UserVerificationRequirement, UserVerificationCallback&&);
     virtual void verifyUser(SecAccessControlRef, LAContext *, CompletionHandler<void(UserVerification)>&&);
     virtual RetainPtr<SecKeyRef> createCredentialPrivateKey(LAContext *, SecAccessControlRef, const String& secAttrLabel, NSData *secAttrApplicationTag) const;
     virtual void getAttestation(SecKeyRef, NSData *authData, NSData *hash, AttestationCallback&&) const;
-    virtual void filterResponses(Vector<Ref<WebCore::AuthenticatorAssertionResponse>>&) const { };
+    virtual void filterResponses(Vector<Ref<CyberCore::AuthenticatorAssertionResponse>>&) const { };
 
 private:
     RetainPtr<LAContext> m_context;

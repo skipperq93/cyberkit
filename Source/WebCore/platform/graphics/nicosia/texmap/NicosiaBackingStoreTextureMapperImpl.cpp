@@ -65,7 +65,7 @@ void BackingStoreTextureMapperImpl::createTile(uint32_t tileID, float scale)
     update.tilesToCreate.append({ tileID, scale });
 }
 
-void BackingStoreTextureMapperImpl::updateTile(uint32_t tileID, const WebCore::SurfaceUpdateInfo& updateInfo, const WebCore::IntRect& tileRect)
+void BackingStoreTextureMapperImpl::updateTile(uint32_t tileID, const CyberCore::SurfaceUpdateInfo& updateInfo, const CyberCore::IntRect& tileRect)
 {
     ASSERT(m_layerState.isFlushing);
     auto& update = m_layerState.update;

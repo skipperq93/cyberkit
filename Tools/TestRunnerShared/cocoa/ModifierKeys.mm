@@ -26,7 +26,7 @@
 #import "config.h"
 #import "ModifierKeys.h"
 
-#import <CyberKit/WebKitLegacy.h>
+#import <CyberKit/CyberKitLegacy.h>
 #import <wtf/Vector.h>
 
 #if PLATFORM(IOS_FAMILY)

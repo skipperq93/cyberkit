@@ -34,7 +34,7 @@
 #include <wtf/glib/GUniquePtr.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static const float horizontalMargin = 5;
 static const float verticalMargin = 5;
@@ -119,6 +119,6 @@ void ValidationBubble::showRelativeTo(const IntRect& anchorRect)
     gtk_popover_popup(GTK_POPOVER(m_popover));
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(GTK)

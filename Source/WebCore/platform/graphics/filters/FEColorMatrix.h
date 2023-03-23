@@ -25,7 +25,7 @@
 #include "FilterEffect.h"
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum ColorMatrixType {
     FECOLORMATRIX_TYPE_UNKNOWN          = 0,
@@ -66,19 +66,19 @@ private:
     Vector<float> m_values;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::ColorMatrixType> {
+template<> struct EnumTraits<CyberCore::ColorMatrixType> {
     using values = EnumValues<
-        WebCore::ColorMatrixType,
+        CyberCore::ColorMatrixType,
 
-        WebCore::FECOLORMATRIX_TYPE_UNKNOWN,
-        WebCore::FECOLORMATRIX_TYPE_MATRIX,
-        WebCore::FECOLORMATRIX_TYPE_SATURATE,
-        WebCore::FECOLORMATRIX_TYPE_HUEROTATE,
-        WebCore::FECOLORMATRIX_TYPE_LUMINANCETOALPHA
+        CyberCore::FECOLORMATRIX_TYPE_UNKNOWN,
+        CyberCore::FECOLORMATRIX_TYPE_MATRIX,
+        CyberCore::FECOLORMATRIX_TYPE_SATURATE,
+        CyberCore::FECOLORMATRIX_TYPE_HUEROTATE,
+        CyberCore::FECOLORMATRIX_TYPE_LUMINANCETOALPHA
     >;
 };
 

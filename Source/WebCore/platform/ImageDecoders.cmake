@@ -1,4 +1,4 @@
-list(APPEND WebCore_PRIVATE_INCLUDE_DIRECTORIES
+list(APPEND CyberCore_PRIVATE_INCLUDE_DIRECTORIES
     "${WEBCORE_DIR}/platform/image-decoders"
     "${WEBCORE_DIR}/platform/image-decoders/avif"
     "${WEBCORE_DIR}/platform/image-decoders/bmp"
@@ -11,7 +11,7 @@ list(APPEND WebCore_PRIVATE_INCLUDE_DIRECTORIES
     "${WEBCORE_DIR}/platform/image-decoders/webp"
 )
 
-list(APPEND WebCore_SOURCES
+list(APPEND CyberCore_SOURCES
     platform/image-decoders/ScalableImageDecoder.cpp
     platform/image-decoders/ScalableImageDecoderFrame.cpp
 
@@ -37,35 +37,35 @@ list(APPEND WebCore_SOURCES
     platform/image-decoders/webp/WEBPImageDecoder.cpp
 )
 
-list(APPEND WebCore_LIBRARIES
+list(APPEND CyberCore_LIBRARIES
     JPEG::JPEG
     PNG::PNG
 )
 
 if (OpenJPEG_FOUND)
-    list(APPEND WebCore_LIBRARIES OpenJPEG::OpenJPEG)
+    list(APPEND CyberCore_LIBRARIES OpenJPEG::OpenJPEG)
 endif ()
 
 if (WebP_FOUND)
-    list(APPEND WebCore_LIBRARIES
+    list(APPEND CyberCore_LIBRARIES
         WebP::demux
         WebP::libwebp
     )
 endif ()
 
 if (JPEGXL_FOUND)
-    list(APPEND WebCore_LIBRARIES JPEGXL::jxl)
+    list(APPEND CyberCore_LIBRARIES JPEGXL::jxl)
 endif ()
 
 if (USE_CAIRO)
-    list(APPEND WebCore_SOURCES
+    list(APPEND CyberCore_SOURCES
         platform/image-decoders/cairo/ImageBackingStoreCairo.cpp
     )
 endif ()
 
 if (USE_AVIF)
-    list(APPEND WebCore_PRIVATE_FRAMEWORK_HEADERS
+    list(APPEND CyberCore_PRIVATE_FRAMEWORK_HEADERS
         platform/image-decoders/avif/AVIFUniquePtr.h
     )
-    list(APPEND WebCore_LIBRARIES AVIF::AVIF)
+    list(APPEND CyberCore_LIBRARIES AVIF::AVIF)
 endif ()

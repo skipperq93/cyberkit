@@ -45,7 +45,7 @@
 
 namespace WebKit {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 namespace {
 template<typename S, int I, typename T>
@@ -128,7 +128,7 @@ void RemoteGraphicsContextGL::displayWasReconfigured()
 }
 #endif
 
-void RemoteGraphicsContextGL::workQueueInitialize(WebCore::GraphicsContextGLAttributes&& attributes)
+void RemoteGraphicsContextGL::workQueueInitialize(CyberCore::GraphicsContextGLAttributes&& attributes)
 {
     assertIsCurrent(workQueue());
     platformWorkQueueInitialize(WTFMove(attributes));
@@ -215,7 +215,7 @@ void RemoteGraphicsContextGL::markContextChanged()
     m_context->markContextChanged();
 }
 
-void RemoteGraphicsContextGL::paintRenderingResultsToCanvas(WebCore::RenderingResourceIdentifier imageBuffer, CompletionHandler<void()>&& completionHandler)
+void RemoteGraphicsContextGL::paintRenderingResultsToCanvas(CyberCore::RenderingResourceIdentifier imageBuffer, CompletionHandler<void()>&& completionHandler)
 {
     // Immediately turn the RenderingResourceIdentifier (which is error-prone) to a QualifiedRenderingResourceIdentifier,
     // and use a helper function to make sure that don't accidentally use the RenderingResourceIdentifier (because the helper function can't see it).
@@ -228,7 +228,7 @@ void RemoteGraphicsContextGL::paintRenderingResultsToCanvasWithQualifiedIdentifi
     paintPixelBufferToImageBuffer(m_context->readRenderingResultsForPainting(), imageBuffer, WTFMove(completionHandler));
 }
 
-void RemoteGraphicsContextGL::paintCompositedResultsToCanvas(WebCore::RenderingResourceIdentifier imageBuffer, CompletionHandler<void()>&& completionHandler)
+void RemoteGraphicsContextGL::paintCompositedResultsToCanvas(CyberCore::RenderingResourceIdentifier imageBuffer, CompletionHandler<void()>&& completionHandler)
 {
     // Immediately turn the RenderingResourceIdentifier (which is error-prone) to a QualifiedRenderingResourceIdentifier,
     // and use a helper function to make sure that don't accidentally use the RenderingResourceIdentifier (because the helper function can't see it).
@@ -252,7 +252,7 @@ void RemoteGraphicsContextGL::paintCompositedResultsToVideoFrame(CompletionHandl
 }
 #endif
 
-void RemoteGraphicsContextGL::paintPixelBufferToImageBuffer(RefPtr<WebCore::PixelBuffer>&& pixelBuffer, QualifiedRenderingResourceIdentifier target, CompletionHandler<void()>&& completionHandler)
+void RemoteGraphicsContextGL::paintPixelBufferToImageBuffer(RefPtr<CyberCore::PixelBuffer>&& pixelBuffer, QualifiedRenderingResourceIdentifier target, CompletionHandler<void()>&& completionHandler)
 {
     assertIsCurrent(workQueue());
     // FIXME: We do not have functioning read/write fences in RemoteRenderingBackend. Thus this is synchronous,
@@ -287,11 +287,11 @@ void RemoteGraphicsContextGL::paintPixelBufferToImageBuffer(RefPtr<WebCore::Pixe
     completionHandler();
 }
 
-void RemoteGraphicsContextGL::simulateEventForTesting(WebCore::GraphicsContextGL::SimulatedEventForTesting event)
+void RemoteGraphicsContextGL::simulateEventForTesting(CyberCore::GraphicsContextGL::SimulatedEventForTesting event)
 {
     assertIsCurrent(workQueue());
     // FIXME: only run this in testing mode. https://bugs.webkit.org/show_bug.cgi?id=222544
-    if (event == WebCore::GraphicsContextGL::SimulatedEventForTesting::Timeout) {
+    if (event == CyberCore::GraphicsContextGL::SimulatedEventForTesting::Timeout) {
         // Simulate the timeout by just discarding the context. The subsequent messages act like
         // unauthorized or old messages from Web process, they are skipped.
         callOnMainRunLoop([gpuConnectionToWebProcess = m_gpuConnectionToWebProcess, identifier = m_graphicsContextGLIdentifier]() {
@@ -300,7 +300,7 @@ void RemoteGraphicsContextGL::simulateEventForTesting(WebCore::GraphicsContextGL
         });
         return;
     }
-    if (event == WebCore::GraphicsContextGL::SimulatedEventForTesting::ContextChange) {
+    if (event == CyberCore::GraphicsContextGL::SimulatedEventForTesting::ContextChange) {
 #if PLATFORM(MAC)
         callOnMainRunLoop([weakConnection = m_gpuConnectionToWebProcess]() {
             if (auto connection = weakConnection.get())

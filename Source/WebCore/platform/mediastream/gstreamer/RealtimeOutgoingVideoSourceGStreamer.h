@@ -24,7 +24,7 @@
 #include "GUniquePtrGStreamer.h"
 #include "RealtimeOutgoingMediaSourceGStreamer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RealtimeOutgoingVideoSourceGStreamer final : public RealtimeOutgoingMediaSourceGStreamer {
 public:
@@ -66,6 +66,6 @@ private:
     unsigned long m_statsPadProbeId { 0 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(GSTREAMER_WEBRTC)

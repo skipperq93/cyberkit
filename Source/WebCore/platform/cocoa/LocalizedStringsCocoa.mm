@@ -33,7 +33,7 @@
 #import <wtf/RetainPtr.h>
 #import <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 String copyImageUnknownFileLabel()
 {
@@ -318,4 +318,4 @@ String contextMenuItemTitleRemoveBackground()
 
 #endif // ENABLE(IMAGE_ANALYSIS_ENHANCEMENTS)
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -34,7 +34,7 @@
 #include <optional>
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class BlobDataFileReference;
 class BlobPart;
@@ -79,4 +79,4 @@ protected:
     virtual ~BlobRegistry();
 };
 
-} // namespace WebCore
+} // namespace CyberCore

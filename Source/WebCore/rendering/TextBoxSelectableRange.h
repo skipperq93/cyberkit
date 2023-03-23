@@ -26,7 +26,7 @@
 
 #include <optional>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct TextBoxSelectableRange {
     const unsigned start;

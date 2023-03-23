@@ -34,10 +34,10 @@
 #include <wtf/MainThread.h>
 
 #if PLATFORM(IOS_FAMILY)
-#include "WebCoreThread.h"
+#include "CyberCoreThread.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 // Fire timers for this length of time, and then quit to let the run loop process user input events.
 static constexpr auto maxDurationOfFiringTimers { 16_ms };
@@ -160,5 +160,5 @@ void ThreadTimers::breakFireLoopForRenderingUpdate()
     m_shouldBreakFireLoopForRenderingUpdate = true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 

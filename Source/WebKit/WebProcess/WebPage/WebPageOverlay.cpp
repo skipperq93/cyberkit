@@ -33,8 +33,8 @@
 #include <CyberCore/PageOverlay.h>
 #include <wtf/NeverDestroyed.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 static HashMap<PageOverlay*, WebPageOverlay*>& overlayMap()
 {
@@ -146,4 +146,4 @@ Vector<String> WebPageOverlay::copyAccessibilityAttributeNames(PageOverlay&, boo
     return m_client->copyAccessibilityAttributeNames(*this, parameterizedNames);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

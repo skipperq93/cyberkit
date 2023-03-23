@@ -25,7 +25,7 @@
 
 #if JSC_OBJC_API_ENABLED
 
-#import <CyberScriptCore/JavaScriptCore.h>
+#import <CyberScriptCore/CyberScriptCore.h>
 
 @interface JSValue(JSPrivate)
 

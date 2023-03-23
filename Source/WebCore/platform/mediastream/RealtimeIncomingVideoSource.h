@@ -45,7 +45,7 @@ ALLOW_COMMA_END
 
 #include <wtf/RetainPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CaptureDevice;
 class FrameRateMonitor;
@@ -96,10 +96,10 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::RealtimeIncomingVideoSource)
-static bool isType(const WebCore::RealtimeMediaSource& source) { return source.isIncomingVideoSource(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::RealtimeIncomingVideoSource)
+static bool isType(const CyberCore::RealtimeMediaSource& source) { return source.isIncomingVideoSource(); }
 SPECIALIZE_TYPE_TRAITS_END()
 
 #endif // USE(LIBWEBRTC)

@@ -28,7 +28,7 @@
 #include "SVGAnimatedProperty.h"
 #include "SVGSharedPrimitiveProperty.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename PropertyType>
 class SVGAnimatedPrimitiveProperty : public SVGAnimatedProperty {

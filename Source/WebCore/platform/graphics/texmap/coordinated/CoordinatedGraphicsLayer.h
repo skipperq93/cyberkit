@@ -42,7 +42,7 @@ class ImageBackingStore;
 class PaintingEngine;
 }
 
-namespace WebCore {
+namespace CyberCore {
 class CoordinatedGraphicsLayer;
 
 class CoordinatedGraphicsLayerClient {
@@ -255,8 +255,8 @@ private:
     RefPtr<CoordinatedGraphicsLayer> m_backdropLayer;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_GRAPHICSLAYER(WebCore::CoordinatedGraphicsLayer, isCoordinatedGraphicsLayer())
+SPECIALIZE_TYPE_TRAITS_GRAPHICSLAYER(CyberCore::CoordinatedGraphicsLayer, isCoordinatedGraphicsLayer())
 
 #endif // USE(COORDINATED_GRAPHICS)

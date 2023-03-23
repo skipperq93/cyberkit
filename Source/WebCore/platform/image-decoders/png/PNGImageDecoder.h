@@ -34,7 +34,7 @@
 #include "LCMSUniquePtr.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
     class PNGImageReader;
 
@@ -143,4 +143,4 @@ namespace WebCore {
 
     };
 
-} // namespace WebCore
+} // namespace CyberCore

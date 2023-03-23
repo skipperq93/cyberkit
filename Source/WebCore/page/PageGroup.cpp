@@ -44,7 +44,7 @@
 #endif
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 static unsigned getUniqueIdentifier()
 {
@@ -123,4 +123,4 @@ CaptionUserPreferences& PageGroup::ensureCaptionPreferences()
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

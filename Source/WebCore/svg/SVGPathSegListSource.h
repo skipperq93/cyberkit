@@ -25,7 +25,7 @@
 #include "SVGPathSource.h"
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGPathSegList;
 
@@ -55,4 +55,4 @@ private:
     size_t m_itemEnd;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

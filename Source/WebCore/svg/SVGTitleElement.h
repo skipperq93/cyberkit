@@ -23,7 +23,7 @@
 #include "SVGElement.h"
 #include "SVGNames.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGTitleElement final : public SVGElement {
     WTF_MAKE_ISO_ALLOCATED(SVGTitleElement);
@@ -40,4 +40,4 @@ private:
     bool rendererIsNeeded(const RenderStyle&) final { return false; }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

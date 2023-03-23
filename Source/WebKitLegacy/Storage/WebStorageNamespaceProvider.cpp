@@ -29,9 +29,9 @@
 #include <CyberCore/Page.h>
 #include <wtf/NeverDestroyed.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
-namespace WebKit {
+namespace CyberKit {
 
 static HashSet<WebStorageNamespaceProvider*>& storageNamespaceProviders()
 {
@@ -111,7 +111,7 @@ Ref<StorageNamespace> WebStorageNamespaceProvider::createTransientLocalStorageNa
 
 RefPtr<StorageNamespace> WebStorageNamespaceProvider::sessionStorageNamespace(const SecurityOrigin& topLevelOrigin, Page& page, ShouldCreateNamespace shouldCreate)
 {
-    ASSERT(sessionStorageQuota() != WebCore::StorageMap::noQuota);
+    ASSERT(sessionStorageQuota() != CyberCore::StorageMap::noQuota);
 
     if (m_sessionStorageNamespaces.find(page) == m_sessionStorageNamespaces.end()) {
         if (shouldCreate == ShouldCreateNamespace::No)
@@ -130,9 +130,9 @@ RefPtr<StorageNamespace> WebStorageNamespaceProvider::sessionStorageNamespace(co
     return sessionStorageNamespaceIt->value;
 }
 
-void WebStorageNamespaceProvider::copySessionStorageNamespace(WebCore::Page& srcPage, WebCore::Page& dstPage)
+void WebStorageNamespaceProvider::copySessionStorageNamespace(CyberCore::Page& srcPage, CyberCore::Page& dstPage)
 {
-    ASSERT(sessionStorageQuota() != WebCore::StorageMap::noQuota);
+    ASSERT(sessionStorageQuota() != CyberCore::StorageMap::noQuota);
 
     auto& srcSessionStorageNamespaces = static_cast<WebStorageNamespaceProvider&>(srcPage.storageNamespaceProvider()).m_sessionStorageNamespaces;
     auto srcPageIt = srcSessionStorageNamespaces.find(srcPage);

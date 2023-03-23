@@ -57,7 +57,7 @@
 #include <wtf/StdLibExtras.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(Navigator);
 
@@ -432,4 +432,4 @@ void Navigator::clearClientBadge(Ref<DeferredPromise>&& promise)
 
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

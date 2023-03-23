@@ -39,14 +39,14 @@ template<> struct ClientTraits<WKViewClientBase> {
 };
 }
 
-WKCursorType toWKCursorType(const WebCore::Cursor& cursor)
+WKCursorType toWKCursorType(const CyberCore::Cursor& cursor)
 {
     switch (cursor.type()) {
-    case WebCore::Cursor::Hand:
+    case CyberCore::Cursor::Hand:
         return kWKCursorTypeHand;
-    case WebCore::Cursor::None:
+    case CyberCore::Cursor::None:
         return kWKCursorTypeNone;
-    case WebCore::Cursor::Pointer:
+    case CyberCore::Cursor::Pointer:
     default:
         return kWKCursorTypePointer;
     }
@@ -67,7 +67,7 @@ void WKViewSetSize(WKViewRef view, WKSize viewSize)
     WebKit::toImpl(view)->setViewSize(WebKit::toIntSize(viewSize));
 }
 
-static void setViewActivityStateFlag(WKViewRef view, WebCore::ActivityState::Flag flag, bool set)
+static void setViewActivityStateFlag(WKViewRef view, CyberCore::ActivityState::Flag flag, bool set)
 {
     auto viewState = WebKit::toImpl(view)->viewState();
     if (set)
@@ -79,17 +79,17 @@ static void setViewActivityStateFlag(WKViewRef view, WebCore::ActivityState::Fla
 
 void WKViewSetFocus(WKViewRef view, bool focused)
 {
-    setViewActivityStateFlag(view, WebCore::ActivityState::IsFocused, focused);
+    setViewActivityStateFlag(view, CyberCore::ActivityState::IsFocused, focused);
 }
 
 void WKViewSetActive(WKViewRef view, bool active)
 {
-    setViewActivityStateFlag(view, WebCore::ActivityState::WindowIsActive, active);
+    setViewActivityStateFlag(view, CyberCore::ActivityState::WindowIsActive, active);
 }
 
 void WKViewSetVisible(WKViewRef view, bool visible)
 {
-    setViewActivityStateFlag(view, WebCore::ActivityState::IsVisible, visible);
+    setViewActivityStateFlag(view, CyberCore::ActivityState::IsVisible, visible);
 }
 
 void WKViewWillEnterFullScreen(WKViewRef view)
@@ -146,7 +146,7 @@ void WKViewSetViewClient(WKViewRef view, const WKViewClientBase* client)
         }
 
     private:
-        void setViewNeedsDisplay(WebKit::PlayStationWebView& view, const WebCore::Region& region) final
+        void setViewNeedsDisplay(WebKit::PlayStationWebView& view, const CyberCore::Region& region) final
         {
             if (!m_client.setViewNeedsDisplay)
                 return;
@@ -174,21 +174,21 @@ void WKViewSetViewClient(WKViewRef view, const WKViewClientBase* client)
             m_client.closeFullScreen(WebKit::toAPI(&view), m_client.base.clientInfo);
         }
         
-        void beganEnterFullScreen(WebKit::PlayStationWebView& view, const WebCore::IntRect& initialFrame, const WebCore::IntRect& finalFrame)
+        void beganEnterFullScreen(WebKit::PlayStationWebView& view, const CyberCore::IntRect& initialFrame, const CyberCore::IntRect& finalFrame)
         {
             if (!m_client.beganEnterFullScreen)
                 return;
             m_client.beganEnterFullScreen(WebKit::toAPI(&view), WebKit::toAPI(initialFrame), WebKit::toAPI(finalFrame), m_client.base.clientInfo);
         }
         
-        void beganExitFullScreen(WebKit::PlayStationWebView& view, const WebCore::IntRect& initialFrame, const WebCore::IntRect& finalFrame)
+        void beganExitFullScreen(WebKit::PlayStationWebView& view, const CyberCore::IntRect& initialFrame, const CyberCore::IntRect& finalFrame)
         {
             if (!m_client.beganExitFullScreen)
                 return;
             m_client.beganExitFullScreen(WebKit::toAPI(&view), WebKit::toAPI(initialFrame), WebKit::toAPI(finalFrame), m_client.base.clientInfo);
         }
 
-        void setCursor(WebKit::PlayStationWebView& view, const WebCore::Cursor& cursor) final
+        void setCursor(WebKit::PlayStationWebView& view, const CyberCore::Cursor& cursor) final
         {
             if (!m_client.setCursor)
                 return;

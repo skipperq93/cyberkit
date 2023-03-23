@@ -27,9 +27,9 @@
 
 #include "ResourceCryptographicDigest.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using ContentSecurityPolicyHashAlgorithm = ResourceCryptographicDigest::Algorithm;
 using ContentSecurityPolicyHash = ResourceCryptographicDigest;
 
-} // namespace WebCore
+} // namespace CyberCore

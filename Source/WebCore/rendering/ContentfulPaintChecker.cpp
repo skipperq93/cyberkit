@@ -26,7 +26,7 @@
 #include "NullGraphicsContext.h"
 #include "RenderView.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 bool ContentfulPaintChecker::qualifiesForContentfulPaint(FrameView& frameView)
 {

@@ -33,7 +33,7 @@
 #include "GStreamerCommon.h"
 #include "RealtimeIncomingVideoSource.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RealtimeIncomingVideoSourceLibWebRTC final : public RealtimeIncomingVideoSource {
 public:
@@ -47,7 +47,7 @@ private:
     void OnFrame(const webrtc::VideoFrame&) final;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(LIBWEBRTC)
 

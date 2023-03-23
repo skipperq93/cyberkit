@@ -123,7 +123,7 @@
 }
 @end
 
-namespace WebCore {
+namespace CyberCore {
 
 #pragma mark -
 #pragma mark MediaPlayerPrivateMediaStreamAVFObjC

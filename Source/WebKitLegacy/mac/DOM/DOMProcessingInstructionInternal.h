@@ -25,9 +25,9 @@
 
 #import <CyberKitLegacy/DOMProcessingInstruction.h>
 
-namespace WebCore {
+namespace CyberCore {
 class ProcessingInstruction;
 }
 
-WebCore::ProcessingInstruction* core(DOMProcessingInstruction *);
-DOMProcessingInstruction *kit(WebCore::ProcessingInstruction*);
+CyberCore::ProcessingInstruction* core(DOMProcessingInstruction *);
+DOMProcessingInstruction *kit(CyberCore::ProcessingInstruction*);

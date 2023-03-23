@@ -21,26 +21,26 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 messages -> WebAutomationSessionProxy NotRefCounted {
-    EvaluateJavaScriptFunction(WebCore::PageIdentifier pageID, std::optional<WebCore::FrameIdentifier> frameID, String function, Vector<String> arguments, bool expectsImplicitCallbackArgument, std::optional<double> callbackTimeout, uint64_t callbackID)
+    EvaluateJavaScriptFunction(CyberCore::PageIdentifier pageID, std::optional<CyberCore::FrameIdentifier> frameID, String function, Vector<String> arguments, bool expectsImplicitCallbackArgument, std::optional<double> callbackTimeout, uint64_t callbackID)
 
-    ResolveChildFrameWithOrdinal(WebCore::PageIdentifier pageID, std::optional<WebCore::FrameIdentifier> frameID, uint32_t ordinal) -> (std::optional<String> errorType, std::optional<WebCore::FrameIdentifier> frameID)
-    ResolveChildFrameWithNodeHandle(WebCore::PageIdentifier pageID, std::optional<WebCore::FrameIdentifier> frameID, String nodeHandle) -> (std::optional<String> errorType, std::optional<WebCore::FrameIdentifier> frameID)
-    ResolveChildFrameWithName(WebCore::PageIdentifier pageID, std::optional<WebCore::FrameIdentifier> frameID, String name) -> (std::optional<String> errorType, std::optional<WebCore::FrameIdentifier> frameID)
-    ResolveParentFrame(WebCore::PageIdentifier pageID, std::optional<WebCore::FrameIdentifier> frameID) -> (std::optional<String> errorType, std::optional<WebCore::FrameIdentifier> frameID)
+    ResolveChildFrameWithOrdinal(CyberCore::PageIdentifier pageID, std::optional<CyberCore::FrameIdentifier> frameID, uint32_t ordinal) -> (std::optional<String> errorType, std::optional<CyberCore::FrameIdentifier> frameID)
+    ResolveChildFrameWithNodeHandle(CyberCore::PageIdentifier pageID, std::optional<CyberCore::FrameIdentifier> frameID, String nodeHandle) -> (std::optional<String> errorType, std::optional<CyberCore::FrameIdentifier> frameID)
+    ResolveChildFrameWithName(CyberCore::PageIdentifier pageID, std::optional<CyberCore::FrameIdentifier> frameID, String name) -> (std::optional<String> errorType, std::optional<CyberCore::FrameIdentifier> frameID)
+    ResolveParentFrame(CyberCore::PageIdentifier pageID, std::optional<CyberCore::FrameIdentifier> frameID) -> (std::optional<String> errorType, std::optional<CyberCore::FrameIdentifier> frameID)
 
-    ComputeElementLayout(WebCore::PageIdentifier pageID, std::optional<WebCore::FrameIdentifier> frameID, String nodeHandle, bool scrollIntoViewIfNeeded, enum:uint8_t WebKit::CoordinateSystem coordinateSystem) -> (std::optional<String> errorType, WebCore::FloatRect rect, std::optional<WebCore::IntPoint> inViewCenterPoint, bool isObscured)
+    ComputeElementLayout(CyberCore::PageIdentifier pageID, std::optional<CyberCore::FrameIdentifier> frameID, String nodeHandle, bool scrollIntoViewIfNeeded, enum:uint8_t WebKit::CoordinateSystem coordinateSystem) -> (std::optional<String> errorType, CyberCore::FloatRect rect, std::optional<CyberCore::IntPoint> inViewCenterPoint, bool isObscured)
 
-    GetComputedRole(WebCore::PageIdentifier pageID, std::optional<WebCore::FrameIdentifier> frameID, String nodeHandle) -> (std::optional<String> role, std::optional<String> errorType)
-    GetComputedLabel(WebCore::PageIdentifier pageID, std::optional<WebCore::FrameIdentifier> frameID, String nodeHandle) -> (std::optional<String> role, std::optional<String> errorType)
+    GetComputedRole(CyberCore::PageIdentifier pageID, std::optional<CyberCore::FrameIdentifier> frameID, String nodeHandle) -> (std::optional<String> role, std::optional<String> errorType)
+    GetComputedLabel(CyberCore::PageIdentifier pageID, std::optional<CyberCore::FrameIdentifier> frameID, String nodeHandle) -> (std::optional<String> role, std::optional<String> errorType)
 
-    SelectOptionElement(WebCore::PageIdentifier pageID, std::optional<WebCore::FrameIdentifier> frameID, String nodeHandle) -> (std::optional<String> errorType)
+    SelectOptionElement(CyberCore::PageIdentifier pageID, std::optional<CyberCore::FrameIdentifier> frameID, String nodeHandle) -> (std::optional<String> errorType)
 
-    SetFilesForInputFileUpload(WebCore::PageIdentifier pageID, std::optional<WebCore::FrameIdentifier> frameID, String nodeHandle, Vector<String> filenames) -> (std::optional<String> errorType)
+    SetFilesForInputFileUpload(CyberCore::PageIdentifier pageID, std::optional<CyberCore::FrameIdentifier> frameID, String nodeHandle, Vector<String> filenames) -> (std::optional<String> errorType)
 
-    TakeScreenshot(WebCore::PageIdentifier pageID, std::optional<WebCore::FrameIdentifier> frameID, String nodeHandle, bool scrollIntoViewIfNeeded, bool clipToViewport, uint64_t callbackID)
+    TakeScreenshot(CyberCore::PageIdentifier pageID, std::optional<CyberCore::FrameIdentifier> frameID, String nodeHandle, bool scrollIntoViewIfNeeded, bool clipToViewport, uint64_t callbackID)
 
-    SnapshotRectForScreenshot(WebCore::PageIdentifier pageID, std::optional<WebCore::FrameIdentifier> frameID, String nodeHandle, bool scrollIntoViewIfNeeded, bool clipToViewport) -> (std::optional<String> errorType, WebCore::IntRect rect)
+    SnapshotRectForScreenshot(CyberCore::PageIdentifier pageID, std::optional<CyberCore::FrameIdentifier> frameID, String nodeHandle, bool scrollIntoViewIfNeeded, bool clipToViewport) -> (std::optional<String> errorType, CyberCore::IntRect rect)
 
-    GetCookiesForFrame(WebCore::PageIdentifier pageID, std::optional<WebCore::FrameIdentifier> frameID) -> (std::optional<String> errorType, Vector<WebCore::Cookie> cookies)
-    DeleteCookie(WebCore::PageIdentifier pageID, std::optional<WebCore::FrameIdentifier> frameID, String cookieName) -> (std::optional<String> errorType)
+    GetCookiesForFrame(CyberCore::PageIdentifier pageID, std::optional<CyberCore::FrameIdentifier> frameID) -> (std::optional<String> errorType, Vector<CyberCore::Cookie> cookies)
+    DeleteCookie(CyberCore::PageIdentifier pageID, std::optional<CyberCore::FrameIdentifier> frameID, String cookieName) -> (std::optional<String> errorType)
 }

@@ -31,7 +31,7 @@
 #include "BackgroundFetchResult.h"
 #include "ServiceWorkerTypes.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct BackgroundFetchInformation {
     BackgroundFetchInformation isolatedCopy() const & { return { registrationIdentifier, identifier.isolatedCopy(), uploadTotal, uploaded, downloadTotal, downloaded, result, failureReason, recordsAvailable }; }
@@ -48,6 +48,6 @@ struct BackgroundFetchInformation {
     bool recordsAvailable { true };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

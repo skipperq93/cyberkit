@@ -40,7 +40,7 @@
 #include "SharedBuffer.h"
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace Thunder {
 
@@ -141,7 +141,7 @@ public:
 private:
     CDMInstanceThunder* cdmInstanceThunder() const;
 
-    using Notification = void (CDMInstanceSessionThunder::*)(RefPtr<WebCore::SharedBuffer>&&);
+    using Notification = void (CDMInstanceSessionThunder::*)(RefPtr<CyberCore::SharedBuffer>&&);
     using ChallengeGeneratedCallback = Function<void()>;
     using SessionChangedCallback = Function<void(bool, RefPtr<SharedBuffer>&&)>;
 
@@ -166,8 +166,8 @@ private:
     WeakPtr<CDMInstanceSessionClient> m_client;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_CDM_INSTANCE(WebCore::CDMInstanceThunder, WebCore::CDMInstance::ImplementationType::Thunder);
+SPECIALIZE_TYPE_TRAITS_CDM_INSTANCE(CyberCore::CDMInstanceThunder, CyberCore::CDMInstance::ImplementationType::Thunder);
 
 #endif // ENABLE(ENCRYPTED_MEDIA) && ENABLE(THUNDER)

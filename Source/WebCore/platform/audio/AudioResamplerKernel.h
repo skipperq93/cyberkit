@@ -29,7 +29,7 @@
 
 #include <wtf/Noncopyable.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioResampler;
 
@@ -73,6 +73,6 @@ private:
     unsigned m_fillIndex { 0 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // AudioResamplerKernel_h

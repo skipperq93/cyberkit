@@ -37,7 +37,7 @@
 #import <pal/system/mac/PopupMenu.h>
 #import <wtf/BlockObjCExceptions.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 PopupMenuMac::PopupMenuMac(PopupMenuClient* client)
     : m_client(client)

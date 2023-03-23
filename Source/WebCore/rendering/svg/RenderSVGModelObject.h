@@ -37,7 +37,7 @@
 #include "SVGBoundingBoxComputation.h"
 #include "SVGRenderSupport.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // Most renderers in the SVG rendering tree will inherit from this class
 // but not all. LegacyRenderSVGForeignObject, RenderSVGBlock, etc. inherit from
@@ -113,7 +113,7 @@ private:
     LayoutRect m_layoutRect;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderSVGModelObject, isRenderSVGModelObject())
 

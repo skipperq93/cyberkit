@@ -38,8 +38,8 @@
 #import "Page.h"
 #import "PlatformMouseEvent.h"
 #import "RuntimeApplicationChecks.h"
-#import "WebCoreFrameView.h"
-#import "WebCoreView.h"
+#import "CyberCoreFrameView.h"
+#import "CyberCoreView.h"
 #import <wtf/BlockObjCExceptions.h>
 #import <wtf/Ref.h>
 #import <wtf/RetainPtr.h>
@@ -58,7 +58,7 @@
 - (void)visibleRectDidChange;
 @end
 
-namespace WebCore {
+namespace CyberCore {
 
 static void safeRemoveFromSuperview(NSView *view)
 {
@@ -176,9 +176,9 @@ NSView *Widget::getOuterView() const
 {
     NSView *view = platformWidget();
 
-    // If this widget's view is a WebCoreFrameScrollView then we
+    // If this widget's view is a CyberCoreFrameScrollView then we
     // resize its containing view, a WebFrameView.
-    if ([view conformsToProtocol:@protocol(WebCoreFrameScrollView)]) {
+    if ([view conformsToProtocol:@protocol(CyberCoreFrameScrollView)]) {
         view = [view superview];
         ASSERT(view);
     }
@@ -226,7 +226,7 @@ void Widget::paint(GraphicsContext& p, const IntRect& r, SecurityOriginPaintPoli
     // so this is not an issue, but in this code path they are, so the following code temporarily turns background drwaing off.
     NSView *innerView = platformWidget();
     NSScrollView *scrollView = 0;
-    if ([innerView conformsToProtocol:@protocol(WebCoreFrameScrollView)]) {
+    if ([innerView conformsToProtocol:@protocol(CyberCoreFrameScrollView)]) {
         ASSERT([innerView isKindOfClass:[NSScrollView class]]);
         NSScrollView *scrollView = static_cast<NSScrollView *>(innerView);
         // -copiesOnScroll will return NO whenever the content view is not fully opaque.
@@ -344,6 +344,6 @@ void Widget::setPlatformWidget(NSView *widget)
     m_widget = widget;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(MAC)

@@ -39,15 +39,15 @@
 #include <CyberCore/SourceBufferPrivateClient.h>
 #include <wtf/Ref.h>
 
-namespace WebCore {
+namespace CyberCore {
 #if !RELEASE_LOG_DISABLED
 extern WTFLogChannel LogMedia;
 #endif
 }
 
-namespace WebKit {
+namespace CyberKit {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 Ref<SourceBufferPrivateRemote> SourceBufferPrivateRemote::create(GPUProcessConnection& gpuProcessConnection, RemoteSourceBufferIdentifier remoteSourceBufferIdentifier, const MediaSourcePrivateRemote& mediaSourcePrivate, const MediaPlayerPrivateRemote& mediaPlayerPrivate)
 {
@@ -364,10 +364,10 @@ void SourceBufferPrivateRemote::enqueuedSamplesForTrackID(const AtomString& trac
     }, m_remoteSourceBufferIdentifier);
 }
 
-void SourceBufferPrivateRemote::sourceBufferPrivateDidReceiveInitializationSegment(InitializationSegmentInfo&& segmentInfo, CompletionHandler<void(WebCore::SourceBufferPrivateClient::ReceiveResult)>&& completionHandler)
+void SourceBufferPrivateRemote::sourceBufferPrivateDidReceiveInitializationSegment(InitializationSegmentInfo&& segmentInfo, CompletionHandler<void(CyberCore::SourceBufferPrivateClient::ReceiveResult)>&& completionHandler)
 {
     if (!m_client || !m_mediaPlayerPrivate) {
-        completionHandler(WebCore::SourceBufferPrivateClient::ReceiveResult::ClientDisconnected);
+        completionHandler(CyberCore::SourceBufferPrivateClient::ReceiveResult::ClientDisconnected);
         return;
     }
 
@@ -497,6 +497,6 @@ WTFLogChannel& SourceBufferPrivateRemote::logChannel() const
 }
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS) && ENABLE(MEDIA_SOURCE)

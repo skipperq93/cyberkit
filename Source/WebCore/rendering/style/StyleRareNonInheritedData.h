@@ -49,7 +49,7 @@
 #include <wtf/OptionSet.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AnimationList;
 class ContentData;
@@ -223,4 +223,4 @@ private:
     StyleRareNonInheritedData(const StyleRareNonInheritedData&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

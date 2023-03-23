@@ -31,7 +31,7 @@ namespace PAL {
 class SessionID;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace IDBClient {
 class IDBConnectionToServer;
@@ -43,4 +43,4 @@ public:
     virtual IDBClient::IDBConnectionToServer& idbConnectionToServerForSession(PAL::SessionID) = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -37,7 +37,7 @@
 #include "RenderBlockFlow.h"
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FloatWithRect : public RefCounted<FloatWithRect> {
     WTF_MAKE_FAST_ALLOCATED;
@@ -175,4 +175,4 @@ private:
     bool m_usesRepaintBounds : 1;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

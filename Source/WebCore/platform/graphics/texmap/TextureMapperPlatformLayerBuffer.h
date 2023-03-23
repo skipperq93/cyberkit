@@ -33,7 +33,7 @@
 #include <variant>
 #include <wtf/MonotonicTime.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class TextureMapperPlatformLayerBuffer : public TextureMapperPlatformLayer {
     WTF_MAKE_NONCOPYABLE(TextureMapperPlatformLayerBuffer);
@@ -115,6 +115,6 @@ private:
     std::unique_ptr<HolePunchClient> m_holePunchClient;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(COORDINATED_GRAPHICS)

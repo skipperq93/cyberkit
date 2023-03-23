@@ -32,53 +32,53 @@
 #import <CyberCore/Page.h>
 #import <CyberCore/WebMediaSessionManager.h>
 
-std::unique_ptr<WebMediaPlaybackTargetPicker> WebMediaPlaybackTargetPicker::create(WebView *webView, WebCore::Page& page)
+std::unique_ptr<WebMediaPlaybackTargetPicker> WebMediaPlaybackTargetPicker::create(WebView *webView, CyberCore::Page& page)
 {
     return makeUnique<WebMediaPlaybackTargetPicker>(webView, page);
 }
 
-WebMediaPlaybackTargetPicker::WebMediaPlaybackTargetPicker(WebView *webView, WebCore::Page& page)
+WebMediaPlaybackTargetPicker::WebMediaPlaybackTargetPicker(WebView *webView, CyberCore::Page& page)
     : m_page(&page)
     , m_webView(webView)
 {
 }
 
-void WebMediaPlaybackTargetPicker::addPlaybackTargetPickerClient(WebCore::PlaybackTargetClientContextIdentifier contextId)
+void WebMediaPlaybackTargetPicker::addPlaybackTargetPickerClient(CyberCore::PlaybackTargetClientContextIdentifier contextId)
 {
-    WebCore::WebMediaSessionManager::shared().addPlaybackTargetPickerClient(*this, contextId);
+    CyberCore::WebMediaSessionManager::shared().addPlaybackTargetPickerClient(*this, contextId);
 }
 
-void WebMediaPlaybackTargetPicker::removePlaybackTargetPickerClient(WebCore::PlaybackTargetClientContextIdentifier contextId)
+void WebMediaPlaybackTargetPicker::removePlaybackTargetPickerClient(CyberCore::PlaybackTargetClientContextIdentifier contextId)
 {
-    WebCore::WebMediaSessionManager::shared().removePlaybackTargetPickerClient(*this, contextId);
+    CyberCore::WebMediaSessionManager::shared().removePlaybackTargetPickerClient(*this, contextId);
 }
 
-void WebMediaPlaybackTargetPicker::showPlaybackTargetPicker(WebCore::PlaybackTargetClientContextIdentifier contextId, const WebCore::FloatRect& rect, bool hasVideo)
+void WebMediaPlaybackTargetPicker::showPlaybackTargetPicker(CyberCore::PlaybackTargetClientContextIdentifier contextId, const CyberCore::FloatRect& rect, bool hasVideo)
 {
-    WebCore::WebMediaSessionManager::shared().showPlaybackTargetPicker(*this, contextId, WebCore::IntRect(rect), hasVideo, m_page ? m_page->useDarkAppearance() : false);
+    CyberCore::WebMediaSessionManager::shared().showPlaybackTargetPicker(*this, contextId, CyberCore::IntRect(rect), hasVideo, m_page ? m_page->useDarkAppearance() : false);
 }
 
-void WebMediaPlaybackTargetPicker::playbackTargetPickerClientStateDidChange(WebCore::PlaybackTargetClientContextIdentifier contextId, WebCore::MediaProducerMediaStateFlags state)
+void WebMediaPlaybackTargetPicker::playbackTargetPickerClientStateDidChange(CyberCore::PlaybackTargetClientContextIdentifier contextId, CyberCore::MediaProducerMediaStateFlags state)
 {
-    WebCore::WebMediaSessionManager::shared().clientStateDidChange(*this, contextId, state);
+    CyberCore::WebMediaSessionManager::shared().clientStateDidChange(*this, contextId, state);
 }
 
 void WebMediaPlaybackTargetPicker::setMockMediaPlaybackTargetPickerEnabled(bool enabled)
 {
-    WebCore::WebMediaSessionManager::shared().setMockMediaPlaybackTargetPickerEnabled(enabled);
+    CyberCore::WebMediaSessionManager::shared().setMockMediaPlaybackTargetPickerEnabled(enabled);
 }
 
-void WebMediaPlaybackTargetPicker::setMockMediaPlaybackTargetPickerState(const String& name, WebCore::MediaPlaybackTargetContext::MockState state)
+void WebMediaPlaybackTargetPicker::setMockMediaPlaybackTargetPickerState(const String& name, CyberCore::MediaPlaybackTargetContext::MockState state)
 {
-    WebCore::WebMediaSessionManager::shared().setMockMediaPlaybackTargetPickerState(name, state);
+    CyberCore::WebMediaSessionManager::shared().setMockMediaPlaybackTargetPickerState(name, state);
 }
 
 void WebMediaPlaybackTargetPicker::mockMediaPlaybackTargetPickerDismissPopup()
 {
-    WebCore::WebMediaSessionManager::shared().mockMediaPlaybackTargetPickerDismissPopup();
+    CyberCore::WebMediaSessionManager::shared().mockMediaPlaybackTargetPickerDismissPopup();
 }
 
-void WebMediaPlaybackTargetPicker::setPlaybackTarget(WebCore::PlaybackTargetClientContextIdentifier contextId, Ref<WebCore::MediaPlaybackTarget>&& target)
+void WebMediaPlaybackTargetPicker::setPlaybackTarget(CyberCore::PlaybackTargetClientContextIdentifier contextId, Ref<CyberCore::MediaPlaybackTarget>&& target)
 {
     if (!m_page)
         return;
@@ -86,7 +86,7 @@ void WebMediaPlaybackTargetPicker::setPlaybackTarget(WebCore::PlaybackTargetClie
     m_page->setPlaybackTarget(contextId, WTFMove(target));
 }
 
-void WebMediaPlaybackTargetPicker::externalOutputDeviceAvailableDidChange(WebCore::PlaybackTargetClientContextIdentifier contextId, bool available)
+void WebMediaPlaybackTargetPicker::externalOutputDeviceAvailableDidChange(CyberCore::PlaybackTargetClientContextIdentifier contextId, bool available)
 {
     if (!m_page)
         return;
@@ -94,7 +94,7 @@ void WebMediaPlaybackTargetPicker::externalOutputDeviceAvailableDidChange(WebCor
     m_page->playbackTargetAvailabilityDidChange(contextId, available);
 }
 
-void WebMediaPlaybackTargetPicker::setShouldPlayToPlaybackTarget(WebCore::PlaybackTargetClientContextIdentifier contextId, bool shouldPlay)
+void WebMediaPlaybackTargetPicker::setShouldPlayToPlaybackTarget(CyberCore::PlaybackTargetClientContextIdentifier contextId, bool shouldPlay)
 {
     if (!m_page)
         return;
@@ -102,7 +102,7 @@ void WebMediaPlaybackTargetPicker::setShouldPlayToPlaybackTarget(WebCore::Playba
     m_page->setShouldPlayToPlaybackTarget(contextId, shouldPlay);
 }
 
-void WebMediaPlaybackTargetPicker::playbackTargetPickerWasDismissed(WebCore::PlaybackTargetClientContextIdentifier contextId)
+void WebMediaPlaybackTargetPicker::playbackTargetPickerWasDismissed(CyberCore::PlaybackTargetClientContextIdentifier contextId)
 {
     if (m_page)
         m_page->playbackTargetPickerWasDismissed(contextId);
@@ -112,7 +112,7 @@ void WebMediaPlaybackTargetPicker::invalidate()
 {
     m_page = nullptr;
     m_webView = nil;
-    WebCore::WebMediaSessionManager::shared().removeAllPlaybackTargetPickerClients(*this);
+    CyberCore::WebMediaSessionManager::shared().removeAllPlaybackTargetPickerClients(*this);
 }
 
 PlatformView* WebMediaPlaybackTargetPicker::platformView() const

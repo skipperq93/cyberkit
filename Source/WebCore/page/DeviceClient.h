@@ -26,7 +26,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 class DeviceClient {
     WTF_MAKE_FAST_ALLOCATED;
@@ -37,4 +37,4 @@ public:
     virtual void stopUpdating() = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

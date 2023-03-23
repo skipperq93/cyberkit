@@ -34,20 +34,20 @@ namespace API {
 
 class ApplicationManifest final : public ObjectImpl<Object::Type::ApplicationManifest> {
 public:
-    static Ref<ApplicationManifest> create(const WebCore::ApplicationManifest& applicationManifest)
+    static Ref<ApplicationManifest> create(const CyberCore::ApplicationManifest& applicationManifest)
     {
         return adoptRef(*new ApplicationManifest(applicationManifest));
     }
 
-    explicit ApplicationManifest(const WebCore::ApplicationManifest& applicationManifest)
+    explicit ApplicationManifest(const CyberCore::ApplicationManifest& applicationManifest)
         : m_applicationManifest(applicationManifest)
     {
     }
 
-    const WebCore::ApplicationManifest& applicationManifest() const { return m_applicationManifest; }
+    const CyberCore::ApplicationManifest& applicationManifest() const { return m_applicationManifest; }
 
 private:
-    WebCore::ApplicationManifest m_applicationManifest;
+    CyberCore::ApplicationManifest m_applicationManifest;
 };
 
 } // namespace API

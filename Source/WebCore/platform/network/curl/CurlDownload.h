@@ -34,7 +34,7 @@
 #include "ResourceRequest.h"
 #include "ResourceResponse.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CurlRequest;
 class ResourceHandle;
@@ -91,6 +91,6 @@ private:
     RefPtr<CurlRequest> m_curlRequest;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

@@ -44,7 +44,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/StackStats.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static constexpr auto borderStartEdgeColor = SRGBA<uint8_t> { 170, 170, 170 };
 static constexpr auto borderEndEdgeColor = Color::black;
@@ -673,4 +673,4 @@ CursorDirective RenderFrameSet::getCursor(const LayoutPoint& point, Cursor& curs
     return RenderBox::getCursor(point, cursor);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

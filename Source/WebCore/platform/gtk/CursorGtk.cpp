@@ -34,7 +34,7 @@
 #include <gdk/gdk.h>
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 #if USE(GTK4)
 static GRefPtr<GdkCursor> fallbackCursor()

@@ -34,11 +34,11 @@
 
 namespace WebKit {
 
-using SpeechRecognitionPermissionRequestCallback = CompletionHandler<void(std::optional<WebCore::SpeechRecognitionError>&&)>;
+using SpeechRecognitionPermissionRequestCallback = CompletionHandler<void(std::optional<CyberCore::SpeechRecognitionError>&&)>;
 
 class SpeechRecognitionPermissionRequest : public RefCounted<SpeechRecognitionPermissionRequest> {
 public:
-    static Ref<SpeechRecognitionPermissionRequest> create(WebCore::SpeechRecognitionRequest& request, SpeechRecognitionPermissionRequestCallback&& completionHandler)
+    static Ref<SpeechRecognitionPermissionRequest> create(CyberCore::SpeechRecognitionRequest& request, SpeechRecognitionPermissionRequestCallback&& completionHandler)
     {
         return adoptRef(*new SpeechRecognitionPermissionRequest(request, WTFMove(completionHandler)));
     }
@@ -46,25 +46,25 @@ public:
     ~SpeechRecognitionPermissionRequest()
     {
         if (m_completionHandler)
-            m_completionHandler(WebCore::SpeechRecognitionError { WebCore::SpeechRecognitionErrorType::NotAllowed, "Request is cancelled"_s });
+            m_completionHandler(CyberCore::SpeechRecognitionError { CyberCore::SpeechRecognitionErrorType::NotAllowed, "Request is cancelled"_s });
     }
 
-    void complete(std::optional<WebCore::SpeechRecognitionError>&& error)
+    void complete(std::optional<CyberCore::SpeechRecognitionError>&& error)
     {
         auto completionHandler = std::exchange(m_completionHandler, { });
         completionHandler(WTFMove(error));
     }
 
-    WebCore::SpeechRecognitionRequest* request() { return m_request.get(); }
+    CyberCore::SpeechRecognitionRequest* request() { return m_request.get(); }
 
 private:
-    SpeechRecognitionPermissionRequest(WebCore::SpeechRecognitionRequest& request, SpeechRecognitionPermissionRequestCallback&& completionHandler)
+    SpeechRecognitionPermissionRequest(CyberCore::SpeechRecognitionRequest& request, SpeechRecognitionPermissionRequestCallback&& completionHandler)
         : m_request(request)
         , m_completionHandler(WTFMove(completionHandler))
     { }
 
 
-    WeakPtr<WebCore::SpeechRecognitionRequest> m_request;
+    WeakPtr<CyberCore::SpeechRecognitionRequest> m_request;
     SpeechRecognitionPermissionRequestCallback m_completionHandler;
 };
 

@@ -28,7 +28,7 @@
 #include "ElementInlines.h"
 #include "SVGElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 inline void SVGElement::setAnimatedSVGAttributesAreDirty()
 {

@@ -41,7 +41,7 @@
 #import <wtf/BlockObjCExceptions.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 static NSString * const transientAnimationKey = @"wkTransientZoomScale";
 
@@ -55,13 +55,13 @@ public:
     }
 
 private:
-    void displayLinkFired(WebCore::PlatformDisplayID, WebCore::DisplayUpdate, bool wantsFullSpeedUpdates, bool anyObserverWantsCallback) override;
+    void displayLinkFired(CyberCore::PlatformDisplayID, CyberCore::DisplayUpdate, bool wantsFullSpeedUpdates, bool anyObserverWantsCallback) override;
 
     WebPageProxyIdentifier m_pageIdentifier;
 };
 
 // This is called off the main thread.
-void RemoteLayerTreeDisplayLinkClient::displayLinkFired(WebCore::PlatformDisplayID /* displayID */, WebCore::DisplayUpdate /* displayUpdate */, bool /* wantsFullSpeedUpdates */, bool /* anyObserverWantsCallback */)
+void RemoteLayerTreeDisplayLinkClient::displayLinkFired(CyberCore::PlatformDisplayID /* displayID */, CyberCore::DisplayUpdate /* displayUpdate */, bool /* wantsFullSpeedUpdates */, bool /* anyObserverWantsCallback */)
 {
     RunLoop::main().dispatch([pageIdentifier = m_pageIdentifier]() {
         auto page = WebProcessProxy::webPage(pageIdentifier);
@@ -261,7 +261,7 @@ void RemoteLayerTreeDrawingAreaProxyMac::pauseDisplayRefreshCallbacks()
     removeObserver(m_displayRefreshObserverID);
 }
 
-void RemoteLayerTreeDrawingAreaProxyMac::setPreferredFramesPerSecond(WebCore::FramesPerSecond preferredFramesPerSecond)
+void RemoteLayerTreeDrawingAreaProxyMac::setPreferredFramesPerSecond(CyberCore::FramesPerSecond preferredFramesPerSecond)
 {
     m_clientPreferredFramesPerSecond = preferredFramesPerSecond;
 
@@ -319,7 +319,7 @@ void RemoteLayerTreeDrawingAreaProxyMac::windowScreenDidChange(PlatformDisplayID
 
 void RemoteLayerTreeDrawingAreaProxyMac::didRefreshDisplay()
 {
-    // FIXME: Need to pass WebCore::DisplayUpdate here and filter out non-relevant displays.
+    // FIXME: Need to pass CyberCore::DisplayUpdate here and filter out non-relevant displays.
     m_webPageProxy.scrollingCoordinatorProxy()->displayDidRefresh(m_displayID.value_or(0));
     RemoteLayerTreeDrawingAreaProxy::didRefreshDisplay();
 }

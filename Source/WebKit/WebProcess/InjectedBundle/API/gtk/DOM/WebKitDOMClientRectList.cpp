@@ -18,13 +18,13 @@
  */
 
 #include "config.h"
-#include "WebKitDOMClientRectList.h"
+#include "CyberKitDOMClientRectList.h"
 
 #include "ConvertToUTF8String.h"
 #include "DOMObjectCache.h"
-#include "WebKitDOMClientRectListPrivate.h"
-#include "WebKitDOMClientRectPrivate.h"
-#include "WebKitDOMPrivate.h"
+#include "CyberKitDOMClientRectListPrivate.h"
+#include "CyberKitDOMClientRectPrivate.h"
+#include "CyberKitDOMPrivate.h"
 #include <CyberCore/CSSImportRule.h>
 #include <CyberCore/Document.h>
 #include <CyberCore/ExceptionCode.h>
@@ -32,17 +32,17 @@
 #include <wtf/GetPtr.h>
 #include <wtf/RefPtr.h>
 
-#define WEBKIT_DOM_CLIENT_RECT_LIST_GET_PRIVATE(obj) G_TYPE_INSTANCE_GET_PRIVATE(obj, WEBKIT_DOM_TYPE_CLIENT_RECT_LIST, WebKitDOMClientRectListPrivate)
+#define WEBKIT_DOM_CLIENT_RECT_LIST_GET_PRIVATE(obj) G_TYPE_INSTANCE_GET_PRIVATE(obj, WEBKIT_DOM_TYPE_CLIENT_RECT_LIST, CyberKitDOMClientRectListPrivate)
 
-typedef struct _WebKitDOMClientRectListPrivate {
-    RefPtr<WebCore::DOMRectList> coreObject;
-} WebKitDOMClientRectListPrivate;
+typedef struct _CyberKitDOMClientRectListPrivate {
+    RefPtr<CyberCore::DOMRectList> coreObject;
+} CyberKitDOMClientRectListPrivate;
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
-namespace WebKit {
+namespace CyberKit {
 
-WebKitDOMClientRectList* kit(WebCore::DOMRectList* obj)
+CyberKitDOMClientRectList* kit(CyberCore::DOMRectList* obj)
 {
     if (!obj)
         return nullptr;
@@ -53,19 +53,19 @@ WebKitDOMClientRectList* kit(WebCore::DOMRectList* obj)
     return wrapDOMRectList(obj);
 }
 
-WebCore::DOMRectList* core(WebKitDOMClientRectList* request)
+CyberCore::DOMRectList* core(CyberKitDOMClientRectList* request)
 {
-    return request ? static_cast<WebCore::DOMRectList*>(WEBKIT_DOM_OBJECT(request)->coreObject) : nullptr;
+    return request ? static_cast<CyberCore::DOMRectList*>(WEBKIT_DOM_OBJECT(request)->coreObject) : nullptr;
 }
 
-WebKitDOMClientRectList* wrapDOMRectList(WebCore::DOMRectList* coreObject)
+CyberKitDOMClientRectList* wrapDOMRectList(CyberCore::DOMRectList* coreObject)
 {
     return WEBKIT_DOM_CLIENT_RECT_LIST(g_object_new(WEBKIT_DOM_TYPE_CLIENT_RECT_LIST, "core-object", coreObject, nullptr));
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
-G_DEFINE_TYPE(WebKitDOMClientRectList, webkit_dom_client_rect_list, WEBKIT_DOM_TYPE_OBJECT)
+G_DEFINE_TYPE(CyberKitDOMClientRectList, webkit_dom_client_rect_list, WEBKIT_DOM_TYPE_OBJECT)
 
 enum {
     DOM_CLIENT_RECT_LIST_PROP_0,
@@ -74,17 +74,17 @@ enum {
 
 static void webkit_dom_client_rect_list_finalize(GObject* object)
 {
-    WebKitDOMClientRectListPrivate* priv = WEBKIT_DOM_CLIENT_RECT_LIST_GET_PRIVATE(object);
+    CyberKitDOMClientRectListPrivate* priv = WEBKIT_DOM_CLIENT_RECT_LIST_GET_PRIVATE(object);
 
-    WebKit::DOMObjectCache::forget(priv->coreObject.get());
+    CyberKit::DOMObjectCache::forget(priv->coreObject.get());
 
-    priv->~WebKitDOMClientRectListPrivate();
+    priv->~CyberKitDOMClientRectListPrivate();
     G_OBJECT_CLASS(webkit_dom_client_rect_list_parent_class)->finalize(object);
 }
 
 static void webkit_dom_client_rect_list_get_property(GObject* object, guint propertyId, GValue* value, GParamSpec* pspec)
 {
-    WebKitDOMClientRectList* self = WEBKIT_DOM_CLIENT_RECT_LIST(object);
+    CyberKitDOMClientRectList* self = WEBKIT_DOM_CLIENT_RECT_LIST(object);
 
     switch (propertyId) {
     case DOM_CLIENT_RECT_LIST_PROP_LENGTH:
@@ -100,15 +100,15 @@ static void webkit_dom_client_rect_list_constructed(GObject* object)
 {
     G_OBJECT_CLASS(webkit_dom_client_rect_list_parent_class)->constructed(object);
 
-    WebKitDOMClientRectListPrivate* priv = WEBKIT_DOM_CLIENT_RECT_LIST_GET_PRIVATE(object);
-    priv->coreObject = static_cast<WebCore::DOMRectList*>(WEBKIT_DOM_OBJECT(object)->coreObject);
-    WebKit::DOMObjectCache::put(priv->coreObject.get(), object);
+    CyberKitDOMClientRectListPrivate* priv = WEBKIT_DOM_CLIENT_RECT_LIST_GET_PRIVATE(object);
+    priv->coreObject = static_cast<CyberCore::DOMRectList*>(WEBKIT_DOM_OBJECT(object)->coreObject);
+    CyberKit::DOMObjectCache::put(priv->coreObject.get(), object);
 }
 
-static void webkit_dom_client_rect_list_class_init(WebKitDOMClientRectListClass* requestClass)
+static void webkit_dom_client_rect_list_class_init(CyberKitDOMClientRectListClass* requestClass)
 {
     GObjectClass* gobjectClass = G_OBJECT_CLASS(requestClass);
-    g_type_class_add_private(gobjectClass, sizeof(WebKitDOMClientRectListPrivate));
+    g_type_class_add_private(gobjectClass, sizeof(CyberKitDOMClientRectListPrivate));
     gobjectClass->constructed = webkit_dom_client_rect_list_constructed;
     gobjectClass->finalize = webkit_dom_client_rect_list_finalize;
     gobjectClass->get_property = webkit_dom_client_rect_list_get_property;
@@ -125,25 +125,25 @@ static void webkit_dom_client_rect_list_class_init(WebKitDOMClientRectListClass*
 
 }
 
-static void webkit_dom_client_rect_list_init(WebKitDOMClientRectList* request)
+static void webkit_dom_client_rect_list_init(CyberKitDOMClientRectList* request)
 {
-    WebKitDOMClientRectListPrivate* priv = WEBKIT_DOM_CLIENT_RECT_LIST_GET_PRIVATE(request);
-    new (priv) WebKitDOMClientRectListPrivate();
+    CyberKitDOMClientRectListPrivate* priv = WEBKIT_DOM_CLIENT_RECT_LIST_GET_PRIVATE(request);
+    new (priv) CyberKitDOMClientRectListPrivate();
 }
 
-WebKitDOMClientRect* webkit_dom_client_rect_list_item(WebKitDOMClientRectList* self, gulong index)
+CyberKitDOMClientRect* webkit_dom_client_rect_list_item(CyberKitDOMClientRectList* self, gulong index)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_CLIENT_RECT_LIST(self), nullptr);
-    auto* list = WebKit::core(self);
-    RefPtr<WebCore::DOMRect> gobjectResult = WTF::getPtr(list->item(index));
-    return WebKit::kit(gobjectResult.get());
+    auto* list = CyberKit::core(self);
+    RefPtr<CyberCore::DOMRect> gobjectResult = WTF::getPtr(list->item(index));
+    return CyberKit::kit(gobjectResult.get());
 }
 
-gulong webkit_dom_client_rect_list_get_length(WebKitDOMClientRectList* self)
+gulong webkit_dom_client_rect_list_get_length(CyberKitDOMClientRectList* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_CLIENT_RECT_LIST(self), 0);
-    return WebKit::core(self)->length();
+    return CyberKit::core(self)->length();
 }
 G_GNUC_END_IGNORE_DEPRECATIONS;

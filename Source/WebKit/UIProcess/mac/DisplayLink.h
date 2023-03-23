@@ -47,18 +47,18 @@ public:
         virtual ~Client() = default;
         
     private:
-        virtual void displayLinkFired(WebCore::PlatformDisplayID, WebCore::DisplayUpdate, bool wantsFullSpeedUpdates, bool anyObserverWantsCallback) = 0;
+        virtual void displayLinkFired(CyberCore::PlatformDisplayID, CyberCore::DisplayUpdate, bool wantsFullSpeedUpdates, bool anyObserverWantsCallback) = 0;
     };
 
-    explicit DisplayLink(WebCore::PlatformDisplayID);
+    explicit DisplayLink(CyberCore::PlatformDisplayID);
     ~DisplayLink();
 
-    WebCore::PlatformDisplayID displayID() const { return m_displayID; }
-    WebCore::FramesPerSecond nominalFramesPerSecond() const { return m_displayNominalFramesPerSecond; }
+    CyberCore::PlatformDisplayID displayID() const { return m_displayID; }
+    CyberCore::FramesPerSecond nominalFramesPerSecond() const { return m_displayNominalFramesPerSecond; }
     
     void displayPropertiesChanged();
 
-    void addObserver(Client&, DisplayLinkObserverID, WebCore::FramesPerSecond);
+    void addObserver(Client&, DisplayLinkObserverID, CyberCore::FramesPerSecond);
     void removeObserver(Client&, DisplayLinkObserverID);
 
     void removeClient(Client&);
@@ -67,7 +67,7 @@ public:
     void incrementFullSpeedRequestClientCount(Client&);
     void decrementFullSpeedRequestClientCount(Client&);
 
-    void setObserverPreferredFramesPerSecond(Client&, DisplayLinkObserverID, WebCore::FramesPerSecond);
+    void setObserverPreferredFramesPerSecond(Client&, DisplayLinkObserverID, CyberCore::FramesPerSecond);
 
 private:
     static CVReturn displayLinkCallback(CVDisplayLinkRef, const CVTimeStamp*, const CVTimeStamp*, CVOptionFlags, CVOptionFlags*, void* data);
@@ -75,11 +75,11 @@ private:
 
     bool removeInfoForClientIfUnused(Client&) WTF_REQUIRES_LOCK(m_clientsLock);
 
-    static WebCore::FramesPerSecond nominalFramesPerSecondFromDisplayLink(CVDisplayLinkRef);
+    static CyberCore::FramesPerSecond nominalFramesPerSecondFromDisplayLink(CVDisplayLinkRef);
 
     struct ObserverInfo {
         DisplayLinkObserverID observerID;
-        WebCore::FramesPerSecond preferredFramesPerSecond;
+        CyberCore::FramesPerSecond preferredFramesPerSecond;
     };
 
     struct ClientInfo {
@@ -90,23 +90,23 @@ private:
     CVDisplayLinkRef m_displayLink { nullptr };
     Lock m_clientsLock;
     HashMap<CheckedRef<Client>, ClientInfo> m_clients WTF_GUARDED_BY_LOCK(m_clientsLock);
-    const WebCore::PlatformDisplayID m_displayID;
-    WebCore::FramesPerSecond m_displayNominalFramesPerSecond { WebCore::FullSpeedFramesPerSecond };
-    WebCore::DisplayUpdate m_currentUpdate;
+    const CyberCore::PlatformDisplayID m_displayID;
+    CyberCore::FramesPerSecond m_displayNominalFramesPerSecond { CyberCore::FullSpeedFramesPerSecond };
+    CyberCore::DisplayUpdate m_currentUpdate;
     unsigned m_fireCountWithoutObservers { 0 };
 };
 
 class DisplayLinkCollection {
 public:
-    DisplayLink& displayLinkForDisplay(WebCore::PlatformDisplayID);
-    DisplayLink* existingDisplayLinkForDisplay(WebCore::PlatformDisplayID) const;
+    DisplayLink& displayLinkForDisplay(CyberCore::PlatformDisplayID);
+    DisplayLink* existingDisplayLinkForDisplay(CyberCore::PlatformDisplayID) const;
 
-    std::optional<unsigned> nominalFramesPerSecondForDisplay(WebCore::PlatformDisplayID);
-    void startDisplayLink(DisplayLink::Client&, DisplayLinkObserverID, WebCore::PlatformDisplayID, WebCore::FramesPerSecond preferredFramesPerSecond);
-    void stopDisplayLink(DisplayLink::Client&, DisplayLinkObserverID, WebCore::PlatformDisplayID);
+    std::optional<unsigned> nominalFramesPerSecondForDisplay(CyberCore::PlatformDisplayID);
+    void startDisplayLink(DisplayLink::Client&, DisplayLinkObserverID, CyberCore::PlatformDisplayID, CyberCore::FramesPerSecond preferredFramesPerSecond);
+    void stopDisplayLink(DisplayLink::Client&, DisplayLinkObserverID, CyberCore::PlatformDisplayID);
     void stopDisplayLinks(DisplayLink::Client&);
-    void setDisplayLinkPreferredFramesPerSecond(DisplayLink::Client&, DisplayLinkObserverID, WebCore::PlatformDisplayID, WebCore::FramesPerSecond preferredFramesPerSecond);
-    void setDisplayLinkForDisplayWantsFullSpeedUpdates(DisplayLink::Client&, WebCore::PlatformDisplayID, bool wantsFullSpeedUpdates);
+    void setDisplayLinkPreferredFramesPerSecond(DisplayLink::Client&, DisplayLinkObserverID, CyberCore::PlatformDisplayID, CyberCore::FramesPerSecond preferredFramesPerSecond);
+    void setDisplayLinkForDisplayWantsFullSpeedUpdates(DisplayLink::Client&, CyberCore::PlatformDisplayID, bool wantsFullSpeedUpdates);
 
 private:
     void add(std::unique_ptr<DisplayLink>&&);

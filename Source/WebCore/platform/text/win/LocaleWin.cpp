@@ -43,7 +43,7 @@
 #include <wtf/text/StringHash.h>
 #include <wtf/text/win/WCharStringExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 typedef HashMap<String, LCID, ASCIICaseInsensitiveHash> NameToLCIDMap;
 

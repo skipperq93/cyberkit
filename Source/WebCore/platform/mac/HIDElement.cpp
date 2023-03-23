@@ -32,7 +32,7 @@
 #include <IOKit/hid/IOHIDElement.h>
 #include <IOKit/hid/IOHIDValue.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 HIDElement::HIDElement(IOHIDElementRef element)
     : m_physicalMin(IOHIDElementGetPhysicalMin(element))
@@ -55,6 +55,6 @@ void HIDElement::valueChanged(IOHIDValueRef value)
     m_physicalValue = IOHIDValueGetScaledValue(value, kIOHIDValueScaleTypePhysical);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(MAC)

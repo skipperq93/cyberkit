@@ -34,7 +34,7 @@
 #include <wtf/HashMap.h>
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderBlockFlow;
 class RenderBox;

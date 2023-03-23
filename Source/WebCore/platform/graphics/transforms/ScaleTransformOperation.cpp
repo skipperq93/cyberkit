@@ -25,7 +25,7 @@
 #include "AnimationUtilities.h"
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<ScaleTransformOperation> ScaleTransformOperation::create(double sx, double sy, double sz, TransformOperation::Type type)
 {
@@ -53,7 +53,7 @@ static double blendScaleComponent(double from, double to, const BlendingContext&
 {
     switch (context.compositeOperation) {
     case CompositeOperation::Replace:
-        return WebCore::blend(from, to, context);
+        return CyberCore::blend(from, to, context);
     case CompositeOperation::Add:
         ASSERT(context.progress == 1.0);
         return from * to;
@@ -85,4 +85,4 @@ void ScaleTransformOperation::dump(TextStream& ts) const
     ts << type() << "(" << TextStream::FormatNumberRespectingIntegers(m_x) << ", " << TextStream::FormatNumberRespectingIntegers(m_y) << ", " << TextStream::FormatNumberRespectingIntegers(m_z) << ")";
 }
 
-} // namespace WebCore
+} // namespace CyberCore

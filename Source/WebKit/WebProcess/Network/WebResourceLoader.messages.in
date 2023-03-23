@@ -21,26 +21,26 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 messages -> WebResourceLoader LegacyReceiver {
-    WillSendRequest(WebCore::ResourceRequest request, IPC::FormDataReference requestBody, WebCore::ResourceResponse redirectResponse)
+    WillSendRequest(CyberCore::ResourceRequest request, IPC::FormDataReference requestBody, CyberCore::ResourceResponse redirectResponse)
     SetWorkerStart(MonotonicTime value)
     DidSendData(uint64_t bytesSent, uint64_t totalBytesToBeSent)
-    DidReceiveResponse(WebCore::ResourceResponse response, enum:bool WebKit::PrivateRelayed privateRelayed, bool needsContinueDidReceiveResponseMessage, std::optional<WebCore::NetworkLoadMetrics> optionalNetworkLoadMetrics)
+    DidReceiveResponse(CyberCore::ResourceResponse response, enum:bool CyberKit::PrivateRelayed privateRelayed, bool needsContinueDidReceiveResponseMessage, std::optional<CyberCore::NetworkLoadMetrics> optionalNetworkLoadMetrics)
     DidReceiveData(IPC::SharedBufferReference data, uint64_t encodedDataLength)
-    DidFinishResourceLoad(WebCore::NetworkLoadMetrics networkLoadMetrics)
-    DidFailResourceLoad(WebCore::ResourceError error)
-    DidFailServiceWorkerLoad(WebCore::ResourceError error)
+    DidFinishResourceLoad(CyberCore::NetworkLoadMetrics networkLoadMetrics)
+    DidFailResourceLoad(CyberCore::ResourceError error)
+    DidFailServiceWorkerLoad(CyberCore::ResourceError error)
     ServiceWorkerDidNotHandle()
     DidBlockAuthenticationChallenge()
 
-    StopLoadingAfterXFrameOptionsOrContentSecurityPolicyDenied(WebCore::ResourceResponse response)
+    StopLoadingAfterXFrameOptionsOrContentSecurityPolicyDenied(CyberCore::ResourceResponse response)
 
 #if ENABLE(SHAREABLE_RESOURCE)
     // DidReceiveResource is for when we have the entire resource data available at once, such as when the resource is cached in memory
-    DidReceiveResource(WebKit::ShareableResource::Handle resource)
+    DidReceiveResource(CyberKit::ShareableResource::Handle resource)
 #endif
 
 #if ENABLE(CONTENT_FILTERING_IN_NETWORKING_PROCESS)
-    ContentFilterDidBlockLoad(WebCore::ContentFilterUnblockHandler unblockHandler, String unblockRequestDeniedScript, WebCore::ResourceError error, URL blockedPageURL, WebCore::SubstituteData substituteData)
+    ContentFilterDidBlockLoad(CyberCore::ContentFilterUnblockHandler unblockHandler, String unblockRequestDeniedScript, CyberCore::ResourceError error, URL blockedPageURL, CyberCore::SubstituteData substituteData)
 #endif
 
 }

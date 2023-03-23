@@ -29,7 +29,7 @@
 
 #import "FilterEffectApplier.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class FEComponentTransfer;
 
@@ -46,6 +46,6 @@ private:
     bool apply(const Filter&, const FilterImageVector& inputs, FilterImage& result) const final;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(CORE_IMAGE)

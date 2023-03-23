@@ -27,33 +27,33 @@
  */
 
 #import <Foundation/Foundation.h>
-#import <CyberKitLegacy/WebKitErrors.h>
+#import <CyberKitLegacy/CyberKitErrors.h>
 
-#define WebKitErrorPlugInCancelledConnection 203
-// FIXME: WebKitErrorPlugInWillHandleLoad is used for the cancel we do to prevent loading plugin content twice.  See <rdar://problem/4258008>
-#define WebKitErrorPlugInWillHandleLoad 204
+#define CyberKitErrorPlugInCancelledConnection 203
+// FIXME: CyberKitErrorPlugInWillHandleLoad is used for the cancel we do to prevent loading plugin content twice.  See <rdar://problem/4258008>
+#define CyberKitErrorPlugInWillHandleLoad 204
 
 /*!
     @enum
     @abstract Policy errors - Pending Public API Review
-    @constant WebKitErrorCannotUseRestrictedPort
-    @constant WebKitErrorFrameLoadBlockedByContentFilter
+    @constant CyberKitErrorCannotUseRestrictedPort
+    @constant CyberKitErrorFrameLoadBlockedByContentFilter
 */
 enum {
-    WebKitErrorCannotUseRestrictedPort =                        103,
-    WebKitErrorFrameLoadBlockedByContentFilter =                105,
+    CyberKitErrorCannotUseRestrictedPort =                        103,
+    CyberKitErrorFrameLoadBlockedByContentFilter =                105,
 };
 
 /*!
     @enum
     @abstract Geolocation errors
-    @constant WebKitErrorGeolocationLocationUnknown
+    @constant CyberKitErrorGeolocationLocationUnknown
 */
 enum {
-    WebKitErrorGeolocationLocationUnknown  =                    300,
+    CyberKitErrorGeolocationLocationUnknown  =                    300,
 };
 
-@interface NSError (WebKitExtras)
+@interface NSError (CyberKitExtras)
 + (NSError *)_webKitErrorWithCode:(int)code failingURL:(NSString *)URL;
 + (NSError *)_webKitErrorWithDomain:(NSString *)domain code:(int)code URL:(NSURL *)URL;
 

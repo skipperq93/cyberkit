@@ -36,7 +36,7 @@ WTF::URL UserScript::generateUniqueURL()
     return { { }, makeString("user-script:", ++identifier) };
 }
 
-UserScript::UserScript(WebCore::UserScript userScript, API::ContentWorld& world)
+UserScript::UserScript(CyberCore::UserScript userScript, API::ContentWorld& world)
     : m_userScript(userScript)
     , m_world(world)
 {

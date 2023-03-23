@@ -28,7 +28,7 @@
 
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // Parses header fields into tokens, quoted strings and separators.
 // Commonly used by ParsedContent* classes.
@@ -61,4 +61,4 @@ private:
     const String m_input;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -30,7 +30,7 @@
 #include <wtf/Noncopyable.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SearchPopupMenuDB {
     WTF_MAKE_NONCOPYABLE(SearchPopupMenuDB);
@@ -60,4 +60,4 @@ private:
     std::unique_ptr<SQLiteStatement> m_removeSearchTermsForNameStatement;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -254,18 +254,18 @@ inline WKProcessTerminationReason toAPI(ProcessTerminationReason reason)
     return kWKProcessTerminationReasonCrash;
 }
 
-inline WKEditableLinkBehavior toAPI(WebCore::EditableLinkBehavior behavior)
+inline WKEditableLinkBehavior toAPI(CyberCore::EditableLinkBehavior behavior)
 {
     switch (behavior) {
-    case WebCore::EditableLinkBehavior::Default:
+    case CyberCore::EditableLinkBehavior::Default:
         return kWKEditableLinkBehaviorDefault;
-    case WebCore::EditableLinkBehavior::AlwaysLive:
+    case CyberCore::EditableLinkBehavior::AlwaysLive:
         return kWKEditableLinkBehaviorAlwaysLive;
-    case WebCore::EditableLinkBehavior::OnlyLiveWithShiftKey:
+    case CyberCore::EditableLinkBehavior::OnlyLiveWithShiftKey:
         return kWKEditableLinkBehaviorOnlyLiveWithShiftKey;
-    case WebCore::EditableLinkBehavior::LiveWhenNotFocused:
+    case CyberCore::EditableLinkBehavior::LiveWhenNotFocused:
         return kWKEditableLinkBehaviorLiveWhenNotFocused;
-    case WebCore::EditableLinkBehavior::NeverLive:
+    case CyberCore::EditableLinkBehavior::NeverLive:
         return kWKEditableLinkBehaviorNeverLive;
     }
     
@@ -273,115 +273,115 @@ inline WKEditableLinkBehavior toAPI(WebCore::EditableLinkBehavior behavior)
     return kWKEditableLinkBehaviorNeverLive;
 }
 
-inline WebCore::EditableLinkBehavior toEditableLinkBehavior(WKEditableLinkBehavior wkBehavior)
+inline CyberCore::EditableLinkBehavior toEditableLinkBehavior(WKEditableLinkBehavior wkBehavior)
 {
     switch (wkBehavior) {
     case kWKEditableLinkBehaviorDefault:
-        return WebCore::EditableLinkBehavior::Default;
+        return CyberCore::EditableLinkBehavior::Default;
     case kWKEditableLinkBehaviorAlwaysLive:
-        return WebCore::EditableLinkBehavior::AlwaysLive;
+        return CyberCore::EditableLinkBehavior::AlwaysLive;
     case kWKEditableLinkBehaviorOnlyLiveWithShiftKey:
-        return WebCore::EditableLinkBehavior::OnlyLiveWithShiftKey;
+        return CyberCore::EditableLinkBehavior::OnlyLiveWithShiftKey;
     case kWKEditableLinkBehaviorLiveWhenNotFocused:
-        return WebCore::EditableLinkBehavior::LiveWhenNotFocused;
+        return CyberCore::EditableLinkBehavior::LiveWhenNotFocused;
     case kWKEditableLinkBehaviorNeverLive:
-        return WebCore::EditableLinkBehavior::NeverLive;
+        return CyberCore::EditableLinkBehavior::NeverLive;
     }
     
     ASSERT_NOT_REACHED();
-    return WebCore::EditableLinkBehavior::NeverLive;
+    return CyberCore::EditableLinkBehavior::NeverLive;
 }
     
-inline WKProtectionSpaceServerType toAPI(WebCore::ProtectionSpace::ServerType type)
+inline WKProtectionSpaceServerType toAPI(CyberCore::ProtectionSpace::ServerType type)
 {
     switch (type) {
-    case WebCore::ProtectionSpace::ServerType::HTTP:
+    case CyberCore::ProtectionSpace::ServerType::HTTP:
         return kWKProtectionSpaceServerTypeHTTP;
-    case WebCore::ProtectionSpace::ServerType::HTTPS:
+    case CyberCore::ProtectionSpace::ServerType::HTTPS:
         return kWKProtectionSpaceServerTypeHTTPS;
-    case WebCore::ProtectionSpace::ServerType::FTP:
+    case CyberCore::ProtectionSpace::ServerType::FTP:
         return kWKProtectionSpaceServerTypeFTP;
-    case WebCore::ProtectionSpace::ServerType::FTPS:
+    case CyberCore::ProtectionSpace::ServerType::FTPS:
         return kWKProtectionSpaceServerTypeFTPS;
-    case WebCore::ProtectionSpace::ServerType::ProxyHTTP:
+    case CyberCore::ProtectionSpace::ServerType::ProxyHTTP:
         return kWKProtectionSpaceProxyTypeHTTP;
-    case WebCore::ProtectionSpace::ServerType::ProxyHTTPS:
+    case CyberCore::ProtectionSpace::ServerType::ProxyHTTPS:
         return kWKProtectionSpaceProxyTypeHTTPS;
-    case WebCore::ProtectionSpace::ServerType::ProxyFTP:
+    case CyberCore::ProtectionSpace::ServerType::ProxyFTP:
         return kWKProtectionSpaceProxyTypeFTP;
-    case WebCore::ProtectionSpace::ServerType::ProxySOCKS:
+    case CyberCore::ProtectionSpace::ServerType::ProxySOCKS:
         return kWKProtectionSpaceProxyTypeSOCKS;
     }
     return kWKProtectionSpaceServerTypeHTTP;
 }
 
-inline WKProtectionSpaceAuthenticationScheme toAPI(WebCore::ProtectionSpace::AuthenticationScheme type)
+inline WKProtectionSpaceAuthenticationScheme toAPI(CyberCore::ProtectionSpace::AuthenticationScheme type)
 {
     switch (type) {
-    case WebCore::ProtectionSpace::AuthenticationScheme::Default:
+    case CyberCore::ProtectionSpace::AuthenticationScheme::Default:
         return kWKProtectionSpaceAuthenticationSchemeDefault;
-    case WebCore::ProtectionSpace::AuthenticationScheme::HTTPBasic:
+    case CyberCore::ProtectionSpace::AuthenticationScheme::HTTPBasic:
         return kWKProtectionSpaceAuthenticationSchemeHTTPBasic;
-    case WebCore::ProtectionSpace::AuthenticationScheme::HTTPDigest:
+    case CyberCore::ProtectionSpace::AuthenticationScheme::HTTPDigest:
         return kWKProtectionSpaceAuthenticationSchemeHTTPDigest;
-    case WebCore::ProtectionSpace::AuthenticationScheme::HTMLForm:
+    case CyberCore::ProtectionSpace::AuthenticationScheme::HTMLForm:
         return kWKProtectionSpaceAuthenticationSchemeHTMLForm;
-    case WebCore::ProtectionSpace::AuthenticationScheme::NTLM:
+    case CyberCore::ProtectionSpace::AuthenticationScheme::NTLM:
         return kWKProtectionSpaceAuthenticationSchemeNTLM;
-    case WebCore::ProtectionSpace::AuthenticationScheme::Negotiate:
+    case CyberCore::ProtectionSpace::AuthenticationScheme::Negotiate:
         return kWKProtectionSpaceAuthenticationSchemeNegotiate;
-    case WebCore::ProtectionSpace::AuthenticationScheme::ClientCertificateRequested:
+    case CyberCore::ProtectionSpace::AuthenticationScheme::ClientCertificateRequested:
         return kWKProtectionSpaceAuthenticationSchemeClientCertificateRequested;
-    case WebCore::ProtectionSpace::AuthenticationScheme::ServerTrustEvaluationRequested:
+    case CyberCore::ProtectionSpace::AuthenticationScheme::ServerTrustEvaluationRequested:
         return kWKProtectionSpaceAuthenticationSchemeServerTrustEvaluationRequested;
-    case WebCore::ProtectionSpace::AuthenticationScheme::OAuth:
+    case CyberCore::ProtectionSpace::AuthenticationScheme::OAuth:
         return kWKProtectionSpaceAuthenticationSchemeOAuth;
     default:
         return kWKProtectionSpaceAuthenticationSchemeUnknown;
     }
 }
 
-inline WebCore::CredentialPersistence toCredentialPersistence(WKCredentialPersistence type)
+inline CyberCore::CredentialPersistence toCredentialPersistence(WKCredentialPersistence type)
 {
     switch (type) {
     case kWKCredentialPersistenceNone:
-        return WebCore::CredentialPersistenceNone;
+        return CyberCore::CredentialPersistenceNone;
     case kWKCredentialPersistenceForSession:
-        return WebCore::CredentialPersistenceForSession;
+        return CyberCore::CredentialPersistenceForSession;
     case kWKCredentialPersistencePermanent:
-        return WebCore::CredentialPersistencePermanent;
+        return CyberCore::CredentialPersistencePermanent;
     default:
-        return WebCore::CredentialPersistenceNone;
+        return CyberCore::CredentialPersistenceNone;
     }
 }
 
-inline WebCore::HTTPCookieAcceptPolicy toHTTPCookieAcceptPolicy(WKHTTPCookieAcceptPolicy policy)
+inline CyberCore::HTTPCookieAcceptPolicy toHTTPCookieAcceptPolicy(WKHTTPCookieAcceptPolicy policy)
 {
     switch (policy) {
     case kWKHTTPCookieAcceptPolicyAlways:
-        return WebCore::HTTPCookieAcceptPolicy::AlwaysAccept;
+        return CyberCore::HTTPCookieAcceptPolicy::AlwaysAccept;
     case kWKHTTPCookieAcceptPolicyNever:
-        return WebCore::HTTPCookieAcceptPolicy::Never;
+        return CyberCore::HTTPCookieAcceptPolicy::Never;
     case kWKHTTPCookieAcceptPolicyOnlyFromMainDocumentDomain:
-        return WebCore::HTTPCookieAcceptPolicy::OnlyFromMainDocumentDomain;
+        return CyberCore::HTTPCookieAcceptPolicy::OnlyFromMainDocumentDomain;
     case kWKHTTPCookieAcceptPolicyExclusivelyFromMainDocumentDomain:
-        return WebCore::HTTPCookieAcceptPolicy::ExclusivelyFromMainDocumentDomain;
+        return CyberCore::HTTPCookieAcceptPolicy::ExclusivelyFromMainDocumentDomain;
     }
 
     ASSERT_NOT_REACHED();
-    return WebCore::HTTPCookieAcceptPolicy::AlwaysAccept;
+    return CyberCore::HTTPCookieAcceptPolicy::AlwaysAccept;
 }
 
-inline WKHTTPCookieAcceptPolicy toAPI(WebCore::HTTPCookieAcceptPolicy policy)
+inline WKHTTPCookieAcceptPolicy toAPI(CyberCore::HTTPCookieAcceptPolicy policy)
 {
     switch (policy) {
-    case WebCore::HTTPCookieAcceptPolicy::AlwaysAccept:
+    case CyberCore::HTTPCookieAcceptPolicy::AlwaysAccept:
         return kWKHTTPCookieAcceptPolicyAlways;
-    case WebCore::HTTPCookieAcceptPolicy::Never:
+    case CyberCore::HTTPCookieAcceptPolicy::Never:
         return kWKHTTPCookieAcceptPolicyNever;
-    case WebCore::HTTPCookieAcceptPolicy::OnlyFromMainDocumentDomain:
+    case CyberCore::HTTPCookieAcceptPolicy::OnlyFromMainDocumentDomain:
         return kWKHTTPCookieAcceptPolicyOnlyFromMainDocumentDomain;
-    case WebCore::HTTPCookieAcceptPolicy::ExclusivelyFromMainDocumentDomain:
+    case CyberCore::HTTPCookieAcceptPolicy::ExclusivelyFromMainDocumentDomain:
         return kWKHTTPCookieAcceptPolicyExclusivelyFromMainDocumentDomain;
     }
 
@@ -389,29 +389,29 @@ inline WKHTTPCookieAcceptPolicy toAPI(WebCore::HTTPCookieAcceptPolicy policy)
     return kWKHTTPCookieAcceptPolicyAlways;
 }
 
-inline WebCore::StorageBlockingPolicy toStorageBlockingPolicy(WKStorageBlockingPolicy policy)
+inline CyberCore::StorageBlockingPolicy toStorageBlockingPolicy(WKStorageBlockingPolicy policy)
 {
     switch (policy) {
     case kWKAllowAllStorage:
-        return WebCore::StorageBlockingPolicy::AllowAll;
+        return CyberCore::StorageBlockingPolicy::AllowAll;
     case kWKBlockThirdPartyStorage:
-        return WebCore::StorageBlockingPolicy::BlockThirdParty;
+        return CyberCore::StorageBlockingPolicy::BlockThirdParty;
     case kWKBlockAllStorage:
-        return WebCore::StorageBlockingPolicy::BlockAll;
+        return CyberCore::StorageBlockingPolicy::BlockAll;
     }
 
     ASSERT_NOT_REACHED();
-    return WebCore::StorageBlockingPolicy::AllowAll;
+    return CyberCore::StorageBlockingPolicy::AllowAll;
 }
 
-inline WKStorageBlockingPolicy toAPI(WebCore::StorageBlockingPolicy policy)
+inline WKStorageBlockingPolicy toAPI(CyberCore::StorageBlockingPolicy policy)
 {
     switch (policy) {
-    case WebCore::StorageBlockingPolicy::AllowAll:
+    case CyberCore::StorageBlockingPolicy::AllowAll:
         return kWKAllowAllStorage;
-    case WebCore::StorageBlockingPolicy::BlockThirdParty:
+    case CyberCore::StorageBlockingPolicy::BlockThirdParty:
         return kWKBlockThirdPartyStorage;
-    case WebCore::StorageBlockingPolicy::BlockAll:
+    case CyberCore::StorageBlockingPolicy::BlockAll:
         return kWKBlockAllStorage;
     }
 

@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -21,28 +21,28 @@
 #error "Only <webkitdom/webkitdom.h> can be included directly."
 #endif
 
-#ifndef WebKitDOMCSSRuleList_h
-#define WebKitDOMCSSRuleList_h
+#ifndef CyberKitDOMCSSRuleList_h
+#define CyberKitDOMCSSRuleList_h
 
 #include <glib-object.h>
-#include <webkitdom/WebKitDOMObject.h>
+#include <webkitdom/CyberKitDOMObject.h>
 #include <webkitdom/webkitdomdefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_DOM_TYPE_CSS_RULE_LIST            (webkit_dom_css_rule_list_get_type())
-#define WEBKIT_DOM_CSS_RULE_LIST(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_CSS_RULE_LIST, WebKitDOMCSSRuleList))
-#define WEBKIT_DOM_CSS_RULE_LIST_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_CSS_RULE_LIST, WebKitDOMCSSRuleListClass)
+#define WEBKIT_DOM_CSS_RULE_LIST(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_CSS_RULE_LIST, CyberKitDOMCSSRuleList))
+#define WEBKIT_DOM_CSS_RULE_LIST_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_CSS_RULE_LIST, CyberKitDOMCSSRuleListClass)
 #define WEBKIT_DOM_IS_CSS_RULE_LIST(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_DOM_TYPE_CSS_RULE_LIST))
 #define WEBKIT_DOM_IS_CSS_RULE_LIST_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_DOM_TYPE_CSS_RULE_LIST))
-#define WEBKIT_DOM_CSS_RULE_LIST_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_CSS_RULE_LIST, WebKitDOMCSSRuleListClass))
+#define WEBKIT_DOM_CSS_RULE_LIST_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_CSS_RULE_LIST, CyberKitDOMCSSRuleListClass))
 
-struct _WebKitDOMCSSRuleList {
-    WebKitDOMObject parent_instance;
+struct _CyberKitDOMCSSRuleList {
+    CyberKitDOMObject parent_instance;
 };
 
-struct _WebKitDOMCSSRuleListClass {
-    WebKitDOMObjectClass parent_class;
+struct _CyberKitDOMCSSRuleListClass {
+    CyberKitDOMObjectClass parent_class;
 };
 
 WEBKIT_DEPRECATED GType
@@ -50,27 +50,27 @@ webkit_dom_css_rule_list_get_type(void);
 
 /**
  * webkit_dom_css_rule_list_item:
- * @self: A #WebKitDOMCSSRuleList
+ * @self: A #CyberKitDOMCSSRuleList
  * @index: A #gulong
  *
- * Returns: (transfer full): A #WebKitDOMCSSRule
+ * Returns: (transfer full): A #CyberKitDOMCSSRule
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMCSSRule*
-webkit_dom_css_rule_list_item(WebKitDOMCSSRuleList* self, gulong index);
+WEBKIT_DEPRECATED CyberKitDOMCSSRule*
+webkit_dom_css_rule_list_item(CyberKitDOMCSSRuleList* self, gulong index);
 
 /**
  * webkit_dom_css_rule_list_get_length:
- * @self: A #WebKitDOMCSSRuleList
+ * @self: A #CyberKitDOMCSSRuleList
  *
  * Returns: A #gulong
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gulong
-webkit_dom_css_rule_list_get_length(WebKitDOMCSSRuleList* self);
+webkit_dom_css_rule_list_get_length(CyberKitDOMCSSRuleList* self);
 
 G_END_DECLS
 
-#endif /* WebKitDOMCSSRuleList_h */
+#endif /* CyberKitDOMCSSRuleList_h */

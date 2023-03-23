@@ -28,9 +28,9 @@
 #include "CookieStorage.h"
 #include "NotImplemented.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 void startObservingCookieChanges(CookieChangeCallbackPtr) { notImplemented(); }
 void stopObservingCookieChanges() { notImplemented(); }
 
-} // namespace WebCore
+} // namespace CyberCore

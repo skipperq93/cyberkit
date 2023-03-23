@@ -48,7 +48,7 @@ namespace IPC {
 class FormDataReference;
 }
 
-namespace WebCore {
+namespace CyberCore {
 class ResourceRequest;
 enum class ShouldTreatAsContinuingLoad : uint8_t;
 }
@@ -76,11 +76,11 @@ using LayerHostingContextID = uint32_t;
 class ProvisionalPageProxy : public IPC::MessageReceiver, public IPC::MessageSender {
     WTF_MAKE_FAST_ALLOCATED;
 public:
-    ProvisionalPageProxy(WebPageProxy&, Ref<WebProcessProxy>&&, std::unique_ptr<SuspendedPageProxy>, uint64_t navigationID, bool isServerRedirect, const WebCore::ResourceRequest&, ProcessSwapRequestedByClient, bool isProcessSwappingOnNavigationResponse, API::WebsitePolicies*);
+    ProvisionalPageProxy(WebPageProxy&, Ref<WebProcessProxy>&&, std::unique_ptr<SuspendedPageProxy>, uint64_t navigationID, bool isServerRedirect, const CyberCore::ResourceRequest&, ProcessSwapRequestedByClient, bool isProcessSwappingOnNavigationResponse, API::WebsitePolicies*);
     ~ProvisionalPageProxy();
 
     WebPageProxy& page() const { return m_page; }
-    WebCore::PageIdentifier webPageID() const { return m_webPageID; }
+    CyberCore::PageIdentifier webPageID() const { return m_webPageID; }
     WebFrameProxy* mainFrame() const { return m_mainFrame.get(); }
     WebProcessProxy& process() { return m_process.get(); }
     ProcessSwapRequestedByClient processSwapRequestedByClient() const { return m_processSwapRequestedByClient; }
@@ -108,9 +108,9 @@ public:
 #endif
 #endif
 
-    void loadData(API::Navigation&, const IPC::DataReference&, const String& mimeType, const String& encoding, const String& baseURL, API::Object* userData, WebCore::ShouldTreatAsContinuingLoad, std::optional<NavigatingToAppBoundDomain>, std::optional<WebsitePoliciesData>&&, WebCore::SubstituteData::SessionHistoryVisibility);
-    void loadRequest(API::Navigation&, WebCore::ResourceRequest&&, API::Object* userData, WebCore::ShouldTreatAsContinuingLoad, std::optional<NavigatingToAppBoundDomain>, std::optional<WebsitePoliciesData>&& = std::nullopt, std::optional<NetworkResourceLoadIdentifier> existingNetworkResourceLoadIdentifierToResume = std::nullopt);
-    void goToBackForwardItem(API::Navigation&, WebBackForwardListItem&, RefPtr<API::WebsitePolicies>&&, WebCore::ShouldTreatAsContinuingLoad, std::optional<NetworkResourceLoadIdentifier> existingNetworkResourceLoadIdentifierToResume = std::nullopt);
+    void loadData(API::Navigation&, const IPC::DataReference&, const String& mimeType, const String& encoding, const String& baseURL, API::Object* userData, CyberCore::ShouldTreatAsContinuingLoad, std::optional<NavigatingToAppBoundDomain>, std::optional<WebsitePoliciesData>&&, CyberCore::SubstituteData::SessionHistoryVisibility);
+    void loadRequest(API::Navigation&, CyberCore::ResourceRequest&&, API::Object* userData, CyberCore::ShouldTreatAsContinuingLoad, std::optional<NavigatingToAppBoundDomain>, std::optional<WebsitePoliciesData>&& = std::nullopt, std::optional<NetworkResourceLoadIdentifier> existingNetworkResourceLoadIdentifierToResume = std::nullopt);
+    void goToBackForwardItem(API::Navigation&, WebBackForwardListItem&, RefPtr<API::WebsitePolicies>&&, CyberCore::ShouldTreatAsContinuingLoad, std::optional<NetworkResourceLoadIdentifier> existingNetworkResourceLoadIdentifierToResume = std::nullopt);
     void cancel();
 
     void unfreezeLayerTreeDueToSwipeAnimation();
@@ -128,23 +128,23 @@ private:
     bool sendMessage(UniqueRef<IPC::Encoder>&&, OptionSet<IPC::SendOption>) final;
     bool sendMessageWithAsyncReply(UniqueRef<IPC::Encoder>&&, AsyncReplyHandler, OptionSet<IPC::SendOption>) final;
 
-    void decidePolicyForNavigationActionAsync(WebCore::FrameIdentifier, FrameInfoData&&, WebCore::PolicyCheckIdentifier, uint64_t navigationID, NavigationActionData&&, FrameInfoData&& originatingFrameInfo, std::optional<WebPageProxyIdentifier> originatingPageID, const WebCore::ResourceRequest& originalRequest, WebCore::ResourceRequest&&, IPC::FormDataReference&& requestBody, WebCore::ResourceResponse&& redirectResponse, uint64_t listenerID);
-    void decidePolicyForResponse(WebCore::FrameIdentifier, FrameInfoData&&, WebCore::PolicyCheckIdentifier, uint64_t navigationID, const WebCore::ResourceResponse&, const WebCore::ResourceRequest&, bool canShowMIMEType, const String& downloadAttribute, uint64_t listenerID);
-    void didChangeProvisionalURLForFrame(WebCore::FrameIdentifier, uint64_t navigationID, URL&&);
-    void didPerformServerRedirect(const String& sourceURLString, const String& destinationURLString, WebCore::FrameIdentifier);
-    void didReceiveServerRedirectForProvisionalLoadForFrame(WebCore::FrameIdentifier, uint64_t navigationID, WebCore::ResourceRequest&&, const UserData&);
-    void didNavigateWithNavigationData(const WebNavigationDataStore&, WebCore::FrameIdentifier);
-    void didPerformClientRedirect(const String& sourceURLString, const String& destinationURLString, WebCore::FrameIdentifier);
-    void didCreateMainFrame(WebCore::FrameIdentifier);
-    void didStartProvisionalLoadForFrame(WebCore::FrameIdentifier, FrameInfoData&&, WebCore::ResourceRequest&&, uint64_t navigationID, URL&&, URL&& unreachableURL, const UserData&);
-    void didCommitLoadForFrame(WebCore::FrameIdentifier, FrameInfoData&&, WebCore::ResourceRequest&&, uint64_t navigationID, const String& mimeType, bool frameHasCustomContentProvider, WebCore::FrameLoadType, const WebCore::CertificateInfo&, bool usedLegacyTLS, bool privateRelayed, bool containsPluginDocument, WebCore::HasInsecureContent, WebCore::MouseEventPolicy, const UserData&);
-    void didFailProvisionalLoadForFrame(WebCore::FrameIdentifier, FrameInfoData&&, WebCore::ResourceRequest&&, uint64_t navigationID, const String& provisionalURL, const WebCore::ResourceError&, WebCore::WillContinueLoading, const UserData&, WebCore::WillInternallyHandleFailure);
-    void logDiagnosticMessageFromWebProcess(const String& message, const String& description, WebCore::ShouldSample);
-    void logDiagnosticMessageWithEnhancedPrivacyFromWebProcess(const String& message, const String& description, WebCore::ShouldSample);
-    void logDiagnosticMessageWithValueDictionaryFromWebProcess(const String& message, const String& description, const WebCore::DiagnosticLoggingClient::ValueDictionary&, WebCore::ShouldSample);
+    void decidePolicyForNavigationActionAsync(CyberCore::FrameIdentifier, FrameInfoData&&, CyberCore::PolicyCheckIdentifier, uint64_t navigationID, NavigationActionData&&, FrameInfoData&& originatingFrameInfo, std::optional<WebPageProxyIdentifier> originatingPageID, const CyberCore::ResourceRequest& originalRequest, CyberCore::ResourceRequest&&, IPC::FormDataReference&& requestBody, CyberCore::ResourceResponse&& redirectResponse, uint64_t listenerID);
+    void decidePolicyForResponse(CyberCore::FrameIdentifier, FrameInfoData&&, CyberCore::PolicyCheckIdentifier, uint64_t navigationID, const CyberCore::ResourceResponse&, const CyberCore::ResourceRequest&, bool canShowMIMEType, const String& downloadAttribute, uint64_t listenerID);
+    void didChangeProvisionalURLForFrame(CyberCore::FrameIdentifier, uint64_t navigationID, URL&&);
+    void didPerformServerRedirect(const String& sourceURLString, const String& destinationURLString, CyberCore::FrameIdentifier);
+    void didReceiveServerRedirectForProvisionalLoadForFrame(CyberCore::FrameIdentifier, uint64_t navigationID, CyberCore::ResourceRequest&&, const UserData&);
+    void didNavigateWithNavigationData(const WebNavigationDataStore&, CyberCore::FrameIdentifier);
+    void didPerformClientRedirect(const String& sourceURLString, const String& destinationURLString, CyberCore::FrameIdentifier);
+    void didCreateMainFrame(CyberCore::FrameIdentifier);
+    void didStartProvisionalLoadForFrame(CyberCore::FrameIdentifier, FrameInfoData&&, CyberCore::ResourceRequest&&, uint64_t navigationID, URL&&, URL&& unreachableURL, const UserData&);
+    void didCommitLoadForFrame(CyberCore::FrameIdentifier, FrameInfoData&&, CyberCore::ResourceRequest&&, uint64_t navigationID, const String& mimeType, bool frameHasCustomContentProvider, CyberCore::FrameLoadType, const CyberCore::CertificateInfo&, bool usedLegacyTLS, bool privateRelayed, bool containsPluginDocument, CyberCore::HasInsecureContent, CyberCore::MouseEventPolicy, const UserData&);
+    void didFailProvisionalLoadForFrame(CyberCore::FrameIdentifier, FrameInfoData&&, CyberCore::ResourceRequest&&, uint64_t navigationID, const String& provisionalURL, const CyberCore::ResourceError&, CyberCore::WillContinueLoading, const UserData&, CyberCore::WillInternallyHandleFailure);
+    void logDiagnosticMessageFromWebProcess(const String& message, const String& description, CyberCore::ShouldSample);
+    void logDiagnosticMessageWithEnhancedPrivacyFromWebProcess(const String& message, const String& description, CyberCore::ShouldSample);
+    void logDiagnosticMessageWithValueDictionaryFromWebProcess(const String& message, const String& description, const CyberCore::DiagnosticLoggingClient::ValueDictionary&, CyberCore::ShouldSample);
     void startURLSchemeTask(URLSchemeTaskParameters&&);
-    void backForwardGoToItem(const WebCore::BackForwardItemIdentifier&, CompletionHandler<void(const WebBackForwardListCounts&)>&&);
-    void decidePolicyForNavigationActionSync(WebCore::FrameIdentifier, bool isMainFrame, FrameInfoData&&, WebCore::PolicyCheckIdentifier, uint64_t navigationID, NavigationActionData&&, FrameInfoData&& originatingFrameInfo, std::optional<WebPageProxyIdentifier> originatingPageID, const WebCore::ResourceRequest& originalRequest, WebCore::ResourceRequest&&, IPC::FormDataReference&& requestBody, WebCore::ResourceResponse&& redirectResponse, CompletionHandler<void(PolicyDecision&&)>&&);
+    void backForwardGoToItem(const CyberCore::BackForwardItemIdentifier&, CompletionHandler<void(const WebBackForwardListCounts&)>&&);
+    void decidePolicyForNavigationActionSync(CyberCore::FrameIdentifier, bool isMainFrame, FrameInfoData&&, CyberCore::PolicyCheckIdentifier, uint64_t navigationID, NavigationActionData&&, FrameInfoData&& originatingFrameInfo, std::optional<WebPageProxyIdentifier> originatingPageID, const CyberCore::ResourceRequest& originalRequest, CyberCore::ResourceRequest&&, IPC::FormDataReference&& requestBody, CyberCore::ResourceResponse&& redirectResponse, CompletionHandler<void(PolicyDecision&&)>&&);
     void backForwardAddItem(BackForwardListItemState&&);
 #if USE(QUICK_LOOK)
     void requestPasswordForQuickLookDocumentInMainFrame(const String& fileName, CompletionHandler<void(const String&)>&&);
@@ -156,17 +156,17 @@ private:
     void bindAccessibilityTree(const String&);
 #endif
 #if ENABLE(CONTENT_FILTERING)
-    void contentFilterDidBlockLoadForFrame(const WebCore::ContentFilterUnblockHandler&, WebCore::FrameIdentifier);
+    void contentFilterDidBlockLoadForFrame(const CyberCore::ContentFilterUnblockHandler&, CyberCore::FrameIdentifier);
 #endif
 #if HAVE(VISIBILITY_PROPAGATION_VIEW)
     void didCreateContextInWebProcessForVisibilityPropagation(LayerHostingContextID);
 #endif
 
     void initializeWebPage(RefPtr<API::WebsitePolicies>&&);
-    bool validateInput(WebCore::FrameIdentifier, const std::optional<uint64_t>& navigationID = std::nullopt);
+    bool validateInput(CyberCore::FrameIdentifier, const std::optional<uint64_t>& navigationID = std::nullopt);
 
     WebPageProxy& m_page;
-    WebCore::PageIdentifier m_webPageID;
+    CyberCore::PageIdentifier m_webPageID;
     Ref<WebProcessProxy> m_process;
     // Keep WebsiteDataStore alive for provisional page load.
     RefPtr<WebsiteDataStore> m_websiteDataStore;
@@ -174,7 +174,7 @@ private:
     RefPtr<WebFrameProxy> m_mainFrame;
     uint64_t m_navigationID;
     bool m_isServerRedirect;
-    WebCore::ResourceRequest m_request;
+    CyberCore::ResourceRequest m_request;
     ProcessSwapRequestedByClient m_processSwapRequestedByClient;
     bool m_wasCommitted { false };
     bool m_isProcessSwappingOnNavigationResponse { false };

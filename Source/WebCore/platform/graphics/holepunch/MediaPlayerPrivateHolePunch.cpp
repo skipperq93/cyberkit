@@ -26,7 +26,7 @@
 #include "TextureMapperPlatformLayerBuffer.h"
 #include "TextureMapperPlatformLayerProxyGL.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static const FloatSize s_holePunchDefaultFrameSize(1280, 720);
 

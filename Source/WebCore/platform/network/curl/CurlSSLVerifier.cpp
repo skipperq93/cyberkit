@@ -31,7 +31,7 @@
 #include "CurlContext.h"
 #include "CurlSSLHandle.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 CurlSSLVerifier::CurlSSLVerifier(void* sslCtx)
 {
@@ -47,7 +47,7 @@ CurlSSLVerifier::CurlSSLVerifier(void* sslCtx)
 #endif
 }
 
-std::unique_ptr<WebCore::CertificateInfo> CurlSSLVerifier::createCertificateInfo(std::optional<long>&& verifyResult)
+std::unique_ptr<CyberCore::CertificateInfo> CurlSSLVerifier::createCertificateInfo(std::optional<long>&& verifyResult)
 {
     if (!verifyResult)
         return nullptr;

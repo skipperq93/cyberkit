@@ -33,11 +33,11 @@ OBJC_CLASS CALayer;
 #include <wtf/RetainPtr.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 class GraphicsLayer;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPage;
 
@@ -55,7 +55,7 @@ public:
     
     public:
         virtual void pageBannerDestroyed(PageBanner*) = 0;
-        virtual bool mouseEvent(PageBanner*, WebEventType, WebMouseEventButton, const WebCore::IntPoint&) = 0;
+        virtual bool mouseEvent(PageBanner*, WebEventType, WebMouseEventButton, const CyberCore::IntPoint&) = 0;
     };
 
 #if PLATFORM(MAC)
@@ -74,7 +74,7 @@ public:
     bool mouseEvent(const WebMouseEvent&);
     void didChangeDeviceScaleFactor(float scaleFactor);
 
-    void didAddParentLayer(WebCore::GraphicsLayer*);
+    void didAddParentLayer(CyberCore::GraphicsLayer*);
 
 private:
 #if PLATFORM(MAC)
@@ -94,4 +94,4 @@ private:
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit

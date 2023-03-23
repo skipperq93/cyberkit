@@ -36,14 +36,14 @@ namespace WebKit {
 
 class MockCcidService final : public CcidService {
 public:
-    MockCcidService(Observer&, const WebCore::MockWebAuthenticationConfiguration&);
+    MockCcidService(Observer&, const CyberCore::MockWebAuthenticationConfiguration&);
 
     RetainPtr<NSData> nextReply();
 
 private:
     void platformStartDiscovery() final;
 
-    WebCore::MockWebAuthenticationConfiguration m_configuration;
+    CyberCore::MockWebAuthenticationConfiguration m_configuration;
 };
 
 } // namespace WebKit

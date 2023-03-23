@@ -34,7 +34,7 @@
 #include <wtf/StdLibExtras.h>
 #include <wtf/UniqueArray.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FormatConverter {
 public:
@@ -87,6 +87,6 @@ private:
     UniqueArray<uint8_t> m_unpackedIntermediateSrcData;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBGL)

@@ -32,10 +32,10 @@
 #import <CyberCore/ElementContext.h>
 
 @implementation WKTextPlaceholder {
-    WebCore::ElementContext _elementContext;
+    CyberCore::ElementContext _elementContext;
 }
 
-- (instancetype)initWithElementContext:(const WebCore::ElementContext&)context
+- (instancetype)initWithElementContext:(const CyberCore::ElementContext&)context
 {
     if (!(self = [self init]))
         return nil;
@@ -43,7 +43,7 @@
     return self;
 }
 
-- (const WebCore::ElementContext&)elementContext
+- (const CyberCore::ElementContext&)elementContext
 {
     return _elementContext;
 }

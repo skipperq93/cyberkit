@@ -36,7 +36,7 @@
 #include <algorithm>
 #include <math.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 void AudioChannel::scale(float scale)
 {
@@ -112,6 +112,6 @@ float AudioChannel::maxAbsValue() const
     return VectorMath::maximumMagnitude(data(), length());
 }
 
-} // WebCore
+} // CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

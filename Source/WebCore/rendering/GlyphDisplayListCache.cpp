@@ -29,7 +29,7 @@
 #include "DisplayListItems.h"
 #include "DisplayListIterator.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static bool canShareDisplayListWithItem(DisplayList::ItemType itemType)
 {
@@ -220,4 +220,4 @@ GlyphDisplayListCacheEntry::~GlyphDisplayListCacheEntry()
     GlyphDisplayListCache::singleton().m_entries.remove(this);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

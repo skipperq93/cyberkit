@@ -29,11 +29,11 @@
 
 #include <CyberCore/MediaKeySystemClient.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPage;
 
-class WebMediaKeySystemClient : public WebCore::MediaKeySystemClient {
+class WebMediaKeySystemClient : public CyberCore::MediaKeySystemClient {
     WTF_MAKE_FAST_ALLOCATED;
 public:
     WebMediaKeySystemClient(WebPage&);
@@ -42,12 +42,12 @@ public:
 private:
     void pageDestroyed() override { }
 
-    void requestMediaKeySystem(WebCore::MediaKeySystemRequest&) override;
-    void cancelMediaKeySystemRequest(WebCore::MediaKeySystemRequest&) override;
+    void requestMediaKeySystem(CyberCore::MediaKeySystemRequest&) override;
+    void cancelMediaKeySystemRequest(CyberCore::MediaKeySystemRequest&) override;
 
     WebPage& m_page;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ENCRYPTED_MEDIA)

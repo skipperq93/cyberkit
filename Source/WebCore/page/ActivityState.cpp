@@ -28,7 +28,7 @@
 
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 TextStream& operator<<(TextStream& ts, OptionSet<ActivityState::Flag> flags)
 {
@@ -57,4 +57,4 @@ TextStream& operator<<(TextStream& ts, OptionSet<ActivityState::Flag> flags)
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

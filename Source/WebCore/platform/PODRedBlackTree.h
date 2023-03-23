@@ -61,7 +61,7 @@
 // FIXME: The prefix "POD" here isn't correct; this tree works with non-POD types too.
 // FIXME: Extend WTF::RedBlackTree and implement this on top of it rather than keeping two quite similar class templates around.
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename T, typename NodeUpdaterType> class PODRedBlackTree {
     WTF_MAKE_NONCOPYABLE(PODRedBlackTree);
@@ -632,4 +632,4 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore

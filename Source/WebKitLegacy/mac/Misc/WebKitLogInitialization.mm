@@ -26,12 +26,12 @@
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "WebKitLogInitialization.h"
+#include "CyberKitLogInitialization.h"
 
-#include "WebKitLogging.h"
+#include "CyberKitLogging.h"
 #include <wtf/text/CString.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 #if !LOG_DISABLED || !RELEASE_LOG_DISABLED
 
@@ -47,7 +47,7 @@ public:
 private:
     String logLevelString() final
     {
-        static NSString * const defaultsDomain = @"WebKitLogging";
+        static NSString * const defaultsDomain = @"CyberKitLogging";
         return [[NSUserDefaults standardUserDefaults] stringForKey:defaultsDomain];
     }
 };
@@ -60,15 +60,15 @@ WTF::LogChannels& logChannels()
 
 #endif // !LOG_DISABLED || !RELEASE_LOG_DISABLED
 
-} // namespace WebKit
+} // namespace CyberKit
 
 void ReportDiscardedDelegateException(SEL delegateSelector, id exception)
 {
     if ([exception isKindOfClass:[NSException class]]) {
-        NSLog(@"*** WebKit discarded an uncaught exception in the %s delegate: <%@> %@",
+        NSLog(@"*** CyberKit discarded an uncaught exception in the %s delegate: <%@> %@",
             sel_getName(delegateSelector), [exception name], [exception reason]);
     } else {
-        NSLog(@"*** WebKit discarded an uncaught exception in the %s delegate: %@",
+        NSLog(@"*** CyberKit discarded an uncaught exception in the %s delegate: %@",
             sel_getName(delegateSelector), exception);
     }
 }

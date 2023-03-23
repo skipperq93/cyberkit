@@ -29,7 +29,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WillChangeData : public RefCounted<WillChangeData> {
     WTF_MAKE_FAST_ALLOCATED;
@@ -128,4 +128,4 @@ private:
     bool m_canTriggerCompositingOnInline { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

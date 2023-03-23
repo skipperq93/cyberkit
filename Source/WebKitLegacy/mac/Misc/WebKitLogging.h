@@ -29,7 +29,7 @@
 #import <wtf/Assertions.h>
 
 #ifndef LOG_CHANNEL_PREFIX
-#define LOG_CHANNEL_PREFIX WebKitLog
+#define LOG_CHANNEL_PREFIX CyberKitLog
 #endif
 
 #ifdef __cplusplus

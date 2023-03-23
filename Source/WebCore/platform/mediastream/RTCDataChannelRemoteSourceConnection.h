@@ -32,7 +32,7 @@
 #include <wtf/ThreadSafeRefCounted.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RTCDataChannelRemoteSourceConnection : public ThreadSafeRefCounted<RTCDataChannelRemoteSourceConnection, WTF::DestructionThread::Main> {
 public:
@@ -45,6 +45,6 @@ public:
     virtual void bufferedAmountIsDecreasing(RTCDataChannelIdentifier, size_t) = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

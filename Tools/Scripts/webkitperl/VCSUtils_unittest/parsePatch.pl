@@ -45,13 +45,13 @@ Index: Makefile
 --- Makefile	(revision 53131)
 +++ Makefile	(working copy)
 @@ -1,1 +0,0 @@
--MODULES = JavaScriptCore JavaScriptGlue WebCore WebKit WebKitTools
+-MODULES = JavaScriptCore JavaScriptGlue CyberCore WebKit WebKitTools
 Index: Makefile_new
 ===================================================================
 --- Makefile_new	(revision 53131)	(from Makefile:53131)
 +++ Makefile_new	(working copy)
 @@ -0,0 +1,1 @@
-+MODULES = JavaScriptCore JavaScriptGlue WebCore WebKit WebKitTools
++MODULES = JavaScriptCore JavaScriptGlue CyberCore WebKit WebKitTools
 END
 
 my @expectedDiffHashRefs = (
@@ -62,7 +62,7 @@ Index: Makefile
 --- Makefile	(revision 53131)
 +++ Makefile	(working copy)
 @@ -1,1 +0,0 @@
--MODULES = JavaScriptCore JavaScriptGlue WebCore WebKit WebKitTools
+-MODULES = JavaScriptCore JavaScriptGlue CyberCore WebKit WebKitTools
 END
     copiedFromPath => undef,
     indexPath => "Makefile",

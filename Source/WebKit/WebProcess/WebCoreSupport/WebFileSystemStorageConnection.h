@@ -32,38 +32,38 @@
 namespace IPC {
 class Connection;
 
-template<> struct AsyncReplyError<Expected<WebCore::FileSystemHandleIdentifier, WebKit::FileSystemStorageError>> {
-    static Expected<WebCore::FileSystemHandleIdentifier, WebKit::FileSystemStorageError> create()
+template<> struct AsyncReplyError<Expected<CyberCore::FileSystemHandleIdentifier, CyberKit::FileSystemStorageError>> {
+    static Expected<CyberCore::FileSystemHandleIdentifier, CyberKit::FileSystemStorageError> create()
     {
-        return makeUnexpected(WebKit::FileSystemStorageError::Unknown);
+        return makeUnexpected(CyberKit::FileSystemStorageError::Unknown);
     }
 };
 
-template<> struct AsyncReplyError<Expected<Vector<String>, WebKit::FileSystemStorageError>> {
-    static Expected<Vector<String>, WebKit::FileSystemStorageError> create()
+template<> struct AsyncReplyError<Expected<Vector<String>, CyberKit::FileSystemStorageError>> {
+    static Expected<Vector<String>, CyberKit::FileSystemStorageError> create()
     {
-        return makeUnexpected(WebKit::FileSystemStorageError::Unknown);
+        return makeUnexpected(CyberKit::FileSystemStorageError::Unknown);
     }
 };
 
-template<> struct AsyncReplyError<Expected<std::pair<String, bool>, WebKit::FileSystemStorageError>> {
-    static Expected<std::pair<String, bool>, WebKit::FileSystemStorageError> create()
+template<> struct AsyncReplyError<Expected<std::pair<String, bool>, CyberKit::FileSystemStorageError>> {
+    static Expected<std::pair<String, bool>, CyberKit::FileSystemStorageError> create()
     {
-        return makeUnexpected(WebKit::FileSystemStorageError::Unknown);
+        return makeUnexpected(CyberKit::FileSystemStorageError::Unknown);
     }
 };
 
 }
 
-namespace WebCore {
+namespace CyberCore {
 template<typename> class ExceptionOr;
 class FileSystemDirectoryHandle;
 class FileSystemFileHandle;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
-class WebFileSystemStorageConnection final : public WebCore::FileSystemStorageConnection {
+class WebFileSystemStorageConnection final : public CyberCore::FileSystemStorageConnection {
 public:
     static Ref<WebFileSystemStorageConnection> create(IPC::Connection&);
     void connectionClosed();
@@ -73,26 +73,26 @@ private:
     explicit WebFileSystemStorageConnection(IPC::Connection&);
 
     // FileSystemStorageConnection
-    void closeHandle(WebCore::FileSystemHandleIdentifier) final;
-    void isSameEntry(WebCore::FileSystemHandleIdentifier, WebCore::FileSystemHandleIdentifier, WebCore::FileSystemStorageConnection::SameEntryCallback&&) final;
-    void move(WebCore::FileSystemHandleIdentifier, WebCore::FileSystemHandleIdentifier, const String& newName, VoidCallback&&) final;
-    void getFileHandle(WebCore::FileSystemHandleIdentifier, const String& name, bool createIfNecessary, WebCore::FileSystemStorageConnection::GetHandleCallback&&) final;
-    void getDirectoryHandle(WebCore::FileSystemHandleIdentifier, const String& name, bool createIfNecessary, WebCore::FileSystemStorageConnection::GetHandleCallback&&) final;
-    void removeEntry(WebCore::FileSystemHandleIdentifier, const String& name, bool deleteRecursively, WebCore::FileSystemStorageConnection::VoidCallback&&) final;
-    void resolve(WebCore::FileSystemHandleIdentifier, WebCore::FileSystemHandleIdentifier, WebCore::FileSystemStorageConnection::ResolveCallback&&) final;
-    void getHandleNames(WebCore::FileSystemHandleIdentifier, FileSystemStorageConnection::GetHandleNamesCallback&&) final;
-    void getHandle(WebCore::FileSystemHandleIdentifier, const String& name, FileSystemStorageConnection::GetHandleCallback&&) final;
-    void getFile(WebCore::FileSystemHandleIdentifier, StringCallback&&) final;
+    void closeHandle(CyberCore::FileSystemHandleIdentifier) final;
+    void isSameEntry(CyberCore::FileSystemHandleIdentifier, CyberCore::FileSystemHandleIdentifier, CyberCore::FileSystemStorageConnection::SameEntryCallback&&) final;
+    void move(CyberCore::FileSystemHandleIdentifier, CyberCore::FileSystemHandleIdentifier, const String& newName, VoidCallback&&) final;
+    void getFileHandle(CyberCore::FileSystemHandleIdentifier, const String& name, bool createIfNecessary, CyberCore::FileSystemStorageConnection::GetHandleCallback&&) final;
+    void getDirectoryHandle(CyberCore::FileSystemHandleIdentifier, const String& name, bool createIfNecessary, CyberCore::FileSystemStorageConnection::GetHandleCallback&&) final;
+    void removeEntry(CyberCore::FileSystemHandleIdentifier, const String& name, bool deleteRecursively, CyberCore::FileSystemStorageConnection::VoidCallback&&) final;
+    void resolve(CyberCore::FileSystemHandleIdentifier, CyberCore::FileSystemHandleIdentifier, CyberCore::FileSystemStorageConnection::ResolveCallback&&) final;
+    void getHandleNames(CyberCore::FileSystemHandleIdentifier, FileSystemStorageConnection::GetHandleNamesCallback&&) final;
+    void getHandle(CyberCore::FileSystemHandleIdentifier, const String& name, FileSystemStorageConnection::GetHandleCallback&&) final;
+    void getFile(CyberCore::FileSystemHandleIdentifier, StringCallback&&) final;
 
-    void createSyncAccessHandle(WebCore::FileSystemHandleIdentifier, WebCore::FileSystemStorageConnection::GetAccessHandleCallback&&) final;
-    void closeSyncAccessHandle(WebCore::FileSystemHandleIdentifier, WebCore::FileSystemSyncAccessHandleIdentifier, EmptyCallback&&) final;
-    void requestNewCapacityForSyncAccessHandle(WebCore::FileSystemHandleIdentifier, WebCore::FileSystemSyncAccessHandleIdentifier, uint64_t newCapacity, RequestCapacityCallback&& completionHandler) final;
-    void registerSyncAccessHandle(WebCore::FileSystemSyncAccessHandleIdentifier, WebCore::ScriptExecutionContextIdentifier) final;
-    void unregisterSyncAccessHandle(WebCore::FileSystemSyncAccessHandleIdentifier) final;
-    void invalidateAccessHandle(WebCore::FileSystemSyncAccessHandleIdentifier) final;
+    void createSyncAccessHandle(CyberCore::FileSystemHandleIdentifier, CyberCore::FileSystemStorageConnection::GetAccessHandleCallback&&) final;
+    void closeSyncAccessHandle(CyberCore::FileSystemHandleIdentifier, CyberCore::FileSystemSyncAccessHandleIdentifier, EmptyCallback&&) final;
+    void requestNewCapacityForSyncAccessHandle(CyberCore::FileSystemHandleIdentifier, CyberCore::FileSystemSyncAccessHandleIdentifier, uint64_t newCapacity, RequestCapacityCallback&& completionHandler) final;
+    void registerSyncAccessHandle(CyberCore::FileSystemSyncAccessHandleIdentifier, CyberCore::ScriptExecutionContextIdentifier) final;
+    void unregisterSyncAccessHandle(CyberCore::FileSystemSyncAccessHandleIdentifier) final;
+    void invalidateAccessHandle(CyberCore::FileSystemSyncAccessHandleIdentifier) final;
 
-    HashMap<WebCore::FileSystemSyncAccessHandleIdentifier, WebCore::ScriptExecutionContextIdentifier> m_syncAccessHandles;
+    HashMap<CyberCore::FileSystemSyncAccessHandleIdentifier, CyberCore::ScriptExecutionContextIdentifier> m_syncAccessHandles;
     RefPtr<IPC::Connection> m_connection;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

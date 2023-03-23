@@ -47,7 +47,7 @@
 
 namespace WebKit {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 static constexpr size_t readPixelsInlineSizeLimit = 64 * KB;
 
@@ -70,7 +70,7 @@ IPC::ArrayReferenceTuple<Types...> toArrayReferenceTuple(const GCGLSpanTuple<Spa
 
 }
 
-RefPtr<RemoteGraphicsContextGLProxy> RemoteGraphicsContextGLProxy::create(IPC::Connection& connection, const WebCore::GraphicsContextGLAttributes& attributes, RemoteRenderingBackendProxy& renderingBackend
+RefPtr<RemoteGraphicsContextGLProxy> RemoteGraphicsContextGLProxy::create(IPC::Connection& connection, const CyberCore::GraphicsContextGLAttributes& attributes, RemoteRenderingBackendProxy& renderingBackend
 #if ENABLE(VIDEO)
     , Ref<RemoteVideoFrameObjectHeapProxy>&& videoFrameObjectHeapProxy
 #endif
@@ -223,7 +223,7 @@ void RemoteGraphicsContextGLProxy::paintCompositedResultsToCanvas(ImageBuffer& b
 }
 
 #if ENABLE(MEDIA_STREAM)
-RefPtr<WebCore::VideoFrame> RemoteGraphicsContextGLProxy::paintCompositedResultsToVideoFrame()
+RefPtr<CyberCore::VideoFrame> RemoteGraphicsContextGLProxy::paintCompositedResultsToVideoFrame()
 {
     ASSERT(isMainRunLoop());
     if (isContextLost())
@@ -250,7 +250,7 @@ bool RemoteGraphicsContextGLProxy::copyTextureFromMedia(MediaPlayer& mediaPlayer
     return copyTextureFromVideoFrame(*videoFrame, texture, target, level, internalFormat, format, type, premultiplyAlpha, flipY);
 }
 
-bool RemoteGraphicsContextGLProxy::copyTextureFromVideoFrame(WebCore::VideoFrame& videoFrame, PlatformGLObject texture, GCGLenum target, GCGLint level, GCGLenum internalFormat, GCGLenum format, GCGLenum type, bool premultiplyAlpha, bool flipY)
+bool RemoteGraphicsContextGLProxy::copyTextureFromVideoFrame(CyberCore::VideoFrame& videoFrame, PlatformGLObject texture, GCGLenum target, GCGLint level, GCGLenum internalFormat, GCGLenum format, GCGLenum type, bool premultiplyAlpha, bool flipY)
 {
 #if PLATFORM(COCOA)
     if (isContextLost())
@@ -281,7 +281,7 @@ bool RemoteGraphicsContextGLProxy::copyTextureFromVideoFrame(WebCore::VideoFrame
 #endif
 }
 
-RefPtr<Image> RemoteGraphicsContextGLProxy::videoFrameToImage(WebCore::VideoFrame& frame)
+RefPtr<Image> RemoteGraphicsContextGLProxy::videoFrameToImage(CyberCore::VideoFrame& frame)
 {
     if (isContextLost())
         return { };

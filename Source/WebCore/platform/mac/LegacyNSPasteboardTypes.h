@@ -29,7 +29,7 @@
 
 ALLOW_DEPRECATED_DECLARATIONS_BEGIN
 
-namespace WebCore {
+namespace CyberCore {
 
 inline NSString *legacyStringPasteboardType()
 {
@@ -91,7 +91,7 @@ inline NSString *legacyPNGPasteboardType()
     return @"Apple PNG pasteboard type";
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 ALLOW_DEPRECATED_DECLARATIONS_END
 

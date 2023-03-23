@@ -27,22 +27,22 @@
 
 #include "PlatformCALayerRemote.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 class PlatformCALayerRemoteHost final : public PlatformCALayerRemote {
     friend class PlatformCALayerRemote;
 public:
-    static Ref<PlatformCALayerRemote> create(WebCore::LayerHostingContextIdentifier, WebCore::PlatformCALayerClient*, RemoteLayerTreeContext&);
+    static Ref<PlatformCALayerRemote> create(CyberCore::LayerHostingContextIdentifier, CyberCore::PlatformCALayerClient*, RemoteLayerTreeContext&);
 
 private:
-    PlatformCALayerRemoteHost(WebCore::LayerHostingContextIdentifier, WebCore::PlatformCALayerClient*, RemoteLayerTreeContext&);
+    PlatformCALayerRemoteHost(CyberCore::LayerHostingContextIdentifier, CyberCore::PlatformCALayerClient*, RemoteLayerTreeContext&);
 
     Type type() const final { return Type::RemoteHost; }
-    void populateCreationProperties(RemoteLayerTreeTransaction::LayerCreationProperties&, const RemoteLayerTreeContext&, WebCore::PlatformCALayer::LayerType) final;
+    void populateCreationProperties(RemoteLayerTreeTransaction::LayerCreationProperties&, const RemoteLayerTreeContext&, CyberCore::PlatformCALayer::LayerType) final;
 
-    WebCore::LayerHostingContextIdentifier m_identifier;
+    CyberCore::LayerHostingContextIdentifier m_identifier;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
-SPECIALIZE_TYPE_TRAITS_PLATFORM_CALAYER(WebKit::PlatformCALayerRemoteHost, type() == WebCore::PlatformCALayer::Type::RemoteHost)
+SPECIALIZE_TYPE_TRAITS_PLATFORM_CALAYER(CyberKit::PlatformCALayerRemoteHost, type() == CyberCore::PlatformCALayer::Type::RemoteHost)

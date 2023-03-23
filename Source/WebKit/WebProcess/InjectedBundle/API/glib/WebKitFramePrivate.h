@@ -20,15 +20,15 @@
 #pragma once
 
 #include "WebFrame.h"
-#include "WebKitFrame.h"
-#include "WebKitScriptWorld.h"
+#include "CyberKitFrame.h"
+#include "CyberKitScriptWorld.h"
 #include <CyberCore/Element.h>
 #include <wtf/RefPtr.h>
 #include <wtf/Vector.h>
 #include <wtf/glib/GRefPtr.h>
 
-WebKitFrame* webkitFrameCreate(WebKit::WebFrame*);
-WebKit::WebFrame* webkitFrameGetWebFrame(WebKitFrame*);
-GRefPtr<JSCValue> webkitFrameGetJSCValueForElementInWorld(WebKitFrame*, WebCore::Element&, WebKitScriptWorld*);
-Vector<GRefPtr<JSCValue>> webkitFrameGetJSCValuesForElementsInWorld(WebKitFrame*, const Vector<RefPtr<WebCore::Element>>&, WebKitScriptWorld*);
-void webkitFrameSetURI(WebKitFrame*, const CString&);
+CyberKitFrame* webkitFrameCreate(CyberKit::WebFrame*);
+CyberKit::WebFrame* webkitFrameGetWebFrame(CyberKitFrame*);
+GRefPtr<JSCValue> webkitFrameGetJSCValueForElementInWorld(CyberKitFrame*, CyberCore::Element&, CyberKitScriptWorld*);
+Vector<GRefPtr<JSCValue>> webkitFrameGetJSCValuesForElementsInWorld(CyberKitFrame*, const Vector<RefPtr<CyberCore::Element>>&, CyberKitScriptWorld*);
+void webkitFrameSetURI(CyberKitFrame*, const CString&);

@@ -34,7 +34,7 @@
 OBJC_CLASS AVTimedMetadataGroup;
 OBJC_CLASS NSLocale;
 
-namespace WebCore {
+namespace CyberCore {
 
 class InbandChapterTrackPrivateAVFObjC : public InbandTextTrackPrivate {
 public:
@@ -76,6 +76,6 @@ private:
     int m_index { 0 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif //  ENABLE(VIDEO) && (USE(AVFOUNDATION) || PLATFORM(IOS_FAMILY))

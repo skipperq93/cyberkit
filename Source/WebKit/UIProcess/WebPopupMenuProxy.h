@@ -30,7 +30,7 @@
 #include <wtf/Forward.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
     class IntRect;
 }
 
@@ -61,7 +61,7 @@ public:
     {
     }
 
-    virtual void showPopupMenu(const WebCore::IntRect& rect, WebCore::TextDirection, double pageScaleFactor, const Vector<WebPopupItem>& items, const PlatformPopupMenuData&, int32_t selectedIndex) = 0;
+    virtual void showPopupMenu(const CyberCore::IntRect& rect, CyberCore::TextDirection, double pageScaleFactor, const Vector<WebPopupItem>& items, const PlatformPopupMenuData&, int32_t selectedIndex) = 0;
     virtual void hidePopupMenu() = 0;
     virtual void cancelTracking() { }
 

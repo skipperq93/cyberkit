@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -17,16 +17,16 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitDOMCSSValuePrivate_h
-#define WebKitDOMCSSValuePrivate_h
+#ifndef CyberKitDOMCSSValuePrivate_h
+#define CyberKitDOMCSSValuePrivate_h
 
 #include <CyberCore/DeprecatedCSSOMValue.h>
-#include <webkitdom/WebKitDOMCSSValue.h>
+#include <webkitdom/CyberKitDOMCSSValue.h>
 
-namespace WebKit {
-WebKitDOMCSSValue* wrapCSSValue(WebCore::DeprecatedCSSOMValue*);
-WebKitDOMCSSValue* kit(WebCore::DeprecatedCSSOMValue*);
-WebCore::DeprecatedCSSOMValue* core(WebKitDOMCSSValue*);
-} // namespace WebKit
+namespace CyberKit {
+CyberKitDOMCSSValue* wrapCSSValue(CyberCore::DeprecatedCSSOMValue*);
+CyberKitDOMCSSValue* kit(CyberCore::DeprecatedCSSOMValue*);
+CyberCore::DeprecatedCSSOMValue* core(CyberKitDOMCSSValue*);
+} // namespace CyberKit
 
-#endif /* WebKitDOMCSSValuePrivate_h */
+#endif /* CyberKitDOMCSSValuePrivate_h */

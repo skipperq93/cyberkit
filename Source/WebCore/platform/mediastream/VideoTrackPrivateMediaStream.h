@@ -30,7 +30,7 @@
 #include "MediaStreamTrackPrivate.h"
 #include "VideoTrackPrivate.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class VideoTrackPrivateMediaStream final : public VideoTrackPrivate {
     WTF_MAKE_NONCOPYABLE(VideoTrackPrivateMediaStream)

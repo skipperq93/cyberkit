@@ -27,7 +27,7 @@
 
 #if ENABLE(IMAGE_ANALYSIS)
 
-namespace WebCore {
+namespace CyberCore {
 
 struct TextRecognitionOptions {
     String sourceLanguageIdentifier;
@@ -37,6 +37,6 @@ struct TextRecognitionOptions {
     AllowSnapshots allowSnapshots { AllowSnapshots::Yes };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(IMAGE_ANALYSIS)

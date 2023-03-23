@@ -31,7 +31,7 @@
 #include <CyberCore/PlatformTimeRanges.h>
 #include <wtf/MediaTime.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 struct RemoteMediaPlayerConfiguration {
     String engineDescription;
@@ -46,6 +46,6 @@ struct RemoteMediaPlayerConfiguration {
     bool shouldIgnoreIntrinsicSize { false };
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS)

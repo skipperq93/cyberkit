@@ -31,7 +31,7 @@
 #include "RenderObject.h"
 #include "RenderStyle.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 BorderEdge::BorderEdge(float edgeWidth, Color edgeColor, BorderStyle edgeStyle, bool edgeIsTransparent, bool edgeIsPresent, float devicePixelRatio)
     : m_color(edgeColor)
@@ -108,4 +108,4 @@ void BorderEdge::getDoubleBorderStripeWidths(LayoutUnit& outerWidth, LayoutUnit&
     outerWidth = floorToDevicePixel(fullWidth / 3, m_devicePixelRatio);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

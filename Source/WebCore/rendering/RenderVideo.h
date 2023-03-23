@@ -30,7 +30,7 @@
 #include "HTMLVideoElement.h"
 #include "RenderMedia.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderVideo final : public RenderMedia {
     WTF_MAKE_ISO_ALLOCATED(RenderVideo);
@@ -93,7 +93,7 @@ inline RenderVideo* HTMLVideoElement::renderer() const
     return downcast<RenderVideo>(HTMLMediaElement::renderer());
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderVideo, isVideo())
 

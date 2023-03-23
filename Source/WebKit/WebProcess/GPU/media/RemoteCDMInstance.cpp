@@ -33,13 +33,13 @@
 #include "RemoteCDMInstanceProxyMessages.h"
 #include "RemoteCDMInstanceSession.h"
 #include "RemoteCDMInstanceSessionIdentifier.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebProcess.h"
 #include <CyberCore/CDMKeySystemConfiguration.h>
 
-namespace WebKit {
+namespace CyberKit {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 Ref<RemoteCDMInstance> RemoteCDMInstance::create(WeakPtr<RemoteCDMFactory>&& factory, RemoteCDMInstanceIdentifier&& identifier, RemoteCDMInstanceConfiguration&& configuration)
 {
@@ -70,7 +70,7 @@ void RemoteCDMInstance::unrequestedInitializationDataReceived(const String& type
         m_client->unrequestedInitializationDataReceived(type, WTFMove(initData));
 }
 
-void RemoteCDMInstance::initializeWithConfiguration(const WebCore::CDMKeySystemConfiguration& configuration, AllowDistinctiveIdentifiers distinctiveIdentifiers, AllowPersistentState persistentState, SuccessCallback&& callback)
+void RemoteCDMInstance::initializeWithConfiguration(const CyberCore::CDMKeySystemConfiguration& configuration, AllowDistinctiveIdentifiers distinctiveIdentifiers, AllowPersistentState persistentState, SuccessCallback&& callback)
 {
     if (!m_factory) {
         callback(Failed);
@@ -80,7 +80,7 @@ void RemoteCDMInstance::initializeWithConfiguration(const WebCore::CDMKeySystemC
     m_factory->gpuProcessConnection().connection().sendWithAsyncReply(Messages::RemoteCDMInstanceProxy::InitializeWithConfiguration(configuration, distinctiveIdentifiers, persistentState), WTFMove(callback), m_identifier);
 }
 
-void RemoteCDMInstance::setServerCertificate(Ref<WebCore::SharedBuffer>&& certificate, SuccessCallback&& callback)
+void RemoteCDMInstance::setServerCertificate(Ref<CyberCore::SharedBuffer>&& certificate, SuccessCallback&& callback)
 {
     if (!m_factory) {
         callback(Failed);
@@ -98,7 +98,7 @@ void RemoteCDMInstance::setStorageDirectory(const String& directory)
     m_factory->gpuProcessConnection().connection().send(Messages::RemoteCDMInstanceProxy::SetStorageDirectory(directory), m_identifier);
 }
 
-RefPtr<WebCore::CDMInstanceSession> RemoteCDMInstance::createSession()
+RefPtr<CyberCore::CDMInstanceSession> RemoteCDMInstance::createSession()
 {
     if (!m_factory)
         return nullptr;

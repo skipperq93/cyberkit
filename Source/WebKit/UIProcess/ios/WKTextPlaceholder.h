@@ -27,15 +27,15 @@
 
 #import <UIKit/UIKit.h>
 
-namespace WebCore {
+namespace CyberCore {
 struct ElementContext;
 }
 
 @interface WKTextPlaceholder : UITextPlaceholder
 
-- (instancetype)initWithElementContext:(const WebCore::ElementContext&)context;
+- (instancetype)initWithElementContext:(const CyberCore::ElementContext&)context;
 
-@property (nonatomic, readonly) const WebCore::ElementContext& elementContext;
+@property (nonatomic, readonly) const CyberCore::ElementContext& elementContext;
 
 @end
 

@@ -30,7 +30,7 @@
 #include "WebPageInspectorTargetFrontendChannel.h"
 #include "WebPageProxyMessages.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 WebPageInspectorTargetController::WebPageInspectorTargetController(WebPage& page)
     : m_page(page)
@@ -88,4 +88,4 @@ void WebPageInspectorTargetController::sendMessageToTargetBackend(const String& 
     target->sendMessageToTargetBackend(message);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

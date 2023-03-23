@@ -30,7 +30,7 @@
 #import <CyberKitLegacy/WebDocumentInternal.h>
 
 @class WebDataSource;
-@class WebCoreTextDecoder;
+@class CyberCoreTextDecoder;
 
 @interface WebPlainWhiteView : NSView <WebDocumentView, WebDocumentElement> {
 }

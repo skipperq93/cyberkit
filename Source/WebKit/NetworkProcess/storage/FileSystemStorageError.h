@@ -41,31 +41,31 @@ enum class FileSystemStorageError : uint8_t {
     Unknown
 };
 
-inline WebCore::Exception convertToException(FileSystemStorageError error)
+inline CyberCore::Exception convertToException(FileSystemStorageError error)
 {
     switch (error) {
     case FileSystemStorageError::AccessHandleActive:
-        return WebCore::Exception { WebCore::InvalidStateError, "Some AccessHandle is active"_s };
+        return CyberCore::Exception { CyberCore::InvalidStateError, "Some AccessHandle is active"_s };
     case FileSystemStorageError::BackendNotSupported:
-        return WebCore::Exception { WebCore::NotSupportedError, "Backend does not support this operation"_s };
+        return CyberCore::Exception { CyberCore::NotSupportedError, "Backend does not support this operation"_s };
     case FileSystemStorageError::FileNotFound:
-        return WebCore::Exception { WebCore::NotFoundError };
+        return CyberCore::Exception { CyberCore::NotFoundError };
     case FileSystemStorageError::InvalidModification:
-        return WebCore::Exception { WebCore::InvalidModificationError };
+        return CyberCore::Exception { CyberCore::InvalidModificationError };
     case FileSystemStorageError::InvalidName:
-        return WebCore::Exception { WebCore::TypeError, "Name is invalid"_s };
+        return CyberCore::Exception { CyberCore::TypeError, "Name is invalid"_s };
     case FileSystemStorageError::InvalidState:
-        return WebCore::Exception { WebCore::InvalidStateError };
+        return CyberCore::Exception { CyberCore::InvalidStateError };
     case FileSystemStorageError::TypeMismatch:
-        return WebCore::Exception { WebCore::TypeError };
+        return CyberCore::Exception { CyberCore::TypeError };
     case FileSystemStorageError::Unknown:
         break;
     }
 
-    return WebCore::Exception { WebCore::UnknownError };
+    return CyberCore::Exception { CyberCore::UnknownError };
 }
 
-inline WebCore::ExceptionOr<void> convertToExceptionOr(std::optional<FileSystemStorageError> error)
+inline CyberCore::ExceptionOr<void> convertToExceptionOr(std::optional<FileSystemStorageError> error)
 {
     if (!error)
         return { };

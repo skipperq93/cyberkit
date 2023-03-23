@@ -33,7 +33,7 @@
 #include "RenderStyleConstants.h"
 #include "Shape.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderBox;
 
@@ -58,4 +58,4 @@ private:
     FloatRoundedRect m_bounds;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -27,7 +27,7 @@
 #include "config.h"
 #include "XPathNSResolver.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 XPathNSResolver::~XPathNSResolver() = default;
 

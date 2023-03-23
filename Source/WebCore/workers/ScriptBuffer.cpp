@@ -33,7 +33,7 @@
 
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 ScriptBuffer::ScriptBuffer(const String& string)
 {
@@ -90,4 +90,4 @@ bool operator!=(const ScriptBuffer& a, const ScriptBuffer& b)
     return !(a == b);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -28,7 +28,7 @@
 
 #include "ScrollbarThemeComposite.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // Scrollbar theme used in image snapshots, to eliminate appearance differences between platforms.
 class ScrollbarThemeMock : public ScrollbarThemeComposite {

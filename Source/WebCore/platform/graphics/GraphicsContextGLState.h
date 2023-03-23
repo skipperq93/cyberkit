@@ -32,7 +32,7 @@
 #include <wtf/HashMap.h>
 #include <wtf/HashTraits.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct GraphicsContextGLState {
     GCGLuint boundReadFBO { 0 };

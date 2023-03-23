@@ -30,7 +30,7 @@
 
 #include <CoreGraphics/CoreGraphics.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 IntPoint::IntPoint(const CGPoint& p) : m_x(static_cast<int>(p.x)), m_y(static_cast<int>(p.y))
 {

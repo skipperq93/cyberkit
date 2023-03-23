@@ -42,7 +42,7 @@ OBJC_CLASS NSError;
 OBJC_CLASS NSObject;
 typedef struct opaqueCMSampleBuffer *CMSampleBufferRef;
 
-namespace WebCore {
+namespace CyberCore {
 
 class CDMInstance;
 class LegacyCDMSession;
@@ -50,7 +50,7 @@ class MediaPlayerPrivateMediaSourceAVFObjC;
 class MediaSourcePrivateClient;
 class SourceBufferPrivateAVFObjC;
 class TimeRanges;
-class WebCoreDecompressionSession;
+class CyberCoreDecompressionSession;
 
 class MediaSourcePrivateAVFObjC final
     : public MediaSourcePrivate
@@ -91,7 +91,7 @@ public:
 
     void hasSelectedVideoChanged(SourceBufferPrivateAVFObjC&);
     void setVideoLayer(AVSampleBufferDisplayLayer*);
-    void setDecompressionSession(WebCoreDecompressionSession*);
+    void setDecompressionSession(CyberCoreDecompressionSession*);
 
 #if PLATFORM(IOS_FAMILY)
     void flushActiveSourceBuffersIfNeeded();

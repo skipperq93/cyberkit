@@ -40,7 +40,7 @@ namespace API {
 class PageConfiguration;
 }
 
-namespace WebCore {
+namespace CyberCore {
 class FloatRect;
 }
 
@@ -115,7 +115,7 @@ enum class ViewStabilityFlag : uint8_t;
 - (void)_setAcceleratedCompositingRootView:(UIView *)rootView;
 - (void)_removeTemporaryDirectoriesWhenDeallocated:(Vector<RetainPtr<NSURL>>&&)urls;
 
-- (void)_showInspectorHighlight:(const WebCore::InspectorOverlay::Highlight&)highlight;
+- (void)_showInspectorHighlight:(const CyberCore::InspectorOverlay::Highlight&)highlight;
 - (void)_hideInspectorHighlight;
 
 - (void)_didCommitLayerTree:(const WebKit::RemoteLayerTreeTransaction&)layerTreeTransaction;
@@ -130,6 +130,6 @@ enum class ViewStabilityFlag : uint8_t;
 - (void)_zoomToInitialScaleWithOrigin:(CGPoint)origin;
 - (double)_initialScaleFactor;
 - (double)_contentZoomScale;
-- (double)_targetContentZoomScaleForRect:(const WebCore::FloatRect&)targetRect currentScale:(double)currentScale fitEntireRect:(BOOL)fitEntireRect minimumScale:(double)minimumScale maximumScale:(double)maximumScale;
+- (double)_targetContentZoomScaleForRect:(const CyberCore::FloatRect&)targetRect currentScale:(double)currentScale fitEntireRect:(BOOL)fitEntireRect minimumScale:(double)minimumScale maximumScale:(double)maximumScale;
 
 @end

@@ -106,7 +106,7 @@ void WebPaymentCoordinatorProxy::platformOpenPaymentSetup(const String& merchant
     }).get()];
 }
 
-static RetainPtr<NSSet> toPKContactFields(const WebCore::ApplePaySessionPaymentRequest::ContactFields& contactFields)
+static RetainPtr<NSSet> toPKContactFields(const CyberCore::ApplePaySessionPaymentRequest::ContactFields& contactFields)
 {
     Vector<NSString *> result;
 
@@ -131,7 +131,7 @@ NSDecimalNumber *toDecimalNumber(const String& amount)
     return [NSDecimalNumber decimalNumberWithString:amount locale:@{ NSLocaleDecimalSeparator : @"." }];
 }
 
-static PKMerchantCapability toPKMerchantCapabilities(const WebCore::ApplePaySessionPaymentRequest::MerchantCapabilities& merchantCapabilities)
+static PKMerchantCapability toPKMerchantCapabilities(const CyberCore::ApplePaySessionPaymentRequest::MerchantCapabilities& merchantCapabilities)
 {
     PKMerchantCapability result = 0;
     if (merchantCapabilities.supports3DS)
@@ -146,26 +146,26 @@ static PKMerchantCapability toPKMerchantCapabilities(const WebCore::ApplePaySess
     return result;
 }
 
-static PKShippingType toPKShippingType(WebCore::ApplePaySessionPaymentRequest::ShippingType shippingType)
+static PKShippingType toPKShippingType(CyberCore::ApplePaySessionPaymentRequest::ShippingType shippingType)
 {
     switch (shippingType) {
-    case WebCore::ApplePaySessionPaymentRequest::ShippingType::Shipping:
+    case CyberCore::ApplePaySessionPaymentRequest::ShippingType::Shipping:
         return PKShippingTypeShipping;
 
-    case WebCore::ApplePaySessionPaymentRequest::ShippingType::Delivery:
+    case CyberCore::ApplePaySessionPaymentRequest::ShippingType::Delivery:
         return PKShippingTypeDelivery;
 
-    case WebCore::ApplePaySessionPaymentRequest::ShippingType::StorePickup:
+    case CyberCore::ApplePaySessionPaymentRequest::ShippingType::StorePickup:
         return PKShippingTypeStorePickup;
 
-    case WebCore::ApplePaySessionPaymentRequest::ShippingType::ServicePickup:
+    case CyberCore::ApplePaySessionPaymentRequest::ShippingType::ServicePickup:
         return PKShippingTypeServicePickup;
     }
 }
 
 #if HAVE(PASSKIT_SHIPPING_METHOD_DATE_COMPONENTS_RANGE) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
 
-static RetainPtr<NSDateComponents> toNSDateComponents(const WebCore::ApplePayDateComponents& dateComponents)
+static RetainPtr<NSDateComponents> toNSDateComponents(const CyberCore::ApplePayDateComponents& dateComponents)
 {
     auto result = adoptNS([[NSDateComponents alloc] init]);
     [result setCalendar:[NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian]];
@@ -180,14 +180,14 @@ static RetainPtr<NSDateComponents> toNSDateComponents(const WebCore::ApplePayDat
     return result;
 }
 
-static RetainPtr<PKDateComponentsRange> toPKDateComponentsRange(const WebCore::ApplePayDateComponentsRange& dateComponentsRange)
+static RetainPtr<PKDateComponentsRange> toPKDateComponentsRange(const CyberCore::ApplePayDateComponentsRange& dateComponentsRange)
 {
     return adoptNS([PAL::allocPKDateComponentsRangeInstance() initWithStartDateComponents:toNSDateComponents(dateComponentsRange.startDateComponents).get() endDateComponents:toNSDateComponents(dateComponentsRange.endDateComponents).get()]);
 }
 
 #endif // HAVE(PASSKIT_SHIPPING_METHOD_DATE_COMPONENTS_RANGE)
 
-PKShippingMethod *toPKShippingMethod(const WebCore::ApplePayShippingMethod& shippingMethod)
+PKShippingMethod *toPKShippingMethod(const CyberCore::ApplePayShippingMethod& shippingMethod)
 {
     PKShippingMethod *result = [PAL::getPKShippingMethodClass() summaryItemWithLabel:shippingMethod.label amount:toDecimalNumber(shippingMethod.amount)];
     [result setIdentifier:shippingMethod.identifier];
@@ -201,7 +201,7 @@ PKShippingMethod *toPKShippingMethod(const WebCore::ApplePayShippingMethod& ship
 
 #if HAVE(PASSKIT_DEFAULT_SHIPPING_METHOD)
 
-PKShippingMethods *toPKShippingMethods(const Vector<WebCore::ApplePayShippingMethod>& webShippingMethods)
+PKShippingMethods *toPKShippingMethods(const Vector<CyberCore::ApplePayShippingMethod>& webShippingMethods)
 {
     RetainPtr<PKShippingMethod> defaultMethod;
     auto methods = createNSArray(webShippingMethods, [&defaultMethod] (const auto& webShippingMethod) {
@@ -217,13 +217,13 @@ PKShippingMethods *toPKShippingMethods(const Vector<WebCore::ApplePayShippingMet
 
 #if HAVE(PASSKIT_SHIPPING_CONTACT_EDITING_MODE) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
 
-static PKShippingContactEditingMode toPKShippingContactEditingMode(WebCore::ApplePayShippingContactEditingMode shippingContactEditingMode)
+static PKShippingContactEditingMode toPKShippingContactEditingMode(CyberCore::ApplePayShippingContactEditingMode shippingContactEditingMode)
 {
     switch (shippingContactEditingMode) {
-    case WebCore::ApplePayShippingContactEditingMode::Enabled:
+    case CyberCore::ApplePayShippingContactEditingMode::Enabled:
         return PKShippingContactEditingModeEnabled;
 
-    case WebCore::ApplePayShippingContactEditingMode::StorePickup:
+    case CyberCore::ApplePayShippingContactEditingMode::StorePickup:
         return PKShippingContactEditingModeStorePickup;
     }
 
@@ -245,17 +245,17 @@ static RetainPtr<NSSet> toNSSet(const Vector<String>& strings)
     return WTFMove(mutableSet);
 }
 
-static PKPaymentRequestAPIType toAPIType(WebCore::ApplePaySessionPaymentRequest::Requester requester)
+static PKPaymentRequestAPIType toAPIType(CyberCore::ApplePaySessionPaymentRequest::Requester requester)
 {
     switch (requester) {
-    case WebCore::ApplePaySessionPaymentRequest::Requester::ApplePayJS:
+    case CyberCore::ApplePaySessionPaymentRequest::Requester::ApplePayJS:
         return PKPaymentRequestAPITypeWebJS;
-    case WebCore::ApplePaySessionPaymentRequest::Requester::PaymentRequest:
+    case CyberCore::ApplePaySessionPaymentRequest::Requester::PaymentRequest:
         return PKPaymentRequestAPITypeWebPaymentRequest;
     }
 }
 
-RetainPtr<PKPaymentRequest> WebPaymentCoordinatorProxy::platformPaymentRequest(const URL& originatingURL, const Vector<URL>& linkIconURLs, const WebCore::ApplePaySessionPaymentRequest& paymentRequest)
+RetainPtr<PKPaymentRequest> WebPaymentCoordinatorProxy::platformPaymentRequest(const URL& originatingURL, const Vector<URL>& linkIconURLs, const CyberCore::ApplePaySessionPaymentRequest& paymentRequest)
 {
     auto result = adoptNS([PAL::allocPKPaymentRequestInstance() init]);
 
@@ -285,7 +285,7 @@ RetainPtr<PKPaymentRequest> WebPaymentCoordinatorProxy::platformPaymentRequest(c
     }).get()];
 #endif
 
-    [result setPaymentSummaryItems:WebCore::platformSummaryItems(paymentRequest.total(), paymentRequest.lineItems())];
+    [result setPaymentSummaryItems:CyberCore::platformSummaryItems(paymentRequest.total(), paymentRequest.lineItems())];
 
     ALLOW_DEPRECATED_DECLARATIONS_BEGIN
     [result setExpectsMerchantSession:YES];
@@ -355,34 +355,34 @@ RetainPtr<PKPaymentRequest> WebPaymentCoordinatorProxy::platformPaymentRequest(c
     return result;
 }
 
-void WebPaymentCoordinatorProxy::platformCompletePaymentSession(WebCore::ApplePayPaymentAuthorizationResult&& result)
+void WebPaymentCoordinatorProxy::platformCompletePaymentSession(CyberCore::ApplePayPaymentAuthorizationResult&& result)
 {
     m_authorizationPresenter->completePaymentSession(WTFMove(result));
 }
 
-void WebPaymentCoordinatorProxy::platformCompleteMerchantValidation(const WebCore::PaymentMerchantSession& paymentMerchantSession)
+void WebPaymentCoordinatorProxy::platformCompleteMerchantValidation(const CyberCore::PaymentMerchantSession& paymentMerchantSession)
 {
     m_authorizationPresenter->completeMerchantValidation(paymentMerchantSession);
 }
 
-void WebPaymentCoordinatorProxy::platformCompleteShippingMethodSelection(std::optional<WebCore::ApplePayShippingMethodUpdate>&& update)
+void WebPaymentCoordinatorProxy::platformCompleteShippingMethodSelection(std::optional<CyberCore::ApplePayShippingMethodUpdate>&& update)
 {
     m_authorizationPresenter->completeShippingMethodSelection(WTFMove(update));
 }
 
-void WebPaymentCoordinatorProxy::platformCompleteShippingContactSelection(std::optional<WebCore::ApplePayShippingContactUpdate>&& update)
+void WebPaymentCoordinatorProxy::platformCompleteShippingContactSelection(std::optional<CyberCore::ApplePayShippingContactUpdate>&& update)
 {
     m_authorizationPresenter->completeShippingContactSelection(WTFMove(update));
 }
 
-void WebPaymentCoordinatorProxy::platformCompletePaymentMethodSelection(std::optional<WebCore::ApplePayPaymentMethodUpdate>&& update)
+void WebPaymentCoordinatorProxy::platformCompletePaymentMethodSelection(std::optional<CyberCore::ApplePayPaymentMethodUpdate>&& update)
 {
     m_authorizationPresenter->completePaymentMethodSelection(WTFMove(update));
 }
 
 #if ENABLE(APPLE_PAY_COUPON_CODE) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
 
-void WebPaymentCoordinatorProxy::platformCompleteCouponCodeChange(std::optional<WebCore::ApplePayCouponCodeUpdate>&& update)
+void WebPaymentCoordinatorProxy::platformCompleteCouponCodeChange(std::optional<CyberCore::ApplePayCouponCodeUpdate>&& update)
 {
     m_authorizationPresenter->completeCouponCodeChange(WTFMove(update));
 }

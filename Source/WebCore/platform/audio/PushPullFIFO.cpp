@@ -29,7 +29,7 @@
 
 #include "AudioBus.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 PushPullFIFO::PushPullFIFO(unsigned numberOfChannels, size_t fifoLength)
     : m_fifoLength(fifoLength)
@@ -131,6 +131,6 @@ unsigned PushPullFIFO::numberOfChannels() const
     return m_fifoBus->numberOfChannels();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

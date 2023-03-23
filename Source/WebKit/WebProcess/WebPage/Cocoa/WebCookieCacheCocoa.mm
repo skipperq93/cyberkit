@@ -30,20 +30,20 @@
 #import "WebProcess.h"
 #import <CyberCore/NetworkStorageSession.h>
 
-namespace WebKit {
+namespace CyberKit {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 NetworkStorageSession& WebCookieCache::inMemoryStorageSession()
 {
     if (!m_inMemoryStorageSession) {
-        String sessionName = makeString("WebKitInProcessStorage-", getCurrentProcessID());
+        String sessionName = makeString("CyberKitInProcessStorage-", getCurrentProcessID());
         auto cookieAcceptPolicy = WebProcess::singleton().ensureNetworkProcessConnection().cookieAcceptPolicy();
-        auto storageSession = WebCore::createPrivateStorageSession(sessionName.createCFString().get(), cookieAcceptPolicy);
+        auto storageSession = CyberCore::createPrivateStorageSession(sessionName.createCFString().get(), cookieAcceptPolicy);
         auto cookieStorage = adoptCF(_CFURLStorageSessionCopyCookieStorage(kCFAllocatorDefault, storageSession.get()));
         m_inMemoryStorageSession = makeUnique<NetworkStorageSession>(WebProcess::singleton().sessionID(), WTFMove(storageSession), WTFMove(cookieStorage), NetworkStorageSession::IsInMemoryCookieStore::Yes);
     }
     return *m_inMemoryStorageSession;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

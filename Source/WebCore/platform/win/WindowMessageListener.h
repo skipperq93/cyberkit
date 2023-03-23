@@ -31,13 +31,13 @@
 
 #include <windows.h>
 
-namespace WebCore {
+namespace CyberCore {
 
     class WindowMessageListener {
     public:
         virtual void windowReceivedMessage(HWND, UINT message, WPARAM, LPARAM) = 0;
     };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // WindowMessageListener_h

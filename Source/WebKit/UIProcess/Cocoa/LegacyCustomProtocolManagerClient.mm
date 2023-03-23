@@ -83,7 +83,7 @@
     if (!_customProtocolManagerProxy)
         return;
 
-    WebCore::ResourceError coreError(error);
+    CyberCore::ResourceError coreError(error);
     _customProtocolManagerProxy->didFailWithError(_customProtocolID, coreError);
     _customProtocolManagerProxy->stopLoading(_customProtocolID);
 }
@@ -100,7 +100,7 @@
     if (!_customProtocolManagerProxy)
         return;
 
-    WebCore::ResourceResponse coreResponse(response);
+    CyberCore::ResourceResponse coreResponse(response);
     _customProtocolManagerProxy->didReceiveResponse(_customProtocolID, coreResponse, WebKit::toCacheStoragePolicy(_storagePolicy));
 }
 
@@ -137,7 +137,7 @@
 @end
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 void LegacyCustomProtocolManagerClient::startLoading(LegacyCustomProtocolManagerProxy& manager, WebKit::LegacyCustomProtocolID customProtocolID, const ResourceRequest& coreRequest)
 {

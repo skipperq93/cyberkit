@@ -27,7 +27,7 @@
 
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DisplayRefreshMonitor;
 using PlatformDisplayID = uint32_t;

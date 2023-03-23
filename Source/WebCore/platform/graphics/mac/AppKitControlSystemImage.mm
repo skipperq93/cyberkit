@@ -34,7 +34,7 @@
 #import "LocalDefaultSystemAppearance.h"
 #import <pal/spi/mac/NSAppearanceSPI.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 AppKitControlSystemImage::AppKitControlSystemImage(AppKitControlSystemImageType controlType)
     : SystemImage(SystemImageType::AppKitControl)
@@ -51,6 +51,6 @@ void AppKitControlSystemImage::draw(GraphicsContext& graphicsContext, const Floa
     drawControl(graphicsContext, rect);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(APPKIT)

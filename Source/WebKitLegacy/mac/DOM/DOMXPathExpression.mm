@@ -32,19 +32,19 @@
 #import <CyberCore/JSExecState.h>
 #import <CyberCore/Node.h>
 #import <CyberCore/ThreadCheck.h>
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 #import <CyberCore/WebScriptObjectPrivate.h>
 #import <CyberCore/XPathExpression.h>
 #import <CyberCore/XPathResult.h>
 #import <wtf/GetPtr.h>
 
-#define IMPL reinterpret_cast<WebCore::XPathExpression*>(_internal)
+#define IMPL reinterpret_cast<CyberCore::XPathExpression*>(_internal)
 
 @implementation DOMXPathExpression
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainThread([DOMXPathExpression class], self))
+    if (CyberCoreObjCScheduleDeallocateOnMainThread([DOMXPathExpression class], self))
         return;
 
     if (_internal)
@@ -57,7 +57,7 @@
     if (!contextNode)
         return nullptr;
 
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(raiseOnDOMError(IMPL->evaluate(*core(contextNode), type, core(inResult))).ptr());
 }
 
@@ -72,9 +72,9 @@
 
 @end
 
-DOMXPathExpression *kit(WebCore::XPathExpression* value)
+DOMXPathExpression *kit(CyberCore::XPathExpression* value)
 {
-    WebCoreThreadViolationCheckRoundOne();
+    CyberCoreThreadViolationCheckRoundOne();
     if (!value)
         return nil;
     if (DOMXPathExpression *wrapper = getDOMWrapper(value))

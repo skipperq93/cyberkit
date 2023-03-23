@@ -26,7 +26,7 @@
 #include <wtf/CheckedArithmetic.h>
 #include <wtf/MemoryPressureHandler.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static const int defaultTileDimension = 512;
 
@@ -110,7 +110,7 @@ double TiledBackingStore::tileDistance(const IntRect& viewport, const Tile::Coor
 }
 
 // Returns a ratio between 0.0f and 1.0f of the surface covered by rendered tiles.
-float TiledBackingStore::coverageRatio(const WebCore::IntRect& dirtyRect) const
+float TiledBackingStore::coverageRatio(const CyberCore::IntRect& dirtyRect) const
 {
     float rectArea = dirtyRect.width() * dirtyRect.height();
     float coverArea = 0.0f;

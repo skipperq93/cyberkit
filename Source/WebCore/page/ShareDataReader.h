@@ -29,7 +29,7 @@
 #include "ShareData.h"
 #include <wtf/CompletionHandler.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Blob;
 class BlobLoader;

@@ -26,7 +26,7 @@
 #include "TextureMapper.h"
 #include "TextureMapperGL.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 void CoordinatedBackingStoreTile::addUpdate(Update&& update)
 {
@@ -165,5 +165,5 @@ void CoordinatedBackingStore::commitTileOperations(TextureMapper& textureMapper)
         tile.swapBuffers(textureMapper);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 #endif // USE(COORDINATED_GRAPHICS)

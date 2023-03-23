@@ -32,7 +32,7 @@
 #include <wtf/Forward.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct StgMediumDeleter {
     void operator()(STGMEDIUM* medium)

@@ -40,7 +40,7 @@
 
 // FIXME: Someone needs to call didChangeSettings() if we want dynamic updates of layer border/repaint counter settings.
 
-namespace WebCore {
+namespace CyberCore {
 
 PageOverlayController::PageOverlayController(Page& page)
     :  m_page(page)

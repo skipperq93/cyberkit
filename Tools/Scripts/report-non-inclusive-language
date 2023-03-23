@@ -26,7 +26,7 @@ import argparse, os, re
 
 # For now: Searches all files in current directory tree.
 # Reads every file so it does take a while.
-# On my fast computer takes about 15 seconds for WebCore.
+# On my fast computer takes about 15 seconds for CyberCore.
 
 # Things to do next:
 #

@@ -37,7 +37,7 @@
 #include <wtf/spi/cocoa/IOSurfaceSPI.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 void ShareableBitmap::validateConfiguration(ShareableBitmapConfiguration& configuration)
 {
@@ -87,13 +87,13 @@ static CGBitmapInfo bitmapInfo(const ShareableBitmapConfiguration& configuration
     return info;
 }
 
-CheckedUint32 ShareableBitmap::calculateBytesPerRow(WebCore::IntSize size, const ShareableBitmapConfiguration& configuration)
+CheckedUint32 ShareableBitmap::calculateBytesPerRow(CyberCore::IntSize size, const ShareableBitmapConfiguration& configuration)
 {
     CheckedUint32 bytesPerRow = calculateBytesPerPixel(configuration) * size.width();
 #if HAVE(IOSURFACE)
     if (bytesPerRow.hasOverflowed())
         return bytesPerRow;
-    size_t alignmentMask = WebCore::IOSurface::bytesPerRowAlignment() - 1;
+    size_t alignmentMask = CyberCore::IOSurface::bytesPerRowAlignment() - 1;
     return (bytesPerRow + alignmentMask) & ~alignmentMask;
 #else
     return bytesPerRow;
@@ -137,12 +137,12 @@ std::unique_ptr<GraphicsContext> ShareableBitmap::createGraphicsContext()
     return makeUnique<GraphicsContextCG>(bitmapContext.get());
 }
 
-void ShareableBitmap::paint(WebCore::GraphicsContext& context, const IntPoint& destination, const IntRect& source)
+void ShareableBitmap::paint(CyberCore::GraphicsContext& context, const IntPoint& destination, const IntRect& source)
 {
     paint(context, 1, destination, source);
 }
 
-void ShareableBitmap::paint(WebCore::GraphicsContext& context, float scaleFactor, const IntPoint& destination, const IntRect& source)
+void ShareableBitmap::paint(CyberCore::GraphicsContext& context, float scaleFactor, const IntPoint& destination, const IntRect& source)
 {
     CGContextRef cgContext = context.platformContext();
     CGContextSaveGState(cgContext);

@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -17,16 +17,16 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitDOMCSSRuleListPrivate_h
-#define WebKitDOMCSSRuleListPrivate_h
+#ifndef CyberKitDOMCSSRuleListPrivate_h
+#define CyberKitDOMCSSRuleListPrivate_h
 
 #include <CyberCore/CSSRuleList.h>
-#include <webkitdom/WebKitDOMCSSRuleList.h>
+#include <webkitdom/CyberKitDOMCSSRuleList.h>
 
-namespace WebKit {
-WebKitDOMCSSRuleList* wrapCSSRuleList(WebCore::CSSRuleList*);
-WebKitDOMCSSRuleList* kit(WebCore::CSSRuleList*);
-WebCore::CSSRuleList* core(WebKitDOMCSSRuleList*);
-} // namespace WebKit
+namespace CyberKit {
+CyberKitDOMCSSRuleList* wrapCSSRuleList(CyberCore::CSSRuleList*);
+CyberKitDOMCSSRuleList* kit(CyberCore::CSSRuleList*);
+CyberCore::CSSRuleList* core(CyberKitDOMCSSRuleList*);
+} // namespace CyberKit
 
-#endif /* WebKitDOMCSSRuleListPrivate_h */
+#endif /* CyberKitDOMCSSRuleListPrivate_h */

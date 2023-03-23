@@ -174,98 +174,98 @@ if (ENABLE_JAVASCRIPTCORE)
     WEBKIT_EXECUTABLE_DECLARE(TestJavaScriptCore)
 endif ()
 
-# TestWebCore definitions
+# TestCyberCore definitions
 if (ENABLE_WEBCORE)
-    set(TestWebCore_SOURCES
+    set(TestCyberCore_SOURCES
         TestsController.cpp
         Utilities.cpp
 
-        Tests/WebCore/AffineTransform.cpp
-        Tests/WebCore/CSSParser.cpp
-        Tests/WebCore/CalculationValue.cpp
-        Tests/WebCore/ColorTests.cpp
-        Tests/WebCore/ComplexTextController.cpp
-        Tests/WebCore/ContextMenuAction.cpp
-        Tests/WebCore/FileMonitor.cpp
-        Tests/WebCore/FloatPointTests.cpp
-        Tests/WebCore/FloatRectTests.cpp
-        Tests/WebCore/FloatSizeTests.cpp
-        Tests/WebCore/GridPosition.cpp
-        Tests/WebCore/HTMLParserIdioms.cpp
-        Tests/WebCore/HTTPParsers.cpp
-        Tests/WebCore/IntPointTests.cpp
-        Tests/WebCore/IntRectTests.cpp
-        Tests/WebCore/IntSizeTests.cpp
-        Tests/WebCore/KeyedCoding.cpp
-        Tests/WebCore/LayoutUnitTests.cpp
-        Tests/WebCore/MIMETypeRegistry.cpp
-        Tests/WebCore/NowPlayingInfoTests.cpp
-        Tests/WebCore/ParsedContentRange.cpp
-        Tests/WebCore/PublicSuffix.cpp
-        Tests/WebCore/SecurityOrigin.cpp
-        Tests/WebCore/SharedBuffer.cpp
-        Tests/WebCore/SharedBufferTest.cpp
-        Tests/WebCore/TimeRanges.cpp
-        Tests/WebCore/TransformationMatrix.cpp
-        Tests/WebCore/URLParserTextEncoding.cpp
-        Tests/WebCore/WritingModeTests.cpp
+        Tests/CyberCore/AffineTransform.cpp
+        Tests/CyberCore/CSSParser.cpp
+        Tests/CyberCore/CalculationValue.cpp
+        Tests/CyberCore/ColorTests.cpp
+        Tests/CyberCore/ComplexTextController.cpp
+        Tests/CyberCore/ContextMenuAction.cpp
+        Tests/CyberCore/FileMonitor.cpp
+        Tests/CyberCore/FloatPointTests.cpp
+        Tests/CyberCore/FloatRectTests.cpp
+        Tests/CyberCore/FloatSizeTests.cpp
+        Tests/CyberCore/GridPosition.cpp
+        Tests/CyberCore/HTMLParserIdioms.cpp
+        Tests/CyberCore/HTTPParsers.cpp
+        Tests/CyberCore/IntPointTests.cpp
+        Tests/CyberCore/IntRectTests.cpp
+        Tests/CyberCore/IntSizeTests.cpp
+        Tests/CyberCore/KeyedCoding.cpp
+        Tests/CyberCore/LayoutUnitTests.cpp
+        Tests/CyberCore/MIMETypeRegistry.cpp
+        Tests/CyberCore/NowPlayingInfoTests.cpp
+        Tests/CyberCore/ParsedContentRange.cpp
+        Tests/CyberCore/PublicSuffix.cpp
+        Tests/CyberCore/SecurityOrigin.cpp
+        Tests/CyberCore/SharedBuffer.cpp
+        Tests/CyberCore/SharedBufferTest.cpp
+        Tests/CyberCore/TimeRanges.cpp
+        Tests/CyberCore/TransformationMatrix.cpp
+        Tests/CyberCore/URLParserTextEncoding.cpp
+        Tests/CyberCore/WritingModeTests.cpp
     )
 
-    set(TestWebCore_LIBRARIES
+    set(TestCyberCore_LIBRARIES
         WebKit::gtest
     )
-    set(TestWebCore_FRAMEWORKS
+    set(TestCyberCore_FRAMEWORKS
         JavaScriptCore
         PAL
         WTF
-        WebCore
+        CyberCore
     )
     if (NOT USE_SYSTEM_MALLOC)
-        list(APPEND TestWebCore_FRAMEWORKS bmalloc)
+        list(APPEND TestCyberCore_FRAMEWORKS bmalloc)
     endif ()
 
-    set(TestWebCore_PRIVATE_INCLUDE_DIRECTORIES
+    set(TestCyberCore_PRIVATE_INCLUDE_DIRECTORIES
         ${CMAKE_BINARY_DIR}
         ${TESTWEBKITAPI_DIR}
     )
 
-    set(TestWebCore_DEFINITIONS
+    set(TestCyberCore_DEFINITIONS
       WEBKIT_SRC_DIR="${CMAKE_SOURCE_DIR}"
     )
 
-    WEBKIT_EXECUTABLE_DECLARE(TestWebCore)
-    target_compile_definitions(TestWebCore PUBLIC TestWebCore_DEFINITIONS)
+    WEBKIT_EXECUTABLE_DECLARE(TestCyberCore)
+    target_compile_definitions(TestCyberCore PUBLIC TestCyberCore_DEFINITIONS)
 endif ()
 
-# TestWebKitLegacy definitions
+# TestCyberKitLegacy definitions
 if (ENABLE_WEBKIT_LEGACY)
-    set(TestWebKitLegacy_SOURCES
+    set(TestCyberKitLegacy_SOURCES
         TestsController.cpp
     )
 
-    set(TestWebKitLegacy_LIBRARIES
+    set(TestCyberKitLegacy_LIBRARIES
         WebKit::gtest
     )
 
-    set(TestWebKitLegacy_FRAMEWORKS
+    set(TestCyberKitLegacy_FRAMEWORKS
         JavaScriptCore
         PAL
         WTF
-        WebCore
+        CyberCore
     )
     if (NOT USE_SYSTEM_MALLOC)
-        list(APPEND TestWebKitLegacy_FRAMEWORKS bmalloc)
+        list(APPEND TestCyberKitLegacy_FRAMEWORKS bmalloc)
     endif ()
     if (NOT APPLE)
-        list(APPEND TestWebKitLegacy_FRAMEWORKS WebKitLegacy)
+        list(APPEND TestCyberKitLegacy_FRAMEWORKS CyberKitLegacy)
     endif ()
 
-    set(TestWebKitLegacy_PRIVATE_INCLUDE_DIRECTORIES
+    set(TestCyberKitLegacy_PRIVATE_INCLUDE_DIRECTORIES
         ${CMAKE_BINARY_DIR}
         ${TESTWEBKITAPI_DIR}
     )
 
-    WEBKIT_EXECUTABLE_DECLARE(TestWebKitLegacy)
+    WEBKIT_EXECUTABLE_DECLARE(TestCyberKitLegacy)
 endif ()
 
 # TestWebKit definitions
@@ -331,7 +331,7 @@ if (ENABLE_WEBKIT)
         ${JavaScriptCore_PRIVATE_FRAMEWORK_HEADERS_DIR}
         ${PAL_FRAMEWORK_HEADERS_DIR}
         ${TESTWEBKITAPI_DIR}
-        ${WebCore_PRIVATE_FRAMEWORK_HEADERS_DIR}
+        ${CyberCore_PRIVATE_FRAMEWORK_HEADERS_DIR}
         ${WebKit_FRAMEWORK_HEADERS_DIR}
     )
 
@@ -425,14 +425,14 @@ if (ENABLE_JAVASCRIPTCORE)
     WEBKIT_TEST(TestJavaScriptCore)
 endif ()
 
-# TestWebCore target
+# TestCyberCore target
 if (ENABLE_WEBCORE)
-    WEBKIT_TEST(TestWebCore)
+    WEBKIT_TEST(TestCyberCore)
 endif ()
 
-# TestWebKitLegacy target
+# TestCyberKitLegacy target
 if (ENABLE_WEBKIT_LEGACY)
-    WEBKIT_TEST(TestWebKitLegacy)
+    WEBKIT_TEST(TestCyberKitLegacy)
 endif ()
 
 # TestWebKit target

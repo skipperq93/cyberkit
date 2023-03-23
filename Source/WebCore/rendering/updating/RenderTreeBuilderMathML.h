@@ -30,7 +30,7 @@
 #include "MathMLOperatorDictionary.h"
 #include "RenderTreeBuilder.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderMathMLFenced;
 class RenderMathMLFencedOperator;

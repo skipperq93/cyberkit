@@ -27,15 +27,15 @@
 #import "WKWebProcessPlugInCSSStyleDeclarationHandleInternal.h"
 
 #import <CyberCore/CSSStyleDeclaration.h>
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 
 @implementation WKWebProcessPlugInCSSStyleDeclarationHandle {
-    API::ObjectStorage<WebKit::InjectedBundleCSSStyleDeclarationHandle> _cssStyleDeclarationHandle;
+    API::ObjectStorage<CyberKit::InjectedBundleCSSStyleDeclarationHandle> _cssStyleDeclarationHandle;
 }
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainRunLoop(WKWebProcessPlugInCSSStyleDeclarationHandle.class, self))
+    if (CyberCoreObjCScheduleDeallocateOnMainRunLoop(WKWebProcessPlugInCSSStyleDeclarationHandle.class, self))
         return;
     _cssStyleDeclarationHandle->~InjectedBundleCSSStyleDeclarationHandle();
     [super dealloc];
@@ -45,10 +45,10 @@
 {
     JSContextRef contextRef = [context JSGlobalContextRef];
     JSObjectRef objectRef = JSValueToObject(contextRef, [value JSValueRef], nullptr);
-    return wrapper(WebKit::InjectedBundleCSSStyleDeclarationHandle::getOrCreate(contextRef, objectRef));
+    return wrapper(CyberKit::InjectedBundleCSSStyleDeclarationHandle::getOrCreate(contextRef, objectRef));
 }
 
-- (WebKit::InjectedBundleCSSStyleDeclarationHandle&)_cssStyleDeclarationHandle
+- (CyberKit::InjectedBundleCSSStyleDeclarationHandle&)_cssStyleDeclarationHandle
 {
     return *_cssStyleDeclarationHandle;
 }

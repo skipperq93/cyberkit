@@ -30,7 +30,7 @@
 #include <wtf/RobinHoodHashSet.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ContentSecurityPolicyDirectiveList;
 
@@ -46,4 +46,4 @@ private:
     MemoryCompactLookupOnlyRobinHoodHashSet<String> m_pluginTypes;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

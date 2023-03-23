@@ -26,23 +26,23 @@
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import "WebKitVersionChecks.h"
+#import "CyberKitVersionChecks.h"
 
 #import <mach-o/dyld.h>
 #import <mutex>
 
-static int WebKitLinkTimeVersion(void);
-static int overriddenWebKitLinkTimeVersion;
+static int CyberKitLinkTimeVersion(void);
+static int overriddenCyberKitLinkTimeVersion;
 
-BOOL WebKitLinkedOnOrAfter(int version)
+BOOL CyberKitLinkedOnOrAfter(int version)
 {
 #if !PLATFORM(IOS_FAMILY)
-    return (WebKitLinkTimeVersion() >= version);
+    return (CyberKitLinkTimeVersion() >= version);
 #else
-    int32_t linkTimeVersion = WebKitLinkTimeVersion();
+    int32_t linkTimeVersion = CyberKitLinkTimeVersion();
     int32_t majorVersion = linkTimeVersion >> 16 & 0x0000FFFF;
     
-    // The application was not linked against UIKit so assume most recent WebKit
+    // The application was not linked against UIKit so assume most recent CyberKit
     if (linkTimeVersion == -1)
         return YES;
     
@@ -50,21 +50,21 @@ BOOL WebKitLinkedOnOrAfter(int version)
 #endif
 }
 
-void setWebKitLinkTimeVersion(int version)
+void setCyberKitLinkTimeVersion(int version)
 {
-    overriddenWebKitLinkTimeVersion = version;
+    overriddenCyberKitLinkTimeVersion = version;
 }
 
-static int WebKitLinkTimeVersion(void)
+static int CyberKitLinkTimeVersion(void)
 {
-    if (overriddenWebKitLinkTimeVersion)
-        return overriddenWebKitLinkTimeVersion;
+    if (overriddenCyberKitLinkTimeVersion)
+        return overriddenCyberKitLinkTimeVersion;
 
 #if !PLATFORM(IOS_FAMILY)
-    return NSVersionOfLinkTimeLibrary("WebKit");
+    return NSVersionOfLinkTimeLibrary("CyberKit");
 #else
-    // <rdar://problem/6627758> Need to implement WebKitLinkedOnOrAfter
-    // Third party applications do not link against WebKit, but rather against UIKit.
+    // <rdar://problem/6627758> Need to implement CyberKitLinkedOnOrAfter
+    // Third party applications do not link against CyberKit, but rather against UIKit.
     return NSVersionOfLinkTimeLibrary("UIKit");
 #endif
 }

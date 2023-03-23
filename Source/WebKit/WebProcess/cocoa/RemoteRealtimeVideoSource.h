@@ -32,31 +32,31 @@
 #include <CyberCore/CaptureDevice.h>
 #include <CyberCore/RealtimeMediaSourceIdentifier.h>
 
-namespace WebCore {
+namespace CyberCore {
 class VideoFrame;
 struct MediaConstraints;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class UserMediaCaptureManager;
 
 class RemoteRealtimeVideoSource final : public RemoteRealtimeMediaSource {
 public:
-    static Ref<WebCore::RealtimeMediaSource> create(const WebCore::CaptureDevice&, const WebCore::MediaConstraints*, WebCore::MediaDeviceHashSalts&&, UserMediaCaptureManager&, bool shouldCaptureInGPUProcess, WebCore::PageIdentifier);
+    static Ref<CyberCore::RealtimeMediaSource> create(const CyberCore::CaptureDevice&, const CyberCore::MediaConstraints*, CyberCore::MediaDeviceHashSalts&&, UserMediaCaptureManager&, bool shouldCaptureInGPUProcess, CyberCore::PageIdentifier);
     ~RemoteRealtimeVideoSource();
 
-    void remoteVideoFrameAvailable(WebCore::VideoFrame&, WebCore::VideoFrameTimeMetadata);
+    void remoteVideoFrameAvailable(CyberCore::VideoFrame&, CyberCore::VideoFrameTimeMetadata);
 
 private:
-    RemoteRealtimeVideoSource(WebCore::RealtimeMediaSourceIdentifier, const WebCore::CaptureDevice&, const WebCore::MediaConstraints*, WebCore::MediaDeviceHashSalts&&, UserMediaCaptureManager&, bool shouldCaptureInGPUProcess, WebCore::PageIdentifier);
-    RemoteRealtimeVideoSource(RemoteRealtimeMediaSourceProxy&&, WebCore::MediaDeviceHashSalts&&, UserMediaCaptureManager&, WebCore::PageIdentifier);
+    RemoteRealtimeVideoSource(CyberCore::RealtimeMediaSourceIdentifier, const CyberCore::CaptureDevice&, const CyberCore::MediaConstraints*, CyberCore::MediaDeviceHashSalts&&, UserMediaCaptureManager&, bool shouldCaptureInGPUProcess, CyberCore::PageIdentifier);
+    RemoteRealtimeVideoSource(RemoteRealtimeMediaSourceProxy&&, CyberCore::MediaDeviceHashSalts&&, UserMediaCaptureManager&, CyberCore::PageIdentifier);
 
     Ref<RealtimeMediaSource> clone() final;
     void endProducingData() final;
     bool setShouldApplyRotation(bool) final;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

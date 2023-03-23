@@ -148,7 +148,7 @@ private:
     Ref<WebGPU::ObjectHeap> m_objectHeap WTF_GUARDED_BY_CAPABILITY(workQueue());
     const WebGPUIdentifier m_identifier;
     Ref<RemoteRenderingBackend> m_renderingBackend;
-    const WebCore::ProcessIdentifier m_webProcessIdentifier;
+    const CyberCore::ProcessIdentifier m_webProcessIdentifier;
 };
 
 } // namespace WebKit

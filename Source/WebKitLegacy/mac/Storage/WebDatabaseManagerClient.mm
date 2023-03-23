@@ -33,10 +33,10 @@
 #import <wtf/RetainPtr.h>
 
 #if PLATFORM(IOS_FAMILY)
-#import <CyberCore/WebCoreThread.h>
+#import <CyberCore/CyberCoreThread.h>
 #endif
 
-using namespace WebCore;
+using namespace CyberCore;
 
 #if PLATFORM(IOS_FAMILY)
 static const CFStringRef WebDatabaseOriginWasAddedNotification = CFSTR("com.apple.MobileSafariSettings.WebDatabaseOriginWasAddedNotification");
@@ -44,7 +44,7 @@ static const CFStringRef WebDatabaseWasDeletedNotification = CFSTR("com.apple.Mo
 static const CFStringRef WebDatabaseOriginWasDeletedNotification = CFSTR("com.apple.MobileSafariSettings.WebDatabaseOriginWasDeletedNotification");
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 WebDatabaseManagerClient& WebDatabaseManagerClient::sharedWebDatabaseManagerClient()
 {
@@ -124,7 +124,7 @@ void WebDatabaseManagerClient::dispatchDidModifyOrigin(const SecurityOriginData&
         return;
     }
 
-    auto webSecurityOrigin = adoptNS([[WebSecurityOrigin alloc] _initWithWebCoreSecurityOrigin:origin.securityOrigin().ptr()]);
+    auto webSecurityOrigin = adoptNS([[WebSecurityOrigin alloc] _initWithCyberCoreSecurityOrigin:origin.securityOrigin().ptr()]);
 
     [[NSNotificationCenter defaultCenter] postNotificationName:WebDatabaseDidModifyOriginNotification object:webSecurityOrigin.get()];
 }
@@ -136,7 +136,7 @@ void WebDatabaseManagerClient::dispatchDidModifyDatabase(const SecurityOriginDat
         return;
     }
 
-    auto webSecurityOrigin = adoptNS([[WebSecurityOrigin alloc] _initWithWebCoreSecurityOrigin:origin.securityOrigin().ptr()]);
+    auto webSecurityOrigin = adoptNS([[WebSecurityOrigin alloc] _initWithCyberCoreSecurityOrigin:origin.securityOrigin().ptr()]);
     auto userInfo = adoptNS([[NSDictionary alloc] initWithObjectsAndKeys:(NSString *)databaseIdentifier, WebDatabaseIdentifierKey, nil]);
     [[NSNotificationCenter defaultCenter] postNotificationName:WebDatabaseDidModifyDatabaseNotification object:webSecurityOrigin.get() userInfo:userInfo.get()];
 }
@@ -218,4 +218,4 @@ void WebDatabaseManagerClient::databaseOriginsDidChange()
 
 #endif // PLATFORM(IOS_FAMILY)
 
-} // namespace WebKit
+} // namespace CyberKit

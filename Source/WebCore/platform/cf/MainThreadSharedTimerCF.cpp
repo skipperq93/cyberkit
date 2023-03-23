@@ -31,11 +31,11 @@
 #if PLATFORM(MAC)
 #import "PowerObserverMac.h"
 #elif PLATFORM(IOS_FAMILY)
-#import "WebCoreThreadInternal.h"
-#import "WebCoreThreadRun.h"
+#import "CyberCoreThreadInternal.h"
+#import "CyberCoreThreadRun.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 static RetainPtr<CFRunLoopTimerRef>& sharedTimer()
 {
@@ -132,4 +132,4 @@ void MainThreadSharedTimer::stop()
     CFRunLoopTimerSetNextFireDate(sharedTimer().get(), kCFTimeIntervalDistantFuture);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -41,7 +41,7 @@
 #include "SharedBuffer.h"
 #include <wtf/text/CString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 IconLoader::IconLoader(DocumentLoader& documentLoader, const URL& url)
     : m_documentLoader(documentLoader)

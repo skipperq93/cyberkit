@@ -34,7 +34,7 @@
 #import "WebProcessProxy.h"
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 #pragma mark - PlaybackSessionModelContext
 
@@ -50,7 +50,7 @@ void PlaybackSessionModelContext::removeClient(PlaybackSessionModelClient& clien
     m_clients.remove(&client);
 }
 
-void PlaybackSessionModelContext::sendRemoteCommand(WebCore::PlatformMediaSession::RemoteControlCommandType command, const WebCore::PlatformMediaSession::RemoteCommandArgument& argument)
+void PlaybackSessionModelContext::sendRemoteCommand(CyberCore::PlatformMediaSession::RemoteControlCommandType command, const CyberCore::PlatformMediaSession::RemoteCommandArgument& argument)
 {
     if (m_manager)
         m_manager->sendRemoteCommand(m_contextId, command, argument);
@@ -206,7 +206,7 @@ void PlaybackSessionModelContext::bufferedTimeChanged(double bufferedTime)
         client->bufferedTimeChanged(bufferedTime);
 }
 
-void PlaybackSessionModelContext::rateChanged(OptionSet<WebCore::PlaybackSessionModel::PlaybackState> playbackState, double playbackRate, double defaultPlaybackRate)
+void PlaybackSessionModelContext::rateChanged(OptionSet<CyberCore::PlaybackSessionModel::PlaybackState> playbackState, double playbackRate, double defaultPlaybackRate)
 {
     m_playbackState = playbackState;
     m_playbackRate = playbackRate;
@@ -215,7 +215,7 @@ void PlaybackSessionModelContext::rateChanged(OptionSet<WebCore::PlaybackSession
         client->rateChanged(m_playbackState, m_playbackRate, m_defaultPlaybackRate);
 }
 
-void PlaybackSessionModelContext::seekableRangesChanged(WebCore::TimeRanges& seekableRanges, double lastModifiedTime, double liveUpdateInterval)
+void PlaybackSessionModelContext::seekableRangesChanged(CyberCore::TimeRanges& seekableRanges, double lastModifiedTime, double liveUpdateInterval)
 {
     m_seekableRanges = seekableRanges;
     m_seekableTimeRangesLastModifiedTime = lastModifiedTime;
@@ -460,7 +460,7 @@ void PlaybackSessionManagerProxy::legibleMediaSelectionIndexChanged(PlaybackSess
     ensureModel(contextId).legibleMediaSelectionIndexChanged(selectedIndex);
 }
 
-void PlaybackSessionManagerProxy::externalPlaybackPropertiesChanged(PlaybackSessionContextIdentifier contextId, bool enabled, WebCore::PlaybackSessionModel::ExternalPlaybackTargetType targetType, String localizedDeviceName)
+void PlaybackSessionManagerProxy::externalPlaybackPropertiesChanged(PlaybackSessionContextIdentifier contextId, bool enabled, CyberCore::PlaybackSessionModel::ExternalPlaybackTargetType targetType, String localizedDeviceName)
 {
     ensureModel(contextId).externalPlaybackChanged(enabled, targetType, localizedDeviceName);
 }
@@ -490,7 +490,7 @@ void PlaybackSessionManagerProxy::playbackStartedTimeChanged(PlaybackSessionCont
     ensureModel(contextId).playbackStartedTimeChanged(playbackStartedTime);
 }
 
-void PlaybackSessionManagerProxy::rateChanged(PlaybackSessionContextIdentifier contextId, OptionSet<WebCore::PlaybackSessionModel::PlaybackState> playbackState, double rate, double defaultPlaybackRate)
+void PlaybackSessionManagerProxy::rateChanged(PlaybackSessionContextIdentifier contextId, OptionSet<CyberCore::PlaybackSessionModel::PlaybackState> playbackState, double rate, double defaultPlaybackRate)
 {
     ensureModel(contextId).rateChanged(playbackState, rate, defaultPlaybackRate);
 
@@ -615,7 +615,7 @@ void PlaybackSessionManagerProxy::setPlayingOnSecondScreen(PlaybackSessionContex
         m_page->send(Messages::PlaybackSessionManager::SetPlayingOnSecondScreen(contextId, value));
 }
 
-void PlaybackSessionManagerProxy::sendRemoteCommand(PlaybackSessionContextIdentifier contextId, WebCore::PlatformMediaSession::RemoteControlCommandType command, const WebCore::PlatformMediaSession::RemoteCommandArgument& argument)
+void PlaybackSessionManagerProxy::sendRemoteCommand(PlaybackSessionContextIdentifier contextId, CyberCore::PlatformMediaSession::RemoteControlCommandType command, const CyberCore::PlatformMediaSession::RemoteCommandArgument& argument)
 {
     if (m_page)
         m_page->send(Messages::PlaybackSessionManager::SendRemoteCommand(contextId, command, argument));

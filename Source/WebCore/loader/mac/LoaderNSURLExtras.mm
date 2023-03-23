@@ -37,7 +37,7 @@
 #import <wtf/Vector.h>
 #import <wtf/text/WTFString.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 NSString *suggestedFilenameWithMIMEType(NSURL *url, const String& mimeType)
 {

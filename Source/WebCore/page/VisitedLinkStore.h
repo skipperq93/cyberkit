@@ -29,7 +29,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/WeakHashSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using SharedStringHash = uint32_t;
 class Page;
@@ -53,4 +53,4 @@ private:
     WeakHashSet<Page> m_pages;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

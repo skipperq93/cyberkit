@@ -379,7 +379,7 @@ WebKitAutomationSession* webkitAutomationSessionCreate(WebKitWebContext* webCont
     if (capabilities.proxy) {
         if (capabilities.proxy->type == "pac"_s) {
             // FIXME: expose pac proxy in public API.
-            auto settings = WebCore::SoupNetworkProxySettings(WebCore::SoupNetworkProxySettings::Mode::Auto);
+            auto settings = CyberCore::SoupNetworkProxySettings(CyberCore::SoupNetworkProxySettings::Mode::Auto);
             if (capabilities.proxy->autoconfigURL)
                 settings.defaultProxyURL = capabilities.proxy->autoconfigURL->utf8();
             if (!settings.isEmpty()) {

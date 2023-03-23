@@ -35,7 +35,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/Ref.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScreenOrientation;
 
@@ -62,4 +62,4 @@ private:
     RefPtr<ScreenOrientation> m_screenOrientation;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

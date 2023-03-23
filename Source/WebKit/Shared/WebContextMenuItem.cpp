@@ -51,18 +51,18 @@ Ref<WebContextMenuItem> WebContextMenuItem::create(const String& title, bool ena
     }
     submenu.shrinkToFit();
 
-    return adoptRef(*new WebContextMenuItem(WebContextMenuItemData(WebCore::ContextMenuItemTagNoAction, title, enabled, submenu))).leakRef();
+    return adoptRef(*new WebContextMenuItem(WebContextMenuItemData(CyberCore::ContextMenuItemTagNoAction, title, enabled, submenu))).leakRef();
 }
 
 WebContextMenuItem* WebContextMenuItem::separatorItem()
 {
-    static WebContextMenuItem* separatorItem = new WebContextMenuItem(WebContextMenuItemData(WebCore::SeparatorType, WebCore::ContextMenuItemTagNoAction, String(), true, false));
+    static WebContextMenuItem* separatorItem = new WebContextMenuItem(WebContextMenuItemData(CyberCore::SeparatorType, CyberCore::ContextMenuItemTagNoAction, String(), true, false));
     return separatorItem;
 }
 
 Ref<API::Array> WebContextMenuItem::submenuItemsAsAPIArray() const
 {
-    if (m_webContextMenuItemData.type() != WebCore::SubmenuType)
+    if (m_webContextMenuItemData.type() != CyberCore::SubmenuType)
         return API::Array::create();
 
     auto submenuItems = m_webContextMenuItemData.submenu().map([](auto& item) -> RefPtr<API::Object> {

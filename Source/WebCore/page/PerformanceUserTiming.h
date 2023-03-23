@@ -35,7 +35,7 @@ namespace JSC {
 class JSGlobalObject;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class Performance;
 

@@ -24,7 +24,7 @@
 
 #include "CachedResource.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CachedResourceClient;
 class ResourceTiming;
@@ -99,8 +99,8 @@ private:
     bool m_inIncrementalDataNotify { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::CachedRawResource)
-    static bool isType(const WebCore::CachedResource& resource) { return resource.isMainOrMediaOrIconOrRawResource(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::CachedRawResource)
+    static bool isType(const CyberCore::CachedResource& resource) { return resource.isMainOrMediaOrIconOrRawResource(); }
 SPECIALIZE_TYPE_TRAITS_END()

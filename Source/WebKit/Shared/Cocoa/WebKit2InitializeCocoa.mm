@@ -28,7 +28,7 @@
 
 #import <CyberScriptCore/InitializeThreading.h>
 #import <CyberCore/CommonAtomStrings.h>
-#import <CyberCore/WebCoreJITOperations.h>
+#import <CyberCore/CyberCoreJITOperations.h>
 #import <mutex>
 #import <wtf/GenerateProfiles.h>
 #import <wtf/MainThread.h>
@@ -37,7 +37,7 @@
 #import <wtf/cocoa/RuntimeApplicationChecksCocoa.h>
 
 #if PLATFORM(IOS_FAMILY)
-#import <CyberCore/WebCoreThreadSystemInterface.h>
+#import <CyberCore/CyberCoreThreadSystemInterface.h>
 #endif
 
 namespace WebKit {
@@ -50,9 +50,9 @@ static void runInitializationCode(void* = nullptr)
 {
     RELEASE_ASSERT_WITH_MESSAGE([NSThread isMainThread], "InitializeWebKit2 should be called on the main thread");
 
-    WebCore::initializeCommonAtomStrings();
+    CyberCore::initializeCommonAtomStrings();
 #if PLATFORM(IOS_FAMILY)
-    InitWebCoreThreadSystemInterface();
+    InitCyberCoreThreadSystemInterface();
 #endif
 
     JSC::initialize();
@@ -60,7 +60,7 @@ static void runInitializationCode(void* = nullptr)
 
     WTF::RefCountedBase::enableThreadingChecksGlobally();
 
-    WebCore::populateJITOperations();
+    CyberCore::populateJITOperations();
 
     WTF::registerProfileGenerationCallback<WebKitProfileTag>("WebKit");
 }

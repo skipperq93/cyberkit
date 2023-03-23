@@ -27,7 +27,7 @@
 
 #include <wtf/URL.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class BlobPart {
 public:
@@ -84,4 +84,4 @@ private:
     URL m_url;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -30,7 +30,7 @@
 #include "QualifiedName.h"
 #include "SVGParserUtilities.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename PropertyType>
 struct SVGPropertyTraits { };
@@ -159,4 +159,4 @@ struct SVGIDLEnumLimits {
     static unsigned highestExposedEnumValue() { return SVGPropertyTraits<EnumType>::highestEnumValue(); }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

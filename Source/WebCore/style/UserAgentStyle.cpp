@@ -61,7 +61,7 @@
 #include "UserAgentStyleSheets.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace Style {
 
 using namespace HTMLNames;
@@ -287,4 +287,4 @@ void UserAgentStyle::ensureDefaultStyleSheetsForElement(const Element& element)
 }
 
 } // namespace Style
-} // namespace WebCore
+} // namespace CyberCore

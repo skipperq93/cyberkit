@@ -34,7 +34,7 @@
 #include <CyberScriptCore/Forward.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FetchEvent;
 class FetchResponse;
@@ -85,6 +85,6 @@ private:
     uint64_t m_pushEventCounter { 0 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

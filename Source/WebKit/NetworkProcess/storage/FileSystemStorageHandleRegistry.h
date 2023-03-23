@@ -37,12 +37,12 @@ class FileSystemStorageHandleRegistry {
     WTF_MAKE_FAST_ALLOCATED;
 public:
     FileSystemStorageHandleRegistry();
-    void registerHandle(WebCore::FileSystemHandleIdentifier, FileSystemStorageHandle&);
-    void unregisterHandle(WebCore::FileSystemHandleIdentifier);
-    FileSystemStorageHandle* getHandle(WebCore::FileSystemHandleIdentifier);
+    void registerHandle(CyberCore::FileSystemHandleIdentifier, FileSystemStorageHandle&);
+    void unregisterHandle(CyberCore::FileSystemHandleIdentifier);
+    FileSystemStorageHandle* getHandle(CyberCore::FileSystemHandleIdentifier);
 
 private:
-    HashMap<WebCore::FileSystemHandleIdentifier, WeakPtr<FileSystemStorageHandle>> m_handles;
+    HashMap<CyberCore::FileSystemHandleIdentifier, WeakPtr<FileSystemStorageHandle>> m_handles;
 };
 
 } // namespace WebKit

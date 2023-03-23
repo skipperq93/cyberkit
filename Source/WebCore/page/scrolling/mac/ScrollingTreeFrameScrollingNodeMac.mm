@@ -39,13 +39,13 @@
 #import "ScrollingTree.h"
 #import "ScrollingTreeScrollingNodeDelegateMac.h"
 #import "TileController.h"
-#import "WebCoreCALayerExtras.h"
+#import "CyberCoreCALayerExtras.h"
 #import <wtf/BlockObjCExceptions.h>
 #import <wtf/Deque.h>
 #import <wtf/text/CString.h>
 #import <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<ScrollingTreeFrameScrollingNode> ScrollingTreeFrameScrollingNodeMac::create(ScrollingTree& scrollingTree, ScrollingNodeType nodeType, ScrollingNodeID nodeID)
 {
@@ -260,6 +260,6 @@ unsigned ScrollingTreeFrameScrollingNodeMac::exposedUnfilledArea() const
     return TileController::blankPixelCountForTiles(tiles, viewportRect, IntPoint(-clampedScrollPosition.x(), -clampedScrollPosition.y()));
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ASYNC_SCROLLING) && PLATFORM(MAC)

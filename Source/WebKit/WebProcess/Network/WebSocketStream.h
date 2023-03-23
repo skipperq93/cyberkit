@@ -36,23 +36,23 @@ class Connection;
 class Decoder;
 }
 
-namespace WebCore {
+namespace CyberCore {
 class SocketStreamError;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
-class WebSocketStream : public IPC::MessageSender, public IPC::MessageReceiver, public WebCore::SocketStreamHandle {
+class WebSocketStream : public IPC::MessageSender, public IPC::MessageReceiver, public CyberCore::SocketStreamHandle {
 public:
-    static Ref<WebSocketStream> create(const URL&, WebCore::SocketStreamHandleClient&, WebCore::WebSocketIdentifier, const String& credentialPartition);
+    static Ref<WebSocketStream> create(const URL&, CyberCore::SocketStreamHandleClient&, CyberCore::WebSocketIdentifier, const String& credentialPartition);
     static void networkProcessCrashed();
-    static WebSocketStream* streamWithIdentifier(WebCore::WebSocketIdentifier);
+    static WebSocketStream* streamWithIdentifier(CyberCore::WebSocketIdentifier);
     
     void didReceiveMessage(IPC::Connection&, IPC::Decoder&);
     
     // SocketStreamHandle
     void platformSend(const uint8_t*, size_t, Function<void(bool)>&&) final;
-    void platformSendHandshake(const uint8_t*, size_t, const std::optional<WebCore::CookieRequestHeaderFieldProxy>&, Function<void(bool, bool)>&&);
+    void platformSendHandshake(const uint8_t*, size_t, const std::optional<CyberCore::CookieRequestHeaderFieldProxy>&, Function<void(bool, bool)>&&);
     void platformClose() final;
     size_t bufferedAmount() final;
 
@@ -62,7 +62,7 @@ public:
     void didReceiveSocketStreamData(const IPC::DataReference&);
     void didFailToReceiveSocketStreamData();
     void didUpdateBufferedAmount(uint64_t);
-    void didFailSocketStream(WebCore::SocketStreamError&&);
+    void didFailSocketStream(CyberCore::SocketStreamError&&);
 
     void didSendData(uint64_t, bool success);
     void didSendHandshake(uint64_t, bool success, bool didAccessSecureCookies);
@@ -72,14 +72,14 @@ private:
     IPC::Connection* messageSenderConnection() const final;
     uint64_t messageSenderDestinationID() const final;
 
-    WebSocketStream(const URL&, WebCore::SocketStreamHandleClient&, WebCore::WebSocketIdentifier, const String& credentialPartition);
+    WebSocketStream(const URL&, CyberCore::SocketStreamHandleClient&, CyberCore::WebSocketIdentifier, const String& credentialPartition);
     ~WebSocketStream();
 
-    WebCore::WebSocketIdentifier m_identifier;
+    CyberCore::WebSocketIdentifier m_identifier;
     size_t m_bufferedAmount { 0 };
-    WebCore::SocketStreamHandleClient& m_client;
+    CyberCore::SocketStreamHandleClient& m_client;
     HashMap<uint64_t, Function<void(bool)>> m_sendDataCallbacks;
     HashMap<uint64_t, Function<void(bool, bool)>> m_sendHandshakeCallbacks;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -54,13 +54,13 @@ SOFT_LINK_CONSTANT(CoreLocation, kCLLocationAccuracyHundredMeters, double)
 
 @implementation WebCLLocationManager {
     RetainPtr<CLLocationManager> _locationManager;
-    WebCore::CoreLocationGeolocationProvider::Client* _client;
+    CyberCore::CoreLocationGeolocationProvider::Client* _client;
     String _websiteIdentifier;
     BOOL _isWaitingForAuthorization;
-    WebCore::CoreLocationGeolocationProvider::Mode _mode;
+    CyberCore::CoreLocationGeolocationProvider::Mode _mode;
 }
 
-- (instancetype)initWithWebsiteIdentifier:(const String&)websiteIdentifier client:(WebCore::CoreLocationGeolocationProvider::Client&)client mode:(WebCore::CoreLocationGeolocationProvider::Mode)mode
+- (instancetype)initWithWebsiteIdentifier:(const String&)websiteIdentifier client:(CyberCore::CoreLocationGeolocationProvider::Client&)client mode:(CyberCore::CoreLocationGeolocationProvider::Mode)mode
 {
     self = [super init];
     if (!self)
@@ -118,7 +118,7 @@ SOFT_LINK_CONSTANT(CoreLocation, kCLLocationAccuracyHundredMeters, double)
 #endif
             _isWaitingForAuthorization = NO;
             _client->geolocationAuthorizationGranted(_websiteIdentifier);
-            if (_mode != WebCore::CoreLocationGeolocationProvider::Mode::AuthorizationOnly)
+            if (_mode != CyberCore::CoreLocationGeolocationProvider::Mode::AuthorizationOnly)
                 [_locationManager startUpdatingLocation];
             break;
         }
@@ -134,7 +134,7 @@ SOFT_LINK_CONSTANT(CoreLocation, kCLLocationAccuracyHundredMeters, double)
 {
     UNUSED_PARAM(manager);
     for (CLLocation *location in locations)
-        _client->positionChanged(_websiteIdentifier, WebCore::GeolocationPositionData { location });
+        _client->positionChanged(_websiteIdentifier, CyberCore::GeolocationPositionData { location });
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
@@ -153,7 +153,7 @@ SOFT_LINK_CONSTANT(CoreLocation, kCLLocationAccuracyHundredMeters, double)
 
 @end
 
-namespace WebCore {
+namespace CyberCore {
 
 CoreLocationGeolocationProvider::CoreLocationGeolocationProvider(const RegistrableDomain& registrableDomain, Client& client, Mode mode)
     : m_locationManager(adoptNS([[WebCLLocationManager alloc] initWithWebsiteIdentifier:registrableDomain.string() client:client mode:mode]))
@@ -218,6 +218,6 @@ void CoreLocationGeolocationProvider::requestAuthorization(const RegistrableDoma
     });
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // HAVE(CORE_LOCATION)

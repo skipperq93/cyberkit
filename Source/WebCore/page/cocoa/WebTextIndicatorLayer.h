@@ -32,17 +32,17 @@
 #import <wtf/RunLoop.h>
 
 WEBCORE_EXPORT @interface WebTextIndicatorLayer : CALayer {
-    RefPtr<WebCore::TextIndicator> _textIndicator;
+    RefPtr<CyberCore::TextIndicator> _textIndicator;
     RetainPtr<NSArray> _bounceLayers;
     CGSize _margin;
     bool _hasCompletedAnimation;
     BOOL _fadingOut;
 }
 
-- (instancetype)initWithFrame:(CGRect)frame textIndicator:(WebCore::TextIndicator&)textIndicator margin:(CGSize)margin offset:(CGPoint)offset;
+- (instancetype)initWithFrame:(CGRect)frame textIndicator:(CyberCore::TextIndicator&)textIndicator margin:(CGSize)margin offset:(CGPoint)offset;
 
-- (bool)indicatorWantsManualAnimation:(const WebCore::TextIndicator&)indicator;
-- (bool)indicatorWantsBounce:(const WebCore::TextIndicator&)indicator;
+- (bool)indicatorWantsManualAnimation:(const CyberCore::TextIndicator&)indicator;
+- (bool)indicatorWantsBounce:(const CyberCore::TextIndicator&)indicator;
 
 - (void)present;
 - (void)hideWithCompletionHandler:(void(^)(void))completionHandler;

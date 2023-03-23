@@ -45,7 +45,7 @@
 #include "RefPtrCairo.h"
 #include "ShadowBlur.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 void FontCascade::drawGlyphs(GraphicsContext& context, const Font& font, const GlyphBufferGlyph* glyphs,
     const GlyphBufferAdvance* advances, unsigned numGlyphs, const FloatPoint& point,
@@ -122,6 +122,6 @@ float Font::platformWidthForGlyph(Glyph glyph) const
     return width ? width : m_spaceWidth;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(CAIRO)

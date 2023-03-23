@@ -33,7 +33,7 @@ namespace WebKit {
 
 class SQLiteStorageArea final : public StorageAreaBase {
 public:
-    SQLiteStorageArea(unsigned quota, const WebCore::ClientOrigin&, const String& path, Ref<WorkQueue>&&);
+    SQLiteStorageArea(unsigned quota, const CyberCore::ClientOrigin&, const String& path, Ref<WorkQueue>&&);
     ~SQLiteStorageArea();
 
     void close();
@@ -66,7 +66,7 @@ private:
         Invalid
     };
     ASCIILiteral statementString(StatementType) const;
-    WebCore::SQLiteStatementAutoResetScope cachedStatement(StatementType);
+    CyberCore::SQLiteStatementAutoResetScope cachedStatement(StatementType);
     Expected<String, StorageError> getItem(const String& key);
     Expected<String, StorageError> getItemFromDatabase(const String& key);
     bool handleDatabaseCorruptionIfNeeded(int databaseError);
@@ -75,9 +75,9 @@ private:
 
     String m_path;
     Ref<WorkQueue> m_queue;
-    std::unique_ptr<WebCore::SQLiteDatabase> m_database;
-    std::unique_ptr<WebCore::SQLiteTransaction> m_transaction;
-    Vector<std::unique_ptr<WebCore::SQLiteStatement>> m_cachedStatements;
+    std::unique_ptr<CyberCore::SQLiteDatabase> m_database;
+    std::unique_ptr<CyberCore::SQLiteTransaction> m_transaction;
+    Vector<std::unique_ptr<CyberCore::SQLiteStatement>> m_cachedStatements;
     using Value = std::variant<String, unsigned>;
     std::optional<HashMap<String, Value>> m_cache;
     std::optional<unsigned> m_cacheSize;

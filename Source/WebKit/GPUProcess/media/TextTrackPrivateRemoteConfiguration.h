@@ -41,8 +41,8 @@ struct TextTrackPrivateRemoteConfiguration {
     MediaTime startTimeVariance { MediaTime::zeroTime() };
     int trackIndex;
 
-    WebCore::InbandTextTrackPrivate::CueFormat cueFormat { WebCore::InbandTextTrackPrivate::CueFormat::Generic };
-    WebCore::InbandTextTrackPrivate::Kind kind { WebCore::InbandTextTrackPrivate::Kind::None };
+    CyberCore::InbandTextTrackPrivate::CueFormat cueFormat { CyberCore::InbandTextTrackPrivate::CueFormat::Generic };
+    CyberCore::InbandTextTrackPrivate::Kind kind { CyberCore::InbandTextTrackPrivate::Kind::None };
 
     bool isClosedCaptions { false };
     bool isSDH { false };

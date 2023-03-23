@@ -22,7 +22,7 @@
 #include "config.h"
 #include "HitTestLocation.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 HitTestLocation::HitTestLocation() = default;
 
@@ -133,4 +133,4 @@ bool HitTestLocation::intersects(const RoundedRect& rect) const
     return rect.intersectsQuad(m_transformedRect);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

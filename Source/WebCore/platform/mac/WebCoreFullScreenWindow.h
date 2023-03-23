@@ -25,7 +25,7 @@
 
 #if PLATFORM(MAC)
 
-WEBCORE_EXPORT @interface WebCoreFullScreenWindow : NSWindow
+WEBCORE_EXPORT @interface CyberCoreFullScreenWindow : NSWindow
 @end
 
 #endif

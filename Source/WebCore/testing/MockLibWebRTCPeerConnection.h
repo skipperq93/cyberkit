@@ -43,7 +43,7 @@ ALLOW_COMMA_END
 
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class LibWebRTCProvider;
 class MockRtpSender;
@@ -367,6 +367,6 @@ private:
     String m_testCase;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(LIBWEBRTC)

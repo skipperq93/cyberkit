@@ -28,7 +28,7 @@
 
 #include "LegacyRenderSVGShape.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class LegacyRenderSVGEllipse final : public LegacyRenderSVGShape {
     WTF_MAKE_ISO_ALLOCATED(LegacyRenderSVGEllipse);
@@ -54,4 +54,4 @@ private:
     bool m_usePathFallback;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

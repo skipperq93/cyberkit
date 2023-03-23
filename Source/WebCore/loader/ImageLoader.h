@@ -29,7 +29,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/AtomString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DeferredPromise;
 class Document;

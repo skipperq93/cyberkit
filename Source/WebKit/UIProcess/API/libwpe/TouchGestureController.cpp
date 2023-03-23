@@ -62,7 +62,7 @@ TouchGestureController::EventVariant TouchGestureController::handleEvent(const s
             int32_t deltaY = touchPoint->y - m_start.y;
             uint32_t deltaTime = touchPoint->time - m_start.time;
 
-            int pixelsPerLineStep = WebCore::Scrollbar::pixelsPerLineStep();
+            int pixelsPerLineStep = CyberCore::Scrollbar::pixelsPerLineStep();
             bool overThreshold = std::abs(deltaX) >= pixelsPerLineStep
                 || std::abs(deltaY) >= pixelsPerLineStep
                 || deltaTime >= scrollCaptureThreshold;

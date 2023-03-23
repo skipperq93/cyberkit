@@ -28,7 +28,7 @@
 
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 #if !PLATFORM(COCOA)
 std::unique_ptr<ControlFactory> ControlFactory::createControlFactory()
@@ -44,4 +44,4 @@ ControlFactory& ControlFactory::sharedControlFactory()
     return *sharedControlFactory.get();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -30,7 +30,7 @@
 
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ImageResource {
     ImageResource isolatedCopy() const & { return { src.isolatedCopy(), sizes.isolatedCopy(), type.isolatedCopy(), label.isolatedCopy() }; }
@@ -42,6 +42,6 @@ struct ImageResource {
     String label;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

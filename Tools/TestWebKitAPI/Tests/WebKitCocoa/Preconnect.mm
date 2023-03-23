@@ -196,7 +196,7 @@ TEST(Preconnect, H2Ping)
     EXPECT_EQ(headersCount, 1u);
 }
 
-TEST(Preconnect, H2PingFromWebCoreNSURLSession)
+TEST(Preconnect, H2PingFromCyberCoreNSURLSession)
 {
     size_t headersCount = 0;
     HTTPServer server([headersCount = &headersCount] (Connection tlsConnection) {

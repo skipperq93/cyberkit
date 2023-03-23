@@ -39,13 +39,13 @@
 #include <wtf/MonotonicTime.h>
 #include <wtf/Noncopyable.h>
 
-namespace WebCore {
+namespace CyberCore {
 struct DisplayUpdate;
 using FramesPerSecond = unsigned;
 using PlatformDisplayID = uint32_t;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class MomentumEventDispatcher {
     WTF_MAKE_NONCOPYABLE(MomentumEventDispatcher);
@@ -57,10 +57,10 @@ public:
         virtual ~Client() = default;
 
     private:
-        virtual void handleSyntheticWheelEvent(WebCore::PageIdentifier, const WebWheelEvent&, WebCore::RectEdges<bool> rubberBandableEdges) = 0;
+        virtual void handleSyntheticWheelEvent(CyberCore::PageIdentifier, const WebWheelEvent&, CyberCore::RectEdges<bool> rubberBandableEdges) = 0;
         
-        virtual void startDisplayDidRefreshCallbacks(WebCore::PlatformDisplayID) = 0;
-        virtual void stopDisplayDidRefreshCallbacks(WebCore::PlatformDisplayID) = 0;
+        virtual void startDisplayDidRefreshCallbacks(CyberCore::PlatformDisplayID) = 0;
+        virtual void stopDisplayDidRefreshCallbacks(CyberCore::PlatformDisplayID) = 0;
 
 #if ENABLE(MOMENTUM_EVENT_DISPATCHER_TEMPORARY_LOGGING)
         virtual void flushMomentumEventLoggingSoon() = 0;
@@ -70,53 +70,53 @@ public:
     MomentumEventDispatcher(Client&);
     ~MomentumEventDispatcher();
 
-    bool handleWheelEvent(WebCore::PageIdentifier, const WebWheelEvent&, WebCore::RectEdges<bool> rubberBandableEdges);
+    bool handleWheelEvent(CyberCore::PageIdentifier, const WebWheelEvent&, CyberCore::RectEdges<bool> rubberBandableEdges);
 
-    void setScrollingAccelerationCurve(WebCore::PageIdentifier, std::optional<ScrollingAccelerationCurve>);
+    void setScrollingAccelerationCurve(CyberCore::PageIdentifier, std::optional<ScrollingAccelerationCurve>);
 
-    void displayDidRefresh(WebCore::PlatformDisplayID);
+    void displayDidRefresh(CyberCore::PlatformDisplayID);
 
-    void pageScreenDidChange(WebCore::PageIdentifier, WebCore::PlatformDisplayID, std::optional<unsigned> nominalFramesPerSecond);
+    void pageScreenDidChange(CyberCore::PageIdentifier, CyberCore::PlatformDisplayID, std::optional<unsigned> nominalFramesPerSecond);
 
 #if ENABLE(MOMENTUM_EVENT_DISPATCHER_TEMPORARY_LOGGING)
     void flushLog();
 #endif
 
 private:
-    void didStartMomentumPhase(WebCore::PageIdentifier, const WebWheelEvent&);
+    void didStartMomentumPhase(CyberCore::PageIdentifier, const WebWheelEvent&);
     void didEndMomentumPhase();
 
-    bool eventShouldStartSyntheticMomentumPhase(WebCore::PageIdentifier, const WebWheelEvent&) const;
+    bool eventShouldStartSyntheticMomentumPhase(CyberCore::PageIdentifier, const WebWheelEvent&) const;
 
-    std::optional<ScrollingAccelerationCurve> scrollingAccelerationCurveForPage(WebCore::PageIdentifier) const;
+    std::optional<ScrollingAccelerationCurve> scrollingAccelerationCurveForPage(CyberCore::PageIdentifier) const;
 
     void startDisplayLink();
     void stopDisplayLink();
 
     struct DisplayProperties {
-        WebCore::PlatformDisplayID displayID;
-        WebCore::FramesPerSecond nominalFrameRate;
+        CyberCore::PlatformDisplayID displayID;
+        CyberCore::FramesPerSecond nominalFrameRate;
     };
-    std::optional<DisplayProperties> displayProperties(WebCore::PageIdentifier) const;
+    std::optional<DisplayProperties> displayProperties(CyberCore::PageIdentifier) const;
 
-    void dispatchSyntheticMomentumEvent(WebWheelEvent::Phase, WebCore::FloatSize delta);
+    void dispatchSyntheticMomentumEvent(WebWheelEvent::Phase, CyberCore::FloatSize delta);
 
-    void buildOffsetTableWithInitialDelta(WebCore::FloatSize);
+    void buildOffsetTableWithInitialDelta(CyberCore::FloatSize);
     void equalizeTailGaps();
 
     // Once consumed, this delta *must* be dispatched in an event.
-    std::optional<WebCore::FloatSize> consumeDeltaForCurrentTime();
+    std::optional<CyberCore::FloatSize> consumeDeltaForCurrentTime();
 
-    WebCore::FloatSize offsetAtTime(Seconds);
-    std::pair<WebCore::FloatSize, WebCore::FloatSize> computeNextDelta(WebCore::FloatSize currentUnacceleratedDelta);
+    CyberCore::FloatSize offsetAtTime(Seconds);
+    std::pair<CyberCore::FloatSize, CyberCore::FloatSize> computeNextDelta(CyberCore::FloatSize currentUnacceleratedDelta);
 
-    void didReceiveScrollEventWithInterval(WebCore::FloatSize, Seconds);
+    void didReceiveScrollEventWithInterval(CyberCore::FloatSize, Seconds);
     void didReceiveScrollEvent(const WebWheelEvent&);
 
 #if ENABLE(MOMENTUM_EVENT_DISPATCHER_TEMPORARY_LOGGING)
     void pushLogEntry(uint32_t generatedPhase, uint32_t eventPhase);
 
-    WebCore::FloatSize m_lastActivePhaseDelta;
+    CyberCore::FloatSize m_lastActivePhaseDelta;
 
     struct LogEntry {
         MonotonicTime time;
@@ -142,43 +142,43 @@ private:
 
     Markable<WallTime> m_lastScrollTimestamp;
     std::optional<WebWheelEvent> m_lastIncomingEvent;
-    WebCore::RectEdges<bool> m_lastRubberBandableEdges;
+    CyberCore::RectEdges<bool> m_lastRubberBandableEdges;
     bool m_isInOverriddenPlatformMomentumGesture { false };
 
     struct {
         bool active { false };
 
-        WebCore::PageIdentifier pageIdentifier;
+        CyberCore::PageIdentifier pageIdentifier;
         std::optional<ScrollingAccelerationCurve> accelerationCurve;
         std::optional<WebWheelEvent> initiatingEvent;
 
-        WebCore::FloatSize currentOffset;
+        CyberCore::FloatSize currentOffset;
         MonotonicTime startTime;
 
-        Vector<WebCore::FloatSize> offsetTable; // Always at 60Hz intervals.
-        Vector<WebCore::FloatSize> tailDeltaTable; // Always at event dispatch intervals.
+        Vector<CyberCore::FloatSize> offsetTable; // Always at 60Hz intervals.
+        Vector<CyberCore::FloatSize> tailDeltaTable; // Always at event dispatch intervals.
         Seconds tailStartDelay;
         unsigned currentTailDeltaIndex { 0 };
 
-        WebCore::FramesPerSecond displayNominalFrameRate { 0 };
+        CyberCore::FramesPerSecond displayNominalFrameRate { 0 };
 
 #if ENABLE(MOMENTUM_EVENT_DISPATCHER_TEMPORARY_LOGGING)
-        WebCore::FloatSize accumulatedEventOffset;
+        CyberCore::FloatSize accumulatedEventOffset;
         bool didLogInitialQueueState { false };
 #endif
 
 #if ENABLE(MOMENTUM_EVENT_DISPATCHER_PREMATURE_ROUNDING)
-        WebCore::FloatSize carryOffset;
+        CyberCore::FloatSize carryOffset;
 #endif
     } m_currentGesture;
 
-    HashMap<WebCore::PageIdentifier, DisplayProperties> m_displayProperties;
+    HashMap<CyberCore::PageIdentifier, DisplayProperties> m_displayProperties;
 
     mutable Lock m_accelerationCurvesLock;
-    HashMap<WebCore::PageIdentifier, std::optional<ScrollingAccelerationCurve>> m_accelerationCurves WTF_GUARDED_BY_LOCK(m_accelerationCurvesLock);
+    HashMap<CyberCore::PageIdentifier, std::optional<ScrollingAccelerationCurve>> m_accelerationCurves WTF_GUARDED_BY_LOCK(m_accelerationCurvesLock);
     Client& m_client;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

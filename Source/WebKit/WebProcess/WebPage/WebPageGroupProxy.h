@@ -30,11 +30,11 @@
 #include "WebPageGroupData.h"
 #include <wtf/Ref.h>
 
-namespace WebCore {
+namespace CyberCore {
 class PageGroup;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebUserContentController;
 
@@ -47,13 +47,13 @@ public:
     PageGroupIdentifier pageGroupID() const { return m_data.pageGroupID; }
     // Namespace IDs for local storage namespaces are currently equivalent to web page group IDs.
     StorageNamespaceIdentifier localStorageNamespaceIdentifier() const { return makeObjectIdentifier<StorageNamespaceIdentifierType>(pageGroupID().toUInt64()); }
-    WebCore::PageGroup* corePageGroup() const { return m_pageGroup; }
+    CyberCore::PageGroup* corePageGroup() const { return m_pageGroup; }
 
 private:
     WebPageGroupProxy(const WebPageGroupData&);
 
     WebPageGroupData m_data;
-    WebCore::PageGroup* m_pageGroup;
+    CyberCore::PageGroup* m_pageGroup;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

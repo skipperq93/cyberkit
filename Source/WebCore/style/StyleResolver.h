@@ -36,7 +36,7 @@
 #include <wtf/text/AtomStringHash.h>
 #include <wtf/text/StringHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSStyleSheet;
 class Document;
@@ -196,4 +196,4 @@ inline bool Resolver::hasSelectorForId(const AtomString& idValue) const
 }
 
 } // namespace Style
-} // namespace WebCore
+} // namespace CyberCore

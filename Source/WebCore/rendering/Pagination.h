@@ -27,7 +27,7 @@
 
 #include <wtf/EnumTraits.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct Pagination {
     enum Mode : uint8_t { Unpaginated, LeftToRightPaginated, RightToLeftPaginated, TopToBottomPaginated, BottomToTopPaginated };
@@ -48,18 +48,18 @@ struct Pagination {
     unsigned gap { 0 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::Pagination::Mode> {
+template<> struct EnumTraits<CyberCore::Pagination::Mode> {
     using values = EnumValues<
-        WebCore::Pagination::Mode,
-        WebCore::Pagination::Mode::Unpaginated,
-        WebCore::Pagination::Mode::LeftToRightPaginated,
-        WebCore::Pagination::Mode::RightToLeftPaginated,
-        WebCore::Pagination::Mode::TopToBottomPaginated,
-        WebCore::Pagination::Mode::BottomToTopPaginated
+        CyberCore::Pagination::Mode,
+        CyberCore::Pagination::Mode::Unpaginated,
+        CyberCore::Pagination::Mode::LeftToRightPaginated,
+        CyberCore::Pagination::Mode::RightToLeftPaginated,
+        CyberCore::Pagination::Mode::TopToBottomPaginated,
+        CyberCore::Pagination::Mode::BottomToTopPaginated
     >;
 };
 

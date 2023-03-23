@@ -29,7 +29,7 @@
 
 #include "HIDGamepad.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class GenericHIDGamepad final : public HIDGamepad {
 public:
@@ -40,6 +40,6 @@ private:
     void maybeAddButtonElement(HIDElement&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(GAMEPAD) && PLATFORM(MAC)

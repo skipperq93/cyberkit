@@ -55,7 +55,7 @@
 #define WEBMENUITEMTAG_WEBKIT_3_0_SPI_START 2000
 enum { 
     // FIXME: These should move to WebUIDelegate.h as part of the WebMenuItemTag enum there, when we're not in API freeze
-    // Note that these values must be kept aligned with values in WebCore/ContextMenuItem.h
+    // Note that these values must be kept aligned with values in CyberCore/ContextMenuItem.h
     WebMenuItemTagOpenLink = WEBMENUITEMTAG_WEBKIT_3_0_SPI_START,
     WebMenuItemTagIgnoreGrammar,
     WebMenuItemTagSpellingMenu,
@@ -171,7 +171,7 @@ extern NSString *WebConsoleMessageErrorMessageLevel;
 @class WebSecurityOrigin;
 
 #if ENABLE_FULLSCREEN_API
-@protocol WebKitFullScreenListener<NSObject>
+@protocol CyberKitFullScreenListener<NSObject>
 - (void)webkitWillEnterFullScreen;
 - (void)webkitDidEnterFullScreen;
 - (void)webkitWillExitFullScreen;
@@ -297,9 +297,9 @@ extern NSString *WebConsoleMessageErrorMessageLevel;
 
 #if ENABLE_FULLSCREEN_API
 - (BOOL)webView:(WebView *)sender supportsFullScreenForElement:(DOMElement *)element withKeyboard:(BOOL)withKeyboard;
-- (void)webView:(WebView *)sender enterFullScreenForElement:(DOMElement *)element listener:(id <WebKitFullScreenListener>)listener;
-- (void)webView:(WebView *)sender exitFullScreenForElement:(DOMElement *)element listener:(id <WebKitFullScreenListener>)listener;
-- (void)webView:(WebView *)sender closeFullScreenWithListener:(id <WebKitFullScreenListener>)listener;
+- (void)webView:(WebView *)sender enterFullScreenForElement:(DOMElement *)element listener:(id <CyberKitFullScreenListener>)listener;
+- (void)webView:(WebView *)sender exitFullScreenForElement:(DOMElement *)element listener:(id <CyberKitFullScreenListener>)listener;
+- (void)webView:(WebView *)sender closeFullScreenWithListener:(id <CyberKitFullScreenListener>)listener;
 #endif
 
 - (void)webView:(WebView *)sender didDrawFrame:(WebFrame *)frame;

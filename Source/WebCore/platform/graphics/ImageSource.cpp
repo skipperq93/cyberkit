@@ -34,7 +34,7 @@
 #include <wtf/SystemTracing.h>
 #include <wtf/URL.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 ImageSource::ImageSource(BitmapImage* image, AlphaOption alphaOption, GammaAndColorProfileOption gammaAndColorProfileOption)
     : m_image(image)

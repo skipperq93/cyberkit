@@ -28,7 +28,7 @@
 
 #include "PEImage.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // Enumerates the functions from a single module imported by the given PEImage.
 class ImportedFunctionsEnumerator {
@@ -53,6 +53,6 @@ private:
     const IMAGE_THUNK_DATA* m_addressTableEntry;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ImportedFunctionsEnumerator_h

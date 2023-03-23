@@ -36,7 +36,7 @@
 #include "ScrollingStateFixedNode.h"
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<ScrollingTreeFixedNodeNicosia> ScrollingTreeFixedNodeNicosia::create(ScrollingTree& scrollingTree, ScrollingNodeID nodeID)
 {
@@ -93,6 +93,6 @@ void ScrollingTreeFixedNodeNicosia::dumpProperties(TextStream& ts, OptionSet<Scr
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ASYNC_SCROLLING) && USE(NICOSIA)

@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class TextDirectionSubmenuInclusionBehavior : uint8_t {
     NeverIncluded,

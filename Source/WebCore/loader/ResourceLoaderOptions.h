@@ -43,7 +43,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class SendCallbackPolicy : uint8_t {
     SendCallbacks,
@@ -251,25 +251,25 @@ struct ResourceLoaderOptions : public FetchOptions {
     String nonce;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::PreflightPolicy> {
+template<> struct EnumTraits<CyberCore::PreflightPolicy> {
     using values = EnumValues<
-        WebCore::PreflightPolicy,
-        WebCore::PreflightPolicy::Consider,
-        WebCore::PreflightPolicy::Force,
-        WebCore::PreflightPolicy::Prevent
+        CyberCore::PreflightPolicy,
+        CyberCore::PreflightPolicy::Consider,
+        CyberCore::PreflightPolicy::Force,
+        CyberCore::PreflightPolicy::Prevent
     >;
 };
 
-template<> struct EnumTraits<WebCore::ServiceWorkersMode> {
+template<> struct EnumTraits<CyberCore::ServiceWorkersMode> {
     using values = EnumValues<
-        WebCore::ServiceWorkersMode,
-        WebCore::ServiceWorkersMode::All,
-        WebCore::ServiceWorkersMode::None,
-        WebCore::ServiceWorkersMode::Only
+        CyberCore::ServiceWorkersMode,
+        CyberCore::ServiceWorkersMode::All,
+        CyberCore::ServiceWorkersMode::None,
+        CyberCore::ServiceWorkersMode::Only
     >;
 };
 

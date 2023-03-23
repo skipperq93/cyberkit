@@ -37,7 +37,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/text/LineEnding.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(FormData);
 
@@ -91,7 +91,7 @@ Ref<FormData> FormData::create(const DOMFormData& formData, EncodingType encodin
     return result;
 }
 
-Ref<FormData> FormData::create(bool alwaysStream, Vector<char>&& boundary, Vector<WebCore::FormDataElement>&& elements, int64_t identifier)
+Ref<FormData> FormData::create(bool alwaysStream, Vector<char>&& boundary, Vector<CyberCore::FormDataElement>&& elements, int64_t identifier)
 {
     auto result = create();
     result->setAlwaysStream(alwaysStream);
@@ -446,4 +446,4 @@ bool FormDataElement::EncodedFileData::fileModificationTimeMatchesExpectation() 
     return true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

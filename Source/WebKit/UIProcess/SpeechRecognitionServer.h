@@ -35,7 +35,7 @@
 #include <CyberCore/SpeechRecognizer.h>
 #include <wtf/Deque.h>
 
-namespace WebCore {
+namespace CyberCore {
 enum class SpeechRecognitionUpdateType : uint8_t;
 struct CaptureSourceOrError;
 struct ClientOrigin;
@@ -45,31 +45,31 @@ namespace WebKit {
 
 class WebProcessProxy;
 
-using SpeechRecognitionServerIdentifier = WebCore::PageIdentifier;
-using SpeechRecognitionPermissionChecker = Function<void(WebCore::SpeechRecognitionRequest&, SpeechRecognitionPermissionRequestCallback&&)>;
+using SpeechRecognitionServerIdentifier = CyberCore::PageIdentifier;
+using SpeechRecognitionPermissionChecker = Function<void(CyberCore::SpeechRecognitionRequest&, SpeechRecognitionPermissionRequestCallback&&)>;
 using SpeechRecognitionCheckIfMockSpeechRecognitionEnabled = Function<bool()>;
 
 class SpeechRecognitionServer : public IPC::MessageReceiver, private IPC::MessageSender {
     WTF_MAKE_FAST_ALLOCATED;
 public:
 #if ENABLE(MEDIA_STREAM)
-    using RealtimeMediaSourceCreateFunction = Function<WebCore::CaptureSourceOrError()>;
+    using RealtimeMediaSourceCreateFunction = Function<CyberCore::CaptureSourceOrError()>;
     SpeechRecognitionServer(Ref<IPC::Connection>&&, SpeechRecognitionServerIdentifier, SpeechRecognitionPermissionChecker&&, SpeechRecognitionCheckIfMockSpeechRecognitionEnabled&&, RealtimeMediaSourceCreateFunction&&);
 #else
     SpeechRecognitionServer(Ref<IPC::Connection>&&, SpeechRecognitionServerIdentifier, SpeechRecognitionPermissionChecker&&, SpeechRecognitionCheckIfMockSpeechRecognitionEnabled&&);
 #endif
 
-    void start(WebCore::SpeechRecognitionConnectionClientIdentifier, String&& lang, bool continuous, bool interimResults, uint64_t maxAlternatives, WebCore::ClientOrigin&&, WebCore::FrameIdentifier);
-    void stop(WebCore::SpeechRecognitionConnectionClientIdentifier);
-    void abort(WebCore::SpeechRecognitionConnectionClientIdentifier);
-    void invalidate(WebCore::SpeechRecognitionConnectionClientIdentifier);
+    void start(CyberCore::SpeechRecognitionConnectionClientIdentifier, String&& lang, bool continuous, bool interimResults, uint64_t maxAlternatives, CyberCore::ClientOrigin&&, CyberCore::FrameIdentifier);
+    void stop(CyberCore::SpeechRecognitionConnectionClientIdentifier);
+    void abort(CyberCore::SpeechRecognitionConnectionClientIdentifier);
+    void invalidate(CyberCore::SpeechRecognitionConnectionClientIdentifier);
     void mute();
 
 private:
-    void requestPermissionForRequest(WebCore::SpeechRecognitionRequest&);
-    void handleRequest(UniqueRef<WebCore::SpeechRecognitionRequest>&&);
-    void sendUpdate(WebCore::SpeechRecognitionConnectionClientIdentifier, WebCore::SpeechRecognitionUpdateType, std::optional<WebCore::SpeechRecognitionError> = std::nullopt, std::optional<Vector<WebCore::SpeechRecognitionResultData>> = std::nullopt);
-    void sendUpdate(const WebCore::SpeechRecognitionUpdate&);
+    void requestPermissionForRequest(CyberCore::SpeechRecognitionRequest&);
+    void handleRequest(UniqueRef<CyberCore::SpeechRecognitionRequest>&&);
+    void sendUpdate(CyberCore::SpeechRecognitionConnectionClientIdentifier, CyberCore::SpeechRecognitionUpdateType, std::optional<CyberCore::SpeechRecognitionError> = std::nullopt, std::optional<Vector<CyberCore::SpeechRecognitionResultData>> = std::nullopt);
+    void sendUpdate(const CyberCore::SpeechRecognitionUpdate&);
 
     // IPC::MessageReceiver.
     void didReceiveMessage(IPC::Connection&, IPC::Decoder&) override;
@@ -80,9 +80,9 @@ private:
 
     Ref<IPC::Connection> m_connection;
     SpeechRecognitionServerIdentifier m_identifier;
-    HashMap<WebCore::SpeechRecognitionConnectionClientIdentifier, std::unique_ptr<WebCore::SpeechRecognitionRequest>> m_requests;
+    HashMap<CyberCore::SpeechRecognitionConnectionClientIdentifier, std::unique_ptr<CyberCore::SpeechRecognitionRequest>> m_requests;
     SpeechRecognitionPermissionChecker m_permissionChecker;
-    std::unique_ptr<WebCore::SpeechRecognizer> m_recognizer;
+    std::unique_ptr<CyberCore::SpeechRecognizer> m_recognizer;
     SpeechRecognitionCheckIfMockSpeechRecognitionEnabled m_checkIfMockSpeechRecognitionEnabled;
     bool m_isResetting { false };
 

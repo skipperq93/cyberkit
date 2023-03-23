@@ -28,7 +28,7 @@
 #include "CertificateInfo.h"
 #include "ProtectionSpaceBase.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ProtectionSpace : public ProtectionSpaceBase {
 public:
@@ -63,4 +63,4 @@ private:
     CertificateInfo m_certificateInfo;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

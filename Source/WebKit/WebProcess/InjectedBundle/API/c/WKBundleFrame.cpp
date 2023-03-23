@@ -48,41 +48,41 @@
 
 WKTypeID WKBundleFrameGetTypeID()
 {
-    return WebKit::toAPI(WebKit::WebFrame::APIType);
+    return CyberKit::toAPI(CyberKit::WebFrame::APIType);
 }
 
 bool WKBundleFrameIsMainFrame(WKBundleFrameRef frameRef)
 {
-    return WebKit::toImpl(frameRef)->isMainFrame();
+    return CyberKit::toImpl(frameRef)->isMainFrame();
 }
 
 WKBundleFrameRef WKBundleFrameGetParentFrame(WKBundleFrameRef frameRef)
 {
-    return toAPI(WebKit::toImpl(frameRef)->parentFrame());
+    return toAPI(CyberKit::toImpl(frameRef)->parentFrame());
 }
 
 WKURLRef WKBundleFrameCopyURL(WKBundleFrameRef frameRef)
 {
-    return WebKit::toCopiedURLAPI(WebKit::toImpl(frameRef)->url());
+    return CyberKit::toCopiedURLAPI(CyberKit::toImpl(frameRef)->url());
 }
 
 WKURLRef WKBundleFrameCopyProvisionalURL(WKBundleFrameRef frameRef)
 {
-    return WebKit::toCopiedURLAPI(WebKit::toImpl(frameRef)->provisionalURL());
+    return CyberKit::toCopiedURLAPI(CyberKit::toImpl(frameRef)->provisionalURL());
 }
 
 WKFrameLoadState WKBundleFrameGetFrameLoadState(WKBundleFrameRef frameRef)
 {
-    WebCore::Frame* coreFrame = WebKit::toImpl(frameRef)->coreFrame();
+    CyberCore::Frame* coreFrame = CyberKit::toImpl(frameRef)->coreFrame();
     if (!coreFrame)
         return kWKFrameLoadStateFinished;
 
     switch (coreFrame->loader().state()) {
-    case WebCore::FrameState::Provisional:
+    case CyberCore::FrameState::Provisional:
         return kWKFrameLoadStateProvisional;
-    case WebCore::FrameState::CommittedPage:
+    case CyberCore::FrameState::CommittedPage:
         return kWKFrameLoadStateCommitted;
-    case WebCore::FrameState::Complete:
+    case CyberCore::FrameState::Complete:
         return kWKFrameLoadStateFinished;
     }
 
@@ -92,79 +92,79 @@ WKFrameLoadState WKBundleFrameGetFrameLoadState(WKBundleFrameRef frameRef)
 
 WKArrayRef WKBundleFrameCopyChildFrames(WKBundleFrameRef frameRef)
 {
-    return WebKit::toAPI(&WebKit::toImpl(frameRef)->childFrames().leakRef());    
+    return CyberKit::toAPI(&CyberKit::toImpl(frameRef)->childFrames().leakRef());    
 }
 
 JSGlobalContextRef WKBundleFrameGetJavaScriptContext(WKBundleFrameRef frameRef)
 {
-    return WebKit::toImpl(frameRef)->jsContext();
+    return CyberKit::toImpl(frameRef)->jsContext();
 }
 
 WKBundleFrameRef WKBundleFrameForJavaScriptContext(JSContextRef context)
 {
-    return toAPI(WebKit::WebFrame::frameForContext(context));
+    return toAPI(CyberKit::WebFrame::frameForContext(context));
 }
 
 JSGlobalContextRef WKBundleFrameGetJavaScriptContextForWorld(WKBundleFrameRef frameRef, WKBundleScriptWorldRef worldRef)
 {
-    return WebKit::toImpl(frameRef)->jsContextForWorld(WebKit::toImpl(worldRef));
+    return CyberKit::toImpl(frameRef)->jsContextForWorld(CyberKit::toImpl(worldRef));
 }
 
 JSValueRef WKBundleFrameGetJavaScriptWrapperForNodeForWorld(WKBundleFrameRef frameRef, WKBundleNodeHandleRef nodeHandleRef, WKBundleScriptWorldRef worldRef)
 {
-    return WebKit::toImpl(frameRef)->jsWrapperForWorld(WebKit::toImpl(nodeHandleRef), WebKit::toImpl(worldRef));
+    return CyberKit::toImpl(frameRef)->jsWrapperForWorld(CyberKit::toImpl(nodeHandleRef), CyberKit::toImpl(worldRef));
 }
 
 JSValueRef WKBundleFrameGetJavaScriptWrapperForRangeForWorld(WKBundleFrameRef frameRef, WKBundleRangeHandleRef rangeHandleRef, WKBundleScriptWorldRef worldRef)
 {
-    return WebKit::toImpl(frameRef)->jsWrapperForWorld(WebKit::toImpl(rangeHandleRef), WebKit::toImpl(worldRef));
+    return CyberKit::toImpl(frameRef)->jsWrapperForWorld(CyberKit::toImpl(rangeHandleRef), CyberKit::toImpl(worldRef));
 }
 
 WKStringRef WKBundleFrameCopyName(WKBundleFrameRef frameRef)
 {
-    return WebKit::toCopiedAPI(WebKit::toImpl(frameRef)->name());
+    return CyberKit::toCopiedAPI(CyberKit::toImpl(frameRef)->name());
 }
 
 WKStringRef WKBundleFrameCopyCounterValue(WKBundleFrameRef frameRef, JSObjectRef element)
 {
-    return WebKit::toCopiedAPI(WebKit::toImpl(frameRef)->counterValue(element));
+    return CyberKit::toCopiedAPI(CyberKit::toImpl(frameRef)->counterValue(element));
 }
 
 WKStringRef WKBundleFrameCopyInnerText(WKBundleFrameRef frameRef)
 {
-    return WebKit::toCopiedAPI(WebKit::toImpl(frameRef)->innerText());
+    return CyberKit::toCopiedAPI(CyberKit::toImpl(frameRef)->innerText());
 }
 
 unsigned WKBundleFrameGetPendingUnloadCount(WKBundleFrameRef frameRef)
 {
-    return WebKit::toImpl(frameRef)->pendingUnloadCount();
+    return CyberKit::toImpl(frameRef)->pendingUnloadCount();
 }
 
 WKBundlePageRef WKBundleFrameGetPage(WKBundleFrameRef frameRef)
 {
-    return toAPI(WebKit::toImpl(frameRef)->page());
+    return toAPI(CyberKit::toImpl(frameRef)->page());
 }
 
 void WKBundleFrameClearOpener(WKBundleFrameRef frameRef)
 {
-    WebCore::Frame* coreFrame = WebKit::toImpl(frameRef)->coreFrame();
+    CyberCore::Frame* coreFrame = CyberKit::toImpl(frameRef)->coreFrame();
     if (coreFrame)
         coreFrame->loader().setOpener(0);
 }
 
 void WKBundleFrameStopLoading(WKBundleFrameRef frameRef)
 {
-    WebKit::toImpl(frameRef)->stopLoading();
+    CyberKit::toImpl(frameRef)->stopLoading();
 }
 
 WKStringRef WKBundleFrameCopyLayerTreeAsText(WKBundleFrameRef frameRef)
 {
-    return WebKit::toCopiedAPI(WebKit::toImpl(frameRef)->layerTreeAsText());
+    return CyberKit::toCopiedAPI(CyberKit::toImpl(frameRef)->layerTreeAsText());
 }
 
 bool WKBundleFrameAllowsFollowingLink(WKBundleFrameRef frameRef, WKURLRef urlRef)
 {
-    return WebKit::toImpl(frameRef)->allowsFollowingLink(URL { WebKit::toWTFString(urlRef) });
+    return CyberKit::toImpl(frameRef)->allowsFollowingLink(URL { CyberKit::toWTFString(urlRef) });
 }
 
 bool WKBundleFrameHandlesPageScaleGesture(WKBundleFrameRef)
@@ -175,67 +175,67 @@ bool WKBundleFrameHandlesPageScaleGesture(WKBundleFrameRef)
 
 WKRect WKBundleFrameGetContentBounds(WKBundleFrameRef frameRef)
 {
-    return WebKit::toAPI(WebKit::toImpl(frameRef)->contentBounds());
+    return CyberKit::toAPI(CyberKit::toImpl(frameRef)->contentBounds());
 }
 
 WKRect WKBundleFrameGetVisibleContentBounds(WKBundleFrameRef frameRef)
 {
-    return WebKit::toAPI(WebKit::toImpl(frameRef)->visibleContentBounds());
+    return CyberKit::toAPI(CyberKit::toImpl(frameRef)->visibleContentBounds());
 }
 
 WKRect WKBundleFrameGetVisibleContentBoundsExcludingScrollbars(WKBundleFrameRef frameRef)
 {
-    return WebKit::toAPI(WebKit::toImpl(frameRef)->visibleContentBoundsExcludingScrollbars());
+    return CyberKit::toAPI(CyberKit::toImpl(frameRef)->visibleContentBoundsExcludingScrollbars());
 }
 
 WKSize WKBundleFrameGetScrollOffset(WKBundleFrameRef frameRef)
 {
-    return WebKit::toAPI(WebKit::toImpl(frameRef)->scrollOffset());
+    return CyberKit::toAPI(CyberKit::toImpl(frameRef)->scrollOffset());
 }
 
 bool WKBundleFrameHasHorizontalScrollbar(WKBundleFrameRef frameRef)
 {
-    return WebKit::toImpl(frameRef)->hasHorizontalScrollbar();
+    return CyberKit::toImpl(frameRef)->hasHorizontalScrollbar();
 }
 
 bool WKBundleFrameHasVerticalScrollbar(WKBundleFrameRef frameRef)
 {
-    return WebKit::toImpl(frameRef)->hasVerticalScrollbar();
+    return CyberKit::toImpl(frameRef)->hasVerticalScrollbar();
 }
 
 bool WKBundleFrameGetDocumentBackgroundColor(WKBundleFrameRef frameRef, double* red, double* green, double* blue, double* alpha)
 {
-    return WebKit::toImpl(frameRef)->getDocumentBackgroundColor(red, green, blue, alpha);
+    return CyberKit::toImpl(frameRef)->getDocumentBackgroundColor(red, green, blue, alpha);
 }
 
 WKStringRef WKBundleFrameCopySuggestedFilenameForResourceWithURL(WKBundleFrameRef frameRef, WKURLRef urlRef)
 {
-    return WebKit::toCopiedAPI(WebKit::toImpl(frameRef)->suggestedFilenameForResourceWithURL(URL { WebKit::toWTFString(urlRef) }));
+    return CyberKit::toCopiedAPI(CyberKit::toImpl(frameRef)->suggestedFilenameForResourceWithURL(URL { CyberKit::toWTFString(urlRef) }));
 }
 
 WKStringRef WKBundleFrameCopyMIMETypeForResourceWithURL(WKBundleFrameRef frameRef, WKURLRef urlRef)
 {
-    return WebKit::toCopiedAPI(WebKit::toImpl(frameRef)->mimeTypeForResourceWithURL(URL { WebKit::toWTFString(urlRef) }));
+    return CyberKit::toCopiedAPI(CyberKit::toImpl(frameRef)->mimeTypeForResourceWithURL(URL { CyberKit::toWTFString(urlRef) }));
 }
 
 bool WKBundleFrameContainsAnyFormElements(WKBundleFrameRef frameRef)
 {
-    return WebKit::toImpl(frameRef)->containsAnyFormElements();
+    return CyberKit::toImpl(frameRef)->containsAnyFormElements();
 }
 
 bool WKBundleFrameContainsAnyFormControls(WKBundleFrameRef frameRef)
 {
-    return WebKit::toImpl(frameRef)->containsAnyFormControls();
+    return CyberKit::toImpl(frameRef)->containsAnyFormControls();
 }
 
 void WKBundleFrameSetTextDirection(WKBundleFrameRef frameRef, WKStringRef directionRef)
 {
-    WebKit::toImpl(frameRef)->setTextDirection(WebKit::toWTFString(directionRef));
+    CyberKit::toImpl(frameRef)->setTextDirection(CyberKit::toWTFString(directionRef));
 }
 
 void WKBundleFrameSetAccessibleName(WKBundleFrameRef frameRef, WKStringRef accessibleNameRef)
 {
-    WebKit::toImpl(frameRef)->setAccessibleName(AtomString { WebKit::toWTFString(accessibleNameRef) });
+    CyberKit::toImpl(frameRef)->setAccessibleName(AtomString { CyberKit::toWTFString(accessibleNameRef) });
 }
 
 WKDataRef WKBundleFrameCopyWebArchive(WKBundleFrameRef frameRef)
@@ -246,7 +246,7 @@ WKDataRef WKBundleFrameCopyWebArchive(WKBundleFrameRef frameRef)
 WKDataRef WKBundleFrameCopyWebArchiveFilteringSubframes(WKBundleFrameRef frameRef, WKBundleFrameFrameFilterCallback frameFilterCallback, void* context)
 {
 #if PLATFORM(COCOA)
-    RetainPtr<CFDataRef> data = WebKit::toImpl(frameRef)->webArchiveData(frameFilterCallback, context);
+    RetainPtr<CFDataRef> data = CyberKit::toImpl(frameRef)->webArchiveData(frameFilterCallback, context);
     if (data)
         return WKDataCreate(CFDataGetBytePtr(data.get()), CFDataGetLength(data.get()));
 #else
@@ -260,7 +260,7 @@ WKDataRef WKBundleFrameCopyWebArchiveFilteringSubframes(WKBundleFrameRef frameRe
 
 bool WKBundleFrameCallShouldCloseOnWebView(WKBundleFrameRef frameRef)
 {
-    WebCore::Frame* coreFrame = WebKit::toImpl(frameRef)->coreFrame();
+    CyberCore::Frame* coreFrame = CyberKit::toImpl(frameRef)->coreFrame();
     if (!coreFrame)
         return true;
 
@@ -269,21 +269,21 @@ bool WKBundleFrameCallShouldCloseOnWebView(WKBundleFrameRef frameRef)
 
 WKBundleHitTestResultRef WKBundleFrameCreateHitTestResult(WKBundleFrameRef frameRef, WKPoint point)
 {
-    return WebKit::toAPI(WebKit::toImpl(frameRef)->hitTest(WebKit::toIntPoint(point)).leakRef());
+    return CyberKit::toAPI(CyberKit::toImpl(frameRef)->hitTest(CyberKit::toIntPoint(point)).leakRef());
 }
 
 WKSecurityOriginRef WKBundleFrameCopySecurityOrigin(WKBundleFrameRef frameRef)
 {
-    WebCore::Frame* coreFrame = WebKit::toImpl(frameRef)->coreFrame();
+    CyberCore::Frame* coreFrame = CyberKit::toImpl(frameRef)->coreFrame();
     if (!coreFrame)
         return 0;
 
-    return WebKit::toCopiedAPI(&coreFrame->document()->securityOrigin());
+    return CyberKit::toCopiedAPI(&coreFrame->document()->securityOrigin());
 }
 
 void WKBundleFrameFocus(WKBundleFrameRef frameRef)
 {
-    RefPtr coreFrame = WebKit::toImpl(frameRef)->coreFrame();
+    RefPtr coreFrame = CyberKit::toImpl(frameRef)->coreFrame();
     if (!coreFrame)
         return;
 
@@ -292,10 +292,10 @@ void WKBundleFrameFocus(WKBundleFrameRef frameRef)
 
 void _WKBundleFrameGenerateTestReport(WKBundleFrameRef frameRef, WKStringRef message, WKStringRef group)
 {
-    RefPtr coreFrame = WebKit::toImpl(frameRef)->coreFrame();
+    RefPtr coreFrame = CyberKit::toImpl(frameRef)->coreFrame();
     if (!coreFrame)
         return;
 
     if (RefPtr document = coreFrame->document())
-        document->reportingScope().generateTestReport(WebKit::toWTFString(message), WebKit::toWTFString(group));
+        document->reportingScope().generateTestReport(CyberKit::toWTFString(message), CyberKit::toWTFString(group));
 }

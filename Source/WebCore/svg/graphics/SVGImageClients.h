@@ -31,7 +31,7 @@
 #include "EmptyClients.h"
 #include "SVGImage.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGImageChromeClient final : public EmptyChromeClient {
     WTF_MAKE_NONCOPYABLE(SVGImageChromeClient); WTF_MAKE_FAST_ALLOCATED;
@@ -73,4 +73,4 @@ private:
     SVGImage* m_image;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -22,7 +22,7 @@
 
 #include "RenderBlock.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class LogicalSelectionOffsetCaches {
 public:
@@ -128,4 +128,4 @@ private:
     ContainingBlockInfo m_containingBlockForInflowPosition;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

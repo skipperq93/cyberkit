@@ -27,7 +27,7 @@
 #include "SVGPathSeg.h"
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGPathByteStream;
 class SVGPathSource;
@@ -66,4 +66,4 @@ private:
     bool m_closePath { true };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

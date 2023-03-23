@@ -25,8 +25,8 @@
 
 #import <CyberKitLegacy/DOMHTMLFormElement.h>
 
-namespace WebCore {
+namespace CyberCore {
 class HTMLFormElement;
 }
 
-DOMHTMLFormElement *kit(WebCore::HTMLFormElement*);
+DOMHTMLFormElement *kit(CyberCore::HTMLFormElement*);

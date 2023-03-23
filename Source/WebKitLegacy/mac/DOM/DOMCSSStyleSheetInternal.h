@@ -25,8 +25,8 @@
 
 #import <CyberKitLegacy/DOMCSSStyleSheet.h>
 
-namespace WebCore {
+namespace CyberCore {
 class CSSStyleSheet;
 }
 
-DOMCSSStyleSheet *kit(WebCore::CSSStyleSheet*);
+DOMCSSStyleSheet *kit(CyberCore::CSSStyleSheet*);

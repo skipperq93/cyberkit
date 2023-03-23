@@ -33,7 +33,7 @@
 #include <wtf/text/CString.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace DownloadBundle {
 
@@ -170,4 +170,4 @@ bool extractResumeData(const String& bundlePath, Vector<uint8_t>& resumeData)
 
 } // namespace DownloadBundle
 
-} // namespace WebCore
+} // namespace CyberCore

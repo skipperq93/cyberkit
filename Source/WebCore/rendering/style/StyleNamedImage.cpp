@@ -30,7 +30,7 @@
 #include "CSSNamedImageValue.h"
 #include "NamedImageGeneratedImage.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 StyleNamedImage::StyleNamedImage(String&& name)
     : StyleGeneratedImage { Type::NamedImage, StyleNamedImage::isFixedSize }
@@ -85,4 +85,4 @@ FloatSize StyleNamedImage::fixedSize(const RenderElement&) const
     return { };
 }
 
-} // namespace WebCore
+} // namespace CyberCore

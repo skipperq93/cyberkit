@@ -45,7 +45,7 @@
 #include "MediaEngineConfigurationFactoryGStreamer.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 static bool& mockEnabled()
 {

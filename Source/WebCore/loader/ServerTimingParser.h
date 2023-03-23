@@ -27,7 +27,7 @@
 
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ServerTiming;
 

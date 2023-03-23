@@ -45,10 +45,10 @@ OBJC_CLASS NSString;
 #include <wtf/WeakObjCPtr.h>
 using PlatformUIElement = id;
 #elif USE(ATSPI)
-namespace WebCore {
+namespace CyberCore {
 class AccessibilityObjectAtspi;
 }
-typedef WebCore::AccessibilityObjectAtspi* PlatformUIElement;
+typedef CyberCore::AccessibilityObjectAtspi* PlatformUIElement;
 #else
 typedef void* PlatformUIElement;
 #endif
@@ -456,7 +456,7 @@ private:
 
 #if USE(ATSPI)
     static RefPtr<AccessibilityController> s_controller;
-    RefPtr<WebCore::AccessibilityObjectAtspi> m_element;
+    RefPtr<CyberCore::AccessibilityObjectAtspi> m_element;
     std::unique_ptr<AccessibilityNotificationHandler> m_notificationHandler;
 #endif
 #endif

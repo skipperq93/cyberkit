@@ -34,7 +34,7 @@
 #include "VisiblePosition.h"
 #include <memory>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Element;
 class RenderBox;
@@ -174,6 +174,6 @@ private:
 TextStream& operator<<(TextStream&, const RenderFragmentContainer&);
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderFragmentContainer, isRenderFragmentContainer())

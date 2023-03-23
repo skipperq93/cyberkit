@@ -28,7 +28,7 @@
 #import "WKWebpagePreferencesInternal.h"
 
 #import "APINavigation.h"
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 
 @implementation WKNavigation {
     API::ObjectStorage<API::Navigation> _navigation;
@@ -36,7 +36,7 @@
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainRunLoop(WKNavigation.class, self))
+    if (CyberCoreObjCScheduleDeallocateOnMainRunLoop(WKNavigation.class, self))
         return;
 
     _navigation->~Navigation();
@@ -46,7 +46,7 @@
 
 - (NSURLRequest *)_request
 {
-    return _navigation->originalRequest().nsURLRequest(WebCore::HTTPBodyUpdatePolicy::DoNotUpdateHTTPBody);
+    return _navigation->originalRequest().nsURLRequest(CyberCore::HTTPBodyUpdatePolicy::DoNotUpdateHTTPBody);
 }
 
 - (BOOL)_isUserInitiated

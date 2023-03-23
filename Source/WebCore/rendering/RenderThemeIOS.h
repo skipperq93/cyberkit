@@ -32,7 +32,7 @@
 
 OBJC_CLASS UIImage;
 
-namespace WebCore {
+namespace CyberCore {
     
 class RenderStyle;
 class GraphicsContext;

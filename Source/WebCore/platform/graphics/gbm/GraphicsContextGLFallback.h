@@ -35,13 +35,13 @@ namespace Nicosia {
 class GCGLANGLELayer;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class TextureMapperGCGLPlatformLayer;
 
 class GraphicsContextGLFallback : public GraphicsContextGLANGLE {
 public:
-    static RefPtr<GraphicsContextGLFallback> create(WebCore::GraphicsContextGLAttributes&&);
+    static RefPtr<GraphicsContextGLFallback> create(CyberCore::GraphicsContextGLAttributes&&);
     virtual ~GraphicsContextGLFallback();
 
     // GraphicsContextGLANGLE overrides.
@@ -60,7 +60,7 @@ public:
     GCGLuint getInternalColorFormat() const { return m_internalColorFormat; }
 
 private:
-    GraphicsContextGLFallback(WebCore::GraphicsContextGLAttributes&&);
+    GraphicsContextGLFallback(CyberCore::GraphicsContextGLAttributes&&);
 
     bool platformInitializeContext() final;
     bool platformInitialize() final;
@@ -73,6 +73,6 @@ private:
     friend class Nicosia::GCGLANGLELayer;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBGL) && USE(TEXTURE_MAPPER)

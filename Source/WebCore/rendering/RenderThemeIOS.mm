@@ -81,7 +81,7 @@
 #import "Settings.h"
 #import "Theme.h"
 #import "UTIUtilities.h"
-#import "WebCoreThreadRun.h"
+#import "CyberCoreThreadRun.h"
 #import <CoreGraphics/CoreGraphics.h>
 #import <CoreImage/CoreImage.h>
 #import <objc/runtime.h>
@@ -99,7 +99,7 @@
 
 #import <pal/ios/UIKitSoftLink.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -2512,6 +2512,6 @@ bool RenderThemeIOS::paintSearchFieldResultsButton(const RenderBox& box, const P
 
 #endif // ENABLE(IOS_FORM_CONTROL_REFRESH)
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif //PLATFORM(IOS_FAMILY)

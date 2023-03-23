@@ -27,7 +27,7 @@
 
 #include "ClientOrigin.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct SharedWorkerKey {
     ClientOrigin origin;
@@ -45,20 +45,20 @@ inline bool operator==(const SharedWorkerKey& a, const SharedWorkerKey& b)
     return a.origin == b.origin && a.url == b.url && a.name == b.name;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct DefaultHash<WebCore::SharedWorkerKey> {
-    static unsigned hash(const WebCore::SharedWorkerKey& key) { return computeHash(key); }
-    static bool equal(const WebCore::SharedWorkerKey& a, const WebCore::SharedWorkerKey& b) { return a == b; }
+template<> struct DefaultHash<CyberCore::SharedWorkerKey> {
+    static unsigned hash(const CyberCore::SharedWorkerKey& key) { return computeHash(key); }
+    static bool equal(const CyberCore::SharedWorkerKey& a, const CyberCore::SharedWorkerKey& b) { return a == b; }
     static const bool safeToCompareToEmptyOrDeleted = false;
 };
 
-template<> struct HashTraits<WebCore::SharedWorkerKey> : GenericHashTraits<WebCore::SharedWorkerKey> {
+template<> struct HashTraits<CyberCore::SharedWorkerKey> : GenericHashTraits<CyberCore::SharedWorkerKey> {
     static constexpr bool emptyValueIsZero = false;
-    static void constructDeletedValue(WebCore::SharedWorkerKey& slot) { new (NotNull, &slot.url) URL(WTF::HashTableDeletedValue); }
-    static bool isDeletedValue(const WebCore::SharedWorkerKey& slot) { return slot.url.isHashTableDeletedValue(); }
+    static void constructDeletedValue(CyberCore::SharedWorkerKey& slot) { new (NotNull, &slot.url) URL(WTF::HashTableDeletedValue); }
+    static bool isDeletedValue(const CyberCore::SharedWorkerKey& slot) { return slot.url.isHashTableDeletedValue(); }
 };
 
 } // namespace WTF

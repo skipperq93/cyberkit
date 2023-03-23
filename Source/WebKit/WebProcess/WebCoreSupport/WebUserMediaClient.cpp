@@ -27,8 +27,8 @@
 #include <CyberCore/UserMediaController.h>
 #include <CyberCore/UserMediaRequest.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 WebUserMediaClient::WebUserMediaClient(WebPage& page)
     : m_page(page)
@@ -65,6 +65,6 @@ void WebUserMediaClient::removeDeviceChangeObserver(DeviceChangeObserverToken to
     m_page.userMediaPermissionRequestManager().removeDeviceChangeObserver(token);
 }
 
-} // namespace WebKit;
+} // namespace CyberKit;
 
 #endif // MEDIA_STREAM

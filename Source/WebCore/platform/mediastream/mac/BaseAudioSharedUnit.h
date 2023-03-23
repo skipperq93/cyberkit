@@ -35,7 +35,7 @@
 #include <wtf/WeakPtr.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioStreamDescription;
 class CaptureDevice;
@@ -139,6 +139,6 @@ private:
     Vector<Function<void()>> m_whenNotRunningCallbacks;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM)

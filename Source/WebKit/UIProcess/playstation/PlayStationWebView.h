@@ -43,11 +43,11 @@ public:
 
     WebPageProxy* page() { return m_page.get(); }
 
-    void setViewSize(WebCore::IntSize);
-    WebCore::IntSize viewSize() const { return m_viewSize; }
+    void setViewSize(CyberCore::IntSize);
+    CyberCore::IntSize viewSize() const { return m_viewSize; }
 
-    void setViewState(OptionSet<WebCore::ActivityState::Flag>);
-    OptionSet<WebCore::ActivityState::Flag> viewState() const { return m_viewStateFlags; }
+    void setViewState(OptionSet<CyberCore::ActivityState::Flag>);
+    OptionSet<CyberCore::ActivityState::Flag> viewState() const { return m_viewStateFlags; }
 
 #if ENABLE(FULLSCREEN_API)
     void willEnterFullScreen();
@@ -58,16 +58,16 @@ public:
 #endif
 
     // Functions called by PageClientImpl
-    void setViewNeedsDisplay(const WebCore::Region&);
+    void setViewNeedsDisplay(const CyberCore::Region&);
 #if ENABLE(FULLSCREEN_API)
     bool isFullScreen();
     void closeFullScreenManager();
     void enterFullScreen();
     void exitFullScreen();
-    void beganEnterFullScreen(const WebCore::IntRect&, const WebCore::IntRect&);
-    void beganExitFullScreen(const WebCore::IntRect&, const WebCore::IntRect&);
+    void beganEnterFullScreen(const CyberCore::IntRect&, const CyberCore::IntRect&);
+    void beganExitFullScreen(const CyberCore::IntRect&, const CyberCore::IntRect&);
 #endif
-    void setCursor(const WebCore::Cursor&);
+    void setCursor(const CyberCore::Cursor&);
 
 private:
     PlayStationWebView(const API::PageConfiguration&);
@@ -75,9 +75,9 @@ private:
     std::unique_ptr<API::ViewClient> m_client;
     std::unique_ptr<WebKit::PageClientImpl> m_pageClient;
     RefPtr<WebPageProxy> m_page;
-    OptionSet<WebCore::ActivityState::Flag> m_viewStateFlags;
+    OptionSet<CyberCore::ActivityState::Flag> m_viewStateFlags;
 
-    WebCore::IntSize m_viewSize;
+    CyberCore::IntSize m_viewSize;
 #if ENABLE(FULLSCREEN_API)
     bool m_isFullScreen { false };
 #endif

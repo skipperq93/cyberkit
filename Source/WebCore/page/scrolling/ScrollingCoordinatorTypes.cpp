@@ -26,7 +26,7 @@
 #include "config.h"
 #include "ScrollingCoordinatorTypes.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 TextStream& operator<<(TextStream& ts, SynchronousScrollingReason reason)
 {
@@ -153,4 +153,4 @@ TextStream& operator<<(TextStream& ts, ScrollUpdateType type)
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

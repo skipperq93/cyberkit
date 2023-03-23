@@ -31,7 +31,7 @@
 #include "SVGPropertyRegistry.h"
 #include <wtf/HashMap.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGAttributeAnimator;
 class SVGConditionalProcessingAttributes;

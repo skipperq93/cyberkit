@@ -34,7 +34,7 @@
 #import "_WKDataTaskDelegate.h"
 #import <CyberCore/AuthenticationMac.h>
 #import <CyberCore/Credential.h>
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 #import <wtf/BlockPtr.h>
 
 class WKDataTaskClient final : public API::DataTaskClient {
@@ -49,7 +49,7 @@ private:
         , m_respondsToDidReceiveData([delegate respondsToSelector:@selector(dataTask:didReceiveData:)])
         , m_respondsToDidCompleteWithError([delegate respondsToSelector:@selector(dataTask:didCompleteWithError:)]) { }
 
-    void didReceiveChallenge(API::DataTask& task, WebCore::AuthenticationChallenge&& challenge, CompletionHandler<void(WebKit::AuthenticationChallengeDisposition, WebCore::Credential&&)>&& completionHandler) const final
+    void didReceiveChallenge(API::DataTask& task, CyberCore::AuthenticationChallenge&& challenge, CompletionHandler<void(WebKit::AuthenticationChallengeDisposition, CyberCore::Credential&&)>&& completionHandler) const final
     {
         if (!m_delegate || !m_respondsToDidReceiveAuthenticationChallenge)
             return completionHandler(WebKit::AuthenticationChallengeDisposition::RejectProtectionSpaceAndContinue, { });
@@ -58,16 +58,16 @@ private:
             if (checker->completionHandlerHasBeenCalled())
                 return;
             checker->didCallCompletionHandler();
-            completionHandler(WebKit::toAuthenticationChallengeDisposition(disposition), WebCore::Credential(credential));
+            completionHandler(WebKit::toAuthenticationChallengeDisposition(disposition), CyberCore::Credential(credential));
         }).get()];
     }
 
-    void willPerformHTTPRedirection(API::DataTask& task, WebCore::ResourceResponse&& response, WebCore::ResourceRequest&& request, CompletionHandler<void(bool)>&& completionHandler) const final
+    void willPerformHTTPRedirection(API::DataTask& task, CyberCore::ResourceResponse&& response, CyberCore::ResourceRequest&& request, CompletionHandler<void(bool)>&& completionHandler) const final
     {
         if (!m_delegate || !m_respondsToWillPerformHTTPRedirection)
             return completionHandler(true);
         auto checker = WebKit::CompletionHandlerCallChecker::create(m_delegate.get().get(), @selector(dataTask:willPerformHTTPRedirection:newRequest:decisionHandler:));
-        [m_delegate dataTask:wrapper(task) willPerformHTTPRedirection:(NSHTTPURLResponse *)response.nsURLResponse() newRequest:request.nsURLRequest(WebCore::HTTPBodyUpdatePolicy::UpdateHTTPBody) decisionHandler:makeBlockPtr([checker = WTFMove(checker), completionHandler = WTFMove(completionHandler)] (_WKDataTaskRedirectPolicy policy) mutable {
+        [m_delegate dataTask:wrapper(task) willPerformHTTPRedirection:(NSHTTPURLResponse *)response.nsURLResponse() newRequest:request.nsURLRequest(CyberCore::HTTPBodyUpdatePolicy::UpdateHTTPBody) decisionHandler:makeBlockPtr([checker = WTFMove(checker), completionHandler = WTFMove(completionHandler)] (_WKDataTaskRedirectPolicy policy) mutable {
             if (checker->completionHandlerHasBeenCalled())
                 return;
             checker->didCallCompletionHandler();
@@ -75,7 +75,7 @@ private:
         }).get()];
     }
 
-    void didReceiveResponse(API::DataTask& task, WebCore::ResourceResponse&& response, CompletionHandler<void(bool)>&& completionHandler) const final
+    void didReceiveResponse(API::DataTask& task, CyberCore::ResourceResponse&& response, CompletionHandler<void(bool)>&& completionHandler) const final
     {
         if (!m_delegate || !m_respondsToDidReceiveResponse)
             return completionHandler(true);
@@ -95,7 +95,7 @@ private:
         [m_delegate dataTask:wrapper(task) didReceiveData:adoptNS([[NSData alloc] initWithBytes:data.data() length:data.size()]).get()];
     }
 
-    void didCompleteWithError(API::DataTask& task, WebCore::ResourceError&& error) const final
+    void didCompleteWithError(API::DataTask& task, CyberCore::ResourceError&& error) const final
     {
         if (!m_delegate || !m_respondsToDidCompleteWithError)
             return;
@@ -141,7 +141,7 @@ private:
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainRunLoop(_WKDataTask.class, self))
+    if (CyberCoreObjCScheduleDeallocateOnMainRunLoop(_WKDataTask.class, self))
         return;
     _dataTask->~DataTask();
     [super dealloc];

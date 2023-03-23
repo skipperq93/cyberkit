@@ -38,25 +38,25 @@ namespace WebKit {
 #define constructNativeEvent(event) gdk_event_copy(event)
 #endif
 
-NativeWebMouseEvent::NativeWebMouseEvent(GdkEvent* event, int eventClickCount, std::optional<WebCore::FloatSize> delta)
+NativeWebMouseEvent::NativeWebMouseEvent(GdkEvent* event, int eventClickCount, std::optional<CyberCore::FloatSize> delta)
     : WebMouseEvent(WebEventFactory::createWebMouseEvent(event, eventClickCount, delta))
     , m_nativeEvent(constructNativeEvent(event))
 {
 }
 
-NativeWebMouseEvent::NativeWebMouseEvent(GdkEvent* event, const WebCore::IntPoint& position, int eventClickCount, std::optional<WebCore::FloatSize> delta)
+NativeWebMouseEvent::NativeWebMouseEvent(GdkEvent* event, const CyberCore::IntPoint& position, int eventClickCount, std::optional<CyberCore::FloatSize> delta)
     : WebMouseEvent(WebEventFactory::createWebMouseEvent(event, position, position, eventClickCount, delta))
     , m_nativeEvent(constructNativeEvent(event))
 {
 }
 
-NativeWebMouseEvent::NativeWebMouseEvent(const WebCore::IntPoint& position)
+NativeWebMouseEvent::NativeWebMouseEvent(const CyberCore::IntPoint& position)
     : WebMouseEvent(WebEventFactory::createWebMouseEvent(position))
 {
 }
 
-NativeWebMouseEvent::NativeWebMouseEvent(WebEventType type, WebMouseEventButton button, unsigned short buttons, const WebCore::IntPoint& position, const WebCore::IntPoint& globalPosition, int clickCount, OptionSet<WebEventModifier> modifiers, std::optional<WebCore::FloatSize> delta, WebCore::PointerID pointerId, const String& pointerType, WebCore::PlatformMouseEvent::IsTouch isTouchEvent)
-    : WebMouseEvent(WebEvent(type, modifiers, WallTime::now()), button, buttons, position, globalPosition, delta.value_or(WebCore::FloatSize()).width(), delta.value_or(WebCore::FloatSize()).height(), 0, clickCount, 0, WebMouseEventSyntheticClickType::NoTap, isTouchEvent, pointerId, pointerType)
+NativeWebMouseEvent::NativeWebMouseEvent(WebEventType type, WebMouseEventButton button, unsigned short buttons, const CyberCore::IntPoint& position, const CyberCore::IntPoint& globalPosition, int clickCount, OptionSet<WebEventModifier> modifiers, std::optional<CyberCore::FloatSize> delta, CyberCore::PointerID pointerId, const String& pointerType, CyberCore::PlatformMouseEvent::IsTouch isTouchEvent)
+    : WebMouseEvent(WebEvent(type, modifiers, WallTime::now()), button, buttons, position, globalPosition, delta.value_or(CyberCore::FloatSize()).width(), delta.value_or(CyberCore::FloatSize()).height(), 0, clickCount, 0, WebMouseEventSyntheticClickType::NoTap, isTouchEvent, pointerId, pointerType)
 {
 }
 

@@ -38,7 +38,7 @@
 #import "WebFrameInternal.h"
 #import "WebFrameLoaderClient.h"
 #import "WebFramePrivate.h"
-#import "WebKitNSStringExtras.h"
+#import "CyberKitNSStringExtras.h"
 #import <CyberScriptCore/APICast.h>
 #import <CyberScriptCore/JSCJSValue.h>
 #import <CyberScriptCore/JSGlobalObjectInlines.h>
@@ -63,7 +63,7 @@
 #import <CyberKitLegacy/DOMHTML.h>
 #import <wtf/Assertions.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 using namespace JSC;
 
 @implementation DOMElement (WebDOMElementOperationsPrivate)

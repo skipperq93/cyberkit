@@ -55,17 +55,17 @@ public:
     WebPageProxy& page() { return m_webPageProxy; }
 
 #if ENABLE(ARKIT_INLINE_PREVIEW)
-    void getCameraForModelElement(ModelIdentifier, CompletionHandler<void(Expected<WebCore::HTMLModelElementCamera, WebCore::ResourceError>)>&&);
-    void setCameraForModelElement(ModelIdentifier, WebCore::HTMLModelElementCamera, CompletionHandler<void(bool)>&&);
-    void isPlayingAnimationForModelElement(ModelIdentifier, CompletionHandler<void(Expected<bool, WebCore::ResourceError>)>&&);
+    void getCameraForModelElement(ModelIdentifier, CompletionHandler<void(Expected<CyberCore::HTMLModelElementCamera, CyberCore::ResourceError>)>&&);
+    void setCameraForModelElement(ModelIdentifier, CyberCore::HTMLModelElementCamera, CompletionHandler<void(bool)>&&);
+    void isPlayingAnimationForModelElement(ModelIdentifier, CompletionHandler<void(Expected<bool, CyberCore::ResourceError>)>&&);
     void setAnimationIsPlayingForModelElement(ModelIdentifier, bool, CompletionHandler<void(bool)>&&);
-    void isLoopingAnimationForModelElement(ModelIdentifier, CompletionHandler<void(Expected<bool, WebCore::ResourceError>)>&&);
+    void isLoopingAnimationForModelElement(ModelIdentifier, CompletionHandler<void(Expected<bool, CyberCore::ResourceError>)>&&);
     void setIsLoopingAnimationForModelElement(ModelIdentifier, bool, CompletionHandler<void(bool)>&&);
-    void animationDurationForModelElement(ModelIdentifier, CompletionHandler<void(Expected<Seconds, WebCore::ResourceError>)>&&);
-    void animationCurrentTimeForModelElement(ModelIdentifier, CompletionHandler<void(Expected<Seconds, WebCore::ResourceError>)>&&);
+    void animationDurationForModelElement(ModelIdentifier, CompletionHandler<void(Expected<Seconds, CyberCore::ResourceError>)>&&);
+    void animationCurrentTimeForModelElement(ModelIdentifier, CompletionHandler<void(Expected<Seconds, CyberCore::ResourceError>)>&&);
     void setAnimationCurrentTimeForModelElement(ModelIdentifier, Seconds, CompletionHandler<void(bool)>&&);
-    void hasAudioForModelElement(ModelIdentifier, CompletionHandler<void(Expected<bool, WebCore::ResourceError>)>&&);
-    void isMutedForModelElement(ModelIdentifier, CompletionHandler<void(Expected<bool, WebCore::ResourceError>)>&&);
+    void hasAudioForModelElement(ModelIdentifier, CompletionHandler<void(Expected<bool, CyberCore::ResourceError>)>&&);
+    void isMutedForModelElement(ModelIdentifier, CompletionHandler<void(Expected<bool, CyberCore::ResourceError>)>&&);
     void setIsMutedForModelElement(ModelIdentifier, bool, CompletionHandler<void(bool)>&&);
 #endif
 #if ENABLE(ARKIT_INLINE_PREVIEW_IOS)
@@ -73,13 +73,13 @@ public:
     void setInteractionEnabledForModelElement(ModelIdentifier, bool);
 #endif
 #if ENABLE(ARKIT_INLINE_PREVIEW_MAC)
-    void modelElementCreateRemotePreview(String, WebCore::FloatSize, CompletionHandler<void(Expected<std::pair<String, uint32_t>, WebCore::ResourceError>)>&&);
-    void modelElementLoadRemotePreview(String, URL, CompletionHandler<void(std::optional<WebCore::ResourceError>&&)>&&);
+    void modelElementCreateRemotePreview(String, CyberCore::FloatSize, CompletionHandler<void(Expected<std::pair<String, uint32_t>, CyberCore::ResourceError>)>&&);
+    void modelElementLoadRemotePreview(String, URL, CompletionHandler<void(std::optional<CyberCore::ResourceError>&&)>&&);
     void modelElementDestroyRemotePreview(String);
-    void modelElementSizeDidChange(const String& uuid, WebCore::FloatSize, CompletionHandler<void(Expected<MachSendRight, WebCore::ResourceError>)>&&);
-    void handleMouseDownForModelElement(const String&, const WebCore::LayoutPoint&, MonotonicTime);
-    void handleMouseMoveForModelElement(const String&, const WebCore::LayoutPoint&, MonotonicTime);
-    void handleMouseUpForModelElement(const String&, const WebCore::LayoutPoint&, MonotonicTime);
+    void modelElementSizeDidChange(const String& uuid, CyberCore::FloatSize, CompletionHandler<void(Expected<MachSendRight, CyberCore::ResourceError>)>&&);
+    void handleMouseDownForModelElement(const String&, const CyberCore::LayoutPoint&, MonotonicTime);
+    void handleMouseMoveForModelElement(const String&, const CyberCore::LayoutPoint&, MonotonicTime);
+    void handleMouseUpForModelElement(const String&, const CyberCore::LayoutPoint&, MonotonicTime);
     void inlinePreviewUUIDs(CompletionHandler<void(Vector<String>&&)>&&);
 #endif
 

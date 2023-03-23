@@ -30,7 +30,7 @@
 #include "SampleBufferDisplayLayer.h"
 #include <wtf/HashMap.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class SampleBufferDisplayLayerManager : public CanMakeWeakPtr<SampleBufferDisplayLayerManager> {
     WTF_MAKE_FAST_ALLOCATED;
@@ -42,7 +42,7 @@ public:
     void removeLayer(SampleBufferDisplayLayer&);
 
     void didReceiveLayerMessage(IPC::Connection&, IPC::Decoder&);
-    std::unique_ptr<WebCore::SampleBufferDisplayLayer> createLayer(WebCore::SampleBufferDisplayLayer::Client&);
+    std::unique_ptr<CyberCore::SampleBufferDisplayLayer> createLayer(CyberCore::SampleBufferDisplayLayer::Client&);
 
 private:
     HashMap<SampleBufferDisplayLayerIdentifier, WeakPtr<SampleBufferDisplayLayer>> m_layers;

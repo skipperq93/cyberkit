@@ -37,7 +37,7 @@
 #include <wtf/text/StringHash.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore  {
+namespace CyberCore  {
 
 class CachedResource;
 class CookieJar;
@@ -172,7 +172,7 @@ private:
     using LRUList = WeakListHashSet<CachedResource>;
 
     MemoryCache();
-    ~MemoryCache(); // Not implemented to make sure nobody accidentally calls delete -- WebCore does not delete singletons.
+    ~MemoryCache(); // Not implemented to make sure nobody accidentally calls delete -- CyberCore does not delete singletons.
 
     LRUList& lruListFor(CachedResource&);
 
@@ -215,4 +215,4 @@ private:
     Timer m_pruneTimer;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

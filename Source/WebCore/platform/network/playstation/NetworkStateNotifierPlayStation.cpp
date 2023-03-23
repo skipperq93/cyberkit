@@ -28,7 +28,7 @@
 
 #include "NotImplemented.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 void NetworkStateNotifier::updateStateWithoutNotifying()
 {
@@ -40,4 +40,4 @@ void NetworkStateNotifier::startObserving()
     notImplemented();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

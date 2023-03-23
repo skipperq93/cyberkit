@@ -34,7 +34,7 @@
 #include <wtf/MediaTime.h>
 #include <wtf/MonotonicTime.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 struct RemoteMediaPlayerState {
     MediaTime duration;
@@ -44,18 +44,18 @@ struct RemoteMediaPlayerState {
     MediaTime startTime;
     String languageOfPrimaryAudioTrack;
     String wirelessPlaybackTargetName;
-    WebCore::PlatformTimeRanges bufferedRanges;
-    WebCore::MediaPlayerEnums::NetworkState networkState { WebCore::MediaPlayerEnums::NetworkState::Empty };
-    WebCore::MediaPlayerEnums::ReadyState readyState { WebCore::MediaPlayerEnums::ReadyState::HaveNothing };
-    WebCore::MediaPlayerEnums::MovieLoadType movieLoadType { WebCore::MediaPlayerEnums::MovieLoadType::Unknown };
-    WebCore::MediaPlayerEnums::WirelessPlaybackTargetType wirelessPlaybackTargetType { WebCore::MediaPlayerEnums::WirelessPlaybackTargetType::TargetTypeNone };
-    WebCore::FloatSize naturalSize;
+    CyberCore::PlatformTimeRanges bufferedRanges;
+    CyberCore::MediaPlayerEnums::NetworkState networkState { CyberCore::MediaPlayerEnums::NetworkState::Empty };
+    CyberCore::MediaPlayerEnums::ReadyState readyState { CyberCore::MediaPlayerEnums::ReadyState::HaveNothing };
+    CyberCore::MediaPlayerEnums::MovieLoadType movieLoadType { CyberCore::MediaPlayerEnums::MovieLoadType::Unknown };
+    CyberCore::MediaPlayerEnums::WirelessPlaybackTargetType wirelessPlaybackTargetType { CyberCore::MediaPlayerEnums::WirelessPlaybackTargetType::TargetTypeNone };
+    CyberCore::FloatSize naturalSize;
     double maxFastForwardRate { 0 };
     double minFastReverseRate { 0 };
     double seekableTimeRangesLastModifiedTime { 0 };
     double liveUpdateInterval { 0 };
     uint64_t totalBytes { 0 };
-    std::optional<WebCore::VideoPlaybackQualityMetrics> videoMetrics;
+    std::optional<CyberCore::VideoPlaybackQualityMetrics> videoMetrics;
     std::optional<bool> documentIsCrossOrigin { true };
     bool paused { true };
     bool canSaveMediaData { false };
@@ -67,6 +67,6 @@ struct RemoteMediaPlayerState {
     bool didPassCORSAccessCheck { false };
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS) && ENABLE(VIDEO)

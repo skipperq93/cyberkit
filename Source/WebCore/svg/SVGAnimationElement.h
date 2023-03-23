@@ -28,7 +28,7 @@
 #include "SVGTests.h"
 #include "UnitBezier.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ConditionEventListener;
 class TimeContainer;
@@ -145,4 +145,4 @@ private:
     AnimationMode m_animationMode { AnimationMode::None };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

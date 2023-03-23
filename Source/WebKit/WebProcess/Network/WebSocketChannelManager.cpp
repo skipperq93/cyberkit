@@ -28,7 +28,7 @@
 
 #include <CyberCore/WebSocketIdentifier.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 void WebSocketChannelManager::addChannel(WebSocketChannel& channel)
 {
@@ -45,9 +45,9 @@ void WebSocketChannelManager::networkProcessCrashed()
 
 void WebSocketChannelManager::didReceiveMessage(IPC::Connection& connection, IPC::Decoder& decoder)
 {
-    auto iterator = m_channels.find(makeObjectIdentifier<WebCore::WebSocketIdentifierType>(decoder.destinationID()));
+    auto iterator = m_channels.find(makeObjectIdentifier<CyberCore::WebSocketIdentifierType>(decoder.destinationID()));
     if (iterator != m_channels.end())
         iterator->value->didReceiveMessage(connection, decoder);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

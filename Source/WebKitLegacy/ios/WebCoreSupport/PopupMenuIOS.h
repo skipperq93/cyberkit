@@ -29,23 +29,23 @@
 #include <CyberCore/IntRect.h>
 #include <CyberCore/PopupMenu.h>
 
-namespace WebCore {
+namespace CyberCore {
 class PopupMenuClient;
 }
 
-class PopupMenuIOS : public WebCore::PopupMenu {
+class PopupMenuIOS : public CyberCore::PopupMenu {
 public:
-    PopupMenuIOS(WebCore::PopupMenuClient*);
+    PopupMenuIOS(CyberCore::PopupMenuClient*);
 
-    void show(const WebCore::IntRect&, WebCore::FrameView*, int selectedIndex) override;
+    void show(const CyberCore::IntRect&, CyberCore::FrameView*, int selectedIndex) override;
     void hide() override;
     void updateFromElement() override;
     void disconnectClient() override;
 
 private:
-    WebCore::PopupMenuClient* client() const { return m_popupClient; }
+    CyberCore::PopupMenuClient* client() const { return m_popupClient; }
 
-    WebCore::PopupMenuClient* m_popupClient;
+    CyberCore::PopupMenuClient* m_popupClient;
 };
 
 #endif // PopupMenuIOS_h

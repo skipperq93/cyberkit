@@ -32,7 +32,7 @@
 #include "RemoteImageBufferProxy.h"
 #include "RemoteRenderingBackendProxy.h"
 #include "StreamClientConnection.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include <CyberCore/DisplayList.h>
 #include <CyberCore/DisplayListDrawingContext.h>
 #include <CyberCore/DisplayListItems.h>
@@ -45,7 +45,7 @@
 #include <wtf/text/TextStream.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 RemoteDisplayListRecorderProxy::RemoteDisplayListRecorderProxy(RemoteImageBufferProxy& imageBuffer, RemoteRenderingBackendProxy& renderingBackend, const FloatRect& initialClip, const AffineTransform& initialCTM)
     : DisplayList::Recorder({ }, initialClip, initialCTM, imageBuffer.colorSpace(), DrawGlyphsMode::DeconstructUsingDrawGlyphsCommands)
@@ -60,7 +60,7 @@ void RemoteDisplayListRecorderProxy::convertToLuminanceMask()
     send(Messages::RemoteDisplayListRecorder::ConvertToLuminanceMask());
 }
 
-void RemoteDisplayListRecorderProxy::transformToColorSpace(const WebCore::DestinationColorSpace& colorSpace)
+void RemoteDisplayListRecorderProxy::transformToColorSpace(const CyberCore::DestinationColorSpace& colorSpace)
 {
     send(Messages::RemoteDisplayListRecorder::TransformToColorSpace(colorSpace));
 }
@@ -529,6 +529,6 @@ void RemoteDisplayListRecorderProxy::disconnect()
 #endif
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(GPU_PROCESS)

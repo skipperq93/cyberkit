@@ -34,7 +34,7 @@
 #include <AppKit/AppKit.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 class PlatformMouseEvent;
 }
 #endif
@@ -49,8 +49,8 @@ public:
 #if USE(APPKIT)
     static WebMouseEvent createWebMouseEvent(NSEvent *, NSEvent *lastPressureEvent, NSView *windowView);
     static WebWheelEvent createWebWheelEvent(NSEvent *, NSView *windowView);
-    static WebKeyboardEvent createWebKeyboardEvent(NSEvent *, bool handledByInputMethod, bool replacesSoftSpace, const Vector<WebCore::KeypressCommand>&);
-    static bool shouldBeHandledAsContextClick(const WebCore::PlatformMouseEvent&);
+    static WebKeyboardEvent createWebKeyboardEvent(NSEvent *, bool handledByInputMethod, bool replacesSoftSpace, const Vector<CyberCore::KeypressCommand>&);
+    static bool shouldBeHandledAsContextClick(const CyberCore::PlatformMouseEvent&);
 
 #if defined(__OBJC__)
     static OptionSet<WebKit::WebEventModifier> webEventModifiersForNSEventModifierFlags(NSEventModifierFlags);

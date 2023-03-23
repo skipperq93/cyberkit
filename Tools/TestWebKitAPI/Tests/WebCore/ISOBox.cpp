@@ -34,7 +34,7 @@
 #include <CyberCore/ISOTrackEncryptionBox.h>
 #include <wtf/text/Base64.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 namespace TestWebKitAPI {
 

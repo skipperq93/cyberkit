@@ -28,11 +28,11 @@
 #include "CacheStorageConnection.h"
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CacheStorageProvider : public RefCounted<CacheStorageProvider> {
 public:
-    class DummyCacheStorageConnection final : public WebCore::CacheStorageConnection {
+    class DummyCacheStorageConnection final : public CyberCore::CacheStorageConnection {
     public:
         static Ref<DummyCacheStorageConnection> create() { return adoptRef(*new DummyCacheStorageConnection()); }
 

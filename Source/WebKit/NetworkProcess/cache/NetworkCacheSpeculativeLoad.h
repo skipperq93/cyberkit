@@ -37,7 +37,7 @@
 #include <CyberCore/SharedBuffer.h>
 #include <wtf/CompletionHandler.h>
 
-namespace WebCore {
+namespace CyberCore {
 enum class NetworkConnectionIntegrity : uint16_t;
 }
 
@@ -51,11 +51,11 @@ class SpeculativeLoad final : public NetworkLoadClient {
     WTF_MAKE_FAST_ALLOCATED;
 public:
     using RevalidationCompletionHandler = CompletionHandler<void(std::unique_ptr<NetworkCache::Entry>)>;
-    SpeculativeLoad(Cache&, const GlobalFrameID&, const WebCore::ResourceRequest&, std::unique_ptr<NetworkCache::Entry>, std::optional<NavigatingToAppBoundDomain>, bool allowPrivacyProxy, OptionSet<WebCore::NetworkConnectionIntegrity> networkConnectionIntegrityPolicy, RevalidationCompletionHandler&&);
+    SpeculativeLoad(Cache&, const GlobalFrameID&, const CyberCore::ResourceRequest&, std::unique_ptr<NetworkCache::Entry>, std::optional<NavigatingToAppBoundDomain>, bool allowPrivacyProxy, OptionSet<CyberCore::NetworkConnectionIntegrity> networkConnectionIntegrityPolicy, RevalidationCompletionHandler&&);
 
     virtual ~SpeculativeLoad();
 
-    const WebCore::ResourceRequest& originalRequest() const { return m_originalRequest; }
+    const CyberCore::ResourceRequest& originalRequest() const { return m_originalRequest; }
 
     void cancel();
 
@@ -64,29 +64,29 @@ private:
     void didSendData(uint64_t bytesSent, uint64_t totalBytesToBeSent) override { }
     bool isSynchronous() const override { return false; }
     bool isAllowedToAskUserForCredentials() const final { return false; }
-    void willSendRedirectedRequest(WebCore::ResourceRequest&&, WebCore::ResourceRequest&& redirectRequest, WebCore::ResourceResponse&& redirectResponse) override;
-    void didReceiveResponse(WebCore::ResourceResponse&&, PrivateRelayed, ResponseCompletionHandler&&) override;
-    void didReceiveBuffer(const WebCore::FragmentedSharedBuffer&, uint64_t reportedEncodedDataLength) override;
-    void didFinishLoading(const WebCore::NetworkLoadMetrics&) override;
-    void didFailLoading(const WebCore::ResourceError&) override;
+    void willSendRedirectedRequest(CyberCore::ResourceRequest&&, CyberCore::ResourceRequest&& redirectRequest, CyberCore::ResourceResponse&& redirectResponse) override;
+    void didReceiveResponse(CyberCore::ResourceResponse&&, PrivateRelayed, ResponseCompletionHandler&&) override;
+    void didReceiveBuffer(const CyberCore::FragmentedSharedBuffer&, uint64_t reportedEncodedDataLength) override;
+    void didFinishLoading(const CyberCore::NetworkLoadMetrics&) override;
+    void didFailLoading(const CyberCore::ResourceError&) override;
 
     void didComplete();
 
     Ref<Cache> m_cache;
     RevalidationCompletionHandler m_completionHandler;
-    WebCore::ResourceRequest m_originalRequest;
+    CyberCore::ResourceRequest m_originalRequest;
 
     std::unique_ptr<NetworkLoad> m_networkLoad;
 
-    WebCore::ResourceResponse m_response;
+    CyberCore::ResourceResponse m_response;
 
-    WebCore::SharedBufferBuilder m_bufferedDataForCache;
+    CyberCore::SharedBufferBuilder m_bufferedDataForCache;
     std::unique_ptr<NetworkCache::Entry> m_cacheEntry;
     bool m_didComplete { false };
     PrivateRelayed m_privateRelayed { PrivateRelayed::No };
 };
 
-bool requestsHeadersMatch(const WebCore::ResourceRequest& speculativeValidationRequest, const WebCore::ResourceRequest& actualRequest);
+bool requestsHeadersMatch(const CyberCore::ResourceRequest& speculativeValidationRequest, const CyberCore::ResourceRequest& actualRequest);
 
 } // namespace NetworkCache
 } // namespace WebKit

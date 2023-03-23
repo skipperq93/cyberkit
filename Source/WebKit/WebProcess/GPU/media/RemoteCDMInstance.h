@@ -33,9 +33,9 @@
 #include "RemoteCDMInstanceIdentifier.h"
 #include <CyberCore/CDMInstance.h>
 
-namespace WebKit {
+namespace CyberKit {
 
-class RemoteCDMInstance final : public WebCore::CDMInstance, private IPC::MessageReceiver {
+class RemoteCDMInstance final : public CyberCore::CDMInstance, private IPC::MessageReceiver {
 public:
     virtual ~RemoteCDMInstance();
     static Ref<RemoteCDMInstance> create(WeakPtr<RemoteCDMFactory>&&, RemoteCDMInstanceIdentifier&&, RemoteCDMInstanceConfiguration&&);
@@ -49,25 +49,25 @@ private:
     void didReceiveMessage(IPC::Connection&, IPC::Decoder&) final;
 
     // Messages
-    void unrequestedInitializationDataReceived(const String&, Ref<WebCore::SharedBuffer>&&);
+    void unrequestedInitializationDataReceived(const String&, Ref<CyberCore::SharedBuffer>&&);
 
     ImplementationType implementationType() const final { return ImplementationType::Remote; }
-    void initializeWithConfiguration(const WebCore::CDMKeySystemConfiguration&, AllowDistinctiveIdentifiers, AllowPersistentState, SuccessCallback&&) final;
-    void setServerCertificate(Ref<WebCore::SharedBuffer>&&, SuccessCallback&&) final;
+    void initializeWithConfiguration(const CyberCore::CDMKeySystemConfiguration&, AllowDistinctiveIdentifiers, AllowPersistentState, SuccessCallback&&) final;
+    void setServerCertificate(Ref<CyberCore::SharedBuffer>&&, SuccessCallback&&) final;
     void setStorageDirectory(const String&) final;
     const String& keySystem() const final { return m_configuration.keySystem; }
-    RefPtr<WebCore::CDMInstanceSession> createSession() final;
-    void setClient(WeakPtr<WebCore::CDMInstanceClient>&& client) final { m_client = WTFMove(client); }
+    RefPtr<CyberCore::CDMInstanceSession> createSession() final;
+    void setClient(WeakPtr<CyberCore::CDMInstanceClient>&& client) final { m_client = WTFMove(client); }
     void clearClient() final { m_client.clear(); }
 
     WeakPtr<RemoteCDMFactory> m_factory;
     RemoteCDMInstanceIdentifier m_identifier;
     RemoteCDMInstanceConfiguration m_configuration;
-    WeakPtr<WebCore::CDMInstanceClient> m_client;
+    WeakPtr<CyberCore::CDMInstanceClient> m_client;
 };
 
 }
 
-SPECIALIZE_TYPE_TRAITS_CDM_INSTANCE(WebKit::RemoteCDMInstance, WebCore::CDMInstance::ImplementationType::Remote)
+SPECIALIZE_TYPE_TRAITS_CDM_INSTANCE(CyberKit::RemoteCDMInstance, CyberCore::CDMInstance::ImplementationType::Remote)
 
 #endif

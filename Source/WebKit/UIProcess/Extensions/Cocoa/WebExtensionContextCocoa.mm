@@ -1492,15 +1492,15 @@ void WebExtensionContext::addInjectedContent(const InjectedContentVector& inject
         addInjectedContent(injectedContents, pattern);
 }
 
-static WebCore::UserScriptInjectionTime toImpl(WebExtension::InjectionTime injectionTime)
+static CyberCore::UserScriptInjectionTime toImpl(WebExtension::InjectionTime injectionTime)
 {
     switch (injectionTime) {
     case WebExtension::InjectionTime::DocumentStart:
-        return WebCore::UserScriptInjectionTime::DocumentStart;
+        return CyberCore::UserScriptInjectionTime::DocumentStart;
     case WebExtension::InjectionTime::DocumentIdle:
         // FIXME: <rdar://problem/57613315> Implement idle injection time. For now, the end injection time is fine.
     case WebExtension::InjectionTime::DocumentEnd:
-        return WebCore::UserScriptInjectionTime::DocumentEnd;
+        return CyberCore::UserScriptInjectionTime::DocumentEnd;
     }
 }
 
@@ -1586,9 +1586,9 @@ void WebExtensionContext::addInjectedContent(const InjectedContentVector& inject
 
         NSArray<NSString *> *excludeMatchPatterns = excludeMatchPatternsSet.allObjects;
 
-        auto injectedFrames = injectedContentData.injectsIntoAllFrames ? WebCore::UserContentInjectedFrames::InjectInAllFrames : WebCore::UserContentInjectedFrames::InjectInTopFrameOnly;
+        auto injectedFrames = injectedContentData.injectsIntoAllFrames ? CyberCore::UserContentInjectedFrames::InjectInAllFrames : CyberCore::UserContentInjectedFrames::InjectInTopFrameOnly;
         auto injectionTime = toImpl(injectedContentData.injectionTime);
-        auto waitForNotification = WebCore::WaitForNotificationBeforeInjecting::No;
+        auto waitForNotification = CyberCore::WaitForNotificationBeforeInjecting::No;
         auto& executionWorld = injectedContentData.forMainWorld ? API::ContentWorld::pageContentWorld() : *m_contentScriptWorld;
 
         for (NSString *scriptPath in injectedContentData.scriptPaths.get()) {
@@ -1596,7 +1596,7 @@ void WebExtensionContext::addInjectedContent(const InjectedContentVector& inject
             if (!scriptString)
                 continue;
 
-            auto userScript = API::UserScript::create(WebCore::UserScript { scriptString, URL { m_baseURL, scriptPath }, makeVector<String>(includeMatchPatterns), makeVector<String>(excludeMatchPatterns), injectionTime, injectedFrames, waitForNotification }, executionWorld);
+            auto userScript = API::UserScript::create(CyberCore::UserScript { scriptString, URL { m_baseURL, scriptPath }, makeVector<String>(includeMatchPatterns), makeVector<String>(excludeMatchPatterns), injectionTime, injectedFrames, waitForNotification }, executionWorld);
             originInjectedScripts.append(userScript);
 
             for (auto& userContentController : allUserContentControllers)
@@ -1608,7 +1608,7 @@ void WebExtensionContext::addInjectedContent(const InjectedContentVector& inject
             if (!styleSheetString)
                 continue;
 
-            auto userStyleSheet = API::UserStyleSheet::create(WebCore::UserStyleSheet { styleSheetString, URL { m_baseURL, styleSheetPath }, makeVector<String>(includeMatchPatterns), makeVector<String>(excludeMatchPatterns), injectedFrames, WebCore::UserStyleUserLevel, std::nullopt }, executionWorld);
+            auto userStyleSheet = API::UserStyleSheet::create(CyberCore::UserStyleSheet { styleSheetString, URL { m_baseURL, styleSheetPath }, makeVector<String>(includeMatchPatterns), makeVector<String>(excludeMatchPatterns), injectedFrames, CyberCore::UserStyleUserLevel, std::nullopt }, executionWorld);
             originInjectedStyleSheets.append(userStyleSheet);
 
             for (auto& userContentController : allUserContentControllers)

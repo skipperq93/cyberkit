@@ -31,7 +31,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 class LinkLoaderClient {
 public:
@@ -44,4 +44,4 @@ public:
     // There is no notification for cancellation.
 };
 
-} // namespace WebCore
+} // namespace CyberCore

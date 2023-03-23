@@ -19,7 +19,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 struct NamedColor {
     const char* name;
@@ -28,4 +28,4 @@ struct NamedColor {
 
 const NamedColor* findColor(const char* str, unsigned len);
 
-} // namespace WebCore
+} // namespace CyberCore

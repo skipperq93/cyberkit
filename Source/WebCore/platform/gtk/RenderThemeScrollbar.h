@@ -30,7 +30,7 @@
 #include "RenderThemeGadget.h"
 #include <gtk/gtk.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderThemeScrollbar {
     WTF_MAKE_FAST_ALLOCATED;
@@ -66,6 +66,6 @@ private:
     unsigned m_steppersPosition[4];
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // !USE(GTK4)

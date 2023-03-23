@@ -30,7 +30,7 @@
 #import "WebViewInternal.h"
 #import <wtf/ObjCRuntimeExtras.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 WebDeviceOrientationClient::WebDeviceOrientationClient(WebView* webView)
     : m_webView(webView)

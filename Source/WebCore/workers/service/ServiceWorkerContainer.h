@@ -44,7 +44,7 @@
 #include <wtf/Forward.h>
 #include <wtf/Threading.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DeferredPromise;
 class NavigatorBase;
@@ -168,6 +168,6 @@ private:
     Vector<MessageEvent::MessageEventWithStrongData> m_deferredMessageEvents;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

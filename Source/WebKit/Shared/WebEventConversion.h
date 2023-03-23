@@ -57,21 +57,21 @@ class WebTouchPoint;
 class WebGestureEvent;
 #endif
 
-OptionSet<WebCore::PlatformEvent::Modifier> platform(OptionSet<WebEventModifier>);
+OptionSet<CyberCore::PlatformEvent::Modifier> platform(OptionSet<WebEventModifier>);
 
-WebCore::PlatformMouseEvent platform(const WebMouseEvent&);
-WebCore::PlatformWheelEvent platform(const WebWheelEvent&);
-WebCore::PlatformKeyboardEvent platform(const WebKeyboardEvent&);
+CyberCore::PlatformMouseEvent platform(const WebMouseEvent&);
+CyberCore::PlatformWheelEvent platform(const WebWheelEvent&);
+CyberCore::PlatformKeyboardEvent platform(const WebKeyboardEvent&);
 
 #if ENABLE(TOUCH_EVENTS)
-WebCore::PlatformTouchEvent platform(const WebTouchEvent&);
+CyberCore::PlatformTouchEvent platform(const WebTouchEvent&);
 #if !ENABLE(IOS_TOUCH_EVENTS)
-WebCore::PlatformTouchPoint platform(const WebTouchPoint&);
+CyberCore::PlatformTouchPoint platform(const WebTouchPoint&);
 #endif
 #endif
 
 #if ENABLE(MAC_GESTURE_EVENTS)
-WebCore::PlatformGestureEvent platform(const WebGestureEvent&);
+CyberCore::PlatformGestureEvent platform(const WebGestureEvent&);
 #endif
 
 } // namespace WebKit

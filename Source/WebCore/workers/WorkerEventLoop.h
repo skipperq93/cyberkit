@@ -28,7 +28,7 @@
 #include "ActiveDOMObject.h"
 #include "EventLoop.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class WorkerOrWorkletGlobalScope;
 
@@ -52,4 +52,4 @@ private:
     std::unique_ptr<MicrotaskQueue> m_microtaskQueue;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

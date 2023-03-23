@@ -30,7 +30,7 @@
 
 @class _NSScrollingMomentumCalculator;
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScrollingMomentumCalculatorMac final : public ScrollingMomentumCalculator {
 public:
@@ -50,4 +50,4 @@ private:
     std::optional<bool> m_requiresMomentumScrolling;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -38,14 +38,14 @@
 
 namespace WTF {
 
-template<> RetainPtr<NSColor> TinyLRUCachePolicy<WebCore::Color, RetainPtr<NSColor>>::createValueForKey(const WebCore::Color& color)
+template<> RetainPtr<NSColor> TinyLRUCachePolicy<CyberCore::Color, RetainPtr<NSColor>>::createValueForKey(const CyberCore::Color& color)
 {
     return [NSColor colorWithCGColor:cachedCGColor(color).get()];
 }
 
 } // namespace WTF
 
-namespace WebCore {
+namespace CyberCore {
 
 static bool useOldAquaFocusRingColor;
 
@@ -151,6 +151,6 @@ RetainPtr<NSColor> cocoaColor(const Color& color)
     return cache.get().get(color);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(APPKIT)

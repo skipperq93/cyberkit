@@ -37,7 +37,7 @@ class Decoder;
 class Encoder;
 }
 
-namespace WebCore {
+namespace CyberCore {
 struct ApplePaySetupConfiguration;
 }
 
@@ -46,7 +46,7 @@ namespace WebKit {
 class PaymentSetupConfiguration {
 public:
     PaymentSetupConfiguration() = default;
-    PaymentSetupConfiguration(const WebCore::ApplePaySetupConfiguration&, const URL&);
+    PaymentSetupConfiguration(const CyberCore::ApplePaySetupConfiguration&, const URL&);
 
     PKPaymentSetupConfiguration *platformConfiguration() const { return m_configuration.get(); }
 

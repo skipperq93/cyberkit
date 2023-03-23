@@ -39,7 +39,7 @@
 #include <wtf/RunLoop.h>
 #include <wtf/glib/WTFGType.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 // CAIRO_FORMAT_RGB24 used to render the video buffers is little/big endian dependant.
 #if G_BYTE_ORDER == G_LITTLE_ENDIAN

@@ -35,7 +35,7 @@
 #include <wtf/StdLibExtras.h>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace DisplayList {
 
 #if !defined(NDEBUG) || !LOG_DISABLED
@@ -342,4 +342,4 @@ TextStream& operator<<(TextStream& ts, const DisplayList& displayList)
 
 } // namespace DisplayList
 
-} // namespace WebCore
+} // namespace CyberCore

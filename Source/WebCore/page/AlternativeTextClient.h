@@ -30,7 +30,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum ReasonForDismissingAlternativeText {
     ReasonForDismissingAlternativeTextCancelled = 0,
@@ -67,16 +67,16 @@ public:
 #endif
 };
     
-} // namespace WebCore
+} // namespace CyberCore
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::AlternativeTextType> {
+template<> struct EnumTraits<CyberCore::AlternativeTextType> {
     using values = EnumValues<
-        WebCore::AlternativeTextType,
-        WebCore::AlternativeTextType::Correction,
-        WebCore::AlternativeTextType::Reversion,
-        WebCore::AlternativeTextType::SpellingSuggestions,
-        WebCore::AlternativeTextType::DictationAlternatives
+        CyberCore::AlternativeTextType,
+        CyberCore::AlternativeTextType::Correction,
+        CyberCore::AlternativeTextType::Reversion,
+        CyberCore::AlternativeTextType::SpellingSuggestions,
+        CyberCore::AlternativeTextType::DictationAlternatives
     >;
 };
 

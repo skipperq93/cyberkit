@@ -27,7 +27,7 @@
 #include "PlatformLocale.h"
 #include <wtf/DateMath.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class LocaleNone : public Locale {
 public:
@@ -144,4 +144,4 @@ const Vector<String>& LocaleNone::timeAMPMLabels()
 
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

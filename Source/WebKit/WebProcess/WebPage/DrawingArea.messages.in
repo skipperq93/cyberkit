@@ -22,30 +22,30 @@
 
 messages -> DrawingArea NotRefCounted {
 #if USE(COORDINATED_GRAPHICS) || USE(TEXTURE_MAPPER)
-    UpdateBackingStoreState(uint64_t backingStoreStateID, bool respondImmediately, float deviceScaleFactor, WebCore::IntSize size, WebCore::IntSize scrollOffset)
+    UpdateBackingStoreState(uint64_t backingStoreStateID, bool respondImmediately, float deviceScaleFactor, CyberCore::IntSize size, CyberCore::IntSize scrollOffset)
     TargetRefreshRateDidChange(unsigned rate)
 #endif
 
     DisplayDidRefresh()
 
 #if PLATFORM(COCOA)
-    UpdateGeometry(WebCore::IntSize viewSize, bool flushSynchronously, MachSendRight fencePort) -> ()
+    UpdateGeometry(CyberCore::IntSize viewSize, bool flushSynchronously, MachSendRight fencePort) -> ()
     SetDeviceScaleFactor(float deviceScaleFactor)
-    SetColorSpace(struct std::optional<WebCore::DestinationColorSpace> colorSpace)
-    SetViewExposedRect(std::optional<WebCore::FloatRect> viewExposedRect)
+    SetColorSpace(struct std::optional<CyberCore::DestinationColorSpace> colorSpace)
+    SetViewExposedRect(std::optional<CyberCore::FloatRect> viewExposedRect)
 
-    AcceleratedAnimationDidStart(WebCore::GraphicsLayer::PlatformLayerID layerID, String key, MonotonicTime startTime)
-    AcceleratedAnimationDidEnd(WebCore::GraphicsLayer::PlatformLayerID layerID, String key)
+    AcceleratedAnimationDidStart(CyberCore::GraphicsLayer::PlatformLayerID layerID, String key, MonotonicTime startTime)
+    AcceleratedAnimationDidEnd(CyberCore::GraphicsLayer::PlatformLayerID layerID, String key)
     
     DispatchAfterEnsuringDrawing() -> () CallWithReplyID
 #endif
 
 #if USE(GRAPHICS_LAYER_WC)
-    UpdateGeometry(uint64_t backingStoreStateID, WebCore::IntSize viewSize)
+    UpdateGeometry(uint64_t backingStoreStateID, CyberCore::IntSize viewSize)
 #endif
 
 #if PLATFORM(COCOA) || PLATFORM(GTK)
-    AdjustTransientZoom(double scale, WebCore::FloatPoint origin)
-    CommitTransientZoom(double scale, WebCore::FloatPoint origin)
+    AdjustTransientZoom(double scale, CyberCore::FloatPoint origin)
+    CommitTransientZoom(double scale, CyberCore::FloatPoint origin)
 #endif
 }

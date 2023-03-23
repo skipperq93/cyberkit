@@ -17,12 +17,12 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitWebEditorPrivate_h
-#define WebKitWebEditorPrivate_h
+#ifndef CyberKitWebEditorPrivate_h
+#define CyberKitWebEditorPrivate_h
 
-#include "WebKitWebEditor.h"
-#include "WebKitWebPage.h"
+#include "CyberKitWebEditor.h"
+#include "CyberKitWebPage.h"
 
-WebKitWebEditor* webkitWebEditorCreate(WebKitWebPage*);
+CyberKitWebEditor* webkitWebEditorCreate(CyberKitWebPage*);
 
-#endif // WebKitWebEditor_h
+#endif // CyberKitWebEditor_h

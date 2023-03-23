@@ -45,14 +45,14 @@ enum class WebKit::WebsiteLegacyOverflowScrollingTouchPolicy : uint8_t {
 };
 
 struct WebKit::WebsitePoliciesData {
-    WebCore::ContentExtensionEnablement contentExtensionEnablement;
+    CyberCore::ContentExtensionEnablement contentExtensionEnablement;
     HashMap<WTF::String, Vector<WTF::String>> activeContentRuleListActionPatterns;
     OptionSet<WebKit::WebsiteAutoplayQuirk> allowedAutoplayQuirks;
     WebKit::WebsiteAutoplayPolicy autoplayPolicy;
 #if ENABLE(DEVICE_ORIENTATION)
-    WebCore::DeviceOrientationOrMotionPermissionState deviceOrientationAndMotionAccessState;
+    CyberCore::DeviceOrientationOrMotionPermissionState deviceOrientationAndMotionAccessState;
 #endif
-    Vector<WebCore::CustomHeaderFields> customHeaderFields;
+    Vector<CyberCore::CustomHeaderFields> customHeaderFields;
     WebKit::WebsitePopUpPolicy popUpPolicy;
     String customUserAgent;
     String customUserAgentAsSiteSpecificQuirks;
@@ -62,11 +62,11 @@ struct WebKit::WebsitePoliciesData {
     WebKit::WebsiteSimulatedMouseEventsDispatchPolicy simulatedMouseEventsDispatchPolicy;
     WebKit::WebsiteLegacyOverflowScrollingTouchPolicy legacyOverflowScrollingTouchPolicy;
     bool allowContentChangeObserverQuirk;
-    WebCore::AllowsContentJavaScript allowsContentJavaScript;
-    WebCore::MouseEventPolicy mouseEventPolicy;
-    WebCore::ModalContainerObservationPolicy modalContainerObservationPolicy;
-    WebCore::ColorSchemePreference colorSchemePreference;
-    OptionSet<WebCore::NetworkConnectionIntegrity> networkConnectionIntegrityPolicy;
+    CyberCore::AllowsContentJavaScript allowsContentJavaScript;
+    CyberCore::MouseEventPolicy mouseEventPolicy;
+    CyberCore::ModalContainerObservationPolicy modalContainerObservationPolicy;
+    CyberCore::ColorSchemePreference colorSchemePreference;
+    OptionSet<CyberCore::NetworkConnectionIntegrity> networkConnectionIntegrityPolicy;
     bool idempotentModeAutosizingOnlyHonorsPercentages;
     bool allowPrivacyProxy;
 };

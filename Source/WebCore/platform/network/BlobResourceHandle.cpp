@@ -50,7 +50,7 @@
 #include <wtf/Ref.h>
 #include <wtf/URL.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static const unsigned bufferSize = 512 * 1024;
 
@@ -660,4 +660,4 @@ void BlobResourceHandle::notifyFinish()
 
 }
 
-} // namespace WebCore
+} // namespace CyberCore

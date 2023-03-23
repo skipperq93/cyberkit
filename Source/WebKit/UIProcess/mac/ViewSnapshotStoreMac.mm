@@ -36,19 +36,19 @@
 
 namespace WebKit {
 
-Ref<ViewSnapshot> ViewSnapshot::create(std::unique_ptr<WebCore::IOSurface> surface)
+Ref<ViewSnapshot> ViewSnapshot::create(std::unique_ptr<CyberCore::IOSurface> surface)
 {
     return adoptRef(*new ViewSnapshot(WTFMove(surface)));
 }
 
-ViewSnapshot::ViewSnapshot(std::unique_ptr<WebCore::IOSurface> surface)
+ViewSnapshot::ViewSnapshot(std::unique_ptr<CyberCore::IOSurface> surface)
     : m_surface(WTFMove(surface))
 {
     if (hasImage())
         ViewSnapshotStore::singleton().didAddImageToSnapshot(*this);
 }
 
-void ViewSnapshot::setSurface(std::unique_ptr<WebCore::IOSurface> surface)
+void ViewSnapshot::setSurface(std::unique_ptr<CyberCore::IOSurface> surface)
 {
     ASSERT(!m_surface);
     if (!surface) {
@@ -75,13 +75,13 @@ void ViewSnapshot::clearImage()
     m_surface = nullptr;
 }
 
-WebCore::SetNonVolatileResult ViewSnapshot::setVolatile(bool becomeVolatile)
+CyberCore::SetNonVolatileResult ViewSnapshot::setVolatile(bool becomeVolatile)
 {
     if (ViewSnapshotStore::singleton().disableSnapshotVolatilityForTesting())
-        return WebCore::SetNonVolatileResult::Valid;
+        return CyberCore::SetNonVolatileResult::Valid;
 
     if (!m_surface)
-        return WebCore::SetNonVolatileResult::Empty;
+        return CyberCore::SetNonVolatileResult::Empty;
 
     return m_surface->setVolatile(becomeVolatile);
 }
@@ -91,7 +91,7 @@ id ViewSnapshot::asLayerContents()
     if (!m_surface)
         return nullptr;
 
-    if (setVolatile(false) != WebCore::SetNonVolatileResult::Valid) {
+    if (setVolatile(false) != CyberCore::SetNonVolatileResult::Valid) {
         clearImage();
         return nullptr;
     }

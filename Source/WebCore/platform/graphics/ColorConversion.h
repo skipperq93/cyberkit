@@ -28,7 +28,7 @@
 #include "ColorTypes.h"
 #include <wtf/MathExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DestinationColorSpace;
 
@@ -434,4 +434,4 @@ private:
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

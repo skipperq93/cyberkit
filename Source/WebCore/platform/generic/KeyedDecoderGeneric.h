@@ -27,7 +27,7 @@
 
 #include "KeyedCoding.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class KeyedDecoderGeneric final : public KeyedDecoder {
 public:
@@ -67,4 +67,4 @@ private:
     Vector<size_t, 16> m_arrayIndexStack;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

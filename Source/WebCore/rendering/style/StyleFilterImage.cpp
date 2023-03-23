@@ -39,7 +39,7 @@
 #include "RenderElement.h"
 #include <wtf/PointerComparison.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // MARK: - StyleFilterImage
 
@@ -166,4 +166,4 @@ void StyleFilterImage::imageChanged(CachedImage*, const IntRect*)
         client->imageChanged(static_cast<WrappedImagePtr>(this));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -28,7 +28,7 @@
 #include <wtf/NeverDestroyed.h>
 #include <wtf/glib/GUniquePtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 SystemFontDatabase& SystemFontDatabase::singleton()
 {
@@ -66,4 +66,4 @@ void SystemFontDatabase::platformInvalidate()
 {
 }
 
-} // namespace WebCore
+} // namespace CyberCore

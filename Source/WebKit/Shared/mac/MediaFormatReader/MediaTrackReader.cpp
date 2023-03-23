@@ -49,7 +49,7 @@ WTF_DECLARE_CF_TYPE_TRAIT(MTPluginTrackReader);
 
 namespace WebKit {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 CMBaseClassID MediaTrackReader::wrapperClassID()
 {
@@ -191,10 +191,10 @@ OSStatus MediaTrackReader::copyProperty(CFStringRef key, CFAllocatorRef allocato
         const TrackInfo& trackInfo = lastSample.platformSample().sample.byteRangeSample.second;
         if (!m_trackInfo) {
             m_trackInfo = &lastSample.platformSample().sample.byteRangeSample.second.get();
-            m_formatDescription = WebCore::createFormatDescriptionFromTrackInfo(*m_trackInfo);
+            m_formatDescription = CyberCore::createFormatDescriptionFromTrackInfo(*m_trackInfo);
         } else if (*m_trackInfo != trackInfo) {
             m_trackInfo = &trackInfo;
-            m_formatDescription = WebCore::createFormatDescriptionFromTrackInfo(*m_trackInfo);
+            m_formatDescription = CyberCore::createFormatDescriptionFromTrackInfo(*m_trackInfo);
         }
         const void* descriptions[1] = { m_formatDescription.get() };
         *reinterpret_cast<CFArrayRef*>(copiedValue) = adoptCF(CFArrayCreate(allocator, descriptions, 1, &kCFTypeArrayCallBacks)).leakRef();

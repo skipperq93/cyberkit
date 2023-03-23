@@ -50,14 +50,14 @@ list(APPEND WebKit_SOURCES
 
     Shared/cairo/ShareableBitmapCairo.cpp
 
-    Shared/curl/WebCoreArgumentCodersCurl.cpp
+    Shared/curl/CyberCoreArgumentCodersCurl.cpp
 
     Shared/win/AuxiliaryProcessMainWin.cpp
     Shared/win/NativeWebKeyboardEventWin.cpp
     Shared/win/NativeWebMouseEventWin.cpp
     Shared/win/NativeWebTouchEventWin.cpp
     Shared/win/NativeWebWheelEventWin.cpp
-    Shared/win/WebCoreArgumentCodersWin.cpp
+    Shared/win/CyberCoreArgumentCodersWin.cpp
     Shared/win/WebEventFactory.cpp
 
     UIProcess/API/C/WKViewportAttributes.cpp
@@ -108,9 +108,9 @@ list(APPEND WebKit_SOURCES
 
     WebProcess/MediaCache/WebMediaKeyStorageManager.cpp
 
-    WebProcess/WebCoreSupport/curl/WebFrameNetworkingContext.cpp
+    WebProcess/CyberCoreSupport/curl/WebFrameNetworkingContext.cpp
 
-    WebProcess/WebCoreSupport/win/WebPopupMenuWin.cpp
+    WebProcess/CyberCoreSupport/win/WebPopupMenuWin.cpp
 
     WebProcess/WebPage/AcceleratedSurface.cpp
 
@@ -157,8 +157,8 @@ list(APPEND WebKit_INCLUDE_DIRECTORIES
     "${WEBKIT_DIR}/WebProcess/InjectedBundle/API/win"
     "${WEBKIT_DIR}/WebProcess/InjectedBundle/API/win/DOM"
     "${WEBKIT_DIR}/WebProcess/Inspector/win"
-    "${WEBKIT_DIR}/WebProcess/WebCoreSupport/curl"
-    "${WEBKIT_DIR}/WebProcess/WebCoreSupport/win"
+    "${WEBKIT_DIR}/WebProcess/CyberCoreSupport/curl"
+    "${WEBKIT_DIR}/WebProcess/CyberCoreSupport/win"
     "${WEBKIT_DIR}/WebProcess/WebPage/CoordinatedGraphics"
     "${WEBKIT_DIR}/WebProcess/WebPage/wc"
     "${WEBKIT_DIR}/WebProcess/WebPage/win"

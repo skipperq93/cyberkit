@@ -114,7 +114,7 @@
 #include "UserContentProvider.h"
 #include "UserGestureIndicator.h"
 #include "VisualViewport.h"
-#include "WebCoreOpaqueRoot.h"
+#include "CyberCoreOpaqueRoot.h"
 #include "WebKitPoint.h"
 #include "WindowFeatures.h"
 #include "WindowFocusAllowedIndicator.h"
@@ -152,7 +152,7 @@
 #include "PointerLockController.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 using namespace Inspector;
 
 static constexpr Seconds defaultTransientActivationDuration { 5_s };
@@ -298,7 +298,7 @@ void DOMWindow::dispatchAllPendingUnloadEvents()
         return Ref<DOMWindow>(*(keyValue.key));
     });
 
-    auto& eventNames = WebCore::eventNames();
+    auto& eventNames = CyberCore::eventNames();
     for (auto& window : windows) {
         if (!set.contains(window.ptr()))
             continue;
@@ -1986,7 +1986,7 @@ bool DOMWindow::crossOriginIsolated() const
 
 static void didAddStorageEventListener(DOMWindow& window)
 {
-    // Creating these WebCore::Storage objects informs the system that we'd like to receive
+    // Creating these CyberCore::Storage objects informs the system that we'd like to receive
     // notifications about storage events that might be triggered in other processes. Rather
     // than subscribe to these notifications explicitly, we subscribe to them implicitly to
     // simplify the work done by the system. 
@@ -2021,7 +2021,7 @@ bool DOMWindow::addEventListener(const AtomString& eventType, Ref<EventListener>
         return false;
 
     RefPtr document = this->document();
-    auto& eventNames = WebCore::eventNames();
+    auto& eventNames = CyberCore::eventNames();
     if (document) {
         document->addListenerTypeIfNeeded(eventType);
         if (eventNames.isWheelEventType(eventType))
@@ -2265,7 +2265,7 @@ bool DOMWindow::removeEventListener(const AtomString& eventType, EventListener& 
         return false;
 
     RefPtr document = this->document();
-    auto& eventNames = WebCore::eventNames();
+    auto& eventNames = CyberCore::eventNames();
     if (document) {
         if (eventNames.isWheelEventType(eventType))
             document->didRemoveWheelEventHandler(*document);
@@ -2356,7 +2356,7 @@ void DOMWindow::dispatchEvent(Event& event, EventTarget* target)
 
     Ref protectedThis { *this };
 
-    // Pausing a page may trigger pagehide and pageshow events. WebCore also implicitly fires these
+    // Pausing a page may trigger pagehide and pageshow events. CyberCore also implicitly fires these
     // events when closing a WebView. Here we keep track of the state of the page to prevent duplicate,
     // unbalanced events per the definition of the pageshow event:
     // <http://www.whatwg.org/specs/web-apps/current-work/multipage/history.html#event-pageshow>.
@@ -2601,7 +2601,7 @@ ExceptionOr<RefPtr<Frame>> DOMWindow::createWindow(const String& urlString, cons
     // We pass the opener frame for the lookupFrame in case the active frame is different from
     // the opener frame, and the name references a frame relative to the opener frame.
     bool created;
-    auto newFrame = WebCore::createWindow(*activeFrame, openerFrame, WTFMove(frameLoadRequest), windowFeatures, created);
+    auto newFrame = CyberCore::createWindow(*activeFrame, openerFrame, WTFMove(frameLoadRequest), windowFeatures, created);
     if (!newFrame)
         return RefPtr<Frame> { nullptr };
 
@@ -2794,9 +2794,9 @@ void DOMWindow::eventListenersDidChange()
     }
 }
 
-WebCoreOpaqueRoot root(DOMWindow* window)
+CyberCoreOpaqueRoot root(DOMWindow* window)
 {
-    return WebCoreOpaqueRoot { window };
+    return CyberCoreOpaqueRoot { window };
 }
 
-} // namespace WebCore
+} // namespace CyberCore

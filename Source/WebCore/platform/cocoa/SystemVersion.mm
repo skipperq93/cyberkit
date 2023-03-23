@@ -26,7 +26,7 @@
 #import "SystemVersion.h"
 #import <pal/spi/cf/CFUtilitiesSPI.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static RetainPtr<NSString> createSystemMarketingVersion()
 {

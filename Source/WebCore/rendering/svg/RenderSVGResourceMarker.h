@@ -21,7 +21,7 @@
 
 #include "RenderSVGResourceContainer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class AffineTransform;
 class RenderObject;
@@ -74,6 +74,6 @@ private:
     FloatRect m_viewport;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_SVG_RESOURCE(RenderSVGResourceMarker, MarkerResourceType)

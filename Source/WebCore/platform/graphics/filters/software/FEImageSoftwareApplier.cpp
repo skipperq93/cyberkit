@@ -30,7 +30,7 @@
 #include "Filter.h"
 #include "GraphicsContext.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 bool FEImageSoftwareApplier::apply(const Filter& filter, const FilterImageVector&, FilterImage& result) const
 {
@@ -65,4 +65,4 @@ bool FEImageSoftwareApplier::apply(const Filter& filter, const FilterImageVector
     return false;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

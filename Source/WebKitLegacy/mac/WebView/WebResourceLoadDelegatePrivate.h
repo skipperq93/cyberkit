@@ -49,7 +49,7 @@
  @method webView:shouldPaintBrokenImageForURL:(NSURL*)imageURL
  @abstract This message is sent when an image cannot be decoded or displayed.
  @param imageURL The url of the broken image.
- @result return YES if WebKit should paint the default broken image.
+ @result return YES if CyberKit should paint the default broken image.
  */
 - (BOOL)webView:(WebView*)sender shouldPaintBrokenImageForURL:(NSURL*)imageURL;
 

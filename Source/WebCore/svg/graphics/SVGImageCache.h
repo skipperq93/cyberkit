@@ -24,7 +24,7 @@
 #include <wtf/HashMap.h>
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CachedImage;
 class CachedImageClient;
@@ -56,4 +56,4 @@ private:
     ImageForContainerMap m_imageForContainerMap;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

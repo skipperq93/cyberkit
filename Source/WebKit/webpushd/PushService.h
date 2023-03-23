@@ -48,28 +48,28 @@ class UnsubscribeRequest;
 class PushService {
     WTF_MAKE_FAST_ALLOCATED;
 public:
-    using IncomingPushMessageHandler = Function<void(const WebCore::PushSubscriptionSetIdentifier&, WebKit::WebPushMessage&&)>;
+    using IncomingPushMessageHandler = Function<void(const CyberCore::PushSubscriptionSetIdentifier&, CyberKit::WebPushMessage&&)>;
 
     static void create(const String& incomingPushServiceName, const String& databasePath, IncomingPushMessageHandler&&, CompletionHandler<void(std::unique_ptr<PushService>&&)>&&);
     static void createMockService(IncomingPushMessageHandler&&, CompletionHandler<void(std::unique_ptr<PushService>&&)>&&);
     ~PushService();
 
     PushServiceConnection& connection() { return m_connection; }
-    WebCore::PushDatabase& database() { return m_database; }
+    CyberCore::PushDatabase& database() { return m_database; }
 
     Vector<String> enabledTopics() { return m_connection->enabledTopics(); }
     Vector<String> ignoredTopics() { return m_connection->ignoredTopics(); }
 
-    void getSubscription(const WebCore::PushSubscriptionSetIdentifier&, const String& scope, CompletionHandler<void(const Expected<std::optional<WebCore::PushSubscriptionData>, WebCore::ExceptionData>&)>&&);
-    void subscribe(const WebCore::PushSubscriptionSetIdentifier&, const String& scope, const Vector<uint8_t>& vapidPublicKey, CompletionHandler<void(const Expected<WebCore::PushSubscriptionData, WebCore::ExceptionData>&)>&&);
-    void unsubscribe(const WebCore::PushSubscriptionSetIdentifier&, const String& scope, std::optional<WebCore::PushSubscriptionIdentifier>, CompletionHandler<void(const Expected<bool, WebCore::ExceptionData>&)>&&);
+    void getSubscription(const CyberCore::PushSubscriptionSetIdentifier&, const String& scope, CompletionHandler<void(const Expected<std::optional<CyberCore::PushSubscriptionData>, CyberCore::ExceptionData>&)>&&);
+    void subscribe(const CyberCore::PushSubscriptionSetIdentifier&, const String& scope, const Vector<uint8_t>& vapidPublicKey, CompletionHandler<void(const Expected<CyberCore::PushSubscriptionData, CyberCore::ExceptionData>&)>&&);
+    void unsubscribe(const CyberCore::PushSubscriptionSetIdentifier&, const String& scope, std::optional<CyberCore::PushSubscriptionIdentifier>, CompletionHandler<void(const Expected<bool, CyberCore::ExceptionData>&)>&&);
 
-    void incrementSilentPushCount(const WebCore::PushSubscriptionSetIdentifier&, const String& securityOrigin, CompletionHandler<void(unsigned)>&&);
+    void incrementSilentPushCount(const CyberCore::PushSubscriptionSetIdentifier&, const String& securityOrigin, CompletionHandler<void(unsigned)>&&);
 
-    void setPushesEnabledForSubscriptionSetAndOrigin(const WebCore::PushSubscriptionSetIdentifier&, const String& securityOrigin, bool, CompletionHandler<void()>&&);
+    void setPushesEnabledForSubscriptionSetAndOrigin(const CyberCore::PushSubscriptionSetIdentifier&, const String& securityOrigin, bool, CompletionHandler<void()>&&);
 
-    void removeRecordsForSubscriptionSet(const WebCore::PushSubscriptionSetIdentifier&, CompletionHandler<void(unsigned)>&&);
-    void removeRecordsForSubscriptionSetAndOrigin(const WebCore::PushSubscriptionSetIdentifier&, const String& securityOrigin, CompletionHandler<void(unsigned)>&&);
+    void removeRecordsForSubscriptionSet(const CyberCore::PushSubscriptionSetIdentifier&, CompletionHandler<void(unsigned)>&&);
+    void removeRecordsForSubscriptionSetAndOrigin(const CyberCore::PushSubscriptionSetIdentifier&, const String& securityOrigin, CompletionHandler<void(unsigned)>&&);
 
     void didCompleteGetSubscriptionRequest(GetSubscriptionRequest&);
     void didCompleteSubscribeRequest(SubscribeRequest&);
@@ -80,16 +80,16 @@ public:
     void didReceivePushMessage(NSString *topic, NSDictionary *userInfo, CompletionHandler<void()>&& = [] { });
 
 private:
-    PushService(UniqueRef<PushServiceConnection>&&, UniqueRef<WebCore::PushDatabase>&&, IncomingPushMessageHandler&&);
+    PushService(UniqueRef<PushServiceConnection>&&, UniqueRef<CyberCore::PushDatabase>&&, IncomingPushMessageHandler&&);
 
     using PushServiceRequestMap = HashMap<String, Deque<std::unique_ptr<PushServiceRequest>>>;
     void enqueuePushServiceRequest(PushServiceRequestMap&, std::unique_ptr<PushServiceRequest>&&);
     void finishedPushServiceRequest(PushServiceRequestMap&, PushServiceRequest&);
 
-    void removeRecordsImpl(const WebCore::PushSubscriptionSetIdentifier&, const std::optional<String>& securityOrigin, CompletionHandler<void(unsigned)>&&);
+    void removeRecordsImpl(const CyberCore::PushSubscriptionSetIdentifier&, const std::optional<String>& securityOrigin, CompletionHandler<void(unsigned)>&&);
 
     UniqueRef<PushServiceConnection> m_connection;
-    UniqueRef<WebCore::PushDatabase> m_database;
+    UniqueRef<CyberCore::PushDatabase> m_database;
 
     IncomingPushMessageHandler m_incomingPushMessageHandler;
 

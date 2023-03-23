@@ -36,7 +36,7 @@
 
 @implementation DOMNativeXPathNSResolver
 
-#define IMPL reinterpret_cast<WebCore::XPathNSResolver*>(_internal)
+#define IMPL reinterpret_cast<CyberCore::XPathNSResolver*>(_internal)
 
 - (void)dealloc
 {
@@ -52,12 +52,12 @@
 
 @end
 
-WebCore::XPathNSResolver* core(DOMNativeXPathNSResolver *wrapper)
+CyberCore::XPathNSResolver* core(DOMNativeXPathNSResolver *wrapper)
 {
-    return wrapper ? reinterpret_cast<WebCore::XPathNSResolver*>(wrapper->_internal) : 0;
+    return wrapper ? reinterpret_cast<CyberCore::XPathNSResolver*>(wrapper->_internal) : 0;
 }
 
-DOMNativeXPathNSResolver *kit(WebCore::XPathNSResolver* impl)
+DOMNativeXPathNSResolver *kit(CyberCore::XPathNSResolver* impl)
 {
     if (!impl)
         return nil;

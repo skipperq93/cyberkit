@@ -41,9 +41,9 @@ OBJC_CLASS AVCaptureSession;
 OBJC_CLASS NSArray;
 OBJC_CLASS NSMutableArray;
 OBJC_CLASS NSString;
-OBJC_CLASS WebCoreAVCaptureDeviceManagerObserver;
+OBJC_CLASS CyberCoreAVCaptureDeviceManagerObserver;
 
-namespace WebCore {
+namespace CyberCore {
 
 class AVCaptureDeviceManager final : public CaptureDeviceManager {
     friend class NeverDestroyed<AVCaptureDeviceManager>;
@@ -66,7 +66,7 @@ private:
     Vector<CaptureDevice> retrieveCaptureDevices();
     RetainPtr<NSArray> currentCameras();
 
-    RetainPtr<WebCoreAVCaptureDeviceManagerObserver> m_objcObserver;
+    RetainPtr<CyberCoreAVCaptureDeviceManagerObserver> m_objcObserver;
     Vector<CaptureDevice> m_devices;
     RetainPtr<NSMutableArray> m_avCaptureDevices;
     RetainPtr<NSArray> m_avCaptureDeviceTypes;
@@ -75,7 +75,7 @@ private:
     Ref<WorkQueue> m_dispatchQueue;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM)
 

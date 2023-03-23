@@ -32,7 +32,7 @@
 #include <optional>
 #include <wtf/Noncopyable.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScopedRestoreTextureBinding {
     WTF_MAKE_NONCOPYABLE(ScopedRestoreTextureBinding);

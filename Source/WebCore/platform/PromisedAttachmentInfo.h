@@ -28,7 +28,7 @@
 #include <wtf/Forward.h>
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SharedBuffer;
 
@@ -50,5 +50,5 @@ struct PromisedAttachmentInfo {
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 

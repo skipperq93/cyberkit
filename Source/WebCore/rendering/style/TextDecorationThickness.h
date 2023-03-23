@@ -29,7 +29,7 @@
 #include "Length.h"
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class TextDecorationThickness {
 public:
@@ -133,4 +133,4 @@ inline TextStream& operator<<(TextStream& ts, const TextDecorationThickness& thi
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

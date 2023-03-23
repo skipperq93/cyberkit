@@ -27,7 +27,7 @@
 
 #include "PrewarmInformation.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class WEBCORE_EXPORT ProcessWarming {
 public:

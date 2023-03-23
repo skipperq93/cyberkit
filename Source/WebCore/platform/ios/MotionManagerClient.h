@@ -29,7 +29,7 @@
 
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class MotionManagerClient : public CanMakeWeakPtr<MotionManagerClient> {
 public:

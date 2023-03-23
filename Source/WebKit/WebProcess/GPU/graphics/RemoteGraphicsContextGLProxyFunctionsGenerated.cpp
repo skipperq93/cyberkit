@@ -607,7 +607,7 @@ void RemoteGraphicsContextGLProxy::generateMipmap(GCGLenum target)
     }
 }
 
-bool RemoteGraphicsContextGLProxy::getActiveAttrib(PlatformGLObject program, GCGLuint index, struct WebCore::GraphicsContextGLActiveInfo& arg2)
+bool RemoteGraphicsContextGLProxy::getActiveAttrib(PlatformGLObject program, GCGLuint index, struct CyberCore::GraphicsContextGLActiveInfo& arg2)
 {
     if (isContextLost())
         return { };
@@ -621,7 +621,7 @@ bool RemoteGraphicsContextGLProxy::getActiveAttrib(PlatformGLObject program, GCG
     return returnValue;
 }
 
-bool RemoteGraphicsContextGLProxy::getActiveUniform(PlatformGLObject program, GCGLuint index, struct WebCore::GraphicsContextGLActiveInfo& arg2)
+bool RemoteGraphicsContextGLProxy::getActiveUniform(PlatformGLObject program, GCGLuint index, struct CyberCore::GraphicsContextGLActiveInfo& arg2)
 {
     if (isContextLost())
         return { };
@@ -2605,7 +2605,7 @@ void RemoteGraphicsContextGLProxy::transformFeedbackVaryings(PlatformGLObject pr
     }
 }
 
-void RemoteGraphicsContextGLProxy::getTransformFeedbackVarying(PlatformGLObject program, GCGLuint index, struct WebCore::GraphicsContextGLActiveInfo& arg2)
+void RemoteGraphicsContextGLProxy::getTransformFeedbackVarying(PlatformGLObject program, GCGLuint index, struct CyberCore::GraphicsContextGLActiveInfo& arg2)
 {
     if (isContextLost())
         return;
@@ -3007,7 +3007,7 @@ void RemoteGraphicsContextGLProxy::getInternalformativ(GCGLenum target, GCGLenum
     memcpy(params.data(), paramsReply.data(), params.size() * sizeof(int32_t));
 }
 
-void RemoteGraphicsContextGLProxy::setDrawingBufferColorSpace(const WebCore::DestinationColorSpace& arg0)
+void RemoteGraphicsContextGLProxy::setDrawingBufferColorSpace(const CyberCore::DestinationColorSpace& arg0)
 {
     if (isContextLost())
         return;
@@ -3018,7 +3018,7 @@ void RemoteGraphicsContextGLProxy::setDrawingBufferColorSpace(const WebCore::Des
     }
 }
 
-RefPtr<WebCore::PixelBuffer> RemoteGraphicsContextGLProxy::paintRenderingResultsToPixelBuffer()
+RefPtr<CyberCore::PixelBuffer> RemoteGraphicsContextGLProxy::paintRenderingResultsToPixelBuffer()
 {
     if (isContextLost())
         return { };

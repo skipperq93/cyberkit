@@ -33,20 +33,20 @@ namespace API {
 
 class URLResponse : public ObjectImpl<Object::Type::URLResponse> {
 public:
-    static Ref<URLResponse> create(const WebCore::ResourceResponse& response)
+    static Ref<URLResponse> create(const CyberCore::ResourceResponse& response)
     {
         return adoptRef(*new URLResponse(response));
     }
 
-    const WebCore::ResourceResponse& resourceResponse() const { return m_response; }
+    const CyberCore::ResourceResponse& resourceResponse() const { return m_response; }
 
 private:
-    explicit URLResponse(const WebCore::ResourceResponse& response)
+    explicit URLResponse(const CyberCore::ResourceResponse& response)
         : m_response(response)
     {
     }
 
-    WebCore::ResourceResponse m_response;
+    CyberCore::ResourceResponse m_response;
 };
 
 } // namespace API

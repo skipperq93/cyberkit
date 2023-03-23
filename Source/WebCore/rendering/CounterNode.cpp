@@ -26,7 +26,7 @@
 #include "RenderElement.h"
 #include <stdio.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 CounterNode::CounterNode(RenderElement& owner, bool hasResetType, int value)
     : m_hasResetType(hasResetType)
@@ -348,11 +348,11 @@ static void showTreeAndMark(const CounterNode* node)
 
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #if ENABLE(TREE_DEBUGGING)
 
-void showCounterTree(const WebCore::CounterNode* counter)
+void showCounterTree(const CyberCore::CounterNode* counter)
 {
     if (counter)
         showTreeAndMark(counter);

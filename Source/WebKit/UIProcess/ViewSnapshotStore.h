@@ -52,7 +52,7 @@ class WebPageProxy;
 class ViewSnapshot : public RefCounted<ViewSnapshot> {
 public:
 #if HAVE(IOSURFACE)
-    static Ref<ViewSnapshot> create(std::unique_ptr<WebCore::IOSurface>);
+    static Ref<ViewSnapshot> create(std::unique_ptr<CyberCore::IOSurface>);
 #endif
 #if PLATFORM(GTK)
 #if USE(GTK4)
@@ -75,27 +75,27 @@ public:
     void setRenderTreeSize(uint64_t renderTreeSize) { m_renderTreeSize = renderTreeSize; }
     uint64_t renderTreeSize() const { return m_renderTreeSize; }
 
-    void setBackgroundColor(const WebCore::Color& color) { m_backgroundColor = color; }
-    WebCore::Color backgroundColor() const { return m_backgroundColor; }
+    void setBackgroundColor(const CyberCore::Color& color) { m_backgroundColor = color; }
+    CyberCore::Color backgroundColor() const { return m_backgroundColor; }
 
-    void setViewScrollPosition(WebCore::IntPoint scrollPosition) { m_viewScrollPosition = scrollPosition; }
-    WebCore::IntPoint viewScrollPosition() const { return m_viewScrollPosition; }
+    void setViewScrollPosition(CyberCore::IntPoint scrollPosition) { m_viewScrollPosition = scrollPosition; }
+    CyberCore::IntPoint viewScrollPosition() const { return m_viewScrollPosition; }
 
     void setDeviceScaleFactor(float deviceScaleFactor) { m_deviceScaleFactor = deviceScaleFactor; }
     float deviceScaleFactor() const { return m_deviceScaleFactor; }
 
-    void setOrigin(WebCore::SecurityOriginData&& origin) { m_origin = WTFMove(origin); }
-    const WebCore::SecurityOriginData& origin() const { return m_origin; }
+    void setOrigin(CyberCore::SecurityOriginData&& origin) { m_origin = WTFMove(origin); }
+    const CyberCore::SecurityOriginData& origin() const { return m_origin; }
 
 #if HAVE(IOSURFACE)
-    WebCore::IOSurface* surface() const { return m_surface.get(); }
+    CyberCore::IOSurface* surface() const { return m_surface.get(); }
 
     size_t estimatedImageSizeInBytes() const { return m_surface ? m_surface->totalBytes() : 0; }
-    WebCore::IntSize size() const { return m_surface ? m_surface->size() : WebCore::IntSize(); }
+    CyberCore::IntSize size() const { return m_surface ? m_surface->size() : CyberCore::IntSize(); }
 
-    void setSurface(std::unique_ptr<WebCore::IOSurface>);
+    void setSurface(std::unique_ptr<CyberCore::IOSurface>);
 
-    WebCore::SetNonVolatileResult setVolatile(bool);
+    CyberCore::SetNonVolatileResult setVolatile(bool);
 #endif
 
 #if PLATFORM(GTK)
@@ -106,14 +106,14 @@ public:
 #endif
 
     size_t estimatedImageSizeInBytes() const;
-    WebCore::IntSize size() const;
+    CyberCore::IntSize size() const;
 #endif
 
 private:
 #if HAVE(IOSURFACE)
-    explicit ViewSnapshot(std::unique_ptr<WebCore::IOSurface>);
+    explicit ViewSnapshot(std::unique_ptr<CyberCore::IOSurface>);
 
-    std::unique_ptr<WebCore::IOSurface> m_surface;
+    std::unique_ptr<CyberCore::IOSurface> m_surface;
 #endif
 
 #if PLATFORM(GTK)
@@ -130,9 +130,9 @@ private:
 
     uint64_t m_renderTreeSize;
     float m_deviceScaleFactor;
-    WebCore::Color m_backgroundColor;
-    WebCore::IntPoint m_viewScrollPosition; // Scroll position at snapshot time. Integral to make comparison reliable.
-    WebCore::SecurityOriginData m_origin;
+    CyberCore::Color m_backgroundColor;
+    CyberCore::IntPoint m_viewScrollPosition; // Scroll position at snapshot time. Integral to make comparison reliable.
+    CyberCore::SecurityOriginData m_origin;
 };
 
 class ViewSnapshotStore {
@@ -147,7 +147,7 @@ public:
     void recordSnapshot(WebPageProxy&, WebBackForwardListItem&);
 
     void discardSnapshotImages();
-    void discardSnapshotImagesForOrigin(const WebCore::SecurityOriginData&);
+    void discardSnapshotImagesForOrigin(const CyberCore::SecurityOriginData&);
 
     void setDisableSnapshotVolatilityForTesting(bool disable) { m_disableSnapshotVolatility = disable; }
     bool disableSnapshotVolatilityForTesting() const { return m_disableSnapshotVolatility; }

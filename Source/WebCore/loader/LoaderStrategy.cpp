@@ -28,7 +28,7 @@
 
 #include "NetworkLoadInformation.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 LoaderStrategy::~LoaderStrategy() = default;
 
@@ -56,4 +56,4 @@ Vector<NetworkTransactionInformation> LoaderStrategy::intermediateLoadInformatio
     return { };
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -23,38 +23,38 @@
 headers: <CyberCore/Pasteboard.h>
 
 header: <CyberCore/Pasteboard.h>
-[CustomHeader=True] struct WebCore::PasteboardImage {
-    RefPtr<WebCore::Image> image;
+[CustomHeader=True] struct CyberCore::PasteboardImage {
+    RefPtr<CyberCore::Image> image;
 #if PLATFORM(MAC)
-    RefPtr<WebCore::SharedBuffer> dataInWebArchiveFormat;
+    RefPtr<CyberCore::SharedBuffer> dataInWebArchiveFormat;
     String dataInHTMLFormat;
 #endif
 #if !PLATFORM(WIN)
-    WebCore::PasteboardURL url;
+    CyberCore::PasteboardURL url;
 #endif
 #if !(PLATFORM(GTK) || PLATFORM(WIN))
-    RefPtr<WebCore::SharedBuffer> resourceData;
+    RefPtr<CyberCore::SharedBuffer> resourceData;
     String resourceMIMEType;
     Vector<String> clientTypes;
-    Vector<RefPtr<WebCore::SharedBuffer>> clientData;
+    Vector<RefPtr<CyberCore::SharedBuffer>> clientData;
 #endif
     String suggestedName;
-    WebCore::FloatSize imageSize;
+    CyberCore::FloatSize imageSize;
 };
 
 header: <CyberCore/Pasteboard.h>
-[CustomHeader=True] struct WebCore::PasteboardWebContent {
+[CustomHeader=True] struct CyberCore::PasteboardWebContent {
 #if PLATFORM(COCOA)
     String contentOrigin;
     bool canSmartCopyOrDelete;
-    RefPtr<WebCore::SharedBuffer> dataInWebArchiveFormat;
-    RefPtr<WebCore::SharedBuffer> dataInRTFDFormat;
-    RefPtr<WebCore::SharedBuffer> dataInRTFFormat;
-    RefPtr<WebCore::SharedBuffer> dataInAttributedStringFormat;
+    RefPtr<CyberCore::SharedBuffer> dataInWebArchiveFormat;
+    RefPtr<CyberCore::SharedBuffer> dataInRTFDFormat;
+    RefPtr<CyberCore::SharedBuffer> dataInRTFFormat;
+    RefPtr<CyberCore::SharedBuffer> dataInAttributedStringFormat;
     String dataInHTMLFormat;
     String dataInStringFormat;
     Vector<String> clientTypes;
-    Vector<RefPtr<WebCore::SharedBuffer>> clientData;
+    Vector<RefPtr<CyberCore::SharedBuffer>> clientData;
 #endif
 #if PLATFORM(GTK)
     String contentOrigin;
@@ -69,7 +69,7 @@ header: <CyberCore/Pasteboard.h>
 };
 
 header: <CyberCore/Pasteboard.h>
-[CustomHeader=True] struct WebCore::PasteboardURL {
+[CustomHeader=True] struct CyberCore::PasteboardURL {
     URL url
     String title
 #if PLATFORM(MAC)
@@ -81,10 +81,10 @@ header: <CyberCore/Pasteboard.h>
 };
 
 header: <CyberCore/Pasteboard.h>
-[CustomHeader=True] struct WebCore::PasteboardBuffer {
+[CustomHeader=True] struct CyberCore::PasteboardBuffer {
 #if PLATFORM(COCOA)
     String contentOrigin;
 #endif
     String type;
-    RefPtr<WebCore::SharedBuffer> data;
+    RefPtr<CyberCore::SharedBuffer> data;
 };

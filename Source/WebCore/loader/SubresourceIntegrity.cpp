@@ -33,7 +33,7 @@
 #include "SharedBuffer.h"
 #include <wtf/text/StringParsingBuffer.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace {
 

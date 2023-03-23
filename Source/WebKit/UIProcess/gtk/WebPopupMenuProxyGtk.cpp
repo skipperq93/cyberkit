@@ -36,7 +36,7 @@
 #include <wtf/text/CString.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 enum Columns {
     Label,
@@ -381,7 +381,7 @@ void WebPopupMenuProxyGtk::showPopupMenu(const IntRect& rect, TextDirection, dou
     }, this);
 
     // PopupMenu can fail to open when there is no mouse grab.
-    // Ensure WebCore does not go into some pesky state.
+    // Ensure CyberCore does not go into some pesky state.
     if (grabResult != GDK_GRAB_SUCCESS) {
        m_client->failedToShowPopupMenu();
        return;

@@ -30,7 +30,7 @@
 #include "SharedBufferReference.h"
 #include "UndoOrRedo.h"
 #include "WKBundlePageEditorClient.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebFrame.h"
 #include "WebPage.h"
 #include "WebPageProxy.h"
@@ -65,8 +65,8 @@
 #include <CyberCore/PlatformDisplay.h>
 #endif
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 using namespace HTMLNames;
 
 bool WebEditorClient::shouldDeleteRange(const std::optional<SimpleRange>& range)
@@ -147,7 +147,7 @@ void WebEditorClient::registerAttachmentIdentifier(const String& identifier, con
     m_page->send(Messages::WebPageProxy::RegisterAttachmentIdentifierFromData(identifier, contentType, preferredFileName, IPC::SharedBufferReference(WTFMove(data))));
 }
 
-void WebEditorClient::registerAttachments(Vector<WebCore::SerializedAttachmentData>&& data)
+void WebEditorClient::registerAttachments(Vector<CyberCore::SerializedAttachmentData>&& data)
 {
     m_page->send(Messages::WebPageProxy::RegisterAttachmentsFromSerializedData(WTFMove(data)));
 }
@@ -180,7 +180,7 @@ void WebEditorClient::didRemoveAttachmentWithIdentifier(const String& identifier
 Vector<SerializedAttachmentData> WebEditorClient::serializedAttachmentDataForIdentifiers(const Vector<String>& identifiers)
 {
     auto sendResult = m_page->sendSync(Messages::WebPageProxy::SerializedAttachmentDataForIdentifiers(identifiers));
-    auto [serializedData] = sendResult.takeReplyOr(Vector<WebCore::SerializedAttachmentData> { });
+    auto [serializedData] = sendResult.takeReplyOr(Vector<CyberCore::SerializedAttachmentData> { });
     return serializedData;
 }
 
@@ -332,7 +332,7 @@ void WebEditorClient::redo()
     m_page->sendSync(Messages::WebPageProxy::ExecuteUndoRedo(UndoOrRedo::Redo));
 }
 
-WebCore::DOMPasteAccessResponse WebEditorClient::requestDOMPasteAccess(WebCore::DOMPasteAccessCategory pasteAccessCategory, const String& originIdentifier)
+CyberCore::DOMPasteAccessResponse WebEditorClient::requestDOMPasteAccess(CyberCore::DOMPasteAccessCategory pasteAccessCategory, const String& originIdentifier)
 {
     return m_page->requestDOMPasteAccess(pasteAccessCategory, originIdentifier);
 }
@@ -487,7 +487,7 @@ void WebEditorClient::textWillBeDeletedInTextField(Element& element)
     m_page->injectedBundleFormClient().shouldPerformActionInTextField(m_page, *inputElement, toInputFieldAction(WKInputFieldActionTypeInsertDelete), webFrame);
 }
 
-bool WebEditorClient::shouldEraseMarkersAfterChangeSelection(WebCore::TextCheckingType type) const
+bool WebEditorClient::shouldEraseMarkersAfterChangeSelection(CyberCore::TextCheckingType type) const
 {
     // This prevents erasing spelling markers on OS X Lion or later to match AppKit on these Mac OS X versions.
 #if PLATFORM(COCOA)
@@ -516,7 +516,7 @@ void WebEditorClient::checkSpellingOfString(StringView text, int* misspellingLoc
     *misspellingLength = resultLength;
 }
 
-void WebEditorClient::checkGrammarOfString(StringView text, Vector<WebCore::GrammarDetail>& grammarDetails, int* badGrammarLocation, int* badGrammarLength)
+void WebEditorClient::checkGrammarOfString(StringView text, Vector<CyberCore::GrammarDetail>& grammarDetails, int* badGrammarLocation, int* badGrammarLength)
 {
     auto sendResult = m_page->sendSync(Messages::WebPageProxy::CheckGrammarOfString(text.toStringWithoutCopying()));
     int32_t resultLocation = -1;
@@ -536,7 +536,7 @@ static uint64_t insertionPointFromCurrentSelection(const VisibleSelection& curre
 
 #if USE(UNIFIED_TEXT_CHECKING)
 
-Vector<TextCheckingResult> WebEditorClient::checkTextOfParagraph(StringView stringView, OptionSet<WebCore::TextCheckingType> checkingTypes, const VisibleSelection& currentSelection)
+Vector<TextCheckingResult> WebEditorClient::checkTextOfParagraph(StringView stringView, OptionSet<CyberCore::TextCheckingType> checkingTypes, const VisibleSelection& currentSelection)
 {
     auto sendResult = m_page->sendSync(Messages::WebPageProxy::CheckTextOfParagraph(stringView.toStringWithoutCopying(), checkingTypes, insertionPointFromCurrentSelection(currentSelection)));
     auto [results] = sendResult.takeReplyOr(Vector<TextCheckingResult> { });
@@ -574,7 +574,7 @@ void WebEditorClient::getGuessesForWord(const String& word, const String& contex
         std::tie(guesses) = sendResult.takeReply();
 }
 
-void WebEditorClient::requestCheckingOfString(TextCheckingRequest& request, const WebCore::VisibleSelection& currentSelection)
+void WebEditorClient::requestCheckingOfString(TextCheckingRequest& request, const CyberCore::VisibleSelection& currentSelection)
 {
     auto requestID = TextCheckerRequestID::generate();
     m_page->addTextCheckingRequest(requestID, request);
@@ -618,4 +618,4 @@ bool WebEditorClient::supportsGlobalSelection()
     return false;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

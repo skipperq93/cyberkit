@@ -1,5 +1,5 @@
-This directory contains the contents of Promise A+ tests 2.0.5[1] ported into WebKit.
-To use this tests inside WebKit LayoutTests, we sue browserify to generate `promise-tests.js`.
+This directory contains the contents of Promise A+ tests 2.0.5[1] ported into CyberKit.
+To use this tests inside CyberKit LayoutTests, we sue browserify to generate `promise-tests.js`.
 
 Additionally, this directory contains the following contents.
 

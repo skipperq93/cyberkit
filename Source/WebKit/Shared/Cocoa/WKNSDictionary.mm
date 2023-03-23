@@ -27,7 +27,7 @@
 #import "WKNSDictionary.h"
 
 #import "WKNSArray.h"
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 
 using namespace WebKit;
 
@@ -37,7 +37,7 @@ using namespace WebKit;
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainRunLoop(WKNSDictionary.class, self))
+    if (CyberCoreObjCScheduleDeallocateOnMainRunLoop(WKNSDictionary.class, self))
         return;
 
     _dictionary->~Dictionary();

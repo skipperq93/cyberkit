@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -17,16 +17,16 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitDOMHTMLIFrameElementPrivate_h
-#define WebKitDOMHTMLIFrameElementPrivate_h
+#ifndef CyberKitDOMHTMLIFrameElementPrivate_h
+#define CyberKitDOMHTMLIFrameElementPrivate_h
 
 #include <CyberCore/HTMLIFrameElement.h>
-#include <webkitdom/WebKitDOMHTMLIFrameElement.h>
+#include <webkitdom/CyberKitDOMHTMLIFrameElement.h>
 
-namespace WebKit {
-WebKitDOMHTMLIFrameElement* wrapHTMLIFrameElement(WebCore::HTMLIFrameElement*);
-WebKitDOMHTMLIFrameElement* kit(WebCore::HTMLIFrameElement*);
-WebCore::HTMLIFrameElement* core(WebKitDOMHTMLIFrameElement*);
-} // namespace WebKit
+namespace CyberKit {
+CyberKitDOMHTMLIFrameElement* wrapHTMLIFrameElement(CyberCore::HTMLIFrameElement*);
+CyberKitDOMHTMLIFrameElement* kit(CyberCore::HTMLIFrameElement*);
+CyberCore::HTMLIFrameElement* core(CyberKitDOMHTMLIFrameElement*);
+} // namespace CyberKit
 
-#endif /* WebKitDOMHTMLIFrameElementPrivate_h */
+#endif /* CyberKitDOMHTMLIFrameElementPrivate_h */

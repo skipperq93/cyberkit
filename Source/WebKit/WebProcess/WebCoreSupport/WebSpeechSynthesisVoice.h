@@ -27,7 +27,7 @@
 
 #if ENABLE(SPEECH_SYNTHESIS)
 
-namespace WebKit {
+namespace CyberKit {
     
 struct WebSpeechSynthesisVoice {
     String voiceURI;
@@ -80,6 +80,6 @@ std::optional<WebSpeechSynthesisVoice> WebSpeechSynthesisVoice::decode(Decoder& 
 
     return {{ WTFMove(*voiceURI), WTFMove(*name), WTFMove(*lang), WTFMove(*localService), WTFMove(*defaultLang) }};}
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(SPEECH_SYNTHESIS)

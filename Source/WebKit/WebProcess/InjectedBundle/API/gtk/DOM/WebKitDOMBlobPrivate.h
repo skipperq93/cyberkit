@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -17,16 +17,16 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitDOMBlobPrivate_h
-#define WebKitDOMBlobPrivate_h
+#ifndef CyberKitDOMBlobPrivate_h
+#define CyberKitDOMBlobPrivate_h
 
 #include <CyberCore/Blob.h>
-#include <webkitdom/WebKitDOMBlob.h>
+#include <webkitdom/CyberKitDOMBlob.h>
 
-namespace WebKit {
-WebKitDOMBlob* wrapBlob(WebCore::Blob*);
-WebKitDOMBlob* kit(WebCore::Blob*);
-WebCore::Blob* core(WebKitDOMBlob*);
-} // namespace WebKit
+namespace CyberKit {
+CyberKitDOMBlob* wrapBlob(CyberCore::Blob*);
+CyberKitDOMBlob* kit(CyberCore::Blob*);
+CyberCore::Blob* core(CyberKitDOMBlob*);
+} // namespace CyberKit
 
-#endif /* WebKitDOMBlobPrivate_h */
+#endif /* CyberKitDOMBlobPrivate_h */

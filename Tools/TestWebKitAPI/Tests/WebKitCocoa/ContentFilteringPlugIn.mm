@@ -35,7 +35,7 @@
 #import <CyberKit/_WKRemoteObjectRegistry.h>
 #import <mach-o/dyld.h>
 
-using MockContentFilterSettings = WebCore::MockContentFilterSettings;
+using MockContentFilterSettings = CyberCore::MockContentFilterSettings;
 using Decision = MockContentFilterSettings::Decision;
 using DecisionPoint = MockContentFilterSettings::DecisionPoint;
 

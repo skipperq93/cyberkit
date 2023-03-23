@@ -34,7 +34,7 @@
 #include "WebURLSchemeHandler.h"
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 Ref<WebURLSchemeTask> WebURLSchemeTask::create(WebURLSchemeHandler& handler, WebPageProxy& page, WebProcessProxy& process, PageIdentifier webPageID, URLSchemeTaskParameters&& parameters, SyncLoadCompletionHandler&& syncCompletionHandler)
 {
@@ -110,7 +110,7 @@ auto WebURLSchemeTask::willPerformRedirection(ResourceResponse&& response, Resou
     return ExceptionType::None;
 }
 
-auto WebURLSchemeTask::didPerformRedirection(WebCore::ResourceResponse&& response, WebCore::ResourceRequest&& request) -> ExceptionType
+auto WebURLSchemeTask::didPerformRedirection(CyberCore::ResourceResponse&& response, CyberCore::ResourceRequest&& request) -> ExceptionType
 {
     ASSERT(RunLoop::isMain());
 
@@ -256,7 +256,7 @@ void WebURLSchemeTask::stop()
 NSURLRequest *WebURLSchemeTask::nsRequest() const
 {
     Locker locker { m_requestLock };
-    return m_request.nsURLRequest(WebCore::HTTPBodyUpdatePolicy::UpdateHTTPBody);
+    return m_request.nsURLRequest(CyberCore::HTTPBodyUpdatePolicy::UpdateHTTPBody);
 }
 #endif
 

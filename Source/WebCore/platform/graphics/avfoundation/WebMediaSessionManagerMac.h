@@ -30,7 +30,7 @@
 
 #include "WebMediaSessionManager.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class WebMediaSessionManagerMac : public WebMediaSessionManager {
     friend class NeverDestroyed<WebMediaSessionManagerMac>;
@@ -40,12 +40,12 @@ private:
     WebMediaSessionManagerMac();
     virtual ~WebMediaSessionManagerMac();
 
-    virtual WebCore::MediaPlaybackTargetPicker& platformPicker();
+    virtual CyberCore::MediaPlaybackTargetPicker& platformPicker();
 
-    std::unique_ptr<WebCore::MediaPlaybackTargetPicker> m_targetPicker;
+    std::unique_ptr<CyberCore::MediaPlaybackTargetPicker> m_targetPicker;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WIRELESS_PLAYBACK_TARGET)
 

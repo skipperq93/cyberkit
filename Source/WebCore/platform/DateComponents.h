@@ -34,7 +34,7 @@
 #include <unicode/utypes.h>
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class SecondFormat : uint8_t {
     None, // Suppress the second part and the millisecond part if they are 0.
@@ -204,4 +204,4 @@ private:
     DateComponentsType m_type;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

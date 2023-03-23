@@ -34,7 +34,7 @@
 #include "StyleRule.h"
 #include "UserAgentStyle.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace Style {
 
 static inline bool comparePageRules(const StyleRulePage* r1, const StyleRulePage* r2)
@@ -129,4 +129,4 @@ void PageRuleCollector::matchPageRulesForList(Vector<StyleRulePage*>& matchedRul
 }
 
 } // namespace Style
-} // namespace WebCore
+} // namespace CyberCore

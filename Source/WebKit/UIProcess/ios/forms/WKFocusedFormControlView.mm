@@ -32,7 +32,7 @@ asm(".linker_option \"-framework\", \"PepperUICore\"");
 
 #import "PepperUICoreSPI.h"
 #import <CyberCore/LocalizedStrings.h>
-#import <CyberCore/WebCoreCALayerExtras.h>
+#import <CyberCore/CyberCoreCALayerExtras.h>
 #import <wtf/NeverDestroyed.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/WeakObjCPtr.h>
@@ -106,7 +106,7 @@ static UIBezierPath *pathWithRoundedRectInFrame(CGRect rect, CGFloat borderRadiu
 
     _dismissButton = [UIButton buttonWithType:UIButtonTypeSystem];
     [_dismissButton addTarget:self action:@selector(didDismiss) forControlEvents:UIControlEventTouchUpInside];
-    [_dismissButton setTitle:WebCore::formControlHideButtonTitle() forState:UIControlStateNormal];
+    [_dismissButton setTitle:CyberCore::formControlHideButtonTitle() forState:UIControlStateNormal];
     [_dismissButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 
     _tapGestureRecognizer = adoptNS([[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap)]);

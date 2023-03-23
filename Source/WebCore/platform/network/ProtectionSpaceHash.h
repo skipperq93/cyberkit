@@ -29,7 +29,7 @@
 #include <wtf/HashTraits.h>
 #include <wtf/Hasher.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ProtectionSpaceHash {
     static unsigned hash(const ProtectionSpace& protectionSpace)
@@ -48,13 +48,13 @@ struct ProtectionSpaceHash {
     static constexpr bool safeToCompareToEmptyOrDeleted = false;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct HashTraits<WebCore::ProtectionSpace> : SimpleClassHashTraits<WebCore::ProtectionSpace> {
+template<> struct HashTraits<CyberCore::ProtectionSpace> : SimpleClassHashTraits<CyberCore::ProtectionSpace> {
     static constexpr bool emptyValueIsZero = false;
 };
-template<> struct DefaultHash<WebCore::ProtectionSpace> : WebCore::ProtectionSpaceHash { };
+template<> struct DefaultHash<CyberCore::ProtectionSpace> : CyberCore::ProtectionSpaceHash { };
 
 } // namespace WTF

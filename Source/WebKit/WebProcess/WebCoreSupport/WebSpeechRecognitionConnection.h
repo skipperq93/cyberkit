@@ -30,35 +30,35 @@
 #include <CyberCore/PageIdentifier.h>
 #include <CyberCore/SpeechRecognitionConnection.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SpeechRecognitionConnectionClient;
 class SpeechRecognitionUpdate;
 
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPage;
 
-using SpeechRecognitionConnectionIdentifier = WebCore::PageIdentifier;
+using SpeechRecognitionConnectionIdentifier = CyberCore::PageIdentifier;
 
-class WebSpeechRecognitionConnection final : public WebCore::SpeechRecognitionConnection, private IPC::MessageReceiver, private IPC::MessageSender {
+class WebSpeechRecognitionConnection final : public CyberCore::SpeechRecognitionConnection, private IPC::MessageReceiver, private IPC::MessageSender {
 public:
     static Ref<WebSpeechRecognitionConnection> create(SpeechRecognitionConnectionIdentifier);
 
-    void start(WebCore::SpeechRecognitionConnectionClientIdentifier, const String& lang, bool continuous, bool interimResults, uint64_t maxAlternatives, WebCore::ClientOrigin&&, WebCore::FrameIdentifier) final;
-    void stop(WebCore::SpeechRecognitionConnectionClientIdentifier) final;
-    void abort(WebCore::SpeechRecognitionConnectionClientIdentifier) final;
+    void start(CyberCore::SpeechRecognitionConnectionClientIdentifier, const String& lang, bool continuous, bool interimResults, uint64_t maxAlternatives, CyberCore::ClientOrigin&&, CyberCore::FrameIdentifier) final;
+    void stop(CyberCore::SpeechRecognitionConnectionClientIdentifier) final;
+    void abort(CyberCore::SpeechRecognitionConnectionClientIdentifier) final;
 
 private:
     explicit WebSpeechRecognitionConnection(SpeechRecognitionConnectionIdentifier);
     ~WebSpeechRecognitionConnection();
 
-    void registerClient(WebCore::SpeechRecognitionConnectionClient&) final;
-    void unregisterClient(WebCore::SpeechRecognitionConnectionClient&) final;
-    void didReceiveUpdate(WebCore::SpeechRecognitionUpdate&&) final;
-    void invalidate(WebCore::SpeechRecognitionConnectionClientIdentifier);
+    void registerClient(CyberCore::SpeechRecognitionConnectionClient&) final;
+    void unregisterClient(CyberCore::SpeechRecognitionConnectionClient&) final;
+    void didReceiveUpdate(CyberCore::SpeechRecognitionUpdate&&) final;
+    void invalidate(CyberCore::SpeechRecognitionConnectionClientIdentifier);
 
     // IPC::MessageReceiver.
     void didReceiveMessage(IPC::Connection&, IPC::Decoder&) override;
@@ -68,7 +68,7 @@ private:
     uint64_t messageSenderDestinationID() const final;
 
     SpeechRecognitionConnectionIdentifier m_identifier;
-    HashMap<WebCore::SpeechRecognitionConnectionClientIdentifier, WeakPtr<WebCore::SpeechRecognitionConnectionClient>> m_clientMap;
+    HashMap<CyberCore::SpeechRecognitionConnectionClientIdentifier, WeakPtr<CyberCore::SpeechRecognitionConnectionClient>> m_clientMap;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

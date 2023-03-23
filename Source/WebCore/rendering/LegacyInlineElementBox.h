@@ -27,7 +27,7 @@
 
 #include "LegacyInlineBox.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class LegacyInlineElementBox : public LegacyInlineBox {
     WTF_MAKE_ISO_ALLOCATED(LegacyInlineElementBox);
@@ -55,6 +55,6 @@ private:
     bool isInlineElementBox() const final { return true; }
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_INLINE_BOX(LegacyInlineElementBox, isInlineElementBox())

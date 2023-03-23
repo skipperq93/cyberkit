@@ -29,7 +29,7 @@
 #include "PlatformScreen.h"
 #include <optional>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DisplayRefreshMonitor;
 class DisplayRefreshMonitorFactory;

@@ -29,7 +29,7 @@
 
 #include "AttachmentElementClient.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class EmptyAttachmentElementClient final : public AttachmentElementClient {
     WTF_MAKE_FAST_ALLOCATED;
@@ -40,6 +40,6 @@ private:
     void requestAttachmentIcon(const String&, const FloatSize&) final { }
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ATTACHMENT_ELEMENT)

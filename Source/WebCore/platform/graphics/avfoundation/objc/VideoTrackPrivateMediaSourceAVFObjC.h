@@ -34,7 +34,7 @@
 OBJC_CLASS AVAssetTrack;
 OBJC_CLASS AVPlayerItemTrack;
 
-namespace WebCore {
+namespace CyberCore {
 
 class AVTrackPrivateAVFObjCImpl;
 class SourceBufferPrivateAVFObjC;

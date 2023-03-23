@@ -49,7 +49,7 @@ class Connection;
 class Decoder;
 }
 
-namespace WebCore {
+namespace CyberCore {
 class DestinationColorSpace;
 class DisplayRefreshMonitor;
 class Frame;
@@ -62,13 +62,13 @@ enum class DelegatedScrollingMode : uint8_t;
 
 OBJC_CLASS CABasicAnimation;
 
-namespace WebKit {
+namespace CyberKit {
 
 class LayerTreeHost;
 struct WebPageCreationParameters;
 struct WebPreferencesStore;
 
-class DrawingArea : public IPC::MessageReceiver, public WebCore::DisplayRefreshMonitorFactory {
+class DrawingArea : public IPC::MessageReceiver, public CyberCore::DisplayRefreshMonitorFactory {
     WTF_MAKE_FAST_ALLOCATED;
     WTF_MAKE_NONCOPYABLE(DrawingArea);
 
@@ -82,8 +82,8 @@ public:
     static bool supportsGPUProcessRendering(DrawingAreaType);
 
     virtual void setNeedsDisplay() = 0;
-    virtual void setNeedsDisplayInRect(const WebCore::IntRect&) = 0;
-    virtual void scroll(const WebCore::IntRect& scrollRect, const WebCore::IntSize& scrollDelta) = 0;
+    virtual void setNeedsDisplayInRect(const CyberCore::IntRect&) = 0;
+    virtual void scroll(const CyberCore::IntRect& scrollRect, const CyberCore::IntSize& scrollDelta) = 0;
 
     virtual void sendEnterAcceleratedCompositingModeIfNeeded() { }
 
@@ -95,33 +95,33 @@ public:
 
     virtual void updatePreferences(const WebPreferencesStore&) { }
     virtual void enablePainting() { }
-    virtual void mainFrameContentSizeChanged(const WebCore::IntSize&) { }
+    virtual void mainFrameContentSizeChanged(const CyberCore::IntSize&) { }
 
 #if PLATFORM(COCOA)
-    virtual void setViewExposedRect(std::optional<WebCore::FloatRect>) = 0;
-    virtual std::optional<WebCore::FloatRect> viewExposedRect() const = 0;
+    virtual void setViewExposedRect(std::optional<CyberCore::FloatRect>) = 0;
+    virtual std::optional<CyberCore::FloatRect> viewExposedRect() const = 0;
 
-    virtual void acceleratedAnimationDidStart(WebCore::GraphicsLayer::PlatformLayerID, const String& /*key*/, MonotonicTime /*startTime*/) { }
-    virtual void acceleratedAnimationDidEnd(WebCore::GraphicsLayer::PlatformLayerID, const String& /*key*/) { }
+    virtual void acceleratedAnimationDidStart(CyberCore::GraphicsLayer::PlatformLayerID, const String& /*key*/, MonotonicTime /*startTime*/) { }
+    virtual void acceleratedAnimationDidEnd(CyberCore::GraphicsLayer::PlatformLayerID, const String& /*key*/) { }
     virtual void addFence(const WTF::MachSendRight&) { }
 
-    virtual WebCore::FloatRect exposedContentRect() const = 0;
-    virtual void setExposedContentRect(const WebCore::FloatRect&) = 0;
+    virtual CyberCore::FloatRect exposedContentRect() const = 0;
+    virtual void setExposedContentRect(const CyberCore::FloatRect&) = 0;
 #endif
 
     virtual void mainFrameScrollabilityChanged(bool) { }
 
     virtual bool supportsAsyncScrolling() const { return false; }
     virtual bool usesDelegatedPageScaling() const { return false; }
-    virtual WebCore::DelegatedScrollingMode delegatedScrollingMode() const;
+    virtual CyberCore::DelegatedScrollingMode delegatedScrollingMode() const;
 
     virtual void registerScrollingTree() { }
     virtual void unregisterScrollingTree() { }
 
-    virtual bool shouldUseTiledBackingForFrameView(const WebCore::FrameView&) const { return false; }
+    virtual bool shouldUseTiledBackingForFrameView(const CyberCore::FrameView&) const { return false; }
 
-    virtual WebCore::GraphicsLayerFactory* graphicsLayerFactory() { return nullptr; }
-    virtual void setRootCompositingLayer(WebCore::GraphicsLayer*) = 0;
+    virtual CyberCore::GraphicsLayerFactory* graphicsLayerFactory() { return nullptr; }
+    virtual void setRootCompositingLayer(CyberCore::GraphicsLayer*) = 0;
     virtual void triggerRenderingUpdate() = 0;
 
     virtual void willStartRenderingUpdateDisplay();
@@ -131,23 +131,23 @@ public:
 
     virtual void dispatchAfterEnsuringUpdatedScrollPosition(WTF::Function<void ()>&&);
 
-    virtual void activityStateDidChange(OptionSet<WebCore::ActivityState::Flag>, ActivityStateChangeID, CompletionHandler<void()>&& completionHandler) { completionHandler(); };
+    virtual void activityStateDidChange(OptionSet<CyberCore::ActivityState::Flag>, ActivityStateChangeID, CompletionHandler<void()>&& completionHandler) { completionHandler(); };
     virtual void setLayerHostingMode(LayerHostingMode) { }
 
     virtual void tryMarkLayersVolatile(CompletionHandler<void(bool)>&&);
 
-    virtual void attachViewOverlayGraphicsLayer(WebCore::GraphicsLayer*) { }
+    virtual void attachViewOverlayGraphicsLayer(CyberCore::GraphicsLayer*) { }
 
-    virtual std::optional<WebCore::DestinationColorSpace> displayColorSpace() const { return { }; }
+    virtual std::optional<CyberCore::DestinationColorSpace> displayColorSpace() const { return { }; }
 
-    virtual bool addMilestonesToDispatch(OptionSet<WebCore::LayoutMilestone>) { return false; }
+    virtual bool addMilestonesToDispatch(OptionSet<CyberCore::LayoutMilestone>) { return false; }
 
 #if PLATFORM(COCOA)
-    virtual void updateGeometry(const WebCore::IntSize& viewSize, bool flushSynchronously, const WTF::MachSendRight& fencePort, CompletionHandler<void()>&&) = 0;
+    virtual void updateGeometry(const CyberCore::IntSize& viewSize, bool flushSynchronously, const WTF::MachSendRight& fencePort, CompletionHandler<void()>&&) = 0;
 #endif
 
 #if USE(GRAPHICS_LAYER_WC)
-    virtual void updateGeometry(uint64_t, WebCore::IntSize) { };
+    virtual void updateGeometry(uint64_t, CyberCore::IntSize) { };
 #endif
 
 #if USE(COORDINATED_GRAPHICS) || USE(GRAPHICS_LAYER_TEXTURE_MAPPER)
@@ -155,7 +155,7 @@ public:
 #endif
 
 #if USE(COORDINATED_GRAPHICS) || USE(TEXTURE_MAPPER)
-    virtual void didChangeViewportAttributes(WebCore::ViewportAttributes&&) = 0;
+    virtual void didChangeViewportAttributes(CyberCore::ViewportAttributes&&) = 0;
     virtual void deviceOrPageScaleFactorChanged() = 0;
 #endif
 
@@ -164,8 +164,8 @@ public:
 
     void removeMessageReceiverIfNeeded();
     
-    WebCore::TiledBacking* mainFrameTiledBacking() const;
-    void prepopulateRectForZoom(double scale, WebCore::FloatPoint origin);
+    CyberCore::TiledBacking* mainFrameTiledBacking() const;
+    void prepopulateRectForZoom(double scale, CyberCore::FloatPoint origin);
     void setShouldScaleViewToFitDocument(bool);
     void scaleViewToFitDocumentIfNeeded();
     
@@ -182,8 +182,8 @@ protected:
     const DrawingAreaType m_type;
     DrawingAreaIdentifier m_identifier;
     WebPage& m_webPage;
-    WebCore::IntSize m_lastViewSizeForScaleToFit;
-    WebCore::IntSize m_lastDocumentSizeForScaleToFit;
+    CyberCore::IntSize m_lastViewSizeForScaleToFit;
+    CyberCore::IntSize m_lastDocumentSizeForScaleToFit;
     bool m_isScalingViewToFitDocument { false };
     bool m_shouldScaleViewToFitDocument { false };
 
@@ -194,33 +194,33 @@ private:
     // Message handlers.
     // FIXME: These should be pure virtual.
 #if USE(COORDINATED_GRAPHICS) || USE(TEXTURE_MAPPER)
-    virtual void updateBackingStoreState(uint64_t /*backingStoreStateID*/, bool /*respondImmediately*/, float /*deviceScaleFactor*/, const WebCore::IntSize& /*size*/,
-                                         const WebCore::IntSize& /*scrollOffset*/) { }
+    virtual void updateBackingStoreState(uint64_t /*backingStoreStateID*/, bool /*respondImmediately*/, float /*deviceScaleFactor*/, const CyberCore::IntSize& /*size*/,
+                                         const CyberCore::IntSize& /*scrollOffset*/) { }
     virtual void targetRefreshRateDidChange(unsigned /*rate*/) { }
 #endif
     virtual void displayDidRefresh() { }
 
     // DisplayRefreshMonitorFactory.
-    RefPtr<WebCore::DisplayRefreshMonitor> createDisplayRefreshMonitor(WebCore::PlatformDisplayID) override;
+    RefPtr<CyberCore::DisplayRefreshMonitor> createDisplayRefreshMonitor(CyberCore::PlatformDisplayID) override;
 
 #if PLATFORM(COCOA)
     virtual void setDeviceScaleFactor(float) { }
-    virtual void setColorSpace(std::optional<WebCore::DestinationColorSpace>) { }
+    virtual void setColorSpace(std::optional<CyberCore::DestinationColorSpace>) { }
 
     virtual void dispatchAfterEnsuringDrawing(IPC::AsyncReplyID) = 0;
 #endif
 
 #if PLATFORM(COCOA) || PLATFORM(GTK)
-    virtual void adjustTransientZoom(double scale, WebCore::FloatPoint origin) { }
-    virtual void commitTransientZoom(double scale, WebCore::FloatPoint origin) { }
+    virtual void adjustTransientZoom(double scale, CyberCore::FloatPoint origin) { }
+    virtual void commitTransientZoom(double scale, CyberCore::FloatPoint origin) { }
 #endif
 
     bool m_hasRemovedMessageReceiver { false };
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #define SPECIALIZE_TYPE_TRAITS_DRAWING_AREA(ToValueTypeName, AreaType) \
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebKit::ToValueTypeName) \
-    static bool isType(const WebKit::DrawingArea& area) { return area.type() == WebKit::AreaType; } \
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberKit::ToValueTypeName) \
+    static bool isType(const CyberKit::DrawingArea& area) { return area.type() == CyberKit::AreaType; } \
 SPECIALIZE_TYPE_TRAITS_END()

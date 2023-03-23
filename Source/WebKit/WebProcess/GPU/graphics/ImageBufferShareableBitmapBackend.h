@@ -30,7 +30,7 @@
 #include <CyberCore/PlatformImageBufferBackend.h>
 #include <wtf/IsoMalloc.h>
 
-namespace WebCore {
+namespace CyberCore {
 class ProcessIdentity;
 }
 
@@ -38,23 +38,23 @@ namespace WebKit {
 
 class ShareableBitmap;
 
-class ImageBufferShareableBitmapBackend final : public WebCore::PlatformImageBufferBackend, public ImageBufferBackendHandleSharing {
+class ImageBufferShareableBitmapBackend final : public CyberCore::PlatformImageBufferBackend, public ImageBufferBackendHandleSharing {
     WTF_MAKE_ISO_ALLOCATED(ImageBufferShareableBitmapBackend);
     WTF_MAKE_NONCOPYABLE(ImageBufferShareableBitmapBackend);
 
 public:
     static ShareableBitmapConfiguration configuration(const Parameters&);
-    static WebCore::IntSize calculateSafeBackendSize(const Parameters&);
-    static unsigned calculateBytesPerRow(const Parameters&, const WebCore::IntSize& backendSize);
+    static CyberCore::IntSize calculateSafeBackendSize(const Parameters&);
+    static unsigned calculateBytesPerRow(const Parameters&, const CyberCore::IntSize& backendSize);
     static size_t calculateMemoryCost(const Parameters&);
 
-    static std::unique_ptr<ImageBufferShareableBitmapBackend> create(const Parameters&, const WebCore::ImageBufferCreationContext&);
+    static std::unique_ptr<ImageBufferShareableBitmapBackend> create(const Parameters&, const CyberCore::ImageBufferCreationContext&);
     static std::unique_ptr<ImageBufferShareableBitmapBackend> create(const Parameters&, ImageBufferBackendHandle);
 
-    ImageBufferShareableBitmapBackend(const Parameters&, Ref<ShareableBitmap>&&, std::unique_ptr<WebCore::GraphicsContext>&&);
+    ImageBufferShareableBitmapBackend(const Parameters&, Ref<ShareableBitmap>&&, std::unique_ptr<CyberCore::GraphicsContext>&&);
 
-    WebCore::GraphicsContext& context() const final { return *m_context; }
-    WebCore::IntSize backendSize() const final;
+    CyberCore::GraphicsContext& context() const final { return *m_context; }
+    CyberCore::IntSize backendSize() const final;
 
     ImageBufferBackendHandle createBackendHandle(SharedMemory::Protection = SharedMemory::Protection::ReadWrite) const final;
     RefPtr<ShareableBitmap> bitmap() const final { return m_bitmap.ptr(); }
@@ -62,12 +62,12 @@ public:
     RefPtr<cairo_surface_t> createCairoSurface() final;
 #endif
 
-    RefPtr<WebCore::NativeImage> copyNativeImage(WebCore::BackingStoreCopy = WebCore::CopyBackingStore) const final;
+    RefPtr<CyberCore::NativeImage> copyNativeImage(CyberCore::BackingStoreCopy = CyberCore::CopyBackingStore) const final;
 
-    RefPtr<WebCore::PixelBuffer> getPixelBuffer(const WebCore::PixelBufferFormat& outputFormat, const WebCore::IntRect&, const WebCore::ImageBufferAllocator&) const final;
-    void putPixelBuffer(const WebCore::PixelBuffer&, const WebCore::IntRect& srcRect, const WebCore::IntPoint& destPoint, WebCore::AlphaPremultiplication destFormat) final;
+    RefPtr<CyberCore::PixelBuffer> getPixelBuffer(const CyberCore::PixelBufferFormat& outputFormat, const CyberCore::IntRect&, const CyberCore::ImageBufferAllocator&) const final;
+    void putPixelBuffer(const CyberCore::PixelBuffer&, const CyberCore::IntRect& srcRect, const CyberCore::IntPoint& destPoint, CyberCore::AlphaPremultiplication destFormat) final;
 
-    void setOwnershipIdentity(const WebCore::ProcessIdentity&) { }
+    void setOwnershipIdentity(const CyberCore::ProcessIdentity&) { }
 
 private:
     unsigned bytesPerRow() const final;
@@ -76,7 +76,7 @@ private:
     void releaseGraphicsContext() final { /* Do nothing. This is only relevant for IOSurface backends */ }
 
     Ref<ShareableBitmap> m_bitmap;
-    std::unique_ptr<WebCore::GraphicsContext> m_context;
+    std::unique_ptr<CyberCore::GraphicsContext> m_context;
 };
 
 } // namespace WebKit

@@ -29,7 +29,7 @@
 #include <wtf/Forward.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class PreviewConverter;
 class ResourceError;
@@ -47,4 +47,4 @@ struct PreviewConverterClient : CanMakeWeakPtr<PreviewConverterClient> {
     virtual void previewConverterDidFailConverting(PreviewConverter&) = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

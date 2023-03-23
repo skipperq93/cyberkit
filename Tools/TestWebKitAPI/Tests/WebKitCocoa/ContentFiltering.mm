@@ -54,8 +54,8 @@ SOFT_LINK_CLASS_OPTIONAL(NetworkExtension, NEFilterSource);
 SOFT_LINK_PRIVATE_FRAMEWORK(WebContentAnalysis);
 SOFT_LINK_CLASS(WebContentAnalysis, WebFilterEvaluator);
 
-using Decision = WebCore::MockContentFilterSettings::Decision;
-using DecisionPoint = WebCore::MockContentFilterSettings::DecisionPoint;
+using Decision = CyberCore::MockContentFilterSettings::Decision;
+using DecisionPoint = CyberCore::MockContentFilterSettings::DecisionPoint;
 
 @interface MockContentFilterEnabler : NSObject <NSCopying, NSSecureCoding>
 - (instancetype)initWithDecision:(Decision)decision decisionPoint:(DecisionPoint)decisionPoint;

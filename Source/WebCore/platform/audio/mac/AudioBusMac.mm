@@ -30,18 +30,18 @@
 
 #import "AudioFileReader.h"
 
-@interface WebCoreAudioBundleClass : NSObject
+@interface CyberCoreAudioBundleClass : NSObject
 @end
 
-@implementation WebCoreAudioBundleClass
+@implementation CyberCoreAudioBundleClass
 @end
 
-namespace WebCore {
+namespace CyberCore {
 
 RefPtr<AudioBus> AudioBus::loadPlatformResource(const char* name, float sampleRate)
 {
     @autoreleasepool {
-        NSBundle *bundle = [NSBundle bundleForClass:[WebCoreAudioBundleClass class]];
+        NSBundle *bundle = [NSBundle bundleForClass:[CyberCoreAudioBundleClass class]];
         NSURL *audioFileURL = [bundle URLForResource:[NSString stringWithUTF8String:name] withExtension:@"wav" subdirectory:@"audio"];
         if (NSData *audioData = [NSData dataWithContentsOfURL:audioFileURL options:NSDataReadingMappedIfSafe error:nil])
             return createBusFromInMemoryAudioFile([audioData bytes], [audioData length], false, sampleRate);
@@ -51,6 +51,6 @@ RefPtr<AudioBus> AudioBus::loadPlatformResource(const char* name, float sampleRa
     return nullptr;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

@@ -32,7 +32,7 @@
 #include <pal/text/TextEncoding.h>
 #include <wtf/URL.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 ContentSecurityPolicySource::ContentSecurityPolicySource(const ContentSecurityPolicy& policy, const String& scheme, const String& host, std::optional<uint16_t> port, const String& path, bool hostHasWildcard, bool portHasWildcard, IsSelfSource isSelfSource)
     : m_policy(policy)
@@ -148,4 +148,4 @@ ContentSecurityPolicySource::operator SecurityOriginData() const
     return { m_scheme, m_host, m_port };
 }
 
-} // namespace WebCore
+} // namespace CyberCore

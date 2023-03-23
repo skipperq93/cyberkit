@@ -42,14 +42,14 @@
 #include <wtf/Vector.h>
 #include <wtf/WeakHashSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DeferredPromise;
 class NavigationPreloadManager;
 class ScriptExecutionContext;
 class ServiceWorker;
 class ServiceWorkerContainer;
-class WebCoreOpaqueRoot;
+class CyberCoreOpaqueRoot;
 
 class ServiceWorkerRegistration final : public RefCounted<ServiceWorkerRegistration>, public Supplementable<ServiceWorkerRegistration>, public EventTarget, public ActiveDOMObject {
     WTF_MAKE_ISO_ALLOCATED_EXPORT(ServiceWorkerRegistration, WEBCORE_EXPORT);
@@ -127,8 +127,8 @@ private:
     std::unique_ptr<NavigationPreloadManager> m_navigationPreload;
 };
 
-WebCoreOpaqueRoot root(ServiceWorkerRegistration*);
+CyberCoreOpaqueRoot root(ServiceWorkerRegistration*);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

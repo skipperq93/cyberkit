@@ -32,7 +32,7 @@
 #include <wtf/Ref.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 class NetworkLoadMetrics;
 class FragmentedSharedBuffer;
 class SharedBuffer;
@@ -43,7 +43,7 @@ namespace WebKit {
 class RemoteMediaPlayerProxy;
 class RemoteMediaResourceManager;
 
-class RemoteMediaResource : public WebCore::PlatformMediaResource {
+class RemoteMediaResource : public CyberCore::PlatformMediaResource {
 public:
     static Ref<RemoteMediaResource> create(RemoteMediaResourceManager&, RemoteMediaPlayerProxy&, RemoteMediaResourceIdentifier);
     ~RemoteMediaResource();
@@ -52,13 +52,13 @@ public:
     void stop() final;
     bool didPassAccessControlCheck() const final;
 
-    void responseReceived(const WebCore::ResourceResponse&, bool, CompletionHandler<void(WebCore::ShouldContinuePolicyCheck)>&&);
-    void redirectReceived(WebCore::ResourceRequest&&, const WebCore::ResourceResponse&, CompletionHandler<void(WebCore::ResourceRequest&&)>&&);
+    void responseReceived(const CyberCore::ResourceResponse&, bool, CompletionHandler<void(CyberCore::ShouldContinuePolicyCheck)>&&);
+    void redirectReceived(CyberCore::ResourceRequest&&, const CyberCore::ResourceResponse&, CompletionHandler<void(CyberCore::ResourceRequest&&)>&&);
     void dataSent(uint64_t, uint64_t);
-    void dataReceived(const WebCore::SharedBuffer&);
-    void accessControlCheckFailed(const WebCore::ResourceError&);
-    void loadFailed(const WebCore::ResourceError&);
-    void loadFinished(const WebCore::NetworkLoadMetrics&);
+    void dataReceived(const CyberCore::SharedBuffer&);
+    void accessControlCheckFailed(const CyberCore::ResourceError&);
+    void loadFailed(const CyberCore::ResourceError&);
+    void loadFinished(const CyberCore::NetworkLoadMetrics&);
 
 private:
     RemoteMediaResource(RemoteMediaResourceManager&, RemoteMediaPlayerProxy&, RemoteMediaResourceIdentifier);

@@ -25,7 +25,7 @@
 #include <wtf/Assertions.h>
 #include <wtf/OptionSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class HitTestRequest {
 public:
@@ -88,4 +88,4 @@ private:
     OptionSet<Type> m_type;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

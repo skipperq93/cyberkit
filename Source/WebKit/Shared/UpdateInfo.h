@@ -51,18 +51,18 @@ public:
     static WARN_UNUSED_RETURN bool decode(IPC::Decoder&, UpdateInfo&);
 
     // The size of the web view.
-    WebCore::IntSize viewSize;
+    CyberCore::IntSize viewSize;
     float deviceScaleFactor { 0 };
 
     // The rect and delta to be scrolled.
-    WebCore::IntRect scrollRect;
-    WebCore::IntSize scrollOffset;
+    CyberCore::IntRect scrollRect;
+    CyberCore::IntSize scrollOffset;
     
     // The bounds of the update rects.
-    WebCore::IntRect updateRectBounds;
+    CyberCore::IntRect updateRectBounds;
 
     // All the update rects, in view coordinates.
-    Vector<WebCore::IntRect> updateRects;
+    Vector<CyberCore::IntRect> updateRects;
 
     // The page scale factor used to render this update.
     float updateScaleFactor { 0 };
@@ -71,7 +71,7 @@ public:
     ShareableBitmapHandle bitmapHandle;
 
     // The offset in the bitmap where the rendered contents are.
-    WebCore::IntPoint bitmapOffset;
+    CyberCore::IntPoint bitmapOffset;
 };
 
 } // namespace WebKit

@@ -30,7 +30,7 @@
 
 #include <windows.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WEBCORE_EXPORT float deviceScaleFactorForWindow(HWND);
 
@@ -60,6 +60,6 @@ inline LONG getDoubleClickTime()
     return doubleClickTime ? doubleClickTime : 500;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // GDIUtilties_h

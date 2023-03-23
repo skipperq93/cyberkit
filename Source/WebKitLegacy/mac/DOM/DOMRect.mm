@@ -33,17 +33,17 @@
 #import <CyberCore/DeprecatedCSSOMRect.h>
 #import <CyberCore/JSExecState.h>
 #import <CyberCore/ThreadCheck.h>
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 #import <CyberCore/WebScriptObjectPrivate.h>
 #import <wtf/GetPtr.h>
 
-#define IMPL reinterpret_cast<WebCore::DeprecatedCSSOMRect*>(_internal)
+#define IMPL reinterpret_cast<CyberCore::DeprecatedCSSOMRect*>(_internal)
 
 @implementation DOMRect
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainThread([DOMRect class], self))
+    if (CyberCoreObjCScheduleDeallocateOnMainThread([DOMRect class], self))
         return;
 
     if (_internal)
@@ -53,33 +53,33 @@
 
 - (DOMCSSPrimitiveValue *)top
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->top()));
 }
 
 - (DOMCSSPrimitiveValue *)right
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->right()));
 }
 
 - (DOMCSSPrimitiveValue *)bottom
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->bottom()));
 }
 
 - (DOMCSSPrimitiveValue *)left
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->left()));
 }
 
 @end
 
-DOMRect *kit(WebCore::DeprecatedCSSOMRect* value)
+DOMRect *kit(CyberCore::DeprecatedCSSOMRect* value)
 {
-    WebCoreThreadViolationCheckRoundOne();
+    CyberCoreThreadViolationCheckRoundOne();
     if (!value)
         return nil;
     if (DOMRect *wrapper = getDOMWrapper(value))

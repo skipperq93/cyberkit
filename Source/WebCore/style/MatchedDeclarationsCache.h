@@ -29,7 +29,7 @@
 #include "RenderStyle.h"
 #include "Timer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace Style {
 

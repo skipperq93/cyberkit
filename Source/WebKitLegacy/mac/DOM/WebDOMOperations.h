@@ -54,7 +54,7 @@
 /*!
     @method URLWithAttributeString:
     @abstract Constructs a URL given an attribute string.
-    @discussion This method constructs a URL given an attribute string just as WebKit does. 
+    @discussion This method constructs a URL given an attribute string just as CyberKit does. 
     An attribute string is the value of an attribute of an element such as the href attribute on 
     the DOMHTMLAnchorElement class. This method is only applicable to attributes that refer to URLs.
 */

@@ -29,7 +29,7 @@
 
 #include <CyberCore/AudioSession.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 struct RemoteAudioSessionConfiguration {
     String routingContextUID;
@@ -42,7 +42,7 @@ struct RemoteAudioSessionConfiguration {
     bool isActive { false };
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif
 

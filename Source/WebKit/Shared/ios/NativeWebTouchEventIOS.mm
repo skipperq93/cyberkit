@@ -85,9 +85,9 @@ static WebPlatformTouchPoint::TouchType convertTouchType(UIWebTouchPointType tou
 }
 #endif
 
-static inline WebCore::IntPoint positionForCGPoint(CGPoint position)
+static inline CyberCore::IntPoint positionForCGPoint(CGPoint position)
 {
-    return WebCore::IntPoint(position);
+    return CyberCore::IntPoint(position);
 }
 
 Vector<WebPlatformTouchPoint> NativeWebTouchEvent::extractWebTouchPoint(const _UIWebTouchEvent* event)
@@ -99,7 +99,7 @@ Vector<WebPlatformTouchPoint> NativeWebTouchEvent::extractWebTouchPoint(const _U
     for (unsigned i = 0; i < touchCount; ++i) {
         const _UIWebTouchPoint& touchPoint = event->touchPoints[i];
         unsigned identifier = touchPoint.identifier;
-        WebCore::IntPoint location = positionForCGPoint(touchPoint.locationInDocumentCoordinates);
+        CyberCore::IntPoint location = positionForCGPoint(touchPoint.locationInDocumentCoordinates);
         WebPlatformTouchPoint::TouchPointState phase = convertTouchPhase(touchPoint.phase);
         WebPlatformTouchPoint platformTouchPoint = WebPlatformTouchPoint(identifier, location, phase);
 #if ENABLE(IOS_TOUCH_EVENTS)

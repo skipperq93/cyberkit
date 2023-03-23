@@ -32,7 +32,7 @@
 #include "SharedBuffer.h"
 #include "TextResourceDecoder.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 CachedApplicationManifest::CachedApplicationManifest(CachedResourceRequest&& request, PAL::SessionID sessionID, const CookieJar* cookieJar)
     : CachedResource(WTFMove(request), Type::ApplicationManifest, sessionID, cookieJar)
@@ -73,6 +73,6 @@ std::optional<ApplicationManifest> CachedApplicationManifest::process(const URL&
     return ApplicationManifestParser::parse(*m_text, manifestURL, documentURL);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(APPLICATION_MANIFEST)

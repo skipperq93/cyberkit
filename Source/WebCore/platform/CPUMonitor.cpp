@@ -26,7 +26,7 @@
 #include "config.h"
 #include "CPUMonitor.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 CPUMonitor::CPUMonitor(Seconds checkInterval, ExceededCPULimitHandler&& exceededCPULimitHandler)
     : m_checkInterval(checkInterval)
@@ -70,4 +70,4 @@ void CPUMonitor::timerFired()
     m_lastCPUTime = cpuTime;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

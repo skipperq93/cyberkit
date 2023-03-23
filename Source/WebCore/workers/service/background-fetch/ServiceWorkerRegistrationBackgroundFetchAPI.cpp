@@ -32,7 +32,7 @@
 #include "ServiceWorkerRegistration.h"
 #include <wtf/StdLibExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 ServiceWorkerRegistrationBackgroundFetchAPI::ServiceWorkerRegistrationBackgroundFetchAPI(ServiceWorkerRegistration& serviceWorkerRegistration)
     : m_serviceWorkerRegistration(serviceWorkerRegistration)

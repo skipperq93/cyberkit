@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -21,28 +21,28 @@
 #error "Only <webkitdom/webkitdom.h> can be included directly."
 #endif
 
-#ifndef WebKitDOMUIEvent_h
-#define WebKitDOMUIEvent_h
+#ifndef CyberKitDOMUIEvent_h
+#define CyberKitDOMUIEvent_h
 
 #include <glib-object.h>
-#include <webkitdom/WebKitDOMEvent.h>
+#include <webkitdom/CyberKitDOMEvent.h>
 #include <webkitdom/webkitdomdefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_DOM_TYPE_UI_EVENT            (webkit_dom_ui_event_get_type())
-#define WEBKIT_DOM_UI_EVENT(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_UI_EVENT, WebKitDOMUIEvent))
-#define WEBKIT_DOM_UI_EVENT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_UI_EVENT, WebKitDOMUIEventClass)
+#define WEBKIT_DOM_UI_EVENT(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_UI_EVENT, CyberKitDOMUIEvent))
+#define WEBKIT_DOM_UI_EVENT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_UI_EVENT, CyberKitDOMUIEventClass)
 #define WEBKIT_DOM_IS_UI_EVENT(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_DOM_TYPE_UI_EVENT))
 #define WEBKIT_DOM_IS_UI_EVENT_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_DOM_TYPE_UI_EVENT))
-#define WEBKIT_DOM_UI_EVENT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_UI_EVENT, WebKitDOMUIEventClass))
+#define WEBKIT_DOM_UI_EVENT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_UI_EVENT, CyberKitDOMUIEventClass))
 
-struct _WebKitDOMUIEvent {
-    WebKitDOMEvent parent_instance;
+struct _CyberKitDOMUIEvent {
+    CyberKitDOMEvent parent_instance;
 };
 
-struct _WebKitDOMUIEventClass {
-    WebKitDOMEventClass parent_class;
+struct _CyberKitDOMUIEventClass {
+    CyberKitDOMEventClass parent_class;
 };
 
 WEBKIT_DEPRECATED GType
@@ -50,107 +50,107 @@ webkit_dom_ui_event_get_type(void);
 
 /**
  * webkit_dom_ui_event_init_ui_event:
- * @self: A #WebKitDOMUIEvent
+ * @self: A #CyberKitDOMUIEvent
  * @type: A #gchar
  * @canBubble: A #gboolean
  * @cancelable: A #gboolean
- * @view: A #WebKitDOMDOMWindow
+ * @view: A #CyberKitDOMDOMWindow
  * @detail: A #glong
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_ui_event_init_ui_event(WebKitDOMUIEvent* self, const gchar* type, gboolean canBubble, gboolean cancelable, WebKitDOMDOMWindow* view, glong detail);
+webkit_dom_ui_event_init_ui_event(CyberKitDOMUIEvent* self, const gchar* type, gboolean canBubble, gboolean cancelable, CyberKitDOMDOMWindow* view, glong detail);
 
 /**
  * webkit_dom_ui_event_get_view:
- * @self: A #WebKitDOMUIEvent
+ * @self: A #CyberKitDOMUIEvent
  *
- * Returns: (transfer full): A #WebKitDOMDOMWindow
+ * Returns: (transfer full): A #CyberKitDOMDOMWindow
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMDOMWindow*
-webkit_dom_ui_event_get_view(WebKitDOMUIEvent* self);
+WEBKIT_DEPRECATED CyberKitDOMDOMWindow*
+webkit_dom_ui_event_get_view(CyberKitDOMUIEvent* self);
 
 /**
  * webkit_dom_ui_event_get_detail:
- * @self: A #WebKitDOMUIEvent
+ * @self: A #CyberKitDOMUIEvent
  *
  * Returns: A #glong
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED glong
-webkit_dom_ui_event_get_detail(WebKitDOMUIEvent* self);
+webkit_dom_ui_event_get_detail(CyberKitDOMUIEvent* self);
 
 /**
  * webkit_dom_ui_event_get_key_code:
- * @self: A #WebKitDOMUIEvent
+ * @self: A #CyberKitDOMUIEvent
  *
  * Returns: A #glong
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED glong
-webkit_dom_ui_event_get_key_code(WebKitDOMUIEvent* self);
+webkit_dom_ui_event_get_key_code(CyberKitDOMUIEvent* self);
 
 /**
  * webkit_dom_ui_event_get_char_code:
- * @self: A #WebKitDOMUIEvent
+ * @self: A #CyberKitDOMUIEvent
  *
  * Returns: A #glong
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED glong
-webkit_dom_ui_event_get_char_code(WebKitDOMUIEvent* self);
+webkit_dom_ui_event_get_char_code(CyberKitDOMUIEvent* self);
 
 /**
  * webkit_dom_ui_event_get_layer_x:
- * @self: A #WebKitDOMUIEvent
+ * @self: A #CyberKitDOMUIEvent
  *
  * Returns: A #glong
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED glong
-webkit_dom_ui_event_get_layer_x(WebKitDOMUIEvent* self);
+webkit_dom_ui_event_get_layer_x(CyberKitDOMUIEvent* self);
 
 /**
  * webkit_dom_ui_event_get_layer_y:
- * @self: A #WebKitDOMUIEvent
+ * @self: A #CyberKitDOMUIEvent
  *
  * Returns: A #glong
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED glong
-webkit_dom_ui_event_get_layer_y(WebKitDOMUIEvent* self);
+webkit_dom_ui_event_get_layer_y(CyberKitDOMUIEvent* self);
 
 /**
  * webkit_dom_ui_event_get_page_x:
- * @self: A #WebKitDOMUIEvent
+ * @self: A #CyberKitDOMUIEvent
  *
  * Returns: A #glong
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED glong
-webkit_dom_ui_event_get_page_x(WebKitDOMUIEvent* self);
+webkit_dom_ui_event_get_page_x(CyberKitDOMUIEvent* self);
 
 /**
  * webkit_dom_ui_event_get_page_y:
- * @self: A #WebKitDOMUIEvent
+ * @self: A #CyberKitDOMUIEvent
  *
  * Returns: A #glong
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED glong
-webkit_dom_ui_event_get_page_y(WebKitDOMUIEvent* self);
+webkit_dom_ui_event_get_page_y(CyberKitDOMUIEvent* self);
 
 G_END_DECLS
 
-#endif /* WebKitDOMUIEvent_h */
+#endif /* CyberKitDOMUIEvent_h */

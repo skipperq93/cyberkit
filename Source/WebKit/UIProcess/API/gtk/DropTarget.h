@@ -59,17 +59,17 @@ public:
     void didPerformAction();
 
 private:
-    void accept(PlatformDropContext*, std::optional<WebCore::IntPoint> = std::nullopt, unsigned = 0);
-    void enter(WebCore::IntPoint&&, unsigned = 0);
-    void update(WebCore::IntPoint&&, unsigned = 0);
+    void accept(PlatformDropContext*, std::optional<CyberCore::IntPoint> = std::nullopt, unsigned = 0);
+    void enter(CyberCore::IntPoint&&, unsigned = 0);
+    void update(CyberCore::IntPoint&&, unsigned = 0);
     void leave();
-    void drop(WebCore::IntPoint&&, unsigned = 0);
+    void drop(CyberCore::IntPoint&&, unsigned = 0);
 
 #if USE(GTK4)
     void loadData(const char* mimeType, CompletionHandler<void(GRefPtr<GBytes>&&)>&&);
     void didLoadData();
 #else
-    void dataReceived(WebCore::IntPoint&&, GtkSelectionData*, unsigned, unsigned);
+    void dataReceived(CyberCore::IntPoint&&, GtkSelectionData*, unsigned, unsigned);
     void leaveTimerFired();
 #endif
 
@@ -79,10 +79,10 @@ private:
 #else
     GRefPtr<GdkDragContext> m_drop;
 #endif
-    std::optional<WebCore::IntPoint> m_position;
+    std::optional<CyberCore::IntPoint> m_position;
     unsigned m_dataRequestCount { 0 };
-    std::optional<WebCore::SelectionData> m_selectionData;
-    std::optional<WebCore::DragOperation> m_operation;
+    std::optional<CyberCore::SelectionData> m_selectionData;
+    std::optional<CyberCore::DragOperation> m_operation;
 #if USE(GTK4)
     GRefPtr<GCancellable> m_cancellable;
 #else

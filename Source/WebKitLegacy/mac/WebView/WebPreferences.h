@@ -27,12 +27,12 @@
  */
 
 #import <Foundation/Foundation.h>
-#import <CyberKitLegacy/WebKitAvailability.h>
+#import <CyberKitLegacy/CyberKitAvailability.h>
 
 /*!
 @enum WebCacheModel
 
-@abstract Specifies a usage model for a WebView, which WebKit will use to 
+@abstract Specifies a usage model for a WebView, which CyberKit will use to 
 determine its caching behavior.
 
 @constant WebCacheModelDocumentViewer Appropriate for a WebView displaying 
@@ -216,7 +216,7 @@ WEBKIT_CLASS_DEPRECATED_MAC(10_3, 10_14)
 
 /*!
     @property privateBrowsingEnabled:
-    @abstract If private browsing is enabled, WebKit will not store information
+    @abstract If private browsing is enabled, CyberKit will not store information
     about sites the user visits.
  */
 @property (nonatomic) BOOL privateBrowsingEnabled;
@@ -243,23 +243,23 @@ WEBKIT_CLASS_DEPRECATED_MAC(10_3, 10_14)
 
 /*!
     @property cacheModel
-    @abstract Specifies a usage model for a WebView, which WebKit will use to
-    determine its caching behavior. If necessary, WebKit
+    @abstract Specifies a usage model for a WebView, which CyberKit will use to
+    determine its caching behavior. If necessary, CyberKit
     will prune its caches to match cacheModel when set.
 
     @discussion Research indicates that users tend to browse within clusters of
     documents that hold resources in common, and to revisit previously visited
-    documents. WebKit and the frameworks below it include built-in caches that take
+    documents. CyberKit and the frameworks below it include built-in caches that take
     advantage of these patterns, substantially improving document load speed in
-    browsing situations. The WebKit cache model controls the behaviors of all of
-    these caches, including NSURLCache and the various WebCore caches.
+    browsing situations. The CyberKit cache model controls the behaviors of all of
+    these caches, including NSURLCache and the various CyberCore caches.
 
     Applications with a browsing interface can improve document load speed
     substantially by specifying WebCacheModelDocumentBrowser. Applications without
     a browsing interface can reduce memory usage substantially by specifying
     WebCacheModelDocumentViewer.
 
-    If cacheModel is not set, WebKit will select a cache model automatically.
+    If cacheModel is not set, CyberKit will select a cache model automatically.
 */
 @property (nonatomic) WebCacheModel cacheModel;
 

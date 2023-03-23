@@ -32,35 +32,35 @@
 #include <wtf/HashSet.h>
 #include <wtf/text/StringHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 struct MediaEngineSupportParameters;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class RemoteMediaPlayerManager;
 
 class RemoteMediaPlayerMIMETypeCache {
     WTF_MAKE_FAST_ALLOCATED;
 public:
-    RemoteMediaPlayerMIMETypeCache(RemoteMediaPlayerManager&, WebCore::MediaPlayerEnums::MediaEngineIdentifier);
+    RemoteMediaPlayerMIMETypeCache(RemoteMediaPlayerManager&, CyberCore::MediaPlayerEnums::MediaEngineIdentifier);
     ~RemoteMediaPlayerMIMETypeCache() = default;
 
     HashSet<String, ASCIICaseInsensitiveHash>& supportedTypes();
-    WebCore::MediaPlayerEnums::SupportsType supportsTypeAndCodecs(const WebCore::MediaEngineSupportParameters&);
+    CyberCore::MediaPlayerEnums::SupportsType supportsTypeAndCodecs(const CyberCore::MediaEngineSupportParameters&);
     void addSupportedTypes(const Vector<String>&);
     bool isEmpty() const;
 
 private:
     RemoteMediaPlayerManager& m_manager;
-    WebCore::MediaPlayerEnums::MediaEngineIdentifier m_engineIdentifier;
+    CyberCore::MediaPlayerEnums::MediaEngineIdentifier m_engineIdentifier;
 
     using SupportedTypesAndCodecsKey = std::tuple<String, bool, bool, bool>;
-    std::optional<HashMap<SupportedTypesAndCodecsKey, WebCore::MediaPlayerEnums::SupportsType>> m_supportsTypeAndCodecsCache;
+    std::optional<HashMap<SupportedTypesAndCodecsKey, CyberCore::MediaPlayerEnums::SupportsType>> m_supportsTypeAndCodecsCache;
     HashSet<String, ASCIICaseInsensitiveHash> m_supportedTypesCache;
     bool m_hasPopulatedSupportedTypesCacheFromGPUProcess { false };
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS) && ENABLE(VIDEO)

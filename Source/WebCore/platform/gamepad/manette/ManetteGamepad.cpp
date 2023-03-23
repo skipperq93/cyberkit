@@ -33,7 +33,7 @@
 #include <wtf/HexNumber.h>
 #include <wtf/text/CString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static ManetteGamepad::StandardGamepadAxis toStandardGamepadAxis(uint16_t axis)
 {
@@ -172,6 +172,6 @@ void ManetteGamepad::absoluteAxisChanged(ManetteDevice*, StandardGamepadAxis axi
     ManetteGamepadProvider::singleton().gamepadHadInput(*this, ManetteGamepadProvider::ShouldMakeGamepadsVisible::No);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(GAMEPAD) && OS(LINUX)

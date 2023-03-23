@@ -27,12 +27,12 @@
 
 #include "FetchOptions.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ResourceResponse;
 
 // <https://fetch.spec.whatwg.org/#should-response-to-request-be-blocked-due-to-mime-type?>
 bool shouldBlockResponseDueToMIMEType(const ResourceResponse&, FetchOptions::Destination);
 
-} // namespace WebCore
+} // namespace CyberCore
 

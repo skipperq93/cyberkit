@@ -33,7 +33,7 @@
 #include "TextDecorationPainter.h"
 #include "TextRun.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class Color;
 class Document;

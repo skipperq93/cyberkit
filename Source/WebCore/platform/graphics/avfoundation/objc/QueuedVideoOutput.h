@@ -43,7 +43,7 @@ OBJC_CLASS WebQueuedVideoOutputDelegate;
 
 typedef struct __CVBuffer *CVPixelBufferRef;
 
-namespace WebCore {
+namespace CyberCore {
 
 class QueuedVideoOutput
     : public RefCounted<QueuedVideoOutput>

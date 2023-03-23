@@ -42,7 +42,7 @@
 #include "TileControllerMemoryHandlerIOS.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 #if !LOG_DISABLED
 
@@ -775,6 +775,6 @@ void TileGrid::removeUnparentedTilesNow()
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

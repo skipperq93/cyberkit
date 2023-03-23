@@ -124,13 +124,13 @@ Vector<SerializedTypeInfo> allSerializedTypes()
                 "a"_s
             }
         } },
-        { "WebCore::InheritsFrom"_s, {
+        { "CyberCore::InheritsFrom"_s, {
             {
                 "float"_s,
                 "b"_s
             }
         } },
-        { "WebCore::InheritanceGrandchild"_s, {
+        { "CyberCore::InheritanceGrandchild"_s, {
             {
                 "double"_s,
                 "c"_s
@@ -148,7 +148,7 @@ Vector<SerializedTypeInfo> allSerializedTypes()
                 "value"_s
             }
         } },
-        { "WebCore::FloatBoxExtent"_s, {
+        { "CyberCore::FloatBoxExtent"_s, {
             {
                 "float"_s,
                 "top()"_s
@@ -172,10 +172,10 @@ Vector<SerializedTypeInfo> allSerializedTypes()
                 "secondMember"_s
             }
         } },
-        { "WebCore::TimingFunction"_s, {
-            { "std::variant<WebCore::LinearTimingFunction, WebCore::CubicBezierTimingFunction, WebCore::StepsTimingFunction, WebCore::SpringTimingFunction>"_s, "subclasses"_s }
+        { "CyberCore::TimingFunction"_s, {
+            { "std::variant<CyberCore::LinearTimingFunction, CyberCore::CubicBezierTimingFunction, CyberCore::StepsTimingFunction, CyberCore::SpringTimingFunction>"_s, "subclasses"_s }
         } },
-        { "WebCore::SharedStringHash"_s, {
+        { "CyberCore::SharedStringHash"_s, {
             { "uint32_t"_s, "alias"_s }
         } },
     };

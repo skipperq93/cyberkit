@@ -46,7 +46,7 @@ struct WTF::CFTypeTrait<CMSampleBufferRef> {
     static inline CFTypeID typeID(void) { return PAL::CMSampleBufferGetTypeID(); }
 };
 
-namespace WebCore {
+namespace CyberCore {
 
 MediaSampleAVFObjC::MediaSampleAVFObjC(RetainPtr<CMSampleBufferRef>&& sample)
     : m_sample(WTFMove(sample))

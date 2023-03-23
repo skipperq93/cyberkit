@@ -32,7 +32,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 class SharedBuffer;
 }
 
@@ -54,7 +54,7 @@ public:
         void encode(IPC::Encoder&) const;
         static WARN_UNUSED_RETURN bool decode(IPC::Decoder&, Handle&);
 
-        RefPtr<WebCore::SharedBuffer> tryWrapInSharedBuffer() const;
+        RefPtr<CyberCore::SharedBuffer> tryWrapInSharedBuffer() const;
 
     private:
         friend class ShareableResource;
@@ -79,7 +79,7 @@ public:
     
 private:
     ShareableResource(Ref<SharedMemory>&&, unsigned offset, unsigned size);
-    RefPtr<WebCore::SharedBuffer> wrapInSharedBuffer();
+    RefPtr<CyberCore::SharedBuffer> wrapInSharedBuffer();
 
     Ref<SharedMemory> m_sharedMemory;
 

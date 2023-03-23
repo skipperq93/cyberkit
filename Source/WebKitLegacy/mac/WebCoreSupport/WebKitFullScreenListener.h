@@ -23,23 +23,23 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef WebKitFullScreenListener_h
-#define WebKitFullScreenListener_h
+#ifndef CyberKitFullScreenListener_h
+#define CyberKitFullScreenListener_h
 
 #import "WebUIDelegatePrivate.h"
 #import <wtf/RefPtr.h>
 
 #if ENABLE(FULLSCREEN_API)
 
-namespace WebCore {
+namespace CyberCore {
 class Element;
 }
 
-@interface WebKitFullScreenListener : NSObject <WebKitFullScreenListener> {
-    RefPtr<WebCore::Element> _element;
+@interface CyberKitFullScreenListener : NSObject <CyberKitFullScreenListener> {
+    RefPtr<CyberCore::Element> _element;
 }
 
-- (id)initWithElement:(WebCore::Element*)element;
+- (id)initWithElement:(CyberCore::Element*)element;
 @end
 
 #endif

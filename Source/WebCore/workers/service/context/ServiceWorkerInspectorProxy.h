@@ -37,7 +37,7 @@ namespace Inspector {
 class FrontendChannel;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class ServiceWorkerThreadProxy;
 
@@ -60,6 +60,6 @@ private:
     Inspector::FrontendChannel* m_channel { nullptr };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

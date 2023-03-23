@@ -39,7 +39,7 @@ namespace WTF {
 class MediaTime;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class VideoFrame;
 enum class VideoFrameRotation : uint16_t;

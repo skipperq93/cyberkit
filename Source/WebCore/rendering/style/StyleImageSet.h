@@ -26,7 +26,7 @@
 
 #include "StyleMultiImage.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class StyleImageSet final : public StyleMultiImage {
     WTF_MAKE_FAST_ALLOCATED;
@@ -53,6 +53,6 @@ private:
     Vector<ImageWithScale> m_images;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_STYLE_IMAGE(StyleImageSet, isImageSet)

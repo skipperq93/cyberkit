@@ -36,7 +36,7 @@
 #include "ShadowData.h"
 #include "TextRun.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 /*
  * Draw one cubic Bezier curve and repeat the same pattern long the the decoration's axis.
@@ -405,4 +405,4 @@ OptionSet<TextDecorationLine> TextDecorationPainter::textDecorationsInEffectForS
     return decorations;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

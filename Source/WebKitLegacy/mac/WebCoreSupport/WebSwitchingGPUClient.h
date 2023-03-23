@@ -27,9 +27,9 @@
 
 #include <CyberCore/SwitchingGPUClient.h>
 
-namespace WebKit {
+namespace CyberKit {
 
-class WebSwitchingGPUClient : public WebCore::SwitchingGPUClient {
+class WebSwitchingGPUClient : public CyberCore::SwitchingGPUClient {
 public:
     static WebSwitchingGPUClient& singleton();
     virtual ~WebSwitchingGPUClient() = default;

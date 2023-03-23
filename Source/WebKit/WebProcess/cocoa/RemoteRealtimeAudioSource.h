@@ -29,21 +29,21 @@
 
 #include "RemoteRealtimeMediaSource.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 class RemoteRealtimeAudioSource final : public RemoteRealtimeMediaSource {
 public:
-    static Ref<WebCore::RealtimeMediaSource> create(const WebCore::CaptureDevice&, const WebCore::MediaConstraints*, WebCore::MediaDeviceHashSalts&&, UserMediaCaptureManager&, bool shouldCaptureInGPUProcess, WebCore::PageIdentifier);
+    static Ref<CyberCore::RealtimeMediaSource> create(const CyberCore::CaptureDevice&, const CyberCore::MediaConstraints*, CyberCore::MediaDeviceHashSalts&&, UserMediaCaptureManager&, bool shouldCaptureInGPUProcess, CyberCore::PageIdentifier);
     ~RemoteRealtimeAudioSource();
 
-    void remoteAudioSamplesAvailable(const WTF::MediaTime&, const WebCore::PlatformAudioData&, const WebCore::AudioStreamDescription&, size_t);
+    void remoteAudioSamplesAvailable(const WTF::MediaTime&, const CyberCore::PlatformAudioData&, const CyberCore::AudioStreamDescription&, size_t);
 
 private:
-    RemoteRealtimeAudioSource(WebCore::RealtimeMediaSourceIdentifier, const WebCore::CaptureDevice&, const WebCore::MediaConstraints*, WebCore::MediaDeviceHashSalts&&, UserMediaCaptureManager&, bool shouldCaptureInGPUProcess, WebCore::PageIdentifier);
+    RemoteRealtimeAudioSource(CyberCore::RealtimeMediaSourceIdentifier, const CyberCore::CaptureDevice&, const CyberCore::MediaConstraints*, CyberCore::MediaDeviceHashSalts&&, UserMediaCaptureManager&, bool shouldCaptureInGPUProcess, CyberCore::PageIdentifier);
 
     void setIsInBackground(bool) final;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

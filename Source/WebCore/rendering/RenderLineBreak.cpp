@@ -42,7 +42,7 @@
 #include "SelectionGeometry.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(RenderLineBreak);
 
@@ -237,4 +237,4 @@ void RenderLineBreak::collectSelectionGeometries(Vector<SelectionGeometry>& rect
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -25,7 +25,7 @@
 #include "SourceAlphaSoftwareApplier.h"
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<SourceAlpha> SourceAlpha::create(const DestinationColorSpace& colorSpace)
 {
@@ -49,4 +49,4 @@ TextStream& SourceAlpha::externalRepresentation(TextStream& ts, FilterRepresenta
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

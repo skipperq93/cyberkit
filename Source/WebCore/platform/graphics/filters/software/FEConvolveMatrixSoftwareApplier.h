@@ -30,7 +30,7 @@
 #include <CyberScriptCore/TypedArrayAdaptersForwardDeclarations.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FEConvolveMatrix;
 enum class EdgeModeType;
@@ -71,4 +71,4 @@ private:
     void applyPlatform(PaintingData&) const;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

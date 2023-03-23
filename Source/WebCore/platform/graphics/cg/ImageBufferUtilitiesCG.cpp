@@ -37,7 +37,7 @@
 #include <wtf/ScopedLambda.h>
 #include <wtf/text/Base64.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using PutBytesCallback = size_t(const void*, size_t);
 
@@ -229,6 +229,6 @@ String dataURL(const PixelBuffer& pixelBuffer, const String& mimeType, std::opti
     return encodeToDataURL(pixelBuffer, mimeType, quality);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(CG)

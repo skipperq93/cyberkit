@@ -33,8 +33,8 @@
 #import <CyberCore/KeyboardEvent.h>
 #import <CyberCore/NotImplemented.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
     
 void WebEditorClient::handleKeyboardEvent(KeyboardEvent& event)
 {
@@ -75,13 +75,13 @@ int WebEditorClient::getPasteboardItemsCount()
     return 0;
 }
 
-RefPtr<WebCore::DocumentFragment> WebEditorClient::documentFragmentFromDelegate(int)
+RefPtr<CyberCore::DocumentFragment> WebEditorClient::documentFragmentFromDelegate(int)
 {
     notImplemented();
     return nullptr;
 }
 
-bool WebEditorClient::performsTwoStepPaste(WebCore::DocumentFragment*)
+bool WebEditorClient::performsTwoStepPaste(CyberCore::DocumentFragment*)
 {
     notImplemented();
     return false;
@@ -102,7 +102,7 @@ void WebEditorClient::subFrameScrollPositionChanged()
     m_page->didScrollSelection();
 }
 
-bool WebEditorClient::shouldAllowSingleClickToChangeSelection(WebCore::Node& targetNode, const WebCore::VisibleSelection& newSelection) const
+bool WebEditorClient::shouldAllowSingleClickToChangeSelection(CyberCore::Node& targetNode, const CyberCore::VisibleSelection& newSelection) const
 {
     return m_page->shouldAllowSingleClickToChangeSelection(targetNode, newSelection);
 }
@@ -117,6 +117,6 @@ bool WebEditorClient::shouldSuppressPasswordEcho() const
     return m_page->screenIsBeingCaptured() || m_page->hardwareKeyboardIsAttached();
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(IOS_FAMILY)

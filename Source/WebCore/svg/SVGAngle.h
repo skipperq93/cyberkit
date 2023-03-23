@@ -28,7 +28,7 @@
 #include "SVGAngleValue.h"
 #include "SVGValueProperty.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGAngle : public SVGValueProperty<SVGAngleValue> {
     using Base = SVGValueProperty<SVGAngleValue>;
@@ -134,4 +134,4 @@ public:
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

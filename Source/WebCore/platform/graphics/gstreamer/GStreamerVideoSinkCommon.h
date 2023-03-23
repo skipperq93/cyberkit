@@ -22,10 +22,10 @@
 
 #include <gst/gst.h>
 
-namespace WebCore {
+namespace CyberCore {
 class MediaPlayerPrivateGStreamer;
 }
 
-void webKitVideoSinkSetMediaPlayerPrivate(GstElement*, WebCore::MediaPlayerPrivateGStreamer*);
+void webKitVideoSinkSetMediaPlayerPrivate(GstElement*, CyberCore::MediaPlayerPrivateGStreamer*);
 
 #endif // ENABLE(VIDEO)

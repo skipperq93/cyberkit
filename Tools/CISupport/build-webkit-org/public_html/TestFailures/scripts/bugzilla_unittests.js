@@ -54,7 +54,7 @@ var kExampleResponseXML =
     '        &lt;th&gt;Field&lt;/th&gt;&lt;th&gt;Value&lt;/th&gt;' +
     '      &lt;/tr&gt;&lt;tr class=&quot;bz_feed_product&quot;&gt;' +
     '        &lt;td&gt;Product&lt;/td&gt;' +
-    '        &lt;td&gt;WebKit&lt;/td&gt;' +
+    '        &lt;td&gt;CyberKit&lt;/td&gt;' +
     '      &lt;/tr&gt;&lt;tr class=&quot;bz_feed_component&quot;&gt;' +
     '        &lt;td&gt;Component&lt;/td&gt;' +
     '        &lt;td&gt;New Bugs&lt;/td&gt;' +
@@ -102,7 +102,7 @@ var kExampleResponseXML =
     '        &lt;th&gt;Field&lt;/th&gt;&lt;th&gt;Value&lt;/th&gt;' +
     '      &lt;/tr&gt;&lt;tr class=&quot;bz_feed_product&quot;&gt;' +
     '        &lt;td&gt;Product&lt;/td&gt;' +
-    '        &lt;td&gt;WebKit&lt;/td&gt;' +
+    '        &lt;td&gt;CyberKit&lt;/td&gt;' +
     '      &lt;/tr&gt;&lt;tr class=&quot;bz_feed_component&quot;&gt;' +
     '        &lt;td&gt;Component&lt;/td&gt;' +
     '        &lt;td&gt;New Bugs&lt;/td&gt;' +
@@ -150,7 +150,7 @@ var kExampleResponseXML =
     '        &lt;th&gt;Field&lt;/th&gt;&lt;th&gt;Value&lt;/th&gt;' +
     '      &lt;/tr&gt;&lt;tr class=&quot;bz_feed_product&quot;&gt;' +
     '        &lt;td&gt;Product&lt;/td&gt;' +
-    '        &lt;td&gt;WebKit&lt;/td&gt;' +
+    '        &lt;td&gt;CyberKit&lt;/td&gt;' +
     '      &lt;/tr&gt;&lt;tr class=&quot;bz_feed_component&quot;&gt;' +
     '        &lt;td&gt;Component&lt;/td&gt;' +
     '        &lt;td&gt;New Bugs&lt;/td&gt;' +

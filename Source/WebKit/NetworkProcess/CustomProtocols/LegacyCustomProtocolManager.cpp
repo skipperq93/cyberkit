@@ -31,7 +31,7 @@
 #include "LegacyCustomProtocolManagerProxyMessages.h"
 #include "NetworkProcess.h"
 #include "NetworkProcessCreationParameters.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include <CyberCore/ResourceRequest.h>
 
 namespace WebKit {
@@ -69,7 +69,7 @@ void LegacyCustomProtocolManager::removeCustomProtocol(LegacyCustomProtocolID cu
     m_customProtocolMap.remove(customProtocolID);
 }
 
-void LegacyCustomProtocolManager::startLoading(LegacyCustomProtocolID customProtocolID, const WebCore::ResourceRequest& request)
+void LegacyCustomProtocolManager::startLoading(LegacyCustomProtocolID customProtocolID, const CyberCore::ResourceRequest& request)
 {
     m_networkProcess.send(Messages::LegacyCustomProtocolManagerProxy::StartLoading(customProtocolID, request));
 }

@@ -22,7 +22,7 @@
 #include "SVGGradientElement.h"
 #include "SVGUnitTypes.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct GradientAttributes {
     GradientAttributes()
@@ -89,4 +89,4 @@ struct SameSizeAsGradientAttributes {
 
 static_assert(sizeof(GradientAttributes) == sizeof(SameSizeAsGradientAttributes));
 
-} // namespace WebCore
+} // namespace CyberCore

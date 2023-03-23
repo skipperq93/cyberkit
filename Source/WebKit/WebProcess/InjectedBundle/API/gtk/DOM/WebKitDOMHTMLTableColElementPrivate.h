@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -17,16 +17,16 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitDOMHTMLTableColElementPrivate_h
-#define WebKitDOMHTMLTableColElementPrivate_h
+#ifndef CyberKitDOMHTMLTableColElementPrivate_h
+#define CyberKitDOMHTMLTableColElementPrivate_h
 
 #include <CyberCore/HTMLTableColElement.h>
-#include <webkitdom/WebKitDOMHTMLTableColElement.h>
+#include <webkitdom/CyberKitDOMHTMLTableColElement.h>
 
-namespace WebKit {
-WebKitDOMHTMLTableColElement* wrapHTMLTableColElement(WebCore::HTMLTableColElement*);
-WebKitDOMHTMLTableColElement* kit(WebCore::HTMLTableColElement*);
-WebCore::HTMLTableColElement* core(WebKitDOMHTMLTableColElement*);
-} // namespace WebKit
+namespace CyberKit {
+CyberKitDOMHTMLTableColElement* wrapHTMLTableColElement(CyberCore::HTMLTableColElement*);
+CyberKitDOMHTMLTableColElement* kit(CyberCore::HTMLTableColElement*);
+CyberCore::HTMLTableColElement* core(CyberKitDOMHTMLTableColElement*);
+} // namespace CyberKit
 
-#endif /* WebKitDOMHTMLTableColElementPrivate_h */
+#endif /* CyberKitDOMHTMLTableColElementPrivate_h */

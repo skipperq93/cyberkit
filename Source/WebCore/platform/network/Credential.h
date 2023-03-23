@@ -36,7 +36,7 @@
 
 #include "CredentialBase.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class Credential : public CredentialBase {
 public:

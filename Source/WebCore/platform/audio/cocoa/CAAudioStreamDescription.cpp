@@ -26,7 +26,7 @@
 #include "config.h"
 #include "CAAudioStreamDescription.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 CAAudioStreamDescription::~CAAudioStreamDescription() = default;
 

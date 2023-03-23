@@ -30,7 +30,7 @@
 OBJC_CLASS NSArray;
 OBJC_CLASS PKPaymentSetupFeature;
 
-#include <CyberCore/ApplePaySetupFeatureWebCore.h>
+#include <CyberCore/ApplePaySetupFeatureCyberCore.h>
 #include <wtf/ArgumentCoder.h>
 #include <wtf/Forward.h>
 #include <wtf/RetainPtr.h>
@@ -44,11 +44,11 @@ namespace WebKit {
 
 class PaymentSetupFeatures {
 public:
-    PaymentSetupFeatures(Vector<RefPtr<WebCore::ApplePaySetupFeature>>&&);
+    PaymentSetupFeatures(Vector<RefPtr<CyberCore::ApplePaySetupFeature>>&&);
     PaymentSetupFeatures(RetainPtr<NSArray>&& = nullptr);
 
     NSArray *platformFeatures() const { return m_platformFeatures.get(); }
-    operator Vector<Ref<WebCore::ApplePaySetupFeature>>() const;
+    operator Vector<Ref<CyberCore::ApplePaySetupFeature>>() const;
 
 private:
     friend struct IPC::ArgumentCoder<PaymentSetupFeatures, void>;

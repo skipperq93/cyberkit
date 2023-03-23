@@ -40,7 +40,7 @@ using ExtAudioFileRef = struct OpaqueExtAudioFile*;
 using AudioFileID = struct OpaqueAudioFileID*;
 typedef struct opaqueCMSampleBuffer* CMSampleBufferRef;
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioBus;
 class SourceBufferParserWebM;

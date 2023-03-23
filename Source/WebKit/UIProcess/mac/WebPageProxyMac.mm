@@ -115,7 +115,7 @@
 #import <pal/mac/QuickLookUISoftLink.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
     
 static inline bool expectsLegacyImplicitRubberBandControl()
 {
@@ -155,7 +155,7 @@ void WebPageProxy::getIsSpeaking(CompletionHandler<void(bool)>&& completionHandl
 void WebPageProxy::speak(const String& string)
 {
     ASSERT(hasProcessPrivilege(ProcessPrivilege::CanCommunicateWithWindowServer));
-    [NSApp speakString:nsStringFromWebCoreString(string)];
+    [NSApp speakString:nsStringFromCyberCoreString(string)];
 }
 
 void WebPageProxy::stopSpeaking()
@@ -166,7 +166,7 @@ void WebPageProxy::stopSpeaking()
 
 void WebPageProxy::searchWithSpotlight(const String& string)
 {
-    [[NSWorkspace sharedWorkspace] showSearchResultsForQueryString:nsStringFromWebCoreString(string)];
+    [[NSWorkspace sharedWorkspace] showSearchResultsForQueryString:nsStringFromCyberCoreString(string)];
 }
     
 void WebPageProxy::searchTheWeb(const String& string)
@@ -198,7 +198,7 @@ void WebPageProxy::setMainFrameIsScrollable(bool isScrollable)
     send(Messages::WebPage::SetMainFrameIsScrollable(isScrollable));
 }
 
-void WebPageProxy::attributedSubstringForCharacterRangeAsync(const EditingRange& range, CompletionHandler<void(const WebCore::AttributedString&, const EditingRange&)>&& callbackFunction)
+void WebPageProxy::attributedSubstringForCharacterRangeAsync(const EditingRange& range, CompletionHandler<void(const CyberCore::AttributedString&, const EditingRange&)>&& callbackFunction)
 {
     if (!hasRunningProcess()) {
         callbackFunction({ }, { });
@@ -219,7 +219,7 @@ String WebPageProxy::stringSelectionForPasteboard()
     return value;
 }
 
-RefPtr<WebCore::SharedBuffer> WebPageProxy::dataSelectionForPasteboard(const String& pasteboardType)
+RefPtr<CyberCore::SharedBuffer> WebPageProxy::dataSelectionForPasteboard(const String& pasteboardType)
 {
     if (!hasRunningProcess())
         return nullptr;
@@ -331,7 +331,7 @@ void WebPageProxy::semanticContextDidChange()
     send(Messages::WebPage::SemanticContextDidChange(useFormSemanticContext()));
 }
 
-WebCore::DestinationColorSpace WebPageProxy::colorSpace()
+CyberCore::DestinationColorSpace WebPageProxy::colorSpace()
 {
     return pageClient().colorSpace();
 }
@@ -545,7 +545,7 @@ void WebPageProxy::showPDFContextMenu(const WebKit::PDFContextMenu& contextMenu,
 #endif
 
 #if ENABLE(TELEPHONE_NUMBER_DETECTION)
-void WebPageProxy::showTelephoneNumberMenu(const String& telephoneNumber, const WebCore::IntPoint& point, const WebCore::IntRect& rect)
+void WebPageProxy::showTelephoneNumberMenu(const String& telephoneNumber, const CyberCore::IntPoint& point, const CyberCore::IntRect& rect)
 {
     RetainPtr<NSMenu> menu = menuForTelephoneNumber(telephoneNumber, pageClient().viewForPresentingRevealPopover(), rect);
     pageClient().showPlatformContextMenu(menu.get(), point);
@@ -581,7 +581,7 @@ NSWindow *WebPageProxy::platformWindow()
     return m_pageClient ? m_pageClient->platformWindow() : nullptr;
 }
 
-void WebPageProxy::rootViewToWindow(const WebCore::IntRect& viewRect, WebCore::IntRect& windowRect)
+void WebPageProxy::rootViewToWindow(const CyberCore::IntRect& viewRect, CyberCore::IntRect& windowRect)
 {
     windowRect = pageClient().rootViewToWindow(viewRect);
 }
@@ -653,7 +653,7 @@ PlatformView* WebPageProxy::platformView() const
 
 #if ENABLE(UI_PROCESS_PDF_HUD)
 
-void WebPageProxy::createPDFHUD(PDFPluginIdentifier identifier, const WebCore::IntRect& rect)
+void WebPageProxy::createPDFHUD(PDFPluginIdentifier identifier, const CyberCore::IntRect& rect)
 {
     pageClient().createPDFHUD(identifier, rect);
 }
@@ -663,7 +663,7 @@ void WebPageProxy::removePDFHUD(PDFPluginIdentifier identifier)
     pageClient().removePDFHUD(identifier);
 }
 
-void WebPageProxy::updatePDFHUDLocation(PDFPluginIdentifier identifier, const WebCore::IntRect& rect)
+void WebPageProxy::updatePDFHUDLocation(PDFPluginIdentifier identifier, const CyberCore::IntRect& rect)
 {
     pageClient().updatePDFHUDLocation(identifier, rect);
 }
@@ -694,9 +694,9 @@ void WebPageProxy::pdfOpenWithPreview(PDFPluginIdentifier identifier)
 
 #endif // ENABLE(UI_PROCESS_PDF_HUD)
 
-void WebPageProxy::changeUniversalAccessZoomFocus(const WebCore::IntRect& viewRect, const WebCore::IntRect& selectionRect)
+void WebPageProxy::changeUniversalAccessZoomFocus(const CyberCore::IntRect& viewRect, const CyberCore::IntRect& selectionRect)
 {
-    WebCore::changeUniversalAccessZoomFocus(viewRect, selectionRect);
+    CyberCore::changeUniversalAccessZoomFocus(viewRect, selectionRect);
 }
 
 void WebPageProxy::showFontPanel()
@@ -721,9 +721,9 @@ void WebPageProxy::showColorPanel()
 Color WebPageProxy::platformUnderPageBackgroundColor() const
 {
 #if ENABLE(DARK_MODE_CSS)
-    return WebCore::roundAndClampToSRGBALossy(NSColor.controlBackgroundColor.CGColor);
+    return CyberCore::roundAndClampToSRGBALossy(NSColor.controlBackgroundColor.CGColor);
 #else
-    return WebCore::Color::white;
+    return CyberCore::Color::white;
 #endif
 }
 

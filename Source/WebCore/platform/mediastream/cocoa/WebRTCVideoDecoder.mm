@@ -40,7 +40,7 @@ ALLOW_COMMA_END
 #import <WebKitAdditions/WebRTCVideoDecoderAdditions.mm>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class WebRTCLocalVideoDecoder final : public WebRTCVideoDecoder {
     WTF_MAKE_FAST_ALLOCATED;

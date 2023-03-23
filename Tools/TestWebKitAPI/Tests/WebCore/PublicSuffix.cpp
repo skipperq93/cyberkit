@@ -32,7 +32,7 @@
 #include <CyberCore/PublicSuffix.h>
 #include <wtf/MainThread.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 namespace TestWebKitAPI {
 

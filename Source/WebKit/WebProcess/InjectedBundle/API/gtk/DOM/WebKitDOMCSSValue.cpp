@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -18,30 +18,30 @@
  */
 
 #include "config.h"
-#include "WebKitDOMCSSValue.h"
+#include "CyberKitDOMCSSValue.h"
 
 #include <CyberCore/CSSImportRule.h>
 #include "DOMObjectCache.h"
 #include <CyberCore/DOMException.h>
 #include <CyberCore/Document.h>
 #include <CyberCore/JSExecState.h>
-#include "WebKitDOMCSSValuePrivate.h"
-#include "WebKitDOMPrivate.h"
+#include "CyberKitDOMCSSValuePrivate.h"
+#include "CyberKitDOMPrivate.h"
 #include "ConvertToUTF8String.h"
 #include <wtf/GetPtr.h>
 #include <wtf/RefPtr.h>
 
-#define WEBKIT_DOM_CSS_VALUE_GET_PRIVATE(obj) G_TYPE_INSTANCE_GET_PRIVATE(obj, WEBKIT_DOM_TYPE_CSS_VALUE, WebKitDOMCSSValuePrivate)
+#define WEBKIT_DOM_CSS_VALUE_GET_PRIVATE(obj) G_TYPE_INSTANCE_GET_PRIVATE(obj, WEBKIT_DOM_TYPE_CSS_VALUE, CyberKitDOMCSSValuePrivate)
 
-typedef struct _WebKitDOMCSSValuePrivate {
-    RefPtr<WebCore::DeprecatedCSSOMValue> coreObject;
-} WebKitDOMCSSValuePrivate;
+typedef struct _CyberKitDOMCSSValuePrivate {
+    RefPtr<CyberCore::DeprecatedCSSOMValue> coreObject;
+} CyberKitDOMCSSValuePrivate;
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
-namespace WebKit {
+namespace CyberKit {
 
-WebKitDOMCSSValue* kit(WebCore::DeprecatedCSSOMValue* obj)
+CyberKitDOMCSSValue* kit(CyberCore::DeprecatedCSSOMValue* obj)
 {
     if (!obj)
         return 0;
@@ -52,20 +52,20 @@ WebKitDOMCSSValue* kit(WebCore::DeprecatedCSSOMValue* obj)
     return wrapCSSValue(obj);
 }
 
-WebCore::DeprecatedCSSOMValue* core(WebKitDOMCSSValue* request)
+CyberCore::DeprecatedCSSOMValue* core(CyberKitDOMCSSValue* request)
 {
-    return request ? static_cast<WebCore::DeprecatedCSSOMValue*>(WEBKIT_DOM_OBJECT(request)->coreObject) : 0;
+    return request ? static_cast<CyberCore::DeprecatedCSSOMValue*>(WEBKIT_DOM_OBJECT(request)->coreObject) : 0;
 }
 
-WebKitDOMCSSValue* wrapCSSValue(WebCore::DeprecatedCSSOMValue* coreObject)
+CyberKitDOMCSSValue* wrapCSSValue(CyberCore::DeprecatedCSSOMValue* coreObject)
 {
     ASSERT(coreObject);
     return WEBKIT_DOM_CSS_VALUE(g_object_new(WEBKIT_DOM_TYPE_CSS_VALUE, "core-object", coreObject, nullptr));
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
-G_DEFINE_TYPE(WebKitDOMCSSValue, webkit_dom_css_value, WEBKIT_DOM_TYPE_OBJECT)
+G_DEFINE_TYPE(CyberKitDOMCSSValue, webkit_dom_css_value, WEBKIT_DOM_TYPE_OBJECT)
 
 enum {
     DOM_CSS_VALUE_PROP_0,
@@ -75,17 +75,17 @@ enum {
 
 static void webkit_dom_css_value_finalize(GObject* object)
 {
-    WebKitDOMCSSValuePrivate* priv = WEBKIT_DOM_CSS_VALUE_GET_PRIVATE(object);
+    CyberKitDOMCSSValuePrivate* priv = WEBKIT_DOM_CSS_VALUE_GET_PRIVATE(object);
 
-    WebKit::DOMObjectCache::forget(priv->coreObject.get());
+    CyberKit::DOMObjectCache::forget(priv->coreObject.get());
 
-    priv->~WebKitDOMCSSValuePrivate();
+    priv->~CyberKitDOMCSSValuePrivate();
     G_OBJECT_CLASS(webkit_dom_css_value_parent_class)->finalize(object);
 }
 
 static void webkit_dom_css_value_set_property(GObject* object, guint propertyId, const GValue* value, GParamSpec* pspec)
 {
-    WebKitDOMCSSValue* self = WEBKIT_DOM_CSS_VALUE(object);
+    CyberKitDOMCSSValue* self = WEBKIT_DOM_CSS_VALUE(object);
 
     switch (propertyId) {
     case DOM_CSS_VALUE_PROP_CSS_TEXT:
@@ -99,7 +99,7 @@ static void webkit_dom_css_value_set_property(GObject* object, guint propertyId,
 
 static void webkit_dom_css_value_get_property(GObject* object, guint propertyId, GValue* value, GParamSpec* pspec)
 {
-    WebKitDOMCSSValue* self = WEBKIT_DOM_CSS_VALUE(object);
+    CyberKitDOMCSSValue* self = WEBKIT_DOM_CSS_VALUE(object);
 
     switch (propertyId) {
     case DOM_CSS_VALUE_PROP_CSS_TEXT:
@@ -118,17 +118,17 @@ static GObject* webkit_dom_css_value_constructor(GType type, guint constructProp
 {
     GObject* object = G_OBJECT_CLASS(webkit_dom_css_value_parent_class)->constructor(type, constructPropertiesCount, constructProperties);
 
-    WebKitDOMCSSValuePrivate* priv = WEBKIT_DOM_CSS_VALUE_GET_PRIVATE(object);
-    priv->coreObject = static_cast<WebCore::DeprecatedCSSOMValue*>(WEBKIT_DOM_OBJECT(object)->coreObject);
-    WebKit::DOMObjectCache::put(priv->coreObject.get(), object);
+    CyberKitDOMCSSValuePrivate* priv = WEBKIT_DOM_CSS_VALUE_GET_PRIVATE(object);
+    priv->coreObject = static_cast<CyberCore::DeprecatedCSSOMValue*>(WEBKIT_DOM_OBJECT(object)->coreObject);
+    CyberKit::DOMObjectCache::put(priv->coreObject.get(), object);
 
     return object;
 }
 
-static void webkit_dom_css_value_class_init(WebKitDOMCSSValueClass* requestClass)
+static void webkit_dom_css_value_class_init(CyberKitDOMCSSValueClass* requestClass)
 {
     GObjectClass* gobjectClass = G_OBJECT_CLASS(requestClass);
-    g_type_class_add_private(gobjectClass, sizeof(WebKitDOMCSSValuePrivate));
+    g_type_class_add_private(gobjectClass, sizeof(CyberKitDOMCSSValuePrivate));
     gobjectClass->constructor = webkit_dom_css_value_constructor;
     gobjectClass->finalize = webkit_dom_css_value_finalize;
     gobjectClass->set_property = webkit_dom_css_value_set_property;
@@ -156,41 +156,41 @@ static void webkit_dom_css_value_class_init(WebKitDOMCSSValueClass* requestClass
 
 }
 
-static void webkit_dom_css_value_init(WebKitDOMCSSValue* request)
+static void webkit_dom_css_value_init(CyberKitDOMCSSValue* request)
 {
-    WebKitDOMCSSValuePrivate* priv = WEBKIT_DOM_CSS_VALUE_GET_PRIVATE(request);
-    new (priv) WebKitDOMCSSValuePrivate();
+    CyberKitDOMCSSValuePrivate* priv = WEBKIT_DOM_CSS_VALUE_GET_PRIVATE(request);
+    new (priv) CyberKitDOMCSSValuePrivate();
 }
 
-gchar* webkit_dom_css_value_get_css_text(WebKitDOMCSSValue* self)
+gchar* webkit_dom_css_value_get_css_text(CyberKitDOMCSSValue* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_CSS_VALUE(self), 0);
-    WebCore::DeprecatedCSSOMValue* item = WebKit::core(self);
+    CyberCore::DeprecatedCSSOMValue* item = CyberKit::core(self);
     gchar* result = convertToUTF8String(item->cssText());
     return result;
 }
 
-void webkit_dom_css_value_set_css_text(WebKitDOMCSSValue* self, const gchar* value, GError** error)
+void webkit_dom_css_value_set_css_text(CyberKitDOMCSSValue* self, const gchar* value, GError** error)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_CSS_VALUE(self));
     g_return_if_fail(value);
     g_return_if_fail(!error || !*error);
-    WebCore::DeprecatedCSSOMValue* item = WebKit::core(self);
+    CyberCore::DeprecatedCSSOMValue* item = CyberKit::core(self);
     WTF::String convertedValue = WTF::String::fromUTF8(value);
     auto result = item->setCssText(convertedValue);
     if (result.hasException()) {
-        auto description = WebCore::DOMException::description(result.releaseException().code());
+        auto description = CyberCore::DOMException::description(result.releaseException().code());
         g_set_error_literal(error, g_quark_from_string("WEBKIT_DOM"), description.legacyCode, description.name);
     }
 }
 
-gushort webkit_dom_css_value_get_css_value_type(WebKitDOMCSSValue* self)
+gushort webkit_dom_css_value_get_css_value_type(CyberKitDOMCSSValue* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_CSS_VALUE(self), 0);
-    WebCore::DeprecatedCSSOMValue* item = WebKit::core(self);
+    CyberCore::DeprecatedCSSOMValue* item = CyberKit::core(self);
     gushort result = item->cssValueType();
     return result;
 }

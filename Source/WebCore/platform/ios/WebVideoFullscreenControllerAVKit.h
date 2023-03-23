@@ -30,14 +30,14 @@
 
 @class UIView;
 
-namespace WebCore {
+namespace CyberCore {
 class HTMLVideoElement;
 }
 
 WEBCORE_EXPORT @interface WebVideoFullscreenController : NSObject
-- (void)setVideoElement:(NakedPtr<WebCore::HTMLVideoElement>)videoElement;
-- (NakedPtr<WebCore::HTMLVideoElement>)videoElement;
-- (void)enterFullscreen:(UIView *)view mode:(WebCore::HTMLMediaElementEnums::VideoFullscreenMode)mode;
+- (void)setVideoElement:(NakedPtr<CyberCore::HTMLVideoElement>)videoElement;
+- (NakedPtr<CyberCore::HTMLVideoElement>)videoElement;
+- (void)enterFullscreen:(UIView *)view mode:(CyberCore::HTMLMediaElementEnums::VideoFullscreenMode)mode;
 - (void)exitFullscreen;
 - (void)requestHideAndExitFullscreen;
 @end

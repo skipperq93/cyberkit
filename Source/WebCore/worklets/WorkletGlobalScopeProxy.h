@@ -31,7 +31,7 @@
 #include <wtf/Forward.h>
 #include <wtf/ThreadSafeRefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WorkletPendingTasks;
 
@@ -43,4 +43,4 @@ public:
     virtual bool isAudioWorkletMessagingProxy() const = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

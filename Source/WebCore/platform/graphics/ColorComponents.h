@@ -31,7 +31,7 @@
 #include <tuple>
 #include <wtf/MathExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename T, size_t N>
 struct ColorComponents {
@@ -183,16 +183,16 @@ constexpr bool operator!=(const ColorComponents<T, N>& a, const ColorComponents<
     return !(a == b);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace std {
 
 template<typename T, size_t N>
-class tuple_size<WebCore::ColorComponents<T, N>> : public std::integral_constant<size_t, N> {
+class tuple_size<CyberCore::ColorComponents<T, N>> : public std::integral_constant<size_t, N> {
 };
 
 template<size_t I, typename T, size_t N>
-class tuple_element<I, WebCore::ColorComponents<T, N>> {
+class tuple_element<I, CyberCore::ColorComponents<T, N>> {
 public:
     using type = T;
 };

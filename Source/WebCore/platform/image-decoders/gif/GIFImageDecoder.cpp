@@ -29,7 +29,7 @@
 #include "GIFImageReader.h"
 #include <limits>
 
-namespace WebCore {
+namespace CyberCore {
 
 GIFImageDecoder::GIFImageDecoder(AlphaOption alphaOption, GammaAndColorProfileOption gammaAndColorProfileOption)
     : ScalableImageDecoder(alphaOption, gammaAndColorProfileOption)
@@ -427,4 +427,4 @@ bool GIFImageDecoder::initFrameBuffer(unsigned frameIndex)
     return true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

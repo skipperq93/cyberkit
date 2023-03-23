@@ -37,17 +37,17 @@ template<> struct WrapperTraits<API::UserStyleSheet> {
 
 namespace API {
 
-inline WebCore::UserStyleLevel toWebCoreUserStyleLevel(_WKUserStyleLevel level)
+inline CyberCore::UserStyleLevel toCyberCoreUserStyleLevel(_WKUserStyleLevel level)
 {
     switch (level) {
     case _WKUserStyleUserLevel:
-        return WebCore::UserStyleUserLevel;
+        return CyberCore::UserStyleUserLevel;
     case _WKUserStyleAuthorLevel:
-        return WebCore::UserStyleAuthorLevel;
+        return CyberCore::UserStyleAuthorLevel;
     }
 
     ASSERT_NOT_REACHED();
-    return WebCore::UserStyleUserLevel;
+    return CyberCore::UserStyleUserLevel;
 }
 
 }

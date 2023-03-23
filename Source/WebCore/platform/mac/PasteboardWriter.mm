@@ -35,7 +35,7 @@
 #import <pal/spi/mac/NSPasteboardSPI.h>
 #import <wtf/cocoa/TypeCastsCocoa.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static RetainPtr<NSString> toUTI(NSString *pasteboardType)
 {
@@ -86,11 +86,11 @@ RetainPtr<id <NSPasteboardWriting>> createPasteboardWriter(const PasteboardWrite
 
         // NSURLPboardType.
         if (NSURL *baseCocoaURL = cocoaURL.baseURL)
-            [pasteboardItem setPropertyList:@[ cocoaURL.relativeString, baseCocoaURL.absoluteString ] forType:toUTI(WebCore::legacyURLPasteboardType()).get()];
+            [pasteboardItem setPropertyList:@[ cocoaURL.relativeString, baseCocoaURL.absoluteString ] forType:toUTI(CyberCore::legacyURLPasteboardType()).get()];
         else if (cocoaURL)
-            [pasteboardItem setPropertyList:@[ cocoaURL.absoluteString, @"" ] forType:toUTI(WebCore::legacyURLPasteboardType()).get()];
+            [pasteboardItem setPropertyList:@[ cocoaURL.absoluteString, @"" ] forType:toUTI(CyberCore::legacyURLPasteboardType()).get()];
         else
-            [pasteboardItem setPropertyList:@[ @"", @"" ] forType:toUTI(WebCore::legacyURLPasteboardType()).get()];
+            [pasteboardItem setPropertyList:@[ @"", @"" ] forType:toUTI(CyberCore::legacyURLPasteboardType()).get()];
 
 ALLOW_DEPRECATED_DECLARATIONS_BEGIN
         if (cocoaURL.fileURL)

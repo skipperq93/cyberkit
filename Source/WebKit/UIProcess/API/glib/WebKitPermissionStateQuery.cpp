@@ -42,7 +42,7 @@
  */
 
 struct _WebKitPermissionStateQuery {
-    explicit _WebKitPermissionStateQuery(const WTF::String& permissionName, API::SecurityOrigin& origin, CompletionHandler<void(std::optional<WebCore::PermissionState>)>&& completionHandler)
+    explicit _WebKitPermissionStateQuery(const WTF::String& permissionName, API::SecurityOrigin& origin, CompletionHandler<void(std::optional<CyberCore::PermissionState>)>&& completionHandler)
         : permissionName(permissionName.utf8())
         , securityOrigin(webkitSecurityOriginCreate(origin.securityOrigin().isolatedCopy()))
         , completionHandler(WTFMove(completionHandler))
@@ -53,20 +53,20 @@ struct _WebKitPermissionStateQuery {
     {
         // Fallback to Prompt response unless the completion handler was already called.
         if (completionHandler)
-            completionHandler(WebCore::PermissionState::Prompt);
+            completionHandler(CyberCore::PermissionState::Prompt);
 
         webkit_security_origin_unref(securityOrigin);
     }
 
     CString permissionName;
     WebKitSecurityOrigin* securityOrigin;
-    CompletionHandler<void(std::optional<WebCore::PermissionState>)> completionHandler;
+    CompletionHandler<void(std::optional<CyberCore::PermissionState>)> completionHandler;
     int referenceCount { 1 };
 };
 
 G_DEFINE_BOXED_TYPE(WebKitPermissionStateQuery, webkit_permission_state_query, webkit_permission_state_query_ref, webkit_permission_state_query_unref)
 
-WebKitPermissionStateQuery* webkitPermissionStateQueryCreate(const WTF::String& permissionName, API::SecurityOrigin& origin, CompletionHandler<void(std::optional<WebCore::PermissionState>)>&& completionHandler)
+WebKitPermissionStateQuery* webkitPermissionStateQueryCreate(const WTF::String& permissionName, API::SecurityOrigin& origin, CompletionHandler<void(std::optional<CyberCore::PermissionState>)>&& completionHandler)
 {
     WebKitPermissionStateQuery* query = static_cast<WebKitPermissionStateQuery*>(fastMalloc(sizeof(WebKitPermissionStateQuery)));
     new (query) WebKitPermissionStateQuery(permissionName, origin, WTFMove(completionHandler));
@@ -169,13 +169,13 @@ webkit_permission_state_query_finish(WebKitPermissionStateQuery* query, WebKitPe
 
     switch (state) {
     case WEBKIT_PERMISSION_STATE_GRANTED:
-        query->completionHandler(WebCore::PermissionState::Granted);
+        query->completionHandler(CyberCore::PermissionState::Granted);
         break;
     case WEBKIT_PERMISSION_STATE_DENIED:
-        query->completionHandler(WebCore::PermissionState::Denied);
+        query->completionHandler(CyberCore::PermissionState::Denied);
         break;
     case WEBKIT_PERMISSION_STATE_PROMPT:
-        query->completionHandler(WebCore::PermissionState::Prompt);
+        query->completionHandler(CyberCore::PermissionState::Prompt);
         break;
     }
 }

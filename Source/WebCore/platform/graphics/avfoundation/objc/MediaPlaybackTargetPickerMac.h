@@ -32,7 +32,7 @@
 #include "MediaPlaybackTargetPicker.h"
 #include <wtf/RetainPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class MediaPlaybackTargetPickerMac final : public MediaPlaybackTargetPicker, public AVPlaybackTargetPicker::Client {
     WTF_MAKE_FAST_ALLOCATED;
@@ -60,7 +60,7 @@ private:
     std::unique_ptr<AVPlaybackTargetPicker> m_routePicker;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WIRELESS_PLAYBACK_TARGET)
 

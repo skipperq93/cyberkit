@@ -31,7 +31,7 @@
 
 #include "LineWidth.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderBlock;
 
@@ -70,4 +70,4 @@ private:
     unsigned m_runsFromLeadingWhitespace;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -35,7 +35,7 @@
 #include <wtf/UniqueRef.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ContentType;
 struct VideoConfiguration;
@@ -117,4 +117,4 @@ private:
     virtual std::optional<MediaCapabilitiesEncodingInfo> videoEncodingCapabilitiesOverride(const VideoConfiguration&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

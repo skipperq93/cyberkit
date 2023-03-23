@@ -28,7 +28,7 @@
 
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 void add(Hasher& hasher, const FontFeatureValues& fontFeatureValues)
 {
@@ -111,4 +111,4 @@ WTF::TextStream& operator<<(WTF::TextStream& ts, const FontFeatureValues& fontFe
     return ts;  
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -30,7 +30,7 @@
 #include <wtf/CrossThreadCopier.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct WorkerInitializationData {
 #if ENABLE(SERVICE_WORKER)
@@ -53,4 +53,4 @@ inline WorkerInitializationData WorkerInitializationData::isolatedCopy() const
     };
 }
 
-} // namespace WebCore
+} // namespace CyberCore

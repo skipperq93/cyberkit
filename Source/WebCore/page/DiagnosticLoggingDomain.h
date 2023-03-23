@@ -27,8 +27,8 @@
 
 #include <wtf/EnumTraits.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class DiagnosticLoggingDomain : uint8_t { Media };
 
-} // namespace WebCore
+} // namespace CyberCore

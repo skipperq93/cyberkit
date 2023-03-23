@@ -30,16 +30,16 @@
 
 namespace WebKit {
 
-class NetworkProcessPlatformStrategies : public WebCore::PlatformStrategies {
+class NetworkProcessPlatformStrategies : public CyberCore::PlatformStrategies {
 public:
     static void initialize();
     
 private:
-    // WebCore::PlatformStrategies
-    WebCore::LoaderStrategy* createLoaderStrategy() override;
-    WebCore::PasteboardStrategy* createPasteboardStrategy() override;
-    WebCore::MediaStrategy* createMediaStrategy() override;
-    WebCore::BlobRegistry* createBlobRegistry() override;
+    // CyberCore::PlatformStrategies
+    CyberCore::LoaderStrategy* createLoaderStrategy() override;
+    CyberCore::PasteboardStrategy* createPasteboardStrategy() override;
+    CyberCore::MediaStrategy* createMediaStrategy() override;
+    CyberCore::BlobRegistry* createBlobRegistry() override;
 };
 
 } // namespace WebKit

@@ -26,7 +26,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(RenderCombineText);
 
@@ -194,4 +194,4 @@ void RenderCombineText::combineTextIfNeeded()
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -154,10 +154,10 @@ ASVInlinePreview * ModelElementController::previewForModelIdentifier(ModelIdenti
     return m_inlinePreviews.get(modelIdentifier.uuid).get();
 }
 
-void ModelElementController::modelElementCreateRemotePreview(String uuid, WebCore::FloatSize size, CompletionHandler<void(Expected<std::pair<String, uint32_t>, WebCore::ResourceError>)>&& completionHandler)
+void ModelElementController::modelElementCreateRemotePreview(String uuid, CyberCore::FloatSize size, CompletionHandler<void(Expected<std::pair<String, uint32_t>, CyberCore::ResourceError>)>&& completionHandler)
 {
     if (!m_webPageProxy.preferences().modelElementEnabled()) {
-        completionHandler(makeUnexpected(WebCore::ResourceError { WebCore::errorDomainWebKitInternal, 0, { }, "Model element disabled"_s }));
+        completionHandler(makeUnexpected(CyberCore::ResourceError { CyberCore::errorDomainWebKitInternal, 0, { }, "Model element disabled"_s }));
         return;
     }
 
@@ -172,8 +172,8 @@ void ModelElementController::modelElementCreateRemotePreview(String uuid, WebCor
     else
         iterator->value = preview;
 
-    auto handler = CompletionHandlerWithFinalizer<void(Expected<std::pair<String, uint32_t>, WebCore::ResourceError>)>(WTFMove(completionHandler), [] (Function<void(Expected<std::pair<String, uint32_t>, WebCore::ResourceError>)>& completionHandler) {
-        completionHandler(makeUnexpected(WebCore::ResourceError { WebCore::ResourceError::Type::General }));
+    auto handler = CompletionHandlerWithFinalizer<void(Expected<std::pair<String, uint32_t>, CyberCore::ResourceError>)>(WTFMove(completionHandler), [] (Function<void(Expected<std::pair<String, uint32_t>, CyberCore::ResourceError>)>& completionHandler) {
+        completionHandler(makeUnexpected(CyberCore::ResourceError { CyberCore::ResourceError::Type::General }));
     });
 
     RELEASE_ASSERT(isMainRunLoop());
@@ -181,7 +181,7 @@ void ModelElementController::modelElementCreateRemotePreview(String uuid, WebCor
         if (contextError) {
             LOG(ModelElement, "Unable to create remote connection for uuid %s: %@.", uuid.utf8().data(), contextError.localizedDescription);
 
-            callOnMainRunLoop([weakThis = WTFMove(weakThis), handler = WTFMove(handler), error = WebCore::ResourceError { contextError }] () mutable {
+            callOnMainRunLoop([weakThis = WTFMove(weakThis), handler = WTFMove(handler), error = CyberCore::ResourceError { contextError }] () mutable {
                 if (!weakThis)
                     return;
 
@@ -202,19 +202,19 @@ void ModelElementController::modelElementCreateRemotePreview(String uuid, WebCor
     }).get()];
 }
 
-void ModelElementController::modelElementLoadRemotePreview(String uuid, URL fileURL, CompletionHandler<void(std::optional<WebCore::ResourceError>&&)>&& completionHandler)
+void ModelElementController::modelElementLoadRemotePreview(String uuid, URL fileURL, CompletionHandler<void(std::optional<CyberCore::ResourceError>&&)>&& completionHandler)
 {
     if (!m_webPageProxy.preferences().modelElementEnabled()) {
-        completionHandler(WebCore::ResourceError { WebCore::errorDomainWebKitInternal, 0, { }, "Model element disabled"_s });
+        completionHandler(CyberCore::ResourceError { CyberCore::errorDomainWebKitInternal, 0, { }, "Model element disabled"_s });
         return;
     }
 
     auto preview = previewForUUID(uuid);
     if (!preview)
-        completionHandler(WebCore::ResourceError { WebCore::errorDomainWebKitInternal, 0, { }, "Could not find a preview for the provided UUID"_s });
+        completionHandler(CyberCore::ResourceError { CyberCore::errorDomainWebKitInternal, 0, { }, "Could not find a preview for the provided UUID"_s });
 
-    auto handler = CompletionHandlerWithFinalizer<void(std::optional<WebCore::ResourceError>&&)>(WTFMove(completionHandler), [](Function<void(std::optional<WebCore::ResourceError>&&)>& completionHandler) {
-        completionHandler(WebCore::ResourceError { WebCore::ResourceError::Type::General });
+    auto handler = CompletionHandlerWithFinalizer<void(std::optional<CyberCore::ResourceError>&&)>(WTFMove(completionHandler), [](Function<void(std::optional<CyberCore::ResourceError>&&)>& completionHandler) {
+        completionHandler(CyberCore::ResourceError { CyberCore::ResourceError::Type::General });
     });
 
     RELEASE_ASSERT(isMainRunLoop());
@@ -222,7 +222,7 @@ void ModelElementController::modelElementLoadRemotePreview(String uuid, URL file
         if (loadError) {
             LOG(ModelElement, "Unable to load file for uuid %s: %@.", uuid.utf8().data(), loadError.localizedDescription);
 
-            callOnMainRunLoop([weakThis = WTFMove(weakThis), handler = WTFMove(handler), error = WebCore::ResourceError { loadError }] () mutable {
+            callOnMainRunLoop([weakThis = WTFMove(weakThis), handler = WTFMove(handler), error = CyberCore::ResourceError { loadError }] () mutable {
                 if (!weakThis)
                     return;
 
@@ -252,40 +252,40 @@ RetainPtr<ASVInlinePreview> ModelElementController::previewForUUID(const String&
     return m_inlinePreviews.get(uuid);
 }
 
-void ModelElementController::handleMouseDownForModelElement(const String& uuid, const WebCore::LayoutPoint& flippedLocationInElement, MonotonicTime timestamp)
+void ModelElementController::handleMouseDownForModelElement(const String& uuid, const CyberCore::LayoutPoint& flippedLocationInElement, MonotonicTime timestamp)
 {
     if (auto preview = previewForUUID(uuid))
         [preview mouseDownAtLocation:CGPointMake(flippedLocationInElement.x().toFloat(), flippedLocationInElement.y().toFloat()) timestamp:timestamp.secondsSinceEpoch().value()];
 }
 
-void ModelElementController::handleMouseMoveForModelElement(const String& uuid, const WebCore::LayoutPoint& flippedLocationInElement, MonotonicTime timestamp)
+void ModelElementController::handleMouseMoveForModelElement(const String& uuid, const CyberCore::LayoutPoint& flippedLocationInElement, MonotonicTime timestamp)
 {
     if (auto preview = previewForUUID(uuid))
         [preview mouseDraggedAtLocation:CGPointMake(flippedLocationInElement.x().toFloat(), flippedLocationInElement.y().toFloat()) timestamp:timestamp.secondsSinceEpoch().value()];
 }
 
-void ModelElementController::handleMouseUpForModelElement(const String& uuid, const WebCore::LayoutPoint& flippedLocationInElement, MonotonicTime timestamp)
+void ModelElementController::handleMouseUpForModelElement(const String& uuid, const CyberCore::LayoutPoint& flippedLocationInElement, MonotonicTime timestamp)
 {
     if (auto preview = previewForUUID(uuid))
         [preview mouseUpAtLocation:CGPointMake(flippedLocationInElement.x().toFloat(), flippedLocationInElement.y().toFloat()) timestamp:timestamp.secondsSinceEpoch().value()];
 }
 
-void ModelElementController::modelElementSizeDidChange(const String& uuid, WebCore::FloatSize size, CompletionHandler<void(Expected<MachSendRight, WebCore::ResourceError>)>&& completionHandler)
+void ModelElementController::modelElementSizeDidChange(const String& uuid, CyberCore::FloatSize size, CompletionHandler<void(Expected<MachSendRight, CyberCore::ResourceError>)>&& completionHandler)
 {
     auto preview = previewForUUID(uuid);
     if (!preview) {
-        completionHandler(makeUnexpected(WebCore::ResourceError { WebCore::errorDomainWebKitInternal, 0, { }, "Could not find model"_s }));
+        completionHandler(makeUnexpected(CyberCore::ResourceError { CyberCore::errorDomainWebKitInternal, 0, { }, "Could not find model"_s }));
         return;
     }
 
-    auto handler = CompletionHandlerWithFinalizer<void(Expected<MachSendRight, WebCore::ResourceError>)>(WTFMove(completionHandler), [] (Function<void(Expected<MachSendRight, WebCore::ResourceError>)>& completionHandler) {
-        completionHandler(makeUnexpected(WebCore::ResourceError { WebCore::ResourceError::Type::General }));
+    auto handler = CompletionHandlerWithFinalizer<void(Expected<MachSendRight, CyberCore::ResourceError>)>(WTFMove(completionHandler), [] (Function<void(Expected<MachSendRight, CyberCore::ResourceError>)>& completionHandler) {
+        completionHandler(makeUnexpected(CyberCore::ResourceError { CyberCore::ResourceError::Type::General }));
     });
 
     [preview updateFrame:CGRectMake(0, 0, size.width(), size.height()) completionHandler:makeBlockPtr([weakThis = WeakPtr { *this }, handler = WTFMove(handler), uuid] (CAFenceHandle *fenceHandle, NSError *error) mutable {
         if (error) {
             LOG(ModelElement, "Unable to update frame: %@.", error.localizedDescription);
-            callOnMainRunLoop([weakThis = WTFMove(weakThis), handler = WTFMove(handler), error = WebCore::ResourceError { error }] () mutable {
+            callOnMainRunLoop([weakThis = WTFMove(weakThis), handler = WTFMove(handler), error = CyberCore::ResourceError { error }] () mutable {
                 if (!weakThis)
                     return;
                 handler(makeUnexpected(error));
@@ -327,11 +327,11 @@ static bool previewHasCameraSupport(ASVInlinePreview *preview)
 #endif
 }
 
-void ModelElementController::getCameraForModelElement(ModelIdentifier modelIdentifier, CompletionHandler<void(Expected<WebCore::HTMLModelElementCamera, WebCore::ResourceError>)>&& completionHandler)
+void ModelElementController::getCameraForModelElement(ModelIdentifier modelIdentifier, CompletionHandler<void(Expected<CyberCore::HTMLModelElementCamera, CyberCore::ResourceError>)>&& completionHandler)
 {
     auto* preview = previewForModelIdentifier(modelIdentifier);
     if (!previewHasCameraSupport(preview)) {
-        completionHandler(makeUnexpected(WebCore::ResourceError { WebCore::ResourceError::Type::General }));
+        completionHandler(makeUnexpected(CyberCore::ResourceError { CyberCore::ResourceError::Type::General }));
         return;
     }
 
@@ -340,14 +340,14 @@ void ModelElementController::getCameraForModelElement(ModelIdentifier modelIdent
         if (error) {
             callOnMainRunLoop([weakThis = WTFMove(weakThis), completionHandler = WTFMove(completionHandler)] () mutable {
                 if (weakThis)
-                    completionHandler(makeUnexpected(WebCore::ResourceError { WebCore::ResourceError::Type::General }));
+                    completionHandler(makeUnexpected(CyberCore::ResourceError { CyberCore::ResourceError::Type::General }));
             });
             return;
         }
 
         callOnMainRunLoop([cameraTransform, weakThis = WTFMove(weakThis), completionHandler = WTFMove(completionHandler)] () mutable {
             if (weakThis)
-                completionHandler(WebCore::HTMLModelElementCamera { cameraTransform.x, cameraTransform.y, cameraTransform.z });
+                completionHandler(CyberCore::HTMLModelElementCamera { cameraTransform.x, cameraTransform.y, cameraTransform.z });
         });
     }).get()];
 #else
@@ -355,7 +355,7 @@ void ModelElementController::getCameraForModelElement(ModelIdentifier modelIdent
 #endif
 }
 
-void ModelElementController::setCameraForModelElement(ModelIdentifier modelIdentifier, WebCore::HTMLModelElementCamera camera, CompletionHandler<void(bool)>&& completionHandler)
+void ModelElementController::setCameraForModelElement(ModelIdentifier modelIdentifier, CyberCore::HTMLModelElementCamera camera, CompletionHandler<void(bool)>&& completionHandler)
 {
     auto* preview = previewForModelIdentifier(modelIdentifier);
     if (!previewHasCameraSupport(preview)) {
@@ -380,11 +380,11 @@ static bool previewHasAnimationSupport(ASVInlinePreview *preview)
 #endif
 }
 
-void ModelElementController::isPlayingAnimationForModelElement(ModelIdentifier modelIdentifier, CompletionHandler<void(Expected<bool, WebCore::ResourceError>)>&& completionHandler)
+void ModelElementController::isPlayingAnimationForModelElement(ModelIdentifier modelIdentifier, CompletionHandler<void(Expected<bool, CyberCore::ResourceError>)>&& completionHandler)
 {
     auto* preview = previewForModelIdentifier(modelIdentifier);
     if (!previewHasAnimationSupport(preview)) {
-        completionHandler(makeUnexpected(WebCore::ResourceError { WebCore::ResourceError::Type::General }));
+        completionHandler(makeUnexpected(CyberCore::ResourceError { CyberCore::ResourceError::Type::General }));
         return;
     }
 
@@ -415,11 +415,11 @@ void ModelElementController::setAnimationIsPlayingForModelElement(ModelIdentifie
 #endif
 }
 
-void ModelElementController::isLoopingAnimationForModelElement(ModelIdentifier modelIdentifier, CompletionHandler<void(Expected<bool, WebCore::ResourceError>)>&& completionHandler)
+void ModelElementController::isLoopingAnimationForModelElement(ModelIdentifier modelIdentifier, CompletionHandler<void(Expected<bool, CyberCore::ResourceError>)>&& completionHandler)
 {
     auto* preview = previewForModelIdentifier(modelIdentifier);
     if (!previewHasAnimationSupport(preview)) {
-        completionHandler(makeUnexpected(WebCore::ResourceError { WebCore::ResourceError::Type::General }));
+        completionHandler(makeUnexpected(CyberCore::ResourceError { CyberCore::ResourceError::Type::General }));
         return;
     }
 
@@ -446,11 +446,11 @@ void ModelElementController::setIsLoopingAnimationForModelElement(ModelIdentifie
 #endif
 }
 
-void ModelElementController::animationDurationForModelElement(ModelIdentifier modelIdentifier, CompletionHandler<void(Expected<Seconds, WebCore::ResourceError>)>&& completionHandler)
+void ModelElementController::animationDurationForModelElement(ModelIdentifier modelIdentifier, CompletionHandler<void(Expected<Seconds, CyberCore::ResourceError>)>&& completionHandler)
 {
     auto* preview = previewForModelIdentifier(modelIdentifier);
     if (!previewHasAnimationSupport(preview)) {
-        completionHandler(makeUnexpected(WebCore::ResourceError { WebCore::ResourceError::Type::General }));
+        completionHandler(makeUnexpected(CyberCore::ResourceError { CyberCore::ResourceError::Type::General }));
         return;
     }
 
@@ -461,11 +461,11 @@ void ModelElementController::animationDurationForModelElement(ModelIdentifier mo
 #endif
 }
 
-void ModelElementController::animationCurrentTimeForModelElement(ModelIdentifier modelIdentifier, CompletionHandler<void(Expected<Seconds, WebCore::ResourceError>)>&& completionHandler)
+void ModelElementController::animationCurrentTimeForModelElement(ModelIdentifier modelIdentifier, CompletionHandler<void(Expected<Seconds, CyberCore::ResourceError>)>&& completionHandler)
 {
     auto* preview = previewForModelIdentifier(modelIdentifier);
     if (!previewHasAnimationSupport(preview)) {
-        completionHandler(makeUnexpected(WebCore::ResourceError { WebCore::ResourceError::Type::General }));
+        completionHandler(makeUnexpected(CyberCore::ResourceError { CyberCore::ResourceError::Type::General }));
         return;
     }
 
@@ -501,11 +501,11 @@ static bool previewHasAudioSupport(ASVInlinePreview *preview)
 #endif
 }
 
-void ModelElementController::hasAudioForModelElement(ModelIdentifier modelIdentifier, CompletionHandler<void(Expected<bool, WebCore::ResourceError>)>&& completionHandler)
+void ModelElementController::hasAudioForModelElement(ModelIdentifier modelIdentifier, CompletionHandler<void(Expected<bool, CyberCore::ResourceError>)>&& completionHandler)
 {
     auto* preview = previewForModelIdentifier(modelIdentifier);
     if (!previewHasAudioSupport(preview)) {
-        completionHandler(makeUnexpected(WebCore::ResourceError { WebCore::ResourceError::Type::General }));
+        completionHandler(makeUnexpected(CyberCore::ResourceError { CyberCore::ResourceError::Type::General }));
         return;
     }
 
@@ -516,11 +516,11 @@ void ModelElementController::hasAudioForModelElement(ModelIdentifier modelIdenti
 #endif
 }
 
-void ModelElementController::isMutedForModelElement(ModelIdentifier modelIdentifier, CompletionHandler<void(Expected<bool, WebCore::ResourceError>)>&& completionHandler)
+void ModelElementController::isMutedForModelElement(ModelIdentifier modelIdentifier, CompletionHandler<void(Expected<bool, CyberCore::ResourceError>)>&& completionHandler)
 {
     auto* preview = previewForModelIdentifier(modelIdentifier);
     if (!previewHasAudioSupport(preview)) {
-        completionHandler(makeUnexpected(WebCore::ResourceError { WebCore::ResourceError::Type::General }));
+        completionHandler(makeUnexpected(CyberCore::ResourceError { CyberCore::ResourceError::Type::General }));
         return;
     }
 

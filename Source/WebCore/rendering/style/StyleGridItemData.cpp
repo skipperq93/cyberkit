@@ -33,7 +33,7 @@
 
 #include "RenderStyle.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 DEFINE_ALLOCATOR_WITH_HEAP_IDENTIFIER(StyleGridItemData);
 
@@ -59,4 +59,4 @@ Ref<StyleGridItemData> StyleGridItemData::copy() const
     return adoptRef(*new StyleGridItemData(*this));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

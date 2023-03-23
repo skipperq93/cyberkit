@@ -40,7 +40,7 @@
 
 @class LegacyTileLayer;
 
-namespace WebCore {
+namespace CyberCore {
 
 class LegacyTileLayerPool {
     WTF_MAKE_NONCOPYABLE(LegacyTileLayerPool);
@@ -83,6 +83,6 @@ private:
     friend NeverDestroyed<LegacyTileLayerPool>;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(IOS_FAMILY)

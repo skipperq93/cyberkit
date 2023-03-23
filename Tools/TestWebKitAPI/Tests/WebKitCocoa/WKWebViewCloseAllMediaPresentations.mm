@@ -41,7 +41,7 @@ static void loadPictureInPicture(RetainPtr<TestWKWebView> webView)
     [webView synchronouslyLoadHTMLString:@"<video src=video-with-audio.mp4 webkit-playsinline playsinline loop></video>"];
 
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{
-        @"WebCoreLogging": @"",
+        @"CyberCoreLogging": @"",
         @"WebKit2Logging": @"",
     }];
 
@@ -67,11 +67,11 @@ TEST(WKWebViewCloseAllMediaPresentations, DISABLED_PictureInPicture)
 TEST(WKWebViewCloseAllMediaPresentations, PictureInPicture)
 #endif
 {
-    if (!WebCore::supportsPictureInPicture())
+    if (!CyberCore::supportsPictureInPicture())
         return;
 
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{
-        @"WebCoreLogging": @"Fullscreen=debug",
+        @"CyberCoreLogging": @"Fullscreen=debug",
         @"WebKit2Logging": @"Fullscreen=debug",
     }];
 
@@ -97,11 +97,11 @@ TEST(WKWebViewCloseAllMediaPresentationsInternal, DISABLED_PictureInPicture)
 TEST(WKWebViewCloseAllMediaPresentationsInternal, PictureInPicture)
 #endif
 {
-    if (!WebCore::supportsPictureInPicture())
+    if (!CyberCore::supportsPictureInPicture())
         return;
 
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{
-        @"WebCoreLogging": @"Fullscreen=debug",
+        @"CyberCoreLogging": @"Fullscreen=debug",
         @"WebKit2Logging": @"Fullscreen=debug",
     }];
 
@@ -194,11 +194,11 @@ TEST(WKWebViewCloseAllMediaPresentations, DISABLED_MultipleSequentialCloseAllMed
 TEST(WKWebViewCloseAllMediaPresentations, MultipleSequentialCloseAllMediaPresentations)
 #endif
 {
-    if (!WebCore::supportsPictureInPicture())
+    if (!CyberCore::supportsPictureInPicture())
         return;
 
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{
-        @"WebCoreLogging": @"Fullscreen=debug",
+        @"CyberCoreLogging": @"Fullscreen=debug",
         @"WebKit2Logging": @"Fullscreen=debug",
     }];
 

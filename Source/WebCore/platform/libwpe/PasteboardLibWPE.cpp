@@ -32,7 +32,7 @@
 #include "PasteboardStrategy.h"
 #include "PlatformStrategies.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 std::unique_ptr<Pasteboard> Pasteboard::createForCopyAndPaste(std::unique_ptr<PasteboardContext>&& context)
 {
@@ -160,6 +160,6 @@ void Pasteboard::write(const Color&)
 {
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(LIBWPE)

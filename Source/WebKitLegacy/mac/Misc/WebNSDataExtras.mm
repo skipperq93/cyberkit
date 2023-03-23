@@ -94,7 +94,7 @@
 
 @end
 
-@implementation NSData (WebKitExtras)
+@implementation NSData (CyberKitExtras)
 
 - (NSString *)_webkit_guessedMIMETypeForXML
 {

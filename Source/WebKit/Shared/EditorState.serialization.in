@@ -46,9 +46,9 @@ struct WebKit::EditorState {
 #if PLATFORM(COCOA)
     uint64_t selectedTextLength;
     uint32_t textAlignment;
-    WebCore::Color textColor;
+    CyberCore::Color textColor;
     uint32_t enclosingListType;
-    WebCore::WritingDirection baseWritingDirection;
+    CyberCore::WritingDirection baseWritingDirection;
 #endif
 #if PLATFORM(IOS_FAMILY)
     String markedText;
@@ -58,7 +58,7 @@ struct WebKit::EditorState {
     UChar32 twoCharacterBeforeSelection;
 #endif
 #if PLATFORM(IOS_FAMILY) && USE(DICTATION_ALTERNATIVES)
-    Vector<WebCore::DictationContext> dictationContextsForSelection;
+    Vector<CyberCore::DictationContext> dictationContextsForSelection;
 #endif
 #if PLATFORM(IOS_FAMILY)
     bool isReplaceAllowed;
@@ -67,25 +67,25 @@ struct WebKit::EditorState {
     bool insideFixedPosition;
     bool hasPlainText;
     bool editableRootIsTransparentOrFullyClipped;
-    WebCore::Color caretColor;
+    CyberCore::Color caretColor;
     bool atStartOfSentence;
     bool selectionStartIsAtParagraphBoundary;
     bool selectionEndIsAtParagraphBoundary;
-    std::optional<WebCore::ElementContext> selectedEditableImage;
+    std::optional<CyberCore::ElementContext> selectedEditableImage;
 #endif
 #if PLATFORM(MAC)
-    WebCore::IntRect selectionBoundingRect;
+    CyberCore::IntRect selectionBoundingRect;
     uint64_t candidateRequestStartPosition;
     String paragraphContextForCandidateRequest;
     String stringForCandidateRequest;
-    Vector<WebCore::FloatRect> evasionRectsAroundSelection;
+    Vector<CyberCore::FloatRect> evasionRectsAroundSelection;
 #endif
 #if PLATFORM(GTK) || PLATFORM(WPE)
     String surroundingContext;
     uint64_t surroundingContextCursorPosition;
     uint64_t surroundingContextSelectionPosition;
 #endif
-    std::optional<WebCore::FontAttributes> fontAttributes;
+    std::optional<CyberCore::FontAttributes> fontAttributes;
     bool canCut;
     bool canCopy;
     bool canPaste;
@@ -93,14 +93,14 @@ struct WebKit::EditorState {
 
 [Nested] struct WebKit::EditorState::VisualData {
 #if PLATFORM(IOS_FAMILY) || PLATFORM(GTK) || PLATFORM(WPE)
-    WebCore::IntRect caretRectAtStart;
+    CyberCore::IntRect caretRectAtStart;
 #endif
 #if PLATFORM(IOS_FAMILY)
-    WebCore::IntRect selectionClipRect;
-    WebCore::IntRect caretRectAtEnd;
-    Vector<WebCore::SelectionGeometry> selectionGeometries;
-    Vector<WebCore::SelectionGeometry> markedTextRects;
-    WebCore::IntRect markedTextCaretRectAtStart;
-    WebCore::IntRect markedTextCaretRectAtEnd;
+    CyberCore::IntRect selectionClipRect;
+    CyberCore::IntRect caretRectAtEnd;
+    Vector<CyberCore::SelectionGeometry> selectionGeometries;
+    Vector<CyberCore::SelectionGeometry> markedTextRects;
+    CyberCore::IntRect markedTextCaretRectAtStart;
+    CyberCore::IntRect markedTextCaretRectAtEnd;
 #endif
 };

@@ -28,9 +28,9 @@
 
 #import "GraphicsLayerCA.h"
 #import "NativeImage.h"
-#import "WebCoreCALayerExtras.h"
+#import "CyberCoreCALayerExtras.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 GraphicsLayerAsyncContentsDisplayDelegateCocoa::GraphicsLayerAsyncContentsDisplayDelegateCocoa(GraphicsLayerCA& layer)
 {

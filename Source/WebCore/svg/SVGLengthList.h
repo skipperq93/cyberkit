@@ -28,7 +28,7 @@
 #include "SVGLength.h"
 #include "SVGValuePropertyList.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGLengthList final : public SVGValuePropertyList<SVGLength> {
     using Base = SVGValuePropertyList<SVGLength>;
@@ -77,4 +77,4 @@ private:
     SVGLengthMode m_lengthMode { SVGLengthMode::Other };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

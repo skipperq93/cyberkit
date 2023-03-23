@@ -52,7 +52,7 @@ const WTF::String& ContentRuleList::name() const
 
 bool ContentRuleList::supportsRegularExpression(const WTF::String& regex)
 {
-    using namespace WebCore::ContentExtensions;
+    using namespace CyberCore::ContentExtensions;
     CombinedURLFilters combinedURLFilters;
     URLFilterParser urlFilterParser(combinedURLFilters);
 
@@ -80,7 +80,7 @@ bool ContentRuleList::supportsRegularExpression(const WTF::String& regex)
 
 std::error_code ContentRuleList::parseRuleList(const WTF::String& ruleList)
 {
-    auto result = WebCore::ContentExtensions::parseRuleList(ruleList);
+    auto result = CyberCore::ContentExtensions::parseRuleList(ruleList);
     if (result.has_value())
         return { };
 

@@ -44,7 +44,7 @@
 #endif
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 namespace {
 #if PLATFORM(MAC)

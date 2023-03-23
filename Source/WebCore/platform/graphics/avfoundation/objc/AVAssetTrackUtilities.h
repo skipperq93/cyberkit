@@ -32,7 +32,7 @@
 
 OBJC_CLASS AVAssetTrack;
 
-namespace WebCore {
+namespace CyberCore {
 
 struct FourCC;
 

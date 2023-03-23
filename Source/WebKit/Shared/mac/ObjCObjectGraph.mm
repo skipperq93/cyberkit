@@ -311,7 +311,7 @@ bool ObjCObjectGraph::decode(IPC::Decoder& decoder, RetainPtr<id>& result)
         decoder >> pageProxyID;
         if (!pageProxyID)
             return false;
-        std::optional<WebCore::PageIdentifier> webPageID;
+        std::optional<CyberCore::PageIdentifier> webPageID;
         decoder >> webPageID;
         if (!webPageID)
             return false;

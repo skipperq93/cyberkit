@@ -37,7 +37,7 @@
 #include <functional>
 #include <wtf/Deque.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class TrackQueue {
 public:

@@ -26,7 +26,7 @@
 
 #if ENABLE(WEB_RTC)
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class RTCSdpType {
     Offer,
@@ -35,6 +35,6 @@ enum class RTCSdpType {
     Rollback
 };
 
-}; // namespace WebCore
+}; // namespace CyberCore
 
 #endif

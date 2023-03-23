@@ -35,7 +35,7 @@
     @class WebPDFViewPlaceholder
     @discussion This class represents a placeholder for PDFs. It is intended to allow main frame PDFs
     be drawn to the UI by some other object (ideally the delegate of this class) while still interfacing
-    with WAK and WebKit correctly.
+    with WAK and CyberKit correctly.
 */
 @interface WebPDFViewPlaceholder : WAKView <WebPDFDocumentView, WebPDFDocumentRepresentation>
 

@@ -39,7 +39,7 @@
 #include <wtf/Threading.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class TextureMapperPlatformLayerProxyGL final : public TextureMapperPlatformLayerProxy {
     WTF_MAKE_FAST_ALLOCATED();
@@ -84,7 +84,7 @@ private:
     Function<void()> m_compositorThreadUpdateFunction;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_TEXTUREMAPPER_PLATFORMLAYERPROXY(TextureMapperPlatformLayerProxyGL, isGLBased());
 

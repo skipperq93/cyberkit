@@ -33,7 +33,7 @@
 #include <CyberScriptCore/ScriptCallStack.h>
 #include <CyberScriptCore/ScriptCallStackFactory.h>
 
-namespace WebCore {
+namespace CyberCore {
 using namespace Inspector;
 
 WorkerConsoleClient::WorkerConsoleClient(WorkerOrWorkletGlobalScope& globalScope)
@@ -99,4 +99,4 @@ void WorkerConsoleClient::recordEnd(JSC::JSGlobalObject*, Ref<ScriptArguments>&&
 
 void WorkerConsoleClient::screenshot(JSC::JSGlobalObject*, Ref<ScriptArguments>&&) { }
 
-} // namespace WebCore
+} // namespace CyberCore

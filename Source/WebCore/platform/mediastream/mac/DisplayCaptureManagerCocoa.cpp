@@ -45,7 +45,7 @@
 #include "ScreenCaptureKitCaptureSource.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 DisplayCaptureManagerCocoa& DisplayCaptureManagerCocoa::singleton()
 {
@@ -110,6 +110,6 @@ std::optional<CaptureDevice> DisplayCaptureManagerCocoa::captureDeviceWithPersis
     return std::nullopt;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM)

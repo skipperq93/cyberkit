@@ -31,7 +31,7 @@
 
 OBJC_CLASS DDScannerResult;
 
-namespace WebCore {
+namespace CyberCore {
 
 class IntRect;
 
@@ -40,6 +40,6 @@ struct DataDetectorElementInfo {
     IntRect elementBounds;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(DATA_DETECTION)

@@ -23,17 +23,17 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#ifndef WebKitDOMHTMLPrivate_h
-#define WebKitDOMHTMLPrivate_h
+#ifndef CyberKitDOMHTMLPrivate_h
+#define CyberKitDOMHTMLPrivate_h
 
 #include <webkitdom/webkitdomdefines.h>
 
-namespace WebCore {
+namespace CyberCore {
 class HTMLElement;
 }
 
-namespace WebKit {
-WebKitDOMHTMLElement* wrap(WebCore::HTMLElement*);
+namespace CyberKit {
+CyberKitDOMHTMLElement* wrap(CyberCore::HTMLElement*);
 }
 
-#endif // WebKitDOMHTMLPrivate_h
+#endif // CyberKitDOMHTMLPrivate_h

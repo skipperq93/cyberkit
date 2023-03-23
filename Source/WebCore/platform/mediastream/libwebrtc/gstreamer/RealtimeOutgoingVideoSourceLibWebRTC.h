@@ -30,7 +30,7 @@
 
 #include "RealtimeOutgoingVideoSource.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RealtimeOutgoingVideoSourceLibWebRTC final : public RealtimeOutgoingVideoSource {
 public:
@@ -45,7 +45,7 @@ private:
     void videoFrameAvailable(VideoFrame&, VideoFrameTimeMetadata) final;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(LIBWEBRTC)
 

@@ -36,7 +36,7 @@
 #import <pal/cocoa/PassKitSoftLink.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 static NSDecimalNumber *toDecimalNumber(const String& amount)
 {

@@ -129,7 +129,7 @@ struct WebProcessCreationParameters {
     bool memoryCacheDisabled { false };
     bool attrStyleEnabled { false };
     bool shouldThrowExceptionForGlobalConstantRedeclaration { true };
-    WebCore::CrossOriginMode crossOriginMode { WebCore::CrossOriginMode::Shared }; // Cross-origin isolation via COOP+COEP headers.
+    CyberCore::CrossOriginMode crossOriginMode { CyberCore::CrossOriginMode::Shared }; // Cross-origin isolation via COOP+COEP headers.
     bool isLockdownModeEnabled { false };
 
 #if ENABLE(SERVICE_CONTROLS)
@@ -176,7 +176,7 @@ struct WebProcessCreationParameters {
 
 #if PLATFORM(COCOA)
     Vector<String> mediaMIMETypes;
-    WebCore::ScreenProperties screenProperties;
+    CyberCore::ScreenProperties screenProperties;
 #endif
 
 #if ENABLE(TRACKING_PREVENTION) && !RELEASE_LOG_DISABLED
@@ -221,8 +221,8 @@ struct WebProcessCreationParameters {
 #if PLATFORM(IOS_FAMILY)
     bool currentUserInterfaceIdiomIsSmallScreen { false };
     bool supportsPictureInPicture { false };
-    WebCore::RenderThemeIOS::CSSValueToSystemColorMap cssValueToSystemColorMap;
-    WebCore::Color focusRingColor;
+    CyberCore::RenderThemeIOS::CSSValueToSystemColorMap cssValueToSystemColorMap;
+    CyberCore::Color focusRingColor;
     String localizedDeviceModel;
     String contentSizeCategory;
 #endif
@@ -237,7 +237,7 @@ struct WebProcessCreationParameters {
 #endif
 
 #if HAVE(IOSURFACE)
-    WebCore::IntSize maximumIOSurfaceSize;
+    CyberCore::IntSize maximumIOSurfaceSize;
     size_t bytesPerRowIOSurfaceAlignment;
 #endif
     

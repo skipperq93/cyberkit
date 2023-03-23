@@ -30,7 +30,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMMapAdapter;
 
@@ -51,4 +51,4 @@ private:
     HashMap<String, unsigned> m_values;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

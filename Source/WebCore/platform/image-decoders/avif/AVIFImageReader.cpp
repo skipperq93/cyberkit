@@ -32,7 +32,7 @@
 
 #include "AVIFImageDecoder.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 AVIFImageReader::AVIFImageReader(RefPtr<AVIFImageDecoder>&& decoder)
     : m_decoder(WTFMove(decoder))

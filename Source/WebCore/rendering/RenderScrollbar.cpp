@@ -34,7 +34,7 @@
 #include "StyleInheritedData.h"
 #include "StyleResolver.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<Scrollbar> RenderScrollbar::createCustomScrollbar(ScrollableArea& scrollableArea, ScrollbarOrientation orientation, Element* ownerElement, Frame* owningFrame)
 {

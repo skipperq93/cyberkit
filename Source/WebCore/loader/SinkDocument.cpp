@@ -30,7 +30,7 @@
 #include "RawDataDocumentParser.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(SinkDocument);
 
@@ -65,4 +65,4 @@ Ref<DocumentParser> SinkDocument::createParser()
     return SinkDocumentParser::create(*this);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

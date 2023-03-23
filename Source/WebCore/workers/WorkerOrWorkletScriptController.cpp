@@ -41,7 +41,7 @@
 #include "ModuleFetchFailureKind.h"
 #include "ModuleFetchParameters.h"
 #include "ScriptSourceCode.h"
-#include "WebCoreJSClientData.h"
+#include "CyberCoreJSClientData.h"
 #include "WorkerConsoleClient.h"
 #include "WorkerModuleScriptLoader.h"
 #include "WorkerOrWorkletThread.h"
@@ -63,7 +63,7 @@
 #include <CyberScriptCore/StrongInlines.h>
 #include <CyberScriptCore/VMTrapsInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace JSC;
 
@@ -615,4 +615,4 @@ void WorkerOrWorkletScriptController::initScript()
     ASSERT_NOT_REACHED();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

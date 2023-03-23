@@ -35,7 +35,7 @@
 static const unsigned kRadicalOperator = 0x221A;
 static const unsigned kMaximumExtensionCount = 128;
 
-namespace WebCore {
+namespace CyberCore {
 
 static inline FloatRect boundsForGlyph(const GlyphData& data)
 {

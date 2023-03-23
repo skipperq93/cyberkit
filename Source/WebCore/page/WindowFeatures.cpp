@@ -31,7 +31,7 @@
 #include <wtf/text/StringHash.h>
 #include <wtf/text/StringToIntegerConversion.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 typedef HashMap<String, String, ASCIICaseInsensitiveHash> DialogFeaturesMap;
 
@@ -272,4 +272,4 @@ static DialogFeaturesMap parseDialogFeaturesMap(StringView string)
     return features;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

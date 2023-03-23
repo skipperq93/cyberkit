@@ -100,7 +100,7 @@ static NSDictionary* dictionaryThatCanCode(NSDictionary* src)
 
 #endif // PLATFORM(IOS_FAMILY)
 
-namespace WebCore {
+namespace CyberCore {
 
 static RetainPtr<NSError> createNSErrorFromResourceErrorBase(const ResourceErrorBase& resourceError)
 {
@@ -252,4 +252,4 @@ ResourceError::operator CFErrorRef() const
     return cfError();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

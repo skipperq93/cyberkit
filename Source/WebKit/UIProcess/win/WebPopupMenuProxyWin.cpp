@@ -24,7 +24,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-// NOTE: This implementation is very similar to the implementation of popups in WebCore::PopupMenuWin.
+// NOTE: This implementation is very similar to the implementation of popups in CyberCore::PopupMenuWin.
 // We should try and factor out the common bits and share them.
 
 #include "config.h"
@@ -39,13 +39,13 @@
 #include <CyberCore/HWndDC.h>
 #include <CyberCore/PlatformMouseEvent.h>
 #include <CyberCore/ScrollbarTheme.h>
-#include <CyberCore/WebCoreInstanceHandle.h>
+#include <CyberCore/CyberCoreInstanceHandle.h>
 #include <windowsx.h>
 #include <wtf/HexNumber.h>
 #include <wtf/text/StringBuilder.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 static const LPCWSTR kWebKit2WebPopupMenuProxyWindowClassName = L"WebKit2WebPopupMenuProxyWindowClass";
 
@@ -459,12 +459,12 @@ IntSize WebPopupMenuProxyWin::visibleSize() const
     return IntSize(contentsSize().width() - scrollbarWidth, m_scrollbar ? m_scrollbar->visibleSize() : contentsSize().height());
 }
 
-WebCore::IntSize WebPopupMenuProxyWin::contentsSize() const
+CyberCore::IntSize WebPopupMenuProxyWin::contentsSize() const
 {
     return IntSize(m_windowRect.width(), m_scrollbar ? m_scrollbar->totalSize() : m_windowRect.height());
 }
 
-WebCore::IntRect WebPopupMenuProxyWin::scrollableAreaBoundingBox(bool*) const
+CyberCore::IntRect WebPopupMenuProxyWin::scrollableAreaBoundingBox(bool*) const
 {
     return m_windowRect;
 }

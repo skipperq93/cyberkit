@@ -34,33 +34,33 @@ namespace IPC {
 class Connection;
 }
 
-namespace WebCore {
+namespace CyberCore {
 class CAAudioStreamDescription;
 class ImageTransferSessionVT;
 struct MediaConstraints;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class RemoteRealtimeMediaSourceProxy {
 public:
-    RemoteRealtimeMediaSourceProxy(WebCore::RealtimeMediaSourceIdentifier, const WebCore::CaptureDevice&, bool shouldCaptureInGPUProcess, const WebCore::MediaConstraints*);
+    RemoteRealtimeMediaSourceProxy(CyberCore::RealtimeMediaSourceIdentifier, const CyberCore::CaptureDevice&, bool shouldCaptureInGPUProcess, const CyberCore::MediaConstraints*);
     ~RemoteRealtimeMediaSourceProxy();
 
     RemoteRealtimeMediaSourceProxy(RemoteRealtimeMediaSourceProxy&&) = default;
     RemoteRealtimeMediaSourceProxy& operator=(RemoteRealtimeMediaSourceProxy&&) = default;
 
     IPC::Connection& connection() { return m_connection.get(); }
-    WebCore::RealtimeMediaSourceIdentifier identifier() const { return m_identifier; }
-    WebCore::CaptureDevice::DeviceType deviceType() const { return m_device.type(); }
-    const WebCore::CaptureDevice& device() const { return m_device; }
+    CyberCore::RealtimeMediaSourceIdentifier identifier() const { return m_identifier; }
+    CyberCore::CaptureDevice::DeviceType deviceType() const { return m_device.type(); }
+    const CyberCore::CaptureDevice& device() const { return m_device; }
     bool shouldCaptureInGPUProcess() const { return m_shouldCaptureInGPUProcess; }
 
-    using CreateCallback = CompletionHandler<void(bool, String&&, WebCore::RealtimeMediaSourceSettings&&, WebCore::RealtimeMediaSourceCapabilities&&, Vector<WebCore::VideoPresetData>&&, WebCore::IntSize, double)>;
-    void createRemoteMediaSource(const WebCore::MediaDeviceHashSalts&, WebCore::PageIdentifier, CreateCallback&&, bool shouldUseRemoteFrame = false);
+    using CreateCallback = CompletionHandler<void(bool, String&&, CyberCore::RealtimeMediaSourceSettings&&, CyberCore::RealtimeMediaSourceCapabilities&&, Vector<CyberCore::VideoPresetData>&&, CyberCore::IntSize, double)>;
+    void createRemoteMediaSource(const CyberCore::MediaDeviceHashSalts&, CyberCore::PageIdentifier, CreateCallback&&, bool shouldUseRemoteFrame = false);
 
     RemoteRealtimeMediaSourceProxy clone();
-    void createRemoteCloneSource(WebCore::RealtimeMediaSourceIdentifier, WebCore::PageIdentifier);
+    void createRemoteCloneSource(CyberCore::RealtimeMediaSourceIdentifier, CyberCore::PageIdentifier);
 
     void applyConstraintsSucceeded();
     void applyConstraintsFailed(String&& failedConstraint, String&& errorMessage);
@@ -71,7 +71,7 @@ public:
     void startProducingData();
     void stopProducingData();
     void endProducingData();
-    void applyConstraints(const WebCore::MediaConstraints&, WebCore::RealtimeMediaSource::ApplyConstraintsHandler&&);
+    void applyConstraints(const CyberCore::MediaConstraints&, CyberCore::RealtimeMediaSource::ApplyConstraintsHandler&&);
 
     void whenReady(CompletionHandler<void(String)>&&);
     void setAsReady();
@@ -86,13 +86,13 @@ public:
     void updateConnection();
 
 private:
-    WebCore::RealtimeMediaSourceIdentifier m_identifier;
+    CyberCore::RealtimeMediaSourceIdentifier m_identifier;
     Ref<IPC::Connection> m_connection;
-    WebCore::CaptureDevice m_device;
+    CyberCore::CaptureDevice m_device;
     bool m_shouldCaptureInGPUProcess { false };
 
-    WebCore::MediaConstraints m_constraints;
-    Deque<WebCore::RealtimeMediaSource::ApplyConstraintsHandler> m_pendingApplyConstraintsCallbacks;
+    CyberCore::MediaConstraints m_constraints;
+    Deque<CyberCore::RealtimeMediaSource::ApplyConstraintsHandler> m_pendingApplyConstraintsCallbacks;
     bool m_isReady { false };
     CompletionHandler<void(String)> m_callback;
     String m_errorMessage;
@@ -100,6 +100,6 @@ private:
     bool m_isEnded { false };
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

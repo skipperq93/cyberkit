@@ -30,7 +30,7 @@
 #include "HostWindow.h"
 #include "NotImplemented.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Widget::~Widget()
 {
@@ -77,4 +77,4 @@ void Widget::setIsSelected(bool)
     notImplemented();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

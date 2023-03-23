@@ -39,7 +39,7 @@ RefPtr<PlayStationWebView> PlayStationWebView::create(const API::PageConfigurati
 
 PlayStationWebView::PlayStationWebView(const API::PageConfiguration& conf)
     : m_pageClient(makeUnique<PageClientImpl>(*this))
-    , m_viewStateFlags { WebCore::ActivityState::WindowIsActive, WebCore::ActivityState::IsFocused, WebCore::ActivityState::IsVisible, WebCore::ActivityState::IsInWindow }
+    , m_viewStateFlags { CyberCore::ActivityState::WindowIsActive, CyberCore::ActivityState::IsFocused, CyberCore::ActivityState::IsVisible, CyberCore::ActivityState::IsInWindow }
 {
     auto configuration = conf.copy();
     auto* pool = configuration->processPool();
@@ -60,12 +60,12 @@ void PlayStationWebView::setClient(std::unique_ptr<API::ViewClient>&& client)
         m_client = WTFMove(client);
 }
 
-void PlayStationWebView::setViewSize(WebCore::IntSize viewSize)
+void PlayStationWebView::setViewSize(CyberCore::IntSize viewSize)
 {
     m_viewSize = viewSize;
 }
 
-void PlayStationWebView::setViewState(OptionSet<WebCore::ActivityState::Flag> flags)
+void PlayStationWebView::setViewState(OptionSet<CyberCore::ActivityState::Flag> flags)
 {
     auto changedFlags = m_viewStateFlags ^ flags;
     m_viewStateFlags = flags;
@@ -74,7 +74,7 @@ void PlayStationWebView::setViewState(OptionSet<WebCore::ActivityState::Flag> fl
         m_page->activityStateDidChange(changedFlags);
 }
 
-void PlayStationWebView::setViewNeedsDisplay(const WebCore::Region& region)
+void PlayStationWebView::setViewNeedsDisplay(const CyberCore::Region& region)
 {
     if (m_client)
         m_client->setViewNeedsDisplay(*this, region);
@@ -133,20 +133,20 @@ void PlayStationWebView::exitFullScreen()
         m_client->exitFullScreen(*this);
 }
 
-void PlayStationWebView::beganEnterFullScreen(const WebCore::IntRect& initialFrame, const WebCore::IntRect& finalFrame)
+void PlayStationWebView::beganEnterFullScreen(const CyberCore::IntRect& initialFrame, const CyberCore::IntRect& finalFrame)
 {
     if (m_client)
         m_client->beganEnterFullScreen(*this, initialFrame, finalFrame);
 }
 
-void PlayStationWebView::beganExitFullScreen(const WebCore::IntRect& initialFrame, const WebCore::IntRect& finalFrame)
+void PlayStationWebView::beganExitFullScreen(const CyberCore::IntRect& initialFrame, const CyberCore::IntRect& finalFrame)
 {
     if (m_client)
         m_client->beganExitFullScreen(*this, initialFrame, finalFrame);
 }
 #endif
 
-void PlayStationWebView::setCursor(const WebCore::Cursor& cursor)
+void PlayStationWebView::setCursor(const CyberCore::Cursor& cursor)
 {
     if (m_client)
         m_client->setCursor(*this, cursor);

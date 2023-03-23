@@ -40,7 +40,7 @@
 #include "QuickLook.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 // FIXME: URLSchemesMap is a peculiar type name given that it is a set.
 
@@ -538,4 +538,4 @@ bool LegacySchemeRegistry::isBuiltinScheme(const String& scheme)
     return !scheme.isNull() && (allBuiltinSchemes().contains(scheme) || WTF::URLParser::isSpecialScheme(scheme));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

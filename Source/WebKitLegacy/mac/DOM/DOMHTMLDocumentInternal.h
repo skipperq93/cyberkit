@@ -25,9 +25,9 @@
 
 #import <CyberKitLegacy/DOMHTMLDocument.h>
 
-namespace WebCore {
+namespace CyberCore {
 class HTMLDocument;
 }
 
-WebCore::HTMLDocument* core(DOMHTMLDocument *);
-DOMHTMLDocument *kit(WebCore::HTMLDocument*);
+CyberCore::HTMLDocument* core(DOMHTMLDocument *);
+DOMHTMLDocument *kit(CyberCore::HTMLDocument*);

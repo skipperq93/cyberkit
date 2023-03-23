@@ -39,31 +39,31 @@
 #import <wtf/GetPtr.h>
 #import <wtf/URL.h>
 
-#define IMPL static_cast<WebCore::CSSMediaRule*>(reinterpret_cast<WebCore::CSSRule*>(_internal))
+#define IMPL static_cast<CyberCore::CSSMediaRule*>(reinterpret_cast<CyberCore::CSSRule*>(_internal))
 
 @implementation DOMCSSMediaRule
 
 - (DOMMediaList *)media
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->media()));
 }
 
 - (DOMCSSRuleList *)cssRules
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->cssRules()));
 }
 
 - (unsigned)insertRule:(NSString *)rule index:(unsigned)index
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return raiseOnDOMError(IMPL->insertRule(rule, index));
 }
 
 - (void)deleteRule:(unsigned)index
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return raiseOnDOMError(IMPL->deleteRule(index));
 }
 

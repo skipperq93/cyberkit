@@ -46,7 +46,7 @@
 #include "RenderObject.h"
 #include "Settings.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ScopedFramePaintingState {
     ScopedFramePaintingState(Frame& frame, Node* node)
@@ -213,4 +213,4 @@ Color estimatedBackgroundColorForRange(const SimpleRange& range, const Frame& fr
     return estimatedBackgroundColor;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

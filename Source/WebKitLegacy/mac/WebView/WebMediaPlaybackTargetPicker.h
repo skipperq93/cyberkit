@@ -34,39 +34,39 @@
 
 OBJC_CLASS WebView;
 
-namespace WebCore {
+namespace CyberCore {
 class FloatRect;
 class MediaPlaybackTarget;
 class Page;
 }
 
-class WebMediaPlaybackTargetPicker : public WebCore::WebMediaSessionManagerClient {
+class WebMediaPlaybackTargetPicker : public CyberCore::WebMediaSessionManagerClient {
     WTF_MAKE_FAST_ALLOCATED;
 public:
-    static std::unique_ptr<WebMediaPlaybackTargetPicker> create(WebView *, WebCore::Page&);
+    static std::unique_ptr<WebMediaPlaybackTargetPicker> create(WebView *, CyberCore::Page&);
 
-    explicit WebMediaPlaybackTargetPicker(WebView *, WebCore::Page&);
+    explicit WebMediaPlaybackTargetPicker(WebView *, CyberCore::Page&);
     virtual ~WebMediaPlaybackTargetPicker() = default;
 
-    void addPlaybackTargetPickerClient(WebCore::PlaybackTargetClientContextIdentifier);
-    void removePlaybackTargetPickerClient(WebCore::PlaybackTargetClientContextIdentifier);
-    void showPlaybackTargetPicker(WebCore::PlaybackTargetClientContextIdentifier, const WebCore::FloatRect&, bool hasVideo);
-    void playbackTargetPickerClientStateDidChange(WebCore::PlaybackTargetClientContextIdentifier, WebCore::MediaProducerMediaStateFlags);
+    void addPlaybackTargetPickerClient(CyberCore::PlaybackTargetClientContextIdentifier);
+    void removePlaybackTargetPickerClient(CyberCore::PlaybackTargetClientContextIdentifier);
+    void showPlaybackTargetPicker(CyberCore::PlaybackTargetClientContextIdentifier, const CyberCore::FloatRect&, bool hasVideo);
+    void playbackTargetPickerClientStateDidChange(CyberCore::PlaybackTargetClientContextIdentifier, CyberCore::MediaProducerMediaStateFlags);
     void setMockMediaPlaybackTargetPickerEnabled(bool);
-    void setMockMediaPlaybackTargetPickerState(const String&, WebCore::MediaPlaybackTargetContext::MockState);
+    void setMockMediaPlaybackTargetPickerState(const String&, CyberCore::MediaPlaybackTargetContext::MockState);
     void mockMediaPlaybackTargetPickerDismissPopup();
 
     void invalidate();
 
 private:
     // WebMediaSessionManagerClient
-    void setPlaybackTarget(WebCore::PlaybackTargetClientContextIdentifier, Ref<WebCore::MediaPlaybackTarget>&&) final;
-    void externalOutputDeviceAvailableDidChange(WebCore::PlaybackTargetClientContextIdentifier, bool) final;
-    void setShouldPlayToPlaybackTarget(WebCore::PlaybackTargetClientContextIdentifier, bool) final;
-    void playbackTargetPickerWasDismissed(WebCore::PlaybackTargetClientContextIdentifier) final;
+    void setPlaybackTarget(CyberCore::PlaybackTargetClientContextIdentifier, Ref<CyberCore::MediaPlaybackTarget>&&) final;
+    void externalOutputDeviceAvailableDidChange(CyberCore::PlaybackTargetClientContextIdentifier, bool) final;
+    void setShouldPlayToPlaybackTarget(CyberCore::PlaybackTargetClientContextIdentifier, bool) final;
+    void playbackTargetPickerWasDismissed(CyberCore::PlaybackTargetClientContextIdentifier) final;
     PlatformView* platformView() const final;
 
-    WebCore::Page* m_page;
+    CyberCore::Page* m_page;
     WebView *m_webView;
 };
 

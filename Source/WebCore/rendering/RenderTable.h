@@ -31,7 +31,7 @@
 #include <wtf/HashMap.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderTableCol;
 class RenderTableCaption;
@@ -384,6 +384,6 @@ inline RenderPtr<RenderBox> RenderTable::createAnonymousBoxWithSameTypeAs(const 
     return RenderTable::createTableWithStyle(renderer.document(), renderer.style());
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderTable, isTable())

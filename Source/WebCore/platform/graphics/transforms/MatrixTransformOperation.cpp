@@ -26,7 +26,7 @@
 #include <algorithm>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<MatrixTransformOperation> MatrixTransformOperation::create(const TransformationMatrix& t)
 {
@@ -86,4 +86,4 @@ void MatrixTransformOperation::dump(TextStream& ts) const
         << TextStream::FormatNumberRespectingIntegers(m_f) << ")";
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -21,28 +21,28 @@
 #error "Only <webkitdom/webkitdom.h> can be included directly."
 #endif
 
-#ifndef WebKitDOMHTMLOptionElement_h
-#define WebKitDOMHTMLOptionElement_h
+#ifndef CyberKitDOMHTMLOptionElement_h
+#define CyberKitDOMHTMLOptionElement_h
 
 #include <glib-object.h>
-#include <webkitdom/WebKitDOMHTMLElement.h>
+#include <webkitdom/CyberKitDOMHTMLElement.h>
 #include <webkitdom/webkitdomdefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_DOM_TYPE_HTML_OPTION_ELEMENT            (webkit_dom_html_option_element_get_type())
-#define WEBKIT_DOM_HTML_OPTION_ELEMENT(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_HTML_OPTION_ELEMENT, WebKitDOMHTMLOptionElement))
-#define WEBKIT_DOM_HTML_OPTION_ELEMENT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_HTML_OPTION_ELEMENT, WebKitDOMHTMLOptionElementClass)
+#define WEBKIT_DOM_HTML_OPTION_ELEMENT(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_HTML_OPTION_ELEMENT, CyberKitDOMHTMLOptionElement))
+#define WEBKIT_DOM_HTML_OPTION_ELEMENT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_HTML_OPTION_ELEMENT, CyberKitDOMHTMLOptionElementClass)
 #define WEBKIT_DOM_IS_HTML_OPTION_ELEMENT(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_DOM_TYPE_HTML_OPTION_ELEMENT))
 #define WEBKIT_DOM_IS_HTML_OPTION_ELEMENT_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_DOM_TYPE_HTML_OPTION_ELEMENT))
-#define WEBKIT_DOM_HTML_OPTION_ELEMENT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_HTML_OPTION_ELEMENT, WebKitDOMHTMLOptionElementClass))
+#define WEBKIT_DOM_HTML_OPTION_ELEMENT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_HTML_OPTION_ELEMENT, CyberKitDOMHTMLOptionElementClass))
 
-struct _WebKitDOMHTMLOptionElement {
-    WebKitDOMHTMLElement parent_instance;
+struct _CyberKitDOMHTMLOptionElement {
+    CyberKitDOMHTMLElement parent_instance;
 };
 
-struct _WebKitDOMHTMLOptionElementClass {
-    WebKitDOMHTMLElementClass parent_class;
+struct _CyberKitDOMHTMLOptionElementClass {
+    CyberKitDOMHTMLElementClass parent_class;
 };
 
 WEBKIT_DEPRECATED GType
@@ -50,147 +50,147 @@ webkit_dom_html_option_element_get_type(void);
 
 /**
  * webkit_dom_html_option_element_get_disabled:
- * @self: A #WebKitDOMHTMLOptionElement
+ * @self: A #CyberKitDOMHTMLOptionElement
  *
  * Returns: A #gboolean
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
-webkit_dom_html_option_element_get_disabled(WebKitDOMHTMLOptionElement* self);
+webkit_dom_html_option_element_get_disabled(CyberKitDOMHTMLOptionElement* self);
 
 /**
  * webkit_dom_html_option_element_set_disabled:
- * @self: A #WebKitDOMHTMLOptionElement
+ * @self: A #CyberKitDOMHTMLOptionElement
  * @value: A #gboolean
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_option_element_set_disabled(WebKitDOMHTMLOptionElement* self, gboolean value);
+webkit_dom_html_option_element_set_disabled(CyberKitDOMHTMLOptionElement* self, gboolean value);
 
 /**
  * webkit_dom_html_option_element_get_form:
- * @self: A #WebKitDOMHTMLOptionElement
+ * @self: A #CyberKitDOMHTMLOptionElement
  *
- * Returns: (transfer none): A #WebKitDOMHTMLFormElement
+ * Returns: (transfer none): A #CyberKitDOMHTMLFormElement
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMHTMLFormElement*
-webkit_dom_html_option_element_get_form(WebKitDOMHTMLOptionElement* self);
+WEBKIT_DEPRECATED CyberKitDOMHTMLFormElement*
+webkit_dom_html_option_element_get_form(CyberKitDOMHTMLOptionElement* self);
 
 /**
  * webkit_dom_html_option_element_get_label:
- * @self: A #WebKitDOMHTMLOptionElement
+ * @self: A #CyberKitDOMHTMLOptionElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_option_element_get_label(WebKitDOMHTMLOptionElement* self);
+webkit_dom_html_option_element_get_label(CyberKitDOMHTMLOptionElement* self);
 
 /**
  * webkit_dom_html_option_element_set_label:
- * @self: A #WebKitDOMHTMLOptionElement
+ * @self: A #CyberKitDOMHTMLOptionElement
  * @value: A #gchar
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_option_element_set_label(WebKitDOMHTMLOptionElement* self, const gchar* value);
+webkit_dom_html_option_element_set_label(CyberKitDOMHTMLOptionElement* self, const gchar* value);
 
 /**
  * webkit_dom_html_option_element_get_default_selected:
- * @self: A #WebKitDOMHTMLOptionElement
+ * @self: A #CyberKitDOMHTMLOptionElement
  *
  * Returns: A #gboolean
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
-webkit_dom_html_option_element_get_default_selected(WebKitDOMHTMLOptionElement* self);
+webkit_dom_html_option_element_get_default_selected(CyberKitDOMHTMLOptionElement* self);
 
 /**
  * webkit_dom_html_option_element_set_default_selected:
- * @self: A #WebKitDOMHTMLOptionElement
+ * @self: A #CyberKitDOMHTMLOptionElement
  * @value: A #gboolean
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_option_element_set_default_selected(WebKitDOMHTMLOptionElement* self, gboolean value);
+webkit_dom_html_option_element_set_default_selected(CyberKitDOMHTMLOptionElement* self, gboolean value);
 
 /**
  * webkit_dom_html_option_element_get_selected:
- * @self: A #WebKitDOMHTMLOptionElement
+ * @self: A #CyberKitDOMHTMLOptionElement
  *
  * Returns: A #gboolean
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
-webkit_dom_html_option_element_get_selected(WebKitDOMHTMLOptionElement* self);
+webkit_dom_html_option_element_get_selected(CyberKitDOMHTMLOptionElement* self);
 
 /**
  * webkit_dom_html_option_element_set_selected:
- * @self: A #WebKitDOMHTMLOptionElement
+ * @self: A #CyberKitDOMHTMLOptionElement
  * @value: A #gboolean
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_option_element_set_selected(WebKitDOMHTMLOptionElement* self, gboolean value);
+webkit_dom_html_option_element_set_selected(CyberKitDOMHTMLOptionElement* self, gboolean value);
 
 /**
  * webkit_dom_html_option_element_get_value:
- * @self: A #WebKitDOMHTMLOptionElement
+ * @self: A #CyberKitDOMHTMLOptionElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_option_element_get_value(WebKitDOMHTMLOptionElement* self);
+webkit_dom_html_option_element_get_value(CyberKitDOMHTMLOptionElement* self);
 
 /**
  * webkit_dom_html_option_element_set_value:
- * @self: A #WebKitDOMHTMLOptionElement
+ * @self: A #CyberKitDOMHTMLOptionElement
  * @value: A #gchar
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_option_element_set_value(WebKitDOMHTMLOptionElement* self, const gchar* value);
+webkit_dom_html_option_element_set_value(CyberKitDOMHTMLOptionElement* self, const gchar* value);
 
 /**
  * webkit_dom_html_option_element_get_text:
- * @self: A #WebKitDOMHTMLOptionElement
+ * @self: A #CyberKitDOMHTMLOptionElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_option_element_get_text(WebKitDOMHTMLOptionElement* self);
+webkit_dom_html_option_element_get_text(CyberKitDOMHTMLOptionElement* self);
 
 /**
  * webkit_dom_html_option_element_get_index:
- * @self: A #WebKitDOMHTMLOptionElement
+ * @self: A #CyberKitDOMHTMLOptionElement
  *
  * Returns: A #glong
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED glong
-webkit_dom_html_option_element_get_index(WebKitDOMHTMLOptionElement* self);
+webkit_dom_html_option_element_get_index(CyberKitDOMHTMLOptionElement* self);
 
 G_END_DECLS
 
-#endif /* WebKitDOMHTMLOptionElement_h */
+#endif /* CyberKitDOMHTMLOptionElement_h */

@@ -36,7 +36,7 @@
 #include "SerializedScriptValue.h"
 #include "WorkerGlobalScope.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static double performanceNow(ScriptExecutionContext& scriptExecutionContext)
 {

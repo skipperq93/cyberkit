@@ -42,7 +42,7 @@
 #include <wtf/WeakHashSet.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 class LowPowerModeNotifier;
 enum class NetworkConnectionIntegrity : uint16_t;
 class ResourceRequest;
@@ -54,8 +54,8 @@ namespace NetworkCache {
 
 struct GlobalFrameID {
     WebPageProxyIdentifier webPageProxyID;
-    WebCore::PageIdentifier webPageID;
-    WebCore::FrameIdentifier frameID;
+    CyberCore::PageIdentifier webPageID;
+    CyberCore::FrameIdentifier frameID;
 };
 
 inline void add(Hasher& hasher, const GlobalFrameID& identifier)
@@ -84,7 +84,7 @@ struct GlobalFrameIDHash {
 template<> struct HashTraits<WebKit::NetworkCache::GlobalFrameID> : GenericHashTraits<WebKit::NetworkCache::GlobalFrameID> {
     static WebKit::NetworkCache::GlobalFrameID emptyValue() { return { }; }
 
-    static void constructDeletedValue(WebKit::NetworkCache::GlobalFrameID& slot) { new (NotNull, &slot.webPageID) WebCore::PageIdentifier(WTF::HashTableDeletedValue); }
+    static void constructDeletedValue(WebKit::NetworkCache::GlobalFrameID& slot) { new (NotNull, &slot.webPageID) CyberCore::PageIdentifier(WTF::HashTableDeletedValue); }
 
     static bool isDeletedValue(const WebKit::NetworkCache::GlobalFrameID& slot) { return slot.webPageID.isHashTableDeletedValue(); }
 };
@@ -167,10 +167,10 @@ public:
         WTF_MAKE_FAST_ALLOCATED;
     };
     using RetrieveCompletionHandler = Function<void(std::unique_ptr<Entry>, const RetrieveInfo&)>;
-    void retrieve(const WebCore::ResourceRequest&, const GlobalFrameID&, std::optional<NavigatingToAppBoundDomain>, bool allowPrivacyProxy, OptionSet<WebCore::NetworkConnectionIntegrity> networkConnectionIntegrityPolicy, RetrieveCompletionHandler&&);
-    std::unique_ptr<Entry> store(const WebCore::ResourceRequest&, const WebCore::ResourceResponse&, PrivateRelayed, RefPtr<WebCore::FragmentedSharedBuffer>&&, Function<void(MappedBody&)>&& = nullptr);
-    std::unique_ptr<Entry> storeRedirect(const WebCore::ResourceRequest&, const WebCore::ResourceResponse&, const WebCore::ResourceRequest& redirectRequest, std::optional<Seconds> maxAgeCap);
-    std::unique_ptr<Entry> update(const WebCore::ResourceRequest&, const Entry&, const WebCore::ResourceResponse& validatingResponse, PrivateRelayed);
+    void retrieve(const CyberCore::ResourceRequest&, const GlobalFrameID&, std::optional<NavigatingToAppBoundDomain>, bool allowPrivacyProxy, OptionSet<CyberCore::NetworkConnectionIntegrity> networkConnectionIntegrityPolicy, RetrieveCompletionHandler&&);
+    std::unique_ptr<Entry> store(const CyberCore::ResourceRequest&, const CyberCore::ResourceResponse&, PrivateRelayed, RefPtr<CyberCore::FragmentedSharedBuffer>&&, Function<void(MappedBody&)>&& = nullptr);
+    std::unique_ptr<Entry> storeRedirect(const CyberCore::ResourceRequest&, const CyberCore::ResourceResponse&, const CyberCore::ResourceRequest& redirectRequest, std::optional<Seconds> maxAgeCap);
+    std::unique_ptr<Entry> update(const CyberCore::ResourceRequest&, const Entry&, const CyberCore::ResourceResponse& validatingResponse, PrivateRelayed);
 
     struct TraversalEntry {
         const Entry& entry;
@@ -179,7 +179,7 @@ public:
     void traverse(Function<void(const TraversalEntry*)>&&);
     void traverse(const String& partition, Function<void(const TraversalEntry*)>&&);
     void remove(const Key&);
-    void remove(const WebCore::ResourceRequest&);
+    void remove(const CyberCore::ResourceRequest&);
     void remove(const Vector<Key>&, Function<void()>&&);
 
     void clear();
@@ -188,8 +188,8 @@ public:
     void retrieveData(const DataKey&, Function<void(const uint8_t*, size_t)>);
     void storeData(const DataKey&,  const uint8_t* data, size_t);
     
-    std::unique_ptr<Entry> makeEntry(const WebCore::ResourceRequest&, const WebCore::ResourceResponse&, PrivateRelayed, RefPtr<WebCore::FragmentedSharedBuffer>&&);
-    std::unique_ptr<Entry> makeRedirectEntry(const WebCore::ResourceRequest&, const WebCore::ResourceResponse&, const WebCore::ResourceRequest& redirectRequest);
+    std::unique_ptr<Entry> makeEntry(const CyberCore::ResourceRequest&, const CyberCore::ResourceResponse&, PrivateRelayed, RefPtr<CyberCore::FragmentedSharedBuffer>&&);
+    std::unique_ptr<Entry> makeRedirectEntry(const CyberCore::ResourceRequest&, const CyberCore::ResourceResponse&, const CyberCore::ResourceRequest& redirectRequest);
 
     void dumpContentsToFile();
 
@@ -200,35 +200,35 @@ public:
 #endif
 
 #if ENABLE(NETWORK_CACHE_STALE_WHILE_REVALIDATE)
-    void startAsyncRevalidationIfNeeded(const WebCore::ResourceRequest&, const NetworkCache::Key&, std::unique_ptr<Entry>&&, const GlobalFrameID&, std::optional<NavigatingToAppBoundDomain>, bool allowPrivacyProxy, OptionSet<WebCore::NetworkConnectionIntegrity> networkConnectionIntegrityPolicy);
+    void startAsyncRevalidationIfNeeded(const CyberCore::ResourceRequest&, const NetworkCache::Key&, std::unique_ptr<Entry>&&, const GlobalFrameID&, std::optional<NavigatingToAppBoundDomain>, bool allowPrivacyProxy, OptionSet<CyberCore::NetworkConnectionIntegrity> networkConnectionIntegrityPolicy);
 #endif
 
-    void browsingContextRemoved(WebPageProxyIdentifier, WebCore::PageIdentifier, WebCore::FrameIdentifier);
+    void browsingContextRemoved(WebPageProxyIdentifier, CyberCore::PageIdentifier, CyberCore::FrameIdentifier);
 
     NetworkProcess& networkProcess() { return m_networkProcess.get(); }
     PAL::SessionID sessionID() const { return m_sessionID; }
     const String& storageDirectory() const { return m_storageDirectory; }
     void fetchData(bool shouldComputeSize, CompletionHandler<void(Vector<WebsiteData::Entry>&&)>&&);
-    void deleteData(const Vector<WebCore::SecurityOriginData>&, CompletionHandler<void()>&&);
-    void deleteDataForRegistrableDomains(const Vector<WebCore::RegistrableDomain>&, CompletionHandler<void(HashSet<WebCore::RegistrableDomain>&&)>&&);
+    void deleteData(const Vector<CyberCore::SecurityOriginData>&, CompletionHandler<void()>&&);
+    void deleteDataForRegistrableDomains(const Vector<CyberCore::RegistrableDomain>&, CompletionHandler<void(HashSet<CyberCore::RegistrableDomain>&&)>&&);
 
 private:
     Cache(NetworkProcess&, const String& storageDirectory, Ref<Storage>&&, OptionSet<CacheOption>, PAL::SessionID);
 
-    Key makeCacheKey(const WebCore::ResourceRequest&);
+    Key makeCacheKey(const CyberCore::ResourceRequest&);
 
     static void completeRetrieve(RetrieveCompletionHandler&&, std::unique_ptr<Entry>, RetrieveInfo&);
 
     String dumpFilePath() const;
     void deleteDumpFile();
 
-    std::optional<Seconds> maxAgeCap(Entry&, const WebCore::ResourceRequest&, PAL::SessionID);
+    std::optional<Seconds> maxAgeCap(Entry&, const CyberCore::ResourceRequest&, PAL::SessionID);
 
     Ref<Storage> m_storage;
     Ref<NetworkProcess> m_networkProcess;
 
 #if ENABLE(NETWORK_CACHE_SPECULATIVE_REVALIDATION)
-    std::unique_ptr<WebCore::LowPowerModeNotifier> m_lowPowerModeNotifier;
+    std::unique_ptr<CyberCore::LowPowerModeNotifier> m_lowPowerModeNotifier;
     std::unique_ptr<SpeculativeLoadManager> m_speculativeLoadManager;
 #endif
 

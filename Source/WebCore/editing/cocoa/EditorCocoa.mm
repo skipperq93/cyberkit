@@ -360,8 +360,8 @@ void Editor::replaceNodeFromPasteboard(Node& node, const String& pasteboardName,
 
 #if PLATFORM(MAC)
     // FIXME: How can this hard-coded pasteboard name be right, given that the passed-in pasteboard has a name?
-    // FIXME: We can also remove `setInsertionPasteboard` altogether once Mail compose on macOS no longer uses WebKitLegacy,
-    // since it's only implemented for WebKitLegacy on macOS, and the only known client is Mail compose.
+    // FIXME: We can also remove `setInsertionPasteboard` altogether once Mail compose on macOS no longer uses CyberKitLegacy,
+    // since it's only implemented for CyberKitLegacy on macOS, and the only known client is Mail compose.
     client()->setInsertionPasteboard(NSPasteboardNameGeneral);
 #endif
 

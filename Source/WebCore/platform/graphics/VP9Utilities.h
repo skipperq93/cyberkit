@@ -28,7 +28,7 @@
 #include "ScreenDataOverrides.h"
 #include <wtf/text/StringView.h>
 #include <wtf/text/WTFString.h>
-namespace WebCore {
+namespace CyberCore {
 
 namespace VPConfigurationLevel {
 constexpr uint8_t Level_1   = 10;

@@ -28,31 +28,31 @@
 
 namespace WebKit {
 
-_WKContentSecurityPolicyModeForExtension toWKContentSecurityPolicyModeForExtension(WebCore::ContentSecurityPolicyModeForExtension mode)
+_WKContentSecurityPolicyModeForExtension toWKContentSecurityPolicyModeForExtension(CyberCore::ContentSecurityPolicyModeForExtension mode)
 {
     switch (mode) {
-    case WebCore::ContentSecurityPolicyModeForExtension::None:
+    case CyberCore::ContentSecurityPolicyModeForExtension::None:
         return _WKContentSecurityPolicyModeForExtensionNone;
-    case WebCore::ContentSecurityPolicyModeForExtension::ManifestV2:
+    case CyberCore::ContentSecurityPolicyModeForExtension::ManifestV2:
         return _WKContentSecurityPolicyModeForExtensionManifestV2;
-    case WebCore::ContentSecurityPolicyModeForExtension::ManifestV3:
+    case CyberCore::ContentSecurityPolicyModeForExtension::ManifestV3:
         return _WKContentSecurityPolicyModeForExtensionManifestV3;
     }
     return _WKContentSecurityPolicyModeForExtensionNone;
 }
 
-WebCore::ContentSecurityPolicyModeForExtension toContentSecurityPolicyModeForExtension(_WKContentSecurityPolicyModeForExtension wkMode)
+CyberCore::ContentSecurityPolicyModeForExtension toContentSecurityPolicyModeForExtension(_WKContentSecurityPolicyModeForExtension wkMode)
 {
-    WebCore::ContentSecurityPolicyModeForExtension mode;
+    CyberCore::ContentSecurityPolicyModeForExtension mode;
     switch (wkMode) {
     case _WKContentSecurityPolicyModeForExtensionNone:
-        mode = WebCore::ContentSecurityPolicyModeForExtension::None;
+        mode = CyberCore::ContentSecurityPolicyModeForExtension::None;
         break;
     case _WKContentSecurityPolicyModeForExtensionManifestV2:
-        mode = WebCore::ContentSecurityPolicyModeForExtension::ManifestV2;
+        mode = CyberCore::ContentSecurityPolicyModeForExtension::ManifestV2;
         break;
     case _WKContentSecurityPolicyModeForExtensionManifestV3:
-        mode = WebCore::ContentSecurityPolicyModeForExtension::ManifestV3;
+        mode = CyberCore::ContentSecurityPolicyModeForExtension::ManifestV3;
         break;
     }
 

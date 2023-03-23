@@ -52,7 +52,7 @@
 #include <wtf/URL.h>
 #include <wtf/text/CString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 MediaPlayerPrivateAVFoundation::MediaPlayerPrivateAVFoundation(MediaPlayer* player)
     : m_player(player)
@@ -1151,6 +1151,6 @@ String convertEnumerationToString(MediaPlayerPrivateAVFoundation::MediaRendering
     return values[static_cast<size_t>(enumerationValue)];
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

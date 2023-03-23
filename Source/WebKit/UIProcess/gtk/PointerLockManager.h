@@ -43,23 +43,23 @@ class WebPageProxy;
 class PointerLockManager {
     WTF_MAKE_NONCOPYABLE(PointerLockManager); WTF_MAKE_FAST_ALLOCATED;
 public:
-    static std::unique_ptr<PointerLockManager> create(WebPageProxy&, const WebCore::FloatPoint&, const WebCore::FloatPoint&, WebMouseEventButton, unsigned short, OptionSet<WebEventModifier>);
-    PointerLockManager(WebPageProxy&, const WebCore::FloatPoint&, const WebCore::FloatPoint&, WebMouseEventButton, unsigned short, OptionSet<WebEventModifier>);
+    static std::unique_ptr<PointerLockManager> create(WebPageProxy&, const CyberCore::FloatPoint&, const CyberCore::FloatPoint&, WebMouseEventButton, unsigned short, OptionSet<WebEventModifier>);
+    PointerLockManager(WebPageProxy&, const CyberCore::FloatPoint&, const CyberCore::FloatPoint&, WebMouseEventButton, unsigned short, OptionSet<WebEventModifier>);
     virtual ~PointerLockManager();
 
     virtual bool lock();
     virtual bool unlock();
-    virtual void didReceiveMotionEvent(const WebCore::FloatPoint&) { };
+    virtual void didReceiveMotionEvent(const CyberCore::FloatPoint&) { };
 
 protected:
-    void handleMotion(WebCore::FloatSize&&);
+    void handleMotion(CyberCore::FloatSize&&);
 
     WebPageProxy& m_webPage;
-    WebCore::FloatPoint m_position;
+    CyberCore::FloatPoint m_position;
     WebMouseEventButton m_button { WebMouseEventButton::NoButton };
     unsigned short m_buttons { 0 };
     OptionSet<WebEventModifier> m_modifiers;
-    WebCore::FloatPoint m_initialPoint;
+    CyberCore::FloatPoint m_initialPoint;
     GdkDevice* m_device { nullptr };
 };
 

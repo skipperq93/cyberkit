@@ -24,7 +24,7 @@
 */
 
 import Foundation
-import JavaScriptCore
+import CyberScriptCore
 import QuartzCore
 
 let ID_HANDLER_A = 2

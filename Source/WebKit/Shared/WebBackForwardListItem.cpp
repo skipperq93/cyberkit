@@ -35,7 +35,7 @@
 #include <wtf/URL.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 Ref<WebBackForwardListItem> WebBackForwardListItem::create(BackForwardListItemState&& backForwardListItemState, WebPageProxyIdentifier pageID)
 {
@@ -114,7 +114,7 @@ bool WebBackForwardListItem::itemIsInSameDocument(const WebBackForwardListItem& 
     if (m_pageID != other.m_pageID)
         return false;
 
-    // The following logic must be kept in sync with WebCore::HistoryItem::shouldDoSameDocumentNavigationTo().
+    // The following logic must be kept in sync with CyberCore::HistoryItem::shouldDoSameDocumentNavigationTo().
 
     const FrameState& mainFrameState = m_itemState.pageState.mainFrameState;
     const FrameState& otherMainFrameState = other.m_itemState.pageState.mainFrameState;
@@ -149,7 +149,7 @@ static bool hasSameFrames(const FrameState& a, const FrameState& b)
 
 bool WebBackForwardListItem::itemIsClone(const WebBackForwardListItem& other)
 {
-    // The following logic must be kept in sync with WebCore::HistoryItem::itemsAreClones().
+    // The following logic must be kept in sync with CyberCore::HistoryItem::itemsAreClones().
 
     if (this == &other)
         return false;

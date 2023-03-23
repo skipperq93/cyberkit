@@ -26,7 +26,7 @@
 #ifndef UTF16UChar32Iterator_h
 #define UTF16UChar32Iterator_h
 
-namespace WebCore {
+namespace CyberCore {
 
 class UTF16UChar32Iterator {
     WTF_MAKE_NONCOPYABLE(UTF16UChar32Iterator);
@@ -64,7 +64,7 @@ private:
     unsigned m_currentOffset;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 
 #endif // UTF16UChar32Iterator_h

@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -17,16 +17,16 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitDOMHTMLFormElementPrivate_h
-#define WebKitDOMHTMLFormElementPrivate_h
+#ifndef CyberKitDOMHTMLFormElementPrivate_h
+#define CyberKitDOMHTMLFormElementPrivate_h
 
 #include <CyberCore/HTMLFormElement.h>
-#include <webkitdom/WebKitDOMHTMLFormElement.h>
+#include <webkitdom/CyberKitDOMHTMLFormElement.h>
 
-namespace WebKit {
-WebKitDOMHTMLFormElement* wrapHTMLFormElement(WebCore::HTMLFormElement*);
-WebKitDOMHTMLFormElement* kit(WebCore::HTMLFormElement*);
-WebCore::HTMLFormElement* core(WebKitDOMHTMLFormElement*);
-} // namespace WebKit
+namespace CyberKit {
+CyberKitDOMHTMLFormElement* wrapHTMLFormElement(CyberCore::HTMLFormElement*);
+CyberKitDOMHTMLFormElement* kit(CyberCore::HTMLFormElement*);
+CyberCore::HTMLFormElement* core(CyberKitDOMHTMLFormElement*);
+} // namespace CyberKit
 
-#endif /* WebKitDOMHTMLFormElementPrivate_h */
+#endif /* CyberKitDOMHTMLFormElementPrivate_h */

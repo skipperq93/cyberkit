@@ -28,7 +28,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CursorList : public RefCounted<CursorList> {
 public:
@@ -56,4 +56,4 @@ private:
     Vector<CursorData> m_vector;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

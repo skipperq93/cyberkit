@@ -32,7 +32,7 @@
 #include "ImageBuffer.h"
 #include "TextureMapper.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 void BitmapTexture::updateContents(GraphicsLayer* sourceLayer, const IntRect& targetRect, const IntPoint& offset, float scale)
 {

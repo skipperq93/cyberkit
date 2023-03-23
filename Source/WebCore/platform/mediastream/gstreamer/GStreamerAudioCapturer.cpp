@@ -29,7 +29,7 @@
 #include "LibWebRTCAudioFormat.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 #if USE(LIBWEBRTC)
 static constexpr size_t s_audioCaptureSampleRate = LibWebRTCAudioFormat::sampleRate;
@@ -101,6 +101,6 @@ bool GStreamerAudioCapturer::setSampleRate(int sampleRate)
     return true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM) && USE(GSTREAMER)

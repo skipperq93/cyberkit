@@ -27,7 +27,7 @@
 
 #include "CachedResource.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CachedTextTrack final : public CachedResource {
 public:
@@ -41,6 +41,6 @@ private:
     void doUpdateBuffer(const FragmentedSharedBuffer*);
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CACHED_RESOURCE(CachedTextTrack, CachedResource::Type::TextTrackResource)

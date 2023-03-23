@@ -30,7 +30,7 @@
 #include <wtf/HashMap.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 class ResourceError;
 class ResourceLoader;
 class ResourceResponse;
@@ -38,7 +38,7 @@ class ResourceRequest;
 class SharedBuffer;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPage;
 
@@ -50,29 +50,29 @@ public:
     }
     ~WebURLSchemeHandlerProxy();
 
-    void startNewTask(WebCore::ResourceLoader&, WebFrame&);
+    void startNewTask(CyberCore::ResourceLoader&, WebFrame&);
     void stopAllTasks();
 
-    void loadSynchronously(WebCore::ResourceLoaderIdentifier, WebFrame&, const WebCore::ResourceRequest&, WebCore::ResourceResponse&, WebCore::ResourceError&, Vector<uint8_t>&);
+    void loadSynchronously(CyberCore::ResourceLoaderIdentifier, WebFrame&, const CyberCore::ResourceRequest&, CyberCore::ResourceResponse&, CyberCore::ResourceError&, Vector<uint8_t>&);
 
     WebURLSchemeHandlerIdentifier identifier() const { return m_identifier; }
     WebPage& page() { return m_webPage; }
 
-    void taskDidPerformRedirection(WebCore::ResourceLoaderIdentifier, WebCore::ResourceResponse&&, WebCore::ResourceRequest&&, CompletionHandler<void(WebCore::ResourceRequest&&)>&&);
-    void taskDidReceiveResponse(WebCore::ResourceLoaderIdentifier, const WebCore::ResourceResponse&);
-    void taskDidReceiveData(WebCore::ResourceLoaderIdentifier, Ref<WebCore::SharedBuffer>&&);
-    void taskDidComplete(WebCore::ResourceLoaderIdentifier, const WebCore::ResourceError&);
+    void taskDidPerformRedirection(CyberCore::ResourceLoaderIdentifier, CyberCore::ResourceResponse&&, CyberCore::ResourceRequest&&, CompletionHandler<void(CyberCore::ResourceRequest&&)>&&);
+    void taskDidReceiveResponse(CyberCore::ResourceLoaderIdentifier, const CyberCore::ResourceResponse&);
+    void taskDidReceiveData(CyberCore::ResourceLoaderIdentifier, Ref<CyberCore::SharedBuffer>&&);
+    void taskDidComplete(CyberCore::ResourceLoaderIdentifier, const CyberCore::ResourceError&);
     void taskDidStopLoading(WebURLSchemeTaskProxy&);
 
 private:
     WebURLSchemeHandlerProxy(WebPage&, WebURLSchemeHandlerIdentifier);
 
-    RefPtr<WebURLSchemeTaskProxy> removeTask(WebCore::ResourceLoaderIdentifier);
+    RefPtr<WebURLSchemeTaskProxy> removeTask(CyberCore::ResourceLoaderIdentifier);
 
     WebPage& m_webPage;
     WebURLSchemeHandlerIdentifier m_identifier;
 
-    HashMap<WebCore::ResourceLoaderIdentifier, RefPtr<WebURLSchemeTaskProxy>> m_tasks;
+    HashMap<CyberCore::ResourceLoaderIdentifier, RefPtr<WebURLSchemeTaskProxy>> m_tasks;
 }; // class WebURLSchemeHandlerProxy
 
-} // namespace WebKit
+} // namespace CyberKit

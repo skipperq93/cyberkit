@@ -33,7 +33,7 @@
 #include <CyberCore/LibWebRTCProvider.h>
 #include <wtf/Function.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 WebRTCResolver::WebRTCResolver(LibWebRTCSocketFactory& socketFactory, LibWebRTCResolverIdentifier identifier)
     : m_socketFactory(socketFactory)
@@ -49,7 +49,7 @@ void WebRTCResolver::setResolvedAddress(const Vector<RTCNetwork::IPAddress>& add
     auto rtcAddresses = addresses.map([](auto& address) {
         return address.value;
     });
-    WebCore::LibWebRTCProvider::callOnWebRTCNetworkThread([&factory, identifier, rtcAddresses = WTFMove(rtcAddresses)]() {
+    CyberCore::LibWebRTCProvider::callOnWebRTCNetworkThread([&factory, identifier, rtcAddresses = WTFMove(rtcAddresses)]() {
         auto* resolver = factory.resolver(identifier);
         if (!resolver)
             return;
@@ -61,7 +61,7 @@ void WebRTCResolver::resolvedAddressError(int error)
 {
     auto identifier = m_identifier;
     auto& factory = m_socketFactory;
-    WebCore::LibWebRTCProvider::callOnWebRTCNetworkThread([&factory, identifier, error]() {
+    CyberCore::LibWebRTCProvider::callOnWebRTCNetworkThread([&factory, identifier, error]() {
         auto* resolver = factory.resolver(identifier);
         if (!resolver)
             return;
@@ -69,6 +69,6 @@ void WebRTCResolver::resolvedAddressError(int error)
     });
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(LIBWEBRTC)

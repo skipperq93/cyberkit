@@ -33,7 +33,7 @@
 #include <CyberCore/WorkerInitializationData.h>
 #include <pal/SessionID.h>
 
-namespace WebCore {
+namespace CyberCore {
 class ResourceError;
 struct SharedWorkerKey;
 struct WorkerFetchResult;
@@ -52,7 +52,7 @@ class NetworkSession;
 class WebSharedWorkerServerConnection : public IPC::MessageSender, public IPC::MessageReceiver {
     WTF_MAKE_FAST_ALLOCATED;
 public:
-    WebSharedWorkerServerConnection(NetworkProcess&, WebSharedWorkerServer&, IPC::Connection&, WebCore::ProcessIdentifier);
+    WebSharedWorkerServerConnection(NetworkProcess&, WebSharedWorkerServer&, IPC::Connection&, CyberCore::ProcessIdentifier);
     ~WebSharedWorkerServerConnection();
 
     WebSharedWorkerServer& server() { return m_server; }
@@ -60,13 +60,13 @@ public:
 
     PAL::SessionID sessionID();
     NetworkSession* session();
-    WebCore::ProcessIdentifier webProcessIdentifier() const { return m_webProcessIdentifier; }
+    CyberCore::ProcessIdentifier webProcessIdentifier() const { return m_webProcessIdentifier; }
 
     void didReceiveMessage(IPC::Connection&, IPC::Decoder&) final;
 
-    void fetchScriptInClient(const WebSharedWorker&, WebCore::SharedWorkerObjectIdentifier, CompletionHandler<void(WebCore::WorkerFetchResult&&, WebCore::WorkerInitializationData&&)>&&);
-    void notifyWorkerObjectOfLoadCompletion(WebCore::SharedWorkerObjectIdentifier, const WebCore::ResourceError&);
-    void postExceptionToWorkerObject(WebCore::SharedWorkerObjectIdentifier, const String& errorMessage, int lineNumber, int columnNumber, const String& sourceURL);
+    void fetchScriptInClient(const WebSharedWorker&, CyberCore::SharedWorkerObjectIdentifier, CompletionHandler<void(CyberCore::WorkerFetchResult&&, CyberCore::WorkerInitializationData&&)>&&);
+    void notifyWorkerObjectOfLoadCompletion(CyberCore::SharedWorkerObjectIdentifier, const CyberCore::ResourceError&);
+    void postExceptionToWorkerObject(CyberCore::SharedWorkerObjectIdentifier, const String& errorMessage, int lineNumber, int columnNumber, const String& sourceURL);
 
 private:
     // IPC::MessageSender.
@@ -74,15 +74,15 @@ private:
     uint64_t messageSenderDestinationID() const final { return 0; }
 
     // IPC messages.
-    void requestSharedWorker(WebCore::SharedWorkerKey&&, WebCore::SharedWorkerObjectIdentifier, WebCore::TransferredMessagePort&&, WebCore::WorkerOptions&&);
-    void sharedWorkerObjectIsGoingAway(WebCore::SharedWorkerKey&&, WebCore::SharedWorkerObjectIdentifier);
-    void suspendForBackForwardCache(WebCore::SharedWorkerKey&&, WebCore::SharedWorkerObjectIdentifier);
-    void resumeForBackForwardCache(WebCore::SharedWorkerKey&&, WebCore::SharedWorkerObjectIdentifier);
+    void requestSharedWorker(CyberCore::SharedWorkerKey&&, CyberCore::SharedWorkerObjectIdentifier, CyberCore::TransferredMessagePort&&, CyberCore::WorkerOptions&&);
+    void sharedWorkerObjectIsGoingAway(CyberCore::SharedWorkerKey&&, CyberCore::SharedWorkerObjectIdentifier);
+    void suspendForBackForwardCache(CyberCore::SharedWorkerKey&&, CyberCore::SharedWorkerObjectIdentifier);
+    void resumeForBackForwardCache(CyberCore::SharedWorkerKey&&, CyberCore::SharedWorkerObjectIdentifier);
 
     Ref<IPC::Connection> m_contentConnection;
     Ref<NetworkProcess> m_networkProcess;
     WebSharedWorkerServer& m_server;
-    WebCore::ProcessIdentifier m_webProcessIdentifier;
+    CyberCore::ProcessIdentifier m_webProcessIdentifier;
 };
 
 } // namespace WebKit

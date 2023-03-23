@@ -28,22 +28,22 @@
 
 #include <CyberCore/DiagnosticLoggingClient.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPage;
 
-class WebDiagnosticLoggingClient : public WebCore::DiagnosticLoggingClient {
+class WebDiagnosticLoggingClient : public CyberCore::DiagnosticLoggingClient {
 public:
     WebDiagnosticLoggingClient(WebPage&);
     virtual ~WebDiagnosticLoggingClient();
 
 private:
-    void logDiagnosticMessage(const String& message, const String& description, WebCore::ShouldSample) override;
-    void logDiagnosticMessageWithResult(const String& message, const String& description, WebCore::DiagnosticLoggingResultType, WebCore::ShouldSample) override;
-    void logDiagnosticMessageWithValue(const String& message, const String& description, double value, unsigned significantFigures, WebCore::ShouldSample) override;
-    void logDiagnosticMessageWithEnhancedPrivacy(const String& message, const String& description, WebCore::ShouldSample) override;
-    void logDiagnosticMessageWithValueDictionary(const String& message, const String& description, const ValueDictionary&, WebCore::ShouldSample) override;
-    void logDiagnosticMessageWithDomain(const String& message, WebCore::DiagnosticLoggingDomain) override;
+    void logDiagnosticMessage(const String& message, const String& description, CyberCore::ShouldSample) override;
+    void logDiagnosticMessageWithResult(const String& message, const String& description, CyberCore::DiagnosticLoggingResultType, CyberCore::ShouldSample) override;
+    void logDiagnosticMessageWithValue(const String& message, const String& description, double value, unsigned significantFigures, CyberCore::ShouldSample) override;
+    void logDiagnosticMessageWithEnhancedPrivacy(const String& message, const String& description, CyberCore::ShouldSample) override;
+    void logDiagnosticMessageWithValueDictionary(const String& message, const String& description, const ValueDictionary&, CyberCore::ShouldSample) override;
+    void logDiagnosticMessageWithDomain(const String& message, CyberCore::DiagnosticLoggingDomain) override;
 
     WebPage& m_page;
 };

@@ -31,13 +31,13 @@
 
 #if ENABLE(NOTIFICATIONS)
 
-namespace WebCore {
+namespace CyberCore {
 class Notification;
 struct NotificationData;
 }
 
 @interface WebNotification (WebNotificationInternal)
-- (id)initWithCoreNotification:(WebCore::NotificationData&&)coreNotification;
+- (id)initWithCoreNotification:(CyberCore::NotificationData&&)coreNotification;
 @end
 
 #endif

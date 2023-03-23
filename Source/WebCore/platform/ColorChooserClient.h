@@ -33,7 +33,7 @@
 
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Color;
 class IntRect;
@@ -48,6 +48,6 @@ public:
     virtual Vector<Color> suggestedColors() const = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(INPUT_TYPE_COLOR)

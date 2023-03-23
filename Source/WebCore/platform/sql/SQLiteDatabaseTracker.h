@@ -28,7 +28,7 @@
 
 #include "SQLiteDatabaseTrackerClient.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace SQLiteDatabaseTracker {
 
@@ -53,6 +53,6 @@ public:
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // SQLiteDatabaseTracker_h

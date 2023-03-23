@@ -24,7 +24,7 @@
 #include "APIError.h"
 #include "WebKitPrivate.h"
 
-using namespace WebCore;
+using namespace CyberCore;
 
 /**
  * webkit_network_error_quark:

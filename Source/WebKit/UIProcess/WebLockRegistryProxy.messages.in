@@ -21,9 +21,9 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 messages -> WebLockRegistryProxy NotRefCounted {
-    RequestLock(struct WebCore::ClientOrigin clientOrigin, WebCore::WebLockIdentifier identifier, WebCore::ScriptExecutionContextIdentifier clientID, String name, enum:bool WebCore::WebLockMode mode, bool steal, bool ifAvailable)
-    ReleaseLock(struct WebCore::ClientOrigin clientOrigin, WebCore::WebLockIdentifier identifier, WebCore::ScriptExecutionContextIdentifier clientID, String name)
-    AbortLockRequest(struct WebCore::ClientOrigin clientOrigin, WebCore::WebLockIdentifier identifier, WebCore::ScriptExecutionContextIdentifier clientID, String name) -> (bool wasAborted)
-    Snapshot(struct WebCore::ClientOrigin clientOrigin) -> (struct WebCore::WebLockManagerSnapshot snapshot)
-    ClientIsGoingAway(struct WebCore::ClientOrigin clientOrigin, WebCore::ScriptExecutionContextIdentifier clientId)
+    RequestLock(struct CyberCore::ClientOrigin clientOrigin, CyberCore::WebLockIdentifier identifier, CyberCore::ScriptExecutionContextIdentifier clientID, String name, enum:bool CyberCore::WebLockMode mode, bool steal, bool ifAvailable)
+    ReleaseLock(struct CyberCore::ClientOrigin clientOrigin, CyberCore::WebLockIdentifier identifier, CyberCore::ScriptExecutionContextIdentifier clientID, String name)
+    AbortLockRequest(struct CyberCore::ClientOrigin clientOrigin, CyberCore::WebLockIdentifier identifier, CyberCore::ScriptExecutionContextIdentifier clientID, String name) -> (bool wasAborted)
+    Snapshot(struct CyberCore::ClientOrigin clientOrigin) -> (struct CyberCore::WebLockManagerSnapshot snapshot)
+    ClientIsGoingAway(struct CyberCore::ClientOrigin clientOrigin, CyberCore::ScriptExecutionContextIdentifier clientId)
 }

@@ -24,7 +24,7 @@
 #include <wtf/Condition.h>
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioDestinationGStreamer : public AudioDestination {
 public:
@@ -58,4 +58,4 @@ private:
     CompletionHandler<void(bool)> m_stopCompletionHandler;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

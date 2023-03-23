@@ -39,8 +39,8 @@ template<> struct ClientTraits<WKBundlePageBannerClientBase> {
 };
 }
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 class PageBannerClientImpl : API::Client<WKBundlePageBannerClientBase>, public PageBanner::Client {
     WTF_MAKE_FAST_ALLOCATED;
@@ -104,13 +104,13 @@ WKBundlePageBannerRef WKBundlePageBannerCreateBannerWithCALayer(CALayer *layer, 
     if (wkClient && wkClient->version)
         return 0;
 
-    auto clientImpl = makeUnique<WebKit::PageBannerClientImpl>(wkClient);
-    return toAPI(&WebKit::PageBanner::create(layer, height, clientImpl.release()).leakRef());
+    auto clientImpl = makeUnique<CyberKit::PageBannerClientImpl>(wkClient);
+    return toAPI(&CyberKit::PageBanner::create(layer, height, clientImpl.release()).leakRef());
 }
 
 CALayer *WKBundlePageBannerGetLayer(WKBundlePageBannerRef pageBanner)
 {
-    return WebKit::toImpl(pageBanner)->layer();
+    return CyberKit::toImpl(pageBanner)->layer();
 }
 
 #endif // !PLATFORM(IOS_FAMILY)

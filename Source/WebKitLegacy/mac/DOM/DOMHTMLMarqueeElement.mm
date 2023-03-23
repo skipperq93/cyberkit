@@ -35,151 +35,151 @@
 #import <wtf/GetPtr.h>
 #import <wtf/URL.h>
 
-#define IMPL static_cast<WebCore::HTMLMarqueeElement*>(reinterpret_cast<WebCore::Node*>(_internal))
+#define IMPL static_cast<CyberCore::HTMLMarqueeElement*>(reinterpret_cast<CyberCore::Node*>(_internal))
 
 @implementation DOMHTMLMarqueeElement
 
 - (NSString *)behavior
 {
-    WebCore::JSMainThreadNullState state;
-    return IMPL->getAttribute(WebCore::HTMLNames::behaviorAttr);
+    CyberCore::JSMainThreadNullState state;
+    return IMPL->getAttribute(CyberCore::HTMLNames::behaviorAttr);
 }
 
 - (void)setBehavior:(NSString *)newBehavior
 {
-    WebCore::JSMainThreadNullState state;
-    IMPL->setAttributeWithoutSynchronization(WebCore::HTMLNames::behaviorAttr, newBehavior);
+    CyberCore::JSMainThreadNullState state;
+    IMPL->setAttributeWithoutSynchronization(CyberCore::HTMLNames::behaviorAttr, newBehavior);
 }
 
 - (NSString *)bgColor
 {
-    WebCore::JSMainThreadNullState state;
-    return IMPL->getAttribute(WebCore::HTMLNames::bgcolorAttr);
+    CyberCore::JSMainThreadNullState state;
+    return IMPL->getAttribute(CyberCore::HTMLNames::bgcolorAttr);
 }
 
 - (void)setBgColor:(NSString *)newBgColor
 {
-    WebCore::JSMainThreadNullState state;
-    IMPL->setAttributeWithoutSynchronization(WebCore::HTMLNames::bgcolorAttr, newBgColor);
+    CyberCore::JSMainThreadNullState state;
+    IMPL->setAttributeWithoutSynchronization(CyberCore::HTMLNames::bgcolorAttr, newBgColor);
 }
 
 - (NSString *)direction
 {
-    WebCore::JSMainThreadNullState state;
-    return IMPL->getAttribute(WebCore::HTMLNames::directionAttr);
+    CyberCore::JSMainThreadNullState state;
+    return IMPL->getAttribute(CyberCore::HTMLNames::directionAttr);
 }
 
 - (void)setDirection:(NSString *)newDirection
 {
-    WebCore::JSMainThreadNullState state;
-    IMPL->setAttributeWithoutSynchronization(WebCore::HTMLNames::directionAttr, newDirection);
+    CyberCore::JSMainThreadNullState state;
+    IMPL->setAttributeWithoutSynchronization(CyberCore::HTMLNames::directionAttr, newDirection);
 }
 
 - (NSString *)height
 {
-    WebCore::JSMainThreadNullState state;
-    return IMPL->getAttribute(WebCore::HTMLNames::heightAttr);
+    CyberCore::JSMainThreadNullState state;
+    return IMPL->getAttribute(CyberCore::HTMLNames::heightAttr);
 }
 
 - (void)setHeight:(NSString *)newHeight
 {
-    WebCore::JSMainThreadNullState state;
-    IMPL->setAttributeWithoutSynchronization(WebCore::HTMLNames::heightAttr, newHeight);
+    CyberCore::JSMainThreadNullState state;
+    IMPL->setAttributeWithoutSynchronization(CyberCore::HTMLNames::heightAttr, newHeight);
 }
 
 - (unsigned)hspace
 {
-    WebCore::JSMainThreadNullState state;
-    return IMPL->getUnsignedIntegralAttribute(WebCore::HTMLNames::hspaceAttr);
+    CyberCore::JSMainThreadNullState state;
+    return IMPL->getUnsignedIntegralAttribute(CyberCore::HTMLNames::hspaceAttr);
 }
 
 - (void)setHspace:(unsigned)newHspace
 {
-    WebCore::JSMainThreadNullState state;
-    IMPL->setUnsignedIntegralAttribute(WebCore::HTMLNames::hspaceAttr, newHspace);
+    CyberCore::JSMainThreadNullState state;
+    IMPL->setUnsignedIntegralAttribute(CyberCore::HTMLNames::hspaceAttr, newHspace);
 }
 
 - (int)loop
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->loop();
 }
 
 - (void)setLoop:(int)newLoop
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     raiseOnDOMError(IMPL->setLoop(newLoop));
 }
 
 - (unsigned)scrollAmount
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->scrollAmount();
 }
 
 - (void)setScrollAmount:(unsigned)newScrollAmount
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->setScrollAmount(newScrollAmount);
 }
 
 - (unsigned)scrollDelay
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->scrollDelay();
 }
 
 - (void)setScrollDelay:(unsigned)newScrollDelay
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->setScrollDelay(newScrollDelay);
 }
 
 - (BOOL)trueSpeed
 {
-    WebCore::JSMainThreadNullState state;
-    return IMPL->hasAttributeWithoutSynchronization(WebCore::HTMLNames::truespeedAttr);
+    CyberCore::JSMainThreadNullState state;
+    return IMPL->hasAttributeWithoutSynchronization(CyberCore::HTMLNames::truespeedAttr);
 }
 
 - (void)setTrueSpeed:(BOOL)newTrueSpeed
 {
-    WebCore::JSMainThreadNullState state;
-    IMPL->setBooleanAttribute(WebCore::HTMLNames::truespeedAttr, newTrueSpeed);
+    CyberCore::JSMainThreadNullState state;
+    IMPL->setBooleanAttribute(CyberCore::HTMLNames::truespeedAttr, newTrueSpeed);
 }
 
 - (unsigned)vspace
 {
-    WebCore::JSMainThreadNullState state;
-    return IMPL->getUnsignedIntegralAttribute(WebCore::HTMLNames::vspaceAttr);
+    CyberCore::JSMainThreadNullState state;
+    return IMPL->getUnsignedIntegralAttribute(CyberCore::HTMLNames::vspaceAttr);
 }
 
 - (void)setVspace:(unsigned)newVspace
 {
-    WebCore::JSMainThreadNullState state;
-    IMPL->setUnsignedIntegralAttribute(WebCore::HTMLNames::vspaceAttr, newVspace);
+    CyberCore::JSMainThreadNullState state;
+    IMPL->setUnsignedIntegralAttribute(CyberCore::HTMLNames::vspaceAttr, newVspace);
 }
 
 - (NSString *)width
 {
-    WebCore::JSMainThreadNullState state;
-    return IMPL->getAttribute(WebCore::HTMLNames::widthAttr);
+    CyberCore::JSMainThreadNullState state;
+    return IMPL->getAttribute(CyberCore::HTMLNames::widthAttr);
 }
 
 - (void)setWidth:(NSString *)newWidth
 {
-    WebCore::JSMainThreadNullState state;
-    IMPL->setAttributeWithoutSynchronization(WebCore::HTMLNames::widthAttr, newWidth);
+    CyberCore::JSMainThreadNullState state;
+    IMPL->setAttributeWithoutSynchronization(CyberCore::HTMLNames::widthAttr, newWidth);
 }
 
 - (void)start
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->start();
 }
 
 - (void)stop
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->stop();
 }
 

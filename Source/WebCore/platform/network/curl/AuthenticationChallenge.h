@@ -29,7 +29,7 @@
 #include "AuthenticationChallengeBase.h"
 #include "AuthenticationClient.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CurlResponse;
 
@@ -61,4 +61,4 @@ private:
     RefPtr<AuthenticationClient> m_authenticationClient;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -28,7 +28,7 @@
 
 #include <wtf/MainThread.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace Process {
 
 static std::optional<ProcessIdentifier> globalIdentifier;
@@ -51,4 +51,4 @@ ProcessIdentifier identifier()
 }
 
 } // namespace Process
-} // namespace WebCore
+} // namespace CyberCore

@@ -29,7 +29,7 @@
 #include "LengthFunctions.h"
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 float CalcExpressionLength::evaluate(float maxValue) const
 {

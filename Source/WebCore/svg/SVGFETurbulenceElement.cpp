@@ -27,7 +27,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/text/StringToIntegerConversion.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(SVGFETurbulenceElement);
 
@@ -128,4 +128,4 @@ RefPtr<FilterEffect> SVGFETurbulenceElement::createFilterEffect(const FilterEffe
     return FETurbulence::create(type(), baseFrequencyX(), baseFrequencyY(), numOctaves(), seed(), stitchTiles() == SVG_STITCHTYPE_STITCH);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -30,7 +30,7 @@
 #include <optional>
 #include <wtf/HashSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct WordTrailingSpace {
     WordTrailingSpace(const RenderStyle& style, bool measuringWithTrailingWhitespaceEnabled = true)
@@ -58,4 +58,4 @@ private:
     std::optional<float> m_width;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

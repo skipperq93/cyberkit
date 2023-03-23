@@ -38,7 +38,7 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 #if PLATFORM(MAC)
 static NSBitmapImageFileType bitmapPNGFileType()

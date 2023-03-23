@@ -34,7 +34,7 @@
 #include "RenderTreeBuilderTable.h"
 #include <wtf/SetForScope.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static bool canUseAsParentForContinuation(const RenderObject* renderer)
 {

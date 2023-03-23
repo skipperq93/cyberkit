@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -17,16 +17,16 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitDOMRangePrivate_h
-#define WebKitDOMRangePrivate_h
+#ifndef CyberKitDOMRangePrivate_h
+#define CyberKitDOMRangePrivate_h
 
 #include <CyberCore/Range.h>
-#include <webkitdom/WebKitDOMRange.h>
+#include <webkitdom/CyberKitDOMRange.h>
 
-namespace WebKit {
-WebKitDOMRange* wrapRange(WebCore::Range*);
-WebKitDOMRange* kit(WebCore::Range*);
-WebCore::Range* core(WebKitDOMRange*);
-} // namespace WebKit
+namespace CyberKit {
+CyberKitDOMRange* wrapRange(CyberCore::Range*);
+CyberKitDOMRange* kit(CyberCore::Range*);
+CyberCore::Range* core(CyberKitDOMRange*);
+} // namespace CyberKit
 
-#endif /* WebKitDOMRangePrivate_h */
+#endif /* CyberKitDOMRangePrivate_h */

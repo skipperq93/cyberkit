@@ -35,7 +35,7 @@
 #include <wtf/Lock.h>
 #include <wtf/ThreadSafeRefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 class PlatformWheelEvent;
 class WheelEventDeltaFilter;
 struct WheelEventHandlingResult;
@@ -55,9 +55,9 @@ class RemoteLayerTreeEventDispatcher : public ThreadSafeRefCounted<RemoteLayerTr
     WTF_MAKE_FAST_ALLOCATED();
     friend class RemoteLayerTreeEventDispatcherDisplayLinkClient;
 public:
-    static Ref<RemoteLayerTreeEventDispatcher> create(RemoteScrollingCoordinatorProxyMac&, WebCore::PageIdentifier);
+    static Ref<RemoteLayerTreeEventDispatcher> create(RemoteScrollingCoordinatorProxyMac&, CyberCore::PageIdentifier);
 
-    explicit RemoteLayerTreeEventDispatcher(RemoteScrollingCoordinatorProxyMac&, WebCore::PageIdentifier);
+    explicit RemoteLayerTreeEventDispatcher(RemoteScrollingCoordinatorProxyMac&, CyberCore::PageIdentifier);
     ~RemoteLayerTreeEventDispatcher();
     
     void invalidate();
@@ -66,12 +66,12 @@ public:
 
     void setScrollingTree(RefPtr<RemoteScrollingTree>&&);
 
-    void didRefreshDisplay(WebCore::PlatformDisplayID);
-    void windowScreenDidChange(WebCore::PlatformDisplayID, std::optional<WebCore::FramesPerSecond>);
+    void didRefreshDisplay(CyberCore::PlatformDisplayID);
+    void windowScreenDidChange(CyberCore::PlatformDisplayID, std::optional<CyberCore::FramesPerSecond>);
 
 private:
-    WebCore::WheelEventHandlingResult internalHandleWheelEvent(const PlatformWheelEvent&, RectEdges<bool> rubberBandableEdges);
-    WebCore::WheelEventHandlingResult scrollingTreeHandleWheelEvent(RemoteScrollingTree&, const PlatformWheelEvent&);
+    CyberCore::WheelEventHandlingResult internalHandleWheelEvent(const PlatformWheelEvent&, RectEdges<bool> rubberBandableEdges);
+    CyberCore::WheelEventHandlingResult scrollingTreeHandleWheelEvent(RemoteScrollingTree&, const PlatformWheelEvent&);
     PlatformWheelEvent filteredWheelEvent(const PlatformWheelEvent&);
 
     void willHandleWheelEvent(const NativeWebWheelEvent&);
@@ -92,9 +92,9 @@ private:
     Deque<NativeWebWheelEvent, 2> m_wheelEventsBeingProcessed;
 
     WeakPtr<RemoteScrollingCoordinatorProxyMac> m_scrollingCoordinator;
-    WebCore::PageIdentifier m_pageIdentifier;
+    CyberCore::PageIdentifier m_pageIdentifier;
 
-    std::unique_ptr<WebCore::WheelEventDeltaFilter> m_wheelEventDeltaFilter;
+    std::unique_ptr<CyberCore::WheelEventDeltaFilter> m_wheelEventDeltaFilter;
     std::unique_ptr<RemoteLayerTreeEventDispatcherDisplayLinkClient> m_displayLinkClient;
     std::optional<DisplayLinkObserverID> m_displayRefreshObserverID;
 };

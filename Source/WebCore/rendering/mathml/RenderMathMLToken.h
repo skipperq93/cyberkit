@@ -31,7 +31,7 @@
 
 #include "RenderMathMLBlock.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class MathMLTokenElement;
 
@@ -69,7 +69,7 @@ private:
     bool m_mathVariantGlyphDirty { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderMathMLToken, isRenderMathMLToken())
 

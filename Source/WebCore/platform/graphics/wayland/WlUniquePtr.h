@@ -29,7 +29,7 @@
 #include <wayland-client-protocol.h>
 #include <wayland-server.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename T>
 struct WlPtrDeleter {
@@ -59,6 +59,6 @@ FOR_EACH_WAYLAND_DELETER(DEFINE_WAYLAND_DELETER)
 #undef FOR_EACH_WAYLAND_DELETER
 #undef DEFINE_WAYLAND_DELETER
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(WAYLAND)

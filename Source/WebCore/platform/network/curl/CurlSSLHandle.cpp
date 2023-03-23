@@ -33,7 +33,7 @@
 #include <wtf/Threading.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 CurlSSLHandle::CurlSSLHandle()
 {

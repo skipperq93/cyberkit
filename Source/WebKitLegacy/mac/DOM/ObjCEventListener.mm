@@ -34,7 +34,7 @@
 #import <CyberCore/JSExecState.h>
 #import <wtf/HashMap.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 typedef HashMap<id, ObjCEventListener*> ListenerMap;
 static ListenerMap* listenerMap;
@@ -89,4 +89,4 @@ bool ObjCEventListener::operator==(const EventListener& listener) const
     return false;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

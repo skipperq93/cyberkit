@@ -33,17 +33,17 @@
 #import <CyberCore/FileList.h>
 #import <CyberCore/JSExecState.h>
 #import <CyberCore/ThreadCheck.h>
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 #import <CyberCore/WebScriptObjectPrivate.h>
 #import <wtf/GetPtr.h>
 
-#define IMPL reinterpret_cast<WebCore::FileList*>(_internal)
+#define IMPL reinterpret_cast<CyberCore::FileList*>(_internal)
 
 @implementation DOMFileList
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainThread([DOMFileList class], self))
+    if (CyberCoreObjCScheduleDeallocateOnMainThread([DOMFileList class], self))
         return;
 
     if (_internal)
@@ -53,26 +53,26 @@
 
 - (unsigned)length
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->length();
 }
 
 - (DOMFile *)item:(unsigned)index
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->item(index)));
 }
 
 @end
 
-WebCore::FileList* core(DOMFileList *wrapper)
+CyberCore::FileList* core(DOMFileList *wrapper)
 {
-    return wrapper ? reinterpret_cast<WebCore::FileList*>(wrapper->_internal) : 0;
+    return wrapper ? reinterpret_cast<CyberCore::FileList*>(wrapper->_internal) : 0;
 }
 
-DOMFileList *kit(WebCore::FileList* value)
+DOMFileList *kit(CyberCore::FileList* value)
 {
-    WebCoreThreadViolationCheckRoundOne();
+    CyberCoreThreadViolationCheckRoundOne();
     if (!value)
         return nil;
     if (DOMFileList *wrapper = getDOMWrapper(value))

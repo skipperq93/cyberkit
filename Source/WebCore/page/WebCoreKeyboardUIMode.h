@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 enum KeyboardUIMode {
     KeyboardAccessDefault     = 0x00000000,
@@ -34,4 +34,4 @@ enum KeyboardUIMode {
     KeyboardAccessTabsToLinks = 0x10000000
 };
 
-} // namespace WebCore
+} // namespace CyberCore

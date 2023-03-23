@@ -30,7 +30,7 @@
 #include <wtf/text/TextStream.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 // Class template representing a closed interval which can hold arbitrary
 // endpoints and a piece of user data. Ordering and equality are defined
@@ -160,4 +160,4 @@ TextStream& operator<<(TextStream& stream, const PODInterval<T, UserData>& inter
 
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

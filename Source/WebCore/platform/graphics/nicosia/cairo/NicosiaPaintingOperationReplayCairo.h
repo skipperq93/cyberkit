@@ -34,11 +34,11 @@
 namespace Nicosia {
 
 struct PaintingOperationReplayCairo : PaintingOperationReplay {
-    PaintingOperationReplayCairo(WebCore::GraphicsContextCairo& platformContext)
+    PaintingOperationReplayCairo(CyberCore::GraphicsContextCairo& platformContext)
         : platformContext(platformContext)
     { }
 
-    WebCore::GraphicsContextCairo& platformContext;
+    CyberCore::GraphicsContextCairo& platformContext;
 };
 
 }

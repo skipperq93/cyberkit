@@ -50,11 +50,11 @@
 #endif
 
 #if PLATFORM(WIN)
-#include "WebCoreBundleWin.h"
+#include "CyberCoreBundleWin.h"
 #include <wtf/FileSystem.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 static const double focusRingOpacity = 0.8; // Keep in sync with focusRingOpacity in ThemeAdwaita.
 static const double disabledOpacity = 0.5; // Keep in sync with disabledOpacity in ThemeAdwaita.
@@ -710,6 +710,6 @@ void RenderThemeAdwaita::setAccentColor(const Color& color)
     platformColorsDidChange();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(THEME_ADWAITA)

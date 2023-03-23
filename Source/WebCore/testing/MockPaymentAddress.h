@@ -29,11 +29,11 @@
 
 #include "ApplePayPaymentContact.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct MockPaymentAddress : ApplePayPaymentContact {
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(APPLE_PAY)

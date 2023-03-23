@@ -31,7 +31,7 @@
 #include <wtf/Assertions.h>
 #include <wtf/FileSystem.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WEBCORE_EXPORT FileHandle final {
 public:
@@ -66,4 +66,4 @@ private:
     bool m_shouldLock { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

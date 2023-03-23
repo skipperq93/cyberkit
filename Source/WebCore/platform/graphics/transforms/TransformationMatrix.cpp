@@ -41,7 +41,7 @@
 #include <emmintrin.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 //
 // Adapted from Matrix Inversion by Richard Carling, Graphics Gems <http://tog.acm.org/GraphicsGems/index.html>.
@@ -1585,7 +1585,7 @@ bool TransformationMatrix::isInvertible() const
     if (type == Type::IdentityOrTranslation)
         return true;
 
-    return fabs(type == Type::Affine ? (m11() * m22() - m12() * m21()) : WebCore::determinant4x4(m_matrix)) >= SMALL_NUMBER;
+    return fabs(type == Type::Affine ? (m11() * m22() - m12() * m21()) : CyberCore::determinant4x4(m_matrix)) >= SMALL_NUMBER;
 }
 
 std::optional<TransformationMatrix> TransformationMatrix::inverse() const
@@ -1628,7 +1628,7 @@ std::optional<TransformationMatrix> TransformationMatrix::inverse() const
     TransformationMatrix invMat;
     // FIXME: Use LU decomposition to apply the inverse instead of calculating the inverse explicitly.
     // Calculating the inverse of a 4x4 matrix using cofactors is numerically unstable and unnecessary to apply the inverse transformation to a point.
-    if (!WebCore::inverse(m_matrix, invMat.m_matrix))
+    if (!CyberCore::inverse(m_matrix, invMat.m_matrix))
         return std::nullopt;
 
     return invMat;
@@ -1806,7 +1806,7 @@ bool TransformationMatrix::decompose2(Decomposed2Type& decomp) const
         return true;
     }
 
-    return WebCore::decompose2(m_matrix, decomp);
+    return CyberCore::decompose2(m_matrix, decomp);
 }
 
 bool TransformationMatrix::decompose4(Decomposed4Type& decomp) const
@@ -1820,7 +1820,7 @@ bool TransformationMatrix::decompose4(Decomposed4Type& decomp) const
         return true;
     }
 
-    return WebCore::decompose4(m_matrix, decomp);
+    return CyberCore::decompose4(m_matrix, decomp);
 }
 
 void TransformationMatrix::recompose2(const Decomposed2Type& decomp)
@@ -1949,7 +1949,7 @@ bool TransformationMatrix::isBackFaceVisible() const
     // we can simply compute the m33() of the adjoint (adjugate) matrix, without computing
     // the full adjoint.
 
-    double determinant = WebCore::determinant4x4(m_matrix);
+    double determinant = CyberCore::determinant4x4(m_matrix);
 
     // If the matrix is not invertible, then we assume its backface is not visible.
     if (fabs(determinant) < SMALL_NUMBER)

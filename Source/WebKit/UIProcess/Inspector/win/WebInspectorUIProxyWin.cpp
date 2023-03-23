@@ -43,8 +43,8 @@
 #include <CyberCore/InspectorFrontendClient.h>
 #include <CyberCore/InspectorFrontendClientLocal.h>
 #include <CyberCore/NotImplemented.h>
-#include <CyberCore/WebCoreBundleWin.h>
-#include <CyberCore/WebCoreInstanceHandle.h>
+#include <CyberCore/CyberCoreBundleWin.h>
+#include <CyberCore/CyberCoreInstanceHandle.h>
 #include <CyberCore/WindowMessageBroadcaster.h>
 #include <WebKit/WKPage.h>
 
@@ -98,14 +98,14 @@ void WebInspectorUIProxy::windowReceivedMessage(HWND hwnd, UINT msg, WPARAM, LPA
 
         switch (m_attachmentSide) {
         case AttachmentSide::Bottom: {
-            unsigned inspectorHeight = WebCore::InspectorFrontendClientLocal::constrainedAttachedWindowHeight(inspectorRect.bottom - inspectorRect.top, windowPos->cy);
+            unsigned inspectorHeight = CyberCore::InspectorFrontendClientLocal::constrainedAttachedWindowHeight(inspectorRect.bottom - inspectorRect.top, windowPos->cy);
             windowPos->cy -= inspectorHeight;
             ::SetWindowPos(m_inspectorViewWindow, 0, windowPos->x, windowPos->y + windowPos->cy, windowPos->cx, inspectorHeight, SWP_NOZORDER);
             break;
         }
         case AttachmentSide::Left:
         case AttachmentSide::Right: {
-            unsigned inspectorWidth = WebCore::InspectorFrontendClientLocal::constrainedAttachedWindowWidth(inspectorRect.right - inspectorRect.left, windowPos->cx);
+            unsigned inspectorWidth = CyberCore::InspectorFrontendClientLocal::constrainedAttachedWindowWidth(inspectorRect.right - inspectorRect.left, windowPos->cx);
             windowPos->cx -= inspectorWidth;
             ::SetWindowPos(m_inspectorViewWindow, 0, windowPos->x + windowPos->cx, windowPos->y, inspectorWidth, windowPos->cy, SWP_NOZORDER);
             break;
@@ -150,7 +150,7 @@ bool WebInspectorUIProxy::registerWindowClass()
     wcex.lpfnWndProc = wndProc;
     wcex.cbClsExtra = 0;
     wcex.cbWndExtra = 0;
-    wcex.hInstance = WebCore::instanceHandle();
+    wcex.hInstance = CyberCore::instanceHandle();
     wcex.hIcon = 0;
     wcex.hCursor = LoadCursor(0, IDC_ARROW);
     wcex.hbrBackground = 0;
@@ -172,7 +172,7 @@ static void decidePolicyForNavigationAction(WKPageRef pageRef, WKNavigationActio
     const WebInspectorUIProxy* inspector = static_cast<const WebInspectorUIProxy*>(clientInfo);
     ASSERT(inspector);
 
-    WebCore::ResourceRequest request = toImpl(navigationActionRef)->request();
+    CyberCore::ResourceRequest request = toImpl(navigationActionRef)->request();
 
     // Allow loading of the main inspector file.
     if (WebInspectorUIProxy::isMainOrTestInspectorPage(request.url())) {
@@ -254,7 +254,7 @@ WebPageProxy* WebInspectorUIProxy::platformCreateFrontendPage()
 
 void WebInspectorUIProxy::platformCloseFrontendPageAndWindow()
 {
-    WebCore::WindowMessageBroadcaster::removeListener(m_inspectedViewWindow, this);
+    CyberCore::WindowMessageBroadcaster::removeListener(m_inspectedViewWindow, this);
     m_inspectorView = nullptr;
     m_inspectorPage = nullptr;
     if (m_inspectorViewWindow) {
@@ -297,7 +297,7 @@ void WebInspectorUIProxy::platformAttach()
         ::ShowWindow(m_inspectorDetachWindow, SW_HIDE);
     }
 
-    WebCore::WindowMessageBroadcaster::addListener(m_inspectedViewWindow, this);
+    CyberCore::WindowMessageBroadcaster::addListener(m_inspectedViewWindow, this);
 
     RECT inspectedWindowRect;
     ::GetClientRect(m_inspectedViewWindow, &inspectedWindowRect);
@@ -323,11 +323,11 @@ void WebInspectorUIProxy::platformDetach()
         registerWindowClass();
         m_inspectorDetachWindow = ::CreateWindowEx(0, WebInspectorUIProxyClassName, 0, WS_OVERLAPPEDWINDOW,
             CW_USEDEFAULT, CW_USEDEFAULT, initialWindowWidth, initialWindowHeight,
-            0, 0, WebCore::instanceHandle(), 0);
+            0, 0, CyberCore::instanceHandle(), 0);
         ::SetProp(m_inspectorDetachWindow, WebInspectorUIProxyPointerProp, reinterpret_cast<HANDLE>(this));
     }
 
-    WebCore::WindowMessageBroadcaster::removeListener(m_inspectedViewWindow, this);
+    CyberCore::WindowMessageBroadcaster::removeListener(m_inspectedViewWindow, this);
 
     RECT rect;
     ::GetClientRect(m_inspectorDetachWindow, &rect);
@@ -354,7 +354,7 @@ void WebInspectorUIProxy::platformSetAttachedWindowWidth(unsigned width)
     ::SetWindowPos(m_inspectedViewWindow, 0, windowInfo.left, windowInfo.top, windowInfo.parentWidth - windowInfo.left, windowInfo.parentHeight - windowInfo.top, SWP_NOZORDER);
 }
 
-void WebInspectorUIProxy::platformSetSheetRect(const WebCore::FloatRect&)
+void WebInspectorUIProxy::platformSetSheetRect(const CyberCore::FloatRect&)
 {
     notImplemented();
 }
@@ -385,7 +385,7 @@ void WebInspectorUIProxy::platformBringInspectedPageToFront()
     notImplemented();
 }
 
-void WebInspectorUIProxy::platformSetForcedAppearance(WebCore::InspectorFrontendClient::Appearance)
+void WebInspectorUIProxy::platformSetForcedAppearance(CyberCore::InspectorFrontendClient::Appearance)
 {
     notImplemented();
 }
@@ -400,12 +400,12 @@ void WebInspectorUIProxy::platformInspectedURLChanged(const String& /* url */)
     notImplemented();
 }
 
-void WebInspectorUIProxy::platformShowCertificate(const WebCore::CertificateInfo&)
+void WebInspectorUIProxy::platformShowCertificate(const CyberCore::CertificateInfo&)
 {
     notImplemented();
 }
 
-void WebInspectorUIProxy::platformSave(Vector<WebCore::InspectorFrontendClient::SaveData>&&, bool /* forceSaveAs */)
+void WebInspectorUIProxy::platformSave(Vector<CyberCore::InspectorFrontendClient::SaveData>&&, bool /* forceSaveAs */)
 {
     notImplemented();
 }
@@ -416,7 +416,7 @@ void WebInspectorUIProxy::platformLoad(const String&, CompletionHandler<void(con
     completionHandler(nullString());
 }
 
-void WebInspectorUIProxy::platformPickColorFromScreen(CompletionHandler<void(const std::optional<WebCore::Color>&)>&& completionHandler)
+void WebInspectorUIProxy::platformPickColorFromScreen(CompletionHandler<void(const std::optional<CyberCore::Color>&)>&& completionHandler)
 {
     notImplemented();
     completionHandler({ });

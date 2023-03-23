@@ -37,7 +37,7 @@
 
 namespace WebKit {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 std::unique_ptr<RemoteSampleBufferDisplayLayer> RemoteSampleBufferDisplayLayer::create(GPUConnectionToWebProcess& gpuConnection, SampleBufferDisplayLayerIdentifier identifier, Ref<IPC::Connection>&& connection)
 {
@@ -92,7 +92,7 @@ void RemoteSampleBufferDisplayLayer::updateAffineTransform(CGAffineTransform tra
     m_sampleBufferDisplayLayer->updateRootLayerAffineTransform(transform);
 }
 
-void RemoteSampleBufferDisplayLayer::updateBoundsAndPosition(CGRect bounds, WebCore::VideoFrame::Rotation rotation)
+void RemoteSampleBufferDisplayLayer::updateBoundsAndPosition(CGRect bounds, CyberCore::VideoFrame::Rotation rotation)
 {
     m_sampleBufferDisplayLayer->updateRootLayerBoundsAndPosition(bounds, rotation, LocalSampleBufferDisplayLayer::ShouldUpdateRootLayer::Yes);
 }

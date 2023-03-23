@@ -36,7 +36,7 @@
 
 namespace TestWebKitAPI {
 
-static void testGetAndSet(WebCore::FloatRect rect)
+static void testGetAndSet(CyberCore::FloatRect rect)
 {
     rect.setX(1.1f);
     EXPECT_FLOAT_EQ(1.1f, rect.x());
@@ -48,7 +48,7 @@ static void testGetAndSet(WebCore::FloatRect rect)
     EXPECT_FLOAT_EQ(72.9f, rect.height());
 }
 
-static void testEmptyRect(const WebCore::FloatRect& rect)
+static void testEmptyRect(const CyberCore::FloatRect& rect)
 {
     EXPECT_FLOAT_EQ(0, rect.x());
     EXPECT_FLOAT_EQ(0, rect.y());
@@ -63,7 +63,7 @@ static void testEmptyRect(const WebCore::FloatRect& rect)
 
 TEST(FloatRect, DefaultConstruction)
 {
-    WebCore::FloatRect test;
+    CyberCore::FloatRect test;
 
     testEmptyRect(test);
 
@@ -80,7 +80,7 @@ TEST(FloatRect, DefaultConstruction)
 
 TEST(FloatRect, ValueConstruction)
 {
-    WebCore::FloatRect test(10.0f, 20.0f, 100.0f, 50.0f);
+    CyberCore::FloatRect test(10.0f, 20.0f, 100.0f, 50.0f);
 
     EXPECT_FLOAT_EQ(10.0f, test.x());
     EXPECT_FLOAT_EQ(20.0f, test.y());
@@ -103,10 +103,10 @@ TEST(FloatRect, ValueConstruction)
 
 TEST(FloatRect, PointSizeConstruction)
 {
-    WebCore::FloatPoint location(20.0f, 30.0f);
-    WebCore::FloatSize size(100.0f, 50.0f);
+    CyberCore::FloatPoint location(20.0f, 30.0f);
+    CyberCore::FloatSize size(100.0f, 50.0f);
 
-    WebCore::FloatRect test(location, size);
+    CyberCore::FloatRect test(location, size);
 
     EXPECT_FLOAT_EQ(20.0f, test.x());
     EXPECT_FLOAT_EQ(30.0f, test.y());
@@ -129,10 +129,10 @@ TEST(FloatRect, PointSizeConstruction)
 
 TEST(FloatRect, TwoPointConstruction)
 {
-    WebCore::FloatPoint point1(20.0f, 30.0f);
-    WebCore::FloatPoint point2(150.0f, 250.0f);
+    CyberCore::FloatPoint point1(20.0f, 30.0f);
+    CyberCore::FloatPoint point2(150.0f, 250.0f);
 
-    WebCore::FloatRect test(point1, point2);
+    CyberCore::FloatRect test(point1, point2);
 
     EXPECT_FLOAT_EQ(20.0f, test.x());
     EXPECT_FLOAT_EQ(30.0f, test.y());
@@ -155,9 +155,9 @@ TEST(FloatRect, TwoPointConstruction)
 
 TEST(FloatRect, IntRectConstruction)
 {
-    WebCore::IntRect rect(20, 30, 150, 300);
+    CyberCore::IntRect rect(20, 30, 150, 300);
 
-    WebCore::FloatRect test(rect);
+    CyberCore::FloatRect test(rect);
 
     EXPECT_FLOAT_EQ(20.0f, test.x());
     EXPECT_FLOAT_EQ(30.0f, test.y());
@@ -180,11 +180,11 @@ TEST(FloatRect, IntRectConstruction)
 
 TEST(FloatRect, SetLocationAndSize)
 {
-    WebCore::FloatRect rect;
+    CyberCore::FloatRect rect;
 
     testEmptyRect(rect);
 
-    WebCore::FloatPoint location(10.0f, 20.0f);
+    CyberCore::FloatPoint location(10.0f, 20.0f);
 
     rect.setLocation(location);
 
@@ -198,7 +198,7 @@ TEST(FloatRect, SetLocationAndSize)
     EXPECT_TRUE(rect.isZero());
     EXPECT_FALSE(rect.isInfinite());
 
-    WebCore::FloatSize size(100.0f, 200.0f);
+    CyberCore::FloatSize size(100.0f, 200.0f);
 
     rect.setSize(size);
 
@@ -215,7 +215,7 @@ TEST(FloatRect, SetLocationAndSize)
 
 TEST(FloatRect, Center)
 {
-    WebCore::FloatRect rect(20.0f, 30.0f, 100.0f, 200.0f);
+    CyberCore::FloatRect rect(20.0f, 30.0f, 100.0f, 200.0f);
 
     auto center = rect.center();
 
@@ -225,16 +225,16 @@ TEST(FloatRect, Center)
 
 TEST(FloatRect, Move)
 {
-    WebCore::FloatRect rect(20.0f, 30.0f, 100.0f, 200.0f);
+    CyberCore::FloatRect rect(20.0f, 30.0f, 100.0f, 200.0f);
 
-    WebCore::FloatSize delta(10.0f, 20.0f);
+    CyberCore::FloatSize delta(10.0f, 20.0f);
 
     rect.move(delta);
 
     EXPECT_FLOAT_EQ(30.0f, rect.x());
     EXPECT_FLOAT_EQ(50.0f, rect.y());
 
-    WebCore::FloatPoint deltaPoint(-20.0f, -40.0f);
+    CyberCore::FloatPoint deltaPoint(-20.0f, -40.0f);
 
     rect.moveBy(deltaPoint);
 
@@ -249,9 +249,9 @@ TEST(FloatRect, Move)
 
 TEST(FloatRect, Expand)
 {
-    WebCore::FloatRect rect(20.0f, 30.0f, 100.0f, 200.0f);
+    CyberCore::FloatRect rect(20.0f, 30.0f, 100.0f, 200.0f);
 
-    WebCore::FloatSize size(100.0f, 100.0f);
+    CyberCore::FloatSize size(100.0f, 100.0f);
 
     rect.expand(size);
 
@@ -263,7 +263,7 @@ TEST(FloatRect, Expand)
     EXPECT_FLOAT_EQ(255.0f, rect.width());
     EXPECT_FLOAT_EQ(322.0f, rect.height());
 
-    WebCore::FloatSize size2(-10.0f, -20.0f);
+    CyberCore::FloatSize size2(-10.0f, -20.0f);
 
     rect.expand(size2);
 
@@ -280,9 +280,9 @@ TEST(FloatRect, Expand)
 
 TEST(FloatRect, Contract)
 {
-    WebCore::FloatRect rect(20.0f, 30.0f, 100.0f, 200.0f);
+    CyberCore::FloatRect rect(20.0f, 30.0f, 100.0f, 200.0f);
 
-    WebCore::FloatSize size(50.0f, 100.0f);
+    CyberCore::FloatSize size(50.0f, 100.0f);
 
     rect.contract(size);
 
@@ -294,7 +294,7 @@ TEST(FloatRect, Contract)
     EXPECT_FLOAT_EQ(25.0f, rect.width());
     EXPECT_FLOAT_EQ(78.0f, rect.height());
 
-    WebCore::FloatSize size2(-10.0f, -20.0f);
+    CyberCore::FloatSize size2(-10.0f, -20.0f);
 
     rect.contract(size2);
 
@@ -311,7 +311,7 @@ TEST(FloatRect, Contract)
 
 TEST(FloatRect, ShiftXEdge)
 {
-    WebCore::FloatRect rect(20.0f, 30.0f, 100.0f, 200.0f);
+    CyberCore::FloatRect rect(20.0f, 30.0f, 100.0f, 200.0f);
 
     rect.shiftXEdgeTo(77.0f);
 
@@ -334,7 +334,7 @@ TEST(FloatRect, ShiftXEdge)
 
 TEST(FloatRect, ShiftYEdge)
 {
-    WebCore::FloatRect rect(20.0f, 30.0f, 100.0f, 200.0f);
+    CyberCore::FloatRect rect(20.0f, 30.0f, 100.0f, 200.0f);
 
     rect.shiftYEdgeTo(59.0f);
 
@@ -357,7 +357,7 @@ TEST(FloatRect, ShiftYEdge)
 
 TEST(FloatRect, Inflate)
 {
-    WebCore::FloatRect rect(20.0f, 30.0f, 100.0f, 200.0f);
+    CyberCore::FloatRect rect(20.0f, 30.0f, 100.0f, 200.0f);
 
     rect.inflateX(5.0f);
 
@@ -381,55 +381,55 @@ TEST(FloatRect, Inflate)
 
 TEST(FloatRect, Corners)
 {
-    WebCore::FloatRect rect(20.0f, 30.0f, 100.0f, 200.0f);
+    CyberCore::FloatRect rect(20.0f, 30.0f, 100.0f, 200.0f);
 
-    WebCore::FloatPoint topLeft = rect.minXMinYCorner();
+    CyberCore::FloatPoint topLeft = rect.minXMinYCorner();
     EXPECT_FLOAT_EQ(20.0f, topLeft.x());
     EXPECT_FLOAT_EQ(30.0f, topLeft.y());
 
-    WebCore::FloatPoint topRight = rect.maxXMinYCorner();
+    CyberCore::FloatPoint topRight = rect.maxXMinYCorner();
     EXPECT_FLOAT_EQ(120.0f, topRight.x());
     EXPECT_FLOAT_EQ(30.0f, topRight.y());
 
-    WebCore::FloatPoint bottomLeft = rect.minXMaxYCorner();
+    CyberCore::FloatPoint bottomLeft = rect.minXMaxYCorner();
     EXPECT_FLOAT_EQ(20.0f, bottomLeft.x());
     EXPECT_FLOAT_EQ(230.0f, bottomLeft.y());
 
-    WebCore::FloatPoint bottomRight = rect.maxXMaxYCorner();
+    CyberCore::FloatPoint bottomRight = rect.maxXMaxYCorner();
     EXPECT_FLOAT_EQ(120.0f, bottomRight.x());
     EXPECT_FLOAT_EQ(230.0f, bottomRight.y());
 }
 
 TEST(FloatRect, Contains)
 {
-    WebCore::FloatRect rect(20.0f, 30.0f, 100.0f, 200.0f);
+    CyberCore::FloatRect rect(20.0f, 30.0f, 100.0f, 200.0f);
 
-    WebCore::FloatRect contained(30.0f, 40.0f, 50.0f, 100.0f);
+    CyberCore::FloatRect contained(30.0f, 40.0f, 50.0f, 100.0f);
 
     ASSERT_TRUE(rect.contains(contained));
 
-    WebCore::FloatRect outside(120.0f, 230.0f, 50.0f, 100.0f);
+    CyberCore::FloatRect outside(120.0f, 230.0f, 50.0f, 100.0f);
 
     ASSERT_FALSE(rect.contains(outside));
 
-    WebCore::FloatRect intersects(10.0f, 20.0f, 90.0f, 180.0f);
+    CyberCore::FloatRect intersects(10.0f, 20.0f, 90.0f, 180.0f);
 
     ASSERT_FALSE(rect.contains(intersects));
 
-    WebCore::FloatPoint pointInside(60.0f, 70.0f);
+    CyberCore::FloatPoint pointInside(60.0f, 70.0f);
 
     ASSERT_TRUE(rect.contains(pointInside));
-    ASSERT_TRUE(rect.contains(pointInside, WebCore::FloatRect::InsideButNotOnStroke));
+    ASSERT_TRUE(rect.contains(pointInside, CyberCore::FloatRect::InsideButNotOnStroke));
 
-    WebCore::FloatPoint pointOutside(160.0f, 270.0f);
+    CyberCore::FloatPoint pointOutside(160.0f, 270.0f);
 
     ASSERT_FALSE(rect.contains(pointOutside));
-    ASSERT_FALSE(rect.contains(pointOutside, WebCore::FloatRect::InsideButNotOnStroke));
+    ASSERT_FALSE(rect.contains(pointOutside, CyberCore::FloatRect::InsideButNotOnStroke));
 
-    WebCore::FloatPoint pointOnLine(20.0f, 30.0f);
+    CyberCore::FloatPoint pointOnLine(20.0f, 30.0f);
 
     ASSERT_TRUE(rect.contains(pointOnLine));
-    ASSERT_FALSE(rect.contains(pointOutside, WebCore::FloatRect::InsideButNotOnStroke));
+    ASSERT_FALSE(rect.contains(pointOutside, CyberCore::FloatRect::InsideButNotOnStroke));
 
     ASSERT_TRUE(rect.contains(60.0f, 70.0f));
     ASSERT_FALSE(rect.contains(160.0f, 270.0f));
@@ -437,22 +437,22 @@ TEST(FloatRect, Contains)
 
 TEST(FloatRect, Intersects)
 {
-    WebCore::FloatRect rect(20.0f, 30.0f, 100.0f, 200.0f);
+    CyberCore::FloatRect rect(20.0f, 30.0f, 100.0f, 200.0f);
 
-    WebCore::FloatRect contained(30.0f, 40.0f, 50.0f, 100.0f);
+    CyberCore::FloatRect contained(30.0f, 40.0f, 50.0f, 100.0f);
 
     ASSERT_TRUE(rect.intersects(contained));
 
-    WebCore::FloatRect outside(120.0f, 230.0f, 50.0f, 100.0f);
+    CyberCore::FloatRect outside(120.0f, 230.0f, 50.0f, 100.0f);
 
     ASSERT_FALSE(rect.intersects(outside));
 
-    WebCore::FloatRect intersects(10.0f, 20.0f, 90.0f, 180.0f);
+    CyberCore::FloatRect intersects(10.0f, 20.0f, 90.0f, 180.0f);
 
     ASSERT_TRUE(rect.intersects(intersects));
 }
 
-static void testIntersectResult(const WebCore::FloatRect& rect)
+static void testIntersectResult(const CyberCore::FloatRect& rect)
 {
     EXPECT_FLOAT_EQ(70.0f, rect.x());
     EXPECT_FLOAT_EQ(120.0f, rect.maxX());
@@ -462,21 +462,21 @@ static void testIntersectResult(const WebCore::FloatRect& rect)
 
 TEST(FloatRect, Intersect)
 {
-    WebCore::FloatRect rectA(20.0f, 30.0f, 100.0f, 200.0f);
-    WebCore::FloatRect rectB(70.0f, 80.0f, 100.0f, 200.0f);
+    CyberCore::FloatRect rectA(20.0f, 30.0f, 100.0f, 200.0f);
+    CyberCore::FloatRect rectB(70.0f, 80.0f, 100.0f, 200.0f);
 
     rectA.intersect(rectB);
 
     testIntersectResult(rectA);
 
-    WebCore::FloatRect rectC(20.0f, 30.0f, 100.0f, 200.0f);
+    CyberCore::FloatRect rectC(20.0f, 30.0f, 100.0f, 200.0f);
 
-    auto intersected = WebCore::intersection(rectC, rectB);
+    auto intersected = CyberCore::intersection(rectC, rectB);
 
     testIntersectResult(intersected);
 }
 
-static void testUnitedRects(const WebCore::FloatRect& united)
+static void testUnitedRects(const CyberCore::FloatRect& united)
 {
     EXPECT_FLOAT_EQ(20.0f, united.x());
     EXPECT_FLOAT_EQ(170.0f, united.maxX());
@@ -486,24 +486,24 @@ static void testUnitedRects(const WebCore::FloatRect& united)
 
 TEST(FloatRect, Unite)
 {
-    WebCore::FloatRect rectA(20.0f, 30.0f, 100.0f, 200.0f);
-    WebCore::FloatRect rectB(70.0f, 80.0f, 100.0f, 200.0f);
+    CyberCore::FloatRect rectA(20.0f, 30.0f, 100.0f, 200.0f);
+    CyberCore::FloatRect rectB(70.0f, 80.0f, 100.0f, 200.0f);
 
     rectA.unite(rectB);
 
     testUnitedRects(rectA);
 
-    WebCore::FloatRect rectC(20.0f, 30.0f, 100.0f, 200.0f);
+    CyberCore::FloatRect rectC(20.0f, 30.0f, 100.0f, 200.0f);
 
-    auto united = WebCore::unionRect(rectC, rectB);
+    auto united = CyberCore::unionRect(rectC, rectB);
 
     testUnitedRects(united);
 }
 
 TEST(FloatRect, Extend)
 {
-    WebCore::FloatRect rect(20.0f, 30.0f, 100.0f, 200.0f);
-    WebCore::FloatPoint point(170.0f, 280.0f);
+    CyberCore::FloatRect rect(20.0f, 30.0f, 100.0f, 200.0f);
+    CyberCore::FloatPoint point(170.0f, 280.0f);
 
     rect.extend(point);
 
@@ -515,7 +515,7 @@ TEST(FloatRect, Extend)
 
 TEST(FloatRect, Overlaps)
 {
-    WebCore::FloatRect rect(20.0f, 30.0f, 100.0f, 200.0f);
+    CyberCore::FloatRect rect(20.0f, 30.0f, 100.0f, 200.0f);
 
     ASSERT_FALSE(rect.overlapsXRange(0.0f, 10.0f));
     ASSERT_TRUE(rect.overlapsXRange(10.0f, 30.0f));
@@ -532,7 +532,7 @@ TEST(FloatRect, Overlaps)
 
 TEST(FloatRect, Scale)
 {
-    WebCore::FloatRect rect(20.0f, 30.0f, 100.0f, 200.0f);
+    CyberCore::FloatRect rect(20.0f, 30.0f, 100.0f, 200.0f);
 
     rect.scale(2.0f);
 
@@ -558,7 +558,7 @@ TEST(FloatRect, Scale)
 
 TEST(FloatRect, Transpose)
 {
-    WebCore::FloatRect rect(20.0f, 30.0f, 100.0f, 200.0f);
+    CyberCore::FloatRect rect(20.0f, 30.0f, 100.0f, 200.0f);
 
     auto transposed = rect.transposedRect();
 
@@ -570,12 +570,12 @@ TEST(FloatRect, Transpose)
 
 TEST(FloatRect, FitToPoints)
 {
-    WebCore::FloatRect rect(10.0f, 20.0f, 30.0f, 40.0f);
+    CyberCore::FloatRect rect(10.0f, 20.0f, 30.0f, 40.0f);
 
-    WebCore::FloatPoint p0(20.0f, 30.0f);
-    WebCore::FloatPoint p1(70.0f, 130.0f);
-    WebCore::FloatPoint p2(50.0f, 20.0f);
-    WebCore::FloatPoint p3(90.0f, 190.0f);
+    CyberCore::FloatPoint p0(20.0f, 30.0f);
+    CyberCore::FloatPoint p1(70.0f, 130.0f);
+    CyberCore::FloatPoint p2(50.0f, 20.0f);
+    CyberCore::FloatPoint p3(90.0f, 190.0f);
 
     rect.fitToPoints(p0, p1);
 
@@ -600,7 +600,7 @@ TEST(FloatRect, FitToPoints)
 }
 
 #if USE(CG) || PLATFORM(WIN)
-static void checkCastRect(const WebCore::FloatRect& rect)
+static void checkCastRect(const CyberCore::FloatRect& rect)
 {
     EXPECT_FLOAT_EQ(10.0f, rect.x());
     EXPECT_FLOAT_EQ(40.0f, rect.maxX());
@@ -613,7 +613,7 @@ static void checkCastRect(const WebCore::FloatRect& rect)
 
 TEST(FloatRect, Casting)
 {
-    WebCore::FloatRect rect(10.0f, 20.0f, 30.0f, 40.0f);
+    CyberCore::FloatRect rect(10.0f, 20.0f, 30.0f, 40.0f);
 
 #if USE(CG)
     CGRect cgRect = rect;
@@ -623,13 +623,13 @@ TEST(FloatRect, Casting)
     EXPECT_FLOAT_EQ(30.0f, cgRect.size.width);
     EXPECT_FLOAT_EQ(40.0f, cgRect.size.height);
 
-    WebCore::FloatRect rectFromCGRect(cgRect);
+    CyberCore::FloatRect rectFromCGRect(cgRect);
 
     checkCastRect(rectFromCGRect);
 #endif
 }
 
-static void checkAdditionResult1(const WebCore::FloatRect& rect)
+static void checkAdditionResult1(const CyberCore::FloatRect& rect)
 {
     EXPECT_FLOAT_EQ(10.0f, rect.x());
     EXPECT_FLOAT_EQ(130.0f, rect.maxX());
@@ -639,7 +639,7 @@ static void checkAdditionResult1(const WebCore::FloatRect& rect)
     EXPECT_FLOAT_EQ(200.0f, rect.height());
 }
 
-static void checkAdditionResult2(const WebCore::FloatRect& rect)
+static void checkAdditionResult2(const CyberCore::FloatRect& rect)
 {
     EXPECT_FLOAT_EQ(10.0f, rect.x());
     EXPECT_FLOAT_EQ(250.0f, rect.maxX());
@@ -651,9 +651,9 @@ static void checkAdditionResult2(const WebCore::FloatRect& rect)
 
 TEST(FloatRect, Addition)
 {
-    WebCore::FloatRect rect(10.0f, 20.0f, 100.0f, 100.0f);
-    WebCore::FloatRect rightSide(0.0f, 0.0f, 20.0f, 100.0f);
-    WebCore::FloatRect bottom(0.0f, 0.0f, 120.0f, 20.0f);
+    CyberCore::FloatRect rect(10.0f, 20.0f, 100.0f, 100.0f);
+    CyberCore::FloatRect rightSide(0.0f, 0.0f, 20.0f, 100.0f);
+    CyberCore::FloatRect bottom(0.0f, 0.0f, 120.0f, 20.0f);
 
     auto combined = rect + rightSide;
 
@@ -671,9 +671,9 @@ TEST(FloatRect, Addition)
 
 TEST(FloatRect, Equality)
 {
-    WebCore::FloatRect rect(10.0f, 20.0f, 100.0f, 100.0f);
-    WebCore::FloatRect rect2(10.0f, 20.0f, 100.0f, 100.0f);
-    WebCore::FloatRect rightSide(110.0f, 20.0f, 20.0f, 100.0f);
+    CyberCore::FloatRect rect(10.0f, 20.0f, 100.0f, 100.0f);
+    CyberCore::FloatRect rect2(10.0f, 20.0f, 100.0f, 100.0f);
+    CyberCore::FloatRect rightSide(110.0f, 20.0f, 20.0f, 100.0f);
 
     ASSERT_TRUE(rect == rect2);
     ASSERT_FALSE(rect != rect2);
@@ -683,7 +683,7 @@ TEST(FloatRect, Equality)
 
 TEST(FloatRect, InfiniteRect)
 {
-    WebCore::FloatRect infinite = WebCore::FloatRect::infiniteRect();
+    CyberCore::FloatRect infinite = CyberCore::FloatRect::infiniteRect();
 
     EXPECT_FLOAT_EQ(-std::numeric_limits<float>::max() / 2, infinite.x());
     EXPECT_FLOAT_EQ(-std::numeric_limits<float>::max() / 2, infinite.y());
@@ -691,7 +691,7 @@ TEST(FloatRect, InfiniteRect)
     EXPECT_FLOAT_EQ(std::numeric_limits<float>::max(), infinite.height());
 
     // FIXME: We have an unusual representation for our infinite rect.
-    // WebCore::Float::infiniteRect is (negative infinity)/2 for the upper left corner,
+    // CyberCore::Float::infiniteRect is (negative infinity)/2 for the upper left corner,
     // while CoreGraphics uses (negative infinity).
 
 #if USE(CG)
@@ -714,16 +714,16 @@ TEST(FloatRect, InfiniteRect)
 
 TEST(FloatRect, EnclosingAndRounding)
 {
-    WebCore::FloatRect rect(10.0f, 20.0f, 1024.3f, 768.3f);
+    CyberCore::FloatRect rect(10.0f, 20.0f, 1024.3f, 768.3f);
 
-    auto enclosed = WebCore::encloseRectToDevicePixels(rect, 1.0f);
+    auto enclosed = CyberCore::encloseRectToDevicePixels(rect, 1.0f);
 
     EXPECT_FLOAT_EQ(10.0f, enclosed.x());
     EXPECT_FLOAT_EQ(20.0f, enclosed.y());
     EXPECT_FLOAT_EQ(1035.0f, enclosed.maxX());
     EXPECT_FLOAT_EQ(789.0f, enclosed.maxY());
 
-    auto enclosed2 = WebCore::encloseRectToDevicePixels(rect, 2.0f);
+    auto enclosed2 = CyberCore::encloseRectToDevicePixels(rect, 2.0f);
 
     EXPECT_FLOAT_EQ(10.0f, enclosed2.x());
     EXPECT_FLOAT_EQ(20.0f, enclosed2.y());
@@ -733,20 +733,20 @@ TEST(FloatRect, EnclosingAndRounding)
 
 TEST(FloatRect, EnclosingIntRect)
 {
-    WebCore::FloatRect rect(10.0f, 20.0f, 1024.3f, 768.6f);
+    CyberCore::FloatRect rect(10.0f, 20.0f, 1024.3f, 768.6f);
 
-    auto enclosed = WebCore::enclosingIntRect(rect);
+    auto enclosed = CyberCore::enclosingIntRect(rect);
 
     EXPECT_EQ(10, enclosed.x());
     EXPECT_EQ(20, enclosed.y());
     EXPECT_EQ(1035, enclosed.maxX());
     EXPECT_EQ(789, enclosed.maxY());
 
-    WebCore::FloatRect maxIntRect(INT_MIN, INT_MIN, 0, 0);
+    CyberCore::FloatRect maxIntRect(INT_MIN, INT_MIN, 0, 0);
     maxIntRect.shiftMaxXEdgeTo(30);
     maxIntRect.shiftMaxYEdgeTo(30);
 
-    auto enclosed2 = WebCore::enclosingIntRect(maxIntRect);
+    auto enclosed2 = CyberCore::enclosingIntRect(maxIntRect);
 
     EXPECT_EQ(INT_MIN, enclosed2.x());
     EXPECT_EQ(INT_MIN, enclosed2.y());
@@ -756,9 +756,9 @@ TEST(FloatRect, EnclosingIntRect)
 
 TEST(FloatRect, RoundedIntRect)
 {
-    WebCore::FloatRect rect(10.0f, 20.0f, 1024.3f, 768.6f);
+    CyberCore::FloatRect rect(10.0f, 20.0f, 1024.3f, 768.6f);
 
-    auto enclosed = WebCore::roundedIntRect(rect);
+    auto enclosed = CyberCore::roundedIntRect(rect);
 
     EXPECT_EQ(10, enclosed.x());
     EXPECT_EQ(20, enclosed.y());

@@ -38,7 +38,7 @@
 #include <winsock2.h>
 #include <windows.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Widget::~Widget() 
 {
@@ -87,4 +87,4 @@ void Widget::setFrameRect(const IntRect& rect)
     m_frame = rect;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

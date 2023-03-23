@@ -33,7 +33,7 @@
 #include "PerformanceObserverEntryList.h"
 #include "WorkerGlobalScope.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 PerformanceObserver::PerformanceObserver(ScriptExecutionContext& scriptExecutionContext, Ref<PerformanceObserverCallback>&& callback)
     : m_callback(WTFMove(callback))
@@ -162,4 +162,4 @@ Vector<String> PerformanceObserver::supportedEntryTypes(ScriptExecutionContext& 
     return entryTypes;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

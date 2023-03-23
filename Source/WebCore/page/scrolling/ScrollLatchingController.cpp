@@ -36,7 +36,7 @@
 #include "ScrollableArea.h"
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // See also ScrollTreeLatchingController.cpp
 static const Seconds resetLatchedStateTimeout { 100_ms };
@@ -267,6 +267,6 @@ TextStream& operator<<(TextStream& ts, const ScrollLatchingController& controlle
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WHEEL_EVENT_LATCHING)

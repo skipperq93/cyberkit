@@ -38,10 +38,10 @@
 #import <CyberCore/ResourceRequest.h>
 #import <CyberCore/Settings.h>
 #import <CyberCore/WebBackgroundTaskController.h>
-#import <CyberCore/WebCoreThreadSystemInterface.h>
+#import <CyberCore/CyberCoreThreadSystemInterface.h>
 #import <wtf/spi/darwin/dyldSPI.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 // See <rdar://problem/7902473> Optimize WebLocalizedString for why we do this on a background thread on a timer callback
 static void LoadWebLocalizedStringsTimerCallback(CFRunLoopTimerRef timer, void *info)
@@ -59,7 +59,7 @@ static void LoadWebLocalizedStrings()
     CFRunLoopAddTimer(CFRunLoopGetCurrent(), timer.get(), kCFRunLoopCommonModes);
 }
 
-void WebKitInitialize(void)
+void CyberKitInitialize(void)
 {
     static bool webkitInitialized;
     if (webkitInitialized)
@@ -67,7 +67,7 @@ void WebKitInitialize(void)
 
     ASSERT(pthread_main_np());
     webkitInitialized = true;
-    InitWebCoreThreadSystemInterface();
+    InitCyberCoreThreadSystemInterface();
     [WebView enableWebThread];
 
     // Initialize our platform strategies.
@@ -78,15 +78,15 @@ void WebKitInitialize(void)
     LoadWebLocalizedStrings();
     
     // This needs to be called before any requests are made in the process, <rdar://problem/9691871>
-    WebCore::initializeHTTPConnectionSettingsOnStartup();
+    CyberCore::initializeHTTPConnectionSettingsOnStartup();
 }
 
-float WebKitGetMinimumZoomFontSize(void)
+float CyberKitGetMinimumZoomFontSize(void)
 {
     return DEFAULT_VALUE_FOR_MinimumZoomFontSize;
 }
 
-int WebKitGetLastLineBreakInBuffer(UChar *characters, int position, int length)
+int CyberKitGetLastLineBreakInBuffer(UChar *characters, int position, int length)
 {
     unsigned lastBreakPos = position;
     unsigned breakPos = 0;
@@ -96,7 +96,7 @@ int WebKitGetLastLineBreakInBuffer(UChar *characters, int position, int length)
     return static_cast<int>(lastBreakPos) < position ? lastBreakPos : INT_MAX;
 }
 
-const char *WebKitPlatformSystemRootDirectory(void)
+const char *CyberKitPlatformSystemRootDirectory(void)
 {
 #if PLATFORM(IOS_FAMILY_SIMULATOR)
     static const char *platformSystemRootDirectory = nil;
@@ -110,27 +110,27 @@ const char *WebKitPlatformSystemRootDirectory(void)
 #endif
 }
 
-void WebKitSetBackgroundAndForegroundNotificationNames(NSString *didEnterBackgroundName, NSString *willEnterForegroundName)
+void CyberKitSetBackgroundAndForegroundNotificationNames(NSString *didEnterBackgroundName, NSString *willEnterForegroundName)
 {
     // FIXME: Remove this function.
 }
 
-void WebKitSetInvalidWebBackgroundTaskIdentifier(WebBackgroundTaskIdentifier taskIdentifier)
+void CyberKitSetInvalidWebBackgroundTaskIdentifier(WebBackgroundTaskIdentifier taskIdentifier)
 {
     [[WebBackgroundTaskController sharedController] setInvalidBackgroundTaskIdentifier:taskIdentifier];
 }
 
-void WebKitSetStartBackgroundTaskBlock(StartBackgroundTaskBlock startBlock)
+void CyberKitSetStartBackgroundTaskBlock(StartBackgroundTaskBlock startBlock)
 {
     [[WebBackgroundTaskController sharedController] setBackgroundTaskStartBlock:startBlock];
 }
 
-void WebKitSetEndBackgroundTaskBlock(EndBackgroundTaskBlock endBlock)
+void CyberKitSetEndBackgroundTaskBlock(EndBackgroundTaskBlock endBlock)
 {
     [[WebBackgroundTaskController sharedController] setBackgroundTaskEndBlock:endBlock];
 }
 
-CGPathRef WebKitCreatePathWithShrinkWrappedRects(NSArray* cgRects, CGFloat radius)
+CGPathRef CyberKitCreatePathWithShrinkWrappedRects(NSArray* cgRects, CGFloat radius)
 {
     Vector<FloatRect> rects;
     rects.reserveInitialCapacity([cgRects count]);

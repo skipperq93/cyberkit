@@ -30,10 +30,10 @@
 #include <wtf/URL.h>
 
 #if PLATFORM(IOS_FAMILY)
-#include "WebCoreThread.h"
+#include "CyberCoreThread.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 static String originStringFromURL(const URL& url)
 {
@@ -187,4 +187,4 @@ void CredentialStorage::clearCredentials()
     m_pathToDefaultProtectionSpaceMap.clear();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

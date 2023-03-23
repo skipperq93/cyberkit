@@ -43,7 +43,7 @@
 #import <wtf/text/WTFString.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 void GPUProcess::initializeProcess(const AuxiliaryProcessInitializationParameters&)
 {
@@ -75,7 +75,7 @@ void GPUProcess::initializeSandbox(const AuxiliaryProcessInitializationParameter
 
 #if defined(USE_VORBIS_AUDIOCOMPONENT_WORKAROUND)
     // We need to initialize the Vorbis decoder before the sandbox gets setup; this is a one off action.
-    WebCore::registerVorbisDecoderIfNeeded();
+    CyberCore::registerVorbisDecoderIfNeeded();
 #endif
 
     sandboxParameters.setOverrideSandboxProfilePath([webKit2Bundle pathForResource:@"com.apple.WebKit.GPUProcess" ofType:@"sb"]);
@@ -84,7 +84,7 @@ void GPUProcess::initializeSandbox(const AuxiliaryProcessInitializationParameter
 }
 
 #if PLATFORM(MAC)
-void GPUProcess::setScreenProperties(const WebCore::ScreenProperties& screenProperties)
+void GPUProcess::setScreenProperties(const CyberCore::ScreenProperties& screenProperties)
 {
 #if !HAVE(AVPLAYER_VIDEORANGEOVERRIDE)
     // Only override HDR support at the MediaToolbox level if AVPlayer.videoRangeOverride support is

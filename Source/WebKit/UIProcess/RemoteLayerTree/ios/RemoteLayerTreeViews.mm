@@ -36,7 +36,7 @@
 #import "WKDeferringGestureRecognizer.h"
 #import <CyberCore/Region.h>
 #import <CyberCore/TransformationMatrix.h>
-#import <CyberCore/WebCoreCALayerExtras.h>
+#import <CyberCore/CyberCoreCALayerExtras.h>
 #import <pal/spi/cocoa/QuartzCoreSPI.h>
 #import <wtf/SoftLinking.h>
 
@@ -53,7 +53,7 @@ static void collectDescendantViewsAtPoint(Vector<UIView *, 16>& viewsAtPoint, UI
     for (UIView *view in [parent subviews]) {
         CGPoint subviewPoint = [view convertPoint:point fromView:parent];
 
-        auto transform = WebCore::TransformationMatrix { [view.layer transform] };
+        auto transform = CyberCore::TransformationMatrix { [view.layer transform] };
         if (!transform.isInvertible())
             continue;
 
@@ -75,7 +75,7 @@ static void collectDescendantViewsAtPoint(Vector<UIView *, 16>& viewsAtPoint, UI
             if (![view isKindOfClass:[WKCompositingView class]])
                 return true;
             auto* node = RemoteLayerTreeNode::forCALayer(view.layer);
-            return node->eventRegion().contains(WebCore::IntPoint(subviewPoint));
+            return node->eventRegion().contains(CyberCore::IntPoint(subviewPoint));
         }();
 
         if (handlesEvent)
@@ -116,7 +116,7 @@ static void collectDescendantViewsInRect(Vector<UIView *, 16>& viewsInRect, UIVi
             if (![view isKindOfClass:WKCompositingView.class])
                 return true;
             auto* node = RemoteLayerTreeNode::forCALayer(view.layer);
-            return node->eventRegion().intersects(WebCore::IntRect { subviewRect });
+            return node->eventRegion().intersects(CyberCore::IntRect { subviewRect });
         }();
 
         if (intersectsRect)
@@ -129,7 +129,7 @@ static void collectDescendantViewsInRect(Vector<UIView *, 16>& viewsInRect, UIVi
     };
 }
 
-bool mayContainEditableElementsInRect(UIView *rootView, const WebCore::FloatRect& rect)
+bool mayContainEditableElementsInRect(UIView *rootView, const CyberCore::FloatRect& rect)
 {
     Vector<UIView *, 16> viewsInRect;
     collectDescendantViewsInRect(viewsInRect, rootView, rect);
@@ -142,7 +142,7 @@ bool mayContainEditableElementsInRect(UIView *rootView, const WebCore::FloatRect
         auto* node = RemoteLayerTreeNode::forCALayer(view.layer);
         if (!node)
             continue;
-        WebCore::IntRect rectToTest { [view convertRect:rect fromView:rootView] };
+        CyberCore::IntRect rectToTest { [view convertRect:rect fromView:rootView] };
         if (node->eventRegion().containsEditableElementsInRect(rectToTest))
             return true;
         bool hasEditableRegion = node->eventRegion().hasEditableRegion();
@@ -176,20 +176,20 @@ static bool isScrolledBy(WKChildScrollView* scrollView, UIView *hitView)
     return false;
 }
 
-OptionSet<WebCore::TouchAction> touchActionsForPoint(UIView *rootView, const WebCore::IntPoint& point)
+OptionSet<CyberCore::TouchAction> touchActionsForPoint(UIView *rootView, const CyberCore::IntPoint& point)
 {
     Vector<UIView *, 16> viewsAtPoint;
     collectDescendantViewsAtPoint(viewsAtPoint, rootView, point, nil);
 
     if (viewsAtPoint.isEmpty())
-        return { WebCore::TouchAction::Auto };
+        return { CyberCore::TouchAction::Auto };
 
     UIView *hitView = nil;
     for (auto *view : WTF::makeReversedRange(viewsAtPoint)) {
         // We only hit WKChildScrollView directly if its content layer doesn't have an event region.
         // We don't generate the region if there is nothing interesting in it, meaning the touch-action is auto.
         if ([view isKindOfClass:[WKChildScrollView class]])
-            return WebCore::TouchAction::Auto;
+            return CyberCore::TouchAction::Auto;
 
         if ([view isKindOfClass:[WKCompositingView class]]) {
             hitView = view;
@@ -198,19 +198,19 @@ OptionSet<WebCore::TouchAction> touchActionsForPoint(UIView *rootView, const Web
     }
 
     if (!hitView)
-        return { WebCore::TouchAction::Auto };
+        return { CyberCore::TouchAction::Auto };
 
     CGPoint hitViewPoint = [hitView convertPoint:point fromView:rootView];
 
     auto* node = RemoteLayerTreeNode::forCALayer(hitView.layer);
     if (!node)
-        return { WebCore::TouchAction::Auto };
+        return { CyberCore::TouchAction::Auto };
 
-    return node->eventRegion().touchActionsForPoint(WebCore::IntPoint(hitViewPoint));
+    return node->eventRegion().touchActionsForPoint(CyberCore::IntPoint(hitViewPoint));
 }
 
 #if ENABLE(WHEEL_EVENT_REGIONS)
-OptionSet<WebCore::EventListenerRegionType> eventListenerTypesAtPoint(UIView *rootView, const WebCore::IntPoint& point)
+OptionSet<CyberCore::EventListenerRegionType> eventListenerTypesAtPoint(UIView *rootView, const CyberCore::IntPoint& point)
 {
     Vector<UIView *, 16> viewsAtPoint;
     collectDescendantViewsAtPoint(viewsAtPoint, rootView, point, nil);
@@ -235,13 +235,13 @@ OptionSet<WebCore::EventListenerRegionType> eventListenerTypesAtPoint(UIView *ro
     if (!node)
         return { };
 
-    return node->eventRegion().eventListenerRegionTypesForPoint(WebCore::IntPoint(hitViewPoint));
+    return node->eventRegion().eventListenerRegionTypesForPoint(CyberCore::IntPoint(hitViewPoint));
 }
 #endif
 
 UIScrollView *findActingScrollParent(UIScrollView *scrollView, const RemoteLayerTreeHost& host)
 {
-    HashSet<WebCore::GraphicsLayer::PlatformLayerID> scrollersToSkip;
+    HashSet<CyberCore::GraphicsLayer::PlatformLayerID> scrollersToSkip;
 
     for (UIView *view = [scrollView superview]; view; view = [view superview]) {
         if ([view isKindOfClass:[WKChildScrollView class]] && !scrollersToSkip.contains(RemoteLayerTreeNode::layerID(view.layer))) {
@@ -283,7 +283,7 @@ static Class scrollViewScrollIndicatorClass()
     Vector<UIView *, 16> viewsAtPoint;
     WebKit::collectDescendantViewsAtPoint(viewsAtPoint, self, point, event);
 
-    LOG_WITH_STREAM(UIHitTesting, stream << (void*)self << "_web_findDescendantViewAtPoint " << WebCore::FloatPoint(point) << " found " << viewsAtPoint.size() << " views");
+    LOG_WITH_STREAM(UIHitTesting, stream << (void*)self << "_web_findDescendantViewAtPoint " << CyberCore::FloatPoint(point) << " found " << viewsAtPoint.size() << " views");
 
     for (auto *view : WTF::makeReversedRange(viewsAtPoint)) {
         if ([view conformsToProtocol:@protocol(WKNativelyInteractible)]) {

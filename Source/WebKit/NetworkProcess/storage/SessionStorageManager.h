@@ -30,9 +30,9 @@
 #include "StorageAreaMapIdentifier.h"
 #include "StorageNamespaceIdentifier.h"
 
-namespace WebCore {
+namespace CyberCore {
 struct ClientOrigin;
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WebKit {
 
@@ -49,7 +49,7 @@ public:
     void connectionClosed(IPC::Connection::UniqueID);
     void removeNamespace(StorageNamespaceIdentifier);
 
-    StorageAreaIdentifier connectToSessionStorageArea(IPC::Connection::UniqueID, StorageAreaMapIdentifier, const WebCore::ClientOrigin&, StorageNamespaceIdentifier);
+    StorageAreaIdentifier connectToSessionStorageArea(IPC::Connection::UniqueID, StorageAreaMapIdentifier, const CyberCore::ClientOrigin&, StorageNamespaceIdentifier);
     void cancelConnectToSessionStorageArea(IPC::Connection::UniqueID, StorageNamespaceIdentifier);
     void disconnectFromStorageArea(IPC::Connection::UniqueID, StorageAreaIdentifier);
     void cloneStorageArea(StorageNamespaceIdentifier, StorageNamespaceIdentifier);

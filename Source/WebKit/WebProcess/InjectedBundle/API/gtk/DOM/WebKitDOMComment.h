@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -21,28 +21,28 @@
 #error "Only <webkitdom/webkitdom.h> can be included directly."
 #endif
 
-#ifndef WebKitDOMComment_h
-#define WebKitDOMComment_h
+#ifndef CyberKitDOMComment_h
+#define CyberKitDOMComment_h
 
 #include <glib-object.h>
-#include <webkitdom/WebKitDOMCharacterData.h>
+#include <webkitdom/CyberKitDOMCharacterData.h>
 #include <webkitdom/webkitdomdefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_DOM_TYPE_COMMENT            (webkit_dom_comment_get_type())
-#define WEBKIT_DOM_COMMENT(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_COMMENT, WebKitDOMComment))
-#define WEBKIT_DOM_COMMENT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_COMMENT, WebKitDOMCommentClass)
+#define WEBKIT_DOM_COMMENT(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_COMMENT, CyberKitDOMComment))
+#define WEBKIT_DOM_COMMENT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_COMMENT, CyberKitDOMCommentClass)
 #define WEBKIT_DOM_IS_COMMENT(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_DOM_TYPE_COMMENT))
 #define WEBKIT_DOM_IS_COMMENT_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_DOM_TYPE_COMMENT))
-#define WEBKIT_DOM_COMMENT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_COMMENT, WebKitDOMCommentClass))
+#define WEBKIT_DOM_COMMENT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_COMMENT, CyberKitDOMCommentClass))
 
-struct _WebKitDOMComment {
-    WebKitDOMCharacterData parent_instance;
+struct _CyberKitDOMComment {
+    CyberKitDOMCharacterData parent_instance;
 };
 
-struct _WebKitDOMCommentClass {
-    WebKitDOMCharacterDataClass parent_class;
+struct _CyberKitDOMCommentClass {
+    CyberKitDOMCharacterDataClass parent_class;
 };
 
 WEBKIT_DEPRECATED GType
@@ -50,4 +50,4 @@ webkit_dom_comment_get_type(void);
 
 G_END_DECLS
 
-#endif /* WebKitDOMComment_h */
+#endif /* CyberKitDOMComment_h */

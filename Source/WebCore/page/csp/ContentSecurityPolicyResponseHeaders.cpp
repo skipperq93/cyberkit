@@ -30,7 +30,7 @@
 #include "ResourceResponse.h"
 #include <wtf/CrossThreadCopier.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 ContentSecurityPolicyResponseHeaders::ContentSecurityPolicyResponseHeaders(const ResourceResponse& response)
 {
@@ -75,4 +75,4 @@ void ContentSecurityPolicyResponseHeaders::addPolicyHeadersTo(ResourceResponse& 
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore

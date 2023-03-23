@@ -138,7 +138,7 @@ _BASE_FILTER_RULES = [
 _PATH_RULES_SPECIFIER = [
     # Files in these directories are consumers of the WebKit
     # API and therefore do not follow the same header including
-    # discipline as WebCore.
+    # discipline as CyberCore.
 
     ([  # TestNetscapePlugIn has no config.h and uses funny names like
       # NPP_SetWindow.
@@ -149,7 +149,7 @@ _PATH_RULES_SPECIFIER = [
       os.path.join('Tools', 'TestWebKitAPI', 'Tests', 'WTF', 'ns', 'RetainPtr.mm')],
      ["-runtime/retainptr"]),
     ([  # There is no clean way to avoid "yy_*" names used by flex.
-      os.path.join('Source', 'WebCore', 'css', 'CSSParser.cpp'),
+      os.path.join('Source', 'CyberCore', 'css', 'CSSParser.cpp'),
       # TestWebKitAPI uses funny macros like EXPECT_WK_STREQ.
       os.path.join('Tools', 'TestWebKitAPI')],
      ["-readability/naming"]),
@@ -189,12 +189,12 @@ _PATH_RULES_SPECIFIER = [
     ([
       # To use GStreamer GL without conflicts of GL symbols,
       # we should include gst/gl/gl.h before including OpenGL[ES]Shims
-      os.path.join('Source', 'WebCore', 'platform', 'graphics', 'gstreamer', 'MediaPlayerPrivateGStreamer.cpp')],
+      os.path.join('Source', 'CyberCore', 'platform', 'graphics', 'gstreamer', 'MediaPlayerPrivateGStreamer.cpp')],
      ["-build/include_order"]),
 
     ([
       # Header files in ForwardingHeaders have no header guards or
-      # exceptional header guards (e.g., WebCore_FWD_Debugger_h).
+      # exceptional header guards (e.g., CyberCore_FWD_Debugger_h).
       os.path.join(os.path.sep, 'ForwardingHeaders')],
      ["-build/header_guard"]),
     ([
@@ -229,36 +229,36 @@ _PATH_RULES_SPECIFIER = [
     ([
       # These files define GObjects, which implies some definitions of
       # variables and functions containing underscores.
-      os.path.join('Source', 'WebCore', 'platform', 'graphics', 'gstreamer', 'AppSinkWorkaround.cpp'),
-      os.path.join('Source', 'WebCore', 'platform', 'graphics', 'gstreamer', 'AppSinkWorkaround.h'),
-      os.path.join('Source', 'WebCore', 'platform', 'graphics', 'gstreamer', 'GLVideoSinkGStreamer.cpp'),
-      os.path.join('Source', 'WebCore', 'platform', 'graphics', 'gstreamer', 'GLVideoSinkGStreamer.h'),
-      os.path.join('Source', 'WebCore', 'platform', 'graphics', 'gstreamer', 'DMABufVideoSinkGStreamer.cpp'),
-      os.path.join('Source', 'WebCore', 'platform', 'graphics', 'gstreamer', 'DMABufVideoSinkGStreamer.h'),
-      os.path.join('Source', 'WebCore', 'platform', 'graphics', 'gstreamer', 'TextCombinerGStreamer.cpp'),
-      os.path.join('Source', 'WebCore', 'platform', 'graphics', 'gstreamer', 'TextCombinerGStreamer.h'),
-      os.path.join('Source', 'WebCore', 'platform', 'graphics', 'gstreamer', 'TextCombinerPadGStreamer.cpp'),
-      os.path.join('Source', 'WebCore', 'platform', 'graphics', 'gstreamer', 'TextCombinerPadGStreamer.h'),
-      os.path.join('Source', 'WebCore', 'platform', 'graphics', 'gstreamer', 'TextSinkGStreamer.cpp'),
-      os.path.join('Source', 'WebCore', 'platform', 'graphics', 'gstreamer', 'TextSinkGStreamer.h'),
-      os.path.join('Source', 'WebCore', 'platform', 'graphics', 'gstreamer', 'VideoSinkGStreamer.cpp'),
-      os.path.join('Source', 'WebCore', 'platform', 'graphics', 'gstreamer', 'WebKitWebSourceGStreamer.cpp'),
-      os.path.join('Source', 'WebCore', 'platform', 'graphics', 'gstreamer', 'WebKitAudioSinkGStreamer.cpp'),
-      os.path.join('Source', 'WebCore', 'platform', 'graphics', 'gstreamer', 'WebKitAudioSinkGStreamer.h'),
-      os.path.join('Source', 'WebCore', 'platform', 'graphics', 'gstreamer', 'mse', 'WebKitMediaSourceGStreamer.cpp'),
-      os.path.join('Source', 'WebCore', 'platform', 'audio', 'gstreamer', 'WebKitWebAudioSourceGStreamer.cpp'),
-      os.path.join('Source', 'WebCore', 'platform', 'gstreamer', 'VideoEncoderPrivateGStreamer.cpp'),
-      os.path.join('Source', 'WebCore', 'platform', 'gstreamer', 'VideoEncoderPrivateGStreamer.h'),
-      os.path.join('Source', 'WebCore', 'platform', 'gstreamer', 'WebKitFliteSourceGStreamer.cpp'),
-      os.path.join('Source', 'WebCore', 'platform', 'gstreamer', 'WebKitFliteSourceGStreamer.h'),
-      os.path.join('Source', 'WebCore', 'platform', 'mediastream', 'gstreamer', 'GStreamerMediaStreamSource.h'),
-      os.path.join('Source', 'WebCore', 'platform', 'mediastream', 'gstreamer', 'GStreamerMediaStreamSource.cpp'),
-      os.path.join('Source', 'WebCore', 'platform', 'network', 'soup', 'ProxyResolverSoup.cpp'),
-      os.path.join('Source', 'WebCore', 'platform', 'network', 'soup', 'ProxyResolverSoup.h'),
-      os.path.join('Source', 'WebCore', 'platform', 'network', 'soup', 'WebKitAutoconfigProxyResolver.cpp'),
-      os.path.join('Source', 'WebCore', 'platform', 'network', 'soup', 'WebKitAutoconfigProxyResolver.h'),
-      os.path.join('Source', 'WebCore', 'platform', 'network', 'soup', 'WebKitFormDataInputStream.cpp'),
-      os.path.join('Source', 'WebCore', 'platform', 'network', 'soup', 'WebKitFormDataInputStream.h'),
+      os.path.join('Source', 'CyberCore', 'platform', 'graphics', 'gstreamer', 'AppSinkWorkaround.cpp'),
+      os.path.join('Source', 'CyberCore', 'platform', 'graphics', 'gstreamer', 'AppSinkWorkaround.h'),
+      os.path.join('Source', 'CyberCore', 'platform', 'graphics', 'gstreamer', 'GLVideoSinkGStreamer.cpp'),
+      os.path.join('Source', 'CyberCore', 'platform', 'graphics', 'gstreamer', 'GLVideoSinkGStreamer.h'),
+      os.path.join('Source', 'CyberCore', 'platform', 'graphics', 'gstreamer', 'DMABufVideoSinkGStreamer.cpp'),
+      os.path.join('Source', 'CyberCore', 'platform', 'graphics', 'gstreamer', 'DMABufVideoSinkGStreamer.h'),
+      os.path.join('Source', 'CyberCore', 'platform', 'graphics', 'gstreamer', 'TextCombinerGStreamer.cpp'),
+      os.path.join('Source', 'CyberCore', 'platform', 'graphics', 'gstreamer', 'TextCombinerGStreamer.h'),
+      os.path.join('Source', 'CyberCore', 'platform', 'graphics', 'gstreamer', 'TextCombinerPadGStreamer.cpp'),
+      os.path.join('Source', 'CyberCore', 'platform', 'graphics', 'gstreamer', 'TextCombinerPadGStreamer.h'),
+      os.path.join('Source', 'CyberCore', 'platform', 'graphics', 'gstreamer', 'TextSinkGStreamer.cpp'),
+      os.path.join('Source', 'CyberCore', 'platform', 'graphics', 'gstreamer', 'TextSinkGStreamer.h'),
+      os.path.join('Source', 'CyberCore', 'platform', 'graphics', 'gstreamer', 'VideoSinkGStreamer.cpp'),
+      os.path.join('Source', 'CyberCore', 'platform', 'graphics', 'gstreamer', 'WebKitWebSourceGStreamer.cpp'),
+      os.path.join('Source', 'CyberCore', 'platform', 'graphics', 'gstreamer', 'WebKitAudioSinkGStreamer.cpp'),
+      os.path.join('Source', 'CyberCore', 'platform', 'graphics', 'gstreamer', 'WebKitAudioSinkGStreamer.h'),
+      os.path.join('Source', 'CyberCore', 'platform', 'graphics', 'gstreamer', 'mse', 'WebKitMediaSourceGStreamer.cpp'),
+      os.path.join('Source', 'CyberCore', 'platform', 'audio', 'gstreamer', 'WebKitWebAudioSourceGStreamer.cpp'),
+      os.path.join('Source', 'CyberCore', 'platform', 'gstreamer', 'VideoEncoderPrivateGStreamer.cpp'),
+      os.path.join('Source', 'CyberCore', 'platform', 'gstreamer', 'VideoEncoderPrivateGStreamer.h'),
+      os.path.join('Source', 'CyberCore', 'platform', 'gstreamer', 'WebKitFliteSourceGStreamer.cpp'),
+      os.path.join('Source', 'CyberCore', 'platform', 'gstreamer', 'WebKitFliteSourceGStreamer.h'),
+      os.path.join('Source', 'CyberCore', 'platform', 'mediastream', 'gstreamer', 'GStreamerMediaStreamSource.h'),
+      os.path.join('Source', 'CyberCore', 'platform', 'mediastream', 'gstreamer', 'GStreamerMediaStreamSource.cpp'),
+      os.path.join('Source', 'CyberCore', 'platform', 'network', 'soup', 'ProxyResolverSoup.cpp'),
+      os.path.join('Source', 'CyberCore', 'platform', 'network', 'soup', 'ProxyResolverSoup.h'),
+      os.path.join('Source', 'CyberCore', 'platform', 'network', 'soup', 'WebKitAutoconfigProxyResolver.cpp'),
+      os.path.join('Source', 'CyberCore', 'platform', 'network', 'soup', 'WebKitAutoconfigProxyResolver.h'),
+      os.path.join('Source', 'CyberCore', 'platform', 'network', 'soup', 'WebKitFormDataInputStream.cpp'),
+      os.path.join('Source', 'CyberCore', 'platform', 'network', 'soup', 'WebKitFormDataInputStream.h'),
       os.path.join('Source', 'WebKit', 'NetworkProcess', 'soup', 'WebKitDirectoryInputStream.h')],
      ["-readability/naming",
       "-readability/enum_casing"]),
@@ -299,18 +299,18 @@ _PATH_RULES_SPECIFIER = [
      ["+whitespace/carriage_return"]),
 
     ([  # DataDetectorsCoreSPI.h declares enum bitfields as CFIndex.
-      os.path.join('Source', 'WebCore', 'PAL', 'pal', 'spi', 'cocoa', 'DataDetectorsCoreSPI.h')],
+      os.path.join('Source', 'CyberCore', 'PAL', 'pal', 'spi', 'cocoa', 'DataDetectorsCoreSPI.h')],
      ["-runtime/enum_bitfields"]),
 
     ([
       # PassKitSPI.h imports "PassKit.h" at two lines depending on the build configuration,
       # which causes a false positive error.
-      os.path.join('Source', 'WebCore', 'PAL', 'pal', 'spi', 'cocoa', 'PassKitSPI.h')],
+      os.path.join('Source', 'CyberCore', 'PAL', 'pal', 'spi', 'cocoa', 'PassKitSPI.h')],
      ["-build/include"]),
 
     ([  # libwebrtc source and some SPI headers have identifier names with underscores.
       os.path.join('Source', 'ThirdParty', 'libwebrtc', 'Source', 'webrtc'),
-      os.path.join('Source', 'WebCore', 'PAL', 'pal', 'spi')],
+      os.path.join('Source', 'CyberCore', 'PAL', 'pal', 'spi')],
      ["-readability/naming/underscores"]),
 
     ([  # c code with underscores in variable names and tabs for the Makefile
@@ -418,7 +418,7 @@ _SKIPPED_FILES_WITH_WARNING = [
     os.path.join('Source', 'WebKit', 'WebProcess', 'InjectedBundle', 'API', 'gtk', 'DOM'),
 
     os.path.join('Source', 'JavaScriptCore', 'API', 'glib', 'jsc.h'),
-    os.path.join('Source', 'WebCore', 'platform', 'gtk', 'GtkVersioning.h'),
+    os.path.join('Source', 'CyberCore', 'platform', 'gtk', 'GtkVersioning.h'),
     os.path.join('Source', 'WebKit', 'UIProcess', 'API', 'gtk', 'webkit2.h'),
     os.path.join('Source', 'WebKit', 'UIProcess', 'API', 'gtk', 'webkit.h'),
     os.path.join('Source', 'WebKit', 'UIProcess', 'API', 'wpe', 'webkit.h'),
@@ -439,12 +439,12 @@ _SKIPPED_FILES_WITHOUT_WARNING = [
     "WebDriverTests" + os.path.sep,
 
     # Files generated by the bindings script should not be checked for style.
-    os.path.join('Source', 'WebCore', 'bindings', 'scripts', 'test'),
+    os.path.join('Source', 'CyberCore', 'bindings', 'scripts', 'test'),
 
     # ICU headers are imported.
     os.path.join('Source', 'JavaScriptCore', 'icu'),
-    os.path.join('Source', 'WebCore', 'icu'),
-    os.path.join('Source', 'WebKitLegacy', 'mac', 'icu'),
+    os.path.join('Source', 'CyberCore', 'icu'),
+    os.path.join('Source', 'CyberKitLegacy', 'mac', 'icu'),
     os.path.join('Source', 'WTF', 'icu'),
     ]
 

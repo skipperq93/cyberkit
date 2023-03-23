@@ -30,7 +30,7 @@
 #include "SelectorFilter.h"
 #include "StyleRule.h"
 
-namespace WebCore::Style {
+namespace CyberCore::Style {
 
 // FIXME: Support additional pseudo-classes.
 static constexpr unsigned HoverSalt = 101;

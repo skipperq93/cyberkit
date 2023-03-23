@@ -36,7 +36,7 @@
 #include "FontCascade.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 struct SameSizeAsFontCascadeDescription {
     Vector<void*> vector;
@@ -145,4 +145,4 @@ FontSmoothingMode FontCascadeDescription::usedFontSmoothing() const
     return fontSmoothingMode;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

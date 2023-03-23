@@ -59,7 +59,7 @@
 #include <wtf/Threading.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -300,4 +300,4 @@ bool XMLDocumentParser::parseDocumentFragment(const String& chunk, DocumentFragm
     return wellFormed; // appendFragmentSource()'s wellFormed is more permissive than Document::wellFormed().
 }
 
-} // namespace WebCore
+} // namespace CyberCore

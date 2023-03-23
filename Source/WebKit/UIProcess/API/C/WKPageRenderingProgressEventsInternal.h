@@ -29,29 +29,29 @@
 
 #include <CyberCore/LayoutMilestone.h>
 
-static inline WKPageRenderingProgressEvents pageRenderingProgressEvents(OptionSet<WebCore::LayoutMilestone> milestones)
+static inline WKPageRenderingProgressEvents pageRenderingProgressEvents(OptionSet<CyberCore::LayoutMilestone> milestones)
 {
     WKPageRenderingProgressEvents events = 0;
     
-    if (milestones & WebCore::DidFirstLayout)
+    if (milestones & CyberCore::DidFirstLayout)
         events |= WKPageRenderingProgressEventFirstLayout;
     
-    if (milestones & WebCore::DidFirstVisuallyNonEmptyLayout)
+    if (milestones & CyberCore::DidFirstVisuallyNonEmptyLayout)
         events |= WKPageRenderingProgressEventFirstVisuallyNonEmptyLayout;
     
-    if (milestones & WebCore::DidHitRelevantRepaintedObjectsAreaThreshold)
+    if (milestones & CyberCore::DidHitRelevantRepaintedObjectsAreaThreshold)
         events |= WKPageRenderingProgressEventFirstPaintWithSignificantArea;
     
-    if (milestones & WebCore::ReachedSessionRestorationRenderTreeSizeThreshold)
+    if (milestones & CyberCore::ReachedSessionRestorationRenderTreeSizeThreshold)
         events |= WKPageRenderingProgressEventReachedSessionRestorationRenderTreeSizeThreshold;
     
-    if (milestones & WebCore::DidFirstLayoutAfterSuppressedIncrementalRendering)
+    if (milestones & CyberCore::DidFirstLayoutAfterSuppressedIncrementalRendering)
         events |= WKPageRenderingProgressEventFirstLayoutAfterSuppressedIncrementalRendering;
 
-    if (milestones & WebCore::DidFirstPaintAfterSuppressedIncrementalRendering)
+    if (milestones & CyberCore::DidFirstPaintAfterSuppressedIncrementalRendering)
         events |= WKPageRenderingProgressEventFirstPaintAfterSuppressedIncrementalRendering;
 
-    if (milestones & WebCore::DidFirstMeaningfulPaint)
+    if (milestones & CyberCore::DidFirstMeaningfulPaint)
         events |= WKPageRenderingProgressEventFirstMeaningfulPaint;
 
     return events;

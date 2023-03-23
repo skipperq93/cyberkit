@@ -29,7 +29,7 @@
 #include <optional>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class Element;
@@ -224,4 +224,4 @@ private:
     mutable std::optional<bool> m_shouldDisableLazyIframeLoadingQuirk;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -31,7 +31,7 @@
 #include <wtf/URL.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class UserStyleSheet {
     WTF_MAKE_FAST_ALLOCATED;
@@ -71,4 +71,4 @@ private:
     std::optional<PageIdentifier> m_pageID;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

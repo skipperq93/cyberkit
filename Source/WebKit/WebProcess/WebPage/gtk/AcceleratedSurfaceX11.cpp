@@ -41,8 +41,8 @@
 #endif
 #include <wtf/RunLoop.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 std::unique_ptr<AcceleratedSurfaceX11> AcceleratedSurfaceX11::create(WebPage& webPage, Client& client)
 {
@@ -171,6 +171,6 @@ void AcceleratedSurfaceX11::didRenderFrame()
     m_client.frameComplete();
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(X11)

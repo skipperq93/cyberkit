@@ -39,13 +39,13 @@
 
 namespace WebKit {
 
-Ref<WebCore::RealtimeMediaSource> SpeechRecognitionRemoteRealtimeMediaSource::create(SpeechRecognitionRemoteRealtimeMediaSourceManager& manager, const WebCore::CaptureDevice& captureDevice, WebCore::PageIdentifier pageIdentifier)
+Ref<CyberCore::RealtimeMediaSource> SpeechRecognitionRemoteRealtimeMediaSource::create(SpeechRecognitionRemoteRealtimeMediaSourceManager& manager, const CyberCore::CaptureDevice& captureDevice, CyberCore::PageIdentifier pageIdentifier)
 {
-    return adoptRef(*new SpeechRecognitionRemoteRealtimeMediaSource(WebCore::RealtimeMediaSourceIdentifier::generate(), manager, captureDevice, pageIdentifier));
+    return adoptRef(*new SpeechRecognitionRemoteRealtimeMediaSource(CyberCore::RealtimeMediaSourceIdentifier::generate(), manager, captureDevice, pageIdentifier));
 }
 
-SpeechRecognitionRemoteRealtimeMediaSource::SpeechRecognitionRemoteRealtimeMediaSource(WebCore::RealtimeMediaSourceIdentifier identifier, SpeechRecognitionRemoteRealtimeMediaSourceManager& manager, const WebCore::CaptureDevice& captureDevice, WebCore::PageIdentifier pageIdentifier)
-    : WebCore::RealtimeMediaSource(captureDevice, { }, pageIdentifier)
+SpeechRecognitionRemoteRealtimeMediaSource::SpeechRecognitionRemoteRealtimeMediaSource(CyberCore::RealtimeMediaSourceIdentifier identifier, SpeechRecognitionRemoteRealtimeMediaSourceManager& manager, const CyberCore::CaptureDevice& captureDevice, CyberCore::PageIdentifier pageIdentifier)
+    : CyberCore::RealtimeMediaSource(captureDevice, { }, pageIdentifier)
     , m_identifier(identifier)
     , m_manager(manager)
 {
@@ -72,14 +72,14 @@ void SpeechRecognitionRemoteRealtimeMediaSource::stopProducingData()
 
 #if PLATFORM(COCOA)
 
-void SpeechRecognitionRemoteRealtimeMediaSource::setStorage(ConsumerSharedCARingBuffer::Handle&& handle, const WebCore::CAAudioStreamDescription& description)
+void SpeechRecognitionRemoteRealtimeMediaSource::setStorage(ConsumerSharedCARingBuffer::Handle&& handle, const CyberCore::CAAudioStreamDescription& description)
 {
     m_buffer = nullptr;
     m_ringBuffer = ConsumerSharedCARingBuffer::map(description, WTFMove(handle));
     if (!m_ringBuffer)
         return;
     m_description = description;
-    m_buffer = makeUnique<WebCore::WebAudioBufferList>(description);
+    m_buffer = makeUnique<CyberCore::WebAudioBufferList>(description);
 }
 
 #endif

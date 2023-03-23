@@ -35,7 +35,7 @@
 #import <pal/cf/CoreMediaSoftLink.h>
 #import "CoreVideoSoftLink.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 RefPtr<JSC::Uint8ClampedArray> VideoFrame::getRGBAImageData() const
 {

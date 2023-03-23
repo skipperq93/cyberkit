@@ -23,10 +23,10 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef WebCoreThreadInternal_h
-#define WebCoreThreadInternal_h
+#ifndef CyberCoreThreadInternal_h
+#define CyberCoreThreadInternal_h
 
-#include "WebCoreThread.h"
+#include "CyberCoreThread.h"
 
 #if defined(__cplusplus)
 extern "C" {
@@ -49,4 +49,4 @@ WebThreadContext *WebThreadCurrentContext(void);
 } // extern "C"
 #endif
 
-#endif // WebCoreThreadInternal_h
+#endif // CyberCoreThreadInternal_h

@@ -41,7 +41,7 @@
 #import <wtf/SoftLinking.h>
 #import <wtf/text/AtomString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 #pragma mark -
 #pragma mark MediaSourcePrivateAVFObjC
@@ -285,7 +285,7 @@ void MediaSourcePrivateAVFObjC::setVideoLayer(AVSampleBufferDisplayLayer* layer)
         m_sourceBufferWithSelectedVideo->setVideoLayer(layer);
 }
 
-void MediaSourcePrivateAVFObjC::setDecompressionSession(WebCoreDecompressionSession* decompressionSession)
+void MediaSourcePrivateAVFObjC::setDecompressionSession(CyberCoreDecompressionSession* decompressionSession)
 {
     if (m_sourceBufferWithSelectedVideo)
         m_sourceBufferWithSelectedVideo->setDecompressionSession(decompressionSession);

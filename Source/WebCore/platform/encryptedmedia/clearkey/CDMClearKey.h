@@ -37,7 +37,7 @@
 #include "SharedBuffer.h"
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace ClearKey {
 
@@ -122,8 +122,8 @@ private:
     KeyStore m_keyStore;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_CDM_INSTANCE(WebCore::CDMInstanceClearKey, WebCore::CDMInstance::ImplementationType::ClearKey);
+SPECIALIZE_TYPE_TRAITS_CDM_INSTANCE(CyberCore::CDMInstanceClearKey, CyberCore::CDMInstance::ImplementationType::ClearKey);
 
 #endif // ENABLE(ENCRYPTED_MEDIA)

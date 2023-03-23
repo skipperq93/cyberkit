@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -21,28 +21,28 @@
 #error "Only <webkitdom/webkitdom.h> can be included directly."
 #endif
 
-#ifndef WebKitDOMDocumentType_h
-#define WebKitDOMDocumentType_h
+#ifndef CyberKitDOMDocumentType_h
+#define CyberKitDOMDocumentType_h
 
 #include <glib-object.h>
-#include <webkitdom/WebKitDOMNode.h>
+#include <webkitdom/CyberKitDOMNode.h>
 #include <webkitdom/webkitdomdefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_DOM_TYPE_DOCUMENT_TYPE            (webkit_dom_document_type_get_type())
-#define WEBKIT_DOM_DOCUMENT_TYPE(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_DOCUMENT_TYPE, WebKitDOMDocumentType))
-#define WEBKIT_DOM_DOCUMENT_TYPE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_DOCUMENT_TYPE, WebKitDOMDocumentTypeClass)
+#define WEBKIT_DOM_DOCUMENT_TYPE(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_DOCUMENT_TYPE, CyberKitDOMDocumentType))
+#define WEBKIT_DOM_DOCUMENT_TYPE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_DOCUMENT_TYPE, CyberKitDOMDocumentTypeClass)
 #define WEBKIT_DOM_IS_DOCUMENT_TYPE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_DOM_TYPE_DOCUMENT_TYPE))
 #define WEBKIT_DOM_IS_DOCUMENT_TYPE_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_DOM_TYPE_DOCUMENT_TYPE))
-#define WEBKIT_DOM_DOCUMENT_TYPE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_DOCUMENT_TYPE, WebKitDOMDocumentTypeClass))
+#define WEBKIT_DOM_DOCUMENT_TYPE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_DOCUMENT_TYPE, CyberKitDOMDocumentTypeClass))
 
-struct _WebKitDOMDocumentType {
-    WebKitDOMNode parent_instance;
+struct _CyberKitDOMDocumentType {
+    CyberKitDOMNode parent_instance;
 };
 
-struct _WebKitDOMDocumentTypeClass {
-    WebKitDOMNodeClass parent_class;
+struct _CyberKitDOMDocumentTypeClass {
+    CyberKitDOMNodeClass parent_class;
 };
 
 WEBKIT_DEPRECATED GType
@@ -50,70 +50,70 @@ webkit_dom_document_type_get_type(void);
 
 /**
  * webkit_dom_document_type_get_name:
- * @self: A #WebKitDOMDocumentType
+ * @self: A #CyberKitDOMDocumentType
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_document_type_get_name(WebKitDOMDocumentType* self);
+webkit_dom_document_type_get_name(CyberKitDOMDocumentType* self);
 
 /**
  * webkit_dom_document_type_get_entities:
- * @self: A #WebKitDOMDocumentType
+ * @self: A #CyberKitDOMDocumentType
  *
- * Returns: (transfer full): A #WebKitDOMNamedNodeMap
+ * Returns: (transfer full): A #CyberKitDOMNamedNodeMap
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMNamedNodeMap*
-webkit_dom_document_type_get_entities(WebKitDOMDocumentType* self);
+WEBKIT_DEPRECATED CyberKitDOMNamedNodeMap*
+webkit_dom_document_type_get_entities(CyberKitDOMDocumentType* self);
 
 /**
  * webkit_dom_document_type_get_notations:
- * @self: A #WebKitDOMDocumentType
+ * @self: A #CyberKitDOMDocumentType
  *
- * Returns: (transfer full): A #WebKitDOMNamedNodeMap
+ * Returns: (transfer full): A #CyberKitDOMNamedNodeMap
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMNamedNodeMap*
-webkit_dom_document_type_get_notations(WebKitDOMDocumentType* self);
+WEBKIT_DEPRECATED CyberKitDOMNamedNodeMap*
+webkit_dom_document_type_get_notations(CyberKitDOMDocumentType* self);
 
 /**
  * webkit_dom_document_type_get_internal_subset:
- * @self: A #WebKitDOMDocumentType
+ * @self: A #CyberKitDOMDocumentType
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_document_type_get_internal_subset(WebKitDOMDocumentType* self);
+webkit_dom_document_type_get_internal_subset(CyberKitDOMDocumentType* self);
 
 /**
  * webkit_dom_document_type_get_public_id:
- * @self: A #WebKitDOMDocumentType
+ * @self: A #CyberKitDOMDocumentType
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_document_type_get_public_id(WebKitDOMDocumentType* self);
+webkit_dom_document_type_get_public_id(CyberKitDOMDocumentType* self);
 
 /**
  * webkit_dom_document_type_get_system_id:
- * @self: A #WebKitDOMDocumentType
+ * @self: A #CyberKitDOMDocumentType
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_document_type_get_system_id(WebKitDOMDocumentType* self);
+webkit_dom_document_type_get_system_id(CyberKitDOMDocumentType* self);
 
 G_END_DECLS
 
-#endif /* WebKitDOMDocumentType_h */
+#endif /* CyberKitDOMDocumentType_h */

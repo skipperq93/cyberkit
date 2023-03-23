@@ -28,7 +28,7 @@
 
 #import <Metal/Metal.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 void prewarmGPU()
 {
@@ -40,4 +40,4 @@ void prewarmGPU()
 #endif
 }
 
-} // namespace WebCore
+} // namespace CyberCore

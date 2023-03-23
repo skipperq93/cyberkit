@@ -42,15 +42,15 @@ class Connection;
 class Decoder;
 }
 
-namespace WebCore {
+namespace CyberCore {
 class WeakPtrImplWithEventTargetData;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
-class WebSocketChannel : public IPC::MessageSender, public IPC::MessageReceiver, public WebCore::ThreadableWebSocketChannel, public RefCounted<WebSocketChannel> {
+class WebSocketChannel : public IPC::MessageSender, public IPC::MessageReceiver, public CyberCore::ThreadableWebSocketChannel, public RefCounted<WebSocketChannel> {
 public:
-    static Ref<WebSocketChannel> create(WebPageProxyIdentifier, WebCore::Document&, WebCore::WebSocketChannelClient&);
+    static Ref<WebSocketChannel> create(WebPageProxyIdentifier, CyberCore::Document&, CyberCore::WebSocketChannelClient&);
     ~WebSocketChannel();
 
     void didReceiveMessage(IPC::Connection&, IPC::Decoder&);
@@ -61,9 +61,9 @@ public:
     using RefCounted<WebSocketChannel>::deref;
 
 private:
-    WebSocketChannel(WebPageProxyIdentifier, WebCore::Document&, WebCore::WebSocketChannelClient&);
+    WebSocketChannel(WebPageProxyIdentifier, CyberCore::Document&, CyberCore::WebSocketChannelClient&);
 
-    static WebCore::NetworkSendQueue createMessageQueue(WebCore::Document&, WebSocketChannel&);
+    static CyberCore::NetworkSendQueue createMessageQueue(CyberCore::Document&, WebSocketChannel&);
 
     // ThreadableWebSocketChannel
     ConnectStatus connect(const URL&, const String& protocol) final;
@@ -71,7 +71,7 @@ private:
     String extensions() final;
     SendResult send(CString&&) final;
     SendResult send(const JSC::ArrayBuffer&, unsigned byteOffset, unsigned byteLength) final;
-    SendResult send(WebCore::Blob&) final;
+    SendResult send(CyberCore::Blob&) final;
     unsigned bufferedAmount() const final;
     void close(int code, const String& reason) final;
     void fail(String&& reason) final;
@@ -81,7 +81,7 @@ private:
     void refThreadableWebSocketChannel() final { ref(); }
     void derefThreadableWebSocketChannel() final { deref(); }
 
-    void notifySendFrame(WebCore::WebSocketFrame::OpCode, const uint8_t* data, size_t length);
+    void notifySendFrame(CyberCore::WebSocketFrame::OpCode, const uint8_t* data, size_t length);
     void logErrorMessage(const String&);
 
     // Message receivers
@@ -90,8 +90,8 @@ private:
     void didReceiveBinaryData(IPC::DataReference&&);
     void didClose(unsigned short code, String&&);
     void didReceiveMessageError(String&&);
-    void didSendHandshakeRequest(WebCore::ResourceRequest&&);
-    void didReceiveHandshakeResponse(WebCore::ResourceResponse&&);
+    void didSendHandshakeRequest(CyberCore::ResourceRequest&&);
+    void didReceiveHandshakeResponse(CyberCore::ResourceResponse&&);
 
     // MessageSender
     IPC::Connection* messageSenderConnection() const final;
@@ -101,25 +101,25 @@ private:
     void decreaseBufferedAmount(size_t);
     template<typename T> void sendMessage(T&&, size_t byteLength);
 
-    const WebCore::WebSocketChannelInspector* channelInspector() const final { return &m_inspector; }
-    WebCore::WebSocketChannelIdentifier progressIdentifier() const final { return m_inspector.progressIdentifier(); }
+    const CyberCore::WebSocketChannelInspector* channelInspector() const final { return &m_inspector; }
+    CyberCore::WebSocketChannelIdentifier progressIdentifier() const final { return m_inspector.progressIdentifier(); }
     bool hasCreatedHandshake() const final { return !m_url.isNull(); }
     bool isConnected() const final { return !m_handshakeResponse.isNull(); }
-    WebCore::ResourceRequest clientHandshakeRequest(const CookieGetter&) const final { return m_handshakeRequest; }
-    const WebCore::ResourceResponse& serverHandshakeResponse() const final { return m_handshakeResponse; }
+    CyberCore::ResourceRequest clientHandshakeRequest(const CookieGetter&) const final { return m_handshakeRequest; }
+    const CyberCore::ResourceResponse& serverHandshakeResponse() const final { return m_handshakeResponse; }
 
-    WeakPtr<WebCore::Document, WebCore::WeakPtrImplWithEventTargetData> m_document;
-    WeakPtr<WebCore::WebSocketChannelClient> m_client;
+    WeakPtr<CyberCore::Document, CyberCore::WeakPtrImplWithEventTargetData> m_document;
+    WeakPtr<CyberCore::WebSocketChannelClient> m_client;
     URL m_url;
     String m_subprotocol;
     String m_extensions;
     size_t m_bufferedAmount { 0 };
     bool m_isClosing { false };
-    WebCore::NetworkSendQueue m_messageQueue;
-    WebCore::WebSocketChannelInspector m_inspector;
-    WebCore::ResourceRequest m_handshakeRequest;
-    WebCore::ResourceResponse m_handshakeResponse;
+    CyberCore::NetworkSendQueue m_messageQueue;
+    CyberCore::WebSocketChannelInspector m_inspector;
+    CyberCore::ResourceRequest m_handshakeRequest;
+    CyberCore::ResourceResponse m_handshakeResponse;
     WebPageProxyIdentifier m_webPageProxyID;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

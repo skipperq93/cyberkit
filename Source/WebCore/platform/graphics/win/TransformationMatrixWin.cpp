@@ -28,7 +28,7 @@
 
 #include <windows.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 TransformationMatrix::operator XFORM() const
 {

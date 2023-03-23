@@ -29,7 +29,7 @@
 #include "NotImplemented.h"
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 String uploadFileText()
 {
@@ -43,4 +43,4 @@ String allFilesText()
     return "all files"_s;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

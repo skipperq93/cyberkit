@@ -29,7 +29,7 @@
 #include "SelectorFilter.h"
 #include <wtf/HashMap.h>
 
-namespace WebCore::Style {
+namespace CyberCore::Style {
 
 using HasPseudoClassCacheKey = std::pair<const Element*, const CSSSelector*>;
 using HasPseudoClassFilterKey = std::pair<const Element*, uint8_t>;

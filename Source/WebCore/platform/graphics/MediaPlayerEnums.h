@@ -27,7 +27,7 @@
 
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class MediaPlayerNetworkState : uint8_t {
     Empty,
@@ -131,7 +131,7 @@ String convertEnumerationToString(MediaPlayerEnums::Preload);
 String convertEnumerationToString(MediaPlayerEnums::SupportsType);
 String convertEnumerationToString(MediaPlayerEnums::BufferingPolicy);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 
 namespace WTF {
@@ -140,24 +140,24 @@ template<typename Type>
 struct LogArgument;
 
 template <>
-struct LogArgument<WebCore::MediaPlayerEnums::ReadyState> {
-    static String toString(const WebCore::MediaPlayerEnums::ReadyState state)
+struct LogArgument<CyberCore::MediaPlayerEnums::ReadyState> {
+    static String toString(const CyberCore::MediaPlayerEnums::ReadyState state)
     {
         return convertEnumerationToString(state);
     }
 };
 
 template <>
-struct LogArgument<WebCore::MediaPlayerEnums::NetworkState> {
-    static String toString(const WebCore::MediaPlayerEnums::NetworkState state)
+struct LogArgument<CyberCore::MediaPlayerEnums::NetworkState> {
+    static String toString(const CyberCore::MediaPlayerEnums::NetworkState state)
     {
         return convertEnumerationToString(state);
     }
 };
 
 template <>
-struct LogArgument<WebCore::MediaPlayerEnums::BufferingPolicy> {
-    static String toString(const WebCore::MediaPlayerEnums::BufferingPolicy policy)
+struct LogArgument<CyberCore::MediaPlayerEnums::BufferingPolicy> {
+    static String toString(const CyberCore::MediaPlayerEnums::BufferingPolicy policy)
     {
         return convertEnumerationToString(policy);
     }

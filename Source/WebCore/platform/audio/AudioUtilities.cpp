@@ -31,7 +31,7 @@
 #include <wtf/MathExtras.h>
 #include <wtf/WeakRandom.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace AudioUtilities {
 
@@ -86,6 +86,6 @@ void applyNoise(float* values, size_t numberOfElementsToProcess, float magnitude
 
 } // AudioUtilites
 
-} // WebCore
+} // CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

@@ -30,7 +30,7 @@
 #include <wtf/Forward.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class PlatformGamepad;
 
@@ -48,6 +48,6 @@ public:
     virtual void platformGamepadInputActivity(EventMakesGamepadsVisible) = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(GAMEPAD)

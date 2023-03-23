@@ -41,7 +41,7 @@
 #import "PrintInfo.h"
 #import "UserData.h"
 #import "WKAccessibilityWebPageObjectMac.h"
-#import "WebCoreArgumentCoders.h"
+#import "CyberCoreArgumentCoders.h"
 #import "WebEventConversion.h"
 #import "WebFrame.h"
 #import "WebHitTestResultData.h"
@@ -109,8 +109,8 @@
 
 #import "PDFKitSoftLink.h"
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 void WebPage::platformInitializeAccessibility()
 {
@@ -121,7 +121,7 @@ void WebPage::platformInitializeAccessibility()
     auto mockAccessibilityElement = adoptNS([[WKAccessibilityWebPageObject alloc] init]);
 
     // Get the pid for the starting process.
-    pid_t pid = WebCore::presentingApplicationPID();
+    pid_t pid = CyberCore::presentingApplicationPID();
     // FIXME: WKAccessibilityWebPageObject doesn't respond to -accessibilitySetPresenterProcessIdentifier:.
     // Either it needs to or this call should be removed.
     if ([mockAccessibilityElement respondsToSelector:@selector(accessibilitySetPresenterProcessIdentifier:)])
@@ -187,7 +187,7 @@ void WebPage::getPlatformEditorState(Frame& frame, EditorState& result) const
     }
 }
 
-void WebPage::handleAcceptedCandidate(WebCore::TextCheckingResult acceptedCandidate)
+void WebPage::handleAcceptedCandidate(CyberCore::TextCheckingResult acceptedCandidate)
 {
     Frame* frame = m_page->focusController().focusedFrame();
     if (!frame)
@@ -253,7 +253,7 @@ static Frame* frameForEvent(KeyboardEvent* event)
     return frame;
 }
 
-bool WebPage::executeKeypressCommandsInternal(const Vector<WebCore::KeypressCommand>& commands, KeyboardEvent* event)
+bool WebPage::executeKeypressCommandsInternal(const Vector<CyberCore::KeypressCommand>& commands, KeyboardEvent* event)
 {
     Frame& frame = event ? *frameForEvent(event) : m_page->focusController().focusedOrMainFrame();
     ASSERT(frame.page() == corePage());
@@ -312,7 +312,7 @@ bool WebPage::handleEditingKeyboardEvent(KeyboardEvent& event)
     bool eventWasHandled = false;
 
     // Are there commands that could just cause text insertion if executed via Editor?
-    // WebKit doesn't have enough information about mode to decide how they should be treated, so we leave it upon WebCore
+    // CyberKit doesn't have enough information about mode to decide how they should be treated, so we leave it upon CyberCore
     // to either handle them immediately (e.g. Tab that changes focus) or let a keypress event be generated
     // (e.g. Tab that inserts a Tab character, or Enter).
     bool haveTextInsertionCommands = false;
@@ -330,7 +330,7 @@ bool WebPage::handleEditingKeyboardEvent(KeyboardEvent& event)
     return eventWasHandled;
 }
 
-void WebPage::attributedSubstringForCharacterRangeAsync(const EditingRange& editingRange, CompletionHandler<void(const WebCore::AttributedString&, const EditingRange&)>&& completionHandler)
+void WebPage::attributedSubstringForCharacterRangeAsync(const EditingRange& editingRange, CompletionHandler<void(const CyberCore::AttributedString&, const EditingRange&)>&& completionHandler)
 {
     Frame& frame = m_page->focusController().focusedOrMainFrame();
 
@@ -348,7 +348,7 @@ void WebPage::attributedSubstringForCharacterRangeAsync(const EditingRange& edit
 
     auto attributedString = editingAttributedString(*range, IncludeImages::No).string;
 
-    // WebCore::editingAttributedStringFromRange() insists on inserting a trailing
+    // CyberCore::editingAttributedStringFromRange() insists on inserting a trailing
     // whitespace at the end of the string which breaks the ATOK input method.  <rdar://problem/5400551>
     // To work around this we truncate the resultant string to the correct length.
     if ([attributedString length] > editingRange.length) {
@@ -370,7 +370,7 @@ void WebPage::attributedSubstringForCharacterRangeAsync(const EditingRange& edit
 
 #if ENABLE(PDFKIT_PLUGIN)
 
-DictionaryPopupInfo WebPage::dictionaryPopupInfoForSelectionInPDFPlugin(PDFSelection *selection, PluginView& pdfPlugin, NSDictionary *options, WebCore::TextIndicatorPresentationTransition presentationTransition)
+DictionaryPopupInfo WebPage::dictionaryPopupInfoForSelectionInPDFPlugin(PDFSelection *selection, PluginView& pdfPlugin, NSDictionary *options, CyberCore::TextIndicatorPresentationTransition presentationTransition)
 {
     DictionaryPopupInfo dictionaryPopupInfo;
     if (!selection.string.length)
@@ -460,9 +460,9 @@ bool WebPage::performNonEditingBehaviorForSelector(const String& selector, Keybo
     }
 
     if (selector == "moveToLeftEndOfLine:"_s)
-        didPerformAction = m_userInterfaceLayoutDirection == WebCore::UserInterfaceLayoutDirection::LTR ? m_page->backForward().goBack() : m_page->backForward().goForward();
+        didPerformAction = m_userInterfaceLayoutDirection == CyberCore::UserInterfaceLayoutDirection::LTR ? m_page->backForward().goBack() : m_page->backForward().goForward();
     else if (selector == "moveToRightEndOfLine:"_s)
-        didPerformAction = m_userInterfaceLayoutDirection == WebCore::UserInterfaceLayoutDirection::LTR ? m_page->backForward().goForward() : m_page->backForward().goBack();
+        didPerformAction = m_userInterfaceLayoutDirection == CyberCore::UserInterfaceLayoutDirection::LTR ? m_page->backForward().goForward() : m_page->backForward().goBack();
 
     return didPerformAction;
 }
@@ -512,16 +512,16 @@ WKAccessibilityWebPageObject* WebPage::accessibilityRemoteObject()
     return m_mockAccessibilityElement.get();
 }
 
-bool WebPage::platformCanHandleRequest(const WebCore::ResourceRequest& request)
+bool WebPage::platformCanHandleRequest(const CyberCore::ResourceRequest& request)
 {
     if ([NSURLConnection canHandleRequest:request.nsURLRequest(HTTPBodyUpdatePolicy::DoNotUpdateHTTPBody)])
         return true;
 
-    // FIXME: Return true if this scheme is any one WebKit2 knows how to handle.
+    // FIXME: Return true if this scheme is any one CyberKit2 knows how to handle.
     return request.url().protocolIs("applewebdata"_s);
 }
 
-void WebPage::shouldDelayWindowOrderingEvent(const WebKit::WebMouseEvent& event, CompletionHandler<void(bool)>&& completionHandler)
+void WebPage::shouldDelayWindowOrderingEvent(const CyberKit::WebMouseEvent& event, CompletionHandler<void(bool)>&& completionHandler)
 {
     auto& frame = m_page->focusController().focusedOrMainFrame();
 
@@ -535,7 +535,7 @@ void WebPage::shouldDelayWindowOrderingEvent(const WebKit::WebMouseEvent& event,
     completionHandler(result);
 }
 
-void WebPage::requestAcceptsFirstMouse(int eventNumber, const WebKit::WebMouseEvent& event)
+void WebPage::requestAcceptsFirstMouse(int eventNumber, const CyberKit::WebMouseEvent& event)
 {
     if (WebProcess::singleton().parentProcessConnection()->inSendSync()) {
         // In case we're already inside a sendSync message, it's possible that the page is in a
@@ -616,7 +616,7 @@ void WebPage::updateHeaderAndFooterLayersForDeviceScaleChange(float scaleFactor)
         m_footerBanner->didChangeDeviceScaleFactor(scaleFactor);
 }
 
-void WebPage::computePagesForPrintingPDFDocument(WebCore::FrameIdentifier frameID, const PrintInfo& printInfo, Vector<IntRect>& resultPageRects)
+void WebPage::computePagesForPrintingPDFDocument(CyberCore::FrameIdentifier frameID, const PrintInfo& printInfo, Vector<IntRect>& resultPageRects)
 {
     ASSERT(resultPageRects.isEmpty());
     WebFrame* frame = WebProcess::singleton().webFrame(frameID);
@@ -700,7 +700,7 @@ static void drawPDFPage(PDFDocument *pdfDocument, CFIndex pageIndex, CGContextRe
     CGContextRestoreGState(context);
 }
 
-void WebPage::drawPDFDocument(CGContextRef context, PDFDocument *pdfDocument, const PrintInfo& printInfo, const WebCore::IntRect& rect)
+void WebPage::drawPDFDocument(CGContextRef context, PDFDocument *pdfDocument, const PrintInfo& printInfo, const CyberCore::IntRect& rect)
 {
     NSUInteger pageCount = [pdfDocument pageCount];
     IntSize paperSize(ceilf(printInfo.availablePaperWidth), ceilf(printInfo.availablePaperHeight));
@@ -809,11 +809,11 @@ OptionSet<PointerCharacteristics> WebPage::pointerCharacteristicsOfAllAvailableP
     return PointerCharacteristics::Fine;
 }
 
-void WebPage::performImmediateActionHitTestAtLocation(WebCore::FloatPoint locationInViewCoordinates)
+void WebPage::performImmediateActionHitTestAtLocation(CyberCore::FloatPoint locationInViewCoordinates)
 {
     layoutIfNeeded();
 
-    auto* localMainFrame = dynamicDowncast<WebCore::LocalFrame>(corePage()->mainFrame());
+    auto* localMainFrame = dynamicDowncast<CyberCore::LocalFrame>(corePage()->mainFrame());
     if (!localMainFrame)
         return;
 
@@ -924,7 +924,7 @@ void WebPage::performImmediateActionHitTestAtLocation(WebCore::FloatPoint locati
     send(Messages::WebPageProxy::DidPerformImmediateActionHitTest(immediateActionResult, immediateActionHitTestPreventsDefault, UserData(WebProcess::singleton().transformObjectsToHandles(userData.get()).get())));
 }
 
-std::optional<std::tuple<WebCore::SimpleRange, NSDictionary *>> WebPage::lookupTextAtLocation(FloatPoint locationInViewCoordinates)
+std::optional<std::tuple<CyberCore::SimpleRange, NSDictionary *>> WebPage::lookupTextAtLocation(FloatPoint locationInViewCoordinates)
 {
     auto* localMainFrame = dynamicDowncast<LocalFrame>(m_page->mainFrame());
     if (!localMainFrame || !localMainFrame->view() || !localMainFrame->view()->renderView())
@@ -986,7 +986,7 @@ void WebPage::dataDetectorsDidChangeUI(PageOverlay::PageOverlayID overlayID)
 
 void WebPage::dataDetectorsDidHideUI(PageOverlay::PageOverlayID overlayID)
 {
-    auto* localMainFrame = dynamicDowncast<WebCore::LocalFrame>(corePage()->mainFrame());
+    auto* localMainFrame = dynamicDowncast<CyberCore::LocalFrame>(corePage()->mainFrame());
     if (!localMainFrame)
         return;
     // Dispatching a fake mouse event will allow clients to display any UI that is normally displayed on hover.
@@ -1006,7 +1006,7 @@ void WebPage::updateVisibleContentRects(const VisibleContentRectUpdateInfo&, Mon
 }
 
 #if ENABLE(WIRELESS_PLAYBACK_TARGET) && !PLATFORM(IOS_FAMILY)
-void WebPage::playbackTargetSelected(PlaybackTargetClientContextIdentifier contextId, WebCore::MediaPlaybackTargetContext&& targetContext) const
+void WebPage::playbackTargetSelected(PlaybackTargetClientContextIdentifier contextId, CyberCore::MediaPlaybackTargetContext&& targetContext) const
 {
     switch (targetContext.type()) {
     case MediaPlaybackTargetContext::Type::AVOutputContext:
@@ -1063,7 +1063,7 @@ bool WebPage::shouldAvoidComputingPostLayoutDataForEditorState() const
 
 #if HAVE(APP_ACCENT_COLORS)
 
-void WebPage::setAccentColor(WebCore::Color color)
+void WebPage::setAccentColor(CyberCore::Color color)
 {
     [NSApp _setAccentColor:cocoaColorOrNil(color).get()];
 }
@@ -1125,6 +1125,6 @@ void WebPage::removePDFHUD(PDFPlugin& plugin)
 
 #endif // ENABLE(UI_PROCESS_PDF_HUD)
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(MAC)

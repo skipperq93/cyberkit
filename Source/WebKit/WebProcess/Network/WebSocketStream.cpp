@@ -29,7 +29,7 @@
 #include "NetworkConnectionToWebProcessMessages.h"
 #include "NetworkProcessConnection.h"
 #include "NetworkSocketStreamMessages.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebProcess.h"
 #include <CyberCore/CookieRequestHeaderFieldProxy.h>
 #include <CyberCore/SocketStreamError.h>
@@ -37,8 +37,8 @@
 #include <wtf/Lock.h>
 #include <wtf/NeverDestroyed.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 static Lock globalWebSocketStreamMapLock;
 static HashMap<WebSocketIdentifier, WebSocketStream*>& globalWebSocketStreamMap() WTF_REQUIRES_LOCK(globalWebSocketStreamMapLock)
@@ -79,7 +79,7 @@ Ref<WebSocketStream> WebSocketStream::create(const URL& url, SocketStreamHandleC
     return adoptRef(*new WebSocketStream(url, client, identifier, credentialPartition));
 }
 
-WebSocketStream::WebSocketStream(const URL& url, WebCore::SocketStreamHandleClient& client, WebSocketIdentifier identifier, const String& cachePartition)
+WebSocketStream::WebSocketStream(const URL& url, CyberCore::SocketStreamHandleClient& client, WebSocketIdentifier identifier, const String& cachePartition)
     : SocketStreamHandle(url, client)
     ,  m_identifier(identifier)
     , m_client(client)
@@ -176,9 +176,9 @@ void WebSocketStream::didUpdateBufferedAmount(uint64_t newAmount)
     m_client.didUpdateBufferedAmount(*this, newAmount);
 }
 
-void WebSocketStream::didFailSocketStream(WebCore::SocketStreamError&& error)
+void WebSocketStream::didFailSocketStream(CyberCore::SocketStreamError&& error)
 {
     m_client.didFailSocketStream(*this, WTFMove(error));
 }
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -36,11 +36,11 @@ class Decoder;
 
 namespace WebKit {
 
-class WebCacheStorageProvider final : public WebCore::CacheStorageProvider {
+class WebCacheStorageProvider final : public CyberCore::CacheStorageProvider {
 public:
     static Ref<WebCacheStorageProvider> create() { return adoptRef(*new WebCacheStorageProvider); }
 
-    Ref<WebCore::CacheStorageConnection> createCacheStorageConnection() final;
+    Ref<CyberCore::CacheStorageConnection> createCacheStorageConnection() final;
     void networkProcessConnectionClosed();
 
 private:

@@ -28,7 +28,7 @@
 
 #if !PLATFORM(IOS_FAMILY) && !PLATFORM(MAC) && !PLATFORM(WIN)
 
-namespace WebCore {
+namespace CyberCore {
 
 Icon::~Icon() = default;
 
@@ -41,6 +41,6 @@ RefPtr<Icon> Icon::createIconForFiles(const Vector<String>&)
     return nullptr;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // !PLATFORM(GTK) && !PLATFORM(IOS_FAMILY) && !PLATFORM(MAC) && !PLATFORM(WIN)

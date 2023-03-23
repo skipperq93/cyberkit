@@ -42,7 +42,7 @@
 #include "DisplayRefreshMonitorWin.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 RefPtr<DisplayRefreshMonitor> DisplayRefreshMonitor::createDefaultDisplayRefreshMonitor(PlatformDisplayID displayID)
 {

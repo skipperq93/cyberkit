@@ -33,7 +33,7 @@
 #import "TestInvocation.h"
 #import "TestRunnerWKWebView.h"
 #import "TestWebsiteDataStoreDelegate.h"
-#import "WebCoreTestSupport.h"
+#import "CyberCoreTestSupport.h"
 #import <Foundation/Foundation.h>
 #import <Security/SecItem.h>
 #import <CyberKit/WKContentRuleListStorePrivate.h>
@@ -118,7 +118,7 @@ void TestController::cocoaPlatformInitialize(const Options& options)
         WTFCrash();
     
     if (options.webCoreLogChannels.length())
-        [[NSUserDefaults standardUserDefaults] setValue:[NSString stringWithUTF8String:options.webCoreLogChannels.c_str()] forKey:@"WebCoreLogging"];
+        [[NSUserDefaults standardUserDefaults] setValue:[NSString stringWithUTF8String:options.webCoreLogChannels.c_str()] forKey:@"CyberCoreLogging"];
 
     if (options.webKitLogChannels.length())
         [[NSUserDefaults standardUserDefaults] setValue:[NSString stringWithUTF8String:options.webKitLogChannels.c_str()] forKey:@"WebKit2Logging"];
@@ -328,7 +328,7 @@ void TestController::cocoaResetStateToConsistentValues(const TestOptions& option
         [platformView.configuration.preferences setTextInteractionEnabled:options.textInteractionEnabled()];
     }
 
-    WebCoreTestSupport::setAdditionalSupportedImageTypesForTesting(String::fromLatin1(options.additionalSupportedImageTypes().c_str()));
+    CyberCoreTestSupport::setAdditionalSupportedImageTypesForTesting(String::fromLatin1(options.additionalSupportedImageTypes().c_str()));
 }
 
 void TestController::platformWillRunTest(const TestInvocation& testInvocation)

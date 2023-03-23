@@ -39,7 +39,7 @@
 OBJC_CLASS NSWindow;
 OBJC_CLASS WebVideoFullscreenInterfaceMacObjC;
 
-namespace WebCore {
+namespace CyberCore {
 class IntRect;
 class FloatSize;
 class PlaybackSessionInterfaceMac;

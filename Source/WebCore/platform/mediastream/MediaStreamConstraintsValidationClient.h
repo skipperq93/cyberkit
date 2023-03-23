@@ -30,7 +30,7 @@
 #include "RealtimeMediaSource.h"
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class MediaStreamConstraintsValidationClient : public RefCounted<MediaStreamConstraintsValidationClient> {
 public:
@@ -40,6 +40,6 @@ public:
     virtual void constraintsInvalid(const String& constraintName) = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM)

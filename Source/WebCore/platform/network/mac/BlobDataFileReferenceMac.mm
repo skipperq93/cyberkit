@@ -31,7 +31,7 @@
 #import <wtf/FileSystem.h>
 #import <wtf/text/CString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 void BlobDataFileReference::generateReplacementFile()
 {

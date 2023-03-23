@@ -28,7 +28,7 @@
 
 #if ENABLE(MEDIA_SOURCE)
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<VideoTrackPrivateWebM> VideoTrackPrivateWebM::create(webm::TrackEntry&& trackEntry)
 {

@@ -46,7 +46,7 @@
 #import <wtf/NeverDestroyed.h>
 #import <wtf/SoftLinking.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 VideoFullscreenModelVideoElement::VideoFullscreenModelVideoElement()
     : EventListener(EventListener::CPPEventListenerType)
@@ -86,7 +86,7 @@ void VideoFullscreenModelVideoElement::setVideoElement(HTMLVideoElement* videoEl
     updateForEventName(eventNameAll());
 }
 
-void VideoFullscreenModelVideoElement::handleEvent(WebCore::ScriptExecutionContext&, WebCore::Event& event)
+void VideoFullscreenModelVideoElement::handleEvent(CyberCore::ScriptExecutionContext&, CyberCore::Event& event)
 {
     updateForEventName(event.type());
 }
@@ -299,6 +299,6 @@ void VideoFullscreenModelVideoElement::didExitPictureInPicture()
         client->didExitPictureInPicture();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

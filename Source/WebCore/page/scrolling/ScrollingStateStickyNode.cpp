@@ -38,7 +38,7 @@
 #include "ScrollingTree.h"
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<ScrollingStateStickyNode> ScrollingStateStickyNode::create(ScrollingStateTree& stateTree, ScrollingNodeID nodeID)
 {
@@ -192,6 +192,6 @@ void ScrollingStateStickyNode::dumpProperties(TextStream& ts, OptionSet<Scrollin
     ts.dumpProperty("layer position at last layout", m_constraints.layerPositionAtLastLayout());
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ASYNC_SCROLLING)

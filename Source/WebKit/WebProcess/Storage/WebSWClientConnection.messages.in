@@ -23,28 +23,28 @@
 #if ENABLE(SERVICE_WORKER)
 
 messages -> WebSWClientConnection {
-    # When possible, these messages can be implemented directly by WebCore::SWServer::Connection
-    JobRejectedInServer(WebCore::ServiceWorkerJobIdentifier jobDataIdentifier, struct WebCore::ExceptionData exception)
-    RegistrationJobResolvedInServer(WebCore::ServiceWorkerJobIdentifier jobDataIdentifier, struct WebCore::ServiceWorkerRegistrationData registration, enum:bool WebCore::ShouldNotifyWhenResolved shouldNotifyWhenResolved)
-    StartScriptFetchForServer(WebCore::ServiceWorkerJobIdentifier jobDataIdentifier, WebCore::ServiceWorkerRegistrationKey registrationKey, enum:uint8_t WebCore::FetchOptions::Cache cachePolicy)
-    UpdateRegistrationState(WebCore::ServiceWorkerRegistrationIdentifier identifier, enum:uint8_t WebCore::ServiceWorkerRegistrationState state, std::optional<WebCore::ServiceWorkerData> serviceWorkerIdentifier)
-    UpdateWorkerState(WebCore::ServiceWorkerIdentifier serviceWorkerIdentifier, enum:uint8_t WebCore::ServiceWorkerState state)
-    FireUpdateFoundEvent(WebCore::ServiceWorkerRegistrationIdentifier identifier)
-    SetRegistrationLastUpdateTime(WebCore::ServiceWorkerRegistrationIdentifier identifier, WallTime lastUpdateTime)
-    SetRegistrationUpdateViaCache(WebCore::ServiceWorkerRegistrationIdentifier identifier, enum:uint8_t WebCore::ServiceWorkerUpdateViaCache updateViaCache)
-    NotifyClientsOfControllerChange(HashSet<WebCore::ScriptExecutionContextIdentifier> contextIdentifiers, struct WebCore::ServiceWorkerData newController)
-    UpdateBackgroundFetchRegistration(struct WebCore::BackgroundFetchInformation information)
+    # When possible, these messages can be implemented directly by CyberCore::SWServer::Connection
+    JobRejectedInServer(CyberCore::ServiceWorkerJobIdentifier jobDataIdentifier, struct CyberCore::ExceptionData exception)
+    RegistrationJobResolvedInServer(CyberCore::ServiceWorkerJobIdentifier jobDataIdentifier, struct CyberCore::ServiceWorkerRegistrationData registration, enum:bool CyberCore::ShouldNotifyWhenResolved shouldNotifyWhenResolved)
+    StartScriptFetchForServer(CyberCore::ServiceWorkerJobIdentifier jobDataIdentifier, CyberCore::ServiceWorkerRegistrationKey registrationKey, enum:uint8_t CyberCore::FetchOptions::Cache cachePolicy)
+    UpdateRegistrationState(CyberCore::ServiceWorkerRegistrationIdentifier identifier, enum:uint8_t CyberCore::ServiceWorkerRegistrationState state, std::optional<CyberCore::ServiceWorkerData> serviceWorkerIdentifier)
+    UpdateWorkerState(CyberCore::ServiceWorkerIdentifier serviceWorkerIdentifier, enum:uint8_t CyberCore::ServiceWorkerState state)
+    FireUpdateFoundEvent(CyberCore::ServiceWorkerRegistrationIdentifier identifier)
+    SetRegistrationLastUpdateTime(CyberCore::ServiceWorkerRegistrationIdentifier identifier, WallTime lastUpdateTime)
+    SetRegistrationUpdateViaCache(CyberCore::ServiceWorkerRegistrationIdentifier identifier, enum:uint8_t CyberCore::ServiceWorkerUpdateViaCache updateViaCache)
+    NotifyClientsOfControllerChange(HashSet<CyberCore::ScriptExecutionContextIdentifier> contextIdentifiers, struct CyberCore::ServiceWorkerData newController)
+    UpdateBackgroundFetchRegistration(struct CyberCore::BackgroundFetchInformation information)
 
     SetSWOriginTableIsImported()
-    SetSWOriginTableSharedMemory(WebKit::SharedMemory::Handle handle)
-    PostMessageToServiceWorkerClient(WebCore::ScriptExecutionContextIdentifier destinationContextIdentifier, struct WebCore::MessageWithMessagePorts message, struct WebCore::ServiceWorkerData source, String sourceOrigin)
+    SetSWOriginTableSharedMemory(CyberKit::SharedMemory::Handle handle)
+    PostMessageToServiceWorkerClient(CyberCore::ScriptExecutionContextIdentifier destinationContextIdentifier, struct CyberCore::MessageWithMessagePorts message, struct CyberCore::ServiceWorkerData source, String sourceOrigin)
 
-    SetServiceWorkerClientIsControlled(WebCore::ScriptExecutionContextIdentifier workerIdentifier, struct WebCore::ServiceWorkerRegistrationData data) -> (bool isSuccess)
+    SetServiceWorkerClientIsControlled(CyberCore::ScriptExecutionContextIdentifier workerIdentifier, struct CyberCore::ServiceWorkerRegistrationData data) -> (bool isSuccess)
 
-    FocusServiceWorkerClient(WebCore::ScriptExecutionContextIdentifier clientIdentifier) -> (std::optional<WebCore::ServiceWorkerClientData> result)
+    FocusServiceWorkerClient(CyberCore::ScriptExecutionContextIdentifier clientIdentifier) -> (std::optional<CyberCore::ServiceWorkerClientData> result)
 
-    NotifyRecordResponseBodyChunk(WebKit::RetrieveRecordResponseBodyCallbackIdentifier identifier, IPC::SharedBufferReference data);
-    NotifyRecordResponseBodyEnd(WebKit::RetrieveRecordResponseBodyCallbackIdentifier identifier, WebCore::ResourceError error);
+    NotifyRecordResponseBodyChunk(CyberKit::RetrieveRecordResponseBodyCallbackIdentifier identifier, IPC::SharedBufferReference data);
+    NotifyRecordResponseBodyEnd(CyberKit::RetrieveRecordResponseBodyCallbackIdentifier identifier, CyberCore::ResourceError error);
 }
 
 #endif // ENABLE(SERVICE_WORKER)

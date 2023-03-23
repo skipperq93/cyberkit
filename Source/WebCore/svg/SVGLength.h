@@ -29,7 +29,7 @@
 #include "SVGLengthValue.h"
 #include "SVGValueProperty.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGLength : public SVGValueProperty<SVGLengthValue> {
     using Base = SVGValueProperty<SVGLengthValue>;
@@ -166,4 +166,4 @@ public:
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

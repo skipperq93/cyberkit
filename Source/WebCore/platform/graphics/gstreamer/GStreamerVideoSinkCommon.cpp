@@ -24,7 +24,7 @@
 #include "MediaPlayerPrivateGStreamer.h"
 #include <gst/app/gstappsink.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 GST_DEBUG_CATEGORY(webkit_gst_video_sink_common_debug);
 #define GST_CAT_DEFAULT webkit_gst_video_sink_common_debug

@@ -34,7 +34,7 @@
 #include "WebProcessProxy.h"
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 Ref<VisitedLinkStore> VisitedLinkStore::create()
 {
@@ -80,12 +80,12 @@ void VisitedLinkStore::addVisitedLinkHash(SharedStringHash linkHash)
     m_linkHashStore.scheduleAddition(linkHash);
 }
 
-bool VisitedLinkStore::containsVisitedLinkHash(WebCore::SharedStringHash linkHash)
+bool VisitedLinkStore::containsVisitedLinkHash(CyberCore::SharedStringHash linkHash)
 {
     return m_linkHashStore.contains(linkHash);
 }
 
-void VisitedLinkStore::removeVisitedLinkHash(WebCore::SharedStringHash linkHash)
+void VisitedLinkStore::removeVisitedLinkHash(CyberCore::SharedStringHash linkHash)
 {
     m_linkHashStore.scheduleRemoval(linkHash);
 }
@@ -126,7 +126,7 @@ void VisitedLinkStore::didInvalidateSharedMemory()
         sendStoreHandleToProcess(process);
 }
 
-void VisitedLinkStore::didUpdateSharedStringHashes(const Vector<WebCore::SharedStringHash>& addedHashes, const Vector<WebCore::SharedStringHash>& removedHashes)
+void VisitedLinkStore::didUpdateSharedStringHashes(const Vector<CyberCore::SharedStringHash>& addedHashes, const Vector<CyberCore::SharedStringHash>& removedHashes)
 {
     ASSERT(!addedHashes.isEmpty() || !removedHashes.isEmpty());
 

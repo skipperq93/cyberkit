@@ -36,7 +36,7 @@ OBJC_CLASS NSDictionary;
 typedef const struct __CTFont* CTFontRef;
 typedef const struct __CTLine * CTLineRef;
 
-namespace WebCore {
+namespace CyberCore {
 
 class Image;
 
@@ -77,6 +77,6 @@ struct AttachmentLayout {
     void addLine(CTFontRef, CTLineRef, bool);
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ATTACHMENT_ELEMENT) && PLATFORM(COCOA)

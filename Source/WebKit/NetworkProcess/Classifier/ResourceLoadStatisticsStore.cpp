@@ -46,7 +46,7 @@
 #include <wtf/text/StringBuilder.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 constexpr Seconds minimumStatisticsProcessingInterval { 5_s };
 

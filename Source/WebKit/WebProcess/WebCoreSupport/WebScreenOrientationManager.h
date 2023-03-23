@@ -29,11 +29,11 @@
 #include <CyberCore/ScreenOrientationManager.h>
 #include <wtf/WeakHashSet.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPage;
 
-class WebScreenOrientationManager final : public WebCore::ScreenOrientationManager, public IPC::MessageReceiver {
+class WebScreenOrientationManager final : public CyberCore::ScreenOrientationManager, public IPC::MessageReceiver {
     WTF_MAKE_FAST_ALLOCATED;
 public:
     explicit WebScreenOrientationManager(WebPage&);
@@ -43,18 +43,18 @@ public:
     void didReceiveMessage(IPC::Connection&, IPC::Decoder&) final;
 
 private:
-    void orientationDidChange(WebCore::ScreenOrientationType);
+    void orientationDidChange(CyberCore::ScreenOrientationType);
 
     // ScreenOrientationManager
-    WebCore::ScreenOrientationType currentOrientation() final;
-    void lock(WebCore::ScreenOrientationLockType, CompletionHandler<void(std::optional<WebCore::Exception>&&)>&&) final;
+    CyberCore::ScreenOrientationType currentOrientation() final;
+    void lock(CyberCore::ScreenOrientationLockType, CompletionHandler<void(std::optional<CyberCore::Exception>&&)>&&) final;
     void unlock() final;
     void addObserver(Observer&) final;
     void removeObserver(Observer&) final;
 
     WebPage& m_page;
     WeakHashSet<Observer> m_observers;
-    mutable std::optional<WebCore::ScreenOrientationType> m_currentOrientation;
+    mutable std::optional<CyberCore::ScreenOrientationType> m_currentOrientation;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

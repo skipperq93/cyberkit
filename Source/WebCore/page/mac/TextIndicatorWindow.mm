@@ -52,9 +52,9 @@
 @end
 
 
-using namespace WebCore;
+using namespace CyberCore;
 
-namespace WebCore {
+namespace CyberCore {
 
 TextIndicatorWindow::TextIndicatorWindow(NSView *targetView)
     : m_targetView(targetView)
@@ -64,7 +64,7 @@ TextIndicatorWindow::TextIndicatorWindow(NSView *targetView)
 
 TextIndicatorWindow::~TextIndicatorWindow()
 {
-    clearTextIndicator(WebCore::TextIndicatorDismissalAnimation::FadeOut);
+    clearTextIndicator(CyberCore::TextIndicatorDismissalAnimation::FadeOut);
 }
 
 void TextIndicatorWindow::setAnimationProgress(float progress)
@@ -75,14 +75,14 @@ void TextIndicatorWindow::setAnimationProgress(float progress)
     [m_textIndicatorLayer setAnimationProgress:progress];
 }
 
-void TextIndicatorWindow::clearTextIndicator(WebCore::TextIndicatorDismissalAnimation animation)
+void TextIndicatorWindow::clearTextIndicator(CyberCore::TextIndicatorDismissalAnimation animation)
 {
     RefPtr<TextIndicator> textIndicator = WTFMove(m_textIndicator);
 
     if ([m_textIndicatorLayer isFadingOut])
         return;
 
-    if (textIndicator && [m_textIndicatorLayer indicatorWantsManualAnimation:*textIndicator] && [m_textIndicatorLayer hasCompletedAnimation] && animation == WebCore::TextIndicatorDismissalAnimation::FadeOut) {
+    if (textIndicator && [m_textIndicatorLayer indicatorWantsManualAnimation:*textIndicator] && [m_textIndicatorLayer hasCompletedAnimation] && animation == CyberCore::TextIndicatorDismissalAnimation::FadeOut) {
         startFadeOut();
         return;
     }
@@ -103,8 +103,8 @@ void TextIndicatorWindow::setTextIndicator(Ref<TextIndicator> textIndicator, CGR
     CGFloat verticalMargin = dropShadowBlurRadius * 2 + TextIndicator::defaultVerticalMargin;
     
     if ([m_textIndicatorLayer indicatorWantsBounce:*m_textIndicator]) {
-        horizontalMargin = std::max(horizontalMargin, textBoundingRectInScreenCoordinates.size.width * (WebCore::midBounceScale - 1) + horizontalMargin);
-        verticalMargin = std::max(verticalMargin, textBoundingRectInScreenCoordinates.size.height * (WebCore::midBounceScale - 1) + verticalMargin);
+        horizontalMargin = std::max(horizontalMargin, textBoundingRectInScreenCoordinates.size.width * (CyberCore::midBounceScale - 1) + horizontalMargin);
+        verticalMargin = std::max(verticalMargin, textBoundingRectInScreenCoordinates.size.height * (CyberCore::midBounceScale - 1) + verticalMargin);
     }
 
     horizontalMargin = CGCeiling(horizontalMargin);
@@ -134,7 +134,7 @@ void TextIndicatorWindow::setTextIndicator(Ref<TextIndicator> textIndicator, CGR
         [m_textIndicatorLayer present];
 
     if (lifetime == TextIndicatorLifetime::Temporary)
-        m_temporaryTextIndicatorTimer.startOneShot(WebCore::timeBeforeFadeStarts);
+        m_temporaryTextIndicatorTimer.startOneShot(CyberCore::timeBeforeFadeStarts);
 }
 
 void TextIndicatorWindow::closeWindow()
@@ -162,6 +162,6 @@ void TextIndicatorWindow::startFadeOut()
     }];
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(MAC)

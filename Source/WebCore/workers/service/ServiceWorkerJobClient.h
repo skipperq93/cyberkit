@@ -30,7 +30,7 @@
 #include "FetchOptions.h"
 #include "ServiceWorkerTypes.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ContentSecurityPolicyResponseHeaders;
 class Exception;
@@ -57,6 +57,6 @@ public:
     virtual void jobFailedLoadingScript(ServiceWorkerJob&, const ResourceError&, Exception&&) = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

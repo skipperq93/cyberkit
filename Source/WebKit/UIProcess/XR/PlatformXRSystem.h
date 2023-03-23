@@ -30,10 +30,10 @@
 #include "MessageReceiver.h"
 #include "PlatformXRCoordinator.h"
 #include "ProcessThrottler.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include <CyberCore/PlatformXR.h>
 
-namespace WebCore {
+namespace CyberCore {
 class SecurityOriginData;
 }
 
@@ -64,8 +64,8 @@ private:
 
     // Message handlers
     void enumerateImmersiveXRDevices(CompletionHandler<void(Vector<XRDeviceInfo>&&)>&&);
-    void requestPermissionOnSessionFeatures(const WebCore::SecurityOriginData&, PlatformXR::SessionMode, const PlatformXR::Device::FeatureList&, const PlatformXR::Device::FeatureList&, const PlatformXR::Device::FeatureList&, CompletionHandler<void(std::optional<PlatformXR::Device::FeatureList>&&)>&&);
-    void initializeTrackingAndRendering(const WebCore::SecurityOriginData&, PlatformXR::SessionMode, const PlatformXR::Device::FeatureList&);
+    void requestPermissionOnSessionFeatures(const CyberCore::SecurityOriginData&, PlatformXR::SessionMode, const PlatformXR::Device::FeatureList&, const PlatformXR::Device::FeatureList&, const PlatformXR::Device::FeatureList&, CompletionHandler<void(std::optional<PlatformXR::Device::FeatureList>&&)>&&);
+    void initializeTrackingAndRendering(const CyberCore::SecurityOriginData&, PlatformXR::SessionMode, const PlatformXR::Device::FeatureList&);
     void shutDownTrackingAndRendering();
     void requestFrame(CompletionHandler<void(PlatformXR::Device::FrameData&&)>&&);
     void submitFrame();

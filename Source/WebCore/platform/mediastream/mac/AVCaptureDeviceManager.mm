@@ -44,9 +44,9 @@
 
 #import <pal/cocoa/AVFoundationSoftLink.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
-@interface WebCoreAVCaptureDeviceManagerObserver : NSObject
+@interface CyberCoreAVCaptureDeviceManagerObserver : NSObject
 {
     AVCaptureDeviceManager* m_callback;
 }
@@ -57,7 +57,7 @@ using namespace WebCore;
 -(void)observeValueForKeyPath:keyPath ofObject:(id)object change:(NSDictionary*)change context:(void*)context;
 @end
 
-namespace WebCore {
+namespace CyberCore {
 
 static NSMutableArray<NSString*>* cameraCaptureDeviceTypes()
 {
@@ -265,7 +265,7 @@ AVCaptureDeviceManager& AVCaptureDeviceManager::singleton()
 }
 
 AVCaptureDeviceManager::AVCaptureDeviceManager()
-    : m_objcObserver(adoptNS([[WebCoreAVCaptureDeviceManagerObserver alloc] initWithCallback:this]))
+    : m_objcObserver(adoptNS([[CyberCoreAVCaptureDeviceManagerObserver alloc] initWithCallback:this]))
     , m_avCaptureDeviceTypes(adoptNS(cameraCaptureDeviceTypes()))
     , m_dispatchQueue(WorkQueue::create("com.apple.WebKit.AVCaptureDeviceManager"))
 {
@@ -289,9 +289,9 @@ void AVCaptureDeviceManager::registerForDeviceNotifications()
     [PAL::getAVCaptureDeviceDiscoverySessionClass() addObserver:m_objcObserver.get() forKeyPath:@"devices" options:(NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew) context:nil];
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
-@implementation WebCoreAVCaptureDeviceManagerObserver
+@implementation CyberCoreAVCaptureDeviceManagerObserver
 
 - (id)initWithCallback:(AVCaptureDeviceManager*)callback
 {

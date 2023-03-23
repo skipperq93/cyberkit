@@ -385,7 +385,7 @@ TEST(IPCTestingAPI, DescribesArguments)
     TestWebKitAPI::Util::run(&done);
 
     EXPECT_STREQ([[webView stringByEvaluatingJavaScript:@"args.length"] UTF8String], "3");
-    EXPECT_STREQ([[webView stringByEvaluatingJavaScript:@"args[0].type"] UTF8String], "WebCore::FrameIdentifier");
+    EXPECT_STREQ([[webView stringByEvaluatingJavaScript:@"args[0].type"] UTF8String], "CyberCore::FrameIdentifier");
     EXPECT_STREQ([[webView stringByEvaluatingJavaScript:@"args[1].type"] UTF8String], "WebKit::FrameInfoData");
     EXPECT_STREQ([[webView stringByEvaluatingJavaScript:@"args[2].name"] UTF8String], "message");
     EXPECT_STREQ([[webView stringByEvaluatingJavaScript:@"args[2].type"] UTF8String], "String");
@@ -529,7 +529,7 @@ static NSMutableSet<NSString *> *extractTypesFromContainers(NSSet<NSString *> *i
             @"std::optional",
             @"OptionSet",
             @"RetainPtr",
-            @"WebCore::RectEdges"
+            @"CyberCore::RectEdges"
         ];
         for (NSString *container in containerTypes) {
             if ([input hasPrefix:[container stringByAppendingString:@"<"]]
@@ -560,7 +560,7 @@ TEST(IPCTestingAPI, SerializedTypeInfo)
         @"name": @"ignoreVary",
         @"type": @"bool"
     }];
-    EXPECT_TRUE([typeInfo[@"WebCore::CacheQueryOptions"] isEqualToArray:expectedArray]);
+    EXPECT_TRUE([typeInfo[@"CyberCore::CacheQueryOptions"] isEqualToArray:expectedArray]);
     NSDictionary *expectedDictionary = @{
         @"isOptionSet" : @1,
         @"size" : @1,
@@ -571,7 +571,7 @@ TEST(IPCTestingAPI, SerializedTypeInfo)
     EXPECT_TRUE([enumInfo[@"WebKit::WebsiteDataFetchOption"] isEqualToDictionary:expectedDictionary]);
 
     NSArray *objectIdentifiers = [webView objectByEvaluatingJavaScript:@"IPC.objectIdentifiers"];
-    EXPECT_TRUE([objectIdentifiers containsObject:@"WebCore::PageIdentifier"]);
+    EXPECT_TRUE([objectIdentifiers containsObject:@"CyberCore::PageIdentifier"]);
 
     NSMutableSet<NSString *> *typesNeedingDescriptions = NSMutableSet.set;
     NSDictionary *messages = [webView objectByEvaluatingJavaScript:@"IPC.messages"];

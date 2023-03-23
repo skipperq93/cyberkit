@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -17,16 +17,16 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitDOMHTMLMapElementPrivate_h
-#define WebKitDOMHTMLMapElementPrivate_h
+#ifndef CyberKitDOMHTMLMapElementPrivate_h
+#define CyberKitDOMHTMLMapElementPrivate_h
 
 #include <CyberCore/HTMLMapElement.h>
-#include <webkitdom/WebKitDOMHTMLMapElement.h>
+#include <webkitdom/CyberKitDOMHTMLMapElement.h>
 
-namespace WebKit {
-WebKitDOMHTMLMapElement* wrapHTMLMapElement(WebCore::HTMLMapElement*);
-WebKitDOMHTMLMapElement* kit(WebCore::HTMLMapElement*);
-WebCore::HTMLMapElement* core(WebKitDOMHTMLMapElement*);
-} // namespace WebKit
+namespace CyberKit {
+CyberKitDOMHTMLMapElement* wrapHTMLMapElement(CyberCore::HTMLMapElement*);
+CyberKitDOMHTMLMapElement* kit(CyberCore::HTMLMapElement*);
+CyberCore::HTMLMapElement* core(CyberKitDOMHTMLMapElement*);
+} // namespace CyberKit
 
-#endif /* WebKitDOMHTMLMapElementPrivate_h */
+#endif /* CyberKitDOMHTMLMapElementPrivate_h */

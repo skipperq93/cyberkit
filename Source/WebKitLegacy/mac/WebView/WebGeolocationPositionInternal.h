@@ -27,8 +27,8 @@
 
 #import <optional>
 
-namespace WebCore {
+namespace CyberCore {
 class GeolocationPositionData;
 }
 
-std::optional<WebCore::GeolocationPositionData> core(WebGeolocationPosition *);
+std::optional<CyberCore::GeolocationPositionData> core(WebGeolocationPosition *);

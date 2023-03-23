@@ -45,8 +45,8 @@
 #import <CyberCore/QuickLook.h>
 #endif
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 void WebFrameLoaderClient::didRestoreFrameHierarchyForCachedFrame()
 {
@@ -58,7 +58,7 @@ bool WebFrameLoaderClient::forceLayoutOnRestoreFromBackForwardCache()
     return false;
 }
 
-RetainPtr<CFDictionaryRef> WebFrameLoaderClient::connectionProperties(DocumentLoader*, WebCore::ResourceLoaderIdentifier)
+RetainPtr<CFDictionaryRef> WebFrameLoaderClient::connectionProperties(DocumentLoader*, CyberCore::ResourceLoaderIdentifier)
 {
     notImplemented();
     return nullptr;
@@ -78,6 +78,6 @@ RefPtr<LegacyPreviewLoaderClient> WebFrameLoaderClient::createPreviewLoaderClien
 }
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(IOS_FAMILY)

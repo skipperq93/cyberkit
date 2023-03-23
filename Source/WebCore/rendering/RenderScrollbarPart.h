@@ -28,7 +28,7 @@
 #include "RenderBlock.h"
 #include "ScrollTypes.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderScrollbar;
 
@@ -71,6 +71,6 @@ private:
     ScrollbarPart m_part;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderScrollbarPart, isRenderScrollbarPart())

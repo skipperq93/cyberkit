@@ -30,7 +30,7 @@ void webkitDownloadStarted(WebKitDownload*);
 bool webkitDownloadIsCancelled(WebKitDownload*);
 void webkitDownloadSetResponse(WebKitDownload*, WebKitURIResponse*);
 void webkitDownloadNotifyProgress(WebKitDownload*, guint64 bytesReceived);
-void webkitDownloadFailed(WebKitDownload*, const WebCore::ResourceError&);
+void webkitDownloadFailed(WebKitDownload*, const CyberCore::ResourceError&);
 void webkitDownloadCancelled(WebKitDownload*);
 void webkitDownloadFinished(WebKitDownload*);
 String webkitDownloadDecideDestinationWithSuggestedFilename(WebKitDownload*, const CString& suggestedFilename, bool& allowOverwrite);

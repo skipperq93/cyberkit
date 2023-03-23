@@ -29,7 +29,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SharedBuffer;
 
@@ -43,4 +43,4 @@ public:
     virtual void didRequestPassword(Function<void(const String&)>&& completionHandler) { completionHandler(emptyString()); }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

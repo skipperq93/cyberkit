@@ -35,7 +35,7 @@
 #include "FontCascade.h"
 #include <wtf/text/StringHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace Style {
 
 MatchedDeclarationsCache::MatchedDeclarationsCache()

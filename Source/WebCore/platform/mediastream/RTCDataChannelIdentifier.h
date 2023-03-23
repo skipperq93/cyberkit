@@ -27,11 +27,11 @@
 #include "ProcessIdentifier.h"
 #include "RTCDataChannelLocalIdentifier.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct RTCDataChannelIdentifier {
     ProcessIdentifier processIdentifier;
     RTCDataChannelLocalIdentifier channelIdentifier;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

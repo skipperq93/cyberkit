@@ -32,7 +32,7 @@
 #include "WebAudioSourceProviderCocoa.h"
 #include <wtf/MediaTime.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class MediaStreamTrackAudioSourceProviderCocoa final
     : public WebAudioSourceProviderCocoa

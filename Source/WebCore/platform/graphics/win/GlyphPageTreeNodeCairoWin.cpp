@@ -33,7 +33,7 @@
 #include "HWndDC.h"
 #include <wtf/text/win/WCharStringExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 bool GlyphPage::fill(UChar* buffer, unsigned bufferLength)
 {

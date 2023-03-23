@@ -24,24 +24,24 @@
  */
 
 messages -> WebUserContentController {
-    AddContentWorlds(Vector<std::pair<WebKit::ContentWorldIdentifier, String>> worlds);
-    RemoveContentWorlds(Vector<WebKit::ContentWorldIdentifier> worldIdentifiers);
+    AddContentWorlds(Vector<std::pair<CyberKit::ContentWorldIdentifier, String>> worlds);
+    RemoveContentWorlds(Vector<CyberKit::ContentWorldIdentifier> worldIdentifiers);
 
-    AddUserScripts(Vector<WebKit::WebUserScriptData> userScripts, enum:bool WebKit::InjectUserScriptImmediately immediately);
-    RemoveUserScript(WebKit::ContentWorldIdentifier worldIdentifier, uint64_t identifier);
-    RemoveAllUserScripts(Vector<WebKit::ContentWorldIdentifier> worldIdentifiers);
+    AddUserScripts(Vector<CyberKit::WebUserScriptData> userScripts, enum:bool CyberKit::InjectUserScriptImmediately immediately);
+    RemoveUserScript(CyberKit::ContentWorldIdentifier worldIdentifier, uint64_t identifier);
+    RemoveAllUserScripts(Vector<CyberKit::ContentWorldIdentifier> worldIdentifiers);
 
-    AddUserStyleSheets(Vector<WebKit::WebUserStyleSheetData> userStyleSheets);
-    RemoveUserStyleSheet(WebKit::ContentWorldIdentifier worldIdentifier, uint64_t identifier);
-    RemoveAllUserStyleSheets(Vector<WebKit::ContentWorldIdentifier> worldIdentifiers);
+    AddUserStyleSheets(Vector<CyberKit::WebUserStyleSheetData> userStyleSheets);
+    RemoveUserStyleSheet(CyberKit::ContentWorldIdentifier worldIdentifier, uint64_t identifier);
+    RemoveAllUserStyleSheets(Vector<CyberKit::ContentWorldIdentifier> worldIdentifiers);
 
-    AddUserScriptMessageHandlers(Vector<WebKit::WebScriptMessageHandlerData> scriptMessageHandlers);
-    RemoveUserScriptMessageHandler(WebKit::ContentWorldIdentifier worldIdentifier, uint64_t identifier);
-    RemoveAllUserScriptMessageHandlersForWorlds(Vector<WebKit::ContentWorldIdentifier> worldIdentifiers);
+    AddUserScriptMessageHandlers(Vector<CyberKit::WebScriptMessageHandlerData> scriptMessageHandlers);
+    RemoveUserScriptMessageHandler(CyberKit::ContentWorldIdentifier worldIdentifier, uint64_t identifier);
+    RemoveAllUserScriptMessageHandlersForWorlds(Vector<CyberKit::ContentWorldIdentifier> worldIdentifiers);
     RemoveAllUserScriptMessageHandlers();
 
 #if ENABLE(CONTENT_EXTENSIONS)
-    AddContentRuleLists(Vector<std::pair<WebKit::WebCompiledContentRuleListData, URL>> contentFilters);
+    AddContentRuleLists(Vector<std::pair<CyberKit::WebCompiledContentRuleListData, URL>> contentFilters);
     RemoveContentRuleList(String name);
     RemoveAllContentRuleLists();
 #endif

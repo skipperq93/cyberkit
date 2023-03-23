@@ -31,7 +31,7 @@
 #include "WebPage.h"
 #include "WebPageGroupProxy.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 InjectedBundleClient::InjectedBundleClient(const WKBundleClientBase* client)
 {
@@ -70,4 +70,4 @@ void InjectedBundleClient::didReceiveMessageToPage(InjectedBundle& bundle, WebPa
     m_client.didReceiveMessageToPage(toAPI(&bundle), toAPI(&page), toAPI(messageName.impl()), toAPI(messageBody), m_client.base.clientInfo);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -56,7 +56,7 @@ namespace WTF {
 class TextStream;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class Animation;
 class GraphicsContext;
@@ -788,30 +788,30 @@ protected:
 #endif
 };
 
-WEBCORE_EXPORT WTF::TextStream& operator<<(WTF::TextStream&, const WebCore::GraphicsLayerPaintingPhase);
+WEBCORE_EXPORT WTF::TextStream& operator<<(WTF::TextStream&, const CyberCore::GraphicsLayerPaintingPhase);
 WEBCORE_EXPORT WTF::TextStream& operator<<(WTF::TextStream&, const Vector<GraphicsLayer::PlatformLayerID>&);
 WEBCORE_EXPORT WTF::TextStream& operator<<(WTF::TextStream&, const GraphicsLayer::CustomAppearance&);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #define SPECIALIZE_TYPE_TRAITS_GRAPHICSLAYER(ToValueTypeName, predicate) \
 SPECIALIZE_TYPE_TRAITS_BEGIN(ToValueTypeName) \
-    static bool isType(const WebCore::GraphicsLayer& layer) { return layer.predicate; } \
+    static bool isType(const CyberCore::GraphicsLayer& layer) { return layer.predicate; } \
 SPECIALIZE_TYPE_TRAITS_END()
 
 #if ENABLE(TREE_DEBUGGING)
-// Outside the WebCore namespace for ease of invocation from the debugger.
-void showGraphicsLayerTree(const WebCore::GraphicsLayer* layer);
+// Outside the CyberCore namespace for ease of invocation from the debugger.
+void showGraphicsLayerTree(const CyberCore::GraphicsLayer* layer);
 #endif
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::GraphicsLayer::CustomAppearance> {
+template<> struct EnumTraits<CyberCore::GraphicsLayer::CustomAppearance> {
     using values = EnumValues<
-        WebCore::GraphicsLayer::CustomAppearance,
-        WebCore::GraphicsLayer::CustomAppearance::None,
-        WebCore::GraphicsLayer::CustomAppearance::ScrollingOverhang,
-        WebCore::GraphicsLayer::CustomAppearance::ScrollingShadow
+        CyberCore::GraphicsLayer::CustomAppearance,
+        CyberCore::GraphicsLayer::CustomAppearance::None,
+        CyberCore::GraphicsLayer::CustomAppearance::ScrollingOverhang,
+        CyberCore::GraphicsLayer::CustomAppearance::ScrollingShadow
     >;
 };
 

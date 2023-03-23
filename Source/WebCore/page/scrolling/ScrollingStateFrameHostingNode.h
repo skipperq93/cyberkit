@@ -29,7 +29,7 @@
 
 #include "ScrollingStateNode.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class Scrollbar;
 
@@ -47,7 +47,7 @@ private:
     ScrollingStateFrameHostingNode(const ScrollingStateFrameHostingNode&, ScrollingStateTree&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_SCROLLING_STATE_NODE(ScrollingStateFrameHostingNode, isFrameHostingNode())
 

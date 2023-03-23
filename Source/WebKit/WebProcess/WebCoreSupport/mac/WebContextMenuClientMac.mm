@@ -28,7 +28,7 @@
 
 #if ENABLE(CONTEXT_MENUS)
 
-#import "WebCoreArgumentCoders.h"
+#import "CyberCoreArgumentCoders.h"
 #import "WebPage.h"
 #import "WebPageProxyMessages.h"
 #import <CyberCore/DictionaryLookup.h>
@@ -40,8 +40,8 @@
 #import <CyberCore/TranslationContextMenuInfo.h>
 #import <wtf/text/WTFString.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 void WebContextMenuClient::lookUpInDictionary(Frame* frame)
 {
@@ -72,8 +72,8 @@ void WebContextMenuClient::searchWithGoogle(const Frame* frame)
 void WebContextMenuClient::searchWithSpotlight()
 {
     // FIXME: Why do we need to search all the frames like this?
-    // Isn't there any function in WebCore that can do this?
-    // If not, can we find a place in WebCore to put this?
+    // Isn't there any function in CyberCore that can do this?
+    // If not, can we find a place in CyberCore to put this?
     auto* localMainFrame = dynamicDowncast<LocalFrame>(m_page->corePage()->mainFrame());
     if (!localMainFrame)
         return;
@@ -101,13 +101,13 @@ void WebContextMenuClient::searchWithSpotlight()
 
 #if HAVE(TRANSLATION_UI_SERVICES)
 
-void WebContextMenuClient::handleTranslation(const WebCore::TranslationContextMenuInfo& info)
+void WebContextMenuClient::handleTranslation(const CyberCore::TranslationContextMenuInfo& info)
 {
     m_page->send(Messages::WebPageProxy::HandleContextMenuTranslation(info));
 }
 
 #endif // HAVE(TRANSLATION_UI_SERVICES)
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(CONTEXT_MENUS)

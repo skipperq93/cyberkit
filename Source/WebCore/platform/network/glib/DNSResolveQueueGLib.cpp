@@ -35,7 +35,7 @@
 #include <wtf/glib/GUniquePtr.h>
 #include <wtf/text/CString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // Initially true to ensure prefetch stays disabled until we have proxy settings.
 static bool isUsingHttpProxy = true;
@@ -115,7 +115,7 @@ void DNSResolveQueueGLib::resolve(const String& hostname, uint64_t identifier, D
             return;
         }
 
-        Vector<WebCore::IPAddress> addressList;
+        Vector<CyberCore::IPAddress> addressList;
         for (auto* iter = addresses; iter; iter = g_list_next(iter)) {
             auto* address = G_INET_ADDRESS(iter->data);
             switch (g_inet_address_get_family(address)) {
@@ -138,7 +138,7 @@ void DNSResolveQueueGLib::resolve(const String& hostname, uint64_t identifier, D
         }
 
         if (addressList.isEmpty()) {
-            request->completionHandler(makeUnexpected(WebCore::DNSError::CannotResolve));
+            request->completionHandler(makeUnexpected(CyberCore::DNSError::CannotResolve));
             return;
         }
 
@@ -156,6 +156,6 @@ void DNSResolveQueueGLib::stopResolve(uint64_t identifier)
         g_cancellable_cancel(cancellable.get());
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(GLIB)

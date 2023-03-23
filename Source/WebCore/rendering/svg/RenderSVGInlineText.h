@@ -26,7 +26,7 @@
 #include "SVGTextLayoutAttributes.h"
 #include "Text.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGInlineTextBox;
 
@@ -70,6 +70,6 @@ private:
     SVGTextLayoutAttributes m_layoutAttributes;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderSVGInlineText, isSVGInlineText())

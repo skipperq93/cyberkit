@@ -42,7 +42,7 @@
 #import <CyberCore/GraphicsContextCG.h>
 #import <CyberCore/IOSurface.h>
 #import <CyberCore/PlatformScreen.h>
-#import <CyberKit/WebCoreThread.h>
+#import <CyberKit/CyberCoreThread.h>
 #import <pal/spi/cg/CoreGraphicsSPI.h>
 #import <pal/spi/cocoa/QuartzCoreSPI.h>
 #import <wtf/BlockObjCExceptions.h>
@@ -64,15 +64,15 @@ RefPtr<BitmapContext> createBitmapContextFromWebView(bool onscreen, bool increme
     int bufferWidth = ceil(viewSize.width * deviceScaleFactor);
     int bufferHeight = ceil(viewSize.height * deviceScaleFactor);
 
-    WebCore::FloatSize snapshotSize(viewSize);
+    CyberCore::FloatSize snapshotSize(viewSize);
     snapshotSize.scale(deviceScaleFactor);
 
 #if HAVE(IOSURFACE_RGB10)
-    WebCore::IOSurface::Format snapshotFormat = WebCore::screenSupportsExtendedColor() ? WebCore::IOSurface::Format::RGB10 : WebCore::IOSurface::Format::BGRA;
+    CyberCore::IOSurface::Format snapshotFormat = CyberCore::screenSupportsExtendedColor() ? CyberCore::IOSurface::Format::RGB10 : CyberCore::IOSurface::Format::BGRA;
 #else
-    WebCore::IOSurface::Format snapshotFormat = WebCore::IOSurface::Format::BGRA;
+    CyberCore::IOSurface::Format snapshotFormat = CyberCore::IOSurface::Format::BGRA;
 #endif
-    auto surface = WebCore::IOSurface::create(nullptr, WebCore::expandedIntSize(snapshotSize), WebCore::DestinationColorSpace::SRGB(), snapshotFormat);
+    auto surface = CyberCore::IOSurface::create(nullptr, CyberCore::expandedIntSize(snapshotSize), CyberCore::DestinationColorSpace::SRGB(), snapshotFormat);
     RetainPtr<CGImageRef> cgImage = surface->createImage();
 
     size_t bitmapRowBytes = 0;

@@ -73,12 +73,12 @@
 #import <wtf/cocoa/VectorCocoa.h>
 #import <wtf/text/TextStream.h>
 
-using namespace WebCore::HTMLNames;
+using namespace CyberCore::HTMLNames;
 using namespace WTF::Unicode;
 
 using JSC::JSLockHolder;
 
-namespace WebCore {
+namespace CyberCore {
 
 // Create <html><body (style="...")></body></html> doing minimal amount of work.
 void Frame::initWithSimpleHTMLDocument(const AtomString& style, const URL& url)
@@ -846,6 +846,6 @@ void Frame::resetAllGeolocationPermission()
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(IOS_FAMILY)

@@ -34,7 +34,7 @@
 #include "markup.h"
 #include "windows.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 const int DragController::MaxOriginalImageArea = 1500 * 1500;
 const int DragController::DragIconRightInset = 7;
@@ -46,8 +46,8 @@ std::optional<DragOperation> DragController::dragOperation(const DragData& dragD
 {
     // FIXME: To match the macOS behaviour we should return std::nullopt.
     // If we are a modal window, we are the drag source, or the window is an attached sheet.
-    // If this can be determined from within WebCore operationForDrag can be pulled into
-    // WebCore itself.
+    // If this can be determined from within CyberCore operationForDrag can be pulled into
+    // CyberCore itself.
     if (dragData.containsURL() && !m_didInitiateDrag)
         return DragOperation::Copy;
     return std::nullopt;

@@ -36,7 +36,7 @@
 OBJC_CLASS WebCaptionUserPreferencesMediaAFWeakObserver;
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class CaptionUserPreferencesMediaAF : public CaptionUserPreferences {
     WTF_MAKE_FAST_ALLOCATED;
@@ -119,6 +119,6 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(VIDEO)

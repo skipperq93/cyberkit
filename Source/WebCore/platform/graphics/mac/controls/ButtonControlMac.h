@@ -29,7 +29,7 @@
 
 #import "ControlMac.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ButtonControlMac : public ControlMac {
 public:
@@ -41,6 +41,6 @@ protected:
     RetainPtr<NSButtonCell> m_buttonCell;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(MAC)

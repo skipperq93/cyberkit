@@ -32,28 +32,28 @@
 #include <CyberCore/WebAudioSourceProviderCocoa.h>
 #include <wtf/LoggerHelper.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class RemoteAudioSourceProvider final
-    : public WebCore::WebAudioSourceProviderCocoa
+    : public CyberCore::WebAudioSourceProviderCocoa
 #if !RELEASE_LOG_DISABLED
     , protected WTF::LoggerHelper
 #endif
 {
 public:
-    static Ref<RemoteAudioSourceProvider> create(WebCore::MediaPlayerIdentifier, WTF::LoggerHelper&);
+    static Ref<RemoteAudioSourceProvider> create(CyberCore::MediaPlayerIdentifier, WTF::LoggerHelper&);
     ~RemoteAudioSourceProvider();
 
-    void audioSamplesAvailable(const WebCore::PlatformAudioData&, const WebCore::AudioStreamDescription&, size_t);
+    void audioSamplesAvailable(const CyberCore::PlatformAudioData&, const CyberCore::AudioStreamDescription&, size_t);
     void close();
 
-    WebCore::MediaPlayerIdentifier identifier() const { return m_identifier; }
+    CyberCore::MediaPlayerIdentifier identifier() const { return m_identifier; }
 
 private:
-    RemoteAudioSourceProvider(WebCore::MediaPlayerIdentifier, WTF::LoggerHelper&);
+    RemoteAudioSourceProvider(CyberCore::MediaPlayerIdentifier, WTF::LoggerHelper&);
 
-    // WebCore::WebAudioSourceProviderCocoa
-    void hasNewClient(WebCore::AudioSourceProviderClient*) final;
+    // CyberCore::WebAudioSourceProviderCocoa
+    void hasNewClient(CyberCore::AudioSourceProviderClient*) final;
 
 #if !RELEASE_LOG_DISABLED
     WTF::LoggerHelper& loggerHelper() final { return *this; }
@@ -65,7 +65,7 @@ private:
     WTFLogChannel& logChannel() const final;
 #endif
 
-    WebCore::MediaPlayerIdentifier m_identifier;
+    CyberCore::MediaPlayerIdentifier m_identifier;
     WeakPtr<GPUProcessConnection> m_gpuProcessConnection;
 #if !RELEASE_LOG_DISABLED
     Ref<const Logger> m_logger;
@@ -73,6 +73,6 @@ private:
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS) && ENABLE(WEB_AUDIO) && PLATFORM(COCOA)

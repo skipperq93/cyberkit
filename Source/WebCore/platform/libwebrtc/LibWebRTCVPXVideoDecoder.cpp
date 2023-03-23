@@ -50,7 +50,7 @@ ALLOW_UNUSED_PARAMETERS_END
 
 #include "CoreVideoSoftLink.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static WorkQueue& vpxDecoderQueue()
 {

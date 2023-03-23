@@ -34,7 +34,7 @@
 #import <wtf/cocoa/VectorCocoa.h>
 #import <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 constexpr NSString * const WKExplicitBeginTimeFlag = @"WKPlatformCAAnimationExplicitBeginTimeFlag";
 
@@ -597,4 +597,4 @@ void PlatformCAAnimationCocoa::copyAnimationsFrom(const PlatformCAAnimation& val
     [static_cast<CAAnimationGroup *>(m_animation.get()) setAnimations:[other animations]];
 }
 
-} // namespace WebCore
+} // namespace CyberCore

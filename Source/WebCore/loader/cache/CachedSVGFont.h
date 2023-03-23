@@ -27,7 +27,7 @@
 
 #include "CachedFont.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class FontCreationContext;
 class SVGFontFaceElement;
@@ -55,6 +55,6 @@ private:
     const Ref<const Settings> m_settings;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CACHED_RESOURCE(CachedSVGFont, CachedResource::Type::SVGFontResource)

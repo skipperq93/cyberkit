@@ -32,7 +32,7 @@
 #include <wtf/text/StringHash.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RegistrableDomain {
     WTF_MAKE_FAST_ALLOCATED;
@@ -141,15 +141,15 @@ inline bool areRegistrableDomainsEqual(const URL& a, const URL& b)
     return RegistrableDomain(a).matches(b);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
-template<> struct DefaultHash<WebCore::RegistrableDomain> : WebCore::RegistrableDomain::RegistrableDomainHash { };
-template<> struct HashTraits<WebCore::RegistrableDomain> : SimpleClassHashTraits<WebCore::RegistrableDomain> { };
+template<> struct DefaultHash<CyberCore::RegistrableDomain> : CyberCore::RegistrableDomain::RegistrableDomainHash { };
+template<> struct HashTraits<CyberCore::RegistrableDomain> : SimpleClassHashTraits<CyberCore::RegistrableDomain> { };
 
-template<> class StringTypeAdapter<WebCore::RegistrableDomain, void> : public StringTypeAdapter<String, void> {
+template<> class StringTypeAdapter<CyberCore::RegistrableDomain, void> : public StringTypeAdapter<String, void> {
 public:
-    StringTypeAdapter(const WebCore::RegistrableDomain& domain)
+    StringTypeAdapter(const CyberCore::RegistrableDomain& domain)
         : StringTypeAdapter<String, void>(domain.string())
     { }
 };

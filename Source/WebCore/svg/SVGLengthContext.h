@@ -25,7 +25,7 @@
 #include "SVGLengthValue.h"
 #include "SVGUnitTypes.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGElement;
 
@@ -70,4 +70,4 @@ private:
     mutable std::optional<FloatSize> m_viewportSize;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -23,7 +23,7 @@
 #include "TextRun.h"
 #include "WidthIterator.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderElement;
 class RenderSVGInlineText;
@@ -61,4 +61,4 @@ private:
     SVGTextMetrics m_complexStartToCurrentMetrics;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -37,7 +37,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/ThreadSafeWeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class GraphicsContext;
 
@@ -81,4 +81,4 @@ private:
     RenderingResourceIdentifier m_renderingResourceIdentifier;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

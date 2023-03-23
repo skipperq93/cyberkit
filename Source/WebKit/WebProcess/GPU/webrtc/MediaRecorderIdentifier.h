@@ -27,9 +27,9 @@
 
 #include <wtf/ObjectIdentifier.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 enum MediaRecorderIdentifierType { };
 using MediaRecorderIdentifier = ObjectIdentifier<MediaRecorderIdentifierType>;
 
-} // namespace WebKit
+} // namespace CyberKit

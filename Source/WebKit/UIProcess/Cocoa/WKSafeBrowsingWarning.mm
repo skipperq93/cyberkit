@@ -30,7 +30,7 @@
 #import "SafeBrowsingWarning.h"
 #import <CyberCore/FontCocoa.h>
 #import <CyberCore/LocalizedStrings.h>
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 #import <wtf/URL.h>
 #import <wtf/BlockPtr.h>
 #import <wtf/Language.h>
@@ -78,7 +78,7 @@ enum class WarningTextSize : uint8_t {
     Body
 };
 
-static WebCore::CocoaFont *fontOfSize(WarningTextSize size)
+static CyberCore::CocoaFont *fontOfSize(WarningTextSize size)
 {
 #if PLATFORM(MAC)
     switch (size) {
@@ -103,12 +103,12 @@ static WebCore::CocoaFont *fontOfSize(WarningTextSize size)
 #endif
 }
 
-static WebCore::CocoaColor *colorForItem(WarningItem item, ViewType *warning)
+static CyberCore::CocoaColor *colorForItem(WarningItem item, ViewType *warning)
 {
     ASSERT([warning isKindOfClass:[WKSafeBrowsingWarning class]]);
 #if PLATFORM(MAC)
 
-    auto colorNamed = [] (NSString *name) -> WebCore::CocoaColor * {
+    auto colorNamed = [] (NSString *name) -> CyberCore::CocoaColor * {
 #if HAVE(SAFE_BROWSING)
         return [NSColor colorNamed:name bundle:[NSBundle bundleWithIdentifier:@"com.apple.WebKit"]];
 #else
@@ -262,7 +262,7 @@ static RetainPtr<ViewType> makeLabel(NSAttributedString *attributedString)
 
 @implementation WKSafeBrowsingBox
 
-- (void)setSafeBrowsingBackgroundColor:(WebCore::CocoaColor *)color
+- (void)setSafeBrowsingBackgroundColor:(CyberCore::CocoaColor *)color
 {
 #if PLATFORM(MAC)
     _backgroundColor = color;
@@ -436,7 +436,7 @@ static RetainPtr<ViewType> makeLabel(NSAttributedString *attributedString)
 #endif
 
     auto line = adoptNS([WKSafeBrowsingBox new]);
-    [line setSafeBrowsingBackgroundColor:[WebCore::CocoaColor lightGrayColor]];
+    [line setSafeBrowsingBackgroundColor:[CyberCore::CocoaColor lightGrayColor]];
     for (ViewType *view in @[details.get(), bottom.get(), line.get()])
         view.translatesAutoresizingMaskIntoConstraints = NO;
 

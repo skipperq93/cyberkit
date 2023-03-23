@@ -48,7 +48,7 @@
 #include <wtf/text/StringToIntegerConversion.h>
 #include <wtf/unicode/CharacterNames.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // True if characters which satisfy the predicate are present, incrementing
 // "pos" to the next character which does not satisfy the predicate.
@@ -591,7 +591,7 @@ OptionSet<ClearSiteDataValue> parseClearSiteDataHeader(const ResourceResponse& r
     if (headerValue.isEmpty())
         return result;
 
-    if (!WebCore::shouldTreatAsPotentiallyTrustworthy(response.url()))
+    if (!CyberCore::shouldTreatAsPotentiallyTrustworthy(response.url()))
         return result;
 
     for (auto value : StringView(headerValue).split(',')) {

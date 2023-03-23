@@ -33,7 +33,7 @@
 #include <wtf/WeakPtr.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 class SecurityOrigin;
 }
 
@@ -43,7 +43,7 @@ class MediaKeySystemPermissionRequestManagerProxy;
 
 class MediaKeySystemPermissionRequestProxy : public RefCounted<MediaKeySystemPermissionRequestProxy> {
 public:
-    static Ref<MediaKeySystemPermissionRequestProxy> create(MediaKeySystemPermissionRequestManagerProxy& manager, WebCore::MediaKeySystemRequestIdentifier mediaKeySystemID, WebCore::FrameIdentifier mainFrameID, WebCore::FrameIdentifier frameID, Ref<WebCore::SecurityOrigin>&& topLevelDocumentOrigin, const String& keySystem)
+    static Ref<MediaKeySystemPermissionRequestProxy> create(MediaKeySystemPermissionRequestManagerProxy& manager, CyberCore::MediaKeySystemRequestIdentifier mediaKeySystemID, CyberCore::FrameIdentifier mainFrameID, CyberCore::FrameIdentifier frameID, Ref<CyberCore::SecurityOrigin>&& topLevelDocumentOrigin, const String& keySystem)
     {
         return adoptRef(*new MediaKeySystemPermissionRequestProxy(manager, mediaKeySystemID, mainFrameID, frameID, WTFMove(topLevelDocumentOrigin), keySystem));
     }
@@ -53,25 +53,25 @@ public:
 
     void invalidate();
 
-    WebCore::MediaKeySystemRequestIdentifier mediaKeySystemID() const { return m_mediaKeySystemID; }
-    WebCore::FrameIdentifier mainFrameID() const { return m_mainFrameID; }
-    WebCore::FrameIdentifier frameID() const { return m_frameID; }
+    CyberCore::MediaKeySystemRequestIdentifier mediaKeySystemID() const { return m_mediaKeySystemID; }
+    CyberCore::FrameIdentifier mainFrameID() const { return m_mainFrameID; }
+    CyberCore::FrameIdentifier frameID() const { return m_frameID; }
 
-    WebCore::SecurityOrigin& topLevelDocumentSecurityOrigin() { return m_topLevelDocumentSecurityOrigin.get(); }
-    const WebCore::SecurityOrigin& topLevelDocumentSecurityOrigin() const { return m_topLevelDocumentSecurityOrigin.get(); }
+    CyberCore::SecurityOrigin& topLevelDocumentSecurityOrigin() { return m_topLevelDocumentSecurityOrigin.get(); }
+    const CyberCore::SecurityOrigin& topLevelDocumentSecurityOrigin() const { return m_topLevelDocumentSecurityOrigin.get(); }
 
     const String& keySystem() const { return m_keySystem; }
 
     void doDefaultAction();
 
 private:
-    MediaKeySystemPermissionRequestProxy(MediaKeySystemPermissionRequestManagerProxy&, WebCore::MediaKeySystemRequestIdentifier, WebCore::FrameIdentifier mainFrameID, WebCore::FrameIdentifier, Ref<WebCore::SecurityOrigin>&& topLevelDocumentOrigin, const String& keySystem);
+    MediaKeySystemPermissionRequestProxy(MediaKeySystemPermissionRequestManagerProxy&, CyberCore::MediaKeySystemRequestIdentifier, CyberCore::FrameIdentifier mainFrameID, CyberCore::FrameIdentifier, Ref<CyberCore::SecurityOrigin>&& topLevelDocumentOrigin, const String& keySystem);
 
     WeakPtr<MediaKeySystemPermissionRequestManagerProxy> m_manager;
-    WebCore::MediaKeySystemRequestIdentifier m_mediaKeySystemID;
-    WebCore::FrameIdentifier m_mainFrameID;
-    WebCore::FrameIdentifier m_frameID;
-    Ref<WebCore::SecurityOrigin> m_topLevelDocumentSecurityOrigin;
+    CyberCore::MediaKeySystemRequestIdentifier m_mediaKeySystemID;
+    CyberCore::FrameIdentifier m_mainFrameID;
+    CyberCore::FrameIdentifier m_frameID;
+    Ref<CyberCore::SecurityOrigin> m_topLevelDocumentSecurityOrigin;
     String m_keySystem;
 };
 

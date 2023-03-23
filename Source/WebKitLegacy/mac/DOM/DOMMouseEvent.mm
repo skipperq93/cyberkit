@@ -40,111 +40,111 @@
 #import <wtf/GetPtr.h>
 #import <wtf/URL.h>
 
-#define IMPL static_cast<WebCore::MouseEvent*>(reinterpret_cast<WebCore::Event*>(_internal))
+#define IMPL static_cast<CyberCore::MouseEvent*>(reinterpret_cast<CyberCore::Event*>(_internal))
 
 @implementation DOMMouseEvent
 
 - (int)screenX
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->screenX();
 }
 
 - (int)screenY
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->screenY();
 }
 
 - (int)clientX
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->clientX();
 }
 
 - (int)clientY
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->clientY();
 }
 
 - (BOOL)ctrlKey
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->ctrlKey();
 }
 
 - (BOOL)shiftKey
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->shiftKey();
 }
 
 - (BOOL)altKey
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->altKey();
 }
 
 - (BOOL)metaKey
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->metaKey();
 }
 
 - (short)button
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->button();
 }
 
 - (id <DOMEventTarget>)relatedTarget
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->relatedTarget()));
 }
 
 - (int)offsetX
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->offsetX();
 }
 
 - (int)offsetY
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->offsetY();
 }
 
 - (int)x
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->x();
 }
 
 - (int)y
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->y();
 }
 
 - (DOMNode *)fromElement
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->fromElement()));
 }
 
 - (DOMNode *)toElement
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->toElement()));
 }
 
 - (void)initMouseEvent:(NSString *)type canBubble:(BOOL)canBubble cancelable:(BOOL)cancelable view:(DOMAbstractView *)view detail:(int)detail screenX:(int)inScreenX screenY:(int)inScreenY clientX:(int)inClientX clientY:(int)inClientY ctrlKey:(BOOL)inCtrlKey altKey:(BOOL)inAltKey shiftKey:(BOOL)inShiftKey metaKey:(BOOL)inMetaKey button:(unsigned short)inButton relatedTarget:(id <DOMEventTarget>)inRelatedTarget
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     DOMNode* inRelatedTargetObjC = inRelatedTarget;
-    WebCore::Node* inRelatedTargetNode = core(inRelatedTargetObjC);
+    CyberCore::Node* inRelatedTargetNode = core(inRelatedTargetObjC);
     IMPL->initMouseEvent(type, canBubble, cancelable, toWindowProxy(view), detail, inScreenX, inScreenY, inClientX, inClientY, inCtrlKey, inAltKey, inShiftKey, inMetaKey, inButton, inRelatedTargetNode);
 }
 

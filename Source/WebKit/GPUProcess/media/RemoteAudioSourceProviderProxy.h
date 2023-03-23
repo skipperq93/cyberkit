@@ -34,7 +34,7 @@
 #include <CyberCore/MediaPlayerIdentifier.h>
 #include <wtf/ThreadSafeRefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 class AudioSourceProviderAVFObjC;
 class CARingBuffer;
 }
@@ -42,21 +42,21 @@ class CARingBuffer;
 namespace WebKit {
 
 class RemoteAudioSourceProviderProxy : public ThreadSafeRefCounted<RemoteAudioSourceProviderProxy>
-    , public WebCore::AudioSourceProviderClient {
+    , public CyberCore::AudioSourceProviderClient {
 public:
-    static Ref<RemoteAudioSourceProviderProxy> create(WebCore::MediaPlayerIdentifier, Ref<IPC::Connection>&&, WebCore::AudioSourceProviderAVFObjC&);
+    static Ref<RemoteAudioSourceProviderProxy> create(CyberCore::MediaPlayerIdentifier, Ref<IPC::Connection>&&, CyberCore::AudioSourceProviderAVFObjC&);
     ~RemoteAudioSourceProviderProxy();
 
     void newAudioSamples(uint64_t startFrame, uint64_t endFrame);
 
 private:
-    RemoteAudioSourceProviderProxy(WebCore::MediaPlayerIdentifier, Ref<IPC::Connection>&&);
-    std::unique_ptr<WebCore::CARingBuffer> configureAudioStorage(const WebCore::CAAudioStreamDescription&, size_t frameCount);
+    RemoteAudioSourceProviderProxy(CyberCore::MediaPlayerIdentifier, Ref<IPC::Connection>&&);
+    std::unique_ptr<CyberCore::CARingBuffer> configureAudioStorage(const CyberCore::CAAudioStreamDescription&, size_t frameCount);
 
     // AudioSourceProviderClient
     void setFormat(size_t numberOfChannels, float sampleRate) final { }
 
-    WebCore::MediaPlayerIdentifier m_identifier;
+    CyberCore::MediaPlayerIdentifier m_identifier;
     Ref<IPC::Connection> m_connection;
 };
 

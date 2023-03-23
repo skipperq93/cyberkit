@@ -28,11 +28,11 @@
 
 #import "WebBasePluginPackage.h"
 
-#import "WebKitLogging.h"
-#import "WebKitNSStringExtras.h"
+#import "CyberKitLogging.h"
+#import "CyberKitNSStringExtras.h"
 #import "WebPluginPackage.h"
 #import <CyberScriptCore/InitializeThreading.h>
-#import <CyberCore/WebCoreJITOperations.h>
+#import <CyberCore/CyberCoreJITOperations.h>
 #import <algorithm>
 #import <mach-o/arch.h>
 #import <mach-o/fat.h>
@@ -59,7 +59,7 @@ static constexpr auto QuickTimeCocoaPluginIdentifier = "com.apple.quicktime.webp
 #if !PLATFORM(IOS_FAMILY)
     JSC::initialize();
     WTF::initializeMainThread();
-    WebCore::populateJITOperations();
+    CyberCore::populateJITOperations();
 #endif
 }
 
@@ -139,7 +139,7 @@ static constexpr auto QuickTimeCocoaPluginIdentifier = "com.apple.quicktime.webp
         if (isEnabled && [isEnabled boolValue] == NO)
             continue;
 
-        WebCore::MimeClassInfo mimeClassInfo;
+        CyberCore::MimeClassInfo mimeClassInfo;
         
         NSArray *extensions = [[MIMEDictionary objectForKey:WebPluginExtensionsKey] _web_lowercaseStrings];
         for (NSString *extension in extensions) {
@@ -170,7 +170,7 @@ static constexpr auto QuickTimeCocoaPluginIdentifier = "com.apple.quicktime.webp
     pluginInfo.desc = description;
 
     pluginInfo.isApplicationPlugin = false;
-    pluginInfo.clientLoadPolicy = WebCore::PluginLoadClientPolicy::Undefined;
+    pluginInfo.clientLoadPolicy = CyberCore::PluginLoadClientPolicy::Undefined;
 #if PLATFORM(MAC)
     pluginInfo.bundleIdentifier = self.bundleIdentifier;
     pluginInfo.versionString = self.bundleVersion;
@@ -200,7 +200,7 @@ static constexpr auto QuickTimeCocoaPluginIdentifier = "com.apple.quicktime.webp
     return path;
 }
 
-- (const WebCore::PluginInfo&)pluginInfo
+- (const CyberCore::PluginInfo&)pluginInfo
 {
     return pluginInfo;
 }

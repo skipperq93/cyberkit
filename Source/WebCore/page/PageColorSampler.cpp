@@ -57,7 +57,7 @@
 #include <wtf/RefPtr.h>
 #include <wtf/URL.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static bool isValidSampleLocation(Document& document, const IntPoint& location)
 {
@@ -278,4 +278,4 @@ std::optional<Color> PageColorSampler::sampleTop(Page& page)
         return averageColor(Span { samples });
 }
 
-} // namespace WebCore
+} // namespace CyberCore

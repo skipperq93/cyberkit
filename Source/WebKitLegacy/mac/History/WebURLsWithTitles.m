@@ -31,7 +31,7 @@
 #import "WebURLsWithTitles.h"
 
 #import <CyberKitLegacy/WebNSURLExtras.h>
-#import <CyberKitLegacy/WebKitNSStringExtras.h>
+#import <CyberKitLegacy/CyberKitNSStringExtras.h>
 
 @implementation WebURLsWithTitles
 

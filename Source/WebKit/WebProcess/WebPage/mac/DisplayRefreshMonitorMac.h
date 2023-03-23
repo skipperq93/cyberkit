@@ -31,11 +31,11 @@
 #include <CyberCore/DisplayRefreshMonitor.h>
 #include <CyberCore/RunLoopObserver.h>
 
-namespace WebKit {
+namespace CyberKit {
 
-class DisplayRefreshMonitorMac final : public WebCore::DisplayRefreshMonitor {
+class DisplayRefreshMonitorMac final : public CyberCore::DisplayRefreshMonitor {
 public:
-    static Ref<DisplayRefreshMonitorMac> create(WebCore::PlatformDisplayID displayID)
+    static Ref<DisplayRefreshMonitorMac> create(CyberCore::PlatformDisplayID displayID)
     {
         return adoptRef(*new DisplayRefreshMonitorMac(displayID));
     }
@@ -43,22 +43,22 @@ public:
     virtual ~DisplayRefreshMonitorMac();
 
 private:
-    explicit DisplayRefreshMonitorMac(WebCore::PlatformDisplayID);
+    explicit DisplayRefreshMonitorMac(CyberCore::PlatformDisplayID);
 
-    void dispatchDisplayDidRefresh(const WebCore::DisplayUpdate&) final;
+    void dispatchDisplayDidRefresh(const CyberCore::DisplayUpdate&) final;
 
     bool startNotificationMechanism() final;
     void stopNotificationMechanism() final;
 
-    void adjustPreferredFramesPerSecond(WebCore::FramesPerSecond) final;
+    void adjustPreferredFramesPerSecond(CyberCore::FramesPerSecond) final;
 
     DisplayLinkObserverID m_observerID;
-    std::unique_ptr<WebCore::RunLoopObserver> m_runLoopObserver;
+    std::unique_ptr<CyberCore::RunLoopObserver> m_runLoopObserver;
 
     bool m_displayLinkIsActive { false };
     bool m_firstCallbackInCurrentRunloop { false };
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(MAC)

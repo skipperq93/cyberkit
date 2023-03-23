@@ -21,20 +21,20 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 messages -> EventDispatcher NotRefCounted {
-    WheelEvent(WebCore::PageIdentifier pageID, WebKit::WebWheelEvent event, WebCore::RectEdges<bool> rubberBandableEdges)
+    WheelEvent(CyberCore::PageIdentifier pageID, CyberKit::WebWheelEvent event, CyberCore::RectEdges<bool> rubberBandableEdges)
 #if ENABLE(IOS_TOUCH_EVENTS)
-    TouchEvent(WebCore::PageIdentifier pageID, WebKit::WebTouchEvent event) -> (bool handled) MainThreadCallback
-    TouchEventWithoutCallback(WebCore::PageIdentifier pageID, WebKit::WebTouchEvent event)
+    TouchEvent(CyberCore::PageIdentifier pageID, CyberKit::WebTouchEvent event) -> (bool handled) MainThreadCallback
+    TouchEventWithoutCallback(CyberCore::PageIdentifier pageID, CyberKit::WebTouchEvent event)
 #endif
 #if ENABLE(MAC_GESTURE_EVENTS)
-    GestureEvent(WebCore::PageIdentifier pageID, WebKit::WebGestureEvent event)
+    GestureEvent(CyberCore::PageIdentifier pageID, CyberKit::WebGestureEvent event)
 #endif
 #if HAVE(CVDISPLAYLINK)
-    DisplayDidRefresh(uint32_t displayID, struct WebCore::DisplayUpdate update, bool sendToMainThread)
+    DisplayDidRefresh(uint32_t displayID, struct CyberCore::DisplayUpdate update, bool sendToMainThread)
 #endif
 
 #if ENABLE(MOMENTUM_EVENT_DISPATCHER)
-    SetScrollingAccelerationCurve(WebCore::PageIdentifier pageID, std::optional<WebKit::ScrollingAccelerationCurve> curve)
+    SetScrollingAccelerationCurve(CyberCore::PageIdentifier pageID, std::optional<CyberKit::ScrollingAccelerationCurve> curve)
 #endif
-    PageScreenDidChange(WebCore::PageIdentifier pageID, uint32_t displayID, std::optional<unsigned> nominalFramesPerSecond)
+    PageScreenDidChange(CyberCore::PageIdentifier pageID, uint32_t displayID, std::optional<unsigned> nominalFramesPerSecond)
 }

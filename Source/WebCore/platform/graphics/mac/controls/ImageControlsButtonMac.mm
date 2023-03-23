@@ -34,7 +34,7 @@
 #import "ImageControlsButtonPart.h"
 #import <pal/spi/mac/NSServicesRolloverButtonCellSPI.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 ImageControlsButtonMac::ImageControlsButtonMac(ImageControlsButtonPart& owningPart, ControlFactoryMac& controlFactory, NSServicesRolloverButtonCell *servicesRolloverButtonCell)
     : ControlMac(owningPart, controlFactory)
@@ -57,6 +57,6 @@ void ImageControlsButtonMac::draw(GraphicsContext& context, const FloatRoundedRe
     drawCell(context, borderRect.rect(), deviceScaleFactor, style, m_servicesRolloverButtonCell.get(), true);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(MAC) && ENABLE(SERVICE_CONTROLS)

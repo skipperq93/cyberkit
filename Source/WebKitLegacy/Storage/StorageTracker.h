@@ -32,29 +32,29 @@
 #include <wtf/text/StringHash.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 class StorageThread;
 class SecurityOrigin;
 class StorageTrackerClient;
 class SecurityOriginData;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class StorageTracker {
     WTF_MAKE_NONCOPYABLE(StorageTracker);
     WTF_MAKE_FAST_ALLOCATED;
 public:
-    static void initializeTracker(const String& storagePath, WebCore::StorageTrackerClient*);
+    static void initializeTracker(const String& storagePath, CyberCore::StorageTrackerClient*);
     static StorageTracker& tracker();
 
     void setOriginDetails(const String& originIdentifier, const String& databaseFile);
     
     void deleteAllOrigins();
-    void deleteOrigin(const WebCore::SecurityOriginData&);
+    void deleteOrigin(const CyberCore::SecurityOriginData&);
     void deleteOriginWithIdentifier(const String& originIdentifier);
-    Vector<WebCore::SecurityOriginData> origins();
-    uint64_t diskUsageForOrigin(WebCore::SecurityOrigin*);
+    Vector<CyberCore::SecurityOriginData> origins();
+    uint64_t diskUsageForOrigin(CyberCore::SecurityOrigin*);
     
     void cancelDeletingOrigin(const String& originIdentifier);
     
@@ -95,11 +95,11 @@ private:
 
     // Mutex for m_database and m_storageDirectoryPath.
     Lock m_databaseMutex;
-    WebCore::SQLiteDatabase m_database;
+    CyberCore::SQLiteDatabase m_database;
     String m_storageDirectoryPath;
 
     Lock m_clientMutex;
-    WebCore::StorageTrackerClient* m_client;
+    CyberCore::StorageTrackerClient* m_client;
 
     // Guard for m_originSet and m_originsBeingDeleted.
     Lock m_originSetMutex;
@@ -107,11 +107,11 @@ private:
     OriginSet m_originSet;
     OriginSet m_originsBeingDeleted;
 
-    std::unique_ptr<WebCore::StorageThread> m_thread;
+    std::unique_ptr<CyberCore::StorageThread> m_thread;
     
     bool m_isActive;
     bool m_needsInitialization;
     Seconds m_StorageDatabaseIdleInterval;
 };
     
-} // namespace WebCore
+} // namespace CyberCore

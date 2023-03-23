@@ -31,7 +31,7 @@
 #include "XREye.h"
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct FakeXRViewInit {
     struct DeviceResolution {
@@ -52,6 +52,6 @@ struct FakeXRViewInit {
     std::optional<FieldOfViewInit> fieldOfView;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBXR)

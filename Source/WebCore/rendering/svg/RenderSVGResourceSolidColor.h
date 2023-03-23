@@ -23,7 +23,7 @@
 #include "FloatRect.h"
 #include "RenderSVGResource.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderObject;
 
@@ -49,6 +49,6 @@ private:
     Color m_color;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_SVG_RESOURCE(RenderSVGResourceSolidColor, SolidColorResourceType)

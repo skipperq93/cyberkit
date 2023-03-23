@@ -29,11 +29,11 @@
 #include "SVGElementTypeHelpers.h"
 #include "SVGLinearGradientElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 inline SVGLinearGradientElement& RenderSVGResourceLinearGradient::linearGradientElement() const
 {
     return downcast<SVGLinearGradientElement>(RenderSVGResourceGradient::gradientElement());
 }
 
-} // namespace WebCore
+} // namespace CyberCore

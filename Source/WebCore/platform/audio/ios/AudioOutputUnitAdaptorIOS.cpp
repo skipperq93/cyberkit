@@ -35,7 +35,7 @@
 #include "AudioSession.h"
 #include <pal/cf/AudioToolboxSoftLink.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 void AudioOutputUnitAdaptor::configure(float hardwareSampleRate, unsigned numberOfOutputChannels)
 {
@@ -99,7 +99,7 @@ void AudioOutputUnitAdaptor::configure(float hardwareSampleRate, unsigned number
     AudioSession::sharedSession().setPreferredBufferSize(kPreferredBufferSize);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO) && PLATFORM(IOS_FAMILY)
 

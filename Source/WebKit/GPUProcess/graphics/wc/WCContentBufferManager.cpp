@@ -36,11 +36,11 @@ namespace WebKit {
 class WCContentBufferManager::ProcessInfo {
     WTF_MAKE_FAST_ALLOCATED;
 public:
-    ProcessInfo(WCContentBufferManager& manager, WebCore::ProcessIdentifier processIdentifier)
+    ProcessInfo(WCContentBufferManager& manager, CyberCore::ProcessIdentifier processIdentifier)
         : m_manager(manager)
         , m_processIdentifier(processIdentifier) { }
 
-    std::optional<WCContentBufferIdentifier> acquireContentBufferIdentifier(WebCore::TextureMapperPlatformLayer* platformLayer)
+    std::optional<WCContentBufferIdentifier> acquireContentBufferIdentifier(CyberCore::TextureMapperPlatformLayer* platformLayer)
     {
         // FIXME: TextureMapperGCGLPlatformLayer doesn't support double buffering yet.
         // TextureMapperPlatformLayer can acquire a single WCContentBufferIdentifier.
@@ -68,8 +68,8 @@ public:
 
 private:
     WCContentBufferManager& m_manager;
-    WebCore::ProcessIdentifier m_processIdentifier;
-    HashMap<WebCore::TextureMapperPlatformLayer*, std::unique_ptr<WCContentBuffer>> m_contentBuffers;
+    CyberCore::ProcessIdentifier m_processIdentifier;
+    HashMap<CyberCore::TextureMapperPlatformLayer*, std::unique_ptr<WCContentBuffer>> m_contentBuffers;
     HashMap<WCContentBufferIdentifier, WCContentBuffer*> m_validIdentifiers;
 };
 
@@ -79,7 +79,7 @@ WCContentBufferManager& WCContentBufferManager::singleton()
     return contentBufferManager;
 }
 
-std::optional<WCContentBufferIdentifier> WCContentBufferManager::acquireContentBufferIdentifier(WebCore::ProcessIdentifier processIdentifier, WebCore::TextureMapperPlatformLayer* platformLayer)
+std::optional<WCContentBufferIdentifier> WCContentBufferManager::acquireContentBufferIdentifier(CyberCore::ProcessIdentifier processIdentifier, CyberCore::TextureMapperPlatformLayer* platformLayer)
 {
     auto processAddResult = m_processMap.ensure(processIdentifier, [&] {
         return makeUnique<ProcessInfo>(*this, processIdentifier);
@@ -87,19 +87,19 @@ std::optional<WCContentBufferIdentifier> WCContentBufferManager::acquireContentB
     return processAddResult.iterator->value->acquireContentBufferIdentifier(platformLayer);
 }
 
-WCContentBuffer* WCContentBufferManager::releaseContentBufferIdentifier(WebCore::ProcessIdentifier processIdentifier, WCContentBufferIdentifier contentBufferIdentifier)
+WCContentBuffer* WCContentBufferManager::releaseContentBufferIdentifier(CyberCore::ProcessIdentifier processIdentifier, WCContentBufferIdentifier contentBufferIdentifier)
 {
     ASSERT(m_processMap.contains(processIdentifier));
     return m_processMap.get(processIdentifier)->releaseContentBufferIdentifier(contentBufferIdentifier);
 }
 
-void WCContentBufferManager::removeContentBuffer(WebCore::ProcessIdentifier processIdentifier, WCContentBuffer& contentBuffer)
+void WCContentBufferManager::removeContentBuffer(CyberCore::ProcessIdentifier processIdentifier, WCContentBuffer& contentBuffer)
 {
     ASSERT(m_processMap.contains(processIdentifier));
     m_processMap.get(processIdentifier)->removeContentBuffer(contentBuffer);
 }
 
-void WCContentBufferManager::removeAllContentBuffersForProcess(WebCore::ProcessIdentifier processIdentifier)
+void WCContentBufferManager::removeAllContentBuffersForProcess(CyberCore::ProcessIdentifier processIdentifier)
 {
     m_processMap.remove(processIdentifier);
 }

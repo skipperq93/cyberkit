@@ -27,7 +27,7 @@
 
 #include "LayoutRect.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderElement;
 class RenderLayerModelObject;
@@ -53,4 +53,4 @@ private:
     bool m_repaintOutlineBounds;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

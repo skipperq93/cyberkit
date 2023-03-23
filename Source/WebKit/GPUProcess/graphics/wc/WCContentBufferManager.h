@@ -32,7 +32,7 @@
 #include <CyberCore/ProcessIdentifier.h>
 #include <wtf/HashMap.h>
 
-namespace WebCore {
+namespace CyberCore {
 class TextureMapperPlatformLayer;
 }
 
@@ -46,13 +46,13 @@ public:
 
     static WCContentBufferManager& singleton();
 
-    std::optional<WCContentBufferIdentifier> acquireContentBufferIdentifier(WebCore::ProcessIdentifier, WebCore::TextureMapperPlatformLayer*);
-    WCContentBuffer* releaseContentBufferIdentifier(WebCore::ProcessIdentifier, WCContentBufferIdentifier);
-    void removeContentBuffer(WebCore::ProcessIdentifier, WCContentBuffer&);
-    void removeAllContentBuffersForProcess(WebCore::ProcessIdentifier);
+    std::optional<WCContentBufferIdentifier> acquireContentBufferIdentifier(CyberCore::ProcessIdentifier, CyberCore::TextureMapperPlatformLayer*);
+    WCContentBuffer* releaseContentBufferIdentifier(CyberCore::ProcessIdentifier, WCContentBufferIdentifier);
+    void removeContentBuffer(CyberCore::ProcessIdentifier, WCContentBuffer&);
+    void removeAllContentBuffersForProcess(CyberCore::ProcessIdentifier);
 
 private:
-    HashMap<WebCore::ProcessIdentifier, std::unique_ptr<ProcessInfo>> m_processMap;
+    HashMap<CyberCore::ProcessIdentifier, std::unique_ptr<ProcessInfo>> m_processMap;
 };
 
 } // namespace WebKit

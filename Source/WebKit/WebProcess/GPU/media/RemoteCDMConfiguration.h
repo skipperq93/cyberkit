@@ -29,7 +29,7 @@
 
 #include <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 struct RemoteCDMConfiguration {
     Vector<AtomString> supportedInitDataTypes;
@@ -39,6 +39,6 @@ struct RemoteCDMConfiguration {
     uint64_t logIdentifier { 0 };
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

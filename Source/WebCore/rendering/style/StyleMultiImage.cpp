@@ -42,7 +42,7 @@
 #include "StyleNamedImage.h"
 #include "StylePaintImage.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 StyleMultiImage::StyleMultiImage(Type type)
     : StyleImage { type }
@@ -197,4 +197,4 @@ bool StyleMultiImage::knownToBeOpaque(const RenderElement& renderer) const
     return m_selectedImage && m_selectedImage->knownToBeOpaque(renderer);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

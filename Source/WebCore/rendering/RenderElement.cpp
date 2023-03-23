@@ -98,7 +98,7 @@
 #include "ContentChangeObserver.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(RenderElement);
 
@@ -721,7 +721,7 @@ RenderLayer* RenderElement::layerParent() const
 // This answers the question "if this renderer had a layer, what would its next sibling layer be".
 RenderLayer* RenderElement::layerNextSibling(RenderLayer& parentLayer) const
 {
-    return WebCore::layerNextSiblingRespectingTopLayer(*this, parentLayer);
+    return CyberCore::layerNextSiblingRespectingTopLayer(*this, parentLayer);
 }
 
 bool RenderElement::layerCreationAllowedForSubtree() const

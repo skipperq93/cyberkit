@@ -27,7 +27,7 @@
 
 OBJC_CLASS WKWebView;
 
-namespace WebCore {
+namespace CyberCore {
 class SecurityOriginData;
 }
 
@@ -39,7 +39,7 @@ class SecurityOriginData;
 @interface WKWebGeolocationPolicyDecider : NSObject
 + (instancetype)sharedPolicyDecider;
 
-- (void)decidePolicyForGeolocationRequestFromOrigin:(const WebCore::SecurityOriginData&)securityOrigin requestingURL:(NSURL *)requestingURL view:(WKWebView *)view listener:(id<WKWebAllowDenyPolicyListener>)listener;
+- (void)decidePolicyForGeolocationRequestFromOrigin:(const CyberCore::SecurityOriginData&)securityOrigin requestingURL:(NSURL *)requestingURL view:(WKWebView *)view listener:(id<WKWebAllowDenyPolicyListener>)listener;
 - (void)clearCache;
 
 @end

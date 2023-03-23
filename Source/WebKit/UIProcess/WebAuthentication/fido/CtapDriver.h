@@ -46,19 +46,19 @@ public:
 
     void setProtocol(fido::ProtocolVersion protocol) { m_protocol = protocol; }
 
-    WebCore::AuthenticatorTransport transport() const { return m_transport; }
+    CyberCore::AuthenticatorTransport transport() const { return m_transport; }
     fido::ProtocolVersion protocol() const { return m_protocol; }
 
     virtual void transact(Vector<uint8_t>&& data, ResponseCallback&&) = 0;
     virtual void cancel() { };
 
 protected:
-    CtapDriver(WebCore::AuthenticatorTransport transport)
+    CtapDriver(CyberCore::AuthenticatorTransport transport)
         : m_transport(transport) { }
 
 private:
     fido::ProtocolVersion m_protocol { fido::ProtocolVersion::kCtap };
-    WebCore::AuthenticatorTransport m_transport;
+    CyberCore::AuthenticatorTransport m_transport;
 };
 
 } // namespace WebKit

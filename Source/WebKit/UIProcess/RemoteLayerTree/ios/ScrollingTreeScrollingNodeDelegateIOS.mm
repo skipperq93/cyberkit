@@ -47,7 +47,7 @@
 #import <wtf/SetForScope.h>
 
 #if ENABLE(INTERACTION_REGIONS_IN_EVENT_REGION)
-#import <CyberCore/WebCoreCALayerExtras.h>
+#import <CyberCore/CyberCoreCALayerExtras.h>
 #endif
 
 @implementation WKScrollingNodeScrollViewDelegate
@@ -86,10 +86,10 @@
         auto touchActions = _scrollingTreeNodeDelegate->activeTouchActions();
         _scrollingTreeNodeDelegate->clearActiveTouchActions();
         
-        if (touchActions && !touchActions.containsAny({ WebCore::TouchAction::Auto, WebCore::TouchAction::Manipulation })) {
-            if (!touchActions.contains(WebCore::TouchAction::PanX))
+        if (touchActions && !touchActions.containsAny({ CyberCore::TouchAction::Auto, CyberCore::TouchAction::Manipulation })) {
+            if (!touchActions.contains(CyberCore::TouchAction::PanX))
                 targetContentOffset->x = scrollView.contentOffset.x;
-            if (!touchActions.contains(WebCore::TouchAction::PanY))
+            if (!touchActions.contains(CyberCore::TouchAction::PanY))
                 targetContentOffset->y = scrollView.contentOffset.y;
         }
     }
@@ -97,17 +97,17 @@
     std::optional<unsigned> originalHorizontalSnapPosition = _scrollingTreeNodeDelegate->scrollingNode().currentHorizontalSnapPointIndex();
     std::optional<unsigned> originalVerticalSnapPosition = _scrollingTreeNodeDelegate->scrollingNode().currentVerticalSnapPointIndex();
 
-    WebCore::FloatSize viewportSize(static_cast<float>(CGRectGetWidth([scrollView bounds])), static_cast<float>(CGRectGetHeight([scrollView bounds])));
+    CyberCore::FloatSize viewportSize(static_cast<float>(CGRectGetWidth([scrollView bounds])), static_cast<float>(CGRectGetHeight([scrollView bounds])));
     const auto& snapOffsetsInfo = _scrollingTreeNodeDelegate->scrollingNode().snapOffsetsInfo();
     if (!snapOffsetsInfo.horizontalSnapOffsets.isEmpty()) {
-        auto [potentialSnapPosition, index] = snapOffsetsInfo.closestSnapOffset(WebCore::ScrollEventAxis::Horizontal, viewportSize, WebCore::FloatPoint(*targetContentOffset), velocity.x, scrollView.contentOffset.x);
+        auto [potentialSnapPosition, index] = snapOffsetsInfo.closestSnapOffset(CyberCore::ScrollEventAxis::Horizontal, viewportSize, CyberCore::FloatPoint(*targetContentOffset), velocity.x, scrollView.contentOffset.x);
         _scrollingTreeNodeDelegate->scrollingNode().setCurrentHorizontalSnapPointIndex(index);
         if (targetContentOffset->x >= 0 && targetContentOffset->x <= scrollView.contentSize.width)
             targetContentOffset->x = potentialSnapPosition;
     }
 
     if (!snapOffsetsInfo.verticalSnapOffsets.isEmpty()) {
-        auto [potentialSnapPosition, index] = snapOffsetsInfo.closestSnapOffset(WebCore::ScrollEventAxis::Vertical, viewportSize, WebCore::FloatPoint(*targetContentOffset), velocity.y, scrollView.contentOffset.y);
+        auto [potentialSnapPosition, index] = snapOffsetsInfo.closestSnapOffset(CyberCore::ScrollEventAxis::Vertical, viewportSize, CyberCore::FloatPoint(*targetContentOffset), velocity.y, scrollView.contentOffset.y);
         _scrollingTreeNodeDelegate->scrollingNode().setCurrentVerticalSnapPointIndex(index);
         if (targetContentOffset->y >= 0 && targetContentOffset->y <= scrollView.contentSize.height)
             targetContentOffset->y = potentialSnapPosition;
@@ -153,18 +153,18 @@
         return offset;
     }
 
-    if (touchActions.containsAny({ WebCore::TouchAction::Auto, WebCore::TouchAction::Manipulation }))
+    if (touchActions.containsAny({ CyberCore::TouchAction::Auto, CyberCore::TouchAction::Manipulation }))
         return offset;
 
     CGPoint adjustedContentOffset = CGPointMake(offset.x, offset.y);
 
-    if (!touchActions.contains(WebCore::TouchAction::PanX))
+    if (!touchActions.contains(CyberCore::TouchAction::PanX))
         adjustedContentOffset.x = start.x;
-    if (!touchActions.contains(WebCore::TouchAction::PanY))
+    if (!touchActions.contains(CyberCore::TouchAction::PanY))
         adjustedContentOffset.y = start.y;
 
-    if ((touchActions.contains(WebCore::TouchAction::PanX) && adjustedContentOffset.x != start.x)
-        || (touchActions.contains(WebCore::TouchAction::PanY) && adjustedContentOffset.y != start.y)) {
+    if ((touchActions.contains(CyberCore::TouchAction::PanX) && adjustedContentOffset.x != start.x)
+        || (touchActions.contains(CyberCore::TouchAction::PanY) && adjustedContentOffset.y != start.y)) {
         [self cancelPointersForGestureRecognizer:scrollView.panGestureRecognizer];
     }
 
@@ -191,7 +191,7 @@
 @end
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 ScrollingTreeScrollingNodeDelegateIOS::ScrollingTreeScrollingNodeDelegateIOS(ScrollingTreeScrollingNode& scrollingNode)
     : ScrollingTreeScrollingNodeDelegate(scrollingNode)
@@ -230,10 +230,10 @@ void ScrollingTreeScrollingNodeDelegateIOS::commitStateBeforeChildren(const Scro
     }
 }
 
-void ScrollingTreeScrollingNodeDelegateIOS::updateScrollViewForOverscrollBehavior(UIScrollView *scrollView, const WebCore::OverscrollBehavior horizontalOverscrollBehavior, WebCore::OverscrollBehavior verticalOverscrollBehavior, AllowOverscrollToPreventScrollPropagation allowPropogation)
+void ScrollingTreeScrollingNodeDelegateIOS::updateScrollViewForOverscrollBehavior(UIScrollView *scrollView, const CyberCore::OverscrollBehavior horizontalOverscrollBehavior, CyberCore::OverscrollBehavior verticalOverscrollBehavior, AllowOverscrollToPreventScrollPropagation allowPropogation)
 {
     if ([scrollView isKindOfClass:[WKScrollView class]])
-        [(WKScrollView*)scrollView _setBouncesInternal:horizontalOverscrollBehavior != WebCore::OverscrollBehavior::None vertical: verticalOverscrollBehavior != WebCore::OverscrollBehavior::None];
+        [(WKScrollView*)scrollView _setBouncesInternal:horizontalOverscrollBehavior != CyberCore::OverscrollBehavior::None vertical: verticalOverscrollBehavior != CyberCore::OverscrollBehavior::None];
     else {
         scrollView.bouncesHorizontally = horizontalOverscrollBehavior != OverscrollBehavior::None;
         scrollView.bouncesVertically = verticalOverscrollBehavior != OverscrollBehavior::None;

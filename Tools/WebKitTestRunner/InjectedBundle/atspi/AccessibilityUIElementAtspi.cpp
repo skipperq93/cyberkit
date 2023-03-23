@@ -86,7 +86,7 @@ int AccessibilityUIElement::childrenCount()
 RefPtr<AccessibilityUIElement> AccessibilityUIElement::elementAtPoint(int x, int y)
 {
     m_element->updateBackingStore();
-    auto* element = m_element->hitTest({ x, y }, WebCore::Atspi::CoordinateType::WindowCoordinates);
+    auto* element = m_element->hitTest({ x, y }, CyberCore::Atspi::CoordinateType::WindowCoordinates);
     return AccessibilityUIElement::create(element ? element : m_element.get());
 }
 
@@ -103,7 +103,7 @@ RefPtr<AccessibilityUIElement> AccessibilityUIElement::childAtIndex(unsigned ind
     return nullptr;
 }
 
-static RefPtr<AccessibilityUIElement> elementForRelationAtIndex(WebCore::AccessibilityObjectAtspi* element, WebCore::Atspi::Relation relation, unsigned index)
+static RefPtr<AccessibilityUIElement> elementForRelationAtIndex(CyberCore::AccessibilityObjectAtspi* element, CyberCore::Atspi::Relation relation, unsigned index)
 {
     element->updateBackingStore();
     auto relationMap = element->relationMap();
@@ -125,72 +125,72 @@ RefPtr<AccessibilityUIElement> AccessibilityUIElement::linkedUIElementAtIndex(un
 
 RefPtr<AccessibilityUIElement> AccessibilityUIElement::ariaOwnsElementAtIndex(unsigned index)
 {
-    return elementForRelationAtIndex(m_element.get(), WebCore::Atspi::Relation::NodeParentOf, index);
+    return elementForRelationAtIndex(m_element.get(), CyberCore::Atspi::Relation::NodeParentOf, index);
 }
 
 RefPtr<AccessibilityUIElement> AccessibilityUIElement::ariaOwnsReferencingElementAtIndex(unsigned index)
 {
-    return elementForRelationAtIndex(m_element.get(), WebCore::Atspi::Relation::NodeChildOf, index);
+    return elementForRelationAtIndex(m_element.get(), CyberCore::Atspi::Relation::NodeChildOf, index);
 }
 
 RefPtr<AccessibilityUIElement> AccessibilityUIElement::ariaFlowToElementAtIndex(unsigned index)
 {
-    return elementForRelationAtIndex(m_element.get(), WebCore::Atspi::Relation::FlowsTo, index);
+    return elementForRelationAtIndex(m_element.get(), CyberCore::Atspi::Relation::FlowsTo, index);
 }
 
 RefPtr<AccessibilityUIElement> AccessibilityUIElement::ariaFlowToReferencingElementAtIndex(unsigned index)
 {
-    return elementForRelationAtIndex(m_element.get(), WebCore::Atspi::Relation::FlowsFrom, index);
+    return elementForRelationAtIndex(m_element.get(), CyberCore::Atspi::Relation::FlowsFrom, index);
 }
 
 RefPtr<AccessibilityUIElement> AccessibilityUIElement::ariaControlsElementAtIndex(unsigned index)
 {
-    return elementForRelationAtIndex(m_element.get(), WebCore::Atspi::Relation::ControllerFor, index);
+    return elementForRelationAtIndex(m_element.get(), CyberCore::Atspi::Relation::ControllerFor, index);
 }
 
 RefPtr<AccessibilityUIElement> AccessibilityUIElement::ariaControlsReferencingElementAtIndex(unsigned index)
 {
-    return elementForRelationAtIndex(m_element.get(), WebCore::Atspi::Relation::ControlledBy, index);
+    return elementForRelationAtIndex(m_element.get(), CyberCore::Atspi::Relation::ControlledBy, index);
 }
 
 RefPtr<AccessibilityUIElement> AccessibilityUIElement::ariaLabelledByElementAtIndex(unsigned index)
 {
-    return elementForRelationAtIndex(m_element.get(), WebCore::Atspi::Relation::LabelledBy, index);
+    return elementForRelationAtIndex(m_element.get(), CyberCore::Atspi::Relation::LabelledBy, index);
 }
 
 RefPtr<AccessibilityUIElement> AccessibilityUIElement::ariaLabelledByReferencingElementAtIndex(unsigned index)
 {
-    return elementForRelationAtIndex(m_element.get(), WebCore::Atspi::Relation::LabelFor, index);
+    return elementForRelationAtIndex(m_element.get(), CyberCore::Atspi::Relation::LabelFor, index);
 }
 
 RefPtr<AccessibilityUIElement> AccessibilityUIElement::ariaDescribedByElementAtIndex(unsigned index)
 {
-    return elementForRelationAtIndex(m_element.get(), WebCore::Atspi::Relation::DescribedBy, index);
+    return elementForRelationAtIndex(m_element.get(), CyberCore::Atspi::Relation::DescribedBy, index);
 }
 
 RefPtr<AccessibilityUIElement> AccessibilityUIElement::ariaDescribedByReferencingElementAtIndex(unsigned index)
 {
-    return elementForRelationAtIndex(m_element.get(), WebCore::Atspi::Relation::DescriptionFor, index);
+    return elementForRelationAtIndex(m_element.get(), CyberCore::Atspi::Relation::DescriptionFor, index);
 }
 
 RefPtr<AccessibilityUIElement> AccessibilityUIElement::ariaDetailsElementAtIndex(unsigned index)
 {
-    return elementForRelationAtIndex(m_element.get(), WebCore::Atspi::Relation::Details, index);
+    return elementForRelationAtIndex(m_element.get(), CyberCore::Atspi::Relation::Details, index);
 }
 
 RefPtr<AccessibilityUIElement> AccessibilityUIElement::ariaDetailsReferencingElementAtIndex(unsigned index)
 {
-    return elementForRelationAtIndex(m_element.get(), WebCore::Atspi::Relation::DetailsFor, index);
+    return elementForRelationAtIndex(m_element.get(), CyberCore::Atspi::Relation::DetailsFor, index);
 }
 
 RefPtr<AccessibilityUIElement> AccessibilityUIElement::ariaErrorMessageElementAtIndex(unsigned index)
 {
-    return elementForRelationAtIndex(m_element.get(), WebCore::Atspi::Relation::ErrorMessage, index);
+    return elementForRelationAtIndex(m_element.get(), CyberCore::Atspi::Relation::ErrorMessage, index);
 }
 
 RefPtr<AccessibilityUIElement> AccessibilityUIElement::ariaErrorMessageReferencingElementAtIndex(unsigned index)
 {
-    return elementForRelationAtIndex(m_element.get(), WebCore::Atspi::Relation::ErrorFor, index);
+    return elementForRelationAtIndex(m_element.get(), CyberCore::Atspi::Relation::ErrorFor, index);
 }
 
 RefPtr<AccessibilityUIElement> AccessibilityUIElement::disclosedRowAtIndex(unsigned index)
@@ -200,7 +200,7 @@ RefPtr<AccessibilityUIElement> AccessibilityUIElement::disclosedRowAtIndex(unsig
 
 RefPtr<AccessibilityUIElement> AccessibilityUIElement::rowAtIndex(unsigned index)
 {
-    if (!m_element->interfaces().contains(WebCore::AccessibilityObjectAtspi::Interface::Table))
+    if (!m_element->interfaces().contains(CyberCore::AccessibilityObjectAtspi::Interface::Table))
         return nullptr;
 
     m_element->updateBackingStore();
@@ -213,7 +213,7 @@ RefPtr<AccessibilityUIElement> AccessibilityUIElement::rowAtIndex(unsigned index
 
 RefPtr<AccessibilityUIElement> AccessibilityUIElement::selectedChildAtIndex(unsigned index) const
 {
-    if (!m_element->interfaces().contains(WebCore::AccessibilityObjectAtspi::Interface::Selection))
+    if (!m_element->interfaces().contains(CyberCore::AccessibilityObjectAtspi::Interface::Selection))
         return nullptr;
 
     m_element->updateBackingStore();
@@ -224,7 +224,7 @@ RefPtr<AccessibilityUIElement> AccessibilityUIElement::selectedChildAtIndex(unsi
 
 unsigned AccessibilityUIElement::selectedChildrenCount() const
 {
-    if (!m_element->interfaces().contains(WebCore::AccessibilityObjectAtspi::Interface::Selection))
+    if (!m_element->interfaces().contains(CyberCore::AccessibilityObjectAtspi::Interface::Selection))
         return 0;
 
     m_element->updateBackingStore();
@@ -238,7 +238,7 @@ RefPtr<AccessibilityUIElement> AccessibilityUIElement::selectedRowAtIndex(unsign
 
 RefPtr<AccessibilityUIElement> AccessibilityUIElement::titleUIElement()
 {
-    return elementForRelationAtIndex(m_element.get(), WebCore::Atspi::Relation::LabelledBy, 0);
+    return elementForRelationAtIndex(m_element.get(), CyberCore::Atspi::Relation::LabelledBy, 0);
 }
 
 RefPtr<AccessibilityUIElement> AccessibilityUIElement::parentElement()
@@ -346,7 +346,7 @@ static String attributesOfElements(Vector<RefPtr<AccessibilityUIElement>>& eleme
     return builder.toString();
 }
 
-static Vector<RefPtr<AccessibilityUIElement>> elementsVector(const Vector<RefPtr<WebCore::AccessibilityObjectAtspi>>& wrappers)
+static Vector<RefPtr<AccessibilityUIElement>> elementsVector(const Vector<RefPtr<CyberCore::AccessibilityObjectAtspi>>& wrappers)
 {
     Vector<RefPtr<AccessibilityUIElement>> elements;
     elements.reserveInitialCapacity(wrappers.size());
@@ -355,7 +355,7 @@ static Vector<RefPtr<AccessibilityUIElement>> elementsVector(const Vector<RefPtr
     return elements;
 }
 
-static String attributesOfElements(const Vector<RefPtr<WebCore::AccessibilityObjectAtspi>>& wrappers)
+static String attributesOfElements(const Vector<RefPtr<CyberCore::AccessibilityObjectAtspi>>& wrappers)
 {
     auto elements = elementsVector(wrappers);
     return attributesOfElements(elements);
@@ -377,7 +377,7 @@ JSRetainPtr<JSStringRef> AccessibilityUIElement::stringDescriptionOfAttributeVal
     return JSStringCreateWithCharacters(nullptr, 0);
 }
 
-static bool checkElementState(WebCore::AccessibilityObjectAtspi* element, WebCore::Atspi::State state)
+static bool checkElementState(CyberCore::AccessibilityObjectAtspi* element, CyberCore::Atspi::State state)
 {
     return element->states().contains(state);
 }
@@ -386,7 +386,7 @@ JSRetainPtr<JSStringRef> AccessibilityUIElement::stringAttributeValue(JSStringRe
 {
     String attributeName = toWTFString(attribute);
     if (attributeName == "AXSelectedText"_s) {
-        if (!m_element->interfaces().contains(WebCore::AccessibilityObjectAtspi::Interface::Text))
+        if (!m_element->interfaces().contains(CyberCore::AccessibilityObjectAtspi::Interface::Text))
             return JSStringCreateWithCharacters(nullptr, 0);
 
         m_element->updateBackingStore();
@@ -405,7 +405,7 @@ JSRetainPtr<JSStringRef> AccessibilityUIElement::stringAttributeValue(JSStringRe
         auto textAttributes = m_element->textAttributes();
         auto value = textAttributes.attributes.get("invalid"_s);
         if (value.isEmpty())
-            value = checkElementState(m_element.get(), WebCore::Atspi::State::InvalidEntry) ? "true"_s : "false"_s;
+            value = checkElementState(m_element.get(), CyberCore::Atspi::State::InvalidEntry) ? "true"_s : "false"_s;
         return OpaqueJSString::tryCreate(value).leakRef();
     }
 
@@ -497,12 +497,12 @@ static JSValueRef makeJSArray(const Vector<RefPtr<AccessibilityUIElement>>& elem
 
 JSValueRef AccessibilityUIElement::rowHeaders() const
 {
-    if (m_element->interfaces().contains(WebCore::AccessibilityObjectAtspi::Interface::Table)) {
+    if (m_element->interfaces().contains(CyberCore::AccessibilityObjectAtspi::Interface::Table)) {
         m_element->updateBackingStore();
         return makeJSArray(elementsVector(m_element->rowHeaders()));
     }
 
-    if (m_element->interfaces().contains(WebCore::AccessibilityObjectAtspi::Interface::TableCell)) {
+    if (m_element->interfaces().contains(CyberCore::AccessibilityObjectAtspi::Interface::TableCell)) {
         m_element->updateBackingStore();
         return makeJSArray(elementsVector(m_element->cellRowHeaders()));
     }
@@ -512,12 +512,12 @@ JSValueRef AccessibilityUIElement::rowHeaders() const
 
 JSValueRef AccessibilityUIElement::columnHeaders() const
 {
-    if (m_element->interfaces().contains(WebCore::AccessibilityObjectAtspi::Interface::Table)) {
+    if (m_element->interfaces().contains(CyberCore::AccessibilityObjectAtspi::Interface::Table)) {
         m_element->updateBackingStore();
         return makeJSArray(elementsVector(m_element->columnHeaders()));
     }
 
-    if (m_element->interfaces().contains(WebCore::AccessibilityObjectAtspi::Interface::TableCell)) {
+    if (m_element->interfaces().contains(CyberCore::AccessibilityObjectAtspi::Interface::TableCell)) {
         m_element->updateBackingStore();
         return makeJSArray(elementsVector(m_element->cellColumnHeaders()));
     }
@@ -525,7 +525,7 @@ JSValueRef AccessibilityUIElement::columnHeaders() const
     return makeJSArray({ });
 }
 
-static JSValueRef elementsForRelation(WebCore::AccessibilityObjectAtspi* element, WebCore::Atspi::Relation relation)
+static JSValueRef elementsForRelation(CyberCore::AccessibilityObjectAtspi* element, CyberCore::Atspi::Relation relation)
 {
     element->updateBackingStore();
     auto relationMap = element->relationMap();
@@ -538,12 +538,12 @@ static JSValueRef elementsForRelation(WebCore::AccessibilityObjectAtspi* element
 
 JSValueRef AccessibilityUIElement::detailsElements() const
 {
-    return elementsForRelation(m_element.get(), WebCore::Atspi::Relation::Details);
+    return elementsForRelation(m_element.get(), CyberCore::Atspi::Relation::Details);
 }
 
 JSValueRef AccessibilityUIElement::errorMessageElements() const
 {
-    return elementsForRelation(m_element.get(), WebCore::Atspi::Relation::ErrorMessage);
+    return elementsForRelation(m_element.get(), CyberCore::Atspi::Relation::ErrorMessage);
 }
 
 RefPtr<AccessibilityUIElement> AccessibilityUIElement::uiElementAttributeValue(JSStringRef attribute) const
@@ -556,15 +556,15 @@ bool AccessibilityUIElement::boolAttributeValue(JSStringRef attribute)
     String attributeName = toWTFString(attribute);
     m_element->updateBackingStore();
     if (attributeName == "AXElementBusy"_s)
-        return checkElementState(m_element.get(), WebCore::Atspi::State::Busy);
+        return checkElementState(m_element.get(), CyberCore::Atspi::State::Busy);
     if (attributeName == "AXModal"_s)
-        return checkElementState(m_element.get(), WebCore::Atspi::State::Modal);
+        return checkElementState(m_element.get(), CyberCore::Atspi::State::Modal);
     if (attributeName == "AXSupportsAutoCompletion"_s)
-        return checkElementState(m_element.get(), WebCore::Atspi::State::SupportsAutocompletion);
+        return checkElementState(m_element.get(), CyberCore::Atspi::State::SupportsAutocompletion);
     if (attributeName == "AXInterfaceTable"_s)
-        return m_element->interfaces().contains(WebCore::AccessibilityObjectAtspi::Interface::Table);
+        return m_element->interfaces().contains(CyberCore::AccessibilityObjectAtspi::Interface::Table);
     if (attributeName == "AXInterfaceTableCell"_s)
-        return m_element->interfaces().contains(WebCore::AccessibilityObjectAtspi::Interface::TableCell);
+        return m_element->interfaces().contains(CyberCore::AccessibilityObjectAtspi::Interface::TableCell);
     if (attributeName == "AXARIAAtomic"_s)
         return m_element->attributes().get("atomic"_s) == "true"_s;
 
@@ -578,13 +578,13 @@ bool AccessibilityUIElement::isAttributeSettable(JSStringRef attribute)
         return false;
 
     m_element->updateBackingStore();
-    if (checkElementState(m_element.get(), WebCore::Atspi::State::ReadOnly))
+    if (checkElementState(m_element.get(), CyberCore::Atspi::State::ReadOnly))
         return false;
 
-    if (checkElementState(m_element.get(), WebCore::Atspi::State::Editable))
+    if (checkElementState(m_element.get(), CyberCore::Atspi::State::Editable))
         return true;
 
-    if (checkElementState(m_element.get(), WebCore::Atspi::State::Checkable))
+    if (checkElementState(m_element.get(), CyberCore::Atspi::State::Checkable))
         return true;
 
     auto attributes = m_element->attributes();
@@ -595,23 +595,23 @@ bool AccessibilityUIElement::isAttributeSettable(JSStringRef attribute)
     // If we have a listbox or combobox and the value can be set, the options should be selectable.
     auto elementRole = m_element->role();
     switch (elementRole) {
-    case WebCore::Atspi::Role::ComboBox:
-    case WebCore::Atspi::Role::ListBox:
+    case CyberCore::Atspi::Role::ComboBox:
+    case CyberCore::Atspi::Role::ListBox:
         if (auto child = childAtIndex(0)) {
-            if (elementRole == WebCore::Atspi::Role::ComboBox) {
+            if (elementRole == CyberCore::Atspi::Role::ComboBox) {
                 // First child is the menu.
                 child = child->childAtIndex(0);
             }
 
             if (child)
-                return checkElementState(child->m_element.get(), WebCore::Atspi::State::Selectable);
+                return checkElementState(child->m_element.get(), CyberCore::Atspi::State::Selectable);
         }
         break;
     default:
         break;
     }
 
-    if (m_element->interfaces().contains(WebCore::AccessibilityObjectAtspi::Interface::Value) && checkElementState(m_element.get(), WebCore::Atspi::State::Focusable)) {
+    if (m_element->interfaces().contains(CyberCore::AccessibilityObjectAtspi::Interface::Value) && checkElementState(m_element.get(), CyberCore::Atspi::State::Focusable)) {
         if (m_element->minimumValue() != m_element->maximumValue())
             return true;
     }
@@ -693,170 +693,170 @@ static String xmlRoleValueString(const String& xmlRoles)
     return { };
 }
 
-static String roleValueToString(WebCore::Atspi::Role roleValue)
+static String roleValueToString(CyberCore::Atspi::Role roleValue)
 {
     switch (roleValue) {
-    case WebCore::Atspi::Role::Alert:
+    case CyberCore::Atspi::Role::Alert:
         return "AXAlert"_s;
-    case WebCore::Atspi::Role::Article:
+    case CyberCore::Atspi::Role::Article:
         return "AXArticle"_s;
-    case WebCore::Atspi::Role::Audio:
+    case CyberCore::Atspi::Role::Audio:
         return "AXAudio"_s;
-    case WebCore::Atspi::Role::BlockQuote:
+    case CyberCore::Atspi::Role::BlockQuote:
         return "AXBlockquote"_s;
-    case WebCore::Atspi::Role::Canvas:
+    case CyberCore::Atspi::Role::Canvas:
         return "AXCanvas"_s;
-    case WebCore::Atspi::Role::Caption:
+    case CyberCore::Atspi::Role::Caption:
         return "AXCaption"_s;
-    case WebCore::Atspi::Role::CheckBox:
+    case CyberCore::Atspi::Role::CheckBox:
         return "AXCheckBox"_s;
-    case WebCore::Atspi::Role::CheckMenuItem:
+    case CyberCore::Atspi::Role::CheckMenuItem:
         return "AXCheckMenuItem"_s;
-    case WebCore::Atspi::Role::ColorChooser:
+    case CyberCore::Atspi::Role::ColorChooser:
         return "AXColorWell"_s;
-    case WebCore::Atspi::Role::ColumnHeader:
-    case WebCore::Atspi::Role::TableColumnHeader:
+    case CyberCore::Atspi::Role::ColumnHeader:
+    case CyberCore::Atspi::Role::TableColumnHeader:
         return "AXColumnHeader"_s;
-    case WebCore::Atspi::Role::ComboBox:
+    case CyberCore::Atspi::Role::ComboBox:
         return "AXComboBox"_s;
-    case WebCore::Atspi::Role::Comment:
+    case CyberCore::Atspi::Role::Comment:
         return "AXComment"_s;
-    case WebCore::Atspi::Role::ContentDeletion:
+    case CyberCore::Atspi::Role::ContentDeletion:
         return "AXDeletion"_s;
-    case WebCore::Atspi::Role::ContentInsertion:
+    case CyberCore::Atspi::Role::ContentInsertion:
         return "AXInsertion"_s;
-    case WebCore::Atspi::Role::Definition:
+    case CyberCore::Atspi::Role::Definition:
         return "AXDefinition"_s;
-    case WebCore::Atspi::Role::DescriptionList:
+    case CyberCore::Atspi::Role::DescriptionList:
         return "AXDescriptionList"_s;
-    case WebCore::Atspi::Role::DescriptionTerm:
+    case CyberCore::Atspi::Role::DescriptionTerm:
         return "AXDescriptionTerm"_s;
-    case WebCore::Atspi::Role::DescriptionValue:
+    case CyberCore::Atspi::Role::DescriptionValue:
         return "AXDescriptionValue"_s;
-    case WebCore::Atspi::Role::Dialog:
+    case CyberCore::Atspi::Role::Dialog:
         return "AXDialog"_s;
-    case WebCore::Atspi::Role::DocumentFrame:
+    case CyberCore::Atspi::Role::DocumentFrame:
         return "AXDocument"_s;
-    case WebCore::Atspi::Role::DocumentWeb:
+    case CyberCore::Atspi::Role::DocumentWeb:
         return "AXWebArea"_s;
-    case WebCore::Atspi::Role::Embedded:
+    case CyberCore::Atspi::Role::Embedded:
         return "AXEmbedded"_s;
-    case WebCore::Atspi::Role::Entry:
+    case CyberCore::Atspi::Role::Entry:
         return "AXTextField"_s;
-    case WebCore::Atspi::Role::Footer:
+    case CyberCore::Atspi::Role::Footer:
         return "AXFooter"_s;
-    case WebCore::Atspi::Role::Footnote:
+    case CyberCore::Atspi::Role::Footnote:
         return "AXFootnote"_s;
-    case WebCore::Atspi::Role::Form:
+    case CyberCore::Atspi::Role::Form:
         return "AXForm"_s;
-    case WebCore::Atspi::Role::Grouping:
-    case WebCore::Atspi::Role::Panel:
+    case CyberCore::Atspi::Role::Grouping:
+    case CyberCore::Atspi::Role::Panel:
         return "AXGroup"_s;
-    case WebCore::Atspi::Role::Heading:
+    case CyberCore::Atspi::Role::Heading:
         return "AXHeading"_s;
-    case WebCore::Atspi::Role::Image:
+    case CyberCore::Atspi::Role::Image:
         return "AXImage"_s;
-    case WebCore::Atspi::Role::ImageMap:
+    case CyberCore::Atspi::Role::ImageMap:
         return "AXImageMap"_s;
-    case WebCore::Atspi::Role::InvalidRole:
+    case CyberCore::Atspi::Role::InvalidRole:
         return "AXInvalid"_s;
-    case WebCore::Atspi::Role::Label:
+    case CyberCore::Atspi::Role::Label:
         return "AXLabel"_s;
-    case WebCore::Atspi::Role::LevelBar:
+    case CyberCore::Atspi::Role::LevelBar:
         return "AXLevelIndicator"_s;
-    case WebCore::Atspi::Role::Link:
+    case CyberCore::Atspi::Role::Link:
         return "AXLink"_s;
-    case WebCore::Atspi::Role::ListBox:
+    case CyberCore::Atspi::Role::ListBox:
         return "AXListBox"_s;
-    case WebCore::Atspi::Role::List:
+    case CyberCore::Atspi::Role::List:
         return "AXList"_s;
-    case WebCore::Atspi::Role::ListItem:
+    case CyberCore::Atspi::Role::ListItem:
         return "AXListItem"_s;
-    case WebCore::Atspi::Role::Log:
+    case CyberCore::Atspi::Role::Log:
         return "AXLog"_s;
-    case WebCore::Atspi::Role::Marquee:
+    case CyberCore::Atspi::Role::Marquee:
         return "AXMarquee"_s;
-    case WebCore::Atspi::Role::Math:
+    case CyberCore::Atspi::Role::Math:
         return "AXMath"_s;
-    case WebCore::Atspi::Role::MathFraction:
+    case CyberCore::Atspi::Role::MathFraction:
         return "AXMathFraction"_s;
-    case WebCore::Atspi::Role::MathRoot:
+    case CyberCore::Atspi::Role::MathRoot:
         return "AXMathRoot"_s;
-    case WebCore::Atspi::Role::Menu:
+    case CyberCore::Atspi::Role::Menu:
         return "AXMenu"_s;
-    case WebCore::Atspi::Role::MenuBar:
+    case CyberCore::Atspi::Role::MenuBar:
         return "AXMenuBar"_s;
-    case WebCore::Atspi::Role::MenuItem:
+    case CyberCore::Atspi::Role::MenuItem:
         return "AXMenuItem"_s;
-    case WebCore::Atspi::Role::Notification:
+    case CyberCore::Atspi::Role::Notification:
         return "AXNotification"_s;
-    case WebCore::Atspi::Role::PageTab:
+    case CyberCore::Atspi::Role::PageTab:
         return "AXTab"_s;
-    case WebCore::Atspi::Role::PageTabList:
+    case CyberCore::Atspi::Role::PageTabList:
         return "AXTabGroup"_s;
-    case WebCore::Atspi::Role::Paragraph:
+    case CyberCore::Atspi::Role::Paragraph:
         return "AXParagraph"_s;
-    case WebCore::Atspi::Role::PasswordText:
+    case CyberCore::Atspi::Role::PasswordText:
         return "AXPasswordField"_s;
-    case WebCore::Atspi::Role::ProgressBar:
+    case CyberCore::Atspi::Role::ProgressBar:
         return "AXProgressIndicator"_s;
-    case WebCore::Atspi::Role::PushButton:
+    case CyberCore::Atspi::Role::PushButton:
         return "AXButton"_s;
-    case WebCore::Atspi::Role::RadioButton:
+    case CyberCore::Atspi::Role::RadioButton:
         return "AXRadioButton"_s;
-    case WebCore::Atspi::Role::RadioMenuItem:
+    case CyberCore::Atspi::Role::RadioMenuItem:
         return "AXRadioMenuItem"_s;
-    case WebCore::Atspi::Role::RowHeader:
-    case WebCore::Atspi::Role::TableRowHeader:
+    case CyberCore::Atspi::Role::RowHeader:
+    case CyberCore::Atspi::Role::TableRowHeader:
         return "AXRowHeader"_s;
-    case WebCore::Atspi::Role::Ruler:
+    case CyberCore::Atspi::Role::Ruler:
         return "AXRuler"_s;
-    case WebCore::Atspi::Role::ScrollBar:
+    case CyberCore::Atspi::Role::ScrollBar:
         return "AXScrollBar"_s;
-    case WebCore::Atspi::Role::ScrollPane:
+    case CyberCore::Atspi::Role::ScrollPane:
         return "AXScrollArea"_s;
-    case WebCore::Atspi::Role::Section:
+    case CyberCore::Atspi::Role::Section:
         return "AXSection"_s;
-    case WebCore::Atspi::Role::Separator:
+    case CyberCore::Atspi::Role::Separator:
         return "AXSeparator"_s;
-    case WebCore::Atspi::Role::Slider:
+    case CyberCore::Atspi::Role::Slider:
         return "AXSlider"_s;
-    case WebCore::Atspi::Role::SpinButton:
+    case CyberCore::Atspi::Role::SpinButton:
         return "AXSpinButton"_s;
-    case WebCore::Atspi::Role::Static:
-    case WebCore::Atspi::Role::Text:
+    case CyberCore::Atspi::Role::Static:
+    case CyberCore::Atspi::Role::Text:
         return "AXStatic"_s;
-    case WebCore::Atspi::Role::StatusBar:
+    case CyberCore::Atspi::Role::StatusBar:
         return "AXStatusBar"_s;
-    case WebCore::Atspi::Role::Subscript:
+    case CyberCore::Atspi::Role::Subscript:
         return "AXSubscript"_s;
-    case WebCore::Atspi::Role::Superscript:
+    case CyberCore::Atspi::Role::Superscript:
         return "AXSuperscript"_s;
-    case WebCore::Atspi::Role::Table:
+    case CyberCore::Atspi::Role::Table:
         return "AXTable"_s;
-    case WebCore::Atspi::Role::TableCell:
+    case CyberCore::Atspi::Role::TableCell:
         return "AXCell"_s;
-    case WebCore::Atspi::Role::TableRow:
+    case CyberCore::Atspi::Role::TableRow:
         return "AXRow"_s;
-    case WebCore::Atspi::Role::Timer:
+    case CyberCore::Atspi::Role::Timer:
         return "AXTimer"_s;
-    case WebCore::Atspi::Role::ToggleButton:
+    case CyberCore::Atspi::Role::ToggleButton:
         return "AXToggleButton"_s;
-    case WebCore::Atspi::Role::ToolBar:
+    case CyberCore::Atspi::Role::ToolBar:
         return "AXToolbar"_s;
-    case WebCore::Atspi::Role::ToolTip:
+    case CyberCore::Atspi::Role::ToolTip:
         return "AXUserInterfaceTooltip"_s;
-    case WebCore::Atspi::Role::Tree:
+    case CyberCore::Atspi::Role::Tree:
         return "AXTree"_s;
-    case WebCore::Atspi::Role::TreeTable:
+    case CyberCore::Atspi::Role::TreeTable:
         return "AXTreeGrid"_s;
-    case WebCore::Atspi::Role::TreeItem:
+    case CyberCore::Atspi::Role::TreeItem:
         return "AXTreeItem"_s;
-    case WebCore::Atspi::Role::Unknown:
+    case CyberCore::Atspi::Role::Unknown:
         return "AXUnknown"_s;
-    case WebCore::Atspi::Role::Video:
+    case CyberCore::Atspi::Role::Video:
         return "AXVideo"_s;
-    case WebCore::Atspi::Role::Window:
+    case CyberCore::Atspi::Role::Window:
         return "AXWindow"_s;
     default:
         break;
@@ -869,7 +869,7 @@ JSRetainPtr<JSStringRef> AccessibilityUIElement::role()
 {
     m_element->updateBackingStore();
     auto roleValue = m_element->role();
-    auto roleValueString = roleValue == WebCore::Atspi::Role::Landmark ? xmlRoleValueString(m_element->attributes().get("xml-roles"_s)) : roleValueToString(roleValue);
+    auto roleValueString = roleValue == CyberCore::Atspi::Role::Landmark ? xmlRoleValueString(m_element->attributes().get("xml-roles"_s)) : roleValueToString(roleValue);
     if (roleValueString.isEmpty())
         return JSStringCreateWithCharacters(nullptr, 0);
 
@@ -916,9 +916,9 @@ JSRetainPtr<JSStringRef> AccessibilityUIElement::orientation() const
 {
     m_element->updateBackingStore();
     const char* orientation = nullptr;
-    if (checkElementState(m_element.get(), WebCore::Atspi::State::Horizontal))
+    if (checkElementState(m_element.get(), CyberCore::Atspi::State::Horizontal))
         orientation = "AXHorizontalOrientation";
-    else if (checkElementState(m_element.get(), WebCore::Atspi::State::Vertical))
+    else if (checkElementState(m_element.get(), CyberCore::Atspi::State::Vertical))
         orientation = "AXVerticalOrientation";
     else
         orientation = "AXUnknownOrientation";
@@ -945,7 +945,7 @@ JSRetainPtr<JSStringRef> AccessibilityUIElement::liveRegionStatus() const
 JSRetainPtr<JSStringRef> AccessibilityUIElement::stringValue()
 {
     m_element->updateBackingStore();
-    if (m_element->role() == WebCore::Atspi::Role::ComboBox) {
+    if (m_element->role() == CyberCore::Atspi::Role::ComboBox) {
         // Tests expect the combo box to expose the selected element name as the string value.
         if (auto menu = childAtIndex(0)) {
             if (auto* selectedChild = menu->m_element->selectedChild(0))
@@ -953,7 +953,7 @@ JSRetainPtr<JSStringRef> AccessibilityUIElement::stringValue()
         }
     }
 
-    if (!m_element->interfaces().contains(WebCore::AccessibilityObjectAtspi::Interface::Text))
+    if (!m_element->interfaces().contains(CyberCore::AccessibilityObjectAtspi::Interface::Text))
         return JSStringCreateWithCharacters(nullptr, 0);
 
     auto value = makeString("AXValue: ", makeStringByReplacingAll(makeStringByReplacingAll(m_element->text(), '\n', "<\\n>"_s), objectReplacementCharacter, "<obj>"_s));
@@ -974,7 +974,7 @@ JSRetainPtr<JSStringRef> AccessibilityUIElement::helpText() const
 {
     m_element->updateBackingStore();
     auto relationMap = m_element->relationMap();
-    auto targets = relationMap.get(WebCore::Atspi::Relation::DescribedBy);
+    auto targets = relationMap.get(CyberCore::Atspi::Relation::DescribedBy);
     if (targets.isEmpty())
         return JSStringCreateWithCharacters(nullptr, 0);
 
@@ -996,49 +996,49 @@ JSRetainPtr<JSStringRef> AccessibilityUIElement::helpText() const
 double AccessibilityUIElement::x()
 {
     m_element->updateBackingStore();
-    return m_element->elementRect(WebCore::Atspi::CoordinateType::ScreenCoordinates).x();
+    return m_element->elementRect(CyberCore::Atspi::CoordinateType::ScreenCoordinates).x();
 }
 
 double AccessibilityUIElement::y()
 {
     m_element->updateBackingStore();
-    return m_element->elementRect(WebCore::Atspi::CoordinateType::ScreenCoordinates).y();
+    return m_element->elementRect(CyberCore::Atspi::CoordinateType::ScreenCoordinates).y();
 }
 
 double AccessibilityUIElement::width()
 {
     m_element->updateBackingStore();
-    return m_element->elementRect(WebCore::Atspi::CoordinateType::ScreenCoordinates).width();
+    return m_element->elementRect(CyberCore::Atspi::CoordinateType::ScreenCoordinates).width();
 }
 
 double AccessibilityUIElement::height()
 {
     m_element->updateBackingStore();
-    return m_element->elementRect(WebCore::Atspi::CoordinateType::ScreenCoordinates).height();
+    return m_element->elementRect(CyberCore::Atspi::CoordinateType::ScreenCoordinates).height();
 }
 
 double AccessibilityUIElement::clickPointX()
 {
     m_element->updateBackingStore();
-    auto rect = m_element->elementRect(WebCore::Atspi::CoordinateType::WindowCoordinates);
+    auto rect = m_element->elementRect(CyberCore::Atspi::CoordinateType::WindowCoordinates);
     return rect.center().x();
 }
 
 double AccessibilityUIElement::clickPointY()
 {
     m_element->updateBackingStore();
-    auto rect = m_element->elementRect(WebCore::Atspi::CoordinateType::WindowCoordinates);
+    auto rect = m_element->elementRect(CyberCore::Atspi::CoordinateType::WindowCoordinates);
     return rect.center().y();
 }
 
 double AccessibilityUIElement::intValue() const
 {
     m_element->updateBackingStore();
-    if (m_element->interfaces().contains(WebCore::AccessibilityObjectAtspi::Interface::Value))
+    if (m_element->interfaces().contains(CyberCore::AccessibilityObjectAtspi::Interface::Value))
         return m_element->currentValue();
 
     // Consider headings as an special case when returning the int value.
-    if (m_element->role() == WebCore::Atspi::Role::Heading)
+    if (m_element->role() == CyberCore::Atspi::Role::Heading)
         return m_element->attributes().get("level"_s).toDouble();
 
     return 0;
@@ -1046,7 +1046,7 @@ double AccessibilityUIElement::intValue() const
 
 double AccessibilityUIElement::minValue()
 {
-    if (!m_element->interfaces().contains(WebCore::AccessibilityObjectAtspi::Interface::Value))
+    if (!m_element->interfaces().contains(CyberCore::AccessibilityObjectAtspi::Interface::Value))
         return 0;
 
     m_element->updateBackingStore();
@@ -1055,7 +1055,7 @@ double AccessibilityUIElement::minValue()
 
 double AccessibilityUIElement::maxValue()
 {
-    if (!m_element->interfaces().contains(WebCore::AccessibilityObjectAtspi::Interface::Value))
+    if (!m_element->interfaces().contains(CyberCore::AccessibilityObjectAtspi::Interface::Value))
         return 0;
 
     m_element->updateBackingStore();
@@ -1101,49 +1101,49 @@ bool AccessibilityUIElement::isBusy() const
 bool AccessibilityUIElement::isEnabled()
 {
     m_element->updateBackingStore();
-    return checkElementState(m_element.get(), WebCore::Atspi::State::Enabled);
+    return checkElementState(m_element.get(), CyberCore::Atspi::State::Enabled);
 }
 
 bool AccessibilityUIElement::isRequired() const
 {
     m_element->updateBackingStore();
-    return checkElementState(m_element.get(), WebCore::Atspi::State::Required);
+    return checkElementState(m_element.get(), CyberCore::Atspi::State::Required);
 }
 
 bool AccessibilityUIElement::isFocused() const
 {
     m_element->updateBackingStore();
-    return checkElementState(m_element.get(), WebCore::Atspi::State::Focused);
+    return checkElementState(m_element.get(), CyberCore::Atspi::State::Focused);
 }
 
 bool AccessibilityUIElement::isSelected() const
 {
     m_element->updateBackingStore();
-    return checkElementState(m_element.get(), WebCore::Atspi::State::Selected);
+    return checkElementState(m_element.get(), CyberCore::Atspi::State::Selected);
 }
 
 bool AccessibilityUIElement::isSelectedOptionActive() const
 {
     m_element->updateBackingStore();
-    return checkElementState(m_element.get(), WebCore::Atspi::State::Active);
+    return checkElementState(m_element.get(), CyberCore::Atspi::State::Active);
 }
 
 bool AccessibilityUIElement::isExpanded() const
 {
     m_element->updateBackingStore();
-    return checkElementState(m_element.get(), WebCore::Atspi::State::Expanded);
+    return checkElementState(m_element.get(), CyberCore::Atspi::State::Expanded);
 }
 
 bool AccessibilityUIElement::isChecked() const
 {
     m_element->updateBackingStore();
-    return checkElementState(m_element.get(), WebCore::Atspi::State::Checked);
+    return checkElementState(m_element.get(), CyberCore::Atspi::State::Checked);
 }
 
 bool AccessibilityUIElement::isIndeterminate() const
 {
     m_element->updateBackingStore();
-    return checkElementState(m_element.get(), WebCore::Atspi::State::Indeterminate);
+    return checkElementState(m_element.get(), CyberCore::Atspi::State::Indeterminate);
 }
 
 int AccessibilityUIElement::hierarchicalLevel() const
@@ -1178,7 +1178,7 @@ JSRetainPtr<JSStringRef> AccessibilityUIElement::ariaDropEffects() const
 
 int AccessibilityUIElement::lineForIndex(int index)
 {
-    if (!m_element->interfaces().contains(WebCore::AccessibilityObjectAtspi::Interface::Text))
+    if (!m_element->interfaces().contains(CyberCore::AccessibilityObjectAtspi::Interface::Text))
         return -1;
 
     m_element->updateBackingStore();
@@ -1197,13 +1197,13 @@ int AccessibilityUIElement::lineForIndex(int index)
 
 JSRetainPtr<JSStringRef> AccessibilityUIElement::rangeForLine(int line)
 {
-    if (!m_element->interfaces().contains(WebCore::AccessibilityObjectAtspi::Interface::Text))
+    if (!m_element->interfaces().contains(CyberCore::AccessibilityObjectAtspi::Interface::Text))
         return JSStringCreateWithCharacters(nullptr, 0);
 
     m_element->updateBackingStore();
-    WebCore::IntPoint offset;
+    CyberCore::IntPoint offset;
     for (int i = 0; i <= line; ++i)
-        offset = m_element->boundaryOffset(offset.y(), WebCore::AccessibilityObjectAtspi::TextGranularity::LineStart);
+        offset = m_element->boundaryOffset(offset.y(), CyberCore::AccessibilityObjectAtspi::TextGranularity::LineStart);
 
     auto range = makeString('{', offset.x(), ", ", offset.y() - offset.x(), '}');
     return OpaqueJSString::tryCreate(range).leakRef();
@@ -1216,18 +1216,18 @@ JSRetainPtr<JSStringRef> AccessibilityUIElement::rangeForPosition(int x, int y)
 
 JSRetainPtr<JSStringRef> AccessibilityUIElement::boundsForRange(unsigned location, unsigned length)
 {
-    if (!m_element->interfaces().contains(WebCore::AccessibilityObjectAtspi::Interface::Text))
+    if (!m_element->interfaces().contains(CyberCore::AccessibilityObjectAtspi::Interface::Text))
         return JSStringCreateWithCharacters(nullptr, 0);
 
     m_element->updateBackingStore();
-    auto rect = m_element->boundsForRange(location, length, WebCore::Atspi::CoordinateType::WindowCoordinates);
+    auto rect = m_element->boundsForRange(location, length, CyberCore::Atspi::CoordinateType::WindowCoordinates);
     auto bounds = makeString('{', rect.x(), ", ", rect.y(), ", ", rect.width(), ", ", rect.height(), '}');
     return OpaqueJSString::tryCreate(bounds).leakRef();
 }
 
 JSRetainPtr<JSStringRef> AccessibilityUIElement::stringForRange(unsigned location, unsigned length)
 {
-    if (!m_element->interfaces().contains(WebCore::AccessibilityObjectAtspi::Interface::Text))
+    if (!m_element->interfaces().contains(CyberCore::AccessibilityObjectAtspi::Interface::Text))
         return JSStringCreateWithCharacters(nullptr, 0);
 
     m_element->updateBackingStore();
@@ -1236,7 +1236,7 @@ JSRetainPtr<JSStringRef> AccessibilityUIElement::stringForRange(unsigned locatio
 
 JSRetainPtr<JSStringRef> AccessibilityUIElement::attributedStringForRange(unsigned location, unsigned length)
 {
-    if (!m_element->interfaces().contains(WebCore::AccessibilityObjectAtspi::Interface::Text))
+    if (!m_element->interfaces().contains(CyberCore::AccessibilityObjectAtspi::Interface::Text))
         return JSStringCreateWithCharacters(nullptr, 0);
 
     m_element->updateBackingStore();
@@ -1248,7 +1248,7 @@ JSRetainPtr<JSStringRef> AccessibilityUIElement::attributedStringForRange(unsign
 
     StringBuilder builder;
 
-    auto buildAttributes = [&](const WebCore::AccessibilityObjectAtspi::TextAttributes& attributes) {
+    auto buildAttributes = [&](const CyberCore::AccessibilityObjectAtspi::TextAttributes& attributes) {
         for (const auto& it : attributes.attributes) {
             builder.append("\n\t\t");
             builder.append(it.key, ':', it.value);
@@ -1294,7 +1294,7 @@ JSRetainPtr<JSStringRef> AccessibilityUIElement::selectTextWithCriteria(JSContex
 
 JSRetainPtr<JSStringRef> AccessibilityUIElement::attributesOfColumnHeaders()
 {
-    if (!m_element->interfaces().contains(WebCore::AccessibilityObjectAtspi::Interface::Table))
+    if (!m_element->interfaces().contains(CyberCore::AccessibilityObjectAtspi::Interface::Table))
         return JSStringCreateWithCharacters(nullptr, 0);
 
     m_element->updateBackingStore();
@@ -1303,7 +1303,7 @@ JSRetainPtr<JSStringRef> AccessibilityUIElement::attributesOfColumnHeaders()
 
 JSRetainPtr<JSStringRef> AccessibilityUIElement::attributesOfRowHeaders()
 {
-    if (!m_element->interfaces().contains(WebCore::AccessibilityObjectAtspi::Interface::Table))
+    if (!m_element->interfaces().contains(CyberCore::AccessibilityObjectAtspi::Interface::Table))
         return JSStringCreateWithCharacters(nullptr, 0);
 
     m_element->updateBackingStore();
@@ -1317,7 +1317,7 @@ JSRetainPtr<JSStringRef> AccessibilityUIElement::attributesOfColumns()
 
 JSRetainPtr<JSStringRef> AccessibilityUIElement::attributesOfRows()
 {
-    if (!m_element->interfaces().contains(WebCore::AccessibilityObjectAtspi::Interface::Table))
+    if (!m_element->interfaces().contains(CyberCore::AccessibilityObjectAtspi::Interface::Table))
         return JSStringCreateWithCharacters(nullptr, 0);
 
     m_element->updateBackingStore();
@@ -1326,7 +1326,7 @@ JSRetainPtr<JSStringRef> AccessibilityUIElement::attributesOfRows()
 
 JSRetainPtr<JSStringRef> AccessibilityUIElement::attributesOfVisibleCells()
 {
-    if (!m_element->interfaces().contains(WebCore::AccessibilityObjectAtspi::Interface::Table))
+    if (!m_element->interfaces().contains(CyberCore::AccessibilityObjectAtspi::Interface::Table))
         return JSStringCreateWithCharacters(nullptr, 0);
 
     m_element->updateBackingStore();
@@ -1340,7 +1340,7 @@ JSRetainPtr<JSStringRef> AccessibilityUIElement::attributesOfHeader()
 
 int AccessibilityUIElement::rowCount()
 {
-    if (!m_element->interfaces().contains(WebCore::AccessibilityObjectAtspi::Interface::Table))
+    if (!m_element->interfaces().contains(CyberCore::AccessibilityObjectAtspi::Interface::Table))
         return 0;
 
     m_element->updateBackingStore();
@@ -1349,7 +1349,7 @@ int AccessibilityUIElement::rowCount()
 
 int AccessibilityUIElement::columnCount()
 {
-    if (!m_element->interfaces().contains(WebCore::AccessibilityObjectAtspi::Interface::Table))
+    if (!m_element->interfaces().contains(CyberCore::AccessibilityObjectAtspi::Interface::Table))
         return 0;
 
     m_element->updateBackingStore();
@@ -1363,7 +1363,7 @@ int AccessibilityUIElement::indexInTable()
 
 JSRetainPtr<JSStringRef> AccessibilityUIElement::rowIndexRange()
 {
-    if (!m_element->interfaces().contains(WebCore::AccessibilityObjectAtspi::Interface::TableCell))
+    if (!m_element->interfaces().contains(CyberCore::AccessibilityObjectAtspi::Interface::TableCell))
         return JSStringCreateWithCharacters(nullptr, 0);
 
     m_element->updateBackingStore();
@@ -1377,7 +1377,7 @@ JSRetainPtr<JSStringRef> AccessibilityUIElement::rowIndexRange()
 
 JSRetainPtr<JSStringRef> AccessibilityUIElement::columnIndexRange()
 {
-    if (!m_element->interfaces().contains(WebCore::AccessibilityObjectAtspi::Interface::TableCell))
+    if (!m_element->interfaces().contains(CyberCore::AccessibilityObjectAtspi::Interface::TableCell))
         return JSStringCreateWithCharacters(nullptr, 0);
 
     m_element->updateBackingStore();
@@ -1391,7 +1391,7 @@ JSRetainPtr<JSStringRef> AccessibilityUIElement::columnIndexRange()
 
 RefPtr<AccessibilityUIElement> AccessibilityUIElement::cellForColumnAndRow(unsigned column, unsigned row)
 {
-    if (!m_element->interfaces().contains(WebCore::AccessibilityObjectAtspi::Interface::Table))
+    if (!m_element->interfaces().contains(CyberCore::AccessibilityObjectAtspi::Interface::Table))
         return nullptr;
 
     m_element->updateBackingStore();
@@ -1412,7 +1412,7 @@ RefPtr<AccessibilityUIElement> AccessibilityUIElement::verticalScrollbar() const
 
 JSRetainPtr<JSStringRef> AccessibilityUIElement::selectedTextRange()
 {
-    if (!m_element->interfaces().contains(WebCore::AccessibilityObjectAtspi::Interface::Text))
+    if (!m_element->interfaces().contains(CyberCore::AccessibilityObjectAtspi::Interface::Text))
         return JSStringCreateWithCharacters(nullptr, 0);
 
     m_element->updateBackingStore();
@@ -1423,7 +1423,7 @@ JSRetainPtr<JSStringRef> AccessibilityUIElement::selectedTextRange()
 
 bool AccessibilityUIElement::setSelectedTextRange(unsigned location, unsigned length)
 {
-    if (!m_element->interfaces().contains(WebCore::AccessibilityObjectAtspi::Interface::Text))
+    if (!m_element->interfaces().contains(CyberCore::AccessibilityObjectAtspi::Interface::Text))
         return false;
 
     m_element->updateBackingStore();
@@ -1434,7 +1434,7 @@ bool AccessibilityUIElement::setSelectedTextRange(unsigned location, unsigned le
 
 void AccessibilityUIElement::increment()
 {
-    if (!m_element->interfaces().contains(WebCore::AccessibilityObjectAtspi::Interface::Value))
+    if (!m_element->interfaces().contains(CyberCore::AccessibilityObjectAtspi::Interface::Value))
         return;
 
     m_element->updateBackingStore();
@@ -1443,7 +1443,7 @@ void AccessibilityUIElement::increment()
 
 void AccessibilityUIElement::decrement()
 {
-    if (!m_element->interfaces().contains(WebCore::AccessibilityObjectAtspi::Interface::Value))
+    if (!m_element->interfaces().contains(CyberCore::AccessibilityObjectAtspi::Interface::Value))
         return;
 
     m_element->updateBackingStore();
@@ -1466,7 +1466,7 @@ void AccessibilityUIElement::setSelectedChild(AccessibilityUIElement* element) c
 
 void AccessibilityUIElement::setSelectedChildAtIndex(unsigned index) const
 {
-    if (!m_element->interfaces().contains(WebCore::AccessibilityObjectAtspi::Interface::Selection))
+    if (!m_element->interfaces().contains(CyberCore::AccessibilityObjectAtspi::Interface::Selection))
         return;
 
     m_element->updateBackingStore();
@@ -1475,7 +1475,7 @@ void AccessibilityUIElement::setSelectedChildAtIndex(unsigned index) const
 
 void AccessibilityUIElement::removeSelectionAtIndex(unsigned index) const
 {
-    if (!m_element->interfaces().contains(WebCore::AccessibilityObjectAtspi::Interface::Selection))
+    if (!m_element->interfaces().contains(CyberCore::AccessibilityObjectAtspi::Interface::Selection))
         return;
 
     m_element->updateBackingStore();
@@ -1484,7 +1484,7 @@ void AccessibilityUIElement::removeSelectionAtIndex(unsigned index) const
 
 void AccessibilityUIElement::clearSelectedChildren() const
 {
-    if (!m_element->interfaces().contains(WebCore::AccessibilityObjectAtspi::Interface::Selection))
+    if (!m_element->interfaces().contains(CyberCore::AccessibilityObjectAtspi::Interface::Selection))
         return;
 
     m_element->updateBackingStore();
@@ -1498,7 +1498,7 @@ JSRetainPtr<JSStringRef> AccessibilityUIElement::accessibilityValue() const
 
 JSRetainPtr<JSStringRef> AccessibilityUIElement::documentEncoding()
 {
-    if (!m_element->interfaces().contains(WebCore::AccessibilityObjectAtspi::Interface::Document))
+    if (!m_element->interfaces().contains(CyberCore::AccessibilityObjectAtspi::Interface::Document))
         return JSStringCreateWithCharacters(nullptr, 0);
 
     m_element->updateBackingStore();
@@ -1507,7 +1507,7 @@ JSRetainPtr<JSStringRef> AccessibilityUIElement::documentEncoding()
 
 JSRetainPtr<JSStringRef> AccessibilityUIElement::documentURI()
 {
-    if (!m_element->interfaces().contains(WebCore::AccessibilityObjectAtspi::Interface::Document))
+    if (!m_element->interfaces().contains(CyberCore::AccessibilityObjectAtspi::Interface::Document))
         return JSStringCreateWithCharacters(nullptr, 0);
 
     m_element->updateBackingStore();
@@ -1516,7 +1516,7 @@ JSRetainPtr<JSStringRef> AccessibilityUIElement::documentURI()
 
 JSRetainPtr<JSStringRef> AccessibilityUIElement::url()
 {
-    if (!m_element->interfaces().contains(WebCore::AccessibilityObjectAtspi::Interface::Hyperlink))
+    if (!m_element->interfaces().contains(CyberCore::AccessibilityObjectAtspi::Interface::Hyperlink))
         return JSStringCreateWithCharacters(nullptr, 0);
 
     m_element->updateBackingStore();
@@ -1556,37 +1556,37 @@ bool AccessibilityUIElement::removeNotificationListener()
 bool AccessibilityUIElement::isFocusable() const
 {
     m_element->updateBackingStore();
-    return checkElementState(m_element.get(), WebCore::Atspi::State::Focusable);
+    return checkElementState(m_element.get(), CyberCore::Atspi::State::Focusable);
 }
 
 bool AccessibilityUIElement::isSelectable() const
 {
     m_element->updateBackingStore();
-    return checkElementState(m_element.get(), WebCore::Atspi::State::Selectable);
+    return checkElementState(m_element.get(), CyberCore::Atspi::State::Selectable);
 }
 
 bool AccessibilityUIElement::isMultiSelectable() const
 {
     m_element->updateBackingStore();
-    return checkElementState(m_element.get(), WebCore::Atspi::State::Multiselectable);
+    return checkElementState(m_element.get(), CyberCore::Atspi::State::Multiselectable);
 }
 
 bool AccessibilityUIElement::isVisible() const
 {
     m_element->updateBackingStore();
-    return checkElementState(m_element.get(), WebCore::Atspi::State::Visible);
+    return checkElementState(m_element.get(), CyberCore::Atspi::State::Visible);
 }
 
 bool AccessibilityUIElement::isOffScreen() const
 {
     m_element->updateBackingStore();
-    return !checkElementState(m_element.get(), WebCore::Atspi::State::Showing);
+    return !checkElementState(m_element.get(), CyberCore::Atspi::State::Showing);
 }
 
 bool AccessibilityUIElement::isCollapsed() const
 {
     m_element->updateBackingStore();
-    return checkElementState(m_element.get(), WebCore::Atspi::State::Collapsed);
+    return checkElementState(m_element.get(), CyberCore::Atspi::State::Collapsed);
 }
 
 bool AccessibilityUIElement::isIgnored() const
@@ -1598,19 +1598,19 @@ bool AccessibilityUIElement::isIgnored() const
 bool AccessibilityUIElement::isSingleLine() const
 {
     m_element->updateBackingStore();
-    return checkElementState(m_element.get(), WebCore::Atspi::State::SingleLine);
+    return checkElementState(m_element.get(), CyberCore::Atspi::State::SingleLine);
 }
 
 bool AccessibilityUIElement::isMultiLine() const
 {
     m_element->updateBackingStore();
-    return checkElementState(m_element.get(), WebCore::Atspi::State::MultiLine);
+    return checkElementState(m_element.get(), CyberCore::Atspi::State::MultiLine);
 }
 
 bool AccessibilityUIElement::hasPopup() const
 {
     m_element->updateBackingStore();
-    return checkElementState(m_element.get(), WebCore::Atspi::State::HasPopup);
+    return checkElementState(m_element.get(), CyberCore::Atspi::State::HasPopup);
 }
 
 void AccessibilityUIElement::takeFocus()
@@ -1748,13 +1748,13 @@ bool AccessibilityUIElement::setSelectedTextMarkerRange(AccessibilityTextMarkerR
 void AccessibilityUIElement::scrollToMakeVisible()
 {
     m_element->updateBackingStore();
-    m_element->scrollToMakeVisible(WebCore::Atspi::ScrollType::Anywhere);
+    m_element->scrollToMakeVisible(CyberCore::Atspi::ScrollType::Anywhere);
 }
 
 void AccessibilityUIElement::scrollToGlobalPoint(int x, int y)
 {
     m_element->updateBackingStore();
-    m_element->scrollToPoint({ x, y }, WebCore::Atspi::CoordinateType::WindowCoordinates);
+    m_element->scrollToPoint({ x, y }, CyberCore::Atspi::CoordinateType::WindowCoordinates);
 }
 
 void AccessibilityUIElement::scrollToMakeVisibleWithSubFocus(int x, int y, int width, int height)
@@ -1786,9 +1786,9 @@ JSRetainPtr<JSStringRef> AccessibilityUIElement::classList() const
     return nullptr;
 }
 
-static String stringAtOffset(WebCore::AccessibilityObjectAtspi* element, int offset, WebCore::AccessibilityObjectAtspi::TextGranularity granularity)
+static String stringAtOffset(CyberCore::AccessibilityObjectAtspi* element, int offset, CyberCore::AccessibilityObjectAtspi::TextGranularity granularity)
 {
-    if (!element || !element->interfaces().contains(WebCore::AccessibilityObjectAtspi::Interface::Text))
+    if (!element || !element->interfaces().contains(CyberCore::AccessibilityObjectAtspi::Interface::Text))
         return { };
 
     element->updateBackingStore();
@@ -1804,7 +1804,7 @@ static String stringAtOffset(WebCore::AccessibilityObjectAtspi* element, int off
 
 JSRetainPtr<JSStringRef> AccessibilityUIElement::characterAtOffset(int offset)
 {
-    if (!m_element->interfaces().contains(WebCore::AccessibilityObjectAtspi::Interface::Text))
+    if (!m_element->interfaces().contains(CyberCore::AccessibilityObjectAtspi::Interface::Text))
         return JSStringCreateWithCharacters(nullptr, 0);
 
     m_element->updateBackingStore();
@@ -1818,17 +1818,17 @@ JSRetainPtr<JSStringRef> AccessibilityUIElement::characterAtOffset(int offset)
 
 JSRetainPtr<JSStringRef> AccessibilityUIElement::wordAtOffset(int offset)
 {
-    return OpaqueJSString::tryCreate(stringAtOffset(m_element.get(), offset, WebCore::AccessibilityObjectAtspi::TextGranularity::WordStart)).leakRef();
+    return OpaqueJSString::tryCreate(stringAtOffset(m_element.get(), offset, CyberCore::AccessibilityObjectAtspi::TextGranularity::WordStart)).leakRef();
 }
 
 JSRetainPtr<JSStringRef> AccessibilityUIElement::lineAtOffset(int offset)
 {
-    return OpaqueJSString::tryCreate(stringAtOffset(m_element.get(), offset, WebCore::AccessibilityObjectAtspi::TextGranularity::LineStart)).leakRef();
+    return OpaqueJSString::tryCreate(stringAtOffset(m_element.get(), offset, CyberCore::AccessibilityObjectAtspi::TextGranularity::LineStart)).leakRef();
 }
 
 JSRetainPtr<JSStringRef> AccessibilityUIElement::sentenceAtOffset(int offset)
 {
-    return OpaqueJSString::tryCreate(stringAtOffset(m_element.get(), offset, WebCore::AccessibilityObjectAtspi::TextGranularity::SentenceStart)).leakRef();
+    return OpaqueJSString::tryCreate(stringAtOffset(m_element.get(), offset, CyberCore::AccessibilityObjectAtspi::TextGranularity::SentenceStart)).leakRef();
 }
 
 bool AccessibilityUIElement::replaceTextInRange(JSStringRef, int, int)

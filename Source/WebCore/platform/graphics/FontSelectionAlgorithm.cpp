@@ -26,7 +26,7 @@
 #include "config.h"
 #include "FontSelectionAlgorithm.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 FontSelectionAlgorithm::FontSelectionAlgorithm(FontSelectionRequest request, const Vector<Capabilities>& capabilities, std::optional<Capabilities> bounds)
     : m_request(request)

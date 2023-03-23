@@ -29,7 +29,7 @@
 #import "ArgumentCoders.h"
 #import "PlatformCAAnimationRemote.h"
 #import "PlatformCALayerRemote.h"
-#import "WebCoreArgumentCoders.h"
+#import "CyberCoreArgumentCoders.h"
 #import <QuartzCore/QuartzCore.h>
 #import <CyberCore/EventRegion.h>
 #import <CyberCore/LengthFunctions.h>
@@ -44,7 +44,7 @@ RemoteLayerTreeTransaction::RemoteLayerTreeTransaction(RemoteLayerTreeTransactio
 RemoteLayerTreeTransaction& RemoteLayerTreeTransaction::operator=(RemoteLayerTreeTransaction&&) = default;
 
 RemoteLayerTreeTransaction::LayerCreationProperties::LayerCreationProperties()
-    : type(WebCore::PlatformCALayer::LayerTypeLayer)
+    : type(CyberCore::PlatformCALayer::LayerTypeLayer)
     , hostingContextID(0)
     , hostingDeviceScaleFactor(1)
     , preservesFlip(false)
@@ -101,7 +101,7 @@ auto RemoteLayerTreeTransaction::LayerCreationProperties::decode(IPC::Decoder& d
     if (!decoder.decode(hasModel))
         return std::nullopt;
     if (hasModel) {
-        auto model = WebCore::Model::decode(decoder);
+        auto model = CyberCore::Model::decode(decoder);
         if (!model)
             return std::nullopt;
         result.model = model;
@@ -164,13 +164,13 @@ RemoteLayerTreeTransaction::LayerProperties::LayerProperties(const LayerProperti
     // FIXME: LayerProperties shouldn't be copyable; PlatformCALayerRemote::clone should copy the relevant properties.
 
     if (other.transform)
-        transform = makeUnique<WebCore::TransformationMatrix>(*other.transform);
+        transform = makeUnique<CyberCore::TransformationMatrix>(*other.transform);
 
     if (other.sublayerTransform)
-        sublayerTransform = makeUnique<WebCore::TransformationMatrix>(*other.sublayerTransform);
+        sublayerTransform = makeUnique<CyberCore::TransformationMatrix>(*other.sublayerTransform);
 
     if (other.filters)
-        filters = makeUnique<WebCore::FilterOperations>(*other.filters);
+        filters = makeUnique<CyberCore::FilterOperations>(*other.filters);
 }
 
 void RemoteLayerTreeTransaction::LayerProperties::encode(IPC::Encoder& encoder) const
@@ -380,19 +380,19 @@ bool RemoteLayerTreeTransaction::LayerProperties::decode(IPC::Decoder& decoder, 
     }
 
     if (result.changedProperties & LayerChange::TransformChanged) {
-        WebCore::TransformationMatrix transform;
+        CyberCore::TransformationMatrix transform;
         if (!decoder.decode(transform))
             return false;
         
-        result.transform = makeUnique<WebCore::TransformationMatrix>(transform);
+        result.transform = makeUnique<CyberCore::TransformationMatrix>(transform);
     }
 
     if (result.changedProperties & LayerChange::SublayerTransformChanged) {
-        WebCore::TransformationMatrix transform;
+        CyberCore::TransformationMatrix transform;
         if (!decoder.decode(transform))
             return false;
 
-        result.sublayerTransform = makeUnique<WebCore::TransformationMatrix>(transform);
+        result.sublayerTransform = makeUnique<CyberCore::TransformationMatrix>(transform);
     }
 
     if (result.changedProperties & LayerChange::AntialiasesEdgesChanged) {
@@ -463,15 +463,15 @@ bool RemoteLayerTreeTransaction::LayerProperties::decode(IPC::Decoder& decoder, 
     }
 
     if (result.changedProperties & LayerChange::ShapeRoundedRectChanged) {
-        WebCore::FloatRoundedRect roundedRect;
+        CyberCore::FloatRoundedRect roundedRect;
         if (!decoder.decode(roundedRect))
             return false;
         
-        result.shapeRoundedRect = makeUnique<WebCore::FloatRoundedRect>(roundedRect);
+        result.shapeRoundedRect = makeUnique<CyberCore::FloatRoundedRect>(roundedRect);
     }
 
     if (result.changedProperties & LayerChange::ShapePathChanged) {
-        WebCore::Path path;
+        CyberCore::Path path;
         if (!decoder.decode(path))
             return false;
         
@@ -528,7 +528,7 @@ bool RemoteLayerTreeTransaction::LayerProperties::decode(IPC::Decoder& decoder, 
     }
 
     if (result.changedProperties & LayerChange::FiltersChanged) {
-        auto filters = makeUnique<WebCore::FilterOperations>();
+        auto filters = makeUnique<CyberCore::FilterOperations>();
         if (!decoder.decode(*filters))
             return false;
         result.filters = WTFMove(filters);
@@ -545,7 +545,7 @@ bool RemoteLayerTreeTransaction::LayerProperties::decode(IPC::Decoder& decoder, 
     }
 
     if (result.changedProperties & LayerChange::EventRegionChanged) {
-        std::optional<WebCore::EventRegion> eventRegion;
+        std::optional<CyberCore::EventRegion> eventRegion;
         decoder >> eventRegion;
         if (!eventRegion)
             return false;
@@ -662,7 +662,7 @@ bool RemoteLayerTreeTransaction::decode(IPC::Decoder& decoder, RemoteLayerTreeTr
         return false;
 
     for (uint64_t i = 0; i < numChangedLayerProperties; ++i) {
-        WebCore::GraphicsLayer::PlatformLayerID layerID;
+        CyberCore::GraphicsLayer::PlatformLayerID layerID;
         if (!decoder.decode(layerID))
             return false;
 
@@ -794,7 +794,7 @@ bool RemoteLayerTreeTransaction::decode(IPC::Decoder& decoder, RemoteLayerTreeTr
     return true;
 }
 
-void RemoteLayerTreeTransaction::setRootLayerID(WebCore::GraphicsLayer::PlatformLayerID rootLayerID)
+void RemoteLayerTreeTransaction::setRootLayerID(CyberCore::GraphicsLayer::PlatformLayerID rootLayerID)
 {
     ASSERT_ARG(rootLayerID, rootLayerID);
 
@@ -811,12 +811,12 @@ void RemoteLayerTreeTransaction::setCreatedLayers(Vector<LayerCreationProperties
     m_createdLayers = WTFMove(createdLayers);
 }
 
-void RemoteLayerTreeTransaction::setDestroyedLayerIDs(Vector<WebCore::GraphicsLayer::PlatformLayerID> destroyedLayerIDs)
+void RemoteLayerTreeTransaction::setDestroyedLayerIDs(Vector<CyberCore::GraphicsLayer::PlatformLayerID> destroyedLayerIDs)
 {
     m_destroyedLayerIDs = WTFMove(destroyedLayerIDs);
 }
 
-void RemoteLayerTreeTransaction::setLayerIDsWithNewlyUnreachableBackingStore(Vector<WebCore::GraphicsLayer::PlatformLayerID> layerIDsWithNewlyUnreachableBackingStore)
+void RemoteLayerTreeTransaction::setLayerIDsWithNewlyUnreachableBackingStore(Vector<CyberCore::GraphicsLayer::PlatformLayerID> layerIDsWithNewlyUnreachableBackingStore)
 {
     m_layerIDsWithNewlyUnreachableBackingStore = WTFMove(layerIDsWithNewlyUnreachableBackingStore);
 }
@@ -866,7 +866,7 @@ static void dumpChangedLayers(TextStream& ts, const RemoteLayerTreeTransaction::
             ts.dumpProperty("name", layerProperties.name);
 
         if (layerProperties.changedProperties & LayerChange::ChildrenChanged)
-            ts.dumpProperty<Vector<WebCore::GraphicsLayer::PlatformLayerID>>("children", layerProperties.children);
+            ts.dumpProperty<Vector<CyberCore::GraphicsLayer::PlatformLayerID>>("children", layerProperties.children);
 
         if (layerProperties.changedProperties & LayerChange::PositionChanged)
             ts.dumpProperty("position", layerProperties.position);
@@ -890,10 +890,10 @@ static void dumpChangedLayers(TextStream& ts, const RemoteLayerTreeTransaction::
             ts.dumpProperty("opacity", layerProperties.opacity);
 
         if (layerProperties.changedProperties & LayerChange::TransformChanged)
-            ts.dumpProperty("transform", layerProperties.transform ? *layerProperties.transform : WebCore::TransformationMatrix());
+            ts.dumpProperty("transform", layerProperties.transform ? *layerProperties.transform : CyberCore::TransformationMatrix());
 
         if (layerProperties.changedProperties & LayerChange::SublayerTransformChanged)
-            ts.dumpProperty("sublayerTransform", layerProperties.sublayerTransform ? *layerProperties.sublayerTransform : WebCore::TransformationMatrix());
+            ts.dumpProperty("sublayerTransform", layerProperties.sublayerTransform ? *layerProperties.sublayerTransform : CyberCore::TransformationMatrix());
 
         if (layerProperties.changedProperties & LayerChange::HiddenChanged)
             ts.dumpProperty("hidden", layerProperties.hidden);
@@ -934,7 +934,7 @@ static void dumpChangedLayers(TextStream& ts, const RemoteLayerTreeTransaction::
             ts.dumpProperty("cornerRadius", layerProperties.cornerRadius);
 
         if (layerProperties.changedProperties & LayerChange::ShapeRoundedRectChanged)
-            ts.dumpProperty("shapeRect", layerProperties.shapeRoundedRect ? *layerProperties.shapeRoundedRect : WebCore::FloatRoundedRect());
+            ts.dumpProperty("shapeRect", layerProperties.shapeRoundedRect ? *layerProperties.shapeRoundedRect : CyberCore::FloatRoundedRect());
 
         if (layerProperties.changedProperties & LayerChange::MinificationFilterChanged)
             ts.dumpProperty("minificationFilter", layerProperties.minificationFilter);
@@ -962,7 +962,7 @@ static void dumpChangedLayers(TextStream& ts, const RemoteLayerTreeTransaction::
             ts.dumpProperty("backingStoreAttached", layerProperties.backingStoreAttached);
 
         if (layerProperties.changedProperties & LayerChange::FiltersChanged)
-            ts.dumpProperty("filters", layerProperties.filters ? *layerProperties.filters : WebCore::FilterOperations());
+            ts.dumpProperty("filters", layerProperties.filters ? *layerProperties.filters : CyberCore::FilterOperations());
 
         if (layerProperties.changedProperties & LayerChange::AnimationsChanged) {
             for (const auto& keyAnimationPair : layerProperties.addedAnimations)
@@ -1010,14 +1010,14 @@ String RemoteLayerTreeTransaction::description() const
 
     ts.dumpProperty("transactionID", m_transactionID);
     ts.dumpProperty("contentsSize", m_contentsSize);
-    if (m_scrollOrigin != WebCore::IntPoint::zero())
+    if (m_scrollOrigin != CyberCore::IntPoint::zero())
         ts.dumpProperty("scrollOrigin", m_scrollOrigin);
 
-    ts.dumpProperty("baseLayoutViewportSize", WebCore::FloatSize(m_baseLayoutViewportSize));
+    ts.dumpProperty("baseLayoutViewportSize", CyberCore::FloatSize(m_baseLayoutViewportSize));
 
-    if (m_minStableLayoutViewportOrigin != WebCore::LayoutPoint::zero())
-        ts.dumpProperty("minStableLayoutViewportOrigin", WebCore::FloatPoint(m_minStableLayoutViewportOrigin));
-    ts.dumpProperty("maxStableLayoutViewportOrigin", WebCore::FloatPoint(m_maxStableLayoutViewportOrigin));
+    if (m_minStableLayoutViewportOrigin != CyberCore::LayoutPoint::zero())
+        ts.dumpProperty("minStableLayoutViewportOrigin", CyberCore::FloatPoint(m_minStableLayoutViewportOrigin));
+    ts.dumpProperty("maxStableLayoutViewportOrigin", CyberCore::FloatPoint(m_maxStableLayoutViewportOrigin));
 
     if (m_pageScaleFactor != 1)
         ts.dumpProperty("pageScaleFactor", m_pageScaleFactor);
@@ -1045,14 +1045,14 @@ String RemoteLayerTreeTransaction::description() const
             TextStream::GroupScope group(ts);
             ts << createdLayer.type <<" " << createdLayer.layerID;
             switch (createdLayer.type) {
-            case WebCore::PlatformCALayer::LayerTypeAVPlayerLayer:
+            case CyberCore::PlatformCALayer::LayerTypeAVPlayerLayer:
                 ts << " (context-id " << createdLayer.hostingContextID << ")";
                 break;
-            case WebCore::PlatformCALayer::LayerTypeCustom:
+            case CyberCore::PlatformCALayer::LayerTypeCustom:
                 ts << " (context-id " << createdLayer.hostingContextID << ")";
                 break;
 #if ENABLE(MODEL_ELEMENT)
-            case WebCore::PlatformCALayer::LayerTypeModelLayer:
+            case CyberCore::PlatformCALayer::LayerTypeModelLayer:
                 ts << " (model " << *createdLayer.model << ")";
                 break;
 #endif
@@ -1065,7 +1065,7 @@ String RemoteLayerTreeTransaction::description() const
     dumpChangedLayers(ts, m_changedLayerProperties);
 
     if (!m_destroyedLayerIDs.isEmpty())
-        ts.dumpProperty<Vector<WebCore::GraphicsLayer::PlatformLayerID>>("destroyed-layers", m_destroyedLayerIDs);
+        ts.dumpProperty<Vector<CyberCore::GraphicsLayer::PlatformLayerID>>("destroyed-layers", m_destroyedLayerIDs);
 
     if (m_editorState) {
         TextStream::GroupScope scope(ts);

@@ -33,7 +33,7 @@
 #include "GStreamerVideoFrameLibWebRTC.h"
 #include "VideoFrameGStreamer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<RealtimeOutgoingVideoSource> RealtimeOutgoingVideoSource::create(Ref<MediaStreamTrackPrivate>&& videoSource)
 {
@@ -87,6 +87,6 @@ rtc::scoped_refptr<webrtc::VideoFrameBuffer> RealtimeOutgoingVideoSourceLibWebRT
     return GStreamerVideoFrameLibWebRTC::create(gst_sample_new(buffer.get(), caps.get(), NULL, NULL));
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(LIBWEBRTC)

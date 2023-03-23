@@ -28,9 +28,9 @@
 
 namespace WebKit {
 
-MemoryStorageArea::MemoryStorageArea(const WebCore::ClientOrigin& origin, StorageAreaBase::StorageType type)
-    : StorageAreaBase(WebCore::StorageMap::noQuota, origin)
-    , m_map(WebCore::StorageMap(WebCore::StorageMap::noQuota))
+MemoryStorageArea::MemoryStorageArea(const CyberCore::ClientOrigin& origin, StorageAreaBase::StorageType type)
+    : StorageAreaBase(CyberCore::StorageMap::noQuota, origin)
+    , m_map(CyberCore::StorageMap(CyberCore::StorageMap::noQuota))
     , m_storageType(type)
 {
 }

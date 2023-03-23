@@ -37,7 +37,7 @@
 #include <wtf/Threading.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScrollingThread {
     WTF_MAKE_NONCOPYABLE(ScrollingThread);
@@ -62,6 +62,6 @@ private:
     Ref<RunLoop> m_runLoop;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SCROLLING_THREAD)

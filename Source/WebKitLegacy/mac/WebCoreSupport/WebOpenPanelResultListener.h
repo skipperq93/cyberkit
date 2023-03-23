@@ -26,15 +26,15 @@
 #import "WebUIDelegate.h"
 #import <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 class FileChooser;
 }
 
 @interface WebOpenPanelResultListener : NSObject <WebOpenPanelResultListener>
 {
-    RefPtr<WebCore::FileChooser> _chooser;
+    RefPtr<CyberCore::FileChooser> _chooser;
 }
 
-- (id)initWithChooser:(WebCore::FileChooser&)chooser;
+- (id)initWithChooser:(CyberCore::FileChooser&)chooser;
 
 @end

@@ -33,7 +33,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import <CyberCore/PlatformCAFilters.h>
 #import <CyberCore/ScrollbarThemeMac.h>
-#import <CyberCore/WebCoreCALayerExtras.h>
+#import <CyberCore/CyberCoreCALayerExtras.h>
 #import <pal/spi/cocoa/QuartzCoreSPI.h>
 #import <wtf/BlockObjCExceptions.h>
 #import <wtf/cocoa/VectorCocoa.h>
@@ -102,7 +102,7 @@ static void configureSeparatedLayer(CALayer *) { }
 #endif
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 static RetainPtr<CGColorRef> cgColorFromColor(const Color& color)
 {

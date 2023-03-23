@@ -39,7 +39,7 @@
 
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
     class GDIObjectCounter {
     public:
@@ -56,7 +56,7 @@ namespace WebCore {
         unsigned m_endCount;
     };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // !defined(NDEBUG)
 

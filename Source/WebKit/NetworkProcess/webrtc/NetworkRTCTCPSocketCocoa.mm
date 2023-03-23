@@ -39,7 +39,7 @@
 
 namespace WebKit {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 static dispatch_queue_t tcpSocketQueue()
 {
@@ -51,7 +51,7 @@ static dispatch_queue_t tcpSocketQueue()
     return queue;
 }
 
-std::unique_ptr<NetworkRTCProvider::Socket> NetworkRTCTCPSocketCocoa::createClientTCPSocket(LibWebRTCSocketIdentifier identifier, NetworkRTCProvider& rtcProvider, const rtc::SocketAddress& remoteAddress, int tcpOptions, const String& attributedBundleIdentifier, bool isFirstParty, bool isRelayDisabled, const WebCore::RegistrableDomain& domain, Ref<IPC::Connection>&& connection)
+std::unique_ptr<NetworkRTCProvider::Socket> NetworkRTCTCPSocketCocoa::createClientTCPSocket(LibWebRTCSocketIdentifier identifier, NetworkRTCProvider& rtcProvider, const rtc::SocketAddress& remoteAddress, int tcpOptions, const String& attributedBundleIdentifier, bool isFirstParty, bool isRelayDisabled, const CyberCore::RegistrableDomain& domain, Ref<IPC::Connection>&& connection)
 {
     // FIXME: We should support ssltcp candidates, maybe support OPT_TLS_INSECURE as well.
     return makeUnique<NetworkRTCTCPSocketCocoa>(identifier, rtcProvider, remoteAddress, tcpOptions, attributedBundleIdentifier, isFirstParty, isRelayDisabled, domain, WTFMove(connection));
@@ -79,7 +79,7 @@ static inline void processIncomingData(RetainPtr<nw_connection_t>&& nwConnection
     }).get());
 }
 
-NetworkRTCTCPSocketCocoa::NetworkRTCTCPSocketCocoa(LibWebRTCSocketIdentifier identifier, NetworkRTCProvider& rtcProvider, const rtc::SocketAddress& remoteAddress, int options, const String& attributedBundleIdentifier, bool isFirstParty, bool isRelayDisabled, const WebCore::RegistrableDomain& domain, Ref<IPC::Connection>&& connection)
+NetworkRTCTCPSocketCocoa::NetworkRTCTCPSocketCocoa(LibWebRTCSocketIdentifier identifier, NetworkRTCProvider& rtcProvider, const rtc::SocketAddress& remoteAddress, int options, const String& attributedBundleIdentifier, bool isFirstParty, bool isRelayDisabled, const CyberCore::RegistrableDomain& domain, Ref<IPC::Connection>&& connection)
     : m_identifier(identifier)
     , m_rtcProvider(rtcProvider)
     , m_connection(WTFMove(connection))

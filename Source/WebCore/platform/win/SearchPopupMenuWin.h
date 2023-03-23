@@ -24,7 +24,7 @@
 #include "PopupMenuWin.h"
 #include "SearchPopupMenu.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SearchPopupMenuWin : public SearchPopupMenu {
 public:

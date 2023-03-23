@@ -28,12 +28,12 @@
 #include "RenderSVGBlock.h"
 #include "SVGGraphicsElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 inline SVGGraphicsElement& RenderSVGBlock::graphicsElement() const
 {
     return downcast<SVGGraphicsElement>(nodeForNonAnonymous());
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 

@@ -43,7 +43,7 @@
 #include <wtf/Noncopyable.h>
 #include <wtf/OptionSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AffineTransform;
 class DecomposedGlyphs;
@@ -400,6 +400,6 @@ private:
     bool m_contentfulPaintDetected { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #include "GraphicsContextStateSaver.h"

@@ -33,7 +33,7 @@
 #include "Document.h"
 #include "HTMLFormElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 inline FormState::FormState(HTMLFormElement& form, StringPairVector&& textFieldValues, Document& sourceDocument, FormSubmissionTrigger formSubmissionTrigger)
     : FrameDestructionObserver(sourceDocument.frame())

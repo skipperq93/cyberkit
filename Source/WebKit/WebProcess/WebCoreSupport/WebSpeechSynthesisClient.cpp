@@ -32,9 +32,9 @@
 
 #if ENABLE(SPEECH_SYNTHESIS)
 
-namespace WebKit {
+namespace CyberKit {
 
-const Vector<RefPtr<WebCore::PlatformSpeechSynthesisVoice>>& WebSpeechSynthesisClient::voiceList()
+const Vector<RefPtr<CyberCore::PlatformSpeechSynthesisVoice>>& WebSpeechSynthesisClient::voiceList()
 {
     // FIXME: this message should not be sent synchronously. Instead, the UI process should
     // get the list of voices and pass it on to the WebContent processes, see
@@ -42,13 +42,13 @@ const Vector<RefPtr<WebCore::PlatformSpeechSynthesisVoice>>& WebSpeechSynthesisC
     auto sendResult = m_page.sendSync(Messages::WebPageProxy::SpeechSynthesisVoiceList());
     auto [voiceList] = sendResult.takeReplyOr(Vector<WebSpeechSynthesisVoice> { });
 
-    m_voices = voiceList.map([](auto& voice) -> RefPtr<WebCore::PlatformSpeechSynthesisVoice> {
-        return WebCore::PlatformSpeechSynthesisVoice::create(voice.voiceURI, voice.name, voice.lang, voice.localService, voice.defaultLang);
+    m_voices = voiceList.map([](auto& voice) -> RefPtr<CyberCore::PlatformSpeechSynthesisVoice> {
+        return CyberCore::PlatformSpeechSynthesisVoice::create(voice.voiceURI, voice.name, voice.lang, voice.localService, voice.defaultLang);
     });
     return m_voices;
 }
 
-WebCore::SpeechSynthesisClientObserver* WebSpeechSynthesisClient::corePageObserver() const
+CyberCore::SpeechSynthesisClientObserver* WebSpeechSynthesisClient::corePageObserver() const
 {
     if (m_page.corePage() && m_page.corePage()->speechSynthesisClient() && m_page.corePage()->speechSynthesisClient()->observer())
         return m_page.corePage()->speechSynthesisClient()->observer().get();
@@ -60,7 +60,7 @@ void WebSpeechSynthesisClient::resetState()
     m_page.send(Messages::WebPageProxy::SpeechSynthesisResetState());
 }
 
-void WebSpeechSynthesisClient::speak(RefPtr<WebCore::PlatformSpeechSynthesisUtterance> utterance)
+void WebSpeechSynthesisClient::speak(RefPtr<CyberCore::PlatformSpeechSynthesisUtterance> utterance)
 {
     WTF::CompletionHandler<void()> startedCompletionHandler = [this, weakThis = WeakPtr { *this }]() mutable {
         if (!weakThis)
@@ -116,6 +116,6 @@ void WebSpeechSynthesisClient::resume()
     m_page.sendWithAsyncReply(Messages::WebPageProxy::SpeechSynthesisResume(), WTFMove(completionHandler));
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(SPEECH_SYNTHESIS)

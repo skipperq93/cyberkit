@@ -39,7 +39,7 @@
 #include <wtf/Threading.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioChannel;
 
@@ -92,6 +92,6 @@ private:
     mutable Condition m_backgroundThreadConditionVariable;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ReverbConvolver_h

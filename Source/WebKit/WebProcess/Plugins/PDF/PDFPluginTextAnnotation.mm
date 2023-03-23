@@ -46,8 +46,8 @@
 #import <CyberCore/KeyboardEvent.h>
 #import <CyberCore/Page.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 using namespace HTMLNames;
 
 static const String cssAlignmentValueForNSTextAlignment(NSTextAlignment alignment)
@@ -151,6 +151,6 @@ bool PDFPluginTextAnnotation::handleEvent(Event& event)
     return false;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(PDFKIT_PLUGIN)

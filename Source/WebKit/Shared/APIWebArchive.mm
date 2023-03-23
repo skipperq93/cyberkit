@@ -35,7 +35,7 @@
 #import <wtf/RetainPtr.h>
 
 namespace API {
-using namespace WebCore;
+using namespace CyberCore;
 
 Ref<WebArchive> WebArchive::create(WebArchiveResource* mainResource, RefPtr<API::Array>&& subresources, RefPtr<API::Array>&& subframeArchives)
 {

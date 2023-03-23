@@ -29,7 +29,7 @@
 
 #include "LinkLoader.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 LinkPreloadResourceClient::LinkPreloadResourceClient(LinkLoader& loader, CachedResource& resource)
 {

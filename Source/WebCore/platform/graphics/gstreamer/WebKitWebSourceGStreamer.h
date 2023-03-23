@@ -24,7 +24,7 @@
 #include <gst/gst.h>
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 class MediaPlayer;
 class SecurityOrigin;
 }
@@ -53,9 +53,9 @@ struct WebKitWebSrcClass {
 };
 
 GType webkit_web_src_get_type(void);
-void webKitWebSrcSetMediaPlayer(WebKitWebSrc*, WebCore::MediaPlayer*, const String&);
+void webKitWebSrcSetMediaPlayer(WebKitWebSrc*, CyberCore::MediaPlayer*, const String&);
 bool webKitSrcPassedCORSAccessCheck(WebKitWebSrc*);
-bool webKitSrcIsCrossOrigin(WebKitWebSrc*, const WebCore::SecurityOrigin&);
+bool webKitSrcIsCrossOrigin(WebKitWebSrc*, const CyberCore::SecurityOrigin&);
 
 G_END_DECLS
 

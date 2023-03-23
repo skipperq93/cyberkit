@@ -28,7 +28,7 @@
 #include <wtf/Forward.h>
 #include <wtf/text/TextBreakIterator.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Font;
 class LegacyInlineTextBox;
@@ -316,6 +316,6 @@ inline RenderText* Text::renderer() const
     return downcast<RenderText>(Node::renderer());
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderText, isText())

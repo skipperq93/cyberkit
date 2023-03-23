@@ -32,7 +32,7 @@
 #include "MediaPlaybackTargetPicker.h"
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class MediaPlaybackTargetPickerMock final : public MediaPlaybackTargetPicker, public CanMakeWeakPtr<MediaPlaybackTargetPickerMock> {
     WTF_MAKE_FAST_ALLOCATED;
@@ -59,7 +59,7 @@ private:
     bool m_showingMenu { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WIRELESS_PLAYBACK_TARGET) && !PLATFORM(IOS_FAMILY)
 

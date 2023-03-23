@@ -35,7 +35,7 @@
 
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 void WebProcessProxy::platformGetLaunchOptions(ProcessLauncher::LaunchOptions& launchOptions)
 {

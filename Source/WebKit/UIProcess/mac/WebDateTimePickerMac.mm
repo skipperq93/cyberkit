@@ -44,9 +44,9 @@ constexpr NSString * kDefaultTimeZoneIdentifier = @"UTC";
 
 @interface WKDateTimePicker : NSObject
 
-- (id)initWithParams:(WebCore::DateTimeChooserParameters&&)params inView:(NSView *)view;
+- (id)initWithParams:(CyberCore::DateTimeChooserParameters&&)params inView:(NSView *)view;
 - (void)showPicker:(WebKit::WebDateTimePickerMac&)picker;
-- (void)updatePicker:(WebCore::DateTimeChooserParameters&&)params;
+- (void)updatePicker:(CyberCore::DateTimeChooserParameters&&)params;
 - (void)invalidate;
 
 @end
@@ -82,7 +82,7 @@ void WebDateTimePickerMac::endPicker()
     WebDateTimePicker::endPicker();
 }
 
-void WebDateTimePickerMac::showDateTimePicker(WebCore::DateTimeChooserParameters&& params)
+void WebDateTimePickerMac::showDateTimePicker(CyberCore::DateTimeChooserParameters&& params)
 {
     if (m_picker) {
         [m_picker updatePicker:WTFMove(params)];
@@ -178,7 +178,7 @@ void WebDateTimePickerMac::didChooseDate(StringView date)
 
 @implementation WKDateTimePicker {
     WeakPtr<WebKit::WebDateTimePickerMac> _picker;
-    WebCore::DateTimeChooserParameters _params;
+    CyberCore::DateTimeChooserParameters _params;
     WeakObjCPtr<NSView> _presentingView;
 
     RetainPtr<WKDateTimePickerWindow> _enclosingWindow;
@@ -186,7 +186,7 @@ void WebDateTimePickerMac::didChooseDate(StringView date)
     RetainPtr<NSDateFormatter> _dateFormatter;
 }
 
-- (id)initWithParams:(WebCore::DateTimeChooserParameters&&)params inView:(NSView *)view
+- (id)initWithParams:(CyberCore::DateTimeChooserParameters&&)params inView:(NSView *)view
 {
     if (!(self = [super init]))
         return self;
@@ -234,7 +234,7 @@ void WebDateTimePickerMac::didChooseDate(StringView date)
     [[_presentingView window] addChildWindow:_enclosingWindow.get() ordered:NSWindowAbove];
 }
 
-- (void)updatePicker:(WebCore::DateTimeChooserParameters&&)params
+- (void)updatePicker:(CyberCore::DateTimeChooserParameters&&)params
 {
     _params = WTFMove(params);
 

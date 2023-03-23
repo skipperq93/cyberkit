@@ -31,7 +31,7 @@
 #include "XMLNames.h"
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 NativeXPathNSResolver::NativeXPathNSResolver(Ref<Node>&& node)
     : m_node(WTFMove(node))
@@ -50,4 +50,4 @@ AtomString NativeXPathNSResolver::lookupNamespaceURI(const AtomString& prefix)
     return m_node->lookupNamespaceURI(prefix);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

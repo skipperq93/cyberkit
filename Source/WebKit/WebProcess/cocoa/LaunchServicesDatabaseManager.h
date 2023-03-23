@@ -29,9 +29,9 @@
 #import <wtf/NeverDestroyed.h>
 #import <wtf/threads/BinarySemaphore.h>
 
-namespace WebKit {
+namespace CyberKit {
 
-class LaunchServicesDatabaseManager : public WebKit::XPCEndpointClient {
+class LaunchServicesDatabaseManager : public CyberKit::XPCEndpointClient {
 public:
     static LaunchServicesDatabaseManager& singleton();
 

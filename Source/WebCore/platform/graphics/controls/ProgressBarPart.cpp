@@ -28,7 +28,7 @@
 
 #include "ControlFactory.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<ProgressBarPart> ProgressBarPart::create(double position, const Seconds& animationStartTime)
 {
@@ -47,4 +47,4 @@ std::unique_ptr<PlatformControl> ProgressBarPart::createPlatformControl()
     return controlFactory().createPlatformProgressBar(*this);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

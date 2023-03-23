@@ -33,7 +33,7 @@
 #include "WebVTTParser.h"
 #include <memory>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CachedTextTrack;
 class Document;
@@ -92,6 +92,6 @@ private:
     bool m_newCuesAvailable { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(VIDEO)

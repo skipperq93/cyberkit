@@ -29,7 +29,7 @@
 #include <gio/gunixfdlist.h>
 #include <wtf/UUID.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static const Seconds s_dbusCallTimeout = 10_ms;
 
@@ -226,6 +226,6 @@ void GStreamerDisplayCaptureDeviceManager::waitResponseSignal(const char* object
     g_dbus_connection_signal_unsubscribe(connection, signalId);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM) && USE(GSTREAMER)

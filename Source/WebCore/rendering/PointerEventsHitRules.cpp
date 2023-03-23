@@ -20,7 +20,7 @@
 #include "config.h"
 #include "PointerEventsHitRules.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 PointerEventsHitRules::PointerEventsHitRules(EHitTesting hitTesting, const HitTestRequest& request, PointerEvents pointerEvents)
     : requireVisible(false)

@@ -27,7 +27,7 @@
  */
 
 #import "config.h"
-#import "WebCoreNSURLExtras.h"
+#import "CyberCoreNSURLExtras.h"
 
 #import <pal/spi/cf/CFNetworkSPI.h>
 #import <wtf/Function.h>
@@ -37,7 +37,7 @@
 #import <unicode/uidna.h>
 #import <unicode/uscript.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 NSURL *URLByCanonicalizingURL(NSURL *URL)
 {
@@ -59,4 +59,4 @@ NSURL *URLByCanonicalizingURL(NSURL *URL)
     return retainPtr([newRequest URL]).autorelease();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

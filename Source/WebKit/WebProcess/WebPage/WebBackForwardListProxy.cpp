@@ -29,7 +29,7 @@
 #include "Logging.h"
 #include "SessionState.h"
 #include "SessionStateConversion.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebPage.h"
 #include "WebPageProxyMessages.h"
 #include "WebProcess.h"
@@ -42,8 +42,8 @@
 #include <wtf/NeverDestroyed.h>
 #include <wtf/ProcessID.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 // FIXME <rdar://problem/8819268>: This leaks all HistoryItems that go into these maps.
 // We need to clear up the life time of these objects.
@@ -81,14 +81,14 @@ void WebBackForwardListProxy::removeItem(const BackForwardItemIdentifier& itemID
         return;
     
     BackForwardCache::singleton().remove(*item);
-    WebCore::Page::clearPreviousItemFromAllPages(item.get());
+    CyberCore::Page::clearPreviousItemFromAllPages(item.get());
 }
 
 WebBackForwardListProxy::WebBackForwardListProxy(WebPage& page)
     : m_page(&page)
 {
-    // FIXME: This means that if we mix legacy WebKit and modern WebKit in the same process, we won't get both notifications.
-    WebCore::notifyHistoryItemChanged = WK2NotifyHistoryItemChanged;
+    // FIXME: This means that if we mix legacy CyberKit and modern CyberKit in the same process, we won't get both notifications.
+    CyberCore::notifyHistoryItemChanged = WK2NotifyHistoryItemChanged;
 }
 
 void WebBackForwardListProxy::addItem(Ref<HistoryItem>&& item)
@@ -137,7 +137,7 @@ unsigned WebBackForwardListProxy::forwardListCount() const
     return cacheListCountsIfNecessary().forwardCount;
 }
 
-bool WebBackForwardListProxy::containsItem(const WebCore::HistoryItem& item) const
+bool WebBackForwardListProxy::containsItem(const CyberCore::HistoryItem& item) const
 {
     // Items are removed asynchronously from idToHistoryItemMap() via IPC from the UIProcess so we need to ask
     // the UIProcess to make sure this HistoryItem is still part of the back/forward list.
@@ -178,4 +178,4 @@ void WebBackForwardListProxy::clear()
     m_page->send(Messages::WebPageProxy::BackForwardClear());
 }
 
-} // namespace WebKit
+} // namespace CyberKit

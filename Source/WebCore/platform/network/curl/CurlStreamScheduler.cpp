@@ -28,7 +28,7 @@
 
 #if USE(CURL)
 
-namespace WebCore {
+namespace CyberCore {
 
 CurlStreamScheduler::CurlStreamScheduler()
 {

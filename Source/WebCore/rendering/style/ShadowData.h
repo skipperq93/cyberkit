@@ -30,7 +30,7 @@
 #include "Length.h"
 #include "LengthPoint.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class ShadowStyle : uint8_t { Normal, Inset };
 
@@ -110,4 +110,4 @@ inline ShadowData::~ShadowData()
 
 WTF::TextStream& operator<<(WTF::TextStream&, const ShadowData&);
 
-} // namespace WebCore
+} // namespace CyberCore

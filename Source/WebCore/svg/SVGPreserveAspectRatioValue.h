@@ -23,7 +23,7 @@
 #include "ExceptionOr.h"
 #include "SVGPropertyTraits.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class AffineTransform;
 class FloatRect;
@@ -86,35 +86,35 @@ template<> struct SVGPropertyTraits<SVGPreserveAspectRatioValue> {
     static String toString(const SVGPreserveAspectRatioValue& type) { return type.valueAsString(); }
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::SVGPreserveAspectRatioValue::SVGPreserveAspectRatioType> {
+template<> struct EnumTraits<CyberCore::SVGPreserveAspectRatioValue::SVGPreserveAspectRatioType> {
     using values = EnumValues<
-        WebCore::SVGPreserveAspectRatioValue::SVGPreserveAspectRatioType,
+        CyberCore::SVGPreserveAspectRatioValue::SVGPreserveAspectRatioType,
 
-        WebCore::SVGPreserveAspectRatioValue::SVG_PRESERVEASPECTRATIO_UNKNOWN,
-        WebCore::SVGPreserveAspectRatioValue::SVG_PRESERVEASPECTRATIO_NONE,
-        WebCore::SVGPreserveAspectRatioValue::SVG_PRESERVEASPECTRATIO_XMINYMIN,
-        WebCore::SVGPreserveAspectRatioValue::SVG_PRESERVEASPECTRATIO_XMIDYMIN,
-        WebCore::SVGPreserveAspectRatioValue::SVG_PRESERVEASPECTRATIO_XMAXYMIN,
-        WebCore::SVGPreserveAspectRatioValue::SVG_PRESERVEASPECTRATIO_XMINYMID,
-        WebCore::SVGPreserveAspectRatioValue::SVG_PRESERVEASPECTRATIO_XMIDYMID,
-        WebCore::SVGPreserveAspectRatioValue::SVG_PRESERVEASPECTRATIO_XMAXYMID,
-        WebCore::SVGPreserveAspectRatioValue::SVG_PRESERVEASPECTRATIO_XMINYMAX,
-        WebCore::SVGPreserveAspectRatioValue::SVG_PRESERVEASPECTRATIO_XMIDYMAX,
-        WebCore::SVGPreserveAspectRatioValue::SVG_PRESERVEASPECTRATIO_XMAXYMAX
+        CyberCore::SVGPreserveAspectRatioValue::SVG_PRESERVEASPECTRATIO_UNKNOWN,
+        CyberCore::SVGPreserveAspectRatioValue::SVG_PRESERVEASPECTRATIO_NONE,
+        CyberCore::SVGPreserveAspectRatioValue::SVG_PRESERVEASPECTRATIO_XMINYMIN,
+        CyberCore::SVGPreserveAspectRatioValue::SVG_PRESERVEASPECTRATIO_XMIDYMIN,
+        CyberCore::SVGPreserveAspectRatioValue::SVG_PRESERVEASPECTRATIO_XMAXYMIN,
+        CyberCore::SVGPreserveAspectRatioValue::SVG_PRESERVEASPECTRATIO_XMINYMID,
+        CyberCore::SVGPreserveAspectRatioValue::SVG_PRESERVEASPECTRATIO_XMIDYMID,
+        CyberCore::SVGPreserveAspectRatioValue::SVG_PRESERVEASPECTRATIO_XMAXYMID,
+        CyberCore::SVGPreserveAspectRatioValue::SVG_PRESERVEASPECTRATIO_XMINYMAX,
+        CyberCore::SVGPreserveAspectRatioValue::SVG_PRESERVEASPECTRATIO_XMIDYMAX,
+        CyberCore::SVGPreserveAspectRatioValue::SVG_PRESERVEASPECTRATIO_XMAXYMAX
     >;
 };
 
-template<> struct EnumTraits<WebCore::SVGPreserveAspectRatioValue::SVGMeetOrSliceType> {
+template<> struct EnumTraits<CyberCore::SVGPreserveAspectRatioValue::SVGMeetOrSliceType> {
     using values = EnumValues<
-        WebCore::SVGPreserveAspectRatioValue::SVGMeetOrSliceType,
+        CyberCore::SVGPreserveAspectRatioValue::SVGMeetOrSliceType,
 
-        WebCore::SVGPreserveAspectRatioValue::SVG_MEETORSLICE_UNKNOWN,
-        WebCore::SVGPreserveAspectRatioValue::SVG_MEETORSLICE_MEET,
-        WebCore::SVGPreserveAspectRatioValue::SVG_MEETORSLICE_SLICE
+        CyberCore::SVGPreserveAspectRatioValue::SVG_MEETORSLICE_UNKNOWN,
+        CyberCore::SVGPreserveAspectRatioValue::SVG_MEETORSLICE_MEET,
+        CyberCore::SVGPreserveAspectRatioValue::SVG_MEETORSLICE_SLICE
     >;
 };
 

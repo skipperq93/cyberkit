@@ -28,7 +28,7 @@
 // FIXME: We should likely rename this header file to WebRTCProvider.h because depending on the
 // build configuration we create either a LibWebRTCProvider, or a GStreamerWebRTCProvider or
 // fallback to WebRTCProvider. This rename would open another can of worms though, leading to the
-// renaming of more LibWebRTC-prefixed files in WebKit.
+// renaming of more LibWebRTC-prefixed files in CyberKit.
 // https://bugs.webkit.org/show_bug.cgi?id=243774
 
 #if USE(LIBWEBRTC)
@@ -44,18 +44,18 @@
 #include <CyberCore/WebRTCProvider.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPage;
 
 #if USE(LIBWEBRTC)
 
 #if PLATFORM(COCOA)
-using LibWebRTCProviderBase = WebCore::LibWebRTCProviderCocoa;
+using LibWebRTCProviderBase = CyberCore::LibWebRTCProviderCocoa;
 #elif USE(GSTREAMER)
-using LibWebRTCProviderBase = WebCore::LibWebRTCProviderGStreamer;
+using LibWebRTCProviderBase = CyberCore::LibWebRTCProviderGStreamer;
 #else
-using LibWebRTCProviderBase = WebCore::LibWebRTCProvider;
+using LibWebRTCProviderBase = CyberCore::LibWebRTCProvider;
 #endif
 
 class LibWebRTCProvider final : public LibWebRTCProviderBase {
@@ -63,13 +63,13 @@ public:
     explicit LibWebRTCProvider(WebPage&);
 
 private:
-    std::unique_ptr<SuspendableSocketFactory> createSocketFactory(String&& /* userAgent */, bool /* isFirstParty */, WebCore::RegistrableDomain&&) final;
+    std::unique_ptr<SuspendableSocketFactory> createSocketFactory(String&& /* userAgent */, bool /* isFirstParty */, CyberCore::RegistrableDomain&&) final;
 
-    rtc::scoped_refptr<webrtc::PeerConnectionInterface> createPeerConnection(WebCore::ScriptExecutionContextIdentifier, webrtc::PeerConnectionObserver&, rtc::PacketSocketFactory*, webrtc::PeerConnectionInterface::RTCConfiguration&&) final;
+    rtc::scoped_refptr<webrtc::PeerConnectionInterface> createPeerConnection(CyberCore::ScriptExecutionContextIdentifier, webrtc::PeerConnectionObserver&, rtc::PacketSocketFactory*, webrtc::PeerConnectionInterface::RTCConfiguration&&) final;
 
     void disableNonLocalhostConnections() final;
     void startedNetworkThread() final;
-    RefPtr<WebCore::RTCDataChannelRemoteHandlerConnection> createRTCDataChannelRemoteHandlerConnection() final;
+    RefPtr<CyberCore::RTCDataChannelRemoteHandlerConnection> createRTCDataChannelRemoteHandlerConnection() final;
     void setLoggingLevel(WTFLogLevel) final;
 
     void willCreatePeerConnectionFactory() final;
@@ -90,7 +90,7 @@ inline UniqueRef<LibWebRTCProvider> createLibWebRTCProvider(WebPage& page)
 }
 
 #elif USE(GSTREAMER_WEBRTC)
-using LibWebRTCProvider = WebCore::GStreamerWebRTCProvider;
+using LibWebRTCProvider = CyberCore::GStreamerWebRTCProvider;
 
 inline UniqueRef<LibWebRTCProvider> createLibWebRTCProvider(WebPage&)
 {
@@ -98,7 +98,7 @@ inline UniqueRef<LibWebRTCProvider> createLibWebRTCProvider(WebPage&)
 }
 
 #else
-using LibWebRTCProvider = WebCore::WebRTCProvider;
+using LibWebRTCProvider = CyberCore::WebRTCProvider;
 
 inline UniqueRef<LibWebRTCProvider> createLibWebRTCProvider(WebPage&)
 {
@@ -106,4 +106,4 @@ inline UniqueRef<LibWebRTCProvider> createLibWebRTCProvider(WebPage&)
 }
 #endif // USE(LIBWEBRTC)
 
-} // namespace WebKit
+} // namespace CyberKit

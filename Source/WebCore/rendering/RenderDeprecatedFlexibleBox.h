@@ -24,7 +24,7 @@
 
 #include "RenderBlock.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class FlexBoxIterator;
 
@@ -69,6 +69,6 @@ private:
     bool m_stretchingChildren;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderDeprecatedFlexibleBox, isDeprecatedFlexibleBox())

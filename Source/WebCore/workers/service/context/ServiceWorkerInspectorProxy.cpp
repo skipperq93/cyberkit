@@ -37,7 +37,7 @@
 #include <CyberScriptCore/InspectorAgentBase.h>
 #include <CyberScriptCore/InspectorFrontendChannel.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace Inspector;
 
@@ -98,6 +98,6 @@ void ServiceWorkerInspectorProxy::sendMessageFromWorkerToFrontend(String&& messa
     m_channel->sendMessageToFrontend(WTFMove(message));
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

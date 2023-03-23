@@ -48,7 +48,7 @@ public:
     BackingStoreState& backingStoreState() { return m_backingStoreState; }
 
     struct BackingStoreContainer : public ThreadSafeRefCounted<BackingStoreContainer> {
-        RefPtr<WebCore::CoordinatedBackingStore> backingStore;
+        RefPtr<CyberCore::CoordinatedBackingStore> backingStore;
     };
 
     struct CompositionState {

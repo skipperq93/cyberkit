@@ -22,7 +22,7 @@
 
 #include "SVGFELightElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGFEPointLightElement final : public SVGFELightElement {
 public:
@@ -36,4 +36,4 @@ private:
 
 static_assert(sizeof(SVGFEPointLightElement) == sizeof(SVGFELightElement));
 
-} // namespace WebCore
+} // namespace CyberCore

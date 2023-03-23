@@ -37,7 +37,7 @@
 #import "_WKInspectorPrivateForTesting.h"
 #import "_WKRemoteObjectRegistry.h"
 #import <CyberCore/FrameIdentifier.h>
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/text/WTFString.h>
 
@@ -211,7 +211,7 @@ private:
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainRunLoop(_WKInspector.class, self))
+    if (CyberCoreObjCScheduleDeallocateOnMainRunLoop(_WKInspector.class, self))
         return;
     
     _inspector->~WebInspectorUIProxy();

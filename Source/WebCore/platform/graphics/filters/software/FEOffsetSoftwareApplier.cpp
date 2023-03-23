@@ -30,7 +30,7 @@
 #include "GraphicsContext.h"
 #include "ImageBuffer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 bool FEOffsetSoftwareApplier::apply(const Filter& filter, const FilterImageVector& inputs, FilterImage& result) const
 {
@@ -52,4 +52,4 @@ bool FEOffsetSoftwareApplier::apply(const Filter& filter, const FilterImageVecto
     return true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

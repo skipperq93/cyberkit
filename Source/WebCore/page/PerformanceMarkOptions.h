@@ -27,7 +27,7 @@
 
 #include <CyberScriptCore/JSCJSValue.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct PerformanceMarkOptions {
     JSC::JSValue detail;

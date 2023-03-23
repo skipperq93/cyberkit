@@ -25,7 +25,7 @@
 #include "CounterContent.h"
 #include "RenderText.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CounterNode;
 
@@ -69,11 +69,11 @@ inline void RenderCounter::rendererStyleChanged(RenderElement& renderer, const R
     rendererStyleChangedSlowCase(renderer, oldStyle, newStyle);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderCounter, isCounter())
 
 #if ENABLE(TREE_DEBUGGING)
-// Outside the WebCore namespace for ease of invocation from the debugger.
-void showCounterRendererTree(const WebCore::RenderObject*, const char* counterName = nullptr);
+// Outside the CyberCore namespace for ease of invocation from the debugger.
+void showCounterRendererTree(const CyberCore::RenderObject*, const char* counterName = nullptr);
 #endif

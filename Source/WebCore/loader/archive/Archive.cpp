@@ -29,7 +29,7 @@
 #include "config.h"
 #include "Archive.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Archive::~Archive() = default;
 

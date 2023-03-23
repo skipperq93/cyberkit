@@ -61,7 +61,7 @@ static void spinLoop(NSTimeInterval timeout, BOOL (^block)())
     }
 }
 
-TEST(WebKitLegacy, WindowlessWebViewWithMedia)
+TEST(CyberKitLegacy, WindowlessWebViewWithMedia)
 {
     @autoreleasepool {
         auto webView = adoptNS([[WebView alloc] initWithFrame:NSMakeRect(0, 0, 120, 200) frameName:nil groupName:nil]);

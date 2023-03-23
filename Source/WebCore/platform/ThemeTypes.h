@@ -31,7 +31,7 @@ namespace WTF {
 class TextStream;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 enum SelectionPart {
     SelectionBackground,
@@ -93,4 +93,4 @@ WTF::TextStream& operator<<(WTF::TextStream&, SelectionPart);
 WTF::TextStream& operator<<(WTF::TextStream&, ThemeFont);
 WTF::TextStream& operator<<(WTF::TextStream&, ThemeColor);
 
-} // namespace WebCore
+} // namespace CyberCore

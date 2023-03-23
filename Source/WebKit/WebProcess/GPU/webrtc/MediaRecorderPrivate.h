@@ -40,28 +40,28 @@ namespace IPC {
 class Connection;
 }
 
-namespace WebCore {
+namespace CyberCore {
 class MediaStreamPrivate;
 class WebAudioBufferList;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class MediaRecorderPrivate final
-    : public WebCore::MediaRecorderPrivate
+    : public CyberCore::MediaRecorderPrivate
     , public GPUProcessConnection::Client {
     WTF_MAKE_FAST_ALLOCATED;
 public:
-    MediaRecorderPrivate(WebCore::MediaStreamPrivate&, const WebCore::MediaRecorderPrivateOptions&);
+    MediaRecorderPrivate(CyberCore::MediaStreamPrivate&, const CyberCore::MediaRecorderPrivateOptions&);
     ~MediaRecorderPrivate();
 
 private:
-    // WebCore::MediaRecorderPrivate
-    void videoFrameAvailable(WebCore::VideoFrame&, WebCore::VideoFrameTimeMetadata) final;
-    void fetchData(CompletionHandler<void(RefPtr<WebCore::FragmentedSharedBuffer>&&, const String& mimeType, double)>&&) final;
+    // CyberCore::MediaRecorderPrivate
+    void videoFrameAvailable(CyberCore::VideoFrame&, CyberCore::VideoFrameTimeMetadata) final;
+    void fetchData(CompletionHandler<void(RefPtr<CyberCore::FragmentedSharedBuffer>&&, const String& mimeType, double)>&&) final;
     void stopRecording(CompletionHandler<void()>&&) final;
     void startRecording(StartRecordingCallback&&) final;
-    void audioSamplesAvailable(const WTF::MediaTime&, const WebCore::PlatformAudioData&, const WebCore::AudioStreamDescription&, size_t) final;
+    void audioSamplesAvailable(const WTF::MediaTime&, const CyberCore::PlatformAudioData&, const CyberCore::AudioStreamDescription&, size_t) final;
     const String& mimeType() const final;
     void pauseRecording(CompletionHandler<void()>&&) final;
     void resumeRecording(CompletionHandler<void()>&&) final;
@@ -70,17 +70,17 @@ private:
     void gpuProcessConnectionDidClose(GPUProcessConnection&) final;
 
     MediaRecorderIdentifier m_identifier;
-    Ref<WebCore::MediaStreamPrivate> m_stream;
+    Ref<CyberCore::MediaStreamPrivate> m_stream;
     Ref<IPC::Connection> m_connection;
 
     std::unique_ptr<ProducerSharedCARingBuffer> m_ringBuffer;
-    std::optional<WebCore::CAAudioStreamDescription> m_description;
-    std::unique_ptr<WebCore::WebAudioBufferList> m_silenceAudioBuffer;
+    std::optional<CyberCore::CAAudioStreamDescription> m_description;
+    std::unique_ptr<CyberCore::WebAudioBufferList> m_silenceAudioBuffer;
     uint64_t m_numberOfFrames { 0 };
-    WebCore::MediaRecorderPrivateOptions m_options;
+    CyberCore::MediaRecorderPrivateOptions m_options;
     bool m_hasVideo { false };
     bool m_isStopped { false };
-    std::optional<WebCore::IntSize> m_blackFrameSize;
+    std::optional<CyberCore::IntSize> m_blackFrameSize;
 
     SharedVideoFrameWriter m_sharedVideoFrameWriter;
 };

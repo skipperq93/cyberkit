@@ -42,7 +42,7 @@
 #include "StyleSheetContents.h"
 #include <wtf/SetForScope.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace Style {
 
 static bool shouldDirtyAllStyle(const Vector<RefPtr<StyleRuleBase>>& rules)

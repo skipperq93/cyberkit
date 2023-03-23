@@ -28,7 +28,7 @@
 
 #include "RemoteWebInspectorUIMessages.h"
 #include "RemoteWebInspectorUIProxyMessages.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebInspectorUI.h"
 #include "WebPage.h"
 #include "WebProcess.h"
@@ -47,8 +47,8 @@
 #include <CyberCore/NotImplemented.h>
 #endif
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 Ref<RemoteWebInspectorUI> RemoteWebInspectorUI::create(WebPage& page)
 {
@@ -129,7 +129,7 @@ void RemoteWebInspectorUI::changeSheetRect(const FloatRect& rect)
     WebProcess::singleton().parentProcessConnection()->send(Messages::RemoteWebInspectorUIProxy::SetSheetRect(rect), m_page.identifier());
 }
 
-void RemoteWebInspectorUI::setForcedAppearance(WebCore::InspectorFrontendClient::Appearance appearance)
+void RemoteWebInspectorUI::setForcedAppearance(CyberCore::InspectorFrontendClient::Appearance appearance)
 {
     WebProcess::singleton().parentProcessConnection()->send(Messages::RemoteWebInspectorUIProxy::SetForcedAppearance(appearance), m_page.identifier());
 }
@@ -146,7 +146,7 @@ void RemoteWebInspectorUI::moveWindowBy(float x, float y)
     m_page.corePage()->chrome().setWindowRect(frameRect);
 }
 
-WebCore::UserInterfaceLayoutDirection RemoteWebInspectorUI::userInterfaceLayoutDirection() const
+CyberCore::UserInterfaceLayoutDirection RemoteWebInspectorUI::userInterfaceLayoutDirection() const
 {
     return m_page.corePage()->userInterfaceLayoutDirection();
 }
@@ -213,7 +213,7 @@ void RemoteWebInspectorUI::revealFileExternally(const String& path)
     WebProcess::singleton().parentProcessConnection()->send(Messages::RemoteWebInspectorUIProxy::RevealFileExternally(path), m_page.identifier());
 }
 
-void RemoteWebInspectorUI::save(Vector<WebCore::InspectorFrontendClient::SaveData>&& saveDatas, bool forceSaveAs)
+void RemoteWebInspectorUI::save(Vector<CyberCore::InspectorFrontendClient::SaveData>&& saveDatas, bool forceSaveAs)
 {
     WebProcess::singleton().parentProcessConnection()->send(Messages::RemoteWebInspectorUIProxy::Save(WTFMove(saveDatas), forceSaveAs), m_page.identifier());
 }
@@ -223,7 +223,7 @@ void RemoteWebInspectorUI::load(const String& path, CompletionHandler<void(const
     WebProcess::singleton().parentProcessConnection()->sendWithAsyncReply(Messages::RemoteWebInspectorUIProxy::Load(path), WTFMove(completionHandler), m_page.identifier());
 }
 
-void RemoteWebInspectorUI::pickColorFromScreen(CompletionHandler<void(const std::optional<WebCore::Color>&)>&& completionHandler)
+void RemoteWebInspectorUI::pickColorFromScreen(CompletionHandler<void(const std::optional<CyberCore::Color>&)>&& completionHandler)
 {
     WebProcess::singleton().parentProcessConnection()->sendWithAsyncReply(Messages::RemoteWebInspectorUIProxy::PickColorFromScreen(), WTFMove(completionHandler), m_page.identifier());
 }
@@ -295,7 +295,7 @@ bool RemoteWebInspectorUI::supportsWebExtensions()
     return true;
 }
 
-void RemoteWebInspectorUI::didShowExtensionTab(const Inspector::ExtensionID& extensionID, const Inspector::ExtensionTabID& extensionTabID, WebCore::FrameIdentifier frameID)
+void RemoteWebInspectorUI::didShowExtensionTab(const Inspector::ExtensionID& extensionID, const Inspector::ExtensionTabID& extensionTabID, CyberCore::FrameIdentifier frameID)
 {
     if (!m_extensionController)
         return;
@@ -328,7 +328,7 @@ void RemoteWebInspectorUI::inspectedPageDidNavigate(const URL& newURL)
 }
 #endif // ENABLE(INSPECTOR_EXTENSIONS)
 
-WebCore::Page* RemoteWebInspectorUI::frontendPage()
+CyberCore::Page* RemoteWebInspectorUI::frontendPage()
 {
     return m_page.corePage();
 }
@@ -360,4 +360,4 @@ String RemoteWebInspectorUI::localizedStringsURL() const
 }
 #endif // !PLATFORM(MAC) && !PLATFORM(GTK) && !PLATFORM(WIN)
 
-} // namespace WebKit
+} // namespace CyberKit

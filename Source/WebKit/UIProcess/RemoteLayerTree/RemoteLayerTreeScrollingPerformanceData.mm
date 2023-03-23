@@ -33,7 +33,7 @@
 #import <wtf/cocoa/VectorCocoa.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 RemoteLayerTreeScrollingPerformanceData::RemoteLayerTreeScrollingPerformanceData(RemoteLayerTreeDrawingAreaProxy& drawingArea)
     : m_drawingArea(drawingArea)

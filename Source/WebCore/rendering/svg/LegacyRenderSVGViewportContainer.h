@@ -24,7 +24,7 @@
 
 #include "LegacyRenderSVGContainer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // This is used for non-root <svg> elements and <marker> elements, neither of which are SVGTransformable
 // thus we inherit from LegacyRenderSVGContainer instead of LegacyRenderSVGTransformableContainer
@@ -68,6 +68,6 @@ private:
     mutable AffineTransform m_localToParentTransform;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(LegacyRenderSVGViewportContainer, isLegacySVGViewportContainer())

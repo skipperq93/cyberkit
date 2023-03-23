@@ -36,7 +36,7 @@ namespace WTF {
 class TextStream;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class ViewportConfiguration {
     WTF_MAKE_NONCOPYABLE(ViewportConfiguration); WTF_MAKE_FAST_ALLOCATED;
@@ -219,4 +219,4 @@ private:
 WTF::TextStream& operator<<(WTF::TextStream&, const ViewportConfiguration::Parameters&);
 WTF::TextStream& operator<<(WTF::TextStream&, const ViewportConfiguration&);
 
-} // namespace WebCore
+} // namespace CyberCore

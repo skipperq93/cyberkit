@@ -28,7 +28,7 @@ namespace PAL {
 class TextEncoding;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace FormDataBuilder {
 

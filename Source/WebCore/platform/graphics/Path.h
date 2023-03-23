@@ -61,7 +61,7 @@ using PlatformPathStorageType = PlatformPathPtr;
 #endif
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 enum class PathElementType : uint8_t {
     MoveToPoint, // The points member will contain 1 value.
     AddLineToPoint, // The points member will contain 1 value.
@@ -73,10 +73,10 @@ enum class PathElementType : uint8_t {
 
 namespace WTF {
 class TextStream;
-template<> bool isValidEnum<WebCore::PathElementType, void>(uint8_t);
+template<> bool isValidEnum<CyberCore::PathElementType, void>(uint8_t);
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class AffineTransform;
 class FloatPoint;
@@ -444,4 +444,4 @@ inline bool Path::hasInlineData() const
 
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

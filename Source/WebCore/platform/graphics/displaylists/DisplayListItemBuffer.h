@@ -32,7 +32,7 @@
 #include <wtf/FastMalloc.h>
 #include <wtf/ObjectIdentifier.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class GraphicsContext;
 
@@ -61,7 +61,7 @@ struct ItemHandle {
 
     void apply(GraphicsContext&);
     WEBCORE_EXPORT void destroy();
-    bool isDrawingItem() const { return WebCore::DisplayList::isDrawingItem(type()); }
+    bool isDrawingItem() const { return CyberCore::DisplayList::isDrawingItem(type()); }
 
     operator bool() const { return !!(*this); }
     bool operator!() const { return !data; }
@@ -216,4 +216,4 @@ private:
 };
 
 } // namespace DisplayList
-} // namespace WebCore
+} // namespace CyberCore

@@ -40,22 +40,22 @@ public:
     virtual ~RemoteLayerWithRemoteRenderingBackingStoreCollection() = default;
 
 private:
-    RefPtr<WebCore::ImageBuffer> allocateBufferForBackingStore(const RemoteLayerBackingStore&) final;
+    RefPtr<CyberCore::ImageBuffer> allocateBufferForBackingStore(const RemoteLayerBackingStore&) final;
     
     RemoteRenderingBackendProxy& remoteRenderingBackendProxy();
 
     bool backingStoreNeedsDisplay(const RemoteLayerBackingStore&) final;
     void prepareBackingStoresForDisplay(RemoteLayerTreeTransaction&) final;
 
-    bool collectBackingStoreBufferIdentifiersToMarkVolatile(RemoteLayerBackingStore&, OptionSet<VolatilityMarkingBehavior>, MonotonicTime now, Vector<WebCore::RenderingResourceIdentifier>&);
+    bool collectBackingStoreBufferIdentifiersToMarkVolatile(RemoteLayerBackingStore&, OptionSet<VolatilityMarkingBehavior>, MonotonicTime now, Vector<CyberCore::RenderingResourceIdentifier>&);
 
-    bool collectAllBufferIdentifiersToMarkVolatile(OptionSet<VolatilityMarkingBehavior> liveBackingStoreMarkingBehavior, OptionSet<VolatilityMarkingBehavior> unparentedBackingStoreMarkingBehavior, Vector<WebCore::RenderingResourceIdentifier>&);
+    bool collectAllBufferIdentifiersToMarkVolatile(OptionSet<VolatilityMarkingBehavior> liveBackingStoreMarkingBehavior, OptionSet<VolatilityMarkingBehavior> unparentedBackingStoreMarkingBehavior, Vector<CyberCore::RenderingResourceIdentifier>&);
 
     void markBackingStoreVolatileAfterReachabilityChange(RemoteLayerBackingStore&) final;
     void tryMarkAllBackingStoreVolatile(CompletionHandler<void(bool)>&&) final;
     void markAllBackingStoreVolatileFromTimer() final;
     
-    void sendMarkBuffersVolatile(Vector<WebCore::RenderingResourceIdentifier>&&, CompletionHandler<void(bool)>&&);
+    void sendMarkBuffersVolatile(Vector<CyberCore::RenderingResourceIdentifier>&&, CompletionHandler<void(bool)>&&);
 };
 
 } // namespace WebKit

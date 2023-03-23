@@ -31,7 +31,7 @@
 #include "Filter.h"
 #include <wtf/FastMalloc.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace DisplayList {
 
 #if !defined(NDEBUG) || !LOG_DISABLED
@@ -775,4 +775,4 @@ void ItemBuffer::prepareToAppend(ItemBufferHandle&& handle)
 }
 
 } // namespace DisplayList
-} // namespace WebCore
+} // namespace CyberCore

@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -17,16 +17,16 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitDOMXPathExpressionPrivate_h
-#define WebKitDOMXPathExpressionPrivate_h
+#ifndef CyberKitDOMXPathExpressionPrivate_h
+#define CyberKitDOMXPathExpressionPrivate_h
 
 #include <CyberCore/XPathExpression.h>
-#include <webkitdom/WebKitDOMXPathExpression.h>
+#include <webkitdom/CyberKitDOMXPathExpression.h>
 
-namespace WebKit {
-WebKitDOMXPathExpression* wrapXPathExpression(WebCore::XPathExpression*);
-WebKitDOMXPathExpression* kit(WebCore::XPathExpression*);
-WebCore::XPathExpression* core(WebKitDOMXPathExpression*);
-} // namespace WebKit
+namespace CyberKit {
+CyberKitDOMXPathExpression* wrapXPathExpression(CyberCore::XPathExpression*);
+CyberKitDOMXPathExpression* kit(CyberCore::XPathExpression*);
+CyberCore::XPathExpression* core(CyberKitDOMXPathExpression*);
+} // namespace CyberKit
 
-#endif /* WebKitDOMXPathExpressionPrivate_h */
+#endif /* CyberKitDOMXPathExpressionPrivate_h */

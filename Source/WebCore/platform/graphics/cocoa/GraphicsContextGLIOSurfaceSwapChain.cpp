@@ -28,7 +28,7 @@
 
 #if ENABLE(WEBGL) && PLATFORM(COCOA)
 
-namespace WebCore {
+namespace CyberCore {
 
 GraphicsContextGLIOSurfaceSwapChain::~GraphicsContextGLIOSurfaceSwapChain() = default;
 

@@ -37,7 +37,7 @@
 
 namespace WebKit {
 
-void WebPage::updateSettingsGenerated(const WebPreferencesStore& store, WebCore::Settings& settings)
+void WebPage::updateSettingsGenerated(const WebPreferencesStore& store, CyberCore::Settings& settings)
 {
 <%- for @pref in @preferencesBoundToSetting do -%>
 <%- if @pref.condition -%>
@@ -61,9 +61,9 @@ void WebPage::updatePreferencesGenerated(const WebPreferencesStore& store)
 #if <%= @pref.condition %>
 <%- end -%>
 <%- if @pref.exposed -%>
-    WebCore::DeprecatedGlobalSettings::set<%= @pref.webcoreNameUpper %>(store.get<%= @pref.typeUpper %>ValueForKey(WebPreferencesKey::<%= @pref.nameLower %>Key()));
+    CyberCore::DeprecatedGlobalSettings::set<%= @pref.webcoreNameUpper %>(store.get<%= @pref.typeUpper %>ValueForKey(WebPreferencesKey::<%= @pref.nameLower %>Key()));
 <%- else -%>
-    WebCore::DeprecatedGlobalSettings::set<%= @pref.webcoreNameUpper %>(DEFAULT_VALUE_FOR_<%= @pref.name %>);
+    CyberCore::DeprecatedGlobalSettings::set<%= @pref.webcoreNameUpper %>(DEFAULT_VALUE_FOR_<%= @pref.name %>);
 <%- end -%>
 <%- if @pref.condition -%>
 #endif

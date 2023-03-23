@@ -28,7 +28,7 @@
 
 #import <pal/cocoa/CryptoKitPrivateSoftLink.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 std::optional<String> PrivateClickMeasurement::calculateAndUpdateSourceUnlinkableToken(const String& serverPublicKeyBase64URL)
 {
@@ -131,4 +131,4 @@ std::optional<String> PrivateClickMeasurement::calculateAndUpdateSecretToken(con
 #endif // HAVE(RSA_BSSA)
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -43,7 +43,7 @@
 #include "WorkerThreadableLoader.h"
 #include "WorkletGlobalScope.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 ThreadableLoaderOptions::ThreadableLoaderOptions()
 {
@@ -164,4 +164,4 @@ void ThreadableLoader::logError(ScriptExecutionContext& context, const ResourceE
     context.addConsoleMessage(MessageSource::JS, MessageLevel::Error, makeString(messageStart, error.failingURL().string(), messageEnd));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

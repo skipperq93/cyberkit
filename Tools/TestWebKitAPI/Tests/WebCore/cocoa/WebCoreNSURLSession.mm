@@ -39,7 +39,7 @@
 #import <CyberCore/MediaResourceLoader.h>
 #import <CyberCore/Settings.h>
 #import <CyberCore/SubresourceLoader.h>
-#import <CyberCore/WebCoreNSURLSession.h>
+#import <CyberCore/CyberCoreNSURLSession.h>
 #import <CyberCore/ResourceLoader.h>
 #import <CyberKit/WebView.h>
 #import <wtf/RetainPtr.h>
@@ -96,15 +96,15 @@ static NSURL *resourceURL = [[NSBundle mainBundle] URLForResource:@"test" withEx
 }
 @end
 
-using namespace WebCore;
+using namespace CyberCore;
 
 @interface WebView (WebViewInternalForTesting)
-- (WebCore::Frame*)_mainCoreFrame;
+- (CyberCore::Frame*)_mainCoreFrame;
 @end
 
 namespace TestWebKitAPI {
 
-class WebCoreNSURLSessionTest : public testing::Test {
+class CyberCoreNSURLSessionTest : public testing::Test {
 public:
     RetainPtr<WebView> view;
     Frame* frame { nullptr };
@@ -136,9 +136,9 @@ public:
     }
 };
 
-TEST_F(WebCoreNSURLSessionTest, BasicOperation)
+TEST_F(CyberCoreNSURLSessionTest, BasicOperation)
 {
-    auto session = adoptNS([[WebCoreNSURLSession alloc] initWithResourceLoader:*loader delegate:delegate.get() delegateQueue:[NSOperationQueue mainQueue]]);
+    auto session = adoptNS([[CyberCoreNSURLSession alloc] initWithResourceLoader:*loader delegate:delegate.get() delegateQueue:[NSOperationQueue mainQueue]]);
     didRecieveResponse = false;
     didRecieveData = false;
     didComplete = false;
@@ -159,9 +159,9 @@ TEST_F(WebCoreNSURLSessionTest, BasicOperation)
     TestWebKitAPI::Util::run(&didInvalidate);
 }
 
-TEST_F(WebCoreNSURLSessionTest, InvalidateEmpty)
+TEST_F(CyberCoreNSURLSessionTest, InvalidateEmpty)
 {
-    auto session = adoptNS([[WebCoreNSURLSession alloc] initWithResourceLoader:*loader delegate:delegate.get() delegateQueue:[NSOperationQueue mainQueue]]);
+    auto session = adoptNS([[CyberCoreNSURLSession alloc] initWithResourceLoader:*loader delegate:delegate.get() delegateQueue:[NSOperationQueue mainQueue]]);
     didInvalidate = false;
     [session finishTasksAndInvalidate];
     TestWebKitAPI::Util::run(&didInvalidate);

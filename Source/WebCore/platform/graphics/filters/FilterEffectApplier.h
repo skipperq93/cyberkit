@@ -27,7 +27,7 @@
 
 #include "FilterImageVector.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class Filter;
 
@@ -57,4 +57,4 @@ protected:
     const FilterEffectType& m_effect;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

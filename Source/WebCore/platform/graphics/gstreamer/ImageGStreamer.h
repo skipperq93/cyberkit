@@ -32,7 +32,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 class IntSize;
 
 class ImageGStreamer : public RefCounted<ImageGStreamer> {

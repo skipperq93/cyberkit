@@ -29,11 +29,11 @@
 #include "SVGElementTypeHelpers.h"
 #include "SVGRadialGradientElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 inline SVGRadialGradientElement& RenderSVGResourceRadialGradient::radialGradientElement() const
 {
     return downcast<SVGRadialGradientElement>(RenderSVGResourceGradient::gradientElement());
 }
 
-} // namespace WebCore
+} // namespace CyberCore

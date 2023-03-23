@@ -39,7 +39,7 @@
 #include <wtf/WeakPtr.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 class CAAudioStreamDescription;
 }
 
@@ -127,11 +127,11 @@ private:
     bool dispatchSyncMessage(IPC::Connection&, IPC::Decoder&, UniqueRef<IPC::Encoder>&);
 
     // Messages.
-    void didReceiveRemoteCommand(WebCore::PlatformMediaSession::RemoteControlCommandType, const WebCore::PlatformMediaSession::RemoteCommandArgument&);
+    void didReceiveRemoteCommand(CyberCore::PlatformMediaSession::RemoteControlCommandType, const CyberCore::PlatformMediaSession::RemoteCommandArgument&);
     void didInitialize(std::optional<GPUProcessConnectionInfo>&&);
 
 #if ENABLE(ROUTING_ARBITRATION)
-    void beginRoutingArbitrationWithCategory(WebCore::AudioSession::CategoryType, WebCore::AudioSessionRoutingArbitrationClient::ArbitrationCallback&&);
+    void beginRoutingArbitrationWithCategory(CyberCore::AudioSession::CategoryType, CyberCore::AudioSessionRoutingArbitrationClient::ArbitrationCallback&&);
     void endRoutingArbitration();
 #endif
 

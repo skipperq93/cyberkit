@@ -26,7 +26,7 @@
 #import "config.h"
 #import "CertificateInfo.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 #ifndef NDEBUG
 void CertificateInfo::dump() const
@@ -55,4 +55,4 @@ void CertificateInfo::dump() const
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

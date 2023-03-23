@@ -33,7 +33,7 @@
 #import <CyberCore/Icon.h>
 #endif
 
-using namespace WebCore;
+using namespace CyberCore;
 
 @implementation WebOpenPanelResultListener
 

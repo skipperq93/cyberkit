@@ -27,7 +27,7 @@
 
 #include "SVGMemberAccessor.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename OwnerType, typename AccessorType1, typename AccessorType2>
 class SVGAnimatedPropertyPairAccessor : public SVGMemberAccessor<OwnerType> {

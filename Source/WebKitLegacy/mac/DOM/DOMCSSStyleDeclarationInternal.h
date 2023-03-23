@@ -25,9 +25,9 @@
 
 #import <CyberKitLegacy/DOMCSSStyleDeclaration.h>
 
-namespace WebCore {
+namespace CyberCore {
 class CSSStyleDeclaration;
 }
 
-WebCore::CSSStyleDeclaration* core(DOMCSSStyleDeclaration *);
-DOMCSSStyleDeclaration *kit(WebCore::CSSStyleDeclaration*);
+CyberCore::CSSStyleDeclaration* core(DOMCSSStyleDeclaration *);
+DOMCSSStyleDeclaration *kit(CyberCore::CSSStyleDeclaration*);

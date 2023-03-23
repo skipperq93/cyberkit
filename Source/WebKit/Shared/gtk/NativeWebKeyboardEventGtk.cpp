@@ -45,7 +45,7 @@ NativeWebKeyboardEvent::NativeWebKeyboardEvent(GdkEvent* event, const String& te
 {
 }
 
-NativeWebKeyboardEvent::NativeWebKeyboardEvent(const String& text, std::optional<Vector<WebCore::CompositionUnderline>>&& preeditUnderlines, std::optional<EditingRange>&& preeditSelectionRange)
+NativeWebKeyboardEvent::NativeWebKeyboardEvent(const String& text, std::optional<Vector<CyberCore::CompositionUnderline>>&& preeditUnderlines, std::optional<EditingRange>&& preeditSelectionRange)
     : WebKeyboardEvent(WebEvent(WebEventType::KeyDown, { }, WallTime::now()), text, "Unidentified"_s, "Unidentified"_s, "U+0000"_s, 229, GDK_KEY_VoidSymbol, true, WTFMove(preeditUnderlines), WTFMove(preeditSelectionRange), { }, false)
 {
 }
@@ -56,7 +56,7 @@ NativeWebKeyboardEvent::NativeWebKeyboardEvent(WebEventType type, const String& 
 }
 
 NativeWebKeyboardEvent::NativeWebKeyboardEvent(const NativeWebKeyboardEvent& event)
-    : WebKeyboardEvent(WebEvent(event.type(), event.modifiers(), event.timestamp()), event.text(), event.key(), event.code(), event.keyIdentifier(), event.windowsVirtualKeyCode(), event.nativeVirtualKeyCode(), event.handledByInputMethod(), std::optional<Vector<WebCore::CompositionUnderline>>(event.preeditUnderlines()), std::optional<EditingRange>(event.preeditSelectionRange()), Vector<String>(event.commands()), event.isKeypad())
+    : WebKeyboardEvent(WebEvent(event.type(), event.modifiers(), event.timestamp()), event.text(), event.key(), event.code(), event.keyIdentifier(), event.windowsVirtualKeyCode(), event.nativeVirtualKeyCode(), event.handledByInputMethod(), std::optional<Vector<CyberCore::CompositionUnderline>>(event.preeditUnderlines()), std::optional<EditingRange>(event.preeditSelectionRange()), Vector<String>(event.commands()), event.isKeypad())
     , m_nativeEvent(event.nativeEvent() ? constructNativeEvent(event.nativeEvent()) : nullptr)
 {
 }

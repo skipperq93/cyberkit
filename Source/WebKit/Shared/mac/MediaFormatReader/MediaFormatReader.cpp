@@ -52,7 +52,7 @@ WTF_DECLARE_CF_TYPE_TRAIT(MTPluginFormatReader);
 
 namespace WebKit {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 class AbortAction {
 public:

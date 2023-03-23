@@ -28,7 +28,7 @@
 
 #if ENABLE(CONTENT_CHANGE_OBSERVER)
 
-namespace WebCore {
+namespace CyberCore {
 
 #if PLATFORM(IOS_SIMULATOR)
 constexpr Seconds maximumHoldTimeLimit { 50_ms };
@@ -75,6 +75,6 @@ inline void DOMTimerHoldingTank::stopExceededMaximumHoldTimer()
         m_exceededMaximumHoldTimer.stop();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(CONTENT_CHANGE_OBSERVER)

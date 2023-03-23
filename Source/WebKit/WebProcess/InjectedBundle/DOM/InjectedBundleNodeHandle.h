@@ -32,36 +32,36 @@
 #include <wtf/Forward.h>
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 class IntRect;
 class Node;
 enum class AutoFillButtonType : uint8_t;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class InjectedBundleRangeHandle;
 class InjectedBundleScriptWorld;
 class WebFrame;
 class WebImage;
 
-class InjectedBundleNodeHandle : public API::ObjectImpl<API::Object::Type::BundleNodeHandle>, public WebCore::ActiveDOMObject {
+class InjectedBundleNodeHandle : public API::ObjectImpl<API::Object::Type::BundleNodeHandle>, public CyberCore::ActiveDOMObject {
 public:
     static RefPtr<InjectedBundleNodeHandle> getOrCreate(JSContextRef, JSObjectRef);
-    static RefPtr<InjectedBundleNodeHandle> getOrCreate(WebCore::Node*);
-    static Ref<InjectedBundleNodeHandle> getOrCreate(WebCore::Node&);
+    static RefPtr<InjectedBundleNodeHandle> getOrCreate(CyberCore::Node*);
+    static Ref<InjectedBundleNodeHandle> getOrCreate(CyberCore::Node&);
 
     virtual ~InjectedBundleNodeHandle();
 
-    WebCore::Node* coreNode();
+    CyberCore::Node* coreNode();
 
     // Convenience DOM Operations
     RefPtr<InjectedBundleNodeHandle> document();
 
     // Additional DOM Operations
     // Note: These should only be operations that are not exposed to JavaScript.
-    WebCore::IntRect elementBounds();
-    WebCore::IntRect renderRect(bool*);
+    CyberCore::IntRect elementBounds();
+    CyberCore::IntRect renderRect(bool*);
     RefPtr<WebImage> renderedImage(SnapshotOptions, bool shouldExcludeOverflow, const std::optional<float>& bitmapWidth = std::nullopt);
     RefPtr<InjectedBundleRangeHandle> visibleRange();
     void setHTMLInputElementValueForUser(const String&);
@@ -73,12 +73,12 @@ public:
     void setHTMLInputElementAutoFilledAndViewable(bool);
     void setHTMLInputElementAutoFilledAndObscured(bool);
     bool isHTMLInputElementAutoFillButtonEnabled() const;
-    void setHTMLInputElementAutoFillButtonEnabled(WebCore::AutoFillButtonType);
-    WebCore::AutoFillButtonType htmlInputElementAutoFillButtonType() const;
-    WebCore::AutoFillButtonType htmlInputElementLastAutoFillButtonType() const;
+    void setHTMLInputElementAutoFillButtonEnabled(CyberCore::AutoFillButtonType);
+    CyberCore::AutoFillButtonType htmlInputElementAutoFillButtonType() const;
+    CyberCore::AutoFillButtonType htmlInputElementLastAutoFillButtonType() const;
     bool isAutoFillAvailable() const;
     void setAutoFillAvailable(bool);
-    WebCore::IntRect htmlInputElementAutoFillButtonBounds();
+    CyberCore::IntRect htmlInputElementAutoFillButtonBounds();
     bool htmlInputElementLastChangeWasUserEdit();
     bool htmlTextAreaElementLastChangeWasUserEdit();
     bool isTextField() const;
@@ -91,14 +91,14 @@ public:
     RefPtr<WebFrame> htmlIFrameElementContentFrame();
 
 private:
-    static Ref<InjectedBundleNodeHandle> create(WebCore::Node&);
-    InjectedBundleNodeHandle(WebCore::Node&);
+    static Ref<InjectedBundleNodeHandle> create(CyberCore::Node&);
+    InjectedBundleNodeHandle(CyberCore::Node&);
 
     // ActiveDOMObject.
     void stop() final;
     const char* activeDOMObjectName() const final;
 
-    RefPtr<WebCore::Node> m_node;
+    RefPtr<CyberCore::Node> m_node;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

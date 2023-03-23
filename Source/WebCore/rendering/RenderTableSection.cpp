@@ -45,7 +45,7 @@
 #include <wtf/HashSet.h>
 #include <wtf/StackStats.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -1598,4 +1598,4 @@ void RenderTableSection::setLogicalPositionForCell(RenderTableCell* cell, unsign
     view().frameView().layoutContext().addLayoutDelta(oldCellLocation - cell->location());
 }
 
-} // namespace WebCore
+} // namespace CyberCore

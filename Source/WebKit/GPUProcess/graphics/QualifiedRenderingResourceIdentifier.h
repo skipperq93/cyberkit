@@ -32,7 +32,7 @@
 
 namespace WebKit {
 
-using QualifiedRenderingResourceIdentifier = WebCore::ProcessQualified<WebCore::RenderingResourceIdentifier>;
+using QualifiedRenderingResourceIdentifier = CyberCore::ProcessQualified<CyberCore::RenderingResourceIdentifier>;
 
 }
 

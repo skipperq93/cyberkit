@@ -31,7 +31,7 @@
 #import "LegacyTileCache.h"
 #import "PlatformScreen.h"
 #import "WAKViewInternal.h"
-#import "WebCoreThreadRun.h"
+#import "CyberCoreThreadRun.h"
 #import "WebEvent.h"
 #import "WKContentObservation.h"
 #import "WKViewPrivate.h"
@@ -75,7 +75,7 @@ static RetainPtr<WebEvent>& currentEvent()
     _hostLayer = [layer retain];
 
     _frame = [_hostLayer frame];
-    _screenScale = WebCore::screenScaleFactor();
+    _screenScale = CyberCore::screenScaleFactor();
 
     _tileCache = new LegacyTileCache(self);
 
@@ -94,7 +94,7 @@ static RetainPtr<WebEvent>& currentEvent()
         return nil;
 
     _frame = frame;
-    _screenScale = WebCore::screenScaleFactor();
+    _screenScale = CyberCore::screenScaleFactor();
 
     _exposedScrollViewRect = CGRectNull;
 
@@ -418,7 +418,7 @@ static RetainPtr<WebEvent>& currentEvent()
 {
     if (!_tileCache)
         return;
-    _tileCache->layoutTilesNowForRect(WebCore::enclosingIntRect(rect));
+    _tileCache->layoutTilesNowForRect(CyberCore::enclosingIntRect(rect));
 }
 
 - (void)setNeedsDisplay
@@ -432,7 +432,7 @@ static RetainPtr<WebEvent>& currentEvent()
 {
     if (!_tileCache)
         return;
-    _tileCache->setNeedsDisplayInRect(WebCore::enclosingIntRect(rect));
+    _tileCache->setNeedsDisplayInRect(CyberCore::enclosingIntRect(rect));
 }
 
 - (BOOL)tilesOpaque

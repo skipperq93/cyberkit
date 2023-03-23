@@ -37,16 +37,16 @@
 #include <pal/cocoa/AVFoundationSoftLink.h>
 
 @interface WebQueuedVideoOutputDelegate : NSObject<AVPlayerItemOutputPullDelegate> {
-    WeakPtr<WebCore::QueuedVideoOutput> _parent;
+    WeakPtr<CyberCore::QueuedVideoOutput> _parent;
 }
-- (id)initWithParent:(WebCore::QueuedVideoOutput*)parent;
+- (id)initWithParent:(CyberCore::QueuedVideoOutput*)parent;
 - (void)outputMediaDataWillChange:(AVPlayerItemOutput *)output;
 - (void)outputSequenceWasFlushed:(AVPlayerItemOutput *)output;
 - (void)observeValueForKeyPath:keyPath ofObject:(id)object change:(NSDictionary *)change context:(void*)context;
 @end
 
 @implementation WebQueuedVideoOutputDelegate
-- (id)initWithParent:(WebCore::QueuedVideoOutput*)parent
+- (id)initWithParent:(CyberCore::QueuedVideoOutput*)parent
 {
     self = [super init];
     if (!self)
@@ -61,7 +61,7 @@
     ASSERT([output isKindOfClass:PAL::getAVPlayerItemVideoOutputClass()]);
     auto* videoOutput = (AVPlayerItemVideoOutput*)output;
 
-    Vector<WebCore::QueuedVideoOutput::VideoFrameEntry> videoFrameEntries;
+    Vector<CyberCore::QueuedVideoOutput::VideoFrameEntry> videoFrameEntries;
     do {
         CMTime earliestTime = [videoOutput earliestAvailablePixelBufferItemTime];
         if (CMTIME_IS_INVALID(earliestTime))
@@ -111,7 +111,7 @@
 }
 @end
 
-namespace WebCore {
+namespace CyberCore {
 
 static dispatch_queue_t globalOutputDelegateQueue()
 {

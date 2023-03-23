@@ -25,7 +25,7 @@
  */
 
 #import "config.h"
-#import "WebCoreArgumentCoders.h"
+#import "CyberCoreArgumentCoders.h"
 
 #import "ArgumentCodersCF.h"
 #import "ArgumentCodersCocoa.h"
@@ -150,7 +150,7 @@ static void encodeNSError(Encoder& encoder, NSError *nsError)
         encoder << false;
 }
 
-void ArgumentCoder<WebCore::ResourceError>::encodePlatformData(Encoder& encoder, const WebCore::ResourceError& resourceError)
+void ArgumentCoder<CyberCore::ResourceError>::encodePlatformData(Encoder& encoder, const CyberCore::ResourceError& resourceError)
 {
     encodeNSError(encoder, resourceError.nsError());
 }
@@ -186,52 +186,52 @@ static RetainPtr<NSError> decodeNSError(Decoder& decoder)
     return adoptNS([[NSError alloc] initWithDomain:domain code:code userInfo:(__bridge NSDictionary *)userInfo.get()]);
 }
 
-bool ArgumentCoder<WebCore::ResourceError>::decodePlatformData(Decoder& decoder, WebCore::ResourceError& resourceError)
+bool ArgumentCoder<CyberCore::ResourceError>::decodePlatformData(Decoder& decoder, CyberCore::ResourceError& resourceError)
 {
     auto nsError = decodeNSError(decoder);
     if (!nsError)
         return false;
 
-    resourceError = WebCore::ResourceError(nsError.get());
+    resourceError = CyberCore::ResourceError(nsError.get());
     return true;
 }
 
-void ArgumentCoder<WebCore::ProtectionSpace>::encodePlatformData(Encoder& encoder, const WebCore::ProtectionSpace& space)
+void ArgumentCoder<CyberCore::ProtectionSpace>::encodePlatformData(Encoder& encoder, const CyberCore::ProtectionSpace& space)
 {
     encoder << space.nsSpace();
 }
 
-bool ArgumentCoder<WebCore::ProtectionSpace>::decodePlatformData(Decoder& decoder, WebCore::ProtectionSpace& space)
+bool ArgumentCoder<CyberCore::ProtectionSpace>::decodePlatformData(Decoder& decoder, CyberCore::ProtectionSpace& space)
 {
     auto platformData = IPC::decode<NSURLProtectionSpace>(decoder);
     if (!platformData)
         return false;
 
-    space = WebCore::ProtectionSpace { platformData->get() };
+    space = CyberCore::ProtectionSpace { platformData->get() };
     return true;
 }
 
-void ArgumentCoder<WebCore::Credential>::encodePlatformData(Encoder& encoder, const WebCore::Credential& credential)
+void ArgumentCoder<CyberCore::Credential>::encodePlatformData(Encoder& encoder, const CyberCore::Credential& credential)
 {
     NSURLCredential *nsCredential = credential.nsCredential();
     encoder << nsCredential;
 }
 
-bool ArgumentCoder<WebCore::Credential>::decodePlatformData(Decoder& decoder, WebCore::Credential& credential)
+bool ArgumentCoder<CyberCore::Credential>::decodePlatformData(Decoder& decoder, CyberCore::Credential& credential)
 {
     auto nsCredential = IPC::decode<NSURLCredential>(decoder);
     if (!nsCredential)
         return false;
-    credential = WebCore::Credential { nsCredential->get() };
+    credential = CyberCore::Credential { nsCredential->get() };
     return true;
 }
 
-void ArgumentCoder<WebCore::KeypressCommand>::encode(Encoder& encoder, const WebCore::KeypressCommand& keypressCommand)
+void ArgumentCoder<CyberCore::KeypressCommand>::encode(Encoder& encoder, const CyberCore::KeypressCommand& keypressCommand)
 {
     encoder << keypressCommand.commandName << keypressCommand.text;
 }
     
-std::optional<WebCore::KeypressCommand> ArgumentCoder<WebCore::KeypressCommand>::decode(Decoder& decoder)
+std::optional<CyberCore::KeypressCommand> ArgumentCoder<CyberCore::KeypressCommand>::decode(Decoder& decoder)
 {
     std::optional<String> commandName;
     decoder >> commandName;
@@ -243,7 +243,7 @@ std::optional<WebCore::KeypressCommand> ArgumentCoder<WebCore::KeypressCommand>:
     if (!text)
         return std::nullopt;
     
-    WebCore::KeypressCommand command;
+    CyberCore::KeypressCommand command;
     command.commandName = WTFMove(*commandName);
     command.text = WTFMove(*text);
     return WTFMove(command);
@@ -251,14 +251,14 @@ std::optional<WebCore::KeypressCommand> ArgumentCoder<WebCore::KeypressCommand>:
 
 #if ENABLE(CONTENT_FILTERING)
 
-void ArgumentCoder<WebCore::ContentFilterUnblockHandler>::encode(Encoder& encoder, const WebCore::ContentFilterUnblockHandler& contentFilterUnblockHandler)
+void ArgumentCoder<CyberCore::ContentFilterUnblockHandler>::encode(Encoder& encoder, const CyberCore::ContentFilterUnblockHandler& contentFilterUnblockHandler)
 {
     auto archiver = adoptNS([[NSKeyedArchiver alloc] initRequiringSecureCoding:YES]);
     contentFilterUnblockHandler.encode(archiver.get());
     encoder << (__bridge CFDataRef)archiver.get().encodedData;
 }
 
-bool ArgumentCoder<WebCore::ContentFilterUnblockHandler>::decode(Decoder& decoder, WebCore::ContentFilterUnblockHandler& contentFilterUnblockHandler)
+bool ArgumentCoder<CyberCore::ContentFilterUnblockHandler>::decode(Decoder& decoder, CyberCore::ContentFilterUnblockHandler& contentFilterUnblockHandler)
 {
     RetainPtr<CFDataRef> data;
     if (!decoder.decode(data) || !data)
@@ -266,7 +266,7 @@ bool ArgumentCoder<WebCore::ContentFilterUnblockHandler>::decode(Decoder& decode
 
     auto unarchiver = adoptNS([[NSKeyedUnarchiver alloc] initForReadingFromData:(__bridge NSData *)data.get() error:nullptr]);
     unarchiver.get().decodingFailurePolicy = NSDecodingFailurePolicyRaiseException;
-    if (!WebCore::ContentFilterUnblockHandler::decode(unarchiver.get(), contentFilterUnblockHandler))
+    if (!CyberCore::ContentFilterUnblockHandler::decode(unarchiver.get(), contentFilterUnblockHandler))
         return false;
 
     [unarchiver finishDecoding];
@@ -276,39 +276,39 @@ bool ArgumentCoder<WebCore::ContentFilterUnblockHandler>::decode(Decoder& decode
 #endif
 
 #if ENABLE(VIDEO)
-void ArgumentCoder<WebCore::SerializedPlatformDataCueValue>::encodePlatformData(Encoder& encoder, const WebCore::SerializedPlatformDataCueValue& value)
+void ArgumentCoder<CyberCore::SerializedPlatformDataCueValue>::encodePlatformData(Encoder& encoder, const CyberCore::SerializedPlatformDataCueValue& value)
 {
-    ASSERT(value.platformType() == WebCore::SerializedPlatformDataCueValue::PlatformType::ObjC);
-    if (value.platformType() == WebCore::SerializedPlatformDataCueValue::PlatformType::ObjC)
+    ASSERT(value.platformType() == CyberCore::SerializedPlatformDataCueValue::PlatformType::ObjC);
+    if (value.platformType() == CyberCore::SerializedPlatformDataCueValue::PlatformType::ObjC)
         encodeObject(encoder, value.nativeValue().get());
 }
 
-std::optional<WebCore::SerializedPlatformDataCueValue>  ArgumentCoder<WebCore::SerializedPlatformDataCueValue>::decodePlatformData(Decoder& decoder, WebCore::SerializedPlatformDataCueValue::PlatformType platformType)
+std::optional<CyberCore::SerializedPlatformDataCueValue>  ArgumentCoder<CyberCore::SerializedPlatformDataCueValue>::decodePlatformData(Decoder& decoder, CyberCore::SerializedPlatformDataCueValue::PlatformType platformType)
 {
-    ASSERT(platformType == WebCore::SerializedPlatformDataCueValue::PlatformType::ObjC);
+    ASSERT(platformType == CyberCore::SerializedPlatformDataCueValue::PlatformType::ObjC);
 
-    if (platformType != WebCore::SerializedPlatformDataCueValue::PlatformType::ObjC)
+    if (platformType != CyberCore::SerializedPlatformDataCueValue::PlatformType::ObjC)
         return std::nullopt;
 
-    auto object = decodeObject(decoder, WebCore::SerializedPlatformDataCueMac::allowedClassesForNativeValues());
+    auto object = decodeObject(decoder, CyberCore::SerializedPlatformDataCueMac::allowedClassesForNativeValues());
     if (!object)
         return std::nullopt;
 
-    return WebCore::SerializedPlatformDataCueValue { platformType, object.value().get() };
+    return CyberCore::SerializedPlatformDataCueValue { platformType, object.value().get() };
 }
 #endif
 
 #if USE(APPKIT)
 
 template<typename Encoder>
-void ArgumentCoder<WebCore::AppKitControlSystemImage>::encode(Encoder& encoder, const WebCore::AppKitControlSystemImage& systemImage)
+void ArgumentCoder<CyberCore::AppKitControlSystemImage>::encode(Encoder& encoder, const CyberCore::AppKitControlSystemImage& systemImage)
 {
     encoder << systemImage.controlType();
     encoder << systemImage.useDarkAppearance();
     encoder << systemImage.tintColor();
 
     switch (systemImage.controlType()) {
-    case WebCore::AppKitControlSystemImageType::ScrollbarTrackCorner:
+    case CyberCore::AppKitControlSystemImageType::ScrollbarTrackCorner:
         return;
     }
 
@@ -316,13 +316,13 @@ void ArgumentCoder<WebCore::AppKitControlSystemImage>::encode(Encoder& encoder, 
 }
 
 template
-void ArgumentCoder<WebCore::AppKitControlSystemImage>::encode<Encoder>(Encoder&, const WebCore::AppKitControlSystemImage&);
+void ArgumentCoder<CyberCore::AppKitControlSystemImage>::encode<Encoder>(Encoder&, const CyberCore::AppKitControlSystemImage&);
 template
-void ArgumentCoder<WebCore::AppKitControlSystemImage>::encode<StreamConnectionEncoder>(StreamConnectionEncoder&, const WebCore::AppKitControlSystemImage&);
+void ArgumentCoder<CyberCore::AppKitControlSystemImage>::encode<StreamConnectionEncoder>(StreamConnectionEncoder&, const CyberCore::AppKitControlSystemImage&);
 
-std::optional<Ref<WebCore::AppKitControlSystemImage>> ArgumentCoder<WebCore::AppKitControlSystemImage>::decode(Decoder& decoder)
+std::optional<Ref<CyberCore::AppKitControlSystemImage>> ArgumentCoder<CyberCore::AppKitControlSystemImage>::decode(Decoder& decoder)
 {
-    std::optional<WebCore::AppKitControlSystemImageType> controlType;
+    std::optional<CyberCore::AppKitControlSystemImageType> controlType;
     decoder >> controlType;
     if (!controlType)
         return std::nullopt;
@@ -332,15 +332,15 @@ std::optional<Ref<WebCore::AppKitControlSystemImage>> ArgumentCoder<WebCore::App
     if (!useDarkAppearance)
         return std::nullopt;
 
-    std::optional<WebCore::Color> tintColor;
+    std::optional<CyberCore::Color> tintColor;
     decoder >> tintColor;
     if (!tintColor)
         return std::nullopt;
 
-    std::optional<Ref<WebCore::AppKitControlSystemImage>> control;
+    std::optional<Ref<CyberCore::AppKitControlSystemImage>> control;
     switch (*controlType) {
-    case WebCore::AppKitControlSystemImageType::ScrollbarTrackCorner:
-        control = WebCore::ScrollbarTrackCornerSystemImageMac::create();
+    case CyberCore::AppKitControlSystemImageType::ScrollbarTrackCorner:
+        control = CyberCore::ScrollbarTrackCornerSystemImageMac::create();
     }
 
     if (!control)

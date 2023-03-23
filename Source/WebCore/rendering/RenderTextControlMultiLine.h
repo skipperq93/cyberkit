@@ -24,7 +24,7 @@
 #include "HTMLTextAreaElement.h"
 #include "RenderTextControl.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderTextControlMultiLine final : public RenderTextControl {
     WTF_MAKE_ISO_ALLOCATED(RenderTextControlMultiLine);
@@ -55,6 +55,6 @@ inline RenderTextControlMultiLine* HTMLTextAreaElement::renderer() const
     return downcast<RenderTextControlMultiLine>(HTMLTextFormControlElement::renderer());
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderTextControlMultiLine, isTextArea())

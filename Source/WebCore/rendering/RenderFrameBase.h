@@ -28,7 +28,7 @@
 #include "FrameView.h"
 #include "RenderWidget.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLFrameElementBase;
 class RenderView;
@@ -46,4 +46,4 @@ private:
     void widget() const = delete;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

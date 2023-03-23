@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -17,16 +17,16 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitDOMDocumentFragmentPrivate_h
-#define WebKitDOMDocumentFragmentPrivate_h
+#ifndef CyberKitDOMDocumentFragmentPrivate_h
+#define CyberKitDOMDocumentFragmentPrivate_h
 
 #include <CyberCore/DocumentFragment.h>
-#include <webkitdom/WebKitDOMDocumentFragment.h>
+#include <webkitdom/CyberKitDOMDocumentFragment.h>
 
-namespace WebKit {
-WebKitDOMDocumentFragment* wrapDocumentFragment(WebCore::DocumentFragment*);
-WebKitDOMDocumentFragment* kit(WebCore::DocumentFragment*);
-WebCore::DocumentFragment* core(WebKitDOMDocumentFragment*);
-} // namespace WebKit
+namespace CyberKit {
+CyberKitDOMDocumentFragment* wrapDocumentFragment(CyberCore::DocumentFragment*);
+CyberKitDOMDocumentFragment* kit(CyberCore::DocumentFragment*);
+CyberCore::DocumentFragment* core(CyberKitDOMDocumentFragment*);
+} // namespace CyberKit
 
-#endif /* WebKitDOMDocumentFragmentPrivate_h */
+#endif /* CyberKitDOMDocumentFragmentPrivate_h */

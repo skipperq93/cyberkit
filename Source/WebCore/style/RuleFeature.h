@@ -29,7 +29,7 @@
 #include <wtf/text/AtomString.h>
 #include <wtf/text/AtomStringHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class StyleRule;
 
@@ -159,4 +159,4 @@ inline bool RuleFeatureSet::usesHasPseudoClass() const
 }
 
 } // namespace Style
-} // namespace WebCore
+} // namespace CyberCore

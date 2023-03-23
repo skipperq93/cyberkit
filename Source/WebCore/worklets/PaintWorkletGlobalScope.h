@@ -38,7 +38,7 @@ class JSObject;
 class VM;
 } // namespace JSC
 
-namespace WebCore {
+namespace CyberCore {
 class JSDOMGlobalObject;
 
 class PaintWorkletGlobalScope final : public WorkletGlobalScope {
@@ -103,11 +103,11 @@ inline auto PaintWorkletGlobalScope::paintDefinitionMap() -> HashMap<String, std
     return m_paintDefinitionMap;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::PaintWorkletGlobalScope)
-static bool isType(const WebCore::ScriptExecutionContext& context) { return is<WebCore::WorkletGlobalScope>(context) && downcast<WebCore::WorkletGlobalScope>(context).isPaintWorkletGlobalScope(); }
-static bool isType(const WebCore::WorkletGlobalScope& context) { return context.isPaintWorkletGlobalScope(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::PaintWorkletGlobalScope)
+static bool isType(const CyberCore::ScriptExecutionContext& context) { return is<CyberCore::WorkletGlobalScope>(context) && downcast<CyberCore::WorkletGlobalScope>(context).isPaintWorkletGlobalScope(); }
+static bool isType(const CyberCore::WorkletGlobalScope& context) { return context.isPaintWorkletGlobalScope(); }
 SPECIALIZE_TYPE_TRAITS_END()
 
 #endif // ENABLE(CSS_PAINTING_API)

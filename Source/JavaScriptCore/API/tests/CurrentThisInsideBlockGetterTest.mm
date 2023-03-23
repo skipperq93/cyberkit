@@ -29,7 +29,7 @@
 #if JSC_OBJC_API_ENABLED
 
 #import <Foundation/Foundation.h>
-#import <CyberScriptCore/JavaScriptCore.h>
+#import <CyberScriptCore/CyberScriptCore.h>
 
 static JSObjectRef CallAsConstructor(JSContextRef ctx, JSObjectRef constructor, size_t, const JSValueRef[], JSValueRef*)
 {

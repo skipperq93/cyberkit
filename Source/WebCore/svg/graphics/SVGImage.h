@@ -29,7 +29,7 @@
 #include "Image.h"
 #include <wtf/URL.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Element;
 class FrameView;
@@ -108,6 +108,6 @@ private:
 
 bool isInSVGImage(const Element*);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_IMAGE(SVGImage)

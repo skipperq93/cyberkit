@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 class Element;
 
@@ -37,4 +37,4 @@ enum class ScrollBehavior : uint8_t {
 
 bool useSmoothScrolling(ScrollBehavior, Element* associatedElement);
 
-} // namespace WebCore
+} // namespace CyberCore

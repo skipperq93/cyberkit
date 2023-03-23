@@ -30,7 +30,7 @@
 #import <wtf/Forward.h>
 #import <wtf/NakedPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 class DocumentLoader;
 class LegacyPreviewLoaderClient;
 }
@@ -58,9 +58,9 @@ class WebDocumentLoaderMac;
 - (void)_receivedData:(NSData *)data;
 - (void)_revertToProvisionalState;
 - (void)_setMainDocumentError:(NSError *)error;
-- (NakedPtr<WebCore::DocumentLoader>)_documentLoader;
+- (NakedPtr<CyberCore::DocumentLoader>)_documentLoader;
 #if USE(QUICK_LOOK)
 @property (nonatomic, copy, setter=_setQuickLookContent:) NSDictionary *_quickLookContent;
-@property (nonatomic, setter=_setQuickLookPreviewLoaderClient:) WebCore::LegacyPreviewLoaderClient* _quickLookPreviewLoaderClient;
+@property (nonatomic, setter=_setQuickLookPreviewLoaderClient:) CyberCore::LegacyPreviewLoaderClient* _quickLookPreviewLoaderClient;
 #endif
 @end

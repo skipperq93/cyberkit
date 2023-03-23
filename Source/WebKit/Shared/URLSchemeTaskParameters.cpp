@@ -28,7 +28,7 @@
 
 #include "Decoder.h"
 #include "Encoder.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 
 namespace WebKit {
 
@@ -52,12 +52,12 @@ std::optional<URLSchemeTaskParameters> URLSchemeTaskParameters::decode(IPC::Deco
     if (!handlerIdentifier)
         return std::nullopt;
     
-    std::optional<WebCore::ResourceLoaderIdentifier> taskIdentifier;
+    std::optional<CyberCore::ResourceLoaderIdentifier> taskIdentifier;
     decoder >> taskIdentifier;
     if (!taskIdentifier)
         return std::nullopt;
 
-    WebCore::ResourceRequest request;
+    CyberCore::ResourceRequest request;
     if (!decoder.decode(request))
         return std::nullopt;
 
@@ -66,7 +66,7 @@ std::optional<URLSchemeTaskParameters> URLSchemeTaskParameters::decode(IPC::Deco
     if (!hasHTTPBody)
         return std::nullopt;
     if (*hasHTTPBody) {
-        std::optional<RefPtr<WebCore::FormData>> formData;
+        std::optional<RefPtr<CyberCore::FormData>> formData;
         decoder >> formData;
         if (!formData)
             return std::nullopt;

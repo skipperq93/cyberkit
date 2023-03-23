@@ -34,7 +34,7 @@
 #include <wtf/Noncopyable.h>
 #include <wtf/RetainPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FloatRect;
 class IntPoint;

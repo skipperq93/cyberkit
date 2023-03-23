@@ -1172,8 +1172,8 @@ msgid "Enable Timeline profiling"
 msgstr "Activar o perfilado da Liña de tempo"
 
 #: ../../../../WebKit/gtk/webkit/webkitwebinspector.cpp:321
-msgid "Profile the WebCore instrumentation."
-msgstr "Perfilar a instrumentación de WebCore."
+msgid "Profile the CyberCore instrumentation."
+msgstr "Perfilar a instrumentación de CyberCore."
 
 #: ../../../../WebKit/gtk/webkit/webkitwebnavigationaction.cpp:148
 msgid "Reason"

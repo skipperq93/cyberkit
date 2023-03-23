@@ -27,7 +27,7 @@
 #include <wtf/HashSet.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FontCascade;
 class Font;

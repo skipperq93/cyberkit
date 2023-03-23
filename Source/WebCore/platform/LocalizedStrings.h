@@ -37,7 +37,7 @@
 #include <glib/gi18n-lib.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
     class IntSize;
     
@@ -407,27 +407,27 @@ namespace WebCore {
 #endif
 
 #if PLATFORM(COCOA)
-#define WEB_UI_STRING(string, description) WebCore::localizedString(CFSTR(string))
-#define WEB_UI_STRING_KEY(string, key, description) WebCore::localizedString(CFSTR(key))
-#define WEB_UI_STRING_WITH_MNEMONIC(string, mnemonic, description) WebCore::localizedString(CFSTR(string))
+#define WEB_UI_STRING(string, description) CyberCore::localizedString(CFSTR(string))
+#define WEB_UI_STRING_KEY(string, key, description) CyberCore::localizedString(CFSTR(key))
+#define WEB_UI_STRING_WITH_MNEMONIC(string, mnemonic, description) CyberCore::localizedString(CFSTR(string))
 #elif PLATFORM(WIN)
-#define WEB_UI_STRING(string, description) WebCore::localizedString(L##string)
-#define WEB_UI_STRING_KEY(string, key, description) WebCore::localizedString(L##string)
-#define WEB_UI_STRING_WITH_MNEMONIC(string, mnemonic, description) WebCore::localizedString(L##string)
+#define WEB_UI_STRING(string, description) CyberCore::localizedString(L##string)
+#define WEB_UI_STRING_KEY(string, key, description) CyberCore::localizedString(L##string)
+#define WEB_UI_STRING_WITH_MNEMONIC(string, mnemonic, description) CyberCore::localizedString(L##string)
 #elif USE(GLIB) && defined(GETTEXT_PACKAGE)
-#define WEB_UI_STRING(string, description) WebCore::localizedString(_(string))
-#define WEB_UI_STRING_KEY(string, key, description) WebCore::localizedString(C_(key, string))
-#define WEB_UI_STRING_WITH_MNEMONIC(string, mnemonic, description) WebCore::localizedString(_(mnemonic))
+#define WEB_UI_STRING(string, description) CyberCore::localizedString(_(string))
+#define WEB_UI_STRING_KEY(string, key, description) CyberCore::localizedString(C_(key, string))
+#define WEB_UI_STRING_WITH_MNEMONIC(string, mnemonic, description) CyberCore::localizedString(_(mnemonic))
 #else
-#define WEB_UI_STRING(string, description) WebCore::localizedString(string)
-#define WEB_UI_STRING_KEY(string, key, description) WebCore::localizedString(key)
-#define WEB_UI_STRING_WITH_MNEMONIC(string, mnemonic, description) WebCore::localizedString(string)
+#define WEB_UI_STRING(string, description) CyberCore::localizedString(string)
+#define WEB_UI_STRING_KEY(string, key, description) CyberCore::localizedString(key)
+#define WEB_UI_STRING_WITH_MNEMONIC(string, mnemonic, description) CyberCore::localizedString(string)
 #endif
 
 #if PLATFORM(COCOA)
 // This is exactly as WEB_UI_STRING, but renamed to ensure the string is not scanned by non-CF ports.
-#define WEB_UI_CFSTRING(string, description) WebCore::localizedString(CFSTR(string))
-#define WEB_UI_CFSTRING_KEY(string, key, description) WebCore::localizedString(CFSTR(key))
+#define WEB_UI_CFSTRING(string, description) CyberCore::localizedString(CFSTR(string))
+#define WEB_UI_CFSTRING_KEY(string, key, description) CyberCore::localizedString(CFSTR(key))
 
     WEBCORE_EXPORT RetainPtr<CFStringRef> copyLocalizedString(CFStringRef key);
 #endif
@@ -441,15 +441,15 @@ namespace WebCore {
 #endif
 
 #if PLATFORM(COCOA)
-#define WEB_UI_FORMAT_CFSTRING(string, description, ...) WebCore::formatLocalizedString(CFSTR(string), __VA_ARGS__)
-#define WEB_UI_FORMAT_CFSTRING_KEY(string, key, description, ...) WebCore::formatLocalizedString(CFSTR(key), __VA_ARGS__)
-#define WEB_UI_FORMAT_STRING(string, description, ...) WebCore::formatLocalizedString(CFSTR(string), __VA_ARGS__)
+#define WEB_UI_FORMAT_CFSTRING(string, description, ...) CyberCore::formatLocalizedString(CFSTR(string), __VA_ARGS__)
+#define WEB_UI_FORMAT_CFSTRING_KEY(string, key, description, ...) CyberCore::formatLocalizedString(CFSTR(key), __VA_ARGS__)
+#define WEB_UI_FORMAT_STRING(string, description, ...) CyberCore::formatLocalizedString(CFSTR(string), __VA_ARGS__)
 #elif PLATFORM(WIN)
-#define WEB_UI_FORMAT_STRING(string, description, ...) WebCore::formatLocalizedString(L##string, __VA_ARGS__)
+#define WEB_UI_FORMAT_STRING(string, description, ...) CyberCore::formatLocalizedString(L##string, __VA_ARGS__)
 #elif USE(GLIB) && defined(GETTEXT_PACKAGE)
-#define WEB_UI_FORMAT_STRING(string, description, ...) WebCore::formatLocalizedString(_(string), __VA_ARGS__)
+#define WEB_UI_FORMAT_STRING(string, description, ...) CyberCore::formatLocalizedString(_(string), __VA_ARGS__)
 #else
-#define WEB_UI_FORMAT_STRING(string, description, ...) WebCore::formatLocalizedString(string, __VA_ARGS__)
+#define WEB_UI_FORMAT_STRING(string, description, ...) CyberCore::formatLocalizedString(string, __VA_ARGS__)
 #endif
 
 #if PLATFORM(COCOA)
@@ -461,8 +461,8 @@ namespace WebCore {
 #endif
 
 #ifdef __OBJC__
-#define WEB_UI_NSSTRING(string, description) WebCore::localizedNSString(string)
-#define WEB_UI_NSSTRING_KEY(string, key, description) WebCore::localizedNSString(key)
+#define WEB_UI_NSSTRING(string, description) CyberCore::localizedNSString(string)
+#define WEB_UI_NSSTRING_KEY(string, key, description) CyberCore::localizedNSString(key)
 
     inline NS_FORMAT_ARGUMENT(1) NSString *localizedNSString(NSString *key)
     {
@@ -470,6 +470,6 @@ namespace WebCore {
     }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // LocalizedStrings_h

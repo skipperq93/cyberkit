@@ -26,7 +26,7 @@
 #include "RenderReplaced.h"
 #include "Widget.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RemoteFrame;
 
@@ -123,6 +123,6 @@ inline void RenderWidget::deref()
         delete this;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderWidget, isWidget())

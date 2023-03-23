@@ -48,9 +48,9 @@ public:
     void addProcess(WebProcessProxy&);
     void removeProcess(WebProcessProxy&);
 
-    void addVisitedLinkHash(WebCore::SharedStringHash);
-    bool containsVisitedLinkHash(WebCore::SharedStringHash);
-    void removeVisitedLinkHash(WebCore::SharedStringHash);
+    void addVisitedLinkHash(CyberCore::SharedStringHash);
+    bool containsVisitedLinkHash(CyberCore::SharedStringHash);
+    void removeVisitedLinkHash(CyberCore::SharedStringHash);
     void removeAll();
 
 private:
@@ -59,9 +59,9 @@ private:
 
     // SharedStringHashStore::Client
     void didInvalidateSharedMemory() final;
-    void didUpdateSharedStringHashes(const Vector<WebCore::SharedStringHash>& addedHashes, const Vector<WebCore::SharedStringHash>& removedHashes) final;
+    void didUpdateSharedStringHashes(const Vector<CyberCore::SharedStringHash>& addedHashes, const Vector<CyberCore::SharedStringHash>& removedHashes) final;
 
-    void addVisitedLinkHashFromPage(WebPageProxyIdentifier, WebCore::SharedStringHash);
+    void addVisitedLinkHashFromPage(WebPageProxyIdentifier, CyberCore::SharedStringHash);
 
     void sendStoreHandleToProcess(WebProcessProxy&);
 

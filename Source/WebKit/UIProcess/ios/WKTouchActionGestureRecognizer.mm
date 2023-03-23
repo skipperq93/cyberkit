@@ -32,7 +32,7 @@
 #import <wtf/HashMap.h>
 
 @implementation WKTouchActionGestureRecognizer {
-    HashMap<unsigned, OptionSet<WebCore::TouchAction>> _touchActionsByTouchIdentifier;
+    HashMap<unsigned, OptionSet<CyberCore::TouchAction>> _touchActionsByTouchIdentifier;
     id <WKTouchActionGestureRecognizerDelegate> _touchActionDelegate;
 }
 
@@ -43,9 +43,9 @@
     return self;
 }
 
-- (void)setTouchActions:(OptionSet<WebCore::TouchAction>)touchActions forTouchIdentifier:(unsigned)touchIdentifier
+- (void)setTouchActions:(OptionSet<CyberCore::TouchAction>)touchActions forTouchIdentifier:(unsigned)touchIdentifier
 {
-    ASSERT(!touchActions.contains(WebCore::TouchAction::Auto));
+    ASSERT(!touchActions.contains(CyberCore::TouchAction::Auto));
     _touchActionsByTouchIdentifier.set(touchIdentifier, touchActions);
 }
 
@@ -108,13 +108,13 @@
         if (iterator != _touchActionsByTouchIdentifier.end() && [[activeTouches objectForKey:touchIdentifier].gestureRecognizers containsObject:preventedGestureRecognizer]) {
             // Panning is only allowed if "pan-x", "pan-y" or "manipulation" is specified. Additional work is needed to respect individual values, but this takes
             // care of the case where no panning is allowed.
-            if (mayPan && !iterator->value.containsAny({ WebCore::TouchAction::PanX, WebCore::TouchAction::PanY, WebCore::TouchAction::Manipulation }))
+            if (mayPan && !iterator->value.containsAny({ CyberCore::TouchAction::PanX, CyberCore::TouchAction::PanY, CyberCore::TouchAction::Manipulation }))
                 return YES;
             // Pinch-to-zoom is only allowed if "pinch-zoom" or "manipulation" is specified.
-            if (mayPinchToZoom && !iterator->value.containsAny({ WebCore::TouchAction::PinchZoom, WebCore::TouchAction::Manipulation }))
+            if (mayPinchToZoom && !iterator->value.containsAny({ CyberCore::TouchAction::PinchZoom, CyberCore::TouchAction::Manipulation }))
                 return YES;
             // Double-tap-to-zoom is only disallowed if "none" is specified.
-            if (mayDoubleTapToZoom && iterator->value.contains(WebCore::TouchAction::None))
+            if (mayDoubleTapToZoom && iterator->value.contains(CyberCore::TouchAction::None))
                 return YES;
         }
     }

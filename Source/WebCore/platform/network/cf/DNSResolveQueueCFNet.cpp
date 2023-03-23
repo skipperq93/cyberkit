@@ -41,7 +41,7 @@
 #include <CFNetwork/CFNetwork.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 void DNSResolveQueueCFNet::updateIsUsingProxy()
 {

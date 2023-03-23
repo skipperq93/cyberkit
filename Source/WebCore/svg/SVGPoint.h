@@ -31,7 +31,7 @@
 #include "SVGPropertyTraits.h"
 #include "SVGValueProperty.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGPoint : public SVGValueProperty<FloatPoint> {
     using Base = SVGValueProperty<FloatPoint>;
@@ -95,4 +95,4 @@ private:
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -47,10 +47,10 @@
 
 #if PLATFORM(IOS_FAMILY)
 #include <CyberCore/VideoFullscreenInterfaceAVKit.h>
-typedef WebCore::VideoFullscreenInterfaceAVKit PlatformVideoFullscreenInterface;
+typedef CyberCore::VideoFullscreenInterfaceAVKit PlatformVideoFullscreenInterface;
 #else
 #include <CyberCore/VideoFullscreenInterfaceMac.h>
-typedef WebCore::VideoFullscreenInterfaceMac PlatformVideoFullscreenInterface;
+typedef CyberCore::VideoFullscreenInterfaceMac PlatformVideoFullscreenInterface;
 #endif
 
 namespace WebKit {
@@ -65,8 +65,8 @@ class VideoFullscreenManagerProxy;
 
 class VideoFullscreenModelContext final
     : public RefCounted<VideoFullscreenModelContext>
-    , public WebCore::VideoFullscreenModel
-    , public WebCore::VideoFullscreenChangeObserver  {
+    , public CyberCore::VideoFullscreenModel
+    , public CyberCore::VideoFullscreenChangeObserver  {
 public:
     static Ref<VideoFullscreenModelContext> create(VideoFullscreenManagerProxy& manager, PlaybackSessionModelContext& playbackSessionModel, PlaybackSessionContextIdentifier contextId)
     {
@@ -84,14 +84,14 @@ private:
     VideoFullscreenModelContext(VideoFullscreenManagerProxy&, PlaybackSessionModelContext&, PlaybackSessionContextIdentifier);
 
     // VideoFullscreenModel
-    void addClient(WebCore::VideoFullscreenModelClient&) override;
-    void removeClient(WebCore::VideoFullscreenModelClient&) override;
-    void requestFullscreenMode(WebCore::HTMLMediaElementEnums::VideoFullscreenMode, bool finishedWithMedia = false) override;
-    void setVideoLayerFrame(WebCore::FloatRect) override;
-    void setVideoLayerGravity(WebCore::MediaPlayerEnums::VideoGravity) override;
-    void fullscreenModeChanged(WebCore::HTMLMediaElementEnums::VideoFullscreenMode) override;
+    void addClient(CyberCore::VideoFullscreenModelClient&) override;
+    void removeClient(CyberCore::VideoFullscreenModelClient&) override;
+    void requestFullscreenMode(CyberCore::HTMLMediaElementEnums::VideoFullscreenMode, bool finishedWithMedia = false) override;
+    void setVideoLayerFrame(CyberCore::FloatRect) override;
+    void setVideoLayerGravity(CyberCore::MediaPlayerEnums::VideoGravity) override;
+    void fullscreenModeChanged(CyberCore::HTMLMediaElementEnums::VideoFullscreenMode) override;
     bool hasVideo() const override { return m_hasVideo; }
-    WebCore::FloatSize videoDimensions() const override { return m_videoDimensions; }
+    CyberCore::FloatSize videoDimensions() const override { return m_videoDimensions; }
 #if PLATFORM(IOS_FAMILY)
     UIViewController *presentingViewController() final;
     RetainPtr<UIViewController> createVideoFullscreenViewController(AVPlayerViewController*) final;
@@ -101,7 +101,7 @@ private:
     void failedToEnterPictureInPicture() final;
     void willExitPictureInPicture() final;
     void didExitPictureInPicture() final;
-    void requestRouteSharingPolicyAndContextUID(CompletionHandler<void(WebCore::RouteSharingPolicy, String)>&&) final;
+    void requestRouteSharingPolicyAndContextUID(CompletionHandler<void(CyberCore::RouteSharingPolicy, String)>&&) final;
 
     // VideoFullscreenChangeObserver
     void requestUpdateInlineRect() final;
@@ -109,7 +109,7 @@ private:
     void returnVideoContentLayer() final;
     void didSetupFullscreen() final;
     void failedToEnterFullscreen() final;
-    void didEnterFullscreen(const WebCore::FloatSize&) final;
+    void didEnterFullscreen(const CyberCore::FloatSize&) final;
     void willExitFullscreen() final;
     void didExitFullscreen() final;
     void didCleanupFullscreen() final;
@@ -119,8 +119,8 @@ private:
     Ref<PlaybackSessionModelContext> m_playbackSessionModel;
     PlaybackSessionContextIdentifier m_contextId;
     RetainPtr<PlatformView> m_layerHostView;
-    HashSet<WebCore::VideoFullscreenModelClient*> m_clients;
-    WebCore::FloatSize m_videoDimensions;
+    HashSet<CyberCore::VideoFullscreenModelClient*> m_clients;
+    CyberCore::FloatSize m_videoDimensions;
     bool m_hasVideo { false };
 };
 
@@ -132,14 +132,14 @@ public:
     void invalidate();
 
     void requestHideAndExitFullscreen();
-    bool hasMode(WebCore::HTMLMediaElementEnums::VideoFullscreenMode) const;
+    bool hasMode(CyberCore::HTMLMediaElementEnums::VideoFullscreenMode) const;
     bool mayAutomaticallyShowVideoPictureInPicture() const;
     void applicationDidBecomeActive();
     bool isVisible() const;
 
     void setMockVideoPresentationModeEnabled(bool enabled) { m_mockVideoPresentationModeEnabled = enabled; }
 
-    void requestRouteSharingPolicyAndContextUID(PlaybackSessionContextIdentifier, CompletionHandler<void(WebCore::RouteSharingPolicy, String)>&&);
+    void requestRouteSharingPolicyAndContextUID(PlaybackSessionContextIdentifier, CompletionHandler<void(CyberCore::RouteSharingPolicy, String)>&&);
 
     bool isPlayingVideoInEnhancedFullscreen() const;
 
@@ -174,21 +174,21 @@ private:
     void hasVideoInPictureInPictureDidChange(bool);
 
     // Messages from VideoFullscreenManager
-    void setupFullscreenWithID(PlaybackSessionContextIdentifier, WebKit::LayerHostingContextID videoLayerID, const WebCore::FloatRect& initialRect, const WebCore::FloatSize& videoDimensions, float hostingScaleFactor, WebCore::HTMLMediaElementEnums::VideoFullscreenMode, bool allowsPictureInPicture, bool standby, bool blocksReturnToFullscreenFromPictureInPicture);
-    void setInlineRect(PlaybackSessionContextIdentifier, const WebCore::FloatRect& inlineRect, bool visible);
+    void setupFullscreenWithID(PlaybackSessionContextIdentifier, WebKit::LayerHostingContextID videoLayerID, const CyberCore::FloatRect& initialRect, const CyberCore::FloatSize& videoDimensions, float hostingScaleFactor, CyberCore::HTMLMediaElementEnums::VideoFullscreenMode, bool allowsPictureInPicture, bool standby, bool blocksReturnToFullscreenFromPictureInPicture);
+    void setInlineRect(PlaybackSessionContextIdentifier, const CyberCore::FloatRect& inlineRect, bool visible);
     void setHasVideoContentLayer(PlaybackSessionContextIdentifier, bool value);
     void setHasVideo(PlaybackSessionContextIdentifier, bool);
-    void setVideoDimensions(PlaybackSessionContextIdentifier, const WebCore::FloatSize&);
+    void setVideoDimensions(PlaybackSessionContextIdentifier, const CyberCore::FloatSize&);
     void enterFullscreen(PlaybackSessionContextIdentifier);
-    void exitFullscreen(PlaybackSessionContextIdentifier, WebCore::FloatRect finalRect, CompletionHandler<void(bool)>&&);
+    void exitFullscreen(PlaybackSessionContextIdentifier, CyberCore::FloatRect finalRect, CompletionHandler<void(bool)>&&);
     void cleanupFullscreen(PlaybackSessionContextIdentifier);
-    void preparedToReturnToInline(PlaybackSessionContextIdentifier, bool visible, WebCore::FloatRect inlineRect);
+    void preparedToReturnToInline(PlaybackSessionContextIdentifier, bool visible, CyberCore::FloatRect inlineRect);
     void preparedToExitFullscreen(PlaybackSessionContextIdentifier);
-    void exitFullscreenWithoutAnimationToMode(PlaybackSessionContextIdentifier, WebCore::HTMLMediaElementEnums::VideoFullscreenMode);
-    void setPlayerIdentifier(PlaybackSessionContextIdentifier, std::optional<WebCore::MediaPlayerIdentifier>);
+    void exitFullscreenWithoutAnimationToMode(PlaybackSessionContextIdentifier, CyberCore::HTMLMediaElementEnums::VideoFullscreenMode);
+    void setPlayerIdentifier(PlaybackSessionContextIdentifier, std::optional<CyberCore::MediaPlayerIdentifier>);
 
     // Messages to VideoFullscreenManager
-    void requestFullscreenMode(PlaybackSessionContextIdentifier, WebCore::HTMLMediaElementEnums::VideoFullscreenMode, bool finishedWithMedia = false);
+    void requestFullscreenMode(PlaybackSessionContextIdentifier, CyberCore::HTMLMediaElementEnums::VideoFullscreenMode, bool finishedWithMedia = false);
     void requestUpdateInlineRect(PlaybackSessionContextIdentifier);
     void requestVideoContentLayer(PlaybackSessionContextIdentifier);
     void returnVideoContentLayer(PlaybackSessionContextIdentifier);
@@ -196,18 +196,18 @@ private:
     void willExitFullscreen(PlaybackSessionContextIdentifier);
     void didExitFullscreen(PlaybackSessionContextIdentifier);
     void failedToEnterFullscreen(PlaybackSessionContextIdentifier);
-    void didEnterFullscreen(PlaybackSessionContextIdentifier, const WebCore::FloatSize&);
+    void didEnterFullscreen(PlaybackSessionContextIdentifier, const CyberCore::FloatSize&);
     void didCleanupFullscreen(PlaybackSessionContextIdentifier);
-    void setVideoLayerFrame(PlaybackSessionContextIdentifier, WebCore::FloatRect);
-    void setVideoLayerGravity(PlaybackSessionContextIdentifier, WebCore::MediaPlayerEnums::VideoGravity);
-    void fullscreenModeChanged(PlaybackSessionContextIdentifier, WebCore::HTMLMediaElementEnums::VideoFullscreenMode);
+    void setVideoLayerFrame(PlaybackSessionContextIdentifier, CyberCore::FloatRect);
+    void setVideoLayerGravity(PlaybackSessionContextIdentifier, CyberCore::MediaPlayerEnums::VideoGravity);
+    void fullscreenModeChanged(PlaybackSessionContextIdentifier, CyberCore::HTMLMediaElementEnums::VideoFullscreenMode);
     void fullscreenMayReturnToInline(PlaybackSessionContextIdentifier);
 
     void requestCloseAllMediaPresentations(PlaybackSessionContextIdentifier, bool finishedWithMedia, CompletionHandler<void()>&&);
     void callCloseCompletionHandlers();
 
     bool m_mockVideoPresentationModeEnabled { false };
-    WebCore::FloatSize m_mockPictureInPictureWindowSize { DefaultMockPictureInPictureWindowWidth, DefaultMockPictureInPictureWindowHeight };
+    CyberCore::FloatSize m_mockPictureInPictureWindowSize { DefaultMockPictureInPictureWindowWidth, DefaultMockPictureInPictureWindowHeight };
 
     WebPageProxy* m_page;
     Ref<PlaybackSessionManagerProxy> m_playbackSessionManagerProxy;

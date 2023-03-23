@@ -47,7 +47,7 @@ namespace WTF {
 class MediaTime;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class CaptureDeviceInfo;
 class ImageTransferSessionVT;
@@ -158,6 +158,6 @@ private:
     std::unique_ptr<ImageTransferSessionVT> m_imageTransferSession;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM) && PLATFORM(COCOA)

@@ -27,7 +27,7 @@
 #include "RenderSVGModelObject.h"
 #include "SVGBoundingBoxComputation.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGElement;
 
@@ -73,7 +73,7 @@ private:
     bool isSVGContainer() const final { return true; }
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderSVGContainer, isSVGContainer())
 

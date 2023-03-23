@@ -28,7 +28,7 @@
 
 #if ENABLE(SPEECH_SYNTHESIS)
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<PlatformSpeechSynthesisVoice> PlatformSpeechSynthesisVoice::create(const String& voiceURI, const String& name, const String& lang, bool localService, bool isDefault)
 {
@@ -49,6 +49,6 @@ inline PlatformSpeechSynthesisVoice::PlatformSpeechSynthesisVoice(const String& 
 {
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SPEECH_SYNTHESIS)

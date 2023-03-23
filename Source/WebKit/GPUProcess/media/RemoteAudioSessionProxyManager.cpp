@@ -37,7 +37,7 @@
 
 namespace WebKit {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 static bool categoryCanMixWithOthers(AudioSession::CategoryType category)
 {
@@ -240,7 +240,7 @@ void RemoteAudioSessionProxyManager::sampleRateDidChange(const AudioSession& ses
     configurationDidChange(session);
 }
 
-void RemoteAudioSessionProxyManager::configurationDidChange(const WebCore::AudioSession&)
+void RemoteAudioSessionProxyManager::configurationDidChange(const CyberCore::AudioSession&)
 {
     m_proxies.forEach([](auto& proxy) {
         proxy.configurationChanged();

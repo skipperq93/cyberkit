@@ -40,7 +40,7 @@
 #include <pal/SessionID.h>
 #include <wtf/URL.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class NotificationClient;
 class Page;
@@ -152,4 +152,4 @@ private:
     bool m_isInStaticScriptEvaluation { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

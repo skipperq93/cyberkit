@@ -28,7 +28,7 @@
 
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 LayoutSize LayoutSize::constrainedBetween(const LayoutSize& min, const LayoutSize& max) const
 {
@@ -43,4 +43,4 @@ TextStream& operator<<(TextStream& ts, const LayoutSize& size)
     return ts << "width=" << size.width().toFloat() << " height=" << size.height().toFloat();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

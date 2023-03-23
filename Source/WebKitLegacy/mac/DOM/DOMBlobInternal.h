@@ -25,8 +25,8 @@
 
 #import <CyberKitLegacy/DOMBlob.h>
 
-namespace WebCore {
+namespace CyberCore {
 class Blob;
 }
 
-DOMBlob *kit(WebCore::Blob*);
+DOMBlob *kit(CyberCore::Blob*);

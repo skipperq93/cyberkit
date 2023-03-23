@@ -28,7 +28,7 @@
 
 namespace WebKit {
 
-WebViewportAttributes::WebViewportAttributes(const WebCore::ViewportAttributes& attributes)
+WebViewportAttributes::WebViewportAttributes(const CyberCore::ViewportAttributes& attributes)
     : m_attributes(attributes)
 {
 }

@@ -26,7 +26,7 @@
 
 #if ENABLE(TOUCH_EVENTS)
 
-namespace WebCore {
+namespace CyberCore {
 
 
 class PlatformTouchEvent : public PlatformEvent {

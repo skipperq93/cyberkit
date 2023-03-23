@@ -28,7 +28,7 @@
 
 #include "ScalableImageDecoder.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class AVIFImageReader;
 
@@ -63,4 +63,4 @@ private:
     int m_repetitionCount { 0 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

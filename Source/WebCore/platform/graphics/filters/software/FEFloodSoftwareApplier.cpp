@@ -28,7 +28,7 @@
 #include "GraphicsContext.h"
 #include "ImageBuffer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 bool FEFloodSoftwareApplier::apply(const Filter&, const FilterImageVector&, FilterImage& result) const
 {
@@ -42,4 +42,4 @@ bool FEFloodSoftwareApplier::apply(const Filter&, const FilterImageVector&, Filt
     return true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

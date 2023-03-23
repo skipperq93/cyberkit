@@ -38,7 +38,7 @@
 
 typedef struct __CFHTTPMessage* CFHTTPMessageRef;
 
-namespace WebCore {
+namespace CyberCore {
 
 class Credential;
 class StorageSessionProvider;
@@ -112,4 +112,4 @@ private:
     static const unsigned maxBufferSize = 100 * 1024 * 1024;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

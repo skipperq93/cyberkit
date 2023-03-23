@@ -33,7 +33,7 @@
 
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<DistantLightSource> DistantLightSource::create(float azimuth, float elevation)
 {
@@ -88,4 +88,4 @@ TextStream& DistantLightSource::externalRepresentation(TextStream& ts) const
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

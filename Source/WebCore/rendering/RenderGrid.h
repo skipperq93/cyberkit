@@ -31,7 +31,7 @@
 #include "GridTrackSizingAlgorithm.h"
 #include "RenderBlock.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class GridArea;
 class GridSpan;
@@ -281,6 +281,6 @@ private:
     bool m_hasAnyBaselineAlignmentItem { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderGrid, isRenderGrid())

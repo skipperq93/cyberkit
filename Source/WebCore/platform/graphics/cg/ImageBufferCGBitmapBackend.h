@@ -31,7 +31,7 @@
 #include "ImageBufferCGBackend.h"
 #include <wtf/IsoMalloc.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ImageBufferCGBitmapBackend final : public ImageBufferCGBackend {
     WTF_MAKE_ISO_ALLOCATED(ImageBufferCGBitmapBackend);
@@ -61,6 +61,6 @@ private:
     RetainPtr<CGDataProviderRef> m_dataProvider;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(CG)

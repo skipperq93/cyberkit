@@ -35,7 +35,7 @@ typedef struct _CFURLRequest* CFMutableURLRequestRef;
 typedef struct __CFReadStream* CFReadStreamRef;
 typedef const struct __CFString* CFStringRef;
 
-namespace WebCore {
+namespace CyberCore {
 
 class FormData;
 
@@ -46,4 +46,4 @@ FormData* httpBodyFromStream(CFReadStreamRef);
 
 CFStringRef formDataStreamLengthPropertyName();
 
-} // namespace WebCore
+} // namespace CyberCore

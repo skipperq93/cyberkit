@@ -24,7 +24,7 @@
 
 #include "FELighting.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class LightSource;
 
@@ -41,6 +41,6 @@ private:
     FEDiffuseLighting(const Color& lightingColor, float surfaceScale, float diffuseConstant, float kernelUnitLengthX, float kernelUnitLengthY, Ref<LightSource>&&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_FILTER_EFFECT(FEDiffuseLighting)

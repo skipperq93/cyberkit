@@ -27,7 +27,7 @@
 #include <gst/audio/audio.h>
 #include <wtf/Lock.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RealtimeOutgoingAudioSourceLibWebRTC final : public RealtimeOutgoingAudioSource {
 public:
@@ -57,6 +57,6 @@ private:
     Vector<uint8_t> m_audioBuffer;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(LIBWEBRTC)

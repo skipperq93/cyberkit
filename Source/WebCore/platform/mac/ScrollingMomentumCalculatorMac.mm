@@ -30,7 +30,7 @@
 
 #import <pal/spi/mac/NSScrollingMomentumCalculatorSPI.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static bool gEnablePlatformMomentumScrollingPrediction = true;
 
@@ -115,6 +115,6 @@ _NSScrollingMomentumCalculator *ScrollingMomentumCalculatorMac::ensurePlatformMo
     return m_platformMomentumCalculator.get();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(MAC)

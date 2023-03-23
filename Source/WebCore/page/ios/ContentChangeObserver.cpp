@@ -40,7 +40,7 @@
 #include "RenderDescendantIterator.h"
 #include "Settings.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static const Seconds maximumDelayForTimers { 400_ms };
 static const Seconds maximumDelayForTransitions { 300_ms };
@@ -192,19 +192,19 @@ static void willNotProceedWithClick(Frame& mainFrame)
 void ContentChangeObserver::didCancelPotentialTap(Frame& mainFrame)
 {
     LOG(ContentObservation, "didCancelPotentialTap: cancel ongoing content change observing.");
-    WebCore::willNotProceedWithClick(mainFrame);
+    CyberCore::willNotProceedWithClick(mainFrame);
 }
 
 void ContentChangeObserver::didRecognizeLongPress(Frame& mainFrame)
 {
     LOG(ContentObservation, "didRecognizeLongPress: cancel ongoing content change observing.");
-    WebCore::willNotProceedWithClick(mainFrame);
+    CyberCore::willNotProceedWithClick(mainFrame);
 }
 
 void ContentChangeObserver::didPreventDefaultForEvent(Frame& mainFrame)
 {
     LOG(ContentObservation, "didPreventDefaultForEvent: cancel ongoing content change observing.");
-    WebCore::willNotProceedWithClick(mainFrame);
+    CyberCore::willNotProceedWithClick(mainFrame);
 }
 
 void ContentChangeObserver::startContentObservationForDuration(Seconds duration)

@@ -33,7 +33,7 @@
 OBJC_CLASS NSString;
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 class SecurityOrigin;
 }
 
@@ -67,9 +67,9 @@ bool checkSandboxRequirementForType(MediaPermissionType);
 bool checkUsageDescriptionStringForType(MediaPermissionType);
 bool checkUsageDescriptionStringForSpeechRecognition();
 
-NSString *applicationVisibleNameFromOrigin(const WebCore::SecurityOriginData&);
+NSString *applicationVisibleNameFromOrigin(const CyberCore::SecurityOriginData&);
 NSString *applicationVisibleName();
-void alertForPermission(WebPageProxy&, MediaPermissionReason, const WebCore::SecurityOriginData&, CompletionHandler<void(bool)>&&);
+void alertForPermission(WebPageProxy&, MediaPermissionReason, const CyberCore::SecurityOriginData&, CompletionHandler<void(bool)>&&);
 #endif
 
 #if HAVE(AVCAPTUREDEVICE)

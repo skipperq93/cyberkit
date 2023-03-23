@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 class SystemSoundDelegate {
 public:
@@ -34,4 +34,4 @@ public:
     virtual void systemBeep() { }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

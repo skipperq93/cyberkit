@@ -31,7 +31,7 @@
 #include "URLSoup.h"
 #include <wtf/glib/GRefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class BlobRegistryImpl;
 
@@ -117,5 +117,5 @@ private:
     uint16_t m_redirectCount { 0 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 

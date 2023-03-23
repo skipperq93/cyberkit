@@ -34,12 +34,12 @@
 #include <wtf/HexNumber.h>
 
 namespace API {
-using namespace WebCore;
+using namespace CyberCore;
 using namespace WebKit;
 
 static constexpr Seconds navigationActivityTimeout { 30_s };
 
-SubstituteData::SubstituteData(Vector<uint8_t>&& content, const ResourceResponse& response, WebCore::SubstituteData::SessionHistoryVisibility sessionHistoryVisibility)
+SubstituteData::SubstituteData(Vector<uint8_t>&& content, const ResourceResponse& response, CyberCore::SubstituteData::SessionHistoryVisibility sessionHistoryVisibility)
     : SubstituteData(WTFMove(content), response.mimeType(), response.textEncodingName(), response.url().string(), nullptr, sessionHistoryVisibility)
 {
 }
@@ -58,7 +58,7 @@ Navigation::Navigation(WebNavigationState& state, WebBackForwardListItem* curren
 {
 }
 
-Navigation::Navigation(WebNavigationState& state, WebCore::ResourceRequest&& request, WebBackForwardListItem* fromItem)
+Navigation::Navigation(WebNavigationState& state, CyberCore::ResourceRequest&& request, WebBackForwardListItem* fromItem)
     : m_navigationID(state.generateNavigationID())
     , m_originalRequest(WTFMove(request))
     , m_currentRequest(m_originalRequest)
@@ -86,7 +86,7 @@ Navigation::Navigation(WebKit::WebNavigationState& state, std::unique_ptr<Substi
     m_substituteData = WTFMove(substituteData);
 }
 
-Navigation::Navigation(WebKit::WebNavigationState& state, WebCore::ResourceRequest&& simulatedRequest, std::unique_ptr<SubstituteData>&& substituteData, WebKit::WebBackForwardListItem* fromItem)
+Navigation::Navigation(WebKit::WebNavigationState& state, CyberCore::ResourceRequest&& simulatedRequest, std::unique_ptr<SubstituteData>&& substituteData, WebKit::WebBackForwardListItem* fromItem)
     : Navigation(state, WTFMove(simulatedRequest), fromItem)
 {
     ASSERT(substituteData);

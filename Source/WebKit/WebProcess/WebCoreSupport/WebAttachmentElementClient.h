@@ -29,21 +29,21 @@
 
 #include <CyberCore/AttachmentElementClient.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPage;
 
-class WebAttachmentElementClient final : public WebCore::AttachmentElementClient {
+class WebAttachmentElementClient final : public CyberCore::AttachmentElementClient {
     WTF_MAKE_FAST_ALLOCATED;
 public:
     explicit WebAttachmentElementClient(WebPage&);
 
-    void requestAttachmentIcon(const String& identifier, const WebCore::FloatSize&) final;
+    void requestAttachmentIcon(const String& identifier, const CyberCore::FloatSize&) final;
 
 private:
     WebPage& m_page;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(ATTACHMENT_ELEMENT)

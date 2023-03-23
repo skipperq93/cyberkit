@@ -35,7 +35,7 @@
 #include <wtf/NeverDestroyed.h>
 #include <wtf/StdLibExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace XPath {
 
 const NodeSet& Value::toNodeSet() const

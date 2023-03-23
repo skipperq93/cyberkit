@@ -39,63 +39,63 @@
 #import <wtf/GetPtr.h>
 #import <wtf/URL.h>
 
-#define IMPL static_cast<WebCore::Attr*>(reinterpret_cast<WebCore::Node*>(_internal))
+#define IMPL static_cast<CyberCore::Attr*>(reinterpret_cast<CyberCore::Node*>(_internal))
 
 @implementation DOMAttr
 
 - (NSString *)name
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->name();
 }
 
 - (BOOL)specified
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->specified();
 }
 
 - (NSString *)value
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->value();
 }
 
 - (void)setValue:(NSString *)newValue
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->setValue(newValue);
 }
 
 - (DOMElement *)ownerElement
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->ownerElement()));
 }
 
 - (BOOL)isId
 {
-    WebCore::JSMainThreadNullState state;
-    return IMPL->qualifiedName().matches(WebCore::HTMLNames::idAttr);
+    CyberCore::JSMainThreadNullState state;
+    return IMPL->qualifiedName().matches(CyberCore::HTMLNames::idAttr);
 }
 
 - (DOMCSSStyleDeclaration *)style
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->style()));
 }
 
 @end
 
-WebCore::Attr* core(DOMAttr *wrapper)
+CyberCore::Attr* core(DOMAttr *wrapper)
 {
-    return wrapper ? reinterpret_cast<WebCore::Attr*>(wrapper->_internal) : 0;
+    return wrapper ? reinterpret_cast<CyberCore::Attr*>(wrapper->_internal) : 0;
 }
 
-DOMAttr *kit(WebCore::Attr* value)
+DOMAttr *kit(CyberCore::Attr* value)
 {
-    WebCoreThreadViolationCheckRoundOne();
-    return static_cast<DOMAttr*>(kit(static_cast<WebCore::Node*>(value)));
+    CyberCoreThreadViolationCheckRoundOne();
+    return static_cast<DOMAttr*>(kit(static_cast<CyberCore::Node*>(value)));
 }
 
 #undef IMPL

@@ -30,7 +30,7 @@
 #include "Color.h"
 #include "ColorInterpolation.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Color blendSourceOver(const Color& backdrop, const Color& source)
 {
@@ -164,13 +164,13 @@ Color blendWithoutPremultiply(const Color& from, const Color& to, const Blending
     auto toSRGB = to.toColorTypeLossy<SRGBA<float>>().resolved();
 
     auto blended = makeFromComponentsClamping<SRGBA<float>>(
-        WebCore::blend(fromSRGB.red, toSRGB.red, context),
-        WebCore::blend(fromSRGB.green, toSRGB.green, context),
-        WebCore::blend(fromSRGB.blue, toSRGB.blue, context),
-        WebCore::blend(fromSRGB.alpha, toSRGB.alpha, context)
+        CyberCore::blend(fromSRGB.red, toSRGB.red, context),
+        CyberCore::blend(fromSRGB.green, toSRGB.green, context),
+        CyberCore::blend(fromSRGB.blue, toSRGB.blue, context),
+        CyberCore::blend(fromSRGB.alpha, toSRGB.alpha, context)
     );
 
     return convertColor<SRGBA<uint8_t>>(blended);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

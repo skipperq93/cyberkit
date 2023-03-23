@@ -29,7 +29,7 @@
 #import <CyberKit/WKWebProcessPlugInFrame.h>
 #import "WebFrame.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 template<> struct WrapperTraits<WebFrame> {
     using WrapperClass = WKWebProcessPlugInFrame;

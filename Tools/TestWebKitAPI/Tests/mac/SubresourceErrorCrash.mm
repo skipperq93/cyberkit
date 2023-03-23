@@ -29,7 +29,7 @@
 
 namespace TestWebKitAPI {
 
-TEST(WebKitLegacy, SubresourceErrorCrash)
+TEST(CyberKitLegacy, SubresourceErrorCrash)
 {
     auto webView = adoptNS([[WebView alloc] initWithFrame:NSZeroRect frameName:@"" groupName:@""]);
     [[webView mainFrame] loadHTMLString:@"<link rel=stylesheet href='x-error:error'>" baseURL:nil];

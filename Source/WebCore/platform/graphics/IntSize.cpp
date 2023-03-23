@@ -30,7 +30,7 @@
 #include <wtf/JSONValues.h>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 IntSize::IntSize(const FloatSize& s)
     : m_width(clampToInteger(s.width()))

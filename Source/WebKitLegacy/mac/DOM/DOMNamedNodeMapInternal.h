@@ -25,8 +25,8 @@
 
 #import <CyberKitLegacy/DOMNamedNodeMap.h>
 
-namespace WebCore {
+namespace CyberCore {
 class NamedNodeMap;
 }
 
-DOMNamedNodeMap *kit(WebCore::NamedNodeMap*);
+DOMNamedNodeMap *kit(CyberCore::NamedNodeMap*);

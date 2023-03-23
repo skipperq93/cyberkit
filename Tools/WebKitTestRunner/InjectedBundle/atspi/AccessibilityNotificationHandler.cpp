@@ -47,7 +47,7 @@ AccessibilityNotificationHandler::AccessibilityNotificationHandler(JSValueRef ca
     JSContextRef jsContext = WKBundleFrameGetJavaScriptContext(mainFrame);
     JSValueProtect(jsContext, m_callback);
 
-    WebCore::AccessibilityAtspi::singleton().addNotificationObserver(this, [this](WebCore::AccessibilityObjectAtspi& element, const char* notificationName, WebCore::AccessibilityAtspi::NotificationObserverParameter parameter) {
+    CyberCore::AccessibilityAtspi::singleton().addNotificationObserver(this, [this](CyberCore::AccessibilityObjectAtspi& element, const char* notificationName, CyberCore::AccessibilityAtspi::NotificationObserverParameter parameter) {
         if (m_element && m_element.get() != &element)
             return;
 
@@ -66,7 +66,7 @@ AccessibilityNotificationHandler::AccessibilityNotificationHandler(JSValueRef ca
             [&](unsigned& unsignedValue) -> JSValueRef {
                 return JSValueMakeNumber(jsContext, unsignedValue);
             },
-            [&](Ref<WebCore::AccessibilityObjectAtspi>& elementValue) -> JSValueRef {
+            [&](Ref<CyberCore::AccessibilityObjectAtspi>& elementValue) -> JSValueRef {
                 return toJS(jsContext, AccessibilityUIElement::create(elementValue.ptr()).ptr());
             },
             [&](auto&) -> JSValueRef {
@@ -92,7 +92,7 @@ AccessibilityNotificationHandler::AccessibilityNotificationHandler(JSValueRef ca
 
 AccessibilityNotificationHandler::~AccessibilityNotificationHandler()
 {
-    WebCore::AccessibilityAtspi::singleton().removeNotificationObserver(this);
+    CyberCore::AccessibilityAtspi::singleton().removeNotificationObserver(this);
 
     WKBundleFrameRef mainFrame = WKBundlePageGetMainFrame(InjectedBundle::singleton().page()->page());
     JSContextRef jsContext = WKBundleFrameGetJavaScriptContext(mainFrame);

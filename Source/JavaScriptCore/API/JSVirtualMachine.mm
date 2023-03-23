@@ -25,7 +25,7 @@
 
 #import "config.h"
 
-#import "JavaScriptCore.h"
+#import "CyberScriptCore.h"
 
 #if JSC_OBJC_API_ENABLED
 

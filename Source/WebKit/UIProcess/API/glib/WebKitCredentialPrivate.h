@@ -22,5 +22,5 @@
 #include "WebKitCredential.h"
 #include <CyberCore/Credential.h>
 
-WebKitCredential* webkitCredentialCreate(const WebCore::Credential&);
-const WebCore::Credential& webkitCredentialGetCredential(WebKitCredential*);
+WebKitCredential* webkitCredentialCreate(const CyberCore::Credential&);
+const CyberCore::Credential& webkitCredentialGetCredential(WebKitCredential*);

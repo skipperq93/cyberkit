@@ -27,7 +27,7 @@
 
 #include "SVGList.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename PropertyType>
 class SVGPropertyList : public SVGList<Ref<PropertyType>>, public SVGPropertyOwner {

@@ -31,19 +31,19 @@
 #import "WAKAppKitStubs.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 class Frame;
 }
 
-@protocol WebCoreFrameScrollView
-- (void)setScrollingModes:(WebCore::ScrollbarMode)hMode vertical:(WebCore::ScrollbarMode)vMode andLock:(BOOL)lock;
-- (void)scrollingModes:(WebCore::ScrollbarMode*)hMode vertical:(WebCore::ScrollbarMode*)vMode;
+@protocol CyberCoreFrameScrollView
+- (void)setScrollingModes:(CyberCore::ScrollbarMode)hMode vertical:(CyberCore::ScrollbarMode)vMode andLock:(BOOL)lock;
+- (void)scrollingModes:(CyberCore::ScrollbarMode*)hMode vertical:(CyberCore::ScrollbarMode*)vMode;
 
 - (void)setScrollBarsSuppressed:(BOOL)suppressed repaintOnUnsuppress:(BOOL)repaint;
 - (void)setScrollOrigin:(NSPoint)origin updatePositionAtAll:(BOOL)updatePositionAtAll immediately:(BOOL)updatePositionImmediately;
 - (NSPoint)scrollOrigin;
 @end
 
-@protocol WebCoreFrameView
-- (NakedPtr<WebCore::Frame>)_web_frame;
+@protocol CyberCoreFrameView
+- (NakedPtr<CyberCore::Frame>)_web_frame;
 @end

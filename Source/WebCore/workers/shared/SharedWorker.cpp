@@ -41,7 +41,7 @@
 #include <CyberScriptCore/IdentifiersFactory.h>
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(SharedWorker);
 
@@ -183,4 +183,4 @@ void SharedWorker::resume()
 #undef SHARED_WORKER_RELEASE_LOG
 #undef SHARED_WORKER_RELEASE_LOG_ERROR
 
-} // namespace WebCore
+} // namespace CyberCore

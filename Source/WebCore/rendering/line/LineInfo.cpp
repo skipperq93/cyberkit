@@ -32,7 +32,7 @@
 
 #include "RenderBlock.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 void LineInfo::setEmpty(bool empty, RenderBlock* block, LineWidth* lineWidth)
 {

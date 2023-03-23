@@ -34,7 +34,7 @@
 #include "RenderTable.h"
 #include "StyleInheritedData.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderMathMLOperator;
 class MathMLPresentationElement;
@@ -120,7 +120,7 @@ private:
 
 LayoutUnit toUserUnits(const MathMLElement::Length&, const RenderStyle&, const LayoutUnit& referenceValue);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderMathMLBlock, isRenderMathMLBlock())
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderMathMLTable, isRenderMathMLTable())

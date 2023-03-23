@@ -36,7 +36,7 @@
 
 #include <algorithm>
 
-namespace WebCore {
+namespace CyberCore {
 
 ReverbAccumulationBuffer::ReverbAccumulationBuffer(size_t length)
     : m_buffer(length)
@@ -112,6 +112,6 @@ void ReverbAccumulationBuffer::reset()
     m_readTimeFrame = 0;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

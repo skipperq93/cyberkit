@@ -29,7 +29,7 @@
 #include "ControlFactory.h"
 #include "GraphicsContext.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<SliderTrackPart> SliderTrackPart::create(StyleAppearance type, const IntSize& thumbSize, const IntRect& trackBounds, Vector<double>&& tickRatios)
 {
@@ -103,4 +103,4 @@ std::unique_ptr<PlatformControl> SliderTrackPart::createPlatformControl()
     return controlFactory().createPlatformSliderTrack(*this);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

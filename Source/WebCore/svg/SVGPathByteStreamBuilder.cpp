@@ -25,7 +25,7 @@
 #include "SVGPathStringSource.h"
 #include <wtf/text/StringConcatenateNumbers.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 SVGPathByteStreamBuilder::SVGPathByteStreamBuilder(SVGPathByteStream& byteStream)
     : m_byteStream(byteStream)
@@ -100,4 +100,4 @@ void SVGPathByteStreamBuilder::closePath()
     writeSegmentType(PathSegClosePath);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

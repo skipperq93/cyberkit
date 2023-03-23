@@ -30,7 +30,7 @@
 #include "Supplementable.h"
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WorkerNavigator final : public NavigatorBase, public Supplementable<WorkerNavigator> {
 public:
@@ -54,4 +54,4 @@ private:
     bool m_isOnline;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -34,8 +34,8 @@
 #import <CyberCore/GraphicsLayer.h>
 #import <CyberCore/RenderLayerBacking.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 RemoteLayerTreeDrawingAreaMac::RemoteLayerTreeDrawingAreaMac(WebPage& webPage, const WebPageCreationParameters& parameters)
     : RemoteLayerTreeDrawingArea(webPage, parameters)
@@ -47,10 +47,10 @@ RemoteLayerTreeDrawingAreaMac::~RemoteLayerTreeDrawingAreaMac() = default;
 
 DelegatedScrollingMode RemoteLayerTreeDrawingAreaMac::delegatedScrollingMode() const
 {
-    return DelegatedScrollingMode::DelegatedToWebKit;
+    return DelegatedScrollingMode::DelegatedToCyberKit;
 }
 
-void RemoteLayerTreeDrawingAreaMac::setColorSpace(std::optional<WebCore::DestinationColorSpace> colorSpace)
+void RemoteLayerTreeDrawingAreaMac::setColorSpace(std::optional<CyberCore::DestinationColorSpace> colorSpace)
 {
     m_displayColorSpace = colorSpace;
 
@@ -58,12 +58,12 @@ void RemoteLayerTreeDrawingAreaMac::setColorSpace(std::optional<WebCore::Destina
     // which causes PlatformCALayerRemote::updateBackingStore() to re-create backing stores with the new colorspace.
 }
 
-std::optional<WebCore::DestinationColorSpace> RemoteLayerTreeDrawingAreaMac::displayColorSpace() const
+std::optional<CyberCore::DestinationColorSpace> RemoteLayerTreeDrawingAreaMac::displayColorSpace() const
 {
     return m_displayColorSpace;
 }
 
-void RemoteLayerTreeDrawingAreaMac::mainFrameContentSizeChanged(const WebCore::IntSize&)
+void RemoteLayerTreeDrawingAreaMac::mainFrameContentSizeChanged(const CyberCore::IntSize&)
 {
     // Do nothing. This is only relevant to DelegatedToNativeScrollView implementations.
 }
@@ -79,7 +79,7 @@ void RemoteLayerTreeDrawingAreaMac::applyTransientZoomToPage(double scale, Float
     updateRendering();
 }
 
-void RemoteLayerTreeDrawingAreaMac::adjustTransientZoom(double scale, WebCore::FloatPoint origin)
+void RemoteLayerTreeDrawingAreaMac::adjustTransientZoom(double scale, CyberCore::FloatPoint origin)
 {
     LOG_WITH_STREAM(ViewGestures, stream << "RemoteLayerTreeDrawingAreaMac::adjustTransientZoom - scale " << scale << " origin " << origin);
 
@@ -90,7 +90,7 @@ void RemoteLayerTreeDrawingAreaMac::adjustTransientZoom(double scale, WebCore::F
     prepopulateRectForZoom(totalScale, origin);
 }
 
-void RemoteLayerTreeDrawingAreaMac::commitTransientZoom(double scale, WebCore::FloatPoint origin)
+void RemoteLayerTreeDrawingAreaMac::commitTransientZoom(double scale, CyberCore::FloatPoint origin)
 {
     LOG_WITH_STREAM(ViewGestures, stream << "RemoteLayerTreeDrawingAreaMac::commitTransientZoom - scale " << scale << " origin " << origin);
 
@@ -114,6 +114,6 @@ void RemoteLayerTreeDrawingAreaMac::willCommitLayerTree(RemoteLayerTreeTransacti
     transaction.setPageScalingLayerID(renderViewGraphicsLayer->primaryLayerID());
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(MAC)

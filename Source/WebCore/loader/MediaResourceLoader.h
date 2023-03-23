@@ -38,7 +38,7 @@
 #include <wtf/WeakPtr.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CachedRawResource;
 class Document;
@@ -97,6 +97,6 @@ private:
     CachedResourceHandle<CachedRawResource> m_resource;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(VIDEO)

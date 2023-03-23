@@ -28,7 +28,7 @@
 
 #include "XPathNodeSet.h"
 
-namespace WebCore {
+namespace CyberCore {
     namespace XPath {
     
         class Value {
@@ -100,4 +100,4 @@ namespace WebCore {
         };
 
     } // namespace XPath
-} // namespace WebCore
+} // namespace CyberCore

@@ -51,18 +51,18 @@
 #include <CyberCore/WorkerFetchResult.h>
 #include <CyberCore/WorkerInitializationData.h>
 
-namespace WebKit {
+namespace CyberKit {
 
-WebSharedWorkerContextManagerConnection::WebSharedWorkerContextManagerConnection(Ref<IPC::Connection>&& connectionToNetworkProcess, WebCore::RegistrableDomain&& registrableDomain, PageGroupIdentifier pageGroupID, WebPageProxyIdentifier webPageProxyID, WebCore::PageIdentifier pageID, const WebPreferencesStore& preferencesStore, RemoteWorkerInitializationData&& initializationData)
+WebSharedWorkerContextManagerConnection::WebSharedWorkerContextManagerConnection(Ref<IPC::Connection>&& connectionToNetworkProcess, CyberCore::RegistrableDomain&& registrableDomain, PageGroupIdentifier pageGroupID, WebPageProxyIdentifier webPageProxyID, CyberCore::PageIdentifier pageID, const WebPreferencesStore& preferencesStore, RemoteWorkerInitializationData&& initializationData)
     : m_connectionToNetworkProcess(WTFMove(connectionToNetworkProcess))
     , m_registrableDomain(WTFMove(registrableDomain))
     , m_pageGroupID(pageGroupID)
     , m_webPageProxyID(webPageProxyID)
     , m_pageID(pageID)
 #if PLATFORM(COCOA)
-    , m_userAgent(WebCore::standardUserAgentWithApplicationName({ }))
+    , m_userAgent(CyberCore::standardUserAgentWithApplicationName({ }))
 #else
-    , m_userAgent(WebCore::standardUserAgent())
+    , m_userAgent(CyberCore::standardUserAgent())
 #endif
     , m_userContentController(WebUserContentController::getOrCreate(initializationData.userContentControllerIdentifier))
 {
@@ -81,7 +81,7 @@ void WebSharedWorkerContextManagerConnection::establishConnection(CompletionHand
     m_connectionToNetworkProcess->sendWithAsyncReply(Messages::NetworkConnectionToWebProcess::EstablishSharedWorkerContextConnection { m_webPageProxyID, m_registrableDomain }, WTFMove(completionHandler), 0);
 }
 
-void WebSharedWorkerContextManagerConnection::postExceptionToWorkerObject(WebCore::SharedWorkerIdentifier sharedWorkerIdentifier, const String& errorMessage, int lineNumber, int columnNumber, const String& sourceURL)
+void WebSharedWorkerContextManagerConnection::postExceptionToWorkerObject(CyberCore::SharedWorkerIdentifier sharedWorkerIdentifier, const String& errorMessage, int lineNumber, int columnNumber, const String& sourceURL)
 {
     m_connectionToNetworkProcess->send(Messages::WebSharedWorkerServerToContextConnection::PostExceptionToWorkerObject { sharedWorkerIdentifier, errorMessage, lineNumber, columnNumber, sourceURL }, 0);
 }
@@ -92,10 +92,10 @@ void WebSharedWorkerContextManagerConnection::updatePreferencesStore(const WebPr
     m_preferencesStore = store;
 }
 
-void WebSharedWorkerContextManagerConnection::launchSharedWorker(WebCore::ClientOrigin&& origin, WebCore::SharedWorkerIdentifier sharedWorkerIdentifier, WebCore::WorkerOptions&& workerOptions, WebCore::WorkerFetchResult&& workerFetchResult, WebCore::WorkerInitializationData&& initializationData)
+void WebSharedWorkerContextManagerConnection::launchSharedWorker(CyberCore::ClientOrigin&& origin, CyberCore::SharedWorkerIdentifier sharedWorkerIdentifier, CyberCore::WorkerOptions&& workerOptions, CyberCore::WorkerFetchResult&& workerFetchResult, CyberCore::WorkerInitializationData&& initializationData)
 {
     RELEASE_LOG(SharedWorker, "WebSharedWorkerContextManagerConnection::launchSharedWorker: sharedWorkerIdentifier=%" PRIu64, sharedWorkerIdentifier.toUInt64());
-    auto pageConfiguration = WebCore::pageConfigurationWithEmptyClients(WebProcess::singleton().sessionID());
+    auto pageConfiguration = CyberCore::pageConfigurationWithEmptyClients(WebProcess::singleton().sessionID());
 
     pageConfiguration.badgeClient = WebBadgeClient::create();
     pageConfiguration.databaseProvider = WebDatabaseProvider::getOrCreate(m_pageGroupID);
@@ -108,22 +108,22 @@ void WebSharedWorkerContextManagerConnection::launchSharedWorker(WebCore::Client
 
     pageConfiguration.loaderClientForMainFrame = makeUniqueRef<RemoteWorkerFrameLoaderClient>(m_webPageProxyID, m_pageID, m_userAgent);
 
-    auto page = makeUniqueRef<WebCore::Page>(WTFMove(pageConfiguration));
+    auto page = makeUniqueRef<CyberCore::Page>(WTFMove(pageConfiguration));
     if (m_preferencesStore) {
         WebPage::updateSettingsGenerated(*m_preferencesStore, page->settings());
-        page->settings().setStorageBlockingPolicy(static_cast<WebCore::StorageBlockingPolicy>(m_preferencesStore->getUInt32ValueForKey(WebPreferencesKey::storageBlockingPolicyKey())));
+        page->settings().setStorageBlockingPolicy(static_cast<CyberCore::StorageBlockingPolicy>(m_preferencesStore->getUInt32ValueForKey(WebPreferencesKey::storageBlockingPolicyKey())));
     }
 
     if (!initializationData.userAgent.isEmpty())
         initializationData.userAgent = m_userAgent;
 
     if (!initializationData.clientIdentifier)
-        initializationData.clientIdentifier = WebCore::ScriptExecutionContextIdentifier::generate();
+        initializationData.clientIdentifier = CyberCore::ScriptExecutionContextIdentifier::generate();
 
     page->setupForRemoteWorker(workerFetchResult.responseURL, origin.topOrigin, workerFetchResult.referrerPolicy);
-    auto sharedWorkerThreadProxy = WebCore::SharedWorkerThreadProxy::create(WTFMove(page), sharedWorkerIdentifier, origin, WTFMove(workerFetchResult), WTFMove(workerOptions), WTFMove(initializationData), WebProcess::singleton().cacheStorageProvider());
+    auto sharedWorkerThreadProxy = CyberCore::SharedWorkerThreadProxy::create(WTFMove(page), sharedWorkerIdentifier, origin, WTFMove(workerFetchResult), WTFMove(workerOptions), WTFMove(initializationData), WebProcess::singleton().cacheStorageProvider());
 
-    WebCore::SharedWorkerContextManager::singleton().registerSharedWorkerThread(WTFMove(sharedWorkerThreadProxy));
+    CyberCore::SharedWorkerContextManager::singleton().registerSharedWorkerThread(WTFMove(sharedWorkerThreadProxy));
 }
 
 void WebSharedWorkerContextManagerConnection::close()
@@ -135,14 +135,14 @@ void WebSharedWorkerContextManagerConnection::close()
     setAsClosed();
 
     m_connectionToNetworkProcess->send(Messages::NetworkConnectionToWebProcess::CloseSharedWorkerContextConnection { }, 0);
-    WebCore::SharedWorkerContextManager::singleton().stopAllSharedWorkers();
+    CyberCore::SharedWorkerContextManager::singleton().stopAllSharedWorkers();
     WebProcess::singleton().enableTermination();
 }
 
-void WebSharedWorkerContextManagerConnection::sharedWorkerTerminated(WebCore::SharedWorkerIdentifier sharedWorkerIdentifier)
+void WebSharedWorkerContextManagerConnection::sharedWorkerTerminated(CyberCore::SharedWorkerIdentifier sharedWorkerIdentifier)
 {
     RELEASE_LOG(SharedWorker, "WebSharedWorkerContextManagerConnection::sharedWorkerTerminated: sharedWorkerIdentifier=%" PRIu64, sharedWorkerIdentifier.toUInt64());
     m_connectionToNetworkProcess->send(Messages::WebSharedWorkerServerToContextConnection::SharedWorkerTerminated { sharedWorkerIdentifier }, 0);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

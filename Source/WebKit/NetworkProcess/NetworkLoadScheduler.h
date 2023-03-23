@@ -34,7 +34,7 @@
 #include <wtf/ListHashSet.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 class ResourceError;
 }
 
@@ -49,21 +49,21 @@ public:
     ~NetworkLoadScheduler();
 
     void schedule(NetworkLoad&);
-    void unschedule(NetworkLoad&, const WebCore::NetworkLoadMetrics* = nullptr);
+    void unschedule(NetworkLoad&, const CyberCore::NetworkLoadMetrics* = nullptr);
 
     void startedPreconnectForMainResource(const URL&, const String& userAgent);
-    void finishedPreconnectForMainResource(const URL&, const String& userAgent, const WebCore::ResourceError&);
+    void finishedPreconnectForMainResource(const URL&, const String& userAgent, const CyberCore::ResourceError&);
 
-    void setResourceLoadSchedulingMode(WebCore::PageIdentifier, WebCore::LoadSchedulingMode);
+    void setResourceLoadSchedulingMode(CyberCore::PageIdentifier, CyberCore::LoadSchedulingMode);
     void prioritizeLoads(const Vector<NetworkLoad*>&);
-    void clearPageData(WebCore::PageIdentifier);
+    void clearPageData(CyberCore::PageIdentifier);
 
 private:
     void scheduleLoad(NetworkLoad&);
     void unscheduleLoad(NetworkLoad&);
 
     void scheduleMainResourceLoad(NetworkLoad&);
-    void unscheduleMainResourceLoad(NetworkLoad&, const WebCore::NetworkLoadMetrics*);
+    void unscheduleMainResourceLoad(NetworkLoad&, const CyberCore::NetworkLoadMetrics*);
 
     bool isOriginHTTP1X(const String&);
     void updateOriginProtocolInfo(const String&, const String&);
@@ -72,7 +72,7 @@ private:
     HostContext* contextForLoad(const NetworkLoad&);
 
     using PageContext = HashMap<String, std::unique_ptr<HostContext>>;
-    HashMap<WebCore::PageIdentifier, std::unique_ptr<PageContext>> m_pageContexts;
+    HashMap<CyberCore::PageIdentifier, std::unique_ptr<PageContext>> m_pageContexts;
 
     struct PendingMainResourcePreconnectInfo {
         unsigned pendingPreconnects {1};

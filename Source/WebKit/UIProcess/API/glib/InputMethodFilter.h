@@ -38,7 +38,7 @@ typedef union _GdkEvent GdkEvent;
 struct wpe_input_keyboard_event;
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 class IntRect;
 }
 
@@ -74,7 +74,7 @@ public:
     void notifyFocusedIn();
     void notifyFocusedOut();
     void notifyMouseButtonPress();
-    void notifyCursorRect(const WebCore::IntRect&);
+    void notifyCursorRect(const CyberCore::IntRect&);
     void notifySurrounding(const String&, uint64_t, uint64_t);
 
     void cancelComposition();
@@ -97,7 +97,7 @@ private:
 
     void notifyContentType();
 
-    WebCore::IntRect platformTransformCursorRectToViewCoordinates(const WebCore::IntRect&);
+    CyberCore::IntRect platformTransformCursorRectToViewCoordinates(const CyberCore::IntRect&);
     bool platformEventKeyIsKeyPress(PlatformEventKey*) const;
 
     std::optional<InputMethodState> m_state;
@@ -105,7 +105,7 @@ private:
 
     struct {
         String text;
-        Vector<WebCore::CompositionUnderline> underlines;
+        Vector<CyberCore::CompositionUnderline> underlines;
         unsigned cursorOffset;
     } m_preedit;
 
@@ -118,7 +118,7 @@ private:
     } m_filteringContext;
 
     String m_compositionResult;
-    WebCore::IntPoint m_cursorLocation;
+    CyberCore::IntPoint m_cursorLocation;
 
     struct {
         String text;

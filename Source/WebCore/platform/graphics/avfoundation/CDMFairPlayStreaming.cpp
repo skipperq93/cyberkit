@@ -57,7 +57,7 @@
 #include "ISOFairPlayStreamingPsshBox.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 #if !RELEASE_LOG_DISABLED
 static WTFLogChannel& logChannel() { return LogEME; }
@@ -434,6 +434,6 @@ std::optional<String> CDMPrivateFairPlayStreaming::sanitizeSessionId(const Strin
     return sessionId;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ENCRYPTED_MEDIA)

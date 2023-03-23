@@ -31,7 +31,7 @@
 #include "MutableStyleProperties.h"
 #include "SVGElementInlines.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 bool SVGAttributeAnimator::isAnimatedStylePropertyAnimator(const SVGElement& targetElement) const
 {
@@ -121,4 +121,4 @@ void SVGAttributeAnimator::applyAnimatedPropertyChange(SVGElement& targetElement
         applyAnimatedPropertyChange(instance, m_attributeName);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

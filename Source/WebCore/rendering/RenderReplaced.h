@@ -23,7 +23,7 @@
 
 #include "RenderBox.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderReplaced : public RenderBox {
     WTF_MAKE_ISO_ALLOCATED(RenderReplaced);
@@ -118,6 +118,6 @@ private:
     mutable FloatSize m_intrinsicRatio;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderReplaced, isRenderReplaced())

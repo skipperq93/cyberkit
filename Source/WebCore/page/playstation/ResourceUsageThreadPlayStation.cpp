@@ -31,7 +31,7 @@
 #include <JavaScriptCore/GCActivityCallback.h>
 #include <JavaScriptCore/VM.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static float cpuUsage()
 {
@@ -73,6 +73,6 @@ void ResourceUsageThread::platformCollectMemoryData(JSC::VM* vm, ResourceUsageDa
     data.timeOfNextFullCollection = data.timestamp + vm->heap.fullActivityCallback()->timeUntilFire().value_or(Seconds(std::numeric_limits<double>::infinity()));
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(RESOURCE_USAGE)

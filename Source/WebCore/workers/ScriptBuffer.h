@@ -32,7 +32,7 @@
 
 #include "SharedBuffer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScriptBuffer {
 public:
@@ -65,4 +65,4 @@ private:
 bool operator==(const ScriptBuffer&, const ScriptBuffer&);
 bool operator!=(const ScriptBuffer&, const ScriptBuffer&);
 
-} // namespace WebCore
+} // namespace CyberCore

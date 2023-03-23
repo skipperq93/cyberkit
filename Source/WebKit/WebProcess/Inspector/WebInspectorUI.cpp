@@ -26,7 +26,7 @@
 #include "config.h"
 #include "WebInspectorUI.h"
 
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebInspectorMessages.h"
 #include "WebInspectorUIProxyMessages.h"
 #include "WebPage.h"
@@ -45,8 +45,8 @@
 #include "WebInspectorUIExtensionController.h"
 #endif
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 Ref<WebInspectorUI> WebInspectorUI::create(WebPage& page)
 {
@@ -179,12 +179,12 @@ void WebInspectorUI::resetState()
     WebProcess::singleton().parentProcessConnection()->send(Messages::WebInspectorUIProxy::ResetState(), m_inspectedPageIdentifier);
 }
 
-void WebInspectorUI::setForcedAppearance(WebCore::InspectorFrontendClient::Appearance appearance)
+void WebInspectorUI::setForcedAppearance(CyberCore::InspectorFrontendClient::Appearance appearance)
 {
     WebProcess::singleton().parentProcessConnection()->send(Messages::WebInspectorUIProxy::SetForcedAppearance(appearance), m_inspectedPageIdentifier);
 }
 
-WebCore::UserInterfaceLayoutDirection WebInspectorUI::userInterfaceLayoutDirection() const
+CyberCore::UserInterfaceLayoutDirection WebInspectorUI::userInterfaceLayoutDirection() const
 {
     return m_page.corePage()->userInterfaceLayoutDirection();
 }
@@ -303,7 +303,7 @@ void WebInspectorUI::load(const WTF::String& path, CompletionHandler<void(const 
     WebProcess::singleton().parentProcessConnection()->sendWithAsyncReply(Messages::WebInspectorUIProxy::Load(path), WTFMove(completionHandler), m_inspectedPageIdentifier);
 }
 
-void WebInspectorUI::pickColorFromScreen(CompletionHandler<void(const std::optional<WebCore::Color>&)>&& completionHandler)
+void WebInspectorUI::pickColorFromScreen(CompletionHandler<void(const std::optional<CyberCore::Color>&)>&& completionHandler)
 {
     WebProcess::singleton().parentProcessConnection()->sendWithAsyncReply(Messages::WebInspectorUIProxy::PickColorFromScreen(), WTFMove(completionHandler), m_inspectedPageIdentifier);
 }
@@ -350,7 +350,7 @@ bool WebInspectorUI::supportsWebExtensions()
     return true;
 }
 
-void WebInspectorUI::didShowExtensionTab(const String& extensionID, const String& extensionTabID, WebCore::FrameIdentifier frameID)
+void WebInspectorUI::didShowExtensionTab(const String& extensionID, const String& extensionTabID, CyberCore::FrameIdentifier frameID)
 {
     if (!m_extensionController)
         return;
@@ -458,7 +458,7 @@ String WebInspectorUI::targetProductVersion() const
     return m_debuggableInfo.targetProductVersion;
 }
 
-WebCore::Page* WebInspectorUI::frontendPage()
+CyberCore::Page* WebInspectorUI::frontendPage()
 {
     return m_page.corePage();
 }
@@ -490,4 +490,4 @@ String WebInspectorUI::localizedStringsURL() const
 }
 #endif // !PLATFORM(MAC) && !PLATFORM(GTK) && !PLATFORM(WIN)
 
-} // namespace WebKit
+} // namespace CyberKit

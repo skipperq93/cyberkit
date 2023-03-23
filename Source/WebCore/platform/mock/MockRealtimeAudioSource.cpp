@@ -50,7 +50,7 @@
 #include "MockRealtimeAudioSourceGStreamer.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 #if !PLATFORM(MAC) && !PLATFORM(IOS_FAMILY) && !USE(GSTREAMER)
 CaptureSourceOrError MockRealtimeAudioSource::create(String&& deviceID, String&& name, MediaDeviceHashSalts&& hashSalts, const MediaConstraints* constraints, PageIdentifier)
@@ -198,6 +198,6 @@ void MockRealtimeAudioSource::setIsInterrupted(bool isInterrupted)
 #endif
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM)

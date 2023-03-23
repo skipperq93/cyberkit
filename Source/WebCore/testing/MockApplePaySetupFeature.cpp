@@ -28,7 +28,7 @@
 
 #if ENABLE(APPLE_PAY)
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<MockApplePaySetupFeature> MockApplePaySetupFeature::create(ApplePaySetupFeatureState state, ApplePaySetupFeatureType type, bool supportsInstallments)
 {
@@ -46,6 +46,6 @@ MockApplePaySetupFeature::MockApplePaySetupFeature(ApplePaySetupFeatureState sta
     UNUSED_PARAM(supportsInstallments);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(APPLE_PAY)

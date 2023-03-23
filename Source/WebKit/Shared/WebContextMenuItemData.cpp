@@ -35,18 +35,18 @@
 #include <CyberCore/ContextMenu.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 WebContextMenuItemData::WebContextMenuItemData()
-    : m_type(WebCore::ActionType)
-    , m_action(WebCore::ContextMenuItemTagNoAction)
+    : m_type(CyberCore::ActionType)
+    , m_action(CyberCore::ContextMenuItemTagNoAction)
     , m_enabled(true)
     , m_checked(false)
     , m_indentationLevel(0)
 {
 }
 
-WebContextMenuItemData::WebContextMenuItemData(WebCore::ContextMenuItemType type, WebCore::ContextMenuAction action, const String& title, bool enabled, bool checked, unsigned indentationLevel)
+WebContextMenuItemData::WebContextMenuItemData(CyberCore::ContextMenuItemType type, CyberCore::ContextMenuAction action, const String& title, bool enabled, bool checked, unsigned indentationLevel)
     : m_type(type)
     , m_action(action)
     , m_title(title)
@@ -54,11 +54,11 @@ WebContextMenuItemData::WebContextMenuItemData(WebCore::ContextMenuItemType type
     , m_checked(checked)
     , m_indentationLevel(indentationLevel)
 {
-    ASSERT(type == WebCore::ActionType || type == WebCore::CheckableActionType || type == WebCore::SeparatorType);
+    ASSERT(type == CyberCore::ActionType || type == CyberCore::CheckableActionType || type == CyberCore::SeparatorType);
 }
 
-WebContextMenuItemData::WebContextMenuItemData(WebCore::ContextMenuAction action, const String& title, bool enabled, const Vector<WebContextMenuItemData>& submenu, unsigned indentationLevel)
-    : m_type(WebCore::SubmenuType)
+WebContextMenuItemData::WebContextMenuItemData(CyberCore::ContextMenuAction action, const String& title, bool enabled, const Vector<WebContextMenuItemData>& submenu, unsigned indentationLevel)
+    : m_type(CyberCore::SubmenuType)
     , m_action(action)
     , m_title(title)
     , m_enabled(enabled)
@@ -68,13 +68,13 @@ WebContextMenuItemData::WebContextMenuItemData(WebCore::ContextMenuAction action
 {
 }
 
-WebContextMenuItemData::WebContextMenuItemData(const WebCore::ContextMenuItem& item)
+WebContextMenuItemData::WebContextMenuItemData(const CyberCore::ContextMenuItem& item)
     : m_type(item.type())
     , m_action(item.action())
     , m_title(item.title())
 {
-    if (m_type == WebCore::SubmenuType) {
-        const Vector<WebCore::ContextMenuItem>& coreSubmenu = item.subMenuItems();
+    if (m_type == CyberCore::SubmenuType) {
+        const Vector<CyberCore::ContextMenuItem>& coreSubmenu = item.subMenuItems();
         m_submenu = kitItems(coreSubmenu);
     }
     
@@ -115,11 +115,11 @@ void WebContextMenuItemData::encode(IPC::Encoder& encoder) const
 
 std::optional<WebContextMenuItemData> WebContextMenuItemData::decode(IPC::Decoder& decoder)
 {
-    WebCore::ContextMenuItemType type;
+    CyberCore::ContextMenuItemType type;
     if (!decoder.decode(type))
         return std::nullopt;
 
-    WebCore::ContextMenuAction action;
+    CyberCore::ContextMenuAction action;
     if (!decoder.decode(action))
         return std::nullopt;
 
@@ -145,12 +145,12 @@ std::optional<WebContextMenuItemData> WebContextMenuItemData::decode(IPC::Decode
         return std::nullopt;
 
     switch (type) {
-    case WebCore::ActionType:
-    case WebCore::SeparatorType:
-    case WebCore::CheckableActionType:
+    case CyberCore::ActionType:
+    case CyberCore::SeparatorType:
+    case CyberCore::CheckableActionType:
         return {{ type, action, title, enabled, checked, indentationLevel }};
         break;
-    case WebCore::SubmenuType:
+    case CyberCore::SubmenuType:
         return {{ action, title, enabled, WTFMove(*submenu), indentationLevel }};
         break;
     }
@@ -158,7 +158,7 @@ std::optional<WebContextMenuItemData> WebContextMenuItemData::decode(IPC::Decode
     return std::nullopt;
 }
 
-Vector<WebContextMenuItemData> kitItems(const Vector<WebCore::ContextMenuItem>& coreItemVector)
+Vector<WebContextMenuItemData> kitItems(const Vector<CyberCore::ContextMenuItem>& coreItemVector)
 {
     return coreItemVector.map([](auto& item) {
         return WebContextMenuItemData { item };

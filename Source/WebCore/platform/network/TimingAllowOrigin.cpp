@@ -30,7 +30,7 @@
 #include "ResourceResponse.h"
 #include "SecurityOrigin.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 bool passesTimingAllowOriginCheck(const ResourceResponse& response, const SecurityOrigin& initiatorSecurityOrigin)
 {

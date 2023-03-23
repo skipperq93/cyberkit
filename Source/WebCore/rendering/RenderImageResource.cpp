@@ -35,7 +35,7 @@
 #include "RenderImageResourceStyleImage.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(RenderImageResource);
 
@@ -114,4 +114,4 @@ LayoutSize RenderImageResource::imageSize(float multiplier, CachedImage::SizeTyp
     return size;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

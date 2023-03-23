@@ -33,7 +33,7 @@
 #include "HostWindow.h"
 #include "IntRect.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Widget::~Widget()
 {

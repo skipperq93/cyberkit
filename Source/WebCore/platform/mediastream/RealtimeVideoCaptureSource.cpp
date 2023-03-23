@@ -35,7 +35,7 @@
 #include <wtf/JSONValues.h>
 #include <wtf/MediaTime.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 RealtimeVideoCaptureSource::RealtimeVideoCaptureSource(const CaptureDevice& device, MediaDeviceHashSalts&& hashSalts, PageIdentifier pageIdentifier)
     : RealtimeMediaSource(device, WTFMove(hashSalts), pageIdentifier)
@@ -372,7 +372,7 @@ void RealtimeVideoCaptureSource::setSizeAndFrameRate(std::optional<int> width, s
     setFrameRate(match->requestedFrameRate);
 }
 
-void RealtimeVideoCaptureSource::dispatchVideoFrameToObservers(VideoFrame& videoFrame, WebCore::VideoFrameTimeMetadata metadata)
+void RealtimeVideoCaptureSource::dispatchVideoFrameToObservers(VideoFrame& videoFrame, CyberCore::VideoFrameTimeMetadata metadata)
 {
     MediaTime sampleTime = videoFrame.presentationTime();
 
@@ -459,6 +459,6 @@ String SizeAndFrameRate::toJSONString() const
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM)

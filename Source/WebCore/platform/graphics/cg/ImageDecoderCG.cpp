@@ -45,15 +45,15 @@
 
 #include "MediaAccessibilitySoftLink.h"
 
-namespace WebCore {
+namespace CyberCore {
 
-const CFStringRef WebCoreCGImagePropertyAVISDictionary = CFSTR("{AVIS}");
-const CFStringRef WebCoreCGImagePropertyHEICSDictionary = CFSTR("{HEICS}");
-const CFStringRef WebCoreCGImagePropertyFrameInfoArray = CFSTR("FrameInfo");
+const CFStringRef CyberCoreCGImagePropertyAVISDictionary = CFSTR("{AVIS}");
+const CFStringRef CyberCoreCGImagePropertyHEICSDictionary = CFSTR("{HEICS}");
+const CFStringRef CyberCoreCGImagePropertyFrameInfoArray = CFSTR("FrameInfo");
 
-const CFStringRef WebCoreCGImagePropertyUnclampedDelayTime = CFSTR("UnclampedDelayTime");
-const CFStringRef WebCoreCGImagePropertyDelayTime = CFSTR("DelayTime");
-const CFStringRef WebCoreCGImagePropertyLoopCount = CFSTR("LoopCount");
+const CFStringRef CyberCoreCGImagePropertyUnclampedDelayTime = CFSTR("UnclampedDelayTime");
+const CFStringRef CyberCoreCGImagePropertyDelayTime = CFSTR("DelayTime");
+const CFStringRef CyberCoreCGImagePropertyLoopCount = CFSTR("LoopCount");
 
 const CFStringRef kCGImageSourceEnableRestrictedDecoding = CFSTR("kCGImageSourceEnableRestrictedDecoding");
 
@@ -151,10 +151,10 @@ static CFDictionaryRef animationPropertiesFromProperties(CFDictionaryRef propert
     if (auto animationProperties = (CFDictionaryRef)CFDictionaryGetValue(properties, kCGImagePropertyPNGDictionary))
         return animationProperties;
 
-    if (auto animationProperties = (CFDictionaryRef)CFDictionaryGetValue(properties, WebCoreCGImagePropertyAVISDictionary))
+    if (auto animationProperties = (CFDictionaryRef)CFDictionaryGetValue(properties, CyberCoreCGImagePropertyAVISDictionary))
         return animationProperties;
 
-    return (CFDictionaryRef)CFDictionaryGetValue(properties, WebCoreCGImagePropertyHEICSDictionary);
+    return (CFDictionaryRef)CFDictionaryGetValue(properties, CyberCoreCGImagePropertyHEICSDictionary);
 }
 
 static CFDictionaryRef animationPropertiesFromProperties(CFDictionaryRef properties, const CFStringRef animationDictionaryName, size_t index)
@@ -174,7 +174,7 @@ static CFDictionaryRef animationPropertiesFromProperties(CFDictionaryRef propert
     if (!animationProperties)
         return nullptr;
 
-    auto frameInfoArray = (CFArrayRef)CFDictionaryGetValue(animationProperties, WebCoreCGImagePropertyFrameInfoArray);
+    auto frameInfoArray = (CFArrayRef)CFDictionaryGetValue(animationProperties, CyberCoreCGImagePropertyFrameInfoArray);
     if (!frameInfoArray)
         return nullptr;
 
@@ -274,7 +274,7 @@ size_t ImageDecoderCG::bytesDecodedToDetermineProperties() const
     
 String ImageDecoderCG::filenameExtension() const
 {
-    return WebCore::preferredExtensionForImageType(uti());
+    return CyberCore::preferredExtensionForImageType(uti());
 }
 
 String ImageDecoderCG::accessibilityDescription() const
@@ -354,7 +354,7 @@ RepetitionCount ImageDecoderCG::repetitionCount() const
     if (!animationProperties)
         return RepetitionCountNone;
 
-    CFNumberRef num = (CFNumberRef)CFDictionaryGetValue(animationProperties, WebCoreCGImagePropertyLoopCount);
+    CFNumberRef num = (CFNumberRef)CFDictionaryGetValue(animationProperties, CyberCoreCGImagePropertyLoopCount);
 
     // No property means loop once.
     if (!num)
@@ -457,17 +457,17 @@ Seconds ImageDecoderCG::frameDurationAtIndex(size_t index) const
 
     if (frameProperties && !animationProperties) {
         properties = adoptCF(CGImageSourceCopyProperties(m_nativeDecoder.get(), imageSourceOptions().get()));
-        animationProperties = animationPropertiesFromProperties(properties.get(), WebCoreCGImagePropertyAVISDictionary, index);
+        animationProperties = animationPropertiesFromProperties(properties.get(), CyberCoreCGImagePropertyAVISDictionary, index);
         if (!animationProperties)
-            animationProperties = animationPropertiesFromProperties(properties.get(), WebCoreCGImagePropertyHEICSDictionary, index);
+            animationProperties = animationPropertiesFromProperties(properties.get(), CyberCoreCGImagePropertyHEICSDictionary, index);
     }
 
     // Use the unclamped frame delay if it exists. Otherwise use the clamped frame delay.
     float value = 0;
     if (animationProperties) {
-        if (CFNumberRef num = (CFNumberRef)CFDictionaryGetValue(animationProperties, WebCoreCGImagePropertyUnclampedDelayTime))
+        if (CFNumberRef num = (CFNumberRef)CFDictionaryGetValue(animationProperties, CyberCoreCGImagePropertyUnclampedDelayTime))
             CFNumberGetValue(num, kCFNumberFloatType, &value);
-        else if (CFNumberRef num = (CFNumberRef)CFDictionaryGetValue(animationProperties, WebCoreCGImagePropertyDelayTime))
+        else if (CFNumberRef num = (CFNumberRef)CFDictionaryGetValue(animationProperties, CyberCoreCGImagePropertyDelayTime))
             CFNumberGetValue(num, kCFNumberFloatType, &value);
     }
 

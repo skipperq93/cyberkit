@@ -27,7 +27,7 @@
 #include <gdk/gdk.h>
 #include <wtf/URL.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 IntSize dragImageSize(DragImageRef image)
 {

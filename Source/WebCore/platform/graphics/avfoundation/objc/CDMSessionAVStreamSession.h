@@ -35,7 +35,7 @@
 OBJC_CLASS AVStreamSession;
 OBJC_CLASS WebCDMSessionAVStreamSessionObserver;
 
-namespace WebCore {
+namespace CyberCore {
 
 class CDMPrivateMediaSourceAVFObjC;
 

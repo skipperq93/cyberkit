@@ -28,10 +28,10 @@
 #include <optional>
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGFontElement;
 
 std::optional<Vector<uint8_t>> convertSVGToOTFFont(const SVGFontElement&);
 
-} // namespace WebCore
+} // namespace CyberCore

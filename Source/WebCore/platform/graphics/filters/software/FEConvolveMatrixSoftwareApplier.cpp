@@ -32,7 +32,7 @@
 #include <wtf/ParallelJobs.h>
 #include <wtf/WorkQueue.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 /*
    -----------------------------------
@@ -327,4 +327,4 @@ bool FEConvolveMatrixSoftwareApplier::apply(const Filter&, const FilterImageVect
     return true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

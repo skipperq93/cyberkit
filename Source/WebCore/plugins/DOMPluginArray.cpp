@@ -26,7 +26,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/text/AtomString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(DOMPluginArray);
 
@@ -93,4 +93,4 @@ void DOMPluginArray::refresh(bool reloadPages)
     Page::refreshPlugins(reloadPages);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

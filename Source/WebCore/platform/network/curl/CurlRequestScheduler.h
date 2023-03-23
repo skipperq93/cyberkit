@@ -33,7 +33,7 @@
 #include <wtf/Noncopyable.h>
 #include <wtf/Threading.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CurlRequestSchedulerClient;
 
@@ -81,4 +81,4 @@ private:
     long m_maxHostConnections;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

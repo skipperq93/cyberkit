@@ -40,9 +40,9 @@
 #include <wtf/threads/BinarySemaphore.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
-RemoteVideoFrameProxy::Properties RemoteVideoFrameProxy::properties(WebKit::RemoteVideoFrameReference&& reference, const WebCore::VideoFrame& videoFrame)
+RemoteVideoFrameProxy::Properties RemoteVideoFrameProxy::properties(CyberKit::RemoteVideoFrameReference&& reference, const CyberCore::VideoFrame& videoFrame)
 {
     return {
         WTFMove(reference),
@@ -124,7 +124,7 @@ CVPixelBufferRef RemoteVideoFrameProxy::pixelBuffer() const
     }
     // FIXME: Some code paths do not like empty pixel buffers.
     if (!m_pixelBuffer)
-        m_pixelBuffer = WebCore::createBlackPixelBuffer(static_cast<size_t>(m_size.width()), static_cast<size_t>(m_size.height()));
+        m_pixelBuffer = CyberCore::createBlackPixelBuffer(static_cast<size_t>(m_size.width()), static_cast<size_t>(m_size.height()));
     return m_pixelBuffer.get();
 }
 #endif

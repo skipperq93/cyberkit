@@ -28,13 +28,13 @@
 
 #if USE(CURL)
 
-namespace WebCore {
+namespace CyberCore {
 
 const CertificateInfo& ProtectionSpace::certificateInfo() const
 {
     return m_certificateInfo;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

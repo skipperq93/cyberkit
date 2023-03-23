@@ -34,16 +34,16 @@
 
 namespace WebKit {
 
-static HashMap<WebCore::SharedWorkerIdentifier, WebSharedWorker*>& allWorkers()
+static HashMap<CyberCore::SharedWorkerIdentifier, WebSharedWorker*>& allWorkers()
 {
     ASSERT(RunLoop::isMain());
-    static NeverDestroyed<HashMap<WebCore::SharedWorkerIdentifier, WebSharedWorker*>> allWorkers;
+    static NeverDestroyed<HashMap<CyberCore::SharedWorkerIdentifier, WebSharedWorker*>> allWorkers;
     return allWorkers;
 }
 
-WebSharedWorker::WebSharedWorker(WebSharedWorkerServer& server, const WebCore::SharedWorkerKey& key, const WebCore::WorkerOptions& workerOptions)
+WebSharedWorker::WebSharedWorker(WebSharedWorkerServer& server, const CyberCore::SharedWorkerKey& key, const CyberCore::WorkerOptions& workerOptions)
     : m_server(server)
-    , m_identifier(WebCore::SharedWorkerIdentifier::generate())
+    , m_identifier(CyberCore::SharedWorkerIdentifier::generate())
     , m_key(key)
     , m_workerOptions(workerOptions)
 {
@@ -62,17 +62,17 @@ WebSharedWorker::~WebSharedWorker()
     allWorkers().remove(m_identifier);
 }
 
-WebSharedWorker* WebSharedWorker::fromIdentifier(WebCore::SharedWorkerIdentifier identifier)
+WebSharedWorker* WebSharedWorker::fromIdentifier(CyberCore::SharedWorkerIdentifier identifier)
 {
     return allWorkers().get(identifier);
 }
 
-WebCore::RegistrableDomain WebSharedWorker::registrableDomain() const
+CyberCore::RegistrableDomain WebSharedWorker::registrableDomain() const
 {
-    return WebCore::RegistrableDomain { url() };
+    return CyberCore::RegistrableDomain { url() };
 }
 
-void WebSharedWorker::setFetchResult(WebCore::WorkerFetchResult&& fetchResult)
+void WebSharedWorker::setFetchResult(CyberCore::WorkerFetchResult&& fetchResult)
 {
     m_fetchResult = WTFMove(fetchResult);
 }
@@ -92,7 +92,7 @@ void WebSharedWorker::launch(WebSharedWorkerServerToContextConnection& connectio
         connection.suspendSharedWorker(identifier());
 }
 
-void WebSharedWorker::addSharedWorkerObject(WebCore::SharedWorkerObjectIdentifier sharedWorkerObjectIdentifier, const WebCore::TransferredMessagePort& port)
+void WebSharedWorker::addSharedWorkerObject(CyberCore::SharedWorkerObjectIdentifier sharedWorkerObjectIdentifier, const CyberCore::TransferredMessagePort& port)
 {
     ASSERT(!m_sharedWorkerObjects.contains({ sharedWorkerObjectIdentifier, { false, port } }));
     m_sharedWorkerObjects.add({ sharedWorkerObjectIdentifier, { false, port } });
@@ -102,7 +102,7 @@ void WebSharedWorker::addSharedWorkerObject(WebCore::SharedWorkerObjectIdentifie
     resumeIfNeeded();
 }
 
-void WebSharedWorker::removeSharedWorkerObject(WebCore::SharedWorkerObjectIdentifier sharedWorkerObjectIdentifier)
+void WebSharedWorker::removeSharedWorkerObject(CyberCore::SharedWorkerObjectIdentifier sharedWorkerObjectIdentifier)
 {
     m_sharedWorkerObjects.remove({ sharedWorkerObjectIdentifier, { } });
     if (auto* connection = contextConnection())
@@ -111,7 +111,7 @@ void WebSharedWorker::removeSharedWorkerObject(WebCore::SharedWorkerObjectIdenti
     suspendIfNeeded();
 }
 
-void WebSharedWorker::suspend(WebCore::SharedWorkerObjectIdentifier sharedWorkerObjectIdentifier)
+void WebSharedWorker::suspend(CyberCore::SharedWorkerObjectIdentifier sharedWorkerObjectIdentifier)
 {
     auto iterator = m_sharedWorkerObjects.find({ sharedWorkerObjectIdentifier, { } });
     if (iterator == m_sharedWorkerObjects.end())
@@ -137,7 +137,7 @@ void WebSharedWorker::suspendIfNeeded()
         connection->suspendSharedWorker(identifier());
 }
 
-void WebSharedWorker::resume(WebCore::SharedWorkerObjectIdentifier sharedWorkerObjectIdentifier)
+void WebSharedWorker::resume(CyberCore::SharedWorkerObjectIdentifier sharedWorkerObjectIdentifier)
 {
     auto iterator = m_sharedWorkerObjects.find({ sharedWorkerObjectIdentifier, { } });
     if (iterator == m_sharedWorkerObjects.end())
@@ -157,13 +157,13 @@ void WebSharedWorker::resumeIfNeeded()
         connection->resumeSharedWorker(identifier());
 }
 
-void WebSharedWorker::forEachSharedWorkerObject(const Function<void(WebCore::SharedWorkerObjectIdentifier, const WebCore::TransferredMessagePort&)>& apply) const
+void WebSharedWorker::forEachSharedWorkerObject(const Function<void(CyberCore::SharedWorkerObjectIdentifier, const CyberCore::TransferredMessagePort&)>& apply) const
 {
     for (auto& object : m_sharedWorkerObjects)
         apply(object.identifier, object.state.port);
 }
 
-std::optional<WebCore::ProcessIdentifier> WebSharedWorker::firstSharedWorkerObjectProcess() const
+std::optional<CyberCore::ProcessIdentifier> WebSharedWorker::firstSharedWorkerObjectProcess() const
 {
     if (m_sharedWorkerObjects.isEmpty())
         return std::nullopt;

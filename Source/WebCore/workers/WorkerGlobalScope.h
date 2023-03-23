@@ -46,7 +46,7 @@
 #include <wtf/URLHash.h>
 #include <wtf/WeakHashSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSFontSelector;
 class CSSValuePool;
@@ -251,8 +251,8 @@ private:
     RefPtr<WorkerFileSystemStorageConnection> m_fileSystemStorageConnection;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::WorkerGlobalScope)
-    static bool isType(const WebCore::ScriptExecutionContext& context) { return context.isWorkerGlobalScope(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::WorkerGlobalScope)
+    static bool isType(const CyberCore::ScriptExecutionContext& context) { return context.isWorkerGlobalScope(); }
 SPECIALIZE_TYPE_TRAITS_END()

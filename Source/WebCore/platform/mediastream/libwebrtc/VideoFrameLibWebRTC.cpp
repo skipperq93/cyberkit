@@ -31,7 +31,7 @@
 #include <pal/cf/CoreMediaSoftLink.h>
 #include "CoreVideoSoftLink.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static PlatformVideoColorSpace defaultVPXColorSpace()
 {

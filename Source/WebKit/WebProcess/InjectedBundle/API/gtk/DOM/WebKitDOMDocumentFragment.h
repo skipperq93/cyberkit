@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -21,28 +21,28 @@
 #error "Only <webkitdom/webkitdom.h> can be included directly."
 #endif
 
-#ifndef WebKitDOMDocumentFragment_h
-#define WebKitDOMDocumentFragment_h
+#ifndef CyberKitDOMDocumentFragment_h
+#define CyberKitDOMDocumentFragment_h
 
 #include <glib-object.h>
-#include <webkitdom/WebKitDOMNode.h>
+#include <webkitdom/CyberKitDOMNode.h>
 #include <webkitdom/webkitdomdefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_DOM_TYPE_DOCUMENT_FRAGMENT            (webkit_dom_document_fragment_get_type())
-#define WEBKIT_DOM_DOCUMENT_FRAGMENT(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_DOCUMENT_FRAGMENT, WebKitDOMDocumentFragment))
-#define WEBKIT_DOM_DOCUMENT_FRAGMENT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_DOCUMENT_FRAGMENT, WebKitDOMDocumentFragmentClass)
+#define WEBKIT_DOM_DOCUMENT_FRAGMENT(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_DOCUMENT_FRAGMENT, CyberKitDOMDocumentFragment))
+#define WEBKIT_DOM_DOCUMENT_FRAGMENT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_DOCUMENT_FRAGMENT, CyberKitDOMDocumentFragmentClass)
 #define WEBKIT_DOM_IS_DOCUMENT_FRAGMENT(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_DOM_TYPE_DOCUMENT_FRAGMENT))
 #define WEBKIT_DOM_IS_DOCUMENT_FRAGMENT_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_DOM_TYPE_DOCUMENT_FRAGMENT))
-#define WEBKIT_DOM_DOCUMENT_FRAGMENT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_DOCUMENT_FRAGMENT, WebKitDOMDocumentFragmentClass))
+#define WEBKIT_DOM_DOCUMENT_FRAGMENT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_DOCUMENT_FRAGMENT, CyberKitDOMDocumentFragmentClass))
 
-struct _WebKitDOMDocumentFragment {
-    WebKitDOMNode parent_instance;
+struct _CyberKitDOMDocumentFragment {
+    CyberKitDOMNode parent_instance;
 };
 
-struct _WebKitDOMDocumentFragmentClass {
-    WebKitDOMNodeClass parent_class;
+struct _CyberKitDOMDocumentFragmentClass {
+    CyberKitDOMNodeClass parent_class;
 };
 
 WEBKIT_DEPRECATED GType
@@ -50,90 +50,90 @@ webkit_dom_document_fragment_get_type(void);
 
 /**
  * webkit_dom_document_fragment_get_element_by_id:
- * @self: A #WebKitDOMDocumentFragment
+ * @self: A #CyberKitDOMDocumentFragment
  * @elementId: A #gchar
  *
- * Returns: (transfer none): A #WebKitDOMElement
+ * Returns: (transfer none): A #CyberKitDOMElement
  *
  * Since: 2.16
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
  */
-WEBKIT_DEPRECATED WebKitDOMElement*
-webkit_dom_document_fragment_get_element_by_id(WebKitDOMDocumentFragment* self, const gchar* elementId);
+WEBKIT_DEPRECATED CyberKitDOMElement*
+webkit_dom_document_fragment_get_element_by_id(CyberKitDOMDocumentFragment* self, const gchar* elementId);
 
 /**
  * webkit_dom_document_fragment_query_selector:
- * @self: A #WebKitDOMDocumentFragment
+ * @self: A #CyberKitDOMDocumentFragment
  * @selectors: A #gchar
  * @error: #GError
  *
- * Returns: (transfer none): A #WebKitDOMElement
+ * Returns: (transfer none): A #CyberKitDOMElement
  *
  * Since: 2.16
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
  */
-WEBKIT_DEPRECATED WebKitDOMElement*
-webkit_dom_document_fragment_query_selector(WebKitDOMDocumentFragment* self, const gchar* selectors, GError** error);
+WEBKIT_DEPRECATED CyberKitDOMElement*
+webkit_dom_document_fragment_query_selector(CyberKitDOMDocumentFragment* self, const gchar* selectors, GError** error);
 
 /**
  * webkit_dom_document_fragment_query_selector_all:
- * @self: A #WebKitDOMDocumentFragment
+ * @self: A #CyberKitDOMDocumentFragment
  * @selectors: A #gchar
  * @error: #GError
  *
- * Returns: (transfer full): A #WebKitDOMNodeList
+ * Returns: (transfer full): A #CyberKitDOMNodeList
  *
  * Since: 2.16
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
  */
-WEBKIT_DEPRECATED WebKitDOMNodeList*
-webkit_dom_document_fragment_query_selector_all(WebKitDOMDocumentFragment* self, const gchar* selectors, GError** error);
+WEBKIT_DEPRECATED CyberKitDOMNodeList*
+webkit_dom_document_fragment_query_selector_all(CyberKitDOMDocumentFragment* self, const gchar* selectors, GError** error);
 
 /**
  * webkit_dom_document_fragment_get_children:
- * @self: A #WebKitDOMDocumentFragment
+ * @self: A #CyberKitDOMDocumentFragment
  *
- * Returns: (transfer full): A #WebKitDOMHTMLCollection
+ * Returns: (transfer full): A #CyberKitDOMHTMLCollection
  *
  * Since: 2.16
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
  */
-WEBKIT_DEPRECATED WebKitDOMHTMLCollection*
-webkit_dom_document_fragment_get_children(WebKitDOMDocumentFragment* self);
+WEBKIT_DEPRECATED CyberKitDOMHTMLCollection*
+webkit_dom_document_fragment_get_children(CyberKitDOMDocumentFragment* self);
 
 /**
  * webkit_dom_document_fragment_get_first_element_child:
- * @self: A #WebKitDOMDocumentFragment
+ * @self: A #CyberKitDOMDocumentFragment
  *
- * Returns: (transfer none): A #WebKitDOMElement
+ * Returns: (transfer none): A #CyberKitDOMElement
  *
  * Since: 2.16
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
  */
-WEBKIT_DEPRECATED WebKitDOMElement*
-webkit_dom_document_fragment_get_first_element_child(WebKitDOMDocumentFragment* self);
+WEBKIT_DEPRECATED CyberKitDOMElement*
+webkit_dom_document_fragment_get_first_element_child(CyberKitDOMDocumentFragment* self);
 
 /**
  * webkit_dom_document_fragment_get_last_element_child:
- * @self: A #WebKitDOMDocumentFragment
+ * @self: A #CyberKitDOMDocumentFragment
  *
- * Returns: (transfer none): A #WebKitDOMElement
+ * Returns: (transfer none): A #CyberKitDOMElement
  *
  * Since: 2.16
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
  */
-WEBKIT_DEPRECATED WebKitDOMElement*
-webkit_dom_document_fragment_get_last_element_child(WebKitDOMDocumentFragment* self);
+WEBKIT_DEPRECATED CyberKitDOMElement*
+webkit_dom_document_fragment_get_last_element_child(CyberKitDOMDocumentFragment* self);
 
 /**
  * webkit_dom_document_fragment_get_child_element_count:
- * @self: A #WebKitDOMDocumentFragment
+ * @self: A #CyberKitDOMDocumentFragment
  *
  * Returns: A #gulong
  *
@@ -142,8 +142,8 @@ webkit_dom_document_fragment_get_last_element_child(WebKitDOMDocumentFragment* s
  * Deprecated: 2.22: Use JavaScriptCore API instead
  */
 WEBKIT_DEPRECATED gulong
-webkit_dom_document_fragment_get_child_element_count(WebKitDOMDocumentFragment* self);
+webkit_dom_document_fragment_get_child_element_count(CyberKitDOMDocumentFragment* self);
 
 G_END_DECLS
 
-#endif /* WebKitDOMDocumentFragment_h */
+#endif /* CyberKitDOMDocumentFragment_h */

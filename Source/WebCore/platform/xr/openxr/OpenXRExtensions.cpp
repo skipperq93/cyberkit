@@ -23,7 +23,7 @@
 
 #if ENABLE(WEBXR) && USE(OPENXR)
 
-using namespace WebCore;
+using namespace CyberCore;
 
 namespace PlatformXR {
 

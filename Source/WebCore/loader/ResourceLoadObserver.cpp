@@ -27,7 +27,7 @@
 #include "ResourceLoadObserver.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static ResourceLoadObserver*& sharedObserver()
 {
@@ -54,4 +54,4 @@ ResourceLoadObserver* ResourceLoadObserver::sharedIfExists()
     return sharedObserver();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

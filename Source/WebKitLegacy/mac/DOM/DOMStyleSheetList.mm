@@ -35,17 +35,17 @@
 #import <CyberCore/StyleSheet.h>
 #import <CyberCore/StyleSheetList.h>
 #import <CyberCore/ThreadCheck.h>
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 #import <CyberCore/WebScriptObjectPrivate.h>
 #import <wtf/GetPtr.h>
 
-#define IMPL reinterpret_cast<WebCore::StyleSheetList*>(_internal)
+#define IMPL reinterpret_cast<CyberCore::StyleSheetList*>(_internal)
 
 @implementation DOMStyleSheetList
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainThread([DOMStyleSheetList class], self))
+    if (CyberCoreObjCScheduleDeallocateOnMainThread([DOMStyleSheetList class], self))
         return;
 
     if (_internal)
@@ -55,21 +55,21 @@
 
 - (unsigned)length
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->length();
 }
 
 - (DOMStyleSheet *)item:(unsigned)index
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->item(index)));
 }
 
 @end
 
-DOMStyleSheetList *kit(WebCore::StyleSheetList* value)
+DOMStyleSheetList *kit(CyberCore::StyleSheetList* value)
 {
-    WebCoreThreadViolationCheckRoundOne();
+    CyberCoreThreadViolationCheckRoundOne();
     if (!value)
         return nil;
     if (DOMStyleSheetList *wrapper = getDOMWrapper(value))

@@ -50,7 +50,7 @@
 #include <wtf/cf/TypeCastsCF.h>
 #include <wtf/cocoa/RuntimeApplicationChecksCocoa.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static inline bool fontNameIsSystemFont(CFStringRef fontName)
 {

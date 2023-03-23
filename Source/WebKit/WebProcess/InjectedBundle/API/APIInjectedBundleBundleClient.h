@@ -27,7 +27,7 @@
 
 #include <wtf/Forward.h>
 
-namespace WebKit {
+namespace CyberKit {
 class InjectedBundle;
 class WebPage;
 class WebPageGroupProxy;
@@ -43,10 +43,10 @@ class Client {
 public:
     virtual ~Client() = default;
 
-    virtual void didCreatePage(WebKit::InjectedBundle&, WebKit::WebPage&) { }
-    virtual void willDestroyPage(WebKit::InjectedBundle&, WebKit::WebPage&) { }
-    virtual void didReceiveMessage(WebKit::InjectedBundle&, const WTF::String&, API::Object*) { }
-    virtual void didReceiveMessageToPage(WebKit::InjectedBundle&, WebKit::WebPage&, const WTF::String&, API::Object*) { }
+    virtual void didCreatePage(CyberKit::InjectedBundle&, CyberKit::WebPage&) { }
+    virtual void willDestroyPage(CyberKit::InjectedBundle&, CyberKit::WebPage&) { }
+    virtual void didReceiveMessage(CyberKit::InjectedBundle&, const WTF::String&, API::Object*) { }
+    virtual void didReceiveMessageToPage(CyberKit::InjectedBundle&, CyberKit::WebPage&, const WTF::String&, API::Object*) { }
 };
 
 } // namespace InjectedBundle

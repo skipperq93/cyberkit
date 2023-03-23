@@ -1,6 +1,6 @@
-# This file overrides the behavior of find_package for WebKit projects.
+# This file overrides the behavior of find_package for CyberKit projects.
 #
-# CMake provides Find modules that are used within WebKit. However there are ports
+# CMake provides Find modules that are used within CyberKit. However there are ports
 # where the default behavior does not work and they need to explicitly set their
 # values. There are also targets available in later versions of CMake which are
 # nicer to work with.

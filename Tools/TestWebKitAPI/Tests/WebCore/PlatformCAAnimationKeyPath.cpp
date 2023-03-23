@@ -31,62 +31,62 @@ namespace TestWebKitAPI {
 
 TEST(PlatformCAAnimation, makeKeyPath)
 {
-    auto translate = WebCore::PlatformCAAnimation::makeKeyPath(WebCore::AnimatedProperty::Translate);
+    auto translate = CyberCore::PlatformCAAnimation::makeKeyPath(CyberCore::AnimatedProperty::Translate);
     EXPECT_STREQ(translate.ascii().data(), "transform");
 
-    auto scale = WebCore::PlatformCAAnimation::makeKeyPath(WebCore::AnimatedProperty::Scale);
+    auto scale = CyberCore::PlatformCAAnimation::makeKeyPath(CyberCore::AnimatedProperty::Scale);
     EXPECT_STREQ(scale.ascii().data(), "transform");
 
-    auto rotate = WebCore::PlatformCAAnimation::makeKeyPath(WebCore::AnimatedProperty::Rotate);
+    auto rotate = CyberCore::PlatformCAAnimation::makeKeyPath(CyberCore::AnimatedProperty::Rotate);
     EXPECT_STREQ(rotate.ascii().data(), "transform");
 
-    auto transform = WebCore::PlatformCAAnimation::makeKeyPath(WebCore::AnimatedProperty::Transform);
+    auto transform = CyberCore::PlatformCAAnimation::makeKeyPath(CyberCore::AnimatedProperty::Transform);
     EXPECT_STREQ(transform.ascii().data(), "transform");
 
-    auto opacity = WebCore::PlatformCAAnimation::makeKeyPath(WebCore::AnimatedProperty::Opacity);
+    auto opacity = CyberCore::PlatformCAAnimation::makeKeyPath(CyberCore::AnimatedProperty::Opacity);
     EXPECT_STREQ(opacity.ascii().data(), "opacity");
 
-    auto backgroundColor = WebCore::PlatformCAAnimation::makeKeyPath(WebCore::AnimatedProperty::BackgroundColor);
+    auto backgroundColor = CyberCore::PlatformCAAnimation::makeKeyPath(CyberCore::AnimatedProperty::BackgroundColor);
     EXPECT_STREQ(backgroundColor.ascii().data(), "backgroundColor");
 
-    auto filter = WebCore::PlatformCAAnimation::makeKeyPath(WebCore::AnimatedProperty::Filter, WebCore::FilterOperation::Type::Grayscale, 2);
+    auto filter = CyberCore::PlatformCAAnimation::makeKeyPath(CyberCore::AnimatedProperty::Filter, CyberCore::FilterOperation::Type::Grayscale, 2);
     EXPECT_STREQ(filter.ascii().data(), "filters.filter_2.inputAmount");
 
 #if ENABLE(FILTERS_LEVEL_2)
-    auto backdropFilter = WebCore::PlatformCAAnimation::makeKeyPath(WebCore::AnimatedProperty::WebkitBackdropFilter);
+    auto backdropFilter = CyberCore::PlatformCAAnimation::makeKeyPath(CyberCore::AnimatedProperty::WebkitBackdropFilter);
     EXPECT_STREQ(backdropFilter.ascii().data(), "backdropFilters");
 #endif
 }
 
-static void validateGeneratedKeyPath(WebCore::AnimatedProperty animatedProperty, WebCore::FilterOperation::Type filterOperationType = WebCore::FilterOperation::Type::None, int index = 0)
+static void validateGeneratedKeyPath(CyberCore::AnimatedProperty animatedProperty, CyberCore::FilterOperation::Type filterOperationType = CyberCore::FilterOperation::Type::None, int index = 0)
 {
-    auto keyPath = WebCore::PlatformCAAnimation::makeKeyPath(animatedProperty, filterOperationType, index);
-    EXPECT_TRUE(WebCore::PlatformCAAnimation::isValidKeyPath(keyPath));
+    auto keyPath = CyberCore::PlatformCAAnimation::makeKeyPath(animatedProperty, filterOperationType, index);
+    EXPECT_TRUE(CyberCore::PlatformCAAnimation::isValidKeyPath(keyPath));
 }
 
 TEST(PlatformCAAnimation, isValidKeyPath)
 {
-    validateGeneratedKeyPath(WebCore::AnimatedProperty::Transform);
-    validateGeneratedKeyPath(WebCore::AnimatedProperty::Opacity);
-    validateGeneratedKeyPath(WebCore::AnimatedProperty::BackgroundColor);
-    validateGeneratedKeyPath(WebCore::AnimatedProperty::Filter, WebCore::FilterOperation::Type::Grayscale, 2);
-    validateGeneratedKeyPath(WebCore::AnimatedProperty::Filter, WebCore::FilterOperation::Type::Sepia, 22);
+    validateGeneratedKeyPath(CyberCore::AnimatedProperty::Transform);
+    validateGeneratedKeyPath(CyberCore::AnimatedProperty::Opacity);
+    validateGeneratedKeyPath(CyberCore::AnimatedProperty::BackgroundColor);
+    validateGeneratedKeyPath(CyberCore::AnimatedProperty::Filter, CyberCore::FilterOperation::Type::Grayscale, 2);
+    validateGeneratedKeyPath(CyberCore::AnimatedProperty::Filter, CyberCore::FilterOperation::Type::Sepia, 22);
 #if ENABLE(FILTERS_LEVEL_2)
-    validateGeneratedKeyPath(WebCore::AnimatedProperty::WebkitBackdropFilter);
+    validateGeneratedKeyPath(CyberCore::AnimatedProperty::WebkitBackdropFilter);
 #endif
 
-    EXPECT_FALSE(WebCore::PlatformCAAnimation::isValidKeyPath("filters.filter_"_s));
-    EXPECT_FALSE(WebCore::PlatformCAAnimation::isValidKeyPath("filters.filter_0"_s));
-    EXPECT_FALSE(WebCore::PlatformCAAnimation::isValidKeyPath("filters.filter_10"_s));
-    EXPECT_FALSE(WebCore::PlatformCAAnimation::isValidKeyPath("filters.filter_0.inputAmount."_s));
-    EXPECT_FALSE(WebCore::PlatformCAAnimation::isValidKeyPath("filters.filter_0.inputAmounts"_s));
-    EXPECT_FALSE(WebCore::PlatformCAAnimation::isValidKeyPath("filters.filter_-10.inputAmount"_s));
+    EXPECT_FALSE(CyberCore::PlatformCAAnimation::isValidKeyPath("filters.filter_"_s));
+    EXPECT_FALSE(CyberCore::PlatformCAAnimation::isValidKeyPath("filters.filter_0"_s));
+    EXPECT_FALSE(CyberCore::PlatformCAAnimation::isValidKeyPath("filters.filter_10"_s));
+    EXPECT_FALSE(CyberCore::PlatformCAAnimation::isValidKeyPath("filters.filter_0.inputAmount."_s));
+    EXPECT_FALSE(CyberCore::PlatformCAAnimation::isValidKeyPath("filters.filter_0.inputAmounts"_s));
+    EXPECT_FALSE(CyberCore::PlatformCAAnimation::isValidKeyPath("filters.filter_-10.inputAmount"_s));
 
-    EXPECT_TRUE(WebCore::PlatformCAAnimation::isValidKeyPath(emptyString(), WebCore::PlatformCAAnimation::AnimationType::Group));
-    EXPECT_FALSE(WebCore::PlatformCAAnimation::isValidKeyPath(WebCore::PlatformCAAnimation::makeKeyPath(WebCore::AnimatedProperty::Translate), WebCore::PlatformCAAnimation::AnimationType::Group));
-    EXPECT_FALSE(WebCore::PlatformCAAnimation::isValidKeyPath(emptyString()));
+    EXPECT_TRUE(CyberCore::PlatformCAAnimation::isValidKeyPath(emptyString(), CyberCore::PlatformCAAnimation::AnimationType::Group));
+    EXPECT_FALSE(CyberCore::PlatformCAAnimation::isValidKeyPath(CyberCore::PlatformCAAnimation::makeKeyPath(CyberCore::AnimatedProperty::Translate), CyberCore::PlatformCAAnimation::AnimationType::Group));
+    EXPECT_FALSE(CyberCore::PlatformCAAnimation::isValidKeyPath(emptyString()));
 
-    EXPECT_FALSE(WebCore::PlatformCAAnimation::isValidKeyPath("dealloc"_s));
+    EXPECT_FALSE(CyberCore::PlatformCAAnimation::isValidKeyPath("dealloc"_s));
 }
 
 }

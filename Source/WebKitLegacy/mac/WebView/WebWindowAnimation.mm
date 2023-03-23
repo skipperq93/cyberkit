@@ -57,7 +57,7 @@ static CGFloat squaredDistance(NSPoint point1, NSPoint point2)
     return deltaX * deltaX + deltaY * deltaY;
 }
 
-using WebCore::narrowPrecisionToFloat;
+using CyberCore::narrowPrecisionToFloat;
 
 @implementation WebWindowScaleAnimation
 

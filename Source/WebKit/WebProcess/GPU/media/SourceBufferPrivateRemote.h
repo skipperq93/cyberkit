@@ -47,18 +47,18 @@ class Connection;
 class Decoder;
 }
 
-namespace WebCore {
+namespace CyberCore {
 class PlatformTimeRanges;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 struct InitializationSegmentInfo;
 class MediaPlayerPrivateRemote;
 class MediaSourcePrivateRemote;
 
 class SourceBufferPrivateRemote final
-    : public WebCore::SourceBufferPrivate
+    : public CyberCore::SourceBufferPrivate
     , public IPC::MessageReceiver
 {
 public:
@@ -72,17 +72,17 @@ private:
 
     // SourceBufferPrivate overrides
     void setActive(bool) final;
-    void append(Ref<WebCore::SharedBuffer>&&) final;
+    void append(Ref<CyberCore::SharedBuffer>&&) final;
     void abort() final;
     void resetParserState() final;
     void removedFromMediaSource() final;
-    WebCore::MediaPlayer::ReadyState readyState() const final;
-    void setReadyState(WebCore::MediaPlayer::ReadyState) final;
-    bool canSwitchToType(const WebCore::ContentType&) final;
+    CyberCore::MediaPlayer::ReadyState readyState() const final;
+    void setReadyState(CyberCore::MediaPlayer::ReadyState) final;
+    bool canSwitchToType(const CyberCore::ContentType&) final;
     void setMediaSourceEnded(bool) final;
-    void setMode(WebCore::SourceBufferAppendMode) final;
+    void setMode(CyberCore::SourceBufferAppendMode) final;
     void reenqueueMediaIfNeeded(const MediaTime& currentMediaTime) final;
-    void addTrackBuffer(const AtomString& trackId, RefPtr<WebCore::MediaDescription>&&) final;
+    void addTrackBuffer(const AtomString& trackId, RefPtr<CyberCore::MediaDescription>&&) final;
     void resetTrackBuffers() final;
     void clearTrackBuffers() final;
     void setAllTrackBuffersNeedRandomAccess() final;
@@ -110,10 +110,10 @@ private:
     void enqueuedSamplesForTrackID(const AtomString&, CompletionHandler<void(Vector<String>&&)>&&) final;
 
     void didReceiveMessage(IPC::Connection&, IPC::Decoder&) final;
-    void sourceBufferPrivateDidReceiveInitializationSegment(InitializationSegmentInfo&&, CompletionHandler<void(WebCore::SourceBufferPrivateClient::ReceiveResult)>&&);
+    void sourceBufferPrivateDidReceiveInitializationSegment(InitializationSegmentInfo&&, CompletionHandler<void(CyberCore::SourceBufferPrivateClient::ReceiveResult)>&&);
     void sourceBufferPrivateStreamEndedWithDecodeError();
     void sourceBufferPrivateAppendError(bool decodeError);
-    void sourceBufferPrivateAppendComplete(WebCore::SourceBufferPrivateClient::AppendResult, const WebCore::PlatformTimeRanges& buffered, uint64_t totalTrackBufferSizeInBytes, const MediaTime& timestampOffset);
+    void sourceBufferPrivateAppendComplete(CyberCore::SourceBufferPrivateClient::AppendResult, const CyberCore::PlatformTimeRanges& buffered, uint64_t totalTrackBufferSizeInBytes, const MediaTime& timestampOffset);
     void sourceBufferPrivateHighestPresentationTimestampChanged(const MediaTime&);
     void sourceBufferPrivateDurationChanged(const MediaTime&);
     void sourceBufferPrivateDidParseSample(double sampleDuration);
@@ -146,6 +146,6 @@ private:
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS) && ENABLE(MEDIA_SOURCE)

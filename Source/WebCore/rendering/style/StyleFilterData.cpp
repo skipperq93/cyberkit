@@ -26,7 +26,7 @@
 #include "config.h"
 #include "StyleFilterData.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 StyleFilterData::StyleFilterData()
 {
@@ -48,4 +48,4 @@ bool StyleFilterData::operator==(const StyleFilterData& other) const
     return operations == other.operations;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

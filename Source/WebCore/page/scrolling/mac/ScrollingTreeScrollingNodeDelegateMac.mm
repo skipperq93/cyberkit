@@ -38,7 +38,7 @@
 #import <pal/spi/mac/NSScrollerImpSPI.h>
 #import <wtf/BlockObjCExceptions.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 ScrollingTreeScrollingNodeDelegateMac::ScrollingTreeScrollingNodeDelegateMac(ScrollingTreeScrollingNode& scrollingNode)
     : ThreadedScrollingTreeScrollingNodeDelegate(scrollingNode)
@@ -331,6 +331,6 @@ bool ScrollingTreeScrollingNodeDelegateMac::handleMouseEventForScrollbars(const 
     return m_scrollerPair.handleMouseEvent(mouseEvent);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(MAC) && ENABLE(ASYNC_SCROLLING)

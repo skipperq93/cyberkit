@@ -29,7 +29,7 @@
 
 #import "ControlMac.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class MenuListPart;
 
@@ -50,6 +50,6 @@ private:
     RetainPtr<NSPopUpButtonCell> m_popUpButtonCell;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(MAC)

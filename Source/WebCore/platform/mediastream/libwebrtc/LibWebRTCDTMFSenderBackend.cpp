@@ -30,7 +30,7 @@
 
 #include <wtf/MainThread.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static inline String toWTFString(const std::string& value)
 {
@@ -90,6 +90,6 @@ void LibWebRTCDTMFSenderBackend::onTonePlayed(Function<void()>&& onTonePlayed)
     m_onTonePlayed = WTFMove(onTonePlayed);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(LIBWEBRTC)

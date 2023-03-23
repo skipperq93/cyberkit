@@ -51,7 +51,7 @@
 #include <wtf/text/WTFString.h>
 
 #if PLATFORM(IOS_FAMILY)
-#include "WebCoreThreadInternal.h"
+#include "CyberCoreThreadInternal.h"
 #endif
 
 extern "C" const CFStringRef kCFStreamPropertySourceApplication;
@@ -59,7 +59,7 @@ extern "C" const CFStringRef _kCFStreamSocketSetNoDelay;
 
 WTF_DECLARE_CF_TYPE_TRAIT(CFHTTPMessage);
 
-namespace WebCore {
+namespace CyberCore {
 
 static inline CFRunLoopRef callbacksRunLoop()
 {
@@ -729,4 +729,4 @@ unsigned short SocketStreamHandleImpl::port() const
     return 80;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

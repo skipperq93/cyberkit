@@ -37,7 +37,7 @@
 #include <wtf/MainThread.h>
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // Keeps track of loaders on a per-sample-rate basis.
 static HashMap<double, HRTFDatabaseLoader*>& loaderMap()
@@ -118,6 +118,6 @@ void HRTFDatabaseLoader::waitForLoaderThreadCompletion()
     m_databaseLoaderThread = nullptr;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

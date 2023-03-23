@@ -27,10 +27,10 @@
 
 #include <wtf/ObjectIdentifier.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 enum RetrieveRecordResponseBodyCallbackIdentifierType { };
 using RetrieveRecordResponseBodyCallbackIdentifier = ObjectIdentifier<RetrieveRecordResponseBodyCallbackIdentifierType>;
 
-} // namespace WebKit
+} // namespace CyberKit
 

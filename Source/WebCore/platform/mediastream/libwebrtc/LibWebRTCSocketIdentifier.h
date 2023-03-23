@@ -27,9 +27,9 @@
 
 #include <wtf/ObjectIdentifier.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum LibWebRTCSocketIdentifierType { };
 using LibWebRTCSocketIdentifier = ObjectIdentifier<LibWebRTCSocketIdentifierType>;
 
-} // namespace WebCore
+} // namespace CyberCore

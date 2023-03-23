@@ -28,7 +28,7 @@
 
 #import "WKContentWorldInternal.h"
 #import "_WKUserContentWorldInternal.h"
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 #import <wtf/cocoa/VectorCocoa.h>
 
 @implementation WKUserScript
@@ -43,14 +43,14 @@
     if (!(self = [super init]))
         return nil;
 
-    API::Object::constructInWrapper<API::UserScript>(self, WebCore::UserScript { source, API::UserScript::generateUniqueURL(), { }, { }, API::toWebCoreUserScriptInjectionTime(injectionTime), forMainFrameOnly ? WebCore::UserContentInjectedFrames::InjectInTopFrameOnly : WebCore::UserContentInjectedFrames::InjectInAllFrames, WebCore::WaitForNotificationBeforeInjecting::No }, *contentWorld->_contentWorld);
+    API::Object::constructInWrapper<API::UserScript>(self, CyberCore::UserScript { source, API::UserScript::generateUniqueURL(), { }, { }, API::toCyberCoreUserScriptInjectionTime(injectionTime), forMainFrameOnly ? CyberCore::UserContentInjectedFrames::InjectInTopFrameOnly : CyberCore::UserContentInjectedFrames::InjectInAllFrames, CyberCore::WaitForNotificationBeforeInjecting::No }, *contentWorld->_contentWorld);
 
     return self;
 }
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainRunLoop(WKUserScript.class, self))
+    if (CyberCoreObjCScheduleDeallocateOnMainRunLoop(WKUserScript.class, self))
         return;
 
     _userScript->~UserScript();
@@ -70,7 +70,7 @@
 
 - (BOOL)isForMainFrameOnly
 {
-    return _userScript->userScript().injectedFrames() == WebCore::UserContentInjectedFrames::InjectInTopFrameOnly;
+    return _userScript->userScript().injectedFrames() == CyberCore::UserContentInjectedFrames::InjectInTopFrameOnly;
 }
 
 - (id)copyWithZone:(NSZone *)zone
@@ -101,7 +101,7 @@ ALLOW_DEPRECATED_DECLARATIONS_END
     if (!(self = [super init]))
         return nil;
 
-    API::Object::constructInWrapper<API::UserScript>(self, WebCore::UserScript { source, associatedURL, makeVector<String>(includeMatchPatternStrings), makeVector<String>(excludeMatchPatternStrings), API::toWebCoreUserScriptInjectionTime(injectionTime), forMainFrameOnly ? WebCore::UserContentInjectedFrames::InjectInTopFrameOnly : WebCore::UserContentInjectedFrames::InjectInAllFrames, deferRunningUntilNotification ? WebCore::WaitForNotificationBeforeInjecting::Yes : WebCore::WaitForNotificationBeforeInjecting::No }, contentWorld ? *contentWorld->_contentWorld : API::ContentWorld::pageContentWorld());
+    API::Object::constructInWrapper<API::UserScript>(self, CyberCore::UserScript { source, associatedURL, makeVector<String>(includeMatchPatternStrings), makeVector<String>(excludeMatchPatternStrings), API::toCyberCoreUserScriptInjectionTime(injectionTime), forMainFrameOnly ? CyberCore::UserContentInjectedFrames::InjectInTopFrameOnly : CyberCore::UserContentInjectedFrames::InjectInAllFrames, deferRunningUntilNotification ? CyberCore::WaitForNotificationBeforeInjecting::Yes : CyberCore::WaitForNotificationBeforeInjecting::No }, contentWorld ? *contentWorld->_contentWorld : API::ContentWorld::pageContentWorld());
 
     return self;
 }

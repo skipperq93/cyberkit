@@ -39,7 +39,7 @@ public:
     static std::optional<SharedFileHandle> create(FileSystem::PlatformFileHandle&&);
 
     SharedFileHandle() = default;
-    WebCore::FileHandle release() { return std::exchange(m_handle, { }); }
+    CyberCore::FileHandle release() { return std::exchange(m_handle, { }); }
 
     void encode(Encoder&) const;
     static std::optional<SharedFileHandle> decode(Decoder&);
@@ -50,7 +50,7 @@ private:
     {
     }
 
-    WebCore::FileHandle m_handle;
+    CyberCore::FileHandle m_handle;
 };
 
 } // namespace IPC

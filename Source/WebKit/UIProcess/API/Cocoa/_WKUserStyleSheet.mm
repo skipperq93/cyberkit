@@ -34,7 +34,7 @@
 #import "WebKit2Initialize.h"
 #import "WebPageProxy.h"
 #import "_WKUserContentWorldInternal.h"
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 #import <wtf/cocoa/VectorCocoa.h>
 
 @implementation _WKUserStyleSheet
@@ -47,7 +47,7 @@
     // FIXME: In the API test, we can use generateUniqueURL below before the API::Object constructor has done this... where should this really be?
     WebKit::InitializeWebKit2();
 
-    API::Object::constructInWrapper<API::UserStyleSheet>(self, WebCore::UserStyleSheet { source, API::UserStyleSheet::generateUniqueURL(), { }, { }, forMainFrameOnly ? WebCore::UserContentInjectedFrames::InjectInTopFrameOnly : WebCore::UserContentInjectedFrames::InjectInAllFrames, WebCore::UserStyleUserLevel }, API::ContentWorld::pageContentWorld());
+    API::Object::constructInWrapper<API::UserStyleSheet>(self, CyberCore::UserStyleSheet { source, API::UserStyleSheet::generateUniqueURL(), { }, { }, forMainFrameOnly ? CyberCore::UserContentInjectedFrames::InjectInTopFrameOnly : CyberCore::UserContentInjectedFrames::InjectInAllFrames, CyberCore::UserStyleUserLevel }, API::ContentWorld::pageContentWorld());
 
     return self;
 }
@@ -57,14 +57,14 @@
 
     WebKit::InitializeWebKit2();
 
-    API::Object::constructInWrapper<API::UserStyleSheet>(self, WebCore::UserStyleSheet { source, baseURL, makeVector<String>(includeMatchPatternStrings), makeVector<String>(excludeMatchPatternStrings), forMainFrameOnly ? WebCore::UserContentInjectedFrames::InjectInTopFrameOnly : WebCore::UserContentInjectedFrames::InjectInAllFrames, API::toWebCoreUserStyleLevel(level), webView ? std::optional<WebCore::PageIdentifier>([webView _page]->webPageID()) : std::nullopt }, contentWorld ? *contentWorld->_contentWorld : API::ContentWorld::pageContentWorld());
+    API::Object::constructInWrapper<API::UserStyleSheet>(self, CyberCore::UserStyleSheet { source, baseURL, makeVector<String>(includeMatchPatternStrings), makeVector<String>(excludeMatchPatternStrings), forMainFrameOnly ? CyberCore::UserContentInjectedFrames::InjectInTopFrameOnly : CyberCore::UserContentInjectedFrames::InjectInAllFrames, API::toCyberCoreUserStyleLevel(level), webView ? std::optional<CyberCore::PageIdentifier>([webView _page]->webPageID()) : std::nullopt }, contentWorld ? *contentWorld->_contentWorld : API::ContentWorld::pageContentWorld());
 
     return self;
 }
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainRunLoop(_WKUserStyleSheet.class, self))
+    if (CyberCoreObjCScheduleDeallocateOnMainRunLoop(_WKUserStyleSheet.class, self))
         return;
 
     _userStyleSheet->~UserStyleSheet();
@@ -84,7 +84,7 @@
 
 - (BOOL)isForMainFrameOnly
 {
-    return _userStyleSheet->userStyleSheet().injectedFrames() == WebCore::UserContentInjectedFrames::InjectInTopFrameOnly;
+    return _userStyleSheet->userStyleSheet().injectedFrames() == CyberCore::UserContentInjectedFrames::InjectInTopFrameOnly;
 }
 
 - (id)copyWithZone:(NSZone *)zone

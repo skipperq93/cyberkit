@@ -26,7 +26,7 @@
 
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class LegacyInlineIterator;
 class RenderBoxModelObject;
@@ -64,4 +64,4 @@ private:
     Vector<std::reference_wrapper<RenderBoxModelObject>, 4> m_boxes;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

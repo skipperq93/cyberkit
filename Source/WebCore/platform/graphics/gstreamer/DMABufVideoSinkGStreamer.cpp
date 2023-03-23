@@ -27,7 +27,7 @@
 #include <mutex>
 #include <wtf/glib/WTFGType.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 enum {
     PROP_0,

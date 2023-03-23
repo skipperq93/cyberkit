@@ -101,7 +101,7 @@ OBJC_CLASS VKCImageAnalysis;
 typedef struct __CVBuffer* CVPixelBufferRef;
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class AbsolutePositionConstraints;
 class AuthenticationChallenge;
@@ -217,338 +217,338 @@ namespace DOMCacheEngine {
 struct Record;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace IPC {
 
-template<> struct ArgumentCoder<WebCore::DOMCacheEngine::Record> {
-    static void encode(Encoder&, const WebCore::DOMCacheEngine::Record&);
-    static std::optional<WebCore::DOMCacheEngine::Record> decode(Decoder&);
+template<> struct ArgumentCoder<CyberCore::DOMCacheEngine::Record> {
+    static void encode(Encoder&, const CyberCore::DOMCacheEngine::Record&);
+    static std::optional<CyberCore::DOMCacheEngine::Record> decode(Decoder&);
 };
 
-template<> struct ArgumentCoder<WebCore::RectEdges<bool>> {
-    static void encode(Encoder&, const WebCore::RectEdges<bool>&);
-    static std::optional<WebCore::RectEdges<bool>> decode(Decoder&);
+template<> struct ArgumentCoder<CyberCore::RectEdges<bool>> {
+    static void encode(Encoder&, const CyberCore::RectEdges<bool>&);
+    static std::optional<CyberCore::RectEdges<bool>> decode(Decoder&);
 };
 
 #if ENABLE(META_VIEWPORT)
-template<> struct ArgumentCoder<WebCore::ViewportArguments> {
-    static void encode(Encoder&, const WebCore::ViewportArguments&);
-    static std::optional<WebCore::ViewportArguments> decode(Decoder&);
+template<> struct ArgumentCoder<CyberCore::ViewportArguments> {
+    static void encode(Encoder&, const CyberCore::ViewportArguments&);
+    static std::optional<CyberCore::ViewportArguments> decode(Decoder&);
 };
 #endif
 
-template<> struct ArgumentCoder<WebCore::Length> {
-    static void encode(Encoder&, const WebCore::Length&);
-    static WARN_UNUSED_RETURN bool decode(Decoder&, WebCore::Length&);
+template<> struct ArgumentCoder<CyberCore::Length> {
+    static void encode(Encoder&, const CyberCore::Length&);
+    static WARN_UNUSED_RETURN bool decode(Decoder&, CyberCore::Length&);
 };
 
-template<> struct ArgumentCoder<WebCore::ProtectionSpace> {
-    static void encode(Encoder&, const WebCore::ProtectionSpace&);
-    static WARN_UNUSED_RETURN bool decode(Decoder&, WebCore::ProtectionSpace&);
-    static void encodePlatformData(Encoder&, const WebCore::ProtectionSpace&);
-    static WARN_UNUSED_RETURN bool decodePlatformData(Decoder&, WebCore::ProtectionSpace&);
+template<> struct ArgumentCoder<CyberCore::ProtectionSpace> {
+    static void encode(Encoder&, const CyberCore::ProtectionSpace&);
+    static WARN_UNUSED_RETURN bool decode(Decoder&, CyberCore::ProtectionSpace&);
+    static void encodePlatformData(Encoder&, const CyberCore::ProtectionSpace&);
+    static WARN_UNUSED_RETURN bool decodePlatformData(Decoder&, CyberCore::ProtectionSpace&);
 };
 
-template<> struct ArgumentCoder<WebCore::Credential> {
-    static void encode(Encoder&, const WebCore::Credential&);
-    static WARN_UNUSED_RETURN bool decode(Decoder&, WebCore::Credential&);
-    static void encodePlatformData(Encoder&, const WebCore::Credential&);
-    static WARN_UNUSED_RETURN bool decodePlatformData(Decoder&, WebCore::Credential&);
+template<> struct ArgumentCoder<CyberCore::Credential> {
+    static void encode(Encoder&, const CyberCore::Credential&);
+    static WARN_UNUSED_RETURN bool decode(Decoder&, CyberCore::Credential&);
+    static void encodePlatformData(Encoder&, const CyberCore::Credential&);
+    static WARN_UNUSED_RETURN bool decodePlatformData(Decoder&, CyberCore::Credential&);
 };
 
-template<> struct ArgumentCoder<WebCore::Cursor> {
-    static void encode(Encoder&, const WebCore::Cursor&);
-    static WARN_UNUSED_RETURN bool decode(Decoder&, WebCore::Cursor&);
+template<> struct ArgumentCoder<CyberCore::Cursor> {
+    static void encode(Encoder&, const CyberCore::Cursor&);
+    static WARN_UNUSED_RETURN bool decode(Decoder&, CyberCore::Cursor&);
 };
 
-template<> struct ArgumentCoder<RefPtr<WebCore::Image>> {
-    static void encode(Encoder&, const RefPtr<WebCore::Image>&);
-    static WARN_UNUSED_RETURN bool decode(Decoder&, RefPtr<WebCore::Image>&);
+template<> struct ArgumentCoder<RefPtr<CyberCore::Image>> {
+    static void encode(Encoder&, const RefPtr<CyberCore::Image>&);
+    static WARN_UNUSED_RETURN bool decode(Decoder&, RefPtr<CyberCore::Image>&);
 };
 
-template<> struct ArgumentCoder<RefPtr<WebCore::SerializedScriptValue>> {
-    static void encode(Encoder&, const RefPtr<WebCore::SerializedScriptValue>&);
-    static std::optional<RefPtr<WebCore::SerializedScriptValue>> decode(Decoder&);
+template<> struct ArgumentCoder<RefPtr<CyberCore::SerializedScriptValue>> {
+    static void encode(Encoder&, const RefPtr<CyberCore::SerializedScriptValue>&);
+    static std::optional<RefPtr<CyberCore::SerializedScriptValue>> decode(Decoder&);
 };
 
-template<> struct ArgumentCoder<WebCore::Font> {
-    static void encode(Encoder&, const WebCore::Font&);
-    static std::optional<Ref<WebCore::Font>> decode(Decoder&);
-    static void encodePlatformData(Encoder&, const WebCore::Font&);
-    static std::optional<WebCore::FontPlatformData> decodePlatformData(Decoder&);
+template<> struct ArgumentCoder<CyberCore::Font> {
+    static void encode(Encoder&, const CyberCore::Font&);
+    static std::optional<Ref<CyberCore::Font>> decode(Decoder&);
+    static void encodePlatformData(Encoder&, const CyberCore::Font&);
+    static std::optional<CyberCore::FontPlatformData> decodePlatformData(Decoder&);
 };
 
-template<> struct ArgumentCoder<WebCore::ResourceError> {
-    static void encode(Encoder&, const WebCore::ResourceError&);
-    static WARN_UNUSED_RETURN bool decode(Decoder&, WebCore::ResourceError&);
-    static void encodePlatformData(Encoder&, const WebCore::ResourceError&);
-    static WARN_UNUSED_RETURN bool decodePlatformData(Decoder&, WebCore::ResourceError&);
+template<> struct ArgumentCoder<CyberCore::ResourceError> {
+    static void encode(Encoder&, const CyberCore::ResourceError&);
+    static WARN_UNUSED_RETURN bool decode(Decoder&, CyberCore::ResourceError&);
+    static void encodePlatformData(Encoder&, const CyberCore::ResourceError&);
+    static WARN_UNUSED_RETURN bool decodePlatformData(Decoder&, CyberCore::ResourceError&);
 };
 
 #if PLATFORM(COCOA)
 
-template<> struct ArgumentCoder<WebCore::KeypressCommand> {
-    static void encode(Encoder&, const WebCore::KeypressCommand&);
-    static std::optional<WebCore::KeypressCommand> decode(Decoder&);
+template<> struct ArgumentCoder<CyberCore::KeypressCommand> {
+    static void encode(Encoder&, const CyberCore::KeypressCommand&);
+    static std::optional<CyberCore::KeypressCommand> decode(Decoder&);
 };
 
 #endif // PLATFORM(COCOA)
 
 #if PLATFORM(IOS_FAMILY)
-template<> struct ArgumentCoder<WebCore::InspectorOverlay::Highlight> {
-    static void encode(Encoder&, const WebCore::InspectorOverlay::Highlight&);
-    static WARN_UNUSED_RETURN bool decode(Decoder&, WebCore::InspectorOverlay::Highlight&);
+template<> struct ArgumentCoder<CyberCore::InspectorOverlay::Highlight> {
+    static void encode(Encoder&, const CyberCore::InspectorOverlay::Highlight&);
+    static WARN_UNUSED_RETURN bool decode(Decoder&, CyberCore::InspectorOverlay::Highlight&);
 };
 
 #endif
 
 #if USE(APPKIT)
 
-template<> struct ArgumentCoder<WebCore::AppKitControlSystemImage> {
+template<> struct ArgumentCoder<CyberCore::AppKitControlSystemImage> {
     template<typename Encoder>
-    static void encode(Encoder&, const WebCore::AppKitControlSystemImage&);
-    static std::optional<Ref<WebCore::AppKitControlSystemImage>> decode(Decoder&);
+    static void encode(Encoder&, const CyberCore::AppKitControlSystemImage&);
+    static std::optional<Ref<CyberCore::AppKitControlSystemImage>> decode(Decoder&);
 };
 
 #endif
 
 #if USE(SOUP)
-template<> struct ArgumentCoder<WebCore::SoupNetworkProxySettings> {
-    static void encode(Encoder&, const WebCore::SoupNetworkProxySettings&);
-    static WARN_UNUSED_RETURN bool decode(Decoder&, WebCore::SoupNetworkProxySettings&);
+template<> struct ArgumentCoder<CyberCore::SoupNetworkProxySettings> {
+    static void encode(Encoder&, const CyberCore::SoupNetworkProxySettings&);
+    static WARN_UNUSED_RETURN bool decode(Decoder&, CyberCore::SoupNetworkProxySettings&);
 };
 #endif
 
 #if USE(CURL)
-template<> struct ArgumentCoder<WebCore::CurlProxySettings> {
-    static void encode(Encoder&, const WebCore::CurlProxySettings&);
-    static std::optional<WebCore::CurlProxySettings> decode(Decoder&);
+template<> struct ArgumentCoder<CyberCore::CurlProxySettings> {
+    static void encode(Encoder&, const CyberCore::CurlProxySettings&);
+    static std::optional<CyberCore::CurlProxySettings> decode(Decoder&);
 };
 #endif
 
 
-template<> struct ArgumentCoder<WebCore::FixedPositionViewportConstraints> {
-    static void encode(Encoder&, const WebCore::FixedPositionViewportConstraints&);
-    static WARN_UNUSED_RETURN bool decode(Decoder&, WebCore::FixedPositionViewportConstraints&);
+template<> struct ArgumentCoder<CyberCore::FixedPositionViewportConstraints> {
+    static void encode(Encoder&, const CyberCore::FixedPositionViewportConstraints&);
+    static WARN_UNUSED_RETURN bool decode(Decoder&, CyberCore::FixedPositionViewportConstraints&);
 };
 
-template<> struct ArgumentCoder<WebCore::StickyPositionViewportConstraints> {
-    static void encode(Encoder&, const WebCore::StickyPositionViewportConstraints&);
-    static WARN_UNUSED_RETURN bool decode(Decoder&, WebCore::StickyPositionViewportConstraints&);
+template<> struct ArgumentCoder<CyberCore::StickyPositionViewportConstraints> {
+    static void encode(Encoder&, const CyberCore::StickyPositionViewportConstraints&);
+    static WARN_UNUSED_RETURN bool decode(Decoder&, CyberCore::StickyPositionViewportConstraints&);
 };
 
 #if !USE(COORDINATED_GRAPHICS)
-template<> struct ArgumentCoder<WebCore::FilterOperations> {
-    static void encode(Encoder&, const WebCore::FilterOperations&);
-    static WARN_UNUSED_RETURN bool decode(Decoder&, WebCore::FilterOperations&);
+template<> struct ArgumentCoder<CyberCore::FilterOperations> {
+    static void encode(Encoder&, const CyberCore::FilterOperations&);
+    static WARN_UNUSED_RETURN bool decode(Decoder&, CyberCore::FilterOperations&);
 };
 
-template<> struct ArgumentCoder<WebCore::FilterOperation> {
-    static void encode(Encoder&, const WebCore::FilterOperation&);
+template<> struct ArgumentCoder<CyberCore::FilterOperation> {
+    static void encode(Encoder&, const CyberCore::FilterOperation&);
 };
-WARN_UNUSED_RETURN bool decodeFilterOperation(Decoder&, RefPtr<WebCore::FilterOperation>&);
+WARN_UNUSED_RETURN bool decodeFilterOperation(Decoder&, RefPtr<CyberCore::FilterOperation>&);
 
-template<> struct ArgumentCoder<RefPtr<WebCore::FilterOperation>> {
-    static void encode(Encoder&, const RefPtr<WebCore::FilterOperation>&);
-    static WARN_UNUSED_RETURN bool decode(Decoder&, RefPtr<WebCore::FilterOperation>&);
+template<> struct ArgumentCoder<RefPtr<CyberCore::FilterOperation>> {
+    static void encode(Encoder&, const RefPtr<CyberCore::FilterOperation>&);
+    static WARN_UNUSED_RETURN bool decode(Decoder&, RefPtr<CyberCore::FilterOperation>&);
 };
 #endif
 
-template<> struct ArgumentCoder<WebCore::BlobPart> {
-    static void encode(Encoder&, const WebCore::BlobPart&);
-    static std::optional<WebCore::BlobPart> decode(Decoder&);
+template<> struct ArgumentCoder<CyberCore::BlobPart> {
+    static void encode(Encoder&, const CyberCore::BlobPart&);
+    static std::optional<CyberCore::BlobPart> decode(Decoder&);
 };
 
 #if ENABLE(CONTENT_FILTERING)
-template<> struct ArgumentCoder<WebCore::ContentFilterUnblockHandler> {
-    static void encode(Encoder&, const WebCore::ContentFilterUnblockHandler&);
-    static WARN_UNUSED_RETURN bool decode(Decoder&, WebCore::ContentFilterUnblockHandler&);
+template<> struct ArgumentCoder<CyberCore::ContentFilterUnblockHandler> {
+    static void encode(Encoder&, const CyberCore::ContentFilterUnblockHandler&);
+    static WARN_UNUSED_RETURN bool decode(Decoder&, CyberCore::ContentFilterUnblockHandler&);
 };
 #endif
 
 #if ENABLE(WIRELESS_PLAYBACK_TARGET)
-template<> struct ArgumentCoder<WebCore::MediaPlaybackTargetContext> {
-    static void encode(Encoder&, const WebCore::MediaPlaybackTargetContext&);
-    static WARN_UNUSED_RETURN bool decode(Decoder&, WebCore::MediaPlaybackTargetContext&);
-    static void encodePlatformData(Encoder&, const WebCore::MediaPlaybackTargetContext&);
-    static WARN_UNUSED_RETURN bool decodePlatformData(Decoder&, WebCore::MediaPlaybackTargetContext::Type, WebCore::MediaPlaybackTargetContext&);
+template<> struct ArgumentCoder<CyberCore::MediaPlaybackTargetContext> {
+    static void encode(Encoder&, const CyberCore::MediaPlaybackTargetContext&);
+    static WARN_UNUSED_RETURN bool decode(Decoder&, CyberCore::MediaPlaybackTargetContext&);
+    static void encodePlatformData(Encoder&, const CyberCore::MediaPlaybackTargetContext&);
+    static WARN_UNUSED_RETURN bool decodePlatformData(Decoder&, CyberCore::MediaPlaybackTargetContext::Type, CyberCore::MediaPlaybackTargetContext&);
 };
 #endif
 
 #if ENABLE(APPLE_PAY)
 
-template<> struct ArgumentCoder<WebCore::Payment> {
-    static void encode(Encoder&, const WebCore::Payment&);
-    static std::optional<WebCore::Payment> decode(Decoder&);
+template<> struct ArgumentCoder<CyberCore::Payment> {
+    static void encode(Encoder&, const CyberCore::Payment&);
+    static std::optional<CyberCore::Payment> decode(Decoder&);
 };
 
-template<> struct ArgumentCoder<WebCore::PaymentContact> {
-    static void encode(Encoder&, const WebCore::PaymentContact&);
-    static std::optional<WebCore::PaymentContact> decode(Decoder&);
+template<> struct ArgumentCoder<CyberCore::PaymentContact> {
+    static void encode(Encoder&, const CyberCore::PaymentContact&);
+    static std::optional<CyberCore::PaymentContact> decode(Decoder&);
 };
 
-template<> struct ArgumentCoder<WebCore::PaymentMerchantSession> {
-    static void encode(Encoder&, const WebCore::PaymentMerchantSession&);
-    static std::optional<WebCore::PaymentMerchantSession> decode(Decoder&);
+template<> struct ArgumentCoder<CyberCore::PaymentMerchantSession> {
+    static void encode(Encoder&, const CyberCore::PaymentMerchantSession&);
+    static std::optional<CyberCore::PaymentMerchantSession> decode(Decoder&);
 };
 
-template<> struct ArgumentCoder<WebCore::PaymentMethod> {
-    static void encode(Encoder&, const WebCore::PaymentMethod&);
-    static std::optional<WebCore::PaymentMethod> decode(Decoder&);
+template<> struct ArgumentCoder<CyberCore::PaymentMethod> {
+    static void encode(Encoder&, const CyberCore::PaymentMethod&);
+    static std::optional<CyberCore::PaymentMethod> decode(Decoder&);
 };
 
-template<> struct ArgumentCoder<WebCore::ApplePaySessionPaymentRequest> {
-    static void encode(Encoder&, const WebCore::ApplePaySessionPaymentRequest&);
-    static WARN_UNUSED_RETURN bool decode(Decoder&, WebCore::ApplePaySessionPaymentRequest&);
+template<> struct ArgumentCoder<CyberCore::ApplePaySessionPaymentRequest> {
+    static void encode(Encoder&, const CyberCore::ApplePaySessionPaymentRequest&);
+    static WARN_UNUSED_RETURN bool decode(Decoder&, CyberCore::ApplePaySessionPaymentRequest&);
 };
-template<> struct ArgumentCoder<WebCore::ApplePaySessionPaymentRequest::ContactFields> {
-    static void encode(Encoder&, const WebCore::ApplePaySessionPaymentRequest::ContactFields&);
-    static WARN_UNUSED_RETURN bool decode(Decoder&, WebCore::ApplePaySessionPaymentRequest::ContactFields&);
-};
-
-template<> struct ArgumentCoder<WebCore::ApplePaySessionPaymentRequest::MerchantCapabilities> {
-    static void encode(Encoder&, const WebCore::ApplePaySessionPaymentRequest::MerchantCapabilities&);
-    static WARN_UNUSED_RETURN bool decode(Decoder&, WebCore::ApplePaySessionPaymentRequest::MerchantCapabilities&);
+template<> struct ArgumentCoder<CyberCore::ApplePaySessionPaymentRequest::ContactFields> {
+    static void encode(Encoder&, const CyberCore::ApplePaySessionPaymentRequest::ContactFields&);
+    static WARN_UNUSED_RETURN bool decode(Decoder&, CyberCore::ApplePaySessionPaymentRequest::ContactFields&);
 };
 
-template<> struct ArgumentCoder<RefPtr<WebCore::ApplePayError>> {
-    static void encode(Encoder&, const RefPtr<WebCore::ApplePayError>&);
-    static std::optional<RefPtr<WebCore::ApplePayError>> decode(Decoder&);
+template<> struct ArgumentCoder<CyberCore::ApplePaySessionPaymentRequest::MerchantCapabilities> {
+    static void encode(Encoder&, const CyberCore::ApplePaySessionPaymentRequest::MerchantCapabilities&);
+    static WARN_UNUSED_RETURN bool decode(Decoder&, CyberCore::ApplePaySessionPaymentRequest::MerchantCapabilities&);
 };
 
-template<> struct ArgumentCoder<WebCore::PaymentSessionError> {
-    static void encode(Encoder&, const WebCore::PaymentSessionError&);
-    static std::optional<WebCore::PaymentSessionError> decode(Decoder&);
+template<> struct ArgumentCoder<RefPtr<CyberCore::ApplePayError>> {
+    static void encode(Encoder&, const RefPtr<CyberCore::ApplePayError>&);
+    static std::optional<RefPtr<CyberCore::ApplePayError>> decode(Decoder&);
+};
+
+template<> struct ArgumentCoder<CyberCore::PaymentSessionError> {
+    static void encode(Encoder&, const CyberCore::PaymentSessionError&);
+    static std::optional<CyberCore::PaymentSessionError> decode(Decoder&);
 };
 
 #endif
 
 #if ENABLE(SERVICE_WORKER)
 
-template<> struct ArgumentCoder<WebCore::ServiceWorkerOrClientData> {
-    static void encode(Encoder&, const WebCore::ServiceWorkerOrClientData&);
-    static WARN_UNUSED_RETURN bool decode(Decoder&, WebCore::ServiceWorkerOrClientData&);
+template<> struct ArgumentCoder<CyberCore::ServiceWorkerOrClientData> {
+    static void encode(Encoder&, const CyberCore::ServiceWorkerOrClientData&);
+    static WARN_UNUSED_RETURN bool decode(Decoder&, CyberCore::ServiceWorkerOrClientData&);
 };
 
-template<> struct ArgumentCoder<WebCore::ServiceWorkerOrClientIdentifier> {
-    static void encode(Encoder&, const WebCore::ServiceWorkerOrClientIdentifier&);
-    static WARN_UNUSED_RETURN bool decode(Decoder&, WebCore::ServiceWorkerOrClientIdentifier&);
+template<> struct ArgumentCoder<CyberCore::ServiceWorkerOrClientIdentifier> {
+    static void encode(Encoder&, const CyberCore::ServiceWorkerOrClientIdentifier&);
+    static WARN_UNUSED_RETURN bool decode(Decoder&, CyberCore::ServiceWorkerOrClientIdentifier&);
 };
 
 #endif
 
 #if ENABLE(ATTACHMENT_ELEMENT)
 
-template<> struct ArgumentCoder<WebCore::SerializedAttachmentData> {
-    static void encode(Encoder&, const WebCore::SerializedAttachmentData&);
-    static std::optional<WebCore::SerializedAttachmentData> decode(Decoder&);
+template<> struct ArgumentCoder<CyberCore::SerializedAttachmentData> {
+    static void encode(Encoder&, const CyberCore::SerializedAttachmentData&);
+    static std::optional<CyberCore::SerializedAttachmentData> decode(Decoder&);
 };
 
 #endif // ENABLE(ATTACHMENT_ELEMENT)
 
 #if ENABLE(VIDEO)
-template<> struct ArgumentCoder<WebCore::SerializedPlatformDataCueValue> {
-    static void encode(Encoder&, const WebCore::SerializedPlatformDataCueValue&);
-    static std::optional<WebCore::SerializedPlatformDataCueValue> decode(Decoder&);
-    static void encodePlatformData(Encoder&, const WebCore::SerializedPlatformDataCueValue&);
-    static std::optional<WebCore::SerializedPlatformDataCueValue> decodePlatformData(Decoder&, WebCore::SerializedPlatformDataCueValue::PlatformType);
+template<> struct ArgumentCoder<CyberCore::SerializedPlatformDataCueValue> {
+    static void encode(Encoder&, const CyberCore::SerializedPlatformDataCueValue&);
+    static std::optional<CyberCore::SerializedPlatformDataCueValue> decode(Decoder&);
+    static void encodePlatformData(Encoder&, const CyberCore::SerializedPlatformDataCueValue&);
+    static std::optional<CyberCore::SerializedPlatformDataCueValue> decodePlatformData(Decoder&, CyberCore::SerializedPlatformDataCueValue::PlatformType);
 };
 #endif
 
-template<> struct ArgumentCoder<WebCore::FragmentedSharedBuffer> {
-    static void encode(Encoder&, const WebCore::FragmentedSharedBuffer&);
-    static std::optional<Ref<WebCore::FragmentedSharedBuffer>> decode(Decoder&);
+template<> struct ArgumentCoder<CyberCore::FragmentedSharedBuffer> {
+    static void encode(Encoder&, const CyberCore::FragmentedSharedBuffer&);
+    static std::optional<Ref<CyberCore::FragmentedSharedBuffer>> decode(Decoder&);
 };
 
-template<> struct ArgumentCoder<WebCore::SharedBuffer> {
-    static void encode(Encoder&, const WebCore::SharedBuffer&);
-    static std::optional<Ref<WebCore::SharedBuffer>> decode(Decoder&);
+template<> struct ArgumentCoder<CyberCore::SharedBuffer> {
+    static void encode(Encoder&, const CyberCore::SharedBuffer&);
+    static std::optional<Ref<CyberCore::SharedBuffer>> decode(Decoder&);
 };
 
-template<> struct ArgumentCoder<WebCore::ScriptBuffer> {
-    static void encode(Encoder&, const WebCore::ScriptBuffer&);
-    static std::optional<WebCore::ScriptBuffer> decode(Decoder&);
+template<> struct ArgumentCoder<CyberCore::ScriptBuffer> {
+    static void encode(Encoder&, const CyberCore::ScriptBuffer&);
+    static std::optional<CyberCore::ScriptBuffer> decode(Decoder&);
 };
 
-template<> struct ArgumentCoder<WebCore::SystemImage> {
+template<> struct ArgumentCoder<CyberCore::SystemImage> {
     template<typename Encoder>
-    static void encode(Encoder&, const WebCore::SystemImage&);
-    static std::optional<Ref<WebCore::SystemImage>> decode(Decoder&);
+    static void encode(Encoder&, const CyberCore::SystemImage&);
+    static std::optional<Ref<CyberCore::SystemImage>> decode(Decoder&);
 };
 
-template<> struct ArgumentCoder<WebCore::ControlPart> {
+template<> struct ArgumentCoder<CyberCore::ControlPart> {
     template<typename Encoder>
-    static void encode(Encoder&, const WebCore::ControlPart&);
-    static std::optional<Ref<WebCore::ControlPart>> decode(Decoder&);
+    static void encode(Encoder&, const CyberCore::ControlPart&);
+    static std::optional<Ref<CyberCore::ControlPart>> decode(Decoder&);
 };
 
-template<> struct ArgumentCoder<WebCore::LightSource> {
+template<> struct ArgumentCoder<CyberCore::LightSource> {
     template<typename Encoder>
-    static void encode(Encoder&, const WebCore::LightSource&);
-    static std::optional<Ref<WebCore::LightSource>> decode(Decoder&);
+    static void encode(Encoder&, const CyberCore::LightSource&);
+    static std::optional<Ref<CyberCore::LightSource>> decode(Decoder&);
 };
 
-template<> struct ArgumentCoder<WebCore::FilterFunction> {
+template<> struct ArgumentCoder<CyberCore::FilterFunction> {
     template<typename Encoder>
-    static void encode(Encoder&, const WebCore::FilterFunction&);
-    static std::optional<Ref<WebCore::FilterFunction>> decode(Decoder&);
+    static void encode(Encoder&, const CyberCore::FilterFunction&);
+    static std::optional<Ref<CyberCore::FilterFunction>> decode(Decoder&);
 };
 
-template<> struct ArgumentCoder<WebCore::FilterEffect> {
+template<> struct ArgumentCoder<CyberCore::FilterEffect> {
     template<typename Encoder>
-    static void encode(Encoder&, const WebCore::FilterEffect&);
-    static std::optional<Ref<WebCore::FilterEffect>> decode(Decoder&);
+    static void encode(Encoder&, const CyberCore::FilterEffect&);
+    static std::optional<Ref<CyberCore::FilterEffect>> decode(Decoder&);
 };
 
-template<> struct ArgumentCoder<WebCore::CSSFilter> {
+template<> struct ArgumentCoder<CyberCore::CSSFilter> {
     template<typename Encoder>
-    static void encode(Encoder&, const WebCore::CSSFilter&);
-    static std::optional<Ref<WebCore::CSSFilter>> decode(Decoder&);
+    static void encode(Encoder&, const CyberCore::CSSFilter&);
+    static std::optional<Ref<CyberCore::CSSFilter>> decode(Decoder&);
 };
 
-template<> struct ArgumentCoder<WebCore::SVGFilter> {
+template<> struct ArgumentCoder<CyberCore::SVGFilter> {
     template<typename Encoder>
-    static void encode(Encoder&, const WebCore::SVGFilter&);
-    static std::optional<Ref<WebCore::SVGFilter>> decode(Decoder&);
+    static void encode(Encoder&, const CyberCore::SVGFilter&);
+    static std::optional<Ref<CyberCore::SVGFilter>> decode(Decoder&);
 };
 
-template<> struct ArgumentCoder<WebCore::Filter> {
+template<> struct ArgumentCoder<CyberCore::Filter> {
     template<typename Encoder>
-    static void encode(Encoder&, const WebCore::Filter&);
-    static std::optional<Ref<WebCore::Filter>> decode(Decoder&);
+    static void encode(Encoder&, const CyberCore::Filter&);
+    static std::optional<Ref<CyberCore::Filter>> decode(Decoder&);
 };
 
 #if ENABLE(DATA_DETECTION)
 
-template<> struct ArgumentCoder<WebCore::DataDetectorElementInfo> {
-    static void encode(Encoder&, const WebCore::DataDetectorElementInfo&);
-    static std::optional<WebCore::DataDetectorElementInfo> decode(Decoder&);
+template<> struct ArgumentCoder<CyberCore::DataDetectorElementInfo> {
+    static void encode(Encoder&, const CyberCore::DataDetectorElementInfo&);
+    static std::optional<CyberCore::DataDetectorElementInfo> decode(Decoder&);
 };
 
 #endif
 
 #if ENABLE(ENCRYPTED_MEDIA)
-template<> struct ArgumentCoder<WebCore::CDMInstanceSession::Message> {
-    static void encode(Encoder&, const WebCore::CDMInstanceSession::Message&);
-    static std::optional<WebCore::CDMInstanceSession::Message> decode(Decoder&);
+template<> struct ArgumentCoder<CyberCore::CDMInstanceSession::Message> {
+    static void encode(Encoder&, const CyberCore::CDMInstanceSession::Message&);
+    static std::optional<CyberCore::CDMInstanceSession::Message> decode(Decoder&);
 };
 #endif
 
 #if HAVE(PASSKIT_INSTALLMENTS)
-template<> struct ArgumentCoder<WebCore::PaymentInstallmentConfiguration> {
-    static void encode(Encoder&, const WebCore::PaymentInstallmentConfiguration&);
-    static std::optional<WebCore::PaymentInstallmentConfiguration> decode(Decoder&);
+template<> struct ArgumentCoder<CyberCore::PaymentInstallmentConfiguration> {
+    static void encode(Encoder&, const CyberCore::PaymentInstallmentConfiguration&);
+    static std::optional<CyberCore::PaymentInstallmentConfiguration> decode(Decoder&);
 };
 #endif
 
 #if ENABLE(IMAGE_ANALYSIS) && ENABLE(DATA_DETECTION)
 
-template<> struct ArgumentCoder<WebCore::TextRecognitionDataDetector> {
-    static void encode(Encoder&, const WebCore::TextRecognitionDataDetector&);
-    static WARN_UNUSED_RETURN std::optional<WebCore::TextRecognitionDataDetector> decode(Decoder&);
-    static void encodePlatformData(Encoder&, const WebCore::TextRecognitionDataDetector&);
-    static WARN_UNUSED_RETURN bool decodePlatformData(Decoder&, WebCore::TextRecognitionDataDetector&);
+template<> struct ArgumentCoder<CyberCore::TextRecognitionDataDetector> {
+    static void encode(Encoder&, const CyberCore::TextRecognitionDataDetector&);
+    static WARN_UNUSED_RETURN std::optional<CyberCore::TextRecognitionDataDetector> decode(Decoder&);
+    static void encodePlatformData(Encoder&, const CyberCore::TextRecognitionDataDetector&);
+    static WARN_UNUSED_RETURN bool decodePlatformData(Decoder&, CyberCore::TextRecognitionDataDetector&);
 };
 
 #endif // ENABLE(IMAGE_ANALYSIS) && ENABLE(DATA_DETECTION)
@@ -571,9 +571,9 @@ template<> struct ArgumentCoder<RetainPtr<CVPixelBufferRef>> {
 
 #endif
 
-template<> struct ArgumentCoder<WebCore::PixelBuffer> {
-    template<class Encoder> static void encode(Encoder&, const WebCore::PixelBuffer&);
-    static std::optional<Ref<WebCore::PixelBuffer>> decode(Decoder&);
+template<> struct ArgumentCoder<CyberCore::PixelBuffer> {
+    template<class Encoder> static void encode(Encoder&, const CyberCore::PixelBuffer&);
+    static std::optional<Ref<CyberCore::PixelBuffer>> decode(Decoder&);
 };
 
 } // namespace IPC
@@ -581,22 +581,22 @@ template<> struct ArgumentCoder<WebCore::PixelBuffer> {
 namespace WTF {
 
 #if ENABLE(MEDIA_STREAM)
-template<> struct EnumTraits<WebCore::RealtimeMediaSource::Type> {
+template<> struct EnumTraits<CyberCore::RealtimeMediaSource::Type> {
     using values = EnumValues<
-        WebCore::RealtimeMediaSource::Type,
-        WebCore::RealtimeMediaSource::Type::Audio,
-        WebCore::RealtimeMediaSource::Type::Video
+        CyberCore::RealtimeMediaSource::Type,
+        CyberCore::RealtimeMediaSource::Type::Audio,
+        CyberCore::RealtimeMediaSource::Type::Video
     >;
 };
 #endif
 
 #if USE(CURL)
-template <> struct EnumTraits<WebCore::CurlProxySettings::Mode> {
+template <> struct EnumTraits<CyberCore::CurlProxySettings::Mode> {
     using values = EnumValues<
-        WebCore::CurlProxySettings::Mode,
-        WebCore::CurlProxySettings::Mode::Default,
-        WebCore::CurlProxySettings::Mode::NoProxy,
-        WebCore::CurlProxySettings::Mode::Custom
+        CyberCore::CurlProxySettings::Mode,
+        CyberCore::CurlProxySettings::Mode::Default,
+        CyberCore::CurlProxySettings::Mode::NoProxy,
+        CyberCore::CurlProxySettings::Mode::Custom
     >;
 };
 #endif
@@ -614,35 +614,35 @@ template<> struct EnumTraits<WTFLogLevel> {
 };
 
 #if ENABLE(ENCRYPTED_MEDIA)
-template <> struct EnumTraits<WebCore::CDMInstanceSession::SessionLoadFailure> {
+template <> struct EnumTraits<CyberCore::CDMInstanceSession::SessionLoadFailure> {
     using values = EnumValues <
-    WebCore::CDMInstanceSession::SessionLoadFailure,
-    WebCore::CDMInstanceSession::SessionLoadFailure::None,
-    WebCore::CDMInstanceSession::SessionLoadFailure::NoSessionData,
-    WebCore::CDMInstanceSession::SessionLoadFailure::MismatchedSessionType,
-    WebCore::CDMInstanceSession::SessionLoadFailure::QuotaExceeded,
-    WebCore::CDMInstanceSession::SessionLoadFailure::Other
+    CyberCore::CDMInstanceSession::SessionLoadFailure,
+    CyberCore::CDMInstanceSession::SessionLoadFailure::None,
+    CyberCore::CDMInstanceSession::SessionLoadFailure::NoSessionData,
+    CyberCore::CDMInstanceSession::SessionLoadFailure::MismatchedSessionType,
+    CyberCore::CDMInstanceSession::SessionLoadFailure::QuotaExceeded,
+    CyberCore::CDMInstanceSession::SessionLoadFailure::Other
     >;
 };
 
-template <> struct EnumTraits<WebCore::CDMInstance::HDCPStatus> {
+template <> struct EnumTraits<CyberCore::CDMInstance::HDCPStatus> {
     using values = EnumValues <
-    WebCore::CDMInstance::HDCPStatus,
-    WebCore::CDMInstance::HDCPStatus::Unknown,
-    WebCore::CDMInstance::HDCPStatus::Valid,
-    WebCore::CDMInstance::HDCPStatus::OutputRestricted,
-    WebCore::CDMInstance::HDCPStatus::OutputDownscaled
+    CyberCore::CDMInstance::HDCPStatus,
+    CyberCore::CDMInstance::HDCPStatus::Unknown,
+    CyberCore::CDMInstance::HDCPStatus::Valid,
+    CyberCore::CDMInstance::HDCPStatus::OutputRestricted,
+    CyberCore::CDMInstance::HDCPStatus::OutputDownscaled
     >;
 };
 #endif
 
 #if ENABLE(GPU_PROCESS) && ENABLE(WEBGL)
-template <> struct EnumTraits<WebCore::GraphicsContextGLSimulatedEventForTesting> {
+template <> struct EnumTraits<CyberCore::GraphicsContextGLSimulatedEventForTesting> {
     using values = EnumValues<
-    WebCore::GraphicsContextGLSimulatedEventForTesting,
-    WebCore::GraphicsContextGLSimulatedEventForTesting::ContextChange,
-    WebCore::GraphicsContextGLSimulatedEventForTesting::GPUStatusFailure,
-    WebCore::GraphicsContextGLSimulatedEventForTesting::Timeout
+    CyberCore::GraphicsContextGLSimulatedEventForTesting,
+    CyberCore::GraphicsContextGLSimulatedEventForTesting::ContextChange,
+    CyberCore::GraphicsContextGLSimulatedEventForTesting::GPUStatusFailure,
+    CyberCore::GraphicsContextGLSimulatedEventForTesting::Timeout
     >;
 };
 #endif

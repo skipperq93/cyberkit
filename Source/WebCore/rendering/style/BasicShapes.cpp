@@ -45,7 +45,7 @@
 #include <wtf/TinyLRUCache.h>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 void BasicShapeCenterCoordinate::updateComputedLength()
 {
@@ -369,8 +369,8 @@ Ref<BasicShape> BasicShapePolygon::blend(const BasicShape& other, const Blending
 
     for (size_t i = 0; i < length; i = i + 2) {
         result->appendPoint(
-            WebCore::blend(otherPolygon.values().at(i), m_values.at(i), context),
-            WebCore::blend(otherPolygon.values().at(i + 1), m_values.at(i + 1), context));
+            CyberCore::blend(otherPolygon.values().at(i), m_values.at(i), context),
+            CyberCore::blend(otherPolygon.values().at(i + 1), m_values.at(i + 1), context));
     }
 
     return result;
@@ -502,15 +502,15 @@ Ref<BasicShape> BasicShapeInset::blend(const BasicShape& from, const BlendingCon
 
     auto& fromInset = downcast<BasicShapeInset>(from);
     auto result =  BasicShapeInset::create();
-    result->setTop(WebCore::blend(fromInset.top(), top(), context));
-    result->setRight(WebCore::blend(fromInset.right(), right(), context));
-    result->setBottom(WebCore::blend(fromInset.bottom(), bottom(), context));
-    result->setLeft(WebCore::blend(fromInset.left(), left(), context));
+    result->setTop(CyberCore::blend(fromInset.top(), top(), context));
+    result->setRight(CyberCore::blend(fromInset.right(), right(), context));
+    result->setBottom(CyberCore::blend(fromInset.bottom(), bottom(), context));
+    result->setLeft(CyberCore::blend(fromInset.left(), left(), context));
 
-    result->setTopLeftRadius(WebCore::blend(fromInset.topLeftRadius(), topLeftRadius(), context, ValueRange::NonNegative));
-    result->setTopRightRadius(WebCore::blend(fromInset.topRightRadius(), topRightRadius(), context, ValueRange::NonNegative));
-    result->setBottomRightRadius(WebCore::blend(fromInset.bottomRightRadius(), bottomRightRadius(), context, ValueRange::NonNegative));
-    result->setBottomLeftRadius(WebCore::blend(fromInset.bottomLeftRadius(), bottomLeftRadius(), context, ValueRange::NonNegative));
+    result->setTopLeftRadius(CyberCore::blend(fromInset.topLeftRadius(), topLeftRadius(), context, ValueRange::NonNegative));
+    result->setTopRightRadius(CyberCore::blend(fromInset.topRightRadius(), topRightRadius(), context, ValueRange::NonNegative));
+    result->setBottomRightRadius(CyberCore::blend(fromInset.bottomRightRadius(), bottomRightRadius(), context, ValueRange::NonNegative));
+    result->setBottomLeftRadius(CyberCore::blend(fromInset.bottomLeftRadius(), bottomLeftRadius(), context, ValueRange::NonNegative));
 
     return result;
 }
@@ -558,4 +558,4 @@ TextStream& operator<<(TextStream& ts, const BasicShape& shape)
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

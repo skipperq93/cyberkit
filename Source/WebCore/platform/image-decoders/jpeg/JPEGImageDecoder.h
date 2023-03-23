@@ -41,7 +41,7 @@ extern "C" {
 #include <jpeglib.h>
 }
 
-namespace WebCore {
+namespace CyberCore {
 
     class JPEGImageReader;
 
@@ -94,4 +94,4 @@ namespace WebCore {
 #endif
     };
 
-} // namespace WebCore
+} // namespace CyberCore

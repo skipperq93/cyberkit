@@ -54,7 +54,7 @@
 #include "WorkerAnimationController.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(DedicatedWorkerGlobalScope);
 
@@ -146,4 +146,4 @@ NotificationClient* DedicatedWorkerGlobalScope::notificationClient()
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

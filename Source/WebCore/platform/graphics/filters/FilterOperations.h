@@ -30,7 +30,7 @@
 #include <wtf/RefPtr.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct BlendingContext;
 
@@ -71,4 +71,4 @@ private:
 
 WEBCORE_EXPORT WTF::TextStream& operator<<(WTF::TextStream&, const FilterOperations&);
 
-} // namespace WebCore
+} // namespace CyberCore

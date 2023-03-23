@@ -37,10 +37,10 @@ class RemoteScrollingCoordinatorProxyIOS final : public RemoteScrollingCoordinat
 public:
     explicit RemoteScrollingCoordinatorProxyIOS(WebPageProxy&);
 
-    UIScrollView *scrollViewForScrollingNodeID(WebCore::ScrollingNodeID) const;
+    UIScrollView *scrollViewForScrollingNodeID(CyberCore::ScrollingNodeID) const;
 
-    OptionSet<WebCore::TouchAction> activeTouchActionsForTouchIdentifier(unsigned touchIdentifier) const;
-    void setTouchActionsForTouchIdentifier(OptionSet<WebCore::TouchAction>, unsigned);
+    OptionSet<CyberCore::TouchAction> activeTouchActionsForTouchIdentifier(unsigned touchIdentifier) const;
+    void setTouchActionsForTouchIdentifier(OptionSet<CyberCore::TouchAction>, unsigned);
     void clearTouchActionsForTouchIdentifier(unsigned);
 
     bool shouldSetScrollViewDecelerationRateFast() const;
@@ -51,29 +51,29 @@ public:
     CGPoint nearestActiveContentInsetAdjustedSnapOffset(CGFloat topInset, const CGPoint&) const;
 
 #if ENABLE(OVERLAY_REGIONS_IN_EVENT_REGION)
-    void removeFixedScrollingNodeLayerIDs(const Vector<WebCore::GraphicsLayer::PlatformLayerID>&);
-    const HashSet<WebCore::GraphicsLayer::PlatformLayerID>& fixedScrollingNodeLayerIDs() const { return m_fixedScrollingNodeLayerIDs; }
+    void removeFixedScrollingNodeLayerIDs(const Vector<CyberCore::GraphicsLayer::PlatformLayerID>&);
+    const HashSet<CyberCore::GraphicsLayer::PlatformLayerID>& fixedScrollingNodeLayerIDs() const { return m_fixedScrollingNodeLayerIDs; }
 #endif
 
 private:
     bool propagatesMainFrameScrolls() const override { return false; }
 
-    void scrollingTreeNodeWillStartPanGesture(WebCore::ScrollingNodeID) override;
-    void scrollingTreeNodeWillStartScroll(WebCore::ScrollingNodeID) override;
-    void scrollingTreeNodeDidEndScroll(WebCore::ScrollingNodeID) override;
+    void scrollingTreeNodeWillStartPanGesture(CyberCore::ScrollingNodeID) override;
+    void scrollingTreeNodeWillStartScroll(CyberCore::ScrollingNodeID) override;
+    void scrollingTreeNodeDidEndScroll(CyberCore::ScrollingNodeID) override;
 
-    void connectStateNodeLayers(WebCore::ScrollingStateTree&, const RemoteLayerTreeHost&) override;
+    void connectStateNodeLayers(CyberCore::ScrollingStateTree&, const RemoteLayerTreeHost&) override;
     void establishLayerTreeScrollingRelations(const RemoteLayerTreeHost&) override;
 
-    WebCore::FloatRect currentLayoutViewport() const;
+    CyberCore::FloatRect currentLayoutViewport() const;
 
-    bool shouldSnapForMainFrameScrolling(WebCore::ScrollEventAxis) const;
-    std::pair<float, std::optional<unsigned>> closestSnapOffsetForMainFrameScrolling(WebCore::ScrollEventAxis, float currentScrollOffset, WebCore::FloatPoint scrollDestination, float velocity) const;
+    bool shouldSnapForMainFrameScrolling(CyberCore::ScrollEventAxis) const;
+    std::pair<float, std::optional<unsigned>> closestSnapOffsetForMainFrameScrolling(CyberCore::ScrollEventAxis, float currentScrollOffset, CyberCore::FloatPoint scrollDestination, float velocity) const;
 
-    HashMap<unsigned, OptionSet<WebCore::TouchAction>> m_touchActionsByTouchIdentifier;
+    HashMap<unsigned, OptionSet<CyberCore::TouchAction>> m_touchActionsByTouchIdentifier;
 
 #if ENABLE(OVERLAY_REGIONS_IN_EVENT_REGION)
-    HashSet<WebCore::GraphicsLayer::PlatformLayerID> m_fixedScrollingNodeLayerIDs;
+    HashSet<CyberCore::GraphicsLayer::PlatformLayerID> m_fixedScrollingNodeLayerIDs;
 #endif
 };
 

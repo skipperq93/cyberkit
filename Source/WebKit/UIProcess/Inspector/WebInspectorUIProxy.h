@@ -61,7 +61,7 @@ OBJC_CLASS WKInspectorViewController;
 #include <wtf/glib/GWeakPtr.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 class CertificateInfo;
 }
 
@@ -90,7 +90,7 @@ class WebInspectorUIProxy
     , public IPC::MessageReceiver
     , public Inspector::FrontendChannel
 #if PLATFORM(WIN)
-    , public WebCore::WindowMessageListener
+    , public CyberCore::WindowMessageListener
 #endif
 {
 public:
@@ -134,7 +134,7 @@ public:
 #if PLATFORM(MAC)
     enum class InspectionTargetType { Local, Remote };
     static RetainPtr<NSWindow> createFrontendWindow(NSRect savedWindowFrame, InspectionTargetType, WebPageProxy* inspectedPage = nullptr);
-    static void showSavePanel(NSWindow *, NSURL *, Vector<WebCore::InspectorFrontendClient::SaveData>&&, bool forceSaveAs, CompletionHandler<void(NSURL *)>&&);
+    static void showSavePanel(NSWindow *, NSURL *, Vector<CyberCore::InspectorFrontendClient::SaveData>&&, bool forceSaveAs, CompletionHandler<void(NSURL *)>&&);
 
     void didBecomeActive();
 
@@ -150,7 +150,7 @@ public:
     void attachmentWillMoveFromWindow(NSWindow *oldWindow);
     void attachmentDidMoveToWindow(NSWindow *newWindow);
 
-    const WebCore::FloatRect& sheetRect() const { return m_sheetRect; }
+    const CyberCore::FloatRect& sheetRect() const { return m_sheetRect; }
 #endif
 
 #if PLATFORM(GTK)
@@ -175,7 +175,7 @@ public:
     void setAttachedWindowHeight(unsigned);
     void setAttachedWindowWidth(unsigned);
 
-    void setSheetRect(const WebCore::FloatRect&);
+    void setSheetRect(const CyberCore::FloatRect&);
 
     void startWindowDrag();
 
@@ -227,20 +227,20 @@ private:
     void platformHide();
     bool platformIsFront();
     void platformAttachAvailabilityChanged(bool);
-    void platformSetForcedAppearance(WebCore::InspectorFrontendClient::Appearance);
+    void platformSetForcedAppearance(CyberCore::InspectorFrontendClient::Appearance);
     void platformOpenURLExternally(const String&);
     void platformInspectedURLChanged(const String&);
-    void platformShowCertificate(const WebCore::CertificateInfo&);
+    void platformShowCertificate(const CyberCore::CertificateInfo&);
     void platformAttach();
     void platformDetach();
     void platformSetAttachedWindowHeight(unsigned);
     void platformSetAttachedWindowWidth(unsigned);
-    void platformSetSheetRect(const WebCore::FloatRect&);
+    void platformSetSheetRect(const CyberCore::FloatRect&);
     void platformStartWindowDrag();
     void platformRevealFileExternally(const String&);
-    void platformSave(Vector<WebCore::InspectorFrontendClient::SaveData>&&, bool forceSaveAs);
+    void platformSave(Vector<CyberCore::InspectorFrontendClient::SaveData>&&, bool forceSaveAs);
     void platformLoad(const String& path, CompletionHandler<void(const String&)>&&);
-    void platformPickColorFromScreen(CompletionHandler<void(const std::optional<WebCore::Color>&)>&&);
+    void platformPickColorFromScreen(CompletionHandler<void(const std::optional<CyberCore::Color>&)>&&);
 
 #if PLATFORM(MAC)
     bool platformCanAttach(bool webProcessCanAttach);
@@ -258,21 +258,21 @@ private:
     void bringToFront();
     void bringInspectedPageToFront();
     void attachAvailabilityChanged(bool);
-    void setForcedAppearance(WebCore::InspectorFrontendClient::Appearance);
+    void setForcedAppearance(CyberCore::InspectorFrontendClient::Appearance);
     void inspectedURLChanged(const String&);
-    void showCertificate(const WebCore::CertificateInfo&);
+    void showCertificate(const CyberCore::CertificateInfo&);
     void setInspectorPageDeveloperExtrasEnabled(bool);
     void elementSelectionChanged(bool);
     void timelineRecordingChanged(bool);
 
-    void setDeveloperPreferenceOverride(WebCore::InspectorClient::DeveloperPreference, std::optional<bool>);
+    void setDeveloperPreferenceOverride(CyberCore::InspectorClient::DeveloperPreference, std::optional<bool>);
 #if ENABLE(INSPECTOR_NETWORK_THROTTLING)
     void setEmulatedConditions(std::optional<int64_t>&& bytesPerSecondLimit);
 #endif
 
-    void save(Vector<WebCore::InspectorFrontendClient::SaveData>&&, bool forceSaveAs);
+    void save(Vector<CyberCore::InspectorFrontendClient::SaveData>&&, bool forceSaveAs);
     void load(const String& path, CompletionHandler<void(const String&)>&&);
-    void pickColorFromScreen(CompletionHandler<void(const std::optional<WebCore::Color>&)>&&);
+    void pickColorFromScreen(CompletionHandler<void(const std::optional<CyberCore::Color>&)>&&);
 
     bool canAttach() const { return m_canAttach; }
     bool shouldOpenAttached();
@@ -328,8 +328,8 @@ private:
     HashMap<String, RetainPtr<NSURL>> m_suggestedToActualURLMap;
     RunLoop::Timer m_closeFrontendAfterInactivityTimer;
     String m_urlString;
-    WebCore::FloatRect m_sheetRect;
-    WebCore::InspectorFrontendClient::Appearance m_frontendAppearance { WebCore::InspectorFrontendClient::Appearance::System };
+    CyberCore::FloatRect m_sheetRect;
+    CyberCore::InspectorFrontendClient::Appearance m_frontendAppearance { CyberCore::InspectorFrontendClient::Appearance::System };
     bool m_isObservingContentLayoutRect { false };
 #elif PLATFORM(GTK)
     std::unique_ptr<WebInspectorUIProxyClient> m_client;

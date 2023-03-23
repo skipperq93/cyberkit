@@ -29,14 +29,14 @@
 #include <CyberCore/BitmapInfo.h>
 #include <wtf/win/GDIObject.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 namespace TestWebKitAPI {
 
 // Test that there is no crash when BitmapImage::getHBITMAPOfSize() is called
 // for an image with empty frames (BitmapImage::frameAtIndex(i) return null), WebKit Bug 102689.
 
-TEST(WebCore, BitmapImageEmptyFrameTest)
+TEST(CyberCore, BitmapImageEmptyFrameTest)
 {
     IntSize sz(16, 16);
 

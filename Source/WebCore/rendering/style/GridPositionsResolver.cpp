@@ -36,7 +36,7 @@
 #include "RenderGrid.h"
 #include <cstdlib>
 
-namespace WebCore {
+namespace CyberCore {
 
 static inline bool isColumnSide(GridPositionSide side)
 {
@@ -630,4 +630,4 @@ GridSpan GridPositionsResolver::resolveGridPositionsFromStyle(const RenderGrid& 
     return GridSpan::untranslatedDefiniteGridSpan(startLine, std::max(startLine, endLine));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

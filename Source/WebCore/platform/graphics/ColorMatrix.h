@@ -28,7 +28,7 @@
 #include <math.h>
 #include <wtf/MathExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename, size_t> struct ColorComponents;
 
@@ -208,4 +208,4 @@ template<typename T, typename M, typename... Matrices> inline constexpr auto app
     return applyMatricesToColorComponents(matrix.transformedColorComponents(components), matrices...);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

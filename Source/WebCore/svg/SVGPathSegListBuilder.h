@@ -27,7 +27,7 @@
 #include "FloatPoint.h"
 #include "SVGPathConsumer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGPathSegList;
 
@@ -56,4 +56,4 @@ private:
     SVGPathSegList& m_pathSegList;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

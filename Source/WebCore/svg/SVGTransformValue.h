@@ -28,7 +28,7 @@
 #include <wtf/NeverDestroyed.h>
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FloatSize;
 
@@ -298,4 +298,4 @@ private:
     FloatPoint m_rotationCenter;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

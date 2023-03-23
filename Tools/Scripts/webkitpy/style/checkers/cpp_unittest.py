@@ -1034,7 +1034,7 @@ class CppStyleTest(CppStyleTestBase):
     def test_static_cast_readability(self):
         self.assert_lint(
             'Text* x = static_cast<Text*>(foo);',
-            'Consider using toText helper function in WebCore/dom/Text.h '
+            'Consider using toText helper function in CyberCore/dom/Text.h '
             'instead of static_cast<Text*>'
             '  [readability/check] [4]')
 
@@ -1827,7 +1827,7 @@ class CppStyleTest(CppStyleTestBase):
             'void f()\n'
             '{\n'
             '#if PLATFORM(COCOA)\n'
-            '    pageClient().clearTextIndicator(WebCore::TextIndicatorDismissalAnimation::FadeOut);\n'
+            '    pageClient().clearTextIndicator(CyberCore::TextIndicatorDismissalAnimation::FadeOut);\n'
             '#else\n'
             '    ASSERT_NOT_REACHED();\n'
             '#endif\n'
@@ -3393,7 +3393,7 @@ class OrderOfIncludesTest(CppStyleTestBase):
         os.path.isfile = self.os_path_isfile_orig
 
     def test_check_next_include_order__no_config(self):
-        self.assertEqual('Header file should not contain WebCore config.h.',
+        self.assertEqual('Header file should not contain CyberCore config.h.',
                          self.include_state.check_next_include_order(cpp_style._CONFIG_HEADER, 'Foo.h', True, True, True))
 
     def test_check_next_include_order__no_self(self):
@@ -3409,9 +3409,9 @@ class OrderOfIncludesTest(CppStyleTestBase):
                                          '')
 
     def test_check_next_include_order__likely_then_config(self):
-        self.assertEqual('Found header this file implements before WebCore config.h.',
+        self.assertEqual('Found header this file implements before CyberCore config.h.',
                          self.include_state.check_next_include_order(cpp_style._PRIMARY_HEADER, 'Foo.cpp', False, True, True))
-        self.assertEqual('Found WebCore config.h after a header this file implements.',
+        self.assertEqual('Found CyberCore config.h after a header this file implements.',
                          self.include_state.check_next_include_order(cpp_style._CONFIG_HEADER, 'Foo.cpp', False, True, True))
 
     def test_check_next_include_order__no_config_module(self):
@@ -3419,9 +3419,9 @@ class OrderOfIncludesTest(CppStyleTestBase):
                          self.include_state.check_next_include_order(cpp_style._PRIMARY_HEADER, 'Foo.cpp', False, True, False))
 
     def test_check_next_include_order__other_then_config(self):
-        self.assertEqual('Found other header before WebCore config.h.',
+        self.assertEqual('Found other header before CyberCore config.h.',
                          self.include_state.check_next_include_order(cpp_style._OTHER_HEADER, 'Foo.cpp', False, True, True))
-        self.assertEqual('Found WebCore config.h after other header.',
+        self.assertEqual('Found CyberCore config.h after other header.',
                          self.include_state.check_next_include_order(cpp_style._CONFIG_HEADER, 'Foo.cpp', False, True, True))
 
     def test_check_next_include_order__config_then_other_then_likely(self):
@@ -3508,7 +3508,7 @@ class OrderOfIncludesTest(CppStyleTestBase):
                                          '#include <wtf/Function.h>\n',
                                          '')
 
-        self.assert_language_rules_check('Source/WebCore/foo.h',
+        self.assert_language_rules_check('Source/CyberCore/foo.h',
                                          '#include <wtf/BlockPtr.h>\n',
                                          '')
 
@@ -3534,12 +3534,12 @@ class OrderOfIncludesTest(CppStyleTestBase):
         self.assert_lint(
             'typedef Vector<BlockPtr<void ()>> RemoteTargetQueue;\n',
             '',
-            file_name='Source/WebCore/foo.h')
+            file_name='Source/CyberCore/foo.h')
 
         self.assert_lint(
             'BlockPtr<void(WebItemProviderFileCallback)> _callback;\n',
             '',
-            file_name='Source/WebCore/foo.mm')
+            file_name='Source/CyberCore/foo.mm')
 
     def test_check_line_break_after_own_header(self):
         self.assert_language_rules_check('foo.cpp',
@@ -3663,7 +3663,7 @@ class OrderOfIncludesTest(CppStyleTestBase):
                                          'alphabetically sorted.  [build/include_order] [4]')
 
         # Directories in _NO_CONFIG_H_PATH_PATTERNS start with a primary header (no config.h).
-        self.assert_language_rules_check('Source/WebKitLegacy/mac/WebCoreSupport/WebAlternativeTextClient.mm',
+        self.assert_language_rules_check('Source/CyberKitLegacy/mac/CyberCoreSupport/WebAlternativeTextClient.mm',
                                          '#import "WebAlternativeTextClient.h"\n'
                                          '\n'
                                          '#import "WebViewInternal.h">\n',
@@ -4651,7 +4651,7 @@ class WebKitStyleTest(CppStyleTestBase):
 
         # 3. In a header, code inside a namespace should not be indented.
         self.assert_multi_line_lint(
-            'namespace WebCore {\n\n'
+            'namespace CyberCore {\n\n'
             'class Document {\n'
             '    int myVariable;\n'
             '};\n'
@@ -4677,7 +4677,7 @@ class WebKitStyleTest(CppStyleTestBase):
             'Code inside a namespace should not be indented.  [whitespace/indent] [4]',
             'foo.h')
         self.assert_multi_line_lint(
-            'namespace WebCore {\n'
+            'namespace CyberCore {\n'
             '#if 0\n'
             '    class Document {\n'
             '};\n'
@@ -4686,7 +4686,7 @@ class WebKitStyleTest(CppStyleTestBase):
             'Code inside a namespace should not be indented.  [whitespace/indent] [4]',
             'foo.h')
         self.assert_multi_line_lint(
-            'namespace WebCore {\n'
+            'namespace CyberCore {\n'
             'class Document {\n'
             '};\n'
             '}',
@@ -4696,7 +4696,7 @@ class WebKitStyleTest(CppStyleTestBase):
         # 4. In an implementation file (files with the extension .cpp, .c
         #    or .mm), code inside a namespace should not be indented.
         self.assert_multi_line_lint(
-            'namespace WebCore {\n\n'
+            'namespace CyberCore {\n\n'
             'Document::Foo()\n'
             '    : foo(bar)\n'
             '    , boo(far)\n'
@@ -4724,14 +4724,14 @@ class WebKitStyleTest(CppStyleTestBase):
             'Code inside a namespace should not be indented.  [whitespace/indent] [4]',
             'foo.cpp')
         self.assert_multi_line_lint(
-            'namespace WebCore {\n\n'
+            'namespace CyberCore {\n\n'
             '    const char* foo = "start:;"\n'
             '        "dfsfsfs";\n'
             '}\n',
             'Code inside a namespace should not be indented.  [whitespace/indent] [4]',
             'foo.cpp')
         self.assert_multi_line_lint(
-            'namespace WebCore {\n\n'
+            'namespace CyberCore {\n\n'
             'const char* foo(void* a = ";", // ;\n'
             '    void* b);\n'
             '    void* p;\n'
@@ -4739,7 +4739,7 @@ class WebKitStyleTest(CppStyleTestBase):
             'Code inside a namespace should not be indented.  [whitespace/indent] [4]',
             'foo.cpp')
         self.assert_multi_line_lint(
-            'namespace WebCore {\n\n'
+            'namespace CyberCore {\n\n'
             'const char* foo[] = {\n'
             '    "void* b);", // ;\n'
             '    "asfdf",\n'
@@ -4749,7 +4749,7 @@ class WebKitStyleTest(CppStyleTestBase):
             'Code inside a namespace should not be indented.  [whitespace/indent] [4]',
             'foo.cpp')
         self.assert_multi_line_lint(
-            'namespace WebCore {\n\n'
+            'namespace CyberCore {\n\n'
             'const char* foo[] = {\n'
             '    "void* b);", // }\n'
             '    "asfdf",\n'
@@ -4758,7 +4758,7 @@ class WebKitStyleTest(CppStyleTestBase):
             '',
             'foo.cpp')
         self.assert_multi_line_lint(
-            '    namespace WebCore {\n\n'
+            '    namespace CyberCore {\n\n'
             '    void Document::Foo()\n'
             '    {\n'
             'start: // infinite loops are fun!\n'
@@ -4767,21 +4767,21 @@ class WebKitStyleTest(CppStyleTestBase):
             'namespace should never be indented.  [whitespace/indent] [4]',
             'foo.cpp')
         self.assert_multi_line_lint(
-            'namespace WebCore {\n'
+            'namespace CyberCore {\n'
             '    Document::Foo() { }\n'
             '}',
             'Code inside a namespace should not be indented.'
             '  [whitespace/indent] [4]',
             'foo.cpp')
         self.assert_multi_line_lint(
-            'namespace WebCore {\n'
+            'namespace CyberCore {\n'
             '#define abc(x) x; \\\n'
             '    x\n'
             '}',
             '',
             'foo.cpp')
         self.assert_multi_line_lint(
-            'namespace WebCore {\n'
+            'namespace CyberCore {\n'
             '#define abc(x) x; \\\n'
             '    x\n'
             '    void* x;\n'
@@ -4789,7 +4789,7 @@ class WebKitStyleTest(CppStyleTestBase):
             'Code inside a namespace should not be indented.  [whitespace/indent] [4]',
             'foo.cpp')
         self.assert_multi_line_lint(
-            'namespace WebCore {\n'
+            'namespace CyberCore {\n'
             'static const char* vertexTemplate =\n'
             '    STRINGIFY(\n'
             '        attribute vec4 a_vertex;\n'
@@ -5246,7 +5246,7 @@ class WebKitStyleTest(CppStyleTestBase):
             '};\n',
             '')
         self.assert_multi_line_lint(
-            'namespace WebCore {\n'
+            'namespace CyberCore {\n'
             'int foo;\n'
             '};\n',
             '')
@@ -6114,7 +6114,7 @@ class WebKitStyleTest(CppStyleTestBase):
                          'UNDER_SCORE' + name_underscore_error_message)
         self.assert_lint('static inline const char const& const under_score;',
                          'under_score' + name_underscore_error_message)
-        self.assert_lint('WebCore::RenderObject* under_score;',
+        self.assert_lint('CyberCore::RenderObject* under_score;',
                          'under_score' + name_underscore_error_message)
         self.assert_lint('int func_name();',
                          'func_name' + name_underscore_error_message)
@@ -6490,7 +6490,7 @@ class WebKitStyleTest(CppStyleTestBase):
 
         # Test special exceptions.
         self.assertEqual('', self.perform_lint(
-            'void curlDidSendData(WebCore::CurlRequest&, unsigned long long, unsigned long long) override;',
+            'void curlDidSendData(CyberCore::CurlRequest&, unsigned long long, unsigned long long) override;',
             'NetworkDataTaskCurl.h', identifier_error_rules))
         self.assertEqual('', self.perform_lint(
             'void NetworkDataTaskCurl::cancel()',
@@ -6513,7 +6513,7 @@ class WebKitStyleTest(CppStyleTestBase):
         self.assert_lint('// comment', '')
         self.assert_lint('    // comment', '')
 
-        self.assert_lint('}  // namespace WebCore',
+        self.assert_lint('}  // namespace CyberCore',
                          'One space before end of line comments'
                          '  [whitespace/comments] [5]')
 
@@ -6522,12 +6522,12 @@ class WebKitStyleTest(CppStyleTestBase):
         self.assertEqual(
             '', self.perform_lint(
                 'WEBCORE_EXPORT int x();',
-                os.path.join('Source', 'WebCore', 'x.h'),
+                os.path.join('Source', 'CyberCore', 'x.h'),
                 export_error_rules))
         self.assertNotEqual(
             '', self.perform_lint(
                 'WEBCORE_TESTSUPPORT_EXPORT int x();',
-                os.path.join('Source', 'WebCore', 'x.h'),
+                os.path.join('Source', 'CyberCore', 'x.h'),
                 export_error_rules))
 
     def test_member_initialization_list(self):

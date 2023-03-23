@@ -30,7 +30,7 @@
 
 #include "ScrollingTreeScrollingNode.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 ScrollingTreeScrollingNodeDelegate::ScrollingTreeScrollingNodeDelegate(ScrollingTreeScrollingNode& scrollingNode)
     : m_scrollingNode(scrollingNode)
@@ -64,6 +64,6 @@ const IntPoint& ScrollingTreeScrollingNodeDelegate::scrollOrigin() const
     return m_scrollingNode.scrollOrigin();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ASYNC_SCROLLING)

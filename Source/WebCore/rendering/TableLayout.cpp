@@ -28,8 +28,8 @@
 
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 DEFINE_ALLOCATOR_WITH_HEAP_IDENTIFIER(TableLayout);
 
-} // namespace WebCore
+} // namespace CyberCore

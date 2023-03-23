@@ -144,12 +144,12 @@ std::optional<WebKit::NetworkCache::SubresourceInfo> Coder<WebKit::NetworkCache:
     if (!firstPartyForCookies)
         return std::nullopt;
 
-    std::optional<WebCore::HTTPHeaderMap> requestHeaders;
+    std::optional<CyberCore::HTTPHeaderMap> requestHeaders;
     decoder >> requestHeaders;
     if (!requestHeaders)
         return std::nullopt;
 
-    std::optional<WebCore::ResourceLoadPriority> priority;
+    std::optional<CyberCore::ResourceLoadPriority> priority;
     decoder >> priority;
     if (!priority)
         return std::nullopt;

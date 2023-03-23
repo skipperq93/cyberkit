@@ -35,7 +35,7 @@
 #include "Timer.h"
 #include <wtf/ThreadSafeRefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RequestAnimationFrameCallback;
 class WorkerGlobalScope;
@@ -78,6 +78,6 @@ private:
     bool m_savedIsActive { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

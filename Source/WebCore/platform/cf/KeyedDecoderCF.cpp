@@ -29,7 +29,7 @@
 #include <wtf/cf/TypeCastsCF.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 std::unique_ptr<KeyedDecoder> KeyedDecoder::decoder(const uint8_t* data, size_t size)
 {
@@ -186,4 +186,4 @@ void KeyedDecoderCF::endArray()
     m_arrayIndexStack.removeLast();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

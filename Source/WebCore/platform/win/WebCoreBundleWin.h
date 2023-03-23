@@ -32,7 +32,7 @@
 typedef struct __CFBundle* CFBundleRef;
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 #if USE(CF)
 WEBCORE_EXPORT CFBundleRef webKitBundle();

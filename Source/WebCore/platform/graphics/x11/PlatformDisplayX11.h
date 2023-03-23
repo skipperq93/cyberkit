@@ -36,7 +36,7 @@ typedef struct _XDisplay Display;
 // so we use void* for Visual and provide this macro to get the visual easily.
 #define WK_XVISUAL(platformDisplay) (static_cast<Visual*>(platformDisplay.visual()))
 
-namespace WebCore {
+namespace CyberCore {
 
 class PlatformDisplayX11 final : public PlatformDisplay {
 public:
@@ -87,7 +87,7 @@ private:
     mutable void* m_visual { nullptr };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_PLATFORM_DISPLAY(PlatformDisplayX11, X11)
 

@@ -1169,8 +1169,8 @@ msgid "Enable Timeline profiling"
 msgstr "Luba ajatelje profileerimine"
 
 #: ../../../WebKit/gtk/webkit/webkitwebinspector.cpp:321
-msgid "Profile the WebCore instrumentation."
-msgstr "WebCore'i jälgimisvihjete profileerimine"
+msgid "Profile the CyberCore instrumentation."
+msgstr "CyberCore'i jälgimisvihjete profileerimine"
 
 #: ../../../WebKit/gtk/webkit/webkitwebnavigationaction.cpp:148
 msgid "Reason"

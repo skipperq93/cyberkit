@@ -30,7 +30,7 @@
 
 #include <CoreText/CoreText.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct FontInterrogation {
     FontInterrogation(CTFontRef font)
@@ -79,4 +79,4 @@ struct FontInterrogation {
     bool aatShaping { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

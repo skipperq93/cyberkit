@@ -22,7 +22,7 @@
 
 #include "SVGTextPositioningElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGTextElement final : public SVGTextPositioningElement {
     WTF_MAKE_ISO_ALLOCATED(SVGTextElement);
@@ -36,4 +36,4 @@ private:
     bool childShouldCreateRenderer(const Node&) const override;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

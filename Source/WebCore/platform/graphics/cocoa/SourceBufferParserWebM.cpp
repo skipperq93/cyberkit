@@ -230,7 +230,7 @@ template<> struct LogArgument<webm::Id> {
 
 } // namespace WTF
 
-namespace WebCore {
+namespace CyberCore {
 
 // FIXME: Remove this once kCMVideoCodecType_VP9 is added to CMFormatDescription.h
 constexpr CMVideoCodecType kCMVideoCodecType_VP9 { 'vp09' };

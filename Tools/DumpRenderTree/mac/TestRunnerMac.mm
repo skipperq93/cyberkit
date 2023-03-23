@@ -48,7 +48,7 @@
 #import <CyberKit/DOMHTMLInputElementPrivate.h>
 #import <CyberKit/WebApplicationCache.h>
 #import <CyberKit/WebBackForwardList.h>
-#import <CyberKit/WebCoreStatistics.h>
+#import <CyberKit/CyberCoreStatistics.h>
 #import <CyberKit/WebDOMOperationsPrivate.h>
 #import <CyberKit/WebDataSource.h>
 #import <CyberKit/WebDatabaseManagerPrivate.h>
@@ -81,8 +81,8 @@
 
 #if PLATFORM(IOS_FAMILY)
 #import "UIKitSPI.h"
-#import <CyberKit/WebCoreThread.h>
-#import <CyberKit/WebCoreThreadMessage.h>
+#import <CyberKit/CyberCoreThread.h>
+#import <CyberKit/CyberCoreThreadMessage.h>
 #import <CyberKit/WebDOMOperationsPrivate.h>
 #endif
 
@@ -125,7 +125,7 @@
 #endif
 
 @interface WebGeolocationPosition (Internal)
-- (id)initWithGeolocationPosition:(WebCore::GeolocationPositionData&&)coreGeolocationPosition;
+- (id)initWithGeolocationPosition:(CyberCore::GeolocationPositionData&&)coreGeolocationPosition;
 @end
 
 TestRunner::~TestRunner()
@@ -461,7 +461,7 @@ void TestRunner::setMockGeolocationPosition(double latitude, double longitude, d
         // Test the exposed API.
         position = adoptNS([[WebGeolocationPosition alloc] initWithTimestamp:WallTime::now().secondsSinceEpoch().seconds() latitude:latitude longitude:longitude accuracy:accuracy]);
     } else {
-        WebCore::GeolocationPositionData geolocationPosition { WallTime::now().secondsSinceEpoch().seconds(), latitude, longitude, accuracy };
+        CyberCore::GeolocationPositionData geolocationPosition { WallTime::now().secondsSinceEpoch().seconds(), latitude, longitude, accuracy };
         if (providesAltitude)
             geolocationPosition.altitude = altitude;
         if (providesAltitudeAccuracy)

@@ -24,7 +24,7 @@
  */
 
 #include "config.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 
 #include "ShareableBitmap.h"
 #include "ShareableResource.h"
@@ -195,7 +195,7 @@
 // FIXME: Seems like we could use std::tuple to cut down the code below a lot!
 
 namespace IPC {
-using namespace WebCore;
+using namespace CyberCore;
 using namespace WebKit;
 
 void ArgumentCoder<DOMCacheEngine::Record>::encode(Encoder& encoder, const DOMCacheEngine::Record& record)
@@ -235,11 +235,11 @@ std::optional<DOMCacheEngine::Record> ArgumentCoder<DOMCacheEngine::Record>::dec
     if (!decoder.decode(requestHeadersGuard))
         return std::nullopt;
 
-    WebCore::ResourceRequest request;
+    CyberCore::ResourceRequest request;
     if (!decoder.decode(request))
         return std::nullopt;
 
-    std::optional<WebCore::FetchOptions> options;
+    std::optional<CyberCore::FetchOptions> options;
     decoder >> options;
     if (!options)
         return std::nullopt;
@@ -252,7 +252,7 @@ std::optional<DOMCacheEngine::Record> ArgumentCoder<DOMCacheEngine::Record>::dec
     if (!decoder.decode(responseHeadersGuard))
         return std::nullopt;
 
-    WebCore::ResourceResponse response;
+    CyberCore::ResourceResponse response;
     if (!decoder.decode(response))
         return std::nullopt;
 
@@ -264,7 +264,7 @@ std::optional<DOMCacheEngine::Record> ArgumentCoder<DOMCacheEngine::Record>::dec
     if (!decoder.decode(responseBodySize))
         return std::nullopt;
 
-    WebCore::DOMCacheEngine::ResponseBody responseBody;
+    CyberCore::DOMCacheEngine::ResponseBody responseBody;
     bool hasSharedBufferBody;
     if (!decoder.decode(hasSharedBufferBody))
         return std::nullopt;
@@ -279,7 +279,7 @@ std::optional<DOMCacheEngine::Record> ArgumentCoder<DOMCacheEngine::Record>::dec
         if (!decoder.decode(hasFormDataBody))
             return std::nullopt;
         if (hasFormDataBody) {
-            std::optional<Ref<WebCore::FormData>> formData;
+            std::optional<Ref<CyberCore::FormData>> formData;
             decoder >> formData;
             if (!formData)
                 return std::nullopt;
@@ -524,7 +524,7 @@ bool ArgumentCoder<RefPtr<Image>>::decode(Decoder& decoder, RefPtr<Image>& image
     return true;
 }
 
-void ArgumentCoder<WebCore::Font>::encode(Encoder& encoder, const WebCore::Font& font)
+void ArgumentCoder<CyberCore::Font>::encode(Encoder& encoder, const CyberCore::Font& font)
 {
     encoder << font.origin();
     encoder << (font.isInterstitial() ? Font::Interstitial::Yes : Font::Interstitial::No);
@@ -601,7 +601,7 @@ bool ArgumentCoder<Cursor>::decode(Decoder& decoder, Cursor& cursor)
 
     if (type != Cursor::Custom) {
         const Cursor& cursorReference = Cursor::fromType(type);
-        // Calling platformCursor here will eagerly create the platform cursor for the cursor singletons inside WebCore.
+        // Calling platformCursor here will eagerly create the platform cursor for the cursor singletons inside CyberCore.
         // This will avoid having to re-create the platform cursors over and over.
         (void)cursorReference.platformCursor();
 
@@ -981,14 +981,14 @@ bool ArgumentCoder<FilterOperations>::decode(Decoder& decoder, FilterOperations&
     return true;
 }
 
-void ArgumentCoder<RefPtr<WebCore::FilterOperation>>::encode(Encoder& encoder, const RefPtr<WebCore::FilterOperation>& operation)
+void ArgumentCoder<RefPtr<CyberCore::FilterOperation>>::encode(Encoder& encoder, const RefPtr<CyberCore::FilterOperation>& operation)
 {
     encoder << !!operation;
     if (operation)
         encoder << *operation;
 }
 
-WARN_UNUSED_RETURN bool ArgumentCoder<RefPtr<WebCore::FilterOperation>>::decode(Decoder& decoder, RefPtr<WebCore::FilterOperation>& value)
+WARN_UNUSED_RETURN bool ArgumentCoder<RefPtr<CyberCore::FilterOperation>>::decode(Decoder& decoder, RefPtr<CyberCore::FilterOperation>& value)
 {
     std::optional<bool> isNull;
     decoder >> isNull;
@@ -1092,14 +1092,14 @@ bool ArgumentCoder<MediaPlaybackTargetContext>::decode(Decoder& decoder, MediaPl
 }
 #endif
 
-void ArgumentCoder<RefPtr<WebCore::SerializedScriptValue>>::encode(Encoder& encoder, const RefPtr<WebCore::SerializedScriptValue>& instance)
+void ArgumentCoder<RefPtr<CyberCore::SerializedScriptValue>>::encode(Encoder& encoder, const RefPtr<CyberCore::SerializedScriptValue>& instance)
 {
     encoder << !!instance;
     if (instance)
         instance->encode(encoder);
 }
 
-std::optional<RefPtr<WebCore::SerializedScriptValue>> ArgumentCoder<RefPtr<WebCore::SerializedScriptValue>>::decode(Decoder& decoder)
+std::optional<RefPtr<CyberCore::SerializedScriptValue>> ArgumentCoder<RefPtr<CyberCore::SerializedScriptValue>>::decode(Decoder& decoder)
 {
     std::optional<bool> nonEmpty;
     decoder >> nonEmpty;
@@ -1187,12 +1187,12 @@ bool ArgumentCoder<ServiceWorkerOrClientIdentifier>::decode(Decoder& decoder, Se
 
 #if ENABLE(ATTACHMENT_ELEMENT)
 
-void ArgumentCoder<SerializedAttachmentData>::encode(IPC::Encoder& encoder, const WebCore::SerializedAttachmentData& data)
+void ArgumentCoder<SerializedAttachmentData>::encode(IPC::Encoder& encoder, const CyberCore::SerializedAttachmentData& data)
 {
     encoder << data.identifier << data.mimeType << data.data;
 }
 
-std::optional<SerializedAttachmentData> ArgumentCoder<WebCore::SerializedAttachmentData>::decode(IPC::Decoder& decoder)
+std::optional<SerializedAttachmentData> ArgumentCoder<CyberCore::SerializedAttachmentData>::decode(IPC::Decoder& decoder)
 {
     auto identifier = decoder.decode<String>();
     auto mimeType = decoder.decode<String>();
@@ -1207,7 +1207,7 @@ std::optional<SerializedAttachmentData> ArgumentCoder<WebCore::SerializedAttachm
 #endif // ENABLE(ATTACHMENT_ELEMENT)
 
 #if ENABLE(VIDEO)
-void ArgumentCoder<WebCore::SerializedPlatformDataCueValue>::encode(Encoder& encoder, const SerializedPlatformDataCueValue& value)
+void ArgumentCoder<CyberCore::SerializedPlatformDataCueValue>::encode(Encoder& encoder, const SerializedPlatformDataCueValue& value)
 {
     bool hasPlatformData = value.encodingRequiresPlatformData();
     encoder << hasPlatformData;
@@ -1217,13 +1217,13 @@ void ArgumentCoder<WebCore::SerializedPlatformDataCueValue>::encode(Encoder& enc
         encodePlatformData(encoder, value);
 }
 
-std::optional<SerializedPlatformDataCueValue> ArgumentCoder<WebCore::SerializedPlatformDataCueValue>::decode(IPC::Decoder& decoder)
+std::optional<SerializedPlatformDataCueValue> ArgumentCoder<CyberCore::SerializedPlatformDataCueValue>::decode(IPC::Decoder& decoder)
 {
     bool hasPlatformData;
     if (!decoder.decode(hasPlatformData))
         return std::nullopt;
 
-    WebCore::SerializedPlatformDataCueValue::PlatformType type;
+    CyberCore::SerializedPlatformDataCueValue::PlatformType type;
     if (!decoder.decode(type))
         return std::nullopt;
 
@@ -1246,7 +1246,7 @@ constexpr bool useUnixDomainSockets()
 
 static constexpr size_t minimumPageSize = 4096;
 
-void ArgumentCoder<WebCore::FragmentedSharedBuffer>::encode(Encoder& encoder, const WebCore::FragmentedSharedBuffer& buffer)
+void ArgumentCoder<CyberCore::FragmentedSharedBuffer>::encode(Encoder& encoder, const CyberCore::FragmentedSharedBuffer& buffer)
 {
     size_t bufferSize = buffer.size();
     encoder << bufferSize;
@@ -1272,7 +1272,7 @@ void ArgumentCoder<WebCore::FragmentedSharedBuffer>::encode(Encoder& encoder, co
     }
 }
 
-std::optional<Ref<WebCore::FragmentedSharedBuffer>> ArgumentCoder<WebCore::FragmentedSharedBuffer>::decode(Decoder& decoder)
+std::optional<Ref<CyberCore::FragmentedSharedBuffer>> ArgumentCoder<CyberCore::FragmentedSharedBuffer>::decode(Decoder& decoder)
 {
     size_t bufferSize = 0;
     if (!decoder.decode(bufferSize))
@@ -1302,12 +1302,12 @@ std::optional<Ref<WebCore::FragmentedSharedBuffer>> ArgumentCoder<WebCore::Fragm
     return SharedBuffer::create(static_cast<unsigned char*>(sharedMemoryBuffer->data()), bufferSize);
 }
 
-void ArgumentCoder<WebCore::SharedBuffer>::encode(Encoder& encoder, const WebCore::SharedBuffer& buffer)
+void ArgumentCoder<CyberCore::SharedBuffer>::encode(Encoder& encoder, const CyberCore::SharedBuffer& buffer)
 {
-    encoder << static_cast<const WebCore::FragmentedSharedBuffer&>(buffer);
+    encoder << static_cast<const CyberCore::FragmentedSharedBuffer&>(buffer);
 }
 
-std::optional<Ref<WebCore::SharedBuffer>> ArgumentCoder<WebCore::SharedBuffer>::decode(Decoder& decoder)
+std::optional<Ref<CyberCore::SharedBuffer>> ArgumentCoder<CyberCore::SharedBuffer>::decode(Decoder& decoder)
 {
     if (auto buffer = decoder.decode<Ref<FragmentedSharedBuffer>>())
         return (*buffer)->makeContiguous();
@@ -1335,7 +1335,7 @@ static ShareableResource::Handle tryConvertToShareableResourceHandle(const Scrip
     return ShareableResource::Handle { };
 }
 
-static std::optional<WebCore::ScriptBuffer> decodeScriptBufferAsShareableResourceHandle(Decoder& decoder)
+static std::optional<CyberCore::ScriptBuffer> decodeScriptBufferAsShareableResourceHandle(Decoder& decoder)
 {
     ShareableResource::Handle handle;
     if (!decoder.decode(handle) || handle.isNull())
@@ -1343,11 +1343,11 @@ static std::optional<WebCore::ScriptBuffer> decodeScriptBufferAsShareableResourc
     auto buffer = handle.tryWrapInSharedBuffer();
     if (!buffer)
         return std::nullopt;
-    return WebCore::ScriptBuffer { WTFMove(buffer) };
+    return CyberCore::ScriptBuffer { WTFMove(buffer) };
 }
 #endif
 
-void ArgumentCoder<WebCore::ScriptBuffer>::encode(Encoder& encoder, const WebCore::ScriptBuffer& script)
+void ArgumentCoder<CyberCore::ScriptBuffer>::encode(Encoder& encoder, const CyberCore::ScriptBuffer& script)
 {
 #if ENABLE(SHAREABLE_RESOURCE) && PLATFORM(COCOA)
     auto handle = tryConvertToShareableResourceHandle(script);
@@ -1361,7 +1361,7 @@ void ArgumentCoder<WebCore::ScriptBuffer>::encode(Encoder& encoder, const WebCor
     encoder << RefPtr { script.buffer() };
 }
 
-std::optional<WebCore::ScriptBuffer> ArgumentCoder<WebCore::ScriptBuffer>::decode(Decoder& decoder)
+std::optional<CyberCore::ScriptBuffer> ArgumentCoder<CyberCore::ScriptBuffer>::decode(Decoder& decoder)
 {
 #if ENABLE(SHAREABLE_RESOURCE) && PLATFORM(COCOA)
     std::optional<bool> isShareableResourceHandle;
@@ -1373,7 +1373,7 @@ std::optional<WebCore::ScriptBuffer> ArgumentCoder<WebCore::ScriptBuffer>::decod
 #endif
 
     if (auto buffer = decoder.decode<RefPtr<FragmentedSharedBuffer>>())
-        return WebCore::ScriptBuffer { WTFMove(*buffer) };
+        return CyberCore::ScriptBuffer { WTFMove(*buffer) };
     return std::nullopt;
 }
 
@@ -1455,66 +1455,66 @@ void ArgumentCoder<ControlPart>::encode(Encoder& encoder, const ControlPart& par
     encoder << part.type();
 
     switch (part.type()) {
-    case WebCore::StyleAppearance::None:
-    case WebCore::StyleAppearance::Auto:
+    case CyberCore::StyleAppearance::None:
+    case CyberCore::StyleAppearance::Auto:
         break;
 
-    case WebCore::StyleAppearance::Checkbox:
-    case WebCore::StyleAppearance::Radio:
-    case WebCore::StyleAppearance::PushButton:
-    case WebCore::StyleAppearance::SquareButton:
-    case WebCore::StyleAppearance::Button:
-    case WebCore::StyleAppearance::DefaultButton:
-    case WebCore::StyleAppearance::Listbox:
-    case WebCore::StyleAppearance::Menulist:
-    case WebCore::StyleAppearance::MenulistButton:
+    case CyberCore::StyleAppearance::Checkbox:
+    case CyberCore::StyleAppearance::Radio:
+    case CyberCore::StyleAppearance::PushButton:
+    case CyberCore::StyleAppearance::SquareButton:
+    case CyberCore::StyleAppearance::Button:
+    case CyberCore::StyleAppearance::DefaultButton:
+    case CyberCore::StyleAppearance::Listbox:
+    case CyberCore::StyleAppearance::Menulist:
+    case CyberCore::StyleAppearance::MenulistButton:
         break;
 
-    case WebCore::StyleAppearance::Meter:
-        encoder << downcast<WebCore::MeterPart>(part);
+    case CyberCore::StyleAppearance::Meter:
+        encoder << downcast<CyberCore::MeterPart>(part);
         break;
 
-    case WebCore::StyleAppearance::ProgressBar:
-        encoder << downcast<WebCore::ProgressBarPart>(part);
+    case CyberCore::StyleAppearance::ProgressBar:
+        encoder << downcast<CyberCore::ProgressBarPart>(part);
         break;
 
-    case WebCore::StyleAppearance::SliderHorizontal:
-    case WebCore::StyleAppearance::SliderVertical:
-        encoder << downcast<WebCore::SliderTrackPart>(part);
+    case CyberCore::StyleAppearance::SliderHorizontal:
+    case CyberCore::StyleAppearance::SliderVertical:
+        encoder << downcast<CyberCore::SliderTrackPart>(part);
         break;
 
-    case WebCore::StyleAppearance::SearchField:
+    case CyberCore::StyleAppearance::SearchField:
         break;
             
 #if ENABLE(APPLE_PAY)
-    case WebCore::StyleAppearance::ApplePayButton:
-        encoder << downcast<WebCore::ApplePayButtonPart>(part);
+    case CyberCore::StyleAppearance::ApplePayButton:
+        encoder << downcast<CyberCore::ApplePayButtonPart>(part);
         break;
 #endif
 
 #if ENABLE(ATTACHMENT_ELEMENT)
-    case WebCore::StyleAppearance::Attachment:
-    case WebCore::StyleAppearance::BorderlessAttachment:
+    case CyberCore::StyleAppearance::Attachment:
+    case CyberCore::StyleAppearance::BorderlessAttachment:
 #endif
-    case WebCore::StyleAppearance::TextArea:
-    case WebCore::StyleAppearance::TextField:
-    case WebCore::StyleAppearance::CapsLockIndicator:
+    case CyberCore::StyleAppearance::TextArea:
+    case CyberCore::StyleAppearance::TextField:
+    case CyberCore::StyleAppearance::CapsLockIndicator:
 #if ENABLE(INPUT_TYPE_COLOR)
-    case WebCore::StyleAppearance::ColorWell:
+    case CyberCore::StyleAppearance::ColorWell:
 #endif
 #if ENABLE(SERVICE_CONTROLS)
-    case WebCore::StyleAppearance::ImageControlsButton:
+    case CyberCore::StyleAppearance::ImageControlsButton:
 #endif
-    case WebCore::StyleAppearance::InnerSpinButton:
+    case CyberCore::StyleAppearance::InnerSpinButton:
 #if ENABLE(DATALIST_ELEMENT)
-    case WebCore::StyleAppearance::ListButton:
+    case CyberCore::StyleAppearance::ListButton:
 #endif
-    case WebCore::StyleAppearance::SearchFieldDecoration:
-    case WebCore::StyleAppearance::SearchFieldResultsDecoration:
-    case WebCore::StyleAppearance::SearchFieldResultsButton:
-    case WebCore::StyleAppearance::SearchFieldCancelButton:
-    case WebCore::StyleAppearance::SliderThumbHorizontal:
-    case WebCore::StyleAppearance::SliderThumbVertical:
+    case CyberCore::StyleAppearance::SearchFieldDecoration:
+    case CyberCore::StyleAppearance::SearchFieldResultsDecoration:
+    case CyberCore::StyleAppearance::SearchFieldResultsButton:
+    case CyberCore::StyleAppearance::SearchFieldCancelButton:
+    case CyberCore::StyleAppearance::SliderThumbHorizontal:
+    case CyberCore::StyleAppearance::SliderThumbVertical:
         break;
     }
 }
@@ -1526,63 +1526,63 @@ void ArgumentCoder<ControlPart>::encode<StreamConnectionEncoder>(StreamConnectio
 
 std::optional<Ref<ControlPart>> ArgumentCoder<ControlPart>::decode(Decoder& decoder)
 {
-    std::optional<WebCore::StyleAppearance> type;
+    std::optional<CyberCore::StyleAppearance> type;
     decoder >> type;
     if (!type)
         return std::nullopt;
 
     switch (*type) {
-    case WebCore::StyleAppearance::None:
-    case WebCore::StyleAppearance::Auto:
+    case CyberCore::StyleAppearance::None:
+    case CyberCore::StyleAppearance::Auto:
         break;
 
-    case WebCore::StyleAppearance::Checkbox:
-    case WebCore::StyleAppearance::Radio:
-        return WebCore::ToggleButtonPart::create(*type);
+    case CyberCore::StyleAppearance::Checkbox:
+    case CyberCore::StyleAppearance::Radio:
+        return CyberCore::ToggleButtonPart::create(*type);
 
-    case WebCore::StyleAppearance::PushButton:
-    case WebCore::StyleAppearance::SquareButton:
-    case WebCore::StyleAppearance::Button:
-    case WebCore::StyleAppearance::DefaultButton:
-        return WebCore::ButtonPart::create(*type);
+    case CyberCore::StyleAppearance::PushButton:
+    case CyberCore::StyleAppearance::SquareButton:
+    case CyberCore::StyleAppearance::Button:
+    case CyberCore::StyleAppearance::DefaultButton:
+        return CyberCore::ButtonPart::create(*type);
 
-    case WebCore::StyleAppearance::Menulist:
-        return WebCore::MenuListPart::create();
+    case CyberCore::StyleAppearance::Menulist:
+        return CyberCore::MenuListPart::create();
 
-    case WebCore::StyleAppearance::MenulistButton:
-        return WebCore::MenuListButtonPart::create();
+    case CyberCore::StyleAppearance::MenulistButton:
+        return CyberCore::MenuListButtonPart::create();
 
-    case WebCore::StyleAppearance::Meter: {
-        std::optional<Ref<WebCore::MeterPart>> meterPart;
+    case CyberCore::StyleAppearance::Meter: {
+        std::optional<Ref<CyberCore::MeterPart>> meterPart;
         decoder >> meterPart;
         if (meterPart)
             return WTFMove(*meterPart);
         break;
     }
 
-    case WebCore::StyleAppearance::ProgressBar: {
-        std::optional<Ref<WebCore::ProgressBarPart>> progressBarPart;
+    case CyberCore::StyleAppearance::ProgressBar: {
+        std::optional<Ref<CyberCore::ProgressBarPart>> progressBarPart;
         decoder >> progressBarPart;
         if (progressBarPart)
             return WTFMove(*progressBarPart);
         break;
     }
 
-    case WebCore::StyleAppearance::SliderHorizontal:
-    case WebCore::StyleAppearance::SliderVertical: {
-        std::optional<Ref<WebCore::SliderTrackPart>> sliderTrackPart;
+    case CyberCore::StyleAppearance::SliderHorizontal:
+    case CyberCore::StyleAppearance::SliderVertical: {
+        std::optional<Ref<CyberCore::SliderTrackPart>> sliderTrackPart;
         decoder >> sliderTrackPart;
         if (sliderTrackPart)
             return WTFMove(*sliderTrackPart);
         break;
     }
 
-    case WebCore::StyleAppearance::SearchField:
-        return WebCore::SearchFieldPart::create();
+    case CyberCore::StyleAppearance::SearchField:
+        return CyberCore::SearchFieldPart::create();
 
 #if ENABLE(APPLE_PAY)
-    case WebCore::StyleAppearance::ApplePayButton: {
-        std::optional<Ref<WebCore::ApplePayButtonPart>> applePayButtonPart;
+    case CyberCore::StyleAppearance::ApplePayButton: {
+        std::optional<Ref<CyberCore::ApplePayButtonPart>> applePayButtonPart;
         decoder >> applePayButtonPart;
         if (applePayButtonPart)
             return WTFMove(*applePayButtonPart);
@@ -1591,51 +1591,51 @@ std::optional<Ref<ControlPart>> ArgumentCoder<ControlPart>::decode(Decoder& deco
 #endif
 
 #if ENABLE(ATTACHMENT_ELEMENT)
-    case WebCore::StyleAppearance::Attachment:
-    case WebCore::StyleAppearance::BorderlessAttachment:
+    case CyberCore::StyleAppearance::Attachment:
+    case CyberCore::StyleAppearance::BorderlessAttachment:
 #endif
         break;
 
-    case WebCore::StyleAppearance::Listbox:
-    case WebCore::StyleAppearance::TextArea:
-        return WebCore::TextAreaPart::create(*type);
+    case CyberCore::StyleAppearance::Listbox:
+    case CyberCore::StyleAppearance::TextArea:
+        return CyberCore::TextAreaPart::create(*type);
 
-    case WebCore::StyleAppearance::TextField:
-        return WebCore::TextFieldPart::create();
+    case CyberCore::StyleAppearance::TextField:
+        return CyberCore::TextFieldPart::create();
 
-    case WebCore::StyleAppearance::CapsLockIndicator:
+    case CyberCore::StyleAppearance::CapsLockIndicator:
         break;
 
 #if ENABLE(INPUT_TYPE_COLOR)
-    case WebCore::StyleAppearance::ColorWell:
-        return WebCore::ColorWellPart::create();
+    case CyberCore::StyleAppearance::ColorWell:
+        return CyberCore::ColorWellPart::create();
 #endif
 #if ENABLE(SERVICE_CONTROLS)
-    case WebCore::StyleAppearance::ImageControlsButton:
-        return WebCore::ImageControlsButtonPart::create();
+    case CyberCore::StyleAppearance::ImageControlsButton:
+        return CyberCore::ImageControlsButtonPart::create();
 #endif
 
-    case WebCore::StyleAppearance::InnerSpinButton:
-        return WebCore::InnerSpinButtonPart::create();
+    case CyberCore::StyleAppearance::InnerSpinButton:
+        return CyberCore::InnerSpinButtonPart::create();
 
 #if ENABLE(DATALIST_ELEMENT)
-    case WebCore::StyleAppearance::ListButton:
+    case CyberCore::StyleAppearance::ListButton:
         break;
 #endif
 
-    case WebCore::StyleAppearance::SearchFieldDecoration:
+    case CyberCore::StyleAppearance::SearchFieldDecoration:
         break;
 
-    case WebCore::StyleAppearance::SearchFieldResultsDecoration:
-    case WebCore::StyleAppearance::SearchFieldResultsButton:
-        return WebCore::SearchFieldResultsPart::create(*type);
+    case CyberCore::StyleAppearance::SearchFieldResultsDecoration:
+    case CyberCore::StyleAppearance::SearchFieldResultsButton:
+        return CyberCore::SearchFieldResultsPart::create(*type);
 
-    case WebCore::StyleAppearance::SearchFieldCancelButton:
-        return WebCore::SearchFieldCancelButtonPart::create();
+    case CyberCore::StyleAppearance::SearchFieldCancelButton:
+        return CyberCore::SearchFieldCancelButtonPart::create();
 
-    case WebCore::StyleAppearance::SliderThumbHorizontal:
-    case WebCore::StyleAppearance::SliderThumbVertical:
-        return WebCore::SliderThumbPart::create(*type);
+    case CyberCore::StyleAppearance::SliderThumbHorizontal:
+    case CyberCore::StyleAppearance::SliderThumbVertical:
+        return CyberCore::SliderThumbPart::create(*type);
     }
 
     ASSERT_NOT_REACHED();
@@ -2129,7 +2129,7 @@ std::optional<Ref<SVGFilter>> ArgumentCoder<SVGFilter>::decode(Decoder& decoder)
         expression.uncheckedAppend({ effects[term.index], term.geometry, term.level });
     }
 
-    auto filter = WebCore::SVGFilter::create(*targetBoundingBox, *primitiveUnits, WTFMove(expression));
+    auto filter = CyberCore::SVGFilter::create(*targetBoundingBox, *primitiveUnits, WTFMove(expression));
     if (!filter)
         return std::nullopt;
 
@@ -2211,15 +2211,15 @@ std::optional<Ref<Filter>> ArgumentCoder<Filter>::decode(Decoder& decoder)
 }
 
 #if ENABLE(ENCRYPTED_MEDIA)
-void ArgumentCoder<WebCore::CDMInstanceSession::Message>::encode(Encoder& encoder, const WebCore::CDMInstanceSession::Message& message)
+void ArgumentCoder<CyberCore::CDMInstanceSession::Message>::encode(Encoder& encoder, const CyberCore::CDMInstanceSession::Message& message)
 {
     encoder << message.first;
     encoder << message.second;
 }
 
-std::optional<WebCore::CDMInstanceSession::Message>  ArgumentCoder<WebCore::CDMInstanceSession::Message>::decode(Decoder& decoder)
+std::optional<CyberCore::CDMInstanceSession::Message>  ArgumentCoder<CyberCore::CDMInstanceSession::Message>::decode(Decoder& decoder)
 {
-    WebCore::CDMInstanceSession::MessageType type;
+    CyberCore::CDMInstanceSession::MessageType type;
     if (!decoder.decode(type))
         return std::nullopt;
 
@@ -2227,7 +2227,7 @@ std::optional<WebCore::CDMInstanceSession::Message>  ArgumentCoder<WebCore::CDMI
     if (UNLIKELY(!buffer))
         return std::nullopt;
 
-    return std::make_optional<WebCore::CDMInstanceSession::Message>({ type, WTFMove(*buffer) });
+    return std::make_optional<CyberCore::CDMInstanceSession::Message>({ type, WTFMove(*buffer) });
 }
 #endif // ENABLE(ENCRYPTED_MEDIA)
 

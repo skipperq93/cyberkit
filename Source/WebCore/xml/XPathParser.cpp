@@ -37,11 +37,11 @@
 #include <wtf/StdLibExtras.h>
 #include <wtf/text/StringHash.h>
 
-extern int xpathyyparse(WebCore::XPath::Parser&);
+extern int xpathyyparse(CyberCore::XPath::Parser&);
 
 #include "XPathGrammar.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace XPath {
 
 struct Parser::Token {

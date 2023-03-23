@@ -41,30 +41,30 @@ class Connection;
 class Decoder;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebMDNSRegister {
 public:
     WebMDNSRegister() = default;
 
-    void unregisterMDNSNames(WebCore::ScriptExecutionContextIdentifier);
-    void registerMDNSName(WebCore::ScriptExecutionContextIdentifier, const String& ipAddress, CompletionHandler<void(const String&, std::optional<WebCore::MDNSRegisterError>)>&&);
+    void unregisterMDNSNames(CyberCore::ScriptExecutionContextIdentifier);
+    void registerMDNSName(CyberCore::ScriptExecutionContextIdentifier, const String& ipAddress, CompletionHandler<void(const String&, std::optional<CyberCore::MDNSRegisterError>)>&&);
 
     void didReceiveMessage(IPC::Connection&, IPC::Decoder&);
 
 private:
-    void finishedRegisteringMDNSName(MDNSRegisterIdentifier, String&&, std::optional<WebCore::MDNSRegisterError>);
+    void finishedRegisteringMDNSName(MDNSRegisterIdentifier, String&&, std::optional<CyberCore::MDNSRegisterError>);
 
     struct PendingRegistration {
-        CompletionHandler<void(const String&, std::optional<WebCore::MDNSRegisterError>)> callback;
-        WebCore::ScriptExecutionContextIdentifier documentIdentifier;
+        CompletionHandler<void(const String&, std::optional<CyberCore::MDNSRegisterError>)> callback;
+        CyberCore::ScriptExecutionContextIdentifier documentIdentifier;
         String ipAddress;
     };
     HashMap<MDNSRegisterIdentifier, PendingRegistration> m_pendingRegistrations;
 
-    HashMap<WebCore::ScriptExecutionContextIdentifier, HashMap<String, String>> m_registeringDocuments;
+    HashMap<CyberCore::ScriptExecutionContextIdentifier, HashMap<String, String>> m_registeringDocuments;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_RTC)

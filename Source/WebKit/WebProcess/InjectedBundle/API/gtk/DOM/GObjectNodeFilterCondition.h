@@ -18,33 +18,33 @@
 
 #pragma once
 
-#include "WebKitDOMNodeFilter.h"
+#include "CyberKitDOMNodeFilter.h"
 #include <CyberCore/NodeFilterCondition.h>
 #include <wtf/glib/GRefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 class Node;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
-class GObjectNodeFilterCondition final : public WebCore::NodeFilterCondition {
+class GObjectNodeFilterCondition final : public CyberCore::NodeFilterCondition {
 public:
-    static Ref<GObjectNodeFilterCondition> create(WebKitDOMNodeFilter* filter)
+    static Ref<GObjectNodeFilterCondition> create(CyberKitDOMNodeFilter* filter)
     {
         return adoptRef(*new GObjectNodeFilterCondition(filter));
     }
 
-    unsigned short acceptNode(WebCore::Node&) const override;
+    unsigned short acceptNode(CyberCore::Node&) const override;
 
 private:
-    GObjectNodeFilterCondition(WebKitDOMNodeFilter* filter)
+    GObjectNodeFilterCondition(CyberKitDOMNodeFilter* filter)
         : m_filter(filter)
     {
     }
     ~GObjectNodeFilterCondition();
 
-    GRefPtr<WebKitDOMNodeFilter> m_filter;
+    GRefPtr<CyberKitDOMNodeFilter> m_filter;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

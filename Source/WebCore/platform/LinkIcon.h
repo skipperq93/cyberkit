@@ -30,7 +30,7 @@
 #include <wtf/URL.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct LinkIcon {
     URL url;
@@ -40,4 +40,4 @@ struct LinkIcon {
     Vector<std::pair<String, String>> attributes;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

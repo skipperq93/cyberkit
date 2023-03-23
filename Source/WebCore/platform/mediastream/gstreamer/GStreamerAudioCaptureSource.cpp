@@ -33,7 +33,7 @@
 #include <gst/gst.h>
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static CapabilityValueOrRange defaultVolumeCapability()
 {
@@ -213,6 +213,6 @@ void GStreamerAudioCaptureSource::setInterruptedForTesting(bool isInterrupted)
     RealtimeMediaSource::setInterruptedForTesting(isInterrupted);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM) && USE(GSTREAMER)

@@ -35,8 +35,8 @@
 #include <CyberCore/Geolocation.h>
 #include <CyberCore/GeolocationPositionData.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 WebGeolocationClient::~WebGeolocationClient()
 {
@@ -83,6 +83,6 @@ void WebGeolocationClient::cancelPermissionRequest(Geolocation& geolocation)
     m_page.geolocationPermissionRequestManager().cancelRequestForGeolocation(geolocation);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GEOLOCATION)

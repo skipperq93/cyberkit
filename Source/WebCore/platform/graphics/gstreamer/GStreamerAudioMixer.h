@@ -24,7 +24,7 @@
 #include "GRefPtrGStreamer.h"
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class GStreamerAudioMixer {
     friend NeverDestroyed<GStreamerAudioMixer>;
@@ -43,6 +43,6 @@ private:
     GRefPtr<GstElement> m_mixer;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(GSTREAMER)

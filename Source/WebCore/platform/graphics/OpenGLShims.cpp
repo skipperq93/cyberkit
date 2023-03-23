@@ -29,7 +29,7 @@
 #include <wtf/text/CString.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 OpenGLFunctionTable* openGLFunctionTable()
 {
@@ -229,6 +229,6 @@ bool initializeOpenGLShims()
     return success;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBGL)

@@ -33,7 +33,7 @@
 #endif
 
 #if USE(CURL) || USE(SOUP)
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #endif
 
 namespace WebKit {
@@ -206,12 +206,12 @@ std::optional<NetworkSessionCreationParameters> NetworkSessionCreationParameters
     if (!ignoreTLSErrors)
         return std::nullopt;
 
-    std::optional<WebCore::SoupNetworkProxySettings> proxySettings;
+    std::optional<CyberCore::SoupNetworkProxySettings> proxySettings;
     decoder >> proxySettings;
     if (!proxySettings)
         return std::nullopt;
 
-    std::optional<WebCore::HTTPCookieAcceptPolicy> cookieAcceptPolicy;
+    std::optional<CyberCore::HTTPCookieAcceptPolicy> cookieAcceptPolicy;
     decoder >> cookieAcceptPolicy;
     if (!cookieAcceptPolicy)
         return std::nullopt;
@@ -223,7 +223,7 @@ std::optional<NetworkSessionCreationParameters> NetworkSessionCreationParameters
     if (!cookiePersistentStorageFile)
         return std::nullopt;
 
-    std::optional<WebCore::CurlProxySettings> proxySettings;
+    std::optional<CyberCore::CurlProxySettings> proxySettings;
     decoder >> proxySettings;
     if (!proxySettings)
         return std::nullopt;

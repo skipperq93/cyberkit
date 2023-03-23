@@ -26,7 +26,7 @@
 #include "SVGFELightElement.h"
 #include "SVGFilterPrimitiveStandardAttributes.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGFESpecularLightingElement final : public SVGFilterPrimitiveStandardAttributes {
     WTF_MAKE_ISO_ALLOCATED(SVGFESpecularLightingElement);
@@ -68,4 +68,4 @@ private:
     Ref<SVGAnimatedNumber> m_kernelUnitLengthY { SVGAnimatedNumber::create(this) };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

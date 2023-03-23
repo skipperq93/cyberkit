@@ -30,9 +30,9 @@ class RemoteLayerTreeHost;
 }
 
 @interface WKAnimationDelegate : NSObject {
-    WebCore::GraphicsLayer::PlatformLayerID _layerID;
+    CyberCore::GraphicsLayer::PlatformLayerID _layerID;
     WebKit::RemoteLayerTreeHost* _layerTreeHost;
 }
-- (instancetype)initWithLayerID:(WebCore::GraphicsLayer::PlatformLayerID)layerID layerTreeHost:(WebKit::RemoteLayerTreeHost*)layerTreeHost;
+- (instancetype)initWithLayerID:(CyberCore::GraphicsLayer::PlatformLayerID)layerID layerTreeHost:(WebKit::RemoteLayerTreeHost*)layerTreeHost;
 - (void)invalidate;
 @end

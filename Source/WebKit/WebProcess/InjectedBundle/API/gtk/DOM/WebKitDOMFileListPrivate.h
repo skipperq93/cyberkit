@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -17,16 +17,16 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitDOMFileListPrivate_h
-#define WebKitDOMFileListPrivate_h
+#ifndef CyberKitDOMFileListPrivate_h
+#define CyberKitDOMFileListPrivate_h
 
 #include <CyberCore/FileList.h>
-#include <webkitdom/WebKitDOMFileList.h>
+#include <webkitdom/CyberKitDOMFileList.h>
 
-namespace WebKit {
-WebKitDOMFileList* wrapFileList(WebCore::FileList*);
-WebKitDOMFileList* kit(WebCore::FileList*);
-WebCore::FileList* core(WebKitDOMFileList*);
-} // namespace WebKit
+namespace CyberKit {
+CyberKitDOMFileList* wrapFileList(CyberCore::FileList*);
+CyberKitDOMFileList* kit(CyberCore::FileList*);
+CyberCore::FileList* core(CyberKitDOMFileList*);
+} // namespace CyberKit
 
-#endif /* WebKitDOMFileListPrivate_h */
+#endif /* CyberKitDOMFileListPrivate_h */

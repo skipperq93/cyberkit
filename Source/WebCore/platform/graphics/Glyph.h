@@ -30,10 +30,10 @@
 #ifndef Glyph_h
 #define Glyph_h
 
-namespace WebCore {
+namespace CyberCore {
 
 typedef unsigned short Glyph;
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // Glyph_h

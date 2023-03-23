@@ -35,7 +35,7 @@
 
 namespace WebKit {
 
-class SharedCARingBufferBase : public WebCore::CARingBuffer {
+class SharedCARingBufferBase : public CyberCore::CARingBuffer {
 protected:
     SharedCARingBufferBase(size_t bytesPerFrame, size_t frameCount, uint32_t numChannelStream, Ref<SharedMemory>);
     void* data() final { return static_cast<Byte*>(m_storage->data()) + sizeof(TimeBoundsBuffer); }
@@ -54,7 +54,7 @@ public:
         template <typename Decoder> static std::optional<Handle> decode(Decoder&);
     };
     // FIXME: Remove this deprecated constructor.
-    static std::unique_ptr<ConsumerSharedCARingBuffer> map(const WebCore::CAAudioStreamDescription& format, Handle&& handle)
+    static std::unique_ptr<ConsumerSharedCARingBuffer> map(const CyberCore::CAAudioStreamDescription& format, Handle&& handle)
     {
         return map(format.bytesPerFrame(), format.numberOfChannelStreams(), WTFMove(handle));
     }
@@ -69,7 +69,7 @@ public:
         std::unique_ptr<ProducerSharedCARingBuffer> producer;
         ConsumerSharedCARingBuffer::Handle consumer;
     };
-    static Pair allocate(const WebCore::CAAudioStreamDescription& format, size_t frameCount);
+    static Pair allocate(const CyberCore::CAAudioStreamDescription& format, size_t frameCount);
 protected:
     using SharedCARingBufferBase::SharedCARingBufferBase;
 };

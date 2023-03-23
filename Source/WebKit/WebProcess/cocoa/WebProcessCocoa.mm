@@ -169,13 +169,13 @@
 #import <pal/cocoa/MediaToolboxSoftLink.h>
 
 #if USE(APPLE_INTERNAL_SDK)
-#import <WebKitAdditions/VideoToolboxAdditions.h>
+#import <CyberKitAdditions/VideoToolboxAdditions.h>
 #endif
 
 #if HAVE(CATALYST_USER_INTERFACE_IDIOM_AND_SCALE_FACTOR)
 // FIXME: This is only for binary compatibility with versions of UIKit in macOS 11 that are missing the change in <rdar://problem/68524148>.
 SOFT_LINK_FRAMEWORK(UIKit)
-SOFT_LINK_FUNCTION_MAY_FAIL_FOR_SOURCE(WebKit, UIKit, _UIApplicationCatalystRequestViewServiceIdiomAndScaleFactor, void, (UIUserInterfaceIdiom idiom, CGFloat scaleFactor), (idiom, scaleFactor))
+SOFT_LINK_FUNCTION_MAY_FAIL_FOR_SOURCE(CyberKit, UIKit, _UIApplicationCatalystRequestViewServiceIdiomAndScaleFactor, void, (UIUserInterfaceIdiom idiom, CGFloat scaleFactor), (idiom, scaleFactor))
 #endif
 
 #define RELEASE_LOG_SESSION_ID (m_sessionID ? m_sessionID->toUInt64() : 0)
@@ -184,11 +184,11 @@ SOFT_LINK_FUNCTION_MAY_FAIL_FOR_SOURCE(WebKit, UIKit, _UIApplicationCatalystRequ
 
 #if PLATFORM(MAC)
 SOFT_LINK_FRAMEWORK_IN_UMBRELLA(ApplicationServices, HIServices)
-SOFT_LINK_FUNCTION_MAY_FAIL_FOR_SOURCE(WebKit, HIServices, _AXSetAuditTokenIsAuthenticatedCallback, void, (AXAuditTokenIsAuthenticatedCallback callback), (callback))
+SOFT_LINK_FUNCTION_MAY_FAIL_FOR_SOURCE(CyberKit, HIServices, _AXSetAuditTokenIsAuthenticatedCallback, void, (AXAuditTokenIsAuthenticatedCallback callback), (callback))
 #endif
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 #if PLATFORM(MAC)
 static const Seconds cpuMonitoringInterval { 8_min };
@@ -213,7 +213,7 @@ static id NSApplicationAccessibilityFocusedUIElement(NSApplication*, SEL)
 #if ENABLE(SET_WEBCONTENT_PROCESS_INFORMATION_IN_NETWORK_PROCESS)
 static void preventAppKitFromContactingLaunchServices(NSApplication*, SEL)
 {
-    // WebKit prohibits communication with Launch Services after entering the sandbox. This method override
+    // CyberKit prohibits communication with Launch Services after entering the sandbox. This method override
     // prevents AppKit from attempting to update application information with Launch Services from the WebContent process.
 }
 #endif
@@ -277,7 +277,7 @@ void WebProcess::platformInitializeWebProcess(WebProcessCreationParameters& para
 
     m_uiProcessBundleIdentifier = parameters.uiProcessBundleIdentifier;
 
-    WebCore::setPresentingApplicationBundleIdentifier(parameters.presentingApplicationBundleIdentifier);
+    CyberCore::setPresentingApplicationBundleIdentifier(parameters.presentingApplicationBundleIdentifier);
 
 #if ENABLE(SANDBOX_EXTENSIONS)
     SandboxExtension::consumePermanently(parameters.uiProcessBundleResourcePathExtensionHandle);
@@ -318,12 +318,12 @@ void WebProcess::platformInitializeWebProcess(WebProcessCreationParameters& para
     [NSURLCache setSharedURLCache:urlCache.get()];
 
 #if PLATFORM(MAC)
-    WebCore::FontCache::setFontAllowlist(parameters.fontAllowList);
+    CyberCore::FontCache::setFontAllowlist(parameters.fontAllowList);
 #endif
 
     m_compositingRenderServerPort = WTFMove(parameters.acceleratedCompositingPort);
 
-    WebCore::registerMemoryReleaseNotifyCallbacks();
+    CyberCore::registerMemoryReleaseNotifyCallbacks();
     MemoryPressureHandler::ReliefLogger::setLoggingEnabled(parameters.shouldEnableMemoryPressureReliefLogging);
 
     setEnhancedAccessibility(parameters.accessibilityEnhancedUserInterfaceEnabled);
@@ -422,7 +422,7 @@ void WebProcess::platformInitializeWebProcess(WebProcessCreationParameters& para
         });
     }
 
-    WebCore::setScreenProperties(parameters.screenProperties);
+    CyberCore::setScreenProperties(parameters.screenProperties);
 
 #if PLATFORM(MAC)
     scrollerStylePreferenceChanged(parameters.useOverlayScrollbars);
@@ -444,7 +444,7 @@ void WebProcess::platformInitializeWebProcess(WebProcessCreationParameters& para
     RenderThemeIOS::setFocusRingColor(parameters.focusRingColor);
 #endif
 
-    WebCore::sleepDisablerClient() = makeUnique<WebSleepDisablerClient>();
+    CyberCore::sleepDisablerClient() = makeUnique<WebSleepDisablerClient>();
 
 #if HAVE(FIG_PHOTO_DECOMPRESSION_SET_HARDWARE_CUTOFF) && !ENABLE(HARDWARE_JPEG)
     if (PAL::isMediaToolboxFrameworkAvailable() && PAL::canLoad_MediaToolbox_FigPhotoDecompressionSetHardwareCutoff())
@@ -454,7 +454,7 @@ void WebProcess::platformInitializeWebProcess(WebProcessCreationParameters& para
     SystemSoundManager::singleton().setSystemSoundDelegate(makeUnique<WebSystemSoundDelegate>());
 
 #if HAVE(MEDIA_ACCESSIBILITY_FRAMEWORK)
-    WebCore::CaptionUserPreferencesMediaAF::setCaptionPreferencesDelegate(makeUnique<WebCaptionPreferencesDelegate>());
+    CyberCore::CaptionUserPreferencesMediaAF::setCaptionPreferencesDelegate(makeUnique<WebCaptionPreferencesDelegate>());
 #endif
 
 #if PLATFORM(MAC)
@@ -463,8 +463,8 @@ void WebProcess::platformInitializeWebProcess(WebProcessCreationParameters& para
 #endif
 
 #if HAVE(IOSURFACE)
-    WebCore::IOSurface::setMaximumSize(parameters.maximumIOSurfaceSize);
-    WebCore::IOSurface::setBytesPerRowAlignment(parameters.bytesPerRowIOSurfaceAlignment);
+    CyberCore::IOSurface::setMaximumSize(parameters.maximumIOSurfaceSize);
+    CyberCore::IOSurface::setBytesPerRowAlignment(parameters.bytesPerRowIOSurfaceAlignment);
 #endif
 
     accessibilityPreferencesDidChange(parameters.accessibilityPreferences);
@@ -502,7 +502,7 @@ void WebProcess::platformSetWebsiteDataStoreParameters(WebProcessDataStoreParame
 
     if (!parameters.javaScriptConfigurationDirectory.isEmpty()) {
         String javaScriptConfigFile = parameters.javaScriptConfigurationDirectory + "/JSC.config";
-        JSC::processConfigFile(javaScriptConfigFile.latin1().data(), "com.apple.WebKit.WebContent", m_uiProcessBundleIdentifier.latin1().data());
+        JSC::processConfigFile(javaScriptConfigFile.latin1().data(), "com.apple.CyberKit.WebContent", m_uiProcessBundleIdentifier.latin1().data());
     }
 }
 
@@ -737,11 +737,11 @@ void WebProcess::initializeSandbox(const AuxiliaryProcessInitializationParameter
 {
 #if PLATFORM(MAC) || PLATFORM(MACCATALYST)
     // Need to override the default, because service has a different bundle ID.
-    auto webKitBundle = [NSBundle bundleWithIdentifier:@"com.apple.WebKit"];
+    auto webKitBundle = [NSBundle bundleWithIdentifier:@"com.apple.CyberKit"];
 
 #if defined(USE_VORBIS_AUDIOCOMPONENT_WORKAROUND)
     // We need to initialize the Vorbis decoder before the sandbox gets setup; this is a one off action.
-    WebCore::registerVorbisDecoderIfNeeded();
+    CyberCore::registerVorbisDecoderIfNeeded();
 #endif
 
     sandboxParameters.setOverrideSandboxProfilePath(makeString(String([webKitBundle resourcePath]), "/com.apple.WebProcess.sb"));
@@ -912,7 +912,7 @@ RefPtr<ObjCObjectGraph> WebProcess::transformHandlesToObjects(ObjCObjectGraph& o
         RetainPtr<id> transformObject(id object) const override
         {
             if (auto* handle = dynamic_objc_cast<WKBrowsingContextHandle>(object)) {
-                if (auto* webPage = m_webProcess.webPage(makeObjectIdentifier<WebCore::PageIdentifierType>(handle._webPageID)))
+                if (auto* webPage = m_webProcess.webPage(makeObjectIdentifier<CyberCore::PageIdentifierType>(handle._webPageID)))
                     return wrapper(*webPage);
 
                 return [NSNull null];
@@ -978,7 +978,7 @@ void WebProcess::destroyRenderingResources()
 
 void WebProcess::userInterfaceIdiomDidChange(bool isSmallScreen)
 {
-    WebKit::setCurrentUserInterfaceIdiomIsSmallScreen(isSmallScreen);
+    CyberKit::setCurrentUserInterfaceIdiomIsSmallScreen(isSmallScreen);
 }
 
 bool WebProcess::shouldFreezeOnSuspension() const
@@ -1058,7 +1058,7 @@ void WebProcess::backlightLevelDidChange(float backlightLevel)
 void WebProcess::accessibilityPreferencesDidChange(const AccessibilityPreferences& preferences)
 {
 #if HAVE(PER_APP_ACCESSIBILITY_PREFERENCES)
-    auto appID = CFSTR("com.apple.WebKit.WebContent");
+    auto appID = CFSTR("com.apple.CyberKit.WebContent");
     auto reduceMotionEnabled = preferences.reduceMotionEnabled;
     if (_AXSReduceMotionEnabledApp(appID) != reduceMotionEnabled)
         _AXSSetReduceMotionEnabledApp(reduceMotionEnabled, appID);
@@ -1085,10 +1085,10 @@ void WebProcess::accessibilityPreferencesDidChange(const AccessibilityPreference
 }
 
 #if HAVE(MEDIA_ACCESSIBILITY_FRAMEWORK)
-void WebProcess::setMediaAccessibilityPreferences(WebCore::CaptionUserPreferences::CaptionDisplayMode captionDisplayMode, const Vector<String>& preferredLanguages)
+void WebProcess::setMediaAccessibilityPreferences(CyberCore::CaptionUserPreferences::CaptionDisplayMode captionDisplayMode, const Vector<String>& preferredLanguages)
 {
-    WebCore::CaptionUserPreferencesMediaAF::setCachedCaptionDisplayMode(captionDisplayMode);
-    WebCore::CaptionUserPreferencesMediaAF::setCachedPreferredLanguages(preferredLanguages);
+    CyberCore::CaptionUserPreferencesMediaAF::setCachedCaptionDisplayMode(captionDisplayMode);
+    CyberCore::CaptionUserPreferencesMediaAF::setCachedPreferredLanguages(preferredLanguages);
 
     for (auto& pageGroup : m_pageGroupMap.values()) {
         if (auto* captionPreferences = pageGroup->corePageGroup()->captionPreferences())
@@ -1200,7 +1200,7 @@ void WebProcess::notifyPreferencesChanged(const String& domain, const String& ke
 }
 #endif
 
-void WebProcess::grantAccessToAssetServices(Vector<WebKit::SandboxExtension::Handle>&& assetServicesHandles)
+void WebProcess::grantAccessToAssetServices(Vector<CyberKit::SandboxExtension::Handle>&& assetServicesHandles)
 {
     if (m_assetServicesExtensions.size())
         return;
@@ -1228,7 +1228,7 @@ void WebProcess::disableURLSchemeCheckInDataDetectors() const
 #endif
 }
 
-void WebProcess::switchFromStaticFontRegistryToUserFontRegistry(Vector<WebKit::SandboxExtension::Handle>&& fontMachExtensionHandles)
+void WebProcess::switchFromStaticFontRegistryToUserFontRegistry(Vector<CyberKit::SandboxExtension::Handle>&& fontMachExtensionHandles)
 {
     SandboxExtension::consumePermanently(fontMachExtensionHandles);
 #if HAVE(STATIC_FONT_REGISTRY)
@@ -1236,9 +1236,9 @@ void WebProcess::switchFromStaticFontRegistryToUserFontRegistry(Vector<WebKit::S
 #endif
 }
 
-void WebProcess::setScreenProperties(const WebCore::ScreenProperties& properties)
+void WebProcess::setScreenProperties(const CyberCore::ScreenProperties& properties)
 {
-    WebCore::setScreenProperties(properties);
+    CyberCore::setScreenProperties(properties);
     for (auto& page : m_pageMap.values())
         page->screenPropertiesDidChange();
 #if PLATFORM(MAC)
@@ -1333,7 +1333,7 @@ void WebProcess::openDirectoryCacheInvalidated(SandboxExtension::Handle&& handle
 }
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #undef RELEASE_LOG_SESSION_ID
 #undef WEBPROCESS_RELEASE_LOG

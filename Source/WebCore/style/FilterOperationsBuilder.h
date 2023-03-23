@@ -28,7 +28,7 @@
 #include "FilterOperations.h"
 #include <optional>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSToLengthConversionData;
 class CSSValue;
@@ -41,4 +41,4 @@ std::optional<FilterOperations> createFilterOperations(const Document&, RenderSt
 
 } // namespace Style
 
-} // namespace WebCore
+} // namespace CyberCore

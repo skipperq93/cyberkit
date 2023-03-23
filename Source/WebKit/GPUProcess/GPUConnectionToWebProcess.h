@@ -76,7 +76,7 @@ enum class Critical : bool;
 enum class Synchronous : bool;
 }
 
-namespace WebCore {
+namespace CyberCore {
 class SecurityOrigin;
 class SecurityOriginData;
 }
@@ -123,20 +123,20 @@ class RemoteGraphicsContextGL;
 
 class GPUConnectionToWebProcess
     : public ThreadSafeRefCounted<GPUConnectionToWebProcess, WTF::DestructionThread::Main>
-    , public WebCore::NowPlayingManager::Client
+    , public CyberCore::NowPlayingManager::Client
     , IPC::Connection::Client {
 public:
-    static Ref<GPUConnectionToWebProcess> create(GPUProcess&, WebCore::ProcessIdentifier, PAL::SessionID, IPC::Connection::Handle&&, GPUProcessConnectionParameters&&);
+    static Ref<GPUConnectionToWebProcess> create(GPUProcess&, CyberCore::ProcessIdentifier, PAL::SessionID, IPC::Connection::Handle&&, GPUProcessConnectionParameters&&);
     virtual ~GPUConnectionToWebProcess();
 
-    using WebCore::NowPlayingManager::Client::weakPtrFactory;
-    using WebCore::NowPlayingManager::Client::WeakValueType;
-    using WebCore::NowPlayingManager::Client::WeakPtrImplType;
+    using CyberCore::NowPlayingManager::Client::weakPtrFactory;
+    using CyberCore::NowPlayingManager::Client::WeakValueType;
+    using CyberCore::NowPlayingManager::Client::WeakPtrImplType;
 
     IPC::Connection& connection() { return m_connection.get(); }
     IPC::MessageReceiverMap& messageReceiverMap() { return m_messageReceiverMap; }
     GPUProcess& gpuProcess() { return m_gpuProcess.get(); }
-    WebCore::ProcessIdentifier webProcessIdentifier() const { return m_webProcessIdentifier; }
+    CyberCore::ProcessIdentifier webProcessIdentifier() const { return m_webProcessIdentifier; }
 
 #if ENABLE(VIDEO)
     RemoteMediaResourceManager& remoteMediaResourceManager();
@@ -156,7 +156,7 @@ public:
 #if ENABLE(MEDIA_STREAM)
     void setOrientationForMediaCapture(uint64_t orientation);
     void updateCaptureAccess(bool allowAudioCapture, bool allowVideoCapture, bool allowDisplayCapture);
-    void updateCaptureOrigin(const WebCore::SecurityOriginData&);
+    void updateCaptureOrigin(const CyberCore::SecurityOriginData&);
     bool setCaptureAttributionString();
     bool allowsAudioCapture() const { return m_allowsAudioCapture; }
     bool allowsVideoCapture() const { return m_allowsVideoCapture; }
@@ -182,7 +182,7 @@ public:
     void dispatchDisplayWasReconfiguredForTesting() { dispatchDisplayWasReconfigured(); };
 #endif
 
-    const WebCore::ProcessIdentity& webProcessIdentity() const { return m_webProcessIdentity; }
+    const CyberCore::ProcessIdentity& webProcessIdentity() const { return m_webProcessIdentity; }
 #if ENABLE(ENCRYPTED_MEDIA)
     RemoteCDMFactoryProxy& cdmFactoryProxy();
 #endif
@@ -226,7 +226,7 @@ public:
 #endif
 
 private:
-    GPUConnectionToWebProcess(GPUProcess&, WebCore::ProcessIdentifier, PAL::SessionID, IPC::Connection::Handle&&, GPUProcessConnectionParameters&&);
+    GPUConnectionToWebProcess(GPUProcess&, CyberCore::ProcessIdentifier, PAL::SessionID, IPC::Connection::Handle&&, GPUProcessConnectionParameters&&);
 
 #if ENABLE(WEB_AUDIO)
     RemoteAudioDestinationManager& remoteAudioDestinationManager();
@@ -244,22 +244,22 @@ private:
     void releaseSerializedImageBuffer(RemoteSerializedImageBufferWriteReference&&);
 
 #if ENABLE(WEBGL)
-    void createGraphicsContextGL(WebCore::GraphicsContextGLAttributes, GraphicsContextGLIdentifier, RenderingBackendIdentifier, IPC::StreamServerConnection::Handle&&);
+    void createGraphicsContextGL(CyberCore::GraphicsContextGLAttributes, GraphicsContextGLIdentifier, RenderingBackendIdentifier, IPC::StreamServerConnection::Handle&&);
     void releaseGraphicsContextGL(GraphicsContextGLIdentifier);
 #endif
 
     void createRemoteGPU(WebGPUIdentifier, RenderingBackendIdentifier, IPC::StreamServerConnection::Handle&&);
 
     void clearNowPlayingInfo();
-    void setNowPlayingInfo(WebCore::NowPlayingInfo&&);
+    void setNowPlayingInfo(CyberCore::NowPlayingInfo&&);
 
 #if ENABLE(VP9)
     void enableVP9Decoders(bool shouldEnableVP8Decoder, bool shouldEnableVP9Decoder, bool shouldEnableVP9SWDecoder);
 #endif
 
 #if HAVE(VISIBILITY_PROPAGATION_VIEW)
-    void createVisibilityPropagationContextForPage(WebPageProxyIdentifier, WebCore::PageIdentifier, bool canShowWhileLocked);
-    void destroyVisibilityPropagationContextForPage(WebPageProxyIdentifier, WebCore::PageIdentifier);
+    void createVisibilityPropagationContextForPage(WebPageProxyIdentifier, CyberCore::PageIdentifier, bool canShowWhileLocked);
+    void destroyVisibilityPropagationContextForPage(WebPageProxyIdentifier, CyberCore::PageIdentifier);
 #endif
 
 #if USE(AUDIO_SESSION)
@@ -296,7 +296,7 @@ private:
     bool dispatchSyncMessage(IPC::Connection&, IPC::Decoder&, UniqueRef<IPC::Encoder>&);
 
     // NowPlayingManager::Client
-    void didReceiveRemoteControlCommand(WebCore::PlatformMediaSession::RemoteControlCommandType, const WebCore::PlatformMediaSession::RemoteCommandArgument&) final;
+    void didReceiveRemoteControlCommand(CyberCore::PlatformMediaSession::RemoteControlCommandType, const CyberCore::PlatformMediaSession::RemoteCommandArgument&) final;
 
 #if PLATFORM(MAC) && ENABLE(WEBGL)
     void dispatchDisplayWasReconfigured();
@@ -309,8 +309,8 @@ private:
     Ref<IPC::Connection> m_connection;
     IPC::MessageReceiverMap m_messageReceiverMap;
     Ref<GPUProcess> m_gpuProcess;
-    const WebCore::ProcessIdentifier m_webProcessIdentifier;
-    const WebCore::ProcessIdentity m_webProcessIdentity;
+    const CyberCore::ProcessIdentifier m_webProcessIdentifier;
+    const CyberCore::ProcessIdentity m_webProcessIdentity;
 #if ENABLE(WEB_AUDIO)
     std::unique_ptr<RemoteAudioDestinationManager> m_remoteAudioDestinationManager;
 #endif
@@ -329,7 +329,7 @@ private:
     std::unique_ptr<RemoteMediaRecorderManager> m_remoteMediaRecorderManager;
 #endif
 #if ENABLE(MEDIA_STREAM)
-    Ref<WebCore::SecurityOrigin> m_captureOrigin;
+    Ref<CyberCore::SecurityOrigin> m_captureOrigin;
     bool m_allowsAudioCapture { false };
     bool m_allowsVideoCapture { false };
     bool m_allowsDisplayCapture { false };
@@ -371,7 +371,7 @@ private:
     std::unique_ptr<RemoteMediaEngineConfigurationFactoryProxy> m_mediaEngineConfigurationFactoryProxy;
 
 #if HAVE(VISIBILITY_PROPAGATION_VIEW)
-    HashMap<std::pair<WebPageProxyIdentifier, WebCore::PageIdentifier>, std::unique_ptr<LayerHostingContext>> m_visibilityPropagationContexts;
+    HashMap<std::pair<WebPageProxyIdentifier, CyberCore::PageIdentifier>, std::unique_ptr<LayerHostingContext>> m_visibilityPropagationContexts;
 #endif
 
     using RemoteAudioHardwareListenerMap = HashMap<RemoteAudioHardwareListenerIdentifier, std::unique_ptr<RemoteAudioHardwareListenerProxy>>;

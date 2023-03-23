@@ -35,7 +35,7 @@ OBJC_CLASS NSColor;
 OBJC_CLASS UIColor;
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class Color;
 
@@ -51,4 +51,4 @@ WEBCORE_EXPORT RetainPtr<CocoaColor> cocoaColor(const Color&);
 WEBCORE_EXPORT RetainPtr<CocoaColor> cocoaColorOrNil(const Color&); // Returns nil if the color is invalid.
 WEBCORE_EXPORT Color colorFromCocoaColor(CocoaColor *);
 
-} // namespace WebCore
+} // namespace CyberCore

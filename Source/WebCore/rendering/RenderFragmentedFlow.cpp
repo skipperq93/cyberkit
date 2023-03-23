@@ -48,7 +48,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/StackStats.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(RenderFragmentedFlow);
 
@@ -1168,4 +1168,4 @@ ContainingFragmentMap& RenderFragmentedFlow::containingFragmentMap()
 }
 
 
-} // namespace WebCore
+} // namespace CyberCore

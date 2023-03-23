@@ -29,7 +29,7 @@
 
 typedef struct AudioStreamBasicDescription AudioStreamBasicDescription;
 
-namespace WebCore {
+namespace CyberCore {
 
 struct PlatformDescription {
     enum {

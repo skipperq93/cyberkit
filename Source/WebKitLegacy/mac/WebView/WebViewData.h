@@ -33,7 +33,7 @@
 #import <pal/spi/cocoa/AVKitSPI.h>
 #endif
 #import <CyberCore/AlternativeTextClient.h>
-#import <CyberCore/WebCoreKeyboardUIMode.h>
+#import <CyberCore/CyberCoreKeyboardUIMode.h>
 #import <wtf/HashMap.h>
 #import <wtf/Lock.h>
 #import <wtf/RetainPtr.h>
@@ -44,7 +44,7 @@
 #import "WebCaretChangeListener.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 class AlternativeTextUIController;
 class HistoryItem;
 class Page;
@@ -119,7 +119,7 @@ class WebSelectionServiceController;
 // FIXME: This should be renamed to WebViewData.
 @interface WebViewPrivate : NSObject {
 @public
-    WebCore::Page* page;
+    CyberCore::Page* page;
     RefPtr<WebViewGroup> group;
 
     id UIDelegate;
@@ -168,14 +168,14 @@ class WebSelectionServiceController;
     BOOL _needsDeferredTextTouchBarUpdate;
 #endif // HAVE(TOUCH_BAR)
 
-    std::unique_ptr<WebCore::TextIndicatorWindow> textIndicatorWindow;
+    std::unique_ptr<CyberCore::TextIndicatorWindow> textIndicatorWindow;
     BOOL hasInitializedLookupObserver;
     RetainPtr<WebWindowVisibilityObserver> windowVisibilityObserver;
     BOOL windowOcclusionDetectionEnabled;
     RetainPtr<NSEvent> pressureEvent;
 #endif // PLATFORM(MAC)
 
-    RefPtr<WebCore::ValidationBubble> formValidationBubble;
+    RefPtr<CyberCore::ValidationBubble> formValidationBubble;
 
     BOOL shouldMaintainInactiveSelection;
 
@@ -257,14 +257,14 @@ class WebSelectionServiceController;
 #endif
 
 #if !PLATFORM(IOS_FAMILY)
-    // WebKit has both a global plug-in database and a separate, per WebView plug-in database. Dashboard uses the per WebView database.
+    // CyberKit has both a global plug-in database and a separate, per WebView plug-in database. Dashboard uses the per WebView database.
     RetainPtr<WebPluginDatabase> pluginDatabase;
 #endif
     
     HashMap<unsigned long, RetainPtr<id>> identifierMap;
 
     BOOL _keyboardUIModeAccessed;
-    WebCore::KeyboardUIMode _keyboardUIMode;
+    CyberCore::KeyboardUIMode _keyboardUIMode;
 
     BOOL shouldUpdateWhileOffscreen;
 
@@ -287,8 +287,8 @@ class WebSelectionServiceController;
 #endif
 
 #if PLATFORM(MAC) && ENABLE(VIDEO_PRESENTATION_MODE)
-    RefPtr<WebCore::PlaybackSessionModelMediaElement> playbackSessionModel;
-    RefPtr<WebCore::PlaybackSessionInterfaceMac> playbackSessionInterface;
+    RefPtr<CyberCore::PlaybackSessionModelMediaElement> playbackSessionModel;
+    RefPtr<CyberCore::PlaybackSessionInterfaceMac> playbackSessionInterface;
 #endif
     
 #if ENABLE(FULLSCREEN_API)
@@ -317,7 +317,7 @@ class WebSelectionServiceController;
     RetainPtr<WebFixedPositionContent> _fixedPositionContent;
 #endif
 
-    std::unique_ptr<WebCore::AlternativeTextUIController> m_alternativeTextUIController;
+    std::unique_ptr<CyberCore::AlternativeTextUIController> m_alternativeTextUIController;
 
     RetainPtr<NSData> sourceApplicationAuditData;
 

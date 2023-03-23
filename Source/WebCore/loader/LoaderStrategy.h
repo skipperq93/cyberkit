@@ -34,7 +34,7 @@
 #include "StoredCredentialsPolicy.h"
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CachedResource;
 class ContentSecurityPolicy;
@@ -103,4 +103,4 @@ protected:
     virtual ~LoaderStrategy();
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -22,7 +22,7 @@
 
 #include "RenderBlockFlow.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLProgressElement;
 
@@ -57,6 +57,6 @@ private:
     Timer m_animationTimer;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderProgress, isProgress())

@@ -39,9 +39,9 @@ public:
     virtual ~MediaUsageManager() = default;
 
     virtual void reset();
-    virtual void addMediaSession(WebCore::MediaSessionIdentifier, const String&, const URL&);
-    virtual void removeMediaSession(WebCore::MediaSessionIdentifier);
-    virtual void updateMediaUsage(WebCore::MediaSessionIdentifier, const WebCore::MediaUsageInfo&);
+    virtual void addMediaSession(CyberCore::MediaSessionIdentifier, const String&, const URL&);
+    virtual void removeMediaSession(CyberCore::MediaSessionIdentifier);
+    virtual void updateMediaUsage(CyberCore::MediaSessionIdentifier, const CyberCore::MediaUsageInfo&);
 #if PLATFORM(COCOA) && !HAVE(CGS_FIX_FOR_RADAR_97530095)
     virtual bool isPlayingVideoInViewport() const;
 #endif

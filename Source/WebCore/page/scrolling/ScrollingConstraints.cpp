@@ -28,7 +28,7 @@
 
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 AbsolutePositionConstraints::AbsolutePositionConstraints(const FloatSize& alignmentOffset, const FloatPoint& layerPositionAtLastLayout)
     : m_alignmentOffset(alignmentOffset)
@@ -143,4 +143,4 @@ TextStream& operator<<(TextStream& ts, const StickyPositionViewportConstraints& 
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

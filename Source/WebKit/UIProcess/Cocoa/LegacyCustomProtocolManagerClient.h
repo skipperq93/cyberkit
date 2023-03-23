@@ -32,7 +32,7 @@
 
 OBJC_CLASS WKCustomProtocolLoader;
 
-namespace WebCore {
+namespace CyberCore {
 class ResourceRequest;
 }
 
@@ -42,7 +42,7 @@ class LegacyCustomProtocolManagerProxy;
 
 class LegacyCustomProtocolManagerClient final : public API::CustomProtocolManagerClient {
 public:
-    void startLoading(LegacyCustomProtocolManagerProxy&, LegacyCustomProtocolID, const WebCore::ResourceRequest&) final;
+    void startLoading(LegacyCustomProtocolManagerProxy&, LegacyCustomProtocolID, const CyberCore::ResourceRequest&) final;
     void stopLoading(LegacyCustomProtocolManagerProxy&, LegacyCustomProtocolID) final;
     void invalidate(LegacyCustomProtocolManagerProxy&) final;
 private:

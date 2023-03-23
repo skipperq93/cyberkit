@@ -28,7 +28,7 @@
 #include <wtf/MathExtras.h>
 #include <cinttypes>
 
-namespace WebCore {
+namespace CyberCore {
 
 // Deal with denormals. They can very seriously impact performance on x86.
 
@@ -145,7 +145,7 @@ public:
 
 #endif
 
-} // WebCore
+} // CyberCore
 
 #undef HAVE_DENORMAL
 #endif // DenormalDisabler_h

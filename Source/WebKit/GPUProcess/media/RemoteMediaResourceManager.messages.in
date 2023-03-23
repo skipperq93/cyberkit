@@ -26,13 +26,13 @@
 #if ENABLE(GPU_PROCESS) && ENABLE(VIDEO)
 
 messages -> RemoteMediaResourceManager NotRefCounted {
-    ResponseReceived(WebKit::RemoteMediaResourceIdentifier identifier, WebCore::ResourceResponse response, bool didPassAccessControlCheck) -> (enum:bool WebCore::ShouldContinuePolicyCheck shouldContinue)
-    RedirectReceived(WebKit::RemoteMediaResourceIdentifier identifier, WebCore::ResourceRequest request, WebCore::ResourceResponse response) -> (WebCore::ResourceRequest returnRequest)
+    ResponseReceived(WebKit::RemoteMediaResourceIdentifier identifier, CyberCore::ResourceResponse response, bool didPassAccessControlCheck) -> (enum:bool CyberCore::ShouldContinuePolicyCheck shouldContinue)
+    RedirectReceived(WebKit::RemoteMediaResourceIdentifier identifier, CyberCore::ResourceRequest request, CyberCore::ResourceResponse response) -> (CyberCore::ResourceRequest returnRequest)
     DataSent(WebKit::RemoteMediaResourceIdentifier identifier, uint64_t bytesSent, uint64_t totalBytesToBeSent)
     DataReceived(WebKit::RemoteMediaResourceIdentifier identifier, IPC::SharedBufferReference data) -> (std::optional<WebKit::SharedMemory::Handle> remoteData)
-    AccessControlCheckFailed(WebKit::RemoteMediaResourceIdentifier identifier, WebCore::ResourceError error)
-    LoadFailed(WebKit::RemoteMediaResourceIdentifier identifier, WebCore::ResourceError error)
-    LoadFinished(WebKit::RemoteMediaResourceIdentifier identifier, WebCore::NetworkLoadMetrics metrics)
+    AccessControlCheckFailed(WebKit::RemoteMediaResourceIdentifier identifier, CyberCore::ResourceError error)
+    LoadFailed(WebKit::RemoteMediaResourceIdentifier identifier, CyberCore::ResourceError error)
+    LoadFinished(WebKit::RemoteMediaResourceIdentifier identifier, CyberCore::NetworkLoadMetrics metrics)
 }
 
 #endif

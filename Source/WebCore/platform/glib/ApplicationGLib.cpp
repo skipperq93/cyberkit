@@ -22,7 +22,7 @@
 #include <wtf/NeverDestroyed.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static String gApplicationName;
 static String gApplicationID;
@@ -50,4 +50,4 @@ const String& getApplicationID()
     return gApplicationID;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

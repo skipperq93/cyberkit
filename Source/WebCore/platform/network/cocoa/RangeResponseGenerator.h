@@ -29,9 +29,9 @@
 #include <wtf/URLHash.h>
 
 OBJC_CLASS NSURLRequest;
-OBJC_CLASS WebCoreNSURLSessionDataTask;
+OBJC_CLASS CyberCoreNSURLSessionDataTask;
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ParsedRequestRange;
 class PlatformMediaResource;
@@ -43,9 +43,9 @@ public:
     static Ref<RangeResponseGenerator> create() { return adoptRef(*new RangeResponseGenerator); }
     ~RangeResponseGenerator();
 
-    bool willSynthesizeRangeResponses(WebCoreNSURLSessionDataTask *, PlatformMediaResource&, const ResourceResponse&);
-    bool willHandleRequest(WebCoreNSURLSessionDataTask *, NSURLRequest *);
-    void removeTask(WebCoreNSURLSessionDataTask *);
+    bool willSynthesizeRangeResponses(CyberCoreNSURLSessionDataTask *, PlatformMediaResource&, const ResourceResponse&);
+    bool willHandleRequest(CyberCoreNSURLSessionDataTask *, NSURLRequest *);
+    void removeTask(CyberCoreNSURLSessionDataTask *);
 
 private:
     RangeResponseGenerator();
@@ -53,10 +53,10 @@ private:
     struct Data;
     class MediaResourceClient;
     void giveResponseToTasksWithFinishedRanges(Data&);
-    void giveResponseToTaskIfBytesInRangeReceived(WebCoreNSURLSessionDataTask *, const ParsedRequestRange&, std::optional<size_t> expectedContentLength, const Data&);
+    void giveResponseToTaskIfBytesInRangeReceived(CyberCoreNSURLSessionDataTask *, const ParsedRequestRange&, std::optional<size_t> expectedContentLength, const Data&);
     static std::optional<size_t> expectedContentLengthFromData(const Data&);
 
     HashMap<String, std::unique_ptr<Data>> m_map;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -245,7 +245,7 @@ TEST(WebKit, OpenWindowFeatures)
     TestWebKitAPI::Util::run(&isDone);
     isDone = false;
 
-//  https://bugs.webkit.org/show_bug.cgi?id=174271 - WebCore currently doesn't distinguish between unspecified (nil) and false
+//  https://bugs.webkit.org/show_bug.cgi?id=174271 - CyberCore currently doesn't distinguish between unspecified (nil) and false
 //  for the following window features.
 //  EXPECT_TRUE([openWindowFeatures menuBarVisibility] == nil);
 //  EXPECT_TRUE([openWindowFeatures statusBarVisibility] == nil);

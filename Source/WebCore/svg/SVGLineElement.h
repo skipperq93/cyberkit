@@ -24,7 +24,7 @@
 #include "SVGGeometryElement.h"
 #include "SVGNames.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGLineElement final : public SVGGeometryElement {
     WTF_MAKE_ISO_ALLOCATED(SVGLineElement);
@@ -59,4 +59,4 @@ private:
     Ref<SVGAnimatedLength> m_y2 { SVGAnimatedLength::create(this, SVGLengthMode::Height) };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

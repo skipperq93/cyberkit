@@ -26,7 +26,7 @@
 #import "config.h"
 #import "_WKInspectorDebuggableInfoInternal.h"
 
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 
 @implementation _WKInspectorDebuggableInfo
 
@@ -92,7 +92,7 @@
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainRunLoop(_WKInspectorDebuggableInfo.class, self))
+    if (CyberCoreObjCScheduleDeallocateOnMainRunLoop(_WKInspectorDebuggableInfo.class, self))
         return;
 
     _debuggableInfo->~DebuggableInfo();

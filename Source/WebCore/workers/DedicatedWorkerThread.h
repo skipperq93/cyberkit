@@ -33,7 +33,7 @@
 
 #include "WorkerThread.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ContentSecurityPolicyResponseHeaders;
 class ScriptBuffer;
@@ -56,9 +56,9 @@ protected:
 private:
     DedicatedWorkerThread(const WorkerParameters&, const ScriptBuffer& sourceCode, WorkerLoaderProxy&, WorkerDebuggerProxy&, WorkerObjectProxy&, WorkerBadgeProxy&, WorkerThreadStartMode, const SecurityOrigin& topOrigin, IDBClient::IDBConnectionProxy*, SocketProvider*, JSC::RuntimeFlags);
 
-    ASCIILiteral threadName() const final { return "WebCore: Worker"_s; }
+    ASCIILiteral threadName() const final { return "CyberCore: Worker"_s; }
 
     WorkerObjectProxy& m_workerObjectProxy;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

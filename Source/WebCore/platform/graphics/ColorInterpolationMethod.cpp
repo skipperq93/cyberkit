@@ -29,7 +29,7 @@
 #include <wtf/text/StringBuilder.h>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static constexpr ASCIILiteral serializationForCSS(ColorInterpolationColorSpace interpolationColorSpace)
 {
@@ -169,4 +169,4 @@ TextStream& operator<<(TextStream& ts, const ColorInterpolationMethod& method)
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

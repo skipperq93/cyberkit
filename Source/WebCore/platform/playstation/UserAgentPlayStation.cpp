@@ -33,10 +33,10 @@
 //
 // The user agent is ludicrously fragile. The most innocent change can
 // and will break websites. Read the git log for this file and
-// WebCore/platform/glib/UserAgentGLib.cpp carefully before changing
+// CyberCore/platform/glib/UserAgentGLib.cpp carefully before changing
 // user agent construction. You have been warned.
 
-namespace WebCore {
+namespace CyberCore {
 
 static String getSystemSoftwareName()
 {
@@ -97,4 +97,4 @@ String standardUserAgentForURL(const URL&)
     return standardUserAgentStatic();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -33,7 +33,7 @@
 OBJC_CLASS AVOutputContext;
 OBJC_CLASS NSData;
 
-namespace WebCore {
+namespace CyberCore {
 
 class MediaPlaybackTargetContext {
 public:
@@ -106,26 +106,26 @@ private:
     MockState m_mockState { MockState::Unknown };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::MediaPlaybackTargetContext::Type> {
+template<> struct EnumTraits<CyberCore::MediaPlaybackTargetContext::Type> {
     using values = EnumValues<
-        WebCore::MediaPlaybackTargetContext::Type,
-        WebCore::MediaPlaybackTargetContext::Type::None,
-        WebCore::MediaPlaybackTargetContext::Type::AVOutputContext,
-        WebCore::MediaPlaybackTargetContext::Type::SerializedAVOutputContext,
-        WebCore::MediaPlaybackTargetContext::Type::Mock
+        CyberCore::MediaPlaybackTargetContext::Type,
+        CyberCore::MediaPlaybackTargetContext::Type::None,
+        CyberCore::MediaPlaybackTargetContext::Type::AVOutputContext,
+        CyberCore::MediaPlaybackTargetContext::Type::SerializedAVOutputContext,
+        CyberCore::MediaPlaybackTargetContext::Type::Mock
     >;
 };
 
-template<> struct EnumTraits<WebCore::MediaPlaybackTargetContext::MockState> {
+template<> struct EnumTraits<CyberCore::MediaPlaybackTargetContext::MockState> {
     using values = EnumValues<
-        WebCore::MediaPlaybackTargetContext::MockState,
-        WebCore::MediaPlaybackTargetContext::MockState::Unknown,
-        WebCore::MediaPlaybackTargetContext::MockState::OutputDeviceUnavailable,
-        WebCore::MediaPlaybackTargetContext::MockState::OutputDeviceAvailable
+        CyberCore::MediaPlaybackTargetContext::MockState,
+        CyberCore::MediaPlaybackTargetContext::MockState::Unknown,
+        CyberCore::MediaPlaybackTargetContext::MockState::OutputDeviceUnavailable,
+        CyberCore::MediaPlaybackTargetContext::MockState::OutputDeviceAvailable
     >;
 };
 

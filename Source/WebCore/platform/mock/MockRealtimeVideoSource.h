@@ -41,7 +41,7 @@
 #include "RealtimeVideoCaptureSource.h"
 #include <wtf/RunLoop.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FloatRect;
 class GraphicsContext;
@@ -127,10 +127,10 @@ private:
     VideoFrameRotation m_deviceOrientation { };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::MockRealtimeVideoSource)
-    static bool isType(const WebCore::RealtimeMediaSource& source) { return source.isCaptureSource() && source.isMockSource() && (source.deviceType() == WebCore::CaptureDevice::DeviceType::Camera || source.deviceType() == WebCore::CaptureDevice::DeviceType::Screen || source.deviceType() == WebCore::CaptureDevice::DeviceType::Window); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::MockRealtimeVideoSource)
+    static bool isType(const CyberCore::RealtimeMediaSource& source) { return source.isCaptureSource() && source.isMockSource() && (source.deviceType() == CyberCore::CaptureDevice::DeviceType::Camera || source.deviceType() == CyberCore::CaptureDevice::DeviceType::Screen || source.deviceType() == CyberCore::CaptureDevice::DeviceType::Window); }
 SPECIALIZE_TYPE_TRAITS_END()
 
 #endif // ENABLE(MEDIA_STREAM)

@@ -24,7 +24,7 @@
 
 #import <pal/ios/UIKitSoftLink.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 LocalCurrentGraphicsContext::LocalCurrentGraphicsContext(GraphicsContext& graphicsContext)
     : m_savedGraphicsContext(graphicsContext)

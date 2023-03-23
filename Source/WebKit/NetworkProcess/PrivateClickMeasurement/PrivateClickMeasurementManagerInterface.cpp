@@ -32,7 +32,7 @@
 #include "PrivateClickMeasurementConnection.h"
 #include "PrivateClickMeasurementDaemonClient.h"
 #include "PrivateClickMeasurementManager.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 
 #if PLATFORM(COCOA)
 #include "PCMDaemonConnectionSet.h"
@@ -49,12 +49,12 @@ namespace MessageInfo {
 #define END };
 
 FUNCTION(storeUnattributed)
-ARGUMENTS(WebCore::PrivateClickMeasurement)
+ARGUMENTS(CyberCore::PrivateClickMeasurement)
 REPLY()
 END
 
 FUNCTION(handleAttribution)
-ARGUMENTS(PrivateClickMeasurementManager::AttributionTriggerData, URL, WebCore::RegistrableDomain, URL, String)
+ARGUMENTS(PrivateClickMeasurementManager::AttributionTriggerData, URL, CyberCore::RegistrableDomain, URL, String)
 END
 
 FUNCTION(clear)
@@ -63,12 +63,12 @@ REPLY()
 END
 
 FUNCTION(clearForRegistrableDomain)
-ARGUMENTS(WebCore::RegistrableDomain)
+ARGUMENTS(CyberCore::RegistrableDomain)
 REPLY()
 END
 
 FUNCTION(migratePrivateClickMeasurementFromLegacyStorage)
-ARGUMENTS(WebCore::PrivateClickMeasurement, PrivateClickMeasurementAttributionType)
+ARGUMENTS(CyberCore::PrivateClickMeasurement, PrivateClickMeasurementAttributionType)
 END
 
 FUNCTION(setDebugModeIsEnabled)
@@ -123,7 +123,7 @@ REPLY()
 END
 
 FUNCTION(allowTLSCertificateChainForLocalPCMTesting)
-ARGUMENTS(WebCore::CertificateInfo)
+ARGUMENTS(CyberCore::CertificateInfo)
 END
 
 #undef FUNCTION

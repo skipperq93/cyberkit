@@ -23,7 +23,7 @@
 #include "SVGPreserveAspectRatioValue.h"
 #include "SVGUnitTypes.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGPatternElement;
 
@@ -159,4 +159,4 @@ private:
     bool m_patternContentElementSet : 1;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -73,7 +73,7 @@ bool RemoteSampleBufferDisplayLayerManager::dispatchMessage(IPC::Connection& con
     return true;
 }
 
-void RemoteSampleBufferDisplayLayerManager::createLayer(SampleBufferDisplayLayerIdentifier identifier, bool hideRootLayer, WebCore::IntSize size, LayerCreationCallback&& callback)
+void RemoteSampleBufferDisplayLayerManager::createLayer(SampleBufferDisplayLayerIdentifier identifier, bool hideRootLayer, CyberCore::IntSize size, LayerCreationCallback&& callback)
 {
     callOnMainRunLoop([this, protectedThis = Ref { *this }, identifier, hideRootLayer, size, callback = WTFMove(callback)]() mutable {
         auto layer = RemoteSampleBufferDisplayLayer::create(m_connectionToWebProcess, identifier, m_connection.copyRef());

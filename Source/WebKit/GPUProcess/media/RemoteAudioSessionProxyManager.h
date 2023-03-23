@@ -37,8 +37,8 @@ class GPUProcess;
 class RemoteAudioSessionProxy;
 
 class RemoteAudioSessionProxyManager
-    : public WebCore::AudioSession::InterruptionObserver
-    , private WebCore::AudioSession::ConfigurationChangeObserver {
+    : public CyberCore::AudioSession::InterruptionObserver
+    , private CyberCore::AudioSession::ConfigurationChangeObserver {
     WTF_MAKE_FAST_ALLOCATED;
 public:
     RemoteAudioSessionProxyManager(GPUProcess&);
@@ -52,23 +52,23 @@ public:
 
     bool tryToSetActiveForProcess(RemoteAudioSessionProxy&, bool);
 
-    WebCore::AudioSession& session() { return WebCore::AudioSession::sharedSession(); }
-    const WebCore::AudioSession& session() const { return WebCore::AudioSession::sharedSession(); }
+    CyberCore::AudioSession& session() { return CyberCore::AudioSession::sharedSession(); }
+    const CyberCore::AudioSession& session() const { return CyberCore::AudioSession::sharedSession(); }
 
     void updatePresentingProcesses();
 
-    using WebCore::AudioSession::InterruptionObserver::weakPtrFactory;
-    using WebCore::AudioSession::InterruptionObserver::WeakValueType;
-    using WebCore::AudioSession::InterruptionObserver::WeakPtrImplType;
+    using CyberCore::AudioSession::InterruptionObserver::weakPtrFactory;
+    using CyberCore::AudioSession::InterruptionObserver::WeakValueType;
+    using CyberCore::AudioSession::InterruptionObserver::WeakPtrImplType;
 
 private:
     void beginAudioSessionInterruption() final;
-    void endAudioSessionInterruption(WebCore::AudioSession::MayResume) final;
+    void endAudioSessionInterruption(CyberCore::AudioSession::MayResume) final;
 
-    void hardwareMutedStateDidChange(const WebCore::AudioSession&) final;
-    void bufferSizeDidChange(const WebCore::AudioSession&) final;
-    void sampleRateDidChange(const WebCore::AudioSession&) final;
-    void configurationDidChange(const WebCore::AudioSession&);
+    void hardwareMutedStateDidChange(const CyberCore::AudioSession&) final;
+    void bufferSizeDidChange(const CyberCore::AudioSession&) final;
+    void sampleRateDidChange(const CyberCore::AudioSession&) final;
+    void configurationDidChange(const CyberCore::AudioSession&);
 
     GPUProcess& m_gpuProcess;
     WeakHashSet<RemoteAudioSessionProxy> m_proxies;

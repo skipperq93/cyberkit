@@ -42,7 +42,7 @@
 #include "SOAuthorizationLoadPolicy.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 struct ContentRuleListResults;
 class ResourceError;
 class ResourceRequest;
@@ -77,29 +77,29 @@ class NavigationClient {
 public:
     virtual ~NavigationClient() { }
 
-    virtual void didStartProvisionalNavigation(WebKit::WebPageProxy&, const WebCore::ResourceRequest&, Navigation*, Object*) { }
-    virtual void didStartProvisionalLoadForFrame(WebKit::WebPageProxy&, WebCore::ResourceRequest&&, WebKit::FrameInfoData&&) { }
+    virtual void didStartProvisionalNavigation(WebKit::WebPageProxy&, const CyberCore::ResourceRequest&, Navigation*, Object*) { }
+    virtual void didStartProvisionalLoadForFrame(WebKit::WebPageProxy&, CyberCore::ResourceRequest&&, WebKit::FrameInfoData&&) { }
     virtual void didReceiveServerRedirectForProvisionalNavigation(WebKit::WebPageProxy&, Navigation*, Object*) { }
     virtual void willPerformClientRedirect(WebKit::WebPageProxy&, const WTF::String& destinationURL, double) { }
     virtual void didPerformClientRedirect(WebKit::WebPageProxy&, const WTF::String& sourceURL, const WTF::String& destinationURL) { }
     virtual void didCancelClientRedirect(WebKit::WebPageProxy&) { }
-    virtual void didFailProvisionalNavigationWithError(WebKit::WebPageProxy&, WebKit::FrameInfoData&&, Navigation*, const WebCore::ResourceError&, Object*) { }
-    virtual void didFailProvisionalLoadWithErrorForFrame(WebKit::WebPageProxy&, WebCore::ResourceRequest&&, const WebCore::ResourceError&, WebKit::FrameInfoData&&) { }
+    virtual void didFailProvisionalNavigationWithError(WebKit::WebPageProxy&, WebKit::FrameInfoData&&, Navigation*, const CyberCore::ResourceError&, Object*) { }
+    virtual void didFailProvisionalLoadWithErrorForFrame(WebKit::WebPageProxy&, CyberCore::ResourceRequest&&, const CyberCore::ResourceError&, WebKit::FrameInfoData&&) { }
     virtual void didCommitNavigation(WebKit::WebPageProxy&, Navigation*, Object*) { }
-    virtual void didCommitLoadForFrame(WebKit::WebPageProxy&, WebCore::ResourceRequest&&, WebKit::FrameInfoData&&) { }
+    virtual void didCommitLoadForFrame(WebKit::WebPageProxy&, CyberCore::ResourceRequest&&, WebKit::FrameInfoData&&) { }
     virtual void didFinishDocumentLoad(WebKit::WebPageProxy&, Navigation*, Object*) { }
     virtual void didFinishNavigation(WebKit::WebPageProxy&, Navigation*, Object*) { }
-    virtual void didFinishLoadForFrame(WebKit::WebPageProxy&, WebCore::ResourceRequest&&, WebKit::FrameInfoData&&) { }
+    virtual void didFinishLoadForFrame(WebKit::WebPageProxy&, CyberCore::ResourceRequest&&, WebKit::FrameInfoData&&) { }
     virtual void didFailLoadDueToNetworkConnectionIntegrity(WebKit::WebPageProxy&, const WTF::URL&) { }
-    virtual void didFailNavigationWithError(WebKit::WebPageProxy&, const WebKit::FrameInfoData&, Navigation*, const WebCore::ResourceError&, Object*) { }
-    virtual void didFailLoadWithErrorForFrame(WebKit::WebPageProxy&, WebCore::ResourceRequest&&, const WebCore::ResourceError&, WebKit::FrameInfoData&&) { }
+    virtual void didFailNavigationWithError(WebKit::WebPageProxy&, const WebKit::FrameInfoData&, Navigation*, const CyberCore::ResourceError&, Object*) { }
+    virtual void didFailLoadWithErrorForFrame(WebKit::WebPageProxy&, CyberCore::ResourceRequest&&, const CyberCore::ResourceError&, WebKit::FrameInfoData&&) { }
     virtual void didSameDocumentNavigation(WebKit::WebPageProxy&, Navigation*, WebKit::SameDocumentNavigationType, Object*) { }
     virtual void didChangeLookalikeCharacters(WebKit::WebPageProxy&, const WTF::URL&, const WTF::URL&) { }
 
     virtual void didDisplayInsecureContent(WebKit::WebPageProxy&, API::Object*) { }
     virtual void didRunInsecureContent(WebKit::WebPageProxy&, API::Object*) { }
 
-    virtual void renderingProgressDidChange(WebKit::WebPageProxy&, OptionSet<WebCore::LayoutMilestone>) { }
+    virtual void renderingProgressDidChange(WebKit::WebPageProxy&, OptionSet<CyberCore::LayoutMilestone>) { }
 
     virtual void navigationResponseDidBecomeDownload(WebKit::WebPageProxy&, NavigationResponse&, WebKit::DownloadProxy&) { }
     virtual void navigationActionDidBecomeDownload(WebKit::WebPageProxy&, NavigationAction&, WebKit::DownloadProxy&) { }
@@ -119,7 +119,7 @@ public:
 
 #if USE(QUICK_LOOK)
     virtual void didStartLoadForQuickLookDocumentInMainFrame(const WTF::String& fileName, const WTF::String& uti) { }
-    virtual void didFinishLoadForQuickLookDocumentInMainFrame(const WebCore::FragmentedSharedBuffer&) { }
+    virtual void didFinishLoadForQuickLookDocumentInMainFrame(const CyberCore::FragmentedSharedBuffer&) { }
 #endif
 
     virtual void decidePolicyForNavigationAction(WebKit::WebPageProxy&, Ref<NavigationAction>&&, Ref<WebKit::WebFramePolicyListenerProxy>&& listener)
@@ -132,7 +132,7 @@ public:
         listener->use();
     }
     
-    virtual void contentRuleListNotification(WebKit::WebPageProxy&, WTF::URL&&, WebCore::ContentRuleListResults&&) { };
+    virtual void contentRuleListNotification(WebKit::WebPageProxy&, WTF::URL&&, CyberCore::ContentRuleListResults&&) { };
 
     virtual bool willGoToBackForwardListItem(WebKit::WebPageProxy&, WebKit::WebBackForwardListItem&, bool inBackForwardCache) { return false; }
 

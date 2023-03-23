@@ -32,23 +32,23 @@
 #import "WebViewImpl.h"
 #import <wtf/cocoa/VectorCocoa.h>
 
-static inline NSCorrectionIndicatorType correctionIndicatorType(WebCore::AlternativeTextType alternativeTextType)
+static inline NSCorrectionIndicatorType correctionIndicatorType(CyberCore::AlternativeTextType alternativeTextType)
 {
     switch (alternativeTextType) {
-    case WebCore::AlternativeTextType::Correction:
+    case CyberCore::AlternativeTextType::Correction:
         return NSCorrectionIndicatorTypeDefault;
-    case WebCore::AlternativeTextType::Reversion:
+    case CyberCore::AlternativeTextType::Reversion:
         return NSCorrectionIndicatorTypeReversion;
-    case WebCore::AlternativeTextType::SpellingSuggestions:
+    case CyberCore::AlternativeTextType::SpellingSuggestions:
         return NSCorrectionIndicatorTypeGuesses;
-    case WebCore::AlternativeTextType::DictationAlternatives:
+    case CyberCore::AlternativeTextType::DictationAlternatives:
         ASSERT_NOT_REACHED();
         return NSCorrectionIndicatorTypeDefault;
     }
 }
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 CorrectionPanel::CorrectionPanel()
     : m_wasDismissedExternally(false)

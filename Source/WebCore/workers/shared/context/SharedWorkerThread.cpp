@@ -31,7 +31,7 @@
 #include "SharedWorkerGlobalScope.h"
 #include "WorkerObjectProxy.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 SharedWorkerThread::SharedWorkerThread(SharedWorkerIdentifier identifier, const WorkerParameters& parameters, const ScriptBuffer& sourceCode, WorkerLoaderProxy& loaderProxy, WorkerDebuggerProxy& debuggerProxy, WorkerObjectProxy& objectProxy, WorkerBadgeProxy& badgeProxy, WorkerThreadStartMode startMode, const SecurityOrigin& topOrigin, IDBClient::IDBConnectionProxy* connectionProxy, SocketProvider* socketProvider, JSC::RuntimeFlags runtimeFlags)
     : WorkerThread(parameters, sourceCode, loaderProxy, debuggerProxy, objectProxy, badgeProxy, startMode, topOrigin, connectionProxy, socketProvider, runtimeFlags)
@@ -53,4 +53,4 @@ Ref<WorkerGlobalScope> SharedWorkerThread::createWorkerGlobalScope(const WorkerP
     return scope;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

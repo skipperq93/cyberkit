@@ -39,7 +39,7 @@
 #include "NetworkSession.h"
 #include "RemoteWorkerType.h"
 #include "SharedBufferReference.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebProcess.h"
 #include "WebProcessMessages.h"
 #include "WebResourceLoaderMessages.h"
@@ -63,7 +63,7 @@
 
 namespace WebKit {
 using namespace PAL;
-using namespace WebCore;
+using namespace CyberCore;
 
 #define SWSERVERCONNECTION_RELEASE_LOG(fmt, ...) RELEASE_LOG(ServiceWorker, "%p - WebSWServerConnection::" fmt, this, ##__VA_ARGS__)
 #define SWSERVERCONNECTION_RELEASE_LOG_ERROR(fmt, ...) RELEASE_LOG_ERROR(ServiceWorker, "%p - WebSWServerConnection::" fmt, this, ##__VA_ARGS__)
@@ -165,7 +165,7 @@ void WebSWServerConnection::updateWorkerStateInClient(ServiceWorkerIdentifier wo
     send(Messages::WebSWClientConnection::UpdateWorkerState(worker, state));
 }
 
-void WebSWServerConnection::controlClient(const NetworkResourceLoadParameters& parameters, SWServerRegistration& registration, const ResourceRequest& request, WebCore::ProcessIdentifier webProcessIdentifier)
+void WebSWServerConnection::controlClient(const NetworkResourceLoadParameters& parameters, SWServerRegistration& registration, const ResourceRequest& request, CyberCore::ProcessIdentifier webProcessIdentifier)
 {
     ServiceWorkerClientType clientType;
     if (parameters.options.destination  == FetchOptions::Destination::Worker)
@@ -187,7 +187,7 @@ void WebSWServerConnection::controlClient(const NetworkResourceLoadParameters& p
     });
 
     auto ancestorOrigins = map(parameters.frameAncestorOrigins, [](auto& origin) { return origin->toString(); });
-    ServiceWorkerClientData data { clientIdentifier, clientType, ServiceWorkerClientFrameType::None, request.url(), URL(), parameters.webPageID, parameters.webFrameID, request.isAppInitiated() ? WebCore::LastNavigationWasAppInitiated::Yes : WebCore::LastNavigationWasAppInitiated::No, false, false, 0, WTFMove(ancestorOrigins) };
+    ServiceWorkerClientData data { clientIdentifier, clientType, ServiceWorkerClientFrameType::None, request.url(), URL(), parameters.webPageID, parameters.webFrameID, request.isAppInitiated() ? CyberCore::LastNavigationWasAppInitiated::Yes : CyberCore::LastNavigationWasAppInitiated::No, false, false, 0, WTFMove(ancestorOrigins) };
     registerServiceWorkerClient(ClientOrigin { registration.key().topOrigin(), SecurityOriginData::fromURLWithoutStrictOpaqueness(request.url()) }, WTFMove(data), registration.identifier(), request.httpUserAgent());
 }
 
@@ -235,7 +235,7 @@ std::unique_ptr<ServiceWorkerFetchTask> WebSWServerConnection::createFetchTask(N
 
     if (worker->shouldSkipFetchEvent()) {
         if (registration->shouldSoftUpdate(loader.parameters().options))
-            registration->scheduleSoftUpdate(loader.isAppInitiated() ? WebCore::IsAppInitiated::Yes : WebCore::IsAppInitiated::No);
+            registration->scheduleSoftUpdate(loader.isAppInitiated() ? CyberCore::IsAppInitiated::Yes : CyberCore::IsAppInitiated::No);
 
         return nullptr;
     }
@@ -403,7 +403,7 @@ void WebSWServerConnection::getRegistrations(const SecurityOriginData& topOrigin
     callback(server().getRegistrations(topOrigin, clientURL));
 }
 
-void WebSWServerConnection::registerServiceWorkerClient(WebCore::ClientOrigin&& clientOrigin, ServiceWorkerClientData&& data, const std::optional<ServiceWorkerRegistrationIdentifier>& controllingServiceWorkerRegistrationIdentifier, String&& userAgent)
+void WebSWServerConnection::registerServiceWorkerClient(CyberCore::ClientOrigin&& clientOrigin, ServiceWorkerClientData&& data, const std::optional<ServiceWorkerRegistrationIdentifier>& controllingServiceWorkerRegistrationIdentifier, String&& userAgent)
 {
     CONNECTION_MESSAGE_CHECK(data.identifier.processIdentifier() == identifier());
     CONNECTION_MESSAGE_CHECK(!clientOrigin.topOrigin.isNull());
@@ -502,7 +502,7 @@ void WebSWServerConnection::updateThrottleState()
     }
 }
 
-void WebSWServerConnection::subscribeToPushService(WebCore::ServiceWorkerRegistrationIdentifier registrationIdentifier, Vector<uint8_t>&& applicationServerKey, CompletionHandler<void(Expected<PushSubscriptionData, ExceptionData>&&)>&& completionHandler)
+void WebSWServerConnection::subscribeToPushService(CyberCore::ServiceWorkerRegistrationIdentifier registrationIdentifier, Vector<uint8_t>&& applicationServerKey, CompletionHandler<void(Expected<PushSubscriptionData, ExceptionData>&&)>&& completionHandler)
 {
 #if !ENABLE(BUILT_IN_NOTIFICATIONS)
     UNUSED_PARAM(registrationIdentifier);
@@ -531,7 +531,7 @@ void WebSWServerConnection::subscribeToPushService(WebCore::ServiceWorkerRegistr
 #endif
 }
 
-void WebSWServerConnection::unsubscribeFromPushService(WebCore::ServiceWorkerRegistrationIdentifier registrationIdentifier, WebCore::PushSubscriptionIdentifier subscriptionIdentifier, CompletionHandler<void(Expected<bool, ExceptionData>&&)>&& completionHandler)
+void WebSWServerConnection::unsubscribeFromPushService(CyberCore::ServiceWorkerRegistrationIdentifier registrationIdentifier, CyberCore::PushSubscriptionIdentifier subscriptionIdentifier, CompletionHandler<void(Expected<bool, ExceptionData>&&)>&& completionHandler)
 {
 #if !ENABLE(BUILT_IN_NOTIFICATIONS)
     UNUSED_PARAM(registrationIdentifier);
@@ -554,7 +554,7 @@ void WebSWServerConnection::unsubscribeFromPushService(WebCore::ServiceWorkerReg
 #endif
 }
 
-void WebSWServerConnection::getPushSubscription(WebCore::ServiceWorkerRegistrationIdentifier registrationIdentifier, CompletionHandler<void(Expected<std::optional<PushSubscriptionData>, ExceptionData>&&)>&& completionHandler)
+void WebSWServerConnection::getPushSubscription(CyberCore::ServiceWorkerRegistrationIdentifier registrationIdentifier, CompletionHandler<void(Expected<std::optional<PushSubscriptionData>, ExceptionData>&&)>&& completionHandler)
 {
 #if !ENABLE(BUILT_IN_NOTIFICATIONS)
     UNUSED_PARAM(registrationIdentifier);
@@ -576,7 +576,7 @@ void WebSWServerConnection::getPushSubscription(WebCore::ServiceWorkerRegistrati
 #endif
 }
 
-void WebSWServerConnection::getPushPermissionState(WebCore::ServiceWorkerRegistrationIdentifier registrationIdentifier, CompletionHandler<void(Expected<uint8_t, ExceptionData>&&)>&& completionHandler)
+void WebSWServerConnection::getPushPermissionState(CyberCore::ServiceWorkerRegistrationIdentifier registrationIdentifier, CompletionHandler<void(Expected<uint8_t, ExceptionData>&&)>&& completionHandler)
 {
 #if !ENABLE(BUILT_IN_NOTIFICATIONS)
     UNUSED_PARAM(registrationIdentifier);
@@ -615,7 +615,7 @@ void WebSWServerConnection::terminateWorkerFromClient(ServiceWorkerIdentifier se
     worker->terminate(WTFMove(callback));
 }
 
-void WebSWServerConnection::whenServiceWorkerIsTerminatedForTesting(WebCore::ServiceWorkerIdentifier identifier, CompletionHandler<void()>&& completionHandler)
+void WebSWServerConnection::whenServiceWorkerIsTerminatedForTesting(CyberCore::ServiceWorkerIdentifier identifier, CompletionHandler<void()>&& completionHandler)
 {
     auto* worker = SWServerWorker::existingWorkerForIdentifier(identifier);
     if (!worker || worker->isNotRunning())
@@ -633,7 +633,7 @@ NetworkSession* WebSWServerConnection::session()
     return m_networkProcess->networkSession(sessionID());
 }
 
-template<typename U> void WebSWServerConnection::sendToContextProcess(WebCore::SWServerToContextConnection& connection, U&& message)
+template<typename U> void WebSWServerConnection::sendToContextProcess(CyberCore::SWServerToContextConnection& connection, U&& message)
 {
     static_cast<WebSWServerToContextConnection&>(connection).send(WTFMove(message));
 }
@@ -648,7 +648,7 @@ void WebSWServerConnection::fetchTaskTimedOut(ServiceWorkerIdentifier serviceWor
     worker->terminate();
 }
 
-void WebSWServerConnection::enableNavigationPreload(WebCore::ServiceWorkerRegistrationIdentifier registrationIdentifier, ExceptionOrVoidCallback&& callback)
+void WebSWServerConnection::enableNavigationPreload(CyberCore::ServiceWorkerRegistrationIdentifier registrationIdentifier, ExceptionOrVoidCallback&& callback)
 {
     auto* registration = server().getRegistration(registrationIdentifier);
     if (!registration) {
@@ -658,7 +658,7 @@ void WebSWServerConnection::enableNavigationPreload(WebCore::ServiceWorkerRegist
     callback(registration->enableNavigationPreload());
 }
 
-void WebSWServerConnection::disableNavigationPreload(WebCore::ServiceWorkerRegistrationIdentifier registrationIdentifier, ExceptionOrVoidCallback&& callback)
+void WebSWServerConnection::disableNavigationPreload(CyberCore::ServiceWorkerRegistrationIdentifier registrationIdentifier, ExceptionOrVoidCallback&& callback)
 {
     auto* registration = server().getRegistration(registrationIdentifier);
     if (!registration) {
@@ -668,7 +668,7 @@ void WebSWServerConnection::disableNavigationPreload(WebCore::ServiceWorkerRegis
     callback(registration->disableNavigationPreload());
 }
 
-void WebSWServerConnection::setNavigationPreloadHeaderValue(WebCore::ServiceWorkerRegistrationIdentifier registrationIdentifier, String&& headerValue, ExceptionOrVoidCallback&& callback)
+void WebSWServerConnection::setNavigationPreloadHeaderValue(CyberCore::ServiceWorkerRegistrationIdentifier registrationIdentifier, String&& headerValue, ExceptionOrVoidCallback&& callback)
 {
     auto* registration = server().getRegistration(registrationIdentifier);
     if (!registration) {
@@ -678,7 +678,7 @@ void WebSWServerConnection::setNavigationPreloadHeaderValue(WebCore::ServiceWork
     callback(registration->setNavigationPreloadHeaderValue(WTFMove(headerValue)));
 }
 
-void WebSWServerConnection::getNavigationPreloadState(WebCore::ServiceWorkerRegistrationIdentifier registrationIdentifier, ExceptionOrNavigationPreloadStateCallback&& callback)
+void WebSWServerConnection::getNavigationPreloadState(CyberCore::ServiceWorkerRegistrationIdentifier registrationIdentifier, ExceptionOrNavigationPreloadStateCallback&& callback)
 {
     auto* registration = server().getRegistration(registrationIdentifier);
     if (!registration) {
@@ -688,12 +688,12 @@ void WebSWServerConnection::getNavigationPreloadState(WebCore::ServiceWorkerRegi
     callback(registration->navigationPreloadState());
 }
 
-void WebSWServerConnection::focusServiceWorkerClient(WebCore::ScriptExecutionContextIdentifier clientIdentifier, CompletionHandler<void(std::optional<ServiceWorkerClientData>&&)>&& callback)
+void WebSWServerConnection::focusServiceWorkerClient(CyberCore::ScriptExecutionContextIdentifier clientIdentifier, CompletionHandler<void(std::optional<ServiceWorkerClientData>&&)>&& callback)
 {
     sendWithAsyncReply(Messages::WebSWClientConnection::FocusServiceWorkerClient { clientIdentifier }, WTFMove(callback));
 }
 
-void WebSWServerConnection::transferServiceWorkerLoadToNewWebProcess(NetworkResourceLoader& loader, WebCore::SWServerRegistration& registration, WebCore::ProcessIdentifier webProcessIdentifier)
+void WebSWServerConnection::transferServiceWorkerLoadToNewWebProcess(NetworkResourceLoader& loader, CyberCore::SWServerRegistration& registration, CyberCore::ProcessIdentifier webProcessIdentifier)
 {
     controlClient(loader.parameters(), registration, loader.originalRequest(), webProcessIdentifier);
 }
@@ -708,12 +708,12 @@ std::optional<SWServer::GatheredClientData> WebSWServerConnection::gatherClientD
     return server().gatherClientData(iterator->value, clientIdentifier);
 }
 
-void WebSWServerConnection::updateBackgroundFetchRegistration(const WebCore::BackgroundFetchInformation& information)
+void WebSWServerConnection::updateBackgroundFetchRegistration(const CyberCore::BackgroundFetchInformation& information)
 {
     send(Messages::WebSWClientConnection::UpdateBackgroundFetchRegistration(information));
 }
 
-void WebSWServerConnection::retrieveRecordResponseBody(WebCore::BackgroundFetchRecordIdentifier recordIdentifier, RetrieveRecordResponseBodyCallbackIdentifier callbackIdentifier)
+void WebSWServerConnection::retrieveRecordResponseBody(CyberCore::BackgroundFetchRecordIdentifier recordIdentifier, RetrieveRecordResponseBodyCallbackIdentifier callbackIdentifier)
 {
     SWServer::Connection::retrieveRecordResponseBody(recordIdentifier, [weakThis = WeakPtr { *this }, callbackIdentifier](auto&& result) {
         if (!weakThis)

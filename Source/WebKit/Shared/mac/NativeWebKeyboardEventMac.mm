@@ -33,7 +33,7 @@
 
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 NativeWebKeyboardEvent::NativeWebKeyboardEvent(NSEvent *event, bool handledByInputMethod, bool replacesSoftSpace, const Vector<KeypressCommand>& commands)
     : WebKeyboardEvent(WebEventFactory::createWebKeyboardEvent(event, handledByInputMethod, replacesSoftSpace, commands))

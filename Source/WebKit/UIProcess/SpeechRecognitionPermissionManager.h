@@ -39,19 +39,19 @@ public:
     enum class CheckResult { Denied, Granted, Unknown };
     explicit SpeechRecognitionPermissionManager(WebPageProxy&);
     ~SpeechRecognitionPermissionManager();
-    void request(WebCore::SpeechRecognitionRequest&, SpeechRecognitionPermissionRequestCallback&&);
+    void request(CyberCore::SpeechRecognitionRequest&, SpeechRecognitionPermissionRequestCallback&&);
 
-    void decideByDefaultAction(const WebCore::SecurityOriginData&, CompletionHandler<void(bool)>&&);
+    void decideByDefaultAction(const CyberCore::SecurityOriginData&, CompletionHandler<void(bool)>&&);
     WebPageProxy& page() { return m_page; }
 
 private:
     void startNextRequest();
     void startProcessingRequest();
     void continueProcessingRequest();
-    void completeCurrentRequest(std::optional<WebCore::SpeechRecognitionError>&& = std::nullopt);
+    void completeCurrentRequest(std::optional<CyberCore::SpeechRecognitionError>&& = std::nullopt);
     void requestMicrophoneAccess();
     void requestSpeechRecognitionServiceAccess();
-    void requestUserPermission(WebCore::SpeechRecognitionRequest& request);
+    void requestUserPermission(CyberCore::SpeechRecognitionRequest& request);
 
     WebPageProxy& m_page;
     Deque<Ref<SpeechRecognitionPermissionRequest>> m_requests;

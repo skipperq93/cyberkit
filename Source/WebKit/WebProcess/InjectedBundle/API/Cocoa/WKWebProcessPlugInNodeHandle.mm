@@ -33,15 +33,15 @@
 #import <CyberCore/HTMLTextFormControlElement.h>
 #import <CyberCore/IntRect.h>
 #import <CyberCore/NativeImage.h>
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 
 @implementation WKWebProcessPlugInNodeHandle {
-    API::ObjectStorage<WebKit::InjectedBundleNodeHandle> _nodeHandle;
+    API::ObjectStorage<CyberKit::InjectedBundleNodeHandle> _nodeHandle;
 }
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainRunLoop(WKWebProcessPlugInNodeHandle.class, self))
+    if (CyberCoreObjCScheduleDeallocateOnMainRunLoop(WKWebProcessPlugInNodeHandle.class, self))
         return;
     _nodeHandle->~InjectedBundleNodeHandle();
     [super dealloc];
@@ -51,12 +51,12 @@
 {
     JSContextRef contextRef = [context JSGlobalContextRef];
     JSObjectRef objectRef = JSValueToObject(contextRef, [value JSValueRef], nullptr);
-    return WebKit::wrapper(WebKit::InjectedBundleNodeHandle::getOrCreate(contextRef, objectRef));
+    return CyberKit::wrapper(CyberKit::InjectedBundleNodeHandle::getOrCreate(contextRef, objectRef));
 }
 
 - (WKWebProcessPlugInFrame *)htmlIFrameElementContentFrame
 {
-    return WebKit::wrapper(_nodeHandle->htmlIFrameElementContentFrame());
+    return CyberKit::wrapper(_nodeHandle->htmlIFrameElementContentFrame());
 }
 
 - (CocoaImage *)renderedImageWithOptions:(WKSnapshotOptions)options
@@ -70,11 +70,11 @@
     if (width)
         optionalWidth = width.floatValue;
 
-    auto image = _nodeHandle->renderedImage(WebKit::toSnapshotOptions(options), options & kWKSnapshotOptionsExcludeOverflow, optionalWidth);
+    auto image = _nodeHandle->renderedImage(CyberKit::toSnapshotOptions(options), options & kWKSnapshotOptionsExcludeOverflow, optionalWidth);
     if (!image)
         return nil;
 
-    auto nativeImage = image->copyNativeImage(WebCore::DontCopyBackingStore);
+    auto nativeImage = image->copyNativeImage(CyberCore::DontCopyBackingStore);
     if (!nativeImage)
         return nil;
 
@@ -125,40 +125,40 @@
     return _nodeHandle->isHTMLInputElementAutoFillButtonEnabled();
 }
 
-static WebCore::AutoFillButtonType toAutoFillButtonType(_WKAutoFillButtonType autoFillButtonType)
+static CyberCore::AutoFillButtonType toAutoFillButtonType(_WKAutoFillButtonType autoFillButtonType)
 {
     switch (autoFillButtonType) {
     case _WKAutoFillButtonTypeNone:
-        return WebCore::AutoFillButtonType::None;
+        return CyberCore::AutoFillButtonType::None;
     case _WKAutoFillButtonTypeContacts:
-        return WebCore::AutoFillButtonType::Contacts;
+        return CyberCore::AutoFillButtonType::Contacts;
     case _WKAutoFillButtonTypeCredentials:
-        return WebCore::AutoFillButtonType::Credentials;
+        return CyberCore::AutoFillButtonType::Credentials;
     case _WKAutoFillButtonTypeStrongPassword:
-        return WebCore::AutoFillButtonType::StrongPassword;
+        return CyberCore::AutoFillButtonType::StrongPassword;
     case _WKAutoFillButtonTypeCreditCard:
-        return WebCore::AutoFillButtonType::CreditCard;
+        return CyberCore::AutoFillButtonType::CreditCard;
     case _WKAutoFillButtonTypeLoading:
-        return WebCore::AutoFillButtonType::Loading;
+        return CyberCore::AutoFillButtonType::Loading;
     }
     ASSERT_NOT_REACHED();
-    return WebCore::AutoFillButtonType::None;
+    return CyberCore::AutoFillButtonType::None;
 }
 
-static _WKAutoFillButtonType toWKAutoFillButtonType(WebCore::AutoFillButtonType autoFillButtonType)
+static _WKAutoFillButtonType toWKAutoFillButtonType(CyberCore::AutoFillButtonType autoFillButtonType)
 {
     switch (autoFillButtonType) {
-    case WebCore::AutoFillButtonType::None:
+    case CyberCore::AutoFillButtonType::None:
         return _WKAutoFillButtonTypeNone;
-    case WebCore::AutoFillButtonType::Contacts:
+    case CyberCore::AutoFillButtonType::Contacts:
         return _WKAutoFillButtonTypeContacts;
-    case WebCore::AutoFillButtonType::Credentials:
+    case CyberCore::AutoFillButtonType::Credentials:
         return _WKAutoFillButtonTypeCredentials;
-    case WebCore::AutoFillButtonType::StrongPassword:
+    case CyberCore::AutoFillButtonType::StrongPassword:
         return _WKAutoFillButtonTypeStrongPassword;
-    case WebCore::AutoFillButtonType::CreditCard:
+    case CyberCore::AutoFillButtonType::CreditCard:
         return _WKAutoFillButtonTypeCreditCard;
-    case WebCore::AutoFillButtonType::Loading:
+    case CyberCore::AutoFillButtonType::Loading:
         return _WKAutoFillButtonTypeLoading;
     }
     ASSERT_NOT_REACHED();
@@ -208,15 +208,15 @@ static _WKAutoFillButtonType toWKAutoFillButtonType(WebCore::AutoFillButtonType 
 
 - (WKWebProcessPlugInNodeHandle *)HTMLTableCellElementCellAbove
 {
-    return WebKit::wrapper(_nodeHandle->htmlTableCellElementCellAbove());
+    return CyberKit::wrapper(_nodeHandle->htmlTableCellElementCellAbove());
 }
 
 - (WKWebProcessPlugInFrame *)frame
 {
-    return WebKit::wrapper(_nodeHandle->document()->documentFrame());
+    return CyberKit::wrapper(_nodeHandle->document()->documentFrame());
 }
 
-- (WebKit::InjectedBundleNodeHandle&)_nodeHandle
+- (CyberKit::InjectedBundleNodeHandle&)_nodeHandle
 {
     return *_nodeHandle;
 }

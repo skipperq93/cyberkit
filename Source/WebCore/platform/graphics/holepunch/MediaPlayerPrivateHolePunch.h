@@ -33,7 +33,7 @@
 #include "TextureMapperPlatformLayerProxyProvider.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class TextureMapperPlatformLayerProxy;
 

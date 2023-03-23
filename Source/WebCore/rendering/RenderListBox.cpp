@@ -67,7 +67,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/StackStats.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -1040,4 +1040,4 @@ bool RenderListBox::scrolledToRight() const
     return true;
 }
     
-} // namespace WebCore
+} // namespace CyberCore

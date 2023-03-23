@@ -33,7 +33,7 @@
 #include "Timer.h"
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Page;
 class Scrollbar;
@@ -203,8 +203,8 @@ private:
 };
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_SCROLLING_COORDINATOR(WebCore::AsyncScrollingCoordinator, isAsyncScrollingCoordinator());
+SPECIALIZE_TYPE_TRAITS_SCROLLING_COORDINATOR(CyberCore::AsyncScrollingCoordinator, isAsyncScrollingCoordinator());
 
 #endif // ENABLE(ASYNC_SCROLLING)

@@ -26,9 +26,9 @@
 
 #include <wtf/ObjectIdentifier.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum RTCDataChannelLocalIdentifierType { };
 using RTCDataChannelLocalIdentifier = ObjectIdentifier<RTCDataChannelLocalIdentifierType>;
 
-} // namespace WebCore
+} // namespace CyberCore

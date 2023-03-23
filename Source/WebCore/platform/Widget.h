@@ -56,7 +56,7 @@ typedef void* PlatformWidget;
 
 typedef PlatformWidget PlatformPageClient;
 
-namespace WebCore {
+namespace CyberCore {
 
 class Cursor;
 class Event;
@@ -236,10 +236,10 @@ inline void Widget::setPlatformWidget(PlatformWidget widget)
 
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #define SPECIALIZE_TYPE_TRAITS_WIDGET(ToValueTypeName, predicate) \
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::ToValueTypeName) \
-    static bool isType(const WebCore::Widget& widget) { return widget.predicate; } \
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::ToValueTypeName) \
+    static bool isType(const CyberCore::Widget& widget) { return widget.predicate; } \
 SPECIALIZE_TYPE_TRAITS_END()
 

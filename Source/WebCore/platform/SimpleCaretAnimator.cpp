@@ -28,7 +28,7 @@
 
 #include "RenderTheme.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 SimpleCaretAnimator::SimpleCaretAnimator(CaretAnimationClient& client)
     : CaretAnimator(client)
@@ -66,4 +66,4 @@ String SimpleCaretAnimator::debugDescription() const
     return textStream.release();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

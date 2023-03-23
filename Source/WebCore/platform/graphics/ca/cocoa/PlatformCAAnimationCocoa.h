@@ -37,7 +37,7 @@ OBJC_CLASS NSString;
 
 typedef CAAnimation* PlatformAnimationRef;
 
-namespace WebCore {
+namespace CyberCore {
 
 WEBCORE_EXPORT NSString* toCAFillModeType(PlatformCAAnimation::FillModeType);
 WEBCORE_EXPORT NSString* toCAValueFunctionType(PlatformCAAnimation::ValueFunctionType);
@@ -96,24 +96,24 @@ public:
 
     // Basic-animation properties.
     void setFromValue(float) override;
-    void setFromValue(const WebCore::TransformationMatrix&) override;
+    void setFromValue(const CyberCore::TransformationMatrix&) override;
     void setFromValue(const FloatPoint3D&) override;
-    void setFromValue(const WebCore::Color&) override;
+    void setFromValue(const CyberCore::Color&) override;
     void setFromValue(const FilterOperation*) override;
     void copyFromValueFrom(const PlatformCAAnimation&) override;
 
     void setToValue(float) override;
-    void setToValue(const WebCore::TransformationMatrix&) override;
+    void setToValue(const CyberCore::TransformationMatrix&) override;
     void setToValue(const FloatPoint3D&) override;
-    void setToValue(const WebCore::Color&) override;
+    void setToValue(const CyberCore::Color&) override;
     void setToValue(const FilterOperation*) override;
     void copyToValueFrom(const PlatformCAAnimation&) override;
 
     // Keyframe-animation properties.
     void setValues(const Vector<float>&) override;
-    void setValues(const Vector<WebCore::TransformationMatrix>&) override;
+    void setValues(const Vector<CyberCore::TransformationMatrix>&) override;
     void setValues(const Vector<FloatPoint3D>&) override;
-    void setValues(const Vector<WebCore::Color>&) override;
+    void setValues(const Vector<CyberCore::Color>&) override;
     void setValues(const Vector<RefPtr<FilterOperation>>&) override;
     void copyValuesFrom(const PlatformCAAnimation&) override;
 
@@ -134,8 +134,8 @@ private:
     RetainPtr<CAAnimation> m_animation;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_CAANIMATION(WebCore::PlatformCAAnimationCocoa, isPlatformCAAnimationCocoa())
+SPECIALIZE_TYPE_TRAITS_CAANIMATION(CyberCore::PlatformCAAnimationCocoa, isPlatformCAAnimationCocoa())
 
 #endif // PlatformCAAnimationCocoa_h

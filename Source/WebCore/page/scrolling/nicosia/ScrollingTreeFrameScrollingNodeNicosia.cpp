@@ -38,7 +38,7 @@
 #include "ScrollingTreeScrollingNodeDelegateNicosia.h"
 #include "ThreadedScrollingTree.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<ScrollingTreeFrameScrollingNode> ScrollingTreeFrameScrollingNodeNicosia::create(ScrollingTree& scrollingTree, ScrollingNodeType nodeType, ScrollingNodeID nodeID)
 {
@@ -175,6 +175,6 @@ void ScrollingTreeFrameScrollingNodeNicosia::repositionRelatedLayers()
     delegate().updateVisibleLengths();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ASYNC_SCROLLING) && USE(NICOSIA)

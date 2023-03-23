@@ -29,7 +29,7 @@
 #include "WorkerGlobalScope.h"
 #include <wtf/IsoMalloc.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SharedWorkerThread;
 struct WorkerParameters;
@@ -60,9 +60,9 @@ private:
     String m_name;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::SharedWorkerGlobalScope)
-static bool isType(const WebCore::ScriptExecutionContext& context) { return is<WebCore::WorkerGlobalScope>(context) && downcast<WebCore::WorkerGlobalScope>(context).type() == WebCore::WorkerGlobalScope::Type::SharedWorker; }
-static bool isType(const WebCore::WorkerGlobalScope& context) { return context.type() == WebCore::WorkerGlobalScope::Type::SharedWorker; }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::SharedWorkerGlobalScope)
+static bool isType(const CyberCore::ScriptExecutionContext& context) { return is<CyberCore::WorkerGlobalScope>(context) && downcast<CyberCore::WorkerGlobalScope>(context).type() == CyberCore::WorkerGlobalScope::Type::SharedWorker; }
+static bool isType(const CyberCore::WorkerGlobalScope& context) { return context.type() == CyberCore::WorkerGlobalScope::Type::SharedWorker; }
 SPECIALIZE_TYPE_TRAITS_END()

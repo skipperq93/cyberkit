@@ -26,7 +26,7 @@
 #include "config.h"
 #include "TextRun.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ExpectedTextRunSize {
     String text;

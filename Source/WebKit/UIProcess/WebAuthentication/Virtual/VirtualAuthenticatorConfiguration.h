@@ -36,7 +36,7 @@ struct VirtualAuthenticatorConfiguration {
     WTF_MAKE_STRUCT_FAST_ALLOCATED;
     // FIXME: use ProtocolVersion here
     String protocol;
-    WebCore::AuthenticatorTransport transport;
+    CyberCore::AuthenticatorTransport transport;
     bool hasResidentKey;
     bool hasUserVerification;
     bool isUserConsenting;

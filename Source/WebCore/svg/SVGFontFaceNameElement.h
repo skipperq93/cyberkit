@@ -21,7 +21,7 @@
 
 #include "SVGElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSFontFaceSrcLocalValue;
 
@@ -38,4 +38,4 @@ private:
     bool rendererIsNeeded(const RenderStyle&) final { return false; }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

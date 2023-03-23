@@ -34,31 +34,31 @@
 #import <CyberCore/WebScriptObjectPrivate.h>
 #import <wtf/GetPtr.h>
 
-#define IMPL static_cast<WebCore::OverflowEvent*>(reinterpret_cast<WebCore::Event*>(_internal))
+#define IMPL static_cast<CyberCore::OverflowEvent*>(reinterpret_cast<CyberCore::Event*>(_internal))
 
 @implementation DOMOverflowEvent
 
 - (unsigned short)orient
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->orient();
 }
 
 - (BOOL)horizontalOverflow
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->horizontalOverflow();
 }
 
 - (BOOL)verticalOverflow
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->verticalOverflow();
 }
 
 - (void)initOverflowEvent:(unsigned short)inOrient horizontalOverflow:(BOOL)inHorizontalOverflow verticalOverflow:(BOOL)inVerticalOverflow
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->initOverflowEvent(inOrient, inHorizontalOverflow, inVerticalOverflow);
 }
 

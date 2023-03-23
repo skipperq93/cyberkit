@@ -32,7 +32,7 @@
 #include <CyberCore/ResourceResponse.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 ResourceError downloadNetworkError(const URL& failingURL, const String& localizedDescription)
 {

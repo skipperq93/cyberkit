@@ -41,7 +41,7 @@ class Connection;
 class Decoder;
 }
 
-namespace WebCore {
+namespace CyberCore {
 class ContentType;
 class MediaSourcePrivate;
 class PlatformTimeRanges;
@@ -54,7 +54,7 @@ class RemoteMediaPlayerProxy;
 
 class RemoteMediaSourceProxy final
     : public RefCounted<RemoteMediaSourceProxy>
-    , public WebCore::MediaSourcePrivateClient
+    , public CyberCore::MediaSourcePrivateClient
     , private IPC::MessageReceiver {
     WTF_MAKE_FAST_ALLOCATED;
 public:
@@ -62,9 +62,9 @@ public:
     virtual ~RemoteMediaSourceProxy();
 
     // MediaSourcePrivateClient overrides
-    void setPrivateAndOpen(Ref<WebCore::MediaSourcePrivate>&&) final;
+    void setPrivateAndOpen(Ref<CyberCore::MediaSourcePrivate>&&) final;
     MediaTime duration() const final;
-    std::unique_ptr<WebCore::PlatformTimeRanges> buffered() const final;
+    std::unique_ptr<CyberCore::PlatformTimeRanges> buffered() const final;
     void seekToTime(const MediaTime&) final;
 #if USE(GSTREAMER)
     void monitorSourceBuffers() final;
@@ -81,11 +81,11 @@ private:
     void didReceiveMessage(IPC::Connection&, IPC::Decoder&) final;
     bool didReceiveSyncMessage(IPC::Connection&, IPC::Decoder&, UniqueRef<IPC::Encoder>&) final;
 
-    using AddSourceBufferCallback = CompletionHandler<void(WebCore::MediaSourcePrivate::AddStatus, std::optional<RemoteSourceBufferIdentifier>)>;
-    void addSourceBuffer(const WebCore::ContentType&, AddSourceBufferCallback&&);
+    using AddSourceBufferCallback = CompletionHandler<void(CyberCore::MediaSourcePrivate::AddStatus, std::optional<RemoteSourceBufferIdentifier>)>;
+    void addSourceBuffer(const CyberCore::ContentType&, AddSourceBufferCallback&&);
     void durationChanged(const MediaTime&);
-    void bufferedChanged(const WebCore::PlatformTimeRanges&);
-    void setReadyState(WebCore::MediaPlayerEnums::ReadyState);
+    void bufferedChanged(const CyberCore::PlatformTimeRanges&);
+    void setReadyState(CyberCore::MediaPlayerEnums::ReadyState);
     void setIsSeeking(bool);
     void waitForSeekCompleted();
     void seekCompleted();
@@ -94,11 +94,11 @@ private:
     WeakPtr<GPUConnectionToWebProcess> m_connectionToWebProcess;
     RemoteMediaSourceIdentifier m_identifier;
     bool m_webMParserEnabled { false };
-    RefPtr<WebCore::MediaSourcePrivate> m_private;
+    RefPtr<CyberCore::MediaSourcePrivate> m_private;
     WeakPtr<RemoteMediaPlayerProxy> m_remoteMediaPlayerProxy;
 
     MediaTime m_duration;
-    WebCore::PlatformTimeRanges m_buffered;
+    CyberCore::PlatformTimeRanges m_buffered;
 
     Vector<RefPtr<RemoteSourceBufferProxy>> m_sourceBuffers;
 };

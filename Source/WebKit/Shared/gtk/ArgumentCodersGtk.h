@@ -31,7 +31,7 @@
 typedef struct _GtkPrintSettings GtkPrintSettings;
 typedef struct _GtkPageSetup GtkPageSetup;
 
-namespace WebCore {
+namespace CyberCore {
 class SelectionData;
 }
 
@@ -43,9 +43,9 @@ WARN_UNUSED_RETURN bool decode(Decoder&, GRefPtr<GtkPrintSettings>&);
 void encode(Encoder&, GtkPageSetup*);
 WARN_UNUSED_RETURN bool decode(Decoder&, GRefPtr<GtkPageSetup>&);
 
-template<> struct ArgumentCoder<WebCore::SelectionData> {
-    static void encode(Encoder&, const WebCore::SelectionData&);
-    static std::optional<WebCore::SelectionData> decode(Decoder&);
+template<> struct ArgumentCoder<CyberCore::SelectionData> {
+    static void encode(Encoder&, const CyberCore::SelectionData&);
+    static std::optional<CyberCore::SelectionData> decode(Decoder&);
 };
 
 } // namespace IPC

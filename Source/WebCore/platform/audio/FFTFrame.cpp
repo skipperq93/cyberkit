@@ -41,7 +41,7 @@
 #include <stdio.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 void FFTFrame::doPaddedFFT(const float* data, size_t dataSize)
 {
@@ -303,6 +303,6 @@ void FFTFrame::print()
 }
 #endif // NDEBUG && !LOG_DISABLED
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

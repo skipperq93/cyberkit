@@ -36,7 +36,7 @@
 
 namespace WebKit {
 
-void AuthenticationChallengeProxy::sendClientCertificateCredentialOverXpc(IPC::Connection& connection, SecKeyProxyStore& secKeyProxyStore, AuthenticationChallengeIdentifier challengeID, const WebCore::Credential& credential)
+void AuthenticationChallengeProxy::sendClientCertificateCredentialOverXpc(IPC::Connection& connection, SecKeyProxyStore& secKeyProxyStore, AuthenticationChallengeIdentifier challengeID, const CyberCore::Credential& credential)
 {
     ASSERT(secKeyProxyStore.isInitialized());
 

@@ -36,7 +36,7 @@
     RetainPtr<NSMutableDictionary> _attributes;
 }
 
-- (instancetype)_initWithLinkIcon:(const WebCore::LinkIcon&)linkIcon
+- (instancetype)_initWithLinkIcon:(const CyberCore::LinkIcon&)linkIcon
 {
     if (!(self = [super init]))
         return nil;
@@ -48,13 +48,13 @@
         _size = adoptNS([[NSNumber alloc] initWithUnsignedInt:linkIcon.size.value()]);
 
     switch (linkIcon.type) {
-    case WebCore::LinkIconType::Favicon:
+    case CyberCore::LinkIconType::Favicon:
         _iconType = WKLinkIconTypeFavicon;
         break;
-    case WebCore::LinkIconType::TouchIcon:
+    case CyberCore::LinkIconType::TouchIcon:
         _iconType = WKLinkIconTypeTouchIcon;
         break;
-    case WebCore::LinkIconType::TouchPrecomposedIcon:
+    case CyberCore::LinkIconType::TouchPrecomposedIcon:
         _iconType = WKLinkIconTypeTouchPrecomposedIcon;
         break;
     }

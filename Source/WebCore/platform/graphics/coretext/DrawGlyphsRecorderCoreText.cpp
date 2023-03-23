@@ -39,7 +39,7 @@
 #include <CoreText/CoreText.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static CGContextDelegateRef beginLayer(CGContextDelegateRef delegate, CGRenderingStateRef rstate, CGGStateRef gstate, CGRect rect, CFDictionaryRef, CGContextDelegateRef)
 {
@@ -76,7 +76,7 @@ UniqueRef<GraphicsContext> DrawGlyphsRecorder::createInternalContext()
     auto contextDelegate = adoptCF(CGContextDelegateCreate(this));
     CGContextDelegateSetCallback(contextDelegate.get(), deBeginLayer, reinterpret_cast<CGContextDelegateCallback>(&beginLayer));
     CGContextDelegateSetCallback(contextDelegate.get(), deEndLayer, reinterpret_cast<CGContextDelegateCallback>(&endLayer));
-    CGContextDelegateSetCallback(contextDelegate.get(), deDrawGlyphs, reinterpret_cast<CGContextDelegateCallback>(&WebCore::drawGlyphs));
+    CGContextDelegateSetCallback(contextDelegate.get(), deDrawGlyphs, reinterpret_cast<CGContextDelegateCallback>(&CyberCore::drawGlyphs));
     CGContextDelegateSetCallback(contextDelegate.get(), deDrawImage, reinterpret_cast<CGContextDelegateCallback>(&drawImage));
 #if HAVE(CORE_TEXT_FIX_FOR_RADAR_93925620)
     auto contextType = kCGContextTypeUnknown;
@@ -455,4 +455,4 @@ void DrawGlyphsRecorder::drawNativeText(CTFontRef font, CGFloat fontSize, CTLine
     concludeInternalContext();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

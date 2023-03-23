@@ -197,7 +197,7 @@ void WebPageInspectorController::willDestroyProvisionalPage(const ProvisionalPag
     destroyInspectorTarget(getTargetID(provisionalPage));
 }
 
-void WebPageInspectorController::didCommitProvisionalPage(WebCore::PageIdentifier oldWebPageID, WebCore::PageIdentifier newWebPageID)
+void WebPageInspectorController::didCommitProvisionalPage(CyberCore::PageIdentifier oldWebPageID, CyberCore::PageIdentifier newWebPageID)
 {
     String oldID = WebPageInspectorTarget::toTargetID(oldWebPageID);
     String newID = WebPageInspectorTarget::toTargetID(newWebPageID);

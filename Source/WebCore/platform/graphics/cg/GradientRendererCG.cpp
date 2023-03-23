@@ -31,7 +31,7 @@
 #include "GradientColorStops.h"
 #include <pal/spi/cg/CoreGraphicsSPI.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 GradientRendererCG::GradientRendererCG(ColorInterpolationMethod colorInterpolationMethod, const GradientColorStops& stops)
     : m_strategy { pickStrategy(colorInterpolationMethod, stops) }

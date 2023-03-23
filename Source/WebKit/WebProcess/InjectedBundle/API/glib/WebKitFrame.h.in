@@ -19,13 +19,13 @@
 
 @INJECTED_BUNDLE_API_SINGLE_HEADER_CHECK@
 
-#ifndef WebKitFrame_h
-#define WebKitFrame_h
+#ifndef CyberKitFrame_h
+#define CyberKitFrame_h
 
 #include <glib-object.h>
 #include <jsc/jsc.h>
-#include <@API_INCLUDE_PREFIX@/WebKitDefines.h>
-#include <@API_INCLUDE_PREFIX@/WebKitScriptWorld.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitDefines.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitScriptWorld.h>
 
 #if !ENABLE(2022_GLIB_API)
 #if PLATFORM(GTK)
@@ -40,57 +40,57 @@ G_BEGIN_DECLS
 
 #define WEBKIT_TYPE_FRAME            (webkit_frame_get_type())
 #if !ENABLE(2022_GLIB_API)
-#define WEBKIT_FRAME(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_FRAME, WebKitFrame))
+#define WEBKIT_FRAME(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_FRAME, CyberKitFrame))
 #define WEBKIT_IS_FRAME(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_TYPE_FRAME))
-#define WEBKIT_FRAME_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_FRAME, WebKitFrameClass))
+#define WEBKIT_FRAME_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_FRAME, CyberKitFrameClass))
 #define WEBKIT_IS_FRAME_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_TYPE_FRAME))
-#define WEBKIT_FRAME_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_FRAME, WebKitFrameClass))
+#define WEBKIT_FRAME_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_FRAME, CyberKitFrameClass))
 
-typedef struct _WebKitFrame        WebKitFrame;
-typedef struct _WebKitFrameClass   WebKitFrameClass;
-typedef struct _WebKitFramePrivate WebKitFramePrivate;
+typedef struct _CyberKitFrame        CyberKitFrame;
+typedef struct _CyberKitFrameClass   CyberKitFrameClass;
+typedef struct _CyberKitFramePrivate CyberKitFramePrivate;
 
-struct _WebKitFrameClass {
+struct _CyberKitFrameClass {
     GObjectClass parent_class;
 };
 #endif
 
-WEBKIT_DECLARE_FINAL_TYPE (WebKitFrame, webkit_frame, WEBKIT, FRAME, GObject)
+WEBKIT_DECLARE_FINAL_TYPE (CyberKitFrame, webkit_frame, WEBKIT, FRAME, GObject)
 
 WEBKIT_API guint64
-webkit_frame_get_id                                      (WebKitFrame       *frame);
+webkit_frame_get_id                                      (CyberKitFrame       *frame);
 
 WEBKIT_API gboolean
-webkit_frame_is_main_frame                               (WebKitFrame       *frame);
+webkit_frame_is_main_frame                               (CyberKitFrame       *frame);
 
 WEBKIT_API const gchar *
-webkit_frame_get_uri                                     (WebKitFrame       *frame);
+webkit_frame_get_uri                                     (CyberKitFrame       *frame);
 
 #if PLATFORM(GTK) && !USE(GTK4)
 WEBKIT_DEPRECATED_FOR(webkit_frame_get_js_context) JSGlobalContextRef
-webkit_frame_get_javascript_global_context               (WebKitFrame       *frame);
+webkit_frame_get_javascript_global_context               (CyberKitFrame       *frame);
 
 WEBKIT_DEPRECATED_FOR(webkit_frame_get_js_context_for_script_world) JSGlobalContextRef
-webkit_frame_get_javascript_context_for_script_world     (WebKitFrame       *frame,
-                                                          WebKitScriptWorld *world);
+webkit_frame_get_javascript_context_for_script_world     (CyberKitFrame       *frame,
+                                                          CyberKitScriptWorld *world);
 #endif
 
 WEBKIT_API JSCContext *
-webkit_frame_get_js_context                              (WebKitFrame       *frame);
+webkit_frame_get_js_context                              (CyberKitFrame       *frame);
 
 WEBKIT_API JSCContext *
-webkit_frame_get_js_context_for_script_world             (WebKitFrame       *frame,
-                                                          WebKitScriptWorld *world);
+webkit_frame_get_js_context_for_script_world             (CyberKitFrame       *frame,
+                                                          CyberKitScriptWorld *world);
 
 #if !ENABLE(2022_GLIB_API)
 WEBKIT_DEPRECATED JSCValue *
-webkit_frame_get_js_value_for_dom_object                 (WebKitFrame       *frame,
-                                                          WebKitDOMObject   *dom_object);
+webkit_frame_get_js_value_for_dom_object                 (CyberKitFrame       *frame,
+                                                          CyberKitDOMObject   *dom_object);
 
 WEBKIT_DEPRECATED JSCValue *
-webkit_frame_get_js_value_for_dom_object_in_script_world (WebKitFrame       *frame,
-                                                          WebKitDOMObject   *dom_object,
-                                                          WebKitScriptWorld *world);
+webkit_frame_get_js_value_for_dom_object_in_script_world (CyberKitFrame       *frame,
+                                                          CyberKitDOMObject   *dom_object,
+                                                          CyberKitScriptWorld *world);
 #endif
 
 G_END_DECLS

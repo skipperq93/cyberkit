@@ -35,7 +35,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Filter;
 class GraphicsClient;
@@ -254,4 +254,4 @@ inline OptionSet<ImageBufferOptions> bufferOptionsForRendingMode(RenderingMode r
     return { };
 }
 
-} // namespace WebCore
+} // namespace CyberCore

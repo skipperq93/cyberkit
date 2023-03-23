@@ -31,7 +31,7 @@
 #include "GraphicsContext.h"
 #include "ImageBuffer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 FilterImageTargetSwitcher::FilterImageTargetSwitcher(GraphicsContext& destinationContext, Filter& filter, const FloatRect &sourceImageRect, const DestinationColorSpace& colorSpace, FilterResults* results)
     : FilterTargetSwitcher(filter)
@@ -82,4 +82,4 @@ void FilterImageTargetSwitcher::endDrawSourceImage(GraphicsContext& destinationC
     destinationContext.drawFilteredImageBuffer(m_sourceImage.get(), m_sourceImageRect, *m_filter, m_results ? *m_results : results);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

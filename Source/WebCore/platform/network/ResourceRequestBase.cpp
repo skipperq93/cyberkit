@@ -36,7 +36,7 @@
 #include "SecurityPolicy.h"
 #include <wtf/PointerComparison.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 #if PLATFORM(IOS_FAMILY)
 double ResourceRequestBase::s_defaultTimeoutInterval = INT_MAX;
@@ -503,7 +503,7 @@ bool ResourceRequestBase::hasUpload() const
 {
     if (auto body = httpBody()) {
         for (auto& element : body->elements()) {
-            if (std::holds_alternative<WebCore::FormDataElement::EncodedFileData>(element.data) || std::holds_alternative<WebCore::FormDataElement::EncodedBlobData>(element.data))
+            if (std::holds_alternative<CyberCore::FormDataElement::EncodedFileData>(element.data) || std::holds_alternative<CyberCore::FormDataElement::EncodedBlobData>(element.data))
                 return true;
         }
     }

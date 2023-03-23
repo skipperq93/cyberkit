@@ -31,7 +31,7 @@
 
 #include "Decoder.h"
 #include "Encoder.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include <CyberCore/ElementInlines.h>
 #include <CyberCore/HTMLMenuItemElement.h>
 #include <CyberCore/HTMLNames.h>
@@ -43,11 +43,11 @@ static ItemType itemType(const String&)
     return ItemType::Button;
 }
 
-TouchBarMenuItemData::TouchBarMenuItemData(const WebCore::HTMLMenuItemElement& element)
+TouchBarMenuItemData::TouchBarMenuItemData(const CyberCore::HTMLMenuItemElement& element)
 {
-    type = itemType(element.attributeWithoutSynchronization(WebCore::HTMLNames::typeAttr));
-    identifier = element.attributeWithoutSynchronization(WebCore::HTMLNames::idAttr);
-    priority = element.attributeWithoutSynchronization(WebCore::HTMLNames::valueAttr).toFloat();
+    type = itemType(element.attributeWithoutSynchronization(CyberCore::HTMLNames::typeAttr));
+    identifier = element.attributeWithoutSynchronization(CyberCore::HTMLNames::idAttr);
+    priority = element.attributeWithoutSynchronization(CyberCore::HTMLNames::valueAttr).toFloat();
 }
 
 

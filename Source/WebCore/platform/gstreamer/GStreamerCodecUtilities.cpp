@@ -29,7 +29,7 @@
 GST_DEBUG_CATEGORY(webkit_gst_codec_utilities_debug);
 #define GST_CAT_DEFAULT webkit_gst_codec_utilities_debug
 
-namespace WebCore {
+namespace CyberCore {
 
 static void ensureDebugCategoryInitialized()
 {
@@ -76,6 +76,6 @@ uint8_t GStreamerCodecUtilities::parseVP9Profile(const String& codec)
     return profile;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(GSTREAMER)

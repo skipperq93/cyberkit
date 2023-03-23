@@ -48,15 +48,15 @@ typedef void* DragDataRef;
 #elif PLATFORM(WIN)
 typedef struct IDataObject* DragDataRef;
 #elif PLATFORM(GTK)
-namespace WebCore {
+namespace CyberCore {
 class SelectionData;
 }
-typedef WebCore::SelectionData* DragDataRef;
+typedef CyberCore::SelectionData* DragDataRef;
 #else
 typedef void* DragDataRef;
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class DragApplicationFlags : uint8_t {
     IsModal = 1,
@@ -145,4 +145,4 @@ private:
     bool m_disallowFileAccess { false };
 };
     
-} // namespace WebCore
+} // namespace CyberCore

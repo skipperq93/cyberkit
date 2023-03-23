@@ -41,7 +41,7 @@
 #include "SVGRect.h"
 #include "SVGTransformList.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using SVGAnimatedBoolean = SVGAnimatedPrimitiveProperty<bool>;
 using SVGAnimatedInteger = SVGAnimatedPrimitiveProperty<int>;

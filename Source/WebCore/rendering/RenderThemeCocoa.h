@@ -32,7 +32,7 @@
 OBJC_CLASS NSDateComponentsFormatter;
 struct AttachmentLayout;
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderThemeCocoa : public RenderTheme {
 public:

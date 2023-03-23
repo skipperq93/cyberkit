@@ -33,7 +33,7 @@
 #include <wtf/Vector.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class TimeRanges;
 class PlaybackSessionModelClient;
@@ -124,24 +124,24 @@ public:
     virtual void modelDestroyed() { }
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::PlaybackSessionModel::ExternalPlaybackTargetType> {
+template<> struct EnumTraits<CyberCore::PlaybackSessionModel::ExternalPlaybackTargetType> {
     using values = EnumValues<
-        WebCore::PlaybackSessionModel::ExternalPlaybackTargetType,
-        WebCore::PlaybackSessionModel::ExternalPlaybackTargetType::TargetTypeNone,
-        WebCore::PlaybackSessionModel::ExternalPlaybackTargetType::TargetTypeAirPlay,
-        WebCore::PlaybackSessionModel::ExternalPlaybackTargetType::TargetTypeTVOut
+        CyberCore::PlaybackSessionModel::ExternalPlaybackTargetType,
+        CyberCore::PlaybackSessionModel::ExternalPlaybackTargetType::TargetTypeNone,
+        CyberCore::PlaybackSessionModel::ExternalPlaybackTargetType::TargetTypeAirPlay,
+        CyberCore::PlaybackSessionModel::ExternalPlaybackTargetType::TargetTypeTVOut
     >;
 };
 
-template<> struct EnumTraits<WebCore::PlaybackSessionModel::PlaybackState> {
+template<> struct EnumTraits<CyberCore::PlaybackSessionModel::PlaybackState> {
     using values = EnumValues<
-        WebCore::PlaybackSessionModel::PlaybackState,
-        WebCore::PlaybackSessionModel::PlaybackState::Playing,
-        WebCore::PlaybackSessionModel::PlaybackState::Stalled
+        CyberCore::PlaybackSessionModel::PlaybackState,
+        CyberCore::PlaybackSessionModel::PlaybackState::Playing,
+        CyberCore::PlaybackSessionModel::PlaybackState::Stalled
     >;
 };
 

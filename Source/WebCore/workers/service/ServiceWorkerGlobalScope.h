@@ -35,7 +35,7 @@
 #include <wtf/MonotonicTime.h>
 #include <wtf/URLHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DeferredPromise;
 class ExtendableEvent;
@@ -119,11 +119,11 @@ private:
     RefPtr<PushEvent> m_pushEvent;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::ServiceWorkerGlobalScope)
-    static bool isType(const WebCore::ScriptExecutionContext& context) { return is<WebCore::WorkerGlobalScope>(context) && downcast<WebCore::WorkerGlobalScope>(context).type() == WebCore::WorkerGlobalScope::Type::ServiceWorker; }
-    static bool isType(const WebCore::WorkerGlobalScope& context) { return context.type() == WebCore::WorkerGlobalScope::Type::ServiceWorker; }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::ServiceWorkerGlobalScope)
+    static bool isType(const CyberCore::ScriptExecutionContext& context) { return is<CyberCore::WorkerGlobalScope>(context) && downcast<CyberCore::WorkerGlobalScope>(context).type() == CyberCore::WorkerGlobalScope::Type::ServiceWorker; }
+    static bool isType(const CyberCore::WorkerGlobalScope& context) { return context.type() == CyberCore::WorkerGlobalScope::Type::ServiceWorker; }
 SPECIALIZE_TYPE_TRAITS_END()
 
 #endif // ENABLE(SERVICE_WORKER)

@@ -24,7 +24,7 @@
  */
 
 #include "config.h"
-#include "WebCoreTestUtilities.h"
+#include "CyberCoreTestUtilities.h"
 
 #import <wtf/MemoryFootprint.h>
 

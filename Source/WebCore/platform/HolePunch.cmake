@@ -1,6 +1,6 @@
-list(APPEND WebCore_PRIVATE_INCLUDE_DIRECTORIES
+list(APPEND CyberCore_PRIVATE_INCLUDE_DIRECTORIES
     "${WEBCORE_DIR}/platform/graphics/holepunch"
 )
-list(APPEND WebCore_SOURCES
+list(APPEND CyberCore_SOURCES
     platform/graphics/holepunch/MediaPlayerPrivateHolePunch.cpp
 )

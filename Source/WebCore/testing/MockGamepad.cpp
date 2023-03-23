@@ -28,7 +28,7 @@
 
 #if ENABLE(GAMEPAD)
 
-namespace WebCore {
+namespace CyberCore {
 
 MockGamepad::MockGamepad(unsigned index, const String& gamepadID, const String& mapping, unsigned axisCount, unsigned buttonCount, bool supportsDualRumble)
     : PlatformGamepad(index)
@@ -78,6 +78,6 @@ bool MockGamepad::setButtonValue(unsigned index, double value)
     return true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(GAMEPAD)

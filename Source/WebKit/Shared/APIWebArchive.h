@@ -35,7 +35,7 @@ class Array;
 class Data;
 }
 
-namespace WebCore {
+namespace CyberCore {
 class LegacyWebArchive;
 struct SimpleRange;
 }
@@ -50,8 +50,8 @@ public:
 
     static Ref<WebArchive> create(WebArchiveResource* mainResource, RefPtr<API::Array>&& subresources, RefPtr<API::Array>&& subframeArchives);
     static Ref<WebArchive> create(API::Data*);
-    static Ref<WebArchive> create(RefPtr<WebCore::LegacyWebArchive>&&);
-    static Ref<WebArchive> create(const WebCore::SimpleRange&);
+    static Ref<WebArchive> create(RefPtr<CyberCore::LegacyWebArchive>&&);
+    static Ref<WebArchive> create(const CyberCore::SimpleRange&);
 
     WebArchiveResource* mainResource();
     API::Array* subresources();
@@ -59,14 +59,14 @@ public:
 
     Ref<API::Data> data();
 
-    WebCore::LegacyWebArchive* coreLegacyWebArchive();
+    CyberCore::LegacyWebArchive* coreLegacyWebArchive();
 
 private:
     WebArchive(WebArchiveResource* mainResource, RefPtr<API::Array>&& subresources, RefPtr<API::Array>&& subframeArchives);
     WebArchive(API::Data*);
-    WebArchive(RefPtr<WebCore::LegacyWebArchive>&&);
+    WebArchive(RefPtr<CyberCore::LegacyWebArchive>&&);
 
-    RefPtr<WebCore::LegacyWebArchive> m_legacyWebArchive;
+    RefPtr<CyberCore::LegacyWebArchive> m_legacyWebArchive;
     RefPtr<WebArchiveResource> m_cachedMainResource;
     RefPtr<API::Array> m_cachedSubresources;
     RefPtr<API::Array> m_cachedSubframeArchives;

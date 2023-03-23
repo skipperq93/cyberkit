@@ -44,7 +44,7 @@
 
 namespace TestWebKitAPI {
 
-static void testIdentity(const WebCore::TransformationMatrix& transform)
+static void testIdentity(const CyberCore::TransformationMatrix& transform)
 {
     EXPECT_DOUBLE_EQ(1.0, transform.m11());
     EXPECT_DOUBLE_EQ(0.0, transform.m12());
@@ -64,7 +64,7 @@ static void testIdentity(const WebCore::TransformationMatrix& transform)
     EXPECT_DOUBLE_EQ(1.0, transform.m44());
 }
 
-static void testGetAndSet(WebCore::TransformationMatrix& transform)
+static void testGetAndSet(CyberCore::TransformationMatrix& transform)
 {
     transform.setA(1.1);
     EXPECT_DOUBLE_EQ(1.1, transform.a());
@@ -115,7 +115,7 @@ static void testGetAndSet(WebCore::TransformationMatrix& transform)
 
 TEST(TransformationMatrix, DefaultConstruction)
 {
-    WebCore::TransformationMatrix test;
+    CyberCore::TransformationMatrix test;
 
     testIdentity(test);
 
@@ -124,7 +124,7 @@ TEST(TransformationMatrix, DefaultConstruction)
     ASSERT_FALSE(test.isIdentity());
 }
 
-static void testAffineLikeConstruction(const WebCore::TransformationMatrix& transform)
+static void testAffineLikeConstruction(const CyberCore::TransformationMatrix& transform)
 {
     EXPECT_DOUBLE_EQ(6.0, transform.a());
     EXPECT_DOUBLE_EQ(5.0, transform.b());
@@ -134,7 +134,7 @@ static void testAffineLikeConstruction(const WebCore::TransformationMatrix& tran
     EXPECT_DOUBLE_EQ(1.0, transform.f());
 }
 
-static void testValueConstruction(const WebCore::TransformationMatrix& transform)
+static void testValueConstruction(const CyberCore::TransformationMatrix& transform)
 {
     EXPECT_DOUBLE_EQ(16.0, transform.m11());
     EXPECT_DOUBLE_EQ(15.0, transform.m12());
@@ -157,14 +157,14 @@ static void testValueConstruction(const WebCore::TransformationMatrix& transform
 
 TEST(TransformationMatrix, ValueConstruction)
 {
-    WebCore::TransformationMatrix test1(6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
+    CyberCore::TransformationMatrix test1(6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
 
     testAffineLikeConstruction(test1);
 
     ASSERT_FALSE(test1.isIdentity());
     ASSERT_TRUE(test1.isAffine());
 
-    WebCore::TransformationMatrix test2(16.0, 15.0, 14.0, 13.0, 12.0, 11.0, 10.0,
+    CyberCore::TransformationMatrix test2(16.0, 15.0, 14.0, 13.0, 12.0, 11.0, 10.0,
         9.0, 8.0, 7.0, 6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
 
     testValueConstruction(test2);
@@ -185,7 +185,7 @@ TEST(TransformationMatrix, ValueConstruction)
 TEST(TransformationMatrix, CGAffineTransformConstruction)
 {
     CGAffineTransform cgTransform = CGAffineTransformMake(6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
-    WebCore::TransformationMatrix test(cgTransform);
+    CyberCore::TransformationMatrix test(cgTransform);
 
     testAffineLikeConstruction(test);
     testGetAndSet(test);
@@ -196,8 +196,8 @@ TEST(TransformationMatrix, CGAffineTransformConstruction)
 
 TEST(TransformationMatrix, AffineTransformConstruction)
 {
-    WebCore::AffineTransform affineTransform(6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
-    WebCore::TransformationMatrix test(affineTransform);
+    CyberCore::AffineTransform affineTransform(6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
+    CyberCore::TransformationMatrix test(affineTransform);
 
     testAffineLikeConstruction(test);
     testGetAndSet(test);
@@ -207,17 +207,17 @@ TEST(TransformationMatrix, AffineTransformConstruction)
 
 TEST(TransformationMatrix, TransformMatrixConstruction)
 {
-    WebCore::TransformationMatrix matrix(16.0, 15.0, 14.0, 13.0, 12.0, 11.0, 10.0,
+    CyberCore::TransformationMatrix matrix(16.0, 15.0, 14.0, 13.0, 12.0, 11.0, 10.0,
         9.0, 8.0, 7.0, 6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
-    WebCore::TransformationMatrix test(matrix);
+    CyberCore::TransformationMatrix test(matrix);
 
     testValueConstruction(test);
 }
 
 TEST(TransformationMatrix, Assignment)
 {
-    WebCore::TransformationMatrix test(6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
-    WebCore::TransformationMatrix matrix(16.0, 15.0, 14.0, 13.0, 12.0, 11.0, 10.0,
+    CyberCore::TransformationMatrix test(6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
+    CyberCore::TransformationMatrix matrix(16.0, 15.0, 14.0, 13.0, 12.0, 11.0, 10.0,
         9.0, 8.0, 7.0, 6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
 
     testAffineLikeConstruction(test);
@@ -229,7 +229,7 @@ TEST(TransformationMatrix, Assignment)
 
 TEST(TransformationMatrix, Identity)
 {
-    WebCore::TransformationMatrix test(6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
+    CyberCore::TransformationMatrix test(6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
 
     ASSERT_FALSE(test.isIdentity());
     ASSERT_FALSE(test.isIdentityOrTranslation());
@@ -242,7 +242,7 @@ TEST(TransformationMatrix, Identity)
     testIdentity(test);
 }
 
-static void testAffineVersion(WebCore::TransformationMatrix affineTransformMatrix)
+static void testAffineVersion(CyberCore::TransformationMatrix affineTransformMatrix)
 {
     ASSERT_FALSE(affineTransformMatrix.isIdentity());
     ASSERT_FALSE(affineTransformMatrix.isIdentityOrTranslation());
@@ -268,7 +268,7 @@ static void testAffineVersion(WebCore::TransformationMatrix affineTransformMatri
 
 TEST(TransformationMatrix, AffineVersion)
 {
-    WebCore::TransformationMatrix test(16.0, 15.0, 14.0, 13.0, 12.0, 11.0, 10.0,
+    CyberCore::TransformationMatrix test(16.0, 15.0, 14.0, 13.0, 12.0, 11.0, 10.0,
         9.0, 8.0, 7.0, 6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
 
     ASSERT_FALSE(test.isIdentity());
@@ -286,8 +286,8 @@ TEST(TransformationMatrix, AffineVersion)
 
 TEST(TransformationMatrix, MapFloatPoint)
 {
-    WebCore::TransformationMatrix test;
-    WebCore::FloatPoint point(100.0f, 50.0f);
+    CyberCore::TransformationMatrix test;
+    CyberCore::FloatPoint point(100.0f, 50.0f);
 
     auto mappedPoint = test.mapPoint(point);
 
@@ -325,8 +325,8 @@ TEST(TransformationMatrix, MapFloatPoint)
 
 TEST(TransformationMatrix, MapIntPoint)
 {
-    WebCore::TransformationMatrix test;
-    WebCore::IntPoint point(100, 50);
+    CyberCore::TransformationMatrix test;
+    CyberCore::IntPoint point(100, 50);
 
     auto mappedPoint = test.mapPoint(point);
 
@@ -364,8 +364,8 @@ TEST(TransformationMatrix, MapIntPoint)
 
 TEST(TransformationMatrix, MapIntRect)
 {
-    WebCore::TransformationMatrix test;
-    WebCore::IntRect rect(10, 20, 200, 300);
+    CyberCore::TransformationMatrix test;
+    CyberCore::IntRect rect(10, 20, 200, 300);
 
     auto mappedRect = test.mapRect(rect);
 
@@ -413,8 +413,8 @@ TEST(TransformationMatrix, MapIntRect)
 
 TEST(TransformationMatrix, MapFloatRect)
 {
-    WebCore::TransformationMatrix test;
-    WebCore::FloatRect rect(10.f, 20.0f, 200.0f, 300.0f);
+    CyberCore::TransformationMatrix test;
+    CyberCore::FloatRect rect(10.f, 20.0f, 200.0f, 300.0f);
 
     auto mappedRect = test.mapRect(rect);
 
@@ -462,8 +462,8 @@ TEST(TransformationMatrix, MapFloatRect)
 
 TEST(TransformationMatrix, MapFloatQuad)
 {
-    WebCore::FloatRect rect(100.0f, 100.0f, 100.0f, 50.0f);
-    WebCore::FloatQuad quad(rect);
+    CyberCore::FloatRect rect(100.0f, 100.0f, 100.0f, 50.0f);
+    CyberCore::FloatQuad quad(rect);
 
     ASSERT_FLOAT_EQ(100.0f, quad.p1().x());
     ASSERT_FLOAT_EQ(100.0f, quad.p1().y());
@@ -474,7 +474,7 @@ TEST(TransformationMatrix, MapFloatQuad)
     ASSERT_FLOAT_EQ(100.0f, quad.p4().x());
     ASSERT_FLOAT_EQ(150.0f, quad.p4().y());
 
-    WebCore::TransformationMatrix test;
+    CyberCore::TransformationMatrix test;
     auto mappedQuad = test.mapQuad(quad);
 
     ASSERT_FLOAT_EQ(100.0f, mappedQuad.p1().x());
@@ -539,7 +539,7 @@ TEST(TransformationMatrix, MapFloatQuad)
     ASSERT_FLOAT_EQ(75.0f, mappedQuad5.p4().y());
 }
 
-static void testDoubled(const WebCore::TransformationMatrix& transform)
+static void testDoubled(const CyberCore::TransformationMatrix& transform)
 {
     EXPECT_DOUBLE_EQ(12.0, transform.a());
     EXPECT_DOUBLE_EQ(10.0, transform.b());
@@ -549,7 +549,7 @@ static void testDoubled(const WebCore::TransformationMatrix& transform)
     EXPECT_DOUBLE_EQ(1.0, transform.f());
 }
 
-static void testHalved(const WebCore::TransformationMatrix& transform)
+static void testHalved(const CyberCore::TransformationMatrix& transform)
 {
     EXPECT_DOUBLE_EQ(3.0, transform.a());
     EXPECT_DOUBLE_EQ(2.5, transform.b());
@@ -559,7 +559,7 @@ static void testHalved(const WebCore::TransformationMatrix& transform)
     EXPECT_DOUBLE_EQ(1.0, transform.f());
 }
 
-static void testDoubled2(const WebCore::TransformationMatrix& transform)
+static void testDoubled2(const CyberCore::TransformationMatrix& transform)
 {
     EXPECT_DOUBLE_EQ(32.0, transform.m11());
     EXPECT_DOUBLE_EQ(30.0, transform.m12());
@@ -579,7 +579,7 @@ static void testDoubled2(const WebCore::TransformationMatrix& transform)
     EXPECT_DOUBLE_EQ(2.0, transform.m44());
 }
 
-static void testHalved2(const WebCore::TransformationMatrix& transform)
+static void testHalved2(const CyberCore::TransformationMatrix& transform)
 {
     EXPECT_DOUBLE_EQ(8.0, transform.m11());
     EXPECT_DOUBLE_EQ(7.5, transform.m12());
@@ -601,8 +601,8 @@ static void testHalved2(const WebCore::TransformationMatrix& transform)
 
 TEST(TransformationMatrix, Multiply)
 {
-    WebCore::TransformationMatrix test(6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
-    WebCore::TransformationMatrix identity;
+    CyberCore::TransformationMatrix test(6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
+    CyberCore::TransformationMatrix identity;
 
     testAffineLikeConstruction(test);
 
@@ -610,13 +610,13 @@ TEST(TransformationMatrix, Multiply)
 
     testAffineLikeConstruction(test);
 
-    WebCore::TransformationMatrix doubler(2.0, 0.0, 0.0, 2.0, 0.0, 0.0);
+    CyberCore::TransformationMatrix doubler(2.0, 0.0, 0.0, 2.0, 0.0, 0.0);
 
     test.multiply(doubler);
 
     testDoubled(test);
 
-    WebCore::TransformationMatrix halver(0.5, 0.0, 0.0, 0.5, 0.0, 0.0);
+    CyberCore::TransformationMatrix halver(0.5, 0.0, 0.0, 0.5, 0.0, 0.0);
 
     test.multiply(halver);
 
@@ -626,7 +626,7 @@ TEST(TransformationMatrix, Multiply)
 
     testHalved(test);
 
-    WebCore::TransformationMatrix test2(16.0, 15.0, 14.0, 13.0, 12.0, 11.0, 10.0,
+    CyberCore::TransformationMatrix test2(16.0, 15.0, 14.0, 13.0, 12.0, 11.0, 10.0,
         9.0, 8.0, 7.0, 6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
 
     testValueConstruction(test2);
@@ -635,14 +635,14 @@ TEST(TransformationMatrix, Multiply)
 
     testValueConstruction(test2);
 
-    WebCore::TransformationMatrix doubler2(2.0, 0.0, 0.0, 0.0, 0.0, 2.0, 0.0, 0.0,
+    CyberCore::TransformationMatrix doubler2(2.0, 0.0, 0.0, 0.0, 0.0, 2.0, 0.0, 0.0,
         0.0, 0.0, 2.0, 0.0, 0.0, 0.0, 0.0, 2.0);
 
     test2.multiply(doubler2);
 
     testDoubled2(test2);
 
-    WebCore::TransformationMatrix halver2(0.5, 0.0, 0.0, 0.0, 0.0, 0.5, 0.0, 0.0,
+    CyberCore::TransformationMatrix halver2(0.5, 0.0, 0.0, 0.0, 0.0, 0.5, 0.0, 0.0,
         0.0, 0.0, 0.5, 0.0, 0.0, 0.0, 0.0, 0.5);
 
     test2.multiply(halver2);
@@ -653,7 +653,7 @@ TEST(TransformationMatrix, Multiply)
 
     testHalved2(test2);
 
-    WebCore::TransformationMatrix test3(6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
+    CyberCore::TransformationMatrix test3(6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
 
     test3 *= identity;
 
@@ -663,7 +663,7 @@ TEST(TransformationMatrix, Multiply)
 
     testDoubled(test3);
 
-    const WebCore::TransformationMatrix test4(16.0, 15.0, 14.0, 13.0, 12.0, 11.0, 10.0,
+    const CyberCore::TransformationMatrix test4(16.0, 15.0, 14.0, 13.0, 12.0, 11.0, 10.0,
         9.0, 8.0, 7.0, 6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
 
     auto result1 = test4 * identity;
@@ -675,7 +675,7 @@ TEST(TransformationMatrix, Multiply)
     testDoubled2(result2);
 }
 
-static void testScaledByTwo(const WebCore::TransformationMatrix& transform)
+static void testScaledByTwo(const CyberCore::TransformationMatrix& transform)
 {
     EXPECT_DOUBLE_EQ(32.0, transform.m11());
     EXPECT_DOUBLE_EQ(30.0, transform.m12());
@@ -695,7 +695,7 @@ static void testScaledByTwo(const WebCore::TransformationMatrix& transform)
     EXPECT_DOUBLE_EQ(1.0, transform.m44());
 }
 
-static void testScaledByHalf(const WebCore::TransformationMatrix& transform)
+static void testScaledByHalf(const CyberCore::TransformationMatrix& transform)
 {
     EXPECT_DOUBLE_EQ(8.0, transform.m11());
     EXPECT_DOUBLE_EQ(7.5, transform.m12());
@@ -718,7 +718,7 @@ static void testScaledByHalf(const WebCore::TransformationMatrix& transform)
 
 TEST(TransformationMatrix, Scale)
 {
-    WebCore::TransformationMatrix test(6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
+    CyberCore::TransformationMatrix test(6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
 
     testAffineLikeConstruction(test);
 
@@ -738,7 +738,7 @@ TEST(TransformationMatrix, Scale)
 
     testHalved(test);
 
-    WebCore::TransformationMatrix test2(16.0, 15.0, 14.0, 13.0, 12.0, 11.0, 10.0,
+    CyberCore::TransformationMatrix test2(16.0, 15.0, 14.0, 13.0, 12.0, 11.0, 10.0,
         9.0, 8.0, 7.0, 6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
 
     testValueConstruction(test2);
@@ -758,7 +758,7 @@ TEST(TransformationMatrix, Scale)
 
 TEST(TransformationMatrix, ScaleUniformNonUniform)
 {
-    WebCore::TransformationMatrix test(16.0, 15.0, 14.0, 13.0, 12.0, 11.0, 10.0,
+    CyberCore::TransformationMatrix test(16.0, 15.0, 14.0, 13.0, 12.0, 11.0, 10.0,
         9.0, 8.0, 7.0, 6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
 
     testValueConstruction(test);
@@ -782,7 +782,7 @@ TEST(TransformationMatrix, ScaleUniformNonUniform)
 
 TEST(TransformationMatrix, Rotate)
 {
-    WebCore::TransformationMatrix test(6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
+    CyberCore::TransformationMatrix test(6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
 
     test.rotate(360.0);
 
@@ -819,7 +819,7 @@ TEST(TransformationMatrix, Rotate)
 
 TEST(TransformationMatrix, TranslateXY)
 {
-    WebCore::TransformationMatrix test(6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
+    CyberCore::TransformationMatrix test(6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
 
     test.translate(0.0, 0.0);
 
@@ -846,7 +846,7 @@ TEST(TransformationMatrix, TranslateXY)
 
 TEST(TransformationMatrix, FlipX)
 {
-    WebCore::TransformationMatrix test(6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
+    CyberCore::TransformationMatrix test(6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
 
     testAffineLikeConstruction(test);
 
@@ -863,7 +863,7 @@ TEST(TransformationMatrix, FlipX)
 
     testAffineLikeConstruction(test);
 
-    WebCore::TransformationMatrix test2;
+    CyberCore::TransformationMatrix test2;
 
     testIdentity(test2);
 
@@ -890,7 +890,7 @@ TEST(TransformationMatrix, FlipX)
 
 TEST(TransformationMatrix, FlipY)
 {
-    WebCore::TransformationMatrix test(6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
+    CyberCore::TransformationMatrix test(6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
 
     testAffineLikeConstruction(test);
 
@@ -907,7 +907,7 @@ TEST(TransformationMatrix, FlipY)
 
     testAffineLikeConstruction(test);
 
-    WebCore::TransformationMatrix test2;
+    CyberCore::TransformationMatrix test2;
 
     testIdentity(test2);
 
@@ -934,7 +934,7 @@ TEST(TransformationMatrix, FlipY)
 
 TEST(TransformationMatrix, FlipXandFlipY)
 {
-    WebCore::TransformationMatrix test(6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
+    CyberCore::TransformationMatrix test(6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
 
     testAffineLikeConstruction(test);
 
@@ -969,7 +969,7 @@ TEST(TransformationMatrix, FlipXandFlipY)
 
     testAffineLikeConstruction(test);
 
-    WebCore::TransformationMatrix test2;
+    CyberCore::TransformationMatrix test2;
 
     ASSERT_TRUE(test2.isIdentity());
     ASSERT_TRUE(test2.isIdentityOrTranslation());
@@ -997,7 +997,7 @@ TEST(TransformationMatrix, FlipXandFlipY)
 
 TEST(TransformationMatrix, Skew)
 {
-    WebCore::TransformationMatrix test(6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
+    CyberCore::TransformationMatrix test(6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
 
     testAffineLikeConstruction(test);
 
@@ -1027,7 +1027,7 @@ TEST(TransformationMatrix, Skew)
 
 TEST(TransformationMatrix, Inverse)
 {
-    WebCore::TransformationMatrix test;
+    CyberCore::TransformationMatrix test;
 
     auto inverse = test.inverse();
 
@@ -1047,9 +1047,9 @@ TEST(TransformationMatrix, Inverse)
 
 TEST(TransformationMatrix, NonInvertableBlend)
 {
-    WebCore::TransformationMatrix from;
-    WebCore::TransformationMatrix to(2.7133590938, 0.0, 0.0, 0.0, 0.0, 2.4645137761, 0.0, 0.0, 0.0, 0.0, 0.00, 0.01, 0.02, 0.03, 0.04, 0.05);
-    WebCore::TransformationMatrix result;
+    CyberCore::TransformationMatrix from;
+    CyberCore::TransformationMatrix to(2.7133590938, 0.0, 0.0, 0.0, 0.0, 2.4645137761, 0.0, 0.0, 0.0, 0.0, 0.00, 0.01, 0.02, 0.03, 0.04, 0.05);
+    CyberCore::TransformationMatrix result;
     
     result = to;
     result.blend(from, 0.25);
@@ -1062,9 +1062,9 @@ TEST(TransformationMatrix, NonInvertableBlend)
 
 TEST(TransformationMatrix, Blend)
 {
-    WebCore::TransformationMatrix transform;
+    CyberCore::TransformationMatrix transform;
 
-    WebCore::TransformationMatrix scaled;
+    CyberCore::TransformationMatrix scaled;
     scaled.scale(2.0);
 
     transform.blend(scaled, 50);
@@ -1090,9 +1090,9 @@ TEST(TransformationMatrix, Blend)
 
 TEST(TransformationMatrix, Blend2)
 {
-    WebCore::TransformationMatrix transform;
+    CyberCore::TransformationMatrix transform;
 
-    WebCore::TransformationMatrix scaled;
+    CyberCore::TransformationMatrix scaled;
     scaled.scale(2.0);
 
     transform.blend2(scaled, 20);
@@ -1118,9 +1118,9 @@ TEST(TransformationMatrix, Blend2)
 
 TEST(TransformationMatrix, Blend4)
 {
-    WebCore::TransformationMatrix transform;
+    CyberCore::TransformationMatrix transform;
 
-    WebCore::TransformationMatrix scaled;
+    CyberCore::TransformationMatrix scaled;
     scaled.scale(2.0);
 
     transform.blend4(scaled, 30);
@@ -1146,8 +1146,8 @@ TEST(TransformationMatrix, Blend4)
 
 TEST(TransformationMatrix, Equality)
 {
-    WebCore::TransformationMatrix test(6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
-    WebCore::TransformationMatrix test2;
+    CyberCore::TransformationMatrix test(6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
+    CyberCore::TransformationMatrix test2;
 
     ASSERT_FALSE(test == test2);
     ASSERT_TRUE(test != test2);
@@ -1157,9 +1157,9 @@ TEST(TransformationMatrix, Equality)
     ASSERT_TRUE(test == test2);
     ASSERT_FALSE(test != test2);
 
-    WebCore::TransformationMatrix test3(16.0, 15.0, 14.0, 13.0, 12.0, 11.0, 10.0,
+    CyberCore::TransformationMatrix test3(16.0, 15.0, 14.0, 13.0, 12.0, 11.0, 10.0,
         9.0, 8.0, 7.0, 6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
-    WebCore::TransformationMatrix test4(test3);
+    CyberCore::TransformationMatrix test4(test3);
 
     ASSERT_TRUE(test3 == test4);
     ASSERT_FALSE(test3 != test4);
@@ -1171,7 +1171,7 @@ TEST(TransformationMatrix, Equality)
 }
 
 #if USE(CA)
-static void testTranslationMatrix(const WebCore::TransformationMatrix& matrix)
+static void testTranslationMatrix(const CyberCore::TransformationMatrix& matrix)
 {
     EXPECT_DOUBLE_EQ(1.0, matrix.m11());
     EXPECT_DOUBLE_EQ(0.0, matrix.m12());
@@ -1194,13 +1194,13 @@ static void testTranslationMatrix(const WebCore::TransformationMatrix& matrix)
 
 TEST(TransformationMatrix, Casting)
 {
-    WebCore::TransformationMatrix test(16.0, 15.0, 14.0, 13.0, 12.0, 11.0, 10.0,
+    CyberCore::TransformationMatrix test(16.0, 15.0, 14.0, 13.0, 12.0, 11.0, 10.0,
         9.0, 8.0, 7.0, 6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
 
 #if USE(CA)
     CATransform3D caTransform = CATransform3DMakeTranslation(10.0f, 15.0f, 30.0f);
 
-    WebCore::TransformationMatrix fromCATransform(caTransform);
+    CyberCore::TransformationMatrix fromCATransform(caTransform);
 
     testTranslationMatrix(fromCATransform);
 
@@ -1228,7 +1228,7 @@ TEST(TransformationMatrix, Casting)
 
 #if USE(CG)
     CGAffineTransform cgTransform = CGAffineTransformMake(6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
-    WebCore::TransformationMatrix fromCGTransform(cgTransform);
+    CyberCore::TransformationMatrix fromCGTransform(cgTransform);
 
     testAffineLikeConstruction(fromCGTransform);
 
@@ -1254,10 +1254,10 @@ TEST(TransformationMatrix, Casting)
 
 TEST(TransformationMatrix, MakeMapBetweenRects)
 {
-    WebCore::FloatRect fromRect(10.0f, 10.0f, 100.0f, 100.0f);
-    WebCore::FloatRect toRect(70.0f, 70.0f, 200.0f, 50.0f);
+    CyberCore::FloatRect fromRect(10.0f, 10.0f, 100.0f, 100.0f);
+    CyberCore::FloatRect toRect(70.0f, 70.0f, 200.0f, 50.0f);
 
-    auto mapBetween = WebCore::TransformationMatrix::rectToRect(fromRect, toRect);
+    auto mapBetween = CyberCore::TransformationMatrix::rectToRect(fromRect, toRect);
 
     EXPECT_DOUBLE_EQ(2.0, mapBetween.a());
     EXPECT_DOUBLE_EQ(0.0, mapBetween.b());

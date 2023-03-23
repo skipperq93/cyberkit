@@ -33,10 +33,10 @@
 @class RVPresentingContext;
 @protocol RVPresenterHighlightDelegate;
 
-namespace WebCore {
+namespace CyberCore {
 
 WEBCORE_EXPORT RetainPtr<RVPresentingContext> createRVPresentingContextWithRetainedDelegate(NSPoint, NSView *, id<RVPresenterHighlightDelegate>);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(MAC)

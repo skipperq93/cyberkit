@@ -28,7 +28,7 @@
 #import "InjectedBundleScriptWorld.h"
 #import "WKObject.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 template<> struct WrapperTraits<InjectedBundleScriptWorld> {
     using WrapperClass = WKWebProcessPlugInScriptWorld;
@@ -38,6 +38,6 @@ template<> struct WrapperTraits<InjectedBundleScriptWorld> {
 
 @interface WKWebProcessPlugInScriptWorld () <WKObject>
 
-@property (readonly) WebKit::InjectedBundleScriptWorld& _scriptWorld;
+@property (readonly) CyberKit::InjectedBundleScriptWorld& _scriptWorld;
 
 @end

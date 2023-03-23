@@ -66,7 +66,7 @@
 #include <limits>
 #include <wtf/Ref.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -447,7 +447,7 @@ bool FocusController::setInitialFocus(FocusDirection direction, KeyboardEvent* p
     bool didAdvanceFocus = advanceFocus(direction, providedEvent, true);
 
     // If focus is being set initially, accessibility needs to be informed that system focus has moved 
-    // into the web area again, even if focus did not change within WebCore. PostNotification is called instead
+    // into the web area again, even if focus did not change within CyberCore. PostNotification is called instead
     // of handleFocusedUIElementChanged, because this will send the notification even if the element is the same.
     if (auto* cache = focusedOrMainFrame().document()->existingAXObjectCache())
         cache->postNotification(focusedOrMainFrame().document(), AXObjectCache::AXFocusedUIElementChanged);
@@ -1215,4 +1215,4 @@ Seconds FocusController::timeSinceFocusWasSet() const
     return MonotonicTime::now() - m_focusSetTime;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

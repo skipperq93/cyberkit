@@ -36,7 +36,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/ThreadSafeRefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class PlatformMediaResource;
 class ResourceError;
@@ -90,6 +90,6 @@ protected:
     RefPtr<PlatformMediaResourceClient> m_client;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

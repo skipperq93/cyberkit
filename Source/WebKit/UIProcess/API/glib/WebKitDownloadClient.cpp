@@ -29,7 +29,7 @@
 #include <wtf/glib/GRefPtr.h>
 #include <wtf/text/CString.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 using namespace WebKit;
 
 class DownloadClient final : public API::DownloadClient {

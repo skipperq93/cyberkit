@@ -26,7 +26,7 @@
 #include "SVGNames.h"
 #include "SVGZoomAndPanType.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGZoomAndPan {
     WTF_MAKE_NONCOPYABLE(SVGZoomAndPan);
@@ -55,4 +55,4 @@ private:
     SVGZoomAndPanType m_zoomAndPan { SVGPropertyTraits<SVGZoomAndPanType>::initialValue() };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

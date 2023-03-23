@@ -26,7 +26,7 @@
 #include "config.h"
 #include "ScrollAnchoringController.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 void ScrollAnchoringController::invalidateAnchorElement()
 {
@@ -51,4 +51,4 @@ void ScrollAnchoringController::updateScrollPosition()
     // should be called after suppression window (maybe Page::doAfterUpdateRendering())
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -43,7 +43,7 @@
 #include "ARKitBadgeSystemImage.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 namespace DisplayList {
 
 Recorder::Recorder(const GraphicsContextState& state, const FloatRect& initialClip, const AffineTransform& initialCTM, const DestinationColorSpace& colorSpace, DrawGlyphsMode drawGlyphsMode)
@@ -638,4 +638,4 @@ void Recorder::ContextState::concatCTM(const AffineTransform& matrix)
 }
 
 } // namespace DisplayList
-} // namespace WebCore
+} // namespace CyberCore

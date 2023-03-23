@@ -162,7 +162,7 @@
 #include "VisitedLinkState.h"
 #include "VisitedLinkStore.h"
 #include "VoidCallback.h"
-#include "WebCoreJSClientData.h"
+#include "CyberCoreJSClientData.h"
 #include "WebRTCProvider.h"
 #include "WheelEventDeltaFilter.h"
 #include "WheelEventTestMonitor.h"
@@ -200,7 +200,7 @@
 #include "NavigatorMediaSession.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 static HashSet<Page*>& allPages()
 {
@@ -1379,7 +1379,7 @@ void Page::windowScreenDidChange(PlatformDisplayID displayID, std::optional<Fram
     m_displayID = displayID;
     m_displayNominalFramesPerSecond = nominalFramesPerSecond;
     if (!m_displayNominalFramesPerSecond) {
-        // If the caller didn't give us a refresh rate, maybe the relevant DisplayRefreshMonitor can? This happens in WebKitLegacy
+        // If the caller didn't give us a refresh rate, maybe the relevant DisplayRefreshMonitor can? This happens in CyberKitLegacy
         // because WebView doesn't have a convenient way to access the display refresh rate.
         m_displayNominalFramesPerSecond = DisplayRefreshMonitorManager::sharedManager().nominalFramesPerSecondForDisplay(m_displayID, chrome().client().displayRefreshMonitorFactory());
     }
@@ -3281,7 +3281,7 @@ PAL::SessionID Page::sessionID() const
     return m_sessionID;
 }
 
-// This is only called by WebKitLegacy.
+// This is only called by CyberKitLegacy.
 void Page::setSessionID(PAL::SessionID sessionID)
 {
     ASSERT(sessionID.isValid());
@@ -3321,7 +3321,7 @@ void Page::removePlaybackTargetPickerClient(PlaybackTargetClientContextIdentifie
     chrome().client().removePlaybackTargetPickerClient(contextId);
 }
 
-void Page::showPlaybackTargetPicker(PlaybackTargetClientContextIdentifier contextId, const WebCore::IntPoint& location, bool isVideo, RouteSharingPolicy routeSharingPolicy, const String& routingContextUID)
+void Page::showPlaybackTargetPicker(PlaybackTargetClientContextIdentifier contextId, const CyberCore::IntPoint& location, bool isVideo, RouteSharingPolicy routeSharingPolicy, const String& routingContextUID)
 {
 #if PLATFORM(IOS_FAMILY)
     // FIXME: refactor iOS implementation.
@@ -4316,4 +4316,4 @@ void Page::reloadExecutionContextsForOrigin(const ClientOrigin& origin, std::opt
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore

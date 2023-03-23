@@ -47,7 +47,7 @@ FrameInfo::~FrameInfo() = default;
 
 Ref<FrameHandle> FrameInfo::handle() const
 {
-    return FrameHandle::create(m_data.frameID ? *m_data.frameID : WebCore::FrameIdentifier { });
+    return FrameHandle::create(m_data.frameID ? *m_data.frameID : CyberCore::FrameIdentifier { });
 }
 
 RefPtr<FrameHandle> FrameInfo::parentFrameHandle() const

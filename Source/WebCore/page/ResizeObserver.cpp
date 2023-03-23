@@ -34,11 +34,11 @@
 #include "Logging.h"
 #include "ResizeObserverEntry.h"
 #include "ResizeObserverOptions.h"
-#include "WebCoreOpaqueRoot.h"
+#include "CyberCoreOpaqueRoot.h"
 #include <CyberScriptCore/AbstractSlotVisitorInlines.h>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<ResizeObserver> ResizeObserver::create(Document& document, Ref<ResizeObserverCallback>&& callback)
 {
@@ -186,11 +186,11 @@ void ResizeObserver::deliverObservations()
 bool ResizeObserver::isReachableFromOpaqueRoots(JSC::AbstractSlotVisitor& visitor) const
 {
     for (auto& observation : m_observations) {
-        if (auto* target = observation->target(); target && containsWebCoreOpaqueRoot(visitor, target))
+        if (auto* target = observation->target(); target && containsCyberCoreOpaqueRoot(visitor, target))
             return true;
     }
     for (auto& target : m_activeObservationTargets) {
-        if (containsWebCoreOpaqueRoot(visitor, target.get()))
+        if (containsCyberCoreOpaqueRoot(visitor, target.get()))
             return true;
     }
     return !m_targetsWaitingForFirstObservation.isEmpty();
@@ -259,4 +259,4 @@ void ResizeObserver::resetObservationSize(Element& target)
         m_observations[position]->resetObservationSize();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

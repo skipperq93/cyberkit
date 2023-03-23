@@ -40,7 +40,7 @@
 #include "RenderImage.h"
 #include "RenderView.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 LayoutRect ShapeOutsideInfo::computedShapePhysicalBoundingBox() const
 {

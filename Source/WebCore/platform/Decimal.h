@@ -35,7 +35,7 @@
 #include <wtf/Assertions.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace DecimalPrivate {
 class SpecialValueHandler;
@@ -176,6 +176,6 @@ private:
     EncodedData m_data;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // Decimal_h

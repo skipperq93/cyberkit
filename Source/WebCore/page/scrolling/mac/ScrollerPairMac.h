@@ -34,18 +34,18 @@
 OBJC_CLASS NSScrollerImpPair;
 OBJC_CLASS WebScrollerImpPairDelegateMac;
 
-namespace WebCore {
+namespace CyberCore {
 class PlatformMouseEvent;
 class PlatformWheelEvent;
 class ScrollingTreeScrollingNode;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScrollerPairMac {
     WTF_MAKE_FAST_ALLOCATED;
 public:
-    ScrollerPairMac(WebCore::ScrollingTreeScrollingNode&);
+    ScrollerPairMac(CyberCore::ScrollingTreeScrollingNode&);
     void init();
 
     ~ScrollerPairMac();
@@ -53,13 +53,13 @@ public:
     ScrollerMac& verticalScroller() { return m_verticalScroller; }
     ScrollerMac& horizontalScroller() { return m_horizontalScroller; }
 
-    bool handleWheelEvent(const WebCore::PlatformWheelEvent&);
-    bool handleMouseEvent(const WebCore::PlatformMouseEvent&);
+    bool handleWheelEvent(const CyberCore::PlatformWheelEvent&);
+    bool handleMouseEvent(const CyberCore::PlatformMouseEvent&);
 
     void updateValues();
 
-    WebCore::FloatSize visibleSize() const;
-    WebCore::IntPoint lastKnownMousePosition() const { return m_lastKnownMousePosition; }
+    CyberCore::FloatSize visibleSize() const;
+    CyberCore::IntPoint lastKnownMousePosition() const { return m_lastKnownMousePosition; }
     bool useDarkAppearance() const;
 
     struct Values {
@@ -77,16 +77,16 @@ public:
     bool hasScrollerImp();
 
 private:
-    WebCore::ScrollingTreeScrollingNode& m_scrollingNode;
+    CyberCore::ScrollingTreeScrollingNode& m_scrollingNode;
 
     ScrollerMac m_verticalScroller;
     ScrollerMac m_horizontalScroller;
 
-    WebCore::FloatSize m_contentSize;
-    WebCore::FloatRect m_visibleContentRect;
+    CyberCore::FloatSize m_contentSize;
+    CyberCore::FloatRect m_visibleContentRect;
 
-    WebCore::IntPoint m_lastKnownMousePosition;
-    std::optional<WebCore::FloatPoint> m_lastScrollPosition;
+    CyberCore::IntPoint m_lastKnownMousePosition;
+    std::optional<CyberCore::FloatPoint> m_lastScrollPosition;
 
     RetainPtr<NSScrollerImpPair> m_scrollerImpPair;
     RetainPtr<WebScrollerImpPairDelegateMac> m_scrollerImpPairDelegate;

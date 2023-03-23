@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -21,28 +21,28 @@
 #error "Only <webkitdom/webkitdom.h> can be included directly."
 #endif
 
-#ifndef WebKitDOMHTMLAppletElement_h
-#define WebKitDOMHTMLAppletElement_h
+#ifndef CyberKitDOMHTMLAppletElement_h
+#define CyberKitDOMHTMLAppletElement_h
 
 #include <glib-object.h>
-#include <webkitdom/WebKitDOMHTMLElement.h>
+#include <webkitdom/CyberKitDOMHTMLElement.h>
 #include <webkitdom/webkitdomdefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_DOM_TYPE_HTML_APPLET_ELEMENT            (webkit_dom_html_applet_element_get_type())
-#define WEBKIT_DOM_HTML_APPLET_ELEMENT(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_HTML_APPLET_ELEMENT, WebKitDOMHTMLAppletElement))
-#define WEBKIT_DOM_HTML_APPLET_ELEMENT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_HTML_APPLET_ELEMENT, WebKitDOMHTMLAppletElementClass)
+#define WEBKIT_DOM_HTML_APPLET_ELEMENT(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_HTML_APPLET_ELEMENT, CyberKitDOMHTMLAppletElement))
+#define WEBKIT_DOM_HTML_APPLET_ELEMENT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_HTML_APPLET_ELEMENT, CyberKitDOMHTMLAppletElementClass)
 #define WEBKIT_DOM_IS_HTML_APPLET_ELEMENT(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_DOM_TYPE_HTML_APPLET_ELEMENT))
 #define WEBKIT_DOM_IS_HTML_APPLET_ELEMENT_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_DOM_TYPE_HTML_APPLET_ELEMENT))
-#define WEBKIT_DOM_HTML_APPLET_ELEMENT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_HTML_APPLET_ELEMENT, WebKitDOMHTMLAppletElementClass))
+#define WEBKIT_DOM_HTML_APPLET_ELEMENT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_HTML_APPLET_ELEMENT, CyberKitDOMHTMLAppletElementClass))
 
-struct _WebKitDOMHTMLAppletElement {
-    WebKitDOMHTMLElement parent_instance;
+struct _CyberKitDOMHTMLAppletElement {
+    CyberKitDOMHTMLElement parent_instance;
 };
 
-struct _WebKitDOMHTMLAppletElementClass {
-    WebKitDOMHTMLElementClass parent_class;
+struct _CyberKitDOMHTMLAppletElementClass {
+    CyberKitDOMHTMLElementClass parent_class;
 };
 
 WEBKIT_DEPRECATED GType
@@ -50,246 +50,246 @@ webkit_dom_html_applet_element_get_type(void);
 
 /**
  * webkit_dom_html_applet_element_get_align:
- * @self: A #WebKitDOMHTMLAppletElement
+ * @self: A #CyberKitDOMHTMLAppletElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_applet_element_get_align(WebKitDOMHTMLAppletElement* self);
+webkit_dom_html_applet_element_get_align(CyberKitDOMHTMLAppletElement* self);
 
 /**
  * webkit_dom_html_applet_element_set_align:
- * @self: A #WebKitDOMHTMLAppletElement
+ * @self: A #CyberKitDOMHTMLAppletElement
  * @value: A #gchar
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_applet_element_set_align(WebKitDOMHTMLAppletElement* self, const gchar* value);
+webkit_dom_html_applet_element_set_align(CyberKitDOMHTMLAppletElement* self, const gchar* value);
 
 /**
  * webkit_dom_html_applet_element_get_alt:
- * @self: A #WebKitDOMHTMLAppletElement
+ * @self: A #CyberKitDOMHTMLAppletElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_applet_element_get_alt(WebKitDOMHTMLAppletElement* self);
+webkit_dom_html_applet_element_get_alt(CyberKitDOMHTMLAppletElement* self);
 
 /**
  * webkit_dom_html_applet_element_set_alt:
- * @self: A #WebKitDOMHTMLAppletElement
+ * @self: A #CyberKitDOMHTMLAppletElement
  * @value: A #gchar
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_applet_element_set_alt(WebKitDOMHTMLAppletElement* self, const gchar* value);
+webkit_dom_html_applet_element_set_alt(CyberKitDOMHTMLAppletElement* self, const gchar* value);
 
 /**
  * webkit_dom_html_applet_element_get_archive:
- * @self: A #WebKitDOMHTMLAppletElement
+ * @self: A #CyberKitDOMHTMLAppletElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_applet_element_get_archive(WebKitDOMHTMLAppletElement* self);
+webkit_dom_html_applet_element_get_archive(CyberKitDOMHTMLAppletElement* self);
 
 /**
  * webkit_dom_html_applet_element_set_archive:
- * @self: A #WebKitDOMHTMLAppletElement
+ * @self: A #CyberKitDOMHTMLAppletElement
  * @value: A #gchar
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_applet_element_set_archive(WebKitDOMHTMLAppletElement* self, const gchar* value);
+webkit_dom_html_applet_element_set_archive(CyberKitDOMHTMLAppletElement* self, const gchar* value);
 
 /**
  * webkit_dom_html_applet_element_get_code:
- * @self: A #WebKitDOMHTMLAppletElement
+ * @self: A #CyberKitDOMHTMLAppletElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_applet_element_get_code(WebKitDOMHTMLAppletElement* self);
+webkit_dom_html_applet_element_get_code(CyberKitDOMHTMLAppletElement* self);
 
 /**
  * webkit_dom_html_applet_element_set_code:
- * @self: A #WebKitDOMHTMLAppletElement
+ * @self: A #CyberKitDOMHTMLAppletElement
  * @value: A #gchar
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_applet_element_set_code(WebKitDOMHTMLAppletElement* self, const gchar* value);
+webkit_dom_html_applet_element_set_code(CyberKitDOMHTMLAppletElement* self, const gchar* value);
 
 /**
  * webkit_dom_html_applet_element_get_code_base:
- * @self: A #WebKitDOMHTMLAppletElement
+ * @self: A #CyberKitDOMHTMLAppletElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_applet_element_get_code_base(WebKitDOMHTMLAppletElement* self);
+webkit_dom_html_applet_element_get_code_base(CyberKitDOMHTMLAppletElement* self);
 
 /**
  * webkit_dom_html_applet_element_set_code_base:
- * @self: A #WebKitDOMHTMLAppletElement
+ * @self: A #CyberKitDOMHTMLAppletElement
  * @value: A #gchar
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_applet_element_set_code_base(WebKitDOMHTMLAppletElement* self, const gchar* value);
+webkit_dom_html_applet_element_set_code_base(CyberKitDOMHTMLAppletElement* self, const gchar* value);
 
 /**
  * webkit_dom_html_applet_element_get_height:
- * @self: A #WebKitDOMHTMLAppletElement
+ * @self: A #CyberKitDOMHTMLAppletElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_applet_element_get_height(WebKitDOMHTMLAppletElement* self);
+webkit_dom_html_applet_element_get_height(CyberKitDOMHTMLAppletElement* self);
 
 /**
  * webkit_dom_html_applet_element_set_height:
- * @self: A #WebKitDOMHTMLAppletElement
+ * @self: A #CyberKitDOMHTMLAppletElement
  * @value: A #gchar
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_applet_element_set_height(WebKitDOMHTMLAppletElement* self, const gchar* value);
+webkit_dom_html_applet_element_set_height(CyberKitDOMHTMLAppletElement* self, const gchar* value);
 
 /**
  * webkit_dom_html_applet_element_get_hspace:
- * @self: A #WebKitDOMHTMLAppletElement
+ * @self: A #CyberKitDOMHTMLAppletElement
  *
  * Returns: A #glong
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED glong
-webkit_dom_html_applet_element_get_hspace(WebKitDOMHTMLAppletElement* self);
+webkit_dom_html_applet_element_get_hspace(CyberKitDOMHTMLAppletElement* self);
 
 /**
  * webkit_dom_html_applet_element_set_hspace:
- * @self: A #WebKitDOMHTMLAppletElement
+ * @self: A #CyberKitDOMHTMLAppletElement
  * @value: A #glong
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_applet_element_set_hspace(WebKitDOMHTMLAppletElement* self, glong value);
+webkit_dom_html_applet_element_set_hspace(CyberKitDOMHTMLAppletElement* self, glong value);
 
 /**
  * webkit_dom_html_applet_element_get_name:
- * @self: A #WebKitDOMHTMLAppletElement
+ * @self: A #CyberKitDOMHTMLAppletElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_applet_element_get_name(WebKitDOMHTMLAppletElement* self);
+webkit_dom_html_applet_element_get_name(CyberKitDOMHTMLAppletElement* self);
 
 /**
  * webkit_dom_html_applet_element_set_name:
- * @self: A #WebKitDOMHTMLAppletElement
+ * @self: A #CyberKitDOMHTMLAppletElement
  * @value: A #gchar
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_applet_element_set_name(WebKitDOMHTMLAppletElement* self, const gchar* value);
+webkit_dom_html_applet_element_set_name(CyberKitDOMHTMLAppletElement* self, const gchar* value);
 
 /**
  * webkit_dom_html_applet_element_get_object:
- * @self: A #WebKitDOMHTMLAppletElement
+ * @self: A #CyberKitDOMHTMLAppletElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_applet_element_get_object(WebKitDOMHTMLAppletElement* self);
+webkit_dom_html_applet_element_get_object(CyberKitDOMHTMLAppletElement* self);
 
 /**
  * webkit_dom_html_applet_element_set_object:
- * @self: A #WebKitDOMHTMLAppletElement
+ * @self: A #CyberKitDOMHTMLAppletElement
  * @value: A #gchar
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_applet_element_set_object(WebKitDOMHTMLAppletElement* self, const gchar* value);
+webkit_dom_html_applet_element_set_object(CyberKitDOMHTMLAppletElement* self, const gchar* value);
 
 /**
  * webkit_dom_html_applet_element_get_vspace:
- * @self: A #WebKitDOMHTMLAppletElement
+ * @self: A #CyberKitDOMHTMLAppletElement
  *
  * Returns: A #glong
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED glong
-webkit_dom_html_applet_element_get_vspace(WebKitDOMHTMLAppletElement* self);
+webkit_dom_html_applet_element_get_vspace(CyberKitDOMHTMLAppletElement* self);
 
 /**
  * webkit_dom_html_applet_element_set_vspace:
- * @self: A #WebKitDOMHTMLAppletElement
+ * @self: A #CyberKitDOMHTMLAppletElement
  * @value: A #glong
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_applet_element_set_vspace(WebKitDOMHTMLAppletElement* self, glong value);
+webkit_dom_html_applet_element_set_vspace(CyberKitDOMHTMLAppletElement* self, glong value);
 
 /**
  * webkit_dom_html_applet_element_get_width:
- * @self: A #WebKitDOMHTMLAppletElement
+ * @self: A #CyberKitDOMHTMLAppletElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_applet_element_get_width(WebKitDOMHTMLAppletElement* self);
+webkit_dom_html_applet_element_get_width(CyberKitDOMHTMLAppletElement* self);
 
 /**
  * webkit_dom_html_applet_element_set_width:
- * @self: A #WebKitDOMHTMLAppletElement
+ * @self: A #CyberKitDOMHTMLAppletElement
  * @value: A #gchar
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_applet_element_set_width(WebKitDOMHTMLAppletElement* self, const gchar* value);
+webkit_dom_html_applet_element_set_width(CyberKitDOMHTMLAppletElement* self, const gchar* value);
 
 G_END_DECLS
 
-#endif /* WebKitDOMHTMLAppletElement_h */
+#endif /* CyberKitDOMHTMLAppletElement_h */

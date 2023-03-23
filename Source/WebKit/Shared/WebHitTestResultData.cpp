@@ -21,7 +21,7 @@
 #include "WebHitTestResultData.h"
 
 #include "ShareableBitmapUtilities.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include <CyberCore/Document.h>
 #include <CyberCore/ElementInlines.h>
 #include <CyberCore/Frame.h>
@@ -34,7 +34,7 @@
 #include <wtf/text/WTFString.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 WebHitTestResultData::WebHitTestResultData()
 {
@@ -110,11 +110,11 @@ WebHitTestResultData::WebHitTestResultData(const HitTestResult& hitTestResult, b
     }
 }
 
-WebHitTestResultData::WebHitTestResultData(const String& absoluteImageURL, const String& absolutePDFURL, const String& absoluteLinkURL, const String& absoluteMediaURL, const String& linkLabel, const String& linkTitle, const String& linkSuggestedFilename, bool isContentEditable, const WebCore::IntRect& elementBoundingBox, const WebKit::WebHitTestResultData::IsScrollbar& isScrollbar, bool isSelected, bool isTextNode, bool isOverTextInsideFormControlElement, bool isDownloadableMedia, const String& lookupText, const String& toolTipText, const String& imageText, const std::optional<WebKit::SharedMemory::Handle>& imageHandle, const RefPtr<WebKit::ShareableBitmap>& imageBitmap, const String& sourceImageMIMEType,
+WebHitTestResultData::WebHitTestResultData(const String& absoluteImageURL, const String& absolutePDFURL, const String& absoluteLinkURL, const String& absoluteMediaURL, const String& linkLabel, const String& linkTitle, const String& linkSuggestedFilename, bool isContentEditable, const CyberCore::IntRect& elementBoundingBox, const WebKit::WebHitTestResultData::IsScrollbar& isScrollbar, bool isSelected, bool isTextNode, bool isOverTextInsideFormControlElement, bool isDownloadableMedia, const String& lookupText, const String& toolTipText, const String& imageText, const std::optional<WebKit::SharedMemory::Handle>& imageHandle, const RefPtr<WebKit::ShareableBitmap>& imageBitmap, const String& sourceImageMIMEType,
 #if PLATFORM(MAC)
     const WebHitTestResultPlatformData& platformData,
 #endif
-    const WebCore::DictionaryPopupInfo& dictionaryPopupInfo, const RefPtr<WebCore::TextIndicator>& linkTextIndicator)
+    const CyberCore::DictionaryPopupInfo& dictionaryPopupInfo, const RefPtr<CyberCore::TextIndicator>& linkTextIndicator)
         : absoluteImageURL(absoluteImageURL)
         , absolutePDFURL(absolutePDFURL)
         , absoluteLinkURL(absoluteLinkURL)
@@ -148,7 +148,7 @@ WebHitTestResultData::~WebHitTestResultData()
 {
 }
 
-IntRect WebHitTestResultData::elementBoundingBoxInWindowCoordinates(const WebCore::HitTestResult& hitTestResult)
+IntRect WebHitTestResultData::elementBoundingBoxInWindowCoordinates(const CyberCore::HitTestResult& hitTestResult)
 {
     Node* node = hitTestResult.innerNonSharedNode();
     if (!node)

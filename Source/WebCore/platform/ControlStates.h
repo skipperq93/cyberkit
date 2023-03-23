@@ -36,7 +36,7 @@ typedef struct objc_object *id;
 #endif
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 #if PLATFORM(COCOA)
 typedef id PlatformControlInstance;

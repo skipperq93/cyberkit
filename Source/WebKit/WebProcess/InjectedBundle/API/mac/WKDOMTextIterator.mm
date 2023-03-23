@@ -32,7 +32,7 @@
 
 @interface WKDOMTextIterator () {
 @private
-    std::unique_ptr<WebCore::TextIterator> _textIterator;
+    std::unique_ptr<CyberCore::TextIterator> _textIterator;
     Vector<unichar> _upconvertedText;
 }
 @end
@@ -48,7 +48,7 @@
     if (!range)
         return self;
 
-    _textIterator = makeUnique<WebCore::TextIterator>(makeSimpleRange(*WebKit::toWebCoreRange(range)));
+    _textIterator = makeUnique<CyberCore::TextIterator>(makeSimpleRange(*CyberKit::toCyberCoreRange(range)));
     return self;
 }
 
@@ -66,7 +66,7 @@
 
 - (WKDOMRange *)currentRange
 {
-    return _textIterator ? WebKit::toWKDOMRange(createLiveRange(_textIterator->range()).ptr()) : nil;
+    return _textIterator ? CyberKit::toWKDOMRange(createLiveRange(_textIterator->range()).ptr()) : nil;
 }
 
 // FIXME: Consider deprecating this method and creating one that does not require copying 8-bit characters.

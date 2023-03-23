@@ -34,7 +34,7 @@
 typedef struct _cairo cairo_t;
 typedef struct _cairo_surface cairo_surface_t;
 
-namespace WebCore {
+namespace CyberCore {
 
 class WEBCORE_EXPORT GraphicsContextCairo final : public GraphicsContext {
 public:
@@ -121,6 +121,6 @@ private:
     Vector<float> m_layers;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(CAIRO)

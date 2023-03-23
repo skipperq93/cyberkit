@@ -50,15 +50,15 @@ String WebPageProxy::userAgentForURL(const URL&)
 
 String WebPageProxy::standardUserAgent(const String& applicationNameForUserAgent)
 {
-    return WebCore::standardUserAgent(applicationNameForUserAgent);
+    return CyberCore::standardUserAgent(applicationNameForUserAgent);
 }
 
-void WebPageProxy::saveRecentSearches(const String&, const Vector<WebCore::RecentSearch>&)
+void WebPageProxy::saveRecentSearches(const String&, const Vector<CyberCore::RecentSearch>&)
 {
     notImplemented();
 }
 
-void WebPageProxy::loadRecentSearches(const String&, CompletionHandler<void(Vector<WebCore::RecentSearch>&&)>&& completionHandler)
+void WebPageProxy::loadRecentSearches(const String&, CompletionHandler<void(Vector<CyberCore::RecentSearch>&&)>&& completionHandler)
 {
     notImplemented();
     completionHandler({ });

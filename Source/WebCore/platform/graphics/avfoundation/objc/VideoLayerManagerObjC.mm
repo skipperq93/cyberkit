@@ -29,7 +29,7 @@
 #import "Color.h"
 #import "Logging.h"
 #import "TextTrackRepresentation.h"
-#import "WebCoreCALayerExtras.h"
+#import "CyberCoreCALayerExtras.h"
 #import "WebVideoContainerLayer.h"
 #import <mach/mach_init.h>
 #import <mach/mach_port.h>
@@ -42,7 +42,7 @@
 
 OBJC_CLASS AVPlayerLayer;
 
-namespace WebCore {
+namespace CyberCore {
 
 #if !RELEASE_LOG_DISABLED
 VideoLayerManagerObjC::VideoLayerManagerObjC(const Logger& logger, const void* logIdentifier)

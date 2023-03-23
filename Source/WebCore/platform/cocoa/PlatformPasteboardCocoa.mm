@@ -28,7 +28,7 @@
 
 #import "Pasteboard.h"
 #import "PasteboardItemInfo.h"
-#import "WebCoreNSURLExtras.h"
+#import "CyberCoreNSURLExtras.h"
 
 #if PLATFORM(IOS_FAMILY)
 #import "AbstractPasteboard.h"
@@ -36,7 +36,7 @@
 #import "LegacyNSPasteboardTypes.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 std::optional<Vector<PasteboardItemInfo>> PlatformPasteboard::allPasteboardItemInfo(int64_t changeCount)
 {
@@ -115,4 +115,4 @@ ALLOW_DEPRECATED_DECLARATIONS_END
     return { };
 }
 
-} // namespace WebCore
+} // namespace CyberCore

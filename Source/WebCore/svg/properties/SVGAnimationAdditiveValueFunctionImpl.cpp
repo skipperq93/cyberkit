@@ -30,7 +30,7 @@
 #include "SVGElement.h"
 #include <wtf/text/StringToIntegerConversion.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Color SVGAnimationColorFunction::colorFromString(SVGElement& targetElement, const String& string)
 {
@@ -70,4 +70,4 @@ std::optional<float> SVGAnimationIntegerFunction::calculateDistance(SVGElement&,
     return std::abs(parseInteger<int>(to).value_or(0) - parseInteger<int>(from).value_or(0));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

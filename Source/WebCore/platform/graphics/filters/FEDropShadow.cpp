@@ -27,7 +27,7 @@
 #include "Filter.h"
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<FEDropShadow> FEDropShadow::create(float stdX, float stdY, float dx, float dy, const Color& shadowColor, float shadowOpacity)
 {
@@ -159,4 +159,4 @@ TextStream& FEDropShadow::externalRepresentation(TextStream& ts, FilterRepresent
     return ts;
 }
     
-} // namespace WebCore
+} // namespace CyberCore

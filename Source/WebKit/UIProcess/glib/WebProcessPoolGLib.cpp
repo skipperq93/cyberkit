@@ -83,7 +83,7 @@ void WebProcessPool::platformInitializeWebProcess(const WebProcessProxy& process
 #endif
 
 #if PLATFORM(WAYLAND)
-    if (WebCore::PlatformDisplay::sharedDisplay().type() == WebCore::PlatformDisplay::Type::Wayland) {
+    if (CyberCore::PlatformDisplay::sharedDisplay().type() == CyberCore::PlatformDisplay::Type::Wayland) {
         wpe_loader_init("libWPEBackend-fdo-1.0.so.1");
         if (AcceleratedBackingStoreWayland::checkRequirements()) {
             parameters.hostClientFileDescriptor = UnixFileDescriptor { wpe_renderer_host_create_client(), UnixFileDescriptor::Adopt };
@@ -100,7 +100,7 @@ void WebProcessPool::platformInitializeWebProcess(const WebProcessProxy& process
 #endif
 
 #if USE(GSTREAMER)
-    parameters.gstreamerOptions = WebCore::extractGStreamerOptionsFromCommandLine();
+    parameters.gstreamerOptions = CyberCore::extractGStreamerOptionsFromCommandLine();
 #endif
 
 #if PLATFORM(GTK) && !USE(GTK4)
@@ -131,7 +131,7 @@ void WebProcessPool::platformInitializeWebProcess(const WebProcessProxy& process
                 return address;
         }
 
-        return WebCore::PlatformDisplay::sharedDisplay().accessibilityBusAddress();
+        return CyberCore::PlatformDisplay::sharedDisplay().accessibilityBusAddress();
     }();
 #endif
 

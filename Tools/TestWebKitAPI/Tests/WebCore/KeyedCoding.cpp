@@ -48,13 +48,13 @@ TEST(KeyedCoding, SetAndGetBytes)
     const size_t dataLengthOne = 1;
     const size_t dataLengthZero = 0;
 
-    auto encoder = WebCore::KeyedEncoder::encoder();
+    auto encoder = CyberCore::KeyedEncoder::encoder();
     encoder->encodeBytes("data"_s, data, dataLength);
     encoder->encodeBytes("data-size0"_s, data, dataLengthZero);
     encoder->encodeBytes("data-size1"_s, data, dataLengthOne);
     auto encodedBuffer = encoder->finishEncoding();
 
-    auto decoder = WebCore::KeyedDecoder::decoder(reinterpret_cast<const uint8_t*>(encodedBuffer->data()), encodedBuffer->size());
+    auto decoder = CyberCore::KeyedDecoder::decoder(reinterpret_cast<const uint8_t*>(encodedBuffer->data()), encodedBuffer->size());
 
     bool success;
     const uint8_t* buffer;
@@ -76,13 +76,13 @@ TEST(KeyedCoding, SetAndGetBytes)
 }
 
 template <typename EncodeFunctionType, typename DecodeValueType, typename EncodeValueType>
-bool testSimpleValue(EncodeFunctionType encode, bool (WebCore::KeyedDecoder::* decode)(const String&, DecodeValueType&), EncodeValueType value)
+bool testSimpleValue(EncodeFunctionType encode, bool (CyberCore::KeyedDecoder::* decode)(const String&, DecodeValueType&), EncodeValueType value)
 {
-    auto encoder = WebCore::KeyedEncoder::encoder();
+    auto encoder = CyberCore::KeyedEncoder::encoder();
     (encoder.get()->*encode)("key"_s, value);
 
     auto encodedBuffer = encoder->finishEncoding();
-    auto decoder = WebCore::KeyedDecoder::decoder(reinterpret_cast<const uint8_t*>(encodedBuffer->data()), encodedBuffer->size());
+    auto decoder = CyberCore::KeyedDecoder::decoder(reinterpret_cast<const uint8_t*>(encodedBuffer->data()), encodedBuffer->size());
 
     DecodeValueType decodedValue;
     bool success = (decoder.get()->*decode)("key"_s, decodedValue);
@@ -92,74 +92,74 @@ bool testSimpleValue(EncodeFunctionType encode, bool (WebCore::KeyedDecoder::* d
 
 TEST(KeyedCoding, SetAndGetBool)
 {
-    EXPECT_TRUE(testSimpleValue(&WebCore::KeyedEncoder::encodeBool, &WebCore::KeyedDecoder::decodeBool, true));
-    EXPECT_TRUE(testSimpleValue(&WebCore::KeyedEncoder::encodeBool, &WebCore::KeyedDecoder::decodeBool, false));
+    EXPECT_TRUE(testSimpleValue(&CyberCore::KeyedEncoder::encodeBool, &CyberCore::KeyedDecoder::decodeBool, true));
+    EXPECT_TRUE(testSimpleValue(&CyberCore::KeyedEncoder::encodeBool, &CyberCore::KeyedDecoder::decodeBool, false));
 }
 
 TEST(KeyedCoding, SetAndGetInt32)
 {
-    EXPECT_TRUE(testSimpleValue(&WebCore::KeyedEncoder::encodeInt32, &WebCore::KeyedDecoder::decodeInt32, 0));
-    EXPECT_TRUE(testSimpleValue(&WebCore::KeyedEncoder::encodeInt32, &WebCore::KeyedDecoder::decodeInt32, 1));
-    EXPECT_TRUE(testSimpleValue(&WebCore::KeyedEncoder::encodeInt32, &WebCore::KeyedDecoder::decodeInt32, -1));
-    EXPECT_TRUE(testSimpleValue(&WebCore::KeyedEncoder::encodeInt32, &WebCore::KeyedDecoder::decodeInt32, INT_MIN));
-    EXPECT_TRUE(testSimpleValue(&WebCore::KeyedEncoder::encodeInt32, &WebCore::KeyedDecoder::decodeInt32, INT_MAX));
+    EXPECT_TRUE(testSimpleValue(&CyberCore::KeyedEncoder::encodeInt32, &CyberCore::KeyedDecoder::decodeInt32, 0));
+    EXPECT_TRUE(testSimpleValue(&CyberCore::KeyedEncoder::encodeInt32, &CyberCore::KeyedDecoder::decodeInt32, 1));
+    EXPECT_TRUE(testSimpleValue(&CyberCore::KeyedEncoder::encodeInt32, &CyberCore::KeyedDecoder::decodeInt32, -1));
+    EXPECT_TRUE(testSimpleValue(&CyberCore::KeyedEncoder::encodeInt32, &CyberCore::KeyedDecoder::decodeInt32, INT_MIN));
+    EXPECT_TRUE(testSimpleValue(&CyberCore::KeyedEncoder::encodeInt32, &CyberCore::KeyedDecoder::decodeInt32, INT_MAX));
 }
 
 TEST(KeyedCoding, SetAndGetUInt32)
 {
-    EXPECT_TRUE(testSimpleValue(&WebCore::KeyedEncoder::encodeUInt32, &WebCore::KeyedDecoder::decodeUInt32, uint32_t(0)));
-    EXPECT_TRUE(testSimpleValue(&WebCore::KeyedEncoder::encodeUInt32, &WebCore::KeyedDecoder::decodeUInt32, uint32_t(1)));
-    EXPECT_TRUE(testSimpleValue(&WebCore::KeyedEncoder::encodeUInt32, &WebCore::KeyedDecoder::decodeUInt32, UINT32_MAX));
+    EXPECT_TRUE(testSimpleValue(&CyberCore::KeyedEncoder::encodeUInt32, &CyberCore::KeyedDecoder::decodeUInt32, uint32_t(0)));
+    EXPECT_TRUE(testSimpleValue(&CyberCore::KeyedEncoder::encodeUInt32, &CyberCore::KeyedDecoder::decodeUInt32, uint32_t(1)));
+    EXPECT_TRUE(testSimpleValue(&CyberCore::KeyedEncoder::encodeUInt32, &CyberCore::KeyedDecoder::decodeUInt32, UINT32_MAX));
 }
 
 TEST(KeyedCoding, SetAndGetInt64)
 {
-    EXPECT_TRUE(testSimpleValue(&WebCore::KeyedEncoder::encodeInt64, &WebCore::KeyedDecoder::decodeInt64, int64_t(0)));
-    EXPECT_TRUE(testSimpleValue(&WebCore::KeyedEncoder::encodeInt64, &WebCore::KeyedDecoder::decodeInt64, int64_t(-2)));
-    EXPECT_TRUE(testSimpleValue(&WebCore::KeyedEncoder::encodeInt64, &WebCore::KeyedDecoder::decodeInt64, int64_t(2)));
-    EXPECT_TRUE(testSimpleValue(&WebCore::KeyedEncoder::encodeInt64, &WebCore::KeyedDecoder::decodeInt64, INT64_MIN));
-    EXPECT_TRUE(testSimpleValue(&WebCore::KeyedEncoder::encodeInt64, &WebCore::KeyedDecoder::decodeInt64, INT64_MAX));
+    EXPECT_TRUE(testSimpleValue(&CyberCore::KeyedEncoder::encodeInt64, &CyberCore::KeyedDecoder::decodeInt64, int64_t(0)));
+    EXPECT_TRUE(testSimpleValue(&CyberCore::KeyedEncoder::encodeInt64, &CyberCore::KeyedDecoder::decodeInt64, int64_t(-2)));
+    EXPECT_TRUE(testSimpleValue(&CyberCore::KeyedEncoder::encodeInt64, &CyberCore::KeyedDecoder::decodeInt64, int64_t(2)));
+    EXPECT_TRUE(testSimpleValue(&CyberCore::KeyedEncoder::encodeInt64, &CyberCore::KeyedDecoder::decodeInt64, INT64_MIN));
+    EXPECT_TRUE(testSimpleValue(&CyberCore::KeyedEncoder::encodeInt64, &CyberCore::KeyedDecoder::decodeInt64, INT64_MAX));
 }
 
 TEST(KeyedCoding, SetAndGetUInt64)
 {
-    EXPECT_TRUE(testSimpleValue(&WebCore::KeyedEncoder::encodeUInt64, &WebCore::KeyedDecoder::decodeUInt64, uint64_t(0)));
-    EXPECT_TRUE(testSimpleValue(&WebCore::KeyedEncoder::encodeUInt64, &WebCore::KeyedDecoder::decodeUInt64, uint64_t(1)));
-    EXPECT_TRUE(testSimpleValue(&WebCore::KeyedEncoder::encodeUInt64, &WebCore::KeyedDecoder::decodeUInt64, UINT64_MAX));
+    EXPECT_TRUE(testSimpleValue(&CyberCore::KeyedEncoder::encodeUInt64, &CyberCore::KeyedDecoder::decodeUInt64, uint64_t(0)));
+    EXPECT_TRUE(testSimpleValue(&CyberCore::KeyedEncoder::encodeUInt64, &CyberCore::KeyedDecoder::decodeUInt64, uint64_t(1)));
+    EXPECT_TRUE(testSimpleValue(&CyberCore::KeyedEncoder::encodeUInt64, &CyberCore::KeyedDecoder::decodeUInt64, UINT64_MAX));
 }
 
 TEST(KeyedCoding, SetAndGetFloat)
 {
-    EXPECT_TRUE(testSimpleValue(&WebCore::KeyedEncoder::encodeFloat, &WebCore::KeyedDecoder::decodeFloat, float(0)));
-    EXPECT_TRUE(testSimpleValue(&WebCore::KeyedEncoder::encodeFloat, &WebCore::KeyedDecoder::decodeFloat, float(1.5)));
-    EXPECT_TRUE(testSimpleValue(&WebCore::KeyedEncoder::encodeFloat, &WebCore::KeyedDecoder::decodeFloat, float(-1.5)));
-    EXPECT_TRUE(testSimpleValue(&WebCore::KeyedEncoder::encodeFloat, &WebCore::KeyedDecoder::decodeFloat, std::numeric_limits<float>::lowest()));
-    EXPECT_TRUE(testSimpleValue(&WebCore::KeyedEncoder::encodeFloat, &WebCore::KeyedDecoder::decodeFloat, std::numeric_limits<float>::min()));
-    EXPECT_TRUE(testSimpleValue(&WebCore::KeyedEncoder::encodeFloat, &WebCore::KeyedDecoder::decodeFloat, std::numeric_limits<float>::max()));
+    EXPECT_TRUE(testSimpleValue(&CyberCore::KeyedEncoder::encodeFloat, &CyberCore::KeyedDecoder::decodeFloat, float(0)));
+    EXPECT_TRUE(testSimpleValue(&CyberCore::KeyedEncoder::encodeFloat, &CyberCore::KeyedDecoder::decodeFloat, float(1.5)));
+    EXPECT_TRUE(testSimpleValue(&CyberCore::KeyedEncoder::encodeFloat, &CyberCore::KeyedDecoder::decodeFloat, float(-1.5)));
+    EXPECT_TRUE(testSimpleValue(&CyberCore::KeyedEncoder::encodeFloat, &CyberCore::KeyedDecoder::decodeFloat, std::numeric_limits<float>::lowest()));
+    EXPECT_TRUE(testSimpleValue(&CyberCore::KeyedEncoder::encodeFloat, &CyberCore::KeyedDecoder::decodeFloat, std::numeric_limits<float>::min()));
+    EXPECT_TRUE(testSimpleValue(&CyberCore::KeyedEncoder::encodeFloat, &CyberCore::KeyedDecoder::decodeFloat, std::numeric_limits<float>::max()));
 }
 
 TEST(KeyedCoding, SetAndGetDouble)
 {
-    EXPECT_TRUE(testSimpleValue(&WebCore::KeyedEncoder::encodeDouble, &WebCore::KeyedDecoder::decodeDouble, double(0)));
-    EXPECT_TRUE(testSimpleValue(&WebCore::KeyedEncoder::encodeDouble, &WebCore::KeyedDecoder::decodeDouble, double(1.25)));
-    EXPECT_TRUE(testSimpleValue(&WebCore::KeyedEncoder::encodeDouble, &WebCore::KeyedDecoder::decodeDouble, double(-1.25)));
-    EXPECT_TRUE(testSimpleValue(&WebCore::KeyedEncoder::encodeDouble, &WebCore::KeyedDecoder::decodeDouble, std::numeric_limits<double>::lowest()));
-    EXPECT_TRUE(testSimpleValue(&WebCore::KeyedEncoder::encodeDouble, &WebCore::KeyedDecoder::decodeDouble, std::numeric_limits<double>::min()));
-    EXPECT_TRUE(testSimpleValue(&WebCore::KeyedEncoder::encodeDouble, &WebCore::KeyedDecoder::decodeDouble, std::numeric_limits<double>::max()));
+    EXPECT_TRUE(testSimpleValue(&CyberCore::KeyedEncoder::encodeDouble, &CyberCore::KeyedDecoder::decodeDouble, double(0)));
+    EXPECT_TRUE(testSimpleValue(&CyberCore::KeyedEncoder::encodeDouble, &CyberCore::KeyedDecoder::decodeDouble, double(1.25)));
+    EXPECT_TRUE(testSimpleValue(&CyberCore::KeyedEncoder::encodeDouble, &CyberCore::KeyedDecoder::decodeDouble, double(-1.25)));
+    EXPECT_TRUE(testSimpleValue(&CyberCore::KeyedEncoder::encodeDouble, &CyberCore::KeyedDecoder::decodeDouble, std::numeric_limits<double>::lowest()));
+    EXPECT_TRUE(testSimpleValue(&CyberCore::KeyedEncoder::encodeDouble, &CyberCore::KeyedDecoder::decodeDouble, std::numeric_limits<double>::min()));
+    EXPECT_TRUE(testSimpleValue(&CyberCore::KeyedEncoder::encodeDouble, &CyberCore::KeyedDecoder::decodeDouble, std::numeric_limits<double>::max()));
 }
 
 TEST(KeyedCoding, SetAndGetString)
 {
-    EXPECT_TRUE(testSimpleValue(&WebCore::KeyedEncoder::encodeString, &WebCore::KeyedDecoder::decodeString, String("WebKit"_s)));
+    EXPECT_TRUE(testSimpleValue(&CyberCore::KeyedEncoder::encodeString, &CyberCore::KeyedDecoder::decodeString, String("WebKit"_s)));
 }
 
 TEST(KeyedCoding, GetNonExistingRecord)
 {
-    auto encoder = WebCore::KeyedEncoder::encoder();
+    auto encoder = CyberCore::KeyedEncoder::encoder();
     encoder->encodeBool("bool-true"_s, true);
 
     auto encodedBuffer = encoder->finishEncoding();
-    auto decoder = WebCore::KeyedDecoder::decoder(reinterpret_cast<const uint8_t*>(encodedBuffer->data()), encodedBuffer->size());
+    auto decoder = CyberCore::KeyedDecoder::decoder(reinterpret_cast<const uint8_t*>(encodedBuffer->data()), encodedBuffer->size());
 
     bool success, boolValue;
     success = decoder->decodeBool("bool-true"_s, boolValue);
@@ -200,13 +200,13 @@ TEST(KeyedCoding, GetNonExistingRecord)
 }
 
 struct KeyedCodingTestObject {
-    static void encode(WebCore::KeyedEncoder& encoder, const KeyedCodingTestObject& object)
+    static void encode(CyberCore::KeyedEncoder& encoder, const KeyedCodingTestObject& object)
     {
         encoder.encodeString("name"_s, object.m_name);
         encoder.encodeInt32("age"_s, object.m_age);
     }
 
-    static bool decode(WebCore::KeyedDecoder& decoder, KeyedCodingTestObject& object)
+    static bool decode(CyberCore::KeyedDecoder& decoder, KeyedCodingTestObject& object)
     {
         if (!decoder.decodeString("name"_s, object.m_name))
             return false;
@@ -241,12 +241,12 @@ TEST(KeyedCoding, SetAndGetObject)
     const KeyedCodingTestObject user0("Noah"_s, 28);
     const KeyedCodingTestObject user1("Emma"_s, 31);
 
-    auto encoder = WebCore::KeyedEncoder::encoder();
+    auto encoder = CyberCore::KeyedEncoder::encoder();
     encoder->encodeObject("user0"_s, user0, KeyedCodingTestObject::encode);
     encoder->encodeObject("user1"_s, user1, KeyedCodingTestObject::encode);
     auto encodedBuffer = encoder->finishEncoding();
 
-    auto decoder = WebCore::KeyedDecoder::decoder(reinterpret_cast<const uint8_t*>(encodedBuffer->data()), encodedBuffer->size());
+    auto decoder = CyberCore::KeyedDecoder::decoder(reinterpret_cast<const uint8_t*>(encodedBuffer->data()), encodedBuffer->size());
     bool success;
     KeyedCodingTestObject decodedUser0, decodedUser1;
 
@@ -265,11 +265,11 @@ TEST(KeyedCoding, SetAndGetObjects)
     for (int i = 0; i < 10; i++)
         users.append(KeyedCodingTestObject("username"_s, i));
 
-    auto encoder = WebCore::KeyedEncoder::encoder();
+    auto encoder = CyberCore::KeyedEncoder::encoder();
     encoder->encodeObjects("users"_s, users.begin(), users.end(), KeyedCodingTestObject::encode);
     auto encodedBuffer = encoder->finishEncoding();
 
-    auto decoder = WebCore::KeyedDecoder::decoder(reinterpret_cast<const uint8_t*>(encodedBuffer->data()), encodedBuffer->size());
+    auto decoder = CyberCore::KeyedDecoder::decoder(reinterpret_cast<const uint8_t*>(encodedBuffer->data()), encodedBuffer->size());
     Vector<KeyedCodingTestObject> decodedUsers;
 
     bool success = decoder->decodeObjects("users"_s, decodedUsers, KeyedCodingTestObject::decode);
@@ -279,11 +279,11 @@ TEST(KeyedCoding, SetAndGetObjects)
 
 TEST(KeyedCoding, SetAndGetWithEmptyKey)
 {
-    auto encoder = WebCore::KeyedEncoder::encoder();
+    auto encoder = CyberCore::KeyedEncoder::encoder();
     encoder->encodeBool(emptyString(), false);
 
     auto encodedBuffer = encoder->finishEncoding();
-    auto decoder = WebCore::KeyedDecoder::decoder(reinterpret_cast<const uint8_t*>(encodedBuffer->data()), encodedBuffer->size());
+    auto decoder = CyberCore::KeyedDecoder::decoder(reinterpret_cast<const uint8_t*>(encodedBuffer->data()), encodedBuffer->size());
 
     bool success, boolValue;
     success = decoder->decodeBool(emptyString(), boolValue);
@@ -306,7 +306,7 @@ TEST(KeyedCoding, DecodeRandomData)
     for (auto i = 0; i < 10; ++i) {
         auto data = generateRandomData();
         // Don't crash.
-        WebCore::KeyedDecoder::decoder(data.data(), data.size());
+        CyberCore::KeyedDecoder::decoder(data.data(), data.size());
     }
 }
 

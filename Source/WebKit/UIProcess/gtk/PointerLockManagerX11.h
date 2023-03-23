@@ -36,13 +36,13 @@ class WebPageProxy;
 class PointerLockManagerX11 final : public PointerLockManager {
     WTF_MAKE_NONCOPYABLE(PointerLockManagerX11); WTF_MAKE_FAST_ALLOCATED;
 public:
-    PointerLockManagerX11(WebPageProxy&, const WebCore::FloatPoint&, const WebCore::FloatPoint&, WebMouseEventButton, unsigned short, OptionSet<WebEventModifier>);
+    PointerLockManagerX11(WebPageProxy&, const CyberCore::FloatPoint&, const CyberCore::FloatPoint&, WebMouseEventButton, unsigned short, OptionSet<WebEventModifier>);
     ~PointerLockManagerX11() = default;
 
 private:
     bool lock() override;
     bool unlock() override;
-    void didReceiveMotionEvent(const WebCore::FloatPoint&) override;
+    void didReceiveMotionEvent(const CyberCore::FloatPoint&) override;
 };
 
 } // namespace WebKit

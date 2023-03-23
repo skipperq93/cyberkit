@@ -26,7 +26,7 @@
 #include "config.h"
 #include "FileMonitor.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 #if !PLATFORM(COCOA) && !USE(GLIB)
 
@@ -38,4 +38,4 @@ FileMonitor::~FileMonitor() = default;
 
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

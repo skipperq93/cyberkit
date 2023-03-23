@@ -41,7 +41,7 @@
 
 @class CALayer;
 
-namespace WebCore {
+namespace CyberCore {
 
 class LegacyTileGridTile;
 
@@ -131,7 +131,7 @@ static inline IntPoint bottomRight(const IntRect& rect)
     return IntPoint(rect.maxX() - 1, rect.maxY() - 1);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(IOS_FAMILY)
 #endif // TileGrid_h

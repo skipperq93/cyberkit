@@ -27,7 +27,7 @@
 
 #include <wtf/EnumTraits.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class ColorGamut : uint8_t {
     SRGB,
@@ -35,16 +35,16 @@ enum class ColorGamut : uint8_t {
     Rec2020,
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::ColorGamut> {
+template<> struct EnumTraits<CyberCore::ColorGamut> {
     using values = EnumValues<
-        WebCore::ColorGamut,
-        WebCore::ColorGamut::SRGB,
-        WebCore::ColorGamut::P3,
-        WebCore::ColorGamut::Rec2020
+        CyberCore::ColorGamut,
+        CyberCore::ColorGamut::SRGB,
+        CyberCore::ColorGamut::P3,
+        CyberCore::ColorGamut::Rec2020
     >;
 };
 

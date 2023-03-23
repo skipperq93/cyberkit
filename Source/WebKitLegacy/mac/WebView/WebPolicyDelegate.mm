@@ -31,7 +31,7 @@
 #import <CyberCore/FrameLoaderTypes.h>
 #import <wtf/ObjCRuntimeExtras.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 NSString *WebActionButtonKey = @"WebActionButtonKey"; 
 NSString *WebActionElementKey = @"WebActionElementKey";

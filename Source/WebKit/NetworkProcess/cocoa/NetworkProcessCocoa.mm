@@ -61,13 +61,13 @@ static void initializeNetworkSettings()
     Boolean keyExistsAndHasValidFormat = false;
     Boolean prefValue = CFPreferencesGetAppBooleanValue(CFSTR("WebKitEnableHTTPPipelining"), kCFPreferencesCurrentApplication, &keyExistsAndHasValidFormat);
     if (keyExistsAndHasValidFormat)
-        WebCore::ResourceRequest::setHTTPPipeliningEnabled(prefValue);
+        CyberCore::ResourceRequest::setHTTPPipeliningEnabled(prefValue);
 
-    if (WebCore::ResourceRequest::resourcePrioritiesEnabled()) {
+    if (CyberCore::ResourceRequest::resourcePrioritiesEnabled()) {
         const unsigned fastLaneConnectionCount = 1;
 
-        _CFNetworkHTTPConnectionCacheSetLimit(kHTTPPriorityNumLevels, WebCore::resourceLoadPriorityCount);
-        _CFNetworkHTTPConnectionCacheSetLimit(kHTTPMinimumFastLanePriority, toPlatformRequestPriority(WebCore::ResourceLoadPriority::Medium));
+        _CFNetworkHTTPConnectionCacheSetLimit(kHTTPPriorityNumLevels, CyberCore::resourceLoadPriorityCount);
+        _CFNetworkHTTPConnectionCacheSetLimit(kHTTPMinimumFastLanePriority, toPlatformRequestPriority(CyberCore::ResourceLoadPriority::Medium));
         _CFNetworkHTTPConnectionCacheSetLimit(kHTTPNumFastLanes, fastLaneConnectionCount);
     }
 }
@@ -139,10 +139,10 @@ void NetworkProcess::deleteHSTSCacheForHostNames(PAL::SessionID sessionID, const
     }
 }
 
-void NetworkProcess::allowSpecificHTTPSCertificateForHost(PAL::SessionID, const WebCore::CertificateInfo& certificateInfo, const String& host)
+void NetworkProcess::allowSpecificHTTPSCertificateForHost(PAL::SessionID, const CyberCore::CertificateInfo& certificateInfo, const String& host)
 {
     // FIXME: Remove this once rdar://30655740 is fixed.
-    [NSURLRequest setAllowsSpecificHTTPSCertificate:(NSArray *)WebCore::CertificateInfo::certificateChainFromSecTrust(certificateInfo.trust().get()).get() forHost:host];
+    [NSURLRequest setAllowsSpecificHTTPSCertificate:(NSArray *)CyberCore::CertificateInfo::certificateChainFromSecTrust(certificateInfo.trust().get()).get() forHost:host];
 }
 
 void NetworkProcess::clearHSTSCache(PAL::SessionID sessionID, WallTime modifiedSince)

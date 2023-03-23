@@ -34,7 +34,7 @@
 #include "Logging.h"
 #include "MultiChannelResampler.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 constexpr size_t fifoSize = 96 * AudioUtilities::renderQuantumSize;
 
@@ -143,6 +143,6 @@ void AudioDestinationResampler::renderOnRenderingThreadIfPlaying(size_t framesTo
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

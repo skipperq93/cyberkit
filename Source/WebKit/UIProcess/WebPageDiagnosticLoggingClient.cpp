@@ -45,7 +45,7 @@ void WebPageDiagnosticLoggingClient::logDiagnosticMessage(WebPageProxy* page, co
     m_client.logDiagnosticMessage(toAPI(page), toAPI(message.impl()), toAPI(description.impl()), m_client.base.clientInfo);
 }
 
-void WebPageDiagnosticLoggingClient::logDiagnosticMessageWithResult(WebPageProxy* page, const String& message, const String& description, WebCore::DiagnosticLoggingResultType result)
+void WebPageDiagnosticLoggingClient::logDiagnosticMessageWithResult(WebPageProxy* page, const String& message, const String& description, CyberCore::DiagnosticLoggingResultType result)
 {
     if (!m_client.logDiagnosticMessageWithResult)
         return;

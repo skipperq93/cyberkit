@@ -37,7 +37,7 @@ class Data;
 class URL;
 }
 
-namespace WebCore {
+namespace CyberCore {
 class ArchiveResource;
 }
 
@@ -48,20 +48,20 @@ public:
     virtual ~WebArchiveResource();
 
     static Ref<WebArchiveResource> create(API::Data*, const WTF::String& URL, const WTF::String& MIMEType, const WTF::String& textEncoding);
-    static Ref<WebArchiveResource> create(RefPtr<WebCore::ArchiveResource>&&);
+    static Ref<WebArchiveResource> create(RefPtr<CyberCore::ArchiveResource>&&);
 
     Ref<API::Data> data();
     WTF::String URL();
     WTF::String MIMEType();
     WTF::String textEncoding();
 
-    WebCore::ArchiveResource* coreArchiveResource();
+    CyberCore::ArchiveResource* coreArchiveResource();
 
 private:
     WebArchiveResource(API::Data*, const WTF::String& URL, const WTF::String& MIMEType, const WTF::String& textEncoding);
-    WebArchiveResource(RefPtr<WebCore::ArchiveResource>&&);
+    WebArchiveResource(RefPtr<CyberCore::ArchiveResource>&&);
 
-    RefPtr<WebCore::ArchiveResource> m_archiveResource;
+    RefPtr<CyberCore::ArchiveResource> m_archiveResource;
 };
 
 } // namespace API

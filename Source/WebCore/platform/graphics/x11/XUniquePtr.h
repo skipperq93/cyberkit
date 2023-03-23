@@ -35,7 +35,7 @@
 typedef struct __GLXcontextRec* GLXContext;
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename T>
 struct XPtrDeleter {
@@ -72,7 +72,7 @@ template<> struct XPtrDeleter<__GLXcontextRec> {
 using XUniqueGLXContext = XUniquePtr<__GLXcontextRec>;
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(X11)
 

@@ -36,13 +36,13 @@
 #include "ServiceWorkerTypes.h"
 #include <wtf/URL.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ServiceWorkerJobData {
     using Identifier = ServiceWorkerJobDataIdentifier;
     ServiceWorkerJobData(SWServerConnectionIdentifier, const ServiceWorkerOrClientIdentifier& sourceContext);
     ServiceWorkerJobData(Identifier, const ServiceWorkerOrClientIdentifier& sourceContext);
-    WEBCORE_EXPORT ServiceWorkerJobData(WebCore::ServiceWorkerJobDataIdentifier&&, URL&& scriptURL, URL&& clientCreationURL, WebCore::SecurityOriginData&& topOrigin, URL&& scopeURL, WebCore::ServiceWorkerOrClientIdentifier&& sourceContext, WebCore::WorkerType, WebCore::ServiceWorkerJobType, String&& domainForCachePartition, bool isFromServiceWorkerPage, std::optional<WebCore::ServiceWorkerRegistrationOptions>&&);
+    WEBCORE_EXPORT ServiceWorkerJobData(CyberCore::ServiceWorkerJobDataIdentifier&&, URL&& scriptURL, URL&& clientCreationURL, CyberCore::SecurityOriginData&& topOrigin, URL&& scopeURL, CyberCore::ServiceWorkerOrClientIdentifier&& sourceContext, CyberCore::WorkerType, CyberCore::ServiceWorkerJobType, String&& domainForCachePartition, bool isFromServiceWorkerPage, std::optional<CyberCore::ServiceWorkerRegistrationOptions>&&);
 
     SWServerConnectionIdentifier connectionIdentifier() const { return m_identifier.connectionIdentifier; }
 
@@ -71,6 +71,6 @@ private:
     Identifier m_identifier;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

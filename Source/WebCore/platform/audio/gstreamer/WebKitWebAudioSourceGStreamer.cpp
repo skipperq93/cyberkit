@@ -37,7 +37,7 @@
 #include <wtf/glib/GUniquePtr.h>
 #include <wtf/glib/WTFGType.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 typedef struct _WebKitWebAudioSrcClass   WebKitWebAudioSrcClass;
 typedef struct _WebKitWebAudioSrcPrivate WebKitWebAudioSrcPrivate;
@@ -175,7 +175,7 @@ static void webkit_web_audio_src_class_init(WebKitWebAudioSrcClass* webKitWebAud
     GstElementClass* elementClass = GST_ELEMENT_CLASS(webKitWebAudioSrcClass);
 
     gst_element_class_add_pad_template(elementClass, gst_static_pad_template_get(&srcTemplate));
-    gst_element_class_set_metadata(elementClass, "WebKit WebAudio source element", "Source", "Handles WebAudio data from WebCore", "Philippe Normand <pnormand@igalia.com>");
+    gst_element_class_set_metadata(elementClass, "WebKit WebAudio source element", "Source", "Handles WebAudio data from CyberCore", "Philippe Normand <pnormand@igalia.com>");
 
     objectClass->constructed = webKitWebAudioSrcConstructed;
     elementClass->change_state = webKitWebAudioSrcChangeState;

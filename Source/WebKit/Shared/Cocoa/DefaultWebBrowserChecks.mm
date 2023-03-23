@@ -50,11 +50,11 @@ bool isRunningTest(const String& bundleID)
     return bundleID == "com.apple.WebKit.TestWebKitAPI"_s || bundleID == "com.apple.WebKit.WebKitTestRunner"_s || bundleID == "org.webkit.WebKitTestRunnerApp"_s;
 }
 
-Span<const WebCore::RegistrableDomain> appBoundDomainsForTesting(const String& bundleID)
+Span<const CyberCore::RegistrableDomain> appBoundDomainsForTesting(const String& bundleID)
 {
     if (bundleID == "inAppBrowserPrivacyTestIdentifier"_s) {
         static NeverDestroyed domains = std::array {
-            WebCore::RegistrableDomain::uncheckedCreateFromRegistrableDomainString("127.0.0.1"_s),
+            CyberCore::RegistrableDomain::uncheckedCreateFromRegistrableDomainString("127.0.0.1"_s),
         };
         return domains.get();
     }
@@ -127,7 +127,7 @@ void determineTrackingPreventionState()
     bool appWasLinkedOnOrAfter = linkedOnOrAfterSDKWithBehavior(SDKAlignedBehavior::SessionCleanupByDefault);
 
     itpQueue() = WorkQueue::create("com.apple.WebKit.itpCheckQueue");
-    itpQueue()->dispatch([appWasLinkedOnOrAfter, bundleIdentifier = WebCore::applicationBundleIdentifier().isolatedCopy()] {
+    itpQueue()->dispatch([appWasLinkedOnOrAfter, bundleIdentifier = CyberCore::applicationBundleIdentifier().isolatedCopy()] {
         currentTrackingPreventionState = determineTrackingPreventionStateInternal(appWasLinkedOnOrAfter, bundleIdentifier) ? TrackingPreventionState::Enabled : TrackingPreventionState::Disabled;
         RunLoop::main().dispatch([] {
             itpQueue() = nullptr;
@@ -240,7 +240,7 @@ bool isParentProcessAFullWebBrowser(AuxiliaryProcess& auxiliaryProcess)
         fullWebBrowser = WTF::hasEntitlement(*auditToken, "com.apple.developer.web-browser"_s);
     });
 
-    return fullWebBrowser || isRunningTest(WebCore::applicationBundleIdentifier());
+    return fullWebBrowser || isRunningTest(CyberCore::applicationBundleIdentifier());
 }
 
 static bool isFullWebBrowser(const String& bundleIdentifier)
@@ -257,7 +257,7 @@ bool isFullWebBrowser()
     ASSERT(!isInWebKitChildProcess());
     ASSERT(RunLoop::isMain());
 
-    return isFullWebBrowser(WebCore::applicationBundleIdentifier());
+    return isFullWebBrowser(CyberCore::applicationBundleIdentifier());
 }
 
 } // namespace WebKit

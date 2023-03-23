@@ -37,7 +37,7 @@ namespace JSC {
 class ArrayBuffer;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class AVFInbandTrackParent {
 public:
@@ -112,7 +112,7 @@ private:
     bool m_haveReportedVTTHeader;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif //  ENABLE(VIDEO) && (USE(AVFOUNDATION) || PLATFORM(IOS_FAMILY))
 

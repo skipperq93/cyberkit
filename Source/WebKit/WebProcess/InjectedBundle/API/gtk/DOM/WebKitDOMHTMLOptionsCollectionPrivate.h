@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -17,16 +17,16 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitDOMHTMLOptionsCollectionPrivate_h
-#define WebKitDOMHTMLOptionsCollectionPrivate_h
+#ifndef CyberKitDOMHTMLOptionsCollectionPrivate_h
+#define CyberKitDOMHTMLOptionsCollectionPrivate_h
 
 #include <CyberCore/HTMLOptionsCollection.h>
-#include <webkitdom/WebKitDOMHTMLOptionsCollection.h>
+#include <webkitdom/CyberKitDOMHTMLOptionsCollection.h>
 
-namespace WebKit {
-WebKitDOMHTMLOptionsCollection* wrapHTMLOptionsCollection(WebCore::HTMLOptionsCollection*);
-WebKitDOMHTMLOptionsCollection* kit(WebCore::HTMLOptionsCollection*);
-WebCore::HTMLOptionsCollection* core(WebKitDOMHTMLOptionsCollection*);
-} // namespace WebKit
+namespace CyberKit {
+CyberKitDOMHTMLOptionsCollection* wrapHTMLOptionsCollection(CyberCore::HTMLOptionsCollection*);
+CyberKitDOMHTMLOptionsCollection* kit(CyberCore::HTMLOptionsCollection*);
+CyberCore::HTMLOptionsCollection* core(CyberKitDOMHTMLOptionsCollection*);
+} // namespace CyberKit
 
-#endif /* WebKitDOMHTMLOptionsCollectionPrivate_h */
+#endif /* CyberKitDOMHTMLOptionsCollectionPrivate_h */

@@ -89,14 +89,14 @@
 
 #if ENABLE(3D_TRANSFORMS)
 // This symbol is used to determine from a script whether 3D rendering is enabled (via 'nm').
-WEBCORE_EXPORT bool WebCoreHas3DRendering = true;
+WEBCORE_EXPORT bool CyberCoreHas3DRendering = true;
 #endif
 
 #if !PLATFORM(MAC) && !PLATFORM(IOS_FAMILY)
 #define USE_COMPOSITING_FOR_SMALL_CANVASES 1
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 #if !USE(COMPOSITING_FOR_SMALL_CANVASES)
 static const int canvasAreaThresholdRequiringCompositing = 50 * 100;
@@ -5347,10 +5347,10 @@ void LegacyWebKitScrollingLayerCoordinator::removeViewportConstrainedLayer(Rende
 
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #if ENABLE(TREE_DEBUGGING)
-void showGraphicsLayerTreeForCompositor(WebCore::RenderLayerCompositor& compositor)
+void showGraphicsLayerTreeForCompositor(CyberCore::RenderLayerCompositor& compositor)
 {
     showGraphicsLayerTree(compositor.rootGraphicsLayer());
 }

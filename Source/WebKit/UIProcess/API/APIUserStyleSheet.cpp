@@ -36,7 +36,7 @@ WTF::URL UserStyleSheet::generateUniqueURL()
     return { { }, makeString("user-style-sheet:", ++identifier) };
 }
 
-UserStyleSheet::UserStyleSheet(WebCore::UserStyleSheet userStyleSheet, API::ContentWorld& world)
+UserStyleSheet::UserStyleSheet(CyberCore::UserStyleSheet userStyleSheet, API::ContentWorld& world)
     : m_userStyleSheet(userStyleSheet)
     , m_world(world)
 {

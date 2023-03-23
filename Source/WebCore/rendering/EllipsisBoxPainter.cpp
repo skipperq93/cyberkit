@@ -31,7 +31,7 @@
 #include "PaintInfo.h"
 #include "RenderView.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 EllipsisBoxPainter::EllipsisBoxPainter(const InlineIterator::LineBox& lineBox, PaintInfo& paintInfo, const LayoutPoint& paintOffset, Color selectionForegroundColor, Color selectionBackgroundColor)
     : m_lineBox(lineBox)

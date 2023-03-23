@@ -56,7 +56,7 @@ OBJC_CLASS UIViewController;
 #include <CyberCore/PlatformXR.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 class RegistrableDomain;
 class ResourceRequest;
 struct FontAttributes;
@@ -92,7 +92,7 @@ class UIClient {
 public:
     virtual ~UIClient() { }
 
-    virtual void createNewPage(WebKit::WebPageProxy&, WebCore::WindowFeatures&&, Ref<API::NavigationAction>&&, CompletionHandler<void(RefPtr<WebKit::WebPageProxy>&&)>&& completionHandler) { completionHandler(nullptr); }
+    virtual void createNewPage(WebKit::WebPageProxy&, CyberCore::WindowFeatures&&, Ref<API::NavigationAction>&&, CompletionHandler<void(RefPtr<WebKit::WebPageProxy>&&)>&& completionHandler) { completionHandler(nullptr); }
     virtual void showPage(WebKit::WebPageProxy*) { }
     virtual void fullscreenMayReturnToInline(WebKit::WebPageProxy*) { }
     virtual void didEnterFullscreen(WebKit::WebPageProxy*) { }
@@ -123,8 +123,8 @@ public:
     virtual void setStatusBarIsVisible(WebKit::WebPageProxy&, bool) { }
     virtual void setIsResizable(WebKit::WebPageProxy&, bool) { }
 
-    virtual void setWindowFrame(WebKit::WebPageProxy&, const WebCore::FloatRect&) { }
-    virtual void windowFrame(WebKit::WebPageProxy&, Function<void(WebCore::FloatRect)>&& completionHandler) { completionHandler({ }); }
+    virtual void setWindowFrame(WebKit::WebPageProxy&, const CyberCore::FloatRect&) { }
+    virtual void windowFrame(WebKit::WebPageProxy&, Function<void(CyberCore::FloatRect)>&& completionHandler) { completionHandler({ }); }
 
     virtual bool canRunBeforeUnloadConfirmPanel() const { return false; }
     virtual void runBeforeUnloadConfirmPanel(WebKit::WebPageProxy&, const WTF::String&, WebKit::WebFrameProxy*, WebKit::FrameInfoData&&, Function<void(bool)>&& completionHandler) { completionHandler(true); }
@@ -136,32 +136,32 @@ public:
         completionHandler(currentQuota);
     }
 
-    virtual void reachedApplicationCacheOriginQuota(WebKit::WebPageProxy*, const WebCore::SecurityOrigin&, uint64_t currentQuota, uint64_t, Function<void (unsigned long long)>&& completionHandler)
+    virtual void reachedApplicationCacheOriginQuota(WebKit::WebPageProxy*, const CyberCore::SecurityOrigin&, uint64_t currentQuota, uint64_t, Function<void (unsigned long long)>&& completionHandler)
     {
         completionHandler(currentQuota);
     }
 
-    virtual bool lockScreenOrientation(WebKit::WebPageProxy&, WebCore::ScreenOrientationType) { return false; }
+    virtual bool lockScreenOrientation(WebKit::WebPageProxy&, CyberCore::ScreenOrientationType) { return false; }
     virtual void unlockScreenOrientation(WebKit::WebPageProxy&) { }
 
     virtual bool needsFontAttributes() const { return false; }
-    virtual void didChangeFontAttributes(const WebCore::FontAttributes&) { }
+    virtual void didChangeFontAttributes(const CyberCore::FontAttributes&) { }
 
     virtual bool runOpenPanel(WebKit::WebPageProxy&, WebKit::WebFrameProxy*, WebKit::FrameInfoData&&, OpenPanelParameters*, WebKit::WebOpenPanelResultListenerProxy*) { return false; }
     virtual void decidePolicyForGeolocationPermissionRequest(WebKit::WebPageProxy&, WebKit::WebFrameProxy&, const WebKit::FrameInfoData&, Function<void(bool)>&) { }
     virtual void decidePolicyForUserMediaPermissionRequest(WebKit::WebPageProxy&, WebKit::WebFrameProxy&, SecurityOrigin&, SecurityOrigin&, WebKit::UserMediaPermissionRequestProxy& request) { request.doDefaultAction(); }
     virtual void checkUserMediaPermissionForOrigin(WebKit::WebPageProxy&, WebKit::WebFrameProxy&, SecurityOrigin&, SecurityOrigin&, WebKit::UserMediaPermissionCheckProxy& request) { request.deny(); }
     virtual void decidePolicyForNotificationPermissionRequest(WebKit::WebPageProxy&, SecurityOrigin&, CompletionHandler<void(bool allowed)>&& completionHandler) { completionHandler(false); }
-    virtual void requestStorageAccessConfirm(WebKit::WebPageProxy&, WebKit::WebFrameProxy*, const WebCore::RegistrableDomain& requestingDomain, const WebCore::RegistrableDomain& currentDomain, CompletionHandler<void(bool)>&& completionHandler) { completionHandler(true); }
-    virtual void requestCookieConsent(CompletionHandler<void(WebCore::CookieConsentDecisionResult)>&& completionHandler) { completionHandler(WebCore::CookieConsentDecisionResult::NotSupported); }
-    virtual void decidePolicyForModalContainer(OptionSet<WebCore::ModalContainerControlType>, CompletionHandler<void(WebCore::ModalContainerDecision)>&& completion) { completion(WebCore::ModalContainerDecision::Show); }
+    virtual void requestStorageAccessConfirm(WebKit::WebPageProxy&, WebKit::WebFrameProxy*, const CyberCore::RegistrableDomain& requestingDomain, const CyberCore::RegistrableDomain& currentDomain, CompletionHandler<void(bool)>&& completionHandler) { completionHandler(true); }
+    virtual void requestCookieConsent(CompletionHandler<void(CyberCore::CookieConsentDecisionResult)>&& completionHandler) { completionHandler(CyberCore::CookieConsentDecisionResult::NotSupported); }
+    virtual void decidePolicyForModalContainer(OptionSet<CyberCore::ModalContainerControlType>, CompletionHandler<void(CyberCore::ModalContainerDecision)>&& completion) { completion(CyberCore::ModalContainerDecision::Show); }
 
     // Printing.
     virtual float headerHeight(WebKit::WebPageProxy&, WebKit::WebFrameProxy&) { return 0; }
     virtual float footerHeight(WebKit::WebPageProxy&, WebKit::WebFrameProxy&) { return 0; }
-    virtual void drawHeader(WebKit::WebPageProxy&, WebKit::WebFrameProxy&, WebCore::FloatRect&&) { }
-    virtual void drawFooter(WebKit::WebPageProxy&, WebKit::WebFrameProxy&, WebCore::FloatRect&&) { }
-    virtual void printFrame(WebKit::WebPageProxy&, WebKit::WebFrameProxy&, const WebCore::FloatSize& pdfFirstPageSize, CompletionHandler<void()>&& completionHandler) { completionHandler(); }
+    virtual void drawHeader(WebKit::WebPageProxy&, WebKit::WebFrameProxy&, CyberCore::FloatRect&&) { }
+    virtual void drawFooter(WebKit::WebPageProxy&, WebKit::WebFrameProxy&, CyberCore::FloatRect&&) { }
+    virtual void printFrame(WebKit::WebPageProxy&, WebKit::WebFrameProxy&, const CyberCore::FloatSize& pdfFirstPageSize, CompletionHandler<void()>&& completionHandler) { completionHandler(); }
 
     virtual bool canRunModal() const { return false; }
     virtual void runModal(WebKit::WebPageProxy&) { }
@@ -171,15 +171,15 @@ public:
     virtual void pinnedStateDidChange(WebKit::WebPageProxy&) { }
 
     virtual void isPlayingMediaDidChange(WebKit::WebPageProxy&) { }
-    virtual void mediaCaptureStateDidChange(WebCore::MediaProducerMediaStateFlags) { }
-    virtual void handleAutoplayEvent(WebKit::WebPageProxy&, WebCore::AutoplayEvent, OptionSet<WebCore::AutoplayEventFlags>) { }
+    virtual void mediaCaptureStateDidChange(CyberCore::MediaProducerMediaStateFlags) { }
+    virtual void handleAutoplayEvent(WebKit::WebPageProxy&, CyberCore::AutoplayEvent, OptionSet<CyberCore::AutoplayEventFlags>) { }
 
 #if PLATFORM(IOS_FAMILY)
 #if HAVE(APP_LINKS)
     virtual bool shouldIncludeAppLinkActionsForElement(_WKActivatedElementInfo *) { return true; }
 #endif
     virtual RetainPtr<NSArray> actionsForElement(_WKActivatedElementInfo *, RetainPtr<NSArray> defaultActions) { return defaultActions; }
-    virtual void didNotHandleTapAsClick(const WebCore::IntPoint&) { }
+    virtual void didNotHandleTapAsClick(const CyberCore::IntPoint&) { }
     virtual void statusBarWasTapped() { }
 #endif
 #if PLATFORM(COCOA)
@@ -200,7 +200,7 @@ public:
 
     virtual void didResignInputElementStrongPasswordAppearance(WebKit::WebPageProxy&, Object*) { }
 
-    virtual void imageOrMediaDocumentSizeChanged(const WebCore::IntSize&) { }
+    virtual void imageOrMediaDocumentSizeChanged(const CyberCore::IntSize&) { }
 
     virtual void didShowSafeBrowsingWarning() { }
 
@@ -226,16 +226,16 @@ public:
 
     virtual void decidePolicyForMediaKeySystemPermissionRequest(WebKit::WebPageProxy& page, API::SecurityOrigin& origin, const WTF::String& keySystem, CompletionHandler<void(bool)>&& completionHandler) { page.requestMediaKeySystemPermissionByDefaultAction(origin.securityOrigin(), WTFMove(completionHandler)); }
 
-    virtual void queryPermission(const WTF::String& permissionName, API::SecurityOrigin& origin, CompletionHandler<void(std::optional<WebCore::PermissionState>)>&& completionHandler) { completionHandler({ }); }
+    virtual void queryPermission(const WTF::String& permissionName, API::SecurityOrigin& origin, CompletionHandler<void(std::optional<CyberCore::PermissionState>)>&& completionHandler) { completionHandler({ }); }
 
 #if ENABLE(WEBXR) && PLATFORM(COCOA)
-    virtual void requestPermissionOnXRSessionFeatures(WebKit::WebPageProxy&, const WebCore::SecurityOriginData&, PlatformXR::SessionMode, const PlatformXR::Device::FeatureList& granted, const PlatformXR::Device::FeatureList& /* consentRequired */, const PlatformXR::Device::FeatureList& /* consentOptional */, CompletionHandler<void(std::optional<PlatformXR::Device::FeatureList>&&)>&& completionHandler) { completionHandler(granted); }    
+    virtual void requestPermissionOnXRSessionFeatures(WebKit::WebPageProxy&, const CyberCore::SecurityOriginData&, PlatformXR::SessionMode, const PlatformXR::Device::FeatureList& granted, const PlatformXR::Device::FeatureList& /* consentRequired */, const PlatformXR::Device::FeatureList& /* consentOptional */, CompletionHandler<void(std::optional<PlatformXR::Device::FeatureList>&&)>&& completionHandler) { completionHandler(granted); }    
     virtual void startXRSession(WebKit::WebPageProxy&, CompletionHandler<void(RetainPtr<id>)>&& completionHandler) { completionHandler(nil); }
     virtual void endXRSession(WebKit::WebPageProxy&) { }
 #endif
 
-    virtual void updateAppBadge(WebKit::WebPageProxy&, const WebCore::SecurityOriginData&, std::optional<uint64_t>) { }
-    virtual void updateClientBadge(WebKit::WebPageProxy&, const WebCore::SecurityOriginData&, std::optional<uint64_t>) { }
+    virtual void updateAppBadge(WebKit::WebPageProxy&, const CyberCore::SecurityOriginData&, std::optional<uint64_t>) { }
+    virtual void updateClientBadge(WebKit::WebPageProxy&, const CyberCore::SecurityOriginData&, std::optional<uint64_t>) { }
 };
 
 } // namespace API

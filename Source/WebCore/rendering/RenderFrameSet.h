@@ -24,7 +24,7 @@
 
 #include "RenderBox.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLFrameSetElement;
 class MouseEvent;
@@ -121,6 +121,6 @@ private:
     bool m_isChildResizing;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderFrameSet, isFrameSet())

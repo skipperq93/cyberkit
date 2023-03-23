@@ -30,7 +30,7 @@
 #include "AudioSourceProvider.h"
 #include <wtf/ThreadSafeRefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WebAudioSourceProvider : public ThreadSafeRefCounted<WebAudioSourceProvider, WTF::DestructionThread::Main>, public AudioSourceProvider {
 };

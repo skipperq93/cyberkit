@@ -24,7 +24,7 @@
 #include "MediaQuery.h"
 #include "RuleSet.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace Style {
 
 class RuleSetBuilder {

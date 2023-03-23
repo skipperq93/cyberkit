@@ -30,7 +30,7 @@
 #include "GraphicsContext.h"
 #include "ImageBuffer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 GradientImage::GradientImage(Gradient& generator, const FloatSize& size)
     : m_gradient(generator)

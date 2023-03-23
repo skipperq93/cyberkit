@@ -29,7 +29,7 @@
 #include <wtf/WeakPtr.h>
 #include <wtf/text/StringHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ApplicationCacheGroup;
 class ApplicationCacheResource;
@@ -99,4 +99,4 @@ private:
     unsigned m_storageID { 0 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -62,7 +62,7 @@
 #include "SizesAttributeParser.h"
 #include "StyleResolver.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 LinkLoader::LinkLoader(LinkLoaderClient& client)
     : m_client(client)

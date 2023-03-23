@@ -33,16 +33,16 @@
 #import <CyberCore/WebScriptObjectPrivate.h>
 #import <wtf/GetPtr.h>
 
-#define IMPL static_cast<WebCore::CDATASection*>(reinterpret_cast<WebCore::Node*>(_internal))
+#define IMPL static_cast<CyberCore::CDATASection*>(reinterpret_cast<CyberCore::Node*>(_internal))
 
 @implementation DOMCDATASection
 
 @end
 
-DOMCDATASection *kit(WebCore::CDATASection* value)
+DOMCDATASection *kit(CyberCore::CDATASection* value)
 {
-    WebCoreThreadViolationCheckRoundOne();
-    return static_cast<DOMCDATASection*>(kit(static_cast<WebCore::Node*>(value)));
+    CyberCoreThreadViolationCheckRoundOne();
+    return static_cast<DOMCDATASection*>(kit(static_cast<CyberCore::Node*>(value)));
 }
 
 #undef IMPL

@@ -37,7 +37,7 @@
 #include <wtf/MachSendRight.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 class SecurityOriginData;
 }
 
@@ -212,7 +212,7 @@ public:
     void setEnabledFeatures(SessionMode mode, const FeatureList& features) { m_enabledFeaturesMap.set(mode, features); }
     FeatureList enabledFeatures(SessionMode mode) const { return m_enabledFeaturesMap.get(mode); }
 
-    virtual WebCore::IntSize recommendedResolution(SessionMode) { return { 1, 1 }; }
+    virtual CyberCore::IntSize recommendedResolution(SessionMode) { return { 1, 1 }; }
 
     bool supportsOrientationTracking() const { return m_supportsOrientationTracking; }
     bool supportsViewportScaling() const { return m_supportsViewportScaling; }
@@ -226,7 +226,7 @@ public:
     virtual double maxFramebufferScalingFactor() const { return nativeFramebufferScalingFactor(); }
 
 
-    virtual void initializeTrackingAndRendering(const WebCore::SecurityOriginData&, SessionMode, const FeatureList&) = 0;
+    virtual void initializeTrackingAndRendering(const CyberCore::SecurityOriginData&, SessionMode, const FeatureList&) = 0;
     virtual void shutDownTrackingAndRendering() = 0;
     TrackingAndRenderingClient* trackingAndRenderingClient() const { return m_trackingAndRenderingClient.get(); }
     void setTrackingAndRenderingClient(WeakPtr<TrackingAndRenderingClient>&& client) { m_trackingAndRenderingClient = WTFMove(client); }
@@ -250,7 +250,7 @@ public:
         };
 
         struct Pose {
-            WebCore::FloatPoint3D position;
+            CyberCore::FloatPoint3D position;
             FloatQuaternion orientation;
 
             template<class Encoder> void encode(Encoder&) const;
@@ -283,7 +283,7 @@ public:
 
         struct StageParameters {
             int id { 0 };
-            Vector<WebCore::FloatPoint> bounds;
+            Vector<CyberCore::FloatPoint> bounds;
 
             template<class Encoder> void encode(Encoder&) const;
             template<class Decoder> static std::optional<StageParameters> decode(Decoder&);
@@ -291,7 +291,7 @@ public:
 
         struct LayerData {
 #if USE(IOSURFACE_FOR_XR_LAYER_DATA)
-            std::unique_ptr<WebCore::IOSurface> surface;
+            std::unique_ptr<CyberCore::IOSurface> surface;
             bool isShared { false };
 #else
             PlatformGLObject opaqueTexture { 0 };
@@ -371,7 +371,7 @@ public:
 
     struct LayerView {
         Eye eye { Eye::None };
-        WebCore::IntRect viewport;
+        CyberCore::IntRect viewport;
     };
 
     struct Layer {
@@ -599,7 +599,7 @@ std::optional<Device::FrameData::LayerData> Device::FrameData::LayerData::decode
     MachSendRight surfaceSendRight;
     if (!decoder.decode(surfaceSendRight))
         return std::nullopt;
-    layerData.surface = WebCore::IOSurface::createFromSendRight(WTFMove(surfaceSendRight));
+    layerData.surface = CyberCore::IOSurface::createFromSendRight(WTFMove(surfaceSendRight));
     if (!decoder.decode(layerData.isShared))
         return std::nullopt;
 #else

@@ -29,7 +29,7 @@
 
 #include "ServiceWorkerTypes.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ServiceWorkerJobDataIdentifier {
     SWServerConnectionIdentifier connectionIdentifier;
@@ -46,6 +46,6 @@ inline bool operator==(const ServiceWorkerJobDataIdentifier& a, const ServiceWor
     return a.connectionIdentifier == b.connectionIdentifier && a.jobIdentifier == b.jobIdentifier;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

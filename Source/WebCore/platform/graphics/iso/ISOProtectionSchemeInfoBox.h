@@ -27,7 +27,7 @@
 
 #include "ISOOriginalFormatBox.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ISOSchemeTypeBox;
 class ISOSchemeInformationBox;

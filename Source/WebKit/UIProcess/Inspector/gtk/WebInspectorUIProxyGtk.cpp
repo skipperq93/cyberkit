@@ -100,7 +100,7 @@ static void decidePolicyForNavigationAction(WKPageRef pageRef, WKNavigationActio
     const WebInspectorUIProxy* inspector = static_cast<const WebInspectorUIProxy*>(clientInfo);
     ASSERT(inspector);
 
-    WebCore::ResourceRequest request = toImpl(navigationActionRef)->request();
+    CyberCore::ResourceRequest request = toImpl(navigationActionRef)->request();
 
     // Allow loading of the main inspector file.
     if (WebInspectorUIProxy::isMainOrTestInspectorPage(request.url())) {
@@ -335,7 +335,7 @@ void WebInspectorUIProxy::platformBringToFront()
         return;
 
     GtkWidget* parent = gtk_widget_get_toplevel(m_inspectorView.get());
-    if (WebCore::widgetIsOnscreenToplevelWindow(parent))
+    if (CyberCore::widgetIsOnscreenToplevelWindow(parent))
         gtk_window_present(GTK_WINDOW(parent));
 }
 
@@ -347,12 +347,12 @@ void WebInspectorUIProxy::platformBringInspectedPageToFront()
 bool WebInspectorUIProxy::platformIsFront()
 {
     GtkWidget* parent = gtk_widget_get_toplevel(m_inspectorView.get());
-    if (WebCore::widgetIsOnscreenToplevelWindow(parent))
+    if (CyberCore::widgetIsOnscreenToplevelWindow(parent))
         return m_isVisible && gtk_window_is_active(GTK_WINDOW(parent));
     return false;
 }
 
-void WebInspectorUIProxy::platformSetForcedAppearance(WebCore::InspectorFrontendClient::Appearance)
+void WebInspectorUIProxy::platformSetForcedAppearance(CyberCore::InspectorFrontendClient::Appearance)
 {
     notImplemented();
 }
@@ -372,7 +372,7 @@ void WebInspectorUIProxy::platformInspectedURLChanged(const String& url)
         updateInspectorWindowTitle();
 }
 
-void WebInspectorUIProxy::platformShowCertificate(const WebCore::CertificateInfo&)
+void WebInspectorUIProxy::platformShowCertificate(const CyberCore::CertificateInfo&)
 {
     notImplemented();
 }
@@ -477,7 +477,7 @@ void WebInspectorUIProxy::platformSetAttachedWindowWidth(unsigned width)
     webkitWebViewBaseSetInspectorViewSize(WEBKIT_WEB_VIEW_BASE(inspectedPage()->viewWidget()), width);
 }
 
-void WebInspectorUIProxy::platformSetSheetRect(const WebCore::FloatRect&)
+void WebInspectorUIProxy::platformSetSheetRect(const CyberCore::FloatRect&)
 {
     notImplemented();
 }
@@ -493,13 +493,13 @@ static void fileReplaceContentsCallback(GObject* sourceObject, GAsyncResult* res
     g_file_replace_contents_finish(file, result, nullptr, nullptr);
 }
 
-void WebInspectorUIProxy::platformSave(Vector<WebCore::InspectorFrontendClient::SaveData>&& saveDatas, bool forceSaveAs)
+void WebInspectorUIProxy::platformSave(Vector<CyberCore::InspectorFrontendClient::SaveData>&& saveDatas, bool forceSaveAs)
 {
     ASSERT(saveDatas.size() == 1);
     UNUSED_PARAM(forceSaveAs);
 
     GtkWidget* parent = gtk_widget_get_toplevel(m_inspectorView.get());
-    if (!WebCore::widgetIsOnscreenToplevelWindow(parent))
+    if (!CyberCore::widgetIsOnscreenToplevelWindow(parent))
         return;
 
     GRefPtr<GtkFileChooserNative> dialog = adoptGRef(gtk_file_chooser_native_new("Save File",
@@ -545,7 +545,7 @@ void WebInspectorUIProxy::platformLoad(const String&, CompletionHandler<void(con
     completionHandler(nullString());
 }
 
-void WebInspectorUIProxy::platformPickColorFromScreen(CompletionHandler<void(const std::optional<WebCore::Color>&)>&& completionHandler)
+void WebInspectorUIProxy::platformPickColorFromScreen(CompletionHandler<void(const std::optional<CyberCore::Color>&)>&& completionHandler)
 {
     notImplemented();
     completionHandler({ });

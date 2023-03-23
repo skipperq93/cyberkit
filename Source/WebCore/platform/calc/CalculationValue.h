@@ -35,7 +35,7 @@
 #include <wtf/Ref.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CalcExpressionNode;
 
@@ -60,5 +60,5 @@ bool operator==(const CalculationValue&, const CalculationValue&);
 
 TextStream& operator<<(TextStream&, const CalculationValue&);
 
-} // namespace WebCore
+} // namespace CyberCore
 

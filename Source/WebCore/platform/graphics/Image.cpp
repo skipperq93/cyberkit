@@ -47,7 +47,7 @@
 #include <CoreFoundation/CoreFoundation.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 Image::Image(ImageObserver* observer)
     : m_imageObserver(observer)

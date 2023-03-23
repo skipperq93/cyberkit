@@ -39,7 +39,7 @@
 #import <CyberCore/GraphicsContextCG.h>
 #import <CyberCore/IOSurface.h>
 #import <CyberCore/PlatformLayer.h>
-#import <CyberCore/WebCoreCALayerExtras.h>
+#import <CyberCore/CyberCoreCALayerExtras.h>
 #import <pal/spi/cocoa/QuartzCoreSPI.h>
 #import <wtf/cocoa/TypeCastsCocoa.h>
 
@@ -48,7 +48,7 @@
 #endif
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 #define REMOTE_LAYER_TREE_HOST_RELEASE_LOG(...) RELEASE_LOG(ViewState, __VA_ARGS__)
 
@@ -207,7 +207,7 @@ RemoteLayerTreeNode* RemoteLayerTreeHost::nodeForID(GraphicsLayer::PlatformLayer
     return m_nodes.get(layerID);
 }
 
-void RemoteLayerTreeHost::layerWillBeRemoved(WebCore::GraphicsLayer::PlatformLayerID layerID)
+void RemoteLayerTreeHost::layerWillBeRemoved(CyberCore::GraphicsLayer::PlatformLayerID layerID)
 {
     auto animationDelegateIter = m_animationDelegates.find(layerID);
     if (animationDelegateIter != m_animationDelegates.end()) {
@@ -223,7 +223,7 @@ void RemoteLayerTreeHost::layerWillBeRemoved(WebCore::GraphicsLayer::PlatformLay
     }
 }
 
-void RemoteLayerTreeHost::animationDidStart(WebCore::GraphicsLayer::PlatformLayerID layerID, CAAnimation *animation, MonotonicTime startTime)
+void RemoteLayerTreeHost::animationDidStart(CyberCore::GraphicsLayer::PlatformLayerID layerID, CAAnimation *animation, MonotonicTime startTime)
 {
     if (!m_drawingArea)
         return;
@@ -244,7 +244,7 @@ void RemoteLayerTreeHost::animationDidStart(WebCore::GraphicsLayer::PlatformLaye
         m_drawingArea->acceleratedAnimationDidStart(layerID, animationKey, startTime);
 }
 
-void RemoteLayerTreeHost::animationDidEnd(WebCore::GraphicsLayer::PlatformLayerID layerID, CAAnimation *animation)
+void RemoteLayerTreeHost::animationDidEnd(CyberCore::GraphicsLayer::PlatformLayerID layerID, CAAnimation *animation)
 {
     if (!m_drawingArea)
         return;
@@ -281,12 +281,12 @@ void RemoteLayerTreeHost::clearLayers()
     m_rootNode = nullptr;
 }
 
-CALayer *RemoteLayerTreeHost::layerWithIDForTesting(WebCore::GraphicsLayer::PlatformLayerID layerID) const
+CALayer *RemoteLayerTreeHost::layerWithIDForTesting(CyberCore::GraphicsLayer::PlatformLayerID layerID) const
 {
     return layerForID(layerID);
 }
 
-CALayer *RemoteLayerTreeHost::layerForID(WebCore::GraphicsLayer::PlatformLayerID layerID) const
+CALayer *RemoteLayerTreeHost::layerForID(CyberCore::GraphicsLayer::PlatformLayerID layerID) const
 {
     auto* node = nodeForID(layerID);
     if (!node)
@@ -390,7 +390,7 @@ static void recursivelyMapIOSurfaceBackingStore(CALayer *layer)
 {
     if (layer.contents && CFGetTypeID((__bridge CFTypeRef)layer.contents) == CAMachPortGetTypeID()) {
         MachSendRight port = MachSendRight::create(CAMachPortGetPort((__bridge CAMachPortRef)layer.contents));
-        auto surface = WebCore::IOSurface::createFromSendRight(WTFMove(port));
+        auto surface = CyberCore::IOSurface::createFromSendRight(WTFMove(port));
         layer.contents = surface ? surface->asLayerContents() : nil;
     }
 

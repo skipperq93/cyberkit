@@ -37,9 +37,9 @@
 #include <CyberCore/LegacyCDM.h>
 #include <CyberCore/Settings.h>
 
-namespace WebKit {
+namespace CyberKit {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 RemoteLegacyCDMFactory::RemoteLegacyCDMFactory(WebProcess& process)
     : m_process(process)
@@ -52,7 +52,7 @@ void RemoteLegacyCDMFactory::registerFactory()
 {
     LegacyCDM::clearFactories();
     LegacyCDM::registerCDMFactory(
-        [weakThis = WeakPtr { *this }] (LegacyCDM* privateCDM) -> std::unique_ptr<WebCore::CDMPrivateInterface> {
+        [weakThis = WeakPtr { *this }] (LegacyCDM* privateCDM) -> std::unique_ptr<CyberCore::CDMPrivateInterface> {
             if (weakThis)
                 return weakThis->createCDM(privateCDM);
             return nullptr;
@@ -101,7 +101,7 @@ bool RemoteLegacyCDMFactory::supportsKeySystemAndMimeType(const String& keySyste
     return supported;
 }
 
-std::unique_ptr<CDMPrivateInterface> RemoteLegacyCDMFactory::createCDM(WebCore::LegacyCDM* cdm)
+std::unique_ptr<CDMPrivateInterface> RemoteLegacyCDMFactory::createCDM(CyberCore::LegacyCDM* cdm)
 {
     if (!cdm) {
         ASSERT_NOT_REACHED();

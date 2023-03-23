@@ -35,7 +35,7 @@
 
 @class LegacyTileLayer;
 
-namespace WebCore {
+namespace CyberCore {
 
 class LegacyTileGrid;
 
@@ -62,7 +62,7 @@ private:
     IntRect m_rect;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(IOS_FAMILY)
 #endif // LegacyTileGridTile_h

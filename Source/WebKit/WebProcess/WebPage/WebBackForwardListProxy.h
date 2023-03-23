@@ -30,36 +30,36 @@
 #include <CyberCore/BackForwardItemIdentifier.h>
 #include <CyberCore/PageIdentifier.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPage;
 
-class WebBackForwardListProxy : public WebCore::BackForwardClient {
+class WebBackForwardListProxy : public CyberCore::BackForwardClient {
 public: 
     static Ref<WebBackForwardListProxy> create(WebPage& page) { return adoptRef(*new WebBackForwardListProxy(page)); }
 
-    static WebCore::HistoryItem* itemForID(const WebCore::BackForwardItemIdentifier&);
-    static void removeItem(const WebCore::BackForwardItemIdentifier&);
+    static CyberCore::HistoryItem* itemForID(const CyberCore::BackForwardItemIdentifier&);
+    static void removeItem(const CyberCore::BackForwardItemIdentifier&);
 
     enum class OverwriteExistingItem {
         Yes,
         No
     };
-    void addItemFromUIProcess(const WebCore::BackForwardItemIdentifier&, Ref<WebCore::HistoryItem>&&, WebCore::PageIdentifier, OverwriteExistingItem);
+    void addItemFromUIProcess(const CyberCore::BackForwardItemIdentifier&, Ref<CyberCore::HistoryItem>&&, CyberCore::PageIdentifier, OverwriteExistingItem);
 
     void clear();
 
 private:
     WebBackForwardListProxy(WebPage&);
 
-    void addItem(Ref<WebCore::HistoryItem>&&) override;
+    void addItem(Ref<CyberCore::HistoryItem>&&) override;
 
-    void goToItem(WebCore::HistoryItem&) override;
+    void goToItem(CyberCore::HistoryItem&) override;
         
-    RefPtr<WebCore::HistoryItem> itemAtIndex(int) override;
+    RefPtr<CyberCore::HistoryItem> itemAtIndex(int) override;
     unsigned backListCount() const override;
     unsigned forwardListCount() const override;
-    bool containsItem(const WebCore::HistoryItem&) const final;
+    bool containsItem(const CyberCore::HistoryItem&) const final;
     const WebBackForwardListCounts& cacheListCountsIfNecessary() const;
     void clearCachedListCounts();
 
@@ -69,4 +69,4 @@ private:
     mutable std::optional<WebBackForwardListCounts> m_cachedBackForwardListCounts;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

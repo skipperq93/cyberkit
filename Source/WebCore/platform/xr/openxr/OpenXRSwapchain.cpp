@@ -22,7 +22,7 @@
 #if ENABLE(WEBXR) && USE(OPENXR)
 #include "OpenXRSwapchain.h"
 
-using namespace WebCore;
+using namespace CyberCore;
 
 namespace PlatformXR {
 

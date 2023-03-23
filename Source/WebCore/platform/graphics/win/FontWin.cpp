@@ -35,7 +35,7 @@
 #include "TextRun.h"
 #include <wtf/MathExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 bool FontCascade::canReturnFallbackFontsForComplexText()
 {

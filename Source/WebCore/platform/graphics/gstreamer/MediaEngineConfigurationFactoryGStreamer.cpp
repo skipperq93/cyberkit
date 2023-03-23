@@ -42,7 +42,7 @@
 #include "GStreamerRegistryScannerMSE.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 void createMediaPlayerDecodingConfigurationGStreamer(MediaDecodingConfiguration&& configuration, Function<void(MediaCapabilitiesDecodingInfo&&)>&& callback)
 {

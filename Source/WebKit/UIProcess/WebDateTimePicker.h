@@ -30,7 +30,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 struct DateTimeChooserParameters;
 }
 
@@ -43,7 +43,7 @@ public:
     virtual ~WebDateTimePicker();
 
     virtual void endPicker();
-    virtual void showDateTimePicker(WebCore::DateTimeChooserParameters&&) = 0;
+    virtual void showDateTimePicker(CyberCore::DateTimeChooserParameters&&) = 0;
 
 protected:
     explicit WebDateTimePicker(WebPageProxy&);

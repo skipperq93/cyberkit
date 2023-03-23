@@ -55,7 +55,7 @@ static inline bool isConnectionError(GError* error, SoupMessage* message)
 #endif
 }
 
-WebSocketTask::WebSocketTask(NetworkSocketChannel& channel, const WebCore::ResourceRequest& request, SoupSession* session, SoupMessage* msg, const String& protocol)
+WebSocketTask::WebSocketTask(NetworkSocketChannel& channel, const CyberCore::ResourceRequest& request, SoupSession* session, SoupMessage* msg, const String& protocol)
     : m_channel(channel)
     , m_request(request)
     , m_handshakeMessage(msg)
@@ -68,7 +68,7 @@ WebSocketTask::WebSocketTask(NetworkSocketChannel& channel, const WebCore::Resou
         protocols.reset(static_cast<char**>(g_new0(char*, protocolList.size() + 1)));
         unsigned i = 0;
         for (auto& subprotocol : protocolList)
-            protocols.get()[i++] = g_strdup(WebCore::stripLeadingAndTrailingHTTPSpaces(subprotocol).utf8().data());
+            protocols.get()[i++] = g_strdup(CyberCore::stripLeadingAndTrailingHTTPSpaces(subprotocol).utf8().data());
     }
 
 #if USE(SOUP2)
@@ -79,13 +79,13 @@ WebSocketTask::WebSocketTask(NetworkSocketChannel& channel, const WebCore::Resou
 #else
     {
         // No need to subscribe to the "request-certificate" signal, just set the client certificate upfront.
-        auto protectionSpace = WebCore::AuthenticationChallenge::protectionSpaceForClientCertificate(WebCore::soupURIToURL(soup_message_get_uri(msg)));
+        auto protectionSpace = CyberCore::AuthenticationChallenge::protectionSpaceForClientCertificate(CyberCore::soupURIToURL(soup_message_get_uri(msg)));
         auto certificate = m_channel.session()->networkStorageSession()->credentialStorage().get(m_request.cachePartition(), protectionSpace).certificate();
         soup_message_set_tls_client_certificate(msg, certificate);
     }
 
     g_signal_connect(msg, "request-certificate-password", G_CALLBACK(+[](SoupMessage* msg, GTlsPassword* tlsPassword, WebSocketTask* task) -> gboolean {
-        auto protectionSpace = WebCore::AuthenticationChallenge::protectionSpaceForClientCertificatePassword(WebCore::soupURIToURL(soup_message_get_uri(msg)), tlsPassword);
+        auto protectionSpace = CyberCore::AuthenticationChallenge::protectionSpaceForClientCertificatePassword(CyberCore::soupURIToURL(soup_message_get_uri(msg)), tlsPassword);
         auto password = task->m_channel.session()->networkStorageSession()->credentialStorage().get(task->m_request.cachePartition(), protectionSpace).password().utf8();
         g_tls_password_set_value(tlsPassword, reinterpret_cast<const unsigned char*>(password.data()), password.length());
         soup_message_tls_client_certificate_password_request_complete(msg);
@@ -212,7 +212,7 @@ void WebSocketTask::didFail(String&& errorMessage)
     }
 
     if (soup_websocket_connection_get_state(m_connection.get()) == SOUP_WEBSOCKET_STATE_OPEN)
-        didClose(WebCore::WebSocketChannel::CloseEventCodeAbnormalClosure, { });
+        didClose(CyberCore::WebSocketChannel::CloseEventCodeAbnormalClosure, { });
 }
 
 void WebSocketTask::didCloseCallback(WebSocketTask* task)
@@ -267,7 +267,7 @@ void WebSocketTask::close(int32_t code, const String& reason)
     }
 
 #if SOUP_CHECK_VERSION(2, 67, 90)
-    if (code == WebCore::WebSocketChannel::CloseEventCodeNotSpecified)
+    if (code == CyberCore::WebSocketChannel::CloseEventCodeNotSpecified)
         code = SOUP_WEBSOCKET_CLOSE_NO_STATUS;
 #endif
 

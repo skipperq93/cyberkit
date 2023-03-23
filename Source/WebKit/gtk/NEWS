@@ -1,44 +1,44 @@
 ================
-WebKitGTK 2.39.7
+CyberKitGTK 2.39.7
 ================
 
-What's new in WebKitGTK 2.39.7?
+What's new in CyberKitGTK 2.39.7?
 
   - Fix the webkit.h public header causing applications to fail to build.
   - Fix several crashes and rendering issues.
 
 ================
-WebKitGTK 2.39.6
+CyberKitGTK 2.39.6
 ================
 
-What's new in WebKitGTK 2.39.6?
+What's new in CyberKitGTK 2.39.6?
 
   - Add support for speech synthesis using Flite.
-  - Bring back WebKitConsoleMessage API implementation.
+  - Bring back CyberKitConsoleMessage API implementation.
   - Fix async scroll event propagation for GTK4.
   - Add network session API when building with GTK4.
   - Make most public types final when building with GTK4.
-  - Remove WebKitPrintCustomWidget when building with GTK4.
+  - Remove CyberKitPrintCustomWidget when building with GTK4.
   - Remove most of the webkit_web_view_new_with_*() constructors when building with GTK4.
   - Remove webkit_web_context_get/set_process_model when building with GTK4.
   - Do not allow the sandbox to mount the entire home directory.
   - Fix several crashes and rendering issues.
 
 ================
-WebKitGTK 2.39.5
+CyberKitGTK 2.39.5
 ================
 
-What's new in WebKitGTK 2.39.5?
+What's new in CyberKitGTK 2.39.5?
 
   - Enable WebGL2 by default again that was disabled by mistake.
   - Fix the build with WebGL disabled.
   - Fix the webkit.h public header causing applications to fail to build.
 
 ================
-WebKitGTK 2.39.4
+CyberKitGTK 2.39.4
 ================
 
-What's new in WebKitGTK 2.39.4?
+What's new in CyberKitGTK 2.39.4?
 
   - Fix WebGL when sandbox is enabled.
   - Fix loading of media documents.
@@ -48,29 +48,29 @@ What's new in WebKitGTK 2.39.4?
   - Translation updates: Swedish.
 
 ================
-WebKitGTK 2.39.3
+CyberKitGTK 2.39.3
 ================
 
-What's new in WebKitGTK 2.39.3?
+What's new in CyberKitGTK 2.39.3?
 
   - Add new API to query the permission state of web features.
-  - Deprecate all web extension DOM APIs (WebKitDOMDocument, WebKitDOMElement, WebKitDOMNode).
+  - Deprecate all web extension DOM APIs (CyberKitDOMDocument, CyberKitDOMElement, CyberKitDOMNode).
   - Add webkit_web_hit_test_result_get_js_node() to get the JSCValue for the node.
-  - Add WebKitWebFormManager and deprecate WebKitWebPage form related signals.
+  - Add CyberKitWebFormManager and deprecate CyberKitWebPage form related signals.
   - Don't perform position queries on video sink when the player is for audio only.
   - Fix gibberish text when loading alternate data.
   - Fix several crashes and rendering issues.
 
 ================
-WebKitGTK 2.39.2
+CyberKitGTK 2.39.2
 ================
 
-What's new in WebKitGTK 2.39.2?
+What's new in CyberKitGTK 2.39.2?
 
   - Add API to support asynchronously returning values from user script messages.
-  - Deprecate WebKitConsoleMessage API.
-  - Deprecate event parameter of WebKitWebView::context-menu and WebKitWebView::show-option-menu signals
-    in favor of a getter in WebKitConextMenu and WebKitOptionMenu.
+  - Deprecate CyberKitConsoleMessage API.
+  - Deprecate event parameter of CyberKitWebView::context-menu and CyberKitWebView::show-option-menu signals
+    in favor of a getter in CyberKitConextMenu and CyberKitOptionMenu.
   - Do not emit context-menu signals for media settings popup menu.
   - Use async scrolling also for keyboard scrolling.
   - Add support for client side certificates on WebSocket connections.
@@ -81,10 +81,10 @@ What's new in WebKitGTK 2.39.2?
   - Fix several crashes and rendering issues.
 
 ================
-WebKitGTK 2.39.1
+CyberKitGTK 2.39.1
 ================
 
-What's new in WebKitGTK 2.39.1?
+What's new in CyberKitGTK 2.39.1?
 
   - Use ANGLE for WebGL implementation and enable WebGL2.
   - Remove internal nested wayland compositor making libwpe mandatory when building with wayland enabled.
@@ -97,10 +97,10 @@ What's new in WebKitGTK 2.39.1?
   - Fix several crashes and rendering issues.
 
 ================
-WebKitGTK 2.37.1
+CyberKitGTK 2.37.1
 ================
 
-What's new in WebKitGTK 2.37.1?
+What's new in CyberKitGTK 2.37.1?
 
   - Add initial implementation of WebRTC using GstWebRTC if GStreamer 1.20 is available,
     disabled by default via web view settings.
@@ -122,20 +122,20 @@ What's new in WebKitGTK 2.37.1?
   - Fix several crashes and rendering issues.
 
 ================
-WebKitGTK 2.35.3
+CyberKitGTK 2.35.3
 ================
 
-What's new in WebKitGTK 2.35.3?
+What's new in CyberKitGTK 2.35.3?
 
   - Fix a crash at startup when bubblewrap sandbox is enabled.
   - Fix a crash when starting a drag an drop on touchscreen.
   - Fix several crashes and rendering issues.
 
 ================
-WebKitGTK 2.35.2
+CyberKitGTK 2.35.2
 ================
 
-What's new in WebKitGTK 2.35.2?
+What's new in CyberKitGTK 2.35.2?
 
   - Add new accessibility implementation using ATSPI DBus interfaces instead of ATK.
   - Use native GtkWidgets for form validation popups.
@@ -146,10 +146,10 @@ What's new in WebKitGTK 2.35.2?
   - Fix several crashes and rendering issues.
 
 ================
-WebKitGTK 2.35.1
+CyberKitGTK 2.35.1
 ================
 
-What's new in WebKitGTK 2.35.1?
+What's new in CyberKitGTK 2.35.1?
 
   - Make user interactive threads (event handler, scrolling, ...) real time in linux.
   - Add new API to set HTTP response information to custom uri schemes.
@@ -159,10 +159,10 @@ What's new in WebKitGTK 2.35.1?
   - Fix several crashes and rendering issues.
 
 ================
-WebKitGTK 2.33.3
+CyberKitGTK 2.33.3
 ================
 
-What's new in WebKitGTK 2.33.3?
+What's new in CyberKitGTK 2.33.3?
 
   - Add support for display capture.
   - Add new API to access/modify capture devices states.
@@ -182,26 +182,26 @@ What's new in WebKitGTK 2.33.3?
   - Translation updates: Brazilian Portuguese, French, Swedish, Ukrainian
 
 ================
-WebKitGTK 2.33.2
+CyberKitGTK 2.33.2
 ================
 
-What's new in WebKitGTK 2.33.2?
+What's new in CyberKitGTK 2.33.2?
 
   - HTTP/2 support when building with libsoup3.
   - Add API to disable CORS on a web view for particular domains.
   - Fix rendering on HiDPI /4k screen and scaling.
-  - Improve calculation of initial WebKitWebView size.
+  - Improve calculation of initial CyberKitWebView size.
   - Fix rendering of VP9 with transparency.
   - Remove dependency on glvideoflip and videoflip.
   - Several fixes on scrolling when async scrolling is enabled.
-  - Ensure WebKitScriptWorld::window-object-cleared signal is always emitted.
+  - Ensure CyberKitScriptWorld::window-object-cleared signal is always emitted.
   - Translation updates: Danish, Swedish, Ukrainian.
 
 ================
-WebKitGTK 2.33.1
+CyberKitGTK 2.33.1
 ================
 
-What's new in WebKitGTK 2.33.1?
+What's new in CyberKitGTK 2.33.1?
 
   - Add support for CSS Scroll Snap.
   - Add support for date and datetime-local input elements.
@@ -212,23 +212,23 @@ What's new in WebKitGTK 2.33.1?
   - Refactored Media Source Extensions platform code to increase stability and ease support of more features in the future.
 
 ================
-WebKitGTK 2.31.1
+CyberKitGTK 2.31.1
 ================
 
-What's new in WebKitGTK 2.31.1?
+What's new in CyberKitGTK 2.31.1?
 
   - Remove support for NPAPI plugins.
   - Enable the web process cache when PSON is enabled too.
-  - TLS errors and proxy settings APIs have been moved from WebKitContext to WebKitWebsiteDataManager.
-  - Add new API to remove individual scripts/stylesheets using WebKitUserContentManager.
+  - TLS errors and proxy settings APIs have been moved from CyberKitContext to CyberKitWebsiteDataManager.
+  - Add new API to remove individual scripts/stylesheets using CyberKitUserContentManager.
   - Correctly apply the system font scaling factor.
   - Show main loop frames information in the web inspector.
 
 ================
-WebKitGTK 2.29.4
+CyberKitGTK 2.29.4
 ================
 
-What's new in WebKitGTK 2.29.4?
+What's new in CyberKitGTK 2.29.4?
 
   - Add support for backdrop filters.
   - Add support for text-underline-offset and text-decoration-thickness.
@@ -238,10 +238,10 @@ What's new in WebKitGTK 2.29.4?
   - Fix several crashes and rendering issues.
 
 ================
-WebKitGTK 2.29.3
+CyberKitGTK 2.29.3
 ================
 
-What's new in WebKitGTK 2.29.3?
+What's new in CyberKitGTK 2.29.3?
 
   - Add webkit_authentication_request_get_security_origin.
   - Change the cookies accept policy to always when no-third-party is set and ITP is enabled.
@@ -253,27 +253,27 @@ What's new in WebKitGTK 2.29.3?
   - Fix several crashes and rendering issues.
 
 ================
-WebKitGTK 2.29.2
+CyberKitGTK 2.29.2
 ================
 
-What's new in WebKitGTK 2.29.2?
+What's new in CyberKitGTK 2.29.2?
 
   - Add Intelligent Tracking Prevention (ITP) support.
   - Add support for video formats in img elements.
   - Add API to handle video autoplay policy that now defaults to disallow autoplay videos with audio.
   - Add API to mute a web view.
   - Add API to allow applications to handle the HTTP authentication credential storage.
-  - Add a WebKitSetting to set the media content types requiring hardware support.
+  - Add a CyberKitSetting to set the media content types requiring hardware support.
   - Fix a crash during drag an drop due to a bug introduced in 2.29.1.
   - Do not start page load during animation in back/forward gesture.
   - Fix several crashes and rendering issues.
   - Translation updates: Ukrainian.
 
 ================
-WebKitGTK 2.29.1
+CyberKitGTK 2.29.1
 ================
 
-What's new in WebKitGTK 2.29.1?
+What's new in CyberKitGTK 2.29.1?
 
   - Stop using GTK theming to render form controls.
   - Add API to disable GTK theming for scrollbars too.
@@ -283,10 +283,10 @@ What's new in WebKitGTK 2.29.1?
   - Fix several crashes and rendering issues.
 
 ================
-WebKitGTK 2.27.4
+CyberKitGTK 2.27.4
 ================
 
-What's new in WebKitGTK 2.27.4?
+What's new in CyberKitGTK 2.27.4?
 
   - Add API for input methods.
   - Add API to serialize/deserialize a JSCValue to/from a JSON string.
@@ -302,10 +302,10 @@ What's new in WebKitGTK 2.27.4?
   - Fix several crashes and rendering issues.
 
 ================
-WebKitGTK 2.27.3
+CyberKitGTK 2.27.3
 ================
 
-What's new in WebKitGTK 2.27.3?
+What's new in CyberKitGTK 2.27.3?
 
   - Add support for Pointer Lock API.
   - Improve performance when falling back to system fonts.
@@ -321,10 +321,10 @@ What's new in WebKitGTK 2.27.3?
   - Translation updates: Brazilian Portuguese, Ukrainian.
 
 ================
-WebKitGTK 2.27.2
+CyberKitGTK 2.27.2
 ================
 
-What's new in WebKitGTK 2.27.2?
+What's new in CyberKitGTK 2.27.2?
 
   - Add user messages API for the communication with the web extension.
   - Enable service workers by default.
@@ -336,23 +336,23 @@ What's new in WebKitGTK 2.27.2?
   - Fix several crashes and rendering issues.
 
 ================
-WebKitGTK 2.27.1
+CyberKitGTK 2.27.1
 ================
 
-What's new in WebKitGTK+ 2.27.1?
+What's new in CyberKitGTK+ 2.27.1?
 
   - Enable async scrolling when accelerating compositing policy is 'always'.
   - Add about:gpu to show information about the graphics stack.
   - Add API to enable Process Swap on (Cross-site) Navigation, that is now disabled by default.
-  - Add WebKitWebView:page-id property.
+  - Add CyberKitWebView:page-id property.
   - Improve swipe navigation gesture style.
   - Fix several crashes and rendering issues.
 
 ================
-WebKitGTK 2.25.4
+CyberKitGTK 2.25.4
 ================
 
-What's new in WebKitGTK+ 2.25.4?
+What's new in CyberKitGTK+ 2.25.4?
 
   - Switch to use libsoup WebSockets API.
   - Add support for permessage-deflate WebSocket extension.
@@ -361,10 +361,10 @@ What's new in WebKitGTK+ 2.25.4?
   - Fix several crashes and rendering issues.
 
 ================
-WebKitGTK 2.25.3
+CyberKitGTK 2.25.3
 ================
 
-What's new in WebKitGTK+ 2.25.3?
+What's new in CyberKitGTK+ 2.25.3?
 
   - Remove support for GTK2 NPAPI plugins.
   - Fix web view updates after swapping web process if accelerated compositing mode is forced.
@@ -382,10 +382,10 @@ What's new in WebKitGTK+ 2.25.3?
   - Fix several crashes and rendering issues.
 
 ================
-WebKitGTK 2.25.2
+CyberKitGTK 2.25.2
 ================
 
-What's new in WebKitGTK+ 2.25.2?
+What's new in CyberKitGTK+ 2.25.2?
 
   - Enable process switch on cross site navigation.
   - Use libwpe with fdo backend to implement accelerated compositing under wayland.
@@ -400,14 +400,14 @@ What's new in WebKitGTK+ 2.25.2?
   - Fix several crashes and rendering issues.
 
 ================
-WebKitGTK 2.25.1
+CyberKitGTK 2.25.1
 ================
 
-What's new in WebKitGTK+ 2.25.1?
+What's new in CyberKitGTK+ 2.25.1?
 
   - Add support for subprocess sandboxing.
-  - Add API to get the web process unique identifier of a WebKitFrame.
-  - Add WebKitWebPage::did-associate-form-controls-for-frame signal and deprecate did-associate-form-controls.
+  - Add API to get the web process unique identifier of a CyberKitFrame.
+  - Add CyberKitWebPage::did-associate-form-controls-for-frame signal and deprecate did-associate-form-controls.
   - Implement AtkComponentIface scroll_to methods.
   - Improve rendering of form controls when GTK theme is dark and enable prefers-color-scheme media query.
   - Show the emoji chooser popover for editable content.
@@ -415,10 +415,10 @@ What's new in WebKitGTK+ 2.25.1?
   - Fix several crashes and rendering issues.
 
 =================
-WebKitGTK+ 2.23.3
+CyberKitGTK+ 2.23.3
 =================
 
-What's new in WebKitGTK+ 2.23.3?
+What's new in CyberKitGTK+ 2.23.3?
 
   - Fix rendering of emoji sequences containing zero with joiner.
   - Fallback to a colored font when rendering emojis.
@@ -429,10 +429,10 @@ What's new in WebKitGTK+ 2.23.3?
   - Translation updates: Swedish
 
 =================
-WebKitGTK+ 2.23.2
+CyberKitGTK+ 2.23.2
 =================
 
-What's new in WebKitGTK+ 2.23.2?
+What's new in CyberKitGTK+ 2.23.2?
 
   - Fix rendering artifacts in some websites with accelerated compositing enabled.
   - Add initial support for variation fonts.
@@ -443,10 +443,10 @@ What's new in WebKitGTK+ 2.23.2?
   - Fix several crashes and rendering issues.
 
 =================
-WebKitGTK+ 2.23.1
+CyberKitGTK+ 2.23.1
 =================
 
-What's new in WebKitGTK+ 2.23.1?
+What's new in CyberKitGTK+ 2.23.1?
 
   - Add initial support for subprocess sandboxing in Linux.
   - Add new permission request type for media device information.
@@ -455,10 +455,10 @@ What's new in WebKitGTK+ 2.23.1?
   - Fix several crashes and rendering issues.
 
 =================
-WebKitGTK+ 2.21.5
+CyberKitGTK+ 2.21.5
 =================
 
-What's new in WebKitGTK+ 2.21.5?
+What's new in CyberKitGTK+ 2.21.5?
 
   - Add API to evaluate code in a new object to JavaScriptCore GLib API.
   - Add API to check for syntax errors in given code to JavaScriptCore GLib API.
@@ -471,21 +471,21 @@ What's new in WebKitGTK+ 2.21.5?
   - Translation updates: Ukrainian.
 
 =================
-WebKitGTK+ 2.21.4
+CyberKitGTK+ 2.21.4
 =================
 
-What's new in WebKitGTK+ 2.21.4?
+What's new in CyberKitGTK+ 2.21.4?
 
   - Switch to use a popup window with a tree view instead of a menu for option menu default implementation.
-  - Add API to run javascript from a WebKitWebView in an isolated world.
-  - Fix UI process crash in WebKitFaviconDatabase when pageURL is unset.
+  - Add API to run javascript from a CyberKitWebView in an isolated world.
+  - Fix UI process crash in CyberKitFaviconDatabase when pageURL is unset.
   - Fix several crashes and rendering issues.
 
 =================
-WebKitGTK+ 2.21.3
+CyberKitGTK+ 2.21.3
 =================
 
-What's new in WebKitGTK+ 2.21.3?
+What's new in CyberKitGTK+ 2.21.3?
 
   - Ensure memory monitor properly notifies all child processes.
   - Add maximize, minimize and fullscreen window commands to WebDriver.
@@ -495,10 +495,10 @@ What's new in WebKitGTK+ 2.21.3?
   - Fix several crashes and rendering issues.
 
 =================
-WebKitGTK+ 2.21.2
+CyberKitGTK+ 2.21.2
 =================
 
-What's new in WebKitGTK+ 2.21.2?
+What's new in CyberKitGTK+ 2.21.2?
 
   - Remove resource load statistics API, it's not ready yet.
   - Add initial implementation of WebDriver advance user insteraction commands.
@@ -511,13 +511,13 @@ What's new in WebKitGTK+ 2.21.2?
   - Fix several crashes and rendering issues.
 
 =================
-WebKitGTK+ 2.21.1
+CyberKitGTK+ 2.21.1
 =================
 
-What's new in WebKitGTK+ 2.21.1?
+What's new in CyberKitGTK+ 2.21.1?
 
   - Add initial JavaScriptCore GLib API.
-  - Use JavaScriptCore GLib API in WebKit layer and deprecate most of the DOM bindings API as well as
+  - Use JavaScriptCore GLib API in CyberKit layer and deprecate most of the DOM bindings API as well as
     methods using the JavaScriptCore C API.
   - Switch to use complex text code path unconditionally.
   - Properly close the connection to the Wayland nested compositor in the WebProcess.
@@ -527,10 +527,10 @@ What's new in WebKitGTK+ 2.21.1?
   - Fix several crashes and rendering issues.
 
 =================
-WebKitGTK+ 2.19.6
+CyberKitGTK+ 2.19.6
 =================
 
-What's new in WebKitGTK+ 2.19.6?
+What's new in CyberKitGTK+ 2.19.6?
 
   - Fix crashes due to duplicated symbols in libjavascriptcoregtk and libwebkit2gtk.
   - Fix parsing of timeout values in WebDriver.
@@ -539,70 +539,70 @@ What's new in WebKitGTK+ 2.19.6?
   - Fix several crashes and rendering issues.
 
 =================
-WebKitGTK+ 2.19.5
+CyberKitGTK+ 2.19.5
 =================
 
-What's new in WebKitGTK+ 2.19.5?
+What's new in CyberKitGTK+ 2.19.5?
 
   - This is a follow up release to export webkit_dom_dom_window_webkit_message_handlers_post_message() symbol that
     was hidden in 2.19.4 by mistake.
 
 =================
-WebKitGTK+ 2.19.4
+CyberKitGTK+ 2.19.4
 =================
 
-What's new in WebKitGTK+ 2.19.4?
+What's new in CyberKitGTK+ 2.19.4?
 
   - Add web process API to detect when form is submitted via JavaScript.
   - Add new API to replace webkit_form_submission_request_get_text_fields() that is now deprecated.
-  - Add WebKitWebView::web-process-terminated signal and deprecate web-process-crashed.
+  - Add CyberKitWebView::web-process-terminated signal and deprecate web-process-crashed.
   - Fix rendering issues when editing text areas.
   - Use FastMalloc based GstAllocator for GStreamer.
   - Fix several crashes and rendering issues.
   - Translation updates: Swedish.
 
 =================
-WebKitGTK+ 2.19.3
+CyberKitGTK+ 2.19.3
 =================
 
-What's new in WebKitGTK+ 2.19.3?
+What's new in CyberKitGTK+ 2.19.3?
 
   - Fix web process crash at startup in bmalloc.
   - Fix several memory leaks in GStreamer media backend.
-  - WebKitWebDriver process no longer links to libjavascriptcoregtk.
+  - CyberKitWebDriver process no longer links to libjavascriptcoregtk.
   - Fix several crashes and rendering issues.
 
 =================
-WebKitGTK+ 2.19.2
+CyberKitGTK+ 2.19.2
 =================
 
-What's new in WebKitGTK+ 2.19.2?
+What's new in CyberKitGTK+ 2.19.2?
 
-  - Add new API to add, retrieve and delete cookies via WebKitCookieManager.
+  - Add new API to add, retrieve and delete cookies via CyberKitCookieManager.
   - Add functions to WebSettings to convert font sizes between points and pixels.
   - Ensure cookie operations take effect when they happen before a web process has been spawned.
   - Automatically adjust font size when GtkSettings:gtk-xft-dpi changes.
   - Fix several crashes and rendering issues.
 
 =================
-WebKitGTK+ 2.19.1
+CyberKitGTK+ 2.19.1
 =================
 
-What's new in WebKitGTK+ 2.19.1?
+What's new in CyberKitGTK+ 2.19.1?
 
   - Add initial resource load statistics support.
-  - Add API to expose availability of certain editing commands in WebKitEditorState.
-  - Add API to query whether a WebKitNavigationAction is a redirect or not.
+  - Add API to expose availability of certain editing commands in CyberKitEditorState.
+  - Add API to query whether a CyberKitNavigationAction is a redirect or not.
   - Improve complex text rendering.
   - Add support for the "system" CSS font family.
   - Implement low power mode.
   - Fix several crashes and rendering issues.
 
 =================
-WebKitGTK+ 2.17.5
+CyberKitGTK+ 2.17.5
 =================
 
-What's new in WebKitGTK+ 2.17.5?
+What's new in CyberKitGTK+ 2.17.5?
 
   - Add initial implementation of WebDriver.
   - Enable GStreamerGL by default when building with GStreamer >= 1.10.
@@ -612,10 +612,10 @@ What's new in WebKitGTK+ 2.17.5?
   - Translation updates: Ukrainian.
 
 =================
-WebKitGTK+ 2.17.4
+CyberKitGTK+ 2.17.4
 =================
 
-What's new in WebKitGTK+ 2.17.4?
+What's new in CyberKitGTK+ 2.17.4?
 
   - Add API to allow overriding popup menus.
   - Add kinetic scrolling support.
@@ -631,12 +631,12 @@ What's new in WebKitGTK+ 2.17.4?
   - Translation updates: Spanish.
 
 =================
-WebKitGTK+ 2.17.3
+CyberKitGTK+ 2.17.3
 =================
 
-What's new in WebKitGTK+ 2.17.3?
+What's new in CyberKitGTK+ 2.17.3?
 
-  - Add new API to create a WebKitContextMenuItem from a GAction.
+  - Add new API to create a CyberKitContextMenuItem from a GAction.
   - Fix graphics repaint hungs in accelerated compositing mode after a resize.
   - Fix rendering glitches in HiDPI in long GitHub Gist pages when focusing the comments textarea.
   - Remove Firefox user agent quirk for Google domains.
@@ -646,10 +646,10 @@ What's new in WebKitGTK+ 2.17.3?
   - Translation updates: French.
 
 =================
-WebKitGTK+ 2.17.2
+CyberKitGTK+ 2.17.2
 =================
 
-What's new in WebKitGTK+ 2.17.2?
+What's new in CyberKitGTK+ 2.17.2?
 
   - Update user agent quirks to make Youtube and new Google login page work.
   - Fix URL shown in the title of beforeunload dialogs.
@@ -660,10 +660,10 @@ What's new in WebKitGTK+ 2.17.2?
   - Fix several crashes and rendering issues.
 
 =================
-WebKitGTK+ 2.17.1
+CyberKitGTK+ 2.17.1
 =================
 
-What's new in WebKitGTK+ 2.17.1?
+What's new in CyberKitGTK+ 2.17.1?
 
   - Switch to use new remote inspector infraestructure instead of legacy Web Sockets based one.
   - Add API to enable and handle Web Automation.
@@ -677,10 +677,10 @@ What's new in WebKitGTK+ 2.17.1?
   - Fix playing of some live streams.
 
 =================
-WebKitGTK+ 2.15.4
+CyberKitGTK+ 2.15.4
 =================
 
-What's new in WebKitGTK+ 2.15.4?
+What's new in CyberKitGTK+ 2.15.4?
 
   - Make accelerating compositing mode on-demand again. By default it will only be used for websites
     that require it, saving a lot of memory on websites that don't need it.
@@ -689,20 +689,20 @@ What's new in WebKitGTK+ 2.15.4?
   - Add API to create ephemeral WebViews to replace the legacy private browsing setting that is now
     deprecated.
   - Handle HTTP authentication for downloads having a WebView associated.
-  - Add API to WebKitWebsiteDataManager to handle websites data.
+  - Add API to CyberKitWebsiteDataManager to handle websites data.
   - Fix BadDamage X errors happening when resizing the WebView.
   - Fix several crashes and rendering issues.
 
 =================
-WebKitGTK+ 2.15.3
+CyberKitGTK+ 2.15.3
 =================
 
-What's new in WebKitGTK+ 2.15.3?
+What's new in CyberKitGTK+ 2.15.3?
 
   - Add API to set network proxy settings.
   - Add API to set initial notification permissions.
-  - Add WebKitSecurityOrigin to the API.
-  - Add tag property to WebKitNotification.
+  - Add CyberKitSecurityOrigin to the API.
+  - Add tag property to CyberKitNotification.
   - Create GLX OpenGL contexts using version 3.2 (core profile) when available to reduce the memory
     consumption on Mesa based drivers.
   - Improve memory pressure handler to reduce the CPU usage on memory pressure situations.
@@ -714,10 +714,10 @@ What's new in WebKitGTK+ 2.15.3?
   - Translation updates: German.
 
 =================
-WebKitGTK+ 2.15.2
+CyberKitGTK+ 2.15.2
 =================
 
-What's new in WebKitGTK+ 2.15.2?
+What's new in CyberKitGTK+ 2.15.2?
 
   - Add new API to notify about dynamically added forms to Web Extensions.
   - Implement selection interface and states for elements supporting aria-selected and for menu roles.
@@ -728,17 +728,17 @@ What's new in WebKitGTK+ 2.15.2?
   - Fix several crashes and rendering issues.
 
 =================
-WebKitGTK+ 2.15.1
+CyberKitGTK+ 2.15.1
 =================
 
-What's new in WebKitGTK+ 2.15.1?
+What's new in CyberKitGTK+ 2.15.1?
 
   - GObject DOM bindings API marked as unstable has been removed.
-  - Expose WebKitDOMHTMLInputElement APIs for form autofill.
-  - Properly update WebKitWebView and WebKitWebPage URI properties when request is modified by
-    WebKitWebPage:send-request signal.
+  - Expose CyberKitDOMHTMLInputElement APIs for form autofill.
+  - Properly update CyberKitWebView and CyberKitWebPage URI properties when request is modified by
+    CyberKitWebPage:send-request signal.
   - Switch to use GMenu internally in the context menu implementation.
-  - Dot not leak the default WebKitWebsiteDataManager in WebKitWebContext.
+  - Dot not leak the default CyberKitWebsiteDataManager in CyberKitWebContext.
   - The network backend now always sniff contents for Downloads.
   - Use eglGetPlatformDisplay when available instead of eglGetDisplay.
   - Avoid strstr() when checking (E)GL extensions.
@@ -746,10 +746,10 @@ What's new in WebKitGTK+ 2.15.1?
   - Fix several crashes and rendering issues.
 
 =================
-WebKitGTK+ 2.13.4
+CyberKitGTK+ 2.13.4
 =================
 
-What's new in WebKitGTK+ 2.13.4?
+What's new in CyberKitGTK+ 2.13.4?
 
   - Switched to use the threaded compositor. Accelerated compositing mode is now always enabled by default
     and happens in a separate thread in the web process.
@@ -757,10 +757,10 @@ What's new in WebKitGTK+ 2.13.4?
   - Fix several crashes and rendering issues.
 
 =================
-WebKitGTK+ 2.13.3
+CyberKitGTK+ 2.13.3
 =================
 
-What's new in WebKitGTK+ 2.13.3?
+What's new in CyberKitGTK+ 2.13.3?
 
   - Fix Web Process deadlocks when loading HLS videos.
   - Make videos work when painted into a canvas when accelerated compositing is enabled.
@@ -771,10 +771,10 @@ What's new in WebKitGTK+ 2.13.3?
   - Fix several crashes and rendering issues.
 
 =================
-WebKitGTK+ 2.13.2
+CyberKitGTK+ 2.13.2
 =================
 
-What's new in WebKitGTK+ 2.13.2?
+What's new in CyberKitGTK+ 2.13.2?
 
   - Properly redraw the web view when reparented in force compositing mode.
   - Flip the volume control layout in media controls on RTL.
@@ -782,21 +782,21 @@ What's new in WebKitGTK+ 2.13.2?
   - Fix several crashes and rendering issues.
 
 =================
-WebKitGTK+ 2.13.1
+CyberKitGTK+ 2.13.1
 =================
 
-What's new in WebKitGTK+ 2.13.1?
+What's new in CyberKitGTK+ 2.13.1?
 
   - CSS Grid Layout has been unprefixed and can be enabled as an experimental feature at runtime.
   - The HTTP disk cache implements speculative resources revalidation.
-  - Add a new WebKitSetting to allow universal access from file URLs.
+  - Add a new CyberKitSetting to allow universal access from file URLs.
   - Fix several crashes and rendering issues.
 
 =================
-WebKitGTK+ 2.11.5
+CyberKitGTK+ 2.11.5
 =================
 
-What's new in WebKitGTK+ 2.11.5?
+What's new in CyberKitGTK+ 2.11.5?
 
   - Switch FTL to use B3 backend instead of LLVM.
   - Add support for windowless NPAPI plugins with no UI in non X11 platforms.
@@ -804,13 +804,13 @@ What's new in WebKitGTK+ 2.11.5?
     worker thread that made google maps to hang.
   - Fix a Web Process crash when quickly attempting many DnD operations.
   - Fix scrollbars rendering with older versions of GTK+.
-  - Fix a crash when creating a WebKitWebView without providing a WebKitWebContext.
+  - Fix a crash when creating a CyberKitWebView without providing a CyberKitWebContext.
 
 =================
-WebKitGTK+ 2.11.4
+CyberKitGTK+ 2.11.4
 =================
 
-What's new in WebKitGTK+ 2.11.4?
+What's new in CyberKitGTK+ 2.11.4?
 
   - Prefer to link to LLVM shared libraries when building with FTL enabled.
   - Fix runtime errors when serializing/deserializing session state.
@@ -819,21 +819,21 @@ What's new in WebKitGTK+ 2.11.4?
   - Fix the build with video support disabled.
 
 =================
-WebKitGTK+ 2.11.3
+CyberKitGTK+ 2.11.3
 =================
 
-What's new in WebKitGTK+ 2.11.3?
+What's new in CyberKitGTK+ 2.11.3?
 
   - NetworkProcess is now used unconditionally. The shared secondary process model is now
     the same as using the multiple process model and setting a process limit of 1.
   - Disable DNS prefetch when a proxy is configured.
   - Reduce the maximum simultaneous network connections to match other browsers.
-  - Extend notifications API to notify WebKit when a notification is clicked by the user.
+  - Extend notifications API to notify CyberKit when a notification is clicked by the user.
   - Add new API to save and restore a WebView session.
   - Add Web Extensions API to be notified about console messages.
-  - Add WebKitURIRequest API to get the HTTP method.
+  - Add CyberKitURIRequest API to get the HTTP method.
   - Add API to handle beforeunload events.
-  - Make WebKitWebView always propagate motion-notify-event signal.
+  - Make CyberKitWebView always propagate motion-notify-event signal.
   - Add a way to force accelerating compositing mode at runtime using an environment variable.
   - Fix input elements and scrollbars rendering with GTK+ 3.19.
   - Fix a crash in the UI process when the WebView is destroyed while the screensaver DBus proxy
@@ -844,10 +844,10 @@ What's new in WebKitGTK+ 2.11.3?
   - Translation updates: French, German, Turkish
 
 =================
-WebKitGTK+ 2.11.2
+CyberKitGTK+ 2.11.2
 =================
 
-What's new in WebKitGTK+ 2.11.2?
+What's new in CyberKitGTK+ 2.11.2?
 
   - Enable FTL by default in JavaScriptCore for x86_64.
   - Improved media backend performance by better handling glib main loop sources.
@@ -856,10 +856,10 @@ What's new in WebKitGTK+ 2.11.2?
   - Translation updates: Italian.
 
 =================
-WebKitGTK+ 2.11.1
+CyberKitGTK+ 2.11.1
 =================
 
-What's new in WebKitGTK+ 2.11.1?
+What's new in CyberKitGTK+ 2.11.1?
 
   - Improved general performance by better handling glib main loop sources.
   - Add autocleanups support to GObjects exposed in public API.
@@ -868,12 +868,12 @@ What's new in WebKitGTK+ 2.11.1?
   - Popup menus no longer use a nested main loop.
 
 =================
-WebKitGTK+  2.9.5
+CyberKitGTK+  2.9.5
 =================
 
-What's new in WebKitGTK+ 2.9.5?
+What's new in CyberKitGTK+ 2.9.5?
 
-  - Add API to set the maximum number of web processes per WebKitWebContext.
+  - Add API to set the maximum number of web processes per CyberKitWebContext.
   - Add API to allow executing editing commands that require an argument.
   - Prevent clipboard contents from being lost when web process finishes.
   - Always allow font matching for strong aliases
@@ -884,17 +884,17 @@ What's new in WebKitGTK+ 2.9.5?
   - Translation updates: Swedish.
 
 =================
-WebKitGTK+  2.9.4
+CyberKitGTK+  2.9.4
 =================
 
-What's new in WebKitGTK+ 2.9.4?
+What's new in CyberKitGTK+ 2.9.4?
 
   - Fix the window size reported when the web view isn't realized yet. This fixes
     the layout of some websites when opening new tabs in the browser and anchor links
     when opened in new tabs too.
   - Add API to be notified about editor state changes.
   - Add selection-changed signal to the Web Extensions API.
-  - Add initial WebKitWebsiteDataManager API for process configuration options.
+  - Add initial CyberKitWebsiteDataManager API for process configuration options.
   - Make WebSQL work by using a default quota instead of always failing in openDatabase
     with DOM Exception 18.
   - Correctly restore accelerated compositing after a WebProcess crash.
@@ -906,14 +906,14 @@ What's new in WebKitGTK+ 2.9.4?
   - Translation updates: Swedish.
 
 =================
-WebKitGTK+  2.9.3
+CyberKitGTK+  2.9.3
 =================
 
-What's new in WebKitGTK+ 2.9.3?
+What's new in CyberKitGTK+ 2.9.3?
 
   - Inhibit screen saver when playing full screen video.
   - Fix DOCUMENT_VIEWER cache model to actually disable the memory cache.
-  - Fix a regression that prevented the WebKitWebView::context-menu signal
+  - Fix a regression that prevented the CyberKitWebView::context-menu signal
     from being emitted.
   - Update web inspector icon so Rendering Frames timeline distinguish between
     layout and painting.
@@ -924,14 +924,14 @@ What's new in WebKitGTK+ 2.9.3?
   - Fix the build with Wayland target enabled.
 
 =================
-WebKitGTK+  2.9.2
+CyberKitGTK+  2.9.2
 =================
 
-What's new in WebKitGTK+ 2.9.2?
+What's new in CyberKitGTK+ 2.9.2?
 
   - Add IndexedDB support using a dedicated database process.
-  - Add construct property to WebKitWebContext to set the IndexedDB database directory.
-  - Add allow-file-access-from-file-urls to WebKitSettings.
+  - Add construct property to CyberKitWebContext to set the IndexedDB database directory.
+  - Add allow-file-access-from-file-urls to CyberKitSettings.
   - Improve network process disk cache performance by mapping cached resources in the
     web process instead of sending the resources data via IPC.
   - Prevent WorkQueue objects from being leaked and ensure its worker thread always exits.
@@ -945,10 +945,10 @@ What's new in WebKitGTK+ 2.9.2?
   - Translation updates: Catalan.
 
 =================
-WebKitGTK+  2.9.1
+CyberKitGTK+  2.9.1
 =================
 
-What's new in WebKitGTK+ 2.9.1?
+What's new in CyberKitGTK+ 2.9.1?
 
   - New disk cache implementation when using the network process.
   - Web inspector UI has been redesigned.
@@ -956,23 +956,23 @@ What's new in WebKitGTK+ 2.9.1?
   - Fix network redirection to a non HTTP destination.
 
 =================
-WebKitGTK+  2.7.4
+CyberKitGTK+  2.7.4
 =================
 
-What's new in WebKitGTK+ 2.7.4?
+What's new in CyberKitGTK+ 2.7.4?
 
-  - Add API to change the WebKitWebView background color.
-  - Add an option to create WebKitWebView snapshots with transparent background.
-  - Add API to make the WebKitWebView editable.
-  - Add is-playing-audio property to WebKitWebView.
+  - Add API to change the CyberKitWebView background color.
+  - Add an option to create CyberKitWebView snapshots with transparent background.
+  - Add API to make the CyberKitWebView editable.
+  - Add is-playing-audio property to CyberKitWebView.
   - Do not resize the accelerating compositing window to the web size until accelerated
     compositing mode is activated.
 
 =================
-WebKitGTK+  2.7.3
+CyberKitGTK+  2.7.3
 =================
 
-What's new in WebKitGTK+ 2.7.3?
+What's new in CyberKitGTK+ 2.7.3?
 
   - Add API to support HTML5 notifications.
   - Add UserMedia Permission Request API.
@@ -990,17 +990,17 @@ What's new in WebKitGTK+ 2.7.3?
   - Translation updates: Kannada, Assamese
 
 =================
-WebKitGTK+  2.7.2
+CyberKitGTK+  2.7.2
 =================
 
-What's new in WebKitGTK+ 2.7.2?
+What's new in CyberKitGTK+ 2.7.2?
 
   - Fix SSL connection issues with some websites after the POODLE vulnerability fix.
   - Add API to handle user script messages.
   - Add context menu API to Web Process Extensions.
-  - Add API to create a WebKitWebContext.
+  - Add API to create a CyberKitWebContext.
   - Add API to override the default local storage directory.
-  - Add WebKitWebResource::failed-with-tls-errors signal to notify about load failures
+  - Add CyberKitWebResource::failed-with-tls-errors signal to notify about load failures
     due to TLS errors also in sub-resources.
   - Fix several crashes in accessibility implementation.
   - Fix XMLHttpRequest with a timeout when using the network process.
@@ -1013,66 +1013,66 @@ What's new in WebKitGTK+ 2.7.2?
   - Fix documentation of webkit_print_operation_get_page_setup().
 
 =================
-WebKitGTK+  2.7.1
+CyberKitGTK+  2.7.1
 =================
 
-What's new in WebKitGTK+ 2.7.1?
+What's new in CyberKitGTK+ 2.7.1?
 
   - Add initial gestures support. For now only drag, zoom and tap
-    gestures are supported, but it's enough ot make WebKitGTK+ usable
+    gestures are supported, but it's enough ot make CyberKitGTK+ usable
     in touch screens. It requires GTK+ 3.14.
   - Add webkit_hit_test_result_context_is_selection().
   - The Web Inspector now uses a separate Web Process.
   - Add implementation of subtle crypto HMAC and digest algorithms.
 
 =================
-WebKitGTK+  2.5.3
+CyberKitGTK+  2.5.3
 =================
 
-What's new in WebKitGTK+ 2.5.3?
+What's new in CyberKitGTK+ 2.5.3?
 
-  - Fix a crash when drag and drop to a WebKitWebView.
+  - Fix a crash when drag and drop to a CyberKitWebView.
   - Fix slow motion rendering problem in GStreamer media backend due to integer rounding.
   - Make sure the plugins cache is always used even if the cache directory doesn't exist.
   - Fix the build on FreeBSD.
-  - Install the HTML API docs for WebKit2 and WebKitDOM in a versioned directory.
+  - Install the HTML API docs for CyberKit2 and CyberKitDOM in a versioned directory.
   - Intall the GObject instrospection files to the correct path.
 
 =================
-WebKitGTK+  2.5.2
+CyberKitGTK+  2.5.2
 =================
 
-What's new in WebKitGTK+ 2.5.2?
+What's new in CyberKitGTK+ 2.5.2?
 
   - Make GTK+2 dependency optional.
   - Use the ld version script for non developer builds.
   - Add webkit_navigation_policy_decision_get_navigation_action() API
-    and deprecated the methods and properties in WebKitNavigationPolicyDecision
+    and deprecated the methods and properties in CyberKitNavigationPolicyDecision
     that are now redundant.
-  - Add support for user scripts to WebKitUserContentManager.
+  - Add support for user scripts to CyberKitUserContentManager.
   - Do not use GtkWindow:resize-grip-visible with recent GTK+ versions.
   - Fix caps negotiation failure in playback pipeline in GSTreamer media backend.
-  - Rename translation domain to WebKit2GTK-4.0.
+  - Rename translation domain to CyberKit2GTK-4.0.
   - Install the processes in a versioned directory.
 
 =================
-WebKitGTK+  2.5.1
+CyberKitGTK+  2.5.1
 =================
 
-What's new in WebKitGTK+ 2.5.1?
+What's new in CyberKitGTK+ 2.5.1?
 
-  - WebKit1 API has been removed.
-  - Binary version bump to make WebKit1 and WebKit2 parallel installable.
+  - CyberKit1 API has been removed.
+  - Binary version bump to make CyberKit1 and CyberKit2 parallel installable.
   - Switch to CMake build system.
-  - The WebKitWebView::create signal now receives a WebKitNavigationAction
+  - The CyberKitWebView::create signal now receives a CyberKitNavigationAction
     with information about the navigation action that triggered the signal.
-  - WebKitWebViewGroup has been removed from the API and WebKitUserContentManager
+  - CyberKitWebViewGroup has been removed from the API and CyberKitUserContentManager
     has been added to handle user stylesheets.
-  - WebKitCertificateInfo has also been removed. WebKitWebView::load-failed-with-tls-errors
+  - CyberKitCertificateInfo has also been removed. CyberKitWebView::load-failed-with-tls-errors
     signal now receives a GTlsCertificate and GTlsCertificateFlags, and
     webkit_web_context_allow_tls_certificate_for_host() receives a GTlsCertificate.
   - The view mode API (webkit_web_view_set_view_mode() and webkit_web_view_get_view_mode())
-    has been removed, since WebCore doesn't support view source mode anymore.
+    has been removed, since CyberCore doesn't support view source mode anymore.
   - The DOM bindings API has been split into stable and unstable parts,
     and all deprecated methods have been removed. The stable part will
     keep API/ABI backwards compatibility, while the unstable part might change.
@@ -1082,12 +1082,12 @@ What's new in WebKitGTK+ 2.5.1?
   - Use a different user agent string depending on the site.
 
 =================
-WebKitGTK+  2.3.4
+CyberKitGTK+  2.3.4
 =================
 
-What's new in WebKitGTK+ 2.3.4?
+What's new in CyberKitGTK+ 2.3.4?
 
-  - Add API to WebKitResponsePolicyDecision to check if the MIME type
+  - Add API to CyberKitResponsePolicyDecision to check if the MIME type
     can be shown.
   - Enable fullscreen API by default.
   - Fix handling of HTTP certificates with the network process enabled.
@@ -1095,29 +1095,29 @@ What's new in WebKitGTK+ 2.3.4?
   - Fix handling of cookies when network process is enabled.
   - Remove the partial file downloaded when the download operation
     fails or is cancelled.
-  - Make WebKitWebPage::send-request signal work after a redirect.
-  - Add xdg.origin.url extended attribute to downloads in WebKit2.
+  - Make CyberKitWebPage::send-request signal work after a redirect.
+  - Add xdg.origin.url extended attribute to downloads in CyberKit2.
   - Fix WebGL with GLES.
   - Translation updates: Dutch, Brazilian Portuguese.
 
 =================
-WebKitGTK+  2.3.3
+CyberKitGTK+  2.3.3
 =================
 
-What's new in WebKitGTK+ 2.3.3?
+What's new in CyberKitGTK+ 2.3.3?
 
   - Initial Network Process support disabled by default.
   - CSS regions are now enabled by default.
-  - Support right-side attachment of the inspector in WebKit2.
-  - Add spatial navigation setting to WebKit2 GTK+ API.
-  - Add media source setting to both WebKit1 and WebKit2.
+  - Support right-side attachment of the inspector in CyberKit2.
+  - Add spatial navigation setting to CyberKit2 GTK+ API.
+  - Add media source setting to both CyberKit1 and CyberKit2.
   - Support custom types for drag and drop data.
   - Avoid extra copy when drawing images in cairo backend.
   - Fix scrolling in combo boxes when the dropdown menu is larger than
     the screen.
-  - Render AC layers also when using GTK+ 2 in WebKit1.
+  - Render AC layers also when using GTK+ 2 in CyberKit1.
   - Fix return value of webkit_web_view_get_view_source_mode() in
-    WebKit1.
+    CyberKit1.
   - Emit stream-start, caps and segment events in webkitwebaudiosrc
     element.
   - Fix seeking on media content provided by servers not supporting
@@ -1134,14 +1134,14 @@ What's new in WebKitGTK+ 2.3.3?
   - Translation updates: Brazilian Portuguese.
 
 =================
-WebKitGTK+  2.3.2
+CyberKitGTK+  2.3.2
 =================
 
-What's new in WebKitGTK+ 2.3.2?
+What's new in CyberKitGTK+ 2.3.2?
 
-  - Add enable-media-stream setting to WebKit2 GTK+ API.
-  - Fix a crash when load fails due to SSL errors in WebKit2.
-  - Fix a crash when printing via JavaScript in WebKit2.
+  - Add enable-media-stream setting to CyberKit2 GTK+ API.
+  - Fix a crash when load fails due to SSL errors in CyberKit2.
+  - Fix a crash when printing via JavaScript in CyberKit2.
   - Add support audio and video tracks to GStreamer media backend.
   - Properly expose video and audio elements to accessibility.
   - Fix invalid cairo matrix when drawing too small surfaces.
@@ -1150,17 +1150,17 @@ What's new in WebKitGTK+ 2.3.2?
   - Several build fixes on non-linux platforms.
 
 =================
-WebKitGTK+  2.3.1
+CyberKitGTK+  2.3.1
 =================
 
-What's new in WebKitGTK+ 2.3.1?
+What's new in CyberKitGTK+ 2.3.1?
 
-  - Add WebKit2 API for TLS errors.
+  - Add CyberKit2 API for TLS errors.
   - Make EventTarget interface introspectable in GObject DOM bindings.
   - Expose WheelEvent in the GObject DOM bindings API.
   - Generate API documentation for GObject DOM bindings.
   - Respect image orientation by default.
-  - Enable text edition undo/redo operations support in WebKit2.
+  - Enable text edition undo/redo operations support in CyberKit2.
   - Add suppport for blob URLs to GStreamer media backend.
   - Add support for subtitles.
   - Allow running the web process with an arbitrary prefix command in
@@ -1168,17 +1168,17 @@ What's new in WebKitGTK+ 2.3.1?
   - Expose image links properly to accessibility.
   - Expose title and alternative text for links in image maps to
     accessibility.
-  - Cancel the current active WebKitAuthenticationRequest on load
+  - Cancel the current active CyberKitAuthenticationRequest on load
     fail.
   - Fix several memory leaks.
 
 =================
-WebKitGTK+  2.1.4
+CyberKitGTK+  2.1.4
 =================
 
-What's new in WebKitGTK+ 2.1.4?
+What's new in CyberKitGTK+ 2.1.4?
 
-  - Add WebKitWebView::authenticate signal to WebKit2 GTK API.
+  - Add CyberKitWebView::authenticate signal to CyberKit2 GTK API.
   - Expose KeyboardEvent in GObject DOM bindings.
   - Implement attributesOfChildren() for AccessibilityUIElement.
   - Implement allAttributes() for AccessibilityUIElement.
@@ -1193,11 +1193,11 @@ What's new in WebKitGTK+ 2.1.4?
     in GStreamer media backend.
   - When rendering accelerated video, upload onto the texture only the
     buffer to be painted.
-  - Fix response property definition of WebKitResponsePolicyDecision.
-  - Fix a crash in WebKit1 when the WebView is created and destroyed
+  - Fix response property definition of CyberKitResponsePolicyDecision.
+  - Fix a crash in CyberKit1 when the WebView is created and destroyed
     too fast.
   - Fix a crash in UI process when the web process crashes.
-  - Fix a crash in WebKit2 when a context menu item is selected after
+  - Fix a crash in CyberKit2 when a context menu item is selected after
     the page has been closed.
   - Fix a crash when getting the editor command for a key event
     initiated by the web inspector.
@@ -1205,10 +1205,10 @@ What's new in WebKitGTK+ 2.1.4?
   - Fix several memory leaks.
 
 =================
-WebKitGTK+  2.1.3
+CyberKitGTK+  2.1.3
 =================
 
-What's new in WebKitGTK+ 2.1.3?
+What's new in CyberKitGTK+ 2.1.3?
 
   - Add support for preload="metadata" to GStreamer media backend.
   - Do not expose '\n' for wrapped lines with ATK_TEXT_BOUNDARY_CHAR.
@@ -1220,16 +1220,16 @@ What's new in WebKitGTK+ 2.1.3?
   - Adjust internal size on GStreamer HTTP source element when
     receiving data if necessary.
   - Actually disable the memory cache when DOCUMENT_VIEWER cache model
-    is used in WebKit1.
-  - Fix runtime critical warning in WebKit2 when unloading a module
+    is used in CyberKit1.
+  - Fix runtime critical warning in CyberKit2 when unloading a module
     that failed to load.
   - Fix several memory leaks.
 
 =================
-WebKitGTK+  2.1.2
+CyberKitGTK+  2.1.2
 =================
 
-What's new in WebKitGTK+ 2.1.2?
+What's new in CyberKitGTK+ 2.1.2?
 
   - Set the subresources load priority using new libsoup API available
     in 2.43.
@@ -1247,40 +1247,40 @@ What's new in WebKitGTK+ 2.1.2?
   - Translation updates: Telugu, Hindi, Kannada, Odia.
 
 =================
-WebKitGTK+  2.1.1
+CyberKitGTK+  2.1.1
 =================
 
-What's new in WebKitGTK+ 2.1.1?
+What's new in CyberKitGTK+ 2.1.1?
 
-  - Add webkit_uri_scheme_request_finish_error to WebKit2 GTK+ API.
+  - Add webkit_uri_scheme_request_finish_error to CyberKit2 GTK+ API.
   - Add a setting to control whether or not accelerated 2D canvas is
-    enabled in WebKit2.
-  - Add a setting to WebKit2 to allow sending console log messages to
+    enabled in CyberKit2.
+  - Add a setting to CyberKit2 to allow sending console log messages to
     stdout.
   - Always use EGL to create the GL context when running on Wayland.
-  - Fix rendering of WebKitWebView child widgets with recent GTK+.
-  - Notify the web process in WebKitURISchemeRequest when we fail to read
+  - Fix rendering of CyberKitWebView child widgets with recent GTK+.
+  - Notify the web process in CyberKitURISchemeRequest when we fail to read
     from the user InputStream.
   - Fixed race conditions closing the socket descriptor when the web
     process crashes.
   - Add video accelerated compositing support to the GStreamer backend.
   - Add support for audio/speex MIME type to the GStreamer backend.
   - Fix seek after video finished in GStreamer backend.
-  - Initialize WebKitWebPlugin path to prevent double-free in WebKit1.
+  - Initialize CyberKitWebPlugin path to prevent double-free in CyberKit1.
   - Fix several GObject instrospection warnings.
   - Fixed several memory leaks.
 
 =================
-WebKitGTK+ 1.11.5
+CyberKitGTK+ 1.11.5
 =================
 
-What's new in WebKitGTK+ 1.11.5?
+What's new in CyberKitGTK+ 1.11.5?
 
   - Fix crashes related to libsoup, gstreamer, and accessibility.
-  - Implement the WebKit2 resources API using the injected bundle.
-  - Add API to prefetch DNS of a given hostname to the WebKit2 API.
+  - Implement the CyberKit2 resources API using the injected bundle.
+  - Add API to prefetch DNS of a given hostname to the CyberKit2 API.
   - Move Authentication and Downloads from WebProcess to Shared in
-    WebKit2.
+    CyberKit2.
   - Many improvements to the GStreamer backend including the resurrection of
     the native fullscreen mode for increased performance, support for
     setPreservesPitch, bug fixes, support for Opus files, and
@@ -1294,34 +1294,34 @@ What's new in WebKitGTK+ 1.11.5?
   - Characters outside the BMP are now properly rendered.
   - Synthetic bold is now applied to fallback fonts properly.
   - Better drag and drop icons during drags on non-composited desktops.
-  - The page title is now preserved in WebKit when disappearing when clicking on
+  - The page title is now preserved in CyberKit when disappearing when clicking on
     an anchor link.
-  - The web database path setting in WebKit1 now also controls where IndexedDB
+  - The web database path setting in CyberKit1 now also controls where IndexedDB
     databases are stored.
   - Fix various issues in the build tools, testing tools, Web Inspector, and
     MiniBrowser.
 
 
 =================
-WebKitGTK+ 1.11.4
+CyberKitGTK+ 1.11.4
 =================
 
-What's new in WebKitGTK+ 1.11.4?
+What's new in CyberKitGTK+ 1.11.4?
 
-  - Add support for loading web process extensions to WebKit2 GTK+.
-  - Embed the HTTP authentication dialog into the WebView in WebKit2.
-  - Add support for IME Composition to WebKit2.
+  - Add support for loading web process extensions to CyberKit2 GTK+.
+  - Embed the HTTP authentication dialog into the WebView in CyberKit2.
+  - Add support for IME Composition to CyberKit2.
   - Add API to notify about display/execution of insecure content to
-    WebKit2 GTK+ API.
-  - Add GTK+ API to set a WebKitWebView in view source mode to WebKit2.
-  - Add API to set a TLS errors policy to WebKit2 GTK+ API.
-  - Add WEBKIT_HIT_TEST_RESULT_CONTEXT_SCROLLBAR to WebKit2 GTK+ API.
-  - Add support for remote Web Inspector to WebKit2.
-  - Complete the documentation od sections in WebKit2 GTK+ API.
+    CyberKit2 GTK+ API.
+  - Add GTK+ API to set a CyberKitWebView in view source mode to CyberKit2.
+  - Add API to set a TLS errors policy to CyberKit2 GTK+ API.
+  - Add WEBKIT_HIT_TEST_RESULT_CONTEXT_SCROLLBAR to CyberKit2 GTK+ API.
+  - Add support for remote Web Inspector to CyberKit2.
+  - Complete the documentation od sections in CyberKit2 GTK+ API.
   - Fix cookies and custom URI requests when the web process is
     re-launched after a crash.
-  - Fix a crash in WebKit2 when running inside Xvfb.
-  - Fix a crash in WebKit2 when the WebView is resized with the
+  - Fix a crash in CyberKit2 when running inside Xvfb.
+  - Fix a crash in CyberKit2 when the WebView is resized with the
     inspector attached.
   - Use Harfbuzz instead of Pango in GTK+ port.
   - Add support for WebP image.
@@ -1335,26 +1335,26 @@ What's new in WebKitGTK+ 1.11.4?
   - Fixed several memory leaks.
 
 =================
-WebKitGTK+ 1.11.2
+CyberKitGTK+ 1.11.2
 =================
 
-What's new in WebKitGTK+ 1.11.2?
+What's new in CyberKitGTK+ 1.11.2?
 
   - Implement inspector server on Linux for remote debugging.
   - Add support for password remembering to HTTP authentication
-    dialog in WebKit2 using libsecret.
-  - Add API to get favicons to WebKit2 GTK+ API.
-  - Add API to get the WebKitWebView associated to a WebKitDownload to
-    WebKit2 GTK+.
-  - Add GObject introspection support to WebKit2 GTK+ API.
+    dialog in CyberKit2 using libsecret.
+  - Add API to get favicons to CyberKit2 GTK+ API.
+  - Add API to get the CyberKitWebView associated to a CyberKitDownload to
+    CyberKit2 GTK+.
+  - Add GObject introspection support to CyberKit2 GTK+ API.
 
 =================
-WebKitGTK+ 1.11.1
+CyberKitGTK+ 1.11.1
 =================
 
-What's new in WebKitGTK+ 1.11.1?
+What's new in CyberKitGTK+ 1.11.1?
 
-  - Make WebKitWebView work again inside a GtkOverlay by not using a
+  - Make CyberKitWebView work again inside a GtkOverlay by not using a
     native window for Accelerated Compositing implementation.
   - Use XDamage to improve accelerated compositing performance.
   - Enable the edge distance anti-aliasing for accelerated compositing
@@ -1364,39 +1364,39 @@ What's new in WebKitGTK+ 1.11.1?
   - Fix several API breaks in DOM bindings introduced in 1.9.6.
   - Save the original URI for downloaded files as GIO metadata of the
     destination file.
-  - Add API for controlling the user agent to WebKit2.
-  - Add API to WebKit2 to allow running JavaScripts from a
-    WebKitWebView using a GResource containing the script.
-  - Add Undo/Redo and SelectAll predefined editing commands to WebKit2
+  - Add API for controlling the user agent to CyberKit2.
+  - Add API to CyberKit2 to allow running JavaScripts from a
+    CyberKitWebView using a GResource containing the script.
+  - Add Undo/Redo and SelectAll predefined editing commands to CyberKit2
     GTK+ API.
-  - Add a setting to enable/disable smooth scrolling to WebKit2 GTK+
+  - Add a setting to enable/disable smooth scrolling to CyberKit2 GTK+
     API.
   - Add API to get the web view that initiated a custom URI request to
-    WebKit2 GTK+.
-  - Implement ViewState methods of WebKitWebView in WebKit2.
+    CyberKit2 GTK+.
+  - Implement ViewState methods of CyberKitWebView in CyberKit2.
   - Add API to get/set the security policy of a given URI scheme to
-    WebKit2 GTK+.
-  - Add WebKitWebView:is-loading property to WebKit2 GTK+ API.
-  - Change spellchecker languages API in WebKit2 to use a GStrv for
+    CyberKit2 GTK+.
+  - Add CyberKitWebView:is-loading property to CyberKit2 GTK+ API.
+  - Change spellchecker languages API in CyberKit2 to use a GStrv for
     the list of languages to make the API more consistent and
     convenient to use.
   - Add destroy notify parameter to
-    webkit_web_context_register_uri_scheme in WebKit2 GTK+ API.
+    webkit_web_context_register_uri_scheme in CyberKit2 GTK+ API.
   - Replace webkit_web_view_replace_content with
-    webkit_web_view_load_alternate_html in WebKit2 GTK+ API.
-  - Rename WebKitWebView "print-requested" signal to "print" in
-    WebKit2 GTK+ API for consistenty.
-  - Add API to set preferred languages to WebKit2 GTK+.
-  - Add webkit_uri_response_get_suggested_filename to WebKit2 GTK+
+    webkit_web_view_load_alternate_html in CyberKit2 GTK+ API.
+  - Rename CyberKitWebView "print-requested" signal to "print" in
+    CyberKit2 GTK+ API for consistenty.
+  - Add API to set preferred languages to CyberKit2 GTK+.
+  - Add webkit_uri_response_get_suggested_filename to CyberKit2 GTK+
     API.
-  - Add API to save a web page in MHTML format to WebKit2 GTK+.
-  - Implement smart separators for context menu in WebKit2 GTK+.
+  - Add API to save a web page in MHTML format to CyberKit2 GTK+.
+  - Implement smart separators for context menu in CyberKit2 GTK+.
   - Sanitize the suggested filename when building the download
-    destination URI in WebKit2.
-  - Fix disk cache in WebKit2 to actually dump the contents to disk.
-  - Fix a crash in WebKit2 when navigating between pages in the
+    destination URI in CyberKit2.
+  - Fix disk cache in CyberKit2 to actually dump the contents to disk.
+  - Fix a crash in CyberKit2 when navigating between pages in the
     history cache.
-  - Fix a crash in WebKit2 when a download initiated by the policy
+  - Fix a crash in CyberKit2 when a download initiated by the policy
     checker fails.
   - Fix a crash in network backend with non-UTF8 HTTP header names.
   - Properly close audio device after playing sound.
@@ -1406,7 +1406,7 @@ What's new in WebKitGTK+ 1.11.1?
   - Fix an infinite loop in accessibility code.
   - Fix a crash in
     AccessibilityObject::accessibilityPlatformIncludesObject().
-  - Fix a crash in WebCore::HTMLSelectElement::selectedIndex().
+  - Fix a crash in CyberCore::HTMLSelectElement::selectedIndex().
   - Fix caret-moved events not emitted for certain content.
   - Fix incorrect/unexpected characters in the text of certain
     accessibles.
@@ -1419,69 +1419,69 @@ What's new in WebKitGTK+ 1.11.1?
   - Fix several memory leaks.
 
 =================
-WebKitGTK+ 1.9.6
+CyberKitGTK+ 1.9.6
 =================
 
-What's new in WebKitGTK+ 1.9.6?
+What's new in CyberKitGTK+ 1.9.6?
 
-  - Add spell checker API to WebKit2 GTK+ API.
-  - Add WebKitWebView::submit-form signal to WebKit2 GTK+ API.
+  - Add spell checker API to CyberKit2 GTK+ API.
+  - Add CyberKitWebView::submit-form signal to CyberKit2 GTK+ API.
   - Add API to get the suggested filename from a
-    WebKitNetworkResponse.
-  - Add webkit_web_view_get_snapshot() to WebKit1 API.
-  - Paste primary selection when middle clicking in X11 WebKit2.
-  - Make sure WebKitWebView always has a main resource and it has
+    CyberKitNetworkResponse.
+  - Add webkit_web_view_get_snapshot() to CyberKit1 API.
+  - Paste primary selection when middle clicking in X11 CyberKit2.
+  - Make sure CyberKitWebView always has a main resource and it has
     already been set when the load has been committed, even for pages
-    loaded from the history cache in WebKit2.
+    loaded from the history cache in CyberKit2.
   - Fix a run time critical warning when gdk_window_get_cursor() is
-    called before WebKitWebView has been realized in WebKit2.
+    called before CyberKitWebView has been realized in CyberKit2.
   - Fix continuous insertion of newlines in Etherpad.
   - Fix several memory leaks.
 
 =================
-WebKitGTK+ 1.9.5
+CyberKitGTK+ 1.9.5
 =================
 
-What's new in WebKitGTK+ 1.9.5?
+What's new in CyberKitGTK+ 1.9.5?
 
-  - Add API to get HTTPS status to WebKit2 GTK+.
-  - Add API to clear the cache to WebKit2 GTK+.
-  - Add webkit_cookie_manager_set_persistent_storage() to WebKit2 GTK+
+  - Add API to get HTTPS status to CyberKit2 GTK+.
+  - Add API to clear the cache to CyberKit2 GTK+.
+  - Add webkit_cookie_manager_set_persistent_storage() to CyberKit2 GTK+
     API.
-  - Improve performance of searching in WebKit2.
-  - Implement disk cache in WebKit2.
-  - Add site specific quirks setting to WebKit2 GTK+ API.
-  - Add a setting to enable/disable page cache to WebKit2 GTK+ API.
-  - Add WebKitWebView::context-menu-dismissed signal to WebKit2 GTK+
+  - Improve performance of searching in CyberKit2.
+  - Implement disk cache in CyberKit2.
+  - Add site specific quirks setting to CyberKit2 GTK+ API.
+  - Add a setting to enable/disable page cache to CyberKit2 GTK+ API.
+  - Add CyberKitWebView::context-menu-dismissed signal to CyberKit2 GTK+
     API.
-  - Add webkit_web_frame_get_dom_document() to WebKit GTK+ API.
+  - Add webkit_web_frame_get_dom_document() to CyberKit GTK+ API.
   - Use soup_cookie_jar_is_persistent() to set whether cookie is a
     session one or not.
   - Fix recognition of contractions (apostrophes) in spell checker.
   - Fix a crash when showing the context menu in the Web Inspector.
-  - WebKitWebView::mouse-target-changed is not emitted when moved
+  - CyberKitWebView::mouse-target-changed is not emitted when moved
     to/from editable content.
   - Fix inspector detach when inspector was attached by the client in
-    WebKit2.
-  - Don't show accel labels in WebKit2 context menu items.
+    CyberKit2.
+  - Don't show accel labels in CyberKit2 context menu items.
   - Cache the video dimensions to not query the video-sink sink-pad
     caps every time.
   - Fix several memory leaks.
 
 =================
-WebKitGTK+ 1.9.4
+CyberKitGTK+ 1.9.4
 =================
 
-What's new in WebKitGTK+ 1.9.4?
+What's new in CyberKitGTK+ 1.9.4?
 
-  - Add an accelerated compositing implementation for WebKit2.
-  - Add API to register custom URI schemes to WebKit2 GTK+ API.
-  - Add support for window.showModalDialog in WebKit2 GTK+ API.
-  - Add webkit_download_get_received_data_length to WebKit2 GTK+ API.
-  - Add ContextMenu API to WebKit2 GTK+.
-  - Add Geolocation permission requests API to WebKit2 GTK.
-  - Add API to get the library version to WebKit2 GTK+.
-  - Add WebKitWebView::run-file-chooser signal to WebKit1 API.
+  - Add an accelerated compositing implementation for CyberKit2.
+  - Add API to register custom URI schemes to CyberKit2 GTK+ API.
+  - Add support for window.showModalDialog in CyberKit2 GTK+ API.
+  - Add webkit_download_get_received_data_length to CyberKit2 GTK+ API.
+  - Add ContextMenu API to CyberKit2 GTK+.
+  - Add Geolocation permission requests API to CyberKit2 GTK.
+  - Add API to get the library version to CyberKit2 GTK+.
+  - Add CyberKitWebView::run-file-chooser signal to CyberKit1 API.
   - Port the video sink to GStreamer 0.11 API.
   - Add TextureMapper ImageBuffer support as a fallback from the
     hardware accelerated path
@@ -1493,25 +1493,25 @@ What's new in WebKitGTK+ 1.9.4?
   - Fix several memory leaks.
 
 =================
-WebKitGTK+ 1.9.3
+CyberKitGTK+ 1.9.3
 =================
 
-What's new in WebKitGTK+ 1.9.3?
+What's new in CyberKitGTK+ 1.9.3?
 
-  - Add webkit_download_get_request to WebKit2 GTK+ API.
-  - Add API to get the list of plugins to WebKit2 GTK+.
-  - Add webkit_web_view_can_show_mime_type() to WebKit2 GTK+ API.
+  - Add webkit_download_get_request to CyberKit2 GTK+ API.
+  - Add API to get the list of plugins to CyberKit2 GTK+.
+  - Add webkit_web_view_can_show_mime_type() to CyberKit2 GTK+ API.
   - Add GCancellable parameter to all methods using gio async pattern
-    in WebKit2 GTK+ API.
+    in CyberKit2 GTK+ API.
   - Add settings to enable and disable composited layer indicators to
-    WebKit2 GTK+ API.
-  - Add generic permission requests API to WebKit2 GTK+ API.
-  - Add initial inspector API to WebKit2 GTK+.
-  - Allow to attach/detach the inspector in WebKit2.
+    CyberKit2 GTK+ API.
+  - Add generic permission requests API to CyberKit2 GTK+ API.
+  - Add initial inspector API to CyberKit2 GTK+.
+  - Allow to attach/detach the inspector in CyberKit2.
   - Add media-playback-requires-user-gesture and
-    media-playback-allows-inline settings to WebKit1 and WebKit2 GTK+.
+    media-playback-allows-inline settings to CyberKit1 and CyberKit2 GTK+.
   - Use defers loading instead of pausing the soup message in
-    WebKitDownload.
+    CyberKitDownload.
   - Properly set the input method context window location.
   - Fix a crash in the WebProcess when a download is started from
     an existing ResourceHandle.
@@ -1527,27 +1527,27 @@ What's new in WebKitGTK+ 1.9.3?
   - Fix several compilation warnings.
 
 =================
-WebKitGTK+ 1.9.2
+CyberKitGTK+ 1.9.2
 =================
 
-What's new in WebKitGTK+ 1.9.2?
+What's new in CyberKitGTK+ 1.9.2?
 
   - Fix exceeding arguments list build problem, by splitting more
-    files off libWebCore into the new libWebCoreModules convenience
+    files off libCyberCore into the new libCyberCoreModules convenience
     library.
   - Remove left over soup_session_pause_message() and properly handle
     that case for defersLoading.
   - Fix response being the new one instead of the one that caused the
-    redirect when emitting WebKitWebView::resource-request-starting.
+    redirect when emitting CyberKitWebView::resource-request-starting.
   - Refactor of IME handling to fix bugs and prepare for sharing with
-    WebKit2.
-  - Add file chooser API to WebKit2.
+    CyberKit2.
+  - Add file chooser API to CyberKit2.
 
 =================
-WebKitGTK+ 1.9.1
+CyberKitGTK+ 1.9.1
 =================
 
-What's new in WebKitGTK+ 1.9.1?
+What's new in CyberKitGTK+ 1.9.1?
 
   - Geolocation support is built by default now. Use
     --disable-geolocation during build to disable it.
@@ -1563,7 +1563,7 @@ What's new in WebKitGTK+ 1.9.1?
   - Fix a WebProcess segmentation fault related to clipboard handling.
   - Fix a repainting error that occurred during interior frame
     scrolling.
-  - Fix a crash when WebKitWebView is created without a WebContext.
+  - Fix a crash when CyberKitWebView is created without a WebContext.
   - Fix a crash that could occur during synchronous XMLHttpRequests.
   - Fix rendering of combobox / menulist buttons that do not have
     separators.
@@ -1572,134 +1572,134 @@ What's new in WebKitGTK+ 1.9.1?
   - Fix misrendering of text shadow extents in some situations.
   - Fix a crash when closing browser with inspector window opened.
   - Now interpret plugin metadata as UTF-8.
-  - Fix rendering of GtkWidgets embedded on WebKitWebView.
+  - Fix rendering of GtkWidgets embedded on CyberKitWebView.
   - Web content (except plugins) should no longer steal focus from
     other GTK+ widgets.
-  - WebKit will try to use the default libsoup proxy resolver
+  - CyberKit will try to use the default libsoup proxy resolver
     automatically.
-  - Performance improvements in WebKitWebView by avoiding doing a lot
+  - Performance improvements in CyberKitWebView by avoiding doing a lot
     of work in size_allocate when the view is not mapped.
   - Web Timing is now enabled.
   - Add support for smooth scrolling.
   - Implement unicode submenu items.
   - FFTFrame implementation in GStreamer backend.
   - More work on GStreamer 0.11 support.
-  - Add support for windowed plugins in WebKit2.
-  - Add full printing support to WebKit2.
+  - Add support for windowed plugins in CyberKit2.
+  - Add full printing support to CyberKit2.
   - Add a new favicon database API that corrects the problems of the
     old one.
-  - Add WebKitWebView::context-menu signal to allow applications to
-    handle its own context menu. WebKitWebView::populate-popup signal
+  - Add CyberKitWebView::context-menu signal to allow applications to
+    handle its own context menu. CyberKitWebView::populate-popup signal
     and default-context setting are now deprecated.
   - Well known names for menu items in the default context menu are
     now exposed in an enumeration.
-  - Add entering/leaving fullscreen signals to WebKit API.
-  - Add enable-webaudio setting to WebKit2 GTK+ API.
-  - Add support for registering custom uri schemes in WebKit2.
-  - Add WebKitWebView::mouse-target-changed signal to WebKit2 GTK+
+  - Add entering/leaving fullscreen signals to CyberKit API.
+  - Add enable-webaudio setting to CyberKit2 GTK+ API.
+  - Add support for registering custom uri schemes in CyberKit2.
+  - Add CyberKitWebView::mouse-target-changed signal to CyberKit2 GTK+
     API.
-  - Add enter/leave fullscreen signals to WebKit2 GTK+ API.
-  - Add find API to WebKit2 GTK+ API.
-  - Use a single signal for script dialogs in WebKit2 GTK+ API.
-  - Add cookies API to WebKit2 GTK+ API.
-  - Add webkit_print_operation_print() to WebKit2 GTK+ API.
-  - Add resources API to WebKit2 GTK+ API.
-  - Add support for Response policy decisions to WebKit2 GTK+ API.
-  - Add javascript clipboard functionality settings to WebKit2 GTK+
+  - Add enter/leave fullscreen signals to CyberKit2 GTK+ API.
+  - Add find API to CyberKit2 GTK+ API.
+  - Use a single signal for script dialogs in CyberKit2 GTK+ API.
+  - Add cookies API to CyberKit2 GTK+ API.
+  - Add webkit_print_operation_print() to CyberKit2 GTK+ API.
+  - Add resources API to CyberKit2 GTK+ API.
+  - Add support for Response policy decisions to CyberKit2 GTK+ API.
+  - Add javascript clipboard functionality settings to CyberKit2 GTK+
     API.
-  - Add cut, copy and paste methods to WebKit2 GTK+ API.
-  - Add zoom-text-only setting to WebKit2 GTK+ API.
-  - Add webkit_web_view_run_javascript() to WebKit2 GTK+ API.
+  - Add cut, copy and paste methods to CyberKit2 GTK+ API.
+  - Add zoom-text-only setting to CyberKit2 GTK+ API.
+  - Add webkit_web_view_run_javascript() to CyberKit2 GTK+ API.
 
 =================
-WebKitGTK+ 1.7.5
+CyberKitGTK+ 1.7.5
 =================
 
-What's new in WebKitGTK+ 1.7.5?
+What's new in CyberKitGTK+ 1.7.5?
 
   - Add new signals to track resources loading.
   - Add --no-timeout command line option to DumpRenderTree.
-  - Expose accessibility hierarchy in WebKit2 to ATK/AT-SPI based ATs.
+  - Expose accessibility hierarchy in CyberKit2 to ATK/AT-SPI based ATs.
   - Allow to build using extra jhbuild modulesets.
   - Fix emission of ATK text-caret-moved and text-selection-changed
     events.
   - Update primary clipboard with the current selection in X11
-    platforms in WebKit2.
-  - Implement the policy client in WebKit2 GTK+ API.
-  - Add basic printing support to WebKit2.
+    platforms in CyberKit2.
+  - Implement the policy client in CyberKit2 GTK+ API.
+  - Add basic printing support to CyberKit2.
   - Do not add unnecessary blanks at the end of a line of text to fix.
     the line returned by atk_text_get_text_at_offset().
   - Make sure input text field is repainted when value is changed.
-  - Add print-backgrounds setting to WebKit2 GTK+ API.
+  - Add print-backgrounds setting to CyberKit2 GTK+ API.
   - Respect the has-backward-stepper and has-forward-stepper
     properties when drawing scrollbars.
-  - WebKit-3.0.gir now includes information about C includes or
+  - CyberKit-3.0.gir now includes information about C includes or
     exported packages.
-  - WebKit1 API documentation was not generated when building with
+  - CyberKit1 API documentation was not generated when building with
     gtk-2.0.
-  - Make WebKitWebView work inside a GtkOffscreenWindow.
-  - Implement DownloadClient and add downloads API to WebKit2 GTK+
+  - Make CyberKitWebView work inside a GtkOffscreenWindow.
+  - Implement DownloadClient and add downloads API to CyberKit2 GTK+
     API.
 
 =================
-WebKitGTK+ 1.7.4
+CyberKitGTK+ 1.7.4
 =================
 
-What's new in WebKitGTK+ 1.7.4?
+What's new in CyberKitGTK+ 1.7.4?
 
   - Fix a11y regression: text-inserted events lack text inserted and
     current line.
-  - Fix scrollbars in WebKit2 that were drawn behind the window resize
+  - Fix scrollbars in CyberKit2 that were drawn behind the window resize
     grip.
-  - Fix a memory leak in WebKitWebSourceGStreamer.
+  - Fix a memory leak in CyberKitWebSourceGStreamer.
   - Slider thumb is not centered on the track with the unico theme.
-  - Fix context menu in WebKit2 to not dissapear right after it's shown.
+  - Fix context menu in CyberKit2 to not dissapear right after it's shown.
   - Use GtkOrientable style class in GTK+ 3 theming code.
   - Change default WebSocket protocol to the latest one (hybi-17).
   - Fix scrollbars size with GTK+ 3.x to follow the current theme.
   - Use gdk_screen_get_monitor_workarea() when available for
     screenAvailableRect().
   - Rename webkit_web_view_load_alternate_html as
-    webkit_web_view_replace_content in WebKit2 GTK+.
+    webkit_web_view_replace_content in CyberKit2 GTK+.
   - Fix emission of ATK text-caret-moved and text-selection-changed events.
-  - Add methods to get/set the WebView zoom level to WebKit2 GTK+ API.
+  - Add methods to get/set the WebView zoom level to CyberKit2 GTK+ API.
   - Make WebProcess and PluginProcess use the same locale as the UI process.
-  - Simplify WebKit2 loader client API.
+  - Simplify CyberKit2 loader client API.
 
 =================
-WebKitGTK+ 1.7.3
+CyberKitGTK+ 1.7.3
 =================
 
-What's new in WebKitGTK+ 1.7.3?
+What's new in CyberKitGTK+ 1.7.3?
 
   - WebGL is now enabled by default.
   - Initial support for accelerated compositing has been added.
-  - Add fullscreen setting to WebKit2 GTK+ API.
+  - Add fullscreen setting to CyberKit2 GTK+ API.
   - Fix regression of Push buttons that didn't expose their displayed
     text/name to accessibility toolkit.
-  - Initial UI client implementation for WebKit2 GTK+ API.
+  - Initial UI client implementation for CyberKit2 GTK+ API.
   - Implement HTML5 History APIs.
-  - Implement cookies management in WebKit2.
+  - Implement cookies management in CyberKit2.
   - Fix a crash when a download fails.
-  - Add support for javascript dialogs in WebKit2 GTK+ API.
-  - Add 'enable-dns-prefetching' setting to WebKit2 GTK+ API.
+  - Add support for javascript dialogs in CyberKit2 GTK+ API.
+  - Add 'enable-dns-prefetching' setting to CyberKit2 GTK+ API.
   - Initial support for WebAudio data playback.
   - Add enable-webaudio setting.
-  - Links are now focused with Tab by default in WebKit2.
+  - Links are now focused with Tab by default in CyberKit2.
   - Fix HTML5 Youtube video fullscreen button.
   - Improve description of WebSocket errors.
-  - Add WebKitWindowProperties to WebKit2 GTK+ API.
-  - Fullscreen controller support for the new WebKit Fullscreen API.
-  - Add WebKitURIResponse to WebKit2 GTK+ API.
+  - Add CyberKitWindowProperties to CyberKit2 GTK+ API.
+  - Fullscreen controller support for the new CyberKit Fullscreen API.
+  - Add CyberKitURIResponse to CyberKit2 GTK+ API.
   - Fix random crash in pages containing plugins.
   - Fix loading of custom fonts in some web sites like surlybikes.com
     or boingboing.net.
 
 =================
-WebKitGTK+ 1.7.2
+CyberKitGTK+ 1.7.2
 =================
 
-What's new in WebKitGTK+ 1.7.2?
+What's new in CyberKitGTK+ 1.7.2?
 
   - Fix process freeze when right-clicking on windowless Flash.
   - Performance improvements by avoiding unnecessary clips while
@@ -1707,34 +1707,34 @@ What's new in WebKitGTK+ 1.7.2?
   - Notify errors happening on downloads not started by a web view.
   - Allow building with GLib >= 2.31.
   - Significant JavaScript performance improvements on x86 and x86-64.
-  - Fix application cache directory in WebKit2.
-  - Add initial support for cookies in WebKit2.
-  - Implement support for downloads in WebKit2.
-  - Add methods to load HTML and plain text to WebKit2 GTK+ API.
-  - Add webkit_web_view_get_uri() to WebKit2 GTK+ API.
+  - Fix application cache directory in CyberKit2.
+  - Add initial support for cookies in CyberKit2.
+  - Implement support for downloads in CyberKit2.
+  - Add methods to load HTML and plain text to CyberKit2 GTK+ API.
+  - Add webkit_web_view_get_uri() to CyberKit2 GTK+ API.
   - Don't show items in option elements with display:none.
-  - Add webkit_web_view_load_request() to WebKit2 GTK+ API.
+  - Add webkit_web_view_load_request() to CyberKit2 GTK+ API.
   - Add support for WebAudio AudioFileReader.
-  - Port MiniBrowser to use WebKit2 GTK+ API instead of the C API.
-  - Add more settings to WebKitSettings in WebKit2 GTK+ API: Private
+  - Port MiniBrowser to use CyberKit2 GTK+ API instead of the C API.
+  - Add more settings to CyberKitSettings in CyberKit2 GTK+ API: Private
     browsing, developer extras, resizable text areas, tabs to links,
     caret mode, font settings, default charset.
-  - Fix windowless plugins drawing in WebKit2.
+  - Fix windowless plugins drawing in CyberKit2.
   - Fix memory leak when fullscreening a video.
   - Remove visited links from page's page group when clearing back
     forward list.
-  - Switch to a backing store approach for painting WebKitWebView. It
+  - Switch to a backing store approach for painting CyberKitWebView. It
     improves scrolling performance.
-  - Add methods to get/set the settings of a web view to WebKit2 GTK+
+  - Add methods to get/set the settings of a web view to CyberKit2 GTK+
     API.
-  - Add webkit_settings_new_with_settings() to WebKit2 GTK+ API.
-  - Add title property to WebKitWebView in WebKit2 GTK+ API.
+  - Add webkit_settings_new_with_settings() to CyberKit2 GTK+ API.
+  - Add title property to CyberKitWebView in CyberKit2 GTK+ API.
 
 =================
-WebKitGTK+ 1.7.1
+CyberKitGTK+ 1.7.1
 =================
 
-What's new in WebKitGTK+ 1.7.1?
+What's new in CyberKitGTK+ 1.7.1?
 
   - Fix a problem with scroll adjustments tha made scrollbars become
     out of sync with the page contents.
@@ -1752,58 +1752,58 @@ What's new in WebKitGTK+ 1.7.1?
   - Support for client-based geolocation.
   - Add support for sending encoded blob data during network requests.
   - Use SOCK_SEQPACKET when available for sockets used to communicate
-    processes in WebKit2.
-  - Add gtk-doc support to generate WebKit2 GTK+ API documentation.
-  - Implement default error pages in WebKit2.
-  - Initial implementation of WebInspector for WebKit2.
-  - Implement drag and drop support in WebKit2.
-  - TextChecker implementation for WebKit2.
-  - Initial implementation of back forward list for WebKit2 GTK+ API.
-  - Initial implementation of view settings for WebKit2 GTK+ API.
-  - Initial implementation of loader client for WebKit2 GTK+ API.
-  - Implement cache model for WebKit2
-  - Initial implementation of web context for WebKit2 GTK+ API.
-  - Add methods to get/set a custom text enconding to WebKit2 GTK+
+    processes in CyberKit2.
+  - Add gtk-doc support to generate CyberKit2 GTK+ API documentation.
+  - Implement default error pages in CyberKit2.
+  - Initial implementation of WebInspector for CyberKit2.
+  - Implement drag and drop support in CyberKit2.
+  - TextChecker implementation for CyberKit2.
+  - Initial implementation of back forward list for CyberKit2 GTK+ API.
+  - Initial implementation of view settings for CyberKit2 GTK+ API.
+  - Initial implementation of loader client for CyberKit2 GTK+ API.
+  - Implement cache model for CyberKit2
+  - Initial implementation of web context for CyberKit2 GTK+ API.
+  - Add methods to get/set a custom text enconding to CyberKit2 GTK+
     API.
-  - Add WebKitError to WebKit2 GTK+ API.
+  - Add CyberKitError to CyberKit2 GTK+ API.
 
-This is the first release providing a minimal working WebKit2 GTK+
+This is the first release providing a minimal working CyberKit2 GTK+
 API. This API is still under design and development, so use it
 carefully and take into account that it might change.
 
 =================
-WebKitGTK+ 1.5.90
+CyberKitGTK+ 1.5.90
 =================
 
-What's new in WebKitGTK+ 1.5.90?
+What's new in CyberKitGTK+ 1.5.90?
 
   - Bumped GStreamer requirement to 0.10.30.
   - Switch to GTK+3 by default. GTK+2 is still required for the
-    WebKit2 plugin process though.
+    CyberKit2 plugin process though.
   - Create pot files in builddir.
-  - Improvements in the WebKit2GTK+ port.
+  - Improvements in the CyberKit2GTK+ port.
   - Lots of bugfixes.
 
 ================
-WebKitGTK+ 1.5.2
+CyberKitGTK+ 1.5.2
 ================
 
-What's new in WebKitGTK+ 1.5.2?
+What's new in CyberKitGTK+ 1.5.2?
 
-  - Remove G_CONST_RETURN usage througout WebKit, it's deprecated in
+  - Remove G_CONST_RETURN usage througout CyberKit, it's deprecated in
     glib.
-  - Add plugin process support in WebKit2. Now (GTK+2) plugins can
+  - Add plugin process support in CyberKit2. Now (GTK+2) plugins can
     work again with a GTK+3 build.
   - Add API to set local storage database path.
   - Further UA spoofing for Google Calendar, since it assumes
-    Linux+WebKit means mobile (ugh).
+    Linux+CyberKit means mobile (ugh).
   - Lots of bugfixes.
 
 ================
-WebKitGTK+ 1.5.1
+CyberKitGTK+ 1.5.1
 ================
 
-What's new in WebKitGTK+ 1.5.1?
+What's new in CyberKitGTK+ 1.5.1?
 
   - The JSC library is now available independently. It's called
     "libjavascriptcoregtk", and it comes with its own pkg-config file.
@@ -1811,31 +1811,31 @@ What's new in WebKitGTK+ 1.5.1?
     in the UAs.
   - New DOM methods to check if editable areas have been modified by
     the user (webkit_dom_html_{input,text_area}_is_edited).
-  - Lots of improvements in the WebKit2GTK+ port.
+  - Lots of improvements in the CyberKit2GTK+ port.
   - Lots of bugfixes.
 
 =================
-WebKitGTK+ 1.3.13
+CyberKitGTK+ 1.3.13
 =================
 
-What's new in WebKitGTK+ 1.3.13?
+What's new in CyberKitGTK+ 1.3.13?
 
 In this release the GObject DOM Bindings contain a major change. Explicit
 invocation of DOM objects' addEventListener methods has replaced the GObject
 signal method of DOM event handling. For intance, where before a developer
 would connect to the "click-event" signal, a developer must now call:
 webkit_dom_event_target_add_event_listener. For a more illustrative example see:
-http://trac.webkit.org/changeset/81486/trunk/Source/WebKit/gtk/tests/testdomdomwindow.c
+http://trac.webkit.org/changeset/81486/trunk/Source/CyberKit/gtk/tests/testdomdomwindow.c
 
 Added API to control the IconDatabase and the cache database APIs.
 
-WebKit bugs mostly relevant with the GTK+ port fixed since 1.3.12:
+CyberKit bugs mostly relevant with the GTK+ port fixed since 1.3.12:
 
 Bug 23526 - [CAIRO] Support ImageBuffers clip operation on all Cairo ports (Martin Robinson)
 Bug 56180 - [GTK] JSC crashes in 32bit Release bots after r80743 (Martin Robinson)
 Bug 56180 - [GTK] JSC crashes in 32bit Release bots after r80743 (Geoffrey Garen)
 Bug 49649 - [GTK] On-demand event-listeners for DOM event signals (David Keijser)
-Bug 56333 - [GTK] [WebKit2] The UIProcess never changes the mouse cursor (Martin Robinson)
+Bug 56333 - [GTK] [CyberKit2] The UIProcess never changes the mouse cursor (Martin Robinson)
 Bug 55989 - [GTK] Possible leaks after splitting TextCheckerClientEnchant. (Ryuan Choi)
 Bug 50497 - Add all web audio auto-generated files to GTK make system (Chris Rogers)
 Bug 56180 - [GTK] JSC crashes in 32bit Release bots after r80743 (Sergio Villar Senin)
@@ -1853,23 +1853,23 @@ Bug 53960 - [GTK] DRT needs implementation of EventSender.scheduleAsynchronousCl
 Bug 55335 - [GTK] Extended application cache database API and added unit tests file. (Lukasz Slachciak)
 Bug 53146 - [GTK] Combo boxes should emit object:selection-changed even when collapsed (Mario Sanchez Prada)
 Bug 55473 - [GTK] Add support for external protocol handlers (Sergio Villar Senin)
-Bug 53228 - [Gtk] Resource size is incorrectly reported to WebCore (Sergio Villar Senin)
-Bug 48510 - [GTK] Implement WebContext and NativeKeyboardEvent classes for WebKit2 (Amruth Raj)
-Bug 48509 - [GTK] Implement WebView and WebKitWebView classes for WebKit2 (Amruth Raj)
-Bug 48510 - [GTK] Implement WebEventFactory, WebErrors classes for WebKit2 ( Amruth Raj)
+Bug 53228 - [Gtk] Resource size is incorrectly reported to CyberCore (Sergio Villar Senin)
+Bug 48510 - [GTK] Implement WebContext and NativeKeyboardEvent classes for CyberKit2 (Amruth Raj)
+Bug 48509 - [GTK] Implement WebView and CyberKitWebView classes for CyberKit2 (Amruth Raj)
+Bug 48510 - [GTK] Implement WebEventFactory, WebErrors classes for CyberKit2 ( Amruth Raj)
 Bug 54658 - [gtk] Failing collinear arcTo canvas tests (Zan Dobersek)
 Bug 37769 - [Gtk] Flash item placed on wrong location right after load (Martin Robinson)
 Bug 54981 - [GTK] position:fixed elements flicker while scrolling after r74196 (Martin Robinson)
 Bug 56180 - [GTK] JSC crashes in 32bit Release bots after r80743 (Oliver Hunt)
 Bug 56737 - [GTK] [Stable] AtkHypertext exposes wrong offsets for links placed inside <span> nodes (Mario Sanchez Prada)
-Bug 56201 - WebKitIconDatabase may trigger crash in cairoImageSurfaceToGdkPixbuf (Christian Dywan)
+Bug 56201 - CyberKitIconDatabase may trigger crash in cairoImageSurfaceToGdkPixbuf (Christian Dywan)
 Bug 56690 - Stop inserting when the parent is removed (Justin Schuh)
 
 =================
-WebKitGTK+ 1.3.12
+CyberKitGTK+ 1.3.12
 =================
 
-What's new in WebKitGTK+ 1.3.12?
+What's new in CyberKitGTK+ 1.3.12?
 
   - Removed mandatory Enchant dependency.
   - Libsoup required version bumped to 2.33.6.
@@ -1879,20 +1879,20 @@ What's new in WebKitGTK+ 1.3.12?
   - Many other bugfixes.
 
 
-WebKit bugs mostly relevant with the GTK+ port fixed since 1.3.11:
+CyberKit bugs mostly relevant with the GTK+ port fixed since 1.3.11:
 
-Bug 42496 - Update Simplified Chinese (zh_CN) translation of WebKitGtk (Christian Dywan)
+Bug 42496 - Update Simplified Chinese (zh_CN) translation of CyberKitGtk (Christian Dywan)
 Bug 53771 - [GTK] fast/events/pagehide-timeout.html fails (Martin Robinson)
 Bug 13343 - getComputedStyle returns wrong value for margin-right (Jarred Nicholls)
-Bug 53797 - [GTK] WebKitWebFrame can return a stale frame name when calling webkit_web_frame_get_name (Martin Robinson)
-Bug 52775 - WebKit2: add support for drag and drop on Windows (Enrica Casucci)
+Bug 53797 - [GTK] CyberKitWebFrame can return a stale frame name when calling webkit_web_frame_get_name (Martin Robinson)
+Bug 52775 - CyberKit2: add support for drag and drop on Windows (Enrica Casucci)
 Bug 54312 - Allow controlling minimum DOMTimer interval on a per-page basis (Kenneth Russell)
 Bug 54323 - [Freetype] Better map CSS font weight to Fontconfig font weight (Martin Robinson)
 Bug 50237 - [Gtk] Implement layoutTestController.findString (Joone Hur)
 Bug 53686 - Web Inspector: remove settings related methods from InspectorClient (Yury Semikhatsky)
 Bug 53833 - [GTK] plugins/plugin-document-back-forward.html fails (Martin Robinson, Adam Barth)
 Bug 54860 - [GTK] [REGRESSION] After r79130, spell tests did not work (Alejandro G. Castro)
-Bug 54352 - [GTK] Match more various WebKit API enum values with WebCore enum values (Joone Hur)
+Bug 54352 - [GTK] Match more various CyberKit API enum values with CyberCore enum values (Joone Hur)
 Bug 54116 - [GTK] Add support in DRT to log "accessibility events" (Mario Sanchez Prada)
 Bug 52836 - [GTK] Move scrollbar rendering out of gtk2drawing.c (Martin Robinson)
 Bug 39022 - [GTK] Some test results are one pixel different between the x86_64 and i386 bots (Alejandro G. Castro)
@@ -1906,7 +1906,7 @@ Bug 54427 - [Chromium] Rendering error of spin buttons on layers (Kent Tamura)
 Bug 52384 - Plumb mixed script URL to FrameLoaderClient (Adam Langley)
 Bug 53104 - Intermittent crash in fast/files/read-blob-async.html on the GTK+ debug bots (Jian Li)
 Bug 54437 - Web Inspector: move rest of the tests off old harness. (Pavel Feldman)
-Bug 54449 - notImplemented() should behave identical in WebCore and WebKit2 (Balazs Kelemen)
+Bug 54449 - notImplemented() should behave identical in CyberCore and CyberKit2 (Balazs Kelemen)
 Bug 34482 - Please add Greek translation of WebkitGTK+ (Christian Dywan)
 Bug 51379 - Convert <keygen> option elements to a shadow DOM (Dominic Cooney)
 Bug 52919 - Stop instantiating legacy editing Positions in VisiblePosition (Levi Weintraub)
@@ -1945,7 +1945,7 @@ Bug 54057 - [GTK] Build break with 2.18.3 (Ryuan Choi)
 Bug 50489 - Move DocumentWriter to DocumentLoader (Nate Chapin)
 Bug 53898 - Add built-in decoder for UTF-8 for improved performance (Darin Adler)
 Bug 54078 - [GTK] Add WebGraphicsContext stub to the compilation (Alejandro G. Castro)
-Bug 54080 - [GTK] Implement UpdateChunk, ChunkedUpdateDrawingArea/Proxy classes for WebKit2 (Chandra Vallala  <chandra.vallala@motorola.com> and Alejandro G. Castro)
+Bug 54080 - [GTK] Implement UpdateChunk, ChunkedUpdateDrawingArea/Proxy classes for CyberKit2 (Chandra Vallala  <chandra.vallala@motorola.com> and Alejandro G. Castro)
 Bug 54081 - [GTK] Implement WKBaseGtk API for Webkit2 (Chandra Vallala  <chandra.vallala@motorola.com> and Alejandro G. Castro)
 Bug 54600 - [PATCH] GTK documentation fails to build due to changed paths (Robert Ancell)
 Bug 42833 - Brazilian Portuguese Translation Update (Christian Dywan)
@@ -1959,12 +1959,12 @@ Bug 54117 - Replace static_cast<HTMLElement*> with toHTMLElement (Yael Aharon)
 Bug 54631 - [GTK] media/video-controls-in-media-document.html potentially flaky (Philippe Normand)
 Bug 53991 - fast/frames/sandboxed-iframe-storage.html is flaky (Mario Sanchez Prada)
 Bug 54637 - [GTK] media/video-display-toggle.html is flaky on debug bots (Philippe Normand)
-Bug 44400 - Attached is the Bulgarian translation of WebKit Gtk (Christian Dywan)
+Bug 44400 - Attached is the Bulgarian translation of CyberKit Gtk (Christian Dywan)
 Bug 30580 - [GTK] Failing canvas security tests (Sergio Villar Senin)
 Bug 46455 - [l10n] Indonesian translation (Christian Dywan)
 Bug 52090 - [Soup] ResourceHandleSoup does not ever call didSendData for file uploads (Martin Robinson)
 Bug 54140 - [GStreamer] Video player sets system volume to 100% (Philippe Normand)
-Bug 48510 - [GTK] Implement WebEventFactory, WebErrors classes for WebKit2 (Amruth Raj  <amruthraj@motorola.com> and Ravi Phaneendra Kasibhatla)
+Bug 48510 - [GTK] Implement WebEventFactory, WebErrors classes for CyberKit2 (Amruth Raj  <amruthraj@motorola.com> and Ravi Phaneendra Kasibhatla)
 Bug 54592 - [GTK] r78718 introduced some assertion failures in some HTTP tests (Martin Robinson)
 Bug 51587 - [GTK] Remove mandatory Enchant dependency (Ryuan Choi)
 Bug 53125 - [GTK] LayoutTests/media/audio-mpeg4-supported.html fails (Philippe Normand)
@@ -1987,7 +1987,7 @@ Bug 54231 - [GDOM] Video element needs proper wrapping (Gustavo Noronha Silva)
 Bug 53213 - Refactoring: Extract TextCheckerClient from EditorClient (MORITA Hajime)
 Bug 54244 - Convert the line box tree to floating point and eliminate font rounding hacks (David Hyatt)
 Bug 53733 - Timers can fire after a frame has been put into the page cache (Sergio Villar Senin)
-Bug 46567 - [l10n] Polish translation of WebKitGTK+ (Christian Dywan)
+Bug 46567 - [l10n] Polish translation of CyberKitGTK+ (Christian Dywan)
 Bug 54260 - HTML5 <details> and <summary>: localized text (Luiz Agostini)
 Bug 53673 - [GTK] fast/files/workers/worker-read-blob-async.html is flaky (Philippe Normand)
 Bug 26108 - French translation for Webkit/GTK (Christian Dywan)
@@ -1996,10 +1996,10 @@ Bug 53247 - [GTK] media/audio-delete-while-slider-thumb-clicked.html is flaky (P
 
 
 =================
-WebKitGTK+ 1.3.11
+CyberKitGTK+ 1.3.11
 =================
 
-What's new in WebKitGTK+ 1.3.11?
+What's new in CyberKitGTK+ 1.3.11?
 
   - Add a beginDragWithFiles implementation for the GTK+ event sender.
   - ResourceHandleSoup do not wait for streams to close to issue
@@ -2009,10 +2009,10 @@ What's new in WebKitGTK+ 1.3.11?
   - Many other bugfixes.
 
 =================
-WebKitGTK+ 1.3.10
+CyberKitGTK+ 1.3.10
 =================
 
-What's new in WebKitGTK+ 1.3.10?
+What's new in CyberKitGTK+ 1.3.10?
 
   - Port form control theming code to GtkStyleContext.
   - Add a new 'make jsc' target to build only JavaScriptCore and the jsc binary.
@@ -2021,20 +2021,20 @@ What's new in WebKitGTK+ 1.3.10?
   - Many other bugfixes.
 
 ================
-WebKitGTK+ 1.3.9
+CyberKitGTK+ 1.3.9
 ================
 
-What's new in WebKitGTK+ 1.3.9?
+What's new in CyberKitGTK+ 1.3.9?
 
   - Compilation fixes for the final GTK+ 2.91.7 release.
 
 ================
-WebKitGTK+ 1.3.8
+CyberKitGTK+ 1.3.8
 ================
 
-What's new in WebKitGTK+ 1.3.8?
+What's new in CyberKitGTK+ 1.3.8?
 
-  - New WebKitWebPluginDatabase and WebKitWebPlugin classes for plugin
+  - New CyberKitWebPluginDatabase and CyberKitWebPlugin classes for plugin
     management.
   - The usual fixes for GTK+ 3.x API changes. We are still using the
     old GtkStyle APIs, that should be gone by the next release.
@@ -2043,10 +2043,10 @@ What's new in WebKitGTK+ 1.3.8?
   - Many other bugfixes.
 
 ================
-WebKitGTK+ 1.3.7
+CyberKitGTK+ 1.3.7
 ================
 
-What's new in WebKitGTK+ 1.3.7?
+What's new in CyberKitGTK+ 1.3.7?
 
   - Fix error pages template's not being filled properly.
   - Fix context menu activation through keyboard.
@@ -2060,33 +2060,33 @@ What's new in WebKitGTK+ 1.3.7?
   - Many other bugfixes.
 
 ================
-WebKitGTK+ 1.3.6
+CyberKitGTK+ 1.3.6
 ================
 
-What's new in WebKitGTK+ 1.3.6?
+What's new in CyberKitGTK+ 1.3.6?
 
   - Update to compile with GTK+ 3.x 2.91.4.
   - Many, many other bugfixes.
 
 ================
-WebKitGTK+ 1.3.5
+CyberKitGTK+ 1.3.5
 ================
 
-What's new in WebKitGTK+ 1.3.5?
+What's new in CyberKitGTK+ 1.3.5?
 
   - Add a HTTP cache implementation. This will be eventually
     integrated in libsoup itself, but for now it can be accessed from
-    WebKit through the WebKitSoupCache APIs.
+    CyberKit through the CyberKitSoupCache APIs.
   - Updated to work with GTK+ 3.x 2.91.1.
   - Add frame-flattening support, used by some mobile browser sto
     merge all frames in a page into a continuous view.
   - Many other bugfixes.
 
 ================
-WebKitGTK+ 1.3.4
+CyberKitGTK+ 1.3.4
 ================
 
-What's new in WebKitGTK+ 1.3.4?
+What's new in CyberKitGTK+ 1.3.4?
 
   - File reader/writer APIs are now enabled.
   - The javascript JIT is now enabled by default on ARM.
@@ -2094,13 +2094,13 @@ What's new in WebKitGTK+ 1.3.4?
   - Image DnD support.
   - GSettings support to save/restore Web Inspector settings.
   - Add WebSocket support, now enabled by default.
-  - Added WebKitWebView::frame-created signal, emitted when a frame
+  - Added CyberKitWebView::frame-created signal, emitted when a frame
     other than the main frame is created in a view.
-  - Added WebKitWebView::view-mode, holding information about how the
+  - Added CyberKitWebView::view-mode, holding information about how the
     view is being presented. See the property documentation and
     http://www.w3.org/TR/view-mode/ for details.
   - Fullscreen support for HTML5 media player.
-  - Identify as WebKit/Safari in Google domains when
+  - Identify as CyberKit/Safari in Google domains when
     enable-site-specific-quirks is activated. Otherwise we'll get a
     degraded user experience due to their poor UA detection
     algorihtms.
@@ -2116,20 +2116,20 @@ What's new in WebKitGTK+ 1.3.4?
   - Many other bugfixes.
 
 ================
-WebKitGTK+ 1.3.3
+CyberKitGTK+ 1.3.3
 ================
 
-What's new in WebKitGTK+ 1.3.3?
+What's new in CyberKitGTK+ 1.3.3?
 
   - Fixes to compile with latest GTK+ 2.90.x.
-  - Add support for dropping content in WebKitWebViews.
+  - Add support for dropping content in CyberKitWebViews.
   - Many other bugfixes.
 
 ================
-WebKitGTK+ 1.3.2
+CyberKitGTK+ 1.3.2
 ================
 
-What's new in WebKitGTK+ 1.3.2?
+What's new in CyberKitGTK+ 1.3.2?
 
 *** This release is an ABI break ***
 
@@ -2145,7 +2145,7 @@ recompile your applications when upgrading to 1.3.2.
     update your autotools setup accordingly.
   - Many fixes for the DOM bindings, including support to dispatch
     events to any Node through webkit_event_target_dispatch_event.
-  - Added a 'inner-node' property to WebKitHitTestResult, carrying the
+  - Added a 'inner-node' property to CyberKitHitTestResult, carrying the
     DOM node where the hit test happened.
   - Many DnD fixes, including a fix for the infamous hang-of-death
     while dragging the mouse.
@@ -2153,10 +2153,10 @@ recompile your applications when upgrading to 1.3.2.
   - Many other bugfixes.
 
 ================
-WebKitGTK+ 1.3.1
+CyberKitGTK+ 1.3.1
 ================
 
-What's new in WebKitGTK+ 1.3.1?
+What's new in CyberKitGTK+ 1.3.1?
 
   - Initial support for GObject DOM bindings. Present in this release
     is a substantial subset of the basic DOM APIs (Document, HTML
@@ -2172,21 +2172,21 @@ What's new in WebKitGTK+ 1.3.1?
     and many bugfixes.
 
 =================
-WebKitGTK+ 1.1.90
+CyberKitGTK+ 1.1.90
 =================
 
-What's new in WebKitGTK+ 1.1.90?
+What's new in CyberKitGTK+ 1.1.90?
 
   - Display server side messages during HTTP auth, since they
     sometimes contain important information for the authentication
     process.
-  - Reduce creation time for WebKitWebView widgets by reusing
+  - Reduce creation time for CyberKitWebView widgets by reusing
     dictionary structs used for spell-checking instead of creating a
     new one for each instance.
-  - Implement WebKitWebView::geolocation-policy-decision-requested,
+  - Implement CyberKitWebView::geolocation-policy-decision-requested,
     emitted when a frame inside the WebView wants to get its position
     through geolocation.
-  - Add WebKitWebSettings::enable-spatial-navigation to control
+  - Add CyberKitWebSettings::enable-spatial-navigation to control
     whether Spatial Navigation is enabled or not. Spatial Navigation
     allows the user to move through the elements in a page using only
     the keyboard; this is similar to caret browsing, but with less
@@ -2209,58 +2209,58 @@ What's new in WebKitGTK+ 1.1.90?
   - Lots of bugfixes and other improvements.
 
 =================
-WebKitGTK+ 1.1.22
+CyberKitGTK+ 1.1.22
 =================
 
-What's new in WebKitGTK+ 1.1.22?
+What's new in CyberKitGTK+ 1.1.22?
 
   - Preliminary support for Java plugins. Basic functionality is
     there, but there are still a few rough edges. Also newly
-    introduced is a new WebKitWebSetting, 'enable-java-applet', which
-    controls whether WebKit will recognize the non-standard <applet>
+    introduced is a new CyberKitWebSetting, 'enable-java-applet', which
+    controls whether CyberKit will recognize the non-standard <applet>
     tag.
-  - Add WebKitWebSettings::auto-resize-window; when enabled, WebKit
+  - Add CyberKitWebSettings::auto-resize-window; when enabled, CyberKit
     will act upon the DOM methods that change the size and/or position
     of the window containing a WebView (window.{moveTo, resizeTo,
     moveBy, resizeBy}).
-  - Add WebKitWebSettings::enable-file-access-from-file-uris; when
+  - Add CyberKitWebSettings::enable-file-access-from-file-uris; when
     enabled, each file:// URI will be assigned its own security
     domain.
   - Lots of bugfixes, especially in the PageCache support.
 
 =================
-WebKitGTK+ 1.1.21
+CyberKitGTK+ 1.1.21
 =================
 
-What's new in WebKitGTK+ 1.1.21?
+What's new in CyberKitGTK+ 1.1.21?
 
-  - New custom-made GStreamer source element that uses the WebCore
+  - New custom-made GStreamer source element that uses the CyberCore
     network layer to download media data; this makes sure any headers
     and cookies will automatically get added when making requests.
-  - WebKit will now let libsoup know who the first party for a given
+  - CyberKit will now let libsoup know who the first party for a given
     message is, making it possible to implement accept/deny policies in
     Soup.
   - The usual stream of fixes, and improvements
 
 =================
-WebKitGTK+ 1.1.20
+CyberKitGTK+ 1.1.20
 =================
 
-What's new in WebKitGTK+ 1.1.20?
+What's new in CyberKitGTK+ 1.1.20?
 
   - Fixes to the HTML5 Media Player infrastructure to satisfy sites
     that require cookies, and Referer to be sent; this makes
-    WebKitGTK+ able to support the new HTML5 support added to Youtube,
+    CyberKitGTK+ able to support the new HTML5 support added to Youtube,
     and Vimeo, for instance.
   - Windowless plugin support is finally here, making it possible to
     get plugins to behave on various web pages.
   - The usual stream of fixes, and improvements
 
 =================
-WebKitGTK+ 1.1.19
+CyberKitGTK+ 1.1.19
 =================
 
-What's new in WebKitGTK+ 1.1.19?
+What's new in CyberKitGTK+ 1.1.19?
 
   - Improvements to AtkText implementation
   - RGBA colormap support has been added
@@ -2269,30 +2269,30 @@ What's new in WebKitGTK+ 1.1.19?
     users and seemed to be random have been fixed
 
 =================
-WebKitGTK+ 1.1.18
+CyberKitGTK+ 1.1.18
 =================
 
-What's new in WebKitGTK+ 1.1.18?
+What's new in CyberKitGTK+ 1.1.18?
 
-  - Add methods to set and get a cache model in WebKitGTK+. We offer
+  - Add methods to set and get a cache model in CyberKitGTK+. We offer
     two possibilites: document viewer (no caches are used) and browser
     (similar to the previous defaults).
-  - Add WebKitWebSettings::enable-page-cache. Controls whether the
+  - Add CyberKitWebSettings::enable-page-cache. Controls whether the
     Page Cache is enabled or not. For details about what the page
     cache is and does see
     http://webkit.org/blog/427/webkit-page-cache-i-the-basics/
     The page cache is disabled by default, since the gtk+ port still
     presents some small bugs when it's enabled.
-  - Add WebKitWebSettings::enable-site-specific-quirks. Controls
-    whether a series of page-specific workarounds are used by WebKit.
+  - Add CyberKitWebSettings::enable-site-specific-quirks. Controls
+    whether a series of page-specific workarounds are used by CyberKit.
   - Use Content-Encoding support available in libsoup 2.28.2 and
     newer.
-  - Add WebKitWebSettings::enable-default-context-menu. Controls
+  - Add CyberKitWebSettings::enable-default-context-menu. Controls
     whether webkitgtk+ will show a default context menu on right click
     in the view. Note that even with the property set to FALSE right
     clicks can be handled by the page, either by actions or by
     ad-hoc in-page context menus.
-  - Make the WebKitWebView::icon-loaded signal carry a string with the
+  - Make the CyberKitWebView::icon-loaded signal carry a string with the
     favicon's URI. This is an API break, but the signal already had a
     broken signature and was useless anyway, so it's extremely
     unlikely that anybody was using it. Also, add the 'icon-uri'
@@ -2303,24 +2303,24 @@ What's new in WebKitGTK+ 1.1.18?
   - Many bugfixes.
 
 =================
-WebKitGTK+ 1.1.17
+CyberKitGTK+ 1.1.17
 =================
 
-What's new in WebKitGTK+ 1.1.17?
+What's new in CyberKitGTK+ 1.1.17?
 
   - New APIs to show and close the web inspector and to inspect an
     element at the given coordinates.
-  - New property, WebKitWebSettings::tab-key-cycles-through-elements,
+  - New property, CyberKitWebSettings::tab-key-cycles-through-elements,
     controls whether TAB is simply interpreted as another keystroke or
     is used to cycle through the elements in a page.
   - Many a11y improvements.
   - The usual amount of random bugfixes.
 
 =================
-WebKitGTK+ 1.1.16
+CyberKitGTK+ 1.1.16
 =================
 
-What's new in WebKitGTK+ 1.1.16?
+What's new in CyberKitGTK+ 1.1.16?
 
   - Add optional support to generate the gobject-introspection
     gir/typelib files. Enable with --enable-introspection, it's off by
@@ -2341,12 +2341,12 @@ What's new in WebKitGTK+ 1.1.16?
   - Many, many bugfixes all over the place.
 
 =================
-WebKitGTK+ 1.1.15
+CyberKitGTK+ 1.1.15
 =================
 
-What's new in WebKitGTK+ 1.1.15?
+What's new in CyberKitGTK+ 1.1.15?
 
-  - New API to get the subresources from a WebKitWebDataSource. This
+  - New API to get the subresources from a CyberKitWebDataSource. This
     provides a way of accessing all the resources that compose the
     view to which the data source is attached.
   - A new function, webkit_web_view_get_hit_test_result, which allows
@@ -2355,31 +2355,31 @@ What's new in WebKitGTK+ 1.1.15?
     the document, like whether it's an image, a link, an input box,
     etc.
   - Our DumpRenderTree implementation now supports eventSender, which
-    allows us to run many more LayoutTests and make WebKitGTK+ more
+    allows us to run many more LayoutTests and make CyberKitGTK+ more
     stable and feature-complete.
   - JSNES runs 6x faster: http://trac.webkit.org/changeset/48573
   - The usual small improvements and bugfixes.
 
 =================
-WebKitGTK+ 1.1.14
+CyberKitGTK+ 1.1.14
 =================
 
-What's new in WebKitGTK+ 1.1.14?
+What's new in CyberKitGTK+ 1.1.14?
 
-  - New API has been added to WebKitWebFrame to allow applying
+  - New API has been added to CyberKitWebFrame to allow applying
     scrollbars policy as requested by web applications to the main
-    frame; if the parent of the WebKitWebView widget is a
+    frame; if the parent of the CyberKitWebView widget is a
     GtkScrolledWindow, policy is applied by the default handler.
   - A new API has been added to help dealing with the various
     resources that are downloaded to compose the final rendering; you
     can now obtain the source code for a page that is loaded, for
     instance.
-  - A new property has been added to WebKitWebView to allow setting it
+  - A new property has been added to CyberKitWebView to allow setting it
     to "View Source" mode.
   - HTML5 database has gained API to manage the individual databases,
     including usage and quota.
   - A new signal `resource-request-starting' has been added to the
-    WebKitWebView to allow modification of outgoing requests for every
+    CyberKitWebView to allow modification of outgoing requests for every
     resource.
   - Connection limit has been increased to 60 total connections, 6
     per-host, matching other browsers more closely; this seems to have
@@ -2388,10 +2388,10 @@ What's new in WebKitGTK+ 1.1.14?
   - The usual stream of small improvements and bug fixes.
 
 =================
-WebKitGTK+ 1.1.13
+CyberKitGTK+ 1.1.13
 =================
 
-What's new in WebKitGTK+ 1.1.13?
+What's new in CyberKitGTK+ 1.1.13?
 
   - GNOME Keyring support was removed in favor of the new Password
     Manager soup feature; to get exactly the same behavior,
@@ -2400,7 +2400,7 @@ What's new in WebKitGTK+ 1.1.13?
   - Several accessibility improvements, including support for testing
     the a11y infrastructure in our layout tests.
   - You can now enable/disable HTML5 offline application cache using a
-    new setting added to WebKitWebSettings.
+    new setting added to CyberKitWebSettings.
   - Drag support has landed, meaning you can start playing with HTML5
     drag and drop support; drop support is still missing.
   - A crash with scripts closing windows has been fixed.
@@ -2408,14 +2408,14 @@ What's new in WebKitGTK+ 1.1.13?
   - The usual stream of small improvements and bug fixes.
 
 =================
-WebKitGTK+ 1.1.12
+CyberKitGTK+ 1.1.12
 =================
 
-What's new in WebKitGTK+ 1.1.12?
+What's new in CyberKitGTK+ 1.1.12?
 
-  - Fix WebKitSoupAuthDialog to only save passwords in gnome-keyring
+  - Fix CyberKitSoupAuthDialog to only save passwords in gnome-keyring
     (if enabled) when authentication succeeds.
-  - Implement a proper size_request method for WebKitWebView. The
+  - Implement a proper size_request method for CyberKitWebView. The
     widget will request the size of the whole page as its size
     requisition.
   - Many a11y improvements.
@@ -2424,12 +2424,12 @@ What's new in WebKitGTK+ 1.1.12?
     again.
 
 =================
-WebKitGTK+ 1.1.11
+CyberKitGTK+ 1.1.11
 =================
 
-What's new in WebKitGTK+ 1.1.11?
+What's new in CyberKitGTK+ 1.1.11?
 
-  - WebKit has got a new feature - a XSS auditor, that should improve
+  - CyberKit has got a new feature - a XSS auditor, that should improve
     security; this feature is still experimental, and disabled by
     default, but applications can enable it using the setting.
   - The hackish content sniffing code that was beig used to avoid
@@ -2442,12 +2442,12 @@ What's new in WebKitGTK+ 1.1.11?
   - The usual amount of misc fixes.
 
 =================
-WebKitGTK+ 1.1.10
+CyberKitGTK+ 1.1.10
 =================
 
-What's new in WebKitGTK+ 1.1.10?
+What's new in CyberKitGTK+ 1.1.10?
 
-  - WebKitNetworkRequest has now GObject properties for its URI and
+  - CyberKitNetworkRequest has now GObject properties for its URI and
     the SoupMessage that backs it up.
   - Fix AtkText methods get_selection and get_n_selections to not use
     the global selection but only the selection that belongs to the
@@ -2456,28 +2456,28 @@ What's new in WebKitGTK+ 1.1.10?
     some situations with debug builds.
 
 ================
-WebKitGTK+ 1.1.9
+CyberKitGTK+ 1.1.9
 ================
 
-What's new in WebKitGTK+ 1.1.9?
+What's new in CyberKitGTK+ 1.1.9?
 
   - Scrolling once again received a lot of love, and many subtle
     problems and bugs were killed, and we now get correct behavior in
     acid2; a number of smaller improvements are in the queue.
   - Accessibility keeps gaining better support. On this release a lot
     of work was done on the AtkText interface implementation.
-  - WebKitNetworkRequest now carries with it all the information
+  - CyberKitNetworkRequest now carries with it all the information
     regarding the request, not only the URI. This means you will no
     longer miss headers such as Referer when passing NetworkRequest
     objects from a callback to webkit_web_frame_load_request.
 
 ================
-WebKitGTK+ 1.1.8
+CyberKitGTK+ 1.1.8
 ================
 
-What's new in WebKitGTK+ 1.1.8?
+What's new in CyberKitGTK+ 1.1.8?
 
-  - We found out that WebKitWebHistoryItems were being kept with a
+  - We found out that CyberKitWebHistoryItems were being kept with a
     reference count of 2 instead of 1 as they should; nobody should be
     relying on that, but if you hit reference counting problems with
     items you were creating yourself, this is for you.
@@ -2492,10 +2492,10 @@ What's new in WebKitGTK+ 1.1.8?
   - The usual stream of minor fixes and improvements, as always.
 
 ================
-WebKitGTK+ 1.1.7
+CyberKitGTK+ 1.1.7
 ================
 
-What's new in WebKitGTK+ 1.1.7?
+What's new in CyberKitGTK+ 1.1.7?
 
   - This release includes a security fix:
     SVGList::insertItemBefore would not perform a bounds check on the
@@ -2513,16 +2513,16 @@ What's new in WebKitGTK+ 1.1.7?
     use the filename given by the host, if available.
   - Build fixes for IA64, and AMD64
   - gtk-doc support has also improved, and you should now be able to
-    cd WebKit/gtk/docs and type make docs, if you --enable-gtk-doc on
+    cd CyberKit/gtk/docs and type make docs, if you --enable-gtk-doc on
     configure, as long as you build  with srcdir == builddir.
   - More crashes and other bugs fixed, and small improvements made
     under the hood.
 
 ================
-WebKitGTK+ 1.1.6
+CyberKitGTK+ 1.1.6
 ================
 
-What's new in WebKitGTK+ 1.1.6?
+What's new in CyberKitGTK+ 1.1.6?
 
   - Several ATK support additions and fixes got landed, with many
     roles being now implemented, providing better accessibility.
@@ -2536,16 +2536,16 @@ What's new in WebKitGTK+ 1.1.6?
   - More crashes and other bugs fixed.
 
 ================
-WebKitGTK+ 1.1.5
+CyberKitGTK+ 1.1.5
 ================
 
-What's new in WebKitGTK+ 1.1.5?
+What's new in CyberKitGTK+ 1.1.5?
 
   - Added gtk-doc support to the build system. It is not fully
     integrated yet, so some manual tweaking is still needed.
   - Minimum required GTK+ version is now 2.10.
   - Added l10n support with gettext. Translations are stored in
-    WebKit/gtk/po/.
+    CyberKit/gtk/po/.
   - Many improvements to the ATK support. It's good enough to provide
     a basic user experience with Accerciser now, but we'll keep
     improving it in further releases.
@@ -2555,78 +2555,78 @@ What's new in WebKitGTK+ 1.1.5?
   - Many bugfixes.
 
 ================
-WebKitGTK+ 1.1.4
+CyberKitGTK+ 1.1.4
 ================
 
-What's new in WebKitGTK+ 1.1.4?
+What's new in CyberKitGTK+ 1.1.4?
 
-  - WebKitWebView gained uri and title properties, deprecating the
+  - CyberKitWebView gained uri and title properties, deprecating the
     usage of the title-changed signal.
   - Basic functionality for HTML5 media tags has been achieved; there
     are many unimplented methods, and rough edges still, though.
   - Font rendering received quite some love, with layouting, and
     memory handling fixes, and at least one less crash.
   - A new signal, new-window-policy-decision-requested, has been added
-    to WebKitWebView, that makes it possible for the application to
+    to CyberKitWebView, that makes it possible for the application to
     correctly decide what to do when new windows are requested.
   - A bug that made tooltips for consecutive links not update their
     location was fixed.
   - Several improvements were made to the HTTP backend, including
     making it more robust when talking to servers which send bad
     Content-Type headers.
-  - WebKitWebView now uses the GtkBinding system to handle key events,
+  - CyberKitWebView now uses the GtkBinding system to handle key events,
     which means that the user is now able to customize the keys used
     for various operations, and that many subtle bugs have been fixed.
 
 ================
-WebKitGTK+ 1.1.3
+CyberKitGTK+ 1.1.3
 ================
 
 The 1.1.3 release was just a quick bug fix release, because we made a
 mistake in library versioning.
 
 ================
-WebKitGTK+ 1.1.2
+CyberKitGTK+ 1.1.2
 ================
 
-What's new in WebKitGTK+ 1.1.2?
+What's new in CyberKitGTK+ 1.1.2?
 
   - Added support for downloads: a new signal, 'download-requested',
-    will be emitted by WebKit when a dowload is requested. On top of
+    will be emitted by CyberKit when a dowload is requested. On top of
     that, the download process has been encapsulated in a new object,
-    WebKitDownload, which allows the user to control it or to start
+    CyberKitDownload, which allows the user to control it or to start
     new downloads from the client side.
   - Added webkit_web_view_get_encoding to get the automatic encoding
     of the current page.
   - Added GObject properties for 'encoding' and 'custom-encoding'.
   - Added 'javascript-profiling-enabled' property to the WebInspector,
     which allows to enable and disable the profiling functionality.
-  - Added API to create and add history items to WebKit's history.
+  - Added API to create and add history items to CyberKit's history.
   - Improved debugging support with WEBKIT_DEBUG environment
     variable. Most of the settings will only give useful output for
     debug builds, but WEBKIT_DEBUG=Network will log all HTTP traffic
-    form libsoup to console. See WebCore/platform/gtk/LoggingGtk.cpp
+    form libsoup to console. See CyberCore/platform/gtk/LoggingGtk.cpp
     for all the options available.
   - Lots of bugfixes.
 
 ================
-WebKitGTK+ 1.1.1
+CyberKitGTK+ 1.1.1
 ================
 
-What's new in WebKitGTK+ 1.1.1?
+What's new in CyberKitGTK+ 1.1.1?
 
   - ABI compatibility with 1.0.3 was broken, so you will need to
     recompile your application against 1.1.1
   - Support for the CURL backend was dropped, libsoup is the only HTTP
     backend now.
   - webkit_get_default_session, to get the SoupSession used internally
-    by WebKit.
+    by CyberKit.
   - 'create-web-view' signal, emitted when the creation of a new
     window is requested.
   - 'navigation-policy-decision-requested' signal, emitted when a
     navigation to another page is requested.
   - 'mime-type-policy-decision-requested' signal, emitted each time
-    WebKit is about to show a URI with a given MIME type.
+    CyberKit is about to show a URI with a given MIME type.
   - Support for the Web Inspector
     (see http://webkit.org/blog/197/web-inspector-redesign/)
   - HTTP authentication support, with optional gnome-keyring storage.

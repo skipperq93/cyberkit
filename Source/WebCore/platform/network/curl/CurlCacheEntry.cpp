@@ -46,7 +46,7 @@
 #include <wtf/SHA1.h>
 #include <wtf/text/StringToIntegerConversion.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 CurlCacheEntry::CurlCacheEntry(const String& url, ResourceHandle* job, const String& cacheDir)
     : m_contentFile(FileSystem::invalidPlatformFileHandle)

@@ -46,7 +46,7 @@ void AccessibilityController::resetToConsistentState()
         removeNotificationListener();
 }
 
-static WebCore::AccessibilityObjectAtspi* findAccessibleObjectById(WebCore::AccessibilityObjectAtspi& axObject, const String& elementID)
+static CyberCore::AccessibilityObjectAtspi* findAccessibleObjectById(CyberCore::AccessibilityObjectAtspi& axObject, const String& elementID)
 {
     axObject.updateBackingStore();
     if (axObject.id() == elementID)
@@ -63,7 +63,7 @@ static WebCore::AccessibilityObjectAtspi* findAccessibleObjectById(WebCore::Acce
 RefPtr<AccessibilityUIElement> AccessibilityController::accessibleElementById(JSStringRef id)
 {
     WKBundlePageRef page = InjectedBundle::singleton().page()->page();
-    auto* rootObject = static_cast<WebCore::AccessibilityObjectAtspi*>(WKAccessibilityRootObject(page));
+    auto* rootObject = static_cast<CyberCore::AccessibilityObjectAtspi*>(WKAccessibilityRootObject(page));
     if (!rootObject)
         return nullptr;
 
@@ -86,7 +86,7 @@ void AccessibilityController::injectAccessibilityPreference(JSStringRef domain, 
 Ref<AccessibilityUIElement> AccessibilityController::rootElement()
 {
     WKBundlePageRef page = InjectedBundle::singleton().page()->page();
-    auto* element = static_cast<WebCore::AccessibilityObjectAtspi*>(WKAccessibilityRootObject(page));
+    auto* element = static_cast<CyberCore::AccessibilityObjectAtspi*>(WKAccessibilityRootObject(page));
     return AccessibilityUIElement::create(element);
 }
 
@@ -96,7 +96,7 @@ RefPtr<AccessibilityUIElement> AccessibilityController::focusedElement()
     if (!WKAccessibilityRootObject(page))
         return nullptr;
 
-    if (auto* element = static_cast<WebCore::AccessibilityObjectAtspi*>(WKAccessibilityFocusedObject(page)))
+    if (auto* element = static_cast<CyberCore::AccessibilityObjectAtspi*>(WKAccessibilityFocusedObject(page)))
         return AccessibilityUIElement::create(element);
     return nullptr;
 }

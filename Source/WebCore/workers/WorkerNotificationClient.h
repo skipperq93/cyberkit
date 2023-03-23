@@ -31,7 +31,7 @@
 #include "ScriptExecutionContextIdentifier.h"
 #include <wtf/ThreadSafeRefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WorkerGlobalScope;
 
@@ -57,6 +57,6 @@ private:
     WorkerGlobalScope& m_workerScope;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

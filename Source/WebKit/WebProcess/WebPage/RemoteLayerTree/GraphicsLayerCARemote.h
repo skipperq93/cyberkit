@@ -28,16 +28,16 @@
 #include <CyberCore/GraphicsLayerCA.h>
 #include <CyberCore/PlatformLayer.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class RemoteLayerTreeContext;
 
-class GraphicsLayerCARemote final : public WebCore::GraphicsLayerCA {
+class GraphicsLayerCARemote final : public CyberCore::GraphicsLayerCA {
 public:
-    GraphicsLayerCARemote(Type layerType, WebCore::GraphicsLayerClient&, RemoteLayerTreeContext&);
+    GraphicsLayerCARemote(Type layerType, CyberCore::GraphicsLayerClient&, RemoteLayerTreeContext&);
     virtual ~GraphicsLayerCARemote();
 
-    bool filtersCanBeComposited(const WebCore::FilterOperations& filters) override;
+    bool filtersCanBeComposited(const CyberCore::FilterOperations& filters) override;
 
     void moveToContext(RemoteLayerTreeContext&);
     void clearContext() { m_context = nullptr; }
@@ -45,24 +45,24 @@ public:
 private:
     bool isGraphicsLayerCARemote() const override { return true; }
 
-    Ref<WebCore::PlatformCALayer> createPlatformCALayer(WebCore::PlatformCALayer::LayerType, WebCore::PlatformCALayerClient* owner) override;
-    Ref<WebCore::PlatformCALayer> createPlatformCALayer(PlatformLayer*, WebCore::PlatformCALayerClient* owner) override;
+    Ref<CyberCore::PlatformCALayer> createPlatformCALayer(CyberCore::PlatformCALayer::LayerType, CyberCore::PlatformCALayerClient* owner) override;
+    Ref<CyberCore::PlatformCALayer> createPlatformCALayer(PlatformLayer*, CyberCore::PlatformCALayerClient* owner) override;
 #if ENABLE(MODEL_ELEMENT)
-    Ref<WebCore::PlatformCALayer> createPlatformCALayer(Ref<WebCore::Model>, WebCore::PlatformCALayerClient* owner) override;
+    Ref<CyberCore::PlatformCALayer> createPlatformCALayer(Ref<CyberCore::Model>, CyberCore::PlatformCALayerClient* owner) override;
 #endif
-    Ref<WebCore::PlatformCAAnimation> createPlatformCAAnimation(WebCore::PlatformCAAnimation::AnimationType, const String& keyPath) override;
-    Ref<WebCore::PlatformCALayer> createPlatformCALayerHost(WebCore::LayerHostingContextIdentifier, WebCore::PlatformCALayerClient*) override;
+    Ref<CyberCore::PlatformCAAnimation> createPlatformCAAnimation(CyberCore::PlatformCAAnimation::AnimationType, const String& keyPath) override;
+    Ref<CyberCore::PlatformCALayer> createPlatformCALayerHost(CyberCore::LayerHostingContextIdentifier, CyberCore::PlatformCALayerClient*) override;
 
     // PlatformCALayerRemote can't currently proxy directly composited image contents, so opt out of this optimization.
-    bool shouldDirectlyCompositeImage(WebCore::Image*) const override { return false; }
+    bool shouldDirectlyCompositeImage(CyberCore::Image*) const override { return false; }
 
-    WebCore::Color pageTiledBackingBorderColor() const override;
+    CyberCore::Color pageTiledBackingBorderColor() const override;
 
-    RefPtr<WebCore::GraphicsLayerAsyncContentsDisplayDelegate> createAsyncContentsDisplayDelegate() final;
+    RefPtr<CyberCore::GraphicsLayerAsyncContentsDisplayDelegate> createAsyncContentsDisplayDelegate() final;
 
     RemoteLayerTreeContext* m_context;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
-SPECIALIZE_TYPE_TRAITS_GRAPHICSLAYER(WebKit::GraphicsLayerCARemote, isGraphicsLayerCARemote())
+SPECIALIZE_TYPE_TRAITS_GRAPHICSLAYER(CyberKit::GraphicsLayerCARemote, isGraphicsLayerCARemote())

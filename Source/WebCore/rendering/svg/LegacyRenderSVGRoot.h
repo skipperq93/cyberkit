@@ -27,7 +27,7 @@
 #include "SVGRenderSupport.h"
 #include <wtf/WeakHashSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AffineTransform;
 class RenderSVGResourceContainer;
@@ -123,6 +123,6 @@ private:
     bool m_hasBoxDecorations : 1;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(LegacyRenderSVGRoot, isLegacySVGRoot())

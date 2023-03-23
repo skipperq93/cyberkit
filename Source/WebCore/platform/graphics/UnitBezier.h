@@ -28,7 +28,7 @@
 
 #include <math.h>
 
-namespace WebCore {
+namespace CyberCore {
 
     struct UnitBezier {
         UnitBezier(double p1x, double p1y, double p2x, double p2y)

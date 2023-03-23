@@ -32,7 +32,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct BackgroundFetchInformation;
 class BackgroundFetchRegistration;
@@ -62,6 +62,6 @@ private:
     HashMap<String, Ref<BackgroundFetchRegistration>> m_backgroundFetchRegistrations;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

@@ -90,7 +90,7 @@ static void checkChallenge(NSURLAuthenticationChallenge *challenge)
     ALLOW_DEPRECATED_DECLARATIONS_BEGIN
     WebKit::AuthenticationChallengeProxy& webChallenge = ((WKNSURLAuthenticationChallenge *)challenge)._web_authenticationChallengeProxy;
     ALLOW_DEPRECATED_DECLARATIONS_END
-    webChallenge.listener().completeChallenge(WebKit::AuthenticationChallengeDisposition::UseCredential, WebCore::Credential(credential));
+    webChallenge.listener().completeChallenge(WebKit::AuthenticationChallengeDisposition::UseCredential, CyberCore::Credential(credential));
 }
 
 - (void)performDefaultHandlingForAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge

@@ -35,8 +35,8 @@
 
 #if PLATFORM(COCOA) && ENABLE(GPU_PROCESS)
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 RemoteAudioSourceProviderManager::RemoteAudioSourceProviderManager()
     : m_queue(WorkQueue::create("RemoteAudioSourceProviderManager", WorkQueue::QOS::UserInteractive))
@@ -90,7 +90,7 @@ void RemoteAudioSourceProviderManager::removeProvider(MediaPlayerIdentifier iden
     });
 }
 
-void RemoteAudioSourceProviderManager::audioStorageChanged(MediaPlayerIdentifier identifier, ConsumerSharedCARingBuffer::Handle&& handle, const WebCore::CAAudioStreamDescription& description)
+void RemoteAudioSourceProviderManager::audioStorageChanged(MediaPlayerIdentifier identifier, ConsumerSharedCARingBuffer::Handle&& handle, const CyberCore::CAAudioStreamDescription& description)
 {
     ASSERT(!WTF::isMainRunLoop());
 
@@ -119,7 +119,7 @@ RemoteAudioSourceProviderManager::RemoteAudio::RemoteAudio(Ref<RemoteAudioSource
 {
 }
 
-void RemoteAudioSourceProviderManager::RemoteAudio::setStorage(ConsumerSharedCARingBuffer::Handle&& handle, const WebCore::CAAudioStreamDescription& description)
+void RemoteAudioSourceProviderManager::RemoteAudio::setStorage(ConsumerSharedCARingBuffer::Handle&& handle, const CyberCore::CAAudioStreamDescription& description)
 {
     m_buffer = nullptr;
     handle.takeOwnershipOfMemory(MemoryLedger::Media);

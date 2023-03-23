@@ -27,11 +27,11 @@
 
 #include <CyberCore/GeolocationClient.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPage;
 
-class WebGeolocationClient final : public WebCore::GeolocationClient {
+class WebGeolocationClient final : public CyberCore::GeolocationClient {
     WTF_MAKE_FAST_ALLOCATED;
 public:
     WebGeolocationClient(WebPage& page)
@@ -49,12 +49,12 @@ private:
     void revokeAuthorizationToken(const String&) final;
     void setEnableHighAccuracy(bool) final;
 
-    std::optional<WebCore::GeolocationPositionData> lastPosition() final;
+    std::optional<CyberCore::GeolocationPositionData> lastPosition() final;
 
-    void requestPermission(WebCore::Geolocation&) final;
-    void cancelPermissionRequest(WebCore::Geolocation&) final;
+    void requestPermission(CyberCore::Geolocation&) final;
+    void cancelPermissionRequest(CyberCore::Geolocation&) final;
 
     WebPage& m_page;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

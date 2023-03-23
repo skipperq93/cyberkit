@@ -63,36 +63,36 @@ void WebPaymentCoordinatorClient::openPaymentSetup(const String&, const String&,
     });
 }
 
-bool WebPaymentCoordinatorClient::showPaymentUI(const URL&, const Vector<URL>&, const WebCore::ApplePaySessionPaymentRequest&)
+bool WebPaymentCoordinatorClient::showPaymentUI(const URL&, const Vector<URL>&, const CyberCore::ApplePaySessionPaymentRequest&)
 {
     return false;
 }
 
-void WebPaymentCoordinatorClient::completeMerchantValidation(const WebCore::PaymentMerchantSession&)
+void WebPaymentCoordinatorClient::completeMerchantValidation(const CyberCore::PaymentMerchantSession&)
 {
 }
 
-void WebPaymentCoordinatorClient::completeShippingMethodSelection(std::optional<WebCore::ApplePayShippingMethodUpdate>&&)
+void WebPaymentCoordinatorClient::completeShippingMethodSelection(std::optional<CyberCore::ApplePayShippingMethodUpdate>&&)
 {
 }
 
-void WebPaymentCoordinatorClient::completeShippingContactSelection(std::optional<WebCore::ApplePayShippingContactUpdate>&&)
+void WebPaymentCoordinatorClient::completeShippingContactSelection(std::optional<CyberCore::ApplePayShippingContactUpdate>&&)
 {
 }
 
-void WebPaymentCoordinatorClient::completePaymentMethodSelection(std::optional<WebCore::ApplePayPaymentMethodUpdate>&&)
+void WebPaymentCoordinatorClient::completePaymentMethodSelection(std::optional<CyberCore::ApplePayPaymentMethodUpdate>&&)
 {
 }
 
 #if ENABLE(APPLE_PAY_COUPON_CODE)
 
-void WebPaymentCoordinatorClient::completeCouponCodeChange(std::optional<WebCore::ApplePayCouponCodeUpdate>&&)
+void WebPaymentCoordinatorClient::completeCouponCodeChange(std::optional<CyberCore::ApplePayCouponCodeUpdate>&&)
 {
 }
 
 #endif // ENABLE(APPLE_PAY_COUPON_CODE)
 
-void WebPaymentCoordinatorClient::completePaymentSession(WebCore::ApplePayPaymentAuthorizationResult&&)
+void WebPaymentCoordinatorClient::completePaymentSession(CyberCore::ApplePayPaymentAuthorizationResult&&)
 {
 }
 

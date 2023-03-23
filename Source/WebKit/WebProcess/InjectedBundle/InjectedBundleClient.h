@@ -39,7 +39,7 @@ template<> struct ClientTraits<WKBundleClientBase> {
 };
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class InjectedBundle;
 class WebPage;
@@ -55,6 +55,6 @@ public:
     void didReceiveMessageToPage(InjectedBundle&, WebPage&, const WTF::String&, API::Object*) override;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // InjectedBundleClient_h

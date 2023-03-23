@@ -48,7 +48,7 @@
 //------------------------------------------------------------------------------------------
 // DOMStyleSheet
 
-Class kitClass(WebCore::StyleSheet* impl)
+Class kitClass(CyberCore::StyleSheet* impl)
 {
     if (impl->isCSSStyleSheet())
         return [DOMCSSStyleSheet class];
@@ -58,22 +58,22 @@ Class kitClass(WebCore::StyleSheet* impl)
 //------------------------------------------------------------------------------------------
 // DOMCSSRule
 
-Class kitClass(WebCore::CSSRule* impl)
+Class kitClass(CyberCore::CSSRule* impl)
 {
     switch (impl->styleRuleType()) {
-    case WebCore::StyleRuleType::Unknown:
+    case CyberCore::StyleRuleType::Unknown:
         return [DOMCSSUnknownRule class];
-    case WebCore::StyleRuleType::Style:
+    case CyberCore::StyleRuleType::Style:
         return [DOMCSSStyleRule class];
-    case WebCore::StyleRuleType::Charset:
+    case CyberCore::StyleRuleType::Charset:
         return [DOMCSSCharsetRule class];
-    case WebCore::StyleRuleType::Import:
+    case CyberCore::StyleRuleType::Import:
         return [DOMCSSImportRule class];
-    case WebCore::StyleRuleType::Media:
+    case CyberCore::StyleRuleType::Media:
         return [DOMCSSMediaRule class];
-    case WebCore::StyleRuleType::FontFace:
+    case CyberCore::StyleRuleType::FontFace:
         return [DOMCSSFontFaceRule class];
-    case WebCore::StyleRuleType::Page:
+    case CyberCore::StyleRuleType::Page:
         return [DOMCSSPageRule class];
     default:
         return [DOMCSSRule class];
@@ -83,12 +83,12 @@ Class kitClass(WebCore::CSSRule* impl)
 //------------------------------------------------------------------------------------------
 // DOMCSSValue
 
-Class kitClass(WebCore::DeprecatedCSSOMValue* impl)
+Class kitClass(CyberCore::DeprecatedCSSOMValue* impl)
 {
     switch (impl->cssValueType()) {
-    case WebCore::DeprecatedCSSOMValue::CSS_PRIMITIVE_VALUE:
+    case CyberCore::DeprecatedCSSOMValue::CSS_PRIMITIVE_VALUE:
         return [DOMCSSPrimitiveValue class];
-    case WebCore::DeprecatedCSSOMValue::CSS_VALUE_LIST:
+    case CyberCore::DeprecatedCSSOMValue::CSS_VALUE_LIST:
         return [DOMCSSValueList class];
     default:
         return [DOMCSSValue class];

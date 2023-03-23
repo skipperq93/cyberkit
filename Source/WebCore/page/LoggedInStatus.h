@@ -33,7 +33,7 @@
 #include <wtf/WallTime.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class LoggedInStatus {
     WTF_MAKE_ISO_ALLOCATED_EXPORT(LoggedInStatus, WEBCORE_EXPORT);
@@ -69,16 +69,16 @@ private:
     Seconds m_timeToLive;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::LoggedInStatus::AuthenticationType> {
+template<> struct EnumTraits<CyberCore::LoggedInStatus::AuthenticationType> {
     using values = EnumValues<
-        WebCore::LoggedInStatus::AuthenticationType,
-        WebCore::LoggedInStatus::AuthenticationType::WebAuthn,
-        WebCore::LoggedInStatus::AuthenticationType::PasswordManager,
-        WebCore::LoggedInStatus::AuthenticationType::Unmanaged
+        CyberCore::LoggedInStatus::AuthenticationType,
+        CyberCore::LoggedInStatus::AuthenticationType::WebAuthn,
+        CyberCore::LoggedInStatus::AuthenticationType::PasswordManager,
+        CyberCore::LoggedInStatus::AuthenticationType::Unmanaged
     >;
 };
 

@@ -91,7 +91,7 @@
 #endif
 
 using namespace WebKit;
-using namespace WebCore;
+using namespace CyberCore;
 
 #if !USE(GTK4)
 struct ClickCounter {
@@ -111,7 +111,7 @@ public:
         g_object_get(gtk_settings_get_for_screen(gdk_event_get_screen(event)),
             "gtk-double-click-distance", &doubleClickDistance, "gtk-double-click-time", &doubleClickTime, nullptr);
 
-        // GTK+ only counts up to triple clicks, but WebCore wants to know about
+        // GTK+ only counts up to triple clicks, but CyberCore wants to know about
         // quadruple clicks, quintuple clicks, ad infinitum. Here, we replicate the
         // GDK logic for counting clicks.
         guint32 eventTime = gdk_event_get_time(event);
@@ -756,7 +756,7 @@ static void webkitWebViewBaseSnapshot(GtkWidget* widget, GtkSnapshot* snapshot)
         else {
             graphene_rect_t bounds = GRAPHENE_RECT_INIT(0, 0, widgetSize.width(), widgetSize.height());
             RefPtr<cairo_t> cr = adoptRef(gtk_snapshot_append_cairo(pageSnapshot, &bounds));
-            WebCore::Region unpaintedRegion; // This is simply unused.
+            CyberCore::Region unpaintedRegion; // This is simply unused.
             drawingArea->paint(cr.get(), IntRect { { 0, 0 }, drawingArea->size() }, unpaintedRegion);
         }
     }
@@ -799,7 +799,7 @@ static gboolean webkitWebViewBaseDraw(GtkWidget* widget, cairo_t* cr)
             ASSERT(webViewBase->priv->acceleratedBackingStore);
             webViewBase->priv->acceleratedBackingStore->paint(cr, clipRect);
         } else {
-            WebCore::Region unpaintedRegion; // This is simply unused.
+            CyberCore::Region unpaintedRegion; // This is simply unused.
             drawingArea->paint(cr, clipRect, unpaintedRegion);
         }
 
@@ -946,7 +946,7 @@ static void webkitWebViewBaseMap(GtkWidget* widget)
 #if ENABLE(DEVELOPER_MODE)
         // Xvfb doesn't support toplevel focus, so gtk_window_is_active() always returns false. We consider
         // toplevel window to be always active since it's the only one.
-        if (WebCore::PlatformDisplay::sharedDisplay().type() == WebCore::PlatformDisplay::Type::X11) {
+        if (CyberCore::PlatformDisplay::sharedDisplay().type() == CyberCore::PlatformDisplay::Type::X11) {
             if (!g_strcmp0(g_getenv("UNDER_XVFB"), "yes"))
                 flagsToUpdate.add(ActivityState::WindowIsActive);
         }
@@ -2625,7 +2625,7 @@ bool webkitWebViewBaseIsFocused(WebKitWebViewBase* webViewBase)
 #if ENABLE(DEVELOPER_MODE)
     // Xvfb doesn't support toplevel focus, so the view is never focused. We consider it to tbe focused when
     // its window is marked as active.
-    if (WebCore::PlatformDisplay::sharedDisplay().type() == WebCore::PlatformDisplay::Type::X11) {
+    if (CyberCore::PlatformDisplay::sharedDisplay().type() == CyberCore::PlatformDisplay::Type::X11) {
         if (!g_strcmp0(g_getenv("UNDER_XVFB"), "yes") && webViewBase->priv->activityState.contains(ActivityState::WindowIsActive))
             return true;
     }

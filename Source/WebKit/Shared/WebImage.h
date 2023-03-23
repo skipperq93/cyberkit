@@ -31,7 +31,7 @@
 #include <CyberCore/ImageBufferBackend.h>
 #include <wtf/Ref.h>
 
-namespace WebCore {
+namespace CyberCore {
 class ChromeClient;
 class GraphicsContext;
 class ImageBuffer;
@@ -45,16 +45,16 @@ namespace WebKit {
 
 class WebImage : public API::ObjectImpl<API::Object::Type::Image> {
 public:
-    static RefPtr<WebImage> create(const WebCore::IntSize&, ImageOptions, const WebCore::DestinationColorSpace&, WebCore::ChromeClient* = nullptr);
-    static RefPtr<WebImage> create(const WebCore::ImageBufferBackend::Parameters&, ShareableBitmapHandle&&);
-    static Ref<WebImage> create(Ref<WebCore::ImageBuffer>&&);
+    static RefPtr<WebImage> create(const CyberCore::IntSize&, ImageOptions, const CyberCore::DestinationColorSpace&, CyberCore::ChromeClient* = nullptr);
+    static RefPtr<WebImage> create(const CyberCore::ImageBufferBackend::Parameters&, ShareableBitmapHandle&&);
+    static Ref<WebImage> create(Ref<CyberCore::ImageBuffer>&&);
 
-    WebCore::IntSize size() const;
-    const WebCore::ImageBufferBackend::Parameters& parameters() const;
+    CyberCore::IntSize size() const;
+    const CyberCore::ImageBufferBackend::Parameters& parameters() const;
 
-    WebCore::GraphicsContext& context() const;
+    CyberCore::GraphicsContext& context() const;
 
-    RefPtr<WebCore::NativeImage> copyNativeImage(WebCore::BackingStoreCopy = WebCore::CopyBackingStore) const;
+    RefPtr<CyberCore::NativeImage> copyNativeImage(CyberCore::BackingStoreCopy = CyberCore::CopyBackingStore) const;
     RefPtr<ShareableBitmap> bitmap() const;
 #if USE(CAIRO)
     RefPtr<cairo_surface_t> createCairoSurface();
@@ -63,9 +63,9 @@ public:
     ShareableBitmapHandle createHandle(SharedMemory::Protection = SharedMemory::Protection::ReadWrite) const;
 
 private:
-    WebImage(Ref<WebCore::ImageBuffer>&&);
+    WebImage(Ref<CyberCore::ImageBuffer>&&);
 
-    Ref<WebCore::ImageBuffer> m_buffer;
+    Ref<CyberCore::ImageBuffer> m_buffer;
 };
 
 } // namespace WebKit

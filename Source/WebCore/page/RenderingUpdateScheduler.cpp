@@ -34,7 +34,7 @@
 #include <wtf/SystemTracing.h>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 RenderingUpdateScheduler::RenderingUpdateScheduler(Page& page)
     : m_page(page)

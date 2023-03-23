@@ -34,7 +34,7 @@
 #include "CACFLayerTreeHostClient.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 #if USE(CA)
 class CACFLayerTreeHost;
@@ -75,6 +75,6 @@ private:
     HWND m_hwnd;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(FULLSCREEN_API)

@@ -29,7 +29,7 @@
 #include "SharedBuffer.h"
 #include <wtf/text/CString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 std::unique_ptr<KeyedEncoder> KeyedEncoder::encoder()
 {
@@ -140,4 +140,4 @@ RefPtr<SharedBuffer> KeyedEncoderGlib::finishEncoding()
     return SharedBuffer::create(static_cast<const unsigned char*>(g_bytes_get_data(data.get(), nullptr)), static_cast<unsigned>(g_bytes_get_size(data.get())));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

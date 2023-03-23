@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -21,28 +21,28 @@
 #error "Only <webkitdom/webkitdom.h> can be included directly."
 #endif
 
-#ifndef WebKitDOMHTMLOptGroupElement_h
-#define WebKitDOMHTMLOptGroupElement_h
+#ifndef CyberKitDOMHTMLOptGroupElement_h
+#define CyberKitDOMHTMLOptGroupElement_h
 
 #include <glib-object.h>
-#include <webkitdom/WebKitDOMHTMLElement.h>
+#include <webkitdom/CyberKitDOMHTMLElement.h>
 #include <webkitdom/webkitdomdefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_DOM_TYPE_HTML_OPT_GROUP_ELEMENT            (webkit_dom_html_opt_group_element_get_type())
-#define WEBKIT_DOM_HTML_OPT_GROUP_ELEMENT(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_HTML_OPT_GROUP_ELEMENT, WebKitDOMHTMLOptGroupElement))
-#define WEBKIT_DOM_HTML_OPT_GROUP_ELEMENT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_HTML_OPT_GROUP_ELEMENT, WebKitDOMHTMLOptGroupElementClass)
+#define WEBKIT_DOM_HTML_OPT_GROUP_ELEMENT(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_HTML_OPT_GROUP_ELEMENT, CyberKitDOMHTMLOptGroupElement))
+#define WEBKIT_DOM_HTML_OPT_GROUP_ELEMENT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_HTML_OPT_GROUP_ELEMENT, CyberKitDOMHTMLOptGroupElementClass)
 #define WEBKIT_DOM_IS_HTML_OPT_GROUP_ELEMENT(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_DOM_TYPE_HTML_OPT_GROUP_ELEMENT))
 #define WEBKIT_DOM_IS_HTML_OPT_GROUP_ELEMENT_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_DOM_TYPE_HTML_OPT_GROUP_ELEMENT))
-#define WEBKIT_DOM_HTML_OPT_GROUP_ELEMENT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_HTML_OPT_GROUP_ELEMENT, WebKitDOMHTMLOptGroupElementClass))
+#define WEBKIT_DOM_HTML_OPT_GROUP_ELEMENT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_HTML_OPT_GROUP_ELEMENT, CyberKitDOMHTMLOptGroupElementClass))
 
-struct _WebKitDOMHTMLOptGroupElement {
-    WebKitDOMHTMLElement parent_instance;
+struct _CyberKitDOMHTMLOptGroupElement {
+    CyberKitDOMHTMLElement parent_instance;
 };
 
-struct _WebKitDOMHTMLOptGroupElementClass {
-    WebKitDOMHTMLElementClass parent_class;
+struct _CyberKitDOMHTMLOptGroupElementClass {
+    CyberKitDOMHTMLElementClass parent_class;
 };
 
 WEBKIT_DEPRECATED GType
@@ -50,48 +50,48 @@ webkit_dom_html_opt_group_element_get_type(void);
 
 /**
  * webkit_dom_html_opt_group_element_get_disabled:
- * @self: A #WebKitDOMHTMLOptGroupElement
+ * @self: A #CyberKitDOMHTMLOptGroupElement
  *
  * Returns: A #gboolean
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
-webkit_dom_html_opt_group_element_get_disabled(WebKitDOMHTMLOptGroupElement* self);
+webkit_dom_html_opt_group_element_get_disabled(CyberKitDOMHTMLOptGroupElement* self);
 
 /**
  * webkit_dom_html_opt_group_element_set_disabled:
- * @self: A #WebKitDOMHTMLOptGroupElement
+ * @self: A #CyberKitDOMHTMLOptGroupElement
  * @value: A #gboolean
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_opt_group_element_set_disabled(WebKitDOMHTMLOptGroupElement* self, gboolean value);
+webkit_dom_html_opt_group_element_set_disabled(CyberKitDOMHTMLOptGroupElement* self, gboolean value);
 
 /**
  * webkit_dom_html_opt_group_element_get_label:
- * @self: A #WebKitDOMHTMLOptGroupElement
+ * @self: A #CyberKitDOMHTMLOptGroupElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_opt_group_element_get_label(WebKitDOMHTMLOptGroupElement* self);
+webkit_dom_html_opt_group_element_get_label(CyberKitDOMHTMLOptGroupElement* self);
 
 /**
  * webkit_dom_html_opt_group_element_set_label:
- * @self: A #WebKitDOMHTMLOptGroupElement
+ * @self: A #CyberKitDOMHTMLOptGroupElement
  * @value: A #gchar
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_opt_group_element_set_label(WebKitDOMHTMLOptGroupElement* self, const gchar* value);
+webkit_dom_html_opt_group_element_set_label(CyberKitDOMHTMLOptGroupElement* self, const gchar* value);
 
 G_END_DECLS
 
-#endif /* WebKitDOMHTMLOptGroupElement_h */
+#endif /* CyberKitDOMHTMLOptGroupElement_h */

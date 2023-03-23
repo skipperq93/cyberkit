@@ -29,12 +29,12 @@
 
 #import "PlatformUtilities.h"
 #import <Foundation/Foundation.h>
-#import <CyberCore/WebCoreThread.h>
+#import <CyberCore/CyberCoreThread.h>
 #import <wtf/RetainPtr.h>
 
 namespace TestWebKitAPI {
 
-TEST(WebKitLegacy, NestedRunLoopUnderRunLoopObserverDoubleUnlock)
+TEST(CyberKitLegacy, NestedRunLoopUnderRunLoopObserverDoubleUnlock)
 {
     WebThreadEnable();
 

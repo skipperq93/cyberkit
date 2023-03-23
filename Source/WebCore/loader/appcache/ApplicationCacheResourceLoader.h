@@ -32,7 +32,7 @@
 #include <wtf/CompletionHandler.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CachedResourceLoader;
 class ResourceRequest;
@@ -67,4 +67,4 @@ private:
     bool m_hasRedirection { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

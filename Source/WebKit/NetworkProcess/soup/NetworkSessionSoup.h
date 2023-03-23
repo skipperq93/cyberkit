@@ -31,7 +31,7 @@
 
 typedef struct _SoupSession SoupSession;
 
-namespace WebCore {
+namespace CyberCore {
 class CertificateInfo;
 class SoupNetworkSession;
 struct SoupNetworkProxySettings;
@@ -52,7 +52,7 @@ public:
     NetworkSessionSoup(NetworkProcess&, const NetworkSessionCreationParameters&);
     ~NetworkSessionSoup();
 
-    WebCore::SoupNetworkSession& soupNetworkSession() const { return *m_networkSession; }
+    CyberCore::SoupNetworkSession& soupNetworkSession() const { return *m_networkSession; }
     SoupSession* soupSession() const;
 
     void setCookiePersistentStorage(const String& storagePath, SoupCookiePersistentStorageType);
@@ -61,14 +61,14 @@ public:
     bool persistentCredentialStorageEnabled() const { return m_persistentCredentialStorageEnabled; }
 
     void setIgnoreTLSErrors(bool);
-    void allowSpecificHTTPSCertificateForHost(const WebCore::CertificateInfo&, const String&);
-    void setProxySettings(const WebCore::SoupNetworkProxySettings&);
+    void allowSpecificHTTPSCertificateForHost(const CyberCore::CertificateInfo&, const String&);
+    void setProxySettings(const CyberCore::SoupNetworkProxySettings&);
 
 private:
-    std::unique_ptr<WebSocketTask> createWebSocketTask(WebPageProxyIdentifier, NetworkSocketChannel&, const WebCore::ResourceRequest&, const String& protocol, const WebCore::ClientOrigin&, bool, bool, OptionSet<WebCore::NetworkConnectionIntegrity>) final;
+    std::unique_ptr<WebSocketTask> createWebSocketTask(WebPageProxyIdentifier, NetworkSocketChannel&, const CyberCore::ResourceRequest&, const String& protocol, const CyberCore::ClientOrigin&, bool, bool, OptionSet<CyberCore::NetworkConnectionIntegrity>) final;
     void clearCredentials(WallTime) final;
 
-    std::unique_ptr<WebCore::SoupNetworkSession> m_networkSession;
+    std::unique_ptr<CyberCore::SoupNetworkSession> m_networkSession;
     bool m_persistentCredentialStorageEnabled { true };
 };
 

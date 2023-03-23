@@ -34,7 +34,7 @@
 
 #import <pal/cf/AudioToolboxSoftLink.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 AudioSampleDataConverter::AudioSampleDataConverter()
     : m_latencyAdaptationEnabled(DeprecatedGlobalSettings::webRTCAudioLatencyAdaptationEnabled())
@@ -139,4 +139,4 @@ AudioSampleDataConverter::Converter::~Converter()
         PAL::AudioConverterDispose(m_audioConverter);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

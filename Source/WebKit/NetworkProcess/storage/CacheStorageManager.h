@@ -29,7 +29,7 @@
 #include <CyberCore/DOMCacheEngine.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 struct ClientOrigin;
 }
 
@@ -44,20 +44,20 @@ struct CacheStorageRecordInformation;
 class CacheStorageManager : public CanMakeWeakPtr<CacheStorageManager> {
     WTF_MAKE_FAST_ALLOCATED;
 public:
-    static String cacheStorageOriginDirectory(const String& rootDirectory, const WebCore::ClientOrigin&);
+    static String cacheStorageOriginDirectory(const String& rootDirectory, const CyberCore::ClientOrigin&);
     static void copySaltFileToOriginDirectory(const String& rootDirectory, const String& originDirectory);
-    static HashSet<WebCore::ClientOrigin> originsOfCacheStorageData(const String& rootDirectory);
+    static HashSet<CyberCore::ClientOrigin> originsOfCacheStorageData(const String& rootDirectory);
     static uint64_t cacheStorageSize(const String& originDirectory);
     static bool hasCacheList(const String& cacheListDirectory);
 
     using QuotaCheckFunction = Function<void(uint64_t spaceRequested, CompletionHandler<void(bool)>&&)>;
-    CacheStorageManager(const String& path, CacheStorageRegistry&, const std::optional<WebCore::ClientOrigin>&, QuotaCheckFunction&&, Ref<WorkQueue>&&);
+    CacheStorageManager(const String& path, CacheStorageRegistry&, const std::optional<CyberCore::ClientOrigin>&, QuotaCheckFunction&&, Ref<WorkQueue>&&);
     ~CacheStorageManager();
-    void openCache(const String& name, WebCore::DOMCacheEngine::CacheIdentifierCallback&&);
-    void removeCache(WebCore::DOMCacheIdentifier, WebCore::DOMCacheEngine::RemoveCacheIdentifierCallback&&);
-    void allCaches(uint64_t updateCounter, WebCore::DOMCacheEngine::CacheInfosCallback&&);
-    void reference(IPC::Connection::UniqueID, WebCore::DOMCacheIdentifier);
-    void dereference(IPC::Connection::UniqueID, WebCore::DOMCacheIdentifier);
+    void openCache(const String& name, CyberCore::DOMCacheEngine::CacheIdentifierCallback&&);
+    void removeCache(CyberCore::DOMCacheIdentifier, CyberCore::DOMCacheEngine::RemoveCacheIdentifierCallback&&);
+    void allCaches(uint64_t updateCounter, CyberCore::DOMCacheEngine::CacheInfosCallback&&);
+    void reference(IPC::Connection::UniqueID, CyberCore::DOMCacheIdentifier);
+    void dereference(IPC::Connection::UniqueID, CyberCore::DOMCacheIdentifier);
 
     void connectionClosed(IPC::Connection::UniqueID);
     bool hasDataInMemory();
@@ -72,7 +72,7 @@ private:
     String saltFilePath() const;
     void makeDirty();
     bool initializeCaches();
-    void removeUnusedCache(WebCore::DOMCacheIdentifier);
+    void removeUnusedCache(CyberCore::DOMCacheIdentifier);
     void initializeCacheSize(CacheStorageCache&);
     void finishInitializingSize();
     void requestSpaceAfterInitializingSize(uint64_t size, CompletionHandler<void(bool)>&&);
@@ -86,8 +86,8 @@ private:
     CacheStorageRegistry& m_registry;
     QuotaCheckFunction m_quotaCheckFunction;
     Vector<std::unique_ptr<CacheStorageCache>> m_caches;
-    HashMap<WebCore::DOMCacheIdentifier, std::unique_ptr<CacheStorageCache>> m_removedCaches;
-    HashMap<WebCore::DOMCacheIdentifier, Vector<IPC::Connection::UniqueID>> m_cacheRefConnections;
+    HashMap<CyberCore::DOMCacheIdentifier, std::unique_ptr<CacheStorageCache>> m_removedCaches;
+    HashMap<CyberCore::DOMCacheIdentifier, Vector<IPC::Connection::UniqueID>> m_cacheRefConnections;
     Ref<WorkQueue> m_queue;
     Deque<std::pair<uint64_t, CompletionHandler<void(bool)>>> m_pendingSpaceRequests;
 };

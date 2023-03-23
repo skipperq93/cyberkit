@@ -33,7 +33,7 @@
 #include "ScalableImageDecoder.h"
 #include <stdint.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // This class decodes a BMP image. It is used in the BMP and ICO decoders,
 // which wrap it in the appropriate code to read file headers, etc.
@@ -344,4 +344,4 @@ private:
     AndMaskState m_andMaskState;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

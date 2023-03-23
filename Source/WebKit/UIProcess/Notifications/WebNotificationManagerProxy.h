@@ -35,7 +35,7 @@
 #include <wtf/UUID.h>
 #include <wtf/text/StringHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 class NotificationResources;
 struct NotificationData;
 }
@@ -65,14 +65,14 @@ public:
     void setProvider(std::unique_ptr<API::NotificationProvider>&&);
     HashMap<String, bool> notificationPermissions();
 
-    void show(WebPageProxy*, IPC::Connection&, const WebCore::NotificationData&, RefPtr<WebCore::NotificationResources>&&);
-    void show(const WebsiteDataStore&, IPC::Connection&, const WebCore::NotificationData&, RefPtr<WebCore::NotificationResources>&&);
+    void show(WebPageProxy*, IPC::Connection&, const CyberCore::NotificationData&, RefPtr<CyberCore::NotificationResources>&&);
+    void show(const WebsiteDataStore&, IPC::Connection&, const CyberCore::NotificationData&, RefPtr<CyberCore::NotificationResources>&&);
     void cancel(WebPageProxy*, const UUID& pageNotificationID);
     void clearNotifications(WebPageProxy*);
     void clearNotifications(WebPageProxy*, const Vector<UUID>& pageNotificationIDs);
     void didDestroyNotification(WebPageProxy*, const UUID& pageNotificationID);
 
-    void getNotifications(const URL&, const String&, PAL::SessionID, CompletionHandler<void(Vector<WebCore::NotificationData>&&)>&&);
+    void getNotifications(const URL&, const String&, PAL::SessionID, CompletionHandler<void(Vector<CyberCore::NotificationData>&&)>&&);
 
     void providerDidShowNotification(uint64_t notificationID);
     void providerDidClickNotification(uint64_t notificationID);
@@ -92,7 +92,7 @@ private:
     void refWebContextSupplement() override;
     void derefWebContextSupplement() override;
 
-    void showImpl(WebPageProxy*, Ref<WebNotification>&&, RefPtr<WebCore::NotificationResources>&&);
+    void showImpl(WebPageProxy*, Ref<WebNotification>&&, RefPtr<CyberCore::NotificationResources>&&);
 
     std::unique_ptr<API::NotificationProvider> m_provider;
 

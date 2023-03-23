@@ -26,7 +26,7 @@
 #include "GStreamerCommon.h"
 #include <gst/audio/audio.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class GStreamerAudioStreamDescription final: public AudioStreamDescription {
 public:
@@ -110,6 +110,6 @@ private:
     mutable PlatformDescription m_platformDescription;
 };
 
-} // WebCore
+} // CyberCore
 
 #endif // USE(GSTREAMER)

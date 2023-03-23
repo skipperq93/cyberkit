@@ -29,5 +29,5 @@
 #pragma once
 
 // The class passed here is the class that implements the dealloc method that this function is called from.
-WEBCORE_EXPORT bool WebCoreObjCScheduleDeallocateOnMainThread(Class, id);
-WEBCORE_EXPORT bool WebCoreObjCScheduleDeallocateOnMainRunLoop(Class, id);
+WEBCORE_EXPORT bool CyberCoreObjCScheduleDeallocateOnMainThread(Class, id);
+WEBCORE_EXPORT bool CyberCoreObjCScheduleDeallocateOnMainRunLoop(Class, id);

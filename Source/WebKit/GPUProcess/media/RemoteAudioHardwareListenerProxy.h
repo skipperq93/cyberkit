@@ -41,7 +41,7 @@ namespace WebKit {
 
 class GPUConnectionToWebProcess;
 
-class RemoteAudioHardwareListenerProxy final : private WebCore::AudioHardwareListener::Client {
+class RemoteAudioHardwareListenerProxy final : private CyberCore::AudioHardwareListener::Client {
     WTF_MAKE_FAST_ALLOCATED;
 public:
     RemoteAudioHardwareListenerProxy(GPUConnectionToWebProcess&, RemoteAudioHardwareListenerIdentifier&&);
@@ -55,7 +55,7 @@ private:
 
     WeakPtr<GPUConnectionToWebProcess> m_gpuConnection;
     RemoteAudioHardwareListenerIdentifier m_identifier;
-    Ref<WebCore::AudioHardwareListener> m_listener;
+    Ref<CyberCore::AudioHardwareListener> m_listener;
 };
 
 }

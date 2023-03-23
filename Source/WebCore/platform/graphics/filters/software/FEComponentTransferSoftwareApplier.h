@@ -24,7 +24,7 @@
 
 #include "FilterEffectApplier.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class FEComponentTransfer;
 class PixelBuffer;
@@ -53,4 +53,4 @@ private:
     void applyPlatform(PixelBuffer&) const;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

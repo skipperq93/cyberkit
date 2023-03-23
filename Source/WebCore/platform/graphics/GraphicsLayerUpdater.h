@@ -28,7 +28,7 @@
 #include "DisplayRefreshMonitorClient.h"
 #include "PlatformScreen.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class DisplayRefreshMonitorFactory;
 class GraphicsLayerUpdater;
@@ -57,4 +57,4 @@ private:
     bool m_scheduled { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

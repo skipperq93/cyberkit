@@ -32,7 +32,7 @@
 #include <openssl/ssl.h>
 #include <wtf/CrossThreadCopier.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 CertificateInfo::CertificateInfo(int verificationError, CertificateChain&& certificateChain)
     : m_verificationError(verificationError)

@@ -42,114 +42,114 @@
 #import <CyberCore/WAKAppKitStubs.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
-template<typename WebCoreType, typename WKDOMType>
-static WKDOMType toWKDOMType(WebCoreType impl, DOMCache<WebCoreType, WKDOMType>& cache);
+template<typename CyberCoreType, typename WKDOMType>
+static WKDOMType toWKDOMType(CyberCoreType impl, DOMCache<CyberCoreType, WKDOMType>& cache);
 
 // -- Caches -- 
 
-DOMCache<WebCore::Node*, __unsafe_unretained WKDOMNode *>& WKDOMNodeCache()
+DOMCache<CyberCore::Node*, __unsafe_unretained WKDOMNode *>& WKDOMNodeCache()
 {
-    static NeverDestroyed<DOMCache<WebCore::Node*, __unsafe_unretained WKDOMNode *>> cache;
+    static NeverDestroyed<DOMCache<CyberCore::Node*, __unsafe_unretained WKDOMNode *>> cache;
     return cache;
 }
 
-DOMCache<WebCore::Range*, __unsafe_unretained WKDOMRange *>& WKDOMRangeCache()
+DOMCache<CyberCore::Range*, __unsafe_unretained WKDOMRange *>& WKDOMRangeCache()
 {
-    static NeverDestroyed<DOMCache<WebCore::Range*, __unsafe_unretained WKDOMRange *>> cache;
+    static NeverDestroyed<DOMCache<CyberCore::Range*, __unsafe_unretained WKDOMRange *>> cache;
     return cache;
 }
 
 // -- Node and classes derived from Node. --
 
-static Class WKDOMNodeClass(WebCore::Node* impl)
+static Class WKDOMNodeClass(CyberCore::Node* impl)
 {
     switch (impl->nodeType()) {
-    case WebCore::Node::ELEMENT_NODE:
+    case CyberCore::Node::ELEMENT_NODE:
         return [WKDOMElement class];
-    case WebCore::Node::DOCUMENT_NODE:
+    case CyberCore::Node::DOCUMENT_NODE:
         return [WKDOMDocument class];
-    case WebCore::Node::TEXT_NODE:
+    case CyberCore::Node::TEXT_NODE:
         return [WKDOMText class];
-    case WebCore::Node::ATTRIBUTE_NODE:
-    case WebCore::Node::CDATA_SECTION_NODE:
-    case WebCore::Node::PROCESSING_INSTRUCTION_NODE:
-    case WebCore::Node::COMMENT_NODE:
-    case WebCore::Node::DOCUMENT_TYPE_NODE:
-    case WebCore::Node::DOCUMENT_FRAGMENT_NODE:
+    case CyberCore::Node::ATTRIBUTE_NODE:
+    case CyberCore::Node::CDATA_SECTION_NODE:
+    case CyberCore::Node::PROCESSING_INSTRUCTION_NODE:
+    case CyberCore::Node::COMMENT_NODE:
+    case CyberCore::Node::DOCUMENT_TYPE_NODE:
+    case CyberCore::Node::DOCUMENT_FRAGMENT_NODE:
         return [WKDOMNode class];
     }
     ASSERT_NOT_REACHED();
     return nil;
 }
 
-static RetainPtr<WKDOMNode> createWrapper(WebCore::Node* impl)
+static RetainPtr<WKDOMNode> createWrapper(CyberCore::Node* impl)
 {
     return adoptNS([[WKDOMNodeClass(impl) alloc] _initWithImpl:impl]);
 }
 
-WebCore::Node* toWebCoreNode(WKDOMNode *wrapper)
+CyberCore::Node* toCyberCoreNode(WKDOMNode *wrapper)
 {
     return wrapper ? wrapper->_impl.get() : 0;
 }
 
-WKDOMNode *toWKDOMNode(WebCore::Node* impl)
+WKDOMNode *toWKDOMNode(CyberCore::Node* impl)
 {
-    return toWKDOMType<WebCore::Node*, __unsafe_unretained WKDOMNode *>(impl, WKDOMNodeCache());
+    return toWKDOMType<CyberCore::Node*, __unsafe_unretained WKDOMNode *>(impl, WKDOMNodeCache());
 }
 
-WebCore::Element* toWebCoreElement(WKDOMElement *wrapper)
+CyberCore::Element* toCyberCoreElement(WKDOMElement *wrapper)
 {
-    return wrapper ? reinterpret_cast<WebCore::Element*>(wrapper->_impl.get()) : 0;
+    return wrapper ? reinterpret_cast<CyberCore::Element*>(wrapper->_impl.get()) : 0;
 }
 
-WKDOMElement *toWKDOMElement(WebCore::Element* impl)
+WKDOMElement *toWKDOMElement(CyberCore::Element* impl)
 {
-    return static_cast<WKDOMElement*>(toWKDOMNode(static_cast<WebCore::Node*>(impl)));
+    return static_cast<WKDOMElement*>(toWKDOMNode(static_cast<CyberCore::Node*>(impl)));
 }
 
-WebCore::Document* toWebCoreDocument(WKDOMDocument *wrapper)
+CyberCore::Document* toCyberCoreDocument(WKDOMDocument *wrapper)
 {
-    return wrapper ? reinterpret_cast<WebCore::Document*>(wrapper->_impl.get()) : 0;
+    return wrapper ? reinterpret_cast<CyberCore::Document*>(wrapper->_impl.get()) : 0;
 }
 
-WKDOMDocument *toWKDOMDocument(WebCore::Document* impl)
+WKDOMDocument *toWKDOMDocument(CyberCore::Document* impl)
 {
-    return static_cast<WKDOMDocument*>(toWKDOMNode(static_cast<WebCore::Node*>(impl)));
+    return static_cast<WKDOMDocument*>(toWKDOMNode(static_cast<CyberCore::Node*>(impl)));
 }
 
-WebCore::Text* toWebCoreText(WKDOMText *wrapper)
+CyberCore::Text* toCyberCoreText(WKDOMText *wrapper)
 {
-    return wrapper ? reinterpret_cast<WebCore::Text*>(wrapper->_impl.get()) : 0;
+    return wrapper ? reinterpret_cast<CyberCore::Text*>(wrapper->_impl.get()) : 0;
 }
 
-WKDOMText *toWKDOMText(WebCore::Text* impl)
+WKDOMText *toWKDOMText(CyberCore::Text* impl)
 {
-    return static_cast<WKDOMText*>(toWKDOMNode(static_cast<WebCore::Node*>(impl)));
+    return static_cast<WKDOMText*>(toWKDOMNode(static_cast<CyberCore::Node*>(impl)));
 }
 
 // -- Range. --
 
-static RetainPtr<WKDOMRange> createWrapper(WebCore::Range* impl)
+static RetainPtr<WKDOMRange> createWrapper(CyberCore::Range* impl)
 {
     return adoptNS([[WKDOMRange alloc] _initWithImpl:impl]);
 }
 
-WebCore::Range* toWebCoreRange(WKDOMRange * wrapper)
+CyberCore::Range* toCyberCoreRange(WKDOMRange * wrapper)
 {
     return wrapper ? wrapper->_impl.get() : 0;
 }
 
-WKDOMRange *toWKDOMRange(WebCore::Range* impl)
+WKDOMRange *toWKDOMRange(CyberCore::Range* impl)
 {
-    return toWKDOMType<WebCore::Range*, __unsafe_unretained WKDOMRange *>(impl, WKDOMRangeCache());
+    return toWKDOMType<CyberCore::Range*, __unsafe_unretained WKDOMRange *>(impl, WKDOMRangeCache());
 }
 
 // -- Helpers --
 
-template<typename WebCoreType, typename WKDOMType>
-static WKDOMType toWKDOMType(WebCoreType impl, DOMCache<WebCoreType, WKDOMType>& cache)
+template<typename CyberCoreType, typename WKDOMType>
+static WKDOMType toWKDOMType(CyberCoreType impl, DOMCache<CyberCoreType, WKDOMType>& cache)
 {
     if (!impl)
         return nil;
@@ -161,4 +161,4 @@ static WKDOMType toWKDOMType(WebCoreType impl, DOMCache<WebCoreType, WKDOMType>&
     return wrapper.autorelease();
 }
 
-} // namespace WebKit
+} // namespace CyberKit

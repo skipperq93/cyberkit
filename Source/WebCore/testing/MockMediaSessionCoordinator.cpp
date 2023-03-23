@@ -38,7 +38,7 @@
 #include <wtf/text/StringHash.h>
 #include <wtf/text/StringView.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<MockMediaSessionCoordinator> MockMediaSessionCoordinator::create(ScriptExecutionContext& context, RefPtr<StringCallback>&& listener)
 {

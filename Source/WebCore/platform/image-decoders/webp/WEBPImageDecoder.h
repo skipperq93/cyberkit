@@ -35,7 +35,7 @@
 #include "webp/decode.h"
 #include "webp/demux.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class WEBPImageDecoder final : public ScalableImageDecoder {
 public:
@@ -69,6 +69,6 @@ private:
     bool m_headerParsed { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

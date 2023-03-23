@@ -26,7 +26,7 @@
 #include <wtf/StdLibExtras.h>
 #include "BidiResolver.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class BidiContext;
 class LegacyInlineBox;
@@ -47,4 +47,4 @@ private:
     LegacyInlineBox* m_box;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

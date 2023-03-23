@@ -30,7 +30,7 @@
 #include <optional>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct NavigationPreloadState {
     static NavigationPreloadState defaultValue() { return { false, "true"_s }; }
@@ -42,6 +42,6 @@ struct NavigationPreloadState {
     String headerValue;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

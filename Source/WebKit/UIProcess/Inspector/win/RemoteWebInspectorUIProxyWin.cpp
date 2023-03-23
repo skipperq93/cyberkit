@@ -117,7 +117,7 @@ WebPageProxy* RemoteWebInspectorUIProxy::platformCreateFrontendPageAndWindow()
     pageConfiguration->setPreferences(preferences.get());
     pageConfiguration->setPageGroup(pageGroup.get());
 
-    WebCore::IntRect rect(60, 200, 1500, 1000);
+    CyberCore::IntRect rect(60, 200, 1500, 1000);
     registerWindowClass();
     m_frontendHandle = ::CreateWindowEx(0, RemoteWebInspectorUIProxyClassName, 0, WS_OVERLAPPEDWINDOW,
         rect.x(), rect.y(), rect.width(), rect.height(), 0, 0, 0, 0);
@@ -133,15 +133,15 @@ WebPageProxy* RemoteWebInspectorUIProxy::platformCreateFrontendPageAndWindow()
 
 void RemoteWebInspectorUIProxy::platformResetState() { }
 void RemoteWebInspectorUIProxy::platformBringToFront() { }
-void RemoteWebInspectorUIProxy::platformSave(Vector<WebCore::InspectorFrontendClient::SaveData>&&, bool /* forceSaveAs */) { }
+void RemoteWebInspectorUIProxy::platformSave(Vector<CyberCore::InspectorFrontendClient::SaveData>&&, bool /* forceSaveAs */) { }
 void RemoteWebInspectorUIProxy::platformLoad(const String&, CompletionHandler<void(const String&)>&& completionHandler) { completionHandler(nullString()); }
-void RemoteWebInspectorUIProxy::platformPickColorFromScreen(CompletionHandler<void(const std::optional<WebCore::Color>&)>&& completionHandler) { completionHandler({ }); }
-void RemoteWebInspectorUIProxy::platformSetSheetRect(const WebCore::FloatRect&) { }
-void RemoteWebInspectorUIProxy::platformSetForcedAppearance(WebCore::InspectorFrontendClient::Appearance) { }
+void RemoteWebInspectorUIProxy::platformPickColorFromScreen(CompletionHandler<void(const std::optional<CyberCore::Color>&)>&& completionHandler) { completionHandler({ }); }
+void RemoteWebInspectorUIProxy::platformSetSheetRect(const CyberCore::FloatRect&) { }
+void RemoteWebInspectorUIProxy::platformSetForcedAppearance(CyberCore::InspectorFrontendClient::Appearance) { }
 void RemoteWebInspectorUIProxy::platformStartWindowDrag() { }
 void RemoteWebInspectorUIProxy::platformOpenURLExternally(const String&) { }
 void RemoteWebInspectorUIProxy::platformRevealFileExternally(const String&) { }
-void RemoteWebInspectorUIProxy::platformShowCertificate(const WebCore::CertificateInfo&) { }
+void RemoteWebInspectorUIProxy::platformShowCertificate(const CyberCore::CertificateInfo&) { }
 
 void RemoteWebInspectorUIProxy::platformCloseFrontendPageAndWindow()
 {

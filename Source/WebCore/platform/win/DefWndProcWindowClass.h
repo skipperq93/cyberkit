@@ -26,13 +26,13 @@
 #ifndef DefWndProcWindowClass_h
 #define DefWndProcWindowClass_h
 
-namespace WebCore {
+namespace CyberCore {
 
 // Returns the name of a window class that can be used to create a "dummy" window. The window just
 // passes all messages to ::DefWindowProcW. This is useful in situations where you need an HWND but
 // don't need it to have any special behavior.
 const wchar_t* defWndProcWindowClassName();
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // DefWndProcWindowClass_h

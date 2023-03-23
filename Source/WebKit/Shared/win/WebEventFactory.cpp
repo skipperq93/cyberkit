@@ -40,7 +40,7 @@
 
 namespace WebKit {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 static inline LPARAM relativeCursorPosition(HWND hwnd)
 {
@@ -430,7 +430,7 @@ WebWheelEvent WebEventFactory::createWebWheelEvent(HWND hWnd, UINT message, WPAR
         wheelTicksY = delta;
     }
     if (isMouseHWheel || (modifiers & WebEventModifier::ShiftKey)) {
-        deltaX = delta * static_cast<float>(horizontalScrollChars()) * WebCore::cScrollbarPixelsPerLine;
+        deltaX = delta * static_cast<float>(horizontalScrollChars()) * CyberCore::cScrollbarPixelsPerLine;
         deltaY = 0;
         granularity = WebWheelEvent::ScrollByPixelWheelEvent;
     } else {
@@ -441,7 +441,7 @@ WebWheelEvent WebEventFactory::createWebWheelEvent(HWND hWnd, UINT message, WPAR
             granularity = WebWheelEvent::ScrollByPageWheelEvent;
         else {
             granularity = WebWheelEvent::ScrollByPixelWheelEvent;
-            deltaY *= static_cast<float>(verticalMultiplier) * WebCore::cScrollbarPixelsPerLine;
+            deltaY *= static_cast<float>(verticalMultiplier) * CyberCore::cScrollbarPixelsPerLine;
         }
     }
 

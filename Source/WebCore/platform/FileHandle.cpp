@@ -29,7 +29,7 @@
 #include "config.h"
 #include "FileHandle.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 FileHandle::FileHandle(const String& path, FileSystem::FileOpenMode mode)
     : m_path { path }
@@ -151,4 +151,4 @@ FileSystem::PlatformFileHandle FileHandle::handle() const
     return m_fileHandle;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

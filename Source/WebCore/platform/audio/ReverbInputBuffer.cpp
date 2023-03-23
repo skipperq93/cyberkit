@@ -32,7 +32,7 @@
 
 #include "ReverbInputBuffer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 ReverbInputBuffer::ReverbInputBuffer(size_t length)
     : m_buffer(length)
@@ -83,6 +83,6 @@ void ReverbInputBuffer::reset()
     m_writeIndex = 0;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

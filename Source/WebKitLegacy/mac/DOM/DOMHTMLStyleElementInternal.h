@@ -25,8 +25,8 @@
 
 #import <CyberKitLegacy/DOMHTMLStyleElement.h>
 
-namespace WebCore {
+namespace CyberCore {
 class HTMLStyleElement;
 }
 
-WebCore::HTMLStyleElement* core(DOMHTMLStyleElement *);
+CyberCore::HTMLStyleElement* core(DOMHTMLStyleElement *);

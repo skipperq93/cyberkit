@@ -37,7 +37,7 @@
 #include <cairo.h>
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(ImageBufferCairoImageSurfaceBackend);
 
@@ -131,6 +131,6 @@ void ImageBufferCairoImageSurfaceBackend::platformTransformColorSpace(const std:
     cairo_surface_mark_dirty_rectangle(m_surface.get(), 0, 0, logicalSize().width(), logicalSize().height());
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(CAIRO)

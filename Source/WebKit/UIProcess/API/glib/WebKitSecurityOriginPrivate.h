@@ -22,5 +22,5 @@
 #include "WebKitSecurityOrigin.h"
 #include <CyberCore/SecurityOrigin.h>
 
-WebKitSecurityOrigin* webkitSecurityOriginCreate(WebCore::SecurityOriginData&&);
-const WebCore::SecurityOriginData& webkitSecurityOriginGetSecurityOriginData(WebKitSecurityOrigin*);
+WebKitSecurityOrigin* webkitSecurityOriginCreate(CyberCore::SecurityOriginData&&);
+const CyberCore::SecurityOriginData& webkitSecurityOriginGetSecurityOriginData(WebKitSecurityOrigin*);

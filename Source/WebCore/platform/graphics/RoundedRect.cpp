@@ -36,7 +36,7 @@
 #include <algorithm>
 #include <wtf/MathExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 bool RoundedRect::Radii::isZero() const
 {
@@ -391,4 +391,4 @@ TextStream& operator<<(TextStream& ts, const RoundedRect& roundedRect)
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

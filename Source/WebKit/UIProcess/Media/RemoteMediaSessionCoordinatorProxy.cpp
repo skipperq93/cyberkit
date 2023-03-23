@@ -40,12 +40,12 @@
 #include <wtf/MainThread.h>
 #include <wtf/RunLoop.h>
 
-namespace WebCore {
+namespace CyberCore {
 extern WTFLogChannel LogMedia;
 }
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 Ref<RemoteMediaSessionCoordinatorProxy> RemoteMediaSessionCoordinatorProxy::create(WebPageProxy& webPageProxy, Ref<MediaSessionCoordinatorProxyPrivate>&& privateCoordinator)
 {
@@ -131,7 +131,7 @@ void RemoteMediaSessionCoordinatorProxy::coordinateSetTrack(const String& track,
     });
 }
 
-void RemoteMediaSessionCoordinatorProxy::positionStateChanged(const std::optional<WebCore::MediaPositionState>& state)
+void RemoteMediaSessionCoordinatorProxy::positionStateChanged(const std::optional<CyberCore::MediaPositionState>& state)
 {
     ALWAYS_LOG(LOGIDENTIFIER);
     m_privateCoordinator->positionStateChanged(state);
@@ -175,7 +175,7 @@ void RemoteMediaSessionCoordinatorProxy::setSessionTrack(const String& trackId, 
     m_webPageProxy.sendWithAsyncReply(Messages::RemoteMediaSessionCoordinator::SetSessionTrack { trackId }, callback);
 }
 
-void RemoteMediaSessionCoordinatorProxy::coordinatorStateChanged(WebCore::MediaSessionCoordinatorState state)
+void RemoteMediaSessionCoordinatorProxy::coordinatorStateChanged(CyberCore::MediaSessionCoordinatorState state)
 {
     m_webPageProxy.send(Messages::RemoteMediaSessionCoordinator::CoordinatorStateChanged { state });
 }

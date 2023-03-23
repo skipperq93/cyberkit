@@ -30,7 +30,7 @@
 #import <wtf/BlockPtr.h>
 #import <wtf/FileSystem.h>
 
-namespace WebCore {
+namespace CyberCore {
     
 constexpr unsigned monitorMask = DISPATCH_VNODE_DELETE | DISPATCH_VNODE_WRITE | DISPATCH_VNODE_RENAME | DISPATCH_VNODE_REVOKE;
 constexpr unsigned fileUnavailableMask = DISPATCH_VNODE_DELETE | DISPATCH_VNODE_RENAME | DISPATCH_VNODE_REVOKE;
@@ -87,4 +87,4 @@ FileMonitor::~FileMonitor()
     dispatch_source_cancel(m_platformMonitor.get());
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -32,7 +32,7 @@
 #include <memory>
 #include <wtf/FileSystem.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 namespace TestWebKitAPI {
 
@@ -44,7 +44,7 @@ public:
     {
         m_cookieDirectory = FileSystem::createTemporaryDirectory();
 
-        m_cookieJar = makeUnique<WebCore::CookieJarDB>(FileSystem::pathByAppendingComponent(m_cookieDirectory, "cookiedb.sql"_s));
+        m_cookieJar = makeUnique<CyberCore::CookieJarDB>(FileSystem::pathByAppendingComponent(m_cookieDirectory, "cookiedb.sql"_s));
         m_cookieJar->open();
         m_cookieJar->setAcceptPolicy(CookieAcceptPolicy::Always);
     }

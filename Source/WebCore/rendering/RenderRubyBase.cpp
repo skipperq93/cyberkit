@@ -37,7 +37,7 @@
 #include "RenderRubyText.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(RenderRubyBase);
 
@@ -109,4 +109,4 @@ bool RenderRubyBase::isEmptyOrHasInFlowContent() const
     return false;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

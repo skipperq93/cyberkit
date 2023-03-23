@@ -37,7 +37,7 @@
 
 #include <CoreText/CoreText.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 FontFamilySpecificationCoreText::FontFamilySpecificationCoreText(CTFontDescriptorRef fontDescriptor)
     : m_fontDescriptor(fontDescriptor)

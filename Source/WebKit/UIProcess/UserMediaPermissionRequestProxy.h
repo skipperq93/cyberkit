@@ -29,7 +29,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 class SecurityOrigin;
 }
 
@@ -39,7 +39,7 @@ class UserMediaPermissionRequestManagerProxy;
 
 class UserMediaPermissionRequestProxy : public API::ObjectImpl<API::Object::Type::UserMediaPermissionRequest> {
 public:
-    static Ref<UserMediaPermissionRequestProxy> create(UserMediaPermissionRequestManagerProxy&, WebCore::UserMediaRequestIdentifier, WebCore::FrameIdentifier, WebCore::FrameIdentifier, Ref<WebCore::SecurityOrigin>&&, Ref<WebCore::SecurityOrigin>&&, Vector<WebCore::CaptureDevice>&&, Vector<WebCore::CaptureDevice>&&, WebCore::MediaStreamRequest&&, CompletionHandler<void(bool)>&& = { });
+    static Ref<UserMediaPermissionRequestProxy> create(UserMediaPermissionRequestManagerProxy&, CyberCore::UserMediaRequestIdentifier, CyberCore::FrameIdentifier, CyberCore::FrameIdentifier, Ref<CyberCore::SecurityOrigin>&&, Ref<CyberCore::SecurityOrigin>&&, Vector<CyberCore::CaptureDevice>&&, Vector<CyberCore::CaptureDevice>&&, CyberCore::MediaStreamRequest&&, CompletionHandler<void(bool)>&& = { });
 
     ~UserMediaPermissionRequestProxy() = default;
 
@@ -60,11 +60,11 @@ public:
 
     bool requiresAudioCapture() const { return m_eligibleAudioDevices.size(); }
     bool requiresVideoCapture() const { return !requiresDisplayCapture() && m_eligibleVideoDevices.size(); }
-    bool requiresDisplayCapture() const { return m_request.type == WebCore::MediaStreamRequest::Type::DisplayMedia || m_request.type == WebCore::MediaStreamRequest::Type::DisplayMediaWithAudio; }
-    bool requiresDisplayCaptureWithAudio() const { return m_request.type == WebCore::MediaStreamRequest::Type::DisplayMediaWithAudio; }
+    bool requiresDisplayCapture() const { return m_request.type == CyberCore::MediaStreamRequest::Type::DisplayMedia || m_request.type == CyberCore::MediaStreamRequest::Type::DisplayMediaWithAudio; }
+    bool requiresDisplayCaptureWithAudio() const { return m_request.type == CyberCore::MediaStreamRequest::Type::DisplayMediaWithAudio; }
 
-    void setEligibleVideoDeviceUIDs(Vector<WebCore::CaptureDevice>&& devices) { m_eligibleVideoDevices = WTFMove(devices); }
-    void setEligibleAudioDeviceUIDs(Vector<WebCore::CaptureDevice>&& devices) { m_eligibleAudioDevices = WTFMove(devices); }
+    void setEligibleVideoDeviceUIDs(Vector<CyberCore::CaptureDevice>&& devices) { m_eligibleVideoDevices = WTFMove(devices); }
+    void setEligibleAudioDeviceUIDs(Vector<CyberCore::CaptureDevice>&& devices) { m_eligibleAudioDevices = WTFMove(devices); }
 
     Vector<String> videoDeviceUIDs() const;
     Vector<String> audioDeviceUIDs() const;
@@ -74,24 +74,24 @@ public:
     bool hasPersistentAccess() const { return m_hasPersistentAccess; }
     void setHasPersistentAccess() { m_hasPersistentAccess = true; }
 
-    WebCore::UserMediaRequestIdentifier userMediaID() const { return m_userMediaID; }
-    WebCore::FrameIdentifier mainFrameID() const { return m_mainFrameID; }
-    WebCore::FrameIdentifier frameID() const { return m_frameID; }
+    CyberCore::UserMediaRequestIdentifier userMediaID() const { return m_userMediaID; }
+    CyberCore::FrameIdentifier mainFrameID() const { return m_mainFrameID; }
+    CyberCore::FrameIdentifier frameID() const { return m_frameID; }
 
-    WebCore::SecurityOrigin& topLevelDocumentSecurityOrigin() { return m_topLevelDocumentSecurityOrigin.get(); }
-    WebCore::SecurityOrigin& userMediaDocumentSecurityOrigin() { return m_userMediaDocumentSecurityOrigin.get(); }
-    const WebCore::SecurityOrigin& topLevelDocumentSecurityOrigin() const { return m_topLevelDocumentSecurityOrigin.get(); }
-    const WebCore::SecurityOrigin& userMediaDocumentSecurityOrigin() const { return m_userMediaDocumentSecurityOrigin.get(); }
+    CyberCore::SecurityOrigin& topLevelDocumentSecurityOrigin() { return m_topLevelDocumentSecurityOrigin.get(); }
+    CyberCore::SecurityOrigin& userMediaDocumentSecurityOrigin() { return m_userMediaDocumentSecurityOrigin.get(); }
+    const CyberCore::SecurityOrigin& topLevelDocumentSecurityOrigin() const { return m_topLevelDocumentSecurityOrigin.get(); }
+    const CyberCore::SecurityOrigin& userMediaDocumentSecurityOrigin() const { return m_userMediaDocumentSecurityOrigin.get(); }
 
-    const WebCore::MediaStreamRequest& userRequest() const { return m_request; }
+    const CyberCore::MediaStreamRequest& userRequest() const { return m_request; }
 
-    WebCore::MediaStreamRequest::Type requestType() const { return m_request.type; }
+    CyberCore::MediaStreamRequest::Type requestType() const { return m_request.type; }
 
-    void setDeviceIdentifierHashSalts(WebCore::MediaDeviceHashSalts&& salts) { m_deviceIdentifierHashSalts = WTFMove(salts); }
-    const WebCore::MediaDeviceHashSalts& deviceIdentifierHashSalts() const { return m_deviceIdentifierHashSalts; }
+    void setDeviceIdentifierHashSalts(CyberCore::MediaDeviceHashSalts&& salts) { m_deviceIdentifierHashSalts = WTFMove(salts); }
+    const CyberCore::MediaDeviceHashSalts& deviceIdentifierHashSalts() const { return m_deviceIdentifierHashSalts; }
 
-    WebCore::CaptureDevice audioDevice() const { return m_eligibleAudioDevices.isEmpty() ? WebCore::CaptureDevice { } : m_eligibleAudioDevices[0]; }
-    WebCore::CaptureDevice videoDevice() const { return m_eligibleVideoDevices.isEmpty() ? WebCore::CaptureDevice { } : m_eligibleVideoDevices[0]; }
+    CyberCore::CaptureDevice audioDevice() const { return m_eligibleAudioDevices.isEmpty() ? CyberCore::CaptureDevice { } : m_eligibleAudioDevices[0]; }
+    CyberCore::CaptureDevice videoDevice() const { return m_eligibleVideoDevices.isEmpty() ? CyberCore::CaptureDevice { } : m_eligibleVideoDevices[0]; }
 
 #if ENABLE(MEDIA_STREAM)
     bool isUserGesturePriviledged() const { return m_request.isUserGesturePriviledged; }
@@ -100,22 +100,22 @@ public:
     CompletionHandler<void(bool)> decisionCompletionHandler() { return std::exchange(m_decisionCompletionHandler, { }); }
 
 protected:
-    UserMediaPermissionRequestProxy(UserMediaPermissionRequestManagerProxy&, WebCore::UserMediaRequestIdentifier, WebCore::FrameIdentifier mainFrameID, WebCore::FrameIdentifier, Ref<WebCore::SecurityOrigin>&& userMediaDocumentOrigin, Ref<WebCore::SecurityOrigin>&& topLevelDocumentOrigin, Vector<WebCore::CaptureDevice>&& audioDevices, Vector<WebCore::CaptureDevice>&& videoDevices, WebCore::MediaStreamRequest&&, CompletionHandler<void(bool)>&&);
+    UserMediaPermissionRequestProxy(UserMediaPermissionRequestManagerProxy&, CyberCore::UserMediaRequestIdentifier, CyberCore::FrameIdentifier mainFrameID, CyberCore::FrameIdentifier, Ref<CyberCore::SecurityOrigin>&& userMediaDocumentOrigin, Ref<CyberCore::SecurityOrigin>&& topLevelDocumentOrigin, Vector<CyberCore::CaptureDevice>&& audioDevices, Vector<CyberCore::CaptureDevice>&& videoDevices, CyberCore::MediaStreamRequest&&, CompletionHandler<void(bool)>&&);
 
     UserMediaPermissionRequestManagerProxy* manager() const { return m_manager; }
 
 private:
     UserMediaPermissionRequestManagerProxy* m_manager;
-    WebCore::UserMediaRequestIdentifier m_userMediaID;
-    WebCore::FrameIdentifier m_mainFrameID;
-    WebCore::FrameIdentifier m_frameID;
-    Ref<WebCore::SecurityOrigin> m_userMediaDocumentSecurityOrigin;
-    Ref<WebCore::SecurityOrigin> m_topLevelDocumentSecurityOrigin;
-    Vector<WebCore::CaptureDevice> m_eligibleVideoDevices;
-    Vector<WebCore::CaptureDevice> m_eligibleAudioDevices;
-    WebCore::MediaStreamRequest m_request;
+    CyberCore::UserMediaRequestIdentifier m_userMediaID;
+    CyberCore::FrameIdentifier m_mainFrameID;
+    CyberCore::FrameIdentifier m_frameID;
+    Ref<CyberCore::SecurityOrigin> m_userMediaDocumentSecurityOrigin;
+    Ref<CyberCore::SecurityOrigin> m_topLevelDocumentSecurityOrigin;
+    Vector<CyberCore::CaptureDevice> m_eligibleVideoDevices;
+    Vector<CyberCore::CaptureDevice> m_eligibleAudioDevices;
+    CyberCore::MediaStreamRequest m_request;
     bool m_hasPersistentAccess { false };
-    WebCore::MediaDeviceHashSalts m_deviceIdentifierHashSalts;
+    CyberCore::MediaDeviceHashSalts m_deviceIdentifierHashSalts;
     CompletionHandler<void(bool)> m_decisionCompletionHandler;
 };
 

@@ -37,7 +37,7 @@
 
 OBJC_CLASS WebVideoContainerLayer;
 
-namespace WebCore {
+namespace CyberCore {
 
 class VideoLayerManagerObjC final
     : public VideoLayerManager

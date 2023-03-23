@@ -56,7 +56,7 @@
 #import "TestRunner.h"
 #import "UIDelegate.h"
 #import "WebArchiveDumpSupport.h"
-#import "WebCoreTestSupport.h"
+#import "CyberCoreTestSupport.h"
 #import "WorkQueue.h"
 #import "WorkQueueItem.h"
 #import <CoreFoundation/CoreFoundation.h>
@@ -72,7 +72,7 @@
 #import <CyberKit/WebArchive.h>
 #import <CyberKit/WebBackForwardList.h>
 #import <CyberKit/WebCache.h>
-#import <CyberKit/WebCoreStatistics.h>
+#import <CyberKit/CyberCoreStatistics.h>
 #import <CyberKit/WebDataSourcePrivate.h>
 #import <CyberKit/WebDatabaseManagerPrivate.h>
 #import <CyberKit/WebDeviceOrientationProviderMock.h>
@@ -120,8 +120,8 @@
 #import "UIKitSPI.h"
 #import <QuartzCore/QuartzCore.h>
 #import <CyberKit/WAKWindow.h>
-#import <CyberKit/WebCoreThread.h>
-#import <CyberKit/WebCoreThreadRun.h>
+#import <CyberKit/CyberCoreThread.h>
+#import <CyberKit/CyberCoreThreadRun.h>
 #import <CyberKit/WebDOMOperations.h>
 #import <fcntl.h>
 #import <pal/spi/cg/CoreGraphicsSPI.h>
@@ -178,7 +178,7 @@ static RetainPtr<NSString> toNS(const std::string& string)
 
 #if !PLATFORM(IOS_FAMILY)
 @interface WebView (WebViewInternalForTesting)
-- (WebCore::Frame*)_mainCoreFrame;
+- (CyberCore::Frame*)_mainCoreFrame;
 @end
 #endif
 
@@ -301,7 +301,7 @@ void setPersistentUserStyleSheetLocation(CFStringRef url)
     persistentUserStyleSheetLocation() = url;
 }
 
-static bool shouldIgnoreWebCoreNodeLeaks(const std::string& urlString)
+static bool shouldIgnoreCyberCoreNodeLeaks(const std::string& urlString)
 {
     static char* const ignoreSet[] = {
         // Keeping this infrastructure around in case we ever need it again.
@@ -754,7 +754,7 @@ RetainPtr<WebView> createWebViewAndOffscreenWindow()
     [webView setValidationMessageTimerMagnification:-1];
 
     // To make things like certain NSViews, dragging, and plug-ins work, put the WebView a window, but put it off-screen so you don't see it.
-    // Put it at -10000, -10000 in "flipped coordinates", since WebCore and the DOM use flipped coordinates.
+    // Put it at -10000, -10000 in "flipped coordinates", since CyberCore and the DOM use flipped coordinates.
     NSScreen *firstScreen = [[NSScreen screens] firstObject];
     NSRect windowRect = (showWebView) ? NSOffsetRect(rect, 100, 100) : NSOffsetRect(rect, -10000, [firstScreen frame].size.height - rect.size.height + 10000);
     mainWindow = adoptNS([[DumpRenderTreeWindow alloc] initWithContentRect:windowRect styleMask:NSBorderlessWindowMask backing:NSBackingStoreBuffered defer:YES]);
@@ -868,7 +868,7 @@ static void setWebPreferencesForTestOptions(WebPreferences *preferences, const W
         if (enableAllExperimentalFeatures) {
             for (WebFeature *feature in [WebPreferences _experimentalFeatures]) {
                 // FIXME: ShowModalDialogEnabled and NeedsSiteSpecificQuirks are `developer` settings which should not be enabled by default, but are currently lumped in with the other user-visible features. rdar://103648153
-                // FIXME: BeaconAPIEnabled and LocalFileContentSniffingEnabled These are `stable` settings but should be turned off in WebKitLegacy.
+                // FIXME: BeaconAPIEnabled and LocalFileContentSniffingEnabled These are `stable` settings but should be turned off in CyberKitLegacy.
                 if (![feature.key isEqualToString:@"ShowModalDialogEnabled"]
                     && ![feature.key isEqualToString:@"NeedsSiteSpecificQuirks"]
                     && ![feature.key isEqualToString:@"BeaconAPIEnabled"]
@@ -893,18 +893,18 @@ static void setWebPreferencesForTestOptions(WebPreferences *preferences, const W
         preferences.privateBrowsingEnabled = options.useEphemeralSession();
 
         for (const auto& [key, value] : options.boolWebPreferenceFeatures())
-            [preferences _setBoolPreferenceForTestingWithValue:value forKey:toNS(WTR::TestOptions::toWebKitLegacyPreferenceKey(key)).get()];
+            [preferences _setBoolPreferenceForTestingWithValue:value forKey:toNS(WTR::TestOptions::toCyberKitLegacyPreferenceKey(key)).get()];
 
         for (const auto& [key, value] : options.doubleWebPreferenceFeatures())
-            [preferences _setDoublePreferenceForTestingWithValue:value forKey:toNS(WTR::TestOptions::toWebKitLegacyPreferenceKey(key)).get()];
+            [preferences _setDoublePreferenceForTestingWithValue:value forKey:toNS(WTR::TestOptions::toCyberKitLegacyPreferenceKey(key)).get()];
 
         for (const auto& [key, value] : options.uint32WebPreferenceFeatures())
-            [preferences _setUInt32PreferenceForTestingWithValue:value forKey:toNS(WTR::TestOptions::toWebKitLegacyPreferenceKey(key)).get()];
+            [preferences _setUInt32PreferenceForTestingWithValue:value forKey:toNS(WTR::TestOptions::toCyberKitLegacyPreferenceKey(key)).get()];
 
         for (const auto& [key, value] : options.stringWebPreferenceFeatures())
-            [preferences _setStringPreferenceForTestingWithValue:toNS(value).get() forKey:toNS(WTR::TestOptions::toWebKitLegacyPreferenceKey(key)).get()];
+            [preferences _setStringPreferenceForTestingWithValue:toNS(value).get() forKey:toNS(WTR::TestOptions::toCyberKitLegacyPreferenceKey(key)).get()];
 
-        // FIXME: Tests currently expect this to always be false in WebKitLegacy testing - https://bugs.webkit.org/show_bug.cgi?id=222864.
+        // FIXME: Tests currently expect this to always be false in CyberKitLegacy testing - https://bugs.webkit.org/show_bug.cgi?id=222864.
         [preferences _setBoolPreferenceForTestingWithValue:NO forKey:@"WebKitLayoutFormattingContextEnabled"];
     }];
 
@@ -1148,7 +1148,7 @@ static void prepareConsistentTestingEnvironment()
 #endif
 
     if (webCoreLogging.length())
-        [[NSUserDefaults standardUserDefaults] setValue:[NSString stringWithUTF8String:webCoreLogging.c_str()] forKey:@"WebCoreLogging"];
+        [[NSUserDefaults standardUserDefaults] setValue:[NSString stringWithUTF8String:webCoreLogging.c_str()] forKey:@"CyberCoreLogging"];
 }
 
 const char crashedMessage[] = "#CRASHED\n";
@@ -1185,7 +1185,7 @@ void dumpRenderTree(int argc, const char *argv[])
 
     JSC::initialize();
     WTF::initializeMainThread();
-    WebCoreTestSupport::populateJITOperations();
+    CyberCoreTestSupport::populateJITOperations();
 
     if (forceComplexText)
         [WebView _setAlwaysUsesComplexTextCodePath:YES];
@@ -1310,8 +1310,8 @@ int DumpRenderTreeMain(int argc, const char *argv[])
     atexit(atexitFunction);
 
     WTF::setProcessPrivileges(allPrivileges());
-    WebCore::NetworkStorageSession::permitProcessToUseCookieAPI(true);
-    WebCoreTestSupport::setLinkedOnOrAfterEverythingForTesting();
+    CyberCore::NetworkStorageSession::permitProcessToUseCookieAPI(true);
+    CyberCoreTestSupport::setLinkedOnOrAfterEverythingForTesting();
 
 #if PLATFORM(IOS_FAMILY)
 IGNORE_WARNINGS_BEGIN("deprecated-implementations")
@@ -1332,8 +1332,8 @@ IGNORE_WARNINGS_END
         UIApplicationMain(argc, (char**)argv, @"DumpRenderTree", @"DumpRenderTree");
 #endif
 
-        [WebCoreStatistics garbageCollectJavaScriptObjects];
-        [WebCoreStatistics emptyCache]; // Otherwise SVGImages trigger false positives for Frame/Node counts
+        [CyberCoreStatistics garbageCollectJavaScriptObjects];
+        [CyberCoreStatistics emptyCache]; // Otherwise SVGImages trigger false positives for Frame/Node counts
         JSC::finalizeStatsAtEndOfTesting();
     }
 
@@ -1529,7 +1529,7 @@ static void changeWindowScaleIfNeeded(const char* testPathOrURL)
         requiredScaleFactor = 2;
     if (currentScaleFactor == requiredScaleFactor)
         return;
-    // When the new scale factor is set on the window first, WebView doesn't see it as a new scale and stops propagating the behavior change to WebCore::Page.
+    // When the new scale factor is set on the window first, WebView doesn't see it as a new scale and stops propagating the behavior change to CyberCore::Page.
     gTestRunner->setBackingScaleFactor(requiredScaleFactor);
     NSWindow *window = [[mainFrame webView] window];
     if ([window respondsToSelector:@selector(_setWindowResolution:)])
@@ -1648,11 +1648,11 @@ void dump()
             resultMimeType = @"application/pdf";
         } else if (gTestRunner->dumpDOMAsWebArchive()) {
             WebArchive *webArchive = [[mainFrame DOMDocument] webArchive];
-            resultString = bridge_cast(WebCoreTestSupport::createXMLStringFromWebArchiveData(bridge_cast([webArchive data])));
+            resultString = bridge_cast(CyberCoreTestSupport::createXMLStringFromWebArchiveData(bridge_cast([webArchive data])));
             resultMimeType = @"application/x-webarchive";
         } else if (gTestRunner->dumpSourceAsWebArchive()) {
             WebArchive *webArchive = [[mainFrame dataSource] webArchive];
-            resultString = bridge_cast(WebCoreTestSupport::createXMLStringFromWebArchiveData(bridge_cast([webArchive data])));
+            resultString = bridge_cast(CyberCoreTestSupport::createXMLStringFromWebArchiveData(bridge_cast([webArchive data])));
             resultMimeType = @"application/x-webarchive";
         } else if (gTestRunner->isPrinting())
             resultString = [mainFrame renderTreeAsExternalRepresentationForPrinting];
@@ -1797,11 +1797,11 @@ static void resetWebViewToConsistentState(const WTR::TestOptions& options, Reset
     // We do not do this before running the test since it may eagerly create the global JS context
     // if we have not loaded anything yet.
     if (resetTime == ResetTime::AfterTest)
-        WebCoreTestSupport::resetInternalsObject([mainFrame globalContext]);
+        CyberCoreTestSupport::resetInternalsObject([mainFrame globalContext]);
 
 #if !PLATFORM(IOS_FAMILY)
-    if (WebCore::Frame* frame = [webView _mainCoreFrame])
-        WebCoreTestSupport::clearWheelEventTestMonitor(*frame);
+    if (CyberCore::Frame* frame = [webView _mainCoreFrame])
+        CyberCoreTestSupport::clearWheelEventTestMonitor(*frame);
 #endif
 
 #if !PLATFORM(IOS_FAMILY)
@@ -1825,7 +1825,7 @@ static void resetWebViewToConsistentState(const WTR::TestOptions& options, Reset
     [[NSPasteboard generalPasteboard] declareTypes:@[NSStringPboardType] owner:nil];
 #endif
 
-    WebCoreTestSupport::setAdditionalSupportedImageTypesForTesting(String::fromLatin1(options.additionalSupportedImageTypes().c_str()));
+    CyberCoreTestSupport::setAdditionalSupportedImageTypesForTesting(String::fromLatin1(options.additionalSupportedImageTypes().c_str()));
 
     [mainFrame _clearOpener];
 
@@ -1833,8 +1833,8 @@ static void resetWebViewToConsistentState(const WTR::TestOptions& options, Reset
     [LayoutTestSpellChecker uninstallAndReset];
 #endif
 
-    WebCoreTestSupport::clearAllLogChannelsToAccumulate();
-    WebCoreTestSupport::initializeLogChannelsIfNecessary();
+    CyberCoreTestSupport::clearAllLogChannelsToAccumulate();
+    CyberCoreTestSupport::initializeLogChannelsIfNecessary();
 }
 
 #if PLATFORM(IOS_FAMILY)
@@ -1842,7 +1842,7 @@ static void resetWebViewToConsistentState(const WTR::TestOptions& options, Reset
 // the main thread is not thread safe. If the web thread is attempting to call
 // out to a delegate method on the main thread, we want to spin the main thread
 // run loop until the delegate method completes before taking the web thread
-// lock to prevent potentially re-entering WebCore.
+// lock to prevent potentially re-entering CyberCore.
 static void WebThreadLockAfterDelegateCallbacksHaveCompleted()
 {
     auto delegateSemaphore = adoptOSObject(dispatch_semaphore_create(0));
@@ -1984,9 +1984,9 @@ static void runTest(const std::string& inputLine)
     workQueue.clear();
     workQueue.setFrozen(false);
 
-    bool ignoreWebCoreNodeLeaks = shouldIgnoreWebCoreNodeLeaks(testURL);
-    if (ignoreWebCoreNodeLeaks)
-        [WebCoreStatistics startIgnoringWebCoreNodeLeaks];
+    bool ignoreCyberCoreNodeLeaks = shouldIgnoreCyberCoreNodeLeaks(testURL);
+    if (ignoreCyberCoreNodeLeaks)
+        [CyberCoreStatistics startIgnoringCyberCoreNodeLeaks];
 
     @autoreleasepool {
         [mainFrame loadRequest:[NSURLRequest requestWithURL:url]];
@@ -2054,11 +2054,11 @@ static void runTest(const std::string& inputLine)
     [DumpRenderTreeDraggingInfo clearAllFilePromiseReceivers];
 #endif
 
-    if (ignoreWebCoreNodeLeaks)
-        [WebCoreStatistics stopIgnoringWebCoreNodeLeaks];
+    if (ignoreCyberCoreNodeLeaks)
+        [CyberCoreStatistics stopIgnoringCyberCoreNodeLeaks];
 
     if (gcBetweenTests)
-        [WebCoreStatistics garbageCollectJavaScriptObjects];
+        [CyberCoreStatistics garbageCollectJavaScriptObjects];
     
     JSC::waitForVMDestruction();
 

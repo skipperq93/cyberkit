@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -21,28 +21,28 @@
 #error "Only <webkitdom/webkitdom.h> can be included directly."
 #endif
 
-#ifndef WebKitDOMHTMLPreElement_h
-#define WebKitDOMHTMLPreElement_h
+#ifndef CyberKitDOMHTMLPreElement_h
+#define CyberKitDOMHTMLPreElement_h
 
 #include <glib-object.h>
-#include <webkitdom/WebKitDOMHTMLElement.h>
+#include <webkitdom/CyberKitDOMHTMLElement.h>
 #include <webkitdom/webkitdomdefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_DOM_TYPE_HTML_PRE_ELEMENT            (webkit_dom_html_pre_element_get_type())
-#define WEBKIT_DOM_HTML_PRE_ELEMENT(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_HTML_PRE_ELEMENT, WebKitDOMHTMLPreElement))
-#define WEBKIT_DOM_HTML_PRE_ELEMENT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_HTML_PRE_ELEMENT, WebKitDOMHTMLPreElementClass)
+#define WEBKIT_DOM_HTML_PRE_ELEMENT(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_HTML_PRE_ELEMENT, CyberKitDOMHTMLPreElement))
+#define WEBKIT_DOM_HTML_PRE_ELEMENT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_HTML_PRE_ELEMENT, CyberKitDOMHTMLPreElementClass)
 #define WEBKIT_DOM_IS_HTML_PRE_ELEMENT(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_DOM_TYPE_HTML_PRE_ELEMENT))
 #define WEBKIT_DOM_IS_HTML_PRE_ELEMENT_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_DOM_TYPE_HTML_PRE_ELEMENT))
-#define WEBKIT_DOM_HTML_PRE_ELEMENT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_HTML_PRE_ELEMENT, WebKitDOMHTMLPreElementClass))
+#define WEBKIT_DOM_HTML_PRE_ELEMENT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_HTML_PRE_ELEMENT, CyberKitDOMHTMLPreElementClass))
 
-struct _WebKitDOMHTMLPreElement {
-    WebKitDOMHTMLElement parent_instance;
+struct _CyberKitDOMHTMLPreElement {
+    CyberKitDOMHTMLElement parent_instance;
 };
 
-struct _WebKitDOMHTMLPreElementClass {
-    WebKitDOMHTMLElementClass parent_class;
+struct _CyberKitDOMHTMLPreElementClass {
+    CyberKitDOMHTMLElementClass parent_class;
 };
 
 WEBKIT_DEPRECATED GType
@@ -50,48 +50,48 @@ webkit_dom_html_pre_element_get_type(void);
 
 /**
  * webkit_dom_html_pre_element_get_width:
- * @self: A #WebKitDOMHTMLPreElement
+ * @self: A #CyberKitDOMHTMLPreElement
  *
  * Returns: A #glong
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED glong
-webkit_dom_html_pre_element_get_width(WebKitDOMHTMLPreElement* self);
+webkit_dom_html_pre_element_get_width(CyberKitDOMHTMLPreElement* self);
 
 /**
  * webkit_dom_html_pre_element_set_width:
- * @self: A #WebKitDOMHTMLPreElement
+ * @self: A #CyberKitDOMHTMLPreElement
  * @value: A #glong
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_pre_element_set_width(WebKitDOMHTMLPreElement* self, glong value);
+webkit_dom_html_pre_element_set_width(CyberKitDOMHTMLPreElement* self, glong value);
 
 /**
  * webkit_dom_html_pre_element_get_wrap:
- * @self: A #WebKitDOMHTMLPreElement
+ * @self: A #CyberKitDOMHTMLPreElement
  *
  * Returns: A #gboolean
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
-webkit_dom_html_pre_element_get_wrap(WebKitDOMHTMLPreElement* self);
+webkit_dom_html_pre_element_get_wrap(CyberKitDOMHTMLPreElement* self);
 
 /**
  * webkit_dom_html_pre_element_set_wrap:
- * @self: A #WebKitDOMHTMLPreElement
+ * @self: A #CyberKitDOMHTMLPreElement
  * @value: A #gboolean
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_pre_element_set_wrap(WebKitDOMHTMLPreElement* self, gboolean value);
+webkit_dom_html_pre_element_set_wrap(CyberKitDOMHTMLPreElement* self, gboolean value);
 
 G_END_DECLS
 
-#endif /* WebKitDOMHTMLPreElement_h */
+#endif /* CyberKitDOMHTMLPreElement_h */

@@ -32,7 +32,7 @@
 OBJC_CLASS AVOutputContext;
 OBJC_CLASS NSView;
 
-namespace WebCore {
+namespace CyberCore {
 
 class FloatRect;
 
@@ -70,6 +70,6 @@ private:
     WeakPtr<AVPlaybackTargetPicker::Client> m_client;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WIRELESS_PLAYBACK_TARGET)

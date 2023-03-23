@@ -52,15 +52,15 @@ public:
     static Ref<WebBackForwardListItem> create(BackForwardListItemState&&, WebPageProxyIdentifier);
     virtual ~WebBackForwardListItem();
 
-    static WebBackForwardListItem* itemForID(const WebCore::BackForwardItemIdentifier&);
-    static HashMap<WebCore::BackForwardItemIdentifier, WebBackForwardListItem*>& allItems();
+    static WebBackForwardListItem* itemForID(const CyberCore::BackForwardItemIdentifier&);
+    static HashMap<CyberCore::BackForwardItemIdentifier, WebBackForwardListItem*>& allItems();
 
-    const WebCore::BackForwardItemIdentifier& itemID() const { return m_itemState.identifier; }
+    const CyberCore::BackForwardItemIdentifier& itemID() const { return m_itemState.identifier; }
     const BackForwardListItemState& itemState() { return m_itemState; }
     WebPageProxyIdentifier pageID() const { return m_pageID; }
 
-    WebCore::ProcessIdentifier lastProcessIdentifier() const { return m_lastProcessIdentifier; }
-    void setLastProcessIdentifier(const WebCore::ProcessIdentifier& identifier) { m_lastProcessIdentifier = identifier; }
+    CyberCore::ProcessIdentifier lastProcessIdentifier() const { return m_lastProcessIdentifier; }
+    void setLastProcessIdentifier(const CyberCore::ProcessIdentifier& identifier) { m_lastProcessIdentifier = identifier; }
 
     void setPageState(PageState&& pageState) { m_itemState.pageState = WTFMove(pageState); }
     const PageState& pageState() const { return m_itemState.pageState; }
@@ -102,7 +102,7 @@ private:
     BackForwardListItemState m_itemState;
     URL m_resourceDirectoryURL;
     WebPageProxyIdentifier m_pageID;
-    WebCore::ProcessIdentifier m_lastProcessIdentifier;
+    CyberCore::ProcessIdentifier m_lastProcessIdentifier;
     std::unique_ptr<WebBackForwardCacheEntry> m_backForwardCacheEntry;
 };
 

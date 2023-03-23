@@ -34,14 +34,14 @@
 #import <CyberCore/ScrollingStateOverflowScrollingNode.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
-Ref<ScrollingTreeOverflowScrollingNodeIOS> ScrollingTreeOverflowScrollingNodeIOS::create(WebCore::ScrollingTree& scrollingTree, WebCore::ScrollingNodeID nodeID)
+Ref<ScrollingTreeOverflowScrollingNodeIOS> ScrollingTreeOverflowScrollingNodeIOS::create(CyberCore::ScrollingTree& scrollingTree, CyberCore::ScrollingNodeID nodeID)
 {
     return adoptRef(*new ScrollingTreeOverflowScrollingNodeIOS(scrollingTree, nodeID));
 }
 
-ScrollingTreeOverflowScrollingNodeIOS::ScrollingTreeOverflowScrollingNodeIOS(WebCore::ScrollingTree& scrollingTree, WebCore::ScrollingNodeID nodeID)
+ScrollingTreeOverflowScrollingNodeIOS::ScrollingTreeOverflowScrollingNodeIOS(CyberCore::ScrollingTree& scrollingTree, CyberCore::ScrollingNodeID nodeID)
     : ScrollingTreeOverflowScrollingNode(scrollingTree, nodeID)
 {
     m_delegate = makeUnique<ScrollingTreeScrollingNodeDelegateIOS>(*this);
@@ -61,7 +61,7 @@ UIScrollView* ScrollingTreeOverflowScrollingNodeIOS::scrollView() const
     return delegate().scrollView();
 }
 
-void ScrollingTreeOverflowScrollingNodeIOS::commitStateBeforeChildren(const WebCore::ScrollingStateNode& stateNode)
+void ScrollingTreeOverflowScrollingNodeIOS::commitStateBeforeChildren(const CyberCore::ScrollingStateNode& stateNode)
 {
     if (stateNode.hasChangedProperty(ScrollingStateNode::Property::ScrollContainerLayer))
         delegate().resetScrollViewDelegate();

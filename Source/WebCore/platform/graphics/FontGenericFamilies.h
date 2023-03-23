@@ -31,7 +31,7 @@
 #include <wtf/text/AtomString.h>
 #include <wtf/text/AtomStringHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // UScriptCode uses -1 and 0 for UScriptInvalidCode and UScriptCommon.
 // We need to use -2 and -3 for empty value and deleted value.

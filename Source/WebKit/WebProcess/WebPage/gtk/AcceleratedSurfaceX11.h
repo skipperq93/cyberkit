@@ -34,7 +34,7 @@ typedef struct _XDisplay Display;
 typedef unsigned long Pixmap;
 typedef unsigned long Window;
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPage;
 
@@ -46,7 +46,7 @@ public:
 
     uint64_t window() const override { return m_window.get(); }
     uint64_t surfaceID() const override { return m_pixmap.get(); }
-    bool hostResize(const WebCore::IntSize&) override;
+    bool hostResize(const CyberCore::IntSize&) override;
     bool shouldPaintMirrored() const override { return false; }
 
     void didRenderFrame() override;
@@ -57,11 +57,11 @@ private:
     void createPixmap();
 
     ::Display* m_display { nullptr };
-    WebCore::XUniqueWindow m_window;
-    WebCore::XUniqueWindow m_parentWindow;
-    WebCore::XUniquePixmap m_pixmap;
+    CyberCore::XUniqueWindow m_window;
+    CyberCore::XUniqueWindow m_parentWindow;
+    CyberCore::XUniquePixmap m_pixmap;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(X11)

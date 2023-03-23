@@ -33,7 +33,7 @@
 #include "ScrollAnimator.h"
 #include <wtf/RetainPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Scrollbar;
 
@@ -57,6 +57,6 @@ private:
     bool shouldRubberBandOnSide(BoxSide) const final;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(MAC)

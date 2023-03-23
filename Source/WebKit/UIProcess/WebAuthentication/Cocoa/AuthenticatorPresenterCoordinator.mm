@@ -35,7 +35,7 @@
 #import "AuthenticationServicesCoreSoftLink.h"
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 AuthenticatorPresenterCoordinator::AuthenticatorPresenterCoordinator(const AuthenticatorManager& manager, const String& rpId, const TransportSet& transports, ClientDataType type, const String& username)
     : m_manager(manager)

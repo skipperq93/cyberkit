@@ -43,12 +43,12 @@
 #include <wtf/text/StringHash.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
-using SourceSite = WebCore::PCM::SourceSite;
-using AttributionDestinationSite = WebCore::PCM::AttributionDestinationSite;
-using AttributionTriggerData = WebCore::PCM::AttributionTriggerData;
-using EphemeralNonce = WebCore::PCM::EphemeralNonce;
+using SourceSite = CyberCore::PCM::SourceSite;
+using AttributionDestinationSite = CyberCore::PCM::AttributionDestinationSite;
+using AttributionTriggerData = CyberCore::PCM::AttributionTriggerData;
+using EphemeralNonce = CyberCore::PCM::EphemeralNonce;
 
 constexpr Seconds debugModeSecondsUntilSend { 10_s };
 
@@ -83,7 +83,7 @@ void PrivateClickMeasurementManager::storeUnattributed(PrivateClickMeasurement&&
     if (measurement.ephemeralSourceNonce()) {
         auto measurementCopy = measurement;
         // This is guaranteed to be close in time to the navigational click which makes it likely to be personally identifiable.
-        getTokenPublicKey(WTFMove(measurementCopy), WebCore::PCM::AttributionReportEndpoint::Source, PrivateClickMeasurement::PcmDataCarried::PersonallyIdentifiable, [weakThis = WeakPtr { *this }, this] (PrivateClickMeasurement&& measurement, const String& publicKeyBase64URL) {
+        getTokenPublicKey(WTFMove(measurementCopy), CyberCore::PCM::AttributionReportEndpoint::Source, PrivateClickMeasurement::PcmDataCarried::PersonallyIdentifiable, [weakThis = WeakPtr { *this }, this] (PrivateClickMeasurement&& measurement, const String& publicKeyBase64URL) {
             if (!weakThis)
                 return;
 
@@ -112,14 +112,14 @@ void PrivateClickMeasurementManager::storeUnattributed(PrivateClickMeasurement&&
     insertPrivateClickMeasurement(WTFMove(measurement), PrivateClickMeasurementAttributionType::Unattributed, WTFMove(completionHandler));
 }
 
-void PrivateClickMeasurementManager::getTokenPublicKey(PrivateClickMeasurement&& attribution, WebCore::PCM::AttributionReportEndpoint attributionReportEndpoint, PrivateClickMeasurement::PcmDataCarried pcmDataCarried, Function<void(PrivateClickMeasurement&& attribution, const String& publicKeyBase64URL)>&& callback)
+void PrivateClickMeasurementManager::getTokenPublicKey(PrivateClickMeasurement&& attribution, CyberCore::PCM::AttributionReportEndpoint attributionReportEndpoint, PrivateClickMeasurement::PcmDataCarried pcmDataCarried, Function<void(PrivateClickMeasurement&& attribution, const String& publicKeyBase64URL)>&& callback)
 {
     if (!featureEnabled())
         return;
 
     URL tokenPublicKeyURL;
     if (m_tokenPublicKeyURLForTesting) {
-        if (attributionReportEndpoint == WebCore::PCM::AttributionReportEndpoint::Destination)
+        if (attributionReportEndpoint == CyberCore::PCM::AttributionReportEndpoint::Destination)
             return;
         tokenPublicKeyURL = *m_tokenPublicKeyURLForTesting;
         // FIXME(225364)
@@ -160,14 +160,14 @@ void PrivateClickMeasurementManager::getTokenPublicKey(PrivateClickMeasurement&&
     });
 }
 
-void PrivateClickMeasurementManager::getTokenPublicKey(AttributionTriggerData&& attributionTriggerData, WebCore::PCM::AttributionReportEndpoint attributionReportEndpoint, PrivateClickMeasurement::PcmDataCarried pcmDataCarried, Function<void(AttributionTriggerData&& attributionTriggerData, const String& publicKeyBase64URL)>&& callback)
+void PrivateClickMeasurementManager::getTokenPublicKey(AttributionTriggerData&& attributionTriggerData, CyberCore::PCM::AttributionReportEndpoint attributionReportEndpoint, PrivateClickMeasurement::PcmDataCarried pcmDataCarried, Function<void(AttributionTriggerData&& attributionTriggerData, const String& publicKeyBase64URL)>&& callback)
 {
     if (!featureEnabled())
         return;
 
     URL tokenPublicKeyURL;
     if (m_tokenPublicKeyURLForTesting) {
-        if (attributionReportEndpoint == WebCore::PCM::AttributionReportEndpoint::Source)
+        if (attributionReportEndpoint == CyberCore::PCM::AttributionReportEndpoint::Source)
             return;
         tokenPublicKeyURL = *m_tokenPublicKeyURLForTesting;
         // FIXME(225364)
@@ -266,7 +266,7 @@ void PrivateClickMeasurementManager::getSignedUnlinkableTokenForSource(PrivateCl
             return;
 
         if (m_fraudPreventionValuesForTesting) {
-            WebCore::PCM::SourceSecretToken sourceSecretToken;
+            CyberCore::PCM::SourceSecretToken sourceSecretToken;
             sourceSecretToken.tokenBase64URL = m_fraudPreventionValuesForTesting->secretTokenForSource;
             sourceSecretToken.signatureBase64URL = m_fraudPreventionValuesForTesting->signatureForSource;
             sourceSecretToken.keyIDBase64URL = m_fraudPreventionValuesForTesting->keyIDForSource;
@@ -354,7 +354,7 @@ void PrivateClickMeasurementManager::setDebugModeIsEnabled(bool enabled)
     m_client->broadcastConsoleMessage(MessageLevel::Info, message);
 }
 
-void PrivateClickMeasurementManager::handleAttribution(AttributionTriggerData&& attributionTriggerData, const URL& requestURL, WebCore::RegistrableDomain&& redirectDomain, const URL& firstPartyURL, const ApplicationBundleIdentifier& applicationBundleIdentifier)
+void PrivateClickMeasurementManager::handleAttribution(AttributionTriggerData&& attributionTriggerData, const URL& requestURL, CyberCore::RegistrableDomain&& redirectDomain, const URL& firstPartyURL, const ApplicationBundleIdentifier& applicationBundleIdentifier)
 {
     if (!featureEnabled())
         return;
@@ -383,7 +383,7 @@ void PrivateClickMeasurementManager::handleAttribution(AttributionTriggerData&& 
     if (attributionTriggerData.ephemeralDestinationNonce) {
         auto attributionTriggerDataCopy = attributionTriggerData;
         // This is guaranteed to be close in time to the triggering event which makes it likely to be personally identifiable.
-        getTokenPublicKey(WTFMove(attributionTriggerDataCopy), WebCore::PCM::AttributionReportEndpoint::Destination, PrivateClickMeasurement::PcmDataCarried::PersonallyIdentifiable, [weakThis = WeakPtr { *this }, this, sourceSite = SourceSite { WTFMove(sourceDomain) }, destinationSite = AttributionDestinationSite { firstPartyURL }, applicationBundleIdentifier = applicationBundleIdentifier.isolatedCopy()] (AttributionTriggerData&& attributionTriggerData, const String& publicKeyBase64URL) mutable {
+        getTokenPublicKey(WTFMove(attributionTriggerDataCopy), CyberCore::PCM::AttributionReportEndpoint::Destination, PrivateClickMeasurement::PcmDataCarried::PersonallyIdentifiable, [weakThis = WeakPtr { *this }, this, sourceSite = SourceSite { WTFMove(sourceDomain) }, destinationSite = AttributionDestinationSite { firstPartyURL }, applicationBundleIdentifier = applicationBundleIdentifier.isolatedCopy()] (AttributionTriggerData&& attributionTriggerData, const String& publicKeyBase64URL) mutable {
             if (!weakThis)
                 return;
 
@@ -440,7 +440,7 @@ void PrivateClickMeasurementManager::attribute(SourceSite&& sourceSite, Attribut
     if (!featureEnabled())
         return;
 
-    store().attributePrivateClickMeasurement(WTFMove(sourceSite), WTFMove(destinationSite), applicationBundleIdentifier, WTFMove(attributionTriggerData), m_isRunningTest ? WebCore::PrivateClickMeasurement::IsRunningLayoutTest::Yes : WebCore::PrivateClickMeasurement::IsRunningLayoutTest::No, [this, weakThis = WeakPtr { *this }] (auto attributionSecondsUntilSendData, auto debugInfo) {
+    store().attributePrivateClickMeasurement(WTFMove(sourceSite), WTFMove(destinationSite), applicationBundleIdentifier, WTFMove(attributionTriggerData), m_isRunningTest ? CyberCore::PrivateClickMeasurement::IsRunningLayoutTest::Yes : CyberCore::PrivateClickMeasurement::IsRunningLayoutTest::No, [this, weakThis = WeakPtr { *this }] (auto attributionSecondsUntilSendData, auto debugInfo) {
         if (!weakThis)
             return;
         
@@ -473,7 +473,7 @@ void PrivateClickMeasurementManager::attribute(SourceSite&& sourceSite, Attribut
     });
 }
 
-void PrivateClickMeasurementManager::fireConversionRequest(const PrivateClickMeasurement& attribution, WebCore::PCM::AttributionReportEndpoint attributionReportEndpoint)
+void PrivateClickMeasurementManager::fireConversionRequest(const PrivateClickMeasurement& attribution, CyberCore::PCM::AttributionReportEndpoint attributionReportEndpoint)
 {
     if (!featureEnabled() || !attribution.attributionTriggerData())
         return;
@@ -552,14 +552,14 @@ void PrivateClickMeasurementManager::fireConversionRequest(const PrivateClickMea
     });
 }
 
-void PrivateClickMeasurementManager::fireConversionRequestImpl(const PrivateClickMeasurement& attribution, WebCore::PCM::AttributionReportEndpoint attributionReportEndpoint)
+void PrivateClickMeasurementManager::fireConversionRequestImpl(const PrivateClickMeasurement& attribution, CyberCore::PCM::AttributionReportEndpoint attributionReportEndpoint)
 {
     URL attributionURL;
     switch (attributionReportEndpoint) {
-    case WebCore::PCM::AttributionReportEndpoint::Source:
+    case CyberCore::PCM::AttributionReportEndpoint::Source:
         attributionURL = m_attributionReportTestConfig ? m_attributionReportTestConfig->attributionReportClickSourceURL : attribution.attributionReportClickSourceURL();
         break;
-    case WebCore::PCM::AttributionReportEndpoint::Destination:
+    case CyberCore::PCM::AttributionReportEndpoint::Destination:
         attributionURL = m_attributionReportTestConfig ? m_attributionReportTestConfig->attributionReportClickDestinationURL : attribution.attributionReportClickDestinationURL();
     }
 
@@ -580,7 +580,7 @@ void PrivateClickMeasurementManager::fireConversionRequestImpl(const PrivateClic
     });
 }
 
-void PrivateClickMeasurementManager::clearSentAttribution(PrivateClickMeasurement&& sentConversion, WebCore::PCM::AttributionReportEndpoint attributionReportEndpoint)
+void PrivateClickMeasurementManager::clearSentAttribution(PrivateClickMeasurement&& sentConversion, CyberCore::PCM::AttributionReportEndpoint attributionReportEndpoint)
 {
     if (!featureEnabled())
         return;
@@ -609,7 +609,7 @@ void PrivateClickMeasurementManager::firePendingAttributionRequests()
 
         for (auto& attribution : attributions) {
             std::optional<WallTime> earliestTimeToSend = attribution.timesToSend().earliestTimeToSend();
-            std::optional<WebCore::PCM::AttributionReportEndpoint> attributionReportEndpoint = attribution.timesToSend().attributionReportEndpoint();
+            std::optional<CyberCore::PCM::AttributionReportEndpoint> attributionReportEndpoint = attribution.timesToSend().attributionReportEndpoint();
 
             if (!earliestTimeToSend || !attributionReportEndpoint) {
                 ASSERT_NOT_REACHED();
@@ -771,7 +771,7 @@ void PrivateClickMeasurementManager::destroyStoreForTesting(CompletionHandler<vo
     });
 }
 
-void PrivateClickMeasurementManager::allowTLSCertificateChainForLocalPCMTesting(const WebCore::CertificateInfo& certificateInfo)
+void PrivateClickMeasurementManager::allowTLSCertificateChainForLocalPCMTesting(const CyberCore::CertificateInfo& certificateInfo)
 {
     PCM::NetworkLoader::allowTLSCertificateChainForLocalPCMTesting(certificateInfo);
 }

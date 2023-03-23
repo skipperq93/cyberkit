@@ -37,7 +37,7 @@
 #import "KeyEventCodesIOS.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 // https://w3c.github.io/uievents-key/
 String keyForCharCode(unichar charCode)

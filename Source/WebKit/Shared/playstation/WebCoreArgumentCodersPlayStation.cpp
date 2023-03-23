@@ -24,13 +24,13 @@
  */
 
 #include "config.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 
 #include <CyberCore/Font.h>
 
 namespace IPC {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 void ArgumentCoder<Font>::encodePlatformData(Encoder& encoder, const Font& font)
 {

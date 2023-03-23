@@ -28,7 +28,7 @@
 #include "SubstituteResource.h"
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ApplicationCacheResource : public SubstituteResource, public CanMakeWeakPtr<ApplicationCacheResource> {
 public:
@@ -68,4 +68,4 @@ private:
     String m_path;
 };
     
-} // namespace WebCore
+} // namespace CyberCore

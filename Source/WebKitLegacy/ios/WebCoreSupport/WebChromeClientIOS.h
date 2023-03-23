@@ -36,26 +36,26 @@ public:
     }
 
 private:
-    void setWindowRect(const WebCore::FloatRect&) final;
-    WebCore::FloatRect windowRect() final;
+    void setWindowRect(const CyberCore::FloatRect&) final;
+    CyberCore::FloatRect windowRect() final;
     void setStatusbarText(const WTF::String&) final { }
 
     void focus() final;
-    void takeFocus(WebCore::FocusDirection) final { }
+    void takeFocus(CyberCore::FocusDirection) final { }
 
-    void runJavaScriptAlert(WebCore::Frame&, const WTF::String&) final;
-    bool runJavaScriptConfirm(WebCore::Frame&, const WTF::String&) final;
-    bool runJavaScriptPrompt(WebCore::Frame&, const WTF::String& message, const WTF::String& defaultValue, WTF::String& result) final;
+    void runJavaScriptAlert(CyberCore::Frame&, const WTF::String&) final;
+    bool runJavaScriptConfirm(CyberCore::Frame&, const WTF::String&) final;
+    bool runJavaScriptPrompt(CyberCore::Frame&, const WTF::String& message, const WTF::String& defaultValue, WTF::String& result) final;
 
-    void runOpenPanel(WebCore::Frame&, WebCore::FileChooser&) final;
-    void showShareSheet(WebCore::ShareDataWithParsedURL&, CompletionHandler<void(bool)>&&) final;
+    void runOpenPanel(CyberCore::Frame&, CyberCore::FileChooser&) final;
+    void showShareSheet(CyberCore::ShareDataWithParsedURL&, CompletionHandler<void(bool)>&&) final;
 
     bool hoverSupportedByPrimaryPointingDevice() const final { return false; }
     bool hoverSupportedByAnyAvailablePointingDevice() const final { return false; }
-    std::optional<WebCore::PointerCharacteristics> pointerCharacteristicsOfPrimaryPointingDevice() const final { return WebCore::PointerCharacteristics::Coarse; }
-    OptionSet<WebCore::PointerCharacteristics> pointerCharacteristicsOfAllAvailablePointingDevices() const final { return WebCore::PointerCharacteristics::Coarse; }
+    std::optional<CyberCore::PointerCharacteristics> pointerCharacteristicsOfPrimaryPointingDevice() const final { return CyberCore::PointerCharacteristics::Coarse; }
+    OptionSet<CyberCore::PointerCharacteristics> pointerCharacteristicsOfAllAvailablePointingDevices() const final { return CyberCore::PointerCharacteristics::Coarse; }
 
-    void setCursor(const WebCore::Cursor&) final { }
+    void setCursor(const CyberCore::Cursor&) final { }
     void setCursorHiddenUntilMouseMoves(bool) final { }
 
 #if ENABLE(TOUCH_EVENTS)
@@ -63,14 +63,14 @@ private:
 #endif
 
     void didReceiveMobileDocType(bool) final;
-    void setNeedsScrollNotifications(WebCore::Frame&, bool) final;
-    void didFinishContentChangeObserving(WebCore::Frame&, WKContentChange) final;
-    WebCore::FloatSize screenSize() const final;
-    WebCore::FloatSize availableScreenSize() const final;
-    WebCore::FloatSize overrideScreenSize() const final;
-    void dispatchDisabledAdaptationsDidChange(const OptionSet<WebCore::DisabledAdaptations>&) const final;
-    void dispatchViewportPropertiesDidChange(const WebCore::ViewportArguments&) const final;
-    void notifyRevealedSelectionByScrollingFrame(WebCore::Frame&) final;
+    void setNeedsScrollNotifications(CyberCore::Frame&, bool) final;
+    void didFinishContentChangeObserving(CyberCore::Frame&, WKContentChange) final;
+    CyberCore::FloatSize screenSize() const final;
+    CyberCore::FloatSize availableScreenSize() const final;
+    CyberCore::FloatSize overrideScreenSize() const final;
+    void dispatchDisabledAdaptationsDidChange(const OptionSet<CyberCore::DisabledAdaptations>&) const final;
+    void dispatchViewportPropertiesDidChange(const CyberCore::ViewportArguments&) const final;
+    void notifyRevealedSelectionByScrollingFrame(CyberCore::Frame&) final;
     bool isStopping() final;
     void didLayout(LayoutType) final;
     void didStartOverflowScroll() final;
@@ -79,30 +79,30 @@ private:
     void suppressFormNotifications() final;
     void restoreFormNotifications() final;
 
-    void elementDidFocus(WebCore::Element&, const WebCore::FocusOptions&) final;
-    void elementDidBlur(WebCore::Element&) final;
+    void elementDidFocus(CyberCore::Element&, const CyberCore::FocusOptions&) final;
+    void elementDidBlur(CyberCore::Element&) final;
 
-    void attachRootGraphicsLayer(WebCore::Frame&, WebCore::GraphicsLayer*) final;
+    void attachRootGraphicsLayer(CyberCore::Frame&, CyberCore::GraphicsLayer*) final;
 
     void didFlushCompositingLayers() final;
 
-    void updateViewportConstrainedLayers(HashMap<PlatformLayer*, std::unique_ptr<WebCore::ViewportConstraints>>&, const HashMap<PlatformLayer*, PlatformLayer*>&) final;
+    void updateViewportConstrainedLayers(HashMap<PlatformLayer*, std::unique_ptr<CyberCore::ViewportConstraints>>&, const HashMap<PlatformLayer*, PlatformLayer*>&) final;
 
-    bool fetchCustomFixedPositionLayoutRect(WebCore::IntRect&) final;
-    void addOrUpdateScrollingLayer(WebCore::Node*, PlatformLayer*, PlatformLayer*, const WebCore::IntSize&, bool allowHorizontalScrollbar, bool allowVerticalScrollbar) final;
-    void removeScrollingLayer(WebCore::Node*, PlatformLayer*, PlatformLayer*) final;
+    bool fetchCustomFixedPositionLayoutRect(CyberCore::IntRect&) final;
+    void addOrUpdateScrollingLayer(CyberCore::Node*, PlatformLayer*, PlatformLayer*, const CyberCore::IntSize&, bool allowHorizontalScrollbar, bool allowVerticalScrollbar) final;
+    void removeScrollingLayer(CyberCore::Node*, PlatformLayer*, PlatformLayer*) final;
 
     bool selectItemWritingDirectionIsNatural() final;
     bool selectItemAlignmentFollowsMenuWritingDirection() final;
-    RefPtr<WebCore::PopupMenu> createPopupMenu(WebCore::PopupMenuClient&) const final;
-    RefPtr<WebCore::SearchPopupMenu> createSearchPopupMenu(WebCore::PopupMenuClient&) const final;
+    RefPtr<CyberCore::PopupMenu> createPopupMenu(CyberCore::PopupMenuClient&) const final;
+    RefPtr<CyberCore::SearchPopupMenu> createSearchPopupMenu(CyberCore::PopupMenuClient&) const final;
 
     void webAppOrientationsUpdated() final;
-    void focusedElementChanged(WebCore::Element*) final;
-    void showPlaybackTargetPicker(bool hasVideo, WebCore::RouteSharingPolicy, const String&) final;
-    RefPtr<WebCore::Icon> createIconForFiles(const Vector<String>& filenames) final;
+    void focusedElementChanged(CyberCore::Element*) final;
+    void showPlaybackTargetPicker(bool hasVideo, CyberCore::RouteSharingPolicy, const String&) final;
+    RefPtr<CyberCore::Icon> createIconForFiles(const Vector<String>& filenames) final;
 
-    bool showDataDetectorsUIForElement(const WebCore::Element&, const WebCore::Event&) final { return false; }
+    bool showDataDetectorsUIForElement(const CyberCore::Element&, const CyberCore::Event&) final { return false; }
 
 #if ENABLE(ORIENTATION_EVENTS)
     int deviceOrientation() const final;

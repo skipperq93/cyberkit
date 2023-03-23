@@ -28,18 +28,18 @@
 typedef struct _GObject GObject;
 typedef struct _GClosure GClosure;
 
-namespace WebKit {
+namespace CyberKit {
 
-class GObjectEventListener : public WebCore::EventListener {
+class GObjectEventListener : public CyberCore::EventListener {
 public:
 
-    static bool addEventListener(GObject* target, WebCore::EventTarget* coreTarget, const char* domEventName, GClosure* handler, bool useCapture)
+    static bool addEventListener(GObject* target, CyberCore::EventTarget* coreTarget, const char* domEventName, GClosure* handler, bool useCapture)
     {
         Ref<GObjectEventListener> listener(adoptRef(*new GObjectEventListener(target, coreTarget, domEventName, handler, useCapture)));
         return coreTarget->addEventListener(AtomString::fromLatin1(domEventName), WTFMove(listener), useCapture);
     }
 
-    static bool removeEventListener(GObject* target, WebCore::EventTarget* coreTarget, const char* domEventName, GClosure* handler, bool useCapture)
+    static bool removeEventListener(GObject* target, CyberCore::EventTarget* coreTarget, const char* domEventName, GClosure* handler, bool useCapture)
     {
         GObjectEventListener key(target, coreTarget, domEventName, handler, useCapture);
         return coreTarget->removeEventListener(AtomString::fromLatin1(domEventName), key, useCapture);
@@ -50,30 +50,30 @@ public:
         listener->gobjectDestroyed();
     }
 
-    static const GObjectEventListener* cast(const WebCore::EventListener* listener)
+    static const GObjectEventListener* cast(const CyberCore::EventListener* listener)
     {
         return listener->type() == GObjectEventListenerType
             ? static_cast<const GObjectEventListener*>(listener)
             : nullptr;
     }
 
-    bool operator==(const WebCore::EventListener& other) const override;
+    bool operator==(const CyberCore::EventListener& other) const override;
 
 private:
-    GObjectEventListener(GObject*, WebCore::EventTarget*, const char* domEventName, GClosure*, bool capture);
+    GObjectEventListener(GObject*, CyberCore::EventTarget*, const char* domEventName, GClosure*, bool capture);
     ~GObjectEventListener();
     void gobjectDestroyed();
 
-    void handleEvent(WebCore::ScriptExecutionContext&, WebCore::Event&) override;
+    void handleEvent(CyberCore::ScriptExecutionContext&, CyberCore::Event&) override;
 
     GObject* m_target;
     // We do not need to keep a reference to the m_coreTarget, because
     // we only use it when the GObject and thus the m_coreTarget object is alive.
-    WebCore::EventTarget* m_coreTarget;
+    CyberCore::EventTarget* m_coreTarget;
     CString m_domEventName;
     GRefPtr<GClosure> m_handler;
     bool m_capture;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 

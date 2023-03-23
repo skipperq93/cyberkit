@@ -39,7 +39,7 @@
 #include <Accelerate/Accelerate.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace {
 
@@ -1808,6 +1808,6 @@ ALWAYS_INLINE_EXCEPT_MSVC void FormatConverter::convert()
     m_success = true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBGL)

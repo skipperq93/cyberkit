@@ -27,7 +27,7 @@
 
 #include "ScrollbarThemeComposite.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class PlatformMouseEvent;
 class Scrollbar;
@@ -80,4 +80,4 @@ private:
     IntRect constrainTrackRectToTrackPieces(Scrollbar&, const IntRect&) override;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

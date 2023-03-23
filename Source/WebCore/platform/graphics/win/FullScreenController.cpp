@@ -35,10 +35,10 @@
 #include "FullScreenWindow.h"
 #include "IntRect.h"
 #include "Timer.h"
-#include "WebCoreInstanceHandle.h"
+#include "CyberCoreInstanceHandle.h"
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static const int kFullScreenAnimationDuration = 500; // milliseconds 
 
@@ -219,6 +219,6 @@ void FullScreenController::close()
     m_private->m_backgroundWindow = nullptr;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

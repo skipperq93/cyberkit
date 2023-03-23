@@ -44,7 +44,7 @@
 #import "TextTrackRepresentation.h"
 #import "VideoFrameCV.h"
 #import "VideoLayerManagerObjC.h"
-#import "WebCoreDecompressionSession.h"
+#import "CyberCoreDecompressionSession.h"
 #import <AVFoundation/AVAsset.h>
 #import <AVFoundation/AVTime.h>
 #import <CoreMedia/CMTime.h>
@@ -74,7 +74,7 @@
 @property (assign, nonatomic) BOOL preventsAutomaticBackgroundingDuringVideoPlayback;
 @end
 
-namespace WebCore {
+namespace CyberCore {
 
 String convertEnumerationToString(MediaPlayerPrivateMediaSourceAVFObjC::SeekState enumerationValue)
 {
@@ -695,7 +695,7 @@ bool MediaPlayerPrivateMediaSourceAVFObjC::updateLastPixelBuffer()
     if (m_sampleBufferDisplayLayer || !m_decompressionSession)
         return false;
 
-    auto flags = !m_lastPixelBuffer ? WebCoreDecompressionSession::AllowLater : WebCoreDecompressionSession::ExactTime;
+    auto flags = !m_lastPixelBuffer ? CyberCoreDecompressionSession::AllowLater : CyberCoreDecompressionSession::ExactTime;
     auto newPixelBuffer = m_decompressionSession->imageForTime(currentMediaTime(), flags);
     if (!newPixelBuffer)
         return false;
@@ -965,7 +965,7 @@ void MediaPlayerPrivateMediaSourceAVFObjC::ensureDecompressionSession()
     if (m_decompressionSession)
         return;
 
-    m_decompressionSession = WebCoreDecompressionSession::createOpenGL();
+    m_decompressionSession = CyberCoreDecompressionSession::createOpenGL();
     m_decompressionSession->setTimebase([m_synchronizer timebase]);
 
     if (m_mediaSourcePrivate)

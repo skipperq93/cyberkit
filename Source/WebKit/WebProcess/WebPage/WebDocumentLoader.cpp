@@ -30,8 +30,8 @@
 
 #include <CyberCore/FrameDestructionObserverInlines.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 WebDocumentLoader::WebDocumentLoader(const ResourceRequest& request, const SubstituteData& substituteData)
     : DocumentLoader(request, substituteData)
@@ -56,4 +56,4 @@ void WebDocumentLoader::setNavigationID(uint64_t navigationID)
     m_navigationID = navigationID;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

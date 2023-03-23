@@ -29,7 +29,7 @@
 #include <wtf/CompletionHandler.h>
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class Frame;
@@ -39,8 +39,8 @@ class ResourceResponse;
 class ResourceLoadObserver {
     WTF_MAKE_FAST_ALLOCATED;
 public:
-    using TopFrameDomain = WebCore::RegistrableDomain;
-    using SubResourceDomain = WebCore::RegistrableDomain;
+    using TopFrameDomain = CyberCore::RegistrableDomain;
+    using SubResourceDomain = CyberCore::RegistrableDomain;
 
     // https://fetch.spec.whatwg.org/#request-destination-script-like
     enum class FetchDestinationIsScriptLike : bool { Yes, No };
@@ -73,4 +73,4 @@ public:
     virtual bool hasHadUserInteraction(const RegistrableDomain&) const { return false; }
 };
     
-} // namespace WebCore
+} // namespace CyberCore

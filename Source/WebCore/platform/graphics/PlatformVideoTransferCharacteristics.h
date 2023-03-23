@@ -27,7 +27,7 @@
 
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class PlatformVideoTransferCharacteristics : uint8_t {
     Bt709,
@@ -49,4 +49,4 @@ enum class PlatformVideoTransferCharacteristics : uint8_t {
     Unspecified
 };
 
-} // namespace WebCore
+} // namespace CyberCore

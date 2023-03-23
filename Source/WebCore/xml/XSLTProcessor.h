@@ -31,7 +31,7 @@
 #include <wtf/HashMap.h>
 #include <wtf/text/StringHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Frame;
 class Document;
@@ -77,6 +77,6 @@ private:
     ParameterMap m_parameters;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(XSLT)

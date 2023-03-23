@@ -37,7 +37,7 @@
 #import "PlatformTouchEventIOS.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 std::unique_ptr<ScrollAnimator> ScrollAnimator::create(ScrollableArea& scrollableArea)
 {
@@ -187,6 +187,6 @@ void ScrollAnimatorIOS::determineScrollableAreaForTouchSequence(const IntSize& s
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(IOS_FAMILY)

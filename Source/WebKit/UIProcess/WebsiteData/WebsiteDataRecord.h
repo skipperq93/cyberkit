@@ -35,7 +35,7 @@
 #include <wtf/text/StringHash.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 class SecurityOrigin;
 }
 
@@ -45,17 +45,17 @@ struct WebsiteDataRecord {
     static String displayNameForCookieHostName(const String& hostName);
     static String displayNameForHostName(const String& hostName);
 
-    static String displayNameForOrigin(const WebCore::SecurityOriginData&);
+    static String displayNameForOrigin(const CyberCore::SecurityOriginData&);
 
-    void add(WebsiteDataType, const WebCore::SecurityOriginData&);
+    void add(WebsiteDataType, const CyberCore::SecurityOriginData&);
     void addCookieHostName(const String& hostName);
     void addHSTSCacheHostname(const String& hostName);
     void addAlternativeServicesHostname(const String& hostName);
 #if ENABLE(TRACKING_PREVENTION)
-    void addResourceLoadStatisticsRegistrableDomain(const WebCore::RegistrableDomain&);
+    void addResourceLoadStatisticsRegistrableDomain(const CyberCore::RegistrableDomain&);
 #endif
 
-    bool matches(const WebCore::RegistrableDomain&) const;
+    bool matches(const CyberCore::RegistrableDomain&) const;
     String topPrivatelyControlledDomain();
 
     WebsiteDataRecord isolatedCopy() const &;
@@ -70,12 +70,12 @@ struct WebsiteDataRecord {
     };
     std::optional<Size> size;
 
-    HashSet<WebCore::SecurityOriginData> origins;
+    HashSet<CyberCore::SecurityOriginData> origins;
     HashSet<String> cookieHostNames;
     HashSet<String> HSTSCacheHostNames;
     HashSet<String> alternativeServicesHostNames;
 #if ENABLE(TRACKING_PREVENTION)
-    HashSet<WebCore::RegistrableDomain> resourceLoadStatisticsRegistrableDomains;
+    HashSet<CyberCore::RegistrableDomain> resourceLoadStatisticsRegistrableDomains;
 #endif
 };
 

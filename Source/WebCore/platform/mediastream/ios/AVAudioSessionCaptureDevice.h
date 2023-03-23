@@ -32,7 +32,7 @@
 
 OBJC_CLASS AVAudioSessionPortDescription;
 
-namespace WebCore {
+namespace CyberCore {
 
 class AVAudioSessionCaptureDevice : public CaptureDevice {
 public:
@@ -46,6 +46,6 @@ private:
     AVAudioSessionCaptureDevice(const String& persistentId, DeviceType, const String& label, const String& groupId, bool isEnabled, bool isDefault, bool isMock);
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM) && PLATFORM(IOS_FAMILY)

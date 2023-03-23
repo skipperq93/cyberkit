@@ -23,18 +23,18 @@
 #if ENABLE(VIDEO_PRESENTATION_MODE)
 messages -> VideoFullscreenManagerProxy {
     SetHasVideo(WebKit::PlaybackSessionContextIdentifier contextId, bool hasVideo)
-    SetVideoDimensions(WebKit::PlaybackSessionContextIdentifier contextId, WebCore::FloatSize videoDimensions)
-    SetupFullscreenWithID(WebKit::PlaybackSessionContextIdentifier contextId, WebKit::LayerHostingContextID videoLayerID, WebCore::FloatRect initialRect, WebCore::FloatSize videoDimensions, float hostingScaleFactor, WebCore::HTMLMediaElementEnums::VideoFullscreenMode videoFullscreenMode, bool allowsPictureInPicture, bool standby, bool blocksReturnToFullscreenFromPictureInPicture)
-    SetPlayerIdentifier(WebKit::PlaybackSessionContextIdentifier contextId, std::optional<WebCore::MediaPlayerIdentifier> playerIdentifier)
+    SetVideoDimensions(WebKit::PlaybackSessionContextIdentifier contextId, CyberCore::FloatSize videoDimensions)
+    SetupFullscreenWithID(WebKit::PlaybackSessionContextIdentifier contextId, WebKit::LayerHostingContextID videoLayerID, CyberCore::FloatRect initialRect, CyberCore::FloatSize videoDimensions, float hostingScaleFactor, CyberCore::HTMLMediaElementEnums::VideoFullscreenMode videoFullscreenMode, bool allowsPictureInPicture, bool standby, bool blocksReturnToFullscreenFromPictureInPicture)
+    SetPlayerIdentifier(WebKit::PlaybackSessionContextIdentifier contextId, std::optional<CyberCore::MediaPlayerIdentifier> playerIdentifier)
 #if !PLATFORM(IOS_FAMILY)
     EnterFullscreen(WebKit::PlaybackSessionContextIdentifier contextId)
 #endif
-    ExitFullscreen(WebKit::PlaybackSessionContextIdentifier contextId, WebCore::FloatRect finalRect) -> (bool success)
-    SetInlineRect(WebKit::PlaybackSessionContextIdentifier contextId, WebCore::FloatRect inlineRect, bool visible)
+    ExitFullscreen(WebKit::PlaybackSessionContextIdentifier contextId, CyberCore::FloatRect finalRect) -> (bool success)
+    SetInlineRect(WebKit::PlaybackSessionContextIdentifier contextId, CyberCore::FloatRect inlineRect, bool visible)
     SetHasVideoContentLayer(WebKit::PlaybackSessionContextIdentifier contextId, bool value)
     CleanupFullscreen(WebKit::PlaybackSessionContextIdentifier contextId)
-    PreparedToReturnToInline(WebKit::PlaybackSessionContextIdentifier contextId, bool visible, WebCore::FloatRect inlineRect)
+    PreparedToReturnToInline(WebKit::PlaybackSessionContextIdentifier contextId, bool visible, CyberCore::FloatRect inlineRect)
     PreparedToExitFullscreen(WebKit::PlaybackSessionContextIdentifier contextId)
-    ExitFullscreenWithoutAnimationToMode(WebKit::PlaybackSessionContextIdentifier contextId, WebCore::HTMLMediaElementEnums::VideoFullscreenMode videoFullscreenMode)
+    ExitFullscreenWithoutAnimationToMode(WebKit::PlaybackSessionContextIdentifier contextId, CyberCore::HTMLMediaElementEnums::VideoFullscreenMode videoFullscreenMode)
 }
 #endif

@@ -33,7 +33,7 @@
 #include "SVGPathData.h"
 #include "SVGPathElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<ReferencePathOperation> ReferencePathOperation::create(const String& url, const AtomString& fragment, const RefPtr<SVGElement> element)
 {
@@ -82,7 +82,7 @@ RefPtr<PathOperation> RayPathOperation::blend(const PathOperation* to, const Ble
 {
     ASSERT(is<RayPathOperation>(to));
     auto& toRayPathOperation = downcast<RayPathOperation>(*to);
-    return RayPathOperation::create(WebCore::blend(m_angle, toRayPathOperation.angle(), context), m_size, m_isContaining);
+    return RayPathOperation::create(CyberCore::blend(m_angle, toRayPathOperation.angle(), context), m_size, m_isContaining);
 }
 
 double RayPathOperation::lengthForPath() const
@@ -167,4 +167,4 @@ const std::optional<Path> RayPathOperation::getPath(const FloatRect& referenceRe
     return path;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -30,13 +30,13 @@
 #include "ServiceWorkerClientType.h"
 #include <optional>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ServiceWorkerClientQueryOptions {
     bool includeUncontrolled { false };
     ServiceWorkerClientType type { ServiceWorkerClientType::Window };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

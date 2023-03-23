@@ -25,7 +25,7 @@
 #include "SVGTests.h"
 #include "SVGUnitTypes.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGMaskElement final : public SVGElement, public SVGTests {
     WTF_MAKE_ISO_ALLOCATED(SVGMaskElement);
@@ -69,4 +69,4 @@ private:
     Ref<SVGAnimatedEnumeration> m_maskContentUnits { SVGAnimatedEnumeration::create(this, SVGUnitTypes::SVG_UNIT_TYPE_USERSPACEONUSE) };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

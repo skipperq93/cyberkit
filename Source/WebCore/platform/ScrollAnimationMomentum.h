@@ -26,7 +26,7 @@
 
 #include "ScrollAnimation.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScrollingMomentumCalculator;
 
@@ -48,6 +48,6 @@ private:
     std::unique_ptr<ScrollingMomentumCalculator> m_momentumCalculator;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_SCROLL_ANIMATION(WebCore::ScrollAnimationMomentum, type() == WebCore::ScrollAnimation::Type::Momentum)
+SPECIALIZE_TYPE_TRAITS_SCROLL_ANIMATION(CyberCore::ScrollAnimationMomentum, type() == CyberCore::ScrollAnimation::Type::Momentum)

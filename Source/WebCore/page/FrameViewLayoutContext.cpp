@@ -48,7 +48,7 @@
 #include <wtf/SystemTracing.h>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 void FrameViewLayoutContext::layoutUsingFormattingContext()
 {
@@ -650,4 +650,4 @@ Document* FrameViewLayoutContext::document() const
     return frame().document();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

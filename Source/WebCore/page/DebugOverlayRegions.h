@@ -27,7 +27,7 @@
 
 #include <wtf/EnumTraits.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class DebugOverlayRegions : uint8_t {
     NonFastScrollableRegion = 1 << 0,
@@ -41,14 +41,14 @@ enum class DebugOverlayRegions : uint8_t {
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::DebugOverlayRegions> {
+template<> struct EnumTraits<CyberCore::DebugOverlayRegions> {
     using values = EnumValues<
-        WebCore::DebugOverlayRegions,
-        WebCore::DebugOverlayRegions::NonFastScrollableRegion,
-        WebCore::DebugOverlayRegions::WheelEventHandlerRegion,
-        WebCore::DebugOverlayRegions::TouchActionRegion,
-        WebCore::DebugOverlayRegions::EditableElementRegion,
-        WebCore::DebugOverlayRegions::InteractionRegion
+        CyberCore::DebugOverlayRegions,
+        CyberCore::DebugOverlayRegions::NonFastScrollableRegion,
+        CyberCore::DebugOverlayRegions::WheelEventHandlerRegion,
+        CyberCore::DebugOverlayRegions::TouchActionRegion,
+        CyberCore::DebugOverlayRegions::EditableElementRegion,
+        CyberCore::DebugOverlayRegions::InteractionRegion
     >;
 };
 

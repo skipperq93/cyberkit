@@ -36,30 +36,30 @@
 #include <CyberCore/ContentExtensionsBackend.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 namespace ContentExtensions {
 class CompiledContentExtension;
 }
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class InjectedBundleScriptWorld;
 class WebCompiledContentRuleListData;
 class WebUserMessageHandlerDescriptorProxy;
 enum class InjectUserScriptImmediately : bool;
 
-class WebUserContentController final : public WebCore::UserContentProvider, private IPC::MessageReceiver {
+class WebUserContentController final : public CyberCore::UserContentProvider, private IPC::MessageReceiver {
 public:
     static Ref<WebUserContentController> getOrCreate(UserContentControllerIdentifier);
     virtual ~WebUserContentController();
 
     UserContentControllerIdentifier identifier() { return m_identifier; }
 
-    void addUserScript(InjectedBundleScriptWorld&, WebCore::UserScript&&);
+    void addUserScript(InjectedBundleScriptWorld&, CyberCore::UserScript&&);
     void removeUserScriptWithURL(InjectedBundleScriptWorld&, const URL&);
     void removeUserScripts(InjectedBundleScriptWorld&);
-    void addUserStyleSheet(InjectedBundleScriptWorld&, WebCore::UserStyleSheet&&);
+    void addUserStyleSheet(InjectedBundleScriptWorld&, CyberCore::UserStyleSheet&&);
     void removeUserStyleSheetWithURL(InjectedBundleScriptWorld&, const URL&);
     void removeUserStyleSheets(InjectedBundleScriptWorld&);
     void removeAllUserContent();
@@ -78,14 +78,14 @@ public:
 private:
     explicit WebUserContentController(UserContentControllerIdentifier);
 
-    // WebCore::UserContentProvider
-    void forEachUserScript(Function<void(WebCore::DOMWrapperWorld&, const WebCore::UserScript&)>&&) const final;
-    void forEachUserStyleSheet(Function<void(const WebCore::UserStyleSheet&)>&&) const final;
+    // CyberCore::UserContentProvider
+    void forEachUserScript(Function<void(CyberCore::DOMWrapperWorld&, const CyberCore::UserScript&)>&&) const final;
+    void forEachUserStyleSheet(Function<void(const CyberCore::UserStyleSheet&)>&&) const final;
 #if ENABLE(USER_MESSAGE_HANDLERS)
-    void forEachUserMessageHandler(Function<void(const WebCore::UserMessageHandlerDescriptor&)>&&) const final;
+    void forEachUserMessageHandler(Function<void(const CyberCore::UserMessageHandlerDescriptor&)>&&) const final;
 #endif
 #if ENABLE(CONTENT_EXTENSIONS)
-    WebCore::ContentExtensions::ContentExtensionsBackend& userContentExtensionBackend() override { return m_contentExtensionBackend; }
+    CyberCore::ContentExtensions::ContentExtensionsBackend& userContentExtensionBackend() override { return m_contentExtensionBackend; }
 #endif
 
     // IPC::MessageReceiver.
@@ -108,9 +108,9 @@ private:
     void removeAllContentRuleLists();
 #endif
 
-    void addUserScriptInternal(InjectedBundleScriptWorld&, const std::optional<uint64_t>& userScriptIdentifier, WebCore::UserScript&&, InjectUserScriptImmediately);
+    void addUserScriptInternal(InjectedBundleScriptWorld&, const std::optional<uint64_t>& userScriptIdentifier, CyberCore::UserScript&&, InjectUserScriptImmediately);
     void removeUserScriptInternal(InjectedBundleScriptWorld&, uint64_t userScriptIdentifier);
-    void addUserStyleSheetInternal(InjectedBundleScriptWorld&, const std::optional<uint64_t>& userStyleSheetIdentifier, WebCore::UserStyleSheet&&);
+    void addUserStyleSheetInternal(InjectedBundleScriptWorld&, const std::optional<uint64_t>& userStyleSheetIdentifier, CyberCore::UserStyleSheet&&);
     void removeUserStyleSheetInternal(InjectedBundleScriptWorld&, uint64_t userStyleSheetIdentifier);
 #if ENABLE(USER_MESSAGE_HANDLERS)
     void addUserScriptMessageHandlerInternal(InjectedBundleScriptWorld&, uint64_t userScriptMessageHandlerIdentifier, const AtomString& name);
@@ -119,10 +119,10 @@ private:
 
     UserContentControllerIdentifier m_identifier;
 
-    typedef HashMap<RefPtr<InjectedBundleScriptWorld>, Vector<std::pair<std::optional<uint64_t>, WebCore::UserScript>>> WorldToUserScriptMap;
+    typedef HashMap<RefPtr<InjectedBundleScriptWorld>, Vector<std::pair<std::optional<uint64_t>, CyberCore::UserScript>>> WorldToUserScriptMap;
     WorldToUserScriptMap m_userScripts;
 
-    typedef HashMap<RefPtr<InjectedBundleScriptWorld>, Vector<std::pair<std::optional<uint64_t>, WebCore::UserStyleSheet>>> WorldToUserStyleSheetMap;
+    typedef HashMap<RefPtr<InjectedBundleScriptWorld>, Vector<std::pair<std::optional<uint64_t>, CyberCore::UserStyleSheet>>> WorldToUserStyleSheetMap;
     WorldToUserStyleSheetMap m_userStyleSheets;
 
 #if ENABLE(USER_MESSAGE_HANDLERS)
@@ -130,8 +130,8 @@ private:
     WorldToUserMessageHandlerVectorMap m_userMessageHandlers;
 #endif
 #if ENABLE(CONTENT_EXTENSIONS)
-    WebCore::ContentExtensions::ContentExtensionsBackend m_contentExtensionBackend;
+    CyberCore::ContentExtensions::ContentExtensionsBackend m_contentExtensionBackend;
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit

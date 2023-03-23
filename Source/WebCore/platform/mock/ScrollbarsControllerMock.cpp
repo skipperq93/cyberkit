@@ -34,7 +34,7 @@
 
 #include "ScrollableArea.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 ScrollbarsControllerMock::ScrollbarsControllerMock(ScrollableArea& scrollableArea, Function<void(const String&)>&& logger)
     : ScrollbarsController(scrollableArea)
@@ -109,4 +109,4 @@ void ScrollbarsControllerMock::mouseIsDownInScrollbar(Scrollbar* scrollbar, bool
     ScrollbarsController::mouseIsDownInScrollbar(scrollbar, isPressed);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -34,7 +34,7 @@
 
 #include <wtf/MathExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 DownSampler::DownSampler(size_t inputBlockSize)
     : m_inputBlockSize(inputBlockSize)
@@ -143,6 +143,6 @@ size_t DownSampler::latencyFrames() const
     return m_reducedKernel.size() / 2;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

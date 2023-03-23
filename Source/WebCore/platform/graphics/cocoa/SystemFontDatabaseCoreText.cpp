@@ -33,7 +33,7 @@
 
 #include <wtf/cf/TypeCastsCF.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 SystemFontDatabaseCoreText& SystemFontDatabaseCoreText::forCurrentThread()
 {

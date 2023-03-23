@@ -32,7 +32,7 @@
 #include "InspectorInstrumentation.h"
 #include "RenderElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 StyleCanvasImage::StyleCanvasImage(String&& name)
     : StyleGeneratedImage { Type::CanvasImage, StyleCanvasImage::isFixedSize }
@@ -148,4 +148,4 @@ HTMLCanvasElement* StyleCanvasImage::element(Document& document) const
     return m_element;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

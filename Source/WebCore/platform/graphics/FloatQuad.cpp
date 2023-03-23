@@ -36,7 +36,7 @@
 #include <wtf/MathExtras.h>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static inline float min4(float a, float b, float c, float d)
 {
@@ -295,4 +295,4 @@ TextStream& operator<<(TextStream& ts, const FloatQuad& quad)
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

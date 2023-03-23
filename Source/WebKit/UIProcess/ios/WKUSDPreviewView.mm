@@ -49,10 +49,10 @@ SOFT_LINK_CLASS(AssetViewer, ASVThumbnailView);
 
 static NSString *getUTIForUSDMIMEType(const String& mimeType)
 {
-    if (!WebCore::MIMETypeRegistry::isUSDMIMEType(mimeType))
+    if (!CyberCore::MIMETypeRegistry::isUSDMIMEType(mimeType))
         return nil;
 
-    return WebCore::UTIFromMIMEType(mimeType);
+    return CyberCore::UTIFromMIMEType(mimeType);
 }
 
 @interface WKUSDPreviewView () <ASVThumbnailViewDelegate>

@@ -87,17 +87,17 @@ struct OptionItem {
 };
 
 struct FocusedElementInformation {
-    WebCore::IntRect interactionRect;
-    WebCore::ElementContext elementContext;
-    WebCore::IntPoint lastInteractionLocation;
+    CyberCore::IntRect interactionRect;
+    CyberCore::ElementContext elementContext;
+    CyberCore::IntPoint lastInteractionLocation;
     double minimumScaleFactor { -INFINITY };
     double maximumScaleFactor { INFINITY };
     double maximumScaleFactorIgnoringAlwaysScalable { INFINITY };
     double nodeFontSize { 0 };
     bool hasNextNode { false };
-    WebCore::IntRect nextNodeRect;
+    CyberCore::IntRect nextNodeRect;
     bool hasPreviousNode { false };
-    WebCore::IntRect previousNodeRect;
+    CyberCore::IntRect previousNodeRect;
     bool isAutocorrect { false };
     bool isRTL { false };
     bool isMultiSelect { false };
@@ -105,10 +105,10 @@ struct FocusedElementInformation {
     bool allowsUserScaling { false };
     bool allowsUserScalingIgnoringAlwaysScalable { false };
     bool insideFixedPosition { false };
-    WebCore::AutocapitalizeType autocapitalizeType { WebCore::AutocapitalizeType::Default };
+    CyberCore::AutocapitalizeType autocapitalizeType { CyberCore::AutocapitalizeType::Default };
     InputType elementType { InputType::None };
-    WebCore::InputMode inputMode { WebCore::InputMode::Unspecified };
-    WebCore::EnterKeyHint enterKeyHint { WebCore::EnterKeyHint::Unspecified };
+    CyberCore::InputMode inputMode { CyberCore::InputMode::Unspecified };
+    CyberCore::EnterKeyHint enterKeyHint { CyberCore::EnterKeyHint::Unspecified };
     String formAction;
     Vector<OptionItem> selectOptions;
     int selectedIndex { -1 };
@@ -118,8 +118,8 @@ struct FocusedElementInformation {
     bool acceptsAutofilledLoginCredentials { false };
     bool isAutofillableUsernameField { false };
     URL representingPageURL;
-    WebCore::AutofillFieldName autofillFieldName { WebCore::AutofillFieldName::None };
-    WebCore::NonAutofillCredentialType nonAutofillCredentialType { WebCore::NonAutofillCredentialType::None };
+    CyberCore::AutofillFieldName autofillFieldName { CyberCore::AutofillFieldName::None };
+    CyberCore::NonAutofillCredentialType nonAutofillCredentialType { CyberCore::NonAutofillCredentialType::None };
     String placeholder;
     String label;
     String ariaLabel;
@@ -127,8 +127,8 @@ struct FocusedElementInformation {
     bool hasSuggestions { false };
     bool isFocusingWithDataListDropdown { false };
 #if ENABLE(INPUT_TYPE_COLOR)
-    WebCore::Color colorValue;
-    Vector<WebCore::Color> suggestedColors;
+    CyberCore::Color colorValue;
+    Vector<CyberCore::Color> suggestedColors;
 #endif
 #endif
     bool shouldSynthesizeKeyEventsForEditing { false };
@@ -140,9 +140,9 @@ struct FocusedElementInformation {
     bool preventScroll { false };
 
     FocusedElementInformationIdentifier identifier;
-    WebCore::ScrollingNodeID containerScrollingNodeID { 0 };
+    CyberCore::ScrollingNodeID containerScrollingNodeID { 0 };
 
-    WebCore::FrameIdentifier frameID;
+    CyberCore::FrameIdentifier frameID;
 };
 #endif
 

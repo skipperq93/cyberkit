@@ -41,7 +41,7 @@ size_t unpackedFFTDataSize(unsigned fftSize)
 
 } // anonymous namespace
 
-namespace WebCore {
+namespace CyberCore {
 
 // Normal constructor: allocates for a given fftSize.
 FFTFrame::FFTFrame(unsigned fftSize)
@@ -138,6 +138,6 @@ int FFTFrame::maxFFTSize()
     return 1 << kMaxFFTPow2Size;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(GSTREAMER)

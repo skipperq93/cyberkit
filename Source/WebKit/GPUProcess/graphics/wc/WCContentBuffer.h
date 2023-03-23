@@ -34,7 +34,7 @@
 
 namespace WebKit {
 
-class WCContentBuffer final : WebCore::TextureMapperPlatformLayer::Client {
+class WCContentBuffer final : CyberCore::TextureMapperPlatformLayer::Client {
     WTF_MAKE_FAST_ALLOCATED;
 public:
     class Client {
@@ -42,7 +42,7 @@ public:
         virtual void platformLayerWillBeDestroyed() = 0;
     };
     
-    WCContentBuffer(WCContentBufferManager& manager, WebCore::ProcessIdentifier processIdentifier, WebCore::TextureMapperPlatformLayer* platformLayer)
+    WCContentBuffer(WCContentBufferManager& manager, CyberCore::ProcessIdentifier processIdentifier, CyberCore::TextureMapperPlatformLayer* platformLayer)
         : m_manager(manager)
         , m_processIdentifier(processIdentifier)
         , m_platformLayer(platformLayer)
@@ -60,7 +60,7 @@ public:
         m_client = client;
     }
 
-    WebCore::TextureMapperPlatformLayer* platformLayer() const
+    CyberCore::TextureMapperPlatformLayer* platformLayer() const
     {
         return m_platformLayer;
     }
@@ -80,9 +80,9 @@ private:
     void setPlatformLayerNeedsDisplay() override { }
 
     WCContentBufferManager& m_manager;
-    WebCore::ProcessIdentifier m_processIdentifier;
+    CyberCore::ProcessIdentifier m_processIdentifier;
     WCContentBufferIdentifier m_identifier { WCContentBufferIdentifier::generate() };
-    WebCore::TextureMapperPlatformLayer* m_platformLayer;
+    CyberCore::TextureMapperPlatformLayer* m_platformLayer;
     Client* m_client { nullptr };
 };
 

@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class DataOwnerType : uint8_t {
     Undefined,
@@ -34,4 +34,4 @@ enum class DataOwnerType : uint8_t {
     Shared,
 };
 
-} // namespace WebCore
+} // namespace CyberCore

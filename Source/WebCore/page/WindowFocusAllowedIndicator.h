@@ -27,7 +27,7 @@
 
 #include <wtf/Noncopyable.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WindowFocusAllowedIndicator {
     WTF_MAKE_NONCOPYABLE(WindowFocusAllowedIndicator);
@@ -41,4 +41,4 @@ private:
     bool m_previousWindowFocusAllowed;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

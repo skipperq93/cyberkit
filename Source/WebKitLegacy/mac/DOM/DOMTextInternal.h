@@ -25,8 +25,8 @@
 
 #import <CyberKitLegacy/DOMText.h>
 
-namespace WebCore {
+namespace CyberCore {
 class Text;
 }
 
-DOMText *kit(WebCore::Text*);
+DOMText *kit(CyberCore::Text*);

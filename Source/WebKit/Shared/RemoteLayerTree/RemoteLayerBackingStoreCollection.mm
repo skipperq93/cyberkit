@@ -57,7 +57,7 @@ bool RemoteLayerBackingStoreCollection::backingStoreNeedsDisplay(const RemoteLay
     if (!frontBuffer)
         return true;
 
-    if (frontBuffer->volatilityState() == WebCore::VolatilityState::Volatile)
+    if (frontBuffer->volatilityState() == CyberCore::VolatilityState::Volatile)
         return true;
 
     return !backingStore.hasEmptyDirtyRegion();
@@ -90,7 +90,7 @@ void RemoteLayerBackingStoreCollection::willFlushLayers()
 void RemoteLayerBackingStoreCollection::willCommitLayerTree(RemoteLayerTreeTransaction& transaction)
 {
     ASSERT(m_inLayerFlush);
-    Vector<WebCore::GraphicsLayer::PlatformLayerID> newlyUnreachableLayerIDs;
+    Vector<CyberCore::GraphicsLayer::PlatformLayerID> newlyUnreachableLayerIDs;
     for (auto& backingStore : m_liveBackingStore) {
         if (!m_reachableBackingStoreInLatestFlush.contains(backingStore))
             newlyUnreachableLayerIDs.append(backingStore->layer()->layerID());
@@ -99,11 +99,11 @@ void RemoteLayerBackingStoreCollection::willCommitLayerTree(RemoteLayerTreeTrans
     transaction.setLayerIDsWithNewlyUnreachableBackingStore(newlyUnreachableLayerIDs);
 }
 
-Vector<std::unique_ptr<WebCore::ThreadSafeImageBufferFlusher>> RemoteLayerBackingStoreCollection::didFlushLayers(RemoteLayerTreeTransaction& transaction)
+Vector<std::unique_ptr<CyberCore::ThreadSafeImageBufferFlusher>> RemoteLayerBackingStoreCollection::didFlushLayers(RemoteLayerTreeTransaction& transaction)
 {
     bool needToScheduleVolatilityTimer = false;
 
-    Vector<std::unique_ptr<WebCore::ThreadSafeImageBufferFlusher>> flushers;
+    Vector<std::unique_ptr<CyberCore::ThreadSafeImageBufferFlusher>> flushers;
     for (auto& layer : transaction.changedLayers()) {
         if (layer->properties().changedProperties & LayerChange::BackingStoreChanged) {
             needToScheduleVolatilityTimer = true;
@@ -260,13 +260,13 @@ void RemoteLayerBackingStoreCollection::scheduleVolatilityTimer()
     m_volatilityTimer.startRepeating(volatilityTimerInterval);
 }
 
-RefPtr<WebCore::ImageBuffer> RemoteLayerBackingStoreCollection::allocateBufferForBackingStore(const RemoteLayerBackingStore& backingStore)
+RefPtr<CyberCore::ImageBuffer> RemoteLayerBackingStoreCollection::allocateBufferForBackingStore(const RemoteLayerBackingStore& backingStore)
 {
     switch (backingStore.type()) {
     case RemoteLayerBackingStore::Type::IOSurface:
-        return WebCore::ImageBuffer::create<AcceleratedImageBufferShareableMappedBackend>(backingStore.size(), backingStore.scale(), backingStore.colorSpace(), backingStore.pixelFormat(), WebCore::RenderingPurpose::LayerBacking, { nullptr, &WebCore::IOSurfacePool::sharedPool() });
+        return CyberCore::ImageBuffer::create<AcceleratedImageBufferShareableMappedBackend>(backingStore.size(), backingStore.scale(), backingStore.colorSpace(), backingStore.pixelFormat(), CyberCore::RenderingPurpose::LayerBacking, { nullptr, &CyberCore::IOSurfacePool::sharedPool() });
     case RemoteLayerBackingStore::Type::Bitmap:
-        return WebCore::ImageBuffer::create<UnacceleratedImageBufferShareableBackend>(backingStore.size(), backingStore.scale(), backingStore.colorSpace(), backingStore.pixelFormat(), WebCore::RenderingPurpose::LayerBacking, { });
+        return CyberCore::ImageBuffer::create<UnacceleratedImageBufferShareableBackend>(backingStore.size(), backingStore.scale(), backingStore.colorSpace(), backingStore.pixelFormat(), CyberCore::RenderingPurpose::LayerBacking, { });
     }
     return nullptr;
 }

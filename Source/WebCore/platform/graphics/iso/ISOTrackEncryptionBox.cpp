@@ -30,7 +30,7 @@
 
 using JSC::DataView;
 
-namespace WebCore {
+namespace CyberCore {
 
 bool ISOTrackEncryptionBox::parse(DataView& view, unsigned& offset)
 {

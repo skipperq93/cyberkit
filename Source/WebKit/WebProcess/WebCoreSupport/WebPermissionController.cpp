@@ -40,7 +40,7 @@
 #include <CyberCore/SecurityOriginData.h>
 #include <optional>
 
-namespace WebKit {
+namespace CyberKit {
 
 Ref<WebPermissionController> WebPermissionController::create(WebProcess& process)
 {
@@ -57,10 +57,10 @@ WebPermissionController::~WebPermissionController()
     WebProcess::singleton().removeMessageReceiver(Messages::WebPermissionController::messageReceiverName());
 }
 
-void WebPermissionController::query(WebCore::ClientOrigin&& origin, WebCore::PermissionDescriptor descriptor, const WeakPtr<WebCore::Page>& page, WebCore::PermissionQuerySource source, CompletionHandler<void(std::optional<WebCore::PermissionState>)>&& completionHandler)
+void WebPermissionController::query(CyberCore::ClientOrigin&& origin, CyberCore::PermissionDescriptor descriptor, const WeakPtr<CyberCore::Page>& page, CyberCore::PermissionQuerySource source, CompletionHandler<void(std::optional<CyberCore::PermissionState>)>&& completionHandler)
 {
     std::optional<WebPageProxyIdentifier> proxyIdentifier;
-    if (source == WebCore::PermissionQuerySource::Window || source == WebCore::PermissionQuerySource::DedicatedWorker) {
+    if (source == CyberCore::PermissionQuerySource::Window || source == CyberCore::PermissionQuerySource::DedicatedWorker) {
         ASSERT(page);
         proxyIdentifier = WebPage::fromCorePage(*page).webPageProxyIdentifier();
     }
@@ -68,17 +68,17 @@ void WebPermissionController::query(WebCore::ClientOrigin&& origin, WebCore::Per
     WebProcess::singleton().sendWithAsyncReply(Messages::WebPermissionControllerProxy::Query(origin, descriptor, proxyIdentifier, source), WTFMove(completionHandler));
 }
 
-void WebPermissionController::addObserver(WebCore::PermissionObserver& observer)
+void WebPermissionController::addObserver(CyberCore::PermissionObserver& observer)
 {
     m_observers.add(observer);
 }
 
-void WebPermissionController::removeObserver(WebCore::PermissionObserver& observer)
+void WebPermissionController::removeObserver(CyberCore::PermissionObserver& observer)
 {
     m_observers.remove(observer);
 }
 
-void WebPermissionController::permissionChanged(WebCore::PermissionName permissionName, const WebCore::SecurityOriginData& topOrigin)
+void WebPermissionController::permissionChanged(CyberCore::PermissionName permissionName, const CyberCore::SecurityOriginData& topOrigin)
 {
     ASSERT(isMainRunLoop());
 
@@ -87,14 +87,14 @@ void WebPermissionController::permissionChanged(WebCore::PermissionName permissi
             return;
 
         auto source = observer.source();
-        if (!observer.page() && (source == WebCore::PermissionQuerySource::Window || source == WebCore::PermissionQuerySource::DedicatedWorker))
+        if (!observer.page() && (source == CyberCore::PermissionQuerySource::Window || source == CyberCore::PermissionQuerySource::DedicatedWorker))
             return;
 
-        query(WebCore::ClientOrigin { observer.origin() }, WebCore::PermissionDescriptor { permissionName }, observer.page(), source, [observer = WeakPtr { observer }](auto newState) {
+        query(CyberCore::ClientOrigin { observer.origin() }, CyberCore::PermissionDescriptor { permissionName }, observer.page(), source, [observer = WeakPtr { observer }](auto newState) {
             if (observer && newState != observer->currentState())
                 observer->stateChanged(*newState);
         });
     }
 }
 
-} // namespace WebKit
+} // namespace CyberKit

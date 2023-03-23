@@ -27,7 +27,7 @@
 #import "_WKWebsiteDataStoreConfigurationInternal.h"
 
 #import "UnifiedOriginStorageLevel.h"
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 #import <wtf/RetainPtr.h>
 
 static void checkURLArgument(NSURL *url)
@@ -76,7 +76,7 @@ static void checkURLArgument(NSURL *url)
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainRunLoop(_WKWebsiteDataStoreConfiguration.class, self))
+    if (CyberCoreObjCScheduleDeallocateOnMainRunLoop(_WKWebsiteDataStoreConfiguration.class, self))
         return;
     _configuration->~WebsiteDataStoreConfiguration();
     [super dealloc];

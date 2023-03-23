@@ -29,27 +29,27 @@
 #include <CyberCore/UndoStep.h>
 #include <wtf/Ref.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebUndoStep : public RefCounted<WebUndoStep> {
 public:
-    static Ref<WebUndoStep> create(Ref<WebCore::UndoStep>&&);
+    static Ref<WebUndoStep> create(Ref<CyberCore::UndoStep>&&);
     ~WebUndoStep();
 
-    WebCore::UndoStep& step() const { return m_step.get(); }
+    CyberCore::UndoStep& step() const { return m_step.get(); }
     WebUndoStepID stepID() const { return m_stepID; }
 
     void didRemoveFromUndoManager() { m_step->didRemoveFromUndoManager(); }
 
 private:
-    WebUndoStep(Ref<WebCore::UndoStep>&& step, WebUndoStepID stepID)
+    WebUndoStep(Ref<CyberCore::UndoStep>&& step, WebUndoStepID stepID)
         : m_step(WTFMove(step))
         , m_stepID(stepID)
     {
     }
 
-    Ref<WebCore::UndoStep> m_step;
+    Ref<CyberCore::UndoStep> m_step;
     WebUndoStepID m_stepID;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

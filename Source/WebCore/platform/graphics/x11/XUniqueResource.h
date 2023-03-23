@@ -35,7 +35,7 @@ typedef unsigned long GLXPbuffer;
 typedef unsigned long GLXPixmap;
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class XResource {
     Colormap,
@@ -105,7 +105,7 @@ using XUniqueGLXPbuffer = XUniqueResource<XResource::GLXPbuffer>;
 using XUniqueGLXPixmap = XUniqueResource<XResource::GLXPixmap>;
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(X11)
 

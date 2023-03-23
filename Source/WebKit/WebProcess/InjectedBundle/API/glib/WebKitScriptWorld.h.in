@@ -19,27 +19,27 @@
 
 @INJECTED_BUNDLE_API_SINGLE_HEADER_CHECK@
 
-#ifndef WebKitScriptWorld_h
-#define WebKitScriptWorld_h
+#ifndef CyberKitScriptWorld_h
+#define CyberKitScriptWorld_h
 
 #include <glib-object.h>
-#include <@API_INCLUDE_PREFIX@/WebKitDefines.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitDefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_TYPE_SCRIPT_WORLD            (webkit_script_world_get_type())
 #if !ENABLE(2022_GLIB_API)
-#define WEBKIT_SCRIPT_WORLD(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_SCRIPT_WORLD, WebKitScriptWorld))
+#define WEBKIT_SCRIPT_WORLD(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_SCRIPT_WORLD, CyberKitScriptWorld))
 #define WEBKIT_IS_SCRIPT_WORLD(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_TYPE_SCRIPT_WORLD))
-#define WEBKIT_SCRIPT_WORLD_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_SCRIPT_WORLD, WebKitScriptWorldClass))
+#define WEBKIT_SCRIPT_WORLD_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_SCRIPT_WORLD, CyberKitScriptWorldClass))
 #define WEBKIT_IS_SCRIPT_WORLD_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_TYPE_SCRIPT_WORLD))
-#define WEBKIT_SCRIPT_WORLD_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_SCRIPT_WORLD, WebKitScriptWorldClass))
+#define WEBKIT_SCRIPT_WORLD_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_SCRIPT_WORLD, CyberKitScriptWorldClass))
 
-typedef struct _WebKitScriptWorld        WebKitScriptWorld;
-typedef struct _WebKitScriptWorldClass   WebKitScriptWorldClass;
-typedef struct _WebKitScriptWorldPrivate WebKitScriptWorldPrivate;
+typedef struct _CyberKitScriptWorld        CyberKitScriptWorld;
+typedef struct _CyberKitScriptWorldClass   CyberKitScriptWorldClass;
+typedef struct _CyberKitScriptWorldPrivate CyberKitScriptWorldPrivate;
 
-struct _WebKitScriptWorldClass {
+struct _CyberKitScriptWorldClass {
     GObjectClass parent_class;
 
     void (*_webkit_reserved0) (void);
@@ -49,19 +49,19 @@ struct _WebKitScriptWorldClass {
 };
 #endif
 
-WEBKIT_DECLARE_FINAL_TYPE (WebKitScriptWorld, webkit_script_world, WEBKIT, SCRIPT_WORLD, GObject )
+WEBKIT_DECLARE_FINAL_TYPE (CyberKitScriptWorld, webkit_script_world, WEBKIT, SCRIPT_WORLD, GObject )
 
-WEBKIT_API WebKitScriptWorld *
+WEBKIT_API CyberKitScriptWorld *
 webkit_script_world_get_default   (void);
 
-WEBKIT_API WebKitScriptWorld *
+WEBKIT_API CyberKitScriptWorld *
 webkit_script_world_new           (void);
 
-WEBKIT_API WebKitScriptWorld *
+WEBKIT_API CyberKitScriptWorld *
 webkit_script_world_new_with_name (const char        *name);
 
 WEBKIT_API const char *
-webkit_script_world_get_name      (WebKitScriptWorld *world);
+webkit_script_world_get_name      (CyberKitScriptWorld *world);
 
 G_END_DECLS
 

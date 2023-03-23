@@ -43,7 +43,7 @@
 #include <wtf/text/Base64.h>
 #include <wtf/text/CString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static CString& initialAcceptLanguages()
 {
@@ -347,6 +347,6 @@ void SoupNetworkSession::allowSpecificHTTPSCertificateForHost(const CertificateI
     m_allowedCertificates.add(host, HostTLSCertificateSet()).iterator->value.add(certificateInfo.certificate().get());
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

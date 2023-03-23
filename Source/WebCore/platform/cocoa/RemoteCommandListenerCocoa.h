@@ -31,7 +31,7 @@
 
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RemoteCommandListenerCocoa : public RemoteCommandListener, public CanMakeWeakPtr<RemoteCommandListenerCocoa> {
 public:

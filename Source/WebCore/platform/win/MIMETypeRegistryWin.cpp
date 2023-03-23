@@ -31,7 +31,7 @@
 #include <wtf/MainThread.h>
 #include <wtf/WindowsExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static String mimeTypeForExtensionFromRegistry(const String& extension)
 {

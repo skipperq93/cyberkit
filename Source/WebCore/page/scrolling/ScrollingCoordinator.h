@@ -42,7 +42,7 @@ namespace WTF {
 class TextStream;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class AbsolutePositionConstraints;
 class Document;
@@ -231,9 +231,9 @@ private:
     bool m_forceSynchronousScrollLayerPositionUpdates { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #define SPECIALIZE_TYPE_TRAITS_SCROLLING_COORDINATOR(ToValueTypeName, predicate) \
 SPECIALIZE_TYPE_TRAITS_BEGIN(ToValueTypeName) \
-    static bool isType(const WebCore::ScrollingCoordinator& value) { return value.predicate; } \
+    static bool isType(const CyberCore::ScrollingCoordinator& value) { return value.predicate; } \
 SPECIALIZE_TYPE_TRAITS_END()

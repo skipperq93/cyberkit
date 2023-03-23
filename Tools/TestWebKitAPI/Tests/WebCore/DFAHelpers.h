@@ -32,7 +32,7 @@
 #include <CyberCore/NFAToDFA.h>
 #include <CyberCore/URLFilterParser.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 namespace TestWebKitAPI {
 

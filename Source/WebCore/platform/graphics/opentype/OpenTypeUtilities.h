@@ -32,7 +32,7 @@
 #include <wtf/RefPtr.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct BigEndianUShort;
 class SharedBuffer;
@@ -58,6 +58,6 @@ private:
 bool renameFont(const SharedBuffer&, const String&, Vector<uint8_t>&);
 RefPtr<FontMemoryResource> renameAndActivateFont(const SharedBuffer&, const String&);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // OpenTypeUtilities_h

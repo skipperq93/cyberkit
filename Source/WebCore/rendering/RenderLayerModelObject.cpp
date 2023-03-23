@@ -44,7 +44,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/MathExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(RenderLayerModelObject);
 
@@ -528,5 +528,5 @@ FloatRect snapRectToDevicePixelsIfNeeded(const FloatRect& rect, const RenderLaye
     return snapRectToDevicePixels(LayoutRect { rect }, renderer.document().deviceScaleFactor());
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 

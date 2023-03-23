@@ -41,7 +41,7 @@
 static const Seconds releaseUnusedSecondsTolerance { 1_s };
 static const Seconds releaseUnusedBuffersTimerInterval = { 500_ms };
 
-namespace WebCore {
+namespace CyberCore {
 
 TextureMapperPlatformLayerProxyGL::TextureMapperPlatformLayerProxyGL() = default;
 
@@ -279,6 +279,6 @@ void TextureMapperPlatformLayerProxyGL::compositorThreadUpdateTimerFired()
     updateFunction();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(COORDINATED_GRAPHICS)

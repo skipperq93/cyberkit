@@ -29,7 +29,7 @@
 
 #include <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 struct RemoteCDMInstanceConfiguration {
     String keySystem;
@@ -54,6 +54,6 @@ struct RemoteCDMInstanceConfiguration {
     }
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

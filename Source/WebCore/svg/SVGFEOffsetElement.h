@@ -23,7 +23,7 @@
 
 #include "SVGFilterPrimitiveStandardAttributes.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGFEOffsetElement final : public SVGFilterPrimitiveStandardAttributes {
     WTF_MAKE_ISO_ALLOCATED(SVGFEOffsetElement);
@@ -57,4 +57,4 @@ private:
     Ref<SVGAnimatedNumber> m_dy { SVGAnimatedNumber::create(this) };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

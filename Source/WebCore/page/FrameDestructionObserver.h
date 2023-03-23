@@ -27,7 +27,7 @@
 
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Frame;
 
@@ -47,4 +47,4 @@ protected:
     WeakPtr<Frame> m_frame;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

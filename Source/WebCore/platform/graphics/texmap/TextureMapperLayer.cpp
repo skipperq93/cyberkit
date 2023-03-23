@@ -26,7 +26,7 @@
 #include <wtf/MathExtras.h>
 #include <wtf/SetForScope.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class TextureMapperPaintOptions {
 public:

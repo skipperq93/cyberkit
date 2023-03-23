@@ -46,7 +46,7 @@
 #import "JSSourceCode.h"
 #import "JSValueInternal.h"
 #import "JSVirtualMachineInternal.h"
-#import "JavaScriptCore.h"
+#import "CyberScriptCore.h"
 #import "ObjectConstructor.h"
 #import "SourceOrigin.h"
 #import "StrongInlines.h"

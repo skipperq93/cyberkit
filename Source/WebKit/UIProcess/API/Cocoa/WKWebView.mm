@@ -138,7 +138,7 @@
 #import <CyberCore/TextManipulationController.h>
 #import <CyberCore/TextManipulationItem.h>
 #import <CyberCore/ViewportArguments.h>
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 #import <CyberCore/WebViewVisualIdentificationOverlay.h>
 #import <CyberCore/WritingMode.h>
 #import <wtf/BlockPtr.h>
@@ -203,19 +203,19 @@ static const BOOL defaultFastClickingEnabled = NO;
 #define THROW_IF_SUSPENDED if (UNLIKELY(_page && _page->isSuspended())) \
     [NSException raise:NSInternalInconsistencyException format:@"The WKWebView is suspended"]
 
-RetainPtr<NSError> nsErrorFromExceptionDetails(const WebCore::ExceptionDetails& details)
+RetainPtr<NSError> nsErrorFromExceptionDetails(const CyberCore::ExceptionDetails& details)
 {
     auto userInfo = adoptNS([[NSMutableDictionary alloc] init]);
 
     WKErrorCode errorCode;
     switch (details.type) {
-    case WebCore::ExceptionDetails::Type::InvalidTargetFrame:
+    case CyberCore::ExceptionDetails::Type::InvalidTargetFrame:
         errorCode = WKErrorJavaScriptInvalidFrameTarget;
         break;
-    case WebCore::ExceptionDetails::Type::Script:
+    case CyberCore::ExceptionDetails::Type::Script:
         errorCode = WKErrorJavaScriptExceptionOccurred;
         break;
-    case WebCore::ExceptionDetails::Type::AppBoundDomain:
+    case CyberCore::ExceptionDetails::Type::AppBoundDomain:
         errorCode = WKErrorJavaScriptAppBoundDomain;
         break;
     }
@@ -253,7 +253,7 @@ static bool shouldAllowPictureInPictureMediaPlayback()
 
 static bool shouldAllowSettingAnyXHRHeaderFromFileURLs()
 {
-    static bool shouldAllowSettingAnyXHRHeaderFromFileURLs = (WebCore::IOSApplication::isCardiogram() || WebCore::IOSApplication::isNike()) && !linkedOnOrAfterSDKWithBehavior(SDKAlignedBehavior::DisallowsSettingAnyXHRHeaderFromFileURLs);
+    static bool shouldAllowSettingAnyXHRHeaderFromFileURLs = (CyberCore::IOSApplication::isCardiogram() || CyberCore::IOSApplication::isNike()) && !linkedOnOrAfterSDKWithBehavior(SDKAlignedBehavior::DisallowsSettingAnyXHRHeaderFromFileURLs);
     return shouldAllowSettingAnyXHRHeaderFromFileURLs;
 }
 
@@ -280,22 +280,22 @@ static uint32_t convertUserInterfaceDirectionPolicy(WKUserInterfaceDirectionPoli
 {
     switch (policy) {
     case WKUserInterfaceDirectionPolicyContent:
-        return static_cast<uint32_t>(WebCore::UserInterfaceDirectionPolicy::Content);
+        return static_cast<uint32_t>(CyberCore::UserInterfaceDirectionPolicy::Content);
     case WKUserInterfaceDirectionPolicySystem:
-        return static_cast<uint32_t>(WebCore::UserInterfaceDirectionPolicy::System);
+        return static_cast<uint32_t>(CyberCore::UserInterfaceDirectionPolicy::System);
     }
-    return static_cast<uint32_t>(WebCore::UserInterfaceDirectionPolicy::Content);
+    return static_cast<uint32_t>(CyberCore::UserInterfaceDirectionPolicy::Content);
 }
 
 static uint32_t convertSystemLayoutDirection(NSUserInterfaceLayoutDirection direction)
 {
     switch (direction) {
     case NSUserInterfaceLayoutDirectionLeftToRight:
-        return static_cast<uint32_t>(WebCore::UserInterfaceLayoutDirection::LTR);
+        return static_cast<uint32_t>(CyberCore::UserInterfaceLayoutDirection::LTR);
     case NSUserInterfaceLayoutDirectionRightToLeft:
-        return static_cast<uint32_t>(WebCore::UserInterfaceLayoutDirection::RTL);
+        return static_cast<uint32_t>(CyberCore::UserInterfaceLayoutDirection::RTL);
     }
-    return static_cast<uint32_t>(WebCore::UserInterfaceLayoutDirection::LTR);
+    return static_cast<uint32_t>(CyberCore::UserInterfaceLayoutDirection::LTR);
 }
 
 #endif // PLATFORM(MAC)
@@ -516,8 +516,8 @@ static void hardwareKeyboardAvailabilityChangedCallback(CFNotificationCenterRef,
     pageConfiguration->preferences()->setAllowsInlineMediaPlaybackAfterFullscreen(!![_configuration _allowsInlineMediaPlaybackAfterFullscreen]);
     pageConfiguration->preferences()->setInlineMediaPlaybackRequiresPlaysInlineAttribute(!![_configuration _inlineMediaPlaybackRequiresPlaysInlineAttribute]);
     pageConfiguration->preferences()->setAllowsPictureInPictureMediaPlayback(!![_configuration allowsPictureInPictureMediaPlayback] && shouldAllowPictureInPictureMediaPlayback());
-    pageConfiguration->preferences()->setUserInterfaceDirectionPolicy(static_cast<uint32_t>(WebCore::UserInterfaceDirectionPolicy::Content));
-    pageConfiguration->preferences()->setSystemLayoutDirection(static_cast<uint32_t>(WebCore::TextDirection::LTR));
+    pageConfiguration->preferences()->setUserInterfaceDirectionPolicy(static_cast<uint32_t>(CyberCore::UserInterfaceDirectionPolicy::Content));
+    pageConfiguration->preferences()->setSystemLayoutDirection(static_cast<uint32_t>(CyberCore::TextDirection::LTR));
     pageConfiguration->preferences()->setAllowSettingAnyXHRHeaderFromFileURLs(shouldAllowSettingAnyXHRHeaderFromFileURLs());
     pageConfiguration->preferences()->setShouldDecidePolicyBeforeLoadingQuickLookPreview(!![_configuration _shouldDecidePolicyBeforeLoadingQuickLookPreview]);
 #if ENABLE(DEVICE_ORIENTATION)
@@ -644,7 +644,7 @@ static void hardwareKeyboardAvailabilityChangedCallback(CFNotificationCenterRef,
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainRunLoop(WKWebView.class, self))
+    if (CyberCoreObjCScheduleDeallocateOnMainRunLoop(WKWebView.class, self))
         return;
 
 #if PLATFORM(MAC)
@@ -889,9 +889,9 @@ static void hardwareKeyboardAvailabilityChangedCallback(CFNotificationCenterRef,
 - (WKNavigation *)reload
 {
     THROW_IF_SUSPENDED;
-    OptionSet<WebCore::ReloadOption> reloadOptions;
+    OptionSet<CyberCore::ReloadOption> reloadOptions;
     if (linkedOnOrAfterSDKWithBehavior(SDKAlignedBehavior::ExpiredOnlyReloadBehavior))
-        reloadOptions.add(WebCore::ReloadOption::ExpiredOnly);
+        reloadOptions.add(CyberCore::ReloadOption::ExpiredOnly);
 
     return wrapper(_page->reload(reloadOptions));
 }
@@ -899,7 +899,7 @@ static void hardwareKeyboardAvailabilityChangedCallback(CFNotificationCenterRef,
 - (WKNavigation *)reloadFromOrigin
 {
     THROW_IF_SUSPENDED;
-    return wrapper(_page->reload(WebCore::ReloadOption::FromOrigin));
+    return wrapper(_page->reload(CyberCore::ReloadOption::FromOrigin));
 }
 
 - (void)stopLoading
@@ -1063,9 +1063,9 @@ static WKMediaPlaybackState toWKMediaPlaybackState(WebKit::MediaPlaybackState me
 - (WKMediaCaptureState)cameraCaptureState
 {
     auto state = _page->reportedMediaState();
-    if (state & WebCore::MediaProducerMediaState::HasActiveVideoCaptureDevice)
+    if (state & CyberCore::MediaProducerMediaState::HasActiveVideoCaptureDevice)
         return WKMediaCaptureStateActive;
-    if (state & WebCore::MediaProducerMediaState::HasMutedVideoCaptureDevice)
+    if (state & CyberCore::MediaProducerMediaState::HasMutedVideoCaptureDevice)
         return WKMediaCaptureStateMuted;
     return WKMediaCaptureStateNone;
 }
@@ -1073,9 +1073,9 @@ static WKMediaPlaybackState toWKMediaPlaybackState(WebKit::MediaPlaybackState me
 - (WKMediaCaptureState)microphoneCaptureState
 {
     auto state = _page->reportedMediaState();
-    if (state & WebCore::MediaProducerMediaState::HasActiveAudioCaptureDevice)
+    if (state & CyberCore::MediaProducerMediaState::HasActiveAudioCaptureDevice)
         return WKMediaCaptureStateActive;
-    if (state & WebCore::MediaProducerMediaState::HasMutedAudioCaptureDevice)
+    if (state & CyberCore::MediaProducerMediaState::HasMutedAudioCaptureDevice)
         return WKMediaCaptureStateMuted;
     return WKMediaCaptureStateNone;
 }
@@ -1087,16 +1087,16 @@ static WKMediaPlaybackState toWKMediaPlaybackState(WebKit::MediaPlaybackState me
         completionHandler = [] { };
 
     if (state == WKMediaCaptureStateNone) {
-        _page->stopMediaCapture(WebCore::MediaProducerMediaCaptureKind::Microphone, [completionHandler = makeBlockPtr(completionHandler)] {
+        _page->stopMediaCapture(CyberCore::MediaProducerMediaCaptureKind::Microphone, [completionHandler = makeBlockPtr(completionHandler)] {
             completionHandler();
         });
         return;
     }
     auto mutedState = _page->mutedStateFlags();
     if (state == WKMediaCaptureStateActive)
-        mutedState.remove(WebCore::MediaProducerMutedState::AudioCaptureIsMuted);
+        mutedState.remove(CyberCore::MediaProducerMutedState::AudioCaptureIsMuted);
     else if (state == WKMediaCaptureStateMuted)
-        mutedState.add(WebCore::MediaProducerMutedState::AudioCaptureIsMuted);
+        mutedState.add(CyberCore::MediaProducerMutedState::AudioCaptureIsMuted);
     _page->setMuted(mutedState, [completionHandler = makeBlockPtr(completionHandler)] {
         completionHandler();
     });
@@ -1109,16 +1109,16 @@ static WKMediaPlaybackState toWKMediaPlaybackState(WebKit::MediaPlaybackState me
         completionHandler = [] { };
 
     if (state == WKMediaCaptureStateNone) {
-        _page->stopMediaCapture(WebCore::MediaProducerMediaCaptureKind::Camera, [completionHandler = makeBlockPtr(completionHandler)] {
+        _page->stopMediaCapture(CyberCore::MediaProducerMediaCaptureKind::Camera, [completionHandler = makeBlockPtr(completionHandler)] {
             completionHandler();
         });
         return;
     }
     auto mutedState = _page->mutedStateFlags();
     if (state == WKMediaCaptureStateActive)
-        mutedState.remove(WebCore::MediaProducerMutedState::VideoCaptureIsMuted);
+        mutedState.remove(CyberCore::MediaProducerMutedState::VideoCaptureIsMuted);
     else if (state == WKMediaCaptureStateMuted)
-        mutedState.add(WebCore::MediaProducerMutedState::VideoCaptureIsMuted);
+        mutedState.add(CyberCore::MediaProducerMutedState::VideoCaptureIsMuted);
     _page->setMuted(mutedState, [completionHandler = makeBlockPtr(completionHandler)] {
         completionHandler();
     });
@@ -1129,9 +1129,9 @@ static WKMediaPlaybackState toWKMediaPlaybackState(WebKit::MediaPlaybackState me
     THROW_IF_SUSPENDED;
     auto handler = adoptNS([completionHandler copy]);
 
-    std::optional<WebCore::ArgumentWireBytesMap> argumentsMap;
+    std::optional<CyberCore::ArgumentWireBytesMap> argumentsMap;
     if (asAsyncFunction)
-        argumentsMap = WebCore::ArgumentWireBytesMap { };
+        argumentsMap = CyberCore::ArgumentWireBytesMap { };
     NSString *errorMessage = nil;
 
     for (id key in arguments) {
@@ -1160,7 +1160,7 @@ static WKMediaPlaybackState toWKMediaPlaybackState(WebKit::MediaPlaybackState me
         return;
     }
     
-    std::optional<WebCore::FrameIdentifier> frameID;
+    std::optional<CyberCore::FrameIdentifier> frameID;
     if (frame) {
         if (frame._handle.frameID)
             frameID = frame._handle->_frameHandle->frameID();
@@ -1219,7 +1219,7 @@ static WKMediaPlaybackState toWKMediaPlaybackState(WebKit::MediaPlaybackState me
 
     // Need to scale by device scale factor or the image will be distorted.
     CGFloat deviceScale = _page->deviceScaleFactor();
-    WebCore::IntSize bitmapSize(snapshotWidth, imageHeight);
+    CyberCore::IntSize bitmapSize(snapshotWidth, imageHeight);
     bitmapSize.scale(deviceScale, deviceScale);
 
     WebKit::SnapshotOptions snapshotOptions = WebKit::SnapshotOptionsInViewCoordinates;
@@ -1230,7 +1230,7 @@ static WKMediaPlaybackState toWKMediaPlaybackState(WebKit::MediaPlaybackState me
     // This code doesn't consider snapshotConfiguration.afterScreenUpdates since the software snapshot always
     // contains recent updates. If we ever have a UI-side snapshot mechanism on macOS, we will need to factor
     // in snapshotConfiguration.afterScreenUpdates at that time.
-    _page->takeSnapshot(WebCore::enclosingIntRect(rectInViewCoordinates), bitmapSize, snapshotOptions, [handler, snapshotWidth, imageHeight](const WebKit::ShareableBitmapHandle& imageHandle) {
+    _page->takeSnapshot(CyberCore::enclosingIntRect(rectInViewCoordinates), bitmapSize, snapshotOptions, [handler, snapshotWidth, imageHeight](const WebKit::ShareableBitmapHandle& imageHandle) {
         if (imageHandle.isNull()) {
             tracePoint(TakeSnapshotEnd, snapshotFailedTraceValue);
             handler(nil, createNSError(WKErrorUnknown).get());
@@ -1415,7 +1415,7 @@ inline OptionSet<WebKit::FindOptions> toFindOptions(WKFindConfiguration *configu
 
 + (BOOL)handlesURLScheme:(NSString *)urlScheme
 {
-    return WebCore::LegacySchemeRegistry::isBuiltinScheme(urlScheme);
+    return CyberCore::LegacySchemeRegistry::isBuiltinScheme(urlScheme);
 }
 
 - (void)setMediaType:(NSString *)mediaStyle
@@ -1637,7 +1637,7 @@ inline OptionSet<WebKit::FindOptions> toFindOptions(WKFindConfiguration *configu
 
 - (void)_recalculateViewportSizesWithMinimumViewportInset:(CocoaEdgeInsets)minimumViewportInset maximumViewportInset:(CocoaEdgeInsets)maximumViewportInset throwOnInvalidInput:(BOOL)throwOnInvalidInput
 {
-    auto frame = WebCore::FloatSize(self.frame.size);
+    auto frame = CyberCore::FloatSize(self.frame.size);
 
 #if PLATFORM(MAC)
     CGFloat additionalTopInset = self._topContentInset;
@@ -1645,7 +1645,7 @@ inline OptionSet<WebKit::FindOptions> toFindOptions(WKFindConfiguration *configu
     CGFloat additionalTopInset = 0;
 #endif
 
-    auto maximumViewportInsetSize = WebCore::FloatSize(maximumViewportInset.left + maximumViewportInset.right, maximumViewportInset.top + additionalTopInset + maximumViewportInset.bottom);
+    auto maximumViewportInsetSize = CyberCore::FloatSize(maximumViewportInset.left + maximumViewportInset.right, maximumViewportInset.top + additionalTopInset + maximumViewportInset.bottom);
     auto minimumUnobscuredSize = frame - maximumViewportInsetSize;
     if (minimumUnobscuredSize.isEmpty()) {
         if (!maximumViewportInsetSize.isEmpty()) {
@@ -1660,7 +1660,7 @@ inline OptionSet<WebKit::FindOptions> toFindOptions(WKFindConfiguration *configu
         minimumUnobscuredSize = frame;
     }
 
-    auto minimumViewportInsetSize = WebCore::FloatSize(minimumViewportInset.left + minimumViewportInset.right, minimumViewportInset.top + additionalTopInset + minimumViewportInset.bottom);
+    auto minimumViewportInsetSize = CyberCore::FloatSize(minimumViewportInset.left + minimumViewportInset.right, minimumViewportInset.top + additionalTopInset + minimumViewportInset.bottom);
     auto maximumUnobscuredSize = frame - minimumViewportInsetSize;
     if (maximumUnobscuredSize.isEmpty()) {
         if (!minimumViewportInsetSize.isEmpty()) {
@@ -1726,7 +1726,7 @@ inline OptionSet<WebKit::FindOptions> toFindOptions(WKFindConfiguration *configu
 }
 
 #if ENABLE(APP_HIGHLIGHTS)
-- (void)_storeAppHighlight:(const WebCore::AppHighlight&)highlight
+- (void)_storeAppHighlight:(const CyberCore::AppHighlight&)highlight
 {
     auto delegate = self._appHighlightDelegate;
     if (!delegate)
@@ -1743,7 +1743,7 @@ inline OptionSet<WebKit::FindOptions> toFindOptions(WKFindConfiguration *configu
     auto wkHighlight = adoptNS([[_WKAppHighlight alloc] initWithHighlight:highlight.highlight->makeContiguous()->createNSData().get() text:text image:nil]);
 
     if ([delegate respondsToSelector:@selector(_webView:storeAppHighlight:inNewGroup:requestOriginatedInApp:)])
-        [delegate _webView:self storeAppHighlight:wkHighlight.get() inNewGroup:highlight.isNewGroup == WebCore::CreateNewGroupForHighlight::Yes requestOriginatedInApp:highlight.requestOriginatedInApp == WebCore::HighlightRequestOriginatedInApp::Yes];
+        [delegate _webView:self storeAppHighlight:wkHighlight.get() inNewGroup:highlight.isNewGroup == CyberCore::CreateNewGroupForHighlight::Yes requestOriginatedInApp:highlight.requestOriginatedInApp == CyberCore::HighlightRequestOriginatedInApp::Yes];
 }
 #endif
 
@@ -1765,7 +1765,7 @@ inline OptionSet<WebKit::FindOptions> toFindOptions(WKFindConfiguration *configu
 - (void)createPDFWithConfiguration:(WKPDFConfiguration *)pdfConfiguration completionHandler:(void (^)(NSData *pdfDocumentData, NSError *error))completionHandler
 {
     THROW_IF_SUSPENDED;
-    WebCore::FrameIdentifier frameID;
+    CyberCore::FrameIdentifier frameID;
     if (auto mainFrame = _page->mainFrame())
         frameID = mainFrame->frameID();
     else {
@@ -1773,13 +1773,13 @@ inline OptionSet<WebKit::FindOptions> toFindOptions(WKFindConfiguration *configu
         return;
     }
 
-    std::optional<WebCore::FloatRect> floatRect;
+    std::optional<CyberCore::FloatRect> floatRect;
     if (pdfConfiguration && !CGRectIsNull(pdfConfiguration.rect))
-        floatRect = WebCore::FloatRect(pdfConfiguration.rect);
+        floatRect = CyberCore::FloatRect(pdfConfiguration.rect);
 
     bool allowTransparentBackground = pdfConfiguration && pdfConfiguration.allowTransparentBackground;
 
-    _page->drawToPDF(frameID, floatRect, allowTransparentBackground, [handler = makeBlockPtr(completionHandler)](RefPtr<WebCore::SharedBuffer>&& pdfData) {
+    _page->drawToPDF(frameID, floatRect, allowTransparentBackground, [handler = makeBlockPtr(completionHandler)](RefPtr<CyberCore::SharedBuffer>&& pdfData) {
         if (!pdfData || pdfData->isEmpty()) {
             handler(nil, createNSError(WKErrorUnknown).get());
             return;
@@ -1912,19 +1912,19 @@ static _WKSelectionAttributes selectionAttributes(const WebKit::EditorState& edi
     return wrapper(_page->loadFile(URL.absoluteString, readAccessURL.absoluteString, isAppInitiated));
 }
 
-- (WebCore::CocoaColor *)themeColor
+- (CyberCore::CocoaColor *)themeColor
 {
     return cocoaColorOrNil(_page->themeColor()).autorelease();
 }
 
-- (WebCore::CocoaColor *)underPageBackgroundColor
+- (CyberCore::CocoaColor *)underPageBackgroundColor
 {
     return cocoaColor(_page->underPageBackgroundColor()).autorelease();
 }
 
-- (void)setUnderPageBackgroundColor:(WebCore::CocoaColor *)underPageBackgroundColorOverride
+- (void)setUnderPageBackgroundColor:(CyberCore::CocoaColor *)underPageBackgroundColorOverride
 {
-    _page->setUnderPageBackgroundColorOverride(WebCore::roundAndClampToSRGBALossy(underPageBackgroundColorOverride.CGColor));
+    _page->setUnderPageBackgroundColorOverride(CyberCore::roundAndClampToSRGBALossy(underPageBackgroundColorOverride.CGColor));
 }
 
 + (BOOL)automaticallyNotifiesObserversOfUnderPageBackgroundColor
@@ -2078,7 +2078,7 @@ FOR_EACH_PRIVATE_WKCONTENTVIEW_ACTION(FORWARD_ACTION_TO_WKCONTENTVIEW)
 - (void)_setViewportSizeForCSSViewportUnits:(CGSize)viewportSize
 {
     THROW_IF_SUSPENDED;
-    auto viewportSizeForViewportUnits = WebCore::FloatSize(viewportSize);
+    auto viewportSizeForViewportUnits = CyberCore::FloatSize(viewportSize);
     if (viewportSizeForViewportUnits.isEmpty())
         [NSException raise:NSInvalidArgumentException format:@"Viewport size should not be empty"];
 
@@ -2184,7 +2184,7 @@ FOR_EACH_PRIVATE_WKCONTENTVIEW_ACTION(FORWARD_ACTION_TO_WKCONTENTVIEW)
     _textManipulationDelegate = delegate;
 }
 
-static RetainPtr<NSDictionary<NSString *, id>> createUserInfo(const std::optional<WebCore::TextManipulationTokenInfo>& info)
+static RetainPtr<NSDictionary<NSString *, id>> createUserInfo(const std::optional<CyberCore::TextManipulationTokenInfo>& info)
 {
     if (!info)
         return { };
@@ -2204,14 +2204,14 @@ static RetainPtr<NSDictionary<NSString *, id>> createUserInfo(const std::optiona
 - (void)_startTextManipulationsWithConfiguration:(_WKTextManipulationConfiguration *)configuration completion:(void(^)())completionHandler
 {
     THROW_IF_SUSPENDED;
-    using ExclusionRule = WebCore::TextManipulationController::ExclusionRule;
+    using ExclusionRule = CyberCore::TextManipulationController::ExclusionRule;
 
     if (!_textManipulationDelegate || !_page) {
         completionHandler();
         return;
     }
 
-    Vector<WebCore::TextManipulationController::ExclusionRule> exclusionRules;
+    Vector<CyberCore::TextManipulationController::ExclusionRule> exclusionRules;
     if (configuration) {
         for (_WKTextManipulationExclusionRule *wkRule in configuration.exclusionRules) {
             auto type = wkRule.isExclusion ? ExclusionRule::Type::Exclude : ExclusionRule::Type::Include;
@@ -2224,7 +2224,7 @@ static RetainPtr<NSDictionary<NSString *, id>> createUserInfo(const std::optiona
         }
     }
 
-    _page->startTextManipulations(exclusionRules, [weakSelf = WeakObjCPtr<WKWebView>(self)] (const Vector<WebCore::TextManipulationItem>& itemReferences) {
+    _page->startTextManipulations(exclusionRules, [weakSelf = WeakObjCPtr<WKWebView>(self)] (const Vector<CyberCore::TextManipulationItem>& itemReferences) {
         if (!weakSelf)
             return;
 
@@ -2233,7 +2233,7 @@ static RetainPtr<NSDictionary<NSString *, id>> createUserInfo(const std::optiona
         if (!delegate)
             return;
 
-        auto createWKItem = [] (const WebCore::TextManipulationItem& item) {
+        auto createWKItem = [] (const CyberCore::TextManipulationItem& item) {
             auto tokens = createNSArray(item.tokens, [] (auto& token) {
                 auto wkToken = adoptNS([[_WKTextManipulationToken alloc] init]);
                 [wkToken setIdentifier:String::number(token.identifier.toUInt64())];
@@ -2256,14 +2256,14 @@ static RetainPtr<NSDictionary<NSString *, id>> createUserInfo(const std::optiona
     });
 }
 
-static WebCore::TextManipulationItemIdentifier coreTextManipulationItemIdentifierFromString(NSString *identifier)
+static CyberCore::TextManipulationItemIdentifier coreTextManipulationItemIdentifierFromString(NSString *identifier)
 {
-    return makeObjectIdentifier<WebCore::TextManipulationItemIdentifierType>(identifier.longLongValue);
+    return makeObjectIdentifier<CyberCore::TextManipulationItemIdentifierType>(identifier.longLongValue);
 }
 
-static WebCore::TextManipulationTokenIdentifier coreTextManipulationTokenIdentifierFromString(NSString *identifier)
+static CyberCore::TextManipulationTokenIdentifier coreTextManipulationTokenIdentifierFromString(NSString *identifier)
 {
-    return makeObjectIdentifier<WebCore::TextManipulationTokenIdentifierType>(identifier.longLongValue);
+    return makeObjectIdentifier<CyberCore::TextManipulationTokenIdentifierType>(identifier.longLongValue);
 }
 
 - (void)_completeTextManipulation:(_WKTextManipulationItem *)item completion:(void(^)(BOOL success))completionHandler
@@ -2276,13 +2276,13 @@ static WebCore::TextManipulationTokenIdentifier coreTextManipulationTokenIdentif
 
     auto itemID = coreTextManipulationItemIdentifierFromString(item.identifier);
 
-    Vector<WebCore::TextManipulationToken> tokens;
+    Vector<CyberCore::TextManipulationToken> tokens;
     for (_WKTextManipulationToken *wkToken in item.tokens)
-        tokens.append(WebCore::TextManipulationToken { coreTextManipulationTokenIdentifierFromString(wkToken.identifier), wkToken.content, std::nullopt });
+        tokens.append(CyberCore::TextManipulationToken { coreTextManipulationTokenIdentifierFromString(wkToken.identifier), wkToken.content, std::nullopt });
 
-    Vector<WebCore::TextManipulationItem> coreItems;
+    Vector<CyberCore::TextManipulationItem> coreItems;
     coreItems.reserveInitialCapacity(1);
-    coreItems.uncheckedAppend(WebCore::TextManipulationItem { itemID, WTFMove(tokens) });
+    coreItems.uncheckedAppend(CyberCore::TextManipulationItem { itemID, WTFMove(tokens) });
     _page->completeTextManipulation(coreItems, [capturedCompletionBlock = makeBlockPtr(completionHandler)] (bool allFailed, auto& failures) {
         capturedCompletionBlock(!allFailed && failures.isEmpty());
     });
@@ -2296,7 +2296,7 @@ static RetainPtr<NSMutableArray> makeFailureSetForAllTextManipulationItems(NSArr
     return wkFailures;
 };
 
-static RetainPtr<NSArray> wkTextManipulationErrors(NSArray<_WKTextManipulationItem *> *items, const Vector<WebCore::TextManipulationController::ManipulationFailure>& failures)
+static RetainPtr<NSArray> wkTextManipulationErrors(NSArray<_WKTextManipulationItem *> *items, const Vector<CyberCore::TextManipulationController::ManipulationFailure>& failures)
 {
     if (failures.isEmpty())
         return nil;
@@ -2306,7 +2306,7 @@ static RetainPtr<NSArray> wkTextManipulationErrors(NSArray<_WKTextManipulationIt
         if (coreFailure.index >= items.count)
             return nil;
         auto errorCode = static_cast<NSInteger>(([&coreFailure] {
-            using Type = WebCore::TextManipulationController::ManipulationFailure::Type;
+            using Type = CyberCore::TextManipulationController::ManipulationFailure::Type;
             switch (coreFailure.type) {
             case Type::ContentChanged:
                 return _WKTextManipulationItemErrorContentChanged;
@@ -2332,14 +2332,14 @@ static RetainPtr<NSArray> wkTextManipulationErrors(NSArray<_WKTextManipulationIt
         return;
     }
 
-    Vector<WebCore::TextManipulationItem> coreItems;
+    Vector<CyberCore::TextManipulationItem> coreItems;
     coreItems.reserveInitialCapacity(items.count);
     for (_WKTextManipulationItem *wkItem in items) {
-        Vector<WebCore::TextManipulationToken> coreTokens;
+        Vector<CyberCore::TextManipulationToken> coreTokens;
         coreTokens.reserveInitialCapacity(wkItem.tokens.count);
         for (_WKTextManipulationToken *wkToken in wkItem.tokens)
-            coreTokens.uncheckedAppend(WebCore::TextManipulationToken { coreTextManipulationTokenIdentifierFromString(wkToken.identifier), wkToken.content, std::nullopt });
-        coreItems.uncheckedAppend(WebCore::TextManipulationItem { coreTextManipulationItemIdentifierFromString(wkItem.identifier), WTFMove(coreTokens) });
+            coreTokens.uncheckedAppend(CyberCore::TextManipulationToken { coreTextManipulationTokenIdentifierFromString(wkToken.identifier), wkToken.content, std::nullopt });
+        coreItems.uncheckedAppend(CyberCore::TextManipulationItem { coreTextManipulationItemIdentifierFromString(wkItem.identifier), WTFMove(coreTokens) });
     }
 
     RetainPtr<NSArray<_WKTextManipulationItem *>> retainedItems = items;
@@ -2521,7 +2521,7 @@ static RetainPtr<NSArray> wkTextManipulationErrors(NSArray<_WKTextManipulationIt
 - (void)_stopMediaCapture
 {
     THROW_IF_SUSPENDED;
-    _page->stopMediaCapture(WebCore::MediaProducerMediaCaptureKind::EveryKind);
+    _page->stopMediaCapture(CyberCore::MediaProducerMediaCaptureKind::EveryKind);
 }
 
 - (void)_stopAllMediaPlayback
@@ -2591,7 +2591,7 @@ static void convertAndAddHighlight(Vector<Ref<WebKit::SharedMemory>>& buffers, N
 {
     THROW_IF_SUSPENDED;
 #if ENABLE(APP_HIGHLIGHTS)
-    _page->createAppHighlightInSelectedRange(newGroup ? WebCore::CreateNewGroupForHighlight::Yes : WebCore::CreateNewGroupForHighlight::No, originatedInApp ? WebCore::HighlightRequestOriginatedInApp::Yes : WebCore::HighlightRequestOriginatedInApp::No);
+    _page->createAppHighlightInSelectedRange(newGroup ? CyberCore::CreateNewGroupForHighlight::Yes : CyberCore::CreateNewGroupForHighlight::No, originatedInApp ? CyberCore::HighlightRequestOriginatedInApp::Yes : CyberCore::HighlightRequestOriginatedInApp::No);
 #endif
 }
 
@@ -2611,7 +2611,7 @@ static void convertAndAddHighlight(Vector<Ref<WebKit::SharedMemory>>& buffers, N
 {
     THROW_IF_SUSPENDED;
     auto *data = [string dataUsingEncoding:NSUTF8StringEncoding] ?: NSData.data;
-    _page->loadAlternateHTML(WebCore::DataSegment::create((__bridge CFDataRef)data), "UTF-8"_s, baseURL, unreachableURL);
+    _page->loadAlternateHTML(CyberCore::DataSegment::create((__bridge CFDataRef)data), "UTF-8"_s, baseURL, unreachableURL);
 }
 
 - (WKNavigation *)_loadData:(NSData *)data MIMEType:(NSString *)MIMEType characterEncodingName:(NSString *)characterEncodingName baseURL:(NSURL *)baseURL userData:(id)userData
@@ -2630,16 +2630,16 @@ static void convertAndAddHighlight(Vector<Ref<WebKit::SharedMemory>>& buffers, N
 - (WKNavigation *)_loadRequest:(NSURLRequest *)request shouldOpenExternalURLsPolicy:(_WKShouldOpenExternalURLsPolicy)shouldOpenExternalURLsPolicy
 {
     THROW_IF_SUSPENDED;
-    WebCore::ShouldOpenExternalURLsPolicy policy;
+    CyberCore::ShouldOpenExternalURLsPolicy policy;
     switch (shouldOpenExternalURLsPolicy) {
     case _WKShouldOpenExternalURLsPolicyNotAllow:
-        policy = WebCore::ShouldOpenExternalURLsPolicy::ShouldNotAllow;
+        policy = CyberCore::ShouldOpenExternalURLsPolicy::ShouldNotAllow;
         break;
     case _WKShouldOpenExternalURLsPolicyAllow:
-        policy = WebCore::ShouldOpenExternalURLsPolicy::ShouldAllow;
+        policy = CyberCore::ShouldOpenExternalURLsPolicy::ShouldAllow;
         break;
     case _WKShouldOpenExternalURLsPolicyAllowExternalSchemesButNotAppLinks:
-        policy = WebCore::ShouldOpenExternalURLsPolicy::ShouldAllowExternalSchemesButNotAppLinks;
+        policy = CyberCore::ShouldOpenExternalURLsPolicy::ShouldAllowExternalSchemesButNotAppLinks;
         break;
     }
     return wrapper(_page->loadRequest(request, policy));
@@ -2730,7 +2730,7 @@ static void convertAndAddHighlight(Vector<Ref<WebKit::SharedMemory>>& buffers, N
 - (NSArray *)_certificateChain
 {
     if (WebKit::WebFrameProxy* mainFrame = _page->mainFrame())
-        return (__bridge NSArray *)WebCore::CertificateInfo::certificateChainFromSecTrust(mainFrame->certificateInfo().trust().get()).autorelease();
+        return (__bridge NSArray *)CyberCore::CertificateInfo::certificateChainFromSecTrust(mainFrame->certificateInfo().trust().get()).autorelease();
 
     return nil;
 }
@@ -2831,13 +2831,13 @@ static void convertAndAddHighlight(Vector<Ref<WebKit::SharedMemory>>& buffers, N
 - (WKNavigation *)_reloadWithoutContentBlockers
 {
     THROW_IF_SUSPENDED;
-    return wrapper(_page->reload(WebCore::ReloadOption::DisableContentBlockers));
+    return wrapper(_page->reload(CyberCore::ReloadOption::DisableContentBlockers));
 }
 
 - (WKNavigation *)_reloadExpiredOnly
 {
     THROW_IF_SUSPENDED;
-    return wrapper(_page->reload(WebCore::ReloadOption::ExpiredOnly));
+    return wrapper(_page->reload(CyberCore::ReloadOption::ExpiredOnly));
 }
 
 - (void)_killWebContentProcessAndResetState
@@ -2867,7 +2867,7 @@ static void convertAndAddHighlight(Vector<Ref<WebKit::SharedMemory>>& buffers, N
 - (void)_getPDFFirstPageSizeInFrame:(_WKFrameHandle *)frame completionHandler:(void(^)(CGSize))completionHandler
 {
     THROW_IF_SUSPENDED;
-    _page->getPDFFirstPageSize(frame->_frameHandle->frameID(), [completionHandler = makeBlockPtr(completionHandler)](WebCore::FloatSize size) {
+    _page->getPDFFirstPageSize(frame->_frameHandle->frameID(), [completionHandler = makeBlockPtr(completionHandler)](CyberCore::FloatSize size) {
         completionHandler(static_cast<CGSize>(size));
     });
 }
@@ -2989,7 +2989,7 @@ static void convertAndAddHighlight(Vector<Ref<WebKit::SharedMemory>>& buffers, N
 + (BOOL)_willUpgradeToHTTPS:(NSURL *)url
 {
 #if ENABLE(CONTENT_EXTENSIONS)
-    return WebCore::ContentExtensions::ContentExtensionsBackend::shouldBeMadeSecure(url);
+    return CyberCore::ContentExtensions::ContentExtensionsBackend::shouldBeMadeSecure(url);
 #else
     return NO;
 #endif
@@ -3072,8 +3072,8 @@ static void convertAndAddHighlight(Vector<Ref<WebKit::SharedMemory>>& buffers, N
 #if ENABLE(FULLSCREEN_API)
     bool hasOpenMediaPresentations = false;
     if (auto videoFullscreenManager = _page->videoFullscreenManager()) {
-        hasOpenMediaPresentations = videoFullscreenManager->hasMode(WebCore::HTMLMediaElementEnums::VideoFullscreenModePictureInPicture)
-            || videoFullscreenManager->hasMode(WebCore::HTMLMediaElementEnums::VideoFullscreenModeStandard);
+        hasOpenMediaPresentations = videoFullscreenManager->hasMode(CyberCore::HTMLMediaElementEnums::VideoFullscreenModePictureInPicture)
+            || videoFullscreenManager->hasMode(CyberCore::HTMLMediaElementEnums::VideoFullscreenModeStandard);
     }
 
     if (!hasOpenMediaPresentations && _page->fullScreenManager() && _page->fullScreenManager()->isFullScreen())
@@ -3163,33 +3163,33 @@ static void convertAndAddHighlight(Vector<Ref<WebKit::SharedMemory>>& buffers, N
     return _page->pageLoadState().networkRequestsInProgress();
 }
 
-static inline OptionSet<WebCore::LayoutMilestone> layoutMilestones(_WKRenderingProgressEvents events)
+static inline OptionSet<CyberCore::LayoutMilestone> layoutMilestones(_WKRenderingProgressEvents events)
 {
-    OptionSet<WebCore::LayoutMilestone> milestones;
+    OptionSet<CyberCore::LayoutMilestone> milestones;
 
     if (events & _WKRenderingProgressEventFirstLayout)
-        milestones.add(WebCore::DidFirstLayout);
+        milestones.add(CyberCore::DidFirstLayout);
 
     if (events & _WKRenderingProgressEventFirstVisuallyNonEmptyLayout)
-        milestones.add(WebCore::DidFirstVisuallyNonEmptyLayout);
+        milestones.add(CyberCore::DidFirstVisuallyNonEmptyLayout);
 
     if (events & _WKRenderingProgressEventFirstPaintWithSignificantArea)
-        milestones.add(WebCore::DidHitRelevantRepaintedObjectsAreaThreshold);
+        milestones.add(CyberCore::DidHitRelevantRepaintedObjectsAreaThreshold);
 
     if (events & _WKRenderingProgressEventReachedSessionRestorationRenderTreeSizeThreshold)
-        milestones.add(WebCore::ReachedSessionRestorationRenderTreeSizeThreshold);
+        milestones.add(CyberCore::ReachedSessionRestorationRenderTreeSizeThreshold);
 
     if (events & _WKRenderingProgressEventFirstLayoutAfterSuppressedIncrementalRendering)
-        milestones.add(WebCore::DidFirstLayoutAfterSuppressedIncrementalRendering);
+        milestones.add(CyberCore::DidFirstLayoutAfterSuppressedIncrementalRendering);
 
     if (events & _WKRenderingProgressEventFirstPaintAfterSuppressedIncrementalRendering)
-        milestones.add(WebCore::DidFirstPaintAfterSuppressedIncrementalRendering);
+        milestones.add(CyberCore::DidFirstPaintAfterSuppressedIncrementalRendering);
 
     if (events & _WKRenderingProgressEventDidRenderSignificantAmountOfText)
-        milestones.add(WebCore::DidRenderSignificantAmountOfText);
+        milestones.add(CyberCore::DidRenderSignificantAmountOfText);
 
     if (events & _WKRenderingProgressEventFirstMeaningfulPaint)
-        milestones.add(WebCore::DidFirstMeaningfulPaint);
+        milestones.add(CyberCore::DidFirstMeaningfulPaint);
 
     return milestones;
 }
@@ -3253,7 +3253,7 @@ static inline OptionSet<WebCore::LayoutMilestone> layoutMilestones(_WKRenderingP
 {
     THROW_IF_SUSPENDED;
 #if ENABLE(APPLICATION_MANIFEST)
-    _page->getApplicationManifest([completionHandler = makeBlockPtr(completionHandler)](const std::optional<WebCore::ApplicationManifest>& manifest) {
+    _page->getApplicationManifest([completionHandler = makeBlockPtr(completionHandler)](const std::optional<CyberCore::ApplicationManifest>& manifest) {
         if (completionHandler) {
             if (manifest) {
                 auto apiManifest = API::ApplicationManifest::create(*manifest);
@@ -3279,15 +3279,15 @@ static inline OptionSet<WebCore::LayoutMilestone> layoutMilestones(_WKRenderingP
 - (_WKPaginationMode)_paginationMode
 {
     switch (_page->paginationMode()) {
-    case WebCore::Pagination::Unpaginated:
+    case CyberCore::Pagination::Unpaginated:
         return _WKPaginationModeUnpaginated;
-    case WebCore::Pagination::LeftToRightPaginated:
+    case CyberCore::Pagination::LeftToRightPaginated:
         return _WKPaginationModeLeftToRight;
-    case WebCore::Pagination::RightToLeftPaginated:
+    case CyberCore::Pagination::RightToLeftPaginated:
         return _WKPaginationModeRightToLeft;
-    case WebCore::Pagination::TopToBottomPaginated:
+    case CyberCore::Pagination::TopToBottomPaginated:
         return _WKPaginationModeTopToBottom;
-    case WebCore::Pagination::BottomToTopPaginated:
+    case CyberCore::Pagination::BottomToTopPaginated:
         return _WKPaginationModeBottomToTop;
     }
 
@@ -3298,22 +3298,22 @@ static inline OptionSet<WebCore::LayoutMilestone> layoutMilestones(_WKRenderingP
 - (void)_setPaginationMode:(_WKPaginationMode)paginationMode
 {
     THROW_IF_SUSPENDED;
-    WebCore::Pagination::Mode mode;
+    CyberCore::Pagination::Mode mode;
     switch (paginationMode) {
     case _WKPaginationModeUnpaginated:
-        mode = WebCore::Pagination::Unpaginated;
+        mode = CyberCore::Pagination::Unpaginated;
         break;
     case _WKPaginationModeLeftToRight:
-        mode = WebCore::Pagination::LeftToRightPaginated;
+        mode = CyberCore::Pagination::LeftToRightPaginated;
         break;
     case _WKPaginationModeRightToLeft:
-        mode = WebCore::Pagination::RightToLeftPaginated;
+        mode = CyberCore::Pagination::RightToLeftPaginated;
         break;
     case _WKPaginationModeTopToBottom:
-        mode = WebCore::Pagination::TopToBottomPaginated;
+        mode = CyberCore::Pagination::TopToBottomPaginated;
         break;
     case _WKPaginationModeBottomToTop:
-        mode = WebCore::Pagination::BottomToTopPaginated;
+        mode = CyberCore::Pagination::BottomToTopPaginated;
         break;
     default:
         return;
@@ -3533,18 +3533,18 @@ static inline OptionSet<WebKit::FindOptions> toFindOptions(_WKFindOptions wkFind
 }
 
 // FIXME: Remove old `-[WKWebView _themeColor]` SPI <rdar://76662644>
-- (WebCore::CocoaColor *)_themeColor
+- (CyberCore::CocoaColor *)_themeColor
 {
     return [self themeColor];
 }
 
 // FIXME: Remove old `-[WKWebView _pageExtendedBackgroundColor]` SPI <rdar://77789732>
-- (WebCore::CocoaColor *)_pageExtendedBackgroundColor
+- (CyberCore::CocoaColor *)_pageExtendedBackgroundColor
 {
     return cocoaColorOrNil(_page->pageExtendedBackgroundColor()).autorelease();
 }
 
-- (WebCore::CocoaColor *)_sampledPageTopColor
+- (CyberCore::CocoaColor *)_sampledPageTopColor
 {
     return cocoaColorOrNil(_page->sampledPageTopColor()).autorelease();
 }
@@ -3697,7 +3697,7 @@ static inline OptionSet<WebKit::FindOptions> toFindOptions(_WKFindOptions wkFind
 - (void)_setFixedLayoutSize:(CGSize)fixedLayoutSize
 {
     THROW_IF_SUSPENDED;
-    _page->setFixedLayoutSize(WebCore::expandedIntSize(WebCore::FloatSize(fixedLayoutSize)));
+    _page->setFixedLayoutSize(CyberCore::expandedIntSize(CyberCore::FloatSize(fixedLayoutSize)));
 }
 
 - (void)_setBackgroundExtendsBeyondPage:(BOOL)backgroundExtends
@@ -3856,14 +3856,14 @@ static inline OptionSet<WebKit::FindOptions> toFindOptions(_WKFindOptions wkFind
 - (void)_setPageMuted:(_WKMediaMutedState)mutedState
 {
     THROW_IF_SUSPENDED;
-    WebCore::MediaProducerMutedStateFlags coreState;
+    CyberCore::MediaProducerMutedStateFlags coreState;
 
     if (mutedState & _WKMediaAudioMuted)
-        coreState.add(WebCore::MediaProducerMutedState::AudioIsMuted);
+        coreState.add(CyberCore::MediaProducerMutedState::AudioIsMuted);
     if (mutedState & _WKMediaCaptureDevicesMuted)
-        coreState.add(WebCore::MediaProducer::AudioAndVideoCaptureIsMuted);
+        coreState.add(CyberCore::MediaProducer::AudioAndVideoCaptureIsMuted);
     if (mutedState & _WKMediaScreenCaptureMuted)
-        coreState.add(WebCore::MediaProducerMutedState::ScreenCaptureIsMuted);
+        coreState.add(CyberCore::MediaProducerMutedState::ScreenCaptureIsMuted);
 
     _page->setMuted(coreState);
 }
@@ -3912,9 +3912,9 @@ static inline OptionSet<WebKit::FindOptions> toFindOptions(_WKFindOptions wkFind
 {
     auto pageState = _page->reportedMediaState();
     WKDisplayCaptureSurfaces state = WKDisplayCaptureSurfaceNone;
-    if (pageState.containsAny(WebCore::MediaProducer::ScreenCaptureMask))
+    if (pageState.containsAny(CyberCore::MediaProducer::ScreenCaptureMask))
         state |= WKDisplayCaptureSurfaceScreen;
-    if (pageState.containsAny(WebCore::MediaProducer::WindowCaptureMask))
+    if (pageState.containsAny(CyberCore::MediaProducer::WindowCaptureMask))
         state |= WKDisplayCaptureSurfaceWindow;
     return state;
 }
@@ -3922,9 +3922,9 @@ static inline OptionSet<WebKit::FindOptions> toFindOptions(_WKFindOptions wkFind
 - (WKDisplayCaptureState) _displayCaptureState
 {
     auto state = _page->reportedMediaState();
-    if (state & WebCore::MediaProducer::ActiveDisplayCaptureMask)
+    if (state & CyberCore::MediaProducer::ActiveDisplayCaptureMask)
         return WKDisplayCaptureStateActive;
-    if (state & WebCore::MediaProducer::MutedDisplayCaptureMask)
+    if (state & CyberCore::MediaProducer::MutedDisplayCaptureMask)
         return WKDisplayCaptureStateMuted;
     return WKDisplayCaptureStateNone;
 }
@@ -3932,9 +3932,9 @@ static inline OptionSet<WebKit::FindOptions> toFindOptions(_WKFindOptions wkFind
 - (WKSystemAudioCaptureState)_systemAudioCaptureState
 {
     auto state = _page->reportedMediaState();
-    if (state & WebCore::MediaProducerMediaState::HasActiveSystemAudioCaptureDevice)
+    if (state & CyberCore::MediaProducerMediaState::HasActiveSystemAudioCaptureDevice)
         return WKSystemAudioCaptureStateActive;
-    if (state & WebCore::MediaProducerMediaState::HasMutedSystemAudioCaptureDevice)
+    if (state & CyberCore::MediaProducerMediaState::HasMutedSystemAudioCaptureDevice)
         return WKSystemAudioCaptureStateMuted;
     return WKSystemAudioCaptureStateNone;
 }
@@ -3946,13 +3946,13 @@ static inline OptionSet<WebKit::FindOptions> toFindOptions(_WKFindOptions wkFind
         completionHandler = [] { };
 
     if (state == WKDisplayCaptureStateNone) {
-        _page->stopMediaCapture(WebCore::MediaProducerMediaCaptureKind::Display, [completionHandler = makeBlockPtr(completionHandler)] {
+        _page->stopMediaCapture(CyberCore::MediaProducerMediaCaptureKind::Display, [completionHandler = makeBlockPtr(completionHandler)] {
             completionHandler();
         });
         return;
     }
 
-    constexpr WebCore::MediaProducer::MutedStateFlags displayMutedFlags = { WebCore::MediaProducer::MutedState::ScreenCaptureIsMuted, WebCore::MediaProducer::MutedState::WindowCaptureIsMuted };
+    constexpr CyberCore::MediaProducer::MutedStateFlags displayMutedFlags = { CyberCore::MediaProducer::MutedState::ScreenCaptureIsMuted, CyberCore::MediaProducer::MutedState::WindowCaptureIsMuted };
     auto mutedState = _page->mutedStateFlags();
     if (state == WKDisplayCaptureStateActive)
         mutedState.remove(displayMutedFlags);
@@ -3970,16 +3970,16 @@ static inline OptionSet<WebKit::FindOptions> toFindOptions(_WKFindOptions wkFind
         completionHandler = [] { };
 
     if (state == WKSystemAudioCaptureStateNone) {
-        _page->stopMediaCapture(WebCore::MediaProducerMediaCaptureKind::SystemAudio, [completionHandler = makeBlockPtr(completionHandler)] {
+        _page->stopMediaCapture(CyberCore::MediaProducerMediaCaptureKind::SystemAudio, [completionHandler = makeBlockPtr(completionHandler)] {
             completionHandler();
         });
         return;
     }
     auto mutedState = _page->mutedStateFlags();
     if (state == WKSystemAudioCaptureStateActive)
-        mutedState.remove(WebCore::MediaProducerMutedState::WindowCaptureIsMuted);
+        mutedState.remove(CyberCore::MediaProducerMutedState::WindowCaptureIsMuted);
     else if (state == WKSystemAudioCaptureStateMuted)
-        mutedState.add(WebCore::MediaProducerMutedState::WindowCaptureIsMuted);
+        mutedState.add(CyberCore::MediaProducerMutedState::WindowCaptureIsMuted);
     _page->setMuted(mutedState, [completionHandler = makeBlockPtr(completionHandler)] {
         completionHandler();
     });
@@ -3997,7 +3997,7 @@ static inline OptionSet<WebKit::FindOptions> toFindOptions(_WKFindOptions wkFind
 
 + (void)_permissionChanged:(NSString *)permissionName forOrigin:(WKSecurityOrigin *)origin
 {
-    auto name = WebCore::Permissions::toPermissionName(permissionName);
+    auto name = CyberCore::Permissions::toPermissionName(permissionName);
     if (!name)
         return;
 
@@ -4010,7 +4010,7 @@ static inline OptionSet<WebKit::FindOptions> toFindOptions(_WKFindOptions wkFind
 
 - (NSArray *)certificateChain
 {
-    return (__bridge NSArray *)WebCore::CertificateInfo::certificateChainFromSecTrust(_page->pageLoadState().certificateInfo().trust().get()).autorelease() ?: @[ ];
+    return (__bridge NSArray *)CyberCore::CertificateInfo::certificateChainFromSecTrust(_page->pageLoadState().certificateInfo().trust().get()).autorelease() ?: @[ ];
 }
 
 @end

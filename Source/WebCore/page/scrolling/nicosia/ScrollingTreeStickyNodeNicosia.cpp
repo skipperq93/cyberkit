@@ -39,7 +39,7 @@
 #include "ScrollingTreeOverflowScrollingNode.h"
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<ScrollingTreeStickyNodeNicosia> ScrollingTreeStickyNodeNicosia::create(ScrollingTree& scrollingTree, ScrollingNodeID nodeID)
 {
@@ -91,6 +91,6 @@ FloatPoint ScrollingTreeStickyNodeNicosia::layerTopLeft() const
     return layerTopLeft;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ASYNC_SCROLLING) && USE(NICOSIA)

@@ -44,7 +44,7 @@
 // and will break websites. Read the git log for this file carefully
 // before changing user agent construction. You have been warned.
 
-namespace WebCore {
+namespace CyberCore {
 
 static const char* platformForUAString()
 {
@@ -165,4 +165,4 @@ String standardUserAgentForURL(const URL& url)
     return userAgent;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

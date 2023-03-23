@@ -24,7 +24,7 @@
 
 #include "RenderStyle.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 DEFINE_ALLOCATOR_WITH_HEAP_IDENTIFIER(StyleTransformData);
 
@@ -57,4 +57,4 @@ bool StyleTransformData::operator==(const StyleTransformData& other) const
     return x == other.x && y == other.y && z == other.z && transformBox == other.transformBox && operations == other.operations;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

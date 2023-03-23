@@ -30,7 +30,7 @@
 #include "PlatformKeyboardEvent.h"
 
 #if ENABLE(DRAG_SUPPORT)
-namespace WebCore {
+namespace CyberCore {
 
 #if !PLATFORM(COCOA)
 DragData::DragData(DragDataRef data, const IntPoint& clientPosition, const IntPoint& globalPosition, OptionSet<DragOperation> sourceOperationMask, OptionSet<DragApplicationFlags> flags, OptionSet<DragDestinationAction> destinationActionMask, std::optional<PageIdentifier> pageID)
@@ -67,6 +67,6 @@ void DragData::disallowFileAccess()
     m_disallowFileAccess = true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(DRAG_SUPPORT)

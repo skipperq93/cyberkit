@@ -36,17 +36,17 @@ class WebCredential : public API::ObjectImpl<API::Object::Type::Credential> {
 public:
     ~WebCredential();
 
-    static Ref<WebCredential> create(const WebCore::Credential& credential)
+    static Ref<WebCredential> create(const CyberCore::Credential& credential)
     {
         return adoptRef(*new WebCredential(credential));
     }
 
-    const WebCore::Credential& credential();
+    const CyberCore::Credential& credential();
 
 private:
-    explicit WebCredential(const WebCore::Credential&);
+    explicit WebCredential(const CyberCore::Credential&);
 
-    WebCore::Credential m_coreCredential;
+    CyberCore::Credential m_coreCredential;
 };
 
 } // namespace WebKit

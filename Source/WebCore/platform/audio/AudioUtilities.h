@@ -27,7 +27,7 @@
 
 #include <cmath>
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace AudioUtilities {
 
@@ -68,6 +68,6 @@ void applyNoise(float* values, size_t numberOfElementsToProcess, float magnitude
 
 } // AudioUtilites
 
-} // WebCore
+} // CyberCore
 
 #endif // AudioUtilities_h

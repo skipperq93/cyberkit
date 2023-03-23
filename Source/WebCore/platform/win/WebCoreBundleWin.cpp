@@ -25,9 +25,9 @@
  */
 
 #include "config.h"
-#include "WebCoreBundleWin.h"
+#include "CyberCoreBundleWin.h"
 
-#include "WebCoreInstanceHandle.h"
+#include "CyberCoreInstanceHandle.h"
 #include <windows.h>
 #include <wtf/FileSystem.h>
 #include <wtf/NeverDestroyed.h>
@@ -39,7 +39,7 @@
 #include <wtf/text/StringBuilder.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 #if USE(CF)
 static RetainPtr<CFBundleRef> createWebKitBundle()
@@ -48,7 +48,7 @@ static RetainPtr<CFBundleRef> createWebKitBundle()
         return existingBundle;
 
     wchar_t dllPathBuffer[MAX_PATH];
-    DWORD length = ::GetModuleFileNameW(WebCore::instanceHandle(), dllPathBuffer, std::size(dllPathBuffer));
+    DWORD length = ::GetModuleFileNameW(CyberCore::instanceHandle(), dllPathBuffer, std::size(dllPathBuffer));
     ASSERT(length);
     ASSERT(length < std::size(dllPathBuffer));
 
@@ -97,7 +97,7 @@ String webKitBundlePath(StringView name, StringView type, StringView directory)
 static String dllDirectory()
 {
     WCHAR buffer[MAX_PATH];
-    DWORD length = ::GetModuleFileNameW(WebCore::instanceHandle(), buffer, MAX_PATH);
+    DWORD length = ::GetModuleFileNameW(CyberCore::instanceHandle(), buffer, MAX_PATH);
     if (!length || (length == MAX_PATH && GetLastError() == ERROR_INSUFFICIENT_BUFFER))
         return emptyString();
 
@@ -139,4 +139,4 @@ String webKitBundlePath(const Vector<StringView>& components)
     return webKitBundlePath(FileSystem::pathByAppendingComponents(emptyString(), components));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

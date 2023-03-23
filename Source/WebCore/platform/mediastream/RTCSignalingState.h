@@ -28,7 +28,7 @@
 
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class RTCSignalingState {
     Stable,
@@ -41,7 +41,7 @@ enum class RTCSignalingState {
 
 String convertEnumerationToString(RTCSignalingState); // in JSCRTCSignalingState.cpp
 
-}; // namespace WebCore
+}; // namespace CyberCore
 
 namespace WTF {
 
@@ -49,8 +49,8 @@ template<typename Type>
 struct LogArgument;
 
 template <>
-struct LogArgument<WebCore::RTCSignalingState> {
-    static String toString(const WebCore::RTCSignalingState state)
+struct LogArgument<CyberCore::RTCSignalingState> {
+    static String toString(const CyberCore::RTCSignalingState state)
     {
         return convertEnumerationToString(state);
     }

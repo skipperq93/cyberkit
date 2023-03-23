@@ -41,7 +41,7 @@
 #include <stdio.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -652,11 +652,11 @@ void RenderCounter::rendererStyleChangedSlowCase(RenderElement& renderer, const 
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #if ENABLE(TREE_DEBUGGING)
 
-void showCounterRendererTree(const WebCore::RenderObject* renderer, const char* counterName)
+void showCounterRendererTree(const CyberCore::RenderObject* renderer, const char* counterName)
 {
     if (!renderer)
         return;
@@ -666,15 +666,15 @@ void showCounterRendererTree(const WebCore::RenderObject* renderer, const char* 
 
     auto identifier = AtomString::fromLatin1(counterName);
     for (auto* current = root; current; current = current->nextInPreOrder()) {
-        if (!is<WebCore::RenderElement>(*current))
+        if (!is<CyberCore::RenderElement>(*current))
             continue;
         fprintf(stderr, "%c", (current == renderer) ? '*' : ' ');
         for (auto* ancestor = current; ancestor && ancestor != root; ancestor = ancestor->parent())
             fprintf(stderr, "    ");
         fprintf(stderr, "%p N:%p P:%p PS:%p NS:%p C:%p\n",
             current, current->node(), current->parent(), current->previousSibling(),
-            current->nextSibling(), downcast<WebCore::RenderElement>(*current).hasCounterNodeMap() ?
-            counterName ? WebCore::counterMaps().find(*downcast<WebCore::RenderElement>(current))->value->get(identifier) : (WebCore::CounterNode*)1 : (WebCore::CounterNode*)0);
+            current->nextSibling(), downcast<CyberCore::RenderElement>(*current).hasCounterNodeMap() ?
+            counterName ? CyberCore::counterMaps().find(*downcast<CyberCore::RenderElement>(current))->value->get(identifier) : (CyberCore::CounterNode*)1 : (CyberCore::CounterNode*)0);
     }
     fflush(stderr);
 }

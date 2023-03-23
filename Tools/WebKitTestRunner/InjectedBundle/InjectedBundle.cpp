@@ -29,7 +29,7 @@
 #include "ActivateFonts.h"
 #include "DictionaryFunctions.h"
 #include "InjectedBundlePage.h"
-#include "WebCoreTestSupport.h"
+#include "CyberCoreTestSupport.h"
 #include <CyberScriptCore/Options.h>
 #include <CyberKit/WKBundle.h>
 #include <CyberKit/WKBundlePage.h>
@@ -97,9 +97,9 @@ void InjectedBundle::initialize(WKBundleRef bundle, WKTypeRef initializationUser
         didReceiveMessageToPage
     };
     WKBundleSetClient(m_bundle.get(), &client.base);
-    WKBundleSetServiceWorkerProxyCreationCallback(m_bundle.get(), WebCoreTestSupport::setupNewlyCreatedServiceWorker);
+    WKBundleSetServiceWorkerProxyCreationCallback(m_bundle.get(), CyberCoreTestSupport::setupNewlyCreatedServiceWorker);
     platformInitialize(initializationUserData);
-    WebCoreTestSupport::populateJITOperations();
+    CyberCoreTestSupport::populateJITOperations();
 
     activateFonts();
 }
@@ -544,7 +544,7 @@ void InjectedBundle::beginTesting(WKDictionaryRef settings, BegingTestingMode te
 #endif
 
 #if PLATFORM(COCOA)
-    WebCoreTestSupport::setAdditionalSupportedImageTypesForTesting(toWTFString(stringValue(settings, "additionalSupportedImageTypes")));
+    CyberCoreTestSupport::setAdditionalSupportedImageTypesForTesting(toWTFString(stringValue(settings, "additionalSupportedImageTypes")));
 #endif
 
     m_testRunner->setUserStyleSheetEnabled(false);
@@ -895,7 +895,7 @@ bool InjectedBundle::isAllowedHost(WKStringRef host)
 
 void InjectedBundle::setAllowsAnySSLCertificate(bool allowsAnySSLCertificate)
 {
-    WebCoreTestSupport::setAllowsAnySSLCertificate(allowsAnySSLCertificate);
+    CyberCoreTestSupport::setAllowsAnySSLCertificate(allowsAnySSLCertificate);
 }
 
 bool InjectedBundle::statisticsNotifyObserver()

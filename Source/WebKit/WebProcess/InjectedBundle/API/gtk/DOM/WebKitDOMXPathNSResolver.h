@@ -16,8 +16,8 @@
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef WebKitDOMXPathNSResolver_h
-#define WebKitDOMXPathNSResolver_h
+#ifndef CyberKitDOMXPathNSResolver_h
+#define CyberKitDOMXPathNSResolver_h
 
 #include <glib-object.h>
 #include <webkitdom/webkitdomdefines.h>
@@ -25,16 +25,16 @@
 G_BEGIN_DECLS
 
 #define WEBKIT_DOM_TYPE_XPATH_NS_RESOLVER            (webkit_dom_xpath_ns_resolver_get_type ())
-#define WEBKIT_DOM_XPATH_NS_RESOLVER(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), WEBKIT_DOM_TYPE_XPATH_NS_RESOLVER, WebKitDOMXPathNSResolver))
-#define WEBKIT_DOM_XPATH_NS_RESOLVER_CLASS(obj)      (G_TYPE_CHECK_CLASS_CAST ((obj), WEBKIT_DOM_TYPE_XPATH_NS_RESOLVER, WebKitDOMXPathNSResolverIface))
+#define WEBKIT_DOM_XPATH_NS_RESOLVER(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), WEBKIT_DOM_TYPE_XPATH_NS_RESOLVER, CyberKitDOMXPathNSResolver))
+#define WEBKIT_DOM_XPATH_NS_RESOLVER_CLASS(obj)      (G_TYPE_CHECK_CLASS_CAST ((obj), WEBKIT_DOM_TYPE_XPATH_NS_RESOLVER, CyberKitDOMXPathNSResolverIface))
 #define WEBKIT_DOM_IS_XPATH_NS_RESOLVER(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), WEBKIT_DOM_TYPE_XPATH_NS_RESOLVER))
-#define WEBKIT_DOM_XPATH_NS_RESOLVER_GET_IFACE(obj)  (G_TYPE_INSTANCE_GET_INTERFACE ((obj), WEBKIT_DOM_TYPE_XPATH_NS_RESOLVER, WebKitDOMXPathNSResolverIface))
+#define WEBKIT_DOM_XPATH_NS_RESOLVER_GET_IFACE(obj)  (G_TYPE_INSTANCE_GET_INTERFACE ((obj), WEBKIT_DOM_TYPE_XPATH_NS_RESOLVER, CyberKitDOMXPathNSResolverIface))
 
-struct _WebKitDOMXPathNSResolverIface {
+struct _CyberKitDOMXPathNSResolverIface {
     GTypeInterface gIface;
 
     /* virtual table */
-    gchar *(* lookup_namespace_uri)(WebKitDOMXPathNSResolver *resolver,
+    gchar *(* lookup_namespace_uri)(CyberKitDOMXPathNSResolver *resolver,
                                     const gchar              *prefix);
 
     void (*_webkitdom_reserved0) (void);
@@ -48,16 +48,16 @@ WEBKIT_DEPRECATED GType webkit_dom_xpath_ns_resolver_get_type(void) G_GNUC_CONST
 
 /**
  * webkit_dom_xpath_ns_resolver_lookup_namespace_uri:
- * @resolver: A #WebKitDOMXPathNSResolver
+ * @resolver: A #CyberKitDOMXPathNSResolver
  * @prefix: The prefix to lookup
  *
  * Returns: (transfer full): a #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
  */
-WEBKIT_DEPRECATED gchar *webkit_dom_xpath_ns_resolver_lookup_namespace_uri(WebKitDOMXPathNSResolver *resolver,
+WEBKIT_DEPRECATED gchar *webkit_dom_xpath_ns_resolver_lookup_namespace_uri(CyberKitDOMXPathNSResolver *resolver,
                                                                     const gchar              *prefix);
 
 G_END_DECLS
 
-#endif /* WebKitDOMXPathNSResolver_h */
+#endif /* CyberKitDOMXPathNSResolver_h */

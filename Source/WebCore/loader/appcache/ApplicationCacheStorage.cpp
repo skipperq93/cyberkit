@@ -43,7 +43,7 @@
 #include <wtf/text/StringBuilder.h>
 #include <wtf/text/StringConcatenateNumbers.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 template <class T>
 class StorageIDJournal {
@@ -1518,4 +1518,4 @@ ApplicationCacheStorage::ApplicationCacheStorage(const String& cacheDirectory, c
 {
 }
 
-} // namespace WebCore
+} // namespace CyberCore

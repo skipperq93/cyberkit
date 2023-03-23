@@ -33,7 +33,7 @@ OBJC_CLASS NSString;
 OBJC_CLASS NSURL;
 OBJC_CLASS NSURLRequest;
 
-namespace WebCore {
+namespace CyberCore {
 
 WEBCORE_EXPORT NSSet *QLPreviewGetSupportedMIMETypesSet();
 WEBCORE_EXPORT void removeQLPreviewConverterForURL(NSURL *);
@@ -43,4 +43,4 @@ WEBCORE_EXPORT NSString *createTemporaryFileForQuickLook(NSString *fileName);
 
 static constexpr auto QLPreviewProtocol = "x-apple-ql-id"_s;
 
-} // namespace WebCore
+} // namespace CyberCore

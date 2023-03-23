@@ -44,7 +44,7 @@
 #include <cairo.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ImageBufferCreationContext;
 class GraphicsContext;
@@ -190,4 +190,4 @@ protected:
     Parameters m_parameters;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

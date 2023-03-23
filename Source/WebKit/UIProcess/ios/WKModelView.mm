@@ -50,7 +50,7 @@ SOFT_LINK_CLASS(AssetViewer, ASVInlinePreview);
     RetainPtr<WKModelInteractionGestureRecognizer> _modelInteractionGestureRecognizer;
     String _filePath;
     CGRect _lastBounds;
-    WebCore::GraphicsLayer::PlatformLayerID _layerID;
+    CyberCore::GraphicsLayer::PlatformLayerID _layerID;
     WeakPtr<WebKit::WebPageProxy> _page;
 }
 
@@ -69,7 +69,7 @@ SOFT_LINK_CLASS(AssetViewer, ASVInlinePreview);
     return nil;
 }
 
-- (instancetype)initWithModel:(WebCore::Model&)model layerID:(WebCore::GraphicsLayer::PlatformLayerID)layerID page:(WebKit::WebPageProxy&)page
+- (instancetype)initWithModel:(CyberCore::Model&)model layerID:(CyberCore::GraphicsLayer::PlatformLayerID)layerID page:(WebKit::WebPageProxy&)page
 {
     _lastBounds = CGRectZero;
     self = [super initWithFrame:_lastBounds];
@@ -85,7 +85,7 @@ SOFT_LINK_CLASS(AssetViewer, ASVInlinePreview);
     return self;
 }
 
-- (BOOL)createFileForModel:(WebCore::Model&)model
+- (BOOL)createFileForModel:(CyberCore::Model&)model
 {
     auto pathToDirectory = WebKit::WebsiteDataStore::defaultModelElementCacheDirectory();
     if (pathToDirectory.isEmpty())
@@ -132,14 +132,14 @@ SOFT_LINK_CLASS(AssetViewer, ASVInlinePreview);
     [_preview setupRemoteConnectionWithCompletionHandler:^(NSError *contextError) {
         if (contextError) {
             LOG(ModelElement, "Unable to create remote connection, error: %@", [contextError localizedDescription]);
-            _page->modelInlinePreviewDidFailToLoad(_layerID, WebCore::ResourceError { contextError });
+            _page->modelInlinePreviewDidFailToLoad(_layerID, CyberCore::ResourceError { contextError });
             return;
         }
 
         [_preview preparePreviewOfFileAtURL:url.get() completionHandler:^(NSError *loadError) {
             if (loadError) {
                 LOG(ModelElement, "Unable to load file, error: %@", [loadError localizedDescription]);
-                _page->modelInlinePreviewDidFailToLoad(_layerID, WebCore::ResourceError { loadError });
+                _page->modelInlinePreviewDidFailToLoad(_layerID, CyberCore::ResourceError { loadError });
                 return;
             }
 

@@ -27,7 +27,7 @@
 
 #include <wtf/EnumTraits.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class HdrMetadataType : uint8_t {
     SmpteSt2086,
@@ -35,16 +35,16 @@ enum class HdrMetadataType : uint8_t {
     SmpteSt209440
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::HdrMetadataType> {
+template<> struct EnumTraits<CyberCore::HdrMetadataType> {
     using values = EnumValues<
-        WebCore::HdrMetadataType,
-        WebCore::HdrMetadataType::SmpteSt2086,
-        WebCore::HdrMetadataType::SmpteSt209410,
-        WebCore::HdrMetadataType::SmpteSt209440
+        CyberCore::HdrMetadataType,
+        CyberCore::HdrMetadataType::SmpteSt2086,
+        CyberCore::HdrMetadataType::SmpteSt209410,
+        CyberCore::HdrMetadataType::SmpteSt209440
     >;
 };
 

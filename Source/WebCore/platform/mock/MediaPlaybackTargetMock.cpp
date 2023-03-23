@@ -28,7 +28,7 @@
 
 #if ENABLE(WIRELESS_PLAYBACK_TARGET) && !PLATFORM(IOS_FAMILY)
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<MediaPlaybackTarget> MediaPlaybackTargetMock::create(const String& name, MediaPlaybackTargetContext::MockState state)
 {
@@ -53,6 +53,6 @@ const MediaPlaybackTargetMock* toMediaPlaybackTargetMock(const MediaPlaybackTarg
     return static_cast<const MediaPlaybackTargetMock*>(rep);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WIRELESS_PLAYBACK_TARGET) && !PLATFORM(IOS_FAMILY)

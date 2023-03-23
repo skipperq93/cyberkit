@@ -28,7 +28,7 @@
 #include <wtf/HashSet.h>
 #include <wtf/text/StringHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct TypeExtensionPair {
     ASCIILiteral type;
@@ -155,4 +155,4 @@ private:
 
 WEBCORE_EXPORT const String& defaultMIMEType();
 
-} // namespace WebCore
+} // namespace CyberCore

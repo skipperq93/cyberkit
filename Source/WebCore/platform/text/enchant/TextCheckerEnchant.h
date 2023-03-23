@@ -25,7 +25,7 @@
 #include <wtf/Forward.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class TextCheckerEnchant {
     WTF_MAKE_NONCOPYABLE(TextCheckerEnchant); WTF_MAKE_FAST_ALLOCATED;
@@ -58,6 +58,6 @@ private:
     Vector<UniqueEnchantDict> m_enchantDictionaries;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SPELLCHECK)

@@ -29,7 +29,7 @@
 #include "ReducedResolutionSeconds.h"
 #include "Timer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CaretAnimator;
 class Document;
@@ -129,4 +129,4 @@ static inline CaretAnimator::PresentationProperties::BlinkState operator!(CaretA
     return blinkState == BlinkState::Off ? BlinkState::On : BlinkState::Off;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -31,7 +31,7 @@
 #include <wtf/LoggerHelper.h>
 #include <wtf/MediaTime.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class MockMediaPlayerMediaSource;
 class MockSourceBufferPrivate;

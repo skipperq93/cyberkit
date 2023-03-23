@@ -45,7 +45,7 @@ namespace WebKit {
     } \
 } while (0)
 
-static bool isValidClientOrigin(const WebCore::ClientOrigin& clientOrigin)
+static bool isValidClientOrigin(const CyberCore::ClientOrigin& clientOrigin)
 {
     return !clientOrigin.topOrigin.isNull() && !clientOrigin.clientOrigin.isNull();
 }
@@ -55,7 +55,7 @@ NetworkBroadcastChannelRegistry::NetworkBroadcastChannelRegistry(NetworkProcess&
 {
 }
 
-void NetworkBroadcastChannelRegistry::registerChannel(IPC::Connection& connection, const WebCore::ClientOrigin& origin, const String& name)
+void NetworkBroadcastChannelRegistry::registerChannel(IPC::Connection& connection, const CyberCore::ClientOrigin& origin, const String& name)
 {
     REGISTRY_MESSAGE_CHECK(isValidClientOrigin(origin));
 
@@ -65,7 +65,7 @@ void NetworkBroadcastChannelRegistry::registerChannel(IPC::Connection& connectio
     connectionIdentifiersForName.append(connection.uniqueID());
 }
 
-void NetworkBroadcastChannelRegistry::unregisterChannel(IPC::Connection& connection, const WebCore::ClientOrigin& origin, const String& name)
+void NetworkBroadcastChannelRegistry::unregisterChannel(IPC::Connection& connection, const CyberCore::ClientOrigin& origin, const String& name)
 {
     REGISTRY_MESSAGE_CHECK(isValidClientOrigin(origin));
 
@@ -82,7 +82,7 @@ void NetworkBroadcastChannelRegistry::unregisterChannel(IPC::Connection& connect
     connectionIdentifiersForNameIterator->value.removeFirst(connection.uniqueID());
 }
 
-void NetworkBroadcastChannelRegistry::postMessage(IPC::Connection& connection, const WebCore::ClientOrigin& origin, const String& name, WebCore::MessageWithMessagePorts&& message, CompletionHandler<void()>&& completionHandler)
+void NetworkBroadcastChannelRegistry::postMessage(IPC::Connection& connection, const CyberCore::ClientOrigin& origin, const String& name, CyberCore::MessageWithMessagePorts&& message, CompletionHandler<void()>&& completionHandler)
 {
     REGISTRY_MESSAGE_CHECK_COMPLETION(isValidClientOrigin(origin), completionHandler());
 
@@ -111,7 +111,7 @@ void NetworkBroadcastChannelRegistry::postMessage(IPC::Connection& connection, c
 
 void NetworkBroadcastChannelRegistry::removeConnection(IPC::Connection& connection)
 {
-    Vector<WebCore::ClientOrigin> originsToRemove;
+    Vector<CyberCore::ClientOrigin> originsToRemove;
     for (auto& entry : m_broadcastChannels) {
         Vector<String> namesToRemove;
         for (auto& innerEntry : entry.value) {

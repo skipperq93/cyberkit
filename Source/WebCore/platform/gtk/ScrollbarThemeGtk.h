@@ -29,7 +29,7 @@
 
 #include "ScrollbarThemeAdwaita.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScrollbarThemeGtk final : public ScrollbarThemeAdwaita {
 public:
@@ -59,6 +59,6 @@ private:
     bool m_useSystemAppearance { true };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // !USE(GTK4)

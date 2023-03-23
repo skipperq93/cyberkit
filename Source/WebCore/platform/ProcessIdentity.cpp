@@ -32,7 +32,7 @@
 #include <mach/mach.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 ProcessIdentity::ProcessIdentity(CurrentProcessTag)
 {

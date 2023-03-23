@@ -43,8 +43,8 @@ public:
 
     WebKit::WebPageProxy& page() { return m_page.get(); }
     bool isMainFrame() const { return m_data.info.isMainFrame; }
-    const WebCore::ResourceRequest& request() const { return m_data.info.request; }
-    const WebCore::SecurityOriginData& securityOrigin() const { return m_data.info.securityOrigin; }
+    const CyberCore::ResourceRequest& request() const { return m_data.info.request; }
+    const CyberCore::SecurityOriginData& securityOrigin() const { return m_data.info.securityOrigin; }
     const Vector<WebKit::FrameTreeNodeData>& childFrames() const { return m_data.children; }
     Ref<FrameHandle> handle() const;
     RefPtr<FrameHandle> parentFrameHandle() const;

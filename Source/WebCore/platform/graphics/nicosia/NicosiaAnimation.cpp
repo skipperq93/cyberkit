@@ -25,7 +25,7 @@
 
 namespace Nicosia {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 static RefPtr<FilterOperation> blendFunc(FilterOperation* fromOp, FilterOperation& toOp, double progress, const FloatSize&, bool blendToPassthrough = false)
 {
@@ -68,14 +68,14 @@ static FilterOperations applyFilterAnimation(const FilterOperations& from, const
     return result;
 }
 
-static bool shouldReverseAnimationValue(WebCore::Animation::AnimationDirection direction, int loopCount)
+static bool shouldReverseAnimationValue(CyberCore::Animation::AnimationDirection direction, int loopCount)
 {
-    return (direction == WebCore::Animation::AnimationDirectionAlternate && loopCount & 1)
-        || (direction == WebCore::Animation::AnimationDirectionAlternateReverse && !(loopCount & 1))
-        || direction == WebCore::Animation::AnimationDirectionReverse;
+    return (direction == CyberCore::Animation::AnimationDirectionAlternate && loopCount & 1)
+        || (direction == CyberCore::Animation::AnimationDirectionAlternateReverse && !(loopCount & 1))
+        || direction == CyberCore::Animation::AnimationDirectionReverse;
 }
 
-static double normalizedAnimationValue(double runningTime, double duration, WebCore::Animation::AnimationDirection direction, double iterationCount)
+static double normalizedAnimationValue(double runningTime, double duration, CyberCore::Animation::AnimationDirection direction, double iterationCount)
 {
     if (!duration)
         return 0;
@@ -89,11 +89,11 @@ static double normalizedAnimationValue(double runningTime, double duration, WebC
     return shouldReverseAnimationValue(direction, loopCount) ? 1 - normalized : normalized;
 }
 
-static double normalizedAnimationValueForFillsForwards(double iterationCount, WebCore::Animation::AnimationDirection direction)
+static double normalizedAnimationValueForFillsForwards(double iterationCount, CyberCore::Animation::AnimationDirection direction)
 {
-    if (direction == WebCore::Animation::AnimationDirectionNormal)
+    if (direction == CyberCore::Animation::AnimationDirectionNormal)
         return 1;
-    if (direction == WebCore::Animation::AnimationDirectionReverse)
+    if (direction == CyberCore::Animation::AnimationDirectionReverse)
         return 0;
     return shouldReverseAnimationValue(direction, iterationCount) ? 1 : 0;
 }
@@ -165,7 +165,7 @@ static KeyframeValueList createThreadsafeKeyFrames(const KeyframeValueList& orig
     return keyframes;
 }
 
-Animation::Animation(const String& name, const KeyframeValueList& keyframes, const FloatSize& boxSize, const WebCore::Animation& animation, MonotonicTime startTime, Seconds pauseTime, AnimationState state)
+Animation::Animation(const String& name, const KeyframeValueList& keyframes, const FloatSize& boxSize, const CyberCore::Animation& animation, MonotonicTime startTime, Seconds pauseTime, AnimationState state)
     : m_name(name.isSafeToSendToAnotherThread() ? name : name.isolatedCopy())
     , m_keyframes(createThreadsafeKeyFrames(keyframes, boxSize))
     , m_boxSize(boxSize)
@@ -225,7 +225,7 @@ void Animation::apply(ApplicationResult& applicationResults, MonotonicTime time)
     Seconds totalRunningTime = computeTotalRunningTime(time);
     double normalizedValue = normalizedAnimationValue(totalRunningTime.seconds(), m_duration, m_direction, m_iterationCount);
 
-    if (m_iterationCount != WebCore::Animation::IterationCountInfinite && totalRunningTime.seconds() >= m_duration * m_iterationCount) {
+    if (m_iterationCount != CyberCore::Animation::IterationCountInfinite && totalRunningTime.seconds() >= m_duration * m_iterationCount) {
         m_state = AnimationState::Stopped;
         m_pauseTime = 0_s;
         normalizedValue = normalizedAnimationValueForFillsForwards(m_iterationCount, m_direction);

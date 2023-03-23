@@ -29,7 +29,7 @@
 #include "Filter.h"
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<FEComposite> FEComposite::create(const CompositeOperationType& type, float k1, float k2, float k3, float k4)
 {
@@ -155,4 +155,4 @@ TextStream& FEComposite::externalRepresentation(TextStream& ts, FilterRepresenta
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

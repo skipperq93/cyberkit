@@ -37,7 +37,7 @@
 #include <pal/SessionID.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 class ResourceError;
 class ResourceRequest;
 class ResourceResponse;
@@ -51,7 +51,7 @@ class FormDataReference;
 class SharedBufferReference;
 }
 
-namespace WebCore {
+namespace CyberCore {
 class NetworkLoadMetrics;
 }
 
@@ -66,9 +66,9 @@ class WebSWServerToContextConnection;
 class ServiceWorkerFetchTask : public CanMakeWeakPtr<ServiceWorkerFetchTask> {
     WTF_MAKE_FAST_ALLOCATED;
 public:
-    static std::unique_ptr<ServiceWorkerFetchTask> fromNavigationPreloader(WebSWServerConnection&, NetworkResourceLoader&, const WebCore::ResourceRequest&, NetworkSession*);
+    static std::unique_ptr<ServiceWorkerFetchTask> fromNavigationPreloader(WebSWServerConnection&, NetworkResourceLoader&, const CyberCore::ResourceRequest&, NetworkSession*);
 
-    ServiceWorkerFetchTask(WebSWServerConnection&, NetworkResourceLoader&, WebCore::ResourceRequest&&, WebCore::SWServerConnectionIdentifier, WebCore::ServiceWorkerIdentifier, WebCore::SWServerRegistration&, NetworkSession*, bool isWorkerReady);
+    ServiceWorkerFetchTask(WebSWServerConnection&, NetworkResourceLoader&, CyberCore::ResourceRequest&&, CyberCore::SWServerConnectionIdentifier, CyberCore::ServiceWorkerIdentifier, CyberCore::SWServerRegistration&, NetworkSession*, bool isWorkerReady);
     ServiceWorkerFetchTask(WebSWServerConnection&, NetworkResourceLoader&, std::unique_ptr<ServiceWorkerNavigationPreloader>&&);
 
     ~ServiceWorkerFetchTask();
@@ -78,33 +78,33 @@ public:
     void didReceiveMessage(IPC::Connection&, IPC::Decoder&);
 
     void continueDidReceiveFetchResponse();
-    void continueFetchTaskWith(WebCore::ResourceRequest&&);
+    void continueFetchTaskWith(CyberCore::ResourceRequest&&);
 
-    WebCore::FetchIdentifier fetchIdentifier() const { return m_fetchIdentifier; }
-    WebCore::ServiceWorkerIdentifier serviceWorkerIdentifier() const { return m_serviceWorkerIdentifier; }
+    CyberCore::FetchIdentifier fetchIdentifier() const { return m_fetchIdentifier; }
+    CyberCore::ServiceWorkerIdentifier serviceWorkerIdentifier() const { return m_serviceWorkerIdentifier; }
 
-    WebCore::ResourceRequest takeRequest() { return WTFMove(m_currentRequest); }
+    CyberCore::ResourceRequest takeRequest() { return WTFMove(m_currentRequest); }
 
     void cannotHandle();
     void contextClosed();
 
-    bool convertToDownload(DownloadManager&, DownloadID, const WebCore::ResourceRequest&, const WebCore::ResourceResponse&);
+    bool convertToDownload(DownloadManager&, DownloadID, const CyberCore::ResourceRequest&, const CyberCore::ResourceResponse&);
 
     MonotonicTime startTime() const;
 
 private:
     enum class ShouldSetSource : bool { No, Yes };
-    void didReceiveRedirectResponse(WebCore::ResourceResponse&&);
-    void didReceiveResponse(WebCore::ResourceResponse&&, bool needsContinueDidReceiveResponseMessage);
+    void didReceiveRedirectResponse(CyberCore::ResourceResponse&&);
+    void didReceiveResponse(CyberCore::ResourceResponse&&, bool needsContinueDidReceiveResponseMessage);
     void didReceiveData(const IPC::SharedBufferReference&, uint64_t encodedDataLength);
     void didReceiveFormData(const IPC::FormDataReference&);
-    void didFinish(const WebCore::NetworkLoadMetrics&);
-    void didFail(const WebCore::ResourceError&);
+    void didFinish(const CyberCore::NetworkLoadMetrics&);
+    void didFail(const CyberCore::ResourceError&);
     void didNotHandle();
     void usePreload();
 
-    void processRedirectResponse(WebCore::ResourceResponse&&, ShouldSetSource);
-    void processResponse(WebCore::ResourceResponse&&, bool needsContinueDidReceiveResponseMessage, ShouldSetSource);
+    void processRedirectResponse(CyberCore::ResourceResponse&&, ShouldSetSource);
+    void processResponse(CyberCore::ResourceResponse&&, bool needsContinueDidReceiveResponseMessage, ShouldSetSource);
 
     void startFetch();
 
@@ -122,12 +122,12 @@ private:
     WeakPtr<WebSWServerConnection> m_swServerConnection;
     NetworkResourceLoader& m_loader;
     WeakPtr<WebSWServerToContextConnection> m_serviceWorkerConnection;
-    WebCore::FetchIdentifier m_fetchIdentifier;
-    WebCore::SWServerConnectionIdentifier m_serverConnectionIdentifier;
-    WebCore::ServiceWorkerIdentifier m_serviceWorkerIdentifier;
-    WebCore::ResourceRequest m_currentRequest;
-    std::unique_ptr<WebCore::Timer> m_timeoutTimer;
-    WebCore::ServiceWorkerRegistrationIdentifier m_serviceWorkerRegistrationIdentifier;
+    CyberCore::FetchIdentifier m_fetchIdentifier;
+    CyberCore::SWServerConnectionIdentifier m_serverConnectionIdentifier;
+    CyberCore::ServiceWorkerIdentifier m_serviceWorkerIdentifier;
+    CyberCore::ResourceRequest m_currentRequest;
+    std::unique_ptr<CyberCore::Timer> m_timeoutTimer;
+    CyberCore::ServiceWorkerRegistrationIdentifier m_serviceWorkerRegistrationIdentifier;
     std::unique_ptr<ServiceWorkerNavigationPreloader> m_preloader;
     bool m_wasHandled { false };
     bool m_isDone { false };

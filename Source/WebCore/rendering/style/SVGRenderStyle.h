@@ -28,7 +28,7 @@
 #include "WindRule.h"
 #include <wtf/DataRef.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 DECLARE_ALLOCATOR_WITH_HEAP_IDENTIFIER(SVGRenderStyle);
 class SVGRenderStyle : public RefCounted<SVGRenderStyle> {
@@ -441,4 +441,4 @@ inline bool SVGRenderStyle::InheritedFlags::operator==(const InheritedFlags& oth
         && glyphOrientationVertical == other.glyphOrientationVertical;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

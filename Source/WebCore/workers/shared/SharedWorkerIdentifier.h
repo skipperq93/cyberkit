@@ -27,9 +27,9 @@
 
 #include <wtf/ObjectIdentifier.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum SharedWorkerIdentifierType { };
 using SharedWorkerIdentifier = ObjectIdentifier<SharedWorkerIdentifierType>;
 
-} // namespace WebCore
+} // namespace CyberCore

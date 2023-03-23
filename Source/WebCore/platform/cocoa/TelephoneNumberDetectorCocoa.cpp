@@ -42,7 +42,7 @@ SOFT_LINK(DataDetectorsCore, DDDFACacheCreateFromFramework, struct __DDDFACache*
 SOFT_LINK(DataDetectorsCore, DDDFAScannerCreateFromCache, DDDFAScannerRef, (struct __DDDFACache* cache), (cache))
 SOFT_LINK(DataDetectorsCore, DDDFAScannerFirstResultInUnicharArray, Boolean, (DDDFAScannerRef scanner, const UniChar* str, unsigned length, int* startPos, int* endPos), (scanner, str, length, startPos, endPos))
 
-namespace WebCore {
+namespace CyberCore {
 namespace TelephoneNumberDetector {
 
 static DDDFAScannerRef phoneNumbersScanner()
@@ -78,6 +78,6 @@ bool find(const UChar* buffer, unsigned length, int* startPos, int* endPos)
 }
 
 } // namespace TelephoneNumberDetector
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(TELEPHONE_NUMBER_DETECTION)

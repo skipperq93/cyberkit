@@ -29,11 +29,11 @@
 
 #include <wtf/ObjectIdentifier.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum ImageOverlayDataDetectionResultIdentifierType { };
 using ImageOverlayDataDetectionResultIdentifier = ObjectIdentifier<ImageOverlayDataDetectionResultIdentifierType>;
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(DATA_DETECTION)

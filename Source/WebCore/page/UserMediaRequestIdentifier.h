@@ -32,9 +32,9 @@
 
 #include <wtf/ObjectIdentifier.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum UserMediaRequestIdentifierType { };
 using UserMediaRequestIdentifier = ObjectIdentifier<UserMediaRequestIdentifierType>;
 
-} // namespace WebCore
+} // namespace CyberCore

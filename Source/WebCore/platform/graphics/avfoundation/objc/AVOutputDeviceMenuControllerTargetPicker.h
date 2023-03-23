@@ -32,7 +32,7 @@
 OBJC_CLASS AVOutputDeviceMenuController;
 OBJC_CLASS WebAVOutputDeviceMenuControllerHelper;
 
-namespace WebCore {
+namespace CyberCore {
 
 class AVOutputDeviceMenuControllerTargetPicker final : public AVPlaybackTargetPicker {
     WTF_MAKE_FAST_ALLOCATED;
@@ -59,6 +59,6 @@ private:
     bool m_showingMenu { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WIRELESS_PLAYBACK_TARGET)

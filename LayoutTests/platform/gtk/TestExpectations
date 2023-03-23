@@ -212,7 +212,7 @@ accessibility/custom-elements/modal.html [ Skip ]
 # This list is divided into two parts:
 # a. Tests that we never expect to pass, because they use features we likely
 #    will never implement (Mac-only features, for instance).
-# b. Missing WebCore/WebKit features that we'll want someday.
+# b. Missing CyberCore/WebKit features that we'll want someday.
 
 # 3. TESTS CRASHING
 # Please open a bug for each test crashing with any important information.

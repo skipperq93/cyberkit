@@ -65,7 +65,7 @@ namespace WTF {
 class TextStream;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class Color;
 class DOMWindow;
@@ -382,8 +382,8 @@ inline AbstractFrame& Frame::mainFrame() const
 
 WTF::TextStream& operator<<(WTF::TextStream&, const Frame&);
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::Frame)
-static bool isType(const WebCore::AbstractFrame& frame) { return frame.frameType() == WebCore::AbstractFrame::FrameType::Local; }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::Frame)
+static bool isType(const CyberCore::AbstractFrame& frame) { return frame.frameType() == CyberCore::AbstractFrame::FrameType::Local; }
 SPECIALIZE_TYPE_TRAITS_END()

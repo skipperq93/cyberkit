@@ -26,7 +26,7 @@
 #include "config.h"
 #include "ServerTiming.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 void ServerTiming::setParameter(const String& name, const String& value)
 {
@@ -56,4 +56,4 @@ ServerTiming ServerTiming::isolatedCopy() &&
     return ServerTiming { WTFMove(name).isolatedCopy(), duration, WTFMove(description).isolatedCopy(), durationSet, descriptionSet };
 }
 
-} // namespace WebCore
+} // namespace CyberCore

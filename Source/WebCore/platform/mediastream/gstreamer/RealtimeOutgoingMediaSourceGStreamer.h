@@ -27,7 +27,7 @@
 
 #include <wtf/ThreadSafeRefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class MediaStreamTrack;
 
@@ -104,6 +104,6 @@ private:
     void trackEnded(MediaStreamTrackPrivate&) override { }
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(GSTREAMER_WEBRTC)

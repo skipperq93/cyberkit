@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -17,16 +17,16 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitDOMDOMImplementationPrivate_h
-#define WebKitDOMDOMImplementationPrivate_h
+#ifndef CyberKitDOMDOMImplementationPrivate_h
+#define CyberKitDOMDOMImplementationPrivate_h
 
 #include <CyberCore/DOMImplementation.h>
-#include <webkitdom/WebKitDOMDOMImplementation.h>
+#include <webkitdom/CyberKitDOMDOMImplementation.h>
 
-namespace WebKit {
-WebKitDOMDOMImplementation* wrapDOMImplementation(WebCore::DOMImplementation*);
-WebKitDOMDOMImplementation* kit(WebCore::DOMImplementation*);
-WebCore::DOMImplementation* core(WebKitDOMDOMImplementation*);
-} // namespace WebKit
+namespace CyberKit {
+CyberKitDOMDOMImplementation* wrapDOMImplementation(CyberCore::DOMImplementation*);
+CyberKitDOMDOMImplementation* kit(CyberCore::DOMImplementation*);
+CyberCore::DOMImplementation* core(CyberKitDOMDOMImplementation*);
+} // namespace CyberKit
 
-#endif /* WebKitDOMDOMImplementationPrivate_h */
+#endif /* CyberKitDOMDOMImplementationPrivate_h */

@@ -23,7 +23,7 @@
 
 #include "FilterEffect.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SourceGraphic : public FilterEffect {
 public:        
@@ -43,6 +43,6 @@ private:
     WTF::TextStream& externalRepresentation(WTF::TextStream&, FilterRepresentation) const override;
 };
 
-} //namespace WebCore
+} //namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_FILTER_EFFECT(SourceGraphic)

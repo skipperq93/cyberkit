@@ -31,7 +31,7 @@
 #include "StyleGeneratedImage.h"
 #include <variant>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct StyleGradientImageStop {
     std::optional<StyleColor> color;
@@ -111,6 +111,6 @@ private:
     bool m_knownCacheableBarringFilter { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_STYLE_IMAGE(StyleGradientImage, isGradientImage)

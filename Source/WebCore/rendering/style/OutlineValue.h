@@ -26,7 +26,7 @@
 
 #include "BorderValue.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class OutlineValue : public BorderValue {
 friend class RenderStyle;
@@ -48,4 +48,4 @@ private:
     float m_offset { 0 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

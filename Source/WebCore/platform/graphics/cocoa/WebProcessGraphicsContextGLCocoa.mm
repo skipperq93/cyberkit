@@ -36,7 +36,7 @@
 #import "DisplayConfigurationMonitor.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 namespace {
 
 class DisplayBufferDisplayDelegate final : public GraphicsLayerContentsDisplayDelegate {
@@ -109,7 +109,7 @@ private:
     WebProcessGraphicsContextGLCocoa(GraphicsContextGLAttributes&&, SerialFunctionDispatcher*);
 
     Ref<DisplayBufferDisplayDelegate> m_layerContentsDisplayDelegate;
-    friend RefPtr<GraphicsContextGL> WebCore::createWebProcessGraphicsContextGL(const GraphicsContextGLAttributes&, SerialFunctionDispatcher*);
+    friend RefPtr<GraphicsContextGL> CyberCore::createWebProcessGraphicsContextGL(const GraphicsContextGLAttributes&, SerialFunctionDispatcher*);
     friend class GraphicsContextGLOpenGL;
 };
 

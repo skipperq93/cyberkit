@@ -28,11 +28,11 @@
 
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 TextStream& operator<<(TextStream& ts, const LengthPoint& size)
 {
     return ts << size.x() << " " << size.y();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -34,17 +34,17 @@
 #import "ObjCNodeFilterCondition.h"
 #import <CyberCore/ThreadCheck.h>
 #import <CyberCore/TreeWalker.h>
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 #import <CyberCore/WebScriptObjectPrivate.h>
 #import <wtf/GetPtr.h>
 
-#define IMPL reinterpret_cast<WebCore::TreeWalker*>(_internal)
+#define IMPL reinterpret_cast<CyberCore::TreeWalker*>(_internal)
 
 @implementation DOMTreeWalker
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainThread([DOMTreeWalker class], self))
+    if (CyberCoreObjCScheduleDeallocateOnMainThread([DOMTreeWalker class], self))
         return;
 
     if (_internal)
@@ -54,19 +54,19 @@
 
 - (DOMNode *)root
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->root()));
 }
 
 - (unsigned)whatToShow
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->whatToShow();
 }
 
 - (id <DOMNodeFilter>)filter
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(IMPL->filter());
 }
 
@@ -77,13 +77,13 @@
 
 - (DOMNode *)currentNode
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->currentNode()));
 }
 
 - (void)setCurrentNode:(DOMNode *)newCurrentNode
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     ASSERT(newCurrentNode);
 
     if (!core(newCurrentNode))
@@ -93,7 +93,7 @@
 
 - (DOMNode *)parentNode
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
 
     auto result = IMPL->parentNode();
     if (result.hasException())
@@ -104,7 +104,7 @@
 
 - (DOMNode *)firstChild
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
 
     auto result = IMPL->firstChild();
     if (result.hasException())
@@ -115,7 +115,7 @@
 
 - (DOMNode *)lastChild
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
 
     auto result = IMPL->lastChild();
     if (result.hasException())
@@ -126,7 +126,7 @@
 
 - (DOMNode *)previousSibling
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
 
     auto result = IMPL->previousSibling();
     if (result.hasException())
@@ -137,7 +137,7 @@
 
 - (DOMNode *)nextSibling
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
 
     auto result = IMPL->nextSibling();
     if (result.hasException())
@@ -148,7 +148,7 @@
 
 - (DOMNode *)previousNode
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
 
     auto result = IMPL->previousNode();
     if (result.hasException())
@@ -159,7 +159,7 @@
 
 - (DOMNode *)nextNode
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
 
     auto result = IMPL->nextNode();
     if (result.hasException())
@@ -170,9 +170,9 @@
 
 @end
 
-DOMTreeWalker *kit(WebCore::TreeWalker* value)
+DOMTreeWalker *kit(CyberCore::TreeWalker* value)
 {
-    WebCoreThreadViolationCheckRoundOne();
+    CyberCoreThreadViolationCheckRoundOne();
     if (!value)
         return nil;
     if (DOMTreeWalker *wrapper = getDOMWrapper(value))

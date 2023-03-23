@@ -47,8 +47,8 @@
 #import "WebFrameInternal.h"
 #import "WebFrameView.h"
 #import "WebHTMLViewInternal.h"
-#import "WebKitLogging.h"
-#import "WebKitVersionChecks.h"
+#import "CyberKitLogging.h"
+#import "CyberKitVersionChecks.h"
 #import "WebLocalizableStringsInternal.h"
 #import "WebNSURLExtras.h"
 #import "WebResourceInternal.h"
@@ -78,8 +78,8 @@
 #import <CyberCore/UserTypingGestureIndicator.h>
 #import <CyberCore/VisibleUnits.h>
 #import <CyberCore/WebContentReader.h>
-#import <CyberCore/WebCoreJITOperations.h>
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreJITOperations.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 #import <pal/spi/cocoa/NSAttributedStringSPI.h>
 #import <pal/spi/mac/NSSpellCheckerSPI.h>
 #import <wtf/MainThread.h>
@@ -89,13 +89,13 @@
 #import <wtf/text/WTFString.h>
 
 #if PLATFORM(IOS_FAMILY)
-#import <CyberCore/WebCoreThreadMessage.h>
+#import <CyberCore/CyberCoreThreadMessage.h>
 #import "DOMElementInternal.h"
 #import "WebFrameView.h"
 #import "WebUIKitDelegate.h"
 #endif
 
-using namespace WebCore;
+using namespace CyberCore;
 
 using namespace HTMLNames;
 
@@ -135,7 +135,7 @@ static WebViewInsertAction kit(EditorInsertAction action)
 #if !PLATFORM(IOS_FAMILY)
     JSC::initialize();
     WTF::initializeMainThread();
-    WebCore::populateJITOperations();
+    CyberCore::populateJITOperations();
 #endif
 }
 
@@ -150,7 +150,7 @@ static WebViewInsertAction kit(EditorInsertAction action)
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainThread([WebUndoStep class], self))
+    if (CyberCoreObjCScheduleDeallocateOnMainThread([WebUndoStep class], self))
         return;
 
     [super dealloc];
@@ -400,19 +400,19 @@ void WebEditorClient::didWriteSelectionToPasteboard()
 
 void WebEditorClient::willWriteSelectionToPasteboard(const std::optional<SimpleRange>&)
 {
-    // Not implemented WebKit, only WebKit2.
+    // Not implemented CyberKit, only CyberKit2.
 }
 
-void WebEditorClient::getClientPasteboardData(const std::optional<SimpleRange>&, Vector<String>& pasteboardTypes, Vector<RefPtr<WebCore::SharedBuffer>>& pasteboardData)
+void WebEditorClient::getClientPasteboardData(const std::optional<SimpleRange>&, Vector<String>& pasteboardTypes, Vector<RefPtr<CyberCore::SharedBuffer>>& pasteboardData)
 {
-    // Not implemented WebKit, only WebKit2.
+    // Not implemented CyberKit, only CyberKit2.
 }
 
 // FIXME: Seems likely we can get rid of this legacy code for watchOS and tvOS.
 #if !PLATFORM(WATCHOS) && !PLATFORM(APPLETV)
 
 // FIXME: Remove both this stub and the real version of this function below once we don't need the real version on any supported platform.
-// This stub is not used outside WebKit, but it's here so we won't get a linker error.
+// This stub is not used outside CyberKit, but it's here so we won't get a linker error.
 __attribute__((__noreturn__))
 void _WebCreateFragment(Document&, NSAttributedString *, FragmentAndResources&)
 {
@@ -423,7 +423,7 @@ void _WebCreateFragment(Document&, NSAttributedString *, FragmentAndResources&)
 
 static NSDictionary *attributesForAttributedStringConversion()
 {
-    // This function needs to be kept in sync with identically named one in WebCore, which is used on newer OS versions.
+    // This function needs to be kept in sync with identically named one in CyberCore, which is used on newer OS versions.
     auto excludedElements = adoptNS([[NSMutableArray alloc] initWithObjects:
         // Omit style since we want style to be inline so the fragment can be easily inserted.
         @"style",
@@ -683,7 +683,7 @@ void WebEditorClient::handleKeyboardEvent(KeyboardEvent& event)
 void WebEditorClient::handleInputMethodKeydown(KeyboardEvent& event)
 {
 #if !PLATFORM(IOS_FAMILY)
-    // FIXME: Switch to WebKit2 model, interpreting the event before it's sent down to WebCore.
+    // FIXME: Switch to CyberKit2 model, interpreting the event before it's sent down to CyberCore.
     auto* frame = downcast<Node>(event.target())->document().frame();
     WebHTMLView *webHTMLView = (WebHTMLView *)[[kit(frame) frameView] documentView];
     if ([webHTMLView _interpretKeyEvent:&event savingCommands:YES])
@@ -743,7 +743,7 @@ void WebEditorClient::textDidChangeInTextField(Element& element)
 static SEL selectorForKeyEvent(KeyboardEvent* event)
 {
     // FIXME: This helper function is for the auto-fill code so we can pass a selector to the form delegate.  
-    // Eventually, we should move all of the auto-fill code down to WebKit and remove the need for this function by
+    // Eventually, we should move all of the auto-fill code down to CyberKit and remove the need for this function by
     // not relying on the selector in the new implementation.
     // The key identifiers are from <http://www.w3.org/TR/DOM-Level-3-Events/keyset.html#KeySet-Set>
     const String& key = event->keyIdentifier();
@@ -830,7 +830,7 @@ bool WebEditorClient::shouldSuppressPasswordEcho() const
     return false;
 }
 
-RefPtr<WebCore::DocumentFragment> WebEditorClient::documentFragmentFromDelegate(int index)
+RefPtr<CyberCore::DocumentFragment> WebEditorClient::documentFragmentFromDelegate(int index)
 {
     if ([[m_webView _editingDelegateForwarder] respondsToSelector:@selector(documentFragmentForPasteboardItemAtIndex:)]) {
         DOMDocumentFragment *fragmentFromDelegate = [[m_webView _editingDelegateForwarder] documentFragmentForPasteboardItemAtIndex:index];
@@ -841,7 +841,7 @@ RefPtr<WebCore::DocumentFragment> WebEditorClient::documentFragmentFromDelegate(
     return nullptr;
 }
 
-bool WebEditorClient::performsTwoStepPaste(WebCore::DocumentFragment* fragment)
+bool WebEditorClient::performsTwoStepPaste(CyberCore::DocumentFragment* fragment)
 {
     if ([[m_webView _UIKitDelegateForwarder] respondsToSelector:@selector(performsTwoStepPaste:)])
         return [[m_webView _UIKitDelegateForwarder] performsTwoStepPaste:kit(fragment)];
@@ -906,7 +906,7 @@ void WebEditorClient::checkSpellingOfString(StringView text, int* misspellingLoc
     NSRange range = [[NSSpellChecker sharedSpellChecker] checkSpellingOfString:text.createNSStringWithoutCopying().get() startingAt:0 language:nil wrap:NO inSpellDocumentWithTag:spellCheckerDocumentTag() wordCount:NULL];
 
     if (misspellingLocation) {
-        // WebCore expects -1 to represent "not found"
+        // CyberCore expects -1 to represent "not found"
         if (range.location == NSNotFound)
             *misspellingLocation = -1;
         else
@@ -922,7 +922,7 @@ void WebEditorClient::checkGrammarOfString(StringView text, Vector<GrammarDetail
     NSArray *grammarDetails;
     NSRange range = [[NSSpellChecker sharedSpellChecker] checkGrammarOfString:text.createNSStringWithoutCopying().get() startingAt:0 language:nil wrap:NO inSpellDocumentWithTag:spellCheckerDocumentTag() details:&grammarDetails];
     if (badGrammarLocation)
-        // WebCore expects -1 to represent "not found"
+        // CyberCore expects -1 to represent "not found"
         *badGrammarLocation = (range.location == NSNotFound) ? -1 : static_cast<int>(range.location);
     if (badGrammarLength)
         *badGrammarLength = range.length;
@@ -1057,7 +1057,7 @@ bool WebEditorClient::spellingUIIsShowing()
     return [[[NSSpellChecker sharedSpellChecker] spellingPanel] isVisible];
 }
 
-void WebEditorClient::getGuessesForWord(const String& word, const String& context, const WebCore::VisibleSelection& currentSelection, Vector<String>& guesses)
+void WebEditorClient::getGuessesForWord(const String& word, const String& context, const CyberCore::VisibleSelection& currentSelection, Vector<String>& guesses)
 {
     guesses.clear();
     NSString *language = nil;
@@ -1079,7 +1079,7 @@ void WebEditorClient::willSetInputMethodState()
 {
 }
 
-void WebEditorClient::setInputMethodState(WebCore::Element*)
+void WebEditorClient::setInputMethodState(CyberCore::Element*)
 {
 }
 
@@ -1247,7 +1247,7 @@ void WebEditorClient::requestCheckingOfString(TextCheckingRequest& request, cons
 }
 
 #if PLATFORM(IOS_FAMILY)
-bool WebEditorClient::shouldAllowSingleClickToChangeSelection(WebCore::Node& targetNode, const WebCore::VisibleSelection& newSelection) const
+bool WebEditorClient::shouldAllowSingleClickToChangeSelection(CyberCore::Node& targetNode, const CyberCore::VisibleSelection& newSelection) const
 {
     // The text selection assistant will handle selection in the case where we are already editing the node
     auto* editableRoot = newSelection.rootEditableElement();

@@ -32,7 +32,7 @@
 #include <CyberCore/WebSocketChannel.h>
 #include <CyberCore/WebSocketDeflateFramer.h>
 
-namespace WebCore {
+namespace CyberCore {
 class CurlStreamScheduler;
 class SharedBuffer;
 }
@@ -42,10 +42,10 @@ namespace WebKit {
 class NetworkSocketChannel;
 struct SessionSet;
 
-class WebSocketTask : public CanMakeWeakPtr<WebSocketTask>, public WebCore::CurlStream::Client {
+class WebSocketTask : public CanMakeWeakPtr<WebSocketTask>, public CyberCore::CurlStream::Client {
     WTF_MAKE_FAST_ALLOCATED;
 public:
-    WebSocketTask(NetworkSocketChannel&, const WebCore::ResourceRequest&, const String& protocol);
+    WebSocketTask(NetworkSocketChannel&, const CyberCore::ResourceRequest&, const String& protocol);
     ~WebSocketTask();
 
     void sendString(const IPC::DataReference&, CompletionHandler<void()>&&);
@@ -66,38 +66,38 @@ private:
         Closed
     };
 
-    void didOpen(WebCore::CurlStreamID) final;
-    void didSendData(WebCore::CurlStreamID, size_t) final { };
-    void didReceiveData(WebCore::CurlStreamID, const WebCore::SharedBuffer&) final;
-    void didFail(WebCore::CurlStreamID, CURLcode) final;
+    void didOpen(CyberCore::CurlStreamID) final;
+    void didSendData(CyberCore::CurlStreamID, size_t) final { };
+    void didReceiveData(CyberCore::CurlStreamID, const CyberCore::SharedBuffer&) final;
+    void didFail(CyberCore::CurlStreamID, CURLcode) final;
 
-    bool appendReceivedBuffer(const WebCore::SharedBuffer&);
+    bool appendReceivedBuffer(const CyberCore::SharedBuffer&);
     void skipReceivedBuffer(size_t len);
 
     Expected<bool, String> validateOpeningHandshake();
-    std::optional<String> receiveFrames(Function<void(WebCore::WebSocketFrame::OpCode, const uint8_t*, size_t)>&&);
-    std::optional<String> validateFrame(const WebCore::WebSocketFrame&);
+    std::optional<String> receiveFrames(Function<void(CyberCore::WebSocketFrame::OpCode, const uint8_t*, size_t)>&&);
+    std::optional<String> validateFrame(const CyberCore::WebSocketFrame&);
 
-    bool sendFrame(WebCore::WebSocketFrame::OpCode, const uint8_t* data, size_t dataLength);
+    bool sendFrame(CyberCore::WebSocketFrame::OpCode, const uint8_t* data, size_t dataLength);
     void sendClosingHandshakeIfNeeded(int32_t, const String& reason);
 
     void didFail(String&& reason);
     void didClose(int32_t code, const String& reason);
 
-    bool isStreamInvalidated() { return m_streamID == WebCore::invalidCurlStreamID; }
+    bool isStreamInvalidated() { return m_streamID == CyberCore::invalidCurlStreamID; }
     void destructStream();
 
     NetworkSocketChannel& m_channel;
-    WebCore::ResourceRequest m_request;
+    CyberCore::ResourceRequest m_request;
     String m_protocol;
 
-    WebCore::CurlStreamScheduler& m_scheduler;
-    WebCore::CurlStreamID m_streamID { WebCore::invalidCurlStreamID };
+    CyberCore::CurlStreamScheduler& m_scheduler;
+    CyberCore::CurlStreamID m_streamID { CyberCore::invalidCurlStreamID };
 
     State m_state { State::Connecting };
 
-    std::unique_ptr<WebCore::WebSocketHandshake> m_handshake;
-    WebCore::WebSocketDeflateFramer m_deflateFramer;
+    std::unique_ptr<CyberCore::WebSocketHandshake> m_handshake;
+    CyberCore::WebSocketDeflateFramer m_deflateFramer;
 
     bool m_didCompleteOpeningHandshake { false };
 
@@ -105,11 +105,11 @@ private:
     Vector<uint8_t> m_receiveBuffer;
 
     bool m_hasContinuousFrame { false };
-    WebCore::WebSocketFrame::OpCode m_continuousFrameOpCode { WebCore::WebSocketFrame::OpCode::OpCodeInvalid };
+    CyberCore::WebSocketFrame::OpCode m_continuousFrameOpCode { CyberCore::WebSocketFrame::OpCode::OpCodeInvalid };
     Vector<uint8_t> m_continuousFrameData;
 
     bool m_receivedClosingHandshake { false };
-    int32_t m_closeEventCode { WebCore::WebSocketChannel::CloseEventCode::CloseEventCodeNotSpecified };
+    int32_t m_closeEventCode { CyberCore::WebSocketChannel::CloseEventCode::CloseEventCodeNotSpecified };
     String m_closeEventReason;
 
     bool m_didSendClosingHandshake { false };

@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -17,16 +17,16 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitDOMCSSRulePrivate_h
-#define WebKitDOMCSSRulePrivate_h
+#ifndef CyberKitDOMCSSRulePrivate_h
+#define CyberKitDOMCSSRulePrivate_h
 
 #include <CyberCore/CSSRule.h>
-#include <webkitdom/WebKitDOMCSSRule.h>
+#include <webkitdom/CyberKitDOMCSSRule.h>
 
-namespace WebKit {
-WebKitDOMCSSRule* wrapCSSRule(WebCore::CSSRule*);
-WebKitDOMCSSRule* kit(WebCore::CSSRule*);
-WebCore::CSSRule* core(WebKitDOMCSSRule*);
-} // namespace WebKit
+namespace CyberKit {
+CyberKitDOMCSSRule* wrapCSSRule(CyberCore::CSSRule*);
+CyberKitDOMCSSRule* kit(CyberCore::CSSRule*);
+CyberCore::CSSRule* core(CyberKitDOMCSSRule*);
+} // namespace CyberKit
 
-#endif /* WebKitDOMCSSRulePrivate_h */
+#endif /* CyberKitDOMCSSRulePrivate_h */

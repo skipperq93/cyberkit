@@ -26,7 +26,7 @@
 #include "config.h"
 #include "CustomXPathNSResolver.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 AtomString CustomXPathNSResolver::lookupNamespaceURI(const AtomString& prefix)
 {
@@ -37,4 +37,4 @@ AtomString CustomXPathNSResolver::lookupNamespaceURI(const AtomString& prefix)
     return AtomString { result.releaseReturnValue() };
 }
 
-} // namespace WebCore
+} // namespace CyberCore

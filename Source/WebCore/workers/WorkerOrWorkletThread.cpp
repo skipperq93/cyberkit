@@ -39,7 +39,7 @@
 #include <wtf/glib/GRefPtr.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 Lock WorkerOrWorkletThread::s_workerOrWorkletThreadsLock;
 
@@ -239,7 +239,7 @@ void WorkerOrWorkletThread::destroyWorkerGlobalScope(Ref<WorkerOrWorkletThread>&
     if (stoppedCallback)
         callOnMainThread(WTFMove(stoppedCallback));
 
-    // Clean up WebCore::ThreadGlobalData before WTF::Thread goes away!
+    // Clean up CyberCore::ThreadGlobalData before WTF::Thread goes away!
     threadGlobalData().destroy();
 
     // Send the last WorkerThread Ref to be Deref'ed on the main thread.
@@ -373,4 +373,4 @@ void WorkerOrWorkletThread::removeChildThread(WorkerOrWorkletThread& childThread
         std::exchange(m_runWhenLastChildThreadIsGone, nullptr)();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

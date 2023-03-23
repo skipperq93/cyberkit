@@ -28,7 +28,7 @@
 #include "MediaConfiguration.h"
 #include "MediaEncodingType.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct MediaEncodingConfiguration : MediaConfiguration {
     MediaEncodingType type;
@@ -41,5 +41,5 @@ inline MediaEncodingConfiguration MediaEncodingConfiguration::isolatedCopy() con
     return { MediaConfiguration::isolatedCopy(), type };
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 

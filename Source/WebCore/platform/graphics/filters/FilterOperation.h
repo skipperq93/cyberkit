@@ -33,7 +33,7 @@
 #include <wtf/TypeCasts.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // CSS Filters
 
@@ -379,42 +379,42 @@ private:
 
 WEBCORE_EXPORT WTF::TextStream& operator<<(WTF::TextStream&, const FilterOperation&);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #define SPECIALIZE_TYPE_TRAITS_FILTEROPERATION(ToValueTypeName, predicate) \
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::ToValueTypeName) \
-    static bool isType(const WebCore::FilterOperation& operation) { return operation.predicate; } \
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::ToValueTypeName) \
+    static bool isType(const CyberCore::FilterOperation& operation) { return operation.predicate; } \
 SPECIALIZE_TYPE_TRAITS_END()
 
-SPECIALIZE_TYPE_TRAITS_FILTEROPERATION(DefaultFilterOperation, type() == WebCore::FilterOperation::Type::Default)
-SPECIALIZE_TYPE_TRAITS_FILTEROPERATION(PassthroughFilterOperation, type() == WebCore::FilterOperation::Type::Passthrough)
-SPECIALIZE_TYPE_TRAITS_FILTEROPERATION(ReferenceFilterOperation, type() == WebCore::FilterOperation::Type::Reference)
+SPECIALIZE_TYPE_TRAITS_FILTEROPERATION(DefaultFilterOperation, type() == CyberCore::FilterOperation::Type::Default)
+SPECIALIZE_TYPE_TRAITS_FILTEROPERATION(PassthroughFilterOperation, type() == CyberCore::FilterOperation::Type::Passthrough)
+SPECIALIZE_TYPE_TRAITS_FILTEROPERATION(ReferenceFilterOperation, type() == CyberCore::FilterOperation::Type::Reference)
 SPECIALIZE_TYPE_TRAITS_FILTEROPERATION(BasicColorMatrixFilterOperation, isBasicColorMatrixFilterOperation())
 SPECIALIZE_TYPE_TRAITS_FILTEROPERATION(BasicComponentTransferFilterOperation, isBasicComponentTransferFilterOperation())
-SPECIALIZE_TYPE_TRAITS_FILTEROPERATION(InvertLightnessFilterOperation, type() == WebCore::FilterOperation::Type::AppleInvertLightness)
-SPECIALIZE_TYPE_TRAITS_FILTEROPERATION(BlurFilterOperation, type() == WebCore::FilterOperation::Type::Blur)
-SPECIALIZE_TYPE_TRAITS_FILTEROPERATION(DropShadowFilterOperation, type() == WebCore::FilterOperation::Type::DropShadow)
+SPECIALIZE_TYPE_TRAITS_FILTEROPERATION(InvertLightnessFilterOperation, type() == CyberCore::FilterOperation::Type::AppleInvertLightness)
+SPECIALIZE_TYPE_TRAITS_FILTEROPERATION(BlurFilterOperation, type() == CyberCore::FilterOperation::Type::Blur)
+SPECIALIZE_TYPE_TRAITS_FILTEROPERATION(DropShadowFilterOperation, type() == CyberCore::FilterOperation::Type::DropShadow)
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::FilterOperation::Type> {
+template<> struct EnumTraits<CyberCore::FilterOperation::Type> {
     using values = EnumValues<
-        WebCore::FilterOperation::Type,
-        WebCore::FilterOperation::Type::Reference,
-        WebCore::FilterOperation::Type::Grayscale,
-        WebCore::FilterOperation::Type::Sepia,
-        WebCore::FilterOperation::Type::Saturate,
-        WebCore::FilterOperation::Type::HueRotate,
-        WebCore::FilterOperation::Type::Invert,
-        WebCore::FilterOperation::Type::AppleInvertLightness,
-        WebCore::FilterOperation::Type::Opacity,
-        WebCore::FilterOperation::Type::Brightness,
-        WebCore::FilterOperation::Type::Contrast,
-        WebCore::FilterOperation::Type::Blur,
-        WebCore::FilterOperation::Type::DropShadow,
-        WebCore::FilterOperation::Type::Passthrough,
-        WebCore::FilterOperation::Type::Default,
-        WebCore::FilterOperation::Type::None
+        CyberCore::FilterOperation::Type,
+        CyberCore::FilterOperation::Type::Reference,
+        CyberCore::FilterOperation::Type::Grayscale,
+        CyberCore::FilterOperation::Type::Sepia,
+        CyberCore::FilterOperation::Type::Saturate,
+        CyberCore::FilterOperation::Type::HueRotate,
+        CyberCore::FilterOperation::Type::Invert,
+        CyberCore::FilterOperation::Type::AppleInvertLightness,
+        CyberCore::FilterOperation::Type::Opacity,
+        CyberCore::FilterOperation::Type::Brightness,
+        CyberCore::FilterOperation::Type::Contrast,
+        CyberCore::FilterOperation::Type::Blur,
+        CyberCore::FilterOperation::Type::DropShadow,
+        CyberCore::FilterOperation::Type::Passthrough,
+        CyberCore::FilterOperation::Type::Default,
+        CyberCore::FilterOperation::Type::None
     >;
 };
 

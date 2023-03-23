@@ -35,9 +35,9 @@
 
 #if PLATFORM(IOS_FAMILY) && ENABLE(DEVICE_ORIENTATION)
 
-namespace WebKit {
+namespace CyberKit {
 
-class WebDeviceOrientationUpdateProvider final : public WebCore::DeviceOrientationUpdateProvider, private IPC::MessageReceiver {
+class WebDeviceOrientationUpdateProvider final : public CyberCore::DeviceOrientationUpdateProvider, private IPC::MessageReceiver {
 public:
     static Ref<WebDeviceOrientationUpdateProvider> create(WebPage& page) { return adoptRef(*new WebDeviceOrientationUpdateProvider(page));}
 
@@ -45,11 +45,11 @@ private:
     WebDeviceOrientationUpdateProvider(WebPage&);
     ~WebDeviceOrientationUpdateProvider();
 
-    // WebCore::DeviceOrientationUpdateProvider
-    void startUpdatingDeviceOrientation(WebCore::MotionManagerClient&) final;
-    void stopUpdatingDeviceOrientation(WebCore::MotionManagerClient&) final;
-    void startUpdatingDeviceMotion(WebCore::MotionManagerClient&) final;
-    void stopUpdatingDeviceMotion(WebCore::MotionManagerClient&) final;
+    // CyberCore::DeviceOrientationUpdateProvider
+    void startUpdatingDeviceOrientation(CyberCore::MotionManagerClient&) final;
+    void stopUpdatingDeviceOrientation(CyberCore::MotionManagerClient&) final;
+    void startUpdatingDeviceMotion(CyberCore::MotionManagerClient&) final;
+    void stopUpdatingDeviceMotion(CyberCore::MotionManagerClient&) final;
     void deviceOrientationChanged(double, double, double, double, double) final;
     void deviceMotionChanged(double, double, double, double, double, double, std::optional<double>, std::optional<double>, std::optional<double>) final;
 
@@ -57,9 +57,9 @@ private:
     void didReceiveMessage(IPC::Connection&, IPC::Decoder&) override;
 
     WeakPtr<WebPage> m_page;
-    WebCore::PageIdentifier m_pageIdentifier;
-    WeakHashSet<WebCore::MotionManagerClient> m_deviceOrientationClients;
-    WeakHashSet<WebCore::MotionManagerClient> m_deviceMotionClients;
+    CyberCore::PageIdentifier m_pageIdentifier;
+    WeakHashSet<CyberCore::MotionManagerClient> m_deviceOrientationClients;
+    WeakHashSet<CyberCore::MotionManagerClient> m_deviceMotionClients;
 };
 
 }

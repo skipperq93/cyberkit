@@ -31,7 +31,7 @@
 #include "ResourceError.h"
 #include "ScriptBuffer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct WorkerFetchResult {
     ScriptBuffer script;
@@ -49,4 +49,4 @@ inline WorkerFetchResult workerFetchError(const ResourceError& error)
 {
     return { { }, { }, { }, { }, { }, { }, error };
 }
-} // namespace WebCore
+} // namespace CyberCore

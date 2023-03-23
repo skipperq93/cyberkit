@@ -22,7 +22,7 @@
 
 #include "RenderBlockFlow.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLInputElement;
 
@@ -63,6 +63,6 @@ private:
     bool m_canReceiveDroppedFiles;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderFileUploadControl, isFileUploadControl())

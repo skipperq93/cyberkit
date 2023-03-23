@@ -33,7 +33,7 @@
 #include <wtf/RunLoop.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class MainThreadSharedTimer final : public SharedTimer {
     friend class NeverDestroyed<MainThreadSharedTimer>;
@@ -61,4 +61,4 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore

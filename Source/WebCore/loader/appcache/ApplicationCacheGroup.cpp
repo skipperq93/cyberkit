@@ -52,7 +52,7 @@
 #include <wtf/CompletionHandler.h>
 #include <wtf/MainThread.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 ApplicationCacheGroup::ApplicationCacheGroup(Ref<ApplicationCacheStorage>&& storage, const URL& manifestURL)
     : m_storage(WTFMove(storage))

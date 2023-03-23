@@ -116,7 +116,7 @@
 #define WEBPROCESSPROXY_RELEASE_LOG_ERROR(channel, fmt, ...) RELEASE_LOG_ERROR(channel, "%p - [PID=%i] WebProcessProxy::" fmt, this, processIdentifier(), ##__VA_ARGS__)
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 static unsigned s_maxProcessCount { 400 };
 
@@ -197,9 +197,9 @@ void WebProcessProxy::forWebPagesWithOrigin(PAL::SessionID sessionID, const Secu
     }
 }
 
-Vector<std::pair<WebCore::ProcessIdentifier, WebCore::RegistrableDomain>> WebProcessProxy::allowedFirstPartiesForCookies()
+Vector<std::pair<CyberCore::ProcessIdentifier, CyberCore::RegistrableDomain>> WebProcessProxy::allowedFirstPartiesForCookies()
 {
-    Vector<std::pair<WebCore::ProcessIdentifier, WebCore::RegistrableDomain>> result;
+    Vector<std::pair<CyberCore::ProcessIdentifier, CyberCore::RegistrableDomain>> result;
     for (auto& page : globalPages()) {
         if (page)
             result.append(std::make_pair(page->process().coreProcessIdentifier(), RegistrableDomain(URL(page->currentURL()))));
@@ -266,10 +266,10 @@ private:
         return true;
     }
 
-    const WebCore::ProcessIdentity& resourceOwner() const final
+    const CyberCore::ProcessIdentity& resourceOwner() const final
     {
         // FIXME: should obtain WebContent process identity from WebContent.
-        static NeverDestroyed<WebCore::ProcessIdentity> dummy;
+        static NeverDestroyed<CyberCore::ProcessIdentity> dummy;
         return dummy.get();
     }
 
@@ -351,7 +351,7 @@ WebProcessProxy::~WebProcessProxy()
         m_webConnection->invalidate();
 
     while (m_numberOfTimesSuddenTerminationWasDisabled-- > 0)
-        WebCore::enableSuddenTermination();
+        CyberCore::enableSuddenTermination();
 
 #if PLATFORM(MAC)
     HighPerformanceGPUManager::singleton().removeProcessRequiringHighPerformance(*this);
@@ -1041,7 +1041,7 @@ void WebProcessProxy::processDidTerminateOrFailedToLaunch(ProcessTerminationReas
         auto& page = pages[0];
         String domain = topPrivatelyControlledDomain(URL({ }, page->currentURL()).host().toString());
         if (!domain.isEmpty())
-            page->logDiagnosticMessageWithEnhancedPrivacy(WebCore::DiagnosticLoggingKeys::domainCausingCrashKey(), domain, WebCore::ShouldSample::No);
+            page->logDiagnosticMessageWithEnhancedPrivacy(CyberCore::DiagnosticLoggingKeys::domainCausingCrashKey(), domain, CyberCore::ShouldSample::No);
     }
 #endif
 
@@ -1218,7 +1218,7 @@ void WebProcessProxy::didFinishLaunching(ProcessLauncher* launcher, IPC::Connect
     beginResponsivenessChecks();
 }
 
-void WebProcessProxy::didDestroyFrame(WebCore::FrameIdentifier frameID, WebPageProxyIdentifier pageID)
+void WebProcessProxy::didDestroyFrame(CyberCore::FrameIdentifier frameID, WebPageProxyIdentifier pageID)
 {
     if (auto page = RefPtr { m_pageMap.get(pageID).get() })
         page->didDestroyFrame(frameID);
@@ -1406,7 +1406,7 @@ void WebProcessProxy::deleteWebsiteData(PAL::SessionID sessionID, OptionSet<Webs
     });
 }
 
-void WebProcessProxy::deleteWebsiteDataForOrigins(PAL::SessionID sessionID, OptionSet<WebsiteDataType> dataTypes, const Vector<WebCore::SecurityOriginData>& origins, CompletionHandler<void()>&& completionHandler)
+void WebProcessProxy::deleteWebsiteDataForOrigins(PAL::SessionID sessionID, OptionSet<WebsiteDataType> dataTypes, const Vector<CyberCore::SecurityOriginData>& origins, CompletionHandler<void()>&& completionHandler)
 {
     ASSERT(canSendMessage());
     ASSERT_UNUSED(sessionID, sessionID == this->sessionID());
@@ -1441,7 +1441,7 @@ void WebProcessProxy::enableSuddenTermination()
         return;
 
     ASSERT(m_numberOfTimesSuddenTerminationWasDisabled);
-    WebCore::enableSuddenTermination();
+    CyberCore::enableSuddenTermination();
     --m_numberOfTimesSuddenTerminationWasDisabled;
 }
 
@@ -1450,7 +1450,7 @@ void WebProcessProxy::disableSuddenTermination()
     if (state() != State::Running)
         return;
 
-    WebCore::disableSuddenTermination();
+    CyberCore::disableSuddenTermination();
     ++m_numberOfTimesSuddenTerminationWasDisabled;
 }
 
@@ -1807,7 +1807,7 @@ const MemoryCompactLookupOnlyRobinHoodHashSet<String>& WebProcessProxy::platform
 }
 #endif
 
-void WebProcessProxy::didCollectPrewarmInformation(const WebCore::RegistrableDomain& domain, const WebCore::PrewarmInformation& prewarmInformation)
+void WebProcessProxy::didCollectPrewarmInformation(const CyberCore::RegistrableDomain& domain, const CyberCore::PrewarmInformation& prewarmInformation)
 {
     MESSAGE_CHECK(!domain.isEmpty());
     processPool().didCollectPrewarmInformation(domain, prewarmInformation);
@@ -1833,11 +1833,11 @@ void WebProcessProxy::didStartProvisionalLoadForMainFrame(const URL& url)
     if (!url.protocolIsInHTTPFamily() && !processPool().configuration().processSwapsOnNavigationWithinSameNonHTTPFamilyProtocol()) {
         // Unless the processSwapsOnNavigationWithinSameNonHTTPFamilyProtocol flag is set, we don't process swap on navigations withing the same
         // non HTTP(s) protocol. For this reason, we ignore the registrable domain and processes are not eligible for the process cache.
-        m_registrableDomain = WebCore::RegistrableDomain { };
+        m_registrableDomain = CyberCore::RegistrableDomain { };
         return;
     }
 
-    auto registrableDomain = WebCore::RegistrableDomain { url };
+    auto registrableDomain = CyberCore::RegistrableDomain { url };
     auto* dataStore = websiteDataStore();
     if (dataStore && m_registrableDomain && *m_registrableDomain != registrableDomain) {
         if (isRunningServiceWorkers())
@@ -1846,7 +1846,7 @@ void WebProcessProxy::didStartProvisionalLoadForMainFrame(const URL& url)
             dataStore->networkProcess().terminateRemoteWorkerContextConnectionWhenPossible(RemoteWorkerType::SharedWorker, dataStore->sessionID(), *m_registrableDomain, coreProcessIdentifier());
 
         // Null out registrable domain since this process has now been used for several domains.
-        m_registrableDomain = WebCore::RegistrableDomain { };
+        m_registrableDomain = CyberCore::RegistrableDomain { };
         return;
     }
 
@@ -1913,7 +1913,7 @@ void WebProcessProxy::createSpeechRecognitionServer(SpeechRecognitionServerIdent
     auto& speechRecognitionServer = m_speechRecognitionServerMap.add(identifier, nullptr).iterator->value;
     auto permissionChecker = [weakPage = WeakPtr { targetPage }](auto& request, auto&& completionHandler) mutable {
         if (!weakPage) {
-            completionHandler(WebCore::SpeechRecognitionError { SpeechRecognitionErrorType::NotAllowed, "Page no longer exists"_s });
+            completionHandler(CyberCore::SpeechRecognitionError { SpeechRecognitionErrorType::NotAllowed, "Page no longer exists"_s });
             return;
         }
 
@@ -1953,7 +1953,7 @@ SpeechRecognitionRemoteRealtimeMediaSourceManager& WebProcessProxy::ensureSpeech
     return *m_speechRecognitionRemoteRealtimeMediaSourceManager;
 }
 
-void WebProcessProxy::muteCaptureInPagesExcept(WebCore::PageIdentifier pageID)
+void WebProcessProxy::muteCaptureInPagesExcept(CyberCore::PageIdentifier pageID)
 {
 #if PLATFORM(COCOA)
     for (auto& page : globalPages()) {
@@ -1967,7 +1967,7 @@ void WebProcessProxy::muteCaptureInPagesExcept(WebCore::PageIdentifier pageID)
 
 #endif
 
-void WebProcessProxy::pageMutedStateChanged(WebCore::PageIdentifier identifier, WebCore::MediaProducerMutedStateFlags flags)
+void WebProcessProxy::pageMutedStateChanged(CyberCore::PageIdentifier identifier, CyberCore::MediaProducerMutedStateFlags flags)
 {
     bool mutedForCapture = flags.containsAny(MediaProducer::AudioAndVideoCaptureIsMuted);
     if (!mutedForCapture)
@@ -1977,7 +1977,7 @@ void WebProcessProxy::pageMutedStateChanged(WebCore::PageIdentifier identifier, 
         speechRecognitionServer->mute();
 }
 
-void WebProcessProxy::pageIsBecomingInvisible(WebCore::PageIdentifier identifier)
+void WebProcessProxy::pageIsBecomingInvisible(CyberCore::PageIdentifier identifier)
 {
 #if ENABLE(MEDIA_STREAM)
     if (!RealtimeMediaSourceCenter::shouldInterruptAudioOnPageVisibilityChange())
@@ -2219,7 +2219,7 @@ void WebProcessProxy::enableRemoteWorkers(RemoteWorkerType workerType, const Use
 void WebProcessProxy::didCreateSleepDisabler(SleepDisablerIdentifier identifier, const String& reason, bool display)
 {
     MESSAGE_CHECK(!reason.isNull());
-    auto sleepDisabler = makeUnique<WebCore::SleepDisabler>(reason, display ? PAL::SleepDisabler::Type::Display : PAL::SleepDisabler::Type::System);
+    auto sleepDisabler = makeUnique<CyberCore::SleepDisabler>(reason, display ? PAL::SleepDisabler::Type::Display : PAL::SleepDisabler::Type::System);
     m_sleepDisablers.add(identifier, WTFMove(sleepDisabler));
 }
 
@@ -2290,7 +2290,7 @@ const WeakHashSet<WebProcessProxy>* WebProcessProxy::sharedWorkerClientProcesses
     return nullptr;
 }
 
-void WebProcessProxy::permissionChanged(WebCore::PermissionName permissionName, const WebCore::SecurityOriginData& topOrigin)
+void WebProcessProxy::permissionChanged(CyberCore::PermissionName permissionName, const CyberCore::SecurityOriginData& topOrigin)
 {
     auto webProcessPools = WebKit::WebProcessPool::allProcessPools();
 
@@ -2300,7 +2300,7 @@ void WebProcessProxy::permissionChanged(WebCore::PermissionName permissionName, 
     }
 }
 
-void WebProcessProxy::sendPermissionChanged(WebCore::PermissionName permissionName, const WebCore::SecurityOriginData& topOrigin)
+void WebProcessProxy::sendPermissionChanged(CyberCore::PermissionName permissionName, const CyberCore::SecurityOriginData& topOrigin)
 {
     send(Messages::WebPermissionController::permissionChanged(permissionName, topOrigin), 0);
 }

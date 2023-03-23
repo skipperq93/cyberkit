@@ -31,7 +31,7 @@
 
 #include "SharedBuffer.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace OpenType {
 
 struct BigEndianShort {
@@ -186,5 +186,5 @@ protected:
 #endif
 
 } // namespace OpenType
-} // namespace WebCore
+} // namespace CyberCore
 #endif // OpenTypeTypes_h

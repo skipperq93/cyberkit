@@ -43,7 +43,7 @@ typedef const struct __CTFontDescriptor* CTFontDescriptorRef;
 typedef struct FT_FaceRec_*  FT_Face;
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class SharedBuffer;
 class FontDescription;
@@ -87,4 +87,4 @@ public:
 
 WEBCORE_EXPORT std::unique_ptr<FontCustomPlatformData> createFontCustomPlatformData(SharedBuffer&, const String&);
 
-} // namespace WebCore
+} // namespace CyberCore

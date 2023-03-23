@@ -27,7 +27,7 @@
  */
 
 #import "config.h"
-#import "WebCoreURLResponseIOS.h"
+#import "CyberCoreURLResponseIOS.h"
 
 #if PLATFORM(IOS_FAMILY)
 
@@ -36,7 +36,7 @@
 
 #import <pal/ios/QuickLookSoftLink.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 void adjustMIMETypeIfNecessary(CFURLResponseRef response, bool isMainResourceLoad)
 {
@@ -73,6 +73,6 @@ void adjustMIMETypeIfNecessary(CFURLResponseRef response, bool isMainResourceLoa
         CFURLResponseSetMIMEType(response, CFSTR("application/octet-stream"));
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(IOS_FAMILY)

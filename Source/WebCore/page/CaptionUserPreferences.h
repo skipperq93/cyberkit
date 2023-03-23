@@ -34,7 +34,7 @@
 #include <wtf/HashSet.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CaptionUserPreferencesTestingModeToken;
 class HTMLMediaElement;
@@ -159,13 +159,13 @@ private:
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::CaptionUserPreferences::CaptionDisplayMode> {
+template<> struct EnumTraits<CyberCore::CaptionUserPreferences::CaptionDisplayMode> {
     using values = EnumValues<
-        WebCore::CaptionUserPreferences::CaptionDisplayMode,
-        WebCore::CaptionUserPreferences::CaptionDisplayMode::Automatic,
-        WebCore::CaptionUserPreferences::CaptionDisplayMode::ForcedOnly,
-        WebCore::CaptionUserPreferences::CaptionDisplayMode::AlwaysOn,
-        WebCore::CaptionUserPreferences::CaptionDisplayMode::Manual
+        CyberCore::CaptionUserPreferences::CaptionDisplayMode,
+        CyberCore::CaptionUserPreferences::CaptionDisplayMode::Automatic,
+        CyberCore::CaptionUserPreferences::CaptionDisplayMode::ForcedOnly,
+        CyberCore::CaptionUserPreferences::CaptionDisplayMode::AlwaysOn,
+        CyberCore::CaptionUserPreferences::CaptionDisplayMode::Manual
     >;
 };
 

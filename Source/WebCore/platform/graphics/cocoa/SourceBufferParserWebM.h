@@ -49,7 +49,7 @@ namespace webm {
 class WebmParser;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class WebMParser
     : private webm::Callback
@@ -368,16 +368,16 @@ private:
 
 }
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::SourceBufferParserWebM)
-    static bool isType(const WebCore::SourceBufferParser& parser) { return parser.type() == WebCore::SourceBufferParser::Type::WebM; }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::SourceBufferParserWebM)
+    static bool isType(const CyberCore::SourceBufferParser& parser) { return parser.type() == CyberCore::SourceBufferParser::Type::WebM; }
 SPECIALIZE_TYPE_TRAITS_END()
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::WebMParser::VideoTrackData)
-    static bool isType(const WebCore::WebMParser::TrackData& trackData) { return trackData.trackType() == WebCore::TrackInfo::TrackType::Video; }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::WebMParser::VideoTrackData)
+    static bool isType(const CyberCore::WebMParser::TrackData& trackData) { return trackData.trackType() == CyberCore::TrackInfo::TrackType::Video; }
 SPECIALIZE_TYPE_TRAITS_END()
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::WebMParser::AudioTrackData)
-    static bool isType(const WebCore::WebMParser::TrackData& trackData) { return trackData.trackType() == WebCore::TrackInfo::TrackType::Audio; }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::WebMParser::AudioTrackData)
+    static bool isType(const CyberCore::WebMParser::TrackData& trackData) { return trackData.trackType() == CyberCore::TrackInfo::TrackType::Audio; }
 SPECIALIZE_TYPE_TRAITS_END()
 
 #endif // ENABLE(MEDIA_SOURCE)

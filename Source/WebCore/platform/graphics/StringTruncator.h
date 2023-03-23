@@ -31,7 +31,7 @@
 
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
     
 class FontCascade;
 
@@ -49,6 +49,6 @@ public:
     WEBCORE_EXPORT static float width(const String&, const FontCascade&);
 };
     
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // !defined(StringTruncator_h)

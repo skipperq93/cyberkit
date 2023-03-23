@@ -37,7 +37,7 @@
 #include <cstdint>
 #include <memory>
 
-namespace WebCore {
+namespace CyberCore {
 
 class TextureMapperPlatformLayerProxyDMABuf final : public TextureMapperPlatformLayerProxy {
     WTF_MAKE_FAST_ALLOCATED;
@@ -104,7 +104,7 @@ private:
     RefPtr<DMABufLayer> m_committedLayer;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_TEXTUREMAPPER_PLATFORMLAYERPROXY(TextureMapperPlatformLayerProxyDMABuf, isDMABufBased());
 

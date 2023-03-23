@@ -24,7 +24,7 @@
 
 #include "RenderWidget.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class MouseEvent;
 class TextRun;
@@ -98,6 +98,6 @@ private:
     String m_unavailabilityDescription;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderEmbeddedObject, isEmbeddedObject())

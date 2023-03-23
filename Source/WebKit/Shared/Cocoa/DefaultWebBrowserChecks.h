@@ -28,7 +28,7 @@
 #include <wtf/spi/darwin/XPCSPI.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 class RegistrableDomain;
 }
 
@@ -38,7 +38,7 @@ class AuxiliaryProcess;
 
 bool hasRequestedCrossWebsiteTrackingPermission();
 bool hasProhibitedUsageStrings();
-Span<const WebCore::RegistrableDomain> appBoundDomainsForTesting(const String&);
+Span<const CyberCore::RegistrableDomain> appBoundDomainsForTesting(const String&);
 bool isRunningTest(const String& bundleID);
 void determineTrackingPreventionState();
 bool doesAppHaveTrackingPreventionEnabled();

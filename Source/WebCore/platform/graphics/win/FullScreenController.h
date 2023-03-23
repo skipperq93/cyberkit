@@ -29,7 +29,7 @@
 
 #include <memory>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FullScreenControllerClient;
 
@@ -56,6 +56,6 @@ protected:
     std::unique_ptr<FullScreenController::Private> m_private;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(FULLSCREEN_API)

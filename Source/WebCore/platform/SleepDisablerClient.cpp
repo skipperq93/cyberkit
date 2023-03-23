@@ -28,7 +28,7 @@
 
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 std::unique_ptr<SleepDisablerClient>& sleepDisablerClient()
 {

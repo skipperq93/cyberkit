@@ -34,7 +34,7 @@
 #include <wtf/Lock.h>
 #include <wtf/Ref.h>
 
-namespace WebCore {
+namespace CyberCore {
 class TextureMapperPlatformLayerProxy;
 }
 
@@ -50,9 +50,9 @@ public:
     };
 
     static Factory createFactory(Client&);
-    static Factory createFactory(Client&, Ref<WebCore::TextureMapperPlatformLayerProxy>&&);
+    static Factory createFactory(Client&, Ref<CyberCore::TextureMapperPlatformLayerProxy>&&);
 
-    explicit ContentLayerTextureMapperImpl(Client&, Ref<WebCore::TextureMapperPlatformLayerProxy>&&);
+    explicit ContentLayerTextureMapperImpl(Client&, Ref<CyberCore::TextureMapperPlatformLayerProxy>&&);
     virtual ~ContentLayerTextureMapperImpl();
     bool isTextureMapperImpl() const override { return true; }
 
@@ -60,11 +60,11 @@ public:
 
     bool flushUpdate();
 
-    WebCore::TextureMapperPlatformLayerProxy& proxy() const { return m_proxy; }
+    CyberCore::TextureMapperPlatformLayerProxy& proxy() const { return m_proxy; }
     void swapBuffersIfNeeded();
 
 private:
-    Ref<WebCore::TextureMapperPlatformLayerProxy> m_proxy;
+    Ref<CyberCore::TextureMapperPlatformLayerProxy> m_proxy;
     struct {
         Lock lock;
         Client* client { nullptr };

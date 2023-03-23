@@ -42,7 +42,7 @@
 #endif
 
 
-namespace WebCore {
+namespace CyberCore {
 
 void platformReleaseMemory(Critical)
 {
@@ -115,4 +115,4 @@ void registerMemoryReleaseNotifyCallbacks()
     });
 }
 
-} // namespace WebCore
+} // namespace CyberCore

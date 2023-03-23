@@ -29,7 +29,7 @@
 #include "SVGStringList.h"
 #include "SVGTests.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename OwnerType>
 class SVGConditionalProcessingAttributeAccessor final : public SVGMemberAccessor<OwnerType> {

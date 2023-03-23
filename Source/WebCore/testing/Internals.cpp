@@ -232,7 +232,7 @@
 #include "VoidCallback.h"
 #include "WebAnimation.h"
 #include "WebAnimationUtilities.h"
-#include "WebCoreJSClientData.h"
+#include "CyberCoreJSClientData.h"
 #include "WebRTCProvider.h"
 #include "WindowProxy.h"
 #include "WorkerThread.h"
@@ -403,7 +403,7 @@ using JSC::PropertySlot;
 using JSC::ScriptExecutable;
 using JSC::StackVisitor;
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace Inspector;
 using namespace HTMLNames;
@@ -552,7 +552,7 @@ void Internals::resetToConsistentState(Page& page)
 
     localMainFrame->setTextZoomFactor(1.0f);
 
-    page.setCompositingPolicyOverride(WebCore::CompositingPolicy::Normal);
+    page.setCompositingPolicyOverride(CyberCore::CompositingPolicy::Normal);
 
     FrameView* mainFrameView = localMainFrame->view();
     if (mainFrameView) {
@@ -571,7 +571,7 @@ void Internals::resetToConsistentState(Page& page)
 
     WTF::clearDefaultPortForProtocolMapForTesting();
     overrideUserPreferredLanguages(Vector<String>());
-    WebCore::DeprecatedGlobalSettings::setUsesOverlayScrollbars(false);
+    CyberCore::DeprecatedGlobalSettings::setUsesOverlayScrollbars(false);
     if (!localMainFrame->editor().isContinuousSpellCheckingEnabled())
         localMainFrame->editor().toggleContinuousSpellChecking();
     if (localMainFrame->editor().isOverwriteModeEnabled())
@@ -625,7 +625,7 @@ void Internals::resetToConsistentState(Page& page)
     auto& rtcProvider = page.webRTCProvider();
 #if USE(LIBWEBRTC)
     auto& webRTCProvider = reinterpret_cast<LibWebRTCProvider&>(rtcProvider);
-    WebCore::useRealRTCPeerConnectionFactory(webRTCProvider);
+    CyberCore::useRealRTCPeerConnectionFactory(webRTCProvider);
     webRTCProvider.disableNonLocalhostConnections();
 #endif
     WebRTCProvider::setH264HardwareEncoderAllowed(true);
@@ -649,7 +649,7 @@ void Internals::resetToConsistentState(Page& page)
 #endif
 
 #if ENABLE(MEDIA_RECORDER)
-    WebCore::MediaRecorder::setCustomPrivateRecorderCreator(nullptr);
+    CyberCore::MediaRecorder::setCustomPrivateRecorderCreator(nullptr);
 #endif
 
     CanvasBase::setMaxPixelMemoryForTesting(std::nullopt);
@@ -657,7 +657,7 @@ void Internals::resetToConsistentState(Page& page)
     DOMWindow::overrideTransientActivationDurationForTesting(std::nullopt);
 
 #if PLATFORM(IOS)
-    WebCore::setContentSizeCategory(kCTFontContentSizeCategoryL);
+    CyberCore::setContentSizeCategory(kCTFontContentSizeCategoryL);
 #endif
 
 #if ENABLE(MEDIA_SESSION) && USE(GLIB)
@@ -1437,10 +1437,10 @@ void Internals::setEventThrottlingBehaviorOverride(std::optional<EventThrottling
 
     switch (value.value()) {
     case Internals::EventThrottlingBehavior::Responsive:
-        document->page()->setEventThrottlingBehaviorOverride(WebCore::EventThrottlingBehavior::Responsive);
+        document->page()->setEventThrottlingBehaviorOverride(CyberCore::EventThrottlingBehavior::Responsive);
         break;
     case Internals::EventThrottlingBehavior::Unresponsive:
-        document->page()->setEventThrottlingBehaviorOverride(WebCore::EventThrottlingBehavior::Unresponsive);
+        document->page()->setEventThrottlingBehaviorOverride(CyberCore::EventThrottlingBehavior::Unresponsive);
         break;
     }
 }
@@ -1456,9 +1456,9 @@ std::optional<Internals::EventThrottlingBehavior> Internals::eventThrottlingBeha
         return std::nullopt;
 
     switch (behavior.value()) {
-    case WebCore::EventThrottlingBehavior::Responsive:
+    case CyberCore::EventThrottlingBehavior::Responsive:
         return Internals::EventThrottlingBehavior::Responsive;
-    case WebCore::EventThrottlingBehavior::Unresponsive:
+    case CyberCore::EventThrottlingBehavior::Unresponsive:
         return Internals::EventThrottlingBehavior::Unresponsive;
     }
 
@@ -1592,7 +1592,7 @@ void Internals::useMockRTCPeerConnectionFactory(const String& testCase)
 #if USE(LIBWEBRTC)
     Document* document = contextDocument();
     auto* provider = (document && document->page()) ? &static_cast<LibWebRTCProvider&>(document->page()->webRTCProvider()) : nullptr;
-    WebCore::useMockRTCPeerConnectionFactory(provider, testCase);
+    CyberCore::useMockRTCPeerConnectionFactory(provider, testCase);
 #else
     UNUSED_PARAM(testCase);
 #endif
@@ -1750,7 +1750,7 @@ static ExceptionOr<std::unique_ptr<MediaRecorderPrivate>> createRecorderMockSour
 
 void Internals::setCustomPrivateRecorderCreator()
 {
-    WebCore::MediaRecorder::setCustomPrivateRecorderCreator(createRecorderMockSource);
+    CyberCore::MediaRecorder::setCustomPrivateRecorderCreator(createRecorderMockSource);
 }
 #endif // ENABLE(MEDIA_RECORDER)
 
@@ -3877,10 +3877,10 @@ ExceptionOr<void> Internals::setCompositingPolicyOverride(std::optional<Composit
 
     switch (policyOverride.value()) {
     case Internals::CompositingPolicy::Normal:
-        document->page()->setCompositingPolicyOverride(WebCore::CompositingPolicy::Normal);
+        document->page()->setCompositingPolicyOverride(CyberCore::CompositingPolicy::Normal);
         break;
     case Internals::CompositingPolicy::Conservative:
-        document->page()->setCompositingPolicyOverride(WebCore::CompositingPolicy::Conservative);
+        document->page()->setCompositingPolicyOverride(CyberCore::CompositingPolicy::Conservative);
         break;
     }
     
@@ -3898,9 +3898,9 @@ ExceptionOr<std::optional<Internals::CompositingPolicy>> Internals::compositingP
         return { std::nullopt };
 
     switch (policyOverride.value()) {
-    case WebCore::CompositingPolicy::Normal:
+    case CyberCore::CompositingPolicy::Normal:
         return { Internals::CompositingPolicy::Normal };
-    case WebCore::CompositingPolicy::Conservative:
+    case CyberCore::CompositingPolicy::Conservative:
         return { Internals::CompositingPolicy::Conservative };
     }
 
@@ -4048,7 +4048,7 @@ JSC::JSValue Internals::evaluateInWorldIgnoringException(const String& name, con
 #if !PLATFORM(MAC)
 void Internals::setUsesOverlayScrollbars(bool enabled)
 {
-    WebCore::DeprecatedGlobalSettings::setUsesOverlayScrollbars(enabled);
+    CyberCore::DeprecatedGlobalSettings::setUsesOverlayScrollbars(enabled);
 }
 #endif
 
@@ -4103,7 +4103,7 @@ Ref<MockCDMFactory> Internals::registerMockCDM()
 
 String Internals::markerTextForListItem(Element& element)
 {
-    return WebCore::markerTextForListItem(&element);
+    return CyberCore::markerTextForListItem(&element);
 }
 
 String Internals::toolTipFromElement(Element& element) const
@@ -4413,10 +4413,10 @@ bool Internals::isPluginSnapshotted(Element&)
 void Internals::initializeMockMediaSource()
 {
 #if USE(AVFOUNDATION)
-    WebCore::DeprecatedGlobalSettings::setAVFoundationEnabled(false);
+    CyberCore::DeprecatedGlobalSettings::setAVFoundationEnabled(false);
 #endif
 #if USE(GSTREAMER)
-    WebCore::DeprecatedGlobalSettings::setGStreamerEnabled(false);
+    CyberCore::DeprecatedGlobalSettings::setGStreamerEnabled(false);
 #endif
     MediaPlayerFactorySupport::callRegisterMediaEngine(MockMediaPlayerMediaSource::registerMediaEngine);
 }
@@ -4927,7 +4927,7 @@ void Internals::setPageMuted(StringView statesString)
     if (!document)
         return;
 
-    WebCore::MediaProducerMutedStateFlags state;
+    CyberCore::MediaProducerMutedStateFlags state;
     for (StringView stateString : statesString.split(',')) {
         if (equalLettersIgnoringASCIICase(stateString, "audio"_s))
             state.add(MediaProducerMutedState::AudioIsMuted);
@@ -5054,7 +5054,7 @@ String Internals::createTemporaryFile(const String& name, const String& contents
         return nullString();
 
     auto file = FileSystem::invalidPlatformFileHandle;
-    auto path = FileSystem::openTemporaryFile(makeString("WebCoreTesting-", name), file);
+    auto path = FileSystem::openTemporaryFile(makeString("CyberCoreTesting-", name), file);
     if (!FileSystem::isHandleValid(file))
         return nullString();
 
@@ -5289,7 +5289,7 @@ String Internals::composedTreeAsText(Node& node)
 {
     if (!is<ContainerNode>(node))
         return emptyString();
-    return WebCore::composedTreeAsText(downcast<ContainerNode>(node));
+    return CyberCore::composedTreeAsText(downcast<ContainerNode>(node));
 }
 
 bool Internals::isProcessingUserGesture()
@@ -5362,7 +5362,7 @@ void Internals::setUserInterfaceLayoutDirection(UserInterfaceLayoutDirection use
     if (!page)
         return;
 
-    page->setUserInterfaceLayoutDirection(userInterfaceLayoutDirection == UserInterfaceLayoutDirection::LTR ? WebCore::UserInterfaceLayoutDirection::LTR : WebCore::UserInterfaceLayoutDirection::RTL);
+    page->setUserInterfaceLayoutDirection(userInterfaceLayoutDirection == UserInterfaceLayoutDirection::LTR ? CyberCore::UserInterfaceLayoutDirection::LTR : CyberCore::UserInterfaceLayoutDirection::RTL);
 }
 
 #if !PLATFORM(COCOA)
@@ -5617,7 +5617,7 @@ void Internals::simulateEventForWebGLContext(SimulatedWebGLContextEvent event, W
 bool Internals::hasLowAndHighPowerGPUs()
 {
 #if PLATFORM(MAC)
-    return WebCore::hasLowAndHighPowerGPUs();
+    return CyberCore::hasLowAndHighPowerGPUs();
 #else
     return false;
 #endif
@@ -6253,7 +6253,7 @@ void Internals::notifyResourceLoadObserver()
 unsigned Internals::primaryScreenDisplayID()
 {
 #if PLATFORM(COCOA)
-    return WebCore::primaryScreenDisplayID();
+    return CyberCore::primaryScreenDisplayID();
 #else
     return 0;
 #endif
@@ -6261,22 +6261,22 @@ unsigned Internals::primaryScreenDisplayID()
 
 bool Internals::capsLockIsOn()
 {
-    return WebCore::PlatformKeyboardEvent::currentCapsLockState();
+    return CyberCore::PlatformKeyboardEvent::currentCapsLockState();
 }
 
 auto Internals::parseHEVCCodecParameters(StringView string) -> std::optional<HEVCParameterSet>
 {
-    return WebCore::parseHEVCCodecParameters(string);
+    return CyberCore::parseHEVCCodecParameters(string);
 }
 
 String Internals::createHEVCCodecParametersString(const HEVCParameterSet& parameters)
 {
-    return WebCore::createHEVCCodecParametersString(parameters);
+    return CyberCore::createHEVCCodecParametersString(parameters);
 }
 
 auto Internals::parseDoViCodecParameters(StringView string) -> std::optional<DoViParameterSet>
 {
-    auto parseResult = WebCore::parseDoViCodecParameters(string);
+    auto parseResult = CyberCore::parseDoViCodecParameters(string);
     if (!parseResult)
         return std::nullopt;
     DoViParameterSet convertedResult;
@@ -6313,12 +6313,12 @@ String Internals::createDoViCodecParametersString(const DoViParameterSet& parame
     else
         return emptyString();
 
-    return WebCore::createDoViCodecParametersString({ codec, parameterSet.bitstreamProfileID, parameterSet.bitstreamLevelID });
+    return CyberCore::createDoViCodecParametersString({ codec, parameterSet.bitstreamProfileID, parameterSet.bitstreamLevelID });
 }
 
 std::optional<VPCodecConfigurationRecord> Internals::parseVPCodecParameters(StringView string)
 {
-    return WebCore::parseVPCodecParameters(string);
+    return CyberCore::parseVPCodecParameters(string);
 }
 
 auto Internals::getCookies() const -> Vector<CookieData>
@@ -6417,7 +6417,7 @@ Internals::TextIndicatorInfo::TextIndicatorInfo()
 {
 }
 
-Internals::TextIndicatorInfo::TextIndicatorInfo(const WebCore::TextIndicatorData& data)
+Internals::TextIndicatorInfo::TextIndicatorInfo(const CyberCore::TextIndicatorData& data)
     : textBoundingRectInRootViewCoordinates(DOMRect::create(data.textBoundingRectInRootViewCoordinates))
     , textRectsInBoundingRectCoordinates(DOMRectList::create(data.textRectsInBoundingRectCoordinates))
 {
@@ -6546,7 +6546,7 @@ String Internals::systemColorForCSSValue(const String& cssValue, bool useDarkMod
 bool Internals::systemHasBattery() const
 {
 #if PLATFORM(COCOA)
-    return WebCore::systemHasBattery();
+    return CyberCore::systemHasBattery();
 #else
     return false;
 #endif
@@ -6661,7 +6661,7 @@ unsigned Internals::numberOfAppHighlights()
 
 bool Internals::supportsPictureInPicture()
 {
-    return WebCore::supportsPictureInPicture();
+    return CyberCore::supportsPictureInPicture();
 }
 
 String Internals::focusRingColor()
@@ -6672,7 +6672,7 @@ String Internals::focusRingColor()
 unsigned Internals::createSleepDisabler(const String& reason, bool display)
 {
     static unsigned lastUsedIdentifier = 0;
-    auto sleepDisabler = makeUnique<WebCore::SleepDisabler>(reason, display ? PAL::SleepDisabler::Type::Display : PAL::SleepDisabler::Type::System);
+    auto sleepDisabler = makeUnique<CyberCore::SleepDisabler>(reason, display ? PAL::SleepDisabler::Type::Display : PAL::SleepDisabler::Type::System);
     m_sleepDisablers.add(++lastUsedIdentifier, WTFMove(sleepDisabler));
     return lastUsedIdentifier;
 }
@@ -6726,7 +6726,7 @@ void Internals::setContentSizeCategory(Internals::ContentSizeCategory category)
         ctCategory = kCTFontContentSizeCategoryXXXL;
         break;
     }
-    WebCore::setContentSizeCategory(ctCategory);
+    CyberCore::setContentSizeCategory(ctCategory);
     Page::updateStyleForAllPagesAfterGlobalChangeInEnvironment();
 #else
     UNUSED_PARAM(category);
@@ -6942,16 +6942,16 @@ String Internals::dumpStyleResolvers()
 
 ExceptionOr<void> Internals::setDocumentAutoplayPolicy(Document& document, Internals::AutoplayPolicy policy)
 {
-    static_assert(static_cast<uint8_t>(WebCore::AutoplayPolicy::Default) == static_cast<uint8_t>(Internals::AutoplayPolicy::Default), "Internals::Default != WebCore::Default");
-    static_assert(static_cast<uint8_t>(WebCore::AutoplayPolicy::Allow) == static_cast<uint8_t>(Internals::AutoplayPolicy::Allow), "Internals::Allow != WebCore::Allow");
-    static_assert(static_cast<uint8_t>(WebCore::AutoplayPolicy::AllowWithoutSound) == static_cast<uint8_t>(Internals::AutoplayPolicy::AllowWithoutSound), "Internals::AllowWithoutSound != WebCore::AllowWithoutSound");
-    static_assert(static_cast<uint8_t>(WebCore::AutoplayPolicy::Deny) == static_cast<uint8_t>(Internals::AutoplayPolicy::Deny), "Internals::Deny != WebCore::Deny");
+    static_assert(static_cast<uint8_t>(CyberCore::AutoplayPolicy::Default) == static_cast<uint8_t>(Internals::AutoplayPolicy::Default), "Internals::Default != CyberCore::Default");
+    static_assert(static_cast<uint8_t>(CyberCore::AutoplayPolicy::Allow) == static_cast<uint8_t>(Internals::AutoplayPolicy::Allow), "Internals::Allow != CyberCore::Allow");
+    static_assert(static_cast<uint8_t>(CyberCore::AutoplayPolicy::AllowWithoutSound) == static_cast<uint8_t>(Internals::AutoplayPolicy::AllowWithoutSound), "Internals::AllowWithoutSound != CyberCore::AllowWithoutSound");
+    static_assert(static_cast<uint8_t>(CyberCore::AutoplayPolicy::Deny) == static_cast<uint8_t>(Internals::AutoplayPolicy::Deny), "Internals::Deny != CyberCore::Deny");
 
     auto* loader = document.loader();
     if (!loader)
         return Exception { InvalidStateError };
 
-    loader->setAutoplayPolicy(static_cast<WebCore::AutoplayPolicy>(policy));
+    loader->setAutoplayPolicy(static_cast<CyberCore::AutoplayPolicy>(policy));
 
     return { };
 }
@@ -7068,4 +7068,4 @@ bool Internals::isVisuallyNonEmpty() const
     return frameView && frameView->isVisuallyNonEmpty();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

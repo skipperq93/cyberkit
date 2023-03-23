@@ -23,7 +23,7 @@
 
 #include "SVGParserUtilities.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 SVGPathStringSource::SVGPathStringSource(const String& string)
     : m_string(string)

@@ -30,7 +30,7 @@
 
 #if USE(GRAPHICS_LAYER_WC)
 
-namespace WebCore {
+namespace CyberCore {
 
 void TextureMapperSparseBackingStore::setSize(const IntSize& size)
 {
@@ -80,6 +80,6 @@ void TextureMapperSparseBackingStore::removeTile(const TileIndex& index)
     m_tiles.remove(index);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(GRAPHICS_LAYER_WC)

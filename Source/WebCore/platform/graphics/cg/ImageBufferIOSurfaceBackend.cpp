@@ -39,7 +39,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/StdLibExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(ImageBufferIOSurfaceBackend);
 
@@ -240,6 +240,6 @@ void ImageBufferIOSurfaceBackend::ensureNativeImagesHaveCopiedBackingStore()
     flushContext();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // HAVE(IOSURFACE)

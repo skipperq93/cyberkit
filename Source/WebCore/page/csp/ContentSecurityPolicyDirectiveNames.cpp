@@ -28,7 +28,7 @@
 
 #include <wtf/text/ASCIILiteral.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace ContentSecurityPolicyDirectiveNames {
 
@@ -63,4 +63,4 @@ ASCIILiteral workerSrc = "worker-src"_s;
 
 } // namespace ContentSecurityPolicyDirectiveNames
 
-} // namespace WebCore
+} // namespace CyberCore

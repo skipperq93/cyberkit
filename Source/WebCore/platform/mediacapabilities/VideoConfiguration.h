@@ -30,7 +30,7 @@
 #include "TransferFunction.h"
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct VideoConfiguration {
     String contentType;
@@ -135,4 +135,4 @@ std::optional<VideoConfiguration> VideoConfiguration::decode(Decoder& decoder)
     }};
 }
 
-} // namespace WebCore
+} // namespace CyberCore

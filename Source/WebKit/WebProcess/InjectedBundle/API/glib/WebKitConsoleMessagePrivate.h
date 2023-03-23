@@ -17,16 +17,16 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitConsoleMessagePrivate_h
-#define WebKitConsoleMessagePrivate_h
+#ifndef CyberKitConsoleMessagePrivate_h
+#define CyberKitConsoleMessagePrivate_h
 
-#include "WebKitConsoleMessage.h"
+#include "CyberKitConsoleMessage.h"
 #include <JavaScriptCore/ConsoleTypes.h>
 #include <wtf/text/CString.h>
 #include <wtf/text/WTFString.h>
 
-struct _WebKitConsoleMessage {
-    _WebKitConsoleMessage(JSC::MessageSource source, JSC::MessageLevel level, const String& message, unsigned lineNumber, const String& sourceID)
+struct _CyberKitConsoleMessage {
+    _CyberKitConsoleMessage(JSC::MessageSource source, JSC::MessageLevel level, const String& message, unsigned lineNumber, const String& sourceID)
         : source(source)
         , level(level)
         , message(message.utf8())
@@ -35,7 +35,7 @@ struct _WebKitConsoleMessage {
     {
     }
 
-    _WebKitConsoleMessage(WebKitConsoleMessage* consoleMessage)
+    _CyberKitConsoleMessage(CyberKitConsoleMessage* consoleMessage)
         : source(consoleMessage->source)
         , level(consoleMessage->level)
         , message(consoleMessage->message)
@@ -51,4 +51,4 @@ struct _WebKitConsoleMessage {
     CString sourceID;
 };
 
-#endif // WebKitConsoleMessagePrivate_h
+#endif // CyberKitConsoleMessagePrivate_h

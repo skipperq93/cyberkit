@@ -35,7 +35,7 @@
 #import "WebFrameInternal.h"
 #import "WebFrameView.h"
 #import "WebHTMLViewInternal.h"
-#import "WebKitVersionChecks.h"
+#import "CyberKitVersionChecks.h"
 #import "WebNSPasteboardExtras.h"
 #import "WebSharingServicePickerController.h"
 #import "WebUIDelegatePrivate.h"
@@ -60,7 +60,7 @@
 #import <pal/spi/mac/NSSharingServicePickerSPI.h>
 #import <wtf/URL.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 @interface NSApplication ()
 - (BOOL)isSpeaking;
@@ -164,7 +164,7 @@ void WebContextMenuClient::sharingServicePickerWillBeDestroyed(WebSharingService
     m_sharingServicePickerController = nil;
 }
 
-WebCore::FloatRect WebContextMenuClient::screenRectForCurrentSharingServicePickerItem(WebSharingServicePickerController &)
+CyberCore::FloatRect WebContextMenuClient::screenRectForCurrentSharingServicePickerItem(WebSharingServicePickerController &)
 {
     Page* page = [m_webView page];
     if (!page)
@@ -218,7 +218,7 @@ RetainPtr<NSImage> WebContextMenuClient::imageForCurrentSharingServicePickerItem
     if (!buffer)
         return nil;
 
-    auto* localFrame = dynamicDowncast<WebCore::LocalFrame>(frameView->frame());
+    auto* localFrame = dynamicDowncast<CyberCore::LocalFrame>(frameView->frame());
     if (!localFrame)
         return nil;
 

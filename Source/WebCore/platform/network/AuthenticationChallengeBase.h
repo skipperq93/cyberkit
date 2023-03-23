@@ -30,7 +30,7 @@
 #include "ResourceResponse.h"
 #include "ResourceError.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class AuthenticationChallenge;
 
@@ -48,7 +48,7 @@ public:
     WEBCORE_EXPORT bool isNull() const;
     WEBCORE_EXPORT void nullify();
     
-    WEBCORE_EXPORT static bool equalForWebKitLegacyChallengeComparison(const AuthenticationChallenge&, const AuthenticationChallenge&);
+    WEBCORE_EXPORT static bool equalForCyberKitLegacyChallengeComparison(const AuthenticationChallenge&, const AuthenticationChallenge&);
 
 protected:
     // The AuthenticationChallenge subclass may "shadow" this method to compare platform specific fields

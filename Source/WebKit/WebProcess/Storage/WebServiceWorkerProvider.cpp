@@ -39,9 +39,9 @@
 #include <CyberCore/ServiceWorkerJob.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace PAL;
-using namespace WebCore;
+using namespace CyberCore;
 
 WebServiceWorkerProvider& WebServiceWorkerProvider::singleton()
 {
@@ -53,12 +53,12 @@ WebServiceWorkerProvider::WebServiceWorkerProvider()
 {
 }
 
-WebCore::SWClientConnection& WebServiceWorkerProvider::serviceWorkerConnection()
+CyberCore::SWClientConnection& WebServiceWorkerProvider::serviceWorkerConnection()
 {
     return WebProcess::singleton().ensureNetworkProcessConnection().serviceWorkerConnection();
 }
 
-WebCore::SWClientConnection* WebServiceWorkerProvider::existingServiceWorkerConnection()
+CyberCore::SWClientConnection* WebServiceWorkerProvider::existingServiceWorkerConnection()
 {
     auto* networkProcessConnection = WebProcess::singleton().existingNetworkProcessConnection();
     if (!networkProcessConnection)
@@ -77,11 +77,11 @@ void WebServiceWorkerProvider::updateThrottleState(bool isThrottleable)
         connection.updateThrottleState();
 }
 
-void WebServiceWorkerProvider::terminateWorkerForTesting(WebCore::ServiceWorkerIdentifier identifier, CompletionHandler<void()>&& callback)
+void WebServiceWorkerProvider::terminateWorkerForTesting(CyberCore::ServiceWorkerIdentifier identifier, CompletionHandler<void()>&& callback)
 {
     WebProcess::singleton().ensureNetworkProcessConnection().serviceWorkerConnection().terminateWorkerForTesting(identifier, WTFMove(callback));
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(SERVICE_WORKER)

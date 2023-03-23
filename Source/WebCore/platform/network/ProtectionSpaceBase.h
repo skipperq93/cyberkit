@@ -28,7 +28,7 @@
 #include <wtf/EnumTraits.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ProtectionSpace;
   
@@ -101,37 +101,37 @@ private:
 inline bool operator==(const ProtectionSpace& a, const ProtectionSpace& b) { return ProtectionSpaceBase::compare(a, b); }
 inline bool operator!=(const ProtectionSpace& a, const ProtectionSpace& b) { return !(a == b); }
     
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::ProtectionSpaceBase::AuthenticationScheme> {
+template<> struct EnumTraits<CyberCore::ProtectionSpaceBase::AuthenticationScheme> {
     using values = EnumValues<
-        WebCore::ProtectionSpaceBase::AuthenticationScheme,
-        WebCore::ProtectionSpaceBase::AuthenticationScheme::Default,
-        WebCore::ProtectionSpaceBase::AuthenticationScheme::HTTPBasic,
-        WebCore::ProtectionSpaceBase::AuthenticationScheme::HTTPDigest,
-        WebCore::ProtectionSpaceBase::AuthenticationScheme::HTMLForm,
-        WebCore::ProtectionSpaceBase::AuthenticationScheme::NTLM,
-        WebCore::ProtectionSpaceBase::AuthenticationScheme::Negotiate,
-        WebCore::ProtectionSpaceBase::AuthenticationScheme::ClientCertificateRequested,
-        WebCore::ProtectionSpaceBase::AuthenticationScheme::ServerTrustEvaluationRequested,
-        WebCore::ProtectionSpaceBase::AuthenticationScheme::OAuth,
-        WebCore::ProtectionSpaceBase::AuthenticationScheme::Unknown
+        CyberCore::ProtectionSpaceBase::AuthenticationScheme,
+        CyberCore::ProtectionSpaceBase::AuthenticationScheme::Default,
+        CyberCore::ProtectionSpaceBase::AuthenticationScheme::HTTPBasic,
+        CyberCore::ProtectionSpaceBase::AuthenticationScheme::HTTPDigest,
+        CyberCore::ProtectionSpaceBase::AuthenticationScheme::HTMLForm,
+        CyberCore::ProtectionSpaceBase::AuthenticationScheme::NTLM,
+        CyberCore::ProtectionSpaceBase::AuthenticationScheme::Negotiate,
+        CyberCore::ProtectionSpaceBase::AuthenticationScheme::ClientCertificateRequested,
+        CyberCore::ProtectionSpaceBase::AuthenticationScheme::ServerTrustEvaluationRequested,
+        CyberCore::ProtectionSpaceBase::AuthenticationScheme::OAuth,
+        CyberCore::ProtectionSpaceBase::AuthenticationScheme::Unknown
     >;
 };
 
-template<> struct EnumTraits<WebCore::ProtectionSpaceBase::ServerType> {
+template<> struct EnumTraits<CyberCore::ProtectionSpaceBase::ServerType> {
     using values = EnumValues<
-        WebCore::ProtectionSpaceBase::ServerType,
-        WebCore::ProtectionSpaceBase::ServerType::HTTP,
-        WebCore::ProtectionSpaceBase::ServerType::HTTPS,
-        WebCore::ProtectionSpaceBase::ServerType::FTP,
-        WebCore::ProtectionSpaceBase::ServerType::FTPS,
-        WebCore::ProtectionSpaceBase::ServerType::ProxyHTTP,
-        WebCore::ProtectionSpaceBase::ServerType::ProxyHTTPS,
-        WebCore::ProtectionSpaceBase::ServerType::ProxyFTP,
-        WebCore::ProtectionSpaceBase::ServerType::ProxySOCKS
+        CyberCore::ProtectionSpaceBase::ServerType,
+        CyberCore::ProtectionSpaceBase::ServerType::HTTP,
+        CyberCore::ProtectionSpaceBase::ServerType::HTTPS,
+        CyberCore::ProtectionSpaceBase::ServerType::FTP,
+        CyberCore::ProtectionSpaceBase::ServerType::FTPS,
+        CyberCore::ProtectionSpaceBase::ServerType::ProxyHTTP,
+        CyberCore::ProtectionSpaceBase::ServerType::ProxyHTTPS,
+        CyberCore::ProtectionSpaceBase::ServerType::ProxyFTP,
+        CyberCore::ProtectionSpaceBase::ServerType::ProxySOCKS
     >;
 };
 

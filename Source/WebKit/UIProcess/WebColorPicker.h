@@ -30,7 +30,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 class Color;
 }
 
@@ -45,7 +45,7 @@ public:
         virtual ~Client() { }
 
     public:
-        virtual void didChooseColor(const WebCore::Color&) = 0;
+        virtual void didChooseColor(const CyberCore::Color&) = 0;
         virtual void didEndColorPicker() = 0;
     };
 
@@ -57,8 +57,8 @@ public:
     virtual ~WebColorPicker();
 
     virtual void endPicker();
-    virtual void setSelectedColor(const WebCore::Color&);
-    virtual void showColorPicker(const WebCore::Color&);
+    virtual void setSelectedColor(const CyberCore::Color&);
+    virtual void showColorPicker(const CyberCore::Color&);
 
 protected:
     explicit WebColorPicker(Client*);

@@ -27,7 +27,7 @@
 
 #include <wtf/MemoryPressureHandler.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class MaintainBackForwardCache : bool { No, Yes };
 enum class MaintainMemoryCache : bool { No, Yes };
@@ -46,4 +46,4 @@ void jettisonExpensiveObjectsOnTopLevelNavigation();
 WEBCORE_EXPORT void registerMemoryReleaseNotifyCallbacks();
 WEBCORE_EXPORT void logMemoryStatistics(LogMemoryStatisticsReason);
 
-} // namespace WebCore
+} // namespace CyberCore

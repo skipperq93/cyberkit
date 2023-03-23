@@ -31,7 +31,7 @@
 #include "MathOperator.h"
 #include "RenderMathMLRow.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class MathMLRootElement;
 
@@ -79,7 +79,7 @@ private:
     bool isRenderMathMLSquareRoot() const final { return rootType() == RootType::SquareRoot; }
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderMathMLRoot, isRenderMathMLRoot())
 

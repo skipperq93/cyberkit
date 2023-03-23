@@ -35,7 +35,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AsyncFileStream;
 class BlobData;
@@ -119,4 +119,4 @@ private:
     bool m_fileOpened { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 class ApplePayButtonPart;
 class ButtonPart;
@@ -82,4 +82,4 @@ protected:
     ControlFactory() = default;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

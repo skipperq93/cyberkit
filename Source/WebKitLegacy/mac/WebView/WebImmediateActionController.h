@@ -36,7 +36,7 @@
 @class NSDictionary;
 @class WebView;
 
-namespace WebCore {
+namespace CyberCore {
 class Frame;
 class Range;
 struct DictionaryPopupInfo;
@@ -46,7 +46,7 @@ struct DictionaryPopupInfo;
 @private
     WebView *_webView;
     WebImmediateActionType _type;
-    WebCore::HitTestResult _hitTestResult;
+    CyberCore::HitTestResult _hitTestResult;
     RetainPtr<NSImmediateActionGestureRecognizer> _immediateActionRecognizer;
 
     RetainPtr<QLPreviewMenuItem> _currentQLPreviewMenuItem;
@@ -64,7 +64,7 @@ struct DictionaryPopupInfo;
 
 - (NSImmediateActionGestureRecognizer *)immediateActionRecognizer;
 
-+ (WebCore::DictionaryPopupInfo)_dictionaryPopupInfoForRange:(const WebCore::SimpleRange&)range inFrame:(WebCore::Frame*)frame withLookupOptions:(NSDictionary *)lookupOptions indicatorOptions:(OptionSet<WebCore::TextIndicatorOption>)indicatorOptions transition:(WebCore::TextIndicatorPresentationTransition)presentationTransition;
++ (CyberCore::DictionaryPopupInfo)_dictionaryPopupInfoForRange:(const CyberCore::SimpleRange&)range inFrame:(CyberCore::Frame*)frame withLookupOptions:(NSDictionary *)lookupOptions indicatorOptions:(OptionSet<CyberCore::TextIndicatorOption>)indicatorOptions transition:(CyberCore::TextIndicatorPresentationTransition)presentationTransition;
 
 @end
 

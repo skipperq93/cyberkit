@@ -37,7 +37,7 @@
 #include <wtf/Ref.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class PerformanceServerTiming;
 class ResourceTiming;
@@ -81,4 +81,4 @@ protected:
     Vector<Ref<PerformanceServerTiming>> m_serverTiming;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

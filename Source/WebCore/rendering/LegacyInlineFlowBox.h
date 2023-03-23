@@ -24,7 +24,7 @@
 #include "RenderOverflow.h"
 #include "ShadowData.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HitTestRequest;
 class HitTestResult;
@@ -356,11 +356,11 @@ inline void LegacyInlineFlowBox::setHasBadChildList()
 
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_INLINE_BOX(LegacyInlineFlowBox, isInlineFlowBox())
 
 #if ENABLE(TREE_DEBUGGING)
-// Outside the WebCore namespace for ease of invocation from the debugger.
-void showTree(const WebCore::LegacyInlineFlowBox*);
+// Outside the CyberCore namespace for ease of invocation from the debugger.
+void showTree(const CyberCore::LegacyInlineFlowBox*);
 #endif

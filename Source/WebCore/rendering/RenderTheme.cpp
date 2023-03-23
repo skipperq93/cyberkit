@@ -94,7 +94,7 @@
 #include "Theme.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -2124,4 +2124,4 @@ Color RenderTheme::platformTapHighlightColor() const
 
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

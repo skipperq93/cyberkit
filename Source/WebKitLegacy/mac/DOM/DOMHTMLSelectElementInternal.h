@@ -25,8 +25,8 @@
 
 #import <CyberKitLegacy/DOMHTMLSelectElement.h>
 
-namespace WebCore {
+namespace CyberCore {
 class HTMLSelectElement;
 }
 
-WebCore::HTMLSelectElement* core(DOMHTMLSelectElement *);
+CyberCore::HTMLSelectElement* core(DOMHTMLSelectElement *);

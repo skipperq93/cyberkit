@@ -37,7 +37,7 @@ Ref<CacheStorageMemoryStore> CacheStorageMemoryStore::create()
 
 static CacheStorageRecord copyCacheStorageRecord(const CacheStorageRecord& record)
 {
-    return { record.info, record.requestHeadersGuard, record.request, record.options, record.referrer, record.responseHeadersGuard, record.responseData.isolatedCopy(), record.responseBodySize, WebCore::DOMCacheEngine::copyResponseBody(record.responseBody) };
+    return { record.info, record.requestHeadersGuard, record.request, record.options, record.referrer, record.responseHeadersGuard, record.responseData.isolatedCopy(), record.responseBodySize, CyberCore::DOMCacheEngine::copyResponseBody(record.responseBody) };
 }
 
 void CacheStorageMemoryStore::readAllRecordInfos(ReadAllRecordInfosCallback&& callback)

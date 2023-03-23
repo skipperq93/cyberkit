@@ -34,18 +34,18 @@ namespace WebKit {
 
 class MockAuthenticatorManager final : public AuthenticatorManager {
 public:
-    explicit MockAuthenticatorManager(WebCore::MockWebAuthenticationConfiguration&&);
+    explicit MockAuthenticatorManager(CyberCore::MockWebAuthenticationConfiguration&&);
 
     bool isMock() const final { return true; }
-    void setTestConfiguration(WebCore::MockWebAuthenticationConfiguration&& configuration) { m_testConfiguration = WTFMove(configuration); }
+    void setTestConfiguration(CyberCore::MockWebAuthenticationConfiguration&& configuration) { m_testConfiguration = WTFMove(configuration); }
 
 private:
-    UniqueRef<AuthenticatorTransportService> createService(WebCore::AuthenticatorTransport, AuthenticatorTransportService::Observer&) const final;
+    UniqueRef<AuthenticatorTransportService> createService(CyberCore::AuthenticatorTransport, AuthenticatorTransportService::Observer&) const final;
     void respondReceivedInternal(Respond&&) final;
     void filterTransports(TransportSet&) const;
     void runPresenterInternal(const TransportSet&) final { }
 
-    WebCore::MockWebAuthenticationConfiguration m_testConfiguration;
+    CyberCore::MockWebAuthenticationConfiguration m_testConfiguration;
 };
 
 } // namespace WebKit

@@ -24,19 +24,19 @@
 #include "WebPopupMenu.h"
 #include <CyberCore/SearchPopupMenu.h>
 
-namespace WebKit {
+namespace CyberKit {
 
-class WebSearchPopupMenu : public WebCore::SearchPopupMenu {
+class WebSearchPopupMenu : public CyberCore::SearchPopupMenu {
 public:
-    static Ref<WebSearchPopupMenu> create(WebPage*, WebCore::PopupMenuClient*);
+    static Ref<WebSearchPopupMenu> create(WebPage*, CyberCore::PopupMenuClient*);
 
-    WebCore::PopupMenu* popupMenu() override;
-    void saveRecentSearches(const WTF::AtomString& name, const Vector<WebCore::RecentSearch>&) override;
-    void loadRecentSearches(const WTF::AtomString& name, Vector<WebCore::RecentSearch>&) override;
+    CyberCore::PopupMenu* popupMenu() override;
+    void saveRecentSearches(const WTF::AtomString& name, const Vector<CyberCore::RecentSearch>&) override;
+    void loadRecentSearches(const WTF::AtomString& name, Vector<CyberCore::RecentSearch>&) override;
     bool enabled() override;
 
 private:
-    WebSearchPopupMenu(WebPage*, WebCore::PopupMenuClient*);
+    WebSearchPopupMenu(WebPage*, CyberCore::PopupMenuClient*);
 
     RefPtr<WebPopupMenu> m_popup;
 };

@@ -37,7 +37,7 @@
 #include "ThreadableLoaderClientWrapper.h"
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ContentSecurityPolicy;
 class DocumentThreadableLoader;
@@ -137,4 +137,4 @@ private:
     MainThreadBridge& m_bridge;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

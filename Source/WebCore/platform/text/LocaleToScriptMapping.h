@@ -33,7 +33,7 @@
 #include <unicode/uscript.h>
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 UScriptCode localeToScriptCodeForFontSelection(const String&);
 WEBCORE_EXPORT UScriptCode scriptNameToCode(StringView);

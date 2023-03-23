@@ -28,7 +28,7 @@
 
 #if USE(LIBWEBRTC) && USE(GSTREAMER)
 
-namespace WebCore {
+namespace CyberCore {
 
 UniqueRef<WebRTCProvider> WebRTCProvider::create()
 {
@@ -50,6 +50,6 @@ std::unique_ptr<webrtc::VideoEncoderFactory> LibWebRTCProviderGStreamer::createE
     return makeUnique<GStreamerVideoEncoderFactory>(isSupportingVP9Profile0(), isSupportingVP9Profile2());
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(LIBWEBRTC) && USE(GSTREAMER)

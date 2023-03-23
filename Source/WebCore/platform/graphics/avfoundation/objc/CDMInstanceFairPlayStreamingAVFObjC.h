@@ -40,7 +40,7 @@ OBJC_CLASS AVContentKeySession;
 OBJC_CLASS NSData;
 OBJC_CLASS NSError;
 OBJC_CLASS NSURL;
-OBJC_CLASS WebCoreFPSContentKeySessionDelegate;
+OBJC_CLASS CyberCoreFPSContentKeySessionDelegate;
 
 #if !RELEASE_LOG_DISABLED
 namespace WTF {
@@ -48,7 +48,7 @@ class Logger;
 }
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class CDMInstanceSessionFairPlayStreamingAVFObjC;
 class CDMPrivateFairPlayStreaming;
@@ -135,7 +135,7 @@ private:
 
     WeakPtr<CDMInstanceClient> m_client;
     RetainPtr<AVContentKeySession> m_session;
-    RetainPtr<WebCoreFPSContentKeySessionDelegate> m_delegate;
+    RetainPtr<CyberCoreFPSContentKeySessionDelegate> m_delegate;
     RefPtr<SharedBuffer> m_serverCertificate;
     bool m_persistentStateAllowed { true };
     RetainPtr<NSURL> m_storageURL;
@@ -216,7 +216,7 @@ private:
     RetainPtr<AVContentKeyReportGroup> m_group;
     RetainPtr<AVContentKeySession> m_session;
     std::optional<Request> m_currentRequest;
-    RetainPtr<WebCoreFPSContentKeySessionDelegate> m_delegate;
+    RetainPtr<CyberCoreFPSContentKeySessionDelegate> m_delegate;
     Vector<RetainPtr<NSData>> m_expiredSessions;
     WeakPtr<CDMInstanceSessionClient> m_client;
     String m_sessionId;
@@ -242,6 +242,6 @@ private:
 
 }
 
-SPECIALIZE_TYPE_TRAITS_CDM_INSTANCE(WebCore::CDMInstanceFairPlayStreamingAVFObjC, WebCore::CDMInstance::ImplementationType::FairPlayStreaming)
+SPECIALIZE_TYPE_TRAITS_CDM_INSTANCE(CyberCore::CDMInstanceFairPlayStreamingAVFObjC, CyberCore::CDMInstance::ImplementationType::FairPlayStreaming)
 
 #endif // ENABLE(ENCRYPTED_MEDIA) && HAVE(AVCONTENTKEYSESSION)

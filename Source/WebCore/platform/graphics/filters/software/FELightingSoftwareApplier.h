@@ -33,7 +33,7 @@
 #include "FilterImageVector.h"
 #include "LightSource.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class FELighting;
 
@@ -136,4 +136,4 @@ private:
     static void applyPlatform(const LightingData&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -38,7 +38,7 @@
 #include "RenderMathMLToken.h"
 #include "RenderMathMLUnderOver.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace MathMLNames;
 

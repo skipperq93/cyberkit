@@ -57,7 +57,7 @@
 #import <wtf/NakedPtr.h>
 #import <wtf/text/Base64.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 using namespace Inspector;
 
 static const CGFloat minimumWindowWidth = 500;
@@ -325,7 +325,7 @@ void WebInspectorFrontendClient::setAttachedWindowHeight(unsigned height)
 
 void WebInspectorFrontendClient::setAttachedWindowWidth(unsigned)
 {
-    // Dock to right is not implemented in WebKit 1.
+    // Dock to right is not implemented in CyberKit 1.
 }
 
 void WebInspectorFrontendClient::setSheetRect(const FloatRect& rect)

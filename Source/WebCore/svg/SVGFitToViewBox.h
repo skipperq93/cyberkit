@@ -28,7 +28,7 @@
 #include "SVGPreserveAspectRatio.h"
 #include "SVGPropertyOwnerRegistry.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class AffineTransform;
 
@@ -76,4 +76,4 @@ private:
     bool m_isViewBoxValid { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -963,7 +963,7 @@ static void testWebViewSave(SaveWebViewTest* test, gconstpointer)
     g_assert_cmpint(g_file_info_get_size(fileInfo.get()), ==, totalBytesFromStream);
 }
 
-// To test page visibility API. Currently only 'visible', 'hidden' and 'prerender' states are implemented fully in WebCore.
+// To test page visibility API. Currently only 'visible', 'hidden' and 'prerender' states are implemented fully in CyberCore.
 // See also http://www.w3.org/TR/2011/WD-page-visibility-20110602/ and https://developers.google.com/chrome/whitepapers/pagevisibility
 static void testWebViewPageVisibility(WebViewTest* test, gconstpointer)
 {

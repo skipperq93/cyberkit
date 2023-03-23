@@ -20,7 +20,7 @@
 # OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-headers: "FocusedElementInformation.h" "WebCoreArgumentCoders.h"
+headers: "FocusedElementInformation.h" "CyberCoreArgumentCoders.h"
 
 #if PLATFORM(IOS_FAMILY)
 [CustomHeader=True] struct WebKit::OptionItem {
@@ -32,17 +32,17 @@ headers: "FocusedElementInformation.h" "WebCoreArgumentCoders.h"
 }
 
 [CustomHeader=True] struct WebKit::FocusedElementInformation {
-    WebCore::IntRect interactionRect;
-    WebCore::ElementContext elementContext;
-    WebCore::IntPoint lastInteractionLocation;
+    CyberCore::IntRect interactionRect;
+    CyberCore::ElementContext elementContext;
+    CyberCore::IntPoint lastInteractionLocation;
     double minimumScaleFactor;
     double maximumScaleFactor;
     double maximumScaleFactorIgnoringAlwaysScalable;
     double nodeFontSize;
     bool hasNextNode;
-    WebCore::IntRect nextNodeRect;
+    CyberCore::IntRect nextNodeRect;
     bool hasPreviousNode;
-    WebCore::IntRect previousNodeRect;
+    CyberCore::IntRect previousNodeRect;
     bool isAutocorrect;
     bool isRTL;
     bool isMultiSelect;
@@ -50,10 +50,10 @@ headers: "FocusedElementInformation.h" "WebCoreArgumentCoders.h"
     bool allowsUserScaling;
     bool allowsUserScalingIgnoringAlwaysScalable;
     bool insideFixedPosition;
-    WebCore::AutocapitalizeType autocapitalizeType;
+    CyberCore::AutocapitalizeType autocapitalizeType;
     WebKit::InputType elementType;
-    WebCore::InputMode inputMode;
-    WebCore::EnterKeyHint enterKeyHint;
+    CyberCore::InputMode inputMode;
+    CyberCore::EnterKeyHint enterKeyHint;
     String formAction;
     Vector<WebKit::OptionItem> selectOptions;
     int selectedIndex;
@@ -63,8 +63,8 @@ headers: "FocusedElementInformation.h" "WebCoreArgumentCoders.h"
     bool acceptsAutofilledLoginCredentials;
     bool isAutofillableUsernameField;
     URL representingPageURL;
-    WebCore::AutofillFieldName autofillFieldName;
-    WebCore::NonAutofillCredentialType nonAutofillCredentialType;
+    CyberCore::AutofillFieldName autofillFieldName;
+    CyberCore::NonAutofillCredentialType nonAutofillCredentialType;
     String placeholder;
     String label;
     String ariaLabel;
@@ -72,8 +72,8 @@ headers: "FocusedElementInformation.h" "WebCoreArgumentCoders.h"
     bool hasSuggestions;
     bool isFocusingWithDataListDropdown;
 #if ENABLE(INPUT_TYPE_COLOR)
-    WebCore::Color colorValue;
-    Vector<WebCore::Color> suggestedColors;
+    CyberCore::Color colorValue;
+    Vector<CyberCore::Color> suggestedColors;
 #endif
 #endif
     bool shouldSynthesizeKeyEventsForEditing;
@@ -85,7 +85,7 @@ headers: "FocusedElementInformation.h" "WebCoreArgumentCoders.h"
     bool preventScroll;
 
     WebKit::FocusedElementInformationIdentifier identifier;
-    WebCore::ScrollingNodeID containerScrollingNodeID;
-    WebCore::FrameIdentifier frameID;
+    CyberCore::ScrollingNodeID containerScrollingNodeID;
+    CyberCore::FrameIdentifier frameID;
 }
 #endif

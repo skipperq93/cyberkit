@@ -1147,8 +1147,8 @@ msgid "Enable Timeline profiling"
 msgstr "Activează analiza Timeline"
 
 #: ../../../WebKit/gtk/webkit/webkitwebinspector.cpp:321
-msgid "Profile the WebCore instrumentation."
-msgstr "Analizați instrumentația WebCore."
+msgid "Profile the CyberCore instrumentation."
+msgstr "Analizați instrumentația CyberCore."
 
 #: ../../../WebKit/gtk/webkit/webkitwebnavigationaction.cpp:148
 msgid "Reason"

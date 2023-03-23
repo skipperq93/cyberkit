@@ -38,7 +38,7 @@ namespace JSC {
 class JSGlobalObject;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMPromise;
 class FetchRequest;
@@ -116,6 +116,6 @@ inline void FetchEvent::setNavigationPreloadIdentifier(FetchIdentifier identifie
     m_navigationPreloadIdentifier = identifier;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

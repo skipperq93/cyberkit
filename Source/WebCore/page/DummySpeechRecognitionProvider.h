@@ -28,7 +28,7 @@
 
 #include "SpeechRecognitionProvider.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class DummySpeechRecognitionProvider final : public SpeechRecognitionProvider {
 public:
@@ -56,4 +56,4 @@ private:
     RefPtr<DummySpeechRecognitionConnection> m_connection;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

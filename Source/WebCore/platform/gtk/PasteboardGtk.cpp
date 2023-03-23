@@ -31,7 +31,7 @@
 #include <wtf/NeverDestroyed.h>
 #include <wtf/URL.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum ClipboardDataType {
     ClipboardDataTypeText,

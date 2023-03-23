@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -21,28 +21,28 @@
 #error "Only <webkitdom/webkitdom.h> can be included directly."
 #endif
 
-#ifndef WebKitDOMAttr_h
-#define WebKitDOMAttr_h
+#ifndef CyberKitDOMAttr_h
+#define CyberKitDOMAttr_h
 
 #include <glib-object.h>
-#include <webkitdom/WebKitDOMNode.h>
+#include <webkitdom/CyberKitDOMNode.h>
 #include <webkitdom/webkitdomdefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_DOM_TYPE_ATTR            (webkit_dom_attr_get_type())
-#define WEBKIT_DOM_ATTR(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_ATTR, WebKitDOMAttr))
-#define WEBKIT_DOM_ATTR_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_ATTR, WebKitDOMAttrClass)
+#define WEBKIT_DOM_ATTR(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_ATTR, CyberKitDOMAttr))
+#define WEBKIT_DOM_ATTR_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_ATTR, CyberKitDOMAttrClass)
 #define WEBKIT_DOM_IS_ATTR(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_DOM_TYPE_ATTR))
 #define WEBKIT_DOM_IS_ATTR_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_DOM_TYPE_ATTR))
-#define WEBKIT_DOM_ATTR_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_ATTR, WebKitDOMAttrClass))
+#define WEBKIT_DOM_ATTR_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_ATTR, CyberKitDOMAttrClass))
 
-struct _WebKitDOMAttr {
-    WebKitDOMNode parent_instance;
+struct _CyberKitDOMAttr {
+    CyberKitDOMNode parent_instance;
 };
 
-struct _WebKitDOMAttrClass {
-    WebKitDOMNodeClass parent_class;
+struct _CyberKitDOMAttrClass {
+    CyberKitDOMNodeClass parent_class;
 };
 
 WEBKIT_DEPRECATED GType
@@ -50,40 +50,40 @@ webkit_dom_attr_get_type(void);
 
 /**
  * webkit_dom_attr_get_name:
- * @self: A #WebKitDOMAttr
+ * @self: A #CyberKitDOMAttr
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_attr_get_name(WebKitDOMAttr* self);
+webkit_dom_attr_get_name(CyberKitDOMAttr* self);
 
 /**
  * webkit_dom_attr_get_specified:
- * @self: A #WebKitDOMAttr
+ * @self: A #CyberKitDOMAttr
  *
  * Returns: A #gboolean
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
-webkit_dom_attr_get_specified(WebKitDOMAttr* self);
+webkit_dom_attr_get_specified(CyberKitDOMAttr* self);
 
 /**
  * webkit_dom_attr_get_value:
- * @self: A #WebKitDOMAttr
+ * @self: A #CyberKitDOMAttr
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_attr_get_value(WebKitDOMAttr* self);
+webkit_dom_attr_get_value(CyberKitDOMAttr* self);
 
 /**
  * webkit_dom_attr_set_value:
- * @self: A #WebKitDOMAttr
+ * @self: A #CyberKitDOMAttr
  * @value: A #gchar
  * @error: #GError
  *
@@ -91,22 +91,22 @@ webkit_dom_attr_get_value(WebKitDOMAttr* self);
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_attr_set_value(WebKitDOMAttr* self, const gchar* value, GError** error);
+webkit_dom_attr_set_value(CyberKitDOMAttr* self, const gchar* value, GError** error);
 
 /**
  * webkit_dom_attr_get_owner_element:
- * @self: A #WebKitDOMAttr
+ * @self: A #CyberKitDOMAttr
  *
- * Returns: (transfer none): A #WebKitDOMElement
+ * Returns: (transfer none): A #CyberKitDOMElement
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMElement*
-webkit_dom_attr_get_owner_element(WebKitDOMAttr* self);
+WEBKIT_DEPRECATED CyberKitDOMElement*
+webkit_dom_attr_get_owner_element(CyberKitDOMAttr* self);
 
 /**
  * webkit_dom_attr_get_namespace_uri:
- * @self: A #WebKitDOMAttr
+ * @self: A #CyberKitDOMAttr
  *
  * Returns: A #gchar
  *
@@ -115,11 +115,11 @@ webkit_dom_attr_get_owner_element(WebKitDOMAttr* self);
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_attr_get_namespace_uri(WebKitDOMAttr* self);
+webkit_dom_attr_get_namespace_uri(CyberKitDOMAttr* self);
 
 /**
  * webkit_dom_attr_get_prefix:
- * @self: A #WebKitDOMAttr
+ * @self: A #CyberKitDOMAttr
  *
  * Returns: A #gchar
  *
@@ -128,11 +128,11 @@ webkit_dom_attr_get_namespace_uri(WebKitDOMAttr* self);
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_attr_get_prefix(WebKitDOMAttr* self);
+webkit_dom_attr_get_prefix(CyberKitDOMAttr* self);
 
 /**
  * webkit_dom_attr_get_local_name:
- * @self: A #WebKitDOMAttr
+ * @self: A #CyberKitDOMAttr
  *
  * Returns: A #gchar
  *
@@ -141,8 +141,8 @@ webkit_dom_attr_get_prefix(WebKitDOMAttr* self);
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_attr_get_local_name(WebKitDOMAttr* self);
+webkit_dom_attr_get_local_name(CyberKitDOMAttr* self);
 
 G_END_DECLS
 
-#endif /* WebKitDOMAttr_h */
+#endif /* CyberKitDOMAttr_h */

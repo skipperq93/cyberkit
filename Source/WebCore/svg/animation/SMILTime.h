@@ -29,7 +29,7 @@
 #include <cmath>
 #include <wtf/Seconds.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SMILTime {
 public:
@@ -95,4 +95,4 @@ SMILTime operator-(const SMILTime&, const SMILTime&);
 // So multiplying times does not make too much sense but SMIL defines it for duration * repeatCount
 SMILTime operator*(const SMILTime&, const SMILTime&);
 
-} // namespace WebCore
+} // namespace CyberCore

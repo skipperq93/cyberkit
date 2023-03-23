@@ -28,7 +28,7 @@
 
 #if ENABLE(VIDEO) && ENABLE(DATACUE_VALUE)
 
-namespace WebCore {
+namespace CyberCore {
 
 #if !PLATFORM(COCOA)
 Ref<SerializedPlatformDataCue> SerializedPlatformDataCue::create(SerializedPlatformDataCueValue&&)
@@ -37,6 +37,6 @@ Ref<SerializedPlatformDataCue> SerializedPlatformDataCue::create(SerializedPlatf
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

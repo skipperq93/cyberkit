@@ -33,7 +33,7 @@
 #import <wtf/SoftLinking.h>
 #import <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 ComplexTextController::ComplexTextRun::ComplexTextRun(CTRunRef ctRun, const Font& font, const UChar* characters, unsigned stringLocation, unsigned stringLength, unsigned indexBegin, unsigned indexEnd)
     : m_initialAdvance(CTRunGetInitialAdvance(ctRun))
@@ -263,4 +263,4 @@ void ComplexTextController::collectComplexTextRunsForCharacters(const UChar* cp,
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore

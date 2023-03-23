@@ -201,22 +201,22 @@ inline String toWTFString(WKURLRef urlRef)
     return toImpl(urlRef)->string();
 }
 
-inline ProxyingRefPtr<API::Error> toAPI(const WebCore::ResourceError& error)
+inline ProxyingRefPtr<API::Error> toAPI(const CyberCore::ResourceError& error)
 {
     return ProxyingRefPtr<API::Error>(API::Error::create(error));
 }
 
-inline ProxyingRefPtr<API::URLRequest> toAPI(const WebCore::ResourceRequest& request)
+inline ProxyingRefPtr<API::URLRequest> toAPI(const CyberCore::ResourceRequest& request)
 {
     return ProxyingRefPtr<API::URLRequest>(API::URLRequest::create(request));
 }
 
-inline ProxyingRefPtr<API::URLResponse> toAPI(const WebCore::ResourceResponse& response)
+inline ProxyingRefPtr<API::URLResponse> toAPI(const CyberCore::ResourceResponse& response)
 {
     return ProxyingRefPtr<API::URLResponse>(API::URLResponse::create(response));
 }
 
-inline WKSecurityOriginRef toCopiedAPI(WebCore::SecurityOrigin* origin)
+inline WKSecurityOriginRef toCopiedAPI(CyberCore::SecurityOrigin* origin)
 {
     if (!origin)
         return nullptr;
@@ -225,29 +225,29 @@ inline WKSecurityOriginRef toCopiedAPI(WebCore::SecurityOrigin* origin)
 
 /* Geometry conversions */
 
-inline WebCore::FloatRect toFloatRect(const WKRect& wkRect)
+inline CyberCore::FloatRect toFloatRect(const WKRect& wkRect)
 {
-    return WebCore::FloatRect(static_cast<float>(wkRect.origin.x), static_cast<float>(wkRect.origin.y),
+    return CyberCore::FloatRect(static_cast<float>(wkRect.origin.x), static_cast<float>(wkRect.origin.y),
                               static_cast<float>(wkRect.size.width), static_cast<float>(wkRect.size.height));
 }
 
-inline WebCore::IntSize toIntSize(const WKSize& wkSize)
+inline CyberCore::IntSize toIntSize(const WKSize& wkSize)
 {
-    return WebCore::IntSize(static_cast<int>(wkSize.width), static_cast<int>(wkSize.height));
+    return CyberCore::IntSize(static_cast<int>(wkSize.width), static_cast<int>(wkSize.height));
 }
 
-inline WebCore::IntPoint toIntPoint(const WKPoint& wkPoint)
+inline CyberCore::IntPoint toIntPoint(const WKPoint& wkPoint)
 {
-    return WebCore::IntPoint(static_cast<int>(wkPoint.x), static_cast<int>(wkPoint.y));
+    return CyberCore::IntPoint(static_cast<int>(wkPoint.x), static_cast<int>(wkPoint.y));
 }
 
-inline WebCore::IntRect toIntRect(const WKRect& wkRect)
+inline CyberCore::IntRect toIntRect(const WKRect& wkRect)
 {
-    return WebCore::IntRect(static_cast<int>(wkRect.origin.x), static_cast<int>(wkRect.origin.y),
+    return CyberCore::IntRect(static_cast<int>(wkRect.origin.x), static_cast<int>(wkRect.origin.y),
                             static_cast<int>(wkRect.size.width), static_cast<int>(wkRect.size.height));
 }
 
-inline WKRect toAPI(const WebCore::FloatRect& rect)
+inline WKRect toAPI(const CyberCore::FloatRect& rect)
 {
     WKRect wkRect;
     wkRect.origin.x = rect.x();
@@ -257,7 +257,7 @@ inline WKRect toAPI(const WebCore::FloatRect& rect)
     return wkRect;
 }
 
-inline WKRect toAPI(const WebCore::IntRect& rect)
+inline WKRect toAPI(const CyberCore::IntRect& rect)
 {
     WKRect wkRect;
     wkRect.origin.x = rect.x();
@@ -267,7 +267,7 @@ inline WKRect toAPI(const WebCore::IntRect& rect)
     return wkRect;
 }
 
-inline WKSize toAPI(const WebCore::IntSize& size)
+inline WKSize toAPI(const CyberCore::IntSize& size)
 {
     WKSize wkSize;
     wkSize.width = size.width();
@@ -275,7 +275,7 @@ inline WKSize toAPI(const WebCore::IntSize& size)
     return wkSize;
 }
 
-inline WKPoint toAPI(const WebCore::IntPoint& point)
+inline WKPoint toAPI(const CyberCore::IntPoint& point)
 {
     WKPoint wkPoint;
     wkPoint.x = point.x();
@@ -344,21 +344,21 @@ inline WKEventMouseButton toAPI(WebMouseEventButton mouseButton)
     return wkMouseButton;
 }
 
-inline WKEventMouseButton toAPI(WebCore::MouseButton mouseButton)
+inline WKEventMouseButton toAPI(CyberCore::MouseButton mouseButton)
 {
     WKEventMouseButton wkMouseButton = kWKEventMouseButtonNoButton;
 
     switch (mouseButton) {
-    case WebCore::MouseButton::NoButton:
+    case CyberCore::MouseButton::NoButton:
         wkMouseButton = kWKEventMouseButtonNoButton;
         break;
-    case WebCore::MouseButton::LeftButton:
+    case CyberCore::MouseButton::LeftButton:
         wkMouseButton = kWKEventMouseButtonLeftButton;
         break;
-    case WebCore::MouseButton::MiddleButton:
+    case CyberCore::MouseButton::MiddleButton:
         wkMouseButton = kWKEventMouseButtonMiddleButton;
         break;
-    case WebCore::MouseButton::RightButton:
+    case CyberCore::MouseButton::RightButton:
         wkMouseButton = kWKEventMouseButtonRightButton;
         break;
     }
@@ -366,445 +366,445 @@ inline WKEventMouseButton toAPI(WebCore::MouseButton mouseButton)
     return wkMouseButton;
 }
 
-inline WKContextMenuItemTag toAPI(WebCore::ContextMenuAction action)
+inline WKContextMenuItemTag toAPI(CyberCore::ContextMenuAction action)
 {
     switch (action) {
-    case WebCore::ContextMenuItemTagNoAction:
+    case CyberCore::ContextMenuItemTagNoAction:
         return kWKContextMenuItemTagNoAction;
-    case WebCore::ContextMenuItemTagOpenLinkInNewWindow:
+    case CyberCore::ContextMenuItemTagOpenLinkInNewWindow:
         return kWKContextMenuItemTagOpenLinkInNewWindow;
-    case WebCore::ContextMenuItemTagDownloadLinkToDisk:
+    case CyberCore::ContextMenuItemTagDownloadLinkToDisk:
         return kWKContextMenuItemTagDownloadLinkToDisk;
-    case WebCore::ContextMenuItemTagCopyLinkToClipboard:
+    case CyberCore::ContextMenuItemTagCopyLinkToClipboard:
         return kWKContextMenuItemTagCopyLinkToClipboard;
-    case WebCore::ContextMenuItemTagOpenImageInNewWindow:
+    case CyberCore::ContextMenuItemTagOpenImageInNewWindow:
         return kWKContextMenuItemTagOpenImageInNewWindow;
-    case WebCore::ContextMenuItemTagDownloadImageToDisk:
+    case CyberCore::ContextMenuItemTagDownloadImageToDisk:
         return kWKContextMenuItemTagDownloadImageToDisk;
-    case WebCore::ContextMenuItemTagCopyImageToClipboard:
+    case CyberCore::ContextMenuItemTagCopyImageToClipboard:
         return kWKContextMenuItemTagCopyImageToClipboard;
 #if ENABLE(ACCESSIBILITY_ANIMATION_CONTROL)
-    case WebCore::ContextMenuItemTagPlayAllAnimations:
+    case CyberCore::ContextMenuItemTagPlayAllAnimations:
         return kWKContextMenuItemTagPlayAllAnimations;
-    case WebCore::ContextMenuItemTagPauseAllAnimations:
+    case CyberCore::ContextMenuItemTagPauseAllAnimations:
         return kWKContextMenuItemTagPauseAllAnimations;
-    case WebCore::ContextMenuItemTagPlayAnimation:
+    case CyberCore::ContextMenuItemTagPlayAnimation:
         return kWKContextMenuItemTagPlayAnimation;
-    case WebCore::ContextMenuItemTagPauseAnimation:
+    case CyberCore::ContextMenuItemTagPauseAnimation:
         return kWKContextMenuItemTagPauseAnimation;
 #endif // ENABLE(ACCESSIBILITY_ANIMATION_CONTROL)
 #if PLATFORM(GTK)
-    case WebCore::ContextMenuItemTagCopyImageUrlToClipboard:
+    case CyberCore::ContextMenuItemTagCopyImageUrlToClipboard:
         return kWKContextMenuItemTagCopyImageUrlToClipboard;
 #endif
-    case WebCore::ContextMenuItemTagOpenFrameInNewWindow:
+    case CyberCore::ContextMenuItemTagOpenFrameInNewWindow:
         return kWKContextMenuItemTagOpenFrameInNewWindow;
-    case WebCore::ContextMenuItemTagCopy:
+    case CyberCore::ContextMenuItemTagCopy:
         return kWKContextMenuItemTagCopy;
-    case WebCore::ContextMenuItemTagGoBack:
+    case CyberCore::ContextMenuItemTagGoBack:
         return kWKContextMenuItemTagGoBack;
-    case WebCore::ContextMenuItemTagGoForward:
+    case CyberCore::ContextMenuItemTagGoForward:
         return kWKContextMenuItemTagGoForward;
-    case WebCore::ContextMenuItemTagStop:
+    case CyberCore::ContextMenuItemTagStop:
         return kWKContextMenuItemTagStop;
-    case WebCore::ContextMenuItemTagReload:
+    case CyberCore::ContextMenuItemTagReload:
         return kWKContextMenuItemTagReload;
-    case WebCore::ContextMenuItemTagCut:
+    case CyberCore::ContextMenuItemTagCut:
         return kWKContextMenuItemTagCut;
-    case WebCore::ContextMenuItemTagPaste:
+    case CyberCore::ContextMenuItemTagPaste:
         return kWKContextMenuItemTagPaste;
 #if PLATFORM(GTK)
-    case WebCore::ContextMenuItemTagSelectAll:
+    case CyberCore::ContextMenuItemTagSelectAll:
         return kWKContextMenuItemTagSelectAll;
 #endif
-    case WebCore::ContextMenuItemTagSpellingGuess:
+    case CyberCore::ContextMenuItemTagSpellingGuess:
         return kWKContextMenuItemTagSpellingGuess;
-    case WebCore::ContextMenuItemTagNoGuessesFound:
+    case CyberCore::ContextMenuItemTagNoGuessesFound:
         return kWKContextMenuItemTagNoGuessesFound;
-    case WebCore::ContextMenuItemTagIgnoreSpelling:
+    case CyberCore::ContextMenuItemTagIgnoreSpelling:
         return kWKContextMenuItemTagIgnoreSpelling;
-    case WebCore::ContextMenuItemTagLearnSpelling:
+    case CyberCore::ContextMenuItemTagLearnSpelling:
         return kWKContextMenuItemTagLearnSpelling;
-    case WebCore::ContextMenuItemTagOther:
+    case CyberCore::ContextMenuItemTagOther:
         return kWKContextMenuItemTagOther;
-    case WebCore::ContextMenuItemTagSearchInSpotlight:
+    case CyberCore::ContextMenuItemTagSearchInSpotlight:
         return kWKContextMenuItemTagSearchInSpotlight;
-    case WebCore::ContextMenuItemTagSearchWeb:
+    case CyberCore::ContextMenuItemTagSearchWeb:
         return kWKContextMenuItemTagSearchWeb;
-    case WebCore::ContextMenuItemTagLookUpInDictionary:
+    case CyberCore::ContextMenuItemTagLookUpInDictionary:
         return kWKContextMenuItemTagLookUpInDictionary;
-    case WebCore::ContextMenuItemTagOpenWithDefaultApplication:
+    case CyberCore::ContextMenuItemTagOpenWithDefaultApplication:
         return kWKContextMenuItemTagOpenWithDefaultApplication;
-    case WebCore::ContextMenuItemPDFActualSize:
+    case CyberCore::ContextMenuItemPDFActualSize:
         return kWKContextMenuItemTagPDFActualSize;
-    case WebCore::ContextMenuItemPDFZoomIn:
+    case CyberCore::ContextMenuItemPDFZoomIn:
         return kWKContextMenuItemTagPDFZoomIn;
-    case WebCore::ContextMenuItemPDFZoomOut:
+    case CyberCore::ContextMenuItemPDFZoomOut:
         return kWKContextMenuItemTagPDFZoomOut;
-    case WebCore::ContextMenuItemPDFAutoSize:
+    case CyberCore::ContextMenuItemPDFAutoSize:
         return kWKContextMenuItemTagPDFAutoSize;
-    case WebCore::ContextMenuItemPDFSinglePage:
+    case CyberCore::ContextMenuItemPDFSinglePage:
         return kWKContextMenuItemTagPDFSinglePage;
-    case WebCore::ContextMenuItemPDFFacingPages:
+    case CyberCore::ContextMenuItemPDFFacingPages:
         return kWKContextMenuItemTagPDFFacingPages;
-    case WebCore::ContextMenuItemPDFContinuous:
+    case CyberCore::ContextMenuItemPDFContinuous:
         return kWKContextMenuItemTagPDFContinuous;
-    case WebCore::ContextMenuItemPDFNextPage:
+    case CyberCore::ContextMenuItemPDFNextPage:
         return kWKContextMenuItemTagPDFNextPage;
-    case WebCore::ContextMenuItemPDFPreviousPage:
+    case CyberCore::ContextMenuItemPDFPreviousPage:
         return kWKContextMenuItemTagPDFPreviousPage;
-    case WebCore::ContextMenuItemTagOpenLink:
+    case CyberCore::ContextMenuItemTagOpenLink:
         return kWKContextMenuItemTagOpenLink;
-    case WebCore::ContextMenuItemTagIgnoreGrammar:
+    case CyberCore::ContextMenuItemTagIgnoreGrammar:
         return kWKContextMenuItemTagIgnoreGrammar;
-    case WebCore::ContextMenuItemTagSpellingMenu:
+    case CyberCore::ContextMenuItemTagSpellingMenu:
         return kWKContextMenuItemTagSpellingMenu;
-    case WebCore::ContextMenuItemTagShowSpellingPanel:
+    case CyberCore::ContextMenuItemTagShowSpellingPanel:
         return kWKContextMenuItemTagShowSpellingPanel;
-    case WebCore::ContextMenuItemTagCheckSpelling:
+    case CyberCore::ContextMenuItemTagCheckSpelling:
         return kWKContextMenuItemTagCheckSpelling;
-    case WebCore::ContextMenuItemTagCheckSpellingWhileTyping:
+    case CyberCore::ContextMenuItemTagCheckSpellingWhileTyping:
         return kWKContextMenuItemTagCheckSpellingWhileTyping;
-    case WebCore::ContextMenuItemTagCheckGrammarWithSpelling:
+    case CyberCore::ContextMenuItemTagCheckGrammarWithSpelling:
         return kWKContextMenuItemTagCheckGrammarWithSpelling;
-    case WebCore::ContextMenuItemTagFontMenu:
+    case CyberCore::ContextMenuItemTagFontMenu:
         return kWKContextMenuItemTagFontMenu;
-    case WebCore::ContextMenuItemTagShowFonts:
+    case CyberCore::ContextMenuItemTagShowFonts:
         return kWKContextMenuItemTagShowFonts;
-    case WebCore::ContextMenuItemTagBold:
+    case CyberCore::ContextMenuItemTagBold:
         return kWKContextMenuItemTagBold;
-    case WebCore::ContextMenuItemTagItalic:
+    case CyberCore::ContextMenuItemTagItalic:
         return kWKContextMenuItemTagItalic;
-    case WebCore::ContextMenuItemTagUnderline:
+    case CyberCore::ContextMenuItemTagUnderline:
         return kWKContextMenuItemTagUnderline;
-    case WebCore::ContextMenuItemTagOutline:
+    case CyberCore::ContextMenuItemTagOutline:
         return kWKContextMenuItemTagOutline;
-    case WebCore::ContextMenuItemTagStyles:
+    case CyberCore::ContextMenuItemTagStyles:
         return kWKContextMenuItemTagStyles;
-    case WebCore::ContextMenuItemTagShowColors:
+    case CyberCore::ContextMenuItemTagShowColors:
         return kWKContextMenuItemTagShowColors;
-    case WebCore::ContextMenuItemTagSpeechMenu:
+    case CyberCore::ContextMenuItemTagSpeechMenu:
         return kWKContextMenuItemTagSpeechMenu;
-    case WebCore::ContextMenuItemTagStartSpeaking:
+    case CyberCore::ContextMenuItemTagStartSpeaking:
         return kWKContextMenuItemTagStartSpeaking;
-    case WebCore::ContextMenuItemTagStopSpeaking:
+    case CyberCore::ContextMenuItemTagStopSpeaking:
         return kWKContextMenuItemTagStopSpeaking;
-    case WebCore::ContextMenuItemTagWritingDirectionMenu:
+    case CyberCore::ContextMenuItemTagWritingDirectionMenu:
         return kWKContextMenuItemTagWritingDirectionMenu;
-    case WebCore::ContextMenuItemTagDefaultDirection:
+    case CyberCore::ContextMenuItemTagDefaultDirection:
         return kWKContextMenuItemTagDefaultDirection;
-    case WebCore::ContextMenuItemTagLeftToRight:
+    case CyberCore::ContextMenuItemTagLeftToRight:
         return kWKContextMenuItemTagLeftToRight;
-    case WebCore::ContextMenuItemTagRightToLeft:
+    case CyberCore::ContextMenuItemTagRightToLeft:
         return kWKContextMenuItemTagRightToLeft;
-    case WebCore::ContextMenuItemTagPDFSinglePageScrolling:
+    case CyberCore::ContextMenuItemTagPDFSinglePageScrolling:
         return kWKContextMenuItemTagPDFSinglePageScrolling;
-    case WebCore::ContextMenuItemTagPDFFacingPagesScrolling:
+    case CyberCore::ContextMenuItemTagPDFFacingPagesScrolling:
         return kWKContextMenuItemTagPDFFacingPagesScrolling;
-    case WebCore::ContextMenuItemTagDictationAlternative:
+    case CyberCore::ContextMenuItemTagDictationAlternative:
         return kWKContextMenuItemTagDictationAlternative;
-    case WebCore::ContextMenuItemTagInspectElement:
+    case CyberCore::ContextMenuItemTagInspectElement:
         return kWKContextMenuItemTagInspectElement;
-    case WebCore::ContextMenuItemTagTextDirectionMenu:
+    case CyberCore::ContextMenuItemTagTextDirectionMenu:
         return kWKContextMenuItemTagTextDirectionMenu;
-    case WebCore::ContextMenuItemTagTextDirectionDefault:
+    case CyberCore::ContextMenuItemTagTextDirectionDefault:
         return kWKContextMenuItemTagTextDirectionDefault;
-    case WebCore::ContextMenuItemTagTextDirectionLeftToRight:
+    case CyberCore::ContextMenuItemTagTextDirectionLeftToRight:
         return kWKContextMenuItemTagTextDirectionLeftToRight;
-    case WebCore::ContextMenuItemTagTextDirectionRightToLeft:
+    case CyberCore::ContextMenuItemTagTextDirectionRightToLeft:
         return kWKContextMenuItemTagTextDirectionRightToLeft;
-    case WebCore::ContextMenuItemTagOpenMediaInNewWindow:
+    case CyberCore::ContextMenuItemTagOpenMediaInNewWindow:
         return kWKContextMenuItemTagOpenMediaInNewWindow;
-    case WebCore::ContextMenuItemTagDownloadMediaToDisk:
+    case CyberCore::ContextMenuItemTagDownloadMediaToDisk:
         return kWKContextMenuItemTagDownloadMediaToDisk;
-    case WebCore::ContextMenuItemTagCopyMediaLinkToClipboard:
+    case CyberCore::ContextMenuItemTagCopyMediaLinkToClipboard:
         return kWKContextMenuItemTagCopyMediaLinkToClipboard;
-    case WebCore::ContextMenuItemTagToggleMediaControls:
+    case CyberCore::ContextMenuItemTagToggleMediaControls:
         return kWKContextMenuItemTagToggleMediaControls;
-    case WebCore::ContextMenuItemTagToggleMediaLoop:
+    case CyberCore::ContextMenuItemTagToggleMediaLoop:
         return kWKContextMenuItemTagToggleMediaLoop;
-    case WebCore::ContextMenuItemTagToggleVideoFullscreen:
+    case CyberCore::ContextMenuItemTagToggleVideoFullscreen:
         return kWKContextMenuItemTagToggleVideoFullscreen;
-    case WebCore::ContextMenuItemTagEnterVideoFullscreen:
+    case CyberCore::ContextMenuItemTagEnterVideoFullscreen:
         return kWKContextMenuItemTagEnterVideoFullscreen;
-    case WebCore::ContextMenuItemTagToggleVideoEnhancedFullscreen:
+    case CyberCore::ContextMenuItemTagToggleVideoEnhancedFullscreen:
         return kWKContextMenuItemTagToggleVideoEnhancedFullscreen;
-    case WebCore::ContextMenuItemTagMediaPlayPause:
+    case CyberCore::ContextMenuItemTagMediaPlayPause:
         return kWKContextMenuItemTagMediaPlayPause;
-    case WebCore::ContextMenuItemTagMediaMute:
+    case CyberCore::ContextMenuItemTagMediaMute:
         return kWKContextMenuItemTagMediaMute;
-    case WebCore::ContextMenuItemTagAddHighlightToCurrentQuickNote:
+    case CyberCore::ContextMenuItemTagAddHighlightToCurrentQuickNote:
         return kWKContextMenuItemTagAddHighlightToCurrentQuickNote;
-    case WebCore::ContextMenuItemTagAddHighlightToNewQuickNote:
+    case CyberCore::ContextMenuItemTagAddHighlightToNewQuickNote:
         return kWKContextMenuItemTagAddHighlightToNewQuickNote;
 #if PLATFORM(COCOA)
-    case WebCore::ContextMenuItemTagCorrectSpellingAutomatically:
+    case CyberCore::ContextMenuItemTagCorrectSpellingAutomatically:
         return kWKContextMenuItemTagCorrectSpellingAutomatically;
-    case WebCore::ContextMenuItemTagSubstitutionsMenu:
+    case CyberCore::ContextMenuItemTagSubstitutionsMenu:
         return kWKContextMenuItemTagSubstitutionsMenu;
-    case WebCore::ContextMenuItemTagShowSubstitutions:
+    case CyberCore::ContextMenuItemTagShowSubstitutions:
         return kWKContextMenuItemTagShowSubstitutions;
-    case WebCore::ContextMenuItemTagSmartCopyPaste:
+    case CyberCore::ContextMenuItemTagSmartCopyPaste:
         return kWKContextMenuItemTagSmartCopyPaste;
-    case WebCore::ContextMenuItemTagSmartQuotes:
+    case CyberCore::ContextMenuItemTagSmartQuotes:
         return kWKContextMenuItemTagSmartQuotes;
-    case WebCore::ContextMenuItemTagSmartDashes:
+    case CyberCore::ContextMenuItemTagSmartDashes:
         return kWKContextMenuItemTagSmartDashes;
-    case WebCore::ContextMenuItemTagSmartLinks:
+    case CyberCore::ContextMenuItemTagSmartLinks:
         return kWKContextMenuItemTagSmartLinks;
-    case WebCore::ContextMenuItemTagTextReplacement:
+    case CyberCore::ContextMenuItemTagTextReplacement:
         return kWKContextMenuItemTagTextReplacement;
-    case WebCore::ContextMenuItemTagTransformationsMenu:
+    case CyberCore::ContextMenuItemTagTransformationsMenu:
         return kWKContextMenuItemTagTransformationsMenu;
-    case WebCore::ContextMenuItemTagMakeUpperCase:
+    case CyberCore::ContextMenuItemTagMakeUpperCase:
         return kWKContextMenuItemTagMakeUpperCase;
-    case WebCore::ContextMenuItemTagMakeLowerCase:
+    case CyberCore::ContextMenuItemTagMakeLowerCase:
         return kWKContextMenuItemTagMakeLowerCase;
-    case WebCore::ContextMenuItemTagCapitalize:
+    case CyberCore::ContextMenuItemTagCapitalize:
         return kWKContextMenuItemTagCapitalize;
-    case WebCore::ContextMenuItemTagChangeBack:
+    case CyberCore::ContextMenuItemTagChangeBack:
         return kWKContextMenuItemTagChangeBack;
 #endif
-    case WebCore::ContextMenuItemTagShareMenu:
+    case CyberCore::ContextMenuItemTagShareMenu:
         return kWKContextMenuItemTagShareMenu;
-    case WebCore::ContextMenuItemTagLookUpImage:
+    case CyberCore::ContextMenuItemTagLookUpImage:
         return kWKContextMenuItemTagRevealImage;
-    case WebCore::ContextMenuItemTagTranslate:
+    case CyberCore::ContextMenuItemTagTranslate:
         return kWKContextMenuItemTagTranslate;
-    case WebCore::ContextMenuItemTagCopySubject:
+    case CyberCore::ContextMenuItemTagCopySubject:
         return kWKContextMenuItemTagCopyCroppedImage;
     default:
-        if (action < WebCore::ContextMenuItemBaseApplicationTag && !(action >= WebCore::ContextMenuItemBaseCustomTag && action <= WebCore::ContextMenuItemLastCustomTag))
-            LOG_ERROR("ContextMenuAction %i is an unknown tag but is below the allowable custom tag value of %i", action, WebCore::ContextMenuItemBaseApplicationTag);
+        if (action < CyberCore::ContextMenuItemBaseApplicationTag && !(action >= CyberCore::ContextMenuItemBaseCustomTag && action <= CyberCore::ContextMenuItemLastCustomTag))
+            LOG_ERROR("ContextMenuAction %i is an unknown tag but is below the allowable custom tag value of %i", action, CyberCore::ContextMenuItemBaseApplicationTag);
         return static_cast<WKContextMenuItemTag>(action);
     }
 }
 
-inline WebCore::ContextMenuAction toImpl(WKContextMenuItemTag tag)
+inline CyberCore::ContextMenuAction toImpl(WKContextMenuItemTag tag)
 {
     switch (tag) {
     case kWKContextMenuItemTagNoAction:
-        return WebCore::ContextMenuItemTagNoAction;
+        return CyberCore::ContextMenuItemTagNoAction;
     case kWKContextMenuItemTagOpenLinkInNewWindow:
-        return WebCore::ContextMenuItemTagOpenLinkInNewWindow;
+        return CyberCore::ContextMenuItemTagOpenLinkInNewWindow;
     case kWKContextMenuItemTagDownloadLinkToDisk:
-        return WebCore::ContextMenuItemTagDownloadLinkToDisk;
+        return CyberCore::ContextMenuItemTagDownloadLinkToDisk;
     case kWKContextMenuItemTagCopyLinkToClipboard:
-        return WebCore::ContextMenuItemTagCopyLinkToClipboard;
+        return CyberCore::ContextMenuItemTagCopyLinkToClipboard;
     case kWKContextMenuItemTagOpenImageInNewWindow:
-        return WebCore::ContextMenuItemTagOpenImageInNewWindow;
+        return CyberCore::ContextMenuItemTagOpenImageInNewWindow;
     case kWKContextMenuItemTagDownloadImageToDisk:
-        return WebCore::ContextMenuItemTagDownloadImageToDisk;
+        return CyberCore::ContextMenuItemTagDownloadImageToDisk;
     case kWKContextMenuItemTagCopyImageToClipboard:
-        return WebCore::ContextMenuItemTagCopyImageToClipboard;
+        return CyberCore::ContextMenuItemTagCopyImageToClipboard;
 #if ENABLE(ACCESSIBILITY_ANIMATION_CONTROL)
     case kWKContextMenuItemTagPlayAllAnimations:
-        return WebCore::ContextMenuItemTagPlayAllAnimations;
+        return CyberCore::ContextMenuItemTagPlayAllAnimations;
     case kWKContextMenuItemTagPauseAllAnimations:
-        return WebCore::ContextMenuItemTagPauseAllAnimations;
+        return CyberCore::ContextMenuItemTagPauseAllAnimations;
     case kWKContextMenuItemTagPlayAnimation:
-        return WebCore::ContextMenuItemTagPlayAnimation;
+        return CyberCore::ContextMenuItemTagPlayAnimation;
     case kWKContextMenuItemTagPauseAnimation:
-        return WebCore::ContextMenuItemTagPauseAnimation;
+        return CyberCore::ContextMenuItemTagPauseAnimation;
 #endif // ENABLE(ACCESSIBILITY_ANIMATION_CONTROL)
     case kWKContextMenuItemTagOpenFrameInNewWindow:
 #if PLATFORM(GTK)
     case kWKContextMenuItemTagCopyImageUrlToClipboard:
-        return WebCore::ContextMenuItemTagCopyImageUrlToClipboard;
+        return CyberCore::ContextMenuItemTagCopyImageUrlToClipboard;
 #endif
-        return WebCore::ContextMenuItemTagOpenFrameInNewWindow;
+        return CyberCore::ContextMenuItemTagOpenFrameInNewWindow;
     case kWKContextMenuItemTagCopy:
-        return WebCore::ContextMenuItemTagCopy;
+        return CyberCore::ContextMenuItemTagCopy;
     case kWKContextMenuItemTagGoBack:
-        return WebCore::ContextMenuItemTagGoBack;
+        return CyberCore::ContextMenuItemTagGoBack;
     case kWKContextMenuItemTagGoForward:
-        return WebCore::ContextMenuItemTagGoForward;
+        return CyberCore::ContextMenuItemTagGoForward;
     case kWKContextMenuItemTagStop:
-        return WebCore::ContextMenuItemTagStop;
+        return CyberCore::ContextMenuItemTagStop;
     case kWKContextMenuItemTagReload:
-        return WebCore::ContextMenuItemTagReload;
+        return CyberCore::ContextMenuItemTagReload;
     case kWKContextMenuItemTagCut:
-        return WebCore::ContextMenuItemTagCut;
+        return CyberCore::ContextMenuItemTagCut;
     case kWKContextMenuItemTagPaste:
-        return WebCore::ContextMenuItemTagPaste;
+        return CyberCore::ContextMenuItemTagPaste;
 #if PLATFORM(GTK)
     case kWKContextMenuItemTagSelectAll:
-        return WebCore::ContextMenuItemTagSelectAll;
+        return CyberCore::ContextMenuItemTagSelectAll;
 #endif
     case kWKContextMenuItemTagSpellingGuess:
-        return WebCore::ContextMenuItemTagSpellingGuess;
+        return CyberCore::ContextMenuItemTagSpellingGuess;
     case kWKContextMenuItemTagNoGuessesFound:
-        return WebCore::ContextMenuItemTagNoGuessesFound;
+        return CyberCore::ContextMenuItemTagNoGuessesFound;
     case kWKContextMenuItemTagIgnoreSpelling:
-        return WebCore::ContextMenuItemTagIgnoreSpelling;
+        return CyberCore::ContextMenuItemTagIgnoreSpelling;
     case kWKContextMenuItemTagLearnSpelling:
-        return WebCore::ContextMenuItemTagLearnSpelling;
+        return CyberCore::ContextMenuItemTagLearnSpelling;
     case kWKContextMenuItemTagOther:
-        return WebCore::ContextMenuItemTagOther;
+        return CyberCore::ContextMenuItemTagOther;
     case kWKContextMenuItemTagSearchInSpotlight:
-        return WebCore::ContextMenuItemTagSearchInSpotlight;
+        return CyberCore::ContextMenuItemTagSearchInSpotlight;
     case kWKContextMenuItemTagSearchWeb:
-        return WebCore::ContextMenuItemTagSearchWeb;
+        return CyberCore::ContextMenuItemTagSearchWeb;
     case kWKContextMenuItemTagLookUpInDictionary:
-        return WebCore::ContextMenuItemTagLookUpInDictionary;
+        return CyberCore::ContextMenuItemTagLookUpInDictionary;
     case kWKContextMenuItemTagOpenWithDefaultApplication:
-        return WebCore::ContextMenuItemTagOpenWithDefaultApplication;
+        return CyberCore::ContextMenuItemTagOpenWithDefaultApplication;
     case kWKContextMenuItemTagPDFActualSize:
-        return WebCore::ContextMenuItemPDFActualSize;
+        return CyberCore::ContextMenuItemPDFActualSize;
     case kWKContextMenuItemTagPDFZoomIn:
-        return WebCore::ContextMenuItemPDFZoomIn;
+        return CyberCore::ContextMenuItemPDFZoomIn;
     case kWKContextMenuItemTagPDFZoomOut:
-        return WebCore::ContextMenuItemPDFZoomOut;
+        return CyberCore::ContextMenuItemPDFZoomOut;
     case kWKContextMenuItemTagPDFAutoSize:
-        return WebCore::ContextMenuItemPDFAutoSize;
+        return CyberCore::ContextMenuItemPDFAutoSize;
     case kWKContextMenuItemTagPDFSinglePage:
-        return WebCore::ContextMenuItemPDFSinglePage;
+        return CyberCore::ContextMenuItemPDFSinglePage;
     case kWKContextMenuItemTagPDFFacingPages:
-        return WebCore::ContextMenuItemPDFFacingPages;
+        return CyberCore::ContextMenuItemPDFFacingPages;
     case kWKContextMenuItemTagPDFContinuous:
-        return WebCore::ContextMenuItemPDFContinuous;
+        return CyberCore::ContextMenuItemPDFContinuous;
     case kWKContextMenuItemTagPDFNextPage:
-        return WebCore::ContextMenuItemPDFNextPage;
+        return CyberCore::ContextMenuItemPDFNextPage;
     case kWKContextMenuItemTagPDFPreviousPage:
-        return WebCore::ContextMenuItemPDFPreviousPage;
+        return CyberCore::ContextMenuItemPDFPreviousPage;
     case kWKContextMenuItemTagOpenLink:
-        return WebCore::ContextMenuItemTagOpenLink;
+        return CyberCore::ContextMenuItemTagOpenLink;
     case kWKContextMenuItemTagIgnoreGrammar:
-        return WebCore::ContextMenuItemTagIgnoreGrammar;
+        return CyberCore::ContextMenuItemTagIgnoreGrammar;
     case kWKContextMenuItemTagSpellingMenu:
-        return WebCore::ContextMenuItemTagSpellingMenu;
+        return CyberCore::ContextMenuItemTagSpellingMenu;
     case kWKContextMenuItemTagShowSpellingPanel:
-        return WebCore::ContextMenuItemTagShowSpellingPanel;
+        return CyberCore::ContextMenuItemTagShowSpellingPanel;
     case kWKContextMenuItemTagCheckSpelling:
-        return WebCore::ContextMenuItemTagCheckSpelling;
+        return CyberCore::ContextMenuItemTagCheckSpelling;
     case kWKContextMenuItemTagCheckSpellingWhileTyping:
-        return WebCore::ContextMenuItemTagCheckSpellingWhileTyping;
+        return CyberCore::ContextMenuItemTagCheckSpellingWhileTyping;
     case kWKContextMenuItemTagCheckGrammarWithSpelling:
-        return WebCore::ContextMenuItemTagCheckGrammarWithSpelling;
+        return CyberCore::ContextMenuItemTagCheckGrammarWithSpelling;
     case kWKContextMenuItemTagFontMenu:
-        return WebCore::ContextMenuItemTagFontMenu;
+        return CyberCore::ContextMenuItemTagFontMenu;
     case kWKContextMenuItemTagShowFonts:
-        return WebCore::ContextMenuItemTagShowFonts;
+        return CyberCore::ContextMenuItemTagShowFonts;
     case kWKContextMenuItemTagBold:
-        return WebCore::ContextMenuItemTagBold;
+        return CyberCore::ContextMenuItemTagBold;
     case kWKContextMenuItemTagItalic:
-        return WebCore::ContextMenuItemTagItalic;
+        return CyberCore::ContextMenuItemTagItalic;
     case kWKContextMenuItemTagUnderline:
-        return WebCore::ContextMenuItemTagUnderline;
+        return CyberCore::ContextMenuItemTagUnderline;
     case kWKContextMenuItemTagOutline:
-        return WebCore::ContextMenuItemTagOutline;
+        return CyberCore::ContextMenuItemTagOutline;
     case kWKContextMenuItemTagStyles:
-        return WebCore::ContextMenuItemTagStyles;
+        return CyberCore::ContextMenuItemTagStyles;
     case kWKContextMenuItemTagShowColors:
-        return WebCore::ContextMenuItemTagShowColors;
+        return CyberCore::ContextMenuItemTagShowColors;
     case kWKContextMenuItemTagSpeechMenu:
-        return WebCore::ContextMenuItemTagSpeechMenu;
+        return CyberCore::ContextMenuItemTagSpeechMenu;
     case kWKContextMenuItemTagStartSpeaking:
-        return WebCore::ContextMenuItemTagStartSpeaking;
+        return CyberCore::ContextMenuItemTagStartSpeaking;
     case kWKContextMenuItemTagStopSpeaking:
-        return WebCore::ContextMenuItemTagStopSpeaking;
+        return CyberCore::ContextMenuItemTagStopSpeaking;
     case kWKContextMenuItemTagWritingDirectionMenu:
-        return WebCore::ContextMenuItemTagWritingDirectionMenu;
+        return CyberCore::ContextMenuItemTagWritingDirectionMenu;
     case kWKContextMenuItemTagDefaultDirection:
-        return WebCore::ContextMenuItemTagDefaultDirection;
+        return CyberCore::ContextMenuItemTagDefaultDirection;
     case kWKContextMenuItemTagLeftToRight:
-        return WebCore::ContextMenuItemTagLeftToRight;
+        return CyberCore::ContextMenuItemTagLeftToRight;
     case kWKContextMenuItemTagRightToLeft:
-        return WebCore::ContextMenuItemTagRightToLeft;
+        return CyberCore::ContextMenuItemTagRightToLeft;
     case kWKContextMenuItemTagPDFSinglePageScrolling:
-        return WebCore::ContextMenuItemTagPDFSinglePageScrolling;
+        return CyberCore::ContextMenuItemTagPDFSinglePageScrolling;
     case kWKContextMenuItemTagPDFFacingPagesScrolling:
-        return WebCore::ContextMenuItemTagPDFFacingPagesScrolling;
+        return CyberCore::ContextMenuItemTagPDFFacingPagesScrolling;
     case kWKContextMenuItemTagDictationAlternative:
-        return WebCore::ContextMenuItemTagDictationAlternative;
+        return CyberCore::ContextMenuItemTagDictationAlternative;
     case kWKContextMenuItemTagInspectElement:
-        return WebCore::ContextMenuItemTagInspectElement;
+        return CyberCore::ContextMenuItemTagInspectElement;
     case kWKContextMenuItemTagTextDirectionMenu:
-        return WebCore::ContextMenuItemTagTextDirectionMenu;
+        return CyberCore::ContextMenuItemTagTextDirectionMenu;
     case kWKContextMenuItemTagTextDirectionDefault:
-        return WebCore::ContextMenuItemTagTextDirectionDefault;
+        return CyberCore::ContextMenuItemTagTextDirectionDefault;
     case kWKContextMenuItemTagTextDirectionLeftToRight:
-        return WebCore::ContextMenuItemTagTextDirectionLeftToRight;
+        return CyberCore::ContextMenuItemTagTextDirectionLeftToRight;
     case kWKContextMenuItemTagTextDirectionRightToLeft:
-        return WebCore::ContextMenuItemTagTextDirectionRightToLeft;
+        return CyberCore::ContextMenuItemTagTextDirectionRightToLeft;
     case kWKContextMenuItemTagOpenMediaInNewWindow:
-        return WebCore::ContextMenuItemTagOpenMediaInNewWindow;
+        return CyberCore::ContextMenuItemTagOpenMediaInNewWindow;
     case kWKContextMenuItemTagDownloadMediaToDisk:
-        return WebCore::ContextMenuItemTagDownloadMediaToDisk;
+        return CyberCore::ContextMenuItemTagDownloadMediaToDisk;
     case kWKContextMenuItemTagCopyMediaLinkToClipboard:
-        return WebCore::ContextMenuItemTagCopyMediaLinkToClipboard;
+        return CyberCore::ContextMenuItemTagCopyMediaLinkToClipboard;
     case kWKContextMenuItemTagToggleMediaControls:
-        return WebCore::ContextMenuItemTagToggleMediaControls;
+        return CyberCore::ContextMenuItemTagToggleMediaControls;
     case kWKContextMenuItemTagToggleMediaLoop:
-        return WebCore::ContextMenuItemTagToggleMediaLoop;
+        return CyberCore::ContextMenuItemTagToggleMediaLoop;
     case kWKContextMenuItemTagToggleVideoFullscreen:
-        return WebCore::ContextMenuItemTagToggleVideoFullscreen;
+        return CyberCore::ContextMenuItemTagToggleVideoFullscreen;
     case kWKContextMenuItemTagEnterVideoFullscreen:
-        return WebCore::ContextMenuItemTagEnterVideoFullscreen;
+        return CyberCore::ContextMenuItemTagEnterVideoFullscreen;
     case kWKContextMenuItemTagToggleVideoEnhancedFullscreen:
-        return WebCore::ContextMenuItemTagToggleVideoEnhancedFullscreen;
+        return CyberCore::ContextMenuItemTagToggleVideoEnhancedFullscreen;
     case kWKContextMenuItemTagMediaPlayPause:
-        return WebCore::ContextMenuItemTagMediaPlayPause;
+        return CyberCore::ContextMenuItemTagMediaPlayPause;
     case kWKContextMenuItemTagMediaMute:
-        return WebCore::ContextMenuItemTagMediaMute;
+        return CyberCore::ContextMenuItemTagMediaMute;
     case kWKContextMenuItemTagAddHighlightToCurrentQuickNote:
-        return WebCore::ContextMenuItemTagAddHighlightToCurrentQuickNote;
+        return CyberCore::ContextMenuItemTagAddHighlightToCurrentQuickNote;
     case kWKContextMenuItemTagAddHighlightToNewQuickNote:
-        return WebCore::ContextMenuItemTagAddHighlightToNewQuickNote;
+        return CyberCore::ContextMenuItemTagAddHighlightToNewQuickNote;
 #if PLATFORM(COCOA)
     case kWKContextMenuItemTagCorrectSpellingAutomatically:
-        return WebCore::ContextMenuItemTagCorrectSpellingAutomatically;
+        return CyberCore::ContextMenuItemTagCorrectSpellingAutomatically;
     case kWKContextMenuItemTagSubstitutionsMenu:
-        return WebCore::ContextMenuItemTagSubstitutionsMenu;
+        return CyberCore::ContextMenuItemTagSubstitutionsMenu;
     case kWKContextMenuItemTagShowSubstitutions:
-        return WebCore::ContextMenuItemTagShowSubstitutions;
+        return CyberCore::ContextMenuItemTagShowSubstitutions;
     case kWKContextMenuItemTagSmartCopyPaste:
-        return WebCore::ContextMenuItemTagSmartCopyPaste;
+        return CyberCore::ContextMenuItemTagSmartCopyPaste;
     case kWKContextMenuItemTagSmartQuotes:
-        return WebCore::ContextMenuItemTagSmartQuotes;
+        return CyberCore::ContextMenuItemTagSmartQuotes;
     case kWKContextMenuItemTagSmartDashes:
-        return WebCore::ContextMenuItemTagSmartDashes;
+        return CyberCore::ContextMenuItemTagSmartDashes;
     case kWKContextMenuItemTagSmartLinks:
-        return WebCore::ContextMenuItemTagSmartLinks;
+        return CyberCore::ContextMenuItemTagSmartLinks;
     case kWKContextMenuItemTagTextReplacement:
-        return WebCore::ContextMenuItemTagTextReplacement;
+        return CyberCore::ContextMenuItemTagTextReplacement;
     case kWKContextMenuItemTagTransformationsMenu:
-        return WebCore::ContextMenuItemTagTransformationsMenu;
+        return CyberCore::ContextMenuItemTagTransformationsMenu;
     case kWKContextMenuItemTagMakeUpperCase:
-        return WebCore::ContextMenuItemTagMakeUpperCase;
+        return CyberCore::ContextMenuItemTagMakeUpperCase;
     case kWKContextMenuItemTagMakeLowerCase:
-        return WebCore::ContextMenuItemTagMakeLowerCase;
+        return CyberCore::ContextMenuItemTagMakeLowerCase;
     case kWKContextMenuItemTagCapitalize:
-        return WebCore::ContextMenuItemTagCapitalize;
+        return CyberCore::ContextMenuItemTagCapitalize;
     case kWKContextMenuItemTagChangeBack:
-        return WebCore::ContextMenuItemTagChangeBack;
+        return CyberCore::ContextMenuItemTagChangeBack;
     case kWKContextMenuItemTagShareMenu:
-        return WebCore::ContextMenuItemTagShareMenu;
+        return CyberCore::ContextMenuItemTagShareMenu;
 #endif
     case kWKContextMenuItemTagRevealImage:
-        return WebCore::ContextMenuItemTagLookUpImage;
+        return CyberCore::ContextMenuItemTagLookUpImage;
     case kWKContextMenuItemTagTranslate:
-        return WebCore::ContextMenuItemTagTranslate;
+        return CyberCore::ContextMenuItemTagTranslate;
     case kWKContextMenuItemTagCopyCroppedImage:
-        return WebCore::ContextMenuItemTagCopySubject;
+        return CyberCore::ContextMenuItemTagCopySubject;
     case kWKContextMenuItemTagOpenLinkInThisWindow:
     default:
-        if (tag < kWKContextMenuItemBaseApplicationTag && !(tag >= WebCore::ContextMenuItemBaseCustomTag && tag <= WebCore::ContextMenuItemLastCustomTag))
+        if (tag < kWKContextMenuItemBaseApplicationTag && !(tag >= CyberCore::ContextMenuItemBaseCustomTag && tag <= CyberCore::ContextMenuItemLastCustomTag))
             LOG_ERROR("WKContextMenuItemTag %i is an unknown tag but is below the allowable custom tag value of %i", tag, kWKContextMenuItemBaseApplicationTag);
-        return static_cast<WebCore::ContextMenuAction>(tag);
+        return static_cast<CyberCore::ContextMenuAction>(tag);
     }
 }
 
-inline WKContextMenuItemType toAPI(WebCore::ContextMenuItemType type)
+inline WKContextMenuItemType toAPI(CyberCore::ContextMenuItemType type)
 {
     switch(type) {
-    case WebCore::ActionType:
+    case CyberCore::ActionType:
         return kWKContextMenuItemTypeAction;
-    case WebCore::CheckableActionType:
+    case CyberCore::CheckableActionType:
         return kWKContextMenuItemTypeCheckableAction;
-    case WebCore::SeparatorType:
+    case CyberCore::SeparatorType:
         return kWKContextMenuItemTypeSeparator;
-    case WebCore::SubmenuType:
+    case CyberCore::SubmenuType:
         return kWKContextMenuItemTypeSubmenu;
     default:
         ASSERT_NOT_REACHED();
@@ -836,20 +836,20 @@ inline OptionSet<FindOptions> toFindOptions(WKFindOptions wkFindOptions)
     return findOptions;
 }
 
-inline WKFrameNavigationType toAPI(WebCore::NavigationType type)
+inline WKFrameNavigationType toAPI(CyberCore::NavigationType type)
 {
     switch (type) {
-    case WebCore::NavigationType::LinkClicked:
+    case CyberCore::NavigationType::LinkClicked:
         return kWKFrameNavigationTypeLinkClicked;
-    case WebCore::NavigationType::FormSubmitted:
+    case CyberCore::NavigationType::FormSubmitted:
         return kWKFrameNavigationTypeFormSubmitted;
-    case WebCore::NavigationType::BackForward:
+    case CyberCore::NavigationType::BackForward:
         return kWKFrameNavigationTypeBackForward;
-    case WebCore::NavigationType::Reload:
+    case CyberCore::NavigationType::Reload:
         return kWKFrameNavigationTypeReload;
-    case WebCore::NavigationType::FormResubmitted:
+    case CyberCore::NavigationType::FormResubmitted:
         return kWKFrameNavigationTypeFormResubmitted;
-    case WebCore::NavigationType::Other:
+    case CyberCore::NavigationType::Other:
         return kWKFrameNavigationTypeOther;
     }
 
@@ -892,14 +892,14 @@ inline SameDocumentNavigationType toSameDocumentNavigationType(WKSameDocumentNav
     return SameDocumentNavigationType::AnchorNavigation;
 }
 
-inline WKDiagnosticLoggingResultType toAPI(WebCore::DiagnosticLoggingResultType type)
+inline WKDiagnosticLoggingResultType toAPI(CyberCore::DiagnosticLoggingResultType type)
 {
     switch (type) {
-    case WebCore::DiagnosticLoggingResultPass:
+    case CyberCore::DiagnosticLoggingResultPass:
         return kWKDiagnosticLoggingResultPass;
-    case WebCore::DiagnosticLoggingResultFail:
+    case CyberCore::DiagnosticLoggingResultFail:
         return kWKDiagnosticLoggingResultFail;
-    case WebCore::DiagnosticLoggingResultNoop:
+    case CyberCore::DiagnosticLoggingResultNoop:
         return kWKDiagnosticLoggingResultNoop;
     }
 
@@ -907,82 +907,82 @@ inline WKDiagnosticLoggingResultType toAPI(WebCore::DiagnosticLoggingResultType 
     return { };
 }
 
-inline WebCore::DiagnosticLoggingResultType toDiagnosticLoggingResultType(WKDiagnosticLoggingResultType wkType)
+inline CyberCore::DiagnosticLoggingResultType toDiagnosticLoggingResultType(WKDiagnosticLoggingResultType wkType)
 {
     switch (wkType) {
     case kWKDiagnosticLoggingResultPass:
-        return WebCore::DiagnosticLoggingResultPass;
+        return CyberCore::DiagnosticLoggingResultPass;
     case kWKDiagnosticLoggingResultFail:
-        return WebCore::DiagnosticLoggingResultFail;
+        return CyberCore::DiagnosticLoggingResultFail;
     case kWKDiagnosticLoggingResultNoop:
-        return WebCore::DiagnosticLoggingResultNoop;
+        return CyberCore::DiagnosticLoggingResultNoop;
     }
 
     ASSERT_NOT_REACHED();
     return { };
 }
 
-inline WKLayoutMilestones toWKLayoutMilestones(OptionSet<WebCore::LayoutMilestone> milestones)
+inline WKLayoutMilestones toWKLayoutMilestones(OptionSet<CyberCore::LayoutMilestone> milestones)
 {
     unsigned wkMilestones = 0;
 
-    if (milestones & WebCore::DidFirstLayout)
+    if (milestones & CyberCore::DidFirstLayout)
         wkMilestones |= kWKDidFirstLayout;
-    if (milestones & WebCore::DidFirstVisuallyNonEmptyLayout)
+    if (milestones & CyberCore::DidFirstVisuallyNonEmptyLayout)
         wkMilestones |= kWKDidFirstVisuallyNonEmptyLayout;
-    if (milestones & WebCore::DidHitRelevantRepaintedObjectsAreaThreshold)
+    if (milestones & CyberCore::DidHitRelevantRepaintedObjectsAreaThreshold)
         wkMilestones |= kWKDidHitRelevantRepaintedObjectsAreaThreshold;
-    if (milestones & WebCore::DidFirstFlushForHeaderLayer)
+    if (milestones & CyberCore::DidFirstFlushForHeaderLayer)
         wkMilestones |= kWKDidFirstFlushForHeaderLayer;
-    if (milestones & WebCore::DidFirstLayoutAfterSuppressedIncrementalRendering)
+    if (milestones & CyberCore::DidFirstLayoutAfterSuppressedIncrementalRendering)
         wkMilestones |= kWKDidFirstLayoutAfterSuppressedIncrementalRendering;
-    if (milestones & WebCore::DidFirstPaintAfterSuppressedIncrementalRendering)
+    if (milestones & CyberCore::DidFirstPaintAfterSuppressedIncrementalRendering)
         wkMilestones |= kWKDidFirstPaintAfterSuppressedIncrementalRendering;
-    if (milestones & WebCore::DidRenderSignificantAmountOfText)
+    if (milestones & CyberCore::DidRenderSignificantAmountOfText)
         wkMilestones |= kWKDidRenderSignificantAmountOfText;
-    if (milestones & WebCore::DidFirstMeaningfulPaint)
+    if (milestones & CyberCore::DidFirstMeaningfulPaint)
         wkMilestones |= kWKDidFirstMeaningfulPaint;
 
     return wkMilestones;
 }
 
-inline OptionSet<WebCore::LayoutMilestone> toLayoutMilestones(WKLayoutMilestones wkMilestones)
+inline OptionSet<CyberCore::LayoutMilestone> toLayoutMilestones(WKLayoutMilestones wkMilestones)
 {
-    OptionSet<WebCore::LayoutMilestone> milestones;
+    OptionSet<CyberCore::LayoutMilestone> milestones;
 
     if (wkMilestones & kWKDidFirstLayout)
-        milestones.add(WebCore::DidFirstLayout);
+        milestones.add(CyberCore::DidFirstLayout);
     if (wkMilestones & kWKDidFirstVisuallyNonEmptyLayout)
-        milestones.add(WebCore::DidFirstVisuallyNonEmptyLayout);
+        milestones.add(CyberCore::DidFirstVisuallyNonEmptyLayout);
     if (wkMilestones & kWKDidHitRelevantRepaintedObjectsAreaThreshold)
-        milestones.add(WebCore::DidHitRelevantRepaintedObjectsAreaThreshold);
+        milestones.add(CyberCore::DidHitRelevantRepaintedObjectsAreaThreshold);
     if (wkMilestones & kWKDidFirstFlushForHeaderLayer)
-        milestones.add(WebCore::DidFirstFlushForHeaderLayer);
+        milestones.add(CyberCore::DidFirstFlushForHeaderLayer);
     if (wkMilestones & kWKDidFirstLayoutAfterSuppressedIncrementalRendering)
-        milestones.add(WebCore::DidFirstLayoutAfterSuppressedIncrementalRendering);
+        milestones.add(CyberCore::DidFirstLayoutAfterSuppressedIncrementalRendering);
     if (wkMilestones & kWKDidFirstPaintAfterSuppressedIncrementalRendering)
-        milestones.add(WebCore::DidFirstPaintAfterSuppressedIncrementalRendering);
+        milestones.add(CyberCore::DidFirstPaintAfterSuppressedIncrementalRendering);
     if (wkMilestones & kWKDidRenderSignificantAmountOfText)
-        milestones.add(WebCore::DidRenderSignificantAmountOfText);
+        milestones.add(CyberCore::DidRenderSignificantAmountOfText);
     if (wkMilestones & kWKDidFirstMeaningfulPaint)
-        milestones.add(WebCore::DidFirstMeaningfulPaint);
+        milestones.add(CyberCore::DidFirstMeaningfulPaint);
     
     return milestones;
 }
 
-inline WebCore::VisibilityState toVisibilityState(WKPageVisibilityState wkPageVisibilityState)
+inline CyberCore::VisibilityState toVisibilityState(WKPageVisibilityState wkPageVisibilityState)
 {
     switch (wkPageVisibilityState) {
     case kWKPageVisibilityStateVisible:
-        return WebCore::VisibilityState::Visible;
+        return CyberCore::VisibilityState::Visible;
     case kWKPageVisibilityStateHidden:
-        return WebCore::VisibilityState::Hidden;
+        return CyberCore::VisibilityState::Hidden;
     case kWKPageVisibilityStatePrerender:
-        return WebCore::VisibilityState::Hidden;
+        return CyberCore::VisibilityState::Hidden;
     }
 
     ASSERT_NOT_REACHED();
-    return WebCore::VisibilityState::Visible;
+    return CyberCore::VisibilityState::Visible;
 }
 
 inline ImageOptions toImageOptions(WKImageOptions wkImageOptions)
@@ -1029,25 +1029,25 @@ inline SnapshotOptions toSnapshotOptions(WKSnapshotOptions wkSnapshotOptions)
     return snapshotOptions;
 }
 
-inline WebCore::UserScriptInjectionTime toUserScriptInjectionTime(_WKUserScriptInjectionTime wkInjectedTime)
+inline CyberCore::UserScriptInjectionTime toUserScriptInjectionTime(_WKUserScriptInjectionTime wkInjectedTime)
 {
     switch (wkInjectedTime) {
     case kWKInjectAtDocumentStart:
-        return WebCore::UserScriptInjectionTime::DocumentStart;
+        return CyberCore::UserScriptInjectionTime::DocumentStart;
     case kWKInjectAtDocumentEnd:
-        return WebCore::UserScriptInjectionTime::DocumentEnd;
+        return CyberCore::UserScriptInjectionTime::DocumentEnd;
     }
 
     ASSERT_NOT_REACHED();
-    return WebCore::UserScriptInjectionTime::DocumentStart;
+    return CyberCore::UserScriptInjectionTime::DocumentStart;
 }
 
-inline _WKUserScriptInjectionTime toWKUserScriptInjectionTime(WebCore::UserScriptInjectionTime injectedTime)
+inline _WKUserScriptInjectionTime toWKUserScriptInjectionTime(CyberCore::UserScriptInjectionTime injectedTime)
 {
     switch (injectedTime) {
-    case WebCore::UserScriptInjectionTime::DocumentStart:
+    case CyberCore::UserScriptInjectionTime::DocumentStart:
         return kWKInjectAtDocumentStart;
-    case WebCore::UserScriptInjectionTime::DocumentEnd:
+    case CyberCore::UserScriptInjectionTime::DocumentEnd:
         return kWKInjectAtDocumentEnd;
     }
 
@@ -1055,17 +1055,17 @@ inline _WKUserScriptInjectionTime toWKUserScriptInjectionTime(WebCore::UserScrip
     return kWKInjectAtDocumentStart;
 }
 
-inline WebCore::UserContentInjectedFrames toUserContentInjectedFrames(WKUserContentInjectedFrames wkInjectedFrames)
+inline CyberCore::UserContentInjectedFrames toUserContentInjectedFrames(WKUserContentInjectedFrames wkInjectedFrames)
 {
     switch (wkInjectedFrames) {
     case kWKInjectInAllFrames:
-        return WebCore::UserContentInjectedFrames::InjectInAllFrames;
+        return CyberCore::UserContentInjectedFrames::InjectInAllFrames;
     case kWKInjectInTopFrameOnly:
-        return WebCore::UserContentInjectedFrames::InjectInTopFrameOnly;
+        return CyberCore::UserContentInjectedFrames::InjectInTopFrameOnly;
     }
 
     ASSERT_NOT_REACHED();
-    return WebCore::UserContentInjectedFrames::InjectInAllFrames;
+    return CyberCore::UserContentInjectedFrames::InjectInAllFrames;
 }
 
 } // namespace WebKit

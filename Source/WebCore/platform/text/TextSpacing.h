@@ -27,7 +27,7 @@
 #include <wtf/Forward.h>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct TextSpacingTrim {
 
@@ -83,4 +83,4 @@ inline WTF::TextStream& operator<<(WTF::TextStream& ts, const TextAutospace& val
     }
     return ts;
 }
-} // namespace WebCore
+} // namespace CyberCore

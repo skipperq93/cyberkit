@@ -36,7 +36,7 @@
 #include <CyberCore/MediaPlayerIdentifier.h>
 #include <CyberCore/WebAudioBufferList.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class RemoteAudioSourceProvider;
 
@@ -47,7 +47,7 @@ public:
     void stopListeningForIPC();
 
     void addProvider(Ref<RemoteAudioSourceProvider>&&);
-    void removeProvider(WebCore::MediaPlayerIdentifier);
+    void removeProvider(CyberCore::MediaPlayerIdentifier);
 
     void didReceiveMessage(IPC::Connection&, IPC::Decoder&);
 
@@ -55,8 +55,8 @@ private:
     RemoteAudioSourceProviderManager();
 
     // Messages
-    void audioStorageChanged(WebCore::MediaPlayerIdentifier, ConsumerSharedCARingBuffer::Handle&&, const WebCore::CAAudioStreamDescription&);
-    void audioSamplesAvailable(WebCore::MediaPlayerIdentifier, uint64_t startFrame, uint64_t numberOfFrames);
+    void audioStorageChanged(CyberCore::MediaPlayerIdentifier, ConsumerSharedCARingBuffer::Handle&&, const CyberCore::CAAudioStreamDescription&);
+    void audioSamplesAvailable(CyberCore::MediaPlayerIdentifier, uint64_t startFrame, uint64_t numberOfFrames);
 
     void setConnection(IPC::Connection*);
 
@@ -65,23 +65,23 @@ private:
     public:
         explicit RemoteAudio(Ref<RemoteAudioSourceProvider>&&);
 
-        void setStorage(ConsumerSharedCARingBuffer::Handle&&, const WebCore::CAAudioStreamDescription&);
+        void setStorage(ConsumerSharedCARingBuffer::Handle&&, const CyberCore::CAAudioStreamDescription&);
         void audioSamplesAvailable(uint64_t startFrame, uint64_t numberOfFrames);
 
     private:
         Ref<RemoteAudioSourceProvider> m_provider;
-        std::optional<WebCore::CAAudioStreamDescription> m_description;
+        std::optional<CyberCore::CAAudioStreamDescription> m_description;
         std::unique_ptr<ConsumerSharedCARingBuffer> m_ringBuffer;
-        std::unique_ptr<WebCore::WebAudioBufferList> m_buffer;
+        std::unique_ptr<CyberCore::WebAudioBufferList> m_buffer;
     };
 
     Ref<WorkQueue> m_queue;
     RefPtr<IPC::Connection> m_connection;
 
     // background thread member
-    HashMap<WebCore::MediaPlayerIdentifier, std::unique_ptr<RemoteAudio>> m_providers;
+    HashMap<CyberCore::MediaPlayerIdentifier, std::unique_ptr<RemoteAudio>> m_providers;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(COCOA) && ENABLE(GPU_PROCESS)

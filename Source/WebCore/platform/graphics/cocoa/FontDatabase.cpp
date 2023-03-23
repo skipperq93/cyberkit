@@ -30,7 +30,7 @@
 #include "FontCascadeDescription.h"
 #include <pal/spi/cf/CoreTextSPI.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 FontDatabase::InstalledFont::InstalledFont(CTFontDescriptorRef fontDescriptor)
     : fontDescriptor(fontDescriptor)
@@ -115,4 +115,4 @@ FontDatabase::FontDatabase(AllowUserInstalledFonts allowUserInstalledFonts)
 {
 }
 
-} // namespace WebCore
+} // namespace CyberCore

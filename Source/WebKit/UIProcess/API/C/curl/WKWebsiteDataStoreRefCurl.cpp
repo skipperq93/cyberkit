@@ -36,15 +36,15 @@ using namespace WebKit;
 
 void WKWebsiteDataStoreEnableDefaultNetworkProxySettings(WKWebsiteDataStoreRef dataStoreRef)
 {
-    toImpl(dataStoreRef)->setNetworkProxySettings(WebCore::CurlProxySettings(WebCore::CurlProxySettings::Mode::Default));
+    toImpl(dataStoreRef)->setNetworkProxySettings(CyberCore::CurlProxySettings(CyberCore::CurlProxySettings::Mode::Default));
 }
 
 void WKWebsiteDataStoreEnableCustomNetworkProxySettings(WKWebsiteDataStoreRef dataStoreRef, WKURLRef proxyUrl, WKStringRef ignoreHosts)
 {
-    toImpl(dataStoreRef)->setNetworkProxySettings(WebCore::CurlProxySettings(URL { toWTFString(proxyUrl) }, toWTFString(ignoreHosts)));
+    toImpl(dataStoreRef)->setNetworkProxySettings(CyberCore::CurlProxySettings(URL { toWTFString(proxyUrl) }, toWTFString(ignoreHosts)));
 }
 
 void WKWebsiteDataStoreDisableNetworkProxySettings(WKWebsiteDataStoreRef dataStoreRef)
 {
-    toImpl(dataStoreRef)->setNetworkProxySettings(WebCore::CurlProxySettings(WebCore::CurlProxySettings::Mode::NoProxy));
+    toImpl(dataStoreRef)->setNetworkProxySettings(CyberCore::CurlProxySettings(CyberCore::CurlProxySettings::Mode::NoProxy));
 }

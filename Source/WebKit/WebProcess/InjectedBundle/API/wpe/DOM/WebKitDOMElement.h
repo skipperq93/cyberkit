@@ -21,49 +21,49 @@
 #error "Only <wpe/webkitdom.h> can be included directly."
 #endif
 
-#ifndef WebKitDOMElement_h
-#define WebKitDOMElement_h
+#ifndef CyberKitDOMElement_h
+#define CyberKitDOMElement_h
 
 #include <glib-object.h>
-#include <wpe/WebKitDOMNode.h>
-#include <wpe/WebKitDOMDefines.h>
+#include <wpe/CyberKitDOMNode.h>
+#include <wpe/CyberKitDOMDefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_DOM_TYPE_ELEMENT            (webkit_dom_element_get_type())
-#define WEBKIT_DOM_ELEMENT(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_ELEMENT, WebKitDOMElement))
-#define WEBKIT_DOM_ELEMENT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_ELEMENT, WebKitDOMElementClass)
+#define WEBKIT_DOM_ELEMENT(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_ELEMENT, CyberKitDOMElement))
+#define WEBKIT_DOM_ELEMENT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_ELEMENT, CyberKitDOMElementClass)
 #define WEBKIT_DOM_IS_ELEMENT(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_DOM_TYPE_ELEMENT))
 #define WEBKIT_DOM_IS_ELEMENT_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_DOM_TYPE_ELEMENT))
-#define WEBKIT_DOM_ELEMENT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_ELEMENT, WebKitDOMElementClass))
+#define WEBKIT_DOM_ELEMENT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_ELEMENT, CyberKitDOMElementClass))
 
-typedef struct _WebKitDOMElement WebKitDOMElement;
-typedef struct _WebKitDOMElementClass WebKitDOMElementClass;
+typedef struct _CyberKitDOMElement CyberKitDOMElement;
+typedef struct _CyberKitDOMElementClass CyberKitDOMElementClass;
 
-struct _WebKitDOMElement {
-    WebKitDOMNode parent_instance;
+struct _CyberKitDOMElement {
+    CyberKitDOMNode parent_instance;
 };
 
-struct _WebKitDOMElementClass {
-    WebKitDOMNodeClass parent_class;
+struct _CyberKitDOMElementClass {
+    CyberKitDOMNodeClass parent_class;
 };
 
 WEBKIT_DEPRECATED GType
 webkit_dom_element_get_type                             (void);
 
 WEBKIT_DEPRECATED_FOR(webkit_web_form_manager_input_element_is_user_edited) gboolean
-webkit_dom_element_html_input_element_is_user_edited    (WebKitDOMElement *element);
+webkit_dom_element_html_input_element_is_user_edited    (CyberKitDOMElement *element);
 
 WEBKIT_DEPRECATED_FOR(webkit_web_form_manager_input_element_is_auto_filled) gboolean
-webkit_dom_element_html_input_element_get_auto_filled   (WebKitDOMElement *element);
+webkit_dom_element_html_input_element_get_auto_filled   (CyberKitDOMElement *element);
 
 WEBKIT_DEPRECATED_FOR(webkit_web_form_manager_input_element_auto_fill) void
-webkit_dom_element_html_input_element_set_auto_filled   (WebKitDOMElement *element,
+webkit_dom_element_html_input_element_set_auto_filled   (CyberKitDOMElement *element,
                                                          gboolean          auto_filled);
 WEBKIT_DEPRECATED_FOR(webkit_web_form_manager_input_element_auto_fill) void
-webkit_dom_element_html_input_element_set_editing_value (WebKitDOMElement *element,
+webkit_dom_element_html_input_element_set_editing_value (CyberKitDOMElement *element,
                                                          const char       *value);
 
 G_END_DECLS
 
-#endif /* WebKitDOMElement_h */
+#endif /* CyberKitDOMElement_h */

@@ -50,7 +50,7 @@ namespace WTF {
 class OrdinalNumber;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class ContentSecurityPolicyDirective;
 class ContentSecurityPolicyDirectiveList;
@@ -272,16 +272,16 @@ private:
     ContentSecurityPolicyModeForExtension m_contentSecurityPolicyModeForExtension { ContentSecurityPolicyModeForExtension::None };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::ContentSecurityPolicyModeForExtension> {
+template<> struct EnumTraits<CyberCore::ContentSecurityPolicyModeForExtension> {
     using values = EnumValues<
-        WebCore::ContentSecurityPolicyModeForExtension,
-        WebCore::ContentSecurityPolicyModeForExtension::None,
-        WebCore::ContentSecurityPolicyModeForExtension::ManifestV2,
-        WebCore::ContentSecurityPolicyModeForExtension::ManifestV3
+        CyberCore::ContentSecurityPolicyModeForExtension,
+        CyberCore::ContentSecurityPolicyModeForExtension::None,
+        CyberCore::ContentSecurityPolicyModeForExtension::ManifestV2,
+        CyberCore::ContentSecurityPolicyModeForExtension::ManifestV3
     >;
     };
 }

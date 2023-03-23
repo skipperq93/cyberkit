@@ -30,7 +30,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/StringHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SharedBuffer;
 
@@ -83,6 +83,6 @@ private:
 
 }
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::StaticPasteboard)
-    static bool isType(const WebCore::Pasteboard& pasteboard) { return pasteboard.isStatic(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::StaticPasteboard)
+    static bool isType(const CyberCore::Pasteboard& pasteboard) { return pasteboard.isStatic(); }
 SPECIALIZE_TYPE_TRAITS_END()

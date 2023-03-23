@@ -25,7 +25,7 @@
 #include <wtf/MathExtras.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static const float kPathSegmentLengthTolerance = 0.00001f;
 

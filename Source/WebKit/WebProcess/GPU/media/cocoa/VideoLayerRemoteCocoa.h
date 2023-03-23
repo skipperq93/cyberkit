@@ -28,14 +28,14 @@
 #import <QuartzCore/CALayer.h>
 #import <CyberCore/MediaPlayerEnums.h>
 
-namespace WebKit {
+namespace CyberKit {
 class MediaPlayerPrivateRemote;
 }
 
 @interface WKVideoLayerRemote : CALayer
-@property (nonatomic) WebKit::MediaPlayerPrivateRemote* mediaPlayerPrivateRemote;
+@property (nonatomic) CyberKit::MediaPlayerPrivateRemote* mediaPlayerPrivateRemote;
 @property (nonatomic) CGRect videoLayerFrame;
-@property (nonatomic) WebCore::MediaPlayerEnums::VideoGravity videoGravity;
+@property (nonatomic) CyberCore::MediaPlayerEnums::VideoGravity videoGravity;
 @end
 
 #endif

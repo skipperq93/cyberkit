@@ -30,7 +30,7 @@
 #include "WebPage.h"
 #include "WebProcess.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 WebRemoteObjectRegistry::WebRemoteObjectRegistry(_WKRemoteObjectRegistry *remoteObjectRegistry, WebPage& page)
     : RemoteObjectRegistry(remoteObjectRegistry)
@@ -63,4 +63,4 @@ uint64_t WebRemoteObjectRegistry::messageDestinationID()
     return m_page.webPageProxyIdentifier().toUInt64();
 }
 
-} // namespace WebKit
+} // namespace CyberKit

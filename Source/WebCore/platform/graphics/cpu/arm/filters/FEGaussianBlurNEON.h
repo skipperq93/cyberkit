@@ -32,7 +32,7 @@
 #include "FEGaussianBlur.h"
 #include "NEONHelpers.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 inline void boxBlurNEON(const PixelBuffer& srcPixelBuffer, PixelBuffer& dstPixelBuffer,
                         unsigned dx, int dxLeft, int dxRight, int stride, int strideLine, int effectWidth, int effectHeight)
@@ -71,7 +71,7 @@ inline void boxBlurNEON(const PixelBuffer& srcPixelBuffer, PixelBuffer& dstPixel
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // HAVE(ARM_NEON_INTRINSICS)
 

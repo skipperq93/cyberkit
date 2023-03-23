@@ -30,7 +30,7 @@
 #include "MathMLElement.h"
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class MathMLStyle: public RefCounted<MathMLStyle> {
 public:

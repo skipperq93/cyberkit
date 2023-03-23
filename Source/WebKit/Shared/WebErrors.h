@@ -27,7 +27,7 @@
 
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 class ResourceError;
 class ResourceRequest;
 class ResourceResponse;
@@ -35,29 +35,29 @@ class ResourceResponse;
 
 namespace WebKit {
 
-WebCore::ResourceError cancelledError(const WebCore::ResourceRequest&);
-WebCore::ResourceError blockedError(const WebCore::ResourceRequest&);
-WebCore::ResourceError blockedByContentBlockerError(const WebCore::ResourceRequest&);
-WebCore::ResourceError cannotShowURLError(const WebCore::ResourceRequest&);
-WebCore::ResourceError wasBlockedByRestrictionsError(const WebCore::ResourceRequest&);
-WebCore::ResourceError interruptedForPolicyChangeError(const WebCore::ResourceRequest&);
-WebCore::ResourceError ftpDisabledError(const WebCore::ResourceRequest&);
-WebCore::ResourceError failedCustomProtocolSyncLoad(const WebCore::ResourceRequest&);
+CyberCore::ResourceError cancelledError(const CyberCore::ResourceRequest&);
+CyberCore::ResourceError blockedError(const CyberCore::ResourceRequest&);
+CyberCore::ResourceError blockedByContentBlockerError(const CyberCore::ResourceRequest&);
+CyberCore::ResourceError cannotShowURLError(const CyberCore::ResourceRequest&);
+CyberCore::ResourceError wasBlockedByRestrictionsError(const CyberCore::ResourceRequest&);
+CyberCore::ResourceError interruptedForPolicyChangeError(const CyberCore::ResourceRequest&);
+CyberCore::ResourceError ftpDisabledError(const CyberCore::ResourceRequest&);
+CyberCore::ResourceError failedCustomProtocolSyncLoad(const CyberCore::ResourceRequest&);
 #if ENABLE(CONTENT_FILTERING)
-WebCore::ResourceError blockedByContentFilterError(const WebCore::ResourceRequest&);
+CyberCore::ResourceError blockedByContentFilterError(const CyberCore::ResourceRequest&);
 #endif
-WebCore::ResourceError cannotShowMIMETypeError(const WebCore::ResourceResponse&);
-WebCore::ResourceError fileDoesNotExistError(const WebCore::ResourceResponse&);
-WebCore::ResourceError pluginWillHandleLoadError(const WebCore::ResourceResponse&);
+CyberCore::ResourceError cannotShowMIMETypeError(const CyberCore::ResourceResponse&);
+CyberCore::ResourceError fileDoesNotExistError(const CyberCore::ResourceResponse&);
+CyberCore::ResourceError pluginWillHandleLoadError(const CyberCore::ResourceResponse&);
 
 #if USE(SOUP)
-WebCore::ResourceError downloadNetworkError(const URL&, const WTF::String&);
-WebCore::ResourceError downloadCancelledByUserError(const WebCore::ResourceResponse&);
-WebCore::ResourceError downloadDestinationError(const WebCore::ResourceResponse&, const WTF::String&);
+CyberCore::ResourceError downloadNetworkError(const URL&, const WTF::String&);
+CyberCore::ResourceError downloadCancelledByUserError(const CyberCore::ResourceResponse&);
+CyberCore::ResourceError downloadDestinationError(const CyberCore::ResourceResponse&, const WTF::String&);
 #endif
 
 #if PLATFORM(GTK)
-WebCore::ResourceError invalidPageRangeToPrint(const URL&);
+CyberCore::ResourceError invalidPageRangeToPrint(const URL&);
 #endif
 
 } // namespace WebKit

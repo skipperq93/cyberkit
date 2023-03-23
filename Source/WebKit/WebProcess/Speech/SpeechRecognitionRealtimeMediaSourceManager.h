@@ -33,11 +33,11 @@
 #include <CyberCore/PageIdentifier.h>
 #include <CyberCore/RealtimeMediaSourceIdentifier.h>
 
-namespace WebCore {
+namespace CyberCore {
 class CaptureDevice;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class SpeechRecognitionRealtimeMediaSourceManager final : public IPC::MessageReceiver, private IPC::MessageSender {
     WTF_MAKE_FAST_ALLOCATED;
@@ -47,10 +47,10 @@ public:
 
 private:
     // Messages::SpeechRecognitionRealtimeMediaSourceManager
-    void createSource(WebCore::RealtimeMediaSourceIdentifier, const WebCore::CaptureDevice&, WebCore::PageIdentifier);
-    void deleteSource(WebCore::RealtimeMediaSourceIdentifier);
-    void start(WebCore::RealtimeMediaSourceIdentifier);
-    void stop(WebCore::RealtimeMediaSourceIdentifier);
+    void createSource(CyberCore::RealtimeMediaSourceIdentifier, const CyberCore::CaptureDevice&, CyberCore::PageIdentifier);
+    void deleteSource(CyberCore::RealtimeMediaSourceIdentifier);
+    void start(CyberCore::RealtimeMediaSourceIdentifier);
+    void stop(CyberCore::RealtimeMediaSourceIdentifier);
 #if ENABLE(SANDBOX_EXTENSIONS)
     void grantSandboxExtensions(SandboxExtension::Handle&&, SandboxExtension::Handle&&, SandboxExtension::Handle&&);
     void revokeSandboxExtensions();
@@ -67,7 +67,7 @@ private:
 
     class Source;
     friend class Source;
-    HashMap<WebCore::RealtimeMediaSourceIdentifier, std::unique_ptr<Source>> m_sources;
+    HashMap<CyberCore::RealtimeMediaSourceIdentifier, std::unique_ptr<Source>> m_sources;
 
 #if ENABLE(SANDBOX_EXTENSIONS)
     RefPtr<SandboxExtension> m_machBootstrapExtension;
@@ -76,6 +76,6 @@ private:
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

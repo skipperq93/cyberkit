@@ -30,7 +30,7 @@
 #include <CyberCore/ResourceLoadStatistics.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 static double vectorLength(unsigned a, unsigned b, unsigned c)
 {

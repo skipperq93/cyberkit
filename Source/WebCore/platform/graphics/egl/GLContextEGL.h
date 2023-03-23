@@ -61,7 +61,7 @@ typedef EGLImageKHR (*PFNEGLCREATEIMAGEKHRPROC) (EGLDisplay, EGLContext, EGLenum
 typedef EGLBoolean (*PFNEGLDESTROYIMAGEKHRPROC) (EGLDisplay, EGLImageKHR);
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class GLContextEGL final : public GLContext {
     WTF_MAKE_NONCOPYABLE(GLContextEGL);
@@ -144,7 +144,7 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_GLCONTEXT(GLContextEGL, isEGLContext());
 

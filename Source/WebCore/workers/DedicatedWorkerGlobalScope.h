@@ -40,7 +40,7 @@ class JSObject;
 class JSValue;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class ContentSecurityPolicyResponseHeaders;
 class DedicatedWorkerThread;
@@ -60,7 +60,7 @@ class WorkerAnimationController;
 using CallbackId = int;
 #endif
 
-using TransferredMessagePort = std::pair<WebCore::MessagePortIdentifier, WebCore::MessagePortIdentifier>;
+using TransferredMessagePort = std::pair<CyberCore::MessagePortIdentifier, CyberCore::MessagePortIdentifier>;
 
 class DedicatedWorkerGlobalScope final : public WorkerGlobalScope {
     WTF_MAKE_ISO_ALLOCATED(DedicatedWorkerGlobalScope);
@@ -110,9 +110,9 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::DedicatedWorkerGlobalScope)
-    static bool isType(const WebCore::ScriptExecutionContext& context) { return is<WebCore::WorkerGlobalScope>(context) && downcast<WebCore::WorkerGlobalScope>(context).type() == WebCore::WorkerGlobalScope::Type::DedicatedWorker; }
-    static bool isType(const WebCore::WorkerGlobalScope& context) { return context.type() == WebCore::WorkerGlobalScope::Type::DedicatedWorker; }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::DedicatedWorkerGlobalScope)
+    static bool isType(const CyberCore::ScriptExecutionContext& context) { return is<CyberCore::WorkerGlobalScope>(context) && downcast<CyberCore::WorkerGlobalScope>(context).type() == CyberCore::WorkerGlobalScope::Type::DedicatedWorker; }
+    static bool isType(const CyberCore::WorkerGlobalScope& context) { return context.type() == CyberCore::WorkerGlobalScope::Type::DedicatedWorker; }
 SPECIALIZE_TYPE_TRAITS_END()

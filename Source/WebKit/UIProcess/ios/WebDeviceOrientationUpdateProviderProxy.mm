@@ -32,7 +32,7 @@
 #import "WebDeviceOrientationUpdateProviderProxyMessages.h"
 #import "WebPageProxy.h"
 #import "WebProcessProxy.h"
-#import <CyberCore/WebCoreMotionManager.h>
+#import <CyberCore/CyberCoreMotionManager.h>
 
 namespace WebKit {
 
@@ -49,22 +49,22 @@ WebDeviceOrientationUpdateProviderProxy::~WebDeviceOrientationUpdateProviderProx
 
 void WebDeviceOrientationUpdateProviderProxy::startUpdatingDeviceOrientation()
 {
-    [[WebCoreMotionManager sharedManager] addOrientationClient:this];
+    [[CyberCoreMotionManager sharedManager] addOrientationClient:this];
 }
 
 void WebDeviceOrientationUpdateProviderProxy::stopUpdatingDeviceOrientation()
 {
-    [[WebCoreMotionManager sharedManager] removeOrientationClient:this];
+    [[CyberCoreMotionManager sharedManager] removeOrientationClient:this];
 }
 
 void WebDeviceOrientationUpdateProviderProxy::startUpdatingDeviceMotion()
 {
-    [[WebCoreMotionManager sharedManager] addMotionClient:this];
+    [[CyberCoreMotionManager sharedManager] addMotionClient:this];
 }
 
 void WebDeviceOrientationUpdateProviderProxy::stopUpdatingDeviceMotion()
 {
-    [[WebCoreMotionManager sharedManager] removeMotionClient:this];
+    [[CyberCoreMotionManager sharedManager] removeMotionClient:this];
 }
 
 void WebDeviceOrientationUpdateProviderProxy::orientationChanged(double alpha, double beta, double gamma, double compassHeading, double compassAccuracy)

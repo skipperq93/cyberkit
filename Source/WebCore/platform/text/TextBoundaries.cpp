@@ -31,7 +31,7 @@
 #include <wtf/text/StringImpl.h>
 #include <wtf/text/TextBreakIterator.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 unsigned endOfFirstWordBoundaryContext(StringView text)
 {
@@ -109,4 +109,4 @@ void findEndWordBoundary(StringView text, int position, int* end)
 
 #endif // !PLATFORM(COCOA)
 
-} // namespace WebCore
+} // namespace CyberCore

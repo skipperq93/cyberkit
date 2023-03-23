@@ -31,7 +31,7 @@
  *  JavaScriptCore heap at this time.
  *  The following memory metrics are recorded:
  *
- *      WebCore
+ *      CyberCore
  *          - FastMalloc allocations bytes              (in use or committed)
  *      JavaScriptCore
  *          - Garbage collector heap bytes              (in use or committed)
@@ -97,8 +97,8 @@ private:
     
     FileSystem::PlatformFileHandle m_sampleLogFile { FileSystem::invalidPlatformFileHandle };
     String m_sampleLogFilePath;
-    WebCore::Timer m_sampleTimer;
-    WebCore::Timer m_stopTimer;
+    CyberCore::Timer m_sampleTimer;
+    CyberCore::Timer m_stopTimer;
     bool m_isRunning;
     double m_runningTime;
     RefPtr<SandboxExtension> m_sampleLogSandboxExtension;

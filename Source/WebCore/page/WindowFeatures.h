@@ -34,7 +34,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FloatRect;
 
@@ -66,4 +66,4 @@ OptionSet<DisabledAdaptations> parseDisabledAdaptations(StringView);
 enum class FeatureMode { Window, Viewport };
 void processFeaturesString(StringView features, FeatureMode, const Function<void(StringView type, StringView value)>& callback);
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -29,7 +29,7 @@
 
 OBJC_CLASS NSObject;
 
-namespace WebCore {
+namespace CyberCore {
 
 class PlatformCALayerCocoa final : public PlatformCALayer {
 public:
@@ -119,7 +119,7 @@ public:
     void setContents(CFTypeRef) override;
     void clearContents() override;
 #if HAVE(IOSURFACE)
-    void setContents(const WebCore::IOSurface&) override;
+    void setContents(const CyberCore::IOSurface&) override;
     void setContents(const WTF::MachSendRight&) override;
 #endif
 
@@ -228,6 +228,6 @@ private:
     bool m_backingStoreAttached { true };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_PLATFORM_CALAYER(WebCore::PlatformCALayerCocoa, type() == WebCore::PlatformCALayer::Type::Cocoa)
+SPECIALIZE_TYPE_TRAITS_PLATFORM_CALAYER(CyberCore::PlatformCALayerCocoa, type() == CyberCore::PlatformCALayer::Type::Cocoa)

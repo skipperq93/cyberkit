@@ -33,12 +33,12 @@
 
 - (NSString *)data
 {
-    return downcast<WebCore::Text>(*_impl).data();
+    return downcast<CyberCore::Text>(*_impl).data();
 }
 
 - (void)setData:(NSString *)data
 {
-    downcast<WebCore::Text>(*_impl).setData(data);
+    downcast<CyberCore::Text>(*_impl).setData(data);
 }
 
 @end

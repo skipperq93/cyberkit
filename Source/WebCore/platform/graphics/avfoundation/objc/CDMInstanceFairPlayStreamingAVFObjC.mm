@@ -56,13 +56,13 @@ static NSString * const ContentKeyReportGroupKey = @"ContentKeyReportGroup";
 #endif
 static const NSInteger SecurityLevelError = -42811;
 
-@interface WebCoreFPSContentKeySessionDelegate : NSObject<AVContentKeySessionDelegate> {
-    WebCore::AVContentKeySessionDelegateClient* _parent;
+@interface CyberCoreFPSContentKeySessionDelegate : NSObject<AVContentKeySessionDelegate> {
+    CyberCore::AVContentKeySessionDelegateClient* _parent;
 }
 @end
 
-@implementation WebCoreFPSContentKeySessionDelegate
-- (id)initWithParent:(WebCore::AVContentKeySessionDelegateClient *)parent
+@implementation CyberCoreFPSContentKeySessionDelegate
+- (id)initWithParent:(CyberCore::AVContentKeySessionDelegateClient *)parent
 {
     if (!(self = [super init]))
         return nil;
@@ -179,8 +179,8 @@ template<typename>
 struct LogArgument;
 
 template<>
-struct LogArgument<WebCore::CDMInstanceFairPlayStreamingAVFObjC::Keys> {
-    static String toString(const WebCore::CDMInstanceFairPlayStreamingAVFObjC::Keys& keys)
+struct LogArgument<CyberCore::CDMInstanceFairPlayStreamingAVFObjC::Keys> {
+    static String toString(const CyberCore::CDMInstanceFairPlayStreamingAVFObjC::Keys& keys)
     {
         StringBuilder builder;
         builder.append("[");
@@ -193,7 +193,7 @@ struct LogArgument<WebCore::CDMInstanceFairPlayStreamingAVFObjC::Keys> {
 
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 #if !RELEASE_LOG_DISABLED
 static WTFLogChannel& logChannel() { return LogEME; }
@@ -275,7 +275,7 @@ AVContentKeySession* CDMInstanceFairPlayStreamingAVFObjC::contentKeySession()
         return nullptr;
 
     if (!m_delegate)
-        m_delegate = adoptNS([[WebCoreFPSContentKeySessionDelegate alloc] initWithParent:this]);
+        m_delegate = adoptNS([[CyberCoreFPSContentKeySessionDelegate alloc] initWithParent:this]);
 
     [m_session setDelegate:m_delegate.get() queue:dispatch_get_main_queue()];
     return m_session.get();
@@ -678,7 +678,7 @@ void CDMInstanceFairPlayStreamingAVFObjC::sessionKeyStatusesChanged(const CDMIns
 
 CDMInstanceSessionFairPlayStreamingAVFObjC::CDMInstanceSessionFairPlayStreamingAVFObjC(Ref<CDMInstanceFairPlayStreamingAVFObjC>&& instance)
     : m_instance(WTFMove(instance))
-    , m_delegate(adoptNS([[WebCoreFPSContentKeySessionDelegate alloc] initWithParent:this]))
+    , m_delegate(adoptNS([[CyberCoreFPSContentKeySessionDelegate alloc] initWithParent:this]))
 #if !RELEASE_LOG_DISABLED
     , m_logger(m_instance->logger())
 #endif

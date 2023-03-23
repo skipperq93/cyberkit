@@ -39,7 +39,7 @@ namespace WebKit {
 
 class WebGeolocationPosition : public API::ObjectImpl<API::Object::Type::GeolocationPosition> {
 public:
-    static Ref<WebGeolocationPosition> create(WebCore::GeolocationPositionData&&);
+    static Ref<WebGeolocationPosition> create(CyberCore::GeolocationPositionData&&);
 
     virtual ~WebGeolocationPosition();
 
@@ -52,15 +52,15 @@ public:
     std::optional<double> heading() const { return m_corePosition.heading; }
     std::optional<double> speed() const { return m_corePosition.speed; }
 
-    const WebCore::GeolocationPositionData& corePosition() const { return m_corePosition; }
+    const CyberCore::GeolocationPositionData& corePosition() const { return m_corePosition; }
 
 private:
-    explicit WebGeolocationPosition(WebCore::GeolocationPositionData&& geolocationPosition)
+    explicit WebGeolocationPosition(CyberCore::GeolocationPositionData&& geolocationPosition)
         : m_corePosition(WTFMove(geolocationPosition))
     {
     }
 
-    WebCore::GeolocationPositionData m_corePosition;
+    CyberCore::GeolocationPositionData m_corePosition;
 };
 
 } // namespace WebKit

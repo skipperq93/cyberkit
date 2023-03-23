@@ -26,7 +26,7 @@
 #include <wtf/glib/WTFGType.h>
 #include <wtf/text/CString.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 /**
  * WebKitURIResponse:
@@ -286,14 +286,14 @@ SoupMessageHeaders* webkit_uri_response_get_http_headers(WebKitURIResponse* resp
     return response->priv->httpHeaders.get();
 }
 
-WebKitURIResponse* webkitURIResponseCreateForResourceResponse(const WebCore::ResourceResponse& resourceResponse)
+WebKitURIResponse* webkitURIResponseCreateForResourceResponse(const CyberCore::ResourceResponse& resourceResponse)
 {
     WebKitURIResponse* uriResponse = WEBKIT_URI_RESPONSE(g_object_new(WEBKIT_TYPE_URI_RESPONSE, NULL));
     uriResponse->priv->resourceResponse = resourceResponse;
     return uriResponse;
 }
 
-const WebCore::ResourceResponse& webkitURIResponseGetResourceResponse(WebKitURIResponse* uriResponse)
+const CyberCore::ResourceResponse& webkitURIResponseGetResourceResponse(WebKitURIResponse* uriResponse)
 {
     return uriResponse->priv->resourceResponse;
 }

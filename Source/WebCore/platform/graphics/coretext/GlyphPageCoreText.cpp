@@ -34,7 +34,7 @@
 #include <pal/spi/cf/CoreTextSPI.h>
 #include <pal/spi/cg/CoreGraphicsSPI.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static bool shouldFillWithVerticalGlyphs(const UChar* buffer, unsigned bufferLength, const Font& font)
 {
@@ -73,4 +73,4 @@ bool GlyphPage::fill(UChar* buffer, unsigned bufferLength)
     return haveGlyphs;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

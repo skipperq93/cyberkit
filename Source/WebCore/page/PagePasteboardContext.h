@@ -29,7 +29,7 @@
 #include "PasteboardContext.h"
 #include <wtf/TypeCasts.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class PagePasteboardContext final : public PasteboardContext {
     WTF_MAKE_FAST_ALLOCATED;
@@ -54,9 +54,9 @@ private:
     std::optional<PageIdentifier> m_pageID;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::PagePasteboardContext)
-    static bool isType(const WebCore::PasteboardContext& context) { return context.isPagePasteboardContext(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::PagePasteboardContext)
+    static bool isType(const CyberCore::PasteboardContext& context) { return context.isPagePasteboardContext(); }
 SPECIALIZE_TYPE_TRAITS_END()
 

@@ -29,7 +29,7 @@
 #include <wtf/MediaTime.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // 4 bytes : 4CC : identifier = 'vttc'
 // 4 bytes : unsigned : length
@@ -137,7 +137,7 @@ private:
     String m_cueText;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
@@ -145,8 +145,8 @@ template<typename Type>
 struct LogArgument;
 
 template <>
-struct LogArgument<WebCore::ISOWebVTTCue> {
-    static String toString(const WebCore::ISOWebVTTCue& cue)
+struct LogArgument<CyberCore::ISOWebVTTCue> {
+    static String toString(const CyberCore::ISOWebVTTCue& cue)
     {
         return cue.toJSONString();
     }

@@ -28,7 +28,7 @@
 #include "FilterEffectGeometry.h"
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct SVGFilterExpressionNode {
     unsigned index;
@@ -39,4 +39,4 @@ struct SVGFilterExpressionNode {
 using SVGFilterExpressionReference = Vector<SVGFilterExpressionNode>;
 
 
-} // namespace WebCore
+} // namespace CyberCore

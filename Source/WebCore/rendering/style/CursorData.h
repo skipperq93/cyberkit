@@ -27,7 +27,7 @@
 #include "IntPoint.h"
 #include "StyleImage.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CursorData {
 public:
@@ -58,4 +58,4 @@ private:
     IntPoint m_hotSpot; // for CSS3 support
 };
 
-} // namespace WebCore
+} // namespace CyberCore

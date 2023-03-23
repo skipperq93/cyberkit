@@ -34,7 +34,7 @@
 #include "RenderStyle.h"
 #include "TransformFunctions.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace Style {
 
@@ -199,4 +199,4 @@ std::optional<FilterOperations> createFilterOperations(const Document& document,
 
 } // namespace Style
 
-} // namespace WebCore
+} // namespace CyberCore

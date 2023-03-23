@@ -41,7 +41,7 @@
 GST_DEBUG_CATEGORY(webkit_webrtcdec_debug);
 #define GST_CAT_DEFAULT webkit_webrtcdec_debug
 
-namespace WebCore {
+namespace CyberCore {
 
 typedef struct {
     uint64_t timestamp;

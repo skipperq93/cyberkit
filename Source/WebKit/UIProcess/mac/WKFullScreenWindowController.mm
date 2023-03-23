@@ -44,8 +44,8 @@
 #import <CyberCore/LocalizedStrings.h>
 #import <CyberCore/VideoFullscreenInterfaceMac.h>
 #import <CyberCore/VideoFullscreenModel.h>
-#import <CyberCore/WebCoreFullScreenPlaceholderView.h>
-#import <CyberCore/WebCoreFullScreenWindow.h>
+#import <CyberCore/CyberCoreFullScreenPlaceholderView.h>
+#import <CyberCore/CyberCoreFullScreenWindow.h>
 #import <pal/spi/cg/CoreGraphicsSPI.h>
 #import <pal/spi/mac/NSWindowSPI.h>
 #import <pal/system/SleepDisabler.h>
@@ -153,7 +153,7 @@ static void makeResponderFirstResponderIfDescendantOfView(NSWindow *window, NSRe
         || _fullScreenState == InFullScreen;
 }
 
-- (WebCoreFullScreenPlaceholderView*)webViewPlaceholder
+- (CyberCoreFullScreenPlaceholderView*)webViewPlaceholder
 {
     return _webViewPlaceholder.get();
 }
@@ -228,7 +228,7 @@ static RetainPtr<CGImageRef> createImageWithCopiedData(CGImageRef sourceImage)
     if (!screen)
         screen = [NSScreen mainScreen];
 
-    NSRect screenFrame = WebCore::safeScreenFrame(screen);
+    NSRect screenFrame = CyberCore::safeScreenFrame(screen);
     NSRect webViewFrame = convertRectToScreen([_webView window], [_webView convertRect:[_webView frame] toView:nil]);
 
     // Flip coordinate system:
@@ -259,7 +259,7 @@ static RetainPtr<CGImageRef> createImageWithCopiedData(CGImageRef sourceImage)
 
     // Swap the webView placeholder into place.
     if (!_webViewPlaceholder)
-        _webViewPlaceholder = adoptNS([[WebCoreFullScreenPlaceholderView alloc] initWithFrame:[_webView frame]]);
+        _webViewPlaceholder = adoptNS([[CyberCoreFullScreenPlaceholderView alloc] initWithFrame:[_webView frame]]);
     [_webViewPlaceholder setTarget:nil];
     [_webViewPlaceholder setContents:(__bridge id)webViewContents.get()];
     self.savedConstraints = _webView.superview.constraints;
@@ -271,7 +271,7 @@ static RetainPtr<CGImageRef> createImageWithCopiedData(CGImageRef sourceImage)
     _webView.frame = NSInsetRect(contentView.bounds, 0, -_page->topContentInset());
 
     _savedScale = _page->pageScaleFactor();
-    _page->scalePage(1, WebCore::IntPoint());
+    _page->scalePage(1, CyberCore::IntPoint());
     [self _manager]->setAnimatingFullScreen(true);
     [self _manager]->willEnterFullScreen();
 }
@@ -362,7 +362,7 @@ static const float minVideoWidth = 468; // Keep in sync with `--controls-bar-wid
         makeResponderFirstResponderIfDescendantOfView(_webView.window, firstResponder, _webView);
         [[_webView window] makeKeyAndOrderFront:self];
 
-        _page->scalePage(_savedScale, WebCore::IntPoint());
+        _page->scalePage(_savedScale, CyberCore::IntPoint());
         [self _manager]->restoreScrollPosition();
         _page->setTopContentInset(_savedTopContentInset);
         [self _manager]->setAnimatingFullScreen(false);
@@ -498,7 +498,7 @@ static RetainPtr<CGImageRef> takeWindowSnapshot(CGSWindowID windowID, bool captu
     [CATransaction begin];
     [CATransaction setDisableActions:YES];
     NSRect exitPlaceholderScreenRect = _initialFrame;
-    exitPlaceholderScreenRect.origin.y = NSMaxY(WebCore::safeScreenFrame([[NSScreen screens] objectAtIndex:0])) - NSMaxY(exitPlaceholderScreenRect);
+    exitPlaceholderScreenRect.origin.y = NSMaxY(CyberCore::safeScreenFrame([[NSScreen screens] objectAtIndex:0])) - NSMaxY(exitPlaceholderScreenRect);
 
     RetainPtr<CGImageRef> webViewContents = takeWindowSnapshot([[_webView window] windowNumber], true);
     webViewContents = adoptCF(CGImageCreateWithImageInRect(webViewContents.get(), NSRectToCGRect(exitPlaceholderScreenRect)));
@@ -534,7 +534,7 @@ static RetainPtr<CGImageRef> takeWindowSnapshot(CGSWindowID windowID, bool captu
     // These messages must be sent after the swap or flashing will occur during forceRepaint:
     [self _manager]->setAnimatingFullScreen(false);
     [self _manager]->didExitFullScreen();
-    _page->scalePage(_savedScale, WebCore::IntPoint());
+    _page->scalePage(_savedScale, CyberCore::IntPoint());
     [self _manager]->restoreScrollPosition();
     _page->setTopContentInset(_savedTopContentInset);
 
@@ -726,10 +726,10 @@ static CAMediaTimingFunction *timingFunctionForDuration(CFTimeInterval duration)
 }
 
 enum AnimationDirection { AnimateIn, AnimateOut };
-static CAAnimation *zoomAnimation(const WebCore::FloatRect& initialFrame, const WebCore::FloatRect& finalFrame, const WebCore::FloatRect& screenFrame, CFTimeInterval duration, float speed, AnimationDirection direction)
+static CAAnimation *zoomAnimation(const CyberCore::FloatRect& initialFrame, const CyberCore::FloatRect& finalFrame, const CyberCore::FloatRect& screenFrame, CFTimeInterval duration, float speed, AnimationDirection direction)
 {
     CABasicAnimation *scaleAnimation = [CABasicAnimation animationWithKeyPath:@"transform"];
-    WebCore::FloatRect scaleRect = smallestRectWithAspectRatioAroundRect(finalFrame.size().aspectRatio(), initialFrame);
+    CyberCore::FloatRect scaleRect = smallestRectWithAspectRatioAroundRect(finalFrame.size().aspectRatio(), initialFrame);
     CGAffineTransform resetOriginTransform = CGAffineTransformMakeTranslation(screenFrame.x() - finalFrame.x(), screenFrame.y() - finalFrame.y());
     CGAffineTransform scaleTransform = CGAffineTransformMakeScale(scaleRect.width() / finalFrame.width(), scaleRect.height() / finalFrame.height());
     CGAffineTransform translateTransform = CGAffineTransformMakeTranslation(scaleRect.x() - screenFrame.x(), scaleRect.y() - screenFrame.y());
@@ -748,7 +748,7 @@ static CAAnimation *zoomAnimation(const WebCore::FloatRect& initialFrame, const 
     return scaleAnimation;
 }
 
-static CALayer *createMask(const WebCore::FloatRect& bounds)
+static CALayer *createMask(const CyberCore::FloatRect& bounds)
 {
     CALayer *maskLayer = [CALayer layer];
     maskLayer.anchorPoint = CGPointZero;
@@ -758,18 +758,18 @@ static CALayer *createMask(const WebCore::FloatRect& bounds)
     return maskLayer;
 }
 
-static CAAnimation *maskAnimation(const WebCore::FloatRect& initialFrame, const WebCore::FloatRect& finalFrame, const WebCore::FloatRect& screenFrame, CFTimeInterval duration, float speed, AnimationDirection direction)
+static CAAnimation *maskAnimation(const CyberCore::FloatRect& initialFrame, const CyberCore::FloatRect& finalFrame, const CyberCore::FloatRect& screenFrame, CFTimeInterval duration, float speed, AnimationDirection direction)
 {
     CABasicAnimation *boundsAnimation = [CABasicAnimation animationWithKeyPath:@"bounds"];
-    WebCore::FloatRect boundsRect = largestRectWithAspectRatioInsideRect(initialFrame.size().aspectRatio(), finalFrame);
-    NSValue *boundsValue = [NSValue valueWithRect:WebCore::FloatRect(WebCore::FloatPoint(), boundsRect.size())];
+    CyberCore::FloatRect boundsRect = largestRectWithAspectRatioInsideRect(initialFrame.size().aspectRatio(), finalFrame);
+    NSValue *boundsValue = [NSValue valueWithRect:CyberCore::FloatRect(CyberCore::FloatPoint(), boundsRect.size())];
     if (direction == AnimateIn)
         boundsAnimation.fromValue = boundsValue;
     else
         boundsAnimation.toValue = boundsValue;
 
     CABasicAnimation *positionAnimation = [CABasicAnimation animationWithKeyPath:@"position"];
-    NSValue *positionValue = [NSValue valueWithPoint:WebCore::FloatPoint(boundsRect.location() - screenFrame.location())];
+    NSValue *positionValue = [NSValue valueWithPoint:CyberCore::FloatPoint(boundsRect.location() - screenFrame.location())];
     if (direction == AnimateIn)
         positionAnimation.fromValue = positionValue;
     else

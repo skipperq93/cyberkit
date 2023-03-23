@@ -30,7 +30,7 @@
 #include <wtf/Noncopyable.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderBlockFlow;
 class RenderBox;
@@ -232,4 +232,4 @@ inline void RenderLayoutState::resetLineClamp()
     m_visibleLineCountForLineClamp = { };
 }
 
-} // namespace WebCore
+} // namespace CyberCore

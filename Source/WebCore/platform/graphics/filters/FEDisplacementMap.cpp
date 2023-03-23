@@ -29,7 +29,7 @@
 #include "Filter.h"
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<FEDisplacementMap> FEDisplacementMap::create(ChannelSelectorType xChannelSelector, ChannelSelectorType yChannelSelector, float scale)
 {
@@ -129,4 +129,4 @@ TextStream& FEDisplacementMap::externalRepresentation(TextStream& ts, FilterRepr
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

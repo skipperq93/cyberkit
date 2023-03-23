@@ -34,7 +34,7 @@
 #include "Logging.h"
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace DisplayList {
 
 Replayer::Replayer(GraphicsContext& context, const DisplayList& displayList, const ResourceHeap* resourceHeap)
@@ -222,4 +222,4 @@ ReplayResult Replayer::replay(const FloatRect& initialClip, bool trackReplayList
 }
 
 } // namespace DisplayList
-} // namespace WebCore
+} // namespace CyberCore

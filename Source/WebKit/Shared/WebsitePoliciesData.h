@@ -44,23 +44,23 @@ class Decoder;
 class Encoder;
 }
 
-namespace WebCore {
+namespace CyberCore {
 class DocumentLoader;
 }
 
 namespace WebKit {
 
 struct WebsitePoliciesData {
-    static void applyToDocumentLoader(WebsitePoliciesData&&, WebCore::DocumentLoader&);
+    static void applyToDocumentLoader(WebsitePoliciesData&&, CyberCore::DocumentLoader&);
 
-    WebCore::ContentExtensionEnablement contentExtensionEnablement;
+    CyberCore::ContentExtensionEnablement contentExtensionEnablement;
     HashMap<WTF::String, Vector<WTF::String>> activeContentRuleListActionPatterns;
     OptionSet<WebsiteAutoplayQuirk> allowedAutoplayQuirks;
     WebsiteAutoplayPolicy autoplayPolicy { WebsiteAutoplayPolicy::Default };
 #if ENABLE(DEVICE_ORIENTATION)
-    WebCore::DeviceOrientationOrMotionPermissionState deviceOrientationAndMotionAccessState;
+    CyberCore::DeviceOrientationOrMotionPermissionState deviceOrientationAndMotionAccessState;
 #endif
-    Vector<WebCore::CustomHeaderFields> customHeaderFields;
+    Vector<CyberCore::CustomHeaderFields> customHeaderFields;
     WebsitePopUpPolicy popUpPolicy { WebsitePopUpPolicy::Default };
     String customUserAgent;
     String customUserAgentAsSiteSpecificQuirks;
@@ -70,11 +70,11 @@ struct WebsitePoliciesData {
     WebsiteSimulatedMouseEventsDispatchPolicy simulatedMouseEventsDispatchPolicy { WebsiteSimulatedMouseEventsDispatchPolicy::Default };
     WebsiteLegacyOverflowScrollingTouchPolicy legacyOverflowScrollingTouchPolicy { WebsiteLegacyOverflowScrollingTouchPolicy::Default };
     bool allowContentChangeObserverQuirk { false };
-    WebCore::AllowsContentJavaScript allowsContentJavaScript { WebCore::AllowsContentJavaScript::Yes };
-    WebCore::MouseEventPolicy mouseEventPolicy { WebCore::MouseEventPolicy::Default };
-    WebCore::ModalContainerObservationPolicy modalContainerObservationPolicy { WebCore::ModalContainerObservationPolicy::Disabled };
-    WebCore::ColorSchemePreference colorSchemePreference { WebCore::ColorSchemePreference::NoPreference };
-    OptionSet<WebCore::NetworkConnectionIntegrity> networkConnectionIntegrityPolicy;
+    CyberCore::AllowsContentJavaScript allowsContentJavaScript { CyberCore::AllowsContentJavaScript::Yes };
+    CyberCore::MouseEventPolicy mouseEventPolicy { CyberCore::MouseEventPolicy::Default };
+    CyberCore::ModalContainerObservationPolicy modalContainerObservationPolicy { CyberCore::ModalContainerObservationPolicy::Disabled };
+    CyberCore::ColorSchemePreference colorSchemePreference { CyberCore::ColorSchemePreference::NoPreference };
+    OptionSet<CyberCore::NetworkConnectionIntegrity> networkConnectionIntegrityPolicy;
     bool idempotentModeAutosizingOnlyHonorsPercentages { false };
     bool allowPrivacyProxy { true };
 };

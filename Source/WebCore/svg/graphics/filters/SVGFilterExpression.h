@@ -28,7 +28,7 @@
 #include "FilterEffectGeometry.h"
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FilterEffect;
 
@@ -40,4 +40,4 @@ struct SVGFilterExpressionTerm {
 
 using SVGFilterExpression = Vector<SVGFilterExpressionTerm>;
 
-} // namespace WebCore
+} // namespace CyberCore

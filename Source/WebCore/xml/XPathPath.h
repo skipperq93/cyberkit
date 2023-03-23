@@ -28,7 +28,7 @@
 
 #include "XPathExpressionNode.h"
 
-namespace WebCore {
+namespace CyberCore {
     namespace XPath {
 
         class Step;
@@ -77,4 +77,4 @@ namespace WebCore {
         };
 
     } // namespace XPath
-} // namespace WebCore
+} // namespace CyberCore

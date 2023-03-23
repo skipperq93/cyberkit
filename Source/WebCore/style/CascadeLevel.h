@@ -27,7 +27,7 @@
 
 #include <wtf/OptionSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace Style {
 
 enum class CascadeLevel : uint8_t {

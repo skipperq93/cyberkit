@@ -35,7 +35,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class WorkletGlobalScopeProxy;
@@ -68,4 +68,4 @@ private:
     HashSet<RefPtr<WorkletPendingTasks>> m_pendingTasksSet;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

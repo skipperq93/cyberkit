@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 class ResourceLoader;
 
 namespace BundleResourceLoader {

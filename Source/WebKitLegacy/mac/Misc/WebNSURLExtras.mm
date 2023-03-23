@@ -29,12 +29,12 @@
 
 #import "WebNSURLExtras.h"
 
-#import "WebKitNSStringExtras.h"
+#import "CyberKitNSStringExtras.h"
 #import "WebLocalizableStrings.h"
 #import "WebNSDataExtras.h"
 #import <Foundation/NSURLRequest.h>
 #import <CyberCore/LoaderNSURLExtras.h>
-#import <CyberCore/WebCoreNSURLExtras.h>
+#import <CyberCore/CyberCoreNSURLExtras.h>
 #import <pal/text/TextEncoding.h>
 #import <unicode/uchar.h>
 #import <unicode/uscript.h>
@@ -97,7 +97,7 @@
 
 - (NSURL *)_webkit_canonicalize
 {
-    return WebCore::URLByCanonicalizingURL(self);
+    return CyberCore::URLByCanonicalizingURL(self);
 }
 
 - (NSURL *)_webkit_canonicalize_with_wtf

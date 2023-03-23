@@ -34,7 +34,7 @@ typedef struct _GdkClipboard GdkClipboard;
 typedef struct _GtkClipboard GtkClipboard;
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 class SelectionData;
 class SharedBuffer;
 }
@@ -55,8 +55,8 @@ public:
     void formats(CompletionHandler<void(Vector<String>&&)>&&);
     void readText(CompletionHandler<void(String&&)>&&);
     void readFilePaths(CompletionHandler<void(Vector<String>&&)>&&);
-    void readBuffer(const char*, CompletionHandler<void(Ref<WebCore::SharedBuffer>&&)>&&);
-    void write(WebCore::SelectionData&&);
+    void readBuffer(const char*, CompletionHandler<void(Ref<CyberCore::SharedBuffer>&&)>&&);
+    void write(CyberCore::SelectionData&&);
     void clear();
 
 private:

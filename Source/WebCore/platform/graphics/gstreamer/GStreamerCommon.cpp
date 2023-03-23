@@ -79,7 +79,7 @@
 GST_DEBUG_CATEGORY(webkit_gst_common_debug);
 #define GST_CAT_DEFAULT webkit_gst_common_debug
 
-namespace WebCore {
+namespace CyberCore {
 
 static GstClockTime s_webkitGstInitTime;
 
@@ -117,7 +117,7 @@ void webkitGstVideoFormatInfoComponent(const GstVideoFormatInfo* info, guint pla
 #endif
 
 #if ENABLE(VIDEO)
-bool getVideoSizeAndFormatFromCaps(const GstCaps* caps, WebCore::IntSize& size, GstVideoFormat& format, int& pixelAspectRatioNumerator, int& pixelAspectRatioDenominator, int& stride)
+bool getVideoSizeAndFormatFromCaps(const GstCaps* caps, CyberCore::IntSize& size, GstVideoFormat& format, int& pixelAspectRatioNumerator, int& pixelAspectRatioDenominator, int& stride)
 {
     if (!doCapsHaveType(caps, GST_VIDEO_CAPS_TYPE_PREFIX)) {
         GST_WARNING("Failed to get the video size and format, these are not a video caps");
@@ -1060,6 +1060,6 @@ bool gstObjectHasProperty(GstPad* pad, const char* name)
     return gstObjectHasProperty(GST_OBJECT_CAST(pad), name);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(GSTREAMER)

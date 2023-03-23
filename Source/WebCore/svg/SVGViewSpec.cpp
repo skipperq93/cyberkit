@@ -30,7 +30,7 @@
 #include "SVGTransformable.h"
 #include <wtf/text/StringParsingBuffer.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 SVGViewSpec::SVGViewSpec(SVGElement& contextElement)
     : SVGFitToViewBox(&contextElement, SVGPropertyAccess::ReadOnly)

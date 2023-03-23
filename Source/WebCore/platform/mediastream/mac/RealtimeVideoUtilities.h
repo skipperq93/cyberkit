@@ -27,7 +27,7 @@
 
 #include <CoreVideo/CoreVideo.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static inline OSType preferedPixelBufferFormat()
 {

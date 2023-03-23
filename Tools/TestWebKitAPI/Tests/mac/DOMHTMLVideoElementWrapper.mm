@@ -47,7 +47,7 @@ static bool didFinishLoad;
 
 namespace TestWebKitAPI {
 
-TEST(WebKitLegacy, DOMHTMLVideoElementWrapper)
+TEST(CyberKitLegacy, DOMHTMLVideoElementWrapper)
 {
     RetainPtr<WebView> webView = adoptNS([[WebView alloc] initWithFrame:NSMakeRect(0, 0, 120, 200) frameName:nil groupName:nil]);
     RetainPtr<VideoWrapperFrameLoadDelegate> frameLoadDelegate = adoptNS([VideoWrapperFrameLoadDelegate new]);

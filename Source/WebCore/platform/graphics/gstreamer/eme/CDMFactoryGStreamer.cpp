@@ -37,7 +37,7 @@
 #include "CDMThunder.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 void CDMFactory::platformRegisterFactories(Vector<CDMFactory*>& factories)
 {
@@ -58,6 +58,6 @@ Vector<CDMProxyFactory*> CDMProxyFactory::platformRegisterFactories()
     return factories;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ENCRYPTED_MEDIA)

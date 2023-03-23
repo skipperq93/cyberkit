@@ -25,7 +25,7 @@
 #include "SVGFitToViewBox.h"
 #include "SVGMarkerTypes.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGMarkerElement final : public SVGElement, public SVGFitToViewBox {
     WTF_MAKE_ISO_ALLOCATED(SVGMarkerElement);
@@ -94,4 +94,4 @@ private:
     Ref<SVGAnimatedOrientType> m_orientType { SVGAnimatedOrientType::create(this, SVGMarkerOrientAngle) };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

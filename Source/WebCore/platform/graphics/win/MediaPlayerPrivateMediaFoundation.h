@@ -46,7 +46,7 @@
 #include <wtf/WeakPtr.h>
 #include <wtf/win/Win32Handle.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class MediaPlayerPrivateMediaFoundation final : public MediaPlayerPrivateInterface, public CanMakeWeakPtr<MediaPlayerPrivateMediaFoundation> {
     WTF_MAKE_FAST_ALLOCATED;
@@ -467,6 +467,6 @@ private:
     COMPtr<CustomVideoPresenter> m_presenter;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(VIDEO) && USE(MEDIA_FOUNDATION)

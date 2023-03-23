@@ -32,7 +32,7 @@
 typedef struct objc_object* id;
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class Element;
 class Scrollbar;
@@ -67,6 +67,6 @@ private:
     bool isPluginViewBase() const final { return true; }
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_WIDGET(PluginViewBase, isPluginViewBase())

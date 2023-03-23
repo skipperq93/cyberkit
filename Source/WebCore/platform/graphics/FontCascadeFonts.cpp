@@ -33,7 +33,7 @@
 #include "FontCascade.h"
 #include "GlyphPage.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class MixedFontGlyphPage {
     WTF_MAKE_FAST_ALLOCATED;

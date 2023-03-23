@@ -28,7 +28,7 @@
 #if ENABLE(TRACKING_PREVENTION)
 #include <wtf/OptionSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct CrossSiteNavigationDataTransfer {
     enum class Flag : uint8_t {
@@ -37,15 +37,15 @@ struct CrossSiteNavigationDataTransfer {
     };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::CrossSiteNavigationDataTransfer::Flag> {
+template<> struct EnumTraits<CyberCore::CrossSiteNavigationDataTransfer::Flag> {
     using values = EnumValues<
-        WebCore::CrossSiteNavigationDataTransfer::Flag,
-        WebCore::CrossSiteNavigationDataTransfer::Flag::DestinationLinkDecoration,
-        WebCore::CrossSiteNavigationDataTransfer::Flag::ReferrerLinkDecoration
+        CyberCore::CrossSiteNavigationDataTransfer::Flag,
+        CyberCore::CrossSiteNavigationDataTransfer::Flag::DestinationLinkDecoration,
+        CyberCore::CrossSiteNavigationDataTransfer::Flag::ReferrerLinkDecoration
     >;
 };
 

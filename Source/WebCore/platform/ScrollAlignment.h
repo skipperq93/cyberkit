@@ -47,7 +47,7 @@ namespace WTF {
 class TextStream;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ScrollAlignment {
 
@@ -86,4 +86,4 @@ struct ScrollAlignment {
 WEBCORE_EXPORT WTF::TextStream& operator<<(WTF::TextStream&, ScrollAlignment::Behavior);
 WEBCORE_EXPORT WTF::TextStream& operator<<(WTF::TextStream&, const ScrollAlignment&);
 
-}; // namespace WebCore
+}; // namespace CyberCore

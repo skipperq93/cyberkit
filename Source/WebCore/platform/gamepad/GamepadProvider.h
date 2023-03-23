@@ -31,7 +31,7 @@
 #include <wtf/Forward.h>
 #include <wtf/HashSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class GamepadProviderClient;
 class PlatformGamepad;
@@ -63,6 +63,6 @@ private:
     bool m_shouldMakeGamepadsVisible { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(GAMEPAD)

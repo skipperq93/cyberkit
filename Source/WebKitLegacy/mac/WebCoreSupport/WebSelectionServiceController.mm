@@ -33,14 +33,14 @@
 #import <CyberCore/Range.h>
 #import <pal/spi/mac/NSSharingServiceSPI.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 WebSelectionServiceController::WebSelectionServiceController(WebView *webView) 
     : WebSharingServicePickerClient(webView)
 {
 }
 
-void WebSelectionServiceController::handleSelectionServiceClick(WebCore::FrameSelection& selection, const Vector<String>& /*telephoneNumbers*/, const WebCore::IntPoint& point)
+void WebSelectionServiceController::handleSelectionServiceClick(CyberCore::FrameSelection& selection, const Vector<String>& /*telephoneNumbers*/, const CyberCore::IntPoint& point)
 {
     Page* page = [m_webView page];
     if (!page)

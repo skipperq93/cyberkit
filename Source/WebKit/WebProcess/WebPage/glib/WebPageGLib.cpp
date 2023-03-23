@@ -29,10 +29,10 @@
 #include "EditorState.h"
 #include "InputMethodState.h"
 #include "UserMessage.h"
-#include "WebKitExtensionManager.h"
-#include "WebKitUserMessage.h"
-#include "WebKitWebExtension.h"
-#include "WebKitWebPagePrivate.h"
+#include "CyberKitExtensionManager.h"
+#include "CyberKitUserMessage.h"
+#include "CyberKitWebExtension.h"
+#include "CyberKitWebPagePrivate.h"
 #include "WebPageProxyMessages.h"
 #include <CyberCore/Editor.h>
 #include <CyberCore/Frame.h>
@@ -45,8 +45,8 @@
 #include <CyberCore/VisiblePosition.h>
 #include <CyberCore/VisibleUnits.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 void WebPage::platformInitialize(const WebPageCreationParameters&)
 {
@@ -79,7 +79,7 @@ void WebPage::platformDetach()
 
 void WebPage::sendMessageToWebExtensionWithReply(UserMessage&& message, CompletionHandler<void(UserMessage&&)>&& completionHandler)
 {
-    auto* extension = WebKitExtensionManager::singleton().extension();
+    auto* extension = CyberKitExtensionManager::singleton().extension();
     if (!extension) {
         completionHandler(UserMessage(message.name, WEBKIT_USER_MESSAGE_UNHANDLED_MESSAGE));
         return;
@@ -196,7 +196,7 @@ String WebPage::platformUserAgent(const URL& url) const
     if (url.isNull() || !m_page->settings().needsSiteSpecificQuirks())
         return String();
 
-    return WebCore::standardUserAgentForURL(url);
+    return CyberCore::standardUserAgentForURL(url);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

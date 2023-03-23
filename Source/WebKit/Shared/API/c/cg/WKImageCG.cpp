@@ -54,13 +54,13 @@ WKImageRef WKImageCreateFromCGImage(CGImageRef imageRef, WKImageOptions options)
     if (!imageRef)
         return nullptr;
     
-    auto nativeImage = WebCore::NativeImage::create(imageRef);
-    WebCore::IntSize imageSize = nativeImage->size();
-    auto webImage = WebKit::WebImage::create(imageSize, WebKit::toImageOptions(options), WebCore::DestinationColorSpace::SRGB());
+    auto nativeImage = CyberCore::NativeImage::create(imageRef);
+    CyberCore::IntSize imageSize = nativeImage->size();
+    auto webImage = WebKit::WebImage::create(imageSize, WebKit::toImageOptions(options), CyberCore::DestinationColorSpace::SRGB());
 
     auto& graphicsContext = webImage->context();
 
-    WebCore::FloatRect rect(WebCore::FloatPoint(0, 0), imageSize);
+    CyberCore::FloatRect rect(CyberCore::FloatPoint(0, 0), imageSize);
 
     graphicsContext.clearRect(rect);
     graphicsContext.drawNativeImage(*nativeImage, imageSize, rect, rect);
@@ -70,6 +70,6 @@ WKImageRef WKImageCreateFromCGImage(CGImageRef imageRef, WKImageOptions options)
 WKStringRef WKImageCreateDataURLFromImage(CGImageRef imageRef)
 {
     String mimeType { "image/png"_s };
-    auto value = WebCore::dataURL(imageRef, mimeType, { });
+    auto value = CyberCore::dataURL(imageRef, mimeType, { });
     return WKStringCreateWithUTF8CString(value.utf8().data());
 }

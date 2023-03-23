@@ -28,7 +28,7 @@
 #include "PointerID.h"
 #include <wtf/HashMap.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class Element;
@@ -127,4 +127,4 @@ inline void PointerCaptureController::elementWasRemoved(Element& element)
         elementWasRemovedSlow(element);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

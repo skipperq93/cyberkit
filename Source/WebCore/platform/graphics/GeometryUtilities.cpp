@@ -31,7 +31,7 @@
 #include <wtf/MathExtras.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 float euclidianDistance(const FloatSize& delta)
 {

@@ -27,7 +27,7 @@
  */
 
 #import "config.h"
-#import "WebCoreObjCExtras.h"
+#import "CyberCoreObjCExtras.h"
 
 #import <utility>
 #import <wtf/Assertions.h>
@@ -52,7 +52,7 @@ static bool safeIsKindOfClass(id object, Class testClass)
 
 #endif
 
-bool WebCoreObjCScheduleDeallocateOnMainThread(Class deallocMethodClass, id object)
+bool CyberCoreObjCScheduleDeallocateOnMainThread(Class deallocMethodClass, id object)
 {
     ASSERT(safeIsKindOfClass(object, deallocMethodClass));
 
@@ -67,7 +67,7 @@ bool WebCoreObjCScheduleDeallocateOnMainThread(Class deallocMethodClass, id obje
     return true;
 }
 
-bool WebCoreObjCScheduleDeallocateOnMainRunLoop(Class deallocMethodClass, id object)
+bool CyberCoreObjCScheduleDeallocateOnMainRunLoop(Class deallocMethodClass, id object)
 {
     ASSERT(safeIsKindOfClass(object, deallocMethodClass));
 

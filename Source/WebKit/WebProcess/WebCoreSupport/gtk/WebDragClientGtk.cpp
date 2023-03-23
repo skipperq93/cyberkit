@@ -40,8 +40,8 @@
 #include <CyberCore/SelectionData.h>
 #include <cairo.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 static RefPtr<ShareableBitmap> convertCairoSurfaceToShareableBitmap(cairo_surface_t* surface)
 {
@@ -82,6 +82,6 @@ void WebDragClient::startDrag(DragItem item, DataTransfer& dataTransfer, Frame&)
     m_page->send(Messages::WebPageProxy::StartDrag(dataTransfer.pasteboard().selectionData(), dataTransfer.sourceOperationMask(), handle, dataTransfer.dragLocation()));
 }
 
-}; // namespace WebKit.
+}; // namespace CyberKit.
 
 #endif // ENABLE(DRAG_SUPPORT)

@@ -42,7 +42,7 @@
 #import "VideoToolboxSoftLink.h"
 #import <pal/cf/CoreMediaSoftLink.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 ImageTransferSessionVT::ImageTransferSessionVT(uint32_t pixelFormat, bool shouldUseIOSurface)
     : m_shouldUseIOSurface(shouldUseIOSurface)
@@ -310,4 +310,4 @@ RefPtr<VideoFrame> ImageTransferSessionVT::createVideoFrame(CMSampleBufferRef bu
     return VideoFrameCV::create(sampleBuffer.get(), mirrored, rotation);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

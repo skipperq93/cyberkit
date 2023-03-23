@@ -32,7 +32,7 @@
 
 #include "CurlRequestSchedulerClient.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 CurlRequestScheduler::CurlRequestScheduler(long maxConnects, long maxTotalConnections, long maxHostConnections)
     : m_maxConnects(maxConnects)

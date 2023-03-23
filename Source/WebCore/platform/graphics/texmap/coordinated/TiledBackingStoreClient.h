@@ -20,7 +20,7 @@
 #ifndef TiledBackingStoreClient_h
 #define TiledBackingStoreClient_h
 
-namespace WebCore {
+namespace CyberCore {
 
 #if USE(COORDINATED_GRAPHICS)
 

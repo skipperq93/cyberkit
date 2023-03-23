@@ -48,11 +48,11 @@ private:
     WebDateTimePickerMac(WebPageProxy&, NSView *);
 
     void endPicker() final;
-    void showDateTimePicker(WebCore::DateTimeChooserParameters&&) final;
+    void showDateTimePicker(CyberCore::DateTimeChooserParameters&&) final;
 
     WeakObjCPtr<NSView> m_view;
     RetainPtr<WKDateTimePicker> m_picker;
-    WebCore::DateTimeChooserParameters m_params;
+    CyberCore::DateTimeChooserParameters m_params;
 };
 
 } // namespace WebKit

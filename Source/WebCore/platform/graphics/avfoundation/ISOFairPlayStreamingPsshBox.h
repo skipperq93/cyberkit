@@ -27,7 +27,7 @@
 
 #include "ISOProtectionSystemSpecificHeaderBox.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ISOFairPlayStreamingInfoBox final : public ISOFullBox {
 public:
@@ -172,6 +172,6 @@ private:
 
 }
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::ISOFairPlayStreamingPsshBox) \
-static bool isType(const WebCore::ISOProtectionSystemSpecificHeaderBox& psshBox) { return psshBox.systemID() == WebCore::ISOFairPlayStreamingPsshBox::fairPlaySystemID(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::ISOFairPlayStreamingPsshBox) \
+static bool isType(const CyberCore::ISOProtectionSystemSpecificHeaderBox& psshBox) { return psshBox.systemID() == CyberCore::ISOFairPlayStreamingPsshBox::fairPlaySystemID(); }
 SPECIALIZE_TYPE_TRAITS_END()

@@ -29,7 +29,7 @@
 
 #include "CaptureDeviceManager.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class DisplayCaptureManager : public CaptureDeviceManager {
 public:
@@ -42,6 +42,6 @@ public:
     virtual bool requiresCaptureDevicesEnumeration() const { return false; }
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM)

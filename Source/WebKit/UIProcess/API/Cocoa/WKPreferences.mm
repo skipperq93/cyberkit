@@ -33,7 +33,7 @@
 #import "_WKFeatureInternal.h"
 #import <CyberCore/SecurityOrigin.h>
 #import <CyberCore/Settings.h>
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 #import <wtf/RetainPtr.h>
 
 @implementation WKPreferences
@@ -49,7 +49,7 @@
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainRunLoop(WKPreferences.class, self))
+    if (CyberCoreObjCScheduleDeallocateOnMainRunLoop(WKPreferences.class, self))
         return;
 
     _preferences->~WebPreferences();
@@ -217,29 +217,29 @@ ALLOW_DEPRECATED_DECLARATIONS_END
     _preferences->setTelephoneNumberParsingEnabled(telephoneNumberDetectionIsEnabled);
 }
 
-static WebCore::StorageBlockingPolicy toStorageBlockingPolicy(_WKStorageBlockingPolicy policy)
+static CyberCore::StorageBlockingPolicy toStorageBlockingPolicy(_WKStorageBlockingPolicy policy)
 {
     switch (policy) {
     case _WKStorageBlockingPolicyAllowAll:
-        return WebCore::StorageBlockingPolicy::AllowAll;
+        return CyberCore::StorageBlockingPolicy::AllowAll;
     case _WKStorageBlockingPolicyBlockThirdParty:
-        return WebCore::StorageBlockingPolicy::BlockThirdParty;
+        return CyberCore::StorageBlockingPolicy::BlockThirdParty;
     case _WKStorageBlockingPolicyBlockAll:
-        return WebCore::StorageBlockingPolicy::BlockAll;
+        return CyberCore::StorageBlockingPolicy::BlockAll;
     }
 
     ASSERT_NOT_REACHED();
-    return WebCore::StorageBlockingPolicy::AllowAll;
+    return CyberCore::StorageBlockingPolicy::AllowAll;
 }
 
-static _WKStorageBlockingPolicy toAPI(WebCore::StorageBlockingPolicy policy)
+static _WKStorageBlockingPolicy toAPI(CyberCore::StorageBlockingPolicy policy)
 {
     switch (policy) {
-    case WebCore::StorageBlockingPolicy::AllowAll:
+    case CyberCore::StorageBlockingPolicy::AllowAll:
         return _WKStorageBlockingPolicyAllowAll;
-    case WebCore::StorageBlockingPolicy::BlockThirdParty:
+    case CyberCore::StorageBlockingPolicy::BlockThirdParty:
         return _WKStorageBlockingPolicyBlockThirdParty;
-    case WebCore::StorageBlockingPolicy::BlockAll:
+    case CyberCore::StorageBlockingPolicy::BlockAll:
         return _WKStorageBlockingPolicyBlockAll;
     }
 
@@ -249,7 +249,7 @@ static _WKStorageBlockingPolicy toAPI(WebCore::StorageBlockingPolicy policy)
 
 - (_WKStorageBlockingPolicy)_storageBlockingPolicy
 {
-    return toAPI(static_cast<WebCore::StorageBlockingPolicy>(_preferences->storageBlockingPolicy()));
+    return toAPI(static_cast<CyberCore::StorageBlockingPolicy>(_preferences->storageBlockingPolicy()));
 }
 
 - (void)_setStorageBlockingPolicy:(_WKStorageBlockingPolicy)policy
@@ -757,18 +757,18 @@ static _WKStorageBlockingPolicy toAPI(WebCore::StorageBlockingPolicy policy)
     // These fonts are always enabled. This function only exists for binary compatibility.
 }
 
-static _WKEditableLinkBehavior toAPI(WebCore::EditableLinkBehavior behavior)
+static _WKEditableLinkBehavior toAPI(CyberCore::EditableLinkBehavior behavior)
 {
     switch (behavior) {
-    case WebCore::EditableLinkBehavior::Default:
+    case CyberCore::EditableLinkBehavior::Default:
         return _WKEditableLinkBehaviorDefault;
-    case WebCore::EditableLinkBehavior::AlwaysLive:
+    case CyberCore::EditableLinkBehavior::AlwaysLive:
         return _WKEditableLinkBehaviorAlwaysLive;
-    case WebCore::EditableLinkBehavior::OnlyLiveWithShiftKey:
+    case CyberCore::EditableLinkBehavior::OnlyLiveWithShiftKey:
         return _WKEditableLinkBehaviorOnlyLiveWithShiftKey;
-    case WebCore::EditableLinkBehavior::LiveWhenNotFocused:
+    case CyberCore::EditableLinkBehavior::LiveWhenNotFocused:
         return _WKEditableLinkBehaviorLiveWhenNotFocused;
-    case WebCore::EditableLinkBehavior::NeverLive:
+    case CyberCore::EditableLinkBehavior::NeverLive:
         return _WKEditableLinkBehaviorNeverLive;
     }
     
@@ -776,28 +776,28 @@ static _WKEditableLinkBehavior toAPI(WebCore::EditableLinkBehavior behavior)
     return _WKEditableLinkBehaviorNeverLive;
 }
 
-static WebCore::EditableLinkBehavior toEditableLinkBehavior(_WKEditableLinkBehavior wkBehavior)
+static CyberCore::EditableLinkBehavior toEditableLinkBehavior(_WKEditableLinkBehavior wkBehavior)
 {
     switch (wkBehavior) {
     case _WKEditableLinkBehaviorDefault:
-        return WebCore::EditableLinkBehavior::Default;
+        return CyberCore::EditableLinkBehavior::Default;
     case _WKEditableLinkBehaviorAlwaysLive:
-        return WebCore::EditableLinkBehavior::AlwaysLive;
+        return CyberCore::EditableLinkBehavior::AlwaysLive;
     case _WKEditableLinkBehaviorOnlyLiveWithShiftKey:
-        return WebCore::EditableLinkBehavior::OnlyLiveWithShiftKey;
+        return CyberCore::EditableLinkBehavior::OnlyLiveWithShiftKey;
     case _WKEditableLinkBehaviorLiveWhenNotFocused:
-        return WebCore::EditableLinkBehavior::LiveWhenNotFocused;
+        return CyberCore::EditableLinkBehavior::LiveWhenNotFocused;
     case _WKEditableLinkBehaviorNeverLive:
-        return WebCore::EditableLinkBehavior::NeverLive;
+        return CyberCore::EditableLinkBehavior::NeverLive;
     }
     
     ASSERT_NOT_REACHED();
-    return WebCore::EditableLinkBehavior::NeverLive;
+    return CyberCore::EditableLinkBehavior::NeverLive;
 }
 
 - (_WKEditableLinkBehavior)_editableLinkBehavior
 {
-    return toAPI(static_cast<WebCore::EditableLinkBehavior>(_preferences->editableLinkBehavior()));
+    return toAPI(static_cast<CyberCore::EditableLinkBehavior>(_preferences->editableLinkBehavior()));
 }
 
 - (void)_setEditableLinkBehavior:(_WKEditableLinkBehavior)editableLinkBehavior

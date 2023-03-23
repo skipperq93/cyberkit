@@ -31,7 +31,7 @@
 #include <wtf/glib/GRefPtr.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class KeyedEncoderGlib final : public KeyedEncoder {
 public:
@@ -39,7 +39,7 @@ public:
     ~KeyedEncoderGlib();
 
 private:
-    RefPtr<WebCore::SharedBuffer> finishEncoding() final;
+    RefPtr<CyberCore::SharedBuffer> finishEncoding() final;
 
     void encodeBytes(const String& key, const uint8_t*, size_t) final;
     void encodeBool(const String& key, bool) final;
@@ -65,4 +65,4 @@ private:
     Vector<std::pair<String, GRefPtr<GVariantBuilder>>, 16> m_objectStack;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

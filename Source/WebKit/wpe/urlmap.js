@@ -10,5 +10,5 @@ baseURLs = [
   ["Soup", "https://libsoup.org/libsoup-3.0/"],
   ["WPEJavaScriptCore", "../wpe-javascriptcore" + baseURLApiLevelSuffix],
   ["WPEWebExtension", "../wpe-web-extension" + baseURLApiLevelSuffix],
-  ["WPEWebKit", "../wpe-webkit" + baseURLApiLevelSuffix]
+  ["WPECyberKit", "../wpe-webkit" + baseURLApiLevelSuffix]
 ]

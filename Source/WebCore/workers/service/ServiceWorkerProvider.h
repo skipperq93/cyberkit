@@ -29,7 +29,7 @@
 
 #include "ServiceWorkerIdentifier.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SWClientConnection;
 class SecurityOriginData;
@@ -52,6 +52,6 @@ private:
     bool m_mayHaveRegisteredServiceWorkers { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

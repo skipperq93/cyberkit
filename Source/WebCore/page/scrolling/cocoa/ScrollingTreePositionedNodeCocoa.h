@@ -30,7 +30,7 @@
 #include "ScrollingTreePositionedNode.h"
 #include <wtf/RetainPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScrollingTreePositionedNodeCocoa : public ScrollingTreePositionedNode {
 public:
@@ -53,7 +53,7 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_SCROLLING_NODE(ScrollingTreePositionedNodeCocoa, isPositionedNodeCocoa())
 

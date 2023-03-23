@@ -607,12 +607,12 @@ public:
     void injectPushMessage(NSDictionary *apsUserInfo)
     {
         String scope = [m_url absoluteString];
-        WebCore::PushSubscriptionSetIdentifier subscriptionSetIdentifier {
+        CyberCore::PushSubscriptionSetIdentifier subscriptionSetIdentifier {
             .bundleIdentifier = "com.apple.WebKit.TestWebKitAPI"_s,
             .pushPartition = m_pushPartition,
             .dataStoreIdentifier = m_dataStoreIdentifier
         };
-        auto topic = WebCore::makePushTopic(subscriptionSetIdentifier, scope);
+        auto topic = CyberCore::makePushTopic(subscriptionSetIdentifier, scope);
         id obj = @{
             @"topic": (NSString *)topic,
             @"userInfo": apsUserInfo

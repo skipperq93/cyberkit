@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -21,28 +21,28 @@
 #error "Only <webkitdom/webkitdom.h> can be included directly."
 #endif
 
-#ifndef WebKitDOMDOMWindow_h
-#define WebKitDOMDOMWindow_h
+#ifndef CyberKitDOMDOMWindow_h
+#define CyberKitDOMDOMWindow_h
 
 #include <glib-object.h>
-#include <webkitdom/WebKitDOMObject.h>
+#include <webkitdom/CyberKitDOMObject.h>
 #include <webkitdom/webkitdomdefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_DOM_TYPE_DOM_WINDOW            (webkit_dom_dom_window_get_type())
-#define WEBKIT_DOM_DOM_WINDOW(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_DOM_WINDOW, WebKitDOMDOMWindow))
-#define WEBKIT_DOM_DOM_WINDOW_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_DOM_WINDOW, WebKitDOMDOMWindowClass)
+#define WEBKIT_DOM_DOM_WINDOW(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_DOM_WINDOW, CyberKitDOMDOMWindow))
+#define WEBKIT_DOM_DOM_WINDOW_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_DOM_WINDOW, CyberKitDOMDOMWindowClass)
 #define WEBKIT_DOM_IS_DOM_WINDOW(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_DOM_TYPE_DOM_WINDOW))
 #define WEBKIT_DOM_IS_DOM_WINDOW_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_DOM_TYPE_DOM_WINDOW))
-#define WEBKIT_DOM_DOM_WINDOW_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_DOM_WINDOW, WebKitDOMDOMWindowClass))
+#define WEBKIT_DOM_DOM_WINDOW_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_DOM_WINDOW, CyberKitDOMDOMWindowClass))
 
-struct _WebKitDOMDOMWindow {
-    WebKitDOMObject parent_instance;
+struct _CyberKitDOMDOMWindow {
+    CyberKitDOMObject parent_instance;
 };
 
-struct _WebKitDOMDOMWindowClass {
-    WebKitDOMObjectClass parent_class;
+struct _CyberKitDOMDOMWindowClass {
+    CyberKitDOMObjectClass parent_class;
 };
 
 WEBKIT_DEPRECATED GType
@@ -50,75 +50,75 @@ webkit_dom_dom_window_get_type(void);
 
 /**
  * webkit_dom_dom_window_get_selection:
- * @self: A #WebKitDOMDOMWindow
+ * @self: A #CyberKitDOMDOMWindow
  *
- * Returns: (transfer full): A #WebKitDOMDOMSelection
+ * Returns: (transfer full): A #CyberKitDOMDOMSelection
  *
  * Since: 2.16
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
  */
-WEBKIT_DEPRECATED WebKitDOMDOMSelection*
-webkit_dom_dom_window_get_selection(WebKitDOMDOMWindow* self);
+WEBKIT_DEPRECATED CyberKitDOMDOMSelection*
+webkit_dom_dom_window_get_selection(CyberKitDOMDOMWindow* self);
 
 /**
  * webkit_dom_dom_window_focus:
- * @self: A #WebKitDOMDOMWindow
+ * @self: A #CyberKitDOMDOMWindow
  *
  * Since: 2.16
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
  */
 WEBKIT_DEPRECATED void
-webkit_dom_dom_window_focus(WebKitDOMDOMWindow* self);
+webkit_dom_dom_window_focus(CyberKitDOMDOMWindow* self);
 
 /**
  * webkit_dom_dom_window_blur:
- * @self: A #WebKitDOMDOMWindow
+ * @self: A #CyberKitDOMDOMWindow
  *
  * Since: 2.16
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
  */
 WEBKIT_DEPRECATED void
-webkit_dom_dom_window_blur(WebKitDOMDOMWindow* self);
+webkit_dom_dom_window_blur(CyberKitDOMDOMWindow* self);
 
 /**
  * webkit_dom_dom_window_close:
- * @self: A #WebKitDOMDOMWindow
+ * @self: A #CyberKitDOMDOMWindow
  *
  * Since: 2.16
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
  */
 WEBKIT_DEPRECATED void
-webkit_dom_dom_window_close(WebKitDOMDOMWindow* self);
+webkit_dom_dom_window_close(CyberKitDOMDOMWindow* self);
 
 /**
  * webkit_dom_dom_window_print:
- * @self: A #WebKitDOMDOMWindow
+ * @self: A #CyberKitDOMDOMWindow
  *
  * Since: 2.16
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
  */
 WEBKIT_DEPRECATED void
-webkit_dom_dom_window_print(WebKitDOMDOMWindow* self);
+webkit_dom_dom_window_print(CyberKitDOMDOMWindow* self);
 
 /**
  * webkit_dom_dom_window_stop:
- * @self: A #WebKitDOMDOMWindow
+ * @self: A #CyberKitDOMDOMWindow
  *
  * Since: 2.16
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
  */
 WEBKIT_DEPRECATED void
-webkit_dom_dom_window_stop(WebKitDOMDOMWindow* self);
+webkit_dom_dom_window_stop(CyberKitDOMDOMWindow* self);
 
 /**
  * webkit_dom_dom_window_alert:
- * @self: A #WebKitDOMDOMWindow
+ * @self: A #CyberKitDOMDOMWindow
  * @message: A #gchar
  *
  * Since: 2.16
@@ -126,11 +126,11 @@ webkit_dom_dom_window_stop(WebKitDOMDOMWindow* self);
  * Deprecated: 2.22: Use JavaScriptCore API instead
  */
 WEBKIT_DEPRECATED void
-webkit_dom_dom_window_alert(WebKitDOMDOMWindow* self, const gchar* message);
+webkit_dom_dom_window_alert(CyberKitDOMDOMWindow* self, const gchar* message);
 
 /**
  * webkit_dom_dom_window_confirm:
- * @self: A #WebKitDOMDOMWindow
+ * @self: A #CyberKitDOMDOMWindow
  * @message: A #gchar
  *
  * Returns: A #gboolean
@@ -140,11 +140,11 @@ webkit_dom_dom_window_alert(WebKitDOMDOMWindow* self, const gchar* message);
  * Deprecated: 2.22: Use JavaScriptCore API instead
  */
 WEBKIT_DEPRECATED gboolean
-webkit_dom_dom_window_confirm(WebKitDOMDOMWindow* self, const gchar* message);
+webkit_dom_dom_window_confirm(CyberKitDOMDOMWindow* self, const gchar* message);
 
 /**
  * webkit_dom_dom_window_prompt:
- * @self: A #WebKitDOMDOMWindow
+ * @self: A #CyberKitDOMDOMWindow
  * @message: A #gchar
  * @defaultValue: A #gchar
  *
@@ -155,11 +155,11 @@ webkit_dom_dom_window_confirm(WebKitDOMDOMWindow* self, const gchar* message);
  * Deprecated: 2.22: Use JavaScriptCore API instead
  */
 WEBKIT_DEPRECATED gchar*
-webkit_dom_dom_window_prompt(WebKitDOMDOMWindow* self, const gchar* message, const gchar* defaultValue);
+webkit_dom_dom_window_prompt(CyberKitDOMDOMWindow* self, const gchar* message, const gchar* defaultValue);
 
 /**
  * webkit_dom_dom_window_find:
- * @self: A #WebKitDOMDOMWindow
+ * @self: A #CyberKitDOMDOMWindow
  * @string: A #gchar
  * @caseSensitive: A #gboolean
  * @backwards: A #gboolean
@@ -175,11 +175,11 @@ webkit_dom_dom_window_prompt(WebKitDOMDOMWindow* self, const gchar* message, con
  * Deprecated: 2.22: Use JavaScriptCore API instead
  */
 WEBKIT_DEPRECATED gboolean
-webkit_dom_dom_window_find(WebKitDOMDOMWindow* self, const gchar* string, gboolean caseSensitive, gboolean backwards, gboolean wrap, gboolean wholeWord, gboolean searchInFrames, gboolean showDialog);
+webkit_dom_dom_window_find(CyberKitDOMDOMWindow* self, const gchar* string, gboolean caseSensitive, gboolean backwards, gboolean wrap, gboolean wholeWord, gboolean searchInFrames, gboolean showDialog);
 
 /**
  * webkit_dom_dom_window_scroll_by:
- * @self: A #WebKitDOMDOMWindow
+ * @self: A #CyberKitDOMDOMWindow
  * @x: A #gdouble
  * @y: A #gdouble
  *
@@ -188,11 +188,11 @@ webkit_dom_dom_window_find(WebKitDOMDOMWindow* self, const gchar* string, gboole
  * Deprecated: 2.22: Use JavaScriptCore API instead
  */
 WEBKIT_DEPRECATED void
-webkit_dom_dom_window_scroll_by(WebKitDOMDOMWindow* self, gdouble x, gdouble y);
+webkit_dom_dom_window_scroll_by(CyberKitDOMDOMWindow* self, gdouble x, gdouble y);
 
 /**
  * webkit_dom_dom_window_scroll_to:
- * @self: A #WebKitDOMDOMWindow
+ * @self: A #CyberKitDOMDOMWindow
  * @x: A #gdouble
  * @y: A #gdouble
  *
@@ -201,11 +201,11 @@ webkit_dom_dom_window_scroll_by(WebKitDOMDOMWindow* self, gdouble x, gdouble y);
  * Deprecated: 2.22: Use JavaScriptCore API instead
  */
 WEBKIT_DEPRECATED void
-webkit_dom_dom_window_scroll_to(WebKitDOMDOMWindow* self, gdouble x, gdouble y);
+webkit_dom_dom_window_scroll_to(CyberKitDOMDOMWindow* self, gdouble x, gdouble y);
 
 /**
  * webkit_dom_dom_window_move_by:
- * @self: A #WebKitDOMDOMWindow
+ * @self: A #CyberKitDOMDOMWindow
  * @x: A #gfloat
  * @y: A #gfloat
  *
@@ -214,11 +214,11 @@ webkit_dom_dom_window_scroll_to(WebKitDOMDOMWindow* self, gdouble x, gdouble y);
  * Deprecated: 2.22: Use JavaScriptCore API instead
  */
 WEBKIT_DEPRECATED void
-webkit_dom_dom_window_move_by(WebKitDOMDOMWindow* self, gfloat x, gfloat y);
+webkit_dom_dom_window_move_by(CyberKitDOMDOMWindow* self, gfloat x, gfloat y);
 
 /**
  * webkit_dom_dom_window_move_to:
- * @self: A #WebKitDOMDOMWindow
+ * @self: A #CyberKitDOMDOMWindow
  * @x: A #gfloat
  * @y: A #gfloat
  *
@@ -227,11 +227,11 @@ webkit_dom_dom_window_move_by(WebKitDOMDOMWindow* self, gfloat x, gfloat y);
  * Deprecated: 2.22: Use JavaScriptCore API instead
  */
 WEBKIT_DEPRECATED void
-webkit_dom_dom_window_move_to(WebKitDOMDOMWindow* self, gfloat x, gfloat y);
+webkit_dom_dom_window_move_to(CyberKitDOMDOMWindow* self, gfloat x, gfloat y);
 
 /**
  * webkit_dom_dom_window_resize_by:
- * @self: A #WebKitDOMDOMWindow
+ * @self: A #CyberKitDOMDOMWindow
  * @x: A #gfloat
  * @y: A #gfloat
  *
@@ -240,11 +240,11 @@ webkit_dom_dom_window_move_to(WebKitDOMDOMWindow* self, gfloat x, gfloat y);
  * Deprecated: 2.22: Use JavaScriptCore API instead
  */
 WEBKIT_DEPRECATED void
-webkit_dom_dom_window_resize_by(WebKitDOMDOMWindow* self, gfloat x, gfloat y);
+webkit_dom_dom_window_resize_by(CyberKitDOMDOMWindow* self, gfloat x, gfloat y);
 
 /**
  * webkit_dom_dom_window_resize_to:
- * @self: A #WebKitDOMDOMWindow
+ * @self: A #CyberKitDOMDOMWindow
  * @width: A #gfloat
  * @height: A #gfloat
  *
@@ -253,61 +253,61 @@ webkit_dom_dom_window_resize_by(WebKitDOMDOMWindow* self, gfloat x, gfloat y);
  * Deprecated: 2.22: Use JavaScriptCore API instead
  */
 WEBKIT_DEPRECATED void
-webkit_dom_dom_window_resize_to(WebKitDOMDOMWindow* self, gfloat width, gfloat height);
+webkit_dom_dom_window_resize_to(CyberKitDOMDOMWindow* self, gfloat width, gfloat height);
 
 /**
  * webkit_dom_dom_window_get_computed_style:
- * @self: A #WebKitDOMDOMWindow
- * @element: A #WebKitDOMElement
+ * @self: A #CyberKitDOMDOMWindow
+ * @element: A #CyberKitDOMElement
  * @pseudoElement: (allow-none): A #gchar
  *
- * Returns: (transfer full): A #WebKitDOMCSSStyleDeclaration
+ * Returns: (transfer full): A #CyberKitDOMCSSStyleDeclaration
  *
  * Since: 2.16
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
  */
-WEBKIT_DEPRECATED WebKitDOMCSSStyleDeclaration*
-webkit_dom_dom_window_get_computed_style(WebKitDOMDOMWindow* self, WebKitDOMElement* element, const gchar* pseudoElement);
+WEBKIT_DEPRECATED CyberKitDOMCSSStyleDeclaration*
+webkit_dom_dom_window_get_computed_style(CyberKitDOMDOMWindow* self, CyberKitDOMElement* element, const gchar* pseudoElement);
 
 /**
  * webkit_dom_dom_window_capture_events:
- * @self: A #WebKitDOMDOMWindow
+ * @self: A #CyberKitDOMDOMWindow
  *
  * Since: 2.16
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
  */
 WEBKIT_DEPRECATED void
-webkit_dom_dom_window_capture_events(WebKitDOMDOMWindow* self);
+webkit_dom_dom_window_capture_events(CyberKitDOMDOMWindow* self);
 
 /**
  * webkit_dom_dom_window_release_events:
- * @self: A #WebKitDOMDOMWindow
+ * @self: A #CyberKitDOMDOMWindow
  *
  * Since: 2.16
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
  */
 WEBKIT_DEPRECATED void
-webkit_dom_dom_window_release_events(WebKitDOMDOMWindow* self);
+webkit_dom_dom_window_release_events(CyberKitDOMDOMWindow* self);
 
 /**
  * webkit_dom_dom_window_get_frame_element:
- * @self: A #WebKitDOMDOMWindow
+ * @self: A #CyberKitDOMDOMWindow
  *
- * Returns: (transfer none): A #WebKitDOMElement
+ * Returns: (transfer none): A #CyberKitDOMElement
  *
  * Since: 2.16
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
  */
-WEBKIT_DEPRECATED WebKitDOMElement*
-webkit_dom_dom_window_get_frame_element(WebKitDOMDOMWindow* self);
+WEBKIT_DEPRECATED CyberKitDOMElement*
+webkit_dom_dom_window_get_frame_element(CyberKitDOMDOMWindow* self);
 
 /**
  * webkit_dom_dom_window_get_offscreen_buffering:
- * @self: A #WebKitDOMDOMWindow
+ * @self: A #CyberKitDOMDOMWindow
  *
  * Returns: A #gboolean
  *
@@ -316,11 +316,11 @@ webkit_dom_dom_window_get_frame_element(WebKitDOMDOMWindow* self);
  * Deprecated: 2.22: Use JavaScriptCore API instead
  */
 WEBKIT_DEPRECATED gboolean
-webkit_dom_dom_window_get_offscreen_buffering(WebKitDOMDOMWindow* self);
+webkit_dom_dom_window_get_offscreen_buffering(CyberKitDOMDOMWindow* self);
 
 /**
  * webkit_dom_dom_window_get_outer_height:
- * @self: A #WebKitDOMDOMWindow
+ * @self: A #CyberKitDOMDOMWindow
  *
  * Returns: A #glong
  *
@@ -329,11 +329,11 @@ webkit_dom_dom_window_get_offscreen_buffering(WebKitDOMDOMWindow* self);
  * Deprecated: 2.22: Use JavaScriptCore API instead
  */
 WEBKIT_DEPRECATED glong
-webkit_dom_dom_window_get_outer_height(WebKitDOMDOMWindow* self);
+webkit_dom_dom_window_get_outer_height(CyberKitDOMDOMWindow* self);
 
 /**
  * webkit_dom_dom_window_get_outer_width:
- * @self: A #WebKitDOMDOMWindow
+ * @self: A #CyberKitDOMDOMWindow
  *
  * Returns: A #glong
  *
@@ -342,11 +342,11 @@ webkit_dom_dom_window_get_outer_height(WebKitDOMDOMWindow* self);
  * Deprecated: 2.22: Use JavaScriptCore API instead
  */
 WEBKIT_DEPRECATED glong
-webkit_dom_dom_window_get_outer_width(WebKitDOMDOMWindow* self);
+webkit_dom_dom_window_get_outer_width(CyberKitDOMDOMWindow* self);
 
 /**
  * webkit_dom_dom_window_get_inner_height:
- * @self: A #WebKitDOMDOMWindow
+ * @self: A #CyberKitDOMDOMWindow
  *
  * Returns: A #glong
  *
@@ -355,11 +355,11 @@ webkit_dom_dom_window_get_outer_width(WebKitDOMDOMWindow* self);
  * Deprecated: 2.22: Use JavaScriptCore API instead
  */
 WEBKIT_DEPRECATED glong
-webkit_dom_dom_window_get_inner_height(WebKitDOMDOMWindow* self);
+webkit_dom_dom_window_get_inner_height(CyberKitDOMDOMWindow* self);
 
 /**
  * webkit_dom_dom_window_get_inner_width:
- * @self: A #WebKitDOMDOMWindow
+ * @self: A #CyberKitDOMDOMWindow
  *
  * Returns: A #glong
  *
@@ -368,11 +368,11 @@ webkit_dom_dom_window_get_inner_height(WebKitDOMDOMWindow* self);
  * Deprecated: 2.22: Use JavaScriptCore API instead
  */
 WEBKIT_DEPRECATED glong
-webkit_dom_dom_window_get_inner_width(WebKitDOMDOMWindow* self);
+webkit_dom_dom_window_get_inner_width(CyberKitDOMDOMWindow* self);
 
 /**
  * webkit_dom_dom_window_get_screen_x:
- * @self: A #WebKitDOMDOMWindow
+ * @self: A #CyberKitDOMDOMWindow
  *
  * Returns: A #glong
  *
@@ -381,11 +381,11 @@ webkit_dom_dom_window_get_inner_width(WebKitDOMDOMWindow* self);
  * Deprecated: 2.22: Use JavaScriptCore API instead
  */
 WEBKIT_DEPRECATED glong
-webkit_dom_dom_window_get_screen_x(WebKitDOMDOMWindow* self);
+webkit_dom_dom_window_get_screen_x(CyberKitDOMDOMWindow* self);
 
 /**
  * webkit_dom_dom_window_get_screen_y:
- * @self: A #WebKitDOMDOMWindow
+ * @self: A #CyberKitDOMDOMWindow
  *
  * Returns: A #glong
  *
@@ -394,11 +394,11 @@ webkit_dom_dom_window_get_screen_x(WebKitDOMDOMWindow* self);
  * Deprecated: 2.22: Use JavaScriptCore API instead
  */
 WEBKIT_DEPRECATED glong
-webkit_dom_dom_window_get_screen_y(WebKitDOMDOMWindow* self);
+webkit_dom_dom_window_get_screen_y(CyberKitDOMDOMWindow* self);
 
 /**
  * webkit_dom_dom_window_get_screen_left:
- * @self: A #WebKitDOMDOMWindow
+ * @self: A #CyberKitDOMDOMWindow
  *
  * Returns: A #glong
  *
@@ -407,11 +407,11 @@ webkit_dom_dom_window_get_screen_y(WebKitDOMDOMWindow* self);
  * Deprecated: 2.22: Use JavaScriptCore API instead
  */
 WEBKIT_DEPRECATED glong
-webkit_dom_dom_window_get_screen_left(WebKitDOMDOMWindow* self);
+webkit_dom_dom_window_get_screen_left(CyberKitDOMDOMWindow* self);
 
 /**
  * webkit_dom_dom_window_get_screen_top:
- * @self: A #WebKitDOMDOMWindow
+ * @self: A #CyberKitDOMDOMWindow
  *
  * Returns: A #glong
  *
@@ -420,11 +420,11 @@ webkit_dom_dom_window_get_screen_left(WebKitDOMDOMWindow* self);
  * Deprecated: 2.22: Use JavaScriptCore API instead
  */
 WEBKIT_DEPRECATED glong
-webkit_dom_dom_window_get_screen_top(WebKitDOMDOMWindow* self);
+webkit_dom_dom_window_get_screen_top(CyberKitDOMDOMWindow* self);
 
 /**
  * webkit_dom_dom_window_get_scroll_x:
- * @self: A #WebKitDOMDOMWindow
+ * @self: A #CyberKitDOMDOMWindow
  *
  * Returns: A #glong
  *
@@ -433,11 +433,11 @@ webkit_dom_dom_window_get_screen_top(WebKitDOMDOMWindow* self);
  * Deprecated: 2.22: Use JavaScriptCore API instead
  */
 WEBKIT_DEPRECATED glong
-webkit_dom_dom_window_get_scroll_x(WebKitDOMDOMWindow* self);
+webkit_dom_dom_window_get_scroll_x(CyberKitDOMDOMWindow* self);
 
 /**
  * webkit_dom_dom_window_get_scroll_y:
- * @self: A #WebKitDOMDOMWindow
+ * @self: A #CyberKitDOMDOMWindow
  *
  * Returns: A #glong
  *
@@ -446,11 +446,11 @@ webkit_dom_dom_window_get_scroll_x(WebKitDOMDOMWindow* self);
  * Deprecated: 2.22: Use JavaScriptCore API instead
  */
 WEBKIT_DEPRECATED glong
-webkit_dom_dom_window_get_scroll_y(WebKitDOMDOMWindow* self);
+webkit_dom_dom_window_get_scroll_y(CyberKitDOMDOMWindow* self);
 
 /**
  * webkit_dom_dom_window_get_page_x_offset:
- * @self: A #WebKitDOMDOMWindow
+ * @self: A #CyberKitDOMDOMWindow
  *
  * Returns: A #glong
  *
@@ -459,11 +459,11 @@ webkit_dom_dom_window_get_scroll_y(WebKitDOMDOMWindow* self);
  * Deprecated: 2.22: Use JavaScriptCore API instead
  */
 WEBKIT_DEPRECATED glong
-webkit_dom_dom_window_get_page_x_offset(WebKitDOMDOMWindow* self);
+webkit_dom_dom_window_get_page_x_offset(CyberKitDOMDOMWindow* self);
 
 /**
  * webkit_dom_dom_window_get_page_y_offset:
- * @self: A #WebKitDOMDOMWindow
+ * @self: A #CyberKitDOMDOMWindow
  *
  * Returns: A #glong
  *
@@ -472,11 +472,11 @@ webkit_dom_dom_window_get_page_x_offset(WebKitDOMDOMWindow* self);
  * Deprecated: 2.22: Use JavaScriptCore API instead
  */
 WEBKIT_DEPRECATED glong
-webkit_dom_dom_window_get_page_y_offset(WebKitDOMDOMWindow* self);
+webkit_dom_dom_window_get_page_y_offset(CyberKitDOMDOMWindow* self);
 
 /**
  * webkit_dom_dom_window_get_closed:
- * @self: A #WebKitDOMDOMWindow
+ * @self: A #CyberKitDOMDOMWindow
  *
  * Returns: A #gboolean
  *
@@ -485,11 +485,11 @@ webkit_dom_dom_window_get_page_y_offset(WebKitDOMDOMWindow* self);
  * Deprecated: 2.22: Use JavaScriptCore API instead
  */
 WEBKIT_DEPRECATED gboolean
-webkit_dom_dom_window_get_closed(WebKitDOMDOMWindow* self);
+webkit_dom_dom_window_get_closed(CyberKitDOMDOMWindow* self);
 
 /**
  * webkit_dom_dom_window_get_length:
- * @self: A #WebKitDOMDOMWindow
+ * @self: A #CyberKitDOMDOMWindow
  *
  * Returns: A #gulong
  *
@@ -498,11 +498,11 @@ webkit_dom_dom_window_get_closed(WebKitDOMDOMWindow* self);
  * Deprecated: 2.22: Use JavaScriptCore API instead
  */
 WEBKIT_DEPRECATED gulong
-webkit_dom_dom_window_get_length(WebKitDOMDOMWindow* self);
+webkit_dom_dom_window_get_length(CyberKitDOMDOMWindow* self);
 
 /**
  * webkit_dom_dom_window_get_name:
- * @self: A #WebKitDOMDOMWindow
+ * @self: A #CyberKitDOMDOMWindow
  *
  * Returns: A #gchar
  *
@@ -511,11 +511,11 @@ webkit_dom_dom_window_get_length(WebKitDOMDOMWindow* self);
  * Deprecated: 2.22: Use JavaScriptCore API instead
  */
 WEBKIT_DEPRECATED gchar*
-webkit_dom_dom_window_get_name(WebKitDOMDOMWindow* self);
+webkit_dom_dom_window_get_name(CyberKitDOMDOMWindow* self);
 
 /**
  * webkit_dom_dom_window_set_name:
- * @self: A #WebKitDOMDOMWindow
+ * @self: A #CyberKitDOMDOMWindow
  * @value: A #gchar
  *
  * Since: 2.16
@@ -523,11 +523,11 @@ webkit_dom_dom_window_get_name(WebKitDOMDOMWindow* self);
  * Deprecated: 2.22: Use JavaScriptCore API instead
  */
 WEBKIT_DEPRECATED void
-webkit_dom_dom_window_set_name(WebKitDOMDOMWindow* self, const gchar* value);
+webkit_dom_dom_window_set_name(CyberKitDOMDOMWindow* self, const gchar* value);
 
 /**
  * webkit_dom_dom_window_get_status:
- * @self: A #WebKitDOMDOMWindow
+ * @self: A #CyberKitDOMDOMWindow
  *
  * Returns: A #gchar
  *
@@ -536,11 +536,11 @@ webkit_dom_dom_window_set_name(WebKitDOMDOMWindow* self, const gchar* value);
  * Deprecated: 2.22: Use JavaScriptCore API instead
  */
 WEBKIT_DEPRECATED gchar*
-webkit_dom_dom_window_get_status(WebKitDOMDOMWindow* self);
+webkit_dom_dom_window_get_status(CyberKitDOMDOMWindow* self);
 
 /**
  * webkit_dom_dom_window_set_status:
- * @self: A #WebKitDOMDOMWindow
+ * @self: A #CyberKitDOMDOMWindow
  * @value: A #gchar
  *
  * Since: 2.16
@@ -548,11 +548,11 @@ webkit_dom_dom_window_get_status(WebKitDOMDOMWindow* self);
  * Deprecated: 2.22: Use JavaScriptCore API instead
  */
 WEBKIT_DEPRECATED void
-webkit_dom_dom_window_set_status(WebKitDOMDOMWindow* self, const gchar* value);
+webkit_dom_dom_window_set_status(CyberKitDOMDOMWindow* self, const gchar* value);
 
 /**
  * webkit_dom_dom_window_get_default_status:
- * @self: A #WebKitDOMDOMWindow
+ * @self: A #CyberKitDOMDOMWindow
  *
  * Returns: A #gchar
  *
@@ -561,11 +561,11 @@ webkit_dom_dom_window_set_status(WebKitDOMDOMWindow* self, const gchar* value);
  * Deprecated: 2.22: Use JavaScriptCore API instead
  */
 WEBKIT_DEPRECATED gchar*
-webkit_dom_dom_window_get_default_status(WebKitDOMDOMWindow* self);
+webkit_dom_dom_window_get_default_status(CyberKitDOMDOMWindow* self);
 
 /**
  * webkit_dom_dom_window_set_default_status:
- * @self: A #WebKitDOMDOMWindow
+ * @self: A #CyberKitDOMDOMWindow
  * @value: A #gchar
  *
  * Since: 2.16
@@ -573,102 +573,102 @@ webkit_dom_dom_window_get_default_status(WebKitDOMDOMWindow* self);
  * Deprecated: 2.22: Use JavaScriptCore API instead
  */
 WEBKIT_DEPRECATED void
-webkit_dom_dom_window_set_default_status(WebKitDOMDOMWindow* self, const gchar* value);
+webkit_dom_dom_window_set_default_status(CyberKitDOMDOMWindow* self, const gchar* value);
 
 /**
  * webkit_dom_dom_window_get_self:
- * @self: A #WebKitDOMDOMWindow
+ * @self: A #CyberKitDOMDOMWindow
  *
- * Returns: (transfer full): A #WebKitDOMDOMWindow
+ * Returns: (transfer full): A #CyberKitDOMDOMWindow
  *
  * Since: 2.16
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
  */
-WEBKIT_DEPRECATED WebKitDOMDOMWindow*
-webkit_dom_dom_window_get_self(WebKitDOMDOMWindow* self);
+WEBKIT_DEPRECATED CyberKitDOMDOMWindow*
+webkit_dom_dom_window_get_self(CyberKitDOMDOMWindow* self);
 
 /**
  * webkit_dom_dom_window_get_window:
- * @self: A #WebKitDOMDOMWindow
+ * @self: A #CyberKitDOMDOMWindow
  *
- * Returns: (transfer full): A #WebKitDOMDOMWindow
+ * Returns: (transfer full): A #CyberKitDOMDOMWindow
  *
  * Since: 2.16
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
  */
-WEBKIT_DEPRECATED WebKitDOMDOMWindow*
-webkit_dom_dom_window_get_window(WebKitDOMDOMWindow* self);
+WEBKIT_DEPRECATED CyberKitDOMDOMWindow*
+webkit_dom_dom_window_get_window(CyberKitDOMDOMWindow* self);
 
 /**
  * webkit_dom_dom_window_get_frames:
- * @self: A #WebKitDOMDOMWindow
+ * @self: A #CyberKitDOMDOMWindow
  *
- * Returns: (transfer full): A #WebKitDOMDOMWindow
+ * Returns: (transfer full): A #CyberKitDOMDOMWindow
  *
  * Since: 2.16
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
  */
-WEBKIT_DEPRECATED WebKitDOMDOMWindow*
-webkit_dom_dom_window_get_frames(WebKitDOMDOMWindow* self);
+WEBKIT_DEPRECATED CyberKitDOMDOMWindow*
+webkit_dom_dom_window_get_frames(CyberKitDOMDOMWindow* self);
 
 /**
  * webkit_dom_dom_window_get_opener:
- * @self: A #WebKitDOMDOMWindow
+ * @self: A #CyberKitDOMDOMWindow
  *
- * Returns: (transfer full): A #WebKitDOMDOMWindow
+ * Returns: (transfer full): A #CyberKitDOMDOMWindow
  *
  * Since: 2.16
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
  */
-WEBKIT_DEPRECATED WebKitDOMDOMWindow*
-webkit_dom_dom_window_get_opener(WebKitDOMDOMWindow* self);
+WEBKIT_DEPRECATED CyberKitDOMDOMWindow*
+webkit_dom_dom_window_get_opener(CyberKitDOMDOMWindow* self);
 
 /**
  * webkit_dom_dom_window_get_parent:
- * @self: A #WebKitDOMDOMWindow
+ * @self: A #CyberKitDOMDOMWindow
  *
- * Returns: (transfer full): A #WebKitDOMDOMWindow
+ * Returns: (transfer full): A #CyberKitDOMDOMWindow
  *
  * Since: 2.16
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
  */
-WEBKIT_DEPRECATED WebKitDOMDOMWindow*
-webkit_dom_dom_window_get_parent(WebKitDOMDOMWindow* self);
+WEBKIT_DEPRECATED CyberKitDOMDOMWindow*
+webkit_dom_dom_window_get_parent(CyberKitDOMDOMWindow* self);
 
 /**
  * webkit_dom_dom_window_get_top:
- * @self: A #WebKitDOMDOMWindow
+ * @self: A #CyberKitDOMDOMWindow
  *
- * Returns: (transfer full): A #WebKitDOMDOMWindow
+ * Returns: (transfer full): A #CyberKitDOMDOMWindow
  *
  * Since: 2.16
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
  */
-WEBKIT_DEPRECATED WebKitDOMDOMWindow*
-webkit_dom_dom_window_get_top(WebKitDOMDOMWindow* self);
+WEBKIT_DEPRECATED CyberKitDOMDOMWindow*
+webkit_dom_dom_window_get_top(CyberKitDOMDOMWindow* self);
 
 /**
  * webkit_dom_dom_window_get_document:
- * @self: A #WebKitDOMDOMWindow
+ * @self: A #CyberKitDOMDOMWindow
  *
- * Returns: (transfer none): A #WebKitDOMDocument
+ * Returns: (transfer none): A #CyberKitDOMDocument
  *
  * Since: 2.16
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
  */
-WEBKIT_DEPRECATED WebKitDOMDocument*
-webkit_dom_dom_window_get_document(WebKitDOMDOMWindow* self);
+WEBKIT_DEPRECATED CyberKitDOMDocument*
+webkit_dom_dom_window_get_document(CyberKitDOMDOMWindow* self);
 
 /**
  * webkit_dom_dom_window_get_device_pixel_ratio:
- * @self: A #WebKitDOMDOMWindow
+ * @self: A #CyberKitDOMDOMWindow
  *
  * Returns: A #gdouble
  *
@@ -677,11 +677,11 @@ webkit_dom_dom_window_get_document(WebKitDOMDOMWindow* self);
  * Deprecated: 2.22: Use JavaScriptCore API instead
  */
 WEBKIT_DEPRECATED gdouble
-webkit_dom_dom_window_get_device_pixel_ratio(WebKitDOMDOMWindow* self);
+webkit_dom_dom_window_get_device_pixel_ratio(CyberKitDOMDOMWindow* self);
 
 /**
  * webkit_dom_dom_window_get_orientation:
- * @self: A #WebKitDOMDOMWindow
+ * @self: A #CyberKitDOMDOMWindow
  *
  * Returns: A #glong
  *
@@ -690,11 +690,11 @@ webkit_dom_dom_window_get_device_pixel_ratio(WebKitDOMDOMWindow* self);
  * Deprecated: 2.22: Use JavaScriptCore API instead
  */
 WEBKIT_DEPRECATED glong
-webkit_dom_dom_window_get_orientation(WebKitDOMDOMWindow* self);
+webkit_dom_dom_window_get_orientation(CyberKitDOMDOMWindow* self);
 
 /**
  * webkit_dom_dom_window_post_user_message:
- * @window: A #WebKitDOMDOMWindow
+ * @window: A #CyberKitDOMDOMWindow
  * @handler: Name of the user message handler.
  * @message: JavaScript value to be sent.
  *
@@ -705,8 +705,8 @@ webkit_dom_dom_window_get_orientation(WebKitDOMDOMWindow* self);
  * Deprecated: 2.22: Use JavaScriptCore API instead
  */
 WEBKIT_DEPRECATED gboolean
-webkit_dom_dom_window_webkit_message_handlers_post_message(WebKitDOMDOMWindow* window, const gchar* handler, const gchar* message);
+webkit_dom_dom_window_webkit_message_handlers_post_message(CyberKitDOMDOMWindow* window, const gchar* handler, const gchar* message);
 
 G_END_DECLS
 
-#endif /* WebKitDOMDOMWindow_h */
+#endif /* CyberKitDOMDOMWindow_h */

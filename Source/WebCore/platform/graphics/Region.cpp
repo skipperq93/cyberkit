@@ -35,7 +35,7 @@
 // This implementation uses two vectors instead of linked list, and
 // also compresses regions when possible.
 
-namespace WebCore {
+namespace CyberCore {
 
 DEFINE_ALLOCATOR_WITH_HEAP_IDENTIFIER(Region);
 
@@ -665,4 +665,4 @@ TextStream& operator<<(TextStream& ts, const Region& region)
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

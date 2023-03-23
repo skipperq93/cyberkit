@@ -54,7 +54,7 @@ HighPerformanceGPUManager::~HighPerformanceGPUManager() = default;
 
 void HighPerformanceGPUManager::addProcessRequiringHighPerformance(WebProcessProxy& process)
 {
-    if (!WebCore::hasLowAndHighPowerGPUs())
+    if (!CyberCore::hasLowAndHighPowerGPUs())
         return;
 
     if (m_processesRequiringHighPerformance.add(process)) {
@@ -68,7 +68,7 @@ void HighPerformanceGPUManager::addProcessRequiringHighPerformance(WebProcessPro
 
 void HighPerformanceGPUManager::removeProcessRequiringHighPerformance(WebProcessProxy& process)
 {
-    if (!WebCore::hasLowAndHighPowerGPUs())
+    if (!CyberCore::hasLowAndHighPowerGPUs())
         return;
 
     if (m_processesRequiringHighPerformance.remove(process)) {

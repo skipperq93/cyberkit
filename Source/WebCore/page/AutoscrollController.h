@@ -29,7 +29,7 @@
 #include "Timer.h"
 #include <wtf/WallTime.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class EventHandler;
 class Frame;
@@ -86,4 +86,4 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore

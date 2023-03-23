@@ -33,8 +33,8 @@
 #include "RemoteMediaPlayerManagerProxyMessages.h"
 #include <wtf/Vector.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 RemoteMediaPlayerMIMETypeCache::RemoteMediaPlayerMIMETypeCache(RemoteMediaPlayerManager& manager, MediaPlayerEnums::MediaEngineIdentifier engineIdentifier)
     : m_manager(manager)

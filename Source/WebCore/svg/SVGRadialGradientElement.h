@@ -24,7 +24,7 @@
 #include "SVGGradientElement.h"
 #include "SVGNames.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct RadialGradientAttributes;
 
@@ -69,4 +69,4 @@ private:
     Ref<SVGAnimatedLength> m_fr { SVGAnimatedLength::create(this, SVGLengthMode::Other, "0%"_s) };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

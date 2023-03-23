@@ -31,7 +31,7 @@
 #include "FloatConversion.h"
 #include <QuartzCore/CATransform3D.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 TransformationMatrix::TransformationMatrix(const CATransform3D& t)
 {

@@ -32,7 +32,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 class SecurityOriginData;
 class SerializedScriptValue;
 }
@@ -53,9 +53,9 @@ public:
     class Client {
     public:
         virtual ~Client() { }
-        virtual void didPostMessage(WebPageProxy&, FrameInfoData&&, API::ContentWorld&, WebCore::SerializedScriptValue&) = 0;
+        virtual void didPostMessage(WebPageProxy&, FrameInfoData&&, API::ContentWorld&, CyberCore::SerializedScriptValue&) = 0;
         virtual bool supportsAsyncReply() = 0;
-        virtual void didPostMessageWithAsyncReply(WebPageProxy&, FrameInfoData&&, API::ContentWorld&, WebCore::SerializedScriptValue&, WTF::Function<void(API::SerializedScriptValue*, const String&)>&&) = 0;
+        virtual void didPostMessageWithAsyncReply(WebPageProxy&, FrameInfoData&&, API::ContentWorld&, CyberCore::SerializedScriptValue&, WTF::Function<void(API::SerializedScriptValue*, const String&)>&&) = 0;
     };
 
     static Ref<WebScriptMessageHandler> create(std::unique_ptr<Client>, const String& name, API::ContentWorld&);

@@ -38,7 +38,7 @@ class IconLoadingClient {
 public:
     virtual ~IconLoadingClient() { }
 
-    virtual void getLoadDecisionForIcon(const WebCore::LinkIcon&, CompletionHandler<void(CompletionHandler<void(API::Data*)>&&)>&& completionHandler)
+    virtual void getLoadDecisionForIcon(const CyberCore::LinkIcon&, CompletionHandler<void(CompletionHandler<void(API::Data*)>&&)>&& completionHandler)
     {
         completionHandler(nullptr);
     }

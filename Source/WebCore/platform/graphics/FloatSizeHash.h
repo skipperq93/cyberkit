@@ -31,18 +31,18 @@
 
 namespace WTF {
 
-template<> struct FloatHash<WebCore::FloatSize> {
-    static unsigned hash(const WebCore::FloatSize& key) { return pairIntHash(DefaultHash<float>::hash(key.width()), DefaultHash<float>::hash(key.height())); }
-    static bool equal(const WebCore::FloatSize& a, const WebCore::FloatSize& b) { return a == b; }
+template<> struct FloatHash<CyberCore::FloatSize> {
+    static unsigned hash(const CyberCore::FloatSize& key) { return pairIntHash(DefaultHash<float>::hash(key.width()), DefaultHash<float>::hash(key.height())); }
+    static bool equal(const CyberCore::FloatSize& a, const CyberCore::FloatSize& b) { return a == b; }
     static const bool safeToCompareToEmptyOrDeleted = true;
 };
 
-template<> struct DefaultHash<WebCore::FloatSize> : FloatHash<WebCore::FloatSize> { };
+template<> struct DefaultHash<CyberCore::FloatSize> : FloatHash<CyberCore::FloatSize> { };
 
-template<> struct HashTraits<WebCore::FloatSize> : GenericHashTraits<WebCore::FloatSize> {
+template<> struct HashTraits<CyberCore::FloatSize> : GenericHashTraits<CyberCore::FloatSize> {
     static const bool emptyValueIsZero = true;
-    static void constructDeletedValue(WebCore::FloatSize& slot) { new (NotNull, &slot) WebCore::FloatSize(-1, -1); }
-    static bool isDeletedValue(const WebCore::FloatSize& value) { return value.width() == -1 && value.height() == -1; }
+    static void constructDeletedValue(CyberCore::FloatSize& slot) { new (NotNull, &slot) CyberCore::FloatSize(-1, -1); }
+    static bool isDeletedValue(const CyberCore::FloatSize& value) { return value.width() == -1 && value.height() == -1; }
 };
 
 } // namespace WTF

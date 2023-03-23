@@ -40,7 +40,7 @@
 #include <wtf/cocoa/RuntimeApplicationChecksCocoa.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class TimerHeapReference;
 
@@ -525,5 +525,5 @@ Seconds TimerBase::nextUnalignedFireInterval() const
     return result;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 

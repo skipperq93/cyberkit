@@ -27,7 +27,7 @@
 
 #if ENABLE(FULLSCREEN_API)
 
-namespace WebCore {
+namespace CyberCore {
 
 class FullScreenControllerClient {
 public:
@@ -45,6 +45,6 @@ protected:
     virtual ~FullScreenControllerClient() = default;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(FULLSCREEN_API)

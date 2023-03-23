@@ -27,7 +27,7 @@
 
 #include <wtf/FastMalloc.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class IntSize;
 

@@ -27,7 +27,7 @@
 #include "LineInfo.h"
 #include "RenderLayer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 enum WhitespacePosition { LeadingWhitespace, TrailingWhitespace };
 
@@ -137,4 +137,4 @@ inline void setStaticPositions(RenderBlockFlow& block, RenderBox& child, IndentT
     child.layer()->setStaticBlockPosition(blockHeight);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

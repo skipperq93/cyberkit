@@ -28,7 +28,7 @@
 
 #import <Foundation/Foundation.h>
 #import <Foundation/NSURLRequest.h>
-#import <CyberKitLegacy/WebKitAvailability.h>
+#import <CyberKitLegacy/CyberKitAvailability.h>
 
 #if !TARGET_OS_IPHONE
 #import <AppKit/AppKit.h>
@@ -540,7 +540,7 @@ WEBKIT_DEPRECATED_MAC(10_3, 10_14)
     @param sender The WebView sending the delegate method
     @param frameView The WebFrameView needing to be printed
     @discussion This method is called when a script or user requests the page to be printed.
-    In this method the delegate can prepare the WebFrameView to be printed. Some content that WebKit
+    In this method the delegate can prepare the WebFrameView to be printed. Some content that CyberKit
     displays can be printed directly by the WebFrameView, other content will need to be handled by
     the delegate. To determine if the WebFrameView can handle printing the delegate should check
     WebFrameView's documentViewShouldHandlePrint, if YES then the delegate can call printDocumentView

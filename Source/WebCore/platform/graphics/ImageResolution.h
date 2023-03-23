@@ -29,7 +29,7 @@
 #include "FloatSize.h"
 #include "IntSize.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ImageResolution {
     static constexpr unsigned DefaultResolution = 72;
@@ -53,4 +53,4 @@ struct ImageResolution {
     static std::optional<IntSize> densityCorrectedSize(const FloatSize& sourceSize, const ResolutionMetadata&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

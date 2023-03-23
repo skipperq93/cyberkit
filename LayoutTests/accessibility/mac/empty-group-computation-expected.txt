@@ -1,4 +1,4 @@
-This test ensures WebKit properly reports groups as empty (or not empty).
+This test ensures CyberKit properly reports groups as empty (or not empty).
 
 On success, you will see a series of "PASS" messages, followed by "TEST COMPLETE".
 

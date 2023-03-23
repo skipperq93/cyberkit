@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -17,16 +17,16 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitDOMHTMLObjectElementPrivate_h
-#define WebKitDOMHTMLObjectElementPrivate_h
+#ifndef CyberKitDOMHTMLObjectElementPrivate_h
+#define CyberKitDOMHTMLObjectElementPrivate_h
 
 #include <CyberCore/HTMLObjectElement.h>
-#include <webkitdom/WebKitDOMHTMLObjectElement.h>
+#include <webkitdom/CyberKitDOMHTMLObjectElement.h>
 
-namespace WebKit {
-WebKitDOMHTMLObjectElement* wrapHTMLObjectElement(WebCore::HTMLObjectElement*);
-WebKitDOMHTMLObjectElement* kit(WebCore::HTMLObjectElement*);
-WebCore::HTMLObjectElement* core(WebKitDOMHTMLObjectElement*);
-} // namespace WebKit
+namespace CyberKit {
+CyberKitDOMHTMLObjectElement* wrapHTMLObjectElement(CyberCore::HTMLObjectElement*);
+CyberKitDOMHTMLObjectElement* kit(CyberCore::HTMLObjectElement*);
+CyberCore::HTMLObjectElement* core(CyberKitDOMHTMLObjectElement*);
+} // namespace CyberKit
 
-#endif /* WebKitDOMHTMLObjectElementPrivate_h */
+#endif /* CyberKitDOMHTMLObjectElementPrivate_h */

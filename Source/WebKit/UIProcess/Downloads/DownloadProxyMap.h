@@ -39,7 +39,7 @@ namespace API {
 class DownloadClient;
 }
 
-namespace WebCore {
+namespace CyberCore {
 class ResourceRequest;
 }
 
@@ -60,7 +60,7 @@ public:
     explicit DownloadProxyMap(NetworkProcessProxy&);
     ~DownloadProxyMap();
 
-    DownloadProxy& createDownloadProxy(WebsiteDataStore&, Ref<API::DownloadClient>&&, const WebCore::ResourceRequest&, const FrameInfoData&, WebPageProxy* originatingPage);
+    DownloadProxy& createDownloadProxy(WebsiteDataStore&, Ref<API::DownloadClient>&&, const CyberCore::ResourceRequest&, const FrameInfoData&, WebPageProxy* originatingPage);
     void downloadFinished(DownloadProxy&);
 
     bool isEmpty() const { return m_downloads.isEmpty(); }

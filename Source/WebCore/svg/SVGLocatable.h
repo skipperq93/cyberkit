@@ -24,7 +24,7 @@
 #include "AffineTransform.h"
 #include "ExceptionOr.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class FloatRect;
 class SVGElement;
@@ -61,4 +61,4 @@ protected:
     static AffineTransform computeCTM(SVGElement*, CTMScope, StyleUpdateStrategy);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -47,7 +47,7 @@
 #include "TextPaintStyle.h"
 #include "TextPainter.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static FloatRect calculateDocumentMarkerBounds(const InlineIterator::TextBoxIterator&, const MarkedText&);
 
@@ -586,7 +586,7 @@ void TextBoxPainter<TextBoxPath>::paintBackgroundDecorations(TextDecorationPaint
     collectDecoratingBoxesForTextBox(decoratingBoxList, textBox, textBoxPaintRect.location(), markedText.style.textDecorationStyles);
 
     for (auto& decoratingBox : makeReversedRange(decoratingBoxList)) {
-        auto computedTextDecorationType = WebCore::computedTextDecorationType(decoratingBox.style, decoratingBox.textDecorationStyles);
+        auto computedTextDecorationType = CyberCore::computedTextDecorationType(decoratingBox.style, decoratingBox.textDecorationStyles);
         auto computedBackgroundDecorationGeometry = [&] {
             auto textDecorationThickness = computedTextDecorationThickness(decoratingBox.style, m_document.deviceScaleFactor());
             auto underlineOffset = [&] {

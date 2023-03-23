@@ -41,7 +41,7 @@
 #include <wtf/unicode/icu/ICUHelpers.h>
 
 
-namespace WebCore {
+namespace CyberCore {
 using namespace icu;
 
 std::unique_ptr<Locale> Locale::create(const AtomString& locale)
@@ -369,5 +369,5 @@ const Vector<String>& LocaleICU::timeAMPMLabels()
 
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 

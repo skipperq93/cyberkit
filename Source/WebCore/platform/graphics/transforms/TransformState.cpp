@@ -28,7 +28,7 @@
 
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 TransformState& TransformState::operator=(const TransformState& other)
 {
@@ -309,4 +309,4 @@ TextStream& operator<<(TextStream& ts, const TransformState& state)
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

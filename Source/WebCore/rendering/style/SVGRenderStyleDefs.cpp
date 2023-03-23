@@ -34,7 +34,7 @@
 #include <wtf/PointerComparison.h>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 DEFINE_ALLOCATOR_WITH_HEAP_IDENTIFIER(StyleFillData);
 
@@ -518,4 +518,4 @@ TextStream& operator<<(TextStream& ts, const StyleLayoutData& data)
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

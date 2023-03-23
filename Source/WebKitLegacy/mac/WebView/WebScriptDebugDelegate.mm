@@ -76,7 +76,7 @@ NSString * const WebScriptErrorLineNumberKey = @"WebScriptErrorLineNumber";
 // the chain of callers.
 //
 // The delegate can assign a "wrapper" to each frame object so it can relay calls through its
-// own exported interface.  This class is private to WebCore (and the delegate).
+// own exported interface.  This class is private to CyberCore (and the delegate).
 
 @implementation WebScriptCallFrame (WebScriptDebugDelegateInternal)
 

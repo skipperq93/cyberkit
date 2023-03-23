@@ -33,7 +33,7 @@
 #include <wtf/Seconds.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Frame;
 class GraphicsContext;
@@ -173,32 +173,32 @@ private:
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::TextIndicatorOption> {
+template<> struct EnumTraits<CyberCore::TextIndicatorOption> {
     using values = EnumValues<
-        WebCore::TextIndicatorOption,
-        WebCore::TextIndicatorOption::RespectTextColor,
-        WebCore::TextIndicatorOption::PaintBackgrounds,
-        WebCore::TextIndicatorOption::PaintAllContent,
-        WebCore::TextIndicatorOption::IncludeSnapshotWithSelectionHighlight,
-        WebCore::TextIndicatorOption::TightlyFitContent,
-        WebCore::TextIndicatorOption::UseBoundingRectAndPaintAllContentForComplexRanges,
-        WebCore::TextIndicatorOption::IncludeMarginIfRangeMatchesSelection,
-        WebCore::TextIndicatorOption::ExpandClipBeyondVisibleRect,
-        WebCore::TextIndicatorOption::DoNotClipToVisibleRect,
-        WebCore::TextIndicatorOption::IncludeSnapshotOfAllVisibleContentWithoutSelection,
-        WebCore::TextIndicatorOption::UseSelectionRectForSizing,
-        WebCore::TextIndicatorOption::ComputeEstimatedBackgroundColor,
-        WebCore::TextIndicatorOption::UseUserSelectAllCommonAncestor
+        CyberCore::TextIndicatorOption,
+        CyberCore::TextIndicatorOption::RespectTextColor,
+        CyberCore::TextIndicatorOption::PaintBackgrounds,
+        CyberCore::TextIndicatorOption::PaintAllContent,
+        CyberCore::TextIndicatorOption::IncludeSnapshotWithSelectionHighlight,
+        CyberCore::TextIndicatorOption::TightlyFitContent,
+        CyberCore::TextIndicatorOption::UseBoundingRectAndPaintAllContentForComplexRanges,
+        CyberCore::TextIndicatorOption::IncludeMarginIfRangeMatchesSelection,
+        CyberCore::TextIndicatorOption::ExpandClipBeyondVisibleRect,
+        CyberCore::TextIndicatorOption::DoNotClipToVisibleRect,
+        CyberCore::TextIndicatorOption::IncludeSnapshotOfAllVisibleContentWithoutSelection,
+        CyberCore::TextIndicatorOption::UseSelectionRectForSizing,
+        CyberCore::TextIndicatorOption::ComputeEstimatedBackgroundColor,
+        CyberCore::TextIndicatorOption::UseUserSelectAllCommonAncestor
     >;
 };
 
-template<> struct EnumTraits<WebCore::TextIndicatorPresentationTransition> {
+template<> struct EnumTraits<CyberCore::TextIndicatorPresentationTransition> {
     using values = EnumValues<
-        WebCore::TextIndicatorPresentationTransition,
-        WebCore::TextIndicatorPresentationTransition::None,
-        WebCore::TextIndicatorPresentationTransition::Bounce,
-        WebCore::TextIndicatorPresentationTransition::BounceAndCrossfade,
-        WebCore::TextIndicatorPresentationTransition::FadeIn
+        CyberCore::TextIndicatorPresentationTransition,
+        CyberCore::TextIndicatorPresentationTransition::None,
+        CyberCore::TextIndicatorPresentationTransition::Bounce,
+        CyberCore::TextIndicatorPresentationTransition::BounceAndCrossfade,
+        CyberCore::TextIndicatorPresentationTransition::FadeIn
     >;
 };
 

@@ -35,7 +35,7 @@
 #import "ToggleButtonPart.h"
 #import <pal/spi/cocoa/NSButtonCellSPI.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 ToggleButtonMac::ToggleButtonMac(ToggleButtonPart& owningPart, ControlFactoryMac& controlFactory, NSButtonCell *buttonCell)
     : ButtonControlMac(owningPart, controlFactory, buttonCell)
@@ -136,6 +136,6 @@ void ToggleButtonMac::draw(GraphicsContext& context, const FloatRoundedRect& bor
         drawCell(context, logicalRect, deviceScaleFactor, style, m_buttonCell.get(), true);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(MAC)

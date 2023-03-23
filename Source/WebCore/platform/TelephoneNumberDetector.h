@@ -30,7 +30,7 @@
 
 #include <unicode/utypes.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace TelephoneNumberDetector {
 
 void prewarm();
@@ -38,7 +38,7 @@ bool isSupported();
 bool find(const UChar* buffer, unsigned length, int* startPos, int* endPos);
 
 } // namespace TelephoneNumberDetector
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(TELEPHONE_NUMBER_DETECTION)
 #endif // TelephoneNumberDetector_h

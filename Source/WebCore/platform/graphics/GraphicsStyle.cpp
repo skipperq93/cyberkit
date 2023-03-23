@@ -28,7 +28,7 @@
 
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 TextStream& operator<<(TextStream& ts, const GraphicsDropShadow& dropShadow)
 {
@@ -66,4 +66,4 @@ TextStream& operator<<(TextStream& ts, const GraphicsStyle& style)
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

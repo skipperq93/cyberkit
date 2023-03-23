@@ -34,11 +34,11 @@
 
 namespace WebKit {
 
-class ImageBufferRemoteIOSurfaceBackend final : public WebCore::ImageBufferBackend, public ImageBufferBackendHandleSharing {
+class ImageBufferRemoteIOSurfaceBackend final : public CyberCore::ImageBufferBackend, public ImageBufferBackendHandleSharing {
     WTF_MAKE_ISO_ALLOCATED(ImageBufferRemoteIOSurfaceBackend);
     WTF_MAKE_NONCOPYABLE(ImageBufferRemoteIOSurfaceBackend);
 public:
-    static WebCore::IntSize calculateSafeBackendSize(const Parameters&);
+    static CyberCore::IntSize calculateSafeBackendSize(const Parameters&);
     static size_t calculateMemoryCost(const Parameters&);
     static size_t calculateExternalMemoryCost(const Parameters&);
 
@@ -52,24 +52,24 @@ public:
 
     static constexpr bool isOriginAtBottomLeftCorner = true;
     static constexpr bool canMapBackingStore = false;
-    static constexpr WebCore::RenderingMode renderingMode = WebCore::RenderingMode::Accelerated;
+    static constexpr CyberCore::RenderingMode renderingMode = CyberCore::RenderingMode::Accelerated;
 
-    WebCore::GraphicsContext& context() const final;
+    CyberCore::GraphicsContext& context() const final;
     ImageBufferBackendHandle createBackendHandle(SharedMemory::Protection = SharedMemory::Protection::ReadWrite) const final;
 
 private:
-    WebCore::IntSize backendSize() const final;
-    RefPtr<WebCore::NativeImage> copyNativeImage(WebCore::BackingStoreCopy) const final;
+    CyberCore::IntSize backendSize() const final;
+    RefPtr<CyberCore::NativeImage> copyNativeImage(CyberCore::BackingStoreCopy) const final;
 
-    RefPtr<WebCore::PixelBuffer> getPixelBuffer(const WebCore::PixelBufferFormat& outputFormat, const WebCore::IntRect&, const WebCore::ImageBufferAllocator&) const final;
-    void putPixelBuffer(const WebCore::PixelBuffer&, const WebCore::IntRect& srcRect, const WebCore::IntPoint& destPoint, WebCore::AlphaPremultiplication destFormat) final;
+    RefPtr<CyberCore::PixelBuffer> getPixelBuffer(const CyberCore::PixelBufferFormat& outputFormat, const CyberCore::IntRect&, const CyberCore::ImageBufferAllocator&) const final;
+    void putPixelBuffer(const CyberCore::PixelBuffer&, const CyberCore::IntRect& srcRect, const CyberCore::IntPoint& destPoint, CyberCore::AlphaPremultiplication destFormat) final;
 
     bool originAtBottomLeftCorner() const final { return isOriginAtBottomLeftCorner; }
 
     unsigned bytesPerRow() const final;
 
-    WebCore::VolatilityState volatilityState() const final { return m_volatilityState; }
-    void setVolatilityState(WebCore::VolatilityState volatilityState) final { m_volatilityState = volatilityState; }
+    CyberCore::VolatilityState volatilityState() const final { return m_volatilityState; }
+    void setVolatilityState(CyberCore::VolatilityState volatilityState) final { m_volatilityState = volatilityState; }
 
     // ImageBufferBackendSharing
     ImageBufferBackendSharing* toBackendSharing() final { return this; }
@@ -79,7 +79,7 @@ private:
 
     ImageBufferBackendHandle m_handle;
 
-    WebCore::VolatilityState m_volatilityState { WebCore::VolatilityState::NonVolatile };
+    CyberCore::VolatilityState m_volatilityState { CyberCore::VolatilityState::NonVolatile };
 };
 
 } // namespace WebKit

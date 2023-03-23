@@ -1,9 +1,9 @@
-list(APPEND WebCore_PRIVATE_INCLUDE_DIRECTORIES
+list(APPEND CyberCore_PRIVATE_INCLUDE_DIRECTORIES
     "${WEBCORE_DIR}/platform/graphics/texmap"
     "${WEBCORE_DIR}/platform/graphics/nicosia"
 )
 
-list(APPEND WebCore_SOURCES
+list(APPEND CyberCore_SOURCES
     platform/graphics/nicosia/NicosiaAnimation.cpp
 
     platform/graphics/texmap/BitmapTexture.cpp
@@ -17,7 +17,7 @@ list(APPEND WebCore_SOURCES
     platform/graphics/texmap/TextureMapperTile.cpp
 )
 
-list(APPEND WebCore_PRIVATE_FRAMEWORK_HEADERS
+list(APPEND CyberCore_PRIVATE_FRAMEWORK_HEADERS
     platform/graphics/nicosia/NicosiaAnimation.h
 
     platform/graphics/texmap/BitmapTexture.h
@@ -41,7 +41,7 @@ list(APPEND WebCore_PRIVATE_FRAMEWORK_HEADERS
 )
 
 if (USE_TEXTURE_MAPPER_GL)
-    list(APPEND WebCore_SOURCES
+    list(APPEND CyberCore_SOURCES
         platform/graphics/texmap/BitmapTextureGL.cpp
         platform/graphics/texmap/ClipStack.cpp
         platform/graphics/texmap/TextureMapperContextAttributes.cpp
@@ -51,21 +51,21 @@ if (USE_TEXTURE_MAPPER_GL)
 endif ()
 
 if (USE_TEXTURE_MAPPER_DMABUF)
-    list(APPEND WebCore_SOURCES
+    list(APPEND CyberCore_SOURCES
         platform/graphics/texmap/TextureMapperPlatformLayerProxyDMABuf.cpp
     )
 
-    list(APPEND WebCore_PRIVATE_FRAMEWORK_HEADERS
+    list(APPEND CyberCore_PRIVATE_FRAMEWORK_HEADERS
         platform/graphics/texmap/TextureMapperPlatformLayerProxyDMABuf.h
     )
 endif ()
 
 if (USE_COORDINATED_GRAPHICS)
-    list(APPEND WebCore_PRIVATE_INCLUDE_DIRECTORIES
+    list(APPEND CyberCore_PRIVATE_INCLUDE_DIRECTORIES
         "${WEBCORE_DIR}/page/scrolling/nicosia"
         "${WEBCORE_DIR}/platform/graphics/texmap/coordinated"
     )
-    list(APPEND WebCore_SOURCES
+    list(APPEND CyberCore_SOURCES
         platform/graphics/texmap/TextureMapperPlatformLayerBuffer.cpp
         platform/graphics/texmap/TextureMapperPlatformLayerDmabuf.cpp
         platform/graphics/texmap/TextureMapperPlatformLayerProxy.cpp
@@ -76,7 +76,7 @@ if (USE_COORDINATED_GRAPHICS)
         platform/graphics/texmap/coordinated/Tile.cpp
         platform/graphics/texmap/coordinated/TiledBackingStore.cpp
     )
-    list(APPEND WebCore_PRIVATE_FRAMEWORK_HEADERS
+    list(APPEND CyberCore_PRIVATE_FRAMEWORK_HEADERS
         platform/graphics/texmap/coordinated/CoordinatedBackingStore.h
         platform/graphics/texmap/coordinated/CoordinatedGraphicsLayer.h
         platform/graphics/texmap/coordinated/SurfaceUpdateInfo.h
@@ -86,11 +86,11 @@ if (USE_COORDINATED_GRAPHICS)
     )
 
     # FIXME: Move this into Nicosia.cmake once the component is set for long-term use.
-    list(APPEND WebCore_PRIVATE_INCLUDE_DIRECTORIES
+    list(APPEND CyberCore_PRIVATE_INCLUDE_DIRECTORIES
         "${WEBCORE_DIR}/platform/graphics/nicosia/cairo"
         "${WEBCORE_DIR}/platform/graphics/nicosia/texmap"
     )
-    list(APPEND WebCore_SOURCES
+    list(APPEND CyberCore_SOURCES
         platform/graphics/nicosia/NicosiaBuffer.cpp
         platform/graphics/nicosia/NicosiaImageBufferPipe.cpp
         platform/graphics/nicosia/NicosiaPaintingContext.cpp
@@ -110,7 +110,7 @@ if (USE_COORDINATED_GRAPHICS)
         platform/graphics/nicosia/texmap/NicosiaImageBackingStore.cpp
         platform/graphics/nicosia/texmap/NicosiaImageBackingTextureMapperImpl.cpp
     )
-    list(APPEND WebCore_PRIVATE_FRAMEWORK_HEADERS
+    list(APPEND CyberCore_PRIVATE_FRAMEWORK_HEADERS
         page/scrolling/nicosia/ScrollingTreeFixedNodeNicosia.h
         page/scrolling/nicosia/ScrollingTreeStickyNodeNicosia.h
 
@@ -128,23 +128,23 @@ if (USE_COORDINATED_GRAPHICS)
         platform/graphics/nicosia/texmap/NicosiaImageBackingTextureMapperImpl.h
     )
 else ()
-    list(APPEND WebCore_SOURCES
+    list(APPEND CyberCore_SOURCES
         platform/graphics/texmap/GraphicsLayerTextureMapper.cpp
         platform/graphics/texmap/TextureMapperTiledBackingStore.cpp
     )
 endif ()
 
 if (ENABLE_WEBGL)
-    list(APPEND WebCore_SOURCES
+    list(APPEND CyberCore_SOURCES
         platform/graphics/nicosia/texmap/NicosiaGCGLANGLELayer.cpp
     )
 endif ()
 
 if (USE_GRAPHICS_LAYER_WC)
-    list(APPEND WebCore_SOURCES
+    list(APPEND CyberCore_SOURCES
         platform/graphics/texmap/TextureMapperSparseBackingStore.cpp
     )
-    list(APPEND WebCore_PRIVATE_FRAMEWORK_HEADERS
+    list(APPEND CyberCore_PRIVATE_FRAMEWORK_HEADERS
         platform/graphics/texmap/TextureMapperSparseBackingStore.h
 
         platform/graphics/wc/WCPlatformLayer.h
@@ -152,7 +152,7 @@ if (USE_GRAPHICS_LAYER_WC)
 endif ()
 
 if (USE_LIBGBM)
-    list(APPEND WebCore_PRIVATE_FRAMEWORK_HEADERS
+    list(APPEND CyberCore_PRIVATE_FRAMEWORK_HEADERS
         platform/graphics/gbm/DMABufColorSpace.h
         platform/graphics/gbm/DMABufEGLUtilities.h
         platform/graphics/gbm/DMABufFormat.h

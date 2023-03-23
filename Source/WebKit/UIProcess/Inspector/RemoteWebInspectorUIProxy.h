@@ -45,7 +45,7 @@ OBJC_CLASS WKWebView;
 #include <wtf/glib/GWeakPtr.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 class CertificateInfo;
 }
 
@@ -104,7 +104,7 @@ public:
     NSWindow *window() const { return m_window.get(); }
     WKWebView *webView() const;
 
-    const WebCore::FloatRect& sheetRect() const { return m_sheetRect; }
+    const CyberCore::FloatRect& sheetRect() const { return m_sheetRect; }
 
     void didBecomeActive();
 #endif
@@ -134,15 +134,15 @@ private:
     void reopen();
     void resetState();
     void bringToFront();
-    void save(Vector<WebCore::InspectorFrontendClient::SaveData>&&, bool forceSaveAs);
+    void save(Vector<CyberCore::InspectorFrontendClient::SaveData>&&, bool forceSaveAs);
     void load(const String& path, CompletionHandler<void(const String&)>&&);
-    void pickColorFromScreen(CompletionHandler<void(const std::optional<WebCore::Color>&)>&&);
-    void setSheetRect(const WebCore::FloatRect&);
-    void setForcedAppearance(WebCore::InspectorFrontendClient::Appearance);
+    void pickColorFromScreen(CompletionHandler<void(const std::optional<CyberCore::Color>&)>&&);
+    void setSheetRect(const CyberCore::FloatRect&);
+    void setForcedAppearance(CyberCore::InspectorFrontendClient::Appearance);
     void startWindowDrag();
     void openURLExternally(const String& url);
     void revealFileExternally(const String& path);
-    void showCertificate(const WebCore::CertificateInfo&);
+    void showCertificate(const CyberCore::CertificateInfo&);
     void setInspectorPageDeveloperExtrasEnabled(bool);
     void sendMessageToBackend(const String& message);
 
@@ -154,15 +154,15 @@ private:
     void platformCloseFrontendPageAndWindow();
     void platformResetState();
     void platformBringToFront();
-    void platformSave(Vector<WebCore::InspectorFrontendClient::SaveData>&&, bool forceSaveAs);
+    void platformSave(Vector<CyberCore::InspectorFrontendClient::SaveData>&&, bool forceSaveAs);
     void platformLoad(const String& path, CompletionHandler<void(const String&)>&&);
-    void platformPickColorFromScreen(CompletionHandler<void(const std::optional<WebCore::Color>&)>&&);
-    void platformSetSheetRect(const WebCore::FloatRect&);
-    void platformSetForcedAppearance(WebCore::InspectorFrontendClient::Appearance);
+    void platformPickColorFromScreen(CompletionHandler<void(const std::optional<CyberCore::Color>&)>&&);
+    void platformSetSheetRect(const CyberCore::FloatRect&);
+    void platformSetForcedAppearance(CyberCore::InspectorFrontendClient::Appearance);
     void platformStartWindowDrag();
     void platformOpenURLExternally(const String& url);
     void platformRevealFileExternally(const String& path);
-    void platformShowCertificate(const WebCore::CertificateInfo&);
+    void platformShowCertificate(const CyberCore::CertificateInfo&);
 
     RemoteWebInspectorUIProxyClient* m_client { nullptr };
     WebPageProxy* m_inspectorPage { nullptr };
@@ -179,7 +179,7 @@ private:
     RetainPtr<NSWindow> m_window;
     RetainPtr<WKRemoteWebInspectorUIProxyObjCAdapter> m_objCAdapter;
     HashMap<String, RetainPtr<NSURL>> m_suggestedToActualURLMap;
-    WebCore::FloatRect m_sheetRect;
+    CyberCore::FloatRect m_sheetRect;
 #endif
 #if PLATFORM(GTK)
     GWeakPtr<GtkWidget> m_webView;

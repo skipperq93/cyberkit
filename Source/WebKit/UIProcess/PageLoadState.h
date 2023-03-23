@@ -151,7 +151,7 @@ public:
     double estimatedProgress() const;
     bool networkRequestsInProgress() const { return m_committedState.networkRequestsInProgress; }
 
-    const WebCore::CertificateInfo& certificateInfo() const { return m_committedState.certificateInfo; }
+    const CyberCore::CertificateInfo& certificateInfo() const { return m_committedState.certificateInfo; }
 
     const URL& resourceDirectoryURL() const;
 
@@ -165,7 +165,7 @@ public:
     void didReceiveServerRedirectForProvisionalLoad(const Transaction::Token&, const String& url);
     void didFailProvisionalLoad(const Transaction::Token&);
 
-    void didCommitLoad(const Transaction::Token&, const WebCore::CertificateInfo&, bool hasInsecureContent, bool usedLegacyTLS, bool privateRelayed);
+    void didCommitLoad(const Transaction::Token&, const CyberCore::CertificateInfo&, bool hasInsecureContent, bool usedLegacyTLS, bool privateRelayed);
     void didFinishLoad(const Transaction::Token&);
     void didFailLoad(const Transaction::Token&);
 
@@ -231,7 +231,7 @@ private:
         double estimatedProgress { 0 };
         bool networkRequestsInProgress { false };
 
-        WebCore::CertificateInfo certificateInfo;
+        CyberCore::CertificateInfo certificateInfo;
     };
 
     static bool isLoading(const Data&);

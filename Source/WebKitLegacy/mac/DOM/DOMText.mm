@@ -34,35 +34,35 @@
 #import <wtf/GetPtr.h>
 #import <wtf/URL.h>
 
-#define IMPL static_cast<WebCore::Text*>(reinterpret_cast<WebCore::Node*>(_internal))
+#define IMPL static_cast<CyberCore::Text*>(reinterpret_cast<CyberCore::Node*>(_internal))
 
 @implementation DOMText
 
 - (NSString *)wholeText
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->wholeText();
 }
 
 - (DOMText *)splitText:(unsigned)offset
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(raiseOnDOMError(IMPL->splitText(offset)).ptr());
 }
 
 - (DOMText *)replaceWholeText:(NSString *)content
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     RefPtr { IMPL }->replaceWholeText(content);
     return self;
 }
 
 @end
 
-DOMText *kit(WebCore::Text* value)
+DOMText *kit(CyberCore::Text* value)
 {
-    WebCoreThreadViolationCheckRoundOne();
-    return static_cast<DOMText*>(kit(static_cast<WebCore::Node*>(value)));
+    CyberCoreThreadViolationCheckRoundOne();
+    return static_cast<DOMText*>(kit(static_cast<CyberCore::Node*>(value)));
 }
 
 #undef IMPL

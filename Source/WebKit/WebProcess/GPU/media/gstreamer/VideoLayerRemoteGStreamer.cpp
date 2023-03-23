@@ -39,9 +39,9 @@
 #include <CyberCore/TextureMapperPlatformLayer.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
-PlatformLayerContainer createVideoLayerRemote(MediaPlayerPrivateRemote*, LayerHostingContextID, WebCore::MediaPlayerEnums::VideoGravity, WebCore::IntSize)
+PlatformLayerContainer createVideoLayerRemote(MediaPlayerPrivateRemote*, LayerHostingContextID, CyberCore::MediaPlayerEnums::VideoGravity, CyberCore::IntSize)
 {
     notImplemented();
     return nullptr;

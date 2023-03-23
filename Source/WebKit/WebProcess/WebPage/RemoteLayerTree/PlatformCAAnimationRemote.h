@@ -41,11 +41,11 @@ class TextStream;
 
 OBJC_CLASS CALayer;
 
-namespace WebKit {
+namespace CyberKit {
 
 class RemoteLayerTreeHost;
 
-class PlatformCAAnimationRemote final : public WebCore::PlatformCAAnimation {
+class PlatformCAAnimationRemote final : public CyberCore::PlatformCAAnimation {
 public:
     static Ref<PlatformCAAnimation> create(AnimationType, const String& keyPath);
 
@@ -78,8 +78,8 @@ public:
     FillModeType fillMode() const override;
     void setFillMode(FillModeType) override;
 
-    void setTimingFunction(const WebCore::TimingFunction*, bool reverse = false) override;
-    void copyTimingFunctionFrom(const WebCore::PlatformCAAnimation&) override;
+    void setTimingFunction(const CyberCore::TimingFunction*, bool reverse = false) override;
+    void copyTimingFunctionFrom(const CyberCore::PlatformCAAnimation&) override;
 
     bool isRemovedOnCompletion() const override;
     void setRemovedOnCompletion(bool) override;
@@ -92,32 +92,32 @@ public:
 
     // Basic-animation properties.
     void setFromValue(float) override;
-    void setFromValue(const WebCore::TransformationMatrix&) override;
-    void setFromValue(const WebCore::FloatPoint3D&) override;
-    void setFromValue(const WebCore::Color&) override;
-    void setFromValue(const WebCore::FilterOperation*) override;
-    void copyFromValueFrom(const WebCore::PlatformCAAnimation&) override;
+    void setFromValue(const CyberCore::TransformationMatrix&) override;
+    void setFromValue(const CyberCore::FloatPoint3D&) override;
+    void setFromValue(const CyberCore::Color&) override;
+    void setFromValue(const CyberCore::FilterOperation*) override;
+    void copyFromValueFrom(const CyberCore::PlatformCAAnimation&) override;
 
     void setToValue(float) override;
-    void setToValue(const WebCore::TransformationMatrix&) override;
-    void setToValue(const WebCore::FloatPoint3D&) override;
-    void setToValue(const WebCore::Color&) override;
-    void setToValue(const WebCore::FilterOperation*) override;
-    void copyToValueFrom(const WebCore::PlatformCAAnimation&) override;
+    void setToValue(const CyberCore::TransformationMatrix&) override;
+    void setToValue(const CyberCore::FloatPoint3D&) override;
+    void setToValue(const CyberCore::Color&) override;
+    void setToValue(const CyberCore::FilterOperation*) override;
+    void copyToValueFrom(const CyberCore::PlatformCAAnimation&) override;
 
     // Keyframe-animation properties.
     void setValues(const Vector<float>&) override;
-    void setValues(const Vector<WebCore::TransformationMatrix>&) override;
-    void setValues(const Vector<WebCore::FloatPoint3D>&) override;
-    void setValues(const Vector<WebCore::Color>&) override;
-    void setValues(const Vector<RefPtr<WebCore::FilterOperation>>&) override;
-    void copyValuesFrom(const WebCore::PlatformCAAnimation&) override;
+    void setValues(const Vector<CyberCore::TransformationMatrix>&) override;
+    void setValues(const Vector<CyberCore::FloatPoint3D>&) override;
+    void setValues(const Vector<CyberCore::Color>&) override;
+    void setValues(const Vector<RefPtr<CyberCore::FilterOperation>>&) override;
+    void copyValuesFrom(const CyberCore::PlatformCAAnimation&) override;
 
     void setKeyTimes(const Vector<float>&) override;
-    void copyKeyTimesFrom(const WebCore::PlatformCAAnimation&) override;
+    void copyKeyTimesFrom(const CyberCore::PlatformCAAnimation&) override;
 
-    void setTimingFunctions(const Vector<Ref<const WebCore::TimingFunction>>&, bool reverse) override;
-    void copyTimingFunctionsFrom(const WebCore::PlatformCAAnimation&) override;
+    void setTimingFunctions(const Vector<Ref<const CyberCore::TimingFunction>>&, bool reverse) override;
+    void copyTimingFunctionsFrom(const CyberCore::PlatformCAAnimation&) override;
 
     // Animation group properties.
     void setAnimations(const Vector<RefPtr<PlatformCAAnimation>>&) final;
@@ -130,7 +130,7 @@ public:
     void didStart(CFTimeInterval beginTime) { m_properties.beginTime = beginTime; }
 
 
-    using KeyframeValue = std::variant<float, WebCore::Color, WebCore::FloatPoint3D, WebCore::TransformationMatrix, RefPtr<WebCore::FilterOperation>>;
+    using KeyframeValue = std::variant<float, CyberCore::Color, CyberCore::FloatPoint3D, CyberCore::TransformationMatrix, RefPtr<CyberCore::FilterOperation>>;
 
     struct Properties {
         Properties()
@@ -164,7 +164,7 @@ public:
 
         PlatformCAAnimation::FillModeType fillMode;
         PlatformCAAnimation::ValueFunctionType valueFunction;
-        RefPtr<WebCore::TimingFunction> timingFunction;
+        RefPtr<CyberCore::TimingFunction> timingFunction;
 
         bool autoReverses;
         bool removedOnCompletion;
@@ -176,7 +176,7 @@ public:
         // timingFunctions has n-1 entries.
         Vector<KeyframeValue> keyValues;
         Vector<float> keyTimes;
-        Vector<Ref<WebCore::TimingFunction>> timingFunctions;
+        Vector<Ref<CyberCore::TimingFunction>> timingFunctions;
 
         Vector<Properties> animations;
     };
@@ -194,6 +194,6 @@ private:
 
 WTF::TextStream& operator<<(WTF::TextStream&, const PlatformCAAnimationRemote::Properties&);
 
-} // namespace WebKit
+} // namespace CyberKit
 
-SPECIALIZE_TYPE_TRAITS_CAANIMATION(WebKit::PlatformCAAnimationRemote, isPlatformCAAnimationRemote())
+SPECIALIZE_TYPE_TRAITS_CAANIMATION(CyberKit::PlatformCAAnimationRemote, isPlatformCAAnimationRemote())

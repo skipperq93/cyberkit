@@ -33,7 +33,7 @@ namespace webrtc {
 using LocalDecoder = void*;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class WebRTCVideoDecoder {
 public:

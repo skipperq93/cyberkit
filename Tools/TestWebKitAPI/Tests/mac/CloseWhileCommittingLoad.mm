@@ -47,7 +47,7 @@ static bool didCloseWhileCommittingLoad;
 
 namespace TestWebKitAPI {
 
-TEST(WebKitLegacy, CloseWhileCommittingLoad)
+TEST(CyberKitLegacy, CloseWhileCommittingLoad)
 {
     auto webView = adoptNS([WebView new]);
     auto delegate = adoptNS([CloseWhileCommittingLoadDelegate new]);

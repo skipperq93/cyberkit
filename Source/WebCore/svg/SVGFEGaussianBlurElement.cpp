@@ -27,7 +27,7 @@
 #include "SVGParserUtilities.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(SVGFEGaussianBlurElement);
 
@@ -142,4 +142,4 @@ RefPtr<FilterEffect> SVGFEGaussianBlurElement::createFilterEffect(const FilterEf
     return FEGaussianBlur::create(stdDeviationX(), stdDeviationY(), edgeMode());
 }
 
-} // namespace WebCore
+} // namespace CyberCore

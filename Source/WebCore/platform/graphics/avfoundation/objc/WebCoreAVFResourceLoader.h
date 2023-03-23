@@ -35,7 +35,7 @@
 
 OBJC_CLASS AVAssetResourceLoadingRequest;
 
-namespace WebCore {
+namespace CyberCore {
 
 class CachedResourceMediaLoader;
 class DataURLResourceMediaLoader;
@@ -45,18 +45,18 @@ class ResourceError;
 class ResourceResponse;
 class FragmentedSharedBuffer;
 
-class WebCoreAVFResourceLoader : public RefCounted<WebCoreAVFResourceLoader> {
-    WTF_MAKE_NONCOPYABLE(WebCoreAVFResourceLoader); WTF_MAKE_FAST_ALLOCATED;
+class CyberCoreAVFResourceLoader : public RefCounted<CyberCoreAVFResourceLoader> {
+    WTF_MAKE_NONCOPYABLE(CyberCoreAVFResourceLoader); WTF_MAKE_FAST_ALLOCATED;
 public:
-    static Ref<WebCoreAVFResourceLoader> create(MediaPlayerPrivateAVFoundationObjC* parent, AVAssetResourceLoadingRequest *);
-    virtual ~WebCoreAVFResourceLoader();
+    static Ref<CyberCoreAVFResourceLoader> create(MediaPlayerPrivateAVFoundationObjC* parent, AVAssetResourceLoadingRequest *);
+    virtual ~CyberCoreAVFResourceLoader();
 
     void startLoading();
     void stopLoading();
     void invalidate();
 
 private:
-    WebCoreAVFResourceLoader(MediaPlayerPrivateAVFoundationObjC* parent, AVAssetResourceLoadingRequest *);
+    CyberCoreAVFResourceLoader(MediaPlayerPrivateAVFoundationObjC* parent, AVAssetResourceLoadingRequest *);
 
     friend class CachedResourceMediaLoader;
     friend class DataURLResourceMediaLoader;

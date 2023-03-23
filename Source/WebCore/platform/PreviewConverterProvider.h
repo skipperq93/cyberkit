@@ -27,7 +27,7 @@
 
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct PreviewConverterProvider : CanMakeWeakPtr<PreviewConverterProvider> {
     virtual ~PreviewConverterProvider() = default;
@@ -36,4 +36,4 @@ struct PreviewConverterProvider : CanMakeWeakPtr<PreviewConverterProvider> {
     virtual void providePasswordForPreviewConverter(PreviewConverter&, CompletionHandler<void(const String&)>&&) = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

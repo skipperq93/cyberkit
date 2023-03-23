@@ -31,7 +31,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DeferredPromise;
 class Exception;
@@ -65,4 +65,4 @@ private:
     WeakPtr<ScreenOrientation> m_lockRequester;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

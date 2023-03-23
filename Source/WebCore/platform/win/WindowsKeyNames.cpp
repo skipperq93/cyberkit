@@ -30,7 +30,7 @@
 #include "config.h"
 #include "WindowsKeyNames.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class WindowsKeyNames::KeyModifier : uint8_t {
     Shift = 1 << 0,
@@ -529,4 +529,4 @@ void WindowsKeyNames::updateLayout()
     SetKeyboardState(keyboardStateToRestore);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

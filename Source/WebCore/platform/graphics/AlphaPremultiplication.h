@@ -27,7 +27,7 @@
 
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class AlphaPremultiplication : uint8_t {
     Premultiplied,

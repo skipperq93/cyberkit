@@ -27,15 +27,15 @@
 
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 class HistoryItem;
 };
 
-namespace WebKit {
+namespace CyberKit {
 
 struct BackForwardListItemState;
 
-BackForwardListItemState toBackForwardListItemState(const WebCore::HistoryItem&);
-Ref<WebCore::HistoryItem> toHistoryItem(const BackForwardListItemState&);
+BackForwardListItemState toBackForwardListItemState(const CyberCore::HistoryItem&);
+Ref<CyberCore::HistoryItem> toHistoryItem(const BackForwardListItemState&);
 
-} // namespace WebKit
+} // namespace CyberKit

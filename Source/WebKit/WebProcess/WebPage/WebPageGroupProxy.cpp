@@ -33,7 +33,7 @@
 #include <CyberCore/PageGroup.h>
 #include <CyberCore/UserContentController.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 Ref<WebPageGroupProxy> WebPageGroupProxy::create(const WebPageGroupData& data)
 {
@@ -42,7 +42,7 @@ Ref<WebPageGroupProxy> WebPageGroupProxy::create(const WebPageGroupData& data)
 
 WebPageGroupProxy::WebPageGroupProxy(const WebPageGroupData& data)
     : m_data(data)
-    , m_pageGroup(WebCore::PageGroup::pageGroup(m_data.identifier))
+    , m_pageGroup(CyberCore::PageGroup::pageGroup(m_data.identifier))
 {
 }
 
@@ -50,4 +50,4 @@ WebPageGroupProxy::~WebPageGroupProxy()
 {
 }
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -52,10 +52,10 @@ OBJC_CLASS WAKView;
 
 #if PLATFORM(COCOA) && defined __OBJC__
 @class NSScrollView;
-@protocol WebCoreFrameScrollView;
+@protocol CyberCoreFrameScrollView;
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class EventRegionContext;
 class FloatQuad;
@@ -135,7 +135,7 @@ public:
     bool paintsEntireContents() const { return m_paintsEntireContents; }
     WEBCORE_EXPORT void setPaintsEntireContents(bool);
 
-    // By default scrolling is handled by WebCore, but some WebKit implementations take over scrolling,
+    // By default scrolling is handled by CyberCore, but some WebKit implementations take over scrolling,
     // delegating it to a native scrolling widget or the UI process.
     DelegatedScrollingMode delegatedScrollingMode() const { return m_delegatedScrollingMode; }
     WEBCORE_EXPORT void setDelegatedScrollingMode(DelegatedScrollingMode);
@@ -169,13 +169,13 @@ public:
     void setCanBlitOnScroll(bool);
     bool canBlitOnScroll() const;
 
-    // There are at least three types of contentInset. Usually we just care about WebCoreContentInset, which is the inset
-    // that is set on a Page that requires WebCore to move its layers to accomodate the inset. However, there are platform
+    // There are at least three types of contentInset. Usually we just care about CyberCoreContentInset, which is the inset
+    // that is set on a Page that requires CyberCore to move its layers to accomodate the inset. However, there are platform
     // concepts that are similar on both iOS and Mac when there is a platformWidget(). Sometimes we need the Mac platform value
-    // for topContentInset, so when the TopContentInsetType is WebCoreOrPlatformContentInset, platformTopContentInset()
+    // for topContentInset, so when the TopContentInsetType is CyberCoreOrPlatformContentInset, platformTopContentInset()
     // will be returned instead of the value set on Page.
-    enum class TopContentInsetType { WebCoreContentInset, WebCoreOrPlatformContentInset };
-    virtual float topContentInset(TopContentInsetType = TopContentInsetType::WebCoreContentInset) const { return 0; }
+    enum class TopContentInsetType { CyberCoreContentInset, CyberCoreOrPlatformContentInset };
+    virtual float topContentInset(TopContentInsetType = TopContentInsetType::CyberCoreContentInset) const { return 0; }
 
     // The visible content rect has a location that is the scrolled offset of the document. The width and height are the unobscured viewport
     // width and height. By default the scrollbars themselves are excluded from this rectangle, but an optional boolean argument allows them
@@ -468,7 +468,7 @@ public:
     WEBCORE_EXPORT NSView* documentView() const;
 
 private:
-    NSScrollView<WebCoreFrameScrollView>* scrollView() const;
+    NSScrollView<CyberCoreFrameScrollView>* scrollView() const;
 #endif
 
 private:
@@ -592,9 +592,9 @@ private:
 
 }; // class ScrollView
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::ScrollView)
-    static bool isType(const WebCore::Widget& widget) { return widget.isScrollView(); }
-    static bool isType(const WebCore::ScrollableArea& area) { return area.isScrollView(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::ScrollView)
+    static bool isType(const CyberCore::Widget& widget) { return widget.isScrollView(); }
+    static bool isType(const CyberCore::ScrollableArea& area) { return area.isScrollView(); }
 SPECIALIZE_TYPE_TRAITS_END()

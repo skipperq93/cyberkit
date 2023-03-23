@@ -34,7 +34,7 @@
 #include "ScrollingThread.h"
 #include "ScrollingTree.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // See also ScrollLatchingController.cpp
 static const Seconds resetLatchedStateTimeout { 100_ms };
@@ -148,6 +148,6 @@ bool ScrollingTreeLatchingController::latchedNodeIsRelevant() const
     return secondsSinceLastInteraction < resetLatchedStateTimeout;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ASYNC_SCROLLING)

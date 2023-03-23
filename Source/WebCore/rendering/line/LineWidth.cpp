@@ -33,7 +33,7 @@
 #include "RenderBlockFlow.h"
 #include "RenderRubyRun.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 LineWidth::LineWidth(RenderBlockFlow& block, bool isFirstLine, IndentTextOrNot shouldIndentText)
     : m_block(block)

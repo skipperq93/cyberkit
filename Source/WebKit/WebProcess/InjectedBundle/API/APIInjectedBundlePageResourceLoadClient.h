@@ -27,12 +27,12 @@
 
 #include <CyberCore/ResourceLoaderIdentifier.h>
 
-namespace WebKit {
+namespace CyberKit {
 class WebFrame;
 class WebPage;
 }
 
-namespace WebCore {
+namespace CyberCore {
 class ResourceError;
 class ResourceRequest;
 class ResourceResponse;
@@ -47,14 +47,14 @@ class ResourceLoadClient {
 public:
     virtual ~ResourceLoadClient() = default;
 
-    virtual void didInitiateLoadForResource(WebKit::WebPage&, WebKit::WebFrame&, WebCore::ResourceLoaderIdentifier, const WebCore::ResourceRequest&, bool /*pageIsProvisionallyLoading*/) { }
-    virtual void willSendRequestForFrame(WebKit::WebPage&, WebKit::WebFrame&, WebCore::ResourceLoaderIdentifier, WebCore::ResourceRequest&, const WebCore::ResourceResponse&) { }
-    virtual void didReceiveResponseForResource(WebKit::WebPage&, WebKit::WebFrame&, WebCore::ResourceLoaderIdentifier, const WebCore::ResourceResponse&) { }
-    virtual void didReceiveContentLengthForResource(WebKit::WebPage&, WebKit::WebFrame&, WebCore::ResourceLoaderIdentifier, uint64_t contentLength) { }
-    virtual void didFinishLoadForResource(WebKit::WebPage&, WebKit::WebFrame&, WebCore::ResourceLoaderIdentifier) { }
-    virtual void didFailLoadForResource(WebKit::WebPage&, WebKit::WebFrame&, WebCore::ResourceLoaderIdentifier, const WebCore::ResourceError&) { }
-    virtual bool shouldCacheResponse(WebKit::WebPage&, WebKit::WebFrame&, WebCore::ResourceLoaderIdentifier) { return true; }
-    virtual bool shouldUseCredentialStorage(WebKit::WebPage&, WebKit::WebFrame&, WebCore::ResourceLoaderIdentifier) { return true; }
+    virtual void didInitiateLoadForResource(CyberKit::WebPage&, CyberKit::WebFrame&, CyberCore::ResourceLoaderIdentifier, const CyberCore::ResourceRequest&, bool /*pageIsProvisionallyLoading*/) { }
+    virtual void willSendRequestForFrame(CyberKit::WebPage&, CyberKit::WebFrame&, CyberCore::ResourceLoaderIdentifier, CyberCore::ResourceRequest&, const CyberCore::ResourceResponse&) { }
+    virtual void didReceiveResponseForResource(CyberKit::WebPage&, CyberKit::WebFrame&, CyberCore::ResourceLoaderIdentifier, const CyberCore::ResourceResponse&) { }
+    virtual void didReceiveContentLengthForResource(CyberKit::WebPage&, CyberKit::WebFrame&, CyberCore::ResourceLoaderIdentifier, uint64_t contentLength) { }
+    virtual void didFinishLoadForResource(CyberKit::WebPage&, CyberKit::WebFrame&, CyberCore::ResourceLoaderIdentifier) { }
+    virtual void didFailLoadForResource(CyberKit::WebPage&, CyberKit::WebFrame&, CyberCore::ResourceLoaderIdentifier, const CyberCore::ResourceError&) { }
+    virtual bool shouldCacheResponse(CyberKit::WebPage&, CyberKit::WebFrame&, CyberCore::ResourceLoaderIdentifier) { return true; }
+    virtual bool shouldUseCredentialStorage(CyberKit::WebPage&, CyberKit::WebFrame&, CyberCore::ResourceLoaderIdentifier) { return true; }
 };
 
 } // namespace InjectedBundle

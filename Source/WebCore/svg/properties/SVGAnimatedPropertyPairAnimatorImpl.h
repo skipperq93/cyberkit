@@ -29,7 +29,7 @@
 #include "SVGAnimatedPropertyPairAnimator.h"
 #include "SVGMarkerTypes.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGElement;
 
@@ -192,4 +192,4 @@ private:
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

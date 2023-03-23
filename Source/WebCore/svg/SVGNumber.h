@@ -29,7 +29,7 @@
 #include "SVGPropertyTraits.h"
 #include "SVGValueProperty.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGNumber : public SVGValueProperty<float> {
     using Base = SVGValueProperty<float>;
@@ -81,4 +81,4 @@ public:
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

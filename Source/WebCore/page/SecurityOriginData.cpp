@@ -35,7 +35,7 @@
 #include <wtf/text/StringConcatenateNumbers.h>
 #include <wtf/text/StringToIntegerConversion.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 String SecurityOriginData::toString() const
 {
@@ -211,4 +211,4 @@ bool SecurityOriginData::shouldTreatAsOpaqueOrigin(const URL& url)
     return !LegacySchemeRegistry::schemeIsHandledBySchemeHandler(url.protocol());
 }
 
-} // namespace WebCore
+} // namespace CyberCore

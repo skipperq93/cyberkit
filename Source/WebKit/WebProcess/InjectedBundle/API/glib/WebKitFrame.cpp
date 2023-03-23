@@ -18,11 +18,11 @@
  */
 
 #include "config.h"
-#include "WebKitFrame.h"
+#include "CyberKitFrame.h"
 
-#include "WebKitFramePrivate.h"
-#include "WebKitScriptWorldPrivate.h"
-#include "WebKitWebFormManagerPrivate.h"
+#include "CyberKitFramePrivate.h"
+#include "CyberKitScriptWorldPrivate.h"
+#include "CyberKitWebFormManagerPrivate.h"
 #include <JavaScriptCore/APICast.h>
 #include <JavaScriptCore/JSGlobalObjectInlines.h>
 #include <JavaScriptCore/JSLock.h>
@@ -35,32 +35,32 @@
 #include <wtf/text/CString.h>
 
 #if !ENABLE(2022_GLIB_API)
-#include "WebKitDOMNodePrivate.h"
+#include "CyberKitDOMNodePrivate.h"
 #endif
 
-using namespace WebKit;
-using namespace WebCore;
+using namespace CyberKit;
+using namespace CyberCore;
 
 /**
- * WebKitFrame:
+ * CyberKitFrame:
  *
  * A web page frame.
  *
- * Each `WebKitWebPage` has at least one main frame, and can have any number
+ * Each `CyberKitWebPage` has at least one main frame, and can have any number
  * of subframes.
  *
  * Since: 2.26
  */
 
-struct _WebKitFramePrivate {
+struct _CyberKitFramePrivate {
     RefPtr<WebFrame> webFrame;
 
     CString uri;
 };
 
-WEBKIT_DEFINE_FINAL_TYPE(WebKitFrame, webkit_frame, G_TYPE_OBJECT, GObject)
+WEBKIT_DEFINE_FINAL_TYPE(CyberKitFrame, webkit_frame, G_TYPE_OBJECT, GObject)
 
-static void webkit_frame_class_init(WebKitFrameClass*)
+static void webkit_frame_class_init(CyberKitFrameClass*)
 {
 }
 
@@ -78,9 +78,9 @@ static CString getURL(WebFrame* webFrame)
     return documentLoader->url().string().utf8();
 }
 
-WebKitFrame* webkitFrameCreate(WebFrame* webFrame)
+CyberKitFrame* webkitFrameCreate(WebFrame* webFrame)
 {
-    WebKitFrame* frame = WEBKIT_FRAME(g_object_new(WEBKIT_TYPE_FRAME, NULL));
+    CyberKitFrame* frame = WEBKIT_FRAME(g_object_new(WEBKIT_TYPE_FRAME, NULL));
     frame->priv->webFrame = webFrame;
 
     frame->priv->uri = getURL(webFrame);
@@ -88,19 +88,19 @@ WebKitFrame* webkitFrameCreate(WebFrame* webFrame)
     return frame;
 }
 
-WebFrame* webkitFrameGetWebFrame(WebKitFrame* frame)
+WebFrame* webkitFrameGetWebFrame(CyberKitFrame* frame)
 {
     return frame->priv->webFrame.get();
 }
 
-GRefPtr<JSCValue> webkitFrameGetJSCValueForElementInWorld(WebKitFrame* frame, Element& element, WebKitScriptWorld* world)
+GRefPtr<JSCValue> webkitFrameGetJSCValueForElementInWorld(CyberKitFrame* frame, Element& element, CyberKitScriptWorld* world)
 {
     Vector<RefPtr<Element>> elements = { RefPtr<Element>(&element) };
     auto values = webkitFrameGetJSCValuesForElementsInWorld(frame, elements, world);
     return values.takeLast();
 }
 
-Vector<GRefPtr<JSCValue>> webkitFrameGetJSCValuesForElementsInWorld(WebKitFrame* frame, const Vector<RefPtr<Element>>& elements, WebKitScriptWorld* world)
+Vector<GRefPtr<JSCValue>> webkitFrameGetJSCValuesForElementsInWorld(CyberKitFrame* frame, const Vector<RefPtr<Element>>& elements, CyberKitScriptWorld* world)
 {
     auto* wkWorld = webkitScriptWorldGetInjectedBundleScriptWorld(world);
     auto jsContext = jscContextGetOrCreate(frame->priv->webFrame->jsContextForWorld(wkWorld));
@@ -115,7 +115,7 @@ Vector<GRefPtr<JSCValue>> webkitFrameGetJSCValuesForElementsInWorld(WebKitFrame*
     });
 }
 
-void webkitFrameSetURI(WebKitFrame* frame, const CString& uri)
+void webkitFrameSetURI(CyberKitFrame* frame, const CString& uri)
 {
     if (frame->priv->uri == uri)
         return;
@@ -125,9 +125,9 @@ void webkitFrameSetURI(WebKitFrame* frame, const CString& uri)
 
 /**
  * webkit_frame_get_id:
- * @frame: a #WebKitFrame
+ * @frame: a #CyberKitFrame
  *
- * Gets the process-unique identifier of this #WebKitFrame. No other
+ * Gets the process-unique identifier of this #CyberKitFrame. No other
  * frame in the same web process will have the same ID; however, frames
  * in other web processes may.
  *
@@ -135,7 +135,7 @@ void webkitFrameSetURI(WebKitFrame* frame, const CString& uri)
  *
  * Since: 2.26
  */
-guint64 webkit_frame_get_id(WebKitFrame* frame)
+guint64 webkit_frame_get_id(CyberKitFrame* frame)
 {
     g_return_val_if_fail(WEBKIT_IS_FRAME(frame), 0);
 
@@ -144,15 +144,15 @@ guint64 webkit_frame_get_id(WebKitFrame* frame)
 
 /**
  * webkit_frame_is_main_frame:
- * @frame: a #WebKitFrame
+ * @frame: a #CyberKitFrame
  *
- * Gets whether @frame is the main frame of a #WebKitWebPage
+ * Gets whether @frame is the main frame of a #CyberKitWebPage
  *
  * Returns: %TRUE if @frame is a main frame or %FALSE otherwise
  *
  * Since: 2.2
  */
-gboolean webkit_frame_is_main_frame(WebKitFrame* frame)
+gboolean webkit_frame_is_main_frame(CyberKitFrame* frame)
 {
     g_return_val_if_fail(WEBKIT_IS_FRAME(frame), FALSE);
 
@@ -161,7 +161,7 @@ gboolean webkit_frame_is_main_frame(WebKitFrame* frame)
 
 /**
  * webkit_frame_get_uri:
- * @frame: a #WebKitFrame
+ * @frame: a #CyberKitFrame
  *
  * Gets the current active URI of @frame.
  *
@@ -170,7 +170,7 @@ gboolean webkit_frame_is_main_frame(WebKitFrame* frame)
  *
  * Since: 2.2
  */
-const gchar* webkit_frame_get_uri(WebKitFrame* frame)
+const gchar* webkit_frame_get_uri(CyberKitFrame* frame)
 {
     g_return_val_if_fail(WEBKIT_IS_FRAME(frame), 0);
 
@@ -183,10 +183,10 @@ const gchar* webkit_frame_get_uri(WebKitFrame* frame)
 #if PLATFORM(GTK) && !USE(GTK4)
 /**
  * webkit_frame_get_javascript_global_context: (skip)
- * @frame: a #WebKitFrame
+ * @frame: a #CyberKitFrame
  *
  * Gets the global JavaScript execution context. Use this function to bridge
- * between the WebKit and JavaScriptCore APIs.
+ * between the CyberKit and JavaScriptCore APIs.
  *
  * Returns: (transfer none): the global JavaScript context of @frame
  *
@@ -194,7 +194,7 @@ const gchar* webkit_frame_get_uri(WebKitFrame* frame)
  *
  * Deprecated: 2.22: Use webkit_frame_get_js_context() instead.
  */
-JSGlobalContextRef webkit_frame_get_javascript_global_context(WebKitFrame* frame)
+JSGlobalContextRef webkit_frame_get_javascript_global_context(CyberKitFrame* frame)
 {
     g_return_val_if_fail(WEBKIT_IS_FRAME(frame), 0);
 
@@ -203,10 +203,10 @@ JSGlobalContextRef webkit_frame_get_javascript_global_context(WebKitFrame* frame
 
 /**
  * webkit_frame_get_javascript_context_for_script_world: (skip)
- * @frame: a #WebKitFrame
- * @world: a #WebKitScriptWorld
+ * @frame: a #CyberKitFrame
+ * @world: a #CyberKitScriptWorld
  *
- * Gets the JavaScript execution context of @frame for the given #WebKitScriptWorld.
+ * Gets the JavaScript execution context of @frame for the given #CyberKitScriptWorld.
  *
  * Returns: (transfer none): the JavaScript context of @frame for @world
  *
@@ -214,7 +214,7 @@ JSGlobalContextRef webkit_frame_get_javascript_global_context(WebKitFrame* frame
  *
  * Deprecated: 2.22: Use webkit_frame_get_js_context_for_script_world() instead.
  */
-JSGlobalContextRef webkit_frame_get_javascript_context_for_script_world(WebKitFrame* frame, WebKitScriptWorld* world)
+JSGlobalContextRef webkit_frame_get_javascript_context_for_script_world(CyberKitFrame* frame, CyberKitScriptWorld* world)
 {
     g_return_val_if_fail(WEBKIT_IS_FRAME(frame), 0);
     g_return_val_if_fail(WEBKIT_IS_SCRIPT_WORLD(world), 0);
@@ -225,16 +225,16 @@ JSGlobalContextRef webkit_frame_get_javascript_context_for_script_world(WebKitFr
 
 /**
  * webkit_frame_get_js_context:
- * @frame: a #WebKitFrame
+ * @frame: a #CyberKitFrame
  *
  * Get the JavaScript execution context of @frame. Use this function to bridge
- * between the WebKit and JavaScriptCore APIs.
+ * between the CyberKit and JavaScriptCore APIs.
  *
  * Returns: (transfer full): the #JSCContext for the JavaScript execution context of @frame.
  *
  * Since: 2.22
  */
-JSCContext* webkit_frame_get_js_context(WebKitFrame* frame)
+JSCContext* webkit_frame_get_js_context(CyberKitFrame* frame)
 {
     g_return_val_if_fail(WEBKIT_IS_FRAME(frame), nullptr);
 
@@ -243,16 +243,16 @@ JSCContext* webkit_frame_get_js_context(WebKitFrame* frame)
 
 /**
  * webkit_frame_get_js_context_for_script_world:
- * @frame: a #WebKitFrame
- * @world: a #WebKitScriptWorld
+ * @frame: a #CyberKitFrame
+ * @world: a #CyberKitScriptWorld
  *
- * Get the JavaScript execution context of @frame for the given #WebKitScriptWorld.
+ * Get the JavaScript execution context of @frame for the given #CyberKitScriptWorld.
  *
  * Returns: (transfer full): the #JSCContext for the JavaScript execution context of @frame for @world.
  *
  * Since: 2.22
  */
-JSCContext* webkit_frame_get_js_context_for_script_world(WebKitFrame* frame, WebKitScriptWorld* world)
+JSCContext* webkit_frame_get_js_context_for_script_world(CyberKitFrame* frame, CyberKitScriptWorld* world)
 {
     g_return_val_if_fail(WEBKIT_IS_FRAME(frame), nullptr);
     g_return_val_if_fail(WEBKIT_IS_SCRIPT_WORLD(world), nullptr);
@@ -263,8 +263,8 @@ JSCContext* webkit_frame_get_js_context_for_script_world(WebKitFrame* frame, Web
 #if !ENABLE(2022_GLIB_API)
 /**
  * webkit_frame_get_js_value_for_dom_object:
- * @frame: a #WebKitFrame
- * @dom_object: a #WebKitDOMObject
+ * @frame: a #CyberKitFrame
+ * @dom_object: a #CyberKitDOMObject
  *
  * Get a #JSCValue referencing the given DOM object. The value is created in the JavaScript execution
  * context of @frame.
@@ -275,7 +275,7 @@ JSCContext* webkit_frame_get_js_context_for_script_world(WebKitFrame* frame, Web
  *
  * Deprecated: 2.40
  */
-JSCValue* webkit_frame_get_js_value_for_dom_object(WebKitFrame* frame, WebKitDOMObject* domObject)
+JSCValue* webkit_frame_get_js_value_for_dom_object(CyberKitFrame* frame, CyberKitDOMObject* domObject)
 {
     G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
     return webkit_frame_get_js_value_for_dom_object_in_script_world(frame, domObject, webkit_script_world_get_default());
@@ -284,12 +284,12 @@ JSCValue* webkit_frame_get_js_value_for_dom_object(WebKitFrame* frame, WebKitDOM
 
 /**
  * webkit_frame_get_js_value_for_dom_object_in_script_world:
- * @frame: a #WebKitFrame
- * @dom_object: a #WebKitDOMObject
- * @world: a #WebKitScriptWorld
+ * @frame: a #CyberKitFrame
+ * @dom_object: a #CyberKitDOMObject
+ * @world: a #CyberKitScriptWorld
  *
  * Get a #JSCValue referencing the given DOM object. The value is created in the JavaScript execution
- * context of @frame for the given #WebKitScriptWorld.
+ * context of @frame for the given #CyberKitScriptWorld.
  *
  * Returns: (transfer full): the #JSCValue referencing @dom_object
  *
@@ -297,7 +297,7 @@ JSCValue* webkit_frame_get_js_value_for_dom_object(WebKitFrame* frame, WebKitDOM
  *
  * Deprecated: 2.40
  */
-JSCValue* webkit_frame_get_js_value_for_dom_object_in_script_world(WebKitFrame* frame, WebKitDOMObject* domObject, WebKitScriptWorld* world)
+JSCValue* webkit_frame_get_js_value_for_dom_object_in_script_world(CyberKitFrame* frame, CyberKitDOMObject* domObject, CyberKitScriptWorld* world)
 {
     g_return_val_if_fail(WEBKIT_IS_FRAME(frame), nullptr);
     G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
@@ -313,7 +313,7 @@ JSCValue* webkit_frame_get_js_value_for_dom_object_in_script_world(WebKitFrame* 
         JSC::JSLockHolder lock(globalObject);
         G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
         if (WEBKIT_DOM_IS_NODE(domObject))
-            jsValue = toRef(globalObject, toJS(globalObject, globalObject, WebKit::core(WEBKIT_DOM_NODE(domObject))));
+            jsValue = toRef(globalObject, toJS(globalObject, globalObject, CyberKit::core(WEBKIT_DOM_NODE(domObject))));
         G_GNUC_END_IGNORE_DEPRECATIONS;
     }
 

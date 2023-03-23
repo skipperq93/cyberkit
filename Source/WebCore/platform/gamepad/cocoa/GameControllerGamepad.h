@@ -35,7 +35,7 @@ OBJC_CLASS GCControllerAxisInput;
 OBJC_CLASS GCControllerButtonInput;
 OBJC_CLASS GCControllerElement;
 
-namespace WebCore {
+namespace CyberCore {
 
 class GameControllerHapticEngines;
 
@@ -71,6 +71,6 @@ private:
 
 
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(GAMEPAD)

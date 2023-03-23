@@ -45,7 +45,7 @@
 #include "AudioContext.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 InternalSettings::Backup::Backup(Settings& settings)
     : m_minimumDOMTimerInterval(settings.minimumDOMTimerInterval())

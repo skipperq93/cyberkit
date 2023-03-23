@@ -43,7 +43,7 @@ namespace WTF {
 class TextStream;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class FloatPoint;
 class FloatQuad;

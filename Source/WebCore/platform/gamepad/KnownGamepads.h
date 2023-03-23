@@ -27,7 +27,7 @@
 
 #if ENABLE(GAMEPAD)
 
-namespace WebCore {
+namespace CyberCore {
 
 enum KnownGamepad {
     Dualshock3 = 0x054c0268,
@@ -49,6 +49,6 @@ enum KnownGamepad {
     XboxOne3 = 0x045e02fd,
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(GAMEPAD)

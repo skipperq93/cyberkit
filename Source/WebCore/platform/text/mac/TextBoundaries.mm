@@ -38,7 +38,7 @@
 #import <wtf/text/TextBreakIteratorInternalICU.h>
 #import <wtf/unicode/CharacterNames.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 #if !USE(APPKIT)
 

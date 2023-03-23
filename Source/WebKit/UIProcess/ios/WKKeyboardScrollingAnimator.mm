@@ -45,14 +45,14 @@
 @protocol WKKeyboardScrollableInternal <NSObject>
 @required
 - (BOOL)isKeyboardScrollable;
-- (CGFloat)distanceForIncrement:(WebCore::ScrollGranularity)increment inDirection:(WebCore::ScrollDirection)direction;
-- (void)scrollToContentOffset:(WebCore::FloatPoint)offset animated:(BOOL)animated;
+- (CGFloat)distanceForIncrement:(CyberCore::ScrollGranularity)increment inDirection:(CyberCore::ScrollDirection)direction;
+- (void)scrollToContentOffset:(CyberCore::FloatPoint)offset animated:(BOOL)animated;
 - (void)scrollWithScrollToExtentAnimationTo:(CGPoint)offset;
 - (CGPoint)contentOffset;
 - (CGSize)interactiveScrollVelocity;
 - (CGPoint)boundedContentOffset:(CGPoint)offset;
-- (WebCore::RectEdges<bool>)scrollableDirectionsFromOffset:(CGPoint)offset;
-- (WebCore::RectEdges<bool>)rubberbandableDirections;
+- (CyberCore::RectEdges<bool>)scrollableDirectionsFromOffset:(CGPoint)offset;
+- (CyberCore::RectEdges<bool>)rubberbandableDirections;
 - (void)didFinishScrolling;
 
 @end
@@ -75,15 +75,15 @@
     id <WKKeyboardScrollableInternal> _scrollable;
     RetainPtr<CADisplayLink> _displayLink;
 
-    std::optional<WebCore::KeyboardScroll> _currentScroll;
+    std::optional<CyberCore::KeyboardScroll> _currentScroll;
 
     BOOL _scrollTriggeringKeyIsPressed;
 
-    WebCore::FloatSize _velocity; // Points per second.
+    CyberCore::FloatSize _velocity; // Points per second.
 
-    WebCore::FloatPoint _idealPosition;
-    WebCore::FloatPoint _currentPosition;
-    WebCore::FloatPoint _idealPositionForMinimumTravel;
+    CyberCore::FloatPoint _idealPosition;
+    CyberCore::FloatPoint _currentPosition;
+    CyberCore::FloatPoint _idealPositionForMinimumTravel;
 }
 
 - (instancetype)init
@@ -109,33 +109,33 @@
     _scrollable = nil;
 }
 
-static WebCore::FloatSize perpendicularAbsoluteUnitVector(WebCore::ScrollDirection direction)
+static CyberCore::FloatSize perpendicularAbsoluteUnitVector(CyberCore::ScrollDirection direction)
 {
     switch (direction) {
-    case WebCore::ScrollDirection::ScrollUp:
-    case WebCore::ScrollDirection::ScrollDown:
+    case CyberCore::ScrollDirection::ScrollUp:
+    case CyberCore::ScrollDirection::ScrollDown:
         return { 1, 0 };
-    case WebCore::ScrollDirection::ScrollLeft:
-    case WebCore::ScrollDirection::ScrollRight:
+    case CyberCore::ScrollDirection::ScrollLeft:
+    case CyberCore::ScrollDirection::ScrollRight:
         return { 0, 1 };
     }
 }
 
-static WebCore::BoxSide boxSide(WebCore::ScrollDirection direction)
+static CyberCore::BoxSide boxSide(CyberCore::ScrollDirection direction)
 {
     switch (direction) {
-    case WebCore::ScrollDirection::ScrollUp:
-        return WebCore::BoxSide::Top;
-    case WebCore::ScrollDirection::ScrollDown:
-        return WebCore::BoxSide::Bottom;
-    case WebCore::ScrollDirection::ScrollLeft:
-        return WebCore::BoxSide::Left;
-    case WebCore::ScrollDirection::ScrollRight:
-        return WebCore::BoxSide::Right;
+    case CyberCore::ScrollDirection::ScrollUp:
+        return CyberCore::BoxSide::Top;
+    case CyberCore::ScrollDirection::ScrollDown:
+        return CyberCore::BoxSide::Bottom;
+    case CyberCore::ScrollDirection::ScrollLeft:
+        return CyberCore::BoxSide::Left;
+    case CyberCore::ScrollDirection::ScrollRight:
+        return CyberCore::BoxSide::Right;
     }
 }
 
-- (std::optional<WebCore::KeyboardScroll>)keyboardScrollForEvent:(::WebEvent *)event
+- (std::optional<CyberCore::KeyboardScroll>)keyboardScrollForEvent:(::WebEvent *)event
 {
     static const unsigned kWebSpaceKey = 0x20;
 
@@ -213,54 +213,54 @@ static WebCore::BoxSide boxSide(WebCore::ScrollDirection direction)
         case Key::LeftArrow:
         case Key::RightArrow:
             if (altPressed)
-                return WebCore::ScrollGranularity::Page;
-            return WebCore::ScrollGranularity::Line;
+                return CyberCore::ScrollGranularity::Page;
+            return CyberCore::ScrollGranularity::Line;
         case Key::UpArrow:
         case Key::DownArrow:
             if (altPressed)
-                return WebCore::ScrollGranularity::Page;
+                return CyberCore::ScrollGranularity::Page;
             if (cmdPressed)
-                return WebCore::ScrollGranularity::Document;
-            return WebCore::ScrollGranularity::Line;
+                return CyberCore::ScrollGranularity::Document;
+            return CyberCore::ScrollGranularity::Line;
         case Key::PageUp:
         case Key::PageDown:
         case Key::Space:
-            return WebCore::ScrollGranularity::Page;
+            return CyberCore::ScrollGranularity::Page;
         case Key::Other:
             ASSERT_NOT_REACHED();
-            return WebCore::ScrollGranularity::Line;
+            return CyberCore::ScrollGranularity::Line;
         };
     }();
 
     auto direction = ^() {
         switch (key) {
         case Key::LeftArrow:
-            return WebCore::ScrollDirection::ScrollLeft;
+            return CyberCore::ScrollDirection::ScrollLeft;
         case Key::RightArrow:
-            return WebCore::ScrollDirection::ScrollRight;
+            return CyberCore::ScrollDirection::ScrollRight;
         case Key::UpArrow:
         case Key::PageUp:
-            return WebCore::ScrollDirection::ScrollUp;
+            return CyberCore::ScrollDirection::ScrollUp;
         case Key::DownArrow:
         case Key::PageDown:
-            return WebCore::ScrollDirection::ScrollDown;
+            return CyberCore::ScrollDirection::ScrollDown;
         case Key::Space:
-            return shiftPressed ? WebCore::ScrollDirection::ScrollUp : WebCore::ScrollDirection::ScrollDown;
+            return shiftPressed ? CyberCore::ScrollDirection::ScrollUp : CyberCore::ScrollDirection::ScrollDown;
         case Key::Other:
             ASSERT_NOT_REACHED();
-            return WebCore::ScrollDirection::ScrollDown;
+            return CyberCore::ScrollDirection::ScrollDown;
         };
     }();
 
-    // FIXME (227461): Replace with call to WebCore::KeyboardScroll constructor.
+    // FIXME (227461): Replace with call to CyberCore::KeyboardScroll constructor.
     // FIXME (245749): Use `ScrollableArea::adjustVerticalPageScrollStepForFixedContent` to account for fixed content
 
-    constexpr auto parameters = WebCore::KeyboardScrollParameters::parameters();
+    constexpr auto parameters = CyberCore::KeyboardScrollParameters::parameters();
 
     CGFloat scrollDistance = [_scrollable distanceForIncrement:increment inDirection:direction];
 
-    WebCore::KeyboardScroll scroll;
-    scroll.offset = WebCore::unitVectorForScrollDirection(direction).scaled(scrollDistance);
+    CyberCore::KeyboardScroll scroll;
+    scroll.offset = CyberCore::unitVectorForScrollDirection(direction).scaled(scrollDistance);
     scroll.granularity = increment;
     scroll.direction = direction;
     scroll.maximumVelocity = scroll.offset.scaled(parameters.maximumVelocityMultiplier);
@@ -290,7 +290,7 @@ static WebCore::BoxSide boxSide(WebCore::ScrollDirection direction)
     _scrollTriggeringKeyIsPressed = YES;
     _currentScroll = scroll;
 
-    if (scroll->granularity == WebCore::ScrollGranularity::Document) {
+    if (scroll->granularity == CyberCore::ScrollGranularity::Document) {
         _velocity = { };
         [self stopAnimatedScroll];
         [self stopDisplayLink];
@@ -300,8 +300,8 @@ static WebCore::BoxSide boxSide(WebCore::ScrollDirection direction)
 
     [self startDisplayLinkIfNeeded];
 
-    _currentPosition = WebCore::FloatPoint([_scrollable contentOffset]);
-    _velocity += WebCore::FloatSize([_scrollable interactiveScrollVelocity]);
+    _currentPosition = CyberCore::FloatPoint([_scrollable contentOffset]);
+    _velocity += CyberCore::FloatSize([_scrollable interactiveScrollVelocity]);
     _idealPositionForMinimumTravel = _currentPosition + _currentScroll->offset;
 
     return YES;
@@ -323,17 +323,17 @@ static WebCore::BoxSide boxSide(WebCore::ScrollDirection direction)
     }
 }
 
-static WebCore::FloatPoint farthestPointInDirection(WebCore::FloatPoint a, WebCore::FloatPoint b, WebCore::ScrollDirection direction)
+static CyberCore::FloatPoint farthestPointInDirection(CyberCore::FloatPoint a, CyberCore::FloatPoint b, CyberCore::ScrollDirection direction)
 {
     switch (direction) {
-    case WebCore::ScrollDirection::ScrollUp:
-        return WebCore::FloatPoint(a.x(), std::min(a.y(), b.y()));
-    case WebCore::ScrollDirection::ScrollDown:
-        return WebCore::FloatPoint(a.x(), std::max(a.y(), b.y()));
-    case WebCore::ScrollDirection::ScrollLeft:
-        return WebCore::FloatPoint(std::min(a.x(), b.x()), a.y());
-    case WebCore::ScrollDirection::ScrollRight:
-        return WebCore::FloatPoint(std::max(a.x(), b.x()), a.y());
+    case CyberCore::ScrollDirection::ScrollUp:
+        return CyberCore::FloatPoint(a.x(), std::min(a.y(), b.y()));
+    case CyberCore::ScrollDirection::ScrollDown:
+        return CyberCore::FloatPoint(a.x(), std::max(a.y(), b.y()));
+    case CyberCore::ScrollDirection::ScrollLeft:
+        return CyberCore::FloatPoint(std::min(a.x(), b.x()), a.y());
+    case CyberCore::ScrollDirection::ScrollRight:
+        return CyberCore::FloatPoint(std::max(a.x(), b.x()), a.y());
     }
 
     ASSERT_NOT_REACHED();
@@ -345,14 +345,14 @@ static WebCore::FloatPoint farthestPointInDirection(WebCore::FloatPoint a, WebCo
     if (!_currentScroll)
         return;
 
-    constexpr auto parameters = WebCore::KeyboardScrollParameters::parameters();
+    constexpr auto parameters = CyberCore::KeyboardScrollParameters::parameters();
 
     // Determine the settling position of the spring, conserving the system's current energy.
     // Kinetic = elastic potential
     // 1/2 * m * v^2 = 1/2 * k * x^2
     // x = sqrt(v^2 * m / k)
     auto displacementMagnitudeSquared = (_velocity * _velocity).scaled(parameters.springMass / parameters.springStiffness);
-    WebCore::FloatSize displacement = {
+    CyberCore::FloatSize displacement = {
         std::copysign(sqrt(displacementMagnitudeSquared.width()), _velocity.width()),
         std::copysign(sqrt(displacementMagnitudeSquared.height()), _velocity.height())
     };
@@ -395,10 +395,10 @@ static WebCore::FloatPoint farthestPointInDirection(WebCore::FloatPoint a, WebCo
 
 - (void)displayLinkFired:(CADisplayLink *)sender
 {
-    WebCore::FloatSize force;
-    WebCore::FloatSize axesToApplySpring = { 1, 1 };
+    CyberCore::FloatSize force;
+    CyberCore::FloatSize axesToApplySpring = { 1, 1 };
 
-    constexpr auto parameters = WebCore::KeyboardScrollParameters::parameters();
+    constexpr auto parameters = CyberCore::KeyboardScrollParameters::parameters();
 
     if (_currentScroll) {
         auto scrollableDirections = [_scrollable scrollableDirectionsFromOffset:_currentPosition];
@@ -413,7 +413,7 @@ static WebCore::FloatPoint farthestPointInDirection(WebCore::FloatPoint a, WebCo
             // The scroll view cannot scroll in this direction, and is rubber-banding.
             // Apply a constant and significant force; otherwise, the force for a
             // single-line increment is not strong enough to rubber-band perceptibly.
-            force = WebCore::unitVectorForScrollDirection(direction).scaled(parameters.rubberBandForce);
+            force = CyberCore::unitVectorForScrollDirection(direction).scaled(parameters.rubberBandForce);
         }
 
         // If we've reached or exceeded the maximum velocity, stop applying any force.
@@ -425,8 +425,8 @@ static WebCore::FloatPoint farthestPointInDirection(WebCore::FloatPoint a, WebCo
             force.setHeight(0);
     }
 
-    WebCore::FloatPoint idealPosition = [_scrollable boundedContentOffset:_currentScroll ? _currentPosition : _idealPosition];
-    WebCore::FloatSize displacement = _currentPosition - idealPosition;
+    CyberCore::FloatPoint idealPosition = [_scrollable boundedContentOffset:_currentScroll ? _currentPosition : _idealPosition];
+    CyberCore::FloatSize displacement = _currentPosition - idealPosition;
 
     // Compute the spring's force, and apply it in allowed directions.
     // F_spring = -k * x - c * v
@@ -435,7 +435,7 @@ static WebCore::FloatPoint farthestPointInDirection(WebCore::FloatPoint a, WebCo
 
     // Integrate acceleration -> velocity -> position for this time step.
     CFTimeInterval frameDuration = sender.targetTimestamp - sender.timestamp;
-    WebCore::FloatSize acceleration = force.scaled(1. / parameters.springMass);
+    CyberCore::FloatSize acceleration = force.scaled(1. / parameters.springMass);
     _velocity += acceleration.scaled(frameDuration);
     _currentPosition += _velocity.scaled(frameDuration);
 
@@ -533,7 +533,7 @@ static WebCore::FloatPoint farthestPointInDirection(WebCore::FloatPoint a, WebCo
     return [_delegate isScrollableForKeyboardScrollViewAnimator:self];
 }
 
-- (CGFloat)distanceForIncrement:(WebCore::ScrollGranularity)increment inDirection:(WebCore::ScrollDirection)direction
+- (CGFloat)distanceForIncrement:(CyberCore::ScrollGranularity)increment inDirection:(CyberCore::ScrollDirection)direction
 {
     auto scrollView = _scrollView.getAutoreleased();
     if (!scrollView)
@@ -542,17 +542,17 @@ static WebCore::FloatPoint farthestPointInDirection(WebCore::FloatPoint a, WebCo
     const CGFloat defaultPageScrollFraction = 0.8;
     const CGFloat defaultLineScrollHeight = 40;
 
-    BOOL directionIsHorizontal = direction == WebCore::ScrollDirection::ScrollLeft || direction == WebCore::ScrollDirection::ScrollRight;
+    BOOL directionIsHorizontal = direction == CyberCore::ScrollDirection::ScrollLeft || direction == CyberCore::ScrollDirection::ScrollRight;
 
     if (!_delegateRespondsToDistanceForIncrement) {
         switch (increment) {
-        case WebCore::ScrollGranularity::Document:
+        case CyberCore::ScrollGranularity::Document:
             return directionIsHorizontal ? scrollView.contentSize.width : scrollView.contentSize.height;
-        case WebCore::ScrollGranularity::Page:
+        case CyberCore::ScrollGranularity::Page:
             return (directionIsHorizontal ? scrollView.frame.size.width : scrollView.frame.size.height) * defaultPageScrollFraction;
-        case WebCore::ScrollGranularity::Line:
+        case CyberCore::ScrollGranularity::Line:
             return defaultLineScrollHeight * scrollView.zoomScale;
-        case WebCore::ScrollGranularity::Pixel:
+        case CyberCore::ScrollGranularity::Pixel:
             return 0;
         }
         ASSERT_NOT_REACHED();
@@ -562,7 +562,7 @@ static WebCore::FloatPoint farthestPointInDirection(WebCore::FloatPoint a, WebCo
     return [_delegate keyboardScrollViewAnimator:self distanceForIncrement:increment inDirection:direction];
 }
 
-static UIAxis axesForDelta(WebCore::FloatSize delta)
+static UIAxis axesForDelta(CyberCore::FloatSize delta)
 {
     UIAxis axes = UIAxisNeither;
     if (delta.width())
@@ -572,7 +572,7 @@ static UIAxis axesForDelta(WebCore::FloatSize delta)
     return axes;
 }
 
-- (void)scrollToContentOffset:(WebCore::FloatPoint)contentOffset animated:(BOOL)animated
+- (void)scrollToContentOffset:(CyberCore::FloatPoint)contentOffset animated:(BOOL)animated
 {
     auto scrollView = _scrollView.getAutoreleased();
     if (!scrollView)
@@ -580,7 +580,7 @@ static UIAxis axesForDelta(WebCore::FloatSize delta)
     if (_delegateRespondsToWillScroll)
         [_delegate keyboardScrollViewAnimatorWillScroll:self];
     [scrollView setContentOffset:contentOffset animated:animated];
-    [scrollView _flashScrollIndicatorsForAxes:axesForDelta(WebCore::FloatPoint(scrollView.contentOffset) - contentOffset) persistingPreviousFlashes:YES];
+    [scrollView _flashScrollIndicatorsForAxes:axesForDelta(CyberCore::FloatPoint(scrollView.contentOffset) - contentOffset) persistingPreviousFlashes:YES];
 }
 
 - (void)scrollWithScrollToExtentAnimationTo:(CGPoint)offset
@@ -618,7 +618,7 @@ static UIAxis axesForDelta(WebCore::FloatSize delta)
     return CGSizeMake(scrollView._horizontalVelocity * millisecondsPerSecond, scrollView._verticalVelocity * millisecondsPerSecond);
 }
 
-- (WebCore::RectEdges<bool>)scrollableDirectionsFromOffset:(CGPoint)offset
+- (CyberCore::RectEdges<bool>)scrollableDirectionsFromOffset:(CGPoint)offset
 {
     auto scrollView = _scrollView.getAutoreleased();
     if (!scrollView)
@@ -632,7 +632,7 @@ static UIAxis axesForDelta(WebCore::FloatSize delta)
     CGPoint minimumContentOffset = CGPointMake(-contentInsets.left, -contentInsets.top);
     CGPoint maximumContentOffset = CGPointMake(std::max(minimumContentOffset.x, contentSize.width + contentInsets.right - scrollViewSize.width), std::max(minimumContentOffset.y, contentSize.height + contentInsets.bottom - scrollViewSize.height));
 
-    WebCore::RectEdges<bool> edges;
+    CyberCore::RectEdges<bool> edges;
 
     edges.setTop(offset.y > minimumContentOffset.y);
     edges.setBottom(offset.y < maximumContentOffset.y);
@@ -642,13 +642,13 @@ static UIAxis axesForDelta(WebCore::FloatSize delta)
     return edges;
 }
 
-- (WebCore::RectEdges<bool>)rubberbandableDirections
+- (CyberCore::RectEdges<bool>)rubberbandableDirections
 {
     auto scrollView = _scrollView.getAutoreleased();
     if (!scrollView)
         return { };
 
-    WebCore::RectEdges<bool> edges;
+    CyberCore::RectEdges<bool> edges;
 
     edges.setTop(scrollView._canScrollWithoutBouncingY);
     edges.setBottom(edges.top());

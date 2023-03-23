@@ -43,7 +43,7 @@ class MachSendRight;
 class TextStream;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class IOSurfacePool;
 
@@ -66,7 +66,7 @@ public:
 #endif
     };
 
-    WEBCORE_EXPORT static IOSurface::Format formatForPixelFormat(WebCore::PixelFormat);
+    WEBCORE_EXPORT static IOSurface::Format formatForPixelFormat(CyberCore::PixelFormat);
     
     class Locker {
     public:
@@ -156,7 +156,7 @@ public:
 
 #if HAVE(IOSURFACE_ACCELERATOR)
     WEBCORE_EXPORT static bool allowConversionFromFormatToFormat(Format, Format);
-    WEBCORE_EXPORT static void convertToFormat(IOSurfacePool*, std::unique_ptr<WebCore::IOSurface>&& inSurface, Format, Function<void(std::unique_ptr<WebCore::IOSurface>)>&&);
+    WEBCORE_EXPORT static void convertToFormat(IOSurfacePool*, std::unique_ptr<CyberCore::IOSurface>&& inSurface, Format, Function<void(std::unique_ptr<CyberCore::IOSurface>)>&&);
 #endif // HAVE(IOSURFACE_ACCELERATOR)
 
     WEBCORE_EXPORT void setOwnershipIdentity(const ProcessIdentity&);
@@ -191,12 +191,12 @@ private:
 
     static std::optional<IntSize> s_maximumSize;
 
-    WEBCORE_EXPORT friend WTF::TextStream& operator<<(WTF::TextStream&, const WebCore::IOSurface&);
+    WEBCORE_EXPORT friend WTF::TextStream& operator<<(WTF::TextStream&, const CyberCore::IOSurface&);
 };
 
-WEBCORE_EXPORT WTF::TextStream& operator<<(WTF::TextStream&, WebCore::IOSurface::Format);
+WEBCORE_EXPORT WTF::TextStream& operator<<(WTF::TextStream&, CyberCore::IOSurface::Format);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // HAVE(IOSURFACE)
 

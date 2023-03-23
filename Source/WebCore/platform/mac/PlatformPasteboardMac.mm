@@ -39,7 +39,7 @@
 #import <wtf/cocoa/VectorCocoa.h>
 #import <wtf/text/StringHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static bool isFilePasteboardType(const String& type)
 {

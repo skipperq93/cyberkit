@@ -32,7 +32,7 @@
 #include <wtf/Vector.h>
 #include <wtf/glib/GRefPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 struct DOMObjectCacheData {
     WTF_MAKE_STRUCT_FAST_ALLOCATED;
@@ -71,7 +71,7 @@ struct DOMObjectCacheData {
 };
 
 class DOMObjectCacheFrameObserver;
-typedef HashMap<WebCore::Frame*, std::unique_ptr<DOMObjectCacheFrameObserver>> DOMObjectCacheFrameObserverMap;
+typedef HashMap<CyberCore::Frame*, std::unique_ptr<DOMObjectCacheFrameObserver>> DOMObjectCacheFrameObserverMap;
 
 static DOMObjectCacheFrameObserverMap& domObjectCacheFrameObservers()
 {
@@ -79,10 +79,10 @@ static DOMObjectCacheFrameObserverMap& domObjectCacheFrameObservers()
     return map;
 }
 
-class DOMObjectCacheFrameObserver final: public WebCore::FrameDestructionObserver {
+class DOMObjectCacheFrameObserver final: public CyberCore::FrameDestructionObserver {
     WTF_MAKE_FAST_ALLOCATED;
 public:
-    DOMObjectCacheFrameObserver(WebCore::Frame& frame)
+    DOMObjectCacheFrameObserver(CyberCore::Frame& frame)
         : FrameDestructionObserver(&frame)
     {
     }
@@ -96,7 +96,7 @@ public:
     {
         ASSERT(!m_objects.contains(&data));
 
-        WebCore::DOMWindow* domWindow = m_frame->document()->domWindow();
+        CyberCore::DOMWindow* domWindow = m_frame->document()->domWindow();
         if (domWindow && (!m_domWindowObserver || m_domWindowObserver->window() != domWindow)) {
             // New DOMWindow, clear the cache and create a new DOMWindowObserver.
             clear();
@@ -108,10 +108,10 @@ public:
     }
 
 private:
-    class DOMWindowObserver final : public WebCore::DOMWindow::Observer {
+    class DOMWindowObserver final : public CyberCore::DOMWindow::Observer {
         WTF_MAKE_FAST_ALLOCATED;
     public:
-        DOMWindowObserver(WebCore::DOMWindow& window, DOMObjectCacheFrameObserver& frameObserver)
+        DOMWindowObserver(CyberCore::DOMWindow& window, DOMObjectCacheFrameObserver& frameObserver)
             : m_window(window)
             , m_frameObserver(frameObserver)
         {
@@ -124,7 +124,7 @@ private:
                 m_window->unregisterObserver(*this);
         }
 
-        WebCore::DOMWindow* window() const { return m_window.get(); }
+        CyberCore::DOMWindow* window() const { return m_window.get(); }
 
     private:
         void willDetachGlobalObjectFromFrame() override
@@ -132,7 +132,7 @@ private:
             m_frameObserver.willDetachGlobalObjectFromFrame();
         }
 
-        WeakPtr<WebCore::DOMWindow, WebCore::WeakPtrImplWithEventTargetData> m_window;
+        WeakPtr<CyberCore::DOMWindow, CyberCore::WeakPtrImplWithEventTargetData> m_window;
         DOMObjectCacheFrameObserver& m_frameObserver;
     };
 
@@ -171,7 +171,7 @@ private:
     void frameDestroyed() override
     {
         clear();
-        WebCore::Frame* frame = m_frame.get();
+        CyberCore::Frame* frame = m_frame.get();
         FrameDestructionObserver::frameDestroyed();
         domObjectCacheFrameObservers().remove(frame);
     }
@@ -186,7 +186,7 @@ private:
     std::unique_ptr<DOMWindowObserver> m_domWindowObserver;
 };
 
-static DOMObjectCacheFrameObserver& getOrCreateDOMObjectCacheFrameObserver(WebCore::Frame& frame)
+static DOMObjectCacheFrameObserver& getOrCreateDOMObjectCacheFrameObserver(CyberCore::Frame& frame)
 {
     DOMObjectCacheFrameObserverMap::AddResult result = domObjectCacheFrameObservers().add(&frame, nullptr);
     if (result.isNewEntry)
@@ -221,14 +221,14 @@ void DOMObjectCache::put(void* objectHandle, void* wrapper)
         result.iterator->value = makeUnique<DOMObjectCacheData>(G_OBJECT(wrapper));
 }
 
-void DOMObjectCache::put(WebCore::Node* objectHandle, void* wrapper)
+void DOMObjectCache::put(CyberCore::Node* objectHandle, void* wrapper)
 {
     DOMObjectMap::AddResult result = domObjects().add(objectHandle, nullptr);
     if (!result.isNewEntry)
         return;
 
     result.iterator->value = makeUnique<DOMObjectCacheData>(G_OBJECT(wrapper));
-    if (WebCore::Frame* frame = objectHandle->document().frame())
+    if (CyberCore::Frame* frame = objectHandle->document().frame())
         getOrCreateDOMObjectCacheFrameObserver(*frame).addObjectCacheData(*result.iterator->value);
 }
 

@@ -27,7 +27,7 @@
 
 #if ENABLE(FULLSCREEN_API)
 
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include <CyberCore/EventListener.h>
 #include <CyberCore/IntRect.h>
 #include <CyberCore/LengthBox.h>
@@ -41,7 +41,7 @@ class Connection;
 class Decoder;
 }
 
-namespace WebCore {
+namespace CyberCore {
 class IntRect;
 class Element;
 class WeakPtrImplWithEventTargetData;
@@ -53,7 +53,7 @@ namespace WebKit {
 
 class WebPage;
 
-class WebFullScreenManager final : public WebCore::EventListener {
+class WebFullScreenManager final : public CyberCore::EventListener {
 public:
     static Ref<WebFullScreenManager> create(WebPage*);
     virtual ~WebFullScreenManager();
@@ -63,53 +63,53 @@ public:
     void didReceiveMessage(IPC::Connection&, IPC::Decoder&);
 
     bool supportsFullScreen(bool withKeyboard);
-    void enterFullScreenForElement(WebCore::Element*);
-    void exitFullScreenForElement(WebCore::Element*);
+    void enterFullScreenForElement(CyberCore::Element*);
+    void exitFullScreenForElement(CyberCore::Element*);
 
     void willEnterFullScreen();
     void didEnterFullScreen();
     void willExitFullScreen();
     void didExitFullScreen();
 
-    WebCore::Element* element();
+    CyberCore::Element* element();
 
     void videoControlsManagerDidChange();
 
-    bool operator==(const WebCore::EventListener& listener) const final { return this == &listener; }
+    bool operator==(const CyberCore::EventListener& listener) const final { return this == &listener; }
 
 protected:
     WebFullScreenManager(WebPage*);
 
-    void setPIPStandbyElement(WebCore::HTMLVideoElement*);
+    void setPIPStandbyElement(CyberCore::HTMLVideoElement*);
 
     void setAnimatingFullScreen(bool);
     void requestRestoreFullScreen();
     void requestExitFullScreen();
     void saveScrollPosition();
     void restoreScrollPosition();
-    void setFullscreenInsets(const WebCore::FloatBoxExtent&);
+    void setFullscreenInsets(const CyberCore::FloatBoxExtent&);
     void setFullscreenAutoHideDuration(Seconds);
     void setFullscreenControlsHidden(bool);
 
     void didReceiveWebFullScreenManagerMessage(IPC::Connection&, IPC::Decoder&);
 
-    WebCore::IntRect m_initialFrame;
-    WebCore::IntRect m_finalFrame;
-    WebCore::IntPoint m_scrollPosition;
+    CyberCore::IntRect m_initialFrame;
+    CyberCore::IntRect m_finalFrame;
+    CyberCore::IntPoint m_scrollPosition;
     float m_topContentInset { 0 };
     RefPtr<WebPage> m_page;
-    RefPtr<WebCore::Element> m_element;
-    WeakPtr<WebCore::Element, WebCore::WeakPtrImplWithEventTargetData> m_elementToRestore;
+    RefPtr<CyberCore::Element> m_element;
+    WeakPtr<CyberCore::Element, CyberCore::WeakPtrImplWithEventTargetData> m_elementToRestore;
 #if ENABLE(VIDEO)
-    RefPtr<WebCore::HTMLVideoElement> m_pipStandbyElement;
+    RefPtr<CyberCore::HTMLVideoElement> m_pipStandbyElement;
 #endif
 
 private:
     void close();
 
-    void handleEvent(WebCore::ScriptExecutionContext&, WebCore::Event&) final;
+    void handleEvent(CyberCore::ScriptExecutionContext&, CyberCore::Event&) final;
 
-    void setElement(WebCore::Element&);
+    void setElement(CyberCore::Element&);
     void clearElement();
 
 #if ENABLE(VIDEO)
@@ -117,9 +117,9 @@ private:
     void endTextRecognitionForMainVideoIfNeeded();
     void mainVideoElementTextRecognitionTimerFired();
     void updateMainVideoElement();
-    void setMainVideoElement(RefPtr<WebCore::HTMLVideoElement>&&);
+    void setMainVideoElement(RefPtr<CyberCore::HTMLVideoElement>&&);
 
-    WeakPtr<WebCore::HTMLVideoElement, WebCore::WeakPtrImplWithEventTargetData> m_mainVideoElement;
+    WeakPtr<CyberCore::HTMLVideoElement, CyberCore::WeakPtrImplWithEventTargetData> m_mainVideoElement;
     RunLoop::Timer m_mainVideoElementTextRecognitionTimer;
     bool m_isPerformingTextRecognitionInMainVideo { false };
 #endif // ENABLE(VIDEO)

@@ -32,7 +32,7 @@
 
 #include "ScrollingTreeNicosia.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<ScrollingCoordinator> ScrollingCoordinator::create(Page* page)
 {
@@ -50,6 +50,6 @@ ScrollingCoordinatorNicosia::~ScrollingCoordinatorNicosia()
     ASSERT(!scrollingTree());
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ASYNC_SCROLLING) && USE(NICOSIA)

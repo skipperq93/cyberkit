@@ -29,7 +29,7 @@
 #include "SourceGraphicCoreImageApplier.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<SourceGraphic> SourceGraphic::create()
 {
@@ -73,4 +73,4 @@ TextStream& SourceGraphic::externalRepresentation(TextStream& ts, FilterRepresen
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

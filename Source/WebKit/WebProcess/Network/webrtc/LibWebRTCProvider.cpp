@@ -48,8 +48,8 @@ ALLOW_COMMA_BEGIN
 
 ALLOW_COMMA_END
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 class AsyncResolverFactory : public webrtc::AsyncResolverFactory {
     WTF_MAKE_FAST_ALLOCATED;
@@ -73,7 +73,7 @@ rtc::scoped_refptr<webrtc::PeerConnectionInterface> LibWebRTCProvider::createPee
     if (!networkManager)
         return nullptr;
 
-    return WebCore::LibWebRTCProvider::createPeerConnection(observer, *networkManager, *socketFactory, WTFMove(configuration), makeUnique<AsyncResolverFactory>());
+    return CyberCore::LibWebRTCProvider::createPeerConnection(observer, *networkManager, *socketFactory, WTFMove(configuration), makeUnique<AsyncResolverFactory>());
 }
 
 void LibWebRTCProvider::disableNonLocalhostConnections()
@@ -130,7 +130,7 @@ rtc::AsyncResolverInterface* RTCSocketFactory::CreateAsyncResolver()
 
 void RTCSocketFactory::suspend()
 {
-    WebCore::LibWebRTCProvider::callOnWebRTCNetworkThread([socketGroup = this] {
+    CyberCore::LibWebRTCProvider::callOnWebRTCNetworkThread([socketGroup = this] {
         WebProcess::singleton().libWebRTCNetwork().socketFactory().forSocketInGroup(socketGroup, [](auto& socket) {
             socket.suspend();
         });
@@ -139,7 +139,7 @@ void RTCSocketFactory::suspend()
 
 void RTCSocketFactory::resume()
 {
-    WebCore::LibWebRTCProvider::callOnWebRTCNetworkThread([socketGroup = this] {
+    CyberCore::LibWebRTCProvider::callOnWebRTCNetworkThread([socketGroup = this] {
         WebProcess::singleton().libWebRTCNetwork().socketFactory().forSocketInGroup(socketGroup, [](auto& socket) {
             socket.resume();
         });
@@ -169,7 +169,7 @@ RefPtr<RTCDataChannelRemoteHandlerConnection> LibWebRTCProvider::createRTCDataCh
 
 void LibWebRTCProvider::setLoggingLevel(WTFLogLevel level)
 {
-    WebCore::LibWebRTCProvider::setLoggingLevel(level);
+    CyberCore::LibWebRTCProvider::setLoggingLevel(level);
 #if PLATFORM(COCOA)
     WebProcess::singleton().libWebRTCCodecs().setLoggingLevel(level);
 #endif
@@ -182,6 +182,6 @@ void LibWebRTCProvider::willCreatePeerConnectionFactory()
 #endif
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(LIBWEBRTC)

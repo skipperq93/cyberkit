@@ -30,12 +30,12 @@
 
 #if !LOG_DISABLED || !RELEASE_LOG_DISABLED
 
-namespace WebCore {
+namespace CyberCore {
 
 String logLevelString()
 {
 #if !LOG_DISABLED
-    static NSString * const defaultsDomain = @"WebCoreLogging";
+    static NSString * const defaultsDomain = @"CyberCoreLogging";
     return [[NSUserDefaults standardUserDefaults] stringForKey:defaultsDomain];
 #else
     return String();

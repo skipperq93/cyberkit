@@ -38,13 +38,13 @@ public:
     RemoteLayerTreeScrollingPerformanceData(RemoteLayerTreeDrawingAreaProxy&);
     ~RemoteLayerTreeScrollingPerformanceData();
 
-    void didCommitLayerTree(const WebCore::FloatRect& visibleRect);
-    void didScroll(const WebCore::FloatRect& visibleRect);
+    void didCommitLayerTree(const CyberCore::FloatRect& visibleRect);
+    void didScroll(const CyberCore::FloatRect& visibleRect);
 
     NSArray *data(); // Array of [ time, event type, unfilled pixel count ]
 
 private:
-    unsigned blankPixelCount(const WebCore::FloatRect& visibleRect) const;
+    unsigned blankPixelCount(const CyberCore::FloatRect& visibleRect) const;
     
     struct BlankPixelCount {
         enum EventType { Filled, Exposed };

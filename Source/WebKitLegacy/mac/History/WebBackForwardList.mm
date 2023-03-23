@@ -33,8 +33,8 @@
 #import "WebFrameInternal.h"
 #import "WebHistoryItemInternal.h"
 #import "WebHistoryItemPrivate.h"
-#import "WebKitLogging.h"
-#import "WebKitVersionChecks.h"
+#import "CyberKitLogging.h"
+#import "CyberKitVersionChecks.h"
 #import "WebNSObjectExtras.h"
 #import "WebPreferencesPrivate.h"
 #import "WebViewPrivate.h"
@@ -43,8 +43,8 @@
 #import <CyberCore/HistoryItem.h>
 #import <CyberCore/Settings.h>
 #import <CyberCore/ThreadCheck.h>
-#import <CyberCore/WebCoreJITOperations.h>
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreJITOperations.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 #import <wtf/Assertions.h>
 #import <wtf/MainThread.h>
 #import <wtf/NeverDestroyed.h>
@@ -85,7 +85,7 @@ WebBackForwardList *kit(BackForwardList* backForwardList)
 
 - (id)initWithBackForwardList:(Ref<BackForwardList>&&)backForwardList
 {   
-    WebCoreThreadViolationCheckRoundOne();
+    CyberCoreThreadViolationCheckRoundOne();
     self = [super init];
     if (!self)
         return nil;
@@ -100,7 +100,7 @@ WebBackForwardList *kit(BackForwardList* backForwardList)
 #if !PLATFORM(IOS_FAMILY)
     JSC::initialize();
     WTF::initializeMainThread();
-    WebCore::populateJITOperations();
+    CyberCore::populateJITOperations();
 #endif
 }
 
@@ -111,7 +111,7 @@ WebBackForwardList *kit(BackForwardList* backForwardList)
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainThread([WebBackForwardList class], self))
+    if (CyberCoreObjCScheduleDeallocateOnMainThread([WebBackForwardList class], self))
         return;
 
     BackForwardList* backForwardList = core(self);
@@ -151,7 +151,7 @@ WebBackForwardList *kit(BackForwardList* backForwardList)
 
 #if PLATFORM(IOS_FAMILY)
 
-// FIXME: Move into WebCore the code that deals directly with WebCore::BackForwardList.
+// FIXME: Move into CyberCore the code that deals directly with CyberCore::BackForwardList.
 
 constexpr auto WebBackForwardListDictionaryEntriesKey = @"entries";
 constexpr auto WebBackForwardListDictionaryCapacityKey = @"capacity";
@@ -161,7 +161,7 @@ constexpr auto WebBackForwardListDictionaryCurrentKey = @"current";
 {
     auto& list = *core(self);
     auto entries = createNSArray(list.entries(), [] (auto& item) {
-        return [kit(const_cast<WebCore::HistoryItem*>(item.ptr())) dictionaryRepresentationIncludingChildren:NO];
+        return [kit(const_cast<CyberCore::HistoryItem*>(item.ptr())) dictionaryRepresentationIncludingChildren:NO];
     });
     return @{
         WebBackForwardListDictionaryEntriesKey: entries.get(),
@@ -230,7 +230,7 @@ static bool bumperCarBackForwardHackNeeded()
 {
 #if !PLATFORM(IOS_FAMILY)
     static bool hackNeeded = [[[NSBundle mainBundle] bundleIdentifier] isEqualToString:@"com.freeverse.bumpercar"]
-        && !WebKitLinkedOnOrAfter(WEBKIT_FIRST_VERSION_WITHOUT_BUMPERCAR_BACK_FORWARD_QUIRK);
+        && !CyberKitLinkedOnOrAfter(WEBKIT_FIRST_VERSION_WITHOUT_BUMPERCAR_BACK_FORWARD_QUIRK);
     return hackNeeded;
 #else
     return false;
@@ -239,7 +239,7 @@ static bool bumperCarBackForwardHackNeeded()
 
 - (NSArray *)backListWithLimit:(int)limit
 {
-    Vector<Ref<WebCore::HistoryItem>> list;
+    Vector<Ref<CyberCore::HistoryItem>> list;
     core(self)->backListWithLimit(limit, list);
     auto result = createNSArray(list, [] (auto& item) {
         return kit(item.ptr());
@@ -253,7 +253,7 @@ static bool bumperCarBackForwardHackNeeded()
 
 - (NSArray *)forwardListWithLimit:(int)limit
 {
-    Vector<Ref<WebCore::HistoryItem>> list;
+    Vector<Ref<CyberCore::HistoryItem>> list;
     core(self)->forwardListWithLimit(limit, list);
     auto result = createNSArray(list, [] (auto& item) {
         return kit(item.ptr());
@@ -296,7 +296,7 @@ static bool bumperCarBackForwardHackNeeded()
         }   
         [result appendFormat:@"%2d) ", i];
         int currPos = [result length];
-        [result appendString:[kit(const_cast<WebCore::HistoryItem*>(entries[i].ptr())) description]];
+        [result appendString:[kit(const_cast<CyberCore::HistoryItem*>(entries[i].ptr())) description]];
 
         // shift all the contents over.  a bit slow, but this is for debugging
         NSRange replRange = { static_cast<NSUInteger>(currPos), [result length] - currPos };
@@ -317,7 +317,7 @@ static bool bumperCarBackForwardHackNeeded()
 
 - (NSUInteger)pageCacheSize
 {
-    return [core(self)->webView() usesPageCache] ? WebCore::BackForwardCache::singleton().maxSize() : 0;
+    return [core(self)->webView() usesPageCache] ? CyberCore::BackForwardCache::singleton().maxSize() : 0;
 }
 
 - (int)backListCount

@@ -29,12 +29,12 @@
 #import <wtf/spi/darwin/dyldSPI.h>
 
 /*
-    Version numbers are based on the 'current library version' specified in the WebKit build rules.
+    Version numbers are based on the 'current library version' specified in the CyberKit build rules.
     All of these methods return or take version numbers with each part shifted to the left 2 bytes.
     For example the version 1.2.3 is returned as 0x00010203 and version 200.3.5 is returned as 0x00C80305
-    A version of -1 is returned if the main executable did not link against WebKit.
+    A version of -1 is returned if the main executable did not link against CyberKit.
 
-    Please use the current WebKit version number, available in Configurations/Version.xcconfig,
+    Please use the current CyberKit version number, available in Configurations/Version.xcconfig,
     when adding a new version constant.
 */
 
@@ -63,8 +63,8 @@
 #define WEBKIT_FIRST_VERSION_WITH_DEFAULT_ICON_LOADING 0x025C0126 // 604.1.38
 
 #else
-// <rdar://problem/6627758> Need to implement WebKitLinkedOnOrAfter
-// Actually UIKit version numbers, since applications don't link against WebKit
+// <rdar://problem/6627758> Need to implement CyberKitLinkedOnOrAfter
+// Actually UIKit version numbers, since applications don't link against CyberKit
 #define WEBKIT_FIRST_VERSION_WITHOUT_LEGACY_BACKGROUNDSIZE_SHORTHAND_BEHAVIOR 2665 // iOS 7.0
 #define WEBKIT_FIRST_VERSION_WITH_LOADING_DURING_COMMON_RUNLOOP_MODES 2665 // iOS 7.0
 #define WEBKIT_FIRST_VERSION_WITH_INSECURE_CONTENT_BLOCKING 3454
@@ -75,8 +75,8 @@
 extern "C" {
 #endif
 
-BOOL WebKitLinkedOnOrAfter(int version);
-void setWebKitLinkTimeVersion(int);
+BOOL CyberKitLinkedOnOrAfter(int version);
+void setCyberKitLinkTimeVersion(int);
 
 #ifdef __cplusplus
 }

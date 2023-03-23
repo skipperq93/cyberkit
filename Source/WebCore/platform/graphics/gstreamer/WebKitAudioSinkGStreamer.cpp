@@ -35,7 +35,7 @@
 #include <wpe/extensions/audio.h>
 #endif
 
-using namespace WebCore;
+using namespace CyberCore;
 
 struct _WebKitAudioSinkPrivate {
     GRefPtr<GstElement> interAudioSink;

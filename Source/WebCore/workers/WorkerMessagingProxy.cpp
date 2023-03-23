@@ -53,7 +53,7 @@
 #include <wtf/MainThread.h>
 #include <wtf/RunLoop.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // WorkerUserGestureForwarder is a ThreadSafeRefCounted utility class indended for
 // holding a non-thread-safe RefCounted UserGestureToken. Because UserGestureToken
@@ -459,4 +459,4 @@ void WorkerMessagingProxy::setAppBadge(std::optional<uint64_t> badge)
     });
 }
 
-} // namespace WebCore
+} // namespace CyberCore

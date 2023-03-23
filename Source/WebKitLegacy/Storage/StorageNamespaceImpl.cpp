@@ -35,9 +35,9 @@
 #include <wtf/NeverDestroyed.h>
 #include <wtf/text/StringHash.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
-namespace WebKit {
+namespace CyberKit {
 
 static HashMap<String, StorageNamespaceImpl*>& localStorageNamespaceMap()
 {
@@ -177,4 +177,4 @@ void StorageNamespaceImpl::setSessionIDForTesting(PAL::SessionID sessionID)
         storageAreaMap->sessionChanged(!sessionID.isEphemeral());
 }
 
-} // namespace WebCore
+} // namespace CyberCore

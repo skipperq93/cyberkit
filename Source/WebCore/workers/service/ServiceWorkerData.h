@@ -32,7 +32,7 @@
 #include <wtf/URL.h>
 #include "WorkerType.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ServiceWorkerData {
     ServiceWorkerIdentifier identifier;
@@ -45,6 +45,6 @@ struct ServiceWorkerData {
     WEBCORE_EXPORT ServiceWorkerData isolatedCopy() &&;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

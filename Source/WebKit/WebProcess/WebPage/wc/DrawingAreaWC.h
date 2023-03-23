@@ -34,7 +34,7 @@
 #include <CyberCore/GraphicsLayerFactory.h>
 #include <CyberCore/Timer.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class DrawingAreaWC final
     : public DrawingArea
@@ -45,27 +45,27 @@ public:
 
 private:
     // DrawingArea
-    WebCore::GraphicsLayerFactory* graphicsLayerFactory() override;
+    CyberCore::GraphicsLayerFactory* graphicsLayerFactory() override;
     void setNeedsDisplay() override;
-    void setNeedsDisplayInRect(const WebCore::IntRect&) override;
-    void scroll(const WebCore::IntRect& scrollRect, const WebCore::IntSize& scrollDelta) override;
+    void setNeedsDisplayInRect(const CyberCore::IntRect&) override;
+    void scroll(const CyberCore::IntRect& scrollRect, const CyberCore::IntSize& scrollDelta) override;
     void forceRepaintAsync(WebPage&, CompletionHandler<void()>&&) override;
     void triggerRenderingUpdate() override;
-    void didChangeViewportAttributes(WebCore::ViewportAttributes&&) override { }
+    void didChangeViewportAttributes(CyberCore::ViewportAttributes&&) override { }
     void deviceOrPageScaleFactorChanged() override { }
     void setLayerTreeStateIsFrozen(bool) override;
     bool layerTreeStateIsFrozen() const override { return m_isRenderingSuspended; }
-    void updateGeometry(uint64_t, WebCore::IntSize) override;
-    void setRootCompositingLayer(WebCore::GraphicsLayer*) override;
-    void attachViewOverlayGraphicsLayer(WebCore::GraphicsLayer*) override;
+    void updateGeometry(uint64_t, CyberCore::IntSize) override;
+    void setRootCompositingLayer(CyberCore::GraphicsLayer*) override;
+    void attachViewOverlayGraphicsLayer(CyberCore::GraphicsLayer*) override;
     void updatePreferences(const WebPreferencesStore&) override;
-    bool shouldUseTiledBackingForFrameView(const WebCore::FrameView&) const override;
+    bool shouldUseTiledBackingForFrameView(const CyberCore::FrameView&) const override;
     void displayDidRefresh() override;
     // GraphicsLayerWC::Observer
     void graphicsLayerAdded(GraphicsLayerWC&) override;
     void graphicsLayerRemoved(GraphicsLayerWC&) override;
     void commitLayerUpateInfo(WCLayerUpateInfo&&) override;
-    RefPtr<WebCore::ImageBuffer> createImageBuffer(WebCore::FloatSize) override;
+    RefPtr<CyberCore::ImageBuffer> createImageBuffer(CyberCore::FloatSize) override;
 
     bool isCompositingMode();
     void updateRendering();
@@ -73,28 +73,28 @@ private:
     void sendUpdateNonAC();
     void updateRootLayers();
 
-    WebCore::GraphicsLayerClient m_rootLayerClient;
+    CyberCore::GraphicsLayerClient m_rootLayerClient;
     std::unique_ptr<RemoteWCLayerTreeHostProxy> m_remoteWCLayerTreeHostProxy;
     WCLayerFactory m_layerFactory;
     DoublyLinkedList<GraphicsLayerWC> m_liveGraphicsLayers;
-    WebCore::Timer m_updateRenderingTimer;
+    CyberCore::Timer m_updateRenderingTimer;
     bool m_isRenderingSuspended { false };
     bool m_hasDeferredRenderingUpdate { false };
     bool m_inUpdateRendering { false };
     bool m_waitDidUpdate { false };
     bool m_isForceRepaintCompletionHandlerDeferred { false };
     WCUpateInfo m_updateInfo;
-    Ref<WebCore::GraphicsLayer> m_rootLayer;
-    RefPtr<WebCore::GraphicsLayer> m_contentLayer;
-    RefPtr<WebCore::GraphicsLayer> m_viewOverlayRootLayer;
+    Ref<CyberCore::GraphicsLayer> m_rootLayer;
+    RefPtr<CyberCore::GraphicsLayer> m_contentLayer;
+    RefPtr<CyberCore::GraphicsLayer> m_viewOverlayRootLayer;
     Ref<WorkQueue> m_commitQueue;
     int64_t m_backingStoreStateID { 0 };
-    WebCore::Region m_dirtyRegion;
-    WebCore::IntRect m_scrollRect;
-    WebCore::IntSize m_scrollOffset;
+    CyberCore::Region m_dirtyRegion;
+    CyberCore::IntRect m_scrollRect;
+    CyberCore::IntSize m_scrollOffset;
     CompletionHandler<void()> m_forceRepaintCompletionHandler;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(GRAPHICS_LAYER_WC)

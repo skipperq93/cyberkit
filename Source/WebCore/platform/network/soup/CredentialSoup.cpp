@@ -26,7 +26,7 @@
 #include "config.h"
 #include "CredentialSoup.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Credential::Credential(const Credential& original, CredentialPersistence persistence)
     : CredentialBase(original, persistence)
@@ -50,4 +50,4 @@ bool Credential::platformCompare(const Credential& a, const Credential& b)
     return a.certificate() == b.certificate();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

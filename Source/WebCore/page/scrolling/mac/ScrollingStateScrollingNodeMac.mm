@@ -33,7 +33,7 @@
 #import "ScrollbarThemeMac.h"
 #import "ScrollingStateTree.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 void ScrollingStateScrollingNode::setScrollerImpsFromScrollbars(Scrollbar* verticalScrollbar, Scrollbar* horizontalScrollbar)
 {
@@ -56,6 +56,6 @@ void ScrollingStateScrollingNode::setScrollerImpsFromScrollbars(Scrollbar* verti
     setPropertyChanged(Property::PainterForScrollbar);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ASYNC_SCROLLING) && PLATFORM(MAC)

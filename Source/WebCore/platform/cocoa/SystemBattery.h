@@ -28,7 +28,7 @@
 #include <optional>
 #include <wtf/Function.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WEBCORE_EXPORT void setSystemHasBattery(bool);
 WEBCORE_EXPORT bool systemHasBattery();

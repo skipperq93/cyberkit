@@ -31,11 +31,11 @@
 #include <CyberCore/Region.h>
 #include <wtf/RunLoop.h>
 
-namespace WebCore {
+namespace CyberCore {
 class GraphicsContext;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class ShareableBitmap;
 class UpdateInfo;
@@ -48,8 +48,8 @@ public:
 private:
     // DrawingArea
     void setNeedsDisplay() override;
-    void setNeedsDisplayInRect(const WebCore::IntRect&) override;
-    void scroll(const WebCore::IntRect& scrollRect, const WebCore::IntSize& scrollDelta) override;
+    void setNeedsDisplayInRect(const CyberCore::IntRect&) override;
+    void scroll(const CyberCore::IntRect& scrollRect, const CyberCore::IntSize& scrollDelta) override;
     void forceRepaint() override;
     void forceRepaintAsync(WebPage&, CompletionHandler<void()>&&) override;
 
@@ -58,38 +58,38 @@ private:
 
     void updatePreferences(const WebPreferencesStore&) override;
     void enablePainting() override;
-    void mainFrameContentSizeChanged(const WebCore::IntSize&) override;
+    void mainFrameContentSizeChanged(const CyberCore::IntSize&) override;
 
 #if USE(COORDINATED_GRAPHICS) || USE(TEXTURE_MAPPER)
     void deviceOrPageScaleFactorChanged() override;
-    void didChangeViewportAttributes(WebCore::ViewportAttributes&&) override;
+    void didChangeViewportAttributes(CyberCore::ViewportAttributes&&) override;
 #endif
 
     bool supportsAsyncScrolling() const override;
     void registerScrollingTree() override;
     void unregisterScrollingTree() override;
 
-    WebCore::GraphicsLayerFactory* graphicsLayerFactory() override;
-    void setRootCompositingLayer(WebCore::GraphicsLayer*) override;
+    CyberCore::GraphicsLayerFactory* graphicsLayerFactory() override;
+    void setRootCompositingLayer(CyberCore::GraphicsLayer*) override;
     void triggerRenderingUpdate() override;
 
 #if USE(COORDINATED_GRAPHICS) || USE(GRAPHICS_LAYER_TEXTURE_MAPPER)
     void layerHostDidFlushLayers() override;
 #endif
     
-    RefPtr<WebCore::DisplayRefreshMonitor> createDisplayRefreshMonitor(WebCore::PlatformDisplayID) override;
+    RefPtr<CyberCore::DisplayRefreshMonitor> createDisplayRefreshMonitor(CyberCore::PlatformDisplayID) override;
 
-    void activityStateDidChange(OptionSet<WebCore::ActivityState::Flag>, ActivityStateChangeID, CompletionHandler<void()>&&) override;
-    void attachViewOverlayGraphicsLayer(WebCore::GraphicsLayer*) override;
+    void activityStateDidChange(OptionSet<CyberCore::ActivityState::Flag>, ActivityStateChangeID, CompletionHandler<void()>&&) override;
+    void attachViewOverlayGraphicsLayer(CyberCore::GraphicsLayer*) override;
 
     // IPC message handlers.
-    void updateBackingStoreState(uint64_t backingStoreStateID, bool respondImmediately, float deviceScaleFactor, const WebCore::IntSize&, const WebCore::IntSize& scrollOffset) override;
+    void updateBackingStoreState(uint64_t backingStoreStateID, bool respondImmediately, float deviceScaleFactor, const CyberCore::IntSize&, const CyberCore::IntSize& scrollOffset) override;
     void targetRefreshRateDidChange(unsigned rate) override;
     void displayDidRefresh() override;
 
 #if PLATFORM(GTK)
-    void adjustTransientZoom(double scale, WebCore::FloatPoint origin) override;
-    void commitTransientZoom(double scale, WebCore::FloatPoint origin) override;
+    void adjustTransientZoom(double scale, CyberCore::FloatPoint origin) override;
+    void commitTransientZoom(double scale, CyberCore::FloatPoint origin) override;
 #endif
 
     void sendDidUpdateBackingStoreState();
@@ -101,7 +101,7 @@ private:
     void suspendPainting();
     void resumePainting();
 
-    void enterAcceleratedCompositingMode(WebCore::GraphicsLayer*);
+    void enterAcceleratedCompositingMode(CyberCore::GraphicsLayer*);
     void exitAcceleratedCompositingMode();
 
     void scheduleDisplay();
@@ -144,9 +144,9 @@ private:
     std::unique_ptr<LayerTreeHost> m_previousLayerTreeHost;
     RunLoop::Timer m_discardPreviousLayerTreeHostTimer;
 
-    WebCore::Region m_dirtyRegion;
-    WebCore::IntRect m_scrollRect;
-    WebCore::IntSize m_scrollOffset;
+    CyberCore::Region m_dirtyRegion;
+    CyberCore::IntRect m_scrollRect;
+    CyberCore::IntSize m_scrollOffset;
 
     // Whether we're waiting for a DidUpdate message. Used for throttling paints so that the 
     // web process won't paint more frequent than the UI process can handle.
@@ -161,8 +161,8 @@ private:
 
 #if PLATFORM(GTK)
     bool m_transientZoom { false };
-    WebCore::FloatPoint m_transientZoomInitialOrigin;
+    CyberCore::FloatPoint m_transientZoomInitialOrigin;
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit

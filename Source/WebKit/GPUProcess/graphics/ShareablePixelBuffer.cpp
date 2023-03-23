@@ -29,7 +29,7 @@
 #include "SharedMemory.h"
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 RefPtr<ShareablePixelBuffer> ShareablePixelBuffer::tryCreate(const PixelBufferFormat& format, const IntSize& size)
 {

@@ -26,12 +26,12 @@
 #include "config.h"
 #include "WebAlternativeTextClient.h"
 
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebPage.h"
 #include "WebPageProxyMessages.h"
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 WebAlternativeTextClient::WebAlternativeTextClient(WebPage* webPage)
 : m_page(webPage)
@@ -69,17 +69,17 @@ void WebAlternativeTextClient::recordAutocorrectionResponse(AutocorrectionRespon
 }
 #endif
 
-void WebAlternativeTextClient::removeDictationAlternatives(WebCore::DictationContext dictationContext)
+void WebAlternativeTextClient::removeDictationAlternatives(CyberCore::DictationContext dictationContext)
 {
     m_page->send(Messages::WebPageProxy::RemoveDictationAlternatives(dictationContext));
 }
 
-void WebAlternativeTextClient::showDictationAlternativeUI(const WebCore::FloatRect& boundingBoxOfDictatedText, WebCore::DictationContext dictationContext)
+void WebAlternativeTextClient::showDictationAlternativeUI(const CyberCore::FloatRect& boundingBoxOfDictatedText, CyberCore::DictationContext dictationContext)
 {
     m_page->send(Messages::WebPageProxy::ShowDictationAlternativeUI(boundingBoxOfDictatedText, dictationContext));
 }
 
-Vector<String> WebAlternativeTextClient::dictationAlternatives(WebCore::DictationContext dictationContext)
+Vector<String> WebAlternativeTextClient::dictationAlternatives(CyberCore::DictationContext dictationContext)
 {
     auto sendResult = m_page->sendSync(Messages::WebPageProxy::DictationAlternatives(dictationContext));
     auto [result] = sendResult.takeReplyOr(Vector<String> { });

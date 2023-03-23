@@ -35,7 +35,7 @@
 #include <CyberScriptCore/JSCJSValue.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class WebXRSystem;
@@ -78,6 +78,6 @@ private:
     Vector<Ref<WebFakeXRDevice>> m_devices;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBXR)

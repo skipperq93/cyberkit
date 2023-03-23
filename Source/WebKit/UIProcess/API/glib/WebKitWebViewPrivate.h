@@ -53,10 +53,10 @@ void webkitWebViewLoadChanged(WebKitWebView*, WebKitLoadEvent);
 void webkitWebViewLoadFailed(WebKitWebView*, WebKitLoadEvent, const char* failingURI, GError*);
 void webkitWebViewLoadFailedWithTLSErrors(WebKitWebView*, const char* failingURI, GError*, GTlsCertificateFlags, GTlsCertificate*);
 #if PLATFORM(GTK)
-void webkitWebViewGetLoadDecisionForIcon(WebKitWebView*, const WebCore::LinkIcon&, Function<void(bool)>&&);
-void webkitWebViewSetIcon(WebKitWebView*, const WebCore::LinkIcon&, API::Data&);
+void webkitWebViewGetLoadDecisionForIcon(WebKitWebView*, const CyberCore::LinkIcon&, Function<void(bool)>&&);
+void webkitWebViewSetIcon(WebKitWebView*, const CyberCore::LinkIcon&, API::Data&);
 #endif
-RefPtr<WebKit::WebPageProxy> webkitWebViewCreateNewPage(WebKitWebView*, const WebCore::WindowFeatures&, WebKitNavigationAction*);
+RefPtr<WebKit::WebPageProxy> webkitWebViewCreateNewPage(WebKitWebView*, const CyberCore::WindowFeatures&, WebKitNavigationAction*);
 void webkitWebViewReadyToShowPage(WebKitWebView*);
 void webkitWebViewRunAsModal(WebKitWebView*);
 void webkitWebViewClosePage(WebKitWebView*);
@@ -76,7 +76,7 @@ void webkitWebViewMakePolicyDecision(WebKitWebView*, WebKitPolicyDecisionType, W
 void webkitWebViewMouseTargetChanged(WebKitWebView*, const WebKit::WebHitTestResultData&, OptionSet<WebKit::WebEventModifier>);
 void webkitWebViewPrintFrame(WebKitWebView*, WebKit::WebFrameProxy*);
 WebKit::WebKitWebResourceLoadManager* webkitWebViewGetWebResourceLoadManager(WebKitWebView*);
-void webkitWebViewResourceLoadStarted(WebKitWebView*, WebKitWebResource*, WebCore::ResourceRequest&&);
+void webkitWebViewResourceLoadStarted(WebKitWebView*, WebKitWebResource*, CyberCore::ResourceRequest&&);
 void webkitWebViewRunFileChooserRequest(WebKitWebView*, WebKitFileChooserRequest*);
 #if PLATFORM(GTK)
 void webKitWebViewDidReceiveSnapshot(WebKitWebView*, uint64_t callbackID, WebKit::WebImage*);
@@ -93,7 +93,7 @@ void webkitWebViewInsecureContentDetected(WebKitWebView*, WebKitInsecureContentE
 bool webkitWebViewEmitShowNotification(WebKitWebView*, WebKitNotification*);
 void webkitWebViewWebProcessTerminated(WebKitWebView*, WebKitWebProcessTerminationReason);
 void webkitWebViewIsPlayingAudioChanged(WebKitWebView*);
-void webkitWebViewMediaCaptureStateDidChange(WebKitWebView*, WebCore::MediaProducer::MediaStateFlags);
+void webkitWebViewMediaCaptureStateDidChange(WebKitWebView*, CyberCore::MediaProducer::MediaStateFlags);
 void webkitWebViewSelectionDidChange(WebKitWebView*);
 WebKitWebsiteDataManager* webkitWebViewGetWebsiteDataManager(WebKitWebView*);
 void webkitWebViewPermissionStateQuery(WebKitWebView*, WebKitPermissionStateQuery*);
@@ -102,7 +102,7 @@ void webkitWebViewPermissionStateQuery(WebKitWebView*, WebKitPermissionStateQuer
 bool webkitWebViewEmitRunColorChooser(WebKitWebView*, WebKitColorChooserRequest*);
 #endif
 
-bool webkitWebViewShowOptionMenu(WebKitWebView*, const WebCore::IntRect&, WebKitOptionMenu*);
+bool webkitWebViewShowOptionMenu(WebKitWebView*, const CyberCore::IntRect&, WebKitOptionMenu*);
 
 gboolean webkitWebViewAuthenticate(WebKitWebView*, WebKitAuthenticationRequest*);
 gboolean webkitWebViewScriptDialog(WebKitWebView*, WebKitScriptDialog*);
@@ -116,7 +116,7 @@ void webkitWebViewDenyPointerLockRequest(WebKitWebView*);
 void webkitWebViewDidLosePointerLock(WebKitWebView*);
 #endif
 
-void webkitWebViewSetComposition(WebKitWebView*, const String&, const Vector<WebCore::CompositionUnderline>&, WebKit::EditingRange&&);
+void webkitWebViewSetComposition(WebKitWebView*, const String&, const Vector<CyberCore::CompositionUnderline>&, WebKit::EditingRange&&);
 void webkitWebViewConfirmComposition(WebKitWebView*, const String&);
 void webkitWebViewCancelComposition(WebKitWebView*, const String&);
 void webkitWebViewDeleteSurrounding(WebKitWebView*, int offset, unsigned characterCount);

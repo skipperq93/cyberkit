@@ -26,8 +26,8 @@
 
 #import <CyberKitLegacy/DOMMediaList.h>
 
-namespace WebCore {
+namespace CyberCore {
 class MediaList;
 }
 
-DOMMediaList *kit(WebCore::MediaList*);
+DOMMediaList *kit(CyberCore::MediaList*);

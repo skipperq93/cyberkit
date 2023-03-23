@@ -24,7 +24,7 @@
 #include <wtf/FastMalloc.h>
 #include <wtf/Noncopyable.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderTable;
 
@@ -55,4 +55,4 @@ protected:
     RenderTable* m_table;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -28,7 +28,7 @@
 
 #include "ContentSecurityPolicyDirectiveList.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 ContentSecurityPolicyDirective::~ContentSecurityPolicyDirective()
 {
@@ -39,4 +39,4 @@ bool ContentSecurityPolicyDirective::isDefaultSrc() const
     return this == m_directiveList.defaultSrc();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

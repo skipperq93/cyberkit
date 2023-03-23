@@ -34,7 +34,7 @@
 #include <array>
 #include <wtf/HashMap.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 const float cGlyphSizeUnknown = -1;
 
@@ -134,6 +134,6 @@ template<class T> typename GlyphMetricsMap<T>::GlyphMetricsPage& GlyphMetricsMap
     }).iterator->value;
 }
     
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

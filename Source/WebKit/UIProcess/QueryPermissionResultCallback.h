@@ -33,7 +33,7 @@ namespace WebKit {
 
 class QueryPermissionResultCallback : public API::ObjectImpl<API::Object::Type::QueryPermissionResultCallback> {
 public:
-    static Ref<QueryPermissionResultCallback> create(CompletionHandler<void(std::optional<WebCore::PermissionState>)>&& completionHandler)
+    static Ref<QueryPermissionResultCallback> create(CompletionHandler<void(std::optional<CyberCore::PermissionState>)>&& completionHandler)
     {
         return adoptRef(*new QueryPermissionResultCallback(WTFMove(completionHandler)));
     }
@@ -42,14 +42,14 @@ public:
         if (m_completionHandler)
             m_completionHandler({ });
     }
-    void setPermission(WebCore::PermissionState permission) { m_completionHandler(permission); }
+    void setPermission(CyberCore::PermissionState permission) { m_completionHandler(permission); }
 
 private:
-    explicit QueryPermissionResultCallback(CompletionHandler<void(std::optional<WebCore::PermissionState>)>&& completionHandler)
+    explicit QueryPermissionResultCallback(CompletionHandler<void(std::optional<CyberCore::PermissionState>)>&& completionHandler)
         : m_completionHandler(WTFMove(completionHandler))
     { }
 
-    CompletionHandler<void(std::optional<WebCore::PermissionState>)> m_completionHandler;
+    CompletionHandler<void(std::optional<CyberCore::PermissionState>)> m_completionHandler;
 };
 
 } // namespace WebKit

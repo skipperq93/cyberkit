@@ -44,7 +44,7 @@ public:
     void invalidate();
 
     void checkIconURLAndSetPageURLIfNeeded(const String& iconURL, const String& pageURL, AllowDatabaseWrite, CompletionHandler<void(bool, bool)>&&);
-    void loadIconForPageURL(const String&, AllowDatabaseWrite, CompletionHandler<void(WebCore::PlatformImagePtr&&)>&&);
+    void loadIconForPageURL(const String&, AllowDatabaseWrite, CompletionHandler<void(CyberCore::PlatformImagePtr&&)>&&);
     String iconURLForPageURL(const String&);
     void setIconForPageURL(const String& iconURL, const uint8_t*, size_t, const String& pageURL, AllowDatabaseWrite, CompletionHandler<void(bool)>&&);
     void clear(CompletionHandler<void()>&&);
@@ -68,22 +68,22 @@ private:
 
     Ref<WorkQueue> m_workQueue;
     AllowDatabaseWrite m_allowDatabaseWrite { AllowDatabaseWrite::Yes };
-    WebCore::SQLiteDatabase m_db;
+    CyberCore::SQLiteDatabase m_db;
     HashMap<String, String> m_pageURLToIconURLMap;
     Lock m_pageURLToIconURLMapLock;
-    HashMap<String, std::pair<WebCore::PlatformImagePtr, MonotonicTime>> m_loadedIcons WTF_GUARDED_BY_LOCK(m_loadedIconsLock);
+    HashMap<String, std::pair<CyberCore::PlatformImagePtr, MonotonicTime>> m_loadedIcons WTF_GUARDED_BY_LOCK(m_loadedIconsLock);
     Lock m_loadedIconsLock;
 
-    std::unique_ptr<WebCore::SQLiteStatement> m_iconIDForIconURLStatement;
-    std::unique_ptr<WebCore::SQLiteStatement> m_setIconIDForPageURLStatement;
-    std::unique_ptr<WebCore::SQLiteStatement> m_iconDataStatement;
-    std::unique_ptr<WebCore::SQLiteStatement> m_addIconStatement;
-    std::unique_ptr<WebCore::SQLiteStatement> m_addIconDataStatement;
-    std::unique_ptr<WebCore::SQLiteStatement> m_updateIconTimestampStatement;
-    std::unique_ptr<WebCore::SQLiteStatement> m_deletePageURLsForIconStatement;
-    std::unique_ptr<WebCore::SQLiteStatement> m_deleteIconDataStatement;
-    std::unique_ptr<WebCore::SQLiteStatement> m_deleteIconStatement;
-    std::unique_ptr<WebCore::SQLiteStatement> m_pruneIconsStatement;
+    std::unique_ptr<CyberCore::SQLiteStatement> m_iconIDForIconURLStatement;
+    std::unique_ptr<CyberCore::SQLiteStatement> m_setIconIDForPageURLStatement;
+    std::unique_ptr<CyberCore::SQLiteStatement> m_iconDataStatement;
+    std::unique_ptr<CyberCore::SQLiteStatement> m_addIconStatement;
+    std::unique_ptr<CyberCore::SQLiteStatement> m_addIconDataStatement;
+    std::unique_ptr<CyberCore::SQLiteStatement> m_updateIconTimestampStatement;
+    std::unique_ptr<CyberCore::SQLiteStatement> m_deletePageURLsForIconStatement;
+    std::unique_ptr<CyberCore::SQLiteStatement> m_deleteIconDataStatement;
+    std::unique_ptr<CyberCore::SQLiteStatement> m_deleteIconStatement;
+    std::unique_ptr<CyberCore::SQLiteStatement> m_pruneIconsStatement;
 
     std::unique_ptr<RunLoop::Timer> m_pruneTimer;
     RunLoop::Timer m_clearLoadedIconsTimer;

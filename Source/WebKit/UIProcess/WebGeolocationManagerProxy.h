@@ -51,7 +51,7 @@ class WebProcessPool;
 
 class WebGeolocationManagerProxy : public API::ObjectImpl<API::Object::Type::GeolocationManager>, public WebContextSupplement, private IPC::MessageReceiver
 #if PLATFORM(IOS_FAMILY)
-    , public WebCore::CoreLocationGeolocationProvider::Client
+    , public CyberCore::CoreLocationGeolocationProvider::Client
 #endif
 {
 public:
@@ -85,17 +85,17 @@ private:
     void didReceiveMessage(IPC::Connection&, IPC::Decoder&) override;
 
     // IPC messages.
-    void startUpdating(IPC::Connection&, const WebCore::RegistrableDomain&, WebPageProxyIdentifier, const String& authorizationToken, bool enableHighAccuracy);
-    void stopUpdating(IPC::Connection&, const WebCore::RegistrableDomain&);
-    void setEnableHighAccuracy(IPC::Connection&, const WebCore::RegistrableDomain&, bool);
+    void startUpdating(IPC::Connection&, const CyberCore::RegistrableDomain&, WebPageProxyIdentifier, const String& authorizationToken, bool enableHighAccuracy);
+    void stopUpdating(IPC::Connection&, const CyberCore::RegistrableDomain&);
+    void setEnableHighAccuracy(IPC::Connection&, const CyberCore::RegistrableDomain&, bool);
 
-    void startUpdatingWithProxy(WebProcessProxy&, const WebCore::RegistrableDomain&, WebPageProxyIdentifier, const String& authorizationToken, bool enableHighAccuracy);
-    void stopUpdatingWithProxy(WebProcessProxy&, const WebCore::RegistrableDomain&);
-    void setEnableHighAccuracyWithProxy(WebProcessProxy&, const WebCore::RegistrableDomain&, bool);
+    void startUpdatingWithProxy(WebProcessProxy&, const CyberCore::RegistrableDomain&, WebPageProxyIdentifier, const String& authorizationToken, bool enableHighAccuracy);
+    void stopUpdatingWithProxy(WebProcessProxy&, const CyberCore::RegistrableDomain&);
+    void setEnableHighAccuracyWithProxy(WebProcessProxy&, const CyberCore::RegistrableDomain&, bool);
 
 #if PLATFORM(IOS_FAMILY)
     // CoreLocationGeolocationProvider::Client
-    void positionChanged(const String& websiteIdentifier, WebCore::GeolocationPositionData&&) final;
+    void positionChanged(const String& websiteIdentifier, CyberCore::GeolocationPositionData&&) final;
     void errorOccurred(const String& websiteIdentifier, const String& errorMessage) final;
     void resetGeolocation(const String& websiteIdentifier) final;
 #endif
@@ -104,21 +104,21 @@ private:
         WTF_MAKE_STRUCT_FAST_ALLOCATED;
         WeakHashSet<WebProcessProxy> watchers;
         WeakHashSet<WebProcessProxy> watchersNeedingHighAccuracy;
-        std::optional<WebCore::GeolocationPositionData> lastPosition;
+        std::optional<CyberCore::GeolocationPositionData> lastPosition;
 
         // FIXME: Use for all Cocoa ports.
 #if PLATFORM(IOS_FAMILY)
-        std::unique_ptr<WebCore::CoreLocationGeolocationProvider> provider;
+        std::unique_ptr<CyberCore::CoreLocationGeolocationProvider> provider;
 #endif
     };
 
     bool isUpdating(const PerDomainData&) const;
     bool isHighAccuracyEnabled(const PerDomainData&) const;
-    void providerStartUpdating(PerDomainData&, const WebCore::RegistrableDomain&);
+    void providerStartUpdating(PerDomainData&, const CyberCore::RegistrableDomain&);
     void providerStopUpdating(PerDomainData&);
     void providerSetEnabledHighAccuracy(PerDomainData&, bool enabled);
 
-    HashMap<WebCore::RegistrableDomain, std::unique_ptr<PerDomainData>> m_perDomainData;
+    HashMap<CyberCore::RegistrableDomain, std::unique_ptr<PerDomainData>> m_perDomainData;
     std::unique_ptr<API::GeolocationProvider> m_clientProvider;
 };
 

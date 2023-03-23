@@ -29,7 +29,7 @@
 #include "File.h"
 #include <wtf/FileSystem.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 BlobDataFileReference::BlobDataFileReference(const String& path, const String& replacementPath)
     : m_path(path)

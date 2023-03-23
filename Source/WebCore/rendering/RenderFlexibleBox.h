@@ -33,7 +33,7 @@
 #include "OrderIterator.h"
 #include "RenderBlock.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class FlexItem;
     
@@ -263,6 +263,6 @@ private:
     bool m_isComputingFlexBaseSizes { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderFlexibleBox, isFlexibleBox())

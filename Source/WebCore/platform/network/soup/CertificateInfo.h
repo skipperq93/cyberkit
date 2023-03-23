@@ -35,7 +35,7 @@
 #include <wtf/persistence/PersistentDecoder.h>
 #include <wtf/persistence/PersistentEncoder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ResourceError;
 class ResourceResponse;
@@ -43,8 +43,8 @@ class ResourceResponse;
 class CertificateInfo {
 public:
     CertificateInfo();
-    explicit CertificateInfo(const WebCore::ResourceResponse&);
-    explicit CertificateInfo(const WebCore::ResourceError&);
+    explicit CertificateInfo(const CyberCore::ResourceResponse&);
+    explicit CertificateInfo(const CyberCore::ResourceError&);
     CertificateInfo(GRefPtr<GTlsCertificate>&&, GTlsCertificateFlags);
     WEBCORE_EXPORT ~CertificateInfo();
 
@@ -78,4 +78,4 @@ private:
     GTlsCertificateFlags m_tlsErrors;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

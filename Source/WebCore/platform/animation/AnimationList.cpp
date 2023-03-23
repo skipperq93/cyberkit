@@ -24,7 +24,7 @@
 
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 #define FILL_UNSET_PROPERTY(test, propGet, propSet) \
 for (i = 0; i < size() && animation(i).test(); ++i) { } \
@@ -83,4 +83,4 @@ TextStream& operator<<(TextStream& ts, const AnimationList& animationList)
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

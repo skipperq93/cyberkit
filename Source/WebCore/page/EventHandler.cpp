@@ -153,7 +153,7 @@
 #include "PointerLockController.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -2042,8 +2042,8 @@ bool EventHandler::handleMouseMoveEvent(const PlatformMouseEvent& platformMouseE
 #endif
     
 #if ENABLE(PENCIL_HOVER)
-    if (platformMouseEvent.pointerType() == WebCore::penPointerEventType())
-        hitType.add(WebCore::HitTestRequest::Type::PenEvent);
+    if (platformMouseEvent.pointerType() == CyberCore::penPointerEventType())
+        hitType.add(CyberCore::HitTestRequest::Type::PenEvent);
 #endif
     
     HitTestRequest request(hitType);
@@ -2325,7 +2325,7 @@ bool EventHandler::dispatchDragEvent(const AtomString& eventType, Element& dragT
     dragTarget.dispatchEvent(dragEvent);
 
     if (auto* cache = m_frame.document()->existingAXObjectCache()) {
-        auto& eventNames = WebCore::eventNames();
+        auto& eventNames = CyberCore::eventNames();
         if (eventType == eventNames.dragstartEvent)
             cache->postNotification(&dragTarget, AXObjectCache::AXDraggingStarted);
         else if (eventType == eventNames.dragendEvent)
@@ -2660,7 +2660,7 @@ void EventHandler::updateMouseEventTargetNode(const AtomString& eventType, Node*
             // mouseenter and mouseleave events are only dispatched if there is a capturing eventhandler on an ancestor
             // or a normal eventhandler on the element itself (they don't bubble).
             // This optimization is necessary since these events can cause O(n^2) capturing event-handler checks.
-            auto& eventNames = WebCore::eventNames();
+            auto& eventNames = CyberCore::eventNames();
             bool hasCapturingMouseEnterListener = hierarchyHasCapturingEventListeners(m_elementUnderMouse.get(), eventNames.pointerenterEvent, eventNames.mouseenterEvent);
             bool hasCapturingMouseLeaveListener = hierarchyHasCapturingEventListeners(m_lastElementUnderMouse.get(), eventNames.pointerleaveEvent, eventNames.mouseleaveEvent);
 
@@ -4304,7 +4304,7 @@ bool EventHandler::handleTextInputEvent(const String& text, Event* underlyingEve
     
 bool EventHandler::isKeyboardOptionTab(KeyboardEvent& event)
 {
-    auto& eventNames = WebCore::eventNames();
+    auto& eventNames = CyberCore::eventNames();
     return (event.type() == eventNames.keydownEvent || event.type() == eventNames.keypressEvent)
         && event.altKey()
         && event.keyIdentifier() == "U+0009"_s;
@@ -5039,4 +5039,4 @@ bool EventHandler::passMouseMoveEventToSubframe(MouseEventWithHitTestResults& mo
 }
 #endif // !PLATFORM(COCOA) && !PLATFORM(WIN)
 
-} // namespace WebCore
+} // namespace CyberCore

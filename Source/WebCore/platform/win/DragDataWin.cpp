@@ -38,7 +38,7 @@
 #include <wtf/RefPtr.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 DragData::DragData(const DragDataMap& data, const IntPoint& clientPosition, const IntPoint& globalPosition, OptionSet<DragOperation> sourceOperationMask, OptionSet<DragApplicationFlags> flags, std::optional<PageIdentifier> pageID)
     : m_clientPosition(clientPosition)

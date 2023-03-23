@@ -31,7 +31,7 @@
 #include "Logging.h"
 #include "MediaPlaybackTarget.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static const Seconds pendingActionInterval { 100_ms };
 
@@ -93,6 +93,6 @@ void MediaPlaybackTargetPicker::invalidatePlaybackTargets()
     ASSERT_NOT_REACHED();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WIRELESS_PLAYBACK_TARGET)

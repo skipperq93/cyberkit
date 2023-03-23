@@ -33,7 +33,7 @@
 #include "AudioHardwareListenerMac.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 static AudioHardwareListener::CreationFunction& audioHardwareListenerCreationFunction()
 {

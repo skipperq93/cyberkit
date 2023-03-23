@@ -37,7 +37,7 @@
 #include "NicosiaPaintingContext.h"
 
 namespace Nicosia {
-using namespace WebCore;
+using namespace CyberCore;
 
 static void paintLayer(GraphicsContext& context, GraphicsLayer& layer, const IntRect& sourceRect, const IntRect& mappedSourceRect, const IntRect& targetRect, float contentsScale, bool supportsAlpha)
 {

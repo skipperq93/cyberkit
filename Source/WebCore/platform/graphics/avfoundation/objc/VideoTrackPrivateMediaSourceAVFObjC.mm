@@ -32,7 +32,7 @@
 #import "SourceBufferPrivateAVFObjC.h"
 #import <AVFoundation/AVAssetTrack.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 VideoTrackPrivateMediaSourceAVFObjC::VideoTrackPrivateMediaSourceAVFObjC(AVAssetTrack* track)
     : m_impl(makeUnique<AVTrackPrivateAVFObjCImpl>(track))

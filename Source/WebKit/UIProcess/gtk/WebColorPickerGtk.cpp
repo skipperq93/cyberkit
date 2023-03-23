@@ -34,7 +34,7 @@
 #include <glib/gi18n-lib.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 Ref<WebColorPickerGtk> WebColorPickerGtk::create(WebPageProxy& page, const Color& initialColor, const IntRect& rect)
 {
@@ -99,7 +99,7 @@ void WebColorPickerGtk::showColorPicker(const Color& color)
 
     if (!m_colorChooser) {
         GtkWidget* toplevel = gtk_widget_get_toplevel(m_webView);
-        m_colorChooser = gtk_color_chooser_dialog_new(_("Select Color"), WebCore::widgetIsOnscreenToplevelWindow(toplevel) ? GTK_WINDOW(toplevel) : nullptr);
+        m_colorChooser = gtk_color_chooser_dialog_new(_("Select Color"), CyberCore::widgetIsOnscreenToplevelWindow(toplevel) ? GTK_WINDOW(toplevel) : nullptr);
         gtk_color_chooser_set_rgba(GTK_COLOR_CHOOSER(m_colorChooser), &m_initialColor);
         g_signal_connect(m_colorChooser, "notify::rgba", G_CALLBACK(WebColorPickerGtk::colorChooserDialogRGBAChangedCallback), this);
         g_signal_connect(m_colorChooser, "response", G_CALLBACK(WebColorPickerGtk::colorChooserDialogResponseCallback), this);

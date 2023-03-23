@@ -52,7 +52,7 @@ static bool didFinishLoad;
 
 namespace TestWebKitAPI {
 
-TEST(WebKitLegacy, JSWrapperForNode)
+TEST(CyberKitLegacy, JSWrapperForNode)
 {
     RetainPtr<WebView> webView = adoptNS([[WebView alloc] initWithFrame:NSMakeRect(0, 0, 120, 200) frameName:nil groupName:nil]);
     RetainPtr<JSWrapperForNodeFrameLoadDelegate> frameLoadDelegate = adoptNS([[JSWrapperForNodeFrameLoadDelegate alloc] init]);
@@ -97,7 +97,7 @@ TEST(WebKitLegacy, JSWrapperForNode)
     EXPECT_TRUE(JSValueIsUndefined(isolatedCtx, JSObjectGetProperty(isolatedCtx, isolatedNodeJSObject, normalPropertyJSString.get(), 0)));
 }
 
-TEST(WebKitLegacy, JSDOMWindowWrapperBeforeOriginInitialization)
+TEST(CyberKitLegacy, JSDOMWindowWrapperBeforeOriginInitialization)
 {
     [WKProcessPool _setLinkedOnOrBeforeEverythingForTesting];
     auto webView = adoptNS([[WebView alloc] initWithFrame:NSMakeRect(0, 0, 120, 200) frameName:nil groupName:nil]);

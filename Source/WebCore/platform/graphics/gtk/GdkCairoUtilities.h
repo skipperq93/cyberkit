@@ -31,7 +31,7 @@
 typedef struct _GdkTexture GdkTexture;
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 GRefPtr<GdkPixbuf> cairoSurfaceToGdkPixbuf(cairo_surface_t*);
 #if USE(GTK4)

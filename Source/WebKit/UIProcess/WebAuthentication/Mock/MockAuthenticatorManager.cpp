@@ -30,12 +30,12 @@
 
 namespace WebKit {
 
-MockAuthenticatorManager::MockAuthenticatorManager(WebCore::MockWebAuthenticationConfiguration&& configuration)
+MockAuthenticatorManager::MockAuthenticatorManager(CyberCore::MockWebAuthenticationConfiguration&& configuration)
     : m_testConfiguration(WTFMove(configuration))
 {
 }
 
-UniqueRef<AuthenticatorTransportService> MockAuthenticatorManager::createService(WebCore::AuthenticatorTransport transport, AuthenticatorTransportService::Observer& observer) const
+UniqueRef<AuthenticatorTransportService> MockAuthenticatorManager::createService(CyberCore::AuthenticatorTransport transport, AuthenticatorTransportService::Observer& observer) const
 {
     return AuthenticatorTransportService::createMock(transport, observer, m_testConfiguration);
 }
@@ -53,12 +53,12 @@ void MockAuthenticatorManager::respondReceivedInternal(Respond&& respond)
 void MockAuthenticatorManager::filterTransports(TransportSet& transports) const
 {
     if (!m_testConfiguration.nfc)
-        transports.remove(WebCore::AuthenticatorTransport::Nfc);
+        transports.remove(CyberCore::AuthenticatorTransport::Nfc);
     if (!m_testConfiguration.local)
-        transports.remove(WebCore::AuthenticatorTransport::Internal);
+        transports.remove(CyberCore::AuthenticatorTransport::Internal);
     if (!m_testConfiguration.ccid)
-        transports.remove(WebCore::AuthenticatorTransport::SmartCard);
-    transports.remove(WebCore::AuthenticatorTransport::Ble);
+        transports.remove(CyberCore::AuthenticatorTransport::SmartCard);
+    transports.remove(CyberCore::AuthenticatorTransport::Ble);
 }
 
 } // namespace WebKit

@@ -35,17 +35,17 @@
 
 namespace IPC {
 
-template<> struct AsyncReplyError<WebCore::DOMCacheEngine::CacheIdentifierOrError> {
-    static WebCore::DOMCacheEngine::CacheIdentifierOrError create() { return makeUnexpected(WebCore::DOMCacheEngine::Error::Internal); };
+template<> struct AsyncReplyError<CyberCore::DOMCacheEngine::CacheIdentifierOrError> {
+    static CyberCore::DOMCacheEngine::CacheIdentifierOrError create() { return makeUnexpected(CyberCore::DOMCacheEngine::Error::Internal); };
 };
-template<> struct AsyncReplyError<WebCore::DOMCacheEngine::RecordIdentifiersOrError> {
-    static WebCore::DOMCacheEngine::RecordIdentifiersOrError create() { return makeUnexpected(WebCore::DOMCacheEngine::Error::Internal); };
+template<> struct AsyncReplyError<CyberCore::DOMCacheEngine::RecordIdentifiersOrError> {
+    static CyberCore::DOMCacheEngine::RecordIdentifiersOrError create() { return makeUnexpected(CyberCore::DOMCacheEngine::Error::Internal); };
 };
-template<> struct AsyncReplyError<WebCore::DOMCacheEngine::CacheInfosOrError> {
-    static WebCore::DOMCacheEngine::CacheInfosOrError create() { return makeUnexpected(WebCore::DOMCacheEngine::Error::Internal); };
+template<> struct AsyncReplyError<CyberCore::DOMCacheEngine::CacheInfosOrError> {
+    static CyberCore::DOMCacheEngine::CacheInfosOrError create() { return makeUnexpected(CyberCore::DOMCacheEngine::Error::Internal); };
 };
-template<> struct AsyncReplyError<WebCore::DOMCacheEngine::RecordsOrError> {
-    static WebCore::DOMCacheEngine::RecordsOrError create() { return makeUnexpected(WebCore::DOMCacheEngine::Error::Internal); };
+template<> struct AsyncReplyError<CyberCore::DOMCacheEngine::RecordsOrError> {
+    static CyberCore::DOMCacheEngine::RecordsOrError create() { return makeUnexpected(CyberCore::DOMCacheEngine::Error::Internal); };
 };
 
 }
@@ -63,18 +63,18 @@ public:
 private:
     explicit CacheStorageEngineConnection(NetworkConnectionToWebProcess&);
 
-    void open(WebCore::ClientOrigin&&, String&& cacheName, WebCore::DOMCacheEngine::CacheIdentifierCallback&&);
-    void remove(WebCore::DOMCacheIdentifier, WebCore::DOMCacheEngine::RemoveCacheIdentifierCallback&&);
-    void caches(WebCore::ClientOrigin&&, uint64_t updateCounter, WebCore::DOMCacheEngine::CacheInfosCallback&&);
+    void open(CyberCore::ClientOrigin&&, String&& cacheName, CyberCore::DOMCacheEngine::CacheIdentifierCallback&&);
+    void remove(CyberCore::DOMCacheIdentifier, CyberCore::DOMCacheEngine::RemoveCacheIdentifierCallback&&);
+    void caches(CyberCore::ClientOrigin&&, uint64_t updateCounter, CyberCore::DOMCacheEngine::CacheInfosCallback&&);
 
-    void retrieveRecords(WebCore::DOMCacheIdentifier, WebCore::RetrieveRecordsOptions&&, WebCore::DOMCacheEngine::RecordsCallback&&);
-    void deleteMatchingRecords(WebCore::DOMCacheIdentifier, WebCore::ResourceRequest&&, WebCore::CacheQueryOptions&&, WebCore::DOMCacheEngine::RecordIdentifiersCallback&&);
-    void putRecords(WebCore::DOMCacheIdentifier, Vector<WebCore::DOMCacheEngine::Record>&&, WebCore::DOMCacheEngine::RecordIdentifiersCallback&&);
+    void retrieveRecords(CyberCore::DOMCacheIdentifier, CyberCore::RetrieveRecordsOptions&&, CyberCore::DOMCacheEngine::RecordsCallback&&);
+    void deleteMatchingRecords(CyberCore::DOMCacheIdentifier, CyberCore::ResourceRequest&&, CyberCore::CacheQueryOptions&&, CyberCore::DOMCacheEngine::RecordIdentifiersCallback&&);
+    void putRecords(CyberCore::DOMCacheIdentifier, Vector<CyberCore::DOMCacheEngine::Record>&&, CyberCore::DOMCacheEngine::RecordIdentifiersCallback&&);
 
-    void reference(WebCore::DOMCacheIdentifier);
-    void dereference(WebCore::DOMCacheIdentifier);
+    void reference(CyberCore::DOMCacheIdentifier);
+    void dereference(CyberCore::DOMCacheIdentifier);
 
-    void clearMemoryRepresentation(WebCore::ClientOrigin&&, CompletionHandler<void(std::optional<WebCore::DOMCacheEngine::Error>&&)>&&);
+    void clearMemoryRepresentation(CyberCore::ClientOrigin&&, CompletionHandler<void(std::optional<CyberCore::DOMCacheEngine::Error>&&)>&&);
     void engineRepresentation( CompletionHandler<void(String&&)>&&);
     
     PAL::SessionID sessionID() const;

@@ -23,7 +23,7 @@
 #include "SVGPropertyTraits.h"
 #include "SVGValueProperty.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGRect : public SVGValueProperty<FloatRect> {
     using Base = SVGValueProperty<FloatRect>;

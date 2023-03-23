@@ -43,7 +43,7 @@ class MachSendRight;
 #endif
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class LayerPool;
 class PlatformCALayer;
@@ -197,7 +197,7 @@ public:
     virtual void clearContents();
 
 #if HAVE(IOSURFACE)
-    virtual void setContents(const WebCore::IOSurface&) = 0;
+    virtual void setContents(const CyberCore::IOSurface&) = 0;
     virtual void setContents(const WTF::MachSendRight&) = 0;
 #endif
 
@@ -323,45 +323,45 @@ protected:
 WEBCORE_EXPORT WTF::TextStream& operator<<(WTF::TextStream&, PlatformCALayer::LayerType);
 WEBCORE_EXPORT WTF::TextStream& operator<<(WTF::TextStream&, PlatformCALayer::FilterType);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #define SPECIALIZE_TYPE_TRAITS_PLATFORM_CALAYER(ToValueTypeName, predicate) \
 SPECIALIZE_TYPE_TRAITS_BEGIN(ToValueTypeName) \
-    static bool isType(const WebCore::PlatformCALayer& layer) { return layer.predicate; } \
+    static bool isType(const CyberCore::PlatformCALayer& layer) { return layer.predicate; } \
 SPECIALIZE_TYPE_TRAITS_END()
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::PlatformCALayer::FilterType> {
+template<> struct EnumTraits<CyberCore::PlatformCALayer::FilterType> {
     using values = EnumValues<
-        WebCore::PlatformCALayer::FilterType,
-        WebCore::PlatformCALayer::FilterType::Linear,
-        WebCore::PlatformCALayer::FilterType::Nearest,
-        WebCore::PlatformCALayer::FilterType::Trilinear
+        CyberCore::PlatformCALayer::FilterType,
+        CyberCore::PlatformCALayer::FilterType::Linear,
+        CyberCore::PlatformCALayer::FilterType::Nearest,
+        CyberCore::PlatformCALayer::FilterType::Trilinear
     >;
 };
 
-template<> struct EnumTraits<WebCore::PlatformCALayer::LayerType> {
+template<> struct EnumTraits<CyberCore::PlatformCALayer::LayerType> {
     using values = EnumValues<
-        WebCore::PlatformCALayer::LayerType,
-        WebCore::PlatformCALayer::LayerType::LayerTypeLayer,
-        WebCore::PlatformCALayer::LayerType::LayerTypeWebLayer,
-        WebCore::PlatformCALayer::LayerType::LayerTypeSimpleLayer,
-        WebCore::PlatformCALayer::LayerType::LayerTypeTransformLayer,
-        WebCore::PlatformCALayer::LayerType::LayerTypeTiledBackingLayer,
-        WebCore::PlatformCALayer::LayerType::LayerTypePageTiledBackingLayer,
-        WebCore::PlatformCALayer::LayerType::LayerTypeTiledBackingTileLayer,
-        WebCore::PlatformCALayer::LayerType::LayerTypeRootLayer,
-        WebCore::PlatformCALayer::LayerType::LayerTypeAVPlayerLayer,
-        WebCore::PlatformCALayer::LayerType::LayerTypeContentsProvidedLayer,
-        WebCore::PlatformCALayer::LayerType::LayerTypeBackdropLayer,
-        WebCore::PlatformCALayer::LayerType::LayerTypeShapeLayer,
-        WebCore::PlatformCALayer::LayerType::LayerTypeScrollContainerLayer,
+        CyberCore::PlatformCALayer::LayerType,
+        CyberCore::PlatformCALayer::LayerType::LayerTypeLayer,
+        CyberCore::PlatformCALayer::LayerType::LayerTypeWebLayer,
+        CyberCore::PlatformCALayer::LayerType::LayerTypeSimpleLayer,
+        CyberCore::PlatformCALayer::LayerType::LayerTypeTransformLayer,
+        CyberCore::PlatformCALayer::LayerType::LayerTypeTiledBackingLayer,
+        CyberCore::PlatformCALayer::LayerType::LayerTypePageTiledBackingLayer,
+        CyberCore::PlatformCALayer::LayerType::LayerTypeTiledBackingTileLayer,
+        CyberCore::PlatformCALayer::LayerType::LayerTypeRootLayer,
+        CyberCore::PlatformCALayer::LayerType::LayerTypeAVPlayerLayer,
+        CyberCore::PlatformCALayer::LayerType::LayerTypeContentsProvidedLayer,
+        CyberCore::PlatformCALayer::LayerType::LayerTypeBackdropLayer,
+        CyberCore::PlatformCALayer::LayerType::LayerTypeShapeLayer,
+        CyberCore::PlatformCALayer::LayerType::LayerTypeScrollContainerLayer,
 #if ENABLE(MODEL_ELEMENT)
-        WebCore::PlatformCALayer::LayerType::LayerTypeModelLayer,
+        CyberCore::PlatformCALayer::LayerType::LayerTypeModelLayer,
 #endif
-        WebCore::PlatformCALayer::LayerType::LayerTypeCustom,
-        WebCore::PlatformCALayer::LayerType::LayerTypeHost
+        CyberCore::PlatformCALayer::LayerType::LayerTypeCustom,
+        CyberCore::PlatformCALayer::LayerType::LayerTypeHost
     >;
 };
 

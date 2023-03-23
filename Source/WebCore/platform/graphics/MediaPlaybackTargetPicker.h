@@ -32,7 +32,7 @@
 #include <wtf/Ref.h>
 #include <wtf/RunLoop.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FloatRect;
 class MediaPlaybackTarget;
@@ -84,7 +84,7 @@ private:
     RunLoop::Timer m_pendingActionTimer;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WIRELESS_PLAYBACK_TARGET)
 

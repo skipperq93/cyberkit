@@ -27,12 +27,12 @@
 
 @protocol DOMEventTarget;
 
-namespace WebCore {
+namespace CyberCore {
 class EventTarget;
     class Node;
 }
 
-WebCore::Node* core(DOMNode *);
-DOMNode *kit(WebCore::Node*);
-Class kitClass(WebCore::Node*);
-id <DOMEventTarget> kit(WebCore::EventTarget*);
+CyberCore::Node* core(DOMNode *);
+DOMNode *kit(CyberCore::Node*);
+Class kitClass(CyberCore::Node*);
+id <DOMEventTarget> kit(CyberCore::EventTarget*);

@@ -35,7 +35,7 @@
 #include <wtf/PageBlock.h>
 #include <wtf/text/Base64.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static bool shouldUseFileMapping(uint64_t fileSize)
 {
@@ -140,6 +140,6 @@ void SWScriptStorage::clear(const ServiceWorkerRegistrationKey& registrationKey)
     RELEASE_LOG_ERROR_IF(!result, ServiceWorker, "SWScriptStorage::clear: Failure to clear scripts for registration %s", registrationKey.toDatabaseKey().utf8().data());
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

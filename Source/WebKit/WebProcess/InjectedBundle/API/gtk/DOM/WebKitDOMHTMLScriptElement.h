@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -21,28 +21,28 @@
 #error "Only <webkitdom/webkitdom.h> can be included directly."
 #endif
 
-#ifndef WebKitDOMHTMLScriptElement_h
-#define WebKitDOMHTMLScriptElement_h
+#ifndef CyberKitDOMHTMLScriptElement_h
+#define CyberKitDOMHTMLScriptElement_h
 
 #include <glib-object.h>
-#include <webkitdom/WebKitDOMHTMLElement.h>
+#include <webkitdom/CyberKitDOMHTMLElement.h>
 #include <webkitdom/webkitdomdefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_DOM_TYPE_HTML_SCRIPT_ELEMENT            (webkit_dom_html_script_element_get_type())
-#define WEBKIT_DOM_HTML_SCRIPT_ELEMENT(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_HTML_SCRIPT_ELEMENT, WebKitDOMHTMLScriptElement))
-#define WEBKIT_DOM_HTML_SCRIPT_ELEMENT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_HTML_SCRIPT_ELEMENT, WebKitDOMHTMLScriptElementClass)
+#define WEBKIT_DOM_HTML_SCRIPT_ELEMENT(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_HTML_SCRIPT_ELEMENT, CyberKitDOMHTMLScriptElement))
+#define WEBKIT_DOM_HTML_SCRIPT_ELEMENT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_HTML_SCRIPT_ELEMENT, CyberKitDOMHTMLScriptElementClass)
 #define WEBKIT_DOM_IS_HTML_SCRIPT_ELEMENT(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_DOM_TYPE_HTML_SCRIPT_ELEMENT))
 #define WEBKIT_DOM_IS_HTML_SCRIPT_ELEMENT_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_DOM_TYPE_HTML_SCRIPT_ELEMENT))
-#define WEBKIT_DOM_HTML_SCRIPT_ELEMENT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_HTML_SCRIPT_ELEMENT, WebKitDOMHTMLScriptElementClass))
+#define WEBKIT_DOM_HTML_SCRIPT_ELEMENT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_HTML_SCRIPT_ELEMENT, CyberKitDOMHTMLScriptElementClass))
 
-struct _WebKitDOMHTMLScriptElement {
-    WebKitDOMHTMLElement parent_instance;
+struct _CyberKitDOMHTMLScriptElement {
+    CyberKitDOMHTMLElement parent_instance;
 };
 
-struct _WebKitDOMHTMLScriptElementClass {
-    WebKitDOMHTMLElementClass parent_class;
+struct _CyberKitDOMHTMLScriptElementClass {
+    CyberKitDOMHTMLElementClass parent_class;
 };
 
 WEBKIT_DEPRECATED GType
@@ -50,84 +50,84 @@ webkit_dom_html_script_element_get_type(void);
 
 /**
  * webkit_dom_html_script_element_get_text:
- * @self: A #WebKitDOMHTMLScriptElement
+ * @self: A #CyberKitDOMHTMLScriptElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_script_element_get_text(WebKitDOMHTMLScriptElement* self);
+webkit_dom_html_script_element_get_text(CyberKitDOMHTMLScriptElement* self);
 
 /**
  * webkit_dom_html_script_element_set_text:
- * @self: A #WebKitDOMHTMLScriptElement
+ * @self: A #CyberKitDOMHTMLScriptElement
  * @value: A #gchar
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_script_element_set_text(WebKitDOMHTMLScriptElement* self, const gchar* value);
+webkit_dom_html_script_element_set_text(CyberKitDOMHTMLScriptElement* self, const gchar* value);
 
 /**
  * webkit_dom_html_script_element_get_html_for:
- * @self: A #WebKitDOMHTMLScriptElement
+ * @self: A #CyberKitDOMHTMLScriptElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_script_element_get_html_for(WebKitDOMHTMLScriptElement* self);
+webkit_dom_html_script_element_get_html_for(CyberKitDOMHTMLScriptElement* self);
 
 /**
  * webkit_dom_html_script_element_set_html_for:
- * @self: A #WebKitDOMHTMLScriptElement
+ * @self: A #CyberKitDOMHTMLScriptElement
  * @value: A #gchar
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_script_element_set_html_for(WebKitDOMHTMLScriptElement* self, const gchar* value);
+webkit_dom_html_script_element_set_html_for(CyberKitDOMHTMLScriptElement* self, const gchar* value);
 
 /**
  * webkit_dom_html_script_element_get_event:
- * @self: A #WebKitDOMHTMLScriptElement
+ * @self: A #CyberKitDOMHTMLScriptElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_script_element_get_event(WebKitDOMHTMLScriptElement* self);
+webkit_dom_html_script_element_get_event(CyberKitDOMHTMLScriptElement* self);
 
 /**
  * webkit_dom_html_script_element_set_event:
- * @self: A #WebKitDOMHTMLScriptElement
+ * @self: A #CyberKitDOMHTMLScriptElement
  * @value: A #gchar
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_script_element_set_event(WebKitDOMHTMLScriptElement* self, const gchar* value);
+webkit_dom_html_script_element_set_event(CyberKitDOMHTMLScriptElement* self, const gchar* value);
 
 /**
  * webkit_dom_html_script_element_get_charset:
- * @self: A #WebKitDOMHTMLScriptElement
+ * @self: A #CyberKitDOMHTMLScriptElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_script_element_get_charset(WebKitDOMHTMLScriptElement* self);
+webkit_dom_html_script_element_get_charset(CyberKitDOMHTMLScriptElement* self);
 
 /**
  * webkit_dom_html_script_element_set_charset:
- * @self: A #WebKitDOMHTMLScriptElement
+ * @self: A #CyberKitDOMHTMLScriptElement
  * @value: A #gchar
  *
  * Since: 2.16
@@ -135,74 +135,74 @@ webkit_dom_html_script_element_get_charset(WebKitDOMHTMLScriptElement* self);
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_script_element_set_charset(WebKitDOMHTMLScriptElement* self, const gchar* value);
+webkit_dom_html_script_element_set_charset(CyberKitDOMHTMLScriptElement* self, const gchar* value);
 
 /**
  * webkit_dom_html_script_element_get_defer:
- * @self: A #WebKitDOMHTMLScriptElement
+ * @self: A #CyberKitDOMHTMLScriptElement
  *
  * Returns: A #gboolean
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
-webkit_dom_html_script_element_get_defer(WebKitDOMHTMLScriptElement* self);
+webkit_dom_html_script_element_get_defer(CyberKitDOMHTMLScriptElement* self);
 
 /**
  * webkit_dom_html_script_element_set_defer:
- * @self: A #WebKitDOMHTMLScriptElement
+ * @self: A #CyberKitDOMHTMLScriptElement
  * @value: A #gboolean
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_script_element_set_defer(WebKitDOMHTMLScriptElement* self, gboolean value);
+webkit_dom_html_script_element_set_defer(CyberKitDOMHTMLScriptElement* self, gboolean value);
 
 /**
  * webkit_dom_html_script_element_get_src:
- * @self: A #WebKitDOMHTMLScriptElement
+ * @self: A #CyberKitDOMHTMLScriptElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_script_element_get_src(WebKitDOMHTMLScriptElement* self);
+webkit_dom_html_script_element_get_src(CyberKitDOMHTMLScriptElement* self);
 
 /**
  * webkit_dom_html_script_element_set_src:
- * @self: A #WebKitDOMHTMLScriptElement
+ * @self: A #CyberKitDOMHTMLScriptElement
  * @value: A #gchar
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_script_element_set_src(WebKitDOMHTMLScriptElement* self, const gchar* value);
+webkit_dom_html_script_element_set_src(CyberKitDOMHTMLScriptElement* self, const gchar* value);
 
 /**
  * webkit_dom_html_script_element_get_type_attr:
- * @self: A #WebKitDOMHTMLScriptElement
+ * @self: A #CyberKitDOMHTMLScriptElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_script_element_get_type_attr(WebKitDOMHTMLScriptElement* self);
+webkit_dom_html_script_element_get_type_attr(CyberKitDOMHTMLScriptElement* self);
 
 /**
  * webkit_dom_html_script_element_set_type_attr:
- * @self: A #WebKitDOMHTMLScriptElement
+ * @self: A #CyberKitDOMHTMLScriptElement
  * @value: A #gchar
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_script_element_set_type_attr(WebKitDOMHTMLScriptElement* self, const gchar* value);
+webkit_dom_html_script_element_set_type_attr(CyberKitDOMHTMLScriptElement* self, const gchar* value);
 
 G_END_DECLS
 
-#endif /* WebKitDOMHTMLScriptElement_h */
+#endif /* CyberKitDOMHTMLScriptElement_h */

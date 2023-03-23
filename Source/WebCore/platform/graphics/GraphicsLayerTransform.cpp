@@ -20,7 +20,7 @@
 #include "config.h"
 #include "GraphicsLayerTransform.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 GraphicsLayerTransform::GraphicsLayerTransform()
     : m_anchorPoint(0.5, 0.5, 0)

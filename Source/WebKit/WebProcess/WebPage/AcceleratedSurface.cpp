@@ -37,8 +37,8 @@
 #include "AcceleratedSurfaceLibWPE.h"
 #endif
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 std::unique_ptr<AcceleratedSurface> AcceleratedSurface::create(WebPage& webPage, Client& client)
 {
@@ -77,4 +77,4 @@ bool AcceleratedSurface::hostResize(const IntSize& size)
     return true;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

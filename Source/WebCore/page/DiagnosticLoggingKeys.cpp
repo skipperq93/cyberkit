@@ -26,7 +26,7 @@
 #include "config.h"
 #include "DiagnosticLoggingKeys.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 String DiagnosticLoggingKeys::mediaLoadedKey()
 {
@@ -775,12 +775,12 @@ String DiagnosticLoggingKeys::prunedDueToProcessSuspended()
     return "pruned.processSuspended"_s;
 }
 
-String WebCore::DiagnosticLoggingKeys::notHTTPFamilyKey()
+String CyberCore::DiagnosticLoggingKeys::notHTTPFamilyKey()
 {
     return "notHTTPFamily"_s;
 }
 
-String WebCore::DiagnosticLoggingKeys::webGLStateKey()
+String CyberCore::DiagnosticLoggingKeys::webGLStateKey()
 {
     return "webGLState"_s;
 }
@@ -844,5 +844,5 @@ String DiagnosticLoggingKeys::backgroundCPUUsageToDiagnosticLoggingKey(double cp
     return "over70"_s;
 }
     
-} // namespace WebCore
+} // namespace CyberCore
 

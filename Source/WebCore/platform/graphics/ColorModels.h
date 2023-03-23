@@ -28,7 +28,7 @@
 #include <array>
 #include <limits>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class RGBBoundedness { Bounded, Extended };
 
@@ -338,21 +338,21 @@ template<size_t I, typename ColorType> constexpr typename ColorType::ComponentTy
 namespace std {
 
 template<typename ColorType>
-class tuple_size<WebCore::ResolvedColorType<ColorType>> : public std::integral_constant<size_t, 4> { };
+class tuple_size<CyberCore::ResolvedColorType<ColorType>> : public std::integral_constant<size_t, 4> { };
 
 template<size_t I, typename ColorType>
-class tuple_element<I, WebCore::ResolvedColorType<ColorType>> {
+class tuple_element<I, CyberCore::ResolvedColorType<ColorType>> {
 public:
-    using type = typename WebCore::ResolvedColorType<ColorType>::ComponentType;
+    using type = typename CyberCore::ResolvedColorType<ColorType>::ComponentType;
 };
 
 template<typename ColorType>
-class tuple_size<WebCore::UnresolvedColorType<ColorType>> : public std::integral_constant<size_t, 4> { };
+class tuple_size<CyberCore::UnresolvedColorType<ColorType>> : public std::integral_constant<size_t, 4> { };
 
 template<size_t I, typename ColorType>
-class tuple_element<I, WebCore::UnresolvedColorType<ColorType>> {
+class tuple_element<I, CyberCore::UnresolvedColorType<ColorType>> {
 public:
-    using type = typename WebCore::UnresolvedColorType<ColorType>::ComponentType;
+    using type = typename CyberCore::UnresolvedColorType<ColorType>::ComponentType;
 };
 
 }

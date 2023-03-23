@@ -35,7 +35,7 @@ class SecurityOrigin : public API::ObjectImpl<API::Object::Type::SecurityOrigin>
 public:
     static Ref<SecurityOrigin> createFromString(const WTF::String& string)
     {
-        return adoptRef(*new SecurityOrigin(WebCore::SecurityOriginData::fromURLWithoutStrictOpaqueness(WTF::URL { string })));
+        return adoptRef(*new SecurityOrigin(CyberCore::SecurityOriginData::fromURLWithoutStrictOpaqueness(WTF::URL { string })));
     }
 
     static Ref<SecurityOrigin> create(const WTF::String& protocol, const WTF::String& host, std::optional<uint16_t> port)
@@ -43,25 +43,25 @@ public:
         return adoptRef(*new SecurityOrigin({ protocol, host, port }));
     }
 
-    static Ref<SecurityOrigin> create(const WebCore::SecurityOrigin& securityOrigin)
+    static Ref<SecurityOrigin> create(const CyberCore::SecurityOrigin& securityOrigin)
     {
         return adoptRef(*new SecurityOrigin(securityOrigin.data().isolatedCopy()));
     }
 
-    static Ref<SecurityOrigin> create(const WebCore::SecurityOriginData& securityOriginData)
+    static Ref<SecurityOrigin> create(const CyberCore::SecurityOriginData& securityOriginData)
     {
         return adoptRef(*new SecurityOrigin(securityOriginData.isolatedCopy()));
     }
 
-    const WebCore::SecurityOriginData& securityOrigin() const { return m_securityOrigin; }
+    const CyberCore::SecurityOriginData& securityOrigin() const { return m_securityOrigin; }
 
 private:
-    SecurityOrigin(WebCore::SecurityOriginData&& securityOrigin)
+    SecurityOrigin(CyberCore::SecurityOriginData&& securityOrigin)
         : m_securityOrigin(WTFMove(securityOrigin))
     {
     }
 
-    WebCore::SecurityOriginData m_securityOrigin;
+    CyberCore::SecurityOriginData m_securityOrigin;
 };
 
 }

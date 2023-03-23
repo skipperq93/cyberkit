@@ -28,27 +28,27 @@
 #include <CyberCore/IntRect.h>
 #include <CyberCore/ValidationMessageClient.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPage;
 
-class WebValidationMessageClient final : public WebCore::ValidationMessageClient {
+class WebValidationMessageClient final : public CyberCore::ValidationMessageClient {
 public:
     explicit WebValidationMessageClient(WebPage&);
     ~WebValidationMessageClient();
 
     // ValidationMessageClient API.
-    void documentDetached(WebCore::Document&) final;
-    void showValidationMessage(const WebCore::Element& anchor, const String& message) final;
-    void hideValidationMessage(const WebCore::Element& anchor) final;
+    void documentDetached(CyberCore::Document&) final;
+    void showValidationMessage(const CyberCore::Element& anchor, const String& message) final;
+    void hideValidationMessage(const CyberCore::Element& anchor) final;
     void hideAnyValidationMessage() final;
-    bool isValidationMessageVisible(const WebCore::Element& anchor) final;
+    bool isValidationMessageVisible(const CyberCore::Element& anchor) final;
     void updateValidationBubbleStateIfNeeded() final;
 
 private:
     WebPage& m_page;
-    const WebCore::Element* m_currentAnchor { nullptr };
-    WebCore::IntRect m_currentAnchorRect;
+    const CyberCore::Element* m_currentAnchor { nullptr };
+    CyberCore::IntRect m_currentAnchorRect;
 };
 
 }

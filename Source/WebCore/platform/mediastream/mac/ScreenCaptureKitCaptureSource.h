@@ -44,10 +44,10 @@ OBJC_CLASS SCContentFilter;
 OBJC_CLASS SCContentSharingSession;
 OBJC_CLASS SCStreamConfiguration;
 OBJC_CLASS SCWindow;
-OBJC_CLASS WebCoreScreenCaptureKitHelper;
+OBJC_CLASS CyberCoreScreenCaptureKitHelper;
 using CMSampleBufferRef = struct opaqueCMSampleBuffer*;
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScreenCaptureKitCaptureSource final
     : public DisplayCaptureSourceCocoa::Capturer
@@ -99,7 +99,7 @@ private:
 #endif
 
     std::optional<Content> m_content;
-    RetainPtr<WebCoreScreenCaptureKitHelper> m_captureHelper;
+    RetainPtr<CyberCoreScreenCaptureKitHelper> m_captureHelper;
     RetainPtr<CMSampleBufferRef> m_currentFrame;
     RetainPtr<SCContentFilter> m_contentFilter;
     RetainPtr<SCStream> m_contentStream;
@@ -116,6 +116,6 @@ private:
     bool m_isRunning { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // HAVE(SCREEN_CAPTURE_KIT)

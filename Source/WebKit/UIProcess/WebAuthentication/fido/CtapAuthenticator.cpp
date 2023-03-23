@@ -45,7 +45,7 @@
 #include <wtf/text/StringConcatenateNumbers.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 using namespace fido;
 
 using UVAvailability = AuthenticatorSupportedOptions::UserVerificationAvailability;

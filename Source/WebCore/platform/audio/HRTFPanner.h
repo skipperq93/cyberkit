@@ -29,7 +29,7 @@
 #include "FFTConvolver.h"
 #include "Panner.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HRTFDatabaseLoader;
 
@@ -107,6 +107,6 @@ private:
     AudioFloatArray m_tempR2;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // HRTFPanner_h

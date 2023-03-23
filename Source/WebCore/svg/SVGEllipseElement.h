@@ -24,7 +24,7 @@
 #include "SVGGeometryElement.h"
 #include "SVGNames.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGEllipseElement final : public SVGGeometryElement {
     WTF_MAKE_ISO_ALLOCATED(SVGEllipseElement);
@@ -60,4 +60,4 @@ private:
     Ref<SVGAnimatedLength> m_ry { SVGAnimatedLength::create(this, SVGLengthMode::Height) };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

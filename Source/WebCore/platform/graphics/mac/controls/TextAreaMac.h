@@ -29,7 +29,7 @@
 
 #import "PlatformControl.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class TextAreaPart;
 
@@ -41,6 +41,6 @@ private:
     void draw(GraphicsContext&, const FloatRoundedRect& borderRect, float deviceScaleFactor, const ControlStyle&) override;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(MAC)

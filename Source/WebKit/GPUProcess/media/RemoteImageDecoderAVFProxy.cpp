@@ -33,14 +33,14 @@
 #include "RemoteImageDecoderAVFManagerMessages.h"
 #include "RemoteImageDecoderAVFProxyMessages.h"
 #include "SharedBufferReference.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include <CoreGraphics/CGImage.h>
 #include <CyberCore/ImageDecoderAVFObjC.h>
 #include <wtf/Scope.h>
 
 namespace WebKit {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 RemoteImageDecoderAVFProxy::RemoteImageDecoderAVFProxy(GPUConnectionToWebProcess& connectionToWebProcess)
     : m_connectionToWebProcess(connectionToWebProcess)

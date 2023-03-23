@@ -29,7 +29,7 @@
 
 #include <wtf/NeverDestroyed.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 WebSwitchingGPUClient& WebSwitchingGPUClient::singleton()
 {

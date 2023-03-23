@@ -36,7 +36,7 @@
 #include "LocalizedStrings.h"
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 #if ENABLE(DATE_AND_TIME_INPUT_TYPES)
 

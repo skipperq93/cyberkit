@@ -31,7 +31,7 @@
 #include <wpe/wpe.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 #if ENABLE(WEBDRIVER_MOUSE_INTERACTIONS)
 static uint32_t modifiersToEventState(OptionSet<WebEventModifier> modifiers)
@@ -81,19 +81,19 @@ static unsigned stateModifierForWPEButton(unsigned button)
     return state;
 }
 
-static void doMouseEvent(struct wpe_view_backend* viewBackend, const WebCore::IntPoint& location, unsigned button, unsigned state, uint32_t modifiers)
+static void doMouseEvent(struct wpe_view_backend* viewBackend, const CyberCore::IntPoint& location, unsigned button, unsigned state, uint32_t modifiers)
 {
     struct wpe_input_pointer_event event { wpe_input_pointer_event_type_button, 0, location.x(), location.y(), button, static_cast<uint32_t>(state ? 1 : 0), modifiers };
     wpe_view_backend_dispatch_pointer_event(viewBackend, &event);
 }
 
-static void doMotionEvent(struct wpe_view_backend* viewBackend, const WebCore::IntPoint& location, uint32_t modifiers)
+static void doMotionEvent(struct wpe_view_backend* viewBackend, const CyberCore::IntPoint& location, uint32_t modifiers)
 {
     struct wpe_input_pointer_event event { wpe_input_pointer_event_type_motion, 0, location.x(), location.y(), 0, 0, modifiers };
     wpe_view_backend_dispatch_pointer_event(viewBackend, &event);
 }
 
-void WebAutomationSession::platformSimulateMouseInteraction(WebPageProxy& page, MouseInteraction interaction, MouseButton button, const WebCore::IntPoint& locationInView, OptionSet<WebEventModifier> keyModifiers, const String& pointerType)
+void WebAutomationSession::platformSimulateMouseInteraction(WebPageProxy& page, MouseInteraction interaction, MouseButton button, const CyberCore::IntPoint& locationInView, OptionSet<WebEventModifier> keyModifiers, const String& pointerType)
 {
     UNUSED_PARAM(pointerType);
 
@@ -371,7 +371,7 @@ void WebAutomationSession::platformSimulateKeySequence(WebPageProxy& page, const
 #endif // ENABLE(WEBDRIVER_KEYBOARD_INTERACTIONS)
 
 #if ENABLE(WEBDRIVER_WHEEL_INTERACTIONS)
-void WebAutomationSession::platformSimulateWheelInteraction(WebPageProxy& page, const WebCore::IntPoint& locationInView, const WebCore::IntSize& delta)
+void WebAutomationSession::platformSimulateWheelInteraction(WebPageProxy& page, const CyberCore::IntPoint& locationInView, const CyberCore::IntSize& delta)
 {
 #if WPE_CHECK_VERSION(1, 5, 0)
     struct wpe_input_axis_2d_event event;

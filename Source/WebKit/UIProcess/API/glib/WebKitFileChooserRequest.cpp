@@ -35,7 +35,7 @@
 #include <wtf/text/CString.h>
 
 using namespace WebKit;
-using namespace WebCore;
+using namespace CyberCore;
 
 /**
  * WebKitFileChooserRequest:
@@ -322,7 +322,7 @@ void webkit_file_chooser_request_select_files(WebKitFileChooserRequest* request,
     }
     g_ptr_array_add(selectedFiles.get(), nullptr);
 
-    // Select the files in WebCore and update local private attributes.
+    // Select the files in CyberCore and update local private attributes.
     request->priv->listener->chooseFiles(chosenFiles);
     request->priv->selectedFiles = selectedFiles;
     request->priv->handledRequest = true;

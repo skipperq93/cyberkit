@@ -30,7 +30,7 @@
 
 #include "MediaStreamPrivate.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 constexpr unsigned SmallAudioBitRate = 8000;
 constexpr unsigned SmallVideoBitRate = 80000;
@@ -122,6 +122,6 @@ MediaRecorderPrivate::BitRates MediaRecorderPrivate::computeBitRates(const Media
     return { options.audioBitsPerSecond.value_or(LargeAudioBitRate), options.videoBitsPerSecond.value_or(LargeVideoBitRate) };
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_RECORDER)

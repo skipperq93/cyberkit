@@ -31,7 +31,7 @@
 #import "PlatformCALayer.h"
 #import <wtf/RunLoop.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 PlatformCALayerContentsDelayedReleaser& PlatformCALayerContentsDelayedReleaser::singleton()
 {
@@ -124,7 +124,7 @@ void PlatformCALayerContentsDelayedReleaser::clearRetainedContents()
     m_retainedContents.clear();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif
 

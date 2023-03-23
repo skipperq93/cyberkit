@@ -33,7 +33,7 @@
 #import <wtf/OSObjectPtr.h>
 #import <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class PowerObserver : public CanMakeWeakPtr<PowerObserver, WeakPtrFactoryInitialization::Eager> {
     WTF_MAKE_NONCOPYABLE(PowerObserver); WTF_MAKE_FAST_ALLOCATED;
@@ -52,7 +52,7 @@ private:
     OSObjectPtr<dispatch_queue_t> m_dispatchQueue;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PowerObserverMac_h
 

@@ -48,7 +48,7 @@
 #include "MathMLNames.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -1404,4 +1404,4 @@ bool RenderTableCell::hasLineIfEmpty() const
     return RenderBlock::hasLineIfEmpty();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

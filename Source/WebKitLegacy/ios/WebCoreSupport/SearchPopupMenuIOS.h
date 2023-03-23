@@ -24,17 +24,17 @@
 #include "PopupMenuIOS.h"
 #include <CyberCore/SearchPopupMenu.h>
 
-namespace WebCore {
+namespace CyberCore {
 class PopupMenuClient;
 }
 
-class SearchPopupMenuIOS : public WebCore::SearchPopupMenu {
+class SearchPopupMenuIOS : public CyberCore::SearchPopupMenu {
 public:
-    SearchPopupMenuIOS(WebCore::PopupMenuClient*);
+    SearchPopupMenuIOS(CyberCore::PopupMenuClient*);
 
-    WebCore::PopupMenu* popupMenu() override;
-    void saveRecentSearches(const AtomString& name, const Vector<WebCore::RecentSearch>&) override;
-    void loadRecentSearches(const AtomString& name, Vector<WebCore::RecentSearch>&) override;
+    CyberCore::PopupMenu* popupMenu() override;
+    void saveRecentSearches(const AtomString& name, const Vector<CyberCore::RecentSearch>&) override;
+    void loadRecentSearches(const AtomString& name, Vector<CyberCore::RecentSearch>&) override;
     bool enabled() override;
 
 private:

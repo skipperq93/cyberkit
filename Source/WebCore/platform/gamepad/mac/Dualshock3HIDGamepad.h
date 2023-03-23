@@ -29,7 +29,7 @@
 
 #include "HIDGamepad.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class Dualshock3HIDGamepad final : public HIDGamepad {
     WTF_MAKE_FAST_ALLOCATED;
@@ -37,6 +37,6 @@ public:
     Dualshock3HIDGamepad(HIDDevice&&, unsigned index);
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(GAMEPAD) && PLATFORM(MAC)

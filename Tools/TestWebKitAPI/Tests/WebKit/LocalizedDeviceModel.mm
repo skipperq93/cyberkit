@@ -44,7 +44,7 @@ TEST(WebKit, LocalizedDeviceModel)
         return [webView stringByEvaluatingJavaScript:@"window.internals.localizedDeviceModel()"].boolValue;
     };
 
-    ASSERT_TRUE(localizedDeviceModel() == WebCore::localizedDeviceModel());
+    ASSERT_TRUE(localizedDeviceModel() == CyberCore::localizedDeviceModel());
 }
 
 #endif // WK_HAVE_C_SPI

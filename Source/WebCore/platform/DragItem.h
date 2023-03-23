@@ -33,7 +33,7 @@
 #include "PasteboardWriterData.h"
 #include "PromisedAttachmentInfo.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct DragItem final {
     DragImage image;

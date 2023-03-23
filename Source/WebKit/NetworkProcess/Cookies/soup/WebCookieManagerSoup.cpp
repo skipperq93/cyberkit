@@ -35,7 +35,7 @@
 #include <libsoup/soup.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 void WebCookieManager::platformSetHTTPCookieAcceptPolicy(HTTPCookieAcceptPolicy policy, CompletionHandler<void()>&& completionHandler)
 {

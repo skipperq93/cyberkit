@@ -32,7 +32,7 @@
 SOFT_LINK_LIBRARY(user32);
 SOFT_LINK_OPTIONAL(user32, GetDpiForWindow, UINT, STDAPICALLTYPE, (HWND));
 
-namespace WebCore {
+namespace CyberCore {
 
 float deviceScaleFactorForWindow(HWND window)
 {
@@ -42,4 +42,4 @@ float deviceScaleFactorForWindow(HWND window)
     return ::GetDeviceCaps(dc, LOGPIXELSX) / 96.0f;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

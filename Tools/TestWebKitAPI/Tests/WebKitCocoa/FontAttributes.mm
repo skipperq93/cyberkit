@@ -140,7 +140,7 @@ struct FontExpectation {
     CGFloat fontSize { 0 };
 };
 
-static void checkColor(WebCore::CocoaColor *color, std::optional<ColorExpectation> expectation)
+static void checkColor(CyberCore::CocoaColor *color, std::optional<ColorExpectation> expectation)
 {
     if (!expectation) {
         EXPECT_NULL(color);
@@ -175,7 +175,7 @@ static void checkShadow(NSShadow *shadow, std::optional<ShadowExpectation> expec
     EXPECT_EQ(expectation->blurRadius, shadow.shadowBlurRadius);
 }
 
-static void checkFont(WebCore::CocoaFont *font, FontExpectation expectation)
+static void checkFont(CyberCore::CocoaFont *font, FontExpectation expectation)
 {
     EXPECT_WK_STREQ(expectation.fontName, font.fontName);
     EXPECT_EQ(expectation.fontSize, font.pointSize);

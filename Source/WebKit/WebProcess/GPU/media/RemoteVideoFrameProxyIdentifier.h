@@ -30,13 +30,13 @@
 #include "ObjectIdentifierReferenceTracker.h"
 #include <CyberCore/RemoteVideoFrameIdentifier.h>
 
-namespace WebKit {
+namespace CyberKit {
 
-using RemoteVideoFrameReadReference = ObjectIdentifierReadReference<WebCore::RemoteVideoFrameIdentifier>;
-using RemoteVideoFrameWriteReference = ObjectIdentifierWriteReference<WebCore::RemoteVideoFrameIdentifier>;
-using RemoteVideoFrameReference = ObjectIdentifierReference<WebCore::RemoteVideoFrameIdentifier>;
-using RemoteVideoFrameReferenceTracker = ObjectIdentifierReferenceTracker<WebCore::RemoteVideoFrameIdentifier>;
+using RemoteVideoFrameReadReference = ObjectIdentifierReadReference<CyberCore::RemoteVideoFrameIdentifier>;
+using RemoteVideoFrameWriteReference = ObjectIdentifierWriteReference<CyberCore::RemoteVideoFrameIdentifier>;
+using RemoteVideoFrameReference = ObjectIdentifierReference<CyberCore::RemoteVideoFrameIdentifier>;
+using RemoteVideoFrameReferenceTracker = ObjectIdentifierReferenceTracker<CyberCore::RemoteVideoFrameIdentifier>;
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

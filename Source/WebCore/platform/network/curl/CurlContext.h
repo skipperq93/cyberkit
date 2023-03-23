@@ -45,7 +45,7 @@
 
 #include <curl/curl.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // Values taken from http://www.browserscope.org/ following
 // the rule "Do What Every Other Modern Browser Is Doing".
@@ -337,4 +337,4 @@ private:
     mutable std::unique_ptr<CertificateInfo> m_certificateInfo;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

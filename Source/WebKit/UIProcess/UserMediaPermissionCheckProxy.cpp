@@ -31,9 +31,9 @@
 #include <CyberCore/SecurityOriginData.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
-UserMediaPermissionCheckProxy::UserMediaPermissionCheckProxy(FrameIdentifier frameID, CompletionHandler&& handler, Ref<WebCore::SecurityOrigin>&& userMediaDocumentOrigin, Ref<WebCore::SecurityOrigin>&& topLevelDocumentOrigin)
+UserMediaPermissionCheckProxy::UserMediaPermissionCheckProxy(FrameIdentifier frameID, CompletionHandler&& handler, Ref<CyberCore::SecurityOrigin>&& userMediaDocumentOrigin, Ref<CyberCore::SecurityOrigin>&& topLevelDocumentOrigin)
     : m_frameID(frameID)
     , m_completionHandler(WTFMove(handler))
     , m_userMediaDocumentSecurityOrigin(WTFMove(userMediaDocumentOrigin))

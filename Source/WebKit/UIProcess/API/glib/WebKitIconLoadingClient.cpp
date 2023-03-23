@@ -35,15 +35,15 @@ public:
     }
 
 private:
-    void getLoadDecisionForIcon(const WebCore::LinkIcon& icon, CompletionHandler<void(CompletionHandler<void(API::Data*)>&&)>&& completionHandler) override
+    void getLoadDecisionForIcon(const CyberCore::LinkIcon& icon, CompletionHandler<void(CompletionHandler<void(API::Data*)>&&)>&& completionHandler) override
     {
-        // WebCore can send non HTTP icons.
+        // CyberCore can send non HTTP icons.
         if (!icon.url.protocolIsInHTTPFamily()) {
             completionHandler(nullptr);
             return;
         }
 
-        WebCore::LinkIcon copiedIcon = icon;
+        CyberCore::LinkIcon copiedIcon = icon;
         webkitWebViewGetLoadDecisionForIcon(m_webView, icon, [weakWebView = GWeakPtr<WebKitWebView>(m_webView), icon = WTFMove(copiedIcon), completionHandler = WTFMove(completionHandler)] (bool loadIcon) mutable {
             if (!weakWebView || !loadIcon) {
                 completionHandler(nullptr);

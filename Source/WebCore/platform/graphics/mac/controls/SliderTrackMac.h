@@ -30,7 +30,7 @@
 #import "ControlMac.h"
 #import "SliderTrackPart.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SliderTrackMac final : public ControlMac {
 public:
@@ -44,6 +44,6 @@ private:
     void draw(GraphicsContext&, const FloatRoundedRect& borderRect, float deviceScaleFactor, const ControlStyle&) override;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(MAC)

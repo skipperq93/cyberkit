@@ -32,10 +32,10 @@
 #import <AppKit/AppKit.h>
 #endif
 
-extern NSString *WebKitLocalCacheDefaultsKey;
-extern NSString *WebKitResourceLoadStatisticsDirectoryDefaultsKey;
+extern NSString *CyberKitLocalCacheDefaultsKey;
+extern NSString *CyberKitResourceLoadStatisticsDirectoryDefaultsKey;
 
-@interface NSString (WebKitExtras)
+@interface NSString (CyberKitExtras)
 
 #if !TARGET_OS_IPHONE
 - (void)_web_drawAtPoint:(NSPoint)point font:(NSFont *)font textColor:(NSColor *)textColor;

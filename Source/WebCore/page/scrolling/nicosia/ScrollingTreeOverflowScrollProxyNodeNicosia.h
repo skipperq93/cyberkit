@@ -31,7 +31,7 @@
 #include "NicosiaPlatformLayer.h"
 #include "ScrollingTreeOverflowScrollProxyNode.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScrollingTreeOverflowScrollProxyNodeNicosia final : public ScrollingTreeOverflowScrollProxyNode {
 public:
@@ -49,7 +49,7 @@ private:
     RefPtr<Nicosia::CompositionLayer> m_layer;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_SCROLLING_NODE(ScrollingTreeOverflowScrollProxyNodeNicosia, isOverflowScrollProxyNodeNicosia())
 

@@ -26,7 +26,7 @@
 #include "ScriptElement.h"
 #include "XLinkNames.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGScriptElement final : public SVGElement, public SVGURIReference, public ScriptElement {
     WTF_MAKE_ISO_ALLOCATED(SVGScriptElement);
@@ -86,4 +86,4 @@ private:
     Timer m_loadEventTimer;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

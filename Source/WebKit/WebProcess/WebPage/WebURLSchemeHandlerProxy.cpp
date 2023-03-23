@@ -28,7 +28,7 @@
 
 #include "DataReference.h"
 #include "URLSchemeTaskParameters.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebErrors.h"
 #include "WebFrame.h"
 #include "WebLoaderStrategy.h"
@@ -40,8 +40,8 @@
 #include <CyberCore/ResourceRequest.h>
 #include <CyberCore/ResourceResponse.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 WebURLSchemeHandlerProxy::WebURLSchemeHandlerProxy(WebPage& page, WebURLSchemeHandlerIdentifier identifier)
     : m_webPage(page)
@@ -63,7 +63,7 @@ void WebURLSchemeHandlerProxy::startNewTask(ResourceLoader& loader, WebFrame& we
     result.iterator->value->startLoading();
 }
 
-void WebURLSchemeHandlerProxy::loadSynchronously(WebCore::ResourceLoaderIdentifier loadIdentifier, WebFrame& webFrame, const ResourceRequest& request, ResourceResponse& response, ResourceError& error, Vector<uint8_t>& data)
+void WebURLSchemeHandlerProxy::loadSynchronously(CyberCore::ResourceLoaderIdentifier loadIdentifier, WebFrame& webFrame, const ResourceRequest& request, ResourceResponse& response, ResourceError& error, Vector<uint8_t>& data)
 {
     data.shrink(0);
     auto sendResult = m_webPage.sendSync(Messages::WebPageProxy::LoadSynchronousURLSchemeTask(URLSchemeTaskParameters { m_identifier, loadIdentifier, request, webFrame.info() }));
@@ -79,7 +79,7 @@ void WebURLSchemeHandlerProxy::stopAllTasks()
         m_tasks.begin()->value->stopLoading();
 }
 
-void WebURLSchemeHandlerProxy::taskDidPerformRedirection(WebCore::ResourceLoaderIdentifier taskIdentifier, WebCore::ResourceResponse&& redirectResponse, WebCore::ResourceRequest&& newRequest, CompletionHandler<void(WebCore::ResourceRequest&&)>&& completionHandler)
+void WebURLSchemeHandlerProxy::taskDidPerformRedirection(CyberCore::ResourceLoaderIdentifier taskIdentifier, CyberCore::ResourceResponse&& redirectResponse, CyberCore::ResourceRequest&& newRequest, CompletionHandler<void(CyberCore::ResourceRequest&&)>&& completionHandler)
 {
     auto* task = m_tasks.get(taskIdentifier);
     if (!task)
@@ -88,7 +88,7 @@ void WebURLSchemeHandlerProxy::taskDidPerformRedirection(WebCore::ResourceLoader
     task->didPerformRedirection(WTFMove(redirectResponse), WTFMove(newRequest), WTFMove(completionHandler));
 }
 
-void WebURLSchemeHandlerProxy::taskDidReceiveResponse(WebCore::ResourceLoaderIdentifier taskIdentifier, const ResourceResponse& response)
+void WebURLSchemeHandlerProxy::taskDidReceiveResponse(CyberCore::ResourceLoaderIdentifier taskIdentifier, const ResourceResponse& response)
 {
     auto* task = m_tasks.get(taskIdentifier);
     if (!task)
@@ -97,7 +97,7 @@ void WebURLSchemeHandlerProxy::taskDidReceiveResponse(WebCore::ResourceLoaderIde
     task->didReceiveResponse(response);
 }
 
-void WebURLSchemeHandlerProxy::taskDidReceiveData(WebCore::ResourceLoaderIdentifier taskIdentifier, Ref<WebCore::SharedBuffer>&& data)
+void WebURLSchemeHandlerProxy::taskDidReceiveData(CyberCore::ResourceLoaderIdentifier taskIdentifier, Ref<CyberCore::SharedBuffer>&& data)
 {
     auto* task = m_tasks.get(taskIdentifier);
     if (!task)
@@ -106,7 +106,7 @@ void WebURLSchemeHandlerProxy::taskDidReceiveData(WebCore::ResourceLoaderIdentif
     task->didReceiveData(WTFMove(data));
 }
 
-void WebURLSchemeHandlerProxy::taskDidComplete(WebCore::ResourceLoaderIdentifier taskIdentifier, const ResourceError& error)
+void WebURLSchemeHandlerProxy::taskDidComplete(CyberCore::ResourceLoaderIdentifier taskIdentifier, const ResourceError& error)
 {
     if (auto task = removeTask(taskIdentifier))
         task->didComplete(error);
@@ -118,7 +118,7 @@ void WebURLSchemeHandlerProxy::taskDidStopLoading(WebURLSchemeTaskProxy& task)
     removeTask(task.identifier());
 }
 
-RefPtr<WebURLSchemeTaskProxy> WebURLSchemeHandlerProxy::removeTask(WebCore::ResourceLoaderIdentifier identifier)
+RefPtr<WebURLSchemeTaskProxy> WebURLSchemeHandlerProxy::removeTask(CyberCore::ResourceLoaderIdentifier identifier)
 {
     auto task = m_tasks.take(identifier);
     if (!task)
@@ -129,4 +129,4 @@ RefPtr<WebURLSchemeTaskProxy> WebURLSchemeHandlerProxy::removeTask(WebCore::Reso
     return task;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

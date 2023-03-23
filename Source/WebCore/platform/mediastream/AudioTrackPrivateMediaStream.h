@@ -30,7 +30,7 @@
 #include "AudioTrackPrivate.h"
 #include "MediaStreamTrackPrivate.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioMediaStreamTrackRenderer;
 
@@ -112,8 +112,8 @@ private:
 
 }
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::AudioTrackPrivateMediaStream)
-    static bool isType(const WebCore::AudioTrackPrivate& track) { return track.isBackedByMediaStreamTrack(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::AudioTrackPrivateMediaStream)
+    static bool isType(const CyberCore::AudioTrackPrivate& track) { return track.isBackedByMediaStreamTrack(); }
 SPECIALIZE_TYPE_TRAITS_END()
 
 #endif // ENABLE(MEDIA_STREAM)

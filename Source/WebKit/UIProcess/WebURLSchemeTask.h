@@ -40,7 +40,7 @@ namespace API {
 class FrameInfo;
 }
 
-namespace WebCore {
+namespace CyberCore {
 class ResourceError;
 class ResourceResponse;
 }
@@ -51,20 +51,20 @@ struct URLSchemeTaskParameters;
 class WebURLSchemeHandler;
 class WebPageProxy;
 
-using SyncLoadCompletionHandler = CompletionHandler<void(const WebCore::ResourceResponse&, const WebCore::ResourceError&, Vector<uint8_t>&&)>;
+using SyncLoadCompletionHandler = CompletionHandler<void(const CyberCore::ResourceResponse&, const CyberCore::ResourceError&, Vector<uint8_t>&&)>;
 
 class WebURLSchemeTask : public API::ObjectImpl<API::Object::Type::URLSchemeTask>, public InstanceCounted<WebURLSchemeTask> {
     WTF_MAKE_NONCOPYABLE(WebURLSchemeTask);
 public:
-    static Ref<WebURLSchemeTask> create(WebURLSchemeHandler&, WebPageProxy&, WebProcessProxy&, WebCore::PageIdentifier, URLSchemeTaskParameters&&, SyncLoadCompletionHandler&&);
+    static Ref<WebURLSchemeTask> create(WebURLSchemeHandler&, WebPageProxy&, WebProcessProxy&, CyberCore::PageIdentifier, URLSchemeTaskParameters&&, SyncLoadCompletionHandler&&);
 
     ~WebURLSchemeTask();
 
-    WebCore::ResourceLoaderIdentifier resourceLoaderID() const { ASSERT(RunLoop::isMain()); return m_resourceLoaderID; }
+    CyberCore::ResourceLoaderIdentifier resourceLoaderID() const { ASSERT(RunLoop::isMain()); return m_resourceLoaderID; }
     WebPageProxyIdentifier pageProxyID() const { ASSERT(RunLoop::isMain()); return m_pageProxyID; }
-    WebCore::PageIdentifier webPageID() const { ASSERT(RunLoop::isMain()); return m_webPageID; }
+    CyberCore::PageIdentifier webPageID() const { ASSERT(RunLoop::isMain()); return m_webPageID; }
     WebProcessProxy* process() { ASSERT(RunLoop::isMain()); return m_process.get(); }
-    WebCore::ResourceRequest request() const;
+    CyberCore::ResourceRequest request() const;
     API::FrameInfo& frameInfo() const { return m_frameInfo.get(); }
 
 #if PLATFORM(COCOA)
@@ -80,11 +80,11 @@ public:
         WaitingForRedirectCompletionHandler,
         None,
     };
-    ExceptionType willPerformRedirection(WebCore::ResourceResponse&&, WebCore::ResourceRequest&&,  Function<void(WebCore::ResourceRequest&&)>&&);
-    ExceptionType didPerformRedirection(WebCore::ResourceResponse&&, WebCore::ResourceRequest&&);
-    ExceptionType didReceiveResponse(const WebCore::ResourceResponse&);
-    ExceptionType didReceiveData(Ref<WebCore::SharedBuffer>&&);
-    ExceptionType didComplete(const WebCore::ResourceError&);
+    ExceptionType willPerformRedirection(CyberCore::ResourceResponse&&, CyberCore::ResourceRequest&&,  Function<void(CyberCore::ResourceRequest&&)>&&);
+    ExceptionType didPerformRedirection(CyberCore::ResourceResponse&&, CyberCore::ResourceRequest&&);
+    ExceptionType didReceiveResponse(const CyberCore::ResourceResponse&);
+    ExceptionType didReceiveData(Ref<CyberCore::SharedBuffer>&&);
+    ExceptionType didComplete(const CyberCore::ResourceError&);
 
     void stop();
     void pageDestroyed();
@@ -94,16 +94,16 @@ public:
     bool waitingForRedirectCompletionHandlerCallback() const { return m_waitingForRedirectCompletionHandlerCallback; }
 
 private:
-    WebURLSchemeTask(WebURLSchemeHandler&, WebPageProxy&, WebProcessProxy&, WebCore::PageIdentifier, URLSchemeTaskParameters&&, SyncLoadCompletionHandler&&);
+    WebURLSchemeTask(WebURLSchemeHandler&, WebPageProxy&, WebProcessProxy&, CyberCore::PageIdentifier, URLSchemeTaskParameters&&, SyncLoadCompletionHandler&&);
 
     bool isSync() const { return !!m_syncCompletionHandler; }
 
     Ref<WebURLSchemeHandler> m_urlSchemeHandler;
     RefPtr<WebProcessProxy> m_process;
-    WebCore::ResourceLoaderIdentifier m_resourceLoaderID;
+    CyberCore::ResourceLoaderIdentifier m_resourceLoaderID;
     WebPageProxyIdentifier m_pageProxyID;
-    WebCore::PageIdentifier m_webPageID;
-    WebCore::ResourceRequest m_request WTF_GUARDED_BY_LOCK(m_requestLock);
+    CyberCore::PageIdentifier m_webPageID;
+    CyberCore::ResourceRequest m_request WTF_GUARDED_BY_LOCK(m_requestLock);
     Ref<API::FrameInfo> m_frameInfo;
     mutable Lock m_requestLock;
     bool m_stopped { false };
@@ -113,8 +113,8 @@ private:
     bool m_shouldSuppressTaskStoppedExceptions { false };
 
     SyncLoadCompletionHandler m_syncCompletionHandler;
-    WebCore::ResourceResponse m_syncResponse;
-    WebCore::SharedBufferBuilder m_syncData;
+    CyberCore::ResourceResponse m_syncResponse;
+    CyberCore::SharedBufferBuilder m_syncData;
 
     bool m_waitingForRedirectCompletionHandlerCallback { false };
 };

@@ -30,7 +30,7 @@
 
 #include <pal/spi/cf/CFNetworkSPI.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 #ifdef __OBJC__
 WEBCORE_EXPORT NSURLResponse *synthesizeRedirectResponseIfNecessary(NSURLRequest *currentRequest, NSURLRequest *newRequest, NSURLResponse *redirectResponse);

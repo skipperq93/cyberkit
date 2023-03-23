@@ -45,9 +45,9 @@ OBJC_CLASS AVCaptureVideoDataOutput;
 OBJC_CLASS AVFrameRateRange;
 OBJC_CLASS NSError;
 OBJC_CLASS NSNotification;
-OBJC_CLASS WebCoreAVVideoCaptureSourceObserver;
+OBJC_CLASS CyberCoreAVVideoCaptureSourceObserver;
 
-namespace WebCore {
+namespace CyberCore {
 
 class AVVideoPreset;
 class ImageTransferSessionVT;
@@ -131,7 +131,7 @@ private:
 
     std::optional<RealtimeMediaSourceSettings> m_currentSettings;
     std::optional<RealtimeMediaSourceCapabilities> m_capabilities;
-    RetainPtr<WebCoreAVVideoCaptureSourceObserver> m_objcObserver;
+    RetainPtr<CyberCoreAVVideoCaptureSourceObserver> m_objcObserver;
     RetainPtr<AVCaptureSession> m_session;
     RetainPtr<AVCaptureDevice> m_device;
 
@@ -151,10 +151,10 @@ private:
     uint64_t m_lastFramesCount { 0 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::AVVideoPreset)
-    static bool isType(const WebCore::VideoPreset& preset) { return preset.type == WebCore::VideoPreset::VideoPresetType::AVCapture; }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::AVVideoPreset)
+    static bool isType(const CyberCore::VideoPreset& preset) { return preset.type == CyberCore::VideoPreset::VideoPresetType::AVCapture; }
 SPECIALIZE_TYPE_TRAITS_END()
 
 #endif // ENABLE(MEDIA_STREAM)

@@ -30,7 +30,7 @@
 #if PLATFORM(COCOA)
 #include "ArgumentCodersCF.h"
 #endif
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 
 namespace WebKit {
 
@@ -403,7 +403,7 @@ bool WebProcessCreationParameters::decode(IPC::Decoder& decoder, WebProcessCreat
     if (!decoder.decode(parameters.mediaMIMETypes))
         return false;
 
-    std::optional<WebCore::ScreenProperties> screenProperties;
+    std::optional<CyberCore::ScreenProperties> screenProperties;
     decoder >> screenProperties;
     if (!screenProperties)
         return false;
@@ -500,13 +500,13 @@ bool WebProcessCreationParameters::decode(IPC::Decoder& decoder, WebProcessCreat
     if (!decoder.decode(parameters.supportsPictureInPicture))
         return false;
 
-    std::optional<WebCore::RenderThemeIOS::CSSValueToSystemColorMap> cssValueToSystemColorMap;
+    std::optional<CyberCore::RenderThemeIOS::CSSValueToSystemColorMap> cssValueToSystemColorMap;
     decoder >> cssValueToSystemColorMap;
     if (!cssValueToSystemColorMap)
         return false;
     parameters.cssValueToSystemColorMap = WTFMove(*cssValueToSystemColorMap);
 
-    std::optional<WebCore::Color> focusRingColor;
+    std::optional<CyberCore::Color> focusRingColor;
     decoder >> focusRingColor;
     if (!focusRingColor)
         return false;

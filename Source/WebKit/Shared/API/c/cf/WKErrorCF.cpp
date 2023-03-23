@@ -31,7 +31,7 @@
 
 WKErrorRef WKErrorCreateWithCFError(CFErrorRef cfError)
 {
-    return WebKit::toAPI(&API::Error::create(WebCore::ResourceError(cfError)).leakRef());
+    return WebKit::toAPI(&API::Error::create(CyberCore::ResourceError(cfError)).leakRef());
 }
 
 CFErrorRef WKErrorCopyCFError(CFAllocatorRef alloc, WKErrorRef error)

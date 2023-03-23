@@ -23,8 +23,8 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
  */
 
-#ifndef JavaScriptCore_h
-#define JavaScriptCore_h
+#ifndef CyberScriptCore_h
+#define CyberScriptCore_h
 
 #include <CyberScriptCore/JavaScript.h>
 #include <CyberScriptCore/JSStringRefCF.h>
@@ -39,4 +39,4 @@
 
 #endif
 
-#endif /* JavaScriptCore_h */
+#endif /* CyberScriptCore_h */

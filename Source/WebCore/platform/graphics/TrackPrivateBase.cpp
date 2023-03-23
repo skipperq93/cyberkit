@@ -30,7 +30,7 @@
 
 #include "Logging.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 std::optional<uint64_t> TrackPrivateBase::trackUID() const
 {
@@ -69,6 +69,6 @@ WTFLogChannel& TrackPrivateBase::logChannel() const
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

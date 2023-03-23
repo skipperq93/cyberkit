@@ -39,7 +39,7 @@
 #include <wtf/text/StringHash.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ResourceHandle;
 class ResourceHandleClient;
@@ -98,4 +98,4 @@ inline void BlobRegistryImpl::setFileDirectory(String&& filePath)
     m_fileDirectory = WTFMove(filePath);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

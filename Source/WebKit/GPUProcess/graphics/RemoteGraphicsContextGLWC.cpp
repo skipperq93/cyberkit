@@ -39,11 +39,11 @@ public:
     ~RemoteGraphicsContextGLWC() final = default;
 
     // RemoteGraphicsContextGL overrides.
-    void platformWorkQueueInitialize(WebCore::GraphicsContextGLAttributes&&) final;
+    void platformWorkQueueInitialize(CyberCore::GraphicsContextGLAttributes&&) final;
     void prepareForDisplay(CompletionHandler<void(std::optional<WCContentBufferIdentifier>)>&&) final;
 };
 
-Ref<RemoteGraphicsContextGL> RemoteGraphicsContextGL::create(GPUConnectionToWebProcess& gpuConnectionToWebProcess, WebCore::GraphicsContextGLAttributes&& attributes, GraphicsContextGLIdentifier graphicsContextGLIdentifier, RemoteRenderingBackend& renderingBackend, IPC::StreamServerConnection::Handle&& connectionHandle)
+Ref<RemoteGraphicsContextGL> RemoteGraphicsContextGL::create(GPUConnectionToWebProcess& gpuConnectionToWebProcess, CyberCore::GraphicsContextGLAttributes&& attributes, GraphicsContextGLIdentifier graphicsContextGLIdentifier, RemoteRenderingBackend& renderingBackend, IPC::StreamServerConnection::Handle&& connectionHandle)
 {
     auto instance = adoptRef(*new RemoteGraphicsContextGLWC(gpuConnectionToWebProcess, graphicsContextGLIdentifier, renderingBackend, WTFMove(connectionHandle)));
     instance->initialize(WTFMove(attributes));
@@ -55,7 +55,7 @@ RemoteGraphicsContextGLWC::RemoteGraphicsContextGLWC(GPUConnectionToWebProcess& 
 {
 }
 
-void RemoteGraphicsContextGLWC::platformWorkQueueInitialize(WebCore::GraphicsContextGLAttributes&& attributes)
+void RemoteGraphicsContextGLWC::platformWorkQueueInitialize(CyberCore::GraphicsContextGLAttributes&& attributes)
 {
     m_context = GCGLContext::create(WTFMove(attributes));
 }

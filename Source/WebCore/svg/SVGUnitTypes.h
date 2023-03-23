@@ -22,7 +22,7 @@
 #include "SVGPropertyTraits.h"
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGUnitTypes final : public RefCounted<SVGUnitTypes> {
 public:
@@ -65,17 +65,17 @@ struct SVGPropertyTraits<SVGUnitTypes::SVGUnitType> {
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::SVGUnitTypes::SVGUnitType> {
+template<> struct EnumTraits<CyberCore::SVGUnitTypes::SVGUnitType> {
     using values = EnumValues<
-        WebCore::SVGUnitTypes::SVGUnitType,
+        CyberCore::SVGUnitTypes::SVGUnitType,
 
-        WebCore::SVGUnitTypes::SVG_UNIT_TYPE_UNKNOWN,
-        WebCore::SVGUnitTypes::SVG_UNIT_TYPE_USERSPACEONUSE,
-        WebCore::SVGUnitTypes::SVG_UNIT_TYPE_OBJECTBOUNDINGBOX
+        CyberCore::SVGUnitTypes::SVG_UNIT_TYPE_UNKNOWN,
+        CyberCore::SVGUnitTypes::SVG_UNIT_TYPE_USERSPACEONUSE,
+        CyberCore::SVGUnitTypes::SVG_UNIT_TYPE_OBJECTBOUNDINGBOX
     >;
 };
 

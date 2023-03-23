@@ -19,14 +19,14 @@
 #include "config.h"
 #include "GObjectEventListener.h"
 
-#include "WebKitDOMEvent.h"
-#include "WebKitDOMEventPrivate.h"
-#include "WebKitDOMEventTarget.h"
+#include "CyberKitDOMEvent.h"
+#include "CyberKitDOMEventPrivate.h"
+#include "CyberKitDOMEventTarget.h"
 #include <CyberCore/Event.h>
 #include <wtf/HashMap.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 GObjectEventListener::GObjectEventListener(GObject* target, EventTarget* coreTarget, const char* domEventName, GClosure* handler, bool capture)
     : EventListener(GObjectEventListenerType)
@@ -70,7 +70,7 @@ void GObjectEventListener::handleEvent(ScriptExecutionContext&, Event& event)
     g_value_init(&parameters[0], WEBKIT_DOM_TYPE_EVENT_TARGET);
     g_value_set_object(&parameters[0], m_target);
 
-    GRefPtr<WebKitDOMEvent> domEvent = adoptGRef(WebKit::kit(&event));
+    GRefPtr<CyberKitDOMEvent> domEvent = adoptGRef(CyberKit::kit(&event));
     g_value_init(&parameters[1], WEBKIT_DOM_TYPE_EVENT);
     g_value_set_object(&parameters[1], domEvent.get());
 
@@ -89,4 +89,4 @@ bool GObjectEventListener::operator==(const EventListener& listener) const
     return false;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

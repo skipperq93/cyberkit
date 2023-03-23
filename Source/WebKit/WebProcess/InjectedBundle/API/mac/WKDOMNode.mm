@@ -37,14 +37,14 @@
 
 @implementation WKDOMNode
 
-- (id)_initWithImpl:(WebCore::Node*)impl
+- (id)_initWithImpl:(CyberCore::Node*)impl
 {
     self = [super init];
     if (!self)
         return nil;
 
     _impl = impl;
-    WebKit::WKDOMNodeCache().add(impl, self);
+    CyberKit::WKDOMNodeCache().add(impl, self);
 
     return self;
 }
@@ -52,7 +52,7 @@
 - (void)dealloc
 {
     ensureOnMainRunLoop([node = WTFMove(_impl)] {
-        WebKit::WKDOMNodeCache().remove(node.get());
+        CyberKit::WKDOMNodeCache().remove(node.get());
     });
     [super dealloc];
 }
@@ -62,7 +62,7 @@
     if (!node)
         return;
 
-    _impl->insertBefore(*WebKit::toWebCoreNode(node), WebKit::toWebCoreNode(refNode));
+    _impl->insertBefore(*CyberKit::toCyberCoreNode(node), CyberKit::toCyberCoreNode(refNode));
 }
 
 - (void)appendChild:(WKDOMNode *)node
@@ -70,7 +70,7 @@
     if (!node)
         return;
 
-    _impl->appendChild(*WebKit::toWebCoreNode(node));
+    _impl->appendChild(*CyberKit::toCyberCoreNode(node));
 }
 
 - (void)removeChild:(WKDOMNode *)node
@@ -78,37 +78,37 @@
     if (!node)
         return;
 
-    _impl->removeChild(*WebKit::toWebCoreNode(node));
+    _impl->removeChild(*CyberKit::toCyberCoreNode(node));
 }
 
 - (WKDOMDocument *)document
 {
-    return WebKit::toWKDOMDocument(&_impl->document());
+    return CyberKit::toWKDOMDocument(&_impl->document());
 }
 
 - (WKDOMNode *)parentNode
 {
-    return WebKit::toWKDOMNode(_impl->parentNode());
+    return CyberKit::toWKDOMNode(_impl->parentNode());
 }
 
 - (WKDOMNode *)firstChild
 {
-    return WebKit::toWKDOMNode(_impl->firstChild());
+    return CyberKit::toWKDOMNode(_impl->firstChild());
 }
 
 - (WKDOMNode *)lastChild
 {
-    return WebKit::toWKDOMNode(_impl->lastChild());
+    return CyberKit::toWKDOMNode(_impl->lastChild());
 }
 
 - (WKDOMNode *)previousSibling
 {
-    return WebKit::toWKDOMNode(_impl->previousSibling());
+    return CyberKit::toWKDOMNode(_impl->previousSibling());
 }
 
 - (WKDOMNode *)nextSibling
 {
-    return WebKit::toWKDOMNode(_impl->nextSibling());
+    return CyberKit::toWKDOMNode(_impl->nextSibling());
 }
 
 - (NSArray *)textRects
@@ -116,7 +116,7 @@
     _impl->document().updateLayoutIgnorePendingStylesheets();
     if (!_impl->renderer())
         return nil;
-    return createNSArray(WebCore::RenderObject::absoluteTextRects(WebCore::makeRangeSelectingNodeContents(*_impl))).autorelease();
+    return createNSArray(CyberCore::RenderObject::absoluteTextRects(CyberCore::makeRangeSelectingNodeContents(*_impl))).autorelease();
 }
 
 @end
@@ -125,7 +125,7 @@
 
 - (WKBundleNodeHandleRef)_copyBundleNodeHandleRef
 {
-    return toAPI(WebKit::InjectedBundleNodeHandle::getOrCreate(_impl.get()).leakRef());
+    return toAPI(CyberKit::InjectedBundleNodeHandle::getOrCreate(_impl.get()).leakRef());
 }
 
 @end

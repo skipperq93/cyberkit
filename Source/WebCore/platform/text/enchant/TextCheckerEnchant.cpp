@@ -29,7 +29,7 @@
 #include <wtf/text/TextBreakIterator.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 TextCheckerEnchant& TextCheckerEnchant::singleton()
 {
@@ -191,7 +191,7 @@ Vector<String> TextCheckerEnchant::availableSpellCheckingLanguages() const
     return languages;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SPELLCHECK)
 

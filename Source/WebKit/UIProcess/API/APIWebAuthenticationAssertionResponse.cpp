@@ -32,14 +32,14 @@
 #include <CyberScriptCore/ArrayBuffer.h>
 
 namespace API {
-using namespace WebCore;
+using namespace CyberCore;
 
-Ref<WebAuthenticationAssertionResponse> WebAuthenticationAssertionResponse::create(Ref<WebCore::AuthenticatorAssertionResponse>&& response)
+Ref<WebAuthenticationAssertionResponse> WebAuthenticationAssertionResponse::create(Ref<CyberCore::AuthenticatorAssertionResponse>&& response)
 {
     return adoptRef(*new WebAuthenticationAssertionResponse(WTFMove(response)));
 }
 
-WebAuthenticationAssertionResponse::WebAuthenticationAssertionResponse(Ref<WebCore::AuthenticatorAssertionResponse>&& response)
+WebAuthenticationAssertionResponse::WebAuthenticationAssertionResponse(Ref<CyberCore::AuthenticatorAssertionResponse>&& response)
     : m_response(WTFMove(response))
 {
 }

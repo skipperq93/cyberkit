@@ -32,7 +32,7 @@
 #include "ResourceRequest.h"
 #include "ResourceResponse.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 RefPtr<WebMResourceClient> WebMResourceClient::create(WebMResourceClientParent& parent, PlatformMediaResourceLoader& loader, ResourceRequest&& request)
 {
@@ -87,6 +87,6 @@ void WebMResourceClient::loadFinished(PlatformMediaResource&, const NetworkLoadM
     m_parent->loadFinished(*m_buffer.get());
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ALTERNATE_WEBM_PLAYER)

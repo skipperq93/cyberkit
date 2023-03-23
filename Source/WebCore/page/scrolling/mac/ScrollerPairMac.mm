@@ -39,14 +39,14 @@
 #import <pal/spi/mac/NSScrollerImpSPI.h>
 
 @interface WebScrollerImpPairDelegateMac : NSObject <NSScrollerImpPairDelegate> {
-    WebCore::ScrollerPairMac* _scrollerPair;
+    CyberCore::ScrollerPairMac* _scrollerPair;
 }
-- (id)initWithScrollerPair:(WebCore::ScrollerPairMac*)scrollerPair;
+- (id)initWithScrollerPair:(CyberCore::ScrollerPairMac*)scrollerPair;
 @end
 
 @implementation WebScrollerImpPairDelegateMac
 
-- (id)initWithScrollerPair:(WebCore::ScrollerPairMac*)scrollerPair
+- (id)initWithScrollerPair:(CyberCore::ScrollerPairMac*)scrollerPair
 {
     self = [super init];
     if (!self)
@@ -93,7 +93,7 @@
     if (!_scrollerPair || !scrollerImp)
         return NSZeroPoint;
 
-    WebCore::ScrollerMac* scroller = nullptr;
+    CyberCore::ScrollerMac* scroller = nullptr;
     if ([scrollerImp isHorizontal])
         scroller = &_scrollerPair->horizontalScroller();
     else
@@ -101,7 +101,7 @@
 
     ASSERT(scrollerImp == scroller->scrollerImp());
 
-    return scroller->convertFromContent(WebCore::IntPoint(pointInContentArea));
+    return scroller->convertFromContent(CyberCore::IntPoint(pointInContentArea));
 }
 
 - (void)scrollerImpPair:(NSScrollerImpPair *)scrollerImpPair setContentAreaNeedsDisplayInRect:(NSRect)rect
@@ -117,9 +117,9 @@
 
 @end
 
-namespace WebCore {
+namespace CyberCore {
 
-ScrollerPairMac::ScrollerPairMac(WebCore::ScrollingTreeScrollingNode& node)
+ScrollerPairMac::ScrollerPairMac(CyberCore::ScrollingTreeScrollingNode& node)
     : m_scrollingNode(node)
     , m_verticalScroller(*this, ScrollerMac::Orientation::Vertical)
     , m_horizontalScroller(*this, ScrollerMac::Orientation::Horizontal)
@@ -132,7 +132,7 @@ void ScrollerPairMac::init()
 
     m_scrollerImpPair = adoptNS([[NSScrollerImpPair alloc] init]);
     [m_scrollerImpPair.get() setDelegate:m_scrollerImpPairDelegate.get()];
-    [m_scrollerImpPair setScrollerStyle:WebCore::ScrollerStyle::recommendedScrollerStyle()];
+    [m_scrollerImpPair setScrollerStyle:CyberCore::ScrollerStyle::recommendedScrollerStyle()];
 
     m_verticalScroller.attach();
     m_horizontalScroller.attach();
@@ -144,17 +144,17 @@ ScrollerPairMac::~ScrollerPairMac()
     [m_scrollerImpPair setDelegate:nil];
 }
 
-bool ScrollerPairMac::handleWheelEvent(const WebCore::PlatformWheelEvent& event)
+bool ScrollerPairMac::handleWheelEvent(const CyberCore::PlatformWheelEvent& event)
 {
     switch (event.phase()) {
-    case WebCore::PlatformWheelEventPhase::Began:
+    case CyberCore::PlatformWheelEventPhase::Began:
         [m_scrollerImpPair beginScrollGesture];
         break;
-    case WebCore::PlatformWheelEventPhase::Ended:
-    case WebCore::PlatformWheelEventPhase::Cancelled:
+    case CyberCore::PlatformWheelEventPhase::Ended:
+    case CyberCore::PlatformWheelEventPhase::Cancelled:
         [m_scrollerImpPair endScrollGesture];
         break;
-    case WebCore::PlatformWheelEventPhase::MayBegin:
+    case CyberCore::PlatformWheelEventPhase::MayBegin:
         [m_scrollerImpPair beginScrollGesture];
         [m_scrollerImpPair contentAreaScrolled];
         break;
@@ -165,9 +165,9 @@ bool ScrollerPairMac::handleWheelEvent(const WebCore::PlatformWheelEvent& event)
     return true;
 }
 
-bool ScrollerPairMac::handleMouseEvent(const WebCore::PlatformMouseEvent& event)
+bool ScrollerPairMac::handleMouseEvent(const CyberCore::PlatformMouseEvent& event)
 {
-    if (event.type() != WebCore::PlatformEvent::Type::MouseMoved)
+    if (event.type() != CyberCore::PlatformEvent::Type::MouseMoved)
         return false;
 
     m_lastKnownMousePosition = event.position();
@@ -192,7 +192,7 @@ void ScrollerPairMac::updateValues()
     m_horizontalScroller.updateValues();
 }
 
-WebCore::FloatSize ScrollerPairMac::visibleSize() const
+CyberCore::FloatSize ScrollerPairMac::visibleSize() const
 {
     return m_scrollingNode.scrollableAreaSize();
 }
@@ -219,7 +219,7 @@ ScrollerPairMac::Values ScrollerPairMac::valuesForOrientation(ScrollerMac::Orien
 
     float value;
     float overhang;
-    WebCore::ScrollableArea::computeScrollbarValueAndOverhang(position, totalSize, visibleSize, value, overhang);
+    CyberCore::ScrollableArea::computeScrollbarValueAndOverhang(position, totalSize, visibleSize, value, overhang);
 
     float proportion = totalSize ? (visibleSize - overhang) / totalSize : 1;
 

@@ -29,7 +29,7 @@
 #if PLATFORM(COCOA)
 
 #import "HTTPParsers.h"
-#import "WebCoreURLResponse.h"
+#import "CyberCoreURLResponse.h"
 #import <Foundation/Foundation.h>
 #import <limits>
 #import <pal/spi/cf/CFNetworkSPI.h>
@@ -40,7 +40,7 @@
 
 WTF_DECLARE_CF_TYPE_TRAIT(SecTrust);
 
-namespace WebCore {
+namespace CyberCore {
 
 void ResourceResponse::initNSURLResponse() const
 {
@@ -201,6 +201,6 @@ bool ResourceResponse::platformCompare(const ResourceResponse& a, const Resource
     return a.nsURLResponse() == b.nsURLResponse();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(COCOA)

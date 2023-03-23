@@ -130,7 +130,7 @@ NSMenuItem *menuItemForTelephoneNumber(const String& telephoneNumber)
     return nil;
 }
 
-RetainPtr<NSMenu> menuForTelephoneNumber(const String& telephoneNumber, NSView *webView, const WebCore::IntRect& rect)
+RetainPtr<NSMenu> menuForTelephoneNumber(const String& telephoneNumber, NSView *webView, const CyberCore::IntRect& rect)
 {
     if (!PAL::isRevealFrameworkAvailable() || !PAL::isRevealCoreFrameworkAvailable())
         return nil;
@@ -142,7 +142,7 @@ RetainPtr<NSMenu> menuForTelephoneNumber(const String& telephoneNumber, NSView *
     auto item = adoptNS([PAL::allocRVItemInstance() initWithURL:[urlComponents URL] rangeInContext:NSMakeRange(0, telephoneNumber.length())]);
     auto presenter = adoptNS([PAL::allocRVPresenterInstance() init]);
     auto delegate = adoptNS([[WKEmptyPresenterHighlightDelegate alloc] initWithRect:rect]);
-    auto context = WebCore::createRVPresentingContextWithRetainedDelegate(NSZeroPoint, webView, delegate.get());
+    auto context = CyberCore::createRVPresentingContextWithRetainedDelegate(NSZeroPoint, webView, delegate.get());
     NSArray *proposedMenuItems = [presenter menuItemsForItem:item.get() documentContext:nil presentingContext:context.get() options:nil];
     
     [menu setItemArray:proposedMenuItems];

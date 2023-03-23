@@ -32,7 +32,7 @@
 #if !USE(CA)
 #include "PlatformLayer.h"
 #endif
-namespace WebCore {
+namespace CyberCore {
 #if USE(CA)
 class PlatformCALayer;
 #endif

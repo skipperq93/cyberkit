@@ -26,7 +26,7 @@
 #import "config.h"
 #import "WKNSArray.h"
 
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 
 @implementation WKNSArray {
     API::ObjectStorage<API::Array> _array;
@@ -34,7 +34,7 @@
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainRunLoop(WKNSArray.class, self))
+    if (CyberCoreObjCScheduleDeallocateOnMainRunLoop(WKNSArray.class, self))
         return;
 
     _array->~Array();

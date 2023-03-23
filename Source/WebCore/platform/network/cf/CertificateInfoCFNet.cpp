@@ -30,7 +30,7 @@
 #include <wtf/persistence/PersistentDecoder.h>
 #include <wtf/persistence/PersistentEncoder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 bool certificatesMatch(SecTrustRef trust1, SecTrustRef trust2)
 {

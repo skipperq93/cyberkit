@@ -34,7 +34,7 @@
 #include "RenderInline.h"
 #include "TextUnderlineOffset.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct UnderlineOffsetArguments {
     const RenderStyle& lineStyle;
@@ -217,7 +217,7 @@ static GlyphOverflow computedVisualOverflowForDecorations(const RenderStyle& lin
     GlyphOverflow overflowResult;
 
     if (decorationStyle == TextDecorationStyle::Wavy) {
-        wavyStrokeParameters = WebCore::wavyStrokeParameters(lineStyle.computedFontPixelSize());
+        wavyStrokeParameters = CyberCore::wavyStrokeParameters(lineStyle.computedFontPixelSize());
         wavyOffset = wavyOffsetFromDecoration();
         overflowResult.left = strokeThickness;
         overflowResult.right = strokeThickness;

@@ -27,11 +27,11 @@
 
 #import "DeviceMotionClientIOS.h"
 
-#import "WebCoreMotionManager.h"
+#import "CyberCoreMotionManager.h"
 
 #if PLATFORM(IOS_FAMILY) && ENABLE(DEVICE_ORIENTATION)
 
-namespace WebCore {
+namespace CyberCore {
 
 DeviceMotionClientIOS::DeviceMotionClientIOS(RefPtr<DeviceOrientationUpdateProvider>&& deviceOrientationUpdateProvider)
     : DeviceMotionClient()
@@ -58,7 +58,7 @@ void DeviceMotionClientIOS::startUpdating()
     }
 
     if (!m_motionManager)
-        m_motionManager = [WebCoreMotionManager sharedManager];
+        m_motionManager = [CyberCoreMotionManager sharedManager];
 
     [m_motionManager addMotionClient:this];
 }
@@ -124,6 +124,6 @@ void DeviceMotionClientIOS::motionChanged(double xAcceleration, double yAccelera
     m_controller->didChangeDeviceMotion(m_currentDeviceMotionData.get());
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(IOS_FAMILY) && ENABLE(DEVICE_ORIENTATION)

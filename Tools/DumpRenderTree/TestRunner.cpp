@@ -31,7 +31,7 @@
 #include "TestRunner.h"
 
 #include "JSBasics.h"
-#include "WebCoreTestSupport.h"
+#include "CyberCoreTestSupport.h"
 #include "WorkQueue.h"
 #include "WorkQueueItem.h"
 #include <CyberScriptCore/APICast.h>
@@ -57,7 +57,7 @@
 #include <wtf/text/WTFString.h>
 
 #if PLATFORM(IOS_FAMILY)
-#include <CyberCore/WebCoreThreadRun.h>
+#include <CyberCore/CyberCoreThreadRun.h>
 #include <wtf/BlockPtr.h>
 #endif
 
@@ -2241,7 +2241,7 @@ void TestRunner::setAccummulateLogsForChannel(JSStringRef channel)
     auto buffer = makeUniqueArray<char>(maxLength + 1);
     JSStringGetUTF8CString(channel, buffer.get(), maxLength + 1);
 
-    WebCoreTestSupport::setLogChannelToAccumulate(String::fromLatin1(buffer.get()));
+    CyberCoreTestSupport::setLogChannelToAccumulate(String::fromLatin1(buffer.get()));
 }
 
 using CallbackMap = WTF::HashMap<unsigned, JSObjectRef>;
@@ -2339,12 +2339,12 @@ void TestRunner::uiScriptDidComplete(const String& result, unsigned callbackID)
 
 void TestRunner::setAllowsAnySSLCertificate(bool allowsAnySSLCertificate)
 {
-    WebCoreTestSupport::setAllowsAnySSLCertificate(allowsAnySSLCertificate);
+    CyberCoreTestSupport::setAllowsAnySSLCertificate(allowsAnySSLCertificate);
 }
 
 bool TestRunner::allowsAnySSLCertificate()
 {
-    return WebCoreTestSupport::allowsAnySSLCertificate();
+    return CyberCoreTestSupport::allowsAnySSLCertificate();
 }
 
 void TestRunner::setOpenPanelFiles(JSContextRef context, JSValueRef filesValue)

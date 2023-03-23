@@ -26,7 +26,7 @@
 #include "config.h"
 #include "DatabaseProvider.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 DatabaseProvider::~DatabaseProvider() = default;
 

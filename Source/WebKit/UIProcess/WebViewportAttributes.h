@@ -33,19 +33,19 @@ namespace WebKit {
 
 class WebViewportAttributes : public API::ObjectImpl<API::Object::Type::ViewportAttributes> {
 public:
-    static Ref<WebViewportAttributes> create(const WebCore::ViewportAttributes& attributes)
+    static Ref<WebViewportAttributes> create(const CyberCore::ViewportAttributes& attributes)
     {
         return adoptRef(*new WebViewportAttributes(attributes));
     }
 
     virtual ~WebViewportAttributes();
 
-    const WebCore::ViewportAttributes& originalAttributes() const { return m_attributes; }
+    const CyberCore::ViewportAttributes& originalAttributes() const { return m_attributes; }
 
 private:
-    explicit WebViewportAttributes(const WebCore::ViewportAttributes&);
+    explicit WebViewportAttributes(const CyberCore::ViewportAttributes&);
 
-    WebCore::ViewportAttributes m_attributes;
+    CyberCore::ViewportAttributes m_attributes;
 };
 
 } // namespace WebKit

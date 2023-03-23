@@ -35,33 +35,33 @@
 #import <wtf/GetPtr.h>
 #import <wtf/URL.h>
 
-#define IMPL static_cast<WebCore::HTMLTableCaptionElement*>(reinterpret_cast<WebCore::Node*>(_internal))
+#define IMPL static_cast<CyberCore::HTMLTableCaptionElement*>(reinterpret_cast<CyberCore::Node*>(_internal))
 
 @implementation DOMHTMLTableCaptionElement
 
 - (NSString *)align
 {
-    WebCore::JSMainThreadNullState state;
-    return IMPL->getAttribute(WebCore::HTMLNames::alignAttr);
+    CyberCore::JSMainThreadNullState state;
+    return IMPL->getAttribute(CyberCore::HTMLNames::alignAttr);
 }
 
 - (void)setAlign:(NSString *)newAlign
 {
-    WebCore::JSMainThreadNullState state;
-    IMPL->setAttributeWithoutSynchronization(WebCore::HTMLNames::alignAttr, newAlign);
+    CyberCore::JSMainThreadNullState state;
+    IMPL->setAttributeWithoutSynchronization(CyberCore::HTMLNames::alignAttr, newAlign);
 }
 
 @end
 
-WebCore::HTMLTableCaptionElement* core(DOMHTMLTableCaptionElement *wrapper)
+CyberCore::HTMLTableCaptionElement* core(DOMHTMLTableCaptionElement *wrapper)
 {
-    return wrapper ? reinterpret_cast<WebCore::HTMLTableCaptionElement*>(wrapper->_internal) : 0;
+    return wrapper ? reinterpret_cast<CyberCore::HTMLTableCaptionElement*>(wrapper->_internal) : 0;
 }
 
-DOMHTMLTableCaptionElement *kit(WebCore::HTMLTableCaptionElement* value)
+DOMHTMLTableCaptionElement *kit(CyberCore::HTMLTableCaptionElement* value)
 {
-    WebCoreThreadViolationCheckRoundOne();
-    return static_cast<DOMHTMLTableCaptionElement*>(kit(static_cast<WebCore::Node*>(value)));
+    CyberCoreThreadViolationCheckRoundOne();
+    return static_cast<DOMHTMLTableCaptionElement*>(kit(static_cast<CyberCore::Node*>(value)));
 }
 
 #undef IMPL

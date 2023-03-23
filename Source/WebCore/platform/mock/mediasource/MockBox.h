@@ -35,7 +35,7 @@ namespace JSC {
 class ArrayBuffer;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 // A MockBox represents a ISO-BMFF like data structure. Data in the
 // structure is little-endian. The layout of the data structure as follows:

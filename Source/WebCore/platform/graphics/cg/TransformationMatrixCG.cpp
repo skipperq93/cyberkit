@@ -32,7 +32,7 @@
 #include <CoreGraphics/CGAffineTransform.h>
 #include "FloatConversion.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 TransformationMatrix::TransformationMatrix(const CGAffineTransform& t)
 {

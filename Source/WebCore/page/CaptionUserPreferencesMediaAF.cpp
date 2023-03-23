@@ -56,7 +56,7 @@
 #endif
 
 #if PLATFORM(IOS_FAMILY)
-#include "WebCoreThreadRun.h"
+#include "CyberCoreThreadRun.h"
 #endif
 
 #if HAVE(MEDIA_ACCESSIBILITY_FRAMEWORK)
@@ -71,7 +71,7 @@ SOFT_LINK_OPTIONAL(MediaToolbox, MTEnableCaption2015Behavior, Boolean, (), ())
 
 #endif // HAVE(MEDIA_ACCESSIBILITY_FRAMEWORK)
 
-namespace WebCore {
+namespace CyberCore {
 
 #if HAVE(MEDIA_ACCESSIBILITY_FRAMEWORK)
 

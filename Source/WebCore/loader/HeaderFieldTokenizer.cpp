@@ -30,7 +30,7 @@
 #include "RFC7230.h"
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 HeaderFieldTokenizer::HeaderFieldTokenizer(const String& headerField)
     : m_input(headerField)
@@ -120,4 +120,4 @@ void HeaderFieldTokenizer::consumeBeforeAnyCharMatch(const Vector<UChar>& chars)
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore

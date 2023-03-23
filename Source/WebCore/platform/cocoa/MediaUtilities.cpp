@@ -31,7 +31,7 @@
 #include <wtf/SoftLinking.h>
 #include <pal/cf/CoreMediaSoftLink.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 RetainPtr<CMFormatDescriptionRef> createAudioFormatDescription(const AudioStreamDescription& description, size_t magicCookieSize, const void* magicCookie)
 {
@@ -85,4 +85,4 @@ RetainPtr<CMSampleBufferRef> createVideoSampleBuffer(CVPixelBufferRef pixelBuffe
     return adoptCF(sampleBuffer);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

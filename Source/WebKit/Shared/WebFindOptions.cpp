@@ -28,21 +28,21 @@
 
 namespace WebKit {
 
-WebCore::FindOptions core(OptionSet<FindOptions> options)
+CyberCore::FindOptions core(OptionSet<FindOptions> options)
 {
-    WebCore::FindOptions result;
+    CyberCore::FindOptions result;
     if (options.contains(FindOptions::CaseInsensitive))
-        result.add(WebCore::CaseInsensitive);
+        result.add(CyberCore::CaseInsensitive);
     if (options.contains(FindOptions::AtWordStarts))
-        result.add(WebCore::AtWordStarts);
+        result.add(CyberCore::AtWordStarts);
     if (options.contains(FindOptions::TreatMedialCapitalAsWordStart))
-        result.add(WebCore::TreatMedialCapitalAsWordStart);
+        result.add(CyberCore::TreatMedialCapitalAsWordStart);
     if (options.contains(FindOptions::Backwards))
-        result.add(WebCore::Backwards);
+        result.add(CyberCore::Backwards);
     if (options.contains(FindOptions::WrapAround))
-        result.add(WebCore::WrapAround);
+        result.add(CyberCore::WrapAround);
     if (options.contains(FindOptions::AtWordEnds))
-        result.add(WebCore::AtWordEnds);
+        result.add(CyberCore::AtWordEnds);
     return result;
 }
 

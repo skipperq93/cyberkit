@@ -39,16 +39,16 @@ class Connection;
 class Decoder;
 }
 
-namespace WebCore {
+namespace CyberCore {
 class Settings;
 }
 
-namespace WebCore {
+namespace CyberCore {
 class CDMPrivateInterface;
 class LegacyCDM;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class GPUProcessConnection;
 class RemoteLegacyCDM;
@@ -76,12 +76,12 @@ public:
     void addSession(RemoteLegacyCDMSessionIdentifier, std::unique_ptr<RemoteLegacyCDMSession>&&);
     void removeSession(RemoteLegacyCDMSessionIdentifier);
 
-    RemoteLegacyCDM* findCDM(WebCore::CDMPrivateInterface*) const;
+    RemoteLegacyCDM* findCDM(CyberCore::CDMPrivateInterface*) const;
 
 private:
     bool supportsKeySystem(const String&);
     bool supportsKeySystemAndMimeType(const String&, const String&);
-    std::unique_ptr<WebCore::CDMPrivateInterface> createCDM(WebCore::LegacyCDM*);
+    std::unique_ptr<CyberCore::CDMPrivateInterface> createCDM(CyberCore::LegacyCDM*);
 
     HashMap<RemoteLegacyCDMSessionIdentifier, std::unique_ptr<RemoteLegacyCDMSession>> m_sessions;
     HashMap<RemoteLegacyCDMIdentifier, WeakPtr<RemoteLegacyCDM>> m_cdms;

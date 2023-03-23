@@ -30,7 +30,7 @@
 #include <wtf/text/TextStream.h>
 
 namespace TestWebKitAPI {
-using namespace WebCore;
+using namespace CyberCore;
 
 static bool areApproximatelyEqual(float a, float b)
 {

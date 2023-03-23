@@ -329,7 +329,7 @@ void PageLoadState::didFailProvisionalLoad(const Transaction::Token& token)
     m_uncommittedState.unreachableURL = m_lastUnreachableURL;
 }
 
-void PageLoadState::didCommitLoad(const Transaction::Token& token, const WebCore::CertificateInfo& certificateInfo, bool hasInsecureContent, bool usedLegacyTLS, bool wasPrivateRelayed)
+void PageLoadState::didCommitLoad(const Transaction::Token& token, const CyberCore::CertificateInfo& certificateInfo, bool hasInsecureContent, bool usedLegacyTLS, bool wasPrivateRelayed)
 {
     ASSERT_UNUSED(token, &token.m_pageLoadState == this);
     ASSERT(m_uncommittedState.state == State::Provisional);

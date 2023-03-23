@@ -36,7 +36,7 @@ static float elasticDeltaForTimeDelta(float initialPosition, float initialVeloci
     return _NSElasticDeltaForTimeDelta(initialPosition, initialVelocity, elapsedTime.seconds());
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 static inline float roundTowardZero(float num)
 {
@@ -109,6 +109,6 @@ String ScrollAnimationRubberBand::debugDescription() const
     return textStream.release();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // HAVE(RUBBER_BANDING)

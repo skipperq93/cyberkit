@@ -39,16 +39,16 @@ namespace WebKit {
 
 class RemoteLegacyCDMProxy
     : public IPC::MessageReceiver
-    , public WebCore::LegacyCDMClient {
+    , public CyberCore::LegacyCDMClient {
 public:
-    static std::unique_ptr<RemoteLegacyCDMProxy> create(WeakPtr<RemoteLegacyCDMFactoryProxy>, WebCore::MediaPlayerIdentifier&&, std::unique_ptr<WebCore::LegacyCDM>&&);
+    static std::unique_ptr<RemoteLegacyCDMProxy> create(WeakPtr<RemoteLegacyCDMFactoryProxy>, CyberCore::MediaPlayerIdentifier&&, std::unique_ptr<CyberCore::LegacyCDM>&&);
     ~RemoteLegacyCDMProxy();
 
     RemoteLegacyCDMFactoryProxy* factory() const { return m_factory.get(); }
 
 private:
     friend class RemoteLegacyCDMFactoryProxy;
-    RemoteLegacyCDMProxy(WeakPtr<RemoteLegacyCDMFactoryProxy>&&, WebCore::MediaPlayerIdentifier&&, std::unique_ptr<WebCore::LegacyCDM>&&);
+    RemoteLegacyCDMProxy(WeakPtr<RemoteLegacyCDMFactoryProxy>&&, CyberCore::MediaPlayerIdentifier&&, std::unique_ptr<CyberCore::LegacyCDM>&&);
 
     // IPC::MessageReceiver
     void didReceiveMessage(IPC::Connection&, IPC::Decoder&) final;
@@ -59,14 +59,14 @@ private:
     void supportsMIMEType(const String&, SupportsMIMETypeCallback&&);
     using CreateSessionCallback = CompletionHandler<void(RemoteLegacyCDMSessionIdentifier&&)>;
     void createSession(const String&, uint64_t, CreateSessionCallback&&);
-    void setPlayerId(std::optional<WebCore::MediaPlayerIdentifier>&&);
+    void setPlayerId(std::optional<CyberCore::MediaPlayerIdentifier>&&);
 
     // LegacyCDMClient
-    RefPtr<WebCore::MediaPlayer> cdmMediaPlayer(const WebCore::LegacyCDM*) const final;
+    RefPtr<CyberCore::MediaPlayer> cdmMediaPlayer(const CyberCore::LegacyCDM*) const final;
 
     WeakPtr<RemoteLegacyCDMFactoryProxy> m_factory;
-    WebCore::MediaPlayerIdentifier m_playerId;
-    std::unique_ptr<WebCore::LegacyCDM> m_cdm;
+    CyberCore::MediaPlayerIdentifier m_playerId;
+    std::unique_ptr<CyberCore::LegacyCDM> m_cdm;
 };
 
 }

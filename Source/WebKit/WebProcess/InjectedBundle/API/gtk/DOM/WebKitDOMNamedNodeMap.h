@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -21,28 +21,28 @@
 #error "Only <webkitdom/webkitdom.h> can be included directly."
 #endif
 
-#ifndef WebKitDOMNamedNodeMap_h
-#define WebKitDOMNamedNodeMap_h
+#ifndef CyberKitDOMNamedNodeMap_h
+#define CyberKitDOMNamedNodeMap_h
 
 #include <glib-object.h>
-#include <webkitdom/WebKitDOMObject.h>
+#include <webkitdom/CyberKitDOMObject.h>
 #include <webkitdom/webkitdomdefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_DOM_TYPE_NAMED_NODE_MAP            (webkit_dom_named_node_map_get_type())
-#define WEBKIT_DOM_NAMED_NODE_MAP(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_NAMED_NODE_MAP, WebKitDOMNamedNodeMap))
-#define WEBKIT_DOM_NAMED_NODE_MAP_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_NAMED_NODE_MAP, WebKitDOMNamedNodeMapClass)
+#define WEBKIT_DOM_NAMED_NODE_MAP(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_NAMED_NODE_MAP, CyberKitDOMNamedNodeMap))
+#define WEBKIT_DOM_NAMED_NODE_MAP_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_NAMED_NODE_MAP, CyberKitDOMNamedNodeMapClass)
 #define WEBKIT_DOM_IS_NAMED_NODE_MAP(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_DOM_TYPE_NAMED_NODE_MAP))
 #define WEBKIT_DOM_IS_NAMED_NODE_MAP_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_DOM_TYPE_NAMED_NODE_MAP))
-#define WEBKIT_DOM_NAMED_NODE_MAP_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_NAMED_NODE_MAP, WebKitDOMNamedNodeMapClass))
+#define WEBKIT_DOM_NAMED_NODE_MAP_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_NAMED_NODE_MAP, CyberKitDOMNamedNodeMapClass))
 
-struct _WebKitDOMNamedNodeMap {
-    WebKitDOMObject parent_instance;
+struct _CyberKitDOMNamedNodeMap {
+    CyberKitDOMObject parent_instance;
 };
 
-struct _WebKitDOMNamedNodeMapClass {
-    WebKitDOMObjectClass parent_class;
+struct _CyberKitDOMNamedNodeMapClass {
+    CyberKitDOMObjectClass parent_class;
 };
 
 WEBKIT_DEPRECATED GType
@@ -50,105 +50,105 @@ webkit_dom_named_node_map_get_type(void);
 
 /**
  * webkit_dom_named_node_map_get_named_item:
- * @self: A #WebKitDOMNamedNodeMap
+ * @self: A #CyberKitDOMNamedNodeMap
  * @name: A #gchar
  *
- * Returns: (transfer none): A #WebKitDOMNode
+ * Returns: (transfer none): A #CyberKitDOMNode
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMNode*
-webkit_dom_named_node_map_get_named_item(WebKitDOMNamedNodeMap* self, const gchar* name);
+WEBKIT_DEPRECATED CyberKitDOMNode*
+webkit_dom_named_node_map_get_named_item(CyberKitDOMNamedNodeMap* self, const gchar* name);
 
 /**
  * webkit_dom_named_node_map_set_named_item:
- * @self: A #WebKitDOMNamedNodeMap
- * @node: A #WebKitDOMNode
+ * @self: A #CyberKitDOMNamedNodeMap
+ * @node: A #CyberKitDOMNode
  * @error: #GError
  *
- * Returns: (transfer none): A #WebKitDOMNode
+ * Returns: (transfer none): A #CyberKitDOMNode
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMNode*
-webkit_dom_named_node_map_set_named_item(WebKitDOMNamedNodeMap* self, WebKitDOMNode* node, GError** error);
+WEBKIT_DEPRECATED CyberKitDOMNode*
+webkit_dom_named_node_map_set_named_item(CyberKitDOMNamedNodeMap* self, CyberKitDOMNode* node, GError** error);
 
 /**
  * webkit_dom_named_node_map_remove_named_item:
- * @self: A #WebKitDOMNamedNodeMap
+ * @self: A #CyberKitDOMNamedNodeMap
  * @name: A #gchar
  * @error: #GError
  *
- * Returns: (transfer none): A #WebKitDOMNode
+ * Returns: (transfer none): A #CyberKitDOMNode
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMNode*
-webkit_dom_named_node_map_remove_named_item(WebKitDOMNamedNodeMap* self, const gchar* name, GError** error);
+WEBKIT_DEPRECATED CyberKitDOMNode*
+webkit_dom_named_node_map_remove_named_item(CyberKitDOMNamedNodeMap* self, const gchar* name, GError** error);
 
 /**
  * webkit_dom_named_node_map_item:
- * @self: A #WebKitDOMNamedNodeMap
+ * @self: A #CyberKitDOMNamedNodeMap
  * @index: A #gulong
  *
- * Returns: (transfer none): A #WebKitDOMNode
+ * Returns: (transfer none): A #CyberKitDOMNode
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMNode*
-webkit_dom_named_node_map_item(WebKitDOMNamedNodeMap* self, gulong index);
+WEBKIT_DEPRECATED CyberKitDOMNode*
+webkit_dom_named_node_map_item(CyberKitDOMNamedNodeMap* self, gulong index);
 
 /**
  * webkit_dom_named_node_map_get_named_item_ns:
- * @self: A #WebKitDOMNamedNodeMap
+ * @self: A #CyberKitDOMNamedNodeMap
  * @namespaceURI: A #gchar
  * @localName: A #gchar
  *
- * Returns: (transfer none): A #WebKitDOMNode
+ * Returns: (transfer none): A #CyberKitDOMNode
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMNode*
-webkit_dom_named_node_map_get_named_item_ns(WebKitDOMNamedNodeMap* self, const gchar* namespaceURI, const gchar* localName);
+WEBKIT_DEPRECATED CyberKitDOMNode*
+webkit_dom_named_node_map_get_named_item_ns(CyberKitDOMNamedNodeMap* self, const gchar* namespaceURI, const gchar* localName);
 
 /**
  * webkit_dom_named_node_map_set_named_item_ns:
- * @self: A #WebKitDOMNamedNodeMap
- * @node: A #WebKitDOMNode
+ * @self: A #CyberKitDOMNamedNodeMap
+ * @node: A #CyberKitDOMNode
  * @error: #GError
  *
- * Returns: (transfer none): A #WebKitDOMNode
+ * Returns: (transfer none): A #CyberKitDOMNode
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMNode*
-webkit_dom_named_node_map_set_named_item_ns(WebKitDOMNamedNodeMap* self, WebKitDOMNode* node, GError** error);
+WEBKIT_DEPRECATED CyberKitDOMNode*
+webkit_dom_named_node_map_set_named_item_ns(CyberKitDOMNamedNodeMap* self, CyberKitDOMNode* node, GError** error);
 
 /**
  * webkit_dom_named_node_map_remove_named_item_ns:
- * @self: A #WebKitDOMNamedNodeMap
+ * @self: A #CyberKitDOMNamedNodeMap
  * @namespaceURI: A #gchar
  * @localName: A #gchar
  * @error: #GError
  *
- * Returns: (transfer none): A #WebKitDOMNode
+ * Returns: (transfer none): A #CyberKitDOMNode
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMNode*
-webkit_dom_named_node_map_remove_named_item_ns(WebKitDOMNamedNodeMap* self, const gchar* namespaceURI, const gchar* localName, GError** error);
+WEBKIT_DEPRECATED CyberKitDOMNode*
+webkit_dom_named_node_map_remove_named_item_ns(CyberKitDOMNamedNodeMap* self, const gchar* namespaceURI, const gchar* localName, GError** error);
 
 /**
  * webkit_dom_named_node_map_get_length:
- * @self: A #WebKitDOMNamedNodeMap
+ * @self: A #CyberKitDOMNamedNodeMap
  *
  * Returns: A #gulong
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gulong
-webkit_dom_named_node_map_get_length(WebKitDOMNamedNodeMap* self);
+webkit_dom_named_node_map_get_length(CyberKitDOMNamedNodeMap* self);
 
 G_END_DECLS
 
-#endif /* WebKitDOMNamedNodeMap_h */
+#endif /* CyberKitDOMNamedNodeMap_h */

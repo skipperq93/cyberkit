@@ -33,7 +33,7 @@
 #include <wtf/RefPtr.h>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 DEFINE_ALLOCATOR_WITH_HEAP_IDENTIFIER(StyleRareNonInheritedData);
 
@@ -312,4 +312,4 @@ bool StyleRareNonInheritedData::hasBackdropFilters() const
 
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

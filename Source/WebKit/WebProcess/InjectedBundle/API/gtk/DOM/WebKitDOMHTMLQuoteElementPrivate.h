@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -17,16 +17,16 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitDOMHTMLQuoteElementPrivate_h
-#define WebKitDOMHTMLQuoteElementPrivate_h
+#ifndef CyberKitDOMHTMLQuoteElementPrivate_h
+#define CyberKitDOMHTMLQuoteElementPrivate_h
 
 #include <CyberCore/HTMLQuoteElement.h>
-#include <webkitdom/WebKitDOMHTMLQuoteElement.h>
+#include <webkitdom/CyberKitDOMHTMLQuoteElement.h>
 
-namespace WebKit {
-WebKitDOMHTMLQuoteElement* wrapHTMLQuoteElement(WebCore::HTMLQuoteElement*);
-WebKitDOMHTMLQuoteElement* kit(WebCore::HTMLQuoteElement*);
-WebCore::HTMLQuoteElement* core(WebKitDOMHTMLQuoteElement*);
-} // namespace WebKit
+namespace CyberKit {
+CyberKitDOMHTMLQuoteElement* wrapHTMLQuoteElement(CyberCore::HTMLQuoteElement*);
+CyberKitDOMHTMLQuoteElement* kit(CyberCore::HTMLQuoteElement*);
+CyberCore::HTMLQuoteElement* core(CyberKitDOMHTMLQuoteElement*);
+} // namespace CyberKit
 
-#endif /* WebKitDOMHTMLQuoteElementPrivate_h */
+#endif /* CyberKitDOMHTMLQuoteElementPrivate_h */

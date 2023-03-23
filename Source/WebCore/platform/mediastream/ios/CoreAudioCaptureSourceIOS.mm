@@ -35,9 +35,9 @@
 
 #import <pal/cocoa/AVFoundationSoftLink.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
-@interface WebCoreAudioCaptureSourceIOSListener : NSObject {
+@interface CyberCoreAudioCaptureSourceIOSListener : NSObject {
     CoreAudioCaptureSourceFactoryIOS* _callback;
 }
 
@@ -45,7 +45,7 @@ using namespace WebCore;
 - (void)sessionMediaServicesWereReset:(NSNotification*)notification;
 @end
 
-@implementation WebCoreAudioCaptureSourceIOSListener
+@implementation CyberCoreAudioCaptureSourceIOSListener
 - (id)initWithCallback:(CoreAudioCaptureSourceFactoryIOS*)callback
 {
     self = [super init];
@@ -82,10 +82,10 @@ using namespace WebCore;
 }
 @end
 
-namespace WebCore {
+namespace CyberCore {
 
 CoreAudioCaptureSourceFactoryIOS::CoreAudioCaptureSourceFactoryIOS()
-    : m_listener(adoptNS([[WebCoreAudioCaptureSourceIOSListener alloc] initWithCallback:this]))
+    : m_listener(adoptNS([[CyberCoreAudioCaptureSourceIOSListener alloc] initWithCallback:this]))
 {
     AudioSession::sharedSession().addInterruptionObserver(*this);
 }

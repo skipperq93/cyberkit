@@ -41,7 +41,7 @@
 SOFTLINK_AVKIT_FRAMEWORK()
 SOFT_LINK_CLASS_OPTIONAL(AVKit, AVOutputDeviceMenuController)
 
-using namespace WebCore;
+using namespace CyberCore;
 
 static NSString *externalOutputDeviceAvailableKeyName = @"externalOutputDeviceAvailable";
 static NSString *externalOutputDevicePickedKeyName = @"externalOutputDevicePicked";
@@ -55,7 +55,7 @@ static NSString *externalOutputDevicePickedKeyName = @"externalOutputDevicePicke
 - (void)observeValueForKeyPath:(id)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context;
 @end
 
-namespace WebCore {
+namespace CyberCore {
 
 AVOutputDeviceMenuControllerTargetPicker::AVOutputDeviceMenuControllerTargetPicker(AVPlaybackTargetPicker::Client& client)
     : AVPlaybackTargetPicker(client)
@@ -155,7 +155,7 @@ AVOutputContext * AVOutputDeviceMenuControllerTargetPicker::outputContext()
     return m_outputDeviceMenuController ? [m_outputDeviceMenuController outputContext] : nullptr;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 @implementation WebAVOutputDeviceMenuControllerHelper
 - (instancetype)initWithCallback:(WeakPtr<AVOutputDeviceMenuControllerTargetPicker>&&)callback

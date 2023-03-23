@@ -29,11 +29,11 @@
 
 #if PLATFORM(MAC)
 
-namespace WebCore {
+namespace CyberCore {
 class TiledBacking;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class RemoteLayerTreeDrawingAreaMac final : public RemoteLayerTreeDrawingArea {
 public:
@@ -41,24 +41,24 @@ public:
     virtual ~RemoteLayerTreeDrawingAreaMac();
 
 private:
-    WebCore::DelegatedScrollingMode delegatedScrollingMode() const override;
+    CyberCore::DelegatedScrollingMode delegatedScrollingMode() const override;
 
-    void setColorSpace(std::optional<WebCore::DestinationColorSpace>) override;
-    std::optional<WebCore::DestinationColorSpace> displayColorSpace() const override;
+    void setColorSpace(std::optional<CyberCore::DestinationColorSpace>) override;
+    std::optional<CyberCore::DestinationColorSpace> displayColorSpace() const override;
 
-    std::optional<WebCore::DestinationColorSpace> m_displayColorSpace;
+    std::optional<CyberCore::DestinationColorSpace> m_displayColorSpace;
 
     bool usesDelegatedPageScaling() const override { return false; }
 
-    void mainFrameContentSizeChanged(const WebCore::IntSize&) override;
+    void mainFrameContentSizeChanged(const CyberCore::IntSize&) override;
 
-    void adjustTransientZoom(double scale, WebCore::FloatPoint origin) override;
-    void commitTransientZoom(double scale, WebCore::FloatPoint origin) override;
-    void applyTransientZoomToPage(double scale, WebCore::FloatPoint);
+    void adjustTransientZoom(double scale, CyberCore::FloatPoint origin) override;
+    void commitTransientZoom(double scale, CyberCore::FloatPoint origin) override;
+    void applyTransientZoomToPage(double scale, CyberCore::FloatPoint);
 
     void willCommitLayerTree(RemoteLayerTreeTransaction&) override;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(MAC)

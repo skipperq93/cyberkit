@@ -25,7 +25,7 @@
 #include "RectEdges.h"
 #include "WritingMode.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class LengthBox : public RectEdges<Length> {
 public:
@@ -78,4 +78,4 @@ WTF::TextStream& operator<<(WTF::TextStream&, const LengthBox&);
 WTF::TextStream& operator<<(WTF::TextStream&, const IntBoxExtent&);
 WEBCORE_EXPORT WTF::TextStream& operator<<(WTF::TextStream&, const FloatBoxExtent&);
 
-} // namespace WebCore
+} // namespace CyberCore

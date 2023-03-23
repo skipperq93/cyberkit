@@ -34,17 +34,17 @@
 #include <CyberCore/SampleBufferDisplayLayer.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 enum class VideoFrameRotation : uint16_t;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class SampleBufferDisplayLayerManager;
 
-class SampleBufferDisplayLayer final : public WebCore::SampleBufferDisplayLayer, public IPC::MessageReceiver, public GPUProcessConnection::Client {
+class SampleBufferDisplayLayer final : public CyberCore::SampleBufferDisplayLayer, public IPC::MessageReceiver, public GPUProcessConnection::Client {
 public:
-    static std::unique_ptr<SampleBufferDisplayLayer> create(SampleBufferDisplayLayerManager&, WebCore::SampleBufferDisplayLayer::Client&);
+    static std::unique_ptr<SampleBufferDisplayLayer> create(SampleBufferDisplayLayerManager&, CyberCore::SampleBufferDisplayLayer::Client&);
     ~SampleBufferDisplayLayer();
 
     SampleBufferDisplayLayerIdentifier identifier() const { return m_identifier; }
@@ -56,23 +56,23 @@ public:
     using GPUProcessConnection::Client::WeakPtrImplType;
 
 private:
-    SampleBufferDisplayLayer(SampleBufferDisplayLayerManager&, WebCore::SampleBufferDisplayLayer::Client&);
+    SampleBufferDisplayLayer(SampleBufferDisplayLayerManager&, CyberCore::SampleBufferDisplayLayer::Client&);
     void disconnectGPUProcessConnectionIfNeeded();
 
-    // WebCore::SampleBufferDisplayLayer
-    void initialize(bool hideRootLayer, WebCore::IntSize, CompletionHandler<void(bool)>&&) final;
+    // CyberCore::SampleBufferDisplayLayer
+    void initialize(bool hideRootLayer, CyberCore::IntSize, CompletionHandler<void(bool)>&&) final;
 #if !RELEASE_LOG_DISABLED
     void setLogIdentifier(String&&) final;
 #endif
     bool didFail() const final;
     void updateDisplayMode(bool hideDisplayLayer, bool hideRootLayer) final;
     void updateAffineTransform(CGAffineTransform) final;
-    void updateBoundsAndPosition(CGRect, WebCore::VideoFrameRotation) final;
+    void updateBoundsAndPosition(CGRect, CyberCore::VideoFrameRotation) final;
     void flush() final;
     void flushAndRemoveImage() final;
     void play() final;
     void pause() final;
-    void enqueueVideoFrame(WebCore::VideoFrame&) final;
+    void enqueueVideoFrame(CyberCore::VideoFrame&) final;
     void clearVideoFrames() final;
     PlatformLayer* rootLayer() final;
 

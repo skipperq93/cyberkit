@@ -59,7 +59,7 @@ private:
 
     void sessionStateChanged(const GroupActivitiesSession&, GroupActivitiesSession::State);
 
-    using CoordinatorCompletionHandler = CompletionHandler<void(std::optional<WebCore::ExceptionData>&&)>;
+    using CoordinatorCompletionHandler = CompletionHandler<void(std::optional<CyberCore::ExceptionData>&&)>;
     String identifier() const final;
     void join(CoordinatorCompletionHandler&&) final;
     void leave() final;
@@ -67,18 +67,18 @@ private:
     void play(CoordinatorCompletionHandler&&) final;
     void pause(CoordinatorCompletionHandler&&) final;
     void setTrack(const String&, CoordinatorCompletionHandler&&) final;
-    void positionStateChanged(const std::optional<WebCore::MediaPositionState>&) final;
-    void readyStateChanged(WebCore::MediaSessionReadyState) final;
-    void playbackStateChanged(WebCore::MediaSessionPlaybackState) final;
+    void positionStateChanged(const std::optional<CyberCore::MediaPositionState>&) final;
+    void readyStateChanged(CyberCore::MediaSessionReadyState) final;
+    void playbackStateChanged(CyberCore::MediaSessionPlaybackState) final;
     void trackIdentifierChanged(const String&) final;
 
     Ref<GroupActivitiesSession> m_session;
     RetainPtr<WKGroupActivitiesCoordinatorDelegate> m_delegate;
     RetainPtr<AVDelegatingPlaybackCoordinator> m_playbackCoordinator;
 
-    std::optional<WebCore::MediaPositionState> m_positionState;
-    std::optional<WebCore::MediaSessionReadyState> m_readyState;
-    std::optional<WebCore::MediaSessionPlaybackState> m_playbackState;
+    std::optional<CyberCore::MediaPositionState> m_positionState;
+    std::optional<CyberCore::MediaSessionReadyState> m_readyState;
+    std::optional<CyberCore::MediaSessionPlaybackState> m_playbackState;
 
     GroupActivitiesSession::StateChangeObserver m_stateChangeObserver;
 };

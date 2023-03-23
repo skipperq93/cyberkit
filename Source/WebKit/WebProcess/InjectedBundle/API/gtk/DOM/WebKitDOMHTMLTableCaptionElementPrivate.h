@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -17,16 +17,16 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitDOMHTMLTableCaptionElementPrivate_h
-#define WebKitDOMHTMLTableCaptionElementPrivate_h
+#ifndef CyberKitDOMHTMLTableCaptionElementPrivate_h
+#define CyberKitDOMHTMLTableCaptionElementPrivate_h
 
 #include <CyberCore/HTMLTableCaptionElement.h>
-#include <webkitdom/WebKitDOMHTMLTableCaptionElement.h>
+#include <webkitdom/CyberKitDOMHTMLTableCaptionElement.h>
 
-namespace WebKit {
-WebKitDOMHTMLTableCaptionElement* wrapHTMLTableCaptionElement(WebCore::HTMLTableCaptionElement*);
-WebKitDOMHTMLTableCaptionElement* kit(WebCore::HTMLTableCaptionElement*);
-WebCore::HTMLTableCaptionElement* core(WebKitDOMHTMLTableCaptionElement*);
-} // namespace WebKit
+namespace CyberKit {
+CyberKitDOMHTMLTableCaptionElement* wrapHTMLTableCaptionElement(CyberCore::HTMLTableCaptionElement*);
+CyberKitDOMHTMLTableCaptionElement* kit(CyberCore::HTMLTableCaptionElement*);
+CyberCore::HTMLTableCaptionElement* core(CyberKitDOMHTMLTableCaptionElement*);
+} // namespace CyberKit
 
-#endif /* WebKitDOMHTMLTableCaptionElementPrivate_h */
+#endif /* CyberKitDOMHTMLTableCaptionElementPrivate_h */

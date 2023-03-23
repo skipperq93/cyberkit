@@ -24,7 +24,7 @@
 #if ENABLE(LAYER_BASED_SVG_ENGINE)
 #include "RenderSVGContainer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGGraphicsElement;
 
@@ -49,7 +49,7 @@ private:
     AffineTransform m_supplementalLayerTransform;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderSVGTransformableContainer, isSVGTransformableContainer())
 

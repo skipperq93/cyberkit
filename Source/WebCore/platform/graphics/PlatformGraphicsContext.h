@@ -37,10 +37,10 @@ typedef unsigned char UInt8;
 #if USE(CG)
 using PlatformGraphicsContext = struct CGContext;
 #elif USE(CAIRO)
-namespace WebCore {
+namespace CyberCore {
 class GraphicsContextCairo;
 }
-using PlatformGraphicsContext = WebCore::GraphicsContextCairo;
+using PlatformGraphicsContext = CyberCore::GraphicsContextCairo;
 #else
 using PlatformGraphicsContext = void;
 #endif

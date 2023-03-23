@@ -31,7 +31,7 @@
 #include <wtf/OptionSet.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Page;
 class RegionOverlay;
@@ -127,4 +127,4 @@ inline bool DebugPageOverlays::shouldPaintOverlayIntoLayerForRegionType(Page& pa
     return sharedDebugOverlays->shouldPaintOverlayIntoLayer(page, regionType);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

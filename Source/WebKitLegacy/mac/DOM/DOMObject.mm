@@ -67,7 +67,7 @@
 
 - (DOMStyleSheet *)sheet
 {
-    WebCore::StyleSheet* styleSheet;
+    CyberCore::StyleSheet* styleSheet;
 
     if ([self isKindOfClass:[DOMProcessingInstruction class]])
         styleSheet = core(static_cast<DOMProcessingInstruction *>(self))->sheet();

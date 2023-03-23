@@ -34,7 +34,7 @@
 #include <wtf/ProcessPrivilege.h>
 #include <wtf/text/StringConcatenateNumbers.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 RetainPtr<CFURLStorageSessionRef> NetworkStorageSession::createCFStorageSessionForIdentifier(CFStringRef identifier, ShouldDisableCFURLCache shouldDisableCFURLCache)
 {
@@ -109,4 +109,4 @@ RetainPtr<CFHTTPCookieStorageRef> NetworkStorageSession::cookieStorage() const
     return nullptr;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

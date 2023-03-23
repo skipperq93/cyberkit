@@ -31,7 +31,7 @@
 #include "LibWebRTCCodecs.h"
 #include "WebProcess.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 class RemoteVideoDecoderCallbacks : public ThreadSafeRefCounted<RemoteVideoDecoderCallbacks> {
 public:
@@ -39,7 +39,7 @@ public:
     ~RemoteVideoDecoderCallbacks() = default;
 
     void postTask(Function<void()>&& task) { m_postTaskCallback(WTFMove(task)); }
-    void notifyDecodingResult(RefPtr<WebCore::VideoFrame>&&, int64_t timestamp);
+    void notifyDecodingResult(RefPtr<CyberCore::VideoFrame>&&, int64_t timestamp);
 
     // Must be called on the VideoDecoder thread, or within postTaskCallback.
     void close() { m_isClosed = true; }
@@ -54,7 +54,7 @@ private:
     HashMap<int64_t, uint64_t> m_timestampToDuration;
 };
 
-class RemoteVideoDecoder : public WebCore::VideoDecoder {
+class RemoteVideoDecoder : public CyberCore::VideoDecoder {
     WTF_MAKE_FAST_ALLOCATED;
 public:
     RemoteVideoDecoder(LibWebRTCCodecs::Decoder&, Ref<RemoteVideoDecoderCallbacks>&&, uint16_t width, uint16_t height);
@@ -96,7 +96,7 @@ private:
     HashMap<int64_t, uint64_t> m_timestampToDuration;
 };
 
-class RemoteVideoEncoder : public WebCore::VideoEncoder {
+class RemoteVideoEncoder : public CyberCore::VideoEncoder {
     WTF_MAKE_FAST_ALLOCATED;
 public:
     RemoteVideoEncoder(LibWebRTCCodecs::Encoder&, const VideoEncoder::Config&, Ref<RemoteVideoEncoderCallbacks>&&);
@@ -146,7 +146,7 @@ void RemoteVideoCodecFactory::createDecoder(const String& codec, const VideoDeco
     });
 }
 
-void RemoteVideoCodecFactory::createEncoder(const String& codec, const WebCore::VideoEncoder::Config& config, WebCore::VideoEncoder::CreateCallback&& createCallback, WebCore::VideoEncoder::DescriptionCallback&& descriptionCallback, WebCore::VideoEncoder::OutputCallback&& outputCallback, WebCore::VideoEncoder::PostTaskCallback&& postTaskCallback)
+void RemoteVideoCodecFactory::createEncoder(const String& codec, const CyberCore::VideoEncoder::Config& config, CyberCore::VideoEncoder::CreateCallback&& createCallback, CyberCore::VideoEncoder::DescriptionCallback&& descriptionCallback, CyberCore::VideoEncoder::OutputCallback&& outputCallback, CyberCore::VideoEncoder::PostTaskCallback&& postTaskCallback)
 {
     LibWebRTCCodecs::initializeIfNeeded();
 
@@ -213,7 +213,7 @@ RemoteVideoDecoderCallbacks::RemoteVideoDecoderCallbacks(VideoDecoder::OutputCal
 {
 }
 
-void RemoteVideoDecoderCallbacks::notifyDecodingResult(RefPtr<WebCore::VideoFrame>&& frame, int64_t timestamp)
+void RemoteVideoDecoderCallbacks::notifyDecodingResult(RefPtr<CyberCore::VideoFrame>&& frame, int64_t timestamp)
 {
     m_postTaskCallback([protectedThis = Ref { *this }, frame = WTFMove(frame), timestamp]() mutable {
         if (protectedThis->m_isClosed)

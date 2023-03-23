@@ -29,7 +29,7 @@
 #include "SVGAnimatedProperty.h"
 #include "SVGAttributeAnimator.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGProperty;
 
@@ -55,4 +55,4 @@ protected:
     SVGMemberAccessor() = default;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

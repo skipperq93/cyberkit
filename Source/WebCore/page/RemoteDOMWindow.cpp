@@ -31,7 +31,7 @@
 #include <CyberScriptCore/JSCJSValueInlines.h>
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(RemoteDOMWindow);
 
@@ -122,4 +122,4 @@ void RemoteDOMWindow::postMessage(JSC::JSGlobalObject&, DOMWindow& incumbentWind
     // FIXME: Implemented this.
 }
 
-} // namespace WebCore
+} // namespace CyberCore

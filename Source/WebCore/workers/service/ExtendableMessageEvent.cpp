@@ -31,7 +31,7 @@
 #include "EventNames.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(ExtendableMessageEvent);
 
@@ -64,6 +64,6 @@ ExtendableMessageEvent::~ExtendableMessageEvent()
 {
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

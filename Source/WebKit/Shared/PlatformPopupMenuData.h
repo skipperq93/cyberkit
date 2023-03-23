@@ -37,7 +37,7 @@ struct PlatformPopupMenuData {
     WebKit::FontInfo fontInfo;
     bool shouldPopOver { false };
     bool hideArrows { false };
-    WebCore::PopupMenuStyle::PopupMenuSize menuSize { WebCore::PopupMenuStyle::PopupMenuSize::PopupMenuSizeNormal };
+    CyberCore::PopupMenuStyle::PopupMenuSize menuSize { CyberCore::PopupMenuStyle::PopupMenuSize::PopupMenuSizeNormal };
 #elif PLATFORM(WIN)
     int m_clientPaddingLeft { 0 };
     int m_clientPaddingRight { 0 };

@@ -33,7 +33,7 @@ class JSGlobalObject;
 class JSValue;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class SerializedScriptValue;
 class ScriptExecutionContext;
@@ -54,4 +54,4 @@ private:
     Ref<SerializedScriptValue> m_serializedDetail;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

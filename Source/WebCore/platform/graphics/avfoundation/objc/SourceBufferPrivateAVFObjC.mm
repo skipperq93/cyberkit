@@ -48,7 +48,7 @@
 #import "SourceBufferPrivateClient.h"
 #import "TimeRanges.h"
 #import "VideoTrackPrivateMediaSourceAVFObjC.h"
-#import "WebCoreDecompressionSession.h"
+#import "CyberCoreDecompressionSession.h"
 #import <AVFoundation/AVAssetTrack.h>
 #import <CyberScriptCore/TypedArrayInlines.h>
 #import <QuartzCore/CALayer.h>
@@ -71,16 +71,16 @@
 #import <pal/cf/CoreMediaSoftLink.h>
 #import <pal/cocoa/AVFoundationSoftLink.h>
 
-@interface AVSampleBufferDisplayLayer (WebCoreAVSampleBufferDisplayLayerQueueManagementPrivate)
+@interface AVSampleBufferDisplayLayer (CyberCoreAVSampleBufferDisplayLayerQueueManagementPrivate)
 - (void)prerollDecodeWithCompletionHandler:(void (^)(BOOL success))block;
 - (void)expectMinimumUpcomingSampleBufferPresentationTime: (CMTime)minimumUpcomingPresentationTime;
 - (void)resetUpcomingSampleBufferPresentationTimeExpectations;
 @end
 
-@interface AVSampleBufferDisplayLayer (WebCoreSampleBufferKeySession) <AVContentKeyRecipient>
+@interface AVSampleBufferDisplayLayer (CyberCoreSampleBufferKeySession) <AVContentKeyRecipient>
 @end
 
-@interface AVSampleBufferAudioRenderer (WebCoreSampleBufferKeySession) <AVContentKeyRecipient>
+@interface AVSampleBufferAudioRenderer (CyberCoreSampleBufferKeySession) <AVContentKeyRecipient>
 @end
 
 #pragma mark -
@@ -92,14 +92,14 @@
 @end
 
 @interface WebAVSampleBufferErrorListener : NSObject {
-    WeakPtr<WebCore::SourceBufferPrivateAVFObjC> _parent;
+    WeakPtr<CyberCore::SourceBufferPrivateAVFObjC> _parent;
     Vector<RetainPtr<AVSampleBufferDisplayLayer>> _layers;
     ALLOW_NEW_API_WITHOUT_GUARDS_BEGIN
     Vector<RetainPtr<AVSampleBufferAudioRenderer>> _renderers;
     ALLOW_NEW_API_WITHOUT_GUARDS_END
 }
 
-- (id)initWithParent:(WeakPtr<WebCore::SourceBufferPrivateAVFObjC>&&)parent;
+- (id)initWithParent:(WeakPtr<CyberCore::SourceBufferPrivateAVFObjC>&&)parent;
 - (void)invalidate;
 - (void)beginObservingLayer:(AVSampleBufferDisplayLayer *)layer;
 - (void)stopObservingLayer:(AVSampleBufferDisplayLayer *)layer;
@@ -111,7 +111,7 @@ ALLOW_NEW_API_WITHOUT_GUARDS_END
 
 @implementation WebAVSampleBufferErrorListener
 
-- (id)initWithParent:(WeakPtr<WebCore::SourceBufferPrivateAVFObjC>&&)parent
+- (id)initWithParent:(WeakPtr<CyberCore::SourceBufferPrivateAVFObjC>&&)parent
 {
     if (!(self = [super init]))
         return nil;
@@ -265,7 +265,7 @@ ALLOW_NEW_API_WITHOUT_GUARDS_END
 }
 @end
 
-namespace WebCore {
+namespace CyberCore {
 
 #pragma mark -
 #pragma mark SourceBufferPrivateAVFObjC
@@ -1594,7 +1594,7 @@ void SourceBufferPrivateAVFObjC::setVideoLayer(AVSampleBufferDisplayLayer* layer
     }
 }
 
-void SourceBufferPrivateAVFObjC::setDecompressionSession(WebCoreDecompressionSession* decompressionSession)
+void SourceBufferPrivateAVFObjC::setDecompressionSession(CyberCoreDecompressionSession* decompressionSession)
 {
     if (m_decompressionSession == decompressionSession)
         return;

@@ -35,7 +35,7 @@
 #include "Settings.h"
 #include <CyberScriptCore/InspectorAgentBase.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace Inspector;
 
@@ -103,6 +103,6 @@ void PageDebuggable::setNameOverride(const String& name)
     update();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(REMOTE_INSPECTOR)

@@ -43,7 +43,7 @@
 #include <hb-ot.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 static cairo_subpixel_order_t convertFontConfigSubpixelOrder(int fontConfigOrder)
 {
@@ -321,4 +321,4 @@ HbUniquePtr<hb_font_t> FontPlatformData::createOpenTypeMathHarfBuzzFont() const
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

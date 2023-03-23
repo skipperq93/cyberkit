@@ -30,7 +30,7 @@
 #include "NetworkConnectionToWebProcessMessages.h"
 #include "NetworkProcessConnection.h"
 #include "NetworkStorageManagerMessages.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebIDBResult.h"
 #include "WebProcess.h"
 #include <CyberCore/IDBConnectionToServer.h>
@@ -49,7 +49,7 @@
 #include <CyberCore/ProcessIdentifier.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 Ref<WebIDBConnectionToServer> WebIDBConnectionToServer::create()
 {
@@ -327,7 +327,7 @@ void WebIDBConnectionToServer::didGetAllDatabaseNamesAndVersions(const IDBResour
 
 void WebIDBConnectionToServer::connectionToServerLost()
 {
-    m_connectionToServer->connectionToServerLost(IDBError { WebCore::UnknownError, "An internal error was encountered in the Indexed Database server"_s });
+    m_connectionToServer->connectionToServerLost(IDBError { CyberCore::UnknownError, "An internal error was encountered in the Indexed Database server"_s });
 }
 
 } // namespace WebKit

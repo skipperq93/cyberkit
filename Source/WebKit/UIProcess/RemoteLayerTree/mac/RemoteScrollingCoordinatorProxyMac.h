@@ -42,19 +42,19 @@ public:
     ~RemoteScrollingCoordinatorProxyMac();
 
 private:
-    WebCore::PlatformWheelEvent filteredWheelEvent(const WebCore::PlatformWheelEvent&) override;
+    CyberCore::PlatformWheelEvent filteredWheelEvent(const CyberCore::PlatformWheelEvent&) override;
 
     void didReceiveWheelEvent(bool) override;
-    bool scrollingTreeNodeRequestsScroll(WebCore::ScrollingNodeID, const WebCore::RequestedScrollData&) override;
+    bool scrollingTreeNodeRequestsScroll(CyberCore::ScrollingNodeID, const CyberCore::RequestedScrollData&) override;
     void hasNodeWithAnimatedScrollChanged(bool) override;
-    void displayDidRefresh(WebCore::PlatformDisplayID) override;
+    void displayDidRefresh(CyberCore::PlatformDisplayID) override;
 
-    void connectStateNodeLayers(WebCore::ScrollingStateTree&, const RemoteLayerTreeHost&) override;
+    void connectStateNodeLayers(CyberCore::ScrollingStateTree&, const RemoteLayerTreeHost&) override;
     void establishLayerTreeScrollingRelations(const RemoteLayerTreeHost&) override;
 
-    void windowScreenDidChange(WebCore::PlatformDisplayID, std::optional<WebCore::FramesPerSecond>) override;
+    void windowScreenDidChange(CyberCore::PlatformDisplayID, std::optional<CyberCore::FramesPerSecond>) override;
 
-    std::unique_ptr<WebCore::WheelEventDeltaFilter> m_recentWheelEventDeltaFilter;
+    std::unique_ptr<CyberCore::WheelEventDeltaFilter> m_recentWheelEventDeltaFilter;
 
 #if ENABLE(SCROLLING_THREAD)
     RefPtr<RemoteLayerTreeEventDispatcher> m_wheelEventDispatcher;

@@ -31,7 +31,7 @@
 #include <stdlib.h>
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioBus;
 
@@ -41,4 +41,4 @@ class AudioBus;
 
 RefPtr<AudioBus> createBusFromInMemoryAudioFile(const void* data, size_t dataSize, bool mixToMono, float sampleRate);
 
-} // namespace WebCore
+} // namespace CyberCore

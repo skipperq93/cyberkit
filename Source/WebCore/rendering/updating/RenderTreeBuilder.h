@@ -28,7 +28,7 @@
 #include "RenderTreePosition.h"
 #include "RenderWidget.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderGrid;
 class RenderTreeUpdater;

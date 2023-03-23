@@ -33,7 +33,7 @@
 #include "SharedBuffer.h"
 #include <wtf/text/StringHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 bool Pasteboard::isSafeTypeForDOMToReadAndWrite(const String& type)
 {
@@ -86,7 +86,7 @@ String Pasteboard::readString(size_t index, const String& type)
     return { };
 }
 
-RefPtr<WebCore::SharedBuffer> Pasteboard::readBuffer(std::optional<size_t> index, const String& type)
+RefPtr<CyberCore::SharedBuffer> Pasteboard::readBuffer(std::optional<size_t> index, const String& type)
 {
     if (auto* strategy = platformStrategies()->pasteboardStrategy())
         return strategy->readBufferFromPasteboard(index, type, name(), context());

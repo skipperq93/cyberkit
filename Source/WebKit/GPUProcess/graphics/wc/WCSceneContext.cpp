@@ -35,7 +35,7 @@ namespace WebKit {
 
 WCSceneContext::WCSceneContext(uint64_t nativeWindow)
 {
-    m_glContext = WebCore::GLContext::createContextForWindow(reinterpret_cast<GLNativeWindowType>(nativeWindow));
+    m_glContext = CyberCore::GLContext::createContextForWindow(reinterpret_cast<GLNativeWindowType>(nativeWindow));
 }
 
 WCSceneContext::~WCSceneContext() = default;
@@ -45,9 +45,9 @@ bool WCSceneContext::makeContextCurrent()
     return m_glContext->makeContextCurrent();
 }
 
-std::unique_ptr<WebCore::TextureMapper> WCSceneContext::createTextureMapper()
+std::unique_ptr<CyberCore::TextureMapper> WCSceneContext::createTextureMapper()
 {
-    return WebCore::TextureMapperGL::create();
+    return CyberCore::TextureMapperGL::create();
 }
 
 void WCSceneContext::swapBuffers()

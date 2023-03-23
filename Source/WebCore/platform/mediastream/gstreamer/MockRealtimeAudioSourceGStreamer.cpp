@@ -27,7 +27,7 @@
 
 #include "MockRealtimeMediaSourceCenter.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static const double s_Tau = 2 * M_PI;
 static const double s_BipBopDuration = 0.07;
@@ -166,6 +166,6 @@ void MockRealtimeAudioSourceGStreamer::setInterruptedForTesting(bool isInterrupt
     MockRealtimeAudioSource::setInterruptedForTesting(isInterrupted);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM) && USE(GSTREAMER)

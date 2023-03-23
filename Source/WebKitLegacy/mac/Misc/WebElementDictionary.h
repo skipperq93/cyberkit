@@ -28,15 +28,15 @@
 
 #import <Foundation/NSDictionary.h>
 
-namespace WebCore { 
+namespace CyberCore { 
     class HitTestResult;
 }
 
 @interface WebElementDictionary : NSDictionary {
-    WebCore::HitTestResult* _result;
+    CyberCore::HitTestResult* _result;
     NSMutableDictionary *_cache;
     NSMutableSet *_nilValues;
     BOOL _cacheComplete;
 }
-- (id)initWithHitTestResult:(const WebCore::HitTestResult&)result;
+- (id)initWithHitTestResult:(const CyberCore::HitTestResult&)result;
 @end

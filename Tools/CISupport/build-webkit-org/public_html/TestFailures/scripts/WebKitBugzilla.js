@@ -23,7 +23,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-const WebKitBugzilla = {
+const CyberKitBugzilla = {
     Component: {
         ToolsTests: 'Tools / Tests',
     },
@@ -47,7 +47,7 @@ const WebKitBugzilla = {
     },
 
     Product: {
-        WebKit: 'WebKit',
+        CyberKit: 'CyberKit',
     },
 
     Version: {

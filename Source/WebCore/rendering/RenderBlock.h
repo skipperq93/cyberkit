@@ -29,7 +29,7 @@
 #include <memory>
 #include <wtf/ListHashSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class LineLayoutState;
 class LogicalSelectionOffsetCaches;
@@ -545,6 +545,6 @@ inline RenderPtr<RenderBlock> RenderBlock::createAnonymousBlock(DisplayType disp
     return createAnonymousBlockWithStyleAndDisplay(document(), style(), display);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderBlock, isRenderBlock())

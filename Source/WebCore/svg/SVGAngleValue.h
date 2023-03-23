@@ -24,7 +24,7 @@
 #include "ExceptionOr.h"
 #include "SVGPropertyTraits.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGAngleValue {
     WTF_MAKE_FAST_ALLOCATED;

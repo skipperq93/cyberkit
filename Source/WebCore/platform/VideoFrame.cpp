@@ -32,7 +32,7 @@
 #include "VideoFrameGStreamer.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 VideoFrame::VideoFrame(MediaTime presentationTime, bool isMirrored, Rotation rotation, PlatformVideoColorSpace&& colorSpace)
     : m_presentationTime(presentationTime)

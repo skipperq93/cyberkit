@@ -72,12 +72,12 @@ public:
         removeUnusedIcons(true);
     }
 
-    const char* iconPath(const String& iconURL, const RefPtr<WebCore::Image>& icon)
+    const char* iconPath(const String& iconURL, const RefPtr<CyberCore::Image>& icon)
     {
         if (!icon)
             return nullptr;
 
-        auto writeIconToTemporaryFile = [](const RefPtr<WebCore::Image>& icon) -> CString {
+        auto writeIconToTemporaryFile = [](const RefPtr<CyberCore::Image>& icon) -> CString {
             auto nativeImage = icon->nativeImage();
             if (!nativeImage)
                 return { };
@@ -126,12 +126,12 @@ public:
         return std::get<CString>(addResult.iterator->value.second).data();
     }
 
-    GBytes* iconBytes(const String& iconURL, const RefPtr<WebCore::Image>& icon)
+    GBytes* iconBytes(const String& iconURL, const RefPtr<CyberCore::Image>& icon)
     {
         if (!icon)
             return nullptr;
 
-        auto writeIconToBuffer = [](const RefPtr<WebCore::Image>& icon) -> GRefPtr<GBytes> {
+        auto writeIconToBuffer = [](const RefPtr<CyberCore::Image>& icon) -> GRefPtr<GBytes> {
             auto nativeImage = icon->nativeImage();
             if (!nativeImage)
                 return nullptr;
@@ -337,7 +337,7 @@ static const char* applicationIcon(const char* applicationID)
     return appIcon->data();
 }
 
-bool NotificationService::showNotification(const WebNotification& notification, const RefPtr<WebCore::NotificationResources>& resources)
+bool NotificationService::showNotification(const WebNotification& notification, const RefPtr<CyberCore::NotificationResources>& resources)
 {
     if (!m_proxy)
         return false;

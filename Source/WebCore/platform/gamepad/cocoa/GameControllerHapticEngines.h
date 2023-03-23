@@ -34,7 +34,7 @@
 OBJC_CLASS CHHapticEngine;
 OBJC_CLASS GCController;
 
-namespace WebCore {
+namespace CyberCore {
 
 class GameControllerHapticEffect;
 struct GamepadEffectParameters;
@@ -74,6 +74,6 @@ private:
     std::unique_ptr<GameControllerHapticEffect> m_currentTriggerRumbleEffect;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(GAMEPAD) && HAVE(WIDE_GAMECONTROLLER_SUPPORT)

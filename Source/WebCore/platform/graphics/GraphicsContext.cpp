@@ -44,7 +44,7 @@
 #include "VideoFrame.h"
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 GraphicsContext::GraphicsContext(const GraphicsContextState::ChangeFlags& changeFlags, InterpolationQuality imageInterpolationQuality)
     : m_state(changeFlags, imageInterpolationQuality)

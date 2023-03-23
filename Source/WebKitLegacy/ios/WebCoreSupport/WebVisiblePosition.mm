@@ -46,7 +46,7 @@
 #import <CyberCore/VisibleUnits.h>
 #import <wtf/cocoa/VectorCocoa.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 //-------------------
 
@@ -296,7 +296,7 @@ static inline SelectionDirection toSelectionDirection(WebTextAdjustmentDirection
 
 - (WebVisiblePosition *)positionAtStartOrEndOfWord
 {
-    // Ripped from WebCore::Frame::moveSelectionToStartOrEndOfCurrentWord
+    // Ripped from CyberCore::Frame::moveSelectionToStartOrEndOfCurrentWord
     
     // Note: this is the iOS notion, not the unicode notion.
     // Here, a word starts with non-whitespace or at the start of a line and
@@ -444,7 +444,7 @@ static inline SelectionDirection toSelectionDirection(WebTextAdjustmentDirection
 
 - (void)setAffinity:(NSSelectionAffinity)affinity
 {
-    reinterpret_cast<VisiblePosition *>(_internal)->setAffinity((WebCore::Affinity)affinity);
+    reinterpret_cast<VisiblePosition *>(_internal)->setAffinity((CyberCore::Affinity)affinity);
 }
 
 @end

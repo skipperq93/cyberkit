@@ -29,7 +29,7 @@
 #include "StyleGeneratedImage.h"
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class StyleNamedImage final : public StyleGeneratedImage {
 public:
@@ -59,7 +59,7 @@ private:
     String m_name;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_STYLE_IMAGE(StyleNamedImage, isNamedImage)
 

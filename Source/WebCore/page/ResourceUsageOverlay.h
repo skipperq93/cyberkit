@@ -38,7 +38,7 @@
 #include "PlatformCALayer.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class FloatRect;
 class IntPoint;
@@ -88,6 +88,6 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(RESOURCE_USAGE)

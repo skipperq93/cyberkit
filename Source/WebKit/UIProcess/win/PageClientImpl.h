@@ -34,7 +34,7 @@
 #include "WebPageProxy.h"
 #include <CyberCore/IntSize.h>
 
-namespace WebCore {
+namespace CyberCore {
 enum class DOMPasteAccessCategory : uint8_t;
 enum class DOMPasteAccessResponse : uint8_t;
 }
@@ -59,10 +59,10 @@ public:
 private:
     // PageClient
     std::unique_ptr<DrawingAreaProxy> createDrawingAreaProxy(WebProcessProxy&) override;
-    void setViewNeedsDisplay(const WebCore::Region&) override;
-    void requestScroll(const WebCore::FloatPoint& scrollPosition, const WebCore::IntPoint& scrollOrigin, WebCore::ScrollIsAnimated) override;
-    WebCore::FloatPoint viewScrollPosition() override;
-    WebCore::IntSize viewSize() override;
+    void setViewNeedsDisplay(const CyberCore::Region&) override;
+    void requestScroll(const CyberCore::FloatPoint& scrollPosition, const CyberCore::IntPoint& scrollOrigin, CyberCore::ScrollIsAnimated) override;
+    CyberCore::FloatPoint viewScrollPosition() override;
+    CyberCore::IntSize viewSize() override;
     bool isViewWindowActive() override;
     bool isViewFocused() override;
     bool isViewVisible() override;
@@ -72,19 +72,19 @@ private:
     void pageClosed() override;
     void preferencesDidChange() override;
     void toolTipChanged(const WTF::String&, const WTF::String&) override;
-    void setCursor(const WebCore::Cursor&) override;
+    void setCursor(const CyberCore::Cursor&) override;
     void setCursorHiddenUntilMouseMoves(bool) override;
-    void didChangeViewportProperties(const WebCore::ViewportAttributes&) override;
+    void didChangeViewportProperties(const CyberCore::ViewportAttributes&) override;
     void registerEditCommand(Ref<WebEditCommandProxy>&&, UndoOrRedo) override;
     void clearAllEditCommands() override;
     bool canUndoRedo(UndoOrRedo) override;
     void executeUndoRedo(UndoOrRedo) override;
-    WebCore::FloatRect convertToDeviceSpace(const WebCore::FloatRect&) override;
-    WebCore::FloatRect convertToUserSpace(const WebCore::FloatRect&) override;
-    WebCore::IntPoint screenToRootView(const WebCore::IntPoint&) override;
-    WebCore::IntRect rootViewToScreen(const WebCore::IntRect&) override;
-    WebCore::IntPoint accessibilityScreenToRootView(const WebCore::IntPoint&) override;
-    WebCore::IntRect rootViewToAccessibilityScreen(const WebCore::IntRect&) override;
+    CyberCore::FloatRect convertToDeviceSpace(const CyberCore::FloatRect&) override;
+    CyberCore::FloatRect convertToUserSpace(const CyberCore::FloatRect&) override;
+    CyberCore::IntPoint screenToRootView(const CyberCore::IntPoint&) override;
+    CyberCore::IntRect rootViewToScreen(const CyberCore::IntRect&) override;
+    CyberCore::IntPoint accessibilityScreenToRootView(const CyberCore::IntPoint&) override;
+    CyberCore::IntRect rootViewToAccessibilityScreen(const CyberCore::IntRect&) override;
     void doneWithKeyEvent(const NativeWebKeyboardEvent&, bool wasEventHandled) override;
     RefPtr<WebPopupMenuProxy> createPopupMenuProxy(WebPageProxy&) override;
 #if ENABLE(CONTEXT_MENUS)
@@ -92,14 +92,14 @@ private:
 #endif
 
 #if ENABLE(INPUT_TYPE_COLOR)
-    RefPtr<WebColorPicker> createColorPicker(WebPageProxy*, const WebCore::Color& intialColor, const WebCore::IntRect&) override;
+    RefPtr<WebColorPicker> createColorPicker(WebPageProxy*, const CyberCore::Color& intialColor, const CyberCore::IntRect&) override;
 #endif
 
     void enterAcceleratedCompositingMode(const LayerTreeContext&) override;
     void exitAcceleratedCompositingMode() override;
     void updateAcceleratedCompositingMode(const LayerTreeContext&) override;
 
-    void didChangeContentSize(const WebCore::IntSize&) override;
+    void didChangeContentSize(const CyberCore::IntSize&) override;
     void didCommitLoadForMainFrame(const String& mimeType, bool useCustomContentProvider) override;
     void didFirstVisuallyNonEmptyLayoutForMainFrame() override;
     void didFinishNavigation(API::Navigation*) override;
@@ -121,8 +121,8 @@ private:
     bool isFullScreen() override;
     void enterFullScreen() override;
     void exitFullScreen() override;
-    void beganEnterFullScreen(const WebCore::IntRect& initialFrame, const WebCore::IntRect& finalFrame) override;
-    void beganExitFullScreen(const WebCore::IntRect& initialFrame, const WebCore::IntRect& finalFrame) override;
+    void beganEnterFullScreen(const CyberCore::IntRect& initialFrame, const CyberCore::IntRect& finalFrame) override;
+    void beganExitFullScreen(const CyberCore::IntRect& initialFrame, const CyberCore::IntRect& finalFrame) override;
 #endif
 
     void didFinishLoadingDataForCustomContentProvider(const String& suggestedFilename, const IPC::DataReference&) override;
@@ -139,7 +139,7 @@ private:
     void doneWithTouchEvent(const NativeWebTouchEvent&, bool wasEventHandled) override;
 #endif
 
-    void wheelEventWasNotHandledByWebCore(const NativeWebWheelEvent&) override;
+    void wheelEventWasNotHandledByCyberCore(const NativeWebWheelEvent&) override;
 
     void didChangeBackgroundColor() override;
     void isPlayingAudioWillChange() override;
@@ -150,9 +150,9 @@ private:
 
     void didRestoreScrollPosition() override { }
 
-    WebCore::UserInterfaceLayoutDirection userInterfaceLayoutDirection() override { return WebCore::UserInterfaceLayoutDirection::LTR; }
+    CyberCore::UserInterfaceLayoutDirection userInterfaceLayoutDirection() override { return CyberCore::UserInterfaceLayoutDirection::LTR; }
 
-    void requestDOMPasteAccess(WebCore::DOMPasteAccessCategory, const WebCore::IntRect&, const String&, CompletionHandler<void(WebCore::DOMPasteAccessResponse)>&&) final;
+    void requestDOMPasteAccess(CyberCore::DOMPasteAccessCategory, const CyberCore::IntRect&, const String&, CompletionHandler<void(CyberCore::DOMPasteAccessResponse)>&&) final;
 
     // Members of PageClientImpl class
     DefaultUndoController m_undoController;

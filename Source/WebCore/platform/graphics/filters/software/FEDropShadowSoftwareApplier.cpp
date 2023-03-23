@@ -28,7 +28,7 @@
 #include "PixelBuffer.h"
 #include "ShadowBlur.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 bool FEDropShadowSoftwareApplier::apply(const Filter& filter, const FilterImageVector& inputs, FilterImage& result) const
 {
@@ -77,4 +77,4 @@ bool FEDropShadowSoftwareApplier::apply(const Filter& filter, const FilterImageV
     return true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -24,7 +24,7 @@
  */
 
 #import "config.h"
-#import "WebCoreAVFResourceLoader.h"
+#import "CyberCoreAVFResourceLoader.h"
 
 #if ENABLE(VIDEO) && USE(AVFOUNDATION)
 
@@ -46,16 +46,16 @@
 @property (nonatomic, getter=isEntireLengthAvailableOnDemand) BOOL entireLengthAvailableOnDemand;
 @end
 
-namespace WebCore {
+namespace CyberCore {
 
 class CachedResourceMediaLoader final : CachedRawResourceClient {
     WTF_MAKE_FAST_ALLOCATED;
 public:
-    static std::unique_ptr<CachedResourceMediaLoader> create(WebCoreAVFResourceLoader&, CachedResourceLoader&, ResourceRequest&&);
+    static std::unique_ptr<CachedResourceMediaLoader> create(CyberCoreAVFResourceLoader&, CachedResourceLoader&, ResourceRequest&&);
     ~CachedResourceMediaLoader() { stop(); }
 
 private:
-    CachedResourceMediaLoader(WebCoreAVFResourceLoader&, CachedResourceHandle<CachedRawResource>&&);
+    CachedResourceMediaLoader(CyberCoreAVFResourceLoader&, CachedResourceHandle<CachedRawResource>&&);
 
     void stop();
 
@@ -66,11 +66,11 @@ private:
 
     void fulfillRequestWithResource(CachedResource&);
 
-    WebCoreAVFResourceLoader& m_parent;
+    CyberCoreAVFResourceLoader& m_parent;
     CachedResourceHandle<CachedRawResource> m_resource;
 };
 
-std::unique_ptr<CachedResourceMediaLoader> CachedResourceMediaLoader::create(WebCoreAVFResourceLoader& parent, CachedResourceLoader& loader, ResourceRequest&& resourceRequest)
+std::unique_ptr<CachedResourceMediaLoader> CachedResourceMediaLoader::create(CyberCoreAVFResourceLoader& parent, CachedResourceLoader& loader, ResourceRequest&& resourceRequest)
 {
     // FIXME: Skip Content Security Policy check if the element that inititated this request
     // is in a user-agent shadow tree. See <https://bugs.webkit.org/show_bug.cgi?id=173498>.
@@ -97,7 +97,7 @@ std::unique_ptr<CachedResourceMediaLoader> CachedResourceMediaLoader::create(Web
     return std::unique_ptr<CachedResourceMediaLoader>(new CachedResourceMediaLoader { parent, WTFMove(resource) });
 }
 
-CachedResourceMediaLoader::CachedResourceMediaLoader(WebCoreAVFResourceLoader& parent, CachedResourceHandle<CachedRawResource>&& resource)
+CachedResourceMediaLoader::CachedResourceMediaLoader(CyberCoreAVFResourceLoader& parent, CachedResourceHandle<CachedRawResource>&& resource)
     : m_parent(parent)
     , m_resource(WTFMove(resource))
 {
@@ -140,13 +140,13 @@ void CachedResourceMediaLoader::dataReceived(CachedResource& resource, const Sha
 class PlatformResourceMediaLoader final : public PlatformMediaResourceClient, public CanMakeWeakPtr<PlatformResourceMediaLoader> {
     WTF_MAKE_FAST_ALLOCATED;
 public:
-    static WeakPtr<PlatformResourceMediaLoader> create(WebCoreAVFResourceLoader&, PlatformMediaResourceLoader&, ResourceRequest&&);
+    static WeakPtr<PlatformResourceMediaLoader> create(CyberCoreAVFResourceLoader&, PlatformMediaResourceLoader&, ResourceRequest&&);
     ~PlatformResourceMediaLoader() { stop(); }
 
     void stop();
 
 private:
-    PlatformResourceMediaLoader(WebCoreAVFResourceLoader&, Ref<PlatformMediaResource>&&);
+    PlatformResourceMediaLoader(CyberCoreAVFResourceLoader&, Ref<PlatformMediaResource>&&);
 
     void loadFailed(const ResourceError&);
     void loadFinished();
@@ -161,12 +161,12 @@ private:
     void loadFailed(PlatformMediaResource&, const ResourceError& error) final { loadFailed(error); }
     void loadFinished(PlatformMediaResource&, const NetworkLoadMetrics&) final { loadFinished(); }
 
-    WebCoreAVFResourceLoader& m_parent;
+    CyberCoreAVFResourceLoader& m_parent;
     RefPtr<PlatformMediaResource> m_resource;
     SharedBufferBuilder m_buffer;
 };
 
-WeakPtr<PlatformResourceMediaLoader> PlatformResourceMediaLoader::create(WebCoreAVFResourceLoader& parent, PlatformMediaResourceLoader& loader, ResourceRequest&& request)
+WeakPtr<PlatformResourceMediaLoader> PlatformResourceMediaLoader::create(CyberCoreAVFResourceLoader& parent, PlatformMediaResourceLoader& loader, ResourceRequest&& request)
 {
     auto resource = loader.requestResource(WTFMove(request), PlatformMediaResourceLoader::LoadOption::DisallowCaching);
     if (!resource)
@@ -179,7 +179,7 @@ WeakPtr<PlatformResourceMediaLoader> PlatformResourceMediaLoader::create(WebCore
     return result;
 }
 
-PlatformResourceMediaLoader::PlatformResourceMediaLoader(WebCoreAVFResourceLoader& parent, Ref<PlatformMediaResource>&& resource)
+PlatformResourceMediaLoader::PlatformResourceMediaLoader(CyberCoreAVFResourceLoader& parent, Ref<PlatformMediaResource>&& resource)
     : m_parent(parent)
     , m_resource(WTFMove(resource))
 {
@@ -220,15 +220,15 @@ void PlatformResourceMediaLoader::dataReceived(PlatformMediaResource&, const Sha
 class DataURLResourceMediaLoader : public CanMakeWeakPtr<DataURLResourceMediaLoader> {
     WTF_MAKE_FAST_ALLOCATED;
 public:
-    DataURLResourceMediaLoader(WebCoreAVFResourceLoader&, ResourceRequest&&);
+    DataURLResourceMediaLoader(CyberCoreAVFResourceLoader&, ResourceRequest&&);
 
 private:
-    WebCoreAVFResourceLoader& m_parent;
+    CyberCoreAVFResourceLoader& m_parent;
     ResourceResponse m_response;
     RefPtr<SharedBuffer> m_buffer;
 };
 
-DataURLResourceMediaLoader::DataURLResourceMediaLoader(WebCoreAVFResourceLoader& parent, ResourceRequest&& request)
+DataURLResourceMediaLoader::DataURLResourceMediaLoader(CyberCoreAVFResourceLoader& parent, ResourceRequest&& request)
     : m_parent(parent)
 {
     RELEASE_ASSERT(request.url().protocolIsData());
@@ -258,25 +258,25 @@ DataURLResourceMediaLoader::DataURLResourceMediaLoader(WebCoreAVFResourceLoader&
     });
 }
 
-Ref<WebCoreAVFResourceLoader> WebCoreAVFResourceLoader::create(MediaPlayerPrivateAVFoundationObjC* parent, AVAssetResourceLoadingRequest *avRequest)
+Ref<CyberCoreAVFResourceLoader> CyberCoreAVFResourceLoader::create(MediaPlayerPrivateAVFoundationObjC* parent, AVAssetResourceLoadingRequest *avRequest)
 {
     ASSERT(avRequest);
     ASSERT(parent);
-    return adoptRef(*new WebCoreAVFResourceLoader(parent, avRequest));
+    return adoptRef(*new CyberCoreAVFResourceLoader(parent, avRequest));
 }
 
-WebCoreAVFResourceLoader::WebCoreAVFResourceLoader(MediaPlayerPrivateAVFoundationObjC* parent, AVAssetResourceLoadingRequest *avRequest)
+CyberCoreAVFResourceLoader::CyberCoreAVFResourceLoader(MediaPlayerPrivateAVFoundationObjC* parent, AVAssetResourceLoadingRequest *avRequest)
     : m_parent(parent)
     , m_avRequest(avRequest)
 {
 }
 
-WebCoreAVFResourceLoader::~WebCoreAVFResourceLoader()
+CyberCoreAVFResourceLoader::~CyberCoreAVFResourceLoader()
 {
     stopLoading();
 }
 
-void WebCoreAVFResourceLoader::startLoading()
+void CyberCoreAVFResourceLoader::startLoading()
 {
     if (m_dataURLMediaLoader || m_resourceMediaLoader || m_platformMediaLoader || !m_parent)
         return;
@@ -313,7 +313,7 @@ void WebCoreAVFResourceLoader::startLoading()
     [m_avRequest finishLoadingWithError:0];
 }
 
-void WebCoreAVFResourceLoader::stopLoading()
+void CyberCoreAVFResourceLoader::stopLoading()
 {
     m_dataURLMediaLoader = nullptr;
     m_resourceMediaLoader = nullptr;
@@ -326,7 +326,7 @@ void WebCoreAVFResourceLoader::stopLoading()
         m_parent->didStopLoadingRequest(m_avRequest.get());
 }
 
-void WebCoreAVFResourceLoader::invalidate()
+void CyberCoreAVFResourceLoader::invalidate()
 {
     if (!m_parent)
         return;
@@ -338,7 +338,7 @@ void WebCoreAVFResourceLoader::invalidate()
     });
 }
 
-void WebCoreAVFResourceLoader::responseReceived(const ResourceResponse& response)
+void CyberCoreAVFResourceLoader::responseReceived(const ResourceResponse& response)
 {
     int status = response.httpStatusCode();
     if (status && (status < 200 || status > 299)) {
@@ -372,7 +372,7 @@ void WebCoreAVFResourceLoader::responseReceived(const ResourceResponse& response
     }
 }
 
-void WebCoreAVFResourceLoader::loadFailed(const ResourceError& error)
+void CyberCoreAVFResourceLoader::loadFailed(const ResourceError& error)
 {
     // <rdar://problem/13987417> Set the contentType of the contentInformationRequest to an empty
     // string to trigger AVAsset's playable value to complete loading.
@@ -383,13 +383,13 @@ void WebCoreAVFResourceLoader::loadFailed(const ResourceError& error)
     stopLoading();
 }
 
-void WebCoreAVFResourceLoader::loadFinished()
+void CyberCoreAVFResourceLoader::loadFinished()
 {
     [m_avRequest finishLoading];
     stopLoading();
 }
 
-void WebCoreAVFResourceLoader::newDataStoredInSharedBuffer(const FragmentedSharedBuffer& data)
+void CyberCoreAVFResourceLoader::newDataStoredInSharedBuffer(const FragmentedSharedBuffer& data)
 {
     AVAssetResourceLoadingDataRequest* dataRequest = [m_avRequest dataRequest];
     if (!dataRequest)

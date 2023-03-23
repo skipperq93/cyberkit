@@ -109,7 +109,7 @@ TEST(ExitFullscreenOnEnterPiP, ElementFullscreen)
 #endif
 {
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{
-        @"WebCoreLogging": @"Fullscreen=debug",
+        @"CyberCoreLogging": @"Fullscreen=debug",
         @"WebKit2Logging": @"Fullscreen=debug",
     }];
     RetainPtr<WKWebViewConfiguration> configuration = adoptNS([[WKWebViewConfiguration alloc] init]);
@@ -123,7 +123,7 @@ TEST(ExitFullscreenOnEnterPiP, ElementFullscreen)
     [webView synchronouslyLoadTestPageNamed:@"ExitFullscreenOnEnterPiP"];
 
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{
-        @"WebCoreLogging": @"",
+        @"CyberCoreLogging": @"",
         @"WebKit2Logging": @"",
     }];
 

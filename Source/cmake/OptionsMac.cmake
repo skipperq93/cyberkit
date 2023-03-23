@@ -1,11 +1,11 @@
 # FIXME: These should line up with versions in Configurations/Version.xcconfig.
-# See Source/WebKitLegacy/PlatformWin.cmake for how WebKitVersion.h is generated.
+# See Source/CyberKitLegacy/PlatformWin.cmake for how CyberKitVersion.h is generated.
 set(WEBKIT_MAC_VERSION 615.1.1)
 set(MACOSX_FRAMEWORK_BUNDLE_VERSION 615.1.1+)
 
 WEBKIT_OPTION_BEGIN()
-# Private options shared with other WebKit ports. Add options here only if
-# we need a value different from the default defined in WebKitFeatures.cmake.
+# Private options shared with other CyberKit ports. Add options here only if
+# we need a value different from the default defined in CyberKitFeatures.cmake.
 
 # FIXME: https://bugs.webkit.org/show_bug.cgi?id=231776
 # WEBKIT_OPTION_DEFAULT_PORT_VALUE(ENABLE_API_TESTS PRIVATE ON)
@@ -89,7 +89,7 @@ set(bmalloc_LIBRARY_TYPE OBJECT)
 set(WTF_LIBRARY_TYPE OBJECT)
 set(JavaScriptCore_LIBRARY_TYPE SHARED)
 set(PAL_LIBRARY_TYPE OBJECT)
-set(WebCore_LIBRARY_TYPE SHARED)
+set(CyberCore_LIBRARY_TYPE SHARED)
 
 find_package(ICU 61.2 REQUIRED COMPONENTS data i18n uc)
 find_package(LibXml2 2.8.0 REQUIRED)

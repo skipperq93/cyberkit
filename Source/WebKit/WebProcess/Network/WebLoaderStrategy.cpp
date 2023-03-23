@@ -33,7 +33,7 @@
 #include "NetworkResourceLoadParameters.h"
 #include "RemoteWorkerFrameLoaderClient.h"
 #include "WebCompiledContentRuleList.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebDocumentLoader.h"
 #include "WebErrors.h"
 #include "WebFrame.h"
@@ -61,7 +61,7 @@
 #include <CyberCore/FrameDestructionObserverInlines.h>
 #include <CyberCore/FrameLoader.h>
 #include <CyberCore/HTMLFrameOwnerElement.h>
-#include <CyberCore/InspectorInstrumentationWebKit.h>
+#include <CyberCore/InspectorInstrumentationCyberKit.h>
 #include <CyberCore/NetscapePlugInStreamLoader.h>
 #include <CyberCore/NetworkLoadInformation.h>
 #include <CyberCore/PlatformStrategies.h>
@@ -93,8 +93,8 @@
 #define WEBLOADERSTRATEGY_WITH_FRAMELOADER_RELEASE_LOG(fmt, ...) RELEASE_LOG(Network, WEBLOADERSTRATEGY_RELEASE_LOG_STANDARD_TEMPLATE fmt, WEBLOADERSTRATEGY_WITH_FRAMELOADER_RELEASE_LOG_STANDARD_PARAMETERS, ##__VA_ARGS__)
 #define WEBLOADERSTRATEGY_WITH_FRAMELOADER_RELEASE_LOG_ERROR(fmt, ...) RELEASE_LOG_ERROR(Network, WEBLOADERSTRATEGY_RELEASE_LOG_STANDARD_TEMPLATE fmt, WEBLOADERSTRATEGY_WITH_FRAMELOADER_RELEASE_LOG_STANDARD_PARAMETERS, ##__VA_ARGS__)
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 WebLoaderStrategy::WebLoaderStrategy()
     : m_internallyFailedLoadTimer(RunLoop::main(), this, &WebLoaderStrategy::internallyFailedLoadTimerFired)
@@ -245,8 +245,8 @@ void WebLoaderStrategy::scheduleLoad(ResourceLoader& resourceLoader, CachedResou
     if (tryLoadingUsingURLSchemeHandler(resourceLoader, trackingParameters))
         return;
 
-    if (InspectorInstrumentationWebKit::shouldInterceptRequest(resourceLoader)) {
-        InspectorInstrumentationWebKit::interceptRequest(resourceLoader, [this, protectedResourceLoader = Ref { resourceLoader }, trackingParameters, shouldClearReferrerOnHTTPSToHTTPRedirect, resource](const ResourceRequest& request) {
+    if (InspectorInstrumentationCyberKit::shouldInterceptRequest(resourceLoader)) {
+        InspectorInstrumentationCyberKit::interceptRequest(resourceLoader, [this, protectedResourceLoader = Ref { resourceLoader }, trackingParameters, shouldClearReferrerOnHTTPSToHTTPRedirect, resource](const ResourceRequest& request) {
             auto& resourceLoader = protectedResourceLoader.get();
             WEBLOADERSTRATEGY_RELEASE_LOG("scheduleLoad: intercepted URL will be scheduled with the NetworkProcess");
             scheduleLoadFromNetworkProcess(resourceLoader, request, trackingParameters, shouldClearReferrerOnHTTPSToHTTPRedirect, maximumBufferingTime(resource));
@@ -527,7 +527,7 @@ void WebLoaderStrategy::scheduleLoadFromNetworkProcess(ResourceLoader& resourceL
     m_webResourceLoaders.set(identifier, WTFMove(loader));
 }
 
-void WebLoaderStrategy::scheduleInternallyFailedLoad(WebCore::ResourceLoader& resourceLoader)
+void WebLoaderStrategy::scheduleInternallyFailedLoad(CyberCore::ResourceLoader& resourceLoader)
 {
     m_internallyFailedResourceLoaders.add(&resourceLoader);
     m_internallyFailedLoadTimer.startOneShot(0_s);
@@ -539,7 +539,7 @@ void WebLoaderStrategy::internallyFailedLoadTimerFired()
         resourceLoader->didFail(internalError(resourceLoader->url()));
 }
 
-void WebLoaderStrategy::startLocalLoad(WebCore::ResourceLoader& resourceLoader)
+void WebLoaderStrategy::startLocalLoad(CyberCore::ResourceLoader& resourceLoader)
 {
     resourceLoader.start();
     m_webResourceLoaders.set(resourceLoader.identifier(), WebResourceLoader::create(resourceLoader, { }));
@@ -666,7 +666,7 @@ WebLoaderStrategy::SyncLoadResult WebLoaderStrategy::loadDataURLSynchronously(co
     return result;
 }
 
-std::optional<WebLoaderStrategy::SyncLoadResult> WebLoaderStrategy::tryLoadingSynchronouslyUsingURLSchemeHandler(FrameLoader& frameLoader, WebCore::ResourceLoaderIdentifier identifier, const ResourceRequest& request)
+std::optional<WebLoaderStrategy::SyncLoadResult> WebLoaderStrategy::tryLoadingSynchronouslyUsingURLSchemeHandler(FrameLoader& frameLoader, CyberCore::ResourceLoaderIdentifier identifier, const ResourceRequest& request)
 {
     auto* webFrameLoaderClient = toWebFrameLoaderClient(frameLoader.client());
     auto* webFrame = webFrameLoaderClient ? &webFrameLoaderClient->webFrame() : nullptr;
@@ -686,7 +686,7 @@ std::optional<WebLoaderStrategy::SyncLoadResult> WebLoaderStrategy::tryLoadingSy
     return result;
 }
 
-void WebLoaderStrategy::loadResourceSynchronously(FrameLoader& frameLoader, WebCore::ResourceLoaderIdentifier resourceLoadIdentifier, const ResourceRequest& request, ClientCredentialPolicy clientCredentialPolicy,  const FetchOptions& options, const HTTPHeaderMap& originalRequestHeaders, ResourceError& error, ResourceResponse& response, Vector<uint8_t>& data)
+void WebLoaderStrategy::loadResourceSynchronously(FrameLoader& frameLoader, CyberCore::ResourceLoaderIdentifier resourceLoadIdentifier, const ResourceRequest& request, ClientCredentialPolicy clientCredentialPolicy,  const FetchOptions& options, const HTTPHeaderMap& originalRequestHeaders, ResourceError& error, ResourceResponse& response, Vector<uint8_t>& data)
 {
     auto* webFrameLoaderClient = toWebFrameLoaderClient(frameLoader.client());
     auto* webFrame = webFrameLoaderClient ? &webFrameLoaderClient->webFrame() : nullptr;
@@ -766,7 +766,7 @@ void WebLoaderStrategy::loadResourceSynchronously(FrameLoader& frameLoader, WebC
     if (!sendResult) {
         WEBLOADERSTRATEGY_WITH_FRAMELOADER_RELEASE_LOG_ERROR("loadResourceSynchronously: failed sending synchronous network process message");
         if (page)
-            page->diagnosticLoggingClient().logDiagnosticMessage(WebCore::DiagnosticLoggingKeys::internalErrorKey(), WebCore::DiagnosticLoggingKeys::synchronousMessageFailedKey(), WebCore::ShouldSample::No);
+            page->diagnosticLoggingClient().logDiagnosticMessage(CyberCore::DiagnosticLoggingKeys::internalErrorKey(), CyberCore::DiagnosticLoggingKeys::synchronousMessageFailedKey(), CyberCore::ShouldSample::No);
         response = ResourceResponse();
         error = internalError(request.url());
     } else
@@ -813,7 +813,7 @@ void WebLoaderStrategy::startPingLoad(Frame& frame, ResourceRequest& request, co
     }
 
     NetworkResourceLoadParameters loadParameters;
-    loadParameters.identifier = WebCore::ResourceLoaderIdentifier::generate();
+    loadParameters.identifier = CyberCore::ResourceLoaderIdentifier::generate();
     loadParameters.webPageProxyID = webPage->webPageProxyIdentifier();
     loadParameters.webPageID = webPage->identifier();
     loadParameters.webFrameID = webFrame->frameID();
@@ -851,7 +851,7 @@ void WebLoaderStrategy::startPingLoad(Frame& frame, ResourceRequest& request, co
     WebProcess::singleton().ensureNetworkProcessConnection().connection().send(Messages::NetworkConnectionToWebProcess::LoadPing { loadParameters }, 0);
 }
 
-void WebLoaderStrategy::didFinishPingLoad(WebCore::ResourceLoaderIdentifier pingLoadIdentifier, ResourceError&& error, ResourceResponse&& response)
+void WebLoaderStrategy::didFinishPingLoad(CyberCore::ResourceLoaderIdentifier pingLoadIdentifier, ResourceError&& error, ResourceResponse&& response)
 {
     if (auto completionHandler = m_pingLoadCompletionHandlers.take(pingLoadIdentifier))
         completionHandler(WTFMove(error), WTFMove(response));
@@ -876,7 +876,7 @@ void WebLoaderStrategy::preconnectTo(FrameLoader& frameLoader, const URL& url, S
     preconnectTo(ResourceRequest { url }, *webPage, webFrame, storedCredentialsPolicy, shouldPreconnectAsFirstParty, WTFMove(completionHandler));
 }
 
-void WebLoaderStrategy::preconnectTo(WebCore::ResourceRequest&& request, WebPage& webPage, WebFrame& webFrame, WebCore::StoredCredentialsPolicy storedCredentialsPolicy, ShouldPreconnectAsFirstParty shouldPreconnectAsFirstParty, PreconnectCompletionHandler&& completionHandler)
+void WebLoaderStrategy::preconnectTo(CyberCore::ResourceRequest&& request, WebPage& webPage, WebFrame& webFrame, CyberCore::StoredCredentialsPolicy storedCredentialsPolicy, ShouldPreconnectAsFirstParty shouldPreconnectAsFirstParty, PreconnectCompletionHandler&& completionHandler)
 {
     if (webPage.corePage() && !webPage.corePage()->allowsLoadFromURL(request.url(), MainFrameMainResource::No)) {
         if (completionHandler)
@@ -902,7 +902,7 @@ void WebLoaderStrategy::preconnectTo(WebCore::ResourceRequest&& request, WebPage
         if (!webPageUserAgent.isEmpty())
             parameters.request.setHTTPUserAgent(webPageUserAgent);
     }
-    parameters.identifier = WebCore::ResourceLoaderIdentifier::generate();
+    parameters.identifier = CyberCore::ResourceLoaderIdentifier::generate();
     parameters.webPageProxyID = webPage.webPageProxyIdentifier();
     parameters.webPageID = webPage.identifier();
     parameters.webFrameID = webFrame.frameID();
@@ -919,7 +919,7 @@ void WebLoaderStrategy::preconnectTo(WebCore::ResourceRequest&& request, WebPage
     parameters.isNavigatingToAppBoundDomain = webFrame.isTopFrameNavigatingToAppBoundDomain();
 #endif
 
-    std::optional<WebCore::ResourceLoaderIdentifier> preconnectionIdentifier;
+    std::optional<CyberCore::ResourceLoaderIdentifier> preconnectionIdentifier;
     if (completionHandler) {
         preconnectionIdentifier = parameters.identifier;
         auto addResult = m_preconnectCompletionHandlers.add(*preconnectionIdentifier, WTFMove(completionHandler));
@@ -927,11 +927,11 @@ void WebLoaderStrategy::preconnectTo(WebCore::ResourceRequest&& request, WebPage
     }
 
     // FIXME: Use sendWithAsyncReply instead of preconnectionIdentifier
-    // FIXME: don't use WebCore::ResourceLoaderIdentifier for a preconnection identifier, too. It should have its own type.
+    // FIXME: don't use CyberCore::ResourceLoaderIdentifier for a preconnection identifier, too. It should have its own type.
     WebProcess::singleton().ensureNetworkProcessConnection().connection().send(Messages::NetworkConnectionToWebProcess::PreconnectTo(preconnectionIdentifier, WTFMove(parameters)), 0);
 }
 
-void WebLoaderStrategy::didFinishPreconnection(WebCore::ResourceLoaderIdentifier preconnectionIdentifier, ResourceError&& error)
+void WebLoaderStrategy::didFinishPreconnection(CyberCore::ResourceLoaderIdentifier preconnectionIdentifier, ResourceError&& error)
 {
     if (auto completionHandler = m_preconnectCompletionHandlers.take(preconnectionIdentifier))
         completionHandler(WTFMove(error));
@@ -986,14 +986,14 @@ ResourceResponse WebLoaderStrategy::responseFromResourceLoadIdentifier(ResourceL
     return response;
 }
 
-Vector<NetworkTransactionInformation> WebLoaderStrategy::intermediateLoadInformationFromResourceLoadIdentifier(WebCore::ResourceLoaderIdentifier resourceLoadIdentifier)
+Vector<NetworkTransactionInformation> WebLoaderStrategy::intermediateLoadInformationFromResourceLoadIdentifier(CyberCore::ResourceLoaderIdentifier resourceLoadIdentifier)
 {
     auto sendResult = WebProcess::singleton().ensureNetworkProcessConnection().connection().sendSync(Messages::NetworkConnectionToWebProcess::GetNetworkLoadIntermediateInformation { resourceLoadIdentifier }, 0);
     auto [information] = sendResult.takeReplyOr(Vector<NetworkTransactionInformation> { });
     return information;
 }
 
-NetworkLoadMetrics WebLoaderStrategy::networkMetricsFromResourceLoadIdentifier(WebCore::ResourceLoaderIdentifier resourceLoadIdentifier)
+NetworkLoadMetrics WebLoaderStrategy::networkMetricsFromResourceLoadIdentifier(CyberCore::ResourceLoaderIdentifier resourceLoadIdentifier)
 {
     auto sendResult = WebProcess::singleton().ensureNetworkProcessConnection().connection().sendSync(Messages::NetworkConnectionToWebProcess::TakeNetworkLoadInformationMetrics { resourceLoadIdentifier }, 0);
     auto [networkMetrics] = sendResult.takeReplyOr(NetworkLoadMetrics { });
@@ -1027,15 +1027,15 @@ bool WebLoaderStrategy::havePerformedSecurityChecks(const ResourceResponse& resp
     return false;
 }
 
-void WebLoaderStrategy::setResourceLoadSchedulingMode(WebCore::Page& page, WebCore::LoadSchedulingMode mode)
+void WebLoaderStrategy::setResourceLoadSchedulingMode(CyberCore::Page& page, CyberCore::LoadSchedulingMode mode)
 {
     auto& connection = WebProcess::singleton().ensureNetworkProcessConnection().connection();
     connection.send(Messages::NetworkConnectionToWebProcess::SetResourceLoadSchedulingMode(WebPage::fromCorePage(page).identifier(), mode), 0);
 }
 
-void WebLoaderStrategy::prioritizeResourceLoads(const Vector<WebCore::SubresourceLoader*>& resources)
+void WebLoaderStrategy::prioritizeResourceLoads(const Vector<CyberCore::SubresourceLoader*>& resources)
 {
-    auto identifiers = resources.map([](auto* loader) -> WebCore::ResourceLoaderIdentifier {
+    auto identifiers = resources.map([](auto* loader) -> CyberCore::ResourceLoaderIdentifier {
         return loader->identifier();
     });
 
@@ -1043,7 +1043,7 @@ void WebLoaderStrategy::prioritizeResourceLoads(const Vector<WebCore::Subresourc
     connection.send(Messages::NetworkConnectionToWebProcess::PrioritizeResourceLoads(identifiers), 0);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #undef WEBLOADERSTRATEGY_RELEASE_LOG_BASIC
 #undef WEBLOADERSTRATEGY_RELEASE_LOG_ERROR_BASIC

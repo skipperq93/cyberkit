@@ -34,7 +34,7 @@ namespace vp9_parser {
 class Vp9HeaderParser;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 struct MediaCapabilitiesInfo;
 struct VideoConfiguration;

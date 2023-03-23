@@ -32,7 +32,7 @@
 #include <wtf/persistence/PersistentCoders.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SharedBuffer;
 
@@ -41,7 +41,7 @@ public:
     struct Entry {
         WEBCORE_EXPORT Entry();
         WEBCORE_EXPORT Entry(const Entry&);
-        WEBCORE_EXPORT Entry(const String&, const String&, const std::variant<String, Ref<WebCore::SharedBuffer>>&);
+        WEBCORE_EXPORT Entry(const String&, const String&, const std::variant<String, Ref<CyberCore::SharedBuffer>>&);
         WEBCORE_EXPORT Entry(Entry&&);
         WEBCORE_EXPORT Entry& operator=(const Entry& otherData);
         WEBCORE_EXPORT Entry& operator=(Entry&& otherData);
@@ -103,4 +103,4 @@ private:
     Vector<Entry> m_data;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

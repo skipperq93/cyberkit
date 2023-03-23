@@ -34,10 +34,10 @@
 #include <wtf/Scope.h>
 #include <wtf/glib/WTFGType.h>
 
-using WebCore::CDMProxy;
+using CyberCore::CDMProxy;
 
 // Instances of this class are tied to the decryptor lifecycle. They can't be alive after the decryptor has been destroyed.
-class CDMProxyDecryptionClientImplementation : public WebCore::CDMProxyDecryptionClient {
+class CDMProxyDecryptionClientImplementation : public CyberCore::CDMProxyDecryptionClient {
     WTF_MAKE_FAST_ALLOCATED;
 public:
     CDMProxyDecryptionClientImplementation(WebKitMediaCommonEncryptionDecrypt* decryptor)
@@ -470,7 +470,7 @@ bool webKitMediaCommonEncryptionDecryptIsFlushing(WebKitMediaCommonEncryptionDec
     return priv->isFlushing;
 }
 
-WeakPtr<WebCore::CDMProxyDecryptionClient> webKitMediaCommonEncryptionDecryptGetCDMProxyDecryptionClient(WebKitMediaCommonEncryptionDecrypt* self)
+WeakPtr<CyberCore::CDMProxyDecryptionClient> webKitMediaCommonEncryptionDecryptGetCDMProxyDecryptionClient(WebKitMediaCommonEncryptionDecrypt* self)
 {
     WebKitMediaCommonEncryptionDecryptPrivate* priv = WEBKIT_MEDIA_CENC_DECRYPT_GET_PRIVATE(self);
     return *priv->cdmProxyDecryptionClientImplementation;

@@ -33,7 +33,7 @@ typedef struct CGColorSpace* CGColorSpaceRef;
 #include <wtf/EnumTraits.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 #if USE(CG)
 

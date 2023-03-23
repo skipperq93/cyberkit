@@ -31,7 +31,7 @@
 #include "WebKitBrowserWindow.h"
 #include <sstream>
 
-namespace WebCore {
+namespace CyberCore {
 float deviceScaleFactorForWindow(HWND);
 }
 
@@ -175,7 +175,7 @@ void MainWindow::resizeToolbar(int parentWidth)
 
 void MainWindow::rescaleToolbar()
 {
-    const float scaleFactor = WebCore::deviceScaleFactorForWindow(m_hMainWnd);
+    const float scaleFactor = CyberCore::deviceScaleFactorForWindow(m_hMainWnd);
     const int scaledImageSize = kToolbarImageSize * scaleFactor;
 
     TBBUTTONINFO info { sizeof(TBBUTTONINFO), TBIF_BYINDEX | TBIF_SIZE };

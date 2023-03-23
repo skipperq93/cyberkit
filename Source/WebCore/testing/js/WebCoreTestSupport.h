@@ -38,19 +38,19 @@ typedef struct OpaqueJSValue* JSObjectRef;
 #define TEST_SUPPORT_EXPORT
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 class Frame;
 }
 
-namespace WebCoreTestSupport {
+namespace CyberCoreTestSupport {
 
 void initializeNames() TEST_SUPPORT_EXPORT;
 
 void injectInternalsObject(JSContextRef) TEST_SUPPORT_EXPORT;
 void resetInternalsObject(JSContextRef) TEST_SUPPORT_EXPORT;
-void monitorWheelEvents(WebCore::Frame&, bool clearLatchingState) TEST_SUPPORT_EXPORT;
-void setWheelEventMonitorTestCallbackAndStartMonitoring(bool expectWheelEndOrCancel, bool expectMomentumEnd, WebCore::Frame&, JSContextRef, JSObjectRef) TEST_SUPPORT_EXPORT;
-void clearWheelEventTestMonitor(WebCore::Frame&) TEST_SUPPORT_EXPORT;
+void monitorWheelEvents(CyberCore::Frame&, bool clearLatchingState) TEST_SUPPORT_EXPORT;
+void setWheelEventMonitorTestCallbackAndStartMonitoring(bool expectWheelEndOrCancel, bool expectMomentumEnd, CyberCore::Frame&, JSContextRef, JSObjectRef) TEST_SUPPORT_EXPORT;
+void clearWheelEventTestMonitor(CyberCore::Frame&) TEST_SUPPORT_EXPORT;
 
 void setLogChannelToAccumulate(const String& name) TEST_SUPPORT_EXPORT;
 void clearAllLogChannelsToAccumulate() TEST_SUPPORT_EXPORT;
@@ -87,4 +87,4 @@ inline void populateJITOperations() { populateDisassemblyLabels(); }
 inline void populateJITOperations() { }
 #endif // ENABLE(JIT_OPERATION_VALIDATION) || ENABLE(JIT_OPERATION_DISASSEMBLY)
 
-} // namespace WebCoreTestSupport
+} // namespace CyberCoreTestSupport

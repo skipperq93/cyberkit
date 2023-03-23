@@ -24,7 +24,7 @@
 
 #include "TextureMapperGLHeaders.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 void ClipStack::push()
 {
@@ -118,4 +118,4 @@ void ClipStack::applyIfNeeded()
     apply();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

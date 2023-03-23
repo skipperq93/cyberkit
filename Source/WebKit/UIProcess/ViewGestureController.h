@@ -68,7 +68,7 @@ OBJC_CLASS NSView;
 OBJC_CLASS WKSwipeCancellationTracker;
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 class IOSurface;
 }
 #endif
@@ -81,7 +81,7 @@ class Navigation;
 typedef NSEvent* PlatformScrollEvent;
 #elif PLATFORM(GTK)
 typedef struct {
-    WebCore::FloatSize delta;
+    CyberCore::FloatSize delta;
     int32_t eventTime;
     GdkInputSource source;
     bool isEnd;
@@ -127,7 +127,7 @@ public:
 
 #if !PLATFORM(IOS_FAMILY)
     bool handleScrollWheelEvent(PlatformScrollEvent);
-    void wheelEventWasNotHandledByWebCore(PlatformScrollEvent event) { m_pendingSwipeTracker.eventWasNotHandledByWebCore(event); }
+    void wheelEventWasNotHandledByCyberCore(PlatformScrollEvent event) { m_pendingSwipeTracker.eventWasNotHandledByCyberCore(event); }
 
     bool shouldIgnorePinnedState() { return m_pendingSwipeTracker.shouldIgnorePinnedState(); }
     void setShouldIgnorePinnedState(bool ignore) { m_pendingSwipeTracker.setShouldIgnorePinnedState(ignore); }
@@ -136,21 +136,21 @@ public:
 
     double magnification() const;
 
-    void prepareMagnificationGesture(WebCore::FloatPoint);
+    void prepareMagnificationGesture(CyberCore::FloatPoint);
     void applyMagnification();
 
     bool hasActiveMagnificationGesture() const { return m_activeGestureType == ViewGestureType::Magnification; }
 #endif
 
 #if PLATFORM(MAC)
-    void handleMagnificationGestureEvent(PlatformScrollEvent, WebCore::FloatPoint origin);
-    void handleSmartMagnificationGesture(WebCore::FloatPoint origin);
+    void handleMagnificationGestureEvent(PlatformScrollEvent, CyberCore::FloatPoint origin);
+    void handleSmartMagnificationGesture(CyberCore::FloatPoint origin);
 
-    void gestureEventWasNotHandledByWebCore(PlatformScrollEvent, WebCore::FloatPoint origin);
+    void gestureEventWasNotHandledByCyberCore(PlatformScrollEvent, CyberCore::FloatPoint origin);
 
     void setCustomSwipeViews(Vector<RetainPtr<NSView>> views) { m_customSwipeViews = WTFMove(views); }
     void setCustomSwipeViewsTopContentInset(float topContentInset) { m_customSwipeViewsTopContentInset = topContentInset; }
-    WebCore::FloatRect windowRelativeBoundsForCustomSwipeViews() const;
+    CyberCore::FloatRect windowRelativeBoundsForCustomSwipeViews() const;
     void setDidMoveSwipeSnapshotCallback(BlockPtr<void (CGRect)>&& callback) { m_didMoveSwipeSnapshotCallback = WTFMove(callback); }
 #elif PLATFORM(IOS_FAMILY)
     bool isNavigationSwipeGestureRecognizer(UIGestureRecognizer *) const;
@@ -161,7 +161,7 @@ public:
     void willCommitPostSwipeTransitionLayerTree(bool);
     void setRenderTreeSize(uint64_t);
 #elif PLATFORM(GTK)
-    void setMagnification(double, WebCore::FloatPoint);
+    void setMagnification(double, CyberCore::FloatPoint);
     void endMagnification();
 #endif
 
@@ -169,7 +169,7 @@ public:
 
     bool canSwipeInDirection(SwipeDirection) const;
 
-    WebCore::Color backgroundColorForCurrentSnapshot() const { return m_backgroundColorForCurrentSnapshot; }
+    CyberCore::Color backgroundColorForCurrentSnapshot() const { return m_backgroundColorForCurrentSnapshot; }
 
     void didStartProvisionalLoadForMainFrame();
     void didFinishNavigation(API::Navigation* navigation) { didReachNavigationTerminalState(navigation); }
@@ -271,15 +271,15 @@ private:
 
 #if PLATFORM(MAC)
     // Message handlers.
-    void didCollectGeometryForSmartMagnificationGesture(WebCore::FloatPoint origin, WebCore::FloatRect renderRect, WebCore::FloatRect visibleContentBounds, bool fitEntireRect, double viewportMinimumScale, double viewportMaximumScale);
+    void didCollectGeometryForSmartMagnificationGesture(CyberCore::FloatPoint origin, CyberCore::FloatRect renderRect, CyberCore::FloatRect visibleContentBounds, bool fitEntireRect, double viewportMinimumScale, double viewportMaximumScale);
 #endif
 
 #if !PLATFORM(IOS_FAMILY)
-    void didCollectGeometryForMagnificationGesture(WebCore::FloatRect visibleContentBounds, bool frameHandlesMagnificationGesture);
+    void didCollectGeometryForMagnificationGesture(CyberCore::FloatRect visibleContentBounds, bool frameHandlesMagnificationGesture);
 
     void endMagnificationGesture();
 
-    WebCore::FloatPoint scaledMagnificationOrigin(WebCore::FloatPoint origin, double scale);
+    CyberCore::FloatPoint scaledMagnificationOrigin(CyberCore::FloatPoint origin, double scale);
 
     void startSwipeGesture(PlatformScrollEvent, SwipeDirection);
     void trackSwipeGesture(PlatformScrollEvent, SwipeDirection, RefPtr<WebBackForwardListItem>);
@@ -289,7 +289,7 @@ private:
 
     void willEndSwipeGesture(WebBackForwardListItem& targetItem, bool cancelled);
     void endSwipeGesture(WebBackForwardListItem* targetItem, bool cancelled);
-    bool shouldUseSnapshotForSize(ViewSnapshot&, WebCore::FloatSize swipeLayerSize, float topContentInset);
+    bool shouldUseSnapshotForSize(ViewSnapshot&, CyberCore::FloatSize swipeLayerSize, float topContentInset);
 
 #if PLATFORM(MAC)
     static double resistanceForDelta(double deltaScale, double currentScale);
@@ -307,7 +307,7 @@ private:
     public:
         PendingSwipeTracker(WebPageProxy&, ViewGestureController&);
         bool handleEvent(PlatformScrollEvent);
-        void eventWasNotHandledByWebCore(PlatformScrollEvent);
+        void eventWasNotHandledByCyberCore(PlatformScrollEvent);
 
         void reset(const char* resetReasonForLogging);
 
@@ -321,17 +321,17 @@ private:
         bool scrollEventCanStartSwipe(PlatformScrollEvent);
         bool scrollEventCanEndSwipe(PlatformScrollEvent);
         bool scrollEventCanInfluenceSwipe(PlatformScrollEvent);
-        WebCore::FloatSize scrollEventGetScrollingDeltas(PlatformScrollEvent);
+        CyberCore::FloatSize scrollEventGetScrollingDeltas(PlatformScrollEvent);
 
         enum class State {
             None,
-            WaitingForWebCore,
+            WaitingForCyberCore,
             InsufficientMagnitude
         };
 
         State m_state { State::None };
         SwipeDirection m_direction;
-        WebCore::FloatSize m_cumulativeDelta;
+        CyberCore::FloatSize m_cumulativeDelta;
 
         bool m_shouldIgnorePinnedState { false };
 
@@ -351,7 +351,7 @@ private:
 
     RunLoop::Timer m_swipeActiveLoadMonitoringTimer;
 
-    WebCore::Color m_backgroundColorForCurrentSnapshot;
+    CyberCore::Color m_backgroundColorForCurrentSnapshot;
 
     WeakPtr<WebPageProxy> m_alternateBackForwardListSourcePage;
     RefPtr<WebPageProxy> m_webPageProxyForBackForwardListForCurrentSwipe;
@@ -368,20 +368,20 @@ private:
     bool m_hasOutstandingRepaintRequest { false };
 
     double m_magnification;
-    WebCore::FloatPoint m_magnificationOrigin;
+    CyberCore::FloatPoint m_magnificationOrigin;
 
     double m_initialMagnification;
-    WebCore::FloatPoint m_initialMagnificationOrigin;
+    CyberCore::FloatPoint m_initialMagnificationOrigin;
 #endif
 
 #if PLATFORM(MAC)
-    WebCore::FloatRect m_lastSmartMagnificationUnscaledTargetRect;
+    CyberCore::FloatRect m_lastSmartMagnificationUnscaledTargetRect;
     bool m_lastMagnificationGestureWasSmartMagnification { false };
-    WebCore::FloatPoint m_lastSmartMagnificationOrigin;
+    CyberCore::FloatPoint m_lastSmartMagnificationOrigin;
 #endif
 
 #if !PLATFORM(IOS_FAMILY)
-    WebCore::FloatRect m_visibleContentRect;
+    CyberCore::FloatRect m_visibleContentRect;
     bool m_visibleContentRectIsValid { false };
     bool m_frameHandlesMagnificationGesture { false };
 #endif
@@ -396,7 +396,7 @@ private:
 
     Vector<RetainPtr<NSView>> m_customSwipeViews;
     float m_customSwipeViewsTopContentInset { 0 };
-    WebCore::FloatRect m_currentSwipeCustomViewBounds;
+    CyberCore::FloatRect m_currentSwipeCustomViewBounds;
 
     BlockPtr<void (CGRect)> m_didMoveSwipeSnapshotCallback;
 #elif PLATFORM(IOS_FAMILY)

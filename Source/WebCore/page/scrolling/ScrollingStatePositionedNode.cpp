@@ -33,7 +33,7 @@
 
 #if ENABLE(ASYNC_SCROLLING)
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<ScrollingStatePositionedNode> ScrollingStatePositionedNode::create(ScrollingStateTree& stateTree, ScrollingNodeID nodeID)
 {
@@ -106,6 +106,6 @@ void ScrollingStatePositionedNode::dumpProperties(TextStream& ts, OptionSet<Scro
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ASYNC_SCROLLING)

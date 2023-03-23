@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -17,16 +17,16 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitDOMHTMLParagraphElementPrivate_h
-#define WebKitDOMHTMLParagraphElementPrivate_h
+#ifndef CyberKitDOMHTMLParagraphElementPrivate_h
+#define CyberKitDOMHTMLParagraphElementPrivate_h
 
 #include <CyberCore/HTMLParagraphElement.h>
-#include <webkitdom/WebKitDOMHTMLParagraphElement.h>
+#include <webkitdom/CyberKitDOMHTMLParagraphElement.h>
 
-namespace WebKit {
-WebKitDOMHTMLParagraphElement* wrapHTMLParagraphElement(WebCore::HTMLParagraphElement*);
-WebKitDOMHTMLParagraphElement* kit(WebCore::HTMLParagraphElement*);
-WebCore::HTMLParagraphElement* core(WebKitDOMHTMLParagraphElement*);
-} // namespace WebKit
+namespace CyberKit {
+CyberKitDOMHTMLParagraphElement* wrapHTMLParagraphElement(CyberCore::HTMLParagraphElement*);
+CyberKitDOMHTMLParagraphElement* kit(CyberCore::HTMLParagraphElement*);
+CyberCore::HTMLParagraphElement* core(CyberKitDOMHTMLParagraphElement*);
+} // namespace CyberKit
 
-#endif /* WebKitDOMHTMLParagraphElementPrivate_h */
+#endif /* CyberKitDOMHTMLParagraphElementPrivate_h */

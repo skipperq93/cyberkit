@@ -42,7 +42,7 @@ class AbstractSlotVisitor;
 
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class Element;
 class ContainerNode;
@@ -125,4 +125,4 @@ private:
 };
 
 
-} // namespace WebCore
+} // namespace CyberCore

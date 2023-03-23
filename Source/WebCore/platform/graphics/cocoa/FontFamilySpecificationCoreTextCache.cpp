@@ -28,7 +28,7 @@
 
 #include "FontCache.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 FontFamilySpecificationCoreTextCache& FontFamilySpecificationCoreTextCache::forCurrentThread()
 {
@@ -40,4 +40,4 @@ void FontFamilySpecificationCoreTextCache::clear()
     m_fonts.clear();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

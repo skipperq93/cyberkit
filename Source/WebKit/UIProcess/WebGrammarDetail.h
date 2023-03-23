@@ -40,20 +40,20 @@ namespace WebKit {
 class WebGrammarDetail : public API::ObjectImpl<API::Object::Type::GrammarDetail> {
 public:
     static Ref<WebGrammarDetail> create(int location, int length, API::Array* guesses, const String& userDescription);
-    static Ref<WebGrammarDetail> create(const WebCore::GrammarDetail&);
+    static Ref<WebGrammarDetail> create(const CyberCore::GrammarDetail&);
 
     int location() const { return m_grammarDetail.range.location; }
     int length() const { return m_grammarDetail.range.length; }
     Ref<API::Array> guesses() const;
     const String& userDescription() const { return m_grammarDetail.userDescription; }
 
-    const WebCore::GrammarDetail& grammarDetail() { return m_grammarDetail; }
+    const CyberCore::GrammarDetail& grammarDetail() { return m_grammarDetail; }
 
 private:
     WebGrammarDetail(int location, int length, API::Array* guesses, const String& userDescription);
-    explicit WebGrammarDetail(const WebCore::GrammarDetail&);
+    explicit WebGrammarDetail(const CyberCore::GrammarDetail&);
 
-    WebCore::GrammarDetail m_grammarDetail;
+    CyberCore::GrammarDetail m_grammarDetail;
 };
 
 } // namespace WebKit

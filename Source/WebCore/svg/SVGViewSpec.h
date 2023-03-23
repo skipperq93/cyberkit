@@ -24,7 +24,7 @@
 #include "SVGZoomAndPan.h"
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGElement;
 class SVGTransformList;
@@ -59,4 +59,4 @@ private:
     Ref<SVGTransformList> m_transform;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

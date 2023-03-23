@@ -29,7 +29,7 @@
 
 #import "ControlFactoryCocoa.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ControlFactoryIOS final : public ControlFactoryCocoa {
 public:
@@ -55,6 +55,6 @@ private:
     std::unique_ptr<PlatformControl> createPlatformToggleButton(ToggleButtonPart&) final;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(IOS_FAMILY)

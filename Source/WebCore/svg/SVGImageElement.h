@@ -25,7 +25,7 @@
 #include "SVGImageLoader.h"
 #include "SVGURIReference.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGImageElement final : public SVGGraphicsElement, public SVGURIReference {
     WTF_MAKE_ISO_ALLOCATED(SVGImageElement);
@@ -75,4 +75,4 @@ private:
     SVGImageLoader m_imageLoader;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

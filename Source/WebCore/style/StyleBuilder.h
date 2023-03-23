@@ -28,7 +28,7 @@
 #include "PropertyCascade.h"
 #include "StyleBuilderState.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace Style {
 

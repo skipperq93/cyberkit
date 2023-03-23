@@ -33,7 +33,7 @@
 #include "ThreadedScrollingTree.h"
 #include "WheelEventTestMonitor.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 ThreadedScrollingCoordinator::ThreadedScrollingCoordinator(Page* page)
     : AsyncScrollingCoordinator(page)
@@ -143,6 +143,6 @@ void ThreadedScrollingCoordinator::startMonitoringWheelEvents(bool clearLatching
         scrollingTree()->clearLatchedNode();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ASYNC_SCROLLING) && ENABLE(SCROLLING_THREAD)

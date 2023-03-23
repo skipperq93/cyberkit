@@ -30,7 +30,7 @@
 
 #include "RenderMathMLScripts.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class MathMLUnderOverElement;
 

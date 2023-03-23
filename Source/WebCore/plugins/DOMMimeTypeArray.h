@@ -26,7 +26,7 @@
 #include <wtf/Vector.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMMimeType;
 class Navigator;
@@ -51,4 +51,4 @@ private:
     Vector<Ref<DOMMimeType>> m_types;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

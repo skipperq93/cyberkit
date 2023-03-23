@@ -36,8 +36,8 @@
 #include <CyberCore/GamepadProviderClient.h>
 #include <wtf/NeverDestroyed.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 #define WP_MESSAGE_CHECK(assertion, ...) { \
     if (UNLIKELY(!(assertion))) { \

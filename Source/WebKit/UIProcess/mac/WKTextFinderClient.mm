@@ -47,7 +47,7 @@ static const NSUInteger maximumFindMatches = 1000;
 
 @interface WKTextFinderClient ()
 
-- (void)didFindStringMatchesWithRects:(const Vector<Vector<WebCore::IntRect>>&)rects didWrapAround:(BOOL)didWrapAround;
+- (void)didFindStringMatchesWithRects:(const Vector<Vector<CyberCore::IntRect>>&)rects didWrapAround:(BOOL)didWrapAround;
 
 - (void)getImageForMatchResult:(id <NSTextFinderAsynchronousDocumentFindMatch>)findMatch completionHandler:(void (^)(NSImage *generatedImage))completionHandler;
 - (void)didGetImageForMatchResult:(WebKit::WebImage *)string;
@@ -55,7 +55,7 @@ static const NSUInteger maximumFindMatches = 1000;
 @end
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 class TextFinderFindClient : public API::FindMatchesClient, public API::FindClient {
     WTF_MAKE_FAST_ALLOCATED;
@@ -66,7 +66,7 @@ public:
     }
 
 private:
-    void didFindStringMatches(WebPageProxy* page, const String&, const Vector<Vector<WebCore::IntRect>>& matchRects, int32_t) override
+    void didFindStringMatches(WebPageProxy* page, const String&, const Vector<Vector<CyberCore::IntRect>>& matchRects, int32_t) override
     {
         [m_textFinderClient didFindStringMatchesWithRects:matchRects didWrapAround:NO];
     }
@@ -76,9 +76,9 @@ private:
         [m_textFinderClient didGetImageForMatchResult:image];
     }
 
-    void didFindString(WebPageProxy*, const String&, const Vector<WebCore::IntRect>& matchRects, uint32_t matchCount, int32_t matchIndex, bool didWrapAround) override
+    void didFindString(WebPageProxy*, const String&, const Vector<CyberCore::IntRect>& matchRects, uint32_t matchCount, int32_t matchIndex, bool didWrapAround) override
     {
-        Vector<Vector<WebCore::IntRect>> allMatches;
+        Vector<Vector<CyberCore::IntRect>> allMatches;
         if (matchCount != static_cast<unsigned>(kWKMoreThanMaximumMatchCount)) {
             // Synthesize a vector of match rects for all `matchCount` matches,
             // filling in the actual rects for the one that we received.
@@ -272,7 +272,7 @@ private:
 
 #pragma mark - FindMatchesClient
 
-- (void)didFindStringMatchesWithRects:(const Vector<Vector<WebCore::IntRect>>&)rectsForMatches didWrapAround:(BOOL)didWrapAround
+- (void)didFindStringMatchesWithRects:(const Vector<Vector<CyberCore::IntRect>>&)rectsForMatches didWrapAround:(BOOL)didWrapAround
 {
     if (_findReplyCallbacks.isEmpty())
         return;
@@ -298,7 +298,7 @@ private:
     auto size = image->size();
     size.scale(1 / _page->deviceScaleFactor());
     
-    auto nativeImage = image->copyNativeImage(WebCore::DontCopyBackingStore);
+    auto nativeImage = image->copyNativeImage(CyberCore::DontCopyBackingStore);
     if (!nativeImage)
         return;
 

@@ -28,7 +28,7 @@
 #include <CyberCore/UserAgent.h>
 #include <wtf/URL.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 namespace TestWebKitAPI {
 

@@ -46,7 +46,7 @@
 #include <CyberScriptCore/JSExportMacros.h>
 #endif
 
-#if defined(BUILDING_TestWebCore)
+#if defined(BUILDING_TestCyberCore)
 #include <CyberScriptCore/JSExportMacros.h>
 #include <CyberCore/PlatformExportMacros.h>
 #include <pal/ExportMacros.h>
@@ -71,10 +71,10 @@
 #if PLATFORM(COCOA) && defined(__OBJC__)
 #import <CyberKit/WebKit.h>
 #if PLATFORM(MACCATALYST)
-// Many tests depend on WebKitLegacy.h being implicitly included; however,
-// on macCatalyst, WebKit.h does not include WebKitLegacy.h, so we need
+// Many tests depend on CyberKitLegacy.h being implicitly included; however,
+// on macCatalyst, WebKit.h does not include CyberKitLegacy.h, so we need
 // to do it explicitly here.
-#import <CyberKit/WebKitLegacy.h>
+#import <CyberKit/CyberKitLegacy.h>
 #endif
 #endif
 

@@ -30,7 +30,7 @@
 #include <wtf/RobinHoodHashMap.h>
 #include <wtf/Scope.h>
 
-namespace WebCore {
+namespace CyberCore {
 class PrivateClickMeasurement;
 class SQLiteStatement;
 class SQLiteStatementAutoResetScope;
@@ -47,7 +47,7 @@ protected:
     DatabaseUtilities(String&& storageFilePath);
     ~DatabaseUtilities();
 
-    WebCore::SQLiteStatementAutoResetScope scopedStatement(std::unique_ptr<WebCore::SQLiteStatement>&, ASCIILiteral query, ASCIILiteral logString) const;
+    CyberCore::SQLiteStatementAutoResetScope scopedStatement(std::unique_ptr<CyberCore::SQLiteStatement>&, ASCIILiteral query, ASCIILiteral logString) const;
     ScopeExit<Function<void()>> WARN_UNUSED_RETURN beginTransactionIfNecessary();
     enum class CreatedNewFile : bool { No, Yes };
     CreatedNewFile openDatabaseAndCreateSchemaIfNecessary();
@@ -67,11 +67,11 @@ protected:
     Vector<String> columnsForTable(ASCIILiteral tableName);
     bool addMissingColumnToTable(ASCIILiteral tableName, ASCIILiteral columnName);
 
-    WebCore::PrivateClickMeasurement buildPrivateClickMeasurementFromDatabase(WebCore::SQLiteStatement&, PrivateClickMeasurementAttributionType) const;
+    CyberCore::PrivateClickMeasurement buildPrivateClickMeasurementFromDatabase(CyberCore::SQLiteStatement&, PrivateClickMeasurementAttributionType) const;
 
     const String m_storageFilePath;
-    mutable WebCore::SQLiteDatabase m_database;
-    mutable WebCore::SQLiteTransaction m_transaction;
+    mutable CyberCore::SQLiteDatabase m_database;
+    mutable CyberCore::SQLiteTransaction m_transaction;
 };
 
 } // namespace WebKit

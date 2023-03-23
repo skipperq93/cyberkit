@@ -30,7 +30,7 @@
 #define WebDownload_h
 
 #import <Foundation/Foundation.h>
-#import <CyberKitLegacy/WebKitAvailability.h>
+#import <CyberKitLegacy/CyberKitAvailability.h>
 
 #if defined(TARGET_OS_MACCATALYST) && TARGET_OS_MACCATALYST
 #import <CFNetwork/CFNSURLConnection.h>
@@ -54,7 +54,7 @@
     @discussion A WebDownload works just like an NSURLDownload, with
     one extra feature: if you do not implement the
     authentication-related delegate methods, it will automatically
-    prompt for authentication using the standard WebKit authentication
+    prompt for authentication using the standard CyberKit authentication
     panel, as either a sheet or window. It provides no extra methods,
     but does have one additional delegate method.
 */

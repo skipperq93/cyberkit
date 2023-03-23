@@ -32,7 +32,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // v(name, id, subcategory)
 #define WEBCORE_EACH_MEMORY_CATEGORIES(v) \
@@ -106,6 +106,6 @@ WEBCORE_EACH_MEMORY_CATEGORIES(WEBCORE_DEFINE_MEMORY_CATEGORY)
     MonotonicTime timeOfNextFullCollection { MonotonicTime::nan() };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ResourceUsageData_h

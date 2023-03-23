@@ -4,7 +4,7 @@ libdir=@LIB_INSTALL_DIR@
 includedir=${prefix}/include
 revision=@BUILD_REVISION@
 
-Name: WebKitGTK
+Name: CyberKitGTK
 Description: Web content engine for GTK
 URL: https://webkitgtk.org
 Version: @PROJECT_VERSION@

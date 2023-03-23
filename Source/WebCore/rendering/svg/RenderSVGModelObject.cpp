@@ -48,7 +48,7 @@
 #include "TransformState.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(RenderSVGModelObject);
 
@@ -265,6 +265,6 @@ bool RenderSVGModelObject::applyCachedClipAndScrollPosition(LayoutRect& rect, co
     return intersects;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(LAYER_BASED_SVG_ENGINE)

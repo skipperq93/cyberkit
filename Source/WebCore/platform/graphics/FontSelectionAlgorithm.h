@@ -31,7 +31,7 @@
 #include <wtf/Hasher.h>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // Unclamped, unchecked, signed fixed-point number representing a value used for font variations.
 // Sixteen bits in total, one sign bit, two fractional bits, smallest positive value is 0.25,

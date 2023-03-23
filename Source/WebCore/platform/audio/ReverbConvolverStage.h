@@ -32,7 +32,7 @@
 #include "AudioArray.h"
 #include <memory>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FFTFrame;
 class ReverbAccumulationBuffer;
@@ -82,6 +82,6 @@ private:
     std::unique_ptr<DirectConvolver> m_directConvolver;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ReverbConvolverStage_h

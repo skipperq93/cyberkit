@@ -47,7 +47,7 @@
 #import <wtf/text/CString.h>
 
 #if PLATFORM(IOS_FAMILY)
-#import "WebCoreThread.h"
+#import "CyberCoreThread.h"
 #endif
 
 #if ENABLE(VIDEO)
@@ -63,7 +63,7 @@
 // FIXME: Checking for EGL_Initialize does not seem to be robust in recovery OS.
 WTF_WEAK_LINK_FORCE_IMPORT(EGL_GetPlatformDisplayEXT);
 
-namespace WebCore {
+namespace CyberCore {
 
 // In isCurrentContextPredictable() == true case this variable is accessed in single-threaded manner.
 // In isCurrentContextPredictable() == false case this variable is accessed from multiple threads but always sequentially
@@ -661,12 +661,12 @@ void* GraphicsContextGLCocoa::createPbufferAndAttachIOSurface(GCGLenum target, P
         return EGL_IOSURFACE_READ_HINT_ANGLE | EGL_IOSURFACE_WRITE_HINT_ANGLE;
     }();
 
-    return WebCore::createPbufferAndAttachIOSurface(m_displayObj, m_configObj, target, usageHint, internalFormat, width, height, type, surface, plane);
+    return CyberCore::createPbufferAndAttachIOSurface(m_displayObj, m_configObj, target, usageHint, internalFormat, width, height, type, surface, plane);
 }
 
 void GraphicsContextGLCocoa::destroyPbufferAndDetachIOSurface(void* handle)
 {
-    WebCore::destroyPbufferAndDetachIOSurface(m_displayObj, handle);
+    CyberCore::destroyPbufferAndDetachIOSurface(m_displayObj, handle);
 }
 
 #if !PLATFORM(IOS_FAMILY_SIMULATOR)
@@ -728,7 +728,7 @@ void GraphicsContextGLCocoa::detachIOSurfaceFromSharedTexture(void* handle)
 #if USE(MTLSHAREDEVENT_FOR_XR_FRAME_COMPLETION)
 RetainPtr<id> GraphicsContextGLCocoa::newSharedEventWithMachPort(mach_port_t sharedEventSendRight)
 {
-    return WebCore::newSharedEventWithMachPort(m_displayObj, sharedEventSendRight);
+    return CyberCore::newSharedEventWithMachPort(m_displayObj, sharedEventSendRight);
 }
 
 void* GraphicsContextGLCocoa::createSyncWithSharedEvent(const RetainPtr<id>& sharedEvent, uint64_t signalValue)

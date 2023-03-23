@@ -31,7 +31,7 @@
 GST_DEBUG_CATEGORY_EXTERN(webkit_webrtc_endpoint_debug);
 #define GST_CAT_DEFAULT webkit_webrtc_endpoint_debug
 
-namespace WebCore {
+namespace CyberCore {
 
 RealtimeOutgoingAudioSourceGStreamer::RealtimeOutgoingAudioSourceGStreamer(const String& mediaStreamId, MediaStreamTrack& track)
     : RealtimeOutgoingMediaSourceGStreamer(mediaStreamId, track)
@@ -191,6 +191,6 @@ void RealtimeOutgoingAudioSourceGStreamer::linkOutgoingSource()
     g_object_set(m_inputSelector.get(), "active-pad", sinkPad.get(), nullptr);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(GSTREAMER_WEBRTC)

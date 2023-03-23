@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -18,32 +18,32 @@
  */
 
 #include "config.h"
-#include "WebKitDOMNodeIterator.h"
+#include "CyberKitDOMNodeIterator.h"
 
 #include <CyberCore/CSSImportRule.h>
 #include "DOMObjectCache.h"
 #include <CyberCore/Document.h>
 #include <CyberCore/ExceptionCode.h>
 #include <CyberCore/JSExecState.h>
-#include "WebKitDOMNodeFilterPrivate.h"
-#include "WebKitDOMNodeIteratorPrivate.h"
-#include "WebKitDOMNodePrivate.h"
-#include "WebKitDOMPrivate.h"
+#include "CyberKitDOMNodeFilterPrivate.h"
+#include "CyberKitDOMNodeIteratorPrivate.h"
+#include "CyberKitDOMNodePrivate.h"
+#include "CyberKitDOMPrivate.h"
 #include "ConvertToUTF8String.h"
 #include <wtf/GetPtr.h>
 #include <wtf/RefPtr.h>
 
-#define WEBKIT_DOM_NODE_ITERATOR_GET_PRIVATE(obj) G_TYPE_INSTANCE_GET_PRIVATE(obj, WEBKIT_DOM_TYPE_NODE_ITERATOR, WebKitDOMNodeIteratorPrivate)
+#define WEBKIT_DOM_NODE_ITERATOR_GET_PRIVATE(obj) G_TYPE_INSTANCE_GET_PRIVATE(obj, WEBKIT_DOM_TYPE_NODE_ITERATOR, CyberKitDOMNodeIteratorPrivate)
 
-typedef struct _WebKitDOMNodeIteratorPrivate {
-    RefPtr<WebCore::NodeIterator> coreObject;
-} WebKitDOMNodeIteratorPrivate;
+typedef struct _CyberKitDOMNodeIteratorPrivate {
+    RefPtr<CyberCore::NodeIterator> coreObject;
+} CyberKitDOMNodeIteratorPrivate;
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
-namespace WebKit {
+namespace CyberKit {
 
-WebKitDOMNodeIterator* kit(WebCore::NodeIterator* obj)
+CyberKitDOMNodeIterator* kit(CyberCore::NodeIterator* obj)
 {
     if (!obj)
         return 0;
@@ -54,20 +54,20 @@ WebKitDOMNodeIterator* kit(WebCore::NodeIterator* obj)
     return wrapNodeIterator(obj);
 }
 
-WebCore::NodeIterator* core(WebKitDOMNodeIterator* request)
+CyberCore::NodeIterator* core(CyberKitDOMNodeIterator* request)
 {
-    return request ? static_cast<WebCore::NodeIterator*>(WEBKIT_DOM_OBJECT(request)->coreObject) : 0;
+    return request ? static_cast<CyberCore::NodeIterator*>(WEBKIT_DOM_OBJECT(request)->coreObject) : 0;
 }
 
-WebKitDOMNodeIterator* wrapNodeIterator(WebCore::NodeIterator* coreObject)
+CyberKitDOMNodeIterator* wrapNodeIterator(CyberCore::NodeIterator* coreObject)
 {
     ASSERT(coreObject);
     return WEBKIT_DOM_NODE_ITERATOR(g_object_new(WEBKIT_DOM_TYPE_NODE_ITERATOR, "core-object", coreObject, nullptr));
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
-G_DEFINE_TYPE(WebKitDOMNodeIterator, webkit_dom_node_iterator, WEBKIT_DOM_TYPE_OBJECT)
+G_DEFINE_TYPE(CyberKitDOMNodeIterator, webkit_dom_node_iterator, WEBKIT_DOM_TYPE_OBJECT)
 
 enum {
     DOM_NODE_ITERATOR_PROP_0,
@@ -80,17 +80,17 @@ enum {
 
 static void webkit_dom_node_iterator_finalize(GObject* object)
 {
-    WebKitDOMNodeIteratorPrivate* priv = WEBKIT_DOM_NODE_ITERATOR_GET_PRIVATE(object);
+    CyberKitDOMNodeIteratorPrivate* priv = WEBKIT_DOM_NODE_ITERATOR_GET_PRIVATE(object);
 
-    WebKit::DOMObjectCache::forget(priv->coreObject.get());
+    CyberKit::DOMObjectCache::forget(priv->coreObject.get());
 
-    priv->~WebKitDOMNodeIteratorPrivate();
+    priv->~CyberKitDOMNodeIteratorPrivate();
     G_OBJECT_CLASS(webkit_dom_node_iterator_parent_class)->finalize(object);
 }
 
 static void webkit_dom_node_iterator_get_property(GObject* object, guint propertyId, GValue* value, GParamSpec* pspec)
 {
-    WebKitDOMNodeIterator* self = WEBKIT_DOM_NODE_ITERATOR(object);
+    CyberKitDOMNodeIterator* self = WEBKIT_DOM_NODE_ITERATOR(object);
 
     switch (propertyId) {
     case DOM_NODE_ITERATOR_PROP_ROOT:
@@ -118,17 +118,17 @@ static GObject* webkit_dom_node_iterator_constructor(GType type, guint construct
 {
     GObject* object = G_OBJECT_CLASS(webkit_dom_node_iterator_parent_class)->constructor(type, constructPropertiesCount, constructProperties);
 
-    WebKitDOMNodeIteratorPrivate* priv = WEBKIT_DOM_NODE_ITERATOR_GET_PRIVATE(object);
-    priv->coreObject = static_cast<WebCore::NodeIterator*>(WEBKIT_DOM_OBJECT(object)->coreObject);
-    WebKit::DOMObjectCache::put(priv->coreObject.get(), object);
+    CyberKitDOMNodeIteratorPrivate* priv = WEBKIT_DOM_NODE_ITERATOR_GET_PRIVATE(object);
+    priv->coreObject = static_cast<CyberCore::NodeIterator*>(WEBKIT_DOM_OBJECT(object)->coreObject);
+    CyberKit::DOMObjectCache::put(priv->coreObject.get(), object);
 
     return object;
 }
 
-static void webkit_dom_node_iterator_class_init(WebKitDOMNodeIteratorClass* requestClass)
+static void webkit_dom_node_iterator_class_init(CyberKitDOMNodeIteratorClass* requestClass)
 {
     GObjectClass* gobjectClass = G_OBJECT_CLASS(requestClass);
-    g_type_class_add_private(gobjectClass, sizeof(WebKitDOMNodeIteratorPrivate));
+    g_type_class_add_private(gobjectClass, sizeof(CyberKitDOMNodeIteratorPrivate));
     gobjectClass->constructor = webkit_dom_node_iterator_constructor;
     gobjectClass->finalize = webkit_dom_node_iterator_finalize;
     gobjectClass->get_property = webkit_dom_node_iterator_get_property;
@@ -139,7 +139,7 @@ static void webkit_dom_node_iterator_class_init(WebKitDOMNodeIteratorClass* requ
         g_param_spec_object(
             "root",
             "NodeIterator:root",
-            "read-only WebKitDOMNode* NodeIterator:root",
+            "read-only CyberKitDOMNode* NodeIterator:root",
             WEBKIT_DOM_TYPE_NODE,
             WEBKIT_PARAM_READABLE));
 
@@ -159,7 +159,7 @@ static void webkit_dom_node_iterator_class_init(WebKitDOMNodeIteratorClass* requ
         g_param_spec_object(
             "filter",
             "NodeIterator:filter",
-            "read-only WebKitDOMNodeFilter* NodeIterator:filter",
+            "read-only CyberKitDOMNodeFilter* NodeIterator:filter",
             WEBKIT_DOM_TYPE_NODE_FILTER,
             WEBKIT_PARAM_READABLE));
 
@@ -169,7 +169,7 @@ static void webkit_dom_node_iterator_class_init(WebKitDOMNodeIteratorClass* requ
         g_param_spec_object(
             "reference-node",
             "NodeIterator:reference-node",
-            "read-only WebKitDOMNode* NodeIterator:reference-node",
+            "read-only CyberKitDOMNode* NodeIterator:reference-node",
             WEBKIT_DOM_TYPE_NODE,
             WEBKIT_PARAM_READABLE));
 
@@ -185,91 +185,91 @@ static void webkit_dom_node_iterator_class_init(WebKitDOMNodeIteratorClass* requ
 
 }
 
-static void webkit_dom_node_iterator_init(WebKitDOMNodeIterator* request)
+static void webkit_dom_node_iterator_init(CyberKitDOMNodeIterator* request)
 {
-    WebKitDOMNodeIteratorPrivate* priv = WEBKIT_DOM_NODE_ITERATOR_GET_PRIVATE(request);
-    new (priv) WebKitDOMNodeIteratorPrivate();
+    CyberKitDOMNodeIteratorPrivate* priv = WEBKIT_DOM_NODE_ITERATOR_GET_PRIVATE(request);
+    new (priv) CyberKitDOMNodeIteratorPrivate();
 }
 
-WebKitDOMNode* webkit_dom_node_iterator_next_node(WebKitDOMNodeIterator* self, GError** error)
+CyberKitDOMNode* webkit_dom_node_iterator_next_node(CyberKitDOMNodeIterator* self, GError** error)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_NODE_ITERATOR(self), 0);
     UNUSED_PARAM(error);
-    WebCore::NodeIterator* item = WebKit::core(self);
+    CyberCore::NodeIterator* item = CyberKit::core(self);
 
     auto result = item->nextNode();
     if (result.hasException())
         return nullptr;
 
-    RefPtr<WebCore::Node> gobjectResult = WTF::getPtr(result.releaseReturnValue());
-    return WebKit::kit(gobjectResult.get());
+    RefPtr<CyberCore::Node> gobjectResult = WTF::getPtr(result.releaseReturnValue());
+    return CyberKit::kit(gobjectResult.get());
 }
 
-WebKitDOMNode* webkit_dom_node_iterator_previous_node(WebKitDOMNodeIterator* self, GError** error)
+CyberKitDOMNode* webkit_dom_node_iterator_previous_node(CyberKitDOMNodeIterator* self, GError** error)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_NODE_ITERATOR(self), 0);
     UNUSED_PARAM(error);
-    WebCore::NodeIterator* item = WebKit::core(self);
+    CyberCore::NodeIterator* item = CyberKit::core(self);
 
     auto result = item->previousNode();
     if (result.hasException())
         return nullptr;
 
-    RefPtr<WebCore::Node> gobjectResult = WTF::getPtr(result.releaseReturnValue());
-    return WebKit::kit(gobjectResult.get());
+    RefPtr<CyberCore::Node> gobjectResult = WTF::getPtr(result.releaseReturnValue());
+    return CyberKit::kit(gobjectResult.get());
 }
 
-void webkit_dom_node_iterator_detach(WebKitDOMNodeIterator* self)
+void webkit_dom_node_iterator_detach(CyberKitDOMNodeIterator* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_NODE_ITERATOR(self));
-    WebCore::NodeIterator* item = WebKit::core(self);
+    CyberCore::NodeIterator* item = CyberKit::core(self);
     item->detach();
 }
 
-WebKitDOMNode* webkit_dom_node_iterator_get_root(WebKitDOMNodeIterator* self)
+CyberKitDOMNode* webkit_dom_node_iterator_get_root(CyberKitDOMNodeIterator* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_NODE_ITERATOR(self), 0);
-    WebCore::NodeIterator* item = WebKit::core(self);
-    RefPtr<WebCore::Node> gobjectResult = WTF::getPtr(item->root());
-    return WebKit::kit(gobjectResult.get());
+    CyberCore::NodeIterator* item = CyberKit::core(self);
+    RefPtr<CyberCore::Node> gobjectResult = WTF::getPtr(item->root());
+    return CyberKit::kit(gobjectResult.get());
 }
 
-gulong webkit_dom_node_iterator_get_what_to_show(WebKitDOMNodeIterator* self)
+gulong webkit_dom_node_iterator_get_what_to_show(CyberKitDOMNodeIterator* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_NODE_ITERATOR(self), 0);
-    WebCore::NodeIterator* item = WebKit::core(self);
+    CyberCore::NodeIterator* item = CyberKit::core(self);
     gulong result = item->whatToShow();
     return result;
 }
 
-WebKitDOMNodeFilter* webkit_dom_node_iterator_get_filter(WebKitDOMNodeIterator* self)
+CyberKitDOMNodeFilter* webkit_dom_node_iterator_get_filter(CyberKitDOMNodeIterator* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_NODE_ITERATOR(self), 0);
-    WebCore::NodeIterator* item = WebKit::core(self);
-    RefPtr<WebCore::NodeFilter> gobjectResult = WTF::getPtr(item->filter());
-    return WebKit::kit(gobjectResult.get());
+    CyberCore::NodeIterator* item = CyberKit::core(self);
+    RefPtr<CyberCore::NodeFilter> gobjectResult = WTF::getPtr(item->filter());
+    return CyberKit::kit(gobjectResult.get());
 }
 
-WebKitDOMNode* webkit_dom_node_iterator_get_reference_node(WebKitDOMNodeIterator* self)
+CyberKitDOMNode* webkit_dom_node_iterator_get_reference_node(CyberKitDOMNodeIterator* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_NODE_ITERATOR(self), 0);
-    WebCore::NodeIterator* item = WebKit::core(self);
-    RefPtr<WebCore::Node> gobjectResult = WTF::getPtr(item->referenceNode());
-    return WebKit::kit(gobjectResult.get());
+    CyberCore::NodeIterator* item = CyberKit::core(self);
+    RefPtr<CyberCore::Node> gobjectResult = WTF::getPtr(item->referenceNode());
+    return CyberKit::kit(gobjectResult.get());
 }
 
-gboolean webkit_dom_node_iterator_get_pointer_before_reference_node(WebKitDOMNodeIterator* self)
+gboolean webkit_dom_node_iterator_get_pointer_before_reference_node(CyberKitDOMNodeIterator* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_NODE_ITERATOR(self), FALSE);
-    WebCore::NodeIterator* item = WebKit::core(self);
+    CyberCore::NodeIterator* item = CyberKit::core(self);
     gboolean result = item->pointerBeforeReferenceNode();
     return result;
 }

@@ -42,7 +42,7 @@
 namespace WebKit {
 
 using namespace WTF;
-using namespace WebCore;
+using namespace CyberCore;
 
 static constexpr ASCIILiteral allURLsPattern = "<all_urls>"_s;
 static constexpr ASCIILiteral allHostsAndSchemesPattern = "*://*/*"_s;

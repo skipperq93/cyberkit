@@ -88,7 +88,7 @@
 #include "SelectionGeometry.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -1130,7 +1130,7 @@ void RenderObject::showNodeTreeForThis() const
 
 void RenderObject::showRenderTreeForThis() const
 {
-    const WebCore::RenderObject* root = this;
+    const CyberCore::RenderObject* root = this;
     while (root->parent())
         root = root->parent();
     TextStream stream(TextStream::LineMode::MultipleLine, TextStream::Formatting::SVGStyleRect);
@@ -2719,25 +2719,25 @@ void printGraphicsLayerTreeForLiveDocuments()
 
 #endif // ENABLE(TREE_DEBUGGING)
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #if ENABLE(TREE_DEBUGGING)
 
-void showNodeTree(const WebCore::RenderObject* object)
+void showNodeTree(const CyberCore::RenderObject* object)
 {
     if (!object)
         return;
     object->showNodeTreeForThis();
 }
 
-void showLineTree(const WebCore::RenderObject* object)
+void showLineTree(const CyberCore::RenderObject* object)
 {
     if (!object)
         return;
     object->showLineTreeForThis();
 }
 
-void showRenderTree(const WebCore::RenderObject* object)
+void showRenderTree(const CyberCore::RenderObject* object)
 {
     if (!object)
         return;

@@ -28,7 +28,7 @@
 
 #import <fenv.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 #if PLATFORM(IOS_FAMILY) && (CPU(ARM) || CPU(ARM64))
 
@@ -61,9 +61,9 @@ public:
 
 #endif // PLATFORM(IOS_FAMILY) && (CPU(ARM) || CPU(ARM64))
 
-} // namespace WebCore
+} // namespace CyberCore
 
-using WebCore::FloatingPointEnvironment;
+using CyberCore::FloatingPointEnvironment;
 
 #endif // FloatingPointEnvironment_h
 

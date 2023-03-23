@@ -29,7 +29,7 @@
 #include <CyberCore/ParsedContentType.h>
 #include <wtf/text/StringBuilder.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 namespace TestWebKitAPI {
 

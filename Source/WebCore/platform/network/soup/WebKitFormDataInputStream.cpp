@@ -30,7 +30,7 @@
 #include <wtf/FileSystem.h>
 #include <wtf/glib/WTFGType.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 struct _WebKitFormDataInputStreamPrivate {
     RefPtr<FormData> formData;

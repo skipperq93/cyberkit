@@ -41,17 +41,17 @@
 #include <CyberCore/UTIUtilities.h>
 #include <wtf/MachSendRight.h>
 
-namespace WebKit {
+namespace CyberKit {
 
-using namespace WebCore;
+using namespace CyberCore;
 
-RemoteImageDecoderAVF::RemoteImageDecoderAVF(RemoteImageDecoderAVFManager& manager, const WebCore::ImageDecoderIdentifier& identifier, const String& mimeType)
+RemoteImageDecoderAVF::RemoteImageDecoderAVF(RemoteImageDecoderAVFManager& manager, const CyberCore::ImageDecoderIdentifier& identifier, const String& mimeType)
     : ImageDecoder()
     , m_gpuProcessConnection(manager.ensureGPUProcessConnection())
     , m_manager(manager)
     , m_identifier(identifier)
     , m_mimeType(mimeType)
-    , m_uti(WebCore::UTIFromMIMEType(mimeType))
+    , m_uti(CyberCore::UTIFromMIMEType(mimeType))
 {
 }
 
@@ -224,7 +224,7 @@ void RemoteImageDecoderAVF::clearFrameBufferCache(size_t index)
         m_gpuProcessConnection->connection().send(Messages::RemoteImageDecoderAVFProxy::ClearFrameBufferCache(m_identifier, index), 0);
 }
 
-void RemoteImageDecoderAVF::encodedDataStatusChanged(size_t frameCount, const WebCore::IntSize& size, bool hasTrack)
+void RemoteImageDecoderAVF::encodedDataStatusChanged(size_t frameCount, const CyberCore::IntSize& size, bool hasTrack)
 {
     m_frameCount = frameCount;
     if (!size.isEmpty())

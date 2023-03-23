@@ -29,7 +29,7 @@
 
 #include "MIMETypeCache.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ContentType;
 

@@ -75,7 +75,7 @@
 #include "SelectionGeometry.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace WTF::Unicode;
 
@@ -1223,8 +1223,8 @@ template<typename CharacterType> static inline bool isAllCollapsibleWhitespace(c
 bool RenderText::isAllCollapsibleWhitespace() const
 {
     if (text().is8Bit())
-        return WebCore::isAllCollapsibleWhitespace(text().characters8(), text().length(), style());
-    return WebCore::isAllCollapsibleWhitespace(text().characters16(), text().length(), style());
+        return CyberCore::isAllCollapsibleWhitespace(text().characters8(), text().length(), style());
+    return CyberCore::isAllCollapsibleWhitespace(text().characters16(), text().length(), style());
 }
 
 template<typename CharacterType> static inline bool isAllPossiblyCollapsibleWhitespace(const CharacterType* characters, unsigned length)
@@ -1925,4 +1925,4 @@ std::optional<bool> RenderText::emphasisMarkExistsAndIsAbove(const RenderText& r
     return isAbove;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

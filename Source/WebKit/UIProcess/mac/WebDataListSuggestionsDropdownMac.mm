@@ -56,9 +56,9 @@ static NSString * const suggestionCellReuseIdentifier = @"WKDataListSuggestionVi
 
 @interface WKDataListSuggestionsController : NSObject<NSTableViewDataSource, NSTableViewDelegate>
 
-- (id)initWithInformation:(WebCore::DataListSuggestionInformation&&)information inView:(NSView *)view;
+- (id)initWithInformation:(CyberCore::DataListSuggestionInformation&&)information inView:(NSView *)view;
 - (void)showSuggestionsDropdown:(WebKit::WebDataListSuggestionsDropdownMac&)dropdown;
-- (void)updateWithInformation:(WebCore::DataListSuggestionInformation&&)information;
+- (void)updateWithInformation:(CyberCore::DataListSuggestionInformation&&)information;
 - (void)moveSelectionByDirection:(const String&)direction;
 - (void)invalidate;
 
@@ -81,7 +81,7 @@ WebDataListSuggestionsDropdownMac::WebDataListSuggestionsDropdownMac(WebPageProx
 {
 }
 
-void WebDataListSuggestionsDropdownMac::show(WebCore::DataListSuggestionInformation&& information)
+void WebDataListSuggestionsDropdownMac::show(CyberCore::DataListSuggestionInformation&& information)
 {
     if (m_dropdownUI) {
         [m_dropdownUI updateWithInformation:WTFMove(information)];
@@ -274,7 +274,7 @@ ALLOW_DEPRECATED_DECLARATIONS_END
 
 @implementation WKDataListSuggestionTableView
 
-- (id)initWithElementRect:(const WebCore::IntRect&)rect
+- (id)initWithElementRect:(const CyberCore::IntRect&)rect
 {
     if (!(self = [super initWithFrame:NSMakeRect(0, 0, rect.width(), 0)]))
         return self;
@@ -305,7 +305,7 @@ ALLOW_DEPRECATED_DECLARATIONS_END
 
 @end
 
-static BOOL shouldShowDividersBetweenCells(const Vector<WebCore::DataListSuggestion>& suggestions)
+static BOOL shouldShowDividersBetweenCells(const Vector<CyberCore::DataListSuggestion>& suggestions)
 {
     return notFound != suggestions.findIf([](auto& suggestion) {
         return !suggestion.label.isEmpty();
@@ -314,7 +314,7 @@ static BOOL shouldShowDividersBetweenCells(const Vector<WebCore::DataListSuggest
 
 @implementation WKDataListSuggestionsController {
     WeakPtr<WebKit::WebDataListSuggestionsDropdownMac> _dropdown;
-    Vector<WebCore::DataListSuggestion> _suggestions;
+    Vector<CyberCore::DataListSuggestion> _suggestions;
     NSView *_presentingView;
 
     RetainPtr<NSScrollView> _scrollView;
@@ -323,7 +323,7 @@ static BOOL shouldShowDividersBetweenCells(const Vector<WebCore::DataListSuggest
     BOOL _showDividersBetweenCells;
 }
 
-- (id)initWithInformation:(WebCore::DataListSuggestionInformation&&)information inView:(NSView *)presentingView
+- (id)initWithInformation:(CyberCore::DataListSuggestionInformation&&)information inView:(NSView *)presentingView
 {
     if (!(self = [super init]))
         return self;
@@ -376,7 +376,7 @@ static BOOL shouldShowDividersBetweenCells(const Vector<WebCore::DataListSuggest
     return String();
 }
 
-- (void)updateWithInformation:(WebCore::DataListSuggestionInformation&&)information
+- (void)updateWithInformation:(CyberCore::DataListSuggestionInformation&&)information
 {
     _suggestions = WTFMove(information.suggestions);
     _showDividersBetweenCells = shouldShowDividersBetweenCells(_suggestions);
@@ -437,7 +437,7 @@ static BOOL shouldShowDividersBetweenCells(const Vector<WebCore::DataListSuggest
     [self notifyAccessibilityClients:info];
 }
 
-- (NSRect)dropdownRectForElementRect:(const WebCore::IntRect&)rect
+- (NSRect)dropdownRectForElementRect:(const CyberCore::IntRect&)rect
 {
     NSRect windowRect = [[_presentingView window] convertRectToScreen:[_presentingView convertRect:rect toView:nil]];
 

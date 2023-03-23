@@ -36,26 +36,26 @@ public:
     RemoteGraphicsContextGLGBM(GPUConnectionToWebProcess&, GraphicsContextGLIdentifier, RemoteRenderingBackend&, IPC::StreamServerConnection::Handle&&);
 
 private:
-    void platformWorkQueueInitialize(WebCore::GraphicsContextGLAttributes&&) final;
-    void prepareForDisplay(CompletionHandler<void(WebCore::DMABufObject&&)>&&) final;
+    void platformWorkQueueInitialize(CyberCore::GraphicsContextGLAttributes&&) final;
+    void prepareForDisplay(CompletionHandler<void(CyberCore::DMABufObject&&)>&&) final;
 };
 
 RemoteGraphicsContextGLGBM::RemoteGraphicsContextGLGBM(GPUConnectionToWebProcess& connection, GraphicsContextGLIdentifier identifier, RemoteRenderingBackend& renderingBackend, IPC::StreamServerConnection::Handle&& connectionHandle)
     : RemoteGraphicsContextGL(connection, identifier, renderingBackend, WTFMove(connectionHandle))
 { }
 
-void RemoteGraphicsContextGLGBM::platformWorkQueueInitialize(WebCore::GraphicsContextGLAttributes&& attributes)
+void RemoteGraphicsContextGLGBM::platformWorkQueueInitialize(CyberCore::GraphicsContextGLAttributes&& attributes)
 {
     assertIsCurrent(workQueue());
-    m_context = WebCore::GraphicsContextGLGBM::create(WTFMove(attributes));
+    m_context = CyberCore::GraphicsContextGLGBM::create(WTFMove(attributes));
 }
 
-void RemoteGraphicsContextGLGBM::prepareForDisplay(CompletionHandler<void(WebCore::DMABufObject&&)>&& completionHandler)
+void RemoteGraphicsContextGLGBM::prepareForDisplay(CompletionHandler<void(CyberCore::DMABufObject&&)>&& completionHandler)
 {
     assertIsCurrent(workQueue());
     m_context->prepareForDisplay();
 
-    WebCore::DMABufObject dmabufObject(0);
+    CyberCore::DMABufObject dmabufObject(0);
     auto& swapchain = m_context->swapchain();
     if (swapchain.displayBO) {
         uintptr_t handle = reinterpret_cast<uintptr_t>(swapchain.swapchain.get()) + swapchain.displayBO->handle();
@@ -66,7 +66,7 @@ void RemoteGraphicsContextGLGBM::prepareForDisplay(CompletionHandler<void(WebCor
     completionHandler(WTFMove(dmabufObject));
 }
 
-Ref<RemoteGraphicsContextGL> RemoteGraphicsContextGL::create(GPUConnectionToWebProcess& connection, WebCore::GraphicsContextGLAttributes&& attributes, GraphicsContextGLIdentifier identifier, RemoteRenderingBackend& renderingBackend, IPC::StreamServerConnection::Handle&& connectionHandle)
+Ref<RemoteGraphicsContextGL> RemoteGraphicsContextGL::create(GPUConnectionToWebProcess& connection, CyberCore::GraphicsContextGLAttributes&& attributes, GraphicsContextGLIdentifier identifier, RemoteRenderingBackend& renderingBackend, IPC::StreamServerConnection::Handle&& connectionHandle)
 {
     auto instance = adoptRef(*new RemoteGraphicsContextGLGBM(connection, identifier, renderingBackend, WTFMove(connectionHandle)));
     instance->initialize(WTFMove(attributes));

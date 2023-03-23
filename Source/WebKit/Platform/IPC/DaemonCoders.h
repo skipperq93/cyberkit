@@ -34,7 +34,7 @@
 #include <wtf/UUID.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 struct ExceptionData;
 class CertificateInfo;
 struct PushSubscriptionData;
@@ -115,14 +115,14 @@ template<> struct Coder<class> { \
     static std::optional<class> decode(Decoder&); \
 }
 
-DECLARE_CODER(WebCore::CertificateInfo);
-DECLARE_CODER(WebCore::ExceptionData);
-DECLARE_CODER(WebCore::PrivateClickMeasurement);
-DECLARE_CODER(WebCore::PCM::AttributionTriggerData);
-DECLARE_CODER(WebCore::PushSubscriptionData);
-DECLARE_CODER(WebCore::PushSubscriptionIdentifier);
-DECLARE_CODER(WebCore::RegistrableDomain);
-DECLARE_CODER(WebCore::SecurityOriginData);
+DECLARE_CODER(CyberCore::CertificateInfo);
+DECLARE_CODER(CyberCore::ExceptionData);
+DECLARE_CODER(CyberCore::PrivateClickMeasurement);
+DECLARE_CODER(CyberCore::PCM::AttributionTriggerData);
+DECLARE_CODER(CyberCore::PushSubscriptionData);
+DECLARE_CODER(CyberCore::PushSubscriptionIdentifier);
+DECLARE_CODER(CyberCore::RegistrableDomain);
+DECLARE_CODER(CyberCore::SecurityOriginData);
 DECLARE_CODER(WebKit::WebPushMessage);
 DECLARE_CODER(WebPushD::WebPushDaemonConnectionConfiguration);
 DECLARE_CODER(WTF::WallTime);

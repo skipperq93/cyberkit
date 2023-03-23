@@ -44,7 +44,7 @@ public:
     explicit WebProcessCache(WebProcessPool&);
 
     bool addProcessIfPossible(Ref<WebProcessProxy>&&);
-    RefPtr<WebProcessProxy> takeProcess(const WebCore::RegistrableDomain&, WebsiteDataStore&, WebProcessProxy::LockdownMode);
+    RefPtr<WebProcessProxy> takeProcess(const CyberCore::RegistrableDomain&, WebsiteDataStore&, WebProcessProxy::LockdownMode);
 
     void updateCapacity(WebProcessPool&);
     unsigned capacity() const { return m_capacity; }
@@ -98,7 +98,7 @@ private:
     unsigned m_capacity { 0 };
 
     HashMap<uint64_t, std::unique_ptr<CachedProcess>> m_pendingAddRequests;
-    HashMap<WebCore::RegistrableDomain, std::unique_ptr<CachedProcess>> m_processesPerRegistrableDomain;
+    HashMap<CyberCore::RegistrableDomain, std::unique_ptr<CachedProcess>> m_processesPerRegistrableDomain;
     RunLoop::Timer m_evictionTimer;
 };
 

@@ -28,7 +28,7 @@
 #if ENABLE(SERVICE_WORKER)
 #include "ServiceWorkerData.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 ServiceWorkerData ServiceWorkerData::isolatedCopy() const &
 {
@@ -52,6 +52,6 @@ ServiceWorkerData ServiceWorkerData::isolatedCopy() &&
     };
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

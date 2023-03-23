@@ -29,11 +29,11 @@
 
 #include "Event.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ExtendableEventInit : EventInit {
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

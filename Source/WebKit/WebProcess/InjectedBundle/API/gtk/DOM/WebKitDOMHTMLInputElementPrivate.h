@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -17,16 +17,16 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitDOMHTMLInputElementPrivate_h
-#define WebKitDOMHTMLInputElementPrivate_h
+#ifndef CyberKitDOMHTMLInputElementPrivate_h
+#define CyberKitDOMHTMLInputElementPrivate_h
 
 #include <CyberCore/HTMLInputElement.h>
-#include <webkitdom/WebKitDOMHTMLInputElement.h>
+#include <webkitdom/CyberKitDOMHTMLInputElement.h>
 
-namespace WebKit {
-WebKitDOMHTMLInputElement* wrapHTMLInputElement(WebCore::HTMLInputElement*);
-WebKitDOMHTMLInputElement* kit(WebCore::HTMLInputElement*);
-WebCore::HTMLInputElement* core(WebKitDOMHTMLInputElement*);
-} // namespace WebKit
+namespace CyberKit {
+CyberKitDOMHTMLInputElement* wrapHTMLInputElement(CyberCore::HTMLInputElement*);
+CyberKitDOMHTMLInputElement* kit(CyberCore::HTMLInputElement*);
+CyberCore::HTMLInputElement* core(CyberKitDOMHTMLInputElement*);
+} // namespace CyberKit
 
-#endif /* WebKitDOMHTMLInputElementPrivate_h */
+#endif /* CyberKitDOMHTMLInputElementPrivate_h */

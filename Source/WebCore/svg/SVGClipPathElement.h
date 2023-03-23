@@ -24,7 +24,7 @@
 #include "SVGGraphicsElement.h"
 #include "SVGUnitTypes.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderObject;
 
@@ -54,4 +54,4 @@ private:
     Ref<SVGAnimatedEnumeration> m_clipPathUnits { SVGAnimatedEnumeration::create(this, SVGUnitTypes::SVG_UNIT_TYPE_USERSPACEONUSE) };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

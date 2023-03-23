@@ -28,7 +28,7 @@
 
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 NetworkLoadMetrics::NetworkLoadMetrics() = default;
 
@@ -138,4 +138,4 @@ NetworkLoadMetrics NetworkLoadMetrics::isolatedCopy() const
     return copy;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

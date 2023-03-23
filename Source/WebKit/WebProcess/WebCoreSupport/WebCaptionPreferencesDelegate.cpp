@@ -31,9 +31,9 @@
 #include "WebProcess.h"
 #include "WebProcessProxyMessages.h"
 
-namespace WebKit {
+namespace CyberKit {
 
-void WebCaptionPreferencesDelegate::setDisplayMode(WebCore::CaptionUserPreferences::CaptionDisplayMode displayMode)
+void WebCaptionPreferencesDelegate::setDisplayMode(CyberCore::CaptionUserPreferences::CaptionDisplayMode displayMode)
 {
     WebProcess::singleton().parentProcessConnection()->send(Messages::WebProcessProxy::SetCaptionDisplayMode(displayMode), 0);
 }
@@ -43,6 +43,6 @@ void WebCaptionPreferencesDelegate::setPreferredLanguage(const String& language)
     WebProcess::singleton().parentProcessConnection()->send(Messages::WebProcessProxy::SetCaptionLanguage(language), 0);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

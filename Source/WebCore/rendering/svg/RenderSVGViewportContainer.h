@@ -27,7 +27,7 @@
 #include "RenderSVGContainer.h"
 #include "RenderSVGRoot.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGSVGElement;
 
@@ -66,7 +66,7 @@ private:
     WeakPtr<RenderSVGRoot> m_owningSVGRoot;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderSVGViewportContainer, isSVGViewportContainer())
 

@@ -28,7 +28,7 @@
 
 #include "DeviceOrientationController.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 DeviceOrientationClientMock::DeviceOrientationClientMock()
     : m_controller(0)
@@ -68,4 +68,4 @@ void DeviceOrientationClientMock::timerFired()
     m_controller->didChangeDeviceOrientation(m_orientation.get());
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -36,7 +36,7 @@
 
 namespace WebKit {
 
-AuthenticationDecisionListener::AuthenticationDecisionListener(CompletionHandler<void(AuthenticationChallengeDisposition, const WebCore::Credential&)>&& completionHandler)
+AuthenticationDecisionListener::AuthenticationDecisionListener(CompletionHandler<void(AuthenticationChallengeDisposition, const CyberCore::Credential&)>&& completionHandler)
     : m_completionHandler(WTFMove(completionHandler))
 {
 }
@@ -47,7 +47,7 @@ AuthenticationDecisionListener::~AuthenticationDecisionListener()
         m_completionHandler(AuthenticationChallengeDisposition::Cancel, { });
 }
 
-void AuthenticationDecisionListener::completeChallenge(AuthenticationChallengeDisposition disposition, const WebCore::Credential& credential)
+void AuthenticationDecisionListener::completeChallenge(AuthenticationChallengeDisposition disposition, const CyberCore::Credential& credential)
 {
     if (m_completionHandler)
         m_completionHandler(disposition, credential);

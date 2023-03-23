@@ -27,7 +27,7 @@
 
 #include "RenderIterator.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 template <typename T>
 class RenderChildIterator : public RenderIterator<T> {
@@ -192,4 +192,4 @@ inline RenderChildConstIteratorAdapter<T> childrenOfType(const RenderElement& pa
     return RenderChildConstIteratorAdapter<T>(parent);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

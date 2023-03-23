@@ -37,7 +37,7 @@
 #import <pal/ios/UIKitSoftLink.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 #if PLATFORM(MAC)
 
@@ -85,4 +85,4 @@ bool SettingsBase::platformDefaultMediaSourceEnabled()
 
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -33,7 +33,7 @@
 #include <CyberCore/DiagnosticLoggingKeys.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 static const Seconds loggingInterval { 60_min };
 

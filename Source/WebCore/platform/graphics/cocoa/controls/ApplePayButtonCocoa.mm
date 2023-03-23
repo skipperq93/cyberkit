@@ -33,7 +33,7 @@
 #import "GraphicsContextCG.h"
 #import <pal/cocoa/PassKitSoftLink.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 ApplePayButtonCocoa::ApplePayButtonCocoa(ApplePayButtonPart& owningPart)
     : PlatformControl(owningPart)
@@ -118,6 +118,6 @@ void ApplePayButtonCocoa::draw(GraphicsContext& context, const FloatRoundedRect&
     );
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(APPLE_PAY)

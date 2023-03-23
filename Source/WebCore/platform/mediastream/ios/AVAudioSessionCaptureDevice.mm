@@ -30,7 +30,7 @@
 
 #import <AVFoundation/AVAudioSession.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 AVAudioSessionCaptureDevice AVAudioSessionCaptureDevice::create(AVAudioSessionPortDescription* deviceInput, AVAudioSessionPortDescription *defaultInput)
 {

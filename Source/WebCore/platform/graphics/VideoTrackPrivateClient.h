@@ -29,7 +29,7 @@
 
 #include "TrackPrivateBaseClient.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct PlatformVideoTrackConfiguration;
 

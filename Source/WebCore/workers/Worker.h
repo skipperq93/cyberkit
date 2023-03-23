@@ -45,7 +45,7 @@ class JSObject;
 class JSValue;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class RTCRtpScriptTransform;
 class RTCRtpScriptTransformer;
@@ -116,4 +116,4 @@ private:
     const ScriptExecutionContextIdentifier m_clientIdentifier;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

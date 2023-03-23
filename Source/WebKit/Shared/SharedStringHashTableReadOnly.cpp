@@ -30,7 +30,7 @@
 
 namespace WebKit {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 #if ASSERT_ENABLED
 static inline bool isPowerOf2(unsigned v)

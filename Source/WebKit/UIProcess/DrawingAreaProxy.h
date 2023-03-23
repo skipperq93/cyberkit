@@ -43,7 +43,7 @@ class MachSendRight;
 }
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 enum class DelegatedScrollingMode : uint8_t;
 using FramesPerSecond = unsigned;
 using PlatformDisplayID = uint32_t;
@@ -72,19 +72,19 @@ public:
     void startReceivingMessages(WebProcessProxy&);
     virtual void attachToProvisionalFrameProcess(WebProcessProxy&) = 0;
 
-    virtual WebCore::DelegatedScrollingMode delegatedScrollingMode() const;
+    virtual CyberCore::DelegatedScrollingMode delegatedScrollingMode() const;
 
     virtual void deviceScaleFactorDidChange() = 0;
     virtual void colorSpaceDidChange() { }
-    virtual void windowScreenDidChange(WebCore::PlatformDisplayID, std::optional<WebCore::FramesPerSecond> /* nominalFramesPerSecond */) { }
+    virtual void windowScreenDidChange(CyberCore::PlatformDisplayID, std::optional<CyberCore::FramesPerSecond> /* nominalFramesPerSecond */) { }
 
     // FIXME: These should be pure virtual.
     virtual void setBackingStoreIsDiscardable(bool) { }
 
     virtual void waitForBackingStoreUpdateOnNextPaint() { }
 
-    const WebCore::IntSize& size() const { return m_size; }
-    bool setSize(const WebCore::IntSize&, const WebCore::IntSize& scrollOffset = { });
+    const CyberCore::IntSize& size() const { return m_size; }
+    bool setSize(const CyberCore::IntSize&, const CyberCore::IntSize& scrollOffset = { });
 
 #if USE(COORDINATED_GRAPHICS) || USE(TEXTURE_MAPPER)
     // The timeout we use when waiting for a UpdateGeometry reply.
@@ -96,8 +96,8 @@ public:
     virtual void sizeToContentAutoSizeMaximumSizeDidChange() { }
     virtual void windowKindDidChange() { }
 
-    virtual void adjustTransientZoom(double, WebCore::FloatPoint) { }
-    virtual void commitTransientZoom(double, WebCore::FloatPoint) { }
+    virtual void adjustTransientZoom(double, CyberCore::FloatPoint) { }
+    virtual void commitTransientZoom(double, CyberCore::FloatPoint) { }
 
 #if PLATFORM(MAC)
     virtual void didChangeViewExposedRect();
@@ -139,8 +139,8 @@ protected:
     WebPageProxy& m_webPageProxy;
     Vector<Ref<WebProcessProxy>> m_processesWithRegisteredDrawingAreaProxyMessageReceiver;
 
-    WebCore::IntSize m_size;
-    WebCore::IntSize m_scrollOffset;
+    CyberCore::IntSize m_size;
+    CyberCore::IntSize m_scrollOffset;
 
     // IPC::MessageReceiver
     void didReceiveMessage(IPC::Connection&, IPC::Decoder&) override;
@@ -155,7 +155,7 @@ private:
     virtual void didFirstLayerFlush(uint64_t /* backingStoreStateID */, const LayerTreeContext&) { }
 #if PLATFORM(MAC)
     RunLoop::Timer m_viewExposedRectChangedTimer;
-    std::optional<WebCore::FloatRect> m_lastSentViewExposedRect;
+    std::optional<CyberCore::FloatRect> m_lastSentViewExposedRect;
 #endif // PLATFORM(MAC)
 
 #if USE(COORDINATED_GRAPHICS) || USE(TEXTURE_MAPPER)

@@ -34,7 +34,7 @@
 #include "SVGElement.h"
 #include "SVGRenderSupport.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // Most renderers in the SVG rendering tree will inherit from this class
 // but not all. (e.g. LegacyRenderSVGForeignObject, RenderSVGBlock) thus methods
@@ -75,6 +75,6 @@ private:
     void absoluteFocusRingQuads(Vector<FloatQuad>&) final;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(LegacyRenderSVGModelObject, isLegacyRenderSVGModelObject())

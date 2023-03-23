@@ -48,7 +48,7 @@
 #import <tuple>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 RemoteScrollingCoordinatorProxyIOS::RemoteScrollingCoordinatorProxyIOS(WebPageProxy& webPageProxy)
     : RemoteScrollingCoordinatorProxy(webPageProxy)
@@ -95,7 +95,7 @@ UIScrollView *RemoteScrollingCoordinatorProxyIOS::scrollViewForScrollingNodeID(S
 }
 
 #if ENABLE(OVERLAY_REGIONS_IN_EVENT_REGION)
-void RemoteScrollingCoordinatorProxyIOS::removeFixedScrollingNodeLayerIDs(const Vector<WebCore::GraphicsLayer::PlatformLayerID>& destroyedLayers)
+void RemoteScrollingCoordinatorProxyIOS::removeFixedScrollingNodeLayerIDs(const Vector<CyberCore::GraphicsLayer::PlatformLayerID>& destroyedLayers)
 {
     for (auto layerID : destroyedLayers)
         m_fixedScrollingNodeLayerIDs.remove(layerID);
@@ -253,16 +253,16 @@ void RemoteScrollingCoordinatorProxyIOS::establishLayerTreeScrollingRelations(co
 void RemoteScrollingCoordinatorProxyIOS::adjustTargetContentOffsetForSnapping(CGSize maxScrollOffsets, CGPoint velocity, CGFloat topInset, CGPoint currentContentOffset, CGPoint* targetContentOffset)
 {
     // The bounds checking with maxScrollOffsets is to ensure that we won't interfere with rubber-banding when scrolling to the edge of the page.
-    if (shouldSnapForMainFrameScrolling(WebCore::ScrollEventAxis::Horizontal)) {
+    if (shouldSnapForMainFrameScrolling(CyberCore::ScrollEventAxis::Horizontal)) {
         float potentialSnapPosition;
-        std::tie(potentialSnapPosition, m_currentHorizontalSnapPointIndex) = closestSnapOffsetForMainFrameScrolling(WebCore::ScrollEventAxis::Horizontal, currentContentOffset.x, FloatPoint(*targetContentOffset), velocity.x);
+        std::tie(potentialSnapPosition, m_currentHorizontalSnapPointIndex) = closestSnapOffsetForMainFrameScrolling(CyberCore::ScrollEventAxis::Horizontal, currentContentOffset.x, FloatPoint(*targetContentOffset), velocity.x);
         if (targetContentOffset->x > 0 && targetContentOffset->x < maxScrollOffsets.width)
             targetContentOffset->x = std::min<float>(maxScrollOffsets.width, potentialSnapPosition);
     }
 
-    if (shouldSnapForMainFrameScrolling(WebCore::ScrollEventAxis::Vertical)) {
+    if (shouldSnapForMainFrameScrolling(CyberCore::ScrollEventAxis::Vertical)) {
         float potentialSnapPosition;
-        std::tie(potentialSnapPosition, m_currentVerticalSnapPointIndex) = closestSnapOffsetForMainFrameScrolling(WebCore::ScrollEventAxis::Vertical, currentContentOffset.y + topInset, FloatPoint(*targetContentOffset), velocity.y);
+        std::tie(potentialSnapPosition, m_currentVerticalSnapPointIndex) = closestSnapOffsetForMainFrameScrolling(CyberCore::ScrollEventAxis::Vertical, currentContentOffset.y + topInset, FloatPoint(*targetContentOffset), velocity.y);
         if (m_currentVerticalSnapPointIndex)
             potentialSnapPosition -= topInset;
 

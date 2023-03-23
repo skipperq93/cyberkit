@@ -25,7 +25,7 @@
 #include "RenderSVGInlineText.h"
 #include "RenderSVGText.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 SVGTextMetricsBuilder::SVGTextMetricsBuilder()
     : m_text(0)

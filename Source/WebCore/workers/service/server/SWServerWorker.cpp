@@ -36,7 +36,7 @@
 #include <wtf/CompletionHandler.h>
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 HashMap<ServiceWorkerIdentifier, SWServerWorker*>& SWServerWorker::allWorkers()
 {
@@ -233,7 +233,7 @@ std::optional<ServiceWorkerClientData> SWServerWorker::findClientByIdentifier(co
     return m_server->serviceWorkerClientWithOriginByID(origin(), clientId);
 }
 
-void SWServerWorker::findClientByVisibleIdentifier(const String& clientIdentifier, CompletionHandler<void(std::optional<WebCore::ServiceWorkerClientData>&&)>&& callback)
+void SWServerWorker::findClientByVisibleIdentifier(const String& clientIdentifier, CompletionHandler<void(std::optional<CyberCore::ServiceWorkerClientData>&&)>&& callback)
 {
     if (!m_server) {
         callback({ });
@@ -459,6 +459,6 @@ bool SWServerWorker::matchingImportedScripts(const Vector<std::pair<URL, ScriptB
     return true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

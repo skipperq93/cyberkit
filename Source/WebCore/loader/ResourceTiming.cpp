@@ -34,7 +34,7 @@
 #include "ServerTimingParser.h"
 #include <wtf/CrossThreadCopier.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 ResourceTiming ResourceTiming::fromMemoryCache(const URL& url, const String& initiator, const ResourceLoadTiming& loadTiming, const ResourceResponse& response, const NetworkLoadMetrics& networkLoadMetrics, const SecurityOrigin& securityOrigin)
 {
@@ -106,4 +106,4 @@ ResourceTiming ResourceTiming::isolatedCopy() &&
     };
 }
 
-} // namespace WebCore
+} // namespace CyberCore

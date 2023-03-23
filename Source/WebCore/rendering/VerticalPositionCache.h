@@ -28,7 +28,7 @@
 #include "FontBaseline.h"
 #include <wtf/HashMap.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderObject;
 
@@ -62,4 +62,4 @@ private:
     HashMap<RenderObject*, LayoutUnit> m_ideographicPositions;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

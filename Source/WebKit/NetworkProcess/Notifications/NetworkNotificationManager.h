@@ -36,7 +36,7 @@
 #include <CyberCore/PushSubscriptionData.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 class NotificationResources;
 class SecurityOriginData;
 }
@@ -55,24 +55,24 @@ class NetworkNotificationManager : public NotificationManagerMessageHandler {
 public:
     NetworkSession& networkSession() const { return m_networkSession; }
 
-    void setPushAndNotificationsEnabledForOrigin(const WebCore::SecurityOriginData&, bool, CompletionHandler<void()>&&);
-    void deletePushAndNotificationRegistration(const WebCore::SecurityOriginData&, CompletionHandler<void(const String&)>&&);
-    void getOriginsWithPushAndNotificationPermissions(CompletionHandler<void(const Vector<WebCore::SecurityOriginData>&)>&&);
+    void setPushAndNotificationsEnabledForOrigin(const CyberCore::SecurityOriginData&, bool, CompletionHandler<void()>&&);
+    void deletePushAndNotificationRegistration(const CyberCore::SecurityOriginData&, CompletionHandler<void(const String&)>&&);
+    void getOriginsWithPushAndNotificationPermissions(CompletionHandler<void(const Vector<CyberCore::SecurityOriginData>&)>&&);
     void getPendingPushMessages(CompletionHandler<void(const Vector<WebPushMessage>&)>&&);
 
-    void subscribeToPushService(URL&& scopeURL, Vector<uint8_t>&& applicationServerKey, CompletionHandler<void(Expected<WebCore::PushSubscriptionData, WebCore::ExceptionData>&&)>&&);
-    void unsubscribeFromPushService(URL&& scopeURL, std::optional<WebCore::PushSubscriptionIdentifier>, CompletionHandler<void(Expected<bool, WebCore::ExceptionData>&&)>&&);
-    void getPushSubscription(URL&& scopeURL, CompletionHandler<void(Expected<std::optional<WebCore::PushSubscriptionData>, WebCore::ExceptionData>&&)>&&);
-    void getPushPermissionState(URL&& scopeURL, CompletionHandler<void(Expected<uint8_t, WebCore::ExceptionData>&&)>&&);
-    void incrementSilentPushCount(WebCore::SecurityOriginData&&, CompletionHandler<void(unsigned)>&&);
+    void subscribeToPushService(URL&& scopeURL, Vector<uint8_t>&& applicationServerKey, CompletionHandler<void(Expected<CyberCore::PushSubscriptionData, CyberCore::ExceptionData>&&)>&&);
+    void unsubscribeFromPushService(URL&& scopeURL, std::optional<CyberCore::PushSubscriptionIdentifier>, CompletionHandler<void(Expected<bool, CyberCore::ExceptionData>&&)>&&);
+    void getPushSubscription(URL&& scopeURL, CompletionHandler<void(Expected<std::optional<CyberCore::PushSubscriptionData>, CyberCore::ExceptionData>&&)>&&);
+    void getPushPermissionState(URL&& scopeURL, CompletionHandler<void(Expected<uint8_t, CyberCore::ExceptionData>&&)>&&);
+    void incrementSilentPushCount(CyberCore::SecurityOriginData&&, CompletionHandler<void(unsigned)>&&);
     void removeAllPushSubscriptions(CompletionHandler<void(unsigned)>&&);
-    void removePushSubscriptionsForOrigin(WebCore::SecurityOriginData&&, CompletionHandler<void(unsigned)>&&);
+    void removePushSubscriptionsForOrigin(CyberCore::SecurityOriginData&&, CompletionHandler<void(unsigned)>&&);
 
 private:
     NetworkNotificationManager(NetworkSession&, const String& webPushMachServiceName, WebPushD::WebPushDaemonConnectionConfiguration&&);
 
     void requestSystemNotificationPermission(const String& originString, CompletionHandler<void(bool)>&&) final;
-    void showNotification(IPC::Connection&, const WebCore::NotificationData&, RefPtr<WebCore::NotificationResources>&&, CompletionHandler<void()>&&) final;
+    void showNotification(IPC::Connection&, const CyberCore::NotificationData&, RefPtr<CyberCore::NotificationResources>&&, CompletionHandler<void()>&&) final;
     void cancelNotification(const UUID& notificationID) final;
     void clearNotifications(const Vector<UUID>& notificationIDs) final;
     void didDestroyNotification(const UUID& notificationID) final;

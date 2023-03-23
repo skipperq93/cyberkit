@@ -25,7 +25,7 @@
 #include "SVGPathConsumer.h"
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGPathByteStreamBuilder final : public SVGPathConsumer {
 public:
@@ -87,4 +87,4 @@ private:
     SVGPathByteStream& m_byteStream;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -33,7 +33,7 @@
 
 typedef struct _GtkColorChooser GtkColorChooser;
 
-namespace WebCore {
+namespace CyberCore {
 class Color;
 class IntRect;
 }
@@ -42,20 +42,20 @@ namespace WebKit {
 
 class WebColorPickerGtk : public WebColorPicker {
 public:
-    static Ref<WebColorPickerGtk> create(WebPageProxy&, const WebCore::Color&, const WebCore::IntRect&);
+    static Ref<WebColorPickerGtk> create(WebPageProxy&, const CyberCore::Color&, const CyberCore::IntRect&);
     virtual ~WebColorPickerGtk();
 
     void endPicker() override;
-    void showColorPicker(const WebCore::Color&) override;
+    void showColorPicker(const CyberCore::Color&) override;
 
     void cancel();
 
     const GdkRGBA* initialColor() const { return &m_initialColor; }
 
 protected:
-    WebColorPickerGtk(WebPageProxy&, const WebCore::Color&, const WebCore::IntRect&);
+    WebColorPickerGtk(WebPageProxy&, const CyberCore::Color&, const CyberCore::IntRect&);
 
-    void didChooseColor(const WebCore::Color&);
+    void didChooseColor(const CyberCore::Color&);
 
     GdkRGBA m_initialColor;
     GtkWidget* m_webView;

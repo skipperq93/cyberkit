@@ -32,7 +32,7 @@
 #include <algorithm>
 #include <wtf/MathExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace WTF::Unicode;
 
@@ -693,7 +693,7 @@ bool WidthIterator::advanceOneCharacter(float& width, GlyphBuffer& glyphBuffer)
     advance(m_currentCharacterIndex + 1, glyphBuffer);
     float w = 0;
     for (unsigned i = oldSize; i < glyphBuffer.size(); ++i)
-        w += WebCore::width(glyphBuffer.advanceAt(i));
+        w += CyberCore::width(glyphBuffer.advanceAt(i));
     width = w;
     return glyphBuffer.size() > oldSize;
 }

@@ -31,7 +31,7 @@
 
 typedef const struct _CFURLRequest* CFURLRequestRef;
 
-namespace WebCore {
+namespace CyberCore {
 
 class ResourceRequest : public ResourceRequestBase {
 public:
@@ -91,4 +91,4 @@ private:
     static bool s_httpPipeliningEnabled;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

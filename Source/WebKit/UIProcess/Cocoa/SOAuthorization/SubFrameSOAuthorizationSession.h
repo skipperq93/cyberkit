@@ -39,19 +39,19 @@ class SubFrameSOAuthorizationSession final : public NavigationSOAuthorizationSes
 public:
     using Callback = CompletionHandler<void(bool)>;
 
-    static Ref<SOAuthorizationSession> create(RetainPtr<WKSOAuthorizationDelegate>, Ref<API::NavigationAction>&&, WebPageProxy&, Callback&&, WebCore::FrameIdentifier);
+    static Ref<SOAuthorizationSession> create(RetainPtr<WKSOAuthorizationDelegate>, Ref<API::NavigationAction>&&, WebPageProxy&, Callback&&, CyberCore::FrameIdentifier);
 
     ~SubFrameSOAuthorizationSession();
 
 private:
     using Supplement = std::variant<Vector<uint8_t>, String>;
 
-    SubFrameSOAuthorizationSession(RetainPtr<WKSOAuthorizationDelegate>, Ref<API::NavigationAction>&&, WebPageProxy&, Callback&&, WebCore::FrameIdentifier);
+    SubFrameSOAuthorizationSession(RetainPtr<WKSOAuthorizationDelegate>, Ref<API::NavigationAction>&&, WebPageProxy&, Callback&&, CyberCore::FrameIdentifier);
 
     // SOAuthorizationSession
     void fallBackToWebPathInternal() final;
     void abortInternal() final;
-    void completeInternal(const WebCore::ResourceResponse&, NSData *) final;
+    void completeInternal(const CyberCore::ResourceResponse&, NSData *) final;
 
     // NavigationSOAuthorizationSession
     void beforeStart() final;
@@ -62,7 +62,7 @@ private:
     void appendRequestToLoad(URL&&, Supplement&&);
     void loadRequestToFrame();
 
-    WebCore::FrameIdentifier m_frameID;
+    CyberCore::FrameIdentifier m_frameID;
     Deque<std::pair<URL, Supplement>> m_requestsToLoad;
 };
 

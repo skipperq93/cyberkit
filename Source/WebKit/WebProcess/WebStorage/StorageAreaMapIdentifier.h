@@ -27,10 +27,10 @@
 
 #include <wtf/ObjectIdentifier.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 enum StorageAreaMapIdentifierType { };
 using StorageAreaMapIdentifier = ObjectIdentifier<StorageAreaMapIdentifierType>;
 
-} // namespace WebKit
+} // namespace CyberKit
 

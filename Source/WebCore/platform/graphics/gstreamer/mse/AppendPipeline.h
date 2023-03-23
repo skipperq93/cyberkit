@@ -33,7 +33,7 @@
 #include <wtf/Condition.h>
 #include <wtf/Threading.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 #if !LOG_DISABLED || ENABLE(ENCRYPTED_MEDIA)
 struct PadProbeInformation {
@@ -88,7 +88,7 @@ private:
         GRefPtr<GstPad> entryPad; // Sink pad of the parser/GstIdentity.
         GRefPtr<GstPad> appsinkPad;
 
-        RefPtr<WebCore::TrackPrivateBase> webKitTrack;
+        RefPtr<CyberCore::TrackPrivateBase> webKitTrack;
 
 #if !LOG_DISABLED
         struct PadProbeInformation appsinkDataEnteringPadProbeInformation;
@@ -113,7 +113,7 @@ private:
 
     void hookTrackEvents(Track&);
     static std::tuple<GRefPtr<GstCaps>, AppendPipeline::StreamType, FloatSize> parseDemuxerSrcPadCaps(GstCaps*);
-    Ref<WebCore::TrackPrivateBase> makeWebKitTrack(int trackIndex);
+    Ref<CyberCore::TrackPrivateBase> makeWebKitTrack(int trackIndex);
     void appsinkCapsChanged(Track&);
     void appsinkNewSample(const Track&, GRefPtr<GstSample>&&);
     void handleEndOfAppend();
@@ -175,6 +175,6 @@ private:
     AbortableTaskQueue m_taskQueue;
 };
 
-} // namespace WebCore.
+} // namespace CyberCore.
 
 #endif // USE(GSTREAMER)

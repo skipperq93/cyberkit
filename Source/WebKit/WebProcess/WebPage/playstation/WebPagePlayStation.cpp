@@ -31,8 +31,8 @@
 #include <CyberCore/Settings.h>
 #include <CyberCore/UserAgent.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 void WebPage::platformInitialize(const WebPageCreationParameters&)
 {
@@ -57,7 +57,7 @@ String WebPage::platformUserAgent(const URL& url) const
     if (url.isNull() || !m_page->settings().needsSiteSpecificQuirks())
         return emptyString();
 
-    return WebCore::standardUserAgentForURL(url);
+    return CyberCore::standardUserAgentForURL(url);
 }
 
 bool WebPage::hoverSupportedByPrimaryPointingDevice() const
@@ -80,7 +80,7 @@ OptionSet<PointerCharacteristics> WebPage::pointerCharacteristicsOfAllAvailableP
     return PointerCharacteristics::Fine;
 }
 
-bool WebPage::handleEditingKeyboardEvent(WebCore::KeyboardEvent& event)
+bool WebPage::handleEditingKeyboardEvent(CyberCore::KeyboardEvent& event)
 {
     notImplemented();
     return false;
@@ -91,4 +91,4 @@ void WebPage::getPlatformEditorState(Frame& frame, EditorState& result) const
     notImplemented();
 }
 
-} // namespace WebKit
+} // namespace CyberKit

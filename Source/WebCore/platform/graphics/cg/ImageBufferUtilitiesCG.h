@@ -30,7 +30,7 @@
 #include <optional>
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class PixelBuffer;
 
@@ -44,6 +44,6 @@ Vector<uint8_t> encodeData(const PixelBuffer&, const String& mimeType, std::opti
 WEBCORE_EXPORT String dataURL(CGImageRef, const String& mimeType, std::optional<double> quality);
 String dataURL(const PixelBuffer&, const String& mimeType, std::optional<double> quality);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(CG)

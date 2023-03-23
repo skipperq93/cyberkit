@@ -31,7 +31,7 @@
 #include <CyberScriptCore/JSCInlines.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SerializedPlatformDataCue : public RefCounted<SerializedPlatformDataCue> {
 public:
@@ -57,6 +57,6 @@ protected:
     SerializedPlatformDataCue() = default;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

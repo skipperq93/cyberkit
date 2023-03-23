@@ -22,7 +22,7 @@
  */
 
 #include "config.h"
-#include "WebKitDOMPrivate.h"
+#include "CyberKitDOMPrivate.h"
 
 #include <CyberCore/Blob.h>
 #include <CyberCore/Element.h>
@@ -35,40 +35,40 @@
 #include <CyberCore/MouseEvent.h>
 #include <CyberCore/StyleSheet.h>
 #include <CyberCore/UIEvent.h>
-#include "WebKitDOMAttrPrivate.h"
-#include "WebKitDOMBlobPrivate.h"
-#include "WebKitDOMCDATASectionPrivate.h"
-#include "WebKitDOMCSSStyleSheetPrivate.h"
-#include "WebKitDOMCommentPrivate.h"
-#include "WebKitDOMDOMWindowPrivate.h"
-#include "WebKitDOMDocumentFragmentPrivate.h"
-#include "WebKitDOMDocumentPrivate.h"
-#include "WebKitDOMDocumentTypePrivate.h"
-#include "WebKitDOMElementPrivate.h"
-#include "WebKitDOMEventPrivate.h"
-#include "WebKitDOMEventTargetPrivate.h"
-#include "WebKitDOMFilePrivate.h"
-#include "WebKitDOMHTMLCollectionPrivate.h"
-#include "WebKitDOMHTMLDocumentPrivate.h"
-#include "WebKitDOMHTMLOptionsCollectionPrivate.h"
-#include "WebKitDOMHTMLPrivate.h"
-#include "WebKitDOMKeyboardEventPrivate.h"
-#include "WebKitDOMMouseEventPrivate.h"
-#include "WebKitDOMNodePrivate.h"
-#include "WebKitDOMProcessingInstructionPrivate.h"
-#include "WebKitDOMStyleSheetPrivate.h"
-#include "WebKitDOMTextPrivate.h"
-#include "WebKitDOMUIEventPrivate.h"
-#include "WebKitDOMWheelEventPrivate.h"
+#include "CyberKitDOMAttrPrivate.h"
+#include "CyberKitDOMBlobPrivate.h"
+#include "CyberKitDOMCDATASectionPrivate.h"
+#include "CyberKitDOMCSSStyleSheetPrivate.h"
+#include "CyberKitDOMCommentPrivate.h"
+#include "CyberKitDOMDOMWindowPrivate.h"
+#include "CyberKitDOMDocumentFragmentPrivate.h"
+#include "CyberKitDOMDocumentPrivate.h"
+#include "CyberKitDOMDocumentTypePrivate.h"
+#include "CyberKitDOMElementPrivate.h"
+#include "CyberKitDOMEventPrivate.h"
+#include "CyberKitDOMEventTargetPrivate.h"
+#include "CyberKitDOMFilePrivate.h"
+#include "CyberKitDOMHTMLCollectionPrivate.h"
+#include "CyberKitDOMHTMLDocumentPrivate.h"
+#include "CyberKitDOMHTMLOptionsCollectionPrivate.h"
+#include "CyberKitDOMHTMLPrivate.h"
+#include "CyberKitDOMKeyboardEventPrivate.h"
+#include "CyberKitDOMMouseEventPrivate.h"
+#include "CyberKitDOMNodePrivate.h"
+#include "CyberKitDOMProcessingInstructionPrivate.h"
+#include "CyberKitDOMStyleSheetPrivate.h"
+#include "CyberKitDOMTextPrivate.h"
+#include "CyberKitDOMUIEventPrivate.h"
+#include "CyberKitDOMWheelEventPrivate.h"
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
-namespace WebKit {
+namespace CyberKit {
 
-using namespace WebCore;
-using namespace WebCore::HTMLNames;
+using namespace CyberCore;
+using namespace CyberCore::HTMLNames;
 
-WebKitDOMNode* wrapNodeGtk(Node* node)
+CyberKitDOMNode* wrapNodeGtk(Node* node)
 {
     ASSERT(node);
     ASSERT(node->nodeType());
@@ -101,7 +101,7 @@ WebKitDOMNode* wrapNodeGtk(Node* node)
     return wrapNode(node);
 }
 
-WebKitDOMEvent* wrap(Event* event)
+CyberKitDOMEvent* wrap(Event* event)
 {
     ASSERT(event);
 
@@ -118,7 +118,7 @@ WebKitDOMEvent* wrap(Event* event)
     return wrapEvent(event);
 }
 
-WebKitDOMStyleSheet* wrap(StyleSheet* styleSheet)
+CyberKitDOMStyleSheet* wrap(StyleSheet* styleSheet)
 {
     ASSERT(styleSheet);
 
@@ -127,7 +127,7 @@ WebKitDOMStyleSheet* wrap(StyleSheet* styleSheet)
     return wrapStyleSheet(styleSheet);
 }
 
-WebKitDOMHTMLCollection* wrap(HTMLCollection* collection)
+CyberKitDOMHTMLCollection* wrap(HTMLCollection* collection)
 {
     ASSERT(collection);
 
@@ -136,7 +136,7 @@ WebKitDOMHTMLCollection* wrap(HTMLCollection* collection)
     return wrapHTMLCollection(collection);
 }
 
-WebKitDOMEventTarget* wrap(EventTarget* eventTarget)
+CyberKitDOMEventTarget* wrap(EventTarget* eventTarget)
 {
     ASSERT(eventTarget);
 
@@ -147,7 +147,7 @@ WebKitDOMEventTarget* wrap(EventTarget* eventTarget)
     return nullptr;
 }
 
-WebKitDOMBlob* wrap(Blob* blob)
+CyberKitDOMBlob* wrap(Blob* blob)
 {
     ASSERT(blob);
 
@@ -156,5 +156,5 @@ WebKitDOMBlob* wrap(Blob* blob)
     return wrapBlob(blob);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 G_GNUC_END_IGNORE_DEPRECATIONS;

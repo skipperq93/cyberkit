@@ -47,7 +47,7 @@ namespace WebKit {
 
 namespace NetworkCache {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 static const Seconds preloadedEntryLifetime { 10_s };
 
@@ -72,7 +72,7 @@ static void logSpeculativeLoadingDiagnosticMessage(NetworkProcess& networkProces
     if (WebKit2LogNetworkCacheSpeculativePreloading.state == WTFLogChannelState::On)
         allSpeculativeLoadingDiagnosticMessages().add(message);
 #endif
-    networkProcess.logDiagnosticMessage(frameID.webPageProxyID, WebCore::DiagnosticLoggingKeys::networkCacheKey(), message, WebCore::ShouldSample::Yes);
+    networkProcess.logDiagnosticMessage(frameID.webPageProxyID, CyberCore::DiagnosticLoggingKeys::networkCacheKey(), message, CyberCore::ShouldSample::Yes);
 }
 
 static const AtomString& subresourcesType()
@@ -284,7 +284,7 @@ bool SpeculativeLoadManager::canUsePendingPreload(const SpeculativeLoad& load, c
     return requestsHeadersMatch(load.originalRequest(), actualRequest);
 }
 
-bool SpeculativeLoadManager::canRetrieve(const Key& storageKey, const WebCore::ResourceRequest& request, const GlobalFrameID& frameID) const
+bool SpeculativeLoadManager::canRetrieve(const Key& storageKey, const CyberCore::ResourceRequest& request, const GlobalFrameID& frameID) const
 {
     // Check already preloaded entries.
     if (auto preloadedEntry = m_preloadedEntries.get(storageKey)) {
@@ -337,7 +337,7 @@ void SpeculativeLoadManager::retrieve(const Key& storageKey, RetrieveCompletionH
     addResult.iterator->value->append(WTFMove(completionHandler));
 }
 
-bool SpeculativeLoadManager::shouldRegisterLoad(const WebCore::ResourceRequest& request)
+bool SpeculativeLoadManager::shouldRegisterLoad(const CyberCore::ResourceRequest& request)
 {
     if (request.httpMethod() != "GET"_s)
         return false;
@@ -386,7 +386,7 @@ void SpeculativeLoadManager::registerLoad(const GlobalFrameID& frameID, const Re
         pendingFrameLoad->registerSubresourceLoad(request, resourceKey);
 }
 
-void SpeculativeLoadManager::registerMainResourceLoadResponse(const GlobalFrameID& frameID, const WebCore::ResourceRequest& request, const WebCore::ResourceResponse& response)
+void SpeculativeLoadManager::registerMainResourceLoadResponse(const GlobalFrameID& frameID, const CyberCore::ResourceRequest& request, const CyberCore::ResourceResponse& response)
 {
     if (!shouldRegisterLoad(request))
         return;
@@ -470,7 +470,7 @@ void SpeculativeLoadManager::preconnectForSubresource(const SubresourceInfo& sub
     parameters.shouldPreconnectOnly = PreconnectOnly::Yes;
     parameters.request = constructRevalidationRequest(subresourceInfo.key(), subresourceInfo, entry);
     parameters.isNavigatingToAppBoundDomain = isNavigatingToAppBoundDomain;
-    (new PreconnectTask(*networkSession, WTFMove(parameters), [](const WebCore::ResourceError&, const WebCore::NetworkLoadMetrics&) { }))->start();
+    (new PreconnectTask(*networkSession, WTFMove(parameters), [](const CyberCore::ResourceError&, const CyberCore::NetworkLoadMetrics&) { }))->start();
 #else
     UNUSED_PARAM(subresourceInfo);
     UNUSED_PARAM(entry);

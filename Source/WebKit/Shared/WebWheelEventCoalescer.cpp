@@ -90,7 +90,7 @@ WebWheelEventAndSteps WebWheelEventCoalescer::coalesce(const WebWheelEventAndSte
 
 #if PLATFORM(COCOA)
     auto mergedUnacceleratedScrollingDelta = a.unacceleratedScrollingDelta() + b.unacceleratedScrollingDelta();
-    std::optional<WebCore::FloatSize> mergedRawPlatformScrollingDelta;
+    std::optional<CyberCore::FloatSize> mergedRawPlatformScrollingDelta;
     if (a.rawPlatformDelta() && b.rawPlatformDelta())
         mergedRawPlatformScrollingDelta = a.rawPlatformDelta().value() + b.rawPlatformDelta().value();
 
@@ -150,7 +150,7 @@ std::optional<WebWheelEventAndSteps> WebWheelEventCoalescer::nextEventToDispatch
     return coalescedWebEventAndSteps;
 }
 
-bool WebWheelEventCoalescer::shouldDispatchEvent(const NativeWebWheelEvent& event, OptionSet<WebCore::WheelEventProcessingSteps> processingSteps)
+bool WebWheelEventCoalescer::shouldDispatchEvent(const NativeWebWheelEvent& event, OptionSet<CyberCore::WheelEventProcessingSteps> processingSteps)
 {
     LOG_WITH_STREAM(WheelEvents, stream << "WebWheelEventCoalescer::shouldDispatchEvent " << platform(event) << " (" << m_wheelEventQueue.size() << " events in the queue, " << m_eventsBeingProcessed.size() << " event sequences being processed)");
 

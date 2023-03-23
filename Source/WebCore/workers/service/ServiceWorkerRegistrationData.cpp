@@ -30,7 +30,7 @@
 
 #include <wtf/CrossThreadCopier.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 ServiceWorkerRegistrationData ServiceWorkerRegistrationData::isolatedCopy() const &
 {

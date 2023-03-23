@@ -37,7 +37,7 @@
 #include <wtf/text/TextBreakIterator.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 TextCheckerState& checkerState()
 {
@@ -150,7 +150,7 @@ void TextChecker::checkSpellingOfString(SpellDocumentTag, StringView text, int32
 #endif
 }
 
-void TextChecker::checkGrammarOfString(SpellDocumentTag, StringView /* text */, Vector<WebCore::GrammarDetail>& /* grammarDetails */, int32_t& /* badGrammarLocation */, int32_t& /* badGrammarLength */)
+void TextChecker::checkGrammarOfString(SpellDocumentTag, StringView /* text */, Vector<CyberCore::GrammarDetail>& /* grammarDetails */, int32_t& /* badGrammarLocation */, int32_t& /* badGrammarLength */)
 {
 }
 

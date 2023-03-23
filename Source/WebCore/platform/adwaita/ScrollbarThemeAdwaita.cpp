@@ -41,7 +41,7 @@
 #include <gtk/gtk.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 static const unsigned scrollbarSize = 21;
 static const unsigned scrollbarBorderSize = 1;
@@ -362,6 +362,6 @@ ScrollbarTheme& ScrollbarTheme::nativeTheme()
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(THEME_ADWAITA)

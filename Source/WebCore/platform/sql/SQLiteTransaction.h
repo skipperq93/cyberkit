@@ -29,7 +29,7 @@
 #include <wtf/FastMalloc.h>
 #include <wtf/Noncopyable.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SQLiteDatabase;
 
@@ -55,6 +55,6 @@ private:
     bool m_readOnly;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // SQLiteTransation_H

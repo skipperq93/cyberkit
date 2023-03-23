@@ -30,7 +30,7 @@
 #include <wtf/URL.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using FallbackURLVector = Vector<std::pair<URL, URL>>;
 
@@ -43,4 +43,4 @@ struct ApplicationCacheManifest {
 
 std::optional<ApplicationCacheManifest> parseApplicationCacheManifest(const URL& manifestURL, const String& manifestMIMEType, const uint8_t* data, int length);
 
-} // namespace WebCore
+} // namespace CyberCore

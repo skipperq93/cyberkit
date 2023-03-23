@@ -34,7 +34,7 @@
 
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class MediaConstraintType : uint8_t {
     Unknown,
@@ -133,6 +133,6 @@ private:
     bool m_supportsLogicalSurface { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM)

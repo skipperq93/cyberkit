@@ -40,7 +40,7 @@
 #import <CyberCore/SharedBuffer.h>
 #import <CyberCore/SubframeLoader.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 void WebPlatformStrategies::initializeIfNecessary()
 {
@@ -184,7 +184,7 @@ Vector<String> WebPlatformStrategies::typesSafeForDOMToReadAndWrite(const String
     return PlatformPasteboard(pasteboardName).typesSafeForDOMToReadAndWrite(origin);
 }
 
-int64_t WebPlatformStrategies::writeCustomData(const Vector<WebCore::PasteboardCustomData>& data, const String& pasteboardName, const PasteboardContext*)
+int64_t WebPlatformStrategies::writeCustomData(const Vector<CyberCore::PasteboardCustomData>& data, const String& pasteboardName, const PasteboardContext*)
 {
     return PlatformPasteboard(pasteboardName).write(data);
 }
@@ -194,12 +194,12 @@ bool WebPlatformStrategies::containsStringSafeForDOMToReadForType(const String& 
     return PlatformPasteboard(pasteboardName).containsStringSafeForDOMToReadForType(type);
 }
 
-std::optional<WebCore::PasteboardItemInfo> WebPlatformStrategies::informationForItemAtIndex(size_t index, const String& pasteboardName, int64_t changeCount, const PasteboardContext*)
+std::optional<CyberCore::PasteboardItemInfo> WebPlatformStrategies::informationForItemAtIndex(size_t index, const String& pasteboardName, int64_t changeCount, const PasteboardContext*)
 {
     return PlatformPasteboard(pasteboardName).informationForItemAtIndex(index, changeCount);
 }
 
-std::optional<Vector<WebCore::PasteboardItemInfo>> WebPlatformStrategies::allPasteboardItemInfo(const String& pasteboardName, int64_t changeCount, const PasteboardContext*)
+std::optional<Vector<CyberCore::PasteboardItemInfo>> WebPlatformStrategies::allPasteboardItemInfo(const String& pasteboardName, int64_t changeCount, const PasteboardContext*)
 {
     return PlatformPasteboard(pasteboardName).allPasteboardItemInfo(changeCount);
 }
@@ -209,7 +209,7 @@ int WebPlatformStrategies::getPasteboardItemsCount(const String& pasteboardName,
     return PlatformPasteboard(pasteboardName).count();
 }
 
-RefPtr<WebCore::SharedBuffer> WebPlatformStrategies::readBufferFromPasteboard(std::optional<size_t> index, const String& type, const String& pasteboardName, const PasteboardContext*)
+RefPtr<CyberCore::SharedBuffer> WebPlatformStrategies::readBufferFromPasteboard(std::optional<size_t> index, const String& type, const String& pasteboardName, const PasteboardContext*)
 {
     return PlatformPasteboard(pasteboardName).readBuffer(index, type);
 }
@@ -241,12 +241,12 @@ void WebPlatformStrategies::writeToPasteboard(const PasteboardURL& url, const St
     PlatformPasteboard(pasteboardName).write(url);
 }
 
-void WebPlatformStrategies::writeToPasteboard(const WebCore::PasteboardWebContent& content, const String& pasteboardName, const PasteboardContext*)
+void WebPlatformStrategies::writeToPasteboard(const CyberCore::PasteboardWebContent& content, const String& pasteboardName, const PasteboardContext*)
 {
     PlatformPasteboard(pasteboardName).write(content);
 }
 
-void WebPlatformStrategies::writeToPasteboard(const WebCore::PasteboardImage& image, const String& pasteboardName, const PasteboardContext*)
+void WebPlatformStrategies::writeToPasteboard(const CyberCore::PasteboardImage& image, const String& pasteboardName, const PasteboardContext*)
 {
     PlatformPasteboard(pasteboardName).write(image);
 }

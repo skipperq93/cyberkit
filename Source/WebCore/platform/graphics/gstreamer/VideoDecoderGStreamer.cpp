@@ -28,7 +28,7 @@
 #include "VideoFrameGStreamer.h"
 #include <wtf/WorkQueue.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 GST_DEBUG_CATEGORY(webkit_video_decoder_debug);
 #define GST_CAT_DEFAULT webkit_video_decoder_debug
@@ -231,6 +231,6 @@ void GStreamerInternalVideoDecoder::flush(Function<void()>&& callback)
     m_postTaskCallback(WTFMove(callback));
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_CODECS) && USE(GSTREAMER)

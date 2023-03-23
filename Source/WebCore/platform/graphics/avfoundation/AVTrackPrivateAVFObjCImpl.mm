@@ -49,7 +49,7 @@
 - (id)optionID;
 @end
 
-namespace WebCore {
+namespace CyberCore {
 
 static NSArray* assetTrackConfigurationKeyNames()
 {

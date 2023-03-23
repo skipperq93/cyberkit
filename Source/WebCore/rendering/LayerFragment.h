@@ -27,7 +27,7 @@
 
 #include "ClipRect.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class LayerFragment {
 public:
@@ -82,4 +82,4 @@ public:
 
 typedef Vector<LayerFragment, 1> LayerFragments;
 
-} // namespace WebCore
+} // namespace CyberCore

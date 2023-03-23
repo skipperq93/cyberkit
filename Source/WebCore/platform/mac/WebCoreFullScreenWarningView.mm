@@ -24,7 +24,7 @@
  */
 
 #import "config.h"
-#import "WebCoreFullScreenWarningView.h"
+#import "CyberCoreFullScreenWarningView.h"
 
 #if PLATFORM(MAC) && ENABLE(FULLSCREEN_API)
 
@@ -45,7 +45,7 @@ static const CGFloat WarningViewShadowAlpha = 1;
 static const NSSize WarningViewShadowOffset = {0, -2};
 static const CGFloat WarningViewShadowRadius = 5;
 
-@implementation WebCoreFullScreenWarningView
+@implementation CyberCoreFullScreenWarningView
 
 - (id)initWithTitle:(NSString*)title
 {

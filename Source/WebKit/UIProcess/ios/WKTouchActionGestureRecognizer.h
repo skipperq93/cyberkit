@@ -33,7 +33,7 @@
 
 @interface WKTouchActionGestureRecognizer : UIGestureRecognizer
 - (id)initWithTouchActionDelegate:(id <WKTouchActionGestureRecognizerDelegate>)touchActionDelegate;
-- (void)setTouchActions:(OptionSet<WebCore::TouchAction>)touchActions forTouchIdentifier:(unsigned)touchIdentifier;
+- (void)setTouchActions:(OptionSet<CyberCore::TouchAction>)touchActions forTouchIdentifier:(unsigned)touchIdentifier;
 - (void)clearTouchActionsForTouchIdentifier:(unsigned)touchIdentifier;
 @end
 

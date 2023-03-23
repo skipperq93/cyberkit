@@ -34,7 +34,7 @@
 
 #include <cairo-win32.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 #if PLATFORM(WIN)
 static RefPtr<cairo_t> createCairoContextWithHDC(HDC hdc, bool hasAlpha)

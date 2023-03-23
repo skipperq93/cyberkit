@@ -25,8 +25,8 @@
 
 #import <CyberKitLegacy/DOMFile.h>
 
-namespace WebCore {
+namespace CyberCore {
 class File;
 }
 
-DOMFile *kit(WebCore::File*);
+DOMFile *kit(CyberCore::File*);

@@ -114,7 +114,7 @@
 //
 // note: we're glossing over how the sub-sample handling works with m_virtualSourceIndex, etc.
 
-namespace WebCore {
+namespace CyberCore {
 
 constexpr unsigned kernelSize { 32 };
 constexpr unsigned numberOfKernelOffsets { 32 };
@@ -368,6 +368,6 @@ float SincResampler::convolve(const float* inputP, const float* k1, const float*
 #endif
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

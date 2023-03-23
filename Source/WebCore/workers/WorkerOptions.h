@@ -28,7 +28,7 @@
 #include "FetchRequestCredentials.h"
 #include "WorkerType.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct WorkerOptions {
     WorkerType type { WorkerType::Classic };
@@ -36,4 +36,4 @@ struct WorkerOptions {
     String name;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

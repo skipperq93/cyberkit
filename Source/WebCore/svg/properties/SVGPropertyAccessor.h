@@ -27,7 +27,7 @@
 
 #include "SVGPointerMemberAccessor.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename OwnerType, typename PropertyType>
 class SVGPropertyAccessor : public SVGPointerMemberAccessor<OwnerType, PropertyType> {

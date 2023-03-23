@@ -31,7 +31,7 @@
 #import "XPCServiceEntryPoint.h"
 
 #if PLATFORM(IOS_FAMILY)
-#import <CyberCore/WebCoreThreadSystemInterface.h>
+#import <CyberCore/CyberCoreThreadSystemInterface.h>
 #import <pal/spi/ios/GraphicsServicesSPI.h>
 #endif
 
@@ -47,7 +47,7 @@ void WEBCONTENT_SERVICE_INITIALIZER(xpc_connection_t connection, xpc_object_t in
 
 #if PLATFORM(IOS_FAMILY)
     GSInitialize();
-    InitWebCoreThreadSystemInterface();
+    InitCyberCoreThreadSystemInterface();
 #endif // PLATFORM(IOS_FAMILY)
 
     WebKit::XPCServiceInitializer<WebKit::WebProcess, WebKit::XPCServiceInitializerDelegate>(connection, initializerMessage);

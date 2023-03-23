@@ -22,7 +22,7 @@
 
 #include <gst/gst.h>
 
-namespace WebCore {
+namespace CyberCore {
 class MediaPlayerPrivateGStreamer;
 }
 
@@ -51,7 +51,7 @@ struct _WebKitGLVideoSinkClass {
 GType webkit_gl_video_sink_get_type(void);
 
 bool webKitGLVideoSinkProbePlatform();
-void webKitGLVideoSinkSetMediaPlayerPrivate(WebKitGLVideoSink*, WebCore::MediaPlayerPrivateGStreamer*);
+void webKitGLVideoSinkSetMediaPlayerPrivate(WebKitGLVideoSink*, CyberCore::MediaPlayerPrivateGStreamer*);
 
 G_END_DECLS
 

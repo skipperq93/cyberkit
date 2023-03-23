@@ -26,7 +26,7 @@
 #include "config.h"
 #include "CachedResourceRequestInitiatorTypes.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 CachedResourceRequestInitiatorTypes::CachedResourceRequestInitiatorTypes()
     : css("css"_s)
@@ -38,4 +38,4 @@ CachedResourceRequestInitiatorTypes::CachedResourceRequestInitiatorTypes()
 {
 }
 
-} // namespace WebCore
+} // namespace CyberCore

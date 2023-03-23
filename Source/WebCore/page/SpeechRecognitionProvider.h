@@ -28,7 +28,7 @@
 #include "SpeechRecognitionConnection.h"
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SpeechRecognitionProvider {
     WTF_MAKE_FAST_ALLOCATED;
@@ -38,4 +38,4 @@ public:
     virtual SpeechRecognitionConnection& speechRecognitionConnection() = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

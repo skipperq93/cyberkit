@@ -57,21 +57,21 @@
 #pragma mark WebAVStreamDataParserListener
 
 #if HAVE(AVCONTENTKEYSPECIFIER)
-@interface AVContentKeySpecifier (WebCorePrivate)
+@interface AVContentKeySpecifier (CyberCorePrivate)
 @property (readonly) NSData *initializationData;
 @end
 #endif
 
 @interface WebAVStreamDataParserListener : NSObject<AVStreamDataParserOutputHandling> {
-    WebCore::SourceBufferParserAVFObjC* _parent;
+    CyberCore::SourceBufferParserAVFObjC* _parent;
     AVStreamDataParser* _parser;
 }
-@property (assign) WebCore::SourceBufferParserAVFObjC* parent;
-- (id)initWithParser:(AVStreamDataParser*)parser parent:(WebCore::SourceBufferParserAVFObjC*)parent;
+@property (assign) CyberCore::SourceBufferParserAVFObjC* parent;
+- (id)initWithParser:(AVStreamDataParser*)parser parent:(CyberCore::SourceBufferParserAVFObjC*)parent;
 @end
 
 @implementation WebAVStreamDataParserListener
-- (id)initWithParser:(AVStreamDataParser*)parser parent:(WebCore::SourceBufferParserAVFObjC*)parent
+- (id)initWithParser:(AVStreamDataParser*)parser parent:(CyberCore::SourceBufferParserAVFObjC*)parent
 {
     self = [super init];
     if (!self)
@@ -155,7 +155,7 @@ ALLOW_DEPRECATED_IMPLEMENTATIONS_END
 @end
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 #pragma mark -
 #pragma mark MediaDescriptionAVFObjC

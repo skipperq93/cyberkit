@@ -31,7 +31,7 @@
 #include "FilterOperations.h"
 #include "StyleGeneratedImage.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class StyleFilterImage final : public StyleGeneratedImage, private CachedImageClient {
 public:
@@ -76,6 +76,6 @@ private:
     bool m_inputImageIsReady;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_STYLE_IMAGE(StyleFilterImage, isFilterImage)

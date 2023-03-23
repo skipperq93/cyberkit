@@ -29,7 +29,7 @@
 #include "Logging.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static constexpr Seconds capacityDecayTime { 5_s };
 

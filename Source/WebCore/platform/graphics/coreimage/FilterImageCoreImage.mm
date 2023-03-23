@@ -34,7 +34,7 @@
 #import <wtf/NeverDestroyed.h>
 #import <wtf/cocoa/TypeCastsCocoa.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static RetainPtr<CIContext> sharedCIContext()
 {
@@ -65,6 +65,6 @@ ImageBuffer* FilterImage::imageBufferFromCIImage()
     return m_imageBuffer.get();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(CORE_IMAGE)

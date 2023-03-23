@@ -38,7 +38,7 @@ namespace WTF {
 class Thread;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class WorkerDebuggerProxy;
 class WorkerLoaderProxy;
@@ -108,4 +108,4 @@ private:
     bool m_pausedForDebugger { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

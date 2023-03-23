@@ -29,7 +29,7 @@
 #include "WebKitURIRequest.h"
 #include <CyberCore/ResourceRequest.h>
 
-WebKitURIRequest* webkitURIRequestCreateForResourceRequest(const WebCore::ResourceRequest&);
-void webkitURIRequestGetResourceRequest(WebKitURIRequest*, WebCore::ResourceRequest&);
+WebKitURIRequest* webkitURIRequestCreateForResourceRequest(const CyberCore::ResourceRequest&);
+void webkitURIRequestGetResourceRequest(WebKitURIRequest*, CyberCore::ResourceRequest&);
 
 #endif // WebKitURIRequestPrivate_h

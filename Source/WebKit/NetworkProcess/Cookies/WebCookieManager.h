@@ -39,7 +39,7 @@
 
 OBJC_CLASS NSHTTPCookieStorage;
 
-namespace WebCore {
+namespace CyberCore {
 struct Cookie;
 enum class HTTPCookieAcceptPolicy : uint8_t;
 }
@@ -57,7 +57,7 @@ public:
 
     static const char* supplementName();
 
-    void setHTTPCookieAcceptPolicy(WebCore::HTTPCookieAcceptPolicy, CompletionHandler<void()>&&);
+    void setHTTPCookieAcceptPolicy(CyberCore::HTTPCookieAcceptPolicy, CompletionHandler<void()>&&);
 
 #if USE(SOUP)
     void setCookiePersistentStorage(PAL::SessionID, const String& storagePath, SoupCookiePersistentStorageType);
@@ -71,18 +71,18 @@ private:
 
     void getHostnamesWithCookies(PAL::SessionID, CompletionHandler<void(Vector<String>&&)>&&);
 
-    void deleteCookie(PAL::SessionID, const WebCore::Cookie&, CompletionHandler<void()>&&);
+    void deleteCookie(PAL::SessionID, const CyberCore::Cookie&, CompletionHandler<void()>&&);
     void deleteCookiesForHostnames(PAL::SessionID, const Vector<String>&, CompletionHandler<void()>&&);
     void deleteAllCookies(PAL::SessionID, CompletionHandler<void()>&&);
     void deleteAllCookiesModifiedSince(PAL::SessionID, WallTime, CompletionHandler<void()>&&);
 
-    void setCookie(PAL::SessionID, const Vector<WebCore::Cookie>&, CompletionHandler<void()>&&);
-    void setCookies(PAL::SessionID, const Vector<WebCore::Cookie>&, const URL&, const URL& mainDocumentURL, CompletionHandler<void()>&&);
-    void getAllCookies(PAL::SessionID, CompletionHandler<void(Vector<WebCore::Cookie>&&)>&&);
-    void getCookies(PAL::SessionID, const URL&, CompletionHandler<void(Vector<WebCore::Cookie>&&)>&&);
+    void setCookie(PAL::SessionID, const Vector<CyberCore::Cookie>&, CompletionHandler<void()>&&);
+    void setCookies(PAL::SessionID, const Vector<CyberCore::Cookie>&, const URL&, const URL& mainDocumentURL, CompletionHandler<void()>&&);
+    void getAllCookies(PAL::SessionID, CompletionHandler<void(Vector<CyberCore::Cookie>&&)>&&);
+    void getCookies(PAL::SessionID, const URL&, CompletionHandler<void(Vector<CyberCore::Cookie>&&)>&&);
 
-    void platformSetHTTPCookieAcceptPolicy(WebCore::HTTPCookieAcceptPolicy, CompletionHandler<void()>&&);
-    void getHTTPCookieAcceptPolicy(PAL::SessionID, CompletionHandler<void(WebCore::HTTPCookieAcceptPolicy)>&&);
+    void platformSetHTTPCookieAcceptPolicy(CyberCore::HTTPCookieAcceptPolicy, CompletionHandler<void()>&&);
+    void getHTTPCookieAcceptPolicy(PAL::SessionID, CompletionHandler<void(CyberCore::HTTPCookieAcceptPolicy)>&&);
 
     void startObservingCookieChanges(PAL::SessionID);
     void stopObservingCookieChanges(PAL::SessionID);

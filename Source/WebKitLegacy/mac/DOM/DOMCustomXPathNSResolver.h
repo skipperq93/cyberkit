@@ -29,7 +29,7 @@
 #include "DOMXPathNSResolver.h"
 #include <wtf/Ref.h>
 
-class DOMCustomXPathNSResolver : public WebCore::XPathNSResolver {
+class DOMCustomXPathNSResolver : public CyberCore::XPathNSResolver {
 public:
     static Ref<DOMCustomXPathNSResolver> create(id <DOMXPathNSResolver> customResolver) { return adoptRef(*new DOMCustomXPathNSResolver(customResolver)); }
     virtual ~DOMCustomXPathNSResolver();

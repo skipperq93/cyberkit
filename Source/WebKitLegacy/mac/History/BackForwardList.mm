@@ -28,7 +28,7 @@
 
 #import <CyberCore/BackForwardCache.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 static const unsigned DefaultCapacity = 100;
 static const unsigned NoCurrentItemIndex = UINT_MAX;

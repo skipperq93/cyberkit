@@ -46,7 +46,7 @@
 #include "WebVTTElement.h"
 #include "XMLNames.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace Style {
 
 static const unsigned cStyleSearchThreshold = 10;

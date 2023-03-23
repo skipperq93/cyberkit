@@ -47,8 +47,8 @@
 #include <wtf/glib/RunLoopSourcePriority.h>
 #endif
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 LayerTreeHost::LayerTreeHost(WebPage& webPage)
     : m_webPage(webPage)
@@ -59,7 +59,7 @@ LayerTreeHost::LayerTreeHost(WebPage& webPage)
 {
 #if USE(GLIB_EVENT_LOOP)
     m_layerFlushTimer.setPriority(RunLoopSourcePriority::LayerFlushTimer);
-    m_layerFlushTimer.setName("[WebKit] LayerTreeHost");
+    m_layerFlushTimer.setName("[CyberKit] LayerTreeHost");
 #endif
     scheduleLayerFlush();
 
@@ -160,7 +160,7 @@ void LayerTreeHost::layerFlushTimerFired()
 
 #if PLATFORM(GTK)
     // If we have an active transient zoom, we want the zoom to win over any changes
-    // that WebCore makes to the relevant layers, so re-apply our changes after flushing.
+    // that CyberCore makes to the relevant layers, so re-apply our changes after flushing.
     if (m_transientZoom)
         applyTransientZoomToLayers(m_transientZoomScale, m_transientZoomOrigin);
 #endif
@@ -301,7 +301,7 @@ void LayerTreeHost::didChangeViewport()
     // When using non overlay scrollbars, the contents size doesn't include the scrollbars, but we need to include them
     // in the visible area used by the compositor to ensure that the scrollbar layers are also updated.
     // See https://bugs.webkit.org/show_bug.cgi?id=160450.
-    auto* localMainFrame = dynamicDowncast<WebCore::LocalFrame>(m_webPage.corePage()->mainFrame());
+    auto* localMainFrame = dynamicDowncast<CyberCore::LocalFrame>(m_webPage.corePage()->mainFrame());
     FrameView* view = localMainFrame ? localMainFrame->view() : nullptr;
     if (!view)
         return;
@@ -556,6 +556,6 @@ void LayerTreeHost::commitTransientZoom(double scale, FloatPoint origin)
 }
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(COORDINATED_GRAPHICS)

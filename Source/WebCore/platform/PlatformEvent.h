@@ -28,7 +28,7 @@
 #include <wtf/OptionSet.h>
 #include <wtf/WallTime.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class EventHandling : uint8_t {
     DispatchedToDOM     = 1 << 0,
@@ -144,19 +144,19 @@ protected:
     OptionSet<Modifier> m_modifiers;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::PlatformEvent::Modifier> {
+template<> struct EnumTraits<CyberCore::PlatformEvent::Modifier> {
     using values = EnumValues<
-        WebCore::PlatformEvent::Modifier,
-        WebCore::PlatformEvent::Modifier::AltKey,
-        WebCore::PlatformEvent::Modifier::ControlKey,
-        WebCore::PlatformEvent::Modifier::MetaKey,
-        WebCore::PlatformEvent::Modifier::ShiftKey,
-        WebCore::PlatformEvent::Modifier::CapsLockKey,
-        WebCore::PlatformEvent::Modifier::AltGraphKey
+        CyberCore::PlatformEvent::Modifier,
+        CyberCore::PlatformEvent::Modifier::AltKey,
+        CyberCore::PlatformEvent::Modifier::ControlKey,
+        CyberCore::PlatformEvent::Modifier::MetaKey,
+        CyberCore::PlatformEvent::Modifier::ShiftKey,
+        CyberCore::PlatformEvent::Modifier::CapsLockKey,
+        CyberCore::PlatformEvent::Modifier::AltGraphKey
     >;
 };
 

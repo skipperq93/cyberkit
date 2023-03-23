@@ -28,7 +28,7 @@
 #include "RenderFragmentedFlow.h"
 #include <wtf/HashMap.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderMultiColumnSet;
 class RenderMultiColumnSpannerPlaceholder;
@@ -134,6 +134,6 @@ private:
     bool m_progressionIsReversed { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderMultiColumnFlow, isRenderMultiColumnFlow())

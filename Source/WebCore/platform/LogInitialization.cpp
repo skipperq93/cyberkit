@@ -30,7 +30,7 @@
 #include <wtf/NeverDestroyed.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 #if !LOG_DISABLED || !RELEASE_LOG_DISABLED
 
@@ -46,7 +46,7 @@ public:
 private:
     String logLevelString() final
     {
-        return WebCore::logLevelString();
+        return CyberCore::logLevelString();
     }
 };
 
@@ -71,4 +71,4 @@ WTFLogChannel* getLogChannel(const String& name)
 
 #endif // !LOG_DISABLED || !RELEASE_LOG_DISABLED
 
-} // namespace WebCore
+} // namespace CyberCore

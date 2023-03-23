@@ -36,7 +36,7 @@
 #include <memory>
 #include <wtf/OptionSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FloatRect;
 class Frame;
@@ -68,4 +68,4 @@ WEBCORE_EXPORT RefPtr<ImageBuffer> snapshotSelection(Frame&, SnapshotOptions&&);
 
 Color estimatedBackgroundColorForRange(const SimpleRange&, const Frame&);
 
-} // namespace WebCore
+} // namespace CyberCore

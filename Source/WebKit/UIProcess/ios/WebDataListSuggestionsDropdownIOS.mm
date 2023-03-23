@@ -47,7 +47,7 @@ static NSString * const suggestionCellReuseIdentifier = @"WKDataListSuggestionCe
 @property (nonatomic, weak) WKContentView *view;
 @property (nonatomic) BOOL isShowingSuggestions;
 
-- (void)showSuggestionsDropdown:(WebKit::WebDataListSuggestionsDropdownIOS&)dropdown activationType:(WebCore::DataListSuggestionActivationType)activationType;
+- (void)showSuggestionsDropdown:(WebKit::WebDataListSuggestionsDropdownIOS&)dropdown activationType:(CyberCore::DataListSuggestionActivationType)activationType;
 
 - (NSArray<WKDataListTextSuggestion *> *)textSuggestions;
 - (NSInteger)suggestionsCount;
@@ -99,14 +99,14 @@ WebDataListSuggestionsDropdownIOS::WebDataListSuggestionsDropdownIOS(WebPageProx
 {
 }
 
-void WebDataListSuggestionsDropdownIOS::show(WebCore::DataListSuggestionInformation&& information)
+void WebDataListSuggestionsDropdownIOS::show(CyberCore::DataListSuggestionInformation&& information)
 {
     if (m_suggestionsControl) {
         [m_suggestionsControl updateWithInformation:WTFMove(information)];
         return;
     }
 
-    WebCore::DataListSuggestionActivationType type = information.activationType;
+    CyberCore::DataListSuggestionActivationType type = information.activationType;
 
 #if ENABLE(IOS_FORM_CONTROL_REFRESH)
     if (m_contentView._shouldUseContextMenusForFormControls) {
@@ -150,10 +150,10 @@ void WebDataListSuggestionsDropdownIOS::didSelectOption(const String& selectedOp
 
 @implementation WKDataListSuggestionsControl {
     WeakPtr<WebKit::WebDataListSuggestionsDropdownIOS> _dropdown;
-    Vector<WebCore::DataListSuggestion> _suggestions;
+    Vector<CyberCore::DataListSuggestion> _suggestions;
 }
 
-- (instancetype)initWithInformation:(WebCore::DataListSuggestionInformation&&)information inView:(WKContentView *)view
+- (instancetype)initWithInformation:(CyberCore::DataListSuggestionInformation&&)information inView:(WKContentView *)view
 {
     if (!(self = [super init]))
         return nil;
@@ -166,12 +166,12 @@ void WebDataListSuggestionsDropdownIOS::didSelectOption(const String& selectedOp
     return self;
 }
 
-- (void)updateWithInformation:(WebCore::DataListSuggestionInformation&&)information
+- (void)updateWithInformation:(CyberCore::DataListSuggestionInformation&&)information
 {
     _suggestions = WTFMove(information.suggestions);
 }
 
-- (void)showSuggestionsDropdown:(WebKit::WebDataListSuggestionsDropdownIOS&)dropdown activationType:(WebCore::DataListSuggestionActivationType)activationType
+- (void)showSuggestionsDropdown:(WebKit::WebDataListSuggestionsDropdownIOS&)dropdown activationType:(CyberCore::DataListSuggestionActivationType)activationType
 {
     _dropdown = dropdown;
 }
@@ -221,7 +221,7 @@ void WebDataListSuggestionsDropdownIOS::didSelectOption(const String& selectedOp
     RetainPtr<WKDataListSuggestionsPickerView> _pickerView;
 }
 
-- (instancetype)initWithInformation:(WebCore::DataListSuggestionInformation&&)information inView:(WKContentView *)view
+- (instancetype)initWithInformation:(CyberCore::DataListSuggestionInformation&&)information inView:(WKContentView *)view
 {
     if (!(self = [super initWithInformation:WTFMove(information) inView:view]))
         return nil;
@@ -236,10 +236,10 @@ void WebDataListSuggestionsDropdownIOS::didSelectOption(const String& selectedOp
     return self;
 }
 
-- (void)updateWithInformation:(WebCore::DataListSuggestionInformation&&)information
+- (void)updateWithInformation:(CyberCore::DataListSuggestionInformation&&)information
 {
     [super updateWithInformation:WTFMove(information)];
-    if (information.activationType != WebCore::DataListSuggestionActivationType::IndicatorClicked) {
+    if (information.activationType != CyberCore::DataListSuggestionActivationType::IndicatorClicked) {
         self.view.dataListTextSuggestionsInputView = nil;
         self.view.dataListTextSuggestions = self.textSuggestions;
         return;
@@ -251,10 +251,10 @@ void WebDataListSuggestionsDropdownIOS::didSelectOption(const String& selectedOp
     [_pickerView selectRow:0 inComponent:0 animated:NO];
 }
 
-- (void)showSuggestionsDropdown:(WebKit::WebDataListSuggestionsDropdownIOS&)dropdown activationType:(WebCore::DataListSuggestionActivationType)activationType
+- (void)showSuggestionsDropdown:(WebKit::WebDataListSuggestionsDropdownIOS&)dropdown activationType:(CyberCore::DataListSuggestionActivationType)activationType
 {
     [super showSuggestionsDropdown:dropdown activationType:activationType];
-    if (activationType == WebCore::DataListSuggestionActivationType::IndicatorClicked) {
+    if (activationType == CyberCore::DataListSuggestionActivationType::IndicatorClicked) {
         self.view.dataListTextSuggestionsInputView = _pickerView.get();
         [_pickerView selectRow:0 inComponent:0 animated:NO];
     } else
@@ -313,7 +313,7 @@ void WebDataListSuggestionsDropdownIOS::didSelectOption(const String& selectedOp
     RetainPtr<WKDataListSuggestionsViewController> _suggestionsViewController;
 }
 
-- (instancetype)initWithInformation:(WebCore::DataListSuggestionInformation&&)information inView:(WKContentView *)view
+- (instancetype)initWithInformation:(CyberCore::DataListSuggestionInformation&&)information inView:(WKContentView *)view
 {
     if (!(self = [super initWithInformation:WTFMove(information) inView:view]))
         return nil;
@@ -323,14 +323,14 @@ void WebDataListSuggestionsDropdownIOS::didSelectOption(const String& selectedOp
     return self;
 }
 
-- (void)updateWithInformation:(WebCore::DataListSuggestionInformation&&)information
+- (void)updateWithInformation:(CyberCore::DataListSuggestionInformation&&)information
 {
     [super updateWithInformation:WTFMove(information)];
     [_suggestionsViewController reloadData];
     self.view.dataListTextSuggestions = self.textSuggestions;
 }
 
-- (void)showSuggestionsDropdown:(WebKit::WebDataListSuggestionsDropdownIOS&)dropdown activationType:(WebCore::DataListSuggestionActivationType)activationType
+- (void)showSuggestionsDropdown:(WebKit::WebDataListSuggestionsDropdownIOS&)dropdown activationType:(CyberCore::DataListSuggestionActivationType)activationType
 {
     [super showSuggestionsDropdown:dropdown activationType:activationType];
 
@@ -409,7 +409,7 @@ ALLOW_DEPRECATED_DECLARATIONS_END
 #endif
 }
 
-- (instancetype)initWithInformation:(WebCore::DataListSuggestionInformation&&)information inView:(WKContentView *)view
+- (instancetype)initWithInformation:(CyberCore::DataListSuggestionInformation&&)information inView:(WKContentView *)view
 {
     if (!(self = [super initWithInformation:WTFMove(information) inView:view]))
         return nil;
@@ -417,7 +417,7 @@ ALLOW_DEPRECATED_DECLARATIONS_END
     return self;
 }
 
-- (void)updateWithInformation:(WebCore::DataListSuggestionInformation&&)information
+- (void)updateWithInformation:(CyberCore::DataListSuggestionInformation&&)information
 {
     auto activationType = information.activationType;
 
@@ -425,7 +425,7 @@ ALLOW_DEPRECATED_DECLARATIONS_END
     [self _displayWithActivationType:activationType];
 }
 
-- (void)showSuggestionsDropdown:(WebKit::WebDataListSuggestionsDropdownIOS&)dropdown activationType:(WebCore::DataListSuggestionActivationType)activationType
+- (void)showSuggestionsDropdown:(WebKit::WebDataListSuggestionsDropdownIOS&)dropdown activationType:(CyberCore::DataListSuggestionActivationType)activationType
 {
     [super showSuggestionsDropdown:dropdown activationType:activationType];
     [self _displayWithActivationType:activationType];
@@ -444,16 +444,16 @@ ALLOW_DEPRECATED_DECLARATIONS_END
     [super didSelectOptionAtIndex:index];
 }
 
-- (void)_displayWithActivationType:(WebCore::DataListSuggestionActivationType)activationType
+- (void)_displayWithActivationType:(CyberCore::DataListSuggestionActivationType)activationType
 {
-    if (activationType == WebCore::DataListSuggestionActivationType::IndicatorClicked)
+    if (activationType == CyberCore::DataListSuggestionActivationType::IndicatorClicked)
         [self.view updateFocusedElementFocusedWithDataListDropdown:YES];
-    else if (activationType == WebCore::DataListSuggestionActivationType::ControlClicked)
+    else if (activationType == CyberCore::DataListSuggestionActivationType::ControlClicked)
         [self.view updateFocusedElementFocusedWithDataListDropdown:NO];
 
     [self _updateTextSuggestions];
 
-    if (![UIKeyboard isInHardwareKeyboardMode] && activationType != WebCore::DataListSuggestionActivationType::IndicatorClicked)
+    if (![UIKeyboard isInHardwareKeyboardMode] && activationType != CyberCore::DataListSuggestionActivationType::IndicatorClicked)
         return;
 
     [self _showSuggestions];

@@ -51,7 +51,7 @@
 #include "SVGResourcesCache.h"
 #include "TransformState.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 LayoutRect SVGRenderSupport::clippedOverflowRectForRepaint(const RenderElement& renderer, const RenderLayerModelObject* repaintContainer)
 {

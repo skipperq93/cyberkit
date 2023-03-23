@@ -32,36 +32,36 @@
 
 WKTypeID WKBundleScriptWorldGetTypeID()
 {
-    return WebKit::toAPI(WebKit::InjectedBundleScriptWorld::APIType);
+    return CyberKit::toAPI(CyberKit::InjectedBundleScriptWorld::APIType);
 }
 
 WKBundleScriptWorldRef WKBundleScriptWorldCreateWorld()
 {
-    RefPtr<WebKit::InjectedBundleScriptWorld> world = WebKit::InjectedBundleScriptWorld::create();
+    RefPtr<CyberKit::InjectedBundleScriptWorld> world = CyberKit::InjectedBundleScriptWorld::create();
     return toAPI(world.leakRef());
 }
 
 WKBundleScriptWorldRef WKBundleScriptWorldNormalWorld()
 {
-    return toAPI(&WebKit::InjectedBundleScriptWorld::normalWorld());
+    return toAPI(&CyberKit::InjectedBundleScriptWorld::normalWorld());
 }
 
 void WKBundleScriptWorldClearWrappers(WKBundleScriptWorldRef scriptWorldRef)
 {
-    WebKit::toImpl(scriptWorldRef)->clearWrappers();
+    CyberKit::toImpl(scriptWorldRef)->clearWrappers();
 }
 
 void WKBundleScriptWorldMakeAllShadowRootsOpen(WKBundleScriptWorldRef scriptWorldRef)
 {
-    WebKit::toImpl(scriptWorldRef)->makeAllShadowRootsOpen();
+    CyberKit::toImpl(scriptWorldRef)->makeAllShadowRootsOpen();
 }
 
 void WKBundleScriptWorldDisableOverrideBuiltinsBehavior(WKBundleScriptWorldRef scriptWorldRef)
 {
-    WebKit::toImpl(scriptWorldRef)->disableOverrideBuiltinsBehavior();
+    CyberKit::toImpl(scriptWorldRef)->disableOverrideBuiltinsBehavior();
 }
 
 WKStringRef WKBundleScriptWorldCopyName(WKBundleScriptWorldRef scriptWorldRef)
 {
-    return WebKit::toCopiedAPI(WebKit::toImpl(scriptWorldRef)->name());
+    return CyberKit::toCopiedAPI(CyberKit::toImpl(scriptWorldRef)->name());
 }

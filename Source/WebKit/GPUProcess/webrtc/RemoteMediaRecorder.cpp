@@ -40,7 +40,7 @@
 #define MESSAGE_CHECK(assertion) MESSAGE_CHECK_BASE(assertion, (&m_gpuConnectionToWebProcess.connection()))
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 static constexpr Seconds mediaRecorderDefaultTimeout { 1_s };
 
 std::unique_ptr<RemoteMediaRecorder> RemoteMediaRecorder::create(GPUConnectionToWebProcess& gpuConnectionToWebProcess, MediaRecorderIdentifier identifier, bool recordAudio, bool recordVideo, const MediaRecorderPrivateOptions& options)
@@ -64,7 +64,7 @@ RemoteMediaRecorder::~RemoteMediaRecorder()
 {
 }
 
-void RemoteMediaRecorder::audioSamplesStorageChanged(ConsumerSharedCARingBuffer::Handle&& handle, const WebCore::CAAudioStreamDescription& description)
+void RemoteMediaRecorder::audioSamplesStorageChanged(ConsumerSharedCARingBuffer::Handle&& handle, const CyberCore::CAAudioStreamDescription& description)
 {
     MESSAGE_CHECK(m_recordAudio);
     m_audioBufferList = nullptr;
@@ -96,7 +96,7 @@ void RemoteMediaRecorder::videoFrameAvailable(SharedVideoFrame&& sharedVideoFram
 void RemoteMediaRecorder::fetchData(CompletionHandler<void(IPC::DataReference&&, double)>&& completionHandler)
 {
     m_writer->fetchData([completionHandler = WTFMove(completionHandler)](auto&& data, auto timeCode) mutable {
-        auto buffer = data ? data->makeContiguous() : RefPtr<WebCore::SharedBuffer>();
+        auto buffer = data ? data->makeContiguous() : RefPtr<CyberCore::SharedBuffer>();
         auto* pointer = buffer ? buffer->data() : nullptr;
         completionHandler(IPC::DataReference { pointer, data ? data->size() : 0 }, timeCode);
     });

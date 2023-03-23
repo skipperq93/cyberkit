@@ -1,8 +1,8 @@
-list(APPEND WebCore_PRIVATE_INCLUDE_DIRECTORIES
+list(APPEND CyberCore_PRIVATE_INCLUDE_DIRECTORIES
     "${WEBCORE_DIR}/platform/graphics/gpu/dawn"
 )
 
-list(APPEND WebCore_SOURCES
+list(APPEND CyberCore_SOURCES
     platform/graphics/gpu/dawn/GPUBindGroupAllocatorDawn.cpp
     platform/graphics/gpu/dawn/GPUBindGroupDawn.cpp
     platform/graphics/gpu/dawn/GPUBindGroupLayoutDawn.cpp
@@ -21,7 +21,7 @@ list(APPEND WebCore_SOURCES
     platform/graphics/gpu/dawn/GPUTextureDawn.cpp
 )
 
-list(APPEND WebCore_PRIVATE_LIBRARIES
+list(APPEND CyberCore_PRIVATE_LIBRARIES
     Dawn::dawn
     Dawn::native
 )

@@ -28,7 +28,7 @@
 #include "SVGAnimationFunction.h"
 #include "SVGValuePropertyAnimator.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGLengthAnimator final : public SVGValuePropertyAnimator<SVGLength, SVGAnimationLengthFunction> {
     using Base = SVGValuePropertyAnimator<SVGLength, SVGAnimationLengthFunction>;
@@ -51,4 +51,4 @@ public:
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

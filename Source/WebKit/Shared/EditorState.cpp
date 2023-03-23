@@ -26,11 +26,11 @@
 #include "config.h"
 #include "EditorState.h"
 
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include <wtf/text/TextStream.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 TextStream& operator<<(TextStream& ts, const EditorState& editorState)
 {
@@ -73,7 +73,7 @@ TextStream& operator<<(TextStream& ts, const EditorState& editorState)
             ts.dumpProperty("textColor", editorState.postLayoutData->textColor);
         if (editorState.postLayoutData->enclosingListType != NoList)
             ts.dumpProperty("enclosingListType", editorState.postLayoutData->enclosingListType);
-        if (editorState.postLayoutData->baseWritingDirection != WebCore::WritingDirection::Natural)
+        if (editorState.postLayoutData->baseWritingDirection != CyberCore::WritingDirection::Natural)
             ts.dumpProperty("baseWritingDirection", static_cast<uint8_t>(editorState.postLayoutData->baseWritingDirection));
 #endif // PLATFORM(COCOA)
 #if PLATFORM(IOS_FAMILY)

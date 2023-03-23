@@ -25,9 +25,9 @@
 
 #import <CyberKitLegacy/DOMXPathResult.h>
 
-namespace WebCore {
+namespace CyberCore {
 class XPathResult;
 }
 
-WebCore::XPathResult* core(DOMXPathResult *);
-DOMXPathResult *kit(WebCore::XPathResult*);
+CyberCore::XPathResult* core(DOMXPathResult *);
+DOMXPathResult *kit(CyberCore::XPathResult*);

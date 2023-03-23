@@ -29,7 +29,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/Ref.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 DECLARE_ALLOCATOR_WITH_HEAP_IDENTIFIER(StyleBoxData);
 class StyleBoxData : public RefCounted<StyleBoxData> {
@@ -93,4 +93,4 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore

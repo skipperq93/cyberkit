@@ -26,7 +26,7 @@
 #include "LightSource.h"
 #include <wtf/Ref.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SpotLightSource : public LightSource {
 public:
@@ -64,6 +64,6 @@ private:
     float m_limitingConeAngle;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_LIGHTSOURCE(SpotLightSource, LS_SPOT)

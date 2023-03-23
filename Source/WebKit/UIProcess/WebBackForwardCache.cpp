@@ -91,7 +91,7 @@ void WebBackForwardCache::addEntry(WebBackForwardListItem& item, std::unique_ptr
     addEntry(item, makeUnique<WebBackForwardCacheEntry>(*this, item.itemID(), suspendedPage->process().coreProcessIdentifier(), WTFMove(suspendedPage)));
 }
 
-void WebBackForwardCache::addEntry(WebBackForwardListItem& item, WebCore::ProcessIdentifier processIdentifier)
+void WebBackForwardCache::addEntry(WebBackForwardListItem& item, CyberCore::ProcessIdentifier processIdentifier)
 {
     addEntry(item, makeUnique<WebBackForwardCacheEntry>(*this, item.itemID(), WTFMove(processIdentifier)));
 }

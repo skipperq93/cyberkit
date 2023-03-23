@@ -30,7 +30,7 @@
 #include "WebPageProxy.h"
 #include <CyberCore/ResourceRequest.h>
 
-namespace WebCore {
+namespace CyberCore {
 class SecurityOriginData;
 }
 
@@ -50,8 +50,8 @@ public:
     virtual ~FrameInfo();
 
     bool isMainFrame() const { return m_data.isMainFrame; }
-    const WebCore::ResourceRequest& request() const { return m_data.request; }
-    WebCore::SecurityOriginData& securityOrigin() { return m_data.securityOrigin; }
+    const CyberCore::ResourceRequest& request() const { return m_data.request; }
+    CyberCore::SecurityOriginData& securityOrigin() { return m_data.securityOrigin; }
     Ref<FrameHandle> handle() const;
     WebKit::WebPageProxy* page() { return m_page.get(); }
     RefPtr<FrameHandle> parentFrameHandle() const;

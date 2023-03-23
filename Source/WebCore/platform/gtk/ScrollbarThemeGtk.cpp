@@ -38,7 +38,7 @@
 #include <cstdlib>
 #include <gtk/gtk.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 ScrollbarTheme& ScrollbarTheme::nativeTheme()
 {
@@ -547,6 +547,6 @@ int ScrollbarThemeGtk::minimumThumbLength(Scrollbar& scrollbar)
     return scrollbar.orientation() == ScrollbarOrientation::Vertical ? minSize.height() : minSize.width();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // !USE(GTK4)

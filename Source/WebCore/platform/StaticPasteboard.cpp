@@ -29,7 +29,7 @@
 #include "CommonAtomStrings.h"
 #include "SharedBuffer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 StaticPasteboard::StaticPasteboard()
     : Pasteboard({ })

@@ -29,7 +29,7 @@
 
 #include "LegacyPreviewLoaderClient.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class MockPreviewLoaderClient final : public LegacyPreviewLoaderClient {
 public:
@@ -47,6 +47,6 @@ private:
     String m_password;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(QUICK_LOOK)

@@ -37,7 +37,7 @@
 
 namespace WebKit {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 RemoteMediaEngineConfigurationFactoryProxy::RemoteMediaEngineConfigurationFactoryProxy()
 {
@@ -45,14 +45,14 @@ RemoteMediaEngineConfigurationFactoryProxy::RemoteMediaEngineConfigurationFactor
 
 RemoteMediaEngineConfigurationFactoryProxy::~RemoteMediaEngineConfigurationFactoryProxy() = default;
 
-void RemoteMediaEngineConfigurationFactoryProxy:: createDecodingConfiguration(WebCore::MediaDecodingConfiguration&& configuration, CompletionHandler<void(WebCore::MediaCapabilitiesDecodingInfo&&)>&& completion)
+void RemoteMediaEngineConfigurationFactoryProxy:: createDecodingConfiguration(CyberCore::MediaDecodingConfiguration&& configuration, CompletionHandler<void(CyberCore::MediaCapabilitiesDecodingInfo&&)>&& completion)
 {
     MediaEngineConfigurationFactory::createDecodingConfiguration(WTFMove(configuration), [completion = WTFMove(completion)] (auto info) mutable {
         completion(WTFMove(info));
     });
 }
 
-void RemoteMediaEngineConfigurationFactoryProxy::createEncodingConfiguration(WebCore::MediaEncodingConfiguration&& configuration, CompletionHandler<void(WebCore::MediaCapabilitiesEncodingInfo&&)>&& completion)
+void RemoteMediaEngineConfigurationFactoryProxy::createEncodingConfiguration(CyberCore::MediaEncodingConfiguration&& configuration, CompletionHandler<void(CyberCore::MediaCapabilitiesEncodingInfo&&)>&& completion)
 {
     MediaEngineConfigurationFactory::createEncodingConfiguration(WTFMove(configuration), [completion = WTFMove(completion)] (auto info) mutable {
         completion(WTFMove(info));

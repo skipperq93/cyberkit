@@ -34,7 +34,7 @@
 #include <wtf/Markable.h>
 #include <wtf/MathExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace WebKitFontFamilyNames;
 

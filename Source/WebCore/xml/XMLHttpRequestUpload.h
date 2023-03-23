@@ -28,9 +28,9 @@
 #include "XMLHttpRequest.h"
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
-class WebCoreOpaqueRoot;
+class CyberCoreOpaqueRoot;
 
 class XMLHttpRequestUpload final : public XMLHttpRequestEventTarget {
     WTF_MAKE_ISO_ALLOCATED(XMLHttpRequestUpload);
@@ -56,6 +56,6 @@ private:
     XMLHttpRequest& m_request;
 };
 
-WebCoreOpaqueRoot root(XMLHttpRequestUpload*);
+CyberCoreOpaqueRoot root(XMLHttpRequestUpload*);
     
-} // namespace WebCore
+} // namespace CyberCore

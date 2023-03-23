@@ -43,7 +43,7 @@
 
 #import <pal/cf/CoreMediaSoftLink.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static const double kRingBufferDuration = 1;
 

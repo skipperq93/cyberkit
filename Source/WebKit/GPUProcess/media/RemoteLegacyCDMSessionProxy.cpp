@@ -40,14 +40,14 @@
 
 namespace WebKit {
 
-using namespace WebCore;
+using namespace CyberCore;
 
-std::unique_ptr<RemoteLegacyCDMSessionProxy> RemoteLegacyCDMSessionProxy::create(RemoteLegacyCDMFactoryProxy& factory, uint64_t logIdentifier, RemoteLegacyCDMSessionIdentifier sessionIdentifier, WebCore::LegacyCDM& cdm)
+std::unique_ptr<RemoteLegacyCDMSessionProxy> RemoteLegacyCDMSessionProxy::create(RemoteLegacyCDMFactoryProxy& factory, uint64_t logIdentifier, RemoteLegacyCDMSessionIdentifier sessionIdentifier, CyberCore::LegacyCDM& cdm)
 {
     return std::unique_ptr<RemoteLegacyCDMSessionProxy>(new RemoteLegacyCDMSessionProxy(factory, logIdentifier, sessionIdentifier, cdm));
 }
 
-RemoteLegacyCDMSessionProxy::RemoteLegacyCDMSessionProxy(RemoteLegacyCDMFactoryProxy& factory, uint64_t parentLogIdentifier, RemoteLegacyCDMSessionIdentifier sessionIdentifier, WebCore::LegacyCDM& cdm)
+RemoteLegacyCDMSessionProxy::RemoteLegacyCDMSessionProxy(RemoteLegacyCDMFactoryProxy& factory, uint64_t parentLogIdentifier, RemoteLegacyCDMSessionIdentifier sessionIdentifier, CyberCore::LegacyCDM& cdm)
     : m_factory(factory)
 #if !RELEASE_LOG_DISABLED
     , m_logger(factory.logger())
@@ -74,7 +74,7 @@ static RefPtr<Uint8Array> convertToUint8Array(RefPtr<SharedBuffer>&& buffer)
 }
 
 template <typename T>
-static RefPtr<WebCore::SharedBuffer> convertToOptionalSharedBuffer(T array)
+static RefPtr<CyberCore::SharedBuffer> convertToOptionalSharedBuffer(T array)
 {
     if (!array)
         return nullptr;

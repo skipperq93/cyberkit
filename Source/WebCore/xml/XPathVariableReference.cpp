@@ -28,7 +28,7 @@
 #include "XPathVariableReference.h"
 
 
-namespace WebCore {
+namespace CyberCore {
 namespace XPath {
     
 VariableReference::VariableReference(const String& name)

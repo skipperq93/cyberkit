@@ -164,7 +164,7 @@ Shared/Cocoa/SandboxInitialiationParametersCocoa.mm
 Shared/Cocoa/SandboxUtilities.mm
 Shared/Cocoa/SharedCARingBuffer.cpp
 Shared/Cocoa/TCCSoftLink.mm
-Shared/Cocoa/WebCoreArgumentCodersCocoa.mm
+Shared/Cocoa/CyberCoreArgumentCodersCocoa.mm
 Shared/Cocoa/WebErrorsCocoa.mm
 Shared/Cocoa/WebKit2InitializeCocoa.mm
 Shared/Cocoa/WKNSArray.mm
@@ -206,7 +206,7 @@ Shared/mac/PasteboardTypes.mm
 Shared/mac/PrintInfoMac.mm
 Shared/mac/ScrollingAccelerationCurveMac.mm
 Shared/mac/SecItemRequestData.cpp
-Shared/mac/WebCoreArgumentCodersMac.mm
+Shared/mac/CyberCoreArgumentCodersMac.mm
 Shared/mac/WebEventFactory.mm
 Shared/mac/WebGestureEvent.cpp
 Shared/mac/WebMemorySampler.mac.mm
@@ -667,21 +667,21 @@ WebProcess/Plugins/PDF/PDFPluginChoiceAnnotation.mm
 WebProcess/Plugins/PDF/PDFPluginPasswordField.mm
 WebProcess/Plugins/PDF/PDFPluginTextAnnotation.mm
 
-WebProcess/WebCoreSupport/WebCaptionPreferencesDelegate.cpp
-WebProcess/WebCoreSupport/WebValidationMessageClient.cpp
+WebProcess/CyberCoreSupport/WebCaptionPreferencesDelegate.cpp
+WebProcess/CyberCoreSupport/WebValidationMessageClient.cpp
 
-WebProcess/WebCoreSupport/ios/WebChromeClientIOS.mm
-WebProcess/WebCoreSupport/ios/WebEditorClientIOS.mm
-WebProcess/WebCoreSupport/ios/WebFrameLoaderClientIOS.mm
-WebProcess/WebCoreSupport/ios/WebPreviewLoaderClient.cpp
+WebProcess/CyberCoreSupport/ios/WebChromeClientIOS.mm
+WebProcess/CyberCoreSupport/ios/WebEditorClientIOS.mm
+WebProcess/CyberCoreSupport/ios/WebFrameLoaderClientIOS.mm
+WebProcess/CyberCoreSupport/ios/WebPreviewLoaderClient.cpp
 
-WebProcess/WebCoreSupport/mac/WebAlternativeTextClient.cpp
-WebProcess/WebCoreSupport/mac/WebContextMenuClientMac.mm
-WebProcess/WebCoreSupport/mac/WebDragClientMac.mm
-WebProcess/WebCoreSupport/mac/WebEditorClientMac.mm
-WebProcess/WebCoreSupport/mac/WebFrameNetworkingContext.mm
-WebProcess/WebCoreSupport/mac/WebSwitchingGPUClient.cpp
-WebProcess/WebCoreSupport/mac/WebPopupMenuMac.mm
+WebProcess/CyberCoreSupport/mac/WebAlternativeTextClient.cpp
+WebProcess/CyberCoreSupport/mac/WebContextMenuClientMac.mm
+WebProcess/CyberCoreSupport/mac/WebDragClientMac.mm
+WebProcess/CyberCoreSupport/mac/WebEditorClientMac.mm
+WebProcess/CyberCoreSupport/mac/WebFrameNetworkingContext.mm
+WebProcess/CyberCoreSupport/mac/WebSwitchingGPUClient.cpp
+WebProcess/CyberCoreSupport/mac/WebPopupMenuMac.mm
 
 WebProcess/WebPage/ViewGestureGeometryCollector.cpp
 WebProcess/WebPage/ViewUpdateDispatcher.cpp

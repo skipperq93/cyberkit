@@ -32,7 +32,7 @@
 #include <CyberCore/GRefPtrGtk.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 static const Seconds swipeMinAnimationDuration = 100_ms;
 static const Seconds swipeMaxAnimationDuration = 400_ms;
@@ -291,7 +291,7 @@ void ViewGestureController::SwipeProgressTracker::endAnimation()
 #if !USE(GTK4)
 GRefPtr<GtkStyleContext> ViewGestureController::createStyleContext(const char* name)
 {
-    bool isRTL = m_webPageProxy.userInterfaceLayoutDirection() == WebCore::UserInterfaceLayoutDirection::RTL;
+    bool isRTL = m_webPageProxy.userInterfaceLayoutDirection() == CyberCore::UserInterfaceLayoutDirection::RTL;
     GtkWidget* widget = m_webPageProxy.viewWidget();
 
     GRefPtr<GtkWidgetPath> path = adoptGRef(gtk_widget_path_copy(gtk_widget_get_path(widget)));
@@ -440,7 +440,7 @@ void ViewGestureController::snapshot(GtkSnapshot* snapshot, GskRenderNode* pageR
 {
     bool swipingLeft = isPhysicallySwipingLeft(m_swipeProgressTracker.direction());
     bool swipingBack = m_swipeProgressTracker.direction() == SwipeDirection::Back;
-    bool isRTL = m_webPageProxy.userInterfaceLayoutDirection() == WebCore::UserInterfaceLayoutDirection::RTL;
+    bool isRTL = m_webPageProxy.userInterfaceLayoutDirection() == CyberCore::UserInterfaceLayoutDirection::RTL;
     float progress = m_swipeProgressTracker.progress();
 
     auto size = m_webPageProxy.drawingArea()->size();
@@ -519,7 +519,7 @@ void ViewGestureController::draw(cairo_t* cr, cairo_pattern_t* pageGroup)
 {
     bool swipingLeft = isPhysicallySwipingLeft(m_swipeProgressTracker.direction());
     bool swipingBack = m_swipeProgressTracker.direction() == SwipeDirection::Back;
-    bool isRTL = m_webPageProxy.userInterfaceLayoutDirection() == WebCore::UserInterfaceLayoutDirection::RTL;
+    bool isRTL = m_webPageProxy.userInterfaceLayoutDirection() == CyberCore::UserInterfaceLayoutDirection::RTL;
     float progress = m_swipeProgressTracker.progress();
 
     auto size = m_webPageProxy.drawingArea()->size();

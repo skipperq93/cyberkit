@@ -71,7 +71,7 @@ IconLoadingDelegate::IconLoadingClient::~IconLoadingClient()
 
 typedef void (^IconLoadCompletionHandler)(NSData*);
 
-void IconLoadingDelegate::IconLoadingClient::getLoadDecisionForIcon(const WebCore::LinkIcon& linkIcon, CompletionHandler<void(CompletionHandler<void(API::Data*)>&&)>&& completionHandler)
+void IconLoadingDelegate::IconLoadingClient::getLoadDecisionForIcon(const CyberCore::LinkIcon& linkIcon, CompletionHandler<void(CompletionHandler<void(API::Data*)>&&)>&& completionHandler)
 {
     if (!m_iconLoadingDelegate.m_delegateMethods.webViewShouldLoadIconWithParametersCompletionHandler) {
         completionHandler(nullptr);

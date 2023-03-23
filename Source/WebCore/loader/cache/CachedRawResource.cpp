@@ -39,7 +39,7 @@
 
 #define RELEASE_LOG_ALWAYS(fmt, ...) RELEASE_LOG(Network, "%p - CachedRawResource::" fmt, this, ##__VA_ARGS__)
 
-namespace WebCore {
+namespace CyberCore {
 
 CachedRawResource::CachedRawResource(CachedResourceRequest&& request, Type type, PAL::SessionID sessionID, const CookieJar* cookieJar)
     : CachedResource(WTFMove(request), type, sessionID, cookieJar)
@@ -368,4 +368,4 @@ void CachedRawResource::previewResponseReceived(const ResourceResponse& newRespo
 
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

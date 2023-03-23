@@ -33,11 +33,11 @@
 #include <wtf/RefPtr.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class StorageAreaImpl;
 
-class StorageNamespaceImpl final : public WebCore::StorageNamespace {
+class StorageNamespaceImpl final : public CyberCore::StorageNamespace {
 public:
     static Ref<StorageNamespaceImpl> createSessionStorageNamespace(unsigned quota, PAL::SessionID);
     static Ref<StorageNamespaceImpl> getOrCreateLocalStorageNamespace(const String& databasePath, unsigned quota, PAL::SessionID);
@@ -49,29 +49,29 @@ public:
     // we're just deleting the underlying db file. If an item is added immediately
     // after file deletion, we want the same StorageArea to eventually trigger
     // a sync and for StorageAreaSync to recreate the backing db file.
-    void clearOriginForDeletion(const WebCore::SecurityOriginData&);
+    void clearOriginForDeletion(const CyberCore::SecurityOriginData&);
     void clearAllOriginsForDeletion();
     void sync();
     void closeIdleLocalStorageDatabases();
 
     PAL::SessionID sessionID() const final { return m_sessionID; }
     void setSessionIDForTesting(PAL::SessionID) final;
-    const WebCore::SecurityOrigin* topLevelOrigin() const final { return nullptr; };
+    const CyberCore::SecurityOrigin* topLevelOrigin() const final { return nullptr; };
 
 private:
-    StorageNamespaceImpl(WebCore::StorageType, const String& path, unsigned quota, PAL::SessionID);
+    StorageNamespaceImpl(CyberCore::StorageType, const String& path, unsigned quota, PAL::SessionID);
 
-    Ref<WebCore::StorageArea> storageArea(const WebCore::SecurityOrigin&) final;
-    Ref<StorageNamespace> copy(WebCore::Page& newPage) final;
+    Ref<CyberCore::StorageArea> storageArea(const CyberCore::SecurityOrigin&) final;
+    Ref<StorageNamespace> copy(CyberCore::Page& newPage) final;
 
-    typedef HashMap<WebCore::SecurityOriginData, RefPtr<StorageAreaImpl>> StorageAreaMap;
+    typedef HashMap<CyberCore::SecurityOriginData, RefPtr<StorageAreaImpl>> StorageAreaMap;
     StorageAreaMap m_storageAreaMap;
 
-    WebCore::StorageType m_storageType;
+    CyberCore::StorageType m_storageType;
 
     // Only used if m_storageType == LocalStorage and the path was not "" in our constructor.
     String m_path;
-    RefPtr<WebCore::StorageSyncManager> m_syncManager;
+    RefPtr<CyberCore::StorageSyncManager> m_syncManager;
 
     // The default quota for each new storage area.
     unsigned m_quota;
@@ -81,4 +81,4 @@ private:
     PAL::SessionID m_sessionID;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -32,7 +32,7 @@
 
 #include <wtf/MathExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class MarginIntervalGenerator {
 public:
@@ -175,4 +175,4 @@ LineSegment RasterShape::getExcludedInterval(LayoutUnit logicalTop, LayoutUnit l
     return LineSegment(excludedInterval.x1(), excludedInterval.x2());
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -13,7 +13,7 @@ async function garbageCollect() {
   } else if (self.gc) {
     await self.gc();
   } else if (self.GCController) {
-    // Present in some WebKit development environments
+    // Present in some CyberKit development environments
     await GCController.collect();
   } else {
     var gcRec = function (n) {

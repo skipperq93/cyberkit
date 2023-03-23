@@ -26,7 +26,7 @@
 #include "WebKitWebViewClient.h"
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 Ref<WebKitPopupMenu> WebKitPopupMenu::create(WKWPE::View& view, WebPopupMenuProxy::Client& client)
 {

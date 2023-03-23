@@ -24,7 +24,7 @@
 
 #include "RenderStyle.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 DEFINE_ALLOCATOR_WITH_HEAP_IDENTIFIER(StyleDeprecatedFlexibleBoxData);
 
@@ -63,4 +63,4 @@ bool StyleDeprecatedFlexibleBoxData::operator==(const StyleDeprecatedFlexibleBox
         && pack == other.pack && orient == other.orient && lines == other.lines;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

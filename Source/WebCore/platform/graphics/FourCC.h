@@ -27,7 +27,7 @@
 
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct FourCC {
     constexpr FourCC() = default;
@@ -66,14 +66,14 @@ constexpr std::array<char, 5> FourCC::string() const
 constexpr bool operator==(FourCC a, FourCC b) { return a.value == b.value; }
 constexpr bool operator!=(FourCC a, FourCC b) { return a.value != b.value; }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
 template<typename> struct LogArgument;
 
-template<> struct LogArgument<WebCore::FourCC> {
-    static String toString(const WebCore::FourCC& code) { return String::fromLatin1(code.string().data()); }
+template<> struct LogArgument<CyberCore::FourCC> {
+    static String toString(const CyberCore::FourCC& code) { return String::fromLatin1(code.string().data()); }
 };
 
 } // namespace WTF

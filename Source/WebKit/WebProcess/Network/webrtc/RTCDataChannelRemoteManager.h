@@ -35,14 +35,14 @@
 #include <CyberCore/RTCDataChannelRemoteSourceConnection.h>
 #include <wtf/WorkQueue.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class RTCDataChannelRemoteManager final : private IPC::MessageReceiver {
 public:
     static RTCDataChannelRemoteManager& sharedManager();
 
-    WebCore::RTCDataChannelRemoteHandlerConnection& remoteHandlerConnection();
-    bool connectToRemoteSource(WebCore::RTCDataChannelIdentifier source, WebCore::RTCDataChannelIdentifier handler);
+    CyberCore::RTCDataChannelRemoteHandlerConnection& remoteHandlerConnection();
+    bool connectToRemoteSource(CyberCore::RTCDataChannelIdentifier source, CyberCore::RTCDataChannelIdentifier handler);
 
 private:
     RTCDataChannelRemoteManager();
@@ -52,26 +52,26 @@ private:
     void didReceiveMessage(IPC::Connection&, IPC::Decoder&) final;
 
     // Messages
-    void sendData(WebCore::RTCDataChannelIdentifier, bool isRaw, const IPC::DataReference&);
-    void close(WebCore::RTCDataChannelIdentifier);
+    void sendData(CyberCore::RTCDataChannelIdentifier, bool isRaw, const IPC::DataReference&);
+    void close(CyberCore::RTCDataChannelIdentifier);
 
     // To handler
-    void changeReadyState(WebCore::RTCDataChannelIdentifier, WebCore::RTCDataChannelState);
-    void receiveData(WebCore::RTCDataChannelIdentifier, bool isRaw, const IPC::DataReference&);
-    void detectError(WebCore::RTCDataChannelIdentifier, WebCore::RTCErrorDetailType, String&&);
-    void bufferedAmountIsDecreasing(WebCore::RTCDataChannelIdentifier, size_t);
+    void changeReadyState(CyberCore::RTCDataChannelIdentifier, CyberCore::RTCDataChannelState);
+    void receiveData(CyberCore::RTCDataChannelIdentifier, bool isRaw, const IPC::DataReference&);
+    void detectError(CyberCore::RTCDataChannelIdentifier, CyberCore::RTCErrorDetailType, String&&);
+    void bufferedAmountIsDecreasing(CyberCore::RTCDataChannelIdentifier, size_t);
 
-    WebCore::RTCDataChannelRemoteSourceConnection& remoteSourceConnection();
-    void postTaskToHandler(WebCore::RTCDataChannelIdentifier, Function<void(WebCore::RTCDataChannelRemoteHandler&)>&&);
-    WebCore::RTCDataChannelRemoteSource* sourceFromIdentifier(WebCore::RTCDataChannelIdentifier);
+    CyberCore::RTCDataChannelRemoteSourceConnection& remoteSourceConnection();
+    void postTaskToHandler(CyberCore::RTCDataChannelIdentifier, Function<void(CyberCore::RTCDataChannelRemoteHandler&)>&&);
+    CyberCore::RTCDataChannelRemoteSource* sourceFromIdentifier(CyberCore::RTCDataChannelIdentifier);
 
-    class RemoteHandlerConnection : public WebCore::RTCDataChannelRemoteHandlerConnection {
+    class RemoteHandlerConnection : public CyberCore::RTCDataChannelRemoteHandlerConnection {
     public:
         static Ref<RemoteHandlerConnection> create(Ref<WorkQueue>&&);
 
-        void connectToSource(WebCore::RTCDataChannelRemoteHandler&, WebCore::ScriptExecutionContextIdentifier, WebCore::RTCDataChannelIdentifier, WebCore::RTCDataChannelIdentifier) final;
-        void sendData(WebCore::RTCDataChannelIdentifier, bool isRaw, const unsigned char*, size_t) final;
-        void close(WebCore::RTCDataChannelIdentifier) final;
+        void connectToSource(CyberCore::RTCDataChannelRemoteHandler&, CyberCore::ScriptExecutionContextIdentifier, CyberCore::RTCDataChannelIdentifier, CyberCore::RTCDataChannelIdentifier) final;
+        void sendData(CyberCore::RTCDataChannelIdentifier, bool isRaw, const unsigned char*, size_t) final;
+        void close(CyberCore::RTCDataChannelIdentifier) final;
 
     private:
         explicit RemoteHandlerConnection(Ref<WorkQueue>&&);
@@ -80,35 +80,35 @@ private:
         Ref<WorkQueue> m_queue;
     };
 
-    class RemoteSourceConnection : public WebCore::RTCDataChannelRemoteSourceConnection {
+    class RemoteSourceConnection : public CyberCore::RTCDataChannelRemoteSourceConnection {
     public:
         static Ref<RemoteSourceConnection> create();
 
     private:
         RemoteSourceConnection();
 
-        void didChangeReadyState(WebCore::RTCDataChannelIdentifier, WebCore::RTCDataChannelState) final;
-        void didReceiveStringData(WebCore::RTCDataChannelIdentifier, const String&) final;
-        void didReceiveRawData(WebCore::RTCDataChannelIdentifier, const uint8_t*, size_t) final;
-        void didDetectError(WebCore::RTCDataChannelIdentifier, WebCore::RTCErrorDetailType, const String&) final;
-        void bufferedAmountIsDecreasing(WebCore::RTCDataChannelIdentifier, size_t) final;
+        void didChangeReadyState(CyberCore::RTCDataChannelIdentifier, CyberCore::RTCDataChannelState) final;
+        void didReceiveStringData(CyberCore::RTCDataChannelIdentifier, const String&) final;
+        void didReceiveRawData(CyberCore::RTCDataChannelIdentifier, const uint8_t*, size_t) final;
+        void didDetectError(CyberCore::RTCDataChannelIdentifier, CyberCore::RTCErrorDetailType, const String&) final;
+        void bufferedAmountIsDecreasing(CyberCore::RTCDataChannelIdentifier, size_t) final;
 
         Ref<IPC::Connection> m_connection;
     };
 
     struct RemoteHandler {
-        WeakPtr<WebCore::RTCDataChannelRemoteHandler> handler;
-        WebCore::ScriptExecutionContextIdentifier contextIdentifier;
+        WeakPtr<CyberCore::RTCDataChannelRemoteHandler> handler;
+        CyberCore::ScriptExecutionContextIdentifier contextIdentifier;
     };
 
     Ref<WorkQueue> m_queue;
     RefPtr<IPC::Connection> m_connection;
     RefPtr<RemoteHandlerConnection> m_remoteHandlerConnection;
     RefPtr<RemoteSourceConnection> m_remoteSourceConnection;
-    HashMap<WebCore::RTCDataChannelLocalIdentifier, UniqueRef<WebCore::RTCDataChannelRemoteSource>> m_sources;
-    HashMap<WebCore::RTCDataChannelLocalIdentifier, RemoteHandler> m_handlers;
+    HashMap<CyberCore::RTCDataChannelLocalIdentifier, UniqueRef<CyberCore::RTCDataChannelRemoteSource>> m_sources;
+    HashMap<CyberCore::RTCDataChannelLocalIdentifier, RemoteHandler> m_handlers;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_RTC)

@@ -30,7 +30,7 @@
 #include <wtf/Ref.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class StyleBoxData;
 class StyleBackgroundData;
@@ -59,4 +59,4 @@ private:
     StyleNonInheritedData(const StyleNonInheritedData&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

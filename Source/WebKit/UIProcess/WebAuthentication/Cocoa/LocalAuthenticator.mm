@@ -70,7 +70,7 @@ static bool shouldUpdateQuery()
 
 namespace WebKit {
 using namespace fido;
-using namespace WebCore;
+using namespace CyberCore;
 using namespace WebAuthn;
 using CBOR = cbor::CBORValue;
 
@@ -199,9 +199,9 @@ static std::optional<Vector<Ref<AuthenticatorAssertionResponse>>> getExistingCre
 
 static Vector<AuthenticatorTransport> transports()
 {
-    Vector<WebCore::AuthenticatorTransport> transports = { WebCore::AuthenticatorTransport::Internal };
+    Vector<CyberCore::AuthenticatorTransport> transports = { CyberCore::AuthenticatorTransport::Internal };
     if (shouldUpdateQuery())
-        transports.append(WebCore::AuthenticatorTransport::Hybrid);
+        transports.append(CyberCore::AuthenticatorTransport::Hybrid);
     return transports;
 }
 
@@ -500,7 +500,7 @@ void LocalAuthenticator::getAssertion()
     }
     m_existingCredentials = WTFMove(*existingCredentials);
 
-    Vector<Ref<WebCore::AuthenticatorAssertionResponse>> assertionResponses;
+    Vector<Ref<CyberCore::AuthenticatorAssertionResponse>> assertionResponses;
     assertionResponses.reserveInitialCapacity(m_existingCredentials.size());
     for (auto& credential : m_existingCredentials) {
         if (allowCredentialIds.isEmpty()) {
@@ -538,7 +538,7 @@ void LocalAuthenticator::getAssertion()
     }
 }
 
-void LocalAuthenticator::continueGetAssertionAfterResponseSelected(Ref<WebCore::AuthenticatorAssertionResponse>&& response)
+void LocalAuthenticator::continueGetAssertionAfterResponseSelected(Ref<CyberCore::AuthenticatorAssertionResponse>&& response)
 {
     ASSERT(m_state == State::RequestReceived);
     m_state = State::ResponseSelected;
@@ -559,7 +559,7 @@ void LocalAuthenticator::continueGetAssertionAfterResponseSelected(Ref<WebCore::
     m_connection->verifyUser(accessControlRef, context, WTFMove(callback));
 }
 
-void LocalAuthenticator::continueGetAssertionAfterUserVerification(Ref<WebCore::AuthenticatorAssertionResponse>&& response, LocalConnection::UserVerification verification, LAContext *context)
+void LocalAuthenticator::continueGetAssertionAfterUserVerification(Ref<CyberCore::AuthenticatorAssertionResponse>&& response, LocalConnection::UserVerification verification, LAContext *context)
 {
     using namespace LocalAuthenticatorInternal;
     ASSERT(m_state == State::ResponseSelected);

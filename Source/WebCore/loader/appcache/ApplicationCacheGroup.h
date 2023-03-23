@@ -34,7 +34,7 @@
 #include <wtf/WeakPtr.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ApplicationCache;
 class ApplicationCacheResource;
@@ -192,4 +192,4 @@ private:
     friend class ChromeClientCallbackTimer;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

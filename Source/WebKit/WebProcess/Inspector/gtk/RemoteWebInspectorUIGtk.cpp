@@ -31,8 +31,8 @@
 #include <wtf/FileSystem.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 bool RemoteWebInspectorUI::canSave(InspectorFrontendClient::SaveMode saveMode)
 {
@@ -63,4 +63,4 @@ String RemoteWebInspectorUI::localizedStringsURL() const
     return "resource:///org/webkit/inspector/Localizations/en.lproj/localizedStrings.js"_s;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

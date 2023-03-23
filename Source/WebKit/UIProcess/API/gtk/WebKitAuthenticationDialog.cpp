@@ -66,11 +66,11 @@ static void okButtonClicked(GtkButton*, WebKitAuthenticationDialog* authDialog)
     bool rememberPassword = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(priv->rememberCheckButton));
 #endif
 
-    WebCore::CredentialPersistence persistence = rememberPassword && priv->credentialStorageMode == AllowPersistentStorage ?
-        WebCore::CredentialPersistencePermanent : WebCore::CredentialPersistenceForSession;
+    CyberCore::CredentialPersistence persistence = rememberPassword && priv->credentialStorageMode == AllowPersistentStorage ?
+        CyberCore::CredentialPersistencePermanent : CyberCore::CredentialPersistenceForSession;
 
     // FIXME: Use a stack allocated WebKitCredential.
-    WebKitCredential* credential = webkitCredentialCreate(WebCore::Credential(String::fromUTF8(username), String::fromUTF8(password), persistence));
+    WebKitCredential* credential = webkitCredentialCreate(CyberCore::Credential(String::fromUTF8(username), String::fromUTF8(password), persistence));
     webkit_authentication_request_authenticate(priv->request.get(), credential);
     webkit_credential_free(credential);
     webkitAuthenticationDialogDestroy(authDialog);
@@ -155,7 +155,7 @@ static void webkitAuthenticationDialogInitialize(WebKitAuthenticationDialog* aut
     gtk_widget_set_margin_start(authBox, 10);
     gtk_widget_set_margin_end(authBox, 10);
 
-    const WebCore::AuthenticationChallenge& challenge = webkitAuthenticationRequestGetAuthenticationChallenge(priv->request.get())->core();
+    const CyberCore::AuthenticationChallenge& challenge = webkitAuthenticationRequestGetAuthenticationChallenge(priv->request.get())->core();
     // Prompt on the HTTP authentication dialog.
     GUniquePtr<char> prompt(g_strdup_printf(_("Authentication required by %s:%i"),
         challenge.protectionSpace().host().utf8().data(), challenge.protectionSpace().port()));
@@ -273,7 +273,7 @@ static void webkitAuthenticationDialogUnmap(GtkWidget* widget)
         return;
 
     auto* toplevel = gtk_widget_get_toplevel(GTK_WIDGET(widget));
-    if (WebCore::widgetIsOnscreenToplevelWindow(toplevel))
+    if (CyberCore::widgetIsOnscreenToplevelWindow(toplevel))
         gtk_window_set_default(GTK_WINDOW(toplevel), nullptr);
 
     GTK_WIDGET_CLASS(webkit_authentication_dialog_parent_class)->unmap(widget);
@@ -285,7 +285,7 @@ static void webkitAuthenticationDialogMap(GtkWidget* widget)
     WebKitAuthenticationDialogPrivate* priv = WEBKIT_AUTHENTICATION_DIALOG(widget)->priv;
     gtk_widget_grab_focus(priv->loginEntry);
     auto* toplevel = gtk_widget_get_toplevel(widget);
-    if (WebCore::widgetIsOnscreenToplevelWindow(toplevel))
+    if (CyberCore::widgetIsOnscreenToplevelWindow(toplevel))
         gtk_window_set_default(GTK_WINDOW(toplevel), priv->defaultButton);
 
     GTK_WIDGET_CLASS(webkit_authentication_dialog_parent_class)->map(widget);

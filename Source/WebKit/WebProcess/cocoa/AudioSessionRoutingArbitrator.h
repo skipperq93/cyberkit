@@ -31,13 +31,13 @@
 #include <CyberCore/AudioSession.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebProcess;
 
 class AudioSessionRoutingArbitrator final
     : public WebProcessSupplement
-    , public WebCore::AudioSessionRoutingArbitrationClient {
+    , public CyberCore::AudioSessionRoutingArbitrationClient {
     WTF_MAKE_FAST_ALLOCATED;
 public:
     explicit AudioSessionRoutingArbitrator(WebProcess&);
@@ -45,15 +45,15 @@ public:
 
     static const char* supplementName();
 
-    using WeakValueType = WebCore::AudioSessionRoutingArbitrationClient;
+    using WeakValueType = CyberCore::AudioSessionRoutingArbitrationClient;
 
     // AudioSessionRoutingAbritrator
-    void beginRoutingArbitrationWithCategory(WebCore::AudioSession::CategoryType, CompletionHandler<void(RoutingArbitrationError, DefaultRouteChanged)>&&) final;
+    void beginRoutingArbitrationWithCategory(CyberCore::AudioSession::CategoryType, CompletionHandler<void(RoutingArbitrationError, DefaultRouteChanged)>&&) final;
     void leaveRoutingAbritration() final;
 
 private:
     WebProcess& m_process;
-    WebCore::AudioSession::ChangedObserver m_observer;
+    CyberCore::AudioSession::ChangedObserver m_observer;
 };
 
 }

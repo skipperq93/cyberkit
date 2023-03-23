@@ -24,7 +24,7 @@
 #include "SVGGeometryElement.h"
 #include "SVGNames.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGPolyElement : public SVGGeometryElement {
     WTF_MAKE_ISO_ALLOCATED(SVGPolyElement);
@@ -51,9 +51,9 @@ private:
     Ref<SVGAnimatedPointList> m_points { SVGAnimatedPointList::create(this) };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::SVGPolyElement)
-    static bool isType(const WebCore::SVGElement& element) { return element.hasTagName(WebCore::SVGNames::polygonTag) || element.hasTagName(WebCore::SVGNames::polylineTag); }
-    static bool isType(const WebCore::Node& node) { return is<WebCore::SVGElement>(node) && isType(downcast<WebCore::SVGElement>(node)); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::SVGPolyElement)
+    static bool isType(const CyberCore::SVGElement& element) { return element.hasTagName(CyberCore::SVGNames::polygonTag) || element.hasTagName(CyberCore::SVGNames::polylineTag); }
+    static bool isType(const CyberCore::Node& node) { return is<CyberCore::SVGElement>(node) && isType(downcast<CyberCore::SVGElement>(node)); }
 SPECIALIZE_TYPE_TRAITS_END()

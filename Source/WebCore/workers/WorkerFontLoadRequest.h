@@ -33,7 +33,7 @@
 #include <wtf/URL.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FontCreationContext;
 class ScriptExecutionContext;
@@ -80,6 +80,6 @@ private:
     std::unique_ptr<FontCustomPlatformData> m_fontCustomPlatformData;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_FONTLOADREQUEST(WebCore::WorkerFontLoadRequest, isWorkerFontLoadRequest())
+SPECIALIZE_TYPE_TRAITS_FONTLOADREQUEST(CyberCore::WorkerFontLoadRequest, isWorkerFontLoadRequest())

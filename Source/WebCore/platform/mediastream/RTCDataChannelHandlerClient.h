@@ -32,7 +32,7 @@
 #include <wtf/WeakPtr.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RTCError;
 
@@ -48,6 +48,6 @@ public:
     virtual size_t bufferedAmount() const { return 0; }
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

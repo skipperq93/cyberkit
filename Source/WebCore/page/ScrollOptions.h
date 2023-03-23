@@ -28,10 +28,10 @@
 #include "ScrollBehavior.h"
 #include <optional>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ScrollOptions {
     std::optional<ScrollBehavior> behavior { ScrollBehavior::Auto };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

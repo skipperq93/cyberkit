@@ -32,7 +32,7 @@
 
 using JSC::DataView;
 
-namespace WebCore {
+namespace CyberCore {
 
 std::optional<Vector<uint8_t>> ISOProtectionSystemSpecificHeaderBox::peekSystemID(JSC::DataView& view, unsigned offset)
 {

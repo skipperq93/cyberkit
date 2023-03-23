@@ -29,7 +29,7 @@
 
 #include "APIHTTPCookieStore.h"
 #include "NetworkProcessMessages.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebProcessPool.h"
 #include "WebsiteDataStoreParameters.h"
 
@@ -67,7 +67,7 @@ void WebsiteDataStore::setIgnoreTLSErrors(bool ignoreTLSErrors)
     networkProcess().send(Messages::NetworkProcess::SetIgnoreTLSErrors(m_sessionID, m_ignoreTLSErrors), 0);
 }
 
-void WebsiteDataStore::setNetworkProxySettings(WebCore::SoupNetworkProxySettings&& settings)
+void WebsiteDataStore::setNetworkProxySettings(CyberCore::SoupNetworkProxySettings&& settings)
 {
     m_networkProxySettings = WTFMove(settings);
     networkProcess().send(Messages::NetworkProcess::SetNetworkProxySettings(m_sessionID, m_networkProxySettings), 0);
@@ -83,7 +83,7 @@ void WebsiteDataStore::setCookiePersistentStorage(const String& storagePath, Sou
     cookieStore().setCookiePersistentStorage(m_cookiePersistentStoragePath, m_cookiePersistentStorageType);
 }
 
-void WebsiteDataStore::setHTTPCookieAcceptPolicy(WebCore::HTTPCookieAcceptPolicy policy)
+void WebsiteDataStore::setHTTPCookieAcceptPolicy(CyberCore::HTTPCookieAcceptPolicy policy)
 {
     if (m_cookieAcceptPolicy == policy)
         return;

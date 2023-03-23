@@ -34,25 +34,25 @@
 #import <CyberCore/WebScriptObjectPrivate.h>
 #import <wtf/GetPtr.h>
 
-#define IMPL static_cast<WebCore::ProgressEvent*>(reinterpret_cast<WebCore::Event*>(_internal))
+#define IMPL static_cast<CyberCore::ProgressEvent*>(reinterpret_cast<CyberCore::Event*>(_internal))
 
 @implementation DOMProgressEvent
 
 - (BOOL)lengthComputable
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->lengthComputable();
 }
 
 - (unsigned long long)loaded
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->loaded();
 }
 
 - (unsigned long long)total
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->total();
 }
 

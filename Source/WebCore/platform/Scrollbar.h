@@ -29,7 +29,7 @@
 #include "Timer.h"
 #include "Widget.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class GraphicsContext;
 class IntRect;
@@ -181,7 +181,7 @@ private:
     bool isScrollbar() const override { return true; }
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_WIDGET(Scrollbar, isScrollbar())
 

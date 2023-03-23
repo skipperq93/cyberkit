@@ -60,14 +60,14 @@ using ThunderKeyStatus = KeyStatus;
 
 }
 
-static LicenseType thunderLicenseType(WebCore::CDMInstanceSession::LicenseType licenseType)
+static LicenseType thunderLicenseType(CyberCore::CDMInstanceSession::LicenseType licenseType)
 {
     switch (licenseType) {
-    case WebCore::CDMInstanceSession::LicenseType::Temporary:
+    case CyberCore::CDMInstanceSession::LicenseType::Temporary:
         return Temporary;
-    case WebCore::CDMInstanceSession::LicenseType::PersistentUsageRecord:
+    case CyberCore::CDMInstanceSession::LicenseType::PersistentUsageRecord:
         return PersistentUsageRecord;
-    case WebCore::CDMInstanceSession::LicenseType::PersistentLicense:
+    case CyberCore::CDMInstanceSession::LicenseType::PersistentLicense:
         return PersistentLicense;
     default:
         ASSERT_NOT_REACHED();
@@ -75,7 +75,7 @@ static LicenseType thunderLicenseType(WebCore::CDMInstanceSession::LicenseType l
     }
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 static CDMInstanceSession::SessionLoadFailure sessionLoadFailureFromThunder(const StringView& loadStatus)
 {
@@ -275,7 +275,7 @@ CDMInstanceSessionThunder::CDMInstanceSessionThunder(CDMInstanceThunder& instanc
         const uint16_t challengeLength) {
         GST_DEBUG("Got 'challenge' OCDM notification with length %hu", challengeLength);
         ASSERT(challengeLength > 0);
-        callOnMainThread([session = WeakPtr { static_cast<CDMInstanceSessionThunder*>(userData) }, buffer = WebCore::SharedBuffer::create(challenge,
+        callOnMainThread([session = WeakPtr { static_cast<CDMInstanceSessionThunder*>(userData) }, buffer = CyberCore::SharedBuffer::create(challenge,
             challengeLength)]() mutable {
             if (!session)
                 return;
@@ -302,7 +302,7 @@ CDMInstanceSessionThunder::CDMInstanceSessionThunder(CDMInstanceThunder& instanc
     };
     m_thunderSessionCallbacks.error_message_callback = [](OpenCDMSession*, void* userData, const char message[]) {
         GST_ERROR("Got 'error' OCDM notification: %s", message);
-        callOnMainThread([session = WeakPtr { static_cast<CDMInstanceSessionThunder*>(userData) }, buffer = WebCore::SharedBuffer::create(message,
+        callOnMainThread([session = WeakPtr { static_cast<CDMInstanceSessionThunder*>(userData) }, buffer = CyberCore::SharedBuffer::create(message,
             strlen(message))]() mutable {
             if (!session)
                 return;
@@ -333,7 +333,7 @@ public:
             StringView dataString(reinterpret_cast<const LChar*>(data.data()), data.size());
             static NeverDestroyed<StringView> type(reinterpret_cast<const LChar*>(":Type:"), 6);
             if (dataString.endsWith(type)) {
-                m_type.emplace(static_cast<WebCore::MediaKeyMessageType>(dataString.characterAt(0) - '0'));
+                m_type.emplace(static_cast<CyberCore::MediaKeyMessageType>(dataString.characterAt(0) - '0'));
                 offset = 7;
             }
         }
@@ -347,15 +347,15 @@ public:
     const Ref<SharedBuffer>& payload() const& { ASSERT(m_payload); return m_payload.value(); }
     Ref<SharedBuffer>& payload() & { ASSERT(m_payload); return m_payload.value(); }
     bool hasType() const { return m_type.has_value(); }
-    WebCore::MediaKeyMessageType type() const { ASSERT(m_type); return m_type.value(); }
-    WebCore::MediaKeyMessageType typeOr(WebCore::MediaKeyMessageType alternate) const { return m_type ? m_type.value() : alternate; }
+    CyberCore::MediaKeyMessageType type() const { ASSERT(m_type); return m_type.value(); }
+    CyberCore::MediaKeyMessageType typeOr(CyberCore::MediaKeyMessageType alternate) const { return m_type ? m_type.value() : alternate; }
     explicit operator bool() const { return m_isValid; }
     bool operator!() const { return !m_isValid; }
 
 private:
     bool m_isValid { false };
     std::optional<Ref<SharedBuffer>> m_payload;
-    std::optional<WebCore::MediaKeyMessageType> m_type;
+    std::optional<CyberCore::MediaKeyMessageType> m_type;
 };
 
 void CDMInstanceSessionThunder::challengeGeneratedCallback(RefPtr<SharedBuffer>&& buffer)
@@ -695,6 +695,6 @@ CDMInstanceThunder* CDMInstanceSessionThunder::cdmInstanceThunder() const
     return static_cast<CDMInstanceThunder*>(proxy.get());
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ENCRYPTED_MEDIA) && ENABLE(THUNDER)

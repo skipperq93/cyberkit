@@ -28,14 +28,14 @@
 #import <CyberCore/DeviceOrientationClientMock.h>
 
 @interface WebDeviceOrientationProviderMockInternal : NSObject {
-    std::unique_ptr<WebCore::DeviceOrientationClientMock> m_core;
+    std::unique_ptr<CyberCore::DeviceOrientationClientMock> m_core;
 }
 
 - (id)init;
 
 - (void)setOrientation:(WebDeviceOrientation*)orientation;
 
-- (void)setController:(WebCore::DeviceOrientationController*)controller;
+- (void)setController:(CyberCore::DeviceOrientationController*)controller;
 
 - (void)startUpdating;
 - (void)stopUpdating;

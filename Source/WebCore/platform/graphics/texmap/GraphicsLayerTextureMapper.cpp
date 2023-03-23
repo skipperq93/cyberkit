@@ -29,7 +29,7 @@
 
 #if !USE(COORDINATED_GRAPHICS)
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<GraphicsLayer> GraphicsLayer::create(GraphicsLayerFactory* factory, GraphicsLayerClient& client, Type layerType)
 {

@@ -30,7 +30,7 @@
 
 #include <gst/app/gstappsink.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 GST_DEBUG_CATEGORY(webkit_video_capture_source_debug);
 #define GST_CAT_DEFAULT webkit_video_capture_source_debug
@@ -209,7 +209,7 @@ GstFlowReturn GStreamerVideoCaptureSource::newSampleCallback(GstElement* sink, G
 {
     auto gstSample = adoptGRef(gst_app_sink_pull_sample(GST_APP_SINK(sink)));
     auto presentationTime = fromGstClockTime(GST_BUFFER_PTS(gst_sample_get_buffer(gstSample.get())));
-    auto videoFrame = VideoFrameGStreamer::create(WTFMove(gstSample), WebCore::FloatSize(), presentationTime);
+    auto videoFrame = VideoFrameGStreamer::create(WTFMove(gstSample), CyberCore::FloatSize(), presentationTime);
 
     source->scheduleDeferredTask([source, videoFrame = WTFMove(videoFrame)] () mutable {
         source->processNewFrame(WTFMove(videoFrame));
@@ -324,6 +324,6 @@ void GStreamerVideoCaptureSource::generatePresets()
     setSupportedPresets(WTFMove(presets));
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM) && USE(GSTREAMER)

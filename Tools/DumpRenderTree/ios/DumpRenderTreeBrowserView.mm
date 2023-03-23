@@ -28,8 +28,8 @@
 
 #if PLATFORM(IOS_FAMILY)
 
-#import <CyberCore/WebCoreThreadRun.h>
-#import <CyberKit/WebCoreThread.h>
+#import <CyberCore/CyberCoreThreadRun.h>
+#import <CyberKit/CyberCoreThread.h>
 #import <CyberKit/WebUIDelegate.h>
 #import <CyberKit/WebUIKitDelegate.h>
 #import <CyberKit/WebView.h>

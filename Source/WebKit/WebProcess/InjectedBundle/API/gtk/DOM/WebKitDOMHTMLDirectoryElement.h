@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -21,28 +21,28 @@
 #error "Only <webkitdom/webkitdom.h> can be included directly."
 #endif
 
-#ifndef WebKitDOMHTMLDirectoryElement_h
-#define WebKitDOMHTMLDirectoryElement_h
+#ifndef CyberKitDOMHTMLDirectoryElement_h
+#define CyberKitDOMHTMLDirectoryElement_h
 
 #include <glib-object.h>
-#include <webkitdom/WebKitDOMHTMLElement.h>
+#include <webkitdom/CyberKitDOMHTMLElement.h>
 #include <webkitdom/webkitdomdefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_DOM_TYPE_HTML_DIRECTORY_ELEMENT            (webkit_dom_html_directory_element_get_type())
-#define WEBKIT_DOM_HTML_DIRECTORY_ELEMENT(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_HTML_DIRECTORY_ELEMENT, WebKitDOMHTMLDirectoryElement))
-#define WEBKIT_DOM_HTML_DIRECTORY_ELEMENT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_HTML_DIRECTORY_ELEMENT, WebKitDOMHTMLDirectoryElementClass)
+#define WEBKIT_DOM_HTML_DIRECTORY_ELEMENT(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_HTML_DIRECTORY_ELEMENT, CyberKitDOMHTMLDirectoryElement))
+#define WEBKIT_DOM_HTML_DIRECTORY_ELEMENT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_HTML_DIRECTORY_ELEMENT, CyberKitDOMHTMLDirectoryElementClass)
 #define WEBKIT_DOM_IS_HTML_DIRECTORY_ELEMENT(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_DOM_TYPE_HTML_DIRECTORY_ELEMENT))
 #define WEBKIT_DOM_IS_HTML_DIRECTORY_ELEMENT_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_DOM_TYPE_HTML_DIRECTORY_ELEMENT))
-#define WEBKIT_DOM_HTML_DIRECTORY_ELEMENT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_HTML_DIRECTORY_ELEMENT, WebKitDOMHTMLDirectoryElementClass))
+#define WEBKIT_DOM_HTML_DIRECTORY_ELEMENT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_HTML_DIRECTORY_ELEMENT, CyberKitDOMHTMLDirectoryElementClass))
 
-struct _WebKitDOMHTMLDirectoryElement {
-    WebKitDOMHTMLElement parent_instance;
+struct _CyberKitDOMHTMLDirectoryElement {
+    CyberKitDOMHTMLElement parent_instance;
 };
 
-struct _WebKitDOMHTMLDirectoryElementClass {
-    WebKitDOMHTMLElementClass parent_class;
+struct _CyberKitDOMHTMLDirectoryElementClass {
+    CyberKitDOMHTMLElementClass parent_class;
 };
 
 WEBKIT_DEPRECATED GType
@@ -50,26 +50,26 @@ webkit_dom_html_directory_element_get_type(void);
 
 /**
  * webkit_dom_html_directory_element_get_compact:
- * @self: A #WebKitDOMHTMLDirectoryElement
+ * @self: A #CyberKitDOMHTMLDirectoryElement
  *
  * Returns: A #gboolean
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
-webkit_dom_html_directory_element_get_compact(WebKitDOMHTMLDirectoryElement* self);
+webkit_dom_html_directory_element_get_compact(CyberKitDOMHTMLDirectoryElement* self);
 
 /**
  * webkit_dom_html_directory_element_set_compact:
- * @self: A #WebKitDOMHTMLDirectoryElement
+ * @self: A #CyberKitDOMHTMLDirectoryElement
  * @value: A #gboolean
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_directory_element_set_compact(WebKitDOMHTMLDirectoryElement* self, gboolean value);
+webkit_dom_html_directory_element_set_compact(CyberKitDOMHTMLDirectoryElement* self, gboolean value);
 
 G_END_DECLS
 
-#endif /* WebKitDOMHTMLDirectoryElement_h */
+#endif /* CyberKitDOMHTMLDirectoryElement_h */

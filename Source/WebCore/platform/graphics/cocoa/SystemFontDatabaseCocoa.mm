@@ -28,7 +28,7 @@
 
 #import <pal/ios/UIKitSoftLink.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static auto cocoaFontClass()
 {
@@ -85,4 +85,4 @@ RetainPtr<CTFontDescriptorRef> SystemFontDatabaseCoreText::controlFontDescriptor
 #endif
 }
 
-} // namespace WebCore
+} // namespace CyberCore

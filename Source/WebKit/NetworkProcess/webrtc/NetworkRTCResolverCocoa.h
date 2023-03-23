@@ -36,13 +36,13 @@ namespace WebKit {
 // FIXME: Remove this class when we complete the implementation of the DNSResolveQueueCFNet.
 class NetworkRTCResolverCocoa final : public NetworkRTCResolver {
 public:
-    explicit NetworkRTCResolverCocoa(LibWebRTCResolverIdentifier, WebCore::DNSCompletionHandler&&);
+    explicit NetworkRTCResolverCocoa(LibWebRTCResolverIdentifier, CyberCore::DNSCompletionHandler&&);
     ~NetworkRTCResolverCocoa() final;
 
     void start(const String& address) final;
     void stop() final;
 
-    void completed(WebCore::DNSAddressesOrError&&);
+    void completed(CyberCore::DNSAddressesOrError&&);
 
 private:
     RetainPtr<CFHostRef> m_host;

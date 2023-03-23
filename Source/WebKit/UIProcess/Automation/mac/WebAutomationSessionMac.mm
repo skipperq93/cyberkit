@@ -43,7 +43,7 @@
 #import <pal/spi/mac/NSEventSPI.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 #pragma mark Commands for 'PLATFORM(MAC)'
 
@@ -137,7 +137,7 @@ bool WebAutomationSession::wasEventSynthesizedForAutomation(NSEvent *event)
 
 #if ENABLE(WEBDRIVER_MOUSE_INTERACTIONS) || ENABLE(WEBDRIVER_WHEEL_INTERACTIONS)
 
-static WebCore::IntPoint viewportLocationToWindowLocation(WebCore::IntPoint locationInViewport, WebPageProxy& page)
+static CyberCore::IntPoint viewportLocationToWindowLocation(CyberCore::IntPoint locationInViewport, WebPageProxy& page)
 {
     IntRect windowRect;
 
@@ -161,7 +161,7 @@ static WebMouseEventButton automationMouseButtonToPlatformMouseButton(MouseButto
     }
 }
 
-void WebAutomationSession::platformSimulateMouseInteraction(WebPageProxy& page, MouseInteraction interaction, MouseButton button, const WebCore::IntPoint& locationInViewport, OptionSet<WebEventModifier> keyModifiers, const String& pointerType)
+void WebAutomationSession::platformSimulateMouseInteraction(WebPageProxy& page, MouseInteraction interaction, MouseButton button, const CyberCore::IntPoint& locationInViewport, OptionSet<WebEventModifier> keyModifiers, const String& pointerType)
 {
     UNUSED_PARAM(pointerType);
 
@@ -220,7 +220,7 @@ void WebAutomationSession::platformSimulateMouseInteraction(WebPageProxy& page, 
 
         // Hard-code the click count to one, since clients don't expect successive simulated
         // down/up events to be potentially counted as a double click event.
-        [eventsToBeSent addObject:[NSEvent mouseEventWithType:downEventType location:locationInWindow modifierFlags:modifiers timestamp:timestamp windowNumber:windowNumber context:nil eventNumber:eventNumber clickCount:1 pressure:WebCore::ForceAtClick]];
+        [eventsToBeSent addObject:[NSEvent mouseEventWithType:downEventType location:locationInWindow modifierFlags:modifiers timestamp:timestamp windowNumber:windowNumber context:nil eventNumber:eventNumber clickCount:1 pressure:CyberCore::ForceAtClick]];
         break;
     case MouseInteraction::Up:
         ASSERT(upEventType);
@@ -233,8 +233,8 @@ void WebAutomationSession::platformSimulateMouseInteraction(WebPageProxy& page, 
         ASSERT(upEventType);
         ASSERT(downEventType);
 
-        // Send separate down and up events. WebCore will see this as a single-click event.
-        [eventsToBeSent addObject:[NSEvent mouseEventWithType:downEventType location:locationInWindow modifierFlags:modifiers timestamp:timestamp windowNumber:windowNumber context:nil eventNumber:eventNumber clickCount:1 pressure:WebCore::ForceAtClick]];
+        // Send separate down and up events. CyberCore will see this as a single-click event.
+        [eventsToBeSent addObject:[NSEvent mouseEventWithType:downEventType location:locationInWindow modifierFlags:modifiers timestamp:timestamp windowNumber:windowNumber context:nil eventNumber:eventNumber clickCount:1 pressure:CyberCore::ForceAtClick]];
         [eventsToBeSent addObject:[NSEvent mouseEventWithType:upEventType location:locationInWindow modifierFlags:modifiers timestamp:timestamp windowNumber:windowNumber context:nil eventNumber:eventNumber clickCount:1 pressure:0.0f]];
         break;
     case MouseInteraction::DoubleClick:
@@ -242,10 +242,10 @@ void WebAutomationSession::platformSimulateMouseInteraction(WebPageProxy& page, 
         ASSERT(downEventType);
 
         // Send multiple down and up events with proper click count.
-        // WebCore will see this as a single-click event then double-click event.
-        [eventsToBeSent addObject:[NSEvent mouseEventWithType:downEventType location:locationInWindow modifierFlags:modifiers timestamp:timestamp windowNumber:windowNumber context:nil eventNumber:eventNumber clickCount:1 pressure:WebCore::ForceAtClick]];
+        // CyberCore will see this as a single-click event then double-click event.
+        [eventsToBeSent addObject:[NSEvent mouseEventWithType:downEventType location:locationInWindow modifierFlags:modifiers timestamp:timestamp windowNumber:windowNumber context:nil eventNumber:eventNumber clickCount:1 pressure:CyberCore::ForceAtClick]];
         [eventsToBeSent addObject:[NSEvent mouseEventWithType:upEventType location:locationInWindow modifierFlags:modifiers timestamp:timestamp windowNumber:windowNumber context:nil eventNumber:eventNumber clickCount:1 pressure:0.0f]];
-        [eventsToBeSent addObject:[NSEvent mouseEventWithType:downEventType location:locationInWindow modifierFlags:modifiers timestamp:timestamp windowNumber:windowNumber context:nil eventNumber:eventNumber clickCount:2 pressure:WebCore::ForceAtClick]];
+        [eventsToBeSent addObject:[NSEvent mouseEventWithType:downEventType location:locationInWindow modifierFlags:modifiers timestamp:timestamp windowNumber:windowNumber context:nil eventNumber:eventNumber clickCount:2 pressure:CyberCore::ForceAtClick]];
         [eventsToBeSent addObject:[NSEvent mouseEventWithType:upEventType location:locationInWindow modifierFlags:modifiers timestamp:timestamp windowNumber:windowNumber context:nil eventNumber:eventNumber clickCount:2 pressure:0.0f]];
     }
 
@@ -823,7 +823,7 @@ void WebAutomationSession::platformSimulateKeySequence(WebPageProxy& page, const
 
 #if ENABLE(WEBDRIVER_WHEEL_INTERACTIONS)
 
-void WebAutomationSession::platformSimulateWheelInteraction(WebPageProxy& page, const WebCore::IntPoint& locationInViewport, const WebCore::IntSize& delta)
+void WebAutomationSession::platformSimulateWheelInteraction(WebPageProxy& page, const CyberCore::IntPoint& locationInViewport, const CyberCore::IntSize& delta)
 {
     static constexpr auto scrollWheelCount = 2;
     auto cgScrollEvent = adoptCF(CGEventCreateScrollWheelEvent(nullptr, kCGScrollEventUnitPixel, scrollWheelCount, -delta.height(), -delta.width()));

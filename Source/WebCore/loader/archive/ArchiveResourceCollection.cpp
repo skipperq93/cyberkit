@@ -31,7 +31,7 @@
 
 #include "Archive.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 void ArchiveResourceCollection::addAllResources(Archive& archive)
 {

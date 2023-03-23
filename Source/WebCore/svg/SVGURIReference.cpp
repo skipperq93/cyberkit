@@ -30,7 +30,7 @@
 #include "XLinkNames.h"
 #include <wtf/URL.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 SVGURIReference::SVGURIReference(SVGElement* contextElement)
     : m_href(SVGAnimatedString::create(contextElement))

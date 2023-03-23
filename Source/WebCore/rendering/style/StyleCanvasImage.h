@@ -30,7 +30,7 @@
 #include "StyleGeneratedImage.h"
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class HTMLCanvasElement;
@@ -74,10 +74,10 @@ private:
     mutable HTMLCanvasElement* m_element;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::StyleCanvasImage)
-    static bool isType(const WebCore::StyleImage& image) { return image.isCanvasImage(); }
-    static bool isType(const WebCore::CanvasObserver& canvasObserver) { return canvasObserver.isStyleCanvasImage(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::StyleCanvasImage)
+    static bool isType(const CyberCore::StyleImage& image) { return image.isCanvasImage(); }
+    static bool isType(const CyberCore::CanvasObserver& canvasObserver) { return canvasObserver.isStyleCanvasImage(); }
 SPECIALIZE_TYPE_TRAITS_END()
 

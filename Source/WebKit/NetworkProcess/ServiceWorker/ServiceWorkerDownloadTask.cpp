@@ -40,7 +40,7 @@
 
 namespace WebKit {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 static WorkQueue& sharedServiceWorkerDownloadTaskQueue()
 {
@@ -48,7 +48,7 @@ static WorkQueue& sharedServiceWorkerDownloadTaskQueue()
     return queue.get();
 }
 
-ServiceWorkerDownloadTask::ServiceWorkerDownloadTask(NetworkSession& session, NetworkDataTaskClient& client, WebSWServerToContextConnection& serviceWorkerConnection, ServiceWorkerIdentifier serviceWorkerIdentifier, SWServerConnectionIdentifier serverConnectionIdentifier, FetchIdentifier fetchIdentifier, const WebCore::ResourceRequest& request, DownloadID downloadID)
+ServiceWorkerDownloadTask::ServiceWorkerDownloadTask(NetworkSession& session, NetworkDataTaskClient& client, WebSWServerToContextConnection& serviceWorkerConnection, ServiceWorkerIdentifier serviceWorkerIdentifier, SWServerConnectionIdentifier serverConnectionIdentifier, FetchIdentifier fetchIdentifier, const CyberCore::ResourceRequest& request, DownloadID downloadID)
     : NetworkDataTask(session, client, request, StoredCredentialsPolicy::DoNotUse, false, false)
     , m_serviceWorkerConnection(serviceWorkerConnection)
     , m_serviceWorkerIdentifier(serviceWorkerIdentifier)

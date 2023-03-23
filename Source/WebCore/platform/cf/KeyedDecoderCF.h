@@ -30,7 +30,7 @@
 #include <wtf/RetainPtr.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class KeyedDecoderCF final : public KeyedDecoder {
 public:
@@ -63,6 +63,6 @@ private:
     Vector<CFIndex> m_arrayIndexStack;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // KeyedDecoderCF_h

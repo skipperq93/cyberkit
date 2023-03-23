@@ -33,7 +33,7 @@
 #include <CyberCore/ScrollingConstraints.h>
 #include <CyberCore/ScrollingTree.h>
 
-namespace WebCore {
+namespace CyberCore {
 class PlatformMouseEvent;
 };
 
@@ -46,19 +46,19 @@ public:
     explicit RemoteScrollingTreeMac(RemoteScrollingCoordinatorProxy&);
     virtual ~RemoteScrollingTreeMac();
 
-    void handleMouseEvent(const WebCore::PlatformMouseEvent&) final;
+    void handleMouseEvent(const CyberCore::PlatformMouseEvent&) final;
 
 private:
-    void handleWheelEventPhase(WebCore::ScrollingNodeID, WebCore::PlatformWheelEventPhase) final;
-    RefPtr<WebCore::ScrollingTreeNode> scrollingNodeForPoint(WebCore::FloatPoint) final;
+    void handleWheelEventPhase(CyberCore::ScrollingNodeID, CyberCore::PlatformWheelEventPhase) final;
+    RefPtr<CyberCore::ScrollingTreeNode> scrollingNodeForPoint(CyberCore::FloatPoint) final;
 #if ENABLE(WHEEL_EVENT_REGIONS)
-    OptionSet<WebCore::EventListenerRegionType> eventListenerRegionTypesForPoint(WebCore::FloatPoint) const final;
+    OptionSet<CyberCore::EventListenerRegionType> eventListenerRegionTypesForPoint(CyberCore::FloatPoint) const final;
 #endif
 
     void hasNodeWithAnimatedScrollChanged(bool) final;
-    void displayDidRefresh(WebCore::PlatformDisplayID) final;
+    void displayDidRefresh(CyberCore::PlatformDisplayID) final;
 
-    Ref<WebCore::ScrollingTreeNode> createScrollingTreeNode(WebCore::ScrollingNodeType, WebCore::ScrollingNodeID) final;
+    Ref<CyberCore::ScrollingTreeNode> createScrollingTreeNode(CyberCore::ScrollingNodeType, CyberCore::ScrollingNodeID) final;
 };
 
 } // namespace WebKit

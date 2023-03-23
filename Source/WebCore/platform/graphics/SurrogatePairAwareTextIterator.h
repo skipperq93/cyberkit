@@ -23,7 +23,7 @@
 #include <unicode/utf16.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SurrogatePairAwareTextIterator {
 public:

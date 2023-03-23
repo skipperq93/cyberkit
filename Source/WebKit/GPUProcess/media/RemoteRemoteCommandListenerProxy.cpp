@@ -34,7 +34,7 @@
 
 namespace WebKit {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 RemoteRemoteCommandListenerProxy::RemoteRemoteCommandListenerProxy(GPUConnectionToWebProcess& gpuConnection, RemoteRemoteCommandListenerIdentifier&& identifier)
     : m_gpuConnection(gpuConnection)
@@ -44,7 +44,7 @@ RemoteRemoteCommandListenerProxy::RemoteRemoteCommandListenerProxy(GPUConnection
 
 RemoteRemoteCommandListenerProxy::~RemoteRemoteCommandListenerProxy() = default;
 
-void RemoteRemoteCommandListenerProxy::updateSupportedCommands(Vector<WebCore::PlatformMediaSession::RemoteControlCommandType>&& registeredCommands, bool supportsSeeking)
+void RemoteRemoteCommandListenerProxy::updateSupportedCommands(Vector<CyberCore::PlatformMediaSession::RemoteControlCommandType>&& registeredCommands, bool supportsSeeking)
 {
     m_supportedCommands.clear();
     m_supportedCommands.add(registeredCommands.begin(), registeredCommands.end());

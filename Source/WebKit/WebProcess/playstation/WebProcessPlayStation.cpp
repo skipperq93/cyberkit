@@ -30,7 +30,7 @@
 #include <CyberCore/LogInitialization.h>
 #include <wtf/LogInitialization.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 void WebProcess::platformInitializeWebProcess(WebProcessCreationParameters& parameters)
 {
@@ -53,7 +53,7 @@ void WebProcess::platformSetCacheModel(CacheModel)
 {
 }
 
-void WebProcess::grantAccessToAssetServices(Vector<WebKit::SandboxExtension::Handle>&&)
+void WebProcess::grantAccessToAssetServices(Vector<CyberKit::SandboxExtension::Handle>&&)
 {
 }
 
@@ -61,8 +61,8 @@ void WebProcess::revokeAccessToAssetServices()
 {
 }
 
-void WebProcess::switchFromStaticFontRegistryToUserFontRegistry(Vector<WebKit::SandboxExtension::Handle>&&)
+void WebProcess::switchFromStaticFontRegistryToUserFontRegistry(Vector<CyberKit::SandboxExtension::Handle>&&)
 {
 }
 
-} // namespace WebKit
+} // namespace CyberKit

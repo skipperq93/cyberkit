@@ -28,7 +28,7 @@
 
 #include <wtf/text/CString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 std::unique_ptr<KeyedDecoder> KeyedDecoder::decoder(const uint8_t* data, size_t size)
 {
@@ -177,4 +177,4 @@ void KeyedDecoderGlib::endArray()
     m_arrayIndexStack.removeLast();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

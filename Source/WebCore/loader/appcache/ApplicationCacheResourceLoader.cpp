@@ -28,7 +28,7 @@
 
 #include "CachedResourceLoader.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 RefPtr<ApplicationCacheResourceLoader> ApplicationCacheResourceLoader::create(unsigned type, CachedResourceLoader& loader, ResourceRequest&& request, CompletionHandler<void(ResourceOrError&&)>&& callback)
 {
@@ -136,4 +136,4 @@ void ApplicationCacheResourceLoader::notifyFinished(CachedResource& resource, co
         resourceHandle->removeClient(*this);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

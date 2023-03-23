@@ -46,7 +46,7 @@
 #import <pal/cf/AudioToolboxSoftLink.h>
 
 
-namespace WebCore {
+namespace CyberCore {
 
 #if ENABLE(OPUS) || ENABLE(VORBIS)
 
@@ -270,6 +270,6 @@ Expected<RetainPtr<CMSampleBufferRef>, CString> toCMSampleBuffer(MediaSamplesBlo
     return adoptCF(rawSampleBuffer);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(COCOA)

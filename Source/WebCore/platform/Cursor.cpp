@@ -32,7 +32,7 @@
 #include <wtf/Assertions.h>
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 IntPoint determineHotSpot(Image* image, const IntPoint& specifiedHotSpot)
 {
@@ -452,4 +452,4 @@ void Cursor::setAsPlatformCursor() const
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

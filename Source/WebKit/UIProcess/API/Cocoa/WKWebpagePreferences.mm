@@ -35,7 +35,7 @@
 #import "WebProcessPool.h"
 #import "_WKCustomHeaderFieldsInternal.h"
 #import <CyberCore/DocumentLoader.h>
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 #import <wtf/RetainPtr.h>
 
 #if PLATFORM(IOS_FAMILY)
@@ -76,13 +76,13 @@ WebKit::WebContentMode webContentMode(WKContentMode contentMode)
 
 #endif // PLATFORM(IOS_FAMILY)
 
-static _WKWebsiteMouseEventPolicy mouseEventPolicy(WebCore::MouseEventPolicy policy)
+static _WKWebsiteMouseEventPolicy mouseEventPolicy(CyberCore::MouseEventPolicy policy)
 {
     switch (policy) {
-    case WebCore::MouseEventPolicy::Default:
+    case CyberCore::MouseEventPolicy::Default:
         return _WKWebsiteMouseEventPolicyDefault;
 #if ENABLE(IOS_TOUCH_EVENTS)
-    case WebCore::MouseEventPolicy::SynthesizeTouchEvents:
+    case CyberCore::MouseEventPolicy::SynthesizeTouchEvents:
         return _WKWebsiteMouseEventPolicySynthesizeTouchEvents;
 #endif
     }
@@ -90,42 +90,42 @@ static _WKWebsiteMouseEventPolicy mouseEventPolicy(WebCore::MouseEventPolicy pol
     return _WKWebsiteMouseEventPolicyDefault;
 }
 
-static WebCore::MouseEventPolicy coreMouseEventPolicy(_WKWebsiteMouseEventPolicy policy)
+static CyberCore::MouseEventPolicy coreMouseEventPolicy(_WKWebsiteMouseEventPolicy policy)
 {
     switch (policy) {
     case _WKWebsiteMouseEventPolicyDefault:
-        return WebCore::MouseEventPolicy::Default;
+        return CyberCore::MouseEventPolicy::Default;
 #if ENABLE(IOS_TOUCH_EVENTS)
     case _WKWebsiteMouseEventPolicySynthesizeTouchEvents:
-        return WebCore::MouseEventPolicy::SynthesizeTouchEvents;
+        return CyberCore::MouseEventPolicy::SynthesizeTouchEvents;
 #endif
     }
     ASSERT_NOT_REACHED();
-    return WebCore::MouseEventPolicy::Default;
+    return CyberCore::MouseEventPolicy::Default;
 }
 
-static _WKWebsiteModalContainerObservationPolicy modalContainerObservationPolicy(WebCore::ModalContainerObservationPolicy policy)
+static _WKWebsiteModalContainerObservationPolicy modalContainerObservationPolicy(CyberCore::ModalContainerObservationPolicy policy)
 {
     switch (policy) {
-    case WebCore::ModalContainerObservationPolicy::Disabled:
+    case CyberCore::ModalContainerObservationPolicy::Disabled:
         return _WKWebsiteModalContainerObservationPolicyDisabled;
-    case WebCore::ModalContainerObservationPolicy::Prompt:
+    case CyberCore::ModalContainerObservationPolicy::Prompt:
         return _WKWebsiteModalContainerObservationPolicyPrompt;
     }
     ASSERT_NOT_REACHED();
     return _WKWebsiteModalContainerObservationPolicyDisabled;
 }
 
-static WebCore::ModalContainerObservationPolicy coreModalContainerObservationPolicy(_WKWebsiteModalContainerObservationPolicy policy)
+static CyberCore::ModalContainerObservationPolicy coreModalContainerObservationPolicy(_WKWebsiteModalContainerObservationPolicy policy)
 {
     switch (policy) {
     case _WKWebsiteModalContainerObservationPolicyDisabled:
-        return WebCore::ModalContainerObservationPolicy::Disabled;
+        return CyberCore::ModalContainerObservationPolicy::Disabled;
     case _WKWebsiteModalContainerObservationPolicyPrompt:
-        return WebCore::ModalContainerObservationPolicy::Prompt;
+        return CyberCore::ModalContainerObservationPolicy::Prompt;
     }
     ASSERT_NOT_REACHED();
-    return WebCore::ModalContainerObservationPolicy::Disabled;
+    return CyberCore::ModalContainerObservationPolicy::Disabled;
 }
 
 class WebPagePreferencesLockdownModeObserver final : public LockdownModeObserver {
@@ -173,7 +173,7 @@ private:
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainRunLoop(WKWebpagePreferences.class, self))
+    if (CyberCoreObjCScheduleDeallocateOnMainRunLoop(WKWebpagePreferences.class, self))
         return;
 
     _websitePolicies->API::WebsitePolicies::~WebsitePolicies();
@@ -194,7 +194,7 @@ private:
 
 - (void)_setContentBlockersEnabled:(BOOL)contentBlockersEnabled
 {
-    auto defaultEnablement = contentBlockersEnabled ? WebCore::ContentExtensionDefaultEnablement::Enabled : WebCore::ContentExtensionDefaultEnablement::Disabled;
+    auto defaultEnablement = contentBlockersEnabled ? CyberCore::ContentExtensionDefaultEnablement::Enabled : CyberCore::ContentExtensionDefaultEnablement::Disabled;
     _websitePolicies->setContentExtensionEnablement({ defaultEnablement, { } });
 }
 
@@ -202,7 +202,7 @@ private:
 {
     // Note that this only reports default state, and ignores exceptions. This should be turned into a no-op and
     // eventually removed, once no more internal clients rely on it.
-    return _websitePolicies->contentExtensionEnablement().first == WebCore::ContentExtensionDefaultEnablement::Enabled;
+    return _websitePolicies->contentExtensionEnablement().first == CyberCore::ContentExtensionDefaultEnablement::Enabled;
 }
 
 - (void)_setContentRuleListsEnabled:(BOOL)enabled exceptions:(NSSet<NSString *> *)identifiers
@@ -212,7 +212,7 @@ private:
     for (NSString *identifier in identifiers)
         exceptions.add(identifier);
 
-    auto defaultEnablement = enabled ? WebCore::ContentExtensionDefaultEnablement::Enabled : WebCore::ContentExtensionDefaultEnablement::Disabled;
+    auto defaultEnablement = enabled ? CyberCore::ContentExtensionDefaultEnablement::Enabled : CyberCore::ContentExtensionDefaultEnablement::Disabled;
     _websitePolicies->setContentExtensionEnablement({ defaultEnablement, WTFMove(exceptions) });
 }
 
@@ -313,17 +313,17 @@ private:
 }
 
 #if ENABLE(DEVICE_ORIENTATION)
-static WebCore::DeviceOrientationOrMotionPermissionState toDeviceOrientationOrMotionPermissionState(_WKWebsiteDeviceOrientationAndMotionAccessPolicy policy)
+static CyberCore::DeviceOrientationOrMotionPermissionState toDeviceOrientationOrMotionPermissionState(_WKWebsiteDeviceOrientationAndMotionAccessPolicy policy)
 {
     switch (policy) {
     case _WKWebsiteDeviceOrientationAndMotionAccessPolicyAsk:
-        return WebCore::DeviceOrientationOrMotionPermissionState::Prompt;
+        return CyberCore::DeviceOrientationOrMotionPermissionState::Prompt;
     case _WKWebsiteDeviceOrientationAndMotionAccessPolicyGrant:
-        return WebCore::DeviceOrientationOrMotionPermissionState::Granted;
+        return CyberCore::DeviceOrientationOrMotionPermissionState::Granted;
     case _WKWebsiteDeviceOrientationAndMotionAccessPolicyDeny:
         break;
     }
-    return WebCore::DeviceOrientationOrMotionPermissionState::Denied;
+    return CyberCore::DeviceOrientationOrMotionPermissionState::Denied;
 }
 #endif
 
@@ -335,14 +335,14 @@ static WebCore::DeviceOrientationOrMotionPermissionState toDeviceOrientationOrMo
 }
 
 #if ENABLE(DEVICE_ORIENTATION)
-static _WKWebsiteDeviceOrientationAndMotionAccessPolicy toWKWebsiteDeviceOrientationAndMotionAccessPolicy(WebCore::DeviceOrientationOrMotionPermissionState state)
+static _WKWebsiteDeviceOrientationAndMotionAccessPolicy toWKWebsiteDeviceOrientationAndMotionAccessPolicy(CyberCore::DeviceOrientationOrMotionPermissionState state)
 {
     switch (state) {
-    case WebCore::DeviceOrientationOrMotionPermissionState::Prompt:
+    case CyberCore::DeviceOrientationOrMotionPermissionState::Prompt:
         return _WKWebsiteDeviceOrientationAndMotionAccessPolicyAsk;
-    case WebCore::DeviceOrientationOrMotionPermissionState::Granted:
+    case CyberCore::DeviceOrientationOrMotionPermissionState::Granted:
         return _WKWebsiteDeviceOrientationAndMotionAccessPolicyGrant;
-    case WebCore::DeviceOrientationOrMotionPermissionState::Denied:
+    case CyberCore::DeviceOrientationOrMotionPermissionState::Denied:
         break;
     }
     return _WKWebsiteDeviceOrientationAndMotionAccessPolicyDeny;
@@ -394,7 +394,7 @@ static _WKWebsiteDeviceOrientationAndMotionAccessPolicy toWKWebsiteDeviceOrienta
 
 - (void)_setCustomHeaderFields:(NSArray<_WKCustomHeaderFields *> *)fields
 {
-    Vector<WebCore::CustomHeaderFields> vector;
+    Vector<CyberCore::CustomHeaderFields> vector;
     vector.reserveInitialCapacity(fields.count);
     for (_WKCustomHeaderFields *element in fields)
         vector.uncheckedAppend(static_cast<API::CustomHeaderFields&>([element _apiObject]).coreFields());
@@ -478,15 +478,15 @@ static _WKWebsiteDeviceOrientationAndMotionAccessPolicy toWKWebsiteDeviceOrienta
 
 - (void)setAllowsContentJavaScript:(BOOL)allowsContentJavaScript
 {
-    _websitePolicies->setAllowsContentJavaScript(allowsContentJavaScript ? WebCore::AllowsContentJavaScript::Yes : WebCore::AllowsContentJavaScript::No);
+    _websitePolicies->setAllowsContentJavaScript(allowsContentJavaScript ? CyberCore::AllowsContentJavaScript::Yes : CyberCore::AllowsContentJavaScript::No);
 }
 
 - (BOOL)allowsContentJavaScript
 {
     switch (_websitePolicies->allowsContentJavaScript()) {
-    case WebCore::AllowsContentJavaScript::Yes:
+    case CyberCore::AllowsContentJavaScript::Yes:
         return YES;
-    case WebCore::AllowsContentJavaScript::No:
+    case CyberCore::AllowsContentJavaScript::No:
         return NO;
     }
 }
@@ -520,11 +520,11 @@ static _WKWebsiteDeviceOrientationAndMotionAccessPolicy toWKWebsiteDeviceOrienta
 - (_WKWebsiteColorSchemePreference)_colorSchemePreference
 {
     switch (_websitePolicies->colorSchemePreference()) {
-    case WebCore::ColorSchemePreference::NoPreference:
+    case CyberCore::ColorSchemePreference::NoPreference:
         return _WKWebsiteColorSchemePreferenceNoPreference;
-    case WebCore::ColorSchemePreference::Light:
+    case CyberCore::ColorSchemePreference::Light:
         return _WKWebsiteColorSchemePreferenceLight;
-    case WebCore::ColorSchemePreference::Dark:
+    case CyberCore::ColorSchemePreference::Dark:
         return _WKWebsiteColorSchemePreferenceDark;
     }
 }
@@ -533,13 +533,13 @@ static _WKWebsiteDeviceOrientationAndMotionAccessPolicy toWKWebsiteDeviceOrienta
 {
     switch (value) {
     case _WKWebsiteColorSchemePreferenceNoPreference:
-        _websitePolicies->setColorSchemePreference(WebCore::ColorSchemePreference::NoPreference);
+        _websitePolicies->setColorSchemePreference(CyberCore::ColorSchemePreference::NoPreference);
         break;
     case _WKWebsiteColorSchemePreferenceLight:
-        _websitePolicies->setColorSchemePreference(WebCore::ColorSchemePreference::Light);
+        _websitePolicies->setColorSchemePreference(CyberCore::ColorSchemePreference::Light);
         break;
     case _WKWebsiteColorSchemePreferenceDark:
-        _websitePolicies->setColorSchemePreference(WebCore::ColorSchemePreference::Dark);
+        _websitePolicies->setColorSchemePreference(CyberCore::ColorSchemePreference::Dark);
         break;
     }
 }
@@ -603,20 +603,20 @@ static _WKWebsiteDeviceOrientationAndMotionAccessPolicy toWKWebsiteDeviceOrienta
 - (BOOL)_networkConnectionIntegrityEnabled
 {
     return _websitePolicies->networkConnectionIntegrityPolicy().containsAll({
-        WebCore::NetworkConnectionIntegrity::Enabled,
-        WebCore::NetworkConnectionIntegrity::EnhancedTelemetry,
-        WebCore::NetworkConnectionIntegrity::RequestValidation,
-        WebCore::NetworkConnectionIntegrity::SanitizeLookalikeCharacters,
+        CyberCore::NetworkConnectionIntegrity::Enabled,
+        CyberCore::NetworkConnectionIntegrity::EnhancedTelemetry,
+        CyberCore::NetworkConnectionIntegrity::RequestValidation,
+        CyberCore::NetworkConnectionIntegrity::SanitizeLookalikeCharacters,
     });
 }
 
 - (void)_setNetworkConnectionIntegrityEnabled:(BOOL)enabled
 {
     auto webCorePolicy = _websitePolicies->networkConnectionIntegrityPolicy();
-    webCorePolicy.set(WebCore::NetworkConnectionIntegrity::Enabled, enabled);
-    webCorePolicy.set(WebCore::NetworkConnectionIntegrity::EnhancedTelemetry, enabled);
-    webCorePolicy.set(WebCore::NetworkConnectionIntegrity::RequestValidation, enabled);
-    webCorePolicy.set(WebCore::NetworkConnectionIntegrity::SanitizeLookalikeCharacters, enabled);
+    webCorePolicy.set(CyberCore::NetworkConnectionIntegrity::Enabled, enabled);
+    webCorePolicy.set(CyberCore::NetworkConnectionIntegrity::EnhancedTelemetry, enabled);
+    webCorePolicy.set(CyberCore::NetworkConnectionIntegrity::RequestValidation, enabled);
+    webCorePolicy.set(CyberCore::NetworkConnectionIntegrity::SanitizeLookalikeCharacters, enabled);
     _websitePolicies->setNetworkConnectionIntegrityPolicy(webCorePolicy);
 }
 
@@ -625,31 +625,31 @@ static _WKWebsiteDeviceOrientationAndMotionAccessPolicy toWKWebsiteDeviceOrienta
     _WKWebsiteNetworkConnectionIntegrityPolicy policy = _WKWebsiteNetworkConnectionIntegrityPolicyNone;
     auto webCorePolicy = _websitePolicies->networkConnectionIntegrityPolicy();
 
-    if (webCorePolicy.contains(WebCore::NetworkConnectionIntegrity::Enabled))
+    if (webCorePolicy.contains(CyberCore::NetworkConnectionIntegrity::Enabled))
         policy |= _WKWebsiteNetworkConnectionIntegrityPolicyEnabled;
 
-    if (webCorePolicy.contains(WebCore::NetworkConnectionIntegrity::HTTPSFirst))
+    if (webCorePolicy.contains(CyberCore::NetworkConnectionIntegrity::HTTPSFirst))
         policy |= _WKWebsiteNetworkConnectionIntegrityPolicyHTTPSFirst;
 
-    if (webCorePolicy.contains(WebCore::NetworkConnectionIntegrity::HTTPSOnly))
+    if (webCorePolicy.contains(CyberCore::NetworkConnectionIntegrity::HTTPSOnly))
         policy |= _WKWebsiteNetworkConnectionIntegrityPolicyHTTPSOnly;
 
-    if (webCorePolicy.contains(WebCore::NetworkConnectionIntegrity::HTTPSOnlyExplicitlyBypassedForDomain))
+    if (webCorePolicy.contains(CyberCore::NetworkConnectionIntegrity::HTTPSOnlyExplicitlyBypassedForDomain))
         policy |= _WKWebsiteNetworkConnectionIntegrityPolicyHTTPSOnlyExplicitlyBypassedForDomain;
 
-    if (webCorePolicy.contains(WebCore::NetworkConnectionIntegrity::FailClosed))
+    if (webCorePolicy.contains(CyberCore::NetworkConnectionIntegrity::FailClosed))
         policy |= _WKWebsiteNetworkConnectionIntegrityPolicyFailClosed;
 
-    if (webCorePolicy.contains(WebCore::NetworkConnectionIntegrity::WebSearchContent))
+    if (webCorePolicy.contains(CyberCore::NetworkConnectionIntegrity::WebSearchContent))
         policy |= _WKWebsiteNetworkConnectionIntegrityPolicyWebSearchContent;
 
-    if (webCorePolicy.contains(WebCore::NetworkConnectionIntegrity::EnhancedTelemetry))
+    if (webCorePolicy.contains(CyberCore::NetworkConnectionIntegrity::EnhancedTelemetry))
         policy |= _WKWebsiteNetworkConnectionIntegrityPolicyEnhancedTelemetry;
 
-    if (webCorePolicy.contains(WebCore::NetworkConnectionIntegrity::RequestValidation))
+    if (webCorePolicy.contains(CyberCore::NetworkConnectionIntegrity::RequestValidation))
         policy |= _WKWebsiteNetworkConnectionIntegrityPolicyRequestValidation;
 
-    if (webCorePolicy.contains(WebCore::NetworkConnectionIntegrity::SanitizeLookalikeCharacters))
+    if (webCorePolicy.contains(CyberCore::NetworkConnectionIntegrity::SanitizeLookalikeCharacters))
         policy |= _WKWebsiteNetworkConnectionIntegrityPolicySanitizeLookalikeCharacters;
 
     return policy;
@@ -657,34 +657,34 @@ static _WKWebsiteDeviceOrientationAndMotionAccessPolicy toWKWebsiteDeviceOrienta
 
 - (void)_setNetworkConnectionIntegrityPolicy:(_WKWebsiteNetworkConnectionIntegrityPolicy)networkConnectionIntegrityPolicy
 {
-    OptionSet<WebCore::NetworkConnectionIntegrity> webCorePolicy;
+    OptionSet<CyberCore::NetworkConnectionIntegrity> webCorePolicy;
 
     if (networkConnectionIntegrityPolicy & _WKWebsiteNetworkConnectionIntegrityPolicyEnabled)
-        webCorePolicy.add(WebCore::NetworkConnectionIntegrity::Enabled);
+        webCorePolicy.add(CyberCore::NetworkConnectionIntegrity::Enabled);
 
     if (networkConnectionIntegrityPolicy & _WKWebsiteNetworkConnectionIntegrityPolicyHTTPSFirst)
-        webCorePolicy.add(WebCore::NetworkConnectionIntegrity::HTTPSFirst);
+        webCorePolicy.add(CyberCore::NetworkConnectionIntegrity::HTTPSFirst);
 
     if (networkConnectionIntegrityPolicy & _WKWebsiteNetworkConnectionIntegrityPolicyHTTPSOnly)
-        webCorePolicy.add(WebCore::NetworkConnectionIntegrity::HTTPSOnly);
+        webCorePolicy.add(CyberCore::NetworkConnectionIntegrity::HTTPSOnly);
 
     if (networkConnectionIntegrityPolicy & _WKWebsiteNetworkConnectionIntegrityPolicyHTTPSOnlyExplicitlyBypassedForDomain)
-        webCorePolicy.add(WebCore::NetworkConnectionIntegrity::HTTPSOnlyExplicitlyBypassedForDomain);
+        webCorePolicy.add(CyberCore::NetworkConnectionIntegrity::HTTPSOnlyExplicitlyBypassedForDomain);
 
     if (networkConnectionIntegrityPolicy & _WKWebsiteNetworkConnectionIntegrityPolicyFailClosed)
-        webCorePolicy.add(WebCore::NetworkConnectionIntegrity::FailClosed);
+        webCorePolicy.add(CyberCore::NetworkConnectionIntegrity::FailClosed);
 
     if (networkConnectionIntegrityPolicy & _WKWebsiteNetworkConnectionIntegrityPolicyWebSearchContent)
-        webCorePolicy.add(WebCore::NetworkConnectionIntegrity::WebSearchContent);
+        webCorePolicy.add(CyberCore::NetworkConnectionIntegrity::WebSearchContent);
 
     if (networkConnectionIntegrityPolicy & _WKWebsiteNetworkConnectionIntegrityPolicyEnhancedTelemetry)
-        webCorePolicy.add(WebCore::NetworkConnectionIntegrity::EnhancedTelemetry);
+        webCorePolicy.add(CyberCore::NetworkConnectionIntegrity::EnhancedTelemetry);
 
     if (networkConnectionIntegrityPolicy & _WKWebsiteNetworkConnectionIntegrityPolicyRequestValidation)
-        webCorePolicy.add(WebCore::NetworkConnectionIntegrity::RequestValidation);
+        webCorePolicy.add(CyberCore::NetworkConnectionIntegrity::RequestValidation);
 
     if (networkConnectionIntegrityPolicy & _WKWebsiteNetworkConnectionIntegrityPolicySanitizeLookalikeCharacters)
-        webCorePolicy.add(WebCore::NetworkConnectionIntegrity::SanitizeLookalikeCharacters);
+        webCorePolicy.add(CyberCore::NetworkConnectionIntegrity::SanitizeLookalikeCharacters);
 
     _websitePolicies->setNetworkConnectionIntegrityPolicy(webCorePolicy);
 }

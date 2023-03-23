@@ -29,7 +29,7 @@
 #include "WebProcessPool.h"
 
 namespace API {
-using namespace WebCore;
+using namespace CyberCore;
 using namespace WebKit;
 
 URLRequest::URLRequest(const ResourceRequest& request)

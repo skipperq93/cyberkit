@@ -35,7 +35,7 @@
 #include <stdio.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(LegacyInlineBox);
 
@@ -315,18 +315,18 @@ LayoutPoint LegacyInlineBox::flipForWritingMode(const LayoutPoint& point) const
     return root().blockFlow().flipForWritingMode(point);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #if ENABLE(TREE_DEBUGGING)
 
-void showNodeTree(const WebCore::LegacyInlineBox* inlineBox)
+void showNodeTree(const CyberCore::LegacyInlineBox* inlineBox)
 {
     if (!inlineBox)
         return;
     inlineBox->showNodeTreeForThis();
 }
 
-void showLineTree(const WebCore::LegacyInlineBox* inlineBox)
+void showLineTree(const CyberCore::LegacyInlineBox* inlineBox)
 {
     if (!inlineBox)
         return;

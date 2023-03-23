@@ -27,7 +27,7 @@
 
 #include <wtf/FastMalloc.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class PasteboardContext {
     WTF_MAKE_FAST_ALLOCATED;
@@ -40,4 +40,4 @@ protected:
     PasteboardContext() = default;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

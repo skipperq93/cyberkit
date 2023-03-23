@@ -18,13 +18,13 @@ set(WebKitTestRunner_SOURCES
 
 set(WebKitTestRunner_LIBRARIES
     WebKit::TestRunnerShared
-    WebKit::WebCoreTestSupport
+    WebKit::CyberCoreTestSupport
 )
 set(WebKitTestRunner_FRAMEWORKS
     JavaScriptCore
     PAL
     WTF
-    WebCore
+    CyberCore
     WebKit
 )
 if (NOT USE_SYSTEM_MALLOC)
@@ -91,7 +91,7 @@ set(TestRunnerInjectedBundle_PRIVATE_INCLUDE_DIRECTORIES
 set(TestRunnerInjectedBundle_LIBRARY_TYPE SHARED)
 set(TestRunnerInjectedBundle_PRIVATE_LIBRARIES
     WebKit::TestRunnerShared
-    WebKit::WebCoreTestSupport
+    WebKit::CyberCoreTestSupport
 )
 set(TestRunnerInjectedBundle_FRAMEWORKS ${WebKitTestRunner_FRAMEWORKS})
 

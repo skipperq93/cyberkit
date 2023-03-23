@@ -26,7 +26,7 @@
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-// This is based on WebKit's TestWebkitAPI test for WTF's RedBlackTree.
+// This is based on CyberKit's TestWebkitAPI test for WTF's RedBlackTree.
 
 #include "TestHarness.h"
 #include <algorithm>

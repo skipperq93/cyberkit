@@ -29,7 +29,7 @@
 #include <wtf/Function.h>
 #include <wtf/HashMap.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CurlStreamScheduler {
     WTF_MAKE_FAST_ALLOCATED;
@@ -64,4 +64,4 @@ private:
     HashMap<CurlStreamID, std::unique_ptr<CurlStream>> m_streamList;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

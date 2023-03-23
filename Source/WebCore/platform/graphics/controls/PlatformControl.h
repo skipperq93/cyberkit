@@ -28,7 +28,7 @@
 #include "ControlStyle.h"
 #include "FloatRect.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ControlPart;
 class GraphicsContext;
@@ -60,4 +60,4 @@ protected:
     ControlPart& m_owningPart;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

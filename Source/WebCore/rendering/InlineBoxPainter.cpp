@@ -35,7 +35,7 @@
 #include "RenderLayer.h"
 #include "RenderView.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 InlineBoxPainter::InlineBoxPainter(const LegacyInlineFlowBox& inlineBox, PaintInfo& paintInfo, const LayoutPoint& paintOffset)
     : InlineBoxPainter(*InlineIterator::inlineBoxFor(inlineBox), paintInfo, paintOffset)

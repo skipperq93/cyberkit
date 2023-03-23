@@ -36,7 +36,7 @@
 OBJC_CLASS NSScrollerImp;
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScrollingStateScrollingNode : public ScrollingStateNode {
 public:
@@ -142,7 +142,7 @@ private:
     bool m_isMonitoringWheelEvents { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_SCROLLING_STATE_NODE(ScrollingStateScrollingNode, isScrollingNode())
 

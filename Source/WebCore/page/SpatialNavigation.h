@@ -26,7 +26,7 @@
 #include "Node.h"
 #include <limits>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Element;
 class Frame;
@@ -143,4 +143,4 @@ LayoutRect virtualRectForDirection(FocusDirection, const LayoutRect& startingRec
 LayoutRect virtualRectForAreaElementAndDirection(HTMLAreaElement*, FocusDirection);
 HTMLFrameOwnerElement* frameOwnerElement(FocusCandidate&);
 
-} // namespace WebCore
+} // namespace CyberCore

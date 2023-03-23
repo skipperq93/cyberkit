@@ -26,8 +26,8 @@
 #include "config.h"
 #include "FontSelector.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 DEFINE_ALLOCATOR_WITH_HEAP_IDENTIFIER(FontAccessor);
 
-} // namespace WebCore
+} // namespace CyberCore

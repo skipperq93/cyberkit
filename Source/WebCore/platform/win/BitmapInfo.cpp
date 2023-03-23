@@ -31,7 +31,7 @@
 
 #include <wtf/Assertions.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 BitmapInfo bitmapInfoForSize(int width, int height, BitmapInfo::BitCount bitCount)
 {
@@ -61,4 +61,4 @@ BitmapInfo BitmapInfo::createBottomUp(const IntSize& size, BitCount bitCount)
     return bitmapInfoForSize(size.width(), -size.height(), bitCount);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

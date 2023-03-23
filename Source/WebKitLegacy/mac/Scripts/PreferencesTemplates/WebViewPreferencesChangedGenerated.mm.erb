@@ -59,9 +59,9 @@
 #if <%= @pref.condition %>
 <%- end -%>
 <%- if @pref.exposed -%>
-    WebCore::DeprecatedGlobalSettings::set<%= @pref.webcoreNameUpper %>(<%= @pref.upcast %>[preferences <%= @pref.preferenceAccessor %>:@"<%= @pref.preferenceKey %>"]<%= ")" if @pref.upcast %>);
+    CyberCore::DeprecatedGlobalSettings::set<%= @pref.webcoreNameUpper %>(<%= @pref.upcast %>[preferences <%= @pref.preferenceAccessor %>:@"<%= @pref.preferenceKey %>"]<%= ")" if @pref.upcast %>);
 <%- else -%>
-    WebCore::DeprecatedGlobalSettings::set<%= @pref.webcoreNameUpper %>(DEFAULT_VALUE_FOR_<%= @pref.name %>);
+    CyberCore::DeprecatedGlobalSettings::set<%= @pref.webcoreNameUpper %>(DEFAULT_VALUE_FOR_<%= @pref.name %>);
 <%- end -%>
 <%- if @pref.condition -%>
 #endif

@@ -38,7 +38,7 @@
 
 #include "VectorMath.h"
 
-namespace WebCore {
+namespace CyberCore {
     
 DirectConvolver::DirectConvolver(size_t inputBlockSize)
     : m_inputBlockSize(inputBlockSize)
@@ -354,6 +354,6 @@ void DirectConvolver::reset()
     m_buffer.zero();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

@@ -29,7 +29,7 @@ typedef struct HINSTANCE__* HINSTANCE;
 typedef HINSTANCE HMODULE;
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ThemeData {
     ThemeData() :m_part(0), m_state(0), m_classicState(0) {}
@@ -170,4 +170,4 @@ private:
     String m_mediaControlsStyleSheet;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

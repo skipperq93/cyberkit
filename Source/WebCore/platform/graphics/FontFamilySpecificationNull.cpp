@@ -29,7 +29,7 @@
 #include "FontSelector.h"
 #include <wtf/text/AtomStringHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 FontRanges FontFamilySpecificationNull::fontRanges(const FontDescription&) const
 {

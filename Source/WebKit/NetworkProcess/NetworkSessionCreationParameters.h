@@ -80,12 +80,12 @@ struct NetworkSessionCreationParameters {
     SoupCookiePersistentStorageType cookiePersistentStorageType { SoupCookiePersistentStorageType::Text };
     bool persistentCredentialStorageEnabled { true };
     bool ignoreTLSErrors { false };
-    WebCore::SoupNetworkProxySettings proxySettings;
-    WebCore::HTTPCookieAcceptPolicy cookieAcceptPolicy { WebCore::HTTPCookieAcceptPolicy::ExclusivelyFromMainDocumentDomain };
+    CyberCore::SoupNetworkProxySettings proxySettings;
+    CyberCore::HTTPCookieAcceptPolicy cookieAcceptPolicy { CyberCore::HTTPCookieAcceptPolicy::ExclusivelyFromMainDocumentDomain };
 #endif
 #if USE(CURL)
     String cookiePersistentStorageFile;
-    WebCore::CurlProxySettings proxySettings;
+    CyberCore::CurlProxySettings proxySettings;
 #endif
     bool deviceManagementRestrictionsEnabled { false };
     bool allLoadsBlockedByDeviceManagementRestrictionsForTesting { false };

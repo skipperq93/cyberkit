@@ -37,9 +37,9 @@
 #include <CyberCore/MediaPlaybackTargetContext.h>
 #include <CyberCore/MediaPlaybackTargetMock.h>
 
-namespace WebKit {
+namespace CyberKit {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 RemoteMediaSessionHelper::RemoteMediaSessionHelper(WebProcess& process)
     : m_process(process)
@@ -85,7 +85,7 @@ void RemoteMediaSessionHelper::activeVideoRouteDidChange(SupportsAirPlayVideo su
     if (targetContext.type() == MediaPlaybackTargetContext::Type::AVOutputContext)
         return;
 
-    WebCore::MediaSessionHelper::activeVideoRouteDidChange(supportsAirPlayVideo, WebCore::MediaPlaybackTargetCocoa::create(WTFMove(targetContext)));
+    CyberCore::MediaSessionHelper::activeVideoRouteDidChange(supportsAirPlayVideo, CyberCore::MediaPlaybackTargetCocoa::create(WTFMove(targetContext)));
 }
 
 }

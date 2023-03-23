@@ -28,7 +28,7 @@
 #include "DestinationColorSpace.h"
 #include "FloatRect.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class Filter;
 class FilterResults;
@@ -58,4 +58,4 @@ protected:
     RefPtr<Filter> m_filter;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

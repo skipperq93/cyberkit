@@ -31,7 +31,7 @@
 #include "MathMLMencloseElement.h"
 #include "RenderMathMLRow.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderMathMLMenclose final : public RenderMathMLRow {
     WTF_MAKE_ISO_ALLOCATED(RenderMathMLMenclose);

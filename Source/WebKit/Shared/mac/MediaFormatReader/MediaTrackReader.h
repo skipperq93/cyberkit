@@ -39,7 +39,7 @@ namespace WTF {
 class WorkQueue;
 }
 
-namespace WebCore {
+namespace CyberCore {
 class AudioTrackPrivate;
 class InbandTextTrackPrivate;
 class MediaSamplesBlock;
@@ -66,8 +66,8 @@ public:
     MediaTime greatestPresentationTime() const;
 
     void setEnabled(bool enabled) { m_isEnabled = enabled ? Enabled::True : Enabled::False; }
-    void addSample(WebCore::MediaSamplesBlock&&, MTPluginByteSourceRef);
-    void waitForSample(Function<bool(WebCore::SampleMap&, bool)>&&) const;
+    void addSample(CyberCore::MediaSamplesBlock&&, MTPluginByteSourceRef);
+    void waitForSample(Function<bool(CyberCore::SampleMap&, bool)>&&) const;
     void finishParsing();
 
     const WTF::Logger& logger() const { return m_logger; }
@@ -92,7 +92,7 @@ private:
     struct SampleStorage {
         WTF_MAKE_STRUCT_FAST_ALLOCATED;
         ~SampleStorage() { ASSERT(!isMainRunLoop()); }
-        WebCore::SampleMap sampleMap;
+        CyberCore::SampleMap sampleMap;
         bool hasAllSamples { false };
     };
 
@@ -113,7 +113,7 @@ private:
     Ref<const Logger> m_logger;
     const void* m_logIdentifier;
     RetainPtr<CMFormatDescriptionRef> m_formatDescription;
-    RefPtr<const WebCore::TrackInfo> m_trackInfo;
+    RefPtr<const CyberCore::TrackInfo> m_trackInfo;
 };
 
 constexpr MediaTrackReader::WrapperClass MediaTrackReader::wrapperClass()

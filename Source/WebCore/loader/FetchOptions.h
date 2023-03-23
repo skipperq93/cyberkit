@@ -39,7 +39,7 @@
 #include <wtf/Markable.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct FetchOptions {
     using Destination = FetchOptionsDestination;
@@ -122,77 +122,77 @@ inline bool isScriptLikeDestination(FetchOptions::Destination destination)
 
 namespace WTF {
 
-template<> struct EnumTraitsForPersistence<WebCore::FetchOptions::Destination> {
+template<> struct EnumTraitsForPersistence<CyberCore::FetchOptions::Destination> {
     using values = EnumValues<
-        WebCore::FetchOptions::Destination,
-        WebCore::FetchOptions::Destination::EmptyString,
-        WebCore::FetchOptions::Destination::Audio,
-        WebCore::FetchOptions::Destination::Audioworklet,
-        WebCore::FetchOptions::Destination::Document,
-        WebCore::FetchOptions::Destination::Embed,
-        WebCore::FetchOptions::Destination::Font,
-        WebCore::FetchOptions::Destination::Image,
-        WebCore::FetchOptions::Destination::Iframe,
-        WebCore::FetchOptions::Destination::Manifest,
-        WebCore::FetchOptions::Destination::Model,
-        WebCore::FetchOptions::Destination::Object,
-        WebCore::FetchOptions::Destination::Paintworklet,
-        WebCore::FetchOptions::Destination::Report,
-        WebCore::FetchOptions::Destination::Script,
-        WebCore::FetchOptions::Destination::Serviceworker,
-        WebCore::FetchOptions::Destination::Sharedworker,
-        WebCore::FetchOptions::Destination::Style,
-        WebCore::FetchOptions::Destination::Track,
-        WebCore::FetchOptions::Destination::Video,
-        WebCore::FetchOptions::Destination::Worker,
-        WebCore::FetchOptions::Destination::Xslt
+        CyberCore::FetchOptions::Destination,
+        CyberCore::FetchOptions::Destination::EmptyString,
+        CyberCore::FetchOptions::Destination::Audio,
+        CyberCore::FetchOptions::Destination::Audioworklet,
+        CyberCore::FetchOptions::Destination::Document,
+        CyberCore::FetchOptions::Destination::Embed,
+        CyberCore::FetchOptions::Destination::Font,
+        CyberCore::FetchOptions::Destination::Image,
+        CyberCore::FetchOptions::Destination::Iframe,
+        CyberCore::FetchOptions::Destination::Manifest,
+        CyberCore::FetchOptions::Destination::Model,
+        CyberCore::FetchOptions::Destination::Object,
+        CyberCore::FetchOptions::Destination::Paintworklet,
+        CyberCore::FetchOptions::Destination::Report,
+        CyberCore::FetchOptions::Destination::Script,
+        CyberCore::FetchOptions::Destination::Serviceworker,
+        CyberCore::FetchOptions::Destination::Sharedworker,
+        CyberCore::FetchOptions::Destination::Style,
+        CyberCore::FetchOptions::Destination::Track,
+        CyberCore::FetchOptions::Destination::Video,
+        CyberCore::FetchOptions::Destination::Worker,
+        CyberCore::FetchOptions::Destination::Xslt
     >;
 };
 
-template<> struct EnumTraitsForPersistence<WebCore::FetchOptions::Mode> {
+template<> struct EnumTraitsForPersistence<CyberCore::FetchOptions::Mode> {
     using values = EnumValues<
-        WebCore::FetchOptions::Mode,
-        WebCore::FetchOptions::Mode::Navigate,
-        WebCore::FetchOptions::Mode::SameOrigin,
-        WebCore::FetchOptions::Mode::NoCors,
-        WebCore::FetchOptions::Mode::Cors
+        CyberCore::FetchOptions::Mode,
+        CyberCore::FetchOptions::Mode::Navigate,
+        CyberCore::FetchOptions::Mode::SameOrigin,
+        CyberCore::FetchOptions::Mode::NoCors,
+        CyberCore::FetchOptions::Mode::Cors
     >;
 };
 
 
-template<> struct EnumTraitsForPersistence<WebCore::FetchOptions::Credentials> {
+template<> struct EnumTraitsForPersistence<CyberCore::FetchOptions::Credentials> {
     using values = EnumValues<
-        WebCore::FetchOptions::Credentials,
-        WebCore::FetchOptions::Credentials::Omit,
-        WebCore::FetchOptions::Credentials::SameOrigin,
-        WebCore::FetchOptions::Credentials::Include
+        CyberCore::FetchOptions::Credentials,
+        CyberCore::FetchOptions::Credentials::Omit,
+        CyberCore::FetchOptions::Credentials::SameOrigin,
+        CyberCore::FetchOptions::Credentials::Include
     >;
 };
 
-template<> struct EnumTraitsForPersistence<WebCore::FetchOptions::Cache> {
+template<> struct EnumTraitsForPersistence<CyberCore::FetchOptions::Cache> {
     using values = EnumValues<
-        WebCore::FetchOptions::Cache,
-        WebCore::FetchOptions::Cache::Default,
-        WebCore::FetchOptions::Cache::NoStore,
-        WebCore::FetchOptions::Cache::Reload,
-        WebCore::FetchOptions::Cache::NoCache,
-        WebCore::FetchOptions::Cache::ForceCache,
-        WebCore::FetchOptions::Cache::OnlyIfCached
+        CyberCore::FetchOptions::Cache,
+        CyberCore::FetchOptions::Cache::Default,
+        CyberCore::FetchOptions::Cache::NoStore,
+        CyberCore::FetchOptions::Cache::Reload,
+        CyberCore::FetchOptions::Cache::NoCache,
+        CyberCore::FetchOptions::Cache::ForceCache,
+        CyberCore::FetchOptions::Cache::OnlyIfCached
     >;
 };
 
-template<> struct EnumTraitsForPersistence<WebCore::FetchOptions::Redirect> {
+template<> struct EnumTraitsForPersistence<CyberCore::FetchOptions::Redirect> {
     using values = EnumValues<
-        WebCore::FetchOptions::Redirect,
-        WebCore::FetchOptions::Redirect::Follow,
-        WebCore::FetchOptions::Redirect::Error,
-        WebCore::FetchOptions::Redirect::Manual
+        CyberCore::FetchOptions::Redirect,
+        CyberCore::FetchOptions::Redirect::Follow,
+        CyberCore::FetchOptions::Redirect::Error,
+        CyberCore::FetchOptions::Redirect::Manual
     >;
 };
 
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 template<class Encoder>
 inline void FetchOptions::encodePersistent(Encoder& encoder) const
@@ -263,4 +263,4 @@ inline bool FetchOptions::decodePersistent(Decoder& decoder, FetchOptions& optio
     return true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

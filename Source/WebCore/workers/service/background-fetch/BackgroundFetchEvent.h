@@ -30,7 +30,7 @@
 #include "BackgroundFetchEventInit.h"
 #include "ExtendableEvent.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class BackgroundFetchEvent : public ExtendableEvent {
     WTF_MAKE_ISO_ALLOCATED(BackgroundFetchEvent);
@@ -51,6 +51,6 @@ private:
     RefPtr<BackgroundFetchRegistration> m_registration;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

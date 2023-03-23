@@ -27,7 +27,7 @@
 
 #include "AbstractFrameView.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RemoteFrame;
 
@@ -73,7 +73,7 @@ private:
 
 }
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::RemoteFrameView)
-static bool isType(const WebCore::AbstractFrameView& view) { return view.viewType() == WebCore::AbstractFrameView::FrameViewType::Remote; }
-static bool isType(const WebCore::Widget& widget) { return widget.isRemoteFrameView(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::RemoteFrameView)
+static bool isType(const CyberCore::AbstractFrameView& view) { return view.viewType() == CyberCore::AbstractFrameView::FrameViewType::Remote; }
+static bool isType(const CyberCore::Widget& widget) { return widget.isRemoteFrameView(); }
 SPECIALIZE_TYPE_TRAITS_END()

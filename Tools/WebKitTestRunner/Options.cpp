@@ -150,7 +150,7 @@ static bool handleOptionInternalFeature(Options& options, const char*, const cha
     return parseFeature(feature, options.features);
 }
 
-static bool handleOptionWebCoreLogging(Options& options, const char*, const char* channels)
+static bool handleOptionCyberCoreLogging(Options& options, const char*, const char* channels)
 {
     options.webCoreLogChannels = channels;
     return true;
@@ -194,7 +194,7 @@ OptionsHandler::OptionsHandler(Options& o)
 #if ENABLE(ACCESSIBILITY_ISOLATED_TREE)
     optionList.append(Option("--accessibility-isolated-tree", "Enable accessibility isolated tree mode for tests", handleOptionAccessibilityIsolatedTreeMode));
 #endif
-    optionList.append(Option("--webcore-logging", "Enable WebCore log channels", handleOptionWebCoreLogging, true));
+    optionList.append(Option("--webcore-logging", "Enable CyberCore log channels", handleOptionCyberCoreLogging, true));
     optionList.append(Option("--webkit-logging", "Enable WebKit log channels", handleOptionWebKitLogging, true));
     
     optionList.append(Option(0, 0, handleOptionUnmatched));

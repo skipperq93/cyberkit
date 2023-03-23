@@ -37,18 +37,18 @@ public:
     SharedStringHashTableReadOnly();
     ~SharedStringHashTableReadOnly();
 
-    bool contains(WebCore::SharedStringHash) const;
+    bool contains(CyberCore::SharedStringHash) const;
 
     SharedMemory* sharedMemory() const { return m_sharedMemory.get(); }
     void setSharedMemory(RefPtr<SharedMemory>&&);
 
 protected:
-    WebCore::SharedStringHash* findSlot(WebCore::SharedStringHash) const;
+    CyberCore::SharedStringHash* findSlot(CyberCore::SharedStringHash) const;
 
     RefPtr<SharedMemory> m_sharedMemory;
     unsigned m_tableSize { 0 };
     unsigned m_tableSizeMask { 0 };
-    WebCore::SharedStringHash* m_table { nullptr };
+    CyberCore::SharedStringHash* m_table { nullptr };
 };
 
 } // namespace WebKit

@@ -37,8 +37,8 @@
 #include <CyberCore/PlatformScreen.h>
 #include <CyberCore/RemoteFrame.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 GraphicsLayerCARemote::GraphicsLayerCARemote(Type layerType, GraphicsLayerClient& client, RemoteLayerTreeContext& context)
     : GraphicsLayerCA(layerType, client)
@@ -74,13 +74,13 @@ Ref<PlatformCALayer> GraphicsLayerCARemote::createPlatformCALayer(PlatformLayer*
 }
 
 #if ENABLE(MODEL_ELEMENT)
-Ref<PlatformCALayer> GraphicsLayerCARemote::createPlatformCALayer(Ref<WebCore::Model> model, PlatformCALayerClient* owner)
+Ref<PlatformCALayer> GraphicsLayerCARemote::createPlatformCALayer(Ref<CyberCore::Model> model, PlatformCALayerClient* owner)
 {
     return PlatformCALayerRemote::create(model, owner, *m_context);
 }
 #endif
 
-Ref<PlatformCALayer> GraphicsLayerCARemote::createPlatformCALayerHost(WebCore::LayerHostingContextIdentifier identifier, PlatformCALayerClient* owner)
+Ref<PlatformCALayer> GraphicsLayerCARemote::createPlatformCALayerHost(CyberCore::LayerHostingContextIdentifier identifier, PlatformCALayerClient* owner)
 {
     return PlatformCALayerRemoteHost::create(identifier, owner, *m_context);
 }
@@ -107,7 +107,7 @@ Color GraphicsLayerCARemote::pageTiledBackingBorderColor() const
 
 class GraphicsLayerCARemoteAsyncContentsDisplayDelegate : public GraphicsLayerAsyncContentsDisplayDelegate {
 public:
-    GraphicsLayerCARemoteAsyncContentsDisplayDelegate(IPC::Connection& connection, DrawingAreaIdentifier identifier, WebCore::GraphicsLayer::PlatformLayerID layerID)
+    GraphicsLayerCARemoteAsyncContentsDisplayDelegate(IPC::Connection& connection, DrawingAreaIdentifier identifier, CyberCore::GraphicsLayer::PlatformLayerID layerID)
         : m_connection(connection)
         , m_drawingArea(identifier)
         , m_layerID(layerID)
@@ -136,10 +136,10 @@ public:
 private:
     Ref<IPC::Connection> m_connection;
     DrawingAreaIdentifier m_drawingArea;
-    WebCore::GraphicsLayer::PlatformLayerID m_layerID;
+    CyberCore::GraphicsLayer::PlatformLayerID m_layerID;
 };
 
-RefPtr<WebCore::GraphicsLayerAsyncContentsDisplayDelegate> GraphicsLayerCARemote::createAsyncContentsDisplayDelegate()
+RefPtr<CyberCore::GraphicsLayerAsyncContentsDisplayDelegate> GraphicsLayerCARemote::createAsyncContentsDisplayDelegate()
 {
     if (!m_context || !m_context->drawingAreaIdentifier() || !WebProcess::singleton().parentProcessConnection())
         return nullptr;
@@ -147,4 +147,4 @@ RefPtr<WebCore::GraphicsLayerAsyncContentsDisplayDelegate> GraphicsLayerCARemote
     return adoptRef(new GraphicsLayerCARemoteAsyncContentsDisplayDelegate(*WebProcess::singleton().parentProcessConnection(), m_context->drawingAreaIdentifier(), primaryLayerID()));
 }
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -36,7 +36,7 @@
 #include "Pasteboard.h"
 #include "markup.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // FIXME: These values are straight out of DragControllerMac, so probably have
 // little correlation with Gdk standards...

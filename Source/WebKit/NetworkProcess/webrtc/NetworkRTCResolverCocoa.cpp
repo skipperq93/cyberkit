@@ -42,7 +42,7 @@ static void resolvedName(CFHostRef hostRef, CFHostInfoType typeInfo, const CFStr
 
     if (error->domain) {
         // FIXME: Need to handle failure, but info is not provided in the callback.
-        resolver->completed(makeUnexpected(WebCore::DNSError::Unknown));
+        resolver->completed(makeUnexpected(CyberCore::DNSError::Unknown));
         return;
     }
 
@@ -50,22 +50,22 @@ static void resolvedName(CFHostRef hostRef, CFHostInfoType typeInfo, const CFStr
     CFArrayRef resolvedAddresses = CFHostGetAddressing(hostRef, &result);
     ASSERT_UNUSED(result, result);
 
-    auto addresses = makeVector(resolvedAddresses, [] (CFDataRef data) -> std::optional<WebCore::IPAddress> {
-        return WebCore::IPAddress::fromSockAddrIn6(*reinterpret_cast<const struct sockaddr_in6*>(CFDataGetBytePtr(data)));
+    auto addresses = makeVector(resolvedAddresses, [] (CFDataRef data) -> std::optional<CyberCore::IPAddress> {
+        return CyberCore::IPAddress::fromSockAddrIn6(*reinterpret_cast<const struct sockaddr_in6*>(CFDataGetBytePtr(data)));
     });
     if (addresses.isEmpty()) {
-        resolver->completed(makeUnexpected(WebCore::DNSError::CannotResolve));
+        resolver->completed(makeUnexpected(CyberCore::DNSError::CannotResolve));
         return;
     }
     resolver->completed(WTFMove(addresses));
 }
 
-std::unique_ptr<NetworkRTCResolver> NetworkRTCResolver::create(LibWebRTCResolverIdentifier identifier, WebCore::DNSCompletionHandler&& completionHandler)
+std::unique_ptr<NetworkRTCResolver> NetworkRTCResolver::create(LibWebRTCResolverIdentifier identifier, CyberCore::DNSCompletionHandler&& completionHandler)
 {
     return std::unique_ptr<NetworkRTCResolver>(new NetworkRTCResolverCocoa(identifier, WTFMove(completionHandler)));
 }
 
-NetworkRTCResolverCocoa::NetworkRTCResolverCocoa(LibWebRTCResolverIdentifier identifier, WebCore::DNSCompletionHandler&& completionHandler)
+NetworkRTCResolverCocoa::NetworkRTCResolverCocoa(LibWebRTCResolverIdentifier identifier, CyberCore::DNSCompletionHandler&& completionHandler)
     : NetworkRTCResolver(identifier, WTFMove(completionHandler))
 {
 }
@@ -90,10 +90,10 @@ void NetworkRTCResolverCocoa::stop()
 {
     CFHostCancelInfoResolution(m_host.get(), CFHostInfoType::kCFHostAddresses);
     if (auto completionHandler = WTFMove(m_completionHandler))
-        completionHandler(makeUnexpected(WebCore::DNSError::Cancelled));
+        completionHandler(makeUnexpected(CyberCore::DNSError::Cancelled));
 }
 
-void NetworkRTCResolverCocoa::completed(WebCore::DNSAddressesOrError&& addressesOrError)
+void NetworkRTCResolverCocoa::completed(CyberCore::DNSAddressesOrError&& addressesOrError)
 {
     if (auto completionHandler = WTFMove(m_completionHandler))
         completionHandler(WTFMove(addressesOrError));

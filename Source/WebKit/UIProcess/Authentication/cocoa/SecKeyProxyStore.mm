@@ -33,7 +33,7 @@
 
 namespace WebKit {
 
-bool SecKeyProxyStore::initialize(const WebCore::Credential& credential)
+bool SecKeyProxyStore::initialize(const CyberCore::Credential& credential)
 {
     if (!credential.isEmpty() && credential.nsCredential().identity)
         m_secKeyProxy = adoptNS([[SecKeyProxy alloc] initWithIdentity:credential.nsCredential().identity]);

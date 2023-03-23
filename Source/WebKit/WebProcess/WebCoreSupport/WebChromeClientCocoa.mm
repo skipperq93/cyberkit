@@ -31,14 +31,14 @@
 #import "WebIconUtilities.h"
 #import <CyberCore/Icon.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 RefPtr<Icon> WebChromeClient::createIconForFiles(const Vector<String>& filenames)
 {
     return Icon::create(iconForFiles(filenames).get());
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(COCOA)

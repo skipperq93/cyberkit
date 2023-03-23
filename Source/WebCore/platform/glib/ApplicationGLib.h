@@ -22,7 +22,7 @@
 
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WEBCORE_EXPORT void setApplicationName(const String&);
 WEBCORE_EXPORT const String& getApplicationName();
@@ -30,6 +30,6 @@ WEBCORE_EXPORT const String& getApplicationName();
 WEBCORE_EXPORT void setApplicationID(const String&);
 WEBCORE_EXPORT const String& getApplicationID();
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(GLIB)

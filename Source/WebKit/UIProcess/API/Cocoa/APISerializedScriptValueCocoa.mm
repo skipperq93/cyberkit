@@ -92,7 +92,7 @@ static SharedJSContext& sharedContext()
     return sharedContext.get();
 }
 
-id SerializedScriptValue::deserialize(WebCore::SerializedScriptValue& serializedScriptValue, JSValueRef* exception)
+id SerializedScriptValue::deserialize(CyberCore::SerializedScriptValue& serializedScriptValue, JSValueRef* exception)
 {
     ASSERT(RunLoop::isMain());
     JSContext* context = sharedContext().ensureContext();
@@ -139,7 +139,7 @@ static bool validateObject(id argument)
     return false;
 }
 
-static RefPtr<WebCore::SerializedScriptValue> coreValueFromNSObject(id object)
+static RefPtr<CyberCore::SerializedScriptValue> coreValueFromNSObject(id object)
 {
     if (object && !validateObject(object))
         return nullptr;
@@ -154,7 +154,7 @@ static RefPtr<WebCore::SerializedScriptValue> coreValueFromNSObject(id object)
     ASSERT(globalObject);
     JSC::JSLockHolder lock(globalObject);
 
-    return WebCore::SerializedScriptValue::create(*globalObject, toJS(globalObject, [value JSValueRef]));
+    return CyberCore::SerializedScriptValue::create(*globalObject, toJS(globalObject, [value JSValueRef]));
 }
 
 RefPtr<SerializedScriptValue> SerializedScriptValue::createFromNSObject(id object)

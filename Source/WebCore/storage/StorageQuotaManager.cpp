@@ -31,7 +31,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/threads/BinarySemaphore.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<StorageQuotaManager> StorageQuotaManager::create(uint64_t quota, UsageGetter&& usageGetter, QuotaIncreaseRequester&& quotaIncreaseRequester)
 {
@@ -144,4 +144,4 @@ void StorageQuotaManager::resetQuotaForTesting()
     m_quotaCountDown = 0;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

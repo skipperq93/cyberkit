@@ -46,7 +46,7 @@ typedef struct CGColor* CGColorRef;
 typedef struct _GdkRGBA GdkRGBA;
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 // Able to represent:
 //    - Special "invalid color" state, treated as transparent black but distinguishable
@@ -628,9 +628,9 @@ template<class Decoder> std::optional<Color> Color::decode(Decoder& decoder)
     return Color { asSRGBA(PackedColor::RGBA { value }), flags };
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
-template<> struct DefaultHash<WebCore::Color>;
-template<> struct HashTraits<WebCore::Color>;
+template<> struct DefaultHash<CyberCore::Color>;
+template<> struct HashTraits<CyberCore::Color>;
 }

@@ -49,18 +49,18 @@ public:
         virtual uint64_t nativeSurfaceHandleForCompositing() = 0;
         virtual void didDestroyGLContext() = 0;
 
-        virtual void resize(const WebCore::IntSize&) = 0;
+        virtual void resize(const CyberCore::IntSize&) = 0;
         virtual void willRenderFrame() = 0;
         virtual void didRenderFrame() = 0;
-        virtual void displayDidRefresh(WebCore::PlatformDisplayID) = 0;
+        virtual void displayDidRefresh(CyberCore::PlatformDisplayID) = 0;
     };
 
-    static Ref<ThreadedCompositor> create(Client&, ThreadedDisplayRefreshMonitor::Client&, WebCore::PlatformDisplayID, const WebCore::IntSize&, float scaleFactor, WebCore::TextureMapper::PaintFlags);
+    static Ref<ThreadedCompositor> create(Client&, ThreadedDisplayRefreshMonitor::Client&, CyberCore::PlatformDisplayID, const CyberCore::IntSize&, float scaleFactor, CyberCore::TextureMapper::PaintFlags);
     virtual ~ThreadedCompositor();
 
     void setScaleFactor(float);
-    void setScrollPosition(const WebCore::IntPoint&, float scale);
-    void setViewportSize(const WebCore::IntSize&, float scale);
+    void setScrollPosition(const CyberCore::IntPoint&, float scale);
+    void setViewportSize(const CyberCore::IntSize&, float scale);
 
     void updateSceneState(const RefPtr<Nicosia::Scene>&);
     void updateScene();
@@ -70,7 +70,7 @@ public:
 
     void forceRepaint();
 
-    WebCore::DisplayRefreshMonitor& displayRefreshMonitor() const;
+    CyberCore::DisplayRefreshMonitor& displayRefreshMonitor() const;
 
     void frameComplete();
     void targetRefreshRateDidChange(unsigned);
@@ -79,7 +79,7 @@ public:
     void resume();
 
 private:
-    ThreadedCompositor(Client&, ThreadedDisplayRefreshMonitor::Client&, WebCore::PlatformDisplayID, const WebCore::IntSize&, float scaleFactor, WebCore::TextureMapper::PaintFlags);
+    ThreadedCompositor(Client&, ThreadedDisplayRefreshMonitor::Client&, CyberCore::PlatformDisplayID, const CyberCore::IntSize&, float scaleFactor, CyberCore::TextureMapper::PaintFlags);
 
     // CoordinatedGraphicsSceneClient
     void updateViewport() override;
@@ -91,18 +91,18 @@ private:
 
     Client& m_client;
     RefPtr<CoordinatedGraphicsScene> m_scene;
-    std::unique_ptr<WebCore::GLContext> m_context;
+    std::unique_ptr<CyberCore::GLContext> m_context;
 
     uintptr_t m_nativeSurfaceHandle;
-    WebCore::TextureMapper::PaintFlags m_paintFlags { 0 };
+    CyberCore::TextureMapper::PaintFlags m_paintFlags { 0 };
     unsigned m_suspendedCount { 0 };
 
     std::unique_ptr<CompositingRunLoop> m_compositingRunLoop;
 
     struct {
         Lock lock;
-        WebCore::IntSize viewportSize;
-        WebCore::IntPoint scrollPosition;
+        CyberCore::IntSize viewportSize;
+        CyberCore::IntPoint scrollPosition;
         float scaleFactor { 1 };
         bool needsResize { false };
         Vector<RefPtr<Nicosia::Scene>> states;

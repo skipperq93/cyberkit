@@ -32,7 +32,7 @@
 
 OBJC_CLASS UITraitCollection;
 
-namespace WebCore {
+namespace CyberCore {
 
 // This class automatically saves and restores the current UITraitCollection for
 // functions which call out into UIKit and rely on the current UITraitCollection being set

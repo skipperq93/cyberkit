@@ -29,7 +29,7 @@
 #include "FourCC.h"
 #include <wtf/Algorithms.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 bool contentTypeMeetsContainerAndCodecTypeRequirements(const ContentType& type, const std::optional<Vector<String>>& allowedMediaContainerTypes, const std::optional<Vector<String>>& allowedMediaCodecTypes)
 {

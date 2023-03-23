@@ -29,7 +29,7 @@
 
 #include <optional>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct VideoFrameMetadata {
     double presentationTime { 0 };

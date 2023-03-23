@@ -32,7 +32,7 @@
 #include "TextureMapperGL.h"
 #include "TextureMapperGLHeaders.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class TextureMapper;
 class TextureMapperGL;

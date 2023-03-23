@@ -38,7 +38,7 @@ namespace WTF {
 class TextStream;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class LayoutPoint;
 
@@ -215,5 +215,5 @@ inline FloatSize roundSizeToDevicePixels(const LayoutSize& size, float pixelSnap
 
 WEBCORE_EXPORT WTF::TextStream& operator<<(WTF::TextStream&, const LayoutSize&);
 
-} // namespace WebCore
+} // namespace CyberCore
 

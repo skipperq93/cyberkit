@@ -23,7 +23,7 @@
 
 #include "SVGTextContentElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGTextPositioningElement : public SVGTextContentElement {
     WTF_MAKE_ISO_ALLOCATED(SVGTextPositioningElement);
@@ -61,4 +61,4 @@ private:
     Ref<SVGAnimatedNumberList> m_rotate { SVGAnimatedNumberList::create(this) };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -32,7 +32,7 @@
 #include <wtf/NeverDestroyed.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 void EmptyGamepadProvider::startMonitoringGamepads(GamepadProviderClient&)
 {

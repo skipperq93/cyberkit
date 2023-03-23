@@ -30,7 +30,7 @@
 
 #import "WebNSPrintOperationExtras.h"
 
-@implementation NSPrintOperation (WebKitExtras)
+@implementation NSPrintOperation (CyberKitExtras)
 
 - (float)_web_pageSetupScaleFactor
 {

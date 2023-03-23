@@ -39,7 +39,7 @@ NetworkResourceLoadMap::~NetworkResourceLoadMap()
     clear();
 }
 
-NetworkResourceLoadMap::MapType::AddResult NetworkResourceLoadMap::add(WebCore::ResourceLoaderIdentifier identifier, Ref<NetworkResourceLoader>&& loader)
+NetworkResourceLoadMap::MapType::AddResult NetworkResourceLoadMap::add(CyberCore::ResourceLoaderIdentifier identifier, Ref<NetworkResourceLoader>&& loader)
 {
     ASSERT(!m_loaders.contains(identifier));
     bool hasUpload = loader->originalRequest().hasUpload();
@@ -49,7 +49,7 @@ NetworkResourceLoadMap::MapType::AddResult NetworkResourceLoadMap::add(WebCore::
     return result;
 }
 
-bool NetworkResourceLoadMap::remove(WebCore::ResourceLoaderIdentifier identifier)
+bool NetworkResourceLoadMap::remove(CyberCore::ResourceLoaderIdentifier identifier)
 {
     return !!take(identifier);
 }
@@ -60,7 +60,7 @@ void NetworkResourceLoadMap::clear()
     setHasUpload(false);
 }
 
-RefPtr<NetworkResourceLoader> NetworkResourceLoadMap::take(WebCore::ResourceLoaderIdentifier identifier)
+RefPtr<NetworkResourceLoader> NetworkResourceLoadMap::take(CyberCore::ResourceLoaderIdentifier identifier)
 {
     auto loader = m_loaders.take(identifier);
     if (!loader)
@@ -72,7 +72,7 @@ RefPtr<NetworkResourceLoader> NetworkResourceLoadMap::take(WebCore::ResourceLoad
     return loader;
 }
 
-NetworkResourceLoader* NetworkResourceLoadMap::get(WebCore::ResourceLoaderIdentifier identifier) const
+NetworkResourceLoader* NetworkResourceLoadMap::get(CyberCore::ResourceLoaderIdentifier identifier) const
 {
     return m_loaders.get(identifier);
 }

@@ -36,7 +36,7 @@
 #if PLATFORM(IOS_FAMILY)
 #import "WKGraphics.h"
 #import "WAKWindow.h"
-#import "WebCoreThread.h"
+#import "CyberCoreThread.h"
 #endif
 
 #if PLATFORM(IOS_FAMILY)
@@ -49,11 +49,11 @@
 
 - (void)drawInContext:(CGContextRef)context
 {
-    auto layer = WebCore::PlatformCALayer::platformCALayerForLayer((__bridge void*)self);
+    auto layer = CyberCore::PlatformCALayer::platformCALayerForLayer((__bridge void*)self);
     if (layer) {
-        WebCore::GraphicsContextCG graphicsContext(context);
-        WebCore::PlatformCALayer::RepaintRectList rectsToPaint = WebCore::PlatformCALayer::collectRectsToPaint(graphicsContext, layer.get());
-        WebCore::PlatformCALayer::drawLayerContents(graphicsContext, layer.get(), rectsToPaint, self.isRenderingInContext ? WebCore::GraphicsLayerPaintSnapshotting : WebCore::GraphicsLayerPaintNormal);
+        CyberCore::GraphicsContextCG graphicsContext(context);
+        CyberCore::PlatformCALayer::RepaintRectList rectsToPaint = CyberCore::PlatformCALayer::collectRectsToPaint(graphicsContext, layer.get());
+        CyberCore::PlatformCALayer::drawLayerContents(graphicsContext, layer.get(), rectsToPaint, self.isRenderingInContext ? CyberCore::GraphicsLayerPaintSnapshotting : CyberCore::GraphicsLayerPaintNormal);
     }
 }
 
@@ -80,7 +80,7 @@
 
 - (void)setNeedsDisplay
 {
-    auto layer = WebCore::PlatformCALayer::platformCALayerForLayer((__bridge void*)self);
+    auto layer = CyberCore::PlatformCALayer::platformCALayerForLayer((__bridge void*)self);
     if (!layer || !layer->owner())
         return;
     if (!layer->owner()->platformCALayerDrawsContent() && !layer->owner()->platformCALayerDelegatesDisplay(layer.get()))
@@ -90,13 +90,13 @@
 
 - (void)setNeedsDisplayInRect:(CGRect)dirtyRect
 {
-    auto platformLayer = WebCore::PlatformCALayer::platformCALayerForLayer((__bridge void*)self);
+    auto platformLayer = CyberCore::PlatformCALayer::platformCALayerForLayer((__bridge void*)self);
     if (!platformLayer) {
         [super setNeedsDisplayInRect:dirtyRect];
         return;
     }
 
-    if (WebCore::PlatformCALayerClient* layerOwner = platformLayer->owner()) {
+    if (CyberCore::PlatformCALayerClient* layerOwner = platformLayer->owner()) {
         if (layerOwner->platformCALayerDrawsContent() || layerOwner->platformCALayerDelegatesDisplay(platformLayer.get())) {
             [super setNeedsDisplayInRect:dirtyRect];
 
@@ -116,8 +116,8 @@
         WebThreadLock();
 #endif
     ASSERT(isMainThread());
-    auto layer = WebCore::PlatformCALayer::platformCALayerForLayer((__bridge void*)self);
-    WebCore::PlatformCALayerClient* owner = layer ? layer->owner() : nullptr;
+    auto layer = CyberCore::PlatformCALayer::platformCALayerForLayer((__bridge void*)self);
+    CyberCore::PlatformCALayerClient* owner = layer ? layer->owner() : nullptr;
     if (owner && owner->platformCALayerDelegatesDisplay(layer.get()))
         owner->platformCALayerLayerDisplay(layer.get());
     else
@@ -133,14 +133,14 @@
         WebThreadLock();
 #endif
     ASSERT(isMainThread());
-    auto layer = WebCore::PlatformCALayer::platformCALayerForLayer((__bridge void*)self);
+    auto layer = CyberCore::PlatformCALayer::platformCALayerForLayer((__bridge void*)self);
     if (layer && layer->owner()) {
-        WebCore::GraphicsContextCG graphicsContext(context);
+        CyberCore::GraphicsContextCG graphicsContext(context);
         graphicsContext.setIsCALayerContext(true);
         graphicsContext.setIsAcceleratedContext(layer->acceleratesDrawing());
 
-        WebCore::FloatRect clipBounds = CGContextGetClipBoundingBox(context);
-        layer->owner()->platformCALayerPaintContents(layer.get(), graphicsContext, clipBounds, self.isRenderingInContext ? WebCore::GraphicsLayerPaintSnapshotting : WebCore::GraphicsLayerPaintNormal);
+        CyberCore::FloatRect clipBounds = CGContextGetClipBoundingBox(context);
+        layer->owner()->platformCALayerPaintContents(layer.get(), graphicsContext, clipBounds, self.isRenderingInContext ? CyberCore::GraphicsLayerPaintSnapshotting : CyberCore::GraphicsLayerPaintNormal);
     }
 }
 

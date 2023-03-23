@@ -36,10 +36,10 @@
 #include <wtf/RunLoop.h>
 #include <wtf/WorkQueue.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 ViewUpdateDispatcher::ViewUpdateDispatcher()
-    : m_queue(WorkQueue::create("com.apple.WebKit.ViewUpdateDispatcher"))
+    : m_queue(WorkQueue::create("com.apple.CyberKit.ViewUpdateDispatcher"))
 {
 }
 
@@ -53,7 +53,7 @@ void ViewUpdateDispatcher::initializeConnection(IPC::Connection& connection)
     connection.addMessageReceiver(m_queue.get(), *this, Messages::ViewUpdateDispatcher::messageReceiverName());
 }
 
-void ViewUpdateDispatcher::visibleContentRectUpdate(WebCore::PageIdentifier pageID, const VisibleContentRectUpdateInfo& visibleContentRectUpdateInfo)
+void ViewUpdateDispatcher::visibleContentRectUpdate(CyberCore::PageIdentifier pageID, const VisibleContentRectUpdateInfo& visibleContentRectUpdateInfo)
 {
     bool updateListWasEmpty;
     {
@@ -74,7 +74,7 @@ void ViewUpdateDispatcher::visibleContentRectUpdate(WebCore::PageIdentifier page
 
 void ViewUpdateDispatcher::dispatchVisibleContentRectUpdate()
 {
-    HashMap<WebCore::PageIdentifier, UniqueRef<UpdateData>> update;
+    HashMap<CyberCore::PageIdentifier, UniqueRef<UpdateData>> update;
     {
         Locker locker { m_latestUpdateLock };
         update = std::exchange(m_latestUpdate, { });
@@ -86,6 +86,6 @@ void ViewUpdateDispatcher::dispatchVisibleContentRectUpdate()
     }
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(UI_SIDE_COMPOSITING)

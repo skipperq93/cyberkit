@@ -34,7 +34,7 @@ namespace WTF {
 class PrintStream;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class WEBCORE_EXPORT PlatformTimeRanges {
     WTF_MAKE_FAST_ALLOCATED;
@@ -123,13 +123,13 @@ private:
     Vector<Range> m_ranges;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 template<typename> struct LogArgument;
 
-template<> struct LogArgument<WebCore::PlatformTimeRanges> {
-    static String toString(const WebCore::PlatformTimeRanges& platformTimeRanges) { return platformTimeRanges.toString(); }
+template<> struct LogArgument<CyberCore::PlatformTimeRanges> {
+    static String toString(const CyberCore::PlatformTimeRanges& platformTimeRanges) { return platformTimeRanges.toString(); }
 };
 
 } // namespace WTF

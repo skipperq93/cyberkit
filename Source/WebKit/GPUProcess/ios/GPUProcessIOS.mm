@@ -33,14 +33,14 @@
 #import "LayerHostingContext.h"
 #import "SandboxInitializationParameters.h"
 #import <CyberCore/NotImplemented.h>
-#import <CyberCore/WebCoreThreadSystemInterface.h>
+#import <CyberCore/CyberCoreThreadSystemInterface.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 void GPUProcess::initializeProcess(const AuxiliaryProcessInitializationParameters&)
 {
-    InitWebCoreThreadSystemInterface();
+    InitCyberCoreThreadSystemInterface();
 }
 
 void GPUProcess::initializeProcessName(const AuxiliaryProcessInitializationParameters&)

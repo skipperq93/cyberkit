@@ -22,11 +22,11 @@
 
 #include "markup.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 String XMLSerializer::serializeToString(Node& node)
 {
     return serializeFragment(node, SerializedNodes::SubtreeIncludingNode, nullptr, ResolveURLs::No, nullptr, SerializationSyntax::XML);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

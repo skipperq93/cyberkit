@@ -29,7 +29,7 @@
 #include "RenderText.h"
 #include <wtf/StdLibExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct BidiIsolatedRun {
     BidiIsolatedRun(RenderObject& object, unsigned position, RenderElement& root, BidiRun& runToReplace)
@@ -507,4 +507,4 @@ inline bool InlineBidiResolver::needsContinuePastEndInternal() const
     return m_current.renderer() == endOfLine.renderer();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

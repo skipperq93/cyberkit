@@ -36,7 +36,7 @@
 #include "PlatformScreen.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 static inline bool viewportArgumentValueIsValid(float value)
 {
@@ -759,4 +759,4 @@ void ViewportConfiguration::dump() const
 
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -30,9 +30,9 @@
 
 #import "ScrollingStateOverflowScrollProxyNode.h"
 #import "ScrollingStateTree.h"
-#import "WebCoreCALayerExtras.h"
+#import "CyberCoreCALayerExtras.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<ScrollingTreeOverflowScrollProxyNodeCocoa> ScrollingTreeOverflowScrollProxyNodeCocoa::create(ScrollingTree& scrollingTree, ScrollingNodeID nodeID)
 {
@@ -71,6 +71,6 @@ void ScrollingTreeOverflowScrollProxyNodeCocoa::applyLayerPositions()
 
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ASYNC_SCROLLING)

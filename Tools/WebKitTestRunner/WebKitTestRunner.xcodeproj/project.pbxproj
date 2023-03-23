@@ -103,7 +103,7 @@
 		41C5378E21F13414008B1FAD /* TestWebsiteDataStoreDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 41C5378D21F1333C008B1FAD /* TestWebsiteDataStoreDelegate.mm */; };
 		41D5B62622DD9D36000F4C4A /* FakeHelvetica-SingleExtendedCharacter.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 41D5B62522DD9D36000F4C4A /* FakeHelvetica-SingleExtendedCharacter.ttf */; };
 		4430AE191F82C4FD0099915A /* GeneratedTouchesDebugWindow.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4430AE171F82C4EE0099915A /* GeneratedTouchesDebugWindow.mm */; };
-		51058AD51D678820009A538C /* libWebCoreTestSupport.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 41230E16138C78BF00BCCFCA /* libWebCoreTestSupport.dylib */; };
+		51058AD51D678820009A538C /* libCyberCoreTestSupport.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 41230E16138C78BF00BCCFCA /* libCyberCoreTestSupport.dylib */; };
 		51058AD61D678825009A538C /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F5169CA1445222D00E0A9D7 /* WebKit.framework */; };
 		51998A082810FBD1009D68EB /* WebNotificationProviderCocoa.mm in Sources */ = {isa = PBXBuildFile; fileRef = 51998A072810FBD1009D68EB /* WebNotificationProviderCocoa.mm */; };
 		5641E2D014335E95008307E5 /* JSTextInputController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5641E2CE14335E95008307E5 /* JSTextInputController.cpp */; };
@@ -142,7 +142,7 @@
 		A18510421B9AE13E00744AEB /* TestInvocation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BCD7D2F711921278006DB7EE /* TestInvocation.cpp */; };
 		A18510431B9AE14500744AEB /* WebNotificationProvider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3164C8EF15D1ADA100EF1FE0 /* WebNotificationProvider.cpp */; };
 		A18510441B9AE14A00744AEB /* WorkQueueManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4429FC5E1627089600F66D8B /* WorkQueueManager.cpp */; };
-		A664BC7613A5F3A9009A7B25 /* libWebCoreTestSupport.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 41230E16138C78BF00BCCFCA /* libWebCoreTestSupport.dylib */; };
+		A664BC7613A5F3A9009A7B25 /* libCyberCoreTestSupport.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 41230E16138C78BF00BCCFCA /* libCyberCoreTestSupport.dylib */; };
 		BC14E4DB120E02D000826C0C /* GCController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BC14E4D9120E02D000826C0C /* GCController.cpp */; };
 		BC14E4EA120E03D800826C0C /* JSGCController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BC14E4E8120E03D800826C0C /* JSGCController.cpp */; };
 		BC25194011D15D8B002EBC01 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDA2B991191051F00C3BC47 /* JavaScriptCore.framework */; };
@@ -320,8 +320,8 @@
 		3148A0541E6F85B600D3B316 /* IOSLayoutTestCommunication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IOSLayoutTestCommunication.h; path = ../TestRunnerShared/IOSLayoutTestCommunication.h; sourceTree = "<group>"; };
 		3164C8EF15D1ADA100EF1FE0 /* WebNotificationProvider.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WebNotificationProvider.cpp; sourceTree = "<group>"; };
 		378D442213346D00006A777B /* config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
-		41230E16138C78BF00BCCFCA /* libWebCoreTestSupport.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libWebCoreTestSupport.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		4181731B138AD39D0057AAA4 /* WebCoreTestSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WebCoreTestSupport.h; path = WebCoreTestSupport/WebCoreTestSupport.h; sourceTree = BUILT_PRODUCTS_DIR; };
+		41230E16138C78BF00BCCFCA /* libCyberCoreTestSupport.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libCyberCoreTestSupport.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		4181731B138AD39D0057AAA4 /* CyberCoreTestSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CyberCoreTestSupport.h; path = CyberCoreTestSupport/CyberCoreTestSupport.h; sourceTree = BUILT_PRODUCTS_DIR; };
 		41C5378C21F1333C008B1FAD /* TestWebsiteDataStoreDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestWebsiteDataStoreDelegate.h; sourceTree = "<group>"; };
 		41C5378D21F1333C008B1FAD /* TestWebsiteDataStoreDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TestWebsiteDataStoreDelegate.mm; sourceTree = "<group>"; };
 		41D5B62522DD9D36000F4C4A /* FakeHelvetica-SingleExtendedCharacter.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FakeHelvetica-SingleExtendedCharacter.ttf"; path = "fonts/FakeHelvetica-SingleExtendedCharacter.ttf"; sourceTree = "<group>"; };
@@ -465,7 +465,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				51058AD51D678820009A538C /* libWebCoreTestSupport.dylib in Frameworks */,
+				51058AD51D678820009A538C /* libCyberCoreTestSupport.dylib in Frameworks */,
 				57A0062E22976EEB00AD08BD /* Security.framework in Frameworks */,
 				51058AD61D678825009A538C /* WebKit.framework in Frameworks */,
 			);
@@ -483,7 +483,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC25194011D15D8B002EBC01 /* JavaScriptCore.framework in Frameworks */,
-				A664BC7613A5F3A9009A7B25 /* libWebCoreTestSupport.dylib in Frameworks */,
+				A664BC7613A5F3A9009A7B25 /* libCyberCoreTestSupport.dylib in Frameworks */,
 				0F5169CC1445222D00E0A9D7 /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -553,8 +553,8 @@
 				E1BA671D1742DA5A00C20251 /* Carbon.framework */,
 				BC7934A411906584005EA8E2 /* Cocoa.framework */,
 				BCDA2B991191051F00C3BC47 /* JavaScriptCore.framework */,
-				41230E16138C78BF00BCCFCA /* libWebCoreTestSupport.dylib */,
-				4181731B138AD39D0057AAA4 /* WebCoreTestSupport.h */,
+				41230E16138C78BF00BCCFCA /* libCyberCoreTestSupport.dylib */,
+				4181731B138AD39D0057AAA4 /* CyberCoreTestSupport.h */,
 				0F5169CA1445222D00E0A9D7 /* WebKit.framework */,
 			);
 			name = "External Frameworks and Libraries";

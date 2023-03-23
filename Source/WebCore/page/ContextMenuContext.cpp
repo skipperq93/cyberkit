@@ -31,7 +31,7 @@
 
 #if ENABLE(CONTEXT_MENUS)
 
-namespace WebCore {
+namespace CyberCore {
 
 ContextMenuContext::ContextMenuContext() = default;
 ContextMenuContext::~ContextMenuContext() = default;
@@ -48,6 +48,6 @@ ContextMenuContext::ContextMenuContext(Type type, const HitTestResult& hitTestRe
 {
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(CONTEXT_MENUS)

@@ -40,7 +40,7 @@
 typedef struct CGPDFDocument *CGPDFDocumentRef;
 OBJC_CLASS PDFDocument;
 
-namespace WebCore {
+namespace CyberCore {
 
 class PDFDocumentImage final : public Image {
     friend CachedSubimage;
@@ -108,7 +108,7 @@ private:
     unsigned m_cachedSubimageDrawCountForTesting { 0 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_IMAGE(PDFDocumentImage)
 

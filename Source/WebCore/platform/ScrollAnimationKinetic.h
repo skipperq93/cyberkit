@@ -29,7 +29,7 @@
 #include "FloatPoint.h"
 #include "ScrollAnimation.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class PlatformWheelEvent;
 
@@ -86,6 +86,6 @@ private:
     FloatSize m_initialVelocity;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_SCROLL_ANIMATION(WebCore::ScrollAnimationKinetic, type() == WebCore::ScrollAnimation::Type::Kinetic)
+SPECIALIZE_TYPE_TRAITS_SCROLL_ANIMATION(CyberCore::ScrollAnimationKinetic, type() == CyberCore::ScrollAnimation::Type::Kinetic)

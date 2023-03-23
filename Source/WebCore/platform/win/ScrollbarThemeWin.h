@@ -28,7 +28,7 @@
 
 #include "ScrollbarThemeComposite.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScrollbarThemeWin : public ScrollbarThemeComposite {
 public:

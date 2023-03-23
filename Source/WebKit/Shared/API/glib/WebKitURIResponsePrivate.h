@@ -29,7 +29,7 @@
 #include "WebKitURIResponse.h"
 #include <CyberCore/ResourceResponse.h>
 
-WebKitURIResponse* webkitURIResponseCreateForResourceResponse(const WebCore::ResourceResponse&);
-const WebCore::ResourceResponse& webkitURIResponseGetResourceResponse(WebKitURIResponse*);
+WebKitURIResponse* webkitURIResponseCreateForResourceResponse(const CyberCore::ResourceResponse&);
+const CyberCore::ResourceResponse& webkitURIResponseGetResourceResponse(WebKitURIResponse*);
 
 #endif // WebKitURIResponsePrivate_h

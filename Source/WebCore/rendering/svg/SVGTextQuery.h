@@ -23,7 +23,7 @@
 #include "SVGTextFragment.h"
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class LegacyInlineFlowBox;
 class RenderObject;
@@ -67,4 +67,4 @@ private:
     Vector<SVGInlineTextBox*> m_textBoxes;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

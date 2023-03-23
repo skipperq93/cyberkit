@@ -17,22 +17,22 @@
  */
 
 #include "config.h"
-#include "WebKitDOMPrivate.h"
+#include "CyberKitDOMPrivate.h"
 
-#include "WebKitDOMDocumentPrivate.h"
-#include "WebKitDOMElementPrivate.h"
-#include "WebKitDOMNodePrivate.h"
+#include "CyberKitDOMDocumentPrivate.h"
+#include "CyberKitDOMElementPrivate.h"
+#include "CyberKitDOMNodePrivate.h"
 #include <CyberCore/HTMLFormElement.h>
 
 #if PLATFORM(GTK)
-#include "WebKitDOMPrivateGtk.h"
+#include "CyberKitDOMPrivateGtk.h"
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
-WebKitDOMNode* wrap(WebCore::Node* node)
+CyberKitDOMNode* wrap(CyberCore::Node* node)
 {
     ASSERT(node);
     ASSERT(node->nodeType());
@@ -43,17 +43,17 @@ WebKitDOMNode* wrap(WebCore::Node* node)
 #endif
 
     switch (node->nodeType()) {
-    case WebCore::Node::ELEMENT_NODE:
-        return WEBKIT_DOM_NODE(wrapElement(downcast<WebCore::Element>(node)));
-    case WebCore::Node::DOCUMENT_NODE:
-        return WEBKIT_DOM_NODE(wrapDocument(downcast<WebCore::Document>(node)));
-    case WebCore::Node::ATTRIBUTE_NODE:
-    case WebCore::Node::TEXT_NODE:
-    case WebCore::Node::CDATA_SECTION_NODE:
-    case WebCore::Node::PROCESSING_INSTRUCTION_NODE:
-    case WebCore::Node::COMMENT_NODE:
-    case WebCore::Node::DOCUMENT_TYPE_NODE:
-    case WebCore::Node::DOCUMENT_FRAGMENT_NODE:
+    case CyberCore::Node::ELEMENT_NODE:
+        return WEBKIT_DOM_NODE(wrapElement(downcast<CyberCore::Element>(node)));
+    case CyberCore::Node::DOCUMENT_NODE:
+        return WEBKIT_DOM_NODE(wrapDocument(downcast<CyberCore::Document>(node)));
+    case CyberCore::Node::ATTRIBUTE_NODE:
+    case CyberCore::Node::TEXT_NODE:
+    case CyberCore::Node::CDATA_SECTION_NODE:
+    case CyberCore::Node::PROCESSING_INSTRUCTION_NODE:
+    case CyberCore::Node::COMMENT_NODE:
+    case CyberCore::Node::DOCUMENT_TYPE_NODE:
+    case CyberCore::Node::DOCUMENT_FRAGMENT_NODE:
         break;
     }
 
@@ -62,4 +62,4 @@ WebKitDOMNode* wrap(WebCore::Node* node)
 
 G_GNUC_END_IGNORE_DEPRECATIONS;
 
-} // namespace WebKit
+} // namespace CyberKit

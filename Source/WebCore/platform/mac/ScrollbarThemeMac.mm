@@ -49,7 +49,7 @@
 
 // FIXME: There are repainting problems due to Aqua scroll bar buttons' visual overflow.
 
-namespace WebCore {
+namespace CyberCore {
 
 using ScrollbarToScrollerImpMap = HashMap<Scrollbar*, RetainPtr<NSScrollerImp>>;
 
@@ -59,12 +59,12 @@ static ScrollbarToScrollerImpMap& scrollbarMap()
     return instances;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
-using WebCore::ScrollbarTheme;
-using WebCore::ScrollbarThemeMac;
-using WebCore::scrollbarMap;
-using WebCore::ScrollbarToScrollerImpMap;
+using CyberCore::ScrollbarTheme;
+using CyberCore::ScrollbarThemeMac;
+using CyberCore::scrollbarMap;
+using CyberCore::ScrollbarToScrollerImpMap;
 
 @interface NSColor (WebNSColorDetails)
 + (NSImage *)_linenPatternImage;
@@ -119,7 +119,7 @@ using WebCore::ScrollbarToScrollerImpMap;
 
 @end
 
-namespace WebCore {
+namespace CyberCore {
 
 ScrollbarTheme& ScrollbarTheme::nativeTheme()
 {
@@ -596,7 +596,7 @@ void ScrollbarThemeMac::setUpOverhangAreaBackground(CALayer *layer, const Color&
 {
     static CGColorRef cachedLinenBackgroundColor = linenBackgroundColor().leakRef();
     // We operate on the CALayer directly here, since GraphicsLayer doesn't have the concept
-    // of pattern images, and we know that WebCore won't touch this layer.
+    // of pattern images, and we know that CyberCore won't touch this layer.
     layer.backgroundColor = customBackgroundColor.isValid() ? cachedCGColor(customBackgroundColor).get() : cachedLinenBackgroundColor;
 }
 
@@ -636,11 +636,11 @@ void ScrollbarThemeMac::setUpOverhangAreasLayerContents(GraphicsLayer* graphicsL
 void ScrollbarThemeMac::setUpContentShadowLayer(GraphicsLayer* graphicsLayer)
 {
     // We operate on the CALayer directly here, since GraphicsLayer doesn't have the concept
-    // of shadows, and we know that WebCore won't touch this layer.
+    // of shadows, and we know that CyberCore won't touch this layer.
     setUpOverhangAreaShadow(graphicsLayer->platformLayer());
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(MAC)

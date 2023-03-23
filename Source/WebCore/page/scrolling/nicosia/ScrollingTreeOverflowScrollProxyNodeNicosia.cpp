@@ -34,7 +34,7 @@
 #include "ScrollingStateOverflowScrollProxyNode.h"
 #include "ScrollingStateTree.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<ScrollingTreeOverflowScrollProxyNodeNicosia> ScrollingTreeOverflowScrollProxyNodeNicosia::create(ScrollingTree& scrollingTree, ScrollingNodeID nodeID)
 {
@@ -71,6 +71,6 @@ void ScrollingTreeOverflowScrollProxyNodeNicosia::applyLayerPositions()
         });
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ASYNC_SCROLLING) && USE(NICOSIA)

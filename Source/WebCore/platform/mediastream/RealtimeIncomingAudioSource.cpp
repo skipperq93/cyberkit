@@ -37,7 +37,7 @@
 #include "LibWebRTCAudioModule.h"
 #include "Logging.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 RealtimeIncomingAudioSource::RealtimeIncomingAudioSource(rtc::scoped_refptr<webrtc::AudioTrackInterface>&& audioTrack, String&& audioTrackId)
     : RealtimeMediaSource(CaptureDevice { WTFMove(audioTrackId), CaptureDevice::DeviceType::Microphone, "remote audio"_s })

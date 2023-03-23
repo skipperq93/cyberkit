@@ -29,7 +29,7 @@
 #include <CyberCore/SQLiteDatabaseTracker.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 WebSQLiteDatabaseTracker::WebSQLiteDatabaseTracker(IsHoldingLockedFilesHandler&& isHoldingLockedFilesHandler)
     : m_isHoldingLockedFilesHandler(WTFMove(isHoldingLockedFilesHandler))

@@ -36,7 +36,7 @@
 #include <wtf/MemoryPressureHandler.h>
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class LegacyInlineTextBox;
 
@@ -128,10 +128,10 @@ private:
     HashSet<GlyphDisplayListCacheEntry*> m_entries;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct DefaultHash<WebCore::GlyphDisplayListCacheEntry*> : WebCore::GlyphDisplayListCacheEntryHash { };
+template<> struct DefaultHash<CyberCore::GlyphDisplayListCacheEntry*> : CyberCore::GlyphDisplayListCacheEntryHash { };
 
 } // namespace WTF

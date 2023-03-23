@@ -40,7 +40,7 @@
 + (void)endBackgroundTask;
 @end
 
-namespace WebCore {
+namespace CyberCore {
 
 const Seconds hysteresisDuration { 2_s };
 
@@ -116,7 +116,7 @@ static NSUInteger getTransactionBackgroundTaskIdentifier() WTF_REQUIRES_LOCK(tra
         return;
 
     setTransactionBackgroundTaskIdentifier([backgroundTaskController startBackgroundTaskWithExpirationHandler:(^ {
-        WebCore::DatabaseTracker::singleton().closeAllDatabases(WebCore::CurrentQueryBehavior::Interrupt);
+        CyberCore::DatabaseTracker::singleton().closeAllDatabases(CyberCore::CurrentQueryBehavior::Interrupt);
         [self endBackgroundTask];
     })]);
 }

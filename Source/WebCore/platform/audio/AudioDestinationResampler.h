@@ -32,7 +32,7 @@
 #include <wtf/Lock.h>
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioBus;
 class MultiChannelResampler;
@@ -86,6 +86,6 @@ private:
     std::atomic<bool> m_isPlaying;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

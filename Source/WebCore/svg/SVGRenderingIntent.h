@@ -21,7 +21,7 @@
 
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGRenderingIntent final : public RefCounted<SVGRenderingIntent> {
 public:
@@ -38,4 +38,4 @@ private:
     SVGRenderingIntent() { }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

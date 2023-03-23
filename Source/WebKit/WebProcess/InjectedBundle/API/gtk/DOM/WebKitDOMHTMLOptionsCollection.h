@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -21,28 +21,28 @@
 #error "Only <webkitdom/webkitdom.h> can be included directly."
 #endif
 
-#ifndef WebKitDOMHTMLOptionsCollection_h
-#define WebKitDOMHTMLOptionsCollection_h
+#ifndef CyberKitDOMHTMLOptionsCollection_h
+#define CyberKitDOMHTMLOptionsCollection_h
 
 #include <glib-object.h>
-#include <webkitdom/WebKitDOMHTMLCollection.h>
+#include <webkitdom/CyberKitDOMHTMLCollection.h>
 #include <webkitdom/webkitdomdefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_DOM_TYPE_HTML_OPTIONS_COLLECTION            (webkit_dom_html_options_collection_get_type())
-#define WEBKIT_DOM_HTML_OPTIONS_COLLECTION(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_HTML_OPTIONS_COLLECTION, WebKitDOMHTMLOptionsCollection))
-#define WEBKIT_DOM_HTML_OPTIONS_COLLECTION_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_HTML_OPTIONS_COLLECTION, WebKitDOMHTMLOptionsCollectionClass)
+#define WEBKIT_DOM_HTML_OPTIONS_COLLECTION(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_HTML_OPTIONS_COLLECTION, CyberKitDOMHTMLOptionsCollection))
+#define WEBKIT_DOM_HTML_OPTIONS_COLLECTION_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_HTML_OPTIONS_COLLECTION, CyberKitDOMHTMLOptionsCollectionClass)
 #define WEBKIT_DOM_IS_HTML_OPTIONS_COLLECTION(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_DOM_TYPE_HTML_OPTIONS_COLLECTION))
 #define WEBKIT_DOM_IS_HTML_OPTIONS_COLLECTION_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_DOM_TYPE_HTML_OPTIONS_COLLECTION))
-#define WEBKIT_DOM_HTML_OPTIONS_COLLECTION_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_HTML_OPTIONS_COLLECTION, WebKitDOMHTMLOptionsCollectionClass))
+#define WEBKIT_DOM_HTML_OPTIONS_COLLECTION_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_HTML_OPTIONS_COLLECTION, CyberKitDOMHTMLOptionsCollectionClass))
 
-struct _WebKitDOMHTMLOptionsCollection {
-    WebKitDOMHTMLCollection parent_instance;
+struct _CyberKitDOMHTMLOptionsCollection {
+    CyberKitDOMHTMLCollection parent_instance;
 };
 
-struct _WebKitDOMHTMLOptionsCollectionClass {
-    WebKitDOMHTMLCollectionClass parent_class;
+struct _CyberKitDOMHTMLOptionsCollectionClass {
+    CyberKitDOMHTMLCollectionClass parent_class;
 };
 
 WEBKIT_DEPRECATED GType
@@ -50,49 +50,49 @@ webkit_dom_html_options_collection_get_type(void);
 
 /**
  * webkit_dom_html_options_collection_named_item:
- * @self: A #WebKitDOMHTMLOptionsCollection
+ * @self: A #CyberKitDOMHTMLOptionsCollection
  * @name: A #gchar
  *
- * Returns: (transfer none): A #WebKitDOMNode
+ * Returns: (transfer none): A #CyberKitDOMNode
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMNode*
-webkit_dom_html_options_collection_named_item(WebKitDOMHTMLOptionsCollection* self, const gchar* name);
+WEBKIT_DEPRECATED CyberKitDOMNode*
+webkit_dom_html_options_collection_named_item(CyberKitDOMHTMLOptionsCollection* self, const gchar* name);
 
 /**
  * webkit_dom_html_options_collection_get_selected_index:
- * @self: A #WebKitDOMHTMLOptionsCollection
+ * @self: A #CyberKitDOMHTMLOptionsCollection
  *
  * Returns: A #glong
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED glong
-webkit_dom_html_options_collection_get_selected_index(WebKitDOMHTMLOptionsCollection* self);
+webkit_dom_html_options_collection_get_selected_index(CyberKitDOMHTMLOptionsCollection* self);
 
 /**
  * webkit_dom_html_options_collection_set_selected_index:
- * @self: A #WebKitDOMHTMLOptionsCollection
+ * @self: A #CyberKitDOMHTMLOptionsCollection
  * @value: A #glong
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_options_collection_set_selected_index(WebKitDOMHTMLOptionsCollection* self, glong value);
+webkit_dom_html_options_collection_set_selected_index(CyberKitDOMHTMLOptionsCollection* self, glong value);
 
 /**
  * webkit_dom_html_options_collection_get_length:
- * @self: A #WebKitDOMHTMLOptionsCollection
+ * @self: A #CyberKitDOMHTMLOptionsCollection
  *
  * Returns: A #gulong
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gulong
-webkit_dom_html_options_collection_get_length(WebKitDOMHTMLOptionsCollection* self);
+webkit_dom_html_options_collection_get_length(CyberKitDOMHTMLOptionsCollection* self);
 
 G_END_DECLS
 
-#endif /* WebKitDOMHTMLOptionsCollection_h */
+#endif /* CyberKitDOMHTMLOptionsCollection_h */

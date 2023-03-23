@@ -135,7 +135,7 @@ static bool didReportException = false;
 
 namespace TestWebKitAPI {
 
-TEST(WebKitLegacy, DidCreateJavaScriptContextSanity1)
+TEST(CyberKitLegacy, DidCreateJavaScriptContextSanity1)
 {
     didFinishLoad = false;
     @autoreleasepool {
@@ -161,7 +161,7 @@ TEST(WebKitLegacy, DidCreateJavaScriptContextSanity1)
     }
 }
 
-TEST(WebKitLegacy, DidCreateJavaScriptContextSanity2)
+TEST(CyberKitLegacy, DidCreateJavaScriptContextSanity2)
 {
     didCallWindowCallback = false;
     @autoreleasepool {
@@ -184,7 +184,7 @@ TEST(WebKitLegacy, DidCreateJavaScriptContextSanity2)
     }
 }
 
-TEST(WebKitLegacy, DidCreateJavaScriptContextCallJSFunctionFromObjCCallbackTest)
+TEST(CyberKitLegacy, DidCreateJavaScriptContextCallJSFunctionFromObjCCallbackTest)
 {
     @autoreleasepool {
         RetainPtr<WebView> webView = adoptNS([[WebView alloc] initWithFrame:NSMakeRect(0, 0, 120, 200) frameName:nil groupName:nil]);
@@ -208,7 +208,7 @@ TEST(WebKitLegacy, DidCreateJavaScriptContextCallJSFunctionFromObjCCallbackTest)
     }
 }
 
-TEST(WebKitLegacy, DidCreateJavaScriptContextAddCustomPropertiesFromJSTest)
+TEST(CyberKitLegacy, DidCreateJavaScriptContextAddCustomPropertiesFromJSTest)
 {
     didFindMyCustomProperty = false;
     @autoreleasepool {
@@ -234,7 +234,7 @@ TEST(WebKitLegacy, DidCreateJavaScriptContextAddCustomPropertiesFromJSTest)
     }
 }
 
-TEST(WebKitLegacy, DidCreateJavaScriptContextAddCustomPropertiesFromObjCTest)
+TEST(CyberKitLegacy, DidCreateJavaScriptContextAddCustomPropertiesFromObjCTest)
 {
     didFindMyCustomProperty = false;
     @autoreleasepool {
@@ -262,7 +262,7 @@ TEST(WebKitLegacy, DidCreateJavaScriptContextAddCustomPropertiesFromObjCTest)
     }
 }
 
-TEST(WebKitLegacy, DidCreateJavaScriptContextBackForwardCacheTest)
+TEST(CyberKitLegacy, DidCreateJavaScriptContextBackForwardCacheTest)
 {
     didInsertMyCustomProperty = false;
     didFindMyCustomProperty = false;
@@ -305,7 +305,7 @@ TEST(WebKitLegacy, DidCreateJavaScriptContextBackForwardCacheTest)
     }
 }
 
-TEST(WebKitLegacy, ReportExceptionTest)
+TEST(CyberKitLegacy, ReportExceptionTest)
 {
     didReportException = false;
     @autoreleasepool {

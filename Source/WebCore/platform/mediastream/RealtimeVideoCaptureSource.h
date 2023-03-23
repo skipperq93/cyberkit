@@ -33,7 +33,7 @@
 #include <wtf/Lock.h>
 #include <wtf/RunLoop.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ImageTransferSessionVT;
 
@@ -107,13 +107,13 @@ struct SizeAndFrameRate {
     Ref<JSON::Object> toJSONObject() const;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 template<typename Type> struct LogArgument;
 template <>
-struct LogArgument<WebCore::SizeAndFrameRate> {
-    static String toString(const WebCore::SizeAndFrameRate& size)
+struct LogArgument<CyberCore::SizeAndFrameRate> {
+    static String toString(const CyberCore::SizeAndFrameRate& size)
     {
         return size.toJSONString();
     }

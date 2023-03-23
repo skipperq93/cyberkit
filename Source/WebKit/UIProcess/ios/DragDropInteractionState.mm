@@ -36,7 +36,7 @@
 #import <wtf/cocoa/VectorCocoa.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 static UIDragItem *dragItemMatchingIdentifier(id <UIDragSession> session, NSInteger identifier)
 {
@@ -223,7 +223,7 @@ void DragDropInteractionState::prepareForDelayedDropPreview(UIDragItem *item, vo
     m_delayedItemPreviewProviders.append({ item, provider });
 }
 
-void DragDropInteractionState::deliverDelayedDropPreview(UIView *contentView, UIView *previewContainer, const WebCore::TextIndicatorData& indicator)
+void DragDropInteractionState::deliverDelayedDropPreview(UIView *contentView, UIView *previewContainer, const CyberCore::TextIndicatorData& indicator)
 {
     if (m_delayedItemPreviewProviders.isEmpty())
         return;
@@ -408,7 +408,7 @@ void DragDropInteractionState::updatePreviewsForActiveDragSources()
                 previewView.center = center;
                 auto parameters = adoptNS([[UIDragPreviewParameters alloc] initWithTextLineRects:@[ [NSValue valueWithCGRect:previewView.bounds] ]]);
                 [parameters setBackgroundColor:[UIColor colorWithDynamicProvider:[] (UITraitCollection *traitCollection) -> UIColor * {
-                    WebCore::LocalCurrentTraitCollection localCurrentTraitCollection(traitCollection);
+                    CyberCore::LocalCurrentTraitCollection localCurrentTraitCollection(traitCollection);
                     return [UIColor.systemBackgroundColor resolvedColorWithTraitCollection:UITraitCollection.currentTraitCollection];
                 }]];
                 return adoptNS([[UIDragPreview alloc] initWithView:previewView parameters:parameters.get()]).autorelease();

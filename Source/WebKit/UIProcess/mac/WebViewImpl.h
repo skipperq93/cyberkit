@@ -98,7 +98,7 @@ class Object;
 class PageConfiguration;
 }
 
-namespace WebCore {
+namespace CyberCore {
 class DestinationColorSpace;
 class IntPoint;
 struct DataDetectorElementInfo;
@@ -133,7 +133,7 @@ struct TranslationContextMenuInfo;
 - (void)_web_dismissContentRelativeChildWindowsWithAnimation:(BOOL)animate;
 - (void)_web_editorStateDidChange;
 
-- (void)_web_gestureEventWasNotHandledByWebCore:(NSEvent *)event;
+- (void)_web_gestureEventWasNotHandledByCyberCore:(NSEvent *)event;
 
 - (void)_web_didChangeContentSize:(NSSize)newSize;
 
@@ -150,7 +150,7 @@ struct TranslationContextMenuInfo;
 
 @end
 
-namespace WebCore {
+namespace CyberCore {
 struct DragItem;
 struct KeypressCommand;
 }
@@ -214,8 +214,8 @@ public:
     void viewDidEndLiveResize();
 
 #if ENABLE(UI_PROCESS_PDF_HUD)
-    void createPDFHUD(PDFPluginIdentifier, const WebCore::IntRect&);
-    void updatePDFHUDLocation(PDFPluginIdentifier, const WebCore::IntRect&);
+    void createPDFHUD(PDFPluginIdentifier, const CyberCore::IntRect&);
+    void updatePDFHUDLocation(PDFPluginIdentifier, const CyberCore::IntRect&);
     void removePDFHUD(PDFPluginIdentifier);
     void removeAllPDFHUDs();
     NSSet *pdfHUDs();
@@ -302,7 +302,7 @@ public:
     void viewDidUnhide();
     void activeSpaceDidChange();
 
-    void pageDidScroll(const WebCore::IntPoint&);
+    void pageDidScroll(const CyberCore::IntPoint&);
 
 #if HAVE(NSSCROLLVIEW_SEPARATOR_TRACKING_ADAPTER)
     NSRect scrollViewFrame();
@@ -312,7 +312,7 @@ public:
 
     NSView *hitTest(CGPoint);
 
-    WebCore::DestinationColorSpace colorSpace();
+    CyberCore::DestinationColorSpace colorSpace();
 
     void setUnderlayColor(NSColor *);
     RetainPtr<NSColor> underlayColor() const;
@@ -322,8 +322,8 @@ public:
     _WKRectEdge rubberBandingEnabled();
     void setRubberBandingEnabled(_WKRectEdge);
 
-    void setOverlayScrollbarStyle(std::optional<WebCore::ScrollbarOverlayStyle> scrollbarStyle);
-    std::optional<WebCore::ScrollbarOverlayStyle> overlayScrollbarStyle() const;
+    void setOverlayScrollbarStyle(std::optional<CyberCore::ScrollbarOverlayStyle> scrollbarStyle);
+    std::optional<CyberCore::ScrollbarOverlayStyle> overlayScrollbarStyle() const;
 
     void beginDeferringViewInWindowChanges();
     // FIXME: Merge these two?
@@ -416,8 +416,8 @@ public:
 
     void preferencesDidChange();
 
-    void setTextIndicator(WebCore::TextIndicator&, WebCore::TextIndicatorLifetime = WebCore::TextIndicatorLifetime::Permanent);
-    void clearTextIndicatorWithAnimation(WebCore::TextIndicatorDismissalAnimation);
+    void setTextIndicator(CyberCore::TextIndicator&, CyberCore::TextIndicatorLifetime = CyberCore::TextIndicatorLifetime::Permanent);
+    void clearTextIndicatorWithAnimation(CyberCore::TextIndicatorDismissalAnimation);
     void setTextIndicatorAnimationProgress(float);
     void dismissContentRelativeChildWindowsFromViewOnly();
     void dismissContentRelativeChildWindowsWithAnimation(bool);
@@ -476,7 +476,7 @@ public:
     void setInspectorAttachmentView(NSView *);
     NSView *inspectorAttachmentView();
     
-    void showShareSheet(const WebCore::ShareDataWithParsedURL&, WTF::CompletionHandler<void(bool)>&&, WKWebView *);
+    void showShareSheet(const CyberCore::ShareDataWithParsedURL&, WTF::CompletionHandler<void(bool)>&&, WKWebView *);
     void shareSheetDidDismiss(WKShareSheet *);
 
     _WKRemoteObjectRegistry *remoteObjectRegistry();
@@ -506,9 +506,9 @@ public:
 
     void startWindowDrag();
 
-    void startDrag(const WebCore::DragItem&, const ShareableBitmapHandle& image);
+    void startDrag(const CyberCore::DragItem&, const ShareableBitmapHandle& image);
     void setFileAndURLTypes(NSString *filename, NSString *extension, NSString *title, NSString *url, NSString *visibleURL, NSPasteboard *);
-    void setPromisedDataForImage(WebCore::Image*, NSString *filename, NSString *extension, NSString *title, NSString *url, NSString *visibleURL, WebCore::FragmentedSharedBuffer* archiveBuffer, NSString *pasteboardName, NSString *pasteboardOrigin);
+    void setPromisedDataForImage(CyberCore::Image*, NSString *filename, NSString *extension, NSString *title, NSString *url, NSString *visibleURL, CyberCore::FragmentedSharedBuffer* archiveBuffer, NSString *pasteboardName, NSString *pasteboardOrigin);
     void pasteboardChangedOwner(NSPasteboard *);
     void provideDataForPasteboard(NSPasteboard *, NSString *type);
     NSArray *namesOfPromisedFilesDroppedAtDestination(NSURL *dropDestination);
@@ -542,12 +542,12 @@ public:
 
     RetainPtr<NSEvent> setLastMouseDownEvent(NSEvent *);
 
-    void gestureEventWasNotHandledByWebCore(NSEvent *);
-    void gestureEventWasNotHandledByWebCoreFromViewOnly(NSEvent *);
+    void gestureEventWasNotHandledByCyberCore(NSEvent *);
+    void gestureEventWasNotHandledByCyberCoreFromViewOnly(NSEvent *);
 
     void didRestoreScrollPosition();
     
-    void scrollToRect(const WebCore::FloatRect&, const WebCore::FloatPoint&);
+    void scrollToRect(const CyberCore::FloatRect&, const CyberCore::FloatPoint&);
 
     void setTotalHeightOfBanners(CGFloat totalHeightOfBanners) { m_totalHeightOfBanners = totalHeightOfBanners; }
     CGFloat totalHeightOfBanners() const { return m_totalHeightOfBanners; }
@@ -601,12 +601,12 @@ public:
     bool shouldRequestCandidates() const;
 
 #if ENABLE(IMAGE_ANALYSIS)
-    void requestTextRecognition(const URL& imageURL, const ShareableBitmapHandle& imageData, const String& sourceLanguageIdentifier, const String& targetLanguageIdentifier, CompletionHandler<void(WebCore::TextRecognitionResult&&)>&&);
+    void requestTextRecognition(const URL& imageURL, const ShareableBitmapHandle& imageData, const String& sourceLanguageIdentifier, const String& targetLanguageIdentifier, CompletionHandler<void(CyberCore::TextRecognitionResult&&)>&&);
     void computeHasVisualSearchResults(const URL& imageURL, ShareableBitmap& imageBitmap, CompletionHandler<void(bool)>&&);
 #endif
 
 #if ENABLE(IMAGE_ANALYSIS_ENHANCEMENTS)
-    WebCore::FloatRect imageAnalysisInteractionBounds() const { return m_imageAnalysisInteractionBounds; }
+    CyberCore::FloatRect imageAnalysisInteractionBounds() const { return m_imageAnalysisInteractionBounds; }
     VKCImageAnalysisOverlayView *imageAnalysisOverlayView() const { return m_imageAnalysisOverlayView.get(); }
 #endif
 
@@ -620,7 +620,7 @@ public:
 
     bool requiresUserActionForEditingControlsManager() const;
 
-    WebCore::UserInterfaceLayoutDirection userInterfaceLayoutDirection();
+    CyberCore::UserInterfaceLayoutDirection userInterfaceLayoutDirection();
     void setUserInterfaceLayoutDirection(NSUserInterfaceLayoutDirection);
 
     void handleAcceptedCandidate(NSTextCheckingResult *acceptedCandidate);
@@ -662,17 +662,17 @@ public:
     bool effectiveAppearanceIsDark();
     bool effectiveUserInterfaceLevelIsElevated();
 
-    void takeFocus(WebCore::FocusDirection);
+    void takeFocus(CyberCore::FocusDirection);
     void clearPromisedDragImage();
 
-    void requestDOMPasteAccess(WebCore::DOMPasteAccessCategory, const WebCore::IntRect&, const String& originIdentifier, CompletionHandler<void(WebCore::DOMPasteAccessResponse)>&&);
-    void handleDOMPasteRequestForCategoryWithResult(WebCore::DOMPasteAccessCategory, WebCore::DOMPasteAccessResponse);
+    void requestDOMPasteAccess(CyberCore::DOMPasteAccessCategory, const CyberCore::IntRect&, const String& originIdentifier, CompletionHandler<void(CyberCore::DOMPasteAccessResponse)>&&);
+    void handleDOMPasteRequestForCategoryWithResult(CyberCore::DOMPasteAccessCategory, CyberCore::DOMPasteAccessResponse);
     NSMenu *domPasteMenu() const { return m_domPasteMenu.get(); }
-    void hideDOMPasteMenuWithResult(WebCore::DOMPasteAccessResponse);
+    void hideDOMPasteMenuWithResult(CyberCore::DOMPasteAccessResponse);
 
 #if HAVE(TRANSLATION_UI_SERVICES) && ENABLE(CONTEXT_MENUS)
     bool canHandleContextMenuTranslation() const;
-    void handleContextMenuTranslation(const WebCore::TranslationContextMenuInfo&);
+    void handleContextMenuTranslation(const CyberCore::TranslationContextMenuInfo&);
 #endif
 
 #if ENABLE(MEDIA_SESSION_COORDINATOR)
@@ -681,14 +681,14 @@ public:
 #endif
 
 #if ENABLE(DATA_DETECTION)
-    void handleClickForDataDetectionResult(const WebCore::DataDetectorElementInfo&, const WebCore::IntPoint&);
+    void handleClickForDataDetectionResult(const CyberCore::DataDetectorElementInfo&, const CyberCore::IntPoint&);
 #endif
 
 #if ENABLE(REVEAL)
     void didFinishPresentation(WKRevealItemPresenter *);
 #endif
 
-    void beginTextRecognitionForVideoInElementFullscreen(const ShareableBitmapHandle&, WebCore::FloatRect);
+    void beginTextRecognitionForVideoInElementFullscreen(const ShareableBitmapHandle&, CyberCore::FloatRect);
     void cancelTextRecognitionForVideoInElementFullscreen();
 
 private:
@@ -744,8 +744,8 @@ private:
 
     void setUserInterfaceItemState(NSString *commandName, bool enabled, int state);
 
-    Vector<WebCore::KeypressCommand> collectKeyboardLayoutCommandsForEvent(NSEvent *);
-    void interpretKeyEvent(NSEvent *, void(^completionHandler)(BOOL handled, const Vector<WebCore::KeypressCommand>&));
+    Vector<CyberCore::KeypressCommand> collectKeyboardLayoutCommandsForEvent(NSEvent *);
+    void interpretKeyEvent(NSEvent *, void(^completionHandler)(BOOL handled, const Vector<CyberCore::KeypressCommand>&));
 
     void nativeMouseEventHandler(NSEvent *);
     void nativeMouseEventHandlerInternal(NSEvent *);
@@ -837,7 +837,7 @@ private:
 
     id m_flagsChangedEventMonitor { nullptr };
 
-    std::unique_ptr<WebCore::TextIndicatorWindow> m_textIndicatorWindow;
+    std::unique_ptr<CyberCore::TextIndicatorWindow> m_textIndicatorWindow;
 
     RetainPtr<NSColorSpace> m_colorSpace;
 
@@ -880,7 +880,7 @@ private:
 
     RetainPtr<NSAccessibilityRemoteUIElement> m_remoteAccessibilityChild;
 
-    RefPtr<WebCore::Image> m_promisedImage;
+    RefPtr<CyberCore::Image> m_promisedImage;
     String m_promisedFilename;
     String m_promisedURL;
 
@@ -890,9 +890,9 @@ private:
 
     // We keep here the event when resending it to
     // the application to distinguish the case of a new event from one
-    // that has been already sent to WebCore.
+    // that has been already sent to CyberCore.
     RetainPtr<NSEvent> m_keyDownEventBeingResent;
-    Vector<WebCore::KeypressCommand>* m_collectedKeypressCommands { nullptr };
+    Vector<CyberCore::KeypressCommand>* m_collectedKeypressCommands { nullptr };
 
     String m_lastStringForCandidateRequest;
     NSInteger m_lastCandidateRequestSequenceNumber;
@@ -914,7 +914,7 @@ private:
 
     RetainPtr<NSMenu> m_domPasteMenu;
     RetainPtr<WKDOMPasteMenuDelegate> m_domPasteMenuDelegate;
-    CompletionHandler<void(WebCore::DOMPasteAccessResponse)> m_domPasteRequestHandler;
+    CompletionHandler<void(CyberCore::DOMPasteAccessResponse)> m_domPasteRequestHandler;
 
 #if ENABLE(MEDIA_SESSION_COORDINATOR)
     RefPtr<MediaSessionCoordinatorProxyPrivate> m_coordinatorForTesting;
@@ -933,7 +933,7 @@ private:
     RetainPtr<VKCImageAnalysisOverlayView> m_imageAnalysisOverlayView;
     RetainPtr<WKImageAnalysisOverlayViewDelegate> m_imageAnalysisOverlayViewDelegate;
     uint32_t m_currentImageAnalysisRequestID { 0 };
-    WebCore::FloatRect m_imageAnalysisInteractionBounds;
+    CyberCore::FloatRect m_imageAnalysisInteractionBounds;
 #endif
 
 #if HAVE(TRANSLATION_UI_SERVICES) && ENABLE(CONTEXT_MENUS)

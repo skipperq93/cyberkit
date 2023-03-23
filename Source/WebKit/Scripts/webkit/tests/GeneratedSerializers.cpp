@@ -365,7 +365,7 @@ std::optional<WithoutNamespaceWithAttributes> ArgumentCoder<WithoutNamespaceWith
 }
 
 
-void ArgumentCoder<WebCore::InheritsFrom>::encode(Encoder& encoder, const WebCore::InheritsFrom& instance)
+void ArgumentCoder<CyberCore::InheritsFrom>::encode(Encoder& encoder, const CyberCore::InheritsFrom& instance)
 {
     static_assert(std::is_same_v<std::remove_cvref_t<decltype(instance.a)>, int>);
     static_assert(MembersInCorrectOrder<0
@@ -373,13 +373,13 @@ void ArgumentCoder<WebCore::InheritsFrom>::encode(Encoder& encoder, const WebCor
     >::value);
     static_assert(std::is_same_v<std::remove_cvref_t<decltype(instance.b)>, float>);
     static_assert(MembersInCorrectOrder<0
-        , offsetof(WebCore::InheritsFrom, b)
+        , offsetof(CyberCore::InheritsFrom, b)
     >::value);
     encoder << instance.a;
     encoder << instance.b;
 }
 
-std::optional<WebCore::InheritsFrom> ArgumentCoder<WebCore::InheritsFrom>::decode(Decoder& decoder)
+std::optional<CyberCore::InheritsFrom> ArgumentCoder<CyberCore::InheritsFrom>::decode(Decoder& decoder)
 {
     auto a = decoder.decode<int>();
     if (!a)
@@ -390,7 +390,7 @@ std::optional<WebCore::InheritsFrom> ArgumentCoder<WebCore::InheritsFrom>::decod
         return std::nullopt;
 
     return {
-        WebCore::InheritsFrom {
+        CyberCore::InheritsFrom {
             WithoutNamespace {
                 WTFMove(*a)
             },
@@ -400,7 +400,7 @@ std::optional<WebCore::InheritsFrom> ArgumentCoder<WebCore::InheritsFrom>::decod
 }
 
 
-void ArgumentCoder<WebCore::InheritanceGrandchild>::encode(Encoder& encoder, const WebCore::InheritanceGrandchild& instance)
+void ArgumentCoder<CyberCore::InheritanceGrandchild>::encode(Encoder& encoder, const CyberCore::InheritanceGrandchild& instance)
 {
     static_assert(std::is_same_v<std::remove_cvref_t<decltype(instance.a)>, int>);
     static_assert(MembersInCorrectOrder<0
@@ -408,18 +408,18 @@ void ArgumentCoder<WebCore::InheritanceGrandchild>::encode(Encoder& encoder, con
     >::value);
     static_assert(std::is_same_v<std::remove_cvref_t<decltype(instance.b)>, float>);
     static_assert(MembersInCorrectOrder<0
-        , offsetof(WebCore::InheritsFrom, b)
+        , offsetof(CyberCore::InheritsFrom, b)
     >::value);
     static_assert(std::is_same_v<std::remove_cvref_t<decltype(instance.c)>, double>);
     static_assert(MembersInCorrectOrder<0
-        , offsetof(WebCore::InheritanceGrandchild, c)
+        , offsetof(CyberCore::InheritanceGrandchild, c)
     >::value);
     encoder << instance.a;
     encoder << instance.b;
     encoder << instance.c;
 }
 
-std::optional<WebCore::InheritanceGrandchild> ArgumentCoder<WebCore::InheritanceGrandchild>::decode(Decoder& decoder)
+std::optional<CyberCore::InheritanceGrandchild> ArgumentCoder<CyberCore::InheritanceGrandchild>::decode(Decoder& decoder)
 {
     auto a = decoder.decode<int>();
     if (!a)
@@ -434,8 +434,8 @@ std::optional<WebCore::InheritanceGrandchild> ArgumentCoder<WebCore::Inheritance
         return std::nullopt;
 
     return {
-        WebCore::InheritanceGrandchild {
-            WebCore::InheritsFrom {
+        CyberCore::InheritanceGrandchild {
+            CyberCore::InheritsFrom {
                 WithoutNamespace {
                     WTFMove(*a)
                 },
@@ -490,7 +490,7 @@ std::optional<WTF::CreateUsingClass> ArgumentCoder<WTF::CreateUsingClass>::decod
 }
 
 
-void ArgumentCoder<WebCore::FloatBoxExtent>::encode(Encoder& encoder, const WebCore::FloatBoxExtent& instance)
+void ArgumentCoder<CyberCore::FloatBoxExtent>::encode(Encoder& encoder, const CyberCore::FloatBoxExtent& instance)
 {
     static_assert(std::is_same_v<std::remove_cvref_t<decltype(instance.top())>, float>);
     static_assert(std::is_same_v<std::remove_cvref_t<decltype(instance.right())>, float>);
@@ -502,7 +502,7 @@ void ArgumentCoder<WebCore::FloatBoxExtent>::encode(Encoder& encoder, const WebC
     encoder << instance.left();
 }
 
-std::optional<WebCore::FloatBoxExtent> ArgumentCoder<WebCore::FloatBoxExtent>::decode(Decoder& decoder)
+std::optional<CyberCore::FloatBoxExtent> ArgumentCoder<CyberCore::FloatBoxExtent>::decode(Decoder& decoder)
 {
     auto top = decoder.decode<float>();
     if (!top)
@@ -521,7 +521,7 @@ std::optional<WebCore::FloatBoxExtent> ArgumentCoder<WebCore::FloatBoxExtent>::d
         return std::nullopt;
 
     return {
-        WebCore::FloatBoxExtent {
+        CyberCore::FloatBoxExtent {
             WTFMove(*top),
             WTFMove(*right),
             WTFMove(*bottom),
@@ -570,66 +570,66 @@ std::optional<NullableSoftLinkedMember> ArgumentCoder<NullableSoftLinkedMember>:
     };
 }
 
-enum class WebCore_TimingFunction_Subclass : IPC::EncodedVariantIndex {
+enum class CyberCore_TimingFunction_Subclass : IPC::EncodedVariantIndex {
     LinearTimingFunction,
     CubicBezierTimingFunction,
     StepsTimingFunction,
     SpringTimingFunction
 };
 
-void ArgumentCoder<WebCore::TimingFunction>::encode(Encoder& encoder, const WebCore::TimingFunction& instance)
+void ArgumentCoder<CyberCore::TimingFunction>::encode(Encoder& encoder, const CyberCore::TimingFunction& instance)
 {
-    if (auto* subclass = dynamicDowncast<WebCore::LinearTimingFunction>(instance)) {
-        encoder << WebCore_TimingFunction_Subclass::LinearTimingFunction;
+    if (auto* subclass = dynamicDowncast<CyberCore::LinearTimingFunction>(instance)) {
+        encoder << CyberCore_TimingFunction_Subclass::LinearTimingFunction;
         encoder << *subclass;
     }
-    if (auto* subclass = dynamicDowncast<WebCore::CubicBezierTimingFunction>(instance)) {
-        encoder << WebCore_TimingFunction_Subclass::CubicBezierTimingFunction;
+    if (auto* subclass = dynamicDowncast<CyberCore::CubicBezierTimingFunction>(instance)) {
+        encoder << CyberCore_TimingFunction_Subclass::CubicBezierTimingFunction;
         encoder << *subclass;
     }
-    if (auto* subclass = dynamicDowncast<WebCore::StepsTimingFunction>(instance)) {
-        encoder << WebCore_TimingFunction_Subclass::StepsTimingFunction;
+    if (auto* subclass = dynamicDowncast<CyberCore::StepsTimingFunction>(instance)) {
+        encoder << CyberCore_TimingFunction_Subclass::StepsTimingFunction;
         encoder << *subclass;
     }
-    if (auto* subclass = dynamicDowncast<WebCore::SpringTimingFunction>(instance)) {
-        encoder << WebCore_TimingFunction_Subclass::SpringTimingFunction;
+    if (auto* subclass = dynamicDowncast<CyberCore::SpringTimingFunction>(instance)) {
+        encoder << CyberCore_TimingFunction_Subclass::SpringTimingFunction;
         encoder << *subclass;
     }
 }
 
-std::optional<Ref<WebCore::TimingFunction>> ArgumentCoder<WebCore::TimingFunction>::decode(Decoder& decoder)
+std::optional<Ref<CyberCore::TimingFunction>> ArgumentCoder<CyberCore::TimingFunction>::decode(Decoder& decoder)
 {
-    std::optional<WebCore_TimingFunction_Subclass> type;
+    std::optional<CyberCore_TimingFunction_Subclass> type;
     decoder >> type;
     if (!type)
         return std::nullopt;
 
-    if (type == WebCore_TimingFunction_Subclass::LinearTimingFunction) {
-        std::optional<Ref<WebCore::LinearTimingFunction>> result;
+    if (type == CyberCore_TimingFunction_Subclass::LinearTimingFunction) {
+        std::optional<Ref<CyberCore::LinearTimingFunction>> result;
         decoder >> result;
         if (!result)
             return std::nullopt;
         return WTFMove(*result);
     }
 
-    if (type == WebCore_TimingFunction_Subclass::CubicBezierTimingFunction) {
-        std::optional<Ref<WebCore::CubicBezierTimingFunction>> result;
+    if (type == CyberCore_TimingFunction_Subclass::CubicBezierTimingFunction) {
+        std::optional<Ref<CyberCore::CubicBezierTimingFunction>> result;
         decoder >> result;
         if (!result)
             return std::nullopt;
         return WTFMove(*result);
     }
 
-    if (type == WebCore_TimingFunction_Subclass::StepsTimingFunction) {
-        std::optional<Ref<WebCore::StepsTimingFunction>> result;
+    if (type == CyberCore_TimingFunction_Subclass::StepsTimingFunction) {
+        std::optional<Ref<CyberCore::StepsTimingFunction>> result;
         decoder >> result;
         if (!result)
             return std::nullopt;
         return WTFMove(*result);
     }
 
-    if (type == WebCore_TimingFunction_Subclass::SpringTimingFunction) {
-        std::optional<Ref<WebCore::SpringTimingFunction>> result;
+    if (type == CyberCore_TimingFunction_Subclass::SpringTimingFunction) {
+        std::optional<Ref<CyberCore::SpringTimingFunction>> result;
         decoder >> result;
         if (!result)
             return std::nullopt;
@@ -644,13 +644,13 @@ std::optional<Ref<WebCore::TimingFunction>> ArgumentCoder<WebCore::TimingFunctio
 
 namespace WTF {
 
-template<> bool isValidEnum<IPC::WebCore_TimingFunction_Subclass, void>(IPC::EncodedVariantIndex value)
+template<> bool isValidEnum<IPC::CyberCore_TimingFunction_Subclass, void>(IPC::EncodedVariantIndex value)
 {
-    switch (static_cast<IPC::WebCore_TimingFunction_Subclass>(value)) {
-    case IPC::WebCore_TimingFunction_Subclass::LinearTimingFunction:
-    case IPC::WebCore_TimingFunction_Subclass::CubicBezierTimingFunction:
-    case IPC::WebCore_TimingFunction_Subclass::StepsTimingFunction:
-    case IPC::WebCore_TimingFunction_Subclass::SpringTimingFunction:
+    switch (static_cast<IPC::CyberCore_TimingFunction_Subclass>(value)) {
+    case IPC::CyberCore_TimingFunction_Subclass::LinearTimingFunction:
+    case IPC::CyberCore_TimingFunction_Subclass::CubicBezierTimingFunction:
+    case IPC::CyberCore_TimingFunction_Subclass::StepsTimingFunction:
+    case IPC::CyberCore_TimingFunction_Subclass::SpringTimingFunction:
         return true;
     default:
         return false;

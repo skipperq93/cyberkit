@@ -24,7 +24,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class SVGPropertyAccess : uint8_t { ReadWrite, ReadOnly };
 enum class SVGPropertyState : uint8_t { Clean, Dirty };
@@ -105,4 +105,4 @@ protected:
     SVGPropertyState m_state { SVGPropertyState::Clean };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

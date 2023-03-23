@@ -42,7 +42,7 @@ namespace IPC {
 class Connection;
 }
 
-namespace WebKit {
+namespace CyberKit {
 class LibWebRTCSocketFactory;
 
 class LibWebRTCResolver final : public rtc::AsyncResolverInterface {
@@ -78,6 +78,6 @@ private:
     bool m_shouldDestroy { false };
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(LIBWEBRTC)

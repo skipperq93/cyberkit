@@ -34,7 +34,7 @@
 #include <wtf/Function.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioBus;
 class SincResampler;
@@ -65,6 +65,6 @@ private:
     Vector<std::unique_ptr<AudioFloatArray>> m_channelsMemory;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // MultiChannelResampler_h

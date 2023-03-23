@@ -32,7 +32,7 @@
 #include "AudioArray.h"
 #include <wtf/Noncopyable.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DirectConvolver final {
     WTF_MAKE_FAST_ALLOCATED;
@@ -50,6 +50,6 @@ private:
     AudioFloatArray m_buffer;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // DirectConvolver_h

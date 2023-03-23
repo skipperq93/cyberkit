@@ -40,13 +40,13 @@
 #import <wtf/SetForScope.h>
 #import <wtf/SystemTracing.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 RemoteLayerTreeContext::RemoteLayerTreeContext(WebPage& webPage)
     : m_webPage(webPage)
 {
-    if (WebProcess::singleton().shouldUseRemoteRenderingFor(WebCore::RenderingPurpose::DOM))
+    if (WebProcess::singleton().shouldUseRemoteRenderingFor(CyberCore::RenderingPurpose::DOM))
         m_backingStoreCollection = makeUnique<RemoteLayerWithRemoteRenderingBackingStoreCollection>(*this);
     else
         m_backingStoreCollection = makeUnique<RemoteLayerBackingStoreCollection>(*this);
@@ -90,7 +90,7 @@ DrawingAreaIdentifier RemoteLayerTreeContext::drawingAreaIdentifier() const
     return m_webPage.drawingArea()->identifier();
 }
 
-std::optional<WebCore::DestinationColorSpace> RemoteLayerTreeContext::displayColorSpace() const
+std::optional<CyberCore::DestinationColorSpace> RemoteLayerTreeContext::displayColorSpace() const
 {
     if (auto* drawingArea = m_webPage.drawingArea())
         return drawingArea->displayColorSpace();
@@ -140,7 +140,7 @@ void RemoteLayerTreeContext::graphicsLayerWillLeaveContext(GraphicsLayerCARemote
     m_liveGraphicsLayers.remove(&layer);
 }
 
-Ref<GraphicsLayer> RemoteLayerTreeContext::createGraphicsLayer(WebCore::GraphicsLayer::Type layerType, GraphicsLayerClient& client)
+Ref<GraphicsLayer> RemoteLayerTreeContext::createGraphicsLayer(CyberCore::GraphicsLayer::Type layerType, GraphicsLayerClient& client)
 {
     return adoptRef(*new GraphicsLayerCARemote(layerType, client, *this));
 }
@@ -177,14 +177,14 @@ void RemoteLayerTreeContext::willStartAnimationOnLayer(PlatformCALayerRemote& la
     m_layersWithAnimations.add(layer.layerID(), &layer);
 }
 
-void RemoteLayerTreeContext::animationDidStart(WebCore::GraphicsLayer::PlatformLayerID layerID, const String& key, MonotonicTime startTime)
+void RemoteLayerTreeContext::animationDidStart(CyberCore::GraphicsLayer::PlatformLayerID layerID, const String& key, MonotonicTime startTime)
 {
     auto it = m_layersWithAnimations.find(layerID);
     if (it != m_layersWithAnimations.end())
         it->value->animationStarted(key, startTime);
 }
 
-void RemoteLayerTreeContext::animationDidEnd(WebCore::GraphicsLayer::PlatformLayerID layerID, const String& key)
+void RemoteLayerTreeContext::animationDidEnd(CyberCore::GraphicsLayer::PlatformLayerID layerID, const String& key)
 {
     auto it = m_layersWithAnimations.find(layerID);
     if (it != m_layersWithAnimations.end())
@@ -196,4 +196,4 @@ RemoteRenderingBackendProxy& RemoteLayerTreeContext::ensureRemoteRenderingBacken
     return m_webPage.ensureRemoteRenderingBackendProxy();
 }
 
-} // namespace WebKit
+} // namespace CyberKit

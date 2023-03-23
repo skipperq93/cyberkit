@@ -35,7 +35,7 @@ namespace API {
 class Array;
 }
 
-namespace WebCore {
+namespace CyberCore {
 class ContextMenuItem;
 }
 

@@ -55,7 +55,7 @@
 #include <sys/time.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 const char* const quotedPrintable = "quoted-printable";
 const char* const base64 = "base64";

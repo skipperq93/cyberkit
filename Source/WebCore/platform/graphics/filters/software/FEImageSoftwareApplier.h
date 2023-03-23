@@ -27,7 +27,7 @@
 
 #include "FilterEffectApplier.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class FEImage;
 
@@ -42,4 +42,4 @@ private:
     bool apply(const Filter&, const FilterImageVector& inputs, FilterImage& result) const final;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -28,7 +28,7 @@
 
 #include "RenderElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 LayoutRepainter::LayoutRepainter(RenderElement& renderer, bool checkForRepaint, RepaintOutlineBounds repaintOutlineBounds)
     : m_renderer(renderer)
@@ -56,4 +56,4 @@ bool LayoutRepainter::repaintAfterLayout()
     return m_renderer.repaintAfterLayoutIfNeeded(m_repaintContainer, m_oldBounds, m_oldOutlineBounds, &newBounds, newOutlineBounds);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

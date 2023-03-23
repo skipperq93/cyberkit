@@ -33,7 +33,7 @@
 
 #include "ProtectionSpaceBase.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ProtectionSpace : public ProtectionSpaceBase {
 public:
@@ -46,11 +46,11 @@ public:
     ProtectionSpace(WTF::HashTableDeletedValueType deletedValue) : ProtectionSpaceBase(deletedValue) { }
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
-template<> struct DefaultHash<WebCore::ProtectionSpace>;
-template<> struct HashTraits<WebCore::ProtectionSpace>;
+template<> struct DefaultHash<CyberCore::ProtectionSpace>;
+template<> struct HashTraits<CyberCore::ProtectionSpace>;
 }
 
 #endif

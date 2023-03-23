@@ -31,7 +31,7 @@
 #include "MediaEncodingConfiguration.h"
 #include "NotImplemented.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 void WebRTCProvider::setH264HardwareEncoderAllowed(bool)
 {
@@ -136,6 +136,6 @@ std::optional<MediaCapabilitiesDecodingInfo> GStreamerWebRTCProvider::videoDecod
     return { info };
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(GSTREAMER_WEBRTC)

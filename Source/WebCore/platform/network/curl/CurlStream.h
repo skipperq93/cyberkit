@@ -30,7 +30,7 @@
 #include <wtf/UniqueArray.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CurlStreamScheduler;
 class SharedBuffer;
@@ -83,4 +83,4 @@ private:
     size_t m_sendBufferOffset { 0 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

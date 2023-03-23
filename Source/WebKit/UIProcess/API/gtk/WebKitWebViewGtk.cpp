@@ -99,7 +99,7 @@ static void fileChooserDialogResponseCallback(GtkFileChooser* dialog, gint respo
 gboolean webkitWebViewRunFileChooser(WebKitWebView* webView, WebKitFileChooserRequest* request)
 {
     GtkWidget* toplevel = gtk_widget_get_toplevel(GTK_WIDGET(webView));
-    if (!WebCore::widgetIsOnscreenToplevelWindow(toplevel))
+    if (!CyberCore::widgetIsOnscreenToplevelWindow(toplevel))
         toplevel = 0;
 
     gboolean allowsMultipleSelection = webkit_file_chooser_request_get_select_multiple(request);
@@ -255,10 +255,10 @@ void webkitWebViewMaximizeWindow(WebKitWebView* view, CompletionHandler<void()>&
 
 #if ENABLE(DEVELOPER_MODE)
     // Xvfb doesn't support maximize, so we resize the window to the screen size.
-    if (WebCore::PlatformDisplay::sharedDisplay().type() == WebCore::PlatformDisplay::Type::X11) {
+    if (CyberCore::PlatformDisplay::sharedDisplay().type() == CyberCore::PlatformDisplay::Type::X11) {
         const char* underXvfb = g_getenv("UNDER_XVFB");
         if (!g_strcmp0(underXvfb, "yes")) {
-            auto screenRect = WebCore::screenAvailableRect(nullptr);
+            auto screenRect = CyberCore::screenAvailableRect(nullptr);
             gtk_window_move(window, screenRect.x(), screenRect.y());
             gtk_window_resize(window, screenRect.width(), screenRect.height());
         }
@@ -303,7 +303,7 @@ void webkitWebViewRestoreWindow(WebKitWebView* view, CompletionHandler<void()>&&
 
 #if ENABLE(DEVELOPER_MODE)
     // Xvfb doesn't support maximize, so we resize the window to the default size.
-    if (WebCore::PlatformDisplay::sharedDisplay().type() == WebCore::PlatformDisplay::Type::X11) {
+    if (CyberCore::PlatformDisplay::sharedDisplay().type() == CyberCore::PlatformDisplay::Type::X11) {
         const char* underXvfb = g_getenv("UNDER_XVFB");
         if (!g_strcmp0(underXvfb, "yes")) {
             int x, y;
@@ -474,7 +474,7 @@ void webkit_web_view_set_background_color(WebKitWebView* webView, const GdkRGBA*
     g_return_if_fail(rgba);
 
     auto& page = *webkitWebViewBaseGetPage(reinterpret_cast<WebKitWebViewBase*>(webView));
-    page.setBackgroundColor(WebCore::Color(*rgba));
+    page.setBackgroundColor(CyberCore::Color(*rgba));
 }
 
 /**
@@ -496,5 +496,5 @@ void webkit_web_view_get_background_color(WebKitWebView* webView, GdkRGBA* rgba)
     g_return_if_fail(rgba);
 
     auto& page = *webkitWebViewBaseGetPage(reinterpret_cast<WebKitWebViewBase*>(webView));
-    *rgba = page.backgroundColor().value_or(WebCore::Color::white);
+    *rgba = page.backgroundColor().value_or(CyberCore::Color::white);
 }

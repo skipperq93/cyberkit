@@ -22,7 +22,7 @@
 
 #include "SVGTextPositioningElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGTSpanElement final : public SVGTextPositioningElement {
     WTF_MAKE_ISO_ALLOCATED(SVGTSpanElement);
@@ -37,4 +37,4 @@ private:
     bool rendererIsNeeded(const RenderStyle&) override;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

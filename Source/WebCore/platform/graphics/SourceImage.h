@@ -29,7 +29,7 @@
 #include "NativeImage.h"
 #include "RenderingResourceIdentifier.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class WEBCORE_EXPORT SourceImage {
 public:
@@ -56,4 +56,4 @@ private:
 };
 
 
-} // namespace WebCore
+} // namespace CyberCore

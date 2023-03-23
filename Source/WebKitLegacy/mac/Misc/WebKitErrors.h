@@ -26,40 +26,40 @@
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <CyberKitLegacy/WebKitAvailability.h>
+#import <CyberKitLegacy/CyberKitAvailability.h>
 
 @class NSString;
 
-extern NSString *WebKitErrorDomain WEBKIT_DEPRECATED_MAC(10_3, 10_14);
+extern NSString *CyberKitErrorDomain WEBKIT_DEPRECATED_MAC(10_3, 10_14);
 
-extern NSString * const WebKitErrorMIMETypeKey WEBKIT_DEPRECATED_MAC(10_3, 10_14);
-extern NSString * const WebKitErrorPlugInNameKey WEBKIT_DEPRECATED_MAC(10_3, 10_14);
-extern NSString * const WebKitErrorPlugInPageURLStringKey WEBKIT_DEPRECATED_MAC(10_3, 10_14);
+extern NSString * const CyberKitErrorMIMETypeKey WEBKIT_DEPRECATED_MAC(10_3, 10_14);
+extern NSString * const CyberKitErrorPlugInNameKey WEBKIT_DEPRECATED_MAC(10_3, 10_14);
+extern NSString * const CyberKitErrorPlugInPageURLStringKey WEBKIT_DEPRECATED_MAC(10_3, 10_14);
 
 /*!
     @enum
     @abstract Policy errors
-    @constant WebKitErrorCannotShowMIMEType
-    @constant WebKitErrorCannotShowURL
-    @constant WebKitErrorFrameLoadInterruptedByPolicyChange
+    @constant CyberKitErrorCannotShowMIMEType
+    @constant CyberKitErrorCannotShowURL
+    @constant CyberKitErrorFrameLoadInterruptedByPolicyChange
 */
 enum {
-    WebKitErrorCannotShowMIMEType =                             100,
-    WebKitErrorCannotShowURL =                                  101,
-    WebKitErrorFrameLoadInterruptedByPolicyChange =             102,
+    CyberKitErrorCannotShowMIMEType =                             100,
+    CyberKitErrorCannotShowURL =                                  101,
+    CyberKitErrorFrameLoadInterruptedByPolicyChange =             102,
 } WEBKIT_ENUM_DEPRECATED_MAC(10_3, 10_14);
 
 /*!
     @enum
     @abstract Plug-in and java errors
-    @constant WebKitErrorCannotFindPlugIn
-    @constant WebKitErrorCannotLoadPlugIn
-    @constant WebKitErrorJavaUnavailable
-    @constant WebKitErrorBlockedPlugInVersion
+    @constant CyberKitErrorCannotFindPlugIn
+    @constant CyberKitErrorCannotLoadPlugIn
+    @constant CyberKitErrorJavaUnavailable
+    @constant CyberKitErrorBlockedPlugInVersion
 */
 enum {
-    WebKitErrorCannotFindPlugIn =                               200,
-    WebKitErrorCannotLoadPlugIn =                               201,
-    WebKitErrorJavaUnavailable =                                202,
-    WebKitErrorBlockedPlugInVersion =                           203,
+    CyberKitErrorCannotFindPlugIn =                               200,
+    CyberKitErrorCannotLoadPlugIn =                               201,
+    CyberKitErrorJavaUnavailable =                                202,
+    CyberKitErrorBlockedPlugInVersion =                           203,
 } WEBKIT_ENUM_DEPRECATED_MAC(10_3, 10_14);

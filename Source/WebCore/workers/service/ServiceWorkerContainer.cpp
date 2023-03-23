@@ -68,7 +68,7 @@
 #define CONTAINER_RELEASE_LOG(fmt, ...) RELEASE_LOG(ServiceWorker, "%p - ServiceWorkerContainer::" fmt, this, ##__VA_ARGS__)
 #define CONTAINER_RELEASE_LOG_ERROR(fmt, ...) RELEASE_LOG_ERROR(ServiceWorker, "%p - ServiceWorkerContainer::" fmt, this, ##__VA_ARGS__)
 
-namespace WebCore {
+namespace CyberCore {
 
 static inline SWClientConnection& mainThreadConnection()
 {
@@ -727,6 +727,6 @@ void ServiceWorkerContainer::getNavigationPreloadState(ServiceWorkerRegistration
     });
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

@@ -27,7 +27,7 @@
 
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct AudioConfiguration {
     String contentType;
@@ -50,4 +50,4 @@ inline AudioConfiguration AudioConfiguration::isolatedCopy() &&
     return { WTFMove(contentType).isolatedCopy(), WTFMove(channels).isolatedCopy(), bitrate, samplerate, spatialRendering };
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -47,7 +47,7 @@
 #include "RenderStyleConstants.h"
 #include "Timer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderLayer;
 
@@ -94,4 +94,4 @@ private:
     bool m_stopped { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

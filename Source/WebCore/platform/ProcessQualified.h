@@ -31,7 +31,7 @@
 #include <wtf/text/StringConcatenateNumbers.h>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 template <typename T>
 class ProcessQualified {
@@ -137,18 +137,18 @@ inline void add(Hasher& hasher, const ProcessQualified<T>& processQualified)
     add(hasher, processQualified.processIdentifier());
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
 template<typename T> struct DefaultHash;
-template<typename T> struct DefaultHash<WebCore::ProcessQualified<T>> {
-    static unsigned hash(const WebCore::ProcessQualified<T>& processQualified)
+template<typename T> struct DefaultHash<CyberCore::ProcessQualified<T>> {
+    static unsigned hash(const CyberCore::ProcessQualified<T>& processQualified)
     {
         return computeHash(processQualified);
     }
 
-    static bool equal(const WebCore::ProcessQualified<T>& a, const WebCore::ProcessQualified<T>& b)
+    static bool equal(const CyberCore::ProcessQualified<T>& a, const CyberCore::ProcessQualified<T>& b)
     {
         return a == b;
     }
@@ -156,7 +156,7 @@ template<typename T> struct DefaultHash<WebCore::ProcessQualified<T>> {
     static const bool safeToCompareToEmptyOrDeleted = DefaultHash<T>::safeToCompareToEmptyOrDeleted;
 };
 
-template<typename T> struct HashTraits<WebCore::ProcessQualified<T>> : SimpleClassHashTraits<WebCore::ProcessQualified<T>> {
+template<typename T> struct HashTraits<CyberCore::ProcessQualified<T>> : SimpleClassHashTraits<CyberCore::ProcessQualified<T>> {
     static constexpr bool emptyValueIsZero = HashTraits<T>::emptyValueIsZero;
 };
 

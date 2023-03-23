@@ -27,16 +27,16 @@
 
 #include <CyberCore/MockContentFilterSettingsClient.h>
 
-namespace WebKit {
+namespace CyberKit {
 
-class WebMockContentFilterManager : public WebCore::MockContentFilterSettingsClient {
+class WebMockContentFilterManager : public CyberCore::MockContentFilterSettingsClient {
 public:
     static WebMockContentFilterManager& singleton();
 
     void startObservingSettings();
     
-    // WebCore::MockContentFilterSettingsClient
-    void mockContentFilterSettingsChanged(WebCore::MockContentFilterSettings&) final;
+    // CyberCore::MockContentFilterSettingsClient
+    void mockContentFilterSettingsChanged(CyberCore::MockContentFilterSettings&) final;
 };
 
 };

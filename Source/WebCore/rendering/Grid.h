@@ -31,7 +31,7 @@
 #include <wtf/ListHashSet.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 typedef Vector<WeakPtr<RenderBox>, 1> GridCell;
 typedef Vector<Vector<GridCell>> GridAsMatrix;
@@ -138,4 +138,4 @@ private:
     unsigned m_childIndex;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

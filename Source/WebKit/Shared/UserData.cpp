@@ -43,7 +43,7 @@
 #include "ArgumentCoders.h"
 #include "Encoder.h"
 #include "ShareableBitmap.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebImage.h"
 #include <wtf/CheckedArithmetic.h>
 
@@ -382,7 +382,7 @@ bool UserData::decode(IPC::Decoder& decoder, RefPtr<API::Object>& result)
         if (!didEncode)
             break;
 
-        std::optional<WebCore::ImageBufferBackend::Parameters> parameters;
+        std::optional<CyberCore::ImageBufferBackend::Parameters> parameters;
         decoder >> parameters;
         if (!parameters)
             return false;

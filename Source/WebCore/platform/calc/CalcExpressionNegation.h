@@ -28,7 +28,7 @@
 #include "CalcExpressionNode.h"
 #include <wtf/TypeCasts.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CalcExpressionNegation final : public CalcExpressionNode {
 public:
@@ -53,4 +53,4 @@ bool operator==(const CalcExpressionNegation&, const CalcExpressionNegation&);
 
 }
 
-SPECIALIZE_TYPE_TRAITS_CALCEXPRESSION_NODE(CalcExpressionNegation, type() == WebCore::CalcExpressionNodeType::Negation)
+SPECIALIZE_TYPE_TRAITS_CALCEXPRESSION_NODE(CalcExpressionNegation, type() == CyberCore::CalcExpressionNodeType::Negation)

@@ -29,7 +29,7 @@
 
 #if USE(CURL)
 
-namespace WebCore {
+namespace CyberCore {
 
 void ResourceRequest::updateFromDelegatePreservingOldProperties(const ResourceRequest& delegateProvidedRequest)
 {

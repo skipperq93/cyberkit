@@ -24,15 +24,15 @@
  */
 
 #import "config.h"
-#import "WebCoreFullScreenPlaceholderView.h"
+#import "CyberCoreFullScreenPlaceholderView.h"
 
 #if PLATFORM(MAC)
 
 #import "LocalizedStrings.h"
-#import "WebCoreFullScreenWarningView.h"
+#import "CyberCoreFullScreenWarningView.h"
 #import <wtf/text/WTFString.h>
 
-@implementation WebCoreFullScreenPlaceholderView
+@implementation CyberCoreFullScreenPlaceholderView
 
 - (id)initWithFrame:(NSRect)frameRect
 {
@@ -62,7 +62,7 @@
     _exitWarning.get().editable = NO;
     _exitWarning.get().font = [NSFont systemFontOfSize:27];
     _exitWarning.get().selectable = NO;
-    _exitWarning.get().stringValue = WebCore::clickToExitFullScreenText();
+    _exitWarning.get().stringValue = CyberCore::clickToExitFullScreenText();
     _exitWarning.get().textColor = [NSColor tertiaryLabelColor];
     [_exitWarning sizeToFit];
 

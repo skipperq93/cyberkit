@@ -40,199 +40,199 @@
 #import <wtf/GetPtr.h>
 #import <wtf/URL.h>
 
-#define IMPL static_cast<WebCore::HTMLElement*>(reinterpret_cast<WebCore::Node*>(_internal))
+#define IMPL static_cast<CyberCore::HTMLElement*>(reinterpret_cast<CyberCore::Node*>(_internal))
 
 @implementation DOMHTMLElement
 
 - (NSString *)title
 {
-    WebCore::JSMainThreadNullState state;
-    return IMPL->getAttribute(WebCore::HTMLNames::titleAttr);
+    CyberCore::JSMainThreadNullState state;
+    return IMPL->getAttribute(CyberCore::HTMLNames::titleAttr);
 }
 
 - (void)setTitle:(NSString *)newTitle
 {
-    WebCore::JSMainThreadNullState state;
-    IMPL->setAttributeWithoutSynchronization(WebCore::HTMLNames::titleAttr, newTitle);
+    CyberCore::JSMainThreadNullState state;
+    IMPL->setAttributeWithoutSynchronization(CyberCore::HTMLNames::titleAttr, newTitle);
 }
 
 - (NSString *)lang
 {
-    WebCore::JSMainThreadNullState state;
-    return IMPL->getAttribute(WebCore::HTMLNames::langAttr);
+    CyberCore::JSMainThreadNullState state;
+    return IMPL->getAttribute(CyberCore::HTMLNames::langAttr);
 }
 
 - (void)setLang:(NSString *)newLang
 {
-    WebCore::JSMainThreadNullState state;
-    IMPL->setAttributeWithoutSynchronization(WebCore::HTMLNames::langAttr, newLang);
+    CyberCore::JSMainThreadNullState state;
+    IMPL->setAttributeWithoutSynchronization(CyberCore::HTMLNames::langAttr, newLang);
 }
 
 - (BOOL)translate
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->translate();
 }
 
 - (void)setTranslate:(BOOL)newTranslate
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->setTranslate(newTranslate);
 }
 
 - (NSString *)dir
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->dir();
 }
 
 - (void)setDir:(NSString *)newDir
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->setDir(newDir);
 }
 
 - (int)tabIndex
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->tabIndexForBindings();
 }
 
 - (void)setTabIndex:(int)newTabIndex
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->setTabIndexForBindings(newTabIndex);
 }
 
 - (BOOL)draggable
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->draggable();
 }
 
 - (void)setDraggable:(BOOL)newDraggable
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->setDraggable(newDraggable);
 }
 
 - (NSString *)webkitdropzone
 {
-    WebCore::JSMainThreadNullState state;
-    return IMPL->getAttribute(WebCore::HTMLNames::webkitdropzoneAttr);
+    CyberCore::JSMainThreadNullState state;
+    return IMPL->getAttribute(CyberCore::HTMLNames::webkitdropzoneAttr);
 }
 
 - (void)setWebkitdropzone:(NSString *)newWebkitdropzone
 {
-    WebCore::JSMainThreadNullState state;
-    IMPL->setAttributeWithoutSynchronization(WebCore::HTMLNames::webkitdropzoneAttr, newWebkitdropzone);
+    CyberCore::JSMainThreadNullState state;
+    IMPL->setAttributeWithoutSynchronization(CyberCore::HTMLNames::webkitdropzoneAttr, newWebkitdropzone);
 }
 
 - (BOOL)hidden
 {
-    WebCore::JSMainThreadNullState state;
-    return IMPL->hasAttributeWithoutSynchronization(WebCore::HTMLNames::hiddenAttr);
+    CyberCore::JSMainThreadNullState state;
+    return IMPL->hasAttributeWithoutSynchronization(CyberCore::HTMLNames::hiddenAttr);
 }
 
 - (void)setHidden:(BOOL)newHidden
 {
-    WebCore::JSMainThreadNullState state;
-    IMPL->setBooleanAttribute(WebCore::HTMLNames::hiddenAttr, newHidden);
+    CyberCore::JSMainThreadNullState state;
+    IMPL->setBooleanAttribute(CyberCore::HTMLNames::hiddenAttr, newHidden);
 }
 
 - (NSString *)accessKey
 {
-    WebCore::JSMainThreadNullState state;
-    return IMPL->getAttribute(WebCore::HTMLNames::accesskeyAttr);
+    CyberCore::JSMainThreadNullState state;
+    return IMPL->getAttribute(CyberCore::HTMLNames::accesskeyAttr);
 }
 
 - (void)setAccessKey:(NSString *)newAccessKey
 {
-    WebCore::JSMainThreadNullState state;
-    IMPL->setAttributeWithoutSynchronization(WebCore::HTMLNames::accesskeyAttr, newAccessKey);
+    CyberCore::JSMainThreadNullState state;
+    IMPL->setAttributeWithoutSynchronization(CyberCore::HTMLNames::accesskeyAttr, newAccessKey);
 }
 
 - (NSString *)innerText
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->innerText();
 }
 
 - (void)setInnerText:(NSString *)newInnerText
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     raiseOnDOMError(IMPL->setInnerText(newInnerText));
 }
 
 - (NSString *)outerText
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->outerText();
 }
 
 - (void)setOuterText:(NSString *)newOuterText
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     raiseOnDOMError(IMPL->setOuterText(newOuterText));
 }
 
 - (NSString *)contentEditable
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->contentEditable();
 }
 
 - (void)setContentEditable:(NSString *)newContentEditable
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     raiseOnDOMError(IMPL->setContentEditable(newContentEditable));
 }
 
 - (BOOL)isContentEditable
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->isContentEditable();
 }
 
 - (BOOL)spellcheck
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->spellcheck();
 }
 
 - (void)setSpellcheck:(BOOL)newSpellcheck
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->setSpellcheck(newSpellcheck);
 }
 
 - (NSString *)idName
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->getIdAttribute();
 }
 
 - (void)setIdName:(NSString *)newIdName
 {
-    WebCore::JSMainThreadNullState state;
-    IMPL->setAttributeWithoutSynchronization(WebCore::HTMLNames::idAttr, newIdName);
+    CyberCore::JSMainThreadNullState state;
+    IMPL->setAttributeWithoutSynchronization(CyberCore::HTMLNames::idAttr, newIdName);
 }
 
 - (DOMHTMLCollection *)children
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->children()));
 }
 
 - (NSString *)titleDisplayString
 {
-    WebCore::JSMainThreadNullState state;
-    return WebCore::displayString(IMPL->title(), core(self));
+    CyberCore::JSMainThreadNullState state;
+    return CyberCore::displayString(IMPL->title(), core(self));
 }
 
 - (DOMElement *)insertAdjacentElement:(NSString *)where element:(DOMElement *)element
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     if (!element)
         raiseTypeErrorException();
     return kit(raiseOnDOMError(IMPL->insertAdjacentElement(where, *core(element))));
@@ -240,19 +240,19 @@
 
 - (void)insertAdjacentHTML:(NSString *)where html:(NSString *)html
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     raiseOnDOMError(IMPL->insertAdjacentHTML(where, html));
 }
 
 - (void)insertAdjacentText:(NSString *)where text:(NSString *)text
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     raiseOnDOMError(IMPL->insertAdjacentText(where, text));
 }
 
 - (void)click
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->click();
 }
 
@@ -260,13 +260,13 @@
 
 - (BOOL)autocorrect
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->shouldAutocorrect();
 }
 
 - (void)setAutocorrect:(BOOL)newAutocorrect
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->setAutocorrect(newAutocorrect);
 }
 
@@ -276,13 +276,13 @@
 
 - (NSString *)autocapitalize
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->autocapitalize();
 }
 
 - (void)setAutocapitalize:(NSString *)newAutocapitalize
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->setAutocapitalize(newAutocapitalize);
 }
 
@@ -290,15 +290,15 @@
 
 @end
 
-WebCore::HTMLElement* core(DOMHTMLElement *wrapper)
+CyberCore::HTMLElement* core(DOMHTMLElement *wrapper)
 {
-    return wrapper ? reinterpret_cast<WebCore::HTMLElement*>(wrapper->_internal) : 0;
+    return wrapper ? reinterpret_cast<CyberCore::HTMLElement*>(wrapper->_internal) : 0;
 }
 
-DOMHTMLElement *kit(WebCore::HTMLElement* value)
+DOMHTMLElement *kit(CyberCore::HTMLElement* value)
 {
-    WebCoreThreadViolationCheckRoundOne();
-    return static_cast<DOMHTMLElement*>(kit(static_cast<WebCore::Node*>(value)));
+    CyberCoreThreadViolationCheckRoundOne();
+    return static_cast<DOMHTMLElement*>(kit(static_cast<CyberCore::Node*>(value)));
 }
 
 #undef IMPL

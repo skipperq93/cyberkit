@@ -33,7 +33,7 @@
 #include "LibWebRTCProvider.h"
 #include "Logging.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static inline AudioStreamBasicDescription libwebrtcAudioFormat(Float64 sampleRate, size_t channelCount)
 {
@@ -155,6 +155,6 @@ void RealtimeOutgoingAudioSourceCocoa::sourceUpdated()
 #endif
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(LIBWEBRTC)

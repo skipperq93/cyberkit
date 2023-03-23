@@ -33,7 +33,7 @@
 #include <wtf/URLHash.h>
 #include <wtf/text/StringToIntegerConversion.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 ServiceWorkerRegistrationKey::ServiceWorkerRegistrationKey(SecurityOriginData&& topOrigin, URL&& scope)
     : m_topOrigin(WTFMove(topOrigin))
@@ -142,6 +142,6 @@ String ServiceWorkerRegistrationKey::loggingString() const
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

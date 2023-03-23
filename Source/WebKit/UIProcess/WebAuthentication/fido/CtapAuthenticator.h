@@ -36,7 +36,7 @@ class TokenRequest;
 }
 }
 
-namespace WebCore {
+namespace CyberCore {
 class CryptoKeyEC;
 }
 
@@ -63,19 +63,19 @@ private:
     void getRetries();
     void continueGetKeyAgreementAfterGetRetries(Vector<uint8_t>&&);
     void continueRequestPinAfterGetKeyAgreement(Vector<uint8_t>&&, uint64_t retries);
-    void continueGetPinTokenAfterRequestPin(const String& pin, const WebCore::CryptoKeyEC&);
+    void continueGetPinTokenAfterRequestPin(const String& pin, const CyberCore::CryptoKeyEC&);
     void continueRequestAfterGetPinToken(Vector<uint8_t>&&, const fido::pin::TokenRequest&);
     bool tryRestartPin(const fido::CtapDeviceResponseCode&);
 
     bool tryDowngrade();
     bool processGoogleLegacyAppIdSupportExtension();
 
-    Vector<WebCore::AuthenticatorTransport> transports() const;
+    Vector<CyberCore::AuthenticatorTransport> transports() const;
 
     fido::AuthenticatorGetInfoResponse m_info;
     bool m_isDowngraded { false };
     size_t m_remainingAssertionResponses { 0 };
-    Vector<Ref<WebCore::AuthenticatorAssertionResponse>> m_assertionResponses;
+    Vector<Ref<CyberCore::AuthenticatorAssertionResponse>> m_assertionResponses;
     Vector<uint8_t> m_pinAuth;
 };
 

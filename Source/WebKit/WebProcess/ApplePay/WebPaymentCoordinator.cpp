@@ -31,7 +31,7 @@
 #include "ApplePayPaymentSetupFeaturesWebKit.h"
 #include "DataReference.h"
 #include "PaymentSetupConfigurationWebKit.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebPage.h"
 #include "WebPaymentCoordinatorMessages.h"
 #include "WebPaymentCoordinatorProxyMessages.h"
@@ -101,7 +101,7 @@ void WebPaymentCoordinator::openPaymentSetup(const String& merchantIdentifier, c
     sendWithAsyncReply(Messages::WebPaymentCoordinatorProxy::OpenPaymentSetup(merchantIdentifier, domainName), WTFMove(completionHandler));
 }
 
-bool WebPaymentCoordinator::showPaymentUI(const URL& originatingURL, const Vector<URL>& linkIconURLs, const WebCore::ApplePaySessionPaymentRequest& paymentRequest)
+bool WebPaymentCoordinator::showPaymentUI(const URL& originatingURL, const Vector<URL>& linkIconURLs, const CyberCore::ApplePaySessionPaymentRequest& paymentRequest)
 {
     auto linkIconURLStrings = linkIconURLs.map([](auto& linkIconURL) {
         return linkIconURL.string();
@@ -112,36 +112,36 @@ bool WebPaymentCoordinator::showPaymentUI(const URL& originatingURL, const Vecto
     return result;
 }
 
-void WebPaymentCoordinator::completeMerchantValidation(const WebCore::PaymentMerchantSession& paymentMerchantSession)
+void WebPaymentCoordinator::completeMerchantValidation(const CyberCore::PaymentMerchantSession& paymentMerchantSession)
 {
     send(Messages::WebPaymentCoordinatorProxy::CompleteMerchantValidation(paymentMerchantSession));
 }
 
-void WebPaymentCoordinator::completeShippingMethodSelection(std::optional<WebCore::ApplePayShippingMethodUpdate>&& update)
+void WebPaymentCoordinator::completeShippingMethodSelection(std::optional<CyberCore::ApplePayShippingMethodUpdate>&& update)
 {
     send(Messages::WebPaymentCoordinatorProxy::CompleteShippingMethodSelection(WTFMove(update)));
 }
 
-void WebPaymentCoordinator::completeShippingContactSelection(std::optional<WebCore::ApplePayShippingContactUpdate>&& update)
+void WebPaymentCoordinator::completeShippingContactSelection(std::optional<CyberCore::ApplePayShippingContactUpdate>&& update)
 {
     send(Messages::WebPaymentCoordinatorProxy::CompleteShippingContactSelection(WTFMove(update)));
 }
 
-void WebPaymentCoordinator::completePaymentMethodSelection(std::optional<WebCore::ApplePayPaymentMethodUpdate>&& update)
+void WebPaymentCoordinator::completePaymentMethodSelection(std::optional<CyberCore::ApplePayPaymentMethodUpdate>&& update)
 {
     send(Messages::WebPaymentCoordinatorProxy::CompletePaymentMethodSelection(WTFMove(update)));
 }
 
 #if ENABLE(APPLE_PAY_COUPON_CODE)
 
-void WebPaymentCoordinator::completeCouponCodeChange(std::optional<WebCore::ApplePayCouponCodeUpdate>&& update)
+void WebPaymentCoordinator::completeCouponCodeChange(std::optional<CyberCore::ApplePayCouponCodeUpdate>&& update)
 {
     send(Messages::WebPaymentCoordinatorProxy::CompleteCouponCodeChange(WTFMove(update)));
 }
 
 #endif // ENABLE(APPLE_PAY_COUPON_CODE)
 
-void WebPaymentCoordinator::completePaymentSession(WebCore::ApplePayPaymentAuthorizationResult&& result)
+void WebPaymentCoordinator::completePaymentSession(CyberCore::ApplePayPaymentAuthorizationResult&& result)
 {
     send(Messages::WebPaymentCoordinatorProxy::CompletePaymentSession(WTFMove(result)));
 }
@@ -180,22 +180,22 @@ void WebPaymentCoordinator::validateMerchant(const String& validationURLString)
     paymentCoordinator().validateMerchant(URL { validationURLString });
 }
 
-void WebPaymentCoordinator::didAuthorizePayment(const WebCore::Payment& payment)
+void WebPaymentCoordinator::didAuthorizePayment(const CyberCore::Payment& payment)
 {
     paymentCoordinator().didAuthorizePayment(payment);
 }
 
-void WebPaymentCoordinator::didSelectShippingMethod(const WebCore::ApplePayShippingMethod& shippingMethod)
+void WebPaymentCoordinator::didSelectShippingMethod(const CyberCore::ApplePayShippingMethod& shippingMethod)
 {
     paymentCoordinator().didSelectShippingMethod(shippingMethod);
 }
 
-void WebPaymentCoordinator::didSelectShippingContact(const WebCore::PaymentContact& shippingContact)
+void WebPaymentCoordinator::didSelectShippingContact(const CyberCore::PaymentContact& shippingContact)
 {
     paymentCoordinator().didSelectShippingContact(shippingContact);
 }
 
-void WebPaymentCoordinator::didSelectPaymentMethod(const WebCore::PaymentMethod& paymentMethod)
+void WebPaymentCoordinator::didSelectPaymentMethod(const CyberCore::PaymentMethod& paymentMethod)
 {
     paymentCoordinator().didSelectPaymentMethod(paymentMethod);
 }
@@ -209,22 +209,22 @@ void WebPaymentCoordinator::didChangeCouponCode(String&& couponCode)
 
 #endif // ENABLE(APPLE_PAY_COUPON_CODE)
 
-void WebPaymentCoordinator::didCancelPaymentSession(WebCore::PaymentSessionError&& sessionError)
+void WebPaymentCoordinator::didCancelPaymentSession(CyberCore::PaymentSessionError&& sessionError)
 {
     paymentCoordinator().didCancelPaymentSession(WTFMove(sessionError));
 }
 
-WebCore::PaymentCoordinator& WebPaymentCoordinator::paymentCoordinator()
+CyberCore::PaymentCoordinator& WebPaymentCoordinator::paymentCoordinator()
 {
     return m_webPage.corePage()->paymentCoordinator();
 }
 
-void WebPaymentCoordinator::getSetupFeatures(const WebCore::ApplePaySetupConfiguration& configuration, const URL& url, CompletionHandler<void(Vector<Ref<WebCore::ApplePaySetupFeature>>&&)>&& completionHandler)
+void WebPaymentCoordinator::getSetupFeatures(const CyberCore::ApplePaySetupConfiguration& configuration, const URL& url, CompletionHandler<void(Vector<Ref<CyberCore::ApplePaySetupFeature>>&&)>&& completionHandler)
 {
     m_webPage.sendWithAsyncReply(Messages::WebPaymentCoordinatorProxy::GetSetupFeatures(PaymentSetupConfiguration { configuration, url }), WTFMove(completionHandler));
 }
 
-void WebPaymentCoordinator::beginApplePaySetup(const WebCore::ApplePaySetupConfiguration& configuration, const URL& url, Vector<RefPtr<WebCore::ApplePaySetupFeature>>&& features, CompletionHandler<void(bool)>&& completionHandler)
+void WebPaymentCoordinator::beginApplePaySetup(const CyberCore::ApplePaySetupConfiguration& configuration, const URL& url, Vector<RefPtr<CyberCore::ApplePaySetupFeature>>&& features, CompletionHandler<void(bool)>&& completionHandler)
 {
     m_webPage.sendWithAsyncReply(Messages::WebPaymentCoordinatorProxy::BeginApplePaySetup(PaymentSetupConfiguration { configuration, url }, PaymentSetupFeatures { WTFMove(features) }), WTFMove(completionHandler));
 }

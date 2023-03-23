@@ -67,7 +67,7 @@ static RetainPtr<WebView> webView;
 
 namespace TestWebKitAPI {
 
-TEST(WebKitLegacy, DeallocWebViewInEventListener)
+TEST(CyberKitLegacy, DeallocWebViewInEventListener)
 {
     @autoreleasepool {
         webView = adoptNS([[WebView alloc] initWithFrame:NSMakeRect(0, 0, 400, 400) frameName:nil groupName:nil]);

@@ -159,7 +159,7 @@ private:
 @end
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 ModalContainerControlClassifier::ModalContainerControlClassifier()
     : m_queue(WorkQueue::create("com.apple.WebKit.ModalContainerControlClassifier"))

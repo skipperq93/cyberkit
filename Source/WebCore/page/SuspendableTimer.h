@@ -32,7 +32,7 @@
 #include <wtf/Function.h>
 #include <wtf/Seconds.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SuspendableTimerBase : private TimerBase, public ActiveDOMObject {
     WTF_MAKE_FAST_ALLOCATED;
@@ -104,4 +104,4 @@ private:
     Function<void()> m_function;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

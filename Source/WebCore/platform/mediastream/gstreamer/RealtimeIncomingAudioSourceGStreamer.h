@@ -23,7 +23,7 @@
 
 #include "RealtimeIncomingSourceGStreamer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RealtimeIncomingAudioSourceGStreamer : public RealtimeIncomingSourceGStreamer {
 public:
@@ -44,10 +44,10 @@ private:
     RealtimeMediaSourceSettings m_currentSettings;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::RealtimeIncomingAudioSourceGStreamer)
-    static bool isType(const WebCore::RealtimeMediaSource& source) { return source.isIncomingAudioSource(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::RealtimeIncomingAudioSourceGStreamer)
+    static bool isType(const CyberCore::RealtimeMediaSource& source) { return source.isIncomingAudioSource(); }
 SPECIALIZE_TYPE_TRAITS_END()
 
 #endif // USE(GSTREAMER_WEBRTC)

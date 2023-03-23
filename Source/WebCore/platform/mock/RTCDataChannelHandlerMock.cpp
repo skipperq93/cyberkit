@@ -33,7 +33,7 @@
 #include "RTCDataChannelHandlerClient.h"
 #include "RTCNotifiersMock.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 RTCDataChannelHandlerMock::RTCDataChannelHandlerMock(const String& label, const RTCDataChannelInit& init)
     : m_label(label)
@@ -67,6 +67,6 @@ void RTCDataChannelHandlerMock::close()
     m_timerEvents.append(adoptRef(new TimerEvent(this, WTFMove(notifier))));
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

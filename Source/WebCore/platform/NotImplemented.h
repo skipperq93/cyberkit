@@ -38,14 +38,14 @@
     #define notImplemented() ((void)0)
 #else
 
-namespace WebCore {
+namespace CyberCore {
 WEBCORE_EXPORT WTFLogChannel* notImplementedLoggingChannel();
 }
 
 #define notImplemented() do { \
         static bool havePrinted = false; \
         if (!havePrinted && !suppressNotImplementedWarning()) { \
-            WTFLogVerbose(__FILE__, __LINE__, WTF_PRETTY_FUNCTION, WebCore::notImplementedLoggingChannel(), "UNIMPLEMENTED: "); \
+            WTFLogVerbose(__FILE__, __LINE__, WTF_PRETTY_FUNCTION, CyberCore::notImplementedLoggingChannel(), "UNIMPLEMENTED: "); \
             havePrinted = true; \
         } \
     } while (0)

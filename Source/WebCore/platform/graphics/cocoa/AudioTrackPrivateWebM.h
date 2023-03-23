@@ -30,7 +30,7 @@
 #include "AudioTrackPrivate.h"
 #include <webm/dom_types.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioTrackPrivateWebM final : public AudioTrackPrivate {
 public:

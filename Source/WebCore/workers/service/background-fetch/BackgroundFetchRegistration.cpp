@@ -41,7 +41,7 @@
 #include "ServiceWorkerRegistrationBackgroundFetchAPI.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(BackgroundFetchRegistration);
 
@@ -203,7 +203,7 @@ bool BackgroundFetchRegistration::virtualHasPendingActivity() const
     return m_information.recordsAvailable;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)
 

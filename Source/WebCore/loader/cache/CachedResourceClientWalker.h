@@ -30,7 +30,7 @@
 #include <wtf/FixedVector.h>
 #include <wtf/HashCountedSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // Call this "walker" instead of iterator so people won't expect Qt or STL-style iterator interface.
 // Just keep calling next() on this. It's safe from deletions of items.
@@ -65,4 +65,4 @@ private:
     size_t m_index { 0 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -32,7 +32,7 @@
 #include "StyleInvalidationFunctions.h"
 #include <wtf/BitVector.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace Style {
 
 enum class ClassChangeType : bool { Add, Remove };

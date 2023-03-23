@@ -36,7 +36,7 @@ OBJC_CLASS NSHTTPCookieStorage;
 OBJC_CLASS NSURLSessionDataTask;
 OBJC_CLASS NSMutableURLRequest;
 
-namespace WebCore {
+namespace CyberCore {
 class RegistrableDomain;
 class SharedBuffer;
 enum class NetworkConnectionIntegrity : uint16_t;
@@ -60,13 +60,13 @@ public:
     using TaskIdentifier = uint64_t;
 
     void didSendData(uint64_t totalBytesSent, uint64_t totalBytesExpectedToSend);
-    void didReceiveChallenge(WebCore::AuthenticationChallenge&&, NegotiatedLegacyTLS, ChallengeCompletionHandler&&);
+    void didReceiveChallenge(CyberCore::AuthenticationChallenge&&, NegotiatedLegacyTLS, ChallengeCompletionHandler&&);
     void didNegotiateModernTLS(const URL&);
-    void didCompleteWithError(const WebCore::ResourceError&, const WebCore::NetworkLoadMetrics&);
-    void didReceiveResponse(WebCore::ResourceResponse&&, NegotiatedLegacyTLS, PrivateRelayed, ResponseCompletionHandler&&);
-    void didReceiveData(const WebCore::SharedBuffer&);
+    void didCompleteWithError(const CyberCore::ResourceError&, const CyberCore::NetworkLoadMetrics&);
+    void didReceiveResponse(CyberCore::ResourceResponse&&, NegotiatedLegacyTLS, PrivateRelayed, ResponseCompletionHandler&&);
+    void didReceiveData(const CyberCore::SharedBuffer&);
 
-    void willPerformHTTPRedirection(WebCore::ResourceResponse&&, WebCore::ResourceRequest&&, RedirectCompletionHandler&&);
+    void willPerformHTTPRedirection(CyberCore::ResourceResponse&&, CyberCore::ResourceRequest&&, RedirectCompletionHandler&&);
     void transferSandboxExtensionToDownload(Download&);
 
     void cancel() override;
@@ -77,33 +77,33 @@ public:
     void setPendingDownloadLocation(const String&, SandboxExtension::Handle&&, bool /*allowOverwrite*/) override;
     String suggestedFilename() const override;
 
-    WebCore::NetworkLoadMetrics& networkLoadMetrics() { return m_networkLoadMetrics; }
+    CyberCore::NetworkLoadMetrics& networkLoadMetrics() { return m_networkLoadMetrics; }
 
-    WebCore::FrameIdentifier frameID() const { return m_frameID; };
-    WebCore::PageIdentifier pageID() const { return m_pageID; };
-    WebCore::ShouldRelaxThirdPartyCookieBlocking shouldRelaxThirdPartyCookieBlocking() const { return m_shouldRelaxThirdPartyCookieBlocking; }
+    CyberCore::FrameIdentifier frameID() const { return m_frameID; };
+    CyberCore::PageIdentifier pageID() const { return m_pageID; };
+    CyberCore::ShouldRelaxThirdPartyCookieBlocking shouldRelaxThirdPartyCookieBlocking() const { return m_shouldRelaxThirdPartyCookieBlocking; }
 
     String description() const override;
 
-    void setH2PingCallback(const URL&, CompletionHandler<void(Expected<WTF::Seconds, WebCore::ResourceError>&&)>&&) override;
-    void setPriority(WebCore::ResourceLoadPriority) override;
+    void setH2PingCallback(const URL&, CompletionHandler<void(Expected<WTF::Seconds, CyberCore::ResourceError>&&)>&&) override;
+    void setPriority(CyberCore::ResourceLoadPriority) override;
 #if ENABLE(INSPECTOR_NETWORK_THROTTLING)
     void setEmulatedConditions(const std::optional<int64_t>& bytesPerSecondLimit) override;
 #endif
 
-    void checkTAO(const WebCore::ResourceResponse&);
+    void checkTAO(const CyberCore::ResourceResponse&);
 
 private:
     NetworkDataTaskCocoa(NetworkSession&, NetworkDataTaskClient&, const NetworkLoadParameters&);
 
-    bool tryPasswordBasedAuthentication(const WebCore::AuthenticationChallenge&, ChallengeCompletionHandler&);
-    void applySniffingPoliciesAndBindRequestToInferfaceIfNeeded(RetainPtr<NSURLRequest>&, bool shouldContentSniff, WebCore::ContentEncodingSniffingPolicy);
+    bool tryPasswordBasedAuthentication(const CyberCore::AuthenticationChallenge&, ChallengeCompletionHandler&);
+    void applySniffingPoliciesAndBindRequestToInferfaceIfNeeded(RetainPtr<NSURLRequest>&, bool shouldContentSniff, CyberCore::ContentEncodingSniffingPolicy);
 
 #if ENABLE(TRACKING_PREVENTION)
     static NSHTTPCookieStorage *statelessCookieStorage();
     void updateFirstPartyInfoForSession(const URL&);
     bool shouldApplyCookiePolicyForThirdPartyCloaking() const;
-    void applyCookiePolicyForThirdPartyCloaking(const WebCore::ResourceRequest&);
+    void applyCookiePolicyForThirdPartyCloaking(const CyberCore::ResourceRequest&);
     void blockCookies();
     void unblockCookies();
     bool needsFirstPartyCookieBlockingLatchModeQuirk(const URL& firstPartyURL, const URL& requestURL, const URL& redirectingURL) const;
@@ -113,9 +113,9 @@ private:
     WeakPtr<SessionWrapper> m_sessionWrapper;
     RefPtr<SandboxExtension> m_sandboxExtension;
     RetainPtr<NSURLSessionDataTask> m_task;
-    WebCore::NetworkLoadMetrics m_networkLoadMetrics;
-    WebCore::FrameIdentifier m_frameID;
-    WebCore::PageIdentifier m_pageID;
+    CyberCore::NetworkLoadMetrics m_networkLoadMetrics;
+    CyberCore::FrameIdentifier m_frameID;
+    CyberCore::PageIdentifier m_pageID;
     WebPageProxyIdentifier m_webPageProxyID;
 
 #if ENABLE(TRACKING_PREVENTION)
@@ -125,13 +125,13 @@ private:
 
     bool m_isForMainResourceNavigationForAnyFrame { false };
     bool m_isAlwaysOnLoggingAllowed { false };
-    WebCore::ShouldRelaxThirdPartyCookieBlocking m_shouldRelaxThirdPartyCookieBlocking { WebCore::ShouldRelaxThirdPartyCookieBlocking::No };
-    RefPtr<WebCore::SecurityOrigin> m_sourceOrigin;
+    CyberCore::ShouldRelaxThirdPartyCookieBlocking m_shouldRelaxThirdPartyCookieBlocking { CyberCore::ShouldRelaxThirdPartyCookieBlocking::No };
+    RefPtr<CyberCore::SecurityOrigin> m_sourceOrigin;
 };
 
-WebCore::Credential serverTrustCredential(const WebCore::AuthenticationChallenge&);
-void setPCMDataCarriedOnRequest(WebCore::PrivateClickMeasurement::PcmDataCarried, NSMutableURLRequest *);
+CyberCore::Credential serverTrustCredential(const CyberCore::AuthenticationChallenge&);
+void setPCMDataCarriedOnRequest(CyberCore::PrivateClickMeasurement::PcmDataCarried, NSMutableURLRequest *);
 
-void enableNetworkConnectionIntegrity(NSMutableURLRequest *, OptionSet<WebCore::NetworkConnectionIntegrity>);
+void enableNetworkConnectionIntegrity(NSMutableURLRequest *, OptionSet<CyberCore::NetworkConnectionIntegrity>);
 
 } // namespace WebKit

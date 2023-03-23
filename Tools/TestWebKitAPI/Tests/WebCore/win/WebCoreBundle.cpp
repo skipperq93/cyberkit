@@ -26,10 +26,10 @@
 #include "config.h"
 
 #include "Test.h"
-#include <CyberCore/WebCoreBundleWin.h>
+#include <CyberCore/CyberCoreBundleWin.h>
 #include <wtf/FileSystem.h>
 
-class WebCoreBundleTest : public testing::Test {
+class CyberCoreBundleTest : public testing::Test {
 public:
     void SetUp() override
     {
@@ -46,43 +46,43 @@ protected:
     String m_root;
 };
 
-TEST_F(WebCoreBundleTest, BundleRootPath)
+TEST_F(CyberCoreBundleTest, BundleRootPath)
 {
-    auto actual = WebCore::webKitBundlePath();
+    auto actual = CyberCore::webKitBundlePath();
     EXPECT_STREQ(m_root.utf8().data(), actual.utf8().data());
 }
 
-TEST_F(WebCoreBundleTest, BundlePathFromPath)
+TEST_F(CyberCoreBundleTest, BundlePathFromPath)
 {
-    auto actual = WebCore::webKitBundlePath("WebInspectorUI\\Protocol\\InspectorBackendCommands.js"_s);
+    auto actual = CyberCore::webKitBundlePath("WebInspectorUI\\Protocol\\InspectorBackendCommands.js"_s);
     auto expected = FileSystem::pathByAppendingComponents(m_root, { "WebInspectorUI"_s, "Protocol"_s, "InspectorBackendCommands.js"_s });
     EXPECT_STREQ(expected.utf8().data(), actual.utf8().data());
 }
 
-TEST_F(WebCoreBundleTest, BundlePathFromNameTypeDirectory)
+TEST_F(CyberCoreBundleTest, BundlePathFromNameTypeDirectory)
 {
-    auto actual = WebCore::webKitBundlePath("InspectorBackendCommands"_s, "js"_s, "WebInspectorUI\\Protocol"_s);
+    auto actual = CyberCore::webKitBundlePath("InspectorBackendCommands"_s, "js"_s, "WebInspectorUI\\Protocol"_s);
     auto expected = FileSystem::pathByAppendingComponents(m_root, { "WebInspectorUI"_s, "Protocol"_s, "InspectorBackendCommands.js"_s });
     EXPECT_STREQ(expected.utf8().data(), actual.utf8().data());
 
-    actual = WebCore::webKitBundlePath("Localizable"_s, "strings"_s, ""_s);
+    actual = CyberCore::webKitBundlePath("Localizable"_s, "strings"_s, ""_s);
     expected = FileSystem::pathByAppendingComponents(m_root, { "en.lproj"_s, "Localizable.strings"_s });
     EXPECT_STREQ(expected.utf8().data(), actual.utf8().data());
 
 #if !ENABLE(MODERN_MEDIA_CONTROLS)
-    actual = WebCore::webKitBundlePath("mediaControlsLocalizedStrings"_s, "js"_s, ""_s);
+    actual = CyberCore::webKitBundlePath("mediaControlsLocalizedStrings"_s, "js"_s, ""_s);
     expected = FileSystem::pathByAppendingComponents(m_root, { "en.lproj"_s, "mediaControlsLocalizedStrings.js"_s });
     EXPECT_STREQ(expected.utf8().data(), actual.utf8().data());
 #endif
 
-    actual = WebCore::webKitBundlePath("file-does-not"_s, "exist"_s, "file"_s);
+    actual = CyberCore::webKitBundlePath("file-does-not"_s, "exist"_s, "file"_s);
     expected = emptyString();
     EXPECT_STREQ(expected.utf8().data(), actual.utf8().data());
 }
 
-TEST_F(WebCoreBundleTest, BundlePathFromComponents)
+TEST_F(CyberCoreBundleTest, BundlePathFromComponents)
 {
-    auto actual = WebCore::webKitBundlePath({ "WebInspectorUI"_s, "Protocol"_s, "InspectorBackendCommands.js"_s });
+    auto actual = CyberCore::webKitBundlePath({ "WebInspectorUI"_s, "Protocol"_s, "InspectorBackendCommands.js"_s });
     auto expected = FileSystem::pathByAppendingComponents(m_root, { "WebInspectorUI"_s, "Protocol"_s, "InspectorBackendCommands.js"_s });
     EXPECT_STREQ(expected.utf8().data(), actual.utf8().data());
 }

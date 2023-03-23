@@ -47,7 +47,7 @@
 #include "ImageBufferUtilitiesCairo.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 static const float MaxClampedLength = 4096;
 static const float MaxClampedArea = MaxClampedLength * MaxClampedLength;
@@ -586,4 +586,4 @@ std::unique_ptr<ThreadSafeImageBufferFlusher> ImageBuffer::createFlusher()
     return nullptr;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

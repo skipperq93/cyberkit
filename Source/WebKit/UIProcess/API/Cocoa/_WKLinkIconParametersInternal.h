@@ -25,12 +25,12 @@
 
 #import "_WKLinkIconParameters.h"
 
-namespace WebCore {
+namespace CyberCore {
 struct LinkIcon;
 }
 
 @interface _WKLinkIconParameters ()
 
-- (instancetype)_initWithLinkIcon:(const WebCore::LinkIcon&)linkIcon;
+- (instancetype)_initWithLinkIcon:(const CyberCore::LinkIcon&)linkIcon;
 
 @end

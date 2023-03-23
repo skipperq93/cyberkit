@@ -27,7 +27,7 @@
 #include "TransformOperation.h"
 #include <wtf/Ref.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct BlendingContext;
 
@@ -83,6 +83,6 @@ private:
     double m_angle;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_TRANSFORMOPERATION(WebCore::RotateTransformOperation, isRotateTransformOperationType())
+SPECIALIZE_TYPE_TRAITS_TRANSFORMOPERATION(CyberCore::RotateTransformOperation, isRotateTransformOperationType())

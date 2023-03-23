@@ -24,7 +24,7 @@
  */
 
 #include "config.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 
 #include <CyberCore/Font.h>
 #include <CyberCore/FontCache.h>
@@ -34,7 +34,7 @@
 
 namespace IPC {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 template<> struct ArgumentCoder<LOGFONT> {
     static void encode(Encoder& encoder, const LOGFONT& logFont)

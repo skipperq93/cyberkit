@@ -32,7 +32,7 @@
 #include "GamepadProviderLibWPE.h"
 #include <wpe/wpe.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 GamepadLibWPE::GamepadLibWPE(struct wpe_gamepad_provider* provider, uintptr_t gamepadId, unsigned index)
     : PlatformGamepad(index)
@@ -84,6 +84,6 @@ void GamepadLibWPE::absoluteAxisChanged(unsigned axis, double value)
     GamepadProviderLibWPE::singleton().scheduleInputNotification(*this, GamepadProviderLibWPE::ShouldMakeGamepadsVisible::No);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(GAMEPAD) && USE(LIBWPE)

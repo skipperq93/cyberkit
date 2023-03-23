@@ -30,7 +30,7 @@
 
 #import <Foundation/Foundation.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 NSTextCheckingTypes nsTextCheckingTypes(OptionSet<TextCheckingType> types)
 {
@@ -52,6 +52,6 @@ NSTextCheckingTypes nsTextCheckingTypes(OptionSet<TextCheckingType> types)
     return mask;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(MAC)

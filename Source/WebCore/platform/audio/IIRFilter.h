@@ -27,7 +27,7 @@
 
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class IIRFilter {
     WTF_MAKE_FAST_ALLOCATED;
@@ -73,4 +73,4 @@ private:
     const Vector<double>& m_feedback;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

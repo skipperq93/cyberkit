@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -17,16 +17,16 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitDOMDOMSelectionPrivate_h
-#define WebKitDOMDOMSelectionPrivate_h
+#ifndef CyberKitDOMDOMSelectionPrivate_h
+#define CyberKitDOMDOMSelectionPrivate_h
 
 #include <CyberCore/DOMSelection.h>
-#include <webkitdom/WebKitDOMDOMSelection.h>
+#include <webkitdom/CyberKitDOMDOMSelection.h>
 
-namespace WebKit {
-WebKitDOMDOMSelection* wrapDOMSelection(WebCore::DOMSelection*);
-WebKitDOMDOMSelection* kit(WebCore::DOMSelection*);
-WebCore::DOMSelection* core(WebKitDOMDOMSelection*);
-} // namespace WebKit
+namespace CyberKit {
+CyberKitDOMDOMSelection* wrapDOMSelection(CyberCore::DOMSelection*);
+CyberKitDOMDOMSelection* kit(CyberCore::DOMSelection*);
+CyberCore::DOMSelection* core(CyberKitDOMDOMSelection*);
+} // namespace CyberKit
 
-#endif /* WebKitDOMDOMSelectionPrivate_h */
+#endif /* CyberKitDOMDOMSelectionPrivate_h */

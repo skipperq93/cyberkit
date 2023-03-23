@@ -36,7 +36,7 @@
 #import <CyberCore/SecurityOriginData.h>
 #import <wtf/URL.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 @implementation WebSecurityOrigin
 
@@ -48,7 +48,7 @@ using namespace WebCore;
     if (!origin)
         return nil;
 
-    return adoptNS([[WebSecurityOrigin alloc] _initWithWebCoreSecurityOrigin:origin->securityOrigin().ptr()]).autorelease();
+    return adoptNS([[WebSecurityOrigin alloc] _initWithCyberCoreSecurityOrigin:origin->securityOrigin().ptr()]).autorelease();
 }
 
 - (id)initWithURL:(NSURL *)url
@@ -120,7 +120,7 @@ using namespace WebCore;
 
 @implementation WebSecurityOrigin (WebInternal)
 
-- (id)_initWithWebCoreSecurityOrigin:(SecurityOrigin*)origin
+- (id)_initWithCyberCoreSecurityOrigin:(SecurityOrigin*)origin
 {
     ASSERT(origin);
     self = [super init];
@@ -136,7 +136,7 @@ using namespace WebCore;
 - (id)_initWithString:(NSString *)originString
 {
     auto origin = SecurityOrigin::createFromString(originString);
-    return adoptNS([[WebSecurityOrigin alloc] _initWithWebCoreSecurityOrigin:origin.ptr()]).autorelease();
+    return adoptNS([[WebSecurityOrigin alloc] _initWithCyberCoreSecurityOrigin:origin.ptr()]).autorelease();
 }
 
 - (SecurityOrigin *)_core

@@ -49,7 +49,7 @@
 #define ENABLE_SQLITE_FAST_MALLOC (BENABLE(MALLOC_SIZE) && BENABLE(MALLOC_GOOD_SIZE))
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 static const char notOpenErrorMessage[] = "database is not open";
 
@@ -790,4 +790,4 @@ Expected<UniqueRef<SQLiteStatement>, int> SQLiteDatabase::prepareHeapStatement(A
     return UniqueRef<SQLiteStatement>(*new SQLiteStatement(*this, sqlStatement.value()));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

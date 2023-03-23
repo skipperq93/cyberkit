@@ -22,7 +22,7 @@
 #include "SVGElement.h"
 #include "SVGFontElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGVKernElement final : public SVGElement {
     WTF_MAKE_ISO_ALLOCATED(SVGVKernElement);
@@ -37,4 +37,4 @@ private:
     bool rendererIsNeeded(const RenderStyle&) final { return false; }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -28,23 +28,23 @@
 
 #include <CyberCore/ProgressTrackerClient.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPage;
 
-class WebProgressTrackerClient : public WebCore::ProgressTrackerClient {
+class WebProgressTrackerClient : public CyberCore::ProgressTrackerClient {
     WTF_MAKE_FAST_ALLOCATED;
 public:
     explicit WebProgressTrackerClient(WebPage&);
     
 private:
-    void progressStarted(WebCore::Frame& originatingProgressFrame) override;
-    void progressEstimateChanged(WebCore::Frame& originatingProgressFrame) override;
-    void progressFinished(WebCore::Frame& originatingProgressFrame) override;
+    void progressStarted(CyberCore::Frame& originatingProgressFrame) override;
+    void progressEstimateChanged(CyberCore::Frame& originatingProgressFrame) override;
+    void progressFinished(CyberCore::Frame& originatingProgressFrame) override;
 
     WebPage& m_webPage;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // WebProgressTrackerClient_h

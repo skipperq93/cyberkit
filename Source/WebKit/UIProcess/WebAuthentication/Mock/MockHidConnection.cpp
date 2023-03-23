@@ -39,8 +39,8 @@
 #include <wtf/text/Base64.h>
 
 namespace WebKit {
-using Mock = WebCore::MockWebAuthenticationConfiguration;
-using namespace WebCore;
+using Mock = CyberCore::MockWebAuthenticationConfiguration;
+using namespace CyberCore;
 using namespace cbor;
 using namespace fido;
 

@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -17,16 +17,16 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitDOMHTMLLIElementPrivate_h
-#define WebKitDOMHTMLLIElementPrivate_h
+#ifndef CyberKitDOMHTMLLIElementPrivate_h
+#define CyberKitDOMHTMLLIElementPrivate_h
 
 #include <CyberCore/HTMLLIElement.h>
-#include <webkitdom/WebKitDOMHTMLLIElement.h>
+#include <webkitdom/CyberKitDOMHTMLLIElement.h>
 
-namespace WebKit {
-WebKitDOMHTMLLIElement* wrapHTMLLIElement(WebCore::HTMLLIElement*);
-WebKitDOMHTMLLIElement* kit(WebCore::HTMLLIElement*);
-WebCore::HTMLLIElement* core(WebKitDOMHTMLLIElement*);
-} // namespace WebKit
+namespace CyberKit {
+CyberKitDOMHTMLLIElement* wrapHTMLLIElement(CyberCore::HTMLLIElement*);
+CyberKitDOMHTMLLIElement* kit(CyberCore::HTMLLIElement*);
+CyberCore::HTMLLIElement* core(CyberKitDOMHTMLLIElement*);
+} // namespace CyberKit
 
-#endif /* WebKitDOMHTMLLIElementPrivate_h */
+#endif /* CyberKitDOMHTMLLIElementPrivate_h */

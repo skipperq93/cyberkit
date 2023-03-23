@@ -39,7 +39,7 @@
 GST_DEBUG_CATEGORY_EXTERN(webkitMediaThunderDecryptDebugCategory);
 #define GST_CAT_DEFAULT webkitMediaThunderDecryptDebugCategory
 
-namespace WebCore {
+namespace CyberCore {
 
 // NOTE: YouTube 2019 EME conformance tests expect this to be >=5s.
 const Seconds s_licenseKeyResponseTimeout = Seconds(6);
@@ -100,6 +100,6 @@ bool CDMProxyThunder::decrypt(CDMProxyThunder::DecryptionContext& input)
     return true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ENCRYPTED_MEDIA) && ENABLE(THUNDER)

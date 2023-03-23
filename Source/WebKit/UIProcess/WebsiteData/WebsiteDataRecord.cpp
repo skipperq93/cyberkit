@@ -57,13 +57,13 @@ String WebsiteDataRecord::displayNameForCookieHostName(const String& hostName)
 String WebsiteDataRecord::displayNameForHostName(const String& hostName)
 {
 #if ENABLE(PUBLIC_SUFFIX_LIST)
-    return WebCore::topPrivatelyControlledDomain(hostName);
+    return CyberCore::topPrivatelyControlledDomain(hostName);
 #endif
 
     return String();
 }
 
-String WebsiteDataRecord::displayNameForOrigin(const WebCore::SecurityOriginData& securityOrigin)
+String WebsiteDataRecord::displayNameForOrigin(const CyberCore::SecurityOriginData& securityOrigin)
 {
     const auto& protocol = securityOrigin.protocol();
 
@@ -72,13 +72,13 @@ String WebsiteDataRecord::displayNameForOrigin(const WebCore::SecurityOriginData
 
 #if ENABLE(PUBLIC_SUFFIX_LIST)
     if (protocol == "http"_s || protocol == "https"_s)
-        return WebCore::topPrivatelyControlledDomain(securityOrigin.host());
+        return CyberCore::topPrivatelyControlledDomain(securityOrigin.host());
 #endif
 
     return String();
 }
 
-void WebsiteDataRecord::add(WebsiteDataType type, const WebCore::SecurityOriginData& origin)
+void WebsiteDataRecord::add(WebsiteDataType type, const CyberCore::SecurityOriginData& origin)
 {
     types.add(type);
     origins.add(origin);
@@ -107,7 +107,7 @@ void WebsiteDataRecord::addAlternativeServicesHostname(const String& hostName)
 }
 
 #if ENABLE(TRACKING_PREVENTION)
-void WebsiteDataRecord::addResourceLoadStatisticsRegistrableDomain(const WebCore::RegistrableDomain& domain)
+void WebsiteDataRecord::addResourceLoadStatisticsRegistrableDomain(const CyberCore::RegistrableDomain& domain)
 {
     types.add(WebsiteDataType::ResourceLoadStatistics);
     resourceLoadStatisticsRegistrableDomains.add(domain);
@@ -124,7 +124,7 @@ static inline bool hostIsInDomain(StringView host, StringView domain)
     return !suffixOffset || host[suffixOffset - 1] == '.';
 }
 
-bool WebsiteDataRecord::matches(const WebCore::RegistrableDomain& domain) const
+bool WebsiteDataRecord::matches(const CyberCore::RegistrableDomain& domain) const
 {
     if (domain.isEmpty())
         return false;
@@ -148,10 +148,10 @@ String WebsiteDataRecord::topPrivatelyControlledDomain()
 {
 #if ENABLE(PUBLIC_SUFFIX_LIST)
     if (!cookieHostNames.isEmpty())
-        return WebCore::topPrivatelyControlledDomain(cookieHostNames.takeAny());
+        return CyberCore::topPrivatelyControlledDomain(cookieHostNames.takeAny());
     
     if (!origins.isEmpty())
-        return WebCore::topPrivatelyControlledDomain(origins.takeAny().securityOrigin().get().host());
+        return CyberCore::topPrivatelyControlledDomain(origins.takeAny().securityOrigin().get().host());
 #endif // ENABLE(PUBLIC_SUFFIX_LIST)
     
     return emptyString();

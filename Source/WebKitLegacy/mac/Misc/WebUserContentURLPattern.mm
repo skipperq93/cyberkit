@@ -27,7 +27,7 @@
 #import <CyberCore/UserContentURLPattern.h>
 #import <wtf/URL.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 @interface WebUserContentURLPatternPrivate : NSObject
 {

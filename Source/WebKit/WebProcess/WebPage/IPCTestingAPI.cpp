@@ -43,7 +43,7 @@
 #include "SerializedTypeInfo.h"
 #include "StreamClientConnection.h"
 #include "StreamConnectionBuffer.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebFrame.h"
 #include "WebPage.h"
 #include "WebProcess.h"
@@ -63,7 +63,7 @@
 #include <CyberCore/ScriptController.h>
 #include <wtf/PageBlock.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 namespace IPCTestingAPI {
 
@@ -1958,7 +1958,7 @@ static bool encodeRemoteRenderingBackendCreationParameters(IPC::Encoder& encoder
     if (!pageProxyID)
         return false;
 
-    auto pageID = getObjectIdentifierFromProperty<WebCore::PageIdentifierType>(globalObject, jsObject, "pageID"_s, scope);
+    auto pageID = getObjectIdentifierFromProperty<CyberCore::PageIdentifierType>(globalObject, jsObject, "pageID"_s, scope);
     if (!pageID)
         return false;
 
@@ -2128,7 +2128,7 @@ static bool encodeArgument(IPC::Encoder& encoder, JSContextRef context, JSValueR
         return false;
 
     if (type == "IntPoint"_s) {
-        if (!encodePointType<WebCore::IntPoint>(encoder, globalObject, jsObject, scope)) {
+        if (!encodePointType<CyberCore::IntPoint>(encoder, globalObject, jsObject, scope)) {
             *exception = createTypeError(context, "Failed to convert IntPoint"_s);
             return false;
         }
@@ -2136,7 +2136,7 @@ static bool encodeArgument(IPC::Encoder& encoder, JSContextRef context, JSValueR
     }
 
     if (type == "FloatPoint"_s) {
-        if (!encodePointType<WebCore::IntPoint>(encoder, globalObject, jsObject, scope)) {
+        if (!encodePointType<CyberCore::IntPoint>(encoder, globalObject, jsObject, scope)) {
             *exception = createTypeError(context, "Failed to convert FloatPoint"_s);
             return false;
         }
@@ -2144,7 +2144,7 @@ static bool encodeArgument(IPC::Encoder& encoder, JSContextRef context, JSValueR
     }
 
     if (type == "IntRect"_s) {
-        if (!encodeRectType<WebCore::IntRect>(encoder, globalObject, jsObject, scope)) {
+        if (!encodeRectType<CyberCore::IntRect>(encoder, globalObject, jsObject, scope)) {
             *exception = createTypeError(context, "Failed to convert IntRect"_s);
             return false;
         }
@@ -2152,7 +2152,7 @@ static bool encodeArgument(IPC::Encoder& encoder, JSContextRef context, JSValueR
     }
 
     if (type == "FloatRect"_s) {
-        if (!encodeRectType<WebCore::FloatRect>(encoder, globalObject, jsObject, scope)) {
+        if (!encodeRectType<CyberCore::FloatRect>(encoder, globalObject, jsObject, scope)) {
             *exception = createTypeError(context, "Failed to convert FloatRect"_s);
             return false;
         }
@@ -2254,13 +2254,13 @@ static bool encodeArgument(IPC::Encoder& encoder, JSContextRef context, JSValueR
 
     if (type == "RegistrableDomain"_s) {
         if (jsValue.isUndefinedOrNull()) {
-            encoder << WebCore::RegistrableDomain { };
+            encoder << CyberCore::RegistrableDomain { };
             return true;
         }
         auto string = jsValue.toWTFString(globalObject);
         if (scope.exception())
             return false;
-        encoder << WebCore::RegistrableDomain { URL { string } };
+        encoder << CyberCore::RegistrableDomain { URL { string } };
         return true;
     }
 
@@ -2269,9 +2269,9 @@ static bool encodeArgument(IPC::Encoder& encoder, JSContextRef context, JSValueR
         uint64_t processIdentifier = jsValue.get(globalObject, 1u).toBigUInt64(globalObject);
         if (!frameIdentifier || !processIdentifier)
             return false;
-        encoder << WebCore::FrameIdentifier {
-            makeObjectIdentifier<WebCore::FrameIdentifierType>(frameIdentifier),
-            makeObjectIdentifier<WebCore::ProcessIdentifierType>(processIdentifier)
+        encoder << CyberCore::FrameIdentifier {
+            makeObjectIdentifier<CyberCore::FrameIdentifierType>(frameIdentifier),
+            makeObjectIdentifier<CyberCore::ProcessIdentifierType>(processIdentifier)
         };
         return true;
     }
@@ -2282,7 +2282,7 @@ static bool encodeArgument(IPC::Encoder& encoder, JSContextRef context, JSValueR
             return false;
         }
         uint32_t rgba = jsValue.asNumber();
-        encoder << WebCore::Color { WebCore::asSRGBA(WebCore::PackedColor::RGBA(rgba)) };
+        encoder << CyberCore::Color { CyberCore::asSRGBA(CyberCore::PackedColor::RGBA(rgba)) };
         return true;
     }
 
@@ -2923,7 +2923,7 @@ JSC::JSObject* JSMessageListener::jsDescriptionFromDecoder(JSC::JSGlobalObject* 
     return jsResult;
 }
 
-void inject(WebPage& webPage, WebFrame& webFrame, WebCore::DOMWrapperWorld& world)
+void inject(WebPage& webPage, WebFrame& webFrame, CyberCore::DOMWrapperWorld& world)
 {
     auto* globalObject = webFrame.coreFrame()->script().globalObject(world);
 
@@ -2939,7 +2939,7 @@ void inject(WebPage& webPage, WebFrame& webFrame, WebCore::DOMWrapperWorld& worl
 
 } // namespace IPCTestingAPI
 
-} // namespace WebKit
+} // namespace CyberKit
 
 namespace IPC {
 
@@ -2952,16 +2952,16 @@ JSC::JSValue jsValueForDecodedArgumentValue(JSC::JSGlobalObject* globalObject, I
     RETURN_IF_EXCEPTION(scope, JSC::JSValue());
     object->putDirect(vm, JSC::Identifier::fromString(vm, "type"_s), JSC::jsNontrivialString(vm, "Semaphore"_s));
     RETURN_IF_EXCEPTION(scope, JSC::JSValue());
-    auto jsValue = toJS(globalObject, WebKit::IPCTestingAPI::JSIPCSemaphore::create(WTFMove(value))->createJSWrapper(toRef(globalObject)));
+    auto jsValue = toJS(globalObject, CyberKit::IPCTestingAPI::JSIPCSemaphore::create(WTFMove(value))->createJSWrapper(toRef(globalObject)));
     object->putDirect(vm, JSC::Identifier::fromString(vm, "value"_s), jsValue);
     RETURN_IF_EXCEPTION(scope, JSC::JSValue());
     return object;
 }
 
-template<> JSC::JSValue jsValueForDecodedArgumentValue(JSC::JSGlobalObject* globalObject, WebKit::SharedMemory::Handle&& value)
+template<> JSC::JSValue jsValueForDecodedArgumentValue(JSC::JSGlobalObject* globalObject, CyberKit::SharedMemory::Handle&& value)
 {
-    using SharedMemory = WebKit::SharedMemory;
-    using Protection = WebKit::SharedMemory::Protection;
+    using SharedMemory = CyberKit::SharedMemory;
+    using Protection = CyberKit::SharedMemory::Protection;
 
     auto& vm = globalObject->vm();
     auto scope = DECLARE_THROW_SCOPE(vm);
@@ -2979,7 +2979,7 @@ template<> JSC::JSValue jsValueForDecodedArgumentValue(JSC::JSGlobalObject* glob
             return JSC::JSValue();
     }
 
-    auto jsValue = toJS(globalObject, WebKit::IPCTestingAPI::JSSharedMemory::create(sharedMemory.releaseNonNull())->createJSWrapper(toRef(globalObject)));
+    auto jsValue = toJS(globalObject, CyberKit::IPCTestingAPI::JSSharedMemory::create(sharedMemory.releaseNonNull())->createJSWrapper(toRef(globalObject)));
     object->putDirect(vm, JSC::Identifier::fromString(vm, "value"_s), jsValue);
     RETURN_IF_EXCEPTION(scope, JSC::JSValue());
 

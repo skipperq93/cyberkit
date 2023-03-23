@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 class SpringSolver {
 public:
@@ -68,4 +68,4 @@ private:
     double m_B;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

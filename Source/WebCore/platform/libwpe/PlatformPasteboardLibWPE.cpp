@@ -33,7 +33,7 @@
 #include <wtf/Assertions.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 PlatformPasteboard::PlatformPasteboard(const String&)
     : m_pasteboard(wpe_pasteboard_get_singleton())
@@ -137,6 +137,6 @@ int64_t PlatformPasteboard::write(const Vector<PasteboardCustomData>&)
     return 0;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(LIBWPE)

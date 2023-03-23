@@ -34,7 +34,7 @@
 #include <variant>
 #include <wtf/ObjectIdentifier.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ServiceWorkerData;
 struct ServiceWorkerClientData;
@@ -80,6 +80,6 @@ using ServiceWorkerOrClientData = std::variant<ServiceWorkerData, ServiceWorkerC
 // FIXME: It should be possible to replace ServiceWorkerOrClientIdentifier with ScriptExecutionContextIdentifier entirely.
 using ServiceWorkerOrClientIdentifier = std::variant<ServiceWorkerIdentifier, ScriptExecutionContextIdentifier>;
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

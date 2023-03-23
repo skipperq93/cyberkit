@@ -42,7 +42,7 @@
 #include <stdio.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 SVGResources::SVGResources()
 {

@@ -40,7 +40,7 @@
 #include <cairo.h>
 #include <fontconfig/fcfreetype.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 bool GlyphPage::fill(UChar* buffer, unsigned bufferLength)
 {

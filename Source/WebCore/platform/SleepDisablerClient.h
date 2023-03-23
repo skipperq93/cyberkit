@@ -28,7 +28,7 @@
 #include "SleepDisablerIdentifier.h"
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SleepDisablerClient {
 public:
@@ -39,4 +39,4 @@ public:
 
 WEBCORE_EXPORT std::unique_ptr<SleepDisablerClient>& sleepDisablerClient();
 
-} // namespace WebCore
+} // namespace CyberCore

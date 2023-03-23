@@ -37,7 +37,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/URL.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -107,6 +107,6 @@ void RenderAttachment::layoutShadowContent(const LayoutSize& size)
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

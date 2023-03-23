@@ -34,7 +34,7 @@
 #include "gstreamer/GStreamerAudioData.h"
 #include "gstreamer/GStreamerAudioStreamDescription.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<RealtimeIncomingAudioSource> RealtimeIncomingAudioSource::create(rtc::scoped_refptr<webrtc::AudioTrackInterface>&& audioTrack, String&& audioTrackId)
 {

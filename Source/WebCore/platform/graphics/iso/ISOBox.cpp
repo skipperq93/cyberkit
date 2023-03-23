@@ -30,7 +30,7 @@
 
 using JSC::DataView;
 
-namespace WebCore {
+namespace CyberCore {
 
 ISOBox::ISOBox() = default;
 ISOBox::~ISOBox() = default;

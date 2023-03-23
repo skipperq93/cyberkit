@@ -31,7 +31,7 @@
 #include "AVTrackPrivateAVFObjCImpl.h"
 #include "SourceBufferPrivateAVFObjC.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 AudioTrackPrivateMediaSourceAVFObjC::AudioTrackPrivateMediaSourceAVFObjC(AVAssetTrack* track)
     : m_impl(makeUnique<AVTrackPrivateAVFObjCImpl>(track))

@@ -26,7 +26,7 @@
 #include "TextureMapper.h"
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 TextureMapperFPSCounter::TextureMapperFPSCounter()
     : m_isShowingFPS(false)
@@ -59,4 +59,4 @@ void TextureMapperFPSCounter::updateFPSAndDisplay(TextureMapper& textureMapper, 
     textureMapper.drawNumber(m_lastFPS, Color::black, location, matrix);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

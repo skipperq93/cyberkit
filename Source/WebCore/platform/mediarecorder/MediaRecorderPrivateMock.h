@@ -31,7 +31,7 @@
 #include <wtf/MediaTime.h>
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class MediaStreamTrackPrivate;
 
@@ -60,6 +60,6 @@ private:
     String m_videoTrackID;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_RECORDER)

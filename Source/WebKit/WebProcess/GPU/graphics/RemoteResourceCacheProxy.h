@@ -33,7 +33,7 @@
 #include <CyberCore/RenderingResourceIdentifier.h>
 #include <wtf/HashMap.h>
 
-namespace WebCore {
+namespace CyberCore {
 class Font;
 class ImageBuffer;
 }
@@ -43,20 +43,20 @@ namespace WebKit {
 class RemoteImageBufferProxy;
 class RemoteRenderingBackendProxy;
 
-class RemoteResourceCacheProxy : public WebCore::NativeImage::Observer, public WebCore::DecomposedGlyphs::Observer {
+class RemoteResourceCacheProxy : public CyberCore::NativeImage::Observer, public CyberCore::DecomposedGlyphs::Observer {
 public:
     RemoteResourceCacheProxy(RemoteRenderingBackendProxy&);
     ~RemoteResourceCacheProxy();
 
     void cacheImageBuffer(RemoteImageBufferProxy&);
-    RemoteImageBufferProxy* cachedImageBuffer(WebCore::RenderingResourceIdentifier) const;
+    RemoteImageBufferProxy* cachedImageBuffer(CyberCore::RenderingResourceIdentifier) const;
     void releaseImageBuffer(RemoteImageBufferProxy&);
-    void forgetImageBuffer(WebCore::RenderingResourceIdentifier);
+    void forgetImageBuffer(CyberCore::RenderingResourceIdentifier);
 
-    void recordNativeImageUse(WebCore::NativeImage&);
-    void recordFontUse(WebCore::Font&);
-    void recordImageBufferUse(WebCore::ImageBuffer&);
-    void recordDecomposedGlyphsUse(WebCore::DecomposedGlyphs&);
+    void recordNativeImageUse(CyberCore::NativeImage&);
+    void recordFontUse(CyberCore::Font&);
+    void recordImageBufferUse(CyberCore::ImageBuffer&);
+    void recordDecomposedGlyphsUse(CyberCore::DecomposedGlyphs&);
 
     void didPaintLayers();
 
@@ -68,13 +68,13 @@ public:
     void clear();
 
 private:
-    using ImageBufferHashMap = HashMap<WebCore::RenderingResourceIdentifier, WeakPtr<RemoteImageBufferProxy>>;
-    using NativeImageHashMap = HashMap<WebCore::RenderingResourceIdentifier, ThreadSafeWeakPtr<WebCore::NativeImage>>;
-    using FontHashMap = HashMap<WebCore::RenderingResourceIdentifier, uint64_t>;
-    using DecomposedGlyphsHashMap = HashMap<WebCore::RenderingResourceIdentifier, ThreadSafeWeakPtr<WebCore::DecomposedGlyphs>>;
+    using ImageBufferHashMap = HashMap<CyberCore::RenderingResourceIdentifier, WeakPtr<RemoteImageBufferProxy>>;
+    using NativeImageHashMap = HashMap<CyberCore::RenderingResourceIdentifier, ThreadSafeWeakPtr<CyberCore::NativeImage>>;
+    using FontHashMap = HashMap<CyberCore::RenderingResourceIdentifier, uint64_t>;
+    using DecomposedGlyphsHashMap = HashMap<CyberCore::RenderingResourceIdentifier, ThreadSafeWeakPtr<CyberCore::DecomposedGlyphs>>;
     
-    void releaseNativeImage(WebCore::RenderingResourceIdentifier) override;
-    void releaseDecomposedGlyphs(WebCore::RenderingResourceIdentifier) override;
+    void releaseNativeImage(CyberCore::RenderingResourceIdentifier) override;
+    void releaseDecomposedGlyphs(CyberCore::RenderingResourceIdentifier) override;
     void clearNativeImageMap();
     void clearDecomposedGlyphsMap();
 

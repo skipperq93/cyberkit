@@ -27,7 +27,7 @@
 #include "RenderImageResource.h"
 #include "RenderReplaced.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLAreaElement;
 class HTMLMapElement;
@@ -152,6 +152,6 @@ private:
     friend class RenderImageScaleObserver;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderImage, isRenderImage())

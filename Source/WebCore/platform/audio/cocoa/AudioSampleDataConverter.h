@@ -29,7 +29,7 @@ typedef struct AudioBufferList AudioBufferList;
 struct AudioStreamBasicDescription;
 typedef struct OpaqueAudioConverter* AudioConverterRef;
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioSampleBufferList;
 class CAAudioStreamDescription;
@@ -73,4 +73,4 @@ private:
     AudioConverterRef m_selectedConverter;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -40,7 +40,7 @@
 #include <wtf/text/StringBuilder.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 WheelEventTestMonitor::WheelEventTestMonitor(Page& page)
     : m_page(page)
@@ -195,4 +195,4 @@ TextStream& operator<<(TextStream& ts, const WheelEventTestMonitor::ScrollableAr
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -31,7 +31,7 @@
 
 #include <CoreGraphics/CoreGraphics.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 FloatSize::FloatSize(const CGSize& s) : m_width(s.width), m_height(s.height)
 {

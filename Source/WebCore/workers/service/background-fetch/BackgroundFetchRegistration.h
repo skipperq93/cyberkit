@@ -36,7 +36,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class BackgroundFetchRecord;
 class FetchRequest;
@@ -91,6 +91,6 @@ private:
     BackgroundFetchInformation m_information;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

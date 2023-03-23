@@ -42,7 +42,7 @@
 
 struct sqlite3;
 
-namespace WebCore {
+namespace CyberCore {
 
 class DatabaseAuthorizer;
 class SQLiteStatement;
@@ -214,4 +214,4 @@ inline void SQLiteDatabase::decrementStatementCount()
 #endif
 }
 
-} // namespace WebCore
+} // namespace CyberCore

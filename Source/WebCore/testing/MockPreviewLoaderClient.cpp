@@ -31,7 +31,7 @@
 #include <wtf/MainThread.h>
 #include <wtf/RunLoop.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 MockPreviewLoaderClient& MockPreviewLoaderClient::singleton()
 {
@@ -47,6 +47,6 @@ void MockPreviewLoaderClient::didRequestPassword(Function<void(const String&)>&&
     });
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(QUICK_LOOK)

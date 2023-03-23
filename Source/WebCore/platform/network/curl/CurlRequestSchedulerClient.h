@@ -16,7 +16,7 @@
 
 #include "CurlContext.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CurlRequestSchedulerClient {
 public:
@@ -32,4 +32,4 @@ protected:
     ~CurlRequestSchedulerClient() { }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

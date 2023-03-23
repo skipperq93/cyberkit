@@ -28,7 +28,7 @@
 
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 inline void unconsumeCharacters(SegmentedString& source, StringBuilder& consumedCharacters)
 {
@@ -153,4 +153,4 @@ bool consumeCharacterReference(SegmentedString& source, DecodedIdentityType& dec
     return false;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -33,7 +33,7 @@
 
 #include "ImageBufferBackend.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ImageBufferCairoBackend : public ImageBufferBackend {
 public:
@@ -47,6 +47,6 @@ protected:
     virtual void platformTransformColorSpace(const std::array<uint8_t, 256>&) { }
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(CAIRO)

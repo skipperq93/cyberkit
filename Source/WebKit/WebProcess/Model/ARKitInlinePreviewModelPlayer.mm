@@ -30,9 +30,9 @@
 
 #import "WebPage.h"
 
-namespace WebKit {
+namespace CyberKit {
 
-ARKitInlinePreviewModelPlayer::ARKitInlinePreviewModelPlayer(WebPage& page, WebCore::ModelPlayerClient& client)
+ARKitInlinePreviewModelPlayer::ARKitInlinePreviewModelPlayer(WebPage& page, CyberCore::ModelPlayerClient& client)
     : m_page { page }
     , m_client { client }
 {
@@ -42,7 +42,7 @@ ARKitInlinePreviewModelPlayer::~ARKitInlinePreviewModelPlayer()
 {
 }
 
-void ARKitInlinePreviewModelPlayer::load(WebCore::Model&, WebCore::LayoutSize)
+void ARKitInlinePreviewModelPlayer::load(CyberCore::Model&, CyberCore::LayoutSize)
 {
 }
 
@@ -59,7 +59,7 @@ void ARKitInlinePreviewModelPlayer::enterFullscreen()
 {
 }
 
-void ARKitInlinePreviewModelPlayer::getCamera(CompletionHandler<void(std::optional<WebCore::HTMLModelElementCamera>&&)>&& completionHandler)
+void ARKitInlinePreviewModelPlayer::getCamera(CompletionHandler<void(std::optional<CyberCore::HTMLModelElementCamera>&&)>&& completionHandler)
 {
     auto modelIdentifier = this->modelIdentifier();
     if (!modelIdentifier) {
@@ -73,7 +73,7 @@ void ARKitInlinePreviewModelPlayer::getCamera(CompletionHandler<void(std::option
         return;
     }
 
-    CompletionHandler<void(Expected<WebCore::HTMLModelElementCamera, WebCore::ResourceError>)> remoteCompletionHandler = [completionHandler = WTFMove(completionHandler)] (Expected<WebCore::HTMLModelElementCamera, WebCore::ResourceError> result) mutable {
+    CompletionHandler<void(Expected<CyberCore::HTMLModelElementCamera, CyberCore::ResourceError>)> remoteCompletionHandler = [completionHandler = WTFMove(completionHandler)] (Expected<CyberCore::HTMLModelElementCamera, CyberCore::ResourceError> result) mutable {
         if (!result) {
             completionHandler(std::nullopt);
             return;
@@ -85,7 +85,7 @@ void ARKitInlinePreviewModelPlayer::getCamera(CompletionHandler<void(std::option
     strongPage->sendWithAsyncReply(Messages::WebPageProxy::ModelElementGetCamera(*modelIdentifier), WTFMove(remoteCompletionHandler));
 }
 
-void ARKitInlinePreviewModelPlayer::setCamera(WebCore::HTMLModelElementCamera camera, CompletionHandler<void(bool success)>&& completionHandler)
+void ARKitInlinePreviewModelPlayer::setCamera(CyberCore::HTMLModelElementCamera camera, CompletionHandler<void(bool success)>&& completionHandler)
 {
     auto modelIdentifier = this->modelIdentifier();
     if (!modelIdentifier) {
@@ -120,7 +120,7 @@ void ARKitInlinePreviewModelPlayer::isPlayingAnimation(CompletionHandler<void(st
         return;
     }
 
-    CompletionHandler<void(Expected<bool, WebCore::ResourceError>)> remoteCompletionHandler = [completionHandler = WTFMove(completionHandler)] (Expected<bool, WebCore::ResourceError> result) mutable {
+    CompletionHandler<void(Expected<bool, CyberCore::ResourceError>)> remoteCompletionHandler = [completionHandler = WTFMove(completionHandler)] (Expected<bool, CyberCore::ResourceError> result) mutable {
         if (!result) {
             completionHandler(std::nullopt);
             return;
@@ -167,7 +167,7 @@ void ARKitInlinePreviewModelPlayer::isLoopingAnimation(CompletionHandler<void(st
         return;
     }
 
-    CompletionHandler<void(Expected<bool, WebCore::ResourceError>)> remoteCompletionHandler = [completionHandler = WTFMove(completionHandler)] (Expected<bool, WebCore::ResourceError> result) mutable {
+    CompletionHandler<void(Expected<bool, CyberCore::ResourceError>)> remoteCompletionHandler = [completionHandler = WTFMove(completionHandler)] (Expected<bool, CyberCore::ResourceError> result) mutable {
         if (!result) {
             completionHandler(std::nullopt);
             return;
@@ -214,7 +214,7 @@ void ARKitInlinePreviewModelPlayer::animationDuration(CompletionHandler<void(std
         return;
     }
 
-    CompletionHandler<void(Expected<Seconds, WebCore::ResourceError>)> remoteCompletionHandler = [completionHandler = WTFMove(completionHandler)] (Expected<Seconds, WebCore::ResourceError> result) mutable {
+    CompletionHandler<void(Expected<Seconds, CyberCore::ResourceError>)> remoteCompletionHandler = [completionHandler = WTFMove(completionHandler)] (Expected<Seconds, CyberCore::ResourceError> result) mutable {
         if (!result) {
             completionHandler(std::nullopt);
             return;
@@ -240,7 +240,7 @@ void ARKitInlinePreviewModelPlayer::animationCurrentTime(CompletionHandler<void(
         return;
     }
 
-    CompletionHandler<void(Expected<Seconds, WebCore::ResourceError>)> remoteCompletionHandler = [completionHandler = WTFMove(completionHandler)] (Expected<Seconds, WebCore::ResourceError> result) mutable {
+    CompletionHandler<void(Expected<Seconds, CyberCore::ResourceError>)> remoteCompletionHandler = [completionHandler = WTFMove(completionHandler)] (Expected<Seconds, CyberCore::ResourceError> result) mutable {
         if (!result) {
             completionHandler(std::nullopt);
             return;
@@ -287,7 +287,7 @@ void ARKitInlinePreviewModelPlayer::hasAudio(CompletionHandler<void(std::optiona
         return;
     }
 
-    CompletionHandler<void(Expected<bool, WebCore::ResourceError>)> remoteCompletionHandler = [completionHandler = WTFMove(completionHandler)] (Expected<bool, WebCore::ResourceError> result) mutable {
+    CompletionHandler<void(Expected<bool, CyberCore::ResourceError>)> remoteCompletionHandler = [completionHandler = WTFMove(completionHandler)] (Expected<bool, CyberCore::ResourceError> result) mutable {
         if (!result) {
             completionHandler(std::nullopt);
             return;
@@ -313,7 +313,7 @@ void ARKitInlinePreviewModelPlayer::isMuted(CompletionHandler<void(std::optional
         return;
     }
 
-    CompletionHandler<void(Expected<bool, WebCore::ResourceError>)> remoteCompletionHandler = [completionHandler = WTFMove(completionHandler)] (Expected<bool, WebCore::ResourceError> result) mutable {
+    CompletionHandler<void(Expected<bool, CyberCore::ResourceError>)> remoteCompletionHandler = [completionHandler = WTFMove(completionHandler)] (Expected<bool, CyberCore::ResourceError> result) mutable {
         if (!result) {
             completionHandler(std::nullopt);
             return;

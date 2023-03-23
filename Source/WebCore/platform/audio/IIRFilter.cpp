@@ -35,7 +35,7 @@
 #include <complex>
 #include <wtf/MathExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // The length of the memory buffers for the IIR filter. This MUST be a power of
 // two and must be greater than the possible length of the filter coefficients.
@@ -231,6 +231,6 @@ double IIRFilter::tailTime(double sampleRate, bool isFilterStable)
     return (index + 1) * AudioUtilities::renderQuantumSize / sampleRate;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

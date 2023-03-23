@@ -29,7 +29,7 @@
 
 #import "SearchControlMac.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SearchFieldResultsPart;
 
@@ -45,6 +45,6 @@ private:
     RetainPtr<NSMenu> m_searchMenuTemplate;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(MAC)

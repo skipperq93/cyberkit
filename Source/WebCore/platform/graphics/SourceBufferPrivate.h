@@ -49,7 +49,7 @@
 #include <wtf/WeakPtr.h>
 #include <wtf/text/AtomStringHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SharedBuffer;
 class TrackBuffer;
@@ -195,15 +195,15 @@ private:
     RefPtr<TimeRanges> m_buffered;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::SourceBufferAppendMode> {
+template<> struct EnumTraits<CyberCore::SourceBufferAppendMode> {
     using values = EnumValues<
-        WebCore::SourceBufferAppendMode,
-        WebCore::SourceBufferAppendMode::Segments,
-        WebCore::SourceBufferAppendMode::Sequence
+        CyberCore::SourceBufferAppendMode,
+        CyberCore::SourceBufferAppendMode::Segments,
+        CyberCore::SourceBufferAppendMode::Sequence
     >;
 };
 

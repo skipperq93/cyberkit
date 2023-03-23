@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -18,7 +18,7 @@
  */
 
 #include "config.h"
-#include "WebKitDOMUIEvent.h"
+#include "CyberKitDOMUIEvent.h"
 
 #include <CyberCore/CSSImportRule.h>
 #include "DOMObjectCache.h"
@@ -26,37 +26,37 @@
 #include <CyberCore/ExceptionCode.h>
 #include <CyberCore/JSExecState.h>
 #include <CyberCore/KeyboardEvent.h>
-#include "WebKitDOMDOMWindowPrivate.h"
-#include "WebKitDOMEventPrivate.h"
-#include "WebKitDOMPrivate.h"
-#include "WebKitDOMUIEventPrivate.h"
+#include "CyberKitDOMDOMWindowPrivate.h"
+#include "CyberKitDOMEventPrivate.h"
+#include "CyberKitDOMPrivate.h"
+#include "CyberKitDOMUIEventPrivate.h"
 #include "ConvertToUTF8String.h"
 #include <wtf/GetPtr.h>
 #include <wtf/RefPtr.h>
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
-namespace WebKit {
+namespace CyberKit {
 
-WebKitDOMUIEvent* kit(WebCore::UIEvent* obj)
+CyberKitDOMUIEvent* kit(CyberCore::UIEvent* obj)
 {
-    return WEBKIT_DOM_UI_EVENT(kit(static_cast<WebCore::Event*>(obj)));
+    return WEBKIT_DOM_UI_EVENT(kit(static_cast<CyberCore::Event*>(obj)));
 }
 
-WebCore::UIEvent* core(WebKitDOMUIEvent* request)
+CyberCore::UIEvent* core(CyberKitDOMUIEvent* request)
 {
-    return request ? static_cast<WebCore::UIEvent*>(WEBKIT_DOM_OBJECT(request)->coreObject) : 0;
+    return request ? static_cast<CyberCore::UIEvent*>(WEBKIT_DOM_OBJECT(request)->coreObject) : 0;
 }
 
-WebKitDOMUIEvent* wrapUIEvent(WebCore::UIEvent* coreObject)
+CyberKitDOMUIEvent* wrapUIEvent(CyberCore::UIEvent* coreObject)
 {
     ASSERT(coreObject);
     return WEBKIT_DOM_UI_EVENT(g_object_new(WEBKIT_DOM_TYPE_UI_EVENT, "core-object", coreObject, nullptr));
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
-G_DEFINE_TYPE(WebKitDOMUIEvent, webkit_dom_ui_event, WEBKIT_DOM_TYPE_EVENT)
+G_DEFINE_TYPE(CyberKitDOMUIEvent, webkit_dom_ui_event, WEBKIT_DOM_TYPE_EVENT)
 
 enum {
     DOM_UI_EVENT_PROP_0,
@@ -72,7 +72,7 @@ enum {
 
 static void webkit_dom_ui_event_get_property(GObject* object, guint propertyId, GValue* value, GParamSpec* pspec)
 {
-    WebKitDOMUIEvent* self = WEBKIT_DOM_UI_EVENT(object);
+    CyberKitDOMUIEvent* self = WEBKIT_DOM_UI_EVENT(object);
 
     switch (propertyId) {
     case DOM_UI_EVENT_PROP_VIEW:
@@ -105,7 +105,7 @@ static void webkit_dom_ui_event_get_property(GObject* object, guint propertyId, 
     }
 }
 
-static void webkit_dom_ui_event_class_init(WebKitDOMUIEventClass* requestClass)
+static void webkit_dom_ui_event_class_init(CyberKitDOMUIEventClass* requestClass)
 {
     GObjectClass* gobjectClass = G_OBJECT_CLASS(requestClass);
     gobjectClass->get_property = webkit_dom_ui_event_get_property;
@@ -116,7 +116,7 @@ static void webkit_dom_ui_event_class_init(WebKitDOMUIEventClass* requestClass)
         g_param_spec_object(
             "view",
             "UIEvent:view",
-            "read-only WebKitDOMDOMWindow* UIEvent:view",
+            "read-only CyberKitDOMDOMWindow* UIEvent:view",
             WEBKIT_DOM_TYPE_DOM_WINDOW,
             WEBKIT_PARAM_READABLE));
 
@@ -191,88 +191,88 @@ static void webkit_dom_ui_event_class_init(WebKitDOMUIEventClass* requestClass)
             WEBKIT_PARAM_READABLE));
 }
 
-static void webkit_dom_ui_event_init(WebKitDOMUIEvent* request)
+static void webkit_dom_ui_event_init(CyberKitDOMUIEvent* request)
 {
     UNUSED_PARAM(request);
 }
 
-void webkit_dom_ui_event_init_ui_event(WebKitDOMUIEvent* self, const gchar* type, gboolean canBubble, gboolean cancelable, WebKitDOMDOMWindow* view, glong detail)
+void webkit_dom_ui_event_init_ui_event(CyberKitDOMUIEvent* self, const gchar* type, gboolean canBubble, gboolean cancelable, CyberKitDOMDOMWindow* view, glong detail)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_UI_EVENT(self));
     g_return_if_fail(type);
     g_return_if_fail(WEBKIT_DOM_IS_DOM_WINDOW(view));
-    WebCore::UIEvent* item = WebKit::core(self);
-    item->initUIEvent(WTF::AtomString::fromUTF8(type), canBubble, cancelable, WebKit::toWindowProxy(view), detail);
+    CyberCore::UIEvent* item = CyberKit::core(self);
+    item->initUIEvent(WTF::AtomString::fromUTF8(type), canBubble, cancelable, CyberKit::toWindowProxy(view), detail);
 }
 
-WebKitDOMDOMWindow* webkit_dom_ui_event_get_view(WebKitDOMUIEvent* self)
+CyberKitDOMDOMWindow* webkit_dom_ui_event_get_view(CyberKitDOMUIEvent* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_UI_EVENT(self), 0);
-    WebCore::UIEvent* item = WebKit::core(self);
-    return WebKit::kit(item->view());
+    CyberCore::UIEvent* item = CyberKit::core(self);
+    return CyberKit::kit(item->view());
 }
 
-glong webkit_dom_ui_event_get_detail(WebKitDOMUIEvent* self)
+glong webkit_dom_ui_event_get_detail(CyberKitDOMUIEvent* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_UI_EVENT(self), 0);
-    WebCore::UIEvent* item = WebKit::core(self);
+    CyberCore::UIEvent* item = CyberKit::core(self);
     glong result = item->detail();
     return result;
 }
 
-glong webkit_dom_ui_event_get_key_code(WebKitDOMUIEvent* self)
+glong webkit_dom_ui_event_get_key_code(CyberKitDOMUIEvent* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_UI_EVENT(self), 0);
-    WebCore::UIEvent* item = WebKit::core(self);
-    glong result = is<WebCore::KeyboardEvent>(*item) ? downcast<WebCore::KeyboardEvent>(*item).keyCode() : 0;
+    CyberCore::UIEvent* item = CyberKit::core(self);
+    glong result = is<CyberCore::KeyboardEvent>(*item) ? downcast<CyberCore::KeyboardEvent>(*item).keyCode() : 0;
     return result;
 }
 
-glong webkit_dom_ui_event_get_char_code(WebKitDOMUIEvent* self)
+glong webkit_dom_ui_event_get_char_code(CyberKitDOMUIEvent* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_UI_EVENT(self), 0);
-    WebCore::UIEvent* item = WebKit::core(self);
-    glong result = is<WebCore::KeyboardEvent>(*item) ? downcast<WebCore::KeyboardEvent>(*item).charCode() : 0;
+    CyberCore::UIEvent* item = CyberKit::core(self);
+    glong result = is<CyberCore::KeyboardEvent>(*item) ? downcast<CyberCore::KeyboardEvent>(*item).charCode() : 0;
     return result;
 }
 
-glong webkit_dom_ui_event_get_layer_x(WebKitDOMUIEvent* self)
+glong webkit_dom_ui_event_get_layer_x(CyberKitDOMUIEvent* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_UI_EVENT(self), 0);
-    WebCore::UIEvent* item = WebKit::core(self);
+    CyberCore::UIEvent* item = CyberKit::core(self);
     glong result = item->layerX();
     return result;
 }
 
-glong webkit_dom_ui_event_get_layer_y(WebKitDOMUIEvent* self)
+glong webkit_dom_ui_event_get_layer_y(CyberKitDOMUIEvent* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_UI_EVENT(self), 0);
-    WebCore::UIEvent* item = WebKit::core(self);
+    CyberCore::UIEvent* item = CyberKit::core(self);
     glong result = item->layerY();
     return result;
 }
 
-glong webkit_dom_ui_event_get_page_x(WebKitDOMUIEvent* self)
+glong webkit_dom_ui_event_get_page_x(CyberKitDOMUIEvent* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_UI_EVENT(self), 0);
-    WebCore::UIEvent* item = WebKit::core(self);
+    CyberCore::UIEvent* item = CyberKit::core(self);
     glong result = item->pageX();
     return result;
 }
 
-glong webkit_dom_ui_event_get_page_y(WebKitDOMUIEvent* self)
+glong webkit_dom_ui_event_get_page_y(CyberKitDOMUIEvent* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_UI_EVENT(self), 0);
-    WebCore::UIEvent* item = WebKit::core(self);
+    CyberCore::UIEvent* item = CyberKit::core(self);
     glong result = item->pageY();
     return result;
 }

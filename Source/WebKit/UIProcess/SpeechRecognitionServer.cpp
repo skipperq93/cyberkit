@@ -51,17 +51,17 @@ SpeechRecognitionServer::SpeechRecognitionServer(Ref<IPC::Connection>&& connecti
 {
 }
 
-void SpeechRecognitionServer::start(WebCore::SpeechRecognitionConnectionClientIdentifier clientIdentifier, String&& lang, bool continuous, bool interimResults, uint64_t maxAlternatives, WebCore::ClientOrigin&& origin, WebCore::FrameIdentifier frameIdentifier)
+void SpeechRecognitionServer::start(CyberCore::SpeechRecognitionConnectionClientIdentifier clientIdentifier, String&& lang, bool continuous, bool interimResults, uint64_t maxAlternatives, CyberCore::ClientOrigin&& origin, CyberCore::FrameIdentifier frameIdentifier)
 {
     MESSAGE_CHECK(clientIdentifier);
     ASSERT(!m_requests.contains(clientIdentifier));
-    auto requestInfo = WebCore::SpeechRecognitionRequestInfo { clientIdentifier, WTFMove(lang), continuous, interimResults, maxAlternatives, WTFMove(origin), frameIdentifier };
-    auto& newRequest = m_requests.add(clientIdentifier, makeUnique<WebCore::SpeechRecognitionRequest>(WTFMove(requestInfo))).iterator->value;
+    auto requestInfo = CyberCore::SpeechRecognitionRequestInfo { clientIdentifier, WTFMove(lang), continuous, interimResults, maxAlternatives, WTFMove(origin), frameIdentifier };
+    auto& newRequest = m_requests.add(clientIdentifier, makeUnique<CyberCore::SpeechRecognitionRequest>(WTFMove(requestInfo))).iterator->value;
 
     requestPermissionForRequest(*newRequest);
 }
 
-void SpeechRecognitionServer::requestPermissionForRequest(WebCore::SpeechRecognitionRequest& request)
+void SpeechRecognitionServer::requestPermissionForRequest(CyberCore::SpeechRecognitionRequest& request)
 {
     m_permissionChecker(request, [this, weakThis = WeakPtr { *this }, weakRequest = WeakPtr { request }](auto error) mutable {
         if (!weakThis || !weakRequest)
@@ -70,7 +70,7 @@ void SpeechRecognitionServer::requestPermissionForRequest(WebCore::SpeechRecogni
         auto identifier = weakRequest->clientIdentifier();
         auto request = m_requests.take(identifier);
         if (error) {
-            sendUpdate(identifier, WebCore::SpeechRecognitionUpdateType::Error, WTFMove(error));
+            sendUpdate(identifier, CyberCore::SpeechRecognitionUpdateType::Error, WTFMove(error));
             return;
         }
 
@@ -79,30 +79,30 @@ void SpeechRecognitionServer::requestPermissionForRequest(WebCore::SpeechRecogni
     });
 }
 
-void SpeechRecognitionServer::handleRequest(UniqueRef<WebCore::SpeechRecognitionRequest>&& request)
+void SpeechRecognitionServer::handleRequest(UniqueRef<CyberCore::SpeechRecognitionRequest>&& request)
 {
     if (m_recognizer) {
-        m_recognizer->abort(WebCore::SpeechRecognitionError { WebCore::SpeechRecognitionErrorType::Aborted, "Another request is started"_s });
+        m_recognizer->abort(CyberCore::SpeechRecognitionError { CyberCore::SpeechRecognitionErrorType::Aborted, "Another request is started"_s });
         m_recognizer->prepareForDestruction();
     }
 
     auto clientIdentifier = request->clientIdentifier();
-    m_recognizer = makeUnique<WebCore::SpeechRecognizer>([this, weakThis = WeakPtr { *this }](auto& update) {
+    m_recognizer = makeUnique<CyberCore::SpeechRecognizer>([this, weakThis = WeakPtr { *this }](auto& update) {
         if (!weakThis)
             return;
 
         sendUpdate(update);
 
-        if (update.type() == WebCore::SpeechRecognitionUpdateType::Error)
+        if (update.type() == CyberCore::SpeechRecognitionUpdateType::Error)
             m_recognizer->abort();
-        else if (update.type() == WebCore::SpeechRecognitionUpdateType::End)
+        else if (update.type() == CyberCore::SpeechRecognitionUpdateType::End)
             m_recognizer->setInactive();
     }, WTFMove(request));
 
 #if ENABLE(MEDIA_STREAM)
     auto sourceOrError = m_realtimeMediaSourceCreateFunction();
     if (!sourceOrError) {
-        sendUpdate(WebCore::SpeechRecognitionUpdate::createError(clientIdentifier, WebCore::SpeechRecognitionError { WebCore::SpeechRecognitionErrorType::AudioCapture, sourceOrError.errorMessage }));
+        sendUpdate(CyberCore::SpeechRecognitionUpdate::createError(clientIdentifier, CyberCore::SpeechRecognitionError { CyberCore::SpeechRecognitionErrorType::AudioCapture, sourceOrError.errorMessage }));
         return;
     }
 
@@ -110,16 +110,16 @@ void SpeechRecognitionServer::handleRequest(UniqueRef<WebCore::SpeechRecognition
     bool mockDeviceCapturesEnabled = m_checkIfMockSpeechRecognitionEnabled();
     m_recognizer->start(sourceOrError.source(), mockDeviceCapturesEnabled);
 #else
-    sendUpdate(clientIdentifier, WebCore::SpeechRecognitionUpdateType::Error, WebCore::SpeechRecognitionError { WebCore::SpeechRecognitionErrorType::AudioCapture, "Audio capture is not implemented"_s });
+    sendUpdate(clientIdentifier, CyberCore::SpeechRecognitionUpdateType::Error, CyberCore::SpeechRecognitionError { CyberCore::SpeechRecognitionErrorType::AudioCapture, "Audio capture is not implemented"_s });
 #endif
 }
 
-void SpeechRecognitionServer::stop(WebCore::SpeechRecognitionConnectionClientIdentifier clientIdentifier)
+void SpeechRecognitionServer::stop(CyberCore::SpeechRecognitionConnectionClientIdentifier clientIdentifier)
 {
     MESSAGE_CHECK(clientIdentifier);
 
     if (m_requests.remove(clientIdentifier)) {
-        sendUpdate(clientIdentifier, WebCore::SpeechRecognitionUpdateType::End);
+        sendUpdate(clientIdentifier, CyberCore::SpeechRecognitionUpdateType::End);
         return;
     }
 
@@ -127,11 +127,11 @@ void SpeechRecognitionServer::stop(WebCore::SpeechRecognitionConnectionClientIde
         m_recognizer->stop();
 }
 
-void SpeechRecognitionServer::abort(WebCore::SpeechRecognitionConnectionClientIdentifier clientIdentifier)
+void SpeechRecognitionServer::abort(CyberCore::SpeechRecognitionConnectionClientIdentifier clientIdentifier)
 {
     MESSAGE_CHECK(clientIdentifier);
     if (m_requests.remove(clientIdentifier)) {
-        sendUpdate(clientIdentifier, WebCore::SpeechRecognitionUpdateType::End);
+        sendUpdate(clientIdentifier, CyberCore::SpeechRecognitionUpdateType::End);
         return;
     }
 
@@ -139,24 +139,24 @@ void SpeechRecognitionServer::abort(WebCore::SpeechRecognitionConnectionClientId
         m_recognizer->abort();
 }
 
-void SpeechRecognitionServer::invalidate(WebCore::SpeechRecognitionConnectionClientIdentifier clientIdentifier)
+void SpeechRecognitionServer::invalidate(CyberCore::SpeechRecognitionConnectionClientIdentifier clientIdentifier)
 {
     MESSAGE_CHECK(clientIdentifier);
     if (m_recognizer && m_recognizer->clientIdentifier() == clientIdentifier)
         m_recognizer->abort();
 }
 
-void SpeechRecognitionServer::sendUpdate(WebCore::SpeechRecognitionConnectionClientIdentifier clientIdentifier, WebCore::SpeechRecognitionUpdateType type, std::optional<WebCore::SpeechRecognitionError> error, std::optional<Vector<WebCore::SpeechRecognitionResultData>> result)
+void SpeechRecognitionServer::sendUpdate(CyberCore::SpeechRecognitionConnectionClientIdentifier clientIdentifier, CyberCore::SpeechRecognitionUpdateType type, std::optional<CyberCore::SpeechRecognitionError> error, std::optional<Vector<CyberCore::SpeechRecognitionResultData>> result)
 {
-    auto update = WebCore::SpeechRecognitionUpdate::create(clientIdentifier, type);
-    if (type == WebCore::SpeechRecognitionUpdateType::Error)
-        update = WebCore::SpeechRecognitionUpdate::createError(clientIdentifier, *error);
-    if (type == WebCore::SpeechRecognitionUpdateType::Result)
-        update = WebCore::SpeechRecognitionUpdate::createResult(clientIdentifier, *result);
+    auto update = CyberCore::SpeechRecognitionUpdate::create(clientIdentifier, type);
+    if (type == CyberCore::SpeechRecognitionUpdateType::Error)
+        update = CyberCore::SpeechRecognitionUpdate::createError(clientIdentifier, *error);
+    if (type == CyberCore::SpeechRecognitionUpdateType::Result)
+        update = CyberCore::SpeechRecognitionUpdate::createResult(clientIdentifier, *result);
     sendUpdate(update);
 }
 
-void SpeechRecognitionServer::sendUpdate(const WebCore::SpeechRecognitionUpdate& update)
+void SpeechRecognitionServer::sendUpdate(const CyberCore::SpeechRecognitionUpdate& update)
 {
     send(Messages::WebSpeechRecognitionConnection::DidReceiveUpdate(update));
 }

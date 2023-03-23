@@ -37,26 +37,26 @@
 #define __WEBKIT_WEB_EXTENSION_H_INSIDE__
 
 #if !ENABLE(2022_GLIB_API)
-#include <@API_INCLUDE_PREFIX@/WebKitConsoleMessage.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitConsoleMessage.h>
 #endif
-#include <@API_INCLUDE_PREFIX@/WebKitContextMenu.h>
-#include <@API_INCLUDE_PREFIX@/WebKitContextMenuActions.h>
-#include <@API_INCLUDE_PREFIX@/WebKitContextMenuItem.h>
-#include <@API_INCLUDE_PREFIX@/WebKitFrame.h>
-#include <@API_INCLUDE_PREFIX@/WebKitScriptWorld.h>
-#include <@API_INCLUDE_PREFIX@/WebKitURIRequest.h>
-#include <@API_INCLUDE_PREFIX@/WebKitURIResponse.h>
-#include <@API_INCLUDE_PREFIX@/WebKitUserMessage.h>
-#include <@API_INCLUDE_PREFIX@/WebKitVersion.h>
-#include <@API_INCLUDE_PREFIX@/WebKitWebEditor.h>
-#include <@API_INCLUDE_PREFIX@/WebKitWebExtension.h>
-#include <@API_INCLUDE_PREFIX@/WebKitWebFormManager.h>
-#include <@API_INCLUDE_PREFIX@/WebKitWebHitTestResult.h>
-#include <@API_INCLUDE_PREFIX@/WebKitWebPage.h>
-#include <@API_INCLUDE_PREFIX@/WebKitWebProcessEnumTypes.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitContextMenu.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitContextMenuActions.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitContextMenuItem.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitFrame.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitScriptWorld.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitURIRequest.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitURIResponse.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitUserMessage.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitVersion.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitWebEditor.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitWebExtension.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitWebFormManager.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitWebHitTestResult.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitWebPage.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitWebProcessEnumTypes.h>
 
 #if !ENABLE(2022_GLIB_API)
-#include <@API_INCLUDE_PREFIX@/WebKitWebExtensionAutocleanups.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitWebExtensionAutocleanups.h>
 #endif
 
 #undef __WEBKIT_WEB_EXTENSION_H_INSIDE__

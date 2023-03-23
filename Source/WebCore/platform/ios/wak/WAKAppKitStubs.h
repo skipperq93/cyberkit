@@ -32,16 +32,16 @@
 
 #import <CoreGraphics/CoreGraphics.h>
 
-// WebKitLegacy was built around AppKit, which isn't present on iOS,
-// so WebKitLegacy redeclares many AppKit types on iOS. This is a problem
+// CyberKitLegacy was built around AppKit, which isn't present on iOS,
+// so CyberKitLegacy redeclares many AppKit types on iOS. This is a problem
 // for Mac Catalyst where AppKit is present and usable, because the
 // redeclared types now conflict with the original types. Normally the AppKit
-// types are marked unavailable, so WebKitLegacy still needs to redeclare
+// types are marked unavailable, so CyberKitLegacy still needs to redeclare
 // them to make them available. As long as Mac Catalyst clients stick to UIKit
-// and WebKitLegacy, and don't directly import AppKit, things are fine.
+// and CyberKitLegacy, and don't directly import AppKit, things are fine.
 // However, there are a few special Apple internal Mac Catalyst clients that
 // are able to use all of the normally unavailable AppKit types, and so
-// those clients need WebKitLegacy to use the AppKit types directly rather
+// those clients need CyberKitLegacy to use the AppKit types directly rather
 // than redeclare them. Duplicate the Apple internal APPKIT_API_UNAVAILABLE_BEGIN_MACCATALYST
 // logic to identify when this is the case.
 #if TARGET_OS_MACCATALYST && ((defined(__UIKIT_BUILDING_UIKIT__) && __UIKIT_BUILDING_UIKIT__) || (defined(__SWIFTUI_BUILDING_SWIFTUI__) && __SWIFTUI_BUILDING_SWIFTUI__) || (defined(__UIKIT_AX_BUILDING_UIKIT_AX__) && __UIKIT_AX_BUILDING_UIKIT_AX__))

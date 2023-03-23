@@ -28,7 +28,7 @@
 #include <gst/gst.h>
 #include <wtf/text/AtomString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class GStreamerMediaDescription : public MediaDescription {
 public:
@@ -57,6 +57,6 @@ private:
     AtomString m_codecName;
 };
 
-} // namespace WebCore.
+} // namespace CyberCore.
 
 #endif // USE(GSTREAMER)

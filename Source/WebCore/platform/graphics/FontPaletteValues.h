@@ -32,7 +32,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/AtomString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct FontPaletteIndex {
     enum class Type : uint8_t;
@@ -135,13 +135,13 @@ inline void add(Hasher& hasher, const FontPaletteValues& fontPaletteValues)
     add(hasher, fontPaletteValues.overrideColors());
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct DefaultHash<WebCore::FontPaletteValues> {
-    static unsigned hash(const WebCore::FontPaletteValues& key) { return computeHash(key); }
-    static bool equal(const WebCore::FontPaletteValues& a, const WebCore::FontPaletteValues& b) { return a == b; }
+template<> struct DefaultHash<CyberCore::FontPaletteValues> {
+    static unsigned hash(const CyberCore::FontPaletteValues& key) { return computeHash(key); }
+    static bool equal(const CyberCore::FontPaletteValues& a, const CyberCore::FontPaletteValues& b) { return a == b; }
     static constexpr bool safeToCompareToEmptyOrDeleted = true;
 };
 

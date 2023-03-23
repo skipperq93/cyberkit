@@ -27,7 +27,7 @@
 #include <wtf/FastMalloc.h>
 #include <wtf/Noncopyable.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum PathCoordinateMode {
     AbsoluteCoordinates,
@@ -64,4 +64,4 @@ protected:
     virtual ~SVGPathConsumer() = default;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

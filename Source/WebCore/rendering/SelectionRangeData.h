@@ -36,7 +36,7 @@
 #include "SelectionGeometryGatherer.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class SelectionRangeData : public HighlightData {
 public:
@@ -61,4 +61,4 @@ private:
     void apply(const RenderRange&, RepaintMode);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

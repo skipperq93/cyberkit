@@ -23,7 +23,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
  */
 #include "config.h"
-#include "WebCoreTextRenderer.h"
+#include "CyberCoreTextRenderer.h"
 
 #include "FontCascade.h"
 #include "FontDescription.h"
@@ -31,7 +31,7 @@
 #include "StringTruncator.h"
 #include "TextRun.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static bool shouldUseFontSmoothing = true;
 
@@ -76,7 +76,7 @@ static void doDrawTextAtPoint(GraphicsContext& context, const String& text, cons
     }
 }
 
-void WebCoreDrawDoubledTextAtPoint(GraphicsContext& context, const String& text, const IntPoint& point, const FontCascade& font, const Color& topColor, const Color& bottomColor, int underlinedIndex)
+void CyberCoreDrawDoubledTextAtPoint(GraphicsContext& context, const String& text, const IntPoint& point, const FontCascade& font, const Color& topColor, const Color& bottomColor, int underlinedIndex)
 {
     context.save();
 
@@ -89,29 +89,29 @@ void WebCoreDrawDoubledTextAtPoint(GraphicsContext& context, const String& text,
     context.restore();
 }
 
-float WebCoreTextFloatWidth(const String& text, const FontCascade& font)
+float CyberCoreTextFloatWidth(const String& text, const FontCascade& font)
 {
     return StringTruncator::width(text, font);
 }
 
-void WebCoreSetShouldUseFontSmoothing(bool smooth)
+void CyberCoreSetShouldUseFontSmoothing(bool smooth)
 {
     shouldUseFontSmoothing = smooth;
 }
 
-bool WebCoreShouldUseFontSmoothing()
+bool CyberCoreShouldUseFontSmoothing()
 {
     return shouldUseFontSmoothing;
 }
 
-void WebCoreSetAlwaysUsesComplexTextCodePath(bool complex)
+void CyberCoreSetAlwaysUsesComplexTextCodePath(bool complex)
 {
     FontCascade::setCodePath(complex ? FontCascade::CodePath::Complex : FontCascade::CodePath::Auto);
 }
 
-bool WebCoreAlwaysUsesComplexTextCodePath()
+bool CyberCoreAlwaysUsesComplexTextCodePath()
 {
     return FontCascade::codePath() == FontCascade::CodePath::Complex;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

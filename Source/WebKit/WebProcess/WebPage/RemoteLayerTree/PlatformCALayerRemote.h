@@ -29,22 +29,22 @@
 #include <CyberCore/PlatformCALayer.h>
 #include <CyberCore/PlatformLayer.h>
 
-namespace WebCore {
+namespace CyberCore {
 class LayerPool;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class RemoteLayerTreeContext;
 
-class PlatformCALayerRemote : public WebCore::PlatformCALayer {
+class PlatformCALayerRemote : public CyberCore::PlatformCALayer {
 public:
-    static Ref<PlatformCALayerRemote> create(WebCore::PlatformCALayer::LayerType, WebCore::PlatformCALayerClient*, RemoteLayerTreeContext&);
-    static Ref<PlatformCALayerRemote> create(PlatformLayer *, WebCore::PlatformCALayerClient*, RemoteLayerTreeContext&);
+    static Ref<PlatformCALayerRemote> create(CyberCore::PlatformCALayer::LayerType, CyberCore::PlatformCALayerClient*, RemoteLayerTreeContext&);
+    static Ref<PlatformCALayerRemote> create(PlatformLayer *, CyberCore::PlatformCALayerClient*, RemoteLayerTreeContext&);
 #if ENABLE(MODEL_ELEMENT)
-    static Ref<PlatformCALayerRemote> create(Ref<WebCore::Model>, WebCore::PlatformCALayerClient*, RemoteLayerTreeContext&);
+    static Ref<PlatformCALayerRemote> create(Ref<CyberCore::Model>, CyberCore::PlatformCALayerClient*, RemoteLayerTreeContext&);
 #endif
-    static Ref<PlatformCALayerRemote> create(const PlatformCALayerRemote&, WebCore::PlatformCALayerClient*, RemoteLayerTreeContext&);
+    static Ref<PlatformCALayerRemote> create(const PlatformCALayerRemote&, CyberCore::PlatformCALayerClient*, RemoteLayerTreeContext&);
 
     virtual ~PlatformCALayerRemote();
 
@@ -52,47 +52,47 @@ public:
 
     void recursiveBuildTransaction(RemoteLayerTreeContext&, RemoteLayerTreeTransaction&);
 
-    void setNeedsDisplayInRect(const WebCore::FloatRect& dirtyRect) override;
+    void setNeedsDisplayInRect(const CyberCore::FloatRect& dirtyRect) override;
     void setNeedsDisplay() override;
 
     void copyContentsFromLayer(PlatformCALayer*) override;
 
-    WebCore::PlatformCALayer* superlayer() const override;
+    CyberCore::PlatformCALayer* superlayer() const override;
     void removeFromSuperlayer() override;
-    void setSublayers(const WebCore::PlatformCALayerList&) override;
-    WebCore::PlatformCALayerList sublayersForLogging() const override { return m_children; }
+    void setSublayers(const CyberCore::PlatformCALayerList&) override;
+    CyberCore::PlatformCALayerList sublayersForLogging() const override { return m_children; }
     void removeAllSublayers() override;
-    void appendSublayer(WebCore::PlatformCALayer&) override;
-    void insertSublayer(WebCore::PlatformCALayer&, size_t index) override;
-    void replaceSublayer(WebCore::PlatformCALayer& reference, WebCore::PlatformCALayer&) override;
-    const WebCore::PlatformCALayerList* customSublayers() const override { return nullptr; }
-    void adoptSublayers(WebCore::PlatformCALayer& source) override;
+    void appendSublayer(CyberCore::PlatformCALayer&) override;
+    void insertSublayer(CyberCore::PlatformCALayer&, size_t index) override;
+    void replaceSublayer(CyberCore::PlatformCALayer& reference, CyberCore::PlatformCALayer&) override;
+    const CyberCore::PlatformCALayerList* customSublayers() const override { return nullptr; }
+    void adoptSublayers(CyberCore::PlatformCALayer& source) override;
 
-    void addAnimationForKey(const String& key, WebCore::PlatformCAAnimation&) override;
+    void addAnimationForKey(const String& key, CyberCore::PlatformCAAnimation&) override;
     void removeAnimationForKey(const String& key) override;
-    RefPtr<WebCore::PlatformCAAnimation> animationForKey(const String& key) override;
+    RefPtr<CyberCore::PlatformCAAnimation> animationForKey(const String& key) override;
     void animationStarted(const String& key, MonotonicTime beginTime) override;
     void animationEnded(const String& key) override;
 
-    void setMask(WebCore::PlatformCALayer*) override;
+    void setMask(CyberCore::PlatformCALayer*) override;
 
     bool isOpaque() const override;
     void setOpaque(bool) override;
 
-    WebCore::FloatRect bounds() const override;
-    void setBounds(const WebCore::FloatRect&) override;
+    CyberCore::FloatRect bounds() const override;
+    void setBounds(const CyberCore::FloatRect&) override;
 
-    WebCore::FloatPoint3D position() const override;
-    void setPosition(const WebCore::FloatPoint3D&) override;
+    CyberCore::FloatPoint3D position() const override;
+    void setPosition(const CyberCore::FloatPoint3D&) override;
 
-    WebCore::FloatPoint3D anchorPoint() const override;
-    void setAnchorPoint(const WebCore::FloatPoint3D&) override;
+    CyberCore::FloatPoint3D anchorPoint() const override;
+    void setAnchorPoint(const CyberCore::FloatPoint3D&) override;
 
-    WebCore::TransformationMatrix transform() const override;
-    void setTransform(const WebCore::TransformationMatrix&) override;
+    CyberCore::TransformationMatrix transform() const override;
+    void setTransform(const CyberCore::TransformationMatrix&) override;
 
-    WebCore::TransformationMatrix sublayerTransform() const override;
-    void setSublayerTransform(const WebCore::TransformationMatrix&) override;
+    CyberCore::TransformationMatrix sublayerTransform() const override;
+    void setSublayerTransform(const CyberCore::TransformationMatrix&) override;
 
     bool isHidden() const override;
     void setHidden(bool) override;
@@ -125,29 +125,29 @@ public:
     CFTypeRef contents() const override;
     void setContents(CFTypeRef) override;
 #if HAVE(IOSURFACE)
-    void setContents(const WebCore::IOSurface&) override;
+    void setContents(const CyberCore::IOSurface&) override;
     void setContents(const WTF::MachSendRight&) override;
 #endif
-    void setContentsRect(const WebCore::FloatRect&) override;
+    void setContentsRect(const CyberCore::FloatRect&) override;
 
-    void setMinificationFilter(WebCore::PlatformCALayer::FilterType) override;
-    void setMagnificationFilter(WebCore::PlatformCALayer::FilterType) override;
+    void setMinificationFilter(CyberCore::PlatformCALayer::FilterType) override;
+    void setMagnificationFilter(CyberCore::PlatformCALayer::FilterType) override;
 
-    WebCore::Color backgroundColor() const override;
-    void setBackgroundColor(const WebCore::Color&) override;
+    CyberCore::Color backgroundColor() const override;
+    void setBackgroundColor(const CyberCore::Color&) override;
 
     void setBorderWidth(float) override;
-    void setBorderColor(const WebCore::Color&) override;
+    void setBorderColor(const CyberCore::Color&) override;
 
     float opacity() const override;
     void setOpacity(float) override;
 
-    void setFilters(const WebCore::FilterOperations&) override;
-    static bool filtersCanBeComposited(const WebCore::FilterOperations&);
-    void copyFiltersFrom(const WebCore::PlatformCALayer&) override;
+    void setFilters(const CyberCore::FilterOperations&) override;
+    static bool filtersCanBeComposited(const CyberCore::FilterOperations&);
+    void copyFiltersFrom(const CyberCore::PlatformCALayer&) override;
 
 #if ENABLE(CSS_COMPOSITING)
-    void setBlendMode(WebCore::BlendMode) override;
+    void setBlendMode(CyberCore::BlendMode) override;
 #endif
 
     void setName(const String&) override;
@@ -165,23 +165,23 @@ public:
     void setAntialiasesEdges(bool) override;
 
     // FIXME: Having both shapeRoundedRect and shapePath is redundant. We could use shapePath for everything.
-    WebCore::FloatRoundedRect shapeRoundedRect() const override;
-    void setShapeRoundedRect(const WebCore::FloatRoundedRect&) override;
+    CyberCore::FloatRoundedRect shapeRoundedRect() const override;
+    void setShapeRoundedRect(const CyberCore::FloatRoundedRect&) override;
 
-    WebCore::Path shapePath() const override;
-    void setShapePath(const WebCore::Path&) override;
+    CyberCore::Path shapePath() const override;
+    void setShapePath(const CyberCore::Path&) override;
 
-    WebCore::WindRule shapeWindRule() const override;
-    void setShapeWindRule(WebCore::WindRule) override;
+    CyberCore::WindRule shapeWindRule() const override;
+    void setShapeWindRule(CyberCore::WindRule) override;
 
-    WebCore::GraphicsLayer::CustomAppearance customAppearance() const override;
-    void updateCustomAppearance(WebCore::GraphicsLayer::CustomAppearance) override;
+    CyberCore::GraphicsLayer::CustomAppearance customAppearance() const override;
+    void updateCustomAppearance(CyberCore::GraphicsLayer::CustomAppearance) override;
 
-    void setEventRegion(const WebCore::EventRegion&) override;
+    void setEventRegion(const CyberCore::EventRegion&) override;
 
 #if ENABLE(SCROLLING_THREAD)
-    WebCore::ScrollingNodeID scrollingNodeID() const override;
-    void setScrollingNodeID(WebCore::ScrollingNodeID) override;
+    CyberCore::ScrollingNodeID scrollingNodeID() const override;
+    void setScrollingNodeID(CyberCore::ScrollingNodeID) override;
 #endif
 
 #if HAVE(CORE_ANIMATION_SEPARATED_LAYERS)
@@ -197,13 +197,13 @@ public:
 #endif
 #endif
 
-    WebCore::TiledBacking* tiledBacking() override { return nullptr; }
+    CyberCore::TiledBacking* tiledBacking() override { return nullptr; }
 
-    Ref<WebCore::PlatformCALayer> clone(WebCore::PlatformCALayerClient* owner) const override;
+    Ref<CyberCore::PlatformCALayer> clone(CyberCore::PlatformCALayerClient* owner) const override;
 
-    Ref<PlatformCALayer> createCompatibleLayer(WebCore::PlatformCALayer::LayerType, WebCore::PlatformCALayerClient*) const override;
+    Ref<PlatformCALayer> createCompatibleLayer(CyberCore::PlatformCALayer::LayerType, CyberCore::PlatformCALayerClient*) const override;
 
-    void enumerateRectsBeingDrawn(WebCore::GraphicsContext&, void (^block)(WebCore::FloatRect)) override;
+    void enumerateRectsBeingDrawn(CyberCore::GraphicsContext&, void (^block)(CyberCore::FloatRect)) override;
 
     virtual uint32_t hostingContextID();
 
@@ -220,11 +220,11 @@ public:
     void clearContext() { m_context = nullptr; }
     RemoteLayerTreeContext* context() const { return m_context; }
     
-    virtual void populateCreationProperties(RemoteLayerTreeTransaction::LayerCreationProperties&, const RemoteLayerTreeContext&, WebCore::PlatformCALayer::LayerType);
+    virtual void populateCreationProperties(RemoteLayerTreeTransaction::LayerCreationProperties&, const RemoteLayerTreeContext&, CyberCore::PlatformCALayer::LayerType);
 
 protected:
-    PlatformCALayerRemote(WebCore::PlatformCALayer::LayerType, WebCore::PlatformCALayerClient* owner, RemoteLayerTreeContext&);
-    PlatformCALayerRemote(const PlatformCALayerRemote&, WebCore::PlatformCALayerClient*, RemoteLayerTreeContext&);
+    PlatformCALayerRemote(CyberCore::PlatformCALayer::LayerType, CyberCore::PlatformCALayerClient* owner, RemoteLayerTreeContext&);
+    PlatformCALayerRemote(const PlatformCALayerRemote&, CyberCore::PlatformCALayerClient*, RemoteLayerTreeContext&);
 
     void updateClonedLayerProperties(PlatformCALayerRemote& clone, bool copyContents = true) const;
 
@@ -240,13 +240,13 @@ private:
 
     bool requiresCustomAppearanceUpdateOnBoundsChange() const;
 
-    WebCore::LayerPool& layerPool() override;
+    CyberCore::LayerPool& layerPool() override;
 
     RemoteLayerTreeTransaction::LayerProperties m_properties;
-    WebCore::PlatformCALayerList m_children;
+    CyberCore::PlatformCALayerList m_children;
     PlatformCALayerRemote* m_superlayer { nullptr };
     PlatformCALayerRemote* m_maskLayer { nullptr };
-    HashMap<String, RefPtr<WebCore::PlatformCAAnimation>> m_animations;
+    HashMap<String, RefPtr<CyberCore::PlatformCAAnimation>> m_animations;
 
     bool m_acceleratesDrawing { false };
     bool m_wantsDeepColorBackingStore { false };
@@ -254,18 +254,18 @@ private:
     RemoteLayerTreeContext* m_context;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebKit::PlatformCALayerRemote)
-static bool isType(const WebCore::PlatformCALayer& layer)
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberKit::PlatformCALayerRemote)
+static bool isType(const CyberCore::PlatformCALayer& layer)
 {
     switch (layer.type()) {
-    case WebCore::PlatformCALayer::Type::Cocoa:
+    case CyberCore::PlatformCALayer::Type::Cocoa:
         break;
-    case WebCore::PlatformCALayer::Type::Remote:
-    case WebCore::PlatformCALayer::Type::RemoteCustom:
-    case WebCore::PlatformCALayer::Type::RemoteHost:
-    case WebCore::PlatformCALayer::Type::RemoteModel:
+    case CyberCore::PlatformCALayer::Type::Remote:
+    case CyberCore::PlatformCALayer::Type::RemoteCustom:
+    case CyberCore::PlatformCALayer::Type::RemoteHost:
+    case CyberCore::PlatformCALayer::Type::RemoteModel:
         return true;
     };
     return false;

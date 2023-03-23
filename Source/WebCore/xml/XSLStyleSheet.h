@@ -31,7 +31,7 @@
 #include <wtf/Ref.h>
 #include <wtf/TypeCasts.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CachedResourceLoader;
 class XSLImportRule;
@@ -123,10 +123,10 @@ private:
     WeakPtr<XSLStyleSheet> m_parentStyleSheet;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::XSLStyleSheet)
-    static bool isType(const WebCore::StyleSheet& styleSheet) { return styleSheet.isXSLStyleSheet(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::XSLStyleSheet)
+    static bool isType(const CyberCore::StyleSheet& styleSheet) { return styleSheet.isXSLStyleSheet(); }
 SPECIALIZE_TYPE_TRAITS_END()
 
 #endif // ENABLE(XSLT)

@@ -31,7 +31,7 @@
 #include <gst/gst.h>
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 class MediaPlayerPrivateGStreamer;
 }
 
@@ -59,7 +59,7 @@ struct _WebKitTextSinkClass {
     GstBinClass parentClass;
 };
 
-GstElement* webkitTextSinkNew(WeakPtr<WebCore::MediaPlayerPrivateGStreamer>&&);
+GstElement* webkitTextSinkNew(WeakPtr<CyberCore::MediaPlayerPrivateGStreamer>&&);
 
 G_END_DECLS
 

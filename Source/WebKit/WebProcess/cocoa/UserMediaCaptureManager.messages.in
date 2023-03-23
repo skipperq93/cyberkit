@@ -24,12 +24,12 @@
 #if ENABLE(MEDIA_STREAM)
 
 messages -> UserMediaCaptureManager NotRefCounted {
-    SourceStopped(WebCore::RealtimeMediaSourceIdentifier id, bool didFail)
-    SourceMutedChanged(WebCore::RealtimeMediaSourceIdentifier id, bool muted, bool interrupted)
-    SourceSettingsChanged(WebCore::RealtimeMediaSourceIdentifier id, WebCore::RealtimeMediaSourceSettings settings)
-    SourceConfigurationChanged(WebCore::RealtimeMediaSourceIdentifier id, String persistentID, WebCore::RealtimeMediaSourceSettings settings, WebCore::RealtimeMediaSourceCapabilities capabilities)
-    ApplyConstraintsSucceeded(WebCore::RealtimeMediaSourceIdentifier id, WebCore::RealtimeMediaSourceSettings settings)
-    ApplyConstraintsFailed(WebCore::RealtimeMediaSourceIdentifier id, String failedConstraint, String message)
+    SourceStopped(CyberCore::RealtimeMediaSourceIdentifier id, bool didFail)
+    SourceMutedChanged(CyberCore::RealtimeMediaSourceIdentifier id, bool muted, bool interrupted)
+    SourceSettingsChanged(CyberCore::RealtimeMediaSourceIdentifier id, CyberCore::RealtimeMediaSourceSettings settings)
+    SourceConfigurationChanged(CyberCore::RealtimeMediaSourceIdentifier id, String persistentID, CyberCore::RealtimeMediaSourceSettings settings, CyberCore::RealtimeMediaSourceCapabilities capabilities)
+    ApplyConstraintsSucceeded(CyberCore::RealtimeMediaSourceIdentifier id, CyberCore::RealtimeMediaSourceSettings settings)
+    ApplyConstraintsFailed(CyberCore::RealtimeMediaSourceIdentifier id, String failedConstraint, String message)
 }
 
 #endif

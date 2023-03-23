@@ -36,7 +36,7 @@
 
 #import "GameControllerSoftLink.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 GameControllerGamepad::GameControllerGamepad(GCController *controller, unsigned index)
     : PlatformGamepad(index)
@@ -210,6 +210,6 @@ void GameControllerGamepad::noLongerHasAnyClient()
 #endif
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(GAMEPAD)

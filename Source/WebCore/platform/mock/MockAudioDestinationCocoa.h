@@ -31,7 +31,7 @@
 #include <wtf/RunLoop.h>
 #include <wtf/WorkQueue.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioIOCallback;
 
@@ -57,6 +57,6 @@ private:
     size_t m_numberOfFramesToProcess { 384 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO) && PLATFORM(COCOA)

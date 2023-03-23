@@ -29,7 +29,7 @@
 #include "SVGStringList.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(SVGViewElement);
 
@@ -54,7 +54,7 @@ void SVGViewElement::parseAttribute(const QualifiedName& name, const AtomString&
 
 void SVGViewElement::svgAttributeChanged(const QualifiedName& attrName)
 {
-    // We ignore changes to SVGNames::viewTargetAttr, which is deprecated and unused in WebCore.
+    // We ignore changes to SVGNames::viewTargetAttr, which is deprecated and unused in CyberCore.
     if (PropertyRegistry::isKnownAttribute(attrName))
         return;
 

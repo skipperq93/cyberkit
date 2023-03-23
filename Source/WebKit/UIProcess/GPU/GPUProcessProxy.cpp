@@ -71,7 +71,7 @@
 #define MESSAGE_CHECK(assertion) MESSAGE_CHECK_BASE(assertion, this->connection())
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 #if ENABLE(MEDIA_STREAM) && HAVE(AUDIT_TOKEN)
 static bool shouldCreateAppleCameraServiceSandboxExtension()
@@ -161,9 +161,9 @@ GPUProcessProxy::GPUProcessProxy()
     }
 #endif
 #if PLATFORM(IOS_FAMILY) && HAVE(AGX_COMPILER_SERVICE)
-    if (WebCore::deviceHasAGXCompilerService()) {
-        parameters.compilerServiceExtensionHandles = SandboxExtension::createHandlesForMachLookup(WebCore::agxCompilerServices(), std::nullopt);
-        parameters.dynamicIOKitExtensionHandles = SandboxExtension::createHandlesForIOKitClassExtensions(WebCore::agxCompilerClasses(), std::nullopt);
+    if (CyberCore::deviceHasAGXCompilerService()) {
+        parameters.compilerServiceExtensionHandles = SandboxExtension::createHandlesForMachLookup(CyberCore::agxCompilerServices(), std::nullopt);
+        parameters.dynamicIOKitExtensionHandles = SandboxExtension::createHandlesForIOKitClassExtensions(CyberCore::agxCompilerClasses(), std::nullopt);
     }
 #endif
 
@@ -315,18 +315,18 @@ void GPUProcessProxy::updateSandboxAccess(bool allowAudioCapture, bool allowVide
 #endif // PLATFORM(COCOA)
 }
 
-void GPUProcessProxy::updateCaptureAccess(bool allowAudioCapture, bool allowVideoCapture, bool allowDisplayCapture, WebCore::ProcessIdentifier processID, CompletionHandler<void()>&& completionHandler)
+void GPUProcessProxy::updateCaptureAccess(bool allowAudioCapture, bool allowVideoCapture, bool allowDisplayCapture, CyberCore::ProcessIdentifier processID, CompletionHandler<void()>&& completionHandler)
 {
     updateSandboxAccess(allowAudioCapture, allowVideoCapture, allowDisplayCapture);
     sendWithAsyncReply(Messages::GPUProcess::UpdateCaptureAccess { allowAudioCapture, allowVideoCapture, allowDisplayCapture, processID }, WTFMove(completionHandler));
 }
 
-void GPUProcessProxy::updateCaptureOrigin(const WebCore::SecurityOriginData& originData, WebCore::ProcessIdentifier processID)
+void GPUProcessProxy::updateCaptureOrigin(const CyberCore::SecurityOriginData& originData, CyberCore::ProcessIdentifier processID)
 {
     send(Messages::GPUProcess::UpdateCaptureOrigin { originData, processID }, 0);
 }
 
-void GPUProcessProxy::addMockMediaDevice(const WebCore::MockMediaDevice& device)
+void GPUProcessProxy::addMockMediaDevice(const CyberCore::MockMediaDevice& device)
 {
     send(Messages::GPUProcess::AddMockMediaDevice { device }, 0);
 }
@@ -363,12 +363,12 @@ void GPUProcessProxy::triggerMockMicrophoneConfigurationChange()
 #endif // ENABLE(MEDIA_STREAM)
 
 #if HAVE(SC_CONTENT_SHARING_SESSION)
-void GPUProcessProxy::showWindowPicker(CompletionHandler<void(std::optional<WebCore::CaptureDevice>)>&& completionHandler)
+void GPUProcessProxy::showWindowPicker(CompletionHandler<void(std::optional<CyberCore::CaptureDevice>)>&& completionHandler)
 {
     sendWithAsyncReply(Messages::GPUProcess::ShowWindowPicker { }, WTFMove(completionHandler));
 }
 
-void GPUProcessProxy::showScreenPicker(CompletionHandler<void(std::optional<WebCore::CaptureDevice>)>&& completionHandler)
+void GPUProcessProxy::showScreenPicker(CompletionHandler<void(std::optional<CyberCore::CaptureDevice>)>&& completionHandler)
 {
     sendWithAsyncReply(Messages::GPUProcess::ShowScreenPicker { }, WTFMove(completionHandler));
 }
@@ -601,14 +601,14 @@ void GPUProcessProxy::sendProcessDidResume(ResumeReason)
         send(Messages::GPUProcess::ProcessDidResume(), 0);
 }
 
-void GPUProcessProxy::terminateWebProcess(WebCore::ProcessIdentifier webProcessIdentifier)
+void GPUProcessProxy::terminateWebProcess(CyberCore::ProcessIdentifier webProcessIdentifier)
 {
     if (auto process = WebProcessProxy::processForIdentifier(webProcessIdentifier))
         process->requestTermination(ProcessTerminationReason::RequestedByGPUProcess);
 }
 
 #if HAVE(VISIBILITY_PROPAGATION_VIEW)
-void GPUProcessProxy::didCreateContextForVisibilityPropagation(WebPageProxyIdentifier webPageProxyID, WebCore::PageIdentifier pageID, LayerHostingContextID contextID)
+void GPUProcessProxy::didCreateContextForVisibilityPropagation(WebPageProxyIdentifier webPageProxyID, CyberCore::PageIdentifier pageID, LayerHostingContextID contextID)
 {
     RELEASE_LOG(Process, "GPUProcessProxy::didCreateContextForVisibilityPropagation: webPageProxyID: %" PRIu64 ", pagePID: %" PRIu64 ", contextID: %u", webPageProxyID.toUInt64(), pageID.toUInt64(), contextID);
     auto page = WebProcessProxy::webPage(webPageProxyID);
@@ -635,7 +635,7 @@ void GPUProcessProxy::displayConfigurationChanged(CGDirectDisplayID displayID, C
     send(Messages::GPUProcess::DisplayConfigurationChanged { displayID, flags }, 0);
 }
 
-void GPUProcessProxy::setScreenProperties(const WebCore::ScreenProperties& properties)
+void GPUProcessProxy::setScreenProperties(const CyberCore::ScreenProperties& properties)
 {
     send(Messages::GPUProcess::SetScreenProperties { properties }, 0);
 }

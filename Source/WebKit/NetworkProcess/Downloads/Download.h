@@ -45,7 +45,7 @@ OBJC_CLASS NSProgress;
 OBJC_CLASS NSURLSessionDownloadTask;
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 class AuthenticationChallenge;
 class BlobDataFileReference;
 class Credential;
@@ -83,11 +83,11 @@ public:
     PAL::SessionID sessionID() const { return m_sessionID; }
 
     void setSandboxExtension(RefPtr<SandboxExtension>&& sandboxExtension) { m_sandboxExtension = WTFMove(sandboxExtension); }
-    void didReceiveChallenge(const WebCore::AuthenticationChallenge&, ChallengeCompletionHandler&&);
+    void didReceiveChallenge(const CyberCore::AuthenticationChallenge&, ChallengeCompletionHandler&&);
     void didCreateDestination(const String& path);
     void didReceiveData(uint64_t bytesWritten, uint64_t totalBytesWritten, uint64_t totalBytesExpectedToWrite);
     void didFinish();
-    void didFail(const WebCore::ResourceError&, const IPC::DataReference& resumeData);
+    void didFail(const CyberCore::ResourceError&, const IPC::DataReference& resumeData);
 
     void applicationDidEnterBackground() { m_monitor.applicationDidEnterBackground(); }
     void applicationWillEnterForeground() { m_monitor.applicationWillEnterForeground(); }
@@ -107,7 +107,7 @@ private:
     DownloadID m_downloadID;
     Ref<DownloadManager::Client> m_client;
 
-    Vector<RefPtr<WebCore::BlobDataFileReference>> m_blobFileReferences;
+    Vector<RefPtr<CyberCore::BlobDataFileReference>> m_blobFileReferences;
     RefPtr<SandboxExtension> m_sandboxExtension;
 
     RefPtr<NetworkDataTask> m_download;

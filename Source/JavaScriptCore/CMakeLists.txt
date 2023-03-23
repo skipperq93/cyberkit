@@ -1,14 +1,14 @@
-set_property(DIRECTORY . PROPERTY FOLDER "JavaScriptCore")
+set_property(DIRECTORY . PROPERTY FOLDER "CyberScriptCore")
 
-list(APPEND JavaScriptCore_UNIFIED_SOURCE_LIST_FILES
+list(APPEND CyberScriptCore_UNIFIED_SOURCE_LIST_FILES
     "Sources.txt"
 )
 
-set(JavaScriptCore_INCLUDE_DIRECTORIES
-    "${JavaScriptCore_FRAMEWORK_HEADERS_DIR}"
+set(CyberScriptCore_INCLUDE_DIRECTORIES
+    "${CyberScriptCore_FRAMEWORK_HEADERS_DIR}"
 )
 
-set(JavaScriptCore_PRIVATE_INCLUDE_DIRECTORIES
+set(CyberScriptCore_PRIVATE_INCLUDE_DIRECTORIES
     "${CMAKE_BINARY_DIR}"
     "${JAVASCRIPTCORE_DIR}"
     "${JAVASCRIPTCORE_DIR}/API"
@@ -41,17 +41,17 @@ set(JavaScriptCore_PRIVATE_INCLUDE_DIRECTORIES
     "${JAVASCRIPTCORE_DIR}/wasm"
     "${JAVASCRIPTCORE_DIR}/wasm/js"
     "${JAVASCRIPTCORE_DIR}/yarr"
-    "${JavaScriptCore_DERIVED_SOURCES_DIR}"
-    "${JavaScriptCore_DERIVED_SOURCES_DIR}/inspector"
-    "${JavaScriptCore_DERIVED_SOURCES_DIR}/runtime"
-    "${JavaScriptCore_DERIVED_SOURCES_DIR}/yarr"
+    "${CyberScriptCore_DERIVED_SOURCES_DIR}"
+    "${CyberScriptCore_DERIVED_SOURCES_DIR}/inspector"
+    "${CyberScriptCore_DERIVED_SOURCES_DIR}/runtime"
+    "${CyberScriptCore_DERIVED_SOURCES_DIR}/yarr"
 )
 
 if (USE_CAPSTONE)
-    list(APPEND JavaScriptCore_PRIVATE_INCLUDE_DIRECTORIES "${THIRDPARTY_DIR}/capstone/Source/include")
+    list(APPEND CyberScriptCore_PRIVATE_INCLUDE_DIRECTORIES "${THIRDPARTY_DIR}/capstone/Source/include")
 endif ()
 
-set(JavaScriptCore_OBJECT_LUT_SOURCES
+set(CyberScriptCore_OBJECT_LUT_SOURCES
     runtime/ArrayConstructor.cpp
     runtime/AsyncFromSyncIteratorPrototype.cpp
     runtime/AsyncGeneratorPrototype.cpp
@@ -149,60 +149,60 @@ set(JavaScriptCore_OBJECT_LUT_SOURCES
     wasm/js/WebAssemblyTagPrototype.cpp
 )
 
-list(APPEND JavaScriptCore_SOURCES
+list(APPEND CyberScriptCore_SOURCES
     runtime/CachedTypes.cpp
-    ${JavaScriptCore_DERIVED_SOURCES_DIR}/JSCBytecodeCacheVersion.cpp
-    ${JavaScriptCore_DERIVED_SOURCES_DIR}/JSCBuiltins.cpp
+    ${CyberScriptCore_DERIVED_SOURCES_DIR}/JSCBytecodeCacheVersion.cpp
+    ${CyberScriptCore_DERIVED_SOURCES_DIR}/JSCBuiltins.cpp
 )
 
 add_custom_command(
-    OUTPUT ${JavaScriptCore_DERIVED_SOURCES_DIR}/JSCBytecodeCacheVersion.cpp
+    OUTPUT ${CyberScriptCore_DERIVED_SOURCES_DIR}/JSCBytecodeCacheVersion.cpp
     MAIN_DEPENDENCY ${JAVASCRIPTCORE_DIR}/runtime/JSCBytecodeCacheVersion.cpp.in
-    COMMAND ${PERL_EXECUTABLE} -pe s/CACHED_TYPES_CKSUM/__TIMESTAMP__/ ${JAVASCRIPTCORE_DIR}/runtime/JSCBytecodeCacheVersion.cpp.in > ${JavaScriptCore_DERIVED_SOURCES_DIR}/JSCBytecodeCacheVersion.cpp
+    COMMAND ${PERL_EXECUTABLE} -pe s/CACHED_TYPES_CKSUM/__TIMESTAMP__/ ${JAVASCRIPTCORE_DIR}/runtime/JSCBytecodeCacheVersion.cpp.in > ${CyberScriptCore_DERIVED_SOURCES_DIR}/JSCBytecodeCacheVersion.cpp
             VERBATIM
 )
 
 
-set(JavaScriptCore_FRAMEWORKS
+set(CyberScriptCore_FRAMEWORKS
     WTF
 )
 if (NOT USE_SYSTEM_MALLOC)
-    list(APPEND JavaScriptCore_FRAMEWORKS bmalloc)
+    list(APPEND CyberScriptCore_FRAMEWORKS bmalloc)
 endif ()
 
 if (USE_CAPSTONE)
-    list(APPEND JavaScriptCore_LIBRARIES capstone)
+    list(APPEND CyberScriptCore_LIBRARIES capstone)
 endif ()
 
 if (ATOMICS_REQUIRE_LIBATOMIC)
-    list(APPEND JavaScriptCore_LIBRARIES atomic)
+    list(APPEND CyberScriptCore_LIBRARIES atomic)
 endif ()
 
-set(JavaScriptCore_SCRIPTS_SOURCES_DIR "${JAVASCRIPTCORE_DIR}/Scripts")
+set(CyberScriptCore_SCRIPTS_SOURCES_DIR "${JAVASCRIPTCORE_DIR}/Scripts")
 
 # Globbing relies on the fact that generator-specific file names are prefixed with their directory.
 # Top-level scripts should have a file extension, since they are invoked during the build.
 
-set(JavaScriptCore_SCRIPTS_SOURCES_PATHS
-    ${JavaScriptCore_SCRIPTS_SOURCES_DIR}/*.pl
-    ${JavaScriptCore_SCRIPTS_SOURCES_DIR}/*.py
-    ${JavaScriptCore_SCRIPTS_SOURCES_DIR}/wkbuiltins/builtins*.py
-    ${JavaScriptCore_SCRIPTS_SOURCES_DIR}/wkbuiltins/wkbuiltins.py
+set(CyberScriptCore_SCRIPTS_SOURCES_PATHS
+    ${CyberScriptCore_SCRIPTS_SOURCES_DIR}/*.pl
+    ${CyberScriptCore_SCRIPTS_SOURCES_DIR}/*.py
+    ${CyberScriptCore_SCRIPTS_SOURCES_DIR}/wkbuiltins/builtins*.py
+    ${CyberScriptCore_SCRIPTS_SOURCES_DIR}/wkbuiltins/wkbuiltins.py
 )
 
 # The directory flattening performed below mirrors what the Mac port does with private headers.
 
-file(GLOB JavaScriptCore_SCRIPTS_SOURCES ${JavaScriptCore_SCRIPTS_SOURCES_PATHS})
+file(GLOB CyberScriptCore_SCRIPTS_SOURCES ${CyberScriptCore_SCRIPTS_SOURCES_PATHS})
 
-foreach (_file ${JavaScriptCore_SCRIPTS_SOURCES})
+foreach (_file ${CyberScriptCore_SCRIPTS_SOURCES})
     get_filename_component(_script "${_file}" NAME)
     add_custom_command(
-        OUTPUT ${JavaScriptCore_SCRIPTS_DIR}/${_script}
+        OUTPUT ${CyberScriptCore_SCRIPTS_DIR}/${_script}
         MAIN_DEPENDENCY ${_file}
-        WORKING_DIRECTORY ${JavaScriptCore_DERIVED_SOURCES_DIR}
-        COMMAND ${CMAKE_COMMAND} -E copy_if_different ${_file} ${JavaScriptCore_SCRIPTS_DIR}/${_script}
+        WORKING_DIRECTORY ${CyberScriptCore_DERIVED_SOURCES_DIR}
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different ${_file} ${CyberScriptCore_SCRIPTS_DIR}/${_script}
         VERBATIM)
-    list(APPEND JavaScriptCore_SCRIPTS ${JavaScriptCore_SCRIPTS_DIR}/${_script})
+    list(APPEND CyberScriptCore_SCRIPTS ${CyberScriptCore_SCRIPTS_DIR}/${_script})
 endforeach ()
 
 # This is the default build variant for Xcode builds.
@@ -261,18 +261,18 @@ set(GENERATOR
 )
 
 add_custom_command(
-    OUTPUT ${JavaScriptCore_DERIVED_SOURCES_DIR}/Bytecodes.h ${JavaScriptCore_DERIVED_SOURCES_DIR}/InitBytecodes.asm ${JavaScriptCore_DERIVED_SOURCES_DIR}/BytecodeStructs.h ${JavaScriptCore_DERIVED_SOURCES_DIR}/BytecodeIndices.h ${JavaScriptCore_DERIVED_SOURCES_DIR}/WasmLLIntGeneratorInlines.h ${JavaScriptCore_DERIVED_SOURCES_DIR}/InitWasm.asm ${JavaScriptCore_DERIVED_SOURCES_DIR}/BytecodeDumperGenerated.cpp
+    OUTPUT ${CyberScriptCore_DERIVED_SOURCES_DIR}/Bytecodes.h ${CyberScriptCore_DERIVED_SOURCES_DIR}/InitBytecodes.asm ${CyberScriptCore_DERIVED_SOURCES_DIR}/BytecodeStructs.h ${CyberScriptCore_DERIVED_SOURCES_DIR}/BytecodeIndices.h ${CyberScriptCore_DERIVED_SOURCES_DIR}/WasmLLIntGeneratorInlines.h ${CyberScriptCore_DERIVED_SOURCES_DIR}/InitWasm.asm ${CyberScriptCore_DERIVED_SOURCES_DIR}/BytecodeDumperGenerated.cpp
     MAIN_DEPENDENCY ${JAVASCRIPTCORE_DIR}/generator/main.rb
     DEPENDS ${GENERATOR} bytecode/BytecodeList.rb ${JAVASCRIPTCORE_DIR}/wasm/wasm.json
-    COMMAND ${RUBY_EXECUTABLE} ${JAVASCRIPTCORE_DIR}/generator/main.rb --bytecodes_h ${JavaScriptCore_DERIVED_SOURCES_DIR}/Bytecodes.h --init_bytecodes_asm ${JavaScriptCore_DERIVED_SOURCES_DIR}/InitBytecodes.asm --bytecode_structs_h ${JavaScriptCore_DERIVED_SOURCES_DIR}/BytecodeStructs.h --bytecode_indices_h ${JavaScriptCore_DERIVED_SOURCES_DIR}/BytecodeIndices.h ${JAVASCRIPTCORE_DIR}/bytecode/BytecodeList.rb --wasm_json ${JAVASCRIPTCORE_DIR}/wasm/wasm.json --wasm_llint_generator_h ${JavaScriptCore_DERIVED_SOURCES_DIR}/WasmLLIntGeneratorInlines.h --init_wasm_llint ${JavaScriptCore_DERIVED_SOURCES_DIR}/InitWasm.asm --bytecode_dumper ${JavaScriptCore_DERIVED_SOURCES_DIR}/BytecodeDumperGenerated.cpp
+    COMMAND ${RUBY_EXECUTABLE} ${JAVASCRIPTCORE_DIR}/generator/main.rb --bytecodes_h ${CyberScriptCore_DERIVED_SOURCES_DIR}/Bytecodes.h --init_bytecodes_asm ${CyberScriptCore_DERIVED_SOURCES_DIR}/InitBytecodes.asm --bytecode_structs_h ${CyberScriptCore_DERIVED_SOURCES_DIR}/BytecodeStructs.h --bytecode_indices_h ${CyberScriptCore_DERIVED_SOURCES_DIR}/BytecodeIndices.h ${JAVASCRIPTCORE_DIR}/bytecode/BytecodeList.rb --wasm_json ${JAVASCRIPTCORE_DIR}/wasm/wasm.json --wasm_llint_generator_h ${CyberScriptCore_DERIVED_SOURCES_DIR}/WasmLLIntGeneratorInlines.h --init_wasm_llint ${CyberScriptCore_DERIVED_SOURCES_DIR}/InitWasm.asm --bytecode_dumper ${CyberScriptCore_DERIVED_SOURCES_DIR}/BytecodeDumperGenerated.cpp
     VERBATIM)
-add_custom_target(Bytecodes DEPENDS "${JavaScriptCore_DERIVED_SOURCES_DIR}/Bytecodes.h")
+add_custom_target(Bytecodes DEPENDS "${CyberScriptCore_DERIVED_SOURCES_DIR}/Bytecodes.h")
 
 string(TIMESTAMP BUILD_TIME "%s")
 
-list(APPEND JavaScriptCore_HEADERS
-    ${JavaScriptCore_DERIVED_SOURCES_DIR}/BytecodeStructs.h
-    ${JavaScriptCore_DERIVED_SOURCES_DIR}/Bytecodes.h
+list(APPEND CyberScriptCore_HEADERS
+    ${CyberScriptCore_DERIVED_SOURCES_DIR}/BytecodeStructs.h
+    ${CyberScriptCore_DERIVED_SOURCES_DIR}/Bytecodes.h
 )
 
 if (WIN32)
@@ -300,52 +300,52 @@ else ()
 endif ()
 
 add_custom_command(
-    OUTPUT ${JavaScriptCore_DERIVED_SOURCES_DIR}/AirOpcode.h ${JavaScriptCore_DERIVED_SOURCES_DIR}/AirOpcodeGenerated.h
+    OUTPUT ${CyberScriptCore_DERIVED_SOURCES_DIR}/AirOpcode.h ${CyberScriptCore_DERIVED_SOURCES_DIR}/AirOpcodeGenerated.h
     MAIN_DEPENDENCY ${JAVASCRIPTCORE_DIR}/b3/air/AirOpcode.opcodes
     DEPENDS ${JAVASCRIPTCORE_DIR}/b3/air/opcode_generator.rb
     COMMAND ${RUBY_EXECUTABLE} ${JAVASCRIPTCORE_DIR}/b3/air/opcode_generator.rb ${JAVASCRIPTCORE_DIR}/b3/air/AirOpcode.opcodes VERBATIM
-    WORKING_DIRECTORY ${JavaScriptCore_DERIVED_SOURCES_DIR}
+    WORKING_DIRECTORY ${CyberScriptCore_DERIVED_SOURCES_DIR}
 )
 
-list(APPEND JavaScriptCore_HEADERS
-    ${JavaScriptCore_DERIVED_SOURCES_DIR}/AirOpcode.h
-    ${JavaScriptCore_DERIVED_SOURCES_DIR}/AirOpcodeGenerated.h
+list(APPEND CyberScriptCore_HEADERS
+    ${CyberScriptCore_DERIVED_SOURCES_DIR}/AirOpcode.h
+    ${CyberScriptCore_DERIVED_SOURCES_DIR}/AirOpcodeGenerated.h
 )
 
 add_custom_command(
-    OUTPUT ${JavaScriptCore_DERIVED_SOURCES_DIR}/LLIntDesiredSettings.h
+    OUTPUT ${CyberScriptCore_DERIVED_SOURCES_DIR}/LLIntDesiredSettings.h
     MAIN_DEPENDENCY ${JAVASCRIPTCORE_DIR}/offlineasm/generate_settings_extractor.rb
-    DEPENDS ${LLINT_ASM} ${OFFLINE_ASM} ${JavaScriptCore_DERIVED_SOURCES_DIR}/InitBytecodes.asm ${JavaScriptCore_DERIVED_SOURCES_DIR}/InitWasm.asm
-    COMMAND ${RUBY_EXECUTABLE} ${JAVASCRIPTCORE_DIR}/offlineasm/generate_settings_extractor.rb -I${JavaScriptCore_DERIVED_SOURCES_DIR}/ ${JAVASCRIPTCORE_DIR}/llint/LowLevelInterpreter.asm ${JavaScriptCore_DERIVED_SOURCES_DIR}/LLIntDesiredSettings.h ${OFFLINE_ASM_BACKEND}
+    DEPENDS ${LLINT_ASM} ${OFFLINE_ASM} ${CyberScriptCore_DERIVED_SOURCES_DIR}/InitBytecodes.asm ${CyberScriptCore_DERIVED_SOURCES_DIR}/InitWasm.asm
+    COMMAND ${RUBY_EXECUTABLE} ${JAVASCRIPTCORE_DIR}/offlineasm/generate_settings_extractor.rb -I${CyberScriptCore_DERIVED_SOURCES_DIR}/ ${JAVASCRIPTCORE_DIR}/llint/LowLevelInterpreter.asm ${CyberScriptCore_DERIVED_SOURCES_DIR}/LLIntDesiredSettings.h ${OFFLINE_ASM_BACKEND}
     VERBATIM)
 
 add_custom_command(
-    OUTPUT ${JavaScriptCore_DERIVED_SOURCES_DIR}/LLIntDesiredOffsets.h
+    OUTPUT ${CyberScriptCore_DERIVED_SOURCES_DIR}/LLIntDesiredOffsets.h
     MAIN_DEPENDENCY ${JAVASCRIPTCORE_DIR}/offlineasm/generate_offset_extractor.rb
-    DEPENDS LLIntSettingsExtractor ${LLINT_ASM} ${OFFLINE_ASM} ${JavaScriptCore_DERIVED_SOURCES_DIR}/InitBytecodes.asm ${JavaScriptCore_DERIVED_SOURCES_DIR}/InitWasm.asm ${JavaScriptCore_DERIVED_SOURCES_DIR}/AirOpcode.h ${JavaScriptCore_DERIVED_SOURCES_DIR}/WasmOps.h
-    COMMAND ${RUBY_EXECUTABLE} ${JAVASCRIPTCORE_DIR}/offlineasm/generate_offset_extractor.rb -I${JavaScriptCore_DERIVED_SOURCES_DIR}/ ${JAVASCRIPTCORE_DIR}/llint/LowLevelInterpreter.asm $<TARGET_FILE:LLIntSettingsExtractor> ${JavaScriptCore_DERIVED_SOURCES_DIR}/LLIntDesiredOffsets.h ${OFFLINE_ASM_BACKEND} ${BUILD_VARIANTS}
+    DEPENDS LLIntSettingsExtractor ${LLINT_ASM} ${OFFLINE_ASM} ${CyberScriptCore_DERIVED_SOURCES_DIR}/InitBytecodes.asm ${CyberScriptCore_DERIVED_SOURCES_DIR}/InitWasm.asm ${CyberScriptCore_DERIVED_SOURCES_DIR}/AirOpcode.h ${CyberScriptCore_DERIVED_SOURCES_DIR}/WasmOps.h
+    COMMAND ${RUBY_EXECUTABLE} ${JAVASCRIPTCORE_DIR}/offlineasm/generate_offset_extractor.rb -I${CyberScriptCore_DERIVED_SOURCES_DIR}/ ${JAVASCRIPTCORE_DIR}/llint/LowLevelInterpreter.asm $<TARGET_FILE:LLIntSettingsExtractor> ${CyberScriptCore_DERIVED_SOURCES_DIR}/LLIntDesiredOffsets.h ${OFFLINE_ASM_BACKEND} ${BUILD_VARIANTS}
     VERBATIM)
 
 # JSCBuiltins
 
 set(BUILTINS_GENERATOR_SCRIPTS
-    ${JavaScriptCore_SCRIPTS_DIR}/wkbuiltins.py
-    ${JavaScriptCore_SCRIPTS_DIR}/builtins_generator.py
-    ${JavaScriptCore_SCRIPTS_DIR}/builtins_model.py
-    ${JavaScriptCore_SCRIPTS_DIR}/builtins_templates.py
-    ${JavaScriptCore_SCRIPTS_DIR}/builtins_generate_combined_header.py
-    ${JavaScriptCore_SCRIPTS_DIR}/builtins_generate_combined_implementation.py
-    ${JavaScriptCore_SCRIPTS_DIR}/builtins_generate_separate_header.py
-    ${JavaScriptCore_SCRIPTS_DIR}/builtins_generate_separate_implementation.py
-    ${JavaScriptCore_SCRIPTS_DIR}/builtins_generate_wrapper_header.py
-    ${JavaScriptCore_SCRIPTS_DIR}/builtins_generate_wrapper_implementation.py
-    ${JavaScriptCore_SCRIPTS_DIR}/builtins_generate_internals_wrapper_header.py
-    ${JavaScriptCore_SCRIPTS_DIR}/builtins_generate_internals_wrapper_implementation.py
-    ${JavaScriptCore_SCRIPTS_DIR}/generate-js-builtins.py
-    ${JavaScriptCore_SCRIPTS_DIR}/lazywriter.py
+    ${CyberScriptCore_SCRIPTS_DIR}/wkbuiltins.py
+    ${CyberScriptCore_SCRIPTS_DIR}/builtins_generator.py
+    ${CyberScriptCore_SCRIPTS_DIR}/builtins_model.py
+    ${CyberScriptCore_SCRIPTS_DIR}/builtins_templates.py
+    ${CyberScriptCore_SCRIPTS_DIR}/builtins_generate_combined_header.py
+    ${CyberScriptCore_SCRIPTS_DIR}/builtins_generate_combined_implementation.py
+    ${CyberScriptCore_SCRIPTS_DIR}/builtins_generate_separate_header.py
+    ${CyberScriptCore_SCRIPTS_DIR}/builtins_generate_separate_implementation.py
+    ${CyberScriptCore_SCRIPTS_DIR}/builtins_generate_wrapper_header.py
+    ${CyberScriptCore_SCRIPTS_DIR}/builtins_generate_wrapper_implementation.py
+    ${CyberScriptCore_SCRIPTS_DIR}/builtins_generate_internals_wrapper_header.py
+    ${CyberScriptCore_SCRIPTS_DIR}/builtins_generate_internals_wrapper_implementation.py
+    ${CyberScriptCore_SCRIPTS_DIR}/generate-js-builtins.py
+    ${CyberScriptCore_SCRIPTS_DIR}/lazywriter.py
 )
 
-set(JavaScriptCore_BUILTINS_SOURCES
+set(CyberScriptCore_BUILTINS_SOURCES
     ${JAVASCRIPTCORE_DIR}/builtins/AsyncFromSyncIteratorPrototype.js
     ${JAVASCRIPTCORE_DIR}/builtins/ArrayConstructor.js
     ${JAVASCRIPTCORE_DIR}/builtins/ArrayIteratorPrototype.js
@@ -386,12 +386,12 @@ set(JavaScriptCore_BUILTINS_SOURCES
 )
 
 add_custom_command(
-    OUTPUT ${JavaScriptCore_DERIVED_SOURCES_DIR}/JSCBuiltins.cpp ${JavaScriptCore_DERIVED_SOURCES_DIR}/JSCBuiltins.h
-    MAIN_DEPENDENCY ${JavaScriptCore_SCRIPTS_DIR}/generate-js-builtins.py
-    DEPENDS ${JavaScriptCore_BUILTINS_SOURCES} ${BUILTINS_GENERATOR_SCRIPTS}
-    COMMAND ${PYTHON_EXECUTABLE} ${JavaScriptCore_SCRIPTS_DIR}/generate-js-builtins.py --framework JavaScriptCore --output-directory ${JavaScriptCore_DERIVED_SOURCES_DIR} --combined ${JavaScriptCore_BUILTINS_SOURCES}
+    OUTPUT ${CyberScriptCore_DERIVED_SOURCES_DIR}/JSCBuiltins.cpp ${CyberScriptCore_DERIVED_SOURCES_DIR}/JSCBuiltins.h
+    MAIN_DEPENDENCY ${CyberScriptCore_SCRIPTS_DIR}/generate-js-builtins.py
+    DEPENDS ${CyberScriptCore_BUILTINS_SOURCES} ${BUILTINS_GENERATOR_SCRIPTS}
+    COMMAND ${PYTHON_EXECUTABLE} ${CyberScriptCore_SCRIPTS_DIR}/generate-js-builtins.py --framework CyberScriptCore --output-directory ${CyberScriptCore_DERIVED_SOURCES_DIR} --combined ${CyberScriptCore_BUILTINS_SOURCES}
     VERBATIM)
-add_custom_target(JSCBuiltins DEPENDS "${JavaScriptCore_DERIVED_SOURCES_DIR}/JSCBuiltins.h")
+add_custom_target(JSCBuiltins DEPENDS "${CyberScriptCore_DERIVED_SOURCES_DIR}/JSCBuiltins.h")
 
 # We add the header files directly to the ADD_EXECUTABLE call instead of setting the
 # OBJECT_DEPENDS property in LLIntOffsetsExtractor.cpp because generate_offset_extractor.rb and
@@ -406,14 +406,14 @@ add_custom_target(JSCBuiltins DEPENDS "${JavaScriptCore_DERIVED_SOURCES_DIR}/JSC
 WEBKIT_EXECUTABLE_DECLARE(LLIntSettingsExtractor)
 set(LLIntSettingsExtractor_SOURCES
     ${JAVASCRIPTCORE_DIR}/llint/LLIntSettingsExtractor.cpp
-    ${JavaScriptCore_DERIVED_SOURCES_DIR}/LLIntDesiredSettings.h ${JavaScriptCore_DERIVED_SOURCES_DIR}/Bytecodes.h ${JavaScriptCore_DERIVED_SOURCES_DIR}/BytecodeStructs.h
+    ${CyberScriptCore_DERIVED_SOURCES_DIR}/LLIntDesiredSettings.h ${CyberScriptCore_DERIVED_SOURCES_DIR}/Bytecodes.h ${CyberScriptCore_DERIVED_SOURCES_DIR}/BytecodeStructs.h
 )
 
 set(LLIntSettingsExtractor_PRIVATE_INCLUDE_DIRECTORIES
-    $<TARGET_PROPERTY:JavaScriptCore,INCLUDE_DIRECTORIES>
+    $<TARGET_PROPERTY:CyberScriptCore,INCLUDE_DIRECTORIES>
 )
-set(LLIntSettingsExtractor_FRAMEWORKS ${JavaScriptCore_FRAMEWORKS})
-set(LLIntSettingsExtractor_DEPENDENCIES JavaScriptCore_CopyHeaders)
+set(LLIntSettingsExtractor_FRAMEWORKS ${CyberScriptCore_FRAMEWORKS})
+set(LLIntSettingsExtractor_DEPENDENCIES CyberScriptCore_CopyHeaders)
 WEBKIT_EXECUTABLE(LLIntSettingsExtractor)
 
 # LLIntSettingsExtractor target needs to have a direct or indirect
@@ -425,14 +425,14 @@ add_dependencies(LLIntSettingsExtractor Bytecodes)
 WEBKIT_EXECUTABLE_DECLARE(LLIntOffsetsExtractor)
 set(LLIntOffsetsExtractor_SOURCES
     ${JAVASCRIPTCORE_DIR}/llint/LLIntOffsetsExtractor.cpp
-    ${JavaScriptCore_DERIVED_SOURCES_DIR}/LLIntDesiredOffsets.h ${JavaScriptCore_DERIVED_SOURCES_DIR}/Bytecodes.h ${JavaScriptCore_DERIVED_SOURCES_DIR}/BytecodeStructs.h
+    ${CyberScriptCore_DERIVED_SOURCES_DIR}/LLIntDesiredOffsets.h ${CyberScriptCore_DERIVED_SOURCES_DIR}/Bytecodes.h ${CyberScriptCore_DERIVED_SOURCES_DIR}/BytecodeStructs.h
 )
 
 set(LLIntOffsetsExtractor_PRIVATE_INCLUDE_DIRECTORIES
-    $<TARGET_PROPERTY:JavaScriptCore,INCLUDE_DIRECTORIES>
+    $<TARGET_PROPERTY:CyberScriptCore,INCLUDE_DIRECTORIES>
 )
-set(LLIntOffsetsExtractor_FRAMEWORKS ${JavaScriptCore_FRAMEWORKS})
-set(LLIntOffsetsExtractor_DEPENDENCIES JavaScriptCore_CopyHeaders JSCBuiltins)
+set(LLIntOffsetsExtractor_FRAMEWORKS ${CyberScriptCore_FRAMEWORKS})
+set(LLIntOffsetsExtractor_DEPENDENCIES CyberScriptCore_CopyHeaders JSCBuiltins)
 WEBKIT_EXECUTABLE(LLIntOffsetsExtractor)
 
 # The build system will execute asm.rb every time LLIntOffsetsExtractor's mtime is newer than
@@ -453,17 +453,17 @@ if (CMAKE_SYSTEM_NAME MATCHES "Linux")
 endif ()
 
 add_custom_command(
-    OUTPUT ${JavaScriptCore_DERIVED_SOURCES_DIR}/${LLIntOutput}
+    OUTPUT ${CyberScriptCore_DERIVED_SOURCES_DIR}/${LLIntOutput}
     MAIN_DEPENDENCY ${JAVASCRIPTCORE_DIR}/offlineasm/asm.rb
-    DEPENDS LLIntOffsetsExtractor ${LLINT_ASM} ${OFFLINE_ASM} ${JavaScriptCore_DERIVED_SOURCES_DIR}/InitBytecodes.asm ${JavaScriptCore_DERIVED_SOURCES_DIR}/InitWasm.asm
-    COMMAND ${CMAKE_COMMAND} -E env CMAKE_CXX_COMPILER_ID=${CMAKE_CXX_COMPILER_ID} GCC_OFFLINEASM_SOURCE_MAP=${GCC_OFFLINEASM_SOURCE_MAP} ${RUBY_EXECUTABLE} ${JAVASCRIPTCORE_DIR}/offlineasm/asm.rb -I${JavaScriptCore_DERIVED_SOURCES_DIR}/ ${JAVASCRIPTCORE_DIR}/llint/LowLevelInterpreter.asm $<TARGET_FILE:LLIntOffsetsExtractor> ${JavaScriptCore_DERIVED_SOURCES_DIR}/${LLIntOutput} ${BUILD_VARIANTS} ${OFFLINE_ASM_ARGS}
-    COMMAND ${CMAKE_COMMAND} -E touch_nocreate ${JavaScriptCore_DERIVED_SOURCES_DIR}/${LLIntOutput}
-    WORKING_DIRECTORY ${JavaScriptCore_DERIVED_SOURCES_DIR}
+    DEPENDS LLIntOffsetsExtractor ${LLINT_ASM} ${OFFLINE_ASM} ${CyberScriptCore_DERIVED_SOURCES_DIR}/InitBytecodes.asm ${CyberScriptCore_DERIVED_SOURCES_DIR}/InitWasm.asm
+    COMMAND ${CMAKE_COMMAND} -E env CMAKE_CXX_COMPILER_ID=${CMAKE_CXX_COMPILER_ID} GCC_OFFLINEASM_SOURCE_MAP=${GCC_OFFLINEASM_SOURCE_MAP} ${RUBY_EXECUTABLE} ${JAVASCRIPTCORE_DIR}/offlineasm/asm.rb -I${CyberScriptCore_DERIVED_SOURCES_DIR}/ ${JAVASCRIPTCORE_DIR}/llint/LowLevelInterpreter.asm $<TARGET_FILE:LLIntOffsetsExtractor> ${CyberScriptCore_DERIVED_SOURCES_DIR}/${LLIntOutput} ${BUILD_VARIANTS} ${OFFLINE_ASM_ARGS}
+    COMMAND ${CMAKE_COMMAND} -E touch_nocreate ${CyberScriptCore_DERIVED_SOURCES_DIR}/${LLIntOutput}
+    WORKING_DIRECTORY ${CyberScriptCore_DERIVED_SOURCES_DIR}
     VERBATIM)
 
 # The explanation for not making LLIntAssembly.h part of the OBJECT_DEPENDS property of some of
 # the .cpp files below is similar to the one in the previous comment. However, since these .cpp
-# files are used to build JavaScriptCore itself, we can just add LLIntAssembly.h to JSC_HEADERS
+# files are used to build CyberScriptCore itself, we can just add LLIntAssembly.h to JSC_HEADERS
 # since it is used in the add_library() call at the end of this file.
 if (MSVC AND NOT ENABLE_C_LOOP)
     enable_language(ASM_MASM)
@@ -476,11 +476,11 @@ if (MSVC AND NOT ENABLE_C_LOOP)
         set(LLINT_MASM_FLAGS /c /Fo)
     endif ()
     add_custom_command(
-        OUTPUT ${JavaScriptCore_DERIVED_SOURCES_DIR}/LowLevelInterpreterWin.obj
-        DEPENDS ${JavaScriptCore_DERIVED_SOURCES_DIR}/LowLevelInterpreterWin.asm
-        COMMAND ${MASM_EXECUTABLE} ${LLINT_MASM_FLAGS} ${JavaScriptCore_DERIVED_SOURCES_DIR}/LowLevelInterpreterWin.obj ${JavaScriptCore_DERIVED_SOURCES_DIR}/LowLevelInterpreterWin.asm
+        OUTPUT ${CyberScriptCore_DERIVED_SOURCES_DIR}/LowLevelInterpreterWin.obj
+        DEPENDS ${CyberScriptCore_DERIVED_SOURCES_DIR}/LowLevelInterpreterWin.asm
+        COMMAND ${MASM_EXECUTABLE} ${LLINT_MASM_FLAGS} ${CyberScriptCore_DERIVED_SOURCES_DIR}/LowLevelInterpreterWin.obj ${CyberScriptCore_DERIVED_SOURCES_DIR}/LowLevelInterpreterWin.asm
         VERBATIM)
-    list(APPEND JavaScriptCore_SOURCES ${JavaScriptCore_DERIVED_SOURCES_DIR}/LowLevelInterpreterWin.obj)
+    list(APPEND CyberScriptCore_SOURCES ${CyberScriptCore_DERIVED_SOURCES_DIR}/LowLevelInterpreterWin.obj)
     add_library(LowLevelInterpreterLib OBJECT llint/LowLevelInterpreter.cpp)
 else ()
     # As there's poor toolchain support for using `.file` directives in
@@ -491,7 +491,7 @@ else ()
     # and cmake doesn't allow us to introduce a compiler wrapper for a
     # single source file, so we need to create a separate target for it.
     add_library(LowLevelInterpreterLib OBJECT llint/LowLevelInterpreter.cpp
-        ${JavaScriptCore_DERIVED_SOURCES_DIR}/${LLIntOutput})
+        ${CyberScriptCore_DERIVED_SOURCES_DIR}/${LLIntOutput})
 endif ()
 
 # WebAssembly generator
@@ -503,11 +503,11 @@ macro(GENERATE_PYTHON _generator _additional_deps _input _output)
         DEPENDS ${_input} ${_additional_deps}
         COMMAND ${PYTHON_EXECUTABLE} ${_generator} ${_input} ${_output}
         VERBATIM)
-    list(APPEND JavaScriptCore_HEADERS ${_output})
+    list(APPEND CyberScriptCore_HEADERS ${_output})
     WEBKIT_ADD_SOURCE_DEPENDENCIES(${_input} ${_output})
 endmacro()
-GENERATE_PYTHON(${CMAKE_CURRENT_SOURCE_DIR}/wasm/generateWasmOpsHeader.py ${CMAKE_CURRENT_SOURCE_DIR}/wasm/generateWasm.py ${CMAKE_CURRENT_SOURCE_DIR}/wasm/wasm.json ${JavaScriptCore_DERIVED_SOURCES_DIR}/WasmOps.h)
-GENERATE_PYTHON(${CMAKE_CURRENT_SOURCE_DIR}/wasm/generateWasmB3IRGeneratorInlinesHeader.py ${CMAKE_CURRENT_SOURCE_DIR}/wasm/generateWasm.py ${CMAKE_CURRENT_SOURCE_DIR}/wasm/wasm.json ${JavaScriptCore_DERIVED_SOURCES_DIR}/WasmB3IRGeneratorInlines.h)
+GENERATE_PYTHON(${CMAKE_CURRENT_SOURCE_DIR}/wasm/generateWasmOpsHeader.py ${CMAKE_CURRENT_SOURCE_DIR}/wasm/generateWasm.py ${CMAKE_CURRENT_SOURCE_DIR}/wasm/wasm.json ${CyberScriptCore_DERIVED_SOURCES_DIR}/WasmOps.h)
+GENERATE_PYTHON(${CMAKE_CURRENT_SOURCE_DIR}/wasm/generateWasmB3IRGeneratorInlinesHeader.py ${CMAKE_CURRENT_SOURCE_DIR}/wasm/generateWasm.py ${CMAKE_CURRENT_SOURCE_DIR}/wasm/wasm.json ${CyberScriptCore_DERIVED_SOURCES_DIR}/WasmB3IRGeneratorInlines.h)
 
 # LUT generator
 
@@ -519,18 +519,18 @@ macro(GENERATE_HASH_LUT _input _output)
         DEPENDS ${_input}
         COMMAND ${PERL_EXECUTABLE} ${HASH_LUT_GENERATOR} ${_input} > ${_output}
         VERBATIM)
-    list(APPEND JavaScriptCore_HEADERS ${_output})
+    list(APPEND CyberScriptCore_HEADERS ${_output})
     WEBKIT_ADD_SOURCE_DEPENDENCIES(${_input} ${_output})
 endmacro()
 
 # GENERATOR 1-A: LUT creator
 
-foreach (_file ${JavaScriptCore_OBJECT_LUT_SOURCES})
+foreach (_file ${CyberScriptCore_OBJECT_LUT_SOURCES})
     get_filename_component(_name ${_file} NAME_WE)
-    GENERATE_HASH_LUT(${CMAKE_CURRENT_SOURCE_DIR}/${_file} ${JavaScriptCore_DERIVED_SOURCES_DIR}/${_name}.lut.h)
+    GENERATE_HASH_LUT(${CMAKE_CURRENT_SOURCE_DIR}/${_file} ${CyberScriptCore_DERIVED_SOURCES_DIR}/${_name}.lut.h)
 endforeach ()
 
-set(JavaScriptCore_PUBLIC_FRAMEWORK_HEADERS
+set(CyberScriptCore_PUBLIC_FRAMEWORK_HEADERS
     API/JSBase.h
     API/JSContextRef.h
     API/JSObjectRef.h
@@ -541,14 +541,14 @@ set(JavaScriptCore_PUBLIC_FRAMEWORK_HEADERS
     API/WebKitAvailability.h
 )
 
-set(JavaScriptCore_PRIVATE_FRAMEWORK_HEADERS
-    ${JavaScriptCore_DERIVED_SOURCES_DIR}/Bytecodes.h
-    ${JavaScriptCore_DERIVED_SOURCES_DIR}/JSCBuiltins.h
-    ${JavaScriptCore_DERIVED_SOURCES_DIR}/WasmOps.h
+set(CyberScriptCore_PRIVATE_FRAMEWORK_HEADERS
+    ${CyberScriptCore_DERIVED_SOURCES_DIR}/Bytecodes.h
+    ${CyberScriptCore_DERIVED_SOURCES_DIR}/JSCBuiltins.h
+    ${CyberScriptCore_DERIVED_SOURCES_DIR}/WasmOps.h
 
-    ${JavaScriptCore_DERIVED_SOURCES_DIR}/inspector/InspectorBackendDispatchers.h
-    ${JavaScriptCore_DERIVED_SOURCES_DIR}/inspector/InspectorFrontendDispatchers.h
-    ${JavaScriptCore_DERIVED_SOURCES_DIR}/inspector/InspectorProtocolObjects.h
+    ${CyberScriptCore_DERIVED_SOURCES_DIR}/inspector/InspectorBackendDispatchers.h
+    ${CyberScriptCore_DERIVED_SOURCES_DIR}/inspector/InspectorFrontendDispatchers.h
+    ${CyberScriptCore_DERIVED_SOURCES_DIR}/inspector/InspectorProtocolObjects.h
 
     API/APICallbackFunction.h
     API/APICast.h
@@ -1313,74 +1313,74 @@ set(JavaScriptCore_PRIVATE_FRAMEWORK_HEADERS
 )
 
 if (USE_INSPECTOR_SOCKET_SERVER)
-    list(APPEND JavaScriptCore_PRIVATE_FRAMEWORK_HEADERS
+    list(APPEND CyberScriptCore_PRIVATE_FRAMEWORK_HEADERS
         API/JSRemoteInspectorServer.h
     )
 endif ()
 
 # GENERATOR 1-B: particular LUT creator (for 1 file only)
-GENERATE_HASH_LUT(${CMAKE_CURRENT_SOURCE_DIR}/parser/Keywords.table ${JavaScriptCore_DERIVED_SOURCES_DIR}/Lexer.lut.h)
+GENERATE_HASH_LUT(${CMAKE_CURRENT_SOURCE_DIR}/parser/Keywords.table ${CyberScriptCore_DERIVED_SOURCES_DIR}/Lexer.lut.h)
 
-file(MAKE_DIRECTORY ${JavaScriptCore_DERIVED_SOURCES_DIR}/yarr)
+file(MAKE_DIRECTORY ${CyberScriptCore_DERIVED_SOURCES_DIR}/yarr)
 
 #GENERATOR: "RegExpJitTables.h": tables used by Yarr
 add_custom_command(
-    OUTPUT ${JavaScriptCore_DERIVED_SOURCES_DIR}/yarr/RegExpJitTables.h
+    OUTPUT ${CyberScriptCore_DERIVED_SOURCES_DIR}/yarr/RegExpJitTables.h
     MAIN_DEPENDENCY ${CMAKE_CURRENT_SOURCE_DIR}/yarr/create_regex_tables
-    COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/yarr/create_regex_tables ${JavaScriptCore_DERIVED_SOURCES_DIR}/yarr/RegExpJitTables.h
+    COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/yarr/create_regex_tables ${CyberScriptCore_DERIVED_SOURCES_DIR}/yarr/RegExpJitTables.h
     VERBATIM)
-list(APPEND JavaScriptCore_HEADERS ${JavaScriptCore_DERIVED_SOURCES_DIR}/yarr/RegExpJitTables.h)
-WEBKIT_ADD_SOURCE_DEPENDENCIES(${CMAKE_CURRENT_SOURCE_DIR}/yarr/YarrPattern.cpp ${JavaScriptCore_DERIVED_SOURCES_DIR}/yarr/RegExpJitTables.h)
+list(APPEND CyberScriptCore_HEADERS ${CyberScriptCore_DERIVED_SOURCES_DIR}/yarr/RegExpJitTables.h)
+WEBKIT_ADD_SOURCE_DEPENDENCIES(${CMAKE_CURRENT_SOURCE_DIR}/yarr/YarrPattern.cpp ${CyberScriptCore_DERIVED_SOURCES_DIR}/yarr/RegExpJitTables.h)
 
 add_custom_command(
-    OUTPUT ${JavaScriptCore_DERIVED_SOURCES_DIR}/yarr/UnicodePatternTables.h
+    OUTPUT ${CyberScriptCore_DERIVED_SOURCES_DIR}/yarr/UnicodePatternTables.h
     MAIN_DEPENDENCY ${JAVASCRIPTCORE_DIR}/yarr/generateYarrUnicodePropertyTables.py
     DEPENDS ${JAVASCRIPTCORE_DIR}/yarr/hasher.py ${JAVASCRIPTCORE_DIR}/ucd/DerivedBinaryProperties.txt ${JAVASCRIPTCORE_DIR}/ucd/DerivedCoreProperties.txt ${JAVASCRIPTCORE_DIR}/ucd/DerivedNormalizationProps.txt ${JAVASCRIPTCORE_DIR}/ucd/PropList.txt ${JAVASCRIPTCORE_DIR}/ucd/PropertyAliases.txt ${JAVASCRIPTCORE_DIR}/ucd/PropertyValueAliases.txt ${JAVASCRIPTCORE_DIR}/ucd/ScriptExtensions.txt ${JAVASCRIPTCORE_DIR}/ucd/Scripts.txt ${JAVASCRIPTCORE_DIR}/ucd/UnicodeData.txt ${JAVASCRIPTCORE_DIR}/ucd/emoji-data.txt
-    COMMAND ${PYTHON_EXECUTABLE} ${JAVASCRIPTCORE_DIR}/yarr/generateYarrUnicodePropertyTables.py ${JAVASCRIPTCORE_DIR}/ucd ${JavaScriptCore_DERIVED_SOURCES_DIR}/yarr/UnicodePatternTables.h
+    COMMAND ${PYTHON_EXECUTABLE} ${JAVASCRIPTCORE_DIR}/yarr/generateYarrUnicodePropertyTables.py ${JAVASCRIPTCORE_DIR}/ucd ${CyberScriptCore_DERIVED_SOURCES_DIR}/yarr/UnicodePatternTables.h
     VERBATIM)
-list(APPEND JavaScriptCore_HEADERS ${JavaScriptCore_DERIVED_SOURCES_DIR}/yarr/UnicodePatternTables.h)
-WEBKIT_ADD_SOURCE_DEPENDENCIES(${CMAKE_CURRENT_SOURCE_DIR}/yarr/UnicodePatternTables.cpp ${JavaScriptCore_DERIVED_SOURCES_DIR}/yarr/UnicodePatternTables.h)
+list(APPEND CyberScriptCore_HEADERS ${CyberScriptCore_DERIVED_SOURCES_DIR}/yarr/UnicodePatternTables.h)
+WEBKIT_ADD_SOURCE_DEPENDENCIES(${CMAKE_CURRENT_SOURCE_DIR}/yarr/UnicodePatternTables.cpp ${CyberScriptCore_DERIVED_SOURCES_DIR}/yarr/UnicodePatternTables.h)
 
 add_custom_command(
-    OUTPUT ${JavaScriptCore_DERIVED_SOURCES_DIR}/yarr/YarrCanonicalizeUnicode.cpp
+    OUTPUT ${CyberScriptCore_DERIVED_SOURCES_DIR}/yarr/YarrCanonicalizeUnicode.cpp
     MAIN_DEPENDENCY ${JAVASCRIPTCORE_DIR}/yarr/generateYarrCanonicalizeUnicode
     DEPENDS ${JAVASCRIPTCORE_DIR}/ucd/CaseFolding.txt
-    COMMAND ${PYTHON_EXECUTABLE} ${JAVASCRIPTCORE_DIR}/yarr/generateYarrCanonicalizeUnicode ${JAVASCRIPTCORE_DIR}/ucd/CaseFolding.txt ${JavaScriptCore_DERIVED_SOURCES_DIR}/yarr/YarrCanonicalizeUnicode.cpp
+    COMMAND ${PYTHON_EXECUTABLE} ${JAVASCRIPTCORE_DIR}/yarr/generateYarrCanonicalizeUnicode ${JAVASCRIPTCORE_DIR}/ucd/CaseFolding.txt ${CyberScriptCore_DERIVED_SOURCES_DIR}/yarr/YarrCanonicalizeUnicode.cpp
     VERBATIM)
 
 #GENERATOR: "KeywordLookup.h": keyword decision tree used by the lexer
 add_custom_command(
-    OUTPUT ${JavaScriptCore_DERIVED_SOURCES_DIR}/KeywordLookup.h
+    OUTPUT ${CyberScriptCore_DERIVED_SOURCES_DIR}/KeywordLookup.h
     MAIN_DEPENDENCY ${CMAKE_CURRENT_SOURCE_DIR}/KeywordLookupGenerator.py
     DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/parser/Keywords.table
-    COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/KeywordLookupGenerator.py ${CMAKE_CURRENT_SOURCE_DIR}/parser/Keywords.table > ${JavaScriptCore_DERIVED_SOURCES_DIR}/KeywordLookup.h
+    COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/KeywordLookupGenerator.py ${CMAKE_CURRENT_SOURCE_DIR}/parser/Keywords.table > ${CyberScriptCore_DERIVED_SOURCES_DIR}/KeywordLookup.h
     VERBATIM)
-list(APPEND JavaScriptCore_HEADERS ${JavaScriptCore_DERIVED_SOURCES_DIR}/KeywordLookup.h)
-WEBKIT_ADD_SOURCE_DEPENDENCIES(${CMAKE_CURRENT_SOURCE_DIR}/parser/Lexer.cpp ${JavaScriptCore_DERIVED_SOURCES_DIR}/KeywordLookup.h)
+list(APPEND CyberScriptCore_HEADERS ${CyberScriptCore_DERIVED_SOURCES_DIR}/KeywordLookup.h)
+WEBKIT_ADD_SOURCE_DEPENDENCIES(${CMAKE_CURRENT_SOURCE_DIR}/parser/Lexer.cpp ${CyberScriptCore_DERIVED_SOURCES_DIR}/KeywordLookup.h)
 
 
 # Inspector Interfaces
 
-set(JavaScriptCore_INSPECTOR_SCRIPTS_DIR "${JAVASCRIPTCORE_DIR}/inspector/scripts")
+set(CyberScriptCore_INSPECTOR_SCRIPTS_DIR "${JAVASCRIPTCORE_DIR}/inspector/scripts")
 
-set(JavaScriptCore_INSPECTOR_PROTOCOL_SCRIPTS
-    ${JavaScriptCore_INSPECTOR_SCRIPTS_DIR}/generate-inspector-protocol-bindings.py
-    ${JavaScriptCore_INSPECTOR_SCRIPTS_DIR}/codegen/cpp_generator.py
-    ${JavaScriptCore_INSPECTOR_SCRIPTS_DIR}/codegen/cpp_generator_templates.py
-    ${JavaScriptCore_INSPECTOR_SCRIPTS_DIR}/codegen/generate_js_backend_commands.py
-    ${JavaScriptCore_INSPECTOR_SCRIPTS_DIR}/codegen/generate_cpp_backend_dispatcher_header.py
-    ${JavaScriptCore_INSPECTOR_SCRIPTS_DIR}/codegen/generate_cpp_backend_dispatcher_implementation.py
-    ${JavaScriptCore_INSPECTOR_SCRIPTS_DIR}/codegen/generate_cpp_frontend_dispatcher_header.py
-    ${JavaScriptCore_INSPECTOR_SCRIPTS_DIR}/codegen/generate_cpp_frontend_dispatcher_implementation.py
-    ${JavaScriptCore_INSPECTOR_SCRIPTS_DIR}/codegen/generate_cpp_protocol_types_header.py
-    ${JavaScriptCore_INSPECTOR_SCRIPTS_DIR}/codegen/generate_cpp_protocol_types_implementation.py
-    ${JavaScriptCore_INSPECTOR_SCRIPTS_DIR}/codegen/generator.py
-    ${JavaScriptCore_INSPECTOR_SCRIPTS_DIR}/codegen/generator_templates.py
-    ${JavaScriptCore_INSPECTOR_SCRIPTS_DIR}/codegen/__init__.py
-    ${JavaScriptCore_INSPECTOR_SCRIPTS_DIR}/codegen/models.py
+set(CyberScriptCore_INSPECTOR_PROTOCOL_SCRIPTS
+    ${CyberScriptCore_INSPECTOR_SCRIPTS_DIR}/generate-inspector-protocol-bindings.py
+    ${CyberScriptCore_INSPECTOR_SCRIPTS_DIR}/codegen/cpp_generator.py
+    ${CyberScriptCore_INSPECTOR_SCRIPTS_DIR}/codegen/cpp_generator_templates.py
+    ${CyberScriptCore_INSPECTOR_SCRIPTS_DIR}/codegen/generate_js_backend_commands.py
+    ${CyberScriptCore_INSPECTOR_SCRIPTS_DIR}/codegen/generate_cpp_backend_dispatcher_header.py
+    ${CyberScriptCore_INSPECTOR_SCRIPTS_DIR}/codegen/generate_cpp_backend_dispatcher_implementation.py
+    ${CyberScriptCore_INSPECTOR_SCRIPTS_DIR}/codegen/generate_cpp_frontend_dispatcher_header.py
+    ${CyberScriptCore_INSPECTOR_SCRIPTS_DIR}/codegen/generate_cpp_frontend_dispatcher_implementation.py
+    ${CyberScriptCore_INSPECTOR_SCRIPTS_DIR}/codegen/generate_cpp_protocol_types_header.py
+    ${CyberScriptCore_INSPECTOR_SCRIPTS_DIR}/codegen/generate_cpp_protocol_types_implementation.py
+    ${CyberScriptCore_INSPECTOR_SCRIPTS_DIR}/codegen/generator.py
+    ${CyberScriptCore_INSPECTOR_SCRIPTS_DIR}/codegen/generator_templates.py
+    ${CyberScriptCore_INSPECTOR_SCRIPTS_DIR}/codegen/__init__.py
+    ${CyberScriptCore_INSPECTOR_SCRIPTS_DIR}/codegen/models.py
 )
 
-set(JavaScriptCore_INSPECTOR_DOMAINS
+set(CyberScriptCore_INSPECTOR_DOMAINS
     ${JAVASCRIPTCORE_DIR}/inspector/protocol/Animation.json
     ${JAVASCRIPTCORE_DIR}/inspector/protocol/ApplicationCache.json
     ${JAVASCRIPTCORE_DIR}/inspector/protocol/Audit.json
@@ -1413,90 +1413,90 @@ set(JavaScriptCore_INSPECTOR_DOMAINS
 )
 
 add_custom_command(
-    OUTPUT ${JavaScriptCore_DERIVED_SOURCES_DIR}/CombinedDomains.json
-    MAIN_DEPENDENCY ${JavaScriptCore_SCRIPTS_DIR}/generate-combined-inspector-json.py
-    DEPENDS ${JavaScriptCore_INSPECTOR_DOMAINS}
-    COMMAND ${PYTHON_EXECUTABLE} ${JavaScriptCore_SCRIPTS_DIR}/generate-combined-inspector-json.py ${JavaScriptCore_INSPECTOR_DOMAINS} "${FEATURE_DEFINES_WITH_SPACE_SEPARATOR}" > ${JavaScriptCore_DERIVED_SOURCES_DIR}/CombinedDomains.json
+    OUTPUT ${CyberScriptCore_DERIVED_SOURCES_DIR}/CombinedDomains.json
+    MAIN_DEPENDENCY ${CyberScriptCore_SCRIPTS_DIR}/generate-combined-inspector-json.py
+    DEPENDS ${CyberScriptCore_INSPECTOR_DOMAINS}
+    COMMAND ${PYTHON_EXECUTABLE} ${CyberScriptCore_SCRIPTS_DIR}/generate-combined-inspector-json.py ${CyberScriptCore_INSPECTOR_DOMAINS} "${FEATURE_DEFINES_WITH_SPACE_SEPARATOR}" > ${CyberScriptCore_DERIVED_SOURCES_DIR}/CombinedDomains.json
     VERBATIM)
 
 # Inspector Backend Dispatchers, Frontend Dispatchers, Type Builders
-file(MAKE_DIRECTORY ${JavaScriptCore_DERIVED_SOURCES_DIR}/inspector)
+file(MAKE_DIRECTORY ${CyberScriptCore_DERIVED_SOURCES_DIR}/inspector)
 add_custom_command(
-    OUTPUT ${JavaScriptCore_DERIVED_SOURCES_DIR}/inspector/InspectorBackendDispatchers.cpp
-           ${JavaScriptCore_DERIVED_SOURCES_DIR}/inspector/InspectorBackendDispatchers.h
-           ${JavaScriptCore_DERIVED_SOURCES_DIR}/inspector/InspectorFrontendDispatchers.cpp
-           ${JavaScriptCore_DERIVED_SOURCES_DIR}/inspector/InspectorFrontendDispatchers.h
-           ${JavaScriptCore_DERIVED_SOURCES_DIR}/inspector/InspectorProtocolObjects.cpp
-           ${JavaScriptCore_DERIVED_SOURCES_DIR}/inspector/InspectorProtocolObjects.h
-           ${JavaScriptCore_DERIVED_SOURCES_DIR}/inspector/InspectorBackendCommands.js
-    MAIN_DEPENDENCY ${JavaScriptCore_DERIVED_SOURCES_DIR}/CombinedDomains.json
-    DEPENDS ${JavaScriptCore_INSPECTOR_PROTOCOL_SCRIPTS}
-    COMMAND ${PYTHON_EXECUTABLE} ${JavaScriptCore_INSPECTOR_SCRIPTS_DIR}/generate-inspector-protocol-bindings.py --outputDir "${JavaScriptCore_DERIVED_SOURCES_DIR}/inspector" --framework JavaScriptCore ${JavaScriptCore_DERIVED_SOURCES_DIR}/CombinedDomains.json
+    OUTPUT ${CyberScriptCore_DERIVED_SOURCES_DIR}/inspector/InspectorBackendDispatchers.cpp
+           ${CyberScriptCore_DERIVED_SOURCES_DIR}/inspector/InspectorBackendDispatchers.h
+           ${CyberScriptCore_DERIVED_SOURCES_DIR}/inspector/InspectorFrontendDispatchers.cpp
+           ${CyberScriptCore_DERIVED_SOURCES_DIR}/inspector/InspectorFrontendDispatchers.h
+           ${CyberScriptCore_DERIVED_SOURCES_DIR}/inspector/InspectorProtocolObjects.cpp
+           ${CyberScriptCore_DERIVED_SOURCES_DIR}/inspector/InspectorProtocolObjects.h
+           ${CyberScriptCore_DERIVED_SOURCES_DIR}/inspector/InspectorBackendCommands.js
+    MAIN_DEPENDENCY ${CyberScriptCore_DERIVED_SOURCES_DIR}/CombinedDomains.json
+    DEPENDS ${CyberScriptCore_INSPECTOR_PROTOCOL_SCRIPTS}
+    COMMAND ${PYTHON_EXECUTABLE} ${CyberScriptCore_INSPECTOR_SCRIPTS_DIR}/generate-inspector-protocol-bindings.py --outputDir "${CyberScriptCore_DERIVED_SOURCES_DIR}/inspector" --framework CyberScriptCore ${CyberScriptCore_DERIVED_SOURCES_DIR}/CombinedDomains.json
     VERBATIM)
 
 if (WTF_CPU_X86_64)
     if (MSVC AND NOT ENABLE_C_LOOP)
         add_custom_command(
-            OUTPUT ${JavaScriptCore_DERIVED_SOURCES_DIR}/JITStubsMSVC64.obj
+            OUTPUT ${CyberScriptCore_DERIVED_SOURCES_DIR}/JITStubsMSVC64.obj
             MAIN_DEPENDENCY ${JAVASCRIPTCORE_DIR}/jit/JITStubsMSVC64.asm
-            COMMAND ml64 -nologo -c -Fo ${JavaScriptCore_DERIVED_SOURCES_DIR}/JITStubsMSVC64.obj ${JAVASCRIPTCORE_DIR}/jit/JITStubsMSVC64.asm
+            COMMAND ml64 -nologo -c -Fo ${CyberScriptCore_DERIVED_SOURCES_DIR}/JITStubsMSVC64.obj ${JAVASCRIPTCORE_DIR}/jit/JITStubsMSVC64.asm
             VERBATIM)
 
-        list(APPEND JavaScriptCore_SOURCES ${JavaScriptCore_DERIVED_SOURCES_DIR}/JITStubsMSVC64.obj)
+        list(APPEND CyberScriptCore_SOURCES ${CyberScriptCore_DERIVED_SOURCES_DIR}/JITStubsMSVC64.obj)
     endif ()
 endif ()
 
-set(JavaScriptCore_INTERFACE_LIBRARIES JavaScriptCore)
-set(JavaScriptCore_INTERFACE_INCLUDE_DIRECTORIES
-    ${JavaScriptCore_FRAMEWORK_HEADERS_DIR}
-    ${JavaScriptCore_PRIVATE_FRAMEWORK_HEADERS_DIR}
+set(CyberScriptCore_INTERFACE_LIBRARIES CyberScriptCore)
+set(CyberScriptCore_INTERFACE_INCLUDE_DIRECTORIES
+    ${CyberScriptCore_FRAMEWORK_HEADERS_DIR}
+    ${CyberScriptCore_PRIVATE_FRAMEWORK_HEADERS_DIR}
 )
-set(JavaScriptCore_INTERFACE_DEPENDENCIES
-    JavaScriptCore_CopyHeaders
-    JavaScriptCore_CopyPrivateHeaders
+set(CyberScriptCore_INTERFACE_DEPENDENCIES
+    CyberScriptCore_CopyHeaders
+    CyberScriptCore_CopyPrivateHeaders
 )
 
-WEBKIT_FRAMEWORK_DECLARE(JavaScriptCore)
+WEBKIT_FRAMEWORK_DECLARE(CyberScriptCore)
 WEBKIT_INCLUDE_CONFIG_FILES_IF_EXISTS()
 
 if (COMPILER_IS_GCC_OR_CLANG)
     # Avoid using fused multiply-add instructions since this could give different results
     # for e.g. parseInt depending on the platform and compilation flags.
     if (WTF_CPU_LOONGARCH64)
-        WEBKIT_ADD_TARGET_CXX_FLAGS(JavaScriptCore -ffp-contract=off)
+        WEBKIT_ADD_TARGET_CXX_FLAGS(CyberScriptCore -ffp-contract=off)
     else ()
-        WEBKIT_ADD_TARGET_CXX_FLAGS(JavaScriptCore -ffp-contract=off -fno-slp-vectorize)
+        WEBKIT_ADD_TARGET_CXX_FLAGS(CyberScriptCore -ffp-contract=off -fno-slp-vectorize)
     endif ()
 
     # On MIPS we have to explicitly disable madd4, since some versions of gcc still generate
     # such instructions despite -ffp-contract=off
     if (WTF_CPU_MIPS)
-        WEBKIT_ADD_TARGET_CXX_FLAGS(JavaScriptCore -mno-madd4)
+        WEBKIT_ADD_TARGET_CXX_FLAGS(CyberScriptCore -mno-madd4)
     endif ()
 endif ()
 
-WEBKIT_COPY_FILES(JavaScriptCore_CopyHeaders
-    DESTINATION ${JavaScriptCore_FRAMEWORK_HEADERS_DIR}/JavaScriptCore
-    FILES ${JavaScriptCore_PUBLIC_FRAMEWORK_HEADERS}
+WEBKIT_COPY_FILES(CyberScriptCore_CopyHeaders
+    DESTINATION ${CyberScriptCore_FRAMEWORK_HEADERS_DIR}/CyberScriptCore
+    FILES ${CyberScriptCore_PUBLIC_FRAMEWORK_HEADERS}
     FLATTENED
 )
 
-WEBKIT_COPY_FILES(JavaScriptCore_CopyPrivateHeaders
-    DESTINATION ${JavaScriptCore_PRIVATE_FRAMEWORK_HEADERS_DIR}/JavaScriptCore
-    FILES ${JavaScriptCore_PRIVATE_FRAMEWORK_HEADERS}
+WEBKIT_COPY_FILES(CyberScriptCore_CopyPrivateHeaders
+    DESTINATION ${CyberScriptCore_PRIVATE_FRAMEWORK_HEADERS_DIR}/CyberScriptCore
+    FILES ${CyberScriptCore_PRIVATE_FRAMEWORK_HEADERS}
     FLATTENED
 )
-add_dependencies(JavaScriptCore_CopyPrivateHeaders Bytecodes JSCBuiltins)
-# JavaScriptCore_CopyPrivateHeaders needs to have a direct or indirect
-# dependency of JavaScriptCore for CMake Visual Studio generator to
+add_dependencies(CyberScriptCore_CopyPrivateHeaders Bytecodes JSCBuiltins)
+# CyberScriptCore_CopyPrivateHeaders needs to have a direct or indirect
+# dependency of CyberScriptCore for CMake Visual Studio generator to
 # eliminate duplicated custom commands. Otherwise,
 # CombinedDomains.json will be generated in both projects.
 if (NOT INTERNAL_BUILD)
-    add_dependencies(JavaScriptCore_CopyPrivateHeaders JavaScriptCore)
+    add_dependencies(CyberScriptCore_CopyPrivateHeaders CyberScriptCore)
 endif ()
 
 target_include_directories(LowLevelInterpreterLib
-    PRIVATE "$<TARGET_PROPERTY:JavaScriptCore,INCLUDE_DIRECTORIES>")
+    PRIVATE "$<TARGET_PROPERTY:CyberScriptCore,INCLUDE_DIRECTORIES>")
 add_dependencies(LowLevelInterpreterLib Bytecodes JSCBuiltins)
 if (TARGET WTF_CopyHeaders)
     add_dependencies(LowLevelInterpreterLib WTF_CopyHeaders)
@@ -1505,7 +1505,7 @@ endif ()
 if (CMAKE_COMPILER_IS_GNUCXX AND GCC_OFFLINEASM_SOURCE_MAP)
     message(STATUS "Enabling asm postprocessing")
 
-    set(LowLevelInterpreter_LAUNCHER "${JavaScriptCore_SCRIPTS_SOURCES_DIR}/postprocess-asm")
+    set(LowLevelInterpreter_LAUNCHER "${CyberScriptCore_SCRIPTS_SOURCES_DIR}/postprocess-asm")
     get_target_property(PROP_RULE_LAUNCH_COMPILE LowLevelInterpreterLib RULE_LAUNCH_COMPILE)
     if (PROP_RULE_LAUNCH_COMPILE)
         set(LowLevelInterpreter_LAUNCHER "${LowLevelInterpreter_LAUNCHER} ${PROP_RULE_LAUNCH_COMPILE}")
@@ -1522,30 +1522,30 @@ if (CMAKE_COMPILER_IS_GNUCXX AND GCC_OFFLINEASM_SOURCE_MAP)
         COMPILE_OPTIONS "-fno-lto")
 endif ()
 
-# When building JavaScriptCore as an object library, we need to make sure the
+# When building CyberScriptCore as an object library, we need to make sure the
 # lowlevelinterpreter lib objects get propogated.
-if (${JavaScriptCore_LIBRARY_TYPE} STREQUAL "OBJECT")
-    list(APPEND JavaScriptCore_PRIVATE_LIBRARIES $<TARGET_OBJECTS:LowLevelInterpreterLib>)
+if (${CyberScriptCore_LIBRARY_TYPE} STREQUAL "OBJECT")
+    list(APPEND CyberScriptCore_PRIVATE_LIBRARIES $<TARGET_OBJECTS:LowLevelInterpreterLib>)
 else ()
-    list(APPEND JavaScriptCore_SOURCES $<TARGET_OBJECTS:LowLevelInterpreterLib>)
+    list(APPEND CyberScriptCore_SOURCES $<TARGET_OBJECTS:LowLevelInterpreterLib>)
 endif ()
 
-WEBKIT_COMPUTE_SOURCES(JavaScriptCore)
-WEBKIT_FRAMEWORK(JavaScriptCore)
+WEBKIT_COMPUTE_SOURCES(CyberScriptCore)
+WEBKIT_FRAMEWORK(CyberScriptCore)
 
-target_precompile_headers(JavaScriptCore PRIVATE JavaScriptCorePrefix.h)
+target_precompile_headers(CyberScriptCore PRIVATE CyberScriptCorePrefix.h)
 
 if (NOT "${PORT}" STREQUAL "Mac")
-    if (${JavaScriptCore_LIBRARY_TYPE} STREQUAL "SHARED")
+    if (${CyberScriptCore_LIBRARY_TYPE} STREQUAL "SHARED")
         WEBKIT_POPULATE_LIBRARY_VERSION(JAVASCRIPTCORE)
-        set_target_properties(JavaScriptCore PROPERTIES VERSION ${JAVASCRIPTCORE_VERSION} SOVERSION ${JAVASCRIPTCORE_VERSION_MAJOR})
-        install(TARGETS JavaScriptCore DESTINATION "${LIB_INSTALL_DIR}")
+        set_target_properties(CyberScriptCore PROPERTIES VERSION ${JAVASCRIPTCORE_VERSION} SOVERSION ${JAVASCRIPTCORE_VERSION_MAJOR})
+        install(TARGETS CyberScriptCore DESTINATION "${LIB_INSTALL_DIR}")
     endif ()
 endif ()
 
-# Force staging of shared scripts, even if they aren't directly used to build JavaScriptCore.
+# Force staging of shared scripts, even if they aren't directly used to build CyberScriptCore.
 
-add_custom_target(JavaScriptCoreSharedScripts DEPENDS ${JavaScriptCore_SCRIPTS})
-add_dependencies(JavaScriptCore JavaScriptCoreSharedScripts ${JavaScriptCore_EXTRA_DEPENDENCIES})
+add_custom_target(CyberScriptCoreSharedScripts DEPENDS ${CyberScriptCore_SCRIPTS})
+add_dependencies(CyberScriptCore CyberScriptCoreSharedScripts ${CyberScriptCore_EXTRA_DEPENDENCIES})
 
 add_subdirectory(shell)

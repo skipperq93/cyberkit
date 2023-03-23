@@ -30,7 +30,7 @@
 #import "Credential.h"
 #import "ProtectionSpace.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Credential CredentialStorage::getFromPersistentStorage(const ProtectionSpace& protectionSpace)
 {
@@ -38,4 +38,4 @@ Credential CredentialStorage::getFromPersistentStorage(const ProtectionSpace& pr
     return credential ? Credential(credential) : Credential();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

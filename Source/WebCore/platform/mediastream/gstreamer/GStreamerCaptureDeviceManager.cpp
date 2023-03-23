@@ -26,7 +26,7 @@
 
 #include "GStreamerCommon.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 GST_DEBUG_CATEGORY(webkitGStreamerCaptureDeviceManagerDebugCategory);
 #define GST_CAT_DEFAULT webkitGStreamerCaptureDeviceManagerDebugCategory
@@ -196,6 +196,6 @@ void GStreamerCaptureDeviceManager::refreshCaptureDevices()
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM) && USE(GSTREAMER)

@@ -49,7 +49,7 @@ void WebColorPicker::endPicker()
         client->didEndColorPicker();
 }
 
-void WebColorPicker::setSelectedColor(const WebCore::Color& color)
+void WebColorPicker::setSelectedColor(const CyberCore::Color& color)
 {
     if (!m_client)
         return;
@@ -57,7 +57,7 @@ void WebColorPicker::setSelectedColor(const WebCore::Color& color)
     m_client->didChooseColor(color);
 }
 
-void WebColorPicker::showColorPicker(const WebCore::Color&)
+void WebColorPicker::showColorPicker(const CyberCore::Color&)
 {
     ASSERT_NOT_REACHED();
     return;

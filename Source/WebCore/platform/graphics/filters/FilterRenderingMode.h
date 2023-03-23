@@ -27,7 +27,7 @@
 
 #include <wtf/OptionSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class FilterRenderingMode : uint8_t {
     Software        = 1 << 0,
@@ -41,17 +41,17 @@ constexpr OptionSet<FilterRenderingMode> allFilterRenderingModes = {
     FilterRenderingMode::GraphicsContext
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::FilterRenderingMode> {
+template<> struct EnumTraits<CyberCore::FilterRenderingMode> {
     using values = EnumValues<
-        WebCore::FilterRenderingMode,
+        CyberCore::FilterRenderingMode,
 
-        WebCore::FilterRenderingMode::Software,
-        WebCore::FilterRenderingMode::Accelerated,
-        WebCore::FilterRenderingMode::GraphicsContext
+        CyberCore::FilterRenderingMode::Software,
+        CyberCore::FilterRenderingMode::Accelerated,
+        CyberCore::FilterRenderingMode::GraphicsContext
     >;
 };
 

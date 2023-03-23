@@ -35,7 +35,7 @@
 #include "CoreVideoSoftLink.h"
 #include "VideoToolboxSoftLink.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 PixelBufferConformerCV::PixelBufferConformerCV(CFDictionaryRef attributes)
 {

@@ -29,7 +29,7 @@
 
 #include "PlatformGamepad.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class MockGamepad : public PlatformGamepad {
 public:

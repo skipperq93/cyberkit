@@ -23,7 +23,7 @@
 #if ENABLE(MEDIA_STREAM)
 
 #include "Logging.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebFrame.h"
 #include "WebPage.h"
 #include "WebPageProxyMessages.h"
@@ -36,8 +36,8 @@
 #include <CyberCore/SecurityOrigin.h>
 #include <CyberCore/SecurityOriginData.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 static constexpr OptionSet<ActivityState::Flag> focusedActiveWindow = { ActivityState::IsFocused, ActivityState::WindowIsActive };
 
@@ -118,7 +118,7 @@ void UserMediaPermissionRequestManager::mediaCanStart(Document& document)
         sendUserMediaRequest(pendingRequest);
 }
 
-void UserMediaPermissionRequestManager::userMediaAccessWasGranted(UserMediaRequestIdentifier requestID, CaptureDevice&& audioDevice, CaptureDevice&& videoDevice, WebCore::MediaDeviceHashSalts&& deviceIdentifierHashSalts, CompletionHandler<void()>&& completionHandler)
+void UserMediaPermissionRequestManager::userMediaAccessWasGranted(UserMediaRequestIdentifier requestID, CaptureDevice&& audioDevice, CaptureDevice&& videoDevice, CyberCore::MediaDeviceHashSalts&& deviceIdentifierHashSalts, CompletionHandler<void()>&& completionHandler)
 {
     auto request = m_ongoingUserMediaRequests.take(requestID);
     if (!request) {
@@ -152,7 +152,7 @@ void UserMediaPermissionRequestManager::enumerateMediaDevices(Document& document
 #if USE(GSTREAMER)
 void UserMediaPermissionRequestManager::updateCaptureDevices(ShouldNotify shouldNotify)
 {
-    WebCore::RealtimeMediaSourceCenter::singleton().getMediaStreamDevices([weakThis = WeakPtr { *this }, this, shouldNotify](auto&& newDevices) mutable {
+    CyberCore::RealtimeMediaSourceCenter::singleton().getMediaStreamDevices([weakThis = WeakPtr { *this }, this, shouldNotify](auto&& newDevices) mutable {
         if (!weakThis)
             return;
 
@@ -180,7 +180,7 @@ UserMediaClient::DeviceChangeObserverToken UserMediaPermissionRequestManager::ad
         m_monitoringDeviceChange = true;
 #if USE(GSTREAMER)
         updateCaptureDevices(ShouldNotify::No);
-        WebCore::RealtimeMediaSourceCenter::singleton().addDevicesChangedObserver(*this);
+        CyberCore::RealtimeMediaSourceCenter::singleton().addDevicesChangedObserver(*this);
 #else
         m_page.send(Messages::WebPageProxy::BeginMonitoringCaptureDevices());
 #endif
@@ -212,6 +212,6 @@ void UserMediaPermissionRequestManager::captureDevicesChanged()
     }
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(MEDIA_STREAM)

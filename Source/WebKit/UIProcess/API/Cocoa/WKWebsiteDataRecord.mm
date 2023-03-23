@@ -28,7 +28,7 @@
 
 #import "_WKWebsiteDataSizeInternal.h"
 #import <CyberCore/SecurityOriginData.h>
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 
 NSString * const WKWebsiteDataTypeFetchCache = @"WKWebsiteDataTypeFetchCache";
 NSString * const WKWebsiteDataTypeDiskCache = @"WKWebsiteDataTypeDiskCache";
@@ -59,7 +59,7 @@ NSString * const _WKWebsiteDataTypeAlternativeServices = @"_WKWebsiteDataTypeAlt
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainRunLoop(WKWebsiteDataRecord.class, self))
+    if (CyberCoreObjCScheduleDeallocateOnMainRunLoop(WKWebsiteDataRecord.class, self))
         return;
 
     _websiteDataRecord->API::WebsiteDataRecord::~WebsiteDataRecord();

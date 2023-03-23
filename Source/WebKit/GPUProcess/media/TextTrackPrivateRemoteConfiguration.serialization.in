@@ -30,8 +30,8 @@ struct WebKit::TextTrackPrivateRemoteConfiguration {
     MediaTime startTimeVariance;
     int trackIndex;
 
-    WebCore::InbandTextTrackPrivate::CueFormat cueFormat;
-    WebCore::InbandTextTrackPrivate::Kind kind;
+    CyberCore::InbandTextTrackPrivate::CueFormat cueFormat;
+    CyberCore::InbandTextTrackPrivate::Kind kind;
 
     bool isClosedCaptions;
     bool isSDH;

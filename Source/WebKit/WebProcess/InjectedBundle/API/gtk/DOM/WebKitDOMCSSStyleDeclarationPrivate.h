@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -17,16 +17,16 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitDOMCSSStyleDeclarationPrivate_h
-#define WebKitDOMCSSStyleDeclarationPrivate_h
+#ifndef CyberKitDOMCSSStyleDeclarationPrivate_h
+#define CyberKitDOMCSSStyleDeclarationPrivate_h
 
 #include <CyberCore/CSSStyleDeclaration.h>
-#include <webkitdom/WebKitDOMCSSStyleDeclaration.h>
+#include <webkitdom/CyberKitDOMCSSStyleDeclaration.h>
 
-namespace WebKit {
-WebKitDOMCSSStyleDeclaration* wrapCSSStyleDeclaration(WebCore::CSSStyleDeclaration*);
-WebKitDOMCSSStyleDeclaration* kit(WebCore::CSSStyleDeclaration*);
-WebCore::CSSStyleDeclaration* core(WebKitDOMCSSStyleDeclaration*);
-} // namespace WebKit
+namespace CyberKit {
+CyberKitDOMCSSStyleDeclaration* wrapCSSStyleDeclaration(CyberCore::CSSStyleDeclaration*);
+CyberKitDOMCSSStyleDeclaration* kit(CyberCore::CSSStyleDeclaration*);
+CyberCore::CSSStyleDeclaration* core(CyberKitDOMCSSStyleDeclaration*);
+} // namespace CyberKit
 
-#endif /* WebKitDOMCSSStyleDeclarationPrivate_h */
+#endif /* CyberKitDOMCSSStyleDeclarationPrivate_h */

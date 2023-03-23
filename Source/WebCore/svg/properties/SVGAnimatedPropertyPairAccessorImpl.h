@@ -32,7 +32,7 @@
 #include "SVGAnimatedPropertyPairAnimatorImpl.h"
 #include "SVGNames.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename OwnerType>
 class SVGAnimatedAngleOrientAccessor final : public SVGAnimatedPropertyPairAccessor<OwnerType, SVGAnimatedAngleAccessor<OwnerType>, SVGAnimatedOrientTypeAccessor<OwnerType>> {

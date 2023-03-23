@@ -548,7 +548,7 @@ static NSStringCompareOptions stringCompareOptions(_WKFindOptions findOptions)
 
     UIView *hostView = [_hostViewController view];
     CGPoint locationInScreen = [hostView.window convertPoint:[hostView convertPoint:location toView:nil] toWindow:nil];
-    page->navigateToPDFLinkWithSimulatedClick(url.absoluteString, WebCore::roundedIntPoint(location), WebCore::roundedIntPoint(locationInScreen));
+    page->navigateToPDFLinkWithSimulatedClick(url.absoluteString, CyberCore::roundedIntPoint(location), CyberCore::roundedIntPoint(locationInScreen));
 }
 
 - (void)pdfHostViewController:(PDFHostViewController *)controller goToURL:(NSURL *)url
@@ -569,14 +569,14 @@ static NSStringCompareOptions stringCompareOptions(_WKFindOptions findOptions)
         return;
 
     WebKit::InteractionInformationAtPosition positionInformation;
-    positionInformation.bounds = WebCore::roundedIntRect(annotationRect);
-    positionInformation.request.point = WebCore::roundedIntPoint(location);
+    positionInformation.bounds = CyberCore::roundedIntRect(annotationRect);
+    positionInformation.request.point = CyberCore::roundedIntPoint(location);
     positionInformation.url = url;
 
     _positionInformation = WTFMove(positionInformation);
 
 #if ENABLE(DATA_DETECTION)
-    if (WebCore::DataDetection::canBePresentedByDataDetectors(_positionInformation.url)) {
+    if (CyberCore::DataDetection::canBePresentedByDataDetectors(_positionInformation.url)) {
         [_actionSheetAssistant showDataDetectorsUIForPositionInformation:positionInformation];
         return;
     }
@@ -638,9 +638,9 @@ ALLOW_DEPRECATED_DECLARATIONS_END
     if (!webView)
         return;
 
-    WebCore::ShareDataWithParsedURL shareData;
+    CyberCore::ShareDataWithParsedURL shareData;
     shareData.url = { url };
-    shareData.originator = WebCore::ShareDataOriginator::User;
+    shareData.originator = CyberCore::ShareDataOriginator::User;
     
     [_shareSheet dismiss];
 

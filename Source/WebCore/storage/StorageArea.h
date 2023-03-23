@@ -29,7 +29,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Frame;
 class SecurityOrigin;
@@ -61,4 +61,4 @@ public:
     virtual void prewarm() { }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

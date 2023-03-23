@@ -35,7 +35,7 @@
 // so the expectation is that this header is included in the place-of-use implementation file after
 // the appropriate EGL headers have already been included.
 
-namespace WebCore {
+namespace CyberCore {
 namespace DMABufEGLUtilities {
 
 enum class PlaneModifiersUsage : bool {
@@ -68,4 +68,4 @@ static inline Vector<EGLint> constructEGLCreateImageAttributes(const DMABufObjec
     return attributes;
 }
 
-} } // namespace WebCore::DMABufEGLUtilities
+} } // namespace CyberCore::DMABufEGLUtilities

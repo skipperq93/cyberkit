@@ -30,7 +30,7 @@
 #include "CachedImage.h"
 #include <wtf/PointerComparison.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 bool ShapeValue::isImageValid() const
 {
@@ -71,4 +71,4 @@ Ref<ShapeValue> ShapeValue::blend(const ShapeValue& to, const BlendingContext& c
     return ShapeValue::create(to.shape()->blend(*m_shape, context), m_cssBox);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

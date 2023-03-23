@@ -26,7 +26,7 @@
 #include "SVGNames.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(SVGFETileElement);
 
@@ -73,4 +73,4 @@ RefPtr<FilterEffect> SVGFETileElement::createFilterEffect(const FilterEffectVect
     return FETile::create();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

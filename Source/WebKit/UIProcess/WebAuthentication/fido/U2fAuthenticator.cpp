@@ -37,7 +37,7 @@
 #include <wtf/text/StringConcatenateNumbers.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 using namespace apdu;
 using namespace fido;
 

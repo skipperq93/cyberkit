@@ -27,7 +27,7 @@
 
 #include "TextureMapperPlatformLayer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class WCPlatformLayer : public TextureMapperPlatformLayer {
     WTF_MAKE_FAST_ALLOCATED;

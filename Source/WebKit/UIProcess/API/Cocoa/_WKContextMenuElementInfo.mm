@@ -29,7 +29,7 @@
 #import "APIHitTestResult.h"
 #import "_WKContextMenuElementInfoInternal.h"
 #import "_WKHitTestResultInternal.h"
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 #import <wtf/RetainPtr.h>
 
 #if !PLATFORM(IOS_FAMILY)
@@ -43,7 +43,7 @@
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainRunLoop(_WKContextMenuElementInfo.class, self))
+    if (CyberCoreObjCScheduleDeallocateOnMainRunLoop(_WKContextMenuElementInfo.class, self))
         return;
     _contextMenuElementInfoMac->API::ContextMenuElementInfoMac::~ContextMenuElementInfoMac();
     [super dealloc];

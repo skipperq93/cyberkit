@@ -34,13 +34,13 @@
 @class WebDataSource;
 @class WebView;
 
-namespace WebCore {
+namespace CyberCore {
     class ResourceRequest;
 }
 
-class WebDocumentLoaderMac : public WebCore::DocumentLoader {
+class WebDocumentLoaderMac : public CyberCore::DocumentLoader {
 public:
-    static Ref<WebDocumentLoaderMac> create(const WebCore::ResourceRequest& request, const WebCore::SubstituteData& data)
+    static Ref<WebDocumentLoaderMac> create(const CyberCore::ResourceRequest& request, const CyberCore::SubstituteData& data)
     {
         return adoptRef(*new WebDocumentLoaderMac(request, data));
     }
@@ -49,11 +49,11 @@ public:
     void detachDataSource();
     WebDataSource *dataSource() const;
 
-    void increaseLoadCount(WebCore::ResourceLoaderIdentifier);
-    void decreaseLoadCount(WebCore::ResourceLoaderIdentifier);
+    void increaseLoadCount(CyberCore::ResourceLoaderIdentifier);
+    void decreaseLoadCount(CyberCore::ResourceLoaderIdentifier);
 
 private:
-    WebDocumentLoaderMac(const WebCore::ResourceRequest&, const WebCore::SubstituteData&);
+    WebDocumentLoaderMac(const CyberCore::ResourceRequest&, const CyberCore::SubstituteData&);
 
     virtual void attachToFrame();
     virtual void detachFromFrame();
@@ -65,5 +65,5 @@ private:
     bool m_isDataSourceRetained;
     RetainPtr<id> m_resourceLoadDelegate;
     RetainPtr<id> m_downloadDelegate;
-    HashSet<WebCore::ResourceLoaderIdentifier> m_loadingResources;
+    HashSet<CyberCore::ResourceLoaderIdentifier> m_loadingResources;
 };

@@ -77,11 +77,11 @@ class WebKit::WebKeyboardEvent : WebKit::WebEvent {
     bool handledByInputMethod();
 #endif
 #if PLATFORM(GTK) || USE(LIBWPE)
-    std::optional<Vector<WebCore::CompositionUnderline>> preeditUnderlines();
+    std::optional<Vector<CyberCore::CompositionUnderline>> preeditUnderlines();
     std::optional<WebKit::EditingRange> preeditSelectionRange();
 #endif
 #if USE(APPKIT)
-    Vector<WebCore::KeypressCommand> commands();
+    Vector<CyberCore::KeypressCommand> commands();
 #endif
 #if !USE(APPKIT) && PLATFORM(GTK)
     Vector<String> commands();
@@ -100,7 +100,7 @@ class WebKit::WebKeyboardEvent : WebKit::WebEvent {
 class WebKit::WebTouchEvent : WebKit::WebEvent {
     Vector<WebKit::WebPlatformTouchPoint> touchPoints();
 #if PLATFORM(IOS_FAMILY)
-    WebCore::IntPoint position();
+    CyberCore::IntPoint position();
     bool isPotentialTap();
     bool isGesture();
     float gestureScale();
@@ -126,8 +126,8 @@ class WebKit::WebTouchEvent : WebKit::WebEvent {
 class WebKit::WebMouseEvent : WebKit::WebEvent {
     WebKit::WebMouseEventButton button();
     unsigned short buttons();
-    WebCore::IntPoint position();
-    WebCore::IntPoint globalPosition();
+    CyberCore::IntPoint position();
+    CyberCore::IntPoint globalPosition();
     float deltaX();
     float deltaY();
     float deltaZ();
@@ -139,10 +139,10 @@ class WebKit::WebMouseEvent : WebKit::WebEvent {
     int32_t menuTypeForEvent();;
 #endif
 #if !PLATFORM(MAC) && PLATFORM(GTK)
-    WebCore::PlatformMouseEvent::IsTouch isTouchEvent();
+    CyberCore::PlatformMouseEvent::IsTouch isTouchEvent();
 #endif
 #if !PLATFORM(MAC)
-    WebCore::PointerID pointerId();
+    CyberCore::PointerID pointerId();
     String pointerType();
 #endif
     WebKit::GestureWasCancelled gestureWasCancelled();
@@ -150,7 +150,7 @@ class WebKit::WebMouseEvent : WebKit::WebEvent {
 
 #if ENABLE(MAC_GESTURE_EVENTS)
 class WebKit::WebGestureEvent : WebKit::WebEvent {
-    WebCore::IntPoint position();
+    CyberCore::IntPoint position();
     float gestureScale();
     float gestureRotation();
 };
@@ -178,10 +178,10 @@ class WebKit::WebGestureEvent : WebKit::WebEvent {
 };
 
 class WebKit::WebWheelEvent : WebKit::WebEvent {
-    WebCore::IntPoint position();
-    WebCore::IntPoint globalPosition();
-    WebCore::FloatSize delta();
-    WebCore::FloatSize wheelTicks();
+    CyberCore::IntPoint position();
+    CyberCore::IntPoint globalPosition();
+    CyberCore::FloatSize delta();
+    CyberCore::FloatSize wheelTicks();
     WebKit::WebWheelEvent::Granularity granularity();
 #if PLATFORM(COCOA)
     bool directionInvertedFromDevice();
@@ -193,9 +193,9 @@ class WebKit::WebWheelEvent : WebKit::WebEvent {
 #endif
 #if PLATFORM(COCOA)
     uint32_t scrollCount();
-    WebCore::FloatSize unacceleratedScrollingDelta();
+    CyberCore::FloatSize unacceleratedScrollingDelta();
     WallTime ioHIDEventTimestamp();
-    std::optional<WebCore::FloatSize> rawPlatformDelta();
+    std::optional<CyberCore::FloatSize> rawPlatformDelta();
     WebKit::WebWheelEvent::MomentumEndType momentumEndType();
 #endif
 };

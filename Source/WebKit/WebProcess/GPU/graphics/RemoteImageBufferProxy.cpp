@@ -39,7 +39,7 @@
 #include <wtf/SystemTracing.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 namespace {
 
@@ -390,7 +390,7 @@ std::unique_ptr<SerializedImageBuffer> RemoteImageBufferProxy::sinkIntoSerialize
     return ret;
 }
 
-RemoteSerializedImageBufferProxy::RemoteSerializedImageBufferProxy(const WebCore::ImageBufferBackend::Parameters& parameters, const WebCore::ImageBufferBackend::Info& info, const WebCore::RenderingResourceIdentifier& renderingResourceIdentifier, RemoteRenderingBackendProxy& backend)
+RemoteSerializedImageBufferProxy::RemoteSerializedImageBufferProxy(const CyberCore::ImageBufferBackend::Parameters& parameters, const CyberCore::ImageBufferBackend::Info& info, const CyberCore::RenderingResourceIdentifier& renderingResourceIdentifier, RemoteRenderingBackendProxy& backend)
     : m_referenceTracker(RemoteSerializedImageBufferIdentifier::generateThreadSafe())
     , m_parameters(parameters)
     , m_info(info)

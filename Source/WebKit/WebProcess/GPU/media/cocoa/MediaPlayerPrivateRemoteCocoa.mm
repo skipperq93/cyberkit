@@ -31,7 +31,7 @@
 #import "RemoteAudioSourceProvider.h"
 #import "RemoteMediaPlayerProxyMessages.h"
 #import "VideoLayerRemote.h"
-#import "WebCoreArgumentCoders.h"
+#import "CyberCoreArgumentCoders.h"
 #import <CyberCore/ColorSpaceCG.h>
 #import <CyberCore/VideoLayerManager.h>
 #import <pal/spi/cocoa/QuartzCoreSPI.h>
@@ -39,8 +39,8 @@
 
 #import <CyberCore/CoreVideoSoftLink.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 #if ENABLE(VIDEO_PRESENTATION_MODE)
 PlatformLayerContainer MediaPlayerPrivateRemote::createVideoFullscreenLayer()
@@ -49,7 +49,7 @@ PlatformLayerContainer MediaPlayerPrivateRemote::createVideoFullscreenLayer()
 }
 #endif
 
-void MediaPlayerPrivateRemote::pushVideoFrameMetadata(WebCore::VideoFrameMetadata&& videoFrameMetadata, RemoteVideoFrameProxy::Properties&& properties)
+void MediaPlayerPrivateRemote::pushVideoFrameMetadata(CyberCore::VideoFrameMetadata&& videoFrameMetadata, RemoteVideoFrameProxy::Properties&& properties)
 {
     auto videoFrame = RemoteVideoFrameProxy::create(connection(), videoFrameObjectHeapProxy(), WTFMove(properties));
     if (!m_isGatheringVideoFrameMetadata)
@@ -63,14 +63,14 @@ RefPtr<NativeImage> MediaPlayerPrivateRemote::nativeImageForCurrentTime()
     if (readyState() < MediaPlayer::ReadyState::HaveCurrentData)
         return { };
 
-    auto videoFrame = m_videoFrameGatheredWithVideoFrameMetadata ? RefPtr<WebCore::VideoFrame>(m_videoFrameGatheredWithVideoFrameMetadata) : videoFrameForCurrentTime();
+    auto videoFrame = m_videoFrameGatheredWithVideoFrameMetadata ? RefPtr<CyberCore::VideoFrame>(m_videoFrameGatheredWithVideoFrameMetadata) : videoFrameForCurrentTime();
     if (!videoFrame)
         return nullptr;
 
     return WebProcess::singleton().ensureGPUProcessConnection().videoFrameObjectHeapProxy().getNativeImage(*videoFrame);
 }
 
-WebCore::DestinationColorSpace MediaPlayerPrivateRemote::colorSpace()
+CyberCore::DestinationColorSpace MediaPlayerPrivateRemote::colorSpace()
 {
     if (readyState() < MediaPlayer::ReadyState::HaveCurrentData)
         return DestinationColorSpace::SRGB();
@@ -80,7 +80,7 @@ WebCore::DestinationColorSpace MediaPlayerPrivateRemote::colorSpace()
     return colorSpace;
 }
 
-void MediaPlayerPrivateRemote::layerHostingContextIdChanged(std::optional<WebKit::LayerHostingContextID>&& inlineLayerHostingContextId, const IntSize& presentationSize)
+void MediaPlayerPrivateRemote::layerHostingContextIdChanged(std::optional<CyberKit::LayerHostingContextID>&& inlineLayerHostingContextId, const IntSize& presentationSize)
 {
     RefPtr player = m_player.get();
     if (!player)
@@ -98,6 +98,6 @@ void MediaPlayerPrivateRemote::layerHostingContextIdChanged(std::optional<WebKit
 #endif
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS) && PLATFORM(COCOA)

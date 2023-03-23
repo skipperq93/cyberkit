@@ -35,23 +35,23 @@ namespace WebKit {
 
 class ScrollingTreeScrollingNodeDelegateIOS;
 
-class ScrollingTreeFrameScrollingNodeRemoteIOS : public WebCore::ScrollingTreeFrameScrollingNode {
+class ScrollingTreeFrameScrollingNodeRemoteIOS : public CyberCore::ScrollingTreeFrameScrollingNode {
 public:
-    static Ref<ScrollingTreeFrameScrollingNodeRemoteIOS> create(WebCore::ScrollingTree&, WebCore::ScrollingNodeType, WebCore::ScrollingNodeID);
+    static Ref<ScrollingTreeFrameScrollingNodeRemoteIOS> create(CyberCore::ScrollingTree&, CyberCore::ScrollingNodeType, CyberCore::ScrollingNodeID);
     virtual ~ScrollingTreeFrameScrollingNodeRemoteIOS();
 
     UIScrollView *scrollView() const;
 
 private:
-    ScrollingTreeFrameScrollingNodeRemoteIOS(WebCore::ScrollingTree&, WebCore::ScrollingNodeType, WebCore::ScrollingNodeID);
+    ScrollingTreeFrameScrollingNodeRemoteIOS(CyberCore::ScrollingTree&, CyberCore::ScrollingNodeType, CyberCore::ScrollingNodeID);
 
     ScrollingTreeScrollingNodeDelegateIOS* delegate() const;
 
-    void commitStateBeforeChildren(const WebCore::ScrollingStateNode&) override;
-    void commitStateAfterChildren(const WebCore::ScrollingStateNode&) override;
+    void commitStateBeforeChildren(const CyberCore::ScrollingStateNode&) override;
+    void commitStateAfterChildren(const CyberCore::ScrollingStateNode&) override;
 
-    WebCore::FloatPoint minimumScrollPosition() const override;
-    WebCore::FloatPoint maximumScrollPosition() const override;
+    CyberCore::FloatPoint minimumScrollPosition() const override;
+    CyberCore::FloatPoint maximumScrollPosition() const override;
 
     void repositionScrollingLayers() override;
     void repositionRelatedLayers() override;

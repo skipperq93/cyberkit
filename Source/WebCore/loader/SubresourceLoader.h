@@ -34,7 +34,7 @@
 #include <wtf/CompletionHandler.h>
 #include <wtf/text/WTFString.h>
  
-namespace WebCore {
+namespace CyberCore {
 
 class CachedResource;
 class CachedResourceLoader;
@@ -146,6 +146,6 @@ private:
 
 }
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::SubresourceLoader)
-static bool isType(const WebCore::ResourceLoader& loader) { return loader.isSubresourceLoader(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::SubresourceLoader)
+static bool isType(const CyberCore::ResourceLoader& loader) { return loader.isSubresourceLoader(); }
 SPECIALIZE_TYPE_TRAITS_END()

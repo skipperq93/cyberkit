@@ -42,7 +42,7 @@ namespace API {
 static WTF::String mimeTypeInferredFromFileExtension(const API::Attachment& attachment)
 {
     if (NSString *fileExtension = [(NSString *)attachment.fileName() pathExtension])
-        return WebCore::MIMETypeRegistry::mimeTypeForExtension(WTF::String(fileExtension));
+        return CyberCore::MIMETypeRegistry::mimeTypeForExtension(WTF::String(fileExtension));
 
     return { };
 }
@@ -112,7 +112,7 @@ ALLOW_DEPRECATED_DECLARATIONS_BEGIN
             contentType = (NSString *)kUTTypeDirectory;
         else if (fileWrapper.regularFile) {
             if (NSString *pathExtension = (fileWrapper.filename.length ? fileWrapper.filename : fileWrapper.preferredFilename).pathExtension)
-                contentType = WebCore::MIMETypeRegistry::mimeTypeForExtension(WTF::String(pathExtension));
+                contentType = CyberCore::MIMETypeRegistry::mimeTypeForExtension(WTF::String(pathExtension));
             if (!contentType.length)
                 contentType = (NSString *)kUTTypeData;
         }
@@ -138,7 +138,7 @@ std::optional<uint64_t> Attachment::fileSizeForDisplay() const
     return [m_fileWrapper regularFileContents].length;
 }
 
-RefPtr<WebCore::FragmentedSharedBuffer> Attachment::enclosingImageData() const
+RefPtr<CyberCore::FragmentedSharedBuffer> Attachment::enclosingImageData() const
 {
     if (!m_hasEnclosingImage)
         return nullptr;
@@ -156,7 +156,7 @@ RefPtr<WebCore::FragmentedSharedBuffer> Attachment::enclosingImageData() const
     if (!data)
         return nullptr;
 
-    return WebCore::SharedBuffer::create(data);
+    return CyberCore::SharedBuffer::create(data);
 }
 
 NSData *Attachment::enclosingImageNSData() const
@@ -176,7 +176,7 @@ bool Attachment::isEmpty() const
     return !m_fileWrapper;
 }
 
-RefPtr<WebCore::SharedBuffer> Attachment::createSerializedRepresentation() const
+RefPtr<CyberCore::SharedBuffer> Attachment::createSerializedRepresentation() const
 {
     NSData *serializedData = nil;
     {
@@ -190,10 +190,10 @@ RefPtr<WebCore::SharedBuffer> Attachment::createSerializedRepresentation() const
     if (!serializedData)
         return nullptr;
 
-    return WebCore::SharedBuffer::create(serializedData);
+    return CyberCore::SharedBuffer::create(serializedData);
 }
 
-void Attachment::updateFromSerializedRepresentation(Ref<WebCore::SharedBuffer>&& serializedRepresentation, const WTF::String& contentType)
+void Attachment::updateFromSerializedRepresentation(Ref<CyberCore::SharedBuffer>&& serializedRepresentation, const WTF::String& contentType)
 {
     if (!m_webPage)
         return;

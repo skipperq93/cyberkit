@@ -33,7 +33,7 @@
 
 #include <wtf/StdSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderBox;
 class RenderObject;
@@ -78,4 +78,4 @@ private:
     OrderIterator& m_iterator;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

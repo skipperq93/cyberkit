@@ -70,7 +70,7 @@ struct GeolocationRequestData {
 @implementation WKGeolocationProviderIOS {
     RefPtr<WebKit::WebGeolocationManagerProxy> _geolocationManager;
     RetainPtr<id <_WKGeolocationCoreLocationProvider>> _coreLocationProvider;
-    BOOL _isWebCoreGeolocationActive;
+    BOOL _isCyberCoreGeolocationActive;
     RefPtr<WebKit::WebGeolocationPosition> _lastActivePosition;
     Deque<GeolocationRequestData> _requestsWaitingForCoreLocationAuthorization;
 }
@@ -100,7 +100,7 @@ static void setEnableHighAccuracy(WKGeolocationManagerRef geolocationManager, bo
 
 - (void)_startUpdating
 {
-    _isWebCoreGeolocationActive = YES;
+    _isCyberCoreGeolocationActive = YES;
     [_coreLocationProvider start];
 
     // If we have the last position, it is from the initialization or warm up. It is the last known
@@ -111,7 +111,7 @@ static void setEnableHighAccuracy(WKGeolocationManagerRef geolocationManager, bo
 
 - (void)_stopUpdating
 {
-    _isWebCoreGeolocationActive = NO;
+    _isCyberCoreGeolocationActive = NO;
     [_coreLocationProvider stop];
     _lastActivePosition = nullptr;
 }
@@ -156,7 +156,7 @@ static void setEnableHighAccuracy(WKGeolocationManagerRef geolocationManager, bo
 
 - (void)decidePolicyForGeolocationRequestFromOrigin:(WebKit::FrameInfoData&&)frameInfo completionHandler:(Function<void(bool)>&&)completionHandler view:(WKWebView *)contentView
 {
-    WebCore::RegistrableDomain registrableDomain(frameInfo.securityOrigin);
+    CyberCore::RegistrableDomain registrableDomain(frameInfo.securityOrigin);
     GeolocationRequestData geolocationRequestData { [contentView URL], WTFMove(frameInfo), WTFMove(completionHandler), contentView };
     _requestsWaitingForCoreLocationAuthorization.append(WTFMove(geolocationRequestData));
     if (_coreLocationProvider) {
@@ -164,7 +164,7 @@ static void setEnableHighAccuracy(WKGeolocationManagerRef geolocationManager, bo
         [_coreLocationProvider requestGeolocationAuthorization];
     } else {
         // Step 1: ask CoreLocation if the app can use Geolocation.
-        WebCore::CoreLocationGeolocationProvider::requestAuthorization(registrableDomain, [self, strongSelf = retainPtr(self)](bool authorized) {
+        CyberCore::CoreLocationGeolocationProvider::requestAuthorization(registrableDomain, [self, strongSelf = retainPtr(self)](bool authorized) {
             if (authorized)
                 [self geolocationAuthorizationGranted];
             else
@@ -204,7 +204,7 @@ static void setEnableHighAccuracy(WKGeolocationManagerRef geolocationManager, bo
     }
 
     auto policyListener = adoptNS([[WKWebAllowDenyPolicyListener alloc] initWithCompletionHandler:WTFMove(decisionHandler)]);
-    [[WKWebGeolocationPolicyDecider sharedPolicyDecider] decidePolicyForGeolocationRequestFromOrigin:WebCore::SecurityOriginData::fromURLWithoutStrictOpaqueness(request.url) requestingURL:request.url view:request.view.get() listener:policyListener.get()];
+    [[WKWebGeolocationPolicyDecider sharedPolicyDecider] decidePolicyForGeolocationRequestFromOrigin:CyberCore::SecurityOriginData::fromURLWithoutStrictOpaqueness(request.url) requestingURL:request.url view:request.view.get() listener:policyListener.get()];
 }
 
 - (void)geolocationAuthorizationDenied

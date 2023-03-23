@@ -29,7 +29,7 @@
 #include <CyberCore/ResourceRequest.h>
 #include <CyberCore/ResourceResponse.h>
 
-namespace WebCore {
+namespace CyberCore {
 class AuthenticationChallenge;
 class NetworkLoadMetrics;
 class FragmentedSharedBuffer;
@@ -39,7 +39,7 @@ enum class PolicyAction : uint8_t;
 namespace WebKit {
 
 enum class PrivateRelayed : bool;
-using ResponseCompletionHandler = CompletionHandler<void(WebCore::PolicyAction)>;
+using ResponseCompletionHandler = CompletionHandler<void(CyberCore::PolicyAction)>;
 
 class NetworkLoadClient {
 public:
@@ -50,13 +50,13 @@ public:
     virtual bool isAllowedToAskUserForCredentials() const = 0;
 
     virtual void didSendData(uint64_t bytesSent, uint64_t totalBytesToBeSent) = 0;
-    virtual void willSendRedirectedRequest(WebCore::ResourceRequest&&, WebCore::ResourceRequest&& redirectRequest, WebCore::ResourceResponse&& redirectResponse) = 0;
-    virtual void didReceiveResponse(WebCore::ResourceResponse&&, PrivateRelayed, ResponseCompletionHandler&&) = 0;
-    virtual void didReceiveBuffer(const WebCore::FragmentedSharedBuffer&, uint64_t reportedEncodedDataLength) = 0;
-    virtual void didFinishLoading(const WebCore::NetworkLoadMetrics&) = 0;
-    virtual void didFailLoading(const WebCore::ResourceError&) = 0;
+    virtual void willSendRedirectedRequest(CyberCore::ResourceRequest&&, CyberCore::ResourceRequest&& redirectRequest, CyberCore::ResourceResponse&& redirectResponse) = 0;
+    virtual void didReceiveResponse(CyberCore::ResourceResponse&&, PrivateRelayed, ResponseCompletionHandler&&) = 0;
+    virtual void didReceiveBuffer(const CyberCore::FragmentedSharedBuffer&, uint64_t reportedEncodedDataLength) = 0;
+    virtual void didFinishLoading(const CyberCore::NetworkLoadMetrics&) = 0;
+    virtual void didFailLoading(const CyberCore::ResourceError&) = 0;
     virtual void didBlockAuthenticationChallenge() { };
-    virtual void didReceiveChallenge(const WebCore::AuthenticationChallenge&) { };
+    virtual void didReceiveChallenge(const CyberCore::AuthenticationChallenge&) { };
     virtual bool shouldCaptureExtraNetworkLoadMetrics() const { return false; }
 };
 

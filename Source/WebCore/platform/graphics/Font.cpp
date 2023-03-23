@@ -49,7 +49,7 @@
 #include "OpenTypeVerticalData.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 unsigned GlyphPage::s_count = 0;
 
@@ -643,4 +643,4 @@ TextStream& operator<<(TextStream& ts, const Font& font)
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -17,16 +17,16 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitDOMHTMLPreElementPrivate_h
-#define WebKitDOMHTMLPreElementPrivate_h
+#ifndef CyberKitDOMHTMLPreElementPrivate_h
+#define CyberKitDOMHTMLPreElementPrivate_h
 
 #include <CyberCore/HTMLPreElement.h>
-#include <webkitdom/WebKitDOMHTMLPreElement.h>
+#include <webkitdom/CyberKitDOMHTMLPreElement.h>
 
-namespace WebKit {
-WebKitDOMHTMLPreElement* wrapHTMLPreElement(WebCore::HTMLPreElement*);
-WebKitDOMHTMLPreElement* kit(WebCore::HTMLPreElement*);
-WebCore::HTMLPreElement* core(WebKitDOMHTMLPreElement*);
-} // namespace WebKit
+namespace CyberKit {
+CyberKitDOMHTMLPreElement* wrapHTMLPreElement(CyberCore::HTMLPreElement*);
+CyberKitDOMHTMLPreElement* kit(CyberCore::HTMLPreElement*);
+CyberCore::HTMLPreElement* core(CyberKitDOMHTMLPreElement*);
+} // namespace CyberKit
 
-#endif /* WebKitDOMHTMLPreElementPrivate_h */
+#endif /* CyberKitDOMHTMLPreElementPrivate_h */

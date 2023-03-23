@@ -29,7 +29,7 @@
 
 #import "ControlFactory.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ControlFactoryCocoa : public ControlFactory {
 protected:
@@ -40,6 +40,6 @@ protected:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(COCOA)

@@ -28,7 +28,7 @@
 #include "XPathNSResolver.h"
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Node;
 
@@ -44,4 +44,4 @@ private:
     Ref<Node> m_node;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -31,7 +31,7 @@
 #include <CyberCore/CairoUtilities.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 Ref<ViewSnapshot> ViewSnapshot::create(RefPtr<cairo_surface_t>&& surface)
 {
@@ -72,7 +72,7 @@ size_t ViewSnapshot::estimatedImageSizeInBytes() const
     return stride * height;
 }
 
-WebCore::IntSize ViewSnapshot::size() const
+CyberCore::IntSize ViewSnapshot::size() const
 {
     if (!m_surface)
         return { };

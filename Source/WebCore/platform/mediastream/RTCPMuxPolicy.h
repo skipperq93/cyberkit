@@ -26,13 +26,13 @@
 
 #if ENABLE(WEB_RTC)
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class RTCPMuxPolicy {
     Negotiate,
     Require
 };
 
-}; // namespace WebCore
+}; // namespace CyberCore
 
 #endif

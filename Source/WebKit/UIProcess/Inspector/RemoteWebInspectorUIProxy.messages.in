@@ -27,20 +27,20 @@ messages -> RemoteWebInspectorUIProxy {
     ResetState()
     BringToFront()
 
-    Save(Vector<WebCore::InspectorFrontendClient::SaveData> saveDatas, bool forceSaveAs)
+    Save(Vector<CyberCore::InspectorFrontendClient::SaveData> saveDatas, bool forceSaveAs)
     Load(String path) -> (String content)
-    PickColorFromScreen() -> (std::optional<WebCore::Color> color)
+    PickColorFromScreen() -> (std::optional<CyberCore::Color> color)
 
-    SetForcedAppearance(WebCore::InspectorFrontendClient::Appearance appearance)
+    SetForcedAppearance(CyberCore::InspectorFrontendClient::Appearance appearance)
 
-    SetSheetRect(WebCore::FloatRect rect)
+    SetSheetRect(CyberCore::FloatRect rect)
 
     StartWindowDrag()
 
     OpenURLExternally(String url)
     RevealFileExternally(String path)
 
-    ShowCertificate(WebCore::CertificateInfo certificateInfo)
+    ShowCertificate(CyberCore::CertificateInfo certificateInfo)
 
     SendMessageToBackend(String message)
 

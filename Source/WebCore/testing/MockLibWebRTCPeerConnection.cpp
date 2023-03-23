@@ -35,7 +35,7 @@
 #include <wtf/NeverDestroyed.h>
 #include <wtf/Threading.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static inline rtc::scoped_refptr<webrtc::PeerConnectionFactoryInterface>& getRealPeerConnectionFactory()
 {
@@ -558,6 +558,6 @@ void MockLibWebRTCPeerConnection::CreateOffer(webrtc::CreateSessionDescriptionOb
     });
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(LIBWEBRTC)

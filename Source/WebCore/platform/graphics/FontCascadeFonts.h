@@ -30,10 +30,10 @@
 #include <wtf/MainThread.h>
 
 #if PLATFORM(IOS_FAMILY)
-#include "WebCoreThread.h"
+#include "CyberCoreThread.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class FontCascadeDescription;
 class FontPlatformData;

@@ -38,7 +38,7 @@
 #include "UserGestureIndicator.h"
 #include "VoidCallback.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 PointerLockController::PointerLockController(Page& page)
     : m_page(page)
@@ -215,6 +215,6 @@ void PointerLockController::enqueueEvent(const AtomString& type, Document* docum
         protectedDocument->queueTaskToDispatchEvent(TaskSource::UserInteraction, Event::create(type, Event::CanBubble::Yes, Event::IsCancelable::No));
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(POINTER_LOCK)

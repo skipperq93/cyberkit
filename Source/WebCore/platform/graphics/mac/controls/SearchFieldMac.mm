@@ -34,7 +34,7 @@
 #import "LocalDefaultSystemAppearance.h"
 #import "SearchFieldPart.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 SearchFieldMac::SearchFieldMac(SearchFieldPart& owningPart, ControlFactoryMac& controlFactory, NSSearchFieldCell *searchFieldCell)
     : SearchControlMac(owningPart, controlFactory, searchFieldCell)
@@ -65,6 +65,6 @@ void SearchFieldMac::draw(GraphicsContext& context, const FloatRoundedRect& bord
 #endif
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(MAC)

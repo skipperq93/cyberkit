@@ -28,7 +28,7 @@
 #include "BreakingContext.h"
 #include "RenderCombineText.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 void LineBreaker::reset()
 {

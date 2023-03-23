@@ -36,7 +36,7 @@
 #include "BMPImageReader.h"
 #include "PNGImageDecoder.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // Number of bits in .ICO/.CUR used to store the directory and its entries,
 // respectively (doesn't match sizeof values for member structs since we omit

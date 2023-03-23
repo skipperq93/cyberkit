@@ -29,13 +29,13 @@
 
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct FakeXRRigidTransformInit {
     Vector<float> position;
     Vector<float> orientation;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBXR)

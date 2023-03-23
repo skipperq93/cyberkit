@@ -29,17 +29,17 @@ list(APPEND TestJavaScriptCore_SYSTEM_INCLUDE_DIRECTORIES
     ${GLIB_INCLUDE_DIRS}
 )
 
-# TestWebCore
-list(APPEND TestWebCore_SOURCES
+# TestCyberCore
+list(APPEND TestCyberCore_SOURCES
     ${test_main_SOURCES}
 
-    Tests/WebCore/UserAgentQuirks.cpp
-    Tests/WebCore/gstreamer/GStreamerTest.cpp
-    Tests/WebCore/gstreamer/GstElementHarness.cpp
-    Tests/WebCore/gstreamer/GstMappedBuffer.cpp
+    Tests/CyberCore/UserAgentQuirks.cpp
+    Tests/CyberCore/gstreamer/GStreamerTest.cpp
+    Tests/CyberCore/gstreamer/GstElementHarness.cpp
+    Tests/CyberCore/gstreamer/GstMappedBuffer.cpp
 )
 
-list(APPEND TestWebCore_SYSTEM_INCLUDE_DIRECTORIES
+list(APPEND TestCyberCore_SYSTEM_INCLUDE_DIRECTORIES
     ${GLIB_INCLUDE_DIRS}
     ${GSTREAMER_INCLUDE_DIRS}
     ${GSTREAMER_AUDIO_INCLUDE_DIRS}

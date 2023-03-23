@@ -43,20 +43,20 @@ namespace WebKit {
 
 class ContextMenuContextData {
 public:
-    using Type = WebCore::ContextMenuContext::Type;
+    using Type = CyberCore::ContextMenuContext::Type;
 
     ContextMenuContextData();
-    ContextMenuContextData(const WebCore::IntPoint& menuLocation, const Vector<WebKit::WebContextMenuItemData>& menuItems, const WebCore::ContextMenuContext&);
+    ContextMenuContextData(const CyberCore::IntPoint& menuLocation, const Vector<WebKit::WebContextMenuItemData>& menuItems, const CyberCore::ContextMenuContext&);
 
     Type type() const { return m_type; }
-    const WebCore::IntPoint& menuLocation() const { return m_menuLocation; }
+    const CyberCore::IntPoint& menuLocation() const { return m_menuLocation; }
     const Vector<WebKit::WebContextMenuItemData>& menuItems() const { return m_menuItems; }
 
     const std::optional<WebHitTestResultData>& webHitTestResultData() const { return m_webHitTestResultData; }
     const String& selectedText() const { return m_selectedText; }
 
 #if ENABLE(SERVICE_CONTROLS)
-    ContextMenuContextData(const WebCore::IntPoint& menuLocation, const Vector<uint8_t>& selectionData, const Vector<String>& selectedTelephoneNumbers, bool isEditable)
+    ContextMenuContextData(const CyberCore::IntPoint& menuLocation, const Vector<uint8_t>& selectionData, const Vector<String>& selectedTelephoneNumbers, bool isEditable)
         : m_type(Type::ServicesMenu)
         , m_menuLocation(menuLocation)
         , m_controlledSelectionData(selectionData)
@@ -65,7 +65,7 @@ public:
     {
     }
 
-    ContextMenuContextData(const WebCore::IntPoint& menuLocation, bool isEditable, const WebCore::IntRect& imageRect, const String& attachmentID, const String& sourceImageMIMEType)
+    ContextMenuContextData(const CyberCore::IntPoint& menuLocation, bool isEditable, const CyberCore::IntRect& imageRect, const String& attachmentID, const String& sourceImageMIMEType)
         : m_type(Type::ServicesMenu)
         , m_menuLocation(menuLocation)
         , m_selectionIsEditable(isEditable)
@@ -75,7 +75,7 @@ public:
     {
     }
 
-    ContextMenuContextData(const WebCore::IntPoint& menuLocation, WebCore::Image&, bool isEditable, const WebCore::IntRect& imageRect, const String& attachmentID, std::optional<WebCore::ElementContext>&&, const String& sourceImageMIMEType);
+    ContextMenuContextData(const CyberCore::IntPoint& menuLocation, CyberCore::Image&, bool isEditable, const CyberCore::IntRect& imageRect, const String& attachmentID, std::optional<CyberCore::ElementContext>&&, const String& sourceImageMIMEType);
 
     ShareableBitmap* controlledImage() const { return m_controlledImage.get(); }
     const Vector<uint8_t>& controlledSelectionData() const { return m_controlledSelectionData; }
@@ -83,9 +83,9 @@ public:
 
     bool isServicesMenu() const { return m_type == ContextMenuContextData::Type::ServicesMenu; }
     bool controlledDataIsEditable() const;
-    WebCore::IntRect controlledImageBounds() const { return m_controlledImageBounds; };
+    CyberCore::IntRect controlledImageBounds() const { return m_controlledImageBounds; };
     String controlledImageAttachmentID() const { return m_controlledImageAttachmentID; };
-    std::optional<WebCore::ElementContext> controlledImageElementContext() const { return m_controlledImageElementContext; }
+    std::optional<CyberCore::ElementContext> controlledImageElementContext() const { return m_controlledImageElementContext; }
     String controlledImageMIMEType() const { return m_controlledImageMIMEType; }
 #endif // ENABLE(SERVICE_CONTROLS)
 
@@ -95,22 +95,22 @@ public:
 private:
     Type m_type;
 
-    WebCore::IntPoint m_menuLocation;
+    CyberCore::IntPoint m_menuLocation;
     Vector<WebKit::WebContextMenuItemData> m_menuItems;
 
     std::optional<WebHitTestResultData> m_webHitTestResultData;
     String m_selectedText;
 
 #if ENABLE(SERVICE_CONTROLS)
-    void setImage(WebCore::Image*);
+    void setImage(CyberCore::Image*);
     
     RefPtr<ShareableBitmap> m_controlledImage;
     Vector<uint8_t> m_controlledSelectionData;
     Vector<String> m_selectedTelephoneNumbers;
     bool m_selectionIsEditable;
-    WebCore::IntRect m_controlledImageBounds;
+    CyberCore::IntRect m_controlledImageBounds;
     String m_controlledImageAttachmentID;
-    std::optional<WebCore::ElementContext> m_controlledImageElementContext;
+    std::optional<CyberCore::ElementContext> m_controlledImageElementContext;
     String m_controlledImageMIMEType;
 #endif
 };

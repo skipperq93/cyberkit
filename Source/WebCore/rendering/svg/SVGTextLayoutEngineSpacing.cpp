@@ -26,7 +26,7 @@
 #include "SVGLengthContext.h"
 #include "SVGRenderStyle.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 SVGTextLayoutEngineSpacing::SVGTextLayoutEngineSpacing(const FontCascade& font)
     : m_font(font)

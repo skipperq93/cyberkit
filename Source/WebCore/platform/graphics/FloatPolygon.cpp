@@ -34,7 +34,7 @@
 #include <wtf/MathExtras.h>
 #include <wtf/text/StringConcatenateNumbers.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace FloatPolygonInternal {
 static inline float determinant(const FloatSize& a, const FloatSize& b)
@@ -256,4 +256,4 @@ TextStream& operator<<(TextStream& stream, const FloatPolygonEdge& edge)
 
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

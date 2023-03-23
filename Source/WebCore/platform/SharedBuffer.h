@@ -63,7 +63,7 @@ class Decoder;
 }
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class SharedBuffer;
 class SharedBufferDataView;
@@ -188,7 +188,7 @@ public:
     WEBCORE_EXPORT bool startsWith(const Span<const uint8_t>& prefix) const;
     WEBCORE_EXPORT void forEachSegmentAsSharedBuffer(const Function<void(Ref<SharedBuffer>&&)>&) const;
 
-    using DataSegment = WebCore::DataSegment; // To keep backward compatibility when using FragmentedSharedBuffer::DataSegment
+    using DataSegment = CyberCore::DataSegment; // To keep backward compatibility when using FragmentedSharedBuffer::DataSegment
 
     struct DataSegmentVectorEntry {
         size_t beginPosition;
@@ -394,8 +394,8 @@ private:
 
 RefPtr<SharedBuffer> utf8Buffer(const String&);
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::SharedBuffer)
-    static bool isType(const WebCore::FragmentedSharedBuffer& buffer) { return buffer.isContiguous(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::SharedBuffer)
+    static bool isType(const CyberCore::FragmentedSharedBuffer& buffer) { return buffer.isContiguous(); }
 SPECIALIZE_TYPE_TRAITS_END()

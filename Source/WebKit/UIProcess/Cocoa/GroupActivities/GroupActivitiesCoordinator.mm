@@ -102,7 +102,7 @@
 
 namespace WebKit {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 Ref<GroupActivitiesCoordinator> GroupActivitiesCoordinator::create(GroupActivitiesSession& session)
 {

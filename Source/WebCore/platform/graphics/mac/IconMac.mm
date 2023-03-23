@@ -34,7 +34,7 @@
 #import <pal/cf/CoreMediaSoftLink.h>
 #import <pal/cocoa/AVFoundationSoftLink.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // FIXME: Move the code to ChromeClient::iconForFiles().
 RefPtr<Icon> Icon::createIconForFiles(const Vector<String>& filenames)

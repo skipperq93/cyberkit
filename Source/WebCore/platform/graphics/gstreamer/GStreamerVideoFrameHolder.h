@@ -25,7 +25,7 @@
 #include "MediaPlayerPrivateGStreamer.h"
 #include "TextureMapperPlatformLayerBuffer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class GstVideoFrameHolder : public TextureMapperPlatformLayerBuffer::UnmanagedBufferDataHolder {
 public:

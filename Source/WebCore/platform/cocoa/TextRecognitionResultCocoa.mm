@@ -35,7 +35,7 @@
 #import <UIKit/NSAttributedString.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 #if ENABLE(IMAGE_ANALYSIS_ENHANCEMENTS)
 
@@ -49,4 +49,4 @@ RetainPtr<NSAttributedString> stringForRange(const TextRecognitionResult& result
 
 #endif // ENABLE(IMAGE_ANALYSIS_ENHANCEMENTS)
 
-} // namespace WebCore
+} // namespace CyberCore

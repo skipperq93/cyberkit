@@ -58,8 +58,8 @@ WKStringRef WKURLRequestCopyHTTPMethod(WKURLRequestRef requestRef)
 
 WKURLRequestRef WKURLRequestCopySettingHTTPBody(WKURLRequestRef requestRef, WKDataRef body)
 {
-    WebCore::ResourceRequest requestCopy(WebKit::toImpl(requestRef)->resourceRequest());
-    requestCopy.setHTTPBody(WebCore::FormData::create(WKDataGetBytes(body), WKDataGetSize(body)));
+    CyberCore::ResourceRequest requestCopy(WebKit::toImpl(requestRef)->resourceRequest());
+    requestCopy.setHTTPBody(CyberCore::FormData::create(WKDataGetBytes(body), WKDataGetSize(body)));
     return WebKit::toAPI(&API::URLRequest::create(requestCopy).leakRef());
 }
 

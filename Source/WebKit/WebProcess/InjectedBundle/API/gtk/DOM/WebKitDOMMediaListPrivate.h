@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -17,16 +17,16 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitDOMMediaListPrivate_h
-#define WebKitDOMMediaListPrivate_h
+#ifndef CyberKitDOMMediaListPrivate_h
+#define CyberKitDOMMediaListPrivate_h
 
 #include <CyberCore/MediaList.h>
-#include <webkitdom/WebKitDOMMediaList.h>
+#include <webkitdom/CyberKitDOMMediaList.h>
 
-namespace WebKit {
-WebKitDOMMediaList* wrapMediaList(WebCore::MediaList*);
-WebKitDOMMediaList* kit(WebCore::MediaList*);
-WebCore::MediaList* core(WebKitDOMMediaList*);
-} // namespace WebKit
+namespace CyberKit {
+CyberKitDOMMediaList* wrapMediaList(CyberCore::MediaList*);
+CyberKitDOMMediaList* kit(CyberCore::MediaList*);
+CyberCore::MediaList* core(CyberKitDOMMediaList*);
+} // namespace CyberKit
 
-#endif /* WebKitDOMMediaListPrivate_h */
+#endif /* CyberKitDOMMediaListPrivate_h */

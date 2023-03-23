@@ -60,23 +60,23 @@ class NetworkRTCUDPSocketCocoaConnections;
 class NetworkRTCUDPSocketCocoa final : public NetworkRTCProvider::Socket {
     WTF_MAKE_FAST_ALLOCATED;
 public:
-    static std::unique_ptr<NetworkRTCProvider::Socket> createUDPSocket(WebCore::LibWebRTCSocketIdentifier, NetworkRTCProvider&, const rtc::SocketAddress&, uint16_t minPort, uint16_t maxPort, Ref<IPC::Connection>&&, String&& attributedBundleIdentifier, bool isFirstParty, bool isRelayDisabled, const WebCore::RegistrableDomain&);
+    static std::unique_ptr<NetworkRTCProvider::Socket> createUDPSocket(CyberCore::LibWebRTCSocketIdentifier, NetworkRTCProvider&, const rtc::SocketAddress&, uint16_t minPort, uint16_t maxPort, Ref<IPC::Connection>&&, String&& attributedBundleIdentifier, bool isFirstParty, bool isRelayDisabled, const CyberCore::RegistrableDomain&);
 
-    NetworkRTCUDPSocketCocoa(WebCore::LibWebRTCSocketIdentifier, NetworkRTCProvider&, const rtc::SocketAddress&, Ref<IPC::Connection>&&, String&& attributedBundleIdentifier, bool isFirstParty, bool isRelayDisabled, const WebCore::RegistrableDomain&);
+    NetworkRTCUDPSocketCocoa(CyberCore::LibWebRTCSocketIdentifier, NetworkRTCProvider&, const rtc::SocketAddress&, Ref<IPC::Connection>&&, String&& attributedBundleIdentifier, bool isFirstParty, bool isRelayDisabled, const CyberCore::RegistrableDomain&);
     ~NetworkRTCUDPSocketCocoa();
 
     void setListeningPort(int);
 
 private:
     // NetworkRTCProvider::Socket.
-    WebCore::LibWebRTCSocketIdentifier identifier() const final { return m_identifier; }
+    CyberCore::LibWebRTCSocketIdentifier identifier() const final { return m_identifier; }
     Type type() const final { return Type::UDP; }
     void close() final;
     void setOption(int option, int value) final;
     void sendTo(const uint8_t*, size_t, const rtc::SocketAddress&, const rtc::PacketOptions&) final;
 
     NetworkRTCProvider& m_rtcProvider;
-    WebCore::LibWebRTCSocketIdentifier m_identifier;
+    CyberCore::LibWebRTCSocketIdentifier m_identifier;
     Ref<NetworkRTCUDPSocketCocoaConnections> m_connections;
 };
 

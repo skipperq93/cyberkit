@@ -42,7 +42,7 @@ typedef struct _GstSample GstSample;
 typedef struct OpaqueMTPluginByteSource *MTPluginByteSourceRef;
 typedef const struct opaqueCMFormatDescription *CMFormatDescriptionRef;
 
-namespace WebCore {
+namespace CyberCore {
 
 class FragmentedSharedBuffer;
 class MockSampleBox;
@@ -251,22 +251,22 @@ private:
     std::optional<bool> m_discontinuity;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::VideoInfo)
-    static bool isType(const WebCore::TrackInfo& info) { return info.isVideo(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::VideoInfo)
+    static bool isType(const CyberCore::TrackInfo& info) { return info.isVideo(); }
 SPECIALIZE_TYPE_TRAITS_END()
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::AudioInfo)
-    static bool isType(const WebCore::TrackInfo& info) { return info.isAudio(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::AudioInfo)
+    static bool isType(const CyberCore::TrackInfo& info) { return info.isAudio(); }
 SPECIALIZE_TYPE_TRAITS_END()
 
 namespace WTF {
 
 template<typename Type> struct LogArgument;
 template <>
-struct LogArgument<WebCore::MediaSample> {
-    static String toString(const WebCore::MediaSample& sample)
+struct LogArgument<CyberCore::MediaSample> {
+    static String toString(const CyberCore::MediaSample& sample)
     {
         return sample.toJSONString();
     }

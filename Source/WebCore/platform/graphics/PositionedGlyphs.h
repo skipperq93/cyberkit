@@ -28,7 +28,7 @@
 #include "GlyphBufferMembers.h"
 #include "TextFlags.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class Font;
 
@@ -53,4 +53,4 @@ inline PositionedGlyphs::PositionedGlyphs(Vector<GlyphBufferGlyph>&& glyphs, Vec
     , smoothingMode(smoothingMode)
 {
 }
-} // namespace WebCore
+} // namespace CyberCore

@@ -30,7 +30,7 @@
 
 #import <wtf/NeverDestroyed.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 namespace PlatformXR {
 

@@ -56,18 +56,18 @@ constexpr NSString * const rimShadowLayerKey = @"RimShadowLayer";
 
 @synthesize fadingOut = _fadingOut;
 
-static bool indicatorWantsContentCrossfade(const WebCore::TextIndicator& indicator)
+static bool indicatorWantsContentCrossfade(const CyberCore::TextIndicator& indicator)
 {
     if (!indicator.data().contentImageWithHighlight)
         return false;
 
     switch (indicator.presentationTransition()) {
-    case WebCore::TextIndicatorPresentationTransition::BounceAndCrossfade:
+    case CyberCore::TextIndicatorPresentationTransition::BounceAndCrossfade:
         return true;
 
-    case WebCore::TextIndicatorPresentationTransition::Bounce:
-    case WebCore::TextIndicatorPresentationTransition::FadeIn:
-    case WebCore::TextIndicatorPresentationTransition::None:
+    case CyberCore::TextIndicatorPresentationTransition::Bounce:
+    case CyberCore::TextIndicatorPresentationTransition::FadeIn:
+    case CyberCore::TextIndicatorPresentationTransition::None:
         return false;
     }
 
@@ -75,15 +75,15 @@ static bool indicatorWantsContentCrossfade(const WebCore::TextIndicator& indicat
     return false;
 }
 
-static bool indicatorWantsFadeIn(const WebCore::TextIndicator& indicator)
+static bool indicatorWantsFadeIn(const CyberCore::TextIndicator& indicator)
 {
     switch (indicator.presentationTransition()) {
-    case WebCore::TextIndicatorPresentationTransition::FadeIn:
+    case CyberCore::TextIndicatorPresentationTransition::FadeIn:
         return true;
 
-    case WebCore::TextIndicatorPresentationTransition::Bounce:
-    case WebCore::TextIndicatorPresentationTransition::BounceAndCrossfade:
-    case WebCore::TextIndicatorPresentationTransition::None:
+    case CyberCore::TextIndicatorPresentationTransition::Bounce:
+    case CyberCore::TextIndicatorPresentationTransition::BounceAndCrossfade:
+    case CyberCore::TextIndicatorPresentationTransition::None:
         return false;
     }
 
@@ -91,15 +91,15 @@ static bool indicatorWantsFadeIn(const WebCore::TextIndicator& indicator)
     return false;
 }
 
-- (bool)indicatorWantsBounce:(const WebCore::TextIndicator&)indicator
+- (bool)indicatorWantsBounce:(const CyberCore::TextIndicator&)indicator
 {
     switch (indicator.presentationTransition()) {
-    case WebCore::TextIndicatorPresentationTransition::BounceAndCrossfade:
-    case WebCore::TextIndicatorPresentationTransition::Bounce:
+    case CyberCore::TextIndicatorPresentationTransition::BounceAndCrossfade:
+    case CyberCore::TextIndicatorPresentationTransition::Bounce:
         return true;
 
-    case WebCore::TextIndicatorPresentationTransition::FadeIn:
-    case WebCore::TextIndicatorPresentationTransition::None:
+    case CyberCore::TextIndicatorPresentationTransition::FadeIn:
+    case CyberCore::TextIndicatorPresentationTransition::None:
         return false;
     }
 
@@ -107,15 +107,15 @@ static bool indicatorWantsFadeIn(const WebCore::TextIndicator& indicator)
     return false;
 }
 
-- (bool)indicatorWantsManualAnimation:(const WebCore::TextIndicator&)indicator
+- (bool)indicatorWantsManualAnimation:(const CyberCore::TextIndicator&)indicator
 {
     switch (indicator.presentationTransition()) {
-    case WebCore::TextIndicatorPresentationTransition::FadeIn:
+    case CyberCore::TextIndicatorPresentationTransition::FadeIn:
         return true;
 
-    case WebCore::TextIndicatorPresentationTransition::Bounce:
-    case WebCore::TextIndicatorPresentationTransition::BounceAndCrossfade:
-    case WebCore::TextIndicatorPresentationTransition::None:
+    case CyberCore::TextIndicatorPresentationTransition::Bounce:
+    case CyberCore::TextIndicatorPresentationTransition::BounceAndCrossfade:
+    case CyberCore::TextIndicatorPresentationTransition::None:
         return false;
     }
 
@@ -123,7 +123,7 @@ static bool indicatorWantsFadeIn(const WebCore::TextIndicator& indicator)
     return false;
 }
 
-- (instancetype)initWithFrame:(CGRect)frame textIndicator:(WebCore::TextIndicator&)textIndicator margin:(CGSize)margin offset:(CGPoint)offset
+- (instancetype)initWithFrame:(CGRect)frame textIndicator:(CyberCore::TextIndicator&)textIndicator margin:(CGSize)margin offset:(CGPoint)offset
 {
     if (!(self = [super init]))
         return nil;
@@ -135,8 +135,8 @@ static bool indicatorWantsFadeIn(const WebCore::TextIndicator& indicator)
     _textIndicator = &textIndicator;
     _margin = margin;
 
-    RefPtr<WebCore::NativeImage> contentsImage;
-    WebCore::FloatSize contentsImageLogicalSize { 1, 1 };
+    RefPtr<CyberCore::NativeImage> contentsImage;
+    CyberCore::FloatSize contentsImageLogicalSize { 1, 1 };
     if (auto* contentImage = _textIndicator->contentImage()) {
         contentsImageLogicalSize = contentImage->size();
         contentsImageLogicalSize.scale(1 / _textIndicator->contentImageScaleFactor());
@@ -160,20 +160,20 @@ static bool indicatorWantsFadeIn(const WebCore::TextIndicator& indicator)
     
     auto textRectsInBoundingRectCoordinates = _textIndicator->textRectsInBoundingRectCoordinates();
 
-    auto paths = WebCore::PathUtilities::pathsWithShrinkWrappedRects(textRectsInBoundingRectCoordinates, cornerRadius);
+    auto paths = CyberCore::PathUtilities::pathsWithShrinkWrappedRects(textRectsInBoundingRectCoordinates, cornerRadius);
 
     for (const auto& path : paths) {
-        WebCore::FloatRect pathBoundingRect = path.boundingRect();
+        CyberCore::FloatRect pathBoundingRect = path.boundingRect();
 
-        WebCore::Path translatedPath;
-        WebCore::AffineTransform transform;
+        CyberCore::Path translatedPath;
+        CyberCore::AffineTransform transform;
         transform.translate(-pathBoundingRect.location());
         translatedPath.addPath(path, transform);
 
-        WebCore::FloatRect offsetTextRect = pathBoundingRect;
+        CyberCore::FloatRect offsetTextRect = pathBoundingRect;
         offsetTextRect.move(offset.x, offset.y);
 
-        WebCore::FloatRect bounceLayerRect = offsetTextRect;
+        CyberCore::FloatRect bounceLayerRect = offsetTextRect;
         bounceLayerRect.move(_margin.width, _margin.height);
 
         RetainPtr<CALayer> bounceLayer = adoptNS([[CALayer alloc] init]);
@@ -182,13 +182,13 @@ static bool indicatorWantsFadeIn(const WebCore::TextIndicator& indicator)
         [bounceLayer setOpacity:0];
         [bounceLayers addObject:bounceLayer.get()];
 
-        WebCore::FloatRect yellowHighlightRect(WebCore::FloatPoint(), bounceLayerRect.size());
+        CyberCore::FloatRect yellowHighlightRect(CyberCore::FloatPoint(), bounceLayerRect.size());
 
 #if PLATFORM(MAC)
         RetainPtr<CALayer> dropShadowLayer = adoptNS([[CALayer alloc] init]);
         [dropShadowLayer setDelegate:[WebActionDisablingCALayerDelegate shared]];
         [dropShadowLayer setShadowColor:dropShadowColor.get()];
-        [dropShadowLayer setShadowRadius:WebCore::dropShadowBlurRadius];
+        [dropShadowLayer setShadowRadius:CyberCore::dropShadowBlurRadius];
         [dropShadowLayer setShadowOffset:CGSizeMake(dropShadowOffsetX, dropShadowOffsetY)];
         [dropShadowLayer setShadowPath:translatedPath.platformPath()];
         [dropShadowLayer setShadowOpacity:1];
@@ -200,7 +200,7 @@ static bool indicatorWantsFadeIn(const WebCore::TextIndicator& indicator)
         [rimShadowLayer setDelegate:[WebActionDisablingCALayerDelegate shared]];
         [rimShadowLayer setFrame:yellowHighlightRect];
         [rimShadowLayer setShadowColor:rimShadowColor.get()];
-        [rimShadowLayer setShadowRadius:WebCore::rimShadowBlurRadius];
+        [rimShadowLayer setShadowRadius:CyberCore::rimShadowBlurRadius];
         [rimShadowLayer setShadowPath:translatedPath.platformPath()];
         [rimShadowLayer setShadowOffset:CGSizeZero];
         [rimShadowLayer setShadowOpacity:1];
@@ -221,7 +221,7 @@ static bool indicatorWantsFadeIn(const WebCore::TextIndicator& indicator)
         [maskLayer setPath:translatedPath.platformPath()];
         [textLayer setMask:maskLayer.get()];
 
-        WebCore::FloatRect imageRect = pathBoundingRect;
+        CyberCore::FloatRect imageRect = pathBoundingRect;
         [textLayer setContentsRect:CGRectMake(imageRect.x() / contentsImageLogicalSize.width(), imageRect.y() / contentsImageLogicalSize.height(), imageRect.width() / contentsImageLogicalSize.width(), imageRect.height() / contentsImageLogicalSize.height())];
         [textLayer setContentsGravity:kCAGravityCenter];
         [textLayer setContentsScale:_textIndicator->contentImageScaleFactor()];
@@ -241,7 +241,7 @@ static RetainPtr<CAKeyframeAnimation> createBounceAnimation(CFTimeInterval durat
     RetainPtr<CAKeyframeAnimation> bounceAnimation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
     [bounceAnimation setValues:@[
         [NSValue valueWithCATransform3D:CATransform3DIdentity],
-        [NSValue valueWithCATransform3D:CATransform3DMakeScale(WebCore::midBounceScale, WebCore::midBounceScale, 1)],
+        [NSValue valueWithCATransform3D:CATransform3DMakeScale(CyberCore::midBounceScale, CyberCore::midBounceScale, 1)],
         [NSValue valueWithCATransform3D:CATransform3DIdentity]
         ]];
     [bounceAnimation setDuration:duration];
@@ -249,7 +249,7 @@ static RetainPtr<CAKeyframeAnimation> createBounceAnimation(CFTimeInterval durat
     return bounceAnimation;
 }
 
-static RetainPtr<CABasicAnimation> createContentCrossfadeAnimation(CFTimeInterval duration, WebCore::TextIndicator& textIndicator)
+static RetainPtr<CABasicAnimation> createContentCrossfadeAnimation(CFTimeInterval duration, CyberCore::TextIndicator& textIndicator)
 {
     RetainPtr<CABasicAnimation> crossfadeAnimation = [CABasicAnimation animationWithKeyPath:@"contents"];
     auto contentsImage = textIndicator.contentImage()->nativeImage();
@@ -290,7 +290,7 @@ static RetainPtr<CABasicAnimation> createFadeInAnimation(CFTimeInterval duration
     if ([self indicatorWantsBounce:*_textIndicator]) {
         if (indicatorWantsContentCrossfade(*_textIndicator))
             return bounceWithCrossfadeAnimationDuration;
-        return WebCore::bounceAnimationDuration.value();
+        return CyberCore::bounceAnimationDuration.value();
     }
 
     return fadeInAnimationDuration;

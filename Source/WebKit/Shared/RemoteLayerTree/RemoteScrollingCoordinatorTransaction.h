@@ -38,8 +38,8 @@ namespace WebKit {
 
 class RemoteScrollingCoordinatorTransaction {
 public:
-    void setStateTreeToEncode(std::unique_ptr<WebCore::ScrollingStateTree> stateTree) { m_scrollingStateTree = WTFMove(stateTree); }
-    std::unique_ptr<WebCore::ScrollingStateTree>& scrollingStateTree() { return m_scrollingStateTree; }
+    void setStateTreeToEncode(std::unique_ptr<CyberCore::ScrollingStateTree> stateTree) { m_scrollingStateTree = WTFMove(stateTree); }
+    std::unique_ptr<CyberCore::ScrollingStateTree>& scrollingStateTree() { return m_scrollingStateTree; }
 
     void encode(IPC::Encoder&) const;
     static WARN_UNUSED_RETURN bool decode(IPC::Decoder&, RemoteScrollingCoordinatorTransaction&);
@@ -55,7 +55,7 @@ public:
 private:
     WARN_UNUSED_RETURN bool decode(IPC::Decoder&);
     
-    std::unique_ptr<WebCore::ScrollingStateTree> m_scrollingStateTree;
+    std::unique_ptr<CyberCore::ScrollingStateTree> m_scrollingStateTree;
     
     // Data encoded here should be "imperative" (valid just for one transaction). Stateful things should live on scrolling tree nodes.
     // Maybe RequestedScrollData should move here.

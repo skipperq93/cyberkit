@@ -36,7 +36,7 @@
 #import <wtf/RunLoop.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 #define AUTHORIZATIONSESSION_RELEASE_LOG(fmt, ...) RELEASE_LOG(AppSSO, "%p - [InitiatingAction=%s][State=%s] SubFrameSOAuthorizationSession::" fmt, this, initiatingActionString(), stateString(), ##__VA_ARGS__)
 
@@ -80,7 +80,7 @@ void SubFrameSOAuthorizationSession::abortInternal()
     fallBackToWebPathInternal();
 }
 
-void SubFrameSOAuthorizationSession::completeInternal(const WebCore::ResourceResponse& response, NSData *data)
+void SubFrameSOAuthorizationSession::completeInternal(const CyberCore::ResourceResponse& response, NSData *data)
 {
     AUTHORIZATIONSESSION_RELEASE_LOG("completeInternal: httpState=%d", response.httpStatusCode());
     if (response.httpStatusCode() != 200) {

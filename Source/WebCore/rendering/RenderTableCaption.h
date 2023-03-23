@@ -21,7 +21,7 @@
 
 #include "RenderBlockFlow.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderTable;
 
@@ -51,6 +51,6 @@ inline LayoutUnit RenderTableCaption::containingBlockLogicalWidthForContent() co
     return { };
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderTableCaption, isTableCaption())

@@ -28,7 +28,7 @@
 #include "RenderSVGInline.h"
 #include "SVGGraphicsElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 inline SVGGraphicsElement& RenderSVGInline::graphicsElement() const
 {
@@ -36,4 +36,4 @@ inline SVGGraphicsElement& RenderSVGInline::graphicsElement() const
 
 }
 
-} // namespace WebCore
+} // namespace CyberCore

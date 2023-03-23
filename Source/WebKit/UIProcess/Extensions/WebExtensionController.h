@@ -122,10 +122,10 @@ private:
     void removeUserContentController(WebUserContentControllerProxy&);
 
     // MARK: webNavigation support.
-    void didStartProvisionalLoadForFrame(WebPageProxyIdentifier, WebCore::FrameIdentifier, URL targetURL);
-    void didCommitLoadForFrame(WebPageProxyIdentifier, WebCore::FrameIdentifier, URL);
-    void didFinishLoadForFrame(WebPageProxyIdentifier, WebCore::FrameIdentifier, URL);
-    void didFailLoadForFrame(WebPageProxyIdentifier, WebCore::FrameIdentifier, URL);
+    void didStartProvisionalLoadForFrame(WebPageProxyIdentifier, CyberCore::FrameIdentifier, URL targetURL);
+    void didCommitLoadForFrame(WebPageProxyIdentifier, CyberCore::FrameIdentifier, URL);
+    void didFinishLoadForFrame(WebPageProxyIdentifier, CyberCore::FrameIdentifier, URL);
+    void didFailLoadForFrame(WebPageProxyIdentifier, CyberCore::FrameIdentifier, URL);
 
     Ref<WebExtensionControllerConfiguration> m_configuration;
     WebExtensionControllerIdentifier m_identifier;

@@ -31,7 +31,7 @@
 #include <wtf/IsoMalloc.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CachedImage;
 class RenderElement;
@@ -75,4 +75,4 @@ private:
     bool m_cachedImageRemoveClientIsNeeded { true };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

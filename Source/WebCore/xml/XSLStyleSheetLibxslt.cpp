@@ -44,7 +44,7 @@
 #include "SoftLinkLibxslt.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 XSLStyleSheet::XSLStyleSheet(XSLStyleSheet* parentSheet, const String& originalURL, const URL& finalURL)
     : m_ownerNode(nullptr)
@@ -322,6 +322,6 @@ String XSLStyleSheet::debugDescription() const
     return makeString("XSLStyleSheet "_s, "0x"_s, hex(reinterpret_cast<uintptr_t>(this), Lowercase), ' ', href());
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(XSLT)

@@ -29,10 +29,10 @@
 
 #include <libxslt/xsltInternals.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 void registerXSLTExtensions(xsltTransformContextPtr ctxt);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(XSLT)

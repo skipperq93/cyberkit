@@ -37,7 +37,7 @@ OBJC_CLASS NSTextAlternatives;
 OBJC_CLASS WKContentView;
 OBJC_CLASS WKEditorUndoTarget;
 
-namespace WebCore {
+namespace CyberCore {
 enum class DOMPasteAccessCategory : uint8_t;
 enum class DOMPasteAccessResponse : uint8_t;
 struct PromisedAttachmentInfo;
@@ -59,10 +59,10 @@ public:
 private:
     // PageClient
     std::unique_ptr<DrawingAreaProxy> createDrawingAreaProxy(WebProcessProxy&) override;
-    void setViewNeedsDisplay(const WebCore::Region&) override;
-    void requestScroll(const WebCore::FloatPoint& scrollPosition, const WebCore::IntPoint& scrollOrigin, WebCore::ScrollIsAnimated) override;
-    WebCore::FloatPoint viewScrollPosition() override;
-    WebCore::IntSize viewSize() override;
+    void setViewNeedsDisplay(const CyberCore::Region&) override;
+    void requestScroll(const CyberCore::FloatPoint& scrollPosition, const CyberCore::IntPoint& scrollOrigin, CyberCore::ScrollIsAnimated) override;
+    CyberCore::FloatPoint viewScrollPosition() override;
+    CyberCore::IntSize viewSize() override;
     bool isViewWindowActive() override;
     bool isViewFocused() override;
     bool isViewVisible() override;
@@ -90,10 +90,10 @@ private:
     void didStartProvisionalLoadForMainFrame() override;
     void didFailProvisionalLoadForMainFrame() override;
     void didCommitLoadForMainFrame(const String& mimeType, bool useCustomContentProvider) override;
-    void didChangeContentSize(const WebCore::IntSize&) override;
-    void setCursor(const WebCore::Cursor&) override;
+    void didChangeContentSize(const CyberCore::IntSize&) override;
+    void setCursor(const CyberCore::Cursor&) override;
     void setCursorHiddenUntilMouseMoves(bool) override;
-    void didChangeViewportProperties(const WebCore::ViewportAttributes&) override;
+    void didChangeViewportProperties(const CyberCore::ViewportAttributes&) override;
     void registerEditCommand(Ref<WebEditCommandProxy>&&, UndoOrRedo) override;
     void clearAllEditCommands() override;
     bool canUndoRedo(UndoOrRedo) override;
@@ -105,12 +105,12 @@ private:
     void notifyInputContextAboutDiscardedComposition() override;
     void makeFirstResponder() override;
     void assistiveTechnologyMakeFirstResponder() override;
-    WebCore::FloatRect convertToDeviceSpace(const WebCore::FloatRect&) override;
-    WebCore::FloatRect convertToUserSpace(const WebCore::FloatRect&) override;
-    WebCore::IntPoint screenToRootView(const WebCore::IntPoint&) override;
-    WebCore::IntRect rootViewToScreen(const WebCore::IntRect&) override;
-    WebCore::IntPoint accessibilityScreenToRootView(const WebCore::IntPoint&) override;
-    WebCore::IntRect rootViewToAccessibilityScreen(const WebCore::IntRect&) override;
+    CyberCore::FloatRect convertToDeviceSpace(const CyberCore::FloatRect&) override;
+    CyberCore::FloatRect convertToUserSpace(const CyberCore::FloatRect&) override;
+    CyberCore::IntPoint screenToRootView(const CyberCore::IntPoint&) override;
+    CyberCore::IntRect rootViewToScreen(const CyberCore::IntRect&) override;
+    CyberCore::IntPoint accessibilityScreenToRootView(const CyberCore::IntPoint&) override;
+    CyberCore::IntRect rootViewToAccessibilityScreen(const CyberCore::IntRect&) override;
     void doneWithKeyEvent(const NativeWebKeyboardEvent&, bool wasEventHandled) override;
 #if ENABLE(TOUCH_EVENTS)
     void doneWithTouchEvent(const NativeWebTouchEvent&, bool wasEventHandled) override;
@@ -122,28 +122,28 @@ private:
 #endif
 
 #if ENABLE(IMAGE_ANALYSIS)
-    void requestTextRecognition(const URL& imageURL, const ShareableBitmapHandle& imageData, const String& sourceLanguageIdentifier, const String& targetLanguageIdentifier, CompletionHandler<void(WebCore::TextRecognitionResult&&)>&&) final;
+    void requestTextRecognition(const URL& imageURL, const ShareableBitmapHandle& imageData, const String& sourceLanguageIdentifier, const String& targetLanguageIdentifier, CompletionHandler<void(CyberCore::TextRecognitionResult&&)>&&) final;
 #endif
 
     RefPtr<WebPopupMenuProxy> createPopupMenuProxy(WebPageProxy&) override;
-    Ref<WebCore::ValidationBubble> createValidationBubble(const String& message, const WebCore::ValidationBubble::Settings&) final;
+    Ref<CyberCore::ValidationBubble> createValidationBubble(const String& message, const CyberCore::ValidationBubble::Settings&) final;
 
 #if ENABLE(INPUT_TYPE_COLOR)
-    RefPtr<WebColorPicker> createColorPicker(WebPageProxy*, const WebCore::Color& initialColor, const WebCore::IntRect&, Vector<WebCore::Color>&&) final;
+    RefPtr<WebColorPicker> createColorPicker(WebPageProxy*, const CyberCore::Color& initialColor, const CyberCore::IntRect&, Vector<CyberCore::Color>&&) final;
 #endif
 
 #if ENABLE(DATALIST_ELEMENT)
     RefPtr<WebDataListSuggestionsDropdown> createDataListSuggestionsDropdown(WebPageProxy&) final;
 #endif
 
-    WebCore::DataOwnerType dataOwnerForPasteboard(PasteboardAccessIntent) const final;
+    CyberCore::DataOwnerType dataOwnerForPasteboard(PasteboardAccessIntent) const final;
 
 #if ENABLE(DATE_AND_TIME_INPUT_TYPES)
     RefPtr<WebDateTimePicker> createDateTimePicker(WebPageProxy&) final;
 #endif
 
-    void setTextIndicator(Ref<WebCore::TextIndicator>, WebCore::TextIndicatorLifetime) override;
-    void clearTextIndicator(WebCore::TextIndicatorDismissalAnimation) override;
+    void setTextIndicator(Ref<CyberCore::TextIndicator>, CyberCore::TextIndicatorLifetime) override;
+    void clearTextIndicator(CyberCore::TextIndicatorDismissalAnimation) override;
     void setTextIndicatorAnimationProgress(float) override;
 
     void showSafeBrowsingWarning(const SafeBrowsingWarning&, CompletionHandler<void(std::variant<WebKit::ContinueUnsafeLoad, URL>&&)>&&) override;
@@ -159,48 +159,48 @@ private:
 
     void makeViewBlank(bool) final;
 
-    RefPtr<ViewSnapshot> takeViewSnapshot(std::optional<WebCore::IntRect>&&) override;
-    void wheelEventWasNotHandledByWebCore(const NativeWebWheelEvent&) override;
+    RefPtr<ViewSnapshot> takeViewSnapshot(std::optional<CyberCore::IntRect>&&) override;
+    void wheelEventWasNotHandledByCyberCore(const NativeWebWheelEvent&) override;
 
     void commitPotentialTapFailed() override;
-    void didGetTapHighlightGeometries(WebKit::TapIdentifier requestID, const WebCore::Color&, const Vector<WebCore::FloatQuad>& highlightedQuads, const WebCore::IntSize& topLeftRadius, const WebCore::IntSize& topRightRadius, const WebCore::IntSize& bottomLeftRadius, const WebCore::IntSize& bottomRightRadius, bool nodeHasBuiltInClickHandling) override;
+    void didGetTapHighlightGeometries(WebKit::TapIdentifier requestID, const CyberCore::Color&, const Vector<CyberCore::FloatQuad>& highlightedQuads, const CyberCore::IntSize& topLeftRadius, const CyberCore::IntSize& topRightRadius, const CyberCore::IntSize& bottomLeftRadius, const CyberCore::IntSize& bottomRightRadius, bool nodeHasBuiltInClickHandling) override;
 
     void didCommitLayerTree(const RemoteLayerTreeTransaction&) override;
     void layerTreeCommitComplete() override;
         
-    void didPerformDictionaryLookup(const WebCore::DictionaryPopupInfo&) override;
+    void didPerformDictionaryLookup(const CyberCore::DictionaryPopupInfo&) override;
 
     bool effectiveAppearanceIsDark() const override;
     bool effectiveUserInterfaceLevelIsElevated() const override;
 
     void couldNotRestorePageState() override;
-    void restorePageState(std::optional<WebCore::FloatPoint>, const WebCore::FloatPoint&, const WebCore::FloatBoxExtent&, double) override;
-    void restorePageCenterAndScale(std::optional<WebCore::FloatPoint>, double) override;
+    void restorePageState(std::optional<CyberCore::FloatPoint>, const CyberCore::FloatPoint&, const CyberCore::FloatBoxExtent&, double) override;
+    void restorePageCenterAndScale(std::optional<CyberCore::FloatPoint>, double) override;
 
-    void elementDidFocus(const FocusedElementInformation&, bool userIsInteracting, bool blurPreviousNode, OptionSet<WebCore::ActivityState::Flag> activityStateChanges, API::Object* userData) override;
+    void elementDidFocus(const FocusedElementInformation&, bool userIsInteracting, bool blurPreviousNode, OptionSet<CyberCore::ActivityState::Flag> activityStateChanges, API::Object* userData) override;
     void updateInputContextAfterBlurringAndRefocusingElement() final;
     void elementDidBlur() override;
-    void focusedElementDidChangeInputMode(WebCore::InputMode) override;
+    void focusedElementDidChangeInputMode(CyberCore::InputMode) override;
     void didUpdateEditorState() override;
     bool isFocusingElement() override;
     void selectionDidChange() override;
     bool interpretKeyEvent(const NativeWebKeyboardEvent&, bool isCharEvent) override;
     void positionInformationDidChange(const InteractionInformationAtPosition&) override;
-    void saveImageToLibrary(Ref<WebCore::SharedBuffer>&&) override;
-    void showPlaybackTargetPicker(bool hasVideo, const WebCore::IntRect& elementRect, WebCore::RouteSharingPolicy, const String&) override;
+    void saveImageToLibrary(Ref<CyberCore::SharedBuffer>&&) override;
+    void showPlaybackTargetPicker(bool hasVideo, const CyberCore::IntRect& elementRect, CyberCore::RouteSharingPolicy, const String&) override;
     void showDataDetectorsUIForPositionInformation(const InteractionInformationAtPosition&) override;
 
     bool handleRunOpenPanel(WebPageProxy*, WebFrameProxy*, const FrameInfoData&, API::OpenPanelParameters*, WebOpenPanelResultListenerProxy*) override;
-    bool showShareSheet(const WebCore::ShareDataWithParsedURL&, WTF::CompletionHandler<void(bool)>&&) override;
-    void showContactPicker(const WebCore::ContactsRequestData&, WTF::CompletionHandler<void(std::optional<Vector<WebCore::ContactInfo>>&&)>&&) override;
+    bool showShareSheet(const CyberCore::ShareDataWithParsedURL&, WTF::CompletionHandler<void(bool)>&&) override;
+    void showContactPicker(const CyberCore::ContactsRequestData&, WTF::CompletionHandler<void(std::optional<Vector<CyberCore::ContactInfo>>&&)>&&) override;
     
     void disableDoubleTapGesturesDuringTapIfNecessary(WebKit::TapIdentifier) override;
-    void handleSmartMagnificationInformationForPotentialTap(WebKit::TapIdentifier, const WebCore::FloatRect& renderRect, bool fitEntireRect, double viewportMinimumScale, double viewportMaximumScale, bool nodeIsRootLevel) override;
+    void handleSmartMagnificationInformationForPotentialTap(WebKit::TapIdentifier, const CyberCore::FloatRect& renderRect, bool fitEntireRect, double viewportMinimumScale, double viewportMaximumScale, bool nodeIsRootLevel) override;
 
     double minimumZoomScale() const override;
-    WebCore::FloatRect documentRect() const override;
+    CyberCore::FloatRect documentRect() const override;
 
-    void showInspectorHighlight(const WebCore::InspectorOverlay::Highlight&) override;
+    void showInspectorHighlight(const CyberCore::InspectorOverlay::Highlight&) override;
     void hideInspectorHighlight() override;
 
     void showInspectorIndication() override;
@@ -209,12 +209,12 @@ private:
     void enableInspectorNodeSearch() override;
     void disableInspectorNodeSearch() override;
 
-    void scrollingNodeScrollViewWillStartPanGesture(WebCore::ScrollingNodeID) override;
-    void scrollingNodeScrollViewDidScroll(WebCore::ScrollingNodeID) override;
-    void scrollingNodeScrollWillStartScroll(WebCore::ScrollingNodeID) override;
-    void scrollingNodeScrollDidEndScroll(WebCore::ScrollingNodeID) override;
+    void scrollingNodeScrollViewWillStartPanGesture(CyberCore::ScrollingNodeID) override;
+    void scrollingNodeScrollViewDidScroll(CyberCore::ScrollingNodeID) override;
+    void scrollingNodeScrollWillStartScroll(CyberCore::ScrollingNodeID) override;
+    void scrollingNodeScrollDidEndScroll(CyberCore::ScrollingNodeID) override;
         
-    void requestScrollToRect(const WebCore::FloatRect& targetRect, const WebCore::FloatPoint& origin) override;
+    void requestScrollToRect(const CyberCore::FloatRect& targetRect, const CyberCore::FloatPoint& origin) override;
         
     // Auxiliary Client Creation
 #if ENABLE(FULLSCREEN_API)
@@ -225,11 +225,11 @@ private:
     // WebFullScreenManagerProxyClient
     void closeFullScreenManager() override;
     bool isFullScreen() override;
-    void enterFullScreen(WebCore::FloatSize videoDimensions) override;
+    void enterFullScreen(CyberCore::FloatSize videoDimensions) override;
     void exitFullScreen() override;
-    void beganEnterFullScreen(const WebCore::IntRect& initialFrame, const WebCore::IntRect& finalFrame) override;
-    void beganExitFullScreen(const WebCore::IntRect& initialFrame, const WebCore::IntRect& finalFrame) override;
-    bool lockFullscreenOrientation(WebCore::ScreenOrientationType) override;
+    void beganEnterFullScreen(const CyberCore::IntRect& initialFrame, const CyberCore::IntRect& finalFrame) override;
+    void beganExitFullScreen(const CyberCore::IntRect& initialFrame, const CyberCore::IntRect& finalFrame) override;
+    bool lockFullscreenOrientation(CyberCore::ScreenOrientationType) override;
     void unlockFullscreenOrientation() override;
 #endif
 
@@ -248,7 +248,7 @@ private:
     void didFinishNavigation(API::Navigation*) override;
     void didFailNavigation(API::Navigation*) override;
     void didSameDocumentNavigationForMainFrame(SameDocumentNavigationType) override;
-    void didNotHandleTapAsClick(const WebCore::IntPoint&) override;
+    void didNotHandleTapAsClick(const CyberCore::IntPoint&) override;
     void didCompleteSyntheticClick() override;
 
     void runModalJavaScriptDialog(CompletionHandler<void()>&& callback) final;
@@ -261,46 +261,46 @@ private:
 
     void didRestoreScrollPosition() override;
 
-    WebCore::UserInterfaceLayoutDirection userInterfaceLayoutDirection() override;
+    CyberCore::UserInterfaceLayoutDirection userInterfaceLayoutDirection() override;
 
 #if USE(QUICK_LOOK)
     void requestPasswordForQuickLookDocument(const String& fileName, WTF::Function<void(const String&)>&&) override;
 #endif
 
-    void requestDOMPasteAccess(WebCore::DOMPasteAccessCategory, const WebCore::IntRect& elementRect, const String&, CompletionHandler<void(WebCore::DOMPasteAccessResponse)>&&) final;
+    void requestDOMPasteAccess(CyberCore::DOMPasteAccessCategory, const CyberCore::IntRect& elementRect, const String&, CompletionHandler<void(CyberCore::DOMPasteAccessResponse)>&&) final;
 
 #if ENABLE(DRAG_SUPPORT)
     void didPerformDragOperation(bool handled) override;
     void didHandleDragStartRequest(bool started) override;
     void didHandleAdditionalDragItemsRequest(bool added) override;
-    void startDrag(const WebCore::DragItem&, const ShareableBitmapHandle& image) override;
+    void startDrag(const CyberCore::DragItem&, const ShareableBitmapHandle& image) override;
     void willReceiveEditDragSnapshot() override;
-    void didReceiveEditDragSnapshot(std::optional<WebCore::TextIndicatorData>) override;
-    void didChangeDragCaretRect(const WebCore::IntRect& previousCaretRect, const WebCore::IntRect& caretRect) override;
+    void didReceiveEditDragSnapshot(std::optional<CyberCore::TextIndicatorData>) override;
+    void didChangeDragCaretRect(const CyberCore::IntRect& previousCaretRect, const CyberCore::IntRect& caretRect) override;
 #endif
 
     void handleAutocorrectionContext(const WebAutocorrectionContext&) final;
 
-    void setMouseEventPolicy(WebCore::MouseEventPolicy) final;
+    void setMouseEventPolicy(CyberCore::MouseEventPolicy) final;
 
 #if ENABLE(MEDIA_CONTROLS_CONTEXT_MENUS) && USE(UICONTEXTMENU)
-    void showMediaControlsContextMenu(WebCore::FloatRect&&, Vector<WebCore::MediaControlsContextMenuItem>&&, CompletionHandler<void(WebCore::MediaControlsContextMenuItem::ID)>&&) final;
+    void showMediaControlsContextMenu(CyberCore::FloatRect&&, Vector<CyberCore::MediaControlsContextMenuItem>&&, CompletionHandler<void(CyberCore::MediaControlsContextMenuItem::ID)>&&) final;
 #endif // ENABLE(MEDIA_CONTROLS_CONTEXT_MENUS) && USE(UICONTEXTMENU)
 
 #if ENABLE(ATTACHMENT_ELEMENT)
-    void writePromisedAttachmentToPasteboard(WebCore::PromisedAttachmentInfo&&) final;
+    void writePromisedAttachmentToPasteboard(CyberCore::PromisedAttachmentInfo&&) final;
 #endif
 
     void cancelPointersForGestureRecognizer(UIGestureRecognizer*) override;
     std::optional<unsigned> activeTouchIdentifierForGestureRecognizer(UIGestureRecognizer*) override;
 
-    void showDictationAlternativeUI(const WebCore::FloatRect&, WebCore::DictationContext) final;
+    void showDictationAlternativeUI(const CyberCore::FloatRect&, CyberCore::DictationContext) final;
 
 #if HAVE(UISCROLLVIEW_ASYNCHRONOUS_SCROLL_EVENT_HANDLING)
     void handleAsynchronousCancelableScrollEvent(UIScrollView *, UIScrollEvent *, void (^completion)(BOOL handled)) final;
 #endif
 
-    WebCore::Color contentViewBackgroundColor() final;
+    CyberCore::Color contentViewBackgroundColor() final;
     String sceneID() final;
 
     void beginTextRecognitionForFullscreenVideo(const ShareableBitmapHandle&, AVPlayerViewController *) final;
@@ -308,7 +308,7 @@ private:
     bool isTextRecognitionInFullscreenVideoEnabled() const final;
 
 #if ENABLE(VIDEO)
-    void beginTextRecognitionForVideoInElementFullscreen(const ShareableBitmapHandle&, WebCore::FloatRect) final;
+    void beginTextRecognitionForVideoInElementFullscreen(const ShareableBitmapHandle&, CyberCore::FloatRect) final;
     void cancelTextRecognitionForVideoInElementFullscreen() final;
 #endif
 

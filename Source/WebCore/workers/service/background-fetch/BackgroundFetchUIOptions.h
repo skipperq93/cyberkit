@@ -30,13 +30,13 @@
 #include "ImageResource.h"
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct BackgroundFetchUIOptions {
     Vector<ImageResource> icons;
     String title;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

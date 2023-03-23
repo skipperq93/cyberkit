@@ -33,7 +33,7 @@
 #include "VectorMath.h"
 #include <wtf/MathExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace StereoPanner {
 
@@ -147,6 +147,6 @@ void panToTargetValue(const AudioBus* inputBus, AudioBus* outputBus, float panVa
 
 } // namespace StereoPanner
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

@@ -29,7 +29,7 @@
 
 #include "ScrollbarThemeComposite.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScrollbarThemeAdwaita : public ScrollbarThemeComposite {
 public:
@@ -57,6 +57,6 @@ protected:
     IntRect trackRect(Scrollbar&, bool painting = false) override;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(THEME_ADWAITA)

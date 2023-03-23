@@ -45,11 +45,11 @@
 #include "ServiceWorkerContainer.h"
 #include "ServiceWorkerThread.h"
 #include "ServiceWorkerWindowClient.h"
-#include "WebCoreJSClientData.h"
+#include "CyberCoreJSClientData.h"
 #include "WorkerNavigator.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(ServiceWorkerGlobalScope);
 
@@ -218,6 +218,6 @@ void ServiceWorkerGlobalScope::recordUserGesture()
     m_userGestureTimer.startOneShot(userGestureLifetime);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

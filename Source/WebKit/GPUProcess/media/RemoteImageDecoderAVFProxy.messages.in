@@ -28,12 +28,12 @@
 #if ENABLE(GPU_PROCESS) && HAVE(AVASSETREADER)
 
 messages -> RemoteImageDecoderAVFProxy NotRefCounted {
-    CreateDecoder(IPC::SharedBufferReference data, String mimeType) -> (std::optional<WebCore::ImageDecoderIdentifier> identifier) Synchronous
-    DeleteDecoder(WebCore::ImageDecoderIdentifier identifier)
-    SetExpectedContentSize(WebCore::ImageDecoderIdentifier identifier, long long expectedContentSize)
-    SetData(WebCore::ImageDecoderIdentifier identifier, IPC::SharedBufferReference data, bool allDataReceived) -> (size_t frameCount, WebCore::IntSize size, bool hasTrack, std::optional<Vector<WebCore::ImageDecoder::FrameInfo>> frameInfos) Synchronous
-    CreateFrameImageAtIndex(WebCore::ImageDecoderIdentifier identifier, size_t index) -> (std::optional<WebKit::ShareableBitmapHandle> imageHandle) Synchronous
-    ClearFrameBufferCache(WebCore::ImageDecoderIdentifier identifier, size_t index)
+    CreateDecoder(IPC::SharedBufferReference data, String mimeType) -> (std::optional<CyberCore::ImageDecoderIdentifier> identifier) Synchronous
+    DeleteDecoder(CyberCore::ImageDecoderIdentifier identifier)
+    SetExpectedContentSize(CyberCore::ImageDecoderIdentifier identifier, long long expectedContentSize)
+    SetData(CyberCore::ImageDecoderIdentifier identifier, IPC::SharedBufferReference data, bool allDataReceived) -> (size_t frameCount, CyberCore::IntSize size, bool hasTrack, std::optional<Vector<CyberCore::ImageDecoder::FrameInfo>> frameInfos) Synchronous
+    CreateFrameImageAtIndex(CyberCore::ImageDecoderIdentifier identifier, size_t index) -> (std::optional<WebKit::ShareableBitmapHandle> imageHandle) Synchronous
+    ClearFrameBufferCache(CyberCore::ImageDecoderIdentifier identifier, size_t index)
 }
 
 #endif

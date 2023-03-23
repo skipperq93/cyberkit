@@ -27,12 +27,12 @@
 
 #include <CyberCore/SystemSoundDelegate.h>
 
-namespace WebKit {
+namespace CyberKit {
 
-class WebSystemSoundDelegate final : public WebCore::SystemSoundDelegate {
+class WebSystemSoundDelegate final : public CyberCore::SystemSoundDelegate {
     WTF_MAKE_FAST_ALLOCATED;
 public:
     void systemBeep() final;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

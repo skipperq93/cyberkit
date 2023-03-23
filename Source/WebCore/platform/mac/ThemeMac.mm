@@ -51,13 +51,13 @@ static NSRect focusRingClipRect;
 static BOOL themeWindowHasKeyAppearance;
 static bool _useFormSemanticContext;
 
-@interface WebCoreThemeWindow : NSWindow
+@interface CyberCoreThemeWindow : NSWindow
 @end
 
-@interface WebCoreThemeView : NSControl
+@interface CyberCoreThemeView : NSControl
 @end
 
-@implementation WebCoreThemeWindow
+@implementation CyberCoreThemeWindow
 
 - (BOOL)hasKeyAppearance
 {
@@ -70,8 +70,8 @@ static bool _useFormSemanticContext;
 }
 @end
 
-@implementation WebCoreThemeView {
-    RetainPtr<WebCoreThemeWindow> _window;
+@implementation CyberCoreThemeView {
+    RetainPtr<CyberCoreThemeWindow> _window;
 }
 
 - (instancetype)init
@@ -81,7 +81,7 @@ static bool _useFormSemanticContext;
 
     // Using defer:YES prevents us from wasting any window server resources for this window, since we're not actually
     // going to draw into it. The other arguments match what you get when calling -[NSWindow init].
-    _window = adoptNS([[WebCoreThemeWindow alloc] initWithContentRect:NSMakeRect(100, 100, 100, 100) styleMask:NSWindowStyleMaskBorderless backing:NSBackingStoreBuffered defer:YES]);
+    _window = adoptNS([[CyberCoreThemeWindow alloc] initWithContentRect:NSMakeRect(100, 100, 100, 100) styleMask:NSWindowStyleMaskBorderless backing:NSBackingStoreBuffered defer:YES]);
 
     return self;
 }
@@ -134,7 +134,7 @@ static bool _useFormSemanticContext;
 
 // FIXME: Default buttons really should be more like push buttons and not like buttons.
 
-namespace WebCore {
+namespace CyberCore {
 
 enum {
     topMargin,
@@ -482,7 +482,7 @@ NSView *ThemeMac::ensuredView(ScrollView* scrollView, const ControlStates& contr
     }
 
     // Use a fake view.
-    static WebCoreThemeView *themeView = [[WebCoreThemeView alloc] init];
+    static CyberCoreThemeView *themeView = [[CyberCoreThemeView alloc] init];
     [themeView setFrameSize:NSSizeFromCGSize(scrollView->totalContentsSize())];
     [themeView setAppearance:[NSAppearance currentDrawingAppearance]];
 

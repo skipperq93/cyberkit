@@ -33,7 +33,7 @@
 #include <CyberScriptCore/Microtask.h>
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(ExtendableEvent);
 
@@ -128,6 +128,6 @@ void ExtendableEvent::whenAllExtendLifetimePromisesAreSettled(Function<void(Hash
     m_whenAllExtendLifetimePromisesAreSettledHandler = WTFMove(handler);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

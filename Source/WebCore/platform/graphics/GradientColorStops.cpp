@@ -28,7 +28,7 @@
 
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 TextStream& operator<<(TextStream& ts, const GradientColorStops& stops)
 {
@@ -36,4 +36,4 @@ TextStream& operator<<(TextStream& ts, const GradientColorStops& stops)
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

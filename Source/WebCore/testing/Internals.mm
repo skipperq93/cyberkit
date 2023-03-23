@@ -94,7 +94,7 @@
 
 #endif // ENABLE(IMAGE_ANALYSIS_ENHANCEMENTS)
 
-namespace WebCore {
+namespace CyberCore {
 
 String Internals::userVisibleString(const DOMURL& url)
 {
@@ -145,7 +145,7 @@ ExceptionOr<RefPtr<Range>> Internals::rangeForDictionaryLookupAtLocation(int x, 
 
 void Internals::setUsesOverlayScrollbars(bool enabled)
 {
-    WebCore::DeprecatedGlobalSettings::setUsesOverlayScrollbars(enabled);
+    CyberCore::DeprecatedGlobalSettings::setUsesOverlayScrollbars(enabled);
 
     ScrollerStyle::setUseOverlayScrollbars(enabled);
 
@@ -260,7 +260,7 @@ DDScannerResult *Internals::fakeDataDetectorResultForTesting()
 
 RefPtr<SharedBuffer> Internals::pngDataForTesting()
 {
-    NSBundle *webCoreBundle = [NSBundle bundleForClass:NSClassFromString(@"WebCoreBundleFinder")];
+    NSBundle *webCoreBundle = [NSBundle bundleForClass:NSClassFromString(@"CyberCoreBundleFinder")];
     return SharedBuffer::createWithContentsOfFile([webCoreBundle pathForResource:@"missingImage" ofType:@"png"]);
 }
 
@@ -287,4 +287,4 @@ RetainPtr<VKCImageAnalysis> Internals::fakeImageAnalysisResultForTesting(const V
 
 #endif // ENABLE(IMAGE_ANALYSIS_ENHANCEMENTS)
 
-} // namespace WebCore
+} // namespace CyberCore

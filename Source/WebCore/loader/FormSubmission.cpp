@@ -53,7 +53,7 @@
 #include <pal/text/TextEncoding.h>
 #include <wtf/WallTime.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 

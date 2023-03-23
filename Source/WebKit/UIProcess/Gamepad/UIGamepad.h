@@ -33,7 +33,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 class PlatformGamepad;
 }
 
@@ -44,22 +44,22 @@ class GamepadData;
 class UIGamepad {
     WTF_MAKE_FAST_ALLOCATED;
 public:
-    UIGamepad(WebCore::PlatformGamepad&);
+    UIGamepad(CyberCore::PlatformGamepad&);
 
     unsigned index() const { return m_index; }
 
     GamepadData gamepadData() const;
 
-    void updateFromPlatformGamepad(WebCore::PlatformGamepad&);
+    void updateFromPlatformGamepad(CyberCore::PlatformGamepad&);
 
 private:
     unsigned m_index;
     String m_id;
     String m_mapping;
-    Vector<WebCore::SharedGamepadValue> m_axisValues;
-    Vector<WebCore::SharedGamepadValue> m_buttonValues;
+    Vector<CyberCore::SharedGamepadValue> m_axisValues;
+    Vector<CyberCore::SharedGamepadValue> m_buttonValues;
     MonotonicTime m_lastUpdateTime;
-    WebCore::GamepadHapticEffectTypeSet m_supportedEffectTypes;
+    CyberCore::GamepadHapticEffectTypeSet m_supportedEffectTypes;
 };
 
 }

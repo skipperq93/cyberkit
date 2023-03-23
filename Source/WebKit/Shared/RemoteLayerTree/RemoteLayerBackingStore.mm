@@ -36,7 +36,7 @@
 #import "RemoteLayerTreeLayers.h"
 #import "ShareableBitmap.h"
 #import "SwapBuffersDisplayRequirement.h"
-#import "WebCoreArgumentCoders.h"
+#import "CyberCoreArgumentCoders.h"
 #import "WebProcess.h"
 #import <QuartzCore/QuartzCore.h>
 #import <CyberCore/BifurcatedGraphicsContext.h>
@@ -44,7 +44,7 @@
 #import <CyberCore/IOSurfacePool.h>
 #import <CyberCore/ImageBuffer.h>
 #import <CyberCore/PlatformCALayerClient.h>
-#import <CyberCore/WebCoreCALayerExtras.h>
+#import <CyberCore/CyberCoreCALayerExtras.h>
 #import <CyberCore/WebLayer.h>
 #import <pal/spi/cocoa/QuartzCoreSPI.h>
 #import <wtf/cocoa/TypeCastsCocoa.h>
@@ -56,7 +56,7 @@
 
 namespace WebKit {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 RemoteLayerBackingStore::RemoteLayerBackingStore(PlatformCALayerRemote* layer)
     : m_layer(layer)
@@ -567,7 +567,7 @@ RetainPtr<id> RemoteLayerBackingStore::layerContentsBufferFromBackendHandle(Imag
         [&] (MachSendRight& machSendRight) {
             switch (contentsType) {
             case RemoteLayerBackingStore::LayerContentsType::IOSurface: {
-                auto surface = WebCore::IOSurface::createFromSendRight(WTFMove(machSendRight));
+                auto surface = CyberCore::IOSurface::createFromSendRight(WTFMove(machSendRight));
                 contents = surface ? surface->asLayerContents() : nil;
                 break;
             }

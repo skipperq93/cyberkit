@@ -1161,7 +1161,7 @@ msgid "Enable Timeline profiling"
 msgstr "Включить профилирование JavaScript"
 
 #: ../../../WebKit/gtk/webkit/webkitwebinspector.cpp:321
-msgid "Profile the WebCore instrumentation."
+msgid "Profile the CyberCore instrumentation."
 msgstr ""
 
 #: ../../../WebKit/gtk/webkit/webkitwebnavigationaction.cpp:148

@@ -42,7 +42,7 @@
 #include "SocketStreamHandleClient.h"
 #include "StorageSessionProvider.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 SocketStreamHandleImpl::SocketStreamHandleImpl(const URL& url, SocketStreamHandleClient& client, const StorageSessionProvider* provider)
     : SocketStreamHandle(url, client)
@@ -135,6 +135,6 @@ void SocketStreamHandleImpl::destructStream()
     m_streamID = invalidCurlStreamID;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

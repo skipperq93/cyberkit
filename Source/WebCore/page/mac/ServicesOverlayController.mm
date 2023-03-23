@@ -50,7 +50,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import <pal/mac/DataDetectorsSoftLink.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 ServicesOverlayController::ServicesOverlayController(Page& page)
     : m_page(page)

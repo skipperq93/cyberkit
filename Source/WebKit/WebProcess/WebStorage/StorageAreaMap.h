@@ -37,13 +37,13 @@
 #include <wtf/RefPtr.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 class SecurityOrigin;
 class StorageMap;
 struct ClientOrigin;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class StorageAreaImpl;
 class StorageNamespaceImpl;
@@ -51,23 +51,23 @@ class StorageNamespaceImpl;
 class StorageAreaMap final : public IPC::MessageReceiver {
     WTF_MAKE_FAST_ALLOCATED;
 public:
-    StorageAreaMap(StorageNamespaceImpl&, Ref<const WebCore::SecurityOrigin>&&);
+    StorageAreaMap(StorageNamespaceImpl&, Ref<const CyberCore::SecurityOrigin>&&);
     ~StorageAreaMap();
 
-    WebCore::StorageType type() const { return m_type; }
+    CyberCore::StorageType type() const { return m_type; }
 
     unsigned length();
     String key(unsigned index);
     String item(const String& key);
-    void setItem(WebCore::Frame& sourceFrame, StorageAreaImpl* sourceArea, const String& key, const String& value, bool& quotaException);
-    void removeItem(WebCore::Frame& sourceFrame, StorageAreaImpl* sourceArea, const String& key);
-    void clear(WebCore::Frame& sourceFrame, StorageAreaImpl* sourceArea);
+    void setItem(CyberCore::Frame& sourceFrame, StorageAreaImpl* sourceArea, const String& key, const String& value, bool& quotaException);
+    void removeItem(CyberCore::Frame& sourceFrame, StorageAreaImpl* sourceArea, const String& key);
+    void clear(CyberCore::Frame& sourceFrame, StorageAreaImpl* sourceArea);
     bool contains(const String& key);
 
     // IPC::MessageReceiver
     void didReceiveMessage(IPC::Connection&, IPC::Decoder&) final;
 
-    const WebCore::SecurityOrigin& securityOrigin() const { return m_securityOrigin.get(); }
+    const CyberCore::SecurityOrigin& securityOrigin() const { return m_securityOrigin.get(); }
     StorageAreaMapIdentifier identifier() const { return m_identifier; }
 
     void connect();
@@ -86,9 +86,9 @@ private:
 
     void syncOneItem(const String& key, const String& value);
     void syncItems(HashMap<String, String>&&);
-    WebCore::StorageMap& ensureMap();
-    WebCore::StorageType computeStorageType() const;
-    WebCore::ClientOrigin clientOrigin() const;
+    CyberCore::StorageMap& ensureMap();
+    CyberCore::StorageType computeStorageType() const;
+    CyberCore::ClientOrigin clientOrigin() const;
 
     void applyChange(const String& key, const String& newValue);
     void dispatchSessionStorageEvent(const std::optional<StorageAreaImplIdentifier>&, const String& key, const String& oldValue, const String& newValue, const String& urlString);
@@ -102,16 +102,16 @@ private:
     StorageAreaMapIdentifier m_identifier;
     uint64_t m_lastHandledMessageIdentifier { 0 };
     StorageNamespaceImpl& m_namespace;
-    Ref<const WebCore::SecurityOrigin> m_securityOrigin;
-    std::unique_ptr<WebCore::StorageMap> m_map;
+    Ref<const CyberCore::SecurityOrigin> m_securityOrigin;
+    std::unique_ptr<CyberCore::StorageMap> m_map;
     std::optional<StorageAreaIdentifier> m_remoteAreaIdentifier;
     HashCountedSet<String> m_pendingValueChanges;
     uint64_t m_currentSeed { 1 };
     unsigned m_quotaInBytes;
-    WebCore::StorageType m_type;
+    CyberCore::StorageType m_type;
     uint64_t m_useCount { 0 };
     bool m_hasPendingClear { false };
     bool m_isWaitingForConnectReply { false };
 };
 
-} // namespace WebKit
+} // namespace CyberKit

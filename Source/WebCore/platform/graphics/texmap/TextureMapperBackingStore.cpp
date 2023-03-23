@@ -22,7 +22,7 @@
 
 #include "FloatRect.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 unsigned TextureMapperBackingStore::calculateExposedTileEdges(const FloatRect& totalRect, const FloatRect& tileRect)
 {
@@ -38,4 +38,4 @@ unsigned TextureMapperBackingStore::calculateExposedTileEdges(const FloatRect& t
     return exposedEdges;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

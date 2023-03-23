@@ -27,16 +27,16 @@
 
 #if !PLATFORM(IOS_FAMILY)
 
-#import "WebCoreFullScreenWindow.h"
+#import "CyberCoreFullScreenWindow.h"
 
 // FIXME: This isn't really an NSWindowController method - it's a method that
-// the NSWindowController subclass that's using WebCoreFullScreenWindow needs to implement.
+// the NSWindowController subclass that's using CyberCoreFullScreenWindow needs to implement.
 // It should probably be a protocol method.
 @interface NSWindowController ()
 - (void)performClose:(id)sender;
 @end
 
-@implementation WebCoreFullScreenWindow
+@implementation CyberCoreFullScreenWindow
 
 - (id)initWithContentRect:(NSRect)contentRect styleMask:(NSUInteger)aStyle backing:(NSBackingStoreType)bufferingType defer:(BOOL)flag
 {

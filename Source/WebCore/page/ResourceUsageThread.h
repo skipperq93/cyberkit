@@ -45,7 +45,7 @@ namespace JSC {
 class VM;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 enum ResourceUsageCollectionMode {
     None = 0,
@@ -98,6 +98,6 @@ private:
 
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(RESOURCE_USAGE)

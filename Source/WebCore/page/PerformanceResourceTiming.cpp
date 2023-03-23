@@ -41,7 +41,7 @@
 #include "ResourceTiming.h"
 #include <wtf/URL.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static double networkLoadTimeToDOMHighResTimeStamp(MonotonicTime timeOrigin, MonotonicTime timeStamp)
 {
@@ -145,7 +145,7 @@ double PerformanceResourceTiming::redirectEnd() const
 
 double PerformanceResourceTiming::fetchStart() const
 {
-    return WebCore::fetchStart(m_timeOrigin, m_resourceTiming);
+    return CyberCore::fetchStart(m_timeOrigin, m_resourceTiming);
 }
 
 double PerformanceResourceTiming::domainLookupStart() const
@@ -313,4 +313,4 @@ uint64_t PerformanceResourceTiming::decodedBodySize() const
     return decodedBodySize;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

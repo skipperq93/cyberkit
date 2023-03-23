@@ -34,7 +34,7 @@
 #import <wtf/URL.h>
 #import <wtf/cocoa/NSURLExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 bool isPublicSuffix(StringView domain)
 {

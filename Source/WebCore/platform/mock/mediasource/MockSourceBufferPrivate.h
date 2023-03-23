@@ -29,7 +29,7 @@
 
 #include "SourceBufferPrivate.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioTrackPrivate;
 class InbandTextTrackPrivate;

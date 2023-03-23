@@ -30,19 +30,19 @@
 #import "WKWebProcessPlugInFrameInternal.h"
 #import <CyberCore/DataDetection.h>
 #import <CyberCore/Range.h>
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 
 #if ENABLE(DATA_DETECTION)
 #import "WKDataDetectorTypesInternal.h"
 #endif
 
 @implementation WKWebProcessPlugInRangeHandle {
-    API::ObjectStorage<WebKit::InjectedBundleRangeHandle> _rangeHandle;
+    API::ObjectStorage<CyberKit::InjectedBundleRangeHandle> _rangeHandle;
 }
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainRunLoop(WKWebProcessPlugInRangeHandle.class, self))
+    if (CyberCoreObjCScheduleDeallocateOnMainRunLoop(WKWebProcessPlugInRangeHandle.class, self))
         return;
     _rangeHandle->~InjectedBundleRangeHandle();
     [super dealloc];
@@ -52,7 +52,7 @@
 {
     JSContextRef contextRef = [context JSGlobalContextRef];
     JSObjectRef objectRef = JSValueToObject(contextRef, [value JSValueRef], nullptr);
-    return wrapper(WebKit::InjectedBundleRangeHandle::getOrCreate(contextRef, objectRef));
+    return wrapper(CyberKit::InjectedBundleRangeHandle::getOrCreate(contextRef, objectRef));
 }
 
 - (WKWebProcessPlugInFrame *)frame
@@ -70,7 +70,7 @@
 - (NSArray *)detectDataWithTypes:(WKDataDetectorTypes)types context:(NSDictionary *)context
 {
 #if ENABLE(DATA_DETECTION)
-    return WebCore::DataDetection::detectContentInRange(makeSimpleRange(_rangeHandle->coreRange()), fromWKDataDetectorTypes(types), context);
+    return CyberCore::DataDetection::detectContentInRange(makeSimpleRange(_rangeHandle->coreRange()), fromWKDataDetectorTypes(types), context);
 #else
     return nil;
 #endif
@@ -78,7 +78,7 @@
 
 #endif
 
-- (WebKit::InjectedBundleRangeHandle&)_rangeHandle
+- (CyberKit::InjectedBundleRangeHandle&)_rangeHandle
 {
     return *_rangeHandle;
 }

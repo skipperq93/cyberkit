@@ -28,7 +28,7 @@
 #include <wtf/LogChannels.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 #if !LOG_DISABLED || !RELEASE_LOG_DISABLED
 
@@ -39,4 +39,4 @@ WEBCORE_EXPORT String logLevelString();
 
 WEBCORE_EXPORT WTFLogChannel* getLogChannel(const String& name);
 
-} // namespace WebCore
+} // namespace CyberCore

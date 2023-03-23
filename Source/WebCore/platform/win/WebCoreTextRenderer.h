@@ -23,27 +23,27 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
  */
 
-#ifndef WebCoreTextRenderer_h
-#define WebCoreTextRenderer_h
+#ifndef CyberCoreTextRenderer_h
+#define CyberCoreTextRenderer_h
 
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
     class Color;
     class FontCascade;
     class GraphicsContext;
     class IntPoint;
 
-    void WebCoreDrawDoubledTextAtPoint(GraphicsContext&, const String&, const IntPoint&, const FontCascade&, const Color& topColor, const Color& bottomColor, int underlinedIndex = -1);
-    float WebCoreTextFloatWidth(const String&, const FontCascade&);
+    void CyberCoreDrawDoubledTextAtPoint(GraphicsContext&, const String&, const IntPoint&, const FontCascade&, const Color& topColor, const Color& bottomColor, int underlinedIndex = -1);
+    float CyberCoreTextFloatWidth(const String&, const FontCascade&);
 
-    void WebCoreSetShouldUseFontSmoothing(bool);
-    bool WebCoreShouldUseFontSmoothing();
+    void CyberCoreSetShouldUseFontSmoothing(bool);
+    bool CyberCoreShouldUseFontSmoothing();
 
-    WEBCORE_EXPORT void WebCoreSetAlwaysUsesComplexTextCodePath(bool);
-    WEBCORE_EXPORT bool WebCoreAlwaysUsesComplexTextCodePath();
+    WEBCORE_EXPORT void CyberCoreSetAlwaysUsesComplexTextCodePath(bool);
+    WEBCORE_EXPORT bool CyberCoreAlwaysUsesComplexTextCodePath();
 
-} // namespace WebCore
+} // namespace CyberCore
 
-#endif // WebCoreTextRenderer_h
+#endif // CyberCoreTextRenderer_h

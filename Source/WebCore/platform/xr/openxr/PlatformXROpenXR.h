@@ -29,7 +29,7 @@
 #include <wtf/HashMap.h>
 #include <wtf/WorkQueue.h>
 
-namespace WebCore {
+namespace CyberCore {
 class GraphicsContextGL;
 }
 namespace PlatformXR {
@@ -59,8 +59,8 @@ private:
     void initialize(CompletionHandler<void()>&& callback);
 
     // PlatformXR::Device
-    WebCore::IntSize recommendedResolution(SessionMode) final;
-    void initializeTrackingAndRendering(const WebCore::SecurityOriginData&, SessionMode, const Device::FeatureList&) final;
+    CyberCore::IntSize recommendedResolution(SessionMode) final;
+    void initializeTrackingAndRendering(const CyberCore::SecurityOriginData&, SessionMode, const Device::FeatureList&) final;
     void shutDownTrackingAndRendering() final;
     void initializeReferenceSpace(PlatformXR::ReferenceSpaceType) final;
     bool supportsSessionShutdownNotification() const final { return true; }
@@ -92,8 +92,8 @@ private:
     XrSession m_session { XR_NULL_HANDLE };
     XrSessionState m_sessionState { XR_SESSION_STATE_UNKNOWN };
     XrGraphicsBindingEGLMNDX m_graphicsBinding;
-    std::unique_ptr<WebCore::GLContextEGL> m_egl;
-    RefPtr<WebCore::GraphicsContextGL> m_gl;
+    std::unique_ptr<CyberCore::GLContextEGL> m_egl;
+    RefPtr<CyberCore::GraphicsContextGL> m_gl;
     XrFrameState m_frameState;
     Vector<XrView> m_frameViews;
     HashMap<LayerHandle, std::unique_ptr<OpenXRLayer>> m_layers;

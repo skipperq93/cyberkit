@@ -41,7 +41,7 @@ typedef CVBufferRef CVImageBufferRef;
 typedef CVImageBufferRef CVPixelBufferRef;
 typedef struct __CVPixelBufferPool *CVPixelBufferPoolRef;
 
-namespace WebCore {
+namespace CyberCore {
 
 class ImageTransferSessionVT;
 
@@ -65,6 +65,6 @@ private:
     size_t m_pixelGenerationFailureCount { 0 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM)

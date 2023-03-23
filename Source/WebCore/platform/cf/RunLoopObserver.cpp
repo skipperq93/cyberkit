@@ -26,7 +26,7 @@
 #include "config.h"
 #include "RunLoopObserver.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 RunLoopObserver::~RunLoopObserver()
 {
@@ -70,4 +70,4 @@ void RunLoopObserver::invalidate()
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore

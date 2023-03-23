@@ -49,10 +49,10 @@
 #endif
 
 // This one definition short-circuits the need for gl2ext.h, which
-// would need more work to be included from WebCore.
+// would need more work to be included from CyberCore.
 #define GL_MAX_SAMPLES_EXT 0x8D57
 
-namespace WebCore {
+namespace CyberCore {
 
 static Seconds maxFrameDuration = 5_s;
 

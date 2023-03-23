@@ -36,15 +36,15 @@
 #include <wtf/spi/darwin/XPCSPI.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 namespace WebPushD {
 enum class DaemonMessageType : uint8_t;
 struct WebPushDaemonConnectionConfiguration;
 }
 }
 
-using WebKit::WebPushD::DaemonMessageType;
-using WebKit::WebPushD::WebPushDaemonConnectionConfiguration;
+using CyberKit::WebPushD::DaemonMessageType;
+using CyberKit::WebPushD::WebPushDaemonConnectionConfiguration;
 
 namespace WebPushD {
 
@@ -59,7 +59,7 @@ public:
 
     bool hasHostAppAuditToken() const { return !!m_hostAppAuditToken; }
 
-    WebCore::PushSubscriptionSetIdentifier subscriptionSetIdentifier();
+    CyberCore::PushSubscriptionSetIdentifier subscriptionSetIdentifier();
 
     const String& hostAppCodeSigningIdentifier();
     bool hostAppHasPushEntitlement();

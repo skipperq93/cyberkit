@@ -30,7 +30,7 @@
 
 #import "LibWebRTCAudioModule.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<MediaStreamTrackAudioSourceProviderCocoa> MediaStreamTrackAudioSourceProviderCocoa::create(MediaStreamTrackPrivate& source)
 {

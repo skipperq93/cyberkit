@@ -29,7 +29,7 @@
 
 #include "AudioTrackPrivate.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioTrackPrivateAVF : public AudioTrackPrivate {
     WTF_MAKE_NONCOPYABLE(AudioTrackPrivateAVF)

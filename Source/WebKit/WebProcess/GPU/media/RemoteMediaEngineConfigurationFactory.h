@@ -39,7 +39,7 @@ class Connection;
 class Decoder;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class GPUProcessConnection;
 class WebProcess;
@@ -62,8 +62,8 @@ public:
     void didReceiveSessionMessage(IPC::Connection&, IPC::Decoder&);
 
 private:
-    void createDecodingConfiguration(WebCore::MediaDecodingConfiguration&&, WebCore::MediaEngineConfigurationFactory::DecodingConfigurationCallback&&);
-    void createEncodingConfiguration(WebCore::MediaEncodingConfiguration&&, WebCore::MediaEngineConfigurationFactory::EncodingConfigurationCallback&&);
+    void createDecodingConfiguration(CyberCore::MediaDecodingConfiguration&&, CyberCore::MediaEngineConfigurationFactory::DecodingConfigurationCallback&&);
+    void createEncodingConfiguration(CyberCore::MediaEncodingConfiguration&&, CyberCore::MediaEngineConfigurationFactory::EncodingConfigurationCallback&&);
 
     WebProcess& m_process;
 };

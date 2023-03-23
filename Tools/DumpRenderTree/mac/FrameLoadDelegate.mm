@@ -41,7 +41,7 @@
 #import "TestRunner.h"
 #import "TextInputController.h"
 #import "WPTFunctions.h"
-#import "WebCoreTestSupport.h"
+#import "CyberCoreTestSupport.h"
 #import "WorkQueue.h"
 #import "WorkQueueItem.h"
 #import <Foundation/NSNotification.h>
@@ -59,7 +59,7 @@
 #endif
 
 #if PLATFORM(IOS_FAMILY)
-#import <CyberKit/WebCoreThreadMessage.h>
+#import <CyberKit/CyberCoreThreadMessage.h>
 #endif
 
 #ifndef NSEC_PER_MSEC
@@ -319,7 +319,7 @@ IGNORE_WARNINGS_END
     gcController->makeWindowObject(context);
     accessibilityController->makeWindowObject(context);
 
-    WebCoreTestSupport::injectInternalsObject(context);
+    CyberCoreTestSupport::injectInternalsObject(context);
 
 #if PLATFORM(MAC)
     [windowObject setValue:adoptNS([[AppleScriptController alloc] initWithWebView:webView]).get() forKey:@"appleScriptController"];

@@ -40,7 +40,7 @@
 #include "Settings.h"
 #include "StyleResolver.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static RenderStyle cloneRenderStyleWithState(const RenderStyle& currentStyle)
 {
@@ -261,6 +261,6 @@ void TextAutoSizing::reset()
     m_textNodes.clear();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(TEXT_AUTOSIZING)

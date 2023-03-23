@@ -42,7 +42,7 @@ struct WebUserScriptData {
 
     uint64_t identifier;
     ContentWorldIdentifier worldIdentifier;
-    WebCore::UserScript userScript;
+    CyberCore::UserScript userScript;
 };
 
 struct WebUserStyleSheetData {
@@ -51,7 +51,7 @@ struct WebUserStyleSheetData {
 
     uint64_t identifier;
     ContentWorldIdentifier worldIdentifier;
-    WebCore::UserStyleSheet userStyleSheet;
+    CyberCore::UserStyleSheet userStyleSheet;
 };
 
 struct WebScriptMessageHandlerData {

@@ -35,7 +35,7 @@
 #include "RTCSessionDescriptionRequest.h"
 #include "RTCVoidRequest.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 SessionRequestNotifier::SessionRequestNotifier(RefPtr<RTCSessionDescriptionRequest>&& request, RefPtr<RTCSessionDescriptionDescriptor>&& descriptor, const String& errorName)
     : m_request(WTFMove(request))
@@ -112,6 +112,6 @@ void DataChannelStateNotifier::fire()
     m_client->didChangeReadyState(m_state);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

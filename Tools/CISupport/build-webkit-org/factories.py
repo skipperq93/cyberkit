@@ -56,9 +56,9 @@ class BuildFactory(Factory):
         Factory.__init__(self, platform, configuration, architectures, True, additionalArguments, device_model)
 
         if platform == "win" or platform.startswith("playstation"):
-            self.addStep(CompileWebKit(timeout=2 * 60 * 60))
+            self.addStep(CompileCyberKit(timeout=2 * 60 * 60))
         else:
-            self.addStep(CompileWebKit())
+            self.addStep(CompileCyberKit())
 
         if self.ShouldRunJSCBundleStep:
             self.addStep(GenerateJSCBundle())
@@ -80,7 +80,7 @@ class BuildFactory(Factory):
 
 class TestFactory(Factory):
     JSCTestClass = RunJavaScriptCoreTests
-    LayoutTestClass = RunWebKitTests
+    LayoutTestClass = RunCyberKitTests
 
     def getProduct(self):
         self.addStep(DownloadBuiltProduct())
@@ -113,9 +113,9 @@ class TestFactory(Factory):
 
         # FIXME: Re-enable these tests for Monterey once webkit.org/b/239463 is resolved.
         if platform.startswith('mac') and (platform != 'mac-monterey'):
-            self.addStep(RunLLDBWebKitTests())
+            self.addStep(RunLLDBCyberKitTests())
 
-        self.addStep(RunWebKitPyTests())
+        self.addStep(RunCyberKitPyTests())
         self.addStep(RunPerlTests())
         self.addStep(RunBindingsTests())
         self.addStep(RunBuiltinsTests())
@@ -133,7 +133,7 @@ class TestFactory(Factory):
 
 class BuildAndTestFactory(TestFactory):
     def getProduct(self):
-        self.addStep(CompileWebKit())
+        self.addStep(CompileCyberKit())
 
     def __init__(self, platform, configuration, architectures, triggers=None, additionalArguments=None, device_model=None, **kwargs):
         TestFactory.__init__(self, platform, configuration, architectures, additionalArguments, device_model, **kwargs)
@@ -223,7 +223,7 @@ class TestLayoutFactory(Factory):
         Factory.__init__(self, platform, configuration, architectures, False, additionalArguments, device_model)
         self.addStep(DownloadBuiltProduct())
         self.addStep(ExtractBuiltProduct())
-        self.addStep(RunWebKitTests())
+        self.addStep(RunCyberKitTests())
         if not platform.startswith('win'):
             self.addStep(RunDashboardTests())
         self.addStep(ArchiveTestResults())
@@ -240,18 +240,18 @@ class TestWebDriverFactory(Factory):
         self.addStep(RunWebDriverTests())
 
 
-class TestWebKit1Factory(TestFactory):
-    LayoutTestClass = RunWebKit1Tests
+class TestCyberKit1Factory(TestFactory):
+    LayoutTestClass = RunCyberKit1Tests
 
 
-class TestWebKit1AllButJSCFactory(TestWebKit1Factory):
+class TestCyberKit1AllButJSCFactory(TestCyberKit1Factory):
     JSCTestClass = None
 
 
 class BuildAndPerfTestFactory(Factory):
     def __init__(self, platform, configuration, architectures, additionalArguments=None, device_model=None, **kwargs):
         Factory.__init__(self, platform, configuration, architectures, False, additionalArguments, device_model, **kwargs)
-        self.addStep(CompileWebKit())
+        self.addStep(CompileCyberKit())
         self.addStep(RunAndUploadPerfTests())
         if platform == "gtk":
             self.addStep(RunBenchmarkTests(timeout=2000))

@@ -34,7 +34,7 @@
 
 #include "HRTFElevation.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 HRTFDatabase::HRTFDatabase(float sampleRate)
     : m_sampleRate(sampleRate)
@@ -103,6 +103,6 @@ unsigned HRTFDatabase::indexFromElevationAngle(double elevationAngle)
     return elevationIndex;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

@@ -40,7 +40,7 @@
 #include <math.h>
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -280,4 +280,4 @@ String RenderFileUploadControl::fileTextValue() const
     return theme().fileListNameForWidth(input.files(), style().fontCascade(), maxFilenameWidth(), input.multiple());
 }
     
-} // namespace WebCore
+} // namespace CyberCore

@@ -35,7 +35,7 @@
 #import "WKGraphics.h"
 #import "WKUtilities.h"
 #import "WKViewPrivate.h"
-#import "WebCoreThreadMessage.h"
+#import "CyberCoreThreadMessage.h"
 #import "WebEvent.h"
 #import <wtf/Assertions.h>
 #import <wtf/NeverDestroyed.h>
@@ -467,18 +467,18 @@ static void _WAKCopyWrapper(const void *value, void *context)
     setGlobalFocusView(nil);
 }
 
-static CGInterpolationQuality toCGInterpolationQuality(WebCore::InterpolationQuality quality)
+static CGInterpolationQuality toCGInterpolationQuality(CyberCore::InterpolationQuality quality)
 {
     switch (quality) {
-    case WebCore::InterpolationQuality::Default:
+    case CyberCore::InterpolationQuality::Default:
         return kCGInterpolationDefault;
-    case WebCore::InterpolationQuality::DoNotInterpolate:
+    case CyberCore::InterpolationQuality::DoNotInterpolate:
         return kCGInterpolationNone;
-    case WebCore::InterpolationQuality::Low:
+    case CyberCore::InterpolationQuality::Low:
         return kCGInterpolationLow;
-    case WebCore::InterpolationQuality::Medium:
+    case CyberCore::InterpolationQuality::Medium:
         return kCGInterpolationMedium;
-    case WebCore::InterpolationQuality::High:
+    case CyberCore::InterpolationQuality::High:
         return kCGInterpolationHigh;
     default:
         ASSERT_NOT_REACHED();
@@ -488,7 +488,7 @@ static CGInterpolationQuality toCGInterpolationQuality(WebCore::InterpolationQua
 
 + (void)_setInterpolationQuality:(int)quality
 {
-    sInterpolationQuality = toCGInterpolationQuality((WebCore::InterpolationQuality)quality);
+    sInterpolationQuality = toCGInterpolationQuality((CyberCore::InterpolationQuality)quality);
 }
 
 - (void)_drawRect:(NSRect)dirtyRect context:(CGContextRef)context lockFocus:(BOOL)lockFocus
@@ -708,7 +708,7 @@ static CGInterpolationQuality toCGInterpolationQuality(WebCore::InterpolationQua
     if (!CGRectContainsRect(visibleRect, rect) && !CGRectContainsRect(rect, visibleRect))
         [self scrollPoint:rect.origin];
 
-    // Return value ignored by WebCore.
+    // Return value ignored by CyberCore.
 
     return NO;
 }

@@ -31,7 +31,7 @@
 #include "WlUniquePtr.h"
 #include <wayland-client.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class PlatformDisplayWayland : public PlatformDisplay {
 public:
@@ -69,7 +69,7 @@ private:
     WlUniquePtr<struct wl_compositor> m_compositor;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_PLATFORM_DISPLAY(PlatformDisplayWayland, Wayland)
 

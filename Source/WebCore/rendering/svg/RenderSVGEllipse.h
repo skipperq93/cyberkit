@@ -30,7 +30,7 @@
 #if ENABLE(LAYER_BASED_SVG_ENGINE)
 #include "RenderSVGShape.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderSVGEllipse final : public RenderSVGShape {
     WTF_MAKE_ISO_ALLOCATED(RenderSVGEllipse);
@@ -56,6 +56,6 @@ private:
     bool m_usePathFallback;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(LAYER_BASED_SVG_ENGINE)

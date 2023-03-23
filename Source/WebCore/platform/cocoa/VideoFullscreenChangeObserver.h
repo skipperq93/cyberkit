@@ -28,7 +28,7 @@
 
 #if ENABLE(VIDEO_PRESENTATION_MODE)
 
-namespace WebCore {
+namespace CyberCore {
 
 class VideoFullscreenChangeObserver : public CanMakeWeakPtr<VideoFullscreenChangeObserver> {
 public:

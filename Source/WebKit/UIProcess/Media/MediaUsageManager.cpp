@@ -44,17 +44,17 @@ void MediaUsageManager:: reset()
     notImplemented();
 }
 
-void MediaUsageManager::addMediaSession(WebCore::MediaSessionIdentifier identifier, const String& bundleIdentifier, const URL& pageURL)
+void MediaUsageManager::addMediaSession(CyberCore::MediaSessionIdentifier identifier, const String& bundleIdentifier, const URL& pageURL)
 {
     notImplemented();
 }
 
-void MediaUsageManager::removeMediaSession(WebCore::MediaSessionIdentifier identifier)
+void MediaUsageManager::removeMediaSession(CyberCore::MediaSessionIdentifier identifier)
 {
     notImplemented();
 }
 
-void MediaUsageManager::updateMediaUsage(WebCore::MediaSessionIdentifier identifier, const WebCore::MediaUsageInfo& mediaUsageInfo)
+void MediaUsageManager::updateMediaUsage(CyberCore::MediaSessionIdentifier identifier, const CyberCore::MediaUsageInfo& mediaUsageInfo)
 {
     notImplemented();
 }

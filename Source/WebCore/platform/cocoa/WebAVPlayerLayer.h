@@ -35,15 +35,15 @@ OBJC_CLASS AVPlayerController;
 OBJC_CLASS NSDictionary;
 OBJC_CLASS NSString;
 
-namespace WebCore {
+namespace CyberCore {
 class VideoFullscreenModel;
 class VideoFullscreenInterfaceAVKit;
 }
 
 #if PLATFORM(IOS_FAMILY)
-typedef WebCore::VideoFullscreenInterfaceAVKit PlatformVideoFullscreenInterface;
+typedef CyberCore::VideoFullscreenInterfaceAVKit PlatformVideoFullscreenInterface;
 #else
-typedef WebCore::VideoFullscreenInterfaceMac PlatformVideoFullscreenInterface;
+typedef CyberCore::VideoFullscreenInterfaceMac PlatformVideoFullscreenInterface;
 #endif
 
 @interface WebAVPlayerLayer : CALayer
@@ -55,7 +55,7 @@ typedef WebCore::VideoFullscreenInterfaceMac PlatformVideoFullscreenInterface;
 @property (nonatomic, copy, nullable) NSDictionary *pixelBufferAttributes;
 @property CGSize videoDimensions;
 @property CGRect modelVideoLayerFrame;
-- (WebCore::FloatRect)calculateTargetVideoFrame;
+- (CyberCore::FloatRect)calculateTargetVideoFrame;
 @end
 
 #endif // PLATFORM(IOS_FAMILY) && ENABLE(VIDEO_PRESENTATION_MODE)

@@ -46,7 +46,7 @@ OBJC_CLASS NSImage;
 typedef struct HBITMAP__ *HBITMAP;
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class Settings;
 class Timer;
@@ -266,6 +266,6 @@ private:
     RefPtr<Image> m_cachedImage;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_IMAGE(BitmapImage)

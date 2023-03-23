@@ -37,19 +37,19 @@
 #import <wtf/GetPtr.h>
 #import <wtf/URL.h>
 
-#define IMPL static_cast<WebCore::TextEvent*>(reinterpret_cast<WebCore::Event*>(_internal))
+#define IMPL static_cast<CyberCore::TextEvent*>(reinterpret_cast<CyberCore::Event*>(_internal))
 
 @implementation DOMTextEvent
 
 - (NSString *)data
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->data();
 }
 
 - (void)initTextEvent:(NSString *)typeArg canBubbleArg:(BOOL)canBubbleArg cancelableArg:(BOOL)cancelableArg viewArg:(DOMAbstractView *)viewArg dataArg:(NSString *)dataArg
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->initTextEvent(typeArg, canBubbleArg, cancelableArg, toWindowProxy(viewArg), dataArg);
 }
 

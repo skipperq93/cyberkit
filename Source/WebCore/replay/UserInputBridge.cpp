@@ -39,7 +39,7 @@
 #include "PlatformMouseEvent.h"
 #include "PlatformWheelEvent.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 UserInputBridge::UserInputBridge(Page& page)
     : m_page(page)
@@ -163,4 +163,4 @@ bool UserInputBridge::tryClosePage(InputSource)
     return Ref(*localMainFrame)->loader().shouldClose();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

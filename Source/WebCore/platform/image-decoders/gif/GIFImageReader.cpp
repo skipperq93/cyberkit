@@ -78,7 +78,7 @@ mailing address.
 #include <string.h>
 #include "GIFImageDecoder.h"
 
-using WebCore::GIFImageDecoder;
+using CyberCore::GIFImageDecoder;
 
 // GETN(n, s) requests at least 'n' bytes available from 'q', at start of state 's'.
 //
@@ -313,7 +313,7 @@ bool GIFLZWContext::doLZW(const unsigned char* block, size_t bytesInBlock)
 // Perform decoding for this frame. frameDecoded will be true if the entire frame is decoded.
 // Returns false if a decoding error occurred. This is a fatal error and causes the GIFImageReader to set the "decode failed" flag.
 // Otherwise, either not enough data is available to decode further than before, or the new data has been decoded successfully; returns true in this case.
-bool GIFFrameContext::decode(const unsigned char* data, size_t length, WebCore::GIFImageDecoder* client, bool* frameDecoded)
+bool GIFFrameContext::decode(const unsigned char* data, size_t length, CyberCore::GIFImageDecoder* client, bool* frameDecoded)
 {
     *frameDecoded = false;
     if (!m_lzwContext) {
@@ -452,7 +452,7 @@ bool GIFImageReader::parse(size_t dataPosition, size_t len, bool parseSizeOnly)
 
             // CALLBACK: Inform the decoderplugin of our size.
             // Note: A subsequent frame might have dimensions larger than the "screen" dimensions.
-            if (m_client && !m_client->setSize(WebCore::IntSize(m_screenWidth, m_screenHeight)))
+            if (m_client && !m_client->setSize(CyberCore::IntSize(m_screenWidth, m_screenHeight)))
                 return false;
 
             m_screenBgcolor = currentComponent[5];
@@ -575,11 +575,11 @@ bool GIFImageReader::parse(size_t dataPosition, size_t len, bool parseSizeOnly)
             // NOTE: This relies on the values in the DisposalMethod enum
             // matching those in the GIF spec!
             int disposalMethod = ((*currentComponent) >> 2) & 0x7;
-            currentFrame->disposalMethod = static_cast<WebCore::ScalableImageDecoderFrame::DisposalMethod>(disposalMethod);
+            currentFrame->disposalMethod = static_cast<CyberCore::ScalableImageDecoderFrame::DisposalMethod>(disposalMethod);
             // Some specs say that disposal method 3 is "overwrite previous", others that setting
             // the third bit of the field (i.e. method 4) is. We map both to the same value.
             if (disposalMethod == 4)
-                currentFrame->disposalMethod = WebCore::ScalableImageDecoderFrame::DisposalMethod::RestoreToPrevious;
+                currentFrame->disposalMethod = CyberCore::ScalableImageDecoderFrame::DisposalMethod::RestoreToPrevious;
             currentFrame->delayTime = GETINT16(currentComponent + 1) * 10;
             GETN(1, GIFConsumeBlock);
             break;
@@ -628,7 +628,7 @@ bool GIFImageReader::parse(size_t dataPosition, size_t len, bool parseSizeOnly)
 
                 // Zero loop count is infinite animation loop request.
                 if (!m_loopCount)
-                    m_loopCount = WebCore::RepetitionCountInfinite;
+                    m_loopCount = CyberCore::RepetitionCountInfinite;
 
                 GETN(1, GIFNetscapeExtensionBlock);
             } else if (netscapeExtension == 2) {
@@ -668,7 +668,7 @@ bool GIFImageReader::parse(size_t dataPosition, size_t len, bool parseSizeOnly)
                 yOffset = 0;
 
                 // CALLBACK: Inform the decoderplugin of our size.
-                if (m_client && !m_client->setSize(WebCore::IntSize(m_screenWidth, m_screenHeight)))
+                if (m_client && !m_client->setSize(CyberCore::IntSize(m_screenWidth, m_screenHeight)))
                     return false;
             }
 

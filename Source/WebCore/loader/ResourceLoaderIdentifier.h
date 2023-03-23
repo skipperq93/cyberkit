@@ -27,10 +27,10 @@
 
 #include <wtf/ObjectIdentifier.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ResourceLoader;
 
 using ResourceLoaderIdentifier = ObjectIdentifier<ResourceLoader>;
 
-} // namespace WebCore
+} // namespace CyberCore

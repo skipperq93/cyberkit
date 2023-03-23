@@ -32,7 +32,7 @@
 #include "ServiceWorkerInspectorProxy.h"
 #include "ServiceWorkerThreadProxy.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace Inspector;
 
@@ -57,7 +57,7 @@ void ServiceWorkerDebuggable::dispatchMessageFromRemote(String&& message)
     m_serviceWorkerThreadProxy.inspectorProxy().sendMessageToWorker(WTFMove(message));
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)
 #endif // ENABLE(REMOTE_INSPECTOR)

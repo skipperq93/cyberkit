@@ -58,7 +58,7 @@ class VisibleContentRectUpdateInfo {
 public:
     VisibleContentRectUpdateInfo() = default;
 
-    VisibleContentRectUpdateInfo(const WebCore::FloatRect& exposedContentRect, const WebCore::FloatRect& unobscuredContentRect, const WebCore::FloatBoxExtent& contentInsets, const WebCore::FloatRect& unobscuredRectInScrollViewCoordinates, const WebCore::FloatRect& unobscuredContentRectRespectingInputViewBounds, const WebCore::FloatRect& layoutViewportRect, const WebCore::FloatBoxExtent& obscuredInsets, const WebCore::FloatBoxExtent& unobscuredSafeAreaInsets, double scale, OptionSet<ViewStabilityFlag> viewStability, bool isFirstUpdateForNewViewSize, bool allowShrinkToFit, bool enclosedInScrollableAncestorView, const WebCore::VelocityData& scrollVelocity, TransactionID lastLayerTreeTransactionId)
+    VisibleContentRectUpdateInfo(const CyberCore::FloatRect& exposedContentRect, const CyberCore::FloatRect& unobscuredContentRect, const CyberCore::FloatBoxExtent& contentInsets, const CyberCore::FloatRect& unobscuredRectInScrollViewCoordinates, const CyberCore::FloatRect& unobscuredContentRectRespectingInputViewBounds, const CyberCore::FloatRect& layoutViewportRect, const CyberCore::FloatBoxExtent& obscuredInsets, const CyberCore::FloatBoxExtent& unobscuredSafeAreaInsets, double scale, OptionSet<ViewStabilityFlag> viewStability, bool isFirstUpdateForNewViewSize, bool allowShrinkToFit, bool enclosedInScrollableAncestorView, const CyberCore::VelocityData& scrollVelocity, TransactionID lastLayerTreeTransactionId)
         : m_exposedContentRect(exposedContentRect)
         , m_unobscuredContentRect(unobscuredContentRect)
         , m_contentInsets(contentInsets)
@@ -77,15 +77,15 @@ public:
     {
     }
 
-    const WebCore::FloatRect& exposedContentRect() const { return m_exposedContentRect; }
-    const WebCore::FloatRect& unobscuredContentRect() const { return m_unobscuredContentRect; }
-    const WebCore::FloatBoxExtent& contentInsets() const { return m_contentInsets; }
-    const WebCore::FloatRect& unobscuredRectInScrollViewCoordinates() const { return m_unobscuredRectInScrollViewCoordinates; }
-    const WebCore::FloatRect& unobscuredContentRectRespectingInputViewBounds() const { return m_unobscuredContentRectRespectingInputViewBounds; }
-    const WebCore::FloatRect& layoutViewportRect() const { return m_layoutViewportRect; }
-    const WebCore::VelocityData& scrollVelocity() const { return m_scrollVelocity; }
-    const WebCore::FloatBoxExtent& obscuredInsets() const { return m_obscuredInsets; }
-    const WebCore::FloatBoxExtent& unobscuredSafeAreaInsets() const { return m_unobscuredSafeAreaInsets; }
+    const CyberCore::FloatRect& exposedContentRect() const { return m_exposedContentRect; }
+    const CyberCore::FloatRect& unobscuredContentRect() const { return m_unobscuredContentRect; }
+    const CyberCore::FloatBoxExtent& contentInsets() const { return m_contentInsets; }
+    const CyberCore::FloatRect& unobscuredRectInScrollViewCoordinates() const { return m_unobscuredRectInScrollViewCoordinates; }
+    const CyberCore::FloatRect& unobscuredContentRectRespectingInputViewBounds() const { return m_unobscuredContentRectRespectingInputViewBounds; }
+    const CyberCore::FloatRect& layoutViewportRect() const { return m_layoutViewportRect; }
+    const CyberCore::VelocityData& scrollVelocity() const { return m_scrollVelocity; }
+    const CyberCore::FloatBoxExtent& obscuredInsets() const { return m_obscuredInsets; }
+    const CyberCore::FloatBoxExtent& unobscuredSafeAreaInsets() const { return m_unobscuredSafeAreaInsets; }
 
     double scale() const { return m_scale; }
     bool inStableState() const { return m_viewStability.isEmpty(); }
@@ -103,15 +103,15 @@ public:
     String dump() const;
 
 private:
-    WebCore::FloatRect m_exposedContentRect;
-    WebCore::FloatRect m_unobscuredContentRect;
-    WebCore::FloatBoxExtent m_contentInsets;
-    WebCore::FloatRect m_unobscuredContentRectRespectingInputViewBounds;
-    WebCore::FloatRect m_unobscuredRectInScrollViewCoordinates;
-    WebCore::FloatRect m_layoutViewportRect;
-    WebCore::FloatBoxExtent m_obscuredInsets;
-    WebCore::FloatBoxExtent m_unobscuredSafeAreaInsets;
-    WebCore::VelocityData m_scrollVelocity;
+    CyberCore::FloatRect m_exposedContentRect;
+    CyberCore::FloatRect m_unobscuredContentRect;
+    CyberCore::FloatBoxExtent m_contentInsets;
+    CyberCore::FloatRect m_unobscuredContentRectRespectingInputViewBounds;
+    CyberCore::FloatRect m_unobscuredRectInScrollViewCoordinates;
+    CyberCore::FloatRect m_layoutViewportRect;
+    CyberCore::FloatBoxExtent m_obscuredInsets;
+    CyberCore::FloatBoxExtent m_unobscuredSafeAreaInsets;
+    CyberCore::VelocityData m_scrollVelocity;
     TransactionID m_lastLayerTreeTransactionID;
     double m_scale { -1 };
     OptionSet<ViewStabilityFlag> m_viewStability;

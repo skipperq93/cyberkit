@@ -29,7 +29,7 @@
 #include <wtf/text/StringBuilder.h>
 #include <wtf/text/StringParsingBuffer.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 bool SVGLengthList::parse(StringView value)
 {

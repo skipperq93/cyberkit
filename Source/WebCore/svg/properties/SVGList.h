@@ -28,7 +28,7 @@
 #include "ExceptionOr.h"
 #include "SVGProperty.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename ItemType>
 class SVGList : public SVGProperty {

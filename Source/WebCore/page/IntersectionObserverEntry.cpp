@@ -29,7 +29,7 @@
 
 #include "Element.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 IntersectionObserverEntry::IntersectionObserverEntry(const Init& init)
     : m_time(init.time)
@@ -64,4 +64,4 @@ TextStream& operator<<(TextStream& ts, const IntersectionObserverEntry& entry)
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

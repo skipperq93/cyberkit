@@ -26,25 +26,25 @@
 #import "config.h"
 #import "PlatformCALayerRemoteHost.h"
 
-namespace WebKit {
+namespace CyberKit {
 
-Ref<PlatformCALayerRemote> PlatformCALayerRemoteHost::create(WebCore::LayerHostingContextIdentifier identifier, PlatformCALayerClient* owner, RemoteLayerTreeContext& context)
+Ref<PlatformCALayerRemote> PlatformCALayerRemoteHost::create(CyberCore::LayerHostingContextIdentifier identifier, PlatformCALayerClient* owner, RemoteLayerTreeContext& context)
 {
     auto layer = adoptRef(*new PlatformCALayerRemoteHost(identifier, owner, context));
     context.layerDidEnterContext(layer.get(), layer->layerType());
     return WTFMove(layer);
 }
 
-PlatformCALayerRemoteHost::PlatformCALayerRemoteHost(WebCore::LayerHostingContextIdentifier identifier, WebCore::PlatformCALayerClient* owner, RemoteLayerTreeContext& context)
-    : PlatformCALayerRemote(WebCore::PlatformCALayer::LayerTypeHost, owner, context)
+PlatformCALayerRemoteHost::PlatformCALayerRemoteHost(CyberCore::LayerHostingContextIdentifier identifier, CyberCore::PlatformCALayerClient* owner, RemoteLayerTreeContext& context)
+    : PlatformCALayerRemote(CyberCore::PlatformCALayer::LayerTypeHost, owner, context)
     , m_identifier(identifier)
 {
 }
 
-void PlatformCALayerRemoteHost::populateCreationProperties(RemoteLayerTreeTransaction::LayerCreationProperties& properties, const RemoteLayerTreeContext& context, WebCore::PlatformCALayer::LayerType type)
+void PlatformCALayerRemoteHost::populateCreationProperties(RemoteLayerTreeTransaction::LayerCreationProperties& properties, const RemoteLayerTreeContext& context, CyberCore::PlatformCALayer::LayerType type)
 {
     PlatformCALayerRemote::populateCreationProperties(properties, context, type);
     properties.hostIdentifier = m_identifier;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

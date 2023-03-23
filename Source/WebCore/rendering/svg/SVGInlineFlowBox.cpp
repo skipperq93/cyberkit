@@ -30,7 +30,7 @@
 #include "SVGTextFragment.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(SVGInlineFlowBox);
 
@@ -76,4 +76,4 @@ FloatRect SVGInlineFlowBox::calculateBoundaries() const
     return childRect;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

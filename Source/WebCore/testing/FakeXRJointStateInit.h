@@ -29,13 +29,13 @@
 
 #include "FakeXRRigidTransformInit.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct FakeXRJointStateInit {
     FakeXRRigidTransformInit pose;
     float radius;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBXR_HANDS)

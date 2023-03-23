@@ -31,7 +31,7 @@
 #include <wtf/SchedulePair.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class FragmentedSharedBuffer;
 

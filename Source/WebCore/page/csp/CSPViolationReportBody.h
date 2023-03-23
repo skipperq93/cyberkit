@@ -30,7 +30,7 @@
 #include "ViolationReportType.h"
 #include <wtf/IsoMalloc.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FormData;
 
@@ -77,8 +77,8 @@ private:
     const unsigned long m_columnNumber;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::CSPViolationReportBody)
-    static bool isType(const WebCore::ReportBody& reportBody) { return reportBody.reportBodyType() == WebCore::ViolationReportType::ContentSecurityPolicy; }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::CSPViolationReportBody)
+    static bool isType(const CyberCore::ReportBody& reportBody) { return reportBody.reportBodyType() == CyberCore::ViolationReportType::ContentSecurityPolicy; }
 SPECIALIZE_TYPE_TRAITS_END()

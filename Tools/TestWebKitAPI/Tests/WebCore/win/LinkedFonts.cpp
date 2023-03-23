@@ -27,16 +27,16 @@
 
 #include <CyberCore/FontCache.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
-namespace WebCore {
+namespace CyberCore {
 void appendLinkedFonts(WCHAR* linkedFonts, unsigned length, Vector<String>* result);
 }
 
 namespace TestWebKitAPI {
 
 // Test the appendLinkedFonts function with normal input data (string with pairs of font filenames and font names separated with \0).
-TEST(WebCore, appendLinkedFontsTest)
+TEST(CyberCore, appendLinkedFontsTest)
 {
     Vector<String> result;
     WCHAR linkedFonts[] = L"MICROSS.TTF,Microsoft Sans Serif,128,140\0MICROSS.TTF,Microsoft Sans Serif\0MSGOTHIC.TTC,MS UI Gothic\0MINGLIU.TTC,PMingLiU\0SIMSUN.TTC,SimSun";
@@ -51,7 +51,7 @@ TEST(WebCore, appendLinkedFontsTest)
 }
 
 // Test the appendLinkedFonts function when the input data does not contain the expected comma separator.
-TEST(WebCore, appendLinkedFontsWithMissingCommaTest)
+TEST(CyberCore, appendLinkedFontsWithMissingCommaTest)
 {
     Vector<String> result;
     WCHAR linkedFonts[] = L"MICROSS.TTF Microsoft Sans Serif";

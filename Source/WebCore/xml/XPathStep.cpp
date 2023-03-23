@@ -38,7 +38,7 @@
 #include "XPathParser.h"
 #include "XPathUtil.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace XPath {
 
 Step::Step(Axis axis, NodeTest nodeTest)

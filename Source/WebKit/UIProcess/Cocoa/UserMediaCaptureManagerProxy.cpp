@@ -34,7 +34,7 @@
 #include "SharedCARingBuffer.h"
 #include "UserMediaCaptureManagerMessages.h"
 #include "UserMediaCaptureManagerProxyMessages.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebProcessProxy.h"
 #include <CyberCore/AudioSession.h>
 #include <CyberCore/AudioUtilities.h>
@@ -50,7 +50,7 @@
 #define MESSAGE_CHECK(assertion) MESSAGE_CHECK_BASE(assertion, &m_connectionProxy->connection())
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 class UserMediaCaptureManagerProxy::SourceProxy
     : private RealtimeMediaSource::Observer
@@ -150,7 +150,7 @@ private:
             ASSERT(description.platformDescription().type == PlatformDescription::CAAudioStreamBasicType);
             m_description = *std::get<const AudioStreamBasicDescription*>(description.platformDescription().description);
 
-            m_frameChunkSize = std::max(WebCore::AudioUtilities::renderQuantumSize, AudioSession::sharedSession().preferredBufferSize());
+            m_frameChunkSize = std::max(CyberCore::AudioUtilities::renderQuantumSize, AudioSession::sharedSession().preferredBufferSize());
 
             // Allocate a ring buffer large enough to contain 2 seconds of audio.
             auto [ringBuffer, handle] = ProducerSharedCARingBuffer::allocate(*m_description, m_description->sampleRate() * 2);
@@ -320,7 +320,7 @@ CaptureSourceOrError UserMediaCaptureManagerProxy::createCameraSource(const Capt
     return source;
 }
 
-void UserMediaCaptureManagerProxy::createMediaSourceForCaptureDeviceWithConstraints(RealtimeMediaSourceIdentifier id, const CaptureDevice& device, WebCore::MediaDeviceHashSalts&& hashSalts, const MediaConstraints& mediaConstraints, bool shouldUseGPUProcessRemoteFrames, PageIdentifier pageIdentifier, CreateSourceCallback&& completionHandler)
+void UserMediaCaptureManagerProxy::createMediaSourceForCaptureDeviceWithConstraints(RealtimeMediaSourceIdentifier id, const CaptureDevice& device, CyberCore::MediaDeviceHashSalts&& hashSalts, const MediaConstraints& mediaConstraints, bool shouldUseGPUProcessRemoteFrames, PageIdentifier pageIdentifier, CreateSourceCallback&& completionHandler)
 {
     if (!m_connectionProxy->willStartCapture(device.type()))
         return completionHandler(false, "Request is not allowed"_s, RealtimeMediaSourceSettings { }, { }, { }, { }, 0);
@@ -329,19 +329,19 @@ void UserMediaCaptureManagerProxy::createMediaSourceForCaptureDeviceWithConstrai
 
     CaptureSourceOrError sourceOrError;
     switch (device.type()) {
-    case WebCore::CaptureDevice::DeviceType::Microphone:
+    case CyberCore::CaptureDevice::DeviceType::Microphone:
         sourceOrError = createMicrophoneSource(device, WTFMove(hashSalts), constraints, pageIdentifier);
         break;
-    case WebCore::CaptureDevice::DeviceType::Camera:
+    case CyberCore::CaptureDevice::DeviceType::Camera:
         sourceOrError = createCameraSource(device, WTFMove(hashSalts), constraints, pageIdentifier);
         break;
-    case WebCore::CaptureDevice::DeviceType::Screen:
-    case WebCore::CaptureDevice::DeviceType::Window:
+    case CyberCore::CaptureDevice::DeviceType::Screen:
+    case CyberCore::CaptureDevice::DeviceType::Window:
         sourceOrError = RealtimeMediaSourceCenter::singleton().displayCaptureFactory().createDisplayCaptureSource(device, WTFMove(hashSalts), constraints, pageIdentifier);
         break;
-    case WebCore::CaptureDevice::DeviceType::SystemAudio:
-    case WebCore::CaptureDevice::DeviceType::Speaker:
-    case WebCore::CaptureDevice::DeviceType::Unknown:
+    case CyberCore::CaptureDevice::DeviceType::SystemAudio:
+    case CyberCore::CaptureDevice::DeviceType::Speaker:
+    case CyberCore::CaptureDevice::DeviceType::Unknown:
         ASSERT_NOT_REACHED();
         break;
     }
@@ -414,7 +414,7 @@ void UserMediaCaptureManagerProxy::capabilities(RealtimeMediaSourceIdentifier id
     completionHandler(WTFMove(capabilities));
 }
 
-void UserMediaCaptureManagerProxy::applyConstraints(RealtimeMediaSourceIdentifier id, const WebCore::MediaConstraints& constraints)
+void UserMediaCaptureManagerProxy::applyConstraints(RealtimeMediaSourceIdentifier id, const CyberCore::MediaConstraints& constraints)
 {
     auto* proxy = m_proxies.get(id);
     if (!proxy) {
@@ -430,13 +430,13 @@ void UserMediaCaptureManagerProxy::applyConstraints(RealtimeMediaSourceIdentifie
         m_connectionProxy->connection().send(Messages::UserMediaCaptureManager::ApplyConstraintsFailed(id, result->badConstraint, result->message), 0);
 }
 
-void UserMediaCaptureManagerProxy::clone(RealtimeMediaSourceIdentifier clonedID, RealtimeMediaSourceIdentifier newSourceID, WebCore::PageIdentifier pageIdentifier)
+void UserMediaCaptureManagerProxy::clone(RealtimeMediaSourceIdentifier clonedID, RealtimeMediaSourceIdentifier newSourceID, CyberCore::PageIdentifier pageIdentifier)
 {
     MESSAGE_CHECK(m_proxies.contains(clonedID));
     MESSAGE_CHECK(!m_proxies.contains(newSourceID));
     if (auto* proxy = m_proxies.get(clonedID)) {
         auto sourceClone = proxy->source().clone();
-        if (sourceClone->deviceType() == WebCore::CaptureDevice::DeviceType::Camera)
+        if (sourceClone->deviceType() == CyberCore::CaptureDevice::DeviceType::Camera)
             m_pageSources.ensure(pageIdentifier, [] { return PageSources { }; }).iterator->value.cameraSources.add(sourceClone.get());
 
         m_proxies.add(newSourceID, makeUnique<SourceProxy>(newSourceID, m_connectionProxy->connection(), ProcessIdentity { m_connectionProxy->resourceOwner() }, WTFMove(sourceClone), m_connectionProxy->remoteVideoFrameObjectHeap()));

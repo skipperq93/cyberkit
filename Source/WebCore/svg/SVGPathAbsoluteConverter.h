@@ -27,7 +27,7 @@
 
 #include "SVGPathConsumer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // This consumer translates incoming SVG draw commands into absolute coordinates, and forwards it
 // to another consumer. convertSVGPathByteStreamToAbsoluteCoordinates uses it to convert relative
@@ -59,4 +59,4 @@ private:
     FloatPoint m_subpathPoint;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

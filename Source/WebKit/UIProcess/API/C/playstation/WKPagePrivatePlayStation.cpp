@@ -37,12 +37,12 @@
 #include <cairo.h>
 #include <wpe/wpe.h>
 
-static void drawPageBackground(cairo_t* ctx, const std::optional<WebCore::Color>& backgroundColor, const WebCore::IntRect& rect)
+static void drawPageBackground(cairo_t* ctx, const std::optional<CyberCore::Color>& backgroundColor, const CyberCore::IntRect& rect)
 {
     if (!backgroundColor || backgroundColor.value().isVisible())
         return;
 
-    auto [r, g, b, a] = backgroundColor.value().toColorTypeLossy<WebCore::SRGBA<uint8_t>>().resolved();
+    auto [r, g, b, a] = backgroundColor.value().toColorTypeLossy<CyberCore::SRGBA<uint8_t>>().resolved();
 
     cairo_set_source_rgba(ctx, r, g, b, a);
     cairo_rectangle(ctx, rect.x(), rect.y(), rect.width(), rect.height());
@@ -72,7 +72,7 @@ void WKPageHandleKeyboardEvent(WKPageRef pageRef, WKKeyboardEvent event)
     }
 
     NativeWebKeyboardEvent::HandledByInputMethod handledByInputMethod = NativeWebKeyboardEvent::HandledByInputMethod::No;
-    std::optional<Vector<WebCore::CompositionUnderline>> preeditUnderlines;
+    std::optional<Vector<CyberCore::CompositionUnderline>> preeditUnderlines;
     std::optional<WebKit::EditingRange> preeditSelectionRange;
     WebKit::toImpl(pageRef)->handleKeyboardEvent(NativeWebKeyboardEvent(&wpeEvent, ""_s, handledByInputMethod, WTFMove(preeditUnderlines), WTFMove(preeditSelectionRange)));
 }
@@ -173,7 +173,7 @@ void WKPagePaint(WKPageRef pageRef, unsigned char* surfaceData, WKSize wkSurface
     page->endPrinting();
     if (auto* drawingArea = static_cast<WebKit::DrawingAreaProxyCoordinatedGraphics*>(page->drawingArea())) {
         // FIXME: We should port WebKit1's rect coalescing logic here.
-        WebCore::Region unpaintedRegion;
+        CyberCore::Region unpaintedRegion;
         drawingArea->paint(ctx, paintRect, unpaintedRegion);
 
         for (const auto& rect : unpaintedRegion.rects())

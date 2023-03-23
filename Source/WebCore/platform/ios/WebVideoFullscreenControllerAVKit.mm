@@ -39,7 +39,7 @@
 #import "VideoFullscreenChangeObserver.h"
 #import "VideoFullscreenInterfaceAVKit.h"
 #import "VideoFullscreenModelVideoElement.h"
-#import "WebCoreThreadRun.h"
+#import "CyberCoreThreadRun.h"
 #import <QuartzCore/CoreAnimation.h>
 #import <UIKit/UIView.h>
 #import <pal/spi/cocoa/QuartzCoreSPI.h>
@@ -48,22 +48,22 @@
 
 #import <pal/ios/UIKitSoftLink.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 #if !(ENABLE(VIDEO_PRESENTATION_MODE) && HAVE(AVKIT))
 
 @implementation WebVideoFullscreenController
-- (void)setVideoElement:(NakedPtr<WebCore::HTMLVideoElement>)videoElement
+- (void)setVideoElement:(NakedPtr<CyberCore::HTMLVideoElement>)videoElement
 {
     UNUSED_PARAM(videoElement);
 }
 
-- (NakedPtr<WebCore::HTMLVideoElement>)videoElement
+- (NakedPtr<CyberCore::HTMLVideoElement>)videoElement
 {
     return nullptr;
 }
 
-- (void)enterFullscreen:(UIView *)view mode:(WebCore::HTMLMediaElementEnums::VideoFullscreenMode)mode
+- (void)enterFullscreen:(UIView *)view mode:(CyberCore::HTMLMediaElementEnums::VideoFullscreenMode)mode
 {
     UNUSED_PARAM(view);
     UNUSED_PARAM(mode);
@@ -264,7 +264,7 @@ void VideoFullscreenControllerContext::requestVideoContentLayer()
 #if PLATFORM(IOS_FAMILY)
     ASSERT(isUIThread());
     WebThreadRun([protectedThis = Ref { *this }, this, videoFullscreenLayer = retainPtr([m_videoFullscreenView layer])] () mutable {
-        [videoFullscreenLayer setBackgroundColor:cachedCGColor(WebCore::Color::transparentBlack).get()];
+        [videoFullscreenLayer setBackgroundColor:cachedCGColor(CyberCore::Color::transparentBlack).get()];
         m_fullscreenModel->setVideoFullscreenLayer(videoFullscreenLayer.get(), [protectedThis = WTFMove(protectedThis), this] () mutable {
             RunLoop::main().dispatch([protectedThis = WTFMove(protectedThis), this] {
                 if (!m_interface)
@@ -284,7 +284,7 @@ void VideoFullscreenControllerContext::returnVideoContentLayer()
 #if PLATFORM(IOS_FAMILY)
     ASSERT(isUIThread());
     WebThreadRun([protectedThis = Ref { *this }, this, videoFullscreenLayer = retainPtr([m_videoFullscreenView layer])] () mutable {
-        [videoFullscreenLayer setBackgroundColor:cachedCGColor(WebCore::Color::transparentBlack).get()];
+        [videoFullscreenLayer setBackgroundColor:cachedCGColor(CyberCore::Color::transparentBlack).get()];
         m_fullscreenModel->setVideoFullscreenLayer(nil, [protectedThis = WTFMove(protectedThis), this] () mutable {
             RunLoop::main().dispatch([protectedThis = WTFMove(protectedThis), this] {
                 if (!m_interface)
@@ -308,7 +308,7 @@ void VideoFullscreenControllerContext::didSetupFullscreen()
     });
 #else
     WebThreadRun([protectedThis = Ref { *this }, this, videoFullscreenLayer = retainPtr([m_videoFullscreenView layer])] () mutable {
-        [videoFullscreenLayer setBackgroundColor:cachedCGColor(WebCore::Color::transparentBlack)];
+        [videoFullscreenLayer setBackgroundColor:cachedCGColor(CyberCore::Color::transparentBlack)];
         m_fullscreenModel->setVideoFullscreenLayer(videoFullscreenLayer.get(), [protectedThis = WTFMove(protectedThis), this] () mutable {
             RunLoop::main().dispatch([protectedThis = WTFMove(protectedThis), this] {
                 m_interface->enterFullscreen();

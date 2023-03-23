@@ -23,7 +23,7 @@
 #include <wtf/WeakPtr.h>
 #include <wtf/text/AtomString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class CanWrap : bool { No, Yes };
 enum class DidWrap : bool { No, Yes };
@@ -119,9 +119,9 @@ bool isParentTargetFrameName(StringView);
 bool isSelfTargetFrameName(StringView);
 bool isTopTargetFrameName(StringView);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #if ENABLE(TREE_DEBUGGING)
-// Outside the WebCore namespace for ease of invocation from the debugger.
-WEBCORE_EXPORT void showFrameTree(const WebCore::AbstractFrame*);
+// Outside the CyberCore namespace for ease of invocation from the debugger.
+WEBCORE_EXPORT void showFrameTree(const CyberCore::AbstractFrame*);
 #endif

@@ -38,13 +38,13 @@
 #import <CyberCore/WebScriptObjectPrivate.h>
 #import <CyberCore/WindowProxy.h>
 
-#define IMPL reinterpret_cast<WebCore::Frame*>(_internal)
+#define IMPL reinterpret_cast<CyberCore::Frame*>(_internal)
 
 @implementation DOMAbstractView
 
 - (void)dealloc
 {
-    WebCoreThreadViolationCheckRoundOne();
+    CyberCoreThreadViolationCheckRoundOne();
     [super dealloc];
 }
 
@@ -57,7 +57,7 @@
 
 @end
 
-@implementation DOMAbstractView (WebKitLegacyInternal)
+@implementation DOMAbstractView (CyberKitLegacyInternal)
 
 - (void)_disconnectFrame
 {
@@ -68,22 +68,22 @@
 
 @end
 
-WebCore::DOMWindow* core(DOMAbstractView *wrapper)
+CyberCore::DOMWindow* core(DOMAbstractView *wrapper)
 {
     if (!wrapper)
         return 0;
     if (!wrapper->_internal)
         return 0;
-    return reinterpret_cast<WebCore::Frame*>(wrapper->_internal)->document()->domWindow();
+    return reinterpret_cast<CyberCore::Frame*>(wrapper->_internal)->document()->domWindow();
 }
 
-DOMAbstractView *kit(WebCore::DOMWindow* value)
+DOMAbstractView *kit(CyberCore::DOMWindow* value)
 {
-    WebCoreThreadViolationCheckRoundOne();
+    CyberCoreThreadViolationCheckRoundOne();
 
     if (!value)
         return nil;
-    WebCore::Frame* frame = value->frame();
+    CyberCore::Frame* frame = value->frame();
     if (!frame)
         return nil;
     if (DOMAbstractView *wrapper = getDOMWrapper(frame))
@@ -94,15 +94,15 @@ DOMAbstractView *kit(WebCore::DOMWindow* value)
     return wrapper.autorelease();
 }
 
-DOMAbstractView *kit(WebCore::AbstractDOMWindow* value)
+DOMAbstractView *kit(CyberCore::AbstractDOMWindow* value)
 {
-    if (!is<WebCore::DOMWindow>(value))
+    if (!is<CyberCore::DOMWindow>(value))
         return nil;
 
-    return kit(downcast<WebCore::DOMWindow>(value));
+    return kit(downcast<CyberCore::DOMWindow>(value));
 }
 
-DOMAbstractView *kit(WebCore::WindowProxy* windowProxy)
+DOMAbstractView *kit(CyberCore::WindowProxy* windowProxy)
 {
     if (!windowProxy)
         return nil;
@@ -110,7 +110,7 @@ DOMAbstractView *kit(WebCore::WindowProxy* windowProxy)
     return kit(windowProxy->window());
 }
 
-WebCore::WindowProxy* toWindowProxy(DOMAbstractView *view)
+CyberCore::WindowProxy* toWindowProxy(DOMAbstractView *view)
 {
     auto* window = core(view);
     if (!window || !window->frame())

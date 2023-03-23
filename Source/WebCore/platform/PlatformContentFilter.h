@@ -30,7 +30,7 @@
 #include <wtf/Ref.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ContentFilterUnblockHandler;
 class FragmentedSharedBuffer;
@@ -69,6 +69,6 @@ protected:
     State m_state { State::Filtering };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PlatformContentFilter_h

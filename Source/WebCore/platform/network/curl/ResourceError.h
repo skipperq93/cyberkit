@@ -28,7 +28,7 @@
 
 #include "ResourceErrorBase.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ResourceError : public ResourceErrorBase {
 public:
@@ -56,4 +56,4 @@ private:
     void doPlatformIsolatedCopy(const ResourceError&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -30,7 +30,7 @@
 #include "SVGElementTypeHelpers.h"
 #include "SVGSVGElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 RefPtr<SVGSVGElement> DocumentSVG::rootElement(const Document& document)
 {

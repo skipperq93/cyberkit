@@ -28,7 +28,7 @@
 
 #if PLATFORM(MAC)
 
-namespace WebCore {
+namespace CyberCore {
 
 SearchControlMac::SearchControlMac(ControlPart& part, ControlFactoryMac& controlFactory, NSSearchFieldCell *searchFieldCell)
     : ControlMac(part, controlFactory)
@@ -49,6 +49,6 @@ void SearchControlMac::updateCellStates(const FloatRect& rect, const ControlStyl
     updateFocusedState(m_searchFieldCell.get(), style);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(MAC)

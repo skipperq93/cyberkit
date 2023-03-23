@@ -38,7 +38,7 @@
 
 typedef struct __CVBuffer *CVPixelBufferRef;
 
-namespace WebCore {
+namespace CyberCore {
 
 class FloatRect;
 class GraphicsContext;

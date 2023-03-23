@@ -34,7 +34,7 @@
 #include "ScrollingTreeFixedNode.h"
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScrollingTreeFixedNodeNicosia final : public ScrollingTreeFixedNode {
 public:
@@ -54,7 +54,7 @@ private:
     RefPtr<Nicosia::CompositionLayer> m_layer;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_SCROLLING_NODE(ScrollingTreeFixedNodeNicosia, isFixedNodeNicosia())
 

@@ -32,7 +32,7 @@
 #include "FontLoadRequest.h"
 #include "FontSelectionAlgorithm.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class FontCreationContext;
 
@@ -88,6 +88,6 @@ private:
     FontLoadRequestClient* m_fontLoadRequestClient { nullptr };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_FONTLOADREQUEST(WebCore::CachedFontLoadRequest, isCachedFontLoadRequest())
+SPECIALIZE_TYPE_TRAITS_FONTLOADREQUEST(CyberCore::CachedFontLoadRequest, isCachedFontLoadRequest())

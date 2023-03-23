@@ -163,7 +163,7 @@ static inline void dispatchOnInitializationRunLoop(WKCustomProtocol* protocol, v
     CFRunLoopWakeUp(runloop);
 }
 
-void LegacyCustomProtocolManager::didFailWithError(LegacyCustomProtocolID customProtocolID, const WebCore::ResourceError& error)
+void LegacyCustomProtocolManager::didFailWithError(LegacyCustomProtocolID customProtocolID, const CyberCore::ResourceError& error)
 {
     RetainPtr<WKCustomProtocol> protocol = protocolForID(customProtocolID);
     if (!protocol)
@@ -191,7 +191,7 @@ void LegacyCustomProtocolManager::didLoadData(LegacyCustomProtocolID customProto
     });
 }
 
-void LegacyCustomProtocolManager::didReceiveResponse(LegacyCustomProtocolID customProtocolID, const WebCore::ResourceResponse& response, CacheStoragePolicy cacheStoragePolicy)
+void LegacyCustomProtocolManager::didReceiveResponse(LegacyCustomProtocolID customProtocolID, const CyberCore::ResourceResponse& response, CacheStoragePolicy cacheStoragePolicy)
 {
     RetainPtr<WKCustomProtocol> protocol = protocolForID(customProtocolID);
     if (!protocol)
@@ -217,13 +217,13 @@ void LegacyCustomProtocolManager::didFinishLoading(LegacyCustomProtocolID custom
     removeCustomProtocol(customProtocolID);
 }
 
-void LegacyCustomProtocolManager::wasRedirectedToRequest(LegacyCustomProtocolID customProtocolID, const WebCore::ResourceRequest& request, const WebCore::ResourceResponse& redirectResponse)
+void LegacyCustomProtocolManager::wasRedirectedToRequest(LegacyCustomProtocolID customProtocolID, const CyberCore::ResourceRequest& request, const CyberCore::ResourceResponse& redirectResponse)
 {
     RetainPtr<WKCustomProtocol> protocol = protocolForID(customProtocolID);
     if (!protocol)
         return;
 
-    RetainPtr<NSURLRequest> nsRequest = request.nsURLRequest(WebCore::HTTPBodyUpdatePolicy::DoNotUpdateHTTPBody);
+    RetainPtr<NSURLRequest> nsRequest = request.nsURLRequest(CyberCore::HTTPBodyUpdatePolicy::DoNotUpdateHTTPBody);
     RetainPtr<NSURLResponse> nsRedirectResponse = redirectResponse.nsURLResponse();
 
     dispatchOnInitializationRunLoop(protocol.get(), [protocol, nsRequest, nsRedirectResponse]() {

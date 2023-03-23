@@ -34,7 +34,7 @@ namespace WTF {
 class TextStream;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class IntPoint;
 
@@ -384,35 +384,35 @@ struct ScrollPositionChangeOptions {
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::ScrollIsAnimated> {
+template<> struct EnumTraits<CyberCore::ScrollIsAnimated> {
     using values = EnumValues<
-        WebCore::ScrollIsAnimated,
-        WebCore::ScrollIsAnimated::No,
-        WebCore::ScrollIsAnimated::Yes
+        CyberCore::ScrollIsAnimated,
+        CyberCore::ScrollIsAnimated::No,
+        CyberCore::ScrollIsAnimated::Yes
     >;
 };
 
-template<> struct EnumTraits<WebCore::ScrollGranularity> {
+template<> struct EnumTraits<CyberCore::ScrollGranularity> {
     using values = EnumValues<
-        WebCore::ScrollGranularity,
-        WebCore::ScrollGranularity::Line,
-        WebCore::ScrollGranularity::Page,
-        WebCore::ScrollGranularity::Document,
-        WebCore::ScrollGranularity::Pixel
+        CyberCore::ScrollGranularity,
+        CyberCore::ScrollGranularity::Line,
+        CyberCore::ScrollGranularity::Page,
+        CyberCore::ScrollGranularity::Document,
+        CyberCore::ScrollGranularity::Pixel
     >;
 };
 
-template<> struct EnumTraits<WebCore::ScrollDirection> {
+template<> struct EnumTraits<CyberCore::ScrollDirection> {
     using values = EnumValues<
-        WebCore::ScrollDirection,
-        WebCore::ScrollDirection::ScrollUp,
-        WebCore::ScrollDirection::ScrollDown,
-        WebCore::ScrollDirection::ScrollLeft,
-        WebCore::ScrollDirection::ScrollRight
+        CyberCore::ScrollDirection,
+        CyberCore::ScrollDirection::ScrollUp,
+        CyberCore::ScrollDirection::ScrollDown,
+        CyberCore::ScrollDirection::ScrollLeft,
+        CyberCore::ScrollDirection::ScrollRight
     >;
 };
 } // namespace WTF

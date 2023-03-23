@@ -24,6 +24,6 @@ headers: "APIPageHandle.h"
 
 [RefCounted, CustomHeader=True] class API::PageHandle {
     WebKit::WebPageProxyIdentifier pageProxyID()
-    WebCore::PageIdentifier webPageID()
+    CyberCore::PageIdentifier webPageID()
     bool isAutoconverting()
 };

@@ -39,8 +39,8 @@ namespace TestWebKitAPI {
 
 class ScopedSetAuxiliaryProcessTypeForTesting {
 public:
-    explicit ScopedSetAuxiliaryProcessTypeForTesting(WebCore::AuxiliaryProcessType type)
-        : m_oldType(WebCore::processType())
+    explicit ScopedSetAuxiliaryProcessTypeForTesting(CyberCore::AuxiliaryProcessType type)
+        : m_oldType(CyberCore::processType())
     {
         setAuxiliaryProcessTypeForTesting(type);
     }
@@ -49,28 +49,28 @@ public:
         setAuxiliaryProcessTypeForTesting(m_oldType);
     }
 private:
-    std::optional<WebCore::AuxiliaryProcessType> m_oldType;
+    std::optional<CyberCore::AuxiliaryProcessType> m_oldType;
 };
 
 }
 
-namespace WebCore {
+namespace CyberCore {
 
-inline std::ostream& operator<<(std::ostream& os, const WebCore::Color& value)
+inline std::ostream& operator<<(std::ostream& os, const CyberCore::Color& value)
 {
     TextStream s { TextStream::LineMode::SingleLine };
     s << value;
     return os << s.release();
 }
 
-inline std::ostream& operator<<(std::ostream& os, const WebCore::FloatSize& value)
+inline std::ostream& operator<<(std::ostream& os, const CyberCore::FloatSize& value)
 {
     TextStream s { TextStream::LineMode::SingleLine };
     s << value;
     return os << s.release();
 }
 
-inline std::ostream& operator<<(std::ostream& os, const WebCore::FloatRect& value)
+inline std::ostream& operator<<(std::ostream& os, const CyberCore::FloatRect& value)
 {
     TextStream s { TextStream::LineMode::SingleLine };
     s << value;

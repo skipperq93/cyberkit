@@ -28,7 +28,7 @@
 #include "SleepDisablerIdentifier.h"
 #include <pal/system/SleepDisabler.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SleepDisabler {
     WTF_MAKE_FAST_ALLOCATED;
@@ -44,4 +44,4 @@ private:
     PAL::SleepDisabler::Type m_type;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

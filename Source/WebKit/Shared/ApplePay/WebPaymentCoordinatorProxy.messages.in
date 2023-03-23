@@ -30,15 +30,15 @@ messages -> WebPaymentCoordinatorProxy NotRefCounted {
     CanMakePaymentsWithActiveCard(String merchantIdentifier, String domainName) -> (bool canMakePayments)
     OpenPaymentSetup(String merchantIdentifier, String domainName) -> (bool result)
 
-    ShowPaymentUI(WebCore::PageIdentifier destinationID, WebKit::WebPageProxyIdentifier webPageProxyIdentifier, String originatingURLString, Vector<String> linkIconURLStrings, WebCore::ApplePaySessionPaymentRequest paymentRequest) -> (bool result) Synchronous
-    CompleteMerchantValidation(WebCore::PaymentMerchantSession paymentMerchantSession)
-    CompleteShippingMethodSelection(std::optional<WebCore::ApplePayShippingMethodUpdate> update)
-    CompleteShippingContactSelection(std::optional<WebCore::ApplePayShippingContactUpdate> update)
-    CompletePaymentMethodSelection(std::optional<WebCore::ApplePayPaymentMethodUpdate> update)
+    ShowPaymentUI(CyberCore::PageIdentifier destinationID, WebKit::WebPageProxyIdentifier webPageProxyIdentifier, String originatingURLString, Vector<String> linkIconURLStrings, CyberCore::ApplePaySessionPaymentRequest paymentRequest) -> (bool result) Synchronous
+    CompleteMerchantValidation(CyberCore::PaymentMerchantSession paymentMerchantSession)
+    CompleteShippingMethodSelection(std::optional<CyberCore::ApplePayShippingMethodUpdate> update)
+    CompleteShippingContactSelection(std::optional<CyberCore::ApplePayShippingContactUpdate> update)
+    CompletePaymentMethodSelection(std::optional<CyberCore::ApplePayPaymentMethodUpdate> update)
 #if ENABLE(APPLE_PAY_COUPON_CODE)
-    CompleteCouponCodeChange(std::optional<WebCore::ApplePayCouponCodeUpdate> update)
+    CompleteCouponCodeChange(std::optional<CyberCore::ApplePayCouponCodeUpdate> update)
 #endif
-    CompletePaymentSession(struct WebCore::ApplePayPaymentAuthorizationResult result)
+    CompletePaymentSession(struct CyberCore::ApplePayPaymentAuthorizationResult result)
     AbortPaymentSession()
     CancelPaymentSession()
 

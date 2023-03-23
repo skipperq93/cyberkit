@@ -31,7 +31,7 @@
 namespace WebKit {
 
 struct CacheStorageRecordInformation {
-    void updateVaryHeaders(const WebCore::ResourceRequest& request, const String& varyValue)
+    void updateVaryHeaders(const CyberCore::ResourceRequest& request, const String& varyValue)
     {
         if (varyValue.isNull()) {
             hasVaryStar = false;
@@ -40,7 +40,7 @@ struct CacheStorageRecordInformation {
         }
 
         varyValue.split(',', [&](StringView view) {
-            if (!hasVaryStar && WebCore::stripLeadingAndTrailingHTTPSpaces(view) == "*"_s)
+            if (!hasVaryStar && CyberCore::stripLeadingAndTrailingHTTPSpaces(view) == "*"_s)
                 hasVaryStar = true;
             varyHeaders.add(view.toString(), request.httpHeaderField(view));
         });
@@ -66,7 +66,7 @@ struct CacheStorageRecord {
     CacheStorageRecord() = default;
     CacheStorageRecord(CacheStorageRecord&&) = default;
     CacheStorageRecord& operator=(CacheStorageRecord&&) = default;
-    CacheStorageRecord(const CacheStorageRecordInformation& info, WebCore::FetchHeaders::Guard requestHeadersGuard, const WebCore::ResourceRequest& request, WebCore::FetchOptions options, const String& referrer, WebCore::FetchHeaders::Guard responseHeadersGuard, WebCore::ResourceResponse::CrossThreadData&& responseData, uint64_t responseBodySize, WebCore::DOMCacheEngine::ResponseBody&& responseBody)
+    CacheStorageRecord(const CacheStorageRecordInformation& info, CyberCore::FetchHeaders::Guard requestHeadersGuard, const CyberCore::ResourceRequest& request, CyberCore::FetchOptions options, const String& referrer, CyberCore::FetchHeaders::Guard responseHeadersGuard, CyberCore::ResourceResponse::CrossThreadData&& responseData, uint64_t responseBodySize, CyberCore::DOMCacheEngine::ResponseBody&& responseBody)
         : info(info)
         , requestHeadersGuard(requestHeadersGuard)
         , request(request)
@@ -80,14 +80,14 @@ struct CacheStorageRecord {
     }
 
     CacheStorageRecordInformation info;
-    WebCore::FetchHeaders::Guard requestHeadersGuard;
-    WebCore::ResourceRequest request;
-    WebCore::FetchOptions options;
+    CyberCore::FetchHeaders::Guard requestHeadersGuard;
+    CyberCore::ResourceRequest request;
+    CyberCore::FetchOptions options;
     String referrer;
-    WebCore::FetchHeaders::Guard responseHeadersGuard;
-    WebCore::ResourceResponse::CrossThreadData responseData;
+    CyberCore::FetchHeaders::Guard responseHeadersGuard;
+    CyberCore::ResourceResponse::CrossThreadData responseData;
     uint64_t responseBodySize;
-    WebCore::DOMCacheEngine::ResponseBody responseBody;
+    CyberCore::DOMCacheEngine::ResponseBody responseBody;
 };
 
 }

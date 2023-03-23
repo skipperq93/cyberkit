@@ -36,7 +36,7 @@
 #include "WorkletGlobalScope.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(WorkerOrWorkletGlobalScope);
 
@@ -129,4 +129,4 @@ void WorkerOrWorkletGlobalScope::postTaskForMode(Task&& task, const String& mode
     workerOrWorkletThread()->runLoop().postTaskForMode(WTFMove(task), mode);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

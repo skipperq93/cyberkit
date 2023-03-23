@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -21,28 +21,28 @@
 #error "Only <webkitdom/webkitdom.h> can be included directly."
 #endif
 
-#ifndef WebKitDOMBlob_h
-#define WebKitDOMBlob_h
+#ifndef CyberKitDOMBlob_h
+#define CyberKitDOMBlob_h
 
 #include <glib-object.h>
-#include <webkitdom/WebKitDOMObject.h>
+#include <webkitdom/CyberKitDOMObject.h>
 #include <webkitdom/webkitdomdefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_DOM_TYPE_BLOB            (webkit_dom_blob_get_type())
-#define WEBKIT_DOM_BLOB(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_BLOB, WebKitDOMBlob))
-#define WEBKIT_DOM_BLOB_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_BLOB, WebKitDOMBlobClass)
+#define WEBKIT_DOM_BLOB(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_BLOB, CyberKitDOMBlob))
+#define WEBKIT_DOM_BLOB_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_BLOB, CyberKitDOMBlobClass)
 #define WEBKIT_DOM_IS_BLOB(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_DOM_TYPE_BLOB))
 #define WEBKIT_DOM_IS_BLOB_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_DOM_TYPE_BLOB))
-#define WEBKIT_DOM_BLOB_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_BLOB, WebKitDOMBlobClass))
+#define WEBKIT_DOM_BLOB_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_BLOB, CyberKitDOMBlobClass))
 
-struct _WebKitDOMBlob {
-    WebKitDOMObject parent_instance;
+struct _CyberKitDOMBlob {
+    CyberKitDOMObject parent_instance;
 };
 
-struct _WebKitDOMBlobClass {
-    WebKitDOMObjectClass parent_class;
+struct _CyberKitDOMBlobClass {
+    CyberKitDOMObjectClass parent_class;
 };
 
 WEBKIT_DEPRECATED GType
@@ -50,15 +50,15 @@ webkit_dom_blob_get_type(void);
 
 /**
  * webkit_dom_blob_get_size:
- * @self: A #WebKitDOMBlob
+ * @self: A #CyberKitDOMBlob
  *
  * Returns: A #guint64
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED guint64
-webkit_dom_blob_get_size(WebKitDOMBlob* self);
+webkit_dom_blob_get_size(CyberKitDOMBlob* self);
 
 G_END_DECLS
 
-#endif /* WebKitDOMBlob_h */
+#endif /* CyberKitDOMBlob_h */

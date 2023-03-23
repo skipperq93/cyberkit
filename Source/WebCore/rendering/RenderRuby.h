@@ -33,7 +33,7 @@
 #include "RenderBlockFlow.h"
 #include "RenderInline.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // Following the HTML 5 spec, the box object model for a <ruby> element allows several runs of ruby
 // bases with their respective ruby texts looks as follows:
@@ -85,7 +85,7 @@ private:
 inline bool isRuby(const RenderObject& renderer) { return (is<RenderRubyAsInline>(renderer) || is<RenderRubyAsBlock>(renderer)); }
 inline bool isRuby(const RenderObject* renderer) { return (renderer && isRuby(*renderer)); }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderRubyAsInline, isRubyInline())
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderRubyAsBlock, isRubyBlock())

@@ -29,7 +29,7 @@
 #include "LengthPoint.h"
 #include "LengthSize.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 int intValueForLength(const Length& length, LayoutUnit maximumValue)
 {
@@ -136,4 +136,4 @@ FloatPoint floatPointForLengthPoint(const LengthPoint& lengthPoint, const FloatS
     return { floatValueForLength(lengthPoint.x(), boxSize.width()), floatValueForLength(lengthPoint.y(), boxSize.height()) };
 }
 
-} // namespace WebCore
+} // namespace CyberCore

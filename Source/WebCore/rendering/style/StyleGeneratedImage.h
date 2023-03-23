@@ -29,7 +29,7 @@
 #include <wtf/HashCountedSet.h>
 #include <wtf/HashMap.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSValue;
 class CachedImage;
@@ -80,6 +80,6 @@ protected:
     HashMap<FloatSize, std::unique_ptr<CachedGeneratedImage>> m_images;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_STYLE_IMAGE(StyleGeneratedImage, isGeneratedImage)

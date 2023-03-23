@@ -38,7 +38,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/StackStats.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -246,4 +246,4 @@ RenderPtr<RenderTableRow> RenderTableRow::createAnonymousWithParentRenderer(cons
     return RenderTableRow::createTableRowWithStyle(parent.document(), parent.style());
 }
 
-} // namespace WebCore
+} // namespace CyberCore

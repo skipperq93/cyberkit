@@ -37,7 +37,7 @@
 #include "RenderBox.h"
 #include "RenderTheme.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 BorderPainter::BorderPainter(const RenderElement& renderer, const PaintInfo& paintInfo)
     : m_renderer(renderer)

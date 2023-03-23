@@ -30,9 +30,9 @@
 #include "SharedStringHashTableReadOnly.h"
 #include <CyberCore/VisitedLinkStore.h>
 
-namespace WebKit {
+namespace CyberKit {
 
-class VisitedLinkTableController final : public WebCore::VisitedLinkStore , private IPC::MessageReceiver {
+class VisitedLinkTableController final : public CyberCore::VisitedLinkStore , private IPC::MessageReceiver {
 public:
     static Ref<VisitedLinkTableController> getOrCreate(uint64_t identifier);
     virtual ~VisitedLinkTableController();
@@ -40,15 +40,15 @@ public:
 private:
     explicit VisitedLinkTableController(uint64_t identifier);
 
-    // WebCore::VisitedLinkStore.
-    bool isLinkVisited(WebCore::Page&, WebCore::SharedStringHash, const URL& baseURL, const AtomString& attributeURL) override;
-    void addVisitedLink(WebCore::Page&, WebCore::SharedStringHash) override;
+    // CyberCore::VisitedLinkStore.
+    bool isLinkVisited(CyberCore::Page&, CyberCore::SharedStringHash, const URL& baseURL, const AtomString& attributeURL) override;
+    void addVisitedLink(CyberCore::Page&, CyberCore::SharedStringHash) override;
 
     // IPC::MessageReceiver.
     void didReceiveMessage(IPC::Connection&, IPC::Decoder&) override;
 
     void setVisitedLinkTable(const SharedMemory::Handle&);
-    void visitedLinkStateChanged(const Vector<WebCore::SharedStringHash>&);
+    void visitedLinkStateChanged(const Vector<CyberCore::SharedStringHash>&);
     void allVisitedLinkStateChanged();
     void removeAllVisitedLinks();
 
@@ -56,4 +56,4 @@ private:
     SharedStringHashTableReadOnly m_visitedLinkTable;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

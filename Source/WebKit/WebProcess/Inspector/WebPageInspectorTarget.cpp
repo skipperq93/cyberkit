@@ -31,7 +31,7 @@
 #include <CyberCore/InspectorController.h>
 #include <CyberCore/Page.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace Inspector;
 
@@ -69,10 +69,10 @@ void WebPageInspectorTarget::sendMessageToTargetBackend(const String& message)
         m_page.corePage()->inspectorController().dispatchMessageFromFrontend(message);
 }
 
-String WebPageInspectorTarget::toTargetID(WebCore::PageIdentifier pageID)
+String WebPageInspectorTarget::toTargetID(CyberCore::PageIdentifier pageID)
 {
     return makeString("page-", pageID.toUInt64());
 }
 
 
-} // namespace WebKit
+} // namespace CyberKit

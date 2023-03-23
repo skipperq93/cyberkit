@@ -26,7 +26,7 @@
 #include "config.h"
 #include "WillChangeData.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 bool WillChangeData::operator==(const WillChangeData& other) const
 {
@@ -174,4 +174,4 @@ WillChangeData::FeaturePropertyPair WillChangeData::featureAt(size_t index) cons
     return m_animatableFeatures[index].featurePropertyPair();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

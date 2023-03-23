@@ -41,7 +41,7 @@ namespace WebKit {
 
 namespace {
 
-class PlatformLayerDisplayDelegate final : public WebCore::GraphicsLayerContentsDisplayDelegate {
+class PlatformLayerDisplayDelegate final : public CyberCore::GraphicsLayerContentsDisplayDelegate {
 public:
     static Ref<PlatformLayerDisplayDelegate> create(PlatformLayerContainer&& platformLayer)
     {
@@ -66,12 +66,12 @@ class RemoteGraphicsContextGLProxyWC final : public RemoteGraphicsContextGLProxy
 public:
     // RemoteGraphicsContextGLProxy overrides.
     void prepareForDisplay() final;
-    RefPtr<WebCore::GraphicsLayerContentsDisplayDelegate> layerContentsDisplayDelegate() final { return m_layerContentsDisplayDelegate.ptr(); }
+    RefPtr<CyberCore::GraphicsLayerContentsDisplayDelegate> layerContentsDisplayDelegate() final { return m_layerContentsDisplayDelegate.ptr(); }
 #if ENABLE(MEDIA_STREAM)
-    RefPtr<WebCore::VideoFrame> paintCompositedResultsToVideoFrame() final { return nullptr; }
+    RefPtr<CyberCore::VideoFrame> paintCompositedResultsToVideoFrame() final { return nullptr; }
 #endif
 private:
-    RemoteGraphicsContextGLProxyWC(IPC::Connection& connection, Ref<IPC::StreamClientConnection> streamConnection, const WebCore::GraphicsContextGLAttributes& attributes
+    RemoteGraphicsContextGLProxyWC(IPC::Connection& connection, Ref<IPC::StreamClientConnection> streamConnection, const CyberCore::GraphicsContextGLAttributes& attributes
 #if ENABLE(VIDEO)
     , Ref<RemoteVideoFrameObjectHeapProxy>&& videoFrameObjectHeapProxy
 #endif
@@ -106,7 +106,7 @@ void RemoteGraphicsContextGLProxyWC::prepareForDisplay()
 
 }
 
-Ref<RemoteGraphicsContextGLProxy> RemoteGraphicsContextGLProxy::platformCreate(IPC::Connection& connection, Ref<IPC::StreamClientConnection> streamConnection, const WebCore::GraphicsContextGLAttributes& attributes
+Ref<RemoteGraphicsContextGLProxy> RemoteGraphicsContextGLProxy::platformCreate(IPC::Connection& connection, Ref<IPC::StreamClientConnection> streamConnection, const CyberCore::GraphicsContextGLAttributes& attributes
 #if ENABLE(VIDEO)
     , Ref<RemoteVideoFrameObjectHeapProxy>&& videoFrameObjectHeapProxy
 #endif

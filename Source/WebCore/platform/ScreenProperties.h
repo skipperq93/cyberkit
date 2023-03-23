@@ -33,7 +33,7 @@
 #include <wtf/RetainPtr.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ScreenData {
     FloatRect screenAvailableRect;
@@ -63,4 +63,4 @@ struct ScreenProperties {
     ScreenDataMap screenDataMap;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

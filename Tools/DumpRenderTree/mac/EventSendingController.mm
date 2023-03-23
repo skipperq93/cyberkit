@@ -38,7 +38,7 @@
 #import "DumpRenderTreeFileDraggingSource.h"
 #import "DumpRenderTreePasteboard.h"
 #import "ModifierKeys.h"
-#import "WebCoreTestSupport.h"
+#import "CyberCoreTestSupport.h"
 #import <CyberKit/DOMPrivate.h>
 #import <CyberKit/WebViewPrivate.h>
 #import <functional>
@@ -136,7 +136,7 @@ static RetainPtr<NSMutableArray>& savedMouseEvents()
 
 #if !PLATFORM(IOS_FAMILY)
 @interface WebView (WebViewInternalForTesting)
-- (WebCore::Frame*)_mainCoreFrame;
+- (CyberCore::Frame*)_mainCoreFrame;
 @end
 #endif
 
@@ -1279,7 +1279,7 @@ static NSUInteger swizzledEventPressedMouseButtons()
 - (void)monitorWheelEventsWithOptions:(WebScriptObject*)options
 {
 #if PLATFORM(MAC)
-    WebCore::Frame* frame = [[mainFrame webView] _mainCoreFrame];
+    CyberCore::Frame* frame = [[mainFrame webView] _mainCoreFrame];
     if (!frame)
         return;
 
@@ -1299,7 +1299,7 @@ static NSUInteger swizzledEventPressedMouseButtons()
     @catch(NSException *) {
     }
 
-    WebCoreTestSupport::monitorWheelEvents(*frame, resetLatching);
+    CyberCoreTestSupport::monitorWheelEvents(*frame, resetLatching);
 #endif
 }
 
@@ -1310,12 +1310,12 @@ static NSUInteger swizzledEventPressedMouseButtons()
     if (!jsCallbackFunction)
         return;
 
-    WebCore::Frame* frame = [[mainFrame webView] _mainCoreFrame];
+    CyberCore::Frame* frame = [[mainFrame webView] _mainCoreFrame];
     if (!frame)
         return;
 
     JSGlobalContextRef globalContext = [mainFrame globalContext];
-    WebCoreTestSupport::setWheelEventMonitorTestCallbackAndStartMonitoring(_sentWheelPhaseEndOrCancel, _sentMomentumPhaseEnd, *frame, globalContext, jsCallbackFunction);
+    CyberCoreTestSupport::setWheelEventMonitorTestCallbackAndStartMonitoring(_sentWheelPhaseEndOrCancel, _sentMomentumPhaseEnd, *frame, globalContext, jsCallbackFunction);
 #endif
 }
 

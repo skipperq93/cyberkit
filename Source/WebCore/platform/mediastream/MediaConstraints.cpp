@@ -36,7 +36,7 @@
 #include "RealtimeMediaSourceSupportedConstraints.h"
 #include <wtf/StdLibExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 const String& StringConstraint::find(const Function<bool(const String&)>& filter) const
 {

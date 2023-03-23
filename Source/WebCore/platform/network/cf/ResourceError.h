@@ -31,7 +31,7 @@
 
 OBJC_CLASS NSError;
 
-namespace WebCore {
+namespace CyberCore {
 
 class ResourceError : public ResourceErrorBase {
 public:
@@ -77,4 +77,4 @@ private:
     bool m_compromisedNetworkConnectionIntegrity { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -25,7 +25,7 @@
 #include "AnimationUtilities.h"
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<SkewTransformOperation> SkewTransformOperation::create(double angleX, double angleY, TransformOperation::Type type)
 {
@@ -51,7 +51,7 @@ bool SkewTransformOperation::operator==(const TransformOperation& other) const
 Ref<TransformOperation> SkewTransformOperation::blend(const TransformOperation* from, const BlendingContext& context, bool blendToIdentity)
 {
     if (blendToIdentity)
-        return SkewTransformOperation::create(WebCore::blend(m_angleX, 0.0, context), WebCore::blend(m_angleY, 0.0, context), type());
+        return SkewTransformOperation::create(CyberCore::blend(m_angleX, 0.0, context), CyberCore::blend(m_angleY, 0.0, context), type());
 
     auto outputType = sharedPrimitiveType(from);
     if (!outputType)
@@ -60,7 +60,7 @@ Ref<TransformOperation> SkewTransformOperation::blend(const TransformOperation* 
     const SkewTransformOperation* fromOp = downcast<SkewTransformOperation>(from);
     double fromAngleX = fromOp ? fromOp->m_angleX : 0;
     double fromAngleY = fromOp ? fromOp->m_angleY : 0;
-    return SkewTransformOperation::create(WebCore::blend(fromAngleX, m_angleX, context), WebCore::blend(fromAngleY, m_angleY, context), *outputType);
+    return SkewTransformOperation::create(CyberCore::blend(fromAngleX, m_angleX, context), CyberCore::blend(fromAngleY, m_angleY, context), *outputType);
 }
 
 void SkewTransformOperation::dump(TextStream& ts) const
@@ -68,4 +68,4 @@ void SkewTransformOperation::dump(TextStream& ts) const
     ts << type() << "(" << TextStream::FormatNumberRespectingIntegers(m_angleX) << "deg, " << TextStream::FormatNumberRespectingIntegers(m_angleY) << "deg)";
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -27,7 +27,7 @@
 
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace DownloadBundle {
 
 bool appendResumeData(const uint8_t*, uint32_t, const String& bundlePath);
@@ -35,4 +35,4 @@ bool extractResumeData(const String& bundlePath, Vector<uint8_t>& resumeData);
 WEBCORE_EXPORT const String& fileExtension();
 
 } // namespace DownloadBundle
-} // namespace WebCore
+} // namespace CyberCore

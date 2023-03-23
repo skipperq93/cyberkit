@@ -30,12 +30,12 @@
 #include "BackgroundFetchRegistration.h"
 #include "ExtendableEventInit.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct BackgroundFetchEventInit : ExtendableEventInit {
     RefPtr<BackgroundFetchRegistration> registration;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

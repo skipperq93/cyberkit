@@ -35,7 +35,7 @@ OBJC_CLASS AVContentKeyRequest;
 OBJC_CLASS AVContentKeySession;
 OBJC_CLASS WebCDMSessionAVContentKeySessionDelegate;
 
-namespace WebCore {
+namespace CyberCore {
 
 class CDMPrivateMediaSourceAVFObjC;
 

@@ -31,7 +31,7 @@
 #include "Credential.h"
 #include "NotImplemented.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Credential CredentialStorage::getFromPersistentStorage(const ProtectionSpace& /* protectionSpace */)
 {
@@ -39,6 +39,6 @@ Credential CredentialStorage::getFromPersistentStorage(const ProtectionSpace& /*
     return Credential();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

@@ -48,9 +48,9 @@ struct AudioTrackPrivateRemoteConfiguration;
 
 class RemoteAudioTrackProxy final
     : public ThreadSafeRefCounted<RemoteAudioTrackProxy, WTF::DestructionThread::Main>
-    , private WebCore::AudioTrackPrivateClient {
+    , private CyberCore::AudioTrackPrivateClient {
 public:
-    static Ref<RemoteAudioTrackProxy> create(GPUConnectionToWebProcess& connectionToWebProcess, TrackPrivateRemoteIdentifier identifier, WebCore::AudioTrackPrivate& trackPrivate, WebCore::MediaPlayerIdentifier mediaPlayerIdentifier)
+    static Ref<RemoteAudioTrackProxy> create(GPUConnectionToWebProcess& connectionToWebProcess, TrackPrivateRemoteIdentifier identifier, CyberCore::AudioTrackPrivate& trackPrivate, CyberCore::MediaPlayerIdentifier mediaPlayerIdentifier)
     {
         return adoptRef(*new RemoteAudioTrackProxy(connectionToWebProcess, identifier, trackPrivate, mediaPlayerIdentifier));
     }
@@ -65,11 +65,11 @@ public:
     }
 
 private:
-    RemoteAudioTrackProxy(GPUConnectionToWebProcess&, TrackPrivateRemoteIdentifier, WebCore::AudioTrackPrivate&, WebCore::MediaPlayerIdentifier);
+    RemoteAudioTrackProxy(GPUConnectionToWebProcess&, TrackPrivateRemoteIdentifier, CyberCore::AudioTrackPrivate&, CyberCore::MediaPlayerIdentifier);
 
     // AudioTrackPrivateClient
     void enabledChanged(bool) final;
-    void configurationChanged(const WebCore::PlatformAudioTrackConfiguration&) final;
+    void configurationChanged(const CyberCore::PlatformAudioTrackConfiguration&) final;
 
     // TrackPrivateBaseClient
     void idChanged(const AtomString&) final;
@@ -82,8 +82,8 @@ private:
 
     WeakPtr<GPUConnectionToWebProcess> m_connectionToWebProcess;
     TrackPrivateRemoteIdentifier m_identifier;
-    Ref<WebCore::AudioTrackPrivate> m_trackPrivate;
-    WebCore::MediaPlayerIdentifier m_mediaPlayerIdentifier;
+    Ref<CyberCore::AudioTrackPrivate> m_trackPrivate;
+    CyberCore::MediaPlayerIdentifier m_mediaPlayerIdentifier;
     bool m_enabled { false };
 };
 

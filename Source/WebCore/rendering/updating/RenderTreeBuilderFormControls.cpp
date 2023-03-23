@@ -30,7 +30,7 @@
 #include "RenderMenuList.h"
 #include "RenderTreeBuilderBlock.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 RenderTreeBuilder::FormControls::FormControls(RenderTreeBuilder& builder)
     : m_builder(builder)

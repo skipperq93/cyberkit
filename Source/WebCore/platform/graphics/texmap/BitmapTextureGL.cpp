@@ -45,7 +45,7 @@
 #define GL_UNSIGNED_INT_8_8_8_8_REV 0x8367
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 BitmapTextureGL* toBitmapTextureGL(BitmapTexture* texture)
 {
@@ -373,6 +373,6 @@ void BitmapTextureGL::copyFromExternalTexture(GLuint sourceTextureID)
     glDeleteFramebuffers(1, &copyFbo);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(TEXTURE_MAPPER_GL)

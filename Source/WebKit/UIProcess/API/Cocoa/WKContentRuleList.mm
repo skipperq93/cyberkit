@@ -28,13 +28,13 @@
 
 #import "WKError.h"
 #import "WebCompiledContentRuleList.h"
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 
 @implementation WKContentRuleList
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainRunLoop(WKContentRuleList.class, self))
+    if (CyberCoreObjCScheduleDeallocateOnMainRunLoop(WKContentRuleList.class, self))
         return;
 
     _contentRuleList->~ContentRuleList();

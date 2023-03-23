@@ -105,7 +105,7 @@
 #include "SelectionGeometry.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 bool isDraggableLink(const Element& element)
 {
@@ -1615,4 +1615,4 @@ bool DragController::shouldUseCachedImageForDragImage(const Image& image) const
 
 #endif // ENABLE(DRAG_SUPPORT)
 
-} // namespace WebCore
+} // namespace CyberCore

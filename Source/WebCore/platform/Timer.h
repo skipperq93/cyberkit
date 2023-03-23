@@ -36,10 +36,10 @@
 #include <wtf/WeakPtr.h>
 
 #if PLATFORM(IOS_FAMILY)
-#include "WebCoreThread.h"
+#include "CyberCoreThread.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class TimerBase {
     WTF_MAKE_NONCOPYABLE(TimerBase);

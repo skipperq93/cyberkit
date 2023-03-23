@@ -30,7 +30,7 @@
 @class WKWebView;
 @protocol WKShareSheetDelegate;
 
-namespace WebCore {
+namespace CyberCore {
 struct ShareDataWithParsedURL;
 }
 
@@ -38,7 +38,7 @@ struct ShareDataWithParsedURL;
 
 - (instancetype)initWithView:(WKWebView *)view;
 
-- (void)presentWithParameters:(const WebCore::ShareDataWithParsedURL&)data inRect:(std::optional<WebCore::FloatRect>)rect completionHandler:(WTF::CompletionHandler<void(bool)>&&)completionHandler;
+- (void)presentWithParameters:(const CyberCore::ShareDataWithParsedURL&)data inRect:(std::optional<CyberCore::FloatRect>)rect completionHandler:(WTF::CompletionHandler<void(bool)>&&)completionHandler;
 - (void)dismiss;
 
 @property (nonatomic, weak) id <WKShareSheetDelegate> delegate;

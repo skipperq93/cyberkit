@@ -38,7 +38,7 @@ WKTypeID WKUserScriptGetTypeID()
 
 WKUserScriptRef WKUserScriptCreateWithSource(WKStringRef sourceRef, _WKUserScriptInjectionTime injectionTime, bool forMainFrameOnly)
 {
-    return toAPI(&API::UserScript::create(WebCore::UserScript { toWTFString(sourceRef), API::UserScript::generateUniqueURL(), { }, { }, toUserScriptInjectionTime(injectionTime), forMainFrameOnly ? WebCore::UserContentInjectedFrames::InjectInTopFrameOnly : WebCore::UserContentInjectedFrames::InjectInAllFrames, WebCore::WaitForNotificationBeforeInjecting::No }, API::ContentWorld::pageContentWorld()).leakRef());
+    return toAPI(&API::UserScript::create(CyberCore::UserScript { toWTFString(sourceRef), API::UserScript::generateUniqueURL(), { }, { }, toUserScriptInjectionTime(injectionTime), forMainFrameOnly ? CyberCore::UserContentInjectedFrames::InjectInTopFrameOnly : CyberCore::UserContentInjectedFrames::InjectInAllFrames, CyberCore::WaitForNotificationBeforeInjecting::No }, API::ContentWorld::pageContentWorld()).leakRef());
 }
 
 WKStringRef WKUserScriptCopySource(WKUserScriptRef userScriptRef)
@@ -53,5 +53,5 @@ _WKUserScriptInjectionTime WKUserScriptGetInjectionTime(WKUserScriptRef userScri
 
 bool WKUserScriptGetMainFrameOnly(WKUserScriptRef userScriptRef)
 {
-    return toImpl(userScriptRef)->userScript().injectedFrames() == WebCore::UserContentInjectedFrames::InjectInTopFrameOnly;
+    return toImpl(userScriptRef)->userScript().injectedFrames() == CyberCore::UserContentInjectedFrames::InjectInTopFrameOnly;
 }

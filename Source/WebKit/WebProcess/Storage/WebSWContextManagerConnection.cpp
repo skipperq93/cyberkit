@@ -42,7 +42,7 @@
 #include "WebBroadcastChannelRegistry.h"
 #include "WebCacheStorageProvider.h"
 #include "WebCompiledContentRuleListData.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebDatabaseProvider.h"
 #include "WebDocumentLoader.h"
 #include "WebFrameLoaderClient.h"
@@ -76,9 +76,9 @@
 #include <CyberCore/LegacyPreviewLoaderClient.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 using namespace PAL;
-using namespace WebCore;
+using namespace CyberCore;
 
 WebSWContextManagerConnection::WebSWContextManagerConnection(Ref<IPC::Connection>&& connection, RegistrableDomain&& registrableDomain, std::optional<ScriptExecutionContextIdentifier> serviceWorkerPageIdentifier, PageGroupIdentifier pageGroupID, WebPageProxyIdentifier webPageProxyID, PageIdentifier pageID, const WebPreferencesStore& store, RemoteWorkerInitializationData&& initializationData)
     : m_connectionToNetworkProcess(WTFMove(connection))
@@ -138,7 +138,7 @@ void WebSWContextManagerConnection::updatePreferencesStore(WebPreferencesStore&&
     m_preferencesStore = WTFMove(store);
 }
 
-void WebSWContextManagerConnection::updateAppInitiatedValue(ServiceWorkerIdentifier serviceWorkerIdentifier, WebCore::LastNavigationWasAppInitiated lastNavigationWasAppInitiated)
+void WebSWContextManagerConnection::updateAppInitiatedValue(ServiceWorkerIdentifier serviceWorkerIdentifier, CyberCore::LastNavigationWasAppInitiated lastNavigationWasAppInitiated)
 {
     if (!isMainRunLoop()) {
         callOnMainRunLoop([protectedThis = Ref { *this }, serviceWorkerIdentifier, lastNavigationWasAppInitiated]() mutable {
@@ -148,7 +148,7 @@ void WebSWContextManagerConnection::updateAppInitiatedValue(ServiceWorkerIdentif
     }
 
     if (auto* serviceWorkerThreadProxy = SWContextManager::singleton().serviceWorkerThreadProxy(serviceWorkerIdentifier))
-        serviceWorkerThreadProxy->setLastNavigationWasAppInitiated(lastNavigationWasAppInitiated == WebCore::LastNavigationWasAppInitiated::Yes);
+        serviceWorkerThreadProxy->setLastNavigationWasAppInitiated(lastNavigationWasAppInitiated == CyberCore::LastNavigationWasAppInitiated::Yes);
 }
 
 void WebSWContextManagerConnection::installServiceWorker(ServiceWorkerContextData&& contextData, ServiceWorkerData&& workerData, String&& userAgent, WorkerThreadMode workerThreadMode)
@@ -190,7 +190,7 @@ void WebSWContextManagerConnection::installServiceWorker(ServiceWorkerContextDat
         }
         page->setupForRemoteWorker(contextData.scriptURL, contextData.registration.key.topOrigin(), contextData.referrerPolicy);
 
-        std::unique_ptr<WebCore::NotificationClient> notificationClient;
+        std::unique_ptr<CyberCore::NotificationClient> notificationClient;
 #if ENABLE(NOTIFICATIONS)
         notificationClient = makeUnique<WebNotificationClient>(nullptr);
 #endif
@@ -198,7 +198,7 @@ void WebSWContextManagerConnection::installServiceWorker(ServiceWorkerContextDat
         auto serviceWorkerThreadProxy = ServiceWorkerThreadProxy::create(WTFMove(page), WTFMove(contextData), WTFMove(workerData), WTFMove(effectiveUserAgent), workerThreadMode, WebProcess::singleton().cacheStorageProvider(), WTFMove(notificationClient));
 
         if (lastNavigationWasAppInitiated)
-            serviceWorkerThreadProxy->setLastNavigationWasAppInitiated(lastNavigationWasAppInitiated == WebCore::LastNavigationWasAppInitiated::Yes);
+            serviceWorkerThreadProxy->setLastNavigationWasAppInitiated(lastNavigationWasAppInitiated == CyberCore::LastNavigationWasAppInitiated::Yes);
 
         SWContextManager::singleton().registerServiceWorkerThreadForInstall(WTFMove(serviceWorkerThreadProxy));
 
@@ -332,7 +332,7 @@ void WebSWContextManagerConnection::terminateWorker(ServiceWorkerIdentifier iden
 }
 
 #if ENABLE(SHAREABLE_RESOURCE) && PLATFORM(COCOA)
-void WebSWContextManagerConnection::didSaveScriptsToDisk(WebCore::ServiceWorkerIdentifier serviceWorkerIdentifier, ScriptBuffer&& script, HashMap<URL, ScriptBuffer>&& importedScripts)
+void WebSWContextManagerConnection::didSaveScriptsToDisk(CyberCore::ServiceWorkerIdentifier serviceWorkerIdentifier, ScriptBuffer&& script, HashMap<URL, ScriptBuffer>&& importedScripts)
 {
     assertIsCurrent(m_queue.get());
 
@@ -415,12 +415,12 @@ void WebSWContextManagerConnection::workerTerminated(ServiceWorkerIdentifier ser
     m_connectionToNetworkProcess->send(Messages::WebSWServerToContextConnection::WorkerTerminated(serviceWorkerIdentifier), 0);
 }
 
-void WebSWContextManagerConnection::findClientByVisibleIdentifier(WebCore::ServiceWorkerIdentifier serviceWorkerIdentifier, const String& clientIdentifier, FindClientByIdentifierCallback&& callback)
+void WebSWContextManagerConnection::findClientByVisibleIdentifier(CyberCore::ServiceWorkerIdentifier serviceWorkerIdentifier, const String& clientIdentifier, FindClientByIdentifierCallback&& callback)
 {
     m_connectionToNetworkProcess->sendWithAsyncReply(Messages::WebSWServerToContextConnection::FindClientByVisibleIdentifier { serviceWorkerIdentifier, clientIdentifier }, WTFMove(callback));
 }
 
-void WebSWContextManagerConnection::matchAll(WebCore::ServiceWorkerIdentifier serviceWorkerIdentifier, const ServiceWorkerClientQueryOptions& options, ServiceWorkerClientsMatchAllCallback&& callback)
+void WebSWContextManagerConnection::matchAll(CyberCore::ServiceWorkerIdentifier serviceWorkerIdentifier, const ServiceWorkerClientQueryOptions& options, ServiceWorkerClientsMatchAllCallback&& callback)
 {
     auto requestIdentifier = ++m_previousRequestIdentifier;
     m_matchAllRequests.add(requestIdentifier, WTFMove(callback));
@@ -437,7 +437,7 @@ void WebSWContextManagerConnection::matchAllCompleted(uint64_t requestIdentifier
     });
 }
 
-void WebSWContextManagerConnection::openWindow(WebCore::ServiceWorkerIdentifier serviceWorkerIdentifier, const URL& url, OpenWindowCallback&& callback)
+void WebSWContextManagerConnection::openWindow(CyberCore::ServiceWorkerIdentifier serviceWorkerIdentifier, const URL& url, OpenWindowCallback&& callback)
 {
     m_connectionToNetworkProcess->sendWithAsyncReply(Messages::WebSWServerToContextConnection::OpenWindow { serviceWorkerIdentifier, url }, [callback = WTFMove(callback)] (auto&& result) mutable {
         if (!result.has_value()) {
@@ -466,7 +466,7 @@ void WebSWContextManagerConnection::navigate(ScriptExecutionContextIdentifier cl
     });
 }
 
-void WebSWContextManagerConnection::focus(ScriptExecutionContextIdentifier clientIdentifier, CompletionHandler<void(std::optional<WebCore::ServiceWorkerClientData>&&)>&& callback)
+void WebSWContextManagerConnection::focus(ScriptExecutionContextIdentifier clientIdentifier, CompletionHandler<void(std::optional<CyberCore::ServiceWorkerClientData>&&)>&& callback)
 {
     m_connectionToNetworkProcess->sendWithAsyncReply(Messages::WebSWServerToContextConnection::Focus { clientIdentifier }, WTFMove(callback));
 }
@@ -512,11 +512,11 @@ void WebSWContextManagerConnection::didFailHeartBeatCheck(ServiceWorkerIdentifie
     m_connectionToNetworkProcess->send(Messages::WebSWServerToContextConnection::DidFailHeartBeatCheck { serviceWorkerIdentifier }, 0);
 }
 
-void WebSWContextManagerConnection::setAsInspected(WebCore::ServiceWorkerIdentifier identifier, bool isInspected)
+void WebSWContextManagerConnection::setAsInspected(CyberCore::ServiceWorkerIdentifier identifier, bool isInspected)
 {
     m_connectionToNetworkProcess->send(Messages::WebSWServerToContextConnection::SetAsInspected { identifier, isInspected }, 0);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

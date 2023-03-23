@@ -32,23 +32,23 @@
 #import <WebGeolocationPosition.h>
 #import <WebUIDelegatePrivate.h>
 #import <CyberCore/GeolocationPosition.h>
-#import <CyberCore/WebCoreThread.h>
-#import <CyberCore/WebCoreThreadRun.h>
+#import <CyberCore/CyberCoreThread.h>
+#import <CyberCore/CyberCoreThreadRun.h>
 #import <wtf/HashSet.h>
 #import <wtf/HashMap.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/RunLoop.h>
 #import <wtf/Vector.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 @interface WebGeolocationPosition (Internal)
 - (id)initWithGeolocationPosition:(GeolocationPositionData&&)coreGeolocationPosition;
 @end
 
 // CoreLocation runs in the main thread. WebGeolocationProviderIOS lives on the WebThread.
-// _WebCoreLocationUpdateThreadingProxy forward updates from CoreLocation to WebGeolocationProviderIOS.
-@interface _WebCoreLocationUpdateThreadingProxy : NSObject<WebGeolocationCoreLocationUpdateListener>
+// _CyberCoreLocationUpdateThreadingProxy forward updates from CoreLocation to WebGeolocationProviderIOS.
+@interface _CyberCoreLocationUpdateThreadingProxy : NSObject<WebGeolocationCoreLocationUpdateListener>
 - (id)initWithProvider:(WebGeolocationProviderIOS*)provider;
 @end
 
@@ -57,7 +57,7 @@ typedef HashMap<RetainPtr<WebView>, RetainPtr<id<WebGeolocationProviderInitializ
 @implementation WebGeolocationProviderIOS {
 @private
     RetainPtr<WebGeolocationCoreLocationProvider> _coreLocationProvider;
-    RetainPtr<_WebCoreLocationUpdateThreadingProxy> _coreLocationUpdateListenerProxy;
+    RetainPtr<_CyberCoreLocationUpdateThreadingProxy> _coreLocationUpdateListenerProxy;
 
     BOOL _enableHighAccuracy;
     BOOL _isSuspended;
@@ -67,7 +67,7 @@ typedef HashMap<RetainPtr<WebView>, RetainPtr<id<WebGeolocationProviderInitializ
     // we also have to wait for that to be granted.
     GeolocationInitializationCallbackMap _webViewsWaitingForCoreLocationAuthorization;
 
-    // List of WebView needing the initial position after registerWebView:. This is needed because WebKit does not
+    // List of WebView needing the initial position after registerWebView:. This is needed because CyberKit does not
     // handle sending the position synchronously in response to registerWebView:, so we queue sending lastPosition behind a timer.
     HashSet<WebView*> _pendingInitialPositionWebView;
 
@@ -138,7 +138,7 @@ static inline void abortSendLastPosition(WebGeolocationProviderIOS* provider)
 
     if (!_coreLocationProvider) {
         ASSERT(!_coreLocationUpdateListenerProxy);
-        _coreLocationUpdateListenerProxy = adoptNS([[_WebCoreLocationUpdateThreadingProxy alloc] initWithProvider:self]);
+        _coreLocationUpdateListenerProxy = adoptNS([[_CyberCoreLocationUpdateThreadingProxy alloc] initWithProvider:self]);
         _coreLocationProvider = adoptNS([[WebGeolocationCoreLocationProvider alloc] initWithListener:_coreLocationUpdateListenerProxy.get()]);
     }
 
@@ -182,15 +182,15 @@ static inline void abortSendLastPosition(WebGeolocationProviderIOS* provider)
         RunLoop::main().dispatch([self, strongSelf = retainPtr(self)] {
             if (!_coreLocationProvider) {
                 ASSERT(!_coreLocationUpdateListenerProxy);
-                _coreLocationUpdateListenerProxy = adoptNS([[_WebCoreLocationUpdateThreadingProxy alloc] initWithProvider:self]);
+                _coreLocationUpdateListenerProxy = adoptNS([[_CyberCoreLocationUpdateThreadingProxy alloc] initWithProvider:self]);
                 _coreLocationProvider = adoptNS([[WebGeolocationCoreLocationProvider alloc] initWithListener:_coreLocationUpdateListenerProxy.get()]);
             }
             [_coreLocationProvider start];
         });
     }
 
-    // We send the lastPosition asynchronously because WebKit does not handle updating the position synchronously.
-    // On WebKit2, we could skip that and send the position directly from the UIProcess.
+    // We send the lastPosition asynchronously because CyberKit does not handle updating the position synchronously.
+    // On CyberKit2, we could skip that and send the position directly from the UIProcess.
     _pendingInitialPositionWebView.add(webView);
     if (!_sendLastPositionAsynchronouslyTimer) {
         _sendLastPositionAsynchronouslyTimer = [NSTimer timerWithTimeInterval:0 target:self selector:@selector(_handlePendingInitialPosition:) userInfo:nil repeats:NO];
@@ -245,7 +245,7 @@ static inline void abortSendLastPosition(WebGeolocationProviderIOS* provider)
     RunLoop::main().dispatch([self, strongSelf = retainPtr(self)] {
         if (!_coreLocationProvider) {
             ASSERT(!_coreLocationUpdateListenerProxy);
-            _coreLocationUpdateListenerProxy = adoptNS([[_WebCoreLocationUpdateThreadingProxy alloc] initWithProvider:self]);
+            _coreLocationUpdateListenerProxy = adoptNS([[_CyberCoreLocationUpdateThreadingProxy alloc] initWithProvider:self]);
             _coreLocationProvider = adoptNS([[WebGeolocationCoreLocationProvider alloc] initWithListener:_coreLocationUpdateListenerProxy.get()]);
         }
         [_coreLocationProvider requestGeolocationAuthorization];
@@ -322,8 +322,8 @@ static inline void abortSendLastPosition(WebGeolocationProviderIOS* provider)
 }
 @end
 
-#pragma mark - _WebCoreLocationUpdateThreadingProxy implementation.
-@implementation _WebCoreLocationUpdateThreadingProxy {
+#pragma mark - _CyberCoreLocationUpdateThreadingProxy implementation.
+@implementation _CyberCoreLocationUpdateThreadingProxy {
     WebGeolocationProviderIOS* _provider;
 }
 
@@ -349,7 +349,7 @@ static inline void abortSendLastPosition(WebGeolocationProviderIOS* provider)
     });
 }
 
-- (void)positionChanged:(WebCore::GeolocationPositionData&&)position
+- (void)positionChanged:(CyberCore::GeolocationPositionData&&)position
 {
     RetainPtr<WebGeolocationPosition> webPosition = adoptNS([[WebGeolocationPosition alloc] initWithGeolocationPosition:WTFMove(position)]);
     WebThreadRun(^{

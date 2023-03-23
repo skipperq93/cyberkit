@@ -45,17 +45,17 @@ enum class FeatureToAnimate {
 };
 
 @interface WebScrollbarPartAnimationMac : NSAnimation {
-    WebCore::ScrollerMac* _scroller;
+    CyberCore::ScrollerMac* _scroller;
     FeatureToAnimate _featureToAnimate;
     CGFloat _startValue;
     CGFloat _endValue;
 }
-- (id)initWithScroller:(WebCore::ScrollerMac*)scroller featureToAnimate:(FeatureToAnimate)featureToAnimate animateFrom:(CGFloat)startValue animateTo:(CGFloat)endValue duration:(NSTimeInterval)duration;
+- (id)initWithScroller:(CyberCore::ScrollerMac*)scroller featureToAnimate:(FeatureToAnimate)featureToAnimate animateFrom:(CGFloat)startValue animateTo:(CGFloat)endValue duration:(NSTimeInterval)duration;
 @end
 
 @implementation WebScrollbarPartAnimationMac
 
-- (id)initWithScroller:(WebCore::ScrollerMac*)scroller featureToAnimate:(FeatureToAnimate)featureToAnimate animateFrom:(CGFloat)startValue animateTo:(CGFloat)endValue duration:(NSTimeInterval)duration
+- (id)initWithScroller:(CyberCore::ScrollerMac*)scroller featureToAnimate:(FeatureToAnimate)featureToAnimate animateFrom:(CGFloat)startValue animateTo:(CGFloat)endValue duration:(NSTimeInterval)duration
 {
     self = [super initWithDuration:duration animationCurve:NSAnimationEaseInOut];
     if (!self)
@@ -125,20 +125,20 @@ enum class FeatureToAnimate {
 @end
 
 @interface WebScrollerImpDelegateMac : NSObject<NSAnimationDelegate, NSScrollerImpDelegate> {
-    WebCore::ScrollerMac* _scroller;
+    CyberCore::ScrollerMac* _scroller;
 
     RetainPtr<WebScrollbarPartAnimationMac> _knobAlphaAnimation;
     RetainPtr<WebScrollbarPartAnimationMac> _trackAlphaAnimation;
     RetainPtr<WebScrollbarPartAnimationMac> _uiStateTransitionAnimation;
     RetainPtr<WebScrollbarPartAnimationMac> _expansionTransitionAnimation;
 }
-- (id)initWithScroller:(WebCore::ScrollerMac*)scroller;
+- (id)initWithScroller:(CyberCore::ScrollerMac*)scroller;
 - (void)cancelAnimations;
 @end
 
 @implementation WebScrollerImpDelegateMac
 
-- (id)initWithScroller:(WebCore::ScrollerMac*)scroller
+- (id)initWithScroller:(CyberCore::ScrollerMac*)scroller
 {
     self = [super init];
     if (!self)
@@ -312,7 +312,7 @@ enum class FeatureToAnimate {
 
 @end
 
-namespace WebCore {
+namespace CyberCore {
 
 ScrollerMac::ScrollerMac(ScrollerPairMac& pair, Orientation orientation)
     : m_pair(pair)
@@ -365,9 +365,9 @@ void ScrollerMac::updateValues()
     END_BLOCK_OBJC_EXCEPTIONS
 }
 
-WebCore::FloatPoint ScrollerMac::convertFromContent(const WebCore::FloatPoint& point) const
+CyberCore::FloatPoint ScrollerMac::convertFromContent(const CyberCore::FloatPoint& point) const
 {
-    return WebCore::FloatPoint { [m_hostLayer convertPoint:point fromLayer:[m_hostLayer superlayer]] };
+    return CyberCore::FloatPoint { [m_hostLayer convertPoint:point fromLayer:[m_hostLayer superlayer]] };
 }
 
 }

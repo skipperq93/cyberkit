@@ -29,7 +29,7 @@
 #include "EventTarget.h"
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ApplicationCacheHost;
 class Frame;
@@ -60,4 +60,4 @@ private:
     ApplicationCacheHost* applicationCacheHost() const;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

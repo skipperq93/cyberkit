@@ -39,7 +39,7 @@
 #include <wtf/text/StringParsingBuffer.h>
 #include <wtf/text/StringToIntegerConversion.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static bool isCSPDirectiveName(StringView name)
 {
@@ -615,4 +615,4 @@ template<typename CharacterType> bool ContentSecurityPolicySourceList::parseHash
     return true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

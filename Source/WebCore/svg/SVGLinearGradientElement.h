@@ -24,7 +24,7 @@
 #include "SVGGradientElement.h"
 #include "SVGNames.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct LinearGradientAttributes;
 
@@ -63,4 +63,4 @@ private:
     Ref<SVGAnimatedLength> m_y2 { SVGAnimatedLength::create(this, SVGLengthMode::Height, "0%"_s) };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

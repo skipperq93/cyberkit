@@ -28,7 +28,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CyberScriptCore/JSBase.h>
-#import <CyberKitLegacy/WebKitAvailability.h>
+#import <CyberKitLegacy/CyberKitAvailability.h>
 
 #if !TARGET_OS_IPHONE
 #import <AppKit/AppKit.h>
@@ -177,7 +177,7 @@ WEBKIT_DEPRECATED_MAC(10_3, 10_14)
     @abstract Notifies the delegate that a frame will be closed
     @param sender The WebView sending the message
     @param frame The frame that will be closed
-    @discussion This method is called right before WebKit is done with the frame
+    @discussion This method is called right before CyberKit is done with the frame
     and the objects that it contains.
 */
 - (void)webView:(WebView *)sender willCloseFrame:(WebFrame *)frame;
@@ -193,7 +193,7 @@ WEBKIT_DEPRECATED_MAC(10_3, 10_14)
     @discussion If a delegate implements both webView:didClearWindowObject:forFrame:
     and webView:windowScriptObjectAvailable:, only webView:didClearWindowObject:forFrame: 
     will be invoked. This enables a delegate to implement both methods for backwards 
-    compatibility with older versions of WebKit.
+    compatibility with older versions of CyberKit.
 */
 - (void)webView:(WebView *)webView didClearWindowObject:(WebScriptObject *)windowObject forFrame:(WebFrame *)frame;
 
@@ -218,7 +218,7 @@ WEBKIT_DEPRECATED_MAC(10_3, 10_14)
     @discussion If a delegate implements webView:didCreateJavaScriptContext:forFrame: along with either 
     webView:didClearWindowObject:forFrame: or webView:windowScriptObjectAvailable:, only 
     webView:didCreateJavaScriptContext:forFrame will be invoked. This enables a delegate to implement 
-    multiple versions to maintain backwards compatibility with older versions of WebKit.
+    multiple versions to maintain backwards compatibility with older versions of CyberKit.
 */
 - (void)webView:(WebView *)webView didCreateJavaScriptContext:(JSContext *)context forFrame:(WebFrame *)frame;
 #endif

@@ -30,7 +30,7 @@
 #include "DisplayListRecorderImpl.h"
 #include "DisplayListReplayer.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace DisplayList {
 
 DrawingContext::DrawingContext(const FloatSize& logicalSize, const AffineTransform& initialCTM, const DestinationColorSpace& colorSpace)
@@ -58,4 +58,4 @@ void DrawingContext::replayDisplayList(GraphicsContext& destContext)
 }
 
 } // DisplayList
-} // WebCore
+} // CyberCore

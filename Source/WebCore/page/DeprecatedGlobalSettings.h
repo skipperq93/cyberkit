@@ -29,7 +29,7 @@
 #include <wtf/Forward.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DeprecatedGlobalSettings {
 public:
@@ -275,4 +275,4 @@ private:
     friend class NeverDestroyed<DeprecatedGlobalSettings>;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

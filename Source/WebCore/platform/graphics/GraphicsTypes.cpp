@@ -33,7 +33,7 @@
 #include <wtf/text/TextStream.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static constexpr ASCIILiteral compositeOperatorNames[] = {
     "clear"_s,
@@ -274,4 +274,4 @@ TextStream& operator<<(TextStream& ts, TextDrawingMode textDrawingMode)
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

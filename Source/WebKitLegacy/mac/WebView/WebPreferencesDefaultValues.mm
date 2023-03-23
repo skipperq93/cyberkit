@@ -25,7 +25,7 @@
 
 #import "WebPreferencesDefaultValues.h"
 
-#import "WebKitVersionChecks.h"
+#import "CyberKitVersionChecks.h"
 #import <Foundation/NSBundle.h>
 #import <CyberCore/RuntimeApplicationChecks.h>
 #import <mach-o/dyld.h>
@@ -38,18 +38,18 @@
 #import <CyberCore/Device.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 #if PLATFORM(IOS_FAMILY)
 
 bool defaultAllowsInlineMediaPlayback()
 {
-    return !WebCore::deviceClassIsSmallScreen();
+    return !CyberCore::deviceClassIsSmallScreen();
 }
 
 bool defaultAllowsInlineMediaPlaybackAfterFullscreen()
 {
-    return WebCore::deviceClassIsSmallScreen();
+    return CyberCore::deviceClassIsSmallScreen();
 }
 
 bool defaultAllowsPictureInPictureMediaPlayback()
@@ -60,13 +60,13 @@ bool defaultAllowsPictureInPictureMediaPlayback()
 
 bool defaultJavaScriptCanOpenWindowsAutomatically()
 {
-    static bool shouldAllowWindowOpenWithoutUserGesture = WebCore::IOSApplication::isTheSecretSocietyHiddenMystery() && !linkedOnOrAfterSDKWithBehavior(SDKAlignedBehavior::NoTheSecretSocietyHiddenMysteryWindowOpenQuirk);
+    static bool shouldAllowWindowOpenWithoutUserGesture = CyberCore::IOSApplication::isTheSecretSocietyHiddenMystery() && !linkedOnOrAfterSDKWithBehavior(SDKAlignedBehavior::NoTheSecretSocietyHiddenMysteryWindowOpenQuirk);
     return shouldAllowWindowOpenWithoutUserGesture;
 }
 
 bool defaultInlineMediaPlaybackRequiresPlaysInlineAttribute()
 {
-    return WebCore::deviceClassIsSmallScreen();
+    return CyberCore::deviceClassIsSmallScreen();
 }
 
 bool defaultPassiveTouchListenersAsDefaultOnDocument()
@@ -90,13 +90,13 @@ bool defaultRequiresUserGestureToLoadVideo()
 bool defaultWebSQLEnabled()
 {
     // For backward compatibility, keep WebSQL working until apps are rebuilt with the iOS 14 SDK.
-    static bool webSQLEnabled = !linkedOnOrAfterSDKWithBehavior(SDKAlignedBehavior::WebSQLDisabledByDefaultInLegacyWebKit);
+    static bool webSQLEnabled = !linkedOnOrAfterSDKWithBehavior(SDKAlignedBehavior::WebSQLDisabledByDefaultInLegacyCyberKit);
     return webSQLEnabled;
 }
 
 bool defaultAllowContentSecurityPolicySourceStarToMatchAnyProtocol()
 {
-    static bool shouldAllowContentSecurityPolicySourceStarToMatchAnyProtocol = !WebKitLinkedOnOrAfter(WEBKIT_FIRST_VERSION_WITH_CONTENT_SECURITY_POLICY_SOURCE_STAR_PROTOCOL_RESTRICTION);
+    static bool shouldAllowContentSecurityPolicySourceStarToMatchAnyProtocol = !CyberKitLinkedOnOrAfter(WEBKIT_FIRST_VERSION_WITH_CONTENT_SECURITY_POLICY_SOURCE_STAR_PROTOCOL_RESTRICTION);
     return shouldAllowContentSecurityPolicySourceStarToMatchAnyProtocol;
 }
 
@@ -106,27 +106,27 @@ bool defaultAllowContentSecurityPolicySourceStarToMatchAnyProtocol()
 
 bool defaultLoadDeferringEnabled()
 {
-    return !WebCore::MacApplication::isAdobeInstaller();
+    return !CyberCore::MacApplication::isAdobeInstaller();
 }
 
 bool defaultWindowFocusRestricted()
 {
-    return !WebCore::MacApplication::isHRBlock();
+    return !CyberCore::MacApplication::isHRBlock();
 }
 
 bool defaultUsePreHTML5ParserQuirks()
 {
     // AOL Instant Messenger and Microsoft My Day contain markup incompatible
     // with the new HTML5 parser. If these applications were linked against a
-    // version of WebKit prior to the introduction of the HTML5 parser, enable
+    // version of CyberKit prior to the introduction of the HTML5 parser, enable
     // parser quirks to maintain compatibility. For details, see
     // <https://bugs.webkit.org/show_bug.cgi?id=46134> and
     // <https://bugs.webkit.org/show_bug.cgi?id=46334>.
-    static bool isApplicationNeedingParserQuirks = !WebKitLinkedOnOrAfter(WEBKIT_FIRST_VERSION_WITH_HTML5_PARSER)
-        && (WebCore::MacApplication::isMicrosoftMyDay());
+    static bool isApplicationNeedingParserQuirks = !CyberKitLinkedOnOrAfter(WEBKIT_FIRST_VERSION_WITH_HTML5_PARSER)
+        && (CyberCore::MacApplication::isMicrosoftMyDay());
 
     // Mail.app must continue to display HTML email that contains quirky markup.
-    static bool isAppleMail = WebCore::MacApplication::isAppleMail();
+    static bool isAppleMail = CyberCore::MacApplication::isAppleMail();
 
     return isApplicationNeedingParserQuirks || isAppleMail;
 }
@@ -155,7 +155,7 @@ bool defaultScrollAnimatorEnabled()
 
 bool defaultTreatsAnyTextCSSLinkAsStylesheet()
 {
-    static bool needsQuirk = !WebKitLinkedOnOrAfter(WEBKIT_FIRST_VERSION_WITHOUT_LINK_ELEMENT_TEXT_CSS_QUIRK)
+    static bool needsQuirk = !CyberKitLinkedOnOrAfter(WEBKIT_FIRST_VERSION_WITHOUT_LINK_ELEMENT_TEXT_CSS_QUIRK)
         && _CFAppVersionCheckLessThan(CFSTR("com.e-frontier.shade10"), -1, 10.6);
     return needsQuirk;
 }
@@ -168,7 +168,7 @@ bool defaultNeedsFrameNameFallbackToIdQuirk()
 
 bool defaultNeedsKeyboardEventDisambiguationQuirks()
 {
-    static bool needsQuirks = !WebKitLinkedOnOrAfter(WEBKIT_FIRST_VERSION_WITH_IE_COMPATIBLE_KEYBOARD_EVENT_DISPATCH) && !WebCore::MacApplication::isSafari();
+    static bool needsQuirks = !CyberKitLinkedOnOrAfter(WEBKIT_FIRST_VERSION_WITH_IE_COMPATIBLE_KEYBOARD_EVENT_DISPATCH) && !CyberCore::MacApplication::isSafari();
     return needsQuirks;
 }
 
@@ -177,9 +177,9 @@ bool defaultNeedsKeyboardEventDisambiguationQuirks()
 bool defaultAttachmentElementEnabled()
 {
 #if PLATFORM(IOS_FAMILY)
-    return WebCore::IOSApplication::isMobileMail();
+    return CyberCore::IOSApplication::isMobileMail();
 #else
-    return WebCore::MacApplication::isAppleMail();
+    return CyberCore::MacApplication::isAppleMail();
 #endif
 }
 
@@ -192,23 +192,23 @@ bool defaultShouldRestrictBaseURLSchemes()
 bool defaultUseLegacyBackgroundSizeShorthandBehavior()
 {
 #if PLATFORM(IOS_FAMILY)
-    static bool shouldUseLegacyBackgroundSizeShorthandBehavior = !WebKitLinkedOnOrAfter(WEBKIT_FIRST_VERSION_WITHOUT_LEGACY_BACKGROUNDSIZE_SHORTHAND_BEHAVIOR);
+    static bool shouldUseLegacyBackgroundSizeShorthandBehavior = !CyberKitLinkedOnOrAfter(WEBKIT_FIRST_VERSION_WITHOUT_LEGACY_BACKGROUNDSIZE_SHORTHAND_BEHAVIOR);
 #else
-    static bool shouldUseLegacyBackgroundSizeShorthandBehavior = WebCore::MacApplication::isVersions()
-        && !WebKitLinkedOnOrAfter(WEBKIT_FIRST_VERSION_WITHOUT_LEGACY_BACKGROUNDSIZE_SHORTHAND_BEHAVIOR);
+    static bool shouldUseLegacyBackgroundSizeShorthandBehavior = CyberCore::MacApplication::isVersions()
+        && !CyberKitLinkedOnOrAfter(WEBKIT_FIRST_VERSION_WITHOUT_LEGACY_BACKGROUNDSIZE_SHORTHAND_BEHAVIOR);
 #endif
     return shouldUseLegacyBackgroundSizeShorthandBehavior;
 }
 
 bool defaultAllowDisplayOfInsecureContent()
 {
-    static bool shouldAllowDisplayOfInsecureContent = !WebKitLinkedOnOrAfter(WEBKIT_FIRST_VERSION_WITH_INSECURE_CONTENT_BLOCKING);
+    static bool shouldAllowDisplayOfInsecureContent = !CyberKitLinkedOnOrAfter(WEBKIT_FIRST_VERSION_WITH_INSECURE_CONTENT_BLOCKING);
     return shouldAllowDisplayOfInsecureContent;
 }
 
 bool defaultAllowRunningOfInsecureContent()
 {
-    static bool shouldAllowRunningOfInsecureContent = !WebKitLinkedOnOrAfter(WEBKIT_FIRST_VERSION_WITH_INSECURE_CONTENT_BLOCKING);
+    static bool shouldAllowRunningOfInsecureContent = !CyberKitLinkedOnOrAfter(WEBKIT_FIRST_VERSION_WITH_INSECURE_CONTENT_BLOCKING);
     return shouldAllowRunningOfInsecureContent;
 }
 
@@ -238,9 +238,9 @@ bool defaultWheelEventGesturesBecomeNonBlocking()
 
 bool defaultMediaSourceEnabled()
 {
-    return !WebCore::deviceClassIsSmallScreen();
+    return !CyberCore::deviceClassIsSmallScreen();
 }
 
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit

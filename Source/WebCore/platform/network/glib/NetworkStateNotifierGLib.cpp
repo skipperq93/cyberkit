@@ -21,7 +21,7 @@
 
 #include <gio/gio.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 void NetworkStateNotifier::updateStateWithoutNotifying()
 {

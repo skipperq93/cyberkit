@@ -45,7 +45,7 @@ namespace WebKit {
 // According to different combinations of error and stages, error will manifest differently.
 class MockHidConnection final : public CanMakeWeakPtr<MockHidConnection>, public HidConnection {
 public:
-    MockHidConnection(IOHIDDeviceRef, const WebCore::MockWebAuthenticationConfiguration&);
+    MockHidConnection(IOHIDDeviceRef, const CyberCore::MockWebAuthenticationConfiguration&);
 
 private:
     // HidConnection
@@ -62,10 +62,10 @@ private:
     void shouldContinueFeedReports();
     void continueFeedReports();
 
-    WebCore::MockWebAuthenticationConfiguration m_configuration;
+    CyberCore::MockWebAuthenticationConfiguration m_configuration;
     std::optional<fido::FidoHidMessage> m_requestMessage;
-    WebCore::MockWebAuthenticationConfiguration::HidStage m_stage { WebCore::MockWebAuthenticationConfiguration::HidStage::Info };
-    WebCore::MockWebAuthenticationConfiguration::HidSubStage m_subStage { WebCore::MockWebAuthenticationConfiguration::HidSubStage::Init };
+    CyberCore::MockWebAuthenticationConfiguration::HidStage m_stage { CyberCore::MockWebAuthenticationConfiguration::HidStage::Info };
+    CyberCore::MockWebAuthenticationConfiguration::HidSubStage m_subStage { CyberCore::MockWebAuthenticationConfiguration::HidSubStage::Init };
     uint32_t m_currentChannel { fido::kHidBroadcastChannel };
     bool m_requireResidentKey { false };
     bool m_requireUserVerification  { false };

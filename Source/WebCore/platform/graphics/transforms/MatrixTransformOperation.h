@@ -28,7 +28,7 @@
 #include "TransformationMatrix.h"
 #include <wtf/Ref.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct BlendingContext;
 
@@ -87,6 +87,6 @@ private:
     double m_f;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_TRANSFORMOPERATION(WebCore::MatrixTransformOperation, type() == WebCore::TransformOperation::Type::Matrix)
+SPECIALIZE_TYPE_TRAITS_TRANSFORMOPERATION(CyberCore::MatrixTransformOperation, type() == CyberCore::TransformOperation::Type::Matrix)

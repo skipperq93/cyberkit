@@ -30,7 +30,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface NSPrintOperation (WebKitExtras)
+@interface NSPrintOperation (CyberKitExtras)
 
 - (float)_web_pageSetupScaleFactor;
 - (float)_web_availablePaperWidth;

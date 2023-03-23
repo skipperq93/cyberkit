@@ -35,7 +35,7 @@
 
 namespace TestWebKitAPI {
 
-static void testGetAndSet(WebCore::FloatSize size)
+static void testGetAndSet(CyberCore::FloatSize size)
 {
     size.setWidth(101.1f);
     EXPECT_FLOAT_EQ(101.1f, size.width());
@@ -45,7 +45,7 @@ static void testGetAndSet(WebCore::FloatSize size)
 
 TEST(FloatSize, DefaultConstruction)
 {
-    WebCore::FloatSize test;
+    CyberCore::FloatSize test;
 
     EXPECT_FLOAT_EQ(0, test.width());
     EXPECT_FLOAT_EQ(0, test.height());
@@ -58,7 +58,7 @@ TEST(FloatSize, DefaultConstruction)
 
 TEST(FloatSize, ValueConstruction)
 {
-    WebCore::FloatSize test(1024.0f, 768.0f);
+    CyberCore::FloatSize test(1024.0f, 768.0f);
 
     EXPECT_FLOAT_EQ(1024.0f, test.width());
     EXPECT_FLOAT_EQ(768.0f, test.height());
@@ -74,8 +74,8 @@ TEST(FloatSize, ValueConstruction)
 
 TEST(FloatSize, IntSizeConstruction)
 {
-    WebCore::IntSize size(1024, 768);
-    WebCore::FloatSize test(size);
+    CyberCore::IntSize size(1024, 768);
+    CyberCore::FloatSize test(size);
 
     EXPECT_FLOAT_EQ(1024.0f, test.width());
     EXPECT_FLOAT_EQ(768.0f, test.height());
@@ -91,7 +91,7 @@ TEST(FloatSize, IntSizeConstruction)
 
 TEST(FloatSize, MinDimension)
 {
-    WebCore::FloatSize test(1024.0f, 768.0f);
+    CyberCore::FloatSize test(1024.0f, 768.0f);
 
     EXPECT_FLOAT_EQ(768.0f, test.minDimension());
 
@@ -102,7 +102,7 @@ TEST(FloatSize, MinDimension)
 
 TEST(FloatSize, MaxDimension)
 {
-    WebCore::FloatSize test(1024.0f, 768.0f);
+    CyberCore::FloatSize test(1024.0f, 768.0f);
 
     EXPECT_FLOAT_EQ(1024.0f, test.maxDimension());
 
@@ -113,7 +113,7 @@ TEST(FloatSize, MaxDimension)
 
 TEST(FloatSize, Scale)
 {
-    WebCore::FloatSize test(1024.0f, 768.0f);
+    CyberCore::FloatSize test(1024.0f, 768.0f);
 
     test.scale(2.0f);
 
@@ -133,7 +133,7 @@ TEST(FloatSize, Scale)
 
 TEST(FloatSize, Expand)
 {
-    WebCore::FloatSize test(1024.0f, 768.0f);
+    CyberCore::FloatSize test(1024.0f, 768.0f);
 
     EXPECT_FLOAT_EQ(1024.0f, test.width());
     EXPECT_FLOAT_EQ(768.0f, test.height());
@@ -143,7 +143,7 @@ TEST(FloatSize, Expand)
     EXPECT_FLOAT_EQ(1124.0f, test.width());
     EXPECT_FLOAT_EQ(818.0f, test.height());
 
-    WebCore::FloatSize other(2048.0f, 700.0f);
+    CyberCore::FloatSize other(2048.0f, 700.0f);
 
     auto expanded = test.expandedTo(other);
 
@@ -153,15 +153,15 @@ TEST(FloatSize, Expand)
 
 TEST(FloatSize, Shrink)
 {
-    WebCore::FloatSize test(1024.0f, 768.0f);
-    WebCore::FloatSize other(1000.0f, 700.0f);
+    CyberCore::FloatSize test(1024.0f, 768.0f);
+    CyberCore::FloatSize other(1000.0f, 700.0f);
 
     auto shrunken = test.shrunkTo(other);
 
     EXPECT_FLOAT_EQ(1000.0f, shrunken.width());
     EXPECT_FLOAT_EQ(700.0f, shrunken.height());
 
-    WebCore::FloatSize other2(2000.0f, 700.0f);
+    CyberCore::FloatSize other2(2000.0f, 700.0f);
 
     auto shrunken2 = test.shrunkTo(other2);
 
@@ -171,7 +171,7 @@ TEST(FloatSize, Shrink)
 
 TEST(FloatSize, DiagonalLengthAndArea)
 {
-    WebCore::FloatSize test(1024.0f, 768.0f);
+    CyberCore::FloatSize test(1024.0f, 768.0f);
 
     EXPECT_FLOAT_EQ(1280.0f, test.diagonalLength());
     EXPECT_FLOAT_EQ(1638400.0f, test.diagonalLengthSquared());
@@ -180,7 +180,7 @@ TEST(FloatSize, DiagonalLengthAndArea)
 
 TEST(FloatSize, TransposedSize)
 {
-    WebCore::FloatSize test(1024.0f, 768.0f);
+    CyberCore::FloatSize test(1024.0f, 768.0f);
 
     auto transposedSize = test.transposedSize();
 
@@ -190,7 +190,7 @@ TEST(FloatSize, TransposedSize)
 
 TEST(FloatSize, Casting)
 {
-    WebCore::FloatSize test(1024.0f, 768.0f);
+    CyberCore::FloatSize test(1024.0f, 768.0f);
 
 #if USE(CG)
     CGSize cgSize = test;
@@ -200,7 +200,7 @@ TEST(FloatSize, Casting)
 
     CGSize cgSize2 = CGSizeMake(-22.3f, 14.2f);
 
-    WebCore::FloatSize testCG(cgSize2);
+    CyberCore::FloatSize testCG(cgSize2);
 
     EXPECT_FLOAT_EQ(-22.3f, testCG.width());
     EXPECT_FLOAT_EQ(14.2f, testCG.height());
@@ -209,10 +209,10 @@ TEST(FloatSize, Casting)
 
 TEST(FloatSize, AddSubtract)
 {
-    WebCore::FloatSize a(512.0f, 384.0f);
-    WebCore::FloatSize b(100.0f, 100.0f);
+    CyberCore::FloatSize a(512.0f, 384.0f);
+    CyberCore::FloatSize b(100.0f, 100.0f);
 
-    WebCore::FloatSize c = a + b;
+    CyberCore::FloatSize c = a + b;
 
     EXPECT_FLOAT_EQ(612.0f, c.width());
     EXPECT_FLOAT_EQ(484.0f, c.height());
@@ -222,9 +222,9 @@ TEST(FloatSize, AddSubtract)
     EXPECT_FLOAT_EQ(612.0f, a.width());
     EXPECT_FLOAT_EQ(484.0f, a.height());
 
-    WebCore::FloatSize a2(512.0f, 384.0f);
+    CyberCore::FloatSize a2(512.0f, 384.0f);
 
-    WebCore::FloatSize d = a2 - b;
+    CyberCore::FloatSize d = a2 - b;
 
     EXPECT_FLOAT_EQ(412.0f, d.width());
     EXPECT_FLOAT_EQ(284.0f, d.height());
@@ -237,9 +237,9 @@ TEST(FloatSize, AddSubtract)
 
 TEST(FloatSize, Negation)
 {
-    WebCore::FloatSize a(512.0f, 384.0f);
+    CyberCore::FloatSize a(512.0f, 384.0f);
 
-    WebCore::FloatSize negated = -a;
+    CyberCore::FloatSize negated = -a;
 
     EXPECT_FLOAT_EQ(-512.0f, negated.width());
     EXPECT_FLOAT_EQ(-384.0f, negated.height());
@@ -247,21 +247,21 @@ TEST(FloatSize, Negation)
 
 TEST(FloatSize, Multiply)
 {
-    WebCore::FloatSize a(512.0f, 384.0f);
+    CyberCore::FloatSize a(512.0f, 384.0f);
 
-    WebCore::FloatSize multiplied = a * 2.0f;
+    CyberCore::FloatSize multiplied = a * 2.0f;
 
     EXPECT_FLOAT_EQ(1024.0f, multiplied.width());
     EXPECT_FLOAT_EQ(768.0f, multiplied.height());
 
-    WebCore::FloatSize multiplied2 = 3.0f * a;
+    CyberCore::FloatSize multiplied2 = 3.0f * a;
 
     EXPECT_FLOAT_EQ(1536.0f, multiplied2.width());
     EXPECT_FLOAT_EQ(1152.0f, multiplied2.height());
 
-    WebCore::FloatSize b(1024.0f, 768.0f);
+    CyberCore::FloatSize b(1024.0f, 768.0f);
 
-    WebCore::FloatSize multiplied3 = a * b;
+    CyberCore::FloatSize multiplied3 = a * b;
 
     EXPECT_FLOAT_EQ(524288.0f, multiplied3.width());
     EXPECT_FLOAT_EQ(294912.0f, multiplied3.height());
@@ -269,16 +269,16 @@ TEST(FloatSize, Multiply)
 
 TEST(FloatSize, Divide)
 {
-    WebCore::FloatSize a(1024.0f, 768.0f);
+    CyberCore::FloatSize a(1024.0f, 768.0f);
 
-    WebCore::FloatSize divided = a / 2.0f;
+    CyberCore::FloatSize divided = a / 2.0f;
 
     EXPECT_FLOAT_EQ(512.0f, divided.width());
     EXPECT_FLOAT_EQ(384.0f, divided.height());
 
-    WebCore::FloatSize b(512.0f, 256.0f);
+    CyberCore::FloatSize b(512.0f, 256.0f);
 
-    WebCore::FloatSize divided2 = 1024.0f / b;
+    CyberCore::FloatSize divided2 = 1024.0f / b;
 
     EXPECT_FLOAT_EQ(2.0f, divided2.width());
     EXPECT_FLOAT_EQ(4.0f, divided2.height());
@@ -286,29 +286,29 @@ TEST(FloatSize, Divide)
 
 TEST(FloatSize, Equality)
 {
-    WebCore::FloatSize a(1024.0f, 768.0f);
-    WebCore::FloatSize b(1024.0f, 768.0f);
-    WebCore::FloatSize c(768.0f, 534.0F);
+    CyberCore::FloatSize a(1024.0f, 768.0f);
+    CyberCore::FloatSize b(1024.0f, 768.0f);
+    CyberCore::FloatSize c(768.0f, 534.0F);
 
     ASSERT_TRUE(a == b);
     ASSERT_FALSE(a != b);
     ASSERT_FALSE(a == c);
     ASSERT_TRUE(a != c);
 
-    ASSERT_TRUE(WebCore::areEssentiallyEqual(a, b));
-    ASSERT_FALSE(WebCore::areEssentiallyEqual(a, c));
+    ASSERT_TRUE(CyberCore::areEssentiallyEqual(a, b));
+    ASSERT_FALSE(CyberCore::areEssentiallyEqual(a, c));
 }
 
 TEST(FloatSize, Floors)
 {
-    WebCore::FloatSize a(1024.4f, 768.8f);
+    CyberCore::FloatSize a(1024.4f, 768.8f);
 
-    WebCore::IntSize floorSize = WebCore::flooredIntSize(a);
+    CyberCore::IntSize floorSize = CyberCore::flooredIntSize(a);
 
     EXPECT_EQ(1024, floorSize.width());
     EXPECT_EQ(768, floorSize.height());
 
-    WebCore::IntPoint floorPoint = WebCore::flooredIntPoint(a);
+    CyberCore::IntPoint floorPoint = CyberCore::flooredIntPoint(a);
 
     EXPECT_EQ(1024, floorPoint.x());
     EXPECT_EQ(768, floorPoint.y());
@@ -316,14 +316,14 @@ TEST(FloatSize, Floors)
 
 TEST(FloatSize, Rounded)
 {
-    WebCore::FloatSize a(1024.4f, 768.8f);
+    CyberCore::FloatSize a(1024.4f, 768.8f);
 
-    WebCore::IntSize roundedSize = WebCore::roundedIntSize(a);
+    CyberCore::IntSize roundedSize = CyberCore::roundedIntSize(a);
 
     EXPECT_EQ(1024, roundedSize.width());
     EXPECT_EQ(769, roundedSize.height());
 
-    WebCore::IntSize expandedSize = WebCore::expandedIntSize(a);
+    CyberCore::IntSize expandedSize = CyberCore::expandedIntSize(a);
 
     EXPECT_EQ(1025, expandedSize.width());
     EXPECT_EQ(769, expandedSize.height());

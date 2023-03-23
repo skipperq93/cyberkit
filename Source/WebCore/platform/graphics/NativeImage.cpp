@@ -28,7 +28,7 @@
 
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 RefPtr<NativeImage> NativeImage::create(PlatformImagePtr&& platformImage, RenderingResourceIdentifier renderingResourceIdentifier)
 {
@@ -49,4 +49,4 @@ NativeImage::~NativeImage()
         observer->releaseNativeImage(m_renderingResourceIdentifier);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

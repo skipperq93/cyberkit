@@ -27,7 +27,7 @@
 
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace ContentSecurityPolicyDirectiveNames {
 
@@ -62,5 +62,5 @@ extern ASCIILiteral workerSrc;
 
 } // namespace ContentSecurityPolicyDirectiveNames
 
-} // namespace WebCore
+} // namespace CyberCore
 

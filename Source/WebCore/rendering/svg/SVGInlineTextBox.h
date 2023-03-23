@@ -25,7 +25,7 @@
 #include "RenderSVGResource.h"
 #include "SVGTextFragment.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderSVGInlineText;
 class RenderSVGResource;
@@ -96,6 +96,6 @@ private:
     Vector<SVGTextFragment> m_textFragments;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_INLINE_BOX(SVGInlineTextBox, isSVGInlineTextBox())

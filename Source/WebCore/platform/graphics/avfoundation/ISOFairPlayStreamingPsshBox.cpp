@@ -28,7 +28,7 @@
 
 #include <CyberScriptCore/DataView.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 const Vector<uint8_t>& ISOFairPlayStreamingPsshBox::fairPlaySystemID()
 {

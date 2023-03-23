@@ -33,7 +33,7 @@
 
 namespace WebKit {
 
-MockHidService::MockHidService(Observer& observer, const WebCore::MockWebAuthenticationConfiguration& configuration)
+MockHidService::MockHidService(Observer& observer, const CyberCore::MockWebAuthenticationConfiguration& configuration)
     : HidService(observer)
     , m_configuration(configuration)
 {

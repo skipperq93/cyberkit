@@ -75,7 +75,7 @@ static NSString *appDisplayName()
     return displayName;
 }
 
-static NSString *getToken(const WebCore::SecurityOriginData& securityOrigin, NSURL *requestingURL)
+static NSString *getToken(const CyberCore::SecurityOriginData& securityOrigin, NSURL *requestingURL)
 {
     if ([requestingURL isFileURL])
         return [requestingURL path];
@@ -85,7 +85,7 @@ static NSString *getToken(const WebCore::SecurityOriginData& securityOrigin, NSU
 struct PermissionRequest {
     WTF_MAKE_STRUCT_FAST_ALLOCATED;
 
-    static std::unique_ptr<PermissionRequest> create(const WebCore::SecurityOriginData& origin, NSURL *requestingURL, WKWebView *view, id<WKWebAllowDenyPolicyListener> listener)
+    static std::unique_ptr<PermissionRequest> create(const CyberCore::SecurityOriginData& origin, NSURL *requestingURL, WKWebView *view, id<WKWebAllowDenyPolicyListener> listener)
     {
         auto request = std::unique_ptr<PermissionRequest>(new PermissionRequest);
         request->token = getToken(origin, requestingURL);
@@ -137,7 +137,7 @@ struct PermissionRequest {
     [super dealloc];
 }
 
-- (void)decidePolicyForGeolocationRequestFromOrigin:(const WebCore::SecurityOriginData&)securityOrigin requestingURL:(NSURL *)requestingURL view:(WKWebView *)view listener:(id<WKWebAllowDenyPolicyListener>)listener
+- (void)decidePolicyForGeolocationRequestFromOrigin:(const CyberCore::SecurityOriginData&)securityOrigin requestingURL:(NSURL *)requestingURL view:(WKWebView *)view listener:(id<WKWebAllowDenyPolicyListener>)listener
 {
     auto permissionRequest = PermissionRequest::create(securityOrigin, requestingURL, view, listener);
     _challenges.append(WTFMove(permissionRequest));

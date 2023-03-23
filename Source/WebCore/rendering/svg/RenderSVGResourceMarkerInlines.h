@@ -29,7 +29,7 @@
 #include "SVGElementTypeHelpers.h"
 #include "SVGMarkerElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 inline SVGMarkerElement& RenderSVGResourceMarker::markerElement() const
 {
@@ -41,4 +41,4 @@ inline SVGMarkerUnitsType RenderSVGResourceMarker::markerUnits() const
     return markerElement().markerUnits();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

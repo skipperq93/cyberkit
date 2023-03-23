@@ -32,7 +32,7 @@
 #include "FetchRequest.h"
 #include "JSFetchResponse.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 BackgroundFetchRecord::BackgroundFetchRecord(ScriptExecutionContext& context, BackgroundFetchRecordInformation&& information)
     : m_responseReadyPromise(makeUniqueRef<ResponseReadyPromise>())
@@ -59,7 +59,7 @@ void BackgroundFetchRecord::settleResponseReadyPromise(ExceptionOr<Ref<FetchResp
     m_responseReadyPromise->resolveWithNewlyCreated(result.releaseReturnValue());
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)
 

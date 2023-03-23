@@ -37,7 +37,7 @@
 #include <CyberCore/ScrollingTreeStickyNodeCocoa.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 RemoteScrollingTree::RemoteScrollingTree(RemoteScrollingCoordinatorProxy& scrollingCoordinator)
     : m_scrollingCoordinatorProxy(scrollingCoordinator)

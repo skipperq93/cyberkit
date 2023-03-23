@@ -27,7 +27,7 @@
 
 #import <CyberKit/_WKWebAuthenticationPanel.h>
 
-namespace WebCore {
+namespace CyberCore {
 struct PublicKeyCredentialCreationOptions;
 struct PublicKeyCredentialRequestOptions;
 }
@@ -35,8 +35,8 @@ struct PublicKeyCredentialRequestOptions;
 WK_CLASS_AVAILABLE(macos(12.0), ios(15.0))
 @interface _WKWebAuthenticationPanel (WKTesting)
 
-+ (WebCore::PublicKeyCredentialCreationOptions)convertToCoreCreationOptionsWithOptions:(_WKPublicKeyCredentialCreationOptions *)options WK_API_AVAILABLE(macos(12.0), ios(15.0));
-+ (WebCore::PublicKeyCredentialRequestOptions)convertToCoreRequestOptionsWithOptions:(_WKPublicKeyCredentialRequestOptions *)options WK_API_AVAILABLE(macos(12.0), ios(15.0));
++ (CyberCore::PublicKeyCredentialCreationOptions)convertToCoreCreationOptionsWithOptions:(_WKPublicKeyCredentialCreationOptions *)options WK_API_AVAILABLE(macos(12.0), ios(15.0));
++ (CyberCore::PublicKeyCredentialRequestOptions)convertToCoreRequestOptionsWithOptions:(_WKPublicKeyCredentialRequestOptions *)options WK_API_AVAILABLE(macos(12.0), ios(15.0));
 
 + (NSArray<NSDictionary *> *)getAllLocalAuthenticatorCredentialsWithAccessGroup:(NSString *)accessGroup WK_API_AVAILABLE(macos(12.0), ios(15.0));
 

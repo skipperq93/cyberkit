@@ -29,7 +29,7 @@
 #include <wtf/Forward.h>
 #include <wtf/UUID.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 template <>
 class ProcessQualified<UUID> {

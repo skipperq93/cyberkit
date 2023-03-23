@@ -21,31 +21,31 @@
 #error "Only <wpe/webkitdom.h> can be included directly."
 #endif
 
-#ifndef WebKitDOMDocument_h
-#define WebKitDOMDocument_h
+#ifndef CyberKitDOMDocument_h
+#define CyberKitDOMDocument_h
 
 #include <glib-object.h>
-#include <wpe/WebKitDOMNode.h>
-#include <wpe/WebKitDOMDefines.h>
+#include <wpe/CyberKitDOMNode.h>
+#include <wpe/CyberKitDOMDefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_DOM_TYPE_DOCUMENT            (webkit_dom_document_get_type())
-#define WEBKIT_DOM_DOCUMENT(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_DOCUMENT, WebKitDOMDocument))
-#define WEBKIT_DOM_DOCUMENT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_DOCUMENT, WebKitDOMDocumentClass)
+#define WEBKIT_DOM_DOCUMENT(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_DOCUMENT, CyberKitDOMDocument))
+#define WEBKIT_DOM_DOCUMENT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_DOCUMENT, CyberKitDOMDocumentClass)
 #define WEBKIT_DOM_IS_DOCUMENT(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_DOM_TYPE_DOCUMENT))
 #define WEBKIT_DOM_IS_DOCUMENT_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_DOM_TYPE_DOCUMENT))
-#define WEBKIT_DOM_DOCUMENT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_DOCUMENT, WebKitDOMDocumentClass))
+#define WEBKIT_DOM_DOCUMENT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_DOCUMENT, CyberKitDOMDocumentClass))
 
-typedef struct _WebKitDOMDocument WebKitDOMDocument;
-typedef struct _WebKitDOMDocumentClass WebKitDOMDocumentClass;
+typedef struct _CyberKitDOMDocument CyberKitDOMDocument;
+typedef struct _CyberKitDOMDocumentClass CyberKitDOMDocumentClass;
 
-struct _WebKitDOMDocument {
-    WebKitDOMNode parent_instance;
+struct _CyberKitDOMDocument {
+    CyberKitDOMNode parent_instance;
 };
 
-struct _WebKitDOMDocumentClass {
-    WebKitDOMNodeClass parent_class;
+struct _CyberKitDOMDocumentClass {
+    CyberKitDOMNodeClass parent_class;
 };
 
 WEBKIT_DEPRECATED GType
@@ -53,4 +53,4 @@ webkit_dom_document_get_type(void);
 
 G_END_DECLS
 
-#endif /* WebKitDOMDocument_h */
+#endif /* CyberKitDOMDocument_h */

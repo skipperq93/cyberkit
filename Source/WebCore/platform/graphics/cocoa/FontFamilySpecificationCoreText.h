@@ -29,7 +29,7 @@
 
 typedef const struct __CTFontDescriptor* CTFontDescriptorRef;
 
-namespace WebCore {
+namespace CyberCore {
 
 class FontDescription;
 class FontRanges;

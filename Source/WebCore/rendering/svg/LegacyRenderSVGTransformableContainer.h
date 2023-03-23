@@ -22,7 +22,7 @@
 
 #include "LegacyRenderSVGContainer.h"
 
-namespace WebCore {
+namespace CyberCore {
     
 class SVGGraphicsElement;
 
@@ -50,6 +50,6 @@ private:
     FloatRect m_lastTransformReferenceBoxRect;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(LegacyRenderSVGTransformableContainer, isLegacySVGTransformableContainer())

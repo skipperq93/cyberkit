@@ -28,7 +28,7 @@
 
 #include <windows.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 FloatRect::FloatRect(const RECT& r)
     : m_location(r.left, r.top)

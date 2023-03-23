@@ -44,7 +44,7 @@
 #include <wtf/glib/GUniquePtr.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 static const char* const gDictionaryDirectories[] = {
     "/usr/share/hyphen",
@@ -215,17 +215,17 @@ private:
     HyphenDictUniquePtr m_libhyphenDictionary;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
 template<>
-class TinyLRUCachePolicy<AtomString, RefPtr<WebCore::HyphenationDictionary>>
+class TinyLRUCachePolicy<AtomString, RefPtr<CyberCore::HyphenationDictionary>>
 {
 public:
-    static TinyLRUCache<AtomString, RefPtr<WebCore::HyphenationDictionary>, 32>& cache()
+    static TinyLRUCache<AtomString, RefPtr<CyberCore::HyphenationDictionary>, 32>& cache()
     {
-        static NeverDestroyed<TinyLRUCache<AtomString, RefPtr<WebCore::HyphenationDictionary>, 32>> cache;
+        static NeverDestroyed<TinyLRUCache<AtomString, RefPtr<CyberCore::HyphenationDictionary>, 32>> cache;
         return cache;
     }
 
@@ -234,14 +234,14 @@ public:
         return localeIdentifier.isNull();
     }
 
-    static RefPtr<WebCore::HyphenationDictionary> createValueForNullKey()
+    static RefPtr<CyberCore::HyphenationDictionary> createValueForNullKey()
     {
-        return WebCore::HyphenationDictionary::createNull();
+        return CyberCore::HyphenationDictionary::createNull();
     }
 
-    static RefPtr<WebCore::HyphenationDictionary> createValueForKey(const AtomString& dictionaryPath)
+    static RefPtr<CyberCore::HyphenationDictionary> createValueForKey(const AtomString& dictionaryPath)
     {
-        return WebCore::HyphenationDictionary::create(FileSystem::fileSystemRepresentation(dictionaryPath.string()));
+        return CyberCore::HyphenationDictionary::create(FileSystem::fileSystemRepresentation(dictionaryPath.string()));
     }
 
     static AtomString createKeyForStorage(const AtomString& key) { return key; }
@@ -249,7 +249,7 @@ public:
 
 } // namespace WTF
 
-namespace WebCore {
+namespace CyberCore {
 
 static void countLeadingSpaces(const CString& utf8String, int32_t& pointerOffset, int32_t& characterOffset)
 {
@@ -271,13 +271,13 @@ static void countLeadingSpaces(const CString& utf8String, int32_t& pointerOffset
 
 size_t lastHyphenLocation(StringView string, size_t beforeIndex, const AtomString& localeIdentifier)
 {
-    // libhyphen accepts strings in UTF-8 format, but WebCore can only provide StringView
+    // libhyphen accepts strings in UTF-8 format, but CyberCore can only provide StringView
     // which stores either UTF-16 or Latin1 data. This is unfortunate for performance
     // reasons and we should consider switching to a more flexible hyphenation library
     // if it is available.
     CString utf8StringCopy = string.utf8();
 
-    // WebCore often passes strings like " wordtohyphenate" to the platform layer. Since
+    // CyberCore often passes strings like " wordtohyphenate" to the platform layer. Since
     // libhyphen isn't advanced enough to deal with leading spaces (presumably CoreFoundation
     // can), we should find the appropriate indexes into the string to skip them.
     int32_t leadingSpaceBytes;
@@ -330,6 +330,6 @@ size_t lastHyphenLocation(StringView string, size_t beforeIndex, const AtomStrin
     return 0;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(LIBHYPHEN)

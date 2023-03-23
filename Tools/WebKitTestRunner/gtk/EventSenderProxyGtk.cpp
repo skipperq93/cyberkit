@@ -48,7 +48,7 @@
 
 namespace WTR {
 
-// WebCore and layout tests assume this value
+// CyberCore and layout tests assume this value
 static const float pixelsPerScrollTick = 40;
 
 // Key event location code defined in DOM Level 3.
@@ -255,7 +255,7 @@ void EventSenderProxy::rawKeyUp(WKStringRef key, WKEventModifiers modifiers, uns
 void EventSenderProxy::mouseDown(unsigned button, WKEventModifiers wkModifiers, WKStringRef pointerType)
 {
     unsigned gdkButton = eventSenderButtonToGDKButton(button);
-    auto modifier = WebCore::stateModifierForGdkButton(gdkButton);
+    auto modifier = CyberCore::stateModifierForGdkButton(gdkButton);
 
     // If the same mouse button is already in the down position don't
     // send another event as it may confuse Xvfb.
@@ -272,7 +272,7 @@ void EventSenderProxy::mouseDown(unsigned button, WKEventModifiers wkModifiers, 
 void EventSenderProxy::mouseUp(unsigned button, WKEventModifiers wkModifiers, WKStringRef pointerType)
 {
     unsigned gdkButton = eventSenderButtonToGDKButton(button);
-    auto modifier = WebCore::stateModifierForGdkButton(gdkButton);
+    auto modifier = CyberCore::stateModifierForGdkButton(gdkButton);
     m_mouseButtonsCurrentlyDown &= ~modifier;
     webkitWebViewBaseSynthesizeMouseEvent(toWebKitGLibAPI(m_testController->mainWebView()->platformView()),
         MouseEventType::Release, gdkButton, m_mouseButtonsCurrentlyDown, m_position.x, m_position.y, webkitModifiersToGDKModifiers(wkModifiers), 0, toWTFString(pointerType));

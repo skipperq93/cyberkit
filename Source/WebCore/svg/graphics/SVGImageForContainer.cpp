@@ -25,7 +25,7 @@
 #include "FloatSize.h"
 #include "Image.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 
 SVGImageForContainer::SVGImageForContainer(SVGImage* image, const FloatSize& containerSize, float containerZoom, const URL& initialFragmentURL)
@@ -59,4 +59,4 @@ RefPtr<NativeImage> SVGImageForContainer::nativeImageForCurrentFrame()
     return m_image->nativeImageForCurrentFrame();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

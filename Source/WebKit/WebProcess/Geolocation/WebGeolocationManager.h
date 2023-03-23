@@ -34,12 +34,12 @@
 #include <wtf/WeakHashMap.h>
 #include <wtf/WeakHashSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 class Geolocation;
 class GeolocationPositionData;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebProcess;
 class WebPage;
@@ -61,10 +61,10 @@ private:
     // IPC::MessageReceiver
     void didReceiveMessage(IPC::Connection&, IPC::Decoder&) override;
 
-    void didChangePosition(const WebCore::RegistrableDomain&, const WebCore::GeolocationPositionData&);
-    void didFailToDeterminePosition(const WebCore::RegistrableDomain&, const String& errorMessage);
+    void didChangePosition(const CyberCore::RegistrableDomain&, const CyberCore::GeolocationPositionData&);
+    void didFailToDeterminePosition(const CyberCore::RegistrableDomain&, const String& errorMessage);
 #if PLATFORM(IOS_FAMILY)
-    void resetPermissions(const WebCore::RegistrableDomain&);
+    void resetPermissions(const CyberCore::RegistrableDomain&);
 #endif // PLATFORM(IOS_FAMILY)
 
     struct PageSets {
@@ -75,8 +75,8 @@ private:
     bool isHighAccuracyEnabled(const PageSets&) const;
 
     WebProcess& m_process;
-    HashMap<WebCore::RegistrableDomain, PageSets> m_pageSets;
-    WeakHashMap<WebPage, WebCore::RegistrableDomain> m_pageToRegistrableDomain;
+    HashMap<CyberCore::RegistrableDomain, PageSets> m_pageSets;
+    WeakHashMap<WebPage, CyberCore::RegistrableDomain> m_pageToRegistrableDomain;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

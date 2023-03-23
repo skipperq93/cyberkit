@@ -163,7 +163,7 @@ static WebValidationBubbleViewController *allocWebValidationBubbleViewController
 
 @end
 
-namespace WebCore {
+namespace CyberCore {
 
 ValidationBubble::ValidationBubble(UIView *view, const String& message, const Settings&)
     : m_view(view)
@@ -230,6 +230,6 @@ void ValidationBubble::setAnchorRect(const IntRect& anchorRect, UIViewController
     m_presentingViewController = presentingViewController;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(IOS_FAMILY)

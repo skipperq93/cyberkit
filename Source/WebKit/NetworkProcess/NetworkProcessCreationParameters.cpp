@@ -27,7 +27,7 @@
 #include "NetworkProcessCreationParameters.h"
 
 #include "ArgumentCoders.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebsiteDataStoreParameters.h"
 
 #if PLATFORM(COCOA)

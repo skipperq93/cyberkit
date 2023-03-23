@@ -27,7 +27,7 @@
 
 #include <CyberCore/RoundedRect.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 namespace TestWebKitAPI {
 
@@ -36,7 +36,7 @@ static LayoutRect layoutRect(float x, float y, float width, float height)
     return { LayoutPoint(x, y), LayoutSize(width, height) };
 }
 
-TEST(WebCore, RoundedRectContainsRect)
+TEST(CyberCore, RoundedRectContainsRect)
 {
     auto roundedRectBounds = layoutRect(-10, -40, 40, 80);
     RoundedRect roundedRect(roundedRectBounds, { 10, 10 }, { 10, 20 }, { 0, 0 }, { 20, 40 });

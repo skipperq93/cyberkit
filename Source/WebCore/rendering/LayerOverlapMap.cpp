@@ -29,7 +29,7 @@
 #include "RenderLayer.h"
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct RectList {
     Vector<LayoutRect> rects;
@@ -388,5 +388,5 @@ TextStream& operator<<(TextStream& ts, const LayerOverlapMap& overlapMap)
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 

@@ -44,7 +44,7 @@
 #import "WebProcessPool.h"
 #import "WebViewImpl.h"
 #import "_WKLinkIconParametersInternal.h"
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 #import <CyberCore/WebViewVisualIdentificationOverlay.h>
 #import <CyberKit/WKDragDestinationAction.h>
 #import <pal/spi/cocoa/AVKitSPI.h>
@@ -98,7 +98,7 @@ ALLOW_DEPRECATED_IMPLEMENTATIONS_END
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainRunLoop(WKView.class, self))
+    if (CyberCoreObjCScheduleDeallocateOnMainRunLoop(WKView.class, self))
         return;
 
     _data->_impl->page().setIconLoadingClient(nullptr);
@@ -352,7 +352,7 @@ ALLOW_DEPRECATED_IMPLEMENTATIONS_END
 
 /*
 
-When possible, editing-related methods should be implemented in WebCore with the
+When possible, editing-related methods should be implemented in CyberCore with the
 EditorCommand mechanism and invoked via WEBCORE_COMMAND, rather than implementing
 individual methods here with Mac-specific code.
 
@@ -934,7 +934,7 @@ ALLOW_DEPRECATED_IMPLEMENTATIONS_END
     private:
         typedef void (^IconLoadCompletionHandler)(NSData*);
 
-        void getLoadDecisionForIcon(const WebCore::LinkIcon& linkIcon, CompletionHandler<void(CompletionHandler<void(API::Data*)>&&)>&& completionHandler) override
+        void getLoadDecisionForIcon(const CyberCore::LinkIcon& linkIcon, CompletionHandler<void(CompletionHandler<void(API::Data*)>&&)>&& completionHandler) override
         {
             RetainPtr<_WKLinkIconParameters> parameters = adoptNS([[_WKLinkIconParameters alloc] _initWithLinkIcon:linkIcon]);
 
@@ -1096,9 +1096,9 @@ ALLOW_DEPRECATED_IMPLEMENTATIONS_END
 {
 }
 
-- (void)_web_gestureEventWasNotHandledByWebCore:(NSEvent *)event
+- (void)_web_gestureEventWasNotHandledByCyberCore:(NSEvent *)event
 {
-    [self _gestureEventWasNotHandledByWebCore:event];
+    [self _gestureEventWasNotHandledByCyberCore:event];
 }
 
 - (void)_didHandleAcceptedCandidate
@@ -1200,15 +1200,15 @@ ALLOW_DEPRECATED_IMPLEMENTATIONS_END
 }
 
 #if PLATFORM(MAC)
-static WebCore::UserInterfaceLayoutDirection toUserInterfaceLayoutDirection(NSUserInterfaceLayoutDirection direction)
+static CyberCore::UserInterfaceLayoutDirection toUserInterfaceLayoutDirection(NSUserInterfaceLayoutDirection direction)
 {
     switch (direction) {
     case NSUserInterfaceLayoutDirectionLeftToRight:
-        return WebCore::UserInterfaceLayoutDirection::LTR;
+        return CyberCore::UserInterfaceLayoutDirection::LTR;
     case NSUserInterfaceLayoutDirectionRightToLeft:
-        return WebCore::UserInterfaceLayoutDirection::RTL;
+        return CyberCore::UserInterfaceLayoutDirection::RTL;
     }
-    return WebCore::UserInterfaceLayoutDirection::LTR;
+    return CyberCore::UserInterfaceLayoutDirection::LTR;
 }
 #endif
 
@@ -1544,9 +1544,9 @@ static WebCore::UserInterfaceLayoutDirection toUserInterfaceLayoutDirection(NSUs
 }
 #endif
 
-- (void)_gestureEventWasNotHandledByWebCore:(NSEvent *)event
+- (void)_gestureEventWasNotHandledByCyberCore:(NSEvent *)event
 {
-    _data->_impl->gestureEventWasNotHandledByWebCoreFromViewOnly(event);
+    _data->_impl->gestureEventWasNotHandledByCyberCoreFromViewOnly(event);
 }
 
 - (void)_simulateMouseMove:(NSEvent *)event

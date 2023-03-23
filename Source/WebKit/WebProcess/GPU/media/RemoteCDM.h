@@ -33,9 +33,9 @@
 #include <CyberCore/CDMPrivate.h>
 #include <wtf/RefCounted.h>
 
-namespace WebKit {
+namespace CyberKit {
 
-class RemoteCDM final : public WebCore::CDMPrivate {
+class RemoteCDM final : public CyberCore::CDMPrivate {
 public:
     static std::unique_ptr<RemoteCDM> create(WeakPtr<RemoteCDMFactory>&&, RemoteCDMIdentifier&&, RemoteCDMConfiguration&&);
     virtual ~RemoteCDM() = default;
@@ -47,18 +47,18 @@ private:
     void setLogIdentifier(const void*) final;
 #endif
 
-    void getSupportedConfiguration(WebCore::CDMKeySystemConfiguration&& candidateConfiguration, LocalStorageAccess, SupportedConfigurationCallback&&) final;
+    void getSupportedConfiguration(CyberCore::CDMKeySystemConfiguration&& candidateConfiguration, LocalStorageAccess, SupportedConfigurationCallback&&) final;
 
-    bool supportsConfiguration(const WebCore::CDMKeySystemConfiguration&) const final;
-    bool supportsConfigurationWithRestrictions(const WebCore::CDMKeySystemConfiguration&, const WebCore::CDMRestrictions&) const final;
-    bool supportsSessionTypeWithConfiguration(const WebCore::CDMSessionType&, const WebCore::CDMKeySystemConfiguration&) const final;
-    bool supportsInitData(const AtomString&, const WebCore::SharedBuffer&) const final;
-    WebCore::CDMRequirement distinctiveIdentifiersRequirement(const WebCore::CDMKeySystemConfiguration&, const WebCore::CDMRestrictions&) const final;
-    WebCore::CDMRequirement persistentStateRequirement(const WebCore::CDMKeySystemConfiguration&, const WebCore::CDMRestrictions&) const final;
-    bool distinctiveIdentifiersAreUniquePerOriginAndClearable(const WebCore::CDMKeySystemConfiguration&) const final;
-    RefPtr<WebCore::CDMInstance> createInstance() final;
+    bool supportsConfiguration(const CyberCore::CDMKeySystemConfiguration&) const final;
+    bool supportsConfigurationWithRestrictions(const CyberCore::CDMKeySystemConfiguration&, const CyberCore::CDMRestrictions&) const final;
+    bool supportsSessionTypeWithConfiguration(const CyberCore::CDMSessionType&, const CyberCore::CDMKeySystemConfiguration&) const final;
+    bool supportsInitData(const AtomString&, const CyberCore::SharedBuffer&) const final;
+    CyberCore::CDMRequirement distinctiveIdentifiersRequirement(const CyberCore::CDMKeySystemConfiguration&, const CyberCore::CDMRestrictions&) const final;
+    CyberCore::CDMRequirement persistentStateRequirement(const CyberCore::CDMKeySystemConfiguration&, const CyberCore::CDMRestrictions&) const final;
+    bool distinctiveIdentifiersAreUniquePerOriginAndClearable(const CyberCore::CDMKeySystemConfiguration&) const final;
+    RefPtr<CyberCore::CDMInstance> createInstance() final;
     void loadAndInitialize() final;
-    RefPtr<WebCore::SharedBuffer> sanitizeResponse(const WebCore::SharedBuffer&) const final;
+    RefPtr<CyberCore::SharedBuffer> sanitizeResponse(const CyberCore::SharedBuffer&) const final;
     std::optional<String> sanitizeSessionId(const String&) const final;
 
     Vector<AtomString> supportedInitDataTypes() const final { return m_configuration.supportedInitDataTypes; }

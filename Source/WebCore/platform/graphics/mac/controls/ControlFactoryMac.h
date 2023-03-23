@@ -32,7 +32,7 @@
 
 OBJC_CLASS NSServicesRolloverButtonCell;
 
-namespace WebCore {
+namespace CyberCore {
 
 class FloatRect;
 struct ControlStyle;
@@ -99,6 +99,6 @@ private:
     mutable RetainPtr<NSTextFieldCell> m_textFieldCell;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(MAC)

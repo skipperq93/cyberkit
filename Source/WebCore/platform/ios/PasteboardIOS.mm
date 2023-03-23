@@ -51,7 +51,7 @@
 - (BOOL)containsAttachments;
 @end
 
-namespace WebCore {
+namespace CyberCore {
 
 Pasteboard::Pasteboard(std::unique_ptr<PasteboardContext>&& context, const String& pasteboardName)
     : m_context(WTFMove(context))

@@ -31,11 +31,11 @@
 #include "ArgumentCoders.h"
 #include <wtf/text/StringBuilder.h>
 
-using WebCore::SharedGamepadValue;
+using CyberCore::SharedGamepadValue;
 
 namespace WebKit {
 
-GamepadData::GamepadData(unsigned index, const String& id, const String& mapping, const Vector<SharedGamepadValue>& axisValues, const Vector<SharedGamepadValue>& buttonValues, MonotonicTime lastUpdateTime, const WebCore::GamepadHapticEffectTypeSet& supportedEffectTypes)
+GamepadData::GamepadData(unsigned index, const String& id, const String& mapping, const Vector<SharedGamepadValue>& axisValues, const Vector<SharedGamepadValue>& buttonValues, MonotonicTime lastUpdateTime, const CyberCore::GamepadHapticEffectTypeSet& supportedEffectTypes)
     : m_index(index)
     , m_id(id)
     , m_mapping(mapping)
@@ -46,7 +46,7 @@ GamepadData::GamepadData(unsigned index, const String& id, const String& mapping
 {
 }
 
-GamepadData::GamepadData(unsigned index, String&& id, String&& mapping, Vector<double>&& axisValues, Vector<double>&& buttonValues, MonotonicTime lastUpdateTime, WebCore::GamepadHapticEffectTypeSet&& supportedEffectTypes)
+GamepadData::GamepadData(unsigned index, String&& id, String&& mapping, Vector<double>&& axisValues, Vector<double>&& buttonValues, MonotonicTime lastUpdateTime, CyberCore::GamepadHapticEffectTypeSet&& supportedEffectTypes)
     : m_index(index)
     , m_id(id)
     , m_mapping(WTFMove(mapping))

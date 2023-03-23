@@ -37,7 +37,7 @@ extern cst_voice* register_cmu_us_rms(const char*);
 extern cst_voice* register_cmu_us_slt(const char*);
 }
 
-using namespace WebCore;
+using namespace CyberCore;
 
 typedef struct _WebKitFliteSrcClass WebKitFliteSrcClass;
 typedef struct _WebKitFliteSrcPrivate WebKitFliteSrcPrivate;
@@ -201,7 +201,7 @@ static void webkit_flite_src_class_init(WebKitFliteSrcClass* klass)
     gst_element_class_add_static_pad_template(elementClass, &srcTemplate);
     gst_element_class_set_static_metadata(elementClass,
         "WebKit WebSpeech GstFlite source element", "Source",
-        "Handles WebSpeech data from WebCore",
+        "Handles WebSpeech data from CyberCore",
         "ChangSeok Oh <changseok@webkit.org>");
 
     GstBaseSrcClass* baseSrcClass = GST_BASE_SRC_CLASS(klass);

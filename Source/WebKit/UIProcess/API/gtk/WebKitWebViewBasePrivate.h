@@ -49,11 +49,11 @@ WebKitWebViewBase* webkitWebViewBaseCreate(const API::PageConfiguration&);
 WebKit::WebPageProxy* webkitWebViewBaseGetPage(WebKitWebViewBase*);
 void webkitWebViewBaseCreateWebPage(WebKitWebViewBase*, Ref<API::PageConfiguration>&&);
 void webkitWebViewBaseSetTooltipText(WebKitWebViewBase*, const char*);
-void webkitWebViewBaseSetTooltipArea(WebKitWebViewBase*, const WebCore::IntRect&);
+void webkitWebViewBaseSetTooltipArea(WebKitWebViewBase*, const CyberCore::IntRect&);
 void webkitWebViewBaseSetMouseIsOverScrollbar(WebKitWebViewBase*, WebKit::WebHitTestResultData::IsScrollbar);
 void webkitWebViewBasePropagateKeyEvent(WebKitWebViewBase*, GdkEvent*);
 void webkitWebViewBasePropagateWheelEvent(WebKitWebViewBase*, GdkEvent*);
-void webkitWebViewBaseChildMoveResize(WebKitWebViewBase*, GtkWidget*, const WebCore::IntRect&);
+void webkitWebViewBaseChildMoveResize(WebKitWebViewBase*, GtkWidget*, const CyberCore::IntRect&);
 void webkitWebViewBaseEnterFullScreen(WebKitWebViewBase*);
 void webkitWebViewBaseExitFullScreen(WebKitWebViewBase*);
 bool webkitWebViewBaseIsFullScreen(WebKitWebViewBase*);
@@ -69,11 +69,11 @@ GUniquePtr<GdkEvent> webkitWebViewBaseTakeContextMenuEvent(WebKitWebViewBase*);
 
 void webkitWebViewBaseSetInputMethodState(WebKitWebViewBase*, std::optional<WebKit::InputMethodState>&&);
 void webkitWebViewBaseUpdateTextInputState(WebKitWebViewBase*);
-void webkitWebViewBaseSetContentsSize(WebKitWebViewBase*, const WebCore::IntSize&);
+void webkitWebViewBaseSetContentsSize(WebKitWebViewBase*, const CyberCore::IntSize&);
 
 void webkitWebViewBaseSetFocus(WebKitWebViewBase*, bool focused);
 void webkitWebViewBaseSetEditable(WebKitWebViewBase*, bool editable);
-WebCore::IntSize webkitWebViewBaseGetViewSize(WebKitWebViewBase*);
+CyberCore::IntSize webkitWebViewBaseGetViewSize(WebKitWebViewBase*);
 bool webkitWebViewBaseIsInWindowActive(WebKitWebViewBase*);
 bool webkitWebViewBaseIsFocused(WebKitWebViewBase*);
 bool webkitWebViewBaseIsVisible(WebKitWebViewBase*);
@@ -93,11 +93,11 @@ void webkitWebViewBaseDidRelaunchWebProcess(WebKitWebViewBase*);
 void webkitWebViewBasePageClosed(WebKitWebViewBase*);
 
 #if ENABLE(DRAG_SUPPORT)
-void webkitWebViewBaseStartDrag(WebKitWebViewBase*, WebCore::SelectionData&&, OptionSet<WebCore::DragOperation>, RefPtr<WebKit::ShareableBitmap>&&, WebCore::IntPoint&& dragImageHotspot);
+void webkitWebViewBaseStartDrag(WebKitWebViewBase*, CyberCore::SelectionData&&, OptionSet<CyberCore::DragOperation>, RefPtr<WebKit::ShareableBitmap>&&, CyberCore::IntPoint&& dragImageHotspot);
 void webkitWebViewBaseDidPerformDragControllerAction(WebKitWebViewBase*);
 #endif
 
-RefPtr<WebKit::ViewSnapshot> webkitWebViewBaseTakeViewSnapshot(WebKitWebViewBase*, std::optional<WebCore::IntRect>&&);
+RefPtr<WebKit::ViewSnapshot> webkitWebViewBaseTakeViewSnapshot(WebKitWebViewBase*, std::optional<CyberCore::IntRect>&&);
 void webkitWebViewBaseSetEnableBackForwardNavigationGesture(WebKitWebViewBase*, bool enabled);
 WebKit::ViewGestureController* webkitWebViewBaseViewGestureController(WebKitWebViewBase*);
 
@@ -113,7 +113,7 @@ void webkitWebViewBaseDidFailNavigation(WebKitWebViewBase*, API::Navigation*);
 void webkitWebViewBaseDidSameDocumentNavigationForMainFrame(WebKitWebViewBase*, WebKit::SameDocumentNavigationType);
 void webkitWebViewBaseDidRestoreScrollPosition(WebKitWebViewBase*);
 
-void webkitWebViewBaseShowEmojiChooser(WebKitWebViewBase*, const WebCore::IntRect&, CompletionHandler<void(String)>&&);
+void webkitWebViewBaseShowEmojiChooser(WebKitWebViewBase*, const CyberCore::IntRect&, CompletionHandler<void(String)>&&);
 
 #if USE(WPE_RENDERER)
 int webkitWebViewBaseRenderHostFileDescriptor(WebKitWebViewBase*);
@@ -124,7 +124,7 @@ void webkitWebViewBaseDidLosePointerLock(WebKitWebViewBase*);
 
 void webkitWebViewBaseSetInputMethodContext(WebKitWebViewBase*, WebKitInputMethodContext*);
 WebKitInputMethodContext* webkitWebViewBaseGetInputMethodContext(WebKitWebViewBase*);
-void webkitWebViewBaseSynthesizeCompositionKeyPress(WebKitWebViewBase*, const String& text, std::optional<Vector<WebCore::CompositionUnderline>>&&, std::optional<WebKit::EditingRange>&&);
+void webkitWebViewBaseSynthesizeCompositionKeyPress(WebKitWebViewBase*, const String& text, std::optional<Vector<CyberCore::CompositionUnderline>>&&, std::optional<WebKit::EditingRange>&&);
 void webkitWebViewBaseSynthesizeWheelEvent(WebKitWebViewBase*, const GdkEvent*, double deltaX, double deltaY, int x, int y, WheelEventPhase, WheelEventPhase momentumPhase, bool hasPreciseDeltas);
 
 void webkitWebViewBaseMakeBlank(WebKitWebViewBase*, bool);

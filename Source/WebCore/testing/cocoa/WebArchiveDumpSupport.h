@@ -28,8 +28,8 @@
 #include <CoreFoundation/CoreFoundation.h>
 #include <wtf/RetainPtr.h>
 
-namespace WebCoreTestSupport {
+namespace CyberCoreTestSupport {
 
 RetainPtr<CFStringRef> createXMLStringFromWebArchiveData(CFDataRef webArchiveData) WTF_EXPORT_PRIVATE;
 
-} // namespace WebCoreTestSupport
+} // namespace CyberCoreTestSupport

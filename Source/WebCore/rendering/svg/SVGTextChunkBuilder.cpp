@@ -26,7 +26,7 @@
 #include "SVGLengthContext.h"
 #include "SVGTextFragment.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 SVGTextChunkBuilder::SVGTextChunkBuilder()
 {

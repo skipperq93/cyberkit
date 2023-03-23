@@ -37,14 +37,14 @@
 #include <wtf/LoggerHelper.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 extern WTFLogChannel LogMedia;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace PAL;
-using namespace WebCore;
+using namespace CyberCore;
 
 Ref<RemoteMediaSessionCoordinator> RemoteMediaSessionCoordinator::create(WebPage& page, const String& identifier)
 {
@@ -63,7 +63,7 @@ RemoteMediaSessionCoordinator::~RemoteMediaSessionCoordinator()
     WebProcess::singleton().removeMessageReceiver(Messages::RemoteMediaSessionCoordinator::messageReceiverName(), m_page.identifier());
 }
 
-void RemoteMediaSessionCoordinator::join(CompletionHandler<void(std::optional<WebCore::Exception>&&)>&& callback)
+void RemoteMediaSessionCoordinator::join(CompletionHandler<void(std::optional<CyberCore::Exception>&&)>&& callback)
 {
     ALWAYS_LOG_IF_POSSIBLE(LOGIDENTIFIER);
     m_page.sendWithAsyncReply(Messages::RemoteMediaSessionCoordinatorProxy::Join { }, [weakThis = WeakPtr { *this }, callback = WTFMove(callback)](auto&& exception) mutable {
@@ -86,7 +86,7 @@ void RemoteMediaSessionCoordinator::leave()
     m_page.send(Messages::RemoteMediaSessionCoordinatorProxy::Leave { });
 }
 
-void RemoteMediaSessionCoordinator::seekTo(double time, CompletionHandler<void(std::optional<WebCore::Exception>&&)>&& callback)
+void RemoteMediaSessionCoordinator::seekTo(double time, CompletionHandler<void(std::optional<CyberCore::Exception>&&)>&& callback)
 {
     ALWAYS_LOG_IF_POSSIBLE(LOGIDENTIFIER, time);
     m_page.sendWithAsyncReply(Messages::RemoteMediaSessionCoordinatorProxy::CoordinateSeekTo { time }, [weakThis = WeakPtr { *this }, callback = WTFMove(callback)](auto&& exception) mutable {
@@ -104,7 +104,7 @@ void RemoteMediaSessionCoordinator::seekTo(double time, CompletionHandler<void(s
     });
 }
 
-void RemoteMediaSessionCoordinator::play(CompletionHandler<void(std::optional<WebCore::Exception>&&)>&& callback)
+void RemoteMediaSessionCoordinator::play(CompletionHandler<void(std::optional<CyberCore::Exception>&&)>&& callback)
 {
     ALWAYS_LOG_IF_POSSIBLE(LOGIDENTIFIER);
     m_page.sendWithAsyncReply(Messages::RemoteMediaSessionCoordinatorProxy::CoordinatePlay { }, [weakThis = WeakPtr { *this }, callback = WTFMove(callback)](auto&& exception) mutable {
@@ -122,7 +122,7 @@ void RemoteMediaSessionCoordinator::play(CompletionHandler<void(std::optional<We
     });
 }
 
-void RemoteMediaSessionCoordinator::pause(CompletionHandler<void(std::optional<WebCore::Exception>&&)>&& callback)
+void RemoteMediaSessionCoordinator::pause(CompletionHandler<void(std::optional<CyberCore::Exception>&&)>&& callback)
 {
     ALWAYS_LOG_IF_POSSIBLE(LOGIDENTIFIER);
     m_page.sendWithAsyncReply(Messages::RemoteMediaSessionCoordinatorProxy::CoordinatePause { }, [weakThis = WeakPtr { *this }, callback = WTFMove(callback)](auto&& exception) mutable {
@@ -140,7 +140,7 @@ void RemoteMediaSessionCoordinator::pause(CompletionHandler<void(std::optional<W
     });
 }
 
-void RemoteMediaSessionCoordinator::setTrack(const String& trackIdentifier, CompletionHandler<void(std::optional<WebCore::Exception>&&)>&& callback)
+void RemoteMediaSessionCoordinator::setTrack(const String& trackIdentifier, CompletionHandler<void(std::optional<CyberCore::Exception>&&)>&& callback)
 {
     ALWAYS_LOG_IF_POSSIBLE(LOGIDENTIFIER);
     m_page.sendWithAsyncReply(Messages::RemoteMediaSessionCoordinatorProxy::CoordinateSetTrack { trackIdentifier }, [weakThis = WeakPtr { *this }, callback = WTFMove(callback)](auto&& exception) mutable {
@@ -158,19 +158,19 @@ void RemoteMediaSessionCoordinator::setTrack(const String& trackIdentifier, Comp
     });
 }
 
-void RemoteMediaSessionCoordinator::positionStateChanged(const std::optional<WebCore::MediaPositionState>& state)
+void RemoteMediaSessionCoordinator::positionStateChanged(const std::optional<CyberCore::MediaPositionState>& state)
 {
     ALWAYS_LOG_IF_POSSIBLE(LOGIDENTIFIER);
     m_page.send(Messages::RemoteMediaSessionCoordinatorProxy::PositionStateChanged { state });
 }
 
-void RemoteMediaSessionCoordinator::readyStateChanged(WebCore::MediaSessionReadyState state)
+void RemoteMediaSessionCoordinator::readyStateChanged(CyberCore::MediaSessionReadyState state)
 {
     ALWAYS_LOG_IF_POSSIBLE(LOGIDENTIFIER, state);
     m_page.send(Messages::RemoteMediaSessionCoordinatorProxy::ReadyStateChanged { state });
 }
 
-void RemoteMediaSessionCoordinator::playbackStateChanged(WebCore::MediaSessionPlaybackState state)
+void RemoteMediaSessionCoordinator::playbackStateChanged(CyberCore::MediaSessionPlaybackState state)
 {
     ALWAYS_LOG_IF_POSSIBLE(LOGIDENTIFIER, state);
     m_page.send(Messages::RemoteMediaSessionCoordinatorProxy::PlaybackStateChanged { state });
@@ -218,7 +218,7 @@ void RemoteMediaSessionCoordinator::setSessionTrack(const String& trackIdentifie
         completionHandler(false);
 }
 
-void RemoteMediaSessionCoordinator::coordinatorStateChanged(WebCore::MediaSessionCoordinatorState state)
+void RemoteMediaSessionCoordinator::coordinatorStateChanged(CyberCore::MediaSessionCoordinatorState state)
 {
     ALWAYS_LOG_IF_POSSIBLE(LOGIDENTIFIER, state);
     if (auto coordinatorClient = client())

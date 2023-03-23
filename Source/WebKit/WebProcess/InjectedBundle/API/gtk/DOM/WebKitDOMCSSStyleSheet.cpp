@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -18,45 +18,45 @@
  */
 
 #include "config.h"
-#include "WebKitDOMCSSStyleSheet.h"
+#include "CyberKitDOMCSSStyleSheet.h"
 
 #include <CyberCore/CSSImportRule.h>
 #include "DOMObjectCache.h"
 #include <CyberCore/DOMException.h>
 #include <CyberCore/Document.h>
 #include <CyberCore/JSExecState.h>
-#include "WebKitDOMCSSRuleListPrivate.h"
-#include "WebKitDOMCSSRulePrivate.h"
-#include "WebKitDOMCSSStyleSheetPrivate.h"
-#include "WebKitDOMPrivate.h"
-#include "WebKitDOMStyleSheetPrivate.h"
+#include "CyberKitDOMCSSRuleListPrivate.h"
+#include "CyberKitDOMCSSRulePrivate.h"
+#include "CyberKitDOMCSSStyleSheetPrivate.h"
+#include "CyberKitDOMPrivate.h"
+#include "CyberKitDOMStyleSheetPrivate.h"
 #include "ConvertToUTF8String.h"
 #include <wtf/GetPtr.h>
 #include <wtf/RefPtr.h>
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
-namespace WebKit {
+namespace CyberKit {
 
-WebKitDOMCSSStyleSheet* kit(WebCore::CSSStyleSheet* obj)
+CyberKitDOMCSSStyleSheet* kit(CyberCore::CSSStyleSheet* obj)
 {
-    return WEBKIT_DOM_CSS_STYLE_SHEET(kit(static_cast<WebCore::StyleSheet*>(obj)));
+    return WEBKIT_DOM_CSS_STYLE_SHEET(kit(static_cast<CyberCore::StyleSheet*>(obj)));
 }
 
-WebCore::CSSStyleSheet* core(WebKitDOMCSSStyleSheet* request)
+CyberCore::CSSStyleSheet* core(CyberKitDOMCSSStyleSheet* request)
 {
-    return request ? static_cast<WebCore::CSSStyleSheet*>(WEBKIT_DOM_OBJECT(request)->coreObject) : 0;
+    return request ? static_cast<CyberCore::CSSStyleSheet*>(WEBKIT_DOM_OBJECT(request)->coreObject) : 0;
 }
 
-WebKitDOMCSSStyleSheet* wrapCSSStyleSheet(WebCore::CSSStyleSheet* coreObject)
+CyberKitDOMCSSStyleSheet* wrapCSSStyleSheet(CyberCore::CSSStyleSheet* coreObject)
 {
     ASSERT(coreObject);
     return WEBKIT_DOM_CSS_STYLE_SHEET(g_object_new(WEBKIT_DOM_TYPE_CSS_STYLE_SHEET, "core-object", coreObject, nullptr));
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
-G_DEFINE_TYPE(WebKitDOMCSSStyleSheet, webkit_dom_css_style_sheet, WEBKIT_DOM_TYPE_STYLE_SHEET)
+G_DEFINE_TYPE(CyberKitDOMCSSStyleSheet, webkit_dom_css_style_sheet, WEBKIT_DOM_TYPE_STYLE_SHEET)
 
 enum {
     DOM_CSS_STYLE_SHEET_PROP_0,
@@ -67,7 +67,7 @@ enum {
 
 static void webkit_dom_css_style_sheet_get_property(GObject* object, guint propertyId, GValue* value, GParamSpec* pspec)
 {
-    WebKitDOMCSSStyleSheet* self = WEBKIT_DOM_CSS_STYLE_SHEET(object);
+    CyberKitDOMCSSStyleSheet* self = WEBKIT_DOM_CSS_STYLE_SHEET(object);
 
     switch (propertyId) {
     case DOM_CSS_STYLE_SHEET_PROP_OWNER_RULE:
@@ -85,7 +85,7 @@ static void webkit_dom_css_style_sheet_get_property(GObject* object, guint prope
     }
 }
 
-static void webkit_dom_css_style_sheet_class_init(WebKitDOMCSSStyleSheetClass* requestClass)
+static void webkit_dom_css_style_sheet_class_init(CyberKitDOMCSSStyleSheetClass* requestClass)
 {
     GObjectClass* gobjectClass = G_OBJECT_CLASS(requestClass);
     gobjectClass->get_property = webkit_dom_css_style_sheet_get_property;
@@ -96,7 +96,7 @@ static void webkit_dom_css_style_sheet_class_init(WebKitDOMCSSStyleSheetClass* r
         g_param_spec_object(
             "owner-rule",
             "CSSStyleSheet:owner-rule",
-            "read-only WebKitDOMCSSRule* CSSStyleSheet:owner-rule",
+            "read-only CyberKitDOMCSSRule* CSSStyleSheet:owner-rule",
             WEBKIT_DOM_TYPE_CSS_RULE,
             WEBKIT_PARAM_READABLE));
 
@@ -106,7 +106,7 @@ static void webkit_dom_css_style_sheet_class_init(WebKitDOMCSSStyleSheetClass* r
         g_param_spec_object(
             "css-rules",
             "CSSStyleSheet:css-rules",
-            "read-only WebKitDOMCSSRuleList* CSSStyleSheet:css-rules",
+            "read-only CyberKitDOMCSSRuleList* CSSStyleSheet:css-rules",
             WEBKIT_DOM_TYPE_CSS_RULE_LIST,
             WEBKIT_PARAM_READABLE));
 
@@ -116,104 +116,104 @@ static void webkit_dom_css_style_sheet_class_init(WebKitDOMCSSStyleSheetClass* r
         g_param_spec_object(
             "rules",
             "CSSStyleSheet:rules",
-            "read-only WebKitDOMCSSRuleList* CSSStyleSheet:rules",
+            "read-only CyberKitDOMCSSRuleList* CSSStyleSheet:rules",
             WEBKIT_DOM_TYPE_CSS_RULE_LIST,
             WEBKIT_PARAM_READABLE));
 
 }
 
-static void webkit_dom_css_style_sheet_init(WebKitDOMCSSStyleSheet* request)
+static void webkit_dom_css_style_sheet_init(CyberKitDOMCSSStyleSheet* request)
 {
     UNUSED_PARAM(request);
 }
 
-gulong webkit_dom_css_style_sheet_insert_rule(WebKitDOMCSSStyleSheet* self, const gchar* rule, gulong index, GError** error)
+gulong webkit_dom_css_style_sheet_insert_rule(CyberKitDOMCSSStyleSheet* self, const gchar* rule, gulong index, GError** error)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_CSS_STYLE_SHEET(self), 0);
     g_return_val_if_fail(rule, 0);
     g_return_val_if_fail(!error || !*error, 0);
-    WebCore::CSSStyleSheet* item = WebKit::core(self);
+    CyberCore::CSSStyleSheet* item = CyberKit::core(self);
     WTF::String convertedRule = WTF::String::fromUTF8(rule);
     auto result = item->insertRule(convertedRule, index);
     if (result.hasException()) {
-        auto description = WebCore::DOMException::description(result.releaseException().code());
+        auto description = CyberCore::DOMException::description(result.releaseException().code());
         g_set_error_literal(error, g_quark_from_string("WEBKIT_DOM"), description.legacyCode, description.name);
         return 0;
     }
     return result.releaseReturnValue();
 }
 
-void webkit_dom_css_style_sheet_delete_rule(WebKitDOMCSSStyleSheet* self, gulong index, GError** error)
+void webkit_dom_css_style_sheet_delete_rule(CyberKitDOMCSSStyleSheet* self, gulong index, GError** error)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_CSS_STYLE_SHEET(self));
     g_return_if_fail(!error || !*error);
-    WebCore::CSSStyleSheet* item = WebKit::core(self);
+    CyberCore::CSSStyleSheet* item = CyberKit::core(self);
     auto result = item->deleteRule(index);
     if (result.hasException()) {
-        auto description = WebCore::DOMException::description(result.releaseException().code());
+        auto description = CyberCore::DOMException::description(result.releaseException().code());
         g_set_error_literal(error, g_quark_from_string("WEBKIT_DOM"), description.legacyCode, description.name);
     }
 }
 
-glong webkit_dom_css_style_sheet_add_rule(WebKitDOMCSSStyleSheet* self, const gchar* selector, const gchar* style, gulong index, GError** error)
+glong webkit_dom_css_style_sheet_add_rule(CyberKitDOMCSSStyleSheet* self, const gchar* selector, const gchar* style, gulong index, GError** error)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_CSS_STYLE_SHEET(self), 0);
     g_return_val_if_fail(selector, 0);
     g_return_val_if_fail(style, 0);
     g_return_val_if_fail(!error || !*error, 0);
-    WebCore::CSSStyleSheet* item = WebKit::core(self);
+    CyberCore::CSSStyleSheet* item = CyberKit::core(self);
     WTF::String convertedSelector = WTF::String::fromUTF8(selector);
     WTF::String convertedStyle = WTF::String::fromUTF8(style);
     auto result = item->addRule(convertedSelector, convertedStyle, index);
     if (result.hasException()) {
-        auto description = WebCore::DOMException::description(result.releaseException().code());
+        auto description = CyberCore::DOMException::description(result.releaseException().code());
         g_set_error_literal(error, g_quark_from_string("WEBKIT_DOM"), description.legacyCode, description.name);
         return -1;
     }
     return result.releaseReturnValue();
 }
 
-void webkit_dom_css_style_sheet_remove_rule(WebKitDOMCSSStyleSheet* self, gulong index, GError** error)
+void webkit_dom_css_style_sheet_remove_rule(CyberKitDOMCSSStyleSheet* self, gulong index, GError** error)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_CSS_STYLE_SHEET(self));
     g_return_if_fail(!error || !*error);
-    WebCore::CSSStyleSheet* item = WebKit::core(self);
+    CyberCore::CSSStyleSheet* item = CyberKit::core(self);
     auto result = item->removeRule(index);
     if (result.hasException()) {
-        auto description = WebCore::DOMException::description(result.releaseException().code());
+        auto description = CyberCore::DOMException::description(result.releaseException().code());
         g_set_error_literal(error, g_quark_from_string("WEBKIT_DOM"), description.legacyCode, description.name);
     }
 }
 
-WebKitDOMCSSRule* webkit_dom_css_style_sheet_get_owner_rule(WebKitDOMCSSStyleSheet* self)
+CyberKitDOMCSSRule* webkit_dom_css_style_sheet_get_owner_rule(CyberKitDOMCSSStyleSheet* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_CSS_STYLE_SHEET(self), 0);
-    WebCore::CSSStyleSheet* item = WebKit::core(self);
-    RefPtr<WebCore::CSSRule> gobjectResult = WTF::getPtr(item->ownerRule());
-    return WebKit::kit(gobjectResult.get());
+    CyberCore::CSSStyleSheet* item = CyberKit::core(self);
+    RefPtr<CyberCore::CSSRule> gobjectResult = WTF::getPtr(item->ownerRule());
+    return CyberKit::kit(gobjectResult.get());
 }
 
-WebKitDOMCSSRuleList* webkit_dom_css_style_sheet_get_css_rules(WebKitDOMCSSStyleSheet* self)
+CyberKitDOMCSSRuleList* webkit_dom_css_style_sheet_get_css_rules(CyberKitDOMCSSStyleSheet* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_CSS_STYLE_SHEET(self), 0);
-    WebCore::CSSStyleSheet* item = WebKit::core(self);
-    RefPtr<WebCore::CSSRuleList> gobjectResult = WTF::getPtr(item->cssRules());
-    return WebKit::kit(gobjectResult.get());
+    CyberCore::CSSStyleSheet* item = CyberKit::core(self);
+    RefPtr<CyberCore::CSSRuleList> gobjectResult = WTF::getPtr(item->cssRules());
+    return CyberKit::kit(gobjectResult.get());
 }
 
-WebKitDOMCSSRuleList* webkit_dom_css_style_sheet_get_rules(WebKitDOMCSSStyleSheet* self)
+CyberKitDOMCSSRuleList* webkit_dom_css_style_sheet_get_rules(CyberKitDOMCSSStyleSheet* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_CSS_STYLE_SHEET(self), 0);
-    WebCore::CSSStyleSheet* item = WebKit::core(self);
-    RefPtr<WebCore::CSSRuleList> gobjectResult = WTF::getPtr(item->cssRules());
-    return WebKit::kit(gobjectResult.get());
+    CyberCore::CSSStyleSheet* item = CyberKit::core(self);
+    RefPtr<CyberCore::CSSRuleList> gobjectResult = WTF::getPtr(item->cssRules());
+    return CyberKit::kit(gobjectResult.get());
 }
 
 G_GNUC_END_IGNORE_DEPRECATIONS;

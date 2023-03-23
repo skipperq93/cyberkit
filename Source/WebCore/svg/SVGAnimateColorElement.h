@@ -23,7 +23,7 @@
 
 #include "SVGAnimateElementBase.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGAnimateColorElement final : public SVGAnimateElementBase {
     WTF_MAKE_ISO_ALLOCATED(SVGAnimateColorElement);
@@ -34,4 +34,4 @@ private:
     SVGAnimateColorElement(const QualifiedName&, Document&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

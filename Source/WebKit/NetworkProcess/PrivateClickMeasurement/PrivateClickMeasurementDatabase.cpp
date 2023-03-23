@@ -164,7 +164,7 @@ bool Database::createSchema()
     return true;
 }
 
-void Database::insertPrivateClickMeasurement(WebCore::PrivateClickMeasurement&& attribution, PrivateClickMeasurementAttributionType attributionType)
+void Database::insertPrivateClickMeasurement(CyberCore::PrivateClickMeasurement&& attribution, PrivateClickMeasurementAttributionType attributionType)
 {
     ASSERT(!RunLoop::isMain());
 
@@ -239,7 +239,7 @@ void Database::markAllUnattributedPrivateClickMeasurementAsExpiredForTesting()
     }
 }
 
-std::pair<std::optional<Database::UnattributedPrivateClickMeasurement>, std::optional<Database::AttributedPrivateClickMeasurement>> Database::findPrivateClickMeasurement(const WebCore::PCM::SourceSite& sourceSite, const WebCore::PCM::AttributionDestinationSite& destinationSite, const ApplicationBundleIdentifier& applicationBundleIdentifier)
+std::pair<std::optional<Database::UnattributedPrivateClickMeasurement>, std::optional<Database::AttributedPrivateClickMeasurement>> Database::findPrivateClickMeasurement(const CyberCore::PCM::SourceSite& sourceSite, const CyberCore::PCM::AttributionDestinationSite& destinationSite, const ApplicationBundleIdentifier& applicationBundleIdentifier)
 {
     ASSERT(!RunLoop::isMain());
     auto sourceSiteDomainID = domainID(sourceSite.registrableDomain);
@@ -276,7 +276,7 @@ std::pair<std::optional<Database::UnattributedPrivateClickMeasurement>, std::opt
     return std::make_pair(unattributedPrivateClickMeasurement, attributedPrivateClickMeasurement);
 }
 
-std::pair<std::optional<WebCore::PCM::AttributionSecondsUntilSendData>, DebugInfo> Database::attributePrivateClickMeasurement(const WebCore::PCM::SourceSite& sourceSite, const WebCore::PCM::AttributionDestinationSite& destinationSite, const ApplicationBundleIdentifier& applicationBundleIdentifier, WebCore::PCM::AttributionTriggerData&& attributionTriggerData, WebCore::PrivateClickMeasurement::IsRunningLayoutTest isRunningTest)
+std::pair<std::optional<CyberCore::PCM::AttributionSecondsUntilSendData>, DebugInfo> Database::attributePrivateClickMeasurement(const CyberCore::PCM::SourceSite& sourceSite, const CyberCore::PCM::AttributionDestinationSite& destinationSite, const ApplicationBundleIdentifier& applicationBundleIdentifier, CyberCore::PCM::AttributionTriggerData&& attributionTriggerData, CyberCore::PrivateClickMeasurement::IsRunningLayoutTest isRunningTest)
 {
     ASSERT(!RunLoop::isMain());
 
@@ -293,7 +293,7 @@ std::pair<std::optional<WebCore::PCM::AttributionSecondsUntilSendData>, DebugInf
     RELEASE_LOG_INFO(PrivateClickMeasurement, "Got an attribution with attribution trigger data: %u and priority: %u.", data, priority);
     debugInfo.messages.append({ MessageLevel::Info, makeString("[Private Click Measurement] Got an attribution with attribution trigger data: '"_s, data, "' and priority: '"_s, priority, "'."_s) });
 
-    WebCore::PCM::AttributionSecondsUntilSendData secondsUntilSend { std::nullopt, std::nullopt };
+    CyberCore::PCM::AttributionSecondsUntilSendData secondsUntilSend { std::nullopt, std::nullopt };
 
     auto attribution = findPrivateClickMeasurement(sourceSite, destinationSite, applicationBundleIdentifier);
     auto& previouslyUnattributed = attribution.first;
@@ -341,7 +341,7 @@ std::pair<std::optional<WebCore::PCM::AttributionSecondsUntilSendData>, DebugInf
     return { secondsUntilSend, WTFMove(debugInfo) };
 }
 
-void Database::removeUnattributed(WebCore::PrivateClickMeasurement& attribution)
+void Database::removeUnattributed(CyberCore::PrivateClickMeasurement& attribution)
 {
     ASSERT(!RunLoop::isMain());
     auto sourceSiteDomainID = domainID(attribution.sourceSite().registrableDomain);
@@ -361,7 +361,7 @@ void Database::removeUnattributed(WebCore::PrivateClickMeasurement& attribution)
     }
 }
 
-Vector<WebCore::PrivateClickMeasurement> Database::allAttributedPrivateClickMeasurement()
+Vector<CyberCore::PrivateClickMeasurement> Database::allAttributedPrivateClickMeasurement()
 {
     ASSERT(!RunLoop::isMain());
     auto attributedScopedStatement = this->scopedStatement(m_allAttributedPrivateClickMeasurementStatement, allAttributedPrivateClickMeasurementQuery, "allAttributedPrivateClickMeasurement"_s);
@@ -372,7 +372,7 @@ Vector<WebCore::PrivateClickMeasurement> Database::allAttributedPrivateClickMeas
         return { };
     }
 
-    Vector<WebCore::PrivateClickMeasurement> attributions;
+    Vector<CyberCore::PrivateClickMeasurement> attributions;
     while (attributedScopedStatement->step() == SQLITE_ROW)
         attributions.append(buildPrivateClickMeasurementFromDatabase(*attributedScopedStatement.get(), PrivateClickMeasurementAttributionType::Attributed));
 
@@ -404,7 +404,7 @@ String Database::privateClickMeasurementToStringForTesting() const
     StringBuilder builder;
     while (unattributedScopedStatement->step() == SQLITE_ROW) {
         const char* prefix = unattributedNumber ? "" : "Unattributed Private Click Measurements:";
-        builder.append(prefix, "\nWebCore::PrivateClickMeasurement ", ++unattributedNumber, '\n',
+        builder.append(prefix, "\nCyberCore::PrivateClickMeasurement ", ++unattributedNumber, '\n',
             attributionToStringForTesting(buildPrivateClickMeasurementFromDatabase(*unattributedScopedStatement.get(), PrivateClickMeasurementAttributionType::Unattributed)));
     }
 
@@ -420,13 +420,13 @@ String Database::privateClickMeasurementToStringForTesting() const
     while (attributedScopedStatement->step() == SQLITE_ROW) {
         if (!attributedNumber)
             builder.append(unattributedNumber ? "\n" : "", "Attributed Private Click Measurements:");
-        builder.append("\nWebCore::PrivateClickMeasurement ", ++attributedNumber + unattributedNumber, '\n',
+        builder.append("\nCyberCore::PrivateClickMeasurement ", ++attributedNumber + unattributedNumber, '\n',
             attributionToStringForTesting(buildPrivateClickMeasurementFromDatabase(*attributedScopedStatement.get(), PrivateClickMeasurementAttributionType::Attributed)));
     }
     return builder.toString();
 }
 
-String Database::attributionToStringForTesting(const WebCore::PrivateClickMeasurement& pcm) const
+String Database::attributionToStringForTesting(const CyberCore::PrivateClickMeasurement& pcm) const
 {
     ASSERT(!RunLoop::isMain());
     auto sourceSiteDomain = pcm.sourceSite().registrableDomain;
@@ -484,7 +484,7 @@ void Database::markAttributedPrivateClickMeasurementsAsExpiredForTesting()
     }
 }
 
-void Database::clearPrivateClickMeasurement(std::optional<WebCore::RegistrableDomain> domain)
+void Database::clearPrivateClickMeasurement(std::optional<CyberCore::RegistrableDomain> domain)
 {
     ASSERT(!RunLoop::isMain());
 
@@ -514,7 +514,7 @@ void Database::clearPrivateClickMeasurement(std::optional<WebCore::RegistrableDo
 void Database::clearExpiredPrivateClickMeasurement()
 {
     ASSERT(!RunLoop::isMain());
-    auto expirationTimeFrame = WallTime::now() - WebCore::PrivateClickMeasurement::maxAge();
+    auto expirationTimeFrame = WallTime::now() - CyberCore::PrivateClickMeasurement::maxAge();
     auto scopedStatement = this->scopedStatement(m_clearExpiredPrivateClickMeasurementStatement, clearExpiredPrivateClickMeasurementQuery, "clearExpiredPrivateClickMeasurement"_s);
 
     if (!scopedStatement
@@ -525,7 +525,7 @@ void Database::clearExpiredPrivateClickMeasurement()
     }
 }
 
-void Database::clearSentAttribution(WebCore::PrivateClickMeasurement&& attribution, WebCore::PCM::AttributionReportEndpoint attributionReportEndpoint)
+void Database::clearSentAttribution(CyberCore::PrivateClickMeasurement&& attribution, CyberCore::PCM::AttributionReportEndpoint attributionReportEndpoint)
 {
     ASSERT(!RunLoop::isMain());
     auto timesToSend = earliestTimesToSend(attribution);
@@ -540,7 +540,7 @@ void Database::clearSentAttribution(WebCore::PrivateClickMeasurement&& attributi
         return;
 
     switch (attributionReportEndpoint) {
-    case WebCore::PCM::AttributionReportEndpoint::Source:
+    case CyberCore::PCM::AttributionReportEndpoint::Source:
         if (!sourceEarliestTimeToSend) {
             ASSERT_NOT_REACHED();
             return;
@@ -548,7 +548,7 @@ void Database::clearSentAttribution(WebCore::PrivateClickMeasurement&& attributi
         markReportAsSentToSource(*sourceSiteDomainID, *destinationSiteDomainID, sourceApplicationBundleID);
         sourceEarliestTimeToSend = std::nullopt;
         break;
-    case WebCore::PCM::AttributionReportEndpoint::Destination:
+    case CyberCore::PCM::AttributionReportEndpoint::Destination:
         if (!destinationEarliestTimeToSend) {
             ASSERT_NOT_REACHED();
             return;
@@ -602,7 +602,7 @@ void Database::markReportAsSentToSource(SourceDomainID sourceSiteDomainID, Desti
     }
 }
 
-std::pair<std::optional<Database::SourceEarliestTimeToSend>, std::optional<Database::DestinationEarliestTimeToSend>> Database::earliestTimesToSend(const WebCore::PrivateClickMeasurement& attribution)
+std::pair<std::optional<Database::SourceEarliestTimeToSend>, std::optional<Database::DestinationEarliestTimeToSend>> Database::earliestTimesToSend(const CyberCore::PrivateClickMeasurement& attribution)
 {
     ASSERT(!RunLoop::isMain());
     auto sourceSiteDomainID = domainID(attribution.sourceSite().registrableDomain);
@@ -636,7 +636,7 @@ std::pair<std::optional<Database::SourceEarliestTimeToSend>, std::optional<Datab
     return std::make_pair(earliestTimeToSendToSource, earliestTimeToSendToDestination);
 }
 
-std::optional<Database::DomainID> Database::domainID(const WebCore::RegistrableDomain& domain)
+std::optional<Database::DomainID> Database::domainID(const CyberCore::RegistrableDomain& domain)
 {
     ASSERT(!RunLoop::isMain());
 
@@ -672,7 +672,7 @@ String Database::getDomainStringFromDomainID(DomainID domainID) const
     return result;
 }
 
-std::optional<Database::DomainID> Database::ensureDomainID(const WebCore::RegistrableDomain& domain)
+std::optional<Database::DomainID> Database::ensureDomainID(const CyberCore::RegistrableDomain& domain)
 {
     if (auto existingID = domainID(domain))
         return existingID;

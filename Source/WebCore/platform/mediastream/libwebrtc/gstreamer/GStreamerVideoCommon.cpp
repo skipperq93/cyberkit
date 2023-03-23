@@ -27,7 +27,7 @@
 #include "webrtc/api/video_codecs/h264_profile_level_id.h"
 #include "webrtc/media/base/codec.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static webrtc::SdpVideoFormat createH264Format(webrtc::H264Profile profile, webrtc::H264Level level, const std::string& packetizationMode)
 {
@@ -58,6 +58,6 @@ std::vector<webrtc::SdpVideoFormat> supportedH264Formats()
     };
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

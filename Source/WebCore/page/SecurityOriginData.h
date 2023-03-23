@@ -31,7 +31,7 @@
 #include <wtf/Markable.h>
 #include <wtf/URL.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Frame;
 class SecurityOrigin;
@@ -189,11 +189,11 @@ struct SecurityOriginDataHash {
     static const bool safeToCompareToEmptyOrDeleted = false;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct HashTraits<WebCore::SecurityOriginData> : WebCore::SecurityOriginDataHashTraits { };
-template<> struct DefaultHash<WebCore::SecurityOriginData> : WebCore::SecurityOriginDataHash { };
+template<> struct HashTraits<CyberCore::SecurityOriginData> : CyberCore::SecurityOriginDataHashTraits { };
+template<> struct DefaultHash<CyberCore::SecurityOriginData> : CyberCore::SecurityOriginDataHash { };
 
 } // namespace WTF

@@ -36,7 +36,7 @@
 
 #import <pal/mac/ScreenCaptureKitSoftLink.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 @interface WebDisplayMediaPromptHelper : NSObject <SCContentSharingSessionProtocol> {
     WeakPtr<ScreenCaptureKitSharingSessionManager> _callback;
@@ -117,7 +117,7 @@ using namespace WebCore;
 }
 @end
 
-namespace WebCore {
+namespace CyberCore {
 
 static bool screenCaptureKitPickerFeatureEnabled()
 {
@@ -318,6 +318,6 @@ RetainPtr<SCContentSharingSession> ScreenCaptureKitSharingSessionManager::takeSh
 }
 
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // HAVE(SC_CONTENT_SHARING_SESSION)

@@ -43,12 +43,12 @@
 #include <wtf/Lock.h>
 #include <wtf/WorkQueue.h>
 
-namespace WebCore {
+namespace CyberCore {
 class ImageTransferSessionVT;
 enum class VideoFrameRotation : uint16_t;
 }
 
-namespace WebKit {
+namespace CyberKit {
 class RemoteVideoFrameObjectHeapProxy;
 
 class RemoteCaptureSampleManager : public IPC::WorkQueueMessageReceiver {
@@ -60,7 +60,7 @@ public:
 
     void addSource(Ref<RemoteRealtimeAudioSource>&&);
     void addSource(Ref<RemoteRealtimeVideoSource>&&);
-    void removeSource(WebCore::RealtimeMediaSourceIdentifier);
+    void removeSource(CyberCore::RealtimeMediaSourceIdentifier);
 
     void didUpdateSourceConnection(IPC::Connection&);
     void setVideoFrameObjectHeapProxy(RemoteVideoFrameObjectHeapProxy*);
@@ -70,11 +70,11 @@ public:
 
 private:
     // Messages
-    void audioStorageChanged(WebCore::RealtimeMediaSourceIdentifier, ConsumerSharedCARingBuffer::Handle&&, const WebCore::CAAudioStreamDescription&, IPC::Semaphore&&, const MediaTime&, size_t frameSampleSize);
-    void audioSamplesAvailable(WebCore::RealtimeMediaSourceIdentifier, MediaTime, uint64_t numberOfFrames);
-    void videoFrameAvailable(WebCore::RealtimeMediaSourceIdentifier, RemoteVideoFrameProxy::Properties&&, WebCore::VideoFrameTimeMetadata);
+    void audioStorageChanged(CyberCore::RealtimeMediaSourceIdentifier, ConsumerSharedCARingBuffer::Handle&&, const CyberCore::CAAudioStreamDescription&, IPC::Semaphore&&, const MediaTime&, size_t frameSampleSize);
+    void audioSamplesAvailable(CyberCore::RealtimeMediaSourceIdentifier, MediaTime, uint64_t numberOfFrames);
+    void videoFrameAvailable(CyberCore::RealtimeMediaSourceIdentifier, RemoteVideoFrameProxy::Properties&&, CyberCore::VideoFrameTimeMetadata);
     // FIXME: Will be removed once RemoteVideoFrameProxy providers are the only ones sending data.
-    void videoFrameAvailableCV(WebCore::RealtimeMediaSourceIdentifier, RetainPtr<CVPixelBufferRef>&&, WebCore::VideoFrameRotation, bool mirrored, MediaTime, WebCore::VideoFrameTimeMetadata);
+    void videoFrameAvailableCV(CyberCore::RealtimeMediaSourceIdentifier, RetainPtr<CVPixelBufferRef>&&, CyberCore::VideoFrameRotation, bool mirrored, MediaTime, CyberCore::VideoFrameTimeMetadata);
 
     void setConnection(IPC::Connection*);
 
@@ -84,15 +84,15 @@ private:
         explicit RemoteAudio(Ref<RemoteRealtimeAudioSource>&&);
         ~RemoteAudio();
 
-        void setStorage(ConsumerSharedCARingBuffer::Handle&&, const WebCore::CAAudioStreamDescription&, IPC::Semaphore&&, const MediaTime&, size_t frameChunkSize);
+        void setStorage(ConsumerSharedCARingBuffer::Handle&&, const CyberCore::CAAudioStreamDescription&, IPC::Semaphore&&, const MediaTime&, size_t frameChunkSize);
 
     private:
         void stopThread();
         void startThread();
 
         Ref<RemoteRealtimeAudioSource> m_source;
-        std::optional<WebCore::CAAudioStreamDescription> m_description;
-        std::unique_ptr<WebCore::WebAudioBufferList> m_buffer;
+        std::optional<CyberCore::CAAudioStreamDescription> m_description;
+        std::unique_ptr<CyberCore::WebAudioBufferList> m_buffer;
         std::unique_ptr<ConsumerSharedCARingBuffer> m_ringBuffer;
         int64_t m_readOffset { 0 };
         MediaTime m_startTime;
@@ -107,13 +107,13 @@ private:
     Ref<WorkQueue> m_queue;
     RefPtr<IPC::Connection> m_connection;
     // background thread member
-    HashMap<WebCore::RealtimeMediaSourceIdentifier, std::unique_ptr<RemoteAudio>> m_audioSources;
-    HashMap<WebCore::RealtimeMediaSourceIdentifier, Ref<RemoteRealtimeVideoSource>> m_videoSources;
+    HashMap<CyberCore::RealtimeMediaSourceIdentifier, std::unique_ptr<RemoteAudio>> m_audioSources;
+    HashMap<CyberCore::RealtimeMediaSourceIdentifier, Ref<RemoteRealtimeVideoSource>> m_videoSources;
 
     Lock m_videoFrameObjectHeapProxyLock;
     RefPtr<RemoteVideoFrameObjectHeapProxy> m_videoFrameObjectHeapProxy WTF_GUARDED_BY_LOCK(m_videoFrameObjectHeapProxyLock);
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

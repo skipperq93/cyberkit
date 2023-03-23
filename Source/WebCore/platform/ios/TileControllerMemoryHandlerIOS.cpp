@@ -32,7 +32,7 @@
 #include <wtf/MemoryPressureHandler.h>
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static const unsigned kMaxCountOfUnparentedTiledLayers = 16;
 

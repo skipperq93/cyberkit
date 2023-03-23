@@ -51,7 +51,7 @@
 typedef EGLDisplay (EGLAPIENTRYP PFNEGLGETPLATFORMDISPLAYEXTPROC) (EGLenum platform, void *native_display, const EGLint *attrib_list);
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 std::unique_ptr<PlatformDisplayLibWPE> PlatformDisplayLibWPE::create()
 {
@@ -111,6 +111,6 @@ bool PlatformDisplayLibWPE::initialize(int hostFd)
     return m_eglDisplay != EGL_NO_DISPLAY;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(WPE_RENDERER)

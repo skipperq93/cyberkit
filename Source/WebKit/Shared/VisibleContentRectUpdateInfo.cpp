@@ -29,12 +29,12 @@
 
 #include "VisibleContentRectUpdateInfo.h"
 
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include <CyberCore/LengthBox.h>
 #include <wtf/text/TextStream.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 void VisibleContentRectUpdateInfo::encode(IPC::Encoder& encoder) const
 {

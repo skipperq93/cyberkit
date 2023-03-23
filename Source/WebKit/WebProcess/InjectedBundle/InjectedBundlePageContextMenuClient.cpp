@@ -38,15 +38,15 @@
 #include "WebPage.h"
 #include <CyberCore/ContextMenu.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 InjectedBundlePageContextMenuClient::InjectedBundlePageContextMenuClient(const WKBundlePageContextMenuClientBase* client)
 {
     initialize(client);
 }
 
-bool InjectedBundlePageContextMenuClient::getCustomMenuFromDefaultItems(WebPage& page, const HitTestResult& hitTestResult, const Vector<ContextMenuItem>& proposedMenu, Vector<WebContextMenuItemData>& newMenu, const WebCore::ContextMenuContext&, RefPtr<API::Object>& userData)
+bool InjectedBundlePageContextMenuClient::getCustomMenuFromDefaultItems(WebPage& page, const HitTestResult& hitTestResult, const Vector<ContextMenuItem>& proposedMenu, Vector<WebContextMenuItemData>& newMenu, const CyberCore::ContextMenuContext&, RefPtr<API::Object>& userData)
 {
     if (!m_client.getContextMenuFromDefaultMenu)
         return false;
@@ -90,5 +90,5 @@ void InjectedBundlePageContextMenuClient::prepareForImmediateAction(WebPage& pag
     userData = adoptRef(toImpl(userDataToPass));
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 #endif // ENABLE(CONTEXT_MENUS)

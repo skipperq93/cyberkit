@@ -50,7 +50,7 @@ ALLOW_COMMA_END
 #include <pal/cf/CoreMediaSoftLink.h>
 #include "CoreVideoSoftLink.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 SharedVideoFrameInfo SharedVideoFrameInfo::fromCVPixelBuffer(CVPixelBufferRef pixelBuffer)
 {

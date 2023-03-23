@@ -32,7 +32,7 @@
 #include <wtf/text/CString.h>
 #include <wtf/unix/UnixFileDescriptor.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct DMABufReleaseFlag {
     WTF_MAKE_NONCOPYABLE(DMABufReleaseFlag);
@@ -81,4 +81,4 @@ struct DMABufReleaseFlag {
     UnixFileDescriptor fd;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

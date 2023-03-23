@@ -41,7 +41,7 @@
 #include "MediaStreamPrivate.h"
 #include <wtf/MainThread.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class VideoCaptureSourceFactoryMac final : public VideoCaptureFactory {
 public:
@@ -82,6 +82,6 @@ DisplayCaptureFactory& RealtimeMediaSourceCenter::defaultDisplayCaptureFactory()
     return factory.get();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM)

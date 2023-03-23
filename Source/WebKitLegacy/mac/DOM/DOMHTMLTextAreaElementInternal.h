@@ -25,9 +25,9 @@
 
 #import <CyberKitLegacy/DOMHTMLTextAreaElement.h>
 
-namespace WebCore {
+namespace CyberCore {
 class HTMLTextAreaElement;
 }
 
-WebCore::HTMLTextAreaElement* core(DOMHTMLTextAreaElement *);
-DOMHTMLTextAreaElement *kit(WebCore::HTMLTextAreaElement*);
+CyberCore::HTMLTextAreaElement* core(DOMHTMLTextAreaElement *);
+DOMHTMLTextAreaElement *kit(CyberCore::HTMLTextAreaElement*);

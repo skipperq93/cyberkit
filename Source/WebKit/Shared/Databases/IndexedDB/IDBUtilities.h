@@ -28,14 +28,14 @@
 
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SecurityOrigin;
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WebKit {
 
-String uniqueDatabaseIdentifier(const String& databaseName, const WebCore::SecurityOrigin& openingOrigin, const WebCore::SecurityOrigin& mainFrameOrigin);
+String uniqueDatabaseIdentifier(const String& databaseName, const CyberCore::SecurityOrigin& openingOrigin, const CyberCore::SecurityOrigin& mainFrameOrigin);
     
 } // namespace WebKit

@@ -30,7 +30,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/unicode/CharacterNames.h>
 
-namespace WebCore {
+namespace CyberCore {
 using namespace WTF::Unicode;
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(RenderQuote);
@@ -523,4 +523,4 @@ void RenderQuote::updateRenderer(RenderTreeBuilder& builder, RenderQuote* previo
     updateTextRenderer(builder);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

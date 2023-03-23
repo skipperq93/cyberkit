@@ -25,9 +25,9 @@
 
 #import <CyberKitLegacy/DOMFileList.h>
 
-namespace WebCore {
+namespace CyberCore {
 class FileList;
 }
 
-WebCore::FileList* core(DOMFileList *);
-DOMFileList *kit(WebCore::FileList*);
+CyberCore::FileList* core(DOMFileList *);
+DOMFileList *kit(CyberCore::FileList*);

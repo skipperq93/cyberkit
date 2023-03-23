@@ -51,10 +51,10 @@
     [super dealloc];
 }
 
-- (WebCore::TileController*)createTileController:(WebCore::PlatformCALayer*)rootLayer
+- (CyberCore::TileController*)createTileController:(CyberCore::PlatformCALayer*)rootLayer
 {
     ASSERT(!_tileController);
-    _tileController = makeUnique<WebCore::TileController>(rootLayer);
+    _tileController = makeUnique<CyberCore::TileController>(rootLayer);
     return _tileController.get();
 }
 
@@ -90,7 +90,7 @@
 
 - (void)setNeedsDisplayInRect:(CGRect)rect
 {
-    _tileController->setNeedsDisplayInRect(WebCore::enclosingIntRect(rect));
+    _tileController->setNeedsDisplayInRect(CyberCore::enclosingIntRect(rect));
 }
 
 - (void)setDrawsAsynchronously:(BOOL)acceleratesDrawing
@@ -123,7 +123,7 @@
     return _tileController ? _tileController->contentsScale() : 1;
 }
 
-- (WebCore::TiledBacking*)tiledBacking
+- (CyberCore::TiledBacking*)tiledBacking
 {
     return _tileController.get();
 }
@@ -137,7 +137,7 @@
 
 - (void)setBorderColor:(CGColorRef)borderColor
 {
-    _tileController->setTileDebugBorderColor(WebCore::roundAndClampToSRGBALossy(borderColor));
+    _tileController->setTileDebugBorderColor(CyberCore::roundAndClampToSRGBALossy(borderColor));
 }
 
 - (void)setBorderWidth:(CGFloat)borderWidth

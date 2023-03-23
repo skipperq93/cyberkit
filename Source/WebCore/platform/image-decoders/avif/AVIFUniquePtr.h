@@ -30,7 +30,7 @@
 #include <avif/avif.h>
 #include <memory>
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename T> struct AVIFPtrDeleter {
     void operator()(T* ptr) const = delete;
@@ -46,6 +46,6 @@ template<> struct AVIFPtrDeleter<avifDecoder> {
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(AVIF)

@@ -32,7 +32,7 @@
 
 OBJC_CLASS NSValue;
 
-namespace WebCore {
+namespace CyberCore {
 
 class PlatformCALayer;
 

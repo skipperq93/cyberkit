@@ -29,7 +29,7 @@
 #include "EventTarget.h"
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class VisualViewport final : public RefCounted<VisualViewport>, public EventTarget, public DOMWindowProperty {
     WTF_MAKE_ISO_ALLOCATED(VisualViewport);
@@ -71,4 +71,4 @@ private:
     double m_scale { 1 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

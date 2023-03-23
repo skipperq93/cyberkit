@@ -29,7 +29,7 @@
 #import "ResourceHandle.h"
 #import <pal/spi/cocoa/NSURLConnectionSPI.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static MonotonicTime dateToMonotonicTime(NSDate *date)
 {

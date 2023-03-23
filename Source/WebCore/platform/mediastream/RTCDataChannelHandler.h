@@ -31,7 +31,7 @@
 #include "ScriptExecutionContextIdentifier.h"
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct RTCDataChannelInit {
     std::optional<bool> ordered;
@@ -75,6 +75,6 @@ public:
     virtual std::optional<unsigned short> id() const { return { }; }
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

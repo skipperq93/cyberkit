@@ -30,7 +30,7 @@
 #include "StorageAreaMapIdentifier.h"
 #include <wtf/WorkQueue.h>
 
-namespace WebCore {
+namespace CyberCore {
 struct ClientOrigin;
 class SecurityOriginData;
 }
@@ -44,8 +44,8 @@ class StorageAreaRegistry;
 class LocalStorageManager {
     WTF_MAKE_FAST_ALLOCATED;
 public:
-    static Vector<WebCore::SecurityOriginData> originsOfLocalStorageData(const String& path);
-    static String localStorageFilePath(const String& directory, const WebCore::ClientOrigin&);
+    static Vector<CyberCore::SecurityOriginData> originsOfLocalStorageData(const String& path);
+    static String localStorageFilePath(const String& directory, const CyberCore::ClientOrigin&);
     static String localStorageFilePath(const String& directory);
 
     LocalStorageManager(const String& path, StorageAreaRegistry&);
@@ -58,8 +58,8 @@ public:
     void syncLocalStorage();
     void connectionClosed(IPC::Connection::UniqueID);
 
-    StorageAreaIdentifier connectToLocalStorageArea(IPC::Connection::UniqueID, StorageAreaMapIdentifier, const WebCore::ClientOrigin&, Ref<WorkQueue>&&);
-    StorageAreaIdentifier connectToTransientLocalStorageArea(IPC::Connection::UniqueID, StorageAreaMapIdentifier, const WebCore::ClientOrigin&);
+    StorageAreaIdentifier connectToLocalStorageArea(IPC::Connection::UniqueID, StorageAreaMapIdentifier, const CyberCore::ClientOrigin&, Ref<WorkQueue>&&);
+    StorageAreaIdentifier connectToTransientLocalStorageArea(IPC::Connection::UniqueID, StorageAreaMapIdentifier, const CyberCore::ClientOrigin&);
     void cancelConnectToLocalStorageArea(IPC::Connection::UniqueID);
     void cancelConnectToTransientLocalStorageArea(IPC::Connection::UniqueID);
     void disconnectFromStorageArea(IPC::Connection::UniqueID, StorageAreaIdentifier);

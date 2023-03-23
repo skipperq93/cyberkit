@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -21,28 +21,28 @@
 #error "Only <webkitdom/webkitdom.h> can be included directly."
 #endif
 
-#ifndef WebKitDOMHTMLCollection_h
-#define WebKitDOMHTMLCollection_h
+#ifndef CyberKitDOMHTMLCollection_h
+#define CyberKitDOMHTMLCollection_h
 
 #include <glib-object.h>
-#include <webkitdom/WebKitDOMObject.h>
+#include <webkitdom/CyberKitDOMObject.h>
 #include <webkitdom/webkitdomdefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_DOM_TYPE_HTML_COLLECTION            (webkit_dom_html_collection_get_type())
-#define WEBKIT_DOM_HTML_COLLECTION(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_HTML_COLLECTION, WebKitDOMHTMLCollection))
-#define WEBKIT_DOM_HTML_COLLECTION_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_HTML_COLLECTION, WebKitDOMHTMLCollectionClass)
+#define WEBKIT_DOM_HTML_COLLECTION(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_HTML_COLLECTION, CyberKitDOMHTMLCollection))
+#define WEBKIT_DOM_HTML_COLLECTION_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_HTML_COLLECTION, CyberKitDOMHTMLCollectionClass)
 #define WEBKIT_DOM_IS_HTML_COLLECTION(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_DOM_TYPE_HTML_COLLECTION))
 #define WEBKIT_DOM_IS_HTML_COLLECTION_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_DOM_TYPE_HTML_COLLECTION))
-#define WEBKIT_DOM_HTML_COLLECTION_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_HTML_COLLECTION, WebKitDOMHTMLCollectionClass))
+#define WEBKIT_DOM_HTML_COLLECTION_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_HTML_COLLECTION, CyberKitDOMHTMLCollectionClass))
 
-struct _WebKitDOMHTMLCollection {
-    WebKitDOMObject parent_instance;
+struct _CyberKitDOMHTMLCollection {
+    CyberKitDOMObject parent_instance;
 };
 
-struct _WebKitDOMHTMLCollectionClass {
-    WebKitDOMObjectClass parent_class;
+struct _CyberKitDOMHTMLCollectionClass {
+    CyberKitDOMObjectClass parent_class;
 };
 
 WEBKIT_DEPRECATED GType
@@ -50,39 +50,39 @@ webkit_dom_html_collection_get_type(void);
 
 /**
  * webkit_dom_html_collection_item:
- * @self: A #WebKitDOMHTMLCollection
+ * @self: A #CyberKitDOMHTMLCollection
  * @index: A #gulong
  *
- * Returns: (transfer none): A #WebKitDOMNode
+ * Returns: (transfer none): A #CyberKitDOMNode
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMNode*
-webkit_dom_html_collection_item(WebKitDOMHTMLCollection* self, gulong index);
+WEBKIT_DEPRECATED CyberKitDOMNode*
+webkit_dom_html_collection_item(CyberKitDOMHTMLCollection* self, gulong index);
 
 /**
  * webkit_dom_html_collection_named_item:
- * @self: A #WebKitDOMHTMLCollection
+ * @self: A #CyberKitDOMHTMLCollection
  * @name: A #gchar
  *
- * Returns: (transfer none): A #WebKitDOMNode
+ * Returns: (transfer none): A #CyberKitDOMNode
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMNode*
-webkit_dom_html_collection_named_item(WebKitDOMHTMLCollection* self, const gchar* name);
+WEBKIT_DEPRECATED CyberKitDOMNode*
+webkit_dom_html_collection_named_item(CyberKitDOMHTMLCollection* self, const gchar* name);
 
 /**
  * webkit_dom_html_collection_get_length:
- * @self: A #WebKitDOMHTMLCollection
+ * @self: A #CyberKitDOMHTMLCollection
  *
  * Returns: A #gulong
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gulong
-webkit_dom_html_collection_get_length(WebKitDOMHTMLCollection* self);
+webkit_dom_html_collection_get_length(CyberKitDOMHTMLCollection* self);
 
 G_END_DECLS
 
-#endif /* WebKitDOMHTMLCollection_h */
+#endif /* CyberKitDOMHTMLCollection_h */

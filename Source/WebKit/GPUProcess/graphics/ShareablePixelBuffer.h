@@ -31,16 +31,16 @@ namespace WebKit {
 
 class SharedMemory;
 
-class ShareablePixelBuffer : public WebCore::PixelBuffer {
+class ShareablePixelBuffer : public CyberCore::PixelBuffer {
 public:
-    static RefPtr<ShareablePixelBuffer> tryCreate(const WebCore::PixelBufferFormat&, const WebCore::IntSize&);
+    static RefPtr<ShareablePixelBuffer> tryCreate(const CyberCore::PixelBufferFormat&, const CyberCore::IntSize&);
 
     SharedMemory& data() const { return m_data.get(); }
 
-    RefPtr<WebCore::PixelBuffer> createScratchPixelBuffer(const WebCore::IntSize&) const override;
+    RefPtr<CyberCore::PixelBuffer> createScratchPixelBuffer(const CyberCore::IntSize&) const override;
 
 private:
-    ShareablePixelBuffer(const WebCore::PixelBufferFormat&, const WebCore::IntSize&, Ref<SharedMemory>&&);
+    ShareablePixelBuffer(const CyberCore::PixelBufferFormat&, const CyberCore::IntSize&, Ref<SharedMemory>&&);
 
     Ref<SharedMemory> m_data;
 };

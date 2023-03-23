@@ -26,7 +26,7 @@
 #include "config.h"
 #include "StyleCustomPropertyData.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 StyleCustomPropertyData::StyleCustomPropertyData(const StyleCustomPropertyData& other)
     : RefCounted()
@@ -128,4 +128,4 @@ unsigned StyleCustomPropertyData::size() const
     return m_ownValuesSizeExcludingOverriddenParentValues + (m_parentValues ? m_parentValues->m_ownValuesSizeExcludingOverriddenParentValues : 0); 
 }
 
-} // namespace WebCore
+} // namespace CyberCore

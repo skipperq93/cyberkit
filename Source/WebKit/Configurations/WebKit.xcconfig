@@ -207,7 +207,7 @@ EXCLUDED_IOS_RESOURCE_FILE_NAMES[sdk=iphone*] = ;
 // The legacy build system does not install headers.
 EXCLUDED_SOURCE_FILE_NAMES_legacy = *.h;
 EXCLUDED_MIGRATED_HEADERS_COCOA_TOUCH_YES = WebDashboardRegion.h WebDynamicScrollBarsView.h WebEventRegion.h WebIconDatabase.h WebJavaScriptTextInputPanel.h WebNSEventExtras.h WebNSPasteboardExtras.h WebNSWindowExtras.h WebPanelAuthenticationHandler.h WebStringTruncator.h;
-EXCLUDED_MIGRATED_HEADERS_COCOA_TOUCH_NO = AbstractPasteboard.h DOMHTMLTextAreaElementPrivate.h DOMUIKitExtensions.h KeyEventCodesIOS.h WAKAppKitStubs.h WAKResponder.h WAKView.h WAKWindow.h WebCaretChangeListener.h WebCoreThread.h WebCoreThreadMessage.h WebCoreThreadRun.h WebEvent.h WebEventRegion.h WebFixedPositionContent.h WebFrameIOS.h WebFrameIPhone.h WebGeolocationCoreLocationProvider.h WebGeolocationPrivate.h WebGeolocationProviderIOS.h WebItemProviderPasteboard.h WebMIMETypeRegistry.h WebNSStringExtrasIOS.h WebNSStringExtrasIPhone.h WebPDFViewIOS.h WebPDFViewIPhone.h WebPDFViewPlaceholder.h WebSelectionRect.h WebUIKitDelegate.h WebUIKitSupport.h WebVisiblePosition.h WKContentObservation.h WKGraphics.h WKTypes.h;
+EXCLUDED_MIGRATED_HEADERS_COCOA_TOUCH_NO = AbstractPasteboard.h DOMHTMLTextAreaElementPrivate.h DOMUIKitExtensions.h KeyEventCodesIOS.h WAKAppKitStubs.h WAKResponder.h WAKView.h WAKWindow.h WebCaretChangeListener.h CyberCoreThread.h CyberCoreThreadMessage.h CyberCoreThreadRun.h WebEvent.h WebEventRegion.h WebFixedPositionContent.h WebFrameIOS.h WebFrameIPhone.h WebGeolocationCoreLocationProvider.h WebGeolocationPrivate.h WebGeolocationProviderIOS.h WebItemProviderPasteboard.h WebMIMETypeRegistry.h WebNSStringExtrasIOS.h WebNSStringExtrasIPhone.h WebPDFViewIOS.h WebPDFViewIPhone.h WebPDFViewPlaceholder.h WebSelectionRect.h WebUIKitDelegate.h WebUIKitSupport.h WebVisiblePosition.h WKContentObservation.h WKGraphics.h WKTypes.h;
 
 INCLUDED_SOURCE_FILE_NAMES = $(INCLUDED_MIGRATED_HEADERS_$(WK_WHICH_BUILD_SYSTEM));
 INCLUDED_MIGRATED_HEADERS_not_legacy = $(INCLUDED_MIGRATED_HEADERS_$(USE_INTERNAL_SDK)_$(WK_COCOA_TOUCH)) $(INCLUDED_MIGRATED_HEADERS_$(ENABLE_IOS_TOUCH_EVENTS));
@@ -216,7 +216,7 @@ INCLUDED_MIGRATED_HEADERS_YES_cocoatouch = WebEventRegion.h;
 // ...or when --ios-touch-events was passed to build-webkit manually.
 INCLUDED_MIGRATED_HEADERS_ENABLE_IOS_TOUCH_EVENTS = WebEventRegion.h;
 
-// Used in MigratedHeaders-output.xcfilelist to reexport WebKitLegacy headers
+// Used in MigratedHeaders-output.xcfilelist to reexport CyberKitLegacy headers
 // with platform-specific visibility.
 WK_MAC_PUBLIC_IOS_PRIVATE_HEADERS_DIR = $(WK_MAC_PUBLIC_IOS_PRIVATE_HEADERS_DIR_$(WK_COCOA_TOUCH));
 WK_MAC_PUBLIC_IOS_PRIVATE_HEADERS_DIR_ = $(PUBLIC_HEADERS_FOLDER_PATH);

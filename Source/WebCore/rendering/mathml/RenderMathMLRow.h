@@ -30,7 +30,7 @@
 
 #include "RenderMathMLBlock.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class MathMLRowElement;
 
@@ -54,7 +54,7 @@ private:
     ASCIILiteral renderName() const override { return "RenderMathMLRow"_s; }
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderMathMLRow, isRenderMathMLRow())
 

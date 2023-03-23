@@ -37,7 +37,7 @@
 #include "StyleProperties.h"
 #include "StyleResolver.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 KeyframeList::~KeyframeList() = default;
 
@@ -321,4 +321,4 @@ bool KeyframeValue::containsProperty(AnimatableProperty property) const
     return m_properties.contains(property);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

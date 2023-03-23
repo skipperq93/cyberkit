@@ -41,7 +41,7 @@
 
 #import "CoreVideoSoftLink.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 CGDisplayStreamCaptureSource::~CGDisplayStreamCaptureSource()
 {
@@ -195,6 +195,6 @@ dispatch_queue_t CGDisplayStreamCaptureSource::captureQueue()
     return m_captureQueue.get();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM) && PLATFORM(MAC)

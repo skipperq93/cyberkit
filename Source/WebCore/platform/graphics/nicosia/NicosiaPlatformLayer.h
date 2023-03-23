@@ -162,23 +162,23 @@ public:
             };
         } flags;
 
-        WebCore::FloatPoint position;
-        WebCore::FloatPoint3D anchorPoint;
-        WebCore::FloatSize size;
-        WebCore::FloatPoint boundsOrigin;
+        CyberCore::FloatPoint position;
+        CyberCore::FloatPoint3D anchorPoint;
+        CyberCore::FloatSize size;
+        CyberCore::FloatPoint boundsOrigin;
 
-        WebCore::TransformationMatrix transform;
-        WebCore::TransformationMatrix childrenTransform;
+        CyberCore::TransformationMatrix transform;
+        CyberCore::TransformationMatrix childrenTransform;
 
-        WebCore::FloatRect contentsRect;
-        WebCore::FloatSize contentsTilePhase;
-        WebCore::FloatSize contentsTileSize;
-        WebCore::FloatRoundedRect contentsClippingRect;
+        CyberCore::FloatRect contentsRect;
+        CyberCore::FloatSize contentsTilePhase;
+        CyberCore::FloatSize contentsTileSize;
+        CyberCore::FloatRoundedRect contentsClippingRect;
 
         float opacity { 0 };
-        WebCore::Color solidColor;
+        CyberCore::Color solidColor;
 
-        WebCore::FilterOperations filters;
+        CyberCore::FilterOperations filters;
         // FIXME: Despite the name, this implementation is not
         // TextureMapper-specific. Should be renamed when necessary.
         Animations animations;
@@ -187,7 +187,7 @@ public:
         RefPtr<CompositionLayer> replica;
         RefPtr<CompositionLayer> mask;
         RefPtr<CompositionLayer> backdropLayer;
-        WebCore::FloatRoundedRect backdropFiltersRect;
+        CyberCore::FloatRoundedRect backdropFiltersRect;
 
         RefPtr<ContentLayer> contentLayer;
         RefPtr<BackingStore> backingStore;
@@ -199,13 +199,13 @@ public:
             bool visible { false };
         } repaintCounter;
         struct DebugBorder {
-            WebCore::Color color;
+            CyberCore::Color color;
             float width { 0 };
             bool visible { false };
         } debugBorder;
 
-        WebCore::ScrollingNodeID scrollingNodeID { 0 };
-        WebCore::EventRegion eventRegion;
+        CyberCore::ScrollingNodeID scrollingNodeID { 0 };
+        CyberCore::EventRegion eventRegion;
     };
 
     template<typename T>

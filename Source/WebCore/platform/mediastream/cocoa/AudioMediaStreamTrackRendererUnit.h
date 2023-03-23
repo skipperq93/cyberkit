@@ -35,7 +35,7 @@
 #include <wtf/Vector.h>
 #include <wtf/WeakHashSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioSampleDataSource;
 class AudioSampleBufferList;

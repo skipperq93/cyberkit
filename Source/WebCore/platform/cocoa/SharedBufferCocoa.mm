@@ -26,8 +26,8 @@
 #import "config.h"
 #import "SharedBuffer.h"
 
-#import "WebCoreJITOperations.h"
-#import "WebCoreObjCExtras.h"
+#import "CyberCoreJITOperations.h"
+#import "CyberCoreObjCExtras.h"
 #import <CyberScriptCore/InitializeThreading.h>
 #import <pal/cf/CoreMediaSoftLink.h>
 #import <string.h>
@@ -35,12 +35,12 @@
 #import <wtf/cocoa/TypeCastsCocoa.h>
 #import <wtf/cocoa/VectorCocoa.h>
 
-@interface WebCoreSharedBufferData : NSData
-- (instancetype)initWithDataSegment:(const WebCore::DataSegment&)dataSegment position:(NSUInteger)position size:(NSUInteger)size;
+@interface CyberCoreSharedBufferData : NSData
+- (instancetype)initWithDataSegment:(const CyberCore::DataSegment&)dataSegment position:(NSUInteger)position size:(NSUInteger)size;
 @end
 
-@implementation WebCoreSharedBufferData {
-    RefPtr<const WebCore::DataSegment> _dataSegment;
+@implementation CyberCoreSharedBufferData {
+    RefPtr<const CyberCore::DataSegment> _dataSegment;
     NSUInteger _position;
     NSUInteger _size;
 }
@@ -50,19 +50,19 @@
 #if !USE(WEB_THREAD)
     JSC::initialize();
     WTF::initializeMainThread();
-    WebCore::populateJITOperations();
+    CyberCore::populateJITOperations();
 #endif // !USE(WEB_THREAD)
 }
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainThread([WebCoreSharedBufferData class], self))
+    if (CyberCoreObjCScheduleDeallocateOnMainThread([CyberCoreSharedBufferData class], self))
         return;
 
     [super dealloc];
 }
 
-- (instancetype)initWithDataSegment:(const WebCore::DataSegment&)dataSegment position:(NSUInteger)position size:(NSUInteger)size
+- (instancetype)initWithDataSegment:(const CyberCore::DataSegment&)dataSegment position:(NSUInteger)position size:(NSUInteger)size
 {
     if (!(self = [super init]))
         return nil;
@@ -87,7 +87,7 @@
 
 @end
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<FragmentedSharedBuffer> FragmentedSharedBuffer::create(NSData *data)
 {
@@ -170,7 +170,7 @@ RetainPtr<NSArray> FragmentedSharedBuffer::createNSDataArray() const
 
 RetainPtr<NSData> DataSegment::createNSData() const
 {
-    return adoptNS([[WebCoreSharedBufferData alloc] initWithDataSegment:*this position:0 size:size()]);
+    return adoptNS([[CyberCoreSharedBufferData alloc] initWithDataSegment:*this position:0 size:size()]);
 }
 
 void DataSegment::iterate(CFDataRef data, const Function<void(const Span<const uint8_t>&)>& apply) const
@@ -182,7 +182,7 @@ void DataSegment::iterate(CFDataRef data, const Function<void(const Span<const u
 
 RetainPtr<NSData> SharedBufferDataView::createNSData() const
 {
-    return adoptNS([[WebCoreSharedBufferData alloc] initWithDataSegment:m_segment.get() position:m_positionWithinSegment size:size()]);
+    return adoptNS([[CyberCoreSharedBufferData alloc] initWithDataSegment:m_segment.get() position:m_positionWithinSegment size:size()]);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

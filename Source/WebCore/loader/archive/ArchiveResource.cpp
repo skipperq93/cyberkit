@@ -31,7 +31,7 @@
 
 #include "SharedBuffer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 inline ArchiveResource::ArchiveResource(Ref<FragmentedSharedBuffer>&& data, const URL& url, const String& mimeType, const String& textEncoding, const String& frameName, const ResourceResponse& response)
     : SubstituteResource(URL { url }, ResourceResponse { response }, WTFMove(data))

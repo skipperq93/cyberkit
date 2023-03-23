@@ -25,8 +25,8 @@
 
 #import <CyberKitLegacy/DOMHTMLScriptElement.h>
 
-namespace WebCore {
+namespace CyberCore {
 class HTMLScriptElement;
 }
 
-DOMHTMLScriptElement *kit(WebCore::HTMLScriptElement*);
+DOMHTMLScriptElement *kit(CyberCore::HTMLScriptElement*);

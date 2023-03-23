@@ -26,7 +26,7 @@
 
 #include "MockRealtimeVideoSource.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class MockRealtimeVideoSourceGStreamer final : public MockRealtimeVideoSource {
 public:
@@ -74,6 +74,6 @@ private:
     std::optional<RealtimeMediaSourceSettings> m_currentSettings;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM) && USE(GSTREAMER)

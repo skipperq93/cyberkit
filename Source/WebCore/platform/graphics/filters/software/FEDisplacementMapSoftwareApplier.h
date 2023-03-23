@@ -24,7 +24,7 @@
 
 #include "FilterEffectApplier.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class FEDisplacementMap;
 
@@ -48,4 +48,4 @@ private:
     int yChannelIndex() const;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

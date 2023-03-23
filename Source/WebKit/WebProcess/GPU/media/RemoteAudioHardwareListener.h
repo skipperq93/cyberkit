@@ -42,16 +42,16 @@ class GPUProcessConnection;
 class WebProcess;
 
 class RemoteAudioHardwareListener final
-    : public WebCore::AudioHardwareListener
+    : public CyberCore::AudioHardwareListener
     , private GPUProcessConnection::Client
     , private IPC::MessageReceiver {
     WTF_MAKE_FAST_ALLOCATED;
 public:
-    static Ref<RemoteAudioHardwareListener> create(WebCore::AudioHardwareListener::Client&, WebProcess&);
+    static Ref<RemoteAudioHardwareListener> create(CyberCore::AudioHardwareListener::Client&, WebProcess&);
     ~RemoteAudioHardwareListener();
 
 private:
-    RemoteAudioHardwareListener(WebCore::AudioHardwareListener::Client&, WebProcess&);
+    RemoteAudioHardwareListener(CyberCore::AudioHardwareListener::Client&, WebProcess&);
 
     // IPC::MessageReceiver
     void didReceiveMessage(IPC::Connection&, IPC::Decoder&) final;

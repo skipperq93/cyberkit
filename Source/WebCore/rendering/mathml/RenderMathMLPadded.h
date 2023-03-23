@@ -30,7 +30,7 @@
 #include "MathMLPaddedElement.h"
 #include "RenderMathMLRow.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderMathMLPadded final : public RenderMathMLRow {
     WTF_MAKE_ISO_ALLOCATED(RenderMathMLPadded);
@@ -53,7 +53,7 @@ private:
     LayoutUnit mpaddedDepth(LayoutUnit contentDepth) const;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderMathMLPadded, isRenderMathMLPadded())
 

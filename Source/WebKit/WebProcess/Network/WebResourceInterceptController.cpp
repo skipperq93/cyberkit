@@ -26,31 +26,31 @@
 #include "config.h"
 #include "WebResourceInterceptController.h"
 
-namespace WebKit {
+namespace CyberKit {
 
-bool WebResourceInterceptController::isIntercepting(WebCore::ResourceLoaderIdentifier identifier) const
+bool WebResourceInterceptController::isIntercepting(CyberCore::ResourceLoaderIdentifier identifier) const
 {
     return m_interceptedResponseQueue.contains(identifier);
 }
 
-void WebResourceInterceptController::beginInterceptingResponse(WebCore::ResourceLoaderIdentifier identifier)
+void WebResourceInterceptController::beginInterceptingResponse(CyberCore::ResourceLoaderIdentifier identifier)
 {
     m_interceptedResponseQueue.set(identifier, Deque<Function<void()>>());
 }
 
-void WebResourceInterceptController::continueResponse(WebCore::ResourceLoaderIdentifier identifier)
+void WebResourceInterceptController::continueResponse(CyberCore::ResourceLoaderIdentifier identifier)
 {
     auto queue = m_interceptedResponseQueue.take(identifier);
     for (auto& callback : queue)
         callback();
 }
 
-void WebResourceInterceptController::interceptedResponse(WebCore::ResourceLoaderIdentifier identifier)
+void WebResourceInterceptController::interceptedResponse(CyberCore::ResourceLoaderIdentifier identifier)
 {
     m_interceptedResponseQueue.remove(identifier);
 }
 
-void WebResourceInterceptController::defer(WebCore::ResourceLoaderIdentifier identifier, Function<void()>&& function)
+void WebResourceInterceptController::defer(CyberCore::ResourceLoaderIdentifier identifier, Function<void()>&& function)
 {
     ASSERT(isIntercepting(identifier));
 
@@ -59,4 +59,4 @@ void WebResourceInterceptController::defer(WebCore::ResourceLoaderIdentifier ide
         iterator->value.append(WTFMove(function));
 }
 
-} // namespace WebKit
+} // namespace CyberKit

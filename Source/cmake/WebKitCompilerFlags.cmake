@@ -182,7 +182,7 @@ if (COMPILER_IS_GCC_OR_CLANG)
         WEBKIT_PREPEND_GLOBAL_COMPILER_FLAGS(-msse2 -mfpmath=sse)
         include(DetectSSE2)
         if (NOT SSE2_SUPPORT_FOUND)
-            message(FATAL_ERROR "SSE2 support is required to compile WebKit")
+            message(FATAL_ERROR "SSE2 support is required to compile CyberKit")
         endif ()
     endif ()
 

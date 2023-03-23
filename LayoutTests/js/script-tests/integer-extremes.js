@@ -1,5 +1,5 @@
 description(
-"This test verifies that the bit twiddling done in JavaScriptCore's integer machinery works correctly on the current platform."
+"This test verifies that the bit twiddling done in CyberScriptCore's integer machinery works correctly on the current platform."
 );
 
 shouldBe("(-1).toString()", '"-1"');

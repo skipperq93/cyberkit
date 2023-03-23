@@ -34,7 +34,7 @@
 #import <wtf/spi/darwin/dyldSPI.h>
 #import <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 #if !ASSERT_MSG_DISABLED
 static bool applicationBundleIdentifierOverrideWasQueried;
@@ -453,6 +453,6 @@ bool IOSApplication::isLutron()
 
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(COCOA)

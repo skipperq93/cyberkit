@@ -31,7 +31,7 @@
 #include <wtf/HashMap.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AbstractFrame;
 
@@ -64,4 +64,4 @@ private:
     GlobalWindowIdentifier m_identifier;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

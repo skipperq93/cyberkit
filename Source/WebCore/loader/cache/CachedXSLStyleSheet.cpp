@@ -32,7 +32,7 @@
 #include "SharedBuffer.h"
 #include "TextResourceDecoder.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 #if ENABLE(XSLT)
 

@@ -32,7 +32,7 @@
 #include "GamepadConstantsMac.h"
 #include "Logging.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 StadiaHIDGamepad::StadiaHIDGamepad(HIDDevice&& device, unsigned index)
     : HIDGamepad(WTFMove(device), index)
@@ -131,6 +131,6 @@ StadiaHIDGamepad::StadiaHIDGamepad(HIDDevice&& device, unsigned index)
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(GAMEPAD) && PLATFORM(MAC)

@@ -39,27 +39,27 @@ namespace WebKit {
 
 class WebPage;
 
-class MediaKeySystemPermissionRequestManager : private WebCore::MediaCanStartListener {
+class MediaKeySystemPermissionRequestManager : private CyberCore::MediaCanStartListener {
     WTF_MAKE_FAST_ALLOCATED;
 public:
     explicit MediaKeySystemPermissionRequestManager(WebPage&);
     ~MediaKeySystemPermissionRequestManager() = default;
 
-    void startMediaKeySystemRequest(WebCore::MediaKeySystemRequest&);
-    void cancelMediaKeySystemRequest(WebCore::MediaKeySystemRequest&);
-    void mediaKeySystemWasGranted(WebCore::MediaKeySystemRequestIdentifier, CompletionHandler<void()>&&);
-    void mediaKeySystemWasDenied(WebCore::MediaKeySystemRequestIdentifier, String&&);
+    void startMediaKeySystemRequest(CyberCore::MediaKeySystemRequest&);
+    void cancelMediaKeySystemRequest(CyberCore::MediaKeySystemRequest&);
+    void mediaKeySystemWasGranted(CyberCore::MediaKeySystemRequestIdentifier, CompletionHandler<void()>&&);
+    void mediaKeySystemWasDenied(CyberCore::MediaKeySystemRequestIdentifier, String&&);
 
 private:
-    void sendMediaKeySystemRequest(WebCore::MediaKeySystemRequest&);
+    void sendMediaKeySystemRequest(CyberCore::MediaKeySystemRequest&);
 
-    // WebCore::MediaCanStartListener
-    void mediaCanStart(WebCore::Document&) final;
+    // CyberCore::MediaCanStartListener
+    void mediaCanStart(CyberCore::Document&) final;
 
     WebPage& m_page;
 
-    HashMap<WebCore::MediaKeySystemRequestIdentifier, Ref<WebCore::MediaKeySystemRequest>> m_ongoingMediaKeySystemRequests;
-    HashMap<RefPtr<WebCore::Document>, Vector<Ref<WebCore::MediaKeySystemRequest>>> m_pendingMediaKeySystemRequests;
+    HashMap<CyberCore::MediaKeySystemRequestIdentifier, Ref<CyberCore::MediaKeySystemRequest>> m_ongoingMediaKeySystemRequests;
+    HashMap<RefPtr<CyberCore::Document>, Vector<Ref<CyberCore::MediaKeySystemRequest>>> m_pendingMediaKeySystemRequests;
 };
 
 } // namespace WebKit

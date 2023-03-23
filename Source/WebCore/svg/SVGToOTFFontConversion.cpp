@@ -43,7 +43,7 @@
 #include <wtf/text/StringToIntegerConversion.h>
 #include <wtf/text/StringView.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 template <typename V>
 static inline void append32(V& result, uint32_t value)
@@ -155,7 +155,7 @@ private:
 
     void append32(uint32_t value)
     {
-        WebCore::append32(m_result, value);
+        CyberCore::append32(m_result, value);
     }
 
     void append32BitCode(const char code[4])

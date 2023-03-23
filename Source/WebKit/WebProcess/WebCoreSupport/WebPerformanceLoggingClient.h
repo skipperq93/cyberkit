@@ -28,11 +28,11 @@
 #include <CyberCore/PerformanceLoggingClient.h>
 #include <wtf/Forward.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPage;
 
-class WebPerformanceLoggingClient : public WebCore::PerformanceLoggingClient {
+class WebPerformanceLoggingClient : public CyberCore::PerformanceLoggingClient {
 public:
     WebPerformanceLoggingClient(WebPage&);
     virtual ~WebPerformanceLoggingClient() = default;

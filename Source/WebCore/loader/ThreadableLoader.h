@@ -35,7 +35,7 @@
 #include <wtf/RefPtr.h>
 #include <wtf/text/AtomString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
     class ResourceError;
     class ResourceRequest;
@@ -90,4 +90,4 @@ namespace WebCore {
         virtual void derefThreadableLoader() = 0;
     };
 
-} // namespace WebCore
+} // namespace CyberCore

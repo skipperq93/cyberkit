@@ -30,7 +30,7 @@
 #include "Document.h"
 #include "XPathEvaluator.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 XPathResult::XPathResult(Document& document, const XPath::Value& value)
     : m_value(value)

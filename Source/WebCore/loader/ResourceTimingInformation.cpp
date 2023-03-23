@@ -36,7 +36,7 @@
 #include "Performance.h"
 #include "ResourceTiming.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 bool ResourceTimingInformation::shouldAddResourceTiming(CachedResource& resource)
 {

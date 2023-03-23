@@ -49,11 +49,11 @@ public:
 
 protected:
     void decidePolicyForLocalAuthenticator(CompletionHandler<void(LocalAuthenticatorPolicy)>&&) override;
-    void selectAssertionResponse(Vector<Ref<WebCore::AuthenticatorAssertionResponse>>&&, WebAuthenticationSource, CompletionHandler<void(WebCore::AuthenticatorAssertionResponse*)>&&) override;
+    void selectAssertionResponse(Vector<Ref<CyberCore::AuthenticatorAssertionResponse>>&&, WebAuthenticationSource, CompletionHandler<void(CyberCore::AuthenticatorAssertionResponse*)>&&) override;
     
     
 private:
-    UniqueRef<AuthenticatorTransportService> createService(WebCore::AuthenticatorTransport, AuthenticatorTransportService::Observer&) const final;
+    UniqueRef<AuthenticatorTransportService> createService(CyberCore::AuthenticatorTransport, AuthenticatorTransportService::Observer&) const final;
     void runPanel() override;
     void filterTransports(TransportSet&) const override { };
 

@@ -31,7 +31,7 @@
 
 struct ImgDelayDescr;
 
-namespace WebCore {
+namespace CyberCore {
 
 // Enumerates all delay-loaded modules imported by the given PEImage.
 class DelayLoadedModulesEnumerator : public ImportedModulesEnumeratorBase {
@@ -51,6 +51,6 @@ private:
     const ImgDelayDescr* m_descriptor;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // DelayLoadedModulesEnumerator_h

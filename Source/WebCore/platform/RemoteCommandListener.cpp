@@ -34,7 +34,7 @@
 #include "RemoteCommandListenerGLib.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 static RemoteCommandListener::CreationFunction& remoteCommandListenerCreationFunction()
 {

@@ -36,9 +36,9 @@
 #include <CyberScriptCore/TypedArrayType.h>
 #include <CyberCore/SharedBuffer.h>
 
-namespace WebKit {
+namespace CyberKit {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 static RefPtr<ArrayBuffer> convertToArrayBuffer(RefPtr<const SharedBuffer>&& buffer)
 {
@@ -158,7 +158,7 @@ void RemoteLegacyCDMSession::sendMessage(RefPtr<SharedBuffer>&& message, const S
     m_client->sendMessage(convertToUint8Array(WTFMove(message)).get(), destinationURL);
 }
 
-void RemoteLegacyCDMSession::sendError(WebCore::LegacyCDMSessionClient::MediaKeyErrorCode errorCode, uint32_t systemCode)
+void RemoteLegacyCDMSession::sendError(CyberCore::LegacyCDMSessionClient::MediaKeyErrorCode errorCode, uint32_t systemCode)
 {
     if (m_client)
         m_client->sendError(errorCode, systemCode);

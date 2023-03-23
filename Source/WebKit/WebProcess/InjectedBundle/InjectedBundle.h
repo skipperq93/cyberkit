@@ -58,7 +58,7 @@ class Decoder;
 class Connection;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 #if USE(FOUNDATION)
 typedef NSBundle *PlatformBundle;
@@ -159,4 +159,4 @@ private:
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit

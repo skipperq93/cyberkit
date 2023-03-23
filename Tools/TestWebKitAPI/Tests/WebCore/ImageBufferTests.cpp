@@ -26,7 +26,7 @@
 #include "config.h"
 
 #include "Test.h"
-#include "WebCoreTestUtilities.h"
+#include "CyberCoreTestUtilities.h"
 #include <CyberCore/Color.h>
 #include <CyberCore/GraphicsContext.h>
 #include <CyberCore/ImageBuffer.h>
@@ -35,7 +35,7 @@
 #include <wtf/MemoryFootprint.h>
 
 namespace TestWebKitAPI {
-using namespace WebCore;
+using namespace CyberCore;
 
 static ::testing::AssertionResult imageBufferPixelIs(Color expected, ImageBuffer& imageBuffer, int x, int y)
 {
@@ -144,8 +144,8 @@ TEST(ImageBufferTests, ImageBufferSubPixelDrawing)
     frontContext.fillRect(fillRect, Color::green);
 
     for (int i = 0; i < 1000; ++i) {
-        backContext.drawImageBuffer(*frontImageBuffer, WebCore::FloatPoint { }, { WebCore::CompositeOperator::Copy });
-        frontContext.drawImageBuffer(*backImageBuffer, WebCore::FloatPoint { }, { WebCore::CompositeOperator::Copy });
+        backContext.drawImageBuffer(*frontImageBuffer, CyberCore::FloatPoint { }, { CyberCore::CompositeOperator::Copy });
+        frontContext.drawImageBuffer(*backImageBuffer, CyberCore::FloatPoint { }, { CyberCore::CompositeOperator::Copy });
     }
 
     EXPECT_TRUE(imageBufferPixelIs(Color::green, *frontImageBuffer, fillRect.x() + 1, fillRect.y() + 1));
@@ -206,7 +206,7 @@ TEST(ImageBufferTests, DISABLED_DrawImageBufferDoesNotReferenceExtraMemory)
 
     // The purpose of the whole test is to test that drawImageBuffer does not increase
     // memory footprint.
-    unaccelerated->context().drawImageBuffer(*accelerated, FloatRect { { }, logicalSize }, FloatRect { { }, logicalSize }, { WebCore::CompositeOperator::Copy });
+    unaccelerated->context().drawImageBuffer(*accelerated, FloatRect { { }, logicalSize }, FloatRect { { }, logicalSize }, { CyberCore::CompositeOperator::Copy });
     EXPECT_TRUE(imageBufferPixelIs(Color::green, *unaccelerated, fillRect.maxX() - 1, fillRect.maxY() - 1));
     EXPECT_TRUE(memoryFootprintChangedBy(lastFootprint, 0 + drawImageBitmapUnaccountedFootprint, footprintError));
     // sleep(10000); // Enable this to inspect the process manually.

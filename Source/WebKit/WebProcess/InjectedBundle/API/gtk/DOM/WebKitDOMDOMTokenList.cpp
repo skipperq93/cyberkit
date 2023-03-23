@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -18,30 +18,30 @@
  */
 
 #include "config.h"
-#include "WebKitDOMDOMTokenList.h"
+#include "CyberKitDOMDOMTokenList.h"
 
 #include <CyberCore/CSSImportRule.h>
 #include "DOMObjectCache.h"
 #include <CyberCore/DOMException.h>
 #include <CyberCore/Document.h>
 #include <CyberCore/JSExecState.h>
-#include "WebKitDOMDOMTokenListPrivate.h"
-#include "WebKitDOMPrivate.h"
+#include "CyberKitDOMDOMTokenListPrivate.h"
+#include "CyberKitDOMPrivate.h"
 #include "ConvertToUTF8String.h"
 #include <wtf/GetPtr.h>
 #include <wtf/RefPtr.h>
 
-#define WEBKIT_DOM_DOM_TOKEN_LIST_GET_PRIVATE(obj) G_TYPE_INSTANCE_GET_PRIVATE(obj, WEBKIT_DOM_TYPE_DOM_TOKEN_LIST, WebKitDOMDOMTokenListPrivate)
+#define WEBKIT_DOM_DOM_TOKEN_LIST_GET_PRIVATE(obj) G_TYPE_INSTANCE_GET_PRIVATE(obj, WEBKIT_DOM_TYPE_DOM_TOKEN_LIST, CyberKitDOMDOMTokenListPrivate)
 
-typedef struct _WebKitDOMDOMTokenListPrivate {
-    RefPtr<WebCore::DOMTokenList> coreObject;
-} WebKitDOMDOMTokenListPrivate;
+typedef struct _CyberKitDOMDOMTokenListPrivate {
+    RefPtr<CyberCore::DOMTokenList> coreObject;
+} CyberKitDOMDOMTokenListPrivate;
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
-namespace WebKit {
+namespace CyberKit {
 
-WebKitDOMDOMTokenList* kit(WebCore::DOMTokenList* obj)
+CyberKitDOMDOMTokenList* kit(CyberCore::DOMTokenList* obj)
 {
     if (!obj)
         return 0;
@@ -52,20 +52,20 @@ WebKitDOMDOMTokenList* kit(WebCore::DOMTokenList* obj)
     return wrapDOMTokenList(obj);
 }
 
-WebCore::DOMTokenList* core(WebKitDOMDOMTokenList* request)
+CyberCore::DOMTokenList* core(CyberKitDOMDOMTokenList* request)
 {
-    return request ? static_cast<WebCore::DOMTokenList*>(WEBKIT_DOM_OBJECT(request)->coreObject) : 0;
+    return request ? static_cast<CyberCore::DOMTokenList*>(WEBKIT_DOM_OBJECT(request)->coreObject) : 0;
 }
 
-WebKitDOMDOMTokenList* wrapDOMTokenList(WebCore::DOMTokenList* coreObject)
+CyberKitDOMDOMTokenList* wrapDOMTokenList(CyberCore::DOMTokenList* coreObject)
 {
     ASSERT(coreObject);
     return WEBKIT_DOM_DOM_TOKEN_LIST(g_object_new(WEBKIT_DOM_TYPE_DOM_TOKEN_LIST, "core-object", coreObject, nullptr));
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
-G_DEFINE_TYPE(WebKitDOMDOMTokenList, webkit_dom_dom_token_list, WEBKIT_DOM_TYPE_OBJECT)
+G_DEFINE_TYPE(CyberKitDOMDOMTokenList, webkit_dom_dom_token_list, WEBKIT_DOM_TYPE_OBJECT)
 
 enum {
     DOM_DOM_TOKEN_LIST_PROP_0,
@@ -75,17 +75,17 @@ enum {
 
 static void webkit_dom_dom_token_list_finalize(GObject* object)
 {
-    WebKitDOMDOMTokenListPrivate* priv = WEBKIT_DOM_DOM_TOKEN_LIST_GET_PRIVATE(object);
+    CyberKitDOMDOMTokenListPrivate* priv = WEBKIT_DOM_DOM_TOKEN_LIST_GET_PRIVATE(object);
 
-    WebKit::DOMObjectCache::forget(priv->coreObject.get());
+    CyberKit::DOMObjectCache::forget(priv->coreObject.get());
 
-    priv->~WebKitDOMDOMTokenListPrivate();
+    priv->~CyberKitDOMDOMTokenListPrivate();
     G_OBJECT_CLASS(webkit_dom_dom_token_list_parent_class)->finalize(object);
 }
 
 static void webkit_dom_dom_token_list_set_property(GObject* object, guint propertyId, const GValue* value, GParamSpec* pspec)
 {
-    WebKitDOMDOMTokenList* self = WEBKIT_DOM_DOM_TOKEN_LIST(object);
+    CyberKitDOMDOMTokenList* self = WEBKIT_DOM_DOM_TOKEN_LIST(object);
 
     switch (propertyId) {
     case DOM_DOM_TOKEN_LIST_PROP_VALUE:
@@ -99,7 +99,7 @@ static void webkit_dom_dom_token_list_set_property(GObject* object, guint proper
 
 static void webkit_dom_dom_token_list_get_property(GObject* object, guint propertyId, GValue* value, GParamSpec* pspec)
 {
-    WebKitDOMDOMTokenList* self = WEBKIT_DOM_DOM_TOKEN_LIST(object);
+    CyberKitDOMDOMTokenList* self = WEBKIT_DOM_DOM_TOKEN_LIST(object);
 
     switch (propertyId) {
     case DOM_DOM_TOKEN_LIST_PROP_LENGTH:
@@ -118,17 +118,17 @@ static GObject* webkit_dom_dom_token_list_constructor(GType type, guint construc
 {
     GObject* object = G_OBJECT_CLASS(webkit_dom_dom_token_list_parent_class)->constructor(type, constructPropertiesCount, constructProperties);
 
-    WebKitDOMDOMTokenListPrivate* priv = WEBKIT_DOM_DOM_TOKEN_LIST_GET_PRIVATE(object);
-    priv->coreObject = static_cast<WebCore::DOMTokenList*>(WEBKIT_DOM_OBJECT(object)->coreObject);
-    WebKit::DOMObjectCache::put(priv->coreObject.get(), object);
+    CyberKitDOMDOMTokenListPrivate* priv = WEBKIT_DOM_DOM_TOKEN_LIST_GET_PRIVATE(object);
+    priv->coreObject = static_cast<CyberCore::DOMTokenList*>(WEBKIT_DOM_OBJECT(object)->coreObject);
+    CyberKit::DOMObjectCache::put(priv->coreObject.get(), object);
 
     return object;
 }
 
-static void webkit_dom_dom_token_list_class_init(WebKitDOMDOMTokenListClass* requestClass)
+static void webkit_dom_dom_token_list_class_init(CyberKitDOMDOMTokenListClass* requestClass)
 {
     GObjectClass* gobjectClass = G_OBJECT_CLASS(requestClass);
-    g_type_class_add_private(gobjectClass, sizeof(WebKitDOMDOMTokenListPrivate));
+    g_type_class_add_private(gobjectClass, sizeof(CyberKitDOMDOMTokenListPrivate));
     gobjectClass->constructor = webkit_dom_dom_token_list_constructor;
     gobjectClass->finalize = webkit_dom_dom_token_list_finalize;
     gobjectClass->set_property = webkit_dom_dom_token_list_set_property;
@@ -156,43 +156,43 @@ static void webkit_dom_dom_token_list_class_init(WebKitDOMDOMTokenListClass* req
 
 }
 
-static void webkit_dom_dom_token_list_init(WebKitDOMDOMTokenList* request)
+static void webkit_dom_dom_token_list_init(CyberKitDOMDOMTokenList* request)
 {
-    WebKitDOMDOMTokenListPrivate* priv = WEBKIT_DOM_DOM_TOKEN_LIST_GET_PRIVATE(request);
-    new (priv) WebKitDOMDOMTokenListPrivate();
+    CyberKitDOMDOMTokenListPrivate* priv = WEBKIT_DOM_DOM_TOKEN_LIST_GET_PRIVATE(request);
+    new (priv) CyberKitDOMDOMTokenListPrivate();
 }
 
-gchar* webkit_dom_dom_token_list_item(WebKitDOMDOMTokenList* self, gulong index)
+gchar* webkit_dom_dom_token_list_item(CyberKitDOMDOMTokenList* self, gulong index)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_DOM_TOKEN_LIST(self), 0);
-    WebCore::DOMTokenList* item = WebKit::core(self);
+    CyberCore::DOMTokenList* item = CyberKit::core(self);
     gchar* result = convertToUTF8String(item->item(index));
     return result;
 }
 
-gboolean webkit_dom_dom_token_list_contains(WebKitDOMDOMTokenList* self, const gchar* token)
+gboolean webkit_dom_dom_token_list_contains(CyberKitDOMDOMTokenList* self, const gchar* token)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_DOM_TOKEN_LIST(self), FALSE);
     g_return_val_if_fail(token, FALSE);
-    WebCore::DOMTokenList* item = WebKit::core(self);
+    CyberCore::DOMTokenList* item = CyberKit::core(self);
     gboolean result = item->contains(WTF::AtomString::fromUTF8(token));
     return result;
 }
 
-void webkit_dom_dom_token_list_add(WebKitDOMDOMTokenList* self, GError** error, ...)
+void webkit_dom_dom_token_list_add(CyberKitDOMDOMTokenList* self, GError** error, ...)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_DOM_TOKEN_LIST(self));
     g_return_if_fail(!error || !*error);
-    WebCore::DOMTokenList* item = WebKit::core(self);
+    CyberCore::DOMTokenList* item = CyberKit::core(self);
     va_list variadicParameterList;
     va_start(variadicParameterList, error);
     while (gchar* variadicParameter = va_arg(variadicParameterList, gchar*)) {
         auto result = item->add(WTF::AtomString::fromUTF8(variadicParameter));
         if (result.hasException()) {
-            auto description = WebCore::DOMException::description(result.releaseException().code());
+            auto description = CyberCore::DOMException::description(result.releaseException().code());
             g_set_error_literal(error, g_quark_from_string("WEBKIT_DOM"), description.legacyCode, description.name);
             break;
         }
@@ -200,19 +200,19 @@ void webkit_dom_dom_token_list_add(WebKitDOMDOMTokenList* self, GError** error, 
     va_end(variadicParameterList);
 }
 
-void webkit_dom_dom_token_list_remove(WebKitDOMDOMTokenList* self, GError** error, ...)
+void webkit_dom_dom_token_list_remove(CyberKitDOMDOMTokenList* self, GError** error, ...)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_DOM_TOKEN_LIST(self));
     g_return_if_fail(!error || !*error);
-    WebCore::DOMTokenList* item = WebKit::core(self);
+    CyberCore::DOMTokenList* item = CyberKit::core(self);
     va_list variadicParameterList;
     Vector<WTF::String> convertedTokens;
     va_start(variadicParameterList, error);
     while (gchar* variadicParameter = va_arg(variadicParameterList, gchar*)) {
         auto result = item->remove(WTF::AtomString::fromUTF8(variadicParameter));
         if (result.hasException()) {
-            auto description = WebCore::DOMException::description(result.releaseException().code());
+            auto description = CyberCore::DOMException::description(result.releaseException().code());
             g_set_error_literal(error, g_quark_from_string("WEBKIT_DOM"), description.legacyCode, description.name);
             break;
         }
@@ -220,63 +220,63 @@ void webkit_dom_dom_token_list_remove(WebKitDOMDOMTokenList* self, GError** erro
     va_end(variadicParameterList);
 }
 
-gboolean webkit_dom_dom_token_list_toggle(WebKitDOMDOMTokenList* self, const gchar* token, gboolean force, GError** error)
+gboolean webkit_dom_dom_token_list_toggle(CyberKitDOMDOMTokenList* self, const gchar* token, gboolean force, GError** error)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_DOM_TOKEN_LIST(self), FALSE);
     g_return_val_if_fail(token, FALSE);
     g_return_val_if_fail(!error || !*error, FALSE);
-    WebCore::DOMTokenList* item = WebKit::core(self);
+    CyberCore::DOMTokenList* item = CyberKit::core(self);
     auto result = item->toggle(WTF::AtomString::fromUTF8(token), force);
     if (result.hasException()) {
-        auto description = WebCore::DOMException::description(result.releaseException().code());
+        auto description = CyberCore::DOMException::description(result.releaseException().code());
         g_set_error_literal(error, g_quark_from_string("WEBKIT_DOM"), description.legacyCode, description.name);
         return false;
     }
     return result.releaseReturnValue();
 }
 
-void webkit_dom_dom_token_list_replace(WebKitDOMDOMTokenList* self, const gchar* token, const gchar* newToken, GError** error)
+void webkit_dom_dom_token_list_replace(CyberKitDOMDOMTokenList* self, const gchar* token, const gchar* newToken, GError** error)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_DOM_TOKEN_LIST(self));
     g_return_if_fail(token);
     g_return_if_fail(newToken);
     g_return_if_fail(!error || !*error);
-    WebCore::DOMTokenList* item = WebKit::core(self);
+    CyberCore::DOMTokenList* item = CyberKit::core(self);
     auto convertedToken = WTF::AtomString::fromUTF8(token);
     auto convertedNewToken = WTF::AtomString::fromUTF8(newToken);
     auto result = item->replace(convertedToken, convertedNewToken);
     if (result.hasException()) {
-        auto description = WebCore::DOMException::description(result.releaseException().code());
+        auto description = CyberCore::DOMException::description(result.releaseException().code());
         g_set_error_literal(error, g_quark_from_string("WEBKIT_DOM"), description.legacyCode, description.name);
     }
 }
 
-gulong webkit_dom_dom_token_list_get_length(WebKitDOMDOMTokenList* self)
+gulong webkit_dom_dom_token_list_get_length(CyberKitDOMDOMTokenList* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_DOM_TOKEN_LIST(self), 0);
-    WebCore::DOMTokenList* item = WebKit::core(self);
+    CyberCore::DOMTokenList* item = CyberKit::core(self);
     gulong result = item->length();
     return result;
 }
 
-gchar* webkit_dom_dom_token_list_get_value(WebKitDOMDOMTokenList* self)
+gchar* webkit_dom_dom_token_list_get_value(CyberKitDOMDOMTokenList* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_DOM_TOKEN_LIST(self), 0);
-    WebCore::DOMTokenList* item = WebKit::core(self);
+    CyberCore::DOMTokenList* item = CyberKit::core(self);
     gchar* result = convertToUTF8String(item->value());
     return result;
 }
 
-void webkit_dom_dom_token_list_set_value(WebKitDOMDOMTokenList* self, const gchar* value)
+void webkit_dom_dom_token_list_set_value(CyberKitDOMDOMTokenList* self, const gchar* value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_DOM_TOKEN_LIST(self));
     g_return_if_fail(value);
-    WebCore::DOMTokenList* item = WebKit::core(self);
+    CyberCore::DOMTokenList* item = CyberKit::core(self);
     item->setValue(WTF::AtomString::fromUTF8(value));
 }
 

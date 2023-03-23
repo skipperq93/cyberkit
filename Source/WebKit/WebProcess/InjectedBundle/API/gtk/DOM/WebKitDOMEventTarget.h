@@ -16,8 +16,8 @@
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef WebKitDOMEventTarget_h
-#define WebKitDOMEventTarget_h
+#ifndef CyberKitDOMEventTarget_h
+#define CyberKitDOMEventTarget_h
 
 #include <glib-object.h>
 #include <webkitdom/webkitdomdefines.h>
@@ -25,24 +25,24 @@
 G_BEGIN_DECLS
 
 #define WEBKIT_DOM_TYPE_EVENT_TARGET            (webkit_dom_event_target_get_type ())
-#define WEBKIT_DOM_EVENT_TARGET(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), WEBKIT_DOM_TYPE_EVENT_TARGET, WebKitDOMEventTarget))
-#define WEBKIT_DOM_EVENT_TARGET_CLASS(obj)      (G_TYPE_CHECK_CLASS_CAST ((obj), WEBKIT_DOM_TYPE_EVENT_TARGET, WebKitDOMEventTargetIface))
+#define WEBKIT_DOM_EVENT_TARGET(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), WEBKIT_DOM_TYPE_EVENT_TARGET, CyberKitDOMEventTarget))
+#define WEBKIT_DOM_EVENT_TARGET_CLASS(obj)      (G_TYPE_CHECK_CLASS_CAST ((obj), WEBKIT_DOM_TYPE_EVENT_TARGET, CyberKitDOMEventTargetIface))
 #define WEBKIT_DOM_IS_EVENT_TARGET(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), WEBKIT_DOM_TYPE_EVENT_TARGET))
-#define WEBKIT_DOM_EVENT_TARGET_GET_IFACE(obj)  (G_TYPE_INSTANCE_GET_INTERFACE ((obj), WEBKIT_DOM_TYPE_EVENT_TARGET, WebKitDOMEventTargetIface))
+#define WEBKIT_DOM_EVENT_TARGET_GET_IFACE(obj)  (G_TYPE_INSTANCE_GET_INTERFACE ((obj), WEBKIT_DOM_TYPE_EVENT_TARGET, CyberKitDOMEventTargetIface))
 
-struct _WebKitDOMEventTargetIface {
+struct _CyberKitDOMEventTargetIface {
     GTypeInterface gIface;
 
     /* virtual table */
-    gboolean      (* dispatch_event)(WebKitDOMEventTarget *target,
-                                     WebKitDOMEvent       *event,
+    gboolean      (* dispatch_event)(CyberKitDOMEventTarget *target,
+                                     CyberKitDOMEvent       *event,
                                      GError              **error);
 
-    gboolean      (* add_event_listener)(WebKitDOMEventTarget *target,
+    gboolean      (* add_event_listener)(CyberKitDOMEventTarget *target,
                                          const char           *event_name,
                                          GClosure             *handler,
                                          gboolean              use_capture);
-    gboolean      (* remove_event_listener)(WebKitDOMEventTarget *target,
+    gboolean      (* remove_event_listener)(CyberKitDOMEventTarget *target,
                                             const char           *event_name,
                                             GClosure             *handler,
                                             gboolean              use_capture);
@@ -58,21 +58,21 @@ WEBKIT_DEPRECATED GType     webkit_dom_event_target_get_type(void) G_GNUC_CONST;
 
 /**
  * webkit_dom_event_target_dispatch_event:
- * @target: A #WebKitDOMEventTarget
- * @event: A #WebKitDOMEvent
+ * @target: A #CyberKitDOMEventTarget
+ * @event: A #CyberKitDOMEvent
  * @error: return location for an error or %NULL
  *
  * Returns: a #gboolean
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
  */
-WEBKIT_DEPRECATED gboolean  webkit_dom_event_target_dispatch_event(WebKitDOMEventTarget *target,
-                                                            WebKitDOMEvent       *event,
+WEBKIT_DEPRECATED gboolean  webkit_dom_event_target_dispatch_event(CyberKitDOMEventTarget *target,
+                                                            CyberKitDOMEvent       *event,
                                                             GError              **error);
 
 /**
  * webkit_dom_event_target_add_event_listener:
- * @target: A #WebKitDOMEventTarget
+ * @target: A #CyberKitDOMEventTarget
  * @event_name: A #gchar
  * @handler: (scope async): A #GCallback
  * @use_capture: A #gboolean
@@ -82,7 +82,7 @@ WEBKIT_DEPRECATED gboolean  webkit_dom_event_target_dispatch_event(WebKitDOMEven
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
  */
-WEBKIT_DEPRECATED gboolean  webkit_dom_event_target_add_event_listener(WebKitDOMEventTarget *target,
+WEBKIT_DEPRECATED gboolean  webkit_dom_event_target_add_event_listener(CyberKitDOMEventTarget *target,
                                                                 const char           *event_name,
                                                                 GCallback             handler,
                                                                 gboolean              use_capture,
@@ -90,7 +90,7 @@ WEBKIT_DEPRECATED gboolean  webkit_dom_event_target_add_event_listener(WebKitDOM
 
 /**
  * webkit_dom_event_target_remove_event_listener:
- * @target: A #WebKitDOMEventTarget
+ * @target: A #CyberKitDOMEventTarget
  * @event_name: A #gchar
  * @handler: (scope call): A #GCallback
  * @use_capture: A #gboolean
@@ -99,14 +99,14 @@ WEBKIT_DEPRECATED gboolean  webkit_dom_event_target_add_event_listener(WebKitDOM
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
  */
-WEBKIT_DEPRECATED gboolean  webkit_dom_event_target_remove_event_listener(WebKitDOMEventTarget *target,
+WEBKIT_DEPRECATED gboolean  webkit_dom_event_target_remove_event_listener(CyberKitDOMEventTarget *target,
                                                                    const char           *event_name,
                                                                    GCallback             handler,
                                                                    gboolean              use_capture);
 
 /**
  * webkit_dom_event_target_add_event_listener_with_closure: (rename-to webkit_dom_event_target_add_event_listener)
- * @target: A #WebKitDOMEventTarget
+ * @target: A #CyberKitDOMEventTarget
  * @event_name: A #gchar
  * @handler: A #GClosure
  * @use_capture: A #gboolean
@@ -118,14 +118,14 @@ WEBKIT_DEPRECATED gboolean  webkit_dom_event_target_remove_event_listener(WebKit
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
  */
-WEBKIT_DEPRECATED gboolean webkit_dom_event_target_add_event_listener_with_closure(WebKitDOMEventTarget *target,
+WEBKIT_DEPRECATED gboolean webkit_dom_event_target_add_event_listener_with_closure(CyberKitDOMEventTarget *target,
                                                                             const char           *event_name,
                                                                             GClosure             *handler,
                                                                             gboolean              use_capture);
 
 /**
  * webkit_dom_event_target_remove_event_listener_with_closure: (rename-to webkit_dom_event_target_remove_event_listener)
- * @target: A #WebKitDOMEventTarget
+ * @target: A #CyberKitDOMEventTarget
  * @event_name: A #gchar
  * @handler: A #GClosure
  * @use_capture: A #gboolean
@@ -137,7 +137,7 @@ WEBKIT_DEPRECATED gboolean webkit_dom_event_target_add_event_listener_with_closu
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
  */
-WEBKIT_DEPRECATED gboolean webkit_dom_event_target_remove_event_listener_with_closure(WebKitDOMEventTarget *target,
+WEBKIT_DEPRECATED gboolean webkit_dom_event_target_remove_event_listener_with_closure(CyberKitDOMEventTarget *target,
                                                                                const char           *event_name,
                                                                                GClosure             *handler,
                                                                                gboolean              use_capture);
@@ -145,4 +145,4 @@ WEBKIT_DEPRECATED gboolean webkit_dom_event_target_remove_event_listener_with_cl
 
 G_END_DECLS
 
-#endif /* WebKitDOMEventTarget_h */
+#endif /* CyberKitDOMEventTarget_h */

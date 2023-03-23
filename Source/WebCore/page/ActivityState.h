@@ -31,7 +31,7 @@ namespace WTF {
 class TextStream;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ActivityState {
     enum Flag {
@@ -58,23 +58,23 @@ enum class ActivityStateForCPUSampling {
 
 WEBCORE_EXPORT WTF::TextStream& operator<<(WTF::TextStream&, OptionSet<ActivityState::Flag>);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::ActivityState::Flag> {
+template<> struct EnumTraits<CyberCore::ActivityState::Flag> {
     using values = EnumValues<
-        WebCore::ActivityState::Flag,
-        WebCore::ActivityState::Flag::WindowIsActive,
-        WebCore::ActivityState::Flag::IsFocused,
-        WebCore::ActivityState::Flag::IsVisible,
-        WebCore::ActivityState::Flag::IsVisibleOrOccluded,
-        WebCore::ActivityState::Flag::IsInWindow,
-        WebCore::ActivityState::Flag::IsVisuallyIdle,
-        WebCore::ActivityState::Flag::IsAudible,
-        WebCore::ActivityState::Flag::IsLoading,
-        WebCore::ActivityState::Flag::IsCapturingMedia,
-        WebCore::ActivityState::Flag::IsConnectedToHardwareConsole
+        CyberCore::ActivityState::Flag,
+        CyberCore::ActivityState::Flag::WindowIsActive,
+        CyberCore::ActivityState::Flag::IsFocused,
+        CyberCore::ActivityState::Flag::IsVisible,
+        CyberCore::ActivityState::Flag::IsVisibleOrOccluded,
+        CyberCore::ActivityState::Flag::IsInWindow,
+        CyberCore::ActivityState::Flag::IsVisuallyIdle,
+        CyberCore::ActivityState::Flag::IsAudible,
+        CyberCore::ActivityState::Flag::IsLoading,
+        CyberCore::ActivityState::Flag::IsCapturingMedia,
+        CyberCore::ActivityState::Flag::IsConnectedToHardwareConsole
     >;
 };
 

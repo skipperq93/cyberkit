@@ -36,73 +36,73 @@
 #import <wtf/GetPtr.h>
 #import <wtf/URL.h>
 
-#define IMPL static_cast<WebCore::CharacterData*>(reinterpret_cast<WebCore::Node*>(_internal))
+#define IMPL static_cast<CyberCore::CharacterData*>(reinterpret_cast<CyberCore::Node*>(_internal))
 
 @implementation DOMCharacterData
 
 - (NSString *)data
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->data();
 }
 
 - (void)setData:(NSString *)newData
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->setData(newData);
 }
 
 - (unsigned)length
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->length();
 }
 
 - (DOMElement *)previousElementSibling
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->previousElementSibling()));
 }
 
 - (DOMElement *)nextElementSibling
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->nextElementSibling()));
 }
 
 - (NSString *)substringData:(unsigned)offset length:(unsigned)inLength
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return raiseOnDOMError(IMPL->substringData(offset, inLength));
 }
 
 - (void)appendData:(NSString *)inData
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->appendData(inData);
 }
 
 - (void)insertData:(unsigned)offset data:(NSString *)inData
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     raiseOnDOMError(IMPL->insertData(offset, inData));
 }
 
 - (void)deleteData:(unsigned)offset length:(unsigned)inLength
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     raiseOnDOMError(IMPL->deleteData(offset, inLength));
 }
 
 - (void)replaceData:(unsigned)offset length:(unsigned)inLength data:(NSString *)inData
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     raiseOnDOMError(IMPL->replaceData(offset, inLength, inData));
 }
 
 - (void)remove
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     raiseOnDOMError(IMPL->remove());
 }
 

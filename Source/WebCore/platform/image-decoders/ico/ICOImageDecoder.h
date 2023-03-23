@@ -32,7 +32,7 @@
 
 #include "BMPImageReader.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // This class decodes the ICO and CUR image formats.
 class ICOImageDecoder final : public ScalableImageDecoder {
@@ -153,4 +153,4 @@ private:
     IntSize m_frameSize;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

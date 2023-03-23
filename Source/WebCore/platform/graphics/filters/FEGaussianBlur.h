@@ -25,7 +25,7 @@
 #include "FEConvolveMatrix.h"
 #include "FilterEffect.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class FEGaussianBlur : public FilterEffect {
 public:
@@ -65,6 +65,6 @@ private:
     EdgeModeType m_edgeMode;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_FILTER_EFFECT(FEGaussianBlur)

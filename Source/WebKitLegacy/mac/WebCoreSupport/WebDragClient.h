@@ -29,21 +29,21 @@
 
 @class WebView;
 
-class WebDragClient : public WebCore::DragClient {
+class WebDragClient : public CyberCore::DragClient {
     WTF_MAKE_FAST_ALLOCATED;
 public:
     WebDragClient(WebView*);
 
     bool useLegacyDragClient() override;
 
-    void willPerformDragDestinationAction(WebCore::DragDestinationAction, const WebCore::DragData&) override;
-    void willPerformDragSourceAction(WebCore::DragSourceAction, const WebCore::IntPoint&, WebCore::DataTransfer&) override;
-    OptionSet<WebCore::DragSourceAction> dragSourceActionMaskForPoint(const WebCore::IntPoint& windowPoint) override;
-    void startDrag(WebCore::DragItem, WebCore::DataTransfer&, WebCore::Frame&) override;
+    void willPerformDragDestinationAction(CyberCore::DragDestinationAction, const CyberCore::DragData&) override;
+    void willPerformDragSourceAction(CyberCore::DragSourceAction, const CyberCore::IntPoint&, CyberCore::DataTransfer&) override;
+    OptionSet<CyberCore::DragSourceAction> dragSourceActionMaskForPoint(const CyberCore::IntPoint& windowPoint) override;
+    void startDrag(CyberCore::DragItem, CyberCore::DataTransfer&, CyberCore::Frame&) override;
 
-    void beginDrag(WebCore::DragItem, WebCore::Frame&, const WebCore::IntPoint& mouseDownPosition, const WebCore::IntPoint& mouseDraggedPosition, WebCore::DataTransfer&, WebCore::DragSourceAction) override;
+    void beginDrag(CyberCore::DragItem, CyberCore::Frame&, const CyberCore::IntPoint& mouseDownPosition, const CyberCore::IntPoint& mouseDraggedPosition, CyberCore::DataTransfer&, CyberCore::DragSourceAction) override;
 
-    void declareAndWriteDragImage(const String& pasteboardName, WebCore::Element&, const URL&, const String&, WebCore::Frame*) override;
+    void declareAndWriteDragImage(const String& pasteboardName, CyberCore::Element&, const URL&, const String&, CyberCore::Frame*) override;
     void didConcludeEditDrag() override;
 
 private:

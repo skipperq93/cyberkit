@@ -30,7 +30,7 @@
 #include <wtf/Lock.h>
 #include <wtf/ThreadSafeRefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class IntSize;
 class TextureMapperGL;
@@ -64,11 +64,11 @@ protected:
     TextureMapperLayer* m_targetLayer { nullptr };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #define SPECIALIZE_TYPE_TRAITS_TEXTUREMAPPER_PLATFORMLAYERPROXY(ToClassName, predicate) \
-    SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::ToClassName) \
-    static bool isType(const WebCore::TextureMapperPlatformLayerProxy& proxy) { return proxy.predicate; } \
+    SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::ToClassName) \
+    static bool isType(const CyberCore::TextureMapperPlatformLayerProxy& proxy) { return proxy.predicate; } \
     SPECIALIZE_TYPE_TRAITS_END()
 
 #endif // USE(COORDINATED_GRAPHICS)

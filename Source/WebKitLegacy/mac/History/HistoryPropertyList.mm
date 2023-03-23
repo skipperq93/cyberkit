@@ -28,7 +28,7 @@
 #import "WebHistoryItemInternal.h"
 #import <CyberCore/HistoryItem.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 static const int currentFileVersion = 1;
 

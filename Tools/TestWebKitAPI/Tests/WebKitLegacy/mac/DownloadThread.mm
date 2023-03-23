@@ -76,7 +76,7 @@ static RetainPtr<NSString> destination;
 
 namespace TestWebKitAPI {
 
-TEST(WebKitLegacy, DownloadThread)
+TEST(CyberKitLegacy, DownloadThread)
 {
     auto delegate = adoptNS([DownloadThreadChecker new]);
     auto webView = adoptNS([[WebView alloc] initWithFrame:NSMakeRect(0, 0, 400, 400) frameName:nil groupName:nil]);

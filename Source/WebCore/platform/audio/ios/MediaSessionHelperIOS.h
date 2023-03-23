@@ -29,7 +29,7 @@
 
 #include <wtf/WeakHashSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class MediaPlaybackTarget;
 

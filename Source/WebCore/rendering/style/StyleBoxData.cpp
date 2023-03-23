@@ -25,7 +25,7 @@
 #include "RenderStyle.h"
 #include "RenderStyleConstants.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct SameSizeAsStyleBoxData : public RefCounted<SameSizeAsStyleBoxData> {
     Length length[7];
@@ -98,4 +98,4 @@ bool StyleBoxData::operator==(const StyleBoxData& o) const
         ;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

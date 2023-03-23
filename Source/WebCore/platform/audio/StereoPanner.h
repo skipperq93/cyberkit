@@ -29,7 +29,7 @@
 #include "AudioBus.h"
 #include <memory>
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace StereoPanner {
     
@@ -39,4 +39,4 @@ void panToTargetValue(const AudioBus* inputBus, AudioBus* outputBus, float panVa
 
 } // namespace StereoPanner
 
-} // namespace WebCore
+} // namespace CyberCore

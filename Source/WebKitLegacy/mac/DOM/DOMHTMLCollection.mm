@@ -35,18 +35,18 @@
 #import <CyberCore/Node.h>
 #import <CyberCore/NodeList.h>
 #import <CyberCore/ThreadCheck.h>
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 #import <CyberCore/WebScriptObjectPrivate.h>
 #import <wtf/GetPtr.h>
 #import <wtf/URL.h>
 
-#define IMPL reinterpret_cast<WebCore::HTMLCollection*>(_internal)
+#define IMPL reinterpret_cast<CyberCore::HTMLCollection*>(_internal)
 
 @implementation DOMHTMLCollection
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainThread([DOMHTMLCollection class], self))
+    if (CyberCoreObjCScheduleDeallocateOnMainThread([DOMHTMLCollection class], self))
         return;
 
     if (_internal)
@@ -56,19 +56,19 @@
 
 - (unsigned)length
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->length();
 }
 
 - (DOMNode *)item:(unsigned)index
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->item(index)));
 }
 
 - (DOMNode *)namedItem:(NSString *)name
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->namedItem(name)));
 }
 
@@ -77,15 +77,15 @@
     if (!name)
         return nullptr;
 
-    WebCore::JSMainThreadNullState state;
-    return kit(static_cast<WebCore::NodeList*>(WTF::getPtr(IMPL->ownerNode().getElementsByTagName(name))));
+    CyberCore::JSMainThreadNullState state;
+    return kit(static_cast<CyberCore::NodeList*>(WTF::getPtr(IMPL->ownerNode().getElementsByTagName(name))));
 }
 
 @end
 
-DOMHTMLCollection *kit(WebCore::HTMLCollection* value)
+DOMHTMLCollection *kit(CyberCore::HTMLCollection* value)
 {
-    WebCoreThreadViolationCheckRoundOne();
+    CyberCoreThreadViolationCheckRoundOne();
     if (!value)
         return nil;
     if (DOMHTMLCollection *wrapper = getDOMWrapper(value))

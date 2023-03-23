@@ -24,7 +24,7 @@
 
 #include "CachedResource.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class FrameLoader;
 class StyleSheetContents;
@@ -68,6 +68,6 @@ private:
     RefPtr<StyleSheetContents> m_parsedStyleSheetCache;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CACHED_RESOURCE(CachedCSSStyleSheet, CachedResource::Type::CSSStyleSheet)

@@ -28,7 +28,7 @@
 #include <wtf/NeverDestroyed.h>
 #include <wtf/text/AtomString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 #define WEBCORE_COMMON_ATOM_STRINGS_FOR_EACH_KEYWORD(macro) \
     macro(all, "all") \
@@ -73,4 +73,4 @@ WEBCORE_COMMON_ATOM_STRINGS_FOR_EACH_KEYWORD(DECLARE_COMMON_ATOM)
 
 WEBCORE_EXPORT void initializeCommonAtomStrings();
 
-} // namespace WebCore
+} // namespace CyberCore

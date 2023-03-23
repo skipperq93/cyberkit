@@ -34,7 +34,7 @@
 #include <wtf/RefPtr.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class TimerEvent;
 
@@ -83,7 +83,7 @@ private:
     Ref<MockNotifier> m_notifier;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)
 

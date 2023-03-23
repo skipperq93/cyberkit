@@ -33,7 +33,7 @@
 #include "ProcessIdentifier.h"
 #include <wtf/EnumTraits.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class FrameState : uint8_t {
     Provisional,
@@ -167,4 +167,4 @@ enum class AllowsContentJavaScript : bool {
     Yes,
 };
 
-} // namespace WebCore
+} // namespace CyberCore

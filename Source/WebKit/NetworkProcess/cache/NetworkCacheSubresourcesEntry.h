@@ -41,7 +41,7 @@ public:
         , m_lastSeen(lastSeen)
         , m_firstSeen(firstSeen)
         , m_isTransient(true) { }
-    SubresourceInfo(Key&& key, WallTime lastSeen, WallTime firstSeen, bool sameSite, bool isAppInitiated, URL&& firstPartyForCookies, WebCore::HTTPHeaderMap&& requestHeaders, WebCore::ResourceLoadPriority priority)
+    SubresourceInfo(Key&& key, WallTime lastSeen, WallTime firstSeen, bool sameSite, bool isAppInitiated, URL&& firstPartyForCookies, CyberCore::HTTPHeaderMap&& requestHeaders, CyberCore::ResourceLoadPriority priority)
         : m_key(WTFMove(key))
         , m_lastSeen(lastSeen)
         , m_firstSeen(firstSeen)
@@ -50,7 +50,7 @@ public:
         , m_firstPartyForCookies(WTFMove(firstPartyForCookies))
         , m_requestHeaders(WTFMove(requestHeaders))
         , m_priority(priority) { }
-    SubresourceInfo(const Key&, const WebCore::ResourceRequest&, const SubresourceInfo* previousInfo);
+    SubresourceInfo(const Key&, const CyberCore::ResourceRequest&, const SubresourceInfo* previousInfo);
 
     const Key& key() const { return m_key; }
     WallTime lastSeen() const { return m_lastSeen; }
@@ -58,8 +58,8 @@ public:
 
     bool isTransient() const { return m_isTransient; }
     const URL& firstPartyForCookies() const { ASSERT(!m_isTransient); return m_firstPartyForCookies; }
-    const WebCore::HTTPHeaderMap& requestHeaders() const { ASSERT(!m_isTransient); return m_requestHeaders; }
-    WebCore::ResourceLoadPriority priority() const { ASSERT(!m_isTransient); return m_priority; }
+    const CyberCore::HTTPHeaderMap& requestHeaders() const { ASSERT(!m_isTransient); return m_requestHeaders; }
+    CyberCore::ResourceLoadPriority priority() const { ASSERT(!m_isTransient); return m_priority; }
 
     bool isSameSite() const { ASSERT(!m_isTransient); return m_isSameSite; }
     bool isTopSite() const { return false; }
@@ -79,19 +79,19 @@ private:
     bool m_isSameSite { false };
     bool m_isAppInitiated { true };
     URL m_firstPartyForCookies;
-    WebCore::HTTPHeaderMap m_requestHeaders;
-    WebCore::ResourceLoadPriority m_priority;
+    CyberCore::HTTPHeaderMap m_requestHeaders;
+    CyberCore::ResourceLoadPriority m_priority;
 };
 
 struct SubresourceLoad {
     WTF_MAKE_NONCOPYABLE(SubresourceLoad); WTF_MAKE_FAST_ALLOCATED;
 public:
-    SubresourceLoad(const WebCore::ResourceRequest& request, const Key& key)
+    SubresourceLoad(const CyberCore::ResourceRequest& request, const Key& key)
         : request(request)
         , key(key)
     { }
 
-    WebCore::ResourceRequest request;
+    CyberCore::ResourceRequest request;
     Key key;
 };
 

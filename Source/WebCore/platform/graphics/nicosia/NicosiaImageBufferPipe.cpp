@@ -41,7 +41,7 @@
 
 namespace Nicosia {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 NicosiaImageBufferPipeSource::NicosiaImageBufferPipeSource()
 {
@@ -127,7 +127,7 @@ void NicosiaImageBufferPipe::setContentsToLayer(GraphicsLayer& layer)
 
 } // namespace Nicosia
 
-namespace WebCore {
+namespace CyberCore {
 
 RefPtr<ImageBufferPipe> ImageBufferPipe::create()
 {

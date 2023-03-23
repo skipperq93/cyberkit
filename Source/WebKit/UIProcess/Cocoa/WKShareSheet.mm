@@ -175,7 +175,7 @@ SOFT_LINK_CLASS(LinkPresentation, LPLinkMetadata)
     return self;
 }
 
-static void appendFilesAsShareableURLs(RetainPtr<NSMutableArray>&& shareDataArray, const Vector<WebCore::RawFile>& files, NSURL* temporaryDirectory, bool usePlaceholderFiles, CompletionHandler<void(RetainPtr<NSMutableArray>&&)>&& completionHandler)
+static void appendFilesAsShareableURLs(RetainPtr<NSMutableArray>&& shareDataArray, const Vector<CyberCore::RawFile>& files, NSURL* temporaryDirectory, bool usePlaceholderFiles, CompletionHandler<void(RetainPtr<NSMutableArray>&&)>&& completionHandler)
 {
     struct FileWriteTask {
         String fileName;
@@ -188,7 +188,7 @@ static void appendFilesAsShareableURLs(RetainPtr<NSMutableArray>&& shareDataArra
     auto queue = WorkQueue::create("com.apple.WebKit.WKShareSheet.ShareableFileWriter");
     queue->dispatch([shareDataArray = WTFMove(shareDataArray), fileWriteTasks = WTFMove(fileWriteTasks), temporaryDirectory = retainPtr(temporaryDirectory), usePlaceholderFiles, completionHandler = WTFMove(completionHandler)]() mutable {
         for (auto& fileWriteTask : fileWriteTasks) {
-            NSURL *fileURL = [WKShareSheet writeFileToShareableURL:WebCore::ResourceResponseBase::sanitizeSuggestedFilename(fileWriteTask.fileName) data:fileWriteTask.fileData.get() temporaryDirectory:temporaryDirectory.get()];
+            NSURL *fileURL = [WKShareSheet writeFileToShareableURL:CyberCore::ResourceResponseBase::sanitizeSuggestedFilename(fileWriteTask.fileName) data:fileWriteTask.fileData.get() temporaryDirectory:temporaryDirectory.get()];
             if (!fileURL) {
                 shareDataArray = nil;
                 break;
@@ -214,7 +214,7 @@ static void appendFilesAsShareableURLs(RetainPtr<NSMutableArray>&& shareDataArra
     });
 }
 
-- (void)presentWithParameters:(const WebCore::ShareDataWithParsedURL &)data inRect:(std::optional<WebCore::FloatRect>)rect completionHandler:(WTF::CompletionHandler<void(bool)>&&)completionHandler
+- (void)presentWithParameters:(const CyberCore::ShareDataWithParsedURL &)data inRect:(std::optional<CyberCore::FloatRect>)rect completionHandler:(WTF::CompletionHandler<void(bool)>&&)completionHandler
 {
     auto shareDataArray = adoptNS([[NSMutableArray alloc] init]);
     
@@ -227,7 +227,7 @@ static void appendFilesAsShareableURLs(RetainPtr<NSMutableArray>&& shareDataArra
         if (!data.shareData.title.isEmpty())
             url._title = data.shareData.title;
 
-        if (data.originator == WebCore::ShareDataOriginator::Web) {
+        if (data.originator == CyberCore::ShareDataOriginator::Web) {
             auto itemProvider = adoptNS([[WKShareSheetURLItemProvider alloc] initWithURL:url]);
             if (itemProvider)
                 [shareDataArray addObject:itemProvider.get()];
@@ -252,7 +252,7 @@ static void appendFilesAsShareableURLs(RetainPtr<NSMutableArray>&& shareDataArra
     if (!data.files.isEmpty()) {
         bool usePlaceholderFiles = false;
 #if PLATFORM(IOS_FAMILY)
-        usePlaceholderFiles = data.originator == WebCore::ShareDataOriginator::Web;
+        usePlaceholderFiles = data.originator == CyberCore::ShareDataOriginator::Web;
 #endif
 
         _temporaryFileShareDirectory = [WKShareSheet createTemporarySharingDirectory];
@@ -269,7 +269,7 @@ static void appendFilesAsShareableURLs(RetainPtr<NSMutableArray>&& shareDataArra
     [self presentWithShareDataArray:shareDataArray.get() inRect:rect];
 }
 
-- (void)presentWithShareDataArray:(NSArray *)sharingItems inRect:(std::optional<WebCore::FloatRect>)rect
+- (void)presentWithShareDataArray:(NSArray *)sharingItems inRect:(std::optional<CyberCore::FloatRect>)rect
 {
     WKWebView *webView = _webView.getAutoreleased();
 
@@ -411,7 +411,7 @@ static void appendFilesAsShareableURLs(RetainPtr<NSMutableArray>&& shareDataArra
 {
     auto quarantineProperties = @{
         (__bridge NSString *)kLSQuarantineTypeKey: (__bridge NSString *)kLSQuarantineTypeWebDownload,
-        (__bridge NSString *)kLSQuarantineAgentBundleIdentifierKey: WebCore::applicationBundleIdentifier()
+        (__bridge NSString *)kLSQuarantineAgentBundleIdentifierKey: CyberCore::applicationBundleIdentifier()
     };
 
     if (![fileURL setResourceValue:quarantineProperties forKey:NSURLQuarantinePropertiesKey error:nil])

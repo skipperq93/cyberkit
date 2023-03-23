@@ -30,7 +30,7 @@ typedef unsigned long Window;
 typedef void* ContextKeyType;
 typedef struct _XDisplay Display;
 
-namespace WebCore {
+namespace CyberCore {
 
 class GLContextGLX final : public GLContext {
     WTF_MAKE_NONCOPYABLE(GLContextGLX);
@@ -67,7 +67,7 @@ private:
     XUniqueGLXPixmap m_glxPixmap;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(GLX)
 

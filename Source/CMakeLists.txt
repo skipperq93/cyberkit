@@ -11,7 +11,7 @@ if (USE_CAPSTONE)
     add_subdirectory(ThirdParty/capstone)
 endif ()
 
-add_subdirectory(JavaScriptCore)
+add_subdirectory(CyberScriptCore)
 
 if (ENABLE_WEBGL OR USE_ANGLE_EGL)
     add_subdirectory(ThirdParty/ANGLE)
@@ -39,7 +39,7 @@ if (ENABLE_WEBCORE)
 endif ()
 
 if (ENABLE_WEBKIT_LEGACY)
-    add_subdirectory(WebKitLegacy)
+    add_subdirectory(CyberKitLegacy)
 endif ()
 
 if (ENABLE_WEBKIT)

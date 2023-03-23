@@ -31,10 +31,10 @@
 #include "Connection.h"
 #include "GPUConnectionToWebProcess.h"
 #include "RemoteMediaSessionHelperMessages.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 RemoteMediaSessionHelperProxy::RemoteMediaSessionHelperProxy(GPUConnectionToWebProcess& gpuConnection)
     : m_gpuConnection(gpuConnection)
@@ -106,7 +106,7 @@ void RemoteMediaSessionHelperProxy::activeAudioRouteDidChange(ShouldPause should
     m_gpuConnection.connection().send(Messages::RemoteMediaSessionHelper::ActiveAudioRouteDidChange(shouldPause), { });
 }
 
-void RemoteMediaSessionHelperProxy::activeVideoRouteDidChange(SupportsAirPlayVideo supportsAirPlayVideo, Ref<WebCore::MediaPlaybackTarget>&& target)
+void RemoteMediaSessionHelperProxy::activeVideoRouteDidChange(SupportsAirPlayVideo supportsAirPlayVideo, Ref<CyberCore::MediaPlaybackTarget>&& target)
 {
     auto context = target->targetContext();
     if (!context.serializeOutputContext())

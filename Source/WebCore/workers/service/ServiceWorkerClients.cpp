@@ -35,10 +35,10 @@
 #include "ServiceWorker.h"
 #include "ServiceWorkerGlobalScope.h"
 #include "ServiceWorkerThread.h"
-#include "WebCoreOpaqueRoot.h"
+#include "CyberCoreOpaqueRoot.h"
 #include <wtf/text/StringToIntegerConversion.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static inline void didFinishGetRequest(ServiceWorkerGlobalScope& scope, DeferredPromise& promise, std::optional<ServiceWorkerClientData>&& clientData)
 {
@@ -174,11 +174,11 @@ RefPtr<DeferredPromise> ServiceWorkerClients::takePendingPromise(PromiseIdentifi
     return m_pendingPromises.take(identifier);
 }
 
-WebCoreOpaqueRoot root(ServiceWorkerClients* clients)
+CyberCoreOpaqueRoot root(ServiceWorkerClients* clients)
 {
-    return WebCoreOpaqueRoot { clients };
+    return CyberCoreOpaqueRoot { clients };
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

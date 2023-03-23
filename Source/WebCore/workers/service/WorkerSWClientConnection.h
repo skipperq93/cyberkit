@@ -29,7 +29,7 @@
 
 #include "SWClientConnection.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class WorkerGlobalScope;
 class WorkerThread;
@@ -99,6 +99,6 @@ private:
     HashMap<uint64_t, RetrieveRecordResponseBodyCallback> m_retrieveRecordResponseBodyCallbacks;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

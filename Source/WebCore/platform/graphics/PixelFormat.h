@@ -28,7 +28,7 @@
 #include <wtf/EnumTraits.h>
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class PixelFormat : uint8_t {
     RGBA8,

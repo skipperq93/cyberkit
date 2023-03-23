@@ -30,7 +30,7 @@
 #include "VideoTrackPrivate.h"
 #include <webm/dom_types.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class VideoTrackPrivateWebM final : public VideoTrackPrivate {
 public:

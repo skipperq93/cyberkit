@@ -30,7 +30,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 struct RetrieveRecordsOptions;
 }
 
@@ -62,32 +62,32 @@ class ReadRecordTaskCounter;
 class Cache {
 public:
     enum class State { Uninitialized, Opening, Open };
-    Cache(Caches&, WebCore::DOMCacheIdentifier, State, String&& name, String&& uniqueName);
+    Cache(Caches&, CyberCore::DOMCacheIdentifier, State, String&& name, String&& uniqueName);
 
     bool isOpened() const { return m_state == State::Open; }
-    void open(WebCore::DOMCacheEngine::CompletionCallback&&);
+    void open(CyberCore::DOMCacheEngine::CompletionCallback&&);
 
-    WebCore::DOMCacheIdentifier identifier() const { return m_identifier; }
+    CyberCore::DOMCacheIdentifier identifier() const { return m_identifier; }
     const String& name() const { return m_name; }
     const String& uniqueName() const { return m_uniqueName; }
     bool isActive() const { return m_state != State::Uninitialized; }
 
-    void retrieveRecords(const WebCore::RetrieveRecordsOptions&, WebCore::DOMCacheEngine::RecordsCallback&&);
-    WebCore::DOMCacheEngine::CacheInfo info() const { return { m_identifier, m_name }; }
+    void retrieveRecords(const CyberCore::RetrieveRecordsOptions&, CyberCore::DOMCacheEngine::RecordsCallback&&);
+    CyberCore::DOMCacheEngine::CacheInfo info() const { return { m_identifier, m_name }; }
 
-    void put(Vector<WebCore::DOMCacheEngine::Record>&&, WebCore::DOMCacheEngine::RecordIdentifiersCallback&&);
-    void remove(WebCore::ResourceRequest&&, WebCore::CacheQueryOptions&&, WebCore::DOMCacheEngine::RecordIdentifiersCallback&&);
+    void put(Vector<CyberCore::DOMCacheEngine::Record>&&, CyberCore::DOMCacheEngine::RecordIdentifiersCallback&&);
+    void remove(CyberCore::ResourceRequest&&, CyberCore::CacheQueryOptions&&, CyberCore::DOMCacheEngine::RecordIdentifiersCallback&&);
 
     Vector<NetworkCache::Key> keys() const;
 
     void dispose();
     void clearMemoryRepresentation();
 
-    static std::optional<WebCore::DOMCacheEngine::Record> decode(const NetworkCache::Storage::Record&);
-    static NetworkCache::Storage::Record encode(const RecordInformation&, const WebCore::DOMCacheEngine::Record&);
+    static std::optional<CyberCore::DOMCacheEngine::Record> decode(const NetworkCache::Storage::Record&);
+    static NetworkCache::Storage::Record encode(const RecordInformation&, const CyberCore::DOMCacheEngine::Record&);
 
     struct DecodedRecord {
-        DecodedRecord(double insertionTime, uint64_t size, WebCore::DOMCacheEngine::Record&& record)
+        DecodedRecord(double insertionTime, uint64_t size, CyberCore::DOMCacheEngine::Record&& record)
             : insertionTime(insertionTime)
             , size(size)
             , record(WTFMove(record))
@@ -95,7 +95,7 @@ public:
 
         double insertionTime { 0 };
         uint64_t size { 0 };
-        WebCore::DOMCacheEngine::Record record;
+        CyberCore::DOMCacheEngine::Record record;
     };
     static std::optional<DecodedRecord> decodeRecordHeader(const NetworkCache::Storage::Record&);
 
@@ -104,30 +104,30 @@ public:
 private:
     Vector<RecordInformation>* recordsFromURL(const URL&);
     const Vector<RecordInformation>* recordsFromURL(const URL&) const;
-    RecordInformation& addRecord(Vector<RecordInformation>*, const WebCore::DOMCacheEngine::Record&);
+    RecordInformation& addRecord(Vector<RecordInformation>*, const CyberCore::DOMCacheEngine::Record&);
 
-    void storeRecords(Vector<WebCore::DOMCacheEngine::Record>&&, WebCore::DOMCacheEngine::RecordIdentifiersCallback&&);
+    void storeRecords(Vector<CyberCore::DOMCacheEngine::Record>&&, CyberCore::DOMCacheEngine::RecordIdentifiersCallback&&);
 
-    RecordInformation toRecordInformation(const WebCore::DOMCacheEngine::Record&);
+    RecordInformation toRecordInformation(const CyberCore::DOMCacheEngine::Record&);
 
-    void finishOpening(WebCore::DOMCacheEngine::CompletionCallback&&, std::optional<WebCore::DOMCacheEngine::Error>&&);
+    void finishOpening(CyberCore::DOMCacheEngine::CompletionCallback&&, std::optional<CyberCore::DOMCacheEngine::Error>&&);
     void retrieveRecord(const RecordInformation&, Ref<ReadRecordTaskCounter>&&);
 
-    void readRecordsList(WebCore::DOMCacheEngine::CompletionCallback&&);
-    void writeRecordToDisk(const RecordInformation&, WebCore::DOMCacheEngine::Record&&, Ref<AsynchronousPutTaskCounter>&&, uint64_t previousRecordSize);
-    void updateRecordToDisk(RecordInformation&, WebCore::DOMCacheEngine::Record&&, Ref<AsynchronousPutTaskCounter>&&);
+    void readRecordsList(CyberCore::DOMCacheEngine::CompletionCallback&&);
+    void writeRecordToDisk(const RecordInformation&, CyberCore::DOMCacheEngine::Record&&, Ref<AsynchronousPutTaskCounter>&&, uint64_t previousRecordSize);
+    void updateRecordToDisk(RecordInformation&, CyberCore::DOMCacheEngine::Record&&, Ref<AsynchronousPutTaskCounter>&&);
     void removeRecordFromDisk(const RecordInformation&);
-    void readRecordFromDisk(const RecordInformation&, WTF::Function<void(Expected<WebCore::DOMCacheEngine::Record, WebCore::DOMCacheEngine::Error>&&)>&&);
+    void readRecordFromDisk(const RecordInformation&, WTF::Function<void(Expected<CyberCore::DOMCacheEngine::Record, CyberCore::DOMCacheEngine::Error>&&)>&&);
     void removeFromRecordList(const Vector<uint64_t>&);
 
     Caches& m_caches;
     State m_state;
-    WebCore::DOMCacheIdentifier m_identifier;
+    CyberCore::DOMCacheIdentifier m_identifier;
     String m_name;
     String m_uniqueName;
     HashMap<String, Vector<RecordInformation>> m_records;
     uint64_t m_nextRecordIdentifier { 0 };
-    Vector<WebCore::DOMCacheEngine::CompletionCallback> m_pendingOpeningCallbacks;
+    Vector<CyberCore::DOMCacheEngine::CompletionCallback> m_pendingOpeningCallbacks;
 };
 
 } // namespace CacheStorage

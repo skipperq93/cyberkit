@@ -24,7 +24,7 @@
 #include "FEMorphology.h"
 #include "SVGFilterPrimitiveStandardAttributes.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 template<>
 struct SVGPropertyTraits<MorphologyOperatorType> {
@@ -89,4 +89,4 @@ private:
     Ref<SVGAnimatedNumber> m_radiusY { SVGAnimatedNumber::create(this) };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

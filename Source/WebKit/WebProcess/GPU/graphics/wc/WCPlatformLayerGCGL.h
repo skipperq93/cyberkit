@@ -33,7 +33,7 @@
 
 namespace WebKit {
 
-class WCPlatformLayerGCGL : public WebCore::WCPlatformLayer {
+class WCPlatformLayerGCGL : public CyberCore::WCPlatformLayer {
 public:
     Vector<WCContentBufferIdentifier> takeContentBufferIdentifiers()
     {

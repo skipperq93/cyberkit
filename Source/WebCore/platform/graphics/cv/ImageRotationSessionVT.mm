@@ -35,7 +35,7 @@
 #import "VideoToolboxSoftLink.h"
 #import <pal/cf/CoreMediaSoftLink.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static ImageRotationSessionVT::RotationProperties transformToRotationProperties(const AffineTransform& inTransform)
 {

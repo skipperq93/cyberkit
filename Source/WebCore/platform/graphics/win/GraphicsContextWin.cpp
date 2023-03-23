@@ -38,7 +38,7 @@
 #include <wtf/MathExtras.h>
 #include <wtf/win/GDIObject.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static void fillWithClearColor(HBITMAP bitmap)
 {

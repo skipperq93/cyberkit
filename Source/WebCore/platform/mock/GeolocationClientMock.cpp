@@ -38,7 +38,7 @@
 #include "GeolocationError.h"
 #include "GeolocationPosition.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 GeolocationClientMock::GeolocationClientMock()
     : m_controller(0)
@@ -189,6 +189,6 @@ void GeolocationClientMock::clearError()
     m_errorMessage = String();
 }
 
-} // WebCore
+} // CyberCore
 
 #endif // ENABLE(GEOLOCATION)

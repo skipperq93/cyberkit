@@ -30,7 +30,7 @@
 #include "MediaPlaybackTarget.h"
 #include <wtf/RetainPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class MediaPlaybackTargetCocoa : public MediaPlaybackTarget {
 public:

@@ -31,21 +31,21 @@
 #include <CyberCore/WebLockRegistry.h>
 #include <wtf/HashMap.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebProcess;
 
-class RemoteWebLockRegistry final : public WebCore::WebLockRegistry, public IPC::MessageReceiver {
+class RemoteWebLockRegistry final : public CyberCore::WebLockRegistry, public IPC::MessageReceiver {
 public:
     static Ref<RemoteWebLockRegistry> create(WebProcess& process) { return adoptRef(*new RemoteWebLockRegistry(process)); }
     ~RemoteWebLockRegistry();
 
-    // WebCore::WebLockRegistry.
-    void requestLock(PAL::SessionID, const WebCore::ClientOrigin&, WebCore::WebLockIdentifier, WebCore::ScriptExecutionContextIdentifier, const String& name, WebCore::WebLockMode, bool steal, bool ifAvailable, Function<void(bool)>&& grantedHandler, Function<void()>&& lockStolenHandler) final;
-    void releaseLock(PAL::SessionID, const WebCore::ClientOrigin&, WebCore::WebLockIdentifier, WebCore::ScriptExecutionContextIdentifier, const String& name) final;
-    void abortLockRequest(PAL::SessionID, const WebCore::ClientOrigin&, WebCore::WebLockIdentifier, WebCore::ScriptExecutionContextIdentifier, const String& name, CompletionHandler<void(bool)>&&) final;
-    void snapshot(PAL::SessionID, const WebCore::ClientOrigin&, CompletionHandler<void(WebCore::WebLockManagerSnapshot&&)>&&) final;
-    void clientIsGoingAway(PAL::SessionID, const WebCore::ClientOrigin&, WebCore::ScriptExecutionContextIdentifier) final;
+    // CyberCore::WebLockRegistry.
+    void requestLock(PAL::SessionID, const CyberCore::ClientOrigin&, CyberCore::WebLockIdentifier, CyberCore::ScriptExecutionContextIdentifier, const String& name, CyberCore::WebLockMode, bool steal, bool ifAvailable, Function<void(bool)>&& grantedHandler, Function<void()>&& lockStolenHandler) final;
+    void releaseLock(PAL::SessionID, const CyberCore::ClientOrigin&, CyberCore::WebLockIdentifier, CyberCore::ScriptExecutionContextIdentifier, const String& name) final;
+    void abortLockRequest(PAL::SessionID, const CyberCore::ClientOrigin&, CyberCore::WebLockIdentifier, CyberCore::ScriptExecutionContextIdentifier, const String& name, CompletionHandler<void(bool)>&&) final;
+    void snapshot(PAL::SessionID, const CyberCore::ClientOrigin&, CompletionHandler<void(CyberCore::WebLockManagerSnapshot&&)>&&) final;
+    void clientIsGoingAway(PAL::SessionID, const CyberCore::ClientOrigin&, CyberCore::ScriptExecutionContextIdentifier) final;
 
     // IPC::MessageReceiver.
     void didReceiveMessage(IPC::Connection&, IPC::Decoder&) final;
@@ -54,11 +54,11 @@ private:
     explicit RemoteWebLockRegistry(WebProcess&);
 
     // IPC Message handlers.
-    void didCompleteLockRequest(WebCore::WebLockIdentifier, WebCore::ScriptExecutionContextIdentifier, bool success);
-    void didStealLock(WebCore::WebLockIdentifier, WebCore::ScriptExecutionContextIdentifier);
+    void didCompleteLockRequest(CyberCore::WebLockIdentifier, CyberCore::ScriptExecutionContextIdentifier, bool success);
+    void didStealLock(CyberCore::WebLockIdentifier, CyberCore::ScriptExecutionContextIdentifier);
 
     struct LocksSnapshot;
-    HashMap<WebCore::ScriptExecutionContextIdentifier, LocksSnapshot> m_locksSnapshotPerClient;
+    HashMap<CyberCore::ScriptExecutionContextIdentifier, LocksSnapshot> m_locksSnapshotPerClient;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

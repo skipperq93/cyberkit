@@ -28,12 +28,12 @@
 
 #if ENABLE(CONTEXT_MENUS)
 
-namespace WebCore {
+namespace CyberCore {
 
 ContextMenu::ContextMenu()
 {
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(CONTEXT_MENUS)

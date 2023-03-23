@@ -28,7 +28,7 @@
 
 #if PLATFORM(COCOA)
 
-namespace WebCore {
+namespace CyberCore {
 
 #if ENABLE(APPLE_PAY)
 std::unique_ptr<PlatformControl> ControlFactoryCocoa::createPlatformApplePayButton(ApplePayButtonPart& part)
@@ -37,6 +37,6 @@ std::unique_ptr<PlatformControl> ControlFactoryCocoa::createPlatformApplePayButt
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(COCOA)

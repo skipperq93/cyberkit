@@ -28,7 +28,7 @@
 #include "Length.h"
 #include "StyleColor.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 DECLARE_ALLOCATOR_WITH_HEAP_IDENTIFIER(StyleInheritedData);
 class StyleInheritedData : public RefCounted<StyleInheritedData> {
@@ -62,4 +62,4 @@ private:
     void operator=(const StyleInheritedData&) = delete;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

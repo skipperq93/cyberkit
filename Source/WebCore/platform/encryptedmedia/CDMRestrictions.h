@@ -30,7 +30,7 @@
 #include "CDMSessionType.h"
 #include <wtf/HashSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct CDMRestrictions {
     bool distinctiveIdentifierDenied { false };
@@ -38,6 +38,6 @@ struct CDMRestrictions {
     HashSet<CDMSessionType, IntHash<CDMSessionType>, WTF::StrongEnumHashTraits<CDMSessionType>> deniedSessionTypes;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ENCRYPTED_MEDIA)

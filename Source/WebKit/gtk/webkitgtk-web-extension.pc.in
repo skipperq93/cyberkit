@@ -4,7 +4,7 @@ libdir=@LIB_INSTALL_DIR@
 includedir=${prefix}/include
 revision=@BUILD_REVISION@
 
-Name: WebKitGTK web process extensions
+Name: CyberKitGTK web process extensions
 Description: Web content engine for GTK - web process extensions
 URL: https://webkitgtk.org
 Version: @PROJECT_VERSION@

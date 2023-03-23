@@ -86,7 +86,7 @@ void WebExtensionAPIPermissions::request(NSDictionary *details, Ref<WebExtension
         return;
     }
 
-    if (!WebCore::UserGestureIndicator::processingUserGesture()) {
+    if (!CyberCore::UserGestureIndicator::processingUserGesture()) {
         // Chrome reports this error as callback error and not an exception, so do the same.
         callback->reportError(@"permissions.request() must be called during a user gesture.");
         return;

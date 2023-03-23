@@ -33,7 +33,7 @@
 #import <wtf/Forward.h>
 #import <wtf/RetainPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 class FloatRect;
 }
 
@@ -108,7 +108,7 @@ UIContextMenuInteractionDelegate>
 - (void)showImageSheet;
 - (void)showDataDetectorsUIForPositionInformation:(const WebKit::InteractionInformationAtPosition&)positionInformation;
 #if ENABLE(MEDIA_CONTROLS_CONTEXT_MENUS) && USE(UICONTEXTMENU)
-- (void)showMediaControlsContextMenu:(WebCore::FloatRect&&)targetFrame items:(Vector<WebCore::MediaControlsContextMenuItem>&&)items completionHandler:(CompletionHandler<void(WebCore::MediaControlsContextMenuItem::ID)>&&)completionHandler;
+- (void)showMediaControlsContextMenu:(CyberCore::FloatRect&&)targetFrame items:(Vector<CyberCore::MediaControlsContextMenuItem>&&)items completionHandler:(CompletionHandler<void(CyberCore::MediaControlsContextMenuItem::ID)>&&)completionHandler;
 #endif // ENABLE(MEDIA_CONTROLS_CONTEXT_MENUS) && USE(UICONTEXTMENU)
 - (void)cleanupSheet;
 - (void)updateSheetPosition;

@@ -27,7 +27,7 @@
 
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // Don't change these values; parsing uses them.
 enum class CalcOperator : uint8_t {

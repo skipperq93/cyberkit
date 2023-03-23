@@ -43,7 +43,7 @@
 #include <wtf/HashMap.h>
 #include <wtf/URLHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CacheStorageProvider;
 class FetchLoader;

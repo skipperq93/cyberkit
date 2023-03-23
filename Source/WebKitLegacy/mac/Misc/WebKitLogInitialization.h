@@ -28,7 +28,7 @@
 #include <wtf/LogChannels.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 #if !LOG_DISABLED || !RELEASE_LOG_DISABLED
 
@@ -38,6 +38,6 @@ WTF::LogChannels& logChannels();
 
 WTFLogChannel* getLogChannel(const String& name);
 
-} // namespace WebKit
+} // namespace CyberKit
 
 void ReportDiscardedDelegateException(SEL delegateSelector, id exception);

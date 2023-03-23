@@ -35,7 +35,7 @@
 #include "WheelEventDeltaFilterMac.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
     
 WheelEventDeltaFilter::WheelEventDeltaFilter() = default;
 

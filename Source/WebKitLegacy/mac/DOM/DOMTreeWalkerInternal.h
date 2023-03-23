@@ -26,8 +26,8 @@
 
 #import <CyberKitLegacy/DOMTreeWalker.h>
 
-namespace WebCore {
+namespace CyberCore {
 class TreeWalker;
 }
 
-DOMTreeWalker *kit(WebCore::TreeWalker*);
+DOMTreeWalker *kit(CyberCore::TreeWalker*);

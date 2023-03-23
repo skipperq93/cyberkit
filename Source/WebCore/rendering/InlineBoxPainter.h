@@ -30,7 +30,7 @@
 #include "LayoutRect.h"
 #include "ShadowData.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class Color;
 class FillLayer;

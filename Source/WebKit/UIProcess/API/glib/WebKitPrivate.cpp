@@ -62,20 +62,20 @@ unsigned toPlatformModifiers(OptionSet<WebKit::WebEventModifier> wkModifiers)
 }
 #endif
 
-WebKitNavigationType toWebKitNavigationType(WebCore::NavigationType type)
+WebKitNavigationType toWebKitNavigationType(CyberCore::NavigationType type)
 {
     switch (type) {
-    case WebCore::NavigationType::LinkClicked:
+    case CyberCore::NavigationType::LinkClicked:
         return WEBKIT_NAVIGATION_TYPE_LINK_CLICKED;
-    case WebCore::NavigationType::FormSubmitted:
+    case CyberCore::NavigationType::FormSubmitted:
         return WEBKIT_NAVIGATION_TYPE_FORM_SUBMITTED;
-    case WebCore::NavigationType::BackForward:
+    case CyberCore::NavigationType::BackForward:
         return WEBKIT_NAVIGATION_TYPE_BACK_FORWARD;
-    case WebCore::NavigationType::Reload:
+    case CyberCore::NavigationType::Reload:
         return WEBKIT_NAVIGATION_TYPE_RELOAD;
-    case WebCore::NavigationType::FormResubmitted:
+    case CyberCore::NavigationType::FormResubmitted:
         return WEBKIT_NAVIGATION_TYPE_FORM_RESUBMITTED;
-    case WebCore::NavigationType::Other:
+    case CyberCore::NavigationType::Other:
         return WEBKIT_NAVIGATION_TYPE_OTHER;
     default:
         ASSERT_NOT_REACHED();
@@ -150,7 +150,7 @@ unsigned toWebKitError(unsigned webCoreError)
     }
 }
 
-unsigned toWebCoreError(unsigned webKitError)
+unsigned toCyberCoreError(unsigned webKitError)
 {
     switch (webKitError) {
     case WEBKIT_NETWORK_ERROR_CANCELLED:

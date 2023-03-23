@@ -24,7 +24,7 @@
 #include "SVGProperty.h"
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum SVGPathSegType {
     PathSegUnknown = 0,
@@ -85,4 +85,4 @@ protected:
     using SVGProperty::SVGProperty;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

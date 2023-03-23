@@ -36,14 +36,14 @@
 #include <wtf/FileSystem.h>
 #include <wtf/MonotonicTime.h>
 
-namespace WebCore {
+namespace CyberCore {
 class CurlRequest;
 class SharedBuffer;
 }
 
 namespace WebKit {
 
-class NetworkDataTaskCurl final : public NetworkDataTask, public WebCore::CurlRequestClient {
+class NetworkDataTaskCurl final : public NetworkDataTask, public CyberCore::CurlRequestClient {
 public:
     static Ref<NetworkDataTask> create(NetworkSession& session, NetworkDataTaskClient& client, const NetworkLoadParameters& parameters)
     {
@@ -68,46 +68,46 @@ private:
     void invalidateAndCancel() override;
     NetworkDataTask::State state() const override;
 
-    Ref<WebCore::CurlRequest> createCurlRequest(WebCore::ResourceRequest&&, RequestStatus = RequestStatus::NewRequest);
-    void curlDidSendData(WebCore::CurlRequest&, unsigned long long, unsigned long long) override;
-    void curlDidReceiveResponse(WebCore::CurlRequest&, WebCore::CurlResponse&&) override;
-    void curlDidReceiveData(WebCore::CurlRequest&, const WebCore::SharedBuffer&) override;
-    void curlDidComplete(WebCore::CurlRequest&, WebCore::NetworkLoadMetrics&&) override;
-    void curlDidFailWithError(WebCore::CurlRequest&, WebCore::ResourceError&&, WebCore::CertificateInfo&&) override;
+    Ref<CyberCore::CurlRequest> createCurlRequest(CyberCore::ResourceRequest&&, RequestStatus = RequestStatus::NewRequest);
+    void curlDidSendData(CyberCore::CurlRequest&, unsigned long long, unsigned long long) override;
+    void curlDidReceiveResponse(CyberCore::CurlRequest&, CyberCore::CurlResponse&&) override;
+    void curlDidReceiveData(CyberCore::CurlRequest&, const CyberCore::SharedBuffer&) override;
+    void curlDidComplete(CyberCore::CurlRequest&, CyberCore::NetworkLoadMetrics&&) override;
+    void curlDidFailWithError(CyberCore::CurlRequest&, CyberCore::ResourceError&&, CyberCore::CertificateInfo&&) override;
 
     void invokeDidReceiveResponse();
 
-    bool shouldRedirectAsGET(const WebCore::ResourceRequest&, bool crossOrigin);
+    bool shouldRedirectAsGET(const CyberCore::ResourceRequest&, bool crossOrigin);
     void willPerformHTTPRedirection();
 
-    void tryHttpAuthentication(WebCore::AuthenticationChallenge&&);
-    void tryProxyAuthentication(WebCore::AuthenticationChallenge&&);
-    void restartWithCredential(const WebCore::ProtectionSpace&, const WebCore::Credential&);
+    void tryHttpAuthentication(CyberCore::AuthenticationChallenge&&);
+    void tryProxyAuthentication(CyberCore::AuthenticationChallenge&&);
+    void restartWithCredential(const CyberCore::ProtectionSpace&, const CyberCore::Credential&);
 
-    void tryServerTrustEvaluation(WebCore::AuthenticationChallenge&&);
+    void tryServerTrustEvaluation(CyberCore::AuthenticationChallenge&&);
 
-    void appendCookieHeader(WebCore::ResourceRequest&);
-    void handleCookieHeaders(const WebCore::ResourceRequest&, const WebCore::CurlResponse&);
+    void appendCookieHeader(CyberCore::ResourceRequest&);
+    void handleCookieHeaders(const CyberCore::ResourceRequest&, const CyberCore::CurlResponse&);
 
-    bool isThirdPartyRequest(const WebCore::ResourceRequest&);
-    bool shouldBlockCookies(const WebCore::ResourceRequest&);
+    bool isThirdPartyRequest(const CyberCore::ResourceRequest&);
+    bool shouldBlockCookies(const CyberCore::ResourceRequest&);
     void blockCookies();
     void unblockCookies();
 
-    void updateNetworkLoadMetrics(WebCore::NetworkLoadMetrics&);
+    void updateNetworkLoadMetrics(CyberCore::NetworkLoadMetrics&);
 
     String suggestedFilename() const override;
     void deleteDownloadFile();
 
-    WebCore::FrameIdentifier m_frameID;
-    WebCore::PageIdentifier m_pageID;
-    WebCore::ShouldRelaxThirdPartyCookieBlocking m_shouldRelaxThirdPartyCookieBlocking { WebCore::ShouldRelaxThirdPartyCookieBlocking::No };
-    RefPtr<WebCore::SecurityOrigin> m_sourceOrigin;
+    CyberCore::FrameIdentifier m_frameID;
+    CyberCore::PageIdentifier m_pageID;
+    CyberCore::ShouldRelaxThirdPartyCookieBlocking m_shouldRelaxThirdPartyCookieBlocking { CyberCore::ShouldRelaxThirdPartyCookieBlocking::No };
+    RefPtr<CyberCore::SecurityOrigin> m_sourceOrigin;
 
     State m_state { State::Suspended };
 
-    RefPtr<WebCore::CurlRequest> m_curlRequest;
-    WebCore::ResourceResponse m_response;
+    RefPtr<CyberCore::CurlRequest> m_curlRequest;
+    CyberCore::ResourceResponse m_response;
     unsigned m_redirectCount { 0 };
     unsigned m_authFailureCount { 0 };
 

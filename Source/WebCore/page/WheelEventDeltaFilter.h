@@ -29,7 +29,7 @@
 #include "ScrollTypes.h"
 #include <wtf/Deque.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class PlatformWheelEvent;
 
@@ -71,4 +71,4 @@ private:
     Deque<FloatSize> m_recentWheelEventDeltas;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -32,7 +32,7 @@
 #include <sys/sysctl.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 #if HAVE(APPLE_GRAPHICS_CONTROL)
 

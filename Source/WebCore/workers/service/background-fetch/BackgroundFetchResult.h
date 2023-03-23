@@ -27,7 +27,7 @@
 
 #if ENABLE(SERVICE_WORKER)
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class BackgroundFetchResult : uint8_t {
     EmptyString,
@@ -35,16 +35,16 @@ enum class BackgroundFetchResult : uint8_t {
     Failure
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::BackgroundFetchResult> {
+template<> struct EnumTraits<CyberCore::BackgroundFetchResult> {
     using values = EnumValues<
-    WebCore::BackgroundFetchResult,
-    WebCore::BackgroundFetchResult::EmptyString,
-    WebCore::BackgroundFetchResult::Success,
-    WebCore::BackgroundFetchResult::Failure
+    CyberCore::BackgroundFetchResult,
+    CyberCore::BackgroundFetchResult::EmptyString,
+    CyberCore::BackgroundFetchResult::Success,
+    CyberCore::BackgroundFetchResult::Failure
     >;
 };
 

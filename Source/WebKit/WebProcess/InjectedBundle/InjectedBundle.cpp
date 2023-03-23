@@ -35,7 +35,7 @@
 #include "NotificationPermissionRequestManager.h"
 #include "UserData.h"
 #include "WebConnectionToUIProcess.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebFrame.h"
 #include "WebFrameNetworkingContext.h"
 #include "WebPage.h"
@@ -87,8 +87,8 @@
 #include "WebNotificationManager.h"
 #endif
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 using namespace JSC;
 
 RefPtr<InjectedBundle> InjectedBundle::create(WebProcessCreationParameters& parameters, API::Object* initializationUserData)
@@ -259,7 +259,7 @@ void InjectedBundle::reportException(JSContextRef context, JSValueRef exception)
     if (!globalObject->inherits<JSDOMWindow>())
         return;
 
-    WebCore::reportException(globalObject, toJS(globalObject, exception));
+    CyberCore::reportException(globalObject, toJS(globalObject, exception));
 }
 
 void InjectedBundle::didCreatePage(WebPage* page)
@@ -312,7 +312,7 @@ void InjectedBundle::removeAllWebNotificationPermissions(WebPage* page)
 std::optional<UUID> InjectedBundle::webNotificationID(JSContextRef jsContext, JSValueRef jsNotification)
 {
 #if ENABLE(NOTIFICATIONS)
-    WebCore::Notification* notification = JSNotification::toWrapped(toJS(jsContext)->vm(), toJS(toJS(jsContext), jsNotification));
+    CyberCore::Notification* notification = JSNotification::toWrapped(toJS(jsContext)->vm(), toJS(toJS(jsContext), jsNotification));
     if (!notification)
         return std::nullopt;
     return notification->identifier();
@@ -328,7 +328,7 @@ Ref<API::Data> InjectedBundle::createWebDataFromUint8Array(JSContextRef context,
 {
     JSC::JSGlobalObject* globalObject = toJS(context);
     JSLockHolder lock(globalObject);
-    RefPtr<Uint8Array> arrayData = WebCore::toUnsharedUint8Array(globalObject->vm(), toJS(globalObject, data));
+    RefPtr<Uint8Array> arrayData = CyberCore::toUnsharedUint8Array(globalObject->vm(), toJS(globalObject, data));
     return API::Data::create(static_cast<unsigned char*>(arrayData->baseAddress()), arrayData->byteLength());
 }
 
@@ -368,4 +368,4 @@ void InjectedBundle::setAccessibilityIsolatedTreeEnabled(bool enabled)
 #endif
 }
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -32,7 +32,7 @@
 #include "SVGAnimationAdditiveValueFunctionImpl.h"
 #include "SVGAnimationDiscreteFunctionImpl.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGAnimatedAngleAnimator;
 class SVGAnimatedIntegerPairAnimator;
@@ -348,4 +348,4 @@ private:
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

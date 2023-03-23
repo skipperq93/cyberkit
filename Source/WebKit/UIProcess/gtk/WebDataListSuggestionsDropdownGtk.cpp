@@ -135,7 +135,7 @@ void WebDataListSuggestionsDropdownGtk::didSelectOption(const String& selectedOp
     close();
 }
 
-void WebDataListSuggestionsDropdownGtk::show(WebCore::DataListSuggestionInformation&& information)
+void WebDataListSuggestionsDropdownGtk::show(CyberCore::DataListSuggestionInformation&& information)
 {
     auto* model = GTK_LIST_STORE(gtk_tree_view_get_model(GTK_TREE_VIEW(m_treeView)));
     gtk_list_store_clear(model);
@@ -165,7 +165,7 @@ void WebDataListSuggestionsDropdownGtk::show(WebCore::DataListSuggestionInformat
     auto* monitor = gdk_display_get_monitor_at_window(display, gtk_widget_get_window(m_webView));
 #endif
     GdkRectangle area;
-    WebCore::monitorWorkArea(monitor, &area);
+    CyberCore::monitorWorkArea(monitor, &area);
     int width = std::min(information.elementRect.width(), area.width);
     size_t itemCount = std::min<size_t>(information.suggestions.size(), (area.height / 3) / itemHeight);
 
@@ -188,7 +188,7 @@ void WebDataListSuggestionsDropdownGtk::show(WebCore::DataListSuggestionInformat
 #else
     GtkRequisition menuRequisition;
     gtk_widget_get_preferred_size(m_popup, &menuRequisition, nullptr);
-    WebCore::IntPoint menuPosition = convertWidgetPointToScreenPoint(m_webView, information.elementRect.location());
+    CyberCore::IntPoint menuPosition = convertWidgetPointToScreenPoint(m_webView, information.elementRect.location());
     // FIXME: We can't ensure the menu will be on screen in Wayland.
     // https://blog.gtk.org/2016/07/15/future-of-relative-window-positioning/
     // https://gitlab.gnome.org/GNOME/gtk/issues/997

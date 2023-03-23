@@ -39,14 +39,14 @@ SOFT_LINK_PRIVATE_FRAMEWORK_OPTIONAL(SpringBoardServices)
 SOFT_LINK_CLASS_OPTIONAL(SpringBoardServices, SBSStatusBarStyleOverridesAssertion)
 SOFT_LINK_CLASS_OPTIONAL(SpringBoardServices, SBSStatusBarStyleOverridesCoordinator)
 
-using namespace WebCore;
+using namespace CyberCore;
 
-@interface WebCoreMediaCaptureStatusBarHandler : NSObject<SBSStatusBarStyleOverridesCoordinatorDelegate>
+@interface CyberCoreMediaCaptureStatusBarHandler : NSObject<SBSStatusBarStyleOverridesCoordinatorDelegate>
 -(id)initWithManager:(MediaCaptureStatusBarManager*)manager;
 -(void)validateIsStopped;
 @end
 
-@implementation WebCoreMediaCaptureStatusBarHandler {
+@implementation CyberCoreMediaCaptureStatusBarHandler {
     WeakPtr<MediaCaptureStatusBarManager> m_manager;
     RetainPtr<SBSStatusBarStyleOverridesAssertion> m_statusBarStyleOverride;
     RetainPtr<SBSStatusBarStyleOverridesCoordinator> m_coordinator;
@@ -66,7 +66,7 @@ using namespace WebCore;
 
 - (void)validateIsStopped
 {
-    RELEASE_LOG_ERROR_IF(!!m_statusBarStyleOverride || !!m_coordinator, WebRTC, "WebCoreMediaCaptureStatusBarHandler is not correctly stopped");
+    RELEASE_LOG_ERROR_IF(!!m_statusBarStyleOverride || !!m_coordinator, WebRTC, "CyberCoreMediaCaptureStatusBarHandler is not correctly stopped");
     ASSERT(!m_statusBarStyleOverride);
     ASSERT(!m_coordinator);
 }
@@ -84,7 +84,7 @@ using namespace WebCore;
     [m_coordinator setRegisteredStyleOverrides:overrides reply:^(NSError *error) {
         if (!error)
             return;
-        RELEASE_LOG_ERROR(WebRTC, "WebCoreMediaCaptureStatusBarHandler _acquireStatusBarOverride failed, code = %ld, description is '%s'", [error code], [error localizedDescription].UTF8String);
+        RELEASE_LOG_ERROR(WebRTC, "CyberCoreMediaCaptureStatusBarHandler _acquireStatusBarOverride failed, code = %ld, description is '%s'", [error code], [error localizedDescription].UTF8String);
 
         callOnMainThread([self, strongSelf = retainPtr(self)] {
             if (m_manager)
@@ -147,7 +147,7 @@ ALLOW_DEPRECATED_DECLARATIONS_END
 
 @end
 
-namespace WebCore {
+namespace CyberCore {
 
 bool MediaCaptureStatusBarManager::hasSupport()
 {
@@ -162,7 +162,7 @@ MediaCaptureStatusBarManager::~MediaCaptureStatusBarManager()
 
 void MediaCaptureStatusBarManager::start()
 {
-    m_handler = adoptNS([[WebCoreMediaCaptureStatusBarHandler alloc] initWithManager:this]);
+    m_handler = adoptNS([[CyberCoreMediaCaptureStatusBarHandler alloc] initWithManager:this]);
     [m_handler start];
 }
 

@@ -34,7 +34,7 @@ WTF_EXTERN_C_END
 
 namespace TestWebKitAPI {
 
-TEST(WebKitLegacy, CacheModelForMainBundle)
+TEST(CyberKitLegacy, CacheModelForMainBundle)
 {
     EXPECT_EQ(WebCacheModelDocumentViewer, TestWebPreferencesCacheModelForMainBundle(@"Microsoft/com.microsoft.Messenger"));
     EXPECT_EQ(WebCacheModelDocumentViewer, TestWebPreferencesCacheModelForMainBundle(@"com.adiumX.adiumX"));

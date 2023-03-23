@@ -28,7 +28,7 @@
 
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<ScreenOrientationProvider> ScreenOrientationProvider::create()
 {
@@ -96,4 +96,4 @@ void ScreenOrientationProvider::platformStopListeningForChanges()
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

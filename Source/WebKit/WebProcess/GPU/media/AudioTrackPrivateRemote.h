@@ -38,10 +38,10 @@ class GPUProcessConnection;
 class MediaPlayerPrivateRemote;
 struct AudioTrackPrivateRemoteConfiguration;
 
-class AudioTrackPrivateRemote final : public WebCore::AudioTrackPrivate {
+class AudioTrackPrivateRemote final : public CyberCore::AudioTrackPrivate {
     WTF_MAKE_NONCOPYABLE(AudioTrackPrivateRemote)
 public:
-    static Ref<AudioTrackPrivateRemote> create(GPUProcessConnection& gpuProcessConnection, WebCore::MediaPlayerIdentifier playerIdentifier, TrackPrivateRemoteIdentifier identifier, AudioTrackPrivateRemoteConfiguration&& configuration)
+    static Ref<AudioTrackPrivateRemote> create(GPUProcessConnection& gpuProcessConnection, CyberCore::MediaPlayerIdentifier playerIdentifier, TrackPrivateRemoteIdentifier identifier, AudioTrackPrivateRemoteConfiguration&& configuration)
     {
         return adoptRef(*new AudioTrackPrivateRemote(gpuProcessConnection, playerIdentifier, identifier, WTFMove(configuration)));
     }
@@ -50,9 +50,9 @@ public:
     void updateConfiguration(AudioTrackPrivateRemoteConfiguration&&);
 
 private:
-    AudioTrackPrivateRemote(GPUProcessConnection&, WebCore::MediaPlayerIdentifier, TrackPrivateRemoteIdentifier, AudioTrackPrivateRemoteConfiguration&&);
+    AudioTrackPrivateRemote(GPUProcessConnection&, CyberCore::MediaPlayerIdentifier, TrackPrivateRemoteIdentifier, AudioTrackPrivateRemoteConfiguration&&);
 
-    using AudioTrackKind = WebCore::AudioTrackPrivate::Kind;
+    using AudioTrackKind = CyberCore::AudioTrackPrivate::Kind;
     AudioTrackKind kind() const final { return m_kind; }
     AtomString label() const final { return m_label; }
     AtomString language() const final { return m_language; }
@@ -68,7 +68,7 @@ private:
     int m_trackIndex { -1 };
 
     MediaTime m_startTimeVariance { MediaTime::zeroTime() };
-    WebCore::MediaPlayerIdentifier m_playerIdentifier;
+    CyberCore::MediaPlayerIdentifier m_playerIdentifier;
     TrackPrivateRemoteIdentifier m_identifier;
 };
 

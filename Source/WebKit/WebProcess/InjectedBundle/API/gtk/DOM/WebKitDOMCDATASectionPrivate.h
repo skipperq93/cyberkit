@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -17,16 +17,16 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitDOMCDATASectionPrivate_h
-#define WebKitDOMCDATASectionPrivate_h
+#ifndef CyberKitDOMCDATASectionPrivate_h
+#define CyberKitDOMCDATASectionPrivate_h
 
 #include <CyberCore/CDATASection.h>
-#include <webkitdom/WebKitDOMCDATASection.h>
+#include <webkitdom/CyberKitDOMCDATASection.h>
 
-namespace WebKit {
-WebKitDOMCDATASection* wrapCDATASection(WebCore::CDATASection*);
-WebKitDOMCDATASection* kit(WebCore::CDATASection*);
-WebCore::CDATASection* core(WebKitDOMCDATASection*);
-} // namespace WebKit
+namespace CyberKit {
+CyberKitDOMCDATASection* wrapCDATASection(CyberCore::CDATASection*);
+CyberKitDOMCDATASection* kit(CyberCore::CDATASection*);
+CyberCore::CDATASection* core(CyberKitDOMCDATASection*);
+} // namespace CyberKit
 
-#endif /* WebKitDOMCDATASectionPrivate_h */
+#endif /* CyberKitDOMCDATASectionPrivate_h */

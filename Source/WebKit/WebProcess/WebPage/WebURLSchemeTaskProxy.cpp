@@ -28,7 +28,7 @@
 
 #include "Logging.h"
 #include "URLSchemeTaskParameters.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebFrame.h"
 #include "WebPage.h"
 #include "WebPageProxyMessages.h"
@@ -43,8 +43,8 @@
 #define WEBURLSCHEMETASKPROXY_RELEASE_LOG_STANDARD_PARAMETERS m_urlSchemeHandler.identifier().toUInt64(), pageIDFromWebFrame(m_frame), frameIDFromWebFrame(m_frame), m_identifier.toUInt64()
 #define WEBURLSCHEMETASKPROXY_RELEASE_LOG(fmt, ...) RELEASE_LOG(Network, WEBURLSCHEMETASKPROXY_RELEASE_LOG_STANDARD_TEMPLATE fmt, WEBURLSCHEMETASKPROXY_RELEASE_LOG_STANDARD_PARAMETERS, ##__VA_ARGS__)
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 #if !RELEASE_LOG_DISABLED
 static uint64_t pageIDFromWebFrame(const RefPtr<WebFrame>& frame)
@@ -93,7 +93,7 @@ void WebURLSchemeTaskProxy::stopLoading()
     m_urlSchemeHandler.taskDidStopLoading(*this);
 }
     
-void WebURLSchemeTaskProxy::didPerformRedirection(WebCore::ResourceResponse&& redirectResponse, WebCore::ResourceRequest&& request, CompletionHandler<void(WebCore::ResourceRequest&&)>&& completionHandler)
+void WebURLSchemeTaskProxy::didPerformRedirection(CyberCore::ResourceResponse&& redirectResponse, CyberCore::ResourceRequest&& request, CompletionHandler<void(CyberCore::ResourceRequest&&)>&& completionHandler)
 {
     if (!hasLoader()) {
         completionHandler({ });
@@ -140,7 +140,7 @@ void WebURLSchemeTaskProxy::didReceiveResponse(const ResourceResponse& response)
     });
 }
 
-void WebURLSchemeTaskProxy::didReceiveData(const WebCore::SharedBuffer& data)
+void WebURLSchemeTaskProxy::didReceiveData(const CyberCore::SharedBuffer& data)
 {
     if (!hasLoader())
         return;
@@ -196,7 +196,7 @@ void WebURLSchemeTaskProxy::processNextPendingTask()
         m_queuedTasks.takeFirst()();
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #undef WEBURLSCHEMETASKPROXY_RELEASE_LOG_STANDARD_TEMPLATE
 #undef WEBURLSCHEMETASKPROXY_RELEASE_LOG_STANDARD_PARAMETERS

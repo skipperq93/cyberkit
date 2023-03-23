@@ -28,7 +28,7 @@
 #include "SVGURIReference.h"
 #include "SVGUnitTypes.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct PatternAttributes;
  
@@ -81,4 +81,4 @@ private:
     Ref<SVGAnimatedTransformList> m_patternTransform { SVGAnimatedTransformList::create(this) };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

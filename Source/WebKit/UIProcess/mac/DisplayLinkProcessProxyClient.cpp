@@ -42,7 +42,7 @@ void DisplayLinkProcessProxyClient::setConnection(RefPtr<IPC::Connection>&& conn
 }
 
 // This is called off the main thread.
-void DisplayLinkProcessProxyClient::displayLinkFired(WebCore::PlatformDisplayID displayID, WebCore::DisplayUpdate displayUpdate, bool wantsFullSpeedUpdates, bool anyObserverWantsCallback)
+void DisplayLinkProcessProxyClient::displayLinkFired(CyberCore::PlatformDisplayID displayID, CyberCore::DisplayUpdate displayUpdate, bool wantsFullSpeedUpdates, bool anyObserverWantsCallback)
 {
     RefPtr<IPC::Connection> connection;
     {

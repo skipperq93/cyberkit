@@ -29,7 +29,7 @@
 #include "SVGPathElement.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(SVGMPathElement);
 
@@ -134,4 +134,4 @@ void SVGMPathElement::notifyParentOfPathChange(ContainerNode* parent)
         downcast<SVGAnimateMotionElement>(*parent).updateAnimationPath();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -36,7 +36,7 @@
 #include "AudioBus.h"
 #include <mutex>
 
-namespace WebCore {
+namespace CyberCore {
 
 constexpr int InputBufferSize = 8 * 16384;
 
@@ -227,6 +227,6 @@ size_t ReverbConvolver::latencyFrames() const
     return 0;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

@@ -33,7 +33,7 @@ namespace WTF {
 class TextStream;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class PixelBuffer : public RefCounted<PixelBuffer> {
     WTF_MAKE_NONCOPYABLE(PixelBuffer);
@@ -70,4 +70,4 @@ protected:
     size_t m_sizeInBytes { 0 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

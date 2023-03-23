@@ -66,14 +66,14 @@ public:
     void didReceiveMessage(IPC::Connection&, IPC::Decoder&);
 
 private:
-    void unregisterMDNSNames(WebCore::ScriptExecutionContextIdentifier);
-    void registerMDNSName(MDNSRegisterIdentifier, WebCore::ScriptExecutionContextIdentifier, const String& ipAddress);
+    void unregisterMDNSNames(CyberCore::ScriptExecutionContextIdentifier);
+    void registerMDNSName(MDNSRegisterIdentifier, CyberCore::ScriptExecutionContextIdentifier, const String& ipAddress);
     
     PAL::SessionID sessionID() const;
 
     NetworkConnectionToWebProcess& m_connection;
 #if ENABLE_MDNS
-    HashMap<WebCore::ScriptExecutionContextIdentifier, DNSServiceRef> m_services;
+    HashMap<CyberCore::ScriptExecutionContextIdentifier, DNSServiceRef> m_services;
 #endif
 };
 

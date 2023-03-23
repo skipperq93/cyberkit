@@ -32,7 +32,7 @@
 #include "WorkerGlobalScope.h"
 #include "WorkerThread.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 WorkerNavigator::WorkerNavigator(ScriptExecutionContext& context, const String& userAgent, bool isOnline)
     : NavigatorBase(&context)
@@ -77,4 +77,4 @@ void WorkerNavigator::clearAppBadge(Ref<DeferredPromise>&& promise)
 #endif
 
 
-} // namespace WebCore
+} // namespace CyberCore

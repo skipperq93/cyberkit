@@ -33,7 +33,7 @@
 #include <wtf/text/StringHash.h>
 #include <wtf/text/StringParsingBuffer.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename CharacterType> static bool isMediaTypeCharacter(CharacterType c)
 {
@@ -108,4 +108,4 @@ void ContentSecurityPolicyMediaListDirective::parse(const String& value)
     });
 }
 
-} // namespace WebCore
+} // namespace CyberCore

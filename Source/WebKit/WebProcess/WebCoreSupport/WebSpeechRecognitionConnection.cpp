@@ -35,7 +35,7 @@
 #include <CyberCore/SpeechRecognitionRequestInfo.h>
 #include <CyberCore/SpeechRecognitionUpdate.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 Ref<WebSpeechRecognitionConnection> WebSpeechRecognitionConnection::create(SpeechRecognitionConnectionIdentifier identifier)
 {
@@ -59,37 +59,37 @@ WebSpeechRecognitionConnection::~WebSpeechRecognitionConnection()
     WebProcess::singleton().removeMessageReceiver(*this);
 }
 
-void WebSpeechRecognitionConnection::registerClient(WebCore::SpeechRecognitionConnectionClient& client)
+void WebSpeechRecognitionConnection::registerClient(CyberCore::SpeechRecognitionConnectionClient& client)
 {
     m_clientMap.add(client.identifier(), client);
 }
 
-void WebSpeechRecognitionConnection::unregisterClient(WebCore::SpeechRecognitionConnectionClient& client)
+void WebSpeechRecognitionConnection::unregisterClient(CyberCore::SpeechRecognitionConnectionClient& client)
 {
     m_clientMap.remove(client.identifier());
 }
 
-void WebSpeechRecognitionConnection::start(WebCore::SpeechRecognitionConnectionClientIdentifier clientIdentifier, const String& lang, bool continuous, bool interimResults, uint64_t maxAlternatives, WebCore::ClientOrigin&& clientOrigin, WebCore::FrameIdentifier frameIdentifier)
+void WebSpeechRecognitionConnection::start(CyberCore::SpeechRecognitionConnectionClientIdentifier clientIdentifier, const String& lang, bool continuous, bool interimResults, uint64_t maxAlternatives, CyberCore::ClientOrigin&& clientOrigin, CyberCore::FrameIdentifier frameIdentifier)
 {
     send(Messages::SpeechRecognitionServer::Start(clientIdentifier, lang, continuous, interimResults, maxAlternatives, WTFMove(clientOrigin), frameIdentifier));
 }
 
-void WebSpeechRecognitionConnection::stop(WebCore::SpeechRecognitionConnectionClientIdentifier clientIdentifier)
+void WebSpeechRecognitionConnection::stop(CyberCore::SpeechRecognitionConnectionClientIdentifier clientIdentifier)
 {
     send(Messages::SpeechRecognitionServer::Stop(clientIdentifier));
 }
 
-void WebSpeechRecognitionConnection::abort(WebCore::SpeechRecognitionConnectionClientIdentifier clientIdentifier)
+void WebSpeechRecognitionConnection::abort(CyberCore::SpeechRecognitionConnectionClientIdentifier clientIdentifier)
 {
     send(Messages::SpeechRecognitionServer::Abort(clientIdentifier));
 }
 
-void WebSpeechRecognitionConnection::invalidate(WebCore::SpeechRecognitionConnectionClientIdentifier clientIdentifier)
+void WebSpeechRecognitionConnection::invalidate(CyberCore::SpeechRecognitionConnectionClientIdentifier clientIdentifier)
 {
     send(Messages::SpeechRecognitionServer::Invalidate(clientIdentifier));
 }
 
-void WebSpeechRecognitionConnection::didReceiveUpdate(WebCore::SpeechRecognitionUpdate&& update)
+void WebSpeechRecognitionConnection::didReceiveUpdate(CyberCore::SpeechRecognitionUpdate&& update)
 {
     auto clientIdentifier = update.clientIdentifier();
     if (!m_clientMap.contains(clientIdentifier))
@@ -104,37 +104,37 @@ void WebSpeechRecognitionConnection::didReceiveUpdate(WebCore::SpeechRecognition
     }
 
     switch (update.type()) {
-    case WebCore::SpeechRecognitionUpdateType::Start:
+    case CyberCore::SpeechRecognitionUpdateType::Start:
         client->didStart();
         break;
-    case WebCore::SpeechRecognitionUpdateType::AudioStart:
+    case CyberCore::SpeechRecognitionUpdateType::AudioStart:
         client->didStartCapturingAudio();
         break;
-    case WebCore::SpeechRecognitionUpdateType::SoundStart:
+    case CyberCore::SpeechRecognitionUpdateType::SoundStart:
         client->didStartCapturingSound();
         break;
-    case WebCore::SpeechRecognitionUpdateType::SpeechStart:
+    case CyberCore::SpeechRecognitionUpdateType::SpeechStart:
         client->didStartCapturingSpeech();
         break;
-    case WebCore::SpeechRecognitionUpdateType::SpeechEnd:
+    case CyberCore::SpeechRecognitionUpdateType::SpeechEnd:
         client->didStopCapturingSpeech();
         break;
-    case WebCore::SpeechRecognitionUpdateType::SoundEnd:
+    case CyberCore::SpeechRecognitionUpdateType::SoundEnd:
         client->didStopCapturingSound();
         break;
-    case WebCore::SpeechRecognitionUpdateType::AudioEnd:
+    case CyberCore::SpeechRecognitionUpdateType::AudioEnd:
         client->didStopCapturingAudio();
         break;
-    case WebCore::SpeechRecognitionUpdateType::NoMatch:
+    case CyberCore::SpeechRecognitionUpdateType::NoMatch:
         client->didFindNoMatch();
         break;
-    case WebCore::SpeechRecognitionUpdateType::Result:
+    case CyberCore::SpeechRecognitionUpdateType::Result:
         client->didReceiveResult(update.result());
         break;
-    case WebCore::SpeechRecognitionUpdateType::Error:
+    case CyberCore::SpeechRecognitionUpdateType::Error:
         client->didError(update.error());
         break;
-    case WebCore::SpeechRecognitionUpdateType::End:
+    case CyberCore::SpeechRecognitionUpdateType::End:
         client->didEnd();
     }
 }
@@ -149,4 +149,4 @@ uint64_t WebSpeechRecognitionConnection::messageSenderDestinationID() const
     return m_identifier.toUInt64();
 }
 
-} // namespace WebKit
+} // namespace CyberKit

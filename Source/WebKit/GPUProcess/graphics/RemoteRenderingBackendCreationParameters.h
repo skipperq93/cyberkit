@@ -37,7 +37,7 @@ namespace WebKit {
 struct RemoteRenderingBackendCreationParameters {
     RenderingBackendIdentifier identifier;
     WebPageProxyIdentifier pageProxyID;
-    WebCore::PageIdentifier pageID;
+    CyberCore::PageIdentifier pageID;
 };
 
 } // namespace WebKit

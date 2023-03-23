@@ -50,7 +50,7 @@
 #include "SampleBufferDisplayLayerManager.h"
 #include "SampleBufferDisplayLayerMessages.h"
 #include "SourceBufferPrivateRemoteMessages.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebPage.h"
 #include "WebPageCreationParameters.h"
 #include "WebPageMessages.h"
@@ -102,7 +102,7 @@
 #endif
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 static void languagesChanged(void* context)
 {

@@ -40,7 +40,7 @@
 #include "ResourceLoadStatisticsClassifierCocoa.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 class KeyedDecoder;
 class KeyedEncoder;
 enum class StorageAccessPromptWasShown : bool;
@@ -88,18 +88,18 @@ enum class CookieAccess : uint8_t { CannotRequest, BasedOnCookiePolicy, OnlyIfGr
 class ResourceLoadStatisticsStore : public CanMakeWeakPtr<ResourceLoadStatisticsStore> {
     WTF_MAKE_FAST_ALLOCATED;
 public:
-    using ResourceLoadStatistics = WebCore::ResourceLoadStatistics;
-    using RegistrableDomain = WebCore::RegistrableDomain;
-    using TopFrameDomain = WebCore::RegistrableDomain;
-    using SubFrameDomain = WebCore::RegistrableDomain;
-    using SubResourceDomain = WebCore::RegistrableDomain;
-    using RedirectDomain = WebCore::RegistrableDomain;
-    using RedirectedFromDomain = WebCore::RegistrableDomain;
-    using RedirectedToDomain = WebCore::RegistrableDomain;
-    using NavigatedFromDomain = WebCore::RegistrableDomain;
-    using NavigatedToDomain = WebCore::RegistrableDomain;
-    using DomainInNeedOfStorageAccess = WebCore::RegistrableDomain;
-    using OpenerDomain = WebCore::RegistrableDomain;
+    using ResourceLoadStatistics = CyberCore::ResourceLoadStatistics;
+    using RegistrableDomain = CyberCore::RegistrableDomain;
+    using TopFrameDomain = CyberCore::RegistrableDomain;
+    using SubFrameDomain = CyberCore::RegistrableDomain;
+    using SubResourceDomain = CyberCore::RegistrableDomain;
+    using RedirectDomain = CyberCore::RegistrableDomain;
+    using RedirectedFromDomain = CyberCore::RegistrableDomain;
+    using RedirectedToDomain = CyberCore::RegistrableDomain;
+    using NavigatedFromDomain = CyberCore::RegistrableDomain;
+    using NavigatedToDomain = CyberCore::RegistrableDomain;
+    using DomainInNeedOfStorageAccess = CyberCore::RegistrableDomain;
+    using OpenerDomain = CyberCore::RegistrableDomain;
     
     virtual ~ResourceLoadStatisticsStore();
 
@@ -116,7 +116,7 @@ public:
     virtual void classifyPrevalentResources() = 0;
     virtual void mergeStatistics(Vector<ResourceLoadStatistics>&&) = 0;
 
-    virtual void requestStorageAccessUnderOpener(DomainInNeedOfStorageAccess&&, WebCore::PageIdentifier openerID, OpenerDomain&&) = 0;
+    virtual void requestStorageAccessUnderOpener(DomainInNeedOfStorageAccess&&, CyberCore::PageIdentifier openerID, OpenerDomain&&) = 0;
     void removeAllStorageAccess(CompletionHandler<void()>&&);
 
     void grandfatherExistingWebsiteData(CompletionHandler<void()>&&);
@@ -165,11 +165,11 @@ public:
     void setResourceLoadStatisticsDebugMode(bool);
     bool isDebugModeEnabled() const { return m_debugModeEnabled; };
     void setPrevalentResourceForDebugMode(const RegistrableDomain&);
-    void setThirdPartyCookieBlockingMode(WebCore::ThirdPartyCookieBlockingMode mode) { m_thirdPartyCookieBlockingMode = mode; };
-    WebCore::ThirdPartyCookieBlockingMode thirdPartyCookieBlockingMode() const { return m_thirdPartyCookieBlockingMode; };
-    void setSameSiteStrictEnforcementEnabled(WebCore::SameSiteStrictEnforcementEnabled enabled) { m_sameSiteStrictEnforcementEnabled = enabled; };
-    bool isSameSiteStrictEnforcementEnabled() const { return m_sameSiteStrictEnforcementEnabled == WebCore::SameSiteStrictEnforcementEnabled::Yes; };
-    void setFirstPartyWebsiteDataRemovalMode(WebCore::FirstPartyWebsiteDataRemovalMode mode) { m_firstPartyWebsiteDataRemovalMode = mode; }
+    void setThirdPartyCookieBlockingMode(CyberCore::ThirdPartyCookieBlockingMode mode) { m_thirdPartyCookieBlockingMode = mode; };
+    CyberCore::ThirdPartyCookieBlockingMode thirdPartyCookieBlockingMode() const { return m_thirdPartyCookieBlockingMode; };
+    void setSameSiteStrictEnforcementEnabled(CyberCore::SameSiteStrictEnforcementEnabled enabled) { m_sameSiteStrictEnforcementEnabled = enabled; };
+    bool isSameSiteStrictEnforcementEnabled() const { return m_sameSiteStrictEnforcementEnabled == CyberCore::SameSiteStrictEnforcementEnabled::Yes; };
+    void setFirstPartyWebsiteDataRemovalMode(CyberCore::FirstPartyWebsiteDataRemovalMode mode) { m_firstPartyWebsiteDataRemovalMode = mode; }
     void setStandaloneApplicationDomain(RegistrableDomain&& domain) { m_standaloneApplicationDomain = WTFMove(domain); }
 #if ENABLE(APP_BOUND_DOMAINS)
     void setAppBoundDomains(HashSet<RegistrableDomain>&&);
@@ -178,9 +178,9 @@ public:
     void setManagedDomains(HashSet<RegistrableDomain>&&);
 #endif
     virtual bool areAllThirdPartyCookiesBlockedUnder(const TopFrameDomain&) = 0;
-    virtual void hasStorageAccess(SubFrameDomain&&, TopFrameDomain&&, std::optional<WebCore::FrameIdentifier>, WebCore::PageIdentifier, CompletionHandler<void(bool)>&&) = 0;
-    virtual void requestStorageAccess(SubFrameDomain&&, TopFrameDomain&&, WebCore::FrameIdentifier, WebCore::PageIdentifier, WebCore::StorageAccessScope, CompletionHandler<void(StorageAccessStatus)>&&) = 0;
-    virtual void grantStorageAccess(SubFrameDomain&&, TopFrameDomain&&, WebCore::FrameIdentifier, WebCore::PageIdentifier, WebCore::StorageAccessPromptWasShown, WebCore::StorageAccessScope, CompletionHandler<void(WebCore::StorageAccessWasGranted)>&&) = 0;
+    virtual void hasStorageAccess(SubFrameDomain&&, TopFrameDomain&&, std::optional<CyberCore::FrameIdentifier>, CyberCore::PageIdentifier, CompletionHandler<void(bool)>&&) = 0;
+    virtual void requestStorageAccess(SubFrameDomain&&, TopFrameDomain&&, CyberCore::FrameIdentifier, CyberCore::PageIdentifier, CyberCore::StorageAccessScope, CompletionHandler<void(StorageAccessStatus)>&&) = 0;
+    virtual void grantStorageAccess(SubFrameDomain&&, TopFrameDomain&&, CyberCore::FrameIdentifier, CyberCore::PageIdentifier, CyberCore::StorageAccessPromptWasShown, CyberCore::StorageAccessScope, CompletionHandler<void(CyberCore::StorageAccessWasGranted)>&&) = 0;
 
     virtual void logFrameNavigation(const NavigatedToDomain&, const TopFrameDomain&, const NavigatedFromDomain&, bool isRedirect, bool isMainFrame, Seconds delayAfterMainFrameDocumentLoad, bool wasPotentiallyInitiatedByUser) = 0;
     virtual void logUserInteraction(const TopFrameDomain&, CompletionHandler<void()>&&) = 0;
@@ -210,7 +210,7 @@ public:
     virtual void insertExpiredStatisticForTesting(const RegistrableDomain&, unsigned numberOfOperatingDaysPassed, bool hasUserInteraction, bool isScheduledForAllButCookieDataRemoval, bool) = 0;
 
 protected:
-    static unsigned computeImportance(const WebCore::ResourceLoadStatistics&);
+    static unsigned computeImportance(const CyberCore::ResourceLoadStatistics&);
 
     ResourceLoadStatisticsStore(WebResourceLoadStatisticsStore&, SuspendableWorkQueue&, ShouldIncludeLocalhost);
     
@@ -256,7 +256,7 @@ protected:
     void debugLogDomainsInBatches(const char* action, const RegistrableDomainsToBlockCookiesFor&);
     bool debugLoggingEnabled() const { return m_debugLoggingEnabled; };
     bool debugModeEnabled() const { return m_debugModeEnabled; }
-    WebCore::FirstPartyWebsiteDataRemovalMode firstPartyWebsiteDataRemovalMode() const { return m_firstPartyWebsiteDataRemovalMode; }
+    CyberCore::FirstPartyWebsiteDataRemovalMode firstPartyWebsiteDataRemovalMode() const { return m_firstPartyWebsiteDataRemovalMode; }
     bool shouldExemptFromWebsiteDataDeletion(const RegistrableDomain&) const;
 
     static constexpr unsigned maxNumberOfRecursiveCallsInRedirectTraceBack { 50 };
@@ -289,11 +289,11 @@ private:
     const RegistrableDomain m_debugStaticPrevalentResource { URL { "https://3rdpartytestwebkit.org"_str } };
     bool m_debugLoggingEnabled { false };
     bool m_debugModeEnabled { false };
-    WebCore::ThirdPartyCookieBlockingMode m_thirdPartyCookieBlockingMode { WebCore::ThirdPartyCookieBlockingMode::All };
-    WebCore::SameSiteStrictEnforcementEnabled m_sameSiteStrictEnforcementEnabled { WebCore::SameSiteStrictEnforcementEnabled::No };
+    CyberCore::ThirdPartyCookieBlockingMode m_thirdPartyCookieBlockingMode { CyberCore::ThirdPartyCookieBlockingMode::All };
+    CyberCore::SameSiteStrictEnforcementEnabled m_sameSiteStrictEnforcementEnabled { CyberCore::SameSiteStrictEnforcementEnabled::No };
     bool m_dataRecordsBeingRemoved { false };
     ShouldIncludeLocalhost m_shouldIncludeLocalhost { ShouldIncludeLocalhost::Yes };
-    WebCore::FirstPartyWebsiteDataRemovalMode m_firstPartyWebsiteDataRemovalMode { WebCore::FirstPartyWebsiteDataRemovalMode::AllButCookies };
+    CyberCore::FirstPartyWebsiteDataRemovalMode m_firstPartyWebsiteDataRemovalMode { CyberCore::FirstPartyWebsiteDataRemovalMode::AllButCookies };
     RegistrableDomain m_standaloneApplicationDomain;
     HashSet<RegistrableDomain> m_appBoundDomains;
     HashSet<RegistrableDomain> m_managedDomains;

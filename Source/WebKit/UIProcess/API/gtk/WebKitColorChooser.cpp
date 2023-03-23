@@ -26,9 +26,9 @@
 #include <CyberCore/IntRect.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
-Ref<WebKitColorChooser> WebKitColorChooser::create(WebPageProxy& page, const WebCore::Color& initialColor, const WebCore::IntRect& rect)
+Ref<WebKitColorChooser> WebKitColorChooser::create(WebPageProxy& page, const CyberCore::Color& initialColor, const CyberCore::IntRect& rect)
 {
     return adoptRef(*new WebKitColorChooser(page, initialColor, rect));
 }

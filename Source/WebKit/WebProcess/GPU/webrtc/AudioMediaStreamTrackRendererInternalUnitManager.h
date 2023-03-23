@@ -36,11 +36,11 @@ namespace IPC {
 class Semaphore;
 }
 
-namespace WebCore {
+namespace CyberCore {
 class CAAudioStreamDescription;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class AudioMediaStreamTrackRendererInternalUnitManager {
     WTF_MAKE_FAST_ALLOCATED;
@@ -58,7 +58,7 @@ private:
     HashMap<AudioMediaStreamTrackRendererInternalUnitIdentifier, WeakPtr<Proxy>> m_proxies;
 };
 
-UniqueRef<WebCore::AudioMediaStreamTrackRendererInternalUnit> createRemoteAudioMediaStreamTrackRendererInternalUnitProxy(WebCore::AudioMediaStreamTrackRendererInternalUnit::Client&);
+UniqueRef<CyberCore::AudioMediaStreamTrackRendererInternalUnit> createRemoteAudioMediaStreamTrackRendererInternalUnitProxy(CyberCore::AudioMediaStreamTrackRendererInternalUnit::Client&);
 
 }
 

@@ -29,7 +29,7 @@
 #include <wtf/Markable.h>
 #include <wtf/text/StringHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using SharedStringHash = uint32_t;
 
@@ -53,4 +53,4 @@ WEBCORE_EXPORT SharedStringHash computeSharedStringHash(const UChar* url, unsign
 // look like a relative URL.
 SharedStringHash computeVisitedLinkHash(const URL& base, const AtomString& attributeURL);
 
-} // namespace WebCore
+} // namespace CyberCore

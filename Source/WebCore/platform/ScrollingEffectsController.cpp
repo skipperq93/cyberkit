@@ -45,7 +45,7 @@
 #include "ScrollAnimationRubberBand.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 ScrollingEffectsController::ScrollingEffectsController(ScrollingEffectsControllerClient& client)
     : m_client(client)
@@ -602,4 +602,4 @@ void ScrollingEffectsController::updateRubberBandAnimatingState()
 
 #endif // PLATFORM(MAC)
 
-} // namespace WebCore
+} // namespace CyberCore

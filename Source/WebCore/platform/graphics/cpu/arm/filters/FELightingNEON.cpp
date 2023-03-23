@@ -29,7 +29,7 @@
 
 #if CPU(ARM_NEON) && CPU(ARM_TRADITIONAL) && COMPILER(GCC_COMPATIBLE)
 
-namespace WebCore {
+namespace CyberCore {
 
 // These constants are copied to the following SIMD registers:
 //   ALPHAX_Q ALPHAY_Q REMAPX_D REMAPY_D
@@ -498,6 +498,6 @@ int FELighting::getPowerCoefficients(float exponent)
     return result;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // CPU(ARM_NEON) && COMPILER(GCC_COMPATIBLE)

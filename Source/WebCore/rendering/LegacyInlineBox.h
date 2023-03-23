@@ -28,7 +28,7 @@
 #include <wtf/TypeCasts.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class HitTestResult;
 class LegacyInlineFlowBox;
@@ -419,15 +419,15 @@ inline void LegacyInlineBox::assertNotDeleted() const
 
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #define SPECIALIZE_TYPE_TRAITS_INLINE_BOX(ToValueTypeName, predicate) \
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::ToValueTypeName) \
-    static bool isType(const WebCore::LegacyInlineBox& box) { return box.predicate; } \
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::ToValueTypeName) \
+    static bool isType(const CyberCore::LegacyInlineBox& box) { return box.predicate; } \
 SPECIALIZE_TYPE_TRAITS_END()
 
 #if ENABLE(TREE_DEBUGGING)
-// Outside the WebCore namespace for ease of invocation from the debugger.
-void showNodeTree(const WebCore::LegacyInlineBox*);
-void showLineTree(const WebCore::LegacyInlineBox*);
+// Outside the CyberCore namespace for ease of invocation from the debugger.
+void showNodeTree(const CyberCore::LegacyInlineBox*);
+void showLineTree(const CyberCore::LegacyInlineBox*);
 #endif

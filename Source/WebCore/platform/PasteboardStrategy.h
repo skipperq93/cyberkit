@@ -28,7 +28,7 @@
 
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Color;
 class SharedBuffer;

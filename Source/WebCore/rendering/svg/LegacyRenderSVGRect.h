@@ -30,7 +30,7 @@
 #include "LegacyRenderSVGShape.h"
 #include "SVGRectElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class LegacyRenderSVGRect final : public LegacyRenderSVGShape {
     WTF_MAKE_ISO_ALLOCATED(LegacyRenderSVGRect);
@@ -59,4 +59,4 @@ private:
     bool m_usePathFallback;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

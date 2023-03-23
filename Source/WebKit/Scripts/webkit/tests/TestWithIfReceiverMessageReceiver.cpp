@@ -29,7 +29,7 @@
 #include "Decoder.h"
 #include "HandleMessage.h"
 #include "TestWithIfReceiverMessages.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include <CyberCore/ApplePayPaymentAuthorizationResult.h>
 
 #if ENABLE(IPC_TESTING_API)

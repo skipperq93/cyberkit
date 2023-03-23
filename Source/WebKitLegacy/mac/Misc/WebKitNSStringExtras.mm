@@ -26,7 +26,7 @@
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import "WebKitNSStringExtras.h"
+#import "CyberKitNSStringExtras.h"
 
 #import <CyberCore/ColorMac.h>
 #import <CyberCore/FontCascade.h>
@@ -37,12 +37,12 @@
 #import <sys/param.h>
 #import <unicode/uchar.h>
 
-NSString *WebKitLocalCacheDefaultsKey = @"WebKitLocalCache";
-NSString *WebKitResourceLoadStatisticsDirectoryDefaultsKey = @"WebKitResourceLoadStatisticsDirectory";
+NSString *CyberKitLocalCacheDefaultsKey = @"CyberKitLocalCache";
+NSString *CyberKitResourceLoadStatisticsDirectoryDefaultsKey = @"CyberKitResourceLoadStatisticsDirectory";
 
-using namespace WebCore;
+using namespace CyberCore;
 
-@implementation NSString (WebKitExtras)
+@implementation NSString (CyberKitExtras)
 
 #if PLATFORM(MAC)
 
@@ -80,7 +80,7 @@ static bool canUseFastRenderer(const UniChar* buffer, unsigned length)
         CGContextRef cgContext = [nsContext CGContext];
         GraphicsContextCG graphicsContext { cgContext };
 
-        // WebCore requires a flipped graphics context.
+        // CyberCore requires a flipped graphics context.
         bool flipped = [nsContext isFlipped];
         if (!flipped)
             CGContextScaleCTM(cgContext, 1, -1);
@@ -176,7 +176,7 @@ static bool canUseFastRenderer(const UniChar* buffer, unsigned length)
 
 + (NSString *)_webkit_localCacheDirectoryWithBundleIdentifier:(NSString*)bundleIdentifier
 {
-    NSString *cacheDirectory = [[NSUserDefaults standardUserDefaults] objectForKey:WebKitLocalCacheDefaultsKey];
+    NSString *cacheDirectory = [[NSUserDefaults standardUserDefaults] objectForKey:CyberKitLocalCacheDefaultsKey];
 
     if (!cacheDirectory || ![cacheDirectory isKindOfClass:[NSString class]]) {
 #if PLATFORM(IOS_FAMILY)

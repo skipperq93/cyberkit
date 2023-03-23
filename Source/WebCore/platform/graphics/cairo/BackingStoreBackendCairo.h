@@ -28,7 +28,7 @@
 
 typedef struct _cairo_surface cairo_surface_t;
 
-namespace WebCore {
+namespace CyberCore {
 
 class BackingStoreBackendCairo {
     WTF_MAKE_NONCOPYABLE(BackingStoreBackendCairo);
@@ -52,7 +52,7 @@ protected:
 };
 
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(CAIRO)
 

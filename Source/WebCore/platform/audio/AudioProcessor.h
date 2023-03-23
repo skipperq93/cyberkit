@@ -31,7 +31,7 @@
 #ifndef AudioProcessor_h
 #define AudioProcessor_h
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioBus;
 
@@ -83,6 +83,6 @@ protected:
     float m_sampleRate;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // AudioProcessor_h

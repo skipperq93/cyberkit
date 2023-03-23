@@ -28,7 +28,7 @@
 #include "RenderStyleConstants.h"
 #include "RenderTreeUpdater.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class Element;
 class RenderQuote;

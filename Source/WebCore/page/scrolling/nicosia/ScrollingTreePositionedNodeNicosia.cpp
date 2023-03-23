@@ -35,7 +35,7 @@
 #include "NicosiaPlatformLayer.h"
 #include "ScrollingStatePositionedNode.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<ScrollingTreePositionedNodeNicosia> ScrollingTreePositionedNodeNicosia::create(ScrollingTree& scrollingTree, ScrollingNodeID nodeID)
 {
@@ -78,6 +78,6 @@ void ScrollingTreePositionedNodeNicosia::applyLayerPositions()
         });
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ASYNC_SCROLLING) && USE(NICOSIA)

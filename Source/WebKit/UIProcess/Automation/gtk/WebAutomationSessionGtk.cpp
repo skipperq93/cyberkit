@@ -34,7 +34,7 @@
 #include <CyberCore/Scrollbar.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 #if ENABLE(WEBDRIVER_MOUSE_INTERACTIONS)
 static unsigned modifiersToEventState(OptionSet<WebEventModifier> modifiers)
@@ -65,7 +65,7 @@ static unsigned mouseButtonToGdkButton(MouseButton button)
     return GDK_BUTTON_PRIMARY;
 }
 
-void WebAutomationSession::platformSimulateMouseInteraction(WebPageProxy& page, MouseInteraction interaction, MouseButton button, const WebCore::IntPoint& locationInView, OptionSet<WebEventModifier> keyModifiers, const String& pointerType)
+void WebAutomationSession::platformSimulateMouseInteraction(WebPageProxy& page, MouseInteraction interaction, MouseButton button, const CyberCore::IntPoint& locationInView, OptionSet<WebEventModifier> keyModifiers, const String& pointerType)
 {
     unsigned gdkButton = mouseButtonToGdkButton(button);
     auto modifier = stateModifierForGdkButton(gdkButton);
@@ -327,7 +327,7 @@ void WebAutomationSession::platformSimulateKeySequence(WebPageProxy& page, const
 #endif // ENABLE(WEBDRIVER_KEYBOARD_INTERACTIONS)
 
 #if ENABLE(WEBDRIVER_WHEEL_INTERACTIONS)
-void WebAutomationSession::platformSimulateWheelInteraction(WebPageProxy& page, const WebCore::IntPoint& locationInViewport, const WebCore::IntSize& delta)
+void WebAutomationSession::platformSimulateWheelInteraction(WebPageProxy& page, const CyberCore::IntPoint& locationInViewport, const CyberCore::IntSize& delta)
 {
     auto* viewWidget = reinterpret_cast<WebKitWebViewBase*>(page.viewWidget());
     FloatSize scrollDelta(delta);

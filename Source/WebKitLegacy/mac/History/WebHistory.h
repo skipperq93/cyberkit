@@ -27,7 +27,7 @@
  */
 
 #import <Foundation/Foundation.h>
-#import <CyberKitLegacy/WebKitAvailability.h>
+#import <CyberKitLegacy/CyberKitAvailability.h>
 
 @class NSError;
 
@@ -56,7 +56,7 @@ extern NSString *WebHistoryItemsKey WEBKIT_DEPRECATED_MAC(10_3, 10_14);
 /*!
     @class WebHistory
     @discussion WebHistory is used to track pages that have been loaded
-    by WebKit.
+    by CyberKit.
 */
 WEBKIT_CLASS_DEPRECATED_MAC(10_3, 10_14)
 @interface WebHistory : NSObject {

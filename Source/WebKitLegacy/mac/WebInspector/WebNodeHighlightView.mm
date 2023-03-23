@@ -38,10 +38,10 @@
 #import <CyberCore/FloatQuad.h>
 #import <CyberCore/GeometryUtilities.h>
 #import <CyberCore/InspectorOverlay.h>
-#import <CyberCore/WebCoreThread.h>
+#import <CyberCore/CyberCoreThread.h>
 #endif
 
-using namespace WebCore;
+using namespace CyberCore;
 
 @implementation WebNodeHighlightView
 

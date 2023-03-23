@@ -32,7 +32,7 @@
 #include "SVGImage.h"
 #include <wtf/URL.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGImageForContainer final : public Image {
 public:
@@ -71,6 +71,6 @@ private:
     const URL m_initialFragmentURL;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_IMAGE(SVGImageForContainer)

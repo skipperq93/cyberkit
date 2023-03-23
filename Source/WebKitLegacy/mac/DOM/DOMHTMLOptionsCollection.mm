@@ -35,19 +35,19 @@
 #import <CyberCore/JSExecState.h>
 #import <CyberCore/Node.h>
 #import <CyberCore/ThreadCheck.h>
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 #import <CyberCore/WebScriptObjectPrivate.h>
 #import <variant>
 #import <wtf/GetPtr.h>
 #import <wtf/URL.h>
 
-#define IMPL reinterpret_cast<WebCore::HTMLOptionsCollection*>(_internal)
+#define IMPL reinterpret_cast<CyberCore::HTMLOptionsCollection*>(_internal)
 
 @implementation DOMHTMLOptionsCollection
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainThread([DOMHTMLOptionsCollection class], self))
+    if (CyberCoreObjCScheduleDeallocateOnMainThread([DOMHTMLOptionsCollection class], self))
         return;
 
     if (_internal)
@@ -57,59 +57,59 @@
 
 - (int)selectedIndex
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->selectedIndex();
 }
 
 - (void)setSelectedIndex:(int)newSelectedIndex
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->setSelectedIndex(newSelectedIndex);
 }
 
 - (unsigned)length
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->length();
 }
 
 - (void)setLength:(unsigned)newLength
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     raiseOnDOMError(IMPL->setLength(newLength));
 }
 
 - (DOMNode *)namedItem:(NSString *)name
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->namedItem(name)));
 }
 
 - (void)add:(DOMHTMLOptionElement *)option index:(unsigned)index
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     if (!option)
         raiseTypeErrorException();
-    raiseOnDOMError(IMPL->add(core(option), std::optional<WebCore::HTMLOptionsCollection::HTMLElementOrInt> { static_cast<int>(index) }));
+    raiseOnDOMError(IMPL->add(core(option), std::optional<CyberCore::HTMLOptionsCollection::HTMLElementOrInt> { static_cast<int>(index) }));
 }
 
 - (void)remove:(unsigned)index
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->remove(index);
 }
 
 - (DOMNode *)item:(unsigned)index
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->item(index)));
 }
 
 @end
 
-DOMHTMLOptionsCollection *kit(WebCore::HTMLOptionsCollection* value)
+DOMHTMLOptionsCollection *kit(CyberCore::HTMLOptionsCollection* value)
 {
-    WebCoreThreadViolationCheckRoundOne();
+    CyberCoreThreadViolationCheckRoundOne();
     if (!value)
         return nil;
     if (DOMHTMLOptionsCollection *wrapper = getDOMWrapper(value))

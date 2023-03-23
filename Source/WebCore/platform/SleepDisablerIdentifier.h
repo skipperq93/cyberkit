@@ -27,9 +27,9 @@
 
 #include <wtf/ObjectIdentifier.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum SleepDisablerIdentifierType { };
 using SleepDisablerIdentifier = ObjectIdentifier<SleepDisablerIdentifierType>;
 
-} // namespace WebCore
+} // namespace CyberCore

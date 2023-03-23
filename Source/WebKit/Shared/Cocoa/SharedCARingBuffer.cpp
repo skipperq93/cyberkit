@@ -64,7 +64,7 @@ std::unique_ptr<ConsumerSharedCARingBuffer> ConsumerSharedCARingBuffer::map(uint
     return result;
 }
 
-ProducerSharedCARingBuffer::Pair ProducerSharedCARingBuffer::allocate(const WebCore::CAAudioStreamDescription& format, size_t frameCount)
+ProducerSharedCARingBuffer::Pair ProducerSharedCARingBuffer::allocate(const CyberCore::CAAudioStreamDescription& format, size_t frameCount)
 {
     frameCount = WTF::roundUpToPowerOfTwo(frameCount);
     auto bytesPerFrame = format.bytesPerFrame();

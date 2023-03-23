@@ -32,7 +32,7 @@
 #include <wtf/Forward.h>
 #include <wtf/Noncopyable.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WebSQLiteDatabaseTrackerClient final : public SQLiteDatabaseTrackerClient {
     WTF_MAKE_NONCOPYABLE(WebSQLiteDatabaseTrackerClient);

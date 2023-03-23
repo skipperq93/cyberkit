@@ -73,12 +73,12 @@
 #include "Settings.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(RenderImage);
 
 #if PLATFORM(IOS_FAMILY)
-// FIXME: This doesn't behave correctly for floating or positioned images, but WebCore doesn't handle those well
+// FIXME: This doesn't behave correctly for floating or positioned images, but CyberCore doesn't handle those well
 // during selection creation yet anyway.
 // FIXME: We can't tell whether or not we contain the start or end of the selected Range using only the offsets
 // of the start and end, we need to know the whole Position.
@@ -892,4 +892,4 @@ RenderBox* RenderImage::embeddedContentBox() const
     return nullptr;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

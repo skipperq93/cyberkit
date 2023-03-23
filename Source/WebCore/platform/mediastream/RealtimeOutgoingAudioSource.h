@@ -52,7 +52,7 @@ class AudioTrackInterface;
 class AudioTrackSinkInterface;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class RealtimeOutgoingAudioSource
     : public ThreadSafeRefCounted<RealtimeOutgoingAudioSource, WTF::DestructionThread::Main>
@@ -138,6 +138,6 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(LIBWEBRTC)

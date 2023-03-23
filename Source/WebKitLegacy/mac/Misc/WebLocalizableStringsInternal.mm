@@ -27,7 +27,7 @@
 
 #import <CyberCore/LocalizedStrings.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 NSString *WebLocalizedStringInternal(const char* key)
 {

@@ -34,56 +34,56 @@
 #include <wtf/HashSet.h>
 #include <wtf/RunLoop.h>
 
-namespace WebCore {
+namespace CyberCore {
 struct FetchOptions;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class NetworkProcessConnection;
 class WebFrame;
 class WebPage;
 class WebURLSchemeTaskProxy;
 
-class WebLoaderStrategy final : public WebCore::LoaderStrategy {
+class WebLoaderStrategy final : public CyberCore::LoaderStrategy {
     WTF_MAKE_NONCOPYABLE(WebLoaderStrategy); WTF_MAKE_FAST_ALLOCATED;
 public:
     WebLoaderStrategy();
     ~WebLoaderStrategy() final;
     
-    void loadResource(WebCore::Frame&, WebCore::CachedResource&, WebCore::ResourceRequest&&, const WebCore::ResourceLoaderOptions&, CompletionHandler<void(RefPtr<WebCore::SubresourceLoader>&&)>&&) final;
-    void loadResourceSynchronously(WebCore::FrameLoader&, WebCore::ResourceLoaderIdentifier, const WebCore::ResourceRequest&, WebCore::ClientCredentialPolicy, const WebCore::FetchOptions&, const WebCore::HTTPHeaderMap&, WebCore::ResourceError&, WebCore::ResourceResponse&, Vector<uint8_t>& data) final;
-    void pageLoadCompleted(WebCore::Page&) final;
-    void browsingContextRemoved(WebCore::Frame&) final;
+    void loadResource(CyberCore::Frame&, CyberCore::CachedResource&, CyberCore::ResourceRequest&&, const CyberCore::ResourceLoaderOptions&, CompletionHandler<void(RefPtr<CyberCore::SubresourceLoader>&&)>&&) final;
+    void loadResourceSynchronously(CyberCore::FrameLoader&, CyberCore::ResourceLoaderIdentifier, const CyberCore::ResourceRequest&, CyberCore::ClientCredentialPolicy, const CyberCore::FetchOptions&, const CyberCore::HTTPHeaderMap&, CyberCore::ResourceError&, CyberCore::ResourceResponse&, Vector<uint8_t>& data) final;
+    void pageLoadCompleted(CyberCore::Page&) final;
+    void browsingContextRemoved(CyberCore::Frame&) final;
 
-    void remove(WebCore::ResourceLoader*) final;
-    void setDefersLoading(WebCore::ResourceLoader&, bool) final;
-    void crossOriginRedirectReceived(WebCore::ResourceLoader*, const URL& redirectURL) final;
+    void remove(CyberCore::ResourceLoader*) final;
+    void setDefersLoading(CyberCore::ResourceLoader&, bool) final;
+    void crossOriginRedirectReceived(CyberCore::ResourceLoader*, const URL& redirectURL) final;
     
-    void servePendingRequests(WebCore::ResourceLoadPriority minimumPriority) final;
+    void servePendingRequests(CyberCore::ResourceLoadPriority minimumPriority) final;
 
     void suspendPendingRequests() final;
     void resumePendingRequests() final;
 
     bool usePingLoad() const final;
-    void startPingLoad(WebCore::Frame&, WebCore::ResourceRequest&, const WebCore::HTTPHeaderMap& originalRequestHeaders, const WebCore::FetchOptions&, WebCore::ContentSecurityPolicyImposition, PingLoadCompletionHandler&&) final;
-    void didFinishPingLoad(WebCore::ResourceLoaderIdentifier pingLoadIdentifier, WebCore::ResourceError&&, WebCore::ResourceResponse&&);
+    void startPingLoad(CyberCore::Frame&, CyberCore::ResourceRequest&, const CyberCore::HTTPHeaderMap& originalRequestHeaders, const CyberCore::FetchOptions&, CyberCore::ContentSecurityPolicyImposition, PingLoadCompletionHandler&&) final;
+    void didFinishPingLoad(CyberCore::ResourceLoaderIdentifier pingLoadIdentifier, CyberCore::ResourceError&&, CyberCore::ResourceResponse&&);
 
-    void preconnectTo(WebCore::ResourceRequest&&, WebPage&, WebFrame&, WebCore::StoredCredentialsPolicy, ShouldPreconnectAsFirstParty, PreconnectCompletionHandler&& = nullptr);
-    void preconnectTo(WebCore::FrameLoader&, const URL&, WebCore::StoredCredentialsPolicy, ShouldPreconnectAsFirstParty, PreconnectCompletionHandler&&) final;
-    void didFinishPreconnection(WebCore::ResourceLoaderIdentifier preconnectionIdentifier, WebCore::ResourceError&&);
+    void preconnectTo(CyberCore::ResourceRequest&&, WebPage&, WebFrame&, CyberCore::StoredCredentialsPolicy, ShouldPreconnectAsFirstParty, PreconnectCompletionHandler&& = nullptr);
+    void preconnectTo(CyberCore::FrameLoader&, const URL&, CyberCore::StoredCredentialsPolicy, ShouldPreconnectAsFirstParty, PreconnectCompletionHandler&&) final;
+    void didFinishPreconnection(CyberCore::ResourceLoaderIdentifier preconnectionIdentifier, CyberCore::ResourceError&&);
 
     void setCaptureExtraNetworkLoadMetricsEnabled(bool) final;
 
-    WebResourceLoader* webResourceLoaderForIdentifier(WebCore::ResourceLoaderIdentifier identifier) const { return m_webResourceLoaders.get(identifier); }
-    void schedulePluginStreamLoad(WebCore::Frame&, WebCore::NetscapePlugInStreamLoaderClient&, WebCore::ResourceRequest&&, CompletionHandler<void(RefPtr<WebCore::NetscapePlugInStreamLoader>&&)>&&);
+    WebResourceLoader* webResourceLoaderForIdentifier(CyberCore::ResourceLoaderIdentifier identifier) const { return m_webResourceLoaders.get(identifier); }
+    void schedulePluginStreamLoad(CyberCore::Frame&, CyberCore::NetscapePlugInStreamLoaderClient&, CyberCore::ResourceRequest&&, CompletionHandler<void(RefPtr<CyberCore::NetscapePlugInStreamLoader>&&)>&&);
 
     void networkProcessCrashed();
 
     void addURLSchemeTaskProxy(WebURLSchemeTaskProxy&);
     void removeURLSchemeTaskProxy(WebURLSchemeTaskProxy&);
 
-    void scheduleLoadFromNetworkProcess(WebCore::ResourceLoader&, const WebCore::ResourceRequest&, const WebResourceLoader::TrackingParameters&, bool shouldClearReferrerOnHTTPSToHTTPRedirect, Seconds maximumBufferingTime);
+    void scheduleLoadFromNetworkProcess(CyberCore::ResourceLoader&, const CyberCore::ResourceRequest&, const WebResourceLoader::TrackingParameters&, bool shouldClearReferrerOnHTTPSToHTTPRedirect, Seconds maximumBufferingTime);
 
     bool isOnLine() const final;
     void addOnlineStateChangeListener(Function<void(bool)>&&) final;
@@ -94,52 +94,52 @@ public:
     static constexpr Seconds mediaMaximumBufferingTime { 50_ms };
 
 private:
-    void scheduleLoad(WebCore::ResourceLoader&, WebCore::CachedResource*, bool shouldClearReferrerOnHTTPSToHTTPRedirect);
-    void scheduleInternallyFailedLoad(WebCore::ResourceLoader&);
+    void scheduleLoad(CyberCore::ResourceLoader&, CyberCore::CachedResource*, bool shouldClearReferrerOnHTTPSToHTTPRedirect);
+    void scheduleInternallyFailedLoad(CyberCore::ResourceLoader&);
     void internallyFailedLoadTimerFired();
-    void startLocalLoad(WebCore::ResourceLoader&);
-    bool tryLoadingUsingURLSchemeHandler(WebCore::ResourceLoader&, const WebResourceLoader::TrackingParameters&);
+    void startLocalLoad(CyberCore::ResourceLoader&);
+    bool tryLoadingUsingURLSchemeHandler(CyberCore::ResourceLoader&, const WebResourceLoader::TrackingParameters&);
 #if ENABLE(PDFJS)
-    bool tryLoadingUsingPDFJSHandler(WebCore::ResourceLoader&, const WebResourceLoader::TrackingParameters&);
+    bool tryLoadingUsingPDFJSHandler(CyberCore::ResourceLoader&, const WebResourceLoader::TrackingParameters&);
 #endif
 
     struct SyncLoadResult {
-        WebCore::ResourceResponse response;
-        WebCore::ResourceError error;
+        CyberCore::ResourceResponse response;
+        CyberCore::ResourceError error;
         Vector<uint8_t> data;
     };
-    std::optional<SyncLoadResult> tryLoadingSynchronouslyUsingURLSchemeHandler(WebCore::FrameLoader&, WebCore::ResourceLoaderIdentifier, const WebCore::ResourceRequest&);
-    SyncLoadResult loadDataURLSynchronously(const WebCore::ResourceRequest&);
+    std::optional<SyncLoadResult> tryLoadingSynchronouslyUsingURLSchemeHandler(CyberCore::FrameLoader&, CyberCore::ResourceLoaderIdentifier, const CyberCore::ResourceRequest&);
+    SyncLoadResult loadDataURLSynchronously(const CyberCore::ResourceRequest&);
 
-    WebCore::ResourceResponse responseFromResourceLoadIdentifier(WebCore::ResourceLoaderIdentifier) final;
-    Vector<WebCore::NetworkTransactionInformation> intermediateLoadInformationFromResourceLoadIdentifier(WebCore::ResourceLoaderIdentifier) final;
-    WebCore::NetworkLoadMetrics networkMetricsFromResourceLoadIdentifier(WebCore::ResourceLoaderIdentifier) final;
+    CyberCore::ResourceResponse responseFromResourceLoadIdentifier(CyberCore::ResourceLoaderIdentifier) final;
+    Vector<CyberCore::NetworkTransactionInformation> intermediateLoadInformationFromResourceLoadIdentifier(CyberCore::ResourceLoaderIdentifier) final;
+    CyberCore::NetworkLoadMetrics networkMetricsFromResourceLoadIdentifier(CyberCore::ResourceLoaderIdentifier) final;
 
     bool shouldPerformSecurityChecks() const final;
-    bool havePerformedSecurityChecks(const WebCore::ResourceResponse&) const final;
+    bool havePerformedSecurityChecks(const CyberCore::ResourceResponse&) const final;
 
-    void isResourceLoadFinished(WebCore::CachedResource&, CompletionHandler<void(bool)>&&) final;
+    void isResourceLoadFinished(CyberCore::CachedResource&, CompletionHandler<void(bool)>&&) final;
 
-    void setResourceLoadSchedulingMode(WebCore::Page&, WebCore::LoadSchedulingMode) final;
-    void prioritizeResourceLoads(const Vector<WebCore::SubresourceLoader*>&) final;
+    void setResourceLoadSchedulingMode(CyberCore::Page&, CyberCore::LoadSchedulingMode) final;
+    void prioritizeResourceLoads(const Vector<CyberCore::SubresourceLoader*>&) final;
 
-    Vector<WebCore::ResourceLoaderIdentifier> ongoingLoads() const final
+    Vector<CyberCore::ResourceLoaderIdentifier> ongoingLoads() const final
     {
-        return WTF::map(m_webResourceLoaders, [](auto&& keyValue) -> WebCore::ResourceLoaderIdentifier {
+        return WTF::map(m_webResourceLoaders, [](auto&& keyValue) -> CyberCore::ResourceLoaderIdentifier {
             return keyValue.key;
         });
     }
 
-    HashSet<RefPtr<WebCore::ResourceLoader>> m_internallyFailedResourceLoaders;
+    HashSet<RefPtr<CyberCore::ResourceLoader>> m_internallyFailedResourceLoaders;
     RunLoop::Timer m_internallyFailedLoadTimer;
     
-    HashMap<WebCore::ResourceLoaderIdentifier, RefPtr<WebResourceLoader>> m_webResourceLoaders;
-    HashMap<WebCore::ResourceLoaderIdentifier, WebURLSchemeTaskProxy*> m_urlSchemeTasks;
-    HashMap<WebCore::ResourceLoaderIdentifier, PingLoadCompletionHandler> m_pingLoadCompletionHandlers;
-    HashMap<WebCore::ResourceLoaderIdentifier, PreconnectCompletionHandler> m_preconnectCompletionHandlers;
+    HashMap<CyberCore::ResourceLoaderIdentifier, RefPtr<WebResourceLoader>> m_webResourceLoaders;
+    HashMap<CyberCore::ResourceLoaderIdentifier, WebURLSchemeTaskProxy*> m_urlSchemeTasks;
+    HashMap<CyberCore::ResourceLoaderIdentifier, PingLoadCompletionHandler> m_pingLoadCompletionHandlers;
+    HashMap<CyberCore::ResourceLoaderIdentifier, PreconnectCompletionHandler> m_preconnectCompletionHandlers;
     Vector<Function<void(bool)>> m_onlineStateChangeListeners;
     std::optional<NetworkResourceLoadIdentifier> m_existingNetworkResourceLoadIdentifierToResume;
     bool m_isOnLine { true };
 };
 
-} // namespace WebKit
+} // namespace CyberKit

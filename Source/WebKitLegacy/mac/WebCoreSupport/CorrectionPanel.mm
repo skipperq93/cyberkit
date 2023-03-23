@@ -30,7 +30,7 @@
 
 #if USE(AUTOCORRECTION_PANEL)
 
-using namespace WebCore;
+using namespace CyberCore;
 
 static inline NSCorrectionIndicatorType correctionIndicatorType(AlternativeTextType alternativeTextType)
 {

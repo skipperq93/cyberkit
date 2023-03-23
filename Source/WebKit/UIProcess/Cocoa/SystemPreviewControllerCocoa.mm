@@ -116,7 +116,7 @@ static NSString * const _WKARQLWebsiteURLParameterKey = @"ARQLWebsiteURLParamete
     _itemProvider = adoptNS([[NSItemProvider alloc] init]);
     // FIXME: We are launching the preview controller before getting a response from the resource, which
     // means we don't actually know the real MIME type yet.
-    NSString *contentType = WebCore::UTIFromMIMEType("model/vnd.usdz+zip"_s);
+    NSString *contentType = CyberCore::UTIFromMIMEType("model/vnd.usdz+zip"_s);
 
 #if HAVE(ARKIT_QUICK_LOOK_PREVIEW_ITEM)
     auto previewItem = adoptNS([WebKit::allocARQuickLookPreviewItemInstance() initWithFileAtURL:_downloadedURL]);
@@ -184,7 +184,7 @@ static NSString * const _WKARQLWebsiteURLParameterKey = @"ARQLWebsiteURLParamete
 
 @interface _WKPreviewControllerDelegate : NSObject <QLPreviewControllerDelegate> {
     WebKit::SystemPreviewController* _previewController;
-    WebCore::IntRect _linkRect;
+    CyberCore::IntRect _linkRect;
 };
 @end
 
@@ -242,7 +242,7 @@ static NSString * const _WKARQLWebsiteURLParameterKey = @"ARQLWebsiteURLParamete
         if (_linkRect.isEmpty())
             *contentRect = {CGPointZero, {presentingViewController.view.frame.size.width / 2.0, presentingViewController.view.frame.size.height / 2.0}};
         else {
-            WebCore::IntRect screenRect = _previewController->page().syncRootViewToScreen(_linkRect);
+            CyberCore::IntRect screenRect = _previewController->page().syncRootViewToScreen(_linkRect);
             *contentRect = { CGPointZero, { static_cast<CGFloat>(screenRect.width()), static_cast<CGFloat>(screenRect.height()) } };
         }
     }
@@ -254,7 +254,7 @@ static NSString * const _WKARQLWebsiteURLParameterKey = @"ARQLWebsiteURLParamete
 
 namespace WebKit {
 
-void SystemPreviewController::start(URL originatingPageURL, const String& mimeType, const WebCore::SystemPreviewInfo& systemPreviewInfo)
+void SystemPreviewController::start(URL originatingPageURL, const String& mimeType, const CyberCore::SystemPreviewInfo& systemPreviewInfo)
 {
 #if HAVE(UIKIT_WEBKIT_INTERNALS)
     UNUSED_PARAM(mimeType);
@@ -342,7 +342,7 @@ void SystemPreviewController::cancel()
 #endif
 }
 
-void SystemPreviewController::fail(const WebCore::ResourceError& error)
+void SystemPreviewController::fail(const CyberCore::ResourceError& error)
 {
 #if !HAVE(UIKIT_WEBKIT_INTERNALS)
     if (m_qlPreviewControllerDataSource)
@@ -365,9 +365,9 @@ void SystemPreviewController::triggerSystemPreviewActionWithTargetForTesting(uin
         return;
 
     m_systemPreviewInfo.isPreview = true;
-    m_systemPreviewInfo.element.elementIdentifier = makeObjectIdentifier<WebCore::ElementIdentifierType>(elementID);
+    m_systemPreviewInfo.element.elementIdentifier = makeObjectIdentifier<CyberCore::ElementIdentifierType>(elementID);
     m_systemPreviewInfo.element.documentIdentifier = { *uuid, m_webPageProxy.process().coreProcessIdentifier() };
-    m_systemPreviewInfo.element.webPageIdentifier = makeObjectIdentifier<WebCore::PageIdentifierType>(pageID);
+    m_systemPreviewInfo.element.webPageIdentifier = makeObjectIdentifier<CyberCore::PageIdentifierType>(pageID);
     triggerSystemPreviewAction();
 }
 

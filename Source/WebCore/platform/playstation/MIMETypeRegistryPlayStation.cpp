@@ -26,7 +26,7 @@
 #include "config.h"
 #include "MIMETypeRegistry.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static const std::initializer_list<TypeExtensionPair>& platformMediaTypes()
 {
@@ -86,4 +86,4 @@ Vector<String> MIMETypeRegistry::extensionsForMIMEType(const String&)
     return { };
 }
 
-} // namespace WebCore
+} // namespace CyberCore

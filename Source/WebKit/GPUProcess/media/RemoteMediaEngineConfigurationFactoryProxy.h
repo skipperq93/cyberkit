@@ -49,8 +49,8 @@ private:
     void didReceiveMessage(IPC::Connection&, IPC::Decoder&) final;
 
     // Messages
-    void createDecodingConfiguration(WebCore::MediaDecodingConfiguration&&, CompletionHandler<void(WebCore::MediaCapabilitiesDecodingInfo&&)>&&);
-    void createEncodingConfiguration(WebCore::MediaEncodingConfiguration&&, CompletionHandler<void(WebCore::MediaCapabilitiesEncodingInfo&&)>&&);
+    void createDecodingConfiguration(CyberCore::MediaDecodingConfiguration&&, CompletionHandler<void(CyberCore::MediaCapabilitiesDecodingInfo&&)>&&);
+    void createEncodingConfiguration(CyberCore::MediaEncodingConfiguration&&, CompletionHandler<void(CyberCore::MediaCapabilitiesEncodingInfo&&)>&&);
 };
 
 }

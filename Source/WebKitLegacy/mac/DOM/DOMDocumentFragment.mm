@@ -32,63 +32,63 @@
 #import <CyberCore/JSExecState.h>
 #import <CyberCore/ThreadCheck.h>
 
-#define IMPL static_cast<WebCore::DocumentFragment*>(reinterpret_cast<WebCore::Node*>(_internal))
+#define IMPL static_cast<CyberCore::DocumentFragment*>(reinterpret_cast<CyberCore::Node*>(_internal))
 
 @implementation DOMDocumentFragment
 
 - (DOMHTMLCollection *)children
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->children()));
 }
 
 - (DOMElement *)firstElementChild
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->firstElementChild()));
 }
 
 - (DOMElement *)lastElementChild
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->lastElementChild()));
 }
 
 - (unsigned)childElementCount
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->childElementCount();
 }
 
 - (DOMElement *)getElementById:(NSString *)elementId
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->getElementById(AtomString(elementId))));
 }
 
 - (DOMElement *)querySelector:(NSString *)selectors
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(raiseOnDOMError(IMPL->querySelector(selectors)));
 }
 
 - (DOMNodeList *)querySelectorAll:(NSString *)selectors
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(raiseOnDOMError(IMPL->querySelectorAll(selectors)).ptr());
 }
 
 @end
 
-WebCore::DocumentFragment* core(DOMDocumentFragment *wrapper)
+CyberCore::DocumentFragment* core(DOMDocumentFragment *wrapper)
 {
-    return wrapper ? reinterpret_cast<WebCore::DocumentFragment*>(wrapper->_internal) : 0;
+    return wrapper ? reinterpret_cast<CyberCore::DocumentFragment*>(wrapper->_internal) : 0;
 }
 
-DOMDocumentFragment *kit(WebCore::DocumentFragment* value)
+DOMDocumentFragment *kit(CyberCore::DocumentFragment* value)
 {
-    WebCoreThreadViolationCheckRoundOne();
-    return static_cast<DOMDocumentFragment*>(kit(static_cast<WebCore::Node*>(value)));
+    CyberCoreThreadViolationCheckRoundOne();
+    return static_cast<DOMDocumentFragment*>(kit(static_cast<CyberCore::Node*>(value)));
 }
 
 #undef IMPL

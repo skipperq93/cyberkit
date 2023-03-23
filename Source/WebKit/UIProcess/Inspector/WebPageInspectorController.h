@@ -74,7 +74,7 @@ public:
 
     void didCreateProvisionalPage(ProvisionalPageProxy&);
     void willDestroyProvisionalPage(const ProvisionalPageProxy&);
-    void didCommitProvisionalPage(WebCore::PageIdentifier oldWebPageID, WebCore::PageIdentifier newWebPageID);
+    void didCommitProvisionalPage(CyberCore::PageIdentifier oldWebPageID, CyberCore::PageIdentifier newWebPageID);
 
     InspectorBrowserAgent* enabledBrowserAgent() const { return m_enabledBrowserAgent; }
     void setEnabledBrowserAgent(InspectorBrowserAgent*);

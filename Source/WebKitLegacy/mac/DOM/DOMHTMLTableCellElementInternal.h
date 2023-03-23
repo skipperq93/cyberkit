@@ -25,9 +25,9 @@
 
 #import <CyberKitLegacy/DOMHTMLTableCellElement.h>
 
-namespace WebCore {
+namespace CyberCore {
 class HTMLTableCellElement;
 }
 
-WebCore::HTMLTableCellElement* core(DOMHTMLTableCellElement *);
-DOMHTMLTableCellElement *kit(WebCore::HTMLTableCellElement*);
+CyberCore::HTMLTableCellElement* core(DOMHTMLTableCellElement *);
+DOMHTMLTableCellElement *kit(CyberCore::HTMLTableCellElement*);

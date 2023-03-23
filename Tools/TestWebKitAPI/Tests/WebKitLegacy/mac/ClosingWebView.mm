@@ -61,7 +61,7 @@ static RetainPtr<WebView> webView;
 
 namespace TestWebKitAPI {
 
-TEST(WebKitLegacy, ClosingWebViewThenSendingItAKeyDownEvent)
+TEST(CyberKitLegacy, ClosingWebViewThenSendingItAKeyDownEvent)
 {
     webView = adoptNS([[WebView alloc] initWithFrame:NSMakeRect(0, 0, 400, 400) frameName:nil groupName:nil]);
     auto* webHTMLView = (WebHTMLView *)[[[webView mainFrame] frameView] documentView];

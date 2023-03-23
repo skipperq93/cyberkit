@@ -32,7 +32,7 @@
 #include "HTTPHeaderMap.h"
 #include "ResourceRequest.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct BackgroundFetchRequest {
     BackgroundFetchRequest isolatedCopy() const & { return { internalRequest.isolatedCopy(), options.isolatedCopy(), guard, httpHeaders.isolatedCopy(), referrer.isolatedCopy() }; }
@@ -45,6 +45,6 @@ struct BackgroundFetchRequest {
     String referrer;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

@@ -37,7 +37,7 @@
 #include <wtf/MathExtras.h>
 #include <wtf/win/GDIObject.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static bool g_shouldApplyMacAscentHack;
 
@@ -185,4 +185,4 @@ SCRIPT_FONTPROPERTIES* Font::scriptFontProperties() const
     return m_scriptFontProperties;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

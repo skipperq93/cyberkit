@@ -41,7 +41,7 @@ OBJC_CLASS NSEvent;
 OBJC_CLASS WebEvent;
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
     class PlatformKeyboardEvent : public PlatformEvent {
         WTF_MAKE_FAST_ALLOCATED;
@@ -94,7 +94,7 @@ namespace WebCore {
         bool handledByInputMethod() const { return m_handledByInputMethod; }
 #endif
 #if PLATFORM(GTK) || USE(LIBWPE)
-        const std::optional<Vector<WebCore::CompositionUnderline>>& preeditUnderlines() const { return m_preeditUnderlines; }
+        const std::optional<Vector<CyberCore::CompositionUnderline>>& preeditUnderlines() const { return m_preeditUnderlines; }
         const std::optional<uint64_t>& preeditSelectionRangeStart() const { return m_preeditSelectionRangeStart; }
         const std::optional<uint64_t>& preeditSelectionRangeLength() const { return m_preeditSelectionRangeLength; }
 #endif
@@ -163,7 +163,7 @@ namespace WebCore {
         bool m_handledByInputMethod { false };
 #endif
 #if PLATFORM(GTK) || USE(LIBWPE)
-        std::optional<Vector<WebCore::CompositionUnderline>> m_preeditUnderlines;
+        std::optional<Vector<CyberCore::CompositionUnderline>> m_preeditUnderlines;
         std::optional<uint64_t> m_preeditSelectionRangeStart;
         std::optional<uint64_t> m_preeditSelectionRangeLength;
 #endif
@@ -184,4 +184,4 @@ namespace WebCore {
         static std::optional<OptionSet<Modifier>> s_currentModifiers;
     };
     
-} // namespace WebCore
+} // namespace CyberCore

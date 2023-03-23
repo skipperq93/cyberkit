@@ -73,7 +73,7 @@ namespace API {
 class Attachment;
 }
 
-namespace WebCore {
+namespace CyberCore {
 struct AppHighlight;
 struct ExceptionDetails;
 enum class WheelScrollGestureState : uint8_t;
@@ -125,7 +125,7 @@ struct LiveResizeParameters {
 
 // This holds state that should be reset when the web process exits.
 struct PerWebProcessState {
-    CGFloat viewportMetaTagWidth { WebCore::ViewportArguments::ValueAuto };
+    CGFloat viewportMetaTagWidth { CyberCore::ViewportArguments::ValueAuto };
     CGFloat initialScaleFactor { 1 };
     BOOL hasCommittedLoadForMainFrame { NO };
     BOOL needsResetViewStateAfterCommitLoadForMainFrame { NO };
@@ -139,10 +139,10 @@ struct PerWebProcessState {
 
     CGRect animatedResizeOldBounds { CGRectZero }; // FIXME: Use std::optional<>
 
-    std::optional<WebCore::FloatPoint> scrollOffsetToRestore;
-    std::optional<WebCore::FloatPoint> unobscuredCenterToRestore;
+    std::optional<CyberCore::FloatPoint> scrollOffsetToRestore;
+    std::optional<CyberCore::FloatPoint> unobscuredCenterToRestore;
 
-    WebCore::Color scrollViewBackgroundColor;
+    CyberCore::Color scrollViewBackgroundColor;
 
     BOOL invokingUIScrollViewDelegateCallback { NO };
 
@@ -160,7 +160,7 @@ struct PerWebProcessState {
     BOOL viewportMetaTagWidthWasExplicit { NO };
     BOOL viewportMetaTagCameFromImageDocument { NO };
 
-    std::optional<WebCore::FloatSize> lastSentViewLayoutSize;
+    std::optional<CyberCore::FloatSize> lastSentViewLayoutSize;
     std::optional<int32_t> lastSentDeviceOrientation;
     std::optional<CGFloat> lastSentMinimumEffectiveDeviceWidth;
 
@@ -172,8 +172,8 @@ struct PerWebProcessState {
 
     std::optional<WebKit::TransactionID> firstTransactionIDAfterPageRestore;
 
-    WebCore::GraphicsLayer::PlatformLayerID pendingFindLayerID;
-    WebCore::GraphicsLayer::PlatformLayerID committedFindLayerID;
+    CyberCore::GraphicsLayer::PlatformLayerID pendingFindLayerID;
+    CyberCore::GraphicsLayer::PlatformLayerID committedFindLayerID;
 
     std::optional<LiveResizeParameters> liveResizeParameters;
 };
@@ -267,7 +267,7 @@ struct PerWebProcessState {
 
     RetainPtr<id> _endLiveResizeNotificationObserver;
 
-    WebCore::FloatBoxExtent _obscuredInsetsWhenSaved;
+    CyberCore::FloatBoxExtent _obscuredInsetsWhenSaved;
 
     double _scaleToRestore;
 
@@ -300,7 +300,7 @@ struct PerWebProcessState {
 
     OptionSet<WebKit::ViewStabilityFlag> _viewStabilityWhenVisibleContentRectUpdateScheduled;
 
-    std::optional<WebCore::WheelScrollGestureState> _currentScrollGestureState;
+    std::optional<CyberCore::WheelScrollGestureState> _currentScrollGestureState;
     uint64_t _wheelEventCountInCurrentScrollGesture;
 
     _WKDragInteractionPolicy _dragInteractionPolicy;
@@ -328,7 +328,7 @@ struct PerWebProcessState {
 #endif
 
 #if ENABLE(APP_HIGHLIGHTS)
-- (void)_storeAppHighlight:(const WebCore::AppHighlight&)info;
+- (void)_storeAppHighlight:(const CyberCore::AppHighlight&)info;
 #endif
 
 - (void)_internalDoAfterNextPresentationUpdate:(void (^)(void))updateBlock withoutWaitingForPainting:(BOOL)withoutWaitingForPainting withoutWaitingForAnimatedResize:(BOOL)withoutWaitingForAnimatedResize;
@@ -346,7 +346,7 @@ struct PerWebProcessState {
 
 @end
 
-RetainPtr<NSError> nsErrorFromExceptionDetails(const WebCore::ExceptionDetails&);
+RetainPtr<NSError> nsErrorFromExceptionDetails(const CyberCore::ExceptionDetails&);
 
 #if ENABLE(FULLSCREEN_API) && PLATFORM(IOS_FAMILY)
 @interface WKWebView (FullScreenAPI_Internal)

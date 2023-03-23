@@ -205,8 +205,8 @@ my @projects = ("Source/JavaScriptCore");
 if (isAppleCocoaWebKit()) {
     push @projects, ("Source/WebGPU");
 }
-push @projects, ("Source/WebCore");
-push @projects, ("Source/WebKitLegacy");
+push @projects, ("Source/CyberCore");
+push @projects, ("Source/CyberKitLegacy");
 
 
 # Build WTF as a separate static library on ports which support it.
@@ -262,7 +262,7 @@ if (isAppleCocoaWebKit()) {
         "on building targets in manual order, please document it in " .
         "https://bugs.webkit.org/show_bug.cgi?id=241295.\n";
         
-        # ANGLE and libwebrtc must come before WebCore
+        # ANGLE and libwebrtc must come before CyberCore
         splice @projects, 0, 0, ("Source/ThirdParty/ANGLE");
         # if (not $archs32bit and (portName() eq Mac or portName() eq iOS or portName() eq watchOS)) {
         if (portName() eq Mac or portName() eq iOS) {
@@ -274,8 +274,8 @@ if (isAppleCocoaWebKit()) {
         if (!isEmbeddedWebKit()) {
             push @projects, ("Tools/MiniBrowser");
 
-            # WebInspectorUI must come after JavaScriptCore and WebCore but before WebKit and WebKit2
-            my $webKitIndex = first { $projects[$_] eq "Source/WebKitLegacy" } 0..$#projects;
+            # WebInspectorUI must come after JavaScriptCore and CyberCore but before WebKit and WebKit2
+            my $webKitIndex = first { $projects[$_] eq "Source/CyberKitLegacy" } 0..$#projects;
             splice(@projects, $webKitIndex, 0, "Source/WebInspectorUI");
         }
 
@@ -294,7 +294,7 @@ if (isAppleCocoaWebKit()) {
 # If asked to build just the WebKit project, overwrite the projects
 # list after all of the port specific tweaks have been made to
 # build options, etc.
-@projects = ("Source/WebKitLegacy") if $onlyWebKitProject;
+@projects = ("Source/CyberKitLegacy") if $onlyWebKitProject;
 
 my $result = 0;
 
@@ -364,7 +364,7 @@ if (isWinCairo() || isPlayStation()) {
 
     # Build, and abort if the build fails.
     if ($useWorkspace) {
-        my $scheme = $onlyWebKitProject ? "WebKitLegacy" : "Everything up to WebKit + Tools";
+        my $scheme = $onlyWebKitProject ? "CyberKitLegacy" : "Everything up to WebKit + Tools";
         $result = buildXcodeScheme($scheme, $clean, @local_options, @ARGV);
         if (exitStatus($result)) {
             exit exitStatus($result);

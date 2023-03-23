@@ -23,7 +23,7 @@
 #if ENABLE(WEBXR) && USE(OPENXR)
 #include "OpenXRInputSource.h"
 
-using namespace WebCore;
+using namespace CyberCore;
 
 namespace PlatformXR {
 

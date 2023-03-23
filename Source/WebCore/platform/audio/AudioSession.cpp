@@ -40,7 +40,7 @@
 #include "AudioSessionIOS.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 bool AudioSession::s_shouldManageAudioSessionCategory { false };
 

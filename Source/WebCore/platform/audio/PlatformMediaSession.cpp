@@ -34,7 +34,7 @@
 #include "PlatformMediaSessionManager.h"
 #include <wtf/SetForScope.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 String convertEnumerationToString(PlatformMediaSession::State state)
 {

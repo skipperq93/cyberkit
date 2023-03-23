@@ -36,7 +36,7 @@
 #include <wtf/RefPtr.h>
 #include <wtf/Threading.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // HRTFDatabaseLoader will asynchronously load the default HRTFDatabase in a new thread.
 
@@ -81,6 +81,6 @@ private:
     float m_databaseSampleRate;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // HRTFDatabaseLoader_h

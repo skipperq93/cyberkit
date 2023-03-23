@@ -27,7 +27,7 @@
 
 #if PLATFORM(IOS_FAMILY)
 
-namespace WebCore {
+namespace CyberCore {
 class FloatPoint;
 }
 
@@ -57,7 +57,7 @@ class FloatPoint;
 @protocol WKKeyboardScrollViewAnimatorDelegate <NSObject>
 @optional
 - (BOOL)isScrollableForKeyboardScrollViewAnimator:(WKKeyboardScrollViewAnimator *)animator;
-- (CGFloat)keyboardScrollViewAnimator:(WKKeyboardScrollViewAnimator *)animator distanceForIncrement:(WebCore::ScrollGranularity)increment inDirection:(WebCore::ScrollDirection)direction;
+- (CGFloat)keyboardScrollViewAnimator:(WKKeyboardScrollViewAnimator *)animator distanceForIncrement:(CyberCore::ScrollGranularity)increment inDirection:(CyberCore::ScrollDirection)direction;
 - (void)keyboardScrollViewAnimatorWillScroll:(WKKeyboardScrollViewAnimator *)animator;
 - (void)keyboardScrollViewAnimatorDidFinishScrolling:(WKKeyboardScrollViewAnimator *)animator;
 

@@ -31,7 +31,7 @@
 #include <CyberCore/ResourceRequest.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 WebNavigationState::WebNavigationState()
 {
@@ -77,7 +77,7 @@ Ref<API::Navigation> WebNavigationState::createLoadDataNavigation(std::unique_pt
     return navigation;
 }
 
-Ref<API::Navigation> WebNavigationState::createSimulatedLoadWithDataNavigation(WebCore::ResourceRequest&& request, std::unique_ptr<API::SubstituteData>&& substituteData, WebBackForwardListItem* currentItem)
+Ref<API::Navigation> WebNavigationState::createSimulatedLoadWithDataNavigation(CyberCore::ResourceRequest&& request, std::unique_ptr<API::SubstituteData>&& substituteData, WebBackForwardListItem* currentItem)
 {
     auto navigation = API::Navigation::create(*this, WTFMove(request), WTFMove(substituteData), currentItem);
 

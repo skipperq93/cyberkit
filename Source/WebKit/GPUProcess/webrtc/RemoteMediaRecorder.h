@@ -42,7 +42,7 @@ class Connection;
 class Decoder;
 }
 
-namespace WebCore {
+namespace CyberCore {
 class WebAudioBufferList;
 struct MediaRecorderPrivateOptions;
 }
@@ -54,7 +54,7 @@ class GPUConnectionToWebProcess;
 class RemoteMediaRecorder : private IPC::MessageReceiver {
     WTF_MAKE_FAST_ALLOCATED;
 public:
-    static std::unique_ptr<RemoteMediaRecorder> create(GPUConnectionToWebProcess&, MediaRecorderIdentifier, bool recordAudio, bool recordVideo, const WebCore::MediaRecorderPrivateOptions&);
+    static std::unique_ptr<RemoteMediaRecorder> create(GPUConnectionToWebProcess&, MediaRecorderIdentifier, bool recordAudio, bool recordVideo, const CyberCore::MediaRecorderPrivateOptions&);
     ~RemoteMediaRecorder();
 
     String mimeType() const { return m_writer->mimeType(); }
@@ -64,10 +64,10 @@ public:
     void didReceiveMessage(IPC::Connection&, IPC::Decoder&) final;
 
 private:
-    RemoteMediaRecorder(GPUConnectionToWebProcess&, MediaRecorderIdentifier, Ref<WebCore::MediaRecorderPrivateWriter>&&, bool recordAudio);
+    RemoteMediaRecorder(GPUConnectionToWebProcess&, MediaRecorderIdentifier, Ref<CyberCore::MediaRecorderPrivateWriter>&&, bool recordAudio);
 
     // IPC::MessageReceiver
-    void audioSamplesStorageChanged(ConsumerSharedCARingBuffer::Handle&&, const WebCore::CAAudioStreamDescription&);
+    void audioSamplesStorageChanged(ConsumerSharedCARingBuffer::Handle&&, const CyberCore::CAAudioStreamDescription&);
     void audioSamplesAvailable(MediaTime, uint64_t numberOfFrames);
     void videoFrameAvailable(SharedVideoFrame&&);
     void fetchData(CompletionHandler<void(IPC::DataReference&&, double)>&&);
@@ -79,11 +79,11 @@ private:
 
     GPUConnectionToWebProcess& m_gpuConnectionToWebProcess;
     MediaRecorderIdentifier m_identifier;
-    Ref<WebCore::MediaRecorderPrivateWriter> m_writer;
+    Ref<CyberCore::MediaRecorderPrivateWriter> m_writer;
 
-    std::optional<WebCore::CAAudioStreamDescription> m_description;
+    std::optional<CyberCore::CAAudioStreamDescription> m_description;
     std::unique_ptr<ConsumerSharedCARingBuffer> m_ringBuffer;
-    std::unique_ptr<WebCore::WebAudioBufferList> m_audioBufferList;
+    std::unique_ptr<CyberCore::WebAudioBufferList> m_audioBufferList;
     const bool m_recordAudio;
 
     SharedVideoFrameReader m_sharedVideoFrameReader;

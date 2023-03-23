@@ -40,7 +40,7 @@
 #include <algorithm>
 #include <wtf/HashSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Vector<MarkedText> MarkedText::subdivide(const Vector<MarkedText>& markedTexts, OverlapStrategy overlapStrategy)
 {

@@ -37,7 +37,7 @@ namespace WebKit {
 // https://fidoalliance.org/specs/fido-v2.0-ps-20190130/fido-client-to-authenticator-protocol-v2.0-ps-20190130.html#nfc
 class CtapCcidDriver : public CtapDriver {
 public:
-    explicit CtapCcidDriver(Ref<CcidConnection>&&, WebCore::AuthenticatorTransport);
+    explicit CtapCcidDriver(Ref<CcidConnection>&&, CyberCore::AuthenticatorTransport);
 
     void transact(Vector<uint8_t>&& data, ResponseCallback&&) final;
 

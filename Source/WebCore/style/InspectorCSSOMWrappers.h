@@ -27,7 +27,7 @@
 #include <wtf/HashSet.h>
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSStyleRule;
 class CSSStyleSheet;
@@ -61,4 +61,4 @@ private:
 };
 
 } // namespace Style
-} // namespace WebCore
+} // namespace CyberCore

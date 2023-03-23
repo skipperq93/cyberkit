@@ -33,7 +33,7 @@
 
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 TextStream& operator<<(TextStream& ts, const GapLength& gapLength)
 {
@@ -44,4 +44,4 @@ TextStream& operator<<(TextStream& ts, const GapLength& gapLength)
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

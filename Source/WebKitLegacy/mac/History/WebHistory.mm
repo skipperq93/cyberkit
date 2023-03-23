@@ -30,17 +30,17 @@
 
 #import "HistoryPropertyList.h"
 #import "WebHistoryItemInternal.h"
-#import "WebKitLogging.h"
+#import "CyberKitLogging.h"
 #import "WebNSURLExtras.h"
 #import "WebVisitedLinkStore.h"
 #import <CyberCore/HistoryItem.h>
 #import <pal/spi/cocoa/NSCalendarDateSPI.h>
 
 #if PLATFORM(IOS_FAMILY)
-#import <CyberCore/WebCoreThreadMessage.h>
+#import <CyberCore/CyberCoreThreadMessage.h>
 #endif
 
-using namespace WebCore;
+using namespace CyberCore;
 
 typedef int64_t WebHistoryDateKey;
 typedef HashMap<WebHistoryDateKey, RetainPtr<NSMutableArray>> DateToEntriesMap;
@@ -122,8 +122,8 @@ private:
 + (void)initialize
 {
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{
-        @"WebKitHistoryItemLimit": @"1000",
-        @"WebKitHistoryAgeInDaysLimit": @"7",
+        @"CyberKitHistoryItemLimit": @"1000",
+        @"CyberKitHistoryAgeInDaysLimit": @"7",
     }];
 }
 
@@ -489,7 +489,7 @@ ALLOW_DEPRECATED_DECLARATIONS_END
 {
     if (ageInDaysLimitSet)
         return ageInDaysLimit;
-    return [[NSUserDefaults standardUserDefaults] integerForKey:@"WebKitHistoryAgeInDaysLimit"];
+    return [[NSUserDefaults standardUserDefaults] integerForKey:@"CyberKitHistoryAgeInDaysLimit"];
 }
 
 - (void)setHistoryItemLimit:(int)limit
@@ -502,7 +502,7 @@ ALLOW_DEPRECATED_DECLARATIONS_END
 {
     if (itemLimitSet)
         return itemLimit;
-    return [[NSUserDefaults standardUserDefaults] integerForKey:@"WebKitHistoryItemLimit"];
+    return [[NSUserDefaults standardUserDefaults] integerForKey:@"CyberKitHistoryItemLimit"];
 }
 
 ALLOW_DEPRECATED_DECLARATIONS_BEGIN

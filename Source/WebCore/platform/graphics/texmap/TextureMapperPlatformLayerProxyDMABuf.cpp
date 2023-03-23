@@ -47,7 +47,7 @@
 // This has to be included after the EGL headers.
 #include "DMABufEGLUtilities.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static PFNEGLCREATEIMAGEKHRPROC createImageKHR()
 {
@@ -327,6 +327,6 @@ std::unique_ptr<TextureMapperPlatformLayerProxyDMABuf::DMABufLayer::EGLImageData
     return imageData;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(COORDINATED_GRAPHICS) && USE(TEXTURE_MAPPER_DMABUF)

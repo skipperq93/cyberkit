@@ -29,7 +29,7 @@
 #import "Connection.h"
 #import "PasteboardAccessIntent.h"
 #import "SandboxExtension.h"
-#import "WebCoreArgumentCoders.h"
+#import "CyberCoreArgumentCoders.h"
 #import "WebPageProxy.h"
 #import "WebPreferences.h"
 #import "WebProcessMessages.h"
@@ -48,7 +48,7 @@
 #define MESSAGE_CHECK_COMPLETION(assertion, completion) MESSAGE_CHECK_COMPLETION_BASE(assertion, (&connection), completion)
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 void WebPasteboardProxy::grantAccessToCurrentTypes(WebProcessProxy& process, const String& pasteboardName)
 {
@@ -177,7 +177,7 @@ void WebPasteboardProxy::getPasteboardPathnamesForType(IPC::Connection& connecti
             PlatformPasteboard(pasteboardName).getPathnamesForType(pathnames, pasteboardType);
             // On iOS, files are copied into app's container upon paste.
 #if PLATFORM(MAC)
-            bool needsExtensions = pasteboardType == String(WebCore::legacyFilenamesPasteboardType());
+            bool needsExtensions = pasteboardType == String(CyberCore::legacyFilenamesPasteboardType());
             sandboxExtensions = pathnames.map([needsExtensions](auto& filename) {
                 if (!needsExtensions || ![[NSFileManager defaultManager] fileExistsAtPath:filename])
                     return SandboxExtension::Handle { };
@@ -220,7 +220,7 @@ void WebPasteboardProxy::getPasteboardStringsForType(IPC::Connection& connection
     });
 }
 
-void WebPasteboardProxy::getPasteboardBufferForType(IPC::Connection& connection, const String& pasteboardName, const String& pasteboardType, std::optional<PageIdentifier> pageID, CompletionHandler<void(RefPtr<WebCore::SharedBuffer>&&)>&& completionHandler)
+void WebPasteboardProxy::getPasteboardBufferForType(IPC::Connection& connection, const String& pasteboardName, const String& pasteboardType, std::optional<PageIdentifier> pageID, CompletionHandler<void(RefPtr<CyberCore::SharedBuffer>&&)>&& completionHandler)
 {
     MESSAGE_CHECK_COMPLETION(!pasteboardType.isEmpty(), completionHandler({ }));
 
@@ -247,7 +247,7 @@ void WebPasteboardProxy::getPasteboardChangeCount(IPC::Connection& connection, c
     });
 }
 
-void WebPasteboardProxy::getPasteboardColor(IPC::Connection& connection, const String& pasteboardName, std::optional<PageIdentifier> pageID, CompletionHandler<void(WebCore::Color&&)>&& completionHandler)
+void WebPasteboardProxy::getPasteboardColor(IPC::Connection& connection, const String& pasteboardName, std::optional<PageIdentifier> pageID, CompletionHandler<void(CyberCore::Color&&)>&& completionHandler)
 {
     if (!canAccessPasteboardData(connection, pasteboardName))
         return completionHandler({ });
@@ -333,7 +333,7 @@ void WebPasteboardProxy::setPasteboardURL(IPC::Connection& connection, const Pas
     });
 }
 
-void WebPasteboardProxy::setPasteboardColor(IPC::Connection& connection, const String& pasteboardName, const WebCore::Color& color, std::optional<PageIdentifier> pageID, CompletionHandler<void(int64_t)>&& completionHandler)
+void WebPasteboardProxy::setPasteboardColor(IPC::Connection& connection, const String& pasteboardName, const CyberCore::Color& color, std::optional<PageIdentifier> pageID, CompletionHandler<void(int64_t)>&& completionHandler)
 {
     MESSAGE_CHECK_COMPLETION(!pasteboardName.isEmpty(), completionHandler(0));
 
@@ -571,7 +571,7 @@ void WebPasteboardProxy::writeURLToPasteboard(IPC::Connection& connection, const
     });
 }
 
-void WebPasteboardProxy::writeWebContentToPasteboard(IPC::Connection& connection, const WebCore::PasteboardWebContent& content, const String& pasteboardName, std::optional<PageIdentifier> pageID)
+void WebPasteboardProxy::writeWebContentToPasteboard(IPC::Connection& connection, const CyberCore::PasteboardWebContent& content, const String& pasteboardName, std::optional<PageIdentifier> pageID)
 {
     MESSAGE_CHECK(!pasteboardName.isEmpty());
 
@@ -587,7 +587,7 @@ void WebPasteboardProxy::writeWebContentToPasteboard(IPC::Connection& connection
     });
 }
 
-void WebPasteboardProxy::writeImageToPasteboard(IPC::Connection& connection, const WebCore::PasteboardImage& pasteboardImage, const String& pasteboardName, std::optional<PageIdentifier> pageID)
+void WebPasteboardProxy::writeImageToPasteboard(IPC::Connection& connection, const CyberCore::PasteboardImage& pasteboardImage, const String& pasteboardName, std::optional<PageIdentifier> pageID)
 {
     MESSAGE_CHECK(!pasteboardName.isEmpty());
 

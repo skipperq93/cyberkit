@@ -47,7 +47,7 @@
 SOFTLINK_AVKIT_FRAMEWORK()
 SOFT_LINK_CLASS_OPTIONAL(AVKit, AVOutputDeviceMenuController)
 
-namespace WebCore {
+namespace CyberCore {
 
 MediaPlaybackTargetPickerMac::MediaPlaybackTargetPickerMac(MediaPlaybackTargetPicker::Client& client)
     : MediaPlaybackTargetPicker(client)
@@ -66,7 +66,7 @@ bool MediaPlaybackTargetPickerMac::externalOutputDeviceAvailable()
 
 Ref<MediaPlaybackTarget> MediaPlaybackTargetPickerMac::playbackTarget()
 {
-    return WebCore::MediaPlaybackTargetCocoa::create(routePicker().outputContext());
+    return CyberCore::MediaPlaybackTargetCocoa::create(routePicker().outputContext());
 }
 
 AVPlaybackTargetPicker& MediaPlaybackTargetPickerMac::routePicker()
@@ -126,7 +126,7 @@ void MediaPlaybackTargetPickerMac::currentDeviceChanged()
 }
 
 
-} // namespace WebCore
+} // namespace CyberCore
 
 
 #endif // ENABLE(WIRELESS_PLAYBACK_TARGET)

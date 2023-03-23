@@ -31,7 +31,7 @@
 
 #import "DumpRenderTree.h"
 #import "TestRunner.h"
-#import <CyberKit/WebKitLegacy.h>
+#import <CyberKit/CyberKitLegacy.h>
 
 @interface DOMNode (dumpPath)
 - (NSString *)dumpPath;

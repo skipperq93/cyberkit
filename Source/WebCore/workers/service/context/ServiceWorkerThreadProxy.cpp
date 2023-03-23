@@ -50,7 +50,7 @@
 #include <wtf/MainThread.h>
 #include <wtf/RunLoop.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static inline IDBClient::IDBConnectionProxy* idbConnectionProxy(Document& document)
 {
@@ -432,6 +432,6 @@ void ServiceWorkerThreadProxy::setAppBadge(std::optional<uint64_t> badge)
     });
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

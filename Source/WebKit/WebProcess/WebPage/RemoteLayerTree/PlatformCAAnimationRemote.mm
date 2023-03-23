@@ -29,7 +29,7 @@
 #import "ArgumentCoders.h"
 #import "RemoteLayerTreeHost.h"
 #import "WKAnimationDelegate.h"
-#import "WebCoreArgumentCoders.h"
+#import "CyberCoreArgumentCoders.h"
 #import <QuartzCore/QuartzCore.h>
 #import <CyberCore/GraphicsLayer.h>
 #import <CyberCore/PlatformCAAnimationCocoa.h>
@@ -53,7 +53,7 @@ static NSString * const WKExplicitBeginTimeFlag = @"WKPlatformCAAnimationExplici
 
 @implementation WKAnimationDelegate
 
-- (instancetype)initWithLayerID:(WebCore::GraphicsLayer::PlatformLayerID)layerID layerTreeHost:(WebKit::RemoteLayerTreeHost*)layerTreeHost
+- (instancetype)initWithLayerID:(CyberCore::GraphicsLayer::PlatformLayerID)layerID layerTreeHost:(CyberKit::RemoteLayerTreeHost*)layerTreeHost
 {
     if ((self = [super init])) {
         _layerID = layerID;
@@ -95,8 +95,8 @@ static NSString * const WKExplicitBeginTimeFlag = @"WKPlatformCAAnimationExplici
 
 @end
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 template<typename T> static Vector<PlatformCAAnimationRemote::KeyframeValue> toKeyframeValueVector(const Vector<T>& values)
 {
@@ -567,17 +567,17 @@ static RetainPtr<NSObject> animationValueFromKeyframeValue(const PlatformCAAnima
 {
     return WTF::switchOn(keyframeValue,
         [&](const float number) -> RetainPtr<NSObject> { return @(number); },
-        [&](const WebCore::Color color) -> RetainPtr<NSObject> {
+        [&](const CyberCore::Color color) -> RetainPtr<NSObject> {
             auto [r, g, b, a] =  color.toColorTypeLossy<SRGBA<uint8_t>>().resolved();
             return @[ @(r), @(g), @(b), @(a) ];
         },
-        [&](const WebCore::FloatPoint3D point) -> RetainPtr<NSObject> {
+        [&](const CyberCore::FloatPoint3D point) -> RetainPtr<NSObject> {
             return @[ @(point.x()), @(point.y()), @(point.z()) ];
         },
-        [&](const WebCore::TransformationMatrix matrix) -> RetainPtr<NSObject> {
+        [&](const CyberCore::TransformationMatrix matrix) -> RetainPtr<NSObject> {
             return [NSValue valueWithCATransform3D:matrix];
         },
-        [&](const RefPtr<WebCore::FilterOperation> filter) -> RetainPtr<NSObject> {
+        [&](const RefPtr<CyberCore::FilterOperation> filter) -> RetainPtr<NSObject> {
             return PlatformCAFilters::filterValueForOperation(filter.get());
         }
     );
@@ -785,10 +785,10 @@ TextStream& operator<<(TextStream& ts, const PlatformCAAnimationRemote::Properti
             ts << "value ";
             WTF::switchOn(animation.keyValues[i],
                 [&](const float number) { ts << "number=" << number; },
-                [&](const WebCore::Color color) { ts << "color=" << color; },
-                [&](const WebCore::FloatPoint3D point) { ts << "point=" << point; },
-                [&](const WebCore::TransformationMatrix matrix) { ts << "transform=" << matrix; },
-                [&](const RefPtr<WebCore::FilterOperation> filter) { ts << "filter=" << ValueOrNull(filter.get()); }
+                [&](const CyberCore::Color color) { ts << "color=" << color; },
+                [&](const CyberCore::FloatPoint3D point) { ts << "point=" << point; },
+                [&](const CyberCore::TransformationMatrix matrix) { ts << "transform=" << matrix; },
+                [&](const RefPtr<CyberCore::FilterOperation> filter) { ts << "filter=" << ValueOrNull(filter.get()); }
             );
             ts.endGroup();
         }
@@ -819,4 +819,4 @@ TextStream& operator<<(TextStream& ts, const PlatformCAAnimationRemote::Properti
     return ts;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

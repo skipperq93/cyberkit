@@ -25,7 +25,7 @@
 #include "SVGPathSeg.h"
 #include "SVGPropertyList.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGPathSegList final : public SVGPropertyList<SVGPathSeg> {
     friend class SVGAnimatedPathSegListAnimator;

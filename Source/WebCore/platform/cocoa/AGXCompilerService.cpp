@@ -32,7 +32,7 @@
 #include <wtf/NeverDestroyed.h>
 #include <wtf/text/ASCIILiteral.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static std::optional<bool> hasAGXCompilerService;
 

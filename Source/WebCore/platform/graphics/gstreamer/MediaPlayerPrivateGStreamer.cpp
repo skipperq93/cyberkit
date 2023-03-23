@@ -141,7 +141,7 @@
 GST_DEBUG_CATEGORY(webkit_media_player_debug);
 #define GST_CAT_DEFAULT webkit_media_player_debug
 
-namespace WebCore {
+namespace CyberCore {
 using namespace std;
 
 #if USE(GSTREAMER_HOLEPUNCH)
@@ -4247,7 +4247,7 @@ bool MediaPlayerPrivateGStreamer::supportsKeySystem(const String& keySystem, con
 #if !RELEASE_LOG_DISABLED
 WTFLogChannel& MediaPlayerPrivateGStreamer::logChannel() const
 {
-    return WebCore::LogMedia;
+    return CyberCore::LogMedia;
 }
 #endif
 

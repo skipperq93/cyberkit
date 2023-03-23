@@ -26,7 +26,7 @@
 #include "config.h"
 #include "MediaStrategy.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 MediaStrategy::MediaStrategy() = default;
 

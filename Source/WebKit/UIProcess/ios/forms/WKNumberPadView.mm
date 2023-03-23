@@ -133,7 +133,7 @@ static NSString *buttonTitleForKey(WKNumberPadKey key)
     case WKNumberPadKeyToggleMode:
         return @"…";
     case WKNumberPadKeyAccept:
-        return WebCore::numberPadOKButtonTitle();
+        return CyberCore::numberPadOKButtonTitle();
     case WKNumberPadKeyNone:
         return nil;
     default:

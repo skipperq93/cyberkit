@@ -33,16 +33,16 @@
 
 OBJC_CLASS DDActionContext;
 
-namespace WebCore {
+namespace CyberCore {
 class IntRect;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebFrame;
 class WebPage;
 
-class WebPageOverlay : public API::ObjectImpl<API::Object::Type::BundlePageOverlay>, private WebCore::PageOverlay::Client {
+class WebPageOverlay : public API::ObjectImpl<API::Object::Type::BundlePageOverlay>, private CyberCore::PageOverlay::Client {
 public:
     struct ActionContext;
 
@@ -52,61 +52,61 @@ public:
 
         virtual void willMoveToPage(WebPageOverlay&, WebPage*) = 0;
         virtual void didMoveToPage(WebPageOverlay&, WebPage*) = 0;
-        virtual void drawRect(WebPageOverlay&, WebCore::GraphicsContext&, const WebCore::IntRect& dirtyRect) = 0;
-        virtual bool mouseEvent(WebPageOverlay&, const WebCore::PlatformMouseEvent&) = 0;
+        virtual void drawRect(WebPageOverlay&, CyberCore::GraphicsContext&, const CyberCore::IntRect& dirtyRect) = 0;
+        virtual bool mouseEvent(WebPageOverlay&, const CyberCore::PlatformMouseEvent&) = 0;
         virtual void didScrollFrame(WebPageOverlay&, WebFrame*) { }
 
 #if PLATFORM(MAC)
-        virtual std::optional<ActionContext> actionContextForResultAtPoint(WebPageOverlay&, WebCore::FloatPoint) { return std::nullopt; }
+        virtual std::optional<ActionContext> actionContextForResultAtPoint(WebPageOverlay&, CyberCore::FloatPoint) { return std::nullopt; }
         virtual void dataDetectorsDidPresentUI(WebPageOverlay&) { }
         virtual void dataDetectorsDidChangeUI(WebPageOverlay&) { }
         virtual void dataDetectorsDidHideUI(WebPageOverlay&) { }
 #endif
 
-        virtual bool copyAccessibilityAttributeStringValueForPoint(WebPageOverlay&, String /* attribute */, WebCore::FloatPoint /* parameter */, String& /* value */) { return false; }
-        virtual bool copyAccessibilityAttributeBoolValueForPoint(WebPageOverlay&, String /* attribute */, WebCore::FloatPoint /* parameter */, bool& /* value */) { return false; }
+        virtual bool copyAccessibilityAttributeStringValueForPoint(WebPageOverlay&, String /* attribute */, CyberCore::FloatPoint /* parameter */, String& /* value */) { return false; }
+        virtual bool copyAccessibilityAttributeBoolValueForPoint(WebPageOverlay&, String /* attribute */, CyberCore::FloatPoint /* parameter */, bool& /* value */) { return false; }
         virtual Vector<String> copyAccessibilityAttributeNames(WebPageOverlay&, bool /* parameterizedNames */) { return Vector<String>(); }
     };
 
-    static Ref<WebPageOverlay> create(std::unique_ptr<Client>, WebCore::PageOverlay::OverlayType = WebCore::PageOverlay::OverlayType::View);
-    static WebPageOverlay* fromCoreOverlay(WebCore::PageOverlay&);
+    static Ref<WebPageOverlay> create(std::unique_ptr<Client>, CyberCore::PageOverlay::OverlayType = CyberCore::PageOverlay::OverlayType::View);
+    static WebPageOverlay* fromCoreOverlay(CyberCore::PageOverlay&);
     virtual ~WebPageOverlay();
 
-    void setNeedsDisplay(const WebCore::IntRect& dirtyRect);
+    void setNeedsDisplay(const CyberCore::IntRect& dirtyRect);
     void setNeedsDisplay();
 
     void clear();
 
-    WebCore::PageOverlay* coreOverlay() const { return m_overlay.get(); }
+    CyberCore::PageOverlay* coreOverlay() const { return m_overlay.get(); }
     Client& client() const { return *m_client; }
 
 #if PLATFORM(MAC)
     struct ActionContext {
         RetainPtr<DDActionContext> context;
-        WebCore::SimpleRange range;
+        CyberCore::SimpleRange range;
     };
-    std::optional<ActionContext> actionContextForResultAtPoint(WebCore::FloatPoint);
+    std::optional<ActionContext> actionContextForResultAtPoint(CyberCore::FloatPoint);
     void dataDetectorsDidPresentUI();
     void dataDetectorsDidChangeUI();
     void dataDetectorsDidHideUI();
 #endif
 
 private:
-    WebPageOverlay(std::unique_ptr<Client>, WebCore::PageOverlay::OverlayType);
+    WebPageOverlay(std::unique_ptr<Client>, CyberCore::PageOverlay::OverlayType);
 
-    // WebCore::PageOverlay::Client
-    void willMoveToPage(WebCore::PageOverlay&, WebCore::Page*) override;
-    void didMoveToPage(WebCore::PageOverlay&, WebCore::Page*) override;
-    void drawRect(WebCore::PageOverlay&, WebCore::GraphicsContext&, const WebCore::IntRect& dirtyRect) override;
-    bool mouseEvent(WebCore::PageOverlay&, const WebCore::PlatformMouseEvent&) override;
-    void didScrollFrame(WebCore::PageOverlay&, WebCore::Frame&) override;
+    // CyberCore::PageOverlay::Client
+    void willMoveToPage(CyberCore::PageOverlay&, CyberCore::Page*) override;
+    void didMoveToPage(CyberCore::PageOverlay&, CyberCore::Page*) override;
+    void drawRect(CyberCore::PageOverlay&, CyberCore::GraphicsContext&, const CyberCore::IntRect& dirtyRect) override;
+    bool mouseEvent(CyberCore::PageOverlay&, const CyberCore::PlatformMouseEvent&) override;
+    void didScrollFrame(CyberCore::PageOverlay&, CyberCore::Frame&) override;
 
-    bool copyAccessibilityAttributeStringValueForPoint(WebCore::PageOverlay&, String /* attribute */, WebCore::FloatPoint /* parameter */, String& value) override;
-    bool copyAccessibilityAttributeBoolValueForPoint(WebCore::PageOverlay&, String /* attribute */, WebCore::FloatPoint /* parameter */, bool& value) override;
-    Vector<String> copyAccessibilityAttributeNames(WebCore::PageOverlay&, bool /* parameterizedNames */) override;
+    bool copyAccessibilityAttributeStringValueForPoint(CyberCore::PageOverlay&, String /* attribute */, CyberCore::FloatPoint /* parameter */, String& value) override;
+    bool copyAccessibilityAttributeBoolValueForPoint(CyberCore::PageOverlay&, String /* attribute */, CyberCore::FloatPoint /* parameter */, bool& value) override;
+    Vector<String> copyAccessibilityAttributeNames(CyberCore::PageOverlay&, bool /* parameterizedNames */) override;
 
-    RefPtr<WebCore::PageOverlay> m_overlay;
+    RefPtr<CyberCore::PageOverlay> m_overlay;
     std::unique_ptr<Client> m_client;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

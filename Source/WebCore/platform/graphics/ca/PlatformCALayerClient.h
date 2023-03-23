@@ -27,7 +27,7 @@
 
 #include "GraphicsLayer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class FloatRect;
 class GraphicsContext;

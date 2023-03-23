@@ -34,7 +34,7 @@
 #if ENABLE(GPU_PROCESS)
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 ImageBufferShareableAllocator::ImageBufferShareableAllocator(const ProcessIdentity& resourceOwner)
     : m_resourceOwner(resourceOwner)

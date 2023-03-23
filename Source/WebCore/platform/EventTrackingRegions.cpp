@@ -28,7 +28,7 @@
 
 #include "EventNames.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 ASCIILiteral EventTrackingRegions::eventName(EventType eventType)
 {
@@ -156,4 +156,4 @@ bool operator==(const EventTrackingRegions& a, const EventTrackingRegions& b)
         && a.eventSpecificSynchronousDispatchRegions == b.eventSpecificSynchronousDispatchRegions;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

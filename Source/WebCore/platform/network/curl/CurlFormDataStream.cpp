@@ -39,7 +39,7 @@
 #include "Logging.h"
 #include <wtf/MainThread.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 CurlFormDataStream::CurlFormDataStream(const RefPtr<FormData>& formData)
 {
@@ -191,6 +191,6 @@ std::optional<size_t> CurlFormDataStream::readFromData(const Vector<uint8_t>& da
     return readBytes;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

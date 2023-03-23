@@ -151,7 +151,7 @@ Environment::Environment(const LockHolder&)
     : m_isDebugHeapEnabled(computeIsDebugHeapEnabled())
 {
 #if BUSE(LIBPAS)
-    const char* statusReporter = getenv("WebKitPasStatusReporter");
+    const char* statusReporter = getenv("CyberKitPasStatusReporter");
     if (statusReporter) {
         unsigned enabled;
         if (sscanf(statusReporter, "%u", &enabled) == 1)

@@ -39,7 +39,7 @@
 #include "RefPtrCairo.h"
 #include <cairo.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 GraphicsContextGLImageExtractor::~GraphicsContextGLImageExtractor() = default;
 
@@ -140,6 +140,6 @@ void GraphicsContextGL::paintToCanvas(const GraphicsContextGLAttributes& sourceC
     context.drawNativeImage(*image, imageSize, FloatRect({ }, canvasSize), FloatRect({ }, imageSize), { CompositeOperator::Copy });
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBGL) && USE(CAIRO)

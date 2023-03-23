@@ -43,16 +43,16 @@ namespace Namespace { struct EmptyConstructorStruct; }
 namespace Namespace { class EmptyConstructorNullable; }
 class WithoutNamespace;
 class WithoutNamespaceWithAttributes;
-namespace WebCore { class InheritsFrom; }
-namespace WebCore { class InheritanceGrandchild; }
+namespace CyberCore { class InheritsFrom; }
+namespace CyberCore { class InheritanceGrandchild; }
 namespace WTF { class Seconds; }
 namespace WTF { class CreateUsingClass; }
-namespace WebCore {
+namespace CyberCore {
 template<typename, typename> class ScrollSnapOffsetsInfo;
 using FloatBoxExtent = ScrollSnapOffsetsInfo<float, double>;
 }
 struct NullableSoftLinkedMember;
-namespace WebCore { class TimingFunction; }
+namespace CyberCore { class TimingFunction; }
 
 namespace IPC {
 
@@ -94,14 +94,14 @@ template<> struct ArgumentCoder<WithoutNamespaceWithAttributes> {
     static std::optional<WithoutNamespaceWithAttributes> decode(Decoder&);
 };
 
-template<> struct ArgumentCoder<WebCore::InheritsFrom> {
-    static void encode(Encoder&, const WebCore::InheritsFrom&);
-    static std::optional<WebCore::InheritsFrom> decode(Decoder&);
+template<> struct ArgumentCoder<CyberCore::InheritsFrom> {
+    static void encode(Encoder&, const CyberCore::InheritsFrom&);
+    static std::optional<CyberCore::InheritsFrom> decode(Decoder&);
 };
 
-template<> struct ArgumentCoder<WebCore::InheritanceGrandchild> {
-    static void encode(Encoder&, const WebCore::InheritanceGrandchild&);
-    static std::optional<WebCore::InheritanceGrandchild> decode(Decoder&);
+template<> struct ArgumentCoder<CyberCore::InheritanceGrandchild> {
+    static void encode(Encoder&, const CyberCore::InheritanceGrandchild&);
+    static std::optional<CyberCore::InheritanceGrandchild> decode(Decoder&);
 };
 
 template<> struct ArgumentCoder<WTF::Seconds> {
@@ -114,9 +114,9 @@ template<> struct ArgumentCoder<WTF::CreateUsingClass> {
     static std::optional<WTF::CreateUsingClass> decode(Decoder&);
 };
 
-template<> struct ArgumentCoder<WebCore::FloatBoxExtent> {
-    static void encode(Encoder&, const WebCore::FloatBoxExtent&);
-    static std::optional<WebCore::FloatBoxExtent> decode(Decoder&);
+template<> struct ArgumentCoder<CyberCore::FloatBoxExtent> {
+    static void encode(Encoder&, const CyberCore::FloatBoxExtent&);
+    static std::optional<CyberCore::FloatBoxExtent> decode(Decoder&);
 };
 
 template<> struct ArgumentCoder<NullableSoftLinkedMember> {
@@ -124,9 +124,9 @@ template<> struct ArgumentCoder<NullableSoftLinkedMember> {
     static std::optional<NullableSoftLinkedMember> decode(Decoder&);
 };
 
-template<> struct ArgumentCoder<WebCore::TimingFunction> {
-    static void encode(Encoder&, const WebCore::TimingFunction&);
-    static std::optional<Ref<WebCore::TimingFunction>> decode(Decoder&);
+template<> struct ArgumentCoder<CyberCore::TimingFunction> {
+    static void encode(Encoder&, const CyberCore::TimingFunction&);
+    static std::optional<Ref<CyberCore::TimingFunction>> decode(Decoder&);
 };
 
 } // namespace IPC

@@ -30,11 +30,11 @@
 #import <wtf/NakedRef.h>
 #import <wtf/Ref.h>
 
-namespace WebCore {
+namespace CyberCore {
     class ArchiveResource;
 }
 
 @interface WebResource (WebResourceInternal)
-- (id)_initWithCoreResource:(Ref<WebCore::ArchiveResource>&&)coreResource;
-- (NakedRef<WebCore::ArchiveResource>)_coreResource;
+- (id)_initWithCoreResource:(Ref<CyberCore::ArchiveResource>&&)coreResource;
+- (NakedRef<CyberCore::ArchiveResource>)_coreResource;
 @end

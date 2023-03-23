@@ -62,7 +62,7 @@ struct NetworkProcessCreationParameters {
 #endif
 
 #if USE(SOUP)
-    WebCore::HTTPCookieAcceptPolicy cookieAcceptPolicy { WebCore::HTTPCookieAcceptPolicy::AlwaysAccept };
+    CyberCore::HTTPCookieAcceptPolicy cookieAcceptPolicy { CyberCore::HTTPCookieAcceptPolicy::AlwaysAccept };
     Vector<String> languages;
     std::optional<MemoryPressureHandler::Configuration> memoryPressureHandlerConfiguration;
 #endif
@@ -76,7 +76,7 @@ struct NetworkProcessCreationParameters {
     bool ftpEnabled { false };
 
     Vector<WebsiteDataStoreParameters> websiteDataStoreParameters;
-    Vector<std::pair<WebCore::ProcessIdentifier, WebCore::RegistrableDomain>> allowedFirstPartiesForCookies;
+    Vector<std::pair<CyberCore::ProcessIdentifier, CyberCore::RegistrableDomain>> allowedFirstPartiesForCookies;
     HashSet<String> localhostAliasesForTesting;
 };
 

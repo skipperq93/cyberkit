@@ -40,8 +40,8 @@ IGNORE_WARNINGS_BEGIN("nullability-completeness")
 SOFT_LINK_FRAMEWORK(AVKit)
 SOFT_LINK_CLASS_OPTIONAL(AVKit, AVTouchBarMediaSelectionOption)
 
-using WebCore::MediaSelectionOption;
-using WebCore::PlaybackSessionInterfaceMac;
+using CyberCore::MediaSelectionOption;
+using CyberCore::PlaybackSessionInterfaceMac;
 
 @implementation WebPlaybackControlsManager
 
@@ -125,7 +125,7 @@ using WebCore::PlaybackSessionInterfaceMac;
         return;
 
     if (auto* model = _playbackSessionInterfaceMac->playbackSessionModel())
-        model->sendRemoteCommand(WebCore::PlatformMediaSession::RemoteControlCommandType::SeekToPlaybackPositionCommand, { time, toleranceBefore || toleranceAfter });
+        model->sendRemoteCommand(CyberCore::PlatformMediaSession::RemoteControlCommandType::SeekToPlaybackPositionCommand, { time, toleranceBefore || toleranceAfter });
 }
 
 - (void)cancelThumbnailAndAudioAmplitudeSampleGeneration
@@ -170,7 +170,7 @@ using WebCore::PlaybackSessionInterfaceMac;
         return;
         
     _playbackSessionInterfaceMac->willBeginScrubbing();
-    model->sendRemoteCommand(WebCore::PlatformMediaSession::RemoteControlCommandType::BeginScrubbingCommand, { });
+    model->sendRemoteCommand(CyberCore::PlatformMediaSession::RemoteControlCommandType::BeginScrubbingCommand, { });
 }
 
 - (void)endTouchBarScrubbing
@@ -179,7 +179,7 @@ using WebCore::PlaybackSessionInterfaceMac;
         return;
 
     if (auto* model = _playbackSessionInterfaceMac->playbackSessionModel())
-        model->sendRemoteCommand(WebCore::PlatformMediaSession::RemoteControlCommandType::EndScrubbingCommand, { });
+        model->sendRemoteCommand(CyberCore::PlatformMediaSession::RemoteControlCommandType::EndScrubbingCommand, { });
 }
 
 - (NSArray<AVTouchBarMediaSelectionOption *> *)audioTouchBarMediaSelectionOptions
@@ -327,7 +327,7 @@ static RetainPtr<NSArray> mediaSelectionOptions(const Vector<MediaSelectionOptio
         return;
 
     if (auto* model = _playbackSessionInterfaceMac->playbackSessionModel())
-        model->sendRemoteCommand(WebCore::PlatformMediaSession::RemoteControlCommandType::TogglePlayPauseCommand, { });
+        model->sendRemoteCommand(CyberCore::PlatformMediaSession::RemoteControlCommandType::TogglePlayPauseCommand, { });
 }
 
 - (void)setPlaying:(BOOL)playing
@@ -342,7 +342,7 @@ static RetainPtr<NSArray> mediaSelectionOptions(const Vector<MediaSelectionOptio
         return;
 
     if (auto* model = _playbackSessionInterfaceMac->playbackSessionModel())
-        model->sendRemoteCommand(_playing ? WebCore::PlatformMediaSession::RemoteControlCommandType::PlayCommand : WebCore::PlatformMediaSession::RemoteControlCommandType::PauseCommand, { });
+        model->sendRemoteCommand(_playing ? CyberCore::PlatformMediaSession::RemoteControlCommandType::PlayCommand : CyberCore::PlatformMediaSession::RemoteControlCommandType::PauseCommand, { });
 }
 
 - (BOOL)isPlaying

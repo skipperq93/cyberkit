@@ -35,9 +35,9 @@
 #include <wtf/FileSystem.h>
 #include <wtf/MainThread.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
-namespace WebKit {
+namespace CyberKit {
 
 // If the StorageArea undergoes rapid changes, don't sync each change to disk.
 // Instead, queue up a batch of items to sync and actually do the sync at the following interval.
@@ -65,7 +65,7 @@ inline StorageAreaSync::StorageAreaSync(RefPtr<StorageSyncManager>&& storageSync
     ASSERT(m_storageArea);
     ASSERT(m_syncManager);
 
-    // FIXME: If it can't import, then the default WebKit behavior should be that of private browsing,
+    // FIXME: If it can't import, then the default CyberKit behavior should be that of private browsing,
     // not silently ignoring it. https://bugs.webkit.org/show_bug.cgi?id=25894
     RefPtr<StorageAreaSync> protector(this);
     m_syncManager->dispatch([protector] {
@@ -534,4 +534,4 @@ void StorageAreaSync::scheduleSync()
     syncTimerFired();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

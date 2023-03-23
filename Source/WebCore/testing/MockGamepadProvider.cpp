@@ -34,7 +34,7 @@
 #include <wtf/MainThread.h>
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 MockGamepadProvider& MockGamepadProvider::singleton()
 {
@@ -189,6 +189,6 @@ void MockGamepadProvider::stopEffects(unsigned, const String&, CompletionHandler
     completionHandler();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(GAMEPAD)

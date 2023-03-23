@@ -35,8 +35,8 @@
 #include <CyberCore/NotificationData.h>
 #include <CyberCore/ScriptExecutionContext.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 WebNotificationClient::WebNotificationClient(WebPage* page)
     : m_page(page)
@@ -134,6 +134,6 @@ void WebNotificationClient::clearNotificationPermissionState()
     m_notificationPermissionRequesters.clear();
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(NOTIFICATIONS)

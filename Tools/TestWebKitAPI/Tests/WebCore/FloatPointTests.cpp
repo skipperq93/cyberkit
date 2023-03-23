@@ -38,7 +38,7 @@
 
 namespace TestWebKitAPI {
 
-static void testGetAndSet(WebCore::FloatPoint point)
+static void testGetAndSet(CyberCore::FloatPoint point)
 {
     point.setX(1.1f);
     EXPECT_FLOAT_EQ(1.1f, point.x());
@@ -52,7 +52,7 @@ static void testGetAndSet(WebCore::FloatPoint point)
 
 TEST(FloatPoint, DefaultConstruction)
 {
-    WebCore::FloatPoint test;
+    CyberCore::FloatPoint test;
 
     EXPECT_FLOAT_EQ(0, test.x());
     EXPECT_FLOAT_EQ(0, test.y());
@@ -62,7 +62,7 @@ TEST(FloatPoint, DefaultConstruction)
 
 TEST(FloatPoint, ValueConstruction)
 {
-    WebCore::FloatPoint test(9.9f, 8.8f);
+    CyberCore::FloatPoint test(9.9f, 8.8f);
 
     EXPECT_FLOAT_EQ(9.9f, test.x());
     EXPECT_FLOAT_EQ(8.8f, test.y());
@@ -72,7 +72,7 @@ TEST(FloatPoint, ValueConstruction)
 
 TEST(FloatPoint, ZeroConstruction)
 {
-    WebCore::FloatPoint test = WebCore::FloatPoint::zero();
+    CyberCore::FloatPoint test = CyberCore::FloatPoint::zero();
 
     EXPECT_FLOAT_EQ(0, test.x());
     EXPECT_FLOAT_EQ(0, test.y());
@@ -80,8 +80,8 @@ TEST(FloatPoint, ZeroConstruction)
 
 TEST(FloatPoint, IntPointConstruction)
 {
-    WebCore::IntPoint testInput(2003, 1997);
-    WebCore::FloatPoint test = WebCore::FloatPoint(testInput);
+    CyberCore::IntPoint testInput(2003, 1997);
+    CyberCore::FloatPoint test = CyberCore::FloatPoint(testInput);
 
     EXPECT_FLOAT_EQ(2003.0f, test.x());
     EXPECT_FLOAT_EQ(1997.0f, test.y());
@@ -89,8 +89,8 @@ TEST(FloatPoint, IntPointConstruction)
 
 TEST(FloatPoint, FloatSizeConstruction)
 {
-    WebCore::FloatSize testInput(500.7f, 300.2f);
-    WebCore::FloatPoint test = WebCore::FloatPoint(testInput);
+    CyberCore::FloatSize testInput(500.7f, 300.2f);
+    CyberCore::FloatPoint test = CyberCore::FloatPoint(testInput);
 
     EXPECT_FLOAT_EQ(500.7, test.x());
     EXPECT_FLOAT_EQ(300.2, test.y());
@@ -98,7 +98,7 @@ TEST(FloatPoint, FloatSizeConstruction)
 
 TEST(FloatPoint, MoveByFloat)
 {
-    WebCore::FloatPoint test(100.0f, 200.0f);
+    CyberCore::FloatPoint test(100.0f, 200.0f);
 
     EXPECT_FLOAT_EQ(100.0f, test.x());
     EXPECT_FLOAT_EQ(200.0f, test.y());
@@ -126,33 +126,33 @@ TEST(FloatPoint, MoveByFloat)
 
 TEST(FloatPoint, MoveByIntSize)
 {
-    WebCore::FloatPoint test(100.0f, 200.0f);
+    CyberCore::FloatPoint test(100.0f, 200.0f);
 
     EXPECT_FLOAT_EQ(100.0f, test.x());
     EXPECT_FLOAT_EQ(200.0f, test.y());
 
-    WebCore::IntSize first(20, 30);
+    CyberCore::IntSize first(20, 30);
 
     test.move(first);
 
     EXPECT_FLOAT_EQ(120.0f, test.x());
     EXPECT_FLOAT_EQ(230.0f, test.y());
 
-    WebCore::IntSize second(-81, 10);
+    CyberCore::IntSize second(-81, 10);
 
     test.move(second);
 
     EXPECT_FLOAT_EQ(39.0f, test.x());
     EXPECT_FLOAT_EQ(240.0f, test.y());
 
-    WebCore::IntSize third(11, -33);
+    CyberCore::IntSize third(11, -33);
 
     test.move(third);
 
     EXPECT_FLOAT_EQ(50.0f, test.x());
     EXPECT_FLOAT_EQ(207.0f, test.y());
 
-    WebCore::IntSize fourth(-6, -10);
+    CyberCore::IntSize fourth(-6, -10);
 
     test.move(fourth);
 
@@ -162,33 +162,33 @@ TEST(FloatPoint, MoveByIntSize)
 
 TEST(FloatPoint, MoveByFloatSize)
 {
-    WebCore::FloatPoint test(100.0f, 200.0f);
+    CyberCore::FloatPoint test(100.0f, 200.0f);
 
     EXPECT_FLOAT_EQ(100.0f, test.x());
     EXPECT_FLOAT_EQ(200.0f, test.y());
 
-    WebCore::FloatSize first(20.2f, 30.3f);
+    CyberCore::FloatSize first(20.2f, 30.3f);
 
     test.move(first);
 
     EXPECT_FLOAT_EQ(120.2f, test.x());
     EXPECT_FLOAT_EQ(230.3f, test.y());
 
-    WebCore::FloatSize second(-81.3f, 10.0f);
+    CyberCore::FloatSize second(-81.3f, 10.0f);
 
     test.move(second);
 
     EXPECT_FLOAT_EQ(38.9f, test.x());
     EXPECT_FLOAT_EQ(240.3f, test.y());
 
-    WebCore::FloatSize third(11.1f, -33.2f);
+    CyberCore::FloatSize third(11.1f, -33.2f);
 
     test.move(third);
 
     EXPECT_FLOAT_EQ(50.0f, test.x());
     EXPECT_FLOAT_EQ(207.1f, test.y());
 
-    WebCore::FloatSize fourth(-5.6f, -9.8f);
+    CyberCore::FloatSize fourth(-5.6f, -9.8f);
 
     test.move(fourth);
 
@@ -198,33 +198,33 @@ TEST(FloatPoint, MoveByFloatSize)
 
 TEST(FloatPoint, MoveByIntPoint)
 {
-    WebCore::FloatPoint test(100.0f, 200.0f);
+    CyberCore::FloatPoint test(100.0f, 200.0f);
 
     EXPECT_FLOAT_EQ(100.0f, test.x());
     EXPECT_FLOAT_EQ(200.0f, test.y());
 
-    WebCore::IntPoint first(20, 30);
+    CyberCore::IntPoint first(20, 30);
 
     test.moveBy(first);
 
     EXPECT_FLOAT_EQ(120.0f, test.x());
     EXPECT_FLOAT_EQ(230.0f, test.y());
 
-    WebCore::IntPoint second(-81, 10);
+    CyberCore::IntPoint second(-81, 10);
 
     test.moveBy(second);
 
     EXPECT_FLOAT_EQ(39.0f, test.x());
     EXPECT_FLOAT_EQ(240.0f, test.y());
 
-    WebCore::IntPoint third(11, -33);
+    CyberCore::IntPoint third(11, -33);
 
     test.moveBy(third);
 
     EXPECT_FLOAT_EQ(50.0f, test.x());
     EXPECT_FLOAT_EQ(207.0f, test.y());
 
-    WebCore::IntPoint fourth(-6, -10);
+    CyberCore::IntPoint fourth(-6, -10);
 
     test.moveBy(fourth);
 
@@ -234,33 +234,33 @@ TEST(FloatPoint, MoveByIntPoint)
 
 TEST(FloatPoint, MoveByFloatPoint)
 {
-    WebCore::FloatPoint test(100.0f, 200.0f);
+    CyberCore::FloatPoint test(100.0f, 200.0f);
 
     EXPECT_FLOAT_EQ(100.0f, test.x());
     EXPECT_FLOAT_EQ(200.0f, test.y());
 
-    WebCore::FloatPoint first(20.2f, 30.3f);
+    CyberCore::FloatPoint first(20.2f, 30.3f);
 
     test.moveBy(first);
 
     EXPECT_FLOAT_EQ(120.2f, test.x());
     EXPECT_FLOAT_EQ(230.3f, test.y());
 
-    WebCore::FloatPoint second(-81.3f, 10.0f);
+    CyberCore::FloatPoint second(-81.3f, 10.0f);
 
     test.moveBy(second);
 
     EXPECT_FLOAT_EQ(38.9f, test.x());
     EXPECT_FLOAT_EQ(240.3f, test.y());
 
-    WebCore::FloatPoint third(11.1f, -33.2f);
+    CyberCore::FloatPoint third(11.1f, -33.2f);
 
     test.moveBy(third);
 
     EXPECT_FLOAT_EQ(50.0f, test.x());
     EXPECT_FLOAT_EQ(207.1f, test.y());
 
-    WebCore::FloatPoint fourth(-5.6f, -9.8f);
+    CyberCore::FloatPoint fourth(-5.6f, -9.8f);
 
     test.moveBy(fourth);
 
@@ -270,7 +270,7 @@ TEST(FloatPoint, MoveByFloatPoint)
 
 TEST(FloatPoint, Scale)
 {
-    WebCore::FloatPoint test(100.0f, 200.0f);
+    CyberCore::FloatPoint test(100.0f, 200.0f);
 
     EXPECT_FLOAT_EQ(100.0f, test.x());
     EXPECT_FLOAT_EQ(200.0f, test.y());
@@ -298,7 +298,7 @@ TEST(FloatPoint, Scale)
 
 TEST(FloatPoint, Normalize)
 {
-    WebCore::FloatPoint a(30.0f, 40.0f);
+    CyberCore::FloatPoint a(30.0f, 40.0f);
 
     a.normalize();
 
@@ -308,9 +308,9 @@ TEST(FloatPoint, Normalize)
 
 TEST(FloatPoint, Dot)
 {
-    WebCore::FloatPoint a(100.0f, 200.0f);
-    WebCore::FloatPoint b(2.0f, 4.0f);
-    WebCore::FloatPoint c(1.0f, 0.5f);
+    CyberCore::FloatPoint a(100.0f, 200.0f);
+    CyberCore::FloatPoint b(2.0f, 4.0f);
+    CyberCore::FloatPoint c(1.0f, 0.5f);
 
     EXPECT_NEAR(1000.0f, a.dot(b), 0.0001f);
     EXPECT_NEAR(200.0f, a.dot(c), 0.0001f);
@@ -318,7 +318,7 @@ TEST(FloatPoint, Dot)
 
 TEST(FloatPoint, LengthSquared)
 {
-    WebCore::FloatPoint test(100.0f, 200.0f);
+    CyberCore::FloatPoint test(100.0f, 200.0f);
 
     EXPECT_FLOAT_EQ(100.0f, test.x());
     EXPECT_FLOAT_EQ(200.0f, test.y());
@@ -328,12 +328,12 @@ TEST(FloatPoint, LengthSquared)
 
 TEST(FloatPoint, ConstrainedBetween)
 {
-    WebCore::FloatPoint left(10.0f, 20.0f);
-    WebCore::FloatPoint right(100.0f, 200.0f);
+    CyberCore::FloatPoint left(10.0f, 20.0f);
+    CyberCore::FloatPoint right(100.0f, 200.0f);
 
-    WebCore::FloatPoint test1(50.0f, 80.0f);
-    WebCore::FloatPoint test2(8.0f, 80.0f);
-    WebCore::FloatPoint test3(50.0f, 220.0f);
+    CyberCore::FloatPoint test1(50.0f, 80.0f);
+    CyberCore::FloatPoint test2(8.0f, 80.0f);
+    CyberCore::FloatPoint test3(50.0f, 220.0f);
 
     auto constrained1 = test1.constrainedBetween(left, right);
     EXPECT_FLOAT_EQ(50.0f, constrained1.x());
@@ -350,15 +350,15 @@ TEST(FloatPoint, ConstrainedBetween)
 
 TEST(FloatPoint, ShrunkTo)
 {
-    WebCore::FloatPoint big(100.0f, 200.0f);
-    WebCore::FloatPoint smaller(10.0f, 80.0f);
+    CyberCore::FloatPoint big(100.0f, 200.0f);
+    CyberCore::FloatPoint smaller(10.0f, 80.0f);
 
     auto shrunkTo = big.shrunkTo(smaller);
 
     EXPECT_FLOAT_EQ(10.0f, shrunkTo.x());
     EXPECT_FLOAT_EQ(80.0f, shrunkTo.y());
 
-    WebCore::FloatPoint bigish(8.0f, 200.0f);
+    CyberCore::FloatPoint bigish(8.0f, 200.0f);
 
     auto shrunkTo2 = bigish.shrunkTo(smaller);
 
@@ -368,15 +368,15 @@ TEST(FloatPoint, ShrunkTo)
 
 TEST(FloatPoint, ExpandedTo)
 {
-    WebCore::FloatPoint big(100.0f, 200.0f);
-    WebCore::FloatPoint smaller(10.0f, 80.0f);
+    CyberCore::FloatPoint big(100.0f, 200.0f);
+    CyberCore::FloatPoint smaller(10.0f, 80.0f);
 
     auto expandedTo = smaller.expandedTo(big);
 
     EXPECT_FLOAT_EQ(100.0f, expandedTo.x());
     EXPECT_FLOAT_EQ(200.0f, expandedTo.y());
 
-    WebCore::FloatPoint bigish(8.0f, 300.0f);
+    CyberCore::FloatPoint bigish(8.0f, 300.0f);
 
     auto expandedTo2 = bigish.expandedTo(big);
 
@@ -386,7 +386,7 @@ TEST(FloatPoint, ExpandedTo)
 
 TEST(FloatPoint, Transpose)
 {
-    WebCore::FloatPoint test(100.0f, 200.0f);
+    CyberCore::FloatPoint test(100.0f, 200.0f);
 
     EXPECT_FLOAT_EQ(100.0f, test.x());
     EXPECT_FLOAT_EQ(200.0f, test.y());
@@ -399,23 +399,23 @@ TEST(FloatPoint, Transpose)
 
 TEST(FloatPoint, Transforms)
 {
-    WebCore::FloatPoint test(100.0f, 200.0f);
+    CyberCore::FloatPoint test(100.0f, 200.0f);
 
-    WebCore::AffineTransform affine;
+    CyberCore::AffineTransform affine;
 
     auto transformed1 = test.matrixTransform(affine);
 
     EXPECT_FLOAT_EQ(100.0f, transformed1.x());
     EXPECT_FLOAT_EQ(200.0f, transformed1.y());
 
-    WebCore::AffineTransform affine2(2.0, 0.0, 0.0, 2.0, 0.0, 0.0);
+    CyberCore::AffineTransform affine2(2.0, 0.0, 0.0, 2.0, 0.0, 0.0);
 
     auto transformed2 = test.matrixTransform(affine2);
 
     EXPECT_FLOAT_EQ(200.0f, transformed2.x());
     EXPECT_FLOAT_EQ(400.0f, transformed2.y());
 
-    WebCore::TransformationMatrix matrix;
+    CyberCore::TransformationMatrix matrix;
 
     auto transformed3 = test.matrixTransform(matrix);
 
@@ -430,53 +430,53 @@ TEST(FloatPoint, Transforms)
 
 TEST(FloatPoint, Math)
 {
-    WebCore::FloatPoint a(100.0f, 200.0f);
-    WebCore::FloatPoint b(100.0f, 200.0f);
+    CyberCore::FloatPoint a(100.0f, 200.0f);
+    CyberCore::FloatPoint b(100.0f, 200.0f);
 
     a += b;
 
     EXPECT_FLOAT_EQ(200.0f, a.x());
     EXPECT_FLOAT_EQ(400.0f, a.y());
 
-    WebCore::FloatSize c(50.0f, 50.0f);
+    CyberCore::FloatSize c(50.0f, 50.0f);
 
     a += c;
 
     EXPECT_FLOAT_EQ(250.0f, a.x());
     EXPECT_FLOAT_EQ(450.0f, a.y());
 
-    WebCore::FloatSize d(10.0f, 200.0f);
+    CyberCore::FloatSize d(10.0f, 200.0f);
 
     a -= d;
 
     EXPECT_FLOAT_EQ(240.0f, a.x());
     EXPECT_FLOAT_EQ(250.0f, a.y());
 
-    WebCore::FloatSize e(100.0f, 200.0f);
+    CyberCore::FloatSize e(100.0f, 200.0f);
 
     auto f = b + e;
 
     EXPECT_FLOAT_EQ(200.0f, f.x());
     EXPECT_FLOAT_EQ(400.0f, f.y());
 
-    WebCore::FloatPoint g(10.0f, 20.0f);
+    CyberCore::FloatPoint g(10.0f, 20.0f);
 
     auto h = b + g;
 
     EXPECT_FLOAT_EQ(110.0f, h.x());
     EXPECT_FLOAT_EQ(220.0f, h.y());
 
-    WebCore::FloatSize i = b - g;
+    CyberCore::FloatSize i = b - g;
 
     EXPECT_FLOAT_EQ(90.0f, i.width());
     EXPECT_FLOAT_EQ(180.0f, i.height());
 
-    WebCore::FloatPoint j = b - e;
+    CyberCore::FloatPoint j = b - e;
 
     EXPECT_FLOAT_EQ(0.0f, j.x());
     EXPECT_FLOAT_EQ(0.0f, j.y());
 
-    WebCore::FloatPoint negated = -b;
+    CyberCore::FloatPoint negated = -b;
 
     EXPECT_FLOAT_EQ(-100.0f, negated.x());
     EXPECT_FLOAT_EQ(-200.0f, negated.y());
@@ -488,77 +488,77 @@ TEST(FloatPoint, Math)
 
 TEST(FloatPoint, Equality)
 {
-    WebCore::FloatPoint a(100.0f, 200.0f);
-    WebCore::FloatPoint b(100.0f, 200.0f);
-    WebCore::FloatPoint c(10.0f, 20.0f);
+    CyberCore::FloatPoint a(100.0f, 200.0f);
+    CyberCore::FloatPoint b(100.0f, 200.0f);
+    CyberCore::FloatPoint c(10.0f, 20.0f);
 
     ASSERT_TRUE(a == b);
     ASSERT_FALSE(a == c);
     ASSERT_FALSE(a != b);
     ASSERT_TRUE(a != c);
 
-    ASSERT_TRUE(WebCore::areEssentiallyEqual(a, b));
-    ASSERT_FALSE(WebCore::areEssentiallyEqual(a, c));
+    ASSERT_TRUE(CyberCore::areEssentiallyEqual(a, b));
+    ASSERT_FALSE(CyberCore::areEssentiallyEqual(a, c));
 }
 
 TEST(FloatPoint, Floors)
 {
-    WebCore::FloatPoint a(100.6f, 199.9f);
+    CyberCore::FloatPoint a(100.6f, 199.9f);
 
-    WebCore::IntSize flooredSize = WebCore::flooredIntSize(a);
+    CyberCore::IntSize flooredSize = CyberCore::flooredIntSize(a);
     EXPECT_FLOAT_EQ(100, flooredSize.width());
     EXPECT_FLOAT_EQ(199, flooredSize.height());
 
-    WebCore::IntPoint flooredPoint = WebCore::flooredIntPoint(a);
+    CyberCore::IntPoint flooredPoint = CyberCore::flooredIntPoint(a);
     EXPECT_FLOAT_EQ(100, flooredPoint.x());
     EXPECT_FLOAT_EQ(199, flooredPoint.y());
 
-    WebCore::FloatPoint flooredPoint1x = WebCore::floorPointToDevicePixels(a, 1.0);
+    CyberCore::FloatPoint flooredPoint1x = CyberCore::floorPointToDevicePixels(a, 1.0);
     EXPECT_FLOAT_EQ(100.0f, flooredPoint1x.x());
     EXPECT_FLOAT_EQ(199.0f, flooredPoint1x.y());
 
-    WebCore::FloatPoint flooredPoint2x = WebCore::floorPointToDevicePixels(a, 2.0);
+    CyberCore::FloatPoint flooredPoint2x = CyberCore::floorPointToDevicePixels(a, 2.0);
     EXPECT_FLOAT_EQ(100.5f, flooredPoint2x.x());
     EXPECT_FLOAT_EQ(199.5f, flooredPoint2x.y());
 }
 
 TEST(FloatPoint, Rounding)
 {
-    WebCore::FloatPoint a(100.4f, 199.9f);
+    CyberCore::FloatPoint a(100.4f, 199.9f);
 
-    WebCore::IntPoint roundedPoint = WebCore::roundedIntPoint(a);
+    CyberCore::IntPoint roundedPoint = CyberCore::roundedIntPoint(a);
     EXPECT_FLOAT_EQ(100, roundedPoint.x());
     EXPECT_FLOAT_EQ(200, roundedPoint.y());
 }
 
 TEST(FloatPoint, Ceiling)
 {
-    WebCore::FloatPoint a(100.4f, 199.9f);
+    CyberCore::FloatPoint a(100.4f, 199.9f);
 
-    WebCore::IntPoint ceilingPoint = WebCore::ceiledIntPoint(a);
+    CyberCore::IntPoint ceilingPoint = CyberCore::ceiledIntPoint(a);
     EXPECT_FLOAT_EQ(101, ceilingPoint.x());
     EXPECT_FLOAT_EQ(200, ceilingPoint.y());
 
-    WebCore::FloatPoint ceilingPoint1x = WebCore::ceilPointToDevicePixels(a, 1.0);
+    CyberCore::FloatPoint ceilingPoint1x = CyberCore::ceilPointToDevicePixels(a, 1.0);
     EXPECT_FLOAT_EQ(101.0f, ceilingPoint1x.x());
     EXPECT_FLOAT_EQ(200.0f, ceilingPoint1x.y());
 
-    WebCore::FloatPoint ceilingPoint2x = WebCore::ceilPointToDevicePixels(a, 2.0);
+    CyberCore::FloatPoint ceilingPoint2x = CyberCore::ceilPointToDevicePixels(a, 2.0);
     EXPECT_FLOAT_EQ(100.5f, ceilingPoint2x.x());
     EXPECT_FLOAT_EQ(200.0f, ceilingPoint2x.y());
 }
 
 TEST(FloatPoint, Casting)
 {
-    WebCore::FloatPoint a(100.4f, 199.9f);
+    CyberCore::FloatPoint a(100.4f, 199.9f);
 
-    WebCore::FloatSize floatSize = WebCore::toFloatSize(a);
+    CyberCore::FloatSize floatSize = CyberCore::toFloatSize(a);
     EXPECT_FLOAT_EQ(100.4f, floatSize.width());
     EXPECT_FLOAT_EQ(199.9f, floatSize.height());
 
-    WebCore::FloatSize b(99.6f, 299.1f);
+    CyberCore::FloatSize b(99.6f, 299.1f);
 
-    WebCore::FloatPoint floatPoint = WebCore::toFloatPoint(b);
+    CyberCore::FloatPoint floatPoint = CyberCore::toFloatPoint(b);
     EXPECT_FLOAT_EQ(99.6f, floatPoint.x());
     EXPECT_FLOAT_EQ(299.1f, floatPoint.y());
 
@@ -570,7 +570,7 @@ TEST(FloatPoint, Casting)
 
     CGPoint cgPoint2 = CGPointMake(-22.3f, 14.2f);
 
-    WebCore::FloatPoint testCG(cgPoint2);
+    CyberCore::FloatPoint testCG(cgPoint2);
 
     EXPECT_FLOAT_EQ(-22.3f, testCG.x());
     EXPECT_FLOAT_EQ(14.2f, testCG.y());

@@ -33,7 +33,7 @@
 
 #if ENABLE(ASYNC_SCROLLING)
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<ScrollingStateFixedNode> ScrollingStateFixedNode::create(ScrollingStateTree& stateTree, ScrollingNodeID nodeID)
 {
@@ -130,6 +130,6 @@ void ScrollingStateFixedNode::dumpProperties(TextStream& ts, OptionSet<Scrolling
         ts.dumpProperty("layer position at last layout", m_constraints.layerPositionAtLastLayout());
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ASYNC_SCROLLING)

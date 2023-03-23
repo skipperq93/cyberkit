@@ -45,7 +45,7 @@
 #include "QuickLook.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 ResourceLoadNotifier::ResourceLoadNotifier(Frame& frame)
     : m_frame(frame)
@@ -204,4 +204,4 @@ void ResourceLoadNotifier::sendRemainingDelegateMessages(DocumentLoader* loader,
         dispatchDidFailLoading(loader, identifier, error);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

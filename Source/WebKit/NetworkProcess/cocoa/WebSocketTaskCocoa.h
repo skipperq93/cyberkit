@@ -35,7 +35,7 @@
 
 OBJC_CLASS NSURLSessionWebSocketTask;
 
-namespace WebCore {
+namespace CyberCore {
 class ResourceRequest;
 struct ClientOrigin;
 }
@@ -49,7 +49,7 @@ struct SessionSet;
 class WebSocketTask : public CanMakeWeakPtr<WebSocketTask> {
     WTF_MAKE_FAST_ALLOCATED;
 public:
-    WebSocketTask(NetworkSocketChannel&, WebPageProxyIdentifier, WeakPtr<SessionSet>&&, const WebCore::ResourceRequest&, const WebCore::ClientOrigin&, RetainPtr<NSURLSessionWebSocketTask>&&);
+    WebSocketTask(NetworkSocketChannel&, WebPageProxyIdentifier, WeakPtr<SessionSet>&&, const CyberCore::ResourceRequest&, const CyberCore::ClientOrigin&, RetainPtr<NSURLSessionWebSocketTask>&&);
     ~WebSocketTask();
 
     void sendString(const IPC::DataReference&, CompletionHandler<void()>&&);
@@ -70,7 +70,7 @@ public:
 
     WebPageProxyIdentifier pageID() const { return m_pageID; }
     String partition() const { return m_partition; }
-    const WebCore::SecurityOriginData& topOrigin() const { return m_topOrigin; }
+    const CyberCore::SecurityOriginData& topOrigin() const { return m_topOrigin; }
 
 private:
     void readNextMessage();
@@ -82,7 +82,7 @@ private:
     WebPageProxyIdentifier m_pageID;
     WeakPtr<SessionSet> m_sessionSet;
     String m_partition;
-    WebCore::SecurityOriginData m_topOrigin;
+    CyberCore::SecurityOriginData m_topOrigin;
 };
 
 } // namespace WebKit

@@ -29,7 +29,7 @@
 #if ENABLE(GPU_PROCESS)
 
 #include "ArgumentCoders.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 
 #if PLATFORM(COCOA)
 #include "ArgumentCodersCF.h"

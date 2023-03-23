@@ -29,7 +29,7 @@
 #include "SharedBuffer.h"
 #include <wtf/persistence/PersistentEncoder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 std::unique_ptr<KeyedEncoder> KeyedEncoder::encoder()
 {
@@ -147,4 +147,4 @@ RefPtr<SharedBuffer> KeyedEncoderGeneric::finishEncoding()
     return SharedBuffer::create(m_encoder.buffer(), m_encoder.bufferSize());
 }
 
-} // namespace WebCore
+} // namespace CyberCore

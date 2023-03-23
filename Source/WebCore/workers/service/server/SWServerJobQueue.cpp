@@ -39,7 +39,7 @@
 #include "WorkerFetchResult.h"
 #include "WorkerType.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 SWServerJobQueue::SWServerJobQueue(SWServer& server, const ServiceWorkerRegistrationKey& key)
     : m_jobTimer(*this, &SWServerJobQueue::runNextJobSynchronously)
@@ -440,6 +440,6 @@ void SWServerJobQueue::cancelJobsFromServiceWorker(ServiceWorkerIdentifier servi
     });
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

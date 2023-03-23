@@ -38,7 +38,7 @@
 #include "RTCSignalingState.h"
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class MediaStreamPrivate;
 class RTCDataChannelHandler;
@@ -58,6 +58,6 @@ public:
     virtual void didAddRemoteDataChannel(std::unique_ptr<RTCDataChannelHandler>) = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

@@ -27,20 +27,20 @@
 
 #include <CyberCore/FrameNetworkingContext.h>
 
-class WebFrameNetworkingContext : public WebCore::FrameNetworkingContext {
+class WebFrameNetworkingContext : public CyberCore::FrameNetworkingContext {
 public:
-    static Ref<WebFrameNetworkingContext> create(WebCore::Frame* frame)
+    static Ref<WebFrameNetworkingContext> create(CyberCore::Frame* frame)
     {
         return adoptRef(*new WebFrameNetworkingContext(frame));
     }
 
-    static WebCore::NetworkStorageSession& ensurePrivateBrowsingSession();
+    static CyberCore::NetworkStorageSession& ensurePrivateBrowsingSession();
     static void destroyPrivateBrowsingSession();
 
 private:
 
-    WebFrameNetworkingContext(WebCore::Frame* frame)
-        : WebCore::FrameNetworkingContext(frame)
+    WebFrameNetworkingContext(CyberCore::Frame* frame)
+        : CyberCore::FrameNetworkingContext(frame)
     {
     }
 
@@ -48,6 +48,6 @@ private:
     SchedulePairHashSet* scheduledRunLoopPairs() const override;
     RetainPtr<CFDataRef> sourceApplicationAuditData() const override;
     String sourceApplicationIdentifier() const override;
-    WebCore::ResourceError blockedError(const WebCore::ResourceRequest&) const override;
-    WebCore::NetworkStorageSession* storageSession() const override;
+    CyberCore::ResourceError blockedError(const CyberCore::ResourceRequest&) const override;
+    CyberCore::NetworkStorageSession* storageSession() const override;
 };

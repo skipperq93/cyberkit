@@ -41,7 +41,7 @@
 namespace WebKit {
 using namespace cbor;
 using namespace fido;
-using namespace WebCore;
+using namespace CyberCore;
 
 const size_t CtapChannelIdSize = 4;
 

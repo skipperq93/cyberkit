@@ -70,7 +70,7 @@ case $? in
 esac
 
 HEADER_NAME=$(basename "${WORK_FILE}" '.tmp')
-if [[ "${HEADER_NAME}" != "WebKitAvailability.h" ]]; then
+if [[ "${HEADER_NAME}" != "CyberKitAvailability.h" ]]; then
     if [[ ${WK_PLATFORM_NAME} != macosx ]]; then
         sed -i '' -E -e "s/ *WEBKIT_((CLASS_|ENUM_)?(AVAILABLE|DEPRECATED))_MAC\([^)]+\)//g" "${WORK_FILE}"
     fi

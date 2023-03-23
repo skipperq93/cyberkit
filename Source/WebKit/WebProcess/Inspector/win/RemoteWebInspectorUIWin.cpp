@@ -26,12 +26,12 @@
 #include "config.h"
 #include "RemoteWebInspectorUI.h"
 
-#include <CyberCore/WebCoreBundleWin.h>
+#include <CyberCore/CyberCoreBundleWin.h>
 #include <wtf/FileSystem.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 bool RemoteWebInspectorUI::canSave(InspectorFrontendClient::SaveMode)
 {
@@ -53,4 +53,4 @@ String RemoteWebInspectorUI::localizedStringsURL() const
     return "inspector-resource:///localizedStrings.js"_s;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

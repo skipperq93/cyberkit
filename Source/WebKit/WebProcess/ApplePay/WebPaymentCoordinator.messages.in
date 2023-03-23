@@ -27,14 +27,14 @@
 messages -> WebPaymentCoordinator NotRefCounted {
 
     ValidateMerchant(String validationURLString)
-    DidAuthorizePayment(WebCore::Payment payment)
-    DidSelectShippingMethod(struct WebCore::ApplePayShippingMethod shippingMethod)
-    DidSelectShippingContact(WebCore::PaymentContact shippingContact)
-    DidSelectPaymentMethod(WebCore::PaymentMethod paymentMethod)
+    DidAuthorizePayment(CyberCore::Payment payment)
+    DidSelectShippingMethod(struct CyberCore::ApplePayShippingMethod shippingMethod)
+    DidSelectShippingContact(CyberCore::PaymentContact shippingContact)
+    DidSelectPaymentMethod(CyberCore::PaymentMethod paymentMethod)
 #if ENABLE(APPLE_PAY_COUPON_CODE)
     DidChangeCouponCode(String couponCode)
 #endif
-    DidCancelPaymentSession(WebCore::PaymentSessionError sessionError)
+    DidCancelPaymentSession(CyberCore::PaymentSessionError sessionError)
 }
 
 #endif

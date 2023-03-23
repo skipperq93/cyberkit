@@ -41,17 +41,17 @@ public:
     static Ref<DeviceIdHashSaltStorage> create(const String& deviceIdHashSaltStorageDirectory);
     ~DeviceIdHashSaltStorage();
 
-    void deviceIdHashSaltForOrigin(const WebCore::SecurityOrigin& documentOrigin, const WebCore::SecurityOrigin& parentOrigin, CompletionHandler<void(String&&)>&&);
+    void deviceIdHashSaltForOrigin(const CyberCore::SecurityOrigin& documentOrigin, const CyberCore::SecurityOrigin& parentOrigin, CompletionHandler<void(String&&)>&&);
 
-    void getDeviceIdHashSaltOrigins(CompletionHandler<void(HashSet<WebCore::SecurityOriginData>&&)>&&);
-    void deleteDeviceIdHashSaltForOrigins(const Vector<WebCore::SecurityOriginData>&, CompletionHandler<void()>&&);
+    void getDeviceIdHashSaltOrigins(CompletionHandler<void(HashSet<CyberCore::SecurityOriginData>&&)>&&);
+    void deleteDeviceIdHashSaltForOrigins(const Vector<CyberCore::SecurityOriginData>&, CompletionHandler<void()>&&);
     void deleteDeviceIdHashSaltOriginsModifiedSince(WallTime, CompletionHandler<void()>&&);
 
 private:
     struct HashSaltForOrigin {
         WTF_MAKE_STRUCT_FAST_ALLOCATED;
 
-        HashSaltForOrigin(WebCore::SecurityOriginData&& documentOrigin, WebCore::SecurityOriginData&& parentOrigin, String&& deviceIdHashSalt, WallTime lastTimeUsed = WallTime::now())
+        HashSaltForOrigin(CyberCore::SecurityOriginData&& documentOrigin, CyberCore::SecurityOriginData&& parentOrigin, String&& deviceIdHashSalt, WallTime lastTimeUsed = WallTime::now())
             : documentOrigin(WTFMove(documentOrigin))
             , parentOrigin(WTFMove(parentOrigin))
             , deviceIdHashSalt(WTFMove(deviceIdHashSalt))
@@ -61,8 +61,8 @@ private:
         HashSaltForOrigin isolatedCopy() const & { return { documentOrigin.isolatedCopy(), parentOrigin.isolatedCopy(), deviceIdHashSalt.isolatedCopy(), lastTimeUsed }; }
         HashSaltForOrigin isolatedCopy() && { return { WTFMove(documentOrigin).isolatedCopy(), WTFMove(parentOrigin).isolatedCopy(), WTFMove(deviceIdHashSalt).isolatedCopy(), lastTimeUsed }; }
 
-        WebCore::SecurityOriginData documentOrigin;
-        WebCore::SecurityOriginData parentOrigin;
+        CyberCore::SecurityOriginData documentOrigin;
+        CyberCore::SecurityOriginData parentOrigin;
         String deviceIdHashSalt;
         WallTime lastTimeUsed;
     };
@@ -71,10 +71,10 @@ private:
     void loadStorageFromDisk(CompletionHandler<void(HashMap<String, std::unique_ptr<HashSaltForOrigin>>&&)>&&);
     void storeHashSaltToDisk(const HashSaltForOrigin&);
     void deleteHashSaltFromDisk(const HashSaltForOrigin&);
-    std::unique_ptr<WebCore::KeyedEncoder> createEncoderFromData(const HashSaltForOrigin&) const;
-    std::unique_ptr<HashSaltForOrigin> getDataFromDecoder(WebCore::KeyedDecoder*, String&& deviceIdHashSalt) const;
-    void completePendingHandler(CompletionHandler<void(HashSet<WebCore::SecurityOriginData>&&)>&&);
-    void completeDeviceIdHashSaltForOriginCall(WebCore::SecurityOriginData&& documentOrigin, WebCore::SecurityOriginData&& parentOrigin, CompletionHandler<void(String&&)>&&);
+    std::unique_ptr<CyberCore::KeyedEncoder> createEncoderFromData(const HashSaltForOrigin&) const;
+    std::unique_ptr<HashSaltForOrigin> getDataFromDecoder(CyberCore::KeyedDecoder*, String&& deviceIdHashSalt) const;
+    void completePendingHandler(CompletionHandler<void(HashSet<CyberCore::SecurityOriginData>&&)>&&);
+    void completeDeviceIdHashSaltForOriginCall(CyberCore::SecurityOriginData&& documentOrigin, CyberCore::SecurityOriginData&& parentOrigin, CompletionHandler<void(String&&)>&&);
 
     Ref<WorkQueue> m_queue;
     HashMap<String, std::unique_ptr<HashSaltForOrigin>> m_deviceIdHashSaltForOrigins;

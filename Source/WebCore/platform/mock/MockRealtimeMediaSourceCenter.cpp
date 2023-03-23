@@ -52,7 +52,7 @@
 #include "MockRealtimeVideoSourceGStreamer.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 static inline Vector<MockMediaDevice> defaultDevices()
 {
@@ -489,6 +489,6 @@ DisplayCaptureFactory& MockRealtimeMediaSourceCenter::displayCaptureFactory()
     return factory.get();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM)

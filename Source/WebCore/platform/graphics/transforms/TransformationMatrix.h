@@ -53,7 +53,7 @@ namespace WTF {
 class TextStream;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class AffineTransform;
 class IntRect;
@@ -466,4 +466,4 @@ private:
 
 WEBCORE_EXPORT WTF::TextStream& operator<<(WTF::TextStream&, const TransformationMatrix&);
 
-} // namespace WebCore
+} // namespace CyberCore

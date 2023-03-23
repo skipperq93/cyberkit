@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -17,13 +17,13 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitDOMDOMWindowUnstable_h
-#define WebKitDOMDOMWindowUnstable_h
+#ifndef CyberKitDOMDOMWindowUnstable_h
+#define CyberKitDOMDOMWindowUnstable_h
 
 #ifdef WEBKIT_DOM_USE_UNSTABLE_API
 #define __WEBKITDOM_H_INSIDE__
-#include <webkitdom/WebKitDOMDOMWindow.h>
+#include <webkitdom/CyberKitDOMDOMWindow.h>
 #undef __WEBKITDOM_H_INSIDE__
 #endif /* WEBKIT_DOM_USE_UNSTABLE_API */
 
-#endif /* WebKitDOMDOMWindowUnstable_h */
+#endif /* CyberKitDOMDOMWindowUnstable_h */

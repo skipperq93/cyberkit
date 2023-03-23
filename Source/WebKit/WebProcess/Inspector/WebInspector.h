@@ -33,7 +33,7 @@
 #include <wtf/Noncopyable.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPage;
 
@@ -60,7 +60,7 @@ public:
     void showConsole();
     void showResources();
 
-    void showMainResourceForFrame(WebCore::FrameIdentifier);
+    void showMainResourceForFrame(CyberCore::FrameIdentifier);
 
     void setAttached(bool attached) { m_attached = attached; }
 
@@ -74,7 +74,7 @@ public:
     void elementSelectionChanged(bool);
     void timelineRecordingChanged(bool);
 
-    void setDeveloperPreferenceOverride(WebCore::InspectorClient::DeveloperPreference, std::optional<bool>);
+    void setDeveloperPreferenceOverride(CyberCore::InspectorClient::DeveloperPreference, std::optional<bool>);
 #if ENABLE(INSPECTOR_NETWORK_THROTTLING)
     void setEmulatedConditions(std::optional<int64_t>&& bytesPerSecondLimit);
 #endif
@@ -108,4 +108,4 @@ private:
     bool m_previousCanAttach { false };
 };
 
-} // namespace WebKit
+} // namespace CyberKit

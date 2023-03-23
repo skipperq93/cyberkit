@@ -31,7 +31,7 @@
 #include <wtf/OptionSet.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class PerformanceLoggingClient {
     WTF_MAKE_FAST_ALLOCATED;
@@ -49,4 +49,4 @@ public:
     virtual ~PerformanceLoggingClient() = default;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

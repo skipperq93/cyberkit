@@ -26,7 +26,7 @@
 #include "FloatPoint.h"
 #include "SVGPathConsumer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class Path;
 
@@ -56,4 +56,4 @@ private:
     FloatPoint m_current;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

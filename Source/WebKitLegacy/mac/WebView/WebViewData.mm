@@ -29,7 +29,7 @@
 
 #import "WebViewData.h"
 
-#import "WebKitLogging.h"
+#import "CyberKitLogging.h"
 #import "WebPreferenceKeysPrivate.h"
 #import "WebSelectionServiceController.h"
 #import "WebViewGroup.h"
@@ -41,7 +41,7 @@
 #import <CyberCore/RunLoopObserver.h>
 #import <CyberCore/TextIndicatorWindow.h>
 #import <CyberCore/ValidationBubble.h>
-#import <CyberCore/WebCoreJITOperations.h>
+#import <CyberCore/CyberCoreJITOperations.h>
 #import <wtf/MainThread.h>
 #import <wtf/RunLoop.h>
 #import <wtf/SetForScope.h>
@@ -107,7 +107,7 @@ int pluginDatabaseClientCount = 0;
 #if !PLATFORM(IOS_FAMILY)
     JSC::initialize();
     WTF::initializeMainThread();
-    WebCore::populateJITOperations();
+    CyberCore::populateJITOperations();
 #endif
 }
 
@@ -133,7 +133,7 @@ int pluginDatabaseClientCount = 0;
 #else
     interactiveFormValidationEnabled = NO;
 #endif
-    // The default value should be synchronized with WebCore/page/Settings.cpp.
+    // The default value should be synchronized with CyberCore/page/Settings.cpp.
     validationMessageTimerMagnification = 50;
 
 #if PLATFORM(IOS_FAMILY)
@@ -145,7 +145,7 @@ int pluginDatabaseClientCount = 0;
 
     pluginDatabaseClientCount++;
 
-    m_alternativeTextUIController = makeUnique<WebCore::AlternativeTextUIController>();
+    m_alternativeTextUIController = makeUnique<CyberCore::AlternativeTextUIController>();
 
     return self;
 }

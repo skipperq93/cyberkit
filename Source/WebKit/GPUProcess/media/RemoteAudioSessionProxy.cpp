@@ -37,7 +37,7 @@
 
 namespace WebKit {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 UniqueRef<RemoteAudioSessionProxy> RemoteAudioSessionProxy::create(GPUConnectionToWebProcess& gpuConnection)
 {
@@ -51,7 +51,7 @@ RemoteAudioSessionProxy::RemoteAudioSessionProxy(GPUConnectionToWebProcess& gpuC
 
 RemoteAudioSessionProxy::~RemoteAudioSessionProxy() = default;
 
-WebCore::ProcessIdentifier RemoteAudioSessionProxy::processIdentifier()
+CyberCore::ProcessIdentifier RemoteAudioSessionProxy::processIdentifier()
 {
     return m_gpuConnection.webProcessIdentifier();
 }

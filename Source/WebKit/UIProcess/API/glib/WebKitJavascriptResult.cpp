@@ -32,7 +32,7 @@
  */
 
 struct _WebKitJavascriptResult {
-    explicit _WebKitJavascriptResult(WebCore::SerializedScriptValue& serializedScriptValue)
+    explicit _WebKitJavascriptResult(CyberCore::SerializedScriptValue& serializedScriptValue)
     {
         jsValue = API::SerializedScriptValue::deserialize(serializedScriptValue);
     }
@@ -44,7 +44,7 @@ struct _WebKitJavascriptResult {
 
 G_DEFINE_BOXED_TYPE(WebKitJavascriptResult, webkit_javascript_result, webkit_javascript_result_ref, webkit_javascript_result_unref)
 
-WebKitJavascriptResult* webkitJavascriptResultCreate(WebCore::SerializedScriptValue& serializedScriptValue)
+WebKitJavascriptResult* webkitJavascriptResultCreate(CyberCore::SerializedScriptValue& serializedScriptValue)
 {
     WebKitJavascriptResult* result = static_cast<WebKitJavascriptResult*>(fastMalloc(sizeof(WebKitJavascriptResult)));
     new (result) WebKitJavascriptResult(serializedScriptValue);

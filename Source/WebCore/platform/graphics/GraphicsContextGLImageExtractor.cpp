@@ -28,7 +28,7 @@
 
 #if ENABLE(WEBGL)
 
-namespace WebCore {
+namespace CyberCore {
 
 GraphicsContextGLImageExtractor::GraphicsContextGLImageExtractor(Image* image, DOMSource imageHtmlDomSource, bool premultiplyAlpha, bool ignoreGammaAndColorProfile, bool ignoreNativeImageAlphaPremultiplication)
 {

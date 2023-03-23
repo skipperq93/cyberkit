@@ -26,10 +26,10 @@
 
 #import <CyberKitLegacy/DOMEvent.h>
 
-namespace WebCore {
+namespace CyberCore {
 class Event;
 }
 
-WebCore::Event* core(DOMEvent *);
-DOMEvent *kit(WebCore::Event*);
-Class kitClass(WebCore::Event*);
+CyberCore::Event* core(DOMEvent *);
+DOMEvent *kit(CyberCore::Event*);
+Class kitClass(CyberCore::Event*);

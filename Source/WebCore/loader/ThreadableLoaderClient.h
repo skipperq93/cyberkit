@@ -32,7 +32,7 @@
 
 #include "ResourceLoaderIdentifier.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class NetworkLoadMetrics;
 class ResourceError;
@@ -57,4 +57,4 @@ protected:
     virtual ~ThreadableLoaderClient() = default;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

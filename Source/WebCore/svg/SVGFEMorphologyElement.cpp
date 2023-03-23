@@ -27,7 +27,7 @@
 #include "SVGParserUtilities.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(SVGFEMorphologyElement);
 
@@ -120,4 +120,4 @@ RefPtr<FilterEffect> SVGFEMorphologyElement::createFilterEffect(const FilterEffe
     return FEMorphology::create(svgOperator(), radiusX(), radiusY());
 }
 
-} // namespace WebCore
+} // namespace CyberCore

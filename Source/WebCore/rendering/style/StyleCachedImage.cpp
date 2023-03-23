@@ -29,7 +29,7 @@
 #include "RenderElement.h"
 #include "RenderView.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<StyleCachedImage> StyleCachedImage::create(Ref<CSSImageValue> cssValue, float scaleFactor)
 {

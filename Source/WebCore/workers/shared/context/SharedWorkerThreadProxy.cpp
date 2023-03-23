@@ -50,7 +50,7 @@
 #include "WorkerThread.h"
 #include <CyberScriptCore/IdentifiersFactory.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static HashMap<ScriptExecutionContextIdentifier, SharedWorkerThreadProxy*>& allSharedWorkerThreadProxies()
 {
@@ -224,4 +224,4 @@ void SharedWorkerThreadProxy::setAppBadge(std::optional<uint64_t> badge)
     });
 }
 
-} // namespace WebCore
+} // namespace CyberCore

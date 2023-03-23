@@ -31,7 +31,7 @@
 #include <optional>
 #include <wtf/FastMalloc.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct PlatformVideoColorSpace {
     WTF_MAKE_STRUCT_FAST_ALLOCATED;

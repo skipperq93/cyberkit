@@ -31,7 +31,7 @@
 #include <CoreGraphics/CoreGraphics.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 #if USE(CG)
 using DashArrayElement = CGFloat;
@@ -43,4 +43,4 @@ using DashArrayElement = float;
 
 using DashArray = Vector<DashArrayElement>;
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -29,7 +29,7 @@
 
 #include "HEVCUtilities.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct MediaCapabilitiesInfo;
 

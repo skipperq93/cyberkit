@@ -52,7 +52,7 @@ String webCoreLogLevelString()
     static NeverDestroyed<RetainPtr<NSString>> logString;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, [&] {
-        logString.get() = [[NSUserDefaults standardUserDefaults] stringForKey:@"WebCoreLogging"];
+        logString.get() = [[NSUserDefaults standardUserDefaults] stringForKey:@"CyberCoreLogging"];
     });
     return logString.get().get();
 }

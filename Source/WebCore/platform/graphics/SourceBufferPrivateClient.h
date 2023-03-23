@@ -32,7 +32,7 @@
 #include <wtf/Vector.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioTrackPrivate;
 class InbandTextTrackPrivate;
@@ -94,7 +94,7 @@ public:
 
 String convertEnumerationToString(SourceBufferPrivateClient::ReceiveResult);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
@@ -102,30 +102,30 @@ template<typename Type>
 struct LogArgument;
 
 template <>
-struct LogArgument<WebCore::SourceBufferPrivateClient::ReceiveResult> {
-    static String toString(const WebCore::SourceBufferPrivateClient::ReceiveResult result)
+struct LogArgument<CyberCore::SourceBufferPrivateClient::ReceiveResult> {
+    static String toString(const CyberCore::SourceBufferPrivateClient::ReceiveResult result)
     {
         return convertEnumerationToString(result);
     }
 };
 
-template<> struct EnumTraits<WebCore::SourceBufferPrivateClient::ReceiveResult> {
+template<> struct EnumTraits<CyberCore::SourceBufferPrivateClient::ReceiveResult> {
     using values = EnumValues<
-        WebCore::SourceBufferPrivateClient::ReceiveResult,
-        WebCore::SourceBufferPrivateClient::ReceiveResult::RecieveSucceeded,
-        WebCore::SourceBufferPrivateClient::ReceiveResult::AppendError,
-        WebCore::SourceBufferPrivateClient::ReceiveResult::ClientDisconnected,
-        WebCore::SourceBufferPrivateClient::ReceiveResult::BufferRemoved,
-        WebCore::SourceBufferPrivateClient::ReceiveResult::IPCError
+        CyberCore::SourceBufferPrivateClient::ReceiveResult,
+        CyberCore::SourceBufferPrivateClient::ReceiveResult::RecieveSucceeded,
+        CyberCore::SourceBufferPrivateClient::ReceiveResult::AppendError,
+        CyberCore::SourceBufferPrivateClient::ReceiveResult::ClientDisconnected,
+        CyberCore::SourceBufferPrivateClient::ReceiveResult::BufferRemoved,
+        CyberCore::SourceBufferPrivateClient::ReceiveResult::IPCError
     >;
 };
 
-template<> struct EnumTraits<WebCore::SourceBufferPrivateClient::AppendResult> {
+template<> struct EnumTraits<CyberCore::SourceBufferPrivateClient::AppendResult> {
     using values = EnumValues<
-        WebCore::SourceBufferPrivateClient::AppendResult,
-        WebCore::SourceBufferPrivateClient::AppendResult::AppendSucceeded,
-        WebCore::SourceBufferPrivateClient::AppendResult::ReadStreamFailed,
-        WebCore::SourceBufferPrivateClient::AppendResult::ParsingFailed
+        CyberCore::SourceBufferPrivateClient::AppendResult,
+        CyberCore::SourceBufferPrivateClient::AppendResult::AppendSucceeded,
+        CyberCore::SourceBufferPrivateClient::AppendResult::ReadStreamFailed,
+        CyberCore::SourceBufferPrivateClient::AppendResult::ParsingFailed
     >;
 };
 

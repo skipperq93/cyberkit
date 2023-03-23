@@ -33,7 +33,7 @@
 #import "IntRect.h"
 #import "Logging.h"
 #import "NotImplemented.h"
-#import "WebCoreFrameView.h"
+#import "CyberCoreFrameView.h"
 #import <wtf/BlockObjCExceptions.h>
 
 @interface NSScrollView ()
@@ -45,13 +45,13 @@
 - (void)_setNeedsToResetDragMargins:(BOOL)needs;
 @end
 
-namespace WebCore {
+namespace CyberCore {
 
-inline NSScrollView<WebCoreFrameScrollView> *ScrollView::scrollView() const
+inline NSScrollView<CyberCoreFrameScrollView> *ScrollView::scrollView() const
 {
     ASSERT(!platformWidget() || [platformWidget() isKindOfClass:[NSScrollView class]]);
-    ASSERT(!platformWidget() || [platformWidget() conformsToProtocol:@protocol(WebCoreFrameScrollView)]);
-    return static_cast<NSScrollView<WebCoreFrameScrollView> *>(platformWidget());
+    ASSERT(!platformWidget() || [platformWidget() conformsToProtocol:@protocol(CyberCoreFrameScrollView)]);
+    return static_cast<NSScrollView<CyberCoreFrameScrollView> *>(platformWidget());
 }
 
 NSView *ScrollView::documentView() const
@@ -206,7 +206,7 @@ void ScrollView::platformSetScrollPosition(const IntPoint& scrollPoint)
     NSPoint floatPoint = scrollPoint;
     NSPoint tempPoint = { std::max(-[scrollView() scrollOrigin].x, floatPoint.x), std::max(-[scrollView() scrollOrigin].y, floatPoint.y) };  // Don't use NSMakePoint to work around 4213314.
 
-    // AppKit has the inset factored into all of its scroll positions. In WebCore, we use positions that ignore
+    // AppKit has the inset factored into all of its scroll positions. In CyberCore, we use positions that ignore
     // the insets so that they are equivalent whether or not there is an inset.
     tempPoint.x = tempPoint.x - scrollView().contentInsets.left;
     tempPoint.y = tempPoint.y - scrollView().contentInsets.top;
@@ -290,6 +290,6 @@ void ScrollView::platformSetScrollOrigin(const IntPoint& origin, bool updatePosi
     END_BLOCK_OBJC_EXCEPTIONS
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(MAC)

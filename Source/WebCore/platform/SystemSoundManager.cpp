@@ -30,7 +30,7 @@
 
 #include <pal/system/Sound.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 SystemSoundManager& SystemSoundManager::singleton()
 {
@@ -52,4 +52,4 @@ void SystemSoundManager::systemBeep()
     PAL::systemBeep();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

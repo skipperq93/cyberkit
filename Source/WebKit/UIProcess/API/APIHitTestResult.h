@@ -37,7 +37,7 @@ class Decoder;
 class Encoder;
 }
 
-namespace WebCore {
+namespace CyberCore {
 class HitTestResult;
 }
 
@@ -60,7 +60,7 @@ public:
 
     bool isContentEditable() const { return m_data.isContentEditable; }
 
-    WebCore::IntRect elementBoundingBox() const { return m_data.elementBoundingBox; }
+    CyberCore::IntRect elementBoundingBox() const { return m_data.elementBoundingBox; }
 
     bool isScrollbar() const { return m_data.isScrollbar != WebKit::WebHitTestResultData::IsScrollbar::No; }
 

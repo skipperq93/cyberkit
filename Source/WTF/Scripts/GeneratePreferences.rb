@@ -39,7 +39,7 @@ optparse = OptionParser.new do |opts|
 
   opts.separator ""
 
-  opts.on("--frontend input", "frontend to generate preferences for (WebKit, WebKitLegacy)") { |frontend| options[:frontend] = frontend }
+  opts.on("--frontend input", "frontend to generate preferences for (WebKit, CyberKitLegacy)") { |frontend| options[:frontend] = frontend }
   opts.on("--template input", "template to use for generation (may be specified multiple times)") { |template| options[:templates] << template }
   opts.on("--outputDir output", "directory to generate file in (default: cwd)") { |outputDir| options[:outputDirectory] = outputDir }
   opts.on("-h", "--help", "show this help message") { puts opts; exit 1 }
@@ -170,7 +170,7 @@ class Preference
       end
   end
 
-  # WebKitLegacy specific helpers.
+  # CyberKitLegacy specific helpers.
 
   def preferenceKey
     if @opts["webKitLegacyPreferenceKey"]

@@ -27,7 +27,7 @@
  */
 
 #import <Foundation/Foundation.h>
-#import <CyberKitLegacy/WebKitAvailability.h>
+#import <CyberKitLegacy/CyberKitAvailability.h>
 
 #if !TARGET_OS_IPHONE
 #import <AppKit/AppKit.h>
@@ -66,8 +66,8 @@ extern NSString *WebPlugInContainingElementKey WEBKIT_DEPRECATED_MAC(10_3, 10_14
 /*!
  @constant WebPlugInShouldLoadMainResourceKey REQUIRED. NSNumber (BOOL) indicating whether the plug-in should load its
  own main resource (the "src" URL, in most cases). If YES, the plug-in should load its own main resource. If NO, the
- plug-in should use the data provided by WebKit. See -webPlugInMainResourceReceivedData: in WebPluginPrivate.h.
- For compatibility with older versions of WebKit, the plug-in should assume that the value for
+ plug-in should use the data provided by CyberKit. See -webPlugInMainResourceReceivedData: in WebPluginPrivate.h.
+ For compatibility with older versions of CyberKit, the plug-in should assume that the value for
  WebPlugInShouldLoadMainResourceKey is NO if it is absent from the arguments dictionary.
  */
 extern NSString *WebPlugInShouldLoadMainResourceKey WEBKIT_DEPRECATED_MAC(10_6, 10_14);

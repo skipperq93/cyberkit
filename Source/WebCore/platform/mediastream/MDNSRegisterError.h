@@ -27,7 +27,7 @@
 
 #include <wtf/EnumTraits.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class MDNSRegisterError { NotImplemented, BadParameter, DNSSD, Internal, Timeout };
 
@@ -35,14 +35,14 @@ enum class MDNSRegisterError { NotImplemented, BadParameter, DNSSD, Internal, Ti
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::MDNSRegisterError> {
+template<> struct EnumTraits<CyberCore::MDNSRegisterError> {
     using values = EnumValues<
-        WebCore::MDNSRegisterError,
-        WebCore::MDNSRegisterError::NotImplemented,
-        WebCore::MDNSRegisterError::BadParameter,
-        WebCore::MDNSRegisterError::DNSSD,
-        WebCore::MDNSRegisterError::Internal,
-        WebCore::MDNSRegisterError::Timeout
+        CyberCore::MDNSRegisterError,
+        CyberCore::MDNSRegisterError::NotImplemented,
+        CyberCore::MDNSRegisterError::BadParameter,
+        CyberCore::MDNSRegisterError::DNSSD,
+        CyberCore::MDNSRegisterError::Internal,
+        CyberCore::MDNSRegisterError::Timeout
     >;
 };
 

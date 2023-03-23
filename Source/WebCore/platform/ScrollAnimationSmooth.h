@@ -28,7 +28,7 @@
 
 #include "ScrollAnimation.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class FloatPoint;
 class TimingFunction;
@@ -61,6 +61,6 @@ private:
     RefPtr<TimingFunction> m_timingFunction;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_SCROLL_ANIMATION(WebCore::ScrollAnimationSmooth, type() == WebCore::ScrollAnimation::Type::Smooth)
+SPECIALIZE_TYPE_TRAITS_SCROLL_ANIMATION(CyberCore::ScrollAnimationSmooth, type() == CyberCore::ScrollAnimation::Type::Smooth)

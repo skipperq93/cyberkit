@@ -34,7 +34,7 @@
 #include <wtf/RefPtr.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 enum class NotificationDirection : uint8_t;
 struct NotificationData;
 }
@@ -43,13 +43,13 @@ namespace WebKit {
 
 class WebNotification : public API::ObjectImpl<API::Object::Type::Notification>, public Identified<WebNotification> {
 public:
-    static Ref<WebNotification> createNonPersistent(const WebCore::NotificationData& data, WebPageProxyIdentifier pageIdentifier, IPC::Connection& sourceConnection)
+    static Ref<WebNotification> createNonPersistent(const CyberCore::NotificationData& data, WebPageProxyIdentifier pageIdentifier, IPC::Connection& sourceConnection)
     {
         ASSERT(!data.isPersistent());
         return adoptRef(*new WebNotification(data, pageIdentifier, std::nullopt, sourceConnection));
     }
 
-    static Ref<WebNotification> createPersistent(const WebCore::NotificationData& data, const std::optional<UUID>& dataStoreIdentifier, IPC::Connection& sourceConnection)
+    static Ref<WebNotification> createPersistent(const CyberCore::NotificationData& data, const std::optional<UUID>& dataStoreIdentifier, IPC::Connection& sourceConnection)
     {
         ASSERT(data.isPersistent());
         return adoptRef(*new WebNotification(data, WebPageProxyIdentifier(), dataStoreIdentifier, sourceConnection));
@@ -60,12 +60,12 @@ public:
     const String& iconURL() const { return m_data.iconURL; }
     const String& tag() const { return m_data.tag; }
     const String& lang() const { return m_data.language; }
-    WebCore::NotificationDirection dir() const { return m_data.direction; }
+    CyberCore::NotificationDirection dir() const { return m_data.direction; }
     const UUID& coreNotificationID() const { return m_data.notificationID; }
     const std::optional<UUID>& dataStoreIdentifier() const { return m_dataStoreIdentifier; }
     PAL::SessionID sessionID() const { return m_data.sourceSession; }
 
-    const WebCore::NotificationData& data() const { return m_data; }
+    const CyberCore::NotificationData& data() const { return m_data; }
     bool isPersistentNotification() const { return !m_data.serviceWorkerRegistrationURL.isEmpty(); }
 
     const API::SecurityOrigin* origin() const { return m_origin.get(); }
@@ -77,9 +77,9 @@ public:
     RefPtr<IPC::Connection> sourceConnection() const { return m_sourceConnection.get(); }
 
 private:
-    WebNotification(const WebCore::NotificationData&, WebPageProxyIdentifier, const std::optional<UUID>& dataStoreIdentifier, IPC::Connection&);
+    WebNotification(const CyberCore::NotificationData&, WebPageProxyIdentifier, const std::optional<UUID>& dataStoreIdentifier, IPC::Connection&);
 
-    WebCore::NotificationData m_data;
+    CyberCore::NotificationData m_data;
     RefPtr<API::SecurityOrigin> m_origin;
     WebPageProxyIdentifier m_pageIdentifier;
     std::optional<UUID> m_dataStoreIdentifier;

@@ -31,7 +31,7 @@
 #include "PlatformSpeechSynthesizer.h"
 #include "Timer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class PlatformSpeechSynthesizerMock : public PlatformSpeechSynthesizer {
 public:
@@ -56,7 +56,7 @@ private:
     Seconds m_utteranceDuration { 100_ms };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SPEECH_SYNTHESIS)
 

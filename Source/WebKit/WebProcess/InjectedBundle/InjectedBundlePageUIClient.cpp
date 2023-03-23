@@ -36,8 +36,8 @@
 #include "WebPage.h"
 #include <wtf/text/WTFString.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 InjectedBundlePageUIClient::InjectedBundlePageUIClient(const WKBundlePageUIClientBase* client)
 {
@@ -212,4 +212,4 @@ void InjectedBundlePageUIClient::didResignInputElementStrongPasswordAppearance(W
     userData = adoptRef(toImpl(userDataToPass));
 }
 
-} // namespace WebKit
+} // namespace CyberKit

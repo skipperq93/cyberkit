@@ -29,7 +29,7 @@
 #include <gst/video/gstvideometa.h>
 
 
-namespace WebCore {
+namespace CyberCore {
 
 ImageGStreamer::ImageGStreamer(GRefPtr<GstSample>&& sample)
     : m_sample(WTFMove(sample))
@@ -173,6 +173,6 @@ ImageGStreamer::~ImageGStreamer()
         gst_video_frame_unmap(&m_videoFrame);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(GSTREAMER)

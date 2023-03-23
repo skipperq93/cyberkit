@@ -47,7 +47,7 @@
 #include "Logging.h"
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 const ScrollAlignment ScrollAlignment::alignCenterIfNotVisible = { Behavior::NoScroll, Behavior::AlignCenter, Behavior::NoScroll };
 const ScrollAlignment ScrollAlignment::alignToEdgeIfNotVisible = { Behavior::NoScroll, Behavior::AlignToClosestEdge, Behavior::NoScroll };
@@ -85,4 +85,4 @@ TextStream& operator<<(TextStream& ts, const ScrollAlignment& s)
     return ts << "ScrollAlignment: visible: " << s.m_rectVisible << " hidden: " << s.m_rectHidden << " partial: " << s.m_rectPartial;
 }
 
-}; // namespace WebCore
+}; // namespace CyberCore

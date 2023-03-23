@@ -32,7 +32,7 @@
 #include <wtf/NeverDestroyed.h>
 #include <wtf/text/StringHash.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 // Any named groups will live for the lifetime of the process, thanks to the reference held by the RefPtr.
 static HashMap<String, RefPtr<WebViewGroup>>& webViewGroups()
@@ -98,7 +98,7 @@ void WebViewGroup::removeWebView(WebView *webView)
 StorageNamespaceProvider& WebViewGroup::storageNamespaceProvider()
 {
     if (!m_storageNamespaceProvider)
-        m_storageNamespaceProvider = WebKit::WebStorageNamespaceProvider::create(m_localStorageDatabasePath);
+        m_storageNamespaceProvider = CyberKit::WebStorageNamespaceProvider::create(m_localStorageDatabasePath);
 
     return *m_storageNamespaceProvider;
 }

@@ -30,7 +30,7 @@
 #include "DeprecatedGlobalSettings.h"
 #include "Scrollbar.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static const int cScrollbarThickness[] = { 15, 11 };
 

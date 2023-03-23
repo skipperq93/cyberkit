@@ -22,11 +22,11 @@
 
 messages -> ViewGestureController NotRefCounted {
 #if PLATFORM(MAC)
-    DidCollectGeometryForSmartMagnificationGesture(WebCore::FloatPoint origin, WebCore::FloatRect renderRect, WebCore::FloatRect visibleContentBounds, bool fitEntireRect, double viewportMinimumScale, double viewportMaximumScale)
+    DidCollectGeometryForSmartMagnificationGesture(CyberCore::FloatPoint origin, CyberCore::FloatRect renderRect, CyberCore::FloatRect visibleContentBounds, bool fitEntireRect, double viewportMinimumScale, double viewportMaximumScale)
 #endif
 
 #if !PLATFORM(IOS_FAMILY)
-    DidCollectGeometryForMagnificationGesture(WebCore::FloatRect visibleContentBounds, bool frameHandlesMagnificationGesture)
+    DidCollectGeometryForMagnificationGesture(CyberCore::FloatRect visibleContentBounds, bool frameHandlesMagnificationGesture)
 
     DidHitRenderTreeSizeThreshold()
 #endif

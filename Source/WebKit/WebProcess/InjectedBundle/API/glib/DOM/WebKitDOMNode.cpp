@@ -18,11 +18,11 @@
  */
 
 #include "config.h"
-#include "WebKitDOMNode.h"
+#include "CyberKitDOMNode.h"
 
 #include "DOMObjectCache.h"
-#include "WebKitDOMNodePrivate.h"
-#include "WebKitDOMPrivate.h"
+#include "CyberKitDOMNodePrivate.h"
+#include "CyberKitDOMPrivate.h"
 #include <JavaScriptCore/APICast.h>
 #include <CyberCore/JSNode.h>
 #include <jsc/JSCContextPrivate.h>
@@ -30,25 +30,25 @@
 #include <wtf/RefPtr.h>
 
 #if PLATFORM(GTK)
-#include "WebKitDOMEventTarget.h"
+#include "CyberKitDOMEventTarget.h"
 #endif
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
-#define WEBKIT_DOM_NODE_GET_PRIVATE(obj) G_TYPE_INSTANCE_GET_PRIVATE(obj, WEBKIT_DOM_TYPE_NODE, WebKitDOMNodePrivate)
+#define WEBKIT_DOM_NODE_GET_PRIVATE(obj) G_TYPE_INSTANCE_GET_PRIVATE(obj, WEBKIT_DOM_TYPE_NODE, CyberKitDOMNodePrivate)
 
-typedef struct _WebKitDOMNodePrivate {
-    ~_WebKitDOMNodePrivate()
+typedef struct _CyberKitDOMNodePrivate {
+    ~_CyberKitDOMNodePrivate()
     {
-        WebKit::DOMObjectCache::forget(coreObject.get());
+        CyberKit::DOMObjectCache::forget(coreObject.get());
     }
 
-    RefPtr<WebCore::Node> coreObject;
-} WebKitDOMNodePrivate;
+    RefPtr<CyberCore::Node> coreObject;
+} CyberKitDOMNodePrivate;
 
-namespace WebKit {
+namespace CyberKit {
 
-WebKitDOMNode* kit(WebCore::Node* obj)
+CyberKitDOMNode* kit(CyberCore::Node* obj)
 {
     if (!obj)
         return nullptr;
@@ -59,12 +59,12 @@ WebKitDOMNode* kit(WebCore::Node* obj)
     return wrap(obj);
 }
 
-WebCore::Node* core(WebKitDOMNode* node)
+CyberCore::Node* core(CyberKitDOMNode* node)
 {
     return node ? webkitDOMNodeGetCoreObject(node) : nullptr;
 }
 
-WebKitDOMNode* wrapNode(WebCore::Node* coreObject)
+CyberKitDOMNode* wrapNode(CyberCore::Node* coreObject)
 {
     ASSERT(coreObject);
 #if PLATFORM(GTK)
@@ -76,12 +76,12 @@ WebKitDOMNode* wrapNode(WebCore::Node* coreObject)
 #endif
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #if PLATFORM(GTK)
-G_DEFINE_TYPE_WITH_CODE(WebKitDOMNode, webkit_dom_node, WEBKIT_DOM_TYPE_OBJECT, G_IMPLEMENT_INTERFACE(WEBKIT_DOM_TYPE_EVENT_TARGET, webkitDOMNodeDOMEventTargetInit))
+G_DEFINE_TYPE_WITH_CODE(CyberKitDOMNode, webkit_dom_node, WEBKIT_DOM_TYPE_OBJECT, G_IMPLEMENT_INTERFACE(WEBKIT_DOM_TYPE_EVENT_TARGET, webkitDOMNodeDOMEventTargetInit))
 #else
-WEBKIT_DEFINE_TYPE(WebKitDOMNode, webkit_dom_node, WEBKIT_DOM_TYPE_OBJECT)
+WEBKIT_DEFINE_TYPE(CyberKitDOMNode, webkit_dom_node, WEBKIT_DOM_TYPE_OBJECT)
 #endif
 
 #if PLATFORM(GTK)
@@ -89,49 +89,49 @@ static GObject* webkitDOMNodeConstructor(GType type, guint constructPropertiesCo
 {
     GObject* object = G_OBJECT_CLASS(webkit_dom_node_parent_class)->constructor(type, constructPropertiesCount, constructProperties);
 
-    webkitDOMNodeSetCoreObject(WEBKIT_DOM_NODE(object), static_cast<WebCore::Node*>(WEBKIT_DOM_OBJECT(object)->coreObject));
+    webkitDOMNodeSetCoreObject(WEBKIT_DOM_NODE(object), static_cast<CyberCore::Node*>(WEBKIT_DOM_OBJECT(object)->coreObject));
 
     return object;
 }
 
 static void webkitDOMNodeFinalize(GObject* object)
 {
-    WebKitDOMNode* node = WEBKIT_DOM_NODE(object);
+    CyberKitDOMNode* node = WEBKIT_DOM_NODE(object);
 
-    WebKitDOMNodePrivate* priv = WEBKIT_DOM_NODE_GET_PRIVATE(node);
-    priv->~WebKitDOMNodePrivate();
+    CyberKitDOMNodePrivate* priv = WEBKIT_DOM_NODE_GET_PRIVATE(node);
+    priv->~CyberKitDOMNodePrivate();
 
     G_OBJECT_CLASS(webkit_dom_node_parent_class)->finalize(object);
 }
 
-static void webkit_dom_node_init(WebKitDOMNode* node)
+static void webkit_dom_node_init(CyberKitDOMNode* node)
 {
-    WebKitDOMNodePrivate* priv = WEBKIT_DOM_NODE_GET_PRIVATE(node);
-    new (priv) WebKitDOMNodePrivate();
+    CyberKitDOMNodePrivate* priv = WEBKIT_DOM_NODE_GET_PRIVATE(node);
+    new (priv) CyberKitDOMNodePrivate();
 }
 #endif
 
-static void webkit_dom_node_class_init(WebKitDOMNodeClass* nodeClass)
+static void webkit_dom_node_class_init(CyberKitDOMNodeClass* nodeClass)
 {
 #if PLATFORM(GTK)
     GObjectClass* gobjectClass = G_OBJECT_CLASS(nodeClass);
-    g_type_class_add_private(gobjectClass, sizeof(WebKitDOMNodePrivate));
+    g_type_class_add_private(gobjectClass, sizeof(CyberKitDOMNodePrivate));
     gobjectClass->constructor = webkitDOMNodeConstructor;
     gobjectClass->finalize = webkitDOMNodeFinalize;
     webkitDOMNodeInstallProperties(gobjectClass);
 #endif
 }
 
-void webkitDOMNodeSetCoreObject(WebKitDOMNode* node, WebCore::Node* coreObject)
+void webkitDOMNodeSetCoreObject(CyberKitDOMNode* node, CyberCore::Node* coreObject)
 {
-    WebKitDOMNodePrivate* priv = WEBKIT_DOM_NODE_GET_PRIVATE(node);
+    CyberKitDOMNodePrivate* priv = WEBKIT_DOM_NODE_GET_PRIVATE(node);
     priv->coreObject = coreObject;
-    WebKit::DOMObjectCache::put(coreObject, node);
+    CyberKit::DOMObjectCache::put(coreObject, node);
 }
 
-WebCore::Node* webkitDOMNodeGetCoreObject(WebKitDOMNode* node)
+CyberCore::Node* webkitDOMNodeGetCoreObject(CyberKitDOMNode* node)
 {
-    WebKitDOMNodePrivate* priv = WEBKIT_DOM_NODE_GET_PRIVATE(node);
+    CyberKitDOMNodePrivate* priv = WEBKIT_DOM_NODE_GET_PRIVATE(node);
     return priv->coreObject.get();
 }
 
@@ -139,21 +139,21 @@ WebCore::Node* webkitDOMNodeGetCoreObject(WebKitDOMNode* node)
  * webkit_dom_node_for_js_value:
  * @value: a #JSCValue
  *
- * Get the #WebKitDOMNode for the DOM node referenced by @value.
+ * Get the #CyberKitDOMNode for the DOM node referenced by @value.
  *
- * Returns: (transfer none): a #WebKitDOMNode, or %NULL if @value doesn't reference a DOM node.
+ * Returns: (transfer none): a #CyberKitDOMNode, or %NULL if @value doesn't reference a DOM node.
  *
  * Since: 2.22
  *
  * Deprecated: 2.40
  */
-WebKitDOMNode* webkit_dom_node_for_js_value(JSCValue* value)
+CyberKitDOMNode* webkit_dom_node_for_js_value(JSCValue* value)
 {
     g_return_val_if_fail(JSC_IS_VALUE(value), nullptr);
     g_return_val_if_fail(jsc_value_is_object(value), nullptr);
 
     auto* jsObject = JSValueToObject(jscContextGetJSContext(jsc_value_get_context(value)), jscValueGetJSValue(value), nullptr);
-    return jsObject ? WebKit::kit(WebCore::JSNode::toWrapped(toJS(jsObject)->vm(), toJS(jsObject))) : nullptr;
+    return jsObject ? CyberKit::kit(CyberCore::JSNode::toWrapped(toJS(jsObject)->vm(), toJS(jsObject))) : nullptr;
 }
 
 G_GNUC_END_IGNORE_DEPRECATIONS;

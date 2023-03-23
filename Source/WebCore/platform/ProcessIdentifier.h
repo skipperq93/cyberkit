@@ -27,7 +27,7 @@
 
 #include <wtf/ObjectIdentifier.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum ProcessIdentifierType { };
 using ProcessIdentifier = ObjectIdentifier<ProcessIdentifierType>;
@@ -38,4 +38,4 @@ WEBCORE_EXPORT void setIdentifier(ProcessIdentifier);
 WEBCORE_EXPORT ProcessIdentifier identifier();
 
 } // namespace Process
-} // namespace WebCore
+} // namespace CyberCore

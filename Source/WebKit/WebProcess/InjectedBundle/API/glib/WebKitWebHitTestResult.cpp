@@ -18,12 +18,12 @@
  */
 
 #include "config.h"
-#include "WebKitWebHitTestResult.h"
+#include "CyberKitWebHitTestResult.h"
 
 #include "InjectedBundleHitTestResult.h"
 #include "InjectedBundleScriptWorld.h"
-#include "WebKitScriptWorldPrivate.h"
-#include "WebKitWebHitTestResultPrivate.h"
+#include "CyberKitScriptWorldPrivate.h"
+#include "CyberKitWebHitTestResultPrivate.h"
 #include <JavaScriptCore/APICast.h>
 #include <JavaScriptCore/JSGlobalObjectInlines.h>
 #include <JavaScriptCore/JSLock.h>
@@ -38,36 +38,36 @@
 #include <wtf/text/CString.h>
 
 #if !ENABLE(2022_GLIB_API)
-#include "WebKitDOMNodePrivate.h"
+#include "CyberKitDOMNodePrivate.h"
 #endif
 
-using namespace WebKit;
-using namespace WebCore;
+using namespace CyberKit;
+using namespace CyberCore;
 
 /**
- * WebKitWebHitTestResult:
- * @See_also: #WebKitHitTestResult, #WebKitWebPage
+ * CyberKitWebHitTestResult:
+ * @See_also: #CyberKitHitTestResult, #CyberKitWebPage
  *
  * Result of a Hit Test (Web Process Extensions).
  *
- * WebKitWebHitTestResult extends #WebKitHitTestResult to provide information
- * about the #WebKitDOMNode in the coordinates of the Hit Test.
+ * CyberKitWebHitTestResult extends #CyberKitHitTestResult to provide information
+ * about the #CyberKitDOMNode in the coordinates of the Hit Test.
  *
  * Since: 2.8
  */
 
-struct _WebKitWebHitTestResultPrivate {
+struct _CyberKitWebHitTestResultPrivate {
     WeakPtr<Node, WeakPtrImplWithEventTargetData> node;
 
 #if ENABLE(2022_GLIB_API)
-    GRefPtr<WebKitHitTestResult> hitTestResult;
+    GRefPtr<CyberKitHitTestResult> hitTestResult;
 #endif // ENABLE(2022_GLIB_API)
 };
 
 #if ENABLE(2022_GLIB_API)
-WEBKIT_DEFINE_FINAL_TYPE(WebKitWebHitTestResult, webkit_web_hit_test_result, G_TYPE_OBJECT, GObject)
+WEBKIT_DEFINE_FINAL_TYPE(CyberKitWebHitTestResult, webkit_web_hit_test_result, G_TYPE_OBJECT, GObject)
 #else
-WEBKIT_DEFINE_TYPE(WebKitWebHitTestResult, webkit_web_hit_test_result, WEBKIT_TYPE_HIT_TEST_RESULT)
+WEBKIT_DEFINE_TYPE(CyberKitWebHitTestResult, webkit_web_hit_test_result, WEBKIT_TYPE_HIT_TEST_RESULT)
 
 enum {
     PROP_0,
@@ -77,7 +77,7 @@ enum {
 
 static void webkitWebHitTestResultGetProperty(GObject* object, guint propId, GValue* value, GParamSpec* paramSpec)
 {
-    WebKitWebHitTestResult* webHitTestResult = WEBKIT_WEB_HIT_TEST_RESULT(object);
+    CyberKitWebHitTestResult* webHitTestResult = WEBKIT_WEB_HIT_TEST_RESULT(object);
 
     switch (propId) {
     case PROP_NODE:
@@ -92,7 +92,7 @@ static void webkitWebHitTestResultGetProperty(GObject* object, guint propId, GVa
 
 static void webkitWebHitTestResultSetProperty(GObject* object, guint propId, const GValue* value, GParamSpec* paramSpec)
 {
-    WebKitWebHitTestResult* webHitTestResult = WEBKIT_WEB_HIT_TEST_RESULT(object);
+    CyberKitWebHitTestResult* webHitTestResult = WEBKIT_WEB_HIT_TEST_RESULT(object);
 
     switch (propId) {
     case PROP_NODE:
@@ -107,7 +107,7 @@ static void webkitWebHitTestResultSetProperty(GObject* object, guint propId, con
 }
 #endif
 
-static void webkit_web_hit_test_result_class_init(WebKitWebHitTestResultClass* klass)
+static void webkit_web_hit_test_result_class_init(CyberKitWebHitTestResultClass* klass)
 {
 #if !ENABLE(2022_GLIB_API)
     GObjectClass* gObjectClass = G_OBJECT_CLASS(klass);
@@ -117,9 +117,9 @@ static void webkit_web_hit_test_result_class_init(WebKitWebHitTestResultClass* k
 
     G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
     /**
-     * WebKitWebHitTestResult:node:
+     * CyberKitWebHitTestResult:node:
      *
-     * The #WebKitDOMNode
+     * The #CyberKitDOMNode
      *
      * Deprecated: 2.40
      */
@@ -135,7 +135,7 @@ static void webkit_web_hit_test_result_class_init(WebKitWebHitTestResultClass* k
 #endif
 }
 
-WebKitWebHitTestResult* webkitWebHitTestResultCreate(const HitTestResult& hitTestResult)
+CyberKitWebHitTestResult* webkitWebHitTestResultCreate(const HitTestResult& hitTestResult)
 {
     unsigned context = WEBKIT_HIT_TEST_RESULT_CONTEXT_DOCUMENT;
     String absoluteLinkURL = hitTestResult.absoluteLinkURL().string();
@@ -158,7 +158,7 @@ WebKitWebHitTestResult* webkitWebHitTestResultCreate(const HitTestResult& hitTes
     String linkLabel = hitTestResult.textContent();
 
 #if ENABLE(2022_GLIB_API)
-    GRefPtr<WebKitHitTestResult> webkitHitTestResult = adoptGRef(WEBKIT_HIT_TEST_RESULT(g_object_new(WEBKIT_TYPE_HIT_TEST_RESULT,
+    GRefPtr<CyberKitHitTestResult> webkitHitTestResult = adoptGRef(WEBKIT_HIT_TEST_RESULT(g_object_new(WEBKIT_TYPE_HIT_TEST_RESULT,
 #else
     auto* result = WEBKIT_WEB_HIT_TEST_RESULT(g_object_new(WEBKIT_TYPE_WEB_HIT_TEST_RESULT,
 #endif
@@ -187,13 +187,13 @@ WebKitWebHitTestResult* webkitWebHitTestResultCreate(const HitTestResult& hitTes
 
 /**
  * webkit_web_hit_test_result_get_context:
- * @web_hit_test_result: a #WebKitWebHitTestResult
+ * @web_hit_test_result: a #CyberKitWebHitTestResult
  *
  * Gets the the context flags for the hit test result.
  *
- * Returns: a bitmask of #WebKitHitTestResultContext flags
+ * Returns: a bitmask of #CyberKitHitTestResultContext flags
  */
-guint webkit_web_hit_test_result_get_context(WebKitWebHitTestResult* webHitTestResult)
+guint webkit_web_hit_test_result_get_context(CyberKitWebHitTestResult* webHitTestResult)
 {
     g_return_val_if_fail(WEBKIT_IS_WEB_HIT_TEST_RESULT(webHitTestResult), 0);
     return webkit_hit_test_result_get_context(webHitTestResult->priv->hitTestResult.get());
@@ -201,7 +201,7 @@ guint webkit_web_hit_test_result_get_context(WebKitWebHitTestResult* webHitTestR
 
 /**
  * webkit_web_hit_test_result_context_is_link:
- * @web_hit_test_result: a #WebWebKitHitTestResult
+ * @web_hit_test_result: a #WebCyberKitHitTestResult
  *
  * Check whether there is a link element at the hit test position.
  *
@@ -210,7 +210,7 @@ guint webkit_web_hit_test_result_get_context(WebKitWebHitTestResult* webHitTestR
  *
  * Returns: %TRUE if the hit test covers a link element or %FALSE otherwise.
  */
-gboolean webkit_web_hit_test_result_context_is_link(WebKitWebHitTestResult* webHitTestResult)
+gboolean webkit_web_hit_test_result_context_is_link(CyberKitWebHitTestResult* webHitTestResult)
 {
     g_return_val_if_fail(WEBKIT_IS_WEB_HIT_TEST_RESULT(webHitTestResult), FALSE);
     return webkit_hit_test_result_context_is_link(webHitTestResult->priv->hitTestResult.get());
@@ -218,7 +218,7 @@ gboolean webkit_web_hit_test_result_context_is_link(WebKitWebHitTestResult* webH
 
 /**
  * webkit_web_hit_test_result_context_is_image:
- * @web_hit_test_result: a #WebWebKitHitTestResult
+ * @web_hit_test_result: a #WebCyberKitHitTestResult
  *
  * Check whether there is an image element at the hit test position.
  *
@@ -227,7 +227,7 @@ gboolean webkit_web_hit_test_result_context_is_link(WebKitWebHitTestResult* webH
  *
  * Returns: %TRUE if the hit test covers an image element or %FALSE otherwise.
  */
-gboolean webkit_web_hit_test_result_context_is_image(WebKitWebHitTestResult* webHitTestResult)
+gboolean webkit_web_hit_test_result_context_is_image(CyberKitWebHitTestResult* webHitTestResult)
 {
     g_return_val_if_fail(WEBKIT_IS_WEB_HIT_TEST_RESULT(webHitTestResult), FALSE);
     return webkit_hit_test_result_context_is_image(webHitTestResult->priv->hitTestResult.get());
@@ -235,7 +235,7 @@ gboolean webkit_web_hit_test_result_context_is_image(WebKitWebHitTestResult* web
 
 /**
  * webkit_web_hit_test_result_context_is_media:
- * @web_hit_test_result: a #WebWebKitHitTestResult
+ * @web_hit_test_result: a #WebCyberKitHitTestResult
  *
  * Check whether there is a media element at the hit test position.
  *
@@ -244,7 +244,7 @@ gboolean webkit_web_hit_test_result_context_is_image(WebKitWebHitTestResult* web
  *
  * Returns: %TRUE if the hit test covers a media element or %FALSE otherwise.
  */
-gboolean webkit_web_hit_test_result_context_is_media(WebKitWebHitTestResult* webHitTestResult)
+gboolean webkit_web_hit_test_result_context_is_media(CyberKitWebHitTestResult* webHitTestResult)
 {
     g_return_val_if_fail(WEBKIT_IS_WEB_HIT_TEST_RESULT(webHitTestResult), FALSE);
     return webkit_hit_test_result_context_is_media(webHitTestResult->priv->hitTestResult.get());
@@ -252,7 +252,7 @@ gboolean webkit_web_hit_test_result_context_is_media(WebKitWebHitTestResult* web
 
 /**
  * webkit_web_hit_test_result_context_is_editable:
- * @web_hit_test_result: a #WebWebKitHitTestResult
+ * @web_hit_test_result: a #WebCyberKitHitTestResult
  *
  * Check whether there is an editable element at the hit test position.
  *
@@ -261,7 +261,7 @@ gboolean webkit_web_hit_test_result_context_is_media(WebKitWebHitTestResult* web
  *
  * Returns: %TRUE if the hit test covers an editable element or %FALSE otherwise.
  */
-gboolean webkit_web_hit_test_result_context_is_editable(WebKitWebHitTestResult* webHitTestResult)
+gboolean webkit_web_hit_test_result_context_is_editable(CyberKitWebHitTestResult* webHitTestResult)
 {
     g_return_val_if_fail(WEBKIT_IS_WEB_HIT_TEST_RESULT(webHitTestResult), FALSE);
     return webkit_hit_test_result_context_is_editable(webHitTestResult->priv->hitTestResult.get());
@@ -269,7 +269,7 @@ gboolean webkit_web_hit_test_result_context_is_editable(WebKitWebHitTestResult* 
 
 /**
  * webkit_web_hit_test_result_context_is_selection:
- * @web_hit_test_result: a #WebWebKitHitTestResult
+ * @web_hit_test_result: a #WebCyberKitHitTestResult
  *
  * Check whether there is a selected element at the hit test position.
  *
@@ -278,7 +278,7 @@ gboolean webkit_web_hit_test_result_context_is_editable(WebKitWebHitTestResult* 
  *
  * Returns: %TRUE if the hit test covers a selected element or %FALSE otherwise.
  */
-gboolean webkit_web_hit_test_result_context_is_selection(WebKitWebHitTestResult* webHitTestResult)
+gboolean webkit_web_hit_test_result_context_is_selection(CyberKitWebHitTestResult* webHitTestResult)
 {
     g_return_val_if_fail(WEBKIT_IS_WEB_HIT_TEST_RESULT(webHitTestResult), FALSE);
     return webkit_hit_test_result_context_is_selection(webHitTestResult->priv->hitTestResult.get());
@@ -286,13 +286,13 @@ gboolean webkit_web_hit_test_result_context_is_selection(WebKitWebHitTestResult*
 
 /**
  * webkit_web_hit_test_result_get_link_uri:
- * @web_hit_test_result: a #WebWebKitHitTestResult
+ * @web_hit_test_result: a #WebCyberKitHitTestResult
  *
  * Obtains the URI associated with the link element at the hit test position.
  *
  * Returns: the URI of the link element, or %NULL if the hit test does not cover a link element.
  */
-const gchar* webkit_web_hit_test_result_get_link_uri(WebKitWebHitTestResult* webHitTestResult)
+const gchar* webkit_web_hit_test_result_get_link_uri(CyberKitWebHitTestResult* webHitTestResult)
 {
     g_return_val_if_fail(WEBKIT_IS_WEB_HIT_TEST_RESULT(webHitTestResult), nullptr);
     return webkit_hit_test_result_get_link_uri(webHitTestResult->priv->hitTestResult.get());
@@ -300,14 +300,14 @@ const gchar* webkit_web_hit_test_result_get_link_uri(WebKitWebHitTestResult* web
 
 /**
  * webkit_web_hit_test_result_get_link_title:
- * @web_hit_test_result: a #WebWebKitHitTestResult
+ * @web_hit_test_result: a #WebCyberKitHitTestResult
  *
  * Obtains the title associated with the link element at the hit test position.
  *
  * Returns: the title of the link element, or %NULL if the hit test does not cover a link element
  *    or the link element does not have a title.
  */
-const gchar* webkit_web_hit_test_result_get_link_title(WebKitWebHitTestResult* webHitTestResult)
+const gchar* webkit_web_hit_test_result_get_link_title(CyberKitWebHitTestResult* webHitTestResult)
 {
     g_return_val_if_fail(WEBKIT_IS_WEB_HIT_TEST_RESULT(webHitTestResult), nullptr);
     return webkit_hit_test_result_get_link_title(webHitTestResult->priv->hitTestResult.get());
@@ -315,14 +315,14 @@ const gchar* webkit_web_hit_test_result_get_link_title(WebKitWebHitTestResult* w
 
 /**
  * webkit_web_hit_test_result_get_link_label:
- * @web_hit_test_result: a #WebWebKitHitTestResult
+ * @web_hit_test_result: a #WebCyberKitHitTestResult
  *
  * Obtains the label associated with the link element at the hit test position.
  *
  * Returns: the label of the link element, or %NULL if the hit test does not cover a link element
  *    or the link element does not have a label.
  */
-const gchar* webkit_web_hit_test_result_get_link_label(WebKitWebHitTestResult* webHitTestResult)
+const gchar* webkit_web_hit_test_result_get_link_label(CyberKitWebHitTestResult* webHitTestResult)
 {
     g_return_val_if_fail(WEBKIT_IS_WEB_HIT_TEST_RESULT(webHitTestResult), nullptr);
     return webkit_hit_test_result_get_link_label(webHitTestResult->priv->hitTestResult.get());
@@ -330,13 +330,13 @@ const gchar* webkit_web_hit_test_result_get_link_label(WebKitWebHitTestResult* w
 
 /**
  * webkit_web_hit_test_result_get_image_uri:
- * @web_hit_test_result: a #WebWebKitHitTestResult
+ * @web_hit_test_result: a #WebCyberKitHitTestResult
  *
  * Obtains the URI associated with the image element at the hit test position.
  *
  * Returns: the URI of the image element, or %NULL if the hit test does not cover an image element.
  */
-const gchar* webkit_web_hit_test_result_get_image_uri(WebKitWebHitTestResult *webHitTestResult)
+const gchar* webkit_web_hit_test_result_get_image_uri(CyberKitWebHitTestResult *webHitTestResult)
 {
     g_return_val_if_fail(WEBKIT_IS_WEB_HIT_TEST_RESULT(webHitTestResult), nullptr);
     return webkit_hit_test_result_get_image_uri(webHitTestResult->priv->hitTestResult.get());
@@ -344,13 +344,13 @@ const gchar* webkit_web_hit_test_result_get_image_uri(WebKitWebHitTestResult *we
 
 /**
  * webkit_web_hit_test_result_get_media_uri:
- * @web_hit_test_result: a #WebWebKitHitTestResult
+ * @web_hit_test_result: a #WebCyberKitHitTestResult
  *
  * Obtains the URI associated with the media element at the hit test position.
  *
  * Returns: the URI of the media element, or %NULL if the hit test does not cover a media element.
  */
-const gchar* webkit_web_hit_test_result_get_media_uri(WebKitWebHitTestResult* webHitTestResult)
+const gchar* webkit_web_hit_test_result_get_media_uri(CyberKitWebHitTestResult* webHitTestResult)
 {
     g_return_val_if_fail(WEBKIT_IS_WEB_HIT_TEST_RESULT(webHitTestResult), nullptr);
     return webkit_hit_test_result_get_media_uri(webHitTestResult->priv->hitTestResult.get());
@@ -358,7 +358,7 @@ const gchar* webkit_web_hit_test_result_get_media_uri(WebKitWebHitTestResult* we
 
 /**
  * webkit_web_hit_test_result_context_is_scrollbar:
- * @web_hit_test_result: a #WebWebKitHitTestResult
+ * @web_hit_test_result: a #WebCyberKitHitTestResult
  *
  * Check whether there is a scrollbar at the hit test position.
  *
@@ -367,7 +367,7 @@ const gchar* webkit_web_hit_test_result_get_media_uri(WebKitWebHitTestResult* we
  *
  * Returns: %TRUE if the hit test covers a scrollbar or %FALSE otherwise.
  */
-gboolean webkit_web_hit_test_result_context_is_scrollbar(WebKitWebHitTestResult* webHitTestResult)
+gboolean webkit_web_hit_test_result_context_is_scrollbar(CyberKitWebHitTestResult* webHitTestResult)
 {
     g_return_val_if_fail(WEBKIT_IS_WEB_HIT_TEST_RESULT(webHitTestResult), FALSE);
     return webkit_hit_test_result_context_is_scrollbar(webHitTestResult->priv->hitTestResult.get());
@@ -376,17 +376,17 @@ gboolean webkit_web_hit_test_result_context_is_scrollbar(WebKitWebHitTestResult*
 #else
 /**
  * webkit_web_hit_test_result_get_node:
- * @hit_test_result: a #WebKitWebHitTestResult
+ * @hit_test_result: a #CyberKitWebHitTestResult
  *
- * Get the #WebKitDOMNode in the coordinates of the Hit Test.
+ * Get the #CyberKitDOMNode in the coordinates of the Hit Test.
  *
- * Returns: (transfer none): a #WebKitDOMNode
+ * Returns: (transfer none): a #CyberKitDOMNode
  *
  * Since: 2.8
  *
  * Deprecated: 2.40: Use webkit_web_hit_test_result_get_js_node() instead
  */
-WebKitDOMNode* webkit_web_hit_test_result_get_node(WebKitWebHitTestResult* webHitTestResult)
+CyberKitDOMNode* webkit_web_hit_test_result_get_node(CyberKitWebHitTestResult* webHitTestResult)
 {
     g_return_val_if_fail(WEBKIT_IS_WEB_HIT_TEST_RESULT(webHitTestResult), nullptr);
 
@@ -396,8 +396,8 @@ WebKitDOMNode* webkit_web_hit_test_result_get_node(WebKitWebHitTestResult* webHi
 
 /**
  * webkit_web_hit_test_result_get_js_node:
- * @web_hit_test_result: a #WebKitWebHitTestResult
- * @world: (nullable): a #WebKitScriptWorld, or %NULL to use the default
+ * @web_hit_test_result: a #CyberKitWebHitTestResult
+ * @world: (nullable): a #CyberKitScriptWorld, or %NULL to use the default
  *
  * Get the #JSCValue for the DOM node in @world at the coordinates of the Hit Test.
  *
@@ -405,7 +405,7 @@ WebKitDOMNode* webkit_web_hit_test_result_get_node(WebKitWebHitTestResult* webHi
  *
  * Since: 2.40
  */
-JSCValue* webkit_web_hit_test_result_get_js_node(WebKitWebHitTestResult* webHitTestResult, WebKitScriptWorld* world)
+JSCValue* webkit_web_hit_test_result_get_js_node(CyberKitWebHitTestResult* webHitTestResult, CyberKitScriptWorld* world)
 {
     g_return_val_if_fail(WEBKIT_IS_WEB_HIT_TEST_RESULT(webHitTestResult), nullptr);
     g_return_val_if_fail(!world || WEBKIT_IS_SCRIPT_WORLD(world), nullptr);

@@ -41,7 +41,7 @@
 #include <wtf/URL.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class MessagePortChannelProvider;
 class WorkerMessagePortChannelProvider;
@@ -128,8 +128,8 @@ private:
     Settings::Values m_settingsValues;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::WorkletGlobalScope)
-static bool isType(const WebCore::ScriptExecutionContext& context) { return context.isWorkletGlobalScope(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::WorkletGlobalScope)
+static bool isType(const CyberCore::ScriptExecutionContext& context) { return context.isWorkletGlobalScope(); }
 SPECIALIZE_TYPE_TRAITS_END()

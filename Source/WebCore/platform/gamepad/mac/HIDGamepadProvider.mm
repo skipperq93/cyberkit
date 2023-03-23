@@ -40,7 +40,7 @@
 
 #import "GameControllerSoftLink.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static const Seconds connectionDelayInterval { 500_ms };
 static const Seconds hidInputNotificationDelay { 1_ms };
@@ -339,6 +339,6 @@ void HIDGamepadProvider::stopEffects(unsigned, const String&, CompletionHandler<
     completionHandler();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(GAMEPAD) && PLATFORM(MAC)

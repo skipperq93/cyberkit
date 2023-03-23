@@ -35,7 +35,7 @@
 #include "RenderTreeBuilderBlockFlow.h"
 #include "RenderTreeBuilderInline.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static inline RenderRubyRun& findRubyRunParent(RenderObject& child)
 {

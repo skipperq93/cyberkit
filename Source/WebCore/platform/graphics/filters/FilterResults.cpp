@@ -28,7 +28,7 @@
 
 #include "ImageBuffer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 FilterResults::FilterResults(std::unique_ptr<ImageBufferAllocator>&& allocator)
     : m_allocator(allocator ? WTFMove(allocator) : makeUnique<ImageBufferAllocator>())
@@ -63,4 +63,4 @@ void FilterResults::clearEffectResult(FilterEffect& effect)
     m_resultReferences.remove(result);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

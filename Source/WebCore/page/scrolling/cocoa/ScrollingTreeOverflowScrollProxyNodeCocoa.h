@@ -29,7 +29,7 @@
 
 #include "ScrollingTreeOverflowScrollProxyNode.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScrollingTreeOverflowScrollProxyNodeCocoa : public ScrollingTreeOverflowScrollProxyNode {
 public:
@@ -50,7 +50,7 @@ protected:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_SCROLLING_NODE(ScrollingTreeOverflowScrollProxyNodeCocoa, isOverflowScrollProxyNodeCocoa())
 

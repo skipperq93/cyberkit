@@ -159,7 +159,7 @@
 #define FRAMELOADER_RELEASE_LOG(channel, fmt, ...) RELEASE_LOG(channel, "%p - [pageID=%" PRIu64 ", frameID=%" PRIu64 ", isMainFrame=%d] FrameLoader::" fmt, this, PAGE_ID, FRAME_ID, m_frame.isMainFrame(), ##__VA_ARGS__)
 #define FRAMELOADER_RELEASE_LOG_ERROR(channel, fmt, ...) RELEASE_LOG_ERROR(channel, "%p - [pageID=%" PRIu64 ", frameID=%" PRIu64 ", isMainFrame=%d] FrameLoader::" fmt, this, PAGE_ID, FRAME_ID, m_frame.isMainFrame(), ##__VA_ARGS__)
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 using namespace SVGNames;
@@ -791,7 +791,7 @@ void FrameLoader::didBeginDocument(bool dispatch)
 
 void FrameLoader::finishedParsing()
 {
-    LOG(Loading, "WebCoreLoading frame %" PRIu64 ": Finished parsing", m_frame.frameID().object().toUInt64());
+    LOG(Loading, "CyberCoreLoading frame %" PRIu64 ": Finished parsing", m_frame.frameID().object().toUInt64());
 
     m_frame.injectUserScripts(UserScriptInjectionTime::DocumentEnd);
 
@@ -2072,7 +2072,7 @@ void FrameLoader::commitProvisionalLoad()
     if (m_loadingFromCachedPage && history().provisionalItem())
         cachedPage = BackForwardCache::singleton().take(*history().provisionalItem(), m_frame.page());
 
-    LOG(BackForwardCache, "WebCoreLoading frame %" PRIu64 ": About to commit provisional load from previous URL '%s' to new URL '%s' with cached page %p", m_frame.frameID().object().toUInt64(),
+    LOG(BackForwardCache, "CyberCoreLoading frame %" PRIu64 ": About to commit provisional load from previous URL '%s' to new URL '%s' with cached page %p", m_frame.frameID().object().toUInt64(),
         m_frame.document() ? m_frame.document()->url().stringCenterEllipsizedToLength().utf8().data() : "",
         pdl ? pdl->url().stringCenterEllipsizedToLength().utf8().data() : "<no provisional DocumentLoader>", cachedPage.get());
 
@@ -2089,7 +2089,7 @@ void FrameLoader::commitProvisionalLoad()
         // We are doing this here because we know for sure that a new page is about to be loaded.
         BackForwardCache::singleton().addIfCacheable(*history().currentItem(), m_frame.page());
         
-        WebCore::jettisonExpensiveObjectsOnTopLevelNavigation();
+        CyberCore::jettisonExpensiveObjectsOnTopLevelNavigation();
     }
 
     if (m_loadType != FrameLoadType::Replace)
@@ -2168,7 +2168,7 @@ void FrameLoader::commitProvisionalLoad()
     if (RefPtr document = m_frame.document())
         document->editor().confirmOrCancelCompositionAndNotifyClient();
 
-    LOG(Loading, "WebCoreLoading frame %" PRIu64 ": Finished committing provisional load to URL %s", m_frame.frameID().object().toUInt64(),
+    LOG(Loading, "CyberCoreLoading frame %" PRIu64 ": Finished committing provisional load to URL %s", m_frame.frameID().object().toUInt64(),
         m_frame.document() ? m_frame.document()->url().stringCenterEllipsizedToLength().utf8().data() : "");
 
     if (m_loadType == FrameLoadType::Standard && m_documentLoader && m_documentLoader->isClientRedirect())
@@ -4457,7 +4457,7 @@ void FrameLoader::advanceStatePastInitialEmptyDocument()
         stateMachine().advanceTo(FrameLoaderStateMachine::CommittedFirstRealLoad);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #undef PAGE_ID
 #undef FRAME_ID

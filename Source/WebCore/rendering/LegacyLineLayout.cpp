@@ -55,7 +55,7 @@
 #include "VerticalPositionCache.h"
 #include <wtf/StdLibExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 LegacyLineLayout::LegacyLineLayout(RenderBlockFlow& flow)
     : m_flow(flow)

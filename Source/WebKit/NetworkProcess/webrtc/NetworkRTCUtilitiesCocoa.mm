@@ -68,7 +68,7 @@ void setNWParametersTrackerOptions(nw_parameters_t parameters, bool shouldBypass
 #endif
 }
 
-bool isKnownTracker(const WebCore::RegistrableDomain& domain)
+bool isKnownTracker(const CyberCore::RegistrableDomain& domain)
 {
 #if HAVE(NWPARAMETERS_TRACKER_API)
     NSArray<NSString *> *domains = @[domain.string()];

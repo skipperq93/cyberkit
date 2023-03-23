@@ -24,7 +24,7 @@
 
 #include "FELighting.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class FESpecularLighting : public FELighting {
 public:
@@ -42,6 +42,6 @@ private:
     FESpecularLighting(const Color& lightingColor, float surfaceScale, float specularConstant, float specularExponent, float kernelUnitLengthX, float kernelUnitLengthY, Ref<LightSource>&&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_FILTER_EFFECT(FESpecularLighting)

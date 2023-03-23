@@ -44,7 +44,7 @@
 
 @end
 
-namespace WebCore {
+namespace CyberCore {
 
 static const CGFloat horizontalPadding = 5;
 static const CGFloat verticalPadding = 5;
@@ -90,6 +90,6 @@ void ValidationBubble::showRelativeTo(const IntRect& anchorRect)
     [m_popover showRelativeToRect:rect ofView:m_view preferredEdge:NSMinYEdge];
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(MAC)

@@ -30,7 +30,7 @@
 #include <CyberCore/WebLockIdentifier.h>
 #include <CyberCore/WebLockMode.h>
 
-namespace WebCore {
+namespace CyberCore {
 struct ClientOrigin;
 struct WebLockManagerSnapshot;
 }
@@ -50,11 +50,11 @@ public:
 
 private:
     // IPC Message handlers.
-    void requestLock(WebCore::ClientOrigin&&, WebCore::WebLockIdentifier, WebCore::ScriptExecutionContextIdentifier, String&& name, WebCore::WebLockMode, bool steal, bool ifAvailable);
-    void releaseLock(WebCore::ClientOrigin&&, WebCore::WebLockIdentifier, WebCore::ScriptExecutionContextIdentifier, String&& name);
-    void abortLockRequest(WebCore::ClientOrigin&&, WebCore::WebLockIdentifier, WebCore::ScriptExecutionContextIdentifier, String&& name, CompletionHandler<void(bool)>&&);
-    void snapshot(WebCore::ClientOrigin&&, CompletionHandler<void(WebCore::WebLockManagerSnapshot&&)>&&);
-    void clientIsGoingAway(WebCore::ClientOrigin&&, WebCore::ScriptExecutionContextIdentifier);
+    void requestLock(CyberCore::ClientOrigin&&, CyberCore::WebLockIdentifier, CyberCore::ScriptExecutionContextIdentifier, String&& name, CyberCore::WebLockMode, bool steal, bool ifAvailable);
+    void releaseLock(CyberCore::ClientOrigin&&, CyberCore::WebLockIdentifier, CyberCore::ScriptExecutionContextIdentifier, String&& name);
+    void abortLockRequest(CyberCore::ClientOrigin&&, CyberCore::WebLockIdentifier, CyberCore::ScriptExecutionContextIdentifier, String&& name, CompletionHandler<void(bool)>&&);
+    void snapshot(CyberCore::ClientOrigin&&, CompletionHandler<void(CyberCore::WebLockManagerSnapshot&&)>&&);
+    void clientIsGoingAway(CyberCore::ClientOrigin&&, CyberCore::ScriptExecutionContextIdentifier);
 
     WebProcessProxy& m_process;
     bool m_hasEverRequestedLocks { false };

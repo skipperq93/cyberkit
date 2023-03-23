@@ -27,7 +27,7 @@
 
 #include <CyberCore/MIMETypeRegistry.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 namespace TestWebKitAPI {
 

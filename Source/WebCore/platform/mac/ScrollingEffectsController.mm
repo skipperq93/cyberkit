@@ -39,7 +39,7 @@
 
 #if PLATFORM(MAC)
 
-namespace WebCore {
+namespace CyberCore {
 
 static const Seconds scrollVelocityZeroingTimeout = 100_ms;
 static const float rubberbandDirectionLockStretchRatio = 1;
@@ -677,6 +677,6 @@ void ScrollingEffectsController::updateGestureInProgressState(const PlatformWhee
     updateRubberBandingState();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(MAC)

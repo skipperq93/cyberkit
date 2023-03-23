@@ -40,7 +40,7 @@ OBJC_CLASS WebAVSampleBufferStatusChangeListener;
 
 typedef struct __CVBuffer* CVPixelBufferRef;
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class VideoFrameRotation : uint16_t;
 

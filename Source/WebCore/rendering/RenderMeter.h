@@ -22,7 +22,7 @@
 
 #include "RenderBlockFlow.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLMeterElement;
 
@@ -43,6 +43,6 @@ private:
     bool isMeter() const override { return true; }
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderMeter, isMeter())

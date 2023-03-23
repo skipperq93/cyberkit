@@ -32,7 +32,7 @@
 #import "MediaSelectionGroupAVFObjC.h"
 #import "PlatformVideoTrackConfiguration.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 VideoTrackPrivateAVFObjC::VideoTrackPrivateAVFObjC(AVPlayerItemTrack* track)
     : VideoTrackPrivateAVFObjC(makeUnique<AVTrackPrivateAVFObjCImpl>(track))

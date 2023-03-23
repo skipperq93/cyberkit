@@ -36,7 +36,7 @@ class Data;
 
 class WebAuthenticationAssertionResponse final : public ObjectImpl<Object::Type::WebAuthenticationAssertionResponse> {
 public:
-    static Ref<WebAuthenticationAssertionResponse> create(Ref<WebCore::AuthenticatorAssertionResponse>&&);
+    static Ref<WebAuthenticationAssertionResponse> create(Ref<CyberCore::AuthenticatorAssertionResponse>&&);
     ~WebAuthenticationAssertionResponse();
 
     const WTF::String& name() const { return m_response->name(); }
@@ -48,12 +48,12 @@ public:
 
     void setLAContext(LAContext *context) { m_response->setLAContext(context); }
 
-    WebCore::AuthenticatorAssertionResponse* response() { return m_response.ptr(); }
+    CyberCore::AuthenticatorAssertionResponse* response() { return m_response.ptr(); }
 
 private:
-    WebAuthenticationAssertionResponse(Ref<WebCore::AuthenticatorAssertionResponse>&&);
+    WebAuthenticationAssertionResponse(Ref<CyberCore::AuthenticatorAssertionResponse>&&);
 
-    Ref<WebCore::AuthenticatorAssertionResponse> m_response;
+    Ref<CyberCore::AuthenticatorAssertionResponse> m_response;
 };
 
 } // namespace API

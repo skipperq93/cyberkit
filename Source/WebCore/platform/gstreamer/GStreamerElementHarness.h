@@ -29,7 +29,7 @@
 #include <wtf/Lock.h>
 #include <wtf/ThreadSafeRefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class GStreamerElementHarness : public ThreadSafeRefCounted<GStreamerElementHarness> {
     WTF_MAKE_FAST_ALLOCATED;
@@ -127,6 +127,6 @@ private:
     Atomic<bool> m_stickyEventsSent { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(GSTREAMER)

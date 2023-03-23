@@ -30,19 +30,19 @@
 
 #include "GraphicsLayerWC.h"
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 WCLayerFactory::WCLayerFactory(GraphicsLayerWC::Observer& observer)
     : m_observer(observer)
 {
 }
 
-Ref<WebCore::GraphicsLayer> WCLayerFactory::createGraphicsLayer(WebCore::GraphicsLayer::Type layerType, WebCore::GraphicsLayerClient& client)
+Ref<CyberCore::GraphicsLayer> WCLayerFactory::createGraphicsLayer(CyberCore::GraphicsLayer::Type layerType, CyberCore::GraphicsLayerClient& client)
 {
     return adoptRef(*new GraphicsLayerWC(layerType, client, m_observer));
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(GRAPHICS_LAYER_WC)

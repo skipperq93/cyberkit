@@ -25,9 +25,9 @@
 
 #import <CyberKitLegacy/DOMCSSValue.h>
 
-namespace WebCore {
+namespace CyberCore {
 class DeprecatedCSSOMValue;
 }
 
-DOMCSSValue *kit(WebCore::DeprecatedCSSOMValue*);
-Class kitClass(WebCore::DeprecatedCSSOMValue*);
+DOMCSSValue *kit(CyberCore::DeprecatedCSSOMValue*);
+Class kitClass(CyberCore::DeprecatedCSSOMValue*);

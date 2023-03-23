@@ -28,7 +28,7 @@
 #include "SVGPreserveAspectRatioValue.h"
 #include "SVGValueProperty.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGPreserveAspectRatio : public SVGValueProperty<SVGPreserveAspectRatioValue> {
     using Base = SVGValueProperty<SVGPreserveAspectRatioValue>;
@@ -85,4 +85,4 @@ public:
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

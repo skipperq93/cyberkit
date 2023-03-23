@@ -32,7 +32,7 @@
 #include "ReverbConvolver.h"
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioBus;
     
@@ -66,6 +66,6 @@ private:
     RefPtr<AudioBus> m_tempBuffer;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // Reverb_h

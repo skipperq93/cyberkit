@@ -29,8 +29,8 @@
 #include "WebConnectionMessages.h"
 #include "WebProcess.h"
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 Ref<WebConnectionToUIProcess> WebConnectionToUIProcess::create(WebProcess* process)
 {
@@ -76,4 +76,4 @@ uint64_t WebConnectionToUIProcess::messageSenderDestinationID() const
     return 0;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

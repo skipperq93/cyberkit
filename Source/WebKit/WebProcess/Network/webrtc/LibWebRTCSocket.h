@@ -43,7 +43,7 @@ class Connection;
 class Decoder;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class LibWebRTCSocketFactory;
 
@@ -56,7 +56,7 @@ public:
     ~LibWebRTCSocket();
 
     const void* socketGroup() const { return m_socketGroup; }
-    WebCore::LibWebRTCSocketIdentifier identifier() const { return m_identifier; }
+    CyberCore::LibWebRTCSocketIdentifier identifier() const { return m_identifier; }
     const rtc::SocketAddress& localAddress() const { return m_localAddress; }
     const rtc::SocketAddress& remoteAddress() const { return m_remoteAddress; }
 
@@ -89,7 +89,7 @@ private:
     int SetOption(rtc::Socket::Option, int) final;
 
     LibWebRTCSocketFactory& m_factory;
-    WebCore::LibWebRTCSocketIdentifier m_identifier;
+    CyberCore::LibWebRTCSocketIdentifier m_identifier;
     Type m_type;
     rtc::SocketAddress m_localAddress;
     rtc::SocketAddress m_remoteAddress;
@@ -107,6 +107,6 @@ private:
     const void* m_socketGroup { nullptr };
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(LIBWEBRTC)

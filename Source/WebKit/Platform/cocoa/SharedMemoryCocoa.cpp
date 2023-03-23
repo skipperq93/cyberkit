@@ -28,7 +28,7 @@
 
 #include "ArgumentCoders.h"
 #include "Logging.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include <CyberCore/ProcessIdentity.h>
 #include <CyberCore/SharedBuffer.h>
 #include <mach/mach_error.h>
@@ -77,7 +77,7 @@ void SharedMemory::Handle::takeOwnershipOfMemory(MemoryLedger memoryLedger) cons
 #endif
 }
 
-void SharedMemory::Handle::setOwnershipOfMemory(const WebCore::ProcessIdentity& processIdentity, MemoryLedger memoryLedger) const
+void SharedMemory::Handle::setOwnershipOfMemory(const CyberCore::ProcessIdentity& processIdentity, MemoryLedger memoryLedger) const
 {
 #if HAVE(TASK_IDENTITY_TOKEN) && HAVE(MACH_MEMORY_ENTRY_OWNERSHIP_IDENTITY_TOKEN_SUPPORT)
     if (!m_handle)

@@ -46,7 +46,7 @@ typedef struct OpaqueAudioConverter* AudioConverterRef;
 typedef uint32_t MTAudioProcessingTapFlags;
 typedef signed long CMItemCount;
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioStreamDescription;
 class CAAudioStreamDescription;
@@ -116,8 +116,8 @@ private:
 
 }
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::AudioSourceProviderAVFObjC)
-    static bool isType(const WebCore::AudioSourceProvider& provider) { return provider.isHandlingAVPlayer(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::AudioSourceProviderAVFObjC)
+    static bool isType(const CyberCore::AudioSourceProvider& provider) { return provider.isHandlingAVPlayer(); }
 SPECIALIZE_TYPE_TRAITS_END()
 
 #endif // ENABLE(WEB_AUDIO) && USE(MEDIATOOLBOX)

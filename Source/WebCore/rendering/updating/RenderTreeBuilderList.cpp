@@ -32,7 +32,7 @@
 #include "RenderRuby.h"
 #include "RenderTable.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // FIXME: This shouldn't need LegacyInlineIterator
 static bool generatesLineBoxesForInlineChild(RenderBlock& current, RenderObject* inlineObj)
@@ -101,7 +101,7 @@ void RenderTreeBuilder::List::updateItemMarker(RenderListItem& listItemRenderer)
     if (markerRenderer)
         markerRenderer->setStyle(WTFMove(newStyle));
     else {
-        newMarkerRenderer = WebCore::createRenderer<RenderListMarker>(listItemRenderer, WTFMove(newStyle));
+        newMarkerRenderer = CyberCore::createRenderer<RenderListMarker>(listItemRenderer, WTFMove(newStyle));
         newMarkerRenderer->initializeStyle();
         markerRenderer = newMarkerRenderer.get();
         listItemRenderer.setMarkerRenderer(*markerRenderer);

@@ -30,7 +30,7 @@
 
 typedef struct _GTlsCertificate GTlsCertificate;
 
-namespace WebCore {
+namespace CyberCore {
 
 class Credential : public CredentialBase {
 public:
@@ -60,4 +60,4 @@ private:
     GRefPtr<GTlsCertificate> m_certificate;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

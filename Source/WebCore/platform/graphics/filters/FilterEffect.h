@@ -31,7 +31,7 @@ namespace WTF {
 class TextStream;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class Filter;
 class FilterEffectGeometry;
@@ -86,13 +86,13 @@ protected:
 
 WEBCORE_EXPORT WTF::TextStream& operator<<(WTF::TextStream&, const FilterEffect&);
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::FilterEffect)
-    static bool isType(const WebCore::FilterFunction& function) { return function.isFilterEffect(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::FilterEffect)
+    static bool isType(const CyberCore::FilterFunction& function) { return function.isFilterEffect(); }
 SPECIALIZE_TYPE_TRAITS_END()
 
 #define SPECIALIZE_TYPE_TRAITS_FILTER_EFFECT(ClassName) \
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::ClassName) \
-    static bool isType(const WebCore::FilterEffect& effect) { return effect.filterType() == WebCore::FilterEffect::Type::ClassName; } \
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::ClassName) \
+    static bool isType(const CyberCore::FilterEffect& effect) { return effect.filterType() == CyberCore::FilterEffect::Type::ClassName; } \
 SPECIALIZE_TYPE_TRAITS_END()

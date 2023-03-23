@@ -33,15 +33,15 @@ namespace API {
 
 class WindowFeatures final : public ObjectImpl<Object::Type::WindowFeatures> {
 public:
-    static Ref<WindowFeatures> create(const WebCore::WindowFeatures&);
+    static Ref<WindowFeatures> create(const CyberCore::WindowFeatures&);
     virtual ~WindowFeatures();
 
-    const WebCore::WindowFeatures& windowFeatures() const { return m_windowFeatures; }
+    const CyberCore::WindowFeatures& windowFeatures() const { return m_windowFeatures; }
 
 private:
-    explicit WindowFeatures(const WebCore::WindowFeatures&);
+    explicit WindowFeatures(const CyberCore::WindowFeatures&);
 
-    const WebCore::WindowFeatures m_windowFeatures;
+    const CyberCore::WindowFeatures m_windowFeatures;
 };
 
 }

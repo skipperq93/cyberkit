@@ -24,7 +24,7 @@
 #include "ImageBuffer.h"
 #include "SVGNames.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 inline SVGFEFuncGElement::SVGFEFuncGElement(const QualifiedName& tagName, Document& document)
     : SVGComponentTransferFunctionElement(tagName, document)

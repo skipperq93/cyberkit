@@ -26,7 +26,7 @@
 #include <wtf/NeverDestroyed.h>
 #include <wtf/Scope.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 namespace PlatformXR {
 

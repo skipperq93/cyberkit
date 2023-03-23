@@ -28,7 +28,7 @@
 
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 TextStream& operator<<(TextStream& ts, const LengthBox& box)
 {
@@ -48,4 +48,4 @@ TextStream& operator<<(TextStream& ts, const IntBoxExtent& box)
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

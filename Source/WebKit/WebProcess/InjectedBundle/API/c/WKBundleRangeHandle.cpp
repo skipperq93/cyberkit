@@ -35,23 +35,23 @@
 
 WKTypeID WKBundleRangeHandleGetTypeID()
 {
-    return WebKit::toAPI(WebKit::InjectedBundleRangeHandle::APIType);
+    return CyberKit::toAPI(CyberKit::InjectedBundleRangeHandle::APIType);
 }
 
 WKBundleRangeHandleRef WKBundleRangeHandleCreate(JSContextRef contextRef, JSObjectRef objectRef)
 {
-    RefPtr<WebKit::InjectedBundleRangeHandle> rangeHandle = WebKit::InjectedBundleRangeHandle::getOrCreate(contextRef, objectRef);
+    RefPtr<CyberKit::InjectedBundleRangeHandle> rangeHandle = CyberKit::InjectedBundleRangeHandle::getOrCreate(contextRef, objectRef);
     return toAPI(rangeHandle.leakRef());
 }
 
 WKRect WKBundleRangeHandleGetBoundingRectInWindowCoordinates(WKBundleRangeHandleRef rangeHandleRef)
 {
-    WebCore::IntRect boundingRect = WebKit::toImpl(rangeHandleRef)->boundingRectInWindowCoordinates();
+    CyberCore::IntRect boundingRect = CyberKit::toImpl(rangeHandleRef)->boundingRectInWindowCoordinates();
     return WKRectMake(boundingRect.x(), boundingRect.y(), boundingRect.width(), boundingRect.height());
 }
 
 WKImageRef WKBundleRangeHandleCopySnapshotWithOptions(WKBundleRangeHandleRef rangeHandleRef, WKSnapshotOptions options)
 {
-    RefPtr<WebKit::WebImage> image = WebKit::toImpl(rangeHandleRef)->renderedImage(WebKit::toSnapshotOptions(options));
+    RefPtr<CyberKit::WebImage> image = CyberKit::toImpl(rangeHandleRef)->renderedImage(CyberKit::toSnapshotOptions(options));
     return toAPI(image.leakRef());
 }

@@ -72,20 +72,20 @@ UICONTEXT_INTERFACES = \
 #
 
 SCRIPTS = \
-    $(WebCoreScripts)/CodeGenerator.pm \
+    $(CyberCoreScripts)/CodeGenerator.pm \
     $(WebKitTestRunner)/InjectedBundle/Bindings/CodeGeneratorTestRunner.pm \
-    $(WebCoreScripts)/IDLParser.pm \
-    $(WebCoreScripts)/generate-bindings.pl \
-    $(WebCoreScripts)/preprocessor.pm \
+    $(CyberCoreScripts)/IDLParser.pm \
+    $(CyberCoreScripts)/generate-bindings.pl \
+    $(CyberCoreScripts)/preprocessor.pm \
 #
 
-IDL_ATTRIBUTES_FILE = $(WebCoreScripts)/IDLAttributes.json
+IDL_ATTRIBUTES_FILE = $(CyberCoreScripts)/IDLAttributes.json
 
 .PHONY : all
 
 JS%.h JS%.cpp : %.idl $(SCRIPTS) $(IDL_ATTRIBUTES_FILE) $(FEATURE_AND_PLATFORM_DEFINE_DEPENDENCIES)
 	@echo Generating bindings for $*...
-	$(PERL) -I $(WebCoreScripts) -I $(WebKitTestRunner)/InjectedBundle/Bindings -I $(WebKitTestRunner)/UIScriptContext/Bindings $(WebCoreScripts)/generate-bindings.pl --defines "$(FEATURE_AND_PLATFORM_DEFINES)" --include InjectedBundle/Bindings --include UIScriptContext/Bindings --outputDir . --generator TestRunner --idlAttributesFile $(IDL_ATTRIBUTES_FILE) $<
+	$(PERL) -I $(CyberCoreScripts) -I $(WebKitTestRunner)/InjectedBundle/Bindings -I $(WebKitTestRunner)/UIScriptContext/Bindings $(CyberCoreScripts)/generate-bindings.pl --defines "$(FEATURE_AND_PLATFORM_DEFINES)" --include InjectedBundle/Bindings --include UIScriptContext/Bindings --outputDir . --generator TestRunner --idlAttributesFile $(IDL_ATTRIBUTES_FILE) $<
 
 all : \
     $(INJECTED_BUNDLE_INTERFACES:%=JS%.h) \

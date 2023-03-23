@@ -24,7 +24,7 @@
 
 #include "RenderStyle.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 DEFINE_ALLOCATOR_WITH_HEAP_IDENTIFIER(StyleInheritedData);
 
@@ -89,4 +89,4 @@ void StyleInheritedData::fastPathInheritFrom(const StyleInheritedData& inheritPa
     visitedLinkColor = inheritParent.visitedLinkColor;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

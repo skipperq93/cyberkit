@@ -36,7 +36,7 @@
 #include "PushPullFIFO.h"
 #include <algorithm>
 
-namespace WebCore {
+namespace CyberCore {
 
 constexpr size_t fifoSize = 96 * AudioUtilities::renderQuantumSize;
 
@@ -122,6 +122,6 @@ OSStatus AudioDestinationCocoa::render(double sampleTime, uint64_t hostTime, UIn
     return success ? noErr : -1;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

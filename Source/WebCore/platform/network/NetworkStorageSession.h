@@ -66,7 +66,7 @@ OBJC_CLASS NSHTTPCookie;
 OBJC_CLASS NSMutableSet;
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class CurlProxySettings;
 class NetworkingContext;
@@ -90,8 +90,8 @@ enum class ScriptWrittenCookiesOnly : bool { No, Yes };
 class CookieChangeObserver {
 public:
     virtual ~CookieChangeObserver() { }
-    virtual void cookiesAdded(const String& host, const Vector<WebCore::Cookie>&) = 0;
-    virtual void cookiesDeleted(const String& host, const Vector<WebCore::Cookie>&) = 0;
+    virtual void cookiesAdded(const String& host, const Vector<CyberCore::Cookie>&) = 0;
+    virtual void cookiesDeleted(const String& host, const Vector<CyberCore::Cookie>&) = 0;
     virtual void allCookiesDeleted() = 0;
 };
 #endif
@@ -99,8 +99,8 @@ public:
 class NetworkStorageSession : public CanMakeWeakPtr<NetworkStorageSession> {
     WTF_MAKE_NONCOPYABLE(NetworkStorageSession); WTF_MAKE_FAST_ALLOCATED;
 public:
-    using TopFrameDomain = WebCore::RegistrableDomain;
-    using SubResourceDomain = WebCore::RegistrableDomain;
+    using TopFrameDomain = CyberCore::RegistrableDomain;
+    using SubResourceDomain = CyberCore::RegistrableDomain;
 
     WEBCORE_EXPORT static void permitProcessToUseCookieAPI(bool);
     WEBCORE_EXPORT static bool processMayUseCookieAPI();
@@ -291,7 +291,7 @@ private:
 #if ENABLE(JS_COOKIE_CHECKING)
     std::optional<Seconds> m_ageCapForClientSideCookiesForLinkDecorationTargetPage;
 #endif
-    HashMap<WebCore::PageIdentifier, RegistrableDomain> m_navigatedToWithLinkDecorationByPrevalentResource;
+    HashMap<CyberCore::PageIdentifier, RegistrableDomain> m_navigatedToWithLinkDecorationByPrevalentResource;
     bool m_navigationWithLinkDecorationTestMode = false;
     ThirdPartyCookieBlockingMode m_thirdPartyCookieBlockingMode { ThirdPartyCookieBlockingMode::All };
     HashSet<RegistrableDomain> m_appBoundDomains;

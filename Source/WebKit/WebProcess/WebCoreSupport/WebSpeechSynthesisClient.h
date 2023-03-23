@@ -31,11 +31,11 @@
 #include <CyberCore/PlatformSpeechSynthesisVoice.h>
 #include <CyberCore/SpeechSynthesisClient.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPage;
     
-class WebSpeechSynthesisClient : public WebCore::SpeechSynthesisClient {
+class WebSpeechSynthesisClient : public CyberCore::SpeechSynthesisClient {
     WTF_MAKE_FAST_ALLOCATED;
 public:
     WebSpeechSynthesisClient(WebPage& page)
@@ -45,23 +45,23 @@ public:
     
     virtual ~WebSpeechSynthesisClient() { }
     
-    const Vector<RefPtr<WebCore::PlatformSpeechSynthesisVoice>>& voiceList() override;
-    void speak(RefPtr<WebCore::PlatformSpeechSynthesisUtterance>) override;
+    const Vector<RefPtr<CyberCore::PlatformSpeechSynthesisVoice>>& voiceList() override;
+    void speak(RefPtr<CyberCore::PlatformSpeechSynthesisUtterance>) override;
     void cancel() override;
     void pause() override;
     void resume() override;
 private:
-    void setObserver(WeakPtr<WebCore::SpeechSynthesisClientObserver> observer) override { m_observer = observer; }
-    WeakPtr<WebCore::SpeechSynthesisClientObserver> observer() const override { return m_observer; }
+    void setObserver(WeakPtr<CyberCore::SpeechSynthesisClientObserver> observer) override { m_observer = observer; }
+    WeakPtr<CyberCore::SpeechSynthesisClientObserver> observer() const override { return m_observer; }
     void resetState() override;
 
-    WebCore::SpeechSynthesisClientObserver* corePageObserver() const;
+    CyberCore::SpeechSynthesisClientObserver* corePageObserver() const;
     
     WebPage& m_page;
-    WeakPtr<WebCore::SpeechSynthesisClientObserver> m_observer;
-    Vector<RefPtr<WebCore::PlatformSpeechSynthesisVoice>> m_voices;
+    WeakPtr<CyberCore::SpeechSynthesisClientObserver> m_observer;
+    Vector<RefPtr<CyberCore::PlatformSpeechSynthesisVoice>> m_voices;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(SPEECH_SYNTHESIS)

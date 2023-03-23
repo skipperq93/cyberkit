@@ -30,7 +30,7 @@
 #include <algorithm>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<Matrix3DTransformOperation> Matrix3DTransformOperation::create(const TransformationMatrix& matrix)
 {
@@ -83,4 +83,4 @@ void Matrix3DTransformOperation::dump(TextStream& ts) const
     ts << type() << "(" << m_matrix << ")";
 }
 
-} // namespace WebCore
+} // namespace CyberCore

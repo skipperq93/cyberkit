@@ -26,7 +26,7 @@
 #include "config.h"
 #include "PropertyAllowlist.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace Style {
 
 PropertyAllowlist propertyAllowlistForPseudoId(PseudoId pseudoId)

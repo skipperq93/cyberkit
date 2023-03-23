@@ -37,7 +37,7 @@
 #include <wtf/MonotonicTime.h>
 #include <wtf/Noncopyable.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CurlRequestClient;
 class NetworkLoadMetrics;
@@ -215,4 +215,4 @@ private:
     size_t m_totalReceivedSize { 0 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

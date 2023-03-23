@@ -26,7 +26,7 @@
 #include "SVGGraphicsElement.h"
 #include "SVGZoomAndPan.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct DOMMatrix2DInit;
 class SMILTimeContainer;
@@ -160,4 +160,4 @@ private:
     Ref<SVGAnimatedLength> m_height { SVGAnimatedLength::create(this, SVGLengthMode::Height, "100%"_s) };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -33,7 +33,7 @@
 #include "StyleCachedImage.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(RenderImageResourceStyleImage);
 
@@ -71,4 +71,4 @@ void RenderImageResourceStyleImage::setContainerContext(const IntSize& size, con
         m_styleImage->setContainerContextForRenderer(*renderer, size, renderer->style().effectiveZoom());
 }
 
-} // namespace WebCore
+} // namespace CyberCore

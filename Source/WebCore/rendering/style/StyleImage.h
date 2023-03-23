@@ -30,7 +30,7 @@
 #include <wtf/RefPtr.h>
 #include <wtf/TypeCasts.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CachedImage;
 class CachedResourceLoader;
@@ -128,9 +128,9 @@ protected:
     Type m_type;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #define SPECIALIZE_TYPE_TRAITS_STYLE_IMAGE(ToClassName, predicate) \
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::ToClassName) \
-    static bool isType(const WebCore::StyleImage& image) { return image.predicate(); } \
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::ToClassName) \
+    static bool isType(const CyberCore::StyleImage& image) { return image.predicate(); } \
 SPECIALIZE_TYPE_TRAITS_END()

@@ -50,7 +50,7 @@
 #include "ScrollTypes.h"
 #include "ScrollingCoordinator.h"
 #include "SearchPopupMenu.h"
-#include "WebCoreKeyboardUIMode.h"
+#include "CyberCoreKeyboardUIMode.h"
 #include "WorkerClient.h"
 #include <CyberScriptCore/ConsoleTypes.h>
 #include <pal/graphics/WebGPU/WebGPU.h>
@@ -91,7 +91,7 @@ class HTMLModelElement;
 
 OBJC_CLASS NSResponder;
 
-namespace WebCore {
+namespace CyberCore {
 
 class AccessibilityObject;
 class ColorChooser;
@@ -256,7 +256,7 @@ public:
     virtual void sampledPageTopColorChanged() const { }
     
 #if ENABLE(APP_HIGHLIGHTS)
-    virtual WebCore::HighlightVisibility appHighlightsVisiblility() const { return HighlightVisibility::Hidden; };
+    virtual CyberCore::HighlightVisibility appHighlightsVisiblility() const { return HighlightVisibility::Hidden; };
 #endif
 
     virtual void exceededDatabaseQuota(Frame&, const String& databaseName, DatabaseDetails) = 0;
@@ -336,7 +336,7 @@ public:
 #endif
 
 #if ENABLE(APP_HIGHLIGHTS)
-    virtual void storeAppHighlight(WebCore::AppHighlight&&) const = 0;
+    virtual void storeAppHighlight(CyberCore::AppHighlight&&) const = 0;
 #endif
 
     virtual void setTextIndicator(const TextIndicatorData&) const = 0;
@@ -363,7 +363,7 @@ public:
     virtual DisplayRefreshMonitorFactory* displayRefreshMonitorFactory() const { return nullptr; }
 
     virtual RefPtr<ImageBuffer> createImageBuffer(const FloatSize&, RenderingMode, RenderingPurpose, float, const DestinationColorSpace&, PixelFormat, bool avoidBackendSizeCheck = false) const { UNUSED_PARAM(avoidBackendSizeCheck); return nullptr; }
-    WEBCORE_EXPORT virtual RefPtr<WebCore::ImageBuffer> sinkIntoImageBuffer(std::unique_ptr<WebCore::SerializedImageBuffer>);
+    WEBCORE_EXPORT virtual RefPtr<CyberCore::ImageBuffer> sinkIntoImageBuffer(std::unique_ptr<CyberCore::SerializedImageBuffer>);
 
 #if ENABLE(WEBGL)
     WEBCORE_EXPORT virtual RefPtr<GraphicsContextGL> createGraphicsContextGL(const GraphicsContextGLAttributes&) const;
@@ -637,4 +637,4 @@ protected:
     WEBCORE_EXPORT virtual ~ChromeClient();
 };
 
-} // namespace WebCore
+} // namespace CyberCore

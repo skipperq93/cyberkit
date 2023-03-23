@@ -36,7 +36,7 @@
 #include <memory>
 #include <wtf/Function.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Worker;
 
@@ -50,4 +50,4 @@ public:
     void workerGlobalScopeClosed() override { }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

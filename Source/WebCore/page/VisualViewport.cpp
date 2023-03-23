@@ -36,7 +36,7 @@
 #include "Page.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(VisualViewport);
 
@@ -183,4 +183,4 @@ void VisualViewport::update()
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore

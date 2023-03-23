@@ -36,7 +36,7 @@
 #include "WorkerInitializationData.h"
 #include "WorkerScriptLoader.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 #define CONNECTION_RELEASE_LOG(fmt, ...) RELEASE_LOG(SharedWorker, "%p - SharedWorkerObjectConnection::" fmt, this, ##__VA_ARGS__)
 #define CONNECTION_RELEASE_LOG_ERROR(fmt, ...) RELEASE_LOG_ERROR(SharedWorker, "%p - SharedWorkerObjectConnection::" fmt, this, ##__VA_ARGS__)
@@ -47,7 +47,7 @@ SharedWorkerObjectConnection::SharedWorkerObjectConnection() = default;
 
 SharedWorkerObjectConnection::~SharedWorkerObjectConnection() = default;
 
-void SharedWorkerObjectConnection::fetchScriptInClient(URL&& url, WebCore::SharedWorkerObjectIdentifier sharedWorkerObjectIdentifier, WorkerOptions&& workerOptions, CompletionHandler<void(WorkerFetchResult&&, WorkerInitializationData&&)>&& completionHandler)
+void SharedWorkerObjectConnection::fetchScriptInClient(URL&& url, CyberCore::SharedWorkerObjectIdentifier sharedWorkerObjectIdentifier, WorkerOptions&& workerOptions, CompletionHandler<void(WorkerFetchResult&&, WorkerInitializationData&&)>&& completionHandler)
 {
     ASSERT(isMainThread());
 
@@ -69,7 +69,7 @@ void SharedWorkerObjectConnection::fetchScriptInClient(URL&& url, WebCore::Share
     });
 }
 
-void SharedWorkerObjectConnection::notifyWorkerObjectOfLoadCompletion(WebCore::SharedWorkerObjectIdentifier sharedWorkerObjectIdentifier, const ResourceError& error)
+void SharedWorkerObjectConnection::notifyWorkerObjectOfLoadCompletion(CyberCore::SharedWorkerObjectIdentifier sharedWorkerObjectIdentifier, const ResourceError& error)
 {
     ASSERT(isMainThread());
     auto* workerObject = SharedWorker::fromIdentifier(sharedWorkerObjectIdentifier);
@@ -93,4 +93,4 @@ void SharedWorkerObjectConnection::postExceptionToWorkerObject(SharedWorkerObjec
 #undef CONNECTION_RELEASE_LOG
 #undef CONNECTION_RELEASE_LOG_ERROR
 
-} // namespace WebCore
+} // namespace CyberCore

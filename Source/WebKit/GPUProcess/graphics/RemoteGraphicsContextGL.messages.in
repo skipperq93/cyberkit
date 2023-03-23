@@ -33,7 +33,7 @@ messages -> RemoteGraphicsContextGL NotRefCounted Stream {
     void PrepareForDisplay() -> (std::optional<WebKit::WCContentBufferIdentifier> contentBuffer) Synchronous
 #endif
 #if USE(LIBGBM)
-    void PrepareForDisplay() -> (WebCore::DMABufObject dmabufObject) Synchronous NotStreamEncodableReply
+    void PrepareForDisplay() -> (CyberCore::DMABufObject dmabufObject) Synchronous NotStreamEncodableReply
 #endif
 #if !PLATFORM(COCOA) && !USE(GRAPHICS_LAYER_WC) && !USE(LIBGBM)
     void PrepareForDisplay() -> () Synchronous
@@ -42,8 +42,8 @@ messages -> RemoteGraphicsContextGL NotRefCounted Stream {
     void MarkContextChanged()
     void SynthesizeGLError(uint32_t error)
     void GetError() -> (uint32_t returnValue) Synchronous
-    void PaintRenderingResultsToCanvas(WebCore::RenderingResourceIdentifier imageBuffer) -> () Synchronous
-    void PaintCompositedResultsToCanvas(WebCore::RenderingResourceIdentifier imageBuffer) -> () Synchronous
+    void PaintRenderingResultsToCanvas(CyberCore::RenderingResourceIdentifier imageBuffer) -> () Synchronous
+    void PaintCompositedResultsToCanvas(CyberCore::RenderingResourceIdentifier imageBuffer) -> () Synchronous
 #if ENABLE(VIDEO) && PLATFORM(COCOA)
     void CopyTextureFromVideoFrame(struct WebKit::SharedVideoFrame frame, uint32_t texture, uint32_t target, int32_t level, uint32_t internalFormat, uint32_t format, uint32_t type, bool premultiplyAlpha, bool flipY) -> (bool success) Synchronous NotStreamEncodable
     void SetSharedVideoFrameSemaphore(IPC::Semaphore semaphore) NotStreamEncodable
@@ -52,7 +52,7 @@ messages -> RemoteGraphicsContextGL NotRefCounted Stream {
 #if ENABLE(MEDIA_STREAM)
     void PaintCompositedResultsToVideoFrame() -> (std::optional<WebKit::RemoteVideoFrameProxy::Properties> properties) Synchronous
 #endif
-    void SimulateEventForTesting(WebCore::GraphicsContextGL::SimulatedEventForTesting event)
+    void SimulateEventForTesting(CyberCore::GraphicsContextGL::SimulatedEventForTesting event)
     void ReadnPixels0(int32_t x, int32_t y, int32_t width, int32_t height, uint32_t format, uint32_t type, IPC::ArrayReference<uint8_t> data) -> (IPC::ArrayReference<uint8_t> data) Synchronous
     void ReadnPixels1(int32_t x, int32_t y, int32_t width, int32_t height, uint32_t format, uint32_t type, uint64_t offset)
     void ReadnPixels2(int32_t x, int32_t y, int32_t width, int32_t height, uint32_t format, uint32_t type, WebKit::SharedMemory::Handle handle) -> (bool success) Synchronous NotStreamEncodable
@@ -114,8 +114,8 @@ messages -> RemoteGraphicsContextGL NotRefCounted Stream {
     void FramebufferTexture2D(uint32_t target, uint32_t attachment, uint32_t textarget, uint32_t arg3, int32_t level)
     void FrontFace(uint32_t mode)
     void GenerateMipmap(uint32_t target)
-    void GetActiveAttrib(uint32_t program, uint32_t index) -> (bool returnValue, struct WebCore::GraphicsContextGLActiveInfo arg2) Synchronous
-    void GetActiveUniform(uint32_t program, uint32_t index) -> (bool returnValue, struct WebCore::GraphicsContextGLActiveInfo arg2) Synchronous
+    void GetActiveAttrib(uint32_t program, uint32_t index) -> (bool returnValue, struct CyberCore::GraphicsContextGLActiveInfo arg2) Synchronous
+    void GetActiveUniform(uint32_t program, uint32_t index) -> (bool returnValue, struct CyberCore::GraphicsContextGLActiveInfo arg2) Synchronous
     void GetAttribLocation(uint32_t arg0, String name) -> (int32_t returnValue) Synchronous
     void GetBufferParameteri(uint32_t target, uint32_t pname) -> (int32_t returnValue) Synchronous
     void GetString(uint32_t name) -> (String returnValue) Synchronous
@@ -286,7 +286,7 @@ messages -> RemoteGraphicsContextGL NotRefCounted Stream {
     void BeginTransformFeedback(uint32_t primitiveMode)
     void EndTransformFeedback()
     void TransformFeedbackVaryings(uint32_t program, Vector<String> varyings, uint32_t bufferMode)
-    void GetTransformFeedbackVarying(uint32_t program, uint32_t index) -> (struct WebCore::GraphicsContextGLActiveInfo arg2) Synchronous
+    void GetTransformFeedbackVarying(uint32_t program, uint32_t index) -> (struct CyberCore::GraphicsContextGLActiveInfo arg2) Synchronous
     void PauseTransformFeedback()
     void ResumeTransformFeedback()
     void BindBufferBase(uint32_t target, uint32_t index, uint32_t buffer)
@@ -320,8 +320,8 @@ messages -> RemoteGraphicsContextGL NotRefCounted Stream {
     void DrawElementsInstancedBaseVertexBaseInstanceANGLE(uint32_t mode, int32_t count, uint32_t type, uint64_t offset, int32_t instanceCount, int32_t baseVertex, uint32_t baseInstance)
     void ProvokingVertexANGLE(uint32_t provokeMode)
     void GetInternalformativ(uint32_t target, uint32_t internalformat, uint32_t pname, size_t paramsSize) -> (IPC::ArrayReference<int32_t> params) Synchronous
-    void SetDrawingBufferColorSpace(WebCore::DestinationColorSpace arg0)
-    void PaintRenderingResultsToPixelBuffer() -> (RefPtr<WebCore::PixelBuffer> returnValue) Synchronous
+    void SetDrawingBufferColorSpace(CyberCore::DestinationColorSpace arg0)
+    void PaintRenderingResultsToPixelBuffer() -> (RefPtr<CyberCore::PixelBuffer> returnValue) Synchronous
 }
 
 #endif

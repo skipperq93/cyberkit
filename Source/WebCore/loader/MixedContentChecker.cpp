@@ -41,7 +41,7 @@
 #include <wtf/text/CString.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // static
 bool MixedContentChecker::isMixedContent(SecurityOrigin& securityOrigin, const URL& url)
@@ -141,4 +141,4 @@ std::optional<String> MixedContentChecker::checkForMixedContentInFrameTree(const
     return std::nullopt;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

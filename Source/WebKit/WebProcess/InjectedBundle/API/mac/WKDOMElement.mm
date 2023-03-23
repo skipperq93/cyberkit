@@ -33,22 +33,22 @@
 
 - (BOOL)hasAttribute:(NSString *)attribute
 {
-    return downcast<WebCore::Element>(*_impl).hasAttribute(attribute);
+    return downcast<CyberCore::Element>(*_impl).hasAttribute(attribute);
 }
 
 - (NSString *)getAttribute:(NSString *)attribute
 {
-    return downcast<WebCore::Element>(*_impl).getAttribute(attribute);
+    return downcast<CyberCore::Element>(*_impl).getAttribute(attribute);
 }
 
 - (void)setAttribute:(NSString *)name value:(NSString *)value
 {
-    downcast<WebCore::Element>(*_impl).setAttribute(name, value);
+    downcast<CyberCore::Element>(*_impl).setAttribute(name, value);
 }
 
 - (NSString *)tagName
 {
-    return downcast<WebCore::Element>(*_impl).tagName();
+    return downcast<CyberCore::Element>(*_impl).tagName();
 }
 
 @end

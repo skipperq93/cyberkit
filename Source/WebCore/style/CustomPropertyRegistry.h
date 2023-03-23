@@ -28,7 +28,7 @@
 #include "StyleRule.h"
 #include <wtf/HashMap.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderStyle;
 

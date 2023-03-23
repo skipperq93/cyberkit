@@ -42,7 +42,7 @@ ALLOW_UNUSED_PARAMETERS_END
 
 #include <wtf/MainThread.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 RealtimeOutgoingVideoSource::RealtimeOutgoingVideoSource(Ref<MediaStreamTrackPrivate>&& videoSource)
     : m_videoSource(WTFMove(videoSource))
@@ -234,6 +234,6 @@ WTFLogChannel& RealtimeOutgoingVideoSource::logChannel() const
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(LIBWEBRTC)

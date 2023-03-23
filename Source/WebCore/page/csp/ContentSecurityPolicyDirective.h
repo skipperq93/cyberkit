@@ -28,7 +28,7 @@
 
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ContentSecurityPolicyDirectiveList;
 
@@ -58,4 +58,4 @@ private:
     const ContentSecurityPolicyDirectiveList& m_directiveList;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

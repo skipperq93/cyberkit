@@ -43,7 +43,7 @@ public:
 
 private:
     JSValueRef m_callback;
-    RefPtr<WebCore::AccessibilityObjectAtspi> m_element;
+    RefPtr<CyberCore::AccessibilityObjectAtspi> m_element;
 };
 
 } // namespace WTR

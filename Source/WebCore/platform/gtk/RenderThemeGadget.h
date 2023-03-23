@@ -35,7 +35,7 @@
 #include <wtf/glib/GRefPtr.h>
 #include <wtf/text/CString.h>
 
-namespace WebCore {
+namespace CyberCore {
 class FloatRect;
 
 class RenderThemeGadget {
@@ -110,6 +110,6 @@ private:
     OptionSet<Steppers> m_steppers;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // !USE(GTK4)

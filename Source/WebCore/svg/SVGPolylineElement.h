@@ -22,7 +22,7 @@
 
 #include "SVGPolyElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGPolylineElement final : public SVGPolyElement {
     WTF_MAKE_ISO_ALLOCATED(SVGPolylineElement);
@@ -33,4 +33,4 @@ private:
     SVGPolylineElement(const QualifiedName&, Document&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

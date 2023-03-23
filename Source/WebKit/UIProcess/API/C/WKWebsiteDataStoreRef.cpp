@@ -85,7 +85,7 @@ void WKWebsiteDataStoreRemoveITPDataForDomain(WKWebsiteDataStoreRef dataStoreRef
 #if ENABLE(TRACKING_PREVENTION)
     WebKit::WebsiteDataRecord dataRecord;
     dataRecord.types.add(WebKit::WebsiteDataType::ResourceLoadStatistics);
-    dataRecord.addResourceLoadStatisticsRegistrableDomain(WebCore::RegistrableDomain::uncheckedCreateFromHost(WebKit::toImpl(host)->string()));
+    dataRecord.addResourceLoadStatisticsRegistrableDomain(CyberCore::RegistrableDomain::uncheckedCreateFromHost(WebKit::toImpl(host)->string()));
     Vector<WebKit::WebsiteDataRecord> dataRecords = { WTFMove(dataRecord) };
 
     OptionSet<WebKit::WebsiteDataType> dataTypes = WebKit::WebsiteDataType::ResourceLoadStatistics;
@@ -676,14 +676,14 @@ void WKWebsiteDataStoreSetAppBoundDomainsForTesting(WKArrayRef originURLsRef, vo
 #if ENABLE(APP_BOUND_DOMAINS)
     RefPtr<API::Array> originURLsArray = WebKit::toImpl(originURLsRef);
     size_t newSize = originURLsArray ? originURLsArray->size() : 0;
-    HashSet<WebCore::RegistrableDomain> domains;
+    HashSet<CyberCore::RegistrableDomain> domains;
     domains.reserveInitialCapacity(newSize);
     for (size_t i = 0; i < newSize; ++i) {
         auto* originURL = originURLsArray->at<API::URL>(i);
         if (!originURL)
             continue;
         
-        domains.add(WebCore::RegistrableDomain { URL { originURL->string() } });
+        domains.add(CyberCore::RegistrableDomain { URL { originURL->string() } });
     }
 
     WebKit::WebsiteDataStore::setAppBoundDomainsForTesting(WTFMove(domains), [context, completionHandler] {
@@ -701,14 +701,14 @@ void WKWebsiteDataStoreSetManagedDomainsForTesting(WKArrayRef originURLsRef, voi
 #if ENABLE(MANAGED_DOMAINS)
     RefPtr<API::Array> originURLsArray = WebKit::toImpl(originURLsRef);
     size_t newSize = originURLsArray ? originURLsArray->size() : 0;
-    HashSet<WebCore::RegistrableDomain> domains;
+    HashSet<CyberCore::RegistrableDomain> domains;
     domains.reserveInitialCapacity(newSize);
     for (size_t i = 0; i < newSize; ++i) {
         auto* originURL = originURLsArray->at<API::URL>(i);
         if (!originURL)
             continue;
 
-        domains.add(WebCore::RegistrableDomain { URL { originURL->string() } });
+        domains.add(CyberCore::RegistrableDomain { URL { originURL->string() } });
     }
 
     WebKit::WebsiteDataStore::setManagedDomainsForTesting(WTFMove(domains), [context, completionHandler] {
@@ -828,7 +828,7 @@ void WKWebsiteDataStoreGetFetchCacheSizeForOrigin(WKWebsiteDataStoreRef dataStor
     OptionSet<WebKit::WebsiteDataFetchOption> fetchOptions = WebKit::WebsiteDataFetchOption::ComputeSizes;
 
     WebKit::toImpl(dataStoreRef)->fetchData(WebKit::WebsiteDataType::DOMCache, fetchOptions, [origin, context, callback] (auto dataRecords) {
-        auto originData = WebCore::SecurityOrigin::createFromString(WebKit::toImpl(origin)->string())->data();
+        auto originData = CyberCore::SecurityOrigin::createFromString(WebKit::toImpl(origin)->string())->data();
         for (auto& dataRecord : dataRecords) {
             for (const auto& recordOrigin : dataRecord.origins) {
                 if (originData == recordOrigin) {

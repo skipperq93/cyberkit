@@ -32,8 +32,8 @@
 #include <wtf/HashMap.h>
 #include <wtf/NeverDestroyed.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 typedef HashMap<CSSStyleDeclaration*, InjectedBundleCSSStyleDeclarationHandle*> DOMStyleDeclarationHandleCache;
 
@@ -78,4 +78,4 @@ CSSStyleDeclaration* InjectedBundleCSSStyleDeclarationHandle::coreCSSStyleDeclar
     return m_styleDeclaration.ptr();
 }
 
-} // namespace WebKit
+} // namespace CyberKit

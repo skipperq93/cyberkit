@@ -33,7 +33,7 @@
 #include <wtf/RetainPtr.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class LegacyPreviewLoaderClient;
 class ResourceLoader;
@@ -77,4 +77,4 @@ private:
     bool m_shouldDecidePolicyBeforeLoading;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

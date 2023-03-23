@@ -41,7 +41,7 @@
 #include <wtf/Scope.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 #if !RELEASE_LOG_DISABLED
 static const char* logClassName()

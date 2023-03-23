@@ -123,14 +123,14 @@ static std::optional<VideoDecodingLimits> videoDecoderLimitsDefaults()
 // AAC supports up to 96 channels.
 #define MEDIA_MAX_AAC_CHANNELS 96
 
-static const char* dumpReadyState(WebCore::MediaPlayer::ReadyState readyState)
+static const char* dumpReadyState(CyberCore::MediaPlayer::ReadyState readyState)
 {
     switch (readyState) {
-    case WebCore::MediaPlayer::ReadyState::HaveNothing: return "HaveNothing";
-    case WebCore::MediaPlayer::ReadyState::HaveMetadata: return "HaveMetadata";
-    case WebCore::MediaPlayer::ReadyState::HaveCurrentData: return "HaveCurrentData";
-    case WebCore::MediaPlayer::ReadyState::HaveFutureData: return "HaveFutureData";
-    case WebCore::MediaPlayer::ReadyState::HaveEnoughData: return "HaveEnoughData";
+    case CyberCore::MediaPlayer::ReadyState::HaveNothing: return "HaveNothing";
+    case CyberCore::MediaPlayer::ReadyState::HaveMetadata: return "HaveMetadata";
+    case CyberCore::MediaPlayer::ReadyState::HaveCurrentData: return "HaveCurrentData";
+    case CyberCore::MediaPlayer::ReadyState::HaveFutureData: return "HaveFutureData";
+    case CyberCore::MediaPlayer::ReadyState::HaveEnoughData: return "HaveEnoughData";
     default: return "(unknown)";
     }
 }
@@ -138,7 +138,7 @@ static const char* dumpReadyState(WebCore::MediaPlayer::ReadyState readyState)
 GST_DEBUG_CATEGORY(webkit_mse_debug);
 #define GST_CAT_DEFAULT webkit_mse_debug
 
-namespace WebCore {
+namespace CyberCore {
 
 class MediaPlayerFactoryGStreamerMSE final : public MediaPlayerFactory {
 private:
@@ -509,6 +509,6 @@ MediaTime MediaPlayerPrivateGStreamerMSE::maxMediaTimeSeekable() const
     return result;
 }
 
-} // namespace WebCore.
+} // namespace CyberCore.
 
 #endif // USE(GSTREAMER)

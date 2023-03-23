@@ -38,7 +38,7 @@
 #include <wtf/WallTime.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SWServer;
 class SWServerWorker;
@@ -140,12 +140,12 @@ private:
     MonotonicTime m_creationTime;
     HashMap<SWServerConnectionIdentifier, HashSet<ScriptExecutionContextIdentifier>> m_clientsUsingRegistration;
 
-    WebCore::Timer m_softUpdateTimer;
+    CyberCore::Timer m_softUpdateTimer;
     
     bool m_isAppInitiated { true };
     NavigationPreloadState m_preloadState;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

@@ -30,7 +30,7 @@
 #include "TabSize.h"
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 TextStream& operator<<(TextStream& ts, AnimationFillMode fillMode)
 {
@@ -1376,4 +1376,4 @@ CSSBoxType transformBoxToCSSBoxType(TransformBox transformBox)
 
 const float defaultMiterLimit = 4;
 
-} // namespace WebCore
+} // namespace CyberCore

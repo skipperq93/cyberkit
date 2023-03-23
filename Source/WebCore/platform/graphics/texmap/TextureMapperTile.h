@@ -25,7 +25,7 @@
 #include "TextureMapper.h"
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class GraphicsLayer;
 

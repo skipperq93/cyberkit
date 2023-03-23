@@ -33,13 +33,13 @@
 #import <CyberScriptCore/InitializeThreading.h>
 #import <CyberCore/Image.h>
 #import <CyberCore/ThreadCheck.h>
-#import <CyberCore/WebCoreJITOperations.h>
+#import <CyberCore/CyberCoreJITOperations.h>
 #import <wtf/MainThread.h>
 #import <wtf/NeverDestroyed.h>
 #import <wtf/RunLoop.h>
 #import <wtf/cocoa/RuntimeApplicationChecksCocoa.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 NSString *WebIconDatabaseDidAddIconNotification =          @"WebIconDatabaseDidAddIconNotification";
 NSString *WebIconNotificationUserInfoURLKey =              @"WebIconNotificationUserInfoURLKey";
@@ -100,7 +100,7 @@ ALLOW_DEPRECATED_IMPLEMENTATIONS_END
 {
     JSC::initialize();
     WTF::initializeMainThread();
-    WebCore::populateJITOperations();
+    CyberCore::populateJITOperations();
 }
 
 + (WebIconDatabase *)sharedIconDatabase
@@ -119,7 +119,7 @@ ALLOW_DEPRECATED_IMPLEMENTATIONS_END
 
 - (id)init
 {
-    WebCoreThreadViolationCheckRoundOne();
+    CyberCoreThreadViolationCheckRoundOne();
 
     return [super init];
 }

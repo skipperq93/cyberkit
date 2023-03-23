@@ -34,7 +34,7 @@
 #include "WorkerRunLoop.h"
 #include "WorkerScriptLoader.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 SharedWorkerScriptLoader::SharedWorkerScriptLoader(URL&& url, SharedWorker& worker, WorkerOptions&& options)
     : m_options(WTFMove(options))
@@ -71,4 +71,4 @@ void SharedWorkerScriptLoader::notifyFinished()
     }); // deletes this.
 }
 
-} // namespace WebCore
+} // namespace CyberCore

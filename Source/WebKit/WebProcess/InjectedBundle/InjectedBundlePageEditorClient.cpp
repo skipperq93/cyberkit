@@ -41,8 +41,8 @@
 #include <CyberCore/MutableStyleProperties.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 static RefPtr<InjectedBundleCSSStyleDeclarationHandle> createHandle(const StyleProperties& style)
 {
@@ -84,7 +84,7 @@ bool InjectedBundlePageEditorClient::shouldInsertText(WebPage& page, const Strin
     return true;
 }
 
-bool InjectedBundlePageEditorClient::shouldDeleteRange(WebPage& page, const std::optional<WebCore::SimpleRange>& range)
+bool InjectedBundlePageEditorClient::shouldDeleteRange(WebPage& page, const std::optional<CyberCore::SimpleRange>& range)
 {
     if (m_client.shouldDeleteRange)
         return m_client.shouldDeleteRange(toAPI(&page), toAPI(createHandle(range).get()), m_client.base.clientInfo);
@@ -177,4 +177,4 @@ void InjectedBundlePageEditorClient::didWriteToPasteboard(WebPage& page)
         m_client.didWriteToPasteboard(toAPI(&page), m_client.base.clientInfo);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

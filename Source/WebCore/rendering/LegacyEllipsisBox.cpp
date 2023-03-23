@@ -31,7 +31,7 @@
 #include "TextRun.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(LegacyEllipsisBox);
 
@@ -125,4 +125,4 @@ TextRun LegacyEllipsisBox::createTextRun() const
     return RenderBlock::constructTextRun(m_str, lineStyle(), ExpansionBehavior::allowRightOnly());
 }
 
-} // namespace WebCore
+} // namespace CyberCore

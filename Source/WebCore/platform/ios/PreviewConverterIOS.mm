@@ -38,14 +38,14 @@
 #import <pal/ios/QuickLookSoftLink.h>
 
 @interface WebPreviewConverterDelegate : NSObject
-- (instancetype)initWithDelegate:(WebCore::PreviewPlatformDelegate&)delegate;
+- (instancetype)initWithDelegate:(CyberCore::PreviewPlatformDelegate&)delegate;
 @end
 
 @implementation WebPreviewConverterDelegate {
-    WeakPtr<WebCore::PreviewPlatformDelegate> _delegate;
+    WeakPtr<CyberCore::PreviewPlatformDelegate> _delegate;
 }
 
-- (instancetype)initWithDelegate:(WebCore::PreviewPlatformDelegate&)delegate
+- (instancetype)initWithDelegate:(CyberCore::PreviewPlatformDelegate&)delegate
 {
     if (!(self = [super init]))
         return nil;
@@ -60,7 +60,7 @@
     ASSERT_UNUSED(lengthReceived, lengthReceived >= 0);
     ASSERT(data.length == static_cast<NSUInteger>(lengthReceived));
     if (auto delegate = _delegate.get())
-        delegate->delegateDidReceiveData(WebCore::SharedBuffer::create(data).get());
+        delegate->delegateDidReceiveData(CyberCore::SharedBuffer::create(data).get());
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
@@ -79,7 +79,7 @@
 
 @end
 
-namespace WebCore {
+namespace CyberCore {
 
 PreviewConverter::PreviewConverter(const ResourceResponse& response, PreviewConverterProvider& provider)
     : m_previewData { FragmentedSharedBuffer::create() }
@@ -153,6 +153,6 @@ void PreviewConverter::platformUnlockWithPassword(const String& password)
     m_platformConverter = adoptNS([PAL::allocQLPreviewConverterInstance() initWithConnection:nil delegate:m_platformDelegate.get() response:m_originalResponse.nsURLResponse() options:optionsWithPassword(password)]);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(PREVIEW_CONVERTER) && USE(QUICK_LOOK)

@@ -30,19 +30,19 @@
 #include "GraphicsLayerWC.h"
 #include <CyberCore/GraphicsLayerFactory.h>
 
-namespace WebKit {
+namespace CyberKit {
 
-class WCLayerFactory final : public WebCore::GraphicsLayerFactory {
+class WCLayerFactory final : public CyberCore::GraphicsLayerFactory {
 public:
     WCLayerFactory(GraphicsLayerWC::Observer&);
 
 private:
-    // WebCore::GraphicsLayerFactory
-    Ref<WebCore::GraphicsLayer> createGraphicsLayer(WebCore::GraphicsLayer::Type, WebCore::GraphicsLayerClient&) override;
+    // CyberCore::GraphicsLayerFactory
+    Ref<CyberCore::GraphicsLayer> createGraphicsLayer(CyberCore::GraphicsLayer::Type, CyberCore::GraphicsLayerClient&) override;
 
     GraphicsLayerWC::Observer& m_observer;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(GRAPHICS_LAYER_WC)

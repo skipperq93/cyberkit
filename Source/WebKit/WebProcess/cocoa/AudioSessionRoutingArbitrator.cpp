@@ -33,9 +33,9 @@
 #include "WebConnectionToUIProcess.h"
 #include "WebProcess.h"
 
-namespace WebKit {
+namespace CyberKit {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 AudioSessionRoutingArbitrator::AudioSessionRoutingArbitrator(WebProcess& process)
     : m_process(process)

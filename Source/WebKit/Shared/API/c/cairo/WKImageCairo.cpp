@@ -41,8 +41,8 @@ cairo_surface_t* WKImageCreateCairoSurface(WKImageRef imageRef)
 
 WKImageRef WKImageCreateFromCairoSurface(cairo_surface_t* surface, WKImageOptions options)
 {
-    WebCore::IntSize imageSize(cairo_image_surface_get_width(surface), cairo_image_surface_get_height(surface));
-    auto webImage = WebKit::WebImage::create(imageSize, WebKit::toImageOptions(options), WebCore::DestinationColorSpace::SRGB());
+    CyberCore::IntSize imageSize(cairo_image_surface_get_width(surface), cairo_image_surface_get_height(surface));
+    auto webImage = WebKit::WebImage::create(imageSize, WebKit::toImageOptions(options), CyberCore::DestinationColorSpace::SRGB());
     auto& graphicsContext = webImage->context();
 
     cairo_t* cr = graphicsContext.platformContext()->cr();

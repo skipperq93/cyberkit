@@ -34,7 +34,7 @@
 #include "RenderTreeBuilderBlock.h"
 #include "RenderView.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static RenderMultiColumnSet* findSetRendering(const RenderMultiColumnFlow& fragmentedFlow, const RenderObject& renderer)
 {
@@ -159,7 +159,7 @@ void RenderTreeBuilder::MultiColumn::createFragmentedFlow(RenderBlockFlow& flow)
     if (auto* enclosingflow = flow.enclosingFragmentedFlow(); is<RenderMultiColumnFlow>(enclosingflow))
         restoreColumnSpannersForContainer(flow, downcast<RenderMultiColumnFlow>(*enclosingflow));
 
-    auto newFragmentedFlow = WebCore::createRenderer<RenderMultiColumnFlow>(flow.document(), RenderStyle::createAnonymousStyleWithDisplay(flow.style(), DisplayType::Block));
+    auto newFragmentedFlow = CyberCore::createRenderer<RenderMultiColumnFlow>(flow.document(), RenderStyle::createAnonymousStyleWithDisplay(flow.style(), DisplayType::Block));
     newFragmentedFlow->initializeStyle();
     auto& fragmentedFlow = *newFragmentedFlow;
     m_builder.blockBuilder().attach(flow, WTFMove(newFragmentedFlow), nullptr);

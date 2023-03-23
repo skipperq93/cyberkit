@@ -30,7 +30,7 @@
 
 #import <pal/ios/UIKitSoftLink.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static std::optional<String>& cachedLocalizedDeviceModel()
 {

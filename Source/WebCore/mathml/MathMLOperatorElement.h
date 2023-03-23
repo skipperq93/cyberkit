@@ -30,7 +30,7 @@
 #include "MathMLOperatorDictionary.h"
 #include "MathMLTokenElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class MathMLOperatorElement final : public MathMLTokenElement {
     WTF_MAKE_ISO_ALLOCATED(MathMLOperatorElement);

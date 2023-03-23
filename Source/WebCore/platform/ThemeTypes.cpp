@@ -28,7 +28,7 @@
 
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 TextStream& operator<<(TextStream& ts, SelectionPart selectionPart)
 {
@@ -98,4 +98,4 @@ TextStream& operator<<(TextStream& ts, ThemeColor themeColor)
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

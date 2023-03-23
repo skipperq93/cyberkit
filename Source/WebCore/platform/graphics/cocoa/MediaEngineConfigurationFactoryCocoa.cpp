@@ -43,7 +43,7 @@
 
 #include "VideoToolboxSoftLink.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static CMVideoCodecType videoCodecTypeFromRFC4281Type(StringView type)
 {

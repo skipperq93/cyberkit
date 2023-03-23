@@ -50,7 +50,7 @@
 #include <wtf/glib/RunLoopSourcePriority.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<GraphicsLayer> GraphicsLayer::create(GraphicsLayerFactory* factory, GraphicsLayerClient& client, Type layerType)
 {
@@ -1524,8 +1524,8 @@ void CoordinatedGraphicsLayer::dumpAdditionalProperties(TextStream& textStream, 
         dumpInnerLayer(textStream, "backdrop layer"_s, m_backdropLayer.get(), options);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_ANIMATEDBACKINGSTORECLIENT(WebCore::CoordinatedAnimatedBackingStoreClient, type() == Nicosia::AnimatedBackingStoreClient::Type::Coordinated)
+SPECIALIZE_TYPE_TRAITS_ANIMATEDBACKINGSTORECLIENT(CyberCore::CoordinatedAnimatedBackingStoreClient, type() == Nicosia::AnimatedBackingStoreClient::Type::Coordinated)
 
 #endif // USE(COORDINATED_GRAPHICS)

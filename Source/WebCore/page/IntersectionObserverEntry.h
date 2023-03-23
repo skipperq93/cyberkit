@@ -35,7 +35,7 @@ namespace WTF {
 class TextStream;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class Element;
 
@@ -81,4 +81,4 @@ private:
 
 TextStream& operator<<(TextStream&, const IntersectionObserverEntry&);
 
-} // namespace WebCore
+} // namespace CyberCore

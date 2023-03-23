@@ -115,18 +115,18 @@ public:
         void encode(IPC::Encoder&) const;
         static std::optional<LayerCreationProperties> decode(IPC::Decoder&);
 
-        WebCore::GraphicsLayer::PlatformLayerID layerID;
-        WebCore::PlatformCALayer::LayerType type;
+        CyberCore::GraphicsLayer::PlatformLayerID layerID;
+        CyberCore::PlatformCALayer::LayerType type;
 
         uint32_t hostingContextID;
         float hostingDeviceScaleFactor;
         bool preservesFlip;
 
         // FIXME: This could be a variant<CustomData, HostData, ModelData, NoData>.
-        Markable<WebCore::LayerHostingContextIdentifier> hostIdentifier;
+        Markable<CyberCore::LayerHostingContextIdentifier> hostIdentifier;
 
 #if ENABLE(MODEL_ELEMENT)
-        RefPtr<WebCore::Model> model;
+        RefPtr<CyberCore::Model> model;
 #endif
     };
 
@@ -153,26 +153,26 @@ public:
         OptionSet<LayerChange> everChangedProperties;
 
         String name;
-        std::unique_ptr<WebCore::TransformationMatrix> transform;
-        std::unique_ptr<WebCore::TransformationMatrix> sublayerTransform;
-        std::unique_ptr<WebCore::FloatRoundedRect> shapeRoundedRect;
+        std::unique_ptr<CyberCore::TransformationMatrix> transform;
+        std::unique_ptr<CyberCore::TransformationMatrix> sublayerTransform;
+        std::unique_ptr<CyberCore::FloatRoundedRect> shapeRoundedRect;
 
-        Vector<WebCore::GraphicsLayer::PlatformLayerID> children;
+        Vector<CyberCore::GraphicsLayer::PlatformLayerID> children;
 
         Vector<std::pair<String, PlatformCAAnimationRemote::Properties>> addedAnimations;
         HashSet<String> keysOfAnimationsToRemove;
 
-        WebCore::FloatPoint3D position;
-        WebCore::FloatPoint3D anchorPoint { 0.5, 0.5, 0 };
-        WebCore::FloatRect bounds;
-        WebCore::FloatRect contentsRect { 0, 0, 1, 1 };
+        CyberCore::FloatPoint3D position;
+        CyberCore::FloatPoint3D anchorPoint { 0.5, 0.5, 0 };
+        CyberCore::FloatRect bounds;
+        CyberCore::FloatRect contentsRect { 0, 0, 1, 1 };
         std::unique_ptr<RemoteLayerBackingStore> backingStore;
-        std::unique_ptr<WebCore::FilterOperations> filters;
-        WebCore::Path shapePath;
-        Markable<WebCore::GraphicsLayer::PlatformLayerID> maskLayerID;
-        Markable<WebCore::GraphicsLayer::PlatformLayerID> clonedLayerID;
+        std::unique_ptr<CyberCore::FilterOperations> filters;
+        CyberCore::Path shapePath;
+        Markable<CyberCore::GraphicsLayer::PlatformLayerID> maskLayerID;
+        Markable<CyberCore::GraphicsLayer::PlatformLayerID> clonedLayerID;
 #if ENABLE(SCROLLING_THREAD)
-        WebCore::ScrollingNodeID scrollingNodeID { 0 };
+        CyberCore::ScrollingNodeID scrollingNodeID { 0 };
 #endif
         double timeOffset { 0 };
         float speed { 1 };
@@ -180,13 +180,13 @@ public:
         float cornerRadius { 0 };
         float borderWidth { 0 };
         float opacity { 1 };
-        WebCore::Color backgroundColor { WebCore::Color::transparentBlack };
-        WebCore::Color borderColor { WebCore::Color::black };
-        WebCore::GraphicsLayer::CustomAppearance customAppearance { WebCore::GraphicsLayer::CustomAppearance::None };
-        WebCore::PlatformCALayer::FilterType minificationFilter { WebCore::PlatformCALayer::FilterType::Linear };
-        WebCore::PlatformCALayer::FilterType magnificationFilter { WebCore::PlatformCALayer::FilterType::Linear };
-        WebCore::BlendMode blendMode { WebCore::BlendMode::Normal };
-        WebCore::WindRule windRule { WebCore::WindRule::NonZero };
+        CyberCore::Color backgroundColor { CyberCore::Color::transparentBlack };
+        CyberCore::Color borderColor { CyberCore::Color::black };
+        CyberCore::GraphicsLayer::CustomAppearance customAppearance { CyberCore::GraphicsLayer::CustomAppearance::None };
+        CyberCore::PlatformCALayer::FilterType minificationFilter { CyberCore::PlatformCALayer::FilterType::Linear };
+        CyberCore::PlatformCALayer::FilterType magnificationFilter { CyberCore::PlatformCALayer::FilterType::Linear };
+        CyberCore::BlendMode blendMode { CyberCore::BlendMode::Normal };
+        CyberCore::WindRule windRule { CyberCore::WindRule::NonZero };
         bool antialiasesEdges { true };
         bool hidden { false };
         bool backingStoreAttached { true };
@@ -196,7 +196,7 @@ public:
         bool opaque { false };
         bool contentsHidden { false };
         bool userInteractionEnabled { true };
-        WebCore::EventRegion eventRegion;
+        CyberCore::EventRegion eventRegion;
 
 #if HAVE(CORE_ANIMATION_SEPARATED_LAYERS)
         bool isSeparated { false };
@@ -215,59 +215,59 @@ public:
     void encode(IPC::Encoder&) const;
     static WARN_UNUSED_RETURN bool decode(IPC::Decoder&, RemoteLayerTreeTransaction&);
 
-    WebCore::GraphicsLayer::PlatformLayerID rootLayerID() const { return m_rootLayerID; }
-    void setRootLayerID(WebCore::GraphicsLayer::PlatformLayerID);
+    CyberCore::GraphicsLayer::PlatformLayerID rootLayerID() const { return m_rootLayerID; }
+    void setRootLayerID(CyberCore::GraphicsLayer::PlatformLayerID);
     void layerPropertiesChanged(PlatformCALayerRemote&);
     void setCreatedLayers(Vector<LayerCreationProperties>);
-    void setDestroyedLayerIDs(Vector<WebCore::GraphicsLayer::PlatformLayerID>);
-    void setLayerIDsWithNewlyUnreachableBackingStore(Vector<WebCore::GraphicsLayer::PlatformLayerID>);
+    void setDestroyedLayerIDs(Vector<CyberCore::GraphicsLayer::PlatformLayerID>);
+    void setLayerIDsWithNewlyUnreachableBackingStore(Vector<CyberCore::GraphicsLayer::PlatformLayerID>);
 
 #if !defined(NDEBUG) || !LOG_DISABLED
     String description() const;
     void dump() const;
 #endif
 
-    typedef HashMap<WebCore::GraphicsLayer::PlatformLayerID, std::unique_ptr<LayerProperties>> LayerPropertiesMap;
+    typedef HashMap<CyberCore::GraphicsLayer::PlatformLayerID, std::unique_ptr<LayerProperties>> LayerPropertiesMap;
 
     Vector<LayerCreationProperties> createdLayers() const { return m_createdLayers; }
-    Vector<WebCore::GraphicsLayer::PlatformLayerID> destroyedLayers() const { return m_destroyedLayerIDs; }
-    Vector<WebCore::GraphicsLayer::PlatformLayerID> layerIDsWithNewlyUnreachableBackingStore() const { return m_layerIDsWithNewlyUnreachableBackingStore; }
+    Vector<CyberCore::GraphicsLayer::PlatformLayerID> destroyedLayers() const { return m_destroyedLayerIDs; }
+    Vector<CyberCore::GraphicsLayer::PlatformLayerID> layerIDsWithNewlyUnreachableBackingStore() const { return m_layerIDsWithNewlyUnreachableBackingStore; }
 
     HashSet<RefPtr<PlatformCALayerRemote>>& changedLayers() { return m_changedLayers; }
 
     const LayerPropertiesMap& changedLayerProperties() const { return m_changedLayerProperties; }
     LayerPropertiesMap& changedLayerProperties() { return m_changedLayerProperties; }
 
-    void setRemoteContextHostedIdentifier(Markable<WebCore::LayerHostingContextIdentifier> identifier) { m_remoteContextHostedIdentifier = identifier; }
-    Markable<WebCore::LayerHostingContextIdentifier> remoteContextHostedIdentifier() const { return m_remoteContextHostedIdentifier; }
+    void setRemoteContextHostedIdentifier(Markable<CyberCore::LayerHostingContextIdentifier> identifier) { m_remoteContextHostedIdentifier = identifier; }
+    Markable<CyberCore::LayerHostingContextIdentifier> remoteContextHostedIdentifier() const { return m_remoteContextHostedIdentifier; }
     bool isMainFrameProcessTransaction() const { return !m_remoteContextHostedIdentifier; }
 
-    WebCore::IntSize contentsSize() const { return m_contentsSize; }
-    void setContentsSize(const WebCore::IntSize& size) { m_contentsSize = size; };
+    CyberCore::IntSize contentsSize() const { return m_contentsSize; }
+    void setContentsSize(const CyberCore::IntSize& size) { m_contentsSize = size; };
 
-    WebCore::IntPoint scrollOrigin() const { return m_scrollOrigin; }
-    void setScrollOrigin(const WebCore::IntPoint& origin) { m_scrollOrigin = origin; };
+    CyberCore::IntPoint scrollOrigin() const { return m_scrollOrigin; }
+    void setScrollOrigin(const CyberCore::IntPoint& origin) { m_scrollOrigin = origin; };
 
-    WebCore::LayoutSize baseLayoutViewportSize() const { return m_baseLayoutViewportSize; }
-    void setBaseLayoutViewportSize(const WebCore::LayoutSize& size) { m_baseLayoutViewportSize = size; };
+    CyberCore::LayoutSize baseLayoutViewportSize() const { return m_baseLayoutViewportSize; }
+    void setBaseLayoutViewportSize(const CyberCore::LayoutSize& size) { m_baseLayoutViewportSize = size; };
     
-    WebCore::LayoutPoint minStableLayoutViewportOrigin() const { return m_minStableLayoutViewportOrigin; }
-    void setMinStableLayoutViewportOrigin(const WebCore::LayoutPoint& point) { m_minStableLayoutViewportOrigin = point; };
+    CyberCore::LayoutPoint minStableLayoutViewportOrigin() const { return m_minStableLayoutViewportOrigin; }
+    void setMinStableLayoutViewportOrigin(const CyberCore::LayoutPoint& point) { m_minStableLayoutViewportOrigin = point; };
     
-    WebCore::LayoutPoint maxStableLayoutViewportOrigin() const { return m_maxStableLayoutViewportOrigin; }
-    void setMaxStableLayoutViewportOrigin(const WebCore::LayoutPoint& point) { m_maxStableLayoutViewportOrigin = point; };
+    CyberCore::LayoutPoint maxStableLayoutViewportOrigin() const { return m_maxStableLayoutViewportOrigin; }
+    void setMaxStableLayoutViewportOrigin(const CyberCore::LayoutPoint& point) { m_maxStableLayoutViewportOrigin = point; };
 
-    WebCore::Color themeColor() const { return m_themeColor; }
-    void setThemeColor(WebCore::Color color) { m_themeColor = color; }
+    CyberCore::Color themeColor() const { return m_themeColor; }
+    void setThemeColor(CyberCore::Color color) { m_themeColor = color; }
 
-    WebCore::Color pageExtendedBackgroundColor() const { return m_pageExtendedBackgroundColor; }
-    void setPageExtendedBackgroundColor(WebCore::Color color) { m_pageExtendedBackgroundColor = color; }
+    CyberCore::Color pageExtendedBackgroundColor() const { return m_pageExtendedBackgroundColor; }
+    void setPageExtendedBackgroundColor(CyberCore::Color color) { m_pageExtendedBackgroundColor = color; }
 
-    WebCore::Color sampledPageTopColor() const { return m_sampledPageTopColor; }
-    void setSampledPageTopColor(WebCore::Color color) { m_sampledPageTopColor = color; }
+    CyberCore::Color sampledPageTopColor() const { return m_sampledPageTopColor; }
+    void setSampledPageTopColor(CyberCore::Color color) { m_sampledPageTopColor = color; }
 
-    WebCore::IntPoint scrollPosition() const { return m_scrollPosition; }
-    void setScrollPosition(WebCore::IntPoint p) { m_scrollPosition = p; }
+    CyberCore::IntPoint scrollPosition() const { return m_scrollPosition; }
+    void setScrollPosition(CyberCore::IntPoint p) { m_scrollPosition = p; }
 
     double pageScaleFactor() const { return m_pageScaleFactor; }
     void setPageScaleFactor(double pageScaleFactor) { m_pageScaleFactor = pageScaleFactor; }
@@ -276,8 +276,8 @@ public:
     void setScaleWasSetByUIProcess(bool scaleWasSetByUIProcess) { m_scaleWasSetByUIProcess = scaleWasSetByUIProcess; }
 
 #if PLATFORM(MAC)
-    WebCore::GraphicsLayer::PlatformLayerID pageScalingLayerID() const { return m_pageScalingLayerID.value(); }
-    void setPageScalingLayerID(WebCore::GraphicsLayer::PlatformLayerID layerID) { m_pageScalingLayerID = layerID; }
+    CyberCore::GraphicsLayer::PlatformLayerID pageScalingLayerID() const { return m_pageScalingLayerID.value(); }
+    void setPageScalingLayerID(CyberCore::GraphicsLayer::PlatformLayerID layerID) { m_pageScalingLayerID = layerID; }
 #endif
 
     uint64_t renderTreeSize() const { return m_renderTreeSize; }
@@ -320,8 +320,8 @@ public:
     const Vector<TransactionCallbackID>& callbackIDs() const { return m_callbackIDs; }
     void setCallbackIDs(Vector<TransactionCallbackID>&& callbackIDs) { m_callbackIDs = WTFMove(callbackIDs); }
 
-    OptionSet<WebCore::LayoutMilestone> newlyReachedPaintingMilestones() const { return m_newlyReachedPaintingMilestones; }
-    void setNewlyReachedPaintingMilestones(OptionSet<WebCore::LayoutMilestone> milestones) { m_newlyReachedPaintingMilestones = milestones; }
+    OptionSet<CyberCore::LayoutMilestone> newlyReachedPaintingMilestones() const { return m_newlyReachedPaintingMilestones; }
+    void setNewlyReachedPaintingMilestones(OptionSet<CyberCore::LayoutMilestone> milestones) { m_newlyReachedPaintingMilestones = milestones; }
 
     bool hasEditorState() const { return !!m_editorState; }
     const EditorState& editorState() const { return m_editorState.value(); }
@@ -333,31 +333,31 @@ public:
 #endif
 
 private:
-    WebCore::GraphicsLayer::PlatformLayerID m_rootLayerID;
+    CyberCore::GraphicsLayer::PlatformLayerID m_rootLayerID;
     HashSet<RefPtr<PlatformCALayerRemote>> m_changedLayers; // Only used in the Web process.
     LayerPropertiesMap m_changedLayerProperties; // Only used in the UI process.
 
-    Markable<WebCore::LayerHostingContextIdentifier> m_remoteContextHostedIdentifier;
+    Markable<CyberCore::LayerHostingContextIdentifier> m_remoteContextHostedIdentifier;
 
     Vector<LayerCreationProperties> m_createdLayers;
-    Vector<WebCore::GraphicsLayer::PlatformLayerID> m_destroyedLayerIDs;
-    Vector<WebCore::GraphicsLayer::PlatformLayerID> m_videoLayerIDsPendingFullscreen;
-    Vector<WebCore::GraphicsLayer::PlatformLayerID> m_layerIDsWithNewlyUnreachableBackingStore;
+    Vector<CyberCore::GraphicsLayer::PlatformLayerID> m_destroyedLayerIDs;
+    Vector<CyberCore::GraphicsLayer::PlatformLayerID> m_videoLayerIDsPendingFullscreen;
+    Vector<CyberCore::GraphicsLayer::PlatformLayerID> m_layerIDsWithNewlyUnreachableBackingStore;
 
     Vector<TransactionCallbackID> m_callbackIDs;
 
-    WebCore::IntSize m_contentsSize;
-    WebCore::IntPoint m_scrollOrigin;
-    WebCore::LayoutSize m_baseLayoutViewportSize;
-    WebCore::LayoutPoint m_minStableLayoutViewportOrigin;
-    WebCore::LayoutPoint m_maxStableLayoutViewportOrigin;
-    WebCore::IntPoint m_scrollPosition;
-    WebCore::Color m_themeColor;
-    WebCore::Color m_pageExtendedBackgroundColor;
-    WebCore::Color m_sampledPageTopColor;
+    CyberCore::IntSize m_contentsSize;
+    CyberCore::IntPoint m_scrollOrigin;
+    CyberCore::LayoutSize m_baseLayoutViewportSize;
+    CyberCore::LayoutPoint m_minStableLayoutViewportOrigin;
+    CyberCore::LayoutPoint m_maxStableLayoutViewportOrigin;
+    CyberCore::IntPoint m_scrollPosition;
+    CyberCore::Color m_themeColor;
+    CyberCore::Color m_pageExtendedBackgroundColor;
+    CyberCore::Color m_sampledPageTopColor;
 
 #if PLATFORM(MAC)
-    Markable<WebCore::GraphicsLayer::PlatformLayerID> m_pageScalingLayerID; // Only used for non-delegated scaling.
+    Markable<CyberCore::GraphicsLayer::PlatformLayerID> m_pageScalingLayerID; // Only used for non-delegated scaling.
 #endif
 
     double m_pageScaleFactor { 1 };
@@ -368,7 +368,7 @@ private:
     uint64_t m_renderTreeSize { 0 };
     TransactionID m_transactionID;
     ActivityStateChangeID m_activityStateChangeID { ActivityStateChangeAsynchronous };
-    OptionSet<WebCore::LayoutMilestone> m_newlyReachedPaintingMilestones;
+    OptionSet<CyberCore::LayoutMilestone> m_newlyReachedPaintingMilestones;
     bool m_scaleWasSetByUIProcess { false };
     bool m_allowsUserScaling { false };
     bool m_avoidsUnsafeArea { true };

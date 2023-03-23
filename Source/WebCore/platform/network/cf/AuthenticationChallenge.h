@@ -31,7 +31,7 @@
 
 OBJC_CLASS NSURLAuthenticationChallenge;
 
-namespace WebCore {
+namespace CyberCore {
 
 class AuthenticationChallenge : public AuthenticationChallengeBase {
 public:

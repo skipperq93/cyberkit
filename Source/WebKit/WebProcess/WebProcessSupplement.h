@@ -27,7 +27,7 @@
 
 #include "AuxiliaryProcessSupplement.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 struct WebProcessCreationParameters;
 struct WebProcessDataStoreParameters;
@@ -38,4 +38,4 @@ public:
     virtual void setWebsiteDataStore(const WebProcessDataStoreParameters&) { }
 };
 
-} // namespace WebKit
+} // namespace CyberKit

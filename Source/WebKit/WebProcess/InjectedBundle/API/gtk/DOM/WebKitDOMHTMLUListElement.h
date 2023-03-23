@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -21,28 +21,28 @@
 #error "Only <webkitdom/webkitdom.h> can be included directly."
 #endif
 
-#ifndef WebKitDOMHTMLUListElement_h
-#define WebKitDOMHTMLUListElement_h
+#ifndef CyberKitDOMHTMLUListElement_h
+#define CyberKitDOMHTMLUListElement_h
 
 #include <glib-object.h>
-#include <webkitdom/WebKitDOMHTMLElement.h>
+#include <webkitdom/CyberKitDOMHTMLElement.h>
 #include <webkitdom/webkitdomdefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_DOM_TYPE_HTML_U_LIST_ELEMENT            (webkit_dom_html_u_list_element_get_type())
-#define WEBKIT_DOM_HTML_U_LIST_ELEMENT(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_HTML_U_LIST_ELEMENT, WebKitDOMHTMLUListElement))
-#define WEBKIT_DOM_HTML_U_LIST_ELEMENT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_HTML_U_LIST_ELEMENT, WebKitDOMHTMLUListElementClass)
+#define WEBKIT_DOM_HTML_U_LIST_ELEMENT(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_HTML_U_LIST_ELEMENT, CyberKitDOMHTMLUListElement))
+#define WEBKIT_DOM_HTML_U_LIST_ELEMENT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_HTML_U_LIST_ELEMENT, CyberKitDOMHTMLUListElementClass)
 #define WEBKIT_DOM_IS_HTML_U_LIST_ELEMENT(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_DOM_TYPE_HTML_U_LIST_ELEMENT))
 #define WEBKIT_DOM_IS_HTML_U_LIST_ELEMENT_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_DOM_TYPE_HTML_U_LIST_ELEMENT))
-#define WEBKIT_DOM_HTML_U_LIST_ELEMENT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_HTML_U_LIST_ELEMENT, WebKitDOMHTMLUListElementClass))
+#define WEBKIT_DOM_HTML_U_LIST_ELEMENT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_HTML_U_LIST_ELEMENT, CyberKitDOMHTMLUListElementClass))
 
-struct _WebKitDOMHTMLUListElement {
-    WebKitDOMHTMLElement parent_instance;
+struct _CyberKitDOMHTMLUListElement {
+    CyberKitDOMHTMLElement parent_instance;
 };
 
-struct _WebKitDOMHTMLUListElementClass {
-    WebKitDOMHTMLElementClass parent_class;
+struct _CyberKitDOMHTMLUListElementClass {
+    CyberKitDOMHTMLElementClass parent_class;
 };
 
 WEBKIT_DEPRECATED GType
@@ -50,48 +50,48 @@ webkit_dom_html_u_list_element_get_type(void);
 
 /**
  * webkit_dom_html_u_list_element_get_compact:
- * @self: A #WebKitDOMHTMLUListElement
+ * @self: A #CyberKitDOMHTMLUListElement
  *
  * Returns: A #gboolean
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
-webkit_dom_html_u_list_element_get_compact(WebKitDOMHTMLUListElement* self);
+webkit_dom_html_u_list_element_get_compact(CyberKitDOMHTMLUListElement* self);
 
 /**
  * webkit_dom_html_u_list_element_set_compact:
- * @self: A #WebKitDOMHTMLUListElement
+ * @self: A #CyberKitDOMHTMLUListElement
  * @value: A #gboolean
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_u_list_element_set_compact(WebKitDOMHTMLUListElement* self, gboolean value);
+webkit_dom_html_u_list_element_set_compact(CyberKitDOMHTMLUListElement* self, gboolean value);
 
 /**
  * webkit_dom_html_u_list_element_get_type_attr:
- * @self: A #WebKitDOMHTMLUListElement
+ * @self: A #CyberKitDOMHTMLUListElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_u_list_element_get_type_attr(WebKitDOMHTMLUListElement* self);
+webkit_dom_html_u_list_element_get_type_attr(CyberKitDOMHTMLUListElement* self);
 
 /**
  * webkit_dom_html_u_list_element_set_type_attr:
- * @self: A #WebKitDOMHTMLUListElement
+ * @self: A #CyberKitDOMHTMLUListElement
  * @value: A #gchar
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_u_list_element_set_type_attr(WebKitDOMHTMLUListElement* self, const gchar* value);
+webkit_dom_html_u_list_element_set_type_attr(CyberKitDOMHTMLUListElement* self, const gchar* value);
 
 G_END_DECLS
 
-#endif /* WebKitDOMHTMLUListElement_h */
+#endif /* CyberKitDOMHTMLUListElement_h */

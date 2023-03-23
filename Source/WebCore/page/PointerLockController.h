@@ -30,7 +30,7 @@
 #include <wtf/WeakPtr.h>
 #include <wtf/text/AtomString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Element;
 class Document;
@@ -82,6 +82,6 @@ inline void PointerLockController::elementWasRemoved(Element& element)
         elementWasRemovedInternal();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(POINTER_LOCK)

@@ -28,7 +28,7 @@
 
 #include <wtf/SortedArrayMap.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 FontPlatformData::FontPlatformData(WTF::HashTableDeletedValueType)
     : m_isHashTableDeletedValue(true)

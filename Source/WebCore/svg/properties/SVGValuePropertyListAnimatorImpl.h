@@ -28,7 +28,7 @@
 #include "SVGAnimationFunction.h"
 #include "SVGValuePropertyListAnimator.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGLengthListAnimator final : public SVGValuePropertyListAnimator<SVGLengthList, SVGAnimationLengthListFunction> {
     using Base = SVGValuePropertyListAnimator<SVGLengthList, SVGAnimationLengthListFunction>;
@@ -50,4 +50,4 @@ public:
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

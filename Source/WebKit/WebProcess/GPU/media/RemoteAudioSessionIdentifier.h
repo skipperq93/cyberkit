@@ -29,11 +29,11 @@
 
 #include <wtf/ObjectIdentifier.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 enum RemoteAudioSessionIdentifierType { };
 using RemoteAudioSessionIdentifier = ObjectIdentifier<RemoteAudioSessionIdentifierType>;
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

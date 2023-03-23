@@ -31,7 +31,7 @@
 #include <wtf/NeverDestroyed.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 const GamepadButtonRole maximumGamepadButton = GamepadButtonRole::CenterClusterCenter;
 const size_t numberOfStandardGamepadButtonsWithoutHomeButton = static_cast<size_t>(maximumGamepadButton);
@@ -53,6 +53,6 @@ const String& xrStandardGamepadMappingString()
 #endif
 
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(GAMEPAD)

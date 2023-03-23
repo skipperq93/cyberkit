@@ -34,15 +34,15 @@ namespace API {
 
 class PageHandle : public ObjectImpl<Object::Type::PageHandle> {
 public:
-    static Ref<PageHandle> create(WebKit::WebPageProxyIdentifier pageProxyID, WebCore::PageIdentifier webPageID)
+    static Ref<PageHandle> create(WebKit::WebPageProxyIdentifier pageProxyID, CyberCore::PageIdentifier webPageID)
     {
         return adoptRef(*new PageHandle(pageProxyID, webPageID, false));
     }
-    static Ref<PageHandle> createAutoconverting(WebKit::WebPageProxyIdentifier pageProxyID, WebCore::PageIdentifier webPageID)
+    static Ref<PageHandle> createAutoconverting(WebKit::WebPageProxyIdentifier pageProxyID, CyberCore::PageIdentifier webPageID)
     {
         return adoptRef(*new PageHandle(pageProxyID, webPageID, true));
     }
-    static Ref<PageHandle> create(WebKit::WebPageProxyIdentifier pageProxyID, WebCore::PageIdentifier webPageID, bool autoconverting)
+    static Ref<PageHandle> create(WebKit::WebPageProxyIdentifier pageProxyID, CyberCore::PageIdentifier webPageID, bool autoconverting)
     {
         return adoptRef(*new PageHandle(pageProxyID, webPageID, autoconverting));
     }
@@ -50,11 +50,11 @@ public:
     virtual ~PageHandle() = default;
 
     WebKit::WebPageProxyIdentifier pageProxyID() const { return m_pageProxyID; }
-    WebCore::PageIdentifier webPageID() const { return m_webPageID; }
+    CyberCore::PageIdentifier webPageID() const { return m_webPageID; }
     bool isAutoconverting() const { return m_isAutoconverting; }
 
 private:
-    PageHandle(WebKit::WebPageProxyIdentifier pageProxyID, WebCore::PageIdentifier webPageID, bool isAutoconverting)
+    PageHandle(WebKit::WebPageProxyIdentifier pageProxyID, CyberCore::PageIdentifier webPageID, bool isAutoconverting)
         : m_pageProxyID(pageProxyID)
         , m_webPageID(webPageID)
         , m_isAutoconverting(isAutoconverting)
@@ -62,7 +62,7 @@ private:
     }
 
     const WebKit::WebPageProxyIdentifier m_pageProxyID;
-    const WebCore::PageIdentifier m_webPageID;
+    const CyberCore::PageIdentifier m_webPageID;
     const bool m_isAutoconverting;
 };
 

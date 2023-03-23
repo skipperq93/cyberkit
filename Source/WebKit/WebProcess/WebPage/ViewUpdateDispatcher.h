@@ -38,7 +38,7 @@ namespace WTF {
 class WorkQueue;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class ViewUpdateDispatcher final: private IPC::MessageReceiver {
 public:
@@ -51,7 +51,7 @@ private:
     // IPC::MessageReceiver overrides.
     void didReceiveMessage(IPC::Connection&, IPC::Decoder&) override;
 
-    void visibleContentRectUpdate(WebCore::PageIdentifier, const VisibleContentRectUpdateInfo&);
+    void visibleContentRectUpdate(CyberCore::PageIdentifier, const VisibleContentRectUpdateInfo&);
 
     void dispatchVisibleContentRectUpdate();
 
@@ -67,9 +67,9 @@ private:
 
     Ref<WTF::WorkQueue> m_queue;
     Lock m_latestUpdateLock;
-    HashMap<WebCore::PageIdentifier, UniqueRef<UpdateData>> m_latestUpdate WTF_GUARDED_BY_LOCK(m_latestUpdateLock);
+    HashMap<CyberCore::PageIdentifier, UniqueRef<UpdateData>> m_latestUpdate WTF_GUARDED_BY_LOCK(m_latestUpdateLock);
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(UI_SIDE_COMPOSITING)

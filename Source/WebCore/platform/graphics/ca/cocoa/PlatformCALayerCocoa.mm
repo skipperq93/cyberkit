@@ -40,7 +40,7 @@
 #import "TileController.h"
 #import "TiledBacking.h"
 #import "WebActionDisablingCALayerDelegate.h"
-#import "WebCoreCALayerExtras.h"
+#import "CyberCoreCALayerExtras.h"
 #import "WebVideoContainerLayer.h"
 #import <pal/spi/cocoa/QuartzCoreSPI.h>
 #import <wtf/SoftLinking.h>
@@ -62,14 +62,14 @@
 #import "FontAntialiasingStateSaver.h"
 #import "WAKWindow.h"
 #import "WKGraphics.h"
-#import "WebCoreThread.h"
+#import "CyberCoreThread.h"
 #else
 #import "ThemeMac.h"
 #endif
 
 #import <pal/cocoa/AVFoundationSoftLink.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using LayerToPlatformCALayerMap = HashMap<void*, PlatformCALayer*>;
 
@@ -105,15 +105,15 @@ static MonotonicTime mediaTimeToCurrentTime(CFTimeInterval t)
     return MonotonicTime::now() + Seconds(t - CACurrentMediaTime());
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 // Delegate for animationDidStart callback
 @interface WebAnimationDelegate : NSObject {
-    WebCore::PlatformCALayer* m_owner;
+    CyberCore::PlatformCALayer* m_owner;
 }
 
 - (void)animationDidStart:(CAAnimation *)anim;
-- (void)setOwner:(WebCore::PlatformCALayer*)owner;
+- (void)setOwner:(CyberCore::PlatformCALayer*)owner;
 
 @end
 
@@ -121,7 +121,7 @@ static MonotonicTime mediaTimeToCurrentTime(CFTimeInterval t)
 
 - (void)animationDidStart:(CAAnimation *)animation
 {
-    using namespace WebCore;
+    using namespace CyberCore;
 #if PLATFORM(IOS_FAMILY)
     WebThreadLock();
 #endif
@@ -152,7 +152,7 @@ static MonotonicTime mediaTimeToCurrentTime(CFTimeInterval t)
 
 - (void)animationDidStop:(CAAnimation *)animation finished:(BOOL)finished
 {
-    using namespace WebCore;
+    using namespace CyberCore;
 #if PLATFORM(IOS_FAMILY)
     WebThreadLock();
 #endif
@@ -175,14 +175,14 @@ static MonotonicTime mediaTimeToCurrentTime(CFTimeInterval t)
         m_owner->animationEnded(animationKey);
 }
 
-- (void)setOwner:(WebCore::PlatformCALayer*)owner
+- (void)setOwner:(CyberCore::PlatformCALayer*)owner
 {
     m_owner = owner;
 }
 
 @end
 
-namespace WebCore {
+namespace CyberCore {
 
 void PlatformCALayerCocoa::setOwner(PlatformCALayerClient* owner)
 {
@@ -787,14 +787,14 @@ void PlatformCALayerCocoa::setContents(CFTypeRef value)
 }
 
 #if HAVE(IOSURFACE)
-void PlatformCALayerCocoa::setContents(const WebCore::IOSurface& surface)
+void PlatformCALayerCocoa::setContents(const CyberCore::IOSurface& surface)
 {
     setContents(surface.asLayerContents());
 }
 
 void PlatformCALayerCocoa::setContents(const WTF::MachSendRight& surfaceHandle)
 {
-    auto surface = WebCore::IOSurface::createFromSendRight(surfaceHandle.copySendRight());
+    auto surface = CyberCore::IOSurface::createFromSendRight(surfaceHandle.copySendRight());
     setContents(*surface);
 }
 #endif
@@ -1193,9 +1193,9 @@ PlatformCALayer::RepaintRectList PlatformCALayer::collectRectsToPaint(GraphicsCo
     return dirtyRects;
 }
 
-void PlatformCALayer::drawLayerContents(GraphicsContext& graphicsContext, WebCore::PlatformCALayer* platformCALayer, RepaintRectList& dirtyRects, GraphicsLayerPaintBehavior layerPaintBehavior)
+void PlatformCALayer::drawLayerContents(GraphicsContext& graphicsContext, CyberCore::PlatformCALayer* platformCALayer, RepaintRectList& dirtyRects, GraphicsLayerPaintBehavior layerPaintBehavior)
 {
-    WebCore::PlatformCALayerClient* layerContents = platformCALayer->owner();
+    CyberCore::PlatformCALayerClient* layerContents = platformCALayer->owner();
     if (!layerContents)
         return;
 
@@ -1318,4 +1318,4 @@ AVPlayerLayer *PlatformCALayerCocoa::avPlayerLayer() const
     return nil;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

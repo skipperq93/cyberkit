@@ -25,7 +25,7 @@
 #include "config.h"
 #include "AuthenticationChallenge.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 AuthenticationChallengeBase::AuthenticationChallengeBase()
     : m_isNull(true)
@@ -82,7 +82,7 @@ void AuthenticationChallengeBase::nullify()
     m_isNull = true;
 }
 
-bool AuthenticationChallengeBase::equalForWebKitLegacyChallengeComparison(const AuthenticationChallenge& a, const AuthenticationChallenge& b)
+bool AuthenticationChallengeBase::equalForCyberKitLegacyChallengeComparison(const AuthenticationChallenge& a, const AuthenticationChallenge& b)
 {
     if (a.isNull() && b.isNull())
         return true;
@@ -99,7 +99,7 @@ bool AuthenticationChallengeBase::equalForWebKitLegacyChallengeComparison(const 
     if (a.previousFailureCount() != b.previousFailureCount())
         return false;
         
-    if (!ResourceResponseBase::equalForWebKitLegacyChallengeComparison(a.failureResponse(), b.failureResponse()))
+    if (!ResourceResponseBase::equalForCyberKitLegacyChallengeComparison(a.failureResponse(), b.failureResponse()))
         return false;
 
     if (a.error() != b.error())

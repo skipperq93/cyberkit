@@ -46,7 +46,7 @@
 #include <wtf/Vector.h>
 #include <wtf/WeakHashSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class MediaStream;
 class OrientationNotifier;
@@ -141,7 +141,7 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM)
 

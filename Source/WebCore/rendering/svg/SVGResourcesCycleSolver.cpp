@@ -40,7 +40,7 @@
 #define LOG_DEBUG_CYCLE(...) ((void)0)
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 SVGResourcesCycleSolver::SVGResourcesCycleSolver(RenderElement& renderer, SVGResources& resources)
     : m_renderer(renderer)

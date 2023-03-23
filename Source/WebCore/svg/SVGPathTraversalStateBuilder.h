@@ -23,7 +23,7 @@
 
 #include "SVGPathConsumer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class FloatPoint;
 class PathTraversalState;
@@ -59,4 +59,4 @@ private:
     unsigned m_segmentIndex { 0 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

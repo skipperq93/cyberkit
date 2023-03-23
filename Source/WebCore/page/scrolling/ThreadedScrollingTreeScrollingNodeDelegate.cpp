@@ -34,7 +34,7 @@
 #include "ScrollingTreeFrameScrollingNode.h"
 #include "ScrollingTreeScrollingNode.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 ThreadedScrollingTreeScrollingNodeDelegate::ThreadedScrollingTreeScrollingNodeDelegate(ScrollingTreeScrollingNode& scrollingNode)
     : ScrollingTreeScrollingNodeDelegate(scrollingNode)
@@ -222,6 +222,6 @@ void ThreadedScrollingTreeScrollingNodeDelegate::handleKeyboardScrollRequest(con
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ASYNC_SCROLLING) && ENABLE(SCROLLING_THREAD)

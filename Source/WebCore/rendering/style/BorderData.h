@@ -28,7 +28,7 @@
 #include "LengthSize.h"
 #include "NinePieceImage.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class OutlineValue;
 
@@ -148,4 +148,4 @@ WTF::TextStream& operator<<(WTF::TextStream&, const BorderValue&);
 WTF::TextStream& operator<<(WTF::TextStream&, const OutlineValue&);
 WTF::TextStream& operator<<(WTF::TextStream&, const BorderData&);
 
-} // namespace WebCore
+} // namespace CyberCore

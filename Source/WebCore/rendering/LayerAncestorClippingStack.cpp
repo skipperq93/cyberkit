@@ -31,7 +31,7 @@
 #include "ScrollingCoordinator.h"
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 LayerAncestorClippingStack::LayerAncestorClippingStack(Vector<CompositedClipData>&& clipDataStack)
     : m_stack(WTF::map(WTFMove(clipDataStack), [](auto&& clipDataEntry) { return ClippingStackEntry { WTFMove(clipDataEntry), 0, nullptr, nullptr }; }))
@@ -203,5 +203,5 @@ TextStream& operator<<(TextStream& ts, const LayerAncestorClippingStack& clipSta
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 

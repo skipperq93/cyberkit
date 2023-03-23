@@ -44,7 +44,7 @@
 #include "RenderLayerScrollableArea.h"
 #include "Settings.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static bool areRectsFullyAligned(FocusDirection, const LayoutRect&, const LayoutRect&);
 static bool areRectsPartiallyAligned(FocusDirection, const LayoutRect&, const LayoutRect&);
@@ -771,4 +771,4 @@ HTMLFrameOwnerElement* frameOwnerElement(FocusCandidate& candidate)
     return candidate.isFrameOwnerElement() ? downcast<HTMLFrameOwnerElement>(candidate.visibleNode) : nullptr;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

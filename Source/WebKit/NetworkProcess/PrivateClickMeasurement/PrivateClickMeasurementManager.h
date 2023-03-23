@@ -48,7 +48,7 @@ public:
     using ApplicationBundleIdentifier = String;
 
     void storeUnattributed(PrivateClickMeasurement&&, CompletionHandler<void()>&&) final;
-    void handleAttribution(AttributionTriggerData&&, const URL& requestURL, WebCore::RegistrableDomain&& redirectDomain, const URL& firstPartyURL, const ApplicationBundleIdentifier&) final;
+    void handleAttribution(AttributionTriggerData&&, const URL& requestURL, CyberCore::RegistrableDomain&& redirectDomain, const URL& firstPartyURL, const ApplicationBundleIdentifier&) final;
     void clear(CompletionHandler<void()>&&) final;
     void clearForRegistrableDomain(RegistrableDomain&&, CompletionHandler<void()>&&) final;
     void migratePrivateClickMeasurementFromLegacyStorage(PrivateClickMeasurement&&, PrivateClickMeasurementAttributionType) final;
@@ -66,23 +66,23 @@ public:
     void startTimerImmediatelyForTesting() final;
     void setPrivateClickMeasurementAppBundleIDForTesting(ApplicationBundleIdentifier&&);
     void destroyStoreForTesting(CompletionHandler<void()>&&) final;
-    void allowTLSCertificateChainForLocalPCMTesting(const WebCore::CertificateInfo&) final;
+    void allowTLSCertificateChainForLocalPCMTesting(const CyberCore::CertificateInfo&) final;
 
 private:
     PCM::Store& store();
     const PCM::Store& store() const;
     void startTimer(Seconds);
-    void getTokenPublicKey(PrivateClickMeasurement&&, WebCore::PCM::AttributionReportEndpoint, PrivateClickMeasurement::PcmDataCarried, Function<void(PrivateClickMeasurement&& attribution, const String& publicKeyBase64URL)>&&);
-    void getTokenPublicKey(AttributionTriggerData&&, WebCore::PCM::AttributionReportEndpoint, PrivateClickMeasurement::PcmDataCarried, Function<void(AttributionTriggerData&&, const String& publicKeyBase64URL)>&&);
+    void getTokenPublicKey(PrivateClickMeasurement&&, CyberCore::PCM::AttributionReportEndpoint, PrivateClickMeasurement::PcmDataCarried, Function<void(PrivateClickMeasurement&& attribution, const String& publicKeyBase64URL)>&&);
+    void getTokenPublicKey(AttributionTriggerData&&, CyberCore::PCM::AttributionReportEndpoint, PrivateClickMeasurement::PcmDataCarried, Function<void(AttributionTriggerData&&, const String& publicKeyBase64URL)>&&);
     void configureForTokenSigning(PrivateClickMeasurement::PcmDataCarried&, URL& tokenSignatureURL, std::optional<URL> givenTokenSignatureURL);
     std::optional<String> getSignatureBase64URLFromTokenSignatureResponse(const String& errorDescription, const RefPtr<JSON::Object>&);
     void getSignedUnlinkableTokenForSource(PrivateClickMeasurement&&);
     void getSignedUnlinkableTokenForDestination(SourceSite&&, AttributionDestinationSite&&, AttributionTriggerData&&, const ApplicationBundleIdentifier&);
     void insertPrivateClickMeasurement(PrivateClickMeasurement&&, PrivateClickMeasurementAttributionType, CompletionHandler<void()>&&);
-    void clearSentAttribution(PrivateClickMeasurement&&, WebCore::PCM::AttributionReportEndpoint);
+    void clearSentAttribution(PrivateClickMeasurement&&, CyberCore::PCM::AttributionReportEndpoint);
     void attribute(SourceSite&&, AttributionDestinationSite&&, AttributionTriggerData&&, const ApplicationBundleIdentifier&);
-    void fireConversionRequest(const PrivateClickMeasurement&, WebCore::PCM::AttributionReportEndpoint);
-    void fireConversionRequestImpl(const PrivateClickMeasurement&, WebCore::PCM::AttributionReportEndpoint);
+    void fireConversionRequest(const PrivateClickMeasurement&, CyberCore::PCM::AttributionReportEndpoint);
+    void fireConversionRequestImpl(const PrivateClickMeasurement&, CyberCore::PCM::AttributionReportEndpoint);
     void clearExpired();
     bool featureEnabled() const;
     bool debugModeEnabled() const;

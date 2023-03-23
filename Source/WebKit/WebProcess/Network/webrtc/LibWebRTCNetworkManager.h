@@ -33,18 +33,18 @@
 #include <CyberCore/RTCNetworkManager.h>
 #include <CyberCore/ScriptExecutionContextIdentifier.h>
 
-namespace WebKit {
+namespace CyberKit {
 
-class LibWebRTCNetworkManager final : public WebCore::RTCNetworkManager, public rtc::NetworkManagerBase, public webrtc::MdnsResponderInterface, public WebRTCMonitor::Observer {
+class LibWebRTCNetworkManager final : public CyberCore::RTCNetworkManager, public rtc::NetworkManagerBase, public webrtc::MdnsResponderInterface, public WebRTCMonitor::Observer {
     WTF_MAKE_FAST_ALLOCATED;
 public:
-    static LibWebRTCNetworkManager* getOrCreate(WebCore::ScriptExecutionContextIdentifier);
+    static LibWebRTCNetworkManager* getOrCreate(CyberCore::ScriptExecutionContextIdentifier);
     ~LibWebRTCNetworkManager();
 
 private:
-    explicit LibWebRTCNetworkManager(WebCore::ScriptExecutionContextIdentifier);
+    explicit LibWebRTCNetworkManager(CyberCore::ScriptExecutionContextIdentifier);
 
-    // WebCore::RTCNetworkManager
+    // CyberCore::RTCNetworkManager
     void setICECandidateFiltering(bool doFiltering) final { m_useMDNSCandidates = doFiltering; }
     void unregisterMDNSNames() final;
     void close() final;
@@ -62,7 +62,7 @@ private:
     void networksChanged(const Vector<RTCNetwork>&, const RTCNetwork::IPAddress&, const RTCNetwork::IPAddress&) final;
     void networkProcessCrashed() final;
 
-    WebCore::ScriptExecutionContextIdentifier m_documentIdentifier;
+    CyberCore::ScriptExecutionContextIdentifier m_documentIdentifier;
     bool m_useMDNSCandidates { true };
     bool m_receivedNetworkList { false };
 #if ASSERT_ENABLED
@@ -70,6 +70,6 @@ private:
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

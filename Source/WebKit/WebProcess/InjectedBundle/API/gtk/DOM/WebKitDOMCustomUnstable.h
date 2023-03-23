@@ -16,13 +16,13 @@
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef WebKitDOMCustomUnstable_h
-#define WebKitDOMCustomUnstable_h
+#ifndef CyberKitDOMCustomUnstable_h
+#define CyberKitDOMCustomUnstable_h
 
 #ifdef WEBKIT_DOM_USE_UNSTABLE_API
 #define __WEBKITDOM_H_INSIDE__
-#include <webkitdom/WebKitDOMDOMWindow.h>
+#include <webkitdom/CyberKitDOMDOMWindow.h>
 #undef __WEBKITDOM_H_INSIDE__
 #endif /* WEBKIT_DOM_USE_UNSTABLE_API */
 
-#endif /* WebKitDOMCustomUnstable_h */
+#endif /* CyberKitDOMCustomUnstable_h */

@@ -28,7 +28,7 @@
 #include "ImageBuffer.h"
 #include "PaintInfo.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class AffineTransform;
 class FloatRect;
@@ -95,4 +95,4 @@ private:
     int m_renderingFlags { 0 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

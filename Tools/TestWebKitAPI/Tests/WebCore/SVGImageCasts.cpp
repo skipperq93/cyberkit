@@ -32,7 +32,7 @@
 
 namespace TestWebKitAPI {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 class TestImageObserver : public ImageObserver {
 public:

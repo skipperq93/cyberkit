@@ -34,7 +34,7 @@
 #include <pal/spi/cg/CoreGraphicsSPI.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 #if USE(CG)
 using KnownColorSpaceAccessor = CGColorSpaceRef();

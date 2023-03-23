@@ -30,11 +30,11 @@
 #include "SharedMemory.h"
 #include "SharedStringHashTableReadOnly.h"
 
-namespace WebCore {
+namespace CyberCore {
 class SecurityOriginData;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebSWOriginTable {
     WTF_MAKE_FAST_ALLOCATED;
@@ -43,7 +43,7 @@ public:
 
     bool isImported() const { return m_isImported; }
     void setIsImported() { m_isImported = true; }
-    bool contains(const WebCore::SecurityOriginData&) const;
+    bool contains(const CyberCore::SecurityOriginData&) const;
     void setSharedMemory(const SharedMemory::Handle&);
 
 private:
@@ -51,6 +51,6 @@ private:
     bool m_isImported { false };
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(SERVICE_WORKER)

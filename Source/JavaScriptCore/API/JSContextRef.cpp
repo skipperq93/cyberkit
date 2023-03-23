@@ -122,7 +122,7 @@ JSGlobalContextRef JSGlobalContextCreate(JSClassRef globalObjectClass)
 #if OS(DARWIN)
     // If the application was linked before JSGlobalContextCreate was changed to use a unique VM,
     // we use a shared one for backwards compatibility.
-    if (NSVersionOfLinkTimeLibrary("JavaScriptCore") <= webkitFirstVersionWithConcurrentGlobalContexts) {
+    if (NSVersionOfLinkTimeLibrary("CyberScriptCore") <= webkitFirstVersionWithConcurrentGlobalContexts) {
         return JSGlobalContextCreateInGroup(toRef(&VM::sharedInstance()), globalObjectClass);
     }
 #endif // OS(DARWIN)

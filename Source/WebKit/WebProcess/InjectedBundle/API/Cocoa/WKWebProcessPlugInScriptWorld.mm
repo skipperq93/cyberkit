@@ -26,25 +26,25 @@
 #import "config.h"
 #import "WKWebProcessPlugInScriptWorldInternal.h"
 
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 
 @implementation WKWebProcessPlugInScriptWorld {
-    API::ObjectStorage<WebKit::InjectedBundleScriptWorld> _world;
+    API::ObjectStorage<CyberKit::InjectedBundleScriptWorld> _world;
 }
 
 + (WKWebProcessPlugInScriptWorld *)world
 {
-    return WebKit::wrapper(WebKit::InjectedBundleScriptWorld::create());
+    return CyberKit::wrapper(CyberKit::InjectedBundleScriptWorld::create());
 }
 
 + (WKWebProcessPlugInScriptWorld *)normalWorld
 {
-    return WebKit::wrapper(WebKit::InjectedBundleScriptWorld::normalWorld());
+    return CyberKit::wrapper(CyberKit::InjectedBundleScriptWorld::normalWorld());
 }
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainRunLoop(WKWebProcessPlugInScriptWorld.class, self))
+    if (CyberCoreObjCScheduleDeallocateOnMainRunLoop(WKWebProcessPlugInScriptWorld.class, self))
         return;
     _world->~InjectedBundleScriptWorld();
     [super dealloc];
@@ -70,7 +70,7 @@
     return _world->name();
 }
 
-- (WebKit::InjectedBundleScriptWorld&)_scriptWorld
+- (CyberKit::InjectedBundleScriptWorld&)_scriptWorld
 {
     return *_world;
 }

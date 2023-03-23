@@ -31,22 +31,22 @@
 #include <CyberCore/ImageBufferIOSurfaceBackend.h>
 #include <wtf/IsoMalloc.h>
 
-namespace WebCore {
+namespace CyberCore {
 class ProcessIdentity;
 }
 
 namespace WebKit {
 
-class ImageBufferShareableMappedIOSurfaceBackend final : public WebCore::ImageBufferIOSurfaceBackend, public ImageBufferBackendHandleSharing {
+class ImageBufferShareableMappedIOSurfaceBackend final : public CyberCore::ImageBufferIOSurfaceBackend, public ImageBufferBackendHandleSharing {
     WTF_MAKE_ISO_ALLOCATED(ImageBufferShareableMappedIOSurfaceBackend);
     WTF_MAKE_NONCOPYABLE(ImageBufferShareableMappedIOSurfaceBackend);
 public:
-    static std::unique_ptr<ImageBufferShareableMappedIOSurfaceBackend> create(const Parameters&, const WebCore::ImageBufferCreationContext&);
+    static std::unique_ptr<ImageBufferShareableMappedIOSurfaceBackend> create(const Parameters&, const CyberCore::ImageBufferCreationContext&);
     static std::unique_ptr<ImageBufferShareableMappedIOSurfaceBackend> create(const Parameters&, ImageBufferBackendHandle);
 
-    using WebCore::ImageBufferIOSurfaceBackend::ImageBufferIOSurfaceBackend;
+    using CyberCore::ImageBufferIOSurfaceBackend::ImageBufferIOSurfaceBackend;
 
-    void setOwnershipIdentity(const WebCore::ProcessIdentity&);
+    void setOwnershipIdentity(const CyberCore::ProcessIdentity&);
 
     ImageBufferBackendHandle createBackendHandle(SharedMemory::Protection = SharedMemory::Protection::ReadWrite) const final;
 
@@ -54,9 +54,9 @@ private:
     // ImageBufferBackendSharing
     ImageBufferBackendSharing* toBackendSharing() final { return this; }
 
-    RefPtr<WebCore::NativeImage> copyNativeImage(WebCore::BackingStoreCopy = WebCore::CopyBackingStore) const final;
+    RefPtr<CyberCore::NativeImage> copyNativeImage(CyberCore::BackingStoreCopy = CyberCore::CopyBackingStore) const final;
 
-    mutable WebCore::IOSurfaceSeed m_lastSeedWhenCopyingImage { 0 };
+    mutable CyberCore::IOSurfaceSeed m_lastSeedWhenCopyingImage { 0 };
 };
 
 } // namespace WebKit

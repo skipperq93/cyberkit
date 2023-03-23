@@ -3,11 +3,11 @@ global:
   jsc_*;
   webkit_*;
   extern "C++" {
-    "WebKit::GPUProcessMain(int, char**)";
-    "WebKit::NetworkProcessMain(int, char**)";
-    "WebKit::WebKitExtensionManager::initialize(WebKit::InjectedBundle*, API::Object*)";
-    "WebKit::WebKitExtensionManager::singleton()";
-    "WebKit::WebProcessMain(int, char**)";
+    "CyberKit::GPUProcessMain(int, char**)";
+    "CyberKit::NetworkProcessMain(int, char**)";
+    "CyberKit::CyberKitExtensionManager::initialize(CyberKit::InjectedBundle*, API::Object*)";
+    "CyberKit::CyberKitExtensionManager::singleton()";
+    "CyberKit::WebProcessMain(int, char**)";
   };
 local:
   *;

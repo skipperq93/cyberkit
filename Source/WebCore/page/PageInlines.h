@@ -28,7 +28,7 @@
 #include "MediaProducer.h"
 #include "Page.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 inline bool Page::isAudioMuted() const
 {

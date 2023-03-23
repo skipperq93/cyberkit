@@ -34,7 +34,7 @@ typedef struct _GdkSnapshot GdkSnapshot;
 typedef GdkSnapshot GtkSnapshot;
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 class IntRect;
 }
 
@@ -54,7 +54,7 @@ public:
 #if USE(GTK4)
     virtual void snapshot(GtkSnapshot*) = 0;
 #else
-    virtual bool paint(cairo_t*, const WebCore::IntRect&) = 0;
+    virtual bool paint(cairo_t*, const CyberCore::IntRect&) = 0;
 #endif
     virtual void realize() { };
     virtual void unrealize() { };

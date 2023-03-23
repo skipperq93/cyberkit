@@ -37,8 +37,8 @@
 #include <CyberCore/HTMLInputElement.h>
 #include <CyberCore/HTMLTextAreaElement.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 InjectedBundlePageFormClient::InjectedBundlePageFormClient(const WKBundlePageFormClientBase* client)
 {
@@ -157,7 +157,7 @@ void InjectedBundlePageFormClient::willSubmitForm(WebPage* page, HTMLFormElement
     userData = adoptRef(toImpl(userDataToPass));
 }
 
-void InjectedBundlePageFormClient::didAssociateFormControls(WebPage* page, const Vector<RefPtr<WebCore::Element>>& elements, WebFrame* frame)
+void InjectedBundlePageFormClient::didAssociateFormControls(WebPage* page, const Vector<RefPtr<CyberCore::Element>>& elements, WebFrame* frame)
 {
     if (!m_client.didAssociateFormControls && !m_client.didAssociateFormControlsForFrame)
         return;
@@ -181,4 +181,4 @@ bool InjectedBundlePageFormClient::shouldNotifyOnFormChanges(WebPage* page)
     return m_client.shouldNotifyOnFormChanges(toAPI(page), m_client.base.clientInfo);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

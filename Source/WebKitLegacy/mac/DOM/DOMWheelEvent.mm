@@ -36,55 +36,55 @@
 #import <CyberCore/WheelEvent.h>
 #import <wtf/GetPtr.h>
 
-#define IMPL static_cast<WebCore::WheelEvent*>(reinterpret_cast<WebCore::Event*>(_internal))
+#define IMPL static_cast<CyberCore::WheelEvent*>(reinterpret_cast<CyberCore::Event*>(_internal))
 
 @implementation DOMWheelEvent
 
 - (double)deltaX
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->deltaX();
 }
 
 - (double)deltaY
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->deltaY();
 }
 
 - (double)deltaZ
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->deltaZ();
 }
 
 - (unsigned)deltaMode
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->deltaMode();
 }
 
 - (int)wheelDeltaX
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->wheelDeltaX();
 }
 
 - (int)wheelDeltaY
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->wheelDeltaY();
 }
 
 - (int)wheelDelta
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->wheelDelta();
 }
 
 - (BOOL)webkitDirectionInvertedFromDevice
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->webkitDirectionInvertedFromDevice();
 }
 
@@ -95,15 +95,15 @@
 
 - (void)initWheelEvent:(int)inWheelDeltaX wheelDeltaY:(int)inWheelDeltaY view:(DOMAbstractView *)view screenX:(int)screenX screenY:(int)screenY clientX:(int)clientX clientY:(int)clientY ctrlKey:(BOOL)ctrlKey altKey:(BOOL)altKey shiftKey:(BOOL)shiftKey metaKey:(BOOL)metaKey
 {
-    WebCore::JSMainThreadNullState state;
-    IMPL->initWebKitWheelEvent(inWheelDeltaX, inWheelDeltaY, toWindowProxy(view), screenX, screenY, clientX, clientY, ctrlKey, altKey, shiftKey, metaKey);
+    CyberCore::JSMainThreadNullState state;
+    IMPL->initCyberKitWheelEvent(inWheelDeltaX, inWheelDeltaY, toWindowProxy(view), screenX, screenY, clientX, clientY, ctrlKey, altKey, shiftKey, metaKey);
 }
 
 @end
 
-WebCore::WheelEvent* core(DOMWheelEvent *wrapper)
+CyberCore::WheelEvent* core(DOMWheelEvent *wrapper)
 {
-    return wrapper ? reinterpret_cast<WebCore::WheelEvent*>(wrapper->_internal) : 0;
+    return wrapper ? reinterpret_cast<CyberCore::WheelEvent*>(wrapper->_internal) : 0;
 }
 
 #undef IMPL

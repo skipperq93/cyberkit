@@ -43,7 +43,7 @@
 
 #import "CoreVideoSoftLink.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static std::optional<CGDirectDisplayID> updateDisplayID(CGDirectDisplayID displayID)
 {
@@ -209,7 +209,7 @@ void CGDisplayStreamScreenCaptureSource::screenCaptureDevices(Vector<CaptureDevi
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM) && PLATFORM(MAC)
 

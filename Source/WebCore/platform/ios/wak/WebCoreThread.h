@@ -23,14 +23,14 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef WebCoreThread_h
-#define WebCoreThread_h
+#ifndef CyberCoreThread_h
+#define CyberCoreThread_h
 
 #if TARGET_OS_IPHONE
 
 #import <CoreGraphics/CoreGraphics.h>
 
-// Use __has_include here so that things work when rewritten into WebKitLegacy headers.
+// Use __has_include here so that things work when rewritten into CyberKitLegacy headers.
 #if __has_include(<CyberCore/PlatformExportMacros.h>)
 #import <CyberCore/PlatformExportMacros.h>
 #endif
@@ -94,4 +94,4 @@ WEBCORE_EXPORT NSRunLoop* WebThreadNSRunLoop(void);
 
 #endif // TARGET_OS_IPHONE
 
-#endif // WebCoreThread_h
+#endif // CyberCoreThread_h

@@ -60,7 +60,7 @@
 #include <pal/cf/AudioToolboxSoftLink.h>
 #include <pal/cf/CoreMediaSoftLink.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 #if PLATFORM(MAC)
 CoreAudioCaptureSourceFactory& CoreAudioCaptureSourceFactory::singleton()
@@ -371,6 +371,6 @@ void CoreAudioCaptureSource::handleNewCurrentMicrophoneDevice(const CaptureDevic
     });
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM)

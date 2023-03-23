@@ -35,7 +35,7 @@
 #import <wtf/NeverDestroyed.h>
 #import <wtf/StdLibExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 ScrollbarTheme& ScrollbarTheme::nativeTheme()
 {
@@ -118,6 +118,6 @@ bool ScrollbarThemeIOS::paint(Scrollbar&, GraphicsContext&, const IntRect& /*dam
     return true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(IOS_FAMILY)

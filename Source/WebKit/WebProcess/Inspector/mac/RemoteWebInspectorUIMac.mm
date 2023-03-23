@@ -30,8 +30,8 @@
 
 #if PLATFORM(MAC)
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 bool RemoteWebInspectorUI::canSave(InspectorFrontendClient::SaveMode saveMode)
 {
@@ -60,6 +60,6 @@ String RemoteWebInspectorUI::localizedStringsURL() const
     return [WKInspectorViewController URLForInspectorResource:@"localizedStrings.js"].absoluteString;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(MAC)

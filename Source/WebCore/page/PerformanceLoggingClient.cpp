@@ -26,7 +26,7 @@
 #include "config.h"
 #include "PerformanceLoggingClient.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 String PerformanceLoggingClient::synchronousScrollingReasonsAsString(OptionSet<SynchronousScrollingReason> reasons)
 {
@@ -43,4 +43,4 @@ String PerformanceLoggingClient::synchronousScrollingReasonsAsString(OptionSet<S
     return string.left(string.length() - 1);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

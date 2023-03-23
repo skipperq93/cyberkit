@@ -25,7 +25,7 @@
 
 #include "FloatPoint.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class FloatPoint3D {
 public:
@@ -202,6 +202,6 @@ inline float FloatPoint3D::distanceTo(const FloatPoint3D& a) const
 
 WEBCORE_EXPORT WTF::TextStream& operator<<(WTF::TextStream&, const FloatPoint3D&);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // FloatPoint3D_h

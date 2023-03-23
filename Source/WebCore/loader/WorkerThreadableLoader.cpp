@@ -53,7 +53,7 @@
 #include <wtf/MainThread.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WorkerThreadableLoader::WorkerThreadableLoader(WorkerOrWorkletGlobalScope& workerOrWorkletGlobalScope, ThreadableLoaderClient& client, const String& taskMode, ResourceRequest&& request, const ThreadableLoaderOptions& options, const String& referrer)
     : m_workerClientWrapper(ThreadableLoaderClientWrapper::create(client, options.initiatorType))
@@ -293,4 +293,4 @@ void WorkerThreadableLoader::MainThreadBridge::didFinishTiming(const ResourceTim
     }, m_taskMode);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

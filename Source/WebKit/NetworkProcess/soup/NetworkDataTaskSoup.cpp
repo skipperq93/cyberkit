@@ -51,7 +51,7 @@
 #include <wtf/glib/RunLoopSourcePriority.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 static const size_t gDefaultReadBufferSize = 8192;
 
@@ -192,7 +192,7 @@ void NetworkDataTaskSoup::createRequest(ResourceRequest&& request, WasBlockingCo
     bool shouldBlockCookies = wasBlockingCookies == WasBlockingCookies::Yes ? true : m_storedCredentialsPolicy == StoredCredentialsPolicy::EphemeralStateless;
     if (!shouldBlockCookies) {
         if (auto* networkStorageSession = m_session->networkStorageSession())
-            shouldBlockCookies = networkStorageSession->shouldBlockCookies(m_currentRequest, m_frameID, m_pageID, WebCore::ShouldRelaxThirdPartyCookieBlocking::No);
+            shouldBlockCookies = networkStorageSession->shouldBlockCookies(m_currentRequest, m_frameID, m_pageID, CyberCore::ShouldRelaxThirdPartyCookieBlocking::No);
     }
     if (shouldBlockCookies)
         soup_message_disable_feature(m_soupMessage.get(), SOUP_TYPE_COOKIE_JAR);
@@ -953,7 +953,7 @@ void NetworkDataTaskSoup::continueHTTPRedirection()
 
         String originalContentType = m_firstRequest.httpContentType();
         if (!originalContentType.isEmpty())
-            request.setHTTPHeaderField(WebCore::HTTPHeaderName::ContentType, originalContentType);
+            request.setHTTPHeaderField(CyberCore::HTTPHeaderName::ContentType, originalContentType);
     }
 
     // Clear the user agent to ensure a new one is computed.
@@ -1162,20 +1162,20 @@ void NetworkDataTaskSoup::gotHeadersCallback(SoupMessage* soupMessage, NetworkDa
     task->didGetHeaders();
 }
 
-static WebCore::NetworkLoadPriority toNetworkLoadPriority(SoupMessagePriority priority)
+static CyberCore::NetworkLoadPriority toNetworkLoadPriority(SoupMessagePriority priority)
 {
     switch (priority) {
     case SOUP_MESSAGE_PRIORITY_VERY_LOW:
     case SOUP_MESSAGE_PRIORITY_LOW:
-        return WebCore::NetworkLoadPriority::Low;
+        return CyberCore::NetworkLoadPriority::Low;
     case SOUP_MESSAGE_PRIORITY_NORMAL:
-        return WebCore::NetworkLoadPriority::Medium;
+        return CyberCore::NetworkLoadPriority::Medium;
     case SOUP_MESSAGE_PRIORITY_HIGH:
     case SOUP_MESSAGE_PRIORITY_VERY_HIGH:
-        return WebCore::NetworkLoadPriority::High;
+        return CyberCore::NetworkLoadPriority::High;
     }
 
-    return WebCore::NetworkLoadPriority::Unknown;
+    return CyberCore::NetworkLoadPriority::Unknown;
 }
 
 static AtomString soupHTTPVersionToString(SoupHTTPVersion version)
@@ -1220,10 +1220,10 @@ static String tlsProtocolVersionToString(GTlsProtocolVersion version)
 }
 #endif
 
-WebCore::AdditionalNetworkLoadMetricsForWebInspector& NetworkDataTaskSoup::additionalNetworkLoadMetricsForWebInspector()
+CyberCore::AdditionalNetworkLoadMetricsForWebInspector& NetworkDataTaskSoup::additionalNetworkLoadMetricsForWebInspector()
 {
     if (!m_networkLoadMetrics.additionalNetworkLoadMetricsForWebInspector)
-        m_networkLoadMetrics.additionalNetworkLoadMetricsForWebInspector = WebCore::AdditionalNetworkLoadMetricsForWebInspector::create();
+        m_networkLoadMetrics.additionalNetworkLoadMetricsForWebInspector = CyberCore::AdditionalNetworkLoadMetricsForWebInspector::create();
     return *m_networkLoadMetrics.additionalNetworkLoadMetricsForWebInspector;
 }
 
@@ -1646,7 +1646,7 @@ void NetworkDataTaskSoup::didStartRequest()
 #if USE(SOUP2)
     m_networkLoadMetrics.requestStart = MonotonicTime::now();
     if (!m_networkLoadMetrics.secureConnectionStart && m_currentRequest.url().protocolIs("https"_s))
-        m_networkLoadMetrics.secureConnectionStart = WebCore::reusedTLSConnectionSentinel;
+        m_networkLoadMetrics.secureConnectionStart = CyberCore::reusedTLSConnectionSentinel;
 #else
     auto* metrics = soup_message_get_metrics(m_soupMessage.get());
     auto domainLookupStart = Seconds::fromMicroseconds(soup_message_metrics_get_dns_start(metrics));
@@ -1661,7 +1661,7 @@ void NetworkDataTaskSoup::didStartRequest()
     m_networkLoadMetrics.connectStart = MonotonicTime::fromRawSeconds(connectStart.seconds());
     m_networkLoadMetrics.connectEnd = MonotonicTime::fromRawSeconds(connectEnd.seconds());
     if (!secureConnectionStart && m_currentRequest.url().protocolIs("https"_s))
-        m_networkLoadMetrics.secureConnectionStart = WebCore::reusedTLSConnectionSentinel;
+        m_networkLoadMetrics.secureConnectionStart = CyberCore::reusedTLSConnectionSentinel;
     else
         m_networkLoadMetrics.secureConnectionStart = MonotonicTime::fromRawSeconds(secureConnectionStart.seconds());
     m_networkLoadMetrics.requestStart = MonotonicTime::fromRawSeconds(requestStart.seconds());

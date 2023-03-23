@@ -26,7 +26,7 @@
 #ifndef WebLocalizableStringsInternal_h
 #define WebLocalizableStringsInternal_h
 
-// This file should be used for localizing strings internal to the WebKit and WebCore frameworks.
+// This file should be used for localizing strings internal to the CyberKit and CyberCore frameworks.
 
 #ifdef __cplusplus
 extern "C" {

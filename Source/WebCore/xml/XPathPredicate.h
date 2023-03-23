@@ -28,7 +28,7 @@
 
 #include "XPathExpressionNode.h"
 
-namespace WebCore {
+namespace CyberCore {
     namespace XPath {
         
         class Number final : public Expression {
@@ -113,4 +113,4 @@ namespace WebCore {
         bool predicateIsContextPositionSensitive(const Expression&);
 
     } // namespace XPath
-} // namespace WebCore
+} // namespace CyberCore

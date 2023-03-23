@@ -53,7 +53,7 @@ class JSObject;
 class JSValue;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class BarProp;
 class CSSRuleList;
@@ -85,7 +85,7 @@ class Screen;
 class Storage;
 class StyleMedia;
 class VisualViewport;
-class WebCoreOpaqueRoot;
+class CyberCoreOpaqueRoot;
 class WebKitNamespace;
 class WebKitPoint;
 
@@ -513,11 +513,11 @@ inline String DOMWindow::defaultStatus() const
     return m_defaultStatus;
 }
 
-WebCoreOpaqueRoot root(DOMWindow*);
+CyberCoreOpaqueRoot root(DOMWindow*);
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::DOMWindow)
-    static bool isType(const WebCore::AbstractDOMWindow& window) { return window.isLocalDOMWindow(); }
-    static bool isType(const WebCore::EventTarget& target) { return target.eventTargetInterface() == WebCore::DOMWindowEventTargetInterfaceType; }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::DOMWindow)
+    static bool isType(const CyberCore::AbstractDOMWindow& window) { return window.isLocalDOMWindow(); }
+    static bool isType(const CyberCore::EventTarget& target) { return target.eventTargetInterface() == CyberCore::DOMWindowEventTargetInterfaceType; }
 SPECIALIZE_TYPE_TRAITS_END()

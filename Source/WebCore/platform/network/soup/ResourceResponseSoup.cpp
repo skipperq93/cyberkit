@@ -34,7 +34,7 @@
 #include <wtf/text/CString.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 ResourceResponse::ResourceResponse(SoupMessage* soupMessage, const CString& sniffedContentType)
 {

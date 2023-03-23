@@ -70,7 +70,7 @@ static constexpr double velocityAccumulationCeil = 1.0;
 static constexpr double velocityAccumulationMax = 6.0;
 static constexpr Seconds scrollCaptureThreshold { 150_ms };
 
-namespace WebCore {
+namespace CyberCore {
 
 ScrollAnimationKinetic::PerAxisData::PerAxisData(double lower, double upper, double initialOffset, double initialVelocity)
     : m_lower(lower)
@@ -250,4 +250,4 @@ FloatSize ScrollAnimationKinetic::accumulateVelocityFromPreviousGesture(const Mo
     return FloatSize(horizontalData.velocity(), verticalData.velocity());
 }
 
-} // namespace WebCore
+} // namespace CyberCore

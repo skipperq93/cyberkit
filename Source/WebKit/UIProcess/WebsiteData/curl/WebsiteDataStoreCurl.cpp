@@ -27,7 +27,7 @@
 #include "WebsiteDataStore.h"
 
 #include "NetworkProcessMessages.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebProcessPool.h"
 #include "WebsiteDataStoreParameters.h"
 
@@ -39,7 +39,7 @@ void WebsiteDataStore::platformSetNetworkParameters(WebsiteDataStoreParameters& 
     parameters.networkSessionParameters.proxySettings = m_proxySettings;
 }
 
-void WebsiteDataStore::setNetworkProxySettings(WebCore::CurlProxySettings&& proxySettings)
+void WebsiteDataStore::setNetworkProxySettings(CyberCore::CurlProxySettings&& proxySettings)
 {
     m_proxySettings = WTFMove(proxySettings);
 

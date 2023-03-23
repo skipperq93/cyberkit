@@ -32,7 +32,7 @@
 #include "XMLHttpRequest.h"
 #include "XMLHttpRequestProgressEvent.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 const Seconds XMLHttpRequestProgressEventThrottle::minimumProgressEventDispatchingInterval { 50_ms }; // 50 ms per specification.
 
@@ -151,4 +151,4 @@ void XMLHttpRequestProgressEventThrottle::resume()
     });
 }
 
-} // namespace WebCore
+} // namespace CyberCore

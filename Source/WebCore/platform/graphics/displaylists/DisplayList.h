@@ -43,7 +43,7 @@ namespace WTF {
 class TextStream;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace DisplayList {
 
@@ -95,7 +95,7 @@ private:
     ItemBuffer* itemBufferIfExists() const { return m_items.get(); }
     WEBCORE_EXPORT ItemBuffer& itemBuffer();
 
-    void cacheImageBuffer(WebCore::ImageBuffer& imageBuffer)
+    void cacheImageBuffer(CyberCore::ImageBuffer& imageBuffer)
     {
         m_resourceHeap.add(imageBuffer.renderingResourceIdentifier(), Ref { imageBuffer });
     }
@@ -110,7 +110,7 @@ private:
         m_resourceHeap.add(font.renderingResourceIdentifier(), Ref { font });
     }
 
-    void cacheDecomposedGlyphs(WebCore::DecomposedGlyphs& decomposedGlyphs)
+    void cacheDecomposedGlyphs(CyberCore::DecomposedGlyphs& decomposedGlyphs)
     {
         m_resourceHeap.add(decomposedGlyphs.renderingResourceIdentifier(), Ref { decomposedGlyphs });
     }
@@ -131,4 +131,4 @@ WTF::TextStream& operator<<(WTF::TextStream&, const DisplayList&);
 
 } // DisplayList
 
-} // WebCore
+} // CyberCore

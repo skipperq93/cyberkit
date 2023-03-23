@@ -50,7 +50,7 @@ bool defaultPassiveTouchListenersAsDefaultOnDocument()
 
 bool defaultCSSOMViewScrollingAPIEnabled()
 {
-    static bool result = WebCore::IOSApplication::isIMDb() && !linkedOnOrAfterSDKWithBehavior(SDKAlignedBehavior::NoIMDbCSSOMViewScrollingQuirk);
+    static bool result = CyberCore::IOSApplication::isIMDb() && !linkedOnOrAfterSDKWithBehavior(SDKAlignedBehavior::NoIMDbCSSOMViewScrollingQuirk);
     return !result;
 }
 
@@ -114,7 +114,7 @@ bool defaultDisallowSyncXHRDuringPageDismissalEnabled()
 
 bool defaultAppleMailPaginationQuirkEnabled()
 {
-    return WebCore::MacApplication::isAppleMail();
+    return CyberCore::MacApplication::isAppleMail();
 }
 
 #endif
@@ -137,7 +137,7 @@ bool defaultCaptureAudioInGPUProcessEnabled()
 {
 #if PLATFORM(MAC)
     // FIXME: Enable GPU process audio capture when <rdar://problem/29448368> is fixed.
-    if (!WebCore::MacApplication::isSafari())
+    if (!CyberCore::MacApplication::isSafari())
         return false;
 #endif
 
@@ -161,7 +161,7 @@ bool defaultManageCaptureStatusBarInGPUProcessEnabled()
 {
 #if PLATFORM(IOS_FAMILY)
     // FIXME: Enable by default for all applications.
-    return !WebCore::IOSApplication::isMobileSafari() && !WebCore::IOSApplication::isSafariViewService();
+    return !CyberCore::IOSApplication::isMobileSafari() && !CyberCore::IOSApplication::isSafariViewService();
 #else
     return false;
 #endif
@@ -183,7 +183,7 @@ bool defaultMediaSessionCoordinatorEnabled()
     static dispatch_once_t onceToken;
     static bool enabled { false };
     dispatch_once(&onceToken, ^{
-        if (WebCore::isInWebProcess())
+        if (CyberCore::isInWebProcess())
             enabled = WebProcess::singleton().parentProcessHasEntitlement("com.apple.developer.group-session.urlactivity"_s);
         else
             enabled = WTF::processHasEntitlement("com.apple.developer.group-session.urlactivity"_s);

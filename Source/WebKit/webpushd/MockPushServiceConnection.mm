@@ -28,7 +28,7 @@
 
 #import <wtf/text/Base64.h>
 
-using namespace WebCore::PushCrypto;
+using namespace CyberCore::PushCrypto;
 
 namespace WebPushD {
 

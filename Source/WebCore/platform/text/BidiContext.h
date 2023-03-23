@@ -25,7 +25,7 @@
 #include <wtf/RefPtr.h>
 #include <wtf/ThreadSafeRefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum BidiEmbeddingSource { FromStyleOrDOM, FromUnicode };
 
@@ -66,4 +66,4 @@ inline unsigned char nextGreaterEvenLevel(unsigned char level)
 
 bool operator==(const BidiContext&, const BidiContext&);
 
-} // namespace WebCore
+} // namespace CyberCore

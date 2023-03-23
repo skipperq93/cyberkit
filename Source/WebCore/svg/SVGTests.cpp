@@ -34,7 +34,7 @@
 #include "MathMLNames.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 constexpr ComparableLettersLiteral supportedSVGFeatureArray[] = {
     "http://www.w3.org/tr/svg11/feature#animation",

@@ -33,16 +33,16 @@
 #import <CyberCore/WebScriptObjectPrivate.h>
 #import <wtf/GetPtr.h>
 
-#define IMPL static_cast<WebCore::Comment*>(reinterpret_cast<WebCore::Node*>(_internal))
+#define IMPL static_cast<CyberCore::Comment*>(reinterpret_cast<CyberCore::Node*>(_internal))
 
 @implementation DOMComment
 
 @end
 
-DOMComment *kit(WebCore::Comment* value)
+DOMComment *kit(CyberCore::Comment* value)
 {
-    WebCoreThreadViolationCheckRoundOne();
-    return static_cast<DOMComment*>(kit(static_cast<WebCore::Node*>(value)));
+    CyberCoreThreadViolationCheckRoundOne();
+    return static_cast<DOMComment*>(kit(static_cast<CyberCore::Node*>(value)));
 }
 
 #undef IMPL

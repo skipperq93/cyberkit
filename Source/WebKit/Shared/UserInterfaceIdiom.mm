@@ -57,7 +57,7 @@ bool updateCurrentUserInterfaceIdiom()
     // but is not sufficient in the application case.
     bool isSmallScreen;
     if (![UIApplication sharedApplication])
-        isSmallScreen = WebCore::deviceClassIsSmallScreen();
+        isSmallScreen = CyberCore::deviceClassIsSmallScreen();
     else {
         auto idiom = [[UIDevice currentDevice] userInterfaceIdiom];
         isSmallScreen = idiom == UIUserInterfaceIdiomPhone || idiom == UIUserInterfaceIdiomWatch;

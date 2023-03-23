@@ -30,7 +30,7 @@
 #include <wtf/glib/GUniquePtr.h>
 #include <wtf/text/CString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct SoupNetworkProxySettings {
     enum class Mode { Default, NoProxy, Custom, Auto };
@@ -42,7 +42,7 @@ struct SoupNetworkProxySettings {
     {
     }
 
-    SoupNetworkProxySettings(const WebCore::SoupNetworkProxySettings& other)
+    SoupNetworkProxySettings(const CyberCore::SoupNetworkProxySettings& other)
         : mode(other.mode)
         , defaultProxyURL(other.defaultProxyURL)
         , ignoreHosts(g_strdupv(other.ignoreHosts.get()))
@@ -50,7 +50,7 @@ struct SoupNetworkProxySettings {
     {
     }
 
-    SoupNetworkProxySettings& operator=(const WebCore::SoupNetworkProxySettings& other)
+    SoupNetworkProxySettings& operator=(const CyberCore::SoupNetworkProxySettings& other)
     {
         mode = other.mode;
         defaultProxyURL = other.defaultProxyURL;
@@ -79,17 +79,17 @@ struct SoupNetworkProxySettings {
     HashMap<CString, CString> proxyMap;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::SoupNetworkProxySettings::Mode> {
+template<> struct EnumTraits<CyberCore::SoupNetworkProxySettings::Mode> {
     using values = EnumValues<
-        WebCore::SoupNetworkProxySettings::Mode,
-        WebCore::SoupNetworkProxySettings::Mode::Default,
-        WebCore::SoupNetworkProxySettings::Mode::NoProxy,
-        WebCore::SoupNetworkProxySettings::Mode::Custom,
-        WebCore::SoupNetworkProxySettings::Mode::Auto
+        CyberCore::SoupNetworkProxySettings::Mode,
+        CyberCore::SoupNetworkProxySettings::Mode::Default,
+        CyberCore::SoupNetworkProxySettings::Mode::NoProxy,
+        CyberCore::SoupNetworkProxySettings::Mode::Custom,
+        CyberCore::SoupNetworkProxySettings::Mode::Auto
     >;
 };
 

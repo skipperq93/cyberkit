@@ -34,7 +34,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/WeakHashSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class GraphicsContext;
 class MediaSample;
@@ -165,6 +165,6 @@ private:
 
 typedef Vector<Ref<MediaStreamTrackPrivate>> MediaStreamTrackPrivateVector;
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM)

@@ -37,11 +37,11 @@ class Decoder;
 class MessageReceiver;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPage;
 
-class RemoteMediaSessionCoordinator final : public WebCore::MediaSessionCoordinatorPrivate , public IPC::MessageReceiver {
+class RemoteMediaSessionCoordinator final : public CyberCore::MediaSessionCoordinatorPrivate , public IPC::MessageReceiver {
     WTF_MAKE_FAST_ALLOCATED;
 public:
     static Ref<RemoteMediaSessionCoordinator> create(WebPage&, const String&);
@@ -58,20 +58,20 @@ private:
     void playSession(std::optional<double>, std::optional<MonotonicTime>, CompletionHandler<void(bool)>&&);
     void pauseSession(CompletionHandler<void(bool)>&&);
     void setSessionTrack(const String&, CompletionHandler<void(bool)>&&);
-    void coordinatorStateChanged(WebCore::MediaSessionCoordinatorState);
+    void coordinatorStateChanged(CyberCore::MediaSessionCoordinatorState);
 
     // MediaSessionCoordinatorPrivate overrides.
     String identifier() const final { return m_identifier; }
-    void join(CompletionHandler<void(std::optional<WebCore::Exception>&&)>&&) final;
+    void join(CompletionHandler<void(std::optional<CyberCore::Exception>&&)>&&) final;
     void leave() final;
-    void seekTo(double, CompletionHandler<void(std::optional<WebCore::Exception>&&)>&&) final;
-    void play(CompletionHandler<void(std::optional<WebCore::Exception>&&)>&&) final;
-    void pause(CompletionHandler<void(std::optional<WebCore::Exception>&&)>&&) final;
-    void setTrack(const String&, CompletionHandler<void(std::optional<WebCore::Exception>&&)>&&) final;
+    void seekTo(double, CompletionHandler<void(std::optional<CyberCore::Exception>&&)>&&) final;
+    void play(CompletionHandler<void(std::optional<CyberCore::Exception>&&)>&&) final;
+    void pause(CompletionHandler<void(std::optional<CyberCore::Exception>&&)>&&) final;
+    void setTrack(const String&, CompletionHandler<void(std::optional<CyberCore::Exception>&&)>&&) final;
 
-    void positionStateChanged(const std::optional<WebCore::MediaPositionState>&) final;
-    void readyStateChanged(WebCore::MediaSessionReadyState) final;
-    void playbackStateChanged(WebCore::MediaSessionPlaybackState) final;
+    void positionStateChanged(const std::optional<CyberCore::MediaPositionState>&) final;
+    void readyStateChanged(CyberCore::MediaSessionReadyState) final;
+    void playbackStateChanged(CyberCore::MediaSessionPlaybackState) final;
     void trackIdentifierChanged(const String&) final;
 
     const char* logClassName() const { return "RemoteMediaSessionCoordinator"; }
@@ -81,6 +81,6 @@ private:
     String m_identifier;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(MEDIA_SESSION_COORDINATOR)

@@ -30,7 +30,7 @@
 #include "ApplicationManifest.h"
 #include "CachedResource.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class TextResourceDecoder;
@@ -51,7 +51,7 @@ private:
     std::optional<String> m_text;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CACHED_RESOURCE(CachedApplicationManifest, CachedResource::Type::ApplicationManifest)
 

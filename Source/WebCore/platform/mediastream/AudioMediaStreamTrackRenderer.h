@@ -34,7 +34,7 @@ namespace WTF {
 class MediaTime;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioStreamDescription;
 class LibWebRTCAudioModule;

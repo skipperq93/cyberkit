@@ -23,7 +23,7 @@
 #include <wtf/text/StringBuilder.h>
 #include <wtf/text/TextPosition.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 inline void SegmentedString::Substring::appendTo(StringBuilder& builder) const
 {

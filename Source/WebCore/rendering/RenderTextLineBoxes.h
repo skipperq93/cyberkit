@@ -28,7 +28,7 @@
 #include "LayoutRect.h"
 #include "RenderObject.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class LegacyInlineTextBox;
 class RenderStyle;
@@ -71,4 +71,4 @@ private:
     LegacyInlineTextBox* m_last;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -48,7 +48,7 @@
 
 static const size_t kLowPowerVideoBufferSize = 4096;
 
-namespace WebCore {
+namespace CyberCore {
 
 #if PLATFORM(MAC)
 std::unique_ptr<PlatformMediaSessionManager> PlatformMediaSessionManager::create()
@@ -503,6 +503,6 @@ void MediaSessionManagerCocoa::audioOutputDeviceChanged()
     updateSessionState();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(AUDIO_SESSION) && PLATFORM(COCOA)

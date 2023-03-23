@@ -37,7 +37,7 @@
 #include <wtf/MathExtras.h>
 #include <wtf/StdLibExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace AudioUtilities;
     
@@ -183,6 +183,6 @@ void DynamicsCompressor::setNumberOfChannels(unsigned numberOfChannels)
     m_numberOfChannels = numberOfChannels;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

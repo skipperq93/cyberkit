@@ -36,7 +36,7 @@
 #include <wtf/Vector.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ApplicationCache;
 class ApplicationCacheGroup;
@@ -167,4 +167,4 @@ private:
     RefPtr<ApplicationCache> m_mainResourceApplicationCache;
 };
 
-}  // namespace WebCore
+}  // namespace CyberCore

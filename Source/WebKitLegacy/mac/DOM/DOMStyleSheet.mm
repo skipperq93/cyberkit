@@ -36,18 +36,18 @@
 #import <CyberCore/Node.h>
 #import <CyberCore/StyleSheet.h>
 #import <CyberCore/ThreadCheck.h>
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 #import <CyberCore/WebScriptObjectPrivate.h>
 #import <wtf/GetPtr.h>
 #import <wtf/URL.h>
 
-#define IMPL reinterpret_cast<WebCore::StyleSheet*>(_internal)
+#define IMPL reinterpret_cast<CyberCore::StyleSheet*>(_internal)
 
 @implementation DOMStyleSheet
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainThread([DOMStyleSheet class], self))
+    if (CyberCoreObjCScheduleDeallocateOnMainThread([DOMStyleSheet class], self))
         return;
 
     if (_internal)
@@ -57,57 +57,57 @@
 
 - (NSString *)type
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->type();
 }
 
 - (BOOL)disabled
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->disabled();
 }
 
 - (void)setDisabled:(BOOL)newDisabled
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->setDisabled(newDisabled);
 }
 
 - (DOMNode *)ownerNode
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->ownerNode()));
 }
 
 - (DOMStyleSheet *)parentStyleSheet
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->parentStyleSheet()));
 }
 
 - (NSString *)href
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->href();
 }
 
 - (NSString *)title
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->title();
 }
 
 - (DOMMediaList *)media
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->media()));
 }
 
 @end
 
-DOMStyleSheet *kit(WebCore::StyleSheet* value)
+DOMStyleSheet *kit(CyberCore::StyleSheet* value)
 {
-    WebCoreThreadViolationCheckRoundOne();
+    CyberCoreThreadViolationCheckRoundOne();
     if (!value)
         return nil;
     if (DOMStyleSheet *wrapper = getDOMWrapper(value))

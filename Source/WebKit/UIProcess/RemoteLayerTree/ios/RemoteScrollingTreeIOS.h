@@ -41,9 +41,9 @@ public:
 private:
     Ref<ScrollingTreeNode> createScrollingTreeNode(ScrollingNodeType, ScrollingNodeID) final;
 
-    void scrollingTreeNodeWillStartPanGesture(WebCore::ScrollingNodeID) final;
-    void scrollingTreeNodeWillStartScroll(WebCore::ScrollingNodeID) final;
-    void scrollingTreeNodeDidEndScroll(WebCore::ScrollingNodeID) final;
+    void scrollingTreeNodeWillStartPanGesture(CyberCore::ScrollingNodeID) final;
+    void scrollingTreeNodeWillStartScroll(CyberCore::ScrollingNodeID) final;
+    void scrollingTreeNodeDidEndScroll(CyberCore::ScrollingNodeID) final;
 };
 
 } // namespace WebKit

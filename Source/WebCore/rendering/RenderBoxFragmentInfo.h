@@ -27,7 +27,7 @@
 
 #include "RenderOverflow.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderBoxFragmentInfo {
     WTF_MAKE_FAST_ALLOCATED;
@@ -61,4 +61,4 @@ private:
     RefPtr<RenderOverflow> m_overflow;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

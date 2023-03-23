@@ -31,7 +31,7 @@
 #import <CyberCore/UserVerificationRequirement.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 ClientDataType getClientDataType(const std::variant<PublicKeyCredentialCreationOptions, PublicKeyCredentialRequestOptions>& options)
 {

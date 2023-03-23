@@ -30,7 +30,7 @@
 #include "RTCDataChannelHandler.h"
 #include "TimerEventBasedMock.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RTCDataChannelHandlerMock final : public RTCDataChannelHandler, public TimerEventBasedMock {
     WTF_MAKE_FAST_ALLOCATED;
@@ -50,6 +50,6 @@ private:
     String m_protocol;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

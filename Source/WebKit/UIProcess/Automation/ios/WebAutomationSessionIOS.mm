@@ -39,11 +39,11 @@
 #import <wtf/BlockPtr.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 void WebAutomationSession::sendSynthesizedEventsToPage(WebPageProxy& page, NSArray *eventsToSend)
 {
-    // 'eventsToSend' contains WebCore::WebEvent instances. Use a wrapper type specific to the event type.
+    // 'eventsToSend' contains CyberCore::WebEvent instances. Use a wrapper type specific to the event type.
     for (::WebEvent *event in eventsToSend) {
         switch (event.type) {
         case WebEventMouseDown:
@@ -83,7 +83,7 @@ void WebAutomationSession::platformSimulateKeyboardInteraction(WebPageProxy& pag
     WTF::switchOn(key,
         [&] (VirtualKey virtualKey) {
             // UIKit does not send key codes for virtual keys even for a hardware keyboard. Instead, it sends single
-            // unichars and WebCore maps these to "windows" key codes. Synthesize a single unichar such that the correct
+            // unichars and CyberCore maps these to "windows" key codes. Synthesize a single unichar such that the correct
             // key code is inferred.
             if (auto charCode = charCodeForVirtualKey(virtualKey))
                 characters = [NSString stringWithCharacters:&charCode.value() length:1];
@@ -128,7 +128,7 @@ void WebAutomationSession::platformSimulateKeyboardInteraction(WebPageProxy& pag
     // Just ignore this for now; we can fix it if there's an actual behavioral difference.
     NSUInteger inputFlags = 0;
 
-    // Provide an empty keyCode so that WebCore infers it from the charCode.
+    // Provide an empty keyCode so that CyberCore infers it from the charCode.
     uint16_t keyCode = 0;
 
     auto eventsToBeSent = adoptNS([[NSMutableArray alloc] init]);
@@ -199,9 +199,9 @@ static TextStream& operator<<(TextStream& ts, TouchInteraction interaction)
 }
 #endif // !LOG_DISABLED
 
-void WebAutomationSession::platformSimulateTouchInteraction(WebPageProxy& page, TouchInteraction interaction, const WebCore::IntPoint& locationInViewport, std::optional<Seconds> duration, AutomationCompletionHandler&& completionHandler)
+void WebAutomationSession::platformSimulateTouchInteraction(WebPageProxy& page, TouchInteraction interaction, const CyberCore::IntPoint& locationInViewport, std::optional<Seconds> duration, AutomationCompletionHandler&& completionHandler)
 {
-    WebCore::IntPoint locationOnScreen = page.syncRootViewToScreen(IntRect(locationInViewport, IntSize())).location();
+    CyberCore::IntPoint locationOnScreen = page.syncRootViewToScreen(IntRect(locationInViewport, IntSize())).location();
     LOG_WITH_STREAM(AutomationInteractions, stream << "platformSimulateTouchInteraction: interaction=" << interaction << ", locationInViewport=" << locationInViewport << ", locationOnScreen=" << locationOnScreen << ", duration=" << duration.value_or(0_s).seconds());
 
     auto interactionFinished = makeBlockPtr([completionHandler = WTFMove(completionHandler)] () mutable {

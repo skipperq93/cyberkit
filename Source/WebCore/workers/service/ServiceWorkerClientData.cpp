@@ -37,7 +37,7 @@
 #include "WorkerGlobalScope.h"
 #include <wtf/CrossThreadCopier.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static ServiceWorkerClientFrameType toServiceWorkerClientFrameType(ScriptExecutionContext& context)
 {
@@ -102,7 +102,7 @@ ServiceWorkerClientData ServiceWorkerClientData::from(ScriptExecutionContext& co
     auto& scope = downcast<WorkerGlobalScope>(context);
     return {
         scope.identifier(),
-        scope.type() == WebCore::WorkerGlobalScope::Type::SharedWorker ? ServiceWorkerClientType::Sharedworker : ServiceWorkerClientType::Worker,
+        scope.type() == CyberCore::WorkerGlobalScope::Type::SharedWorker ? ServiceWorkerClientType::Sharedworker : ServiceWorkerClientType::Worker,
         ServiceWorkerClientFrameType::None,
         scope.url(),
         scope.ownerURL(),
@@ -116,6 +116,6 @@ ServiceWorkerClientData ServiceWorkerClientData::from(ScriptExecutionContext& co
     };
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

@@ -33,7 +33,7 @@
 // <http://msdn.microsoft.com/en-us/windows/hardware/gg463119> for more information about the PE
 // image format.
 
-namespace WebCore {
+namespace CyberCore {
 
 DelayLoadedModulesEnumerator::DelayLoadedModulesEnumerator(const PEImage& image)
     : m_image(image)
@@ -83,4 +83,4 @@ const void* DelayLoadedModulesEnumerator::convertPotentialRVAToAddress(DWORD pot
     return m_image.convertRVAToAddress(potentialRVA);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

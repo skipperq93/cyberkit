@@ -25,14 +25,14 @@
 
 #import <CyberCore/GeolocationClient.h>
 
-namespace WebCore {
+namespace CyberCore {
 class Geolocation;
 class GeolocationPositionData;
 }
 
 @class WebView;
 
-class WebGeolocationClient : public WebCore::GeolocationClient {
+class WebGeolocationClient : public CyberCore::GeolocationClient {
     WTF_MAKE_FAST_ALLOCATED;
 public:
     WebGeolocationClient(WebView *);
@@ -48,10 +48,10 @@ public:
     void setEnableHighAccuracy(bool) override { }
 #endif
 
-    std::optional<WebCore::GeolocationPositionData> lastPosition() override;
+    std::optional<CyberCore::GeolocationPositionData> lastPosition() override;
 
-    void requestPermission(WebCore::Geolocation&) override;
-    void cancelPermissionRequest(WebCore::Geolocation&) override { };
+    void requestPermission(CyberCore::Geolocation&) override;
+    void cancelPermissionRequest(CyberCore::Geolocation&) override { };
 
 private:
     WebView *m_webView;

@@ -37,7 +37,7 @@
 #include <CyberCore/Page.h>
 #include <CyberCore/UserGestureIndicator.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 void WebContextMenuClient::contextMenuDestroyed()
 {
@@ -52,7 +52,7 @@ void WebContextMenuClient::downloadURL(const URL&)
 
 #if !PLATFORM(COCOA)
 
-void WebContextMenuClient::searchWithGoogle(const WebCore::Frame* frame)
+void WebContextMenuClient::searchWithGoogle(const CyberCore::Frame* frame)
 {
     auto page = frame->page();
     if (!page)
@@ -62,14 +62,14 @@ void WebContextMenuClient::searchWithGoogle(const WebCore::Frame* frame)
     searchString = makeStringByReplacingAll(encodeWithURLEscapeSequences(searchString), "%20"_s, "+"_s);
     auto searchURL = URL { "https://www.google.com/search?q=" + searchString + "&ie=UTF-8&oe=UTF-8" };
 
-    WebCore::UserGestureIndicator indicator { WebCore::ProcessingUserGesture };
-    auto* localMainFrame = dynamicDowncast<WebCore::LocalFrame>(page->mainFrame());
+    CyberCore::UserGestureIndicator indicator { CyberCore::ProcessingUserGesture };
+    auto* localMainFrame = dynamicDowncast<CyberCore::LocalFrame>(page->mainFrame());
     if (!localMainFrame)
         return;
-    localMainFrame->loader().changeLocation(searchURL, { }, nullptr, WebCore::ReferrerPolicy::EmptyString, WebCore::ShouldOpenExternalURLsPolicy::ShouldNotAllow);
+    localMainFrame->loader().changeLocation(searchURL, { }, nullptr, CyberCore::ReferrerPolicy::EmptyString, CyberCore::ShouldOpenExternalURLsPolicy::ShouldNotAllow);
 }
 
-void WebContextMenuClient::lookUpInDictionary(WebCore::Frame*)
+void WebContextMenuClient::lookUpInDictionary(CyberCore::Frame*)
 {
     notImplemented();
 }
@@ -101,6 +101,6 @@ void WebContextMenuClient::showContextMenu()
 
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(CONTEXT_MENUS)

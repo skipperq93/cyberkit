@@ -32,7 +32,7 @@
 
 typedef struct CF_BRIDGED_TYPE(id) __IOHIDDevice * IOHIDDeviceRef;
 
-namespace WebCore {
+namespace CyberCore {
 
 class HIDElement;
 
@@ -61,6 +61,6 @@ private:
     String m_productName;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(MAC)

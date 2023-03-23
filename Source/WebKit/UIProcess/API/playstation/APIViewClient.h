@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 class Cursor;
 class IntRect;
 class Region;
@@ -42,13 +42,13 @@ class ViewClient {
 public:
     virtual ~ViewClient() = default;
 
-    virtual void setViewNeedsDisplay(WebKit::PlayStationWebView&, const WebCore::Region&) { }
+    virtual void setViewNeedsDisplay(WebKit::PlayStationWebView&, const CyberCore::Region&) { }
     virtual void enterFullScreen(WebKit::PlayStationWebView&) { }
     virtual void exitFullScreen(WebKit::PlayStationWebView&) { }
     virtual void closeFullScreen(WebKit::PlayStationWebView&) { }
-    virtual void beganEnterFullScreen(WebKit::PlayStationWebView&, const WebCore::IntRect&, const WebCore::IntRect&) { }
-    virtual void beganExitFullScreen(WebKit::PlayStationWebView&, const WebCore::IntRect&, const WebCore::IntRect&) { }
-    virtual void setCursor(WebKit::PlayStationWebView& view, const WebCore::Cursor& cursor) { }
+    virtual void beganEnterFullScreen(WebKit::PlayStationWebView&, const CyberCore::IntRect&, const CyberCore::IntRect&) { }
+    virtual void beganExitFullScreen(WebKit::PlayStationWebView&, const CyberCore::IntRect&, const CyberCore::IntRect&) { }
+    virtual void setCursor(WebKit::PlayStationWebView& view, const CyberCore::Cursor& cursor) { }
 };
 
 } // namespace API

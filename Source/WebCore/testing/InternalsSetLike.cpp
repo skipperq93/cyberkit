@@ -29,7 +29,7 @@
 #include "IDLTypes.h"
 #include "JSDOMSetLike.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 InternalsSetLike::InternalsSetLike()
 {
@@ -41,4 +41,4 @@ void InternalsSetLike::initializeSetLike(DOMSetAdapter& set)
     set.add<IDLDOMString>(m_items[0]);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

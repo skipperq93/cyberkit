@@ -18,16 +18,16 @@
 
 #pragma once
 
-#include "WebKitDOMXPathNSResolver.h"
+#include "CyberKitDOMXPathNSResolver.h"
 #include <CyberCore/XPathNSResolver.h>
 #include <wtf/glib/GRefPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 
-class GObjectXPathNSResolver : public WebCore::XPathNSResolver {
+class GObjectXPathNSResolver : public CyberCore::XPathNSResolver {
 public:
 
-    static Ref<GObjectXPathNSResolver> create(WebKitDOMXPathNSResolver* resolver)
+    static Ref<GObjectXPathNSResolver> create(CyberKitDOMXPathNSResolver* resolver)
     {
         return adoptRef(*new GObjectXPathNSResolver(resolver));
     }
@@ -36,12 +36,12 @@ public:
     AtomString lookupNamespaceURI(const AtomString& prefix) override;
 
 private:
-    GObjectXPathNSResolver(WebKitDOMXPathNSResolver* resolver)
+    GObjectXPathNSResolver(CyberKitDOMXPathNSResolver* resolver)
         : m_resolver(resolver)
     {
     }
 
-    GRefPtr<WebKitDOMXPathNSResolver> m_resolver;
+    GRefPtr<CyberKitDOMXPathNSResolver> m_resolver;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

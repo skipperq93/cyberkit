@@ -45,7 +45,7 @@
 #include "StyleRuleImport.h"
 #include "StyleSheetContents.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace Style {
 
 using namespace HTMLNames;
@@ -176,4 +176,4 @@ RuleData::RuleData(const StyleRule& styleRule, unsigned selectorIndex, unsigned 
 }
 
 } // namespace Style
-} // namespace WebCore
+} // namespace CyberCore

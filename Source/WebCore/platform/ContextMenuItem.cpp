@@ -30,7 +30,7 @@
 
 #if ENABLE(CONTEXT_MENUS)
 
-namespace WebCore {
+namespace CyberCore {
 
 ContextMenuItem::ContextMenuItem(ContextMenuItemType type, ContextMenuAction action, const String& title, ContextMenu* subMenu)
     : m_type(type)
@@ -143,7 +143,7 @@ bool ContextMenuItem::enabled() const
     return m_enabled;
 }
 
-static bool isValidContextMenuAction(WebCore::ContextMenuAction action)
+static bool isValidContextMenuAction(CyberCore::ContextMenuAction action)
 {
     switch (action) {
     case ContextMenuAction::ContextMenuItemTagNoAction:
@@ -289,13 +289,13 @@ static bool isValidContextMenuAction(WebCore::ContextMenuAction action)
     return false;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> bool isValidEnum<WebCore::ContextMenuAction, void>(std::underlying_type_t<WebCore::ContextMenuAction> action)
+template<> bool isValidEnum<CyberCore::ContextMenuAction, void>(std::underlying_type_t<CyberCore::ContextMenuAction> action)
 {
-    return WebCore::isValidContextMenuAction(static_cast<WebCore::ContextMenuAction>(action));
+    return CyberCore::isValidContextMenuAction(static_cast<CyberCore::ContextMenuAction>(action));
 }
 
 }

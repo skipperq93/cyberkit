@@ -34,7 +34,7 @@
 #include "MediaStreamPrivate.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 // For now the provider supports only files at a fixed sample bitrate.
 static const float gSampleBitRate = 44100;
@@ -482,6 +482,6 @@ void AudioSourceProviderGStreamer::clearAdapters()
         gst_adapter_clear(adapter.get());
 }
 
-} // WebCore
+} // CyberCore
 
 #endif // ENABLE(WEB_AUDIO) && ENABLE(VIDEO) && USE(GSTREAMER)

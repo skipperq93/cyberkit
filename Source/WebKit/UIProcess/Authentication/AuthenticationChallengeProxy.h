@@ -43,7 +43,7 @@ class WebProtectionSpace;
 
 class AuthenticationChallengeProxy : public API::ObjectImpl<API::Object::Type::AuthenticationChallenge> {
 public:
-    static Ref<AuthenticationChallengeProxy> create(WebCore::AuthenticationChallenge&& authenticationChallenge, AuthenticationChallengeIdentifier challengeID, Ref<IPC::Connection>&& connection, WeakPtr<SecKeyProxyStore>&& secKeyProxyStore)
+    static Ref<AuthenticationChallengeProxy> create(CyberCore::AuthenticationChallenge&& authenticationChallenge, AuthenticationChallengeIdentifier challengeID, Ref<IPC::Connection>&& connection, WeakPtr<SecKeyProxyStore>&& secKeyProxyStore)
     {
         return adoptRef(*new AuthenticationChallengeProxy(WTFMove(authenticationChallenge), challengeID, WTFMove(connection), WTFMove(secKeyProxyStore)));
     }
@@ -52,16 +52,16 @@ public:
     WebProtectionSpace* protectionSpace() const;
 
     AuthenticationDecisionListener& listener() const { return m_listener.get(); }
-    const WebCore::AuthenticationChallenge& core() { return m_coreAuthenticationChallenge; }
+    const CyberCore::AuthenticationChallenge& core() { return m_coreAuthenticationChallenge; }
 
 private:
-    AuthenticationChallengeProxy(WebCore::AuthenticationChallenge&&, AuthenticationChallengeIdentifier, Ref<IPC::Connection>&&, WeakPtr<SecKeyProxyStore>&&);
+    AuthenticationChallengeProxy(CyberCore::AuthenticationChallenge&&, AuthenticationChallengeIdentifier, Ref<IPC::Connection>&&, WeakPtr<SecKeyProxyStore>&&);
 
 #if HAVE(SEC_KEY_PROXY)
-    static void sendClientCertificateCredentialOverXpc(IPC::Connection&, SecKeyProxyStore&, AuthenticationChallengeIdentifier, const WebCore::Credential&);
+    static void sendClientCertificateCredentialOverXpc(IPC::Connection&, SecKeyProxyStore&, AuthenticationChallengeIdentifier, const CyberCore::Credential&);
 #endif
 
-    WebCore::AuthenticationChallenge m_coreAuthenticationChallenge;
+    CyberCore::AuthenticationChallenge m_coreAuthenticationChallenge;
     mutable RefPtr<WebCredential> m_webCredential;
     mutable RefPtr<WebProtectionSpace> m_webProtectionSpace;
     Ref<AuthenticationDecisionListener> m_listener;

@@ -23,7 +23,7 @@
 #include <wtf/Ref.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Node;
 
@@ -38,4 +38,4 @@ private:
     XMLSerializer() = default;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

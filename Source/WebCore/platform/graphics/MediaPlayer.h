@@ -58,7 +58,7 @@ OBJC_CLASS NSArray;
 typedef struct __CVBuffer* CVPixelBufferRef;
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class AudioSessionCategory : uint8_t;
 enum class DynamicRangeMode : uint8_t;
@@ -800,6 +800,6 @@ inline bool MediaPlayer::hasMediaEngine() const
     return m_currentMediaEngine;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(VIDEO)

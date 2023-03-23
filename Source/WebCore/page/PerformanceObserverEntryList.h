@@ -29,7 +29,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class PerformanceEntry;
 
@@ -48,4 +48,4 @@ private:
     Vector<RefPtr<PerformanceEntry>> m_entries;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

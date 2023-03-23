@@ -40,7 +40,7 @@ typedef UInt32 AudioUnitRenderActionFlags;
 struct AudioBufferList;
 struct AudioTimeStamp;
 
-namespace WebCore {
+namespace CyberCore {
 
 #if PLATFORM(IOS_FAMILY)
 class MediaCaptureStatusBarManager;
@@ -170,6 +170,6 @@ private:
     bool m_shouldUseVPIO { true };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM)

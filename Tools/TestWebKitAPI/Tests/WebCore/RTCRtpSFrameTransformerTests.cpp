@@ -71,11 +71,11 @@ Vector<uint8_t> getRawKey()
     );
 }
 
-static Ref<WebCore::RTCRtpSFrameTransformer> createVideoTransformer(bool isEncrypting = true)
+static Ref<CyberCore::RTCRtpSFrameTransformer> createVideoTransformer(bool isEncrypting = true)
 {
-    auto transformer = WebCore::RTCRtpSFrameTransformer::create();
+    auto transformer = CyberCore::RTCRtpSFrameTransformer::create();
     transformer->setIsEncrypting(isEncrypting);
-    transformer->setMediaType(WebCore::RTCRtpTransformBackend::MediaType::Video);
+    transformer->setMediaType(CyberCore::RTCRtpTransformBackend::MediaType::Video);
 
     auto keyId = Vector<uint8_t>::from(198, 31, 251, 197, 48, 139, 91, 51);
     uint64_t keyIdValue = 0;
@@ -88,11 +88,11 @@ static Ref<WebCore::RTCRtpSFrameTransformer> createVideoTransformer(bool isEncry
     return transformer;
 }
 
-static Ref<WebCore::RTCRtpSFrameTransformer> createAudioTransformer(bool isEncrypting, WebCore::RTCRtpSFrameTransformer::CompatibilityMode mode)
+static Ref<CyberCore::RTCRtpSFrameTransformer> createAudioTransformer(bool isEncrypting, CyberCore::RTCRtpSFrameTransformer::CompatibilityMode mode)
 {
-    auto transformer = WebCore::RTCRtpSFrameTransformer::create(mode);
+    auto transformer = CyberCore::RTCRtpSFrameTransformer::create(mode);
     transformer->setIsEncrypting(isEncrypting);
-    transformer->setMediaType(WebCore::RTCRtpTransformBackend::MediaType::Audio);
+    transformer->setMediaType(CyberCore::RTCRtpTransformBackend::MediaType::Audio);
 
     auto keyId = Vector<uint8_t>::from(31, 251, 197, 48, 139, 91, 51);
     uint64_t keyIdValue = 0;
@@ -233,10 +233,10 @@ TEST(RTCRtpSFrameTransformer, EncryptDecryptAudio)
 {
     // We ignore compatiblity mode for audio.
     uint64_t keyId = 1255995222;
-    auto encryptor = createAudioTransformer(true, WebCore::RTCRtpSFrameTransformer::CompatibilityMode::H264);
+    auto encryptor = createAudioTransformer(true, CyberCore::RTCRtpSFrameTransformer::CompatibilityMode::H264);
     encryptor->setEncryptionKey(getRawKey(), keyId);
 
-    auto decryptor = createAudioTransformer(false, WebCore::RTCRtpSFrameTransformer::CompatibilityMode::None);
+    auto decryptor = createAudioTransformer(false, CyberCore::RTCRtpSFrameTransformer::CompatibilityMode::None);
     decryptor->setEncryptionKey(getRawKey(), keyId);
 
     auto frame = Vector<uint8_t>::from(135, 89, 51, 166, 248, 129, 157, 111, 190, 134, 220, 56);
@@ -392,16 +392,16 @@ TEST(RTCRtpSFrameTransformer, TransformCounter65536)
 TEST(RTCRtpSFrameTransformer, RBSPEscaping)
 {
     uint8_t frame0[] = { 0, 33, 00, 24, 236, 156, 127, 8, 0, 0, 4 };
-    EXPECT_FALSE(WebCore::needsRbspUnescaping(frame0, sizeof(frame0)));
+    EXPECT_FALSE(CyberCore::needsRbspUnescaping(frame0, sizeof(frame0)));
 
     uint8_t frame0b[] = { 0, 33, 00, 24, 236, 156, 127, 8, 0, 0, 3 };
-    EXPECT_FALSE(WebCore::needsRbspUnescaping(frame0b, sizeof(frame0b)));
+    EXPECT_FALSE(CyberCore::needsRbspUnescaping(frame0b, sizeof(frame0b)));
 
     uint8_t frame1[] = { 0, 33, 00, 24, 236, 156, 127, 8, 0, 0, 3, 1 };
     uint8_t frame1Unescaped[] = { 0, 33, 00, 24, 236, 156, 127, 8, 0, 0, 1 };
-    EXPECT_TRUE(WebCore::needsRbspUnescaping(frame1, sizeof(frame1)));
+    EXPECT_TRUE(CyberCore::needsRbspUnescaping(frame1, sizeof(frame1)));
 
-    auto result = WebCore::fromRbsp(frame1, sizeof(frame1));
+    auto result = CyberCore::fromRbsp(frame1, sizeof(frame1));
 
     EXPECT_EQ(result.size(), sizeof(frame1Unescaped));
     for (size_t i = 0; i < sizeof(frame1Unescaped); ++i)
@@ -410,9 +410,9 @@ TEST(RTCRtpSFrameTransformer, RBSPEscaping)
     Vector<uint8_t> frame2 { 0, 0, 0, 65, 0, 0, 1, 66, 0, 0, 2, 67, 0, 0, 3, 68, 0, 0, 4, 0, 0, 1 };
     Vector<uint8_t> escaped { 0, 0, 0, 65, 0, 0, 1, 66, 0, 0, 2, 67, 0, 0, 3, 68, 0, 0, 4, 0, 0, 1 };
 
-    WebCore::toRbsp(escaped, 0);
-    EXPECT_TRUE(WebCore::needsRbspUnescaping(escaped.data(), escaped.size()));
-    auto unescaped = WebCore::fromRbsp(escaped.data(), escaped.size());
+    CyberCore::toRbsp(escaped, 0);
+    EXPECT_TRUE(CyberCore::needsRbspUnescaping(escaped.data(), escaped.size()));
+    auto unescaped = CyberCore::fromRbsp(escaped.data(), escaped.size());
 
     EXPECT_EQ(unescaped.size(), frame2.size());
     for (size_t i = 0; i < frame2.size(); ++i)

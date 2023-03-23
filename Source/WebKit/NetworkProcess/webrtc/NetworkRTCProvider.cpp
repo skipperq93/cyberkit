@@ -58,7 +58,7 @@ ALLOW_COMMA_END
 #endif
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 #define RTC_RELEASE_LOG(fmt, ...) RELEASE_LOG(Network, "%p - NetworkRTCProvider::" fmt, this, ##__VA_ARGS__)
 #define RTC_RELEASE_LOG_ERROR(fmt, ...) RELEASE_LOG_ERROR(Network, "%p - NetworkRTCProvider::" fmt, this, ##__VA_ARGS__)
@@ -167,7 +167,7 @@ const String& NetworkRTCProvider::attributedBundleIdentifierFromPageIdentifier(W
 }
 #endif
 
-void NetworkRTCProvider::createUDPSocket(LibWebRTCSocketIdentifier identifier, const RTCNetwork::SocketAddress& address, uint16_t minPort, uint16_t maxPort, WebPageProxyIdentifier pageIdentifier, bool isFirstParty, bool isRelayDisabled, WebCore::RegistrableDomain&& domain)
+void NetworkRTCProvider::createUDPSocket(LibWebRTCSocketIdentifier identifier, const RTCNetwork::SocketAddress& address, uint16_t minPort, uint16_t maxPort, WebPageProxyIdentifier pageIdentifier, bool isFirstParty, bool isRelayDisabled, CyberCore::RegistrableDomain&& domain)
 {
     ASSERT(m_rtcNetworkThread.IsCurrent());
 
@@ -190,7 +190,7 @@ rtc::ProxyInfo NetworkRTCProvider::proxyInfoFromSession(const RTCNetwork::Socket
 }
 #endif
 
-void NetworkRTCProvider::createClientTCPSocket(LibWebRTCSocketIdentifier identifier, const RTCNetwork::SocketAddress& localAddress, const RTCNetwork::SocketAddress& remoteAddress, String&& userAgent, int options, WebPageProxyIdentifier pageIdentifier, bool isFirstParty, bool isRelayDisabled, WebCore::RegistrableDomain&& domain)
+void NetworkRTCProvider::createClientTCPSocket(LibWebRTCSocketIdentifier identifier, const RTCNetwork::SocketAddress& localAddress, const RTCNetwork::SocketAddress& remoteAddress, String&& userAgent, int options, WebPageProxyIdentifier pageIdentifier, bool isFirstParty, bool isRelayDisabled, CyberCore::RegistrableDomain&& domain)
 {
     ASSERT(m_rtcNetworkThread.IsCurrent());
 
@@ -312,9 +312,9 @@ void NetworkRTCProvider::createResolver(LibWebRTCResolverIdentifier identifier, 
         });
         return;
     }
-    WebCore::DNSCompletionHandler completionHandler = [this, identifier](auto&& result) {
+    CyberCore::DNSCompletionHandler completionHandler = [this, identifier](auto&& result) {
         if (!result.has_value()) {
-            if (result.error() != WebCore::DNSError::Cancelled)
+            if (result.error() != CyberCore::DNSError::Cancelled)
                 m_connection->connection().send(Messages::WebRTCResolver::ResolvedAddressError(1), identifier);
             return;
         }
@@ -336,7 +336,7 @@ void NetworkRTCProvider::createResolver(LibWebRTCResolverIdentifier identifier, 
     resolver->start(address);
     m_resolvers.add(identifier, WTFMove(resolver));
 #else
-    WebCore::resolveDNS(address, identifier.toUInt64(), WTFMove(completionHandler));
+    CyberCore::resolveDNS(address, identifier.toUInt64(), WTFMove(completionHandler));
 #endif
 }
 
@@ -354,7 +354,7 @@ void NetworkRTCProvider::stopResolver(LibWebRTCResolverIdentifier identifier)
     if (auto resolver = m_resolvers.take(identifier))
         resolver->stop();
 #else
-    WebCore::stopResolveDNS(identifier.toUInt64());
+    CyberCore::stopResolveDNS(identifier.toUInt64());
 #endif
 }
 

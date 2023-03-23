@@ -68,7 +68,7 @@
 #include "DateTimeChooser.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -379,7 +379,7 @@ void Chrome::getToolTip(const HitTestResult& result, String& toolTip, TextDirect
 
         // Get tooltip representing link's URL
         if (toolTip.isEmpty()) {
-            // FIXME: Need to pass this URL through userVisibleString once that's in WebCore
+            // FIXME: Need to pass this URL through userVisibleString once that's in CyberCore
             toolTip = result.absoluteLinkURL().string();
             // URL always display as LTR.
             toolTipDirection = TextDirection::LTR;
@@ -636,4 +636,4 @@ void Chrome::notifyPopupOpeningObservers() const
         observer->willOpenPopup();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

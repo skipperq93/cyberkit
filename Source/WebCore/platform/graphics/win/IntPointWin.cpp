@@ -29,7 +29,7 @@
 #include <windows.h>
 #include <wtf/MathExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 IntPoint::IntPoint(const POINT& p)
     : m_x(p.x)

@@ -29,7 +29,7 @@
 
 #include "ControlPart.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class ApplePayButtonType : uint8_t {
     Plain,
@@ -75,7 +75,7 @@ private:
     String m_locale;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CONTROL_PART(ApplePayButton)
 

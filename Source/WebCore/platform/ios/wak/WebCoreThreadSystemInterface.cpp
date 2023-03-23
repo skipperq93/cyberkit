@@ -24,21 +24,21 @@
  */
 
 #include "config.h"
-#include "WebCoreThreadSystemInterface.h"
+#include "CyberCoreThreadSystemInterface.h"
 
 #if PLATFORM(IOS_FAMILY)
 
-#include "WebCoreThread.h"
-#include "WebCoreThreadRun.h"
-#include <wtf/ios/WebCoreThread.h>
+#include "CyberCoreThread.h"
+#include "CyberCoreThreadRun.h"
+#include <wtf/ios/CyberCoreThread.h>
 
 // "Fill In" JavaScriptCore's function pointers with ours.
 // JavaScriptCore's functions have the same name, but
-// they are prefixed with "WebCore".
+// they are prefixed with "CyberCore".
 
-#define INIT(function) WebCore##function = function
+#define INIT(function) CyberCore##function = function
 
-void InitWebCoreThreadSystemInterface(void)
+void InitCyberCoreThreadSystemInterface(void)
 {
     static bool didInit;
     if (didInit)

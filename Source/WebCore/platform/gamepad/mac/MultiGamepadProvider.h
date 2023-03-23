@@ -33,7 +33,7 @@
 #include <wtf/Forward.h>
 #include <wtf/HashSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class MultiGamepadProvider : public GamepadProvider, public GamepadProviderClient {
 public:
@@ -95,6 +95,6 @@ private:
     bool m_usesOnlyHIDProvider { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(GAMEPAD) && HAVE(MULTIGAMEPADPROVIDER_SUPPORT)

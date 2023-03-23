@@ -22,7 +22,7 @@
 #include "config.h"
 #include "QuotesData.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static size_t sizeForQuotesDataWithQuoteCount(unsigned count)
 {
@@ -83,4 +83,4 @@ bool operator==(const QuotesData& a, const QuotesData& b)
     return true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

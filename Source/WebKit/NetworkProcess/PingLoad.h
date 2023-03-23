@@ -42,8 +42,8 @@ class NetworkSchemeRegistry;
 
 class PingLoad final : public CanMakeWeakPtr<PingLoad>, private NetworkDataTaskClient {
 public:
-    PingLoad(NetworkProcess&, PAL::SessionID, NetworkResourceLoadParameters&&, CompletionHandler<void(const WebCore::ResourceError&, const WebCore::ResourceResponse&)>&&);
-    PingLoad(NetworkConnectionToWebProcess&, NetworkResourceLoadParameters&&, CompletionHandler<void(const WebCore::ResourceError&, const WebCore::ResourceResponse&)>&&);
+    PingLoad(NetworkProcess&, PAL::SessionID, NetworkResourceLoadParameters&&, CompletionHandler<void(const CyberCore::ResourceError&, const CyberCore::ResourceResponse&)>&&);
+    PingLoad(NetworkConnectionToWebProcess&, NetworkResourceLoadParameters&&, CompletionHandler<void(const CyberCore::ResourceError&, const CyberCore::ResourceResponse&)>&&);
 
 private:
     ~PingLoad();
@@ -51,11 +51,11 @@ private:
 
     const URL& currentURL() const;
 
-    void willPerformHTTPRedirection(WebCore::ResourceResponse&&, WebCore::ResourceRequest&&, RedirectCompletionHandler&&) final;
-    void didReceiveChallenge(WebCore::AuthenticationChallenge&&, NegotiatedLegacyTLS, ChallengeCompletionHandler&&) final;
-    void didReceiveResponse(WebCore::ResourceResponse&&, NegotiatedLegacyTLS, PrivateRelayed, ResponseCompletionHandler&&) final;
-    void didReceiveData(const WebCore::SharedBuffer&) final;
-    void didCompleteWithError(const WebCore::ResourceError&, const WebCore::NetworkLoadMetrics&) final;
+    void willPerformHTTPRedirection(CyberCore::ResourceResponse&&, CyberCore::ResourceRequest&&, RedirectCompletionHandler&&) final;
+    void didReceiveChallenge(CyberCore::AuthenticationChallenge&&, NegotiatedLegacyTLS, ChallengeCompletionHandler&&) final;
+    void didReceiveResponse(CyberCore::ResourceResponse&&, NegotiatedLegacyTLS, PrivateRelayed, ResponseCompletionHandler&&) final;
+    void didReceiveData(const CyberCore::SharedBuffer&) final;
+    void didCompleteWithError(const CyberCore::ResourceError&, const CyberCore::NetworkLoadMetrics&) final;
     void didSendData(uint64_t totalBytesSent, uint64_t totalBytesExpectedToSend) final;
     void wasBlocked() final;
     void cannotShowURL() final;
@@ -63,17 +63,17 @@ private:
     void wasBlockedByDisabledFTP() final;
     void timeoutTimerFired();
 
-    void loadRequest(NetworkProcess&, WebCore::ResourceRequest&&);
+    void loadRequest(NetworkProcess&, CyberCore::ResourceRequest&&);
 
-    void didFinish(const WebCore::ResourceError& = { }, const WebCore::ResourceResponse& response = { });
+    void didFinish(const CyberCore::ResourceError& = { }, const CyberCore::ResourceResponse& response = { });
     
     PAL::SessionID m_sessionID;
     NetworkResourceLoadParameters m_parameters;
-    CompletionHandler<void(const WebCore::ResourceError&, const WebCore::ResourceResponse&)> m_completionHandler;
+    CompletionHandler<void(const CyberCore::ResourceError&, const CyberCore::ResourceResponse&)> m_completionHandler;
     RefPtr<NetworkDataTask> m_task;
-    WebCore::Timer m_timeoutTimer;
+    CyberCore::Timer m_timeoutTimer;
     UniqueRef<NetworkLoadChecker> m_networkLoadChecker;
-    Vector<RefPtr<WebCore::BlobDataFileReference>> m_blobFiles;
+    Vector<RefPtr<CyberCore::BlobDataFileReference>> m_blobFiles;
 };
 
 }

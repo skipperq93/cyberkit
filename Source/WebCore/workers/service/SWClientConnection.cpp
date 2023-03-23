@@ -49,7 +49,7 @@
 #include "WorkerSWClientConnection.h"
 #include <wtf/CrossThreadCopier.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static bool dispatchToContextThreadIfNecessary(const ServiceWorkerOrClientIdentifier& contextIdentifier, Function<void(ScriptExecutionContext&)>&& task)
 {
@@ -316,6 +316,6 @@ void SWClientConnection::registerServiceWorkerClients()
     Worker::forEachWorker([] { return [] (auto& context) { context.updateServiceWorkerClientData(); }; });
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

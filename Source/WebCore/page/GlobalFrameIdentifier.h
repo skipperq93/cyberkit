@@ -28,7 +28,7 @@
 #include "FrameIdentifier.h"
 #include "PageIdentifier.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // Frame identifier that is unique across all WebContent processes.
 struct GlobalFrameIdentifier {
@@ -61,4 +61,4 @@ std::optional<GlobalFrameIdentifier> GlobalFrameIdentifier::decode(Decoder& deco
     return { { WTFMove(*pageID), WTFMove(*frameID) } };
 }
 
-} // namespace WebCore
+} // namespace CyberCore

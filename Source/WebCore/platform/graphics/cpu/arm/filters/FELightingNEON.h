@@ -34,7 +34,7 @@
 #include "SpotLightSource.h"
 #include <wtf/ParallelJobs.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // Otherwise: Distant Light.
 #define FLAG_POINT_LIGHT                 0x01
@@ -170,7 +170,7 @@ inline void FELighting::platformApplyNeon(const LightingData& data, const LightS
     int optimalThreadNumber = ((data.widthDecreasedByOne - 1) * (data.heightDecreasedByOne - 1)) / s_minimalRectDimension;
     if (optimalThreadNumber > 1) {
         // Initialize parallel jobs
-        ParallelJobs<FELightingPaintingDataForNeon> parallelJobs(&WebCore::FELighting::platformApplyNeonWorker, optimalThreadNumber);
+        ParallelJobs<FELightingPaintingDataForNeon> parallelJobs(&CyberCore::FELighting::platformApplyNeonWorker, optimalThreadNumber);
 
         // Fill the parameter array
         int job = parallelJobs.numberOfJobs();
@@ -196,7 +196,7 @@ inline void FELighting::platformApplyNeon(const LightingData& data, const LightS
     neonDrawLighting(&neonData);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // CPU(ARM_NEON) && COMPILER(GCC_COMPATIBLE)
 

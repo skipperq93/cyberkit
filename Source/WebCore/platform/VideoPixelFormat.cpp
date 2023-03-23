@@ -35,7 +35,7 @@
 #include "CoreVideoSoftLink.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 VideoPixelFormat convertVideoFramePixelFormat(uint32_t format, bool shouldDiscardAlpha)
 {
@@ -79,5 +79,5 @@ VideoPixelFormat convertVideoFramePixelFormat(uint32_t format, bool shouldDiscar
     return VideoPixelFormat::I420;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 

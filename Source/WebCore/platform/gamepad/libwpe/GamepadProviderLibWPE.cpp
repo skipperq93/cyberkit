@@ -36,7 +36,7 @@
 #include <wpe/wpe.h>
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static const Seconds connectionDelayInterval { 500_ms };
 static const Seconds inputNotificationDelay { 50_ms };
@@ -233,6 +233,6 @@ void GamepadProviderLibWPE::stopEffects(unsigned, const String&, CompletionHandl
     completionHandler();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(GAMEPAD) && USE(LIBWPE)

@@ -52,7 +52,7 @@
             LayoutTests/resources, using the correct relative path from the new location.
             This is applied to CSS tests but not to WPT tests.
          2. All CSS properties requiring the -webkit-vendor prefix are prefixed - this current
-            list of what needs prefixes is read from Source/WebCore/CSS/CSSProperties.in
+            list of what needs prefixes is read from Source/CyberCore/CSS/CSSProperties.in
          3. Each reftest has its own copy of its reference file following the naming conventions
             new-run-webkit-tests expects
          4. If a reference files lives outside the directory of the test that uses it, it is checked

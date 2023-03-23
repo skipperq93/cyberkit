@@ -38,7 +38,7 @@
 #include "ScrollingTreeStickyNode.h"
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 ScrollingTreeFixedNode::ScrollingTreeFixedNode(ScrollingTree& scrollingTree, ScrollingNodeID nodeID)
     : ScrollingTreeNode(scrollingTree, ScrollingNodeType::Fixed, nodeID)
@@ -118,6 +118,6 @@ void ScrollingTreeFixedNode::dumpProperties(TextStream& ts, OptionSet<ScrollingS
     ts.dumpProperty("fixed constraints", m_constraints);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ASYNC_SCROLLING)

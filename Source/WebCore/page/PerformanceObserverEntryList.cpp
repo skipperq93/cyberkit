@@ -28,7 +28,7 @@
 
 #include "PerformanceEntry.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<PerformanceObserverEntryList> PerformanceObserverEntryList::create(Vector<RefPtr<PerformanceEntry>>&& entries)
 {
@@ -72,4 +72,4 @@ Vector<RefPtr<PerformanceEntry>> PerformanceObserverEntryList::getEntriesByName(
     return entries;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

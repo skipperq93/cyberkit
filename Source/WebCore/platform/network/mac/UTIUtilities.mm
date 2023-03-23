@@ -37,7 +37,7 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 String MIMETypeFromUTI(const String& uti)
 {

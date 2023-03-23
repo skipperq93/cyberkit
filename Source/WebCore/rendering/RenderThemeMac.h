@@ -24,9 +24,9 @@
 
 #import "RenderThemeCocoa.h"
 
-OBJC_CLASS WebCoreRenderThemeNotificationObserver;
+OBJC_CLASS CyberCoreRenderThemeNotificationObserver;
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderProgress;
 class RenderStyle;
@@ -187,9 +187,9 @@ private:
     bool m_isSliderThumbHorizontalPressed { false };
     bool m_isSliderThumbVerticalPressed { false };
 
-    RetainPtr<WebCoreRenderThemeNotificationObserver> m_notificationObserver;
+    RetainPtr<CyberCoreRenderThemeNotificationObserver> m_notificationObserver;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(MAC)

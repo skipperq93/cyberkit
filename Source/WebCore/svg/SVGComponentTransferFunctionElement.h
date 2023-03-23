@@ -26,7 +26,7 @@
 #include "SVGElement.h"
 #include <wtf/SortedArrayMap.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 template<>
 struct SVGPropertyTraits<ComponentTransferType> {
@@ -109,4 +109,4 @@ private:
     Ref<SVGAnimatedNumber> m_offset { SVGAnimatedNumber::create(this) };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

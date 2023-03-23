@@ -25,7 +25,7 @@
 #include <wtf/NeverDestroyed.h>
 #include <wtf/text/CString.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 API::ContentWorld& webkitContentWorld(const char* worldName)
 {
@@ -225,7 +225,7 @@ struct _WebKitUserScript {
             String::fromUTF8(source), URL { },
             toStringVector(allowList), toStringVector(blockList),
             toUserScriptInjectionTime(injectionTime),
-            toUserContentInjectedFrames(injectedFrames), WebCore::WaitForNotificationBeforeInjecting::No }, world)))
+            toUserContentInjectedFrames(injectedFrames), CyberCore::WaitForNotificationBeforeInjecting::No }, world)))
         , referenceCount(1)
     {
     }

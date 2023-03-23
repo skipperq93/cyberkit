@@ -30,25 +30,25 @@
 #include <wtf/Function.h>
 #include <wtf/HashMap.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebResourceInterceptController {
 public:
-    bool isIntercepting(WebCore::ResourceLoaderIdentifier) const;
+    bool isIntercepting(CyberCore::ResourceLoaderIdentifier) const;
 
     // Start intercepting a response.
-    void beginInterceptingResponse(WebCore::ResourceLoaderIdentifier);
+    void beginInterceptingResponse(CyberCore::ResourceLoaderIdentifier);
 
     // Stop intercepting a response. An intercept response was not supplied. Send deferred networking callbacks.
-    void continueResponse(WebCore::ResourceLoaderIdentifier);
+    void continueResponse(CyberCore::ResourceLoaderIdentifier);
 
     // Stop intercepting a response. An intercept response was supplied. Send no deferred networking callbacks.
-    void interceptedResponse(WebCore::ResourceLoaderIdentifier);
+    void interceptedResponse(CyberCore::ResourceLoaderIdentifier);
 
-    void defer(WebCore::ResourceLoaderIdentifier, Function<void()>&&);
+    void defer(CyberCore::ResourceLoaderIdentifier, Function<void()>&&);
 
 private:
-    HashMap<WebCore::ResourceLoaderIdentifier, Deque<Function<void()>>> m_interceptedResponseQueue;
+    HashMap<CyberCore::ResourceLoaderIdentifier, Deque<Function<void()>>> m_interceptedResponseQueue;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

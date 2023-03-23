@@ -36,7 +36,7 @@
 #include <wtf/text/StringHash.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class KeyedDecoder;
 class KeyedEncoder;
@@ -136,4 +136,4 @@ struct ResourceLoadStatistics {
     friend struct IPC::ArgumentCoder<ResourceLoadStatistics, void>;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

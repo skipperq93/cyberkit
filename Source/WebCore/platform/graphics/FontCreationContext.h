@@ -31,7 +31,7 @@
 #include "FontTaggedSettings.h"
 #include <wtf/PointerComparison.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FontCreationContextRareData : public RefCounted<FontCreationContextRareData> {
 public:

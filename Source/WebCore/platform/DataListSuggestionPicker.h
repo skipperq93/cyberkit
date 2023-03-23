@@ -31,7 +31,7 @@
 #include <wtf/WeakPtr.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DataListSuggestionPicker : public CanMakeWeakPtr<DataListSuggestionPicker> {
     WTF_MAKE_FAST_ALLOCATED;
@@ -43,6 +43,6 @@ public:
     virtual void displayWithActivationType(DataListSuggestionActivationType) { }
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

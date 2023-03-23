@@ -25,8 +25,8 @@
 
 #import <CyberKitLegacy/DOMHTMLTableColElement.h>
 
-namespace WebCore {
+namespace CyberCore {
 class HTMLTableColElement;
 }
 
-WebCore::HTMLTableColElement* core(DOMHTMLTableColElement *);
+CyberCore::HTMLTableColElement* core(DOMHTMLTableColElement *);

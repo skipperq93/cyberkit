@@ -27,7 +27,7 @@
 typedef std::pair<UChar32, UChar32> UnicodeRange;
 typedef Vector<UnicodeRange> UnicodeRanges;
 
-namespace WebCore {
+namespace CyberCore {
 
 class FloatPoint;
 class FloatRect;
@@ -106,4 +106,4 @@ template<typename CharacterType> constexpr bool skipOptionalSVGSpacesOrDelimiter
     return characters.hasCharactersRemaining();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

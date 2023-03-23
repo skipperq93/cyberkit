@@ -33,7 +33,7 @@
 
 using JSC::DataView;
 
-namespace WebCore {
+namespace CyberCore {
 
 class ISOStringBox final : public ISOBox {
 public:
@@ -135,4 +135,4 @@ String ISOWebVTTCue::toJSONString() const
     return object->toJSONString();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -38,14 +38,14 @@
 #include "InspectorExtensionTypes.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 class InspectorController;
 class InspectorFrontendHost;
 class CertificateInfo;
 class FloatRect;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPage;
 #if ENABLE(INSPECTOR_EXTENSIONS)
@@ -55,7 +55,7 @@ class WebInspectorUIExtensionController;
 class WebInspectorUI final
     : public RefCounted<WebInspectorUI>
     , private IPC::Connection::Client
-    , public WebCore::InspectorFrontendClient {
+    , public CyberCore::InspectorFrontendClient {
 public:
     static Ref<WebInspectorUI> create(WebPage&);
     virtual ~WebInspectorUI();
@@ -103,7 +103,7 @@ public:
     void setDiagnosticLoggingAvailable(bool);
 #endif
 
-    // WebCore::InspectorFrontendClient
+    // CyberCore::InspectorFrontendClient
     void windowObjectCleared() override;
     void frontendLoaded() override;
 
@@ -125,51 +125,51 @@ public:
     void reopen() override;
     void resetState() override;
 
-    void setForcedAppearance(WebCore::InspectorFrontendClient::Appearance) override;
+    void setForcedAppearance(CyberCore::InspectorFrontendClient::Appearance) override;
 
-    WebCore::UserInterfaceLayoutDirection userInterfaceLayoutDirection() const override;
+    CyberCore::UserInterfaceLayoutDirection userInterfaceLayoutDirection() const override;
 
     bool supportsDockSide(DockSide) override;
     void requestSetDockSide(DockSide) override;
     void changeAttachedWindowHeight(unsigned) override;
     void changeAttachedWindowWidth(unsigned) override;
 
-    void changeSheetRect(const WebCore::FloatRect&) override;
+    void changeSheetRect(const CyberCore::FloatRect&) override;
 
     void openURLExternally(const String& url) override;
     void revealFileExternally(const String& path) override;
 
-    bool canSave(WebCore::InspectorFrontendClient::SaveMode) override;
-    void save(Vector<WebCore::InspectorFrontendClient::SaveData>&&, bool forceSaveAs) override;
+    bool canSave(CyberCore::InspectorFrontendClient::SaveMode) override;
+    void save(Vector<CyberCore::InspectorFrontendClient::SaveData>&&, bool forceSaveAs) override;
 
     bool canLoad() override;
     void load(const WTF::String& path, WTF::CompletionHandler<void(const WTF::String&)>&&) override;
 
     bool canPickColorFromScreen() override;
-    void pickColorFromScreen(WTF::CompletionHandler<void(const std::optional<WebCore::Color>&)>&&) override;
+    void pickColorFromScreen(WTF::CompletionHandler<void(const std::optional<CyberCore::Color>&)>&&) override;
 
     void inspectedURLChanged(const String&) override;
-    void showCertificate(const WebCore::CertificateInfo&) override;
+    void showCertificate(const CyberCore::CertificateInfo&) override;
 
     void setInspectorPageDeveloperExtrasEnabled(bool) override;
 
 #if ENABLE(INSPECTOR_TELEMETRY)
     bool supportsDiagnosticLogging() override;
     bool diagnosticLoggingAvailable() override { return m_diagnosticLoggingAvailable; }
-    void logDiagnosticEvent(const WTF::String& eventName, const WebCore::DiagnosticLoggingClient::ValueDictionary&) override;
+    void logDiagnosticEvent(const WTF::String& eventName, const CyberCore::DiagnosticLoggingClient::ValueDictionary&) override;
 #endif
         
 #if ENABLE(INSPECTOR_EXTENSIONS)
     bool supportsWebExtensions() override;
-    void didShowExtensionTab(const Inspector::ExtensionID&, const Inspector::ExtensionTabID&, WebCore::FrameIdentifier) override;
+    void didShowExtensionTab(const Inspector::ExtensionID&, const Inspector::ExtensionTabID&, CyberCore::FrameIdentifier) override;
     void didHideExtensionTab(const Inspector::ExtensionID&, const Inspector::ExtensionTabID&) override;
     void didNavigateExtensionTab(const Inspector::ExtensionID&, const Inspector::ExtensionTabID&, const URL&) override;
     void inspectedPageDidNavigate(const URL&) override;
 #endif
 
     void sendMessageToBackend(const String&) override;
-    WebCore::InspectorFrontendAPIDispatcher& frontendAPIDispatcher() final { return m_frontendAPIDispatcher; }
-    WebCore::Page* frontendPage() final;
+    CyberCore::InspectorFrontendAPIDispatcher& frontendAPIDispatcher() final { return m_frontendAPIDispatcher; }
+    CyberCore::Page* frontendPage() final;
         
     void pagePaused() override;
     void pageUnpaused() override;
@@ -180,12 +180,12 @@ private:
     explicit WebInspectorUI(WebPage&);
 
     WebPage& m_page;
-    Ref<WebCore::InspectorFrontendAPIDispatcher> m_frontendAPIDispatcher;
-    RefPtr<WebCore::InspectorFrontendHost> m_frontendHost;
+    Ref<CyberCore::InspectorFrontendAPIDispatcher> m_frontendAPIDispatcher;
+    RefPtr<CyberCore::InspectorFrontendHost> m_frontendHost;
 
     // Keep a pointer to the frontend's inspector controller rather than going through
     // corePage(), since we may need it after the frontend's page has started destruction.
-    WebCore::InspectorController* m_frontendController { nullptr };
+    CyberCore::InspectorController* m_frontendController { nullptr };
 
 #if ENABLE(INSPECTOR_EXTENSIONS)
     std::unique_ptr<WebInspectorUIExtensionController> m_extensionController;
@@ -206,4 +206,4 @@ private:
     unsigned m_inspectionLevel { 1 };
 };
 
-} // namespace WebKit
+} // namespace CyberKit

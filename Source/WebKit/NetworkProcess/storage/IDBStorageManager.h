@@ -28,7 +28,7 @@
 #include <CyberCore/UniqueIDBDatabase.h>
 #include <CyberCore/UniqueIDBDatabaseManager.h>
 
-namespace WebCore {
+namespace CyberCore {
 class IDBRequestData;
 
 namespace IDBServer {
@@ -44,11 +44,11 @@ namespace WebKit {
 
 class IDBStorageRegistry;
 
-class IDBStorageManager final : public WebCore::IDBServer::UniqueIDBDatabaseManager {
+class IDBStorageManager final : public CyberCore::IDBServer::UniqueIDBDatabaseManager {
 public:
-    static String idbStorageOriginDirectory(const String& rootDirectory, const WebCore::ClientOrigin&);
+    static String idbStorageOriginDirectory(const String& rootDirectory, const CyberCore::ClientOrigin&);
     static uint64_t idbStorageSize(const String& originDirectory);
-    static HashSet<WebCore::ClientOrigin> originsOfIDBStorageData(const String& rootDirectory);
+    static HashSet<CyberCore::ClientOrigin> originsOfIDBStorageData(const String& rootDirectory);
     static bool migrateOriginData(const String& oldOriginDirectory, const String& newOriginDirectory);
 
     using QuotaCheckFunction = Function<void(uint64_t spaceRequested, CompletionHandler<void(bool)>&&)>;
@@ -60,26 +60,26 @@ public:
     void stopDatabaseActivitiesForSuspend();
     void handleLowMemoryWarning();
 
-    void openDatabase(WebCore::IDBServer::IDBConnectionToClient&, const WebCore::IDBRequestData&);
-    void openDBRequestCancelled(const WebCore::IDBRequestData&);
-    void deleteDatabase(WebCore::IDBServer::IDBConnectionToClient&, const WebCore::IDBRequestData&);
-    Vector<WebCore::IDBDatabaseNameAndVersion> getAllDatabaseNamesAndVersions();
+    void openDatabase(CyberCore::IDBServer::IDBConnectionToClient&, const CyberCore::IDBRequestData&);
+    void openDBRequestCancelled(const CyberCore::IDBRequestData&);
+    void deleteDatabase(CyberCore::IDBServer::IDBConnectionToClient&, const CyberCore::IDBRequestData&);
+    Vector<CyberCore::IDBDatabaseNameAndVersion> getAllDatabaseNamesAndVersions();
 
 private:
-    WebCore::IDBServer::UniqueIDBDatabase& getOrCreateUniqueIDBDatabase(const WebCore::IDBDatabaseIdentifier&);
+    CyberCore::IDBServer::UniqueIDBDatabase& getOrCreateUniqueIDBDatabase(const CyberCore::IDBDatabaseIdentifier&);
 
-    // WebCore::UniqueIDBDatabaseManager
-    void registerConnection(WebCore::IDBServer::UniqueIDBDatabaseConnection&) final;
-    void unregisterConnection(WebCore::IDBServer::UniqueIDBDatabaseConnection&) final;
-    void registerTransaction(WebCore::IDBServer::UniqueIDBDatabaseTransaction&) final;
-    void unregisterTransaction(WebCore::IDBServer::UniqueIDBDatabaseTransaction&) final;
-    std::unique_ptr<WebCore::IDBServer::IDBBackingStore> createBackingStore(const WebCore::IDBDatabaseIdentifier&) final;
-    void requestSpace(const WebCore::ClientOrigin&, uint64_t size, CompletionHandler<void(bool)>&&) final;
+    // CyberCore::UniqueIDBDatabaseManager
+    void registerConnection(CyberCore::IDBServer::UniqueIDBDatabaseConnection&) final;
+    void unregisterConnection(CyberCore::IDBServer::UniqueIDBDatabaseConnection&) final;
+    void registerTransaction(CyberCore::IDBServer::UniqueIDBDatabaseTransaction&) final;
+    void unregisterTransaction(CyberCore::IDBServer::UniqueIDBDatabaseTransaction&) final;
+    std::unique_ptr<CyberCore::IDBServer::IDBBackingStore> createBackingStore(const CyberCore::IDBDatabaseIdentifier&) final;
+    void requestSpace(const CyberCore::ClientOrigin&, uint64_t size, CompletionHandler<void(bool)>&&) final;
 
     String m_path;
     IDBStorageRegistry& m_registry;
     QuotaCheckFunction m_quotaCheckFunction;
-    HashMap<WebCore::IDBDatabaseIdentifier, std::unique_ptr<WebCore::IDBServer::UniqueIDBDatabase>> m_databases;
+    HashMap<CyberCore::IDBDatabaseIdentifier, std::unique_ptr<CyberCore::IDBServer::UniqueIDBDatabase>> m_databases;
 };
 
 } // namespace WebKit

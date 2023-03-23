@@ -49,7 +49,7 @@
 #endif
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 static const Seconds swipeSnapshotRemovalWatchdogAfterFirstVisuallyNonEmptyLayoutDuration { 3_s };
 static const Seconds swipeSnapshotRemovalActiveLoadMonitoringInterval { 250_ms };
@@ -222,7 +222,7 @@ void ViewGestureController::didReachNavigationTerminalState(API::Navigation* nav
         return;
 
     // Coming back from the back/forward cache will result in getting a load event, but no first visually non-empty layout.
-    // WebCore considers a loaded document enough to be considered visually non-empty, so that's good
+    // CyberCore considers a loaded document enough to be considered visually non-empty, so that's good
     // enough for us too.
     m_snapshotRemovalTracker.cancelOutstandingEvent(SnapshotRemovalTracker::VisuallyNonEmptyLayout);
 
@@ -426,7 +426,7 @@ bool ViewGestureController::PendingSwipeTracker::scrollEventCanBecomeSwipe(Platf
 
     bool tryingToSwipeBack = size.width() > 0 && isPinnedToLeft;
     bool tryingToSwipeForward = size.width() < 0 && isPinnedToRight;
-    if (m_webPageProxy.userInterfaceLayoutDirection() != WebCore::UserInterfaceLayoutDirection::LTR)
+    if (m_webPageProxy.userInterfaceLayoutDirection() != CyberCore::UserInterfaceLayoutDirection::LTR)
         std::swap(tryingToSwipeBack, tryingToSwipeForward);
 
     if (!tryingToSwipeBack && !tryingToSwipeForward)
@@ -452,22 +452,22 @@ bool ViewGestureController::PendingSwipeTracker::handleEvent(PlatformScrollEvent
             return false;
 
         if (!m_shouldIgnorePinnedState && m_webPageProxy.willHandleHorizontalScrollEvents()) {
-            m_state = State::WaitingForWebCore;
-            LOG(ViewGestures, "Swipe Start Hysteresis - waiting for WebCore to handle event");
+            m_state = State::WaitingForCyberCore;
+            LOG(ViewGestures, "Swipe Start Hysteresis - waiting for CyberCore to handle event");
         }
     }
 
-    if (m_state == State::WaitingForWebCore)
+    if (m_state == State::WaitingForCyberCore)
         return false;
 
     return tryToStartSwipe(event);
 }
 
-void ViewGestureController::PendingSwipeTracker::eventWasNotHandledByWebCore(PlatformScrollEvent event)
+void ViewGestureController::PendingSwipeTracker::eventWasNotHandledByCyberCore(PlatformScrollEvent event)
 {
-    LOG(ViewGestures, "Swipe Start Hysteresis - WebCore didn't handle event, state %d", (int)m_state);
+    LOG(ViewGestures, "Swipe Start Hysteresis - CyberCore didn't handle event, state %d", (int)m_state);
 
-    if (m_state != State::WaitingForWebCore)
+    if (m_state != State::WaitingForCyberCore)
         return;
 
     m_state = State::None;
@@ -477,7 +477,7 @@ void ViewGestureController::PendingSwipeTracker::eventWasNotHandledByWebCore(Pla
 
 bool ViewGestureController::PendingSwipeTracker::tryToStartSwipe(PlatformScrollEvent event)
 {
-    ASSERT(m_state != State::WaitingForWebCore);
+    ASSERT(m_state != State::WaitingForCyberCore);
 
     if (m_state == State::None) {
         SwipeDirection direction;
@@ -530,7 +530,7 @@ void ViewGestureController::startSwipeGesture(PlatformScrollEvent event, SwipeDi
 
 bool ViewGestureController::isPhysicallySwipingLeft(SwipeDirection direction) const
 {
-    bool isLTR = m_webPageProxy.userInterfaceLayoutDirection() == WebCore::UserInterfaceLayoutDirection::LTR;
+    bool isLTR = m_webPageProxy.userInterfaceLayoutDirection() == CyberCore::UserInterfaceLayoutDirection::LTR;
     bool isSwipingForward = direction == SwipeDirection::Forward;
     return isLTR != isSwipingForward;
 }

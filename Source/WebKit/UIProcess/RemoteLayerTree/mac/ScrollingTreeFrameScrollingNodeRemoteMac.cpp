@@ -31,7 +31,7 @@
 #include "RemoteScrollingTree.h"
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 ScrollingTreeFrameScrollingNodeRemoteMac::ScrollingTreeFrameScrollingNodeRemoteMac(ScrollingTree& tree, ScrollingNodeType nodeType, ScrollingNodeID nodeID)
     : ScrollingTreeFrameScrollingNodeMac(tree, nodeType, nodeID)

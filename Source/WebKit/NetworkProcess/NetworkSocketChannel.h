@@ -35,7 +35,7 @@
 #include <wtf/CompletionHandler.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 struct ClientOrigin;
 enum class NetworkConnectionIntegrity : uint16_t;
 class ResourceRequest;
@@ -57,9 +57,9 @@ class NetworkSession;
 class NetworkSocketChannel : public IPC::MessageSender, public IPC::MessageReceiver {
     WTF_MAKE_FAST_ALLOCATED;
 public:
-    static std::unique_ptr<NetworkSocketChannel> create(NetworkConnectionToWebProcess&, PAL::SessionID, const WebCore::ResourceRequest&, const String& protocol, WebCore::WebSocketIdentifier, WebPageProxyIdentifier, const WebCore::ClientOrigin&, bool hadMainFrameMainResourcePrivateRelayed, bool allowPrivacyProxy, OptionSet<WebCore::NetworkConnectionIntegrity> networkConnectionIntegrityPolicy);
+    static std::unique_ptr<NetworkSocketChannel> create(NetworkConnectionToWebProcess&, PAL::SessionID, const CyberCore::ResourceRequest&, const String& protocol, CyberCore::WebSocketIdentifier, WebPageProxyIdentifier, const CyberCore::ClientOrigin&, bool hadMainFrameMainResourcePrivateRelayed, bool allowPrivacyProxy, OptionSet<CyberCore::NetworkConnectionIntegrity> networkConnectionIntegrityPolicy);
 
-    NetworkSocketChannel(NetworkConnectionToWebProcess&, NetworkSession*, const WebCore::ResourceRequest&, const String& protocol, WebCore::WebSocketIdentifier, WebPageProxyIdentifier, const WebCore::ClientOrigin&, bool hadMainFrameMainResourcePrivateRelayed, bool allowPrivacyProxy, OptionSet<WebCore::NetworkConnectionIntegrity> networkConnectionIntegrityPolicy);
+    NetworkSocketChannel(NetworkConnectionToWebProcess&, NetworkSession*, const CyberCore::ResourceRequest&, const String& protocol, CyberCore::WebSocketIdentifier, WebPageProxyIdentifier, const CyberCore::ClientOrigin&, bool hadMainFrameMainResourcePrivateRelayed, bool allowPrivacyProxy, OptionSet<CyberCore::NetworkConnectionIntegrity> networkConnectionIntegrityPolicy);
     ~NetworkSocketChannel();
 
     void didReceiveMessage(IPC::Connection&, IPC::Decoder&);
@@ -72,8 +72,8 @@ private:
     void didReceiveBinaryData(const uint8_t* data, size_t length);
     void didClose(unsigned short code, const String& reason);
     void didReceiveMessageError(String&&);
-    void didSendHandshakeRequest(WebCore::ResourceRequest&&);
-    void didReceiveHandshakeResponse(WebCore::ResourceResponse&&);
+    void didSendHandshakeRequest(CyberCore::ResourceRequest&&);
+    void didReceiveHandshakeResponse(CyberCore::ResourceResponse&&);
 
     void sendString(const IPC::DataReference&, CompletionHandler<void()>&&);
     void sendData(const IPC::DataReference&, CompletionHandler<void()>&&);
@@ -88,13 +88,13 @@ private:
     void finishClosingIfPossible();
 
     NetworkConnectionToWebProcess& m_connectionToWebProcess;
-    WebCore::WebSocketIdentifier m_identifier;
+    CyberCore::WebSocketIdentifier m_identifier;
     WeakPtr<NetworkSession> m_session;
     std::unique_ptr<WebSocketTask> m_socket;
 
     enum class State { Open, Closing, Closed };
     State m_state { State::Open };
-    WebCore::Timer m_errorTimer;
+    CyberCore::Timer m_errorTimer;
     String m_errorMessage;
     std::optional<std::pair<unsigned short, String>> m_closeInfo;
     WebPageProxyIdentifier m_webPageProxyID;

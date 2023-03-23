@@ -30,7 +30,7 @@
 
 #import "Logging.h"
 #import "MediaPlaybackTargetCocoa.h"
-#import "WebCoreThreadRun.h"
+#import "CyberCoreThreadRun.h"
 #import <AVFoundation/AVAudioSession.h>
 #import <AVFoundation/AVRouteDetector.h>
 #import <pal/spi/cocoa/AVFoundationSPI.h>
@@ -60,7 +60,7 @@ SOFT_LINK_CONSTANT_MAY_FAIL(Celestial, AVSystemController_ServerConnectionDiedNo
 SOFT_LINK_CONSTANT_MAY_FAIL(Celestial, AVSystemController_SubscribeToNotificationsAttribute, NSString *)
 #endif
 
-using namespace WebCore;
+using namespace CyberCore;
 
 class MediaSessionHelperiOS;
 

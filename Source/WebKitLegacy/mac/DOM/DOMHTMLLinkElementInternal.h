@@ -25,8 +25,8 @@
 
 #import <CyberKitLegacy/DOMHTMLLinkElement.h>
 
-namespace WebCore {
+namespace CyberCore {
 class HTMLLinkElement;
 }
 
-WebCore::HTMLLinkElement* core(DOMHTMLLinkElement *);
+CyberCore::HTMLLinkElement* core(DOMHTMLLinkElement *);

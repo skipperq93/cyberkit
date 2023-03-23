@@ -29,7 +29,7 @@
 #include <wtf/NeverDestroyed.h>
 #include <wtf/StdLibExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 RenderScrollbarTheme* RenderScrollbarTheme::renderScrollbarTheme()
 {

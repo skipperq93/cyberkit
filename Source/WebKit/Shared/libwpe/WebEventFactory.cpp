@@ -113,14 +113,14 @@ WallTime wallTimeForEventTime(uint64_t msTimeStamp)
     return firstEventWallTime + Seconds(delta / 1000.);
 }
 
-WebKeyboardEvent WebEventFactory::createWebKeyboardEvent(struct wpe_input_keyboard_event* event, const String& text, bool handledByInputMethod, std::optional<Vector<WebCore::CompositionUnderline>>&& preeditUnderlines, std::optional<EditingRange>&& preeditSelectionRange)
+WebKeyboardEvent WebEventFactory::createWebKeyboardEvent(struct wpe_input_keyboard_event* event, const String& text, bool handledByInputMethod, std::optional<Vector<CyberCore::CompositionUnderline>>&& preeditUnderlines, std::optional<EditingRange>&& preeditSelectionRange)
 {
     return WebKeyboardEvent({ event->pressed ? WebEventType::KeyDown : WebEventType::KeyUp, modifiersForKeyboardEvent(event), wallTimeForEventTime(event->time) },
-        text.isNull() ? WebCore::PlatformKeyboardEvent::singleCharacterString(event->key_code) : text,
-        WebCore::PlatformKeyboardEvent::keyValueForWPEKeyCode(event->key_code),
-        WebCore::PlatformKeyboardEvent::keyCodeForHardwareKeyCode(event->hardware_key_code),
-        WebCore::PlatformKeyboardEvent::keyIdentifierForWPEKeyCode(event->key_code),
-        WebCore::PlatformKeyboardEvent::windowsKeyCodeForWPEKeyCode(event->key_code),
+        text.isNull() ? CyberCore::PlatformKeyboardEvent::singleCharacterString(event->key_code) : text,
+        CyberCore::PlatformKeyboardEvent::keyValueForWPEKeyCode(event->key_code),
+        CyberCore::PlatformKeyboardEvent::keyCodeForHardwareKeyCode(event->hardware_key_code),
+        CyberCore::PlatformKeyboardEvent::keyIdentifierForWPEKeyCode(event->key_code),
+        CyberCore::PlatformKeyboardEvent::windowsKeyCodeForWPEKeyCode(event->key_code),
         event->key_code,
         handledByInputMethod,
         WTFMove(preeditUnderlines),
@@ -186,7 +186,7 @@ WebMouseEvent WebEventFactory::createWebMouseEvent(struct wpe_input_pointer_even
     unsigned clickCount = (type == WebEventType::MouseDown) ? 1 : 0;
 
     // FIXME: Proper button support. deltaX/Y/Z. Click count.
-    WebCore::IntPoint position(event->x, event->y);
+    CyberCore::IntPoint position(event->x, event->y);
     position.scale(1 / deviceScaleFactor);
     return WebMouseEvent({ type, modifiersForEventModifiers(event->modifiers), wallTimeForEventTime(event->time) }, button, pressedMouseButtons(event->modifiers), position, position,
         0, 0, 0, clickCount);
@@ -194,11 +194,11 @@ WebMouseEvent WebEventFactory::createWebMouseEvent(struct wpe_input_pointer_even
 
 WebWheelEvent WebEventFactory::createWebWheelEvent(struct wpe_input_axis_event* event, float deviceScaleFactor, WebWheelEvent::Phase phase, WebWheelEvent::Phase momentumPhase)
 {
-    WebCore::IntPoint position(event->x, event->y);
+    CyberCore::IntPoint position(event->x, event->y);
     position.scale(1 / deviceScaleFactor);
 
-    WebCore::FloatSize wheelTicks;
-    WebCore::FloatSize delta;
+    CyberCore::FloatSize wheelTicks;
+    CyberCore::FloatSize delta;
     bool hasPreciseScrollingDeltas = false;
 
 #if WPE_CHECK_VERSION(1, 5, 0)
@@ -206,12 +206,12 @@ WebWheelEvent WebEventFactory::createWebWheelEvent(struct wpe_input_axis_event* 
         auto* event2D = reinterpret_cast<struct wpe_input_axis_2d_event*>(event);
         switch (event->type & (wpe_input_axis_event_type_mask_2d - 1)) {
         case wpe_input_axis_event_type_motion:
-            wheelTicks = WebCore::FloatSize(std::copysign(1, event2D->x_axis), std::copysign(1, event2D->y_axis));
+            wheelTicks = CyberCore::FloatSize(std::copysign(1, event2D->x_axis), std::copysign(1, event2D->y_axis));
             delta = wheelTicks;
-            delta.scale(WebCore::Scrollbar::pixelsPerLineStep());
+            delta.scale(CyberCore::Scrollbar::pixelsPerLineStep());
             break;
         case wpe_input_axis_event_type_motion_smooth:
-            wheelTicks = WebCore::FloatSize(event2D->x_axis / deviceScaleFactor, event2D->y_axis / deviceScaleFactor);
+            wheelTicks = CyberCore::FloatSize(event2D->x_axis / deviceScaleFactor, event2D->y_axis / deviceScaleFactor);
             delta = wheelTicks;
             hasPreciseScrollingDeltas = true;
             break;
@@ -234,17 +234,17 @@ WebWheelEvent WebEventFactory::createWebWheelEvent(struct wpe_input_axis_event* 
 
     switch (event->axis) {
     case Vertical:
-        wheelTicks = WebCore::FloatSize(0, std::copysign(1, event->value));
+        wheelTicks = CyberCore::FloatSize(0, std::copysign(1, event->value));
         delta = wheelTicks;
-        delta.scale(WebCore::Scrollbar::pixelsPerLineStep());
+        delta.scale(CyberCore::Scrollbar::pixelsPerLineStep());
         break;
     case Horizontal:
-        wheelTicks = WebCore::FloatSize(std::copysign(1, event->value), 0);
+        wheelTicks = CyberCore::FloatSize(std::copysign(1, event->value), 0);
         delta = wheelTicks;
-        delta.scale(WebCore::Scrollbar::pixelsPerLineStep());
+        delta.scale(CyberCore::Scrollbar::pixelsPerLineStep());
         break;
     case Smooth:
-        wheelTicks = WebCore::FloatSize(0, event->value / deviceScaleFactor);
+        wheelTicks = CyberCore::FloatSize(0, event->value / deviceScaleFactor);
         delta = wheelTicks;
         hasPreciseScrollingDeltas = true;
         break;
@@ -303,7 +303,7 @@ WebTouchEvent WebEventFactory::createWebTouchEvent(struct wpe_input_touch_event*
         if (point.type == wpe_input_touch_event_type_null)
             continue;
 
-        WebCore::IntPoint pointCoordinates(point.x, point.y);
+        CyberCore::IntPoint pointCoordinates(point.x, point.y);
         pointCoordinates.scale(1 / deviceScaleFactor);
         touchPoints.uncheckedAppend(
             WebKit::WebPlatformTouchPoint(point.id, stateForTouchPoint(event->id, &point),

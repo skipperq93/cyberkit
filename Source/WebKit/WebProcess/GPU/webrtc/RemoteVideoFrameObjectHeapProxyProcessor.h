@@ -46,12 +46,12 @@ class Connection;
 class Decoder;
 }
 
-namespace WebCore {
+namespace CyberCore {
 class NativeImage;
 class VideoFrame;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class RemoteVideoFrameProxy;
 
@@ -62,7 +62,7 @@ public:
 
     using Callback = Function<void(RetainPtr<CVPixelBufferRef>&&)>;
     void getVideoFrameBuffer(const RemoteVideoFrameProxy&, bool canUseIOSurfce, Callback&&);
-    RefPtr<WebCore::NativeImage> getNativeImage(const WebCore::VideoFrame&);
+    RefPtr<CyberCore::NativeImage> getNativeImage(const CyberCore::VideoFrame&);
 
 private:
     explicit RemoteVideoFrameObjectHeapProxyProcessor(GPUProcessConnection&);
@@ -95,6 +95,6 @@ private:
     BinarySemaphore m_conversionSemaphore;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

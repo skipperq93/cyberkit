@@ -36,7 +36,7 @@
 #include "ContextMenuItem.h"
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ContextMenu;
 
@@ -51,6 +51,6 @@ public:
     virtual ContextMenuContext::Type contextMenuContextType() { return ContextMenuContext::Type::ContextMenu; };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(CONTEXT_MENUS)

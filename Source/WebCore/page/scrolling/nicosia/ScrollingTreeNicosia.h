@@ -31,7 +31,7 @@
 
 #include "ThreadedScrollingTree.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScrollingTreeNicosia final : public ThreadedScrollingTree {
 public:
@@ -45,6 +45,6 @@ private:
     RefPtr<ScrollingTreeNode> scrollingNodeForPoint(FloatPoint) final;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ASYNC_SCROLLING) && USE(NICOSIA)

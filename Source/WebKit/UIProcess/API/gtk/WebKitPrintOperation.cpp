@@ -325,7 +325,7 @@ static void webkitPrintOperationFailed(WebKitPrintOperation* printOperation, GUn
     g_signal_emit(printOperation, signals[FAILED], 0, error.get());
 }
 
-static void webkitPrintOperationFailed(WebKitPrintOperation* printOperation, WebCore::ResourceError&& error)
+static void webkitPrintOperationFailed(WebKitPrintOperation* printOperation, CyberCore::ResourceError&& error)
 {
     webkitPrintOperationFailed(printOperation, GUniquePtr<GError> { g_error_new_literal(g_quark_from_string(error.domain().utf8().data()),
         toWebKitError(error.errorCode()), error.localizedDescription().utf8().data()) });
@@ -361,7 +361,7 @@ static void webkitPrintOperationPrintPagesForFrame(WebKitPrintOperation* printOp
 
     PrintInfo printInfo(priv->printJob.get(), printOperation->priv->printMode);
     auto& page = webkitWebViewGetPage(printOperation->priv->webView.get());
-    page.drawPagesForPrinting(webFrame, printInfo, [printOperation = GRefPtr<WebKitPrintOperation>(printOperation)](std::optional<SharedMemory::Handle>&& data, WebCore::ResourceError&& error) mutable {
+    page.drawPagesForPrinting(webFrame, printInfo, [printOperation = GRefPtr<WebKitPrintOperation>(printOperation)](std::optional<SharedMemory::Handle>&& data, CyberCore::ResourceError&& error) mutable {
         auto* priv = printOperation->priv;
         // When running synchronously, WebPageProxy::printFrame() calls endPrinting().
         if (priv->printMode == PrintInfo::PrintModeAsync && priv->webView)
@@ -398,7 +398,7 @@ WebKitPrintOperationResponse webkitPrintOperationRunDialogForFrame(WebKitPrintOp
     WebKitPrintOperationPrivate* priv = printOperation->priv;
     if (!parent) {
         GtkWidget* toplevel = gtk_widget_get_toplevel(GTK_WIDGET(priv->webView.get()));
-        if (WebCore::widgetIsOnscreenToplevelWindow(toplevel))
+        if (CyberCore::widgetIsOnscreenToplevelWindow(toplevel))
             parent = GTK_WINDOW(toplevel);
     }
 

@@ -29,7 +29,7 @@
 #include "PlatformContentFilter.h"
 #include <wtf/UniqueRef.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class MockContentFilter final : public PlatformContentFilter {
     friend UniqueRef<MockContentFilter> WTF::makeUniqueRefWithoutFastMallocCheck<MockContentFilter>();
@@ -57,4 +57,4 @@ private:
     Vector<char> m_replacementData;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

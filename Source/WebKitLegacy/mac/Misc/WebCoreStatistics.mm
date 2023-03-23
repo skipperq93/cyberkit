@@ -26,7 +26,7 @@
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import "WebCoreStatistics.h"
+#import "CyberCoreStatistics.h"
 
 #import "DOMElementInternal.h"
 #import "WebCache.h"
@@ -47,9 +47,9 @@
 #import <CyberCore/RenderView.h>
 
 using namespace JSC;
-using namespace WebCore;
+using namespace CyberCore;
 
-@implementation WebCoreStatistics
+@implementation CyberCoreStatistics
 
 + (NSArray *)statistics
 {
@@ -180,14 +180,14 @@ static RetainPtr<NSCountedSet> createNSCountedSet(const HashCountedSet<const cha
     [WebCache setDisabled:disabled];
 }
 
-+ (void)startIgnoringWebCoreNodeLeaks
++ (void)startIgnoringCyberCoreNodeLeaks
 {
-    WebCore::Node::startIgnoringLeaks();
+    CyberCore::Node::startIgnoringLeaks();
 }
 
-+ (void)stopIgnoringWebCoreNodeLeaks
++ (void)stopIgnoringCyberCoreNodeLeaks
 {
-    WebCore::Node::stopIgnoringLeaks();
+    CyberCore::Node::stopIgnoringLeaks();
 }
 
 + (NSDictionary *)memoryStatistics
@@ -258,7 +258,7 @@ static RetainPtr<NSCountedSet> createNSCountedSet(const HashCountedSet<const cha
 
 @end
 
-@implementation WebFrame (WebKitDebug)
+@implementation WebFrame (CyberKitDebug)
 
 - (NSString *)renderTreeAsExternalRepresentationForPrinting
 {

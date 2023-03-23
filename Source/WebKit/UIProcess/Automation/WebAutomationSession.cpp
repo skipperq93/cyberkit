@@ -65,7 +65,7 @@
 namespace WebKit {
 
 using namespace Inspector;
-using namespace WebCore;
+using namespace CyberCore;
 
 String AutomationCommandError::toProtocolString()
 {
@@ -254,7 +254,7 @@ String WebAutomationSession::handleForWebFrameProxy(const WebFrameProxy& webFram
     return handleForWebFrameID(webFrameProxy.frameID());
 }
 
-Ref<Inspector::Protocol::Automation::BrowsingContext> WebAutomationSession::buildBrowsingContextForPage(WebPageProxy& page, WebCore::FloatRect windowFrame)
+Ref<Inspector::Protocol::Automation::BrowsingContext> WebAutomationSession::buildBrowsingContextForPage(WebPageProxy& page, CyberCore::FloatRect windowFrame)
 {
     auto originObject = Inspector::Protocol::Automation::Point::create()
         .setX(windowFrame.x())
@@ -288,7 +288,7 @@ void WebAutomationSession::getNextContext(Ref<WebAutomationSession>&& protectedT
     }
     auto page = pages.takeLast();
     auto& webPageProxy = page.get();
-    webPageProxy.getWindowFrameWithCallback([this, protectedThis = WTFMove(protectedThis), callback = WTFMove(callback), pages = WTFMove(pages), contexts = WTFMove(contexts), page = WTFMove(page)](WebCore::FloatRect windowFrame) mutable {
+    webPageProxy.getWindowFrameWithCallback([this, protectedThis = WTFMove(protectedThis), callback = WTFMove(callback), pages = WTFMove(pages), contexts = WTFMove(contexts), page = WTFMove(page)](CyberCore::FloatRect windowFrame) mutable {
         contexts->addItem(protectedThis->buildBrowsingContextForPage(page.get(), windowFrame));
         getNextContext(WTFMove(protectedThis), WTFMove(pages), WTFMove(contexts), WTFMove(callback));
     });
@@ -315,7 +315,7 @@ void WebAutomationSession::getBrowsingContext(const Inspector::Protocol::Automat
     if (!page)
         ASYNC_FAIL_WITH_PREDEFINED_ERROR(WindowNotFound);
 
-    page->getWindowFrameWithCallback([protectedThis = Ref { *this }, page = Ref { *page }, callback = WTFMove(callback)](WebCore::FloatRect windowFrame) mutable {
+    page->getWindowFrameWithCallback([protectedThis = Ref { *this }, page = Ref { *page }, callback = WTFMove(callback)](CyberCore::FloatRect windowFrame) mutable {
         callback->sendSuccess(protectedThis->buildBrowsingContextForPage(page.get(), windowFrame));
     });
 }
@@ -423,8 +423,8 @@ void WebAutomationSession::setWindowFrameOfBrowsingContext(const Inspector::Prot
         auto& webPage = *page;
         this->restoreWindowForPage(webPage, [callback = WTFMove(callback), page = RefPtr { page }, width, height, x, y]() mutable {
             auto& webPage = *page;
-            webPage.getWindowFrameWithCallback([callback = WTFMove(callback), page = RefPtr { page }, width, height, x, y](WebCore::FloatRect originalFrame) mutable {
-                WebCore::FloatRect newFrame = WebCore::FloatRect(WebCore::FloatPoint(x.value_or(originalFrame.location().x()), y.value_or(originalFrame.location().y())), WebCore::FloatSize(width.value_or(originalFrame.size().width()), height.value_or(originalFrame.size().height())));
+            webPage.getWindowFrameWithCallback([callback = WTFMove(callback), page = RefPtr { page }, width, height, x, y](CyberCore::FloatRect originalFrame) mutable {
+                CyberCore::FloatRect newFrame = CyberCore::FloatRect(CyberCore::FloatPoint(x.value_or(originalFrame.location().x()), y.value_or(originalFrame.location().y())), CyberCore::FloatSize(width.value_or(originalFrame.size().width()), height.value_or(originalFrame.size().height())));
                 if (newFrame != originalFrame)
                     page->setWindowFrame(newFrame);
                 
@@ -876,7 +876,7 @@ static bool fileCanBeAcceptedForUpload(const String& filename, const HashSet<Str
     if (allowedFileExtensions.contains(extension))
         return true;
 
-    String mappedMIMEType = WebCore::MIMETypeRegistry::mimeTypeForExtension(extension).convertToASCIILowercase();
+    String mappedMIMEType = CyberCore::MIMETypeRegistry::mimeTypeForExtension(extension).convertToASCIILowercase();
     if (mappedMIMEType.isEmpty())
         return false;
     
@@ -918,7 +918,7 @@ void WebAutomationSession::handleRunOpenPanel(const WebPageProxy& page, const We
     HashSet<String> allowedFileExtensions;
     auto acceptFileExtensions = parameters.acceptFileExtensions();
     for (auto type : acceptFileExtensions->elementsOfType<API::String>()) {
-        // WebCore vends extensions with leading periods. Strip these to simplify matching later.
+        // CyberCore vends extensions with leading periods. Strip these to simplify matching later.
         String extension = type->string();
         ASSERT(extension.characterAt(0) == '.');
         allowedFileExtensions.add(extension.substring(1));
@@ -1072,7 +1072,7 @@ void WebAutomationSession::computeElementLayout(const Inspector::Protocol::Autom
     if (!coordinateSystem)
         ASYNC_FAIL_WITH_PREDEFINED_ERROR_AND_DETAILS(InvalidParameter, "The parameter 'coordinateSystem' is invalid.");
 
-    WTF::CompletionHandler<void(std::optional<String>, WebCore::FloatRect, std::optional<WebCore::IntPoint>, bool)> completionHandler = [callback](std::optional<String> errorType, WebCore::FloatRect rect, std::optional<WebCore::IntPoint> inViewCenterPoint, bool isObscured) mutable {
+    WTF::CompletionHandler<void(std::optional<String>, CyberCore::FloatRect, std::optional<CyberCore::IntPoint>, bool)> completionHandler = [callback](std::optional<String> errorType, CyberCore::FloatRect rect, std::optional<CyberCore::IntPoint> inViewCenterPoint, bool isObscured) mutable {
         if (errorType) {
             callback->sendFailure(STRING_FOR_PREDEFINED_ERROR_MESSAGE(*errorType));
             return;
@@ -1347,33 +1347,33 @@ void WebAutomationSession::setFilesForInputFileUpload(const Inspector::Protocol:
     page->process().sendWithAsyncReply(Messages::WebAutomationSessionProxy::SetFilesForInputFileUpload(page->webPageID(), frameID, nodeHandle, WTFMove(newFileList)), WTFMove(completionHandler));
 }
 
-static inline Inspector::Protocol::Automation::CookieSameSitePolicy toProtocolSameSitePolicy(WebCore::Cookie::SameSitePolicy policy)
+static inline Inspector::Protocol::Automation::CookieSameSitePolicy toProtocolSameSitePolicy(CyberCore::Cookie::SameSitePolicy policy)
 {
     switch (policy) {
-    case WebCore::Cookie::SameSitePolicy::None:
+    case CyberCore::Cookie::SameSitePolicy::None:
         return Inspector::Protocol::Automation::CookieSameSitePolicy::None;
-    case WebCore::Cookie::SameSitePolicy::Lax:
+    case CyberCore::Cookie::SameSitePolicy::Lax:
         return Inspector::Protocol::Automation::CookieSameSitePolicy::Lax;
-    case WebCore::Cookie::SameSitePolicy::Strict:
+    case CyberCore::Cookie::SameSitePolicy::Strict:
         return Inspector::Protocol::Automation::CookieSameSitePolicy::Strict;
     }
     RELEASE_ASSERT_NOT_REACHED();
 }
 
-static inline WebCore::Cookie::SameSitePolicy toWebCoreSameSitePolicy(Inspector::Protocol::Automation::CookieSameSitePolicy policy)
+static inline CyberCore::Cookie::SameSitePolicy toCyberCoreSameSitePolicy(Inspector::Protocol::Automation::CookieSameSitePolicy policy)
 {
     switch (policy) {
     case Inspector::Protocol::Automation::CookieSameSitePolicy::None:
-        return WebCore::Cookie::SameSitePolicy::None;
+        return CyberCore::Cookie::SameSitePolicy::None;
     case Inspector::Protocol::Automation::CookieSameSitePolicy::Lax:
-        return WebCore::Cookie::SameSitePolicy::Lax;
+        return CyberCore::Cookie::SameSitePolicy::Lax;
     case Inspector::Protocol::Automation::CookieSameSitePolicy::Strict:
-        return WebCore::Cookie::SameSitePolicy::Strict;
+        return CyberCore::Cookie::SameSitePolicy::Strict;
     }
     RELEASE_ASSERT_NOT_REACHED();
 }
 
-static Ref<Inspector::Protocol::Automation::Cookie> buildObjectForCookie(const WebCore::Cookie& cookie)
+static Ref<Inspector::Protocol::Automation::Cookie> buildObjectForCookie(const CyberCore::Cookie& cookie)
 {
     return Inspector::Protocol::Automation::Cookie::create()
         .setName(cookie.name)
@@ -1389,7 +1389,7 @@ static Ref<Inspector::Protocol::Automation::Cookie> buildObjectForCookie(const W
         .release();
 }
 
-static Ref<JSON::ArrayOf<Inspector::Protocol::Automation::Cookie>> buildArrayForCookies(Vector<WebCore::Cookie>& cookiesList)
+static Ref<JSON::ArrayOf<Inspector::Protocol::Automation::Cookie>> buildArrayForCookies(Vector<CyberCore::Cookie>& cookiesList)
 {
     auto cookies = JSON::ArrayOf<Inspector::Protocol::Automation::Cookie>::create();
 
@@ -1405,7 +1405,7 @@ void WebAutomationSession::getAllCookies(const Inspector::Protocol::Automation::
     if (!page)
         ASYNC_FAIL_WITH_PREDEFINED_ERROR(WindowNotFound);
 
-    WTF::CompletionHandler<void(std::optional<String>, Vector<WebCore::Cookie>)> completionHandler = [callback](std::optional<String> errorType, Vector<WebCore::Cookie> cookies) mutable {
+    WTF::CompletionHandler<void(std::optional<String>, Vector<CyberCore::Cookie>)> completionHandler = [callback](std::optional<String> errorType, Vector<CyberCore::Cookie> cookies) mutable {
         if (errorType) {
             callback->sendFailure(STRING_FOR_PREDEFINED_ERROR_MESSAGE(*errorType));
             return;
@@ -1456,7 +1456,7 @@ void WebAutomationSession::addSingleCookie(const Inspector::Protocol::Automation
     URL activeURL { page->pageLoadState().activeURL() };
     ASSERT(activeURL.isValid());
 
-    WebCore::Cookie cookie;
+    CyberCore::Cookie cookie;
 
     cookie.name = cookieObject->getString("name"_s);
     if (!cookie.name)
@@ -1512,7 +1512,7 @@ void WebAutomationSession::addSingleCookie(const Inspector::Protocol::Automation
     if (!parsedSameSite)
         ASYNC_FAIL_WITH_PREDEFINED_ERROR_AND_DETAILS(InvalidParameter, "The parameter 'sameSite' has an unknown value.");
 
-    cookie.sameSite = toWebCoreSameSitePolicy(*parsedSameSite);
+    cookie.sameSite = toCyberCoreSameSitePolicy(*parsedSameSite);
 
     auto& cookieStore = page->websiteDataStore().cookieStore();
     cookieStore.setCookies({ cookie }, [callback]() {
@@ -1579,20 +1579,20 @@ Inspector::Protocol::ErrorStringOr<void> WebAutomationSession::setSessionPermiss
 }
 
 #if ENABLE(WEB_AUTHN)
-static WebCore::AuthenticatorTransport toAuthenticatorTransport(Inspector::Protocol::Automation::AuthenticatorTransport transport)
+static CyberCore::AuthenticatorTransport toAuthenticatorTransport(Inspector::Protocol::Automation::AuthenticatorTransport transport)
 {
     switch (transport) {
     case Inspector::Protocol::Automation::AuthenticatorTransport::Usb:
-        return WebCore::AuthenticatorTransport::Usb;
+        return CyberCore::AuthenticatorTransport::Usb;
     case Inspector::Protocol::Automation::AuthenticatorTransport::Nfc:
-        return WebCore::AuthenticatorTransport::Nfc;
+        return CyberCore::AuthenticatorTransport::Nfc;
     case Inspector::Protocol::Automation::AuthenticatorTransport::Ble:
-        return WebCore::AuthenticatorTransport::Ble;
+        return CyberCore::AuthenticatorTransport::Ble;
     case Inspector::Protocol::Automation::AuthenticatorTransport::Internal:
-        return WebCore::AuthenticatorTransport::Internal;
+        return CyberCore::AuthenticatorTransport::Internal;
     default:
         ASSERT_NOT_REACHED();
-        return WebCore::AuthenticatorTransport::Internal;
+        return CyberCore::AuthenticatorTransport::Internal;
     }
 }
 #endif // ENABLE(WEB_AUTHN)
@@ -1723,9 +1723,9 @@ SimulatedInputDispatcher& WebAutomationSession::inputDispatcherForPage(WebPagePr
 }
 
 // MARK: SimulatedInputDispatcher::Client API
-void WebAutomationSession::viewportInViewCenterPointOfElement(WebPageProxy& page, std::optional<FrameIdentifier> frameID, const Inspector::Protocol::Automation::NodeHandle& nodeHandle, Function<void(std::optional<WebCore::IntPoint>, std::optional<AutomationCommandError>)>&& completionHandler)
+void WebAutomationSession::viewportInViewCenterPointOfElement(WebPageProxy& page, std::optional<FrameIdentifier> frameID, const Inspector::Protocol::Automation::NodeHandle& nodeHandle, Function<void(std::optional<CyberCore::IntPoint>, std::optional<AutomationCommandError>)>&& completionHandler)
 {
-    WTF::CompletionHandler<void(std::optional<String>, WebCore::FloatRect, std::optional<WebCore::IntPoint>, bool)> didComputeElementLayoutHandler = [completionHandler = WTFMove(completionHandler)](std::optional<String> errorType, WebCore::FloatRect, std::optional<WebCore::IntPoint> inViewCenterPoint, bool) mutable {
+    WTF::CompletionHandler<void(std::optional<String>, CyberCore::FloatRect, std::optional<CyberCore::IntPoint>, bool)> didComputeElementLayoutHandler = [completionHandler = WTFMove(completionHandler)](std::optional<String> errorType, CyberCore::FloatRect, std::optional<CyberCore::IntPoint> inViewCenterPoint, bool) mutable {
         if (errorType) {
             completionHandler(std::nullopt, AUTOMATION_COMMAND_ERROR_WITH_MESSAGE(*errorType));
             return;
@@ -1743,7 +1743,7 @@ void WebAutomationSession::viewportInViewCenterPointOfElement(WebPageProxy& page
 }
 
 #if ENABLE(WEBDRIVER_MOUSE_INTERACTIONS)
-void WebAutomationSession::updateClickCount(MouseButton button, const WebCore::IntPoint& position, Seconds maxTime, int maxDistance)
+void WebAutomationSession::updateClickCount(MouseButton button, const CyberCore::IntPoint& position, Seconds maxTime, int maxDistance)
 {
     auto now = MonotonicTime::now();
     if (now - m_lastClickTime < maxTime && button == m_lastClickButton && m_lastClickPosition.distanceSquaredToPoint(position) < maxDistance) {
@@ -1765,9 +1765,9 @@ void WebAutomationSession::resetClickCount()
     m_lastClickPosition = { };
 }
 
-void WebAutomationSession::simulateMouseInteraction(WebPageProxy& page, MouseInteraction interaction, MouseButton mouseButton, const WebCore::IntPoint& locationInViewport, const String& pointerType, CompletionHandler<void(std::optional<AutomationCommandError>)>&& completionHandler)
+void WebAutomationSession::simulateMouseInteraction(WebPageProxy& page, MouseInteraction interaction, MouseButton mouseButton, const CyberCore::IntPoint& locationInViewport, const String& pointerType, CompletionHandler<void(std::optional<AutomationCommandError>)>&& completionHandler)
 {
-    page.getWindowFrameWithCallback([this, protectedThis = Ref { *this }, completionHandler = WTFMove(completionHandler), page = Ref { page }, interaction, mouseButton, locationInViewport, pointerType](WebCore::FloatRect windowFrame) mutable {
+    page.getWindowFrameWithCallback([this, protectedThis = Ref { *this }, completionHandler = WTFMove(completionHandler), page = Ref { page }, interaction, mouseButton, locationInViewport, pointerType](CyberCore::FloatRect windowFrame) mutable {
         auto clippedX = std::min(std::max(0.0f, (float)locationInViewport.x()), windowFrame.size().width());
         auto clippedY = std::min(std::max(0.0f, (float)locationInViewport.y()), windowFrame.size().height());
         if (clippedX != locationInViewport.x() || clippedY != locationInViewport.y()) {
@@ -1799,10 +1799,10 @@ void WebAutomationSession::simulateMouseInteraction(WebPageProxy& page, MouseInt
 #endif // ENABLE(WEBDRIVER_MOUSE_INTERACTIONS)
 
 #if ENABLE(WEBDRIVER_TOUCH_INTERACTIONS)
-void WebAutomationSession::simulateTouchInteraction(WebPageProxy& page, TouchInteraction interaction, const WebCore::IntPoint& locationInViewport, std::optional<Seconds> duration, CompletionHandler<void(std::optional<AutomationCommandError>)>&& completionHandler)
+void WebAutomationSession::simulateTouchInteraction(WebPageProxy& page, TouchInteraction interaction, const CyberCore::IntPoint& locationInViewport, std::optional<Seconds> duration, CompletionHandler<void(std::optional<AutomationCommandError>)>&& completionHandler)
 {
 #if PLATFORM(IOS_FAMILY)
-    WebCore::FloatRect visualViewportBounds = WebCore::FloatRect({ }, page.unobscuredContentRect().size());
+    CyberCore::FloatRect visualViewportBounds = CyberCore::FloatRect({ }, page.unobscuredContentRect().size());
     if (!visualViewportBounds.contains(locationInViewport)) {
         completionHandler(AUTOMATION_COMMAND_ERROR_WITH_NAME(TargetOutOfBounds));
         return;
@@ -1844,9 +1844,9 @@ void WebAutomationSession::simulateKeyboardInteraction(WebPageProxy& page, Keybo
 #endif // ENABLE(WEBDRIVER_KEYBOARD_INTERACTIONS)
 
 #if ENABLE(WEBDRIVER_WHEEL_INTERACTIONS)
-void WebAutomationSession::simulateWheelInteraction(WebPageProxy& page, const WebCore::IntPoint& locationInViewport, const WebCore::IntSize& delta, AutomationCompletionHandler&& completionHandler)
+void WebAutomationSession::simulateWheelInteraction(WebPageProxy& page, const CyberCore::IntPoint& locationInViewport, const CyberCore::IntSize& delta, AutomationCompletionHandler&& completionHandler)
 {
-    page.getWindowFrameWithCallback([this, protectedThis = Ref { *this }, completionHandler = WTFMove(completionHandler), page = Ref { page }, locationInViewport, delta](WebCore::FloatRect windowFrame) mutable {
+    page.getWindowFrameWithCallback([this, protectedThis = Ref { *this }, completionHandler = WTFMove(completionHandler), page = Ref { page }, locationInViewport, delta](CyberCore::FloatRect windowFrame) mutable {
         auto clippedX = std::min(std::max(0.0f, static_cast<float>(locationInViewport.x())), windowFrame.size().width());
         auto clippedY = std::min(std::max(0.0f, static_cast<float>(locationInViewport.y())), windowFrame.size().height());
         if (clippedX != locationInViewport.x() || clippedY != locationInViewport.y()) {
@@ -1932,11 +1932,11 @@ void WebAutomationSession::performMouseInteraction(const Inspector::Protocol::Au
         keyModifiers.add(protocolModifierToWebEventModifier(parsedModifier.value()));
     }
 
-    page->getWindowFrameWithCallback([this, protectedThis = Ref { *this }, callback = WTFMove(callback), page = Ref { *page }, floatX, floatY, mouseInteraction, mouseButton, keyModifiers](WebCore::FloatRect windowFrame) mutable {
+    page->getWindowFrameWithCallback([this, protectedThis = Ref { *this }, callback = WTFMove(callback), page = Ref { *page }, floatX, floatY, mouseInteraction, mouseButton, keyModifiers](CyberCore::FloatRect windowFrame) mutable {
         floatX = std::min(std::max(0.0f, floatX), windowFrame.size().width());
         floatY = std::min(std::max(0.0f, floatY), windowFrame.size().height());
 
-        WebCore::IntPoint locationInViewport = WebCore::IntPoint(static_cast<int>(floatX), static_cast<int>(floatY));
+        CyberCore::IntPoint locationInViewport = CyberCore::IntPoint(static_cast<int>(floatX), static_cast<int>(floatY));
 
         auto mouseEventsFlushedCallback = [protectedThis = WTFMove(protectedThis), callback = WTFMove(callback), page, floatX, floatY](std::optional<AutomationCommandError> error) {
             if (error)
@@ -1954,7 +1954,7 @@ void WebAutomationSession::performMouseInteraction(const Inspector::Protocol::Au
             callbackInMap(AUTOMATION_COMMAND_ERROR_WITH_NAME(Timeout));
         callbackInMap = WTFMove(mouseEventsFlushedCallback);
 
-        platformSimulateMouseInteraction(page, mouseInteraction, mouseButton, locationInViewport, keyModifiers, WebCore::mousePointerEventType());
+        platformSimulateMouseInteraction(page, mouseInteraction, mouseButton, locationInViewport, keyModifiers, CyberCore::mousePointerEventType());
 
         // If the event location was previously clipped and does not hit test anything in the window, then it will not be processed.
         // For compatibility with pre-W3C driver implementations, don't make this a hard error; just do nothing silently.
@@ -2292,14 +2292,14 @@ void WebAutomationSession::performInteractionSequence(const Inspector::Protocol:
                 auto x = locationObject->getInteger("x"_s);
                 auto y = locationObject->getInteger("y"_s);
                 if (x && y)
-                    sourceState.location = WebCore::IntPoint(*x, *y);
+                    sourceState.location = CyberCore::IntPoint(*x, *y);
             }
 
             if (auto deltaObject = stateObject->getObject("delta"_s)) {
                 auto deltaX = deltaObject->getInteger("width"_s);
                 auto deltaY = deltaObject->getInteger("height"_s);
                 if (deltaX && deltaY)
-                    sourceState.scrollDelta = WebCore::IntSize(*deltaX, *deltaY);
+                    sourceState.scrollDelta = CyberCore::IntSize(*deltaX, *deltaY);
             }
 
             if (auto duration = stateObject->getInteger("duration"_s))
@@ -2389,7 +2389,7 @@ void WebAutomationSession::takeScreenshot(const Inspector::Protocol::Automation:
     }
 #endif
 #if PLATFORM(GTK) || PLATFORM(COCOA)
-    Function<void(WebPageProxy&, std::optional<WebCore::IntRect>&&, Ref<TakeScreenshotCallback>&&)> takeViewSnapsot = [](WebPageProxy& page, std::optional<WebCore::IntRect>&& rect, Ref<TakeScreenshotCallback>&& callback) {
+    Function<void(WebPageProxy&, std::optional<CyberCore::IntRect>&&, Ref<TakeScreenshotCallback>&&)> takeViewSnapsot = [](WebPageProxy& page, std::optional<CyberCore::IntRect>&& rect, Ref<TakeScreenshotCallback>&& callback) {
         page.callAfterNextPresentationUpdate([page = Ref { page }, rect = WTFMove(rect), callback = WTFMove(callback)] () mutable {
             auto snapshot = page->takeViewSnapshot(WTFMove(rect));
             if (!snapshot)
@@ -2408,7 +2408,7 @@ void WebAutomationSession::takeScreenshot(const Inspector::Protocol::Automation:
         return;
     }
 
-    CompletionHandler<void(std::optional<String>, WebCore::IntRect&&)> completionHandler = [page = Ref { *page }, callback, takeViewSnapsot = WTFMove(takeViewSnapsot)](std::optional<String> errorType, WebCore::IntRect&& rect) mutable {
+    CompletionHandler<void(std::optional<String>, CyberCore::IntRect&&)> completionHandler = [page = Ref { *page }, callback, takeViewSnapsot = WTFMove(takeViewSnapsot)](std::optional<String> errorType, CyberCore::IntRect&& rect) mutable {
         if (errorType) {
             callback->sendFailure(STRING_FOR_PREDEFINED_ERROR_MESSAGE(*errorType));
             return;

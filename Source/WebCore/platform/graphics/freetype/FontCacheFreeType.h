@@ -25,7 +25,7 @@
 
 typedef struct FT_FaceRec_* FT_Face;
 
-namespace WebCore {
+namespace CyberCore {
 class FontDescription;
 
 #if ENABLE(VARIATION_FONTS)

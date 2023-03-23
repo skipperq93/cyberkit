@@ -43,7 +43,7 @@
 #include "VideoFrameGStreamer.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 GraphicsContextGLANGLE::GraphicsContextGLANGLE(GraphicsContextGLAttributes attributes)
     : GraphicsContextGL(attributes)
@@ -396,6 +396,6 @@ void GraphicsContextGLTextureMapperANGLE::prepareForDisplay()
     markLayerComposited();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBGL) && USE(TEXTURE_MAPPER) && !USE(NICOSIA)

@@ -29,7 +29,7 @@
 
 #import <CyberCore/MIMETypeRegistry.h>
 
-using WebCore::MIMETypeRegistry;
+using CyberCore::MIMETypeRegistry;
 
 @implementation WebMIMETypeRegistry
 

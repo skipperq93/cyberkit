@@ -28,7 +28,7 @@
 #include "RenderSVGResourceFilter.h"
 #include "SVGFilterElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 inline SVGFilterElement& RenderSVGResourceFilter::filterElement() const
 {
@@ -45,5 +45,5 @@ inline SVGUnitTypes::SVGUnitType RenderSVGResourceFilter::primitiveUnits() const
     return filterElement().primitiveUnits();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 

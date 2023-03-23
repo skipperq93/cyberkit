@@ -30,7 +30,7 @@
 #include "Length.h"
 #include <wtf/EnumTraits.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class PopupMenuStyle {
 public:
@@ -87,17 +87,17 @@ private:
     PopupMenuSize m_menuSize;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::PopupMenuStyle::PopupMenuSize> {
+template<> struct EnumTraits<CyberCore::PopupMenuStyle::PopupMenuSize> {
     using values = EnumValues<
-        WebCore::PopupMenuStyle::PopupMenuSize,
-        WebCore::PopupMenuStyle::PopupMenuSize::PopupMenuSizeNormal,
-        WebCore::PopupMenuStyle::PopupMenuSize::PopupMenuSizeSmall,
-        WebCore::PopupMenuStyle::PopupMenuSize::PopupMenuSizeMini,
-        WebCore::PopupMenuStyle::PopupMenuSize::PopupMenuSizeLarge
+        CyberCore::PopupMenuStyle::PopupMenuSize,
+        CyberCore::PopupMenuStyle::PopupMenuSize::PopupMenuSizeNormal,
+        CyberCore::PopupMenuStyle::PopupMenuSize::PopupMenuSizeSmall,
+        CyberCore::PopupMenuStyle::PopupMenuSize::PopupMenuSizeMini,
+        CyberCore::PopupMenuStyle::PopupMenuSize::PopupMenuSizeLarge
     >;
 };
 

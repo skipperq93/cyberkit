@@ -40,8 +40,8 @@
 #import <CyberCore/HTMLSelectElement.h>
 #import <CyberCore/Page.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 using namespace HTMLNames;
 
 Ref<PDFPluginChoiceAnnotation> PDFPluginChoiceAnnotation::create(PDFAnnotation *annotation, PDFLayerController *pdfLayerController, PDFPlugin* plugin)
@@ -96,6 +96,6 @@ Ref<Element> PDFPluginChoiceAnnotation::createAnnotationElement()
     return element;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(PDFKIT_PLUGIN)

@@ -49,7 +49,7 @@
 #include "ScrollbarTheme.h"
 #include "ScrollbarThemeWin.h"
 #include "TextRun.h"
-#include "WebCoreInstanceHandle.h"
+#include "CyberCoreInstanceHandle.h"
 #include <wtf/HexNumber.h>
 #include <wtf/WindowsExtras.h>
 #include <wtf/text/StringBuilder.h>
@@ -61,7 +61,7 @@
 
 using std::min;
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -298,7 +298,7 @@ void PopupMenuWin::calculatePositionAndSize(const IntRect& r, FrameView* v)
         m_popup = ::CreateWindowExW(exStyle, kPopupWindowClassName, L"PopupMenu",
             WS_POPUP | WS_BORDER,
             absoluteScreenCoords.x(), absoluteScreenCoords.y(), absoluteScreenCoords.width(), absoluteScreenCoords.height(),
-            hostWindow, 0, WebCore::instanceHandle(), this);
+            hostWindow, 0, CyberCore::instanceHandle(), this);
 
         if (!m_popup)
             return;
@@ -790,7 +790,7 @@ void PopupMenuWin::registerClass()
     wcex.lpfnWndProc    = PopupMenuWndProc;
     wcex.cbClsExtra     = 0;
     wcex.cbWndExtra     = sizeof(PopupMenu*); // For the PopupMenu pointer
-    wcex.hInstance      = WebCore::instanceHandle();
+    wcex.hInstance      = CyberCore::instanceHandle();
     wcex.hIcon          = 0;
     wcex.hCursor        = LoadCursor(0, IDC_ARROW);
     wcex.hbrBackground  = 0;
@@ -1307,7 +1307,7 @@ HRESULT AccessiblePopupMenu::accLocation(_Out_ long* left, _Out_ long* top, _Out
             return E_FAIL;
 
         Scrollbar& scrollbar = *m_popupMenu.scrollbar();
-        WebCore::ScrollbarPart part = static_cast<WebCore::ScrollbarPart>(-vChild.lVal);
+        CyberCore::ScrollbarPart part = static_cast<CyberCore::ScrollbarPart>(-vChild.lVal);
 
         ScrollbarThemeWin& theme = static_cast<ScrollbarThemeWin&>(scrollbar.theme());
 
@@ -1316,14 +1316,14 @@ HRESULT AccessiblePopupMenu::accLocation(_Out_ long* left, _Out_ long* top, _Out
         switch (part) {
         case BackTrackPart:
         case BackButtonStartPart:
-            partRect = theme.backButtonRect(scrollbar, WebCore::BackTrackPart);
+            partRect = theme.backButtonRect(scrollbar, CyberCore::BackTrackPart);
             break;
         case ThumbPart:
             partRect = theme.thumbRect(scrollbar);
             break;
         case ForwardTrackPart:
         case ForwardButtonEndPart:
-            partRect = theme.forwardButtonRect(scrollbar, WebCore::ForwardTrackPart);
+            partRect = theme.forwardButtonRect(scrollbar, CyberCore::ForwardTrackPart);
             break;
         case ScrollbarBGPart:
             partRect = theme.trackRect(scrollbar);
@@ -1382,7 +1382,7 @@ HRESULT AccessiblePopupMenu::accHitTest(long x, long y, _Out_ VARIANT* pvChildAt
 
         pt.move(-scrollRect.x(), -scrollRect.y());
 
-        WebCore::ScrollbarPart part = scrollbar.theme().hitTest(scrollbar, pt);
+        CyberCore::ScrollbarPart part = scrollbar.theme().hitTest(scrollbar, pt);
 
         V_VT(pvChildAtPoint) = VT_I4;
         V_I4(pvChildAtPoint) = -part; // Scrollbar parts are encoded as negative, to avoid mixup with item indexes.

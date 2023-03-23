@@ -31,7 +31,7 @@
 #include <wtf/StdLibExtras.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGElement;
 
@@ -90,4 +90,4 @@ protected:
     const QualifiedName& m_attributeName;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

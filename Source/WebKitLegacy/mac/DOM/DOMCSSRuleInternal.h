@@ -25,9 +25,9 @@
 
 #import <CyberKitLegacy/DOMCSSRule.h>
 
-namespace WebCore {
+namespace CyberCore {
 class CSSRule;
 }
 
-DOMCSSRule *kit(WebCore::CSSRule*);
-Class kitClass(WebCore::CSSRule*);
+DOMCSSRule *kit(CyberCore::CSSRule*);
+Class kitClass(CyberCore::CSSRule*);

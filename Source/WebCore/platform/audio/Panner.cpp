@@ -35,7 +35,7 @@
 #include "EqualPowerPanner.h"
 #include "HRTFPanner.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 std::unique_ptr<Panner> Panner::create(PanningModelType model, float sampleRate, HRTFDatabaseLoader* databaseLoader)
 {
@@ -54,6 +54,6 @@ std::unique_ptr<Panner> Panner::create(PanningModelType model, float sampleRate,
     return panner;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

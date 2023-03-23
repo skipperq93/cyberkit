@@ -28,7 +28,7 @@
 #include <lcms2.h>
 #include <memory>
 
-namespace WebCore {
+namespace CyberCore {
 
 // Specializing unique_ptr for:
 //   typedef void* cmsHPROFILE;
@@ -53,4 +53,4 @@ struct LCMSTransformDeleter {
 using LCMSTransformPtr = std::unique_ptr<void, LCMSTransformDeleter>;
 
 
-} // namespace WebCore
+} // namespace CyberCore

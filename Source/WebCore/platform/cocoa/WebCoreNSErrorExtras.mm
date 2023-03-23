@@ -24,11 +24,11 @@
  */
 
 #import "config.h"
-#import "WebCoreNSErrorExtras.h"
+#import "CyberCoreNSErrorExtras.h"
 
 #import <AVFoundation/AVError.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 long mediaKeyErrorSystemCode(NSError *error)
 {

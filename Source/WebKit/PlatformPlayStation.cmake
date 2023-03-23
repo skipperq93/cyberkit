@@ -68,7 +68,7 @@ list(APPEND WebKit_SOURCES
 
     Shared/cairo/ShareableBitmapCairo.cpp
 
-    Shared/curl/WebCoreArgumentCodersCurl.cpp
+    Shared/curl/CyberCoreArgumentCodersCurl.cpp
 
     Shared/libwpe/NativeWebKeyboardEventLibWPE.cpp
     Shared/libwpe/NativeWebMouseEventLibWPE.cpp
@@ -76,7 +76,7 @@ list(APPEND WebKit_SOURCES
     Shared/libwpe/NativeWebWheelEventLibWPE.cpp
     Shared/libwpe/WebEventFactory.cpp
 
-    Shared/playstation/WebCoreArgumentCodersPlayStation.cpp
+    Shared/playstation/CyberCoreArgumentCodersPlayStation.cpp
 
     Shared/unix/AuxiliaryProcessMain.cpp
 
@@ -120,7 +120,7 @@ list(APPEND WebKit_SOURCES
 
     WebProcess/InjectedBundle/playstation/InjectedBundlePlayStation.cpp
 
-    WebProcess/WebCoreSupport/curl/WebFrameNetworkingContext.cpp
+    WebProcess/CyberCoreSupport/curl/WebFrameNetworkingContext.cpp
 
     WebProcess/WebPage/AcceleratedSurface.cpp
 
@@ -149,7 +149,7 @@ list(APPEND WebKit_INCLUDE_DIRECTORIES
     "${WEBKIT_DIR}/UIProcess/API/playstation"
     "${WEBKIT_DIR}/UIProcess/CoordinatedGraphics"
     "${WEBKIT_DIR}/UIProcess/playstation"
-    "${WEBKIT_DIR}/WebProcess/WebCoreSupport/curl"
+    "${WEBKIT_DIR}/WebProcess/CyberCoreSupport/curl"
     "${WEBKIT_DIR}/WebProcess/WebPage/CoordinatedGraphics"
     "${WEBKIT_DIR}/WebProcess/WebPage/libwpe"
 )

@@ -31,7 +31,7 @@
 #include "Page.h"
 #include "SubframeLoader.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 PluginInfoProvider::~PluginInfoProvider()
 {

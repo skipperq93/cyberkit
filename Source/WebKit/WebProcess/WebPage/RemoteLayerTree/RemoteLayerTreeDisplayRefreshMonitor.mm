@@ -29,8 +29,8 @@
 #import "Logging.h"
 #include <wtf/text/TextStream.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 constexpr FramesPerSecond DefaultPreferredFramesPerSecond = 60;
 
@@ -104,4 +104,4 @@ std::optional<FramesPerSecond> RemoteLayerTreeDisplayRefreshMonitor::displayNomi
     return m_preferredFramesPerSecond;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

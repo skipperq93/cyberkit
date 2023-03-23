@@ -28,7 +28,7 @@
 
 #import "SystemVersion.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 String systemMarketingVersionForUserAgentString()
 {
@@ -38,4 +38,4 @@ String systemMarketingVersionForUserAgentString()
     return [systemMarketingVersion() stringByReplacingOccurrencesOfString:@"." withString:@"_"];
 }
 
-} // namespace WebCore
+} // namespace CyberCore

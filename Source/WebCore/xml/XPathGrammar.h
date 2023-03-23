@@ -92,17 +92,17 @@
 
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 typedef union YYSTYPE
-#line 60 "WebCore/xml/XPathGrammar.y"
+#line 60 "CyberCore/xml/XPathGrammar.y"
 { 
-    WebCore::XPath::NumericOp::Opcode numericOpcode;
-    WebCore::XPath::EqTestOp::Opcode equalityTestOpcode;
+    CyberCore::XPath::NumericOp::Opcode numericOpcode;
+    CyberCore::XPath::EqTestOp::Opcode equalityTestOpcode;
     StringImpl* string;
-    WebCore::XPath::Step::Axis axis;
-    WebCore::XPath::LocationPath* locationPath;
-    WebCore::XPath::Step::NodeTest* nodeTest;
-    Vector<std::unique_ptr<WebCore::XPath::Expression>>* expressionVector;
-    WebCore::XPath::Step* step;
-    WebCore::XPath::Expression* expression;
+    CyberCore::XPath::Step::Axis axis;
+    CyberCore::XPath::LocationPath* locationPath;
+    CyberCore::XPath::Step::NodeTest* nodeTest;
+    Vector<std::unique_ptr<CyberCore::XPath::Expression>>* expressionVector;
+    CyberCore::XPath::Step* step;
+    CyberCore::XPath::Expression* expression;
 }
 /* Line 1529 of yacc.c.  */
 #line 107 "./XPathGrammar.hpp"

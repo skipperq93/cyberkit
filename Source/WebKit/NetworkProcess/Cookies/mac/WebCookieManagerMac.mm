@@ -35,7 +35,7 @@
 #import <wtf/ProcessPrivilege.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 static CFHTTPCookieStorageAcceptPolicy toCFHTTPCookieStorageAcceptPolicy(HTTPCookieAcceptPolicy policy)
 {

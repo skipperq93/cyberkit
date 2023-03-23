@@ -45,7 +45,7 @@
 #include <wtf/text/Base64.h>
 #include <wtf/text/StringToIntegerConversion.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static std::optional<Vector<RefPtr<KeyHandle>>> parseLicenseFormat(const JSON::Object& root)
 {
@@ -595,6 +595,6 @@ CDMInstanceClearKey& CDMInstanceSessionClearKey::parentInstance() const
     return static_cast<CDMInstanceClearKey&>(*instance);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ENCRYPTED_MEDIA)

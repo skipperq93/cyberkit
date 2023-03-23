@@ -34,7 +34,7 @@
 #include <wtf/ASCIICType.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static const size_t maximumLineLength = 76;
 

@@ -40,7 +40,7 @@
 #include <wtf/text/win/WCharStringExtras.h>
 #include <wtf/unicode/CharacterNames.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 FORMATETC* cfHDropFormat()
 {
@@ -814,4 +814,4 @@ void setClipboardData(IDataObject* dataObject, UINT format, const Vector<String>
     found->value->setString(dataObject, found->value->format, dataStrings);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

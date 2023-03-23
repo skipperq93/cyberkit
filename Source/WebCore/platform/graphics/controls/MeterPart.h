@@ -27,7 +27,7 @@
 
 #include "ControlPart.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class MeterPart : public ControlPart {
 public:
@@ -55,6 +55,6 @@ private:
     double m_maximum;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CONTROL_PART(Meter)

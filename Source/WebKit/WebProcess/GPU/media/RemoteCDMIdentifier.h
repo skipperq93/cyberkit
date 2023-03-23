@@ -29,11 +29,11 @@
 
 #include <wtf/ObjectIdentifier.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 enum RemoteCDMIdentifierType { };
 using RemoteCDMIdentifier = ObjectIdentifier<RemoteCDMIdentifierType>;
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

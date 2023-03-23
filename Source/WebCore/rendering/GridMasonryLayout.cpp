@@ -30,7 +30,7 @@
 #include "RenderGrid.h"
 #include "WritingMode.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 void GridMasonryLayout::performMasonryPlacement(unsigned gridAxisTracks, GridTrackSizingDirection masonryAxisDirection)
 {
@@ -298,4 +298,4 @@ bool GridMasonryLayout::hasEnoughSpaceAtPosition(unsigned startingPosition, unsi
     ASSERT(startingPosition < m_gridAxisTracksCount);
     return (startingPosition + spanLength) <= m_gridAxisTracksCount;
 }
-} // end namespace WebCore
+} // end namespace CyberCore

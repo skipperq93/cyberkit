@@ -29,7 +29,7 @@
 #include "InlineIteratorLineBox.h"
 #include "RenderStyleConstants.h"
 
-namespace WebCore {
+namespace CyberCore {
     
 class RenderStyle;
 
@@ -63,4 +63,4 @@ GlyphOverflow visualOverflowForDecorations(const InlineIterator::LineBoxIterator
 
 float underlineOffsetForTextBoxPainting(const InlineIterator::InlineBox&, const RenderStyle&);
 
-} // namespace WebCore
+} // namespace CyberCore

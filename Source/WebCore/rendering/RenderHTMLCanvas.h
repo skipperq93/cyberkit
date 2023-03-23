@@ -27,7 +27,7 @@
 
 #include "RenderReplaced.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLCanvasElement;
 
@@ -49,6 +49,6 @@ private:
     void intrinsicSizeChanged() override { canvasSizeChanged(); }
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderHTMLCanvas, isCanvas())

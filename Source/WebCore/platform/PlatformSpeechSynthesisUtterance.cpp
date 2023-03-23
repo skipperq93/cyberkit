@@ -28,7 +28,7 @@
 
 #if ENABLE(SPEECH_SYNTHESIS)
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<PlatformSpeechSynthesisUtterance> PlatformSpeechSynthesisUtterance::create(PlatformSpeechSynthesisUtteranceClient& client)
 {
@@ -40,6 +40,6 @@ inline PlatformSpeechSynthesisUtterance::PlatformSpeechSynthesisUtterance(Platfo
 {
 }
     
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SPEECH_SYNTHESIS)

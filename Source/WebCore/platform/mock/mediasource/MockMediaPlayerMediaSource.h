@@ -33,7 +33,7 @@
 #include <wtf/MediaTime.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class MediaSource;
 class MockMediaSourcePrivate;

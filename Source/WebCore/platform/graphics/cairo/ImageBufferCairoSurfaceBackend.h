@@ -34,7 +34,7 @@
 #include "GraphicsContextCairo.h"
 #include "ImageBufferCairoBackend.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ImageBufferCairoSurfaceBackend : public ImageBufferCairoBackend {
 public:
@@ -59,6 +59,6 @@ protected:
     mutable GraphicsContextCairo m_context;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(CAIRO)

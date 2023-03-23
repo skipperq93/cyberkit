@@ -22,7 +22,7 @@
 #if ENABLE(LAYER_BASED_SVG_ENGINE)
 #include "RenderLayerModelObject.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGLayerTransformUpdater {
     WTF_MAKE_NONCOPYABLE(SVGLayerTransformUpdater);
@@ -67,6 +67,6 @@ private:
     TransformationMatrix* m_layerTransform { nullptr };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(LAYER_BASED_SVG_ENGINE)

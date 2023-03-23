@@ -36,7 +36,7 @@
 #include <wtf/ListHashSet.h>
 #include <wtf/URLHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CachedImage;
 class CSSStyleSheet;
@@ -85,4 +85,4 @@ private:
     unsigned m_blankFrameCounter { 0 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

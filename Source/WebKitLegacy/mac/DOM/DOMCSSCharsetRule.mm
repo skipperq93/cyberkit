@@ -38,7 +38,7 @@
 
 - (NSString *)encoding
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
 
     // This has been removed from the CSS OM, so we're just keeping this around to not crash.
     return nil;

@@ -31,7 +31,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CachedResource;
 class FragmentedSharedBuffer;
@@ -87,37 +87,37 @@ ResourceCryptographicDigest cryptographicDigestForBytes(ResourceCryptographicDig
 
 namespace WTF {
 
-template<> struct DefaultHash<WebCore::ResourceCryptographicDigest> {
-    static unsigned hash(const WebCore::ResourceCryptographicDigest& digest)
+template<> struct DefaultHash<CyberCore::ResourceCryptographicDigest> {
+    static unsigned hash(const CyberCore::ResourceCryptographicDigest& digest)
     {
         return computeHash(digest);
     }
-    static bool equal(const WebCore::ResourceCryptographicDigest& a, const WebCore::ResourceCryptographicDigest& b)
+    static bool equal(const CyberCore::ResourceCryptographicDigest& a, const CyberCore::ResourceCryptographicDigest& b)
     {
         return a == b;
     }
     static const bool safeToCompareToEmptyOrDeleted = true;
 };
 
-template<> struct HashTraits<WebCore::ResourceCryptographicDigest> : GenericHashTraits<WebCore::ResourceCryptographicDigest> {
-    using Algorithm = WebCore::ResourceCryptographicDigest::Algorithm;
+template<> struct HashTraits<CyberCore::ResourceCryptographicDigest> : GenericHashTraits<CyberCore::ResourceCryptographicDigest> {
+    using Algorithm = CyberCore::ResourceCryptographicDigest::Algorithm;
     using AlgorithmUnderlyingType = typename std::underlying_type<Algorithm>::type;
     static constexpr auto emptyAlgorithmValue = static_cast<Algorithm>(std::numeric_limits<AlgorithmUnderlyingType>::max());
     static constexpr auto deletedAlgorithmValue = static_cast<Algorithm>(std::numeric_limits<AlgorithmUnderlyingType>::max() - 1);
 
     static const bool emptyValueIsZero = false;
 
-    static WebCore::ResourceCryptographicDigest emptyValue()
+    static CyberCore::ResourceCryptographicDigest emptyValue()
     {
         return { emptyAlgorithmValue, { } };
     }
 
-    static void constructDeletedValue(WebCore::ResourceCryptographicDigest& slot)
+    static void constructDeletedValue(CyberCore::ResourceCryptographicDigest& slot)
     {
         slot.algorithm = deletedAlgorithmValue;
     }
 
-    static bool isDeletedValue(const WebCore::ResourceCryptographicDigest& slot)
+    static bool isDeletedValue(const CyberCore::ResourceCryptographicDigest& slot)
     {
         return slot.algorithm == deletedAlgorithmValue;
     }

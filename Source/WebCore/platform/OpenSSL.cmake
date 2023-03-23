@@ -1,5 +1,5 @@
 if (ENABLE_WEB_CRYPTO)
-    list(APPEND WebCore_SOURCES
+    list(APPEND CyberCore_SOURCES
         crypto/openssl/CryptoAlgorithmAES_CBCOpenSSL.cpp
         crypto/openssl/CryptoAlgorithmAES_CFBOpenSSL.cpp
         crypto/openssl/CryptoAlgorithmAES_CTROpenSSL.cpp

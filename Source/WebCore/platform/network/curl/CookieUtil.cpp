@@ -48,7 +48,7 @@
 #define MAX_NAME 1024
 #define MAX_NAME_TXT "1023"
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace CookieUtil {
 
@@ -198,6 +198,6 @@ String defaultPathForURL(const URL& url)
 
 } // namespace CookieUtil
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

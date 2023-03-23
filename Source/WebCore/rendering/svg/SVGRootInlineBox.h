@@ -25,7 +25,7 @@
 #include "LegacyRootInlineBox.h"
 #include "SVGTextLayoutEngine.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderSVGText;
 class SVGInlineTextBox;
@@ -58,6 +58,6 @@ private:
     float m_logicalHeight;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_INLINE_BOX(SVGRootInlineBox, isSVGRootInlineBox())

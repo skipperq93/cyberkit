@@ -35,7 +35,7 @@
 #import <wtf/cocoa/VectorCocoa.h>
 #import <wtf/text/StringConcatenateNumbers.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 void PlatformCAFilters::setFiltersOnLayer(PlatformLayer* layer, const FilterOperations& filters)
 {
@@ -421,4 +421,4 @@ bool PlatformCAFilters::isValidAnimatedFilterPropertyName(const String& animated
         || animatedFilterPropertyName == inputRadiusProperty;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

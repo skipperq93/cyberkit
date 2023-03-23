@@ -18,9 +18,9 @@
  */
 
 #include "config.h"
-#include "WebKitWebFormManager.h"
+#include "CyberKitWebFormManager.h"
 
-#include "WebKitWebFormManagerPrivate.h"
+#include "CyberKitWebFormManagerPrivate.h"
 #include <JavaScriptCore/APICast.h>
 #include <CyberCore/HTMLInputElement.h>
 #include <CyberCore/HTMLTextAreaElement.h>
@@ -28,12 +28,12 @@
 #include <jsc/JSCContextPrivate.h>
 #include <jsc/JSCValuePrivate.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 /**
- * WebKitWebFormManager:
+ * CyberKitWebFormManager:
  *
- * Form manager of a #WebKitWebPage in a #WebKitScriptWorld
+ * Form manager of a #CyberKitWebPage in a #CyberKitScriptWorld
  *
  * Since: 2.40
  */
@@ -48,18 +48,18 @@ enum {
 
 static guint signals[LAST_SIGNAL] = { 0, };
 
-G_DEFINE_TYPE(WebKitWebFormManager, webkit_web_form_manager, G_TYPE_OBJECT)
+G_DEFINE_TYPE(CyberKitWebFormManager, webkit_web_form_manager, G_TYPE_OBJECT)
 
-static void webkit_web_form_manager_init(WebKitWebFormManager*)
+static void webkit_web_form_manager_init(CyberKitWebFormManager*)
 {
 }
 
-static void webkit_web_form_manager_class_init(WebKitWebFormManagerClass* klass)
+static void webkit_web_form_manager_class_init(CyberKitWebFormManagerClass* klass)
 {
     /**
-     * WebKitWebFormManager::form-controls-associated:
-     * @form_manager: the #WebKitWebFormManager on which the signal is emitted
-     * @frame: a #WebKitFrame
+     * CyberKitWebFormManager::form-controls-associated:
+     * @form_manager: the #CyberKitWebFormManager on which the signal is emitted
+     * @frame: a #CyberKitFrame
      * @elements: (element-type JSCValue) (transfer none): a #GPtrArray of
      *     #JSCValue with the list of forms in the page
      *
@@ -86,17 +86,17 @@ static void webkit_web_form_manager_class_init(WebKitWebFormManagerClass* klass)
         G_TYPE_PTR_ARRAY);
 
     /**
-     * WebKitWebFormManager::will-send-submit-event:
-     * @form_manager: the #WebKitWebFormManager on which the signal is emitted
+     * CyberKitWebFormManager::will-send-submit-event:
+     * @form_manager: the #CyberKitWebFormManager on which the signal is emitted
      * @form: the #JSCValue to be submitted, which will always correspond to an HTMLFormElement
-     * @source_frame: the #WebKitFrame containing the form to be submitted
-     * @target_frame: the #WebKitFrame containing the form's target,
+     * @source_frame: the #CyberKitFrame containing the form to be submitted
+     * @target_frame: the #CyberKitFrame containing the form's target,
      *     which may be the same as @source_frame if no target was specified
      *
      * This signal is emitted when the DOM submit event is about to be fired for @form.
      * JavaScript code may rely on the submit event to detect that the user has clicked
      * on a submit button, and to possibly cancel the form submission before
-     * #WebKitWebFormManager::will-submit-form signal is emitted.
+     * #CyberKitWebFormManager::will-submit-form signal is emitted.
      * However, beware that, for historical reasons, the submit event is not emitted at
      * all if the form submission is triggered by JavaScript. For these reasons,
      * this signal may not be used to reliably detect whether a form will be submitted.
@@ -120,17 +120,17 @@ static void webkit_web_form_manager_class_init(WebKitWebFormManagerClass* klass)
         WEBKIT_TYPE_FRAME);
 
     /**
-     * WebKitWebFormManager::will-submit-form:
-     * @form_manager: the #WebKitWebFormManager on which the signal is emitted
+     * CyberKitWebFormManager::will-submit-form:
+     * @form_manager: the #CyberKitWebFormManager on which the signal is emitted
      * @form: the #JSCValue to be submitted, which will always correspond to an HTMLFormElement
-     * @source_frame: the #WebKitFrame containing the form to be submitted
-     * @target_frame: the #WebKitFrame containing the form's target,
+     * @source_frame: the #CyberKitFrame containing the form to be submitted
+     * @target_frame: the #CyberKitFrame containing the form's target,
      *     which may be the same as @source_frame if no target was specified
      *
      * This signal is emitted when @form will imminently be submitted. It can no longer
      * be cancelled. This event always occurs immediately before a form is submitted to
      * its target, so use this event to reliably detect when a form is submitted. This
-     * signal is emitted after #WebKitWebFormManager::will-send-submit-event if that
+     * signal is emitted after #CyberKitWebFormManager::will-send-submit-event if that
      * signal is emitted.
      *
      * Since: 2.40
@@ -147,12 +147,12 @@ static void webkit_web_form_manager_class_init(WebKitWebFormManagerClass* klass)
         WEBKIT_TYPE_FRAME);
 }
 
-WebKitWebFormManager* webkitWebFormManagerCreate()
+CyberKitWebFormManager* webkitWebFormManagerCreate()
 {
     return WEBKIT_WEB_FORM_MANAGER(g_object_new(WEBKIT_TYPE_WEB_FORM_MANAGER, nullptr));
 }
 
-void webkitWebFormManagerDidAssociateFormControls(WebKitWebFormManager* formManager, WebKitFrame* frame, Vector<GRefPtr<JSCValue>>&& elements)
+void webkitWebFormManagerDidAssociateFormControls(CyberKitWebFormManager* formManager, CyberKitFrame* frame, Vector<GRefPtr<JSCValue>>&& elements)
 {
     GRefPtr<GPtrArray> formElements = adoptGRef(g_ptr_array_sized_new(elements.size()));
     for (const auto& element : elements)
@@ -160,12 +160,12 @@ void webkitWebFormManagerDidAssociateFormControls(WebKitWebFormManager* formMana
     g_signal_emit(formManager, signals[FORM_CONTROLS_ASSOCIATED], 0, frame, formElements.get());
 }
 
-void webkitWebFormManagerWillSendSubmitEvent(WebKitWebFormManager* formManager, GRefPtr<JSCValue>&& form, WebKitFrame* sourceFrame, WebKitFrame* targetFrame)
+void webkitWebFormManagerWillSendSubmitEvent(CyberKitWebFormManager* formManager, GRefPtr<JSCValue>&& form, CyberKitFrame* sourceFrame, CyberKitFrame* targetFrame)
 {
     g_signal_emit(formManager, signals[WILL_SEND_SUBMIT_EVENT], 0, form.get(), sourceFrame, targetFrame);
 }
 
-void webkitWebFormManagerWillSubmitForm(WebKitWebFormManager* formManager, GRefPtr<JSCValue>&& form, WebKitFrame* sourceFrame, WebKitFrame* targetFrame)
+void webkitWebFormManagerWillSubmitForm(CyberKitWebFormManager* formManager, GRefPtr<JSCValue>&& form, CyberKitFrame* sourceFrame, CyberKitFrame* targetFrame)
 {
     g_signal_emit(formManager, signals[WILL_SUBMIT_FORM], 0, form.get(), sourceFrame, targetFrame);
 }
@@ -219,10 +219,10 @@ void webkit_web_form_manager_input_element_auto_fill(JSCValue* element, const ch
     g_return_if_fail(jsc_value_is_object(element));
 
     auto* node = nodeForJSCValue(element);
-    if (!is<WebCore::HTMLInputElement>(node))
+    if (!is<CyberCore::HTMLInputElement>(node))
         return;
 
-    auto& inputElement = downcast<WebCore::HTMLInputElement>(*node);
+    auto& inputElement = downcast<CyberCore::HTMLInputElement>(*node);
     inputElement.setAutoFilled(true);
     inputElement.setValueForUser(String::fromUTF8(value));
 }
@@ -244,5 +244,5 @@ gboolean webkit_web_form_manager_input_element_is_auto_filled(JSCValue* element)
     g_return_val_if_fail(jsc_value_is_object(element), FALSE);
 
     auto* node = nodeForJSCValue(element);
-    return is<WebCore::HTMLInputElement>(node) ? downcast<WebCore::HTMLInputElement>(*node).isAutoFilled() : FALSE;
+    return is<CyberCore::HTMLInputElement>(node) ? downcast<CyberCore::HTMLInputElement>(*node).isAutoFilled() : FALSE;
 }

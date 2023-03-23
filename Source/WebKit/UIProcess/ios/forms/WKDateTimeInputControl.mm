@@ -197,9 +197,9 @@ static const CGFloat kDateTimePickerToolbarHeight = 44;
 - (BOOL)shouldForceGregorianCalendar
 {
     auto autofillFieldName = _view.focusedElementInformation.autofillFieldName;
-    return autofillFieldName == WebCore::AutofillFieldName::CcExpMonth
-        || autofillFieldName == WebCore::AutofillFieldName::CcExp
-        || autofillFieldName == WebCore::AutofillFieldName::CcExpYear;
+    return autofillFieldName == CyberCore::AutofillFieldName::CcExpMonth
+        || autofillFieldName == CyberCore::AutofillFieldName::CcExp
+        || autofillFieldName == CyberCore::AutofillFieldName::CcExpYear;
 }
 
 - (void)dealloc

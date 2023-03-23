@@ -30,13 +30,13 @@
 
 #include "PDFPluginAnnotation.h"
 
-namespace WebCore {
+namespace CyberCore {
 class Element;
 }
 
 OBJC_CLASS PDFAnnotationChoiceWidget;
 
-namespace WebKit {
+namespace CyberKit {
 
 class PDFPluginChoiceAnnotation : public PDFPluginAnnotation {
 public:
@@ -51,14 +51,14 @@ private:
     {
     }
 
-    Ref<WebCore::Element> createAnnotationElement() override;
+    Ref<CyberCore::Element> createAnnotationElement() override;
 
     ALLOW_DEPRECATED_DECLARATIONS_BEGIN
     PDFAnnotationChoiceWidget *choiceAnnotation() { return static_cast<PDFAnnotationChoiceWidget *>(annotation()); }
     ALLOW_DEPRECATED_DECLARATIONS_END
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(PDFKIT_PLUGIN)
 

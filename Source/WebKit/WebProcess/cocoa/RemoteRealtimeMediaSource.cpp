@@ -33,8 +33,8 @@
 #include "WebProcess.h"
 #include <CyberCore/MediaConstraints.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 RemoteRealtimeMediaSource::RemoteRealtimeMediaSource(RealtimeMediaSourceIdentifier identifier, const CaptureDevice& device, const MediaConstraints* constraints, MediaDeviceHashSalts&& hashSalts, UserMediaCaptureManager& manager, bool shouldCaptureInGPUProcess, PageIdentifier pageIdentifier)
     : RealtimeMediaSource(device, WTFMove(hashSalts), pageIdentifier)
@@ -88,7 +88,7 @@ void RemoteRealtimeMediaSource::setSettings(RealtimeMediaSourceSettings&& settin
     notifySettingsDidChangeObservers(changed);
 }
 
-void RemoteRealtimeMediaSource::configurationChanged(String&& persistentID, WebCore::RealtimeMediaSourceSettings&& settings, WebCore::RealtimeMediaSourceCapabilities&& capabilities)
+void RemoteRealtimeMediaSource::configurationChanged(String&& persistentID, CyberCore::RealtimeMediaSourceSettings&& settings, CyberCore::RealtimeMediaSourceCapabilities&& capabilities)
 {
     setPersistentId(WTFMove(persistentID));
     setSettings(WTFMove(settings));
@@ -100,7 +100,7 @@ void RemoteRealtimeMediaSource::configurationChanged(String&& persistentID, WebC
     });
 }
 
-void RemoteRealtimeMediaSource::applyConstraintsSucceeded(WebCore::RealtimeMediaSourceSettings&& settings)
+void RemoteRealtimeMediaSource::applyConstraintsSucceeded(CyberCore::RealtimeMediaSourceSettings&& settings)
 {
     setSettings(WTFMove(settings));
     m_proxy.applyConstraintsSucceeded();

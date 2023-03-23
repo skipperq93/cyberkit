@@ -22,7 +22,7 @@
 
 #include "SVGComponentTransferFunctionElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGFEFuncGElement final : public SVGComponentTransferFunctionElement {
 public:
@@ -35,4 +35,4 @@ private:
 };
 static_assert(sizeof(SVGFEFuncGElement) == sizeof(SVGComponentTransferFunctionElement));
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -27,7 +27,7 @@
 #import "_WKNotificationDataInternal.h"
 
 #import <CyberCore/NotificationData.h>
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 
 static NSString *iconURLKey = @"iconURL";
 static NSString *tagKey = @"tag";
@@ -36,7 +36,7 @@ static NSString *dataKey = @"data";
 
 @implementation _WKNotificationData
 
-- (instancetype)initWithCoreData:(const WebCore::NotificationData&)coreData dataStore:(WKWebsiteDataStore *)dataStore
+- (instancetype)initWithCoreData:(const CyberCore::NotificationData&)coreData dataStore:(WKWebsiteDataStore *)dataStore
 {
     self = [super init];
     if (!self)
@@ -53,7 +53,7 @@ static NSString *dataKey = @"data";
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainRunLoop(_WKNotificationData.class, self))
+    if (CyberCoreObjCScheduleDeallocateOnMainRunLoop(_WKNotificationData.class, self))
         return;
 
     [_title release];

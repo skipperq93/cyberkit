@@ -25,7 +25,7 @@
 #include "SVGStringList.h"
 #include <wtf/RobinHoodHashSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGElement;
 class SVGStringList;
@@ -80,4 +80,4 @@ private:
     SVGElement& m_contextElement;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

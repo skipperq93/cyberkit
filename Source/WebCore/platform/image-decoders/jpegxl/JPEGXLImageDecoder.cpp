@@ -32,7 +32,7 @@
 #include "PlatformDisplay.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 static const JxlPixelFormat s_pixelFormat { 4, JXL_TYPE_UINT8, JXL_NATIVE_ENDIAN, 0 };
 

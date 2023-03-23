@@ -29,7 +29,7 @@
 #include <wtf/Forward.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WEBCORE_EXPORT XPathNSResolver : public RefCounted<XPathNSResolver> {
 public:

@@ -216,7 +216,7 @@ Reviewed by Darin Adler.
 WebKit.xcconfig file.
 """
 
-        self.changelog_paths = list(map(self.filesystem.abspath, [self.filesystem.join("Source/WebKitLegacy", "ChangeLog")]))
+        self.changelog_paths = list(map(self.filesystem.abspath, [self.filesystem.join("Source/CyberKitLegacy", "ChangeLog")]))
 
         self.mock_changelog([_changelog3])
         checkout = self.mock_checkout_for_test()
@@ -232,7 +232,7 @@ WebKit.xcconfig file.
 Patch by David Kilzer <ddkilzer@apple.com> on 2014-07-17
 Reviewed by Darin Adler.
 
-Source/WebKitLegacy:
+Source/CyberKitLegacy:
 
 * WebKit.xcodeproj/project.pbxproj: Remove references to unused
 WebKit.xcconfig file.
@@ -242,7 +242,7 @@ LayoutTests:
 * Path/To/Complicated/File: Added.
 """
 
-        self.changelog_paths = list(map(self.filesystem.abspath, (self.filesystem.join("Source/WebKitLegacy", "ChangeLog"), self.filesystem.join("LayoutTests", "ChangeLog"))))
+        self.changelog_paths = list(map(self.filesystem.abspath, (self.filesystem.join("Source/CyberKitLegacy", "ChangeLog"), self.filesystem.join("LayoutTests", "ChangeLog"))))
 
         self.mock_changelog((_changelog3, _changelog4))
         checkout = self.mock_checkout_for_test()
@@ -258,7 +258,7 @@ LayoutTests:
 Patch by David Kilzer <ddkilzer@apple.com> on 2014-07-17
 Reviewed by Darin Adler.
 
-Source/WebKitLegacy:
+Source/CyberKitLegacy:
 
 * WebKit.xcodeproj/project.pbxproj: Remove references to unused
 WebKit.xcconfig file.
@@ -270,7 +270,7 @@ Filler change.
 * Path/To/Complicated/File: Added.
 """
 
-        self.changelog_paths = list(map(self.filesystem.abspath, (self.filesystem.join("Source/WebKitLegacy", "ChangeLog"), self.filesystem.join("LayoutTests", "ChangeLog"))))
+        self.changelog_paths = list(map(self.filesystem.abspath, (self.filesystem.join("Source/CyberKitLegacy", "ChangeLog"), self.filesystem.join("LayoutTests", "ChangeLog"))))
 
         self.mock_changelog((_changelog3, _changelog5))
         checkout = self.mock_checkout_for_test()
@@ -322,7 +322,7 @@ https://trac.webkit.org/changeset/170339
 Patch by Daniel Bates <dabates@apple.com> on 2014-06-23
 """
 
-        self.changelog_paths = list(map(self.filesystem.abspath, (self.filesystem.join("Tools", "ChangeLog"), self.filesystem.join("Source/WebCore", "ChangeLog"))))
+        self.changelog_paths = list(map(self.filesystem.abspath, (self.filesystem.join("Tools", "ChangeLog"), self.filesystem.join("Source/CyberCore", "ChangeLog"))))
 
         self.mock_changelog((_changelog6, _changelog6))
         checkout = self.mock_checkout_for_test()

@@ -29,7 +29,7 @@
 #include "Logging.h"
 #include "NetworkCacheCoders.h"
 #include "NetworkProcess.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include <CyberCore/ResourceRequest.h>
 #include <CyberCore/SharedBuffer.h>
 #include <wtf/text/StringBuilder.h>
@@ -37,7 +37,7 @@
 namespace WebKit {
 namespace NetworkCache {
 
-Entry::Entry(const Key& key, const WebCore::ResourceResponse& response, PrivateRelayed privateRelayed, RefPtr<WebCore::FragmentedSharedBuffer>&& buffer, const Vector<std::pair<String, String>>& varyingRequestHeaders)
+Entry::Entry(const Key& key, const CyberCore::ResourceResponse& response, PrivateRelayed privateRelayed, RefPtr<CyberCore::FragmentedSharedBuffer>&& buffer, const Vector<std::pair<String, String>>& varyingRequestHeaders)
     : m_key(key)
     , m_timeStamp(WallTime::now())
     , m_response(response)
@@ -48,7 +48,7 @@ Entry::Entry(const Key& key, const WebCore::ResourceResponse& response, PrivateR
     ASSERT(m_key.type() == "Resource"_s);
 }
 
-Entry::Entry(const Key& key, const WebCore::ResourceResponse& response, const WebCore::ResourceRequest& redirectRequest, const Vector<std::pair<String, String>>& varyingRequestHeaders)
+Entry::Entry(const Key& key, const CyberCore::ResourceResponse& response, const CyberCore::ResourceRequest& redirectRequest, const Vector<std::pair<String, String>>& varyingRequestHeaders)
     : m_key(key)
     , m_timeStamp(WallTime::now())
     , m_response(response)
@@ -105,7 +105,7 @@ Storage::Record Entry::encodeAsStorageRecord() const
     Data body;
     if (m_buffer) {
         m_buffer = m_buffer->makeContiguous();
-        body = { static_cast<WebCore::SharedBuffer*>(m_buffer.get())->data(), m_buffer->size() };
+        body = { static_cast<CyberCore::SharedBuffer*>(m_buffer.get())->data(), m_buffer->size() };
     }
 
     return { m_key, m_timeStamp, header, body, { } };
@@ -116,12 +116,12 @@ std::unique_ptr<Entry> Entry::decodeStorageRecord(const Storage::Record& storage
     auto entry = makeUnique<Entry>(storageEntry);
 
     WTF::Persistence::Decoder decoder(storageEntry.header.span());
-    std::optional<WebCore::ResourceResponse> response;
+    std::optional<CyberCore::ResourceResponse> response;
     decoder >> response;
     if (!response)
         return nullptr;
     entry->m_response = WTFMove(*response);
-    entry->m_response.setSource(WebCore::ResourceResponse::Source::DiskCache);
+    entry->m_response.setSource(CyberCore::ResourceResponse::Source::DiskCache);
 
     std::optional<bool> hasVaryingRequestHeaders;
     decoder >> hasVaryingRequestHeaders;
@@ -146,7 +146,7 @@ std::unique_ptr<Entry> Entry::decodeStorageRecord(const Storage::Record& storage
     
     if (isRedirect) {
         entry->m_redirectRequest.emplace();
-        std::optional<std::optional<WebCore::ResourceRequest>> resourceRequest;
+        std::optional<std::optional<CyberCore::ResourceRequest>> resourceRequest;
         decoder >> resourceRequest;
         if (!resourceRequest)
             return nullptr;
@@ -170,7 +170,7 @@ std::unique_ptr<Entry> Entry::decodeStorageRecord(const Storage::Record& storage
 #if ENABLE(TRACKING_PREVENTION)
 bool Entry::hasReachedPrevalentResourceAgeCap() const
 {
-    return m_maxAgeCap && WebCore::computeCurrentAge(response(), timeStamp()) > m_maxAgeCap;
+    return m_maxAgeCap && CyberCore::computeCurrentAge(response(), timeStamp()) > m_maxAgeCap;
 }
 
 void Entry::capMaxAge(const Seconds seconds)
@@ -203,10 +203,10 @@ void Entry::initializeBufferFromStorageRecord() const
             return;
     }
 #endif
-    m_buffer = WebCore::SharedBuffer::create(m_sourceStorageRecord.body.data(), m_sourceStorageRecord.body.size());
+    m_buffer = CyberCore::SharedBuffer::create(m_sourceStorageRecord.body.data(), m_sourceStorageRecord.body.size());
 }
 
-WebCore::FragmentedSharedBuffer* Entry::buffer() const
+CyberCore::FragmentedSharedBuffer* Entry::buffer() const
 {
     if (!m_buffer)
         initializeBufferFromStorageRecord();
@@ -226,12 +226,12 @@ ShareableResource::Handle& Entry::shareableResourceHandle() const
 
 bool Entry::needsValidation() const
 {
-    return m_response.source() == WebCore::ResourceResponse::Source::DiskCacheAfterValidation;
+    return m_response.source() == CyberCore::ResourceResponse::Source::DiskCacheAfterValidation;
 }
 
 void Entry::setNeedsValidation(bool value)
 {
-    m_response.setSource(value ? WebCore::ResourceResponse::Source::DiskCacheAfterValidation : WebCore::ResourceResponse::Source::DiskCache);
+    m_response.setSource(value ? CyberCore::ResourceResponse::Source::DiskCacheAfterValidation : CyberCore::ResourceResponse::Source::DiskCache);
 }
 
 void Entry::asJSON(StringBuilder& json, const Storage::RecordInfo& info) const

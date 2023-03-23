@@ -28,7 +28,7 @@
 
 #include <wtf/text/Base64.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 ExceptionOr<String> Base64Utilities::btoa(const String& stringToEncode)
 {

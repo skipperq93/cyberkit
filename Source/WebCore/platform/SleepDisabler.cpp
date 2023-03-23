@@ -28,7 +28,7 @@
 
 #include "SleepDisablerClient.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 SleepDisabler::SleepDisabler(const String& reason, PAL::SleepDisabler::Type type)
     : m_type(type)
@@ -48,4 +48,4 @@ SleepDisabler::~SleepDisabler()
         sleepDisablerClient()->didDestroySleepDisabler(m_identifier);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

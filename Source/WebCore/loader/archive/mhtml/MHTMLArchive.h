@@ -34,7 +34,7 @@
 
 #include "Archive.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class MHTMLParser;
 class Page;
@@ -60,6 +60,6 @@ private:
     bool shouldUseMainResourceURL() const final { return false; }
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MHTML)

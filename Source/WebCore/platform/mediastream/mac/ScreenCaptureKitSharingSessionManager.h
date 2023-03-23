@@ -36,7 +36,7 @@ OBJC_CLASS SCContentFilter;
 OBJC_CLASS SCContentSharingSession;
 OBJC_CLASS WebDisplayMediaPromptHelper;
 
-namespace WebCore {
+namespace CyberCore {
 
 class CaptureDevice;
 
@@ -70,6 +70,6 @@ private:
     std::unique_ptr<RunLoop::Timer> m_promptWatchdogTimer;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // HAVE(SC_CONTENT_SHARING_SESSION)

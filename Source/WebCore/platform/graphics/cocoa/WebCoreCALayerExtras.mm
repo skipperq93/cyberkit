@@ -24,7 +24,7 @@
  */
 
 #import "config.h"
-#import "WebCoreCALayerExtras.h"
+#import "CyberCoreCALayerExtras.h"
 
 #import "TransformationMatrix.h"
 #import <pal/spi/cocoa/QuartzCoreSPI.h>
@@ -34,7 +34,7 @@
 #import <WebKitAdditions/CGDisplayListImageBufferAdditions.h>
 #endif
 
-@implementation CALayer (WebCoreCALayerExtras)
+@implementation CALayer (CyberCoreCALayerExtras)
 
 - (void)web_disableAllActions
 {
@@ -142,7 +142,7 @@
 
 @end
 
-namespace WebCore {
+namespace CyberCore {
 
 void collectDescendantLayersAtPoint(Vector<LayerAndPoint, 16>& layersAtPoint, CALayer *parent, CGPoint point, const std::function<bool(CALayer *, CGPoint)>& pointInLayerFunction)
 {
@@ -182,4 +182,4 @@ void collectDescendantLayersAtPoint(Vector<LayerAndPoint, 16>& layersAtPoint, CA
     };
 }
 
-} // namespace WebCore
+} // namespace CyberCore

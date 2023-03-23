@@ -36,18 +36,18 @@
 #import "ExceptionHandlers.h"
 #import <CyberCore/JSExecState.h>
 #import <CyberCore/ThreadCheck.h>
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 #import <CyberCore/WebScriptObjectPrivate.h>
 #import <wtf/GetPtr.h>
 #import <wtf/URL.h>
 
-#define IMPL reinterpret_cast<WebCore::CSSStyleDeclaration*>(_internal)
+#define IMPL reinterpret_cast<CyberCore::CSSStyleDeclaration*>(_internal)
 
 @implementation DOMCSSStyleDeclaration
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainThread([DOMCSSStyleDeclaration class], self))
+    if (CyberCoreObjCScheduleDeallocateOnMainThread([DOMCSSStyleDeclaration class], self))
         return;
 
     if (_internal)
@@ -57,73 +57,73 @@
 
 - (NSString *)cssText
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->cssText();
 }
 
 - (void)setCssText:(NSString *)newCssText
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     raiseOnDOMError(IMPL->setCssText(newCssText));
 }
 
 - (unsigned)length
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->length();
 }
 
 - (DOMCSSRule *)parentRule
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->parentRule()));
 }
 
 - (NSString *)getPropertyValue:(NSString *)propertyName
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->getPropertyValue(propertyName);
 }
 
 - (DOMCSSValue *)getPropertyCSSValue:(NSString *)propertyName
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->getPropertyCSSValue(propertyName)));
 }
 
 - (NSString *)removeProperty:(NSString *)propertyName
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return raiseOnDOMError(IMPL->removeProperty(propertyName));
 }
 
 - (NSString *)getPropertyPriority:(NSString *)propertyName
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->getPropertyPriority(propertyName);
 }
 
 - (void)setProperty:(NSString *)propertyName value:(NSString *)value priority:(NSString *)priority
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return raiseOnDOMError(IMPL->setProperty(propertyName, value, priority));
 }
 
 - (NSString *)item:(unsigned)index
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->item(index);
 }
 
 - (NSString *)getPropertyShorthand:(NSString *)propertyName
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->getPropertyShorthand(propertyName);
 }
 
 - (BOOL)isPropertyImplicit:(NSString *)propertyName
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->isPropertyImplicit(propertyName);
 }
 
@@ -138,14 +138,14 @@
 
 @end
 
-WebCore::CSSStyleDeclaration* core(DOMCSSStyleDeclaration *wrapper)
+CyberCore::CSSStyleDeclaration* core(DOMCSSStyleDeclaration *wrapper)
 {
-    return wrapper ? reinterpret_cast<WebCore::CSSStyleDeclaration*>(wrapper->_internal) : 0;
+    return wrapper ? reinterpret_cast<CyberCore::CSSStyleDeclaration*>(wrapper->_internal) : 0;
 }
 
-DOMCSSStyleDeclaration *kit(WebCore::CSSStyleDeclaration* value)
+DOMCSSStyleDeclaration *kit(CyberCore::CSSStyleDeclaration* value)
 {
-    WebCoreThreadViolationCheckRoundOne();
+    CyberCoreThreadViolationCheckRoundOne();
     if (!value)
         return nil;
     if (DOMCSSStyleDeclaration *wrapper = getDOMWrapper(value))

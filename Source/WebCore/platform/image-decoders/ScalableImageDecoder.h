@@ -38,7 +38,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // ScalableImageDecoder is a base for all format-specific decoders
 // (e.g. JPEGImageDecoder). This base manages the ScalableImageDecoderFrame cache.
@@ -209,4 +209,4 @@ private:
     bool m_decodingSizeFromSetData { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

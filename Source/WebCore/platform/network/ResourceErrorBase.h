@@ -30,7 +30,7 @@
 #include <wtf/URL.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ResourceError;
 
@@ -114,18 +114,18 @@ WEBCORE_EXPORT ResourceError internalError(const URL&);
 inline bool operator==(const ResourceError& a, const ResourceError& b) { return ResourceErrorBase::compare(a, b); }
 inline bool operator!=(const ResourceError& a, const ResourceError& b) { return !(a == b); }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::ResourceErrorBase::Type> {
+template<> struct EnumTraits<CyberCore::ResourceErrorBase::Type> {
     using values = EnumValues<
-        WebCore::ResourceErrorBase::Type,
-        WebCore::ResourceErrorBase::Type::Null,
-        WebCore::ResourceErrorBase::Type::General,
-        WebCore::ResourceErrorBase::Type::AccessControl,
-        WebCore::ResourceErrorBase::Type::Cancellation,
-        WebCore::ResourceErrorBase::Type::Timeout
+        CyberCore::ResourceErrorBase::Type,
+        CyberCore::ResourceErrorBase::Type::Null,
+        CyberCore::ResourceErrorBase::Type::General,
+        CyberCore::ResourceErrorBase::Type::AccessControl,
+        CyberCore::ResourceErrorBase::Type::Cancellation,
+        CyberCore::ResourceErrorBase::Type::Timeout
     >;
 };
 

@@ -31,7 +31,7 @@
 #include "Document.h"
 #include "Page.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<StyleImageSet> StyleImageSet::create(Vector<ImageWithScale> images)
 { 
@@ -102,4 +102,4 @@ void StyleImageSet::updateDeviceScaleFactor(const Document& document)
     m_accessedBestFitImage = false;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

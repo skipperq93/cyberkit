@@ -99,7 +99,7 @@ public:
     String string() const { return stringWithScheme(nullString()); }
     NSArray *expandedStrings() const;
 
-    const WebCore::UserContentURLPattern& pattern() const { return m_pattern; }
+    const CyberCore::UserContentURLPattern& pattern() const { return m_pattern; }
 
     unsigned hash() const { return m_hash; }
 
@@ -116,7 +116,7 @@ private:
     bool hostMatches(const WebExtensionMatchPattern&, OptionSet<Options> = { }) const;
     bool pathMatches(const WebExtensionMatchPattern&, OptionSet<Options> = { }) const;
 
-    WebCore::UserContentURLPattern m_pattern;
+    CyberCore::UserContentURLPattern m_pattern;
     bool m_matchesAllURLs { false };
     bool m_valid { false };
     unsigned m_hash { 0 };

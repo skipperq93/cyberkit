@@ -36,7 +36,7 @@
 #include <CoreAudio/AudioHardware.h>
 #include <pal/cf/AudioToolboxSoftLink.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 void AudioOutputUnitAdaptor::configure(float hardwareSampleRate, unsigned numberOfOutputChannels)
 {
@@ -84,6 +84,6 @@ void AudioOutputUnitAdaptor::configure(float hardwareSampleRate, unsigned number
     ASSERT(!result);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO) && PLATFORM(MAC)

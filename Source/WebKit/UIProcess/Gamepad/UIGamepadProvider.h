@@ -39,7 +39,7 @@ class WebPageProxy;
 class WebProcessPool;
 class GamepadData;
 
-class UIGamepadProvider final : public WebCore::GamepadProviderClient {
+class UIGamepadProvider final : public CyberCore::GamepadProviderClient {
 public:
     static UIGamepadProvider& singleton();
 
@@ -72,9 +72,9 @@ private:
     void platformStopMonitoringInput();
     void platformStartMonitoringInput();
 
-    void platformGamepadConnected(WebCore::PlatformGamepad&, WebCore::EventMakesGamepadsVisible) final;
-    void platformGamepadDisconnected(WebCore::PlatformGamepad&) final;
-    void platformGamepadInputActivity(WebCore::EventMakesGamepadsVisible) final;
+    void platformGamepadConnected(CyberCore::PlatformGamepad&, CyberCore::EventMakesGamepadsVisible) final;
+    void platformGamepadDisconnected(CyberCore::PlatformGamepad&) final;
+    void platformGamepadInputActivity(CyberCore::EventMakesGamepadsVisible) final;
 
     void scheduleGamepadStateSync();
     void gamepadSyncTimerFired();

@@ -42,7 +42,7 @@
 #include <CyberScriptCore/ScriptCallStack.h>
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 using namespace Inspector;
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(WorkletGlobalScope);
@@ -165,4 +165,4 @@ MessagePortChannelProvider& WorkletGlobalScope::messagePortChannelProvider()
     return *m_messagePortChannelProvider;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

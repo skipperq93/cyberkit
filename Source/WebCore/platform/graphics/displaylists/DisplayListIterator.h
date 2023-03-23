@@ -27,7 +27,7 @@
 
 #include "DisplayList.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace DisplayList {
 
 class DisplayList::Iterator {

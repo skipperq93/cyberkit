@@ -25,8 +25,8 @@
  
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class UserContentInjectedFrames : bool { InjectInAllFrames, InjectInTopFrameOnly };
 
-} // namespace WebCore
+} // namespace CyberCore

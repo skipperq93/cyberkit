@@ -38,7 +38,7 @@
 #include "ImageBufferIOSurfaceBackend.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 #if USE(CG)
 using UnacceleratedImageBufferBackend = ImageBufferCGBitmapBackend;
@@ -72,10 +72,10 @@ protected:
 };
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #if HAVE(IOSURFACE)
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::IOSurfaceImageBuffer)
-    static bool isType(const WebCore::ImageBuffer& buffer) { return buffer.renderingMode() == WebCore::RenderingMode::Accelerated; }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::IOSurfaceImageBuffer)
+    static bool isType(const CyberCore::ImageBuffer& buffer) { return buffer.renderingMode() == CyberCore::RenderingMode::Accelerated; }
 SPECIALIZE_TYPE_TRAITS_END()
 #endif

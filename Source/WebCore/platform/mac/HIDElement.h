@@ -30,7 +30,7 @@
 #include <IOKit/hid/IOHIDDevice.h>
 #include <wtf/RetainPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class HIDElement {
     WTF_MAKE_FAST_ALLOCATED;
@@ -60,6 +60,6 @@ private:
 };
 
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(MAC)

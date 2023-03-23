@@ -30,7 +30,7 @@
 #include "ResourceResponse.h"
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct NetworkTransactionInformation {
     enum class Type : bool { Redirection, Preflight };

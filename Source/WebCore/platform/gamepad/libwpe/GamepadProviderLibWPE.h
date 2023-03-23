@@ -36,7 +36,7 @@ struct wpe_gamepad;
 struct wpe_gamepad_provider;
 struct wpe_view_backend;
 
-namespace WebCore {
+namespace CyberCore {
 
 class GamepadLibWPE;
 
@@ -83,6 +83,6 @@ private:
     RunLoop::Timer m_inputNotificationTimer;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(GAMEPAD) && USE(LIBWPE)

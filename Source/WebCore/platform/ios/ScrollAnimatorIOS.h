@@ -31,7 +31,7 @@
 
 #include "IntPoint.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class PlatformTouchEvent;
 
@@ -68,6 +68,6 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(IOS_FAMILY)

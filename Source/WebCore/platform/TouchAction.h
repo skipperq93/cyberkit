@@ -27,7 +27,7 @@
 
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class TouchAction : uint8_t {
     Auto         = 1 << 0,

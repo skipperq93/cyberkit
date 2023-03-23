@@ -90,7 +90,7 @@
 @end
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 WKWebView *RemoteWebInspectorUIProxy::webView() const
 {
@@ -181,7 +181,7 @@ void RemoteWebInspectorUIProxy::platformLoad(const String& path, CompletionHandl
         completionHandler(nullString());
 }
 
-void RemoteWebInspectorUIProxy::platformPickColorFromScreen(CompletionHandler<void(const std::optional<WebCore::Color>&)>&& completionHandler)
+void RemoteWebInspectorUIProxy::platformPickColorFromScreen(CompletionHandler<void(const std::optional<CyberCore::Color>&)>&& completionHandler)
 {
     auto sampler = adoptNS([[NSColorSampler alloc] init]);
     [sampler.get() showSamplerWithSelectionHandler:makeBlockPtr([completionHandler = WTFMove(completionHandler)](NSColor *selectedColor) mutable {

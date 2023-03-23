@@ -33,7 +33,7 @@
 #include <wtf/HashSet.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AffineTransform;
 class CSSStyleDeclaration;
@@ -256,10 +256,10 @@ inline SVGElement::InstanceUpdateBlocker::~InstanceUpdateBlocker()
 
 
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::SVGElement)
-    static bool isType(const WebCore::EventTarget& eventTarget) { return eventTarget.isNode() && static_cast<const WebCore::Node&>(eventTarget).isSVGElement(); }
-    static bool isType(const WebCore::Node& node) { return node.isSVGElement(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::SVGElement)
+    static bool isType(const CyberCore::EventTarget& eventTarget) { return eventTarget.isNode() && static_cast<const CyberCore::Node&>(eventTarget).isSVGElement(); }
+    static bool isType(const CyberCore::Node& node) { return node.isSVGElement(); }
 SPECIALIZE_TYPE_TRAITS_END()
 

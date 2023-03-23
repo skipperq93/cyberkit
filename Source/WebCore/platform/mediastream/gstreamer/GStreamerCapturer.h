@@ -31,7 +31,7 @@
 #include <wtf/ThreadSafeRefCounted.h>
 #include <wtf/WeakHashSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class GStreamerCapturer
     : public ThreadSafeRefCounted<GStreamerCapturer, WTF::DestructionThread::MainRunLoop> {
@@ -88,6 +88,6 @@ private:
     WeakHashSet<Observer> m_observers;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM) && USE(GSTREAMER)

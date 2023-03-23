@@ -28,7 +28,7 @@
 
 #include "RenderText.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 RenderSelectionInfoBase::RenderSelectionInfoBase(RenderObject& renderer)
     : m_renderer(renderer)
@@ -69,4 +69,4 @@ void RenderBlockSelectionInfo::repaint()
     repaintRectangle(m_rects);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

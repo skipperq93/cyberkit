@@ -30,7 +30,7 @@
 #include <CoreText/CoreText.h>
 #include <pal/spi/cf/CoreTextSPI.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static CTParagraphStyleRef paragraphStyleWithCompositionLanguageNone()
 {
@@ -95,4 +95,4 @@ RetainPtr<CFDictionaryRef> Font::getCFStringAttributes(bool enableKerning, FontO
     return adoptCF(CFDictionaryCreate(kCFAllocatorDefault, keys, values, count, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

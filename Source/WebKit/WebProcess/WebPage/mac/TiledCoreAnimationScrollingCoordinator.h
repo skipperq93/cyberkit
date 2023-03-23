@@ -29,11 +29,11 @@
 
 #include <CyberCore/ScrollingCoordinatorMac.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPage;
 
-class TiledCoreAnimationScrollingCoordinator final : public WebCore::ScrollingCoordinatorMac {
+class TiledCoreAnimationScrollingCoordinator final : public CyberCore::ScrollingCoordinatorMac {
 public:
     static Ref<TiledCoreAnimationScrollingCoordinator> create(WebPage* page)
     {
@@ -50,6 +50,6 @@ private:
     WebPage* m_page;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(ASYNC_SCROLLING) && ENABLE(SCROLLING_THREAD)

@@ -1339,7 +1339,7 @@ class Port(object):
         return None
 
     def _path_to_webcore_library(self):
-        """Returns the full path to a built copy of WebCore."""
+        """Returns the full path to a built copy of CyberCore."""
         return None
 
     def _path_to_helper(self):

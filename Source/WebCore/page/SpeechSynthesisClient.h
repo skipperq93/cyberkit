@@ -29,7 +29,7 @@
 
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class PlatformSpeechSynthesisUtterance;
 class SpeechSynthesisClientObserver;
@@ -64,6 +64,6 @@ public:
     virtual void voicesChanged() = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SPEECH_SYNTHESIS)

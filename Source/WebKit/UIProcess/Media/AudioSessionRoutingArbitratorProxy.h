@@ -48,13 +48,13 @@ public:
     virtual ~AudioSessionRoutingArbitratorProxy();
 
     void processDidTerminate();
-    WebCore::AudioSession::CategoryType category() const { return m_category; }
+    CyberCore::AudioSession::CategoryType category() const { return m_category; }
 
     static uint64_t destinationId() { return 1; }
 
-    using RoutingArbitrationError = WebCore::AudioSessionRoutingArbitrationClient::RoutingArbitrationError;
-    using DefaultRouteChanged = WebCore::AudioSessionRoutingArbitrationClient::DefaultRouteChanged;
-    using ArbitrationCallback = WebCore::AudioSessionRoutingArbitrationClient::ArbitrationCallback;
+    using RoutingArbitrationError = CyberCore::AudioSessionRoutingArbitrationClient::RoutingArbitrationError;
+    using DefaultRouteChanged = CyberCore::AudioSessionRoutingArbitrationClient::DefaultRouteChanged;
+    using ArbitrationCallback = CyberCore::AudioSessionRoutingArbitrationClient::ArbitrationCallback;
 
     enum class ArbitrationStatus : uint8_t {
         None,
@@ -70,16 +70,16 @@ private:
     void didReceiveMessage(IPC::Connection&, IPC::Decoder&) final;
 
     // Messages
-    void beginRoutingArbitrationWithCategory(WebCore::AudioSession::CategoryType, ArbitrationCallback&&);
+    void beginRoutingArbitrationWithCategory(CyberCore::AudioSession::CategoryType, ArbitrationCallback&&);
     void endRoutingArbitration();
 
     WebProcessProxy& m_process;
-    WebCore::AudioSession::CategoryType m_category { WebCore::AudioSession::CategoryType::None };
+    CyberCore::AudioSession::CategoryType m_category { CyberCore::AudioSession::CategoryType::None };
     ArbitrationStatus m_arbitrationStatus { ArbitrationStatus::None };
     WallTime m_arbitrationUpdateTime;
 
 #if HAVE(AVAUDIO_ROUTING_ARBITER)
-    UniqueRef<WebCore::SharedRoutingArbitrator::Token> m_token;
+    UniqueRef<CyberCore::SharedRoutingArbitrator::Token> m_token;
 #endif
 };
 

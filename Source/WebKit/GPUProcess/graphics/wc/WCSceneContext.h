@@ -29,7 +29,7 @@
 
 #include <wtf/FastMalloc.h>
 
-namespace WebCore {
+namespace CyberCore {
 class GLContext;
 class TextureMapper;
 }
@@ -43,11 +43,11 @@ public:
     ~WCSceneContext();
 
     bool makeContextCurrent();
-    std::unique_ptr<WebCore::TextureMapper> createTextureMapper();
+    std::unique_ptr<CyberCore::TextureMapper> createTextureMapper();
     void swapBuffers();
 
 private:
-    std::unique_ptr<WebCore::GLContext> m_glContext;
+    std::unique_ptr<CyberCore::GLContext> m_glContext;
 };
 
 } // namespace WebKit

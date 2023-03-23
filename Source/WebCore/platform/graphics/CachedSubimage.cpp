@@ -29,7 +29,7 @@
 #include "GeometryUtilities.h"
 #include "GraphicsContext.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static FloatRect calculateCachedSubimageSourceRect(GraphicsContext& context, const FloatRect& destinationRect, const FloatRect& sourceRect, const FloatRect& imageRect)
 {
@@ -107,4 +107,4 @@ void CachedSubimage::draw(GraphicsContext& context, const FloatRect& destination
     m_imageBuffer->draw(context, destinationRect, sourceRectScaled, { });
 }
 
-} // namespace WebCore
+} // namespace CyberCore

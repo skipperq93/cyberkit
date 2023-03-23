@@ -34,7 +34,7 @@
 #import <wtf/cf/TypeCastsCF.h>
 #import "CoreVideoSoftLink.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static Expected<RetainPtr<CVPixelBufferPoolRef>, CVReturn> createBufferPool(unsigned minimumBufferCount, NSDictionary *pixelAttributes)
 {

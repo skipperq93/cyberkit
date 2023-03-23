@@ -53,7 +53,7 @@
 #define JMPBUF(png_ptr) png_ptr->jmpbuf
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 // Gamma constants.
 const double cMaxGamma = 21474.83;
@@ -897,7 +897,7 @@ int PNGImageDecoder::processingStart(png_unknown_chunkp chunk)
 
     png_set_crc_action(m_png, PNG_CRC_QUIET_USE, PNG_CRC_QUIET_USE);
     png_set_progressive_read_fn(m_png, static_cast<png_voidp>(this),
-        WebCore::frameHeader, WebCore::rowAvailable, 0);
+        CyberCore::frameHeader, CyberCore::rowAvailable, 0);
 
     memcpy(m_dataIHDR + 8, chunk->data + 4, 8);
     png_save_uint_32(datagAMA + 8, m_gamma);
@@ -940,4 +940,4 @@ void PNGImageDecoder::fallbackNotAnimated()
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

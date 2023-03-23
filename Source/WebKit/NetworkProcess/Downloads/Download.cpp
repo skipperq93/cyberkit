@@ -37,7 +37,7 @@
 #include "NetworkProcess.h"
 #include "NetworkSession.h"
 #include "SandboxExtension.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include <CyberCore/NotImplemented.h>
 
 #if PLATFORM(COCOA)
@@ -47,7 +47,7 @@
 #define DOWNLOAD_RELEASE_LOG(fmt, ...) RELEASE_LOG(Network, "%p - Download::" fmt, this, ##__VA_ARGS__)
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 Download::Download(DownloadManager& downloadManager, DownloadID downloadID, NetworkDataTask& download, NetworkSession& session, const String& suggestedName)
     : m_downloadManager(downloadManager)
@@ -110,7 +110,7 @@ void Download::cancel(CompletionHandler<void(const IPC::DataReference&)>&& compl
     platformCancelNetworkLoad(WTFMove(completionHandlerWrapper));
 }
 
-void Download::didReceiveChallenge(const WebCore::AuthenticationChallenge& challenge, ChallengeCompletionHandler&& completionHandler)
+void Download::didReceiveChallenge(const CyberCore::AuthenticationChallenge& challenge, ChallengeCompletionHandler&& completionHandler)
 {
     if (challenge.protectionSpace().isPasswordBased() && !challenge.proposedCredential().isEmpty() && !challenge.previousFailureCount()) {
         completionHandler(AuthenticationChallengeDisposition::UseCredential, challenge.proposedCredential());

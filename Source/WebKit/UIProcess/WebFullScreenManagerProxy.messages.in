@@ -23,10 +23,10 @@
 #if ENABLE(FULLSCREEN_API)
 messages -> WebFullScreenManagerProxy NotRefCounted {
     SupportsFullScreen(bool withKeyboard) -> (bool supportsFullScreen) Synchronous
-    EnterFullScreen(bool blocksReturnToFullscreenFromPictureInPicture, bool isVideoElementWithControls, WebCore::FloatSize videoDimensions)
+    EnterFullScreen(bool blocksReturnToFullscreenFromPictureInPicture, bool isVideoElementWithControls, CyberCore::FloatSize videoDimensions)
     ExitFullScreen()
-    BeganEnterFullScreen(WebCore::IntRect initialRect, WebCore::IntRect finalRect)
-    BeganExitFullScreen(WebCore::IntRect initialRect, WebCore::IntRect finalRect)
+    BeganEnterFullScreen(CyberCore::IntRect initialRect, CyberCore::IntRect finalRect)
+    BeganExitFullScreen(CyberCore::IntRect initialRect, CyberCore::IntRect finalRect)
     Close()
 }
 #endif

@@ -1836,7 +1836,7 @@ msgstr "વેબ પરીક્ષક"
 #~ msgid "Enable Timeline profiling"
 #~ msgstr "સમયરેખા રૂપરેખા સક્રિય કરો"
 
-#~ msgid "Profile the WebCore instrumentation."
+#~ msgid "Profile the CyberCore instrumentation."
 #~ msgstr "વેબકોર ઈન્સ્ટ્રુમેન્ટેશનની રૂપરેખા કરો."
 
 #~ msgid "Reason"

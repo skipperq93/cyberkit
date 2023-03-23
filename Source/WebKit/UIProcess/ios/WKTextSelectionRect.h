@@ -27,14 +27,14 @@
 
 #import <UIKit/UIKit.h>
 
-namespace WebCore {
+namespace CyberCore {
 class SelectionGeometry;
 }
 
 @interface WKTextSelectionRect : UITextSelectionRect
 
 - (instancetype)initWithCGRect:(CGRect)rect;
-- (instancetype)initWithSelectionGeometry:(const WebCore::SelectionGeometry&)selectionGeometry scaleFactor:(CGFloat)scaleFactor;
+- (instancetype)initWithSelectionGeometry:(const CyberCore::SelectionGeometry&)selectionGeometry scaleFactor:(CGFloat)scaleFactor;
 
 @end
 

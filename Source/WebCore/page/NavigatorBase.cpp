@@ -31,7 +31,7 @@
 #include "GPU.h"
 #include "ServiceWorkerContainer.h"
 #include "StorageManager.h"
-#include "WebCoreOpaqueRoot.h"
+#include "CyberCoreOpaqueRoot.h"
 #include "WebLockManager.h"
 #include <mutex>
 #include <wtf/Language.h>
@@ -65,7 +65,7 @@
 #define WEBCORE_NAVIGATOR_VENDOR_SUB emptyString()
 #endif // ifndef WEBCORE_NAVIGATOR_VENDOR_SUB
 
-namespace WebCore {
+namespace CyberCore {
 
 NavigatorBase::NavigatorBase(ScriptExecutionContext* context)
     : ContextDestructionObserver(context)
@@ -196,9 +196,9 @@ int NavigatorBase::hardwareConcurrency()
     return numberOfCores;
 }
 
-WebCoreOpaqueRoot root(NavigatorBase* navigator)
+CyberCoreOpaqueRoot root(NavigatorBase* navigator)
 {
-    return WebCoreOpaqueRoot { navigator };
+    return CyberCoreOpaqueRoot { navigator };
 }
 
-} // namespace WebCore
+} // namespace CyberCore

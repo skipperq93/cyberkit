@@ -32,7 +32,7 @@
 
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class CDMMessageType : uint8_t {
     LicenseRequest,
@@ -41,6 +41,6 @@ enum class CDMMessageType : uint8_t {
     IndividualizationRequest
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ENCRYPTED_MEDIA)

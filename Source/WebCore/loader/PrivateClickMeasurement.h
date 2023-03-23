@@ -35,7 +35,7 @@
 #include <wtf/text/Base64.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace PCM {
 enum class AttributionEphemeral : bool { No, Yes };
@@ -153,4 +153,4 @@ private:
     String m_sourceApplicationBundleID;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

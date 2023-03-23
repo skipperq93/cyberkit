@@ -72,7 +72,7 @@
     @property webFrame
     @abstract Allows the plug-in to access the WebFrame that
     contains the plug-in.  This method will not be implemented by containers that 
-    are not WebKit based.
+    are not CyberKit based.
 */
 @property (nonatomic, readonly, strong) WebFrame *webFrame;
 

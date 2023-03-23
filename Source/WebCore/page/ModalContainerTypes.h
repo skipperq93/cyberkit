@@ -27,7 +27,7 @@
 
 #include <wtf/EnumTraits.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class ModalContainerControlType : uint8_t {
     Neutral = 1 << 0,
@@ -43,17 +43,17 @@ enum class ModalContainerDecision : uint8_t {
     HideAndDisallow,
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::ModalContainerControlType> {
+template<> struct EnumTraits<CyberCore::ModalContainerControlType> {
     using values = EnumValues<
-        WebCore::ModalContainerControlType,
-        WebCore::ModalContainerControlType::Neutral,
-        WebCore::ModalContainerControlType::Positive,
-        WebCore::ModalContainerControlType::Negative,
-        WebCore::ModalContainerControlType::Other
+        CyberCore::ModalContainerControlType,
+        CyberCore::ModalContainerControlType::Neutral,
+        CyberCore::ModalContainerControlType::Positive,
+        CyberCore::ModalContainerControlType::Negative,
+        CyberCore::ModalContainerControlType::Other
     >;
 };
 

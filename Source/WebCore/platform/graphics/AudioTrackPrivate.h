@@ -32,7 +32,7 @@
 
 #if ENABLE(VIDEO)
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioTrackPrivate : public TrackPrivateBase {
 public:
@@ -97,20 +97,20 @@ private:
     EnabledChangedCallback m_enabledChangedCallback;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::AudioTrackPrivate::Kind> {
+template<> struct EnumTraits<CyberCore::AudioTrackPrivate::Kind> {
     using values = EnumValues<
-        WebCore::AudioTrackPrivate::Kind,
-        WebCore::AudioTrackPrivate::Kind::Alternative,
-        WebCore::AudioTrackPrivate::Kind::Description,
-        WebCore::AudioTrackPrivate::Kind::Main,
-        WebCore::AudioTrackPrivate::Kind::MainDesc,
-        WebCore::AudioTrackPrivate::Kind::Translation,
-        WebCore::AudioTrackPrivate::Kind::Commentary,
-        WebCore::AudioTrackPrivate::Kind::None
+        CyberCore::AudioTrackPrivate::Kind,
+        CyberCore::AudioTrackPrivate::Kind::Alternative,
+        CyberCore::AudioTrackPrivate::Kind::Description,
+        CyberCore::AudioTrackPrivate::Kind::Main,
+        CyberCore::AudioTrackPrivate::Kind::MainDesc,
+        CyberCore::AudioTrackPrivate::Kind::Translation,
+        CyberCore::AudioTrackPrivate::Kind::Commentary,
+        CyberCore::AudioTrackPrivate::Kind::None
     >;
 };
 

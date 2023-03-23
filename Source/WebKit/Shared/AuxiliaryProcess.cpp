@@ -46,7 +46,7 @@
 #endif
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 AuxiliaryProcess::AuxiliaryProcess()
     : m_terminationCounter(0)
@@ -77,7 +77,7 @@ void AuxiliaryProcess::initialize(const AuxiliaryProcessInitializationParameters
 
     setAuxiliaryProcessType(parameters.processType);
 
-    RELEASE_ASSERT_WITH_MESSAGE(parameters.processIdentifier, "Unable to initialize child process without a WebCore process identifier");
+    RELEASE_ASSERT_WITH_MESSAGE(parameters.processIdentifier, "Unable to initialize child process without a CyberCore process identifier");
     Process::setIdentifier(*parameters.processIdentifier);
 
     platformInitialize(parameters);
@@ -89,7 +89,7 @@ void AuxiliaryProcess::initialize(const AuxiliaryProcessInitializationParameters
 
 #if !LOG_DISABLED || !RELEASE_LOG_DISABLED
     WTF::logChannels().initializeLogChannelsIfNecessary();
-    WebCore::logChannels().initializeLogChannelsIfNecessary();
+    CyberCore::logChannels().initializeLogChannelsIfNecessary();
     WebKit::logChannels().initializeLogChannelsIfNecessary();
 #endif // !LOG_DISABLED || !RELEASE_LOG_DISABLED
 
@@ -211,7 +211,7 @@ void AuxiliaryProcess::applyProcessCreationParameters(const AuxiliaryProcessCrea
 {
 #if !LOG_DISABLED || !RELEASE_LOG_DISABLED
     WTF::logChannels().initializeLogChannelsIfNecessary(parameters.wtfLoggingChannels);
-    WebCore::logChannels().initializeLogChannelsIfNecessary(parameters.webCoreLoggingChannels);
+    CyberCore::logChannels().initializeLogChannelsIfNecessary(parameters.webCoreLoggingChannels);
     WebKit::logChannels().initializeLogChannelsIfNecessary(parameters.webKitLoggingChannels);
 #endif
 }

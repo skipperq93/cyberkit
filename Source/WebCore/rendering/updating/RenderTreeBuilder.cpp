@@ -78,7 +78,7 @@
 #include "FrameView.h"
 #include "FrameViewLayoutContext.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 RenderTreeBuilder* RenderTreeBuilder::s_current;
 

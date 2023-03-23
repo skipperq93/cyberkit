@@ -27,7 +27,7 @@
 
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WEBCORE_EXPORT HTTPHeaderField {
 public:
@@ -45,4 +45,4 @@ private:
     String m_value;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -19,14 +19,14 @@
 #include "config.h"
 #include "GObjectNodeFilterCondition.h"
 
-#include "WebKitDOMNodePrivate.h"
+#include "CyberKitDOMNodePrivate.h"
 #include <CyberCore/NodeFilter.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
-namespace WebKit {
+namespace CyberKit {
 
 GObjectNodeFilterCondition::~GObjectNodeFilterCondition()
 {
@@ -35,8 +35,8 @@ GObjectNodeFilterCondition::~GObjectNodeFilterCondition()
 
 unsigned short GObjectNodeFilterCondition::acceptNode(Node& node) const
 {
-    return webkit_dom_node_filter_accept_node(m_filter.get(), WebKit::kit(&node));
+    return webkit_dom_node_filter_accept_node(m_filter.get(), CyberKit::kit(&node));
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 G_GNUC_END_IGNORE_DEPRECATIONS;

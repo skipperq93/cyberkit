@@ -28,7 +28,7 @@
 #include "FloatSize.h"
 #include "Image.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class GeneratedImage : public Image {
 public:

@@ -42,7 +42,7 @@
 
 using JSC::Yarr::RegularExpression;
 
-namespace WebCore {
+namespace CyberCore {
 
 auto CDMPrivateMediaSourceAVFObjC::parseKeySystem(const String& keySystem) -> std::optional<KeySystemParameters>
 {

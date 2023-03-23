@@ -24,7 +24,7 @@
 #include "SearchPopupMenuDB.h"
 #include <wtf/text/AtomString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 SearchPopupMenuWin::SearchPopupMenuWin(PopupMenuClient* client)
     : m_popup(adoptRef(*new PopupMenuWin(client)))

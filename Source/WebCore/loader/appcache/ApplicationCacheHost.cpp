@@ -47,7 +47,7 @@
 #include <wtf/FileSystem.h>
 #include <wtf/UUID.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 ApplicationCacheHost::ApplicationCacheHost(DocumentLoader& documentLoader)
     : m_documentLoader(documentLoader)
@@ -572,4 +572,4 @@ bool ApplicationCacheHost::isApplicationCacheBlockedForRequest(const ResourceReq
     return frame->document()->canAccessResource(ScriptExecutionContext::ResourceType::ApplicationCache) != ScriptExecutionContext::HasResourceAccess::Yes;
 }
 
-}  // namespace WebCore
+}  // namespace CyberCore

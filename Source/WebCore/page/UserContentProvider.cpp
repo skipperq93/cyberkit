@@ -41,7 +41,7 @@
 #include "ContentRuleListResults.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 UserContentProvider::UserContentProvider()
 {
@@ -154,4 +154,4 @@ ContentRuleListResults UserContentProvider::processContentRuleListsForLoad(Page&
 }
 #endif // ENABLE(CONTENT_EXTENSIONS)
 
-} // namespace WebCore
+} // namespace CyberCore

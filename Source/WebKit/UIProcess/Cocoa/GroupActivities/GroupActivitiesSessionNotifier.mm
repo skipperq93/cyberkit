@@ -37,7 +37,7 @@
 namespace WebKit {
 
 using namespace PAL;
-using namespace WebCore;
+using namespace CyberCore;
 
 GroupActivitiesSessionNotifier& GroupActivitiesSessionNotifier::sharedNotifier()
 {

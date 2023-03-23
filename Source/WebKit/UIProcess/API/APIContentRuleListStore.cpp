@@ -150,7 +150,7 @@ template<> void getData(const WebKit::NetworkCache::Data& data, const Function<b
 {
     data.apply(function);
 }
-template<> void getData(const WebCore::SharedBuffer& data, const Function<bool(Span<const uint8_t>)>& function)
+template<> void getData(const CyberCore::SharedBuffer& data, const Function<bool(Span<const uint8_t>)>& function)
 {
     function({ data.data(), data.size() });
 }
@@ -254,9 +254,9 @@ static bool writeDataToFile(const WebKit::NetworkCache::Data& fileData, Platform
     return success;
 }
 
-static Expected<MappedData, std::error_code> compiledToFile(WTF::String&& json, Vector<WebCore::ContentExtensions::ContentExtensionRule>&& parsedRules, const WTF::String& finalFilePath)
+static Expected<MappedData, std::error_code> compiledToFile(WTF::String&& json, Vector<CyberCore::ContentExtensions::ContentExtensionRule>&& parsedRules, const WTF::String& finalFilePath)
 {
-    using namespace WebCore::ContentExtensions;
+    using namespace CyberCore::ContentExtensions;
 
     class CompilationClient final : public ContentExtensionCompilationClient {
     public:
@@ -544,10 +544,10 @@ void ContentRuleListStore::getAvailableContentRuleListIdentifiers(CompletionHand
 void ContentRuleListStore::compileContentRuleList(WTF::String&& identifier, WTF::String&& json, CompletionHandler<void(RefPtr<API::ContentRuleList>, std::error_code)> completionHandler)
 {
     ASSERT(RunLoop::isMain());
-    WebCore::initializeCommonAtomStrings();
-    WebCore::QualifiedName::init();
+    CyberCore::initializeCommonAtomStrings();
+    CyberCore::QualifiedName::init();
     
-    auto parsedRules = WebCore::ContentExtensions::parseRuleList(json);
+    auto parsedRules = CyberCore::ContentExtensions::parseRuleList(json);
     if (!parsedRules.has_value())
         return completionHandler(nullptr, parsedRules.error());
     

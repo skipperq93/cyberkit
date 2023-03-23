@@ -19,13 +19,13 @@
 
 #pragma once
 
-#include "WebKitFrame.h"
-#include "WebKitWebFormManager.h"
+#include "CyberKitFrame.h"
+#include "CyberKitWebFormManager.h"
 #include <jsc/jsc.h>
 #include <wtf/Vector.h>
 #include <wtf/glib/GRefPtr.h>
 
-WebKitWebFormManager* webkitWebFormManagerCreate();
-void webkitWebFormManagerDidAssociateFormControls(WebKitWebFormManager*, WebKitFrame*, Vector<GRefPtr<JSCValue>>&&);
-void webkitWebFormManagerWillSendSubmitEvent(WebKitWebFormManager*, GRefPtr<JSCValue>&&, WebKitFrame*, WebKitFrame*);
-void webkitWebFormManagerWillSubmitForm(WebKitWebFormManager*, GRefPtr<JSCValue>&&, WebKitFrame*, WebKitFrame*);
+CyberKitWebFormManager* webkitWebFormManagerCreate();
+void webkitWebFormManagerDidAssociateFormControls(CyberKitWebFormManager*, CyberKitFrame*, Vector<GRefPtr<JSCValue>>&&);
+void webkitWebFormManagerWillSendSubmitEvent(CyberKitWebFormManager*, GRefPtr<JSCValue>&&, CyberKitFrame*, CyberKitFrame*);
+void webkitWebFormManagerWillSubmitForm(CyberKitWebFormManager*, GRefPtr<JSCValue>&&, CyberKitFrame*, CyberKitFrame*);

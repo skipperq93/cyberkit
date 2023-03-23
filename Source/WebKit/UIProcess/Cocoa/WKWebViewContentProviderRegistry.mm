@@ -51,13 +51,13 @@
         return nil;
 
 #if ENABLE(WKPDFVIEW)
-    for (auto& type : WebCore::MIMETypeRegistry::pdfMIMETypes())
+    for (auto& type : CyberCore::MIMETypeRegistry::pdfMIMETypes())
         [self registerProvider:[WKPDFView class] forMIMEType:@(type.characters())];
 #endif
 
 #if USE(SYSTEM_PREVIEW)
     if (configuration._systemPreviewEnabled && !configuration.preferences._modelDocumentEnabled) {
-        for (auto& type : WebCore::MIMETypeRegistry::usdMIMETypes())
+        for (auto& type : CyberCore::MIMETypeRegistry::usdMIMETypes())
             [self registerProvider:[WKUSDPreviewView class] forMIMEType:@(type.characters())];
     }
 #endif

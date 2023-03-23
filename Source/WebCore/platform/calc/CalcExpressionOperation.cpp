@@ -29,7 +29,7 @@
 #include <cmath>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static std::pair<double, double> getNearestMultiples(double a, double b)
 {

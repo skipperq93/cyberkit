@@ -32,7 +32,7 @@
 #include "RenderBox.h"
 #include "RenderMultiColumnFlow.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderMultiColumnSpannerPlaceholder final : public RenderBox {
     WTF_MAKE_ISO_ALLOCATED(RenderMultiColumnSpannerPlaceholder);
@@ -56,6 +56,6 @@ private:
     WeakPtr<RenderMultiColumnFlow> m_fragmentedFlow;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderMultiColumnSpannerPlaceholder, isRenderMultiColumnSpannerPlaceholder())

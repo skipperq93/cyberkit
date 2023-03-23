@@ -26,7 +26,7 @@
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-// This header contains WebView declarations that can be used anywhere in WebKit, but are neither SPI nor API.
+// This header contains WebView declarations that can be used anywhere in CyberKit, but are neither SPI nor API.
 
 #import <CyberScriptCore/JSBase.h>
 

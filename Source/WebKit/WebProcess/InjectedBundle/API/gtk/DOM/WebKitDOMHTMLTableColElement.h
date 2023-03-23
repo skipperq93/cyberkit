@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -21,28 +21,28 @@
 #error "Only <webkitdom/webkitdom.h> can be included directly."
 #endif
 
-#ifndef WebKitDOMHTMLTableColElement_h
-#define WebKitDOMHTMLTableColElement_h
+#ifndef CyberKitDOMHTMLTableColElement_h
+#define CyberKitDOMHTMLTableColElement_h
 
 #include <glib-object.h>
-#include <webkitdom/WebKitDOMHTMLElement.h>
+#include <webkitdom/CyberKitDOMHTMLElement.h>
 #include <webkitdom/webkitdomdefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_DOM_TYPE_HTML_TABLE_COL_ELEMENT            (webkit_dom_html_table_col_element_get_type())
-#define WEBKIT_DOM_HTML_TABLE_COL_ELEMENT(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_HTML_TABLE_COL_ELEMENT, WebKitDOMHTMLTableColElement))
-#define WEBKIT_DOM_HTML_TABLE_COL_ELEMENT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_HTML_TABLE_COL_ELEMENT, WebKitDOMHTMLTableColElementClass)
+#define WEBKIT_DOM_HTML_TABLE_COL_ELEMENT(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_HTML_TABLE_COL_ELEMENT, CyberKitDOMHTMLTableColElement))
+#define WEBKIT_DOM_HTML_TABLE_COL_ELEMENT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_HTML_TABLE_COL_ELEMENT, CyberKitDOMHTMLTableColElementClass)
 #define WEBKIT_DOM_IS_HTML_TABLE_COL_ELEMENT(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_DOM_TYPE_HTML_TABLE_COL_ELEMENT))
 #define WEBKIT_DOM_IS_HTML_TABLE_COL_ELEMENT_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_DOM_TYPE_HTML_TABLE_COL_ELEMENT))
-#define WEBKIT_DOM_HTML_TABLE_COL_ELEMENT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_HTML_TABLE_COL_ELEMENT, WebKitDOMHTMLTableColElementClass))
+#define WEBKIT_DOM_HTML_TABLE_COL_ELEMENT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_HTML_TABLE_COL_ELEMENT, CyberKitDOMHTMLTableColElementClass))
 
-struct _WebKitDOMHTMLTableColElement {
-    WebKitDOMHTMLElement parent_instance;
+struct _CyberKitDOMHTMLTableColElement {
+    CyberKitDOMHTMLElement parent_instance;
 };
 
-struct _WebKitDOMHTMLTableColElementClass {
-    WebKitDOMHTMLElementClass parent_class;
+struct _CyberKitDOMHTMLTableColElementClass {
+    CyberKitDOMHTMLElementClass parent_class;
 };
 
 WEBKIT_DEPRECATED GType
@@ -50,136 +50,136 @@ webkit_dom_html_table_col_element_get_type(void);
 
 /**
  * webkit_dom_html_table_col_element_get_align:
- * @self: A #WebKitDOMHTMLTableColElement
+ * @self: A #CyberKitDOMHTMLTableColElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_table_col_element_get_align(WebKitDOMHTMLTableColElement* self);
+webkit_dom_html_table_col_element_get_align(CyberKitDOMHTMLTableColElement* self);
 
 /**
  * webkit_dom_html_table_col_element_set_align:
- * @self: A #WebKitDOMHTMLTableColElement
+ * @self: A #CyberKitDOMHTMLTableColElement
  * @value: A #gchar
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_table_col_element_set_align(WebKitDOMHTMLTableColElement* self, const gchar* value);
+webkit_dom_html_table_col_element_set_align(CyberKitDOMHTMLTableColElement* self, const gchar* value);
 
 /**
  * webkit_dom_html_table_col_element_get_ch:
- * @self: A #WebKitDOMHTMLTableColElement
+ * @self: A #CyberKitDOMHTMLTableColElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_table_col_element_get_ch(WebKitDOMHTMLTableColElement* self);
+webkit_dom_html_table_col_element_get_ch(CyberKitDOMHTMLTableColElement* self);
 
 /**
  * webkit_dom_html_table_col_element_set_ch:
- * @self: A #WebKitDOMHTMLTableColElement
+ * @self: A #CyberKitDOMHTMLTableColElement
  * @value: A #gchar
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_table_col_element_set_ch(WebKitDOMHTMLTableColElement* self, const gchar* value);
+webkit_dom_html_table_col_element_set_ch(CyberKitDOMHTMLTableColElement* self, const gchar* value);
 
 /**
  * webkit_dom_html_table_col_element_get_ch_off:
- * @self: A #WebKitDOMHTMLTableColElement
+ * @self: A #CyberKitDOMHTMLTableColElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_table_col_element_get_ch_off(WebKitDOMHTMLTableColElement* self);
+webkit_dom_html_table_col_element_get_ch_off(CyberKitDOMHTMLTableColElement* self);
 
 /**
  * webkit_dom_html_table_col_element_set_ch_off:
- * @self: A #WebKitDOMHTMLTableColElement
+ * @self: A #CyberKitDOMHTMLTableColElement
  * @value: A #gchar
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_table_col_element_set_ch_off(WebKitDOMHTMLTableColElement* self, const gchar* value);
+webkit_dom_html_table_col_element_set_ch_off(CyberKitDOMHTMLTableColElement* self, const gchar* value);
 
 /**
  * webkit_dom_html_table_col_element_get_span:
- * @self: A #WebKitDOMHTMLTableColElement
+ * @self: A #CyberKitDOMHTMLTableColElement
  *
  * Returns: A #glong
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED glong
-webkit_dom_html_table_col_element_get_span(WebKitDOMHTMLTableColElement* self);
+webkit_dom_html_table_col_element_get_span(CyberKitDOMHTMLTableColElement* self);
 
 /**
  * webkit_dom_html_table_col_element_set_span:
- * @self: A #WebKitDOMHTMLTableColElement
+ * @self: A #CyberKitDOMHTMLTableColElement
  * @value: A #glong
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_table_col_element_set_span(WebKitDOMHTMLTableColElement* self, glong value);
+webkit_dom_html_table_col_element_set_span(CyberKitDOMHTMLTableColElement* self, glong value);
 
 /**
  * webkit_dom_html_table_col_element_get_v_align:
- * @self: A #WebKitDOMHTMLTableColElement
+ * @self: A #CyberKitDOMHTMLTableColElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_table_col_element_get_v_align(WebKitDOMHTMLTableColElement* self);
+webkit_dom_html_table_col_element_get_v_align(CyberKitDOMHTMLTableColElement* self);
 
 /**
  * webkit_dom_html_table_col_element_set_v_align:
- * @self: A #WebKitDOMHTMLTableColElement
+ * @self: A #CyberKitDOMHTMLTableColElement
  * @value: A #gchar
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_table_col_element_set_v_align(WebKitDOMHTMLTableColElement* self, const gchar* value);
+webkit_dom_html_table_col_element_set_v_align(CyberKitDOMHTMLTableColElement* self, const gchar* value);
 
 /**
  * webkit_dom_html_table_col_element_get_width:
- * @self: A #WebKitDOMHTMLTableColElement
+ * @self: A #CyberKitDOMHTMLTableColElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_table_col_element_get_width(WebKitDOMHTMLTableColElement* self);
+webkit_dom_html_table_col_element_get_width(CyberKitDOMHTMLTableColElement* self);
 
 /**
  * webkit_dom_html_table_col_element_set_width:
- * @self: A #WebKitDOMHTMLTableColElement
+ * @self: A #CyberKitDOMHTMLTableColElement
  * @value: A #gchar
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_table_col_element_set_width(WebKitDOMHTMLTableColElement* self, const gchar* value);
+webkit_dom_html_table_col_element_set_width(CyberKitDOMHTMLTableColElement* self, const gchar* value);
 
 G_END_DECLS
 
-#endif /* WebKitDOMHTMLTableColElement_h */
+#endif /* CyberKitDOMHTMLTableColElement_h */

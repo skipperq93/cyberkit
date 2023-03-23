@@ -29,7 +29,7 @@
 
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class ServiceWorkerClientType : uint8_t {
     Window,
@@ -38,6 +38,6 @@ enum class ServiceWorkerClientType : uint8_t {
     All
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

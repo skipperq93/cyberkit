@@ -29,7 +29,7 @@
 #include "Timer.h"
 #include <wtf/HashMap.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class GraphicsContext;
 class Image;
@@ -65,4 +65,4 @@ private:
     bool m_liveResizeOptimizationIsActive { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

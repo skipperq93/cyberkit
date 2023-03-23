@@ -37,7 +37,7 @@
 #include <pal/SessionID.h>
 #include <wtf/StreamBuffer.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SocketStreamHandleClient;
 class StorageSessionProvider;
@@ -78,4 +78,4 @@ private:
     unsigned m_totalSendDataSize { 0 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

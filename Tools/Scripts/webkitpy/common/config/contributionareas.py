@@ -151,7 +151,7 @@ contribution_areas = [
     _Area('Web Inspector / Developer Tools', ['inspector']),
     _Area('Web Timing', ['PerformanceNavigation', 'PerformanceTiming']),  # more tokens?
     _Area('WebArchive'),
-    _Area('WebCore Icon Database', ['icon']),
+    _Area('CyberCore Icon Database', ['icon']),
     _Area('WebGL', ['webgl']),
     _Area('WebKit Websites', ['websites']),
     _Area('WebKit2'),

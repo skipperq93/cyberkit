@@ -43,7 +43,7 @@
 #include <wtf/cocoa/RuntimeApplicationChecksCocoa.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 RemoteScrollingCoordinatorProxy::RemoteScrollingCoordinatorProxy(WebPageProxy& webPageProxy)
     : m_webPageProxy(webPageProxy)
@@ -132,12 +132,12 @@ void RemoteScrollingCoordinatorProxy::continueWheelEventHandling(const NativeWeb
     webPageProxy().continueWheelEventHandling(wheelEvent, result);
 }
 
-void RemoteScrollingCoordinatorProxy::handleMouseEvent(const WebCore::PlatformMouseEvent& event)
+void RemoteScrollingCoordinatorProxy::handleMouseEvent(const CyberCore::PlatformMouseEvent& event)
 {
     m_scrollingTree->handleMouseEvent(event);
 }
 
-TrackingType RemoteScrollingCoordinatorProxy::eventTrackingTypeForPoint(WebCore::EventTrackingRegions::EventType eventType, IntPoint p) const
+TrackingType RemoteScrollingCoordinatorProxy::eventTrackingTypeForPoint(CyberCore::EventTrackingRegions::EventType eventType, IntPoint p) const
 {
     return m_scrollingTree->eventTrackingTypeForPoint(eventType, p);
 }
@@ -152,7 +152,7 @@ void RemoteScrollingCoordinatorProxy::applyScrollingTreeLayerPositionsAfterCommi
     m_scrollingTree->applyLayerPositionsAfterCommit();
 }
 
-void RemoteScrollingCoordinatorProxy::currentSnapPointIndicesDidChange(WebCore::ScrollingNodeID nodeID, std::optional<unsigned> horizontal, std::optional<unsigned> vertical)
+void RemoteScrollingCoordinatorProxy::currentSnapPointIndicesDidChange(CyberCore::ScrollingNodeID nodeID, std::optional<unsigned> horizontal, std::optional<unsigned> vertical)
 {
     m_webPageProxy.send(Messages::RemoteScrollingCoordinator::CurrentSnapPointIndicesChangedForNode(nodeID, horizontal, vertical));
 }
@@ -271,7 +271,7 @@ bool RemoteScrollingCoordinatorProxy::hasScrollableOrZoomedMainFrame() const
         return false;
 
 #if PLATFORM(IOS_FAMILY)
-    if (WebCore::IOSApplication::isEventbrite() && !linkedOnOrAfterSDKWithBehavior(SDKAlignedBehavior::SupportsOverflowHiddenOnMainFrame))
+    if (CyberCore::IOSApplication::isEventbrite() && !linkedOnOrAfterSDKWithBehavior(SDKAlignedBehavior::SupportsOverflowHiddenOnMainFrame))
         return true;
 #endif
 

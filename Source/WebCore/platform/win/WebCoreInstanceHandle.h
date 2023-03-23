@@ -27,7 +27,7 @@
 
 typedef struct HINSTANCE__* HINSTANCE;
 
-namespace WebCore {
+namespace CyberCore {
 
 WEBCORE_EXPORT void setInstanceHandle(HINSTANCE);
 WEBCORE_EXPORT HINSTANCE instanceHandle();

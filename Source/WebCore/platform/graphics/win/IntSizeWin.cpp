@@ -29,7 +29,7 @@
 #include <windows.h>
 #include <wtf/MathExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 IntSize::IntSize(const SIZE& s)
     : m_width(s.cx)

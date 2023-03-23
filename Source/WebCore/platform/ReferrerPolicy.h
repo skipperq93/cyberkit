@@ -35,7 +35,7 @@
 #include <optional>
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class ReferrerPolicy : uint8_t {
     EmptyString,
@@ -58,18 +58,18 @@ String referrerPolicyToString(const ReferrerPolicy&);
 
 namespace WTF {
 
-template<> struct EnumTraitsForPersistence<WebCore::ReferrerPolicy> {
+template<> struct EnumTraitsForPersistence<CyberCore::ReferrerPolicy> {
     using values = EnumValues<
-        WebCore::ReferrerPolicy,
-        WebCore::ReferrerPolicy::EmptyString,
-        WebCore::ReferrerPolicy::NoReferrer,
-        WebCore::ReferrerPolicy::NoReferrerWhenDowngrade,
-        WebCore::ReferrerPolicy::SameOrigin,
-        WebCore::ReferrerPolicy::Origin,
-        WebCore::ReferrerPolicy::StrictOrigin,
-        WebCore::ReferrerPolicy::OriginWhenCrossOrigin,
-        WebCore::ReferrerPolicy::StrictOriginWhenCrossOrigin,
-        WebCore::ReferrerPolicy::UnsafeUrl
+        CyberCore::ReferrerPolicy,
+        CyberCore::ReferrerPolicy::EmptyString,
+        CyberCore::ReferrerPolicy::NoReferrer,
+        CyberCore::ReferrerPolicy::NoReferrerWhenDowngrade,
+        CyberCore::ReferrerPolicy::SameOrigin,
+        CyberCore::ReferrerPolicy::Origin,
+        CyberCore::ReferrerPolicy::StrictOrigin,
+        CyberCore::ReferrerPolicy::OriginWhenCrossOrigin,
+        CyberCore::ReferrerPolicy::StrictOriginWhenCrossOrigin,
+        CyberCore::ReferrerPolicy::UnsafeUrl
     >;
 };
 

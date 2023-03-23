@@ -32,7 +32,7 @@
 #include "ScrollingTree.h"
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 ScrollingTreeOverflowScrollingNode::ScrollingTreeOverflowScrollingNode(ScrollingTree& scrollingTree, ScrollingNodeID nodeID)
     : ScrollingTreeScrollingNode(scrollingTree, ScrollingNodeType::Overflow, nodeID)
@@ -47,6 +47,6 @@ void ScrollingTreeOverflowScrollingNode::dumpProperties(TextStream& ts, OptionSe
     ScrollingTreeScrollingNode::dumpProperties(ts, behavior);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ASYNC_SCROLLING)

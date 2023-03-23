@@ -35,7 +35,7 @@
 #include "PixelBuffer.h"
 #include "PlatformDisplay.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 #if USE(EGL)
 static inline bool isDMABufSupportedByNativePlatform(const PlatformDisplay::EGLExtensions& eglExtensions)
@@ -119,6 +119,6 @@ bool GraphicsContextGLANGLE::makeContextCurrent()
     return current;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBGL)

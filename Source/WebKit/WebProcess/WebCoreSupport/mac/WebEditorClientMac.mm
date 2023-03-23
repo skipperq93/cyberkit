@@ -42,8 +42,8 @@
 #import <CyberCore/NotImplemented.h>
 #import <wtf/cocoa/NSURLExtras.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
     
 void WebEditorClient::handleKeyboardEvent(KeyboardEvent& event)
 {
@@ -184,6 +184,6 @@ void WebEditorClient::setCaretDecorationVisibility(bool visibility)
     m_page->send(Messages::WebPageProxy::SetCaretDecorationVisibility(visibility));
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(MAC)

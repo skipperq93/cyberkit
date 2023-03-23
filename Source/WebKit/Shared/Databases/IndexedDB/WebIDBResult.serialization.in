@@ -21,6 +21,6 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 class WebKit::WebIDBResult {
-    WebCore::IDBResultData m_resultData;
+    CyberCore::IDBResultData m_resultData;
     Vector<WebKit::SandboxExtension::Handle> m_handles
 }

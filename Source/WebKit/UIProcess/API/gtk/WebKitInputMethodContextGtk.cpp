@@ -23,7 +23,7 @@
 #include "WebKitInputMethodContextPrivate.h"
 #include <CyberCore/Color.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 /**
  * webkit_input_method_underline_set_color:

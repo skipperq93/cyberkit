@@ -1,7 +1,7 @@
-# This is a list of every header WebKit "re-exports" from WebCore or
-# WebKitLegacy, to correspond with reexported symbols. Because some headers are
+# This is a list of every header WebKit "re-exports" from CyberCore or
+# CyberKitLegacy, to correspond with reexported symbols. Because some headers are
 # differently public or private based on the target platform, these headers are
-# copied via the "Migrate WebCore and WebKitLegacy Headers" script phase
+# copied via the "Migrate CyberCore and CyberKitLegacy Headers" script phase
 # instead of the native Headers phase. 
 
 # The script matches each line of input to the corresponding line in
@@ -16,9 +16,9 @@ $(WEBCORE_PRIVATE_HEADERS_DIR)/WAKWindow.h
 $(WEBCORE_PRIVATE_HEADERS_DIR)/WKContentObservation.h
 $(WEBCORE_PRIVATE_HEADERS_DIR)/WKGraphics.h
 $(WEBCORE_PRIVATE_HEADERS_DIR)/WKTypes.h
-$(WEBCORE_PRIVATE_HEADERS_DIR)/WebCoreThread.h
-$(WEBCORE_PRIVATE_HEADERS_DIR)/WebCoreThreadMessage.h
-$(WEBCORE_PRIVATE_HEADERS_DIR)/WebCoreThreadRun.h
+$(WEBCORE_PRIVATE_HEADERS_DIR)/CyberCoreThread.h
+$(WEBCORE_PRIVATE_HEADERS_DIR)/CyberCoreThreadMessage.h
+$(WEBCORE_PRIVATE_HEADERS_DIR)/CyberCoreThreadRun.h
 $(WEBCORE_PRIVATE_HEADERS_DIR)/WebEvent.h
 $(WEBCORE_PRIVATE_HEADERS_DIR)/WebEventRegion.h
 $(WEBCORE_PRIVATE_HEADERS_DIR)/WebItemProviderPasteboard.h
@@ -177,7 +177,7 @@ $(WEBKITLEGACY_PRIVATE_HEADERS_DIR)/WebBackForwardList.h
 $(WEBKITLEGACY_PRIVATE_HEADERS_DIR)/WebBackForwardListPrivate.h
 $(WEBKITLEGACY_PRIVATE_HEADERS_DIR)/WebCache.h
 $(WEBKITLEGACY_PRIVATE_HEADERS_DIR)/WebCaretChangeListener.h
-$(WEBKITLEGACY_PRIVATE_HEADERS_DIR)/WebCoreStatistics.h
+$(WEBKITLEGACY_PRIVATE_HEADERS_DIR)/CyberCoreStatistics.h
 $(WEBKITLEGACY_PRIVATE_HEADERS_DIR)/WebCreateFragmentInternal.h
 $(WEBKITLEGACY_PRIVATE_HEADERS_DIR)/WebDOMOperations.h
 $(WEBKITLEGACY_PRIVATE_HEADERS_DIR)/WebDOMOperationsPrivate.h

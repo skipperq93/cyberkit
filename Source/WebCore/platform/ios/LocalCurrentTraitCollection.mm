@@ -33,7 +33,7 @@
 #if USE(APPLE_INTERNAL_SDK) && __has_include(<WebKitAdditions/LocalCurrentTraitCollectionAdditions.mm>)
 #import <WebKitAdditions/LocalCurrentTraitCollectionAdditions.mm>
 #else
-namespace WebCore {
+namespace CyberCore {
 
 static UITraitCollection *adjustedTraitCollection(UITraitCollection *traitCollection)
 {
@@ -45,7 +45,7 @@ static UITraitCollection *adjustedTraitCollection(UITraitCollection *traitCollec
 #endif // HAVE(OS_DARK_MODE_SUPPORT)
 
 
-namespace WebCore {
+namespace CyberCore {
 
 LocalCurrentTraitCollection::LocalCurrentTraitCollection(bool useDarkAppearance, bool useElevatedUserInterfaceLevel)
 {

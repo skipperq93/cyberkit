@@ -29,7 +29,7 @@
 
 #include "TextChecking.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class VisibleSelection;
 

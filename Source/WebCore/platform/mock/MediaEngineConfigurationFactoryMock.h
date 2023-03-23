@@ -29,7 +29,7 @@
 
 #include <wtf/Function.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct MediaCapabilitiesDecodingInfo;
 struct MediaCapabilitiesEncodingInfo;

@@ -33,7 +33,7 @@
 
 namespace WebKit {
 
-Ref<RemoteAudioSourceProviderProxy> RemoteAudioSourceProviderProxy::create(WebCore::MediaPlayerIdentifier identifier, Ref<IPC::Connection>&& connection, WebCore::AudioSourceProviderAVFObjC& localProvider)
+Ref<RemoteAudioSourceProviderProxy> RemoteAudioSourceProviderProxy::create(CyberCore::MediaPlayerIdentifier identifier, Ref<IPC::Connection>&& connection, CyberCore::AudioSourceProviderAVFObjC& localProvider)
 {
     auto remoteProvider = adoptRef(*new RemoteAudioSourceProviderProxy(identifier, WTFMove(connection)));
 
@@ -47,7 +47,7 @@ Ref<RemoteAudioSourceProviderProxy> RemoteAudioSourceProviderProxy::create(WebCo
     return remoteProvider;
 }
 
-RemoteAudioSourceProviderProxy::RemoteAudioSourceProviderProxy(WebCore::MediaPlayerIdentifier identifier, Ref<IPC::Connection>&& connection)
+RemoteAudioSourceProviderProxy::RemoteAudioSourceProviderProxy(CyberCore::MediaPlayerIdentifier identifier, Ref<IPC::Connection>&& connection)
     : m_identifier(identifier)
     , m_connection(WTFMove(connection))
 {
@@ -55,12 +55,12 @@ RemoteAudioSourceProviderProxy::RemoteAudioSourceProviderProxy(WebCore::MediaPla
 
 RemoteAudioSourceProviderProxy::~RemoteAudioSourceProviderProxy() = default;
 
-std::unique_ptr<WebCore::CARingBuffer> RemoteAudioSourceProviderProxy::configureAudioStorage(const WebCore::CAAudioStreamDescription& format, size_t frameCount)
+std::unique_ptr<CyberCore::CARingBuffer> RemoteAudioSourceProviderProxy::configureAudioStorage(const CyberCore::CAAudioStreamDescription& format, size_t frameCount)
 {
     auto [ringBuffer, handle] = ProducerSharedCARingBuffer::allocate(format, frameCount);
     m_connection->send(Messages::RemoteAudioSourceProviderManager::AudioStorageChanged { m_identifier, WTFMove(handle), format }, 0);
     // Use a redundant variable to avoid move in return position and to obtain copy elision. Clang or libc++ does not allow returning covariant of Ts from std::unique_ptr<T>s in this position.
-    std::unique_ptr<WebCore::CARingBuffer> caRingBuffer = WTFMove(ringBuffer);  // NOLINT: see above.
+    std::unique_ptr<CyberCore::CARingBuffer> caRingBuffer = WTFMove(ringBuffer);  // NOLINT: see above.
     return caRingBuffer;
 }
 

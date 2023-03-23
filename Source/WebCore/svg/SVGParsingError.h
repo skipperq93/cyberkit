@@ -26,7 +26,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 enum SVGParsingError {
     NoError,
@@ -34,4 +34,4 @@ enum SVGParsingError {
     NegativeValueForbiddenError
 };
 
-} // namespace WebCore
+} // namespace CyberCore

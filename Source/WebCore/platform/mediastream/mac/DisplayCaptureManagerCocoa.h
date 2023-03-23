@@ -29,7 +29,7 @@
 
 #include "DisplayCaptureManager.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class DisplayCaptureManagerCocoa final : public DisplayCaptureManager {
 public:
@@ -49,6 +49,6 @@ private:
     Vector<CaptureDevice> m_devices;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM)

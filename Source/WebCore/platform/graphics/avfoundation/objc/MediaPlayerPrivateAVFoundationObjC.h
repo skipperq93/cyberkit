@@ -48,16 +48,16 @@ OBJC_CLASS AVPlayerLayer;
 OBJC_CLASS AVURLAsset;
 OBJC_CLASS NSArray;
 OBJC_CLASS NSMutableDictionary;
-OBJC_CLASS WebCoreAVFLoaderDelegate;
-OBJC_CLASS WebCoreAVFMovieObserver;
-OBJC_CLASS WebCoreAVFPullDelegate;
+OBJC_CLASS CyberCoreAVFLoaderDelegate;
+OBJC_CLASS CyberCoreAVFMovieObserver;
+OBJC_CLASS CyberCoreAVFPullDelegate;
 
 typedef struct CGImage *CGImageRef;
 typedef struct __CVBuffer *CVPixelBufferRef;
 typedef NSString *AVMediaCharacteristic;
 typedef double NSTimeInterval;
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioSourceProviderAVFObjC;
 class AudioTrackPrivateAVFObjC;
@@ -73,7 +73,7 @@ class QueuedVideoOutput;
 class SharedBuffer;
 class VideoLayerManagerObjC;
 class VideoTrackPrivateAVFObjC;
-class WebCoreAVFResourceLoader;
+class CyberCoreAVFResourceLoader;
 
 class MediaPlayerPrivateAVFoundationObjC final : public MediaPlayerPrivateAVFoundation {
 public:
@@ -369,7 +369,7 @@ private:
     RetainPtr<AVPlayerLayer> m_videoLayer;
     std::unique_ptr<VideoLayerManagerObjC> m_videoLayerManager;
     MediaPlayer::VideoGravity m_videoFullscreenGravity { MediaPlayer::VideoGravity::ResizeAspect };
-    RetainPtr<WebCoreAVFMovieObserver> m_objcObserver;
+    RetainPtr<CyberCoreAVFMovieObserver> m_objcObserver;
     RetainPtr<id> m_timeObserver;
     mutable String m_languageOfPrimaryAudioTrack;
     bool m_videoFrameHasDrawn { false };
@@ -382,15 +382,15 @@ private:
 
     RetainPtr<AVAssetImageGenerator> m_imageGenerator;
     RefPtr<QueuedVideoOutput> m_videoOutput;
-    RetainPtr<WebCoreAVFPullDelegate> m_videoOutputDelegate;
+    RetainPtr<CyberCoreAVFPullDelegate> m_videoOutputDelegate;
     RetainPtr<CVPixelBufferRef> m_lastPixelBuffer;
     RefPtr<NativeImage> m_lastImage;
     std::unique_ptr<ImageRotationSessionVT> m_imageRotationSession;
     std::unique_ptr<PixelBufferConformerCV> m_pixelBufferConformer;
 
-    friend class WebCoreAVFResourceLoader;
-    HashMap<RetainPtr<CFTypeRef>, RefPtr<WebCoreAVFResourceLoader>> m_resourceLoaderMap;
-    RetainPtr<WebCoreAVFLoaderDelegate> m_loaderDelegate;
+    friend class CyberCoreAVFResourceLoader;
+    HashMap<RetainPtr<CFTypeRef>, RefPtr<CyberCoreAVFResourceLoader>> m_resourceLoaderMap;
+    RetainPtr<CyberCoreAVFLoaderDelegate> m_loaderDelegate;
     MemoryCompactRobinHoodHashMap<String, RetainPtr<AVAssetResourceLoadingRequest>> m_keyURIToRequestMap;
     MemoryCompactRobinHoodHashMap<String, RetainPtr<AVAssetResourceLoadingRequest>> m_sessionIDToRequestMap;
 

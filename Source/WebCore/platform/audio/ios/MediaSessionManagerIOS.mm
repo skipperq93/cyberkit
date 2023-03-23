@@ -34,12 +34,12 @@
 #import "PlatformMediaSession.h"
 #import "RuntimeApplicationChecks.h"
 #import "SystemMemory.h"
-#import "WebCoreThreadRun.h"
+#import "CyberCoreThreadRun.h"
 #import <wtf/MainThread.h>
 #import <wtf/RAMSize.h>
 #import <wtf/RetainPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 std::unique_ptr<PlatformMediaSessionManager> PlatformMediaSessionManager::create()
 {
@@ -227,7 +227,7 @@ void MediaSessionManageriOS::applicationWillBecomeInactive()
     MediaSessionManagerCocoa::applicationWillBecomeInactive();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 
 #endif // PLATFORM(IOS_FAMILY)

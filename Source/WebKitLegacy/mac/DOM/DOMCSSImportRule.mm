@@ -39,25 +39,25 @@
 #import <wtf/GetPtr.h>
 #import <wtf/URL.h>
 
-#define IMPL static_cast<WebCore::CSSImportRule*>(reinterpret_cast<WebCore::CSSRule*>(_internal))
+#define IMPL static_cast<CyberCore::CSSImportRule*>(reinterpret_cast<CyberCore::CSSRule*>(_internal))
 
 @implementation DOMCSSImportRule
 
 - (NSString *)href
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->href();
 }
 
 - (DOMMediaList *)media
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->media()));
 }
 
 - (DOMCSSStyleSheet *)styleSheet
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->styleSheet()));
 }
 

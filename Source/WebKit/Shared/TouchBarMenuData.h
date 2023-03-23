@@ -35,7 +35,7 @@ class Decoder;
 class Encoder;
 }
 
-namespace WebCore {
+namespace CyberCore {
 class HTMLMenuElement;
 }
 
@@ -44,7 +44,7 @@ namespace WebKit {
 class TouchBarMenuData {
 public:
     TouchBarMenuData() = default;
-    explicit TouchBarMenuData(const WebCore::HTMLMenuElement&);
+    explicit TouchBarMenuData(const CyberCore::HTMLMenuElement&);
 
     void addMenuItem(const TouchBarMenuItemData&);
     void removeMenuItem(const TouchBarMenuItemData&);

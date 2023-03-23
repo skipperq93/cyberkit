@@ -27,7 +27,7 @@
 
 #include "RenderElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderText;
 
@@ -210,7 +210,7 @@ inline T* next(U& current, const RenderObject* stayWithin)
     return static_cast<T*>(descendant);
 }
 
-} // namespace WebCore::RenderTraversal
+} // namespace CyberCore::RenderTraversal
 
 // RenderIterator
 
@@ -381,7 +381,7 @@ inline bool RenderConstIterator<T>::operator!=(const RenderConstIterator& other)
     return !(*this == other);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #include "RenderAncestorIterator.h"
 #include "RenderChildIterator.h"

@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -17,16 +17,16 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitDOMWheelEventPrivate_h
-#define WebKitDOMWheelEventPrivate_h
+#ifndef CyberKitDOMWheelEventPrivate_h
+#define CyberKitDOMWheelEventPrivate_h
 
 #include <CyberCore/WheelEvent.h>
-#include <webkitdom/WebKitDOMWheelEvent.h>
+#include <webkitdom/CyberKitDOMWheelEvent.h>
 
-namespace WebKit {
-WebKitDOMWheelEvent* wrapWheelEvent(WebCore::WheelEvent*);
-WebKitDOMWheelEvent* kit(WebCore::WheelEvent*);
-WebCore::WheelEvent* core(WebKitDOMWheelEvent*);
-} // namespace WebKit
+namespace CyberKit {
+CyberKitDOMWheelEvent* wrapWheelEvent(CyberCore::WheelEvent*);
+CyberKitDOMWheelEvent* kit(CyberCore::WheelEvent*);
+CyberCore::WheelEvent* core(CyberKitDOMWheelEvent*);
+} // namespace CyberKit
 
-#endif /* WebKitDOMWheelEventPrivate_h */
+#endif /* CyberKitDOMWheelEventPrivate_h */

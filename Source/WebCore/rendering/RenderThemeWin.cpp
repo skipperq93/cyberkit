@@ -36,7 +36,7 @@
 #include "Settings.h"
 #include "SystemInfo.h"
 #include "UserAgentStyleSheets.h"
-#include "WebCoreBundleWin.h"
+#include "CyberCoreBundleWin.h"
 #include <wtf/FileSystem.h>
 #include <wtf/SoftLinking.h>
 #include <wtf/text/StringBuilder.h>
@@ -154,7 +154,7 @@ static bool haveTheme;
 static const unsigned vistaMenuListButtonOutset = 1;
 
 
-namespace WebCore {
+namespace CyberCore {
 
 // This is the fixed width IE and Firefox use for buttons on dropdown menus
 static const int dropDownButtonWidth = 17;

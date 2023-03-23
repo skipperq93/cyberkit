@@ -29,7 +29,7 @@
 #import "WKNSURLExtras.h"
 #import <CyberCore/ResourceRequest.h>
 #import <CyberCore/ResourceResponse.h>
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 
 @implementation WKNavigationData {
     API::ObjectStorage<API::NavigationData> _data;
@@ -37,7 +37,7 @@
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainRunLoop(WKNavigationData.class, self))
+    if (CyberCoreObjCScheduleDeallocateOnMainRunLoop(WKNavigationData.class, self))
         return;
 
     _data->~NavigationData();
@@ -52,7 +52,7 @@
 
 - (NSURLRequest *)originalRequest
 {
-    return _data->originalRequest().nsURLRequest(WebCore::HTTPBodyUpdatePolicy::DoNotUpdateHTTPBody);
+    return _data->originalRequest().nsURLRequest(CyberCore::HTTPBodyUpdatePolicy::DoNotUpdateHTTPBody);
 }
 
 - (NSURL *)destinationURL

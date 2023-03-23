@@ -41,7 +41,7 @@ typedef struct _SoupCookieJar SoupCookieJar;
 typedef struct _SoupMessage SoupMessage;
 typedef struct _SoupSession SoupSession;
 
-namespace WebCore {
+namespace CyberCore {
 
 class CertificateInfo;
 class HostTLSCertificateSet;
@@ -85,4 +85,4 @@ private:
     HashMap<String, HostTLSCertificateSet, ASCIICaseInsensitiveHash> m_allowedCertificates;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -32,7 +32,7 @@
 
 #include "CoreVideoSoftLink.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 RetainPtr<CVPixelBufferRef> GraphicsContextGLCVCocoa::convertPixelBuffer(CVPixelBufferRef pixelBuffer)
 {

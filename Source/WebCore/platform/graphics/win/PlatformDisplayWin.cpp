@@ -29,7 +29,7 @@
 #include <EGL/egl.h>
 #include <EGL/eglext.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 void PlatformDisplayWin::initializeEGLDisplay()
 {
@@ -46,4 +46,4 @@ void PlatformDisplayWin::initializeEGLDisplay()
     PlatformDisplay::initializeEGLDisplay();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

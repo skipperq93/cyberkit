@@ -32,7 +32,7 @@ namespace WTF {
 class TextStream;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ControlStyle {
     enum class State {
@@ -66,4 +66,4 @@ struct ControlStyle {
 WEBCORE_EXPORT TextStream& operator<<(TextStream&, ControlStyle::State);
 WEBCORE_EXPORT TextStream& operator<<(TextStream&, const ControlStyle&);
 
-} // namespace WebCore
+} // namespace CyberCore

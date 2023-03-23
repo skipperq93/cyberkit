@@ -25,7 +25,7 @@
 #include "SVGElement.h"
 #include "SVGParserUtilities.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // Describe an SVG <hkern>/<vkern> element
 struct SVGKerningPair {
@@ -52,4 +52,4 @@ private:
     using PropertyRegistry = SVGPropertyOwnerRegistry<SVGFontElement, SVGElement>;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

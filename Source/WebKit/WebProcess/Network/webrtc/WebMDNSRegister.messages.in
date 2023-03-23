@@ -23,7 +23,7 @@
 #if ENABLE(WEB_RTC)
 
 messages -> WebMDNSRegister NotRefCounted {
-    void FinishedRegisteringMDNSName(WebKit::MDNSRegisterIdentifier identifier, String mdnsName, std::optional<WebCore::MDNSRegisterError> error)
+    void FinishedRegisteringMDNSName(CyberKit::MDNSRegisterIdentifier identifier, String mdnsName, std::optional<CyberCore::MDNSRegisterError> error)
 }
 
 #endif // ENABLE(WEB_RTC)

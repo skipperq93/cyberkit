@@ -31,18 +31,18 @@
 #import "ExceptionHandlers.h"
 #import <CyberCore/JSExecState.h>
 #import <CyberCore/ThreadCheck.h>
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 #import <CyberCore/WebScriptObjectPrivate.h>
 #import <wtf/GetPtr.h>
 #import <wtf/URL.h>
 
-#define IMPL reinterpret_cast<WebCore::DOMTokenList*>(_internal)
+#define IMPL reinterpret_cast<CyberCore::DOMTokenList*>(_internal)
 
 @implementation DOMTokenList
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainThread([DOMTokenList class], self))
+    if (CyberCoreObjCScheduleDeallocateOnMainThread([DOMTokenList class], self))
         return;
 
     if (_internal)
@@ -52,46 +52,46 @@
 
 - (unsigned)length
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->length();
 }
 
 - (NSString *)value
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->value();
 }
 
 - (void)setValue:(NSString *)newValue
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->setValue(newValue);
 }
 
 - (NSString *)item:(unsigned)index
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->item(index);
 }
 
 - (BOOL)contains:(NSString *)token
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->contains(token);
 }
 
 - (BOOL)toggle:(NSString *)token force:(BOOL)force
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return raiseOnDOMError(IMPL->toggle(token, force));
 }
 
 @end
 
 
-DOMTokenList *kit(WebCore::DOMTokenList* value)
+DOMTokenList *kit(CyberCore::DOMTokenList* value)
 {
-    WebCoreThreadViolationCheckRoundOne();
+    CyberCoreThreadViolationCheckRoundOne();
     if (!value)
         return nil;
     if (DOMTokenList *wrapper = getDOMWrapper(value))

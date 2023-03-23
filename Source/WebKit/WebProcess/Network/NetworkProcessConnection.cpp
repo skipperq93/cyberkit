@@ -36,7 +36,7 @@
 #include "WebBroadcastChannelRegistryMessages.h"
 #include "WebCacheStorageProvider.h"
 #include "WebCookieJar.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebFileSystemStorageConnection.h"
 #include "WebFileSystemStorageConnectionMessages.h"
 #include "WebFrame.h"
@@ -67,7 +67,7 @@
 #include "WebSocketStreamMessages.h"
 #include <CyberCore/CachedResource.h>
 #include <CyberCore/HTTPCookieAcceptPolicy.h>
-#include <CyberCore/InspectorInstrumentationWebKit.h>
+#include <CyberCore/InspectorInstrumentationCyberKit.h>
 #include <CyberCore/MemoryCache.h>
 #include <CyberCore/MessagePort.h>
 #include <CyberCore/SharedBuffer.h>
@@ -77,8 +77,8 @@
 #include "WebPaymentCoordinatorMessages.h"
 #endif
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 NetworkProcessConnection::NetworkProcessConnection(IPC::Connection::Identifier connectionIdentifier, HTTPCookieAcceptPolicy cookieAcceptPolicy)
     : m_connection(IPC::Connection::createClientConnection(connectionIdentifier))
@@ -98,7 +98,7 @@ NetworkProcessConnection::~NetworkProcessConnection()
 void NetworkProcessConnection::didReceiveMessage(IPC::Connection& connection, IPC::Decoder& decoder)
 {
     if (decoder.messageReceiverName() == Messages::WebResourceLoader::messageReceiverName()) {
-        if (auto* webResourceLoader = WebProcess::singleton().webLoaderStrategy().webResourceLoaderForIdentifier(makeObjectIdentifier<WebCore::ResourceLoader>(decoder.destinationID())))
+        if (auto* webResourceLoader = WebProcess::singleton().webLoaderStrategy().webResourceLoaderForIdentifier(makeObjectIdentifier<CyberCore::ResourceLoader>(decoder.destinationID())))
             webResourceLoader->didReceiveWebResourceLoaderMessage(connection, decoder);
         return;
     }
@@ -246,12 +246,12 @@ void NetworkProcessConnection::writeBlobsToTemporaryFilesForIndexedDB(const Vect
     connection().sendWithAsyncReply(Messages::NetworkConnectionToWebProcess::WriteBlobsToTemporaryFilesForIndexedDB(blobURLs), WTFMove(completionHandler));
 }
 
-void NetworkProcessConnection::didFinishPingLoad(WebCore::ResourceLoaderIdentifier pingLoadIdentifier, ResourceError&& error, ResourceResponse&& response)
+void NetworkProcessConnection::didFinishPingLoad(CyberCore::ResourceLoaderIdentifier pingLoadIdentifier, ResourceError&& error, ResourceResponse&& response)
 {
     WebProcess::singleton().webLoaderStrategy().didFinishPingLoad(pingLoadIdentifier, WTFMove(error), WTFMove(response));
 }
 
-void NetworkProcessConnection::didFinishPreconnection(WebCore::ResourceLoaderIdentifier preconnectionIdentifier, ResourceError&& error)
+void NetworkProcessConnection::didFinishPreconnection(CyberCore::ResourceLoaderIdentifier preconnectionIdentifier, ResourceError&& error)
 {
     WebProcess::singleton().webLoaderStrategy().didFinishPreconnection(preconnectionIdentifier, WTFMove(error));
 }
@@ -272,12 +272,12 @@ void NetworkProcessConnection::cookieAcceptPolicyChanged(HTTPCookieAcceptPolicy 
 }
 
 #if HAVE(COOKIE_CHANGE_LISTENER_API)
-void NetworkProcessConnection::cookiesAdded(const String& host, const Vector<WebCore::Cookie>& cookies)
+void NetworkProcessConnection::cookiesAdded(const String& host, const Vector<CyberCore::Cookie>& cookies)
 {
     WebProcess::singleton().cookieJar().cookiesAdded(host, cookies);
 }
 
-void NetworkProcessConnection::cookiesDeleted(const String& host, const Vector<WebCore::Cookie>& cookies)
+void NetworkProcessConnection::cookiesDeleted(const String& host, const Vector<CyberCore::Cookie>& cookies)
 {
     WebProcess::singleton().cookieJar().cookiesDeleted(host, cookies);
 }
@@ -328,7 +328,7 @@ WebSharedWorkerObjectConnection& NetworkProcessConnection::sharedWorkerConnectio
     return *m_sharedWorkerConnection;
 }
 
-void NetworkProcessConnection::messagesAvailableForPort(const WebCore::MessagePortIdentifier& messagePortIdentifier)
+void NetworkProcessConnection::messagesAvailableForPort(const CyberCore::MessagePortIdentifier& messagePortIdentifier)
 {
     WebProcess::singleton().messagesAvailableForPort(messagePortIdentifier);
 }
@@ -343,10 +343,10 @@ void NetworkProcessConnection::broadcastConsoleMessage(MessageSource source, Mes
 }
 
 #if ENABLE(WEB_RTC)
-void NetworkProcessConnection::connectToRTCDataChannelRemoteSource(WebCore::RTCDataChannelIdentifier localIdentifier, WebCore::RTCDataChannelIdentifier remoteIdentifier, CompletionHandler<void(std::optional<bool>)>&& callback)
+void NetworkProcessConnection::connectToRTCDataChannelRemoteSource(CyberCore::RTCDataChannelIdentifier localIdentifier, CyberCore::RTCDataChannelIdentifier remoteIdentifier, CompletionHandler<void(std::optional<bool>)>&& callback)
 {
     callback(RTCDataChannelRemoteManager::sharedManager().connectToRemoteSource(localIdentifier, remoteIdentifier));
 }
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit

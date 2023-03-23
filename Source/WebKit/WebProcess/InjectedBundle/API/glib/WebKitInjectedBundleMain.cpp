@@ -20,14 +20,14 @@
 #include "config.h"
 
 #include "InjectedBundle.h"
-#include "WebKitExtensionManager.h"
-#include <WebKit/WKBundleAPICast.h>
-#include <WebKit/WKBundleInitialize.h>
+#include "CyberKitExtensionManager.h"
+#include <CyberKit/WKBundleAPICast.h>
+#include <CyberKit/WKBundleInitialize.h>
 
-using namespace WebKit;
+using namespace CyberKit;
 
 extern "C" __attribute__((visibility("default")))
 void WKBundleInitialize(WKBundleRef bundle, WKTypeRef userData)
 {
-    WebKitExtensionManager::singleton().initialize(toImpl(bundle), toImpl(userData));
+    CyberKitExtensionManager::singleton().initialize(toImpl(bundle), toImpl(userData));
 }

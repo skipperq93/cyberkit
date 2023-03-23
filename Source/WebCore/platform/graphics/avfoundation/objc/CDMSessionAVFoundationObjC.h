@@ -35,7 +35,7 @@
 OBJC_CLASS AVAssetResourceLoadingRequest;
 OBJC_CLASS WebCDMSessionAVFoundationObjCListener;
 
-namespace WebCore {
+namespace CyberCore {
 
 class MediaPlayerPrivateAVFoundationObjC;
 

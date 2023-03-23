@@ -32,20 +32,20 @@
 
 @interface WebDeviceOrientationInternal : NSObject {
 @public
-    RefPtr<WebCore::DeviceOrientationData> m_orientation;
+    RefPtr<CyberCore::DeviceOrientationData> m_orientation;
 }
 
-- (id)initWithCoreDeviceOrientation:(RefPtr<WebCore::DeviceOrientationData>&&)coreDeviceOrientation;
+- (id)initWithCoreDeviceOrientation:(RefPtr<CyberCore::DeviceOrientationData>&&)coreDeviceOrientation;
 @end
 
 @interface WebDeviceOrientation (Internal)
 
-- (id)initWithCoreDeviceOrientation:(RefPtr<WebCore::DeviceOrientationData>&&)coreDeviceOrientation;
+- (id)initWithCoreDeviceOrientation:(RefPtr<CyberCore::DeviceOrientationData>&&)coreDeviceOrientation;
 
 @end
 
-WebCore::DeviceOrientationData* core(WebDeviceOrientation*);
+CyberCore::DeviceOrientationData* core(WebDeviceOrientation*);
 
 @protocol WebDeviceOrientationProviderMock <WebDeviceOrientationProvider>
-- (void)setController:(WebCore::DeviceOrientationController*)controller;
+- (void)setController:(CyberCore::DeviceOrientationController*)controller;
 @end

@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class CachePolicy : uint8_t {
     Verify,
@@ -34,4 +34,4 @@ enum class CachePolicy : uint8_t {
     HistoryBuffer
 };
 
-} // namespace WebCore
+} // namespace CyberCore

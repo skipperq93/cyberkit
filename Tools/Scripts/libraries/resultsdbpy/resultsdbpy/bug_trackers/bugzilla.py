@@ -68,8 +68,8 @@ class WebKitBugzilla(BugTrackerConfig):
         'UI Events': {'keywords': ['events', 'eventloop']},
         'WebAssembly': {'keywords': ['wasm']},
         'Web Audio': {'keywords': ['webaudio']},
-        'WebCore JavaScript': {'skip': True},  # FIXME maybe need move some keywords from JavaScriptCore
-        'WebCore Misc.': {'keywords': ['misc']},
+        'CyberCore JavaScript': {'skip': True},  # FIXME maybe need move some keywords from JavaScriptCore
+        'CyberCore Misc.': {'keywords': ['misc']},
         'WebDriver': {'skip': True},
         'WebGL': {'lower': True},
         'WebGPU': {'keywords': ['gpu-process']},

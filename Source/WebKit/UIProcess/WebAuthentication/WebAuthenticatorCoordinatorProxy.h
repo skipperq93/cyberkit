@@ -33,7 +33,7 @@
 #include <wtf/Forward.h>
 #include <wtf/Noncopyable.h>
 
-namespace WebCore {
+namespace CyberCore {
 enum class AuthenticatorAttachment : uint8_t;
 struct ExceptionData;
 struct PublicKeyCredentialCreationOptions;
@@ -55,7 +55,7 @@ class WebPageProxy;
 struct FrameInfoData;
 struct WebAuthenticationRequestData;
 
-using RequestCompletionHandler = CompletionHandler<void(const WebCore::AuthenticatorResponseData&, WebCore::AuthenticatorAttachment, const WebCore::ExceptionData&)>;
+using RequestCompletionHandler = CompletionHandler<void(const CyberCore::AuthenticatorResponseData&, CyberCore::AuthenticatorAttachment, const CyberCore::ExceptionData&)>;
 
 class WebAuthenticatorCoordinatorProxy : public IPC::MessageReceiver {
     WTF_MAKE_FAST_ALLOCATED;
@@ -71,10 +71,10 @@ private:
     void didReceiveMessage(IPC::Connection&, IPC::Decoder&) override;
 
     // Receivers.
-    void makeCredential(WebCore::FrameIdentifier, FrameInfoData&&, Vector<uint8_t>&& hash, WebCore::PublicKeyCredentialCreationOptions&&, bool processingUserGesture, RequestCompletionHandler&&);
-    void getAssertion(WebCore::FrameIdentifier, FrameInfoData&&, Vector<uint8_t>&& hash, WebCore::PublicKeyCredentialRequestOptions&&, WebCore::CredentialRequestOptions::MediationRequirement, std::optional<WebCore::SecurityOriginData>, bool processingUserGesture, RequestCompletionHandler&&);
-    void isUserVerifyingPlatformAuthenticatorAvailable(const WebCore::SecurityOriginData&, QueryCompletionHandler&&);
-    void isConditionalMediationAvailable(const WebCore::SecurityOriginData&, QueryCompletionHandler&&);
+    void makeCredential(CyberCore::FrameIdentifier, FrameInfoData&&, Vector<uint8_t>&& hash, CyberCore::PublicKeyCredentialCreationOptions&&, bool processingUserGesture, RequestCompletionHandler&&);
+    void getAssertion(CyberCore::FrameIdentifier, FrameInfoData&&, Vector<uint8_t>&& hash, CyberCore::PublicKeyCredentialRequestOptions&&, CyberCore::CredentialRequestOptions::MediationRequirement, std::optional<CyberCore::SecurityOriginData>, bool processingUserGesture, RequestCompletionHandler&&);
+    void isUserVerifyingPlatformAuthenticatorAvailable(const CyberCore::SecurityOriginData&, QueryCompletionHandler&&);
+    void isConditionalMediationAvailable(const CyberCore::SecurityOriginData&, QueryCompletionHandler&&);
     void cancel();
 
     void handleRequest(WebAuthenticationRequestData&&, RequestCompletionHandler&&);

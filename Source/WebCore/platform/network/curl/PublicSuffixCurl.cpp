@@ -31,7 +31,7 @@
 #include <libpsl.h>
 #include <wtf/URL.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 bool isPublicSuffix(StringView domain)
 {
@@ -85,6 +85,6 @@ void setTopPrivatelyControlledDomain(const String&, const String&)
 {
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(PUBLIC_SUFFIX_LIST)

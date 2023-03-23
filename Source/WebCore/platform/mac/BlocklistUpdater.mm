@@ -49,7 +49,7 @@ NSString * const blocklistPath = @"/Library/Apple/System/Library/CoreServices/XP
 NSString * const blocklistPath = @"/System/Library/CoreServices/XProtect.bundle/Contents/Resources/XProtect.meta.plist";
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 PluginBlocklist* BlocklistUpdater::s_pluginBlocklist = nullptr;
 WebGLBlocklist* BlocklistUpdater::s_webGLBlocklist = nullptr;

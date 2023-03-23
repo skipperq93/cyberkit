@@ -29,7 +29,7 @@
 
 #if ENABLE(VIDEO)
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioTrackPrivate;
 struct PlatformAudioTrackConfiguration;

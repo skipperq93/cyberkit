@@ -35,7 +35,7 @@
 #include <wtf/glib/RunLoopSourcePriority.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 MainThreadSharedTimer& MainThreadSharedTimer::singleton()
 {
@@ -83,4 +83,4 @@ void MainThreadSharedTimer::fired()
     m_firedFunction();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

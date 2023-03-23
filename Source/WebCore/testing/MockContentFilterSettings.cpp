@@ -34,7 +34,7 @@
 #include "MockContentFilterManager.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 MockContentFilterSettings& MockContentFilterSettings::singleton()
 {
@@ -91,6 +91,6 @@ const String& MockContentFilterSettings::unblockRequestURL() const
     return unblockRequestURL;
 }
 
-}; // namespace WebCore
+}; // namespace CyberCore
 
 #endif // ENABLE(CONTENT_FILTERING)

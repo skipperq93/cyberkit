@@ -41,7 +41,7 @@
 #include "SecurityOrigin.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static bool shouldRecordResponsesForTesting = false;
 
@@ -255,6 +255,6 @@ void MediaResource::notifyFinished(CachedResource& resource, const NetworkLoadMe
     stop();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

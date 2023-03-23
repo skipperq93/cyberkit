@@ -27,9 +27,9 @@
 
 #if ENABLE(APPLE_PAY)
 
-#include "ApplePaySetupFeatureWebCore.h"
+#include "ApplePaySetupFeatureCyberCore.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class MockApplePaySetupFeature final : public ApplePaySetupFeature {
 public:
@@ -52,6 +52,6 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(APPLE_PAY)

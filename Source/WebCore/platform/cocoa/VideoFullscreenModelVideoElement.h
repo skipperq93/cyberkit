@@ -41,7 +41,7 @@
 #include <wtf/RetainPtr.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 class AudioTrack;
 class HTMLVideoElement;
 class TextTrack;
@@ -61,9 +61,9 @@ public:
     WEBCORE_EXPORT void willExitFullscreen();
     WEBCORE_EXPORT void waitForPreparedForInlineThen(Function<void()>&& completionHandler = [] { });
     
-    WEBCORE_EXPORT void handleEvent(WebCore::ScriptExecutionContext&, WebCore::Event&) override;
+    WEBCORE_EXPORT void handleEvent(CyberCore::ScriptExecutionContext&, CyberCore::Event&) override;
     void updateForEventName(const AtomString&);
-    bool operator==(const EventListener& rhs) const override { return static_cast<const WebCore::EventListener*>(this) == &rhs; }
+    bool operator==(const EventListener& rhs) const override { return static_cast<const CyberCore::EventListener*>(this) == &rhs; }
 
     WEBCORE_EXPORT void addClient(VideoFullscreenModelClient&) override;
     WEBCORE_EXPORT void removeClient(VideoFullscreenModelClient&) override;

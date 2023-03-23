@@ -34,7 +34,7 @@
 #include <wtf/Forward.h>
 #include <wtf/HashMap.h>
 
-namespace WebCore {
+namespace CyberCore {
 class TextureMapper;
 class TextureMapperLayer;
 class TextureMapperPlatformLayer;
@@ -49,19 +49,19 @@ struct WCUpateInfo;
 class WCScene {
     WTF_MAKE_FAST_ALLOCATED;
 public:
-    WCScene(WebCore::ProcessIdentifier, bool usesOffscreenRendering);
+    WCScene(CyberCore::ProcessIdentifier, bool usesOffscreenRendering);
     ~WCScene();
     void initialize(WCSceneContext&);
     std::optional<UpdateInfo> update(WCUpateInfo&&);
 
 private:
     struct Layer;
-    using LayerMap = HashMap<WebCore::GraphicsLayer::PlatformLayerID, std::unique_ptr<Layer>>;
+    using LayerMap = HashMap<CyberCore::GraphicsLayer::PlatformLayerID, std::unique_ptr<Layer>>;
 
-    WebCore::ProcessIdentifier m_webProcessIdentifier;
+    CyberCore::ProcessIdentifier m_webProcessIdentifier;
     WCSceneContext* m_context { nullptr };
-    std::unique_ptr<WebCore::TextureMapper> m_textureMapper;
-    WebCore::TextureMapperFPSCounter m_fpsCounter;
+    std::unique_ptr<CyberCore::TextureMapper> m_textureMapper;
+    CyberCore::TextureMapperFPSCounter m_fpsCounter;
     LayerMap m_layers;
     bool m_usesOffscreenRendering;
 };

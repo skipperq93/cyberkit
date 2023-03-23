@@ -36,17 +36,17 @@
 #import <CyberCore/NodeIterator.h>
 #import "ObjCNodeFilterCondition.h"
 #import <CyberCore/ThreadCheck.h>
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 #import <CyberCore/WebScriptObjectPrivate.h>
 #import <wtf/GetPtr.h>
 
-#define IMPL reinterpret_cast<WebCore::NodeIterator*>(_internal)
+#define IMPL reinterpret_cast<CyberCore::NodeIterator*>(_internal)
 
 @implementation DOMNodeIterator
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainThread([DOMNodeIterator class], self))
+    if (CyberCoreObjCScheduleDeallocateOnMainThread([DOMNodeIterator class], self))
         return;
 
     if (_internal) {
@@ -58,19 +58,19 @@
 
 - (DOMNode *)root
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->root()));
 }
 
 - (unsigned)whatToShow
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->whatToShow();
 }
 
 - (id <DOMNodeFilter>)filter
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(IMPL->filter());
 }
 
@@ -81,19 +81,19 @@
 
 - (DOMNode *)referenceNode
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->referenceNode()));
 }
 
 - (BOOL)pointerBeforeReferenceNode
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->pointerBeforeReferenceNode();
 }
 
 - (DOMNode *)nextNode
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     
     auto result = IMPL->nextNode();
     if (result.hasException())
@@ -104,7 +104,7 @@
 
 - (DOMNode *)previousNode
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
 
     auto result = IMPL->previousNode();
     if (result.hasException())
@@ -115,15 +115,15 @@
 
 - (void)detach
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->detach();
 }
 
 @end
 
-DOMNodeIterator *kit(WebCore::NodeIterator* value)
+DOMNodeIterator *kit(CyberCore::NodeIterator* value)
 {
-    WebCoreThreadViolationCheckRoundOne();
+    CyberCoreThreadViolationCheckRoundOne();
     if (!value)
         return nil;
     if (DOMNodeIterator *wrapper = getDOMWrapper(value))

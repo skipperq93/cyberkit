@@ -35,12 +35,12 @@ class LayerTreeContext;
 class WebPageProxy;
 }
 
-namespace WebCore {
+namespace CyberCore {
 class IntRect;
 }
 
 @class WKView;
-@class WebCoreFullScreenPlaceholderView;
+@class CyberCoreFullScreenPlaceholderView;
 
 typedef enum FullScreenState : NSInteger FullScreenState;
 
@@ -48,7 +48,7 @@ typedef enum FullScreenState : NSInteger FullScreenState;
 @private
     NSView *_webView; // Cannot be retained, see <rdar://problem/14884666>.
     NakedPtr<WebKit::WebPageProxy> _page;
-    RetainPtr<WebCoreFullScreenPlaceholderView> _webViewPlaceholder;
+    RetainPtr<CyberCoreFullScreenPlaceholderView> _webViewPlaceholder;
     RetainPtr<NSView> _exitPlaceholder;
     RetainPtr<NSView> _clipView;
     RetainPtr<NSView> _backgroundView;
@@ -70,7 +70,7 @@ typedef enum FullScreenState : NSInteger FullScreenState;
 
 - (id)initWithWindow:(NSWindow *)window webView:(NSView *)webView page:(NakedRef<WebKit::WebPageProxy>)page;
 
-- (WebCoreFullScreenPlaceholderView*)webViewPlaceholder;
+- (CyberCoreFullScreenPlaceholderView*)webViewPlaceholder;
 
 - (BOOL)isFullScreen;
 

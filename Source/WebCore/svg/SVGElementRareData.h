@@ -27,7 +27,7 @@
 #include <wtf/Noncopyable.h>
 #include <wtf/StdLibExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSCursorImageValue;
 class SVGCursorElement;
@@ -113,4 +113,4 @@ private:
     std::unique_ptr<SVGConditionalProcessingAttributes> m_conditionalProcessingAttributes;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

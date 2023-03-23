@@ -27,21 +27,21 @@
 
 messages -> RemoteSourceBufferProxy NotRefCounted {
     SetActive(bool active)
-    CanSwitchToType(WebCore::ContentType contentType) -> (bool canSwitch) Synchronous
-    SetMode(WebCore::SourceBufferAppendMode appendMode)
+    CanSwitchToType(CyberCore::ContentType contentType) -> (bool canSwitch) Synchronous
+    SetMode(CyberCore::SourceBufferAppendMode appendMode)
     Append(IPC::SharedBufferReference data) -> (std::optional<WebKit::SharedMemory::Handle> remoteData)
     Abort()
     ResetParserState()
     RemovedFromMediaSource()
     SetMediaSourceEnded(bool isEnded)
-    SetReadyState(WebCore::MediaPlayer::ReadyState state)
+    SetReadyState(CyberCore::MediaPlayer::ReadyState state)
     StartChangingType()
-    UpdateBufferedFromTrackBuffers(bool sourceIsEnded) -> (WebCore::PlatformTimeRanges buffered) Synchronous
+    UpdateBufferedFromTrackBuffers(bool sourceIsEnded) -> (CyberCore::PlatformTimeRanges buffered) Synchronous
     AddTrackBuffer(WebKit::TrackPrivateRemoteIdentifier remoteIdentifier)
     ResetTrackBuffers()
     ClearTrackBuffers()
     SetAllTrackBuffersNeedRandomAccess()
-    RemoveCodedFrames(MediaTime start, MediaTime end, MediaTime currentTime, bool isEnded) -> (WebCore::PlatformTimeRanges buffered, uint64_t totalTrackBufferSizeInBytes)
+    RemoveCodedFrames(MediaTime start, MediaTime end, MediaTime currentTime, bool isEnded) -> (CyberCore::PlatformTimeRanges buffered, uint64_t totalTrackBufferSizeInBytes)
     EvictCodedFrames(uint64_t newDataSize, uint64_t maximumBufferSize, MediaTime currentTime, bool isEnded) -> (uint64_t totalTrackBufferSizeInBytes) Synchronous
     ReenqueueMediaIfNeeded(MediaTime currentMediaTime)
     SetGroupStartTimestamp(MediaTime timestamp)
@@ -55,7 +55,7 @@ messages -> RemoteSourceBufferProxy NotRefCounted {
     UpdateTrackIds(Vector<std::pair<WebKit::TrackPrivateRemoteIdentifier, WebKit::TrackPrivateRemoteIdentifier>> identifierPairs)
     BufferedSamplesForTrackId(WebKit::TrackPrivateRemoteIdentifier remoteIdentifier) -> (Vector<String> samples)
     EnqueuedSamplesForTrackID(WebKit::TrackPrivateRemoteIdentifier remoteIdentifier) -> (Vector<String> samples)
-    MemoryPressure(uint64_t maximumBufferSize, MediaTime currentTime, bool isEnded) -> (WebCore::PlatformTimeRanges buffered, uint64_t totalTrackBufferSizeInBytes)
+    MemoryPressure(uint64_t maximumBufferSize, MediaTime currentTime, bool isEnded) -> (CyberCore::PlatformTimeRanges buffered, uint64_t totalTrackBufferSizeInBytes)
 }
 
 #endif

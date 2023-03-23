@@ -24,7 +24,7 @@
 #include "RenderBlockFlow.h"
 #include "RenderFlexibleBox.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class TextControlInnerTextElement;
 class HTMLTextFormControlElement;
@@ -105,6 +105,6 @@ private:
     bool isFlexibleBoxImpl() const override { return true; }
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderTextControl, isTextControl())

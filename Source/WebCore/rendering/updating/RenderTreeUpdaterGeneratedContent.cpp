@@ -37,7 +37,7 @@
 #include "RenderView.h"
 #include "StyleTreeResolver.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 RenderTreeUpdater::GeneratedContent::GeneratedContent(RenderTreeUpdater& updater)
     : m_updater(updater)
@@ -197,7 +197,7 @@ void RenderTreeUpdater::GeneratedContent::updateBackdropRenderer(RenderElement& 
     if (auto backdropRenderer = renderer.backdropRenderer())
         backdropRenderer->setStyle(WTFMove(newStyle));
     else {
-        auto newBackdropRenderer = WebCore::createRenderer<RenderBlockFlow>(renderer.document(), WTFMove(newStyle));
+        auto newBackdropRenderer = CyberCore::createRenderer<RenderBlockFlow>(renderer.document(), WTFMove(newStyle));
         newBackdropRenderer->initializeStyle();
         renderer.setBackdropRenderer(*newBackdropRenderer.get());
         m_updater.m_builder.attach(renderer.view(), WTFMove(newBackdropRenderer));

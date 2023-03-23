@@ -35,7 +35,7 @@ OBJC_CLASS NSDictionary;
 OBJC_CLASS NSSet;
 OBJC_CLASS NSString;
 
-namespace WebCore {
+namespace CyberCore {
 
 class PluginBlocklist {
 public:

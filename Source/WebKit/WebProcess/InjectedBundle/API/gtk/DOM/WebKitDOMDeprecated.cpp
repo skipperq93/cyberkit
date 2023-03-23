@@ -17,7 +17,7 @@
  */
 
 #include "config.h"
-#include "WebKitDOMDeprecated.h"
+#include "CyberKitDOMDeprecated.h"
 
 #include "ConvertToUTF8String.h"
 #include <CyberCore/DOMException.h>
@@ -25,149 +25,149 @@
 #include <CyberCore/Element.h>
 #include <CyberCore/JSExecState.h>
 #include <CyberCore/HTMLCollection.h>
-#include "WebKitDOMDocumentPrivate.h"
-#include "WebKitDOMElementPrivate.h"
-#include "WebKitDOMHTMLDocumentPrivate.h"
-#include "WebKitDOMHTMLInputElementPrivate.h"
-#include "WebKitDOMHTMLTitleElement.h"
-#include "WebKitDOMNodeListPrivate.h"
-#include "WebKitDOMNodePrivate.h"
-#include "WebKitDOMPrivate.h"
-#include "WebKitDOMTextPrivate.h"
+#include "CyberKitDOMDocumentPrivate.h"
+#include "CyberKitDOMElementPrivate.h"
+#include "CyberKitDOMHTMLDocumentPrivate.h"
+#include "CyberKitDOMHTMLInputElementPrivate.h"
+#include "CyberKitDOMHTMLTitleElement.h"
+#include "CyberKitDOMNodeListPrivate.h"
+#include "CyberKitDOMNodePrivate.h"
+#include "CyberKitDOMPrivate.h"
+#include "CyberKitDOMTextPrivate.h"
 #include <wtf/GetPtr.h>
 #include <wtf/RefPtr.h>
 #include <wtf/text/WTFString.h>
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
-gchar* webkit_dom_html_element_get_inner_html(WebKitDOMHTMLElement* self)
+gchar* webkit_dom_html_element_get_inner_html(CyberKitDOMHTMLElement* self)
 {
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_ELEMENT(self), nullptr);
     return webkit_dom_element_get_inner_html(WEBKIT_DOM_ELEMENT(self));
 }
 
-void webkit_dom_html_element_set_inner_html(WebKitDOMHTMLElement* self, const gchar* contents, GError** error)
+void webkit_dom_html_element_set_inner_html(CyberKitDOMHTMLElement* self, const gchar* contents, GError** error)
 {
     g_return_if_fail(WEBKIT_DOM_IS_HTML_ELEMENT(self));
     webkit_dom_element_set_inner_html(WEBKIT_DOM_ELEMENT(self), contents, error);
 }
 
-gchar* webkit_dom_html_element_get_outer_html(WebKitDOMHTMLElement* self)
+gchar* webkit_dom_html_element_get_outer_html(CyberKitDOMHTMLElement* self)
 {
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_ELEMENT(self), nullptr);
     return webkit_dom_element_get_outer_html(WEBKIT_DOM_ELEMENT(self));
 }
 
-void webkit_dom_html_element_set_outer_html(WebKitDOMHTMLElement* self, const gchar* contents, GError** error)
+void webkit_dom_html_element_set_outer_html(CyberKitDOMHTMLElement* self, const gchar* contents, GError** error)
 {
     g_return_if_fail(WEBKIT_DOM_IS_HTML_ELEMENT(self));
     webkit_dom_element_set_outer_html(WEBKIT_DOM_ELEMENT(self), contents, error);
 }
 
-WebKitDOMHTMLCollection* webkit_dom_html_element_get_children(WebKitDOMHTMLElement* self)
+CyberKitDOMHTMLCollection* webkit_dom_html_element_get_children(CyberKitDOMHTMLElement* self)
 {
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_ELEMENT(self), nullptr);
     return webkit_dom_element_get_children(WEBKIT_DOM_ELEMENT(self));
 }
 
-WebKitDOMNodeList* webkit_dom_document_get_elements_by_tag_name(WebKitDOMDocument* self, const gchar* tagName)
+CyberKitDOMNodeList* webkit_dom_document_get_elements_by_tag_name(CyberKitDOMDocument* self, const gchar* tagName)
 {
     g_return_val_if_fail(WEBKIT_DOM_IS_DOCUMENT(self), nullptr);
     g_return_val_if_fail(tagName, nullptr);
 
-    WebCore::JSMainThreadNullState state;
-    WebCore::Document* document = WebKit::core(self);
-    RefPtr<WebCore::NodeList> nodeList = WTF::getPtr(document->getElementsByTagName(AtomString::fromUTF8(tagName)));
-    return WebKit::kit(nodeList.get());
+    CyberCore::JSMainThreadNullState state;
+    CyberCore::Document* document = CyberKit::core(self);
+    RefPtr<CyberCore::NodeList> nodeList = WTF::getPtr(document->getElementsByTagName(AtomString::fromUTF8(tagName)));
+    return CyberKit::kit(nodeList.get());
 }
 
-WebKitDOMNodeList* webkit_dom_document_get_elements_by_tag_name_ns(WebKitDOMDocument* self, const gchar* namespaceURI, const gchar* tagName)
+CyberKitDOMNodeList* webkit_dom_document_get_elements_by_tag_name_ns(CyberKitDOMDocument* self, const gchar* namespaceURI, const gchar* tagName)
 {
     g_return_val_if_fail(WEBKIT_DOM_IS_DOCUMENT(self), nullptr);
     g_return_val_if_fail(namespaceURI, nullptr);
     g_return_val_if_fail(tagName, nullptr);
 
-    WebCore::JSMainThreadNullState state;
-    WebCore::Document* document = WebKit::core(self);
-    RefPtr<WebCore::NodeList> nodeList = WTF::getPtr(document->getElementsByTagNameNS(AtomString::fromUTF8(namespaceURI), AtomString::fromUTF8(tagName)));
-    return WebKit::kit(nodeList.get());
+    CyberCore::JSMainThreadNullState state;
+    CyberCore::Document* document = CyberKit::core(self);
+    RefPtr<CyberCore::NodeList> nodeList = WTF::getPtr(document->getElementsByTagNameNS(AtomString::fromUTF8(namespaceURI), AtomString::fromUTF8(tagName)));
+    return CyberKit::kit(nodeList.get());
 }
 
-WebKitDOMNodeList* webkit_dom_document_get_elements_by_class_name(WebKitDOMDocument* self, const gchar* className)
+CyberKitDOMNodeList* webkit_dom_document_get_elements_by_class_name(CyberKitDOMDocument* self, const gchar* className)
 {
     g_return_val_if_fail(WEBKIT_DOM_IS_DOCUMENT(self), nullptr);
     g_return_val_if_fail(className, nullptr);
 
-    WebCore::JSMainThreadNullState state;
-    WebCore::Document* document = WebKit::core(self);
-    RefPtr<WebCore::NodeList> nodeList = WTF::getPtr(document->getElementsByClassName(AtomString::fromUTF8(className)));
-    return WebKit::kit(nodeList.get());
+    CyberCore::JSMainThreadNullState state;
+    CyberCore::Document* document = CyberKit::core(self);
+    RefPtr<CyberCore::NodeList> nodeList = WTF::getPtr(document->getElementsByClassName(AtomString::fromUTF8(className)));
+    return CyberKit::kit(nodeList.get());
 }
 
-WebKitDOMNodeList* webkit_dom_element_get_elements_by_tag_name(WebKitDOMElement* self, const gchar* tagName)
+CyberKitDOMNodeList* webkit_dom_element_get_elements_by_tag_name(CyberKitDOMElement* self, const gchar* tagName)
 {
     g_return_val_if_fail(WEBKIT_DOM_IS_ELEMENT(self), nullptr);
     g_return_val_if_fail(tagName, nullptr);
 
-    WebCore::JSMainThreadNullState state;
-    WebCore::Element* element = WebKit::core(self);
-    RefPtr<WebCore::NodeList> nodeList = WTF::getPtr(element->getElementsByTagName(AtomString::fromUTF8(tagName)));
-    return WebKit::kit(nodeList.get());
+    CyberCore::JSMainThreadNullState state;
+    CyberCore::Element* element = CyberKit::core(self);
+    RefPtr<CyberCore::NodeList> nodeList = WTF::getPtr(element->getElementsByTagName(AtomString::fromUTF8(tagName)));
+    return CyberKit::kit(nodeList.get());
 }
 
-WebKitDOMNodeList* webkit_dom_element_get_elements_by_tag_name_ns(WebKitDOMElement* self, const gchar* namespaceURI, const gchar* tagName)
+CyberKitDOMNodeList* webkit_dom_element_get_elements_by_tag_name_ns(CyberKitDOMElement* self, const gchar* namespaceURI, const gchar* tagName)
 {
     g_return_val_if_fail(WEBKIT_DOM_IS_ELEMENT(self), nullptr);
     g_return_val_if_fail(namespaceURI, nullptr);
     g_return_val_if_fail(tagName, nullptr);
 
-    WebCore::JSMainThreadNullState state;
-    WebCore::Element* element = WebKit::core(self);
-    RefPtr<WebCore::NodeList> nodeList = WTF::getPtr(element->getElementsByTagNameNS(AtomString::fromUTF8(namespaceURI), AtomString::fromUTF8(tagName)));
-    return WebKit::kit(nodeList.get());
+    CyberCore::JSMainThreadNullState state;
+    CyberCore::Element* element = CyberKit::core(self);
+    RefPtr<CyberCore::NodeList> nodeList = WTF::getPtr(element->getElementsByTagNameNS(AtomString::fromUTF8(namespaceURI), AtomString::fromUTF8(tagName)));
+    return CyberKit::kit(nodeList.get());
 }
 
-WebKitDOMNodeList* webkit_dom_element_get_elements_by_class_name(WebKitDOMElement* self, const gchar* className)
+CyberKitDOMNodeList* webkit_dom_element_get_elements_by_class_name(CyberKitDOMElement* self, const gchar* className)
 {
     g_return_val_if_fail(WEBKIT_DOM_IS_ELEMENT(self), nullptr);
     g_return_val_if_fail(className, nullptr);
 
-    WebCore::JSMainThreadNullState state;
-    WebCore::Element* element = WebKit::core(self);
-    RefPtr<WebCore::NodeList> nodeList = WTF::getPtr(element->getElementsByClassName(AtomString::fromUTF8(className)));
-    return WebKit::kit(nodeList.get());
+    CyberCore::JSMainThreadNullState state;
+    CyberCore::Element* element = CyberKit::core(self);
+    RefPtr<CyberCore::NodeList> nodeList = WTF::getPtr(element->getElementsByClassName(AtomString::fromUTF8(className)));
+    return CyberKit::kit(nodeList.get());
 }
 
-WebKitDOMNode* webkit_dom_node_clone_node(WebKitDOMNode* self, gboolean deep)
+CyberKitDOMNode* webkit_dom_node_clone_node(CyberKitDOMNode* self, gboolean deep)
 {
     return webkit_dom_node_clone_node_with_error(self, deep, nullptr);
 }
 
-gchar* webkit_dom_document_get_default_charset(WebKitDOMDocument* self)
+gchar* webkit_dom_document_get_default_charset(CyberKitDOMDocument* self)
 {
     g_return_val_if_fail(WEBKIT_DOM_IS_DOCUMENT(self), nullptr);
-    return convertToUTF8String(WebKit::core(self)->defaultCharsetForLegacyBindings());
+    return convertToUTF8String(CyberKit::core(self)->defaultCharsetForLegacyBindings());
 }
 
-WebKitDOMText* webkit_dom_text_replace_whole_text(WebKitDOMText* self, const gchar* content, GError** error)
+CyberKitDOMText* webkit_dom_text_replace_whole_text(CyberKitDOMText* self, const gchar* content, GError** error)
 {
     g_return_val_if_fail(WEBKIT_DOM_IS_TEXT(self), nullptr);
     g_return_val_if_fail(content, nullptr);
     g_return_val_if_fail(!error || !*error, nullptr);
 
-    WebCore::JSMainThreadNullState state;
-    RefPtr { WebKit::core(self) }->replaceWholeText(WTF::String::fromUTF8(content));
+    CyberCore::JSMainThreadNullState state;
+    RefPtr { CyberKit::core(self) }->replaceWholeText(WTF::String::fromUTF8(content));
     return self;
 }
 
-gboolean webkit_dom_html_input_element_get_capture(WebKitDOMHTMLInputElement* self)
+gboolean webkit_dom_html_input_element_get_capture(CyberKitDOMHTMLInputElement* self)
 {
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_INPUT_ELEMENT(self), FALSE);
 
 #if ENABLE(MEDIA_CAPTURE)
-    WebCore::JSMainThreadNullState state;
-    WebCore::HTMLInputElement* item = WebKit::core(self);
-    return item->mediaCaptureType() != WebCore::MediaCaptureTypeNone;
+    CyberCore::JSMainThreadNullState state;
+    CyberCore::HTMLInputElement* item = CyberKit::core(self);
+    return item->mediaCaptureType() != CyberCore::MediaCaptureTypeNone;
 #else
     UNUSED_PARAM(self);
     WEBKIT_WARN_FEATURE_NOT_PRESENT("Media Capture")
@@ -175,59 +175,59 @@ gboolean webkit_dom_html_input_element_get_capture(WebKitDOMHTMLInputElement* se
 #endif /* ENABLE(MEDIA_CAPTURE) */
 }
 
-gchar* webkit_dom_html_document_get_design_mode(WebKitDOMHTMLDocument* self)
+gchar* webkit_dom_html_document_get_design_mode(CyberKitDOMHTMLDocument* self)
 {
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_DOCUMENT(self), nullptr);
     return webkit_dom_document_get_design_mode(WEBKIT_DOM_DOCUMENT(self));
 }
 
 
-void webkit_dom_html_document_set_design_mode(WebKitDOMHTMLDocument* self, const gchar* value)
+void webkit_dom_html_document_set_design_mode(CyberKitDOMHTMLDocument* self, const gchar* value)
 {
     g_return_if_fail(WEBKIT_DOM_IS_HTML_DOCUMENT(self));
     webkit_dom_document_set_design_mode(WEBKIT_DOM_DOCUMENT(self), value);
 }
 
-gchar* webkit_dom_html_document_get_compat_mode(WebKitDOMHTMLDocument* self)
+gchar* webkit_dom_html_document_get_compat_mode(CyberKitDOMHTMLDocument* self)
 {
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_DOCUMENT(self), nullptr);
     return webkit_dom_document_get_compat_mode(WEBKIT_DOM_DOCUMENT(self));
 }
 
-WebKitDOMHTMLCollection* webkit_dom_html_document_get_embeds(WebKitDOMHTMLDocument* self)
+CyberKitDOMHTMLCollection* webkit_dom_html_document_get_embeds(CyberKitDOMHTMLDocument* self)
 {
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_DOCUMENT(self), nullptr);
     return webkit_dom_document_get_embeds(WEBKIT_DOM_DOCUMENT(self));
 }
 
-WebKitDOMHTMLCollection* webkit_dom_html_document_get_plugins(WebKitDOMHTMLDocument* self)
+CyberKitDOMHTMLCollection* webkit_dom_html_document_get_plugins(CyberKitDOMHTMLDocument* self)
 {
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_DOCUMENT(self), nullptr);
     return webkit_dom_document_get_plugins(WEBKIT_DOM_DOCUMENT(self));
 }
 
-WebKitDOMHTMLCollection* webkit_dom_html_document_get_scripts(WebKitDOMHTMLDocument* self)
+CyberKitDOMHTMLCollection* webkit_dom_html_document_get_scripts(CyberKitDOMHTMLDocument* self)
 {
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_DOCUMENT(self), nullptr);
     return webkit_dom_document_get_scripts(WEBKIT_DOM_DOCUMENT(self));
 }
 
-gchar* webkit_dom_node_get_namespace_uri(WebKitDOMNode* self)
+gchar* webkit_dom_node_get_namespace_uri(CyberKitDOMNode* self)
 {
     g_return_val_if_fail(WEBKIT_DOM_IS_NODE(self), nullptr);
 
-    WebCore::JSMainThreadNullState state;
-    return convertToUTF8String(WebKit::core(self)->namespaceURI());
+    CyberCore::JSMainThreadNullState state;
+    return convertToUTF8String(CyberKit::core(self)->namespaceURI());
 }
 
-gchar* webkit_dom_node_get_prefix(WebKitDOMNode* self)
+gchar* webkit_dom_node_get_prefix(CyberKitDOMNode* self)
 {
     g_return_val_if_fail(WEBKIT_DOM_IS_NODE(self), nullptr);
-    WebCore::JSMainThreadNullState state;
-    return convertToUTF8String(WebKit::core(self)->prefix());
+    CyberCore::JSMainThreadNullState state;
+    return convertToUTF8String(CyberKit::core(self)->prefix());
 }
 
-void webkit_dom_node_set_prefix(WebKitDOMNode* self, const gchar* value, GError** error)
+void webkit_dom_node_set_prefix(CyberKitDOMNode* self, const gchar* value, GError** error)
 {
     g_return_if_fail(WEBKIT_DOM_IS_NODE(self));
     g_return_if_fail(value);
@@ -235,94 +235,94 @@ void webkit_dom_node_set_prefix(WebKitDOMNode* self, const gchar* value, GError*
 
     g_warning("%s: prefix is now a readonly property according to the DOM spec.", __func__);
 
-    WebCore::JSMainThreadNullState state;
-    WebCore::Node* item = WebKit::core(self);
+    CyberCore::JSMainThreadNullState state;
+    CyberCore::Node* item = CyberKit::core(self);
     auto result = item->setPrefix(WTF::AtomString::fromUTF8(value));
     if (result.hasException()) {
-        auto description = WebCore::DOMException::description(result.releaseException().code());
+        auto description = CyberCore::DOMException::description(result.releaseException().code());
         g_set_error_literal(error, g_quark_from_string("WEBKIT_DOM"), description.legacyCode, description.name);
     }
 }
 
-gchar* webkit_dom_node_get_local_name(WebKitDOMNode* self)
+gchar* webkit_dom_node_get_local_name(CyberKitDOMNode* self)
 {
     g_return_val_if_fail(WEBKIT_DOM_IS_NODE(self), nullptr);
-    WebCore::JSMainThreadNullState state;
-    return convertToUTF8String(WebKit::core(self)->localName());
+    CyberCore::JSMainThreadNullState state;
+    return convertToUTF8String(CyberKit::core(self)->localName());
 }
 
-G_DEFINE_TYPE(WebKitDOMEntityReference, webkit_dom_entity_reference, WEBKIT_DOM_TYPE_NODE)
+G_DEFINE_TYPE(CyberKitDOMEntityReference, webkit_dom_entity_reference, WEBKIT_DOM_TYPE_NODE)
 
-static void webkit_dom_entity_reference_init(WebKitDOMEntityReference*)
+static void webkit_dom_entity_reference_init(CyberKitDOMEntityReference*)
 {
 }
 
-static void webkit_dom_entity_reference_class_init(WebKitDOMEntityReferenceClass*)
+static void webkit_dom_entity_reference_class_init(CyberKitDOMEntityReferenceClass*)
 {
 }
 
-gboolean webkit_dom_node_iterator_get_expand_entity_references(WebKitDOMNodeIterator*)
-{
-    g_warning("%s: EntityReference has been removed from DOM spec, this function does nothing.", __func__);
-    return FALSE;
-}
-
-gboolean webkit_dom_tree_walker_get_expand_entity_references(WebKitDOMTreeWalker*)
+gboolean webkit_dom_node_iterator_get_expand_entity_references(CyberKitDOMNodeIterator*)
 {
     g_warning("%s: EntityReference has been removed from DOM spec, this function does nothing.", __func__);
     return FALSE;
 }
 
-WebKitDOMEntityReference* webkit_dom_document_create_entity_reference(WebKitDOMDocument*, const gchar*, GError**)
+gboolean webkit_dom_tree_walker_get_expand_entity_references(CyberKitDOMTreeWalker*)
+{
+    g_warning("%s: EntityReference has been removed from DOM spec, this function does nothing.", __func__);
+    return FALSE;
+}
+
+CyberKitDOMEntityReference* webkit_dom_document_create_entity_reference(CyberKitDOMDocument*, const gchar*, GError**)
 {
     g_warning("%s: EntityReference has been removed from DOM spec, this function does nothing.", __func__);
     return nullptr;
 }
 
-G_DEFINE_TYPE(WebKitDOMHTMLBaseFontElement, webkit_dom_html_base_font_element, WEBKIT_DOM_TYPE_HTML_ELEMENT)
+G_DEFINE_TYPE(CyberKitDOMHTMLBaseFontElement, webkit_dom_html_base_font_element, WEBKIT_DOM_TYPE_HTML_ELEMENT)
 
-static void webkit_dom_html_base_font_element_init(WebKitDOMHTMLBaseFontElement*)
+static void webkit_dom_html_base_font_element_init(CyberKitDOMHTMLBaseFontElement*)
 {
 }
 
-static void webkit_dom_html_base_font_element_class_init(WebKitDOMHTMLBaseFontElementClass*)
+static void webkit_dom_html_base_font_element_class_init(CyberKitDOMHTMLBaseFontElementClass*)
 {
 }
 
-gchar* webkit_dom_html_base_font_element_get_color(WebKitDOMHTMLBaseFontElement*)
-{
-    g_warning("%s: HTMLBaseFont has been removed from DOM spec, this function does nothing.", __func__);
-    return nullptr;
-}
-
-void webkit_dom_html_base_font_element_set_color(WebKitDOMHTMLBaseFontElement*, const gchar*)
-{
-    g_warning("%s: HTMLBaseFont has been removed from DOM spec, this function does nothing.", __func__);
-}
-
-gchar* webkit_dom_html_base_font_element_get_face(WebKitDOMHTMLBaseFontElement*)
+gchar* webkit_dom_html_base_font_element_get_color(CyberKitDOMHTMLBaseFontElement*)
 {
     g_warning("%s: HTMLBaseFont has been removed from DOM spec, this function does nothing.", __func__);
     return nullptr;
 }
 
-void webkit_dom_html_base_font_element_set_face(WebKitDOMHTMLBaseFontElement*, const gchar*)
+void webkit_dom_html_base_font_element_set_color(CyberKitDOMHTMLBaseFontElement*, const gchar*)
 {
     g_warning("%s: HTMLBaseFont has been removed from DOM spec, this function does nothing.", __func__);
 }
 
-glong webkit_dom_html_base_font_element_get_size(WebKitDOMHTMLBaseFontElement*)
+gchar* webkit_dom_html_base_font_element_get_face(CyberKitDOMHTMLBaseFontElement*)
+{
+    g_warning("%s: HTMLBaseFont has been removed from DOM spec, this function does nothing.", __func__);
+    return nullptr;
+}
+
+void webkit_dom_html_base_font_element_set_face(CyberKitDOMHTMLBaseFontElement*, const gchar*)
+{
+    g_warning("%s: HTMLBaseFont has been removed from DOM spec, this function does nothing.", __func__);
+}
+
+glong webkit_dom_html_base_font_element_get_size(CyberKitDOMHTMLBaseFontElement*)
 {
     g_warning("%s: HTMLBaseFont has been removed from DOM spec, this function does nothing.", __func__);
     return 0;
 }
 
-void webkit_dom_html_base_font_element_set_size(WebKitDOMHTMLBaseFontElement*, glong)
+void webkit_dom_html_base_font_element_set_size(CyberKitDOMHTMLBaseFontElement*, glong)
 {
     g_warning("%s: HTMLBaseFont has been removed from DOM spec, this function does nothing.", __func__);
 }
 
-gchar* webkit_dom_element_get_webkit_region_overset(WebKitDOMElement*)
+gchar* webkit_dom_element_get_webkit_region_overset(CyberKitDOMElement*)
 {
     g_warning("%s: CSS Regions support has been removed, this function does nothing.", __func__);
     return nullptr;

@@ -51,7 +51,7 @@ namespace WTF {
 class MediaTime;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioSampleBufferCompressor;
 class AudioStreamDescription;
@@ -144,6 +144,6 @@ private:
     double m_timeCode { 0 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_RECORDER)

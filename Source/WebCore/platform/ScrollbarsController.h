@@ -30,7 +30,7 @@
 #include <wtf/FastMalloc.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Scrollbar;
 class ScrollableArea;
@@ -95,4 +95,4 @@ private:
     bool m_scrollbarAnimationsUnsuspendedByUserInteraction { true };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

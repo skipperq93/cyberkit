@@ -30,7 +30,7 @@
 #include "AuthenticationDecisionListener.h"
 #include <wtf/CompletionHandler.h>
 
-namespace WebCore {
+namespace CyberCore {
 struct NotificationData;
 class SecurityOriginData;
 }
@@ -44,7 +44,7 @@ class WebsiteDataStoreClient {
 public:
     virtual ~WebsiteDataStoreClient() { }
 
-    virtual void requestStorageSpace(const WebCore::SecurityOriginData& topOrigin, const WebCore::SecurityOriginData& frameOrigin, uint64_t quota, uint64_t currentSize, uint64_t spaceRequired, CompletionHandler<void(std::optional<uint64_t>)>&& completionHandler)
+    virtual void requestStorageSpace(const CyberCore::SecurityOriginData& topOrigin, const CyberCore::SecurityOriginData& frameOrigin, uint64_t quota, uint64_t currentSize, uint64_t spaceRequired, CompletionHandler<void(std::optional<uint64_t>)>&& completionHandler)
     {
         completionHandler({ });
     }
@@ -54,12 +54,12 @@ public:
         challenge->listener().completeChallenge(AuthenticationChallengeDisposition::PerformDefaultHandling);
     }
 
-    virtual void openWindowFromServiceWorker(const String&, const WebCore::SecurityOriginData&, CompletionHandler<void(WebPageProxy*)>&& completionHandler)
+    virtual void openWindowFromServiceWorker(const String&, const CyberCore::SecurityOriginData&, CompletionHandler<void(WebPageProxy*)>&& completionHandler)
     {
         completionHandler(nullptr);
     }
 
-    virtual bool showNotification(const WebCore::NotificationData&)
+    virtual bool showNotification(const CyberCore::NotificationData&)
     {
         return false;
     }
@@ -69,11 +69,11 @@ public:
         return { };
     }
 
-    virtual void workerUpdatedAppBadge(const WebCore::SecurityOriginData&, std::optional<uint64_t>)
+    virtual void workerUpdatedAppBadge(const CyberCore::SecurityOriginData&, std::optional<uint64_t>)
     {
     }
     
-    virtual void requestBackgroundFetchPermission(const WebCore::SecurityOriginData& topOrigin, const WebCore::SecurityOriginData& frameOrigin, CompletionHandler<void(bool)>&& completionHandler)
+    virtual void requestBackgroundFetchPermission(const CyberCore::SecurityOriginData& topOrigin, const CyberCore::SecurityOriginData& frameOrigin, CompletionHandler<void(bool)>&& completionHandler)
     {
         completionHandler(false);
     }

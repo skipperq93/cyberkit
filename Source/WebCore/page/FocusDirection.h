@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class FocusDirection : uint8_t {
     None = 0,
@@ -37,4 +37,4 @@ enum class FocusDirection : uint8_t {
     Right
 };
 
-} // namespace WebCore
+} // namespace CyberCore

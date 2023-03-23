@@ -121,7 +121,7 @@ SOFT_LINK_CLASS_OPTIONAL(AppleMediaServicesUI, AMSUIEngagementTask)
 #define WEBPAGEPROXY_RELEASE_LOG(channel, fmt, ...) RELEASE_LOG(channel, "%p - [pageProxyID=%llu, webPageID=%llu, PID=%i] WebPageProxy::" fmt, this, m_identifier.toUInt64(), m_webPageID.toUInt64(), m_process->processIdentifier(), ##__VA_ARGS__)
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 constexpr IntSize iconSize = IntSize(400, 400);
 
@@ -148,10 +148,10 @@ void WebPageProxy::didCommitLayerTree(const WebKit::RemoteLayerTreeTransaction& 
     pageClient().didCommitLayerTree(layerTreeTransaction);
 
     // FIXME: Remove this special mechanism and fold it into the transaction's layout milestones.
-    if (m_observedLayoutMilestones.contains(WebCore::ReachedSessionRestorationRenderTreeSizeThreshold) && !m_hitRenderTreeSizeThreshold
+    if (m_observedLayoutMilestones.contains(CyberCore::ReachedSessionRestorationRenderTreeSizeThreshold) && !m_hitRenderTreeSizeThreshold
         && exceedsRenderTreeSizeSizeThreshold(m_sessionRestorationRenderTreeSize, layerTreeTransaction.renderTreeSize())) {
         m_hitRenderTreeSizeThreshold = true;
-        didReachLayoutMilestone(WebCore::ReachedSessionRestorationRenderTreeSizeThreshold);
+        didReachLayoutMilestone(CyberCore::ReachedSessionRestorationRenderTreeSizeThreshold);
     }
 }
 
@@ -174,14 +174,14 @@ void WebPageProxy::handleClickForDataDetectionResult(const DataDetectorElementIn
 
 #endif
 
-void WebPageProxy::saveRecentSearches(const String& name, const Vector<WebCore::RecentSearch>& searchItems)
+void WebPageProxy::saveRecentSearches(const String& name, const Vector<CyberCore::RecentSearch>& searchItems)
 {
     MESSAGE_CHECK(!name.isNull());
 
     m_websiteDataStore->saveRecentSearches(name, searchItems);
 }
 
-void WebPageProxy::loadRecentSearches(const String& name, CompletionHandler<void(Vector<WebCore::RecentSearch>&&)>&& completionHandler)
+void WebPageProxy::loadRecentSearches(const String& name, CompletionHandler<void(Vector<CyberCore::RecentSearch>&&)>&& completionHandler)
 {
     MESSAGE_CHECK_COMPLETION(!name.isNull(), completionHandler({ }));
 
@@ -224,12 +224,12 @@ void WebPageProxy::beginSafeBrowsingCheck(const URL& url, bool forMainFrameNavig
 }
 
 #if ENABLE(CONTENT_FILTERING)
-void WebPageProxy::contentFilterDidBlockLoadForFrame(const WebCore::ContentFilterUnblockHandler& unblockHandler, FrameIdentifier frameID)
+void WebPageProxy::contentFilterDidBlockLoadForFrame(const CyberCore::ContentFilterUnblockHandler& unblockHandler, FrameIdentifier frameID)
 {
     contentFilterDidBlockLoadForFrameShared(m_process.copyRef(), unblockHandler, frameID);
 }
 
-void WebPageProxy::contentFilterDidBlockLoadForFrameShared(Ref<WebProcessProxy>&& process, const WebCore::ContentFilterUnblockHandler& unblockHandler, FrameIdentifier frameID)
+void WebPageProxy::contentFilterDidBlockLoadForFrameShared(Ref<WebProcessProxy>&& process, const CyberCore::ContentFilterUnblockHandler& unblockHandler, FrameIdentifier frameID)
 {
     if (RefPtr frame = WebFrameProxy::webFrame(frameID))
         frame->contentFilterDidBlockLoad(unblockHandler);
@@ -345,7 +345,7 @@ void WebPageProxy::platformCloneAttachment(Ref<API::Attachment>&& fromAttachment
     });
 }
 
-static RefPtr<WebKit::ShareableBitmap> convertPlatformImageToBitmap(CocoaImage *image, const WebCore::FloatSize& fittingSize)
+static RefPtr<WebKit::ShareableBitmap> convertPlatformImageToBitmap(CocoaImage *image, const CyberCore::FloatSize& fittingSize)
 {
     FloatSize originalThumbnailSize([image size]);
     auto resultRect = roundedIntRect(largestRectWithAspectRatioInsideRect(originalThumbnailSize.aspectRatio(), { { }, fittingSize }));
@@ -380,7 +380,7 @@ RefPtr<WebKit::ShareableBitmap> WebPageProxy::iconForAttachment(const String& fi
 
 #endif // ENABLE(ATTACHMENT_ELEMENT)
     
-void WebPageProxy::performDictionaryLookupAtLocation(const WebCore::FloatPoint& point)
+void WebPageProxy::performDictionaryLookupAtLocation(const CyberCore::FloatPoint& point)
 {
     if (!hasRunningProcess())
         return;
@@ -448,7 +448,7 @@ void WebPageProxy::clearDictationAlternatives(Vector<DictationContext>&& alterna
 
 #if USE(DICTATION_ALTERNATIVES)
 
-NSTextAlternatives *WebPageProxy::platformDictationAlternatives(WebCore::DictationContext dictationContext)
+NSTextAlternatives *WebPageProxy::platformDictationAlternatives(CyberCore::DictationContext dictationContext)
 {
     return pageClient().platformDictationAlternatives(dictationContext);
 }
@@ -495,38 +495,38 @@ void WebPageProxy::paymentCoordinatorRemoveMessageReceiver(WebPaymentCoordinator
 #endif
 
 #if ENABLE(SPEECH_SYNTHESIS)
-void WebPageProxy::didStartSpeaking(WebCore::PlatformSpeechSynthesisUtterance&)
+void WebPageProxy::didStartSpeaking(CyberCore::PlatformSpeechSynthesisUtterance&)
 {
     if (speechSynthesisData().speakingStartedCompletionHandler)
         speechSynthesisData().speakingStartedCompletionHandler();
 }
 
-void WebPageProxy::didFinishSpeaking(WebCore::PlatformSpeechSynthesisUtterance&)
+void WebPageProxy::didFinishSpeaking(CyberCore::PlatformSpeechSynthesisUtterance&)
 {
     if (speechSynthesisData().speakingFinishedCompletionHandler)
         speechSynthesisData().speakingFinishedCompletionHandler();
 }
 
-void WebPageProxy::didPauseSpeaking(WebCore::PlatformSpeechSynthesisUtterance&)
+void WebPageProxy::didPauseSpeaking(CyberCore::PlatformSpeechSynthesisUtterance&)
 {
     if (speechSynthesisData().speakingPausedCompletionHandler)
         speechSynthesisData().speakingPausedCompletionHandler();
 }
 
-void WebPageProxy::didResumeSpeaking(WebCore::PlatformSpeechSynthesisUtterance&)
+void WebPageProxy::didResumeSpeaking(CyberCore::PlatformSpeechSynthesisUtterance&)
 {
     if (speechSynthesisData().speakingResumedCompletionHandler)
         speechSynthesisData().speakingResumedCompletionHandler();
 }
 
-void WebPageProxy::speakingErrorOccurred(WebCore::PlatformSpeechSynthesisUtterance&)
+void WebPageProxy::speakingErrorOccurred(CyberCore::PlatformSpeechSynthesisUtterance&)
 {
     send(Messages::WebPage::SpeakingErrorOccurred());
 }
 
-void WebPageProxy::boundaryEventOccurred(WebCore::PlatformSpeechSynthesisUtterance&, WebCore::SpeechBoundary speechBoundary, unsigned charIndex, unsigned charLength)
+void WebPageProxy::boundaryEventOccurred(CyberCore::PlatformSpeechSynthesisUtterance&, CyberCore::SpeechBoundary speechBoundary, unsigned charIndex, unsigned charLength)
 {
-    send(Messages::WebPage::BoundaryEventOccurred(speechBoundary == WebCore::SpeechBoundary::SpeechWordBoundary, charIndex, charLength));
+    send(Messages::WebPage::BoundaryEventOccurred(speechBoundary == CyberCore::SpeechBoundary::SpeechWordBoundary, charIndex, charLength));
 }
 
 void WebPageProxy::voicesDidChange()
@@ -560,17 +560,17 @@ MediaUsageManager& WebPageProxy::mediaUsageManager()
     return *m_mediaUsageManager;
 }
 
-void WebPageProxy::addMediaUsageManagerSession(WebCore::MediaSessionIdentifier identifier, const String& bundleIdentifier, const URL& pageURL)
+void WebPageProxy::addMediaUsageManagerSession(CyberCore::MediaSessionIdentifier identifier, const String& bundleIdentifier, const URL& pageURL)
 {
     mediaUsageManager().addMediaSession(identifier, bundleIdentifier, pageURL);
 }
 
-void WebPageProxy::updateMediaUsageManagerSessionState(WebCore::MediaSessionIdentifier identifier, const WebCore::MediaUsageInfo& info)
+void WebPageProxy::updateMediaUsageManagerSessionState(CyberCore::MediaSessionIdentifier identifier, const CyberCore::MediaUsageInfo& info)
 {
     mediaUsageManager().updateMediaUsage(identifier, info);
 }
 
-void WebPageProxy::removeMediaUsageManagerSession(WebCore::MediaSessionIdentifier identifier)
+void WebPageProxy::removeMediaUsageManagerSession(CyberCore::MediaSessionIdentifier identifier)
 {
     mediaUsageManager().removeMediaSession(identifier);
 }
@@ -734,7 +734,7 @@ void WebPageProxy::addActivityStateUpdateCompletionHandler(CompletionHandler<voi
 }
 
 #if ENABLE(APP_HIGHLIGHTS)
-void WebPageProxy::createAppHighlightInSelectedRange(WebCore::CreateNewGroupForHighlight createNewGroup, WebCore::HighlightRequestOriginatedInApp requestOriginatedInApp)
+void WebPageProxy::createAppHighlightInSelectedRange(CyberCore::CreateNewGroupForHighlight createNewGroup, CyberCore::HighlightRequestOriginatedInApp requestOriginatedInApp)
 {
     if (!hasRunningProcess())
         return;
@@ -758,7 +758,7 @@ void WebPageProxy::restoreAppHighlightsAndScrollToIndex(const Vector<Ref<SharedM
     send(Messages::WebPage::RestoreAppHighlightsAndScrollToIndex(WTFMove(memoryHandles), index));
 }
 
-void WebPageProxy::setAppHighlightsVisibility(WebCore::HighlightVisibility appHighlightsVisibility)
+void WebPageProxy::setAppHighlightsVisibility(CyberCore::HighlightVisibility appHighlightsVisibility)
 {
     RELEASE_ASSERT(isMainRunLoop());
     
@@ -790,7 +790,7 @@ void WebPageProxy::setUpHighlightsObserver()
         ensureOnMainRunLoop([weakThis, isVisible] {
             if (!weakThis)
                 return;
-            weakThis->setAppHighlightsVisibility(isVisible ? WebCore::HighlightVisibility::Visible : WebCore::HighlightVisibility::Hidden);
+            weakThis->setAppHighlightsVisibility(isVisible ? CyberCore::HighlightVisibility::Visible : CyberCore::HighlightVisibility::Hidden);
         });
     };
     
@@ -880,7 +880,7 @@ void WebPageProxy::requestActiveNowPlayingSessionInfo(CompletionHandler<void(boo
 void WebPageProxy::setLastNavigationWasAppInitiated(ResourceRequest& request)
 {
 #if ENABLE(APP_PRIVACY_REPORT)
-    auto isAppInitiated = request.nsURLRequest(WebCore::HTTPBodyUpdatePolicy::DoNotUpdateHTTPBody).attribution == NSURLRequestAttributionDeveloper;
+    auto isAppInitiated = request.nsURLRequest(CyberCore::HTTPBodyUpdatePolicy::DoNotUpdateHTTPBody).attribution == NSURLRequestAttributionDeveloper;
     if (m_configuration->appInitiatedOverrideValueForTesting() != AttributionOverrideTesting::NoOverride)
         isAppInitiated = m_configuration->appInitiatedOverrideValueForTesting() == AttributionOverrideTesting::AppInitiated;
 

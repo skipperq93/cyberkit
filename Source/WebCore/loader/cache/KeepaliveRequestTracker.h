@@ -30,7 +30,7 @@
 #include "CachedResourceHandle.h"
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class KeepaliveRequestTracker final : public CachedRawResourceClient {
 public:

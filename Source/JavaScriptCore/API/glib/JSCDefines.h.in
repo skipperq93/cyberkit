@@ -33,7 +33,7 @@
 #include <glib.h>
 
 #ifdef G_OS_WIN32
-#    if defined(BUILDING_JavaScriptCore) || defined(STATICALLY_LINKED_WITH_JavaScriptCore)
+#    if defined(BUILDING_CyberScriptCore) || defined(STATICALLY_LINKED_WITH_CyberScriptCore)
 #        define JSC_API __declspec(dllexport)
 #    else
 #        define JSC_API __declspec(dllimport)

@@ -28,7 +28,7 @@
 
 #include "Decoder.h"
 #include "Encoder.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include <CyberCore/ResourceRequest.h>
 #include <CyberCore/ResourceResponse.h>
 #include <wtf/text/WTFString.h>
@@ -60,8 +60,8 @@ struct WebNavigationDataStore {
     // FIXME: Add the remaining items we want to track for history.
     String url;
     String title;
-    WebCore::ResourceRequest originalRequest;
-    WebCore::ResourceResponse response;
+    CyberCore::ResourceRequest originalRequest;
+    CyberCore::ResourceResponse response;
 };
 
 } // namespace WebKit

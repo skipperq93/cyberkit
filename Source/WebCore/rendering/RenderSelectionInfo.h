@@ -28,7 +28,7 @@
 #include "RenderBlock.h"
 #include "RenderObject.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderSelectionInfoBase {
     WTF_MAKE_NONCOPYABLE(RenderSelectionInfoBase); WTF_MAKE_FAST_ALLOCATED;
@@ -74,4 +74,4 @@ private:
     GapRects m_rects; // relative to repaint container
 };
 
-} // namespace WebCore
+} // namespace CyberCore

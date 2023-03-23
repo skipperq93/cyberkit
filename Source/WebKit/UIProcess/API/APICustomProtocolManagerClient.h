@@ -32,7 +32,7 @@ namespace WebKit {
 class LegacyCustomProtocolManagerProxy;
 }
 
-namespace WebCore {
+namespace CyberCore {
 class ResourceRequest;
 }
 
@@ -43,7 +43,7 @@ class CustomProtocolManagerClient {
 public:
     virtual ~CustomProtocolManagerClient() { }
 
-    virtual void startLoading(WebKit::LegacyCustomProtocolManagerProxy&, WebKit::LegacyCustomProtocolID, const WebCore::ResourceRequest&) { }
+    virtual void startLoading(WebKit::LegacyCustomProtocolManagerProxy&, WebKit::LegacyCustomProtocolID, const CyberCore::ResourceRequest&) { }
     virtual void stopLoading(WebKit::LegacyCustomProtocolManagerProxy&, WebKit::LegacyCustomProtocolID) { }
 
     virtual void invalidate(WebKit::LegacyCustomProtocolManagerProxy&) { }

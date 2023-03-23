@@ -29,7 +29,7 @@
 #import <notify.h>
 #import <pal/spi/cocoa/IOPSLibSPI.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static std::optional<bool> hasBattery;
 static std::optional<bool> hasAC;

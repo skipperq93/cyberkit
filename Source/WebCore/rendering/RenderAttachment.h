@@ -30,7 +30,7 @@
 #include "HTMLAttachmentElement.h"
 #include "RenderReplaced.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderAttachment final : public RenderReplaced {
     WTF_MAKE_ISO_ALLOCATED(RenderAttachment);
@@ -65,7 +65,7 @@ private:
     bool m_hasShadowControls { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderAttachment, isAttachment())
 

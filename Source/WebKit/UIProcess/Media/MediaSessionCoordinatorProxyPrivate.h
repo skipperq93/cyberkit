@@ -32,13 +32,13 @@
 #include <wtf/RefPtr.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 struct ExceptionData;
 }
 
 namespace WebKit {
 
-using MediaSessionCommandCompletionHandler = CompletionHandler<void(std::optional<WebCore::ExceptionData>&&)>;
+using MediaSessionCommandCompletionHandler = CompletionHandler<void(std::optional<CyberCore::ExceptionData>&&)>;
 
 class MediaSessionCoordinatorProxyPrivate
     : public CanMakeWeakPtr<MediaSessionCoordinatorProxyPrivate>
@@ -55,20 +55,20 @@ public:
     virtual void pause(MediaSessionCommandCompletionHandler&&) = 0;
     virtual void setTrack(const String&, MediaSessionCommandCompletionHandler&&) = 0;
 
-    virtual void positionStateChanged(const std::optional<WebCore::MediaPositionState>&) = 0;
-    virtual void readyStateChanged(WebCore::MediaSessionReadyState) = 0;
-    virtual void playbackStateChanged(WebCore::MediaSessionPlaybackState) = 0;
+    virtual void positionStateChanged(const std::optional<CyberCore::MediaPositionState>&) = 0;
+    virtual void readyStateChanged(CyberCore::MediaSessionReadyState) = 0;
+    virtual void playbackStateChanged(CyberCore::MediaSessionPlaybackState) = 0;
     virtual void trackIdentifierChanged(const String&) = 0;
 
-    virtual void setClient(WeakPtr<WebCore::MediaSessionCoordinatorClient> client) { m_client = client; }
+    virtual void setClient(WeakPtr<CyberCore::MediaSessionCoordinatorClient> client) { m_client = client; }
 
 protected:
     explicit MediaSessionCoordinatorProxyPrivate() = default;
 
-    WeakPtr<WebCore::MediaSessionCoordinatorClient> client() const { return m_client; }
+    WeakPtr<CyberCore::MediaSessionCoordinatorClient> client() const { return m_client; }
 
 private:
-    WeakPtr<WebCore::MediaSessionCoordinatorClient> m_client;
+    WeakPtr<CyberCore::MediaSessionCoordinatorClient> m_client;
 };
 
 } // namespace WebKit

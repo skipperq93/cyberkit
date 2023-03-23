@@ -52,7 +52,7 @@
 
 namespace WebKit {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 NetworkDataTaskCurl::NetworkDataTaskCurl(NetworkSession& session, NetworkDataTaskClient& client, const NetworkLoadParameters& parameters)
     : NetworkDataTask(session, client, parameters.request, parameters.storedCredentialsPolicy, parameters.shouldClearReferrerOnHTTPSToHTTPRedirect, parameters.isMainFrameNavigation)
@@ -408,7 +408,7 @@ void NetworkDataTaskCurl::willPerformHTTPRedirection()
 void NetworkDataTaskCurl::tryHttpAuthentication(AuthenticationChallenge&& challenge)
 {
     if (!m_user.isNull() && !m_password.isNull()) {
-        auto persistence = m_storedCredentialsPolicy == WebCore::StoredCredentialsPolicy::Use ? WebCore::CredentialPersistenceForSession : WebCore::CredentialPersistenceNone;
+        auto persistence = m_storedCredentialsPolicy == CyberCore::StoredCredentialsPolicy::Use ? CyberCore::CredentialPersistenceForSession : CyberCore::CredentialPersistenceNone;
         restartWithCredential(challenge.protectionSpace(), Credential(m_user, m_password, persistence));
         m_user = String();
         m_password = String();
@@ -461,7 +461,7 @@ void NetworkDataTaskCurl::tryHttpAuthentication(AuthenticationChallenge&& challe
     });
 }
 
-void NetworkDataTaskCurl::tryProxyAuthentication(WebCore::AuthenticationChallenge&& challenge)
+void NetworkDataTaskCurl::tryProxyAuthentication(CyberCore::AuthenticationChallenge&& challenge)
 {
     m_client->didReceiveChallenge(AuthenticationChallenge(challenge), NegotiatedLegacyTLS::No, [this, protectedThis = Ref { *this }, challenge](AuthenticationChallengeDisposition disposition, const Credential& credential) {
         if (m_state == State::Canceling || m_state == State::Completed)
@@ -524,15 +524,15 @@ void NetworkDataTaskCurl::restartWithCredential(const ProtectionSpace& protectio
     }
 }
 
-void NetworkDataTaskCurl::appendCookieHeader(WebCore::ResourceRequest& request)
+void NetworkDataTaskCurl::appendCookieHeader(CyberCore::ResourceRequest& request)
 {
     auto includeSecureCookies = request.url().protocolIs("https"_s) ? IncludeSecureCookies::Yes : IncludeSecureCookies::No;
-    auto cookieHeaderField = m_session->networkStorageSession()->cookieRequestHeaderFieldValue(request.firstPartyForCookies(), WebCore::SameSiteInfo::create(request), request.url(), std::nullopt, std::nullopt, includeSecureCookies, ApplyTrackingPrevention::Yes, WebCore::ShouldRelaxThirdPartyCookieBlocking::No).first;
+    auto cookieHeaderField = m_session->networkStorageSession()->cookieRequestHeaderFieldValue(request.firstPartyForCookies(), CyberCore::SameSiteInfo::create(request), request.url(), std::nullopt, std::nullopt, includeSecureCookies, ApplyTrackingPrevention::Yes, CyberCore::ShouldRelaxThirdPartyCookieBlocking::No).first;
     if (!cookieHeaderField.isEmpty())
         request.addHTTPHeaderField(HTTPHeaderName::Cookie, cookieHeaderField);
 }
 
-void NetworkDataTaskCurl::handleCookieHeaders(const WebCore::ResourceRequest& request, const CurlResponse& response)
+void NetworkDataTaskCurl::handleCookieHeaders(const CyberCore::ResourceRequest& request, const CurlResponse& response)
 {
     static constexpr auto setCookieHeader = "set-cookie: "_s;
 
@@ -570,10 +570,10 @@ void NetworkDataTaskCurl::unblockCookies()
 #endif
 }
 
-bool NetworkDataTaskCurl::shouldBlockCookies(const WebCore::ResourceRequest& request)
+bool NetworkDataTaskCurl::shouldBlockCookies(const CyberCore::ResourceRequest& request)
 {
 #if ENABLE(TRACKING_PREVENTION)
-    bool shouldBlockCookies = m_storedCredentialsPolicy == WebCore::StoredCredentialsPolicy::EphemeralStateless;
+    bool shouldBlockCookies = m_storedCredentialsPolicy == CyberCore::StoredCredentialsPolicy::EphemeralStateless;
 
     if (!shouldBlockCookies && m_session->networkStorageSession())
         shouldBlockCookies = m_session->networkStorageSession()->shouldBlockCookies(request, m_frameID, m_pageID, m_shouldRelaxThirdPartyCookieBlocking);
@@ -584,12 +584,12 @@ bool NetworkDataTaskCurl::shouldBlockCookies(const WebCore::ResourceRequest& req
     return false;
 }
 
-bool NetworkDataTaskCurl::isThirdPartyRequest(const WebCore::ResourceRequest& request)
+bool NetworkDataTaskCurl::isThirdPartyRequest(const CyberCore::ResourceRequest& request)
 {
-    return !WebCore::areRegistrableDomainsEqual(request.url(), request.firstPartyForCookies());
+    return !CyberCore::areRegistrableDomainsEqual(request.url(), request.firstPartyForCookies());
 }
 
-void NetworkDataTaskCurl::updateNetworkLoadMetrics(WebCore::NetworkLoadMetrics& networkLoadMetrics)
+void NetworkDataTaskCurl::updateNetworkLoadMetrics(CyberCore::NetworkLoadMetrics& networkLoadMetrics)
 {
     if (!m_startTime)
         m_startTime = networkLoadMetrics.fetchStart;

@@ -34,36 +34,36 @@
 
 namespace WebKit {
 
-using UseCGDisplayListImageCache = WebCore::ImageBufferCreationContext::UseCGDisplayListImageCache;
+using UseCGDisplayListImageCache = CyberCore::ImageBufferCreationContext::UseCGDisplayListImageCache;
 
-class CGDisplayListImageBufferBackend final : public WebCore::ImageBufferCGBackend, public ImageBufferBackendHandleSharing {
+class CGDisplayListImageBufferBackend final : public CyberCore::ImageBufferCGBackend, public ImageBufferBackendHandleSharing {
     WTF_MAKE_ISO_ALLOCATED(CGDisplayListImageBufferBackend);
     WTF_MAKE_NONCOPYABLE(CGDisplayListImageBufferBackend);
 public:
     static size_t calculateMemoryCost(const Parameters&);
 
-    static std::unique_ptr<CGDisplayListImageBufferBackend> create(const Parameters&, const WebCore::ImageBufferCreationContext&);
+    static std::unique_ptr<CGDisplayListImageBufferBackend> create(const Parameters&, const CyberCore::ImageBufferCreationContext&);
 
-    WebCore::GraphicsContext& context() const final;
-    WebCore::IntSize backendSize() const final;
+    CyberCore::GraphicsContext& context() const final;
+    CyberCore::IntSize backendSize() const final;
     ImageBufferBackendHandle createBackendHandle(SharedMemory::Protection = SharedMemory::Protection::ReadWrite) const final;
 
     void clearContents() final;
 
     // NOTE: These all ASSERT_NOT_REACHED().
-    RefPtr<WebCore::NativeImage> copyNativeImage(WebCore::BackingStoreCopy = WebCore::CopyBackingStore) const final;
-    RefPtr<WebCore::PixelBuffer> getPixelBuffer(const WebCore::PixelBufferFormat& outputFormat, const WebCore::IntRect&, const WebCore::ImageBufferAllocator& = WebCore::ImageBufferAllocator()) const final;
-    void putPixelBuffer(const WebCore::PixelBuffer&, const WebCore::IntRect& srcRect, const WebCore::IntPoint& destPoint, WebCore::AlphaPremultiplication destFormat) final;
+    RefPtr<CyberCore::NativeImage> copyNativeImage(CyberCore::BackingStoreCopy = CyberCore::CopyBackingStore) const final;
+    RefPtr<CyberCore::PixelBuffer> getPixelBuffer(const CyberCore::PixelBufferFormat& outputFormat, const CyberCore::IntRect&, const CyberCore::ImageBufferAllocator& = CyberCore::ImageBufferAllocator()) const final;
+    void putPixelBuffer(const CyberCore::PixelBuffer&, const CyberCore::IntRect& srcRect, const CyberCore::IntPoint& destPoint, CyberCore::AlphaPremultiplication destFormat) final;
 
 protected:
-    CGDisplayListImageBufferBackend(const Parameters&, const WebCore::ImageBufferCreationContext&);
+    CGDisplayListImageBufferBackend(const Parameters&, const CyberCore::ImageBufferCreationContext&);
 
     unsigned bytesPerRow() const final;
 
     // ImageBufferBackendSharing
     ImageBufferBackendSharing* toBackendSharing() final { return this; }
 
-    mutable std::unique_ptr<WebCore::GraphicsContext> m_context;
+    mutable std::unique_ptr<CyberCore::GraphicsContext> m_context;
     RetainPtr<id> m_resourceCache;
 };
 

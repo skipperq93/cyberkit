@@ -25,7 +25,7 @@
 #include <wpe/wpe.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 IntRect InputMethodFilter::platformTransformCursorRectToViewCoordinates(const IntRect& cursorRect)
 {

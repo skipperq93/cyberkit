@@ -29,7 +29,7 @@
 #include "IntPoint.h"
 #include <cstdint>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ScrollExtents {
     FloatSize contentsSize;

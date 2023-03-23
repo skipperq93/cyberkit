@@ -52,7 +52,7 @@
 #import <wtf/RetainPtr.h>
 #import <wtf/StdLibExtras.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 NSString *WebURLPboardType = @"public.url";
 NSString *WebURLNamePboardType = @"public.url-name";

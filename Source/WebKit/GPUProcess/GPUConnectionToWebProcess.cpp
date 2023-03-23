@@ -62,7 +62,7 @@
 #include "RemoteSampleBufferDisplayLayerMessages.h"
 #include "RemoteScrollingCoordinatorTransaction.h"
 #include "ScopedRenderingResourcesRequest.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebErrors.h"
 #include "WebGPUObjectHeap.h"
 #include "WebProcessMessages.h"
@@ -162,7 +162,7 @@
 #define MESSAGE_CHECK(assertion) MESSAGE_CHECK_BASE(assertion, (&connection()))
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 #if PLATFORM(COCOA) && ENABLE(MEDIA_STREAM)
 class GPUProxyForCapture final : public UserMediaCaptureManagerProxy::ConnectionProxy {
@@ -233,12 +233,12 @@ private:
 
 #endif
 
-Ref<GPUConnectionToWebProcess> GPUConnectionToWebProcess::create(GPUProcess& gpuProcess, WebCore::ProcessIdentifier webProcessIdentifier, PAL::SessionID sessionID, IPC::Connection::Handle&& connectionHandle, GPUProcessConnectionParameters&& parameters)
+Ref<GPUConnectionToWebProcess> GPUConnectionToWebProcess::create(GPUProcess& gpuProcess, CyberCore::ProcessIdentifier webProcessIdentifier, PAL::SessionID sessionID, IPC::Connection::Handle&& connectionHandle, GPUProcessConnectionParameters&& parameters)
 {
     return adoptRef(*new GPUConnectionToWebProcess(gpuProcess, webProcessIdentifier, sessionID, WTFMove(connectionHandle), WTFMove(parameters)));
 }
 
-GPUConnectionToWebProcess::GPUConnectionToWebProcess(GPUProcess& gpuProcess, WebCore::ProcessIdentifier webProcessIdentifier, PAL::SessionID sessionID, IPC::Connection::Handle&& connectionHandle, GPUProcessConnectionParameters&& parameters)
+GPUConnectionToWebProcess::GPUConnectionToWebProcess(GPUProcess& gpuProcess, CyberCore::ProcessIdentifier webProcessIdentifier, PAL::SessionID sessionID, IPC::Connection::Handle&& connectionHandle, GPUProcessConnectionParameters&& parameters)
     : m_connection(IPC::Connection::createClientConnection(IPC::Connection::Identifier { WTFMove(connectionHandle) }))
     , m_gpuProcess(gpuProcess)
     , m_webProcessIdentifier(webProcessIdentifier)
@@ -287,14 +287,14 @@ GPUConnectionToWebProcess::GPUConnectionToWebProcess(GPUProcess& gpuProcess, Web
     if (parameters.hasVP9HardwareDecoder)
         hasVP9HardwareDecoder = *parameters.hasVP9HardwareDecoder;
     else {
-        hasVP9HardwareDecoder = WebCore::vp9HardwareDecoderAvailable();
+        hasVP9HardwareDecoder = CyberCore::vp9HardwareDecoderAvailable();
         gpuProcess.send(Messages::GPUProcessProxy::SetHasVP9HardwareDecoder(hasVP9HardwareDecoder));
     }
     bool hasVP9ExtensionSupport;
     if (parameters.hasVP9ExtensionSupport)
         hasVP9ExtensionSupport = *parameters.hasVP9ExtensionSupport;
     else {
-        hasVP9ExtensionSupport = WebCore::hasVP9ExtensionSupport();
+        hasVP9ExtensionSupport = CyberCore::hasVP9ExtensionSupport();
         gpuProcess.send(Messages::GPUProcessProxy::SetHasVP9ExtensionSupport(hasVP9ExtensionSupport));
     }
 #endif
@@ -363,7 +363,7 @@ void GPUConnectionToWebProcess::didClose(IPC::Connection& connection)
 }
 
 #if HAVE(VISIBILITY_PROPAGATION_VIEW)
-void GPUConnectionToWebProcess::createVisibilityPropagationContextForPage(WebPageProxyIdentifier pageProxyID, WebCore::PageIdentifier pageID, bool canShowWhileLocked)
+void GPUConnectionToWebProcess::createVisibilityPropagationContextForPage(WebPageProxyIdentifier pageProxyID, CyberCore::PageIdentifier pageID, bool canShowWhileLocked)
 {
     auto contextForVisibilityPropagation = LayerHostingContext::createForExternalHostingProcess({ canShowWhileLocked });
     RELEASE_LOG(Process, "GPUConnectionToWebProcess::createVisibilityPropagationContextForPage: pageProxyID=%" PRIu64 ", webPageID=%" PRIu64 ", contextID=%u", pageProxyID.toUInt64(), pageID.toUInt64(), contextForVisibilityPropagation->contextID());
@@ -371,7 +371,7 @@ void GPUConnectionToWebProcess::createVisibilityPropagationContextForPage(WebPag
     m_visibilityPropagationContexts.add(std::make_pair(pageProxyID, pageID), WTFMove(contextForVisibilityPropagation));
 }
 
-void GPUConnectionToWebProcess::destroyVisibilityPropagationContextForPage(WebPageProxyIdentifier pageProxyID, WebCore::PageIdentifier pageID)
+void GPUConnectionToWebProcess::destroyVisibilityPropagationContextForPage(WebPageProxyIdentifier pageProxyID, CyberCore::PageIdentifier pageID)
 {
     RELEASE_LOG(Process, "GPUConnectionToWebProcess::destroyVisibilityPropagationContextForPage: pageProxyID=%" PRIu64 ", webPageID=%" PRIu64, pageProxyID.toUInt64(), pageID.toUInt64());
 
@@ -384,7 +384,7 @@ void GPUConnectionToWebProcess::destroyVisibilityPropagationContextForPage(WebPa
 void GPUConnectionToWebProcess::configureLoggingChannel(const String& channelName, WTFLogChannelState state, WTFLogLevel level)
 {
 #if !RELEASE_LOG_DISABLED
-    if  (auto* channel = WebCore::getLogChannel(channelName)) {
+    if  (auto* channel = CyberCore::getLogChannel(channelName)) {
         channel->state = state;
         channel->level = level;
     }
@@ -587,7 +587,7 @@ void GPUConnectionToWebProcess::releaseSerializedImageBuffer(RemoteSerializedIma
 }
 
 #if ENABLE(WEBGL)
-void GPUConnectionToWebProcess::createGraphicsContextGL(WebCore::GraphicsContextGLAttributes attributes, GraphicsContextGLIdentifier graphicsContextGLIdentifier, RenderingBackendIdentifier renderingBackendIdentifier, IPC::StreamServerConnection::Handle&& connectionHandle)
+void GPUConnectionToWebProcess::createGraphicsContextGL(CyberCore::GraphicsContextGLAttributes attributes, GraphicsContextGLIdentifier graphicsContextGLIdentifier, RenderingBackendIdentifier renderingBackendIdentifier, IPC::StreamServerConnection::Handle&& connectionHandle)
 {
     MESSAGE_CHECK(!isLockdownModeEnabled());
 
@@ -976,7 +976,7 @@ void GPUConnectionToWebProcess::updateCaptureAccess(bool allowAudioCapture, bool
     m_allowsDisplayCapture |= allowDisplayCapture;
 }
 
-void GPUConnectionToWebProcess::updateCaptureOrigin(const WebCore::SecurityOriginData& originData)
+void GPUConnectionToWebProcess::updateCaptureOrigin(const CyberCore::SecurityOriginData& originData)
 {
     m_captureOrigin = originData.securityOrigin();
 }

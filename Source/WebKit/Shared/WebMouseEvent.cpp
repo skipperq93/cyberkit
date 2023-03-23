@@ -26,20 +26,20 @@
 #include "config.h"
 #include "WebMouseEvent.h"
 
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include <CyberCore/NavigationAction.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 WebMouseEvent::WebMouseEvent() = default;
 
 #if PLATFORM(MAC)
 WebMouseEvent::WebMouseEvent(WebEvent&& event, WebMouseEventButton button, unsigned short buttons, const IntPoint& positionInView, const IntPoint& globalPosition, float deltaX, float deltaY, float deltaZ, int clickCount, double force, WebMouseEventSyntheticClickType syntheticClickType, int eventNumber, int menuType, GestureWasCancelled gestureWasCancelled)
 #elif PLATFORM(GTK)
-WebMouseEvent::WebMouseEvent(WebEvent&& event, WebMouseEventButton button, unsigned short buttons, const IntPoint& positionInView, const IntPoint& globalPosition, float deltaX, float deltaY, float deltaZ, int clickCount, double force, WebMouseEventSyntheticClickType syntheticClickType, PlatformMouseEvent::IsTouch isTouchEvent, WebCore::PointerID pointerId, const String& pointerType, GestureWasCancelled gestureWasCancelled)
+WebMouseEvent::WebMouseEvent(WebEvent&& event, WebMouseEventButton button, unsigned short buttons, const IntPoint& positionInView, const IntPoint& globalPosition, float deltaX, float deltaY, float deltaZ, int clickCount, double force, WebMouseEventSyntheticClickType syntheticClickType, PlatformMouseEvent::IsTouch isTouchEvent, CyberCore::PointerID pointerId, const String& pointerType, GestureWasCancelled gestureWasCancelled)
 #else
-WebMouseEvent::WebMouseEvent(WebEvent&& event, WebMouseEventButton button, unsigned short buttons, const IntPoint& positionInView, const IntPoint& globalPosition, float deltaX, float deltaY, float deltaZ, int clickCount, double force, WebMouseEventSyntheticClickType syntheticClickType, WebCore::PointerID pointerId, const String& pointerType, GestureWasCancelled gestureWasCancelled)
+WebMouseEvent::WebMouseEvent(WebEvent&& event, WebMouseEventButton button, unsigned short buttons, const IntPoint& positionInView, const IntPoint& globalPosition, float deltaX, float deltaY, float deltaZ, int clickCount, double force, WebMouseEventSyntheticClickType syntheticClickType, CyberCore::PointerID pointerId, const String& pointerType, GestureWasCancelled gestureWasCancelled)
 #endif
     : WebEvent(WTFMove(event))
     , m_button(button)
@@ -72,7 +72,7 @@ bool WebMouseEvent::isMouseEventType(WebEventType type)
     return type == WebEventType::MouseDown || type == WebEventType::MouseUp || type == WebEventType::MouseMove || type == WebEventType::MouseForceUp || type == WebEventType::MouseForceDown || type == WebEventType::MouseForceChanged;
 }
 
-WebMouseEventButton mouseButton(const WebCore::NavigationAction& navigationAction)
+WebMouseEventButton mouseButton(const CyberCore::NavigationAction& navigationAction)
 {
     auto& mouseEventData = navigationAction.mouseEventData();
     if (mouseEventData && mouseEventData->buttonDown && mouseEventData->isTrusted)
@@ -80,7 +80,7 @@ WebMouseEventButton mouseButton(const WebCore::NavigationAction& navigationActio
     return WebMouseEventButton::NoButton;
 }
 
-WebMouseEventSyntheticClickType syntheticClickType(const WebCore::NavigationAction& navigationAction)
+WebMouseEventSyntheticClickType syntheticClickType(const CyberCore::NavigationAction& navigationAction)
 {
     auto& mouseEventData = navigationAction.mouseEventData();
     if (mouseEventData && mouseEventData->buttonDown && mouseEventData->isTrusted)

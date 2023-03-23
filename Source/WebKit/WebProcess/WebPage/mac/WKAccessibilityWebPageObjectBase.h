@@ -26,18 +26,18 @@
 #import <CyberCore/PageIdentifier.h>
 #import <wtf/NakedPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 class WebPage;
 }
 
 @interface WKAccessibilityWebPageObjectBase : NSObject {
-    NakedPtr<WebKit::WebPage> m_page;
-    WebCore::PageIdentifier m_pageID;
+    NakedPtr<CyberKit::WebPage> m_page;
+    CyberCore::PageIdentifier m_pageID;
     RetainPtr<id> m_parent;
     bool m_hasMainFramePlugin;
 }
 
-- (void)setWebPage:(NakedPtr<WebKit::WebPage>)page;
+- (void)setWebPage:(NakedPtr<CyberKit::WebPage>)page;
 - (void)setRemoteParent:(id)parent;
 - (void)setHasMainFramePlugin:(bool)hasPlugin;
 

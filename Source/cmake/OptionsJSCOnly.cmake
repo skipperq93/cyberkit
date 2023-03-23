@@ -71,7 +71,7 @@ if (WIN32)
         if (DEFINED ENV{WEBKIT_LIBRARIES})
             set(WEBKIT_LIBRARIES_DIR "$ENV{WEBKIT_LIBRARIES}")
         else ()
-            set(WEBKIT_LIBRARIES_DIR "${CMAKE_SOURCE_DIR}/WebKitLibraries/win")
+            set(WEBKIT_LIBRARIES_DIR "${CMAKE_SOURCE_DIR}/CyberKitLibraries/win")
         endif ()
     endif ()
 

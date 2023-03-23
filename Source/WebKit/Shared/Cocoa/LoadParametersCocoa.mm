@@ -29,7 +29,7 @@
 #if PLATFORM(COCOA)
 
 #import "ArgumentCodersCocoa.h"
-#import "WebCoreArgumentCoders.h"
+#import "CyberCoreArgumentCoders.h"
 
 namespace WebKit {
 

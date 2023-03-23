@@ -30,7 +30,7 @@
 #include <CyberCore/AbortableTaskQueue.h>
 #include <wtf/Threading.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 namespace TestWebKitAPI {
 

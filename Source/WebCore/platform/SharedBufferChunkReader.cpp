@@ -32,7 +32,7 @@
 #include "config.h"
 #include "SharedBufferChunkReader.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 #if ENABLE(MHTML)
 

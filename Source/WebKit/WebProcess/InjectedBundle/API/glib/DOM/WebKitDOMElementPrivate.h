@@ -19,16 +19,16 @@
 
 #pragma once
 
-#include "WebKitDOMElement.h"
+#include "CyberKitDOMElement.h"
 #include <CyberCore/Element.h>
 
-namespace WebKit {
-WebKitDOMElement* wrapElement(WebCore::Element*);
-WebKitDOMElement* kit(WebCore::Element*);
-WebCore::Element* core(WebKitDOMElement*);
-} // namespace WebKit
+namespace CyberKit {
+CyberKitDOMElement* wrapElement(CyberCore::Element*);
+CyberKitDOMElement* kit(CyberCore::Element*);
+CyberCore::Element* core(CyberKitDOMElement*);
+} // namespace CyberKit
 
 #if PLATFORM(GTK)
-void webkitDOMElementDOMEventTargetInit(WebKitDOMEventTargetIface*);
+void webkitDOMElementDOMEventTargetInit(CyberKitDOMEventTargetIface*);
 void webkitDOMElementInstallProperties(GObjectClass*);
 #endif

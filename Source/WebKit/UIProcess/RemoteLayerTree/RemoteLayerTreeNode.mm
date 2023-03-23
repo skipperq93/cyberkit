@@ -38,7 +38,7 @@ namespace WebKit {
 
 static NSString *const WKRemoteLayerTreeNodePropertyKey = @"WKRemoteLayerTreeNode";
 
-RemoteLayerTreeNode::RemoteLayerTreeNode(WebCore::GraphicsLayer::PlatformLayerID layerID, Markable<WebCore::LayerHostingContextIdentifier> hostIdentifier, RetainPtr<CALayer> layer)
+RemoteLayerTreeNode::RemoteLayerTreeNode(CyberCore::GraphicsLayer::PlatformLayerID layerID, Markable<CyberCore::LayerHostingContextIdentifier> hostIdentifier, RetainPtr<CALayer> layer)
     : m_layerID(layerID)
     , m_remoteContextHostingIdentifier(hostIdentifier)
     , m_layer(WTFMove(layer))
@@ -48,7 +48,7 @@ RemoteLayerTreeNode::RemoteLayerTreeNode(WebCore::GraphicsLayer::PlatformLayerID
 }
 
 #if PLATFORM(IOS_FAMILY)
-RemoteLayerTreeNode::RemoteLayerTreeNode(WebCore::GraphicsLayer::PlatformLayerID layerID, Markable<WebCore::LayerHostingContextIdentifier> hostIdentifier, RetainPtr<UIView> uiView)
+RemoteLayerTreeNode::RemoteLayerTreeNode(CyberCore::GraphicsLayer::PlatformLayerID layerID, Markable<CyberCore::LayerHostingContextIdentifier> hostIdentifier, RetainPtr<UIView> uiView)
     : m_layerID(layerID)
     , m_remoteContextHostingIdentifier(hostIdentifier)
     , m_layer([uiView.get() layer])
@@ -63,7 +63,7 @@ RemoteLayerTreeNode::~RemoteLayerTreeNode()
     [layer() setValue:nil forKey:WKRemoteLayerTreeNodePropertyKey];
 }
 
-std::unique_ptr<RemoteLayerTreeNode> RemoteLayerTreeNode::createWithPlainLayer(WebCore::GraphicsLayer::PlatformLayerID layerID)
+std::unique_ptr<RemoteLayerTreeNode> RemoteLayerTreeNode::createWithPlainLayer(CyberCore::GraphicsLayer::PlatformLayerID layerID)
 {
     RetainPtr<CALayer> layer = adoptNS([[WKCompositingLayer alloc] init]);
     return makeUnique<RemoteLayerTreeNode>(layerID, std::nullopt, WTFMove(layer));
@@ -84,7 +84,7 @@ void RemoteLayerTreeNode::detachFromParent()
     [layer() removeFromSuperlayer];
 }
 
-void RemoteLayerTreeNode::setEventRegion(const WebCore::EventRegion& eventRegion)
+void RemoteLayerTreeNode::setEventRegion(const CyberCore::EventRegion& eventRegion)
 {
     m_eventRegion = eventRegion;
 }
@@ -99,10 +99,10 @@ void RemoteLayerTreeNode::initializeLayer()
 #endif
 }
 
-WebCore::GraphicsLayer::PlatformLayerID RemoteLayerTreeNode::layerID(CALayer *layer)
+CyberCore::GraphicsLayer::PlatformLayerID RemoteLayerTreeNode::layerID(CALayer *layer)
 {
     auto* node = forCALayer(layer);
-    return node ? node->layerID() : WebCore::GraphicsLayer::PlatformLayerID { };
+    return node ? node->layerID() : CyberCore::GraphicsLayer::PlatformLayerID { };
 }
 
 RemoteLayerTreeNode* RemoteLayerTreeNode::forCALayer(CALayer *layer)

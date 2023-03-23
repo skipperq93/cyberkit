@@ -40,23 +40,23 @@ template<> struct ClientTraits<WKBundlePageLoaderClientBase> {
 };
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class InjectedBundlePageLoaderClient : public API::Client<WKBundlePageLoaderClientBase>, public API::InjectedBundle::PageLoaderClient {
 public:
     explicit InjectedBundlePageLoaderClient(const WKBundlePageLoaderClientBase*);
 
-    void willLoadURLRequest(WebPage&, const WebCore::ResourceRequest&, API::Object*) override;
-    void willLoadDataRequest(WebPage&, const WebCore::ResourceRequest&, RefPtr<WebCore::FragmentedSharedBuffer>, const WTF::String&, const WTF::String&, const URL&, API::Object*) override;
+    void willLoadURLRequest(WebPage&, const CyberCore::ResourceRequest&, API::Object*) override;
+    void willLoadDataRequest(WebPage&, const CyberCore::ResourceRequest&, RefPtr<CyberCore::FragmentedSharedBuffer>, const WTF::String&, const WTF::String&, const URL&, API::Object*) override;
 
     void didStartProvisionalLoadForFrame(WebPage&, WebFrame&, RefPtr<API::Object>&) override;
     void didReceiveServerRedirectForProvisionalLoadForFrame(WebPage&, WebFrame&, RefPtr<API::Object>&) override;
-    void didFailProvisionalLoadWithErrorForFrame(WebPage&, WebFrame&, const WebCore::ResourceError&, RefPtr<API::Object>&) override;
+    void didFailProvisionalLoadWithErrorForFrame(WebPage&, WebFrame&, const CyberCore::ResourceError&, RefPtr<API::Object>&) override;
     void didCommitLoadForFrame(WebPage&, WebFrame&, RefPtr<API::Object>&) override;
     void didFinishDocumentLoadForFrame(WebPage&, WebFrame&, RefPtr<API::Object>&) override;
     void didFinishLoadForFrame(WebPage&, WebFrame&, RefPtr<API::Object>&) override;
     void didFinishProgress(WebPage&) override;
-    void didFailLoadWithErrorForFrame(WebPage&, WebFrame&, const WebCore::ResourceError&, RefPtr<API::Object>&) override;
+    void didFailLoadWithErrorForFrame(WebPage&, WebFrame&, const CyberCore::ResourceError&, RefPtr<API::Object>&) override;
     void didSameDocumentNavigationForFrame(WebPage&, WebFrame&, SameDocumentNavigationType, RefPtr<API::Object>&) override;
     void didReceiveTitleForFrame(WebPage&, const WTF::String&, WebFrame&, RefPtr<API::Object>&) override;
     void didRemoveFrameFromHierarchy(WebPage&, WebFrame&, RefPtr<API::Object>&) override;
@@ -66,28 +66,28 @@ public:
     void didFirstLayoutForFrame(WebPage&, WebFrame&, RefPtr<API::Object>&) override;
     void didFirstVisuallyNonEmptyLayoutForFrame(WebPage&, WebFrame&, RefPtr<API::Object>&) override;
     void didLayoutForFrame(WebPage&, WebFrame&) override;
-    void didReachLayoutMilestone(WebPage&, OptionSet<WebCore::LayoutMilestone>, RefPtr<API::Object>&) override;
+    void didReachLayoutMilestone(WebPage&, OptionSet<CyberCore::LayoutMilestone>, RefPtr<API::Object>&) override;
 
-    void didClearWindowObjectForFrame(WebPage&, WebFrame&, WebCore::DOMWrapperWorld&) override;
+    void didClearWindowObjectForFrame(WebPage&, WebFrame&, CyberCore::DOMWrapperWorld&) override;
     void didCancelClientRedirectForFrame(WebPage&, WebFrame&) override;
     void willPerformClientRedirectForFrame(WebPage&, WebFrame&, const WTF::String&, double /*delay*/, WallTime /*date*/) override;
     void didHandleOnloadEventsForFrame(WebPage&, WebFrame&) override;
 
-    void globalObjectIsAvailableForFrame(WebPage&, WebFrame&, WebCore::DOMWrapperWorld&) override;
-    void serviceWorkerGlobalObjectIsAvailableForFrame(WebPage&, WebFrame&, WebCore::DOMWrapperWorld&) override;
-    void willDisconnectDOMWindowExtensionFromGlobalObject(WebPage&, WebCore::DOMWindowExtension*) override;
-    void didReconnectDOMWindowExtensionToGlobalObject(WebPage&, WebCore::DOMWindowExtension*) override;
-    void willDestroyGlobalObjectForDOMWindowExtension(WebPage&, WebCore::DOMWindowExtension*) override;
+    void globalObjectIsAvailableForFrame(WebPage&, WebFrame&, CyberCore::DOMWrapperWorld&) override;
+    void serviceWorkerGlobalObjectIsAvailableForFrame(WebPage&, WebFrame&, CyberCore::DOMWrapperWorld&) override;
+    void willDisconnectDOMWindowExtensionFromGlobalObject(WebPage&, CyberCore::DOMWindowExtension*) override;
+    void didReconnectDOMWindowExtensionToGlobalObject(WebPage&, CyberCore::DOMWindowExtension*) override;
+    void willDestroyGlobalObjectForDOMWindowExtension(WebPage&, CyberCore::DOMWindowExtension*) override;
 
-    void willInjectUserScriptForFrame(WebKit::WebPage&, WebKit::WebFrame&, WebCore::DOMWrapperWorld&) final;
+    void willInjectUserScriptForFrame(CyberKit::WebPage&, CyberKit::WebFrame&, CyberCore::DOMWrapperWorld&) final;
 
     bool shouldForceUniversalAccessFromLocalURL(WebPage&, const WTF::String&) override;
 
     void featuresUsedInPage(WebPage&, const Vector<WTF::String>&) override;
 
-    OptionSet<WebCore::LayoutMilestone> layoutMilestones() const override;
+    OptionSet<CyberCore::LayoutMilestone> layoutMilestones() const override;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // InjectedBundlePageLoaderClient_h

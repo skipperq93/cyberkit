@@ -29,7 +29,7 @@
 #include "CachedResource.h"
 #include "ResourceTiming.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static PerformanceNavigationTiming::NavigationType toPerformanceNavigationTimingNavigationType(NavigationType navigationType)
 {
@@ -48,7 +48,7 @@ static PerformanceNavigationTiming::NavigationType toPerformanceNavigationTiming
     return PerformanceNavigationTiming::NavigationType::Navigate;
 }
 
-PerformanceNavigationTiming::PerformanceNavigationTiming(MonotonicTime timeOrigin, CachedResource& resource, const DocumentLoadTiming& documentLoadTiming, const NetworkLoadMetrics& metrics, const DocumentEventTiming& documentEventTiming, const SecurityOrigin& origin, WebCore::NavigationType navigationType)
+PerformanceNavigationTiming::PerformanceNavigationTiming(MonotonicTime timeOrigin, CachedResource& resource, const DocumentLoadTiming& documentLoadTiming, const NetworkLoadMetrics& metrics, const DocumentEventTiming& documentEventTiming, const SecurityOrigin& origin, CyberCore::NavigationType navigationType)
     : PerformanceResourceTiming(timeOrigin, ResourceTiming::fromLoad(resource, resource.response().url(), "navigation"_s, documentLoadTiming, metrics, origin))
     , m_documentEventTiming(documentEventTiming)
     , m_documentLoadTiming(documentLoadTiming)
@@ -145,4 +145,4 @@ void PerformanceNavigationTiming::navigationFinished(const NetworkLoadMetrics& m
     m_resourceTiming.networkLoadMetrics().updateFromFinalMetrics(metrics);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

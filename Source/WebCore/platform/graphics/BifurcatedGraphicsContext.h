@@ -28,7 +28,7 @@
 #include "GraphicsContext.h"
 #include <wtf/UniqueRef.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // BifurcatedGraphicsContext allows you to duplicate painting between two given GraphicsContexts;
 // for example, for painting into a bitmap-backed and a display-list-backed context simultaneously.

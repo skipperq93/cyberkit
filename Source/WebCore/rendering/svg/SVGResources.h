@@ -28,7 +28,7 @@
 #include <wtf/Noncopyable.h>
 #include <wtf/WeakHashSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class RenderElement;
@@ -144,4 +144,4 @@ private:
     WeakPtr<RenderSVGResourceContainer> m_linkedResource;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

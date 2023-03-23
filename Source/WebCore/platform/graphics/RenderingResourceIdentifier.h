@@ -27,9 +27,9 @@
 
 #include <wtf/ObjectIdentifier.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum RenderingResourceIdentifierType { };
 using RenderingResourceIdentifier = ObjectIdentifier<RenderingResourceIdentifierType>;
 
-} // namespace WebCore
+} // namespace CyberCore

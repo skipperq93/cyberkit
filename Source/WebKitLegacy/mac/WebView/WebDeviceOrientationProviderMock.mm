@@ -28,7 +28,7 @@
 #import "WebDeviceOrientationInternal.h"
 #import <wtf/RetainPtr.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 @implementation WebDeviceOrientationProviderMockInternal
 
@@ -111,7 +111,7 @@ using namespace WebCore;
     return [m_internal lastOrientation];
 }
 
-- (void)setController:(WebCore::DeviceOrientationController*)controller
+- (void)setController:(CyberCore::DeviceOrientationController*)controller
 {
    [m_internal setController:controller];
 }

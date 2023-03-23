@@ -403,42 +403,42 @@ std::optional<JSC::JSValue> jsValueForReplyArguments(JSC::JSGlobalObject* global
 
 Vector<ASCIILiteral> serializedIdentifiers()
 {
-    static_assert(sizeof(uint64_t) == sizeof(WebCore::BackgroundFetchRecordIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebCore::BroadcastChannelIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebCore::DOMCacheIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebCore::DictationContext));
-    static_assert(sizeof(uint64_t) == sizeof(WebCore::DisplayList::ItemBufferIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebCore::ElementIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebCore::FetchIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebCore::FileSystemHandleIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebCore::FileSystemSyncAccessHandleIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebCore::ImageDecoderIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebCore::LayerHostingContextIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebCore::LibWebRTCSocketIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebCore::MediaKeySystemRequestIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebCore::MediaPlayerIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebCore::MediaSessionIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebCore::OpaqueOriginIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebCore::PageIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebCore::PlaybackTargetClientContextIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebCore::PushSubscriptionIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebCore::PortIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebCore::ProcessIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebCore::RealtimeMediaSourceIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebCore::RenderingResourceIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebCore::ResourceLoaderIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebCore::RTCDataChannelLocalIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebCore::SWServerConnectionIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebCore::ServiceWorkerIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebCore::ServiceWorkerJobIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebCore::ServiceWorkerRegistrationIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebCore::SharedWorkerIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebCore::SleepDisablerIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebCore::SpeechRecognitionConnectionClientIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebCore::TextCheckingRequestIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebCore::TextManipulationTokenIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebCore::UserMediaRequestIdentifier));
-    static_assert(sizeof(uint64_t) == sizeof(WebCore::WebSocketIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberCore::BackgroundFetchRecordIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberCore::BroadcastChannelIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberCore::DOMCacheIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberCore::DictationContext));
+    static_assert(sizeof(uint64_t) == sizeof(CyberCore::DisplayList::ItemBufferIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberCore::ElementIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberCore::FetchIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberCore::FileSystemHandleIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberCore::FileSystemSyncAccessHandleIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberCore::ImageDecoderIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberCore::LayerHostingContextIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberCore::LibWebRTCSocketIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberCore::MediaKeySystemRequestIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberCore::MediaPlayerIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberCore::MediaSessionIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberCore::OpaqueOriginIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberCore::PageIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberCore::PlaybackTargetClientContextIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberCore::PushSubscriptionIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberCore::PortIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberCore::ProcessIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberCore::RealtimeMediaSourceIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberCore::RenderingResourceIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberCore::ResourceLoaderIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberCore::RTCDataChannelLocalIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberCore::SWServerConnectionIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberCore::ServiceWorkerIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberCore::ServiceWorkerJobIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberCore::ServiceWorkerRegistrationIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberCore::SharedWorkerIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberCore::SleepDisablerIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberCore::SpeechRecognitionConnectionClientIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberCore::TextCheckingRequestIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberCore::TextManipulationTokenIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberCore::UserMediaRequestIdentifier));
+    static_assert(sizeof(uint64_t) == sizeof(CyberCore::WebSocketIdentifier));
     static_assert(sizeof(uint64_t) == sizeof(WebKit::AudioMediaStreamTrackRendererInternalUnitIdentifier));
     static_assert(sizeof(uint64_t) == sizeof(WebKit::AuthenticationChallengeIdentifier));
     static_assert(sizeof(uint64_t) == sizeof(WebKit::ContentWorldIdentifier));
@@ -501,42 +501,42 @@ Vector<ASCIILiteral> serializedIdentifiers()
     static_assert(sizeof(uint64_t) == sizeof(WebKit::WebPageProxyIdentifier));
     static_assert(sizeof(uint64_t) == sizeof(WebKit::WebURLSchemeHandlerIdentifier));
     return {
-        "WebCore::BackgroundFetchRecordIdentifier"_s,
-        "WebCore::BroadcastChannelIdentifier"_s,
-        "WebCore::DOMCacheIdentifier"_s,
-        "WebCore::DictationContext"_s,
-        "WebCore::DisplayList::ItemBufferIdentifier"_s,
-        "WebCore::ElementIdentifier"_s,
-        "WebCore::FetchIdentifier"_s,
-        "WebCore::FileSystemHandleIdentifier"_s,
-        "WebCore::FileSystemSyncAccessHandleIdentifier"_s,
-        "WebCore::ImageDecoderIdentifier"_s,
-        "WebCore::LayerHostingContextIdentifier"_s,
-        "WebCore::LibWebRTCSocketIdentifier"_s,
-        "WebCore::MediaKeySystemRequestIdentifier"_s,
-        "WebCore::MediaPlayerIdentifier"_s,
-        "WebCore::MediaSessionIdentifier"_s,
-        "WebCore::OpaqueOriginIdentifier"_s,
-        "WebCore::PageIdentifier"_s,
-        "WebCore::PlaybackTargetClientContextIdentifier"_s,
-        "WebCore::PushSubscriptionIdentifier"_s,
-        "WebCore::PortIdentifier"_s,
-        "WebCore::ProcessIdentifier"_s,
-        "WebCore::RealtimeMediaSourceIdentifier"_s,
-        "WebCore::RenderingResourceIdentifier"_s,
-        "WebCore::ResourceLoaderIdentifier"_s,
-        "WebCore::RTCDataChannelLocalIdentifier"_s,
-        "WebCore::SWServerConnectionIdentifier"_s,
-        "WebCore::ServiceWorkerIdentifier"_s,
-        "WebCore::ServiceWorkerJobIdentifier"_s,
-        "WebCore::ServiceWorkerRegistrationIdentifier"_s,
-        "WebCore::SharedWorkerIdentifier"_s,
-        "WebCore::SleepDisablerIdentifier"_s,
-        "WebCore::SpeechRecognitionConnectionClientIdentifier"_s,
-        "WebCore::TextCheckingRequestIdentifier"_s,
-        "WebCore::TextManipulationTokenIdentifier"_s,
-        "WebCore::UserMediaRequestIdentifier"_s,
-        "WebCore::WebSocketIdentifier"_s,
+        "CyberCore::BackgroundFetchRecordIdentifier"_s,
+        "CyberCore::BroadcastChannelIdentifier"_s,
+        "CyberCore::DOMCacheIdentifier"_s,
+        "CyberCore::DictationContext"_s,
+        "CyberCore::DisplayList::ItemBufferIdentifier"_s,
+        "CyberCore::ElementIdentifier"_s,
+        "CyberCore::FetchIdentifier"_s,
+        "CyberCore::FileSystemHandleIdentifier"_s,
+        "CyberCore::FileSystemSyncAccessHandleIdentifier"_s,
+        "CyberCore::ImageDecoderIdentifier"_s,
+        "CyberCore::LayerHostingContextIdentifier"_s,
+        "CyberCore::LibWebRTCSocketIdentifier"_s,
+        "CyberCore::MediaKeySystemRequestIdentifier"_s,
+        "CyberCore::MediaPlayerIdentifier"_s,
+        "CyberCore::MediaSessionIdentifier"_s,
+        "CyberCore::OpaqueOriginIdentifier"_s,
+        "CyberCore::PageIdentifier"_s,
+        "CyberCore::PlaybackTargetClientContextIdentifier"_s,
+        "CyberCore::PushSubscriptionIdentifier"_s,
+        "CyberCore::PortIdentifier"_s,
+        "CyberCore::ProcessIdentifier"_s,
+        "CyberCore::RealtimeMediaSourceIdentifier"_s,
+        "CyberCore::RenderingResourceIdentifier"_s,
+        "CyberCore::ResourceLoaderIdentifier"_s,
+        "CyberCore::RTCDataChannelLocalIdentifier"_s,
+        "CyberCore::SWServerConnectionIdentifier"_s,
+        "CyberCore::ServiceWorkerIdentifier"_s,
+        "CyberCore::ServiceWorkerJobIdentifier"_s,
+        "CyberCore::ServiceWorkerRegistrationIdentifier"_s,
+        "CyberCore::SharedWorkerIdentifier"_s,
+        "CyberCore::SleepDisablerIdentifier"_s,
+        "CyberCore::SpeechRecognitionConnectionClientIdentifier"_s,
+        "CyberCore::TextCheckingRequestIdentifier"_s,
+        "CyberCore::TextManipulationTokenIdentifier"_s,
+        "CyberCore::UserMediaRequestIdentifier"_s,
+        "CyberCore::WebSocketIdentifier"_s,
         "WebKit::AudioMediaStreamTrackRendererInternalUnitIdentifier"_s,
         "WebKit::AuthenticationChallengeIdentifier"_s,
         "WebKit::ContentWorldIdentifier"_s,
@@ -715,7 +715,7 @@ std::optional<Vector<ArgumentDescription>> messageArgumentDescriptions(MessageNa
         };
     case MessageName::TestWithLegacyReceiver_SetVideoLayerID:
         return Vector<ArgumentDescription> {
-            { "videoLayerID", "WebCore::GraphicsLayer::PlatformLayerID", nullptr, false },
+            { "videoLayerID", "CyberCore::GraphicsLayer::PlatformLayerID", nullptr, false },
         };
 #if PLATFORM(MAC)
     case MessageName::TestWithLegacyReceiver_DidCreateWebProcessConnection:
@@ -824,7 +824,7 @@ std::optional<Vector<ArgumentDescription>> messageArgumentDescriptions(MessageNa
         };
     case MessageName::TestWithoutAttributes_SetVideoLayerID:
         return Vector<ArgumentDescription> {
-            { "videoLayerID", "WebCore::GraphicsLayer::PlatformLayerID", nullptr, false },
+            { "videoLayerID", "CyberCore::GraphicsLayer::PlatformLayerID", nullptr, false },
         };
 #if PLATFORM(MAC)
     case MessageName::TestWithoutAttributes_DidCreateWebProcessConnection:
@@ -871,7 +871,7 @@ std::optional<Vector<ArgumentDescription>> messageArgumentDescriptions(MessageNa
         return Vector<ArgumentDescription> { };
     case MessageName::TestWithImageData_SendImageData:
         return Vector<ArgumentDescription> {
-            { "s0", "RefPtr<WebCore::ImageData>", nullptr, false },
+            { "s0", "RefPtr<CyberCore::ImageData>", nullptr, false },
         };
     case MessageName::TestWithImageData_ReceiveImageData:
         return Vector<ArgumentDescription> { };
@@ -960,7 +960,7 @@ std::optional<Vector<ArgumentDescription>> messageReplyArgumentDescriptions(Mess
         return Vector<ArgumentDescription> { };
     case MessageName::TestWithLegacyReceiver_GetPlugins:
         return Vector<ArgumentDescription> {
-            { "plugins", "Vector<WebCore::PluginInfo>", nullptr, false },
+            { "plugins", "Vector<CyberCore::PluginInfo>", nullptr, false },
         };
     case MessageName::TestWithLegacyReceiver_GetPluginProcessConnection:
         return Vector<ArgumentDescription> {
@@ -971,7 +971,7 @@ std::optional<Vector<ArgumentDescription>> messageReplyArgumentDescriptions(Mess
 #if PLATFORM(MAC)
     case MessageName::TestWithLegacyReceiver_InterpretKeyEvent:
         return Vector<ArgumentDescription> {
-            { "commandName", "Vector<WebCore::KeypressCommand>", nullptr, false },
+            { "commandName", "Vector<CyberCore::KeypressCommand>", nullptr, false },
         };
 #endif
 #endif
@@ -984,7 +984,7 @@ std::optional<Vector<ArgumentDescription>> messageReplyArgumentDescriptions(Mess
         return Vector<ArgumentDescription> { };
     case MessageName::TestWithoutAttributes_GetPlugins:
         return Vector<ArgumentDescription> {
-            { "plugins", "Vector<WebCore::PluginInfo>", nullptr, false },
+            { "plugins", "Vector<CyberCore::PluginInfo>", nullptr, false },
         };
     case MessageName::TestWithoutAttributes_GetPluginProcessConnection:
         return Vector<ArgumentDescription> {
@@ -995,7 +995,7 @@ std::optional<Vector<ArgumentDescription>> messageReplyArgumentDescriptions(Mess
 #if PLATFORM(MAC)
     case MessageName::TestWithoutAttributes_InterpretKeyEvent:
         return Vector<ArgumentDescription> {
-            { "commandName", "Vector<WebCore::KeypressCommand>", nullptr, false },
+            { "commandName", "Vector<CyberCore::KeypressCommand>", nullptr, false },
         };
 #endif
 #endif
@@ -1005,7 +1005,7 @@ std::optional<Vector<ArgumentDescription>> messageReplyArgumentDescriptions(Mess
         };
     case MessageName::TestWithImageData_ReceiveImageData:
         return Vector<ArgumentDescription> {
-            { "r0", "RefPtr<WebCore::ImageData>", nullptr, false },
+            { "r0", "RefPtr<CyberCore::ImageData>", nullptr, false },
         };
     case MessageName::TestWithStream_SendStringAsync:
         return Vector<ArgumentDescription> {

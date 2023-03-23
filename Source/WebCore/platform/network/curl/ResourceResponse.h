@@ -30,7 +30,7 @@
 
 typedef struct _CFURLResponse* CFURLResponseRef;
 
-namespace WebCore {
+namespace CyberCore {
 
 class CurlResponse;
 
@@ -75,4 +75,4 @@ private:
     void setStatusLine(StringView);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

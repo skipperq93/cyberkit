@@ -28,7 +28,7 @@
 #import "InjectedBundleCSSStyleDeclarationHandle.h"
 #import "WKObject.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 template<> struct WrapperTraits<InjectedBundleCSSStyleDeclarationHandle> {
     using WrapperClass = WKWebProcessPlugInCSSStyleDeclarationHandle;
@@ -38,6 +38,6 @@ template<> struct WrapperTraits<InjectedBundleCSSStyleDeclarationHandle> {
 
 @interface WKWebProcessPlugInCSSStyleDeclarationHandle () <WKObject>
 
-@property (readonly) WebKit::InjectedBundleCSSStyleDeclarationHandle& _cssStyleDeclarationHandle;
+@property (readonly) CyberKit::InjectedBundleCSSStyleDeclarationHandle& _cssStyleDeclarationHandle;
 
 @end

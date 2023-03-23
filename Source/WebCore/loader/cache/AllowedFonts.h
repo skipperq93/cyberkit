@@ -29,7 +29,7 @@
 #include <wtf/Forward.h>
 #include <wtf/RobinHoodHashSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // This setting is used to define which types of fonts are allowed to be downloaded and loaded into the system.
 // Any: any font binary will be downloaded, no checks will be done during load.
@@ -44,16 +44,16 @@ enum class DownloadableBinaryFontAllowedTypes: uint8_t {
 bool isFontBinaryAllowed(Span<const uint8_t>, DownloadableBinaryFontAllowedTypes);
 bool isFontBinaryAllowed(const void*, size_t, DownloadableBinaryFontAllowedTypes);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::DownloadableBinaryFontAllowedTypes> {
+template<> struct EnumTraits<CyberCore::DownloadableBinaryFontAllowedTypes> {
     using values = EnumValues<
-        WebCore::DownloadableBinaryFontAllowedTypes,
-        WebCore::DownloadableBinaryFontAllowedTypes::Any,
-        WebCore::DownloadableBinaryFontAllowedTypes::Restricted,
-        WebCore::DownloadableBinaryFontAllowedTypes::None
+        CyberCore::DownloadableBinaryFontAllowedTypes,
+        CyberCore::DownloadableBinaryFontAllowedTypes::Any,
+        CyberCore::DownloadableBinaryFontAllowedTypes::Restricted,
+        CyberCore::DownloadableBinaryFontAllowedTypes::None
     >;
 };
 

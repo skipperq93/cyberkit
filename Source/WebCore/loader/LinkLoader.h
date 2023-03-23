@@ -38,7 +38,7 @@
 #include "LinkRelAttribute.h"
 #include "ReferrerPolicy.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class LinkPreloadResourceClient;

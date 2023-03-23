@@ -32,24 +32,24 @@
 #include <CyberCore/MediaPlayerIdentifier.h>
 #include <CyberCore/VideoTrackPrivate.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class GPUProcessConnection;
 class MediaPlayerPrivateRemote;
 struct VideoTrackPrivateRemoteConfiguration;
 
 class VideoTrackPrivateRemote
-    : public WebCore::VideoTrackPrivate {
+    : public CyberCore::VideoTrackPrivate {
     WTF_MAKE_NONCOPYABLE(VideoTrackPrivateRemote)
 public:
-    static Ref<VideoTrackPrivateRemote> create(GPUProcessConnection& gpuProcessConnection, WebCore::MediaPlayerIdentifier playerIdentifier, TrackPrivateRemoteIdentifier identifier, VideoTrackPrivateRemoteConfiguration&& configuration)
+    static Ref<VideoTrackPrivateRemote> create(GPUProcessConnection& gpuProcessConnection, CyberCore::MediaPlayerIdentifier playerIdentifier, TrackPrivateRemoteIdentifier identifier, VideoTrackPrivateRemoteConfiguration&& configuration)
     {
         return adoptRef(*new VideoTrackPrivateRemote(gpuProcessConnection, playerIdentifier, identifier, WTFMove(configuration)));
     }
 
     void updateConfiguration(VideoTrackPrivateRemoteConfiguration&&);
 
-    using VideoTrackKind = WebCore::VideoTrackPrivate::Kind;
+    using VideoTrackKind = CyberCore::VideoTrackPrivate::Kind;
     VideoTrackKind kind() const final { return m_kind; }
     AtomString id() const final { return m_id; }
     AtomString label() const final { return m_label; }
@@ -58,12 +58,12 @@ public:
     MediaTime startTimeVariance() const final { return m_startTimeVariance; }
 
 private:
-    VideoTrackPrivateRemote(GPUProcessConnection&, WebCore::MediaPlayerIdentifier, TrackPrivateRemoteIdentifier, VideoTrackPrivateRemoteConfiguration&&);
+    VideoTrackPrivateRemote(GPUProcessConnection&, CyberCore::MediaPlayerIdentifier, TrackPrivateRemoteIdentifier, VideoTrackPrivateRemoteConfiguration&&);
 
     void setSelected(bool) final;
 
     WeakPtr<GPUProcessConnection> m_gpuProcessConnection;
-    WebCore::MediaPlayerIdentifier m_playerIdentifier;
+    CyberCore::MediaPlayerIdentifier m_playerIdentifier;
     VideoTrackKind m_kind { None };
     AtomString m_id;
     AtomString m_label;
@@ -73,6 +73,6 @@ private:
     TrackPrivateRemoteIdentifier m_identifier;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS) && ENABLE(VIDEO)

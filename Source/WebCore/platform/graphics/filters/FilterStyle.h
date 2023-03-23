@@ -28,7 +28,7 @@
 #include "FloatRect.h"
 #include "GraphicsStyle.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct FilterStyle {
     std::optional<GraphicsStyle> style;
@@ -38,4 +38,4 @@ struct FilterStyle {
 
 using FilterStyleVector = Vector<FilterStyle>;
 
-} // namespace WebCore
+} // namespace CyberCore

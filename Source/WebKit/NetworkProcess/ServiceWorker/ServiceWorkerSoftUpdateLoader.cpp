@@ -40,7 +40,7 @@
 
 namespace WebKit {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 ServiceWorkerSoftUpdateLoader::ServiceWorkerSoftUpdateLoader(NetworkSession& session, ServiceWorkerJobData&& jobData, bool shouldRefreshCache, ResourceRequest&& request, Handler&& completionHandler)
     : m_completionHandler(WTFMove(completionHandler))
@@ -173,7 +173,7 @@ ResourceError ServiceWorkerSoftUpdateLoader::processResponse(const ResourceRespo
     return { };
 }
 
-void ServiceWorkerSoftUpdateLoader::didReceiveBuffer(const WebCore::FragmentedSharedBuffer& buffer, uint64_t reportedEncodedDataLength)
+void ServiceWorkerSoftUpdateLoader::didReceiveBuffer(const CyberCore::FragmentedSharedBuffer& buffer, uint64_t reportedEncodedDataLength)
 {
     if (!m_decoder) {
         if (!m_responseEncoding.isEmpty())
@@ -188,7 +188,7 @@ void ServiceWorkerSoftUpdateLoader::didReceiveBuffer(const WebCore::FragmentedSh
     });
 }
 
-void ServiceWorkerSoftUpdateLoader::didFinishLoading(const WebCore::NetworkLoadMetrics&)
+void ServiceWorkerSoftUpdateLoader::didFinishLoading(const CyberCore::NetworkLoadMetrics&)
 {
     if (m_decoder)
         m_script.append(m_decoder->flush());

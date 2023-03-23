@@ -48,7 +48,7 @@
 #include "Settings.h"
 #include <wtf/SortedArrayMap.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 DebugPageOverlays* DebugPageOverlays::sharedDebugOverlays;
 

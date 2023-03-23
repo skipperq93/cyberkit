@@ -32,7 +32,7 @@
 #include <algorithm>
 #include <wtf/MathExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 AudioResampler::AudioResampler()
 {
@@ -118,6 +118,6 @@ void AudioResampler::reset()
         m_kernels[i]->reset();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

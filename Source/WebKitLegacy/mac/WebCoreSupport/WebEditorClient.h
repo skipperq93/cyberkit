@@ -45,13 +45,13 @@
 @class WebView;
 @class WebEditorUndoTarget;
 
-class WebEditorClient final : public WebCore::EditorClient, public WebCore::TextCheckerClient, public CanMakeWeakPtr<WebEditorClient> {
+class WebEditorClient final : public CyberCore::EditorClient, public CyberCore::TextCheckerClient, public CanMakeWeakPtr<WebEditorClient> {
     WTF_MAKE_FAST_ALLOCATED;
 public:
     WebEditorClient(WebView *);
     virtual ~WebEditorClient();
 
-    void didCheckSucceed(WebCore::TextCheckingRequestIdentifier, NSArray *results);
+    void didCheckSucceed(CyberCore::TextCheckingRequestIdentifier, NSArray *results);
 
 private:
     bool isGrammarCheckingEnabled() final;
@@ -63,27 +63,27 @@ private:
     bool smartInsertDeleteEnabled() final;
     bool isSelectTrailingWhitespaceEnabled() const final;
 
-    bool shouldDeleteRange(const std::optional<WebCore::SimpleRange>&) final;
+    bool shouldDeleteRange(const std::optional<CyberCore::SimpleRange>&) final;
 
-    bool shouldBeginEditing(const WebCore::SimpleRange&) final;
-    bool shouldEndEditing(const WebCore::SimpleRange&) final;
-    bool shouldInsertNode(WebCore::Node&, const std::optional<WebCore::SimpleRange>&, WebCore::EditorInsertAction) final;
-    bool shouldInsertText(const String&, const std::optional<WebCore::SimpleRange>&, WebCore::EditorInsertAction) final;
-    bool shouldChangeSelectedRange(const std::optional<WebCore::SimpleRange>& fromRange, const std::optional<WebCore::SimpleRange>& toRange, WebCore::Affinity, bool stillSelecting) final;
+    bool shouldBeginEditing(const CyberCore::SimpleRange&) final;
+    bool shouldEndEditing(const CyberCore::SimpleRange&) final;
+    bool shouldInsertNode(CyberCore::Node&, const std::optional<CyberCore::SimpleRange>&, CyberCore::EditorInsertAction) final;
+    bool shouldInsertText(const String&, const std::optional<CyberCore::SimpleRange>&, CyberCore::EditorInsertAction) final;
+    bool shouldChangeSelectedRange(const std::optional<CyberCore::SimpleRange>& fromRange, const std::optional<CyberCore::SimpleRange>& toRange, CyberCore::Affinity, bool stillSelecting) final;
 
-    bool shouldApplyStyle(const WebCore::StyleProperties&, const std::optional<WebCore::SimpleRange>&) final;
+    bool shouldApplyStyle(const CyberCore::StyleProperties&, const std::optional<CyberCore::SimpleRange>&) final;
     void didApplyStyle() final;
 
-    bool shouldMoveRangeAfterDelete(const WebCore::SimpleRange&, const WebCore::SimpleRange& rangeToBeReplaced) final;
+    bool shouldMoveRangeAfterDelete(const CyberCore::SimpleRange&, const CyberCore::SimpleRange& rangeToBeReplaced) final;
 
     void didBeginEditing() final;
     void didEndEditing() final;
-    void willWriteSelectionToPasteboard(const std::optional<WebCore::SimpleRange>&) final;
+    void willWriteSelectionToPasteboard(const std::optional<CyberCore::SimpleRange>&) final;
     void didWriteSelectionToPasteboard() final;
-    void getClientPasteboardData(const std::optional<WebCore::SimpleRange>&, Vector<String>& pasteboardTypes, Vector<RefPtr<WebCore::SharedBuffer>>& pasteboardData) final;
+    void getClientPasteboardData(const std::optional<CyberCore::SimpleRange>&, Vector<String>& pasteboardTypes, Vector<RefPtr<CyberCore::SharedBuffer>>& pasteboardData) final;
 
     void setInsertionPasteboard(const String&) final;
-    WebCore::DOMPasteAccessResponse requestDOMPasteAccess(WebCore::DOMPasteAccessCategory, const String&) final { return WebCore::DOMPasteAccessResponse::DeniedForGesture; }
+    CyberCore::DOMPasteAccessResponse requestDOMPasteAccess(CyberCore::DOMPasteAccessCategory, const String&) final { return CyberCore::DOMPasteAccessResponse::DeniedForGesture; }
 
 #if USE(APPKIT)
     void uppercaseWord() final;
@@ -112,34 +112,34 @@ private:
     TextCheckerClient* textChecker() final { return this; }
 
     void respondToChangedContents() final;
-    void respondToChangedSelection(WebCore::Frame*) final;
+    void respondToChangedSelection(CyberCore::Frame*) final;
     void didEndUserTriggeredSelectionChanges() final { }
     void updateEditorStateAfterLayoutIfEditabilityChanged() final;
-    void discardedComposition(WebCore::Frame*) final;
+    void discardedComposition(CyberCore::Frame*) final;
     void canceledComposition() final;
     void didUpdateComposition() final { }
 
-    void registerUndoStep(WebCore::UndoStep&) final;
-    void registerRedoStep(WebCore::UndoStep&) final;
+    void registerUndoStep(CyberCore::UndoStep&) final;
+    void registerRedoStep(CyberCore::UndoStep&) final;
     void clearUndoRedoOperations() final;
 
-    bool canCopyCut(WebCore::Frame*, bool defaultValue) const final;
-    bool canPaste(WebCore::Frame*, bool defaultValue) const final;
+    bool canCopyCut(CyberCore::Frame*, bool defaultValue) const final;
+    bool canPaste(CyberCore::Frame*, bool defaultValue) const final;
     bool canUndo() const final;
     bool canRedo() const final;
     
     void undo() final;
     void redo() final;
     
-    void handleKeyboardEvent(WebCore::KeyboardEvent&) final;
-    void handleInputMethodKeydown(WebCore::KeyboardEvent&) final;
+    void handleKeyboardEvent(CyberCore::KeyboardEvent&) final;
+    void handleInputMethodKeydown(CyberCore::KeyboardEvent&) final;
 
-    void textFieldDidBeginEditing(WebCore::Element&) final;
-    void textFieldDidEndEditing(WebCore::Element&) final;
-    void textDidChangeInTextField(WebCore::Element&) final;
-    bool doTextFieldCommandFromEvent(WebCore::Element&, WebCore::KeyboardEvent*) final;
-    void textWillBeDeletedInTextField(WebCore::Element&) final;
-    void textDidChangeInTextArea(WebCore::Element&) final;
+    void textFieldDidBeginEditing(CyberCore::Element&) final;
+    void textFieldDidEndEditing(CyberCore::Element&) final;
+    void textDidChangeInTextField(CyberCore::Element&) final;
+    bool doTextFieldCommandFromEvent(CyberCore::Element&, CyberCore::KeyboardEvent*) final;
+    void textWillBeDeletedInTextField(CyberCore::Element&) final;
+    void textDidChangeInTextArea(CyberCore::Element&) final;
     void overflowScrollPositionChanged() final { };
     void subFrameScrollPositionChanged() final { };
 
@@ -148,55 +148,55 @@ private:
     void stopDelayingAndCoalescingContentChangeNotifications() final;
     bool hasRichlyEditableSelection() final;
     int getPasteboardItemsCount() final;
-    RefPtr<WebCore::DocumentFragment> documentFragmentFromDelegate(int index) final;
-    bool performsTwoStepPaste(WebCore::DocumentFragment*) final;
+    RefPtr<CyberCore::DocumentFragment> documentFragmentFromDelegate(int index) final;
+    bool performsTwoStepPaste(CyberCore::DocumentFragment*) final;
     void updateStringForFind(const String&) final { }
     bool shouldRevealCurrentSelectionAfterInsertion() const final;
     bool shouldSuppressPasswordEcho() const final;
 #endif
 
-    bool performTwoStepDrop(WebCore::DocumentFragment&, const WebCore::SimpleRange& destination, bool isMove) final;
+    bool performTwoStepDrop(CyberCore::DocumentFragment&, const CyberCore::SimpleRange& destination, bool isMove) final;
     
-    bool shouldEraseMarkersAfterChangeSelection(WebCore::TextCheckingType) const final;
+    bool shouldEraseMarkersAfterChangeSelection(CyberCore::TextCheckingType) const final;
     void ignoreWordInSpellDocument(const String&) final;
     void learnWord(const String&) final;
     void checkSpellingOfString(StringView, int* misspellingLocation, int* misspellingLength) final;
-    void checkGrammarOfString(StringView, Vector<WebCore::GrammarDetail>&, int* badGrammarLocation, int* badGrammarLength) final;
-    Vector<WebCore::TextCheckingResult> checkTextOfParagraph(StringView, OptionSet<WebCore::TextCheckingType> checkingTypes, const WebCore::VisibleSelection& currentSelection) final;
-    void updateSpellingUIWithGrammarString(const String&, const WebCore::GrammarDetail&) final;
+    void checkGrammarOfString(StringView, Vector<CyberCore::GrammarDetail>&, int* badGrammarLocation, int* badGrammarLength) final;
+    Vector<CyberCore::TextCheckingResult> checkTextOfParagraph(StringView, OptionSet<CyberCore::TextCheckingType> checkingTypes, const CyberCore::VisibleSelection& currentSelection) final;
+    void updateSpellingUIWithGrammarString(const String&, const CyberCore::GrammarDetail&) final;
     void updateSpellingUIWithMisspelledWord(const String&) final;
     void showSpellingUI(bool show) final;
     bool spellingUIIsShowing() final;
-    void getGuessesForWord(const String& word, const String& context, const WebCore::VisibleSelection& currentSelection, Vector<String>& guesses) final;
+    void getGuessesForWord(const String& word, const String& context, const CyberCore::VisibleSelection& currentSelection, Vector<String>& guesses) final;
 
     void willSetInputMethodState() final;
-    void setInputMethodState(WebCore::Element*) final;
-    void requestCheckingOfString(WebCore::TextCheckingRequest&, const WebCore::VisibleSelection& currentSelection) final;
+    void setInputMethodState(CyberCore::Element*) final;
+    void requestCheckingOfString(CyberCore::TextCheckingRequest&, const CyberCore::VisibleSelection& currentSelection) final;
 
 #if PLATFORM(MAC)
-    void requestCandidatesForSelection(const WebCore::VisibleSelection&) final;
+    void requestCandidatesForSelection(const CyberCore::VisibleSelection&) final;
     void handleRequestedCandidates(NSInteger, NSArray<NSTextCheckingResult *> *);
-    void handleAcceptedCandidateWithSoftSpaces(WebCore::TextCheckingResult) final;
+    void handleAcceptedCandidateWithSoftSpaces(CyberCore::TextCheckingResult) final;
 #endif
 
-    void registerUndoOrRedoStep(WebCore::UndoStep&, bool isRedo);
+    void registerUndoOrRedoStep(CyberCore::UndoStep&, bool isRedo);
 
 #if PLATFORM(IOS_FAMILY)
-    bool shouldAllowSingleClickToChangeSelection(WebCore::Node& targetNode, const WebCore::VisibleSelection& newSelection) const;
+    bool shouldAllowSingleClickToChangeSelection(CyberCore::Node& targetNode, const CyberCore::VisibleSelection& newSelection) const;
 #endif
 
     WebView *m_webView;
     RetainPtr<WebEditorUndoTarget> m_undoTarget;
     bool m_haveUndoRedoOperations { false };
     
-    HashMap<WebCore::TextCheckingRequestIdentifier, Ref<WebCore::TextCheckingRequest>> m_requestsInFlight;
+    HashMap<CyberCore::TextCheckingRequestIdentifier, Ref<CyberCore::TextCheckingRequest>> m_requestsInFlight;
 
 #if PLATFORM(IOS_FAMILY)
     bool m_delayingContentChangeNotifications { false };
     bool m_hasDelayedContentChangeNotification { false };
 #endif
 
-    WebCore::VisibleSelection m_lastSelectionForRequestedCandidates;
+    CyberCore::VisibleSelection m_lastSelectionForRequestedCandidates;
 
 #if PLATFORM(MAC)
     RetainPtr<NSString> m_paragraphContextForCandidateRequest;
@@ -208,28 +208,28 @@ private:
     EditorStateIsContentEditable m_lastEditorStateWasContentEditable { EditorStateIsContentEditable::Unset };
 };
 
-inline NSSelectionAffinity kit(WebCore::Affinity affinity)
+inline NSSelectionAffinity kit(CyberCore::Affinity affinity)
 {
     switch (affinity) {
-    case WebCore::Affinity::Upstream:
+    case CyberCore::Affinity::Upstream:
         return NSSelectionAffinityUpstream;
-    case WebCore::Affinity::Downstream:
+    case CyberCore::Affinity::Downstream:
         return NSSelectionAffinityDownstream;
     }
     ASSERT_NOT_REACHED();
     return NSSelectionAffinityDownstream;
 }
 
-inline WebCore::Affinity core(NSSelectionAffinity affinity)
+inline CyberCore::Affinity core(NSSelectionAffinity affinity)
 {
     switch (affinity) {
     case NSSelectionAffinityUpstream:
-        return WebCore::Affinity::Upstream;
+        return CyberCore::Affinity::Upstream;
     case NSSelectionAffinityDownstream:
-        return WebCore::Affinity::Downstream;
+        return CyberCore::Affinity::Downstream;
     }
     ASSERT_NOT_REACHED();
-    return WebCore::Affinity::Downstream;
+    return CyberCore::Affinity::Downstream;
 }
 
 #if PLATFORM(IOS_FAMILY)
@@ -248,7 +248,7 @@ inline int WebEditorClient::spellCheckerDocumentTag()
     return 0;
 }
 
-inline bool WebEditorClient::shouldEraseMarkersAfterChangeSelection(WebCore::TextCheckingType) const
+inline bool WebEditorClient::shouldEraseMarkersAfterChangeSelection(CyberCore::TextCheckingType) const
 {
     return true;
 }
@@ -265,11 +265,11 @@ inline void WebEditorClient::checkSpellingOfString(StringView, int* misspellingL
 {
 }
 
-inline void WebEditorClient::checkGrammarOfString(StringView, Vector<WebCore::GrammarDetail>&, int* badGrammarLocation, int* badGrammarLength)
+inline void WebEditorClient::checkGrammarOfString(StringView, Vector<CyberCore::GrammarDetail>&, int* badGrammarLocation, int* badGrammarLength)
 {
 }
 
-inline void WebEditorClient::updateSpellingUIWithGrammarString(const String&, const WebCore::GrammarDetail&)
+inline void WebEditorClient::updateSpellingUIWithGrammarString(const String&, const CyberCore::GrammarDetail&)
 {
 }
 
@@ -286,7 +286,7 @@ inline bool WebEditorClient::spellingUIIsShowing()
     return false;
 }
 
-inline void WebEditorClient::getGuessesForWord(const String&, const String&, const WebCore::VisibleSelection&, Vector<String>&)
+inline void WebEditorClient::getGuessesForWord(const String&, const String&, const CyberCore::VisibleSelection&, Vector<String>&)
 {
 }
 

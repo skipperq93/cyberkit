@@ -77,14 +77,14 @@ public:
     static SpellDocumentTag uniqueSpellDocumentTag(WebPageProxy*);
     static void closeSpellDocumentWithTag(SpellDocumentTag);
 #if USE(UNIFIED_TEXT_CHECKING)
-    static Vector<WebCore::TextCheckingResult> checkTextOfParagraph(SpellDocumentTag, StringView, int32_t insertionPoint, OptionSet<WebCore::TextCheckingType>, bool initialCapitalizationEnabled);
+    static Vector<CyberCore::TextCheckingResult> checkTextOfParagraph(SpellDocumentTag, StringView, int32_t insertionPoint, OptionSet<CyberCore::TextCheckingType>, bool initialCapitalizationEnabled);
 #endif
     static void checkSpellingOfString(SpellDocumentTag, StringView text, int32_t& misspellingLocation, int32_t& misspellingLength);
-    static void checkGrammarOfString(SpellDocumentTag, StringView text, Vector<WebCore::GrammarDetail>&, int32_t& badGrammarLocation, int32_t& badGrammarLength);
+    static void checkGrammarOfString(SpellDocumentTag, StringView text, Vector<CyberCore::GrammarDetail>&, int32_t& badGrammarLocation, int32_t& badGrammarLength);
     static bool spellingUIIsShowing();
     static void toggleSpellingUIIsShowing();
     static void updateSpellingUIWithMisspelledWord(SpellDocumentTag, const String& misspelledWord);
-    static void updateSpellingUIWithGrammarString(SpellDocumentTag, const String& badGrammarPhrase, const WebCore::GrammarDetail&);
+    static void updateSpellingUIWithGrammarString(SpellDocumentTag, const String& badGrammarPhrase, const CyberCore::GrammarDetail&);
     static void getGuessesForWord(SpellDocumentTag, const String& word, const String& context, int32_t insertionPoint, Vector<String>& guesses, bool initialCapitalizationEnabled);
     static void learnWord(SpellDocumentTag, const String& word);
     static void ignoreWord(SpellDocumentTag, const String& word);

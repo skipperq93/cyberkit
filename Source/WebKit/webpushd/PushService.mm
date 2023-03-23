@@ -38,8 +38,8 @@
 #import <wtf/spi/darwin/XPCSPI.h>
 #import <wtf/text/Base64.h>
 
-using namespace WebKit;
-using namespace WebCore;
+using namespace CyberKit;
+using namespace CyberCore;
 
 namespace WebPushD {
 
@@ -179,7 +179,7 @@ public:
     void start() final
     {
         if (m_identifier.bundleIdentifier.isEmpty() || m_scope.isEmpty()) {
-            reject(WebCore::ExceptionData { WebCore::AbortError, "Invalid sender"_s });
+            reject(CyberCore::ExceptionData { CyberCore::AbortError, "Invalid sender"_s });
             return;
         }
         
@@ -191,7 +191,7 @@ public:
     }
 
 protected:
-    using ResultHandler = CompletionHandler<void(const Expected<ResultType, WebCore::ExceptionData>&)>;
+    using ResultHandler = CompletionHandler<void(const Expected<ResultType, CyberCore::ExceptionData>&)>;
 
     PushServiceRequestImpl(PushService& service, const PushSubscriptionSetIdentifier& identifier, const String& scope, ResultHandler&& resultHandler)
         : PushServiceRequest(service, identifier, scope)
@@ -214,7 +214,7 @@ protected:
         finish();
     }
 
-    void reject(WebCore::ExceptionData&& data)
+    void reject(CyberCore::ExceptionData&& data)
     {
         RELEASE_LOG(Push, "Finished pushServiceRequest %{public}s (%p) with exception for %{public}s, scope = %{sensitive}s", description().characters(), this, m_identifier.debugDescription().utf8().data(), m_scope.utf8().data());
 
@@ -227,7 +227,7 @@ private:
     OSObjectPtr<os_transaction_t> m_transaction;
 };
 
-class GetSubscriptionRequest : public PushServiceRequestImpl<std::optional<WebCore::PushSubscriptionData>> {
+class GetSubscriptionRequest : public PushServiceRequestImpl<std::optional<CyberCore::PushSubscriptionData>> {
 public:
     GetSubscriptionRequest(PushService&, const PushSubscriptionSetIdentifier&, const String& scope, ResultHandler&&);
     virtual ~GetSubscriptionRequest() = default;
@@ -248,7 +248,7 @@ void GetSubscriptionRequest::startInternal()
 {
     m_database.getRecordBySubscriptionSetAndScope(m_identifier, m_scope, [this](auto&& result) mutable {
         if (!result) {
-            fulfill(std::optional<WebCore::PushSubscriptionData> { });
+            fulfill(std::optional<CyberCore::PushSubscriptionData> { });
             return;
         }
 
@@ -256,7 +256,7 @@ void GetSubscriptionRequest::startInternal()
     });
 }
 
-class SubscribeRequest : public PushServiceRequestImpl<WebCore::PushSubscriptionData> {
+class SubscribeRequest : public PushServiceRequestImpl<CyberCore::PushSubscriptionData> {
 public:
     SubscribeRequest(PushService&, const PushSubscriptionSetIdentifier&, const String& scope, const Vector<uint8_t>& vapidPublicKey, ResultHandler&&);
     virtual ~SubscribeRequest() = default;
@@ -285,7 +285,7 @@ void SubscribeRequest::startImpl(IsRetry isRetry)
     m_database.getRecordBySubscriptionSetAndScope(m_identifier, m_scope, [this, isRetry](auto&& result) mutable {
         if (result) {
             if (m_vapidPublicKey != result->serverVAPIDPublicKey)
-                reject(WebCore::ExceptionData { WebCore::InvalidStateError, "Provided applicationServerKey does not match the key in the existing subscription."_s });
+                reject(CyberCore::ExceptionData { CyberCore::InvalidStateError, "Provided applicationServerKey does not match the key in the existing subscription."_s });
             else
                 fulfill(makePushSubscriptionFromRecord(WTFMove(*result)));
             return;
@@ -305,7 +305,7 @@ void SubscribeRequest::startImpl(IsRetry isRetry)
 #endif
 
                 RELEASE_LOG_ERROR(Push, "PushManager.subscribe(%{public}s, scope: %{sensitive}s) failed with domain: %{public}s code: %lld)", m_identifier.debugDescription().utf8().data(), m_scope.utf8().data(), error.domain.UTF8String, static_cast<int64_t>(error.code));
-                reject(WebCore::ExceptionData { WebCore::AbortError, "Failed due to internal service error"_s });
+                reject(CyberCore::ExceptionData { CyberCore::AbortError, "Failed due to internal service error"_s });
                 return;
             }
 
@@ -325,7 +325,7 @@ void SubscribeRequest::startImpl(IsRetry isRetry)
             m_database.insertRecord(record, [this](auto&& result) mutable {
                 if (!result) {
                     RELEASE_LOG_ERROR(Push, "PushManager.subscribe(%{public}s, scope: %{sensitive}s) failed with database error", m_identifier.debugDescription().utf8().data(), m_scope.utf8().data());
-                    reject(WebCore::ExceptionData { WebCore::AbortError, "Failed due to internal database error"_s });
+                    reject(CyberCore::ExceptionData { CyberCore::AbortError, "Failed due to internal database error"_s });
                     return;
                 }
 
@@ -449,11 +449,11 @@ void PushService::finishedPushServiceRequest(PushServiceRequestMap& map, PushSer
     });
 }
 
-void PushService::getSubscription(const PushSubscriptionSetIdentifier& identifier, const String& scope, CompletionHandler<void(const Expected<std::optional<WebCore::PushSubscriptionData>, WebCore::ExceptionData>&)>&& completionHandler)
+void PushService::getSubscription(const PushSubscriptionSetIdentifier& identifier, const String& scope, CompletionHandler<void(const Expected<std::optional<CyberCore::PushSubscriptionData>, CyberCore::ExceptionData>&)>&& completionHandler)
 {
     if (identifier.bundleIdentifier.isEmpty() || scope.isEmpty()) {
         RELEASE_LOG_ERROR(Push, "Ignoring getSubscription request with bundleIdentifier (empty = %d) and scope (empty = %d)", identifier.bundleIdentifier.isEmpty(), scope.isEmpty());
-        completionHandler(makeUnexpected(WebCore::ExceptionData { WebCore::AbortError, "Invalid sender"_s }));
+        completionHandler(makeUnexpected(CyberCore::ExceptionData { CyberCore::AbortError, "Invalid sender"_s }));
         return;
     }
 
@@ -465,11 +465,11 @@ void PushService::didCompleteGetSubscriptionRequest(GetSubscriptionRequest& requ
     finishedPushServiceRequest(m_getSubscriptionRequests, request);
 }
 
-void PushService::subscribe(const PushSubscriptionSetIdentifier& identifier, const String& scope, const Vector<uint8_t>& vapidPublicKey, CompletionHandler<void(const Expected<WebCore::PushSubscriptionData, WebCore::ExceptionData>&)>&& completionHandler)
+void PushService::subscribe(const PushSubscriptionSetIdentifier& identifier, const String& scope, const Vector<uint8_t>& vapidPublicKey, CompletionHandler<void(const Expected<CyberCore::PushSubscriptionData, CyberCore::ExceptionData>&)>&& completionHandler)
 {
     if (identifier.bundleIdentifier.isEmpty() || scope.isEmpty()) {
         RELEASE_LOG_ERROR(Push, "Ignoring subscribe request with bundleIdentifier (empty = %d) and scope (empty = %d)", identifier.bundleIdentifier.isEmpty(), scope.isEmpty());
-        completionHandler(makeUnexpected(WebCore::ExceptionData { WebCore::AbortError, "Invalid sender"_s }));
+        completionHandler(makeUnexpected(CyberCore::ExceptionData { CyberCore::AbortError, "Invalid sender"_s }));
         return;
     }
 
@@ -481,11 +481,11 @@ void PushService::didCompleteSubscribeRequest(SubscribeRequest& request)
     finishedPushServiceRequest(m_subscribeRequests, request);
 }
 
-void PushService::unsubscribe(const PushSubscriptionSetIdentifier& identifier, const String& scope, std::optional<PushSubscriptionIdentifier> subscriptionIdentifier, CompletionHandler<void(const Expected<bool, WebCore::ExceptionData>&)>&& completionHandler)
+void PushService::unsubscribe(const PushSubscriptionSetIdentifier& identifier, const String& scope, std::optional<PushSubscriptionIdentifier> subscriptionIdentifier, CompletionHandler<void(const Expected<bool, CyberCore::ExceptionData>&)>&& completionHandler)
 {
     if (identifier.bundleIdentifier.isEmpty() || scope.isEmpty()) {
         RELEASE_LOG_ERROR(Push, "Ignoring unsubscribe request with bundleIdentifier (empty = %d) and scope (empty = %d)", identifier.bundleIdentifier.isEmpty(), scope.isEmpty());
-        completionHandler(makeUnexpected(WebCore::ExceptionData { WebCore::AbortError, "Invalid sender"_s }));
+        completionHandler(makeUnexpected(CyberCore::ExceptionData { CyberCore::AbortError, "Invalid sender"_s }));
         return;
     }
 
@@ -506,7 +506,7 @@ void PushService::incrementSilentPushCount(const PushSubscriptionSetIdentifier& 
     }
 
     m_database->incrementSilentPushCount(identifier, securityOrigin, [this, identifier, securityOrigin, handler = WTFMove(handler)](unsigned silentPushCount) mutable {
-        if (silentPushCount < WebKit::WebPushD::maxSilentPushCount) {
+        if (silentPushCount < CyberKit::WebPushD::maxSilentPushCount) {
             handler(silentPushCount);
             return;
         }
@@ -687,7 +687,7 @@ void PushService::didReceivePushMessage(NSString* topic, NSDictionary* userInfo,
         auto record = WTFMove(*recordResult);
 
         if (message.encoding == ContentEncoding::Empty) {
-            m_incomingPushMessageHandler(record.subscriptionSetIdentifier, WebKit::WebPushMessage { { }, record.subscriptionSetIdentifier.pushPartition, URL { record.scope } });
+            m_incomingPushMessageHandler(record.subscriptionSetIdentifier, CyberKit::WebPushMessage { { }, record.subscriptionSetIdentifier.pushPartition, URL { record.scope } });
 
             completionHandler();
             return;
@@ -712,7 +712,7 @@ void PushService::didReceivePushMessage(NSString* topic, NSDictionary* userInfo,
 
         RELEASE_LOG(Push, "Decoded incoming push message for %{public}s %{sensitive}s", record.subscriptionSetIdentifier.debugDescription().utf8().data(), record.scope.utf8().data());
 
-        m_incomingPushMessageHandler(record.subscriptionSetIdentifier, WebKit::WebPushMessage { WTFMove(*decryptedPayload), record.subscriptionSetIdentifier.pushPartition, URL { record.scope } });
+        m_incomingPushMessageHandler(record.subscriptionSetIdentifier, CyberKit::WebPushMessage { WTFMove(*decryptedPayload), record.subscriptionSetIdentifier.pushPartition, URL { record.scope } });
 
         completionHandler();
     });

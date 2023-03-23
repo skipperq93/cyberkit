@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -17,16 +17,16 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitDOMHTMLSelectElementPrivate_h
-#define WebKitDOMHTMLSelectElementPrivate_h
+#ifndef CyberKitDOMHTMLSelectElementPrivate_h
+#define CyberKitDOMHTMLSelectElementPrivate_h
 
 #include <CyberCore/HTMLSelectElement.h>
-#include <webkitdom/WebKitDOMHTMLSelectElement.h>
+#include <webkitdom/CyberKitDOMHTMLSelectElement.h>
 
-namespace WebKit {
-WebKitDOMHTMLSelectElement* wrapHTMLSelectElement(WebCore::HTMLSelectElement*);
-WebKitDOMHTMLSelectElement* kit(WebCore::HTMLSelectElement*);
-WebCore::HTMLSelectElement* core(WebKitDOMHTMLSelectElement*);
-} // namespace WebKit
+namespace CyberKit {
+CyberKitDOMHTMLSelectElement* wrapHTMLSelectElement(CyberCore::HTMLSelectElement*);
+CyberKitDOMHTMLSelectElement* kit(CyberCore::HTMLSelectElement*);
+CyberCore::HTMLSelectElement* core(CyberKitDOMHTMLSelectElement*);
+} // namespace CyberKit
 
-#endif /* WebKitDOMHTMLSelectElementPrivate_h */
+#endif /* CyberKitDOMHTMLSelectElementPrivate_h */

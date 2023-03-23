@@ -28,7 +28,7 @@
 
 #if PLATFORM(IOS_FAMILY)
 
-#import "WebCoreThreadInternal.h"
+#import "CyberCoreThreadInternal.h"
 #import <pal/spi/cg/CoreGraphicsSPI.h>
 
 static inline void _FillRectsUsingOperation(CGContextRef context, const CGRect* rects, int count, CGCompositeOperation op)

@@ -28,7 +28,7 @@
 #include "RenderStyleConstants.h"
 #include <wtf/OptionSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FilterOperations;
 class FontCascade;
@@ -93,4 +93,4 @@ private:
     const FontCascade& m_font;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

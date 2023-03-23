@@ -35,7 +35,7 @@
 #include <wtf/ThreadSafeRefCounted.h>
 #include <wtf/text/AtomString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WEBCORE_EXPORT TrackPrivateBase
     : public ThreadSafeRefCounted<TrackPrivateBase, WTF::DestructionThread::Main>
@@ -84,6 +84,6 @@ protected:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

@@ -33,7 +33,7 @@
 #import "Logging.h"
 #import "MediaPlayer.h"
 #import "SourceBufferPrivateAVFObjC.h"
-#import "WebCoreNSErrorExtras.h"
+#import "CyberCoreNSErrorExtras.h"
 #import <AVFoundation/AVError.h>
 #import <CoreMedia/CMBase.h>
 #import <CyberScriptCore/TypedArrayInlines.h>
@@ -56,12 +56,12 @@
 @end
 
 @interface WebCDMSessionAVStreamSessionObserver : NSObject {
-    WebCore::CDMSessionAVStreamSession *m_parent;
+    CyberCore::CDMSessionAVStreamSession *m_parent;
 }
 @end
 
 @implementation WebCDMSessionAVStreamSessionObserver
-- (id)initWithParent:(WebCore::CDMSessionAVStreamSession *)parent
+- (id)initWithParent:(CyberCore::CDMSessionAVStreamSession *)parent
 {
     if ((self = [super init]))
         m_parent = parent;
@@ -80,7 +80,7 @@
 }
 @end
 
-namespace WebCore {
+namespace CyberCore {
 
 CDMSessionAVStreamSession::CDMSessionAVStreamSession(Vector<int>&& protocolVersions, CDMPrivateMediaSourceAVFObjC& cdm, LegacyCDMSessionClient& client)
     : CDMSessionMediaSourceAVFObjC(cdm, client)

@@ -32,7 +32,7 @@
 #import "ControlFactoryMac.h"
 #import "LocalDefaultSystemAppearance.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 ColorWellMac::ColorWellMac(ColorWellPart& owningPart, ControlFactoryMac& controlFactory, NSButtonCell *buttonCell)
     : ButtonControlMac(owningPart, controlFactory, buttonCell)
@@ -52,6 +52,6 @@ void ColorWellMac::draw(GraphicsContext& context, const FloatRoundedRect& border
     drawCell(context, borderRect.rect(), deviceScaleFactor, style, m_buttonCell.get(), true);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(MAC) && ENABLE(INPUT_TYPE_COLOR)

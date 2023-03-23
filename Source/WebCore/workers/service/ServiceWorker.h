@@ -40,7 +40,7 @@ class JSGlobalObject;
 class JSValue;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class Frame;
 class SWClientConnection;
@@ -92,6 +92,6 @@ private:
     RefPtr<PendingActivity<ServiceWorker>> m_pendingActivityForEventDispatch;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

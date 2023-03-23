@@ -93,7 +93,7 @@ JS_EXPORT JSObjectRef JSObjectMakeTypedArrayWithArrayBufferAndOffset(JSContextRe
  @param object       The Typed Array object whose backing store pointer to return.
  @param exception    A pointer to a JSValueRef in which to store an exception, if any. Pass NULL if you do not care to store an exception.
  @result             A pointer to the raw data buffer that serves as object's backing store or NULL if object is not a Typed Array object.
- @discussion         The pointer returned by this function is temporary and is not guaranteed to remain valid across JavaScriptCore API calls.
+ @discussion         The pointer returned by this function is temporary and is not guaranteed to remain valid across CyberScriptCore API calls.
  */
 JS_EXPORT void* JSObjectGetTypedArrayBytesPtr(JSContextRef ctx, JSObjectRef object, JSValueRef* exception) JSC_API_AVAILABLE(macos(10.12), ios(10.0));
 
@@ -159,7 +159,7 @@ JS_EXPORT JSObjectRef JSObjectMakeArrayBufferWithBytesNoCopy(JSContextRef ctx, v
  @param object     The Array Buffer object whose internal backing store pointer to return.
  @param exception  A pointer to a JSValueRef in which to store an exception, if any. Pass NULL if you do not care to store an exception.
  @result           A pointer to the raw data buffer that serves as object's backing store or NULL if object is not an Array Buffer object.
- @discussion       The pointer returned by this function is temporary and is not guaranteed to remain valid across JavaScriptCore API calls.
+ @discussion       The pointer returned by this function is temporary and is not guaranteed to remain valid across CyberScriptCore API calls.
  */
 JS_EXPORT void* JSObjectGetArrayBufferBytesPtr(JSContextRef ctx, JSObjectRef object, JSValueRef* exception) JSC_API_AVAILABLE(macos(10.12), ios(10.0));
 

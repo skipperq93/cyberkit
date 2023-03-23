@@ -31,7 +31,7 @@
 
 #import <pal/ios/UIKitSoftLink.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 #if PLATFORM(IOS_FAMILY)
 CFStringRef getUIContentSizeCategoryDidChangeNotificationName()
@@ -65,4 +65,4 @@ void setContentSizeCategory(const String& contentSizeCategory)
     contentSizeCategoryStorage() = contentSizeCategory;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

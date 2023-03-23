@@ -31,7 +31,7 @@
 
 namespace WebKit {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 const unsigned sharedStringHashTableMaxLoad = 2;
 
@@ -83,7 +83,7 @@ void SharedStringHashStore::scheduleAddition(SharedStringHash sharedStringHash)
         m_pendingOperationsTimer.startOneShot(0_s);
 }
 
-void SharedStringHashStore::scheduleRemoval(WebCore::SharedStringHash sharedStringHash)
+void SharedStringHashStore::scheduleRemoval(CyberCore::SharedStringHash sharedStringHash)
 {
     m_pendingOperations.append({ Operation::Remove, sharedStringHash });
 
@@ -91,7 +91,7 @@ void SharedStringHashStore::scheduleRemoval(WebCore::SharedStringHash sharedStri
         m_pendingOperationsTimer.startOneShot(0_s);
 }
 
-bool SharedStringHashStore::contains(WebCore::SharedStringHash sharedStringHash)
+bool SharedStringHashStore::contains(CyberCore::SharedStringHash sharedStringHash)
 {
     flushPendingChanges();
     return m_table.contains(sharedStringHash);

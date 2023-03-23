@@ -27,10 +27,10 @@
 #include "WorkerLocation.h"
 
 #include "SecurityOrigin.h"
-#include "WebCoreOpaqueRoot.h"
+#include "CyberCoreOpaqueRoot.h"
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 String WorkerLocation::href() const
 {
@@ -79,9 +79,9 @@ String WorkerLocation::origin() const
     return m_origin;
 }
 
-WebCoreOpaqueRoot root(WorkerLocation* location)
+CyberCoreOpaqueRoot root(WorkerLocation* location)
 {
-    return WebCoreOpaqueRoot { location };
+    return CyberCoreOpaqueRoot { location };
 }
 
-} // namespace WebCore
+} // namespace CyberCore

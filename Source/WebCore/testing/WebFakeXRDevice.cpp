@@ -39,7 +39,7 @@
 #include "IOSurface.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 static constexpr Seconds FakeXRFrameTime = 15_ms;
 
@@ -103,13 +103,13 @@ void SimulatedXRDevice::simulateShutdownCompleted()
         m_trackingAndRenderingClient->sessionDidEnd();
 }
 
-WebCore::IntSize SimulatedXRDevice::recommendedResolution(PlatformXR::SessionMode)
+CyberCore::IntSize SimulatedXRDevice::recommendedResolution(PlatformXR::SessionMode)
 {
     // Return at least a valid size for a framebuffer.
     return IntSize(32, 32);
 }
 
-void SimulatedXRDevice::initializeTrackingAndRendering(const WebCore::SecurityOriginData&, PlatformXR::SessionMode, const PlatformXR::Device::FeatureList&)
+void SimulatedXRDevice::initializeTrackingAndRendering(const CyberCore::SecurityOriginData&, PlatformXR::SessionMode, const PlatformXR::Device::FeatureList&)
 {
     GraphicsContextGLAttributes attributes;
     attributes.depth = false;
@@ -327,6 +327,6 @@ void WebFakeXRDevice::simulateShutdown()
     m_device.simulateShutdownCompleted();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBXR)

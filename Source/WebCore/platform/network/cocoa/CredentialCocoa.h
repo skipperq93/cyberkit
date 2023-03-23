@@ -31,7 +31,7 @@
 
 OBJC_CLASS NSURLCredential;
 
-namespace WebCore {
+namespace CyberCore {
 
 class Credential : public CredentialBase {
 public:
@@ -63,4 +63,4 @@ private:
     mutable RetainPtr<NSURLCredential> m_nsCredential;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

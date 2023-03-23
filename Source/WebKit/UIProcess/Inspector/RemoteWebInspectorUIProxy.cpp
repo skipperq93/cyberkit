@@ -41,7 +41,7 @@
 #endif
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 RemoteWebInspectorUIProxy::RemoteWebInspectorUIProxy()
     : m_debuggableInfo(API::DebuggableInfo::create(DebuggableInfoData::empty()))
@@ -154,7 +154,7 @@ void RemoteWebInspectorUIProxy::load(const String& path, CompletionHandler<void(
     platformLoad(path, WTFMove(completionHandler));
 }
 
-void RemoteWebInspectorUIProxy::pickColorFromScreen(CompletionHandler<void(const std::optional<WebCore::Color>&)>&& completionHandler)
+void RemoteWebInspectorUIProxy::pickColorFromScreen(CompletionHandler<void(const std::optional<CyberCore::Color>&)>&& completionHandler)
 {
     platformPickColorFromScreen(WTFMove(completionHandler));
 }
@@ -249,9 +249,9 @@ WebPageProxy* RemoteWebInspectorUIProxy::platformCreateFrontendPageAndWindow()
 
 void RemoteWebInspectorUIProxy::platformResetState() { }
 void RemoteWebInspectorUIProxy::platformBringToFront() { }
-void RemoteWebInspectorUIProxy::platformSave(Vector<WebCore::InspectorFrontendClient::SaveData>&&, bool /* forceSaveAs */) { }
+void RemoteWebInspectorUIProxy::platformSave(Vector<CyberCore::InspectorFrontendClient::SaveData>&&, bool /* forceSaveAs */) { }
 void RemoteWebInspectorUIProxy::platformLoad(const String&, CompletionHandler<void(const String&)>&& completionHandler) { completionHandler(nullString()); }
-void RemoteWebInspectorUIProxy::platformPickColorFromScreen(CompletionHandler<void(const std::optional<WebCore::Color>&)>&& completionHandler) { completionHandler({ }); }
+void RemoteWebInspectorUIProxy::platformPickColorFromScreen(CompletionHandler<void(const std::optional<CyberCore::Color>&)>&& completionHandler) { completionHandler({ }); }
 void RemoteWebInspectorUIProxy::platformSetSheetRect(const FloatRect&) { }
 void RemoteWebInspectorUIProxy::platformSetForcedAppearance(InspectorFrontendClient::Appearance) { }
 void RemoteWebInspectorUIProxy::platformStartWindowDrag() { }

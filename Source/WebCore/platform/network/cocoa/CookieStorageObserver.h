@@ -33,7 +33,7 @@
 OBJC_CLASS NSHTTPCookieStorage;
 OBJC_CLASS WebCookieObserverAdapter;
 
-namespace WebCore {
+namespace CyberCore {
 
 // Use eager initialization for the WeakPtrFactory since we construct WeakPtrs on a non-main thread.
 class WEBCORE_EXPORT CookieStorageObserver : public CanMakeWeakPtr<CookieStorageObserver, WeakPtrFactoryInitialization::Eager> {
@@ -55,4 +55,4 @@ private:
     Function<void()> m_cookieChangeCallback;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -6,5 +6,5 @@ CONSOLE MESSAGE: SecurityError: Blocked a frame with origin "http://localhost:80
 Frame: 'childFrame'
 --------
 
-This tests that plug-ins can access objects in other frames as allowed by the security model enforced in WebCore.
+This tests that plug-ins can access objects in other frames as allowed by the security model enforced in CyberCore.
 SUCCESS

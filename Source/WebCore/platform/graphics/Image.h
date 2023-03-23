@@ -65,7 +65,7 @@ typedef struct _GdkTexture GdkTexture;
 #endif
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class AffineTransform;
 class FloatPoint;
@@ -225,23 +225,23 @@ private:
 
 WTF::TextStream& operator<<(WTF::TextStream&, const Image&);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #define SPECIALIZE_TYPE_TRAITS_IMAGE(ToClassName) \
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::ToClassName) \
-    static bool isType(const WebCore::Image& image) { return image.is##ToClassName(); } \
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::ToClassName) \
+    static bool isType(const CyberCore::Image& image) { return image.is##ToClassName(); } \
 SPECIALIZE_TYPE_TRAITS_END()
 
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::Image::TileRule> {
+template<> struct EnumTraits<CyberCore::Image::TileRule> {
     using values = EnumValues<
-        WebCore::Image::TileRule,
-        WebCore::Image::TileRule::StretchTile,
-        WebCore::Image::TileRule::RoundTile,
-        WebCore::Image::TileRule::SpaceTile,
-        WebCore::Image::TileRule::RepeatTile
+        CyberCore::Image::TileRule,
+        CyberCore::Image::TileRule::StretchTile,
+        CyberCore::Image::TileRule::RoundTile,
+        CyberCore::Image::TileRule::SpaceTile,
+        CyberCore::Image::TileRule::RepeatTile
     >;
 };
 

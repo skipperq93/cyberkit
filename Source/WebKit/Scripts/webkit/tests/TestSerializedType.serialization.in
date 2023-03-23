@@ -47,11 +47,11 @@ class WithoutNamespace {
     int a;
 }
 
-class WebCore::InheritsFrom : WithoutNamespace {
+class CyberCore::InheritsFrom : WithoutNamespace {
     float b;
 }
 
-class WebCore::InheritanceGrandchild : WebCore::InheritsFrom {
+class CyberCore::InheritanceGrandchild : CyberCore::InheritsFrom {
     double c;
 }
 
@@ -90,7 +90,7 @@ class WTF::Seconds {
     double value
 }
 
-[Alias=class ScrollSnapOffsetsInfo<float,double>] alias WebCore::FloatBoxExtent {
+[Alias=class ScrollSnapOffsetsInfo<float,double>] alias CyberCore::FloatBoxExtent {
     float top()
     float right()
     float bottom()
@@ -102,11 +102,11 @@ struct NullableSoftLinkedMember {
     [SoftLinkedClass='PAL::getDDActionContextClass()'] RetainPtr<DDActionContext> secondMember;
 }
 
-[RefCounted] class WebCore::TimingFunction subclasses {
-  WebCore::LinearTimingFunction,
-  WebCore::CubicBezierTimingFunction,
-  WebCore::StepsTimingFunction,
-  WebCore::SpringTimingFunction
+[RefCounted] class CyberCore::TimingFunction subclasses {
+  CyberCore::LinearTimingFunction,
+  CyberCore::CubicBezierTimingFunction,
+  CyberCore::StepsTimingFunction,
+  CyberCore::SpringTimingFunction
 }
 
-using WebCore::SharedStringHash = uint32_t
+using CyberCore::SharedStringHash = uint32_t

@@ -44,15 +44,15 @@ enum class WebsiteDataProcessType { Network, UI, Web };
 
 struct WebsiteData {
     struct Entry {
-        Entry(WebCore::SecurityOriginData, WebsiteDataType, uint64_t);
-        Entry(WebCore::SecurityOriginData&&, OptionSet<WebsiteDataType>&&, uint64_t);
+        Entry(CyberCore::SecurityOriginData, WebsiteDataType, uint64_t);
+        Entry(CyberCore::SecurityOriginData&&, OptionSet<WebsiteDataType>&&, uint64_t);
 
         OptionSet<WebsiteDataType> typeAsOptionSet() const { return { type }; }
         
         Entry isolatedCopy() const &;
         Entry isolatedCopy() &&;
 
-        WebCore::SecurityOriginData origin;
+        CyberCore::SecurityOriginData origin;
         WebsiteDataType type;
         uint64_t size;
     };
@@ -65,7 +65,7 @@ struct WebsiteData {
 
     HashSet<String> hostNamesWithHSTSCache;
 #if ENABLE(TRACKING_PREVENTION)
-    HashSet<WebCore::RegistrableDomain> registrableDomainsWithResourceLoadStatistics;
+    HashSet<CyberCore::RegistrableDomain> registrableDomainsWithResourceLoadStatistics;
 #endif
     static WebsiteDataProcessType ownerProcess(WebsiteDataType);
     static OptionSet<WebsiteDataType> filter(OptionSet<WebsiteDataType>, WebsiteDataProcessType);

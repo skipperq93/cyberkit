@@ -32,17 +32,17 @@
 #include <wtf/Lock.h>
 #include <wtf/text/StringHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 class StorageSyncManager;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class StorageAreaImpl;
 
 class StorageAreaSync : public ThreadSafeRefCounted<StorageAreaSync, WTF::DestructionThread::Main> {
 public:
-    static Ref<StorageAreaSync> create(RefPtr<WebCore::StorageSyncManager>&&, Ref<StorageAreaImpl>&&, const String& databaseIdentifier);
+    static Ref<StorageAreaSync> create(RefPtr<CyberCore::StorageSyncManager>&&, Ref<StorageAreaImpl>&&, const String& databaseIdentifier);
     ~StorageAreaSync();
 
     void scheduleFinalSync();
@@ -55,19 +55,19 @@ public:
     void scheduleSync();
 
 private:
-    StorageAreaSync(RefPtr<WebCore::StorageSyncManager>&&, Ref<StorageAreaImpl>&&, const String& databaseIdentifier);
+    StorageAreaSync(RefPtr<CyberCore::StorageSyncManager>&&, Ref<StorageAreaImpl>&&, const String& databaseIdentifier);
 
-    WebCore::Timer m_syncTimer;
+    CyberCore::Timer m_syncTimer;
     HashMap<String, String> m_changedItems;
     bool m_itemsCleared;
 
     bool m_finalSyncScheduled;
 
     RefPtr<StorageAreaImpl> m_storageArea;
-    RefPtr<WebCore::StorageSyncManager> m_syncManager;
+    RefPtr<CyberCore::StorageSyncManager> m_syncManager;
 
     // The database handle will only ever be opened and used on the background thread.
-    WebCore::SQLiteDatabase m_database;
+    CyberCore::SQLiteDatabase m_database;
 
     // The following members are subject to thread synchronization issues.
 public:
@@ -104,4 +104,4 @@ private:
     void migrateItemTableIfNeeded();
 };
 
-} // namespace WebCore
+} // namespace CyberCore

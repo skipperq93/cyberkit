@@ -26,7 +26,7 @@
 
 #include "Path.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 SVGPathBuilder::SVGPathBuilder(Path& path)
     : m_path(path)

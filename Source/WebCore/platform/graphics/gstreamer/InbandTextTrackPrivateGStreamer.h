@@ -31,7 +31,7 @@
 #include "TrackPrivateBaseGStreamer.h"
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class MediaPlayerPrivateGStreamer;
 
@@ -71,6 +71,6 @@ private:
     Lock m_sampleMutex;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(VIDEO) && USE(GSTREAMER)

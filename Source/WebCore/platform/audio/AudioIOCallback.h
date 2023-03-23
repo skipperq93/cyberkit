@@ -31,7 +31,7 @@
 #include <wtf/MonotonicTime.h>
 #include <wtf/Seconds.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioBus;
 
@@ -54,4 +54,4 @@ public:
     virtual ~AudioIOCallback() = default;
 };
 
-} // WebCore
+} // CyberCore

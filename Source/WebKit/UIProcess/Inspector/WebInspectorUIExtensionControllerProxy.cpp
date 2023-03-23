@@ -166,14 +166,14 @@ void WebInspectorUIExtensionControllerProxy::evaluateScriptForExtension(const In
             return;
         }
 
-        weakThis->m_inspectorPage->sendWithAsyncReply(Messages::WebInspectorUIExtensionController::EvaluateScriptForExtension {extensionID, scriptSource, frameURL, contextSecurityOrigin, useContentScriptContext}, [completionHandler = WTFMove(completionHandler)](const IPC::DataReference& dataReference, const std::optional<WebCore::ExceptionDetails>& details, const std::optional<Inspector::ExtensionError> error) mutable {
+        weakThis->m_inspectorPage->sendWithAsyncReply(Messages::WebInspectorUIExtensionController::EvaluateScriptForExtension {extensionID, scriptSource, frameURL, contextSecurityOrigin, useContentScriptContext}, [completionHandler = WTFMove(completionHandler)](const IPC::DataReference& dataReference, const std::optional<CyberCore::ExceptionDetails>& details, const std::optional<Inspector::ExtensionError> error) mutable {
             if (error) {
                 completionHandler(makeUnexpected(error.value()));
                 return;
             }
 
             if (details) {
-                Expected<RefPtr<API::SerializedScriptValue>, WebCore::ExceptionDetails> returnedValue = makeUnexpected(details.value());
+                Expected<RefPtr<API::SerializedScriptValue>, CyberCore::ExceptionDetails> returnedValue = makeUnexpected(details.value());
                 return completionHandler({ returnedValue });
             }
 
@@ -235,14 +235,14 @@ void WebInspectorUIExtensionControllerProxy::evaluateScriptInExtensionTab(const 
             return;
         }
 
-        weakThis->m_inspectorPage->sendWithAsyncReply(Messages::WebInspectorUIExtensionController::EvaluateScriptInExtensionTab {extensionTabID, scriptSource}, [completionHandler = WTFMove(completionHandler)](const IPC::DataReference& dataReference, const std::optional<WebCore::ExceptionDetails>& details, const std::optional<Inspector::ExtensionError>& error) mutable {
+        weakThis->m_inspectorPage->sendWithAsyncReply(Messages::WebInspectorUIExtensionController::EvaluateScriptInExtensionTab {extensionTabID, scriptSource}, [completionHandler = WTFMove(completionHandler)](const IPC::DataReference& dataReference, const std::optional<CyberCore::ExceptionDetails>& details, const std::optional<Inspector::ExtensionError>& error) mutable {
             if (error) {
                 completionHandler(makeUnexpected(error.value()));
                 return;
             }
 
             if (details) {
-                Expected<RefPtr<API::SerializedScriptValue>, WebCore::ExceptionDetails> returnedValue = makeUnexpected(details.value());
+                Expected<RefPtr<API::SerializedScriptValue>, CyberCore::ExceptionDetails> returnedValue = makeUnexpected(details.value());
                 return completionHandler({ returnedValue });
             }
 
@@ -253,7 +253,7 @@ void WebInspectorUIExtensionControllerProxy::evaluateScriptInExtensionTab(const 
 
 // WebInspectorUIExtensionControllerProxy IPC messages.
 
-void WebInspectorUIExtensionControllerProxy::didShowExtensionTab(const Inspector::ExtensionID& extensionID, const Inspector::ExtensionTabID& extensionTabID, WebCore::FrameIdentifier frameID)
+void WebInspectorUIExtensionControllerProxy::didShowExtensionTab(const Inspector::ExtensionID& extensionID, const Inspector::ExtensionTabID& extensionTabID, CyberCore::FrameIdentifier frameID)
 {
     auto it = m_extensionAPIObjectMap.find(extensionID);
     if (it == m_extensionAPIObjectMap.end())

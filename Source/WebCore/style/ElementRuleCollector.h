@@ -31,7 +31,7 @@
 #include <wtf/RefPtr.h>
 #include <wtf/Vector.h>
 
-namespace WebCore::Style {
+namespace CyberCore::Style {
 
 class MatchRequest;
 class ScopeRuleSets;

@@ -33,7 +33,7 @@
 #import "SharedBuffer.h"
 #import <pal/spi/cf/CFNetworkSPI.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 void SubresourceLoader::willCacheResponseAsync(ResourceHandle* handle, NSCachedURLResponse* response, CompletionHandler<void(NSCachedURLResponse *)>&& completionHandler)
 {

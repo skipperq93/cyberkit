@@ -33,10 +33,10 @@
 
 #if ENABLE(SERVICE_WORKER)
 
-using namespace WebCore;
+using namespace CyberCore;
 
-// Due to argument-dependent lookup, equality operators have to be in the WebCore namespace for gtest to find them.
-namespace WebCore {
+// Due to argument-dependent lookup, equality operators have to be in the CyberCore namespace for gtest to find them.
+namespace CyberCore {
 
 static bool operator==(const PushRecord& a, const PushRecord& b)
 {

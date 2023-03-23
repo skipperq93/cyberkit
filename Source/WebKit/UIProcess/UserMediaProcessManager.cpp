@@ -232,7 +232,7 @@ void UserMediaProcessManager::captureDevicesChanged()
 
 void UserMediaProcessManager::updateCaptureDevices(ShouldNotify shouldNotify)
 {
-    WebCore::RealtimeMediaSourceCenter::singleton().getMediaStreamDevices([weakThis = WeakPtr { *this }, this, shouldNotify](auto&& newDevices) mutable {
+    CyberCore::RealtimeMediaSourceCenter::singleton().getMediaStreamDevices([weakThis = WeakPtr { *this }, this, shouldNotify](auto&& newDevices) mutable {
         if (!weakThis)
             return;
 
@@ -256,7 +256,7 @@ void UserMediaProcessManager::beginMonitoringCaptureDevices()
 
     std::call_once(onceFlag, [this] {
         updateCaptureDevices(ShouldNotify::No);
-        WebCore::RealtimeMediaSourceCenter::singleton().addDevicesChangedObserver(*this);
+        CyberCore::RealtimeMediaSourceCenter::singleton().addDevicesChangedObserver(*this);
     });
 }
 

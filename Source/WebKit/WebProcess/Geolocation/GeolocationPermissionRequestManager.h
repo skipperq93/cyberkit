@@ -29,11 +29,11 @@
 #include <wtf/HashMap.h>
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 class Geolocation;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPage;
 
@@ -42,19 +42,19 @@ class GeolocationPermissionRequestManager {
 public:
     explicit GeolocationPermissionRequestManager(WebPage&);
 
-    void startRequestForGeolocation(WebCore::Geolocation&);
-    void cancelRequestForGeolocation(WebCore::Geolocation&);
+    void startRequestForGeolocation(CyberCore::Geolocation&);
+    void cancelRequestForGeolocation(CyberCore::Geolocation&);
     void revokeAuthorizationToken(const String&);
 
     void didReceiveGeolocationPermissionDecision(GeolocationIdentifier, const String& authorizationToken);
 
 private:
-    typedef HashMap<GeolocationIdentifier, WebCore::Geolocation*> IDToGeolocationMap;
-    typedef HashMap<WebCore::Geolocation*, GeolocationIdentifier> GeolocationToIDMap;
+    typedef HashMap<GeolocationIdentifier, CyberCore::Geolocation*> IDToGeolocationMap;
+    typedef HashMap<CyberCore::Geolocation*, GeolocationIdentifier> GeolocationToIDMap;
     IDToGeolocationMap m_idToGeolocationMap;
     GeolocationToIDMap m_geolocationToIDMap;
 
     WebPage& m_page;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

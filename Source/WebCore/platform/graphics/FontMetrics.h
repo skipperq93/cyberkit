@@ -23,7 +23,7 @@
 #include "FontBaseline.h"
 #include <wtf/MathExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FontMetrics {
 public:
@@ -181,6 +181,6 @@ static inline float scaleEmToUnits(float x, unsigned unitsPerEm)
     return unitsPerEm ? x / unitsPerEm : x;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // FontMetrics_h

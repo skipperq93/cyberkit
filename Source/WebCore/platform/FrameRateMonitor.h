@@ -29,7 +29,7 @@
 #include <wtf/Function.h>
 #include <wtf/MonotonicTime.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FrameRateMonitor {
     WTF_MAKE_FAST_ALLOCATED;

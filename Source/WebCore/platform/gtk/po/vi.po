@@ -1163,7 +1163,7 @@ msgid "Enable Timeline profiling"
 msgstr "Bật kiểm định trục thời gian"
 
 #: ../../../WebKit/gtk/webkit/webkitwebinspector.cpp:321
-msgid "Profile the WebCore instrumentation."
+msgid "Profile the CyberCore instrumentation."
 msgstr ""
 
 #: ../../../WebKit/gtk/webkit/webkitwebnavigationaction.cpp:148

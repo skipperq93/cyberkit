@@ -41,7 +41,7 @@
 #include <wtf/HashSet.h>
 #include <wtf/LoggerHelper.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SourceBufferPrivateGStreamer;
 class MediaPlayerPrivateGStreamerMSE;

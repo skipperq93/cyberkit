@@ -30,18 +30,18 @@
 
 #include "WebPage.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 WebAttachmentElementClient::WebAttachmentElementClient(WebPage& page)
     : m_page(page)
 {
 }
 
-void WebAttachmentElementClient::requestAttachmentIcon(const String& identifier, const WebCore::FloatSize& size)
+void WebAttachmentElementClient::requestAttachmentIcon(const String& identifier, const CyberCore::FloatSize& size)
 {
     m_page.requestAttachmentIcon(identifier, size);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(ATTACHMENT_ELEMENT)

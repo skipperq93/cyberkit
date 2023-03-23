@@ -62,7 +62,7 @@ namespace WTF {
 class MediaTime;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioStreamDescription;
 class FloatRect;
@@ -378,7 +378,7 @@ inline void RealtimeMediaSource::setIsInBackground(bool)
 {
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
@@ -386,8 +386,8 @@ template<typename Type>
 struct LogArgument;
 
 template <>
-struct LogArgument<WebCore::RealtimeMediaSource::Type> {
-    static String toString(const WebCore::RealtimeMediaSource::Type type)
+struct LogArgument<CyberCore::RealtimeMediaSource::Type> {
+    static String toString(const CyberCore::RealtimeMediaSource::Type type)
     {
         return convertEnumerationToString(type);
     }

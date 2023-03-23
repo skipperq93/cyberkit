@@ -33,18 +33,18 @@
 #import <CyberCore/JSExecState.h>
 #import <CyberCore/MediaList.h>
 #import <CyberCore/ThreadCheck.h>
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 #import <CyberCore/WebScriptObjectPrivate.h>
 #import <wtf/GetPtr.h>
 #import <wtf/URL.h>
 
-#define IMPL reinterpret_cast<WebCore::MediaList*>(_internal)
+#define IMPL reinterpret_cast<CyberCore::MediaList*>(_internal)
 
 @implementation DOMMediaList
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainThread([DOMMediaList class], self))
+    if (CyberCoreObjCScheduleDeallocateOnMainThread([DOMMediaList class], self))
         return;
 
     if (_internal)
@@ -54,45 +54,45 @@
 
 - (NSString *)mediaText
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->mediaText();
 }
 
 - (void)setMediaText:(NSString *)newMediaText
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->setMediaText(newMediaText);
 }
 
 - (unsigned)length
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->length();
 }
 
 - (NSString *)item:(unsigned)index
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->item(index);
 }
 
 - (void)deleteMedium:(NSString *)oldMedium
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     raiseOnDOMError(IMPL->deleteMedium(oldMedium));
 }
 
 - (void)appendMedium:(NSString *)newMedium
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->appendMedium(newMedium);
 }
 
 @end
 
-DOMMediaList *kit(WebCore::MediaList* value)
+DOMMediaList *kit(CyberCore::MediaList* value)
 {
-    WebCoreThreadViolationCheckRoundOne();
+    CyberCoreThreadViolationCheckRoundOne();
     if (!value)
         return nil;
     if (DOMMediaList *wrapper = getDOMWrapper(value))

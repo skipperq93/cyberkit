@@ -30,7 +30,7 @@
 #include "DataReference.h"
 #include <wtf/CompletionHandler.h>
 
-namespace WebCore {
+namespace CyberCore {
 class Credential;
 class ResourceError;
 class ResourceRequest;
@@ -47,11 +47,11 @@ public:
     static Ref<DataTaskClient> create() { return adoptRef(*new DataTaskClient); }
     virtual ~DataTaskClient() { }
 
-    virtual void didReceiveChallenge(DataTask&, WebCore::AuthenticationChallenge&&, CompletionHandler<void(WebKit::AuthenticationChallengeDisposition, WebCore::Credential&&)>&& completionHandler) const { completionHandler(WebKit::AuthenticationChallengeDisposition::RejectProtectionSpaceAndContinue, { }); }
-    virtual void willPerformHTTPRedirection(DataTask&, WebCore::ResourceResponse&&, WebCore::ResourceRequest&&, CompletionHandler<void(bool)>&& completionHandler) const { completionHandler(true); }
-    virtual void didReceiveResponse(DataTask&, WebCore::ResourceResponse&&, CompletionHandler<void(bool)>&& completionHandler) const { completionHandler(true); }
+    virtual void didReceiveChallenge(DataTask&, CyberCore::AuthenticationChallenge&&, CompletionHandler<void(WebKit::AuthenticationChallengeDisposition, CyberCore::Credential&&)>&& completionHandler) const { completionHandler(WebKit::AuthenticationChallengeDisposition::RejectProtectionSpaceAndContinue, { }); }
+    virtual void willPerformHTTPRedirection(DataTask&, CyberCore::ResourceResponse&&, CyberCore::ResourceRequest&&, CompletionHandler<void(bool)>&& completionHandler) const { completionHandler(true); }
+    virtual void didReceiveResponse(DataTask&, CyberCore::ResourceResponse&&, CompletionHandler<void(bool)>&& completionHandler) const { completionHandler(true); }
     virtual void didReceiveData(DataTask&, const IPC::DataReference&) const { }
-    virtual void didCompleteWithError(DataTask&, WebCore::ResourceError&&) const { }
+    virtual void didCompleteWithError(DataTask&, CyberCore::ResourceError&&) const { }
 };
 
 } // namespace API

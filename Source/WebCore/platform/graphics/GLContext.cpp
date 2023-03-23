@@ -41,7 +41,7 @@
 #include "GLContextGLX.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class ThreadGlobalGLContext {
 public:
@@ -220,6 +220,6 @@ unsigned GLContext::version()
     return m_version;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

@@ -29,7 +29,7 @@
 #if ENABLE(WEBGL)
 #include "ANGLEHeaders.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 #if !PLATFORM(COCOA)
 bool platformIsANGLEAvailable()

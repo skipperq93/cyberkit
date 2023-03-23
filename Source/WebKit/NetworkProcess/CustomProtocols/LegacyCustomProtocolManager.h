@@ -41,11 +41,11 @@ OBJC_CLASS NSURLSessionConfiguration;
 OBJC_CLASS WKCustomProtocol;
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 class ResourceError;
 class ResourceRequest;
 class ResourceResponse;
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WebKit {
 
@@ -71,7 +71,7 @@ public:
 
     LegacyCustomProtocolID addCustomProtocol(CustomProtocol&&);
     void removeCustomProtocol(LegacyCustomProtocolID);
-    void startLoading(LegacyCustomProtocolID, const WebCore::ResourceRequest&);
+    void startLoading(LegacyCustomProtocolID, const CyberCore::ResourceRequest&);
     void stopLoading(LegacyCustomProtocolID);
 
 #if PLATFORM(COCOA)
@@ -86,11 +86,11 @@ private:
     // IPC::MessageReceiver
     void didReceiveMessage(IPC::Connection&, IPC::Decoder&) override;
 
-    void didFailWithError(LegacyCustomProtocolID, const WebCore::ResourceError&);
+    void didFailWithError(LegacyCustomProtocolID, const CyberCore::ResourceError&);
     void didLoadData(LegacyCustomProtocolID, const IPC::DataReference&);
-    void didReceiveResponse(LegacyCustomProtocolID, const WebCore::ResourceResponse&, CacheStoragePolicy);
+    void didReceiveResponse(LegacyCustomProtocolID, const CyberCore::ResourceResponse&, CacheStoragePolicy);
     void didFinishLoading(LegacyCustomProtocolID);
-    void wasRedirectedToRequest(LegacyCustomProtocolID, const WebCore::ResourceRequest&, const WebCore::ResourceResponse& redirectResponse);
+    void wasRedirectedToRequest(LegacyCustomProtocolID, const CyberCore::ResourceRequest&, const CyberCore::ResourceResponse& redirectResponse);
 
     void registerProtocolClass();
 

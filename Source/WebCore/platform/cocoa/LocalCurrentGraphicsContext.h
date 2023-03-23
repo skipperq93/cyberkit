@@ -28,7 +28,7 @@
 OBJC_CLASS NSGraphicsContext;
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 // This class automatically saves and restores the current NSGraphicsContext for
 // functions which call out into AppKit and rely on the currentContext being set

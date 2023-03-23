@@ -36,7 +36,7 @@
 
 DECLARE_CORE_MEDIA_TRAITS(FormatReader);
 
-namespace WebCore {
+namespace CyberCore {
 class MediaSamplesBlock;
 class WebMParser;
 }
@@ -45,7 +45,7 @@ namespace WebKit {
 
 class MediaTrackReader;
 
-class MediaFormatReader final : public CoreMediaWrapped<MediaFormatReader> , public WebCore::WebMParser::Callback {
+class MediaFormatReader final : public CoreMediaWrapped<MediaFormatReader> , public CyberCore::WebMParser::Callback {
 public:
     using CoreMediaWrapped<MediaFormatReader>::unwrap;
 
@@ -66,14 +66,14 @@ private:
     explicit MediaFormatReader(Allocator&&);
 
     // WebMParser::Callback
-    void parsedInitializationData(WebCore::SourceBufferParser::InitializationSegment&&) final;
-    void parsedMediaData(WebCore::MediaSamplesBlock&&) final;
+    void parsedInitializationData(CyberCore::SourceBufferParser::InitializationSegment&&) final;
+    void parsedMediaData(CyberCore::MediaSamplesBlock&&) final;
 
     void parseByteSource(RetainPtr<MTPluginByteSourceRef>&&);
-    void didParseTracks(WebCore::SourceBufferPrivateClient::InitializationSegment&&, uint64_t errorCode);
-    void didSelectVideoTrack(WebCore::VideoTrackPrivate&, bool) { }
-    void didEnableAudioTrack(WebCore::AudioTrackPrivate&, bool) { }
-    void didProvideMediaData(WebCore::MediaSamplesBlock&&);
+    void didParseTracks(CyberCore::SourceBufferPrivateClient::InitializationSegment&&, uint64_t errorCode);
+    void didSelectVideoTrack(CyberCore::VideoTrackPrivate&, bool) { }
+    void didEnableAudioTrack(CyberCore::AudioTrackPrivate&, bool) { }
+    void didProvideMediaData(CyberCore::MediaSamplesBlock&&);
     void finishParsing();
 
     // CMBaseClass

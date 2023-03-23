@@ -34,7 +34,7 @@
 #include "ResourceRequest.h"
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct BackgroundFetchRecordInformation {
     BackgroundFetchRecordIdentifier identifier;
@@ -48,6 +48,6 @@ struct BackgroundFetchRecordInformation {
     BackgroundFetchRecordInformation isolatedCopy() && { return { identifier, WTFMove(internalRequest).isolatedCopy(), WTFMove(options).isolatedCopy(), guard, WTFMove(httpHeaders).isolatedCopy(), WTFMove(referrer).isolatedCopy() }; }
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

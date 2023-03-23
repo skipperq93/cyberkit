@@ -26,7 +26,7 @@
 
 #include "RenderStyleConstants.h"
 
-namespace WebCore {
+namespace CyberCore {
     
 class LineClampValue {
 public:
@@ -63,4 +63,4 @@ private:
     int m_value;
 };
     
-} // namespace WebCore
+} // namespace CyberCore

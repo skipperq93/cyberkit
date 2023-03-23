@@ -27,7 +27,7 @@
 
 #include <wtf/ObjectIdentifier.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace DisplayList {
 
 enum ItemBufferIdentifierType { };

@@ -43,7 +43,7 @@
 #include <stdio.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 typedef HashMap<const GraphicsLayer*, Vector<FloatRect>> RepaintMap;
 static RepaintMap& repaintRectMap()
@@ -1007,15 +1007,15 @@ String GraphicsLayer::layerTreeAsText(OptionSet<LayerTreeAsTextOptions> options)
     return ts.release();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #if ENABLE(TREE_DEBUGGING)
-void showGraphicsLayerTree(const WebCore::GraphicsLayer* layer)
+void showGraphicsLayerTree(const CyberCore::GraphicsLayer* layer)
 {
     if (!layer)
         return;
 
-    String output = layer->layerTreeAsText(WebCore::AllLayerTreeAsTextOptions);
+    String output = layer->layerTreeAsText(CyberCore::AllLayerTreeAsTextOptions);
     WTFLogAlways("%s\n", output.utf8().data());
 }
 #endif

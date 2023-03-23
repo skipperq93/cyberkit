@@ -28,17 +28,17 @@ list(APPEND TestWTF_LIBRARIES
     GTK::GTK
 )
 
-# TestWebCore
-list(APPEND TestWebCore_SOURCES
+# TestCyberCore
+list(APPEND TestCyberCore_SOURCES
     ${test_main_SOURCES}
 
-    Tests/WebCore/UserAgentQuirks.cpp
-    Tests/WebCore/gstreamer/GStreamerTest.cpp
-    Tests/WebCore/gstreamer/GstElementHarness.cpp
-    Tests/WebCore/gstreamer/GstMappedBuffer.cpp
+    Tests/CyberCore/UserAgentQuirks.cpp
+    Tests/CyberCore/gstreamer/GStreamerTest.cpp
+    Tests/CyberCore/gstreamer/GstElementHarness.cpp
+    Tests/CyberCore/gstreamer/GstMappedBuffer.cpp
 )
 
-list(APPEND TestWebCore_SYSTEM_INCLUDE_DIRECTORIES
+list(APPEND TestCyberCore_SYSTEM_INCLUDE_DIRECTORIES
     ${GLIB_INCLUDE_DIRS}
     ${GSTREAMER_INCLUDE_DIRS}
     ${GSTREAMER_AUDIO_INCLUDE_DIRS}
@@ -47,7 +47,7 @@ list(APPEND TestWebCore_SYSTEM_INCLUDE_DIRECTORIES
     ${LIBSOUP_INCLUDE_DIRS}
 )
 
-list(APPEND TestWebCore_LIBRARIES
+list(APPEND TestCyberCore_LIBRARIES
     GTK::GTK
 )
 

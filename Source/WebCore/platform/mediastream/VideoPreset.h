@@ -32,7 +32,7 @@
 #include <wtf/Lock.h>
 #include <wtf/RunLoop.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct FrameRateRange {
     double minimum;
@@ -104,10 +104,10 @@ inline double VideoPreset::maxFrameRate() const
     return maxFrameRate;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::VideoPreset)
-    static bool isType(const WebCore::VideoPreset& preset) { return preset.type == WebCore::VideoPreset::VideoPresetType::Base; }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::VideoPreset)
+    static bool isType(const CyberCore::VideoPreset& preset) { return preset.type == CyberCore::VideoPreset::VideoPresetType::Base; }
 SPECIALIZE_TYPE_TRAITS_END()
 
 #endif // ENABLE(MEDIA_STREAM)

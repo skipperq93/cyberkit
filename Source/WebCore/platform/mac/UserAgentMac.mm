@@ -30,7 +30,7 @@
 
 #import "SystemVersion.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 String standardUserAgentWithApplicationName(const String& applicationName, const String&, UserAgentType)
 {
@@ -43,6 +43,6 @@ String standardUserAgentWithApplicationName(const String& applicationName, const
     return makeString("Mozilla/5.0 (Macintosh; Intel Mac OS X ", osVersion, ") AppleWebKit/605.1.15 (KHTML, like Gecko)", appNameSuffix);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(MAC)

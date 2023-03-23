@@ -64,7 +64,7 @@ void XRDeviceProxy::updateSessionVisibilityState(PlatformXR::VisibilityState vis
         trackingAndRenderingClient()->updateSessionVisibilityState(visibilityState);
 }
 
-void XRDeviceProxy::initializeTrackingAndRendering(const WebCore::SecurityOriginData& securityOriginData, PlatformXR::SessionMode sessionMode, const PlatformXR::Device::FeatureList& requestedFeatures)
+void XRDeviceProxy::initializeTrackingAndRendering(const CyberCore::SecurityOriginData& securityOriginData, PlatformXR::SessionMode sessionMode, const PlatformXR::Device::FeatureList& requestedFeatures)
 {
     if (sessionMode != PlatformXR::SessionMode::ImmersiveVr)
         return;

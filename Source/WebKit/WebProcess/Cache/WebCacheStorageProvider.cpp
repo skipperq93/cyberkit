@@ -34,7 +34,7 @@
 
 namespace WebKit {
 
-Ref<WebCore::CacheStorageConnection> WebCacheStorageProvider::createCacheStorageConnection()
+Ref<CyberCore::CacheStorageConnection> WebCacheStorageProvider::createCacheStorageConnection()
 {
     if (!m_connection)
         m_connection = WebCacheStorageConnection::create(*this);

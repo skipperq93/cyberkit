@@ -32,7 +32,7 @@
 #include "VideoTrackPrivateClient.h"
 #include <wtf/Function.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class VideoTrackPrivate : public TrackPrivateBase {
 public:
@@ -90,20 +90,20 @@ private:
     SelectedChangedCallback m_selectedChangedCallback;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::VideoTrackPrivate::Kind> {
+template<> struct EnumTraits<CyberCore::VideoTrackPrivate::Kind> {
     using values = EnumValues<
-        WebCore::VideoTrackPrivate::Kind,
-        WebCore::VideoTrackPrivate::Kind::Alternative,
-        WebCore::VideoTrackPrivate::Kind::Captions,
-        WebCore::VideoTrackPrivate::Kind::Main,
-        WebCore::VideoTrackPrivate::Kind::Sign,
-        WebCore::VideoTrackPrivate::Kind::Subtitles,
-        WebCore::VideoTrackPrivate::Kind::Commentary,
-        WebCore::VideoTrackPrivate::Kind::None
+        CyberCore::VideoTrackPrivate::Kind,
+        CyberCore::VideoTrackPrivate::Kind::Alternative,
+        CyberCore::VideoTrackPrivate::Kind::Captions,
+        CyberCore::VideoTrackPrivate::Kind::Main,
+        CyberCore::VideoTrackPrivate::Kind::Sign,
+        CyberCore::VideoTrackPrivate::Kind::Subtitles,
+        CyberCore::VideoTrackPrivate::Kind::Commentary,
+        CyberCore::VideoTrackPrivate::Kind::None
     >;
 };
 

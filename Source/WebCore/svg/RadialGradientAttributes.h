@@ -21,7 +21,7 @@
 
 #include "GradientAttributes.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct RadialGradientAttributes : GradientAttributes {
     RadialGradientAttributes()
@@ -76,4 +76,4 @@ private:
     bool m_frSet : 1;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

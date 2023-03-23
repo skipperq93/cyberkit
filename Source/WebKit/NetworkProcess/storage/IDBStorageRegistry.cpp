@@ -34,7 +34,7 @@ namespace WebKit {
 
 IDBStorageRegistry::IDBStorageRegistry() = default;
 
-WebCore::IDBServer::IDBConnectionToClient& IDBStorageRegistry::ensureConnectionToClient(IPC::Connection::UniqueID connection, WebCore::IDBConnectionIdentifier identifier)
+CyberCore::IDBServer::IDBConnectionToClient& IDBStorageRegistry::ensureConnectionToClient(IPC::Connection::UniqueID connection, CyberCore::IDBConnectionIdentifier identifier)
 {
     auto addResult = m_connectionsToClient.add(identifier, nullptr);
     if (addResult.isNewEntry)
@@ -56,7 +56,7 @@ void IDBStorageRegistry::removeConnectionToClient(IPC::Connection::UniqueID conn
     }
 }
 
-void IDBStorageRegistry::registerConnection(WebCore::IDBServer::UniqueIDBDatabaseConnection& connection)
+void IDBStorageRegistry::registerConnection(CyberCore::IDBServer::UniqueIDBDatabaseConnection& connection)
 {
     auto identifier = connection.identifier();
     ASSERT(!m_connections.contains(identifier));
@@ -64,7 +64,7 @@ void IDBStorageRegistry::registerConnection(WebCore::IDBServer::UniqueIDBDatabas
     m_connections.add(identifier, connection);
 }
 
-void IDBStorageRegistry::unregisterConnection(WebCore::IDBServer::UniqueIDBDatabaseConnection& connection)
+void IDBStorageRegistry::unregisterConnection(CyberCore::IDBServer::UniqueIDBDatabaseConnection& connection)
 {
     auto identifier = connection.identifier();
     ASSERT(m_connections.contains(identifier));
@@ -72,7 +72,7 @@ void IDBStorageRegistry::unregisterConnection(WebCore::IDBServer::UniqueIDBDatab
     m_connections.remove(identifier);
 }
 
-void IDBStorageRegistry::registerTransaction(WebCore::IDBServer::UniqueIDBDatabaseTransaction& transaction)
+void IDBStorageRegistry::registerTransaction(CyberCore::IDBServer::UniqueIDBDatabaseTransaction& transaction)
 {
     auto identifier = transaction.info().identifier();
     ASSERT(!m_transactions.contains(identifier));
@@ -80,7 +80,7 @@ void IDBStorageRegistry::registerTransaction(WebCore::IDBServer::UniqueIDBDataba
     m_transactions.add(identifier, transaction);
 }
 
-void IDBStorageRegistry::unregisterTransaction(WebCore::IDBServer::UniqueIDBDatabaseTransaction& transaction)
+void IDBStorageRegistry::unregisterTransaction(CyberCore::IDBServer::UniqueIDBDatabaseTransaction& transaction)
 {
     auto identifier = transaction.info().identifier();
     ASSERT(m_transactions.contains(identifier));
@@ -88,12 +88,12 @@ void IDBStorageRegistry::unregisterTransaction(WebCore::IDBServer::UniqueIDBData
     m_transactions.remove(identifier);
 }
 
-WebCore::IDBServer::UniqueIDBDatabaseConnection* IDBStorageRegistry::connection(uint64_t identifier)
+CyberCore::IDBServer::UniqueIDBDatabaseConnection* IDBStorageRegistry::connection(uint64_t identifier)
 {
     return m_connections.get(identifier).get();
 }
 
-WebCore::IDBServer::UniqueIDBDatabaseTransaction* IDBStorageRegistry::transaction(WebCore::IDBResourceIdentifier identifier)
+CyberCore::IDBServer::UniqueIDBDatabaseTransaction* IDBStorageRegistry::transaction(CyberCore::IDBResourceIdentifier identifier)
 {
     return m_transactions.get(identifier).get();
 }

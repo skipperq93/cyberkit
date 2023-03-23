@@ -39,11 +39,11 @@
 #include "JSNodeCustom.h"
 #include "Logging.h"
 #include "Performance.h"
-#include "WebCoreOpaqueRoot.h"
+#include "CyberCoreOpaqueRoot.h"
 #include <CyberScriptCore/AbstractSlotVisitorInlines.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static ExceptionOr<LengthBox> parseRootMargin(String& rootMargin)
 {
@@ -317,14 +317,14 @@ void IntersectionObserver::notify()
 bool IntersectionObserver::isReachableFromOpaqueRoots(JSC::AbstractSlotVisitor& visitor) const
 {
     for (auto& target : m_observationTargets) {
-        if (auto* element = target.get(); containsWebCoreOpaqueRoot(visitor, element))
+        if (auto* element = target.get(); containsCyberCoreOpaqueRoot(visitor, element))
             return true;
     }
     for (auto& target : m_pendingTargets) {
-        if (containsWebCoreOpaqueRoot(visitor, target.get()))
+        if (containsCyberCoreOpaqueRoot(visitor, target.get()))
             return true;
     }
     return !m_targetsWaitingForFirstObservation.isEmpty();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

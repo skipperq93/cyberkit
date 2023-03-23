@@ -58,17 +58,17 @@ public:
 
     WebWheelEvent() = default;
 
-    WebWheelEvent(WebEvent&&, const WebCore::IntPoint& position, const WebCore::IntPoint& globalPosition, const WebCore::FloatSize& delta, const WebCore::FloatSize& wheelTicks, Granularity);
+    WebWheelEvent(WebEvent&&, const CyberCore::IntPoint& position, const CyberCore::IntPoint& globalPosition, const CyberCore::FloatSize& delta, const CyberCore::FloatSize& wheelTicks, Granularity);
 #if PLATFORM(COCOA)
-    WebWheelEvent(WebEvent&&, const WebCore::IntPoint& position, const WebCore::IntPoint& globalPosition, const WebCore::FloatSize& delta, const WebCore::FloatSize& wheelTicks, Granularity, bool directionInvertedFromDevice, Phase, Phase momentumPhase, bool hasPreciseScrollingDeltas, uint32_t scrollCount, const WebCore::FloatSize& unacceleratedScrollingDelta, WallTime ioHIDEventTimestamp, std::optional<WebCore::FloatSize> rawPlatformDelta, MomentumEndType);
+    WebWheelEvent(WebEvent&&, const CyberCore::IntPoint& position, const CyberCore::IntPoint& globalPosition, const CyberCore::FloatSize& delta, const CyberCore::FloatSize& wheelTicks, Granularity, bool directionInvertedFromDevice, Phase, Phase momentumPhase, bool hasPreciseScrollingDeltas, uint32_t scrollCount, const CyberCore::FloatSize& unacceleratedScrollingDelta, WallTime ioHIDEventTimestamp, std::optional<CyberCore::FloatSize> rawPlatformDelta, MomentumEndType);
 #elif PLATFORM(GTK) || USE(LIBWPE)
-    WebWheelEvent(WebEvent&&, const WebCore::IntPoint& position, const WebCore::IntPoint& globalPosition, const WebCore::FloatSize& delta, const WebCore::FloatSize& wheelTicks, Granularity, Phase, Phase momentumPhase, bool hasPreciseScrollingDeltas);
+    WebWheelEvent(WebEvent&&, const CyberCore::IntPoint& position, const CyberCore::IntPoint& globalPosition, const CyberCore::FloatSize& delta, const CyberCore::FloatSize& wheelTicks, Granularity, Phase, Phase momentumPhase, bool hasPreciseScrollingDeltas);
 #endif
 
-    const WebCore::IntPoint position() const { return m_position; }
-    const WebCore::IntPoint globalPosition() const { return m_globalPosition; }
-    const WebCore::FloatSize delta() const { return m_delta; }
-    const WebCore::FloatSize wheelTicks() const { return m_wheelTicks; }
+    const CyberCore::IntPoint position() const { return m_position; }
+    const CyberCore::IntPoint globalPosition() const { return m_globalPosition; }
+    const CyberCore::FloatSize delta() const { return m_delta; }
+    const CyberCore::FloatSize wheelTicks() const { return m_wheelTicks; }
     Granularity granularity() const { return static_cast<Granularity>(m_granularity); }
     bool directionInvertedFromDevice() const { return m_directionInvertedFromDevice; }
     Phase phase() const { return static_cast<Phase>(m_phase); }
@@ -79,18 +79,18 @@ public:
 #endif
 #if PLATFORM(COCOA)
     WallTime ioHIDEventTimestamp() const { return m_ioHIDEventTimestamp; }
-    std::optional<WebCore::FloatSize> rawPlatformDelta() const { return m_rawPlatformDelta; }
+    std::optional<CyberCore::FloatSize> rawPlatformDelta() const { return m_rawPlatformDelta; }
     uint32_t scrollCount() const { return m_scrollCount; }
-    const WebCore::FloatSize& unacceleratedScrollingDelta() const { return m_unacceleratedScrollingDelta; }
+    const CyberCore::FloatSize& unacceleratedScrollingDelta() const { return m_unacceleratedScrollingDelta; }
 #endif
 
 private:
     static bool isWheelEventType(WebEventType);
 
-    WebCore::IntPoint m_position;
-    WebCore::IntPoint m_globalPosition;
-    WebCore::FloatSize m_delta;
-    WebCore::FloatSize m_wheelTicks;
+    CyberCore::IntPoint m_position;
+    CyberCore::IntPoint m_globalPosition;
+    CyberCore::FloatSize m_delta;
+    CyberCore::FloatSize m_wheelTicks;
     uint32_t m_granularity { ScrollByPageWheelEvent };
     uint32_t m_phase { Phase::PhaseNone };
     uint32_t m_momentumPhase { Phase::PhaseNone };
@@ -102,9 +102,9 @@ private:
 #endif
 #if PLATFORM(COCOA)
     WallTime m_ioHIDEventTimestamp;
-    std::optional<WebCore::FloatSize> m_rawPlatformDelta;
+    std::optional<CyberCore::FloatSize> m_rawPlatformDelta;
     uint32_t m_scrollCount { 0 };
-    WebCore::FloatSize m_unacceleratedScrollingDelta;
+    CyberCore::FloatSize m_unacceleratedScrollingDelta;
 #endif
 };
 

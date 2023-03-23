@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -21,21 +21,21 @@
 #error "Only <webkitdom/webkitdom.h> can be included directly."
 #endif
 
-#ifndef WebKitDOMKeyboardEvent_h
-#define WebKitDOMKeyboardEvent_h
+#ifndef CyberKitDOMKeyboardEvent_h
+#define CyberKitDOMKeyboardEvent_h
 
 #include <glib-object.h>
-#include <webkitdom/WebKitDOMUIEvent.h>
+#include <webkitdom/CyberKitDOMUIEvent.h>
 #include <webkitdom/webkitdomdefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_DOM_TYPE_KEYBOARD_EVENT            (webkit_dom_keyboard_event_get_type())
-#define WEBKIT_DOM_KEYBOARD_EVENT(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_KEYBOARD_EVENT, WebKitDOMKeyboardEvent))
-#define WEBKIT_DOM_KEYBOARD_EVENT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_KEYBOARD_EVENT, WebKitDOMKeyboardEventClass)
+#define WEBKIT_DOM_KEYBOARD_EVENT(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_KEYBOARD_EVENT, CyberKitDOMKeyboardEvent))
+#define WEBKIT_DOM_KEYBOARD_EVENT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_KEYBOARD_EVENT, CyberKitDOMKeyboardEventClass)
 #define WEBKIT_DOM_IS_KEYBOARD_EVENT(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_DOM_TYPE_KEYBOARD_EVENT))
 #define WEBKIT_DOM_IS_KEYBOARD_EVENT_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_DOM_TYPE_KEYBOARD_EVENT))
-#define WEBKIT_DOM_KEYBOARD_EVENT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_KEYBOARD_EVENT, WebKitDOMKeyboardEventClass))
+#define WEBKIT_DOM_KEYBOARD_EVENT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_KEYBOARD_EVENT, CyberKitDOMKeyboardEventClass))
 
 #ifndef WEBKIT_DISABLE_DEPRECATED
 
@@ -69,12 +69,12 @@ G_BEGIN_DECLS
 
 #endif /* WEBKIT_DISABLE_DEPRECATED */
 
-struct _WebKitDOMKeyboardEvent {
-    WebKitDOMUIEvent parent_instance;
+struct _CyberKitDOMKeyboardEvent {
+    CyberKitDOMUIEvent parent_instance;
 };
 
-struct _WebKitDOMKeyboardEventClass {
-    WebKitDOMUIEventClass parent_class;
+struct _CyberKitDOMKeyboardEventClass {
+    CyberKitDOMUIEventClass parent_class;
 };
 
 WEBKIT_DEPRECATED GType
@@ -82,7 +82,7 @@ webkit_dom_keyboard_event_get_type(void);
 
 /**
  * webkit_dom_keyboard_event_get_modifier_state:
- * @self: A #WebKitDOMKeyboardEvent
+ * @self: A #CyberKitDOMKeyboardEvent
  * @keyIdentifierArg: A #gchar
  *
  * Returns: A #gboolean
@@ -90,15 +90,15 @@ webkit_dom_keyboard_event_get_type(void);
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
-webkit_dom_keyboard_event_get_modifier_state(WebKitDOMKeyboardEvent* self, const gchar* keyIdentifierArg);
+webkit_dom_keyboard_event_get_modifier_state(CyberKitDOMKeyboardEvent* self, const gchar* keyIdentifierArg);
 
 /**
  * webkit_dom_keyboard_event_init_keyboard_event:
- * @self: A #WebKitDOMKeyboardEvent
+ * @self: A #CyberKitDOMKeyboardEvent
  * @type: A #gchar
  * @canBubble: A #gboolean
  * @cancelable: A #gboolean
- * @view: A #WebKitDOMDOMWindow
+ * @view: A #CyberKitDOMDOMWindow
  * @keyIdentifier: A #gchar
  * @location: A #gulong
  * @ctrlKey: A #gboolean
@@ -111,85 +111,85 @@ webkit_dom_keyboard_event_get_modifier_state(WebKitDOMKeyboardEvent* self, const
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_keyboard_event_init_keyboard_event(WebKitDOMKeyboardEvent* self, const gchar* type, gboolean canBubble, gboolean cancelable, WebKitDOMDOMWindow* view, const gchar* keyIdentifier, gulong location, gboolean ctrlKey, gboolean altKey, gboolean shiftKey, gboolean metaKey, gboolean altGraphKey);
+webkit_dom_keyboard_event_init_keyboard_event(CyberKitDOMKeyboardEvent* self, const gchar* type, gboolean canBubble, gboolean cancelable, CyberKitDOMDOMWindow* view, const gchar* keyIdentifier, gulong location, gboolean ctrlKey, gboolean altKey, gboolean shiftKey, gboolean metaKey, gboolean altGraphKey);
 
 /**
  * webkit_dom_keyboard_event_get_key_identifier:
- * @self: A #WebKitDOMKeyboardEvent
+ * @self: A #CyberKitDOMKeyboardEvent
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_keyboard_event_get_key_identifier(WebKitDOMKeyboardEvent* self);
+webkit_dom_keyboard_event_get_key_identifier(CyberKitDOMKeyboardEvent* self);
 
 /**
  * webkit_dom_keyboard_event_get_key_location:
- * @self: A #WebKitDOMKeyboardEvent
+ * @self: A #CyberKitDOMKeyboardEvent
  *
  * Returns: A #gulong
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gulong
-webkit_dom_keyboard_event_get_key_location(WebKitDOMKeyboardEvent* self);
+webkit_dom_keyboard_event_get_key_location(CyberKitDOMKeyboardEvent* self);
 
 /**
  * webkit_dom_keyboard_event_get_ctrl_key:
- * @self: A #WebKitDOMKeyboardEvent
+ * @self: A #CyberKitDOMKeyboardEvent
  *
  * Returns: A #gboolean
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
-webkit_dom_keyboard_event_get_ctrl_key(WebKitDOMKeyboardEvent* self);
+webkit_dom_keyboard_event_get_ctrl_key(CyberKitDOMKeyboardEvent* self);
 
 /**
  * webkit_dom_keyboard_event_get_shift_key:
- * @self: A #WebKitDOMKeyboardEvent
+ * @self: A #CyberKitDOMKeyboardEvent
  *
  * Returns: A #gboolean
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
-webkit_dom_keyboard_event_get_shift_key(WebKitDOMKeyboardEvent* self);
+webkit_dom_keyboard_event_get_shift_key(CyberKitDOMKeyboardEvent* self);
 
 /**
  * webkit_dom_keyboard_event_get_alt_key:
- * @self: A #WebKitDOMKeyboardEvent
+ * @self: A #CyberKitDOMKeyboardEvent
  *
  * Returns: A #gboolean
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
-webkit_dom_keyboard_event_get_alt_key(WebKitDOMKeyboardEvent* self);
+webkit_dom_keyboard_event_get_alt_key(CyberKitDOMKeyboardEvent* self);
 
 /**
  * webkit_dom_keyboard_event_get_meta_key:
- * @self: A #WebKitDOMKeyboardEvent
+ * @self: A #CyberKitDOMKeyboardEvent
  *
  * Returns: A #gboolean
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
-webkit_dom_keyboard_event_get_meta_key(WebKitDOMKeyboardEvent* self);
+webkit_dom_keyboard_event_get_meta_key(CyberKitDOMKeyboardEvent* self);
 
 /**
  * webkit_dom_keyboard_event_get_alt_graph_key:
- * @self: A #WebKitDOMKeyboardEvent
+ * @self: A #CyberKitDOMKeyboardEvent
  *
  * Returns: A #gboolean
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
-webkit_dom_keyboard_event_get_alt_graph_key(WebKitDOMKeyboardEvent* self);
+webkit_dom_keyboard_event_get_alt_graph_key(CyberKitDOMKeyboardEvent* self);
 
 G_END_DECLS
 
-#endif /* WebKitDOMKeyboardEvent_h */
+#endif /* CyberKitDOMKeyboardEvent_h */

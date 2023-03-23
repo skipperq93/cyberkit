@@ -75,7 +75,7 @@
 #include "FullscreenManager.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 namespace Style {
 
 using namespace HTMLNames;
@@ -478,7 +478,7 @@ void Adjuster::adjust(RenderStyle& style, const RenderStyle* userAgentAppearance
     // styles are specified on a root element, then they will be incorporated in
     // Style::createForm_document.
     if ((style.overflowY() == Overflow::PagedX || style.overflowY() == Overflow::PagedY) && !(m_element && (m_element->hasTagName(htmlTag) || m_element->hasTagName(bodyTag))))
-        style.setColumnStylesFromPaginationMode(WebCore::paginationModeForRenderStyle(style));
+        style.setColumnStylesFromPaginationMode(CyberCore::paginationModeForRenderStyle(style));
 
     // Table rows, sections and the table itself will support overflow:hidden and will ignore scroll/auto.
     // FIXME: Eventually table sections will support auto and scroll.

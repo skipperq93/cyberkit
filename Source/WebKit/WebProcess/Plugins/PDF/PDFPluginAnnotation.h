@@ -32,7 +32,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/RetainPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 class Document;
 class Element;
 }
@@ -40,7 +40,7 @@ class Element;
 OBJC_CLASS PDFAnnotation;
 OBJC_CLASS PDFLayerController;
 
-namespace WebKit {
+namespace CyberKit {
 
 class PDFPlugin;
 
@@ -49,14 +49,14 @@ public:
     static RefPtr<PDFPluginAnnotation> create(PDFAnnotation *, PDFLayerController *, PDFPlugin*);
     virtual ~PDFPluginAnnotation();
 
-    WebCore::Element* element() const { return m_element.get(); }
+    CyberCore::Element* element() const { return m_element.get(); }
     PDFAnnotation *annotation() const { return m_annotation.get(); }
     PDFPlugin* plugin() const { return m_plugin; }
 
     virtual void updateGeometry();
     virtual void commit();
 
-    void attach(WebCore::Element*);
+    void attach(CyberCore::Element*);
 
 protected:
     PDFPluginAnnotation(PDFAnnotation *annotation, PDFLayerController *pdfLayerController, PDFPlugin* plugin)
@@ -68,16 +68,16 @@ protected:
     {
     }
 
-    WebCore::Element* parent() const { return m_parent; }
+    CyberCore::Element* parent() const { return m_parent; }
     PDFLayerController *pdfLayerController() const { return m_pdfLayerController; }
-    WebCore::EventListener* eventListener() const { return m_eventListener.get(); }
+    CyberCore::EventListener* eventListener() const { return m_eventListener.get(); }
 
-    virtual bool handleEvent(WebCore::Event&);
+    virtual bool handleEvent(CyberCore::Event&);
 
 private:
-    virtual Ref<WebCore::Element> createAnnotationElement() = 0;
+    virtual Ref<CyberCore::Element> createAnnotationElement() = 0;
 
-    class PDFPluginAnnotationEventListener : public WebCore::EventListener {
+    class PDFPluginAnnotationEventListener : public CyberCore::EventListener {
     public:
         static Ref<PDFPluginAnnotationEventListener> create(PDFPluginAnnotation* annotation)
         {
@@ -91,19 +91,19 @@ private:
     private:
 
         PDFPluginAnnotationEventListener(PDFPluginAnnotation* annotation)
-            : WebCore::EventListener(WebCore::EventListener::CPPEventListenerType)
+            : CyberCore::EventListener(CyberCore::EventListener::CPPEventListenerType)
             , m_annotation(annotation)
         {
         }
 
-        void handleEvent(WebCore::ScriptExecutionContext&, WebCore::Event&) override;
+        void handleEvent(CyberCore::ScriptExecutionContext&, CyberCore::Event&) override;
 
         PDFPluginAnnotation* m_annotation;
     };
 
-    WebCore::Element* m_parent;
+    CyberCore::Element* m_parent;
 
-    RefPtr<WebCore::Element> m_element;
+    RefPtr<CyberCore::Element> m_element;
     RetainPtr<PDFAnnotation> m_annotation;
 
     RefPtr<PDFPluginAnnotationEventListener> m_eventListener;
@@ -112,7 +112,7 @@ private:
     PDFPlugin* m_plugin;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(PDFKIT_PLUGIN)
 

@@ -39,7 +39,7 @@
 /*!
     @class WebHTMLView
     @discussion A document view of WebFrameView that displays HTML content.
-    WebHTMLView is a NSControl because it hosts NSCells that are painted by WebCore's Aqua theme
+    WebHTMLView is a NSControl because it hosts NSCells that are painted by CyberCore's Aqua theme
     renderer (and those cells must be hosted by an enclosing NSControl in order to paint properly).
 */
 #if !TARGET_OS_IPHONE

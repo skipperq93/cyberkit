@@ -32,7 +32,7 @@ typedef struct OpaqueVTImageRotationSession* VTImageRotationSessionRef;
 typedef struct __CVBuffer *CVPixelBufferRef;
 typedef struct __CVPixelBufferPool* CVPixelBufferPoolRef;
 
-namespace WebCore {
+namespace CyberCore {
 
 class VideoFrame;
 

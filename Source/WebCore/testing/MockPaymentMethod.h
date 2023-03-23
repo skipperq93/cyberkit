@@ -30,7 +30,7 @@
 #include "ApplePayPaymentMethod.h"
 #include "PaymentMethod.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class MockPaymentMethod final : public PaymentMethod {
 public:
@@ -45,6 +45,6 @@ private:
     ApplePayPaymentMethod m_applePayPaymentMethod;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(APPLE_PAY)

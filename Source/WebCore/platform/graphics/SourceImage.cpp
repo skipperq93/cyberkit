@@ -28,7 +28,7 @@
 
 #include "GraphicsContext.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 SourceImage::SourceImage(ImageVariant&& imageVariant)
     : m_imageVariant(WTFMove(imageVariant))
@@ -130,4 +130,4 @@ IntSize SourceImage::size() const
     );
 }
 
-} // namespace WebCore
+} // namespace CyberCore

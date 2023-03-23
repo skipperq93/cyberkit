@@ -31,7 +31,7 @@
 #import "ResourceLoadInfo.h"
 #import "_WKFrameHandleInternal.h"
 #import "_WKResourceLoadInfoInternal.h"
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 
 static _WKResourceLoadInfoResourceType toWKResourceLoadInfoResourceType(WebKit::ResourceLoadInfo::Type type)
 {
@@ -78,7 +78,7 @@ static _WKResourceLoadInfoResourceType toWKResourceLoadInfoResourceType(WebKit::
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainRunLoop(_WKResourceLoadInfo.class, self))
+    if (CyberCoreObjCScheduleDeallocateOnMainRunLoop(_WKResourceLoadInfo.class, self))
         return;
     _info->API::ResourceLoadInfo::~ResourceLoadInfo();
     [super dealloc];
@@ -191,7 +191,7 @@ static _WKResourceLoadInfoResourceType toWKResourceLoadInfoResourceType(WebKit::
     WebKit::ResourceLoadInfo info {
         makeObjectIdentifier<WebKit::NetworkResourceLoadIdentifierType>(resourceLoadID.unsignedLongLongValue),
         frame->_frameHandle->frameID(),
-        parentFrame ? std::optional<WebCore::FrameIdentifier>(parentFrame->_frameHandle->frameID()) : std::nullopt,
+        parentFrame ? std::optional<CyberCore::FrameIdentifier>(parentFrame->_frameHandle->frameID()) : std::nullopt,
         originalURL,
         originalHTTPMethod,
         WallTime::fromRawSeconds(eventTimestamp.timeIntervalSince1970),

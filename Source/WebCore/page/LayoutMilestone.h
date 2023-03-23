@@ -27,7 +27,7 @@
 
 #include <wtf/OptionSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // FIXME: Some of these milestones are about layout, and others are about painting.
 // We should either re-name them to something more generic, or split them into
@@ -44,22 +44,22 @@ enum LayoutMilestone {
     DidFirstMeaningfulPaint                             = 1 << 8,
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::LayoutMilestone> {
+template<> struct EnumTraits<CyberCore::LayoutMilestone> {
     using values = EnumValues<
-        WebCore::LayoutMilestone,
-        WebCore::LayoutMilestone::DidFirstLayout,
-        WebCore::LayoutMilestone::DidFirstVisuallyNonEmptyLayout,
-        WebCore::LayoutMilestone::DidHitRelevantRepaintedObjectsAreaThreshold,
-        WebCore::LayoutMilestone::DidFirstFlushForHeaderLayer,
-        WebCore::LayoutMilestone::DidFirstLayoutAfterSuppressedIncrementalRendering,
-        WebCore::LayoutMilestone::DidFirstPaintAfterSuppressedIncrementalRendering,
-        WebCore::LayoutMilestone::ReachedSessionRestorationRenderTreeSizeThreshold,
-        WebCore::LayoutMilestone::DidRenderSignificantAmountOfText,
-        WebCore::LayoutMilestone::DidFirstMeaningfulPaint
+        CyberCore::LayoutMilestone,
+        CyberCore::LayoutMilestone::DidFirstLayout,
+        CyberCore::LayoutMilestone::DidFirstVisuallyNonEmptyLayout,
+        CyberCore::LayoutMilestone::DidHitRelevantRepaintedObjectsAreaThreshold,
+        CyberCore::LayoutMilestone::DidFirstFlushForHeaderLayer,
+        CyberCore::LayoutMilestone::DidFirstLayoutAfterSuppressedIncrementalRendering,
+        CyberCore::LayoutMilestone::DidFirstPaintAfterSuppressedIncrementalRendering,
+        CyberCore::LayoutMilestone::ReachedSessionRestorationRenderTreeSizeThreshold,
+        CyberCore::LayoutMilestone::DidRenderSignificantAmountOfText,
+        CyberCore::LayoutMilestone::DidFirstMeaningfulPaint
     >;
 };
 

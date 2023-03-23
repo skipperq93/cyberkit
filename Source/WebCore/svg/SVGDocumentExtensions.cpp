@@ -40,7 +40,7 @@
 #include "ShadowRoot.h"
 #include <wtf/text/AtomString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static bool animationsPausedForDocument(Document& document)
 {

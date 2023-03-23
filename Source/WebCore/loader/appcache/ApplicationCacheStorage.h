@@ -32,7 +32,7 @@
 #include <wtf/text/StringHash.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ApplicationCache;
 class ApplicationCacheGroup;
@@ -158,4 +158,4 @@ private:
     friend class NeverDestroyed<ApplicationCacheStorage>;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

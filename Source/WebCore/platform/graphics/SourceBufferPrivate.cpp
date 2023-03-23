@@ -44,7 +44,7 @@
 #include <wtf/MediaTime.h>
 #include <wtf/StringPrintStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // Do not enqueue samples spanning a significant unbuffered gap.
 // NOTE: one second is somewhat arbitrary. MediaSource::monitorSourceBuffers() is run
@@ -1113,6 +1113,6 @@ bool SourceBufferPrivate::evictFrames(uint64_t newDataSize, uint64_t maximumBuff
     return isBufferFull;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

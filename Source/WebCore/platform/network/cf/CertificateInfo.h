@@ -37,7 +37,7 @@
 WTF_DECLARE_CF_TYPE_TRAIT(SecCertificate);
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 struct CertificateSummary;
 
@@ -79,4 +79,4 @@ private:
 
 WEBCORE_EXPORT bool certificatesMatch(SecTrustRef, SecTrustRef);
 
-} // namespace WebCore
+} // namespace CyberCore

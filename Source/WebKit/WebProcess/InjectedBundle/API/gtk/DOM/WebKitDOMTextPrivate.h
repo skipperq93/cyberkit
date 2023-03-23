@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -17,16 +17,16 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitDOMTextPrivate_h
-#define WebKitDOMTextPrivate_h
+#ifndef CyberKitDOMTextPrivate_h
+#define CyberKitDOMTextPrivate_h
 
 #include <CyberCore/Text.h>
-#include <webkitdom/WebKitDOMText.h>
+#include <webkitdom/CyberKitDOMText.h>
 
-namespace WebKit {
-WebKitDOMText* wrapText(WebCore::Text*);
-WebKitDOMText* kit(WebCore::Text*);
-WebCore::Text* core(WebKitDOMText*);
-} // namespace WebKit
+namespace CyberKit {
+CyberKitDOMText* wrapText(CyberCore::Text*);
+CyberKitDOMText* kit(CyberCore::Text*);
+CyberCore::Text* core(CyberKitDOMText*);
+} // namespace CyberKit
 
-#endif /* WebKitDOMTextPrivate_h */
+#endif /* CyberKitDOMTextPrivate_h */

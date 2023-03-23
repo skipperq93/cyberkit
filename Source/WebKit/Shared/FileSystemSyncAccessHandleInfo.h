@@ -31,7 +31,7 @@
 namespace WebKit {
 
 struct FileSystemSyncAccessHandleInfo {
-    WebCore::FileSystemSyncAccessHandleIdentifier identifier;
+    CyberCore::FileSystemSyncAccessHandleIdentifier identifier;
     IPC::SharedFileHandle handle;
     uint64_t capacity { 0 };
 };

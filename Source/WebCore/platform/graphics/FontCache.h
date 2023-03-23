@@ -76,7 +76,7 @@
 #include "FontSetCache.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class Font;
 class FontCascade;

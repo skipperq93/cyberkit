@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -18,7 +18,7 @@
  */
 
 #include "config.h"
-#include "WebKitDOMHTMLTableCaptionElement.h"
+#include "CyberKitDOMHTMLTableCaptionElement.h"
 
 #include <CyberCore/CSSImportRule.h>
 #include "DOMObjectCache.h"
@@ -28,73 +28,73 @@
 #include <CyberCore/HTMLNames.h>
 #include <CyberCore/JSExecState.h>
 #include "GObjectEventListener.h"
-#include "WebKitDOMEventPrivate.h"
-#include "WebKitDOMEventTarget.h"
-#include "WebKitDOMHTMLTableCaptionElementPrivate.h"
-#include "WebKitDOMNodePrivate.h"
-#include "WebKitDOMPrivate.h"
+#include "CyberKitDOMEventPrivate.h"
+#include "CyberKitDOMEventTarget.h"
+#include "CyberKitDOMHTMLTableCaptionElementPrivate.h"
+#include "CyberKitDOMNodePrivate.h"
+#include "CyberKitDOMPrivate.h"
 #include "ConvertToUTF8String.h"
 #include <wtf/GetPtr.h>
 #include <wtf/RefPtr.h>
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
-namespace WebKit {
+namespace CyberKit {
 
-WebKitDOMHTMLTableCaptionElement* kit(WebCore::HTMLTableCaptionElement* obj)
+CyberKitDOMHTMLTableCaptionElement* kit(CyberCore::HTMLTableCaptionElement* obj)
 {
-    return WEBKIT_DOM_HTML_TABLE_CAPTION_ELEMENT(kit(static_cast<WebCore::Node*>(obj)));
+    return WEBKIT_DOM_HTML_TABLE_CAPTION_ELEMENT(kit(static_cast<CyberCore::Node*>(obj)));
 }
 
-WebCore::HTMLTableCaptionElement* core(WebKitDOMHTMLTableCaptionElement* request)
+CyberCore::HTMLTableCaptionElement* core(CyberKitDOMHTMLTableCaptionElement* request)
 {
-    return request ? static_cast<WebCore::HTMLTableCaptionElement*>(WEBKIT_DOM_OBJECT(request)->coreObject) : 0;
+    return request ? static_cast<CyberCore::HTMLTableCaptionElement*>(WEBKIT_DOM_OBJECT(request)->coreObject) : 0;
 }
 
-WebKitDOMHTMLTableCaptionElement* wrapHTMLTableCaptionElement(WebCore::HTMLTableCaptionElement* coreObject)
+CyberKitDOMHTMLTableCaptionElement* wrapHTMLTableCaptionElement(CyberCore::HTMLTableCaptionElement* coreObject)
 {
     ASSERT(coreObject);
     return WEBKIT_DOM_HTML_TABLE_CAPTION_ELEMENT(g_object_new(WEBKIT_DOM_TYPE_HTML_TABLE_CAPTION_ELEMENT, "core-object", coreObject, nullptr));
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
-static gboolean webkit_dom_html_table_caption_element_dispatch_event(WebKitDOMEventTarget* target, WebKitDOMEvent* event, GError** error)
+static gboolean webkit_dom_html_table_caption_element_dispatch_event(CyberKitDOMEventTarget* target, CyberKitDOMEvent* event, GError** error)
 {
-    WebCore::Event* coreEvent = WebKit::core(event);
+    CyberCore::Event* coreEvent = CyberKit::core(event);
     if (!coreEvent)
         return false;
-    WebCore::HTMLTableCaptionElement* coreTarget = static_cast<WebCore::HTMLTableCaptionElement*>(WEBKIT_DOM_OBJECT(target)->coreObject);
+    CyberCore::HTMLTableCaptionElement* coreTarget = static_cast<CyberCore::HTMLTableCaptionElement*>(WEBKIT_DOM_OBJECT(target)->coreObject);
 
     auto result = coreTarget->dispatchEventForBindings(*coreEvent);
     if (result.hasException()) {
-        auto description = WebCore::DOMException::description(result.releaseException().code());
+        auto description = CyberCore::DOMException::description(result.releaseException().code());
         g_set_error_literal(error, g_quark_from_string("WEBKIT_DOM"), description.legacyCode, description.name);
         return false;
     }
     return result.releaseReturnValue();
 }
 
-static gboolean webkit_dom_html_table_caption_element_add_event_listener(WebKitDOMEventTarget* target, const char* eventName, GClosure* handler, gboolean useCapture)
+static gboolean webkit_dom_html_table_caption_element_add_event_listener(CyberKitDOMEventTarget* target, const char* eventName, GClosure* handler, gboolean useCapture)
 {
-    WebCore::HTMLTableCaptionElement* coreTarget = static_cast<WebCore::HTMLTableCaptionElement*>(WEBKIT_DOM_OBJECT(target)->coreObject);
-    return WebKit::GObjectEventListener::addEventListener(G_OBJECT(target), coreTarget, eventName, handler, useCapture);
+    CyberCore::HTMLTableCaptionElement* coreTarget = static_cast<CyberCore::HTMLTableCaptionElement*>(WEBKIT_DOM_OBJECT(target)->coreObject);
+    return CyberKit::GObjectEventListener::addEventListener(G_OBJECT(target), coreTarget, eventName, handler, useCapture);
 }
 
-static gboolean webkit_dom_html_table_caption_element_remove_event_listener(WebKitDOMEventTarget* target, const char* eventName, GClosure* handler, gboolean useCapture)
+static gboolean webkit_dom_html_table_caption_element_remove_event_listener(CyberKitDOMEventTarget* target, const char* eventName, GClosure* handler, gboolean useCapture)
 {
-    WebCore::HTMLTableCaptionElement* coreTarget = static_cast<WebCore::HTMLTableCaptionElement*>(WEBKIT_DOM_OBJECT(target)->coreObject);
-    return WebKit::GObjectEventListener::removeEventListener(G_OBJECT(target), coreTarget, eventName, handler, useCapture);
+    CyberCore::HTMLTableCaptionElement* coreTarget = static_cast<CyberCore::HTMLTableCaptionElement*>(WEBKIT_DOM_OBJECT(target)->coreObject);
+    return CyberKit::GObjectEventListener::removeEventListener(G_OBJECT(target), coreTarget, eventName, handler, useCapture);
 }
 
-static void webkit_dom_html_table_caption_element_dom_event_target_init(WebKitDOMEventTargetIface* iface)
+static void webkit_dom_html_table_caption_element_dom_event_target_init(CyberKitDOMEventTargetIface* iface)
 {
     iface->dispatch_event = webkit_dom_html_table_caption_element_dispatch_event;
     iface->add_event_listener = webkit_dom_html_table_caption_element_add_event_listener;
     iface->remove_event_listener = webkit_dom_html_table_caption_element_remove_event_listener;
 }
 
-G_DEFINE_TYPE_WITH_CODE(WebKitDOMHTMLTableCaptionElement, webkit_dom_html_table_caption_element, WEBKIT_DOM_TYPE_HTML_ELEMENT, G_IMPLEMENT_INTERFACE(WEBKIT_DOM_TYPE_EVENT_TARGET, webkit_dom_html_table_caption_element_dom_event_target_init))
+G_DEFINE_TYPE_WITH_CODE(CyberKitDOMHTMLTableCaptionElement, webkit_dom_html_table_caption_element, WEBKIT_DOM_TYPE_HTML_ELEMENT, G_IMPLEMENT_INTERFACE(WEBKIT_DOM_TYPE_EVENT_TARGET, webkit_dom_html_table_caption_element_dom_event_target_init))
 
 enum {
     DOM_HTML_TABLE_CAPTION_ELEMENT_PROP_0,
@@ -103,7 +103,7 @@ enum {
 
 static void webkit_dom_html_table_caption_element_set_property(GObject* object, guint propertyId, const GValue* value, GParamSpec* pspec)
 {
-    WebKitDOMHTMLTableCaptionElement* self = WEBKIT_DOM_HTML_TABLE_CAPTION_ELEMENT(object);
+    CyberKitDOMHTMLTableCaptionElement* self = WEBKIT_DOM_HTML_TABLE_CAPTION_ELEMENT(object);
 
     switch (propertyId) {
     case DOM_HTML_TABLE_CAPTION_ELEMENT_PROP_ALIGN:
@@ -117,7 +117,7 @@ static void webkit_dom_html_table_caption_element_set_property(GObject* object, 
 
 static void webkit_dom_html_table_caption_element_get_property(GObject* object, guint propertyId, GValue* value, GParamSpec* pspec)
 {
-    WebKitDOMHTMLTableCaptionElement* self = WEBKIT_DOM_HTML_TABLE_CAPTION_ELEMENT(object);
+    CyberKitDOMHTMLTableCaptionElement* self = WEBKIT_DOM_HTML_TABLE_CAPTION_ELEMENT(object);
 
     switch (propertyId) {
     case DOM_HTML_TABLE_CAPTION_ELEMENT_PROP_ALIGN:
@@ -129,7 +129,7 @@ static void webkit_dom_html_table_caption_element_get_property(GObject* object, 
     }
 }
 
-static void webkit_dom_html_table_caption_element_class_init(WebKitDOMHTMLTableCaptionElementClass* requestClass)
+static void webkit_dom_html_table_caption_element_class_init(CyberKitDOMHTMLTableCaptionElementClass* requestClass)
 {
     GObjectClass* gobjectClass = G_OBJECT_CLASS(requestClass);
     gobjectClass->set_property = webkit_dom_html_table_caption_element_set_property;
@@ -147,27 +147,27 @@ static void webkit_dom_html_table_caption_element_class_init(WebKitDOMHTMLTableC
 
 }
 
-static void webkit_dom_html_table_caption_element_init(WebKitDOMHTMLTableCaptionElement* request)
+static void webkit_dom_html_table_caption_element_init(CyberKitDOMHTMLTableCaptionElement* request)
 {
     UNUSED_PARAM(request);
 }
 
-gchar* webkit_dom_html_table_caption_element_get_align(WebKitDOMHTMLTableCaptionElement* self)
+gchar* webkit_dom_html_table_caption_element_get_align(CyberKitDOMHTMLTableCaptionElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_TABLE_CAPTION_ELEMENT(self), 0);
-    WebCore::HTMLTableCaptionElement* item = WebKit::core(self);
-    gchar* result = convertToUTF8String(item->attributeWithoutSynchronization(WebCore::HTMLNames::alignAttr));
+    CyberCore::HTMLTableCaptionElement* item = CyberKit::core(self);
+    gchar* result = convertToUTF8String(item->attributeWithoutSynchronization(CyberCore::HTMLNames::alignAttr));
     return result;
 }
 
-void webkit_dom_html_table_caption_element_set_align(WebKitDOMHTMLTableCaptionElement* self, const gchar* value)
+void webkit_dom_html_table_caption_element_set_align(CyberKitDOMHTMLTableCaptionElement* self, const gchar* value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_TABLE_CAPTION_ELEMENT(self));
     g_return_if_fail(value);
-    WebCore::HTMLTableCaptionElement* item = WebKit::core(self);
-    item->setAttributeWithoutSynchronization(WebCore::HTMLNames::alignAttr, WTF::AtomString::fromUTF8(value));
+    CyberCore::HTMLTableCaptionElement* item = CyberKit::core(self);
+    item->setAttributeWithoutSynchronization(CyberCore::HTMLNames::alignAttr, WTF::AtomString::fromUTF8(value));
 }
 
 G_GNUC_END_IGNORE_DEPRECATIONS;

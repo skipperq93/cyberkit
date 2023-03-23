@@ -53,7 +53,7 @@ namespace WTF {
 class TextStream;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class IntRect;
 class IntPoint;

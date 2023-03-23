@@ -37,7 +37,7 @@
 #include <wtf/glib/RunLoopSourcePriority.h>
 #include <wtf/text/StringConcatenateNumbers.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 GST_DEBUG_CATEGORY(webkit_audio_destination_debug);
 #define GST_CAT_DEFAULT webkit_audio_destination_debug
@@ -274,6 +274,6 @@ void AudioDestinationGStreamer::notifyIsPlaying(bool isPlaying)
         m_callback->isPlayingDidChange();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

@@ -58,11 +58,11 @@ namespace TestWebKitAPI {
 // FIXME: Re-enable after webkit.org/b/242014 is resolved
 TEST(PictureInPicture, DISABLED_ExitPiPOnSuspendVideoElement)
 {
-    if (!WebCore::supportsPictureInPicture())
+    if (!CyberCore::supportsPictureInPicture())
         return;
 
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{
-        @"WebCoreLogging": @"Fullscreen=debug",
+        @"CyberCoreLogging": @"Fullscreen=debug",
         @"WebKit2Logging": @"Fullscreen=debug",
     }];
 
@@ -76,7 +76,7 @@ TEST(PictureInPicture, DISABLED_ExitPiPOnSuspendVideoElement)
     [webView synchronouslyLoadTestPageNamed:@"ExitFullscreenOnEnterPiP"];
 
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{
-        @"WebCoreLogging": @"",
+        @"CyberCoreLogging": @"",
         @"WebKit2Logging": @"",
     }];
 

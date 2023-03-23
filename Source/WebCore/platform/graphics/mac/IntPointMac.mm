@@ -26,7 +26,7 @@
 #import "config.h"
 #import "IntPoint.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 #if !PLATFORM(IOS_FAMILY)
 #ifndef NSGEOMETRY_TYPES_SAME_AS_CGGEOMETRY_TYPES

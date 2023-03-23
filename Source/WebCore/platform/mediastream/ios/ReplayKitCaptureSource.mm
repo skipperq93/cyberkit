@@ -38,8 +38,8 @@
 #import <pal/cf/CoreMediaSoftLink.h>
 #import <pal/ios/ReplayKitSoftLink.h>
 
-using namespace WebCore;
-@interface WebCoreReplayKitScreenRecorderHelper : NSObject {
+using namespace CyberCore;
+@interface CyberCoreReplayKitScreenRecorderHelper : NSObject {
     WeakPtr<ReplayKitCaptureSource> _callback;
 }
 
@@ -48,7 +48,7 @@ using namespace WebCore;
 - (void)observeValueForKeyPath:keyPath ofObject:(id)object change:(NSDictionary*)change context:(void*)context;
 @end
 
-@implementation WebCoreReplayKitScreenRecorderHelper
+@implementation CyberCoreReplayKitScreenRecorderHelper
 - (instancetype)initWithCallback:(WeakPtr<ReplayKitCaptureSource>&&)callback
 {
     self = [super init];
@@ -94,7 +94,7 @@ using namespace WebCore;
 }
 @end
 
-namespace WebCore {
+namespace CyberCore {
 
 bool ReplayKitCaptureSource::isAvailable()
 {
@@ -136,7 +136,7 @@ bool ReplayKitCaptureSource::start()
     [screenRecorder setMicrophoneEnabled:NO];
 
     if (!m_recorderHelper)
-        m_recorderHelper = ([[WebCoreReplayKitScreenRecorderHelper alloc] initWithCallback:this]);
+        m_recorderHelper = ([[CyberCoreReplayKitScreenRecorderHelper alloc] initWithCallback:this]);
 
     auto captureHandler = makeBlockPtr([this, weakThis = WeakPtr { *this }, identifier](CMSampleBufferRef _Nonnull sampleBuffer, RPSampleBufferType bufferType, NSError * _Nullable error) {
 
@@ -276,6 +276,6 @@ void ReplayKitCaptureSource::screenCaptureDevices(Vector<CaptureDevice>& display
         displays.append(screenDevice());
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM) && PLATFORM(IOS)

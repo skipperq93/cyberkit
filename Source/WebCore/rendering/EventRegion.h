@@ -36,7 +36,7 @@
 #include <wtf/Ref.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class EventRegion;
 class Path;
@@ -118,17 +118,17 @@ public:
     WEBCORE_EXPORT EventRegion();
     WEBCORE_EXPORT EventRegion(Region&&
 #if ENABLE(TOUCH_ACTION_REGIONS)
-    , Vector<WebCore::Region> touchActionRegions
+    , Vector<CyberCore::Region> touchActionRegions
 #endif
 #if ENABLE(WHEEL_EVENT_REGIONS)
-    , WebCore::Region wheelEventListenerRegion
-    , WebCore::Region nonPassiveWheelEventListenerRegion
+    , CyberCore::Region wheelEventListenerRegion
+    , CyberCore::Region nonPassiveWheelEventListenerRegion
 #endif
 #if ENABLE(EDITABLE_REGION)
-    , std::optional<WebCore::Region>
+    , std::optional<CyberCore::Region>
 #endif
 #if ENABLE(INTERACTION_REGIONS_IN_EVENT_REGION)
-    , Vector<WebCore::InteractionRegion>
+    , Vector<CyberCore::InteractionRegion>
 #endif
     );
 

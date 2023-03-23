@@ -31,7 +31,7 @@
 OBJC_CLASS NSScrollerImp;
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScrollbarThemeComposite : public ScrollbarTheme {
 public:

@@ -30,7 +30,7 @@
 #include "Filter.h"
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<FETurbulence> FETurbulence::create(TurbulenceType type, float baseFrequencyX, float baseFrequencyY, int numOctaves, float seed, bool stitchTiles)
 {
@@ -137,4 +137,4 @@ TextStream& FETurbulence::externalRepresentation(TextStream& ts, FilterRepresent
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

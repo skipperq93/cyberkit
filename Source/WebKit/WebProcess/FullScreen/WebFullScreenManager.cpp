@@ -29,7 +29,7 @@
 
 #include "Connection.h"
 #include "Logging.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebFrame.h"
 #include "WebFullScreenManagerProxyMessages.h"
 #include "WebPage.h"
@@ -53,18 +53,18 @@
 #endif
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
-using WebCore::FloatSize;
+using CyberCore::FloatSize;
 
-static WebCore::IntRect screenRectOfContents(WebCore::Element* element)
+static CyberCore::IntRect screenRectOfContents(CyberCore::Element* element)
 {
     ASSERT(element);
     if (!element)
         return { };
 
     if (element->renderer() && element->renderer()->hasLayer() && element->renderer()->enclosingLayer()->isComposited()) {
-        WebCore::FloatQuad contentsBox = static_cast<WebCore::FloatRect>(element->renderer()->enclosingLayer()->backing()->compositedBounds());
+        CyberCore::FloatQuad contentsBox = static_cast<CyberCore::FloatRect>(element->renderer()->enclosingLayer()->backing()->compositedBounds());
         contentsBox = element->renderer()->localToAbsoluteQuad(contentsBox);
         return element->renderer()->view().frameView().contentsToScreen(contentsBox.enclosingBoundingBox());
     }
@@ -78,7 +78,7 @@ Ref<WebFullScreenManager> WebFullScreenManager::create(WebPage* page)
 }
 
 WebFullScreenManager::WebFullScreenManager(WebPage* page)
-    : WebCore::EventListener(WebCore::EventListener::CPPEventListenerType)
+    : CyberCore::EventListener(CyberCore::EventListener::CPPEventListenerType)
     , m_page(page)
 #if ENABLE(VIDEO)
     , m_mainVideoElementTextRecognitionTimer(RunLoop::main(), this, &WebFullScreenManager::mainVideoElementTextRecognitionTimerFired)
@@ -100,7 +100,7 @@ void WebFullScreenManager::invalidate()
 #endif
 }
 
-WebCore::Element* WebFullScreenManager::element()
+CyberCore::Element* WebFullScreenManager::element()
 { 
     return m_element.get(); 
 }
@@ -111,16 +111,16 @@ void WebFullScreenManager::videoControlsManagerDidChange()
     LOG(Fullscreen, "WebFullScreenManager %p videoControlsManagerDidChange()", this);
 
     auto* currentPlaybackControlsElement = m_page->playbackSessionManager().currentPlaybackControlsElement();
-    if (!m_element || !is<WebCore::HTMLVideoElement>(currentPlaybackControlsElement)) {
+    if (!m_element || !is<CyberCore::HTMLVideoElement>(currentPlaybackControlsElement)) {
         setPIPStandbyElement(nullptr);
         return;
     }
 
-    setPIPStandbyElement(downcast<WebCore::HTMLVideoElement>(currentPlaybackControlsElement));
+    setPIPStandbyElement(downcast<CyberCore::HTMLVideoElement>(currentPlaybackControlsElement));
 #endif
 }
 
-void WebFullScreenManager::setPIPStandbyElement(WebCore::HTMLVideoElement* pipStandbyElement)
+void WebFullScreenManager::setPIPStandbyElement(CyberCore::HTMLVideoElement* pipStandbyElement)
 {
 #if ENABLE(VIDEO)
     if (pipStandbyElement == m_pipStandbyElement)
@@ -154,14 +154,14 @@ bool WebFullScreenManager::supportsFullScreen(bool withKeyboard)
 static auto& eventsToObserve()
 {
     static NeverDestroyed eventsToObserve = std::array {
-        WebCore::eventNames().playEvent,
-        WebCore::eventNames().pauseEvent,
-        WebCore::eventNames().loadedmetadataEvent,
+        CyberCore::eventNames().playEvent,
+        CyberCore::eventNames().pauseEvent,
+        CyberCore::eventNames().loadedmetadataEvent,
     };
     return eventsToObserve.get();
 }
 
-void WebFullScreenManager::setElement(WebCore::Element& element)
+void WebFullScreenManager::setElement(CyberCore::Element& element)
 {
     if (m_element == &element)
         return;
@@ -184,7 +184,7 @@ void WebFullScreenManager::clearElement()
     m_element = nullptr;
 }
 
-void WebFullScreenManager::enterFullScreenForElement(WebCore::Element* element)
+void WebFullScreenManager::enterFullScreenForElement(CyberCore::Element* element)
 {
     LOG(Fullscreen, "WebFullScreenManager %p enterFullScreenForElement(%p)", this, element);
 
@@ -213,7 +213,7 @@ void WebFullScreenManager::enterFullScreenForElement(WebCore::Element* element)
     m_page->injectedBundleFullScreenClient().enterFullScreenForElement(m_page.get(), element, m_element->document().quirks().blocksReturnToFullscreenFromPictureInPictureQuirk(), isVideoElementWithControls, videoDimensions);
 }
 
-void WebFullScreenManager::exitFullScreenForElement(WebCore::Element* element)
+void WebFullScreenManager::exitFullScreenForElement(CyberCore::Element* element)
 {
     LOG(Fullscreen, "WebFullScreenManager %p exitFullScreenForElement(%p) - fullscreen element %p", this, element, m_element.get());
     m_page->injectedBundleFullScreenClient().exitFullScreenForElement(m_page.get(), element);
@@ -256,7 +256,7 @@ void WebFullScreenManager::didEnterFullScreen()
 
 #if PLATFORM(IOS_FAMILY) || (PLATFORM(MAC) && ENABLE(VIDEO_PRESENTATION_MODE))
     auto* currentPlaybackControlsElement = m_page->playbackSessionManager().currentPlaybackControlsElement();
-    setPIPStandbyElement(dynamicDowncast<WebCore::HTMLVideoElement>(currentPlaybackControlsElement));
+    setPIPStandbyElement(dynamicDowncast<CyberCore::HTMLVideoElement>(currentPlaybackControlsElement));
 #endif
 
 #if ENABLE(VIDEO)
@@ -268,16 +268,16 @@ void WebFullScreenManager::didEnterFullScreen()
 
 void WebFullScreenManager::updateMainVideoElement()
 {
-    setMainVideoElement([&]() -> RefPtr<WebCore::HTMLVideoElement> {
+    setMainVideoElement([&]() -> RefPtr<CyberCore::HTMLVideoElement> {
         if (!m_element)
             return nullptr;
 
-        if (auto video = dynamicDowncast<WebCore::HTMLVideoElement>(*m_element))
+        if (auto video = dynamicDowncast<CyberCore::HTMLVideoElement>(*m_element))
             return video;
 
-        RefPtr<WebCore::HTMLVideoElement> mainVideo;
-        WebCore::FloatRect mainVideoBounds;
-        for (auto& video : WebCore::descendantsOfType<WebCore::HTMLVideoElement>(*m_element)) {
+        RefPtr<CyberCore::HTMLVideoElement> mainVideo;
+        CyberCore::FloatRect mainVideoBounds;
+        for (auto& video : CyberCore::descendantsOfType<CyberCore::HTMLVideoElement>(*m_element)) {
             auto rendererAndBounds = video.boundingAbsoluteRectWithoutLayout();
             if (!rendererAndBounds)
                 continue;
@@ -325,7 +325,7 @@ void WebFullScreenManager::didExitFullScreen()
     if (!m_element)
         return;
 
-    setFullscreenInsets(WebCore::FloatBoxExtent());
+    setFullscreenInsets(CyberCore::FloatBoxExtent());
     setFullscreenAutoHideDuration(0_s);
     m_element->document().fullscreenManager().didExitFullscreen();
     clearElement();
@@ -349,8 +349,8 @@ void WebFullScreenManager::requestRestoreFullScreen()
     if (!element)
         return;
 
-    WebCore::UserGestureIndicator gestureIndicator(WebCore::ProcessingUserGesture, &element->document());
-    element->document().fullscreenManager().requestFullscreenForElement(*element, nullptr, WebCore::FullscreenManager::ExemptIFrameAllowFullscreenRequirement);
+    CyberCore::UserGestureIndicator gestureIndicator(CyberCore::ProcessingUserGesture, &element->document());
+    element->document().fullscreenManager().requestFullscreenForElement(*element, nullptr, CyberCore::FullscreenManager::ExemptIFrameAllowFullscreenRequirement);
 }
 
 void WebFullScreenManager::requestExitFullScreen()
@@ -391,7 +391,7 @@ void WebFullScreenManager::restoreScrollPosition()
         localMainFrame->view()->setScrollPosition(m_scrollPosition);
 }
 
-void WebFullScreenManager::setFullscreenInsets(const WebCore::FloatBoxExtent& insets)
+void WebFullScreenManager::setFullscreenInsets(const CyberCore::FloatBoxExtent& insets)
 {
     m_page->corePage()->setFullscreenInsets(insets);
 }
@@ -406,10 +406,10 @@ void WebFullScreenManager::setFullscreenControlsHidden(bool hidden)
     m_page->corePage()->setFullscreenControlsHidden(hidden);
 }
 
-void WebFullScreenManager::handleEvent(WebCore::ScriptExecutionContext& context, WebCore::Event& event)
+void WebFullScreenManager::handleEvent(CyberCore::ScriptExecutionContext& context, CyberCore::Event& event)
 {
 #if ENABLE(VIDEO)
-    RefPtr targetElement = dynamicDowncast<WebCore::Element>(event.currentTarget());
+    RefPtr targetElement = dynamicDowncast<CyberCore::Element>(event.currentTarget());
     if (!m_element || !targetElement)
         return;
 
@@ -423,7 +423,7 @@ void WebFullScreenManager::handleEvent(WebCore::ScriptExecutionContext& context,
     }
 
     if (targetElement == m_mainVideoElement.get()) {
-        auto& targetVideoElement = downcast<WebCore::HTMLVideoElement>(*targetElement);
+        auto& targetVideoElement = downcast<CyberCore::HTMLVideoElement>(*targetElement);
         if (targetVideoElement.paused() && !targetVideoElement.seeking())
             scheduleTextRecognitionForMainVideo();
         else
@@ -469,16 +469,16 @@ void WebFullScreenManager::endTextRecognitionForMainVideoIfNeeded()
     }
 }
 
-void WebFullScreenManager::setMainVideoElement(RefPtr<WebCore::HTMLVideoElement>&& element)
+void WebFullScreenManager::setMainVideoElement(RefPtr<CyberCore::HTMLVideoElement>&& element)
 {
     if (element == m_mainVideoElement.get())
         return;
 
     static NeverDestroyed eventsToObserve = std::array {
-        WebCore::eventNames().seekingEvent,
-        WebCore::eventNames().seekedEvent,
-        WebCore::eventNames().playingEvent,
-        WebCore::eventNames().pauseEvent,
+        CyberCore::eventNames().seekingEvent,
+        CyberCore::eventNames().seekedEvent,
+        CyberCore::eventNames().playingEvent,
+        CyberCore::eventNames().pauseEvent,
     };
 
     if (m_mainVideoElement) {

@@ -26,14 +26,14 @@
 #pragma once
 
 #include <CyberCore/ClientOrigin.h>
-#include <CyberCore/WebCorePersistentCoders.h>
+#include <CyberCore/CyberCorePersistentCoders.h>
 #include <wtf/FileSystem.h>
 #include <wtf/Scope.h>
 #include <wtf/persistence/PersistentCoders.h>
 
 namespace WebKit {
 
-static inline std::optional<WebCore::ClientOrigin> readOriginFromFile(const String& filePath)
+static inline std::optional<CyberCore::ClientOrigin> readOriginFromFile(const String& filePath)
 {
     ASSERT(!RunLoop::isMain());
 
@@ -53,12 +53,12 @@ static inline std::optional<WebCore::ClientOrigin> readOriginFromFile(const Stri
         return std::nullopt;
 
     WTF::Persistence::Decoder decoder({ originContent->data(), originContent->size() });
-    std::optional<WebCore::ClientOrigin> origin;
+    std::optional<CyberCore::ClientOrigin> origin;
     decoder >> origin;
     return origin;
 }
 
-static inline bool writeOriginToFile(const String& filePath, const WebCore::ClientOrigin& origin)
+static inline bool writeOriginToFile(const String& filePath, const CyberCore::ClientOrigin& origin)
 {
     if (filePath.isEmpty() || FileSystem::fileExists(filePath))
         return false;

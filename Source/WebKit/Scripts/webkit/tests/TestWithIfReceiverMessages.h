@@ -33,7 +33,7 @@
 #include <wtf/Forward.h>
 #include <wtf/ThreadSafeRefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 struct ApplePayPaymentAuthorizationResult;
 }
 
@@ -47,12 +47,12 @@ static inline IPC::ReceiverName messageReceiverName()
 
 class CompletePaymentSession {
 public:
-    using Arguments = std::tuple<const WebCore::ApplePayPaymentAuthorizationResult&>;
+    using Arguments = std::tuple<const CyberCore::ApplePayPaymentAuthorizationResult&>;
 
     static IPC::MessageName name() { return IPC::MessageName::TestWithIfReceiver_CompletePaymentSession; }
     static constexpr bool isSync = false;
 
-    explicit CompletePaymentSession(const WebCore::ApplePayPaymentAuthorizationResult& result)
+    explicit CompletePaymentSession(const CyberCore::ApplePayPaymentAuthorizationResult& result)
         : m_arguments(result)
     {
     }

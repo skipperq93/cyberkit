@@ -113,7 +113,7 @@
     [[self window] _enableDelayedWindowDisplay];
 
     // We may hit this immediate scrolling code during a layout operation trigged by an AppKit call. When
-    // this happens, WebCore will not paint. So, we need to mark this region dirty so that it paints properly.
+    // this happens, CyberCore will not paint. So, we need to mark this region dirty so that it paints properly.
     auto *webFrameView = (WebFrameView *)[[self superview] superview];
     if ([webFrameView isKindOfClass:[WebFrameView class]]) {
         if (auto* coreFrame = core([webFrameView webFrame])) {

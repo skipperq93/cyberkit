@@ -25,8 +25,8 @@
 
 #import <CyberKitLegacy/DOMHTMLAreaElement.h>
 
-namespace WebCore {
+namespace CyberCore {
 class HTMLAreaElement;
 }
 
-WebCore::HTMLAreaElement* core(DOMHTMLAreaElement *);
+CyberCore::HTMLAreaElement* core(DOMHTMLAreaElement *);

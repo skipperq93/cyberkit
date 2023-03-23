@@ -43,8 +43,8 @@ if (!$getOptionsResult || $showHelp) {
 }
 
 while (my $line = <>) {
-    $line =~ s#([ab]/| )Source/core/#$1Source/WebCore/#mg;
-    $line =~ s#([ab]/| )Source/bindings/#$1Source/WebCore/bindings/#mg;
+    $line =~ s#([ab]/| )Source/core/#$1Source/CyberCore/#mg;
+    $line =~ s#([ab]/| )Source/bindings/#$1Source/CyberCore/bindings/#mg;
     print $line;
 }
 

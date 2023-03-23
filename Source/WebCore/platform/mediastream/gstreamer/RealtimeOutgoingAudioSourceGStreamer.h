@@ -23,7 +23,7 @@
 
 #include "RealtimeOutgoingMediaSourceGStreamer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RealtimeOutgoingAudioSourceGStreamer final : public RealtimeOutgoingMediaSourceGStreamer {
 public:
@@ -47,6 +47,6 @@ private:
     GRefPtr<GstElement> m_audioresample;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(GSTREAMER_WEBRTC)

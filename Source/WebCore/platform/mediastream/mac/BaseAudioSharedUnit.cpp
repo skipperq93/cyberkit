@@ -35,7 +35,7 @@
 #include "PlatformMediaSessionManager.h"
 #include <wtf/FastMalloc.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 BaseAudioSharedUnit::BaseAudioSharedUnit()
     : m_sampleRate(AudioSession::sharedSession().sampleRate())
@@ -308,6 +308,6 @@ void BaseAudioSharedUnit::handleNewCurrentMicrophoneDevice(CaptureDevice&& devic
     });
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM)

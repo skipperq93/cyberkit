@@ -25,7 +25,7 @@
 #include "GraphicsLayer.h"
 #include "Timer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 TextureMapper::TextureMapper() = default;
 

@@ -34,7 +34,7 @@
 GST_DEBUG_CATEGORY_EXTERN(webkit_media_player_debug);
 #define GST_CAT_DEFAULT webkit_media_player_debug
 
-namespace WebCore {
+namespace CyberCore {
 
 InbandTextTrackPrivateGStreamer::InbandTextTrackPrivateGStreamer(unsigned index, GRefPtr<GstPad>&& pad, bool shouldHandleStreamStartEvent)
     : InbandTextTrackPrivate(CueFormat::WebVTT)
@@ -97,6 +97,6 @@ void InbandTextTrackPrivateGStreamer::notifyTrackOfSample()
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(VIDEO) && USE(GSTREAMER)

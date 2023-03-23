@@ -31,7 +31,7 @@
 #include <wtf/Assertions.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 const Font* FontRanges::Range::font(ExternalResourceDownloadPolicy policy) const
 {
@@ -129,4 +129,4 @@ bool FontRanges::isLoading() const
     return false;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

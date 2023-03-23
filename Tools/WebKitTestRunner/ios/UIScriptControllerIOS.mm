@@ -299,14 +299,14 @@ void UIScriptControllerIOS::twoFingerSingleTapAtPoint(long x, long y, JSValueRef
 void UIScriptControllerIOS::singleTapAtPointWithModifiers(long x, long y, JSValueRef modifierArray, JSValueRef callback)
 {
     unsigned callbackID = m_context->prepareForAsyncTask(callback, CallbackTypeNonPersistent);
-    singleTapAtPointWithModifiers(WebCore::FloatPoint(x, y), parseModifierArray(m_context->jsContext(), modifierArray), makeBlockPtr([this, protectedThis = Ref { *this }, callbackID] {
+    singleTapAtPointWithModifiers(CyberCore::FloatPoint(x, y), parseModifierArray(m_context->jsContext(), modifierArray), makeBlockPtr([this, protectedThis = Ref { *this }, callbackID] {
         if (!m_context)
             return;
         m_context->asyncTaskComplete(callbackID);
     }));
 }
 
-void UIScriptControllerIOS::singleTapAtPointWithModifiers(WebCore::FloatPoint location, Vector<String>&& modifierFlags, BlockPtr<void()>&& block)
+void UIScriptControllerIOS::singleTapAtPointWithModifiers(CyberCore::FloatPoint location, Vector<String>&& modifierFlags, BlockPtr<void()>&& block)
 {
     // Animations on the scroll view could be in progress to reveal a form control which may interfere with hit testing (see wkb.ug/205458).
     [webView().scrollView _removeAllAnimations:NO];
@@ -807,7 +807,7 @@ JSObjectRef UIScriptControllerIOS::contentVisibleRect() const
 {
     CGRect contentVisibleRect = webView()._contentVisibleRect;
     
-    WebCore::FloatRect rect(contentVisibleRect.origin.x, contentVisibleRect.origin.y, contentVisibleRect.size.width, contentVisibleRect.size.height);
+    CyberCore::FloatRect rect(contentVisibleRect.origin.x, contentVisibleRect.origin.y, contentVisibleRect.size.width, contentVisibleRect.size.height);
     return m_context->objectFromRect(rect);
 }
 
@@ -1108,7 +1108,7 @@ JSObjectRef UIScriptControllerIOS::rectForMenuAction(JSStringRef jsAction) const
     return m_context->objectFromRect(rect);
 }
 
-WebCore::FloatRect UIScriptControllerIOS::rectForMenuAction(CFStringRef action) const
+CyberCore::FloatRect UIScriptControllerIOS::rectForMenuAction(CFStringRef action) const
 {
     UIView *viewForAction = nil;
 
@@ -1141,7 +1141,7 @@ WebCore::FloatRect UIScriptControllerIOS::rectForMenuAction(CFStringRef action) 
         return { };
 
     CGRect rectInRootViewCoordinates = [viewForAction convertRect:viewForAction.bounds toView:platformContentView()];
-    return WebCore::FloatRect(rectInRootViewCoordinates.origin.x, rectInRootViewCoordinates.origin.y, rectInRootViewCoordinates.size.width, rectInRootViewCoordinates.size.height);
+    return CyberCore::FloatRect(rectInRootViewCoordinates.origin.x, rectInRootViewCoordinates.origin.y, rectInRootViewCoordinates.size.width, rectInRootViewCoordinates.size.height);
 }
 
 JSObjectRef UIScriptControllerIOS::menuRect() const
@@ -1166,7 +1166,7 @@ JSObjectRef UIScriptControllerIOS::contextMenuRect() const
 
 JSObjectRef UIScriptControllerIOS::toObject(CGRect rect) const
 {
-    return m_context->objectFromRect(WebCore::FloatRect(rect.origin.x, rect.origin.y, rect.size.width, rect.size.height));
+    return m_context->objectFromRect(CyberCore::FloatRect(rect.origin.x, rect.origin.y, rect.size.width, rect.size.height));
 }
 
 bool UIScriptControllerIOS::isDismissingMenu() const

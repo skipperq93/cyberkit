@@ -34,7 +34,7 @@
 
 namespace WebKit {
 
-NSString *nsStringFromWebCoreString(const String& string)
+NSString *nsStringFromCyberCoreString(const String& string)
 {
     return string.isEmpty() ? @"" : adoptCF(WKStringCopyCFString(0, toAPI(string.impl()))).bridgingAutorelease();
 }

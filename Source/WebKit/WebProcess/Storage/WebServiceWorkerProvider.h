@@ -30,7 +30,7 @@
 #include <CyberCore/ServiceWorkerProvider.h>
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 class CachedResource;
 }
 
@@ -39,9 +39,9 @@ class Connection;
 class Decoder;
 };
 
-namespace WebKit {
+namespace CyberKit {
 
-class WebServiceWorkerProvider final : public WebCore::ServiceWorkerProvider {
+class WebServiceWorkerProvider final : public CyberCore::ServiceWorkerProvider {
 public:
     static WebServiceWorkerProvider& singleton();
 
@@ -52,11 +52,11 @@ private:
     friend NeverDestroyed<WebServiceWorkerProvider>;
     WebServiceWorkerProvider();
 
-    WebCore::SWClientConnection& serviceWorkerConnection() final;
-    WebCore::SWClientConnection* existingServiceWorkerConnection() final;
-    void terminateWorkerForTesting(WebCore::ServiceWorkerIdentifier, CompletionHandler<void()>&&) final;
+    CyberCore::SWClientConnection& serviceWorkerConnection() final;
+    CyberCore::SWClientConnection* existingServiceWorkerConnection() final;
+    void terminateWorkerForTesting(CyberCore::ServiceWorkerIdentifier, CompletionHandler<void()>&&) final;
 }; // class WebServiceWorkerProvider
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(SERVICE_WORKER)

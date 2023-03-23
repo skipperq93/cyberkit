@@ -31,7 +31,7 @@
 #include <wtf/OSAllocator.h>
 #include <wtf/cf/TypeCastsCF.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 FragmentedSharedBuffer::FragmentedSharedBuffer(CFDataRef data)
 {

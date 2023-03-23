@@ -52,7 +52,7 @@
 #include "WebAnimation.h"
 #include "WebAnimationUtilities.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 const std::optional<const Styleable> Styleable::fromRenderer(const RenderElement& renderer)
 {
@@ -724,4 +724,4 @@ void Styleable::queryContainerDidChange() const
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -37,7 +37,7 @@
 #include <algorithm>
 #include <wtf/MathExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace AudioUtilities;
 
@@ -469,6 +469,6 @@ double DynamicsCompressorKernel::tailTime() const
     return 5 * meteringReleaseTimeConstant;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

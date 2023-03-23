@@ -42,7 +42,7 @@ WEBKIT_DEFINE_ABSTRACT_TYPE(WebKitWebViewDialog, webkit_web_view_dialog, GTK_TYP
 #if USE(GTK4)
 static void webkitWebViewDialogSnapshot(GtkWidget* widget, GtkSnapshot* snapshot)
 {
-    WebCore::FloatSize widgetSize(gtk_widget_get_width(widget), gtk_widget_get_height(widget));
+    CyberCore::FloatSize widgetSize(gtk_widget_get_width(widget), gtk_widget_get_height(widget));
     graphene_rect_t rect = GRAPHENE_RECT_INIT(0, 0, widgetSize.width(), widgetSize.height());
     RefPtr<cairo_t> cr = adoptRef(gtk_snapshot_append_cairo(snapshot, &rect));
     cairo_set_operator(cr.get(), CAIRO_OPERATOR_OVER);

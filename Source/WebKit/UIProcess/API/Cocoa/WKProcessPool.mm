@@ -52,7 +52,7 @@
 #import <CyberCore/HTTPCookieAcceptPolicyCocoa.h>
 #import <CyberCore/PluginData.h>
 #import <CyberCore/RegistrableDomain.h>
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 #import <pal/spi/cf/CFNetworkSPI.h>
 #import <wtf/BlockPtr.h>
 #import <wtf/RetainPtr.h>
@@ -61,7 +61,7 @@
 #import <wtf/cocoa/VectorCocoa.h>
 
 #if PLATFORM(IOS_FAMILY)
-#import <CyberCore/WebCoreThreadSystemInterface.h>
+#import <CyberCore/CyberCoreThreadSystemInterface.h>
 #import "WKGeolocationProviderIOS.h"
 #endif
 
@@ -99,7 +99,7 @@ static RetainPtr<WKProcessPool>& sharedProcessPool()
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainRunLoop(WKProcessPool.class, self))
+    if (CyberCoreObjCScheduleDeallocateOnMainRunLoop(WKProcessPool.class, self))
         return;
 
     _processPool->~WebProcessPool();
@@ -558,13 +558,13 @@ static RetainPtr<WKProcessPool>& sharedProcessPool()
 
 - (void)_clearPermanentCredentialsForProtectionSpace:(NSURLProtectionSpace *)protectionSpace
 {
-    _processPool->clearPermanentCredentialsForProtectionSpace(WebCore::ProtectionSpace(protectionSpace));
+    _processPool->clearPermanentCredentialsForProtectionSpace(CyberCore::ProtectionSpace(protectionSpace));
 }
 
 - (void)_seedResourceLoadStatisticsForTestingWithFirstParty:(NSURL *)firstPartyURL thirdParty:(NSURL *)thirdPartyURL shouldScheduleNotification:(BOOL)shouldScheduleNotification completionHandler:(void(^)(void))completionHandler
 {
 #if ENABLE(TRACKING_PREVENTION)
-    _processPool->seedResourceLoadStatisticsForTesting(WebCore::RegistrableDomain { firstPartyURL }, WebCore::RegistrableDomain { thirdPartyURL }, shouldScheduleNotification, [completionHandler = makeBlockPtr(completionHandler)] () {
+    _processPool->seedResourceLoadStatisticsForTesting(CyberCore::RegistrableDomain { firstPartyURL }, CyberCore::RegistrableDomain { thirdPartyURL }, shouldScheduleNotification, [completionHandler = makeBlockPtr(completionHandler)] () {
         completionHandler();
     });
 #else

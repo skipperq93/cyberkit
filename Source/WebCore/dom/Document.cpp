@@ -5998,7 +5998,7 @@ void Document::storageBlockingStateDidChange()
     setStorageBlockingPolicy(settings().storageBlockingPolicy());
 }
 
-// Used only by WebKitLegacy.
+// Used only by CyberKitLegacy.
 void Document::privateBrowsingStateDidChange(PAL::SessionID sessionID)
 {
     if (m_logger)

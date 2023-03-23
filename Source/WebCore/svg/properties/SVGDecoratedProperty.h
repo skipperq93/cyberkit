@@ -27,7 +27,7 @@
 
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename DecorationType>
 class SVGDecoratedProperty : public RefCounted<SVGDecoratedProperty<DecorationType>> {

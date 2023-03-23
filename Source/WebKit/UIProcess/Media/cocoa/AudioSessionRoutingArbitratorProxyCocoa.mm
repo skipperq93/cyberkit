@@ -36,7 +36,7 @@
 
 namespace WebKit {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 AudioSessionRoutingArbitratorProxy::AudioSessionRoutingArbitratorProxy(WebProcessProxy& proxy)
     : m_process(proxy)
@@ -56,7 +56,7 @@ void AudioSessionRoutingArbitratorProxy::processDidTerminate()
         endRoutingArbitration();
 }
 
-void AudioSessionRoutingArbitratorProxy::beginRoutingArbitrationWithCategory(WebCore::AudioSession::CategoryType category, ArbitrationCallback&& callback)
+void AudioSessionRoutingArbitratorProxy::beginRoutingArbitrationWithCategory(CyberCore::AudioSession::CategoryType category, ArbitrationCallback&& callback)
 {
     m_category = category;
     m_arbitrationStatus = ArbitrationStatus::Pending;

@@ -38,7 +38,7 @@
 
 #define ALPHA_CURSORS
 
-namespace WebCore {
+namespace CyberCore {
 
 SharedCursor::SharedCursor(HCURSOR nativeCursor)
     : m_nativeCursor(nativeCursor)
@@ -269,4 +269,4 @@ void Cursor::ensurePlatformCursor() const
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore

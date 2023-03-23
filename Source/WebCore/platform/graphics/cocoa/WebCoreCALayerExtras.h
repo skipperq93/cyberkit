@@ -30,7 +30,7 @@
 #import <wtf/Vector.h>
 #endif
 
-@interface CALayer (WebCoreCALayerExtras)
+@interface CALayer (CyberCoreCALayerExtras)
 
 + (CALayer *)_web_renderLayerWithContextID:(uint32_t)contextID shouldPreserveFlip:(BOOL)preservesFlip;
 
@@ -45,11 +45,11 @@
 
 #ifdef __cplusplus
 
-namespace WebCore {
+namespace CyberCore {
 
 using LayerAndPoint = std::pair<CALayer *, FloatPoint>;
 WEBCORE_EXPORT void collectDescendantLayersAtPoint(Vector<LayerAndPoint, 16>& layersAtPoint, CALayer *parent, CGPoint, const std::function<bool(CALayer *, CGPoint localPoint)>& pointInLayerFunction);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // __cplusplus

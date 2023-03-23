@@ -28,11 +28,11 @@
 #include <wtf/RefPtr.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 class Image;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class ShareableBitmap;
 class WebPage;
@@ -57,6 +57,6 @@ private:
     WeakPtr<WebPage> m_page;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(CONTEXT_MENUS)

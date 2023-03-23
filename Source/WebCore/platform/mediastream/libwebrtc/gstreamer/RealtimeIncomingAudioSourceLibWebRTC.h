@@ -31,7 +31,7 @@
 
 #include "RealtimeIncomingAudioSource.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RealtimeIncomingAudioSourceLibWebRTC final : public RealtimeIncomingAudioSource {
 public:
@@ -46,7 +46,7 @@ private:
     uint64_t m_numberOfFrames { 0 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(LIBWEBRTC)
 

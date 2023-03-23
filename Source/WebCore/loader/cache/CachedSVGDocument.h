@@ -26,7 +26,7 @@
 #include "SVGDocument.h"
 #include "TextResourceDecoder.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class Settings;
 
@@ -50,6 +50,6 @@ private:
     const Ref<const Settings> m_settings;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CACHED_RESOURCE(CachedSVGDocument, CachedResource::Type::SVGDocumentResource)

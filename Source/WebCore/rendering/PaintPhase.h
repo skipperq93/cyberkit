@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 /*
  *  The painting of a layer occurs in three distinct phases.  Each phase involves
@@ -73,4 +73,4 @@ enum class PaintBehavior : uint16_t {
     EventRegionIncludeBackground        = 1 << 15,
 };
 
-} // namespace WebCore
+} // namespace CyberCore

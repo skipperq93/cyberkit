@@ -19,14 +19,14 @@
 
 @INJECTED_BUNDLE_API_SINGLE_HEADER_CHECK@
 
-#ifndef WebKitWebHitTestResult_h
-#define WebKitWebHitTestResult_h
+#ifndef CyberKitWebHitTestResult_h
+#define CyberKitWebHitTestResult_h
 
 #include <glib-object.h>
 #include <jsc/jsc.h>
-#include <@API_INCLUDE_PREFIX@/WebKitDefines.h>
-#include <@API_INCLUDE_PREFIX@/WebKitHitTestResult.h>
-#include <@API_INCLUDE_PREFIX@/WebKitScriptWorld.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitDefines.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitHitTestResult.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitScriptWorld.h>
 
 #if !ENABLE(2022_GLIB_API)
 #if PLATFORM(GTK)
@@ -40,18 +40,18 @@ G_BEGIN_DECLS
 
 #define WEBKIT_TYPE_WEB_HIT_TEST_RESULT            (webkit_web_hit_test_result_get_type())
 #if !ENABLE(2022_GLIB_API)
-#define WEBKIT_WEB_HIT_TEST_RESULT(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_WEB_HIT_TEST_RESULT, WebKitWebHitTestResult))
+#define WEBKIT_WEB_HIT_TEST_RESULT(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_TYPE_WEB_HIT_TEST_RESULT, CyberKitWebHitTestResult))
 #define WEBKIT_IS_WEB_HIT_TEST_RESULT(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_TYPE_WEB_HIT_TEST_RESULT))
-#define WEBKIT_WEB_HIT_TEST_RESULT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_WEB_HIT_TEST_RESULT, WebKitWebHitTestResultClass))
+#define WEBKIT_WEB_HIT_TEST_RESULT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_TYPE_WEB_HIT_TEST_RESULT, CyberKitWebHitTestResultClass))
 #define WEBKIT_IS_WEB_HIT_TEST_RESULT_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_TYPE_WEB_HIT_TEST_RESULT))
-#define WEBKIT_WEB_HIT_TEST_RESULT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_WEB_HIT_TEST_RESULT, WebKitWebHitTestResultClass))
+#define WEBKIT_WEB_HIT_TEST_RESULT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_TYPE_WEB_HIT_TEST_RESULT, CyberKitWebHitTestResultClass))
 
-typedef struct _WebKitWebHitTestResult        WebKitWebHitTestResult;
-typedef struct _WebKitWebHitTestResultClass   WebKitWebHitTestResultClass;
-typedef struct _WebKitWebHitTestResultPrivate WebKitWebHitTestResultPrivate;
+typedef struct _CyberKitWebHitTestResult        CyberKitWebHitTestResult;
+typedef struct _CyberKitWebHitTestResultClass   CyberKitWebHitTestResultClass;
+typedef struct _CyberKitWebHitTestResultPrivate CyberKitWebHitTestResultPrivate;
 
-struct _WebKitWebHitTestResultClass {
-    WebKitHitTestResultClass parent_class;
+struct _CyberKitWebHitTestResultClass {
+    CyberKitHitTestResultClass parent_class;
 
     void (*_webkit_reserved0) (void);
     void (*_webkit_reserved1) (void);
@@ -59,59 +59,59 @@ struct _WebKitWebHitTestResultClass {
     void (*_webkit_reserved3) (void);
 };
 
-WEBKIT_DECLARE_TYPE (WebKitWebHitTestResult, webkit_web_hit_test_result, WEBKIT, WEB_HIT_TEST_RESULT, WebKitHitTestResult)
+WEBKIT_DECLARE_TYPE (CyberKitWebHitTestResult, webkit_web_hit_test_result, WEBKIT, WEB_HIT_TEST_RESULT, CyberKitHitTestResult)
 #else
-WEBKIT_DECLARE_FINAL_TYPE (WebKitWebHitTestResult, webkit_web_hit_test_result, WEBKIT, WEB_HIT_TEST_RESULT, GObject)
+WEBKIT_DECLARE_FINAL_TYPE (CyberKitWebHitTestResult, webkit_web_hit_test_result, WEBKIT, WEB_HIT_TEST_RESULT, GObject)
 #endif
 
 #if ENABLE(2022_GLIB_API)
 
 WEBKIT_API guint
-webkit_web_hit_test_result_get_context          (WebKitWebHitTestResult *web_hit_test_result);
+webkit_web_hit_test_result_get_context          (CyberKitWebHitTestResult *web_hit_test_result);
 
 WEBKIT_API gboolean
-webkit_web_hit_test_result_context_is_link      (WebKitWebHitTestResult *web_hit_test_result);
+webkit_web_hit_test_result_context_is_link      (CyberKitWebHitTestResult *web_hit_test_result);
 
 WEBKIT_API gboolean
-webkit_web_hit_test_result_context_is_image     (WebKitWebHitTestResult *web_hit_test_result);
+webkit_web_hit_test_result_context_is_image     (CyberKitWebHitTestResult *web_hit_test_result);
 
 WEBKIT_API gboolean
-webkit_web_hit_test_result_context_is_media     (WebKitWebHitTestResult *web_hit_test_result);
+webkit_web_hit_test_result_context_is_media     (CyberKitWebHitTestResult *web_hit_test_result);
 
 WEBKIT_API gboolean
-webkit_web_hit_test_result_context_is_editable  (WebKitWebHitTestResult *web_hit_test_result);
+webkit_web_hit_test_result_context_is_editable  (CyberKitWebHitTestResult *web_hit_test_result);
 
 WEBKIT_API gboolean
-webkit_web_hit_test_result_context_is_selection (WebKitWebHitTestResult *web_hit_test_result);
+webkit_web_hit_test_result_context_is_selection (CyberKitWebHitTestResult *web_hit_test_result);
 
 WEBKIT_API const gchar *
-webkit_web_hit_test_result_get_link_uri         (WebKitWebHitTestResult *web_hit_test_result);
+webkit_web_hit_test_result_get_link_uri         (CyberKitWebHitTestResult *web_hit_test_result);
 
 WEBKIT_API const gchar *
-webkit_web_hit_test_result_get_link_title       (WebKitWebHitTestResult *web_hit_test_result);
+webkit_web_hit_test_result_get_link_title       (CyberKitWebHitTestResult *web_hit_test_result);
 
 WEBKIT_API const gchar *
-webkit_web_hit_test_result_get_link_label       (WebKitWebHitTestResult *web_hit_test_result);
+webkit_web_hit_test_result_get_link_label       (CyberKitWebHitTestResult *web_hit_test_result);
 
 WEBKIT_API const gchar *
-webkit_web_hit_test_result_get_image_uri        (WebKitWebHitTestResult *web_hit_test_result);
+webkit_web_hit_test_result_get_image_uri        (CyberKitWebHitTestResult *web_hit_test_result);
 
 WEBKIT_API const gchar *
-webkit_web_hit_test_result_get_media_uri        (WebKitWebHitTestResult *web_hit_test_result);
+webkit_web_hit_test_result_get_media_uri        (CyberKitWebHitTestResult *web_hit_test_result);
 
 WEBKIT_API gboolean
-webkit_web_hit_test_result_context_is_scrollbar (WebKitWebHitTestResult *web_hit_test_result);
+webkit_web_hit_test_result_context_is_scrollbar (CyberKitWebHitTestResult *web_hit_test_result);
 
 #else
 
-WEBKIT_DEPRECATED_FOR(webkit_web_hit_test_result_get_js_node) WebKitDOMNode *
-webkit_web_hit_test_result_get_node             (WebKitWebHitTestResult *hit_test_result);
+WEBKIT_DEPRECATED_FOR(webkit_web_hit_test_result_get_js_node) CyberKitDOMNode *
+webkit_web_hit_test_result_get_node             (CyberKitWebHitTestResult *hit_test_result);
 
 #endif // ENABLE(2022_GLIB_API)
 
 WEBKIT_API JSCValue *
-webkit_web_hit_test_result_get_js_node          (WebKitWebHitTestResult *web_hit_test_result,
-                                                 WebKitScriptWorld      *world);
+webkit_web_hit_test_result_get_js_node          (CyberKitWebHitTestResult *web_hit_test_result,
+                                                 CyberKitScriptWorld      *world);
 
 G_END_DECLS
 

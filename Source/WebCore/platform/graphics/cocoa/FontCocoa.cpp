@@ -27,10 +27,10 @@
 #import "config.h"
 #import "Font.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 void Font::platformDestroy()
 {
 }
 
-} // namespace WebCore
+} // namespace CyberCore

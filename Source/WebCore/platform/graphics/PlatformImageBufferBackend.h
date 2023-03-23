@@ -31,7 +31,7 @@
 #include "ImageBufferCairoBackend.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 #if USE(CG)
 using PlatformImageBufferBackend = ImageBufferCGBackend;
@@ -39,4 +39,4 @@ using PlatformImageBufferBackend = ImageBufferCGBackend;
 using PlatformImageBufferBackend = ImageBufferCairoBackend;
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

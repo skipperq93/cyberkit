@@ -30,7 +30,7 @@
 
 namespace WebKit {
 
-WebProtectionSpace::WebProtectionSpace(const WebCore::ProtectionSpace& coreProtectionSpace)
+WebProtectionSpace::WebProtectionSpace(const CyberCore::ProtectionSpace& coreProtectionSpace)
     : m_coreProtectionSpace(coreProtectionSpace)
 {
 }
@@ -55,7 +55,7 @@ bool WebProtectionSpace::isProxy() const
     return m_coreProtectionSpace.isProxy();
 }
 
-WebCore::ProtectionSpace::ServerType WebProtectionSpace::serverType() const
+CyberCore::ProtectionSpace::ServerType WebProtectionSpace::serverType() const
 {
     return m_coreProtectionSpace.serverType();
 }
@@ -65,7 +65,7 @@ bool WebProtectionSpace::receivesCredentialSecurely() const
     return m_coreProtectionSpace.receivesCredentialSecurely();
 }
 
-WebCore::ProtectionSpace::AuthenticationScheme WebProtectionSpace::authenticationScheme() const
+CyberCore::ProtectionSpace::AuthenticationScheme WebProtectionSpace::authenticationScheme() const
 {
     return m_coreProtectionSpace.authenticationScheme();
 }

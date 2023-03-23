@@ -1153,8 +1153,8 @@ msgid "Enable Timeline profiling"
 msgstr "Timeline プロファイリングを有効にする"
 
 #: ../../../../WebKit/gtk/webkit/webkitwebinspector.cpp:321
-msgid "Profile the WebCore instrumentation."
-msgstr "WebCore 計装のプロファイル"
+msgid "Profile the CyberCore instrumentation."
+msgstr "CyberCore 計装のプロファイル"
 
 #: ../../../../WebKit/gtk/webkit/webkitwebnavigationaction.cpp:148
 msgid "Reason"

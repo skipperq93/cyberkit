@@ -25,8 +25,8 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
     
 enum class FetchOptionsCache : uint8_t { Default, NoStore, Reload, NoCache, ForceCache, OnlyIfCached };
     
-} // namespace WebCore
+} // namespace CyberCore

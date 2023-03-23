@@ -37,7 +37,7 @@ static constexpr auto inspectorAttachDisabledSetting = "inspectorAttachDisabled"
 
 static RetainPtr<CFStringRef> createKeyForPreferences(const String& key)
 {
-    return adoptCF(CFStringCreateWithFormat(0, 0, CFSTR("WebKit Web Inspector Setting - %@"), key.createCFString().get()));
+    return adoptCF(CFStringCreateWithFormat(0, 0, CFSTR("CyberKit Web Inspector Setting - %@"), key.createCFString().get()));
 }
 
 static String loadSetting(const String& key)
@@ -97,9 +97,9 @@ void WebInspectorClient::deleteInspectorAttachDisabled()
     deleteSetting(inspectorStartsAttachedSetting);
 }
 
-std::unique_ptr<WebCore::InspectorFrontendClientLocal::Settings> WebInspectorClient::createFrontendSettings()
+std::unique_ptr<CyberCore::InspectorFrontendClientLocal::Settings> WebInspectorClient::createFrontendSettings()
 {
-    class InspectorFrontendSettingsCF : public WebCore::InspectorFrontendClientLocal::Settings {
+    class InspectorFrontendSettingsCF : public CyberCore::InspectorFrontendClientLocal::Settings {
     private:
         String getProperty(const String& name) final { return loadSetting(name); }
         void setProperty(const String& name, const String& value) final { storeSetting(name, value); }

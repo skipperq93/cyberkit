@@ -44,7 +44,7 @@
 #import <pal/spi/mac/NSViewSPI.h>
 #import <wtf/BlockObjCExceptions.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 ControlMac::ControlMac(ControlPart& owningPart, ControlFactoryMac& controlFactory)
     : PlatformControl(owningPart)
@@ -417,6 +417,6 @@ void ControlMac::drawListButton(GraphicsContext& context, const FloatRect& rect,
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(MAC)

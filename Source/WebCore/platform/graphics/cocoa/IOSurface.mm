@@ -43,7 +43,7 @@
 #import "CoreVideoSoftLink.h"
 #import <pal/cg/CoreGraphicsSoftLink.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 std::unique_ptr<IOSurface> IOSurface::create(IOSurfacePool* pool, IntSize size, const DestinationColorSpace& colorSpace, Format pixelFormat)
 {
@@ -663,4 +663,4 @@ TextStream& operator<<(TextStream& ts, const IOSurface& surface)
     return ts << "IOSurface " << surface.surfaceID() << " size " << surface.size() << " format " << surface.m_format << " state " << surface.state();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

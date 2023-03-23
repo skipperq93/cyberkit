@@ -30,7 +30,7 @@
 #include "WebFakeXRDevice.h"
 #include "XRHandJoint.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using InputSource = PlatformXR::Device::FrameData::InputSource;
 using InputSourceButton = PlatformXR::Device::FrameData::InputSourceButton;
@@ -210,6 +210,6 @@ void WebFakeXRInputController::updateHandJoints(const Vector<FakeXRJointStateIni
 }
 #endif // ENABLE(WEBXR_HANDS)
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBXR)

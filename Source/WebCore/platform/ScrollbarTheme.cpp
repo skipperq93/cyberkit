@@ -31,7 +31,7 @@
 #include "ScrollbarThemeMock.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 ScrollbarTheme& ScrollbarTheme::theme()
 {

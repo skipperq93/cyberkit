@@ -22,7 +22,7 @@
 #include "HitTestRequest.h"
 #include "RenderStyleConstants.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class PointerEventsHitRules {
 public:
@@ -42,4 +42,4 @@ public:
     bool canHitBoundingBox;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

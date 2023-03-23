@@ -31,7 +31,7 @@
 
 #if ENABLE(SERVICE_WORKER)
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(BackgroundFetchUpdateUIEvent);
 
@@ -55,7 +55,7 @@ void BackgroundFetchUpdateUIEvent::updateUI(BackgroundFetchUIOptions&&, DOMPromi
     notImplemented();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)
 

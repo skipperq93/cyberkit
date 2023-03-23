@@ -34,7 +34,7 @@
 #include "TextDirection.h"
 #include <array>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class WritingMode : uint8_t {
     TopToBottom = 0, // horizontal-tb
@@ -230,4 +230,4 @@ constexpr LogicalBoxAxis mapPhysicalAxisToLogicalAxis(TextFlow textflow, BoxAxis
     return isBlock ? LogicalBoxAxis::Block : LogicalBoxAxis::Inline;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

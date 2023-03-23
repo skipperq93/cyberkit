@@ -40,7 +40,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(RenderRubyAsInline);
 WTF_MAKE_ISO_ALLOCATED_IMPL(RenderRubyAsBlock);
@@ -75,4 +75,4 @@ void RenderRubyAsBlock::styleDidChange(StyleDifference diff, const RenderStyle* 
     propagateStyleToAnonymousChildren(PropagateToAllChildren);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

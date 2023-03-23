@@ -31,7 +31,7 @@
 #include <optional>
 #include <wtf/Ref.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct BlendingContext;
 
@@ -82,6 +82,6 @@ private:
     std::optional<Length> m_p;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_TRANSFORMOPERATION(WebCore::PerspectiveTransformOperation, type() == WebCore::TransformOperation::Type::Perspective)
+SPECIALIZE_TYPE_TRAITS_TRANSFORMOPERATION(CyberCore::PerspectiveTransformOperation, type() == CyberCore::TransformOperation::Type::Perspective)

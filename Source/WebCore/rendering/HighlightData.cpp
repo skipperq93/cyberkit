@@ -45,7 +45,7 @@
 #include "VisibleSelection.h"
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 
 
@@ -195,4 +195,4 @@ std::pair<unsigned, unsigned> HighlightData::rangeForTextBox(const RenderText& r
     RELEASE_ASSERT_NOT_REACHED();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

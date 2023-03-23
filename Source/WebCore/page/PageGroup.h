@@ -29,7 +29,7 @@
 #include <wtf/WeakHashSet.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Page;
 #if ENABLE(VIDEO)
@@ -70,4 +70,4 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore

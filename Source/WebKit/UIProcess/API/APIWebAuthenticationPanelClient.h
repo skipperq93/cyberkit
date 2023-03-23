@@ -36,7 +36,7 @@
 
 OBJC_CLASS LAContext;
 
-namespace WebCore {
+namespace CyberCore {
 class AuthenticatorAssertionResponse;
 }
 
@@ -50,7 +50,7 @@ public:
     virtual void updatePanel(WebKit::WebAuthenticationStatus) const { }
     virtual void dismissPanel(WebKit::WebAuthenticationResult) const { }
     virtual void requestPin(uint64_t, CompletionHandler<void(const WTF::String&)>&& completionHandler) const { completionHandler(WTF::String()); }
-    virtual void selectAssertionResponse(Vector<Ref<WebCore::AuthenticatorAssertionResponse>>&&, WebKit::WebAuthenticationSource, CompletionHandler<void(WebCore::AuthenticatorAssertionResponse*)>&& completionHandler) const { completionHandler(nullptr); }
+    virtual void selectAssertionResponse(Vector<Ref<CyberCore::AuthenticatorAssertionResponse>>&&, WebKit::WebAuthenticationSource, CompletionHandler<void(CyberCore::AuthenticatorAssertionResponse*)>&& completionHandler) const { completionHandler(nullptr); }
     virtual void decidePolicyForLocalAuthenticator(CompletionHandler<void(WebKit::LocalAuthenticatorPolicy)>&& completionHandler) const { completionHandler(WebKit::LocalAuthenticatorPolicy::Disallow); }
     virtual void requestLAContextForUserVerification(CompletionHandler<void(LAContext *)>&& completionHandler) const { completionHandler(nullptr); }
 };

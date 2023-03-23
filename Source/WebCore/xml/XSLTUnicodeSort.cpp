@@ -56,7 +56,7 @@ void xsltTransformErrorTrampoline(xsltTransformContextPtr context, xsltStyleshee
     va_end(args);
 
     static void (*xsltTransformErrorPointer)(xsltTransformContextPtr, xsltStylesheetPtr, xmlNodePtr, const char*, ...) WTF_ATTRIBUTE_PRINTF(4, 5)
-        = reinterpret_cast<void (*)(xsltTransformContextPtr, xsltStylesheetPtr, xmlNodePtr, const char*, ...)>(dlsym(WebCore::libxsltLibrary(), "xsltTransformError"));
+        = reinterpret_cast<void (*)(xsltTransformContextPtr, xsltStylesheetPtr, xmlNodePtr, const char*, ...)>(dlsym(CyberCore::libxsltLibrary(), "xsltTransformError"));
     xsltTransformErrorPointer(context, style, node, "%s", buffer.data());
 }
 
@@ -64,7 +64,7 @@ void xsltTransformErrorTrampoline(xsltTransformContextPtr context, xsltStyleshee
 
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 // Based on default implementation from libxslt 1.1.22 and xsltICUSort.c example.
 void xsltUnicodeSortFunction(xsltTransformContextPtr ctxt, xmlNodePtr *sorts, int nbsorts)

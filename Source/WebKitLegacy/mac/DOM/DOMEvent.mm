@@ -33,18 +33,18 @@
 #import <CyberCore/JSExecState.h>
 #import <CyberCore/Node.h>
 #import <CyberCore/ThreadCheck.h>
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 #import <CyberCore/WebScriptObjectPrivate.h>
 #import <wtf/GetPtr.h>
 #import <wtf/URL.h>
 
-#define IMPL reinterpret_cast<WebCore::Event*>(_internal)
+#define IMPL reinterpret_cast<CyberCore::Event*>(_internal)
 
 @implementation DOMEvent
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainThread([DOMEvent class], self))
+    if (CyberCoreObjCScheduleDeallocateOnMainThread([DOMEvent class], self))
         return;
 
     if (_internal)
@@ -54,115 +54,115 @@
 
 - (NSString *)type
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->type();
 }
 
 - (id <DOMEventTarget>)target
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->target()));
 }
 
 - (id <DOMEventTarget>)currentTarget
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->currentTarget()));
 }
 
 - (unsigned short)eventPhase
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->eventPhase();
 }
 
 - (BOOL)bubbles
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->bubbles();
 }
 
 - (BOOL)cancelable
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->cancelable();
 }
 
 - (BOOL)composed
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->composed();
 }
 
 - (DOMTimeStamp)timeStamp
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->timeStamp().approximateWallTime().secondsSinceEpoch().milliseconds();
 }
 
 - (BOOL)defaultPrevented
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->defaultPrevented();
 }
 
 - (BOOL)isTrusted
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->isTrusted();
 }
 
 - (id <DOMEventTarget>)srcElement
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->target()));
 }
 
 - (BOOL)returnValue
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->legacyReturnValue();
 }
 
 - (void)setReturnValue:(BOOL)newReturnValue
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->setLegacyReturnValue(newReturnValue);
 }
 
 - (BOOL)cancelBubble
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->cancelBubble();
 }
 
 - (void)setCancelBubble:(BOOL)newCancelBubble
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->setCancelBubble(newCancelBubble);
 }
 
 - (void)stopPropagation
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->stopPropagation();
 }
 
 - (void)preventDefault
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->preventDefault();
 }
 
 - (void)initEvent:(NSString *)eventTypeArg canBubbleArg:(BOOL)canBubbleArg cancelableArg:(BOOL)cancelableArg
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->initEvent(eventTypeArg, canBubbleArg, cancelableArg);
 }
 
 - (void)stopImmediatePropagation
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->stopImmediatePropagation();
 }
 
@@ -177,14 +177,14 @@
 
 @end
 
-WebCore::Event* core(DOMEvent *wrapper)
+CyberCore::Event* core(DOMEvent *wrapper)
 {
-    return wrapper ? reinterpret_cast<WebCore::Event*>(wrapper->_internal) : 0;
+    return wrapper ? reinterpret_cast<CyberCore::Event*>(wrapper->_internal) : 0;
 }
 
-DOMEvent *kit(WebCore::Event* value)
+DOMEvent *kit(CyberCore::Event* value)
 {
-    WebCoreThreadViolationCheckRoundOne();
+    CyberCoreThreadViolationCheckRoundOne();
     if (!value)
         return nil;
     if (DOMEvent *wrapper = getDOMWrapper(value))

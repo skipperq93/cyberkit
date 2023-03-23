@@ -27,7 +27,7 @@
 
 #if ENABLE(WEB_RTC)
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class RTCRtpTransceiverDirection {
     Sendrecv,
@@ -36,6 +36,6 @@ enum class RTCRtpTransceiverDirection {
     Inactive
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

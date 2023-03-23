@@ -23,7 +23,7 @@
 #include "LinearGradientAttributes.h"
 #include "RenderSVGResourceGradient.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGLinearGradientElement;
 
@@ -53,6 +53,6 @@ private:
     LinearGradientAttributes m_attributes;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_SVG_RESOURCE(RenderSVGResourceLinearGradient, LinearGradientResourceType)

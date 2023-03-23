@@ -59,7 +59,7 @@ class SocketAddress;
 struct PacketOptions;
 }
 
-namespace WebCore {
+namespace CyberCore {
 class RegistrableDomain;
 class FragmentedSharedBuffer;
 }
@@ -71,7 +71,7 @@ class NetworkSession;
 struct RTCPacketOptions;
 
 struct SocketComparator {
-    bool operator()(const WebCore::LibWebRTCSocketIdentifier& a, const WebCore::LibWebRTCSocketIdentifier& b) const
+    bool operator()(const CyberCore::LibWebRTCSocketIdentifier& a, const CyberCore::LibWebRTCSocketIdentifier& b) const
     {
         return a.toUInt64() < b.toUInt64();
     }
@@ -95,14 +95,14 @@ public:
 
         enum class Type : uint8_t { UDP, ClientTCP, ServerConnectionTCP };
         virtual Type type() const  = 0;
-        virtual WebCore::LibWebRTCSocketIdentifier identifier() const = 0;
+        virtual CyberCore::LibWebRTCSocketIdentifier identifier() const = 0;
 
         virtual void close() = 0;
         virtual void setOption(int option, int value) = 0;
         virtual void sendTo(const uint8_t*, size_t, const rtc::SocketAddress&, const rtc::PacketOptions&) = 0;
     };
 
-    std::unique_ptr<Socket> takeSocket(WebCore::LibWebRTCSocketIdentifier);
+    std::unique_ptr<Socket> takeSocket(CyberCore::LibWebRTCSocketIdentifier);
     void resolverDone(uint64_t);
 
     void close();
@@ -113,8 +113,8 @@ public:
 
     IPC::Connection& connection() { return m_ipcConnection.get(); }
 
-    void closeSocket(WebCore::LibWebRTCSocketIdentifier);
-    void doSocketTaskOnRTCNetworkThread(WebCore::LibWebRTCSocketIdentifier, Function<void(Socket&)>&&);
+    void closeSocket(CyberCore::LibWebRTCSocketIdentifier);
+    void doSocketTaskOnRTCNetworkThread(CyberCore::LibWebRTCSocketIdentifier, Function<void(Socket&)>&&);
 
 #if PLATFORM(COCOA)
     const std::optional<audit_token_t>& sourceApplicationAuditToken() const { return m_sourceApplicationAuditToken; }
@@ -127,20 +127,20 @@ private:
     explicit NetworkRTCProvider(NetworkConnectionToWebProcess&);
     void startListeningForIPC();
 
-    void createUDPSocket(WebCore::LibWebRTCSocketIdentifier, const RTCNetwork::SocketAddress&, uint16_t, uint16_t, WebPageProxyIdentifier, bool isFirstParty, bool isRelayDisabled, WebCore::RegistrableDomain&&);
-    void createClientTCPSocket(WebCore::LibWebRTCSocketIdentifier, const RTCNetwork::SocketAddress&, const RTCNetwork::SocketAddress&, String&& userAgent, int, WebPageProxyIdentifier, bool isFirstParty, bool isRelayDisabled, WebCore::RegistrableDomain&&);
-    void wrapNewTCPConnection(WebCore::LibWebRTCSocketIdentifier identifier, WebCore::LibWebRTCSocketIdentifier newConnectionSocketIdentifier);
-    void sendToSocket(WebCore::LibWebRTCSocketIdentifier, const IPC::DataReference&, RTCNetwork::SocketAddress&&, RTCPacketOptions&&);
-    void setSocketOption(WebCore::LibWebRTCSocketIdentifier, int option, int value);
+    void createUDPSocket(CyberCore::LibWebRTCSocketIdentifier, const RTCNetwork::SocketAddress&, uint16_t, uint16_t, WebPageProxyIdentifier, bool isFirstParty, bool isRelayDisabled, CyberCore::RegistrableDomain&&);
+    void createClientTCPSocket(CyberCore::LibWebRTCSocketIdentifier, const RTCNetwork::SocketAddress&, const RTCNetwork::SocketAddress&, String&& userAgent, int, WebPageProxyIdentifier, bool isFirstParty, bool isRelayDisabled, CyberCore::RegistrableDomain&&);
+    void wrapNewTCPConnection(CyberCore::LibWebRTCSocketIdentifier identifier, CyberCore::LibWebRTCSocketIdentifier newConnectionSocketIdentifier);
+    void sendToSocket(CyberCore::LibWebRTCSocketIdentifier, const IPC::DataReference&, RTCNetwork::SocketAddress&&, RTCPacketOptions&&);
+    void setSocketOption(CyberCore::LibWebRTCSocketIdentifier, int option, int value);
     void setPlatformTCPSocketsEnabled(bool enabled) { m_platformTCPSocketsEnabled = enabled; }
     void setPlatformUDPSocketsEnabled(bool enabled) { m_platformUDPSocketsEnabled = enabled; }
 
     void createResolver(LibWebRTCResolverIdentifier, String&&);
     void stopResolver(LibWebRTCResolverIdentifier);
 
-    void addSocket(WebCore::LibWebRTCSocketIdentifier, std::unique_ptr<Socket>&&);
+    void addSocket(CyberCore::LibWebRTCSocketIdentifier, std::unique_ptr<Socket>&&);
 
-    void createSocket(WebCore::LibWebRTCSocketIdentifier, std::unique_ptr<rtc::AsyncPacketSocket>&&, Socket::Type, Ref<IPC::Connection>&&);
+    void createSocket(CyberCore::LibWebRTCSocketIdentifier, std::unique_ptr<rtc::AsyncPacketSocket>&&, Socket::Type, Ref<IPC::Connection>&&);
 
     void OnMessage(rtc::Message*);
 
@@ -155,12 +155,12 @@ private:
 #if PLATFORM(COCOA)
     const String& attributedBundleIdentifierFromPageIdentifier(WebPageProxyIdentifier);
 #endif
-    void signalSocketIsClosed(WebCore::LibWebRTCSocketIdentifier);
+    void signalSocketIsClosed(CyberCore::LibWebRTCSocketIdentifier);
 
     static constexpr size_t maxSockets { 256 };
 
     HashMap<LibWebRTCResolverIdentifier, std::unique_ptr<NetworkRTCResolver>> m_resolvers;
-    StdMap<WebCore::LibWebRTCSocketIdentifier, std::unique_ptr<Socket>, SocketComparator> m_sockets;
+    StdMap<CyberCore::LibWebRTCSocketIdentifier, std::unique_ptr<Socket>, SocketComparator> m_sockets;
     NetworkConnectionToWebProcess* m_connection;
     Ref<IPC::Connection> m_ipcConnection;
     bool m_isStarted { true };
@@ -170,7 +170,7 @@ private:
     rtc::Thread& m_rtcNetworkThread;
     UniqueRef<rtc::BasicPacketSocketFactory> m_packetSocketFactory;
 
-    HashMap<WebCore::LibWebRTCSocketIdentifier, std::unique_ptr<rtc::AsyncPacketSocket>> m_pendingIncomingSockets;
+    HashMap<CyberCore::LibWebRTCSocketIdentifier, std::unique_ptr<rtc::AsyncPacketSocket>> m_pendingIncomingSockets;
     bool m_isListeningSocketAuthorized { true };
     bool m_platformTCPSocketsEnabled { false };
     bool m_platformUDPSocketsEnabled { false };

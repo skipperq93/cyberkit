@@ -96,7 +96,7 @@ void LegacyDownloadClient::legacyDidStart(DownloadProxy& downloadProxy)
         [m_delegate _downloadDidStart:[_WKDownload downloadWithDownload:wrapper(downloadProxy)]];
 }
 
-void LegacyDownloadClient::didReceiveResponse(DownloadProxy& downloadProxy, const WebCore::ResourceResponse& response)
+void LegacyDownloadClient::didReceiveResponse(DownloadProxy& downloadProxy, const CyberCore::ResourceResponse& response)
 {
 #if USE(SYSTEM_PREVIEW)
     if (downloadProxy.isSystemPreviewDownload() && response.isSuccessful()) {
@@ -140,7 +140,7 @@ void LegacyDownloadClient::didReceiveAuthenticationChallenge(DownloadProxy& down
         checker->didCallCompletionHandler();
         switch (disposition) {
         case NSURLSessionAuthChallengeUseCredential:
-            authenticationChallenge->listener().completeChallenge(AuthenticationChallengeDisposition::UseCredential, credential ? WebCore::Credential(credential) : WebCore::Credential());
+            authenticationChallenge->listener().completeChallenge(AuthenticationChallengeDisposition::UseCredential, credential ? CyberCore::Credential(credential) : CyberCore::Credential());
             break;
         case NSURLSessionAuthChallengePerformDefaultHandling:
             authenticationChallenge->listener().completeChallenge(AuthenticationChallengeDisposition::PerformDefaultHandling);
@@ -190,7 +190,7 @@ void LegacyDownloadClient::processDidCrash(DownloadProxy& downloadProxy)
         [m_delegate _downloadProcessDidCrash:[_WKDownload downloadWithDownload:wrapper(downloadProxy)]];
 }
 
-void LegacyDownloadClient::decideDestinationWithSuggestedFilename(DownloadProxy& downloadProxy, const WebCore::ResourceResponse& response, const String& filename, CompletionHandler<void(AllowOverwrite, String)>&& completionHandler)
+void LegacyDownloadClient::decideDestinationWithSuggestedFilename(DownloadProxy& downloadProxy, const CyberCore::ResourceResponse& response, const String& filename, CompletionHandler<void(AllowOverwrite, String)>&& completionHandler)
 {
     didReceiveResponse(downloadProxy, response);
 
@@ -241,7 +241,7 @@ void LegacyDownloadClient::didFinish(DownloadProxy& downloadProxy)
         [m_delegate _downloadDidFinish:[_WKDownload downloadWithDownload:wrapper(downloadProxy)]];
 }
 
-void LegacyDownloadClient::didFail(DownloadProxy& downloadProxy, const WebCore::ResourceError& error, API::Data*)
+void LegacyDownloadClient::didFail(DownloadProxy& downloadProxy, const CyberCore::ResourceError& error, API::Data*)
 {
 #if USE(SYSTEM_PREVIEW)
     if (downloadProxy.isSystemPreviewDownload()) {
@@ -271,7 +271,7 @@ void LegacyDownloadClient::legacyDidCancel(DownloadProxy& downloadProxy)
         [m_delegate _downloadDidCancel:[_WKDownload downloadWithDownload:wrapper(downloadProxy)]];
 }
 
-void LegacyDownloadClient::willSendRequest(DownloadProxy& downloadProxy, WebCore::ResourceRequest&& request, const WebCore::ResourceResponse&, CompletionHandler<void(WebCore::ResourceRequest&&)>&& completionHandler)
+void LegacyDownloadClient::willSendRequest(DownloadProxy& downloadProxy, CyberCore::ResourceRequest&& request, const CyberCore::ResourceResponse&, CompletionHandler<void(CyberCore::ResourceRequest&&)>&& completionHandler)
 {
     if (m_delegateMethods.downloadDidReceiveServerRedirectToURL)
         [m_delegate _download:[_WKDownload downloadWithDownload:wrapper(downloadProxy)] didReceiveServerRedirectToURL:request.url()];

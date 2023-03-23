@@ -31,7 +31,7 @@
 #include "ColorTransferFunctions.h"
 #include <optional>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class WhitePoint { D50, D65 };
 
@@ -761,4 +761,4 @@ constexpr SRGBA<uint8_t> asSRGBA(PackedColor::ARGB color)
     return { static_cast<uint8_t>(color.value >> 16), static_cast<uint8_t>(color.value >> 8), static_cast<uint8_t>(color.value), static_cast<uint8_t>(color.value >> 24) };
 }
 
-} // namespace WebCore
+} // namespace CyberCore

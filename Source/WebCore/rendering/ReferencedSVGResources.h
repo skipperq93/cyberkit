@@ -31,7 +31,7 @@
 #include <wtf/text/AtomString.h>
 #include <wtf/text/AtomStringHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSSVGResourceElementClient;
 class Document;
@@ -68,4 +68,4 @@ private:
     MemoryCompactRobinHoodHashMap<AtomString, std::unique_ptr<CSSSVGResourceElementClient>> m_elementClients;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

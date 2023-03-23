@@ -30,7 +30,7 @@
 #include "FloatRect.h"
 #include "NotImplemented.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 int screenDepth(Widget*)
 {
@@ -77,4 +77,4 @@ DestinationColorSpace screenColorSpace(Widget*)
     return DestinationColorSpace::SRGB();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

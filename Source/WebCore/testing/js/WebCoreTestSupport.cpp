@@ -25,7 +25,7 @@
  */
 
 #include "config.h"
-#include "WebCoreTestSupport.h"
+#include "CyberCoreTestSupport.h"
 
 #include "DeprecatedGlobalSettings.h"
 #include "Frame.h"
@@ -56,9 +56,9 @@
 #include <wtf/cocoa/RuntimeApplicationChecksCocoa.h>
 #endif
 
-namespace WebCoreTestSupport {
+namespace CyberCoreTestSupport {
 using namespace JSC;
-using namespace WebCore;
+using namespace CyberCore;
 
 void initializeNames()
 {
@@ -92,7 +92,7 @@ void resetInternalsObject(JSContextRef context)
     InternalSettings::from(page)->resetToConsistentState();
 }
 
-void monitorWheelEvents(WebCore::Frame& frame, bool clearLatchingState)
+void monitorWheelEvents(CyberCore::Frame& frame, bool clearLatchingState)
 {
     Page* page = frame.page();
     if (!page)
@@ -101,7 +101,7 @@ void monitorWheelEvents(WebCore::Frame& frame, bool clearLatchingState)
     page->startMonitoringWheelEvents(clearLatchingState);
 }
 
-void setWheelEventMonitorTestCallbackAndStartMonitoring(bool expectWheelEndOrCancel, bool expectMomentumEnd, WebCore::Frame& frame, JSContextRef context, JSObjectRef jsCallbackFunction)
+void setWheelEventMonitorTestCallbackAndStartMonitoring(bool expectWheelEndOrCancel, bool expectMomentumEnd, CyberCore::Frame& frame, JSContextRef context, JSObjectRef jsCallbackFunction)
 {
     Page* page = frame.page();
     if (!page || !page->isMonitoringWheelEvents())
@@ -117,7 +117,7 @@ void setWheelEventMonitorTestCallbackAndStartMonitoring(bool expectWheelEndOrCan
     }
 }
 
-void clearWheelEventTestMonitor(WebCore::Frame& frame)
+void clearWheelEventTestMonitor(CyberCore::Frame& frame)
 {
     Page* page = frame.page();
     if (!page)
@@ -250,14 +250,14 @@ void setupNewlyCreatedServiceWorker(uint64_t serviceWorkerIdentifier)
 #if PLATFORM(COCOA)
 void setAdditionalSupportedImageTypesForTesting(const String& imageTypes)
 {
-    WebCore::setAdditionalSupportedImageTypesForTesting(imageTypes);
+    CyberCore::setAdditionalSupportedImageTypesForTesting(imageTypes);
 }
 #endif
 
 #if ENABLE(JIT_OPERATION_VALIDATION) || ENABLE(JIT_OPERATION_DISASSEMBLY)
 
-extern const JSC::JITOperationAnnotation startOfJITOperationsInWebCoreTestSupport __asm("section$start$__DATA_CONST$__jsc_ops");
-extern const JSC::JITOperationAnnotation endOfJITOperationsInWebCoreTestSupport __asm("section$end$__DATA_CONST$__jsc_ops");
+extern const JSC::JITOperationAnnotation startOfJITOperationsInCyberCoreTestSupport __asm("section$start$__DATA_CONST$__jsc_ops");
+extern const JSC::JITOperationAnnotation endOfJITOperationsInCyberCoreTestSupport __asm("section$end$__DATA_CONST$__jsc_ops");
 
 #if ENABLE(JIT_OPERATION_VALIDATION)
 
@@ -265,7 +265,7 @@ void populateJITOperations()
 {
     static std::once_flag onceKey;
     std::call_once(onceKey, [] {
-        JSC::JITOperationList::populatePointersInEmbedder(&startOfJITOperationsInWebCoreTestSupport, &endOfJITOperationsInWebCoreTestSupport);
+        JSC::JITOperationList::populatePointersInEmbedder(&startOfJITOperationsInCyberCoreTestSupport, &endOfJITOperationsInCyberCoreTestSupport);
     });
 #if ENABLE(JIT_OPERATION_DISASSEMBLY)
     if (UNLIKELY(JSC::Options::needDisassemblySupport()))
@@ -279,11 +279,11 @@ void populateDisassemblyLabels()
 {
     static std::once_flag onceKey;
     std::call_once(onceKey, [] {
-        JSC::JITOperationList::populateDisassemblyLabelsInEmbedder(&startOfJITOperationsInWebCoreTestSupport, &endOfJITOperationsInWebCoreTestSupport);
+        JSC::JITOperationList::populateDisassemblyLabelsInEmbedder(&startOfJITOperationsInCyberCoreTestSupport, &endOfJITOperationsInCyberCoreTestSupport);
     });
 }
 #endif // ENABLE(JIT_OPERATION_DISASSEMBLY)
 
 #endif // ENABLE(JIT_OPERATION_VALIDATION) || ENABLE(JIT_OPERATION_DISASSEMBLY)
 
-} // namespace WebCoreTestSupport
+} // namespace CyberCoreTestSupport

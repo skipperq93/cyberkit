@@ -44,7 +44,7 @@ static const Seconds surfaceAgeBeforeMarkingPurgeable { 2_s };
 #define DUMP_POOL_STATISTICS(commands) ((void)0)
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 IOSurfacePool::IOSurfacePool()
     : m_collectionTimer(RunLoop::main(), this, &IOSurfacePool::collectionTimerFired)

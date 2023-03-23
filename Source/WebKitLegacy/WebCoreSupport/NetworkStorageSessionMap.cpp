@@ -33,30 +33,30 @@
 #include <wtf/UUID.h>
 #include <wtf/text/StringConcatenateNumbers.h>
 
-static std::unique_ptr<WebCore::NetworkStorageSession>& defaultNetworkStorageSession()
+static std::unique_ptr<CyberCore::NetworkStorageSession>& defaultNetworkStorageSession()
 {
     ASSERT(isMainThread());
-    static NeverDestroyed<std::unique_ptr<WebCore::NetworkStorageSession>> session;
+    static NeverDestroyed<std::unique_ptr<CyberCore::NetworkStorageSession>> session;
     return session;
 }
 
-static HashMap<PAL::SessionID, std::unique_ptr<WebCore::NetworkStorageSession>>& globalSessionMap()
+static HashMap<PAL::SessionID, std::unique_ptr<CyberCore::NetworkStorageSession>>& globalSessionMap()
 {
-    static NeverDestroyed<HashMap<PAL::SessionID, std::unique_ptr<WebCore::NetworkStorageSession>>> map;
+    static NeverDestroyed<HashMap<PAL::SessionID, std::unique_ptr<CyberCore::NetworkStorageSession>>> map;
     return map;
 }
 
-WebCore::NetworkStorageSession* NetworkStorageSessionMap::storageSession(PAL::SessionID sessionID)
+CyberCore::NetworkStorageSession* NetworkStorageSessionMap::storageSession(PAL::SessionID sessionID)
 {
     if (sessionID == PAL::SessionID::defaultSessionID())
         return &defaultStorageSession();
     return globalSessionMap().get(sessionID);
 }
 
-WebCore::NetworkStorageSession& NetworkStorageSessionMap::defaultStorageSession()
+CyberCore::NetworkStorageSession& NetworkStorageSessionMap::defaultStorageSession()
 {
     if (!defaultNetworkStorageSession())
-        defaultNetworkStorageSession() = makeUnique<WebCore::NetworkStorageSession>(PAL::SessionID::defaultSessionID());
+        defaultNetworkStorageSession() = makeUnique<CyberCore::NetworkStorageSession>(PAL::SessionID::defaultSessionID());
     return *defaultNetworkStorageSession();
 }
 
@@ -64,16 +64,16 @@ void NetworkStorageSessionMap::switchToNewTestingSession()
 {
 #if PLATFORM(COCOA)
     // Session name should be short enough for shared memory region name to be under the limit, otherwise sandbox rules won't work (see <rdar://problem/13642852>).
-    auto session = WebCore::createPrivateStorageSession(makeString("WebKit Test-"_s, getCurrentProcessID()).createCFString().get());
+    auto session = CyberCore::createPrivateStorageSession(makeString("CyberKit Test-"_s, getCurrentProcessID()).createCFString().get());
 
     RetainPtr<CFHTTPCookieStorageRef> cookieStorage;
-    if (WebCore::NetworkStorageSession::processMayUseCookieAPI()) {
+    if (CyberCore::NetworkStorageSession::processMayUseCookieAPI()) {
         ASSERT(hasProcessPrivilege(ProcessPrivilege::CanAccessRawCookies));
         if (session)
             cookieStorage = adoptCF(_CFURLStorageSessionCopyCookieStorage(kCFAllocatorDefault, session.get()));
     }
 
-    defaultNetworkStorageSession() = makeUnique<WebCore::NetworkStorageSession>(PAL::SessionID::defaultSessionID(), WTFMove(session), WTFMove(cookieStorage));
+    defaultNetworkStorageSession() = makeUnique<CyberCore::NetworkStorageSession>(PAL::SessionID::defaultSessionID(), WTFMove(session), WTFMove(cookieStorage));
 #endif
 }
 
@@ -88,22 +88,22 @@ void NetworkStorageSessionMap::ensureSession(PAL::SessionID sessionID, const Str
 
     RetainPtr<CFURLStorageSessionRef> storageSession;
     if (sessionID.isEphemeral())
-        storageSession = WebCore::createPrivateStorageSession(identifier.get());
+        storageSession = CyberCore::createPrivateStorageSession(identifier.get());
     else
-        storageSession = WebCore::NetworkStorageSession::createCFStorageSessionForIdentifier(identifier.get());
+        storageSession = CyberCore::NetworkStorageSession::createCFStorageSessionForIdentifier(identifier.get());
 
     RetainPtr<CFHTTPCookieStorageRef> cookieStorage;
-    if (WebCore::NetworkStorageSession::processMayUseCookieAPI()) {
+    if (CyberCore::NetworkStorageSession::processMayUseCookieAPI()) {
         ASSERT(hasProcessPrivilege(ProcessPrivilege::CanAccessRawCookies));
         if (storageSession)
             cookieStorage = adoptCF(_CFURLStorageSessionCopyCookieStorage(kCFAllocatorDefault, storageSession.get()));
     }
 
-    addResult.iterator->value = makeUnique<WebCore::NetworkStorageSession>(sessionID, WTFMove(storageSession), WTFMove(cookieStorage));
+    addResult.iterator->value = makeUnique<CyberCore::NetworkStorageSession>(sessionID, WTFMove(storageSession), WTFMove(cookieStorage));
 
 #elif USE(CURL)
     globalSessionMap().ensure(sessionID, [sessionID] {
-        return makeUnique<WebCore::NetworkStorageSession>(sessionID);
+        return makeUnique<CyberCore::NetworkStorageSession>(sessionID);
     });
 #endif
 }

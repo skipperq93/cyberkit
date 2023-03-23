@@ -49,7 +49,7 @@
 #include <wtf/text/CString.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class TextureMapperGLData {
     WTF_MAKE_FAST_ALLOCATED;

@@ -28,7 +28,7 @@
 #include "GStreamerAudioCaptureSource.h"
 #include "GStreamerVideoCaptureSource.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 AudioCaptureFactory& RealtimeMediaSourceCenter::defaultAudioCaptureFactory()
 {
@@ -45,6 +45,6 @@ DisplayCaptureFactory& RealtimeMediaSourceCenter::defaultDisplayCaptureFactory()
     return GStreamerVideoCaptureSource::displayFactory();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM)

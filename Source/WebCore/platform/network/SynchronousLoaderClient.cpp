@@ -32,7 +32,7 @@
 #include "SharedBuffer.h"
 #include <wtf/CompletionHandler.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 SynchronousLoaderClient::SynchronousLoaderClient()
     : m_messageQueue(SynchronousLoaderMessageQueue::create()) { }

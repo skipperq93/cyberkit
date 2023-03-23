@@ -36,10 +36,10 @@
 #include <wtf/HashMap.h>
 #include <wtf/NeverDestroyed.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
-typedef HashMap<WebCore::DOMWindowExtension*, InjectedBundleDOMWindowExtension*> ExtensionMap;
+typedef HashMap<CyberCore::DOMWindowExtension*, InjectedBundleDOMWindowExtension*> ExtensionMap;
 static ExtensionMap& allExtensions()
 {
     static NeverDestroyed<ExtensionMap> map;
@@ -86,4 +86,4 @@ InjectedBundleScriptWorld* InjectedBundleDOMWindowExtension::world() const
     return m_world.get();
 }
 
-} // namespace WebKit
+} // namespace CyberKit

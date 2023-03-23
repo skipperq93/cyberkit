@@ -33,7 +33,7 @@
 #include "RenderMultiColumnFlow.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(RenderMultiColumnSpannerPlaceholder);
 
@@ -58,4 +58,4 @@ ASCIILiteral RenderMultiColumnSpannerPlaceholder::renderName() const
     return "RenderMultiColumnSpannerPlaceholder"_s;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

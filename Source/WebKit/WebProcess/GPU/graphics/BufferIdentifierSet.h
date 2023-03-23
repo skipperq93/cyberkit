@@ -32,9 +32,9 @@
 namespace WebKit {
 
 struct BufferIdentifierSet {
-    std::optional<WebCore::RenderingResourceIdentifier> front;
-    std::optional<WebCore::RenderingResourceIdentifier> back;
-    std::optional<WebCore::RenderingResourceIdentifier> secondaryBack;
+    std::optional<CyberCore::RenderingResourceIdentifier> front;
+    std::optional<CyberCore::RenderingResourceIdentifier> back;
+    std::optional<CyberCore::RenderingResourceIdentifier> secondaryBack;
 };
 
 } // namespace WebKit

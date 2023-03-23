@@ -45,7 +45,7 @@
 
 #else // USE(GRAPHICS_LAYER_TEXTURE_MAPPER)
 
-namespace WebCore {
+namespace CyberCore {
 class CoordinatedGraphicsLayer;
 class IntRect;
 class IntSize;
@@ -54,7 +54,7 @@ class GraphicsLayerFactory;
 struct ViewportAttributes;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPage;
 
@@ -74,34 +74,34 @@ public:
 
     void scheduleLayerFlush();
     void cancelPendingLayerFlush();
-    void setRootCompositingLayer(WebCore::GraphicsLayer*);
-    void setViewOverlayRootLayer(WebCore::GraphicsLayer*);
+    void setRootCompositingLayer(CyberCore::GraphicsLayer*);
+    void setViewOverlayRootLayer(CyberCore::GraphicsLayer*);
 
-    void scrollNonCompositedContents(const WebCore::IntRect&);
+    void scrollNonCompositedContents(const CyberCore::IntRect&);
     void forceRepaint();
     void forceRepaintAsync(CompletionHandler<void()>&&);
-    void sizeDidChange(const WebCore::IntSize& newSize);
+    void sizeDidChange(const CyberCore::IntSize& newSize);
     void targetRefreshRateDidChange(unsigned);
 
     void pauseRendering();
     void resumeRendering();
 
-    WebCore::GraphicsLayerFactory* graphicsLayerFactory();
+    CyberCore::GraphicsLayerFactory* graphicsLayerFactory();
 
-    void contentsSizeChanged(const WebCore::IntSize&);
-    void didChangeViewportAttributes(WebCore::ViewportAttributes&&);
+    void contentsSizeChanged(const CyberCore::IntSize&);
+    void didChangeViewportAttributes(CyberCore::ViewportAttributes&&);
 
     void setIsDiscardable(bool);
 
     void deviceOrPageScaleFactorChanged();
 
-    RefPtr<WebCore::DisplayRefreshMonitor> createDisplayRefreshMonitor(WebCore::PlatformDisplayID);
+    RefPtr<CyberCore::DisplayRefreshMonitor> createDisplayRefreshMonitor(CyberCore::PlatformDisplayID);
 
-    WebCore::PlatformDisplayID displayID() const { return m_displayID; }
+    CyberCore::PlatformDisplayID displayID() const { return m_displayID; }
 
 #if PLATFORM(GTK)
-    void adjustTransientZoom(double, WebCore::FloatPoint);
-    void commitTransientZoom(double, WebCore::FloatPoint);
+    void adjustTransientZoom(double, CyberCore::FloatPoint);
+    void commitTransientZoom(double, CyberCore::FloatPoint);
 #endif
 private:
 #if USE(COORDINATED_GRAPHICS)
@@ -110,7 +110,7 @@ private:
     void renderNextFrame(bool);
 
     // CompositingCoordinator::Client
-    void didFlushRootLayer(const WebCore::FloatRect& visibleContentRect) override;
+    void didFlushRootLayer(const CyberCore::FloatRect& visibleContentRect) override;
     void notifyFlushRequired() override { scheduleLayerFlush(); };
     void commitSceneState(const RefPtr<Nicosia::Scene>&) override;
     void updateScene() override;
@@ -121,19 +121,19 @@ private:
     // ThreadedCompositor::Client
     uint64_t nativeSurfaceHandleForCompositing() override;
     void didDestroyGLContext() override;
-    void resize(const WebCore::IntSize&) override;
+    void resize(const CyberCore::IntSize&) override;
     void willRenderFrame() override;
     void didRenderFrame() override;
-    void displayDidRefresh(WebCore::PlatformDisplayID) override;
+    void displayDidRefresh(CyberCore::PlatformDisplayID) override;
 
     // ThreadedDisplayRefreshMonitor::Client
     void requestDisplayRefreshMonitorUpdate() override;
     void handleDisplayRefreshMonitorUpdate(bool hasBeenRescheduled) override;
 
 #if PLATFORM(GTK)
-    WebCore::FloatPoint constrainTransientZoomOrigin(double, WebCore::FloatPoint) const;
-    WebCore::CoordinatedGraphicsLayer* layerForTransientZoom() const;
-    void applyTransientZoomToLayers(double, WebCore::FloatPoint);
+    CyberCore::FloatPoint constrainTransientZoomOrigin(double, CyberCore::FloatPoint) const;
+    CyberCore::CoordinatedGraphicsLayer* layerForTransientZoom() const;
+    void applyTransientZoomToLayers(double, CyberCore::FloatPoint);
 #endif
 
     enum class DiscardableSyncActions {
@@ -152,10 +152,10 @@ private:
     bool m_isWaitingForRenderer { false };
     bool m_scheduledWhileWaitingForRenderer { false };
     float m_lastPageScaleFactor { 1 };
-    WebCore::IntPoint m_lastScrollPosition;
+    CyberCore::IntPoint m_lastScrollPosition;
     bool m_isDiscardable { false };
     OptionSet<DiscardableSyncActions> m_discardableSyncActions;
-    WebCore::GraphicsLayer* m_viewOverlayRootLayer { nullptr };
+    CyberCore::GraphicsLayer* m_viewOverlayRootLayer { nullptr };
     std::unique_ptr<AcceleratedSurface> m_surface;
     RefPtr<ThreadedCompositor> m_compositor;
     SimpleViewportController m_viewportController;
@@ -166,12 +166,12 @@ private:
     RunLoop::Timer m_layerFlushTimer;
     CompositingCoordinator m_coordinator;
 #endif // USE(COORDINATED_GRAPHICS)
-    WebCore::PlatformDisplayID m_displayID;
+    CyberCore::PlatformDisplayID m_displayID;
 
 #if PLATFORM(GTK)
     bool m_transientZoom { false };
     double m_transientZoomScale { 1 };
-    WebCore::FloatPoint m_transientZoomOrigin;
+    CyberCore::FloatPoint m_transientZoomOrigin;
 #endif
 };
 
@@ -182,27 +182,27 @@ inline void LayerTreeHost::setLayerFlushSchedulingEnabled(bool) { }
 inline void LayerTreeHost::setShouldNotifyAfterNextScheduledLayerFlush(bool) { }
 inline void LayerTreeHost::scheduleLayerFlush() { }
 inline void LayerTreeHost::cancelPendingLayerFlush() { }
-inline void LayerTreeHost::setRootCompositingLayer(WebCore::GraphicsLayer*) { }
-inline void LayerTreeHost::setViewOverlayRootLayer(WebCore::GraphicsLayer*) { }
-inline void LayerTreeHost::scrollNonCompositedContents(const WebCore::IntRect&) { }
+inline void LayerTreeHost::setRootCompositingLayer(CyberCore::GraphicsLayer*) { }
+inline void LayerTreeHost::setViewOverlayRootLayer(CyberCore::GraphicsLayer*) { }
+inline void LayerTreeHost::scrollNonCompositedContents(const CyberCore::IntRect&) { }
 inline void LayerTreeHost::forceRepaint() { }
 inline void LayerTreeHost::forceRepaintAsync(CompletionHandler<void()>&&) { }
-inline void LayerTreeHost::sizeDidChange(const WebCore::IntSize&) { }
+inline void LayerTreeHost::sizeDidChange(const CyberCore::IntSize&) { }
 inline void LayerTreeHost::targetRefreshRateDidChange(unsigned) { }
 inline void LayerTreeHost::pauseRendering() { }
 inline void LayerTreeHost::resumeRendering() { }
-inline WebCore::GraphicsLayerFactory* LayerTreeHost::graphicsLayerFactory() { return nullptr; }
-inline void LayerTreeHost::contentsSizeChanged(const WebCore::IntSize&) { }
-inline void LayerTreeHost::didChangeViewportAttributes(WebCore::ViewportAttributes&&) { }
+inline CyberCore::GraphicsLayerFactory* LayerTreeHost::graphicsLayerFactory() { return nullptr; }
+inline void LayerTreeHost::contentsSizeChanged(const CyberCore::IntSize&) { }
+inline void LayerTreeHost::didChangeViewportAttributes(CyberCore::ViewportAttributes&&) { }
 inline void LayerTreeHost::setIsDiscardable(bool) { }
 inline void LayerTreeHost::deviceOrPageScaleFactorChanged() { }
-inline RefPtr<WebCore::DisplayRefreshMonitor> LayerTreeHost::createDisplayRefreshMonitor(WebCore::PlatformDisplayID) { return nullptr; }
+inline RefPtr<CyberCore::DisplayRefreshMonitor> LayerTreeHost::createDisplayRefreshMonitor(CyberCore::PlatformDisplayID) { return nullptr; }
 #if PLATFORM(GTK)
-inline void LayerTreeHost::adjustTransientZoom(double, WebCore::FloatPoint) { }
-inline void LayerTreeHost::commitTransientZoom(double, WebCore::FloatPoint) { }
+inline void LayerTreeHost::adjustTransientZoom(double, CyberCore::FloatPoint) { }
+inline void LayerTreeHost::commitTransientZoom(double, CyberCore::FloatPoint) { }
 #endif
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(GRAPHICS_LAYER_TEXTURE_MAPPER)

@@ -29,13 +29,13 @@
 #include "APIObject.h"
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMWindowExtension;
 
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class InjectedBundleScriptWorld;
 class WebFrame;
@@ -43,7 +43,7 @@ class WebFrame;
 class InjectedBundleDOMWindowExtension : public API::ObjectImpl<API::Object::Type::BundleDOMWindowExtension> {
 public:
     static Ref<InjectedBundleDOMWindowExtension> create(WebFrame*, InjectedBundleScriptWorld*);
-    static InjectedBundleDOMWindowExtension* get(WebCore::DOMWindowExtension*);
+    static InjectedBundleDOMWindowExtension* get(CyberCore::DOMWindowExtension*);
 
     virtual ~InjectedBundleDOMWindowExtension();
     
@@ -53,10 +53,10 @@ public:
 private:
     InjectedBundleDOMWindowExtension(WebFrame*, InjectedBundleScriptWorld*);
 
-    RefPtr<WebCore::DOMWindowExtension> m_coreExtension;
+    RefPtr<CyberCore::DOMWindowExtension> m_coreExtension;
     mutable RefPtr<InjectedBundleScriptWorld> m_world;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // InjectedBundleDOMWindowExtension_h

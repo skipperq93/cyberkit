@@ -35,7 +35,7 @@
 #include <wtf/HashMap.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 class Settings;
 }
 
@@ -44,7 +44,7 @@ class Connection;
 class Decoder;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class GPUProcessConnection;
 class RemoteCDM;
@@ -52,7 +52,7 @@ class RemoteCDMInstanceSession;
 class WebProcess;
 
 class RemoteCDMFactory final
-    : public WebCore::CDMFactory
+    : public CyberCore::CDMFactory
     , public WebProcessSupplement
     , public CanMakeWeakPtr<RemoteCDMFactory> {
     WTF_MAKE_FAST_ALLOCATED;
@@ -65,7 +65,7 @@ public:
 
     GPUProcessConnection& gpuProcessConnection();
 
-    void registerFactory(Vector<WebCore::CDMFactory*>&);
+    void registerFactory(Vector<CyberCore::CDMFactory*>&);
 
     void didReceiveSessionMessage(IPC::Connection&, IPC::Decoder&);
 
@@ -75,7 +75,7 @@ public:
     void removeInstance(RemoteCDMInstanceIdentifier);
 
 private:
-    std::unique_ptr<WebCore::CDMPrivate> createCDM(const String&, const WebCore::CDMPrivateClient&) final;
+    std::unique_ptr<CyberCore::CDMPrivate> createCDM(const String&, const CyberCore::CDMPrivateClient&) final;
     bool supportsKeySystem(const String&) final;
 
     HashMap<RemoteCDMInstanceSessionIdentifier, WeakPtr<RemoteCDMInstanceSession>> m_sessions;

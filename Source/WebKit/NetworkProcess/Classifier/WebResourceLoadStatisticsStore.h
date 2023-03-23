@@ -51,7 +51,7 @@
 #include <wtf/WeakPtr.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 class ResourceRequest;
 struct ResourceLoadStatistics;
 enum class ShouldSample : bool;
@@ -69,22 +69,22 @@ enum class ShouldGrandfatherStatistics : bool;
 enum class ShouldIncludeLocalhost : bool { No, Yes };
 enum class EnableResourceLoadStatisticsDebugMode : bool { No, Yes };
 
-using TopFrameDomain = WebCore::RegistrableDomain;
-using SubResourceDomain = WebCore::RegistrableDomain;
+using TopFrameDomain = CyberCore::RegistrableDomain;
+using SubResourceDomain = CyberCore::RegistrableDomain;
 
 struct RegistrableDomainsToBlockCookiesFor {
-    Vector<WebCore::RegistrableDomain> domainsToBlockAndDeleteCookiesFor;
-    Vector<WebCore::RegistrableDomain> domainsToBlockButKeepCookiesFor;
-    Vector<WebCore::RegistrableDomain> domainsWithUserInteractionAsFirstParty;
+    Vector<CyberCore::RegistrableDomain> domainsToBlockAndDeleteCookiesFor;
+    Vector<CyberCore::RegistrableDomain> domainsToBlockButKeepCookiesFor;
+    Vector<CyberCore::RegistrableDomain> domainsWithUserInteractionAsFirstParty;
     HashMap<TopFrameDomain, SubResourceDomain> domainsWithStorageAccess;
     RegistrableDomainsToBlockCookiesFor isolatedCopy() const & { return { crossThreadCopy(domainsToBlockAndDeleteCookiesFor), crossThreadCopy(domainsToBlockButKeepCookiesFor), crossThreadCopy(domainsWithUserInteractionAsFirstParty), crossThreadCopy(domainsWithStorageAccess) }; }
     RegistrableDomainsToBlockCookiesFor isolatedCopy() && { return { crossThreadCopy(WTFMove(domainsToBlockAndDeleteCookiesFor)), crossThreadCopy(WTFMove(domainsToBlockButKeepCookiesFor)), crossThreadCopy(WTFMove(domainsWithUserInteractionAsFirstParty)), crossThreadCopy(WTFMove(domainsWithStorageAccess)) }; }
 };
 struct RegistrableDomainsToDeleteOrRestrictWebsiteDataFor {
-    Vector<WebCore::RegistrableDomain> domainsToDeleteAllCookiesFor;
-    Vector<WebCore::RegistrableDomain> domainsToDeleteAllButHttpOnlyCookiesFor;
-    Vector<WebCore::RegistrableDomain> domainsToDeleteAllScriptWrittenStorageFor;
-    Vector<WebCore::RegistrableDomain> domainsToEnforceSameSiteStrictFor;
+    Vector<CyberCore::RegistrableDomain> domainsToDeleteAllCookiesFor;
+    Vector<CyberCore::RegistrableDomain> domainsToDeleteAllButHttpOnlyCookiesFor;
+    Vector<CyberCore::RegistrableDomain> domainsToDeleteAllScriptWrittenStorageFor;
+    Vector<CyberCore::RegistrableDomain> domainsToEnforceSameSiteStrictFor;
     RegistrableDomainsToDeleteOrRestrictWebsiteDataFor isolatedCopy() const & { return { crossThreadCopy(domainsToDeleteAllCookiesFor), crossThreadCopy(domainsToDeleteAllButHttpOnlyCookiesFor), crossThreadCopy(domainsToDeleteAllScriptWrittenStorageFor), crossThreadCopy(domainsToEnforceSameSiteStrictFor) }; }
     RegistrableDomainsToDeleteOrRestrictWebsiteDataFor isolatedCopy() && { return { crossThreadCopy(WTFMove(domainsToDeleteAllCookiesFor)), crossThreadCopy(WTFMove(domainsToDeleteAllButHttpOnlyCookiesFor)), crossThreadCopy(WTFMove(domainsToDeleteAllScriptWrittenStorageFor)), crossThreadCopy(WTFMove(domainsToEnforceSameSiteStrictFor)) }; }
     bool isEmpty() const { return domainsToDeleteAllCookiesFor.isEmpty() && domainsToDeleteAllButHttpOnlyCookiesFor.isEmpty() && domainsToDeleteAllScriptWrittenStorageFor.isEmpty() && domainsToEnforceSameSiteStrictFor.isEmpty(); }
@@ -92,29 +92,29 @@ struct RegistrableDomainsToDeleteOrRestrictWebsiteDataFor {
 
 class WebResourceLoadStatisticsStore final : public ThreadSafeRefCounted<WebResourceLoadStatisticsStore, WTF::DestructionThread::Main> {
 public:
-    using ResourceLoadStatistics = WebCore::ResourceLoadStatistics;
-    using RegistrableDomain = WebCore::RegistrableDomain;
-    using TopFrameDomain = WebCore::RegistrableDomain;
-    using SubFrameDomain = WebCore::RegistrableDomain;
-    using SubResourceDomain = WebCore::RegistrableDomain;
-    using RedirectDomain = WebCore::RegistrableDomain;
-    using RedirectedFromDomain = WebCore::RegistrableDomain;
-    using RedirectedToDomain = WebCore::RegistrableDomain;
-    using NavigatedFromDomain = WebCore::RegistrableDomain;
-    using NavigatedToDomain = WebCore::RegistrableDomain;
-    using DomainInNeedOfStorageAccess = WebCore::RegistrableDomain;
-    using OpenerDomain = WebCore::RegistrableDomain;
-    using StorageAccessWasGranted = WebCore::StorageAccessWasGranted;
-    using StorageAccessPromptWasShown = WebCore::StorageAccessPromptWasShown;
-    using StorageAccessScope = WebCore::StorageAccessScope;
-    using RequestStorageAccessResult = WebCore::RequestStorageAccessResult;
+    using ResourceLoadStatistics = CyberCore::ResourceLoadStatistics;
+    using RegistrableDomain = CyberCore::RegistrableDomain;
+    using TopFrameDomain = CyberCore::RegistrableDomain;
+    using SubFrameDomain = CyberCore::RegistrableDomain;
+    using SubResourceDomain = CyberCore::RegistrableDomain;
+    using RedirectDomain = CyberCore::RegistrableDomain;
+    using RedirectedFromDomain = CyberCore::RegistrableDomain;
+    using RedirectedToDomain = CyberCore::RegistrableDomain;
+    using NavigatedFromDomain = CyberCore::RegistrableDomain;
+    using NavigatedToDomain = CyberCore::RegistrableDomain;
+    using DomainInNeedOfStorageAccess = CyberCore::RegistrableDomain;
+    using OpenerDomain = CyberCore::RegistrableDomain;
+    using StorageAccessWasGranted = CyberCore::StorageAccessWasGranted;
+    using StorageAccessPromptWasShown = CyberCore::StorageAccessPromptWasShown;
+    using StorageAccessScope = CyberCore::StorageAccessScope;
+    using RequestStorageAccessResult = CyberCore::RequestStorageAccessResult;
 
     static Ref<WebResourceLoadStatisticsStore> create(NetworkSession&, const String& resourceLoadStatisticsDirectory, ShouldIncludeLocalhost, ResourceLoadStatistics::IsEphemeral);
 
     ~WebResourceLoadStatisticsStore();
 
     struct ThirdPartyDataForSpecificFirstParty {
-        WebCore::RegistrableDomain firstPartyDomain;
+        CyberCore::RegistrableDomain firstPartyDomain;
         bool storageAccessGranted;
         Seconds timeLastUpdated;
 
@@ -127,7 +127,7 @@ public:
     };
 
     struct ThirdPartyData {
-        WebCore::RegistrableDomain thirdPartyDomain;
+        CyberCore::RegistrableDomain thirdPartyDomain;
         Vector<ThirdPartyDataForSpecificFirstParty> underFirstParties;
 
         String toString() const;
@@ -148,7 +148,7 @@ public:
     void setNotifyPagesWhenDataRecordsWereScanned(bool);
     void setShouldClassifyResourcesBeforeDataRecordsRemoval(bool, CompletionHandler<void()>&&);
 
-    void grantStorageAccess(SubFrameDomain&&, TopFrameDomain&&, WebCore::FrameIdentifier, WebCore::PageIdentifier, StorageAccessPromptWasShown, StorageAccessScope, CompletionHandler<void(RequestStorageAccessResult)>&&);
+    void grantStorageAccess(SubFrameDomain&&, TopFrameDomain&&, CyberCore::FrameIdentifier, CyberCore::PageIdentifier, StorageAccessPromptWasShown, StorageAccessScope, CompletionHandler<void(RequestStorageAccessResult)>&&);
 
     void logFrameNavigation(NavigatedToDomain&&, TopFrameDomain&&, NavigatedFromDomain&&, bool isRedirect, bool isMainFrame, Seconds delayAfterMainFrameDocumentLoad, bool wasPotentiallyInitiatedByUser);
     void logUserInteraction(TopFrameDomain&&, CompletionHandler<void()>&&);
@@ -159,11 +159,11 @@ public:
     void deleteAndRestrictWebsiteDataForRegistrableDomains(OptionSet<WebsiteDataType>, RegistrableDomainsToDeleteOrRestrictWebsiteDataFor&&, bool shouldNotifyPage, CompletionHandler<void(HashSet<RegistrableDomain>&&)>&&);
     void registrableDomains(CompletionHandler<void(Vector<RegistrableDomain>&&)>&&);
     void registrableDomainsWithWebsiteData(OptionSet<WebsiteDataType>, bool shouldNotifyPage, CompletionHandler<void(HashSet<RegistrableDomain>&&)>&&);
-    StorageAccessWasGranted grantStorageAccessInStorageSession(const SubFrameDomain&, const TopFrameDomain&, std::optional<WebCore::FrameIdentifier>, WebCore::PageIdentifier, StorageAccessScope);
+    StorageAccessWasGranted grantStorageAccessInStorageSession(const SubFrameDomain&, const TopFrameDomain&, std::optional<CyberCore::FrameIdentifier>, CyberCore::PageIdentifier, StorageAccessScope);
     void hasHadUserInteraction(RegistrableDomain&&, CompletionHandler<void(bool)>&&);
-    void hasStorageAccess(SubFrameDomain&&, TopFrameDomain&&, std::optional<WebCore::FrameIdentifier>, WebCore::PageIdentifier, CompletionHandler<void(bool)>&&);
-    bool hasStorageAccessForFrame(const SubFrameDomain&, const TopFrameDomain&, WebCore::FrameIdentifier, WebCore::PageIdentifier);
-    void requestStorageAccess(SubFrameDomain&&, TopFrameDomain&&, WebCore::FrameIdentifier, WebCore::PageIdentifier, WebPageProxyIdentifier, StorageAccessScope,  CompletionHandler<void(RequestStorageAccessResult)>&&);
+    void hasStorageAccess(SubFrameDomain&&, TopFrameDomain&&, std::optional<CyberCore::FrameIdentifier>, CyberCore::PageIdentifier, CompletionHandler<void(bool)>&&);
+    bool hasStorageAccessForFrame(const SubFrameDomain&, const TopFrameDomain&, CyberCore::FrameIdentifier, CyberCore::PageIdentifier);
+    void requestStorageAccess(SubFrameDomain&&, TopFrameDomain&&, CyberCore::FrameIdentifier, CyberCore::PageIdentifier, WebPageProxyIdentifier, StorageAccessScope,  CompletionHandler<void(RequestStorageAccessResult)>&&);
     void setLastSeen(RegistrableDomain&&, Seconds, CompletionHandler<void()>&&);
     void mergeStatisticForTesting(RegistrableDomain&&, TopFrameDomain&& topFrameDomain1, TopFrameDomain&& topFrameDomain2, Seconds lastSeen, bool hadUserInteraction, Seconds mostRecentUserInteraction, bool isGrandfathered, bool isPrevalent, bool isVeryPrevalent, unsigned dataRecordsRemoved, CompletionHandler<void()>&&);
     void isRelationshipOnlyInDatabaseOnce(RegistrableDomain&& subDomain, RegistrableDomain&& topDomain, CompletionHandler<void(bool)>&&);
@@ -209,16 +209,16 @@ public:
     void setPrevalentResourceForDebugMode(RegistrableDomain&&, CompletionHandler<void()>&&);
 
     void logTestingEvent(const String&);
-    void callGrantStorageAccessHandler(const SubFrameDomain&, const TopFrameDomain&, std::optional<WebCore::FrameIdentifier>, WebCore::PageIdentifier, StorageAccessScope, CompletionHandler<void(StorageAccessWasGranted)>&&);
+    void callGrantStorageAccessHandler(const SubFrameDomain&, const TopFrameDomain&, std::optional<CyberCore::FrameIdentifier>, CyberCore::PageIdentifier, StorageAccessScope, CompletionHandler<void(StorageAccessWasGranted)>&&);
     void removeAllStorageAccess(CompletionHandler<void()>&&);
     bool needsUserInteractionQuirk(const RegistrableDomain&) const;
     void callUpdatePrevalentDomainsToBlockCookiesForHandler(const RegistrableDomainsToBlockCookiesFor&, CompletionHandler<void()>&&);
-    void callHasStorageAccessForFrameHandler(const SubFrameDomain&, const TopFrameDomain&, WebCore::FrameIdentifier, WebCore::PageIdentifier, CompletionHandler<void(bool)>&&);
+    void callHasStorageAccessForFrameHandler(const SubFrameDomain&, const TopFrameDomain&, CyberCore::FrameIdentifier, CyberCore::PageIdentifier, CompletionHandler<void(bool)>&&);
 
     void hasCookies(const RegistrableDomain&, CompletionHandler<void(bool)>&&);
-    void setThirdPartyCookieBlockingMode(WebCore::ThirdPartyCookieBlockingMode);
-    void setSameSiteStrictEnforcementEnabled(WebCore::SameSiteStrictEnforcementEnabled);
-    void setFirstPartyWebsiteDataRemovalMode(WebCore::FirstPartyWebsiteDataRemovalMode, CompletionHandler<void()>&&);
+    void setThirdPartyCookieBlockingMode(CyberCore::ThirdPartyCookieBlockingMode);
+    void setSameSiteStrictEnforcementEnabled(CyberCore::SameSiteStrictEnforcementEnabled);
+    void setFirstPartyWebsiteDataRemovalMode(CyberCore::FirstPartyWebsiteDataRemovalMode, CompletionHandler<void()>&&);
     void setStandaloneApplicationDomain(const RegistrableDomain&, CompletionHandler<void()>&&);
 #if ENABLE(APP_BOUND_DOMAINS)
     void setAppBoundDomains(HashSet<RegistrableDomain>&&, CompletionHandler<void()>&&);
@@ -233,29 +233,29 @@ public:
     NetworkSession* networkSession();
     void invalidateAndCancel();
 
-    void sendDiagnosticMessageWithValue(const String& message, const String& description, unsigned value, unsigned sigDigits, WebCore::ShouldSample) const;
+    void sendDiagnosticMessageWithValue(const String& message, const String& description, unsigned value, unsigned sigDigits, CyberCore::ShouldSample) const;
 
-    void resourceLoadStatisticsUpdated(Vector<WebCore::ResourceLoadStatistics>&&, CompletionHandler<void()>&&);
-    void requestStorageAccessUnderOpener(DomainInNeedOfStorageAccess&&, WebCore::PageIdentifier openerID, OpenerDomain&&);
+    void resourceLoadStatisticsUpdated(Vector<CyberCore::ResourceLoadStatistics>&&, CompletionHandler<void()>&&);
+    void requestStorageAccessUnderOpener(DomainInNeedOfStorageAccess&&, CyberCore::PageIdentifier openerID, OpenerDomain&&);
     void aggregatedThirdPartyData(CompletionHandler<void(Vector<WebResourceLoadStatisticsStore::ThirdPartyData>&&)>&&);
     static void suspend(CompletionHandler<void()>&&);
     static void resume();
     
-    bool isEphemeral() const { return m_isEphemeral == WebCore::ResourceLoadStatistics::IsEphemeral::Yes; };
+    bool isEphemeral() const { return m_isEphemeral == CyberCore::ResourceLoadStatistics::IsEphemeral::Yes; };
     void insertExpiredStatisticForTesting(RegistrableDomain&&, unsigned numberOfOperatingDaysPassed, bool hadUserInteraction, bool isScheduledForAllButCookieDataRemoval, bool isPrevalent, CompletionHandler<void()>&&);
 
 private:
-    explicit WebResourceLoadStatisticsStore(NetworkSession&, const String&, ShouldIncludeLocalhost, WebCore::ResourceLoadStatistics::IsEphemeral);
+    explicit WebResourceLoadStatisticsStore(NetworkSession&, const String&, ShouldIncludeLocalhost, CyberCore::ResourceLoadStatistics::IsEphemeral);
 
     void postTask(WTF::Function<void()>&&);
     static void postTaskReply(WTF::Function<void()>&&);
 
     void performDailyTasks();
 
-    void hasStorageAccessEphemeral(const SubFrameDomain&, const TopFrameDomain&, std::optional<WebCore::FrameIdentifier>, WebCore::PageIdentifier, CompletionHandler<void(bool)>&&);
-    void requestStorageAccessEphemeral(const SubFrameDomain&, const TopFrameDomain&, WebCore::FrameIdentifier, WebCore::PageIdentifier, WebPageProxyIdentifier, StorageAccessScope, CompletionHandler<void(RequestStorageAccessResult)>&&);
-    void requestStorageAccessUnderOpenerEphemeral(DomainInNeedOfStorageAccess&&, WebCore::PageIdentifier openerID, OpenerDomain&&);
-    void grantStorageAccessEphemeral(const SubFrameDomain&, const TopFrameDomain&, WebCore::FrameIdentifier, WebCore::PageIdentifier, StorageAccessPromptWasShown, StorageAccessScope, CompletionHandler<void(RequestStorageAccessResult)>&&);
+    void hasStorageAccessEphemeral(const SubFrameDomain&, const TopFrameDomain&, std::optional<CyberCore::FrameIdentifier>, CyberCore::PageIdentifier, CompletionHandler<void(bool)>&&);
+    void requestStorageAccessEphemeral(const SubFrameDomain&, const TopFrameDomain&, CyberCore::FrameIdentifier, CyberCore::PageIdentifier, WebPageProxyIdentifier, StorageAccessScope, CompletionHandler<void(RequestStorageAccessResult)>&&);
+    void requestStorageAccessUnderOpenerEphemeral(DomainInNeedOfStorageAccess&&, CyberCore::PageIdentifier openerID, OpenerDomain&&);
+    void grantStorageAccessEphemeral(const SubFrameDomain&, const TopFrameDomain&, CyberCore::FrameIdentifier, CyberCore::PageIdentifier, StorageAccessPromptWasShown, StorageAccessScope, CompletionHandler<void(RequestStorageAccessResult)>&&);
 
     void logUserInteractionEphemeral(const TopFrameDomain&, CompletionHandler<void()>&&);
     void clearUserInteractionEphemeral(const RegistrableDomain&, CompletionHandler<void()>&&);
@@ -271,7 +271,7 @@ private:
 
     RunLoop::Timer m_dailyTasksTimer;
 
-    WebCore::ResourceLoadStatistics::IsEphemeral m_isEphemeral { WebCore::ResourceLoadStatistics::IsEphemeral::No };
+    CyberCore::ResourceLoadStatistics::IsEphemeral m_isEphemeral { CyberCore::ResourceLoadStatistics::IsEphemeral::No };
     HashSet<RegistrableDomain> m_domainsWithEphemeralUserInteraction;
 
     HashSet<RegistrableDomain> m_domainsWithUserInteractionQuirk;

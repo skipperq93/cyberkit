@@ -43,7 +43,7 @@
 #include <wtf/RunLoop.h>
 #include <wtf/Scope.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum {
     LeftLobe = 0,
@@ -938,4 +938,4 @@ void ShadowBlur::drawShadowLayer(const AffineTransform& transform, const IntRect
     drawBuffer(*layerImage, layerImageProperties->layerOrigin, layerImageProperties->layerSize);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

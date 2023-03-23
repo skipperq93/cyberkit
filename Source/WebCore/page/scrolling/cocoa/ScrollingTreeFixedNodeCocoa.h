@@ -32,7 +32,7 @@
 
 OBJC_CLASS CALayer;
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScrollingTreeFixedNodeCocoa : public ScrollingTreeFixedNode {
 public:
@@ -56,7 +56,7 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_SCROLLING_NODE(ScrollingTreeFixedNodeCocoa, isFixedNodeCocoa())
 

@@ -26,7 +26,7 @@
 #include "SVGBoundingBoxComputation.h"
 #include "SVGTextLayoutAttributesBuilder.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderSVGInlineText;
 class SVGTextElement;
@@ -114,6 +114,6 @@ private:
     FloatRect m_objectBoundingBox;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderSVGText, isSVGText())

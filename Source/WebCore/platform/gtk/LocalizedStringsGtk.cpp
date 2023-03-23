@@ -35,7 +35,7 @@
 #include <wtf/text/CString.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 #if ENABLE(CONTEXT_MENUS)
 String contextMenuItemTagCopyLinkToClipboard()
@@ -181,4 +181,4 @@ String validationMessageTooLongText(int, int maxLength)
     return String::fromUTF8(string.get());
 }
 
-} // namespace WebCore
+} // namespace CyberCore

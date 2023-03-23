@@ -34,7 +34,7 @@
 #import <CyberCore/DeprecatedCSSOMRGBColor.h>
 #import <CyberCore/JSExecState.h>
 #import <CyberCore/ThreadCheck.h>
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 #import <CyberCore/WebScriptObjectPrivate.h>
 #import <wtf/GetPtr.h>
 
@@ -44,13 +44,13 @@
 #import <CyberCore/ColorSpace.h>
 #endif
 
-#define IMPL reinterpret_cast<WebCore::DeprecatedCSSOMRGBColor*>(_internal)
+#define IMPL reinterpret_cast<CyberCore::DeprecatedCSSOMRGBColor*>(_internal)
 
 @implementation DOMRGBColor
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainThread([DOMRGBColor class], self))
+    if (CyberCoreObjCScheduleDeallocateOnMainThread([DOMRGBColor class], self))
         return;
 
     if (_internal)
@@ -60,47 +60,47 @@
 
 - (DOMCSSPrimitiveValue *)red
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->red()));
 }
 
 - (DOMCSSPrimitiveValue *)green
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->green()));
 }
 
 - (DOMCSSPrimitiveValue *)blue
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->blue()));
 }
 
 - (DOMCSSPrimitiveValue *)alpha
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->alpha()));
 }
 
 #if PLATFORM(MAC)
 - (NSColor *)color
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return cocoaColor(IMPL->color()).autorelease();
 }
 #else
 - (CGColorRef)color
 {
-    WebCore::JSMainThreadNullState state;
-    return WebCore::cachedCGColor(IMPL->color()).autorelease();
+    CyberCore::JSMainThreadNullState state;
+    return CyberCore::cachedCGColor(IMPL->color()).autorelease();
 }
 #endif
 
 @end
 
-DOMRGBColor *kit(WebCore::DeprecatedCSSOMRGBColor* value)
+DOMRGBColor *kit(CyberCore::DeprecatedCSSOMRGBColor* value)
 {
-    WebCoreThreadViolationCheckRoundOne();
+    CyberCoreThreadViolationCheckRoundOne();
     if (!value)
         return nil;
     if (DOMRGBColor *wrapper = getDOMWrapper(value))

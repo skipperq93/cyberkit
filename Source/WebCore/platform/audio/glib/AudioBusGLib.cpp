@@ -33,7 +33,7 @@
 #define AUDIO_GRESOURCE_PATH "/org/webkitwpe/resources/audio"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 RefPtr<AudioBus> AudioBus::loadPlatformResource(const char* name, float sampleRate)
 {
@@ -43,6 +43,6 @@ RefPtr<AudioBus> AudioBus::loadPlatformResource(const char* name, float sampleRa
     return createBusFromInMemoryAudioFile(g_bytes_get_data(data.get(), nullptr), g_bytes_get_size(data.get()), false, sampleRate);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

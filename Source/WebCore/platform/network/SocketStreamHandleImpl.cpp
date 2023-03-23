@@ -34,7 +34,7 @@
 #include "StorageSessionProvider.h"
 #include <wtf/Function.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 void SocketStreamHandleImpl::platformSend(const uint8_t* data, size_t length, Function<void(bool)>&& completionHandler)
 {
@@ -186,6 +186,6 @@ size_t SocketStreamHandleImpl::bufferedAmount()
     return m_buffer.size();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // !USE(SOUP)

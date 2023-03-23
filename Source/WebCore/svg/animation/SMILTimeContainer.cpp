@@ -34,7 +34,7 @@
 #include "SVGSVGElement.h"
 #include "ScopedEventQueue.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static const Seconds SMILAnimationFrameDelay { 1_s / 60. };
 static const Seconds SMILAnimationFrameThrottledDelay { 1_s / 30. };

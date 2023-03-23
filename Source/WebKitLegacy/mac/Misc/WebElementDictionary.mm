@@ -32,7 +32,7 @@
 #import "WebDOMOperations.h"
 #import "WebFrame.h"
 #import "WebFrameInternal.h"
-#import "WebKitLogging.h"
+#import "CyberKitLogging.h"
 #import "WebView.h"
 #import "WebViewPrivate.h"
 #import <CyberScriptCore/InitializeThreading.h>
@@ -40,14 +40,14 @@
 #import <CyberCore/Frame.h>
 #import <CyberCore/HitTestResult.h>
 #import <CyberCore/Image.h>
-#import <CyberCore/WebCoreJITOperations.h>
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreJITOperations.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 #import <CyberKitLegacy/DOMCore.h>
 #import <CyberKitLegacy/DOMExtensions.h>
 #import <wtf/MainThread.h>
 #import <wtf/RunLoop.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 static RetainPtr<CFMutableDictionaryRef>& lookupTable()
 {
@@ -73,7 +73,7 @@ static void cacheValueForKey(const void *key, const void *value, void *self)
 #if !PLATFORM(IOS_FAMILY)
     JSC::initialize();
     WTF::initializeMainThread();
-    WebCore::populateJITOperations();
+    CyberCore::populateJITOperations();
 #endif
 }
 
@@ -117,7 +117,7 @@ static void cacheValueForKey(const void *key, const void *value, void *self)
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainThread([WebElementDictionary class], self))
+    if (CyberCoreObjCScheduleDeallocateOnMainThread([WebElementDictionary class], self))
         return;
 
     delete _result;

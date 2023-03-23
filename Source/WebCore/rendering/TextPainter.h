@@ -29,7 +29,7 @@
 #include "TextPaintStyle.h"
 #include <wtf/text/AtomString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FilterOperations;
 class FontCascade;
@@ -134,4 +134,4 @@ private:
     bool m_didSaveContext : 1;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

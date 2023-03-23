@@ -29,7 +29,7 @@
 #include "CachedResourceRequest.h"
 #include "Document.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 XSLImportRule::XSLImportRule(XSLStyleSheet& parent, const String& href)
     : m_parentStyleSheet(parent)
@@ -107,6 +107,6 @@ void XSLImportRule::loadSheet()
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(XSLT)

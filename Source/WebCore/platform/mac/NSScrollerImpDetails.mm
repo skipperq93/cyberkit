@@ -32,7 +32,7 @@
 
 #import "DeprecatedGlobalSettings.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 std::optional<bool> ScrollerStyle::m_useOverlayScrollbars;
 

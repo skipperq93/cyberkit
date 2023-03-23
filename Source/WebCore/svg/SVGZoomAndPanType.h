@@ -27,7 +27,7 @@
 
 #include "SVGPropertyTraits.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 enum SVGZoomAndPanType {
     SVGZoomAndPanUnknown,

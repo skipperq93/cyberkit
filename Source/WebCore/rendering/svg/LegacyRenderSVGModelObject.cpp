@@ -42,7 +42,7 @@
 #include "ShadowRoot.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(LegacyRenderSVGModelObject);
 
@@ -193,4 +193,4 @@ bool LegacyRenderSVGModelObject::checkEnclosure(RenderElement* renderer, const F
     return rect.contains(ctm.mapRect(svgElement->renderer()->repaintRectInLocalCoordinates()));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

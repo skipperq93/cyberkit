@@ -37,7 +37,7 @@
 #include <cairo-ft.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 class AffineTransform;
 class Color;
 class FloatRect;
@@ -81,7 +81,7 @@ void copyContextProperties(cairo_t* srcCr, cairo_t* dstCr);
 void setSourceRGBAFromColor(cairo_t*, const Color&);
 void appendPathToCairoContext(cairo_t* to, cairo_t* from);
 void setPathOnCairoContext(cairo_t* to, cairo_t* from);
-void appendWebCorePathToCairoContext(cairo_t* context, const Path& path);
+void appendCyberCorePathToCairoContext(cairo_t* context, const Path& path);
 void appendRegionToCairoContext(cairo_t*, const cairo_region_t*);
 cairo_operator_t toCairoOperator(CompositeOperator, BlendMode = BlendMode::Normal);
 void drawPatternToCairoContext(cairo_t* cr, cairo_surface_t* image, const IntSize& imageSize, const FloatRect& tileRect,
@@ -98,6 +98,6 @@ RefPtr<cairo_region_t> toCairoRegion(const Region&);
 
 cairo_matrix_t toCairoMatrix(const AffineTransform&);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(CAIRO)

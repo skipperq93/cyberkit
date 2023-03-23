@@ -31,7 +31,7 @@
 
 enum NSScrollerStyle : long;
 
-namespace WebCore {
+namespace CyberCore {
 
 class WEBCORE_EXPORT ScrollerStyle {
 public:

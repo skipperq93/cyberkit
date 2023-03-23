@@ -34,24 +34,24 @@
 #import <CyberCore/PlatformCALayerCocoa.h>
 #import <wtf/RetainPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 
-Ref<PlatformCALayerRemote> PlatformCALayerRemoteModelHosting::create(Ref<WebCore::Model> model, WebCore::PlatformCALayerClient* owner, RemoteLayerTreeContext& context)
+Ref<PlatformCALayerRemote> PlatformCALayerRemoteModelHosting::create(Ref<CyberCore::Model> model, CyberCore::PlatformCALayerClient* owner, RemoteLayerTreeContext& context)
 {
     auto layer = adoptRef(*new PlatformCALayerRemoteModelHosting(model, owner, context));
     context.layerDidEnterContext(layer.get(), layer->layerType());
     return WTFMove(layer);
 }
 
-PlatformCALayerRemoteModelHosting::PlatformCALayerRemoteModelHosting(Ref<WebCore::Model> model, WebCore::PlatformCALayerClient* owner, RemoteLayerTreeContext& context)
-    : PlatformCALayerRemote(WebCore::PlatformCALayer::LayerTypeModelLayer, owner, context)
+PlatformCALayerRemoteModelHosting::PlatformCALayerRemoteModelHosting(Ref<CyberCore::Model> model, CyberCore::PlatformCALayerClient* owner, RemoteLayerTreeContext& context)
+    : PlatformCALayerRemote(CyberCore::PlatformCALayer::LayerTypeModelLayer, owner, context)
     , m_model(model)
 {
 }
 
 PlatformCALayerRemoteModelHosting::~PlatformCALayerRemoteModelHosting() = default;
 
-Ref<WebCore::PlatformCALayer> PlatformCALayerRemoteModelHosting::clone(WebCore::PlatformCALayerClient* owner) const
+Ref<CyberCore::PlatformCALayer> PlatformCALayerRemoteModelHosting::clone(CyberCore::PlatformCALayerClient* owner) const
 {
     auto clone = adoptRef(*new PlatformCALayerRemoteModelHosting(m_model, owner, *context()));
     context()->layerDidEnterContext(clone.get(), clone->layerType());
@@ -68,12 +68,12 @@ void PlatformCALayerRemoteModelHosting::populateCreationProperties(RemoteLayerTr
     properties.model = m_model.ptr();
 }
 
-void PlatformCALayerRemoteModelHosting::dumpAdditionalProperties(TextStream& ts, OptionSet<WebCore::PlatformLayerTreeAsTextFlags> flags)
+void PlatformCALayerRemoteModelHosting::dumpAdditionalProperties(TextStream& ts, OptionSet<CyberCore::PlatformLayerTreeAsTextFlags> flags)
 {
-    if (flags.contains(WebCore::PlatformLayerTreeAsTextFlags::IncludeModels))
+    if (flags.contains(CyberCore::PlatformLayerTreeAsTextFlags::IncludeModels))
         ts << indent << "(model data size " << m_model->data()->size() << ")\n";
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(MODEL_ELEMENT)

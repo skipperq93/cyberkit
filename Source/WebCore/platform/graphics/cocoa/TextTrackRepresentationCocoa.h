@@ -33,9 +33,9 @@
 #include <wtf/RetainPtr.h>
 #include <wtf/WeakPtr.h>
 
-@class WebCoreTextTrackRepresentationCocoaHelper;
+@class CyberCoreTextTrackRepresentationCocoaHelper;
 
-namespace WebCore {
+namespace CyberCore {
 
 class TextTrackRepresentationCocoa final : public TextTrackRepresentation, public CanMakeWeakPtr<TextTrackRepresentationCocoa, WeakPtrFactoryInitialization::Eager> {
 public:
@@ -56,7 +56,7 @@ private:
 
     TextTrackRepresentationClient& m_client;
     RetainPtr<CALayer> m_layer;
-    RetainPtr<WebCoreTextTrackRepresentationCocoaHelper> m_delegate;
+    RetainPtr<CyberCoreTextTrackRepresentationCocoaHelper> m_delegate;
 };
 
 }

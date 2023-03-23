@@ -31,14 +31,14 @@
 #include "ImageBufferBackendHandleSharing.h"
 #include <CyberCore/ImageBuffer.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WCBackingStore {
     WTF_MAKE_FAST_ALLOCATED;
 public:
     WCBackingStore() { }
-    WebCore::ImageBuffer* imageBuffer() { return m_imageBuffer.get(); }
-    void setImageBuffer(RefPtr<WebCore::ImageBuffer>&& image) { m_imageBuffer = WTFMove(image); }
+    CyberCore::ImageBuffer* imageBuffer() { return m_imageBuffer.get(); }
+    void setImageBuffer(RefPtr<CyberCore::ImageBuffer>&& image) { m_imageBuffer = WTFMove(image); }
     ShareableBitmap* bitmap() const { return m_bitmap.get(); }
 
     template<class Encoder>
@@ -73,10 +73,10 @@ public:
     }
 
 private:
-    RefPtr<WebCore::ImageBuffer> m_imageBuffer;
+    RefPtr<CyberCore::ImageBuffer> m_imageBuffer;
     RefPtr<ShareableBitmap> m_bitmap;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(GRAPHICS_LAYER_WC)

@@ -22,8 +22,8 @@
 #include "InjectedBundle.h"
 #include "UserMessage.h"
 #include "WKDeclarationSpecifiers.h"
-#include "WebKitWebExtension.h"
+#include "CyberKitWebExtension.h"
 
-WebKitWebExtension* webkitWebExtensionCreate(WebKit::InjectedBundle*);
-void webkitWebExtensionDidReceiveUserMessage(WebKitWebExtension*, WebKit::UserMessage&&);
-WK_EXPORT void webkitWebExtensionSetGarbageCollectOnPageDestroy(WebKitWebExtension*);
+CyberKitWebExtension* webkitWebExtensionCreate(CyberKit::InjectedBundle*);
+void webkitWebExtensionDidReceiveUserMessage(CyberKitWebExtension*, CyberKit::UserMessage&&);
+WK_EXPORT void webkitWebExtensionSetGarbageCollectOnPageDestroy(CyberKitWebExtension*);

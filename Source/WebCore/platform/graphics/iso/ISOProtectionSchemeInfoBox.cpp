@@ -32,7 +32,7 @@
 
 using JSC::DataView;
 
-namespace WebCore {
+namespace CyberCore {
 
 bool ISOProtectionSchemeInfoBox::parse(DataView& view, unsigned& offset)
 {

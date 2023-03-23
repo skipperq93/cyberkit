@@ -29,7 +29,7 @@
 
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct RTCRtpCodecCapability {
     String mimeType;
@@ -38,6 +38,6 @@ struct RTCRtpCodecCapability {
     String sdpFmtpLine;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

@@ -32,7 +32,7 @@
 typedef struct __IOSurface *IOSurfaceRef;
 OBJC_PROTOCOL(MTLSharedEvent);
 
-namespace WebCore {
+namespace CyberCore {
 
 // Returns a handle which, if non-null, must be released with destroyPbufferAndDetachIOSurface().
 void* createPbufferAndAttachIOSurface(GCGLDisplay, GCGLConfig, GCGLenum target, GCGLint usageHint, GCGLenum internalFormat, GCGLsizei width, GCGLsizei height, GCGLenum type, IOSurfaceRef, GCGLuint plane);

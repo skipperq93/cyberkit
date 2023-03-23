@@ -24,7 +24,7 @@
 #include "SVGNames.h"
 #include "SVGURIReference.h"
 
-namespace WebCore {
+namespace CyberCore {
     
 class SVGPathElement;
 
@@ -58,4 +58,4 @@ private:
     void notifyParentOfPathChange(ContainerNode*);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

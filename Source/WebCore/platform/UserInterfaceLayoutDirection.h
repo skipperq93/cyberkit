@@ -27,8 +27,8 @@
 
 #include <wtf/EnumTraits.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class UserInterfaceLayoutDirection : bool { LTR, RTL };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -31,7 +31,7 @@
 
 union YYSTYPE;
 
-namespace WebCore {
+namespace CyberCore {
 
 class XPathNSResolver;
 

@@ -33,7 +33,7 @@
 #include <CyberCore/GStreamerCommon.h>
 #include <CyberCore/SharedBuffer.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 namespace TestWebKitAPI {
 

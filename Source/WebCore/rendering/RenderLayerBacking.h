@@ -33,7 +33,7 @@
 #include "RenderLayerCompositor.h"
 #include "ScrollingCoordinator.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class EventRegionContext;
 class KeyframeList;
@@ -468,4 +468,4 @@ CanvasCompositingStrategy canvasCompositingStrategy(const RenderObject&);
 
 WTF::TextStream& operator<<(WTF::TextStream&, const RenderLayerBacking&);
 
-} // namespace WebCore
+} // namespace CyberCore

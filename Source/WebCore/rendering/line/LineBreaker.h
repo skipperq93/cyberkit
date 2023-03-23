@@ -29,7 +29,7 @@
 #include "LineInlineHeaders.h"
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderText;
 class TextLayout;
@@ -75,4 +75,4 @@ private:
     Vector<RenderBox*> m_positionedObjects;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -35,7 +35,7 @@
 #include "PixelBuffer.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(ImageBufferCGBitmapBackend);
 
@@ -153,6 +153,6 @@ void ImageBufferCGBitmapBackend::putPixelBuffer(const PixelBuffer& pixelBuffer, 
     ImageBufferBackend::putPixelBuffer(pixelBuffer, srcRect, destPoint, destFormat, m_data);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(CG)

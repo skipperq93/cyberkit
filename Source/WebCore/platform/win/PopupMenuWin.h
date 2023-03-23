@@ -31,7 +31,7 @@
 #include <wtf/RefPtr.h>
 #include <wtf/win/GDIObject.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FrameView;
 class Scrollbar;
@@ -183,6 +183,6 @@ private:
     const PopupMenuWin& m_popupMenu;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PopupMenuWin_h

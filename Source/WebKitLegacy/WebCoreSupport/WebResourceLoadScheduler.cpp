@@ -54,7 +54,7 @@ static const unsigned maxRequestsInFlightForNonHTTPProtocols = 20;
 static const unsigned maxRequestsInFlightForNonHTTPProtocols = 10000;
 #endif
 
-using namespace WebCore;
+using namespace CyberCore;
 
 WebResourceLoadScheduler& webResourceLoadScheduler()
 {
@@ -89,9 +89,9 @@ WebResourceLoadScheduler::~WebResourceLoadScheduler()
 {
 }
 
-void WebResourceLoadScheduler::loadResource(Frame& frame, CachedResource& resource, ResourceRequest&& request, const ResourceLoaderOptions& options, CompletionHandler<void(RefPtr<WebCore::SubresourceLoader>&&)>&& completionHandler)
+void WebResourceLoadScheduler::loadResource(Frame& frame, CachedResource& resource, ResourceRequest&& request, const ResourceLoaderOptions& options, CompletionHandler<void(RefPtr<CyberCore::SubresourceLoader>&&)>&& completionHandler)
 {
-    SubresourceLoader::create(frame, resource, WTFMove(request), options, [this, completionHandler = WTFMove(completionHandler)] (RefPtr<WebCore::SubresourceLoader>&& loader) mutable {
+    SubresourceLoader::create(frame, resource, WTFMove(request), options, [this, completionHandler = WTFMove(completionHandler)] (RefPtr<CyberCore::SubresourceLoader>&& loader) mutable {
         if (loader)
             scheduleLoad(loader.get());
 #if PLATFORM(IOS_FAMILY)
@@ -122,9 +122,9 @@ void WebResourceLoadScheduler::browsingContextRemoved(Frame&)
 {
 }
 
-void WebResourceLoadScheduler::schedulePluginStreamLoad(Frame& frame, NetscapePlugInStreamLoaderClient& client, ResourceRequest&& request, CompletionHandler<void(RefPtr<WebCore::NetscapePlugInStreamLoader>&&)>&& completionHandler)
+void WebResourceLoadScheduler::schedulePluginStreamLoad(Frame& frame, NetscapePlugInStreamLoaderClient& client, ResourceRequest&& request, CompletionHandler<void(RefPtr<CyberCore::NetscapePlugInStreamLoader>&&)>&& completionHandler)
 {
-    NetscapePlugInStreamLoader::create(frame, client, WTFMove(request), [this, completionHandler = WTFMove(completionHandler)] (RefPtr<WebCore::NetscapePlugInStreamLoader>&& loader) mutable {
+    NetscapePlugInStreamLoader::create(frame, client, WTFMove(request), [this, completionHandler = WTFMove(completionHandler)] (RefPtr<CyberCore::NetscapePlugInStreamLoader>&& loader) mutable {
         if (loader)
             scheduleLoad(loader.get());
         completionHandler(WTFMove(loader));

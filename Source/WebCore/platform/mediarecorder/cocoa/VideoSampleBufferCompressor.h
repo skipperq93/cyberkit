@@ -33,7 +33,7 @@
 typedef struct opaqueCMSampleBuffer *CMSampleBufferRef;
 typedef struct OpaqueVTCompressionSession *VTCompressionSessionRef;
 
-namespace WebCore {
+namespace CyberCore {
 
 class VideoSampleBufferCompressor {
     WTF_MAKE_FAST_ALLOCATED;

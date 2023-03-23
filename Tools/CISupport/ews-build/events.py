@@ -245,7 +245,7 @@ class Events(service.BuildbotService):
 
 class GitHubEventHandlerNoEdits(GitHubEventHandler):
     OPEN_STATES = ('open',)
-    PUBLIC_REPOS = ('WebKit/WebKit',)
+    PUBLIC_REPOS = ('CyberKit/CyberKit',)
     SENSATIVE_FIELDS = ('github.title',)
     UNSAFE_MERGE_QUEUE_LABEL = 'unsafe-merge-queue'
     MERGE_QUEUE_LABEL = 'merge-queue'

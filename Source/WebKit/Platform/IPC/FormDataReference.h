@@ -35,12 +35,12 @@ namespace IPC {
 class FormDataReference {
 public:
     FormDataReference() = default;
-    explicit FormDataReference(RefPtr<WebCore::FormData>&& data)
+    explicit FormDataReference(RefPtr<CyberCore::FormData>&& data)
         : m_data(WTFMove(data))
     {
     }
 
-    RefPtr<WebCore::FormData> takeData() { return WTFMove(m_data); }
+    RefPtr<CyberCore::FormData> takeData() { return WTFMove(m_data); }
 
     void encode(Encoder& encoder) const
     {
@@ -52,7 +52,7 @@ public:
 
         Vector<WebKit::SandboxExtension::Handle> sandboxExtensionHandles;
         for (auto& element : m_data->elements()) {
-            if (auto* fileData = std::get_if<WebCore::FormDataElement::EncodedFileData>(&element.data)) {
+            if (auto* fileData = std::get_if<CyberCore::FormDataElement::EncodedFileData>(&element.data)) {
                 const String& path = fileData->filename;
                 if (auto handle = WebKit::SandboxExtension::createHandle(path, WebKit::SandboxExtension::Type::ReadOnly))
                     sandboxExtensionHandles.append(WTFMove(*handle));
@@ -70,7 +70,7 @@ public:
         if (!hasFormData.value())
             return FormDataReference { };
 
-        std::optional<Ref<WebCore::FormData>> formData;
+        std::optional<Ref<CyberCore::FormData>> formData;
         decoder >> formData;
         if (!formData)
             return std::nullopt;
@@ -86,7 +86,7 @@ public:
     }
 
 private:
-    RefPtr<WebCore::FormData> m_data;
+    RefPtr<CyberCore::FormData> m_data;
 };
 
 } // namespace IPC

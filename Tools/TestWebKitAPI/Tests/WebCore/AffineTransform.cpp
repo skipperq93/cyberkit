@@ -41,7 +41,7 @@
 
 namespace TestWebKitAPI {
 
-static void testGetAndSet(WebCore::AffineTransform& affineTransform)
+static void testGetAndSet(CyberCore::AffineTransform& affineTransform)
 {
     affineTransform.setA(1.1);
     EXPECT_DOUBLE_EQ(1.1, affineTransform.a());
@@ -57,7 +57,7 @@ static void testGetAndSet(WebCore::AffineTransform& affineTransform)
     EXPECT_DOUBLE_EQ(6.6, affineTransform.f());
 }
 
-static void testIdentity(const WebCore::AffineTransform& transform)
+static void testIdentity(const CyberCore::AffineTransform& transform)
 {
     EXPECT_DOUBLE_EQ(1.0, transform.a());
     EXPECT_DOUBLE_EQ(0.0, transform.b());
@@ -69,7 +69,7 @@ static void testIdentity(const WebCore::AffineTransform& transform)
 
 TEST(AffineTransform, DefaultConstruction)
 {
-    WebCore::AffineTransform test;
+    CyberCore::AffineTransform test;
 
     testIdentity(test);
     testGetAndSet(test);
@@ -77,7 +77,7 @@ TEST(AffineTransform, DefaultConstruction)
     ASSERT_FALSE(test.isIdentity());
 }
 
-static void testValueConstruction(const WebCore::AffineTransform& transform)
+static void testValueConstruction(const CyberCore::AffineTransform& transform)
 {
     EXPECT_DOUBLE_EQ(6.0, transform.a());
     EXPECT_DOUBLE_EQ(5.0, transform.b());
@@ -87,7 +87,7 @@ static void testValueConstruction(const WebCore::AffineTransform& transform)
     EXPECT_DOUBLE_EQ(1.0, transform.f());
 }
 
-static void testDoubled(const WebCore::AffineTransform& transform)
+static void testDoubled(const CyberCore::AffineTransform& transform)
 {
     EXPECT_DOUBLE_EQ(12.0, transform.a());
     EXPECT_DOUBLE_EQ(10.0, transform.b());
@@ -97,7 +97,7 @@ static void testDoubled(const WebCore::AffineTransform& transform)
     EXPECT_DOUBLE_EQ(1.0, transform.f());
 }
 
-static void testHalved(const WebCore::AffineTransform& transform)
+static void testHalved(const CyberCore::AffineTransform& transform)
 {
     EXPECT_DOUBLE_EQ(3.0, transform.a());
     EXPECT_DOUBLE_EQ(2.5, transform.b());
@@ -109,7 +109,7 @@ static void testHalved(const WebCore::AffineTransform& transform)
 
 TEST(AffineTransform, ValueConstruction)
 {
-    WebCore::AffineTransform test(6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
+    CyberCore::AffineTransform test(6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
 
     testValueConstruction(test);
     testGetAndSet(test);
@@ -122,7 +122,7 @@ TEST(AffineTransform, ValueConstruction)
 TEST(AffineTransform, CGAffineTransformConstruction)
 {
     CGAffineTransform cgTransform = CGAffineTransformMake(6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
-    WebCore::AffineTransform test(cgTransform);
+    CyberCore::AffineTransform test(cgTransform);
 
     testValueConstruction(test);
     testGetAndSet(test);
@@ -133,7 +133,7 @@ TEST(AffineTransform, CGAffineTransformConstruction)
 
 TEST(AffineTransform, Identity)
 {
-    WebCore::AffineTransform test(6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
+    CyberCore::AffineTransform test(6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
 
     ASSERT_FALSE(test.isIdentity());
     ASSERT_FALSE(test.isIdentityOrTranslation());
@@ -152,8 +152,8 @@ TEST(AffineTransform, Identity)
 
 TEST(AffineTransform, MapFloatPoint)
 {
-    WebCore::AffineTransform test;
-    WebCore::FloatPoint point(100.0f, 50.0f);
+    CyberCore::AffineTransform test;
+    CyberCore::FloatPoint point(100.0f, 50.0f);
 
     auto mappedPoint = test.mapPoint(point);
 
@@ -177,8 +177,8 @@ TEST(AffineTransform, MapFloatPoint)
 
 TEST(AffineTransform, MapIntPoint)
 {
-    WebCore::AffineTransform test;
-    WebCore::IntPoint point(100, 50);
+    CyberCore::AffineTransform test;
+    CyberCore::IntPoint point(100, 50);
 
     auto mappedPoint = test.mapPoint(point);
 
@@ -202,8 +202,8 @@ TEST(AffineTransform, MapIntPoint)
 
 TEST(AffineTransform, MapIntSize)
 {
-    WebCore::AffineTransform test;
-    WebCore::IntSize size(200, 300);
+    CyberCore::AffineTransform test;
+    CyberCore::IntSize size(200, 300);
 
     auto mappedSize = test.mapSize(size);
 
@@ -227,8 +227,8 @@ TEST(AffineTransform, MapIntSize)
 
 TEST(AffineTransform, MapFloatSize)
 {
-    WebCore::AffineTransform test;
-    WebCore::FloatSize size(200.0f, 300.0f);
+    CyberCore::AffineTransform test;
+    CyberCore::FloatSize size(200.0f, 300.0f);
 
     auto mappedSize = test.mapSize(size);
 
@@ -252,8 +252,8 @@ TEST(AffineTransform, MapFloatSize)
 
 TEST(AffineTransform, MapIntRect)
 {
-    WebCore::AffineTransform test;
-    WebCore::IntRect rect(10, 20, 200, 300);
+    CyberCore::AffineTransform test;
+    CyberCore::IntRect rect(10, 20, 200, 300);
 
     auto mappedRect = test.mapRect(rect);
 
@@ -283,8 +283,8 @@ TEST(AffineTransform, MapIntRect)
 
 TEST(AffineTransform, MapFloatRect)
 {
-    WebCore::AffineTransform test;
-    WebCore::FloatRect rect(10.f, 20.0f, 200.0f, 300.0f);
+    CyberCore::AffineTransform test;
+    CyberCore::FloatRect rect(10.f, 20.0f, 200.0f, 300.0f);
 
     auto mappedRect = test.mapRect(rect);
 
@@ -314,8 +314,8 @@ TEST(AffineTransform, MapFloatRect)
 
 TEST(AffineTransform, MapFloatQuad)
 {
-    WebCore::FloatRect rect(100.0f, 100.0f, 100.0f, 50.0f);
-    WebCore::FloatQuad quad(rect);
+    CyberCore::FloatRect rect(100.0f, 100.0f, 100.0f, 50.0f);
+    CyberCore::FloatQuad quad(rect);
 
     ASSERT_FLOAT_EQ(100.0f, quad.p1().x());
     ASSERT_FLOAT_EQ(100.0f, quad.p1().y());
@@ -326,7 +326,7 @@ TEST(AffineTransform, MapFloatQuad)
     ASSERT_FLOAT_EQ(100.0f, quad.p4().x());
     ASSERT_FLOAT_EQ(150.0f, quad.p4().y());
 
-    WebCore::AffineTransform test;
+    CyberCore::AffineTransform test;
     auto mappedQuad = test.mapQuad(quad);
 
     ASSERT_FLOAT_EQ(100.0f, mappedQuad.p1().x());
@@ -367,8 +367,8 @@ TEST(AffineTransform, MapFloatQuad)
 
 TEST(AffineTransform, Multiply)
 {
-    WebCore::AffineTransform test(6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
-    WebCore::AffineTransform identity;
+    CyberCore::AffineTransform test(6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
+    CyberCore::AffineTransform identity;
 
     testValueConstruction(test);
 
@@ -376,13 +376,13 @@ TEST(AffineTransform, Multiply)
 
     testValueConstruction(test);
 
-    WebCore::AffineTransform doubler(2.0, 0.0, 0.0, 2.0, 0.0, 0.0);
+    CyberCore::AffineTransform doubler(2.0, 0.0, 0.0, 2.0, 0.0, 0.0);
 
     test.multiply(doubler);
 
     testDoubled(test);
 
-    WebCore::AffineTransform halver(0.5, 0.0, 0.0, 0.5, 0.0, 0.0);
+    CyberCore::AffineTransform halver(0.5, 0.0, 0.0, 0.5, 0.0, 0.0);
 
     test.multiply(halver);
 
@@ -395,7 +395,7 @@ TEST(AffineTransform, Multiply)
 
 TEST(AffineTransform, Scale)
 {
-    WebCore::AffineTransform test(6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
+    CyberCore::AffineTransform test(6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
 
     testValueConstruction(test);
 
@@ -418,7 +418,7 @@ TEST(AffineTransform, Scale)
 
 TEST(AffineTransform, ScaleUniformNonUniform)
 {
-    WebCore::AffineTransform test(6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
+    CyberCore::AffineTransform test(6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
 
     testValueConstruction(test);
 
@@ -441,7 +441,7 @@ TEST(AffineTransform, ScaleUniformNonUniform)
 
 TEST(AffineTransform, ScaleNonUniform)
 {
-    WebCore::AffineTransform test(6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
+    CyberCore::AffineTransform test(6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
 
     testValueConstruction(test);
 
@@ -483,11 +483,11 @@ TEST(AffineTransform, ScaleNonUniform)
 
 TEST(AffineTransform, ScaleFloatSize)
 {
-    WebCore::AffineTransform test(6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
+    CyberCore::AffineTransform test(6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
 
     testValueConstruction(test);
 
-    WebCore::FloatSize first(1.0f, 2.0f);
+    CyberCore::FloatSize first(1.0f, 2.0f);
 
     test.scale(first);
 
@@ -498,13 +498,13 @@ TEST(AffineTransform, ScaleFloatSize)
     EXPECT_DOUBLE_EQ(2.0, test.e());
     EXPECT_DOUBLE_EQ(1.0, test.f());
 
-    WebCore::FloatSize second(1.0f, 0.5f);
+    CyberCore::FloatSize second(1.0f, 0.5f);
 
     test.scale(second);
 
     testValueConstruction(test);
 
-    WebCore::FloatSize third(2.0f, 1.0f);
+    CyberCore::FloatSize third(2.0f, 1.0f);
 
     test.scale(third);
 
@@ -515,13 +515,13 @@ TEST(AffineTransform, ScaleFloatSize)
     EXPECT_DOUBLE_EQ(2.0, test.e());
     EXPECT_DOUBLE_EQ(1.0, test.f());
 
-    WebCore::FloatSize fourth(0.5f, 1.0f);
+    CyberCore::FloatSize fourth(0.5f, 1.0f);
 
     test.scale(fourth);
 
     testValueConstruction(test);
 
-    WebCore::FloatSize fifth(0.5f, 2.0f);
+    CyberCore::FloatSize fifth(0.5f, 2.0f);
 
     test.scale(fifth);
 
@@ -535,7 +535,7 @@ TEST(AffineTransform, ScaleFloatSize)
 
 TEST(AffineTransform, Rotate)
 {
-    WebCore::AffineTransform test(6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
+    CyberCore::AffineTransform test(6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
 
     test.rotate(360.0);
 
@@ -572,7 +572,7 @@ TEST(AffineTransform, Rotate)
 
 TEST(AffineTransform, TranslateXY)
 {
-    WebCore::AffineTransform test(6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
+    CyberCore::AffineTransform test(6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
 
     test.translate(0.0, 0.0);
 
@@ -599,14 +599,14 @@ TEST(AffineTransform, TranslateXY)
 
 TEST(AffineTransform, TranslateFloatPoint)
 {
-    WebCore::AffineTransform test(6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
+    CyberCore::AffineTransform test(6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
 
-    WebCore::FloatPoint none;
+    CyberCore::FloatPoint none;
     test.translate(none);
 
     testValueConstruction(test);
 
-    WebCore::FloatPoint first(5.0f, 0.0f);
+    CyberCore::FloatPoint first(5.0f, 0.0f);
 
     test.translate(first);
 
@@ -617,7 +617,7 @@ TEST(AffineTransform, TranslateFloatPoint)
     EXPECT_DOUBLE_EQ(32.0, test.e());
     EXPECT_DOUBLE_EQ(26.0, test.f());
 
-    WebCore::FloatPoint second(0.0f, -1.2f);
+    CyberCore::FloatPoint second(0.0f, -1.2f);
 
     test.translate(second);
 
@@ -630,7 +630,7 @@ TEST(AffineTransform, TranslateFloatPoint)
     EXPECT_NEAR(27.2, test.e(), epsilon);
     EXPECT_NEAR(22.4, test.f(), epsilon);
 
-    WebCore::AffineTransform test2;
+    CyberCore::AffineTransform test2;
 
     ASSERT_TRUE(test2.isIdentity());
     ASSERT_TRUE(test2.isIdentityOrTranslation());
@@ -645,7 +645,7 @@ TEST(AffineTransform, TranslateFloatPoint)
 
 TEST(AffineTransform, Shear)
 {
-    WebCore::AffineTransform test(6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
+    CyberCore::AffineTransform test(6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
 
     test.shear(0.0, 0.0);
 
@@ -672,7 +672,7 @@ TEST(AffineTransform, Shear)
 
 TEST(AffineTransform, FlipX)
 {
-    WebCore::AffineTransform test(6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
+    CyberCore::AffineTransform test(6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
 
     testValueConstruction(test);
 
@@ -689,7 +689,7 @@ TEST(AffineTransform, FlipX)
 
     testValueConstruction(test);
 
-    WebCore::AffineTransform test2;
+    CyberCore::AffineTransform test2;
 
     testIdentity(test2);
 
@@ -720,7 +720,7 @@ TEST(AffineTransform, FlipX)
 
 TEST(AffineTransform, FlipY)
 {
-    WebCore::AffineTransform test(6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
+    CyberCore::AffineTransform test(6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
 
     testValueConstruction(test);
 
@@ -737,7 +737,7 @@ TEST(AffineTransform, FlipY)
 
     testValueConstruction(test);
 
-    WebCore::AffineTransform test2;
+    CyberCore::AffineTransform test2;
 
     testIdentity(test2);
 
@@ -767,7 +767,7 @@ TEST(AffineTransform, FlipY)
 
 TEST(AffineTransform, FlipXandFlipY)
 {
-    WebCore::AffineTransform test(6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
+    CyberCore::AffineTransform test(6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
 
     testValueConstruction(test);
 
@@ -802,7 +802,7 @@ TEST(AffineTransform, FlipXandFlipY)
 
     testValueConstruction(test);
 
-    WebCore::AffineTransform test2;
+    CyberCore::AffineTransform test2;
 
     ASSERT_TRUE(test2.isIdentity());
     ASSERT_TRUE(test2.isIdentityOrTranslation());
@@ -836,7 +836,7 @@ TEST(AffineTransform, FlipXandFlipY)
 
 TEST(AffineTransform, Skew)
 {
-    WebCore::AffineTransform test(6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
+    CyberCore::AffineTransform test(6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
 
     testValueConstruction(test);
 
@@ -866,7 +866,7 @@ TEST(AffineTransform, Skew)
 
 TEST(AffineTransform, XandYScale)
 {
-    WebCore::AffineTransform test(6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
+    CyberCore::AffineTransform test(6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
 
     EXPECT_NEAR(7.8102, test.xScale(), 0.0001);
     EXPECT_NEAR(5.0, test.yScale(), 0.0001);
@@ -874,8 +874,8 @@ TEST(AffineTransform, XandYScale)
 
 TEST(AffineTransform, Equality)
 {
-    WebCore::AffineTransform test(6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
-    WebCore::AffineTransform test2;
+    CyberCore::AffineTransform test(6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
+    CyberCore::AffineTransform test2;
 
     ASSERT_FALSE(test == test2);
     ASSERT_TRUE(test != test2);
@@ -888,7 +888,7 @@ TEST(AffineTransform, Equality)
 
 TEST(AffineTransform, Inverse)
 {
-    WebCore::AffineTransform test;
+    CyberCore::AffineTransform test;
 
     auto inverse = test.inverse();
 
@@ -908,9 +908,9 @@ TEST(AffineTransform, Inverse)
 
 TEST(AffineTransform, Blend)
 {
-    WebCore::AffineTransform test;
+    CyberCore::AffineTransform test;
 
-    WebCore::AffineTransform test2;
+    CyberCore::AffineTransform test2;
     test2.scale(2.0);
 
     test.blend(test2, 50);
@@ -925,7 +925,7 @@ TEST(AffineTransform, Blend)
 
 TEST(AffineTransform, Translation)
 {
-    auto test = WebCore::AffineTransform::makeTranslation({ -5.0, -7.0 });
+    auto test = CyberCore::AffineTransform::makeTranslation({ -5.0, -7.0 });
     EXPECT_DOUBLE_EQ(1.0, test.a());
     EXPECT_DOUBLE_EQ(0.0, test.b());
     EXPECT_DOUBLE_EQ(0.0, test.c());
@@ -936,8 +936,8 @@ TEST(AffineTransform, Translation)
 
 TEST(AffineTransform, ToTransformationMatrix)
 {
-    WebCore::AffineTransform transform;
-    WebCore::TransformationMatrix matrix = transform.toTransformationMatrix();
+    CyberCore::AffineTransform transform;
+    CyberCore::TransformationMatrix matrix = transform.toTransformationMatrix();
 
     EXPECT_DOUBLE_EQ(1.0, matrix.m11());
     EXPECT_DOUBLE_EQ(0.0, matrix.m12());
@@ -955,10 +955,10 @@ TEST(AffineTransform, ToTransformationMatrix)
 
 TEST(AffineTransform, MakeMapBetweenRects)
 {
-    WebCore::FloatRect fromRect(10.0f, 10.0f, 100.0f, 100.0f);
-    WebCore::FloatRect toRect(70.0f, 70.0f, 200.0f, 50.0f);
+    CyberCore::FloatRect fromRect(10.0f, 10.0f, 100.0f, 100.0f);
+    CyberCore::FloatRect toRect(70.0f, 70.0f, 200.0f, 50.0f);
 
-    auto mapBetween = WebCore::makeMapBetweenRects(fromRect, toRect);
+    auto mapBetween = CyberCore::makeMapBetweenRects(fromRect, toRect);
 
     EXPECT_DOUBLE_EQ(2.0, mapBetween.a());
     EXPECT_DOUBLE_EQ(0.0, mapBetween.b());
@@ -970,22 +970,22 @@ TEST(AffineTransform, MakeMapBetweenRects)
 
 TEST(AffineTransform, Constexpr)
 {
-    static constexpr WebCore::AffineTransform transform;
+    static constexpr CyberCore::AffineTransform transform;
     UNUSED_VARIABLE(transform);
-    static constexpr WebCore::AffineTransform transform2(1, 2, 3, 4, 5, 6);
+    static constexpr CyberCore::AffineTransform transform2(1, 2, 3, 4, 5, 6);
     UNUSED_VARIABLE(transform2);
 }
 
 #if USE(CG)
 TEST(AffineTransform, CoreGraphicsCasting)
 {
-    WebCore::AffineTransform test(6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
+    CyberCore::AffineTransform test(6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
 
     CGAffineTransform test2 = CGAffineTransformMake(6.0, 5.0, 4.0, 3.0, 2.0, 1.0);
 
     ASSERT_TRUE(CGAffineTransformEqualToTransform(test, test2));
 
-    WebCore::AffineTransform test3;
+    CyberCore::AffineTransform test3;
 
     ASSERT_FALSE(CGAffineTransformEqualToTransform(test, test3));
 }

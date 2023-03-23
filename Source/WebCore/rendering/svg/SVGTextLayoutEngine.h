@@ -24,7 +24,7 @@
 #include "SVGTextFragment.h"
 #include "SVGTextLayoutAttributes.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderObject;
 class RenderStyle;
@@ -103,4 +103,4 @@ private:
     float m_textPathScaling;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

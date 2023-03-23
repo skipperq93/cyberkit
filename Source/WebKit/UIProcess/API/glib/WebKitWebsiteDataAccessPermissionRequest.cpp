@@ -92,7 +92,7 @@ static void webkit_website_data_access_permission_request_class_init(WebKitWebsi
     objectClass->dispose = webkitWebsiteDataAccessPermissionRequestDispose;
 }
 
-WebKitWebsiteDataAccessPermissionRequest* webkitWebsiteDataAccessPermissionRequestCreate(const WebCore::RegistrableDomain& requestingDomain, const WebCore::RegistrableDomain& currentDomain, CompletionHandler<void(bool)>&& completionHandler)
+WebKitWebsiteDataAccessPermissionRequest* webkitWebsiteDataAccessPermissionRequestCreate(const CyberCore::RegistrableDomain& requestingDomain, const CyberCore::RegistrableDomain& currentDomain, CompletionHandler<void(bool)>&& completionHandler)
 {
     auto* websiteDataPermissionRequest = WEBKIT_WEBSITE_DATA_ACCESS_PERMISSION_REQUEST(g_object_new(WEBKIT_TYPE_WEBSITE_DATA_ACCESS_PERMISSION_REQUEST, nullptr));
     websiteDataPermissionRequest->priv->requestingDomain = requestingDomain.string().utf8();

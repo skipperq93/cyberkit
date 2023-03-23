@@ -30,7 +30,7 @@
 #include <variant>
 #include <wtf/EnumTraits.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class DecodingMode : uint8_t {
     Auto,
@@ -145,4 +145,4 @@ private:
     DecodingModeOrSize m_decodingModeOrSize;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

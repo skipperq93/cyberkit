@@ -31,7 +31,7 @@
 #include <wtf/text/AtomString.h>
 #include <wtf/text/AtomStringHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class KeyframeEffect;
 class RenderStyle;
@@ -132,4 +132,4 @@ private:
     HashSet<AnimatableProperty> m_propertiesSetToCurrentColor;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

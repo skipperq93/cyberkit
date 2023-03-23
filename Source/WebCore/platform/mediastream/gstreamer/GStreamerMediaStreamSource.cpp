@@ -44,7 +44,7 @@
 #include <wtf/UUID.h>
 #include <wtf/glib/WTFGType.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 static GstStaticPadTemplate videoSrcTemplate = GST_STATIC_PAD_TEMPLATE("video_src%u", GST_PAD_SRC, GST_PAD_SOMETIMES,
     GST_STATIC_CAPS("video/x-raw;video/x-h264;video/x-vp8;video/x-vp9;application/x-rtp, media=(string)video"));
@@ -522,7 +522,7 @@ void WebKitMediaStreamObserver::didRemoveTrack(MediaStreamTrackPrivate& track)
     // Make sure that the video.videoWidth is reset to 0.
     webkitMediaStreamSrcPostStreamCollection(element);
 
-    // Properly stop data flow. The source stops observing notifications from WebCore, so we need to
+    // Properly stop data flow. The source stops observing notifications from CyberCore, so we need to
     // explicitly call trackEnded().
     source->signalEndOfStream();
     source->trackEnded(track);

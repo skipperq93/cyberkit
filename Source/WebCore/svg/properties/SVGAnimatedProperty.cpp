@@ -28,7 +28,7 @@
 
 #include "SVGElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 SVGPropertyOwner* SVGAnimatedProperty::owner() const
 {

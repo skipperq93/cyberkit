@@ -31,7 +31,7 @@
 #include <wtf/WeakHashSet.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
     
 class SVGElement;
 
@@ -74,5 +74,5 @@ protected:
     WeakHashSet<SVGAttributeAnimator> m_animators;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 

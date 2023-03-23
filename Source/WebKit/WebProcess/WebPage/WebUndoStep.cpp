@@ -26,7 +26,7 @@
 #include "config.h"
 #include "WebUndoStep.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 static WebUndoStepID generateUndoStep()
 {
@@ -34,7 +34,7 @@ static WebUndoStepID generateUndoStep()
     return uniqueEntryID++;
 }
 
-Ref<WebUndoStep> WebUndoStep::create(Ref<WebCore::UndoStep>&& step)
+Ref<WebUndoStep> WebUndoStep::create(Ref<CyberCore::UndoStep>&& step)
 {
     return adoptRef(*new WebUndoStep(WTFMove(step), generateUndoStep()));
 }
@@ -43,4 +43,4 @@ WebUndoStep::~WebUndoStep()
 {
 }
 
-} // namespace WebKit
+} // namespace CyberKit

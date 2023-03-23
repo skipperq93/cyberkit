@@ -33,7 +33,7 @@
 #include "NetworkProcess.h"
 #include "NetworkProcessProxyMessages.h"
 #include "NetworkSession.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebErrors.h"
 #include <CyberCore/ResourceRequest.h>
 #include <CyberCore/SharedBuffer.h>
@@ -42,7 +42,7 @@
 
 namespace WebKit {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 NetworkLoad::NetworkLoad(NetworkLoadClient& client, BlobRegistryImpl* blobRegistry, NetworkLoadParameters&& parameters, NetworkSession& networkSession)
     : m_client(client)
@@ -104,7 +104,7 @@ static inline void updateRequest(ResourceRequest& currentRequest, const Resource
 #endif
 }
 
-void NetworkLoad::updateRequestAfterRedirection(WebCore::ResourceRequest& newRequest) const
+void NetworkLoad::updateRequestAfterRedirection(CyberCore::ResourceRequest& newRequest) const
 {
     ResourceRequest updatedRequest = m_currentRequest;
     updateRequest(updatedRequest, newRequest);
@@ -118,7 +118,7 @@ void NetworkLoad::reprioritizeRequest(ResourceLoadPriority priority)
         m_task->setPriority(priority);
 }
 
-void NetworkLoad::continueWillSendRequest(WebCore::ResourceRequest&& newRequest)
+void NetworkLoad::continueWillSendRequest(CyberCore::ResourceRequest&& newRequest)
 {
     updateRequest(m_currentRequest, newRequest);
 
@@ -191,7 +191,7 @@ void NetworkLoad::willPerformHTTPRedirection(ResourceResponse&& redirectResponse
     if (!m_networkProcess->ftpEnabled() && request.url().protocolIsInFTPFamily()) {
         m_task->clearClient();
         m_task = nullptr;
-        WebCore::NetworkLoadMetrics emptyMetrics;
+        CyberCore::NetworkLoadMetrics emptyMetrics;
         didCompleteWithError(ResourceError { errorDomainWebKitInternal, 0, url(), "FTP URLs are disabled"_s, ResourceError::Type::AccessControl }, emptyMetrics);
         
         if (completionHandler)
@@ -262,13 +262,13 @@ void NetworkLoad::notifyDidReceiveResponse(ResourceResponse&& response, Negotiat
     m_client.get().didReceiveResponse(WTFMove(response), privateRelayed, WTFMove(completionHandler));
 }
 
-void NetworkLoad::didReceiveData(const WebCore::SharedBuffer& buffer)
+void NetworkLoad::didReceiveData(const CyberCore::SharedBuffer& buffer)
 {
     // FIXME: This should be the encoded data length, not the decoded data length.
     m_client.get().didReceiveBuffer(buffer, buffer.size());
 }
 
-void NetworkLoad::didCompleteWithError(const ResourceError& error, const WebCore::NetworkLoadMetrics& networkLoadMetrics)
+void NetworkLoad::didCompleteWithError(const ResourceError& error, const CyberCore::NetworkLoadMetrics& networkLoadMetrics)
 {
     if (m_scheduler) {
         m_scheduler->unschedule(*this, &networkLoadMetrics);
@@ -319,7 +319,7 @@ String NetworkLoad::description() const
     return emptyString();
 }
 
-void NetworkLoad::setH2PingCallback(const URL& url, CompletionHandler<void(Expected<WTF::Seconds, WebCore::ResourceError>&&)>&& completionHandler)
+void NetworkLoad::setH2PingCallback(const URL& url, CompletionHandler<void(Expected<WTF::Seconds, CyberCore::ResourceError>&&)>&& completionHandler)
 {
     if (m_task)
         m_task->setH2PingCallback(url, WTFMove(completionHandler));

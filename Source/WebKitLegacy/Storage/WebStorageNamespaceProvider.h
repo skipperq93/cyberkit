@@ -28,13 +28,13 @@
 #include <CyberCore/StorageNamespaceProvider.h>
 #include <wtf/WeakHashMap.h>
 
-namespace WebCore {
+namespace CyberCore {
 class SecurityOriginData;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
-class WebStorageNamespaceProvider final : public WebCore::StorageNamespaceProvider {
+class WebStorageNamespaceProvider final : public CyberCore::StorageNamespaceProvider {
 public:
     static Ref<WebStorageNamespaceProvider> create(const String& localStorageDatabasePath);
     virtual ~WebStorageNamespaceProvider();
@@ -42,7 +42,7 @@ public:
     static void closeLocalStorage();
 
     static void clearLocalStorageForAllOrigins();
-    static void clearLocalStorageForOrigin(const WebCore::SecurityOriginData&);
+    static void clearLocalStorageForOrigin(const CyberCore::SecurityOriginData&);
     static void closeIdleLocalStorageDatabases();
     // DumpRenderTree helper that triggers a StorageArea sync.
     static void syncLocalStorage();
@@ -50,14 +50,14 @@ public:
 private:
     explicit WebStorageNamespaceProvider(const String& localStorageDatabasePath);
 
-    Ref<WebCore::StorageNamespace> createLocalStorageNamespace(unsigned quota, PAL::SessionID) override;
-    Ref<WebCore::StorageNamespace> createTransientLocalStorageNamespace(WebCore::SecurityOrigin&, unsigned quota, PAL::SessionID) override;
+    Ref<CyberCore::StorageNamespace> createLocalStorageNamespace(unsigned quota, PAL::SessionID) override;
+    Ref<CyberCore::StorageNamespace> createTransientLocalStorageNamespace(CyberCore::SecurityOrigin&, unsigned quota, PAL::SessionID) override;
 
-    RefPtr<WebCore::StorageNamespace> sessionStorageNamespace(const WebCore::SecurityOrigin&, WebCore::Page&, ShouldCreateNamespace) final;
-    void copySessionStorageNamespace(WebCore::Page&, WebCore::Page&) final;
+    RefPtr<CyberCore::StorageNamespace> sessionStorageNamespace(const CyberCore::SecurityOrigin&, CyberCore::Page&, ShouldCreateNamespace) final;
+    void copySessionStorageNamespace(CyberCore::Page&, CyberCore::Page&) final;
 
     const String m_localStorageDatabasePath;
-    WeakHashMap<WebCore::Page, HashMap<WebCore::SecurityOriginData, RefPtr<WebCore::StorageNamespace>>> m_sessionStorageNamespaces;
+    WeakHashMap<CyberCore::Page, HashMap<CyberCore::SecurityOriginData, RefPtr<CyberCore::StorageNamespace>>> m_sessionStorageNamespaces;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

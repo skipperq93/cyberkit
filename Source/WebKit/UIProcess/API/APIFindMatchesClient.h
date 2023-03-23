@@ -42,7 +42,7 @@ class FindMatchesClient {
 public:
     virtual ~FindMatchesClient() { }
 
-    virtual void didFindStringMatches(WebKit::WebPageProxy*, const WTF::String&, const WTF::Vector<WTF::Vector<WebCore::IntRect>>&, int32_t) { }
+    virtual void didFindStringMatches(WebKit::WebPageProxy*, const WTF::String&, const WTF::Vector<WTF::Vector<CyberCore::IntRect>>&, int32_t) { }
     virtual void didGetImageForMatchResult(WebKit::WebPageProxy*, WebKit::WebImage*, int32_t) { }
 };
 

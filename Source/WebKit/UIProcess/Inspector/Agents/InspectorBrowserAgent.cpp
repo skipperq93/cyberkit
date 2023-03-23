@@ -110,4 +110,4 @@ void InspectorBrowserAgent::extensionsDisabled(HashSet<String>&& extensionIDs)
 }
 
 
-} // namespace WebCore
+} // namespace CyberCore

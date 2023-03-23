@@ -26,7 +26,7 @@
 #include "ImageBuffer.h"
 #include "SourceAlpha.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 bool SourceAlphaSoftwareApplier::apply(const Filter&, const FilterImageVector& inputs, FilterImage& result) const
 {
@@ -48,4 +48,4 @@ bool SourceAlphaSoftwareApplier::apply(const Filter&, const FilterImageVector& i
     return true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

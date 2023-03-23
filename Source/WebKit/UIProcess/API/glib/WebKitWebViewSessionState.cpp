@@ -72,32 +72,32 @@ enum ExternalURLsPolicy {
     NotAllow
 };
 
-static inline unsigned toExternalURLsPolicy(WebCore::ShouldOpenExternalURLsPolicy policy)
+static inline unsigned toExternalURLsPolicy(CyberCore::ShouldOpenExternalURLsPolicy policy)
 {
     switch (policy) {
-    case WebCore::ShouldOpenExternalURLsPolicy::ShouldAllow:
+    case CyberCore::ShouldOpenExternalURLsPolicy::ShouldAllow:
         return ExternalURLsPolicy::Allow;
-    case WebCore::ShouldOpenExternalURLsPolicy::ShouldAllowExternalSchemesButNotAppLinks:
+    case CyberCore::ShouldOpenExternalURLsPolicy::ShouldAllowExternalSchemesButNotAppLinks:
         return ExternalURLsPolicy::AllowExternalSchemesButNotAppLinks;
-    case WebCore::ShouldOpenExternalURLsPolicy::ShouldNotAllow:
+    case CyberCore::ShouldOpenExternalURLsPolicy::ShouldNotAllow:
         return ExternalURLsPolicy::NotAllow;
     }
 
     return ExternalURLsPolicy::NotAllow;
 }
 
-static inline WebCore::ShouldOpenExternalURLsPolicy toWebCoreExternalURLsPolicy(unsigned policy)
+static inline CyberCore::ShouldOpenExternalURLsPolicy toCyberCoreExternalURLsPolicy(unsigned policy)
 {
     switch (policy) {
     case ExternalURLsPolicy::Allow:
-        return WebCore::ShouldOpenExternalURLsPolicy::ShouldAllow;
+        return CyberCore::ShouldOpenExternalURLsPolicy::ShouldAllow;
     case ExternalURLsPolicy::AllowExternalSchemesButNotAppLinks:
-        return WebCore::ShouldOpenExternalURLsPolicy::ShouldAllowExternalSchemesButNotAppLinks;
+        return CyberCore::ShouldOpenExternalURLsPolicy::ShouldAllowExternalSchemesButNotAppLinks;
     case ExternalURLsPolicy::NotAllow:
-        return WebCore::ShouldOpenExternalURLsPolicy::ShouldNotAllow;
+        return CyberCore::ShouldOpenExternalURLsPolicy::ShouldNotAllow;
     }
 
-    return WebCore::ShouldOpenExternalURLsPolicy::ShouldNotAllow;
+    return CyberCore::ShouldOpenExternalURLsPolicy::ShouldNotAllow;
 }
 
 enum HTMLBodyElementType {
@@ -369,7 +369,7 @@ static inline void decodeBackForwardListItemStateV1(GVariantIter* backForwardLis
         BackForwardListItemState state;
         state.pageState.title = String::fromUTF8(title);
         decodeFrameState(frameStateVariant, state.pageState.mainFrameState);
-        state.pageState.shouldOpenExternalURLsPolicy = toWebCoreExternalURLsPolicy(shouldOpenExternalURLsPolicy);
+        state.pageState.shouldOpenExternalURLsPolicy = toCyberCoreExternalURLsPolicy(shouldOpenExternalURLsPolicy);
         backForwardListState.items.uncheckedAppend(WTFMove(state));
     }
 }
@@ -393,7 +393,7 @@ static inline void decodeBackForwardListItemState(GVariantIter* backForwardListS
         BackForwardListItemState state;
         state.pageState.title = String::fromUTF8(title);
         decodeFrameState(frameStateVariant, state.pageState.mainFrameState);
-        state.pageState.shouldOpenExternalURLsPolicy = toWebCoreExternalURLsPolicy(shouldOpenExternalURLsPolicy);
+        state.pageState.shouldOpenExternalURLsPolicy = toCyberCoreExternalURLsPolicy(shouldOpenExternalURLsPolicy);
         backForwardListState.items.uncheckedAppend(WTFMove(state));
     }
 }

@@ -32,7 +32,7 @@
 #include "ElementInlines.h"
 #include "NodeTraversal.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace XPath {
 
 // When a node set is large, sorting it by traversing the whole document is better (we can

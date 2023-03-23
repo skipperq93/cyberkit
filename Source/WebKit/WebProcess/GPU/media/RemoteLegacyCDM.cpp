@@ -33,9 +33,9 @@
 #include "RemoteLegacyCDMProxyMessages.h"
 #include "RemoteLegacyCDMSession.h"
 
-namespace WebKit {
+namespace CyberKit {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 std::unique_ptr<RemoteLegacyCDM> RemoteLegacyCDM::create(WeakPtr<RemoteLegacyCDMFactory>&& factory, RemoteLegacyCDMIdentifier identifier)
 {
@@ -60,7 +60,7 @@ bool RemoteLegacyCDM::supportsMIMEType(const String& mimeType)
     return supported;
 }
 
-std::unique_ptr<WebCore::LegacyCDMSession> RemoteLegacyCDM::createSession(WebCore::LegacyCDMSessionClient& client)
+std::unique_ptr<CyberCore::LegacyCDMSession> RemoteLegacyCDM::createSession(CyberCore::LegacyCDMSessionClient& client)
 {
     if (!m_factory)
         return nullptr;

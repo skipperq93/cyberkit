@@ -32,7 +32,7 @@
 #include <wtf/Ref.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // FIXME: Now that TransformState lazily creates its TransformationMatrix it takes up less space.
 // So there's really no need for a ref counted version. So This class should be removed and replaced
@@ -88,4 +88,4 @@ private:
     void flattenWithTransform(const TransformationMatrix&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

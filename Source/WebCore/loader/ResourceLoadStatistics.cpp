@@ -33,7 +33,7 @@
 #include <wtf/text/StringBuilder.h>
 #include <wtf/text/StringHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static Seconds timestampResolution { 5_s };
 

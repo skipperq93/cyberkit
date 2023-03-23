@@ -39,7 +39,7 @@ static void loadLibraryOrExit(const char* name)
 int main(int argc, char** argv)
 {
     loadLibraryOrExit(ICU_LOAD_AT);
-#if defined(BUILDING_TestWebCore) || defined(BUILDING_TestWebKit)
+#if defined(BUILDING_TestCyberCore) || defined(BUILDING_TestWebKit)
     loadLibraryOrExit(PNG_LOAD_AT);
 #if defined(JPEG_LOAD_AT)
     loadLibraryOrExit(JPEG_LOAD_AT);
@@ -53,7 +53,7 @@ int main(int argc, char** argv)
     loadLibraryOrExit(Cairo_LOAD_AT);
     loadLibraryOrExit(WebKitRequirements_LOAD_AT);
 #endif
-#if defined(BUILDING_TestWebCore) || defined(BUILDING_TestWebKit) || defined(BUILDING_TestJavaScriptCore)
+#if defined(BUILDING_TestCyberCore) || defined(BUILDING_TestWebKit) || defined(BUILDING_TestJavaScriptCore)
 #if !ENABLE(STATIC_JSC)
     loadLibraryOrExit("libJavaScriptCore");
 #endif

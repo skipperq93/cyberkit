@@ -221,7 +221,7 @@ void webkit_web_view_set_background_color(WebKitWebView* webView, WebKitColor* b
     g_return_if_fail(backgroundColor);
 
     auto& page = webkitWebViewGetPage(webView);
-    page.setBackgroundColor(webkitColorToWebCoreColor(backgroundColor));
+    page.setBackgroundColor(webkitColorToCyberCoreColor(backgroundColor));
 }
 
 /**
@@ -241,7 +241,7 @@ void webkit_web_view_get_background_color(WebKitWebView* webView, WebKitColor* c
     auto& page = webkitWebViewGetPage(webView);
 
     auto& webCoreColor = page.backgroundColor();
-    webkitColorFillFromWebCoreColor(webCoreColor.value_or(WebCore::Color::white), color);
+    webkitColorFillFromCyberCoreColor(webCoreColor.value_or(CyberCore::Color::white), color);
 }
 
 guint createShowOptionMenuSignal(WebKitWebViewClass* webViewClass)

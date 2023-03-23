@@ -223,13 +223,13 @@ class GlobalVariablesTest(unittest.TestCase):
                       "readability/naming")
         assertCheck("random_path.cpp",
                     "readability/naming")
-        assertNoCheck(os.path.join('Source', 'WebCore', 'css', 'CSSParser.cpp'),
+        assertNoCheck(os.path.join('Source', 'CyberCore', 'css', 'CSSParser.cpp'),
                       "readability/naming")
 
-        assertNoCheck(os.path.join('Source', 'WebCore', 'ForwardingHeaders', 'debugger', 'Debugger.h'),
+        assertNoCheck(os.path.join('Source', 'CyberCore', 'ForwardingHeaders', 'debugger', 'Debugger.h'),
                       "build/header_guard")
 
-        assertNoCheck(os.path.join('Source', 'WebCore', 'platform', 'graphics', 'gstreamer', 'VideoSinkGStreamer.cpp'),
+        assertNoCheck(os.path.join('Source', 'CyberCore', 'platform', 'graphics', 'gstreamer', 'VideoSinkGStreamer.cpp'),
                       "readability/naming")
 
         # Third-party Python code: webkitpy/thirdparty
@@ -248,15 +248,15 @@ class GlobalVariablesTest(unittest.TestCase):
         assertCheck(os.path.join('Source', 'JavaScriptCore', 'parser', 'Keywords.table'), "whitespace/carriage_return")
 
         # Test if the exception for DataDetectorsCoreSPI.h is in place.
-        assertNoCheck(os.path.join('Source', 'WebCore', 'PAL', 'pal', 'spi', 'cocoa', 'DataDetectorsCoreSPI.h'),
+        assertNoCheck(os.path.join('Source', 'CyberCore', 'PAL', 'pal', 'spi', 'cocoa', 'DataDetectorsCoreSPI.h'),
                       "runtime/enum_bitfields")
 
         # Test if the exception for PassKitSPI.h is in place.
-        assertNoCheck(os.path.join('Source', 'WebCore', 'PAL', 'pal', 'spi', 'cocoa', 'PassKitSPI.h'),
+        assertNoCheck(os.path.join('Source', 'CyberCore', 'PAL', 'pal', 'spi', 'cocoa', 'PassKitSPI.h'),
                       "build/include")
 
         # Test if the exception for pal/spi is in place.
-        assertNoCheck(os.path.join('Source', 'WebCore', 'PAL', 'pal', 'spi'),
+        assertNoCheck(os.path.join('Source', 'CyberCore', 'PAL', 'pal', 'spi'),
                       "readability/naming/underscores")
 
     def test_max_reports_per_category(self):
@@ -444,7 +444,7 @@ class CheckerDispatcherDispatchTest(unittest.TestCase):
         """Test paths that should be checked as Base.xcconfig files."""
         paths = [
             'Base.xcconfig',
-            os.path.join('Source', 'WebCore', 'Configurations', 'Base.xcconfig'),
+            os.path.join('Source', 'CyberCore', 'Configurations', 'Base.xcconfig'),
             'General.xcconfig',
             os.path.join('Source', 'ThirdParty', 'gtest', 'xcode', 'Config', 'General.xcconfig'),
         ]
@@ -464,7 +464,7 @@ class CheckerDispatcherDispatchTest(unittest.TestCase):
         paths = [
                  "ChangeLog",
                  "ChangeLog-2009-06-16",
-                 os.path.join("Source", "WebCore", "ChangeLog"),
+                 os.path.join("Source", "CyberCore", "ChangeLog"),
                  ]
 
         for path in paths:
@@ -532,7 +532,7 @@ class CheckerDispatcherDispatchTest(unittest.TestCase):
     def test_json_paths(self):
         """Test paths that should be checked as JSON."""
         paths = [
-           os.path.join('Source', 'WebCore', 'inspector', 'Inspector.json'),
+           os.path.join('Source', 'CyberCore', 'inspector', 'Inspector.json'),
            os.path.join('Tools', 'CISupport', 'build-webkit-org', 'config.json'),
         ]
 
@@ -613,7 +613,7 @@ class CheckerDispatcherDispatchTest(unittest.TestCase):
     def test_xml_paths(self):
         """Test paths that should be checked as XML."""
         paths = [
-           os.path.join('Source', 'WebCore', 'WebCore.vcproj', 'WebCore.vcproj'),
+           os.path.join('Source', 'CyberCore', 'CyberCore.vcproj', 'CyberCore.vcproj'),
            os.path.join('WebKitLibraries', 'win', 'tools', 'vsprops', 'common.vsprops'),
         ]
 

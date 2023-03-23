@@ -32,7 +32,7 @@ namespace JSC {
 enum class MessageLevel : uint8_t;
 }
 
-namespace WebCore {
+namespace CyberCore {
 class ResourceError;
 class ResourceResponse;
 }

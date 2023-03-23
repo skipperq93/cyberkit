@@ -27,7 +27,7 @@
 
 #if USE(LIBWEBRTC)
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace LibWebRTCAudioFormat {
 
@@ -42,6 +42,6 @@ static const bool isNonInterleaved = false;
 
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(LIBWEBRTC)

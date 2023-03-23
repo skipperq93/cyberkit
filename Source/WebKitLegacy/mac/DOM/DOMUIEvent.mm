@@ -38,71 +38,71 @@
 #import <wtf/GetPtr.h>
 #import <wtf/URL.h>
 
-#define IMPL static_cast<WebCore::UIEvent*>(reinterpret_cast<WebCore::Event*>(_internal))
+#define IMPL static_cast<CyberCore::UIEvent*>(reinterpret_cast<CyberCore::Event*>(_internal))
 
 @implementation DOMUIEvent
 
 - (DOMAbstractView *)view
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->view()));
 }
 
 - (int)detail
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->detail();
 }
 
 - (int)keyCode
 {
-    WebCore::JSMainThreadNullState state;
-    if (is<WebCore::KeyboardEvent>(*IMPL))
-        return downcast<WebCore::KeyboardEvent>(*IMPL).keyCode();
+    CyberCore::JSMainThreadNullState state;
+    if (is<CyberCore::KeyboardEvent>(*IMPL))
+        return downcast<CyberCore::KeyboardEvent>(*IMPL).keyCode();
     return 0;
 }
 
 - (int)charCode
 {
-    WebCore::JSMainThreadNullState state;
-    if (is<WebCore::KeyboardEvent>(*IMPL))
-        return downcast<WebCore::KeyboardEvent>(*IMPL).charCode();
+    CyberCore::JSMainThreadNullState state;
+    if (is<CyberCore::KeyboardEvent>(*IMPL))
+        return downcast<CyberCore::KeyboardEvent>(*IMPL).charCode();
     return 0;
 }
 
 - (int)layerX
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->layerX();
 }
 
 - (int)layerY
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->layerY();
 }
 
 - (int)pageX
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->pageX();
 }
 
 - (int)pageY
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->pageY();
 }
 
 - (int)which
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->which();
 }
 
 - (void)initUIEvent:(NSString *)type canBubble:(BOOL)canBubble cancelable:(BOOL)cancelable view:(DOMAbstractView *)inView detail:(int)inDetail
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->initUIEvent(type, canBubble, cancelable, toWindowProxy(inView), inDetail);
 }
 

@@ -31,13 +31,13 @@
 
 OBJC_CLASS PKAutomaticReloadPaymentRequest;
 
-namespace WebCore {
+namespace CyberCore {
 struct ApplePayAutomaticReloadPaymentRequest;
 }
 
 namespace WebKit {
 
-RetainPtr<PKAutomaticReloadPaymentRequest> platformAutomaticReloadPaymentRequest(const WebCore::ApplePayAutomaticReloadPaymentRequest&);
+RetainPtr<PKAutomaticReloadPaymentRequest> platformAutomaticReloadPaymentRequest(const CyberCore::ApplePayAutomaticReloadPaymentRequest&);
 
 } // namespace WebKit
 

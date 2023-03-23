@@ -32,9 +32,9 @@
 #include <wtf/RetainPtr.h>
 #include <wtf/WeakPtr.h>
 
-OBJC_CLASS WebCoreMediaCaptureStatusBarHandler;
+OBJC_CLASS CyberCoreMediaCaptureStatusBarHandler;
 
-namespace WebCore {
+namespace CyberCore {
 
 class MediaCaptureStatusBarManager : public CanMakeWeakPtr<MediaCaptureStatusBarManager> {
     WTF_MAKE_FAST_ALLOCATED;
@@ -57,7 +57,7 @@ public:
     void didTap(CompletionHandler<void()>&& completionHandler) { m_tapCallback(WTFMove(completionHandler)); }
 
 private:
-    RetainPtr<WebCoreMediaCaptureStatusBarHandler> m_handler;
+    RetainPtr<CyberCoreMediaCaptureStatusBarHandler> m_handler;
     TapCallback m_tapCallback;
     ErrorCallback m_errorCallback;
 };

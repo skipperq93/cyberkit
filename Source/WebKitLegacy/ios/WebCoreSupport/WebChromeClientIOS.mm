@@ -60,7 +60,7 @@
 #import <CyberCore/RuntimeApplicationChecks.h>
 #import <CyberCore/ScrollingConstraints.h>
 #import <CyberCore/WAKWindow.h>
-#import <CyberCore/WebCoreThreadMessage.h>
+#import <CyberCore/CyberCoreThreadMessage.h>
 #import <wtf/HashMap.h>
 #import <wtf/RefPtr.h>
 #import <wtf/cocoa/VectorCocoa.h>
@@ -69,7 +69,7 @@ NSString * const WebOpenPanelConfigurationAllowMultipleFilesKey = @"WebOpenPanel
 NSString * const WebOpenPanelConfigurationMediaCaptureTypeKey = @"WebOpenPanelConfigurationMediaCaptureTypeKey";
 NSString * const WebOpenPanelConfigurationMimeTypesKey = @"WebOpenPanelConfigurationMimeTypesKey";
 
-using namespace WebCore;
+using namespace CyberCore;
 
 #if ENABLE(MEDIA_CAPTURE)
 
@@ -90,7 +90,7 @@ static WebMediaCaptureType webMediaCaptureType(MediaCaptureType type)
 
 #endif
 
-void WebChromeClientIOS::setWindowRect(const WebCore::FloatRect& r)
+void WebChromeClientIOS::setWindowRect(const CyberCore::FloatRect& r)
 {
     [[webView() _UIDelegateForwarder] webView:webView() setFrame:r];
 }
@@ -172,12 +172,12 @@ void WebChromeClientIOS::didReceiveMobileDocType(bool isMobileDoctype)
         [[webView() _UIKitDelegateForwarder] webViewDidReceiveMobileDocType:webView()];
 }
 
-void WebChromeClientIOS::setNeedsScrollNotifications(WebCore::Frame& frame, bool flag)
+void WebChromeClientIOS::setNeedsScrollNotifications(CyberCore::Frame& frame, bool flag)
 {
     [[webView() _UIKitDelegateForwarder] webView:webView() needsScrollNotifications:[NSNumber numberWithBool:flag] forFrame:kit(&frame)];
 }
 
-void WebChromeClientIOS::didFinishContentChangeObserving(WebCore::Frame& frame, WKContentChange observedContentChange)
+void WebChromeClientIOS::didFinishContentChangeObserving(CyberCore::Frame& frame, WKContentChange observedContentChange)
 {
     if (!frame.document())
         return;
@@ -197,7 +197,7 @@ static inline NSString *nameForViewportFitValue(ViewportFit value)
     return WebViewportFitAutoValue;
 }
 
-static inline NSDictionary *dictionaryForViewportArguments(const WebCore::ViewportArguments& arguments)
+static inline NSDictionary *dictionaryForViewportArguments(const CyberCore::ViewportArguments& arguments)
 {
     return @{ WebViewportInitialScaleKey: @(arguments.zoom),
               WebViewportMinimumScaleKey: @(arguments.minZoom),
@@ -211,12 +211,12 @@ static inline NSDictionary *dictionaryForViewportArguments(const WebCore::Viewpo
 
 FloatSize WebChromeClientIOS::screenSize() const
 {
-    return FloatSize(WebCore::screenSize());
+    return FloatSize(CyberCore::screenSize());
 }
 
 FloatSize WebChromeClientIOS::availableScreenSize() const
 {
-    // WebKit1 code should query the WAKWindow for the available screen size.
+    // CyberKit1 code should query the WAKWindow for the available screen size.
     ASSERT_NOT_REACHED();
     return FloatSize();
 }
@@ -226,16 +226,16 @@ FloatSize WebChromeClientIOS::overrideScreenSize() const
     return screenSize();
 }
 
-void WebChromeClientIOS::dispatchViewportPropertiesDidChange(const WebCore::ViewportArguments& arguments) const
+void WebChromeClientIOS::dispatchViewportPropertiesDidChange(const CyberCore::ViewportArguments& arguments) const
 {
     [[webView() _UIKitDelegateForwarder] webView:webView() didReceiveViewportArguments:dictionaryForViewportArguments(arguments)];
 }
 
-void WebChromeClientIOS::dispatchDisabledAdaptationsDidChange(const OptionSet<WebCore::DisabledAdaptations>&) const
+void WebChromeClientIOS::dispatchDisabledAdaptationsDidChange(const OptionSet<CyberCore::DisabledAdaptations>&) const
 {
 }
 
-void WebChromeClientIOS::notifyRevealedSelectionByScrollingFrame(WebCore::Frame& frame)
+void WebChromeClientIOS::notifyRevealedSelectionByScrollingFrame(CyberCore::Frame& frame)
 {
     [[webView() _UIKitDelegateForwarder] revealedSelectionByScrollingWebFrame:kit(&frame)];
 }
@@ -273,13 +273,13 @@ void WebChromeClientIOS::restoreFormNotifications()
         m_formNotificationSuppressions = 0;
 }
 
-void WebChromeClientIOS::elementDidFocus(WebCore::Element& element, const WebCore::FocusOptions&)
+void WebChromeClientIOS::elementDidFocus(CyberCore::Element& element, const CyberCore::FocusOptions&)
 {
     if (m_formNotificationSuppressions <= 0)
         [[webView() _UIKitDelegateForwarder] webView:webView() elementDidFocusNode:kit(&element)];
 }
 
-void WebChromeClientIOS::elementDidBlur(WebCore::Element& element)
+void WebChromeClientIOS::elementDidBlur(CyberCore::Element& element)
 {
     if (m_formNotificationSuppressions <= 0)
         [[webView() _UIKitDelegateForwarder] webView:webView() elementDidBlurNode:kit(&element)];
@@ -295,12 +295,12 @@ bool WebChromeClientIOS::selectItemAlignmentFollowsMenuWritingDirection()
     return true;
 }
 
-RefPtr<WebCore::PopupMenu> WebChromeClientIOS::createPopupMenu(WebCore::PopupMenuClient& client) const
+RefPtr<CyberCore::PopupMenu> WebChromeClientIOS::createPopupMenu(CyberCore::PopupMenuClient& client) const
 {
     return adoptRef(new PopupMenuIOS(&client));
 }
 
-RefPtr<WebCore::SearchPopupMenu> WebChromeClientIOS::createSearchPopupMenu(WebCore::PopupMenuClient& client) const
+RefPtr<CyberCore::SearchPopupMenu> WebChromeClientIOS::createSearchPopupMenu(CyberCore::PopupMenuClient& client) const
 {
     return adoptRef(new SearchPopupMenuIOS(&client));
 }
@@ -365,7 +365,7 @@ void WebChromeClientIOS::focusedElementChanged(Element* element)
     CallFormDelegate(webView(), @selector(didFocusTextField:inFrame:), kit(&inputElement), kit(inputElement.document().frame()));
 }
 
-void WebChromeClientIOS::showPlaybackTargetPicker(bool hasVideo, WebCore::RouteSharingPolicy, const String&)
+void WebChromeClientIOS::showPlaybackTargetPicker(bool hasVideo, CyberCore::RouteSharingPolicy, const String&)
 {
     CGPoint point = [[webView() _UIKitDelegateForwarder] interactionLocation];
     CGRect elementRect = [[webView() mainFrame] elementRectAtPoint:point];

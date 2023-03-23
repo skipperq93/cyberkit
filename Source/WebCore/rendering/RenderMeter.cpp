@@ -26,7 +26,7 @@
 #include "RenderTheme.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -76,4 +76,4 @@ void RenderMeter::updateFromElement()
     repaint();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

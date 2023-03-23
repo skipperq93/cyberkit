@@ -37,7 +37,7 @@ struct WebKit::WebHitTestResultData {
     String linkTitle;
     String linkSuggestedFilename;
     bool isContentEditable;
-    WebCore::IntRect elementBoundingBox;
+    CyberCore::IntRect elementBoundingBox;
     WebKit::WebHitTestResultData::IsScrollbar isScrollbar;
     bool isSelected;
     bool isTextNode;
@@ -55,7 +55,7 @@ struct WebKit::WebHitTestResultData {
     WebKit::WebHitTestResultPlatformData platformData;
 #endif
 
-    WebCore::DictionaryPopupInfo dictionaryPopupInfo;
+    CyberCore::DictionaryPopupInfo dictionaryPopupInfo;
 
-    RefPtr<WebCore::TextIndicator> linkTextIndicator;
+    RefPtr<CyberCore::TextIndicator> linkTextIndicator;
 }

@@ -26,7 +26,7 @@
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-// Things internal to the WebKit framework; not SPI.
+// Things internal to the CyberKit framework; not SPI.
 
 #import "WebHTMLViewPrivate.h"
 #import <wtf/NakedPtr.h>
@@ -35,7 +35,7 @@
 @class WebFrame;
 @class WebPluginController;
 
-namespace WebCore {
+namespace CyberCore {
     class CachedImage;
     class KeyboardEvent;
 }
@@ -62,17 +62,17 @@ namespace WebCore {
 
 #if PLATFORM(MAC)
 - (void)_lookUpInDictionaryFromMenu:(id)sender;
-- (BOOL)_interpretKeyEvent:(NakedPtr<WebCore::KeyboardEvent>)event savingCommands:(BOOL)savingCommands;
+- (BOOL)_interpretKeyEvent:(NakedPtr<CyberCore::KeyboardEvent>)event savingCommands:(BOOL)savingCommands;
 - (DOMDocumentFragment *)_documentFragmentFromPasteboard:(NSPasteboard *)pasteboard;
 - (NSEvent *)_mouseDownEvent;
 - (BOOL)isGrammarCheckingEnabled;
 - (void)setGrammarCheckingEnabled:(BOOL)flag;
 - (void)toggleGrammarChecking:(id)sender;
-- (void)setPromisedDragTIFFDataSource:(NakedPtr<WebCore::CachedImage>)source;
+- (void)setPromisedDragTIFFDataSource:(NakedPtr<CyberCore::CachedImage>)source;
 #endif
 
 #if PLATFORM(IOS_FAMILY)
-- (BOOL)_handleEditingKeyEvent:(WebCore::KeyboardEvent *)event;
+- (BOOL)_handleEditingKeyEvent:(CyberCore::KeyboardEvent *)event;
 #endif
 
 - (void)_web_updateLayoutAndStyleIfNeededRecursive;

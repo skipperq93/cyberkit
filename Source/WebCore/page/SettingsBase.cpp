@@ -56,7 +56,7 @@
 #include "MediaSessionManagerCocoa.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 static void invalidateAfterGenericFamilyChange(Page* page)
 {
@@ -81,7 +81,7 @@ SettingsBase::~SettingsBase() = default;
 
 void SettingsBase::initializeDefaultFontFamilies()
 {
-    // Other platforms can set up fonts from a client, but on Mac, we want it in WebCore to share code between WebKit1 and WebKit2.
+    // Other platforms can set up fonts from a client, but on Mac, we want it in CyberCore to share code between WebKit1 and WebKit2.
 }
 
 #if ENABLE(MEDIA_SOURCE)
@@ -513,4 +513,4 @@ void SettingsBase::sampleBufferContentKeySessionSupportEnabledChanged()
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

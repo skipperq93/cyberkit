@@ -29,7 +29,7 @@ namespace JSC {
 class JSValue;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class JSDOMGlobalObject;
 template<typename> class ExceptionOr;
@@ -42,5 +42,5 @@ public:
     static ExceptionOr<JSC::JSValue> structuredClone(JSDOMGlobalObject& lexicalGlobalObject, JSDOMGlobalObject& relevantGlobalObject, JSC::JSValue, StructuredSerializeOptions&&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 

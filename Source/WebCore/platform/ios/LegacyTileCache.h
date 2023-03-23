@@ -41,7 +41,7 @@ OBJC_CLASS LegacyTileCacheTombstone;
 OBJC_CLASS LegacyTileLayer;
 OBJC_CLASS WAKWindow;
 
-namespace WebCore {
+namespace CyberCore {
 
 class Color;
 class LegacyTileGrid;
@@ -207,6 +207,6 @@ private:
     mutable Lock m_contentReplacementImageMutex;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(IOS_FAMILY)

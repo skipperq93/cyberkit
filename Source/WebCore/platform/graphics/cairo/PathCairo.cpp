@@ -36,7 +36,7 @@
 #include <wtf/MathExtras.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Path::Path()
     : m_elements(Vector<PathElement>())
@@ -541,6 +541,6 @@ bool Path::isNull() const
     return !m_path;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(CAIRO)

@@ -34,7 +34,7 @@
 
 #include <optional>
 
-namespace WebCore {
+namespace CyberCore {
 
 static std::optional<CGFloat> getCGFloatValue(CFNumberRef number)
 {
@@ -393,4 +393,4 @@ RetainPtr<CTFontRef> UnrealizedCoreTextFont::realize() const
     return font;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

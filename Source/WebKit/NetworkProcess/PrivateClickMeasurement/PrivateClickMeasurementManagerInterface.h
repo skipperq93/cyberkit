@@ -29,7 +29,7 @@
 #include <CyberCore/RegistrableDomain.h>
 #include <wtf/EnumTraits.h>
 
-namespace WebCore {
+namespace CyberCore {
 class CertificateInfo;
 }
 
@@ -49,15 +49,15 @@ class ManagerInterface {
 public:
     virtual ~ManagerInterface() { };
 
-    using AttributionDestinationSite = WebCore::PCM::AttributionDestinationSite;
-    using AttributionTriggerData = WebCore::PCM::AttributionTriggerData;
-    using PrivateClickMeasurement = WebCore::PrivateClickMeasurement;
-    using RegistrableDomain = WebCore::RegistrableDomain;
-    using SourceSite = WebCore::PCM::SourceSite;
+    using AttributionDestinationSite = CyberCore::PCM::AttributionDestinationSite;
+    using AttributionTriggerData = CyberCore::PCM::AttributionTriggerData;
+    using PrivateClickMeasurement = CyberCore::PrivateClickMeasurement;
+    using RegistrableDomain = CyberCore::RegistrableDomain;
+    using SourceSite = CyberCore::PCM::SourceSite;
     using ApplicationBundleIdentifier = String;
 
     virtual void storeUnattributed(PrivateClickMeasurement&&, CompletionHandler<void()>&&) = 0;
-    virtual void handleAttribution(AttributionTriggerData&&, const URL& requestURL, WebCore::RegistrableDomain&& redirectDomain, const URL& firstPartyURL, const ApplicationBundleIdentifier&) = 0;
+    virtual void handleAttribution(AttributionTriggerData&&, const URL& requestURL, CyberCore::RegistrableDomain&& redirectDomain, const URL& firstPartyURL, const ApplicationBundleIdentifier&) = 0;
     virtual void clear(CompletionHandler<void()>&&) = 0;
     virtual void clearForRegistrableDomain(RegistrableDomain&&, CompletionHandler<void()>&&) = 0;
     virtual void migratePrivateClickMeasurementFromLegacyStorage(PrivateClickMeasurement&&, PrivateClickMeasurementAttributionType) = 0;
@@ -74,7 +74,7 @@ public:
     virtual void startTimerImmediatelyForTesting() = 0;
     virtual void setPrivateClickMeasurementAppBundleIDForTesting(ApplicationBundleIdentifier&&) = 0;
     virtual void destroyStoreForTesting(CompletionHandler<void()>&&) = 0;
-    virtual void allowTLSCertificateChainForLocalPCMTesting(const WebCore::CertificateInfo&) = 0;
+    virtual void allowTLSCertificateChainForLocalPCMTesting(const CyberCore::CertificateInfo&) = 0;
 };
 
 constexpr const char* protocolVersionKey { "version" };

@@ -30,7 +30,7 @@
 #include "NicosiaAnimatedBackingStoreClient.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class Region;
 class TextureMapperPaintOptions;
@@ -241,4 +241,4 @@ private:
     } m_layerTransforms;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

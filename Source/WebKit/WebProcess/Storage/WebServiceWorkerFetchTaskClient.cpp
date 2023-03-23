@@ -33,7 +33,7 @@
 #include "ServiceWorkerDownloadTaskMessages.h"
 #include "ServiceWorkerFetchTaskMessages.h"
 #include "SharedBufferReference.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebErrors.h"
 #include <CyberCore/FetchEvent.h>
 #include <CyberCore/ResourceError.h>
@@ -41,10 +41,10 @@
 #include <CyberCore/SWContextManager.h>
 #include <wtf/RunLoop.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
-WebServiceWorkerFetchTaskClient::WebServiceWorkerFetchTaskClient(Ref<IPC::Connection>&& connection, WebCore::ServiceWorkerIdentifier serviceWorkerIdentifier, WebCore::SWServerConnectionIdentifier serverConnectionIdentifier, FetchIdentifier fetchIdentifier, bool needsContinueDidReceiveResponseMessage)
+WebServiceWorkerFetchTaskClient::WebServiceWorkerFetchTaskClient(Ref<IPC::Connection>&& connection, CyberCore::ServiceWorkerIdentifier serviceWorkerIdentifier, CyberCore::SWServerConnectionIdentifier serverConnectionIdentifier, FetchIdentifier fetchIdentifier, bool needsContinueDidReceiveResponseMessage)
     : m_connection(WTFMove(connection))
     , m_serverConnectionIdentifier(serverConnectionIdentifier)
     , m_serviceWorkerIdentifier(serviceWorkerIdentifier)
@@ -53,7 +53,7 @@ WebServiceWorkerFetchTaskClient::WebServiceWorkerFetchTaskClient(Ref<IPC::Connec
 {
 }
 
-void WebServiceWorkerFetchTaskClient::didReceiveRedirection(const WebCore::ResourceResponse& response)
+void WebServiceWorkerFetchTaskClient::didReceiveRedirection(const CyberCore::ResourceResponse& response)
 {
     if (!m_connection)
         return;
@@ -226,7 +226,7 @@ void WebServiceWorkerFetchTaskClient::setCancelledCallback(Function<void()>&& ca
     m_cancelledCallback = WTFMove(callback);
 }
 
-void WebServiceWorkerFetchTaskClient::setFetchEvent(Ref<WebCore::FetchEvent>&& event)
+void WebServiceWorkerFetchTaskClient::setFetchEvent(Ref<CyberCore::FetchEvent>&& event)
 {
     m_event = WTFMove(event);
 
@@ -308,6 +308,6 @@ void WebServiceWorkerFetchTaskClient::cleanup()
     });
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(SERVICE_WORKER)

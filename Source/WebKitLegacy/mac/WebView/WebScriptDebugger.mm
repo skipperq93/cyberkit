@@ -57,7 +57,7 @@ static NSString *toNSString(JSC::SourceProvider* sourceProvider)
 
 static WebFrame *toWebFrame(JSC::JSGlobalObject* globalObject)
 {
-    WebCore::JSDOMWindow* window = static_cast<WebCore::JSDOMWindow*>(globalObject);
+    CyberCore::JSDOMWindow* window = static_cast<CyberCore::JSDOMWindow*>(globalObject);
     return kit(window->wrapped().frame());
 }
 

@@ -36,7 +36,7 @@
 #include "SincResampler.h"
 #include <functional>
 
-namespace WebCore {
+namespace CyberCore {
 
 MultiChannelResampler::MultiChannelResampler(double scaleFactor, unsigned numberOfChannels, unsigned requestFrames, Function<void(AudioBus*, size_t framesToProcess)>&& provideInput)
     : m_numberOfChannels(numberOfChannels)
@@ -104,6 +104,6 @@ void MultiChannelResampler::provideInputForChannel(float* buffer, size_t framesT
     memcpy(buffer, m_multiChannelBus->channel(channelIndex)->data(), sizeof(float) * framesToProcess);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

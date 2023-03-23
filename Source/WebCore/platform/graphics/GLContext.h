@@ -28,7 +28,7 @@
 // FIXME: For now default to the GBM EGL platform, but this should really be
 // somehow deducible from the build configuration. This is needed with libepoxy
 // as it could have been configured with X11 support enabled, resulting in
-// transitive inclusions of headers with definitions that clash with WebCore.
+// transitive inclusions of headers with definitions that clash with CyberCore.
 #define __GBM__ 1
 #if USE(LIBEPOXY)
 #include <epoxy/egl.h>
@@ -46,7 +46,7 @@ typedef struct _cairo_device cairo_device_t;
 
 typedef void* GCGLContext;
 
-// X11 headers define a bunch of macros with common terms, interfering with WebCore and WTF enum values.
+// X11 headers define a bunch of macros with common terms, interfering with CyberCore and WTF enum values.
 // As a workaround, we explicitly undef them here.
 #if defined(None)
 #undef None
@@ -82,7 +82,7 @@ typedef void* GCGLContext;
 #undef Region
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class IntSize;
 
@@ -117,11 +117,11 @@ protected:
     unsigned m_version { 0 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #define SPECIALIZE_TYPE_TRAITS_GLCONTEXT(ToValueTypeName, predicate) \
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::ToValueTypeName) \
-    static bool isType(const WebCore::GLContext& context) { return context.predicate; } \
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::ToValueTypeName) \
+    static bool isType(const CyberCore::GLContext& context) { return context.predicate; } \
 SPECIALIZE_TYPE_TRAITS_END()
 
 #endif // GLContext_h

@@ -38,7 +38,7 @@
 
 #include <windows.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 GDIObjectCounter::GDIObjectCounter(const char* identifier)
 {
@@ -70,6 +70,6 @@ unsigned GDIObjectCounter::currentGDIObjectsInUse()
     return ::GetGuiResources(::GetCurrentProcess(), GR_GDIOBJECTS);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // !defined(NDEBUG)

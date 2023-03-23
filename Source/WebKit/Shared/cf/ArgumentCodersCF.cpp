@@ -47,7 +47,7 @@
 #endif
 
 namespace IPC {
-using namespace WebCore;
+using namespace CyberCore;
 
 CFTypeRef tokenNullptrTypeRef()
 {
@@ -799,7 +799,7 @@ std::optional<RetainPtr<CGColorSpaceRef>> ArgumentCoder<RetainPtr<CGColorSpaceRe
 template<typename Encoder>
 void ArgumentCoder<CGColorRef>::encode(Encoder& encoder, CGColorRef color)
 {
-    encoder << WebCore::Color::createAndPreserveColorSpace(color);
+    encoder << CyberCore::Color::createAndPreserveColorSpace(color);
 }
 
 template void ArgumentCoder<CGColorRef>::encode<Encoder>(Encoder&, CGColorRef);
@@ -807,7 +807,7 @@ template void ArgumentCoder<CGColorRef>::encode<StreamConnectionEncoder>(StreamC
 
 std::optional<RetainPtr<CGColorRef>> ArgumentCoder<RetainPtr<CGColorRef>>::decode(Decoder& decoder)
 {
-    std::optional<WebCore::Color> color;
+    std::optional<CyberCore::Color> color;
     decoder >> color;
     if (!color)
         return std::nullopt;

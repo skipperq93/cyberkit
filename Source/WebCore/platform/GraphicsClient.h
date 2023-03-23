@@ -27,7 +27,7 @@
 
 #include "PlatformScreen.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class DestinationColorSpace;
 class GraphicsContextGL;
@@ -53,7 +53,7 @@ public:
     virtual RefPtr<GraphicsContextGL> createGraphicsContextGL(const GraphicsContextGLAttributes&) const = 0;
 #endif
 
-    virtual RefPtr<WebCore::ImageBuffer> sinkIntoImageBuffer(std::unique_ptr<WebCore::SerializedImageBuffer>) = 0;
+    virtual RefPtr<CyberCore::ImageBuffer> sinkIntoImageBuffer(std::unique_ptr<CyberCore::SerializedImageBuffer>) = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

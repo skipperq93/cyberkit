@@ -33,7 +33,7 @@
 #include "NotImplemented.h"
 #include <cairo.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 IntSize NativeImage::size() const
 {
@@ -72,6 +72,6 @@ void NativeImage::clearSubimages()
 {
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(CAIRO)

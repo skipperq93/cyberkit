@@ -37,9 +37,9 @@ namespace WebKit {
 
 class NetworkRTCResolver {
 public:
-    static std::unique_ptr<NetworkRTCResolver> create(LibWebRTCResolverIdentifier, WebCore::DNSCompletionHandler&&);
+    static std::unique_ptr<NetworkRTCResolver> create(LibWebRTCResolverIdentifier, CyberCore::DNSCompletionHandler&&);
 
-    NetworkRTCResolver(LibWebRTCResolverIdentifier, WebCore::DNSCompletionHandler&&);
+    NetworkRTCResolver(LibWebRTCResolverIdentifier, CyberCore::DNSCompletionHandler&&);
     virtual ~NetworkRTCResolver();
 
     virtual void start(const String& address);
@@ -47,7 +47,7 @@ public:
 
 protected:
     LibWebRTCResolverIdentifier m_identifier;
-    WebCore::DNSCompletionHandler m_completionHandler;
+    CyberCore::DNSCompletionHandler m_completionHandler;
 };
 
 } // namespace WebKit

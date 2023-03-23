@@ -355,7 +355,7 @@ void WKPreferencesSetEditableLinkBehavior(WKPreferencesRef preferencesRef, WKEdi
 
 WKEditableLinkBehavior WKPreferencesGetEditableLinkBehavior(WKPreferencesRef preferencesRef)
 {
-    return toAPI(static_cast<WebCore::EditableLinkBehavior>(toImpl(preferencesRef)->editableLinkBehavior()));
+    return toAPI(static_cast<CyberCore::EditableLinkBehavior>(toImpl(preferencesRef)->editableLinkBehavior()));
 }
 
 void WKPreferencesSetDefaultTextEncodingName(WKPreferencesRef preferencesRef, WKStringRef name)
@@ -952,7 +952,7 @@ void WKPreferencesSetStorageBlockingPolicy(WKPreferencesRef preferencesRef, WKSt
 
 WKStorageBlockingPolicy WKPreferencesGetStorageBlockingPolicy(WKPreferencesRef preferencesRef)
 {
-    return toAPI(static_cast<WebCore::StorageBlockingPolicy>(toImpl(preferencesRef)->storageBlockingPolicy()));
+    return toAPI(static_cast<CyberCore::StorageBlockingPolicy>(toImpl(preferencesRef)->storageBlockingPolicy()));
 }
 
 void WKPreferencesSetDiagnosticLoggingEnabled(WKPreferencesRef preferencesRef, bool enabled)

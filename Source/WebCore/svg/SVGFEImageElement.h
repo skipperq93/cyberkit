@@ -26,7 +26,7 @@
 #include "SVGFilterPrimitiveStandardAttributes.h"
 #include "SVGURIReference.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGFEImageElement final : public SVGFilterPrimitiveStandardAttributes, public SVGURIReference, public CachedImageClient {
     WTF_MAKE_ISO_ALLOCATED(SVGFEImageElement);
@@ -68,4 +68,4 @@ private:
     CachedResourceHandle<CachedImage> m_cachedImage;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

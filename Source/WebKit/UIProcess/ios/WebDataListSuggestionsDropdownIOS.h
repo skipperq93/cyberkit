@@ -39,8 +39,8 @@ OBJC_CLASS WKContentView;
 
 @property (nonatomic, readonly) BOOL isShowingSuggestions;
 
-- (instancetype)initWithInformation:(WebCore::DataListSuggestionInformation&&)information inView:(WKContentView *)view;
-- (void)updateWithInformation:(WebCore::DataListSuggestionInformation&&)information;
+- (instancetype)initWithInformation:(CyberCore::DataListSuggestionInformation&&)information inView:(WKContentView *)view;
+- (void)updateWithInformation:(CyberCore::DataListSuggestionInformation&&)information;
 - (void)didSelectOptionAtIndex:(NSInteger)index;
 - (void)invalidate;
 
@@ -57,7 +57,7 @@ public:
 private:
     WebDataListSuggestionsDropdownIOS(WebPageProxy&, WKContentView *);
 
-    void show(WebCore::DataListSuggestionInformation&&) final;
+    void show(CyberCore::DataListSuggestionInformation&&) final;
     void handleKeydownWithIdentifier(const String&) final;
     void close() final;
 

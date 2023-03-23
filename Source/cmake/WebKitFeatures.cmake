@@ -1,7 +1,7 @@
-# The settings in this file are the WebKit project default values, and
+# The settings in this file are the CyberKit project default values, and
 # are recommended for most ports. Ports can override these settings in
 # Options*.cmake, but should do so only if there is strong reason to
-# deviate from the defaults of the WebKit project (e.g. if the feature
+# deviate from the defaults of the CyberKit project (e.g. if the feature
 # requires platform-specific implementation that does not exist).
 
 set(_WEBKIT_AVAILABLE_OPTIONS "")
@@ -18,7 +18,7 @@ endmacro()
 macro(_ENSURE_IS_WEBKIT_OPTION _name)
     list(FIND _WEBKIT_AVAILABLE_OPTIONS ${_name} ${_name}_OPTION_INDEX)
     if (${_name}_OPTION_INDEX EQUAL -1)
-        message(FATAL_ERROR "${_name} is not a valid WebKit option")
+        message(FATAL_ERROR "${_name} is not a valid CyberKit option")
     endif ()
 endmacro()
 
@@ -267,7 +267,7 @@ macro(WEBKIT_OPTION_BEGIN)
     WEBKIT_OPTION_DEFINE(ENABLE_XSLT "Toggle XSLT support" PRIVATE ON)
     WEBKIT_OPTION_DEFINE(USE_AVIF "Whether to enable support for AVIF images." PRIVATE ON)
     WEBKIT_OPTION_DEFINE(USE_ISO_MALLOC "Toggle IsoMalloc support" PRIVATE ON)
-    WEBKIT_OPTION_DEFINE(USE_SYSTEM_MALLOC "Toggle system allocator instead of WebKit's custom allocator" PRIVATE ${USE_SYSTEM_MALLOC_DEFAULT})
+    WEBKIT_OPTION_DEFINE(USE_SYSTEM_MALLOC "Toggle system allocator instead of CyberKit's custom allocator" PRIVATE ${USE_SYSTEM_MALLOC_DEFAULT})
 
     WEBKIT_OPTION_CONFLICT(ENABLE_JIT ENABLE_C_LOOP)
     WEBKIT_OPTION_CONFLICT(ENABLE_SAMPLING_PROFILER ENABLE_C_LOOP)

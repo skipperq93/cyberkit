@@ -37,7 +37,7 @@ namespace Nicosia {
 class CompositionLayer;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScrollingTreeScrollingNodeDelegateNicosia;
 
@@ -68,6 +68,6 @@ private:
     RefPtr<Nicosia::CompositionLayer> m_footerLayer;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ASYNC_SCROLLING) && USE(NICOSIA)

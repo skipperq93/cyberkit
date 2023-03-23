@@ -28,7 +28,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class PasteboardItemPresentationStyle : uint8_t {
     Unspecified,

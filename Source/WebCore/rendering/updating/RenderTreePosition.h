@@ -27,7 +27,7 @@
 
 #include "RenderElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderTreePosition {
 public:
@@ -67,4 +67,4 @@ inline void RenderTreePosition::moveToLastChild()
     m_hasValidNextSibling = true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

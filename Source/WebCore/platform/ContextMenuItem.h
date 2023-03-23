@@ -29,7 +29,7 @@
 #include <wtf/EnumTraits.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ContextMenu;
 class Image;
@@ -215,19 +215,19 @@ private:
     Vector<ContextMenuItem> m_subMenuItems;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> WEBCORE_EXPORT bool isValidEnum<WebCore::ContextMenuAction, void>(std::underlying_type_t<WebCore::ContextMenuAction>);
+template<> WEBCORE_EXPORT bool isValidEnum<CyberCore::ContextMenuAction, void>(std::underlying_type_t<CyberCore::ContextMenuAction>);
 
-template<> struct EnumTraits<WebCore::ContextMenuItemType> {
+template<> struct EnumTraits<CyberCore::ContextMenuItemType> {
     using values = EnumValues<
-        WebCore::ContextMenuItemType,
-        WebCore::ContextMenuItemType::ActionType,
-        WebCore::ContextMenuItemType::CheckableActionType,
-        WebCore::ContextMenuItemType::SeparatorType,
-        WebCore::ContextMenuItemType::SubmenuType
+        CyberCore::ContextMenuItemType,
+        CyberCore::ContextMenuItemType::ActionType,
+        CyberCore::ContextMenuItemType::CheckableActionType,
+        CyberCore::ContextMenuItemType::SeparatorType,
+        CyberCore::ContextMenuItemType::SubmenuType
     >;
 };
 

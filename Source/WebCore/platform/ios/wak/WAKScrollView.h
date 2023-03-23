@@ -29,12 +29,12 @@
 #if TARGET_OS_IPHONE
 
 #import "WAKView.h"
-#import "WebCoreFrameView.h"
+#import "CyberCoreFrameView.h"
 #import <Foundation/Foundation.h>
 
 @class WAKClipView;
 
-WEBCORE_EXPORT @interface WAKScrollView : WAKView <WebCoreFrameScrollView>
+WEBCORE_EXPORT @interface WAKScrollView : WAKView <CyberCoreFrameScrollView>
 {
     WAKView *_documentView;  // Only here so the ObjC instance stays around.
     WAKClipView *_contentView;

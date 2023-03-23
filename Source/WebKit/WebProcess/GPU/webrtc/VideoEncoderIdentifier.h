@@ -27,9 +27,9 @@
 
 #include <wtf/ObjectIdentifier.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 enum VideoEncoderIdentifierType { };
 using VideoEncoderIdentifier = ObjectIdentifier<VideoEncoderIdentifierType>;
 
-} // namespace WebKit
+} // namespace CyberKit

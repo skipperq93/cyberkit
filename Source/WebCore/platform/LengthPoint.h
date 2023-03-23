@@ -27,7 +27,7 @@
 
 #include "Length.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct BlendingContext;
 
@@ -74,4 +74,4 @@ inline LengthPoint blend(const LengthPoint& from, const LengthPoint& to, const B
 
 WTF::TextStream& operator<<(WTF::TextStream&, const LengthPoint&);
 
-} // namespace WebCore
+} // namespace CyberCore

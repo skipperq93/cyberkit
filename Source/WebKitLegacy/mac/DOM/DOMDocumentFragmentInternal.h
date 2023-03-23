@@ -25,9 +25,9 @@
 
 #import <CyberKitLegacy/DOMDocumentFragment.h>
 
-namespace WebCore {
+namespace CyberCore {
 class DocumentFragment;
 }
 
-WebCore::DocumentFragment* core(DOMDocumentFragment *);
-DOMDocumentFragment *kit(WebCore::DocumentFragment*);
+CyberCore::DocumentFragment* core(DOMDocumentFragment *);
+DOMDocumentFragment *kit(CyberCore::DocumentFragment*);

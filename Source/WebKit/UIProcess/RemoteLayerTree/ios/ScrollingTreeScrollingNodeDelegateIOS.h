@@ -35,7 +35,7 @@
 @class UIScrollView;
 @class WKScrollingNodeScrollViewDelegate;
 
-namespace WebCore {
+namespace CyberCore {
 
 class FloatPoint;
 class FloatRect;
@@ -46,26 +46,26 @@ class ScrollingTreeScrollingNode;
 
 namespace WebKit {
 
-class ScrollingTreeScrollingNodeDelegateIOS final : public WebCore::ScrollingTreeScrollingNodeDelegate {
+class ScrollingTreeScrollingNodeDelegateIOS final : public CyberCore::ScrollingTreeScrollingNodeDelegate {
     WTF_MAKE_FAST_ALLOCATED;
 public:
     
     enum class AllowOverscrollToPreventScrollPropagation : bool { Yes, No };
     
-    explicit ScrollingTreeScrollingNodeDelegateIOS(WebCore::ScrollingTreeScrollingNode&);
+    explicit ScrollingTreeScrollingNodeDelegateIOS(CyberCore::ScrollingTreeScrollingNode&);
     ~ScrollingTreeScrollingNodeDelegateIOS() final;
 
     void scrollWillStart() const;
     void scrollDidEnd() const;
     void scrollViewWillStartPanGesture() const;
-    void scrollViewDidScroll(const WebCore::FloatPoint& scrollOffset, bool inUserInteraction);
+    void scrollViewDidScroll(const CyberCore::FloatPoint& scrollOffset, bool inUserInteraction);
 
     void currentSnapPointIndicesDidChange(std::optional<unsigned> horizontal, std::optional<unsigned> vertical) const;
     CALayer *scrollLayer() const { return m_scrollLayer.get(); }
 
     void resetScrollViewDelegate();
-    void commitStateBeforeChildren(const WebCore::ScrollingStateScrollingNode&);
-    void commitStateAfterChildren(const WebCore::ScrollingStateScrollingNode&);
+    void commitStateBeforeChildren(const CyberCore::ScrollingStateScrollingNode&);
+    void commitStateAfterChildren(const CyberCore::ScrollingStateScrollingNode&);
 
     void repositionScrollingLayers();
 
@@ -73,7 +73,7 @@ public:
     void handleAsynchronousCancelableScrollEvent(UIScrollView *, UIScrollEvent *, void (^completion)(BOOL handled));
 #endif
 
-    OptionSet<WebCore::TouchAction> activeTouchActions() const { return m_activeTouchActions; }
+    OptionSet<CyberCore::TouchAction> activeTouchActions() const { return m_activeTouchActions; }
     void computeActiveTouchActionsForGestureRecognizer(UIGestureRecognizer*);
     void clearActiveTouchActions() { m_activeTouchActions = { }; }
     void cancelPointersForGestureRecognizer(UIGestureRecognizer*);
@@ -81,12 +81,12 @@ public:
     UIScrollView *findActingScrollParent(UIScrollView *);
     UIScrollView *scrollView() const;
 
-    bool startAnimatedScrollToPosition(WebCore::FloatPoint) final;
+    bool startAnimatedScrollToPosition(CyberCore::FloatPoint) final;
     void stopAnimatedScroll() final;
 
     void serviceScrollAnimation(MonotonicTime) final { }
     
-    static void updateScrollViewForOverscrollBehavior(UIScrollView *, const WebCore::OverscrollBehavior, const WebCore::OverscrollBehavior, AllowOverscrollToPreventScrollPropagation);
+    static void updateScrollViewForOverscrollBehavior(UIScrollView *, const CyberCore::OverscrollBehavior, const CyberCore::OverscrollBehavior, AllowOverscrollToPreventScrollPropagation);
 
 private:
     RetainPtr<CALayer> m_scrollLayer;
@@ -95,7 +95,7 @@ private:
 #endif
     RetainPtr<CALayer> m_scrolledContentsLayer;
     RetainPtr<WKScrollingNodeScrollViewDelegate> m_scrollViewDelegate;
-    OptionSet<WebCore::TouchAction> m_activeTouchActions { };
+    OptionSet<CyberCore::TouchAction> m_activeTouchActions { };
     bool m_updatingFromStateNode { false };
 };
 

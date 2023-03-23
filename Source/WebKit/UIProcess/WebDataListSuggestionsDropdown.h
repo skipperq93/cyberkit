@@ -40,7 +40,7 @@ class WebDataListSuggestionsDropdown : public RefCounted<WebDataListSuggestionsD
 public:
     virtual ~WebDataListSuggestionsDropdown();
 
-    virtual void show(WebCore::DataListSuggestionInformation&&) = 0;
+    virtual void show(CyberCore::DataListSuggestionInformation&&) = 0;
     virtual void handleKeydownWithIdentifier(const String&) = 0;
     virtual void close();
 

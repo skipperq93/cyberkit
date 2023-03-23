@@ -32,7 +32,7 @@
 #include <wtf/MathExtras.h>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 ScrollSnapAnimatorState::~ScrollSnapAnimatorState() = default;
 
@@ -265,4 +265,4 @@ TextStream& operator<<(TextStream& ts, const ScrollSnapAnimatorState& state)
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

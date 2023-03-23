@@ -29,7 +29,7 @@
 #include <wtf/OptionSet.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class MediaProducerMediaState : uint32_t {
     IsPlayingAudio = 1 << 0,
@@ -136,64 +136,64 @@ protected:
     virtual ~MediaProducer() = default;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::MediaProducerMediaCaptureKind> {
+template<> struct EnumTraits<CyberCore::MediaProducerMediaCaptureKind> {
     using values = EnumValues<
-        WebCore::MediaProducerMediaCaptureKind,
-        WebCore::MediaProducerMediaCaptureKind::Microphone,
-        WebCore::MediaProducerMediaCaptureKind::Camera,
-        WebCore::MediaProducerMediaCaptureKind::Display,
-        WebCore::MediaProducerMediaCaptureKind::SystemAudio,
-        WebCore::MediaProducerMediaCaptureKind::EveryKind
+        CyberCore::MediaProducerMediaCaptureKind,
+        CyberCore::MediaProducerMediaCaptureKind::Microphone,
+        CyberCore::MediaProducerMediaCaptureKind::Camera,
+        CyberCore::MediaProducerMediaCaptureKind::Display,
+        CyberCore::MediaProducerMediaCaptureKind::SystemAudio,
+        CyberCore::MediaProducerMediaCaptureKind::EveryKind
     >;
 };
 
-template<> struct EnumTraits<WebCore::MediaProducerMediaState> {
+template<> struct EnumTraits<CyberCore::MediaProducerMediaState> {
     using values = EnumValues<
-        WebCore::MediaProducerMediaState,
-        WebCore::MediaProducerMediaState::IsPlayingAudio,
-        WebCore::MediaProducerMediaState::IsPlayingVideo,
-        WebCore::MediaProducerMediaState::IsPlayingToExternalDevice,
-        WebCore::MediaProducerMediaState::RequiresPlaybackTargetMonitoring,
-        WebCore::MediaProducerMediaState::ExternalDeviceAutoPlayCandidate,
-        WebCore::MediaProducerMediaState::DidPlayToEnd,
-        WebCore::MediaProducerMediaState::IsSourceElementPlaying,
-        WebCore::MediaProducerMediaState::IsNextTrackControlEnabled,
-        WebCore::MediaProducerMediaState::IsPreviousTrackControlEnabled,
-        WebCore::MediaProducerMediaState::HasPlaybackTargetAvailabilityListener,
-        WebCore::MediaProducerMediaState::HasAudioOrVideo,
-        WebCore::MediaProducerMediaState::HasActiveAudioCaptureDevice,
-        WebCore::MediaProducerMediaState::HasActiveVideoCaptureDevice,
-        WebCore::MediaProducerMediaState::HasMutedAudioCaptureDevice,
-        WebCore::MediaProducerMediaState::HasMutedVideoCaptureDevice,
-        WebCore::MediaProducerMediaState::HasInterruptedAudioCaptureDevice,
-        WebCore::MediaProducerMediaState::HasInterruptedVideoCaptureDevice,
-        WebCore::MediaProducerMediaState::HasUserInteractedWithMediaElement,
-        WebCore::MediaProducerMediaState::HasActiveScreenCaptureDevice,
-        WebCore::MediaProducerMediaState::HasMutedScreenCaptureDevice,
-        WebCore::MediaProducerMediaState::HasInterruptedScreenCaptureDevice,
-        WebCore::MediaProducerMediaState::HasActiveWindowCaptureDevice,
-        WebCore::MediaProducerMediaState::HasMutedWindowCaptureDevice,
-        WebCore::MediaProducerMediaState::HasInterruptedWindowCaptureDevice,
-        WebCore::MediaProducerMediaState::HasActiveSystemAudioCaptureDevice,
-        WebCore::MediaProducerMediaState::HasMutedSystemAudioCaptureDevice,
-        WebCore::MediaProducerMediaState::HasInterruptedSystemAudioCaptureDevice,
-        WebCore::MediaProducerMediaState::HasStreamingActivity
+        CyberCore::MediaProducerMediaState,
+        CyberCore::MediaProducerMediaState::IsPlayingAudio,
+        CyberCore::MediaProducerMediaState::IsPlayingVideo,
+        CyberCore::MediaProducerMediaState::IsPlayingToExternalDevice,
+        CyberCore::MediaProducerMediaState::RequiresPlaybackTargetMonitoring,
+        CyberCore::MediaProducerMediaState::ExternalDeviceAutoPlayCandidate,
+        CyberCore::MediaProducerMediaState::DidPlayToEnd,
+        CyberCore::MediaProducerMediaState::IsSourceElementPlaying,
+        CyberCore::MediaProducerMediaState::IsNextTrackControlEnabled,
+        CyberCore::MediaProducerMediaState::IsPreviousTrackControlEnabled,
+        CyberCore::MediaProducerMediaState::HasPlaybackTargetAvailabilityListener,
+        CyberCore::MediaProducerMediaState::HasAudioOrVideo,
+        CyberCore::MediaProducerMediaState::HasActiveAudioCaptureDevice,
+        CyberCore::MediaProducerMediaState::HasActiveVideoCaptureDevice,
+        CyberCore::MediaProducerMediaState::HasMutedAudioCaptureDevice,
+        CyberCore::MediaProducerMediaState::HasMutedVideoCaptureDevice,
+        CyberCore::MediaProducerMediaState::HasInterruptedAudioCaptureDevice,
+        CyberCore::MediaProducerMediaState::HasInterruptedVideoCaptureDevice,
+        CyberCore::MediaProducerMediaState::HasUserInteractedWithMediaElement,
+        CyberCore::MediaProducerMediaState::HasActiveScreenCaptureDevice,
+        CyberCore::MediaProducerMediaState::HasMutedScreenCaptureDevice,
+        CyberCore::MediaProducerMediaState::HasInterruptedScreenCaptureDevice,
+        CyberCore::MediaProducerMediaState::HasActiveWindowCaptureDevice,
+        CyberCore::MediaProducerMediaState::HasMutedWindowCaptureDevice,
+        CyberCore::MediaProducerMediaState::HasInterruptedWindowCaptureDevice,
+        CyberCore::MediaProducerMediaState::HasActiveSystemAudioCaptureDevice,
+        CyberCore::MediaProducerMediaState::HasMutedSystemAudioCaptureDevice,
+        CyberCore::MediaProducerMediaState::HasInterruptedSystemAudioCaptureDevice,
+        CyberCore::MediaProducerMediaState::HasStreamingActivity
     >;
 };
 
-template<> struct EnumTraits<WebCore::MediaProducerMutedState> {
+template<> struct EnumTraits<CyberCore::MediaProducerMutedState> {
     using values = EnumValues<
-        WebCore::MediaProducerMutedState,
-        WebCore::MediaProducerMutedState::AudioIsMuted,
-        WebCore::MediaProducerMutedState::AudioCaptureIsMuted,
-        WebCore::MediaProducerMutedState::VideoCaptureIsMuted,
-        WebCore::MediaProducerMutedState::ScreenCaptureIsMuted,
-        WebCore::MediaProducerMutedState::WindowCaptureIsMuted,
-        WebCore::MediaProducerMutedState::SystemAudioCaptureIsMuted
+        CyberCore::MediaProducerMutedState,
+        CyberCore::MediaProducerMutedState::AudioIsMuted,
+        CyberCore::MediaProducerMutedState::AudioCaptureIsMuted,
+        CyberCore::MediaProducerMutedState::VideoCaptureIsMuted,
+        CyberCore::MediaProducerMutedState::ScreenCaptureIsMuted,
+        CyberCore::MediaProducerMutedState::WindowCaptureIsMuted,
+        CyberCore::MediaProducerMutedState::SystemAudioCaptureIsMuted
     >;
 };
 

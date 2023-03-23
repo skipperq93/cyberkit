@@ -30,7 +30,7 @@
 #include <wtf/Forward.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Event;
 class XMLHttpRequest;
@@ -75,4 +75,4 @@ private:
     bool m_shouldDeferEventsDueToSuspension { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

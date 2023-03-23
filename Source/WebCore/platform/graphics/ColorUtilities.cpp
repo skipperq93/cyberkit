@@ -26,7 +26,7 @@
 #include "config.h"
 #include "ColorUtilities.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 SRGBA<float> premultiplied(const SRGBA<float>& color)
 {
@@ -75,4 +75,4 @@ SRGBA<uint8_t> unpremultiplied(SRGBA<uint8_t> color)
     return makeFromComponentsClampingExceptAlpha<SRGBA<uint8_t>>(unpremultipliedComponentByte(r, a), unpremultipliedComponentByte(g, a), unpremultipliedComponentByte(b, a), a);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

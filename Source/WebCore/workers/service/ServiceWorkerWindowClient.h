@@ -30,7 +30,7 @@
 #include "ServiceWorkerClient.h"
 #include "VisibilityState.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class DeferredPromise;
 class ServiceWorkerGlobalScope;
@@ -53,10 +53,10 @@ private:
     ServiceWorkerWindowClient(ServiceWorkerGlobalScope&, ServiceWorkerClientData&&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::ServiceWorkerWindowClient)
-    static bool isType(const WebCore::ServiceWorkerClient& client) { return client.type() == WebCore::ServiceWorkerClientType::Window; }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::ServiceWorkerWindowClient)
+    static bool isType(const CyberCore::ServiceWorkerClient& client) { return client.type() == CyberCore::ServiceWorkerClientType::Window; }
 SPECIALIZE_TYPE_TRAITS_END()
 
 #endif // ENABLE(SERVICE_WORKER)

@@ -28,7 +28,7 @@
 #include "Frame.h"
 #include "FrameDestructionObserver.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 inline Frame* FrameDestructionObserver::frame() const
 {

@@ -35,7 +35,7 @@
 #include <wtf/text/StringBuilder.h>
 #include <wtf/unicode/UTF8Conversion.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<FragmentedSharedBuffer> FragmentedSharedBuffer::create()
 {
@@ -689,4 +689,4 @@ RefPtr<SharedBuffer> utf8Buffer(const String& string)
     return SharedBuffer::create(WTFMove(buffer));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

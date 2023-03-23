@@ -47,11 +47,11 @@ exclude .*\/(Configurations|mac|ios|cf|cg|cocoa|Cocoa|objc|avfoundation|ca|curl|
 
 directory Source
 exclude Source/JavaScriptCore/tests
-exclude Source/WebCore/PAL/libavif
-exclude Source/WebCore/platform/audio/resources
-exclude Source/WebCore/bindings/scripts/test
-exclude Source/WebCore/Resources
-exclude Source/WebKitLegacy/.*
+exclude Source/CyberCore/PAL/libavif
+exclude Source/CyberCore/platform/audio/resources
+exclude Source/CyberCore/bindings/scripts/test
+exclude Source/CyberCore/Resources
+exclude Source/CyberKitLegacy/.*
 exclude Source/cmake/OptionsWinCairo.cmake$
 exclude Source/cmake/OptionsWindows.cmake$
 exclude Source/cmake/OptionsAppleWin.cmake$
@@ -74,18 +74,18 @@ exclude Source/WebKit/gtk/NEWS$
 # We do want to include the NEWS, but we want it to be in the root of the archive.
 file Source/WebKit/gtk/NEWS NEWS
 
-file Source/WebCore/en.lproj/mediaControlsLocalizedStrings.js Source/WebCore/en.lproj/mediaControlsLocalizedStrings.js
+file Source/CyberCore/en.lproj/mediaControlsLocalizedStrings.js Source/CyberCore/en.lproj/mediaControlsLocalizedStrings.js
 file Source/WebInspectorUI/Localizations/en.lproj/localizedStrings.js Source/WebInspectorUI/Localizations/en.lproj/localizedStrings.js
 
 # Include only the resources we actually build
-file Source/WebCore/Resources/missingImage.png
-file Source/WebCore/Resources/missingImage@2x.png
-file Source/WebCore/Resources/missingImage@3x.png
-file Source/WebCore/Resources/panIcon.png
-file Source/WebCore/Resources/plugIns.js
-file Source/WebCore/Resources/textAreaResizeCorner.png
-file Source/WebCore/Resources/textAreaResizeCorner@2x.png
-file Source/WebCore/platform/audio/resources/Composite.wav
+file Source/CyberCore/Resources/missingImage.png
+file Source/CyberCore/Resources/missingImage@2x.png
+file Source/CyberCore/Resources/missingImage@3x.png
+file Source/CyberCore/Resources/panIcon.png
+file Source/CyberCore/Resources/plugIns.js
+file Source/CyberCore/Resources/textAreaResizeCorner.png
+file Source/CyberCore/Resources/textAreaResizeCorner@2x.png
+file Source/CyberCore/platform/audio/resources/Composite.wav
 
 directory Tools/gtk
 exclude Tools/gtk/patches

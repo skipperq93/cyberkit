@@ -28,7 +28,7 @@
 #include "GraphicsLayer.h"
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class GraphicsLayerFactory {
     WTF_MAKE_FAST_ALLOCATED;
@@ -38,4 +38,4 @@ public:
     virtual Ref<GraphicsLayer> createGraphicsLayer(GraphicsLayer::Type, GraphicsLayerClient&) = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

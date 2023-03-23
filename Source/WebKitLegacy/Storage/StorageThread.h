@@ -31,7 +31,7 @@
 #include <wtf/Threading.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class StorageAreaSync;
 class StorageTask;
@@ -61,6 +61,6 @@ private:
     MessageQueue<Function<void ()>> m_queue;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // StorageThread_h

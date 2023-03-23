@@ -39,7 +39,7 @@ OBJC_CLASS NSNumber;
 OBJC_CLASS WebFilterEvaluator;
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class ResourceRequest;
 
@@ -81,6 +81,6 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(CONTENT_FILTERING)

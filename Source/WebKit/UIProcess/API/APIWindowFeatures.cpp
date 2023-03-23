@@ -28,12 +28,12 @@
 
 namespace API {
 
-Ref<WindowFeatures> WindowFeatures::create(const WebCore::WindowFeatures& windowFeatures)
+Ref<WindowFeatures> WindowFeatures::create(const CyberCore::WindowFeatures& windowFeatures)
 {
     return adoptRef(*new WindowFeatures(windowFeatures));
 }
 
-WindowFeatures::WindowFeatures(const WebCore::WindowFeatures& windowFeatures)
+WindowFeatures::WindowFeatures(const CyberCore::WindowFeatures& windowFeatures)
     : m_windowFeatures(windowFeatures)
 {
 }

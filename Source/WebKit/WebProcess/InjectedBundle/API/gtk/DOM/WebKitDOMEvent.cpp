@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -18,31 +18,31 @@
  */
 
 #include "config.h"
-#include "WebKitDOMEvent.h"
+#include "CyberKitDOMEvent.h"
 
 #include <CyberCore/CSSImportRule.h>
 #include "DOMObjectCache.h"
 #include <CyberCore/Document.h>
 #include <CyberCore/ExceptionCode.h>
 #include <CyberCore/JSExecState.h>
-#include "WebKitDOMEventPrivate.h"
-#include "WebKitDOMEventTargetPrivate.h"
-#include "WebKitDOMPrivate.h"
+#include "CyberKitDOMEventPrivate.h"
+#include "CyberKitDOMEventTargetPrivate.h"
+#include "CyberKitDOMPrivate.h"
 #include "ConvertToUTF8String.h"
 #include <wtf/GetPtr.h>
 #include <wtf/RefPtr.h>
 
-#define WEBKIT_DOM_EVENT_GET_PRIVATE(obj) G_TYPE_INSTANCE_GET_PRIVATE(obj, WEBKIT_DOM_TYPE_EVENT, WebKitDOMEventPrivate)
+#define WEBKIT_DOM_EVENT_GET_PRIVATE(obj) G_TYPE_INSTANCE_GET_PRIVATE(obj, WEBKIT_DOM_TYPE_EVENT, CyberKitDOMEventPrivate)
 
-typedef struct _WebKitDOMEventPrivate {
-    RefPtr<WebCore::Event> coreObject;
-} WebKitDOMEventPrivate;
+typedef struct _CyberKitDOMEventPrivate {
+    RefPtr<CyberCore::Event> coreObject;
+} CyberKitDOMEventPrivate;
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
-namespace WebKit {
+namespace CyberKit {
 
-WebKitDOMEvent* kit(WebCore::Event* obj)
+CyberKitDOMEvent* kit(CyberCore::Event* obj)
 {
     if (!obj)
         return 0;
@@ -53,20 +53,20 @@ WebKitDOMEvent* kit(WebCore::Event* obj)
     return wrap(obj);
 }
 
-WebCore::Event* core(WebKitDOMEvent* request)
+CyberCore::Event* core(CyberKitDOMEvent* request)
 {
-    return request ? static_cast<WebCore::Event*>(WEBKIT_DOM_OBJECT(request)->coreObject) : 0;
+    return request ? static_cast<CyberCore::Event*>(WEBKIT_DOM_OBJECT(request)->coreObject) : 0;
 }
 
-WebKitDOMEvent* wrapEvent(WebCore::Event* coreObject)
+CyberKitDOMEvent* wrapEvent(CyberCore::Event* coreObject)
 {
     ASSERT(coreObject);
     return WEBKIT_DOM_EVENT(g_object_new(WEBKIT_DOM_TYPE_EVENT, "core-object", coreObject, nullptr));
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
-G_DEFINE_TYPE(WebKitDOMEvent, webkit_dom_event, WEBKIT_DOM_TYPE_OBJECT)
+G_DEFINE_TYPE(CyberKitDOMEvent, webkit_dom_event, WEBKIT_DOM_TYPE_OBJECT)
 
 enum {
     DOM_EVENT_PROP_0,
@@ -84,17 +84,17 @@ enum {
 
 static void webkit_dom_event_finalize(GObject* object)
 {
-    WebKitDOMEventPrivate* priv = WEBKIT_DOM_EVENT_GET_PRIVATE(object);
+    CyberKitDOMEventPrivate* priv = WEBKIT_DOM_EVENT_GET_PRIVATE(object);
 
-    WebKit::DOMObjectCache::forget(priv->coreObject.get());
+    CyberKit::DOMObjectCache::forget(priv->coreObject.get());
 
-    priv->~WebKitDOMEventPrivate();
+    priv->~CyberKitDOMEventPrivate();
     G_OBJECT_CLASS(webkit_dom_event_parent_class)->finalize(object);
 }
 
 static void webkit_dom_event_set_property(GObject* object, guint propertyId, const GValue* value, GParamSpec* pspec)
 {
-    WebKitDOMEvent* self = WEBKIT_DOM_EVENT(object);
+    CyberKitDOMEvent* self = WEBKIT_DOM_EVENT(object);
 
     switch (propertyId) {
     case DOM_EVENT_PROP_RETURN_VALUE:
@@ -111,7 +111,7 @@ static void webkit_dom_event_set_property(GObject* object, guint propertyId, con
 
 static void webkit_dom_event_get_property(GObject* object, guint propertyId, GValue* value, GParamSpec* pspec)
 {
-    WebKitDOMEvent* self = WEBKIT_DOM_EVENT(object);
+    CyberKitDOMEvent* self = WEBKIT_DOM_EVENT(object);
 
     switch (propertyId) {
     case DOM_EVENT_PROP_TYPE:
@@ -154,17 +154,17 @@ static GObject* webkit_dom_event_constructor(GType type, guint constructProperti
 {
     GObject* object = G_OBJECT_CLASS(webkit_dom_event_parent_class)->constructor(type, constructPropertiesCount, constructProperties);
 
-    WebKitDOMEventPrivate* priv = WEBKIT_DOM_EVENT_GET_PRIVATE(object);
-    priv->coreObject = static_cast<WebCore::Event*>(WEBKIT_DOM_OBJECT(object)->coreObject);
-    WebKit::DOMObjectCache::put(priv->coreObject.get(), object);
+    CyberKitDOMEventPrivate* priv = WEBKIT_DOM_EVENT_GET_PRIVATE(object);
+    priv->coreObject = static_cast<CyberCore::Event*>(WEBKIT_DOM_OBJECT(object)->coreObject);
+    CyberKit::DOMObjectCache::put(priv->coreObject.get(), object);
 
     return object;
 }
 
-static void webkit_dom_event_class_init(WebKitDOMEventClass* requestClass)
+static void webkit_dom_event_class_init(CyberKitDOMEventClass* requestClass)
 {
     GObjectClass* gobjectClass = G_OBJECT_CLASS(requestClass);
-    g_type_class_add_private(gobjectClass, sizeof(WebKitDOMEventPrivate));
+    g_type_class_add_private(gobjectClass, sizeof(CyberKitDOMEventPrivate));
     gobjectClass->constructor = webkit_dom_event_constructor;
     gobjectClass->finalize = webkit_dom_event_finalize;
     gobjectClass->set_property = webkit_dom_event_set_property;
@@ -186,7 +186,7 @@ static void webkit_dom_event_class_init(WebKitDOMEventClass* requestClass)
         g_param_spec_object(
             "target",
             "Event:target",
-            "read-only WebKitDOMEventTarget* Event:target",
+            "read-only CyberKitDOMEventTarget* Event:target",
             WEBKIT_DOM_TYPE_EVENT_TARGET,
             WEBKIT_PARAM_READABLE));
 
@@ -196,7 +196,7 @@ static void webkit_dom_event_class_init(WebKitDOMEventClass* requestClass)
         g_param_spec_object(
             "current-target",
             "Event:current-target",
-            "read-only WebKitDOMEventTarget* Event:current-target",
+            "read-only CyberKitDOMEventTarget* Event:current-target",
             WEBKIT_DOM_TYPE_EVENT_TARGET,
             WEBKIT_PARAM_READABLE));
 
@@ -246,7 +246,7 @@ static void webkit_dom_event_class_init(WebKitDOMEventClass* requestClass)
         g_param_spec_object(
             "src-element",
             "Event:src-element",
-            "read-only WebKitDOMEventTarget* Event:src-element",
+            "read-only CyberKitDOMEventTarget* Event:src-element",
             WEBKIT_DOM_TYPE_EVENT_TARGET,
             WEBKIT_PARAM_READABLE));
 
@@ -272,140 +272,140 @@ static void webkit_dom_event_class_init(WebKitDOMEventClass* requestClass)
 
 }
 
-static void webkit_dom_event_init(WebKitDOMEvent* request)
+static void webkit_dom_event_init(CyberKitDOMEvent* request)
 {
-    WebKitDOMEventPrivate* priv = WEBKIT_DOM_EVENT_GET_PRIVATE(request);
-    new (priv) WebKitDOMEventPrivate();
+    CyberKitDOMEventPrivate* priv = WEBKIT_DOM_EVENT_GET_PRIVATE(request);
+    new (priv) CyberKitDOMEventPrivate();
 }
 
-void webkit_dom_event_stop_propagation(WebKitDOMEvent* self)
+void webkit_dom_event_stop_propagation(CyberKitDOMEvent* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_EVENT(self));
-    WebCore::Event* item = WebKit::core(self);
+    CyberCore::Event* item = CyberKit::core(self);
     item->stopPropagation();
 }
 
-void webkit_dom_event_prevent_default(WebKitDOMEvent* self)
+void webkit_dom_event_prevent_default(CyberKitDOMEvent* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_EVENT(self));
-    WebCore::Event* item = WebKit::core(self);
+    CyberCore::Event* item = CyberKit::core(self);
     item->preventDefault();
 }
 
-void webkit_dom_event_init_event(WebKitDOMEvent* self, const gchar* eventTypeArg, gboolean canBubbleArg, gboolean cancelableArg)
+void webkit_dom_event_init_event(CyberKitDOMEvent* self, const gchar* eventTypeArg, gboolean canBubbleArg, gboolean cancelableArg)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_EVENT(self));
     g_return_if_fail(eventTypeArg);
-    WebCore::Event* item = WebKit::core(self);
+    CyberCore::Event* item = CyberKit::core(self);
     item->initEvent(WTF::AtomString::fromUTF8(eventTypeArg), canBubbleArg, cancelableArg);
 }
 
-gchar* webkit_dom_event_get_event_type(WebKitDOMEvent* self)
+gchar* webkit_dom_event_get_event_type(CyberKitDOMEvent* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_EVENT(self), 0);
-    WebCore::Event* item = WebKit::core(self);
+    CyberCore::Event* item = CyberKit::core(self);
     gchar* result = convertToUTF8String(item->type());
     return result;
 }
 
-WebKitDOMEventTarget* webkit_dom_event_get_target(WebKitDOMEvent* self)
+CyberKitDOMEventTarget* webkit_dom_event_get_target(CyberKitDOMEvent* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_EVENT(self), 0);
-    WebCore::Event* item = WebKit::core(self);
-    RefPtr<WebCore::EventTarget> gobjectResult = WTF::getPtr(item->target());
-    return WebKit::kit(gobjectResult.get());
+    CyberCore::Event* item = CyberKit::core(self);
+    RefPtr<CyberCore::EventTarget> gobjectResult = WTF::getPtr(item->target());
+    return CyberKit::kit(gobjectResult.get());
 }
 
-WebKitDOMEventTarget* webkit_dom_event_get_current_target(WebKitDOMEvent* self)
+CyberKitDOMEventTarget* webkit_dom_event_get_current_target(CyberKitDOMEvent* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_EVENT(self), 0);
-    WebCore::Event* item = WebKit::core(self);
-    RefPtr<WebCore::EventTarget> gobjectResult = WTF::getPtr(item->currentTarget());
-    return WebKit::kit(gobjectResult.get());
+    CyberCore::Event* item = CyberKit::core(self);
+    RefPtr<CyberCore::EventTarget> gobjectResult = WTF::getPtr(item->currentTarget());
+    return CyberKit::kit(gobjectResult.get());
 }
 
-gushort webkit_dom_event_get_event_phase(WebKitDOMEvent* self)
+gushort webkit_dom_event_get_event_phase(CyberKitDOMEvent* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_EVENT(self), 0);
-    WebCore::Event* item = WebKit::core(self);
+    CyberCore::Event* item = CyberKit::core(self);
     gushort result = item->eventPhase();
     return result;
 }
 
-gboolean webkit_dom_event_get_bubbles(WebKitDOMEvent* self)
+gboolean webkit_dom_event_get_bubbles(CyberKitDOMEvent* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_EVENT(self), FALSE);
-    WebCore::Event* item = WebKit::core(self);
+    CyberCore::Event* item = CyberKit::core(self);
     gboolean result = item->bubbles();
     return result;
 }
 
-gboolean webkit_dom_event_get_cancelable(WebKitDOMEvent* self)
+gboolean webkit_dom_event_get_cancelable(CyberKitDOMEvent* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_EVENT(self), FALSE);
-    WebCore::Event* item = WebKit::core(self);
+    CyberCore::Event* item = CyberKit::core(self);
     gboolean result = item->cancelable();
     return result;
 }
 
-guint32 webkit_dom_event_get_time_stamp(WebKitDOMEvent* self)
+guint32 webkit_dom_event_get_time_stamp(CyberKitDOMEvent* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_EVENT(self), 0);
-    WebCore::Event* item = WebKit::core(self);
+    CyberCore::Event* item = CyberKit::core(self);
     guint32 result = item->timeStamp().approximateWallTime().secondsSinceEpoch().milliseconds();
     return result;
 }
 
-WebKitDOMEventTarget* webkit_dom_event_get_src_element(WebKitDOMEvent* self)
+CyberKitDOMEventTarget* webkit_dom_event_get_src_element(CyberKitDOMEvent* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_EVENT(self), 0);
-    WebCore::Event* item = WebKit::core(self);
-    RefPtr<WebCore::EventTarget> gobjectResult = WTF::getPtr(item->target());
-    return WebKit::kit(gobjectResult.get());
+    CyberCore::Event* item = CyberKit::core(self);
+    RefPtr<CyberCore::EventTarget> gobjectResult = WTF::getPtr(item->target());
+    return CyberKit::kit(gobjectResult.get());
 }
 
-gboolean webkit_dom_event_get_return_value(WebKitDOMEvent* self)
+gboolean webkit_dom_event_get_return_value(CyberKitDOMEvent* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_EVENT(self), FALSE);
-    WebCore::Event* item = WebKit::core(self);
+    CyberCore::Event* item = CyberKit::core(self);
     gboolean result = item->legacyReturnValue();
     return result;
 }
 
-void webkit_dom_event_set_return_value(WebKitDOMEvent* self, gboolean value)
+void webkit_dom_event_set_return_value(CyberKitDOMEvent* self, gboolean value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_EVENT(self));
-    WebCore::Event* item = WebKit::core(self);
+    CyberCore::Event* item = CyberKit::core(self);
     item->setLegacyReturnValue(value);
 }
 
-gboolean webkit_dom_event_get_cancel_bubble(WebKitDOMEvent* self)
+gboolean webkit_dom_event_get_cancel_bubble(CyberKitDOMEvent* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_EVENT(self), FALSE);
-    WebCore::Event* item = WebKit::core(self);
+    CyberCore::Event* item = CyberKit::core(self);
     gboolean result = item->cancelBubble();
     return result;
 }
 
-void webkit_dom_event_set_cancel_bubble(WebKitDOMEvent* self, gboolean value)
+void webkit_dom_event_set_cancel_bubble(CyberKitDOMEvent* self, gboolean value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_EVENT(self));
-    WebCore::Event* item = WebKit::core(self);
+    CyberCore::Event* item = CyberKit::core(self);
     item->setCancelBubble(value);
 }
 

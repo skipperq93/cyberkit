@@ -37,7 +37,7 @@
 #include "TrackQueue.h"
 #include <wtf/DataMutex.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class MediaSourceTrackGStreamer final: public ThreadSafeRefCounted<MediaSourceTrackGStreamer> {
 public:

@@ -30,8 +30,8 @@
 
 #include "WebPage.h"
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 void WebDragClient::willPerformDragDestinationAction(DragDestinationAction action, const DragData&)
 {
@@ -60,6 +60,6 @@ void WebDragClient::didConcludeEditDrag()
 }
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(DRAG_SUPPORT)

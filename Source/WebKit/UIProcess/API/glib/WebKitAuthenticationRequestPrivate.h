@@ -26,4 +26,4 @@
 WebKitAuthenticationRequest* webkitAuthenticationRequestCreate(WebKit::AuthenticationChallengeProxy*, bool privateBrowsingEnabled, bool persistentCredentialStorageEnabled);
 WebKit::AuthenticationChallengeProxy* webkitAuthenticationRequestGetAuthenticationChallenge(WebKitAuthenticationRequest*);
 void webkitAuthenticationRequestDidAuthenticate(WebKitAuthenticationRequest*);
-const WebCore::Credential& webkitAuthenticationRequestGetProposedCredential(WebKitAuthenticationRequest*);
+const CyberCore::Credential& webkitAuthenticationRequestGetProposedCredential(WebKitAuthenticationRequest*);

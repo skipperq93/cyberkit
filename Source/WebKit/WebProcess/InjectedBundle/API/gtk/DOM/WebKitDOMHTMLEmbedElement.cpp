@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -18,7 +18,7 @@
  */
 
 #include "config.h"
-#include "WebKitDOMHTMLEmbedElement.h"
+#include "CyberKitDOMHTMLEmbedElement.h"
 
 #include <CyberCore/CSSImportRule.h>
 #include "DOMObjectCache.h"
@@ -28,73 +28,73 @@
 #include <CyberCore/HTMLNames.h>
 #include <CyberCore/JSExecState.h>
 #include "GObjectEventListener.h"
-#include "WebKitDOMEventPrivate.h"
-#include "WebKitDOMEventTarget.h"
-#include "WebKitDOMHTMLEmbedElementPrivate.h"
-#include "WebKitDOMNodePrivate.h"
-#include "WebKitDOMPrivate.h"
+#include "CyberKitDOMEventPrivate.h"
+#include "CyberKitDOMEventTarget.h"
+#include "CyberKitDOMHTMLEmbedElementPrivate.h"
+#include "CyberKitDOMNodePrivate.h"
+#include "CyberKitDOMPrivate.h"
 #include "ConvertToUTF8String.h"
 #include <wtf/GetPtr.h>
 #include <wtf/RefPtr.h>
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
-namespace WebKit {
+namespace CyberKit {
 
-WebKitDOMHTMLEmbedElement* kit(WebCore::HTMLEmbedElement* obj)
+CyberKitDOMHTMLEmbedElement* kit(CyberCore::HTMLEmbedElement* obj)
 {
-    return WEBKIT_DOM_HTML_EMBED_ELEMENT(kit(static_cast<WebCore::Node*>(obj)));
+    return WEBKIT_DOM_HTML_EMBED_ELEMENT(kit(static_cast<CyberCore::Node*>(obj)));
 }
 
-WebCore::HTMLEmbedElement* core(WebKitDOMHTMLEmbedElement* request)
+CyberCore::HTMLEmbedElement* core(CyberKitDOMHTMLEmbedElement* request)
 {
-    return request ? static_cast<WebCore::HTMLEmbedElement*>(WEBKIT_DOM_OBJECT(request)->coreObject) : 0;
+    return request ? static_cast<CyberCore::HTMLEmbedElement*>(WEBKIT_DOM_OBJECT(request)->coreObject) : 0;
 }
 
-WebKitDOMHTMLEmbedElement* wrapHTMLEmbedElement(WebCore::HTMLEmbedElement* coreObject)
+CyberKitDOMHTMLEmbedElement* wrapHTMLEmbedElement(CyberCore::HTMLEmbedElement* coreObject)
 {
     ASSERT(coreObject);
     return WEBKIT_DOM_HTML_EMBED_ELEMENT(g_object_new(WEBKIT_DOM_TYPE_HTML_EMBED_ELEMENT, "core-object", coreObject, nullptr));
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
-static gboolean webkit_dom_html_embed_element_dispatch_event(WebKitDOMEventTarget* target, WebKitDOMEvent* event, GError** error)
+static gboolean webkit_dom_html_embed_element_dispatch_event(CyberKitDOMEventTarget* target, CyberKitDOMEvent* event, GError** error)
 {
-    WebCore::Event* coreEvent = WebKit::core(event);
+    CyberCore::Event* coreEvent = CyberKit::core(event);
     if (!coreEvent)
         return false;
-    WebCore::HTMLEmbedElement* coreTarget = static_cast<WebCore::HTMLEmbedElement*>(WEBKIT_DOM_OBJECT(target)->coreObject);
+    CyberCore::HTMLEmbedElement* coreTarget = static_cast<CyberCore::HTMLEmbedElement*>(WEBKIT_DOM_OBJECT(target)->coreObject);
 
     auto result = coreTarget->dispatchEventForBindings(*coreEvent);
     if (result.hasException()) {
-        auto description = WebCore::DOMException::description(result.releaseException().code());
+        auto description = CyberCore::DOMException::description(result.releaseException().code());
         g_set_error_literal(error, g_quark_from_string("WEBKIT_DOM"), description.legacyCode, description.name);
         return false;
     }
     return result.releaseReturnValue();
 }
 
-static gboolean webkit_dom_html_embed_element_add_event_listener(WebKitDOMEventTarget* target, const char* eventName, GClosure* handler, gboolean useCapture)
+static gboolean webkit_dom_html_embed_element_add_event_listener(CyberKitDOMEventTarget* target, const char* eventName, GClosure* handler, gboolean useCapture)
 {
-    WebCore::HTMLEmbedElement* coreTarget = static_cast<WebCore::HTMLEmbedElement*>(WEBKIT_DOM_OBJECT(target)->coreObject);
-    return WebKit::GObjectEventListener::addEventListener(G_OBJECT(target), coreTarget, eventName, handler, useCapture);
+    CyberCore::HTMLEmbedElement* coreTarget = static_cast<CyberCore::HTMLEmbedElement*>(WEBKIT_DOM_OBJECT(target)->coreObject);
+    return CyberKit::GObjectEventListener::addEventListener(G_OBJECT(target), coreTarget, eventName, handler, useCapture);
 }
 
-static gboolean webkit_dom_html_embed_element_remove_event_listener(WebKitDOMEventTarget* target, const char* eventName, GClosure* handler, gboolean useCapture)
+static gboolean webkit_dom_html_embed_element_remove_event_listener(CyberKitDOMEventTarget* target, const char* eventName, GClosure* handler, gboolean useCapture)
 {
-    WebCore::HTMLEmbedElement* coreTarget = static_cast<WebCore::HTMLEmbedElement*>(WEBKIT_DOM_OBJECT(target)->coreObject);
-    return WebKit::GObjectEventListener::removeEventListener(G_OBJECT(target), coreTarget, eventName, handler, useCapture);
+    CyberCore::HTMLEmbedElement* coreTarget = static_cast<CyberCore::HTMLEmbedElement*>(WEBKIT_DOM_OBJECT(target)->coreObject);
+    return CyberKit::GObjectEventListener::removeEventListener(G_OBJECT(target), coreTarget, eventName, handler, useCapture);
 }
 
-static void webkit_dom_html_embed_element_dom_event_target_init(WebKitDOMEventTargetIface* iface)
+static void webkit_dom_html_embed_element_dom_event_target_init(CyberKitDOMEventTargetIface* iface)
 {
     iface->dispatch_event = webkit_dom_html_embed_element_dispatch_event;
     iface->add_event_listener = webkit_dom_html_embed_element_add_event_listener;
     iface->remove_event_listener = webkit_dom_html_embed_element_remove_event_listener;
 }
 
-G_DEFINE_TYPE_WITH_CODE(WebKitDOMHTMLEmbedElement, webkit_dom_html_embed_element, WEBKIT_DOM_TYPE_HTML_ELEMENT, G_IMPLEMENT_INTERFACE(WEBKIT_DOM_TYPE_EVENT_TARGET, webkit_dom_html_embed_element_dom_event_target_init))
+G_DEFINE_TYPE_WITH_CODE(CyberKitDOMHTMLEmbedElement, webkit_dom_html_embed_element, WEBKIT_DOM_TYPE_HTML_ELEMENT, G_IMPLEMENT_INTERFACE(WEBKIT_DOM_TYPE_EVENT_TARGET, webkit_dom_html_embed_element_dom_event_target_init))
 
 enum {
     DOM_HTML_EMBED_ELEMENT_PROP_0,
@@ -108,7 +108,7 @@ enum {
 
 static void webkit_dom_html_embed_element_set_property(GObject* object, guint propertyId, const GValue* value, GParamSpec* pspec)
 {
-    WebKitDOMHTMLEmbedElement* self = WEBKIT_DOM_HTML_EMBED_ELEMENT(object);
+    CyberKitDOMHTMLEmbedElement* self = WEBKIT_DOM_HTML_EMBED_ELEMENT(object);
 
     switch (propertyId) {
     case DOM_HTML_EMBED_ELEMENT_PROP_ALIGN:
@@ -137,7 +137,7 @@ static void webkit_dom_html_embed_element_set_property(GObject* object, guint pr
 
 static void webkit_dom_html_embed_element_get_property(GObject* object, guint propertyId, GValue* value, GParamSpec* pspec)
 {
-    WebKitDOMHTMLEmbedElement* self = WEBKIT_DOM_HTML_EMBED_ELEMENT(object);
+    CyberKitDOMHTMLEmbedElement* self = WEBKIT_DOM_HTML_EMBED_ELEMENT(object);
 
     switch (propertyId) {
     case DOM_HTML_EMBED_ELEMENT_PROP_ALIGN:
@@ -164,7 +164,7 @@ static void webkit_dom_html_embed_element_get_property(GObject* object, guint pr
     }
 }
 
-static void webkit_dom_html_embed_element_class_init(WebKitDOMHTMLEmbedElementClass* requestClass)
+static void webkit_dom_html_embed_element_class_init(CyberKitDOMHTMLEmbedElementClass* requestClass)
 {
     GObjectClass* gobjectClass = G_OBJECT_CLASS(requestClass);
     gobjectClass->set_property = webkit_dom_html_embed_element_set_property;
@@ -232,115 +232,115 @@ static void webkit_dom_html_embed_element_class_init(WebKitDOMHTMLEmbedElementCl
 
 }
 
-static void webkit_dom_html_embed_element_init(WebKitDOMHTMLEmbedElement* request)
+static void webkit_dom_html_embed_element_init(CyberKitDOMHTMLEmbedElement* request)
 {
     UNUSED_PARAM(request);
 }
 
-gchar* webkit_dom_html_embed_element_get_align(WebKitDOMHTMLEmbedElement* self)
+gchar* webkit_dom_html_embed_element_get_align(CyberKitDOMHTMLEmbedElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_EMBED_ELEMENT(self), 0);
-    WebCore::HTMLEmbedElement* item = WebKit::core(self);
-    gchar* result = convertToUTF8String(item->attributeWithoutSynchronization(WebCore::HTMLNames::alignAttr));
+    CyberCore::HTMLEmbedElement* item = CyberKit::core(self);
+    gchar* result = convertToUTF8String(item->attributeWithoutSynchronization(CyberCore::HTMLNames::alignAttr));
     return result;
 }
 
-void webkit_dom_html_embed_element_set_align(WebKitDOMHTMLEmbedElement* self, const gchar* value)
+void webkit_dom_html_embed_element_set_align(CyberKitDOMHTMLEmbedElement* self, const gchar* value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_EMBED_ELEMENT(self));
     g_return_if_fail(value);
-    WebCore::HTMLEmbedElement* item = WebKit::core(self);
-    item->setAttributeWithoutSynchronization(WebCore::HTMLNames::alignAttr, WTF::AtomString::fromUTF8(value));
+    CyberCore::HTMLEmbedElement* item = CyberKit::core(self);
+    item->setAttributeWithoutSynchronization(CyberCore::HTMLNames::alignAttr, WTF::AtomString::fromUTF8(value));
 }
 
-glong webkit_dom_html_embed_element_get_height(WebKitDOMHTMLEmbedElement* self)
+glong webkit_dom_html_embed_element_get_height(CyberKitDOMHTMLEmbedElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_EMBED_ELEMENT(self), 0);
-    WebCore::HTMLEmbedElement* item = WebKit::core(self);
-    glong result = item->getIntegralAttribute(WebCore::HTMLNames::heightAttr);
+    CyberCore::HTMLEmbedElement* item = CyberKit::core(self);
+    glong result = item->getIntegralAttribute(CyberCore::HTMLNames::heightAttr);
     return result;
 }
 
-void webkit_dom_html_embed_element_set_height(WebKitDOMHTMLEmbedElement* self, glong value)
+void webkit_dom_html_embed_element_set_height(CyberKitDOMHTMLEmbedElement* self, glong value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_EMBED_ELEMENT(self));
-    WebCore::HTMLEmbedElement* item = WebKit::core(self);
-    item->setIntegralAttribute(WebCore::HTMLNames::heightAttr, value);
+    CyberCore::HTMLEmbedElement* item = CyberKit::core(self);
+    item->setIntegralAttribute(CyberCore::HTMLNames::heightAttr, value);
 }
 
-gchar* webkit_dom_html_embed_element_get_name(WebKitDOMHTMLEmbedElement* self)
+gchar* webkit_dom_html_embed_element_get_name(CyberKitDOMHTMLEmbedElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_EMBED_ELEMENT(self), 0);
-    WebCore::HTMLEmbedElement* item = WebKit::core(self);
+    CyberCore::HTMLEmbedElement* item = CyberKit::core(self);
     gchar* result = convertToUTF8String(item->getNameAttribute());
     return result;
 }
 
-void webkit_dom_html_embed_element_set_name(WebKitDOMHTMLEmbedElement* self, const gchar* value)
+void webkit_dom_html_embed_element_set_name(CyberKitDOMHTMLEmbedElement* self, const gchar* value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_EMBED_ELEMENT(self));
     g_return_if_fail(value);
-    WebCore::HTMLEmbedElement* item = WebKit::core(self);
-    item->setAttributeWithoutSynchronization(WebCore::HTMLNames::nameAttr, WTF::AtomString::fromUTF8(value));
+    CyberCore::HTMLEmbedElement* item = CyberKit::core(self);
+    item->setAttributeWithoutSynchronization(CyberCore::HTMLNames::nameAttr, WTF::AtomString::fromUTF8(value));
 }
 
-gchar* webkit_dom_html_embed_element_get_src(WebKitDOMHTMLEmbedElement* self)
+gchar* webkit_dom_html_embed_element_get_src(CyberKitDOMHTMLEmbedElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_EMBED_ELEMENT(self), 0);
-    WebCore::HTMLEmbedElement* item = WebKit::core(self);
-    gchar* result = convertToUTF8String(item->getURLAttribute(WebCore::HTMLNames::srcAttr));
+    CyberCore::HTMLEmbedElement* item = CyberKit::core(self);
+    gchar* result = convertToUTF8String(item->getURLAttribute(CyberCore::HTMLNames::srcAttr));
     return result;
 }
 
-void webkit_dom_html_embed_element_set_src(WebKitDOMHTMLEmbedElement* self, const gchar* value)
+void webkit_dom_html_embed_element_set_src(CyberKitDOMHTMLEmbedElement* self, const gchar* value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_EMBED_ELEMENT(self));
     g_return_if_fail(value);
-    WebCore::HTMLEmbedElement* item = WebKit::core(self);
-    item->setAttributeWithoutSynchronization(WebCore::HTMLNames::srcAttr, WTF::AtomString::fromUTF8(value));
+    CyberCore::HTMLEmbedElement* item = CyberKit::core(self);
+    item->setAttributeWithoutSynchronization(CyberCore::HTMLNames::srcAttr, WTF::AtomString::fromUTF8(value));
 }
 
-gchar* webkit_dom_html_embed_element_get_type_attr(WebKitDOMHTMLEmbedElement* self)
+gchar* webkit_dom_html_embed_element_get_type_attr(CyberKitDOMHTMLEmbedElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_EMBED_ELEMENT(self), 0);
-    WebCore::HTMLEmbedElement* item = WebKit::core(self);
-    gchar* result = convertToUTF8String(item->attributeWithoutSynchronization(WebCore::HTMLNames::typeAttr));
+    CyberCore::HTMLEmbedElement* item = CyberKit::core(self);
+    gchar* result = convertToUTF8String(item->attributeWithoutSynchronization(CyberCore::HTMLNames::typeAttr));
     return result;
 }
 
-void webkit_dom_html_embed_element_set_type_attr(WebKitDOMHTMLEmbedElement* self, const gchar* value)
+void webkit_dom_html_embed_element_set_type_attr(CyberKitDOMHTMLEmbedElement* self, const gchar* value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_EMBED_ELEMENT(self));
     g_return_if_fail(value);
-    WebCore::HTMLEmbedElement* item = WebKit::core(self);
-    item->setAttributeWithoutSynchronization(WebCore::HTMLNames::typeAttr, WTF::AtomString::fromUTF8(value));
+    CyberCore::HTMLEmbedElement* item = CyberKit::core(self);
+    item->setAttributeWithoutSynchronization(CyberCore::HTMLNames::typeAttr, WTF::AtomString::fromUTF8(value));
 }
 
-glong webkit_dom_html_embed_element_get_width(WebKitDOMHTMLEmbedElement* self)
+glong webkit_dom_html_embed_element_get_width(CyberKitDOMHTMLEmbedElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_EMBED_ELEMENT(self), 0);
-    WebCore::HTMLEmbedElement* item = WebKit::core(self);
-    glong result = item->getIntegralAttribute(WebCore::HTMLNames::widthAttr);
+    CyberCore::HTMLEmbedElement* item = CyberKit::core(self);
+    glong result = item->getIntegralAttribute(CyberCore::HTMLNames::widthAttr);
     return result;
 }
 
-void webkit_dom_html_embed_element_set_width(WebKitDOMHTMLEmbedElement* self, glong value)
+void webkit_dom_html_embed_element_set_width(CyberKitDOMHTMLEmbedElement* self, glong value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_EMBED_ELEMENT(self));
-    WebCore::HTMLEmbedElement* item = WebKit::core(self);
-    item->setIntegralAttribute(WebCore::HTMLNames::widthAttr, value);
+    CyberCore::HTMLEmbedElement* item = CyberKit::core(self);
+    item->setIntegralAttribute(CyberCore::HTMLNames::widthAttr, value);
 }
 
 G_GNUC_END_IGNORE_DEPRECATIONS;

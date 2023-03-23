@@ -28,7 +28,7 @@
 
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ContentType {
 public:
@@ -52,14 +52,14 @@ private:
     String m_type;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 template<typename Type> struct LogArgument;
 
 template <>
-struct LogArgument<WebCore::ContentType> {
-    static String toString(const WebCore::ContentType& type)
+struct LogArgument<CyberCore::ContentType> {
+    static String toString(const CyberCore::ContentType& type)
     {
         return type.toJSONString();
     }

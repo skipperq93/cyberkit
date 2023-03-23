@@ -24,7 +24,7 @@
 
 #include "FilterEffect.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class FEMerge : public FilterEffect {
 public:
@@ -42,6 +42,6 @@ private:
     unsigned m_numberOfEffectInputs { 0 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_FILTER_EFFECT(FEMerge)

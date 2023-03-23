@@ -30,7 +30,7 @@
 #include "PixelBuffer.h"
 #include <wtf/ParallelJobs.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 inline ColorComponents<uint8_t, 4> FEMorphologySoftwareApplier::minOrMax(const ColorComponents<uint8_t, 4>& a, const ColorComponents<uint8_t, 4>& b, MorphologyOperatorType type)
 {
@@ -188,4 +188,4 @@ bool FEMorphologySoftwareApplier::apply(const Filter& filter, const FilterImageV
     return true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

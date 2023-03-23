@@ -27,7 +27,7 @@
 
 #include <wtf/Ref.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CertificateInfo;
 class CurlRequest;
@@ -48,4 +48,4 @@ public:
     virtual void curlDidFailWithError(CurlRequest&, ResourceError&&, CertificateInfo&&) = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

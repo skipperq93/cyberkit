@@ -40,7 +40,7 @@
 #include "RenderElement.h"
 #include "StyleBuilderState.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static inline bool operator==(const StyleGradientImageStop& a, const StyleGradientImageStop& b)
 {
@@ -1358,4 +1358,4 @@ Ref<Gradient> StyleGradientImage::createGradient(const ConicData& conic, const R
     return Gradient::create(WTFMove(data), m_colorInterpolationMethod.method, GradientSpreadMethod::Pad, WTFMove(stops));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -31,7 +31,7 @@ namespace WTF {
 class TextStream;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class StyleSelfAlignmentData {
 public:
@@ -70,4 +70,4 @@ private:
 
 WTF::TextStream& operator<<(WTF::TextStream&, const StyleSelfAlignmentData&);
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -40,7 +40,7 @@
 #include "WorkerFetchResult.h"
 #include "WorkerRunLoop.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 ServiceWorkerJob::ServiceWorkerJob(ServiceWorkerJobClient& client, RefPtr<DeferredPromise>&& promise, ServiceWorkerJobData&& jobData)
     : m_client(client)
@@ -196,6 +196,6 @@ bool ServiceWorkerJob::cancelPendingLoad()
     return false;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

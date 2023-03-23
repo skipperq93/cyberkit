@@ -28,7 +28,7 @@
 
 #include <CertificateStore/CertificateStore.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 void CurlSSLHandle::platformInitialize()
 {
@@ -46,4 +46,4 @@ void CurlSSLHandle::platformInitialize()
     setIgnoreSSLErrors(CertificateStore::shouldIgnoreTLSErrors());
 }
 
-} // namespace WebCore
+} // namespace CyberCore

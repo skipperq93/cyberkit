@@ -21,28 +21,28 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 struct WebKit::NavigationActionData {
-    WebCore::NavigationType navigationType;
+    CyberCore::NavigationType navigationType;
     OptionSet<WebKit::WebEventModifier> modifiers;
     WebKit::WebMouseEventButton mouseButton;
     WebKit::WebMouseEventSyntheticClickType syntheticClickType;
     uint64_t userGestureTokenIdentifier;
     bool canHandleRequest;
-    WebCore::ShouldOpenExternalURLsPolicy shouldOpenExternalURLsPolicy;
+    CyberCore::ShouldOpenExternalURLsPolicy shouldOpenExternalURLsPolicy;
     WTF::String downloadAttribute;
-    WebCore::FloatPoint clickLocationInRootViewCoordinates;
+    CyberCore::FloatPoint clickLocationInRootViewCoordinates;
     bool isRedirect;
     bool treatAsSameOriginNavigation;
     bool hasOpenedFrames;
     bool openedByDOMWithOpener;
     bool hasOpener;
-    WebCore::SecurityOriginData requesterOrigin;
-    std::optional<WebCore::BackForwardItemIdentifier> targetBackForwardItemIdentifier;
-    std::optional<WebCore::BackForwardItemIdentifier> sourceBackForwardItemIdentifier;
-    WebCore::LockHistory lockHistory;
-    WebCore::LockBackForwardList lockBackForwardList;
+    CyberCore::SecurityOriginData requesterOrigin;
+    std::optional<CyberCore::BackForwardItemIdentifier> targetBackForwardItemIdentifier;
+    std::optional<CyberCore::BackForwardItemIdentifier> sourceBackForwardItemIdentifier;
+    CyberCore::LockHistory lockHistory;
+    CyberCore::LockBackForwardList lockBackForwardList;
     WTF::String clientRedirectSourceForHistory;
-    WebCore::SandboxFlags effectiveSandboxFlags;
-    std::optional<WebCore::PrivateClickMeasurement> privateClickMeasurement;
+    CyberCore::SandboxFlags effectiveSandboxFlags;
+    std::optional<CyberCore::PrivateClickMeasurement> privateClickMeasurement;
 #if PLATFORM(MAC) || HAVE(UIKIT_WITH_MOUSE_SUPPORT)
     std::optional<WebKit::WebHitTestResultData> webHitTestResultData;
 #endif

@@ -38,7 +38,7 @@
 
 OBJC_CLASS LAContext;
 
-namespace WebCore {
+namespace CyberCore {
 class AuthenticatorAssertionResponse;
 }
 
@@ -46,7 +46,7 @@ namespace WebKit {
 
 class Authenticator : public RefCounted<Authenticator>, public CanMakeWeakPtr<Authenticator> {
 public:
-    using Respond = std::variant<Ref<WebCore::AuthenticatorResponse>, WebCore::ExceptionData>;
+    using Respond = std::variant<Ref<CyberCore::AuthenticatorResponse>, CyberCore::ExceptionData>;
 
     class Observer : public CanMakeWeakPtr<Observer> {
     public:
@@ -55,7 +55,7 @@ public:
         virtual void downgrade(Authenticator* id, Ref<Authenticator>&& downgradedAuthenticator) = 0;
         virtual void authenticatorStatusUpdated(WebAuthenticationStatus) = 0;
         virtual void requestPin(uint64_t retries, CompletionHandler<void(const WTF::String&)>&&) = 0;
-        virtual void selectAssertionResponse(Vector<Ref<WebCore::AuthenticatorAssertionResponse>>&&, WebAuthenticationSource, CompletionHandler<void(WebCore::AuthenticatorAssertionResponse*)>&&) = 0;
+        virtual void selectAssertionResponse(Vector<Ref<CyberCore::AuthenticatorAssertionResponse>>&&, WebAuthenticationSource, CompletionHandler<void(CyberCore::AuthenticatorAssertionResponse*)>&&) = 0;
         virtual void decidePolicyForLocalAuthenticator(CompletionHandler<void(LocalAuthenticatorPolicy)>&&) = 0;
         virtual void requestLAContextForUserVerification(CompletionHandler<void(LAContext *)>&&) = 0;
         virtual void cancelRequest() = 0;

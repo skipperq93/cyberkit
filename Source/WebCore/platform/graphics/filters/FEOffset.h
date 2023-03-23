@@ -24,7 +24,7 @@
 
 #include "FilterEffect.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class FEOffset : public FilterEffect {
 public:
@@ -53,6 +53,6 @@ private:
     float m_dy;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_FILTER_EFFECT(FEOffset)

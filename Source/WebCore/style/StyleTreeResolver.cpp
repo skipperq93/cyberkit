@@ -56,7 +56,7 @@
 #include "WebAnimationTypes.h"
 #include "WebAnimationUtilities.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace Style {
 

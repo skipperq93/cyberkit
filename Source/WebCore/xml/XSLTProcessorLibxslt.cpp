@@ -55,7 +55,7 @@
 #include "SoftLinkLibxslt.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 void XSLTProcessor::genericErrorFunc(void*, const char*, ...)
 {
@@ -393,6 +393,6 @@ bool XSLTProcessor::transformToString(Node& sourceNode, String& mimeType, String
     return success;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(XSLT)

@@ -27,7 +27,7 @@
 
 #include "TextRun.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class TextBoxIterator {
 public:
@@ -57,4 +57,4 @@ private:
     unsigned m_offset { 0 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

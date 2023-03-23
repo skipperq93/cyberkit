@@ -27,7 +27,7 @@
 
 #include <wtf/ObjectIdentifier.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 enum StorageNamespaceIdentifierType { };
 using StorageNamespaceIdentifier = ObjectIdentifier<StorageNamespaceIdentifierType>;

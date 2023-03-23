@@ -36,7 +36,7 @@
 OBJC_CLASS UIView;
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 class Exception;
 }
 
@@ -44,7 +44,7 @@ namespace WebKit {
 
 class WebPageProxy;
 
-class WebScreenOrientationManagerProxy final : public IPC::MessageReceiver, public WebCore::ScreenOrientationProvider::Observer
+class WebScreenOrientationManagerProxy final : public IPC::MessageReceiver, public CyberCore::ScreenOrientationProvider::Observer
 #if PLATFORM(IOS_FAMILY)
     , public WebViewDidMoveToWindowObserver
 #endif
@@ -68,16 +68,16 @@ private:
     void platformInitialize();
     void platformDestroy();
 
-    std::optional<WebCore::Exception> platformShouldRejectLockRequest() const;
+    std::optional<CyberCore::Exception> platformShouldRejectLockRequest() const;
 
     // IPC message handlers.
-    void currentOrientation(CompletionHandler<void(WebCore::ScreenOrientationType)>&&);
-    void lock(WebCore::ScreenOrientationLockType, CompletionHandler<void(std::optional<WebCore::Exception>&&)>&&);
+    void currentOrientation(CompletionHandler<void(CyberCore::ScreenOrientationType)>&&);
+    void lock(CyberCore::ScreenOrientationLockType, CompletionHandler<void(std::optional<CyberCore::Exception>&&)>&&);
     void unlock();
     void setShouldSendChangeNotification(bool);
 
-    // WebCore::ScreenOrientationProvider::Observer
-    void screenOrientationDidChange(WebCore::ScreenOrientationType) final;
+    // CyberCore::ScreenOrientationProvider::Observer
+    void screenOrientationDidChange(CyberCore::ScreenOrientationType) final;
 
 #if PLATFORM(IOS_FAMILY)
     // WebViewDidMoveToWindowObserver
@@ -85,9 +85,9 @@ private:
 #endif
 
     WebPageProxy& m_page;
-    Ref<WebCore::ScreenOrientationProvider> m_provider;
-    std::optional<WebCore::ScreenOrientationType> m_currentlyLockedOrientation;
-    CompletionHandler<void(std::optional<WebCore::Exception>&&)> m_currentLockRequest;
+    Ref<CyberCore::ScreenOrientationProvider> m_provider;
+    std::optional<CyberCore::ScreenOrientationType> m_currentlyLockedOrientation;
+    CompletionHandler<void(std::optional<CyberCore::Exception>&&)> m_currentLockRequest;
 };
 
 } // namespace WebKit

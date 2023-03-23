@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -17,16 +17,16 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitDOMHTMLEmbedElementPrivate_h
-#define WebKitDOMHTMLEmbedElementPrivate_h
+#ifndef CyberKitDOMHTMLEmbedElementPrivate_h
+#define CyberKitDOMHTMLEmbedElementPrivate_h
 
 #include <CyberCore/HTMLEmbedElement.h>
-#include <webkitdom/WebKitDOMHTMLEmbedElement.h>
+#include <webkitdom/CyberKitDOMHTMLEmbedElement.h>
 
-namespace WebKit {
-WebKitDOMHTMLEmbedElement* wrapHTMLEmbedElement(WebCore::HTMLEmbedElement*);
-WebKitDOMHTMLEmbedElement* kit(WebCore::HTMLEmbedElement*);
-WebCore::HTMLEmbedElement* core(WebKitDOMHTMLEmbedElement*);
-} // namespace WebKit
+namespace CyberKit {
+CyberKitDOMHTMLEmbedElement* wrapHTMLEmbedElement(CyberCore::HTMLEmbedElement*);
+CyberKitDOMHTMLEmbedElement* kit(CyberCore::HTMLEmbedElement*);
+CyberCore::HTMLEmbedElement* core(CyberKitDOMHTMLEmbedElement*);
+} // namespace CyberKit
 
-#endif /* WebKitDOMHTMLEmbedElementPrivate_h */
+#endif /* CyberKitDOMHTMLEmbedElementPrivate_h */

@@ -28,7 +28,7 @@
 #include "TextureMapperContextAttributes.h"
 #include "TextureMapperGL.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 GstVideoFrameHolder::GstVideoFrameHolder(GstSample* sample, std::optional<GstVideoDecoderPlatform> videoDecoderPlatform, TextureMapperGL::Flags flags, bool gstGLEnabled)
     : m_videoDecoderPlatform(videoDecoderPlatform)
@@ -163,7 +163,7 @@ void GstVideoFrameHolder::updateTexture(BitmapTextureGL& texture)
     if (!srcData)
         return;
 
-    texture.updateContents(srcData, WebCore::IntRect(0, 0, m_size.width(), m_size.height()), WebCore::IntPoint(0, 0), stride);
+    texture.updateContents(srcData, CyberCore::IntRect(0, 0, m_size.width(), m_size.height()), CyberCore::IntPoint(0, 0), stride);
 }
 
 std::unique_ptr<TextureMapperPlatformLayerBuffer> GstVideoFrameHolder::platformLayerBuffer()

@@ -36,7 +36,7 @@
 #include <QuartzCore/CABase.h>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 PlatformCALayer::PlatformCALayer(LayerType layerType, PlatformCALayerClient* owner)
     : m_layerType(layerType)

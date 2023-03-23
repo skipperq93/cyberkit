@@ -65,7 +65,7 @@ InspectorExtensionDelegate::InspectorExtensionClient::~InspectorExtensionClient(
 {
 }
 
-void InspectorExtensionDelegate::InspectorExtensionClient::didShowExtensionTab(const Inspector::ExtensionTabID& extensionTabID, WebCore::FrameIdentifier frameID)
+void InspectorExtensionDelegate::InspectorExtensionClient::didShowExtensionTab(const Inspector::ExtensionTabID& extensionTabID, CyberCore::FrameIdentifier frameID)
 {
     if (!m_inspectorExtensionDelegate.m_delegateMethods.inspectorExtensionDidShowTabWithIdentifier)
         return;

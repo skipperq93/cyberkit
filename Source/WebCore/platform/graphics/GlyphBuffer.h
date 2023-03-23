@@ -37,7 +37,7 @@
 #include <limits>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Font;
 
@@ -85,7 +85,7 @@ public:
 
     void setInitialAdvance(GlyphBufferAdvance initialAdvance) { m_initialAdvance = initialAdvance; }
     const GlyphBufferAdvance& initialAdvance() const { return m_initialAdvance; }
-    void expandInitialAdvance(float width) { setWidth(m_initialAdvance, WebCore::width(m_initialAdvance) + width); }
+    void expandInitialAdvance(float width) { setWidth(m_initialAdvance, CyberCore::width(m_initialAdvance) + width); }
     void expandInitialAdvance(GlyphBufferAdvance additionalAdvance)
     {
         setWidth(m_initialAdvance, width(m_initialAdvance) + width(additionalAdvance));
@@ -151,14 +151,14 @@ public:
     {
         ASSERT(!isEmpty());
         GlyphBufferAdvance& lastAdvance = m_advances.last();
-        setWidth(lastAdvance, WebCore::width(lastAdvance) + width);
+        setWidth(lastAdvance, CyberCore::width(lastAdvance) + width);
     }
 
     void expandAdvance(unsigned index, float width)
     {
         ASSERT(index < size());
         auto& lastAdvance = m_advances[index];
-        setWidth(lastAdvance, WebCore::width(lastAdvance) + width);
+        setWidth(lastAdvance, CyberCore::width(lastAdvance) + width);
     }
 
     void expandLastAdvance(GlyphBufferAdvance expansion)

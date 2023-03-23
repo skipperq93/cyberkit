@@ -33,7 +33,7 @@ namespace API {
 class SerializedScriptValue;
 }
 
-namespace WebCore {
+namespace CyberCore {
 struct ExceptionDetails;
 }
 
@@ -42,7 +42,7 @@ enum class ExtensionError : uint8_t;
 
 using ExtensionTabID = WTF::String;
 using ExtensionID = WTF::String;
-using ExtensionEvaluationResult = Expected<Expected<RefPtr<API::SerializedScriptValue>, WebCore::ExceptionDetails>, ExtensionError>;
+using ExtensionEvaluationResult = Expected<Expected<RefPtr<API::SerializedScriptValue>, CyberCore::ExceptionDetails>, ExtensionError>;
 
 enum class ExtensionError : uint8_t {
     ContextDestroyed,

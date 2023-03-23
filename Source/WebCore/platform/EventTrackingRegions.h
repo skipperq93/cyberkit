@@ -31,7 +31,7 @@
 #include <wtf/text/StringHash.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct EventNames;
 
@@ -86,4 +86,4 @@ struct EventTrackingRegions {
 bool operator==(const EventTrackingRegions&, const EventTrackingRegions&);
 inline bool operator!=(const EventTrackingRegions& a, const EventTrackingRegions& b) { return !(a == b); }
 
-} // namespace WebCore
+} // namespace CyberCore

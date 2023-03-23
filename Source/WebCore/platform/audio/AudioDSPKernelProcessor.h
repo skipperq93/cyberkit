@@ -35,7 +35,7 @@
 #include "AudioProcessor.h"
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioBus;
 class AudioDSPKernel;
@@ -72,6 +72,6 @@ protected:
     bool m_hasJustReset { true };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // AudioDSPKernelProcessor_h

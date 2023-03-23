@@ -33,7 +33,7 @@ function FailingTestsBugForm(tester, failingBuildName, passingBuildName, failing
     this.description = this._createBugDescription();
     // FIXME: When a newly-added test has been failing since its introduction, it isn't really a
     // "regression". We should use different keywords in that case. <http://webkit.org/b/61645>
-    this.keywords += ', ' + WebKitBugzilla.Keyword.Regression;
+    this.keywords += ', ' + CyberKitBugzilla.Keyword.Regression;
     this.title = this._createBugTitle();
     this.url = this._failingResultsHTMLURL();
 }

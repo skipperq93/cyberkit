@@ -28,7 +28,7 @@
 
 #include <cstdint>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class DMABufColorSpace : uint32_t {
     Invalid,
@@ -39,4 +39,4 @@ enum class DMABufColorSpace : uint32_t {
     SMPTE240M,
 };
 
-} // namespace WebCore
+} // namespace CyberCore

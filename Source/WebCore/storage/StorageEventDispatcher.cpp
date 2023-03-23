@@ -38,7 +38,7 @@
 #include "StorageEvent.h"
 #include "StorageType.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 template<StorageType storageType>
 static void dispatchStorageEvents(const String& key, const String& oldValue, const String& newValue, const SecurityOrigin& securityOrigin, const String& url, const Function<bool(Storage&)>& isSourceStorage, const Function<bool(Page&)>& isRelevantPage)
@@ -92,4 +92,4 @@ void StorageEventDispatcher::dispatchLocalStorageEvents(const String& key, const
     });
 }
 
-} // namespace WebCore
+} // namespace CyberCore

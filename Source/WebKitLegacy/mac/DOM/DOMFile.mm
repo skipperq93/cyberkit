@@ -35,28 +35,28 @@
 #import <wtf/GetPtr.h>
 #import <wtf/URL.h>
 
-#define IMPL static_cast<WebCore::File*>(reinterpret_cast<WebCore::Blob*>(_internal))
+#define IMPL static_cast<CyberCore::File*>(reinterpret_cast<CyberCore::Blob*>(_internal))
 
 @implementation DOMFile
 
 - (NSString *)name
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->name();
 }
 
 - (long long)lastModified
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->lastModified();
 }
 
 @end
 
-DOMFile *kit(WebCore::File* value)
+DOMFile *kit(CyberCore::File* value)
 {
-    WebCoreThreadViolationCheckRoundOne();
-    return static_cast<DOMFile*>(kit(static_cast<WebCore::Blob*>(value)));
+    CyberCoreThreadViolationCheckRoundOne();
+    return static_cast<DOMFile*>(kit(static_cast<CyberCore::Blob*>(value)));
 }
 
 #undef IMPL

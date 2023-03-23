@@ -41,7 +41,7 @@
 #include <wtf/text/AtomStringHash.h>
 #include <wtf/text/CString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static bool shouldForceContentSniffing;
 
@@ -309,4 +309,4 @@ void ResourceHandle::setDefersLoading(bool defers)
     platformSetDefersLoading(defers);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

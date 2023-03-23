@@ -33,7 +33,7 @@
 #import "LocalDefaultSystemAppearance.h"
 #import "TextFieldPart.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 TextFieldMac::TextFieldMac(TextFieldPart& owningPart, ControlFactoryMac& controlFactory, NSTextFieldCell* textFieldCell)
     : ControlMac(owningPart, controlFactory)
@@ -92,6 +92,6 @@ void TextFieldMac::draw(GraphicsContext& context, const FloatRoundedRect& border
 #endif
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(MAC)

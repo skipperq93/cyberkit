@@ -35,7 +35,7 @@
 #include <pal/spi/cg/CoreGraphicsSPI.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 FontCustomPlatformData::FontCustomPlatformData(const String& name, FontPlatformData::CreationData&& creationData)
     : name(name)

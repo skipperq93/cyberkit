@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -21,28 +21,28 @@
 #error "Only <webkitdom/webkitdom.h> can be included directly."
 #endif
 
-#ifndef WebKitDOMHTMLAreaElement_h
-#define WebKitDOMHTMLAreaElement_h
+#ifndef CyberKitDOMHTMLAreaElement_h
+#define CyberKitDOMHTMLAreaElement_h
 
 #include <glib-object.h>
-#include <webkitdom/WebKitDOMHTMLElement.h>
+#include <webkitdom/CyberKitDOMHTMLElement.h>
 #include <webkitdom/webkitdomdefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_DOM_TYPE_HTML_AREA_ELEMENT            (webkit_dom_html_area_element_get_type())
-#define WEBKIT_DOM_HTML_AREA_ELEMENT(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_HTML_AREA_ELEMENT, WebKitDOMHTMLAreaElement))
-#define WEBKIT_DOM_HTML_AREA_ELEMENT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_HTML_AREA_ELEMENT, WebKitDOMHTMLAreaElementClass)
+#define WEBKIT_DOM_HTML_AREA_ELEMENT(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_HTML_AREA_ELEMENT, CyberKitDOMHTMLAreaElement))
+#define WEBKIT_DOM_HTML_AREA_ELEMENT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_HTML_AREA_ELEMENT, CyberKitDOMHTMLAreaElementClass)
 #define WEBKIT_DOM_IS_HTML_AREA_ELEMENT(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_DOM_TYPE_HTML_AREA_ELEMENT))
 #define WEBKIT_DOM_IS_HTML_AREA_ELEMENT_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_DOM_TYPE_HTML_AREA_ELEMENT))
-#define WEBKIT_DOM_HTML_AREA_ELEMENT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_HTML_AREA_ELEMENT, WebKitDOMHTMLAreaElementClass))
+#define WEBKIT_DOM_HTML_AREA_ELEMENT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_HTML_AREA_ELEMENT, CyberKitDOMHTMLAreaElementClass))
 
-struct _WebKitDOMHTMLAreaElement {
-    WebKitDOMHTMLElement parent_instance;
+struct _CyberKitDOMHTMLAreaElement {
+    CyberKitDOMHTMLElement parent_instance;
 };
 
-struct _WebKitDOMHTMLAreaElementClass {
-    WebKitDOMHTMLElementClass parent_class;
+struct _CyberKitDOMHTMLAreaElementClass {
+    CyberKitDOMHTMLElementClass parent_class;
 };
 
 WEBKIT_DEPRECATED GType
@@ -50,150 +50,150 @@ webkit_dom_html_area_element_get_type(void);
 
 /**
  * webkit_dom_html_area_element_get_alt:
- * @self: A #WebKitDOMHTMLAreaElement
+ * @self: A #CyberKitDOMHTMLAreaElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_area_element_get_alt(WebKitDOMHTMLAreaElement* self);
+webkit_dom_html_area_element_get_alt(CyberKitDOMHTMLAreaElement* self);
 
 /**
  * webkit_dom_html_area_element_set_alt:
- * @self: A #WebKitDOMHTMLAreaElement
+ * @self: A #CyberKitDOMHTMLAreaElement
  * @value: A #gchar
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_area_element_set_alt(WebKitDOMHTMLAreaElement* self, const gchar* value);
+webkit_dom_html_area_element_set_alt(CyberKitDOMHTMLAreaElement* self, const gchar* value);
 
 /**
  * webkit_dom_html_area_element_get_coords:
- * @self: A #WebKitDOMHTMLAreaElement
+ * @self: A #CyberKitDOMHTMLAreaElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_area_element_get_coords(WebKitDOMHTMLAreaElement* self);
+webkit_dom_html_area_element_get_coords(CyberKitDOMHTMLAreaElement* self);
 
 /**
  * webkit_dom_html_area_element_set_coords:
- * @self: A #WebKitDOMHTMLAreaElement
+ * @self: A #CyberKitDOMHTMLAreaElement
  * @value: A #gchar
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_area_element_set_coords(WebKitDOMHTMLAreaElement* self, const gchar* value);
+webkit_dom_html_area_element_set_coords(CyberKitDOMHTMLAreaElement* self, const gchar* value);
 
 /**
  * webkit_dom_html_area_element_get_no_href:
- * @self: A #WebKitDOMHTMLAreaElement
+ * @self: A #CyberKitDOMHTMLAreaElement
  *
  * Returns: A #gboolean
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
-webkit_dom_html_area_element_get_no_href(WebKitDOMHTMLAreaElement* self);
+webkit_dom_html_area_element_get_no_href(CyberKitDOMHTMLAreaElement* self);
 
 /**
  * webkit_dom_html_area_element_set_no_href:
- * @self: A #WebKitDOMHTMLAreaElement
+ * @self: A #CyberKitDOMHTMLAreaElement
  * @value: A #gboolean
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_area_element_set_no_href(WebKitDOMHTMLAreaElement* self, gboolean value);
+webkit_dom_html_area_element_set_no_href(CyberKitDOMHTMLAreaElement* self, gboolean value);
 
 /**
  * webkit_dom_html_area_element_get_shape:
- * @self: A #WebKitDOMHTMLAreaElement
+ * @self: A #CyberKitDOMHTMLAreaElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_area_element_get_shape(WebKitDOMHTMLAreaElement* self);
+webkit_dom_html_area_element_get_shape(CyberKitDOMHTMLAreaElement* self);
 
 /**
  * webkit_dom_html_area_element_set_shape:
- * @self: A #WebKitDOMHTMLAreaElement
+ * @self: A #CyberKitDOMHTMLAreaElement
  * @value: A #gchar
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_area_element_set_shape(WebKitDOMHTMLAreaElement* self, const gchar* value);
+webkit_dom_html_area_element_set_shape(CyberKitDOMHTMLAreaElement* self, const gchar* value);
 
 /**
  * webkit_dom_html_area_element_get_target:
- * @self: A #WebKitDOMHTMLAreaElement
+ * @self: A #CyberKitDOMHTMLAreaElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_area_element_get_target(WebKitDOMHTMLAreaElement* self);
+webkit_dom_html_area_element_get_target(CyberKitDOMHTMLAreaElement* self);
 
 /**
  * webkit_dom_html_area_element_set_target:
- * @self: A #WebKitDOMHTMLAreaElement
+ * @self: A #CyberKitDOMHTMLAreaElement
  * @value: A #gchar
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_area_element_set_target(WebKitDOMHTMLAreaElement* self, const gchar* value);
+webkit_dom_html_area_element_set_target(CyberKitDOMHTMLAreaElement* self, const gchar* value);
 
 /**
  * webkit_dom_html_area_element_get_href:
- * @self: A #WebKitDOMHTMLAreaElement
+ * @self: A #CyberKitDOMHTMLAreaElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_area_element_get_href(WebKitDOMHTMLAreaElement* self);
+webkit_dom_html_area_element_get_href(CyberKitDOMHTMLAreaElement* self);
 
 /**
  * webkit_dom_html_area_element_set_href:
- * @self: A #WebKitDOMHTMLAreaElement
+ * @self: A #CyberKitDOMHTMLAreaElement
  * @value: A #gchar
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_area_element_set_href(WebKitDOMHTMLAreaElement* self, const gchar* value);
+webkit_dom_html_area_element_set_href(CyberKitDOMHTMLAreaElement* self, const gchar* value);
 
 /**
  * webkit_dom_html_area_element_get_protocol:
- * @self: A #WebKitDOMHTMLAreaElement
+ * @self: A #CyberKitDOMHTMLAreaElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_area_element_get_protocol(WebKitDOMHTMLAreaElement* self);
+webkit_dom_html_area_element_get_protocol(CyberKitDOMHTMLAreaElement* self);
 
 /**
  * webkit_dom_html_area_element_set_protocol:
- * @self: A #WebKitDOMHTMLAreaElement
+ * @self: A #CyberKitDOMHTMLAreaElement
  * @value: A #gchar
  *
  * Since: 2.16
@@ -201,22 +201,22 @@ webkit_dom_html_area_element_get_protocol(WebKitDOMHTMLAreaElement* self);
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_area_element_set_protocol(WebKitDOMHTMLAreaElement* self, const gchar* value);
+webkit_dom_html_area_element_set_protocol(CyberKitDOMHTMLAreaElement* self, const gchar* value);
 
 /**
  * webkit_dom_html_area_element_get_host:
- * @self: A #WebKitDOMHTMLAreaElement
+ * @self: A #CyberKitDOMHTMLAreaElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_area_element_get_host(WebKitDOMHTMLAreaElement* self);
+webkit_dom_html_area_element_get_host(CyberKitDOMHTMLAreaElement* self);
 
 /**
  * webkit_dom_html_area_element_set_host:
- * @self: A #WebKitDOMHTMLAreaElement
+ * @self: A #CyberKitDOMHTMLAreaElement
  * @value: A #gchar
  *
  * Since: 2.16
@@ -224,22 +224,22 @@ webkit_dom_html_area_element_get_host(WebKitDOMHTMLAreaElement* self);
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_area_element_set_host(WebKitDOMHTMLAreaElement* self, const gchar* value);
+webkit_dom_html_area_element_set_host(CyberKitDOMHTMLAreaElement* self, const gchar* value);
 
 /**
  * webkit_dom_html_area_element_get_hostname:
- * @self: A #WebKitDOMHTMLAreaElement
+ * @self: A #CyberKitDOMHTMLAreaElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_area_element_get_hostname(WebKitDOMHTMLAreaElement* self);
+webkit_dom_html_area_element_get_hostname(CyberKitDOMHTMLAreaElement* self);
 
 /**
  * webkit_dom_html_area_element_set_hostname:
- * @self: A #WebKitDOMHTMLAreaElement
+ * @self: A #CyberKitDOMHTMLAreaElement
  * @value: A #gchar
  *
  * Since: 2.16
@@ -247,22 +247,22 @@ webkit_dom_html_area_element_get_hostname(WebKitDOMHTMLAreaElement* self);
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_area_element_set_hostname(WebKitDOMHTMLAreaElement* self, const gchar* value);
+webkit_dom_html_area_element_set_hostname(CyberKitDOMHTMLAreaElement* self, const gchar* value);
 
 /**
  * webkit_dom_html_area_element_get_port:
- * @self: A #WebKitDOMHTMLAreaElement
+ * @self: A #CyberKitDOMHTMLAreaElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_area_element_get_port(WebKitDOMHTMLAreaElement* self);
+webkit_dom_html_area_element_get_port(CyberKitDOMHTMLAreaElement* self);
 
 /**
  * webkit_dom_html_area_element_set_port:
- * @self: A #WebKitDOMHTMLAreaElement
+ * @self: A #CyberKitDOMHTMLAreaElement
  * @value: A #gchar
  *
  * Since: 2.16
@@ -270,22 +270,22 @@ webkit_dom_html_area_element_get_port(WebKitDOMHTMLAreaElement* self);
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_area_element_set_port(WebKitDOMHTMLAreaElement* self, const gchar* value);
+webkit_dom_html_area_element_set_port(CyberKitDOMHTMLAreaElement* self, const gchar* value);
 
 /**
  * webkit_dom_html_area_element_get_pathname:
- * @self: A #WebKitDOMHTMLAreaElement
+ * @self: A #CyberKitDOMHTMLAreaElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_area_element_get_pathname(WebKitDOMHTMLAreaElement* self);
+webkit_dom_html_area_element_get_pathname(CyberKitDOMHTMLAreaElement* self);
 
 /**
  * webkit_dom_html_area_element_set_pathname:
- * @self: A #WebKitDOMHTMLAreaElement
+ * @self: A #CyberKitDOMHTMLAreaElement
  * @value: A #gchar
  *
  * Since: 2.16
@@ -293,22 +293,22 @@ webkit_dom_html_area_element_get_pathname(WebKitDOMHTMLAreaElement* self);
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_area_element_set_pathname(WebKitDOMHTMLAreaElement* self, const gchar* value);
+webkit_dom_html_area_element_set_pathname(CyberKitDOMHTMLAreaElement* self, const gchar* value);
 
 /**
  * webkit_dom_html_area_element_get_search:
- * @self: A #WebKitDOMHTMLAreaElement
+ * @self: A #CyberKitDOMHTMLAreaElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_area_element_get_search(WebKitDOMHTMLAreaElement* self);
+webkit_dom_html_area_element_get_search(CyberKitDOMHTMLAreaElement* self);
 
 /**
  * webkit_dom_html_area_element_set_search:
- * @self: A #WebKitDOMHTMLAreaElement
+ * @self: A #CyberKitDOMHTMLAreaElement
  * @value: A #gchar
  *
  * Since: 2.16
@@ -316,22 +316,22 @@ webkit_dom_html_area_element_get_search(WebKitDOMHTMLAreaElement* self);
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_area_element_set_search(WebKitDOMHTMLAreaElement* self, const gchar* value);
+webkit_dom_html_area_element_set_search(CyberKitDOMHTMLAreaElement* self, const gchar* value);
 
 /**
  * webkit_dom_html_area_element_get_hash:
- * @self: A #WebKitDOMHTMLAreaElement
+ * @self: A #CyberKitDOMHTMLAreaElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_area_element_get_hash(WebKitDOMHTMLAreaElement* self);
+webkit_dom_html_area_element_get_hash(CyberKitDOMHTMLAreaElement* self);
 
 /**
  * webkit_dom_html_area_element_set_hash:
- * @self: A #WebKitDOMHTMLAreaElement
+ * @self: A #CyberKitDOMHTMLAreaElement
  * @value: A #gchar
  *
  * Stability: Unstable
@@ -339,8 +339,8 @@ webkit_dom_html_area_element_get_hash(WebKitDOMHTMLAreaElement* self);
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_area_element_set_hash(WebKitDOMHTMLAreaElement* self, const gchar* value);
+webkit_dom_html_area_element_set_hash(CyberKitDOMHTMLAreaElement* self, const gchar* value);
 
 G_END_DECLS
 
-#endif /* WebKitDOMHTMLAreaElement_h */
+#endif /* CyberKitDOMHTMLAreaElement_h */

@@ -26,7 +26,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(RenderProgress);
 
@@ -115,5 +115,5 @@ HTMLProgressElement* RenderProgress::progressElement() const
     return downcast<HTMLProgressElement>(element()->shadowHost());
 }    
 
-} // namespace WebCore
+} // namespace CyberCore
 

@@ -27,7 +27,7 @@
 
 #include <wtf/Seconds.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using ReducedResolutionSeconds = Seconds;
 

@@ -34,7 +34,7 @@
 #import <pal/spi/mac/CoreUISPI.h>
 #import <pal/spi/mac/NSAppearanceSPI.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 ProgressBarMac::ProgressBarMac(ProgressBarPart& owningPart, ControlFactoryMac& controlFactory)
     : ControlMac(owningPart, controlFactory)
@@ -134,6 +134,6 @@ void ProgressBarMac::draw(GraphicsContext& context, const FloatRoundedRect& bord
     context.drawConsumingImageBuffer(WTFMove(imageBuffer), inflatedRect.location());
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(MAC)

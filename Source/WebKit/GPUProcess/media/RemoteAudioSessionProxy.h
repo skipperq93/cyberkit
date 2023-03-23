@@ -49,17 +49,17 @@ public:
     static UniqueRef<RemoteAudioSessionProxy> create(GPUConnectionToWebProcess&);
     virtual ~RemoteAudioSessionProxy();
 
-    WebCore::ProcessIdentifier processIdentifier();
+    CyberCore::ProcessIdentifier processIdentifier();
     RemoteAudioSessionConfiguration configuration();
 
-    WebCore::AudioSession::CategoryType category() const { return m_category; };
-    WebCore::RouteSharingPolicy routeSharingPolicy() const { return m_routeSharingPolicy; }
+    CyberCore::AudioSession::CategoryType category() const { return m_category; };
+    CyberCore::RouteSharingPolicy routeSharingPolicy() const { return m_routeSharingPolicy; }
     size_t preferredBufferSize() const { return m_preferredBufferSize; }
     bool isActive() const { return m_active; }
 
     void configurationChanged();
     void beginInterruption();
-    void endInterruption(WebCore::AudioSession::MayResume);
+    void endInterruption(CyberCore::AudioSession::MayResume);
 
     // IPC::MessageReceiver
     void didReceiveMessage(IPC::Connection&, IPC::Decoder&) final;
@@ -72,7 +72,7 @@ private:
     explicit RemoteAudioSessionProxy(GPUConnectionToWebProcess&);
 
     // Messages
-    void setCategory(WebCore::AudioSession::CategoryType, WebCore::RouteSharingPolicy);
+    void setCategory(CyberCore::AudioSession::CategoryType, CyberCore::RouteSharingPolicy);
     void setPreferredBufferSize(uint64_t);
     using SetActiveCompletion = CompletionHandler<void(bool)>;
     void tryToSetActive(bool, SetActiveCompletion&&);
@@ -84,8 +84,8 @@ private:
     IPC::Connection& connection();
 
     GPUConnectionToWebProcess& m_gpuConnection;
-    WebCore::AudioSession::CategoryType m_category { WebCore::AudioSession::CategoryType::None };
-    WebCore::RouteSharingPolicy m_routeSharingPolicy { WebCore::RouteSharingPolicy::Default };
+    CyberCore::AudioSession::CategoryType m_category { CyberCore::AudioSession::CategoryType::None };
+    CyberCore::RouteSharingPolicy m_routeSharingPolicy { CyberCore::RouteSharingPolicy::Default };
     size_t m_preferredBufferSize { 0 };
     bool m_active { false };
     bool m_isPlayingToBluetoothOverrideChanged { false };

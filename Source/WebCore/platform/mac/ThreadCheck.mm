@@ -33,7 +33,7 @@
 #import <wtf/StdLibExtras.h>
 #import <wtf/text/StringHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static bool didReadThreadViolationBehaviorFromUserDefaults = false;
 static bool threadViolationBehaviorIsDefault = true;
@@ -44,7 +44,7 @@ static void readThreadViolationBehaviorFromUserDefaults()
     didReadThreadViolationBehaviorFromUserDefaults = true;
 
     ThreadViolationBehavior newBehavior = LogOnFirstThreadViolation;
-    NSString *threadCheckLevel = [[NSUserDefaults standardUserDefaults] stringForKey:@"WebCoreThreadCheck"];
+    NSString *threadCheckLevel = [[NSUserDefaults standardUserDefaults] stringForKey:@"CyberCoreThreadCheck"];
     if (!threadCheckLevel)
         return;
 
@@ -87,15 +87,15 @@ void reportThreadViolation(const char* function, ThreadViolationRound round)
         return;
     if (pthread_main_np())
         return;
-    WebCoreReportThreadViolation(function, round);
+    CyberCoreReportThreadViolation(function, round);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 // Split out the actual reporting of the thread violation to make it easier to set a breakpoint
-void WebCoreReportThreadViolation(const char* function, WebCore::ThreadViolationRound round)
+void CyberCoreReportThreadViolation(const char* function, CyberCore::ThreadViolationRound round)
 {
-    using namespace WebCore;
+    using namespace CyberCore;
 
     ASSERT(round < MaximumThreadViolationRound);
     if (round >= MaximumThreadViolationRound)

@@ -32,7 +32,7 @@
 #include <wtf/UniqueRef.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 struct MockWebAuthenticationConfiguration;
 }
 
@@ -52,8 +52,8 @@ public:
         virtual void serviceStatusUpdated(WebAuthenticationStatus) = 0;
     };
 
-    static UniqueRef<AuthenticatorTransportService> create(WebCore::AuthenticatorTransport, Observer&);
-    static UniqueRef<AuthenticatorTransportService> createMock(WebCore::AuthenticatorTransport, Observer&, const WebCore::MockWebAuthenticationConfiguration&);
+    static UniqueRef<AuthenticatorTransportService> create(CyberCore::AuthenticatorTransport, Observer&);
+    static UniqueRef<AuthenticatorTransportService> createMock(CyberCore::AuthenticatorTransport, Observer&, const CyberCore::MockWebAuthenticationConfiguration&);
 
     virtual ~AuthenticatorTransportService() = default;
 

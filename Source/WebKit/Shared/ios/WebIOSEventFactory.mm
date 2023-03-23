@@ -97,10 +97,10 @@ WebKit::WebKeyboardEvent WebIOSEventFactory::createWebKeyboardEvent(::WebEvent *
         unmodifiedText = event.charactersIgnoringModifiers;
         autoRepeat = event.isKeyRepeating;
     }
-    String key = WebCore::keyForKeyEvent(event);
-    String code = WebCore::codeForKeyEvent(event);
-    String keyIdentifier = WebCore::keyIdentifierForKeyEvent(event);
-    int windowsVirtualKeyCode = WebCore::windowsKeyCodeForKeyEvent(event);
+    String key = CyberCore::keyForKeyEvent(event);
+    String code = CyberCore::codeForKeyEvent(event);
+    String keyIdentifier = CyberCore::keyIdentifierForKeyEvent(event);
+    int windowsVirtualKeyCode = CyberCore::windowsKeyCodeForKeyEvent(event);
     // FIXME: This is not correct. WebEvent.keyCode represents the Windows native virtual key code.
     int nativeVirtualKeyCode = event.keyCode;
     int macCharCode = 0;
@@ -138,7 +138,7 @@ WebKit::WebMouseEvent WebIOSEventFactory::createWebMouseEvent(::WebEvent *event)
     auto type = WebKit::WebEventType::MouseMove;
     auto button = WebKit::WebMouseEventButton::NoButton;
     unsigned short buttons = 0;
-    auto position = WebCore::IntPoint(event.locationInWindow);
+    auto position = CyberCore::IntPoint(event.locationInWindow);
     float deltaX = 0;
     float deltaY = 0;
     float deltaZ = 0;
@@ -172,11 +172,11 @@ static WebKit::WebWheelEvent::Phase toWebPhase(UIScrollPhase phase)
 
 WebKit::WebWheelEvent WebIOSEventFactory::createWebWheelEvent(UIScrollEvent *event, UIView *contentView, std::optional<WebKit::WebWheelEvent::Phase> overridePhase)
 {
-    WebCore::IntPoint scrollLocation = WebCore::roundedIntPoint([event locationInView:contentView]);
+    CyberCore::IntPoint scrollLocation = CyberCore::roundedIntPoint([event locationInView:contentView]);
     CGVector deltaVector = [event _adjustedAcceleratedDeltaInView:contentView];
-    WebCore::FloatSize delta(deltaVector.dx, deltaVector.dy);
-    WebCore::FloatSize wheelTicks = delta;
-    wheelTicks.scale(1. / static_cast<float>(WebCore::Scrollbar::pixelsPerLineStep()));
+    CyberCore::FloatSize delta(deltaVector.dx, deltaVector.dy);
+    CyberCore::FloatSize wheelTicks = delta;
+    wheelTicks.scale(1. / static_cast<float>(CyberCore::Scrollbar::pixelsPerLineStep()));
     auto timestamp = MonotonicTime::fromRawSeconds(event.timestamp).approximateWallTime();
     return {
         { WebKit::WebEventType::Wheel, OptionSet<WebKit::WebEventModifier> { }, timestamp },

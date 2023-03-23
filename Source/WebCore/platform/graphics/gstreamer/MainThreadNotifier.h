@@ -25,7 +25,7 @@
 #include <wtf/RunLoop.h>
 #include <wtf/ThreadSafeRefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 template <typename T>
 class MainThreadNotifier final : public ThreadSafeRefCounted<MainThreadNotifier<T>> {
@@ -129,5 +129,5 @@ private:
     Atomic<bool> m_isValid;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 

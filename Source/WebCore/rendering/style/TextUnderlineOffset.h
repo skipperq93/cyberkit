@@ -28,7 +28,7 @@
 #include "Length.h"
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class TextUnderlineOffset {
 public:
@@ -105,4 +105,4 @@ inline TextStream& operator<<(TextStream& ts, const TextUnderlineOffset& offset)
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

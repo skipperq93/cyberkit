@@ -33,7 +33,7 @@
 #include "ScrollingTree.h"
 #include "ScrollingTreeNode.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScrollingTree;
 class ScrollingStateScrollingNode;
@@ -204,7 +204,7 @@ private:
     LayerRepresentation m_scrolledContentsLayer;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_SCROLLING_NODE(ScrollingTreeScrollingNode, isScrollingNode())
 

@@ -33,7 +33,7 @@
 #include "ExceptionOr.h"
 #include "ScriptWrappable.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMWindow;
 
@@ -77,4 +77,4 @@ private:
     const URL& url() const;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

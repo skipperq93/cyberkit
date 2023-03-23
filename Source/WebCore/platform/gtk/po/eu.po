@@ -1167,8 +1167,8 @@ msgid "Enable Timeline profiling"
 msgstr "Gaitu denbora-lerroaren profila"
 
 #: ../../../WebKit/gtk/webkit/webkitwebinspector.cpp:321
-msgid "Profile the WebCore instrumentation."
-msgstr "WebCore tresneriaren profila."
+msgid "Profile the CyberCore instrumentation."
+msgstr "CyberCore tresneriaren profila."
 
 #: ../../../WebKit/gtk/webkit/webkitwebnavigationaction.cpp:148
 msgid "Reason"

@@ -60,7 +60,7 @@ OBJC_CLASS NSEvent;
 #include "WAKAppKitStubs.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class AutoscrollController;
 class ContainerNode;
@@ -669,4 +669,4 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -27,7 +27,7 @@
  */
 
 #import "config.h"
-#import "WebCoreURLResponse.h"
+#import "CyberCoreURLResponse.h"
 
 #import "MIMETypeRegistry.h"
 #import "ResourceResponse.h"
@@ -37,7 +37,7 @@
 #import <wtf/RetainPtr.h>
 #import <wtf/SortedArrayMap.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 #if PLATFORM(MAC)
 

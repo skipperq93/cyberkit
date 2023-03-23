@@ -35,7 +35,7 @@ class WebProcessPool;
 struct FrameInfoData;
 }
 
-namespace WebCore {
+namespace CyberCore {
 class SecurityOrigin;
 }
 

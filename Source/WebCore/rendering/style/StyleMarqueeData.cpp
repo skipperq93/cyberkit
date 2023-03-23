@@ -24,7 +24,7 @@
 
 #include "RenderStyle.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 StyleMarqueeData::StyleMarqueeData()
     : increment(RenderStyle::initialMarqueeIncrement())
@@ -56,4 +56,4 @@ bool StyleMarqueeData::operator==(const StyleMarqueeData& o) const
            behavior == o.behavior && loops == o.loops;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

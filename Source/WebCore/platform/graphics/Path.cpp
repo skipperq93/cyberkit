@@ -39,7 +39,7 @@
 #include <wtf/MathExtras.h>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 float Path::length() const
 {
@@ -287,7 +287,7 @@ bool Path::isClosed() const
     // (i.e the last PathElement).
     // FIXME: find a more efficient way to implement this, that does not require iterating
     // through all PathElements.
-    apply([&lastElementIsClosed](const WebCore::PathElement& element) {
+    apply([&lastElementIsClosed](const CyberCore::PathElement& element) {
         lastElementIsClosed = (element.type == PathElement::Type::CloseSubpath);
     });
 

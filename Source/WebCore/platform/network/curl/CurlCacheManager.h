@@ -33,7 +33,7 @@
 #include <wtf/ListHashSet.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CurlCacheManager {
     friend NeverDestroyed<CurlCacheManager>;
@@ -79,4 +79,4 @@ private:
     void readCachedData(const String&, ResourceHandle*, ResourceResponse&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -40,7 +40,7 @@ ALLOW_COMMA_BEGIN
 ALLOW_UNUSED_PARAMETERS_END
 ALLOW_COMMA_END
 
-namespace WebCore {
+namespace CyberCore {
 class BaseAudioMediaStreamTrackRendererUnit;
 class IncomingAudioMediaStreamTrackRendererUnit;
 
@@ -157,6 +157,6 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(LIBWEBRTC)

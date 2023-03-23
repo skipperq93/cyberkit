@@ -82,7 +82,7 @@ public:
 
     struct LaunchOptions {
         ProcessType processType;
-        WebCore::ProcessIdentifier processIdentifier;
+        CyberCore::ProcessIdentifier processIdentifier;
         HashMap<String, String> extraInitializationData;
         bool nonValidInjectedCodeAllowed { false };
         bool shouldMakeProcessLaunchFailForTesting { false };

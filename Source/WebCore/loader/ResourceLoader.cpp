@@ -74,7 +74,7 @@
 #define FRAME_ID ((frame() ? frame()->frameID() : FrameIdentifier()).object().toUInt64())
 #define RESOURCELOADER_RELEASE_LOG(fmt, ...) RELEASE_LOG(Network, "%p - [pageID=%" PRIu64 ", frameID=%" PRIu64 ", frameLoader=%p, resourceID=%" PRIu64 "] ResourceLoader::" fmt, this, PAGE_ID, FRAME_ID, frameLoader(), identifier().toUInt64(), ##__VA_ARGS__)
 
-namespace WebCore {
+namespace CyberCore {
 
 DEFINE_ALLOCATOR_WITH_HEAP_IDENTIFIER(ResourceLoader);
 
@@ -890,7 +890,7 @@ bool ResourceLoader::isPDFJSResourceLoad() const
 #endif
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #undef RESOURCELOADER_RELEASE_LOG
 #undef PAGE_ID

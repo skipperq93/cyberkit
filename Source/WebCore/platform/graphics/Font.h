@@ -56,7 +56,7 @@ namespace WTF {
 class TextStream;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class FontCache;
 class FontDescription;
@@ -361,7 +361,7 @@ private:
     unsigned m_shouldNotBeUsedForArabic : 1;
 #endif
 
-    // Adding any non-derived information to Font needs a parallel change in WebCoreArgumentCoders.cpp.
+    // Adding any non-derived information to Font needs a parallel change in CyberCoreArgumentCoders.cpp.
 };
 
 #if PLATFORM(IOS_FAMILY)
@@ -415,36 +415,36 @@ ALWAYS_INLINE float Font::widthForGlyph(Glyph glyph, SyntheticBoldInclusion Synt
 WEBCORE_EXPORT TextStream& operator<<(TextStream&, const Font&);
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::Font::Origin> {
+template<> struct EnumTraits<CyberCore::Font::Origin> {
     using values = EnumValues<
-        WebCore::Font::Origin,
-        WebCore::Font::Origin::Remote,
-        WebCore::Font::Origin::Local
+        CyberCore::Font::Origin,
+        CyberCore::Font::Origin::Remote,
+        CyberCore::Font::Origin::Local
     >;
 };
-template<> struct EnumTraits<WebCore::Font::Interstitial> {
+template<> struct EnumTraits<CyberCore::Font::Interstitial> {
     using values = EnumValues<
-        WebCore::Font::Interstitial,
-        WebCore::Font::Interstitial::Yes,
-        WebCore::Font::Interstitial::No
+        CyberCore::Font::Interstitial,
+        CyberCore::Font::Interstitial::Yes,
+        CyberCore::Font::Interstitial::No
     >;
 };
-template<> struct EnumTraits<WebCore::Font::Visibility> {
+template<> struct EnumTraits<CyberCore::Font::Visibility> {
     using values = EnumValues<
-        WebCore::Font::Visibility,
-        WebCore::Font::Visibility::Visible,
-        WebCore::Font::Visibility::Invisible
+        CyberCore::Font::Visibility,
+        CyberCore::Font::Visibility::Visible,
+        CyberCore::Font::Visibility::Invisible
     >;
 };
-template<> struct EnumTraits<WebCore::Font::OrientationFallback> {
+template<> struct EnumTraits<CyberCore::Font::OrientationFallback> {
     using values = EnumValues<
-        WebCore::Font::OrientationFallback,
-        WebCore::Font::OrientationFallback::Yes,
-        WebCore::Font::OrientationFallback::No
+        CyberCore::Font::OrientationFallback,
+        CyberCore::Font::OrientationFallback::Yes,
+        CyberCore::Font::OrientationFallback::No
     >;
 };
 

@@ -30,7 +30,7 @@
 #include <wtf/RefPtr.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMWrapperWorld;
 class Frame;
@@ -62,4 +62,4 @@ private:
     bool m_wasDetached;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

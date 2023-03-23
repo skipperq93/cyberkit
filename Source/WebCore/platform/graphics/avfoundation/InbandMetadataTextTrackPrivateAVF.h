@@ -30,7 +30,7 @@
 #if ENABLE(VIDEO) && USE(AVFOUNDATION)
 #include "InbandTextTrackPrivate.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 #if ENABLE(DATACUE_VALUE)
 struct IncompleteMetaDataCue {
@@ -73,7 +73,7 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(VIDEO) && USE(AVFOUNDATION)
 

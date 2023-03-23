@@ -33,7 +33,7 @@
 typedef const struct opaqueCMFormatDescription* CMFormatDescriptionRef;
 typedef struct opaqueCMSampleBuffer* CMSampleBufferRef;
 
-namespace WebCore {
+namespace CyberCore {
 
 class MediaSamplesBlock;
 struct TrackInfo;

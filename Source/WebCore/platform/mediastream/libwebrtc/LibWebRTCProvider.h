@@ -55,7 +55,7 @@ class AsyncResolverFactory;
 class PeerConnectionFactoryInterface;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class LibWebRTCAudioModule;
 class RegistrableDomain;
@@ -161,6 +161,6 @@ inline LibWebRTCAudioModule* LibWebRTCProvider::audioModule()
     return m_audioModule.get();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(LIBWEBRTC)

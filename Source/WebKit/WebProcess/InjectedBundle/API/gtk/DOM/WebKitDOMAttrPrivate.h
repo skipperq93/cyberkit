@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -17,16 +17,16 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitDOMAttrPrivate_h
-#define WebKitDOMAttrPrivate_h
+#ifndef CyberKitDOMAttrPrivate_h
+#define CyberKitDOMAttrPrivate_h
 
 #include <CyberCore/Attr.h>
-#include <webkitdom/WebKitDOMAttr.h>
+#include <webkitdom/CyberKitDOMAttr.h>
 
-namespace WebKit {
-WebKitDOMAttr* wrapAttr(WebCore::Attr*);
-WebKitDOMAttr* kit(WebCore::Attr*);
-WebCore::Attr* core(WebKitDOMAttr*);
-} // namespace WebKit
+namespace CyberKit {
+CyberKitDOMAttr* wrapAttr(CyberCore::Attr*);
+CyberKitDOMAttr* kit(CyberCore::Attr*);
+CyberCore::Attr* core(CyberKitDOMAttr*);
+} // namespace CyberKit
 
-#endif /* WebKitDOMAttrPrivate_h */
+#endif /* CyberKitDOMAttrPrivate_h */

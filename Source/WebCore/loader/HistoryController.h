@@ -31,7 +31,7 @@
 
 #include "FrameLoader.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class Frame;
 class HistoryItem;
@@ -121,4 +121,4 @@ private:
     FrameLoadType m_deferredFrameLoadType;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

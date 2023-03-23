@@ -30,7 +30,7 @@
 #include "CDMFactory.h"
 #include "CDMPrivate.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct FourCC;
 

@@ -61,7 +61,7 @@ namespace WTF {
 class WorkQueue;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class CDMInstance;
 class CDMInstanceFairPlayStreamingAVFObjC;
@@ -73,7 +73,7 @@ class AudioTrackPrivate;
 class VideoTrackPrivate;
 class AudioTrackPrivateMediaSourceAVFObjC;
 class VideoTrackPrivateMediaSourceAVFObjC;
-class WebCoreDecompressionSession;
+class CyberCoreDecompressionSession;
 class SharedBuffer;
 
 class SourceBufferPrivateAVFObjCErrorClient {
@@ -133,7 +133,7 @@ public:
     ALLOW_NEW_API_WITHOUT_GUARDS_END
 
     void setVideoLayer(AVSampleBufferDisplayLayer*);
-    void setDecompressionSession(WebCoreDecompressionSession*);
+    void setDecompressionSession(CyberCoreDecompressionSession*);
 
     void bufferWasConsumed();
     
@@ -225,7 +225,7 @@ private:
     Box<BinarySemaphore> m_hasSessionSemaphore;
     Box<Semaphore> m_abortSemaphore;
     const Ref<WTF::WorkQueue> m_appendQueue;
-    RefPtr<WebCoreDecompressionSession> m_decompressionSession;
+    RefPtr<CyberCoreDecompressionSession> m_decompressionSession;
 
     MediaSourcePrivateAVFObjC* m_mediaSource;
     bool m_isActive { false };

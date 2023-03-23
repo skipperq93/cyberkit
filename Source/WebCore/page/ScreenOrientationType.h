@@ -27,7 +27,7 @@
 
 #include <wtf/EnumTraits.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class ScreenOrientationType : uint8_t {
     PortraitPrimary,
@@ -46,17 +46,17 @@ constexpr bool isLandscape(ScreenOrientationType type)
     return type == ScreenOrientationType::LandscapePrimary || type == ScreenOrientationType::LandscapeSecondary;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::ScreenOrientationType> {
+template<> struct EnumTraits<CyberCore::ScreenOrientationType> {
     using values = EnumValues<
-        WebCore::ScreenOrientationType,
-        WebCore::ScreenOrientationType::PortraitPrimary,
-        WebCore::ScreenOrientationType::PortraitSecondary,
-        WebCore::ScreenOrientationType::LandscapePrimary,
-        WebCore::ScreenOrientationType::LandscapeSecondary
+        CyberCore::ScreenOrientationType,
+        CyberCore::ScreenOrientationType::PortraitPrimary,
+        CyberCore::ScreenOrientationType::PortraitSecondary,
+        CyberCore::ScreenOrientationType::LandscapePrimary,
+        CyberCore::ScreenOrientationType::LandscapeSecondary
     >;
 };
 

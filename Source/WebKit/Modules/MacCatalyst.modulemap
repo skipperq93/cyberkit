@@ -1,7 +1,7 @@
 framework module CyberKit [system] [extern_c] {
   umbrella header "WebKit.h"
   // Use <CyberKitLegacy/WebKit.h> if available.
-  exclude header "WebKitLegacy.h"
+  exclude header "CyberKitLegacy.h"
   module * { export * }
   export *
 }

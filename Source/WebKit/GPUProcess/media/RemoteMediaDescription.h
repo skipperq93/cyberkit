@@ -31,7 +31,7 @@
 
 namespace WebKit {
 
-class RemoteMediaDescription : public WebCore::MediaDescription {
+class RemoteMediaDescription : public CyberCore::MediaDescription {
 public:
     static Ref<RemoteMediaDescription> create(const MediaDescriptionInfo& descriptionInfo)
     {

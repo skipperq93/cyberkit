@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -21,28 +21,28 @@
 #error "Only <webkitdom/webkitdom.h> can be included directly."
 #endif
 
-#ifndef WebKitDOMHTMLBodyElement_h
-#define WebKitDOMHTMLBodyElement_h
+#ifndef CyberKitDOMHTMLBodyElement_h
+#define CyberKitDOMHTMLBodyElement_h
 
 #include <glib-object.h>
-#include <webkitdom/WebKitDOMHTMLElement.h>
+#include <webkitdom/CyberKitDOMHTMLElement.h>
 #include <webkitdom/webkitdomdefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_DOM_TYPE_HTML_BODY_ELEMENT            (webkit_dom_html_body_element_get_type())
-#define WEBKIT_DOM_HTML_BODY_ELEMENT(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_HTML_BODY_ELEMENT, WebKitDOMHTMLBodyElement))
-#define WEBKIT_DOM_HTML_BODY_ELEMENT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_HTML_BODY_ELEMENT, WebKitDOMHTMLBodyElementClass)
+#define WEBKIT_DOM_HTML_BODY_ELEMENT(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_HTML_BODY_ELEMENT, CyberKitDOMHTMLBodyElement))
+#define WEBKIT_DOM_HTML_BODY_ELEMENT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_HTML_BODY_ELEMENT, CyberKitDOMHTMLBodyElementClass)
 #define WEBKIT_DOM_IS_HTML_BODY_ELEMENT(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_DOM_TYPE_HTML_BODY_ELEMENT))
 #define WEBKIT_DOM_IS_HTML_BODY_ELEMENT_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_DOM_TYPE_HTML_BODY_ELEMENT))
-#define WEBKIT_DOM_HTML_BODY_ELEMENT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_HTML_BODY_ELEMENT, WebKitDOMHTMLBodyElementClass))
+#define WEBKIT_DOM_HTML_BODY_ELEMENT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_HTML_BODY_ELEMENT, CyberKitDOMHTMLBodyElementClass))
 
-struct _WebKitDOMHTMLBodyElement {
-    WebKitDOMHTMLElement parent_instance;
+struct _CyberKitDOMHTMLBodyElement {
+    CyberKitDOMHTMLElement parent_instance;
 };
 
-struct _WebKitDOMHTMLBodyElementClass {
-    WebKitDOMHTMLElementClass parent_class;
+struct _CyberKitDOMHTMLBodyElementClass {
+    CyberKitDOMHTMLElementClass parent_class;
 };
 
 WEBKIT_DEPRECATED GType
@@ -50,136 +50,136 @@ webkit_dom_html_body_element_get_type(void);
 
 /**
  * webkit_dom_html_body_element_get_a_link:
- * @self: A #WebKitDOMHTMLBodyElement
+ * @self: A #CyberKitDOMHTMLBodyElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_body_element_get_a_link(WebKitDOMHTMLBodyElement* self);
+webkit_dom_html_body_element_get_a_link(CyberKitDOMHTMLBodyElement* self);
 
 /**
  * webkit_dom_html_body_element_set_a_link:
- * @self: A #WebKitDOMHTMLBodyElement
+ * @self: A #CyberKitDOMHTMLBodyElement
  * @value: A #gchar
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_body_element_set_a_link(WebKitDOMHTMLBodyElement* self, const gchar* value);
+webkit_dom_html_body_element_set_a_link(CyberKitDOMHTMLBodyElement* self, const gchar* value);
 
 /**
  * webkit_dom_html_body_element_get_background:
- * @self: A #WebKitDOMHTMLBodyElement
+ * @self: A #CyberKitDOMHTMLBodyElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_body_element_get_background(WebKitDOMHTMLBodyElement* self);
+webkit_dom_html_body_element_get_background(CyberKitDOMHTMLBodyElement* self);
 
 /**
  * webkit_dom_html_body_element_set_background:
- * @self: A #WebKitDOMHTMLBodyElement
+ * @self: A #CyberKitDOMHTMLBodyElement
  * @value: A #gchar
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_body_element_set_background(WebKitDOMHTMLBodyElement* self, const gchar* value);
+webkit_dom_html_body_element_set_background(CyberKitDOMHTMLBodyElement* self, const gchar* value);
 
 /**
  * webkit_dom_html_body_element_get_bg_color:
- * @self: A #WebKitDOMHTMLBodyElement
+ * @self: A #CyberKitDOMHTMLBodyElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_body_element_get_bg_color(WebKitDOMHTMLBodyElement* self);
+webkit_dom_html_body_element_get_bg_color(CyberKitDOMHTMLBodyElement* self);
 
 /**
  * webkit_dom_html_body_element_set_bg_color:
- * @self: A #WebKitDOMHTMLBodyElement
+ * @self: A #CyberKitDOMHTMLBodyElement
  * @value: A #gchar
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_body_element_set_bg_color(WebKitDOMHTMLBodyElement* self, const gchar* value);
+webkit_dom_html_body_element_set_bg_color(CyberKitDOMHTMLBodyElement* self, const gchar* value);
 
 /**
  * webkit_dom_html_body_element_get_link:
- * @self: A #WebKitDOMHTMLBodyElement
+ * @self: A #CyberKitDOMHTMLBodyElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_body_element_get_link(WebKitDOMHTMLBodyElement* self);
+webkit_dom_html_body_element_get_link(CyberKitDOMHTMLBodyElement* self);
 
 /**
  * webkit_dom_html_body_element_set_link:
- * @self: A #WebKitDOMHTMLBodyElement
+ * @self: A #CyberKitDOMHTMLBodyElement
  * @value: A #gchar
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_body_element_set_link(WebKitDOMHTMLBodyElement* self, const gchar* value);
+webkit_dom_html_body_element_set_link(CyberKitDOMHTMLBodyElement* self, const gchar* value);
 
 /**
  * webkit_dom_html_body_element_get_text:
- * @self: A #WebKitDOMHTMLBodyElement
+ * @self: A #CyberKitDOMHTMLBodyElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_body_element_get_text(WebKitDOMHTMLBodyElement* self);
+webkit_dom_html_body_element_get_text(CyberKitDOMHTMLBodyElement* self);
 
 /**
  * webkit_dom_html_body_element_set_text:
- * @self: A #WebKitDOMHTMLBodyElement
+ * @self: A #CyberKitDOMHTMLBodyElement
  * @value: A #gchar
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_body_element_set_text(WebKitDOMHTMLBodyElement* self, const gchar* value);
+webkit_dom_html_body_element_set_text(CyberKitDOMHTMLBodyElement* self, const gchar* value);
 
 /**
  * webkit_dom_html_body_element_get_v_link:
- * @self: A #WebKitDOMHTMLBodyElement
+ * @self: A #CyberKitDOMHTMLBodyElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_body_element_get_v_link(WebKitDOMHTMLBodyElement* self);
+webkit_dom_html_body_element_get_v_link(CyberKitDOMHTMLBodyElement* self);
 
 /**
  * webkit_dom_html_body_element_set_v_link:
- * @self: A #WebKitDOMHTMLBodyElement
+ * @self: A #CyberKitDOMHTMLBodyElement
  * @value: A #gchar
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_body_element_set_v_link(WebKitDOMHTMLBodyElement* self, const gchar* value);
+webkit_dom_html_body_element_set_v_link(CyberKitDOMHTMLBodyElement* self, const gchar* value);
 
 G_END_DECLS
 
-#endif /* WebKitDOMHTMLBodyElement_h */
+#endif /* CyberKitDOMHTMLBodyElement_h */

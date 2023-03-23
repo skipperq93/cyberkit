@@ -28,7 +28,7 @@
 
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 float CalcExpressionInversion::evaluate(float maxValue) const
 {

@@ -27,7 +27,7 @@
 
 #include "SVGAnimationFunction.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGAnimationAdditiveFunction : public SVGAnimationFunction {
 public:
@@ -73,4 +73,4 @@ protected:
     bool m_isAdditive;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

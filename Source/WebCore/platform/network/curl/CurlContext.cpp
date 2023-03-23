@@ -42,12 +42,12 @@
 #include <wtf/text/StringConcatenateNumbers.h>
 
 #if OS(WINDOWS)
-#include "WebCoreBundleWin.h"
+#include "CyberCoreBundleWin.h"
 #include <shlobj.h>
 #include <shlwapi.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class EnvironmentVariableReader {
 public:

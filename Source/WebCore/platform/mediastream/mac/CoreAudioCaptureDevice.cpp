@@ -35,7 +35,7 @@
 
 #import <pal/cf/CoreMediaSoftLink.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static bool getDeviceInfo(uint32_t deviceID, CaptureDevice::DeviceType type, String& persistentID, String& label)
 {
@@ -215,6 +215,6 @@ RetainPtr<CMClockRef> CoreAudioCaptureDevice::deviceClock()
     return m_deviceClock;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM) && PLATFORM(MAC)

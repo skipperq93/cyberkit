@@ -29,7 +29,7 @@
 #include <wtf/Language.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DateComponents;
 

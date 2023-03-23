@@ -21,7 +21,7 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 messages -> RemoteWebInspectorUI {
-    Initialize(struct WebKit::DebuggableInfoData debuggableInfo, String backendCommandsURL)
+    Initialize(struct CyberKit::DebuggableInfoData debuggableInfo, String backendCommandsURL)
 
     UpdateFindString(String findString)
 

@@ -27,7 +27,7 @@
 
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // FIXME: Find a way to unify this with CSSPrimitiveValue::UnitCategory?
 enum class CalculationCategory : uint8_t {

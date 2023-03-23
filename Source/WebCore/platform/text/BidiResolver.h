@@ -28,7 +28,7 @@
 #include <wtf/Noncopyable.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderObject;
 
@@ -971,4 +971,4 @@ unsigned BidiResolverBase<Iterator, Run, DerivedClass>::whitespaceCollapsingTran
     return m_whitespaceCollapsingTransitionForIsolatedRun.take(&run);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

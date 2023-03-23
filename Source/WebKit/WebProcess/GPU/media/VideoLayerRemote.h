@@ -32,12 +32,12 @@
 #include <CyberCore/MediaPlayerEnums.h>
 #include <CyberCore/PlatformLayer.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class MediaPlayerPrivateRemote;
 
-PlatformLayerContainer createVideoLayerRemote(MediaPlayerPrivateRemote*, LayerHostingContextID, WebCore::MediaPlayerEnums::VideoGravity, WebCore::IntSize);
+PlatformLayerContainer createVideoLayerRemote(MediaPlayerPrivateRemote*, LayerHostingContextID, CyberCore::MediaPlayerEnums::VideoGravity, CyberCore::IntSize);
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS) && ENABLE(VIDEO)

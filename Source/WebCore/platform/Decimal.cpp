@@ -40,7 +40,7 @@
 #include <wtf/Noncopyable.h>
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace DecimalPrivate {
 
@@ -1040,4 +1040,4 @@ Decimal Decimal::zero(Sign sign)
     return Decimal(EncodedData(sign, EncodedData::ClassZero));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

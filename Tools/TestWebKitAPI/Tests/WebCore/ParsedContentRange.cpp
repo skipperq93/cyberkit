@@ -29,11 +29,11 @@
 #include <CyberCore/ParsedRequestRange.h>
 #include <wtf/text/WTFString.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 namespace TestWebKitAPI {
 
-TEST(WebCore, ParsedContentRangeFromString)
+TEST(CyberCore, ParsedContentRangeFromString)
 {
     // Basic parsing
     ASSERT_TRUE(ParsedContentRange("bytes 0-1/2"_s).isValid());
@@ -75,7 +75,7 @@ TEST(WebCore, ParsedContentRangeFromString)
     ASSERT_FALSE(ParsedContentRange("bytes 9223372036854775808-9223372036854775809/9223372036854775810"_s).isValid());
 }
 
-TEST(WebCore, ParsedContentRangeFromValues)
+TEST(CyberCore, ParsedContentRangeFromValues)
 {
     ASSERT_TRUE(ParsedContentRange(0, 1, 2).isValid());
     ASSERT_TRUE(ParsedContentRange(0, 1, ParsedContentRange::unknownLength).isValid());
@@ -89,14 +89,14 @@ TEST(WebCore, ParsedContentRangeFromValues)
     ASSERT_FALSE(ParsedContentRange(-2, -1, 2).isValid());
 }
 
-TEST(WebCore, ParsedContentRangeToString)
+TEST(CyberCore, ParsedContentRangeToString)
 {
     ASSERT_STREQ("bytes 0-1/2", ParsedContentRange(0, 1, 2).headerValue().utf8().data());
     ASSERT_STREQ("bytes 0-1/*", ParsedContentRange(0, 1, ParsedContentRange::unknownLength).headerValue().utf8().data());
     ASSERT_STREQ("", ParsedContentRange().headerValue().utf8().data());
 }
 
-TEST(WebCore, ParsedRequestRange)
+TEST(CyberCore, ParsedRequestRange)
 {
     Vector<String> failureCases {
         { },

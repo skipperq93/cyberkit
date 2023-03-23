@@ -40,8 +40,8 @@
 #include <CyberCore/GraphicsContextGL.h>
 #endif
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 WebWorkerClient::WebWorkerClient(WebPage* page, SerialFunctionDispatcher& dispatcher)
     : m_dispatcher(dispatcher)
@@ -62,7 +62,7 @@ WebWorkerClient::WebWorkerClient(WebPage* page, SerialFunctionDispatcher& dispat
 }
 
 #if ENABLE(GPU_PROCESS)
-WebWorkerClient::WebWorkerClient(IPC::Connection& connection, SerialFunctionDispatcher& dispatcher, RemoteRenderingBackendCreationParameters& creationParameters, WebCore::PlatformDisplayID& displayID
+WebWorkerClient::WebWorkerClient(IPC::Connection& connection, SerialFunctionDispatcher& dispatcher, RemoteRenderingBackendCreationParameters& creationParameters, CyberCore::PlatformDisplayID& displayID
 #if ENABLE(VIDEO)
     , Ref<RemoteVideoFrameObjectHeapProxy>&& videoFrameObjectHeapProxy
 #endif
@@ -76,7 +76,7 @@ WebWorkerClient::WebWorkerClient(IPC::Connection& connection, SerialFunctionDisp
     , m_displayID(displayID)
 { }
 #else
-WebWorkerClient::WebWorkerClient(SerialFunctionDispatcher& dispatcher, WebCore::PlatformDisplayID& displayID)
+WebWorkerClient::WebWorkerClient(SerialFunctionDispatcher& dispatcher, CyberCore::PlatformDisplayID& displayID)
     : m_dispatcher(dispatcher)
     , m_displayID(displayID)
 { }
@@ -145,7 +145,7 @@ RefPtr<GraphicsContextGL> WebWorkerClient::createGraphicsContextGL(const Graphic
         return RemoteGraphicsContextGLProxy::create(m_connection, attributes, ensureRenderingBackend());
 #endif
 #endif
-    return WebCore::createWebProcessGraphicsContextGL(attributes, &m_dispatcher);
+    return CyberCore::createWebProcessGraphicsContextGL(attributes, &m_dispatcher);
 }
 #endif
 

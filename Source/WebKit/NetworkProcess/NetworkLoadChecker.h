@@ -39,7 +39,7 @@
 #include <wtf/Expected.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 class ContentSecurityPolicy;
 struct ContentRuleListResults;
 struct ContentSecurityPolicyClient;
@@ -63,28 +63,28 @@ class NetworkLoadChecker : public CanMakeWeakPtr<NetworkLoadChecker> {
 public:
     enum class LoadType : bool { MainFrame, Other };
 
-    NetworkLoadChecker(NetworkProcess&, NetworkResourceLoader*, NetworkSchemeRegistry*, WebCore::FetchOptions&&, PAL::SessionID, WebPageProxyIdentifier, WebCore::HTTPHeaderMap&&, URL&&, DocumentURL&&,  RefPtr<WebCore::SecurityOrigin>&&, RefPtr<WebCore::SecurityOrigin>&& topOrigin, RefPtr<WebCore::SecurityOrigin>&& parentOrigin, WebCore::PreflightPolicy, String&& referrer, bool allowPrivacyProxy, OptionSet<WebCore::NetworkConnectionIntegrity> networkConnectionIntegrityPolicy, bool shouldCaptureExtraNetworkLoadMetrics = false, LoadType requestLoadType = LoadType::Other);
+    NetworkLoadChecker(NetworkProcess&, NetworkResourceLoader*, NetworkSchemeRegistry*, CyberCore::FetchOptions&&, PAL::SessionID, WebPageProxyIdentifier, CyberCore::HTTPHeaderMap&&, URL&&, DocumentURL&&,  RefPtr<CyberCore::SecurityOrigin>&&, RefPtr<CyberCore::SecurityOrigin>&& topOrigin, RefPtr<CyberCore::SecurityOrigin>&& parentOrigin, CyberCore::PreflightPolicy, String&& referrer, bool allowPrivacyProxy, OptionSet<CyberCore::NetworkConnectionIntegrity> networkConnectionIntegrityPolicy, bool shouldCaptureExtraNetworkLoadMetrics = false, LoadType requestLoadType = LoadType::Other);
     ~NetworkLoadChecker();
 
     struct RedirectionTriplet {
-        WebCore::ResourceRequest request;
-        WebCore::ResourceRequest redirectRequest;
-        WebCore::ResourceResponse redirectResponse;
+        CyberCore::ResourceRequest request;
+        CyberCore::ResourceRequest redirectRequest;
+        CyberCore::ResourceResponse redirectResponse;
     };
 
-    using RequestOrRedirectionTripletOrError = std::variant<WebCore::ResourceRequest, RedirectionTriplet, WebCore::ResourceError>;
+    using RequestOrRedirectionTripletOrError = std::variant<CyberCore::ResourceRequest, RedirectionTriplet, CyberCore::ResourceError>;
     using ValidationHandler = CompletionHandler<void(RequestOrRedirectionTripletOrError&&)>;
-    void check(WebCore::ResourceRequest&&, WebCore::ContentSecurityPolicyClient*, ValidationHandler&&);
+    void check(CyberCore::ResourceRequest&&, CyberCore::ContentSecurityPolicyClient*, ValidationHandler&&);
 
-    using RedirectionRequestOrError = Expected<RedirectionTriplet, WebCore::ResourceError>;
+    using RedirectionRequestOrError = Expected<RedirectionTriplet, CyberCore::ResourceError>;
     using RedirectionValidationHandler = CompletionHandler<void(RedirectionRequestOrError&&)>;
-    void checkRedirection(WebCore::ResourceRequest&& request, WebCore::ResourceRequest&& redirectRequest, WebCore::ResourceResponse&& redirectResponse, WebCore::ContentSecurityPolicyClient*, RedirectionValidationHandler&&);
+    void checkRedirection(CyberCore::ResourceRequest&& request, CyberCore::ResourceRequest&& redirectRequest, CyberCore::ResourceResponse&& redirectResponse, CyberCore::ContentSecurityPolicyClient*, RedirectionValidationHandler&&);
 
-    WebCore::ResourceError validateResponse(const WebCore::ResourceRequest&, WebCore::ResourceResponse&);
+    CyberCore::ResourceError validateResponse(const CyberCore::ResourceRequest&, CyberCore::ResourceResponse&);
 
-    void setCSPResponseHeaders(WebCore::ContentSecurityPolicyResponseHeaders&& headers) { m_cspResponseHeaders = WTFMove(headers); }
-    void setParentCrossOriginEmbedderPolicy(const WebCore::CrossOriginEmbedderPolicy& parentCrossOriginEmbedderPolicy) { m_parentCrossOriginEmbedderPolicy = parentCrossOriginEmbedderPolicy; }
-    void setCrossOriginEmbedderPolicy(const WebCore::CrossOriginEmbedderPolicy& crossOriginEmbedderPolicy) { m_crossOriginEmbedderPolicy = crossOriginEmbedderPolicy; }
+    void setCSPResponseHeaders(CyberCore::ContentSecurityPolicyResponseHeaders&& headers) { m_cspResponseHeaders = WTFMove(headers); }
+    void setParentCrossOriginEmbedderPolicy(const CyberCore::CrossOriginEmbedderPolicy& parentCrossOriginEmbedderPolicy) { m_parentCrossOriginEmbedderPolicy = parentCrossOriginEmbedderPolicy; }
+    void setCrossOriginEmbedderPolicy(const CyberCore::CrossOriginEmbedderPolicy& crossOriginEmbedderPolicy) { m_crossOriginEmbedderPolicy = crossOriginEmbedderPolicy; }
 #if ENABLE(CONTENT_EXTENSIONS)
     void setContentExtensionController(URL&& mainDocumentURL, URL&& frameURL, std::optional<UserContentControllerIdentifier> identifier)
     {
@@ -97,59 +97,59 @@ public:
     NetworkProcess& networkProcess() { return m_networkProcess; }
 
     const URL& url() const { return m_url; }
-    WebCore::StoredCredentialsPolicy storedCredentialsPolicy() const { return m_storedCredentialsPolicy; }
+    CyberCore::StoredCredentialsPolicy storedCredentialsPolicy() const { return m_storedCredentialsPolicy; }
 
-    WebCore::NetworkLoadInformation takeNetworkLoadInformation() { return WTFMove(m_loadInformation); }
-    void storeRedirectionIfNeeded(const WebCore::ResourceRequest&, const WebCore::ResourceResponse&);
+    CyberCore::NetworkLoadInformation takeNetworkLoadInformation() { return WTFMove(m_loadInformation); }
+    void storeRedirectionIfNeeded(const CyberCore::ResourceRequest&, const CyberCore::ResourceResponse&);
 
     void enableContentExtensionsCheck() { m_checkContentExtensions = true; }
 
 private:
-    WebCore::ContentSecurityPolicy* contentSecurityPolicy();
+    CyberCore::ContentSecurityPolicy* contentSecurityPolicy();
     bool isChecking() const { return !!m_corsPreflightChecker; }
     bool isRedirected() const { return m_redirectCount; }
 
-    void checkRequest(WebCore::ResourceRequest&&, WebCore::ContentSecurityPolicyClient*, ValidationHandler&&);
+    void checkRequest(CyberCore::ResourceRequest&&, CyberCore::ContentSecurityPolicyClient*, ValidationHandler&&);
 
-    bool isAllowedByContentSecurityPolicy(const WebCore::ResourceRequest&, WebCore::ContentSecurityPolicyClient*);
+    bool isAllowedByContentSecurityPolicy(const CyberCore::ResourceRequest&, CyberCore::ContentSecurityPolicyClient*);
 
-    void continueCheckingRequest(WebCore::ResourceRequest&&, ValidationHandler&&);
-    void continueCheckingRequestOrDoSyntheticRedirect(WebCore::ResourceRequest&& originalRequest, WebCore::ResourceRequest&& currentRequest, ValidationHandler&&);
+    void continueCheckingRequest(CyberCore::ResourceRequest&&, ValidationHandler&&);
+    void continueCheckingRequestOrDoSyntheticRedirect(CyberCore::ResourceRequest&& originalRequest, CyberCore::ResourceRequest&& currentRequest, ValidationHandler&&);
 
     bool doesNotNeedCORSCheck(const URL&) const;
-    void checkCORSRequest(WebCore::ResourceRequest&&, ValidationHandler&&);
-    void checkCORSRedirectedRequest(WebCore::ResourceRequest&&, ValidationHandler&&);
-    void checkCORSRequestWithPreflight(WebCore::ResourceRequest&&, ValidationHandler&&);
+    void checkCORSRequest(CyberCore::ResourceRequest&&, ValidationHandler&&);
+    void checkCORSRedirectedRequest(CyberCore::ResourceRequest&&, ValidationHandler&&);
+    void checkCORSRequestWithPreflight(CyberCore::ResourceRequest&&, ValidationHandler&&);
 
     RequestOrRedirectionTripletOrError accessControlErrorForValidationHandler(String&&);
 
 #if ENABLE(CONTENT_EXTENSIONS)
     struct ContentExtensionResult {
-        WebCore::ResourceRequest request;
-        const WebCore::ContentRuleListResults& results;
+        CyberCore::ResourceRequest request;
+        const CyberCore::ContentRuleListResults& results;
     };
-    using ContentExtensionResultOrError = Expected<ContentExtensionResult, WebCore::ResourceError>;
+    using ContentExtensionResultOrError = Expected<ContentExtensionResult, CyberCore::ResourceError>;
     using ContentExtensionCallback = CompletionHandler<void(ContentExtensionResultOrError&&)>;
-    void processContentRuleListsForLoad(WebCore::ResourceRequest&&, ContentExtensionCallback&&);
+    void processContentRuleListsForLoad(CyberCore::ResourceRequest&&, ContentExtensionCallback&&);
 #endif
 
-    WebCore::FetchOptions m_options;
-    WebCore::StoredCredentialsPolicy m_storedCredentialsPolicy;
+    CyberCore::FetchOptions m_options;
+    CyberCore::StoredCredentialsPolicy m_storedCredentialsPolicy;
     bool m_allowPrivacyProxy;
-    OptionSet<WebCore::NetworkConnectionIntegrity> m_networkConnectionIntegrityPolicy;
+    OptionSet<CyberCore::NetworkConnectionIntegrity> m_networkConnectionIntegrityPolicy;
     PAL::SessionID m_sessionID;
     Ref<NetworkProcess> m_networkProcess;
     WebPageProxyIdentifier m_webPageProxyID;
-    WebCore::HTTPHeaderMap m_originalRequestHeaders; // Needed for CORS checks.
-    WebCore::HTTPHeaderMap m_firstRequestHeaders; // Needed for CORS checks.
+    CyberCore::HTTPHeaderMap m_originalRequestHeaders; // Needed for CORS checks.
+    CyberCore::HTTPHeaderMap m_firstRequestHeaders; // Needed for CORS checks.
     URL m_url;
     DocumentURL m_documentURL;
-    RefPtr<WebCore::SecurityOrigin> m_origin;
-    RefPtr<WebCore::SecurityOrigin> m_topOrigin;
-    RefPtr<WebCore::SecurityOrigin> m_parentOrigin;
-    std::optional<WebCore::ContentSecurityPolicyResponseHeaders> m_cspResponseHeaders;
-    WebCore::CrossOriginEmbedderPolicy m_parentCrossOriginEmbedderPolicy;
-    WebCore::CrossOriginEmbedderPolicy m_crossOriginEmbedderPolicy;
+    RefPtr<CyberCore::SecurityOrigin> m_origin;
+    RefPtr<CyberCore::SecurityOrigin> m_topOrigin;
+    RefPtr<CyberCore::SecurityOrigin> m_parentOrigin;
+    std::optional<CyberCore::ContentSecurityPolicyResponseHeaders> m_cspResponseHeaders;
+    CyberCore::CrossOriginEmbedderPolicy m_parentCrossOriginEmbedderPolicy;
+    CyberCore::CrossOriginEmbedderPolicy m_crossOriginEmbedderPolicy;
 #if ENABLE(CONTENT_EXTENSIONS)
     URL m_mainDocumentURL;
     URL m_frameURL;
@@ -159,15 +159,15 @@ private:
     std::unique_ptr<NetworkCORSPreflightChecker> m_corsPreflightChecker;
     bool m_isSameOriginRequest { true };
     bool m_isSimpleRequest { true };
-    std::unique_ptr<WebCore::ContentSecurityPolicy> m_contentSecurityPolicy;
+    std::unique_ptr<CyberCore::ContentSecurityPolicy> m_contentSecurityPolicy;
     size_t m_redirectCount { 0 };
     URL m_previousURL;
-    WebCore::PreflightPolicy m_preflightPolicy;
+    CyberCore::PreflightPolicy m_preflightPolicy;
     String m_referrer;
     bool m_checkContentExtensions { false };
     bool m_shouldCaptureExtraNetworkLoadMetrics { false };
 
-    WebCore::NetworkLoadInformation m_loadInformation;
+    CyberCore::NetworkLoadInformation m_loadInformation;
 
     LoadType m_requestLoadType;
     RefPtr<NetworkSchemeRegistry> m_schemeRegistry;

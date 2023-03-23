@@ -34,7 +34,7 @@
 // All of these methods should be called on the Main Thread.
 // Used to send messages to the WorkerInspector on the WorkerThread.
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScriptExecutionContext;
 class WorkerThread;
@@ -87,4 +87,4 @@ private:
     PageChannel* m_pageChannel { nullptr };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

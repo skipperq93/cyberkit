@@ -23,7 +23,7 @@
 
 #include "SVGElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGStopElement final : public SVGElement {
     WTF_MAKE_ISO_ALLOCATED(SVGStopElement);
@@ -51,4 +51,4 @@ private:
     Ref<SVGAnimatedNumber> m_offset { SVGAnimatedNumber::create(this, 0) };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

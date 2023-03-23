@@ -44,7 +44,7 @@
 #include <Accelerate/Accelerate.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 #if USE(ACCELERATE)
 constexpr int kBufferSize = 1024;
@@ -893,6 +893,6 @@ double Biquad::tailFrame(size_t coefIndex, double maxFrame)
     return tailFrame;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

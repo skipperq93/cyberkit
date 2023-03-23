@@ -29,7 +29,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct CertificateSummary {
     String subject;
@@ -39,4 +39,4 @@ struct CertificateSummary {
     Vector<String> ipAddresses;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -30,7 +30,7 @@
 #include <CyberCore/VideoDecoder.h>
 #include <CyberCore/VideoEncoder.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebProcess;
 
@@ -41,10 +41,10 @@ public:
     ~RemoteVideoCodecFactory();
 
 private:
-    static void createDecoder(const String&, const WebCore::VideoDecoder::Config&, WebCore::VideoDecoder::CreateCallback&&, WebCore::VideoDecoder::OutputCallback&&, WebCore::VideoDecoder::PostTaskCallback&&);
-    static void createEncoder(const String&, const WebCore::VideoEncoder::Config&, WebCore::VideoEncoder::CreateCallback&&, WebCore::VideoEncoder::DescriptionCallback&&, WebCore::VideoEncoder::OutputCallback&&, WebCore::VideoEncoder::PostTaskCallback&&);
+    static void createDecoder(const String&, const CyberCore::VideoDecoder::Config&, CyberCore::VideoDecoder::CreateCallback&&, CyberCore::VideoDecoder::OutputCallback&&, CyberCore::VideoDecoder::PostTaskCallback&&);
+    static void createEncoder(const String&, const CyberCore::VideoEncoder::Config&, CyberCore::VideoEncoder::CreateCallback&&, CyberCore::VideoEncoder::DescriptionCallback&&, CyberCore::VideoEncoder::OutputCallback&&, CyberCore::VideoEncoder::PostTaskCallback&&);
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(LIBWEBRTC) && PLATFORM(COCOA) && ENABLE(GPU_PROCESS)

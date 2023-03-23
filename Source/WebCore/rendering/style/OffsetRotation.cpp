@@ -29,7 +29,7 @@
 #include "AnimationUtilities.h"
 #include <wtf/MathExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 OffsetRotation::OffsetRotation(bool hasAuto, float angle)
     : m_angle(angle)
@@ -55,7 +55,7 @@ OffsetRotation OffsetRotation::blend(const OffsetRotation& to, const BlendingCon
     }
 
     ASSERT(canBlend(to));
-    return OffsetRotation(m_hasAuto, clampTo<float>(WebCore::blend(m_angle, to.angle(), context)));
+    return OffsetRotation(m_hasAuto, clampTo<float>(CyberCore::blend(m_angle, to.angle(), context)));
 }
 
 WTF::TextStream& operator<<(WTF::TextStream& ts, const OffsetRotation& rotation)
@@ -66,4 +66,4 @@ WTF::TextStream& operator<<(WTF::TextStream& ts, const OffsetRotation& rotation)
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

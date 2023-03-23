@@ -37,7 +37,7 @@
 #include <wtf/glib/GUniquePtr.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 enum DropTargetType { Markup, Text, URIList, NetscapeURL, SmartPaste, Custom };
 
@@ -95,7 +95,7 @@ DropTarget::~DropTarget()
     g_signal_handlers_disconnect_by_data(m_webView, this);
 }
 
-void DropTarget::accept(GdkDragContext* drop, std::optional<WebCore::IntPoint> position, unsigned time)
+void DropTarget::accept(GdkDragContext* drop, std::optional<CyberCore::IntPoint> position, unsigned time)
 {
     if (m_leaveTimer.isActive()) {
         m_leaveTimer.stop();
@@ -107,7 +107,7 @@ void DropTarget::accept(GdkDragContext* drop, std::optional<WebCore::IntPoint> p
     m_dataRequestCount = 0;
     m_selectionData = std::nullopt;
 
-    // WebCore needs the selection data to decide, so we need to preload the
+    // CyberCore needs the selection data to decide, so we need to preload the
     // data of targets we support. Once all data requests are done we start
     // notifying the web process about the DND events.
     auto* list = gdk_drag_context_list_targets(m_drop.get());

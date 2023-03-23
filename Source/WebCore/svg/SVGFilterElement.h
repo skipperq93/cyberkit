@@ -27,7 +27,7 @@
 #include "SVGURIReference.h"
 #include "SVGUnitTypes.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGFilterElement final : public SVGElement, public SVGURIReference {
     WTF_MAKE_ISO_ALLOCATED(SVGFilterElement);
@@ -72,4 +72,4 @@ private:
     Ref<SVGAnimatedLength> m_height { SVGAnimatedLength::create(this, SVGLengthMode::Height, "120%"_s) };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

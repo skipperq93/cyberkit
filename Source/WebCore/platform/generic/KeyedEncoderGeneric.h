@@ -31,7 +31,7 @@
 #include <wtf/persistence/PersistentEncoder.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FragmentedSharedBuffer;
 
@@ -82,27 +82,27 @@ private:
     WTF::Persistence::Encoder m_encoder;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
-template<> struct EnumTraitsForPersistence<WebCore::KeyedEncoderGeneric::Type> {
+template<> struct EnumTraitsForPersistence<CyberCore::KeyedEncoderGeneric::Type> {
     using values = EnumValues<
-        WebCore::KeyedEncoderGeneric::Type,
-        WebCore::KeyedEncoderGeneric::Type::Bytes,
-        WebCore::KeyedEncoderGeneric::Type::Bool,
-        WebCore::KeyedEncoderGeneric::Type::UInt32,
-        WebCore::KeyedEncoderGeneric::Type::UInt64,
-        WebCore::KeyedEncoderGeneric::Type::Int32,
-        WebCore::KeyedEncoderGeneric::Type::Int64,
-        WebCore::KeyedEncoderGeneric::Type::Float,
-        WebCore::KeyedEncoderGeneric::Type::Double,
-        WebCore::KeyedEncoderGeneric::Type::String,
-        WebCore::KeyedEncoderGeneric::Type::BeginObject,
-        WebCore::KeyedEncoderGeneric::Type::EndObject,
-        WebCore::KeyedEncoderGeneric::Type::BeginArray,
-        WebCore::KeyedEncoderGeneric::Type::BeginArrayElement,
-        WebCore::KeyedEncoderGeneric::Type::EndArrayElement,
-        WebCore::KeyedEncoderGeneric::Type::EndArray
+        CyberCore::KeyedEncoderGeneric::Type,
+        CyberCore::KeyedEncoderGeneric::Type::Bytes,
+        CyberCore::KeyedEncoderGeneric::Type::Bool,
+        CyberCore::KeyedEncoderGeneric::Type::UInt32,
+        CyberCore::KeyedEncoderGeneric::Type::UInt64,
+        CyberCore::KeyedEncoderGeneric::Type::Int32,
+        CyberCore::KeyedEncoderGeneric::Type::Int64,
+        CyberCore::KeyedEncoderGeneric::Type::Float,
+        CyberCore::KeyedEncoderGeneric::Type::Double,
+        CyberCore::KeyedEncoderGeneric::Type::String,
+        CyberCore::KeyedEncoderGeneric::Type::BeginObject,
+        CyberCore::KeyedEncoderGeneric::Type::EndObject,
+        CyberCore::KeyedEncoderGeneric::Type::BeginArray,
+        CyberCore::KeyedEncoderGeneric::Type::BeginArrayElement,
+        CyberCore::KeyedEncoderGeneric::Type::EndArrayElement,
+        CyberCore::KeyedEncoderGeneric::Type::EndArray
     >;
 };
 

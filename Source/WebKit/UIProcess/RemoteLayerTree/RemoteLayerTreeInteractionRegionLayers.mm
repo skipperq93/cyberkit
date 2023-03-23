@@ -42,19 +42,19 @@ static void configureLayerForInteractionRegion(CALayer *, NSString *) { }
 #endif
 
 @interface WKInteractionRegion : NSObject
-@property (nonatomic, assign) WebCore::InteractionRegion interactionRegion;
+@property (nonatomic, assign) CyberCore::InteractionRegion interactionRegion;
 @end
 
 @implementation WKInteractionRegion
 @end
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 NSString *interactionRegionKey = @"WKInteractionRegion";
 NSString *interactionRegionOcclusionKey = @"WKInteractionRegionOcclusion";
 
-static std::optional<WebCore::InteractionRegion> interactionRegionForLayer(CALayer *layer)
+static std::optional<CyberCore::InteractionRegion> interactionRegionForLayer(CALayer *layer)
 {
     id value = [layer valueForKey:interactionRegionKey];
     if (![value isKindOfClass:[WKInteractionRegion class]])
@@ -81,7 +81,7 @@ static bool isAnyInteractionRegionLayer(CALayer *layer)
     return isOcclusionLayer(layer) || isInteractionLayer(layer);
 }
 
-static void setInteractionRegion(CALayer *layer, const WebCore::InteractionRegion& interactionRegion)
+static void setInteractionRegion(CALayer *layer, const CyberCore::InteractionRegion& interactionRegion)
 {
     WKInteractionRegion *region = [[[WKInteractionRegion alloc] init] autorelease];
     region.interactionRegion = interactionRegion;
@@ -132,7 +132,7 @@ void updateLayersForInteractionRegions(CALayer *layer, RemoteLayerTreeHost& host
 
     HashSet<IntRect> liveInteractionBounds;
     HashSet<IntRect> liveOcclusionBounds;
-    for (const WebCore::InteractionRegion& region : properties.eventRegion.interactionRegions()) {
+    for (const CyberCore::InteractionRegion& region : properties.eventRegion.interactionRegions()) {
         for (IntRect rect : region.regionInLayerCoordinates.rects()) {
             if (region.type == InteractionRegion::Type::Occlusion) {
                 if (!liveOcclusionBounds.add(rect).isNewEntry)
@@ -153,7 +153,7 @@ void updateLayersForInteractionRegions(CALayer *layer, RemoteLayerTreeHost& host
                 setInteractionRegionOcclusion(interactionRegionLayer.get());
 
                 if (applyBackgroundColorForDebugging) {
-                    [interactionRegionLayer setBorderColor:cachedCGColor({ WebCore::SRGBA<float>(1, 0, 0, .2) }).get()];
+                    [interactionRegionLayer setBorderColor:cachedCGColor({ CyberCore::SRGBA<float>(1, 0, 0, .2) }).get()];
                     [interactionRegionLayer setBorderWidth:6];
                     [interactionRegionLayer setName:@"Occlusion"];
                 }
@@ -182,7 +182,7 @@ void updateLayersForInteractionRegions(CALayer *layer, RemoteLayerTreeHost& host
                 [interactionRegionLayer setHitTestsAsOpaque:YES];
 
                 if (applyBackgroundColorForDebugging) {
-                    [interactionRegionLayer setBackgroundColor:cachedCGColor({ WebCore::SRGBA<float>(0, 1, 0, .2) }).get()];
+                    [interactionRegionLayer setBackgroundColor:cachedCGColor({ CyberCore::SRGBA<float>(0, 1, 0, .2) }).get()];
                     [interactionRegionLayer setName:@"Interaction"];
                 }
 

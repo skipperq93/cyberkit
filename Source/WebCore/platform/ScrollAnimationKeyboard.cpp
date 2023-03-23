@@ -33,7 +33,7 @@
 #include "TimingFunction.h"
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static FloatSize perpendicularAbsoluteUnitVector(ScrollDirection direction)
 {
@@ -233,4 +233,4 @@ String ScrollAnimationKeyboard::debugDescription() const
     return textStream.release();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

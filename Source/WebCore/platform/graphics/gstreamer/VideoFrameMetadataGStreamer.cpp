@@ -29,7 +29,7 @@
 GST_DEBUG_CATEGORY_STATIC(webkit_video_frame_meta_debug);
 #define GST_CAT_DEFAULT webkit_video_frame_meta_debug
 
-using namespace WebCore;
+using namespace CyberCore;
 
 struct VideoFrameMetadataPrivate {
     std::optional<VideoFrameTimeMetadata> videoSampleMetadata;

@@ -29,7 +29,7 @@
 
 #if ENABLE(SPEECH_SYNTHESIS)
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<PlatformSpeechSynthesizer> PlatformSpeechSynthesizerMock::create(PlatformSpeechSynthesizerClient& client)
 {
@@ -100,6 +100,6 @@ void PlatformSpeechSynthesizerMock::resume()
     client().didResumeSpeaking(*m_utterance);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SPEECH_SYNTHESIS)

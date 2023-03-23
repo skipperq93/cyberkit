@@ -28,7 +28,7 @@
 #include <optional>
 #include <wtf/Seconds.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct VideoFrameTimeMetadata {
     std::optional<double> processingDuration;

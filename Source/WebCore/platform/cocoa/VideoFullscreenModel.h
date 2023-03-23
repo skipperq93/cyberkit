@@ -42,7 +42,7 @@ OBJC_CLASS AVPlayerViewController;
 OBJC_CLASS UIViewController;
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class VideoFullscreenModelClient;
 

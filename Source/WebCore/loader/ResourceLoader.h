@@ -47,7 +47,7 @@ namespace WTF {
 class SchedulePair;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class AuthenticationChallenge;
 class CachedResource;
@@ -250,4 +250,4 @@ protected:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -76,14 +76,14 @@ void WebDateTimePickerGtk::endPicker()
     WebDateTimePicker::endPicker();
 }
 
-static String timeToString(const WebCore::DateComponents& time, WebCore::SecondFormat secondFormat)
+static String timeToString(const CyberCore::DateComponents& time, CyberCore::SecondFormat secondFormat)
 {
     switch (secondFormat) {
-    case WebCore::SecondFormat::None:
+    case CyberCore::SecondFormat::None:
         return makeString(pad('0', 2, time.hour()), ':', pad('0', 2, time.minute()));
-    case WebCore::SecondFormat::Second:
+    case CyberCore::SecondFormat::Second:
         return makeString(pad('0', 2, time.hour()), ':', pad('0', 2, time.minute()), ':', pad('0', 2, time.second()));
-    case WebCore::SecondFormat::Millisecond:
+    case CyberCore::SecondFormat::Millisecond:
         return makeString(pad('0', 2, time.hour()), ':', pad('0', 2, time.minute()), ':', pad('0', 2, time.second()), '.', pad('0', 3, time.millisecond()));
     }
 
@@ -91,18 +91,18 @@ static String timeToString(const WebCore::DateComponents& time, WebCore::SecondF
     return { };
 }
 
-static String calendarDateToString(int year, int month, int day, const std::optional<WebCore::DateComponents>& date, WebCore::SecondFormat secondFormat)
+static String calendarDateToString(int year, int month, int day, const std::optional<CyberCore::DateComponents>& date, CyberCore::SecondFormat secondFormat)
 {
-    auto type = date ? date->type() : WebCore::DateComponentsType::Date;
+    auto type = date ? date->type() : CyberCore::DateComponentsType::Date;
     switch (type) {
-    case WebCore::DateComponentsType::Date:
+    case CyberCore::DateComponentsType::Date:
         return makeString(pad('0', 4, year), '-', pad('0', 2, month + 1), '-', pad('0', 2, day));
-    case WebCore::DateComponentsType::DateTimeLocal:
+    case CyberCore::DateComponentsType::DateTimeLocal:
         return makeString(pad('0', 4, year), '-', pad('0', 2, month + 1), '-', pad('0', 2, day), 'T', timeToString(*date, secondFormat));
-    case WebCore::DateComponentsType::Invalid:
-    case WebCore::DateComponentsType::Month:
-    case WebCore::DateComponentsType::Time:
-    case WebCore::DateComponentsType::Week:
+    case CyberCore::DateComponentsType::Invalid:
+    case CyberCore::DateComponentsType::Month:
+    case CyberCore::DateComponentsType::Time:
+    case CyberCore::DateComponentsType::Week:
         break;
     }
 
@@ -123,7 +123,7 @@ void WebDateTimePickerGtk::didChooseDate()
     m_page->didChooseDate(calendarDateToString(year, month, day, m_currentDate, m_secondFormat));
 }
 
-void WebDateTimePickerGtk::showDateTimePicker(WebCore::DateTimeChooserParameters&& params)
+void WebDateTimePickerGtk::showDateTimePicker(CyberCore::DateTimeChooserParameters&& params)
 {
     if (m_popover) {
         update(WTFMove(params));
@@ -163,26 +163,26 @@ void WebDateTimePickerGtk::showDateTimePicker(WebCore::DateTimeChooserParameters
     gtk_popover_popup(GTK_POPOVER(m_popover));
 }
 
-void WebDateTimePickerGtk::update(WebCore::DateTimeChooserParameters&& params)
+void WebDateTimePickerGtk::update(CyberCore::DateTimeChooserParameters&& params)
 {
     SetForScope inUpdate(m_inUpdate, true);
     if (params.type == "date"_s)
-        m_currentDate = WebCore::DateComponents::fromParsingDate(params.currentValue);
+        m_currentDate = CyberCore::DateComponents::fromParsingDate(params.currentValue);
     else if (params.type == "datetime-local"_s)
-        m_currentDate = WebCore::DateComponents::fromParsingDateTimeLocal(params.currentValue);
+        m_currentDate = CyberCore::DateComponents::fromParsingDateTimeLocal(params.currentValue);
 
     if (m_currentDate)
         g_object_set(m_calendar, "year", m_currentDate->fullYear(), "month", m_currentDate->month(), "day", m_currentDate->monthDay(), nullptr);
     else if (params.type == "datetime-local"_s) {
         GRefPtr<GDateTime> now = adoptGRef(g_date_time_new_now_local());
         Seconds unixTime = Seconds(g_date_time_to_unix(now.get())) + Seconds::fromMicroseconds(g_date_time_get_utc_offset(now.get()));
-        m_currentDate = WebCore::DateComponents::fromMillisecondsSinceEpochForDateTimeLocal(unixTime.milliseconds());
+        m_currentDate = CyberCore::DateComponents::fromMillisecondsSinceEpochForDateTimeLocal(unixTime.milliseconds());
         if (params.hasMillisecondField)
-            m_secondFormat = WebCore::SecondFormat::Millisecond;
+            m_secondFormat = CyberCore::SecondFormat::Millisecond;
         else if (params.hasSecondField)
-            m_secondFormat = WebCore::SecondFormat::Second;
+            m_secondFormat = CyberCore::SecondFormat::Second;
         else
-            m_secondFormat = WebCore::SecondFormat::None;
+            m_secondFormat = CyberCore::SecondFormat::None;
     }
 }
 

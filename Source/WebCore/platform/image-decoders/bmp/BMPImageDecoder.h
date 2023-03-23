@@ -32,7 +32,7 @@
 
 #include "BMPImageReader.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // This class decodes the BMP image format.
 class BMPImageDecoder final : public ScalableImageDecoder {
@@ -83,4 +83,4 @@ private:
     std::unique_ptr<BMPImageReader> m_reader;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

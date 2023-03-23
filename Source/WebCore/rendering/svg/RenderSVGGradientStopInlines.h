@@ -28,11 +28,11 @@
 #include "RenderSVGGradientStop.h"
 #include "SVGStopElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 inline SVGStopElement& RenderSVGGradientStop::element() const
 {
     return downcast<SVGStopElement>(RenderObject::nodeForNonAnonymous());
 }
 
-} // namespace WebCore
+} // namespace CyberCore

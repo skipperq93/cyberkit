@@ -42,7 +42,7 @@
 #include "SVGNames.h"
 #include "Text.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -161,4 +161,4 @@ void XMLErrors::insertErrorMessageBlock()
     m_document.updateStyleIfNeeded();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

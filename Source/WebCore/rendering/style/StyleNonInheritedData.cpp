@@ -33,7 +33,7 @@
 #include "StyleMiscNonInheritedData.h"
 #include "StyleRareNonInheritedData.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 DEFINE_ALLOCATOR_WITH_HEAP_IDENTIFIER(StyleNonInheritedData);
 
@@ -70,4 +70,4 @@ bool StyleNonInheritedData::operator==(const StyleNonInheritedData& other) const
         && rareData == other.rareData;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -62,7 +62,7 @@ namespace WTF {
 class TextStream;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSFilter;
 class ClipRects;
@@ -1374,13 +1374,13 @@ WTF::TextStream& operator<<(WTF::TextStream&, const RenderLayer::ClipRectsContex
 WTF::TextStream& operator<<(WTF::TextStream&, IndirectCompositingReason);
 WTF::TextStream& operator<<(WTF::TextStream&, PaintBehavior);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #if ENABLE(TREE_DEBUGGING)
-// Outside the WebCore namespace for ease of invocation from lldb.
-void showLayerTree(const WebCore::RenderLayer*);
-void showLayerTree(const WebCore::RenderObject*);
-void showPaintOrderTree(const WebCore::RenderLayer*);
-void showPaintOrderTree(const WebCore::RenderObject*);
+// Outside the CyberCore namespace for ease of invocation from lldb.
+void showLayerTree(const CyberCore::RenderLayer*);
+void showLayerTree(const CyberCore::RenderObject*);
+void showPaintOrderTree(const CyberCore::RenderLayer*);
+void showPaintOrderTree(const CyberCore::RenderObject*);
 #endif
 

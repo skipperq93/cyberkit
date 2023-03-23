@@ -27,7 +27,7 @@
 
 #include "CaretAnimator.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SimpleCaretAnimator final : public CaretAnimator {
 public:
@@ -53,4 +53,4 @@ private:
     ReducedResolutionSeconds m_lastTimeCaretPaintWasToggled;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

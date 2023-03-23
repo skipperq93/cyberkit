@@ -32,7 +32,7 @@
 #import "GraphicsContext.h"
 #import <pal/ios/UIKitSoftLink.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Icon::Icon(CocoaImage *image)
     : m_image(image)

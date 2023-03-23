@@ -48,7 +48,7 @@
 GST_DEBUG_CATEGORY_EXTERN(webkit_mse_debug);
 #define GST_CAT_DEFAULT webkit_mse_debug
 
-namespace WebCore {
+namespace CyberCore {
 
 GType AppendPipeline::s_endOfAppendMetaType = 0;
 const GstMetaInfo* AppendPipeline::s_webKitEndOfAppendMetaInfo = nullptr;
@@ -873,11 +873,11 @@ void AppendPipeline::linkPadWithTrack(GstPad* demuxerSrcPad, Track& track)
     GST_DEBUG_BIN_TO_DOT_FILE_WITH_TS(GST_BIN(m_pipeline.get()), GST_DEBUG_GRAPH_SHOW_ALL, "append-pipeline-after-link");
 }
 
-Ref<WebCore::TrackPrivateBase> AppendPipeline::makeWebKitTrack(int trackIndex)
+Ref<CyberCore::TrackPrivateBase> AppendPipeline::makeWebKitTrack(int trackIndex)
 {
     Track& appendPipelineTrack = *m_tracks.at(trackIndex);
 
-    RefPtr<WebCore::TrackPrivateBase> track;
+    RefPtr<CyberCore::TrackPrivateBase> track;
     TrackPrivateBaseGStreamer* gstreamerTrack = nullptr;
     // FIXME: AudioTrackPrivateGStreamer etc. should probably use pads of the playback pipeline rather than the append pipeline.
     GRefPtr<GstPad> pad(appendPipelineTrack.appsinkPad);
@@ -1099,6 +1099,6 @@ static GstPadProbeReturn matroskademuxForceSegmentStartToEqualZero(GstPad*, GstP
     return GST_PAD_PROBE_OK;
 }
 
-} // namespace WebCore.
+} // namespace CyberCore.
 
 #endif // USE(GSTREAMER)

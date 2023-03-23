@@ -31,7 +31,7 @@
 #include <wtf/URL.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 ResourceError invalidPageRangeToPrint(const URL& failingURL)
 {

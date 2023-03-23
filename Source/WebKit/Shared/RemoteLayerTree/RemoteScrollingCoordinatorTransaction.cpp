@@ -30,7 +30,7 @@
 #include "RemoteScrollingCoordinatorTransaction.h"
 
 #include "ArgumentCoders.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include <CyberCore/GraphicsLayer.h>
 #include <CyberCore/ScrollTypes.h>
 #include <CyberCore/ScrollingStateFixedNode.h>
@@ -45,7 +45,7 @@
 #include <wtf/text/TextStream.h>
 
 namespace IPC {
-using namespace WebCore;
+using namespace CyberCore;
 
 template<> struct ArgumentCoder<ScrollingStateNode> {
     static void encode(Encoder&, const ScrollingStateNode&);

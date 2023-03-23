@@ -31,7 +31,7 @@ namespace WTF {
 class TextStream;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 // Used to represent a given update. An value of { 3, 60 } indicates that this is the third update in a 1-second interval
 // on a 60fps cadence. updateIndex will reset to zero every second, so { 59, 60 } is followed by { 0, 60 }.
@@ -75,4 +75,4 @@ std::optional<DisplayUpdate> DisplayUpdate::decode(Decoder& decoder)
 
 WEBCORE_EXPORT WTF::TextStream& operator<<(WTF::TextStream&, const DisplayUpdate&);
 
-} // namespace WebCore
+} // namespace CyberCore

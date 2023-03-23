@@ -30,7 +30,7 @@
 #include "GraphicsLayerCA.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 GraphicsLayerContentsDisplayDelegate::~GraphicsLayerContentsDisplayDelegate() = default;
 

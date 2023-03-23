@@ -26,7 +26,7 @@
 
 #include "RenderTableSection.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static const unsigned unsetRowIndex = 0x7FFFFFFF;
 static const unsigned maxRowIndex = 0x7FFFFFFE; // 2,147,483,646
@@ -152,6 +152,6 @@ inline RenderPtr<RenderBox> RenderTableRow::createAnonymousBoxWithSameTypeAs(con
     return RenderTableRow::createTableRowWithStyle(renderer.document(), renderer.style());
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderTableRow, isTableRow())

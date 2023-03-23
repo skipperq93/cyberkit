@@ -60,27 +60,27 @@ void DiagnosticLoggingClient::logDiagnosticMessage(WebKit::WebPageProxy*, const 
         [m_delegate.get() _webView:m_webView logDiagnosticMessage:message description:description];
 }
 
-static _WKDiagnosticLoggingResultType toWKDiagnosticLoggingResultType(WebCore::DiagnosticLoggingResultType result)
+static _WKDiagnosticLoggingResultType toWKDiagnosticLoggingResultType(CyberCore::DiagnosticLoggingResultType result)
 {
     switch (result) {
-    case WebCore::DiagnosticLoggingResultPass:
+    case CyberCore::DiagnosticLoggingResultPass:
         return _WKDiagnosticLoggingResultPass;
-    case WebCore::DiagnosticLoggingResultFail:
+    case CyberCore::DiagnosticLoggingResultFail:
         return _WKDiagnosticLoggingResultFail;
-    case WebCore::DiagnosticLoggingResultNoop:
+    case CyberCore::DiagnosticLoggingResultNoop:
         return _WKDiagnosticLoggingResultNoop;
     }
 }
 
-static _WKDiagnosticLoggingDomain toWKDiagnosticLoggingDomain(WebCore::DiagnosticLoggingDomain domain)
+static _WKDiagnosticLoggingDomain toWKDiagnosticLoggingDomain(CyberCore::DiagnosticLoggingDomain domain)
 {
     switch (domain) {
-    case WebCore::DiagnosticLoggingDomain::Media:
+    case CyberCore::DiagnosticLoggingDomain::Media:
         return _WKDiagnosticLoggingDomainMedia;
     }
 }
 
-void DiagnosticLoggingClient::logDiagnosticMessageWithResult(WebKit::WebPageProxy*, const WTF::String& message, const WTF::String& description, WebCore::DiagnosticLoggingResultType result)
+void DiagnosticLoggingClient::logDiagnosticMessageWithResult(WebKit::WebPageProxy*, const WTF::String& message, const WTF::String& description, CyberCore::DiagnosticLoggingResultType result)
 {
     if (m_delegateMethods.webviewLogDiagnosticMessageWithResult)
         [m_delegate.get() _webView:m_webView logDiagnosticMessageWithResult:message description:description result:toWKDiagnosticLoggingResultType(result)];
@@ -104,7 +104,7 @@ void DiagnosticLoggingClient::logDiagnosticMessageWithValueDictionary(WebPagePro
         [m_delegate.get() _webView:m_webView logDiagnosticMessage:message description:description valueDictionary:static_cast<NSDictionary*>(valueDictionary->wrapper())];
 }
 
-void DiagnosticLoggingClient::logDiagnosticMessageWithDomain(WebPageProxy*, const String& message, WebCore::DiagnosticLoggingDomain domain)
+void DiagnosticLoggingClient::logDiagnosticMessageWithDomain(WebPageProxy*, const String& message, CyberCore::DiagnosticLoggingDomain domain)
 {
     if (m_delegateMethods.webviewLogDiagnosticMessageWithDomain)
         [m_delegate.get() _webView:m_webView logDiagnosticMessageWithDomain:message domain:toWKDiagnosticLoggingDomain(domain)];

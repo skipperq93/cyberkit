@@ -61,8 +61,8 @@ public:
 
     WebKit::WebsitePoliciesData data();
 
-    const WebCore::ContentExtensionEnablement& contentExtensionEnablement() const { return m_contentExtensionEnablement; }
-    void setContentExtensionEnablement(WebCore::ContentExtensionEnablement&& enablement) { m_contentExtensionEnablement = WTFMove(enablement); }
+    const CyberCore::ContentExtensionEnablement& contentExtensionEnablement() const { return m_contentExtensionEnablement; }
+    void setContentExtensionEnablement(CyberCore::ContentExtensionEnablement&& enablement) { m_contentExtensionEnablement = WTFMove(enablement); }
 
     void setActiveContentRuleListActionPatterns(HashMap<WTF::String, Vector<WTF::String>>&& patterns) { m_activeContentRuleListActionPatterns = WTFMove(patterns); }
     const HashMap<WTF::String, Vector<WTF::String>>& activeContentRuleListActionPatterns() const { return m_activeContentRuleListActionPatterns; }
@@ -74,12 +74,12 @@ public:
     void setAutoplayPolicy(WebKit::WebsiteAutoplayPolicy policy) { m_autoplayPolicy = policy; }
 
 #if ENABLE(DEVICE_ORIENTATION)
-    WebCore::DeviceOrientationOrMotionPermissionState deviceOrientationAndMotionAccessState() const { return m_deviceOrientationAndMotionAccessState; }
-    void setDeviceOrientationAndMotionAccessState(WebCore::DeviceOrientationOrMotionPermissionState state) { m_deviceOrientationAndMotionAccessState = state; }
+    CyberCore::DeviceOrientationOrMotionPermissionState deviceOrientationAndMotionAccessState() const { return m_deviceOrientationAndMotionAccessState; }
+    void setDeviceOrientationAndMotionAccessState(CyberCore::DeviceOrientationOrMotionPermissionState state) { m_deviceOrientationAndMotionAccessState = state; }
 #endif
 
-    const Vector<WebCore::CustomHeaderFields>& customHeaderFields() const { return m_customHeaderFields; }
-    void setCustomHeaderFields(Vector<WebCore::CustomHeaderFields>&& fields) { m_customHeaderFields = WTFMove(fields); }
+    const Vector<CyberCore::CustomHeaderFields>& customHeaderFields() const { return m_customHeaderFields; }
+    void setCustomHeaderFields(Vector<CyberCore::CustomHeaderFields>&& fields) { m_customHeaderFields = WTFMove(fields); }
 
     WebKit::WebsitePopUpPolicy popUpPolicy() const { return m_popUpPolicy; }
     void setPopUpPolicy(WebKit::WebsitePopUpPolicy policy) { m_popUpPolicy = policy; }
@@ -123,24 +123,24 @@ public:
     bool allowContentChangeObserverQuirk() const { return m_allowContentChangeObserverQuirk; }
     void setAllowContentChangeObserverQuirk(bool allow) { m_allowContentChangeObserverQuirk = allow; }
 
-    WebCore::AllowsContentJavaScript allowsContentJavaScript() const { return m_allowsContentJavaScript; }
-    void setAllowsContentJavaScript(WebCore::AllowsContentJavaScript allows) { m_allowsContentJavaScript = allows; }
+    CyberCore::AllowsContentJavaScript allowsContentJavaScript() const { return m_allowsContentJavaScript; }
+    void setAllowsContentJavaScript(CyberCore::AllowsContentJavaScript allows) { m_allowsContentJavaScript = allows; }
 
     bool lockdownModeEnabled() const;
     void setLockdownModeEnabled(std::optional<bool> enabled) { m_lockdownModeEnabled = enabled; }
     bool isLockdownModeExplicitlySet() const { return !!m_lockdownModeEnabled; }
 
-    WebCore::ColorSchemePreference colorSchemePreference() const { return m_colorSchemePreference; }
-    void setColorSchemePreference(WebCore::ColorSchemePreference colorSchemePreference) { m_colorSchemePreference = colorSchemePreference; }
+    CyberCore::ColorSchemePreference colorSchemePreference() const { return m_colorSchemePreference; }
+    void setColorSchemePreference(CyberCore::ColorSchemePreference colorSchemePreference) { m_colorSchemePreference = colorSchemePreference; }
 
-    WebCore::MouseEventPolicy mouseEventPolicy() const { return m_mouseEventPolicy; }
-    void setMouseEventPolicy(WebCore::MouseEventPolicy policy) { m_mouseEventPolicy = policy; }
+    CyberCore::MouseEventPolicy mouseEventPolicy() const { return m_mouseEventPolicy; }
+    void setMouseEventPolicy(CyberCore::MouseEventPolicy policy) { m_mouseEventPolicy = policy; }
 
-    WebCore::ModalContainerObservationPolicy modalContainerObservationPolicy() const { return m_modalContainerObservationPolicy; }
-    void setModalContainerObservationPolicy(WebCore::ModalContainerObservationPolicy policy) { m_modalContainerObservationPolicy = policy; }
+    CyberCore::ModalContainerObservationPolicy modalContainerObservationPolicy() const { return m_modalContainerObservationPolicy; }
+    void setModalContainerObservationPolicy(CyberCore::ModalContainerObservationPolicy policy) { m_modalContainerObservationPolicy = policy; }
 
-    OptionSet<WebCore::NetworkConnectionIntegrity> networkConnectionIntegrityPolicy() const { return m_networkConnectionIntegrityPolicy; }
-    void setNetworkConnectionIntegrityPolicy(OptionSet<WebCore::NetworkConnectionIntegrity> policy) { m_networkConnectionIntegrityPolicy = policy; }
+    OptionSet<CyberCore::NetworkConnectionIntegrity> networkConnectionIntegrityPolicy() const { return m_networkConnectionIntegrityPolicy; }
+    void setNetworkConnectionIntegrityPolicy(OptionSet<CyberCore::NetworkConnectionIntegrity> policy) { m_networkConnectionIntegrityPolicy = policy; }
 
     bool idempotentModeAutosizingOnlyHonorsPercentages() const { return m_idempotentModeAutosizingOnlyHonorsPercentages; }
     void setIdempotentModeAutosizingOnlyHonorsPercentages(bool idempotentModeAutosizingOnlyHonorsPercentages) { m_idempotentModeAutosizingOnlyHonorsPercentages = idempotentModeAutosizingOnlyHonorsPercentages; }
@@ -150,14 +150,14 @@ public:
 
 private:
     // FIXME: replace most or all of these members with a WebsitePoliciesData.
-    WebCore::ContentExtensionEnablement m_contentExtensionEnablement { WebCore::ContentExtensionDefaultEnablement::Enabled, { } };
+    CyberCore::ContentExtensionEnablement m_contentExtensionEnablement { CyberCore::ContentExtensionDefaultEnablement::Enabled, { } };
     HashMap<WTF::String, Vector<WTF::String>> m_activeContentRuleListActionPatterns;
     OptionSet<WebKit::WebsiteAutoplayQuirk> m_allowedAutoplayQuirks;
     WebKit::WebsiteAutoplayPolicy m_autoplayPolicy { WebKit::WebsiteAutoplayPolicy::Default };
 #if ENABLE(DEVICE_ORIENTATION)
-    WebCore::DeviceOrientationOrMotionPermissionState m_deviceOrientationAndMotionAccessState { WebCore::DeviceOrientationOrMotionPermissionState::Prompt };
+    CyberCore::DeviceOrientationOrMotionPermissionState m_deviceOrientationAndMotionAccessState { CyberCore::DeviceOrientationOrMotionPermissionState::Prompt };
 #endif
-    Vector<WebCore::CustomHeaderFields> m_customHeaderFields;
+    Vector<CyberCore::CustomHeaderFields> m_customHeaderFields;
     WebKit::WebsitePopUpPolicy m_popUpPolicy { WebKit::WebsitePopUpPolicy::Default };
     RefPtr<WebKit::WebsiteDataStore> m_websiteDataStore;
     RefPtr<WebKit::WebUserContentControllerProxy> m_userContentController;
@@ -172,13 +172,13 @@ private:
     bool m_allowSiteSpecificQuirksToOverrideContentMode { false };
     WTF::String m_applicationNameForDesktopUserAgent;
     bool m_allowContentChangeObserverQuirk { false };
-    WebCore::AllowsContentJavaScript m_allowsContentJavaScript { WebCore::AllowsContentJavaScript::Yes };
-    WebCore::MouseEventPolicy m_mouseEventPolicy { WebCore::MouseEventPolicy::Default };
-    WebCore::ModalContainerObservationPolicy m_modalContainerObservationPolicy { WebCore::ModalContainerObservationPolicy::Disabled };
-    OptionSet<WebCore::NetworkConnectionIntegrity> m_networkConnectionIntegrityPolicy;
+    CyberCore::AllowsContentJavaScript m_allowsContentJavaScript { CyberCore::AllowsContentJavaScript::Yes };
+    CyberCore::MouseEventPolicy m_mouseEventPolicy { CyberCore::MouseEventPolicy::Default };
+    CyberCore::ModalContainerObservationPolicy m_modalContainerObservationPolicy { CyberCore::ModalContainerObservationPolicy::Disabled };
+    OptionSet<CyberCore::NetworkConnectionIntegrity> m_networkConnectionIntegrityPolicy;
     bool m_idempotentModeAutosizingOnlyHonorsPercentages { false };
     std::optional<bool> m_lockdownModeEnabled;
-    WebCore::ColorSchemePreference m_colorSchemePreference { WebCore::ColorSchemePreference::NoPreference };
+    CyberCore::ColorSchemePreference m_colorSchemePreference { CyberCore::ColorSchemePreference::NoPreference };
     bool m_allowPrivacyProxy { true };
 };
 

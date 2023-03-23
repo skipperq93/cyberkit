@@ -28,7 +28,7 @@
 #import "WKObject.h"
 #import "InjectedBundleHitTestResult.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 template<> struct WrapperTraits<InjectedBundleHitTestResult> {
     using WrapperClass = WKWebProcessPlugInHitTestResult;

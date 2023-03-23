@@ -23,7 +23,7 @@
 #include "LegacyInlineFlowBox.h"
 #include "RenderSVGInline.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderSVGInlineText;
 
@@ -51,6 +51,6 @@ private:
     float m_logicalHeight;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_INLINE_BOX(SVGInlineFlowBox, isSVGInlineFlowBox())

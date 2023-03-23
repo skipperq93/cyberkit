@@ -35,7 +35,7 @@
 #include <wtf/Lock.h>
 #include <wtf/ThreadSafeRefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Page;
 
@@ -116,22 +116,22 @@ private:
 WEBCORE_EXPORT WTF::TextStream& operator<<(WTF::TextStream&, WheelEventTestMonitor::DeferReason);
 WTF::TextStream& operator<<(WTF::TextStream&, const WheelEventTestMonitor::ScrollableAreaReasonMap&);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::WheelEventTestMonitor::DeferReason> {
+template<> struct EnumTraits<CyberCore::WheelEventTestMonitor::DeferReason> {
     using values = EnumValues<
-        WebCore::WheelEventTestMonitor::DeferReason,
-        WebCore::WheelEventTestMonitor::DeferReason::HandlingWheelEvent,
-        WebCore::WheelEventTestMonitor::DeferReason::HandlingWheelEventOnMainThread,
-        WebCore::WheelEventTestMonitor::DeferReason::PostMainThreadWheelEventHandling,
-        WebCore::WheelEventTestMonitor::DeferReason::RubberbandInProgress,
-        WebCore::WheelEventTestMonitor::DeferReason::ScrollSnapInProgress,
-        WebCore::WheelEventTestMonitor::DeferReason::ScrollAnimationInProgress,
-        WebCore::WheelEventTestMonitor::DeferReason::ScrollingThreadSyncNeeded,
-        WebCore::WheelEventTestMonitor::DeferReason::ContentScrollInProgress,
-        WebCore::WheelEventTestMonitor::DeferReason::RequestedScrollPosition
+        CyberCore::WheelEventTestMonitor::DeferReason,
+        CyberCore::WheelEventTestMonitor::DeferReason::HandlingWheelEvent,
+        CyberCore::WheelEventTestMonitor::DeferReason::HandlingWheelEventOnMainThread,
+        CyberCore::WheelEventTestMonitor::DeferReason::PostMainThreadWheelEventHandling,
+        CyberCore::WheelEventTestMonitor::DeferReason::RubberbandInProgress,
+        CyberCore::WheelEventTestMonitor::DeferReason::ScrollSnapInProgress,
+        CyberCore::WheelEventTestMonitor::DeferReason::ScrollAnimationInProgress,
+        CyberCore::WheelEventTestMonitor::DeferReason::ScrollingThreadSyncNeeded,
+        CyberCore::WheelEventTestMonitor::DeferReason::ContentScrollInProgress,
+        CyberCore::WheelEventTestMonitor::DeferReason::RequestedScrollPosition
     >;
 };
 

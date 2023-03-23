@@ -35,34 +35,34 @@
 #include <CyberCore/FileSystemHandleIdentifier.h>
 #include <CyberCore/StorageEstimate.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 Ref<WebStorageConnection> WebStorageConnection::create()
 {
     return adoptRef(*new WebStorageConnection);
 }
 
-void WebStorageConnection::getPersisted(WebCore::ClientOrigin&& origin, StorageConnection::PersistCallback&& completionHandler)
+void WebStorageConnection::getPersisted(CyberCore::ClientOrigin&& origin, StorageConnection::PersistCallback&& completionHandler)
 {
     connection().sendWithAsyncReply(Messages::NetworkStorageManager::Persisted(origin), WTFMove(completionHandler));
 }
 
-void WebStorageConnection::persist(const WebCore::ClientOrigin& origin, StorageConnection::PersistCallback&& completionHandler)
+void WebStorageConnection::persist(const CyberCore::ClientOrigin& origin, StorageConnection::PersistCallback&& completionHandler)
 {
     connection().sendWithAsyncReply(Messages::NetworkStorageManager::Persist(origin), WTFMove(completionHandler));
 }
 
-void WebStorageConnection::getEstimate(WebCore::ClientOrigin&& origin, StorageConnection::GetEstimateCallback&& completionHandler)
+void WebStorageConnection::getEstimate(CyberCore::ClientOrigin&& origin, StorageConnection::GetEstimateCallback&& completionHandler)
 {
     connection().sendWithAsyncReply(Messages::NetworkStorageManager::Estimate(origin), [completionHandler = WTFMove(completionHandler)](auto result) mutable {
         if (!result)
-            return completionHandler(WebCore::Exception { WebCore::TypeError });
+            return completionHandler(CyberCore::Exception { CyberCore::TypeError });
 
         return completionHandler(WTFMove(*result));
     });
 }
 
-void WebStorageConnection::fileSystemGetDirectory(WebCore::ClientOrigin&& origin, StorageConnection::GetDirectoryCallback&& completionHandler)
+void WebStorageConnection::fileSystemGetDirectory(CyberCore::ClientOrigin&& origin, StorageConnection::GetDirectoryCallback&& completionHandler)
 {
     auto& connection = WebProcess::singleton().ensureNetworkProcessConnection().connection();
     connection.sendWithAsyncReply(Messages::NetworkStorageManager::FileSystemGetDirectory(origin), [completionHandler = WTFMove(completionHandler)](auto result) mutable {
@@ -71,9 +71,9 @@ void WebStorageConnection::fileSystemGetDirectory(WebCore::ClientOrigin&& origin
 
         auto identifier = result.value();
         if (!identifier.isValid())
-            return completionHandler(WebCore::Exception { WebCore::UnknownError, "Connection is lost"_s });
+            return completionHandler(CyberCore::Exception { CyberCore::UnknownError, "Connection is lost"_s });
 
-        auto connection = RefPtr<WebCore::FileSystemStorageConnection> { &WebProcess::singleton().fileSystemStorageConnection() };
+        auto connection = RefPtr<CyberCore::FileSystemStorageConnection> { &WebProcess::singleton().fileSystemStorageConnection() };
         return completionHandler(std::pair { identifier, WTFMove(connection) });
     });
 }
@@ -83,4 +83,4 @@ IPC::Connection& WebStorageConnection::connection()
     return WebProcess::singleton().ensureNetworkProcessConnection().connection();
 }
 
-} // namespace WebKit
+} // namespace CyberKit

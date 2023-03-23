@@ -30,7 +30,7 @@
 #include "NotImplemented.h"
 #include <wtf/win/GDIObject.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 GDIObject<HBITMAP> imageFromRect(const Frame*, IntRect&)
 {
@@ -38,4 +38,4 @@ GDIObject<HBITMAP> imageFromRect(const Frame*, IntRect&)
     return GDIObject<HBITMAP>();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

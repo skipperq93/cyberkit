@@ -34,7 +34,7 @@
 #include <wtf/RetainPtr.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 bool deviceClassIsSmallScreen()
 {
@@ -62,6 +62,6 @@ bool deviceHasIPadCapability()
     return deviceHasIPadCapability;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(IOS_FAMILY)

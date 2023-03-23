@@ -33,7 +33,7 @@
 
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 std::optional<int> GridPosition::gMaxPositionForTesting;
 static const int kGridMaxPosition = 1000000;
@@ -120,4 +120,4 @@ TextStream& operator<<(TextStream& ts, const GridPosition& o)
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

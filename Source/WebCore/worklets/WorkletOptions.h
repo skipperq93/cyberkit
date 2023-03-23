@@ -27,10 +27,10 @@
 
 #include "FetchRequestCredentials.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct WorkletOptions {
     FetchRequestCredentials credentials = FetchRequestCredentials::SameOrigin;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

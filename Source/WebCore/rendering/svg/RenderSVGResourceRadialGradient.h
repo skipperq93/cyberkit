@@ -23,7 +23,7 @@
 #include "RadialGradientAttributes.h"
 #include "RenderSVGResourceGradient.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGRadialGradientElement;
 
@@ -55,6 +55,6 @@ private:
     RadialGradientAttributes m_attributes;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_SVG_RESOURCE(RenderSVGResourceRadialGradient, RadialGradientResourceType)

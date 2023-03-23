@@ -34,7 +34,7 @@
 #include "ImageBufferCairoSurfaceBackend.h"
 #include <wtf/IsoMalloc.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ImageBufferCairoImageSurfaceBackend : public ImageBufferCairoSurfaceBackend {
     WTF_MAKE_ISO_ALLOCATED(ImageBufferCairoImageSurfaceBackend);
@@ -55,6 +55,6 @@ private:
     void platformTransformColorSpace(const std::array<uint8_t, 256>& lookUpTable) override;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(CAIRO)

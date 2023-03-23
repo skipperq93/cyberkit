@@ -32,7 +32,7 @@
 #include "PlatformWebView.h"
 #include "TestController.h"
 #include "UIScriptController.h"
-#include "WebCoreTestSupport.h"
+#include "CyberCoreTestSupport.h"
 #include <CyberKit/WKContextPrivate.h>
 #include <CyberKit/WKData.h>
 #include <CyberKit/WKDictionary.h>
@@ -1029,12 +1029,12 @@ WKRetainPtr<WKTypeRef> TestInvocation::didReceiveSynchronousMessageFromInjectedB
 
 #if ENABLE(GAMEPAD)
     if (WKStringIsEqualToUTF8CString(messageName, "ConnectMockGamepad")) {
-        WebCoreTestSupport::connectMockGamepad(uint64Value(messageBody));
+        CyberCoreTestSupport::connectMockGamepad(uint64Value(messageBody));
         return nullptr;
     }
 
     if (WKStringIsEqualToUTF8CString(messageName, "DisconnectMockGamepad")) {
-        WebCoreTestSupport::disconnectMockGamepad(uint64Value(messageBody));
+        CyberCoreTestSupport::disconnectMockGamepad(uint64Value(messageBody));
         return nullptr;
     }
 
@@ -1046,7 +1046,7 @@ WKRetainPtr<WKTypeRef> TestInvocation::didReceiveSynchronousMessageFromInjectedB
         auto axisCount = uint64Value(messageBodyDictionary, "AxisCount");
         auto buttonCount = uint64Value(messageBodyDictionary, "ButtonCount");
         bool supportsDualRumble = booleanValue(messageBodyDictionary, "SupportsDualRumble");
-        WebCoreTestSupport::setMockGamepadDetails(gamepadIndex, toWTFString(gamepadID), toWTFString(mapping), axisCount, buttonCount, supportsDualRumble);
+        CyberCoreTestSupport::setMockGamepadDetails(gamepadIndex, toWTFString(gamepadID), toWTFString(mapping), axisCount, buttonCount, supportsDualRumble);
         return nullptr;
     }
 
@@ -1055,7 +1055,7 @@ WKRetainPtr<WKTypeRef> TestInvocation::didReceiveSynchronousMessageFromInjectedB
         auto gamepadIndex = uint64Value(messageBodyDictionary, "GamepadIndex");
         auto axisIndex = uint64Value(messageBodyDictionary, "AxisIndex");
         auto value = doubleValue(messageBodyDictionary, "Value");
-        WebCoreTestSupport::setMockGamepadAxisValue(gamepadIndex, axisIndex, value);
+        CyberCoreTestSupport::setMockGamepadAxisValue(gamepadIndex, axisIndex, value);
         return nullptr;
     }
 
@@ -1064,7 +1064,7 @@ WKRetainPtr<WKTypeRef> TestInvocation::didReceiveSynchronousMessageFromInjectedB
         auto gamepadIndex = uint64Value(messageBodyDictionary, "GamepadIndex");
         auto buttonIndex = uint64Value(messageBodyDictionary, "ButtonIndex");
         auto value = doubleValue(messageBodyDictionary, "Value");
-        WebCoreTestSupport::setMockGamepadButtonValue(gamepadIndex, buttonIndex, value);
+        CyberCoreTestSupport::setMockGamepadButtonValue(gamepadIndex, buttonIndex, value);
         return nullptr;
     }
 #endif // ENABLE(GAMEPAD)

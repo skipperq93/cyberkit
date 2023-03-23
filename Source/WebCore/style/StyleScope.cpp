@@ -59,7 +59,7 @@
 #include "UserStyleSheet.h"
 #include <wtf/SetForScope.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 

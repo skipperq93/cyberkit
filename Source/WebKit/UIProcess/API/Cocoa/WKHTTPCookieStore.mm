@@ -29,7 +29,7 @@
 #import <CyberCore/Cookie.h>
 #import <CyberCore/HTTPCookieAcceptPolicy.h>
 #import <CyberCore/HTTPCookieAcceptPolicyCocoa.h>
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 #import <pal/spi/cf/CFNetworkSPI.h>
 #import <wtf/BlockPtr.h>
 #import <wtf/HashMap.h>
@@ -38,7 +38,7 @@
 #import <wtf/WeakObjCPtr.h>
 #import <wtf/cocoa/VectorCocoa.h>
 
-static NSArray<NSHTTPCookie *> *coreCookiesToNSCookies(const Vector<WebCore::Cookie>& coreCookies)
+static NSArray<NSHTTPCookie *> *coreCookiesToNSCookies(const Vector<CyberCore::Cookie>& coreCookies)
 {
     return createNSArray(coreCookies, [] (auto& cookie) -> NSHTTPCookie * {
         return cookie;
@@ -68,7 +68,7 @@ private:
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainRunLoop(WKHTTPCookieStore.class, self))
+    if (CyberCoreObjCScheduleDeallocateOnMainRunLoop(WKHTTPCookieStore.class, self))
         return;
 
     for (auto& observer : _observers.values())
@@ -81,7 +81,7 @@ private:
 
 - (void)getAllCookies:(void (^)(NSArray<NSHTTPCookie *> *))completionHandler
 {
-    _cookieStore->cookies([handler = adoptNS([completionHandler copy])](const Vector<WebCore::Cookie>& cookies) {
+    _cookieStore->cookies([handler = adoptNS([completionHandler copy])](const Vector<CyberCore::Cookie>& cookies) {
         auto rawHandler = (void (^)(NSArray<NSHTTPCookie *> *))handler.get();
         rawHandler(coreCookiesToNSCookies(cookies));
     });
@@ -138,14 +138,14 @@ private:
 
 - (void)_getCookiesForURL:(NSURL *)url completionHandler:(void (^)(NSArray<NSHTTPCookie *> *))completionHandler
 {
-    _cookieStore->cookiesForURL(url, [handler = makeBlockPtr(completionHandler)] (const Vector<WebCore::Cookie>& cookies) {
+    _cookieStore->cookiesForURL(url, [handler = makeBlockPtr(completionHandler)] (const Vector<CyberCore::Cookie>& cookies) {
         handler.get()(coreCookiesToNSCookies(cookies));
     });
 }
 
 - (void)_setCookieAcceptPolicy:(NSHTTPCookieAcceptPolicy)policy completionHandler:(void (^)())completionHandler
 {
-    _cookieStore->setHTTPCookieAcceptPolicy(WebCore::toHTTPCookieAcceptPolicy(policy), [completionHandler = makeBlockPtr(completionHandler)] {
+    _cookieStore->setHTTPCookieAcceptPolicy(CyberCore::toHTTPCookieAcceptPolicy(policy), [completionHandler = makeBlockPtr(completionHandler)] {
         completionHandler.get()();
     });
 }

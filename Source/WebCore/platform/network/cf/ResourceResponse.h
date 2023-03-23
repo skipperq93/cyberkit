@@ -30,7 +30,7 @@
 
 OBJC_CLASS NSURLResponse;
 
-namespace WebCore {
+namespace CyberCore {
 
 class ResourceResponse : public ResourceResponseBase {
 public:
@@ -65,9 +65,9 @@ public:
         // FIXME: Find some programmatic lighweight way to calculate ResourceResponse and associated classes.
         // This is a rough estimate of resource overhead based on stats collected from memory usage tests.
         return 3800;
-        /*  1280 * 2 +                // average size of ResourceResponse. Doubled to account for the WebCore copy and the CF copy.
+        /*  1280 * 2 +                // average size of ResourceResponse. Doubled to account for the CyberCore copy and the CF copy.
                                       // Mostly due to the size of the hash maps, the Header Map strings and the URL.
-            256 * 2                   // Overhead from ResourceRequest, doubled to account for WebCore copy and CF copy.
+            256 * 2                   // Overhead from ResourceRequest, doubled to account for CyberCore copy and CF copy.
                                       // Mostly due to the URL and Header Map.
          */
     }
@@ -97,4 +97,4 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore

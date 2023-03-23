@@ -97,7 +97,7 @@ namespace WTF {
 class TextStream;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace IDBClient {
 class IDBConnectionToServer;
@@ -326,7 +326,7 @@ public:
     PageGroup& group();
 
     BroadcastChannelRegistry& broadcastChannelRegistry() { return m_broadcastChannelRegistry; }
-    WEBCORE_EXPORT void setBroadcastChannelRegistry(Ref<BroadcastChannelRegistry>&&); // Only used by WebKitLegacy.
+    WEBCORE_EXPORT void setBroadcastChannelRegistry(Ref<BroadcastChannelRegistry>&&); // Only used by CyberKitLegacy.
 
     WEBCORE_EXPORT static void forEachPage(const Function<void(Page&)>&);
     WEBCORE_EXPORT static unsigned nonUtilityPageCount();
@@ -1393,4 +1393,4 @@ inline PageGroup& Page::group()
 
 WTF::TextStream& operator<<(WTF::TextStream&, RenderingUpdateStep);
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -33,7 +33,7 @@
 
 typedef struct __CVBuffer* CVPixelBufferRef;
 
-namespace WebCore {
+namespace CyberCore {
 class GraphicsContextGLCocoa;
 
 // GraphicsContextGLCV implementation for GraphicsContextGLCocoa.

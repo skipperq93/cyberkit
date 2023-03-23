@@ -29,7 +29,7 @@
 #include "BitmapImage.h"
 #include "SharedBuffer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 void BitmapImage::invalidatePlatformData()
 {
@@ -46,4 +46,4 @@ bool BitmapImage::getHBITMAP(HBITMAP bmp)
     return getHBITMAPOfSize(bmp, 0);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

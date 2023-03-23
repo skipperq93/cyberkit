@@ -34,9 +34,9 @@
 #include <CyberCore/DateTimeChooserClient.h>
 #include <CyberCore/DateTimeChooserParameters.h>
 
-namespace WebKit {
+namespace CyberKit {
 
-WebDateTimeChooser::WebDateTimeChooser(WebPage& page, WebCore::DateTimeChooserClient& client)
+WebDateTimeChooser::WebDateTimeChooser(WebPage& page, CyberCore::DateTimeChooserClient& client)
     : m_client(client)
     , m_page(page)
 {
@@ -57,12 +57,12 @@ void WebDateTimeChooser::endChooser()
     WebProcess::singleton().parentProcessConnection()->send(Messages::WebPageProxy::EndDateTimePicker(), m_page.identifier());
 }
 
-void WebDateTimeChooser::showChooser(const WebCore::DateTimeChooserParameters& params)
+void WebDateTimeChooser::showChooser(const CyberCore::DateTimeChooserParameters& params)
 {
     m_page.setActiveDateTimeChooser(*this);
     WebProcess::singleton().parentProcessConnection()->send(Messages::WebPageProxy::ShowDateTimePicker(params), m_page.identifier());
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

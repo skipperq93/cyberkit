@@ -33,7 +33,7 @@
 #if ENABLE(DATE_AND_TIME_INPUT_TYPES)
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct DateTimeChooserParameters;
 
@@ -46,5 +46,5 @@ public:
     virtual void showChooser(const DateTimeChooserParameters&) = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 #endif

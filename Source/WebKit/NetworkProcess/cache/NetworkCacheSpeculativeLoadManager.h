@@ -35,7 +35,7 @@
 #include <wtf/Vector.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 enum class NetworkConnectionIntegrity : uint16_t;
 }
 
@@ -54,29 +54,29 @@ public:
     explicit SpeculativeLoadManager(Cache&, Storage&);
     ~SpeculativeLoadManager();
 
-    void registerLoad(const GlobalFrameID&, const WebCore::ResourceRequest&, const Key& resourceKey, std::optional<NavigatingToAppBoundDomain>, bool allowPrivacyProxy, OptionSet<WebCore::NetworkConnectionIntegrity> networkConnectionIntegrityPolicy);
-    void registerMainResourceLoadResponse(const GlobalFrameID&, const WebCore::ResourceRequest&, const WebCore::ResourceResponse&);
+    void registerLoad(const GlobalFrameID&, const CyberCore::ResourceRequest&, const Key& resourceKey, std::optional<NavigatingToAppBoundDomain>, bool allowPrivacyProxy, OptionSet<CyberCore::NetworkConnectionIntegrity> networkConnectionIntegrityPolicy);
+    void registerMainResourceLoadResponse(const GlobalFrameID&, const CyberCore::ResourceRequest&, const CyberCore::ResourceResponse&);
 
     typedef Function<void (std::unique_ptr<Entry>)> RetrieveCompletionHandler;
 
-    bool canRetrieve(const Key& storageKey, const WebCore::ResourceRequest&, const GlobalFrameID&) const;
+    bool canRetrieve(const Key& storageKey, const CyberCore::ResourceRequest&, const GlobalFrameID&) const;
     void retrieve(const Key& storageKey, RetrieveCompletionHandler&&);
 
 private:
     class PreloadedEntry;
 
-    static bool shouldRegisterLoad(const WebCore::ResourceRequest&);
-    void addPreloadedEntry(std::unique_ptr<Entry>, const GlobalFrameID&, std::optional<WebCore::ResourceRequest>&& revalidationRequest = std::nullopt);
-    void preloadEntry(const Key&, const SubresourceInfo&, const GlobalFrameID&, std::optional<NavigatingToAppBoundDomain>, bool allowPrivacyProxy, OptionSet<WebCore::NetworkConnectionIntegrity> networkConnectionIntegrityPolicy);
+    static bool shouldRegisterLoad(const CyberCore::ResourceRequest&);
+    void addPreloadedEntry(std::unique_ptr<Entry>, const GlobalFrameID&, std::optional<CyberCore::ResourceRequest>&& revalidationRequest = std::nullopt);
+    void preloadEntry(const Key&, const SubresourceInfo&, const GlobalFrameID&, std::optional<NavigatingToAppBoundDomain>, bool allowPrivacyProxy, OptionSet<CyberCore::NetworkConnectionIntegrity> networkConnectionIntegrityPolicy);
     void retrieveEntryFromStorage(const SubresourceInfo&, RetrieveCompletionHandler&&);
-    void revalidateSubresource(const SubresourceInfo&, std::unique_ptr<Entry>, const GlobalFrameID&, std::optional<NavigatingToAppBoundDomain>, bool allowPrivacyProxy, OptionSet<WebCore::NetworkConnectionIntegrity> networkConnectionIntegrityPolicy);
+    void revalidateSubresource(const SubresourceInfo&, std::unique_ptr<Entry>, const GlobalFrameID&, std::optional<NavigatingToAppBoundDomain>, bool allowPrivacyProxy, OptionSet<CyberCore::NetworkConnectionIntegrity> networkConnectionIntegrityPolicy);
     void preconnectForSubresource(const SubresourceInfo&, Entry*, const GlobalFrameID&, std::optional<NavigatingToAppBoundDomain>);
     bool satisfyPendingRequests(const Key&, Entry*);
     void retrieveSubresourcesEntry(const Key& storageKey, WTF::Function<void (std::unique_ptr<SubresourcesEntry>)>&&);
-    void startSpeculativeRevalidation(const GlobalFrameID&, SubresourcesEntry&, bool, std::optional<NavigatingToAppBoundDomain>, bool allowPrivacyProxy, OptionSet<WebCore::NetworkConnectionIntegrity> networkConnectionIntegrityPolicy);
+    void startSpeculativeRevalidation(const GlobalFrameID&, SubresourcesEntry&, bool, std::optional<NavigatingToAppBoundDomain>, bool allowPrivacyProxy, OptionSet<CyberCore::NetworkConnectionIntegrity> networkConnectionIntegrityPolicy);
 
-    static bool canUsePreloadedEntry(const PreloadedEntry&, const WebCore::ResourceRequest& actualRequest);
-    static bool canUsePendingPreload(const SpeculativeLoad&, const WebCore::ResourceRequest& actualRequest);
+    static bool canUsePreloadedEntry(const PreloadedEntry&, const CyberCore::ResourceRequest& actualRequest);
+    static bool canUsePendingPreload(const SpeculativeLoad&, const CyberCore::ResourceRequest& actualRequest);
 
     Cache& m_cache;
     Storage& m_storage;

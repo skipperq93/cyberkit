@@ -33,7 +33,7 @@
 
 #include "DeprecatedGlobalSettings.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 DEFINE_ALLOCATOR_WITH_HEAP_IDENTIFIER(PerformanceEntry);
 
@@ -67,4 +67,4 @@ std::optional<PerformanceEntry::Type> PerformanceEntry::parseEntryTypeString(con
     return std::nullopt;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

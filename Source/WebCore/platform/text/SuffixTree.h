@@ -28,7 +28,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class UnicodeCodebook {
 public:
@@ -140,4 +140,4 @@ inline auto SuffixTree<Codebook>::Node::childAt(int codeWord) -> Node*&
     return m_children.last().node;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

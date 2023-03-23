@@ -36,7 +36,7 @@
 #include "RenderElement.h"
 #include <wtf/PointerComparison.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 StyleCrossfadeImage::StyleCrossfadeImage(RefPtr<StyleImage>&& from, RefPtr<StyleImage>&& to, double percentage, bool isPrefixed)
     : StyleGeneratedImage { Type::CrossfadeImage, StyleCrossfadeImage::isFixedSize }
@@ -78,7 +78,7 @@ RefPtr<StyleCrossfadeImage> StyleCrossfadeImage::blend(const StyleCrossfadeImage
     if (!m_cachedToImage || !m_cachedFromImage)
         return nullptr;
 
-    auto newPercentage = WebCore::blend(from.m_percentage, m_percentage, context);
+    auto newPercentage = CyberCore::blend(from.m_percentage, m_percentage, context);
     return StyleCrossfadeImage::create(m_from, m_to, newPercentage, from.m_isPrefixed && m_isPrefixed);
 }
 
@@ -188,4 +188,4 @@ void StyleCrossfadeImage::imageChanged(CachedImage*, const IntRect*)
         client->imageChanged(this);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

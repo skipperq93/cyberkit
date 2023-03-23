@@ -30,7 +30,7 @@
 #include <utility>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // FIXME: Not every header fits into a map. Notably, multiple Set-Cookie header fields are needed to set multiple cookies.
 
@@ -215,4 +215,4 @@ private:
     UncommonHeadersVector m_uncommonHeaders;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

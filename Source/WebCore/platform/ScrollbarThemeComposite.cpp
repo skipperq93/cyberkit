@@ -29,7 +29,7 @@
 #include "GraphicsContext.h"
 #include "Scrollbar.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 bool ScrollbarThemeComposite::paint(Scrollbar& scrollbar, GraphicsContext& graphicsContext, const IntRect& damageRect)
 {

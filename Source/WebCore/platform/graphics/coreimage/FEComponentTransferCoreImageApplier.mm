@@ -33,7 +33,7 @@
 #import <CoreImage/CIFilter.h>
 #import <CoreImage/CoreImage.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 FEComponentTransferCoreImageApplier::FEComponentTransferCoreImageApplier(const FEComponentTransfer& effect)
     : Base(effect)
@@ -81,6 +81,6 @@ bool FEComponentTransferCoreImageApplier::apply(const Filter&, const FilterImage
     return true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(CORE_IMAGE)

@@ -32,14 +32,14 @@
 #import <wtf/Vector.h>
 #import <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 class HistoryItem;
 }
 
-WebCore::HistoryItem* core(WebHistoryItem *item);
-WebHistoryItem *kit(WebCore::HistoryItem* item);
+CyberCore::HistoryItem* core(WebHistoryItem *item);
+WebHistoryItem *kit(CyberCore::HistoryItem* item);
 
-extern void WKNotifyHistoryItemChanged(WebCore::HistoryItem&);
+extern void WKNotifyHistoryItemChanged(CyberCore::HistoryItem&);
 
 @interface WebHistoryItem ()
 
@@ -47,7 +47,7 @@ extern void WKNotifyHistoryItemChanged(WebCore::HistoryItem&);
 
 - (id)initWithURLString:(NSString *)URLString title:(NSString *)title displayTitle:(NSString *)displayTitle lastVisitedTimeInterval:(NSTimeInterval)time;
 - (id)initFromDictionaryRepresentation:(NSDictionary *)dict;
-- (id)initWithWebCoreHistoryItem:(Ref<WebCore::HistoryItem>&&)item;
+- (id)initWithCyberCoreHistoryItem:(Ref<CyberCore::HistoryItem>&&)item;
 
 - (void)setTitle:(NSString *)title;
 - (void)_visitedWithTitle:(NSString *)title;
@@ -60,7 +60,7 @@ extern void WKNotifyHistoryItemChanged(WebCore::HistoryItem&);
 
 @interface WebHistoryItemPrivate : NSObject {
 @package
-    RefPtr<WebCore::HistoryItem> _historyItem;
+    RefPtr<CyberCore::HistoryItem> _historyItem;
 
     NSTimeInterval _lastVisitedTime;
     std::unique_ptr<Vector<String>> _redirectURLs;

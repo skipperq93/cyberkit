@@ -102,7 +102,7 @@ for my $file (sort @files) {
                 next if $shortName eq "Structure.o";
                 next if $shortName eq "nodes.o";
             }
-            if ($target eq "WebCore") {
+            if ($target eq "CyberCore") {
                 next if $shortName eq "BidiRun.o";
                 next if $shortName eq "CachedPage.o";
                 next if $shortName eq "CachedResource.o";

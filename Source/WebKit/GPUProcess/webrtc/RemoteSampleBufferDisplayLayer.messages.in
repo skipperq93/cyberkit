@@ -29,7 +29,7 @@ messages -> RemoteSampleBufferDisplayLayer NotRefCounted {
 #endif
     UpdateDisplayMode(bool hideDisplayLayer, bool hideRootLayer)
     UpdateAffineTransform(CGAffineTransform transform)
-    UpdateBoundsAndPosition(CGRect bounds, WebCore::VideoFrame::Rotation rotation)
+    UpdateBoundsAndPosition(CGRect bounds, CyberCore::VideoFrame::Rotation rotation)
     Flush()
     FlushAndRemoveImage()
     EnqueueVideoFrame(struct WebKit::SharedVideoFrame frame)

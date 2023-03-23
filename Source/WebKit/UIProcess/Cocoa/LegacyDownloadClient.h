@@ -32,7 +32,7 @@
 
 @protocol _WKDownloadDelegate;
 
-namespace WebCore {
+namespace CyberCore {
 class ResourceError;
 class ResourceResponse;
 }
@@ -47,13 +47,13 @@ public:
 private:
     // From API::DownloadClient
     void legacyDidStart(DownloadProxy&) final;
-    void didReceiveResponse(DownloadProxy&, const WebCore::ResourceResponse&);
+    void didReceiveResponse(DownloadProxy&, const CyberCore::ResourceResponse&);
     void didReceiveData(DownloadProxy&, uint64_t, uint64_t, uint64_t) final;
-    void decideDestinationWithSuggestedFilename(DownloadProxy&, const WebCore::ResourceResponse&, const String& suggestedFilename, CompletionHandler<void(AllowOverwrite, String)>&&) final;
+    void decideDestinationWithSuggestedFilename(DownloadProxy&, const CyberCore::ResourceResponse&, const String& suggestedFilename, CompletionHandler<void(AllowOverwrite, String)>&&) final;
     void didFinish(DownloadProxy&) final;
-    void didFail(DownloadProxy&, const WebCore::ResourceError&, API::Data*) final;
+    void didFail(DownloadProxy&, const CyberCore::ResourceError&, API::Data*) final;
     void legacyDidCancel(DownloadProxy&) final;
-    void willSendRequest(DownloadProxy&, WebCore::ResourceRequest&&, const WebCore::ResourceResponse&, CompletionHandler<void(WebCore::ResourceRequest&&)>&&) final;
+    void willSendRequest(DownloadProxy&, CyberCore::ResourceRequest&&, const CyberCore::ResourceResponse&, CompletionHandler<void(CyberCore::ResourceRequest&&)>&&) final;
     void didReceiveAuthenticationChallenge(DownloadProxy&, AuthenticationChallengeProxy&) final;
     void didCreateDestination(DownloadProxy&, const String&) final;
     void processDidCrash(DownloadProxy&) final;

@@ -27,7 +27,7 @@
 
 #include "ScrollView.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class AbstractFrameView : public ScrollView {
 public:

@@ -33,7 +33,7 @@
 #include <wtf/Forward.h>
 #include <wtf/URLHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 class DOMWrapperWorld;
 }
 
@@ -61,8 +61,8 @@ public:
     bool operator!=(const WebExtensionControllerProxy& other) const { return !(this == &other); }
 
 #if PLATFORM(COCOA)
-    void globalObjectIsAvailableForFrame(WebPage&, WebFrame&, WebCore::DOMWrapperWorld&);
-    void serviceWorkerGlobalObjectIsAvailableForFrame(WebPage&, WebFrame&, WebCore::DOMWrapperWorld&);
+    void globalObjectIsAvailableForFrame(WebPage&, WebFrame&, CyberCore::DOMWrapperWorld&);
+    void serviceWorkerGlobalObjectIsAvailableForFrame(WebPage&, WebFrame&, CyberCore::DOMWrapperWorld&);
 
     // webNavigation support.
     void didStartProvisionalLoadForFrame(WebPage&, WebFrame&, const URL&);
@@ -84,7 +84,7 @@ private:
 
     RefPtr<WebExtensionContextProxy> extensionContext(const URL&) const;
     RefPtr<WebExtensionContextProxy> extensionContext(const String& uniqueIdentifier) const;
-    RefPtr<WebExtensionContextProxy> extensionContext(WebFrame&, WebCore::DOMWrapperWorld&) const;
+    RefPtr<WebExtensionContextProxy> extensionContext(WebFrame&, CyberCore::DOMWrapperWorld&) const;
 
     const WebExtensionContextProxySet& extensionContexts() const { return m_extensionContexts; }
 #endif

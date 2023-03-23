@@ -32,12 +32,12 @@ class Connection;
 class Decoder;
 }
 
-namespace WebCore {
+namespace CyberCore {
 class Document;
 class ThreadableWebSocketChannel;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebSocketChannelManager {
 public:
@@ -57,7 +57,7 @@ public:
     bool hasReachedSocketLimit() const { return m_channels.size() >= maximumSocketCount; }
 
 private:
-    HashMap<WebCore::WebSocketIdentifier, WeakPtr<WebSocketChannel>> m_channels;
+    HashMap<CyberCore::WebSocketIdentifier, WeakPtr<WebSocketChannel>> m_channels;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

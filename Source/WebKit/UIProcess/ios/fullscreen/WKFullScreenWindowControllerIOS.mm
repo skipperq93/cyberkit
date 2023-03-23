@@ -66,7 +66,7 @@ SOFT_LINK_PRIVATE_FRAMEWORK_OPTIONAL(LinkPresentation)
 
 namespace WebKit {
 using namespace WebKit;
-using namespace WebCore;
+using namespace CyberCore;
 
 static CGSize sizeExpandedToSize(CGSize initial, CGSize other)
 {
@@ -226,7 +226,7 @@ static constexpr CGFloat kFullScreenWindowCornerRadius = 12;
     CGRect fullscreenFrame = _animatingIn ? _finalFrame : _initialFrame;
     _animatingView = _animatingIn ? toView : fromView;
 
-    CGRect boundsRect = WebCore::largestRectWithAspectRatioInsideRect(WebCore::FloatRect(inlineFrame).size().aspectRatio(), fullscreenFrame);
+    CGRect boundsRect = CyberCore::largestRectWithAspectRatioInsideRect(CyberCore::FloatRect(inlineFrame).size().aspectRatio(), fullscreenFrame);
     boundsRect.origin = CGPointZero;
 
     _initialMaskViewBounds = _animatingIn ? boundsRect : [_animatingView bounds];
@@ -234,7 +234,7 @@ static constexpr CGFloat kFullScreenWindowCornerRadius = 12;
     _finalMaskViewBounds = _animatingIn ? [_animatingView bounds] : boundsRect;
     _finalMaskViewCenter = CGPointMake(CGRectGetMidX([_animatingView bounds]), CGRectGetMidY([_animatingView bounds]));
 
-    WebCore::FloatRect scaleRect = WebCore::smallestRectWithAspectRatioAroundRect(WebCore::FloatRect(fullscreenFrame).size().aspectRatio(), inlineFrame);
+    CyberCore::FloatRect scaleRect = CyberCore::smallestRectWithAspectRatioAroundRect(CyberCore::FloatRect(fullscreenFrame).size().aspectRatio(), inlineFrame);
     CGAffineTransform scaleTransform = CGAffineTransformMakeScale(scaleRect.width() / fullscreenFrame.size.width, scaleRect.height() / fullscreenFrame.size.height);
     CGAffineTransform translateTransform = CGAffineTransformMakeTranslation(CGRectGetMidX(inlineFrame) - CGRectGetMidX(fullscreenFrame), CGRectGetMidY(inlineFrame) - CGRectGetMidY(fullscreenFrame));
 
@@ -657,7 +657,7 @@ static constexpr CGFloat kFullScreenWindowCornerRadius = 12;
         if (auto* manager = self._manager)
             manager->setAnimatingFullScreen(true);
 
-        WebCore::ViewportArguments arguments { WebCore::ViewportArguments::CSSDeviceAdaptation };
+        CyberCore::ViewportArguments arguments { CyberCore::ViewportArguments::CSSDeviceAdaptation };
         arguments.zoom = 1;
         arguments.minZoom = 1;
         arguments.maxZoom = 1;
@@ -762,7 +762,7 @@ static constexpr CGFloat kFullScreenWindowCornerRadius = 12;
                     else if (videoFullscreenInterface->inPictureInPicture()) {
                         if (auto* model = videoFullscreenInterface->videoFullscreenModel()) {
                             _enterFullscreenNeedsExitPictureInPicture = YES;
-                            model->requestFullscreenMode(WebCore::HTMLMediaElementEnums::VideoFullscreenModeNone);
+                            model->requestFullscreenMode(CyberCore::HTMLMediaElementEnums::VideoFullscreenModeNone);
                         }
                     }
                 }

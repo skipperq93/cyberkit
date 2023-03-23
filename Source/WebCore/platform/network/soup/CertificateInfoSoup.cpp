@@ -35,7 +35,7 @@
 #include <wtf/glib/GRefPtr.h>
 #include <wtf/glib/GUniquePtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 CertificateInfo::CertificateInfo()
     : m_tlsErrors(static_cast<GTlsCertificateFlags>(0))
@@ -144,6 +144,6 @@ std::optional<CertificateSummary> CertificateInfo::summary() const
 #endif
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

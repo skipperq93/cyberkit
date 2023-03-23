@@ -35,7 +35,7 @@
 
 #include <CyberCore/MotionManagerClient.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 WebDeviceOrientationUpdateProvider::WebDeviceOrientationUpdateProvider(WebPage& page)
     : m_page(page)
@@ -49,14 +49,14 @@ WebDeviceOrientationUpdateProvider::~WebDeviceOrientationUpdateProvider()
     WebProcess::singleton().removeMessageReceiver(Messages::WebDeviceOrientationUpdateProvider::messageReceiverName(), m_pageIdentifier);
 }
 
-void WebDeviceOrientationUpdateProvider::startUpdatingDeviceOrientation(WebCore::MotionManagerClient& client)
+void WebDeviceOrientationUpdateProvider::startUpdatingDeviceOrientation(CyberCore::MotionManagerClient& client)
 {
     if (m_deviceOrientationClients.isEmptyIgnoringNullReferences() && m_page)
         m_page->send(Messages::WebDeviceOrientationUpdateProviderProxy::StartUpdatingDeviceOrientation());
     m_deviceOrientationClients.add(client);
 }
 
-void WebDeviceOrientationUpdateProvider::stopUpdatingDeviceOrientation(WebCore::MotionManagerClient& client)
+void WebDeviceOrientationUpdateProvider::stopUpdatingDeviceOrientation(CyberCore::MotionManagerClient& client)
 {
     if (m_deviceOrientationClients.isEmptyIgnoringNullReferences())
         return;
@@ -65,14 +65,14 @@ void WebDeviceOrientationUpdateProvider::stopUpdatingDeviceOrientation(WebCore::
         m_page->send(Messages::WebDeviceOrientationUpdateProviderProxy::StopUpdatingDeviceOrientation());
 }
 
-void WebDeviceOrientationUpdateProvider::startUpdatingDeviceMotion(WebCore::MotionManagerClient& client)
+void WebDeviceOrientationUpdateProvider::startUpdatingDeviceMotion(CyberCore::MotionManagerClient& client)
 {
     if (m_deviceMotionClients.isEmptyIgnoringNullReferences() && m_page)
         m_page->send(Messages::WebDeviceOrientationUpdateProviderProxy::StartUpdatingDeviceMotion());
     m_deviceMotionClients.add(client);
 }
 
-void WebDeviceOrientationUpdateProvider::stopUpdatingDeviceMotion(WebCore::MotionManagerClient& client)
+void WebDeviceOrientationUpdateProvider::stopUpdatingDeviceMotion(CyberCore::MotionManagerClient& client)
 {
     if (m_deviceMotionClients.isEmptyIgnoringNullReferences())
         return;
@@ -83,7 +83,7 @@ void WebDeviceOrientationUpdateProvider::stopUpdatingDeviceMotion(WebCore::Motio
 
 void WebDeviceOrientationUpdateProvider::deviceOrientationChanged(double alpha, double beta, double gamma, double compassHeading, double compassAccuracy)
 {
-    for (auto& client : copyToVectorOf<WeakPtr<WebCore::MotionManagerClient>>(m_deviceOrientationClients)) {
+    for (auto& client : copyToVectorOf<WeakPtr<CyberCore::MotionManagerClient>>(m_deviceOrientationClients)) {
         if (client)
             client->orientationChanged(alpha, beta, gamma, compassHeading, compassAccuracy);
     }
@@ -91,7 +91,7 @@ void WebDeviceOrientationUpdateProvider::deviceOrientationChanged(double alpha, 
 
 void WebDeviceOrientationUpdateProvider::deviceMotionChanged(double xAcceleration, double yAcceleration, double zAcceleration, double xAccelerationIncludingGravity, double yAccelerationIncludingGravity, double zAccelerationIncludingGravity, std::optional<double> xRotationRate, std::optional<double> yRotationRate, std::optional<double> zRotationRate)
 {
-    for (auto& client : copyToVectorOf<WeakPtr<WebCore::MotionManagerClient>>(m_deviceMotionClients)) {
+    for (auto& client : copyToVectorOf<WeakPtr<CyberCore::MotionManagerClient>>(m_deviceMotionClients)) {
         if (client)
             client->motionChanged(xAcceleration, yAcceleration, zAcceleration, xAccelerationIncludingGravity, yAccelerationIncludingGravity,  zAccelerationIncludingGravity, xRotationRate, yRotationRate, zRotationRate);
     }

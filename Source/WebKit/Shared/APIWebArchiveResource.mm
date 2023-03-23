@@ -34,7 +34,7 @@
 #import <wtf/URL.h>
 
 namespace API {
-using namespace WebCore;
+using namespace CyberCore;
 
 Ref<WebArchiveResource> WebArchiveResource::create(API::Data* data, const String& URL, const String& MIMEType, const String& textEncoding)
 {

@@ -38,7 +38,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/AtomString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct FontDescriptionKeyRareData : public RefCounted<FontDescriptionKeyRareData> {
     WTF_MAKE_FAST_ALLOCATED;
@@ -196,22 +196,22 @@ inline void add(Hasher& hasher, const FontDescriptionKey& key)
         add(hasher, *key.m_rareData);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct DefaultHash<WebCore::FontDescriptionKey> {
-    static unsigned hash(const WebCore::FontDescriptionKey& key) { return computeHash(key); }
-    static bool equal(const WebCore::FontDescriptionKey& a, const WebCore::FontDescriptionKey& b) { return a == b; }
+template<> struct DefaultHash<CyberCore::FontDescriptionKey> {
+    static unsigned hash(const CyberCore::FontDescriptionKey& key) { return computeHash(key); }
+    static bool equal(const CyberCore::FontDescriptionKey& a, const CyberCore::FontDescriptionKey& b) { return a == b; }
     static constexpr bool safeToCompareToEmptyOrDeleted = true;
 };
 
-template<> struct HashTraits<WebCore::FontDescriptionKey> : SimpleClassHashTraits<WebCore::FontDescriptionKey> {
+template<> struct HashTraits<CyberCore::FontDescriptionKey> : SimpleClassHashTraits<CyberCore::FontDescriptionKey> {
 };
 
 } // namespace WTF
 
-namespace WebCore {
+namespace CyberCore {
 
 // This class holds the name of a font family, and defines hashing and == of this name to
 // use the rules for font family names instead of using straight string comparison.
@@ -280,4 +280,4 @@ private:
     HashMap<FontCascadeCacheKey, std::unique_ptr<FontCascadeCacheEntry>, FontCascadeCacheKeyHash, FontCascadeCacheKeyHashTraits> m_entries;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

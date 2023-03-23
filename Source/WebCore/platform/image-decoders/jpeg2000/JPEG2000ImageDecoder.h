@@ -29,7 +29,7 @@
 
 #if USE(OPENJPEG)
 
-namespace WebCore {
+namespace CyberCore {
 
 class JPEG2000ImageDecoder final : public ScalableImageDecoder {
 public:
@@ -54,6 +54,6 @@ private:
     Format m_format;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(OPENJPEG)

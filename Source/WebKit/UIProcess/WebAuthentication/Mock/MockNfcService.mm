@@ -126,7 +126,7 @@ uint8_t tagID2[] = { 0x02 };
 
 namespace WebKit {
 using namespace fido;
-using Mock = WebCore::MockWebAuthenticationConfiguration;
+using Mock = CyberCore::MockWebAuthenticationConfiguration;
 
 #if HAVE(NEAR_FIELD)
 
@@ -177,7 +177,7 @@ static NSData* NFReaderSessionTransceive(id, SEL, NSData *)
 
 #endif // HAVE(NEAR_FIELD)
 
-MockNfcService::MockNfcService(Observer& observer, const WebCore::MockWebAuthenticationConfiguration& configuration)
+MockNfcService::MockNfcService(Observer& observer, const CyberCore::MockWebAuthenticationConfiguration& configuration)
     : NfcService(observer)
     , m_configuration(configuration)
 {

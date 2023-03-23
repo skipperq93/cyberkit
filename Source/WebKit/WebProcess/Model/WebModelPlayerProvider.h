@@ -27,18 +27,18 @@
 
 #include <CyberCore/ModelPlayerProvider.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPage;
 
-class WebModelPlayerProvider final : public WebCore::ModelPlayerProvider {
+class WebModelPlayerProvider final : public CyberCore::ModelPlayerProvider {
 public:
     WebModelPlayerProvider(WebPage&);
     virtual ~WebModelPlayerProvider();
 
 private:
-    // WebCore::ModelPlayerProvider overrides.
-    virtual RefPtr<WebCore::ModelPlayer> createModelPlayer(WebCore::ModelPlayerClient&) final;
+    // CyberCore::ModelPlayerProvider overrides.
+    virtual RefPtr<CyberCore::ModelPlayer> createModelPlayer(CyberCore::ModelPlayerClient&) final;
 
     WebPage& m_page;
 };

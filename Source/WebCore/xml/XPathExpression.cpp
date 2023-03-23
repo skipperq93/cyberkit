@@ -33,7 +33,7 @@
 #include "XPathResult.h"
 #include "XPathUtil.h"
 
-namespace WebCore {
+namespace CyberCore {
     
 inline XPathExpression::XPathExpression(std::unique_ptr<XPath::Expression> expression)
     : m_topExpression(WTFMove(expression))

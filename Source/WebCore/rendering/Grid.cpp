@@ -29,7 +29,7 @@
 #include "GridArea.h"
 #include "RenderGrid.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Grid::Grid(RenderGrid& grid)
     : m_orderIterator(grid)
@@ -328,4 +328,4 @@ GridIterator GridIterator::createForSubgrid(const RenderGrid& subgrid, const Gri
     return GridIterator(subgrid.currentGrid(), innerDirection, fixedIndex);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -33,7 +33,7 @@
 #include <wtf/Lock.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class TrackPrivateBase;
 
@@ -106,6 +106,6 @@ private:
     bool m_shouldHandleStreamStartEvent { true };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(VIDEO) && USE(GSTREAMER)

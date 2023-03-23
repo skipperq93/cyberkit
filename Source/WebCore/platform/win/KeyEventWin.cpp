@@ -36,7 +36,7 @@
 #define MAPVK_VSC_TO_VK_EX 3
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 static const unsigned short HIGH_BIT_MASK_SHORT = 0x8000;
 

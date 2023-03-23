@@ -35,7 +35,7 @@
 @class WebSharingServicePickerController;
 @class WebView;
 
-namespace WebCore {
+namespace CyberCore {
 class FloatRect;
 class Page;
 }
@@ -47,10 +47,10 @@ public:
     virtual ~WebSharingServicePickerClient() { }
 
     virtual void sharingServicePickerWillBeDestroyed(WebSharingServicePickerController &);
-    virtual WebCore::Page* pageForSharingServicePicker(WebSharingServicePickerController &);
+    virtual CyberCore::Page* pageForSharingServicePicker(WebSharingServicePickerController &);
     virtual RetainPtr<NSWindow> windowForSharingServicePicker(WebSharingServicePickerController &);
 
-    virtual WebCore::FloatRect screenRectForCurrentSharingServicePickerItem(WebSharingServicePickerController &);
+    virtual CyberCore::FloatRect screenRectForCurrentSharingServicePickerItem(WebSharingServicePickerController &);
     virtual RetainPtr<NSImage> imageForCurrentSharingServicePickerItem(WebSharingServicePickerController &);
 
     WebView *webView() { return m_webView; }

@@ -30,7 +30,7 @@
 
 #include "NotImplemented.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 void DNSResolveQueueCurl::updateIsUsingProxy()
 {

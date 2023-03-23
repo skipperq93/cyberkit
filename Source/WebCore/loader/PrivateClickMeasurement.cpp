@@ -36,7 +36,7 @@
 #include <wtf/text/StringToIntegerConversion.h>
 #include <wtf/text/StringView.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static constexpr auto privateClickMeasurementTriggerAttributionPath = "/.well-known/private-click-measurement/trigger-attribution/"_s;
 static const char privateClickMeasurementTokenSignaturePath[] = "/.well-known/private-click-measurement/sign-unlinkable-token/";
@@ -425,4 +425,4 @@ std::optional<uint64_t> PrivateClickMeasurement::appStoreURLAdamID(const URL& ur
     return parseInteger<uint64_t>(stringView.substring(privateClickMeasurementToSKAdNetworkURLPrefix.length()));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

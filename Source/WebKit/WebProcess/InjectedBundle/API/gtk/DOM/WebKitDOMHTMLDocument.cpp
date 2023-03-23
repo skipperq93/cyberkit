@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -18,7 +18,7 @@
  */
 
 #include "config.h"
-#include "WebKitDOMHTMLDocument.h"
+#include "CyberKitDOMHTMLDocument.h"
 
 #include <CyberCore/CSSImportRule.h>
 #include "DOMObjectCache.h"
@@ -26,73 +26,73 @@
 #include <CyberCore/Document.h>
 #include "GObjectEventListener.h"
 #include <CyberCore/JSExecState.h>
-#include "WebKitDOMEventPrivate.h"
-#include "WebKitDOMEventTarget.h"
-#include "WebKitDOMHTMLDocumentPrivate.h"
-#include "WebKitDOMNodePrivate.h"
-#include "WebKitDOMPrivate.h"
+#include "CyberKitDOMEventPrivate.h"
+#include "CyberKitDOMEventTarget.h"
+#include "CyberKitDOMHTMLDocumentPrivate.h"
+#include "CyberKitDOMNodePrivate.h"
+#include "CyberKitDOMPrivate.h"
 #include "ConvertToUTF8String.h"
 #include <wtf/GetPtr.h>
 #include <wtf/RefPtr.h>
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
-namespace WebKit {
+namespace CyberKit {
 
-WebKitDOMHTMLDocument* kit(WebCore::HTMLDocument* obj)
+CyberKitDOMHTMLDocument* kit(CyberCore::HTMLDocument* obj)
 {
-    return WEBKIT_DOM_HTML_DOCUMENT(kit(static_cast<WebCore::Node*>(obj)));
+    return WEBKIT_DOM_HTML_DOCUMENT(kit(static_cast<CyberCore::Node*>(obj)));
 }
 
-WebCore::HTMLDocument* core(WebKitDOMHTMLDocument* request)
+CyberCore::HTMLDocument* core(CyberKitDOMHTMLDocument* request)
 {
-    return request ? static_cast<WebCore::HTMLDocument*>(WEBKIT_DOM_OBJECT(request)->coreObject) : 0;
+    return request ? static_cast<CyberCore::HTMLDocument*>(WEBKIT_DOM_OBJECT(request)->coreObject) : 0;
 }
 
-WebKitDOMHTMLDocument* wrapHTMLDocument(WebCore::HTMLDocument* coreObject)
+CyberKitDOMHTMLDocument* wrapHTMLDocument(CyberCore::HTMLDocument* coreObject)
 {
     ASSERT(coreObject);
     return WEBKIT_DOM_HTML_DOCUMENT(g_object_new(WEBKIT_DOM_TYPE_HTML_DOCUMENT, "core-object", coreObject, nullptr));
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
-static gboolean webkit_dom_html_document_dispatch_event(WebKitDOMEventTarget* target, WebKitDOMEvent* event, GError** error)
+static gboolean webkit_dom_html_document_dispatch_event(CyberKitDOMEventTarget* target, CyberKitDOMEvent* event, GError** error)
 {
-    WebCore::Event* coreEvent = WebKit::core(event);
+    CyberCore::Event* coreEvent = CyberKit::core(event);
     if (!coreEvent)
         return false;
-    WebCore::HTMLDocument* coreTarget = static_cast<WebCore::HTMLDocument*>(WEBKIT_DOM_OBJECT(target)->coreObject);
+    CyberCore::HTMLDocument* coreTarget = static_cast<CyberCore::HTMLDocument*>(WEBKIT_DOM_OBJECT(target)->coreObject);
 
     auto result = coreTarget->dispatchEventForBindings(*coreEvent);
     if (result.hasException()) {
-        auto description = WebCore::DOMException::description(result.releaseException().code());
+        auto description = CyberCore::DOMException::description(result.releaseException().code());
         g_set_error_literal(error, g_quark_from_string("WEBKIT_DOM"), description.legacyCode, description.name);
         return false;
     }
     return result.releaseReturnValue();
 }
 
-static gboolean webkit_dom_html_document_add_event_listener(WebKitDOMEventTarget* target, const char* eventName, GClosure* handler, gboolean useCapture)
+static gboolean webkit_dom_html_document_add_event_listener(CyberKitDOMEventTarget* target, const char* eventName, GClosure* handler, gboolean useCapture)
 {
-    WebCore::HTMLDocument* coreTarget = static_cast<WebCore::HTMLDocument*>(WEBKIT_DOM_OBJECT(target)->coreObject);
-    return WebKit::GObjectEventListener::addEventListener(G_OBJECT(target), coreTarget, eventName, handler, useCapture);
+    CyberCore::HTMLDocument* coreTarget = static_cast<CyberCore::HTMLDocument*>(WEBKIT_DOM_OBJECT(target)->coreObject);
+    return CyberKit::GObjectEventListener::addEventListener(G_OBJECT(target), coreTarget, eventName, handler, useCapture);
 }
 
-static gboolean webkit_dom_html_document_remove_event_listener(WebKitDOMEventTarget* target, const char* eventName, GClosure* handler, gboolean useCapture)
+static gboolean webkit_dom_html_document_remove_event_listener(CyberKitDOMEventTarget* target, const char* eventName, GClosure* handler, gboolean useCapture)
 {
-    WebCore::HTMLDocument* coreTarget = static_cast<WebCore::HTMLDocument*>(WEBKIT_DOM_OBJECT(target)->coreObject);
-    return WebKit::GObjectEventListener::removeEventListener(G_OBJECT(target), coreTarget, eventName, handler, useCapture);
+    CyberCore::HTMLDocument* coreTarget = static_cast<CyberCore::HTMLDocument*>(WEBKIT_DOM_OBJECT(target)->coreObject);
+    return CyberKit::GObjectEventListener::removeEventListener(G_OBJECT(target), coreTarget, eventName, handler, useCapture);
 }
 
-static void webkit_dom_html_document_dom_event_target_init(WebKitDOMEventTargetIface* iface)
+static void webkit_dom_html_document_dom_event_target_init(CyberKitDOMEventTargetIface* iface)
 {
     iface->dispatch_event = webkit_dom_html_document_dispatch_event;
     iface->add_event_listener = webkit_dom_html_document_add_event_listener;
     iface->remove_event_listener = webkit_dom_html_document_remove_event_listener;
 }
 
-G_DEFINE_TYPE_WITH_CODE(WebKitDOMHTMLDocument, webkit_dom_html_document, WEBKIT_DOM_TYPE_DOCUMENT, G_IMPLEMENT_INTERFACE(WEBKIT_DOM_TYPE_EVENT_TARGET, webkit_dom_html_document_dom_event_target_init))
+G_DEFINE_TYPE_WITH_CODE(CyberKitDOMHTMLDocument, webkit_dom_html_document, WEBKIT_DOM_TYPE_DOCUMENT, G_IMPLEMENT_INTERFACE(WEBKIT_DOM_TYPE_EVENT_TARGET, webkit_dom_html_document_dom_event_target_init))
 
 enum {
     DOM_HTML_DOCUMENT_PROP_0,
@@ -108,7 +108,7 @@ enum {
 
 static void webkit_dom_html_document_set_property(GObject* object, guint propertyId, const GValue* value, GParamSpec* pspec)
 {
-    WebKitDOMHTMLDocument* self = WEBKIT_DOM_HTML_DOCUMENT(object);
+    CyberKitDOMHTMLDocument* self = WEBKIT_DOM_HTML_DOCUMENT(object);
 
     switch (propertyId) {
     case DOM_HTML_DOCUMENT_PROP_DIR:
@@ -137,7 +137,7 @@ static void webkit_dom_html_document_set_property(GObject* object, guint propert
 
 static void webkit_dom_html_document_get_property(GObject* object, guint propertyId, GValue* value, GParamSpec* pspec)
 {
-    WebKitDOMHTMLDocument* self = WEBKIT_DOM_HTML_DOCUMENT(object);
+    CyberKitDOMHTMLDocument* self = WEBKIT_DOM_HTML_DOCUMENT(object);
 
     switch (propertyId) {
     case DOM_HTML_DOCUMENT_PROP_WIDTH:
@@ -170,7 +170,7 @@ static void webkit_dom_html_document_get_property(GObject* object, guint propert
     }
 }
 
-static void webkit_dom_html_document_class_init(WebKitDOMHTMLDocumentClass* requestClass)
+static void webkit_dom_html_document_class_init(CyberKitDOMHTMLDocumentClass* requestClass)
 {
     GObjectClass* gobjectClass = G_OBJECT_CLASS(requestClass);
     gobjectClass->set_property = webkit_dom_html_document_set_property;
@@ -258,166 +258,166 @@ static void webkit_dom_html_document_class_init(WebKitDOMHTMLDocumentClass* requ
 
 }
 
-static void webkit_dom_html_document_init(WebKitDOMHTMLDocument* request)
+static void webkit_dom_html_document_init(CyberKitDOMHTMLDocument* request)
 {
     UNUSED_PARAM(request);
 }
 
-void webkit_dom_html_document_close(WebKitDOMHTMLDocument* self)
+void webkit_dom_html_document_close(CyberKitDOMHTMLDocument* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_DOCUMENT(self));
-    WebCore::HTMLDocument* item = WebKit::core(self);
+    CyberCore::HTMLDocument* item = CyberKit::core(self);
     item->close();
 }
 
-void webkit_dom_html_document_clear(WebKitDOMHTMLDocument* self)
+void webkit_dom_html_document_clear(CyberKitDOMHTMLDocument* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_DOCUMENT(self));
-    WebCore::HTMLDocument* item = WebKit::core(self);
+    CyberCore::HTMLDocument* item = CyberKit::core(self);
     item->clear();
 }
 
-void webkit_dom_html_document_capture_events(WebKitDOMHTMLDocument* self)
+void webkit_dom_html_document_capture_events(CyberKitDOMHTMLDocument* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_DOCUMENT(self));
-    WebCore::HTMLDocument* item = WebKit::core(self);
+    CyberCore::HTMLDocument* item = CyberKit::core(self);
     item->captureEvents();
 }
 
-void webkit_dom_html_document_release_events(WebKitDOMHTMLDocument* self)
+void webkit_dom_html_document_release_events(CyberKitDOMHTMLDocument* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_DOCUMENT(self));
-    WebCore::HTMLDocument* item = WebKit::core(self);
+    CyberCore::HTMLDocument* item = CyberKit::core(self);
     item->releaseEvents();
 }
 
-glong webkit_dom_html_document_get_width(WebKitDOMHTMLDocument* self)
+glong webkit_dom_html_document_get_width(CyberKitDOMHTMLDocument* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_DOCUMENT(self), 0);
-    WebCore::HTMLDocument* item = WebKit::core(self);
+    CyberCore::HTMLDocument* item = CyberKit::core(self);
     glong result = item->width();
     return result;
 }
 
-glong webkit_dom_html_document_get_height(WebKitDOMHTMLDocument* self)
+glong webkit_dom_html_document_get_height(CyberKitDOMHTMLDocument* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_DOCUMENT(self), 0);
-    WebCore::HTMLDocument* item = WebKit::core(self);
+    CyberCore::HTMLDocument* item = CyberKit::core(self);
     glong result = item->height();
     return result;
 }
 
-gchar* webkit_dom_html_document_get_dir(WebKitDOMHTMLDocument* self)
+gchar* webkit_dom_html_document_get_dir(CyberKitDOMHTMLDocument* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_DOCUMENT(self), 0);
-    WebCore::HTMLDocument* item = WebKit::core(self);
+    CyberCore::HTMLDocument* item = CyberKit::core(self);
     gchar* result = convertToUTF8String(item->dir());
     return result;
 }
 
-void webkit_dom_html_document_set_dir(WebKitDOMHTMLDocument* self, const gchar* value)
+void webkit_dom_html_document_set_dir(CyberKitDOMHTMLDocument* self, const gchar* value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_DOCUMENT(self));
     g_return_if_fail(value);
-    WebCore::HTMLDocument* item = WebKit::core(self);
+    CyberCore::HTMLDocument* item = CyberKit::core(self);
     item->setDir(WTF::AtomString::fromUTF8(value));
 }
 
-gchar* webkit_dom_html_document_get_bg_color(WebKitDOMHTMLDocument* self)
+gchar* webkit_dom_html_document_get_bg_color(CyberKitDOMHTMLDocument* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_DOCUMENT(self), 0);
-    WebCore::HTMLDocument* item = WebKit::core(self);
+    CyberCore::HTMLDocument* item = CyberKit::core(self);
     gchar* result = convertToUTF8String(item->bgColor());
     return result;
 }
 
-void webkit_dom_html_document_set_bg_color(WebKitDOMHTMLDocument* self, const gchar* value)
+void webkit_dom_html_document_set_bg_color(CyberKitDOMHTMLDocument* self, const gchar* value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_DOCUMENT(self));
     g_return_if_fail(value);
-    WebCore::HTMLDocument* item = WebKit::core(self);
+    CyberCore::HTMLDocument* item = CyberKit::core(self);
     item->setBgColor(WTF::AtomString::fromUTF8(value));
 }
 
-gchar* webkit_dom_html_document_get_fg_color(WebKitDOMHTMLDocument* self)
+gchar* webkit_dom_html_document_get_fg_color(CyberKitDOMHTMLDocument* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_DOCUMENT(self), 0);
-    WebCore::HTMLDocument* item = WebKit::core(self);
+    CyberCore::HTMLDocument* item = CyberKit::core(self);
     gchar* result = convertToUTF8String(item->fgColor());
     return result;
 }
 
-void webkit_dom_html_document_set_fg_color(WebKitDOMHTMLDocument* self, const gchar* value)
+void webkit_dom_html_document_set_fg_color(CyberKitDOMHTMLDocument* self, const gchar* value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_DOCUMENT(self));
     g_return_if_fail(value);
-    WebCore::HTMLDocument* item = WebKit::core(self);
+    CyberCore::HTMLDocument* item = CyberKit::core(self);
     item->setFgColor(WTF::AtomString::fromUTF8(value));
 }
 
-gchar* webkit_dom_html_document_get_alink_color(WebKitDOMHTMLDocument* self)
+gchar* webkit_dom_html_document_get_alink_color(CyberKitDOMHTMLDocument* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_DOCUMENT(self), 0);
-    WebCore::HTMLDocument* item = WebKit::core(self);
+    CyberCore::HTMLDocument* item = CyberKit::core(self);
     gchar* result = convertToUTF8String(item->alinkColor());
     return result;
 }
 
-void webkit_dom_html_document_set_alink_color(WebKitDOMHTMLDocument* self, const gchar* value)
+void webkit_dom_html_document_set_alink_color(CyberKitDOMHTMLDocument* self, const gchar* value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_DOCUMENT(self));
     g_return_if_fail(value);
-    WebCore::HTMLDocument* item = WebKit::core(self);
+    CyberCore::HTMLDocument* item = CyberKit::core(self);
     item->setAlinkColor(WTF::AtomString::fromUTF8(value));
 }
 
-gchar* webkit_dom_html_document_get_link_color(WebKitDOMHTMLDocument* self)
+gchar* webkit_dom_html_document_get_link_color(CyberKitDOMHTMLDocument* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_DOCUMENT(self), 0);
-    WebCore::HTMLDocument* item = WebKit::core(self);
+    CyberCore::HTMLDocument* item = CyberKit::core(self);
     gchar* result = convertToUTF8String(item->linkColorForBindings());
     return result;
 }
 
-void webkit_dom_html_document_set_link_color(WebKitDOMHTMLDocument* self, const gchar* value)
+void webkit_dom_html_document_set_link_color(CyberKitDOMHTMLDocument* self, const gchar* value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_DOCUMENT(self));
     g_return_if_fail(value);
-    WebCore::HTMLDocument* item = WebKit::core(self);
+    CyberCore::HTMLDocument* item = CyberKit::core(self);
     item->setLinkColorForBindings(WTF::AtomString::fromUTF8(value));
 }
 
-gchar* webkit_dom_html_document_get_vlink_color(WebKitDOMHTMLDocument* self)
+gchar* webkit_dom_html_document_get_vlink_color(CyberKitDOMHTMLDocument* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_DOCUMENT(self), 0);
-    WebCore::HTMLDocument* item = WebKit::core(self);
+    CyberCore::HTMLDocument* item = CyberKit::core(self);
     gchar* result = convertToUTF8String(item->vlinkColor());
     return result;
 }
 
-void webkit_dom_html_document_set_vlink_color(WebKitDOMHTMLDocument* self, const gchar* value)
+void webkit_dom_html_document_set_vlink_color(CyberKitDOMHTMLDocument* self, const gchar* value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_DOCUMENT(self));
     g_return_if_fail(value);
-    WebCore::HTMLDocument* item = WebKit::core(self);
+    CyberCore::HTMLDocument* item = CyberKit::core(self);
     item->setVlinkColor(WTF::AtomString::fromUTF8(value));
 }
 

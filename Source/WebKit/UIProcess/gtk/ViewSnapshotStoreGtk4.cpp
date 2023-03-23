@@ -29,7 +29,7 @@
 #if USE(GTK4)
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 Ref<ViewSnapshot> ViewSnapshot::create(GRefPtr<GdkTexture>&& texture)
 {
@@ -72,7 +72,7 @@ size_t ViewSnapshot::estimatedImageSizeInBytes() const
     return width * height * 4;
 }
 
-WebCore::IntSize ViewSnapshot::size() const
+CyberCore::IntSize ViewSnapshot::size() const
 {
     if (!m_texture)
         return { };

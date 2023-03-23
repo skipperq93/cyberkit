@@ -47,7 +47,7 @@
 - (CFURLRef)_cfurl;
 @end
 
-namespace WebCore {
+namespace CyberCore {
 
 NetworkStorageSession::~NetworkStorageSession()
 {
@@ -335,7 +335,7 @@ RetainPtr<NSArray> NetworkStorageSession::httpCookiesForURL(CFHTTPCookieStorageR
     // FIXME: Stop creating a new NSHTTPCookieStorage object each time we want to query the cookie jar.
     // NetworkStorageSession could instead keep a NSHTTPCookieStorage object for us.
     RetainPtr<NSHTTPCookieStorage> nsCookieStorage = adoptNS([[NSHTTPCookieStorage alloc] _initWithCFHTTPCookieStorage:cookieStorage]);
-    return WebCore::cookiesForURL(nsCookieStorage.get(), url, firstParty, sameSiteInfo);
+    return CyberCore::cookiesForURL(nsCookieStorage.get(), url, firstParty, sameSiteInfo);
 }
 
 NSHTTPCookie *NetworkStorageSession::capExpiryOfPersistentCookie(NSHTTPCookie *cookie, Seconds cap)
@@ -768,4 +768,4 @@ bool NetworkStorageSession::supportsCookieChangeListenerAPI() const
 
 #endif // HAVE(COOKIE_CHANGE_LISTENER_API)
 
-} // namespace WebCore
+} // namespace CyberCore

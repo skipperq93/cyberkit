@@ -28,7 +28,7 @@
 
 #if ENABLE(VIDEO) && USE(GSTREAMER) && ENABLE(MEDIA_SOURCE)
 
-namespace WebCore {
+namespace CyberCore {
 
 AtomString GStreamerMediaDescription::codec() const
 {
@@ -90,6 +90,6 @@ AtomString GStreamerMediaDescription::extractCodecName()
     return codecName;
 }
 
-} // namespace WebCore.
+} // namespace CyberCore.
 
 #endif // USE(GSTREAMER)

@@ -33,7 +33,7 @@
 
 using CVPixelBufferRef = struct __CVBuffer*;
 
-namespace WebCore {
+namespace CyberCore {
 
 class SharedBuffer;
 class PixelBuffer;
@@ -95,14 +95,14 @@ protected:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
 template<typename Type> struct LogArgument;
 template <>
-struct LogArgument<WebCore::MediaSampleAVFObjC> {
-    static String toString(const WebCore::MediaSampleAVFObjC& sample)
+struct LogArgument<CyberCore::MediaSampleAVFObjC> {
+    static String toString(const CyberCore::MediaSampleAVFObjC& sample)
     {
         return sample.toJSONString();
     }
@@ -110,6 +110,6 @@ struct LogArgument<WebCore::MediaSampleAVFObjC> {
 
 } // namespace WTF
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::MediaSampleAVFObjC)
-static bool isType(const WebCore::MediaSample& sample) { return sample.platformSampleType() == WebCore::PlatformSample::CMSampleBufferType; }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::MediaSampleAVFObjC)
+static bool isType(const CyberCore::MediaSample& sample) { return sample.platformSampleType() == CyberCore::PlatformSample::CMSampleBufferType; }
 SPECIALIZE_TYPE_TRAITS_END()

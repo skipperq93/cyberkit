@@ -32,7 +32,7 @@
 #include <functional>
 #include <math.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 SRGBA<float> premultiplied(const SRGBA<float>&);
 SRGBA<float> unpremultiplied(const SRGBA<float>&);
@@ -215,4 +215,4 @@ constexpr uint16_t fastDivideBy255(uint16_t value)
     return approximation + (remainder >> 8);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

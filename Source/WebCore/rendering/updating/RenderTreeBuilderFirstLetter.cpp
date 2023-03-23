@@ -37,7 +37,7 @@
 #include "RenderView.h"
 #include "StyleChange.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static std::optional<RenderStyle> styleForFirstLetter(const RenderElement& firstLetterContainer)
 {

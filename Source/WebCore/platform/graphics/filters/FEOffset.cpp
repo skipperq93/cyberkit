@@ -29,7 +29,7 @@
 #include "FEOffsetSoftwareApplier.h"
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<FEOffset> FEOffset::create(float dx, float dy)
 {
@@ -104,4 +104,4 @@ TextStream& FEOffset::externalRepresentation(TextStream& ts, FilterRepresentatio
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

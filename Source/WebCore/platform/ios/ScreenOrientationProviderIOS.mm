@@ -31,13 +31,13 @@
 #import <pal/ios/UIKitSoftLink.h>
 
 @interface WebScreenOrientationObserver : NSObject
-@property (nonatomic) WebCore::ScreenOrientationProvider* provider;
+@property (nonatomic) CyberCore::ScreenOrientationProvider* provider;
 @end
 
 @implementation WebScreenOrientationObserver {
 }
 
-- (WebScreenOrientationObserver *)initWithProvider:(WebCore::ScreenOrientationProvider&)provider
+- (WebScreenOrientationObserver *)initWithProvider:(CyberCore::ScreenOrientationProvider&)provider
 {
     self = [super init];
     if (!self)
@@ -65,7 +65,7 @@
 
 @end
 
-namespace WebCore {
+namespace CyberCore {
 
 std::optional<ScreenOrientationType> ScreenOrientationProvider::platformCurrentOrientation()
 {
@@ -79,13 +79,13 @@ std::optional<ScreenOrientationType> ScreenOrientationProvider::platformCurrentO
     case UIInterfaceOrientationPortrait:
         break;
     case UIInterfaceOrientationPortraitUpsideDown:
-        return WebCore::ScreenOrientationType::PortraitSecondary;
+        return CyberCore::ScreenOrientationType::PortraitSecondary;
     case UIInterfaceOrientationLandscapeLeft:
-        return WebCore::ScreenOrientationType::LandscapePrimary;
+        return CyberCore::ScreenOrientationType::LandscapePrimary;
     case UIInterfaceOrientationLandscapeRight:
-        return WebCore::ScreenOrientationType::LandscapeSecondary;
+        return CyberCore::ScreenOrientationType::LandscapeSecondary;
     }
-    return WebCore::ScreenOrientationType::PortraitPrimary;
+    return CyberCore::ScreenOrientationType::PortraitPrimary;
 }
 
 void ScreenOrientationProvider::platformStartListeningForChanges()
@@ -110,6 +110,6 @@ void ScreenOrientationProvider::setWindow(UIWindow *window)
         screenOrientationDidChange();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(IOS_FAMILY)

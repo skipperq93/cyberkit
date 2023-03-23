@@ -39,7 +39,7 @@ namespace WTF {
 class TextStream;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class FloatPoint;
 class GraphicsContext;
@@ -463,4 +463,4 @@ private:
 
 WTF::TextStream& operator<<(WTF::TextStream&, const ScrollableArea&);
 
-} // namespace WebCore
+} // namespace CyberCore

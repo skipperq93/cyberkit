@@ -31,8 +31,8 @@
 #import <CyberCore/ScrollTypes.h>
 #import <CyberKit/_WKOverlayScrollbarStyle.h>
 
-_WKOverlayScrollbarStyle toAPIScrollbarStyle(std::optional<WebCore::ScrollbarOverlayStyle>);
-std::optional<WebCore::ScrollbarOverlayStyle> toCoreScrollbarStyle(_WKOverlayScrollbarStyle);
+_WKOverlayScrollbarStyle toAPIScrollbarStyle(std::optional<CyberCore::ScrollbarOverlayStyle>);
+std::optional<CyberCore::ScrollbarOverlayStyle> toCoreScrollbarStyle(_WKOverlayScrollbarStyle);
 
 @interface WKWebView (WKInternalMac) <WebViewImplDelegate>
 

@@ -30,7 +30,7 @@
 #include <CyberCore/PreviewConverter.h>
 #include <wtf/text/WTFString.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 namespace TestWebKitAPI {
 

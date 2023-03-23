@@ -33,7 +33,7 @@
 #import <CyberCore/ResourceResponse.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 static RetainPtr<NSError> createNSError(NSString* domain, int code, NSURL *URL)
 {

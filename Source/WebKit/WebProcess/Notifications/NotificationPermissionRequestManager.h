@@ -34,11 +34,11 @@
 #include <wtf/RefPtr.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 class Notification;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPage;
 
@@ -48,14 +48,14 @@ public:
     static Ref<NotificationPermissionRequestManager> create(WebPage*);
     ~NotificationPermissionRequestManager();
 
-    using Permission = WebCore::NotificationClient::Permission;
-    using PermissionHandler = WebCore::NotificationClient::PermissionHandler;
+    using Permission = CyberCore::NotificationClient::Permission;
+    using PermissionHandler = CyberCore::NotificationClient::PermissionHandler;
 
 #if ENABLE(NOTIFICATIONS)
-    void startRequest(const WebCore::SecurityOriginData&, PermissionHandler&&);
+    void startRequest(const CyberCore::SecurityOriginData&, PermissionHandler&&);
 #endif
     
-    Permission permissionLevel(const WebCore::SecurityOriginData&);
+    Permission permissionLevel(const CyberCore::SecurityOriginData&);
 
     // For testing purposes only.
     void setPermissionLevelForTesting(const String& originString, bool allowed);
@@ -68,7 +68,7 @@ private:
     using PermissionHandlers = Vector<PermissionHandler>;
     static void callPermissionHandlersWith(PermissionHandlers&, Permission);
 
-    HashMap<WebCore::SecurityOriginData, PermissionHandlers> m_requestsPerOrigin;
+    HashMap<CyberCore::SecurityOriginData, PermissionHandlers> m_requestsPerOrigin;
     WebPage* m_page;
 #endif
 };
@@ -80,6 +80,6 @@ inline bool isRequestIDValid(uint64_t id)
     return id && id != static_cast<uint64_t>(-1);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // NotificationPermissionRequestManager_h

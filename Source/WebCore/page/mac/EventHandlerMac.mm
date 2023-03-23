@@ -81,7 +81,7 @@
 #import <WebKitAdditions/EventHandlerMacGesture.cpp>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 static const Seconds resetLatchedStateTimeout { 100_ms };
 
@@ -214,7 +214,7 @@ static bool lastEventIsMouseUp()
 {
     // Many AppKit widgets run their own event loops and consume events while the mouse is down.
     // When they finish, currentEvent is the mouseUp that they exited on. We need to update
-    // the WebCore state with this mouseUp, which we never saw. This method lets us detect
+    // the CyberCore state with this mouseUp, which we never saw. This method lets us detect
     // that state. Handling this was critical when we used AppKit widgets for form elements.
     // It's not clear in what cases this is helpful now -- it's possible it can be removed. 
 
@@ -272,7 +272,7 @@ bool EventHandler::passMouseDownEventToWidget(Widget* pWidget)
     // We need to "defer loading" while tracking the mouse, because tearing down the
     // page while an AppKit control is tracking the mouse can cause a crash.
 
-    // FIXME: In theory, WebCore now tolerates tear-down while tracking the
+    // FIXME: In theory, CyberCore now tolerates tear-down while tracking the
     // mouse. We should confirm that, and then remove the deferrsLoading
     // hack entirely.
 

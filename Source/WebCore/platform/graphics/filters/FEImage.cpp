@@ -28,7 +28,7 @@
 #include "Filter.h"
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<FEImage> FEImage::create(SourceImage&& sourceImage, const FloatRect& sourceImageRect, const SVGPreserveAspectRatioValue& preserveAspectRatio)
 {
@@ -76,4 +76,4 @@ TextStream& FEImage::externalRepresentation(TextStream& ts, FilterRepresentation
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

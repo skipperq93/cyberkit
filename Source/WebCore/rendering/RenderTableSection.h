@@ -27,7 +27,7 @@
 #include "RenderTable.h"
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderTableCell;
 class RenderTableRow;
@@ -341,6 +341,6 @@ inline RenderPtr<RenderBox> RenderTableSection::createAnonymousBoxWithSameTypeAs
     return RenderTableSection::createTableSectionWithStyle(renderer.document(), renderer.style());
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderTableSection, isTableSection())

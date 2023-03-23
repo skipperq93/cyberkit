@@ -41,7 +41,7 @@ namespace WTF {
 class TextStream;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class LayoutRect {
 public:
@@ -205,7 +205,7 @@ public:
     operator FloatRect() const { return FloatRect(m_location, m_size); }
 
 private:
-    friend struct IPC::ArgumentCoder<WebCore::LayoutRect, void>;
+    friend struct IPC::ArgumentCoder<CyberCore::LayoutRect, void>;
     void setLocationAndSizeFromEdges(LayoutUnit left, LayoutUnit top, LayoutUnit right, LayoutUnit bottom);
 
     LayoutPoint m_location;
@@ -295,5 +295,5 @@ FloatRect encloseRectToDevicePixels(const LayoutRect&, float pixelSnappingFactor
 
 WEBCORE_EXPORT WTF::TextStream& operator<<(WTF::TextStream&, const LayoutRect&);
 
-} // namespace WebCore
+} // namespace CyberCore
 

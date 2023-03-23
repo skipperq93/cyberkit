@@ -29,8 +29,8 @@
 #include "AuxiliaryProcessMain.h"
 #include "WebProcess.h"
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 class WebProcessMainPlayStation final: public AuxiliaryProcessMainBase<WebProcess> {
 };
@@ -40,4 +40,4 @@ int WebProcessMain(int argc, char** argv)
     return AuxiliaryProcessMain<WebProcessMainPlayStation>(argc, argv);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

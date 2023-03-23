@@ -30,7 +30,7 @@
 #include "StyleScope.h"
 #include <wtf/HashSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace Style {
 
 class ChildChangeInvalidation {

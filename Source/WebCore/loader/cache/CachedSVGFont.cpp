@@ -41,7 +41,7 @@
 #include "TextResourceDecoder.h"
 #include "TypedElementDescendantIterator.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 CachedSVGFont::CachedSVGFont(CachedResourceRequest&& request, PAL::SessionID sessionID, const CookieJar* cookieJar, const Settings& settings)
     : CachedFont(WTFMove(request), sessionID, cookieJar, Type::SVGFontResource)

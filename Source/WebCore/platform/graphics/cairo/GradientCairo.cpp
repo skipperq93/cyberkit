@@ -37,7 +37,7 @@
 #include "GraphicsContextCairo.h"
 #include <wtf/MathExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 void Gradient::stopsChanged()
 {
@@ -259,6 +259,6 @@ void Gradient::fill(GraphicsContext& context, const FloatRect& rect)
     platformContext.restore();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(CAIRO)

@@ -30,7 +30,7 @@
 
 #include "MediaPlaybackTarget.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class MediaPlaybackTarget;
 
@@ -44,7 +44,7 @@ public:
     virtual void playbackTargetPickerWasDismissed() = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WIRELESS_PLAYBACK_TARGET)
 

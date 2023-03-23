@@ -26,7 +26,7 @@
 #include "Filter.h"
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<FETile> FETile::create()
 {
@@ -61,4 +61,4 @@ TextStream& FETile::externalRepresentation(TextStream& ts, FilterRepresentation 
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

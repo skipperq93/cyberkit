@@ -31,7 +31,7 @@
 
 #include <CoreGraphics/CoreGraphics.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 FloatPoint::FloatPoint(const CGPoint& p) : m_x(p.x), m_y(p.y)
 {

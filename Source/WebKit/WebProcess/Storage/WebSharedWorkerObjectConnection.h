@@ -29,9 +29,9 @@
 #include "MessageSender.h"
 #include <CyberCore/SharedWorkerObjectConnection.h>
 
-namespace WebKit {
+namespace CyberKit {
 
-class WebSharedWorkerObjectConnection final : public WebCore::SharedWorkerObjectConnection, private IPC::MessageSender, public IPC::MessageReceiver {
+class WebSharedWorkerObjectConnection final : public CyberCore::SharedWorkerObjectConnection, private IPC::MessageSender, public IPC::MessageReceiver {
 public:
     static Ref<WebSharedWorkerObjectConnection> create() { return adoptRef(*new WebSharedWorkerObjectConnection); }
     ~WebSharedWorkerObjectConnection();
@@ -41,15 +41,15 @@ public:
 private:
     WebSharedWorkerObjectConnection();
 
-    // WebCore::SharedWorkerObjectConnection.
-    void requestSharedWorker(const WebCore::SharedWorkerKey&, WebCore::SharedWorkerObjectIdentifier, WebCore::TransferredMessagePort&&, const WebCore::WorkerOptions&) final;
-    void sharedWorkerObjectIsGoingAway(const WebCore::SharedWorkerKey&, WebCore::SharedWorkerObjectIdentifier) final;
-    void suspendForBackForwardCache(const WebCore::SharedWorkerKey&, WebCore::SharedWorkerObjectIdentifier) final;
-    void resumeForBackForwardCache(const WebCore::SharedWorkerKey&, WebCore::SharedWorkerObjectIdentifier) final;
+    // CyberCore::SharedWorkerObjectConnection.
+    void requestSharedWorker(const CyberCore::SharedWorkerKey&, CyberCore::SharedWorkerObjectIdentifier, CyberCore::TransferredMessagePort&&, const CyberCore::WorkerOptions&) final;
+    void sharedWorkerObjectIsGoingAway(const CyberCore::SharedWorkerKey&, CyberCore::SharedWorkerObjectIdentifier) final;
+    void suspendForBackForwardCache(const CyberCore::SharedWorkerKey&, CyberCore::SharedWorkerObjectIdentifier) final;
+    void resumeForBackForwardCache(const CyberCore::SharedWorkerKey&, CyberCore::SharedWorkerObjectIdentifier) final;
 
     // IPC::MessageSender.
     IPC::Connection* messageSenderConnection() const final;
     uint64_t messageSenderDestinationID() const final { return 0; }
 };
 
-} // namespace WebKit
+} // namespace CyberKit

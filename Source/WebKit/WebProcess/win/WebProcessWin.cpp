@@ -28,7 +28,7 @@
 
 #include <CyberCore/SharedBuffer.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 void WebProcess::platformInitializeWebProcess(WebProcessCreationParameters&)
 {
@@ -50,7 +50,7 @@ void WebProcess::platformSetCacheModel(CacheModel)
 {
 }
 
-void WebProcess::grantAccessToAssetServices(Vector<WebKit::SandboxExtension::Handle>&&)
+void WebProcess::grantAccessToAssetServices(Vector<CyberKit::SandboxExtension::Handle>&&)
 {
 }
 
@@ -58,8 +58,8 @@ void WebProcess::revokeAccessToAssetServices()
 {
 }
 
-void WebProcess::switchFromStaticFontRegistryToUserFontRegistry(Vector<WebKit::SandboxExtension::Handle>&&)
+void WebProcess::switchFromStaticFontRegistryToUserFontRegistry(Vector<CyberKit::SandboxExtension::Handle>&&)
 {
 }
 
-} // namespace WebKit
+} // namespace CyberKit

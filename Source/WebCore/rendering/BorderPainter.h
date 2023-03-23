@@ -26,7 +26,7 @@
 #include "RenderBoxModelObject.h"
 #include "RenderElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class BorderPainter {
 public:

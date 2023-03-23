@@ -37,7 +37,7 @@ class Connection;
 class Decoder;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 struct NetworksChangedData;
 
@@ -77,6 +77,6 @@ private:
     RTCNetwork::IPAddress m_ipv6;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(LIBWEBRTC)

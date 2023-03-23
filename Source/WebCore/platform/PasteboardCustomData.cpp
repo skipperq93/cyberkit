@@ -31,7 +31,7 @@
 #include <wtf/persistence/PersistentCoders.h>
 #include <wtf/text/StringHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static std::variant<String, Ref<SharedBuffer>> copyPlatformData(const std::variant<String, Ref<SharedBuffer>>& other)
 {
@@ -59,7 +59,7 @@ PasteboardCustomData::Entry::Entry(const String& dataType)
 PasteboardCustomData::Entry::Entry() = default;
 PasteboardCustomData::Entry::Entry(Entry&&) = default;
 
-PasteboardCustomData::Entry::Entry(const String& type, const String& customData, const std::variant<String, Ref<WebCore::SharedBuffer>>& platformData)
+PasteboardCustomData::Entry::Entry(const String& type, const String& customData, const std::variant<String, Ref<CyberCore::SharedBuffer>>& platformData)
     : type(type)
     , customData(customData)
     , platformData(platformData)
@@ -281,4 +281,4 @@ void PasteboardCustomData::forEachPlatformStringOrBuffer(Function<void(const Str
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore

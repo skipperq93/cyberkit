@@ -25,8 +25,8 @@
 
 #import <CyberKitLegacy/DOMRGBColor.h>
 
-namespace WebCore {
+namespace CyberCore {
 class DeprecatedCSSOMRGBColor;
 }
 
-DOMRGBColor *kit(WebCore::DeprecatedCSSOMRGBColor*);
+DOMRGBColor *kit(CyberCore::DeprecatedCSSOMRGBColor*);

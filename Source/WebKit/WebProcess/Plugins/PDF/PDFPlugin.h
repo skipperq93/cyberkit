@@ -66,7 +66,7 @@ typedef const struct OpaqueJSContext* JSContextRef;
 typedef struct OpaqueJSValue* JSObjectRef;
 typedef const struct OpaqueJSValue* JSValueRef;
 
-namespace WebCore {
+namespace CyberCore {
 class AXObjectCache;
 class Element;
 class FloatPoint;
@@ -78,7 +78,7 @@ class Scrollbar;
 struct PluginInfo;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class PDFPluginAnnotation;
 class PDFPluginPasswordField;
@@ -91,16 +91,16 @@ class WebWheelEvent;
 struct FrameInfoData;
 struct WebHitTestResultData;
 
-class PDFPlugin final : public ThreadSafeRefCounted<PDFPlugin>, public WebCore::ScrollableArea {
+class PDFPlugin final : public ThreadSafeRefCounted<PDFPlugin>, public CyberCore::ScrollableArea {
 public:
-    static Ref<PDFPlugin> create(WebCore::HTMLPlugInElement&);
+    static Ref<PDFPlugin> create(CyberCore::HTMLPlugInElement&);
     ~PDFPlugin();
 
     bool isBeingDestroyed() const { return m_isBeingDestroyed; }
 
-    static WebCore::PluginInfo pluginInfo();
+    static CyberCore::PluginInfo pluginInfo();
 
-    WebCore::IntSize size() const { return m_size; }
+    CyberCore::IntSize size() const { return m_size; }
 
     void didMutatePDFDocument() { m_pdfDocumentWasMutated = true; }
 
@@ -136,20 +136,20 @@ public:
 
     void attemptToUnlockPDF(const String& password);
 
-    WebCore::FloatRect convertFromPDFViewToScreen(const WebCore::FloatRect&) const;
-    WebCore::IntPoint convertFromRootViewToPDFView(const WebCore::IntPoint&) const;
-    WebCore::IntRect boundsOnScreen() const;
+    CyberCore::FloatRect convertFromPDFViewToScreen(const CyberCore::FloatRect&) const;
+    CyberCore::IntPoint convertFromRootViewToPDFView(const CyberCore::IntPoint&) const;
+    CyberCore::IntRect boundsOnScreen() const;
 
-    bool showContextMenuAtPoint(const WebCore::IntPoint&);
+    bool showContextMenuAtPoint(const CyberCore::IntPoint&);
 
-    std::tuple<String, PDFSelection *, NSDictionary *> lookupTextAtLocation(const WebCore::FloatPoint&, WebHitTestResultData&) const;
-    WebCore::FloatRect rectForSelectionInRootView(PDFSelection *) const;
+    std::tuple<String, PDFSelection *, NSDictionary *> lookupTextAtLocation(const CyberCore::FloatPoint&, WebHitTestResultData&) const;
+    CyberCore::FloatRect rectForSelectionInRootView(PDFSelection *) const;
 
     CGFloat scaleFactor() const;
     float deviceScaleFactor() const;
 
     PDFPluginAnnotation* activeAnnotation() const { return m_activeAnnotation.get(); }
-    WebCore::AXObjectCache* axObjectCache() const;
+    CyberCore::AXObjectCache* axObjectCache() const;
 
 #if HAVE(INCREMENTAL_PDF_APIS)
     void getResourceBytesAtPosition(size_t count, off_t position, CompletionHandler<void(const uint8_t*, size_t count)>&&);
@@ -166,14 +166,14 @@ public:
 
     void setView(PluginView&);
     void destroy();
-    void updateControlTints(WebCore::GraphicsContext&);
+    void updateControlTints(CyberCore::GraphicsContext&);
     RefPtr<ShareableBitmap> snapshot();
     CALayer *pluginLayer();
-    void geometryDidChange(const WebCore::IntSize& pluginSize, const WebCore::AffineTransform& pluginToRootViewTransform);
+    void geometryDidChange(const CyberCore::IntSize& pluginSize, const CyberCore::AffineTransform& pluginToRootViewTransform);
     void contentsScaleFactorChanged(float);
     void visibilityDidChange(bool);
-    void streamDidReceiveResponse(const WebCore::ResourceResponse&);
-    void streamDidReceiveData(const WebCore::SharedBuffer&);
+    void streamDidReceiveResponse(const CyberCore::ResourceResponse&);
+    void streamDidReceiveData(const CyberCore::SharedBuffer&);
     void streamDidFinishLoading();
     void streamDidFail();
     bool handleMouseEvent(const WebMouseEvent&);
@@ -184,74 +184,74 @@ public:
     bool handleKeyboardEvent(const WebKeyboardEvent&);
     bool handleEditingCommand(StringView commandName);
     bool isEditingCommandEnabled(StringView commandName);
-    WebCore::Scrollbar* horizontalScrollbar() { return m_horizontalScrollbar.get(); }
-    WebCore::Scrollbar* verticalScrollbar() { return m_verticalScrollbar.get(); }
-    RefPtr<WebCore::FragmentedSharedBuffer> liveResourceData() const;
+    CyberCore::Scrollbar* horizontalScrollbar() { return m_horizontalScrollbar.get(); }
+    CyberCore::Scrollbar* verticalScrollbar() { return m_verticalScrollbar.get(); }
+    RefPtr<CyberCore::FragmentedSharedBuffer> liveResourceData() const;
     void willDetachRenderer();
 
     RetainPtr<PDFDocument> pdfDocumentForPrinting() const { return m_pdfDocument; }
-    WebCore::FloatSize pdfDocumentSizeForPrinting() const;
-    id accessibilityHitTest(const WebCore::IntPoint&) const;
+    CyberCore::FloatSize pdfDocumentSizeForPrinting() const;
+    id accessibilityHitTest(const CyberCore::IntPoint&) const;
     id accessibilityObject() const;
-    id accessibilityAssociatedPluginParentForElement(WebCore::Element*) const;
+    id accessibilityAssociatedPluginParentForElement(CyberCore::Element*) const;
 
-    unsigned countFindMatches(const String& target, WebCore::FindOptions, unsigned maxMatchCount);
-    bool findString(const String& target, WebCore::FindOptions, unsigned maxMatchCount);
+    unsigned countFindMatches(const String& target, CyberCore::FindOptions, unsigned maxMatchCount);
+    bool findString(const String& target, CyberCore::FindOptions, unsigned maxMatchCount);
 
-    bool performDictionaryLookupAtLocation(const WebCore::FloatPoint&);
+    bool performDictionaryLookupAtLocation(const CyberCore::FloatPoint&);
     String getSelectionString() const;
-    bool existingSelectionContainsPoint(const WebCore::FloatPoint&) const;
+    bool existingSelectionContainsPoint(const CyberCore::FloatPoint&) const;
 
     bool isFullFramePlugin() const;
 
 private:
-    explicit PDFPlugin(WebCore::HTMLPlugInElement&);
+    explicit PDFPlugin(CyberCore::HTMLPlugInElement&);
 
     PDFSelection *nextMatchForString(const String& target, bool searchForward, bool caseSensitive, bool wrapSearch, PDFSelection *initialSelection, bool startInSelection);
 
     // ScrollableArea functions.
-    WebCore::IntRect scrollCornerRect() const final;
-    WebCore::ScrollableArea* enclosingScrollableArea() const final;
+    CyberCore::IntRect scrollCornerRect() const final;
+    CyberCore::ScrollableArea* enclosingScrollableArea() const final;
     bool isScrollableOrRubberbandable() final { return true; }
     bool hasScrollableOrRubberbandableAncestor() final { return true; }
-    WebCore::IntRect scrollableAreaBoundingBox(bool* = nullptr) const final;
-    void setScrollOffset(const WebCore::ScrollOffset&) final;
-    void invalidateScrollbarRect(WebCore::Scrollbar&, const WebCore::IntRect&) final;
-    void invalidateScrollCornerRect(const WebCore::IntRect&) final;
-    WebCore::IntPoint lastKnownMousePositionInView() const final { return m_lastMousePositionInPluginCoordinates; }
+    CyberCore::IntRect scrollableAreaBoundingBox(bool* = nullptr) const final;
+    void setScrollOffset(const CyberCore::ScrollOffset&) final;
+    void invalidateScrollbarRect(CyberCore::Scrollbar&, const CyberCore::IntRect&) final;
+    void invalidateScrollCornerRect(const CyberCore::IntRect&) final;
+    CyberCore::IntPoint lastKnownMousePositionInView() const final { return m_lastMousePositionInPluginCoordinates; }
     bool isActive() const final;
     bool isScrollCornerVisible() const final { return false; }
-    WebCore::ScrollPosition scrollPosition() const final;
-    WebCore::ScrollPosition minimumScrollPosition() const final;
-    WebCore::ScrollPosition maximumScrollPosition() const final;
-    WebCore::IntSize visibleSize() const final { return m_size; }
-    WebCore::IntSize contentsSize() const final { return m_pdfDocumentSize; }
-    WebCore::Scrollbar* horizontalScrollbar() const final { return m_horizontalScrollbar.get(); }
-    WebCore::Scrollbar* verticalScrollbar() const final { return m_verticalScrollbar.get(); }
+    CyberCore::ScrollPosition scrollPosition() const final;
+    CyberCore::ScrollPosition minimumScrollPosition() const final;
+    CyberCore::ScrollPosition maximumScrollPosition() const final;
+    CyberCore::IntSize visibleSize() const final { return m_size; }
+    CyberCore::IntSize contentsSize() const final { return m_pdfDocumentSize; }
+    CyberCore::Scrollbar* horizontalScrollbar() const final { return m_horizontalScrollbar.get(); }
+    CyberCore::Scrollbar* verticalScrollbar() const final { return m_verticalScrollbar.get(); }
     bool shouldSuspendScrollAnimations() const final { return false; } // If we return true, ScrollAnimatorMac will keep cycling a timer forever, waiting for a good time to animate.
-    void scrollbarStyleChanged(WebCore::ScrollbarStyle, bool forceUpdate) final;
-    WebCore::IntRect convertFromScrollbarToContainingView(const WebCore::Scrollbar&, const WebCore::IntRect& scrollbarRect) const final;
-    WebCore::IntRect convertFromContainingViewToScrollbar(const WebCore::Scrollbar&, const WebCore::IntRect& parentRect) const final;
-    WebCore::IntPoint convertFromScrollbarToContainingView(const WebCore::Scrollbar&, const WebCore::IntPoint& scrollbarPoint) const final;
-    WebCore::IntPoint convertFromContainingViewToScrollbar(const WebCore::Scrollbar&, const WebCore::IntPoint& parentPoint) const final;
+    void scrollbarStyleChanged(CyberCore::ScrollbarStyle, bool forceUpdate) final;
+    CyberCore::IntRect convertFromScrollbarToContainingView(const CyberCore::Scrollbar&, const CyberCore::IntRect& scrollbarRect) const final;
+    CyberCore::IntRect convertFromContainingViewToScrollbar(const CyberCore::Scrollbar&, const CyberCore::IntRect& parentRect) const final;
+    CyberCore::IntPoint convertFromScrollbarToContainingView(const CyberCore::Scrollbar&, const CyberCore::IntPoint& scrollbarPoint) const final;
+    CyberCore::IntPoint convertFromContainingViewToScrollbar(const CyberCore::Scrollbar&, const CyberCore::IntPoint& parentPoint) const final;
     bool forceUpdateScrollbarsOnMainThreadForPerformanceTesting() const final;
     bool shouldPlaceVerticalScrollbarOnLeft() const final { return false; }
     String debugDescription() const final;
 
     void updateScrollbars();
-    Ref<WebCore::Scrollbar> createScrollbar(WebCore::ScrollbarOrientation);
-    void destroyScrollbar(WebCore::ScrollbarOrientation);
+    Ref<CyberCore::Scrollbar> createScrollbar(CyberCore::ScrollbarOrientation);
+    void destroyScrollbar(CyberCore::ScrollbarOrientation);
     void installPDFDocument();
     void addArchiveResource();
     void calculateSizes();
     void tryRunScriptsInPDFDocument();
 
     NSEvent *nsEventForWebMouseEvent(const WebMouseEvent&);
-    WebCore::IntPoint convertFromPluginToPDFView(const WebCore::IntPoint&) const;
-    WebCore::IntPoint convertFromRootViewToPlugin(const WebCore::IntPoint&) const;
-    WebCore::IntPoint convertFromPDFViewToRootView(const WebCore::IntPoint&) const;
-    WebCore::IntRect convertFromPDFViewToRootView(const WebCore::IntRect&) const;
-    WebCore::IntRect frameForHUD() const;
+    CyberCore::IntPoint convertFromPluginToPDFView(const CyberCore::IntPoint&) const;
+    CyberCore::IntPoint convertFromRootViewToPlugin(const CyberCore::IntPoint&) const;
+    CyberCore::IntPoint convertFromPDFViewToRootView(const CyberCore::IntPoint&) const;
+    CyberCore::IntRect convertFromPDFViewToRootView(const CyberCore::IntRect&) const;
+    CyberCore::IntRect frameForHUD() const;
     void ensureDataBufferLength(uint64_t length);
 
     bool supportsForms();
@@ -261,8 +261,8 @@ private:
 
     void createPasswordEntryForm();
 
-    WebCore::IntSize pdfDocumentSize() const { return m_pdfDocumentSize; }
-    void setPDFDocumentSize(WebCore::IntSize size) { m_pdfDocumentSize = size; }
+    CyberCore::IntSize pdfDocumentSize() const { return m_pdfDocumentSize; }
+    void setPDFDocumentSize(CyberCore::IntSize size) { m_pdfDocumentSize = size; }
 
 #ifdef __OBJC__
     NSData *liveData() const;
@@ -277,7 +277,7 @@ private:
 
     bool m_pdfDocumentWasMutated { false };
 
-    WebCore::IntSize m_scrollOffset;
+    CyberCore::IntSize m_scrollOffset;
 
     RetainPtr<CALayer> m_containerLayer;
     RetainPtr<CALayer> m_contentLayer;
@@ -289,11 +289,11 @@ private:
     
     RefPtr<PDFPluginAnnotation> m_activeAnnotation;
     RefPtr<PDFPluginPasswordField> m_passwordField;
-    RefPtr<WebCore::Element> m_annotationContainer;
+    RefPtr<CyberCore::Element> m_annotationContainer;
 
-    WebCore::AffineTransform m_rootViewToPluginTransform;
+    CyberCore::AffineTransform m_rootViewToPluginTransform;
     WebMouseEvent m_lastMouseEvent;
-    WebCore::IntPoint m_lastMousePositionInPluginCoordinates;
+    CyberCore::IntPoint m_lastMousePositionInPluginCoordinates;
 
     String m_temporaryPDFUUID;
 
@@ -301,7 +301,7 @@ private:
 
     RetainPtr<WKPDFLayerControllerDelegate> m_pdfLayerControllerDelegate;
 
-    WebCore::IntSize m_size;
+    CyberCore::IntSize m_size;
 
     URL m_sourceURL;
 
@@ -315,21 +315,21 @@ private:
     bool m_isBeingDestroyed { false };
     bool m_hasBeenDestroyed { false };
     unsigned m_firstPageHeight { 0 };
-    WebCore::IntSize m_pdfDocumentSize; // All pages, including gaps.
+    CyberCore::IntSize m_pdfDocumentSize; // All pages, including gaps.
 
-    RefPtr<WebCore::Scrollbar> m_horizontalScrollbar;
-    RefPtr<WebCore::Scrollbar> m_verticalScrollbar;
+    RefPtr<CyberCore::Scrollbar> m_horizontalScrollbar;
+    RefPtr<CyberCore::Scrollbar> m_verticalScrollbar;
 
 #if HAVE(INCREMENTAL_PDF_APIS)
     void threadEntry(Ref<PDFPlugin>&&);
     void adoptBackgroundThreadDocument();
 
     bool documentFinishedLoading() { return m_documentFinishedLoading; }
-    uint64_t identifierForLoader(WebCore::NetscapePlugInStreamLoader* loader) { return m_streamLoaderMap.get(loader); }
+    uint64_t identifierForLoader(CyberCore::NetscapePlugInStreamLoader* loader) { return m_streamLoaderMap.get(loader); }
     void removeOutstandingByteRangeRequest(uint64_t identifier) { m_outstandingByteRangeRequests.remove(identifier); }
 
     class PDFPluginStreamLoaderClient : public RefCounted<PDFPluginStreamLoaderClient>,
-                                        public WebCore::NetscapePlugInStreamLoaderClient {
+                                        public CyberCore::NetscapePlugInStreamLoaderClient {
     public:
         PDFPluginStreamLoaderClient(PDFPlugin& pdfPlugin)
             : m_pdfPlugin(pdfPlugin)
@@ -338,11 +338,11 @@ private:
 
         ~PDFPluginStreamLoaderClient() = default;
 
-        void willSendRequest(WebCore::NetscapePlugInStreamLoader*, WebCore::ResourceRequest&&, const WebCore::ResourceResponse& redirectResponse, CompletionHandler<void(WebCore::ResourceRequest&&)>&&) final;
-        void didReceiveResponse(WebCore::NetscapePlugInStreamLoader*, const WebCore::ResourceResponse&) final;
-        void didReceiveData(WebCore::NetscapePlugInStreamLoader*, const WebCore::SharedBuffer&) final;
-        void didFail(WebCore::NetscapePlugInStreamLoader*, const WebCore::ResourceError&) final;
-        void didFinishLoading(WebCore::NetscapePlugInStreamLoader*) final;
+        void willSendRequest(CyberCore::NetscapePlugInStreamLoader*, CyberCore::ResourceRequest&&, const CyberCore::ResourceResponse& redirectResponse, CompletionHandler<void(CyberCore::ResourceRequest&&)>&&) final;
+        void didReceiveResponse(CyberCore::NetscapePlugInStreamLoader*, const CyberCore::ResourceResponse&) final;
+        void didReceiveData(CyberCore::NetscapePlugInStreamLoader*, const CyberCore::SharedBuffer&) final;
+        void didFail(CyberCore::NetscapePlugInStreamLoader*, const CyberCore::ResourceError&) final;
+        void didFinishLoading(CyberCore::NetscapePlugInStreamLoader*) final;
 
     private:
         WeakPtr<PDFPlugin> m_pdfPlugin;
@@ -358,8 +358,8 @@ private:
         {
         }
 
-        WebCore::NetscapePlugInStreamLoader* streamLoader() { return m_streamLoader; }
-        void setStreamLoader(WebCore::NetscapePlugInStreamLoader* loader) { m_streamLoader = loader; }
+        CyberCore::NetscapePlugInStreamLoader* streamLoader() { return m_streamLoader; }
+        void setStreamLoader(CyberCore::NetscapePlugInStreamLoader* loader) { m_streamLoader = loader; }
         void clearStreamLoader();
         void addData(const uint8_t* data, size_t count) { m_accumulatedData.append(data, count); }
 
@@ -377,26 +377,26 @@ private:
         size_t m_count { 0 };
         CompletionHandler<void(const uint8_t*, size_t count)> m_completionHandler;
         Vector<uint8_t> m_accumulatedData;
-        WebCore::NetscapePlugInStreamLoader* m_streamLoader { nullptr };
+        CyberCore::NetscapePlugInStreamLoader* m_streamLoader { nullptr };
     };
     void unconditionalCompleteOutstandingRangeRequests();
 
-    ByteRangeRequest* byteRangeRequestForLoader(WebCore::NetscapePlugInStreamLoader&);
-    void forgetLoader(WebCore::NetscapePlugInStreamLoader&);
-    void cancelAndForgetLoader(WebCore::NetscapePlugInStreamLoader&);
+    ByteRangeRequest* byteRangeRequestForLoader(CyberCore::NetscapePlugInStreamLoader&);
+    void forgetLoader(CyberCore::NetscapePlugInStreamLoader&);
+    void cancelAndForgetLoader(CyberCore::NetscapePlugInStreamLoader&);
     void maybeClearHighLatencyDataProviderFlag();
 
     RetainPtr<PDFDocument> m_backgroundThreadDocument;
     RefPtr<Thread> m_pdfThread;
     HashMap<uint64_t, ByteRangeRequest> m_outstandingByteRangeRequests;
     Ref<PDFPluginStreamLoaderClient> m_streamLoaderClient;
-    HashMap<RefPtr<WebCore::NetscapePlugInStreamLoader>, uint64_t> m_streamLoaderMap;
+    HashMap<RefPtr<CyberCore::NetscapePlugInStreamLoader>, uint64_t> m_streamLoaderMap;
     RangeSet<WTF::Range<uint64_t>> m_completedRanges;
     bool m_incrementalPDFLoadingEnabled;
 
 #if !LOG_DISABLED
     void verboseLog();
-    void logStreamLoader(TextStream&, WebCore::NetscapePlugInStreamLoader&);
+    void logStreamLoader(TextStream&, CyberCore::NetscapePlugInStreamLoader&);
     std::atomic<size_t> m_threadsWaitingOnCallback { 0 };
     std::atomic<size_t> m_completedRangeRequests { 0 };
     std::atomic<size_t> m_completedNetworkRangeRequests { 0 };
@@ -407,6 +407,6 @@ private:
     PDFPluginIdentifier m_identifier;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(PDFKIT_PLUGIN)

@@ -29,7 +29,7 @@
 #include "FontTaggedSettings.h"
 #include <wtf/text/AtomString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Font;
 class FontCreationContext;
@@ -61,9 +61,9 @@ public:
     virtual bool isWorkerFontLoadRequest() const { return false; }
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #define SPECIALIZE_TYPE_TRAITS_FONTLOADREQUEST(ToValueTypeName, predicate) \
 SPECIALIZE_TYPE_TRAITS_BEGIN(ToValueTypeName) \
-    static bool isType(const WebCore::FontLoadRequest& request) { return request.predicate; } \
+    static bool isType(const CyberCore::FontLoadRequest& request) { return request.predicate; } \
 SPECIALIZE_TYPE_TRAITS_END()

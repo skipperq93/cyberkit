@@ -26,7 +26,7 @@
 #include "config.h"
 #include "SVGPathAbsoluteConverter.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 SVGPathAbsoluteConverter::SVGPathAbsoluteConverter(SVGPathConsumer& consumer)
     : SVGPathConsumer()
@@ -155,4 +155,4 @@ void SVGPathAbsoluteConverter::arcTo(float r1, float r2, float angle, bool large
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore

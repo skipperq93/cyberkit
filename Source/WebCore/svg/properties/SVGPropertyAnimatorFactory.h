@@ -32,7 +32,7 @@
 #include "SVGValuePropertyListAnimatorImpl.h"
 #include <wtf/Function.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGPropertyAnimatorFactory {
     WTF_MAKE_FAST_ALLOCATED;

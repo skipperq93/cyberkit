@@ -32,7 +32,7 @@
 
 #include "RenderBlockFlow.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderRubyBase;
 class RenderRubyText;
@@ -83,6 +83,6 @@ private:
     UChar m_secondToLastCharacter;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderRubyRun, isRubyRun())

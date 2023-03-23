@@ -32,7 +32,7 @@
 #include <wtf/MathExtras.h>
 #include <wtf/ParallelJobs.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // The turbulence calculation code is an adapted version of what appears in the SVG 1.1 specification:
 // http://www.w3.org/TR/SVG11/filters.html#feTurbulence
@@ -366,4 +366,4 @@ bool FETurbulenceSoftwareApplier::apply(const Filter& filter, const FilterImageV
     return true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

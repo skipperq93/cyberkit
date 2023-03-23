@@ -22,7 +22,7 @@
 
 #if USE(GLIB) && ENABLE(MEDIA_SESSION)
 
-namespace WebCore {
+namespace CyberCore {
 
 class RemoteCommandListenerGLib : public RemoteCommandListener {
 public:

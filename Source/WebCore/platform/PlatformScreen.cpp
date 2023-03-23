@@ -30,7 +30,7 @@
 
 #include "ScreenProperties.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static ScreenProperties& screenProperties()
 {
@@ -69,6 +69,6 @@ const ScreenData* screenData(PlatformDisplayID screenDisplayID)
     return &screenProperties().screenDataMap.begin()->value;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(COCOA)

@@ -48,7 +48,7 @@
 #import <pal/cf/CoreMediaSoftLink.h>
 #import <pal/cocoa/AVFoundationSoftLink.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 @interface WebAVSampleBufferStatusChangeListener : NSObject {
     WeakPtr<LocalSampleBufferDisplayLayer> _parent;
@@ -132,7 +132,7 @@ using namespace WebCore;
 }
 @end
 
-namespace WebCore {
+namespace CyberCore {
 
 static void runWithoutAnimations(const WTF::Function<void()>& function)
 {

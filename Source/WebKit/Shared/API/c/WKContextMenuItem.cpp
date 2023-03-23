@@ -44,7 +44,7 @@ WKTypeID WKContextMenuItemGetTypeID()
 WKContextMenuItemRef WKContextMenuItemCreateAsAction(WKContextMenuItemTag tag, WKStringRef title, bool enabled)
 {
 #if ENABLE(CONTEXT_MENUS)
-    return WebKit::toAPI(&WebKit::WebContextMenuItem::create(WebKit::WebContextMenuItemData(WebCore::ActionType, WebKit::toImpl(tag), WebKit::toImpl(title)->string(), enabled, false)).leakRef());
+    return WebKit::toAPI(&WebKit::WebContextMenuItem::create(WebKit::WebContextMenuItemData(CyberCore::ActionType, WebKit::toImpl(tag), WebKit::toImpl(title)->string(), enabled, false)).leakRef());
 #else
     UNUSED_PARAM(tag);
     UNUSED_PARAM(title);
@@ -56,7 +56,7 @@ WKContextMenuItemRef WKContextMenuItemCreateAsAction(WKContextMenuItemTag tag, W
 WKContextMenuItemRef WKContextMenuItemCreateAsCheckableAction(WKContextMenuItemTag tag, WKStringRef title, bool enabled, bool checked)
 {
 #if ENABLE(CONTEXT_MENUS)
-    return WebKit::toAPI(&WebKit::WebContextMenuItem::create(WebKit::WebContextMenuItemData(WebCore::CheckableActionType, WebKit::toImpl(tag), WebKit::toImpl(title)->string(), enabled, checked)).leakRef());
+    return WebKit::toAPI(&WebKit::WebContextMenuItem::create(WebKit::WebContextMenuItemData(CyberCore::CheckableActionType, WebKit::toImpl(tag), WebKit::toImpl(title)->string(), enabled, checked)).leakRef());
 #else
     UNUSED_PARAM(tag);
     UNUSED_PARAM(title);
@@ -93,7 +93,7 @@ WKContextMenuItemTag WKContextMenuItemGetTag(WKContextMenuItemRef itemRef)
     return WebKit::toAPI(WebKit::toImpl(itemRef)->data().action());
 #else
     UNUSED_PARAM(itemRef);
-    return WebKit::toAPI(WebCore::ContextMenuItemTagNoAction);
+    return WebKit::toAPI(CyberCore::ContextMenuItemTagNoAction);
 #endif
 }
 
@@ -103,7 +103,7 @@ WKContextMenuItemType WKContextMenuItemGetType(WKContextMenuItemRef itemRef)
     return WebKit::toAPI(WebKit::toImpl(itemRef)->data().type());
 #else
     UNUSED_PARAM(itemRef);
-    return WebKit::toAPI(WebCore::ActionType);
+    return WebKit::toAPI(CyberCore::ActionType);
 #endif
 }
 
@@ -171,7 +171,7 @@ void WKContextMenuItemSetUserData(WKContextMenuItemRef itemRef, WKTypeRef userDa
 
 #define STATIC_ASSERT_EQUALS(a, b, c) \
     static_assert(a == b); \
-    static_assert(a == WebCore::c);
+    static_assert(a == CyberCore::c);
 
 // These values must remain equal to retain binary compatibility.
 STATIC_ASSERT_EQUALS(0, kWKContextMenuItemTagNoAction, ContextMenuItemTagNoAction);

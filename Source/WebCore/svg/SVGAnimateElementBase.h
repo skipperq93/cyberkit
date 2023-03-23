@@ -26,7 +26,7 @@
 #include "SVGAnimationElement.h"
 #include "SVGNames.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGAttributeAnimator;
 
@@ -65,13 +65,13 @@ private:
     mutable std::optional<bool> m_hasInvalidCSSAttributeType;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::SVGAnimateElementBase)
-    static bool isType(const WebCore::SVGElement& element)
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::SVGAnimateElementBase)
+    static bool isType(const CyberCore::SVGElement& element)
     {
-        return element.hasTagName(WebCore::SVGNames::animateTag) || element.hasTagName(WebCore::SVGNames::animateColorTag)
-            || element.hasTagName(WebCore::SVGNames::animateTransformTag) || element.hasTagName(WebCore::SVGNames::setTag);
+        return element.hasTagName(CyberCore::SVGNames::animateTag) || element.hasTagName(CyberCore::SVGNames::animateColorTag)
+            || element.hasTagName(CyberCore::SVGNames::animateTransformTag) || element.hasTagName(CyberCore::SVGNames::setTag);
     }
-    static bool isType(const WebCore::Node& node) { return is<WebCore::SVGElement>(node) && isType(downcast<WebCore::SVGElement>(node)); }
+    static bool isType(const CyberCore::Node& node) { return is<CyberCore::SVGElement>(node) && isType(downcast<CyberCore::SVGElement>(node)); }
 SPECIALIZE_TYPE_TRAITS_END()

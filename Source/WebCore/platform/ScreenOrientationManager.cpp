@@ -29,7 +29,7 @@
 #include "JSDOMPromiseDeferred.h"
 #include "ScreenOrientation.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 ScreenOrientationManager::ScreenOrientationManager() = default;
 
@@ -52,4 +52,4 @@ RefPtr<DeferredPromise> ScreenOrientationManager::takeLockPromise()
     return std::exchange(m_lockPromise, nullptr);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

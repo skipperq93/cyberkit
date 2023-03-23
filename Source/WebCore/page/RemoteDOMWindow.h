@@ -38,7 +38,7 @@ class JSObject;
 class JSValue;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMWindow;
 class Document;
@@ -79,8 +79,8 @@ private:
     WeakPtr<RemoteFrame> m_frame;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::RemoteDOMWindow)
-    static bool isType(const WebCore::AbstractDOMWindow& window) { return window.isRemoteDOMWindow(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::RemoteDOMWindow)
+    static bool isType(const CyberCore::AbstractDOMWindow& window) { return window.isRemoteDOMWindow(); }
 SPECIALIZE_TYPE_TRAITS_END()

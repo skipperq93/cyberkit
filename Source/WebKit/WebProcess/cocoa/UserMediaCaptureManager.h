@@ -36,11 +36,11 @@
 #include <CyberCore/RealtimeMediaSourceIdentifier.h>
 #include <wtf/HashMap.h>
 
-namespace WebCore {
+namespace CyberCore {
 class CAAudioStreamDescription;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class RemoteRealtimeAudioSource;
 class RemoteRealtimeVideoSource;
@@ -59,80 +59,80 @@ public:
 
     void addSource(Ref<RemoteRealtimeAudioSource>&&);
     void addSource(Ref<RemoteRealtimeVideoSource>&&);
-    void removeSource(WebCore::RealtimeMediaSourceIdentifier);
+    void removeSource(CyberCore::RealtimeMediaSourceIdentifier);
 
     RemoteCaptureSampleManager& remoteCaptureSampleManager() { return m_remoteCaptureSampleManager; }
     bool shouldUseGPUProcessRemoteFrames() const { return m_shouldUseGPUProcessRemoteFrames; }
 
 private:
-    // WebCore::RealtimeMediaSource factories
-    class AudioFactory : public WebCore::AudioCaptureFactory {
+    // CyberCore::RealtimeMediaSource factories
+    class AudioFactory : public CyberCore::AudioCaptureFactory {
     public:
         explicit AudioFactory(UserMediaCaptureManager& manager) : m_manager(manager) { }
         void setShouldCaptureInGPUProcess(bool);
 
     private:
-        WebCore::CaptureSourceOrError createAudioCaptureSource(const WebCore::CaptureDevice&, WebCore::MediaDeviceHashSalts&&, const WebCore::MediaConstraints*, WebCore::PageIdentifier) final;
-        WebCore::CaptureDeviceManager& audioCaptureDeviceManager() final { return m_manager.m_noOpCaptureDeviceManager; }
-        const Vector<WebCore::CaptureDevice>& speakerDevices() const final { return m_speakerDevices; }
+        CyberCore::CaptureSourceOrError createAudioCaptureSource(const CyberCore::CaptureDevice&, CyberCore::MediaDeviceHashSalts&&, const CyberCore::MediaConstraints*, CyberCore::PageIdentifier) final;
+        CyberCore::CaptureDeviceManager& audioCaptureDeviceManager() final { return m_manager.m_noOpCaptureDeviceManager; }
+        const Vector<CyberCore::CaptureDevice>& speakerDevices() const final { return m_speakerDevices; }
 
         UserMediaCaptureManager& m_manager;
         bool m_shouldCaptureInGPUProcess { false };
-        Vector<WebCore::CaptureDevice> m_speakerDevices;
+        Vector<CyberCore::CaptureDevice> m_speakerDevices;
     };
-    class VideoFactory : public WebCore::VideoCaptureFactory {
+    class VideoFactory : public CyberCore::VideoCaptureFactory {
     public:
         explicit VideoFactory(UserMediaCaptureManager& manager) : m_manager(manager) { }
         void setShouldCaptureInGPUProcess(bool);
 
     private:
-        WebCore::CaptureSourceOrError createVideoCaptureSource(const WebCore::CaptureDevice&, WebCore::MediaDeviceHashSalts&&, const WebCore::MediaConstraints*, WebCore::PageIdentifier) final;
-        WebCore::CaptureDeviceManager& videoCaptureDeviceManager() final { return m_manager.m_noOpCaptureDeviceManager; }
+        CyberCore::CaptureSourceOrError createVideoCaptureSource(const CyberCore::CaptureDevice&, CyberCore::MediaDeviceHashSalts&&, const CyberCore::MediaConstraints*, CyberCore::PageIdentifier) final;
+        CyberCore::CaptureDeviceManager& videoCaptureDeviceManager() final { return m_manager.m_noOpCaptureDeviceManager; }
 
         UserMediaCaptureManager& m_manager;
         bool m_shouldCaptureInGPUProcess { false };
     };
-    class DisplayFactory : public WebCore::DisplayCaptureFactory {
+    class DisplayFactory : public CyberCore::DisplayCaptureFactory {
     public:
         explicit DisplayFactory(UserMediaCaptureManager& manager) : m_manager(manager) { }
         void setShouldCaptureInGPUProcess(bool);
 
     private:
-        WebCore::CaptureSourceOrError createDisplayCaptureSource(const WebCore::CaptureDevice&, WebCore::MediaDeviceHashSalts&&, const WebCore::MediaConstraints*, WebCore::PageIdentifier) final;
-        WebCore::DisplayCaptureManager& displayCaptureDeviceManager() final { return m_manager.m_noOpCaptureDeviceManager; }
+        CyberCore::CaptureSourceOrError createDisplayCaptureSource(const CyberCore::CaptureDevice&, CyberCore::MediaDeviceHashSalts&&, const CyberCore::MediaConstraints*, CyberCore::PageIdentifier) final;
+        CyberCore::DisplayCaptureManager& displayCaptureDeviceManager() final { return m_manager.m_noOpCaptureDeviceManager; }
 
         UserMediaCaptureManager& m_manager;
         bool m_shouldCaptureInGPUProcess { false };
     };
 
-    class NoOpCaptureDeviceManager : public WebCore::DisplayCaptureManager {
+    class NoOpCaptureDeviceManager : public CyberCore::DisplayCaptureManager {
     public:
         NoOpCaptureDeviceManager() = default;
 
     private:
-        const Vector<WebCore::CaptureDevice>& captureDevices() final
+        const Vector<CyberCore::CaptureDevice>& captureDevices() final
         {
             ASSERT_NOT_REACHED();
             return m_emptyDevices;
         }
-        Vector<WebCore::CaptureDevice> m_emptyDevices;
+        Vector<CyberCore::CaptureDevice> m_emptyDevices;
     };
 
     // IPC::MessageReceiver
     void didReceiveMessage(IPC::Connection&, IPC::Decoder&) final;
 
     // Messages::UserMediaCaptureManager
-    void sourceStopped(WebCore::RealtimeMediaSourceIdentifier, bool didFail);
-    void sourceMutedChanged(WebCore::RealtimeMediaSourceIdentifier, bool muted, bool interrupted);
+    void sourceStopped(CyberCore::RealtimeMediaSourceIdentifier, bool didFail);
+    void sourceMutedChanged(CyberCore::RealtimeMediaSourceIdentifier, bool muted, bool interrupted);
 
-    void sourceSettingsChanged(WebCore::RealtimeMediaSourceIdentifier, WebCore::RealtimeMediaSourceSettings&&);
-    void sourceConfigurationChanged(WebCore::RealtimeMediaSourceIdentifier, String&&, WebCore::RealtimeMediaSourceSettings&&, WebCore::RealtimeMediaSourceCapabilities&&);
+    void sourceSettingsChanged(CyberCore::RealtimeMediaSourceIdentifier, CyberCore::RealtimeMediaSourceSettings&&);
+    void sourceConfigurationChanged(CyberCore::RealtimeMediaSourceIdentifier, String&&, CyberCore::RealtimeMediaSourceSettings&&, CyberCore::RealtimeMediaSourceCapabilities&&);
 
-    void applyConstraintsSucceeded(WebCore::RealtimeMediaSourceIdentifier, WebCore::RealtimeMediaSourceSettings&&);
-    void applyConstraintsFailed(WebCore::RealtimeMediaSourceIdentifier, String&&, String&&);
+    void applyConstraintsSucceeded(CyberCore::RealtimeMediaSourceIdentifier, CyberCore::RealtimeMediaSourceSettings&&);
+    void applyConstraintsFailed(CyberCore::RealtimeMediaSourceIdentifier, String&&, String&&);
 
     using Source = std::variant<std::nullptr_t, Ref<RemoteRealtimeAudioSource>, Ref<RemoteRealtimeVideoSource>>;
-    HashMap<WebCore::RealtimeMediaSourceIdentifier, Source> m_sources;
+    HashMap<CyberCore::RealtimeMediaSourceIdentifier, Source> m_sources;
     WebProcess& m_process;
     NoOpCaptureDeviceManager m_noOpCaptureDeviceManager;
     AudioFactory m_audioFactory;
@@ -142,6 +142,6 @@ private:
     bool m_shouldUseGPUProcessRemoteFrames { false };
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

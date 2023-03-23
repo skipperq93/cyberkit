@@ -45,7 +45,7 @@
 #include "SimpleRange.h"
 #include "VisiblePosition.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class FloatQuad;
 
@@ -226,4 +226,4 @@ bool ImageOverlayController::hasActiveDataDetectorHighlightForTesting() const
 
 #endif // !PLATFORM(MAC)
 
-} // namespace WebCore
+} // namespace CyberCore

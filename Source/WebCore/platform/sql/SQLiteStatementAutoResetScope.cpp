@@ -29,7 +29,7 @@
 #include "SQLiteStatement.h"
 #include <utility>
 
-namespace WebCore {
+namespace CyberCore {
 
 SQLiteStatementAutoResetScope::SQLiteStatementAutoResetScope(SQLiteStatement *statement)
     : m_statement(statement)

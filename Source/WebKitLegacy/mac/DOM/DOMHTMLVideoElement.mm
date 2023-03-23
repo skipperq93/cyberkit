@@ -38,91 +38,91 @@
 #import <wtf/GetPtr.h>
 #import <wtf/URL.h>
 
-#define IMPL static_cast<WebCore::HTMLVideoElement*>(reinterpret_cast<WebCore::Node*>(_internal))
+#define IMPL static_cast<CyberCore::HTMLVideoElement*>(reinterpret_cast<CyberCore::Node*>(_internal))
 
 @implementation DOMHTMLVideoElement
 
 - (unsigned)width
 {
-    WebCore::JSMainThreadNullState state;
-    return IMPL->getUnsignedIntegralAttribute(WebCore::HTMLNames::widthAttr);
+    CyberCore::JSMainThreadNullState state;
+    return IMPL->getUnsignedIntegralAttribute(CyberCore::HTMLNames::widthAttr);
 }
 
 - (void)setWidth:(unsigned)newWidth
 {
-    WebCore::JSMainThreadNullState state;
-    IMPL->setUnsignedIntegralAttribute(WebCore::HTMLNames::widthAttr, newWidth);
+    CyberCore::JSMainThreadNullState state;
+    IMPL->setUnsignedIntegralAttribute(CyberCore::HTMLNames::widthAttr, newWidth);
 }
 
 - (unsigned)height
 {
-    WebCore::JSMainThreadNullState state;
-    return IMPL->getUnsignedIntegralAttribute(WebCore::HTMLNames::heightAttr);
+    CyberCore::JSMainThreadNullState state;
+    return IMPL->getUnsignedIntegralAttribute(CyberCore::HTMLNames::heightAttr);
 }
 
 - (void)setHeight:(unsigned)newHeight
 {
-    WebCore::JSMainThreadNullState state;
-    IMPL->setUnsignedIntegralAttribute(WebCore::HTMLNames::heightAttr, newHeight);
+    CyberCore::JSMainThreadNullState state;
+    IMPL->setUnsignedIntegralAttribute(CyberCore::HTMLNames::heightAttr, newHeight);
 }
 
 - (unsigned)videoWidth
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->videoWidth();
 }
 
 - (unsigned)videoHeight
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->videoHeight();
 }
 
 - (NSString *)poster
 {
-    WebCore::JSMainThreadNullState state;
-    return IMPL->getURLAttribute(WebCore::HTMLNames::posterAttr).string();
+    CyberCore::JSMainThreadNullState state;
+    return IMPL->getURLAttribute(CyberCore::HTMLNames::posterAttr).string();
 }
 
 - (void)setPoster:(NSString *)newPoster
 {
-    WebCore::JSMainThreadNullState state;
-    IMPL->setAttributeWithoutSynchronization(WebCore::HTMLNames::posterAttr, newPoster);
+    CyberCore::JSMainThreadNullState state;
+    IMPL->setAttributeWithoutSynchronization(CyberCore::HTMLNames::posterAttr, newPoster);
 }
 
 - (BOOL)playsInline
 {
-    WebCore::JSMainThreadNullState state;
-    return IMPL->hasAttributeWithoutSynchronization(WebCore::HTMLNames::playsinlineAttr);
+    CyberCore::JSMainThreadNullState state;
+    return IMPL->hasAttributeWithoutSynchronization(CyberCore::HTMLNames::playsinlineAttr);
 }
 
 - (void)setPlaysInline:(BOOL)newPlaysInline
 {
-    WebCore::JSMainThreadNullState state;
-    IMPL->setBooleanAttribute(WebCore::HTMLNames::playsinlineAttr, newPlaysInline);
+    CyberCore::JSMainThreadNullState state;
+    IMPL->setBooleanAttribute(CyberCore::HTMLNames::playsinlineAttr, newPlaysInline);
 }
 
 - (BOOL)webkitSupportsFullscreen
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->webkitSupportsFullscreen();
 }
 
 - (BOOL)webkitDisplayingFullscreen
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->webkitDisplayingFullscreen();
 }
 
 - (void)webkitEnterFullscreen
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     raiseOnDOMError(IMPL->webkitEnterFullscreen());
 }
 
 - (void)webkitExitFullscreen
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->webkitExitFullscreen();
 }
 

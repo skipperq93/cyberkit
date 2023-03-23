@@ -24,15 +24,15 @@
 #if ENABLE(MEDIA_STREAM)
 
 messages -> UserMediaCaptureManagerProxy NotRefCounted {
-    CreateMediaSourceForCaptureDeviceWithConstraints(WebCore::RealtimeMediaSourceIdentifier id, WebCore::CaptureDevice device, struct WebCore::MediaDeviceHashSalts hashSalts, struct WebCore::MediaConstraints constraints, bool shouldUseGPUProcessRemoteFrames, WebCore::PageIdentifier pageIdentifier) -> (bool success, String invalidConstraints, WebCore::RealtimeMediaSourceSettings settings, WebCore::RealtimeMediaSourceCapabilities capabilities, Vector<WebCore::VideoPresetData> presets, WebCore::IntSize size, double frameRate) Async
-    StartProducingData(WebCore::RealtimeMediaSourceIdentifier id)
-    StopProducingData(WebCore::RealtimeMediaSourceIdentifier id)
-    RemoveSource(WebCore::RealtimeMediaSourceIdentifier id)
-    ApplyConstraints(WebCore::RealtimeMediaSourceIdentifier id, struct WebCore::MediaConstraints constraints)
-    Clone(WebCore::RealtimeMediaSourceIdentifier clonedID, WebCore::RealtimeMediaSourceIdentifier cloneID, WebCore::PageIdentifier pageIdentifier)
-    EndProducingData(WebCore::RealtimeMediaSourceIdentifier sourceID)
-    SetShouldApplyRotation(WebCore::RealtimeMediaSourceIdentifier sourceID, bool shouldApplyRotation)
-    SetIsInBackground(WebCore::RealtimeMediaSourceIdentifier sourceID, bool isInBackground)
+    CreateMediaSourceForCaptureDeviceWithConstraints(CyberCore::RealtimeMediaSourceIdentifier id, CyberCore::CaptureDevice device, struct CyberCore::MediaDeviceHashSalts hashSalts, struct CyberCore::MediaConstraints constraints, bool shouldUseGPUProcessRemoteFrames, CyberCore::PageIdentifier pageIdentifier) -> (bool success, String invalidConstraints, CyberCore::RealtimeMediaSourceSettings settings, CyberCore::RealtimeMediaSourceCapabilities capabilities, Vector<CyberCore::VideoPresetData> presets, CyberCore::IntSize size, double frameRate) Async
+    StartProducingData(CyberCore::RealtimeMediaSourceIdentifier id)
+    StopProducingData(CyberCore::RealtimeMediaSourceIdentifier id)
+    RemoveSource(CyberCore::RealtimeMediaSourceIdentifier id)
+    ApplyConstraints(CyberCore::RealtimeMediaSourceIdentifier id, struct CyberCore::MediaConstraints constraints)
+    Clone(CyberCore::RealtimeMediaSourceIdentifier clonedID, CyberCore::RealtimeMediaSourceIdentifier cloneID, CyberCore::PageIdentifier pageIdentifier)
+    EndProducingData(CyberCore::RealtimeMediaSourceIdentifier sourceID)
+    SetShouldApplyRotation(CyberCore::RealtimeMediaSourceIdentifier sourceID, bool shouldApplyRotation)
+    SetIsInBackground(CyberCore::RealtimeMediaSourceIdentifier sourceID, bool isInBackground)
 }
 
 #endif

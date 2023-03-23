@@ -40,7 +40,7 @@
 #import "GameControllerSoftLink.h"
 #import "CoreHapticsSoftLink.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 std::unique_ptr<GameControllerHapticEngines> GameControllerHapticEngines::create(GCController *gamepad)
 {
@@ -207,6 +207,6 @@ void GameControllerHapticEngines::stop(CompletionHandler<void()>&& completionHan
     }).get()];
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(GAMEPAD) && HAVE(WIDE_GAMECONTROLLER_SUPPORT)

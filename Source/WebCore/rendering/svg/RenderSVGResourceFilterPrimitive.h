@@ -28,7 +28,7 @@
 
 #include "RenderSVGResourceFilter.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class FilterEffect;
 class SVGFilterPrimitiveStandardAttributes;
@@ -51,4 +51,4 @@ private:
     void element() const = delete;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -61,7 +61,7 @@ public:
     static const std::vector<std::string>& supportedBoolWebPreferenceFeatures();
     static const std::vector<std::string>& supportedUInt32WebPreferenceFeatures();
 
-    static std::string toWebKitLegacyPreferenceKey(const std::string&);
+    static std::string toCyberKitLegacyPreferenceKey(const std::string&);
 
 private:
     bool boolTestRunnerFeatureValue(std::string key, bool defaultValue) const;

@@ -34,7 +34,7 @@
 #include "Shape.h"
 #include <wtf/Assertions.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RectangleShape final : public Shape {
 public:
@@ -64,4 +64,4 @@ private:
     FloatSize m_radii;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

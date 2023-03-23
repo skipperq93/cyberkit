@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -21,28 +21,28 @@
 #error "Only <webkitdom/webkitdom.h> can be included directly."
 #endif
 
-#ifndef WebKitDOMHTMLFrameSetElement_h
-#define WebKitDOMHTMLFrameSetElement_h
+#ifndef CyberKitDOMHTMLFrameSetElement_h
+#define CyberKitDOMHTMLFrameSetElement_h
 
 #include <glib-object.h>
-#include <webkitdom/WebKitDOMHTMLElement.h>
+#include <webkitdom/CyberKitDOMHTMLElement.h>
 #include <webkitdom/webkitdomdefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_DOM_TYPE_HTML_FRAME_SET_ELEMENT            (webkit_dom_html_frame_set_element_get_type())
-#define WEBKIT_DOM_HTML_FRAME_SET_ELEMENT(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_HTML_FRAME_SET_ELEMENT, WebKitDOMHTMLFrameSetElement))
-#define WEBKIT_DOM_HTML_FRAME_SET_ELEMENT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_HTML_FRAME_SET_ELEMENT, WebKitDOMHTMLFrameSetElementClass)
+#define WEBKIT_DOM_HTML_FRAME_SET_ELEMENT(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_HTML_FRAME_SET_ELEMENT, CyberKitDOMHTMLFrameSetElement))
+#define WEBKIT_DOM_HTML_FRAME_SET_ELEMENT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_HTML_FRAME_SET_ELEMENT, CyberKitDOMHTMLFrameSetElementClass)
 #define WEBKIT_DOM_IS_HTML_FRAME_SET_ELEMENT(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_DOM_TYPE_HTML_FRAME_SET_ELEMENT))
 #define WEBKIT_DOM_IS_HTML_FRAME_SET_ELEMENT_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_DOM_TYPE_HTML_FRAME_SET_ELEMENT))
-#define WEBKIT_DOM_HTML_FRAME_SET_ELEMENT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_HTML_FRAME_SET_ELEMENT, WebKitDOMHTMLFrameSetElementClass))
+#define WEBKIT_DOM_HTML_FRAME_SET_ELEMENT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_HTML_FRAME_SET_ELEMENT, CyberKitDOMHTMLFrameSetElementClass))
 
-struct _WebKitDOMHTMLFrameSetElement {
-    WebKitDOMHTMLElement parent_instance;
+struct _CyberKitDOMHTMLFrameSetElement {
+    CyberKitDOMHTMLElement parent_instance;
 };
 
-struct _WebKitDOMHTMLFrameSetElementClass {
-    WebKitDOMHTMLElementClass parent_class;
+struct _CyberKitDOMHTMLFrameSetElementClass {
+    CyberKitDOMHTMLElementClass parent_class;
 };
 
 WEBKIT_DEPRECATED GType
@@ -50,48 +50,48 @@ webkit_dom_html_frame_set_element_get_type(void);
 
 /**
  * webkit_dom_html_frame_set_element_get_cols:
- * @self: A #WebKitDOMHTMLFrameSetElement
+ * @self: A #CyberKitDOMHTMLFrameSetElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_frame_set_element_get_cols(WebKitDOMHTMLFrameSetElement* self);
+webkit_dom_html_frame_set_element_get_cols(CyberKitDOMHTMLFrameSetElement* self);
 
 /**
  * webkit_dom_html_frame_set_element_set_cols:
- * @self: A #WebKitDOMHTMLFrameSetElement
+ * @self: A #CyberKitDOMHTMLFrameSetElement
  * @value: A #gchar
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_frame_set_element_set_cols(WebKitDOMHTMLFrameSetElement* self, const gchar* value);
+webkit_dom_html_frame_set_element_set_cols(CyberKitDOMHTMLFrameSetElement* self, const gchar* value);
 
 /**
  * webkit_dom_html_frame_set_element_get_rows:
- * @self: A #WebKitDOMHTMLFrameSetElement
+ * @self: A #CyberKitDOMHTMLFrameSetElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_frame_set_element_get_rows(WebKitDOMHTMLFrameSetElement* self);
+webkit_dom_html_frame_set_element_get_rows(CyberKitDOMHTMLFrameSetElement* self);
 
 /**
  * webkit_dom_html_frame_set_element_set_rows:
- * @self: A #WebKitDOMHTMLFrameSetElement
+ * @self: A #CyberKitDOMHTMLFrameSetElement
  * @value: A #gchar
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_frame_set_element_set_rows(WebKitDOMHTMLFrameSetElement* self, const gchar* value);
+webkit_dom_html_frame_set_element_set_rows(CyberKitDOMHTMLFrameSetElement* self, const gchar* value);
 
 G_END_DECLS
 
-#endif /* WebKitDOMHTMLFrameSetElement_h */
+#endif /* CyberKitDOMHTMLFrameSetElement_h */

@@ -26,7 +26,7 @@
 #include "config.h"
 #include "UserActivity.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 #if !HAVE(NS_ACTIVITY)
 
@@ -58,4 +58,4 @@ void UserActivity::hysteresisUpdated(PAL::HysteresisState state)
         m_impl.endActivity();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

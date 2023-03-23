@@ -38,7 +38,7 @@
 
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSSVGResourceElementClient final : public SVGResourceElementClient {
     WTF_MAKE_ISO_ALLOCATED(CSSSVGResourceElementClient);
@@ -165,4 +165,4 @@ RenderSVGResourceClipper* ReferencedSVGResources::referencedClipperRenderer(Docu
     return getRenderSVGResourceById<RenderSVGResourceClipper>(document, clipPath.fragment());
 }
 
-} // namespace WebCore
+} // namespace CyberCore

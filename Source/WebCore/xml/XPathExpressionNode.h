@@ -28,7 +28,7 @@
 
 #include "XPathValue.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace XPath {
 
 struct EvaluationContext {
@@ -84,4 +84,4 @@ private:
 };
 
 } // namespace XPath
-} // namespace WebCore
+} // namespace CyberCore

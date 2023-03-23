@@ -31,7 +31,7 @@
 #include "ColorSerialization.h"
 
 
-namespace WebCore {
+namespace CyberCore {
 
 
 InbandGenericCue::InbandGenericCue()

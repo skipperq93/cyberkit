@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -17,16 +17,16 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitDOMHTMLTitleElementPrivate_h
-#define WebKitDOMHTMLTitleElementPrivate_h
+#ifndef CyberKitDOMHTMLTitleElementPrivate_h
+#define CyberKitDOMHTMLTitleElementPrivate_h
 
 #include <CyberCore/HTMLTitleElement.h>
-#include <webkitdom/WebKitDOMHTMLTitleElement.h>
+#include <webkitdom/CyberKitDOMHTMLTitleElement.h>
 
-namespace WebKit {
-WebKitDOMHTMLTitleElement* wrapHTMLTitleElement(WebCore::HTMLTitleElement*);
-WebKitDOMHTMLTitleElement* kit(WebCore::HTMLTitleElement*);
-WebCore::HTMLTitleElement* core(WebKitDOMHTMLTitleElement*);
-} // namespace WebKit
+namespace CyberKit {
+CyberKitDOMHTMLTitleElement* wrapHTMLTitleElement(CyberCore::HTMLTitleElement*);
+CyberKitDOMHTMLTitleElement* kit(CyberCore::HTMLTitleElement*);
+CyberCore::HTMLTitleElement* core(CyberKitDOMHTMLTitleElement*);
+} // namespace CyberKit
 
-#endif /* WebKitDOMHTMLTitleElementPrivate_h */
+#endif /* CyberKitDOMHTMLTitleElementPrivate_h */

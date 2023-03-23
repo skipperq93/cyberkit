@@ -21,29 +21,29 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 messages -> WebIDBConnectionToServer {
-    DidDeleteDatabase(WebCore::IDBResultData result)
-    DidOpenDatabase(WebCore::IDBResultData result)
-    DidAbortTransaction(WebCore::IDBResourceIdentifier transactionIdentifier, WebCore::IDBError error)
-    DidCommitTransaction(WebCore::IDBResourceIdentifier transactionIdentifier, WebCore::IDBError error)
-    DidCreateObjectStore(WebCore::IDBResultData result)
-    DidDeleteObjectStore(WebCore::IDBResultData result)
-    DidRenameObjectStore(WebCore::IDBResultData result)
-    DidClearObjectStore(WebCore::IDBResultData result)
-    DidCreateIndex(WebCore::IDBResultData result)
-    DidDeleteIndex(WebCore::IDBResultData result)
-    DidRenameIndex(WebCore::IDBResultData result)
-    DidPutOrAdd(WebCore::IDBResultData result)
+    DidDeleteDatabase(CyberCore::IDBResultData result)
+    DidOpenDatabase(CyberCore::IDBResultData result)
+    DidAbortTransaction(CyberCore::IDBResourceIdentifier transactionIdentifier, CyberCore::IDBError error)
+    DidCommitTransaction(CyberCore::IDBResourceIdentifier transactionIdentifier, CyberCore::IDBError error)
+    DidCreateObjectStore(CyberCore::IDBResultData result)
+    DidDeleteObjectStore(CyberCore::IDBResultData result)
+    DidRenameObjectStore(CyberCore::IDBResultData result)
+    DidClearObjectStore(CyberCore::IDBResultData result)
+    DidCreateIndex(CyberCore::IDBResultData result)
+    DidDeleteIndex(CyberCore::IDBResultData result)
+    DidRenameIndex(CyberCore::IDBResultData result)
+    DidPutOrAdd(CyberCore::IDBResultData result)
     DidGetRecord(WebKit::WebIDBResult result)
     DidGetAllRecords(WebKit::WebIDBResult result)
-    DidGetCount(WebCore::IDBResultData result)
-    DidDeleteRecord(WebCore::IDBResultData result)
+    DidGetCount(CyberCore::IDBResultData result)
+    DidDeleteRecord(CyberCore::IDBResultData result)
     DidOpenCursor(WebKit::WebIDBResult result)
     DidIterateCursor(WebKit::WebIDBResult result)
 
-    FireVersionChangeEvent(uint64_t databaseConnectionIdentifier, WebCore::IDBResourceIdentifier requestIdentifier, uint64_t requestedVersion)
-    DidStartTransaction(WebCore::IDBResourceIdentifier transactionIdentifier, WebCore::IDBError error)
-    DidCloseFromServer(uint64_t databaseConnectionIdentifier, WebCore::IDBError error) final;
-    NotifyOpenDBRequestBlocked(WebCore::IDBResourceIdentifier requestIdentifier, uint64_t oldVersion, uint64_t newVersion)
+    FireVersionChangeEvent(uint64_t databaseConnectionIdentifier, CyberCore::IDBResourceIdentifier requestIdentifier, uint64_t requestedVersion)
+    DidStartTransaction(CyberCore::IDBResourceIdentifier transactionIdentifier, CyberCore::IDBError error)
+    DidCloseFromServer(uint64_t databaseConnectionIdentifier, CyberCore::IDBError error) final;
+    NotifyOpenDBRequestBlocked(CyberCore::IDBResourceIdentifier requestIdentifier, uint64_t oldVersion, uint64_t newVersion)
 
-    DidGetAllDatabaseNamesAndVersions(WebCore::IDBResourceIdentifier requestIdentifier, Vector<WebCore::IDBDatabaseNameAndVersion> databases)
+    DidGetAllDatabaseNamesAndVersions(CyberCore::IDBResourceIdentifier requestIdentifier, Vector<CyberCore::IDBDatabaseNameAndVersion> databases)
 }

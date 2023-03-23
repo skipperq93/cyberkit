@@ -27,7 +27,7 @@
 
 #include "FilterTargetSwitcher.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ImageBuffer;
 
@@ -49,4 +49,4 @@ private:
     FilterResults* m_results { nullptr };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

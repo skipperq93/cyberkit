@@ -31,7 +31,7 @@
 #include <wtf/Forward.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class LegacyCDMSessionClient : public CanMakeWeakPtr<LegacyCDMSessionClient> {
     WTF_MAKE_FAST_ALLOCATED;

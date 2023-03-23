@@ -23,7 +23,7 @@
 #include "RenderSVGResource.h"
 #include "SVGDocumentExtensions.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderLayer;
 
@@ -101,6 +101,6 @@ Renderer* getRenderSVGResourceById(Document& document, const AtomString& id)
     return nullptr;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderSVGResourceContainer, isSVGResourceContainer())

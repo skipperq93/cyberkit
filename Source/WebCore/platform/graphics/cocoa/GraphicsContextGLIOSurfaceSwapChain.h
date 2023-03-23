@@ -30,7 +30,7 @@
 #include "IOSurface.h"
 #include <memory>
 
-namespace WebCore {
+namespace CyberCore {
 
 // An interface for implementing front buffer management of a 3-buffering swap
 // chain of IOSurfaces.
@@ -46,7 +46,7 @@ public:
     virtual ~GraphicsContextGLIOSurfaceSwapChain();
     struct Buffer {
         // The actual contents. Client transfers the ownership of the IOSurface.
-        std::unique_ptr<WebCore::IOSurface> surface;
+        std::unique_ptr<CyberCore::IOSurface> surface;
         // Producer specific metadata handle (such as EGLSurface). Client does not transfer the ownership.
         void* handle { nullptr };
     };

@@ -215,7 +215,7 @@ static void* kWindowContentLayoutObserverContext = &kWindowContentLayoutObserver
 
 @interface WKWebInspectorUISaveController : NSViewController
 
-- (id)initWithSaveDatas:(Vector<WebCore::InspectorFrontendClient::SaveData>&&)saveDatas savePanel:(NSSavePanel *)savePanel;
+- (id)initWithSaveDatas:(Vector<CyberCore::InspectorFrontendClient::SaveData>&&)saveDatas savePanel:(NSSavePanel *)savePanel;
 
 @property (nonatomic, readonly) NSString *suggestedURL;
 @property (nonatomic, readonly) NSString *content;
@@ -224,13 +224,13 @@ static void* kWindowContentLayoutObserverContext = &kWindowContentLayoutObserver
 @end
 
 @implementation WKWebInspectorUISaveController {
-    Vector<WebCore::InspectorFrontendClient::SaveData> _saveDatas;
+    Vector<CyberCore::InspectorFrontendClient::SaveData> _saveDatas;
 
     RetainPtr<NSSavePanel> _savePanel;
     RetainPtr<NSPopUpButton> _popUpButton;
 }
 
-- (id)initWithSaveDatas:(Vector<WebCore::InspectorFrontendClient::SaveData>&&)saveDatas savePanel:(NSSavePanel *)savePanel
+- (id)initWithSaveDatas:(Vector<CyberCore::InspectorFrontendClient::SaveData>&&)saveDatas savePanel:(NSSavePanel *)savePanel
 {
     if (!(self = [super init]))
         return nil;
@@ -308,7 +308,7 @@ static void* kWindowContentLayoutObserverContext = &kWindowContentLayoutObserver
 @end
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 void WebInspectorUIProxy::didBecomeActive()
 {
@@ -695,7 +695,7 @@ void WebInspectorUIProxy::platformLoad(const String& path, CompletionHandler<voi
         completionHandler(nullString());
 }
 
-void WebInspectorUIProxy::platformPickColorFromScreen(CompletionHandler<void(const std::optional<WebCore::Color>&)>&& completionHandler)
+void WebInspectorUIProxy::platformPickColorFromScreen(CompletionHandler<void(const std::optional<CyberCore::Color>&)>&& completionHandler)
 {
     auto sampler = adoptNS([[NSColorSampler alloc] init]);
     [sampler.get() showSamplerWithSelectionHandler:makeBlockPtr([completionHandler = WTFMove(completionHandler)](NSColor *selectedColor) mutable {

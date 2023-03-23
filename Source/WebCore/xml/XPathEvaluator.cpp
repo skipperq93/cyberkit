@@ -32,7 +32,7 @@
 #include "XPathResult.h"
 #include "XPathUtil.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 ExceptionOr<Ref<XPathExpression>> XPathEvaluator::createExpression(const String& expression, RefPtr<XPathNSResolver>&& resolver)
 {

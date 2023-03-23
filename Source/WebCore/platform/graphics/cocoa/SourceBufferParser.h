@@ -41,7 +41,7 @@ namespace WTF {
 class Logger;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class ContentType;
 class MediaSampleAVFObjC;

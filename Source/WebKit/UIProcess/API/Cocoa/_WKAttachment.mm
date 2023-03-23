@@ -31,7 +31,7 @@
 #import "_WKAttachmentInternal.h"
 #import <CyberCore/MIMETypeRegistry.h>
 #import <CyberCore/SharedBuffer.h>
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 #import <wtf/BlockPtr.h>
 #import <wtf/CompletionHandler.h>
 
@@ -115,7 +115,7 @@ static const NSInteger InvalidAttachmentErrorCode = 2;
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainRunLoop(_WKAttachment.class, self))
+    if (CyberCoreObjCScheduleDeallocateOnMainRunLoop(_WKAttachment.class, self))
         return;
 
     _attachment->~Attachment();

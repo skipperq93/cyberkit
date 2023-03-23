@@ -29,7 +29,7 @@
 
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct CDMKeySystemConfiguration;
 struct CDMMediaCapability;
@@ -49,43 +49,43 @@ template<typename>
 struct LogArgument;
 
 template <>
-struct LogArgument<WebCore::CDMKeySystemConfiguration> {
-    static String toString(const WebCore::CDMKeySystemConfiguration&);
+struct LogArgument<CyberCore::CDMKeySystemConfiguration> {
+    static String toString(const CyberCore::CDMKeySystemConfiguration&);
 };
 
 template <>
-struct LogArgument<WebCore::CDMMediaCapability> {
-    static String toString(const WebCore::CDMMediaCapability&);
+struct LogArgument<CyberCore::CDMMediaCapability> {
+    static String toString(const CyberCore::CDMMediaCapability&);
 };
 
 template <>
-struct LogArgument<WebCore::CDMRestrictions> {
-    static String toString(const WebCore::CDMRestrictions&);
+struct LogArgument<CyberCore::CDMRestrictions> {
+    static String toString(const CyberCore::CDMRestrictions&);
 };
 
 template <>
-struct LogArgument<WebCore::CDMEncryptionScheme> {
-    static String toString(const WebCore::CDMEncryptionScheme&);
+struct LogArgument<CyberCore::CDMEncryptionScheme> {
+    static String toString(const CyberCore::CDMEncryptionScheme&);
 };
 
 template <>
-struct LogArgument<WebCore::CDMKeyStatus> {
-    static String toString(const WebCore::CDMKeyStatus&);
+struct LogArgument<CyberCore::CDMKeyStatus> {
+    static String toString(const CyberCore::CDMKeyStatus&);
 };
 
 template <>
-struct LogArgument<WebCore::CDMMessageType> {
-    static String toString(const WebCore::CDMMessageType&);
+struct LogArgument<CyberCore::CDMMessageType> {
+    static String toString(const CyberCore::CDMMessageType&);
 };
 
 template <>
-struct LogArgument<WebCore::CDMRequirement> {
-    static String toString(const WebCore::CDMRequirement&);
+struct LogArgument<CyberCore::CDMRequirement> {
+    static String toString(const CyberCore::CDMRequirement&);
 };
 
 template <>
-struct LogArgument<WebCore::CDMSessionType> {
-    static String toString(const WebCore::CDMSessionType&);
+struct LogArgument<CyberCore::CDMSessionType> {
+    static String toString(const CyberCore::CDMSessionType&);
 };
 
 }

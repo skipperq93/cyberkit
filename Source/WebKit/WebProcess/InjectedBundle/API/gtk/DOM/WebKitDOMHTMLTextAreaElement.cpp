@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -18,7 +18,7 @@
  */
 
 #include "config.h"
-#include "WebKitDOMHTMLTextAreaElement.h"
+#include "CyberKitDOMHTMLTextAreaElement.h"
 
 #include <CyberCore/CSSImportRule.h>
 #include "DOMObjectCache.h"
@@ -28,75 +28,75 @@
 #include "GObjectEventListener.h"
 #include <CyberCore/HTMLNames.h>
 #include <CyberCore/JSExecState.h>
-#include "WebKitDOMEventPrivate.h"
-#include "WebKitDOMEventTarget.h"
-#include "WebKitDOMHTMLFormElementPrivate.h"
-#include "WebKitDOMHTMLTextAreaElementPrivate.h"
-#include "WebKitDOMNodeListPrivate.h"
-#include "WebKitDOMNodePrivate.h"
-#include "WebKitDOMPrivate.h"
+#include "CyberKitDOMEventPrivate.h"
+#include "CyberKitDOMEventTarget.h"
+#include "CyberKitDOMHTMLFormElementPrivate.h"
+#include "CyberKitDOMHTMLTextAreaElementPrivate.h"
+#include "CyberKitDOMNodeListPrivate.h"
+#include "CyberKitDOMNodePrivate.h"
+#include "CyberKitDOMPrivate.h"
 #include "ConvertToUTF8String.h"
 #include <wtf/GetPtr.h>
 #include <wtf/RefPtr.h>
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
-namespace WebKit {
+namespace CyberKit {
 
-WebKitDOMHTMLTextAreaElement* kit(WebCore::HTMLTextAreaElement* obj)
+CyberKitDOMHTMLTextAreaElement* kit(CyberCore::HTMLTextAreaElement* obj)
 {
-    return WEBKIT_DOM_HTML_TEXT_AREA_ELEMENT(kit(static_cast<WebCore::Node*>(obj)));
+    return WEBKIT_DOM_HTML_TEXT_AREA_ELEMENT(kit(static_cast<CyberCore::Node*>(obj)));
 }
 
-WebCore::HTMLTextAreaElement* core(WebKitDOMHTMLTextAreaElement* request)
+CyberCore::HTMLTextAreaElement* core(CyberKitDOMHTMLTextAreaElement* request)
 {
-    return request ? static_cast<WebCore::HTMLTextAreaElement*>(WEBKIT_DOM_OBJECT(request)->coreObject) : 0;
+    return request ? static_cast<CyberCore::HTMLTextAreaElement*>(WEBKIT_DOM_OBJECT(request)->coreObject) : 0;
 }
 
-WebKitDOMHTMLTextAreaElement* wrapHTMLTextAreaElement(WebCore::HTMLTextAreaElement* coreObject)
+CyberKitDOMHTMLTextAreaElement* wrapHTMLTextAreaElement(CyberCore::HTMLTextAreaElement* coreObject)
 {
     ASSERT(coreObject);
     return WEBKIT_DOM_HTML_TEXT_AREA_ELEMENT(g_object_new(WEBKIT_DOM_TYPE_HTML_TEXT_AREA_ELEMENT, "core-object", coreObject, nullptr));
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
-static gboolean webkit_dom_html_text_area_element_dispatch_event(WebKitDOMEventTarget* target, WebKitDOMEvent* event, GError** error)
+static gboolean webkit_dom_html_text_area_element_dispatch_event(CyberKitDOMEventTarget* target, CyberKitDOMEvent* event, GError** error)
 {
-    WebCore::Event* coreEvent = WebKit::core(event);
+    CyberCore::Event* coreEvent = CyberKit::core(event);
     if (!coreEvent)
         return false;
-    WebCore::HTMLTextAreaElement* coreTarget = static_cast<WebCore::HTMLTextAreaElement*>(WEBKIT_DOM_OBJECT(target)->coreObject);
+    CyberCore::HTMLTextAreaElement* coreTarget = static_cast<CyberCore::HTMLTextAreaElement*>(WEBKIT_DOM_OBJECT(target)->coreObject);
 
     auto result = coreTarget->dispatchEventForBindings(*coreEvent);
     if (result.hasException()) {
-        auto description = WebCore::DOMException::description(result.releaseException().code());
+        auto description = CyberCore::DOMException::description(result.releaseException().code());
         g_set_error_literal(error, g_quark_from_string("WEBKIT_DOM"), description.legacyCode, description.name);
         return false;
     }
     return result.releaseReturnValue();
 }
 
-static gboolean webkit_dom_html_text_area_element_add_event_listener(WebKitDOMEventTarget* target, const char* eventName, GClosure* handler, gboolean useCapture)
+static gboolean webkit_dom_html_text_area_element_add_event_listener(CyberKitDOMEventTarget* target, const char* eventName, GClosure* handler, gboolean useCapture)
 {
-    WebCore::HTMLTextAreaElement* coreTarget = static_cast<WebCore::HTMLTextAreaElement*>(WEBKIT_DOM_OBJECT(target)->coreObject);
-    return WebKit::GObjectEventListener::addEventListener(G_OBJECT(target), coreTarget, eventName, handler, useCapture);
+    CyberCore::HTMLTextAreaElement* coreTarget = static_cast<CyberCore::HTMLTextAreaElement*>(WEBKIT_DOM_OBJECT(target)->coreObject);
+    return CyberKit::GObjectEventListener::addEventListener(G_OBJECT(target), coreTarget, eventName, handler, useCapture);
 }
 
-static gboolean webkit_dom_html_text_area_element_remove_event_listener(WebKitDOMEventTarget* target, const char* eventName, GClosure* handler, gboolean useCapture)
+static gboolean webkit_dom_html_text_area_element_remove_event_listener(CyberKitDOMEventTarget* target, const char* eventName, GClosure* handler, gboolean useCapture)
 {
-    WebCore::HTMLTextAreaElement* coreTarget = static_cast<WebCore::HTMLTextAreaElement*>(WEBKIT_DOM_OBJECT(target)->coreObject);
-    return WebKit::GObjectEventListener::removeEventListener(G_OBJECT(target), coreTarget, eventName, handler, useCapture);
+    CyberCore::HTMLTextAreaElement* coreTarget = static_cast<CyberCore::HTMLTextAreaElement*>(WEBKIT_DOM_OBJECT(target)->coreObject);
+    return CyberKit::GObjectEventListener::removeEventListener(G_OBJECT(target), coreTarget, eventName, handler, useCapture);
 }
 
-static void webkit_dom_html_text_area_element_dom_event_target_init(WebKitDOMEventTargetIface* iface)
+static void webkit_dom_html_text_area_element_dom_event_target_init(CyberKitDOMEventTargetIface* iface)
 {
     iface->dispatch_event = webkit_dom_html_text_area_element_dispatch_event;
     iface->add_event_listener = webkit_dom_html_text_area_element_add_event_listener;
     iface->remove_event_listener = webkit_dom_html_text_area_element_remove_event_listener;
 }
 
-G_DEFINE_TYPE_WITH_CODE(WebKitDOMHTMLTextAreaElement, webkit_dom_html_text_area_element, WEBKIT_DOM_TYPE_HTML_ELEMENT, G_IMPLEMENT_INTERFACE(WEBKIT_DOM_TYPE_EVENT_TARGET, webkit_dom_html_text_area_element_dom_event_target_init))
+G_DEFINE_TYPE_WITH_CODE(CyberKitDOMHTMLTextAreaElement, webkit_dom_html_text_area_element, WEBKIT_DOM_TYPE_HTML_ELEMENT, G_IMPLEMENT_INTERFACE(WEBKIT_DOM_TYPE_EVENT_TARGET, webkit_dom_html_text_area_element_dom_event_target_init))
 
 enum {
     DOM_HTML_TEXT_AREA_ELEMENT_PROP_0,
@@ -117,7 +117,7 @@ enum {
 
 static void webkit_dom_html_text_area_element_set_property(GObject* object, guint propertyId, const GValue* value, GParamSpec* pspec)
 {
-    WebKitDOMHTMLTextAreaElement* self = WEBKIT_DOM_HTML_TEXT_AREA_ELEMENT(object);
+    CyberKitDOMHTMLTextAreaElement* self = WEBKIT_DOM_HTML_TEXT_AREA_ELEMENT(object);
 
     switch (propertyId) {
     case DOM_HTML_TEXT_AREA_ELEMENT_PROP_AUTOFOCUS:
@@ -158,7 +158,7 @@ static void webkit_dom_html_text_area_element_set_property(GObject* object, guin
 
 static void webkit_dom_html_text_area_element_get_property(GObject* object, guint propertyId, GValue* value, GParamSpec* pspec)
 {
-    WebKitDOMHTMLTextAreaElement* self = WEBKIT_DOM_HTML_TEXT_AREA_ELEMENT(object);
+    CyberKitDOMHTMLTextAreaElement* self = WEBKIT_DOM_HTML_TEXT_AREA_ELEMENT(object);
 
     switch (propertyId) {
     case DOM_HTML_TEXT_AREA_ELEMENT_PROP_AUTOFOCUS:
@@ -206,7 +206,7 @@ static void webkit_dom_html_text_area_element_get_property(GObject* object, guin
     }
 }
 
-static void webkit_dom_html_text_area_element_class_init(WebKitDOMHTMLTextAreaElementClass* requestClass)
+static void webkit_dom_html_text_area_element_class_init(CyberKitDOMHTMLTextAreaElementClass* requestClass)
 {
     GObjectClass* gobjectClass = G_OBJECT_CLASS(requestClass);
     gobjectClass->set_property = webkit_dom_html_text_area_element_set_property;
@@ -238,7 +238,7 @@ static void webkit_dom_html_text_area_element_class_init(WebKitDOMHTMLTextAreaEl
         g_param_spec_object(
             "form",
             "HTMLTextAreaElement:form",
-            "read-only WebKitDOMHTMLFormElement* HTMLTextAreaElement:form",
+            "read-only CyberKitDOMHTMLFormElement* HTMLTextAreaElement:form",
             WEBKIT_DOM_TYPE_HTML_FORM_ELEMENT,
             WEBKIT_PARAM_READABLE));
 
@@ -343,234 +343,234 @@ static void webkit_dom_html_text_area_element_class_init(WebKitDOMHTMLTextAreaEl
             WEBKIT_PARAM_READWRITE));
 }
 
-static void webkit_dom_html_text_area_element_init(WebKitDOMHTMLTextAreaElement* request)
+static void webkit_dom_html_text_area_element_init(CyberKitDOMHTMLTextAreaElement* request)
 {
     UNUSED_PARAM(request);
 }
 
-void webkit_dom_html_text_area_element_select(WebKitDOMHTMLTextAreaElement* self)
+void webkit_dom_html_text_area_element_select(CyberKitDOMHTMLTextAreaElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_TEXT_AREA_ELEMENT(self));
-    WebCore::HTMLTextAreaElement* item = WebKit::core(self);
+    CyberCore::HTMLTextAreaElement* item = CyberKit::core(self);
     item->select();
 }
 
-void webkit_dom_html_text_area_element_set_selection_range(WebKitDOMHTMLTextAreaElement* self, glong start, glong end, const gchar* direction)
+void webkit_dom_html_text_area_element_set_selection_range(CyberKitDOMHTMLTextAreaElement* self, glong start, glong end, const gchar* direction)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_TEXT_AREA_ELEMENT(self));
     g_return_if_fail(direction);
-    WebCore::HTMLTextAreaElement* item = WebKit::core(self);
+    CyberCore::HTMLTextAreaElement* item = CyberKit::core(self);
     WTF::String convertedDirection = WTF::String::fromUTF8(direction);
     item->setSelectionRange(start, end, convertedDirection);
 }
 
-gboolean webkit_dom_html_text_area_element_get_autofocus(WebKitDOMHTMLTextAreaElement* self)
+gboolean webkit_dom_html_text_area_element_get_autofocus(CyberKitDOMHTMLTextAreaElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_TEXT_AREA_ELEMENT(self), FALSE);
-    WebCore::HTMLTextAreaElement* item = WebKit::core(self);
-    gboolean result = item->hasAttributeWithoutSynchronization(WebCore::HTMLNames::autofocusAttr);
+    CyberCore::HTMLTextAreaElement* item = CyberKit::core(self);
+    gboolean result = item->hasAttributeWithoutSynchronization(CyberCore::HTMLNames::autofocusAttr);
     return result;
 }
 
-void webkit_dom_html_text_area_element_set_autofocus(WebKitDOMHTMLTextAreaElement* self, gboolean value)
+void webkit_dom_html_text_area_element_set_autofocus(CyberKitDOMHTMLTextAreaElement* self, gboolean value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_TEXT_AREA_ELEMENT(self));
-    WebCore::HTMLTextAreaElement* item = WebKit::core(self);
-    item->setBooleanAttribute(WebCore::HTMLNames::autofocusAttr, value);
+    CyberCore::HTMLTextAreaElement* item = CyberKit::core(self);
+    item->setBooleanAttribute(CyberCore::HTMLNames::autofocusAttr, value);
 }
 
-gboolean webkit_dom_html_text_area_element_get_disabled(WebKitDOMHTMLTextAreaElement* self)
+gboolean webkit_dom_html_text_area_element_get_disabled(CyberKitDOMHTMLTextAreaElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_TEXT_AREA_ELEMENT(self), FALSE);
-    WebCore::HTMLTextAreaElement* item = WebKit::core(self);
-    gboolean result = item->hasAttributeWithoutSynchronization(WebCore::HTMLNames::disabledAttr);
+    CyberCore::HTMLTextAreaElement* item = CyberKit::core(self);
+    gboolean result = item->hasAttributeWithoutSynchronization(CyberCore::HTMLNames::disabledAttr);
     return result;
 }
 
-void webkit_dom_html_text_area_element_set_disabled(WebKitDOMHTMLTextAreaElement* self, gboolean value)
+void webkit_dom_html_text_area_element_set_disabled(CyberKitDOMHTMLTextAreaElement* self, gboolean value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_TEXT_AREA_ELEMENT(self));
-    WebCore::HTMLTextAreaElement* item = WebKit::core(self);
-    item->setBooleanAttribute(WebCore::HTMLNames::disabledAttr, value);
+    CyberCore::HTMLTextAreaElement* item = CyberKit::core(self);
+    item->setBooleanAttribute(CyberCore::HTMLNames::disabledAttr, value);
 }
 
-WebKitDOMHTMLFormElement* webkit_dom_html_text_area_element_get_form(WebKitDOMHTMLTextAreaElement* self)
+CyberKitDOMHTMLFormElement* webkit_dom_html_text_area_element_get_form(CyberKitDOMHTMLTextAreaElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_TEXT_AREA_ELEMENT(self), 0);
-    WebCore::HTMLTextAreaElement* item = WebKit::core(self);
-    RefPtr<WebCore::HTMLFormElement> gobjectResult = WTF::getPtr(item->form());
-    return WebKit::kit(gobjectResult.get());
+    CyberCore::HTMLTextAreaElement* item = CyberKit::core(self);
+    RefPtr<CyberCore::HTMLFormElement> gobjectResult = WTF::getPtr(item->form());
+    return CyberKit::kit(gobjectResult.get());
 }
 
-gchar* webkit_dom_html_text_area_element_get_name(WebKitDOMHTMLTextAreaElement* self)
+gchar* webkit_dom_html_text_area_element_get_name(CyberKitDOMHTMLTextAreaElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_TEXT_AREA_ELEMENT(self), 0);
-    WebCore::HTMLTextAreaElement* item = WebKit::core(self);
+    CyberCore::HTMLTextAreaElement* item = CyberKit::core(self);
     gchar* result = convertToUTF8String(item->getNameAttribute());
     return result;
 }
 
-void webkit_dom_html_text_area_element_set_name(WebKitDOMHTMLTextAreaElement* self, const gchar* value)
+void webkit_dom_html_text_area_element_set_name(CyberKitDOMHTMLTextAreaElement* self, const gchar* value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_TEXT_AREA_ELEMENT(self));
     g_return_if_fail(value);
-    WebCore::HTMLTextAreaElement* item = WebKit::core(self);
-    item->setAttributeWithoutSynchronization(WebCore::HTMLNames::nameAttr, WTF::AtomString::fromUTF8(value));
+    CyberCore::HTMLTextAreaElement* item = CyberKit::core(self);
+    item->setAttributeWithoutSynchronization(CyberCore::HTMLNames::nameAttr, WTF::AtomString::fromUTF8(value));
 }
 
-gboolean webkit_dom_html_text_area_element_get_read_only(WebKitDOMHTMLTextAreaElement* self)
+gboolean webkit_dom_html_text_area_element_get_read_only(CyberKitDOMHTMLTextAreaElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_TEXT_AREA_ELEMENT(self), FALSE);
-    WebCore::HTMLTextAreaElement* item = WebKit::core(self);
-    gboolean result = item->hasAttributeWithoutSynchronization(WebCore::HTMLNames::readonlyAttr);
+    CyberCore::HTMLTextAreaElement* item = CyberKit::core(self);
+    gboolean result = item->hasAttributeWithoutSynchronization(CyberCore::HTMLNames::readonlyAttr);
     return result;
 }
 
-void webkit_dom_html_text_area_element_set_read_only(WebKitDOMHTMLTextAreaElement* self, gboolean value)
+void webkit_dom_html_text_area_element_set_read_only(CyberKitDOMHTMLTextAreaElement* self, gboolean value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_TEXT_AREA_ELEMENT(self));
-    WebCore::HTMLTextAreaElement* item = WebKit::core(self);
-    item->setBooleanAttribute(WebCore::HTMLNames::readonlyAttr, value);
+    CyberCore::HTMLTextAreaElement* item = CyberKit::core(self);
+    item->setBooleanAttribute(CyberCore::HTMLNames::readonlyAttr, value);
 }
 
-glong webkit_dom_html_text_area_element_get_rows(WebKitDOMHTMLTextAreaElement* self)
+glong webkit_dom_html_text_area_element_get_rows(CyberKitDOMHTMLTextAreaElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_TEXT_AREA_ELEMENT(self), 0);
-    WebCore::HTMLTextAreaElement* item = WebKit::core(self);
+    CyberCore::HTMLTextAreaElement* item = CyberKit::core(self);
     glong result = item->rows();
     return result;
 }
 
-void webkit_dom_html_text_area_element_set_rows(WebKitDOMHTMLTextAreaElement* self, glong value)
+void webkit_dom_html_text_area_element_set_rows(CyberKitDOMHTMLTextAreaElement* self, glong value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_TEXT_AREA_ELEMENT(self));
-    WebCore::HTMLTextAreaElement* item = WebKit::core(self);
+    CyberCore::HTMLTextAreaElement* item = CyberKit::core(self);
     item->setRows(value);
 }
 
-glong webkit_dom_html_text_area_element_get_cols(WebKitDOMHTMLTextAreaElement* self)
+glong webkit_dom_html_text_area_element_get_cols(CyberKitDOMHTMLTextAreaElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_TEXT_AREA_ELEMENT(self), 0);
-    WebCore::HTMLTextAreaElement* item = WebKit::core(self);
+    CyberCore::HTMLTextAreaElement* item = CyberKit::core(self);
     glong result = item->cols();
     return result;
 }
 
-void webkit_dom_html_text_area_element_set_cols(WebKitDOMHTMLTextAreaElement* self, glong value)
+void webkit_dom_html_text_area_element_set_cols(CyberKitDOMHTMLTextAreaElement* self, glong value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_TEXT_AREA_ELEMENT(self));
-    WebCore::HTMLTextAreaElement* item = WebKit::core(self);
+    CyberCore::HTMLTextAreaElement* item = CyberKit::core(self);
     item->setCols(value);
 }
 
-gchar* webkit_dom_html_text_area_element_get_area_type(WebKitDOMHTMLTextAreaElement* self)
+gchar* webkit_dom_html_text_area_element_get_area_type(CyberKitDOMHTMLTextAreaElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_TEXT_AREA_ELEMENT(self), 0);
-    WebCore::HTMLTextAreaElement* item = WebKit::core(self);
+    CyberCore::HTMLTextAreaElement* item = CyberKit::core(self);
     gchar* result = convertToUTF8String(item->type());
     return result;
 }
 
-gchar* webkit_dom_html_text_area_element_get_default_value(WebKitDOMHTMLTextAreaElement* self)
+gchar* webkit_dom_html_text_area_element_get_default_value(CyberKitDOMHTMLTextAreaElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_TEXT_AREA_ELEMENT(self), 0);
-    WebCore::HTMLTextAreaElement* item = WebKit::core(self);
+    CyberCore::HTMLTextAreaElement* item = CyberKit::core(self);
     gchar* result = convertToUTF8String(item->defaultValue());
     return result;
 }
 
-void webkit_dom_html_text_area_element_set_default_value(WebKitDOMHTMLTextAreaElement* self, const gchar* value)
+void webkit_dom_html_text_area_element_set_default_value(CyberKitDOMHTMLTextAreaElement* self, const gchar* value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_TEXT_AREA_ELEMENT(self));
     g_return_if_fail(value);
-    WebCore::HTMLTextAreaElement* item = WebKit::core(self);
+    CyberCore::HTMLTextAreaElement* item = CyberKit::core(self);
     item->setDefaultValue(WTF::String::fromUTF8(value));
 }
 
-gchar* webkit_dom_html_text_area_element_get_value(WebKitDOMHTMLTextAreaElement* self)
+gchar* webkit_dom_html_text_area_element_get_value(CyberKitDOMHTMLTextAreaElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_TEXT_AREA_ELEMENT(self), 0);
-    WebCore::HTMLTextAreaElement* item = WebKit::core(self);
+    CyberCore::HTMLTextAreaElement* item = CyberKit::core(self);
     gchar* result = convertToUTF8String(item->value());
     return result;
 }
 
-void webkit_dom_html_text_area_element_set_value(WebKitDOMHTMLTextAreaElement* self, const gchar* value)
+void webkit_dom_html_text_area_element_set_value(CyberKitDOMHTMLTextAreaElement* self, const gchar* value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_TEXT_AREA_ELEMENT(self));
     g_return_if_fail(value);
-    WebCore::HTMLTextAreaElement* item = WebKit::core(self);
+    CyberCore::HTMLTextAreaElement* item = CyberKit::core(self);
     WTF::String convertedValue = WTF::String::fromUTF8(value);
     item->setValue(convertedValue);
 }
 
-gboolean webkit_dom_html_text_area_element_get_will_validate(WebKitDOMHTMLTextAreaElement* self)
+gboolean webkit_dom_html_text_area_element_get_will_validate(CyberKitDOMHTMLTextAreaElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_TEXT_AREA_ELEMENT(self), FALSE);
-    WebCore::HTMLTextAreaElement* item = WebKit::core(self);
+    CyberCore::HTMLTextAreaElement* item = CyberKit::core(self);
     gboolean result = item->willValidate();
     return result;
 }
 
-glong webkit_dom_html_text_area_element_get_selection_start(WebKitDOMHTMLTextAreaElement* self)
+glong webkit_dom_html_text_area_element_get_selection_start(CyberKitDOMHTMLTextAreaElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_TEXT_AREA_ELEMENT(self), 0);
-    WebCore::HTMLTextAreaElement* item = WebKit::core(self);
+    CyberCore::HTMLTextAreaElement* item = CyberKit::core(self);
     glong result = item->selectionStart();
     return result;
 }
 
-void webkit_dom_html_text_area_element_set_selection_start(WebKitDOMHTMLTextAreaElement* self, glong value)
+void webkit_dom_html_text_area_element_set_selection_start(CyberKitDOMHTMLTextAreaElement* self, glong value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_TEXT_AREA_ELEMENT(self));
-    WebCore::HTMLTextAreaElement* item = WebKit::core(self);
+    CyberCore::HTMLTextAreaElement* item = CyberKit::core(self);
     item->setSelectionStart(value);
 }
 
-glong webkit_dom_html_text_area_element_get_selection_end(WebKitDOMHTMLTextAreaElement* self)
+glong webkit_dom_html_text_area_element_get_selection_end(CyberKitDOMHTMLTextAreaElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_TEXT_AREA_ELEMENT(self), 0);
-    WebCore::HTMLTextAreaElement* item = WebKit::core(self);
+    CyberCore::HTMLTextAreaElement* item = CyberKit::core(self);
     glong result = item->selectionEnd();
     return result;
 }
 
-void webkit_dom_html_text_area_element_set_selection_end(WebKitDOMHTMLTextAreaElement* self, glong value)
+void webkit_dom_html_text_area_element_set_selection_end(CyberKitDOMHTMLTextAreaElement* self, glong value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_TEXT_AREA_ELEMENT(self));
-    WebCore::HTMLTextAreaElement* item = WebKit::core(self);
+    CyberCore::HTMLTextAreaElement* item = CyberKit::core(self);
     item->setSelectionEnd(value);
 }
 
-gboolean webkit_dom_html_text_area_element_is_edited(WebKitDOMHTMLTextAreaElement* area)
+gboolean webkit_dom_html_text_area_element_is_edited(CyberKitDOMHTMLTextAreaElement* area)
 {
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_TEXT_AREA_ELEMENT(area), FALSE);
 
-    return WebKit::core(area)->lastChangeWasUserEdit();
+    return CyberKit::core(area)->lastChangeWasUserEdit();
 }
 G_GNUC_END_IGNORE_DEPRECATIONS;

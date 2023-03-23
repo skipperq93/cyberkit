@@ -32,7 +32,7 @@
 #include <CyberCore/EditorInsertAction.h>
 #include <CyberCore/TextAffinity.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class InjectedBundle;
 class InjectedBundleBackForwardList;
@@ -65,30 +65,30 @@ WK_ADD_API_MAPPING(WKBundleRangeHandleRef, InjectedBundleRangeHandle)
 WK_ADD_API_MAPPING(WKBundleRef, InjectedBundle)
 WK_ADD_API_MAPPING(WKBundleScriptWorldRef, InjectedBundleScriptWorld)
 
-inline WKInsertActionType toAPI(WebCore::EditorInsertAction action)
+inline WKInsertActionType toAPI(CyberCore::EditorInsertAction action)
 {
     switch (action) {
-    case WebCore::EditorInsertAction::Typed:
+    case CyberCore::EditorInsertAction::Typed:
         return kWKInsertActionTyped;
-    case WebCore::EditorInsertAction::Pasted:
+    case CyberCore::EditorInsertAction::Pasted:
         return kWKInsertActionPasted;
-    case WebCore::EditorInsertAction::Dropped:
+    case CyberCore::EditorInsertAction::Dropped:
         return kWKInsertActionDropped;
     }
     ASSERT_NOT_REACHED();
     return kWKInsertActionTyped;
 }
 
-inline WKAffinityType toAPI(WebCore::Affinity affinity)
+inline WKAffinityType toAPI(CyberCore::Affinity affinity)
 {
     switch (affinity) {
-    case WebCore::Affinity::Upstream:
+    case CyberCore::Affinity::Upstream:
         return kWKAffinityUpstream;
-    case WebCore::Affinity::Downstream:
+    case CyberCore::Affinity::Downstream:
         return kWKAffinityDownstream;
     }
     ASSERT_NOT_REACHED();
     return kWKAffinityUpstream;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

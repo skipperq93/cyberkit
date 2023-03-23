@@ -48,7 +48,7 @@
 
 using std::min;
 
-namespace WebCore
+namespace CyberCore
 {
 
 void FontCache::platformInit()

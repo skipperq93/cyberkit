@@ -26,7 +26,7 @@
 #include <wtf/NeverDestroyed.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct SameSizeAsBidiContext : public ThreadSafeRefCounted<SameSizeAsBidiContext> {
     uint32_t bitfields : 16;
@@ -130,4 +130,4 @@ bool operator==(const BidiContext& c1, const BidiContext& c2)
     return c2.parent() && *c1.parent() == *c2.parent();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

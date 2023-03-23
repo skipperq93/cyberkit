@@ -30,13 +30,13 @@
 
 #import "LegacyTileCache.h"
 #import "LegacyTileGrid.h"
-#import "WebCoreThread.h"
+#import "CyberCoreThread.h"
 #import <wtf/SetForScope.h>
 
-using WebCore::LegacyTileCache;
+using CyberCore::LegacyTileCache;
 @implementation LegacyTileHostLayer
 
-- (id)initWithTileGrid:(WebCore::LegacyTileGrid*)tileGrid
+- (id)initWithTileGrid:(CyberCore::LegacyTileGrid*)tileGrid
 {
     self = [super init];
     if (!self)
@@ -59,7 +59,7 @@ using WebCore::LegacyTileCache;
         WebThreadLock();
 
     CGRect dirtyRect = CGContextGetClipBoundingBox(context);
-    auto useExistingTiles = _tileGrid->tileCache().setOverrideVisibleRect(WebCore::FloatRect(dirtyRect));
+    auto useExistingTiles = _tileGrid->tileCache().setOverrideVisibleRect(CyberCore::FloatRect(dirtyRect));
     if (!useExistingTiles)
         _tileGrid->tileCache().doLayoutTiles();
 

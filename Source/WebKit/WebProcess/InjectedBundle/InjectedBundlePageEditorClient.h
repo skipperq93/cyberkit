@@ -35,14 +35,14 @@ template<> struct ClientTraits<WKBundlePageEditorClientBase> {
 };
 }
 
-namespace WebCore {
+namespace CyberCore {
 class CSSStyleDeclaration;
 class DocumentFragment;
 class Node;
 struct SimpleRange;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebFrame;
 class WebPage;
@@ -52,21 +52,21 @@ public:
     explicit InjectedBundlePageEditorClient(const WKBundlePageEditorClientBase&);
 
 private:
-    bool shouldBeginEditing(WebPage&, const WebCore::SimpleRange&) final;
-    bool shouldEndEditing(WebPage&, const WebCore::SimpleRange&) final;
-    bool shouldInsertNode(WebPage&, WebCore::Node&, const std::optional<WebCore::SimpleRange>& rangeToReplace, WebCore::EditorInsertAction) final;
-    bool shouldInsertText(WebPage&, const String&, const std::optional<WebCore::SimpleRange>& rangeToReplace, WebCore::EditorInsertAction) final;
-    bool shouldDeleteRange(WebPage&, const std::optional<WebCore::SimpleRange>&) final;
-    bool shouldChangeSelectedRange(WebPage&, const std::optional<WebCore::SimpleRange>& fromRange, const std::optional<WebCore::SimpleRange>& toRange, WebCore::Affinity, bool stillSelecting) final;
-    bool shouldApplyStyle(WebPage&, const WebCore::StyleProperties&, const std::optional<WebCore::SimpleRange>&) final;
+    bool shouldBeginEditing(WebPage&, const CyberCore::SimpleRange&) final;
+    bool shouldEndEditing(WebPage&, const CyberCore::SimpleRange&) final;
+    bool shouldInsertNode(WebPage&, CyberCore::Node&, const std::optional<CyberCore::SimpleRange>& rangeToReplace, CyberCore::EditorInsertAction) final;
+    bool shouldInsertText(WebPage&, const String&, const std::optional<CyberCore::SimpleRange>& rangeToReplace, CyberCore::EditorInsertAction) final;
+    bool shouldDeleteRange(WebPage&, const std::optional<CyberCore::SimpleRange>&) final;
+    bool shouldChangeSelectedRange(WebPage&, const std::optional<CyberCore::SimpleRange>& fromRange, const std::optional<CyberCore::SimpleRange>& toRange, CyberCore::Affinity, bool stillSelecting) final;
+    bool shouldApplyStyle(WebPage&, const CyberCore::StyleProperties&, const std::optional<CyberCore::SimpleRange>&) final;
     void didBeginEditing(WebPage&, const String& notificationName) final;
     void didEndEditing(WebPage&, const String& notificationName) final;
     void didChange(WebPage&, const String& notificationName) final;
     void didChangeSelection(WebPage&, const String& notificationName) final;
-    void willWriteToPasteboard(WebPage&, const std::optional<WebCore::SimpleRange>&) final;
-    void getPasteboardDataForRange(WebPage&, const std::optional<WebCore::SimpleRange>&, Vector<String>& pasteboardTypes, Vector<RefPtr<WebCore::SharedBuffer>>& pasteboardData) final;
+    void willWriteToPasteboard(WebPage&, const std::optional<CyberCore::SimpleRange>&) final;
+    void getPasteboardDataForRange(WebPage&, const std::optional<CyberCore::SimpleRange>&, Vector<String>& pasteboardTypes, Vector<RefPtr<CyberCore::SharedBuffer>>& pasteboardData) final;
     void didWriteToPasteboard(WebPage&) final;
-    bool performTwoStepDrop(WebPage&, WebCore::DocumentFragment&, const WebCore::SimpleRange& destination, bool isMove) final;
+    bool performTwoStepDrop(WebPage&, CyberCore::DocumentFragment&, const CyberCore::SimpleRange& destination, bool isMove) final;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

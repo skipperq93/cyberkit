@@ -53,7 +53,7 @@ endif ()
 
 # Public options specific to the GTK port. Do not add any options here unless
 # there is a strong reason we should support changing the value of the option,
-# and the option is not relevant to other WebKit ports.
+# and the option is not relevant to other CyberKit ports.
 WEBKIT_OPTION_DEFINE(ENABLE_DOCUMENTATION "Whether to generate documentation." PUBLIC ON)
 WEBKIT_OPTION_DEFINE(ENABLE_GLES2 "Whether to enable OpenGL ES 2.0." PUBLIC ${ENABLE_GLES2_DEFAULT})
 WEBKIT_OPTION_DEFINE(ENABLE_INTROSPECTION "Whether to enable GObject introspection." PUBLIC ON)
@@ -83,7 +83,7 @@ WEBKIT_OPTION_DEPEND(USE_GSTREAMER_GL USE_OPENGL_OR_ES)
 WEBKIT_OPTION_CONFLICT(USE_GTK4 USE_SOUP2)
 
 # Private options specific to the GTK port. Changing these options is
-# completely unsupported. They are intended for use only by WebKit developers.
+# completely unsupported. They are intended for use only by CyberKit developers.
 SET_AND_EXPOSE_TO_BUILD(ENABLE_DEVELOPER_MODE ${DEVELOPER_MODE})
 if (DEVELOPER_MODE)
     WEBKIT_OPTION_DEFAULT_PORT_VALUE(ENABLE_API_TESTS PRIVATE ON)
@@ -103,7 +103,7 @@ else ()
     WEBKIT_OPTION_DEFAULT_PORT_VALUE(ENABLE_RESOURCE_USAGE PRIVATE OFF)
 endif ()
 
-# Public options shared with other WebKit ports. Do not add any options here
+# Public options shared with other CyberKit ports. Do not add any options here
 # without approval from a GTK reviewer. There must be strong reason to support
 # changing the value of the option.
 WEBKIT_OPTION_DEFAULT_PORT_VALUE(ENABLE_DRAG_SUPPORT PUBLIC ON)
@@ -117,8 +117,8 @@ WEBKIT_OPTION_DEFAULT_PORT_VALUE(ENABLE_WEBDRIVER PUBLIC ON)
 
 WEBKIT_OPTION_DEFAULT_PORT_VALUE(USE_AVIF PUBLIC ON)
 
-# Private options shared with other WebKit ports. Add options here when
-# we need a value different from the default defined in WebKitFeatures.cmake.
+# Private options shared with other CyberKit ports. Add options here when
+# we need a value different from the default defined in CyberKitFeatures.cmake.
 # Changing these options is completely unsupported.
 WEBKIT_OPTION_DEFAULT_PORT_VALUE(ENABLE_ASYNC_SCROLLING PRIVATE ON)
 WEBKIT_OPTION_DEFAULT_PORT_VALUE(ENABLE_AUTOCAPITALIZE PRIVATE ON)
@@ -249,7 +249,7 @@ set(CMAKE_C_VISIBILITY_PRESET hidden)
 set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 set(bmalloc_LIBRARY_TYPE OBJECT)
 set(WTF_LIBRARY_TYPE OBJECT)
-set(WebCore_LIBRARY_TYPE OBJECT)
+set(CyberCore_LIBRARY_TYPE OBJECT)
 
 # These are shared variables, but we special case their definition so that we can use the
 # CMAKE_INSTALL_* variables that are populated by the GNUInstallDirs macro.
@@ -268,7 +268,7 @@ SET_AND_EXPOSE_TO_BUILD(WTF_PLATFORM_WAYLAND ${ENABLE_WAYLAND_TARGET})
 SET_AND_EXPOSE_TO_BUILD(ENABLE_PLUGIN_PROCESS FALSE)
 
 add_definitions(-DBUILDING_GTK__=1)
-add_definitions(-DGETTEXT_PACKAGE="WebKitGTK-${WEBKITGTK_API_VERSION}")
+add_definitions(-DGETTEXT_PACKAGE="CyberKitGTK-${WEBKITGTK_API_VERSION}")
 add_definitions(-DJSC_GLIB_API_ENABLED)
 
 if (USER_AGENT_BRANDING)
@@ -526,19 +526,19 @@ set(DERIVED_SOURCES_WPETOOLINGBACKENDS_DIR "${CMAKE_BINARY_DIR}/DerivedSources/W
 set(FORWARDING_HEADERS_DIR ${DERIVED_SOURCES_DIR}/ForwardingHeaders)
 
 # FIXME: Remove in https://bugs.webkit.org/show_bug.cgi?id=210891
-set(WebKit_FRAMEWORK_HEADERS_DIR ${FORWARDING_HEADERS_DIR})
-set(WebKit_PRIVATE_FRAMEWORK_HEADERS_DIR ${FORWARDING_HEADERS_DIR})
-set(WebKit_DERIVED_SOURCES_DIR "${CMAKE_BINARY_DIR}/DerivedSources/WebKit")
+set(CyberKit_FRAMEWORK_HEADERS_DIR ${FORWARDING_HEADERS_DIR})
+set(CyberKit_PRIVATE_FRAMEWORK_HEADERS_DIR ${FORWARDING_HEADERS_DIR})
+set(CyberKit_DERIVED_SOURCES_DIR "${CMAKE_BINARY_DIR}/DerivedSources/CyberKit")
 
 set(JavaScriptCoreGLib_FRAMEWORK_HEADERS_DIR "${CMAKE_BINARY_DIR}/JavaScriptCoreGLib/Headers")
 set(JavaScriptCoreGLib_DERIVED_SOURCES_DIR "${CMAKE_BINARY_DIR}/JavaScriptCoreGLib/DerivedSources")
 
-set(WebKitGTK_FRAMEWORK_HEADERS_DIR "${CMAKE_BINARY_DIR}/WebKitGTK/Headers")
-set(WebKitGTK_DERIVED_SOURCES_DIR "${CMAKE_BINARY_DIR}/WebKitGTK/DerivedSources")
+set(CyberKitGTK_FRAMEWORK_HEADERS_DIR "${CMAKE_BINARY_DIR}/CyberKitGTK/Headers")
+set(CyberKitGTK_DERIVED_SOURCES_DIR "${CMAKE_BINARY_DIR}/CyberKitGTK/DerivedSources")
 
 set(JavaScriptCore_PKGCONFIG_FILE ${CMAKE_BINARY_DIR}/Source/JavaScriptCore/javascriptcoregtk-${WEBKITGTK_API_VERSION}.pc)
-set(WebKitGTK_PKGCONFIG_FILE ${CMAKE_BINARY_DIR}/Source/WebKit/webkit${WEBKITGTK_API_INFIX}gtk-${WEBKITGTK_API_VERSION}.pc)
-set(WebKitGTKWebExtension_PKGCONFIG_FILE ${CMAKE_BINARY_DIR}/Source/WebKit/webkit${WEBKITGTK_API_INFIX}gtk-web-extension-${WEBKITGTK_API_VERSION}.pc)
+set(CyberKitGTK_PKGCONFIG_FILE ${CMAKE_BINARY_DIR}/Source/CyberKit/webkit${WEBKITGTK_API_INFIX}gtk-${WEBKITGTK_API_VERSION}.pc)
+set(CyberKitGTKWebExtension_PKGCONFIG_FILE ${CMAKE_BINARY_DIR}/Source/CyberKit/webkit${WEBKITGTK_API_INFIX}gtk-web-extension-${WEBKITGTK_API_VERSION}.pc)
 
 set(JavaScriptCore_LIBRARY_TYPE SHARED)
 set(SHOULD_INSTALL_JS_SHELL ON)

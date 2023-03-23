@@ -31,7 +31,7 @@
 #include "RenderText.h"
 #include "RenderTheme.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static StyledMarkedText resolveStyleForMarkedText(const MarkedText& markedText, const StyledMarkedText::Style& baseStyle, const RenderText& renderer, const RenderStyle& lineStyle, const PaintInfo& paintInfo)
 {

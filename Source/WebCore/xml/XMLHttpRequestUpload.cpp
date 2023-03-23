@@ -27,13 +27,13 @@
 #include "XMLHttpRequestUpload.h"
 
 #include "EventNames.h"
-#include "WebCoreOpaqueRoot.h"
+#include "CyberCoreOpaqueRoot.h"
 #include "XMLHttpRequestProgressEvent.h"
 #include <wtf/Assertions.h>
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/text/AtomString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(XMLHttpRequestUpload);
 
@@ -66,9 +66,9 @@ void XMLHttpRequestUpload::dispatchProgressEvent(const AtomString& type, unsigne
     dispatchEvent(XMLHttpRequestProgressEvent::create(type, !!total, loaded, total));
 }
 
-WebCoreOpaqueRoot root(XMLHttpRequestUpload* upload)
+CyberCoreOpaqueRoot root(XMLHttpRequestUpload* upload)
 {
-    return WebCoreOpaqueRoot { upload };
+    return CyberCoreOpaqueRoot { upload };
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -19,7 +19,7 @@
  */
 
 #include <config.h>
-#include "WebKitWebProcessEnumTypes.h"
+#include "CyberKitWebProcessEnumTypes.h"
 
 #include <webkit/webkit-web-extension.h>
 extern "C" {

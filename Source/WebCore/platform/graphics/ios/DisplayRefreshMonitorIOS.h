@@ -32,7 +32,7 @@
 
 OBJC_CLASS WebDisplayLinkHandler;
 
-namespace WebCore {
+namespace CyberCore {
 
 class DisplayRefreshMonitorIOS : public DisplayRefreshMonitor {
 public:
@@ -58,6 +58,6 @@ private:
     bool m_displayLinkIsActive { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(IOS_FAMILY)

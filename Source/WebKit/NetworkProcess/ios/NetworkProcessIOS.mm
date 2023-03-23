@@ -36,7 +36,7 @@
 #import <UIKit/UIKit.h>
 #import <CyberCore/CertificateInfo.h>
 #import <CyberCore/NotImplemented.h>
-#import <CyberCore/WebCoreThreadSystemInterface.h>
+#import <CyberCore/CyberCoreThreadSystemInterface.h>
 #import <pal/spi/cf/CFNetworkSPI.h>
 #import <wtf/cocoa/Entitlements.h>
 
@@ -46,7 +46,7 @@ namespace WebKit {
 
 void NetworkProcess::initializeProcess(const AuxiliaryProcessInitializationParameters&)
 {
-    InitWebCoreThreadSystemInterface();
+    InitCyberCoreThreadSystemInterface();
 }
 
 void NetworkProcess::initializeProcessName(const AuxiliaryProcessInitializationParameters&)

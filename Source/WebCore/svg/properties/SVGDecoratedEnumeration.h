@@ -27,7 +27,7 @@
 
 #include "SVGDecoratedPrimitive.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename DecorationType, typename EnumType>
 class SVGDecoratedEnumeration : public SVGDecoratedPrimitive<DecorationType, EnumType> {

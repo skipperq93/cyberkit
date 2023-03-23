@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -21,21 +21,21 @@
 #error "Only <webkitdom/webkitdom.h> can be included directly."
 #endif
 
-#ifndef WebKitDOMEvent_h
-#define WebKitDOMEvent_h
+#ifndef CyberKitDOMEvent_h
+#define CyberKitDOMEvent_h
 
 #include <glib-object.h>
-#include <webkitdom/WebKitDOMObject.h>
+#include <webkitdom/CyberKitDOMObject.h>
 #include <webkitdom/webkitdomdefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_DOM_TYPE_EVENT            (webkit_dom_event_get_type())
-#define WEBKIT_DOM_EVENT(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_EVENT, WebKitDOMEvent))
-#define WEBKIT_DOM_EVENT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_EVENT, WebKitDOMEventClass)
+#define WEBKIT_DOM_EVENT(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_EVENT, CyberKitDOMEvent))
+#define WEBKIT_DOM_EVENT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_EVENT, CyberKitDOMEventClass)
 #define WEBKIT_DOM_IS_EVENT(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_DOM_TYPE_EVENT))
 #define WEBKIT_DOM_IS_EVENT_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_DOM_TYPE_EVENT))
-#define WEBKIT_DOM_EVENT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_EVENT, WebKitDOMEventClass))
+#define WEBKIT_DOM_EVENT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_EVENT, CyberKitDOMEventClass))
 
 #ifndef WEBKIT_DISABLE_DEPRECATED
 
@@ -181,12 +181,12 @@ G_BEGIN_DECLS
 
 #endif /* WEBKIT_DISABLE_DEPRECATED */
 
-struct _WebKitDOMEvent {
-    WebKitDOMObject parent_instance;
+struct _CyberKitDOMEvent {
+    CyberKitDOMObject parent_instance;
 };
 
-struct _WebKitDOMEventClass {
-    WebKitDOMObjectClass parent_class;
+struct _CyberKitDOMEventClass {
+    CyberKitDOMObjectClass parent_class;
 };
 
 WEBKIT_DEPRECATED GType
@@ -194,27 +194,27 @@ webkit_dom_event_get_type(void);
 
 /**
  * webkit_dom_event_stop_propagation:
- * @self: A #WebKitDOMEvent
+ * @self: A #CyberKitDOMEvent
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_event_stop_propagation(WebKitDOMEvent* self);
+webkit_dom_event_stop_propagation(CyberKitDOMEvent* self);
 
 /**
  * webkit_dom_event_prevent_default:
- * @self: A #WebKitDOMEvent
+ * @self: A #CyberKitDOMEvent
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_event_prevent_default(WebKitDOMEvent* self);
+webkit_dom_event_prevent_default(CyberKitDOMEvent* self);
 
 /**
  * webkit_dom_event_init_event:
- * @self: A #WebKitDOMEvent
+ * @self: A #CyberKitDOMEvent
  * @eventTypeArg: A #gchar
  * @canBubbleArg: A #gboolean
  * @cancelableArg: A #gboolean
@@ -223,140 +223,140 @@ webkit_dom_event_prevent_default(WebKitDOMEvent* self);
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_event_init_event(WebKitDOMEvent* self, const gchar* eventTypeArg, gboolean canBubbleArg, gboolean cancelableArg);
+webkit_dom_event_init_event(CyberKitDOMEvent* self, const gchar* eventTypeArg, gboolean canBubbleArg, gboolean cancelableArg);
 
 /**
  * webkit_dom_event_get_event_type:
- * @self: A #WebKitDOMEvent
+ * @self: A #CyberKitDOMEvent
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_event_get_event_type(WebKitDOMEvent* self);
+webkit_dom_event_get_event_type(CyberKitDOMEvent* self);
 
 /**
  * webkit_dom_event_get_target:
- * @self: A #WebKitDOMEvent
+ * @self: A #CyberKitDOMEvent
  *
- * Returns: (transfer full): A #WebKitDOMEventTarget
+ * Returns: (transfer full): A #CyberKitDOMEventTarget
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMEventTarget*
-webkit_dom_event_get_target(WebKitDOMEvent* self);
+WEBKIT_DEPRECATED CyberKitDOMEventTarget*
+webkit_dom_event_get_target(CyberKitDOMEvent* self);
 
 /**
  * webkit_dom_event_get_current_target:
- * @self: A #WebKitDOMEvent
+ * @self: A #CyberKitDOMEvent
  *
- * Returns: (transfer full): A #WebKitDOMEventTarget
+ * Returns: (transfer full): A #CyberKitDOMEventTarget
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMEventTarget*
-webkit_dom_event_get_current_target(WebKitDOMEvent* self);
+WEBKIT_DEPRECATED CyberKitDOMEventTarget*
+webkit_dom_event_get_current_target(CyberKitDOMEvent* self);
 
 /**
  * webkit_dom_event_get_event_phase:
- * @self: A #WebKitDOMEvent
+ * @self: A #CyberKitDOMEvent
  *
  * Returns: A #gushort
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gushort
-webkit_dom_event_get_event_phase(WebKitDOMEvent* self);
+webkit_dom_event_get_event_phase(CyberKitDOMEvent* self);
 
 /**
  * webkit_dom_event_get_bubbles:
- * @self: A #WebKitDOMEvent
+ * @self: A #CyberKitDOMEvent
  *
  * Returns: A #gboolean
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
-webkit_dom_event_get_bubbles(WebKitDOMEvent* self);
+webkit_dom_event_get_bubbles(CyberKitDOMEvent* self);
 
 /**
  * webkit_dom_event_get_cancelable:
- * @self: A #WebKitDOMEvent
+ * @self: A #CyberKitDOMEvent
  *
  * Returns: A #gboolean
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
-webkit_dom_event_get_cancelable(WebKitDOMEvent* self);
+webkit_dom_event_get_cancelable(CyberKitDOMEvent* self);
 
 /**
  * webkit_dom_event_get_time_stamp:
- * @self: A #WebKitDOMEvent
+ * @self: A #CyberKitDOMEvent
  *
  * Returns: A #guint32
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED guint32
-webkit_dom_event_get_time_stamp(WebKitDOMEvent* self);
+webkit_dom_event_get_time_stamp(CyberKitDOMEvent* self);
 
 /**
  * webkit_dom_event_get_src_element:
- * @self: A #WebKitDOMEvent
+ * @self: A #CyberKitDOMEvent
  *
- * Returns: (transfer full): A #WebKitDOMEventTarget
+ * Returns: (transfer full): A #CyberKitDOMEventTarget
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMEventTarget*
-webkit_dom_event_get_src_element(WebKitDOMEvent* self);
+WEBKIT_DEPRECATED CyberKitDOMEventTarget*
+webkit_dom_event_get_src_element(CyberKitDOMEvent* self);
 
 /**
  * webkit_dom_event_get_return_value:
- * @self: A #WebKitDOMEvent
+ * @self: A #CyberKitDOMEvent
  *
  * Returns: A #gboolean
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
-webkit_dom_event_get_return_value(WebKitDOMEvent* self);
+webkit_dom_event_get_return_value(CyberKitDOMEvent* self);
 
 /**
  * webkit_dom_event_set_return_value:
- * @self: A #WebKitDOMEvent
+ * @self: A #CyberKitDOMEvent
  * @value: A #gboolean
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_event_set_return_value(WebKitDOMEvent* self, gboolean value);
+webkit_dom_event_set_return_value(CyberKitDOMEvent* self, gboolean value);
 
 /**
  * webkit_dom_event_get_cancel_bubble:
- * @self: A #WebKitDOMEvent
+ * @self: A #CyberKitDOMEvent
  *
  * Returns: A #gboolean
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
-webkit_dom_event_get_cancel_bubble(WebKitDOMEvent* self);
+webkit_dom_event_get_cancel_bubble(CyberKitDOMEvent* self);
 
 /**
  * webkit_dom_event_set_cancel_bubble:
- * @self: A #WebKitDOMEvent
+ * @self: A #CyberKitDOMEvent
  * @value: A #gboolean
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_event_set_cancel_bubble(WebKitDOMEvent* self, gboolean value);
+webkit_dom_event_set_cancel_bubble(CyberKitDOMEvent* self, gboolean value);
 
 G_END_DECLS
 
-#endif /* WebKitDOMEvent_h */
+#endif /* CyberKitDOMEvent_h */

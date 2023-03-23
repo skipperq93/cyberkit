@@ -26,7 +26,7 @@
 #include "CachedResourceHandle.h"
 #include "StyleImage.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSValue;
 class CSSImageValue;
@@ -82,6 +82,6 @@ private:
     mutable CachedResourceHandle<CachedImage> m_cachedImage;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_STYLE_IMAGE(StyleCachedImage, isCachedImage)

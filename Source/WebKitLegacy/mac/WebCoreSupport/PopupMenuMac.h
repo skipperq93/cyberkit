@@ -25,16 +25,16 @@
 
 @class NSPopUpButtonCell;
 
-namespace WebCore {
+namespace CyberCore {
 class PopupMenuClient;
 }
 
-class PopupMenuMac : public WebCore::PopupMenu {
+class PopupMenuMac : public CyberCore::PopupMenu {
 public:
-    PopupMenuMac(WebCore::PopupMenuClient*);
+    PopupMenuMac(CyberCore::PopupMenuClient*);
     ~PopupMenuMac();
 
-    void show(const WebCore::IntRect&, WebCore::FrameView*, int selectedIndex) override;
+    void show(const CyberCore::IntRect&, CyberCore::FrameView*, int selectedIndex) override;
     void hide() override;
     void updateFromElement() override;
     void disconnectClient() override;
@@ -43,7 +43,7 @@ private:
     void clear();
     void populate();
 
-    WebCore::PopupMenuClient* m_client;
+    CyberCore::PopupMenuClient* m_client;
     RetainPtr<NSPopUpButtonCell> m_popup;
 };
 

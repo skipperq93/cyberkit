@@ -30,7 +30,7 @@
 #include "RenderStyleConstants.h"
 #include <wtf/OptionSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class StyleColorScheme {
 public:
@@ -64,6 +64,6 @@ private:
     bool m_allowsTransformations { true };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(DARK_MODE_CSS)

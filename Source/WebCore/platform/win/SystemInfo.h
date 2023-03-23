@@ -28,7 +28,7 @@
 
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // NOTE: Keep these in order so callers can do things like
 // "if (windowsVersion() >= WindowsVista) ...". It's OK to change or add values,
@@ -65,6 +65,6 @@ WindowsVersion windowsVersion(int* major = 0, int* minor = 0);
 
 WEBCORE_EXPORT String windowsVersionForUAString();
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // SystemInfo_h

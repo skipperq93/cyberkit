@@ -40,8 +40,8 @@
 #include <CyberCore/InspectorOverlay.h>
 #endif
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 class RepaintIndicatorLayerClient final : public GraphicsLayerClient {
     WTF_MAKE_FAST_ALLOCATED;
@@ -235,7 +235,7 @@ void WebInspectorClient::timelineRecordingChanged(bool active)
         m_page->inspector()->timelineRecordingChanged(active);
 }
 
-void WebInspectorClient::setDeveloperPreferenceOverride(WebCore::InspectorClient::DeveloperPreference developerPreference, std::optional<bool> overrideValue)
+void WebInspectorClient::setDeveloperPreferenceOverride(CyberCore::InspectorClient::DeveloperPreference developerPreference, std::optional<bool> overrideValue)
 {
     if (m_page->inspector())
         m_page->inspector()->setDeveloperPreferenceOverride(developerPreference, overrideValue);
@@ -269,7 +269,7 @@ void WebInspectorClient::didMoveToPage(PageOverlay&, Page*)
 {
 }
 
-void WebInspectorClient::drawRect(PageOverlay&, WebCore::GraphicsContext& context, const WebCore::IntRect& /*dirtyRect*/)
+void WebInspectorClient::drawRect(PageOverlay&, CyberCore::GraphicsContext& context, const CyberCore::IntRect& /*dirtyRect*/)
 {
     m_page->corePage()->inspectorController().drawHighlight(context);
 }
@@ -279,4 +279,4 @@ bool WebInspectorClient::mouseEvent(PageOverlay&, const PlatformMouseEvent&)
     return false;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

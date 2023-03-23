@@ -42,21 +42,21 @@ namespace WebKit {
 
 namespace {
 
-class DisplayBufferDisplayDelegate final : public WebCore::GraphicsLayerContentsDisplayDelegate {
+class DisplayBufferDisplayDelegate final : public CyberCore::GraphicsLayerContentsDisplayDelegate {
 public:
     static Ref<DisplayBufferDisplayDelegate> create(bool isOpaque, float contentsScale)
     {
         return adoptRef(*new DisplayBufferDisplayDelegate(isOpaque, contentsScale));
     }
 
-    // WebCore::GraphicsLayerContentsDisplayDelegate overrides.
-    void prepareToDelegateDisplay(WebCore::PlatformCALayer& layer) final
+    // CyberCore::GraphicsLayerContentsDisplayDelegate overrides.
+    void prepareToDelegateDisplay(CyberCore::PlatformCALayer& layer) final
     {
         layer.setOpaque(m_isOpaque);
         layer.setContentsScale(m_contentsScale);
     }
 
-    void display(WebCore::PlatformCALayer& layer) final
+    void display(CyberCore::PlatformCALayer& layer) final
     {
         if (m_displayBuffer)
             layer.setContents(m_displayBuffer);
@@ -64,9 +64,9 @@ public:
             layer.clearContents();
     }
 
-    WebCore::GraphicsLayer::CompositingCoordinatesOrientation orientation() const final
+    CyberCore::GraphicsLayer::CompositingCoordinatesOrientation orientation() const final
     {
-        return WebCore::GraphicsLayer::CompositingCoordinatesOrientation::BottomUp;
+        return CyberCore::GraphicsLayer::CompositingCoordinatesOrientation::BottomUp;
     }
 
     void setDisplayBuffer(const MachSendRight& displayBuffer)
@@ -95,13 +95,13 @@ private:
 class RemoteGraphicsContextGLProxyCocoa final : public RemoteGraphicsContextGLProxy {
 public:
     // RemoteGraphicsContextGLProxy overrides.
-    RefPtr<WebCore::GraphicsLayerContentsDisplayDelegate> layerContentsDisplayDelegate() final { return m_layerContentsDisplayDelegate.ptr(); }
+    RefPtr<CyberCore::GraphicsLayerContentsDisplayDelegate> layerContentsDisplayDelegate() final { return m_layerContentsDisplayDelegate.ptr(); }
     void prepareForDisplay() final;
 #if ENABLE(VIDEO) && USE(AVFOUNDATION)
-    WebCore::GraphicsContextGLCV* asCV() final { return nullptr; }
+    CyberCore::GraphicsContextGLCV* asCV() final { return nullptr; }
 #endif
 private:
-    RemoteGraphicsContextGLProxyCocoa(IPC::Connection& connection,  Ref<IPC::StreamClientConnection> streamConnection, const WebCore::GraphicsContextGLAttributes& attributes, Ref<RemoteVideoFrameObjectHeapProxy>&& videoFrameObjectHeapProxy)
+    RemoteGraphicsContextGLProxyCocoa(IPC::Connection& connection,  Ref<IPC::StreamClientConnection> streamConnection, const CyberCore::GraphicsContextGLAttributes& attributes, Ref<RemoteVideoFrameObjectHeapProxy>&& videoFrameObjectHeapProxy)
         : RemoteGraphicsContextGLProxy(connection, WTFMove(streamConnection), attributes, WTFMove(videoFrameObjectHeapProxy))
         , m_layerContentsDisplayDelegate(DisplayBufferDisplayDelegate::create(!attributes.alpha, attributes.devicePixelRatio))
     {
@@ -131,7 +131,7 @@ void RemoteGraphicsContextGLProxyCocoa::prepareForDisplay()
 
 }
 
-Ref<RemoteGraphicsContextGLProxy> RemoteGraphicsContextGLProxy::platformCreate(IPC::Connection& connection,  Ref<IPC::StreamClientConnection> streamConnection, const WebCore::GraphicsContextGLAttributes& attributes, Ref<RemoteVideoFrameObjectHeapProxy>&& videoFrameObjectHeapProxy)
+Ref<RemoteGraphicsContextGLProxy> RemoteGraphicsContextGLProxy::platformCreate(IPC::Connection& connection,  Ref<IPC::StreamClientConnection> streamConnection, const CyberCore::GraphicsContextGLAttributes& attributes, Ref<RemoteVideoFrameObjectHeapProxy>&& videoFrameObjectHeapProxy)
 {
     return adoptRef(*new RemoteGraphicsContextGLProxyCocoa(connection, WTFMove(streamConnection), attributes, WTFMove(videoFrameObjectHeapProxy)));
 }

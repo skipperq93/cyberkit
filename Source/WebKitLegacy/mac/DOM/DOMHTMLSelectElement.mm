@@ -48,156 +48,156 @@
 #import <wtf/GetPtr.h>
 #import <wtf/URL.h>
 
-#define IMPL static_cast<WebCore::HTMLSelectElement*>(reinterpret_cast<WebCore::Node*>(_internal))
+#define IMPL static_cast<CyberCore::HTMLSelectElement*>(reinterpret_cast<CyberCore::Node*>(_internal))
 
 @implementation DOMHTMLSelectElement
 
 - (BOOL)autofocus
 {
-    WebCore::JSMainThreadNullState state;
-    return IMPL->hasAttributeWithoutSynchronization(WebCore::HTMLNames::autofocusAttr);
+    CyberCore::JSMainThreadNullState state;
+    return IMPL->hasAttributeWithoutSynchronization(CyberCore::HTMLNames::autofocusAttr);
 }
 
 - (void)setAutofocus:(BOOL)newAutofocus
 {
-    WebCore::JSMainThreadNullState state;
-    IMPL->setBooleanAttribute(WebCore::HTMLNames::autofocusAttr, newAutofocus);
+    CyberCore::JSMainThreadNullState state;
+    IMPL->setBooleanAttribute(CyberCore::HTMLNames::autofocusAttr, newAutofocus);
 }
 
 - (BOOL)disabled
 {
-    WebCore::JSMainThreadNullState state;
-    return IMPL->hasAttributeWithoutSynchronization(WebCore::HTMLNames::disabledAttr);
+    CyberCore::JSMainThreadNullState state;
+    return IMPL->hasAttributeWithoutSynchronization(CyberCore::HTMLNames::disabledAttr);
 }
 
 - (void)setDisabled:(BOOL)newDisabled
 {
-    WebCore::JSMainThreadNullState state;
-    IMPL->setBooleanAttribute(WebCore::HTMLNames::disabledAttr, newDisabled);
+    CyberCore::JSMainThreadNullState state;
+    IMPL->setBooleanAttribute(CyberCore::HTMLNames::disabledAttr, newDisabled);
 }
 
 - (DOMHTMLFormElement *)form
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->form()));
 }
 
 - (BOOL)multiple
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->multiple();
 }
 
 - (void)setMultiple:(BOOL)newMultiple
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->setMultiple(newMultiple);
 }
 
 - (NSString *)name
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->getNameAttribute();
 }
 
 - (void)setName:(NSString *)newName
 {
-    WebCore::JSMainThreadNullState state;
-    IMPL->setAttributeWithoutSynchronization(WebCore::HTMLNames::nameAttr, newName);
+    CyberCore::JSMainThreadNullState state;
+    IMPL->setAttributeWithoutSynchronization(CyberCore::HTMLNames::nameAttr, newName);
 }
 
 - (int)size
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->size();
 }
 
 - (void)setSize:(int)newSize
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->setSize(newSize);
 }
 
 - (NSString *)type
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->type();
 }
 
 - (DOMHTMLOptionsCollection *)options
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->options()));
 }
 
 - (int)length
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->length();
 }
 
 - (int)selectedIndex
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->selectedIndex();
 }
 
 - (void)setSelectedIndex:(int)newSelectedIndex
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->setSelectedIndex(newSelectedIndex);
 }
 
 - (NSString *)value
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->value();
 }
 
 - (void)setValue:(NSString *)newValue
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->setValue(newValue);
 }
 
 - (BOOL)willValidate
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->willValidate();
 }
 
 - (DOMNode *)item:(unsigned)index
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->item(index)));
 }
 
 - (DOMNode *)namedItem:(NSString *)inName
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->namedItem(inName)));
 }
 
 - (void)add:(DOMHTMLElement *)element before:(DOMHTMLElement *)before
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     if (!element)
         raiseTypeErrorException();
 
     auto& coreElement = *core(element);
-    std::variant<RefPtr<WebCore::HTMLOptionElement>, RefPtr<WebCore::HTMLOptGroupElement>> variantElement;
-    if (is<WebCore::HTMLOptionElement>(coreElement))
-        variantElement = &downcast<WebCore::HTMLOptionElement>(coreElement);
-    else if (is<WebCore::HTMLOptGroupElement>(coreElement))
-        variantElement = &downcast<WebCore::HTMLOptGroupElement>(coreElement);
+    std::variant<RefPtr<CyberCore::HTMLOptionElement>, RefPtr<CyberCore::HTMLOptGroupElement>> variantElement;
+    if (is<CyberCore::HTMLOptionElement>(coreElement))
+        variantElement = &downcast<CyberCore::HTMLOptionElement>(coreElement);
+    else if (is<CyberCore::HTMLOptGroupElement>(coreElement))
+        variantElement = &downcast<CyberCore::HTMLOptGroupElement>(coreElement);
     else
         raiseTypeErrorException();
-    raiseOnDOMError(IMPL->add(WTFMove(variantElement), WebCore::HTMLSelectElement::HTMLElementOrInt(core(before))));
+    raiseOnDOMError(IMPL->add(WTFMove(variantElement), CyberCore::HTMLSelectElement::HTMLElementOrInt(core(before))));
 }
 
 - (void)remove:(int)index
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->remove(index);
 }
 
@@ -212,9 +212,9 @@
 
 @end
 
-WebCore::HTMLSelectElement* core(DOMHTMLSelectElement *wrapper)
+CyberCore::HTMLSelectElement* core(DOMHTMLSelectElement *wrapper)
 {
-    return wrapper ? reinterpret_cast<WebCore::HTMLSelectElement*>(wrapper->_internal) : 0;
+    return wrapper ? reinterpret_cast<CyberCore::HTMLSelectElement*>(wrapper->_internal) : 0;
 }
 
 #undef IMPL

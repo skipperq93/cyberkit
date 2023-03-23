@@ -36,20 +36,20 @@ class UserStyleSheet final : public ObjectImpl<Object::Type::UserStyleSheet>, pu
 public:
     static WTF::URL generateUniqueURL();
 
-    static Ref<UserStyleSheet> create(WebCore::UserStyleSheet userStyleSheet, API::ContentWorld& world)
+    static Ref<UserStyleSheet> create(CyberCore::UserStyleSheet userStyleSheet, API::ContentWorld& world)
     {
         return adoptRef(*new UserStyleSheet(WTFMove(userStyleSheet), world));
     }
 
-    UserStyleSheet(WebCore::UserStyleSheet, API::ContentWorld&);
+    UserStyleSheet(CyberCore::UserStyleSheet, API::ContentWorld&);
 
-    const WebCore::UserStyleSheet& userStyleSheet() const { return m_userStyleSheet; }
+    const CyberCore::UserStyleSheet& userStyleSheet() const { return m_userStyleSheet; }
 
     ContentWorld& contentWorld() { return m_world; }
     const ContentWorld& contentWorld() const { return m_world; }
 
 private:
-    WebCore::UserStyleSheet m_userStyleSheet;
+    CyberCore::UserStyleSheet m_userStyleSheet;
     Ref<ContentWorld> m_world;
 };
 

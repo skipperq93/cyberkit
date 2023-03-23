@@ -31,7 +31,7 @@
 
 #include "MathMLPresentationElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class MathMLTokenElement : public MathMLPresentationElement {
     WTF_MAKE_ISO_ALLOCATED(MathMLTokenElement);

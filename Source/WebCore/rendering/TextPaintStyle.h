@@ -29,7 +29,7 @@
 #include "GraphicsTypes.h"
 #include "RenderStyleConstants.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class Frame;
 class GraphicsContext;
@@ -65,4 +65,4 @@ TextPaintStyle computeTextSelectionPaintStyle(const TextPaintStyle&, const Rende
 enum FillColorType { UseNormalFillColor, UseEmphasisMarkColor };
 void updateGraphicsContext(GraphicsContext&, const TextPaintStyle&, FillColorType = UseNormalFillColor);
 
-} // namespace WebCore
+} // namespace CyberCore

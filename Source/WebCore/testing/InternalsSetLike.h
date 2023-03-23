@@ -29,7 +29,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 class DOMSetAdapter;
 
 class InternalsSetLike : public RefCounted<InternalsSetLike> {
@@ -55,4 +55,4 @@ inline bool InternalsSetLike::addToSetLike(const String& value)
     return !hasValue;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

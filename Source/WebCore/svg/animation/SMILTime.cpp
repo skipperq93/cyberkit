@@ -28,7 +28,7 @@
 
 #include <float.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 const double SMILTime::unresolvedValue = DBL_MAX;
 // Just a big value smaller than DBL_MAX. Our times are relative to 0, we don't really need the full range.
@@ -63,4 +63,4 @@ SMILTime operator*(const SMILTime& a,  const SMILTime& b)
     return a.value() * b.value();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

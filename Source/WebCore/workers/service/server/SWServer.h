@@ -54,7 +54,7 @@
 #include <wtf/UniqueRef.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct BackgroundFetchInformation;
 struct BackgroundFetchOptions;
@@ -354,6 +354,6 @@ private:
     uint64_t m_focusOrder { 0 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

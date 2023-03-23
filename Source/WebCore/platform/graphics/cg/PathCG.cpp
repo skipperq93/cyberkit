@@ -38,7 +38,7 @@
 #include <wtf/RetainPtr.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static size_t putBytesNowhere(void*, const void*, size_t count)
 {

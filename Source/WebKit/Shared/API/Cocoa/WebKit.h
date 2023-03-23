@@ -67,5 +67,5 @@
 #import <CyberKit/WKWindowFeatures.h>
 
 #if !defined(TARGET_OS_MACCATALYST) || !TARGET_OS_MACCATALYST
-#import <CyberKit/WebKitLegacy.h>
+#import <CyberKit/CyberKitLegacy.h>
 #endif

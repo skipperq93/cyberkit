@@ -59,7 +59,7 @@ typedef struct HWND__* HWND;
 // FIXME: This class uses the DOM and makes calls to Editor.
 // It should be divested of its knowledge of the frame and editor.
 
-namespace WebCore {
+namespace CyberCore {
 
 class SharedBuffer;
 class DocumentFragment;
@@ -302,7 +302,7 @@ public:
     std::optional<PasteboardItemInfo> pasteboardItemInfo(size_t index) const;
 
     String readString(size_t index, const String& type);
-    RefPtr<WebCore::SharedBuffer> readBuffer(std::optional<size_t> index, const String& type);
+    RefPtr<CyberCore::SharedBuffer> readBuffer(std::optional<size_t> index, const String& type);
     URL readURL(size_t index, String& title);
 
     const PasteboardContext* context() const { return m_context.get(); }
@@ -382,4 +382,4 @@ inline Pasteboard::~Pasteboard()
 
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -36,7 +36,7 @@ namespace WTF {
 class TextStream;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class Element;
 class WeakPtrImplWithEventTargetData;
@@ -80,4 +80,4 @@ private:
 
 WTF::TextStream& operator<<(WTF::TextStream&, const ResizeObservation&);
 
-} // namespace WebCore
+} // namespace CyberCore

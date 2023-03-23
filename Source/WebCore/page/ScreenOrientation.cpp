@@ -38,7 +38,7 @@
 #include "Page.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(ScreenOrientation);
 
@@ -269,4 +269,4 @@ void ScreenOrientation::eventListenersDidChange()
     m_hasChangeEventListener = hasEventListeners(eventNames().changeEvent);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

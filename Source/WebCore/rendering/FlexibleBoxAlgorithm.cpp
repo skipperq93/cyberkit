@@ -33,7 +33,7 @@
 
 #include "RenderBox.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 FlexItem::FlexItem(RenderBox& box, LayoutUnit flexBaseContentSize, LayoutUnit mainAxisBorderAndPadding, LayoutUnit mainAxisMargin, std::pair<LayoutUnit, LayoutUnit> minMaxSizes, bool everHadLayout)
     : box(box)
@@ -121,4 +121,4 @@ LayoutUnit FlexItem::constrainSizeByMinMax(const LayoutUnit size) const
     return std::max(minMaxSizes.first, std::min(size, minMaxSizes.second));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

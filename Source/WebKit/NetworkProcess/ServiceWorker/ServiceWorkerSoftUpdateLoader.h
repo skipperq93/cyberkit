@@ -36,7 +36,7 @@
 #include <wtf/CompletionHandler.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 struct ServiceWorkerJobData;
 struct WorkerFetchResult;
 class TextResourceDecoder;
@@ -50,8 +50,8 @@ class NetworkSession;
 class ServiceWorkerSoftUpdateLoader final : public NetworkLoadClient, public CanMakeWeakPtr<ServiceWorkerSoftUpdateLoader> {
     WTF_MAKE_FAST_ALLOCATED;
 public:
-    using Handler = CompletionHandler<void(WebCore::WorkerFetchResult&&)>;
-    ServiceWorkerSoftUpdateLoader(NetworkSession&, WebCore::ServiceWorkerJobData&&, bool shouldRefreshCache, WebCore::ResourceRequest&&, Handler&&);
+    using Handler = CompletionHandler<void(CyberCore::WorkerFetchResult&&)>;
+    ServiceWorkerSoftUpdateLoader(NetworkSession&, CyberCore::ServiceWorkerJobData&&, bool shouldRefreshCache, CyberCore::ResourceRequest&&, Handler&&);
     ~ServiceWorkerSoftUpdateLoader();
     
 private:
@@ -59,32 +59,32 @@ private:
     void didSendData(uint64_t bytesSent, uint64_t totalBytesToBeSent) final { }
     bool isSynchronous() const final { return false; }
     bool isAllowedToAskUserForCredentials() const final { return false; }
-    void willSendRedirectedRequest(WebCore::ResourceRequest&&, WebCore::ResourceRequest&& redirectRequest, WebCore::ResourceResponse&& redirectResponse) final;
-    void didReceiveResponse(WebCore::ResourceResponse&&, PrivateRelayed, ResponseCompletionHandler&&) final;
-    void didReceiveBuffer(const WebCore::FragmentedSharedBuffer&, uint64_t reportedEncodedDataLength) final;
-    void didFinishLoading(const WebCore::NetworkLoadMetrics&) final;
-    void didFailLoading(const WebCore::ResourceError&) final;
+    void willSendRedirectedRequest(CyberCore::ResourceRequest&&, CyberCore::ResourceRequest&& redirectRequest, CyberCore::ResourceResponse&& redirectResponse) final;
+    void didReceiveResponse(CyberCore::ResourceResponse&&, PrivateRelayed, ResponseCompletionHandler&&) final;
+    void didReceiveBuffer(const CyberCore::FragmentedSharedBuffer&, uint64_t reportedEncodedDataLength) final;
+    void didFinishLoading(const CyberCore::NetworkLoadMetrics&) final;
+    void didFailLoading(const CyberCore::ResourceError&) final;
 
     void loadWithCacheEntry(NetworkCache::Entry&);
-    void loadFromNetwork(NetworkSession&, WebCore::ResourceRequest&&);
-    void fail(WebCore::ResourceError&&);
+    void loadFromNetwork(NetworkSession&, CyberCore::ResourceRequest&&);
+    void fail(CyberCore::ResourceError&&);
     void didComplete();
-    WebCore::ResourceError processResponse(const WebCore::ResourceResponse&);
+    CyberCore::ResourceError processResponse(const CyberCore::ResourceResponse&);
 
     Handler m_completionHandler;
-    WebCore::ServiceWorkerJobData m_jobData;
+    CyberCore::ServiceWorkerJobData m_jobData;
     std::unique_ptr<NetworkLoad> m_networkLoad;
     WeakPtr<NetworkSession> m_session;
 
     String m_responseEncoding;
     String m_referrerPolicy;
-    WebCore::ContentSecurityPolicyResponseHeaders m_contentSecurityPolicy;
-    WebCore::CrossOriginEmbedderPolicy m_crossOriginEmbedderPolicy;
+    CyberCore::ContentSecurityPolicyResponseHeaders m_contentSecurityPolicy;
+    CyberCore::CrossOriginEmbedderPolicy m_crossOriginEmbedderPolicy;
 
     std::unique_ptr<NetworkCache::Entry> m_cacheEntry;
-    RefPtr<WebCore::TextResourceDecoder> m_decoder;
+    RefPtr<CyberCore::TextResourceDecoder> m_decoder;
     StringBuilder m_script;
-    WebCore::CertificateInfo m_certificateInfo;
+    CyberCore::CertificateInfo m_certificateInfo;
 };
 
 } // namespace WebKit

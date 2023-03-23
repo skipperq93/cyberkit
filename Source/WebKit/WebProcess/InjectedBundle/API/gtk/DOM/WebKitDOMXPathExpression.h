@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -21,28 +21,28 @@
 #error "Only <webkitdom/webkitdom.h> can be included directly."
 #endif
 
-#ifndef WebKitDOMXPathExpression_h
-#define WebKitDOMXPathExpression_h
+#ifndef CyberKitDOMXPathExpression_h
+#define CyberKitDOMXPathExpression_h
 
 #include <glib-object.h>
-#include <webkitdom/WebKitDOMObject.h>
+#include <webkitdom/CyberKitDOMObject.h>
 #include <webkitdom/webkitdomdefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_DOM_TYPE_XPATH_EXPRESSION            (webkit_dom_xpath_expression_get_type())
-#define WEBKIT_DOM_XPATH_EXPRESSION(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_XPATH_EXPRESSION, WebKitDOMXPathExpression))
-#define WEBKIT_DOM_XPATH_EXPRESSION_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_XPATH_EXPRESSION, WebKitDOMXPathExpressionClass)
+#define WEBKIT_DOM_XPATH_EXPRESSION(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_XPATH_EXPRESSION, CyberKitDOMXPathExpression))
+#define WEBKIT_DOM_XPATH_EXPRESSION_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_XPATH_EXPRESSION, CyberKitDOMXPathExpressionClass)
 #define WEBKIT_DOM_IS_XPATH_EXPRESSION(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_DOM_TYPE_XPATH_EXPRESSION))
 #define WEBKIT_DOM_IS_XPATH_EXPRESSION_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_DOM_TYPE_XPATH_EXPRESSION))
-#define WEBKIT_DOM_XPATH_EXPRESSION_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_XPATH_EXPRESSION, WebKitDOMXPathExpressionClass))
+#define WEBKIT_DOM_XPATH_EXPRESSION_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_XPATH_EXPRESSION, CyberKitDOMXPathExpressionClass))
 
-struct _WebKitDOMXPathExpression {
-    WebKitDOMObject parent_instance;
+struct _CyberKitDOMXPathExpression {
+    CyberKitDOMObject parent_instance;
 };
 
-struct _WebKitDOMXPathExpressionClass {
-    WebKitDOMObjectClass parent_class;
+struct _CyberKitDOMXPathExpressionClass {
+    CyberKitDOMObjectClass parent_class;
 };
 
 WEBKIT_DEPRECATED GType
@@ -50,19 +50,19 @@ webkit_dom_xpath_expression_get_type(void);
 
 /**
  * webkit_dom_xpath_expression_evaluate:
- * @self: A #WebKitDOMXPathExpression
- * @contextNode: A #WebKitDOMNode
+ * @self: A #CyberKitDOMXPathExpression
+ * @contextNode: A #CyberKitDOMNode
  * @type: A #gushort
- * @inResult: A #WebKitDOMXPathResult
+ * @inResult: A #CyberKitDOMXPathResult
  * @error: #GError
  *
- * Returns: (transfer full): A #WebKitDOMXPathResult
+ * Returns: (transfer full): A #CyberKitDOMXPathResult
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMXPathResult*
-webkit_dom_xpath_expression_evaluate(WebKitDOMXPathExpression* self, WebKitDOMNode* contextNode, gushort type, WebKitDOMXPathResult* inResult, GError** error);
+WEBKIT_DEPRECATED CyberKitDOMXPathResult*
+webkit_dom_xpath_expression_evaluate(CyberKitDOMXPathExpression* self, CyberKitDOMNode* contextNode, gushort type, CyberKitDOMXPathResult* inResult, GError** error);
 
 G_END_DECLS
 
-#endif /* WebKitDOMXPathExpression_h */
+#endif /* CyberKitDOMXPathExpression_h */

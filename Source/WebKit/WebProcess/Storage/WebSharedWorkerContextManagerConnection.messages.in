@@ -21,12 +21,12 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 messages -> WebSharedWorkerContextManagerConnection NotRefCounted {
-    LaunchSharedWorker(struct WebCore::ClientOrigin origin, WebCore::SharedWorkerIdentifier sharedWorkerIdentifier, struct WebCore::WorkerOptions workerOptions, struct WebCore::WorkerFetchResult workerFetchResult, struct WebCore::WorkerInitializationData workerInitializationData)
-    PostConnectEvent(WebCore::SharedWorkerIdentifier sharedWorkerIdentifier, WebCore::TransferredMessagePort port, String sourceOrigin) -> (bool success)
-    TerminateSharedWorker(WebCore::SharedWorkerIdentifier sharedWorkerIdentifier)
-    UpdatePreferencesStore(struct WebKit::WebPreferencesStore store)
+    LaunchSharedWorker(struct CyberCore::ClientOrigin origin, CyberCore::SharedWorkerIdentifier sharedWorkerIdentifier, struct CyberCore::WorkerOptions workerOptions, struct CyberCore::WorkerFetchResult workerFetchResult, struct CyberCore::WorkerInitializationData workerInitializationData)
+    PostConnectEvent(CyberCore::SharedWorkerIdentifier sharedWorkerIdentifier, CyberCore::TransferredMessagePort port, String sourceOrigin) -> (bool success)
+    TerminateSharedWorker(CyberCore::SharedWorkerIdentifier sharedWorkerIdentifier)
+    UpdatePreferencesStore(struct CyberKit::WebPreferencesStore store)
     SetUserAgent(String userAgent)
     Close()
-    SuspendSharedWorker(WebCore::SharedWorkerIdentifier sharedWorkerIdentifier)
-    ResumeSharedWorker(WebCore::SharedWorkerIdentifier sharedWorkerIdentifier)
+    SuspendSharedWorker(CyberCore::SharedWorkerIdentifier sharedWorkerIdentifier)
+    ResumeSharedWorker(CyberCore::SharedWorkerIdentifier sharedWorkerIdentifier)
 }

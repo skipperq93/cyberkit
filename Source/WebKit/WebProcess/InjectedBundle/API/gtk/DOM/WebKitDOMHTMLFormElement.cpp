@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -18,7 +18,7 @@
  */
 
 #include "config.h"
-#include "WebKitDOMHTMLFormElement.h"
+#include "CyberKitDOMHTMLFormElement.h"
 
 #include <CyberCore/CSSImportRule.h>
 #include "DOMObjectCache.h"
@@ -28,74 +28,74 @@
 #include <CyberCore/HTMLNames.h>
 #include <CyberCore/JSExecState.h>
 #include "GObjectEventListener.h"
-#include "WebKitDOMEventPrivate.h"
-#include "WebKitDOMEventTarget.h"
-#include "WebKitDOMHTMLCollectionPrivate.h"
-#include "WebKitDOMHTMLFormElementPrivate.h"
-#include "WebKitDOMNodePrivate.h"
-#include "WebKitDOMPrivate.h"
+#include "CyberKitDOMEventPrivate.h"
+#include "CyberKitDOMEventTarget.h"
+#include "CyberKitDOMHTMLCollectionPrivate.h"
+#include "CyberKitDOMHTMLFormElementPrivate.h"
+#include "CyberKitDOMNodePrivate.h"
+#include "CyberKitDOMPrivate.h"
 #include "ConvertToUTF8String.h"
 #include <wtf/GetPtr.h>
 #include <wtf/RefPtr.h>
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
-namespace WebKit {
+namespace CyberKit {
 
-WebKitDOMHTMLFormElement* kit(WebCore::HTMLFormElement* obj)
+CyberKitDOMHTMLFormElement* kit(CyberCore::HTMLFormElement* obj)
 {
-    return WEBKIT_DOM_HTML_FORM_ELEMENT(kit(static_cast<WebCore::Node*>(obj)));
+    return WEBKIT_DOM_HTML_FORM_ELEMENT(kit(static_cast<CyberCore::Node*>(obj)));
 }
 
-WebCore::HTMLFormElement* core(WebKitDOMHTMLFormElement* request)
+CyberCore::HTMLFormElement* core(CyberKitDOMHTMLFormElement* request)
 {
-    return request ? static_cast<WebCore::HTMLFormElement*>(WEBKIT_DOM_OBJECT(request)->coreObject) : 0;
+    return request ? static_cast<CyberCore::HTMLFormElement*>(WEBKIT_DOM_OBJECT(request)->coreObject) : 0;
 }
 
-WebKitDOMHTMLFormElement* wrapHTMLFormElement(WebCore::HTMLFormElement* coreObject)
+CyberKitDOMHTMLFormElement* wrapHTMLFormElement(CyberCore::HTMLFormElement* coreObject)
 {
     ASSERT(coreObject);
     return WEBKIT_DOM_HTML_FORM_ELEMENT(g_object_new(WEBKIT_DOM_TYPE_HTML_FORM_ELEMENT, "core-object", coreObject, nullptr));
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
-static gboolean webkit_dom_html_form_element_dispatch_event(WebKitDOMEventTarget* target, WebKitDOMEvent* event, GError** error)
+static gboolean webkit_dom_html_form_element_dispatch_event(CyberKitDOMEventTarget* target, CyberKitDOMEvent* event, GError** error)
 {
-    WebCore::Event* coreEvent = WebKit::core(event);
+    CyberCore::Event* coreEvent = CyberKit::core(event);
     if (!coreEvent)
         return false;
-    WebCore::HTMLFormElement* coreTarget = static_cast<WebCore::HTMLFormElement*>(WEBKIT_DOM_OBJECT(target)->coreObject);
+    CyberCore::HTMLFormElement* coreTarget = static_cast<CyberCore::HTMLFormElement*>(WEBKIT_DOM_OBJECT(target)->coreObject);
 
     auto result = coreTarget->dispatchEventForBindings(*coreEvent);
     if (result.hasException()) {
-        auto description = WebCore::DOMException::description(result.releaseException().code());
+        auto description = CyberCore::DOMException::description(result.releaseException().code());
         g_set_error_literal(error, g_quark_from_string("WEBKIT_DOM"), description.legacyCode, description.name);
         return false;
     }
     return result.releaseReturnValue();
 }
 
-static gboolean webkit_dom_html_form_element_add_event_listener(WebKitDOMEventTarget* target, const char* eventName, GClosure* handler, gboolean useCapture)
+static gboolean webkit_dom_html_form_element_add_event_listener(CyberKitDOMEventTarget* target, const char* eventName, GClosure* handler, gboolean useCapture)
 {
-    WebCore::HTMLFormElement* coreTarget = static_cast<WebCore::HTMLFormElement*>(WEBKIT_DOM_OBJECT(target)->coreObject);
-    return WebKit::GObjectEventListener::addEventListener(G_OBJECT(target), coreTarget, eventName, handler, useCapture);
+    CyberCore::HTMLFormElement* coreTarget = static_cast<CyberCore::HTMLFormElement*>(WEBKIT_DOM_OBJECT(target)->coreObject);
+    return CyberKit::GObjectEventListener::addEventListener(G_OBJECT(target), coreTarget, eventName, handler, useCapture);
 }
 
-static gboolean webkit_dom_html_form_element_remove_event_listener(WebKitDOMEventTarget* target, const char* eventName, GClosure* handler, gboolean useCapture)
+static gboolean webkit_dom_html_form_element_remove_event_listener(CyberKitDOMEventTarget* target, const char* eventName, GClosure* handler, gboolean useCapture)
 {
-    WebCore::HTMLFormElement* coreTarget = static_cast<WebCore::HTMLFormElement*>(WEBKIT_DOM_OBJECT(target)->coreObject);
-    return WebKit::GObjectEventListener::removeEventListener(G_OBJECT(target), coreTarget, eventName, handler, useCapture);
+    CyberCore::HTMLFormElement* coreTarget = static_cast<CyberCore::HTMLFormElement*>(WEBKIT_DOM_OBJECT(target)->coreObject);
+    return CyberKit::GObjectEventListener::removeEventListener(G_OBJECT(target), coreTarget, eventName, handler, useCapture);
 }
 
-static void webkit_dom_html_form_element_dom_event_target_init(WebKitDOMEventTargetIface* iface)
+static void webkit_dom_html_form_element_dom_event_target_init(CyberKitDOMEventTargetIface* iface)
 {
     iface->dispatch_event = webkit_dom_html_form_element_dispatch_event;
     iface->add_event_listener = webkit_dom_html_form_element_add_event_listener;
     iface->remove_event_listener = webkit_dom_html_form_element_remove_event_listener;
 }
 
-G_DEFINE_TYPE_WITH_CODE(WebKitDOMHTMLFormElement, webkit_dom_html_form_element, WEBKIT_DOM_TYPE_HTML_ELEMENT, G_IMPLEMENT_INTERFACE(WEBKIT_DOM_TYPE_EVENT_TARGET, webkit_dom_html_form_element_dom_event_target_init))
+G_DEFINE_TYPE_WITH_CODE(CyberKitDOMHTMLFormElement, webkit_dom_html_form_element, WEBKIT_DOM_TYPE_HTML_ELEMENT, G_IMPLEMENT_INTERFACE(WEBKIT_DOM_TYPE_EVENT_TARGET, webkit_dom_html_form_element_dom_event_target_init))
 
 enum {
     DOM_HTML_FORM_ELEMENT_PROP_0,
@@ -112,7 +112,7 @@ enum {
 
 static void webkit_dom_html_form_element_set_property(GObject* object, guint propertyId, const GValue* value, GParamSpec* pspec)
 {
-    WebKitDOMHTMLFormElement* self = WEBKIT_DOM_HTML_FORM_ELEMENT(object);
+    CyberKitDOMHTMLFormElement* self = WEBKIT_DOM_HTML_FORM_ELEMENT(object);
 
     switch (propertyId) {
     case DOM_HTML_FORM_ELEMENT_PROP_ACCEPT_CHARSET:
@@ -144,7 +144,7 @@ static void webkit_dom_html_form_element_set_property(GObject* object, guint pro
 
 static void webkit_dom_html_form_element_get_property(GObject* object, guint propertyId, GValue* value, GParamSpec* pspec)
 {
-    WebKitDOMHTMLFormElement* self = WEBKIT_DOM_HTML_FORM_ELEMENT(object);
+    CyberKitDOMHTMLFormElement* self = WEBKIT_DOM_HTML_FORM_ELEMENT(object);
 
     switch (propertyId) {
     case DOM_HTML_FORM_ELEMENT_PROP_ACCEPT_CHARSET:
@@ -180,7 +180,7 @@ static void webkit_dom_html_form_element_get_property(GObject* object, guint pro
     }
 }
 
-static void webkit_dom_html_form_element_class_init(WebKitDOMHTMLFormElementClass* requestClass)
+static void webkit_dom_html_form_element_class_init(CyberKitDOMHTMLFormElementClass* requestClass)
 {
     GObjectClass* gobjectClass = G_OBJECT_CLASS(requestClass);
     gobjectClass->set_property = webkit_dom_html_form_element_set_property;
@@ -262,7 +262,7 @@ static void webkit_dom_html_form_element_class_init(WebKitDOMHTMLFormElementClas
         g_param_spec_object(
             "elements",
             "HTMLFormElement:elements",
-            "read-only WebKitDOMHTMLCollection* HTMLFormElement:elements",
+            "read-only CyberKitDOMHTMLCollection* HTMLFormElement:elements",
             WEBKIT_DOM_TYPE_HTML_COLLECTION,
             WEBKIT_PARAM_READABLE));
 
@@ -277,167 +277,167 @@ static void webkit_dom_html_form_element_class_init(WebKitDOMHTMLFormElementClas
             WEBKIT_PARAM_READABLE));
 }
 
-static void webkit_dom_html_form_element_init(WebKitDOMHTMLFormElement* request)
+static void webkit_dom_html_form_element_init(CyberKitDOMHTMLFormElement* request)
 {
     UNUSED_PARAM(request);
 }
 
-void webkit_dom_html_form_element_submit(WebKitDOMHTMLFormElement* self)
+void webkit_dom_html_form_element_submit(CyberKitDOMHTMLFormElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_FORM_ELEMENT(self));
-    WebCore::HTMLFormElement* item = WebKit::core(self);
+    CyberCore::HTMLFormElement* item = CyberKit::core(self);
     item->submit();
 }
 
-void webkit_dom_html_form_element_reset(WebKitDOMHTMLFormElement* self)
+void webkit_dom_html_form_element_reset(CyberKitDOMHTMLFormElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_FORM_ELEMENT(self));
-    WebCore::HTMLFormElement* item = WebKit::core(self);
+    CyberCore::HTMLFormElement* item = CyberKit::core(self);
     item->reset();
 }
 
-gchar* webkit_dom_html_form_element_get_accept_charset(WebKitDOMHTMLFormElement* self)
+gchar* webkit_dom_html_form_element_get_accept_charset(CyberKitDOMHTMLFormElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_FORM_ELEMENT(self), 0);
-    WebCore::HTMLFormElement* item = WebKit::core(self);
-    gchar* result = convertToUTF8String(item->attributeWithoutSynchronization(WebCore::HTMLNames::accept_charsetAttr));
+    CyberCore::HTMLFormElement* item = CyberKit::core(self);
+    gchar* result = convertToUTF8String(item->attributeWithoutSynchronization(CyberCore::HTMLNames::accept_charsetAttr));
     return result;
 }
 
-void webkit_dom_html_form_element_set_accept_charset(WebKitDOMHTMLFormElement* self, const gchar* value)
+void webkit_dom_html_form_element_set_accept_charset(CyberKitDOMHTMLFormElement* self, const gchar* value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_FORM_ELEMENT(self));
     g_return_if_fail(value);
-    WebCore::HTMLFormElement* item = WebKit::core(self);
-    item->setAttributeWithoutSynchronization(WebCore::HTMLNames::accept_charsetAttr, WTF::AtomString::fromUTF8(value));
+    CyberCore::HTMLFormElement* item = CyberKit::core(self);
+    item->setAttributeWithoutSynchronization(CyberCore::HTMLNames::accept_charsetAttr, WTF::AtomString::fromUTF8(value));
 }
 
-gchar* webkit_dom_html_form_element_get_action(WebKitDOMHTMLFormElement* self)
+gchar* webkit_dom_html_form_element_get_action(CyberKitDOMHTMLFormElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_FORM_ELEMENT(self), 0);
-    WebCore::HTMLFormElement* item = WebKit::core(self);
-    gchar* result = convertToUTF8String(item->getURLAttribute(WebCore::HTMLNames::actionAttr));
+    CyberCore::HTMLFormElement* item = CyberKit::core(self);
+    gchar* result = convertToUTF8String(item->getURLAttribute(CyberCore::HTMLNames::actionAttr));
     return result;
 }
 
-void webkit_dom_html_form_element_set_action(WebKitDOMHTMLFormElement* self, const gchar* value)
+void webkit_dom_html_form_element_set_action(CyberKitDOMHTMLFormElement* self, const gchar* value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_FORM_ELEMENT(self));
     g_return_if_fail(value);
-    WebCore::HTMLFormElement* item = WebKit::core(self);
-    item->setAttributeWithoutSynchronization(WebCore::HTMLNames::actionAttr, WTF::AtomString::fromUTF8(value));
+    CyberCore::HTMLFormElement* item = CyberKit::core(self);
+    item->setAttributeWithoutSynchronization(CyberCore::HTMLNames::actionAttr, WTF::AtomString::fromUTF8(value));
 }
 
-gchar* webkit_dom_html_form_element_get_enctype(WebKitDOMHTMLFormElement* self)
+gchar* webkit_dom_html_form_element_get_enctype(CyberKitDOMHTMLFormElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_FORM_ELEMENT(self), 0);
-    WebCore::HTMLFormElement* item = WebKit::core(self);
+    CyberCore::HTMLFormElement* item = CyberKit::core(self);
     gchar* result = convertToUTF8String(item->enctype());
     return result;
 }
 
-void webkit_dom_html_form_element_set_enctype(WebKitDOMHTMLFormElement* self, const gchar* value)
+void webkit_dom_html_form_element_set_enctype(CyberKitDOMHTMLFormElement* self, const gchar* value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_FORM_ELEMENT(self));
     g_return_if_fail(value);
-    WebCore::HTMLFormElement* item = WebKit::core(self);
+    CyberCore::HTMLFormElement* item = CyberKit::core(self);
     item->setEnctype(WTF::AtomString::fromUTF8(value));
 }
 
-gchar* webkit_dom_html_form_element_get_encoding(WebKitDOMHTMLFormElement* self)
+gchar* webkit_dom_html_form_element_get_encoding(CyberKitDOMHTMLFormElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_FORM_ELEMENT(self), 0);
-    WebCore::HTMLFormElement* item = WebKit::core(self);
+    CyberCore::HTMLFormElement* item = CyberKit::core(self);
     gchar* result = convertToUTF8String(item->enctype());
     return result;
 }
 
-void webkit_dom_html_form_element_set_encoding(WebKitDOMHTMLFormElement* self, const gchar* value)
+void webkit_dom_html_form_element_set_encoding(CyberKitDOMHTMLFormElement* self, const gchar* value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_FORM_ELEMENT(self));
     g_return_if_fail(value);
-    WebCore::HTMLFormElement* item = WebKit::core(self);
+    CyberCore::HTMLFormElement* item = CyberKit::core(self);
     item->setEnctype(WTF::AtomString::fromUTF8(value));
 }
 
-gchar* webkit_dom_html_form_element_get_method(WebKitDOMHTMLFormElement* self)
+gchar* webkit_dom_html_form_element_get_method(CyberKitDOMHTMLFormElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_FORM_ELEMENT(self), 0);
-    WebCore::HTMLFormElement* item = WebKit::core(self);
+    CyberCore::HTMLFormElement* item = CyberKit::core(self);
     gchar* result = convertToUTF8String(item->method());
     return result;
 }
 
-void webkit_dom_html_form_element_set_method(WebKitDOMHTMLFormElement* self, const gchar* value)
+void webkit_dom_html_form_element_set_method(CyberKitDOMHTMLFormElement* self, const gchar* value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_FORM_ELEMENT(self));
     g_return_if_fail(value);
-    WebCore::HTMLFormElement* item = WebKit::core(self);
+    CyberCore::HTMLFormElement* item = CyberKit::core(self);
     item->setMethod(WTF::AtomString::fromUTF8(value));
 }
 
-gchar* webkit_dom_html_form_element_get_name(WebKitDOMHTMLFormElement* self)
+gchar* webkit_dom_html_form_element_get_name(CyberKitDOMHTMLFormElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_FORM_ELEMENT(self), 0);
-    WebCore::HTMLFormElement* item = WebKit::core(self);
+    CyberCore::HTMLFormElement* item = CyberKit::core(self);
     gchar* result = convertToUTF8String(item->getNameAttribute());
     return result;
 }
 
-void webkit_dom_html_form_element_set_name(WebKitDOMHTMLFormElement* self, const gchar* value)
+void webkit_dom_html_form_element_set_name(CyberKitDOMHTMLFormElement* self, const gchar* value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_FORM_ELEMENT(self));
     g_return_if_fail(value);
-    WebCore::HTMLFormElement* item = WebKit::core(self);
-    item->setAttributeWithoutSynchronization(WebCore::HTMLNames::nameAttr, WTF::AtomString::fromUTF8(value));
+    CyberCore::HTMLFormElement* item = CyberKit::core(self);
+    item->setAttributeWithoutSynchronization(CyberCore::HTMLNames::nameAttr, WTF::AtomString::fromUTF8(value));
 }
 
-gchar* webkit_dom_html_form_element_get_target(WebKitDOMHTMLFormElement* self)
+gchar* webkit_dom_html_form_element_get_target(CyberKitDOMHTMLFormElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_FORM_ELEMENT(self), 0);
-    WebCore::HTMLFormElement* item = WebKit::core(self);
-    gchar* result = convertToUTF8String(item->attributeWithoutSynchronization(WebCore::HTMLNames::targetAttr));
+    CyberCore::HTMLFormElement* item = CyberKit::core(self);
+    gchar* result = convertToUTF8String(item->attributeWithoutSynchronization(CyberCore::HTMLNames::targetAttr));
     return result;
 }
 
-void webkit_dom_html_form_element_set_target(WebKitDOMHTMLFormElement* self, const gchar* value)
+void webkit_dom_html_form_element_set_target(CyberKitDOMHTMLFormElement* self, const gchar* value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_FORM_ELEMENT(self));
     g_return_if_fail(value);
-    WebCore::HTMLFormElement* item = WebKit::core(self);
-    item->setAttributeWithoutSynchronization(WebCore::HTMLNames::targetAttr, WTF::AtomString::fromUTF8(value));
+    CyberCore::HTMLFormElement* item = CyberKit::core(self);
+    item->setAttributeWithoutSynchronization(CyberCore::HTMLNames::targetAttr, WTF::AtomString::fromUTF8(value));
 }
 
-WebKitDOMHTMLCollection* webkit_dom_html_form_element_get_elements(WebKitDOMHTMLFormElement* self)
+CyberKitDOMHTMLCollection* webkit_dom_html_form_element_get_elements(CyberKitDOMHTMLFormElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_FORM_ELEMENT(self), 0);
-    WebCore::HTMLFormElement* item = WebKit::core(self);
-    RefPtr<WebCore::HTMLCollection> gobjectResult = WTF::getPtr(item->elementsForNativeBindings());
-    return WebKit::kit(gobjectResult.get());
+    CyberCore::HTMLFormElement* item = CyberKit::core(self);
+    RefPtr<CyberCore::HTMLCollection> gobjectResult = WTF::getPtr(item->elementsForNativeBindings());
+    return CyberKit::kit(gobjectResult.get());
 }
 
-glong webkit_dom_html_form_element_get_length(WebKitDOMHTMLFormElement* self)
+glong webkit_dom_html_form_element_get_length(CyberKitDOMHTMLFormElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_FORM_ELEMENT(self), 0);
-    WebCore::HTMLFormElement* item = WebKit::core(self);
+    CyberCore::HTMLFormElement* item = CyberKit::core(self);
     glong result = item->length();
     return result;
 }

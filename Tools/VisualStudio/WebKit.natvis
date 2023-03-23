@@ -111,13 +111,13 @@
     </Expand>
   </Type>
 
-  <Type Name="WebCore::IntSize">
+  <Type Name="CyberCore::IntSize">
     <DisplayString>({m_width} x {m_height})</DisplayString>
   </Type>
 
   <!-- Networking -->
 
-  <Type Name="WebCore::ResourceRequest">
+  <Type Name="CyberCore::ResourceRequest">
     <DisplayString>{m_httpMethod} {m_url} {m_httpBody}</DisplayString>
   </Type>  
 </AutoVisualizer>

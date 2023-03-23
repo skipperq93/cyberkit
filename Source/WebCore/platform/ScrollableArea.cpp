@@ -43,7 +43,7 @@
 #include "ScrollbarsControllerMock.h"
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct SameSizeAsScrollableArea : public CanMakeWeakPtr<SameSizeAsScrollableArea>, public CanMakeCheckedPtr {
     ~SameSizeAsScrollableArea() { }
@@ -408,7 +408,7 @@ void ScrollableArea::invalidateScrollbars()
 bool ScrollableArea::useDarkAppearanceForScrollbars() const
 {
     // If dark appearance is used or the overlay style is light (because of a dark page background), set the dark appearance.
-    return useDarkAppearance() || scrollbarOverlayStyle() == WebCore::ScrollbarOverlayStyleLight;
+    return useDarkAppearance() || scrollbarOverlayStyle() == CyberCore::ScrollbarOverlayStyleLight;
 }
 
 void ScrollableArea::invalidateScrollbar(Scrollbar& scrollbar, const IntRect& rect)
@@ -939,4 +939,4 @@ bool ScrollableArea::shouldBlockScrollPropagation(const FloatSize& biasedDelta) 
         && !biasedDelta.width())));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -24,9 +24,9 @@
 #include <CyberCore/ResourceRequest.h>
 #include <CyberCore/ResourceResponse.h>
 
-WebKitWebResource* webkitWebResourceCreate(WebKit::WebFrameProxy&, const WebCore::ResourceRequest&);
-void webkitWebResourceSentRequest(WebKitWebResource*, WebCore::ResourceRequest&&, WebCore::ResourceResponse&&);
-void webkitWebResourceSetResponse(WebKitWebResource*, WebCore::ResourceResponse&&);
+WebKitWebResource* webkitWebResourceCreate(WebKit::WebFrameProxy&, const CyberCore::ResourceRequest&);
+void webkitWebResourceSentRequest(WebKitWebResource*, CyberCore::ResourceRequest&&, CyberCore::ResourceResponse&&);
+void webkitWebResourceSetResponse(WebKitWebResource*, CyberCore::ResourceResponse&&);
 void webkitWebResourceFinished(WebKitWebResource*);
-void webkitWebResourceFailed(WebKitWebResource*, WebCore::ResourceError&&);
+void webkitWebResourceFailed(WebKitWebResource*, CyberCore::ResourceError&&);
 bool webkitWebResourceIsMainResource(WebKitWebResource*);

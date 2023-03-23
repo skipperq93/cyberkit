@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -21,28 +21,28 @@
 #error "Only <webkitdom/webkitdom.h> can be included directly."
 #endif
 
-#ifndef WebKitDOMHTMLLIElement_h
-#define WebKitDOMHTMLLIElement_h
+#ifndef CyberKitDOMHTMLLIElement_h
+#define CyberKitDOMHTMLLIElement_h
 
 #include <glib-object.h>
-#include <webkitdom/WebKitDOMHTMLElement.h>
+#include <webkitdom/CyberKitDOMHTMLElement.h>
 #include <webkitdom/webkitdomdefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_DOM_TYPE_HTML_LI_ELEMENT            (webkit_dom_html_li_element_get_type())
-#define WEBKIT_DOM_HTML_LI_ELEMENT(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_HTML_LI_ELEMENT, WebKitDOMHTMLLIElement))
-#define WEBKIT_DOM_HTML_LI_ELEMENT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_HTML_LI_ELEMENT, WebKitDOMHTMLLIElementClass)
+#define WEBKIT_DOM_HTML_LI_ELEMENT(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_HTML_LI_ELEMENT, CyberKitDOMHTMLLIElement))
+#define WEBKIT_DOM_HTML_LI_ELEMENT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_HTML_LI_ELEMENT, CyberKitDOMHTMLLIElementClass)
 #define WEBKIT_DOM_IS_HTML_LI_ELEMENT(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_DOM_TYPE_HTML_LI_ELEMENT))
 #define WEBKIT_DOM_IS_HTML_LI_ELEMENT_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_DOM_TYPE_HTML_LI_ELEMENT))
-#define WEBKIT_DOM_HTML_LI_ELEMENT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_HTML_LI_ELEMENT, WebKitDOMHTMLLIElementClass))
+#define WEBKIT_DOM_HTML_LI_ELEMENT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_HTML_LI_ELEMENT, CyberKitDOMHTMLLIElementClass))
 
-struct _WebKitDOMHTMLLIElement {
-    WebKitDOMHTMLElement parent_instance;
+struct _CyberKitDOMHTMLLIElement {
+    CyberKitDOMHTMLElement parent_instance;
 };
 
-struct _WebKitDOMHTMLLIElementClass {
-    WebKitDOMHTMLElementClass parent_class;
+struct _CyberKitDOMHTMLLIElementClass {
+    CyberKitDOMHTMLElementClass parent_class;
 };
 
 WEBKIT_DEPRECATED GType
@@ -50,48 +50,48 @@ webkit_dom_html_li_element_get_type(void);
 
 /**
  * webkit_dom_html_li_element_get_type_attr:
- * @self: A #WebKitDOMHTMLLIElement
+ * @self: A #CyberKitDOMHTMLLIElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_li_element_get_type_attr(WebKitDOMHTMLLIElement* self);
+webkit_dom_html_li_element_get_type_attr(CyberKitDOMHTMLLIElement* self);
 
 /**
  * webkit_dom_html_li_element_set_type_attr:
- * @self: A #WebKitDOMHTMLLIElement
+ * @self: A #CyberKitDOMHTMLLIElement
  * @value: A #gchar
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_li_element_set_type_attr(WebKitDOMHTMLLIElement* self, const gchar* value);
+webkit_dom_html_li_element_set_type_attr(CyberKitDOMHTMLLIElement* self, const gchar* value);
 
 /**
  * webkit_dom_html_li_element_get_value:
- * @self: A #WebKitDOMHTMLLIElement
+ * @self: A #CyberKitDOMHTMLLIElement
  *
  * Returns: A #glong
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED glong
-webkit_dom_html_li_element_get_value(WebKitDOMHTMLLIElement* self);
+webkit_dom_html_li_element_get_value(CyberKitDOMHTMLLIElement* self);
 
 /**
  * webkit_dom_html_li_element_set_value:
- * @self: A #WebKitDOMHTMLLIElement
+ * @self: A #CyberKitDOMHTMLLIElement
  * @value: A #glong
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_li_element_set_value(WebKitDOMHTMLLIElement* self, glong value);
+webkit_dom_html_li_element_set_value(CyberKitDOMHTMLLIElement* self, glong value);
 
 G_END_DECLS
 
-#endif /* WebKitDOMHTMLLIElement_h */
+#endif /* CyberKitDOMHTMLLIElement_h */

@@ -77,13 +77,13 @@
 
 @interface _WKPrintFormattingAttributes : NSObject
 @property (nonatomic, readonly) size_t pageCount;
-@property (nonatomic, readonly) WebCore::FrameIdentifier frameID;
+@property (nonatomic, readonly) CyberCore::FrameIdentifier frameID;
 @property (nonatomic, readonly) WebKit::PrintInfo printInfo;
 @end
 
 @implementation _WKPrintFormattingAttributes
 
-- (instancetype)initWithPageCount:(size_t)pageCount frameID:(WebCore::FrameIdentifier)frameID printInfo:(WebKit::PrintInfo)printInfo
+- (instancetype)initWithPageCount:(size_t)pageCount frameID:(CyberCore::FrameIdentifier)frameID printInfo:(WebKit::PrintInfo)printInfo
 {
     if (!(self = [super init]))
         return nil;
@@ -175,7 +175,7 @@ typedef NS_ENUM(NSInteger, _WKPrintRenderingCallbackType) {
 #endif // ENABLE(GPU_PROCESS)
 #endif // HAVE(VISIBILITY_PROPAGATION_VIEW)
 
-    WebCore::HistoricalVelocityData _historicalKinematicData;
+    CyberCore::HistoricalVelocityData _historicalKinematicData;
 
     RetainPtr<NSUndoManager> _undoManager;
     RetainPtr<WKQuirkyNSUndoManager> _quirkyUndoManager;
@@ -203,7 +203,7 @@ static NSArray *keyCommandsPlaceholderHackForEvernote(id self, SEL _cmd)
 
     _page = processPool.createWebPage(*_pageClient, WTFMove(configuration));
     _page->initializeWebPage();
-    _page->setIntrinsicDeviceScaleFactor(WebCore::screenScaleFactor([UIScreen mainScreen]));
+    _page->setIntrinsicDeviceScaleFactor(CyberCore::screenScaleFactor([UIScreen mainScreen]));
     _page->setUseFixedLayout(true);
     _page->setScreenIsBeingCaptured([[[self window] screen] isCaptured]);
 
@@ -252,7 +252,7 @@ static NSArray *keyCommandsPlaceholderHackForEvernote(id self, SEL _cmd)
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_applicationWillEnterForeground:) name:UIApplicationWillEnterForegroundNotification object:[UIApplication sharedApplication]];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_screenCapturedDidChange:) name:UIScreenCapturedDidChangeNotification object:[UIScreen mainScreen]];
 
-    if (WebCore::IOSApplication::isEvernote() && !linkedOnOrAfterSDKWithBehavior(SDKAlignedBehavior::WKContentViewDoesNotOverrideKeyCommands))
+    if (CyberCore::IOSApplication::isEvernote() && !linkedOnOrAfterSDKWithBehavior(SDKAlignedBehavior::WKContentViewDoesNotOverrideKeyCommands))
         class_addMethod(self.class, @selector(keyCommands), reinterpret_cast<IMP>(&keyCommandsPlaceholderHackForEvernote), method_getTypeEncoding(class_getInstanceMethod(self.class, @selector(keyCommands))));
 
     return self;
@@ -445,7 +445,7 @@ ALLOW_DEPRECATED_DECLARATIONS_END
     return [self isEditable];
 }
 
-- (void)_showInspectorHighlight:(const WebCore::InspectorOverlay::Highlight&)highlight
+- (void)_showInspectorHighlight:(const CyberCore::InspectorOverlay::Highlight&)highlight
 {
     if (!_inspectorHighlightView) {
         _inspectorHighlightView = adoptNS([[WKInspectorHighlightView alloc] initWithFrame:CGRectZero]);
@@ -483,9 +483,9 @@ ALLOW_DEPRECATED_DECLARATIONS_END
     }
 }
 
-- (void)updateFixedClippingView:(WebCore::FloatRect)fixedPositionRectForUI
+- (void)updateFixedClippingView:(CyberCore::FloatRect)fixedPositionRectForUI
 {
-    WebCore::FloatRect clippingBounds = [self bounds];
+    CyberCore::FloatRect clippingBounds = [self bounds];
     clippingBounds.unite(fixedPositionRectForUI);
 
     [_fixedClippingView setCenter:clippingBounds.location()]; // Not really the center since we set an anchor point.
@@ -501,9 +501,9 @@ ALLOW_DEPRECATED_DECLARATIONS_END
     [_textInteractionAssistant deactivateSelection];
 }
 
-static WebCore::FloatBoxExtent floatBoxExtent(UIEdgeInsets insets)
+static CyberCore::FloatBoxExtent floatBoxExtent(UIEdgeInsets insets)
 {
-    return WebCore::FloatBoxExtent(insets.top, insets.right, insets.bottom, insets.left);
+    return CyberCore::FloatBoxExtent(insets.top, insets.right, insets.bottom, insets.left);
 }
 
 - (CGRect)_computeUnobscuredContentRectRespectingInputViewBounds:(CGRect)unobscuredContentRect inputViewBounds:(CGRect)inputViewBounds
@@ -532,7 +532,7 @@ static WebCore::FloatBoxExtent floatBoxExtent(UIEdgeInsets insets)
         return;
 
     MonotonicTime timestamp = MonotonicTime::now();
-    WebCore::VelocityData velocityData;
+    CyberCore::VelocityData velocityData;
     bool inStableState = viewStability.isEmpty();
     if (!inStableState)
         velocityData = _historicalKinematicData.velocityForNewData(visibleContentRect.origin, zoomScale, timestamp);
@@ -542,7 +542,7 @@ static WebCore::FloatBoxExtent floatBoxExtent(UIEdgeInsets insets)
     }
 
     CGRect unobscuredContentRectRespectingInputViewBounds = [self _computeUnobscuredContentRectRespectingInputViewBounds:unobscuredContentRect inputViewBounds:inputViewBounds];
-    WebCore::FloatRect fixedPositionRectForLayout = _page->computeLayoutViewportRect(unobscuredContentRect, unobscuredContentRectRespectingInputViewBounds, _page->layoutViewportRect(), zoomScale, WebCore::FrameView::LayoutViewportConstraint::ConstrainedToDocumentRect);
+    CyberCore::FloatRect fixedPositionRectForLayout = _page->computeLayoutViewportRect(unobscuredContentRect, unobscuredContentRectRespectingInputViewBounds, _page->layoutViewportRect(), zoomScale, CyberCore::FrameView::LayoutViewportConstraint::ConstrainedToDocumentRect);
 
     WebKit::VisibleContentRectUpdateInfo visibleContentRectUpdateInfo(
         visibleContentRect,
@@ -649,7 +649,7 @@ static WebCore::FloatBoxExtent floatBoxExtent(UIEdgeInsets insets)
 - (void)_updateForScreen:(UIScreen *)screen
 {
     ASSERT(screen);
-    _page->setIntrinsicDeviceScaleFactor(WebCore::screenScaleFactor(screen));
+    _page->setIntrinsicDeviceScaleFactor(CyberCore::screenScaleFactor(screen));
     [self _accessibilityRegisterUIProcessTokens];
 }
 
@@ -782,7 +782,7 @@ static void storeAccessibilityRemoteConnectionInformation(id element, pid_t pid,
     CGPoint scrollOrigin = -layerTreeTransaction.scrollOrigin();
     CGRect contentBounds = { scrollOrigin, contentsSize };
 
-    LOG_WITH_STREAM(VisibleRects, stream << "-[WKContentView _didCommitLayerTree:] transactionID " <<  layerTreeTransaction.transactionID() << " contentBounds " << WebCore::FloatRect(contentBounds));
+    LOG_WITH_STREAM(VisibleRects, stream << "-[WKContentView _didCommitLayerTree:] transactionID " <<  layerTreeTransaction.transactionID() << " contentBounds " << CyberCore::FloatRect(contentBounds));
 
     BOOL boundsChanged = !CGRectEqualToRect([self bounds], contentBounds);
     if (boundsChanged)
@@ -791,7 +791,7 @@ static void storeAccessibilityRemoteConnectionInformation(id element, pid_t pid,
     [_webView _didCommitLayerTree:layerTreeTransaction];
 
     if (_interactionViewsContainerView) {
-        WebCore::FloatPoint scaledOrigin = layerTreeTransaction.scrollOrigin();
+        CyberCore::FloatPoint scaledOrigin = layerTreeTransaction.scrollOrigin();
         float scale = self.webView.scrollView.zoomScale;
         scaledOrigin.scale(scale);
         [_interactionViewsContainerView setFrame:CGRectMake(scaledOrigin.x(), scaledOrigin.y(), 0, 0)];
@@ -799,7 +799,7 @@ static void storeAccessibilityRemoteConnectionInformation(id element, pid_t pid,
     
     if (boundsChanged) {
         // FIXME: factor computeLayoutViewportRect() into something that gives us this rect.
-        WebCore::FloatRect fixedPositionRect = _page->computeLayoutViewportRect(_page->unobscuredContentRect(), _page->unobscuredContentRectRespectingInputViewBounds(), _page->layoutViewportRect(), self.webView.scrollView.zoomScale);
+        CyberCore::FloatRect fixedPositionRect = _page->computeLayoutViewportRect(_page->unobscuredContentRect(), _page->unobscuredContentRectRespectingInputViewBounds(), _page->layoutViewportRect(), self.webView.scrollView.zoomScale);
         [self updateFixedClippingView:fixedPositionRect];
 
         // We need to push the new content bounds to the webview to update fixed position rects.
@@ -867,7 +867,7 @@ static void storeAccessibilityRemoteConnectionInformation(id element, pid_t pid,
     return [_webView _contentZoomScale];
 }
 
-- (double)_targetContentZoomScaleForRect:(const WebCore::FloatRect&)targetRect currentScale:(double)currentScale fitEntireRect:(BOOL)fitEntireRect minimumScale:(double)minimumScale maximumScale:(double)maximumScale
+- (double)_targetContentZoomScaleForRect:(const CyberCore::FloatRect&)targetRect currentScale:(double)currentScale fitEntireRect:(BOOL)fitEntireRect minimumScale:(double)minimumScale maximumScale:(double)maximumScale
 {
     return [_webView _targetContentZoomScaleForRect:targetRect currentScale:currentScale fitEntireRect:fitEntireRect minimumScale:minimumScale maximumScale:maximumScale];
 }
@@ -908,7 +908,7 @@ static void storeAccessibilityRemoteConnectionInformation(id element, pid_t pid,
 
 @implementation WKContentView (_WKWebViewPrintFormatter)
 
-- (std::optional<WebCore::FrameIdentifier>)_frameIdentifierForPrintFormatter:(_WKWebViewPrintFormatter *)printFormatter
+- (std::optional<CyberCore::FrameIdentifier>)_frameIdentifierForPrintFormatter:(_WKWebViewPrintFormatter *)printFormatter
 {
     ASSERT(isMainRunLoop());
 
@@ -937,7 +937,7 @@ static void storeAccessibilityRemoteConnectionInformation(id element, pid_t pid,
     // The first page can have a smaller content rect than subsequent pages if a top content inset
     // is specified. Since WebKit requires a uniform content rect for each page during layout, use
     // the intersection of the first and non-first page rects.
-    // FIXME: Teach WebCore::PrintContext to accept an initial content offset when paginating.
+    // FIXME: Teach CyberCore::PrintContext to accept an initial content offset when paginating.
     CGRect printingRect = CGRectIntersection([printFormatter _pageContentRect:YES], [printFormatter _pageContentRect:NO]);
     if (CGRectIsEmpty(printingRect))
         return nil;
@@ -956,7 +956,7 @@ static void storeAccessibilityRemoteConnectionInformation(id element, pid_t pid,
     printInfo.availablePaperWidth = CGRectGetWidth(printingRect);
     printInfo.availablePaperHeight = CGRectGetHeight(printingRect);
 
-    WebCore::FrameIdentifier frameID;
+    CyberCore::FrameIdentifier frameID;
     size_t pageCount = printInfo.snapshotFirstPage ? 1 : 0;
 
     if (isPrintingOnBackgroundThread) {
@@ -976,7 +976,7 @@ static void storeAccessibilityRemoteConnectionInformation(id element, pid_t pid,
 
             // This has the side effect of calling `WebPage::beginPrinting`. It is important that all calls
             // of `WebPage::beginPrinting` are matched with a corresponding call to `WebPage::endPrinting`.
-            _page->computePagesForPrinting(frameID, printInfo, [&pageCount, &computePagesSemaphore](const Vector<WebCore::IntRect>& pageRects, double /* totalScaleFactorForPrinting */, const WebCore::FloatBoxExtent& /* computedPageMargin */) mutable {
+            _page->computePagesForPrinting(frameID, printInfo, [&pageCount, &computePagesSemaphore](const Vector<CyberCore::IntRect>& pageRects, double /* totalScaleFactorForPrinting */, const CyberCore::FloatBoxExtent& /* computedPageMargin */) mutable {
                 ASSERT(pageRects.size() >= 1);
                 pageCount = pageRects.size();
                 computePagesSemaphore.signal();
@@ -1052,7 +1052,7 @@ static void storeAccessibilityRemoteConnectionInformation(id element, pid_t pid,
 
     ensureOnMainRunLoop([formatterAttributes = retainPtr(formatterAttributes), isPrintingOnBackgroundThread, printFormatter = retainPtr(printFormatter), retainedSelf = retainPtr(self)] {
         // Begin generating the PDF in expectation of a (eventual) request for the drawn data.
-        auto callbackID = retainedSelf->_page->drawToPDFiOS([formatterAttributes frameID], [formatterAttributes printInfo], [formatterAttributes pageCount], [isPrintingOnBackgroundThread, printFormatter, retainedSelf](RefPtr<WebCore::SharedBuffer>&& pdfData) mutable {
+        auto callbackID = retainedSelf->_page->drawToPDFiOS([formatterAttributes frameID], [formatterAttributes printInfo], [formatterAttributes pageCount], [isPrintingOnBackgroundThread, printFormatter, retainedSelf](RefPtr<CyberCore::SharedBuffer>&& pdfData) mutable {
             if (!isPrintingOnBackgroundThread)
                 retainedSelf->_printRenderingCallbackID = { };
             else {

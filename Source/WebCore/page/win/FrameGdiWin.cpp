@@ -33,7 +33,7 @@
 #include "GraphicsContextWin.h"
 #include <wtf/win/GDIObject.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 extern HDC g_screenDC;
 
@@ -69,4 +69,4 @@ GDIObject<HBITMAP> imageFromRect(Frame* frame, IntRect& ir)
     return hBmp;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

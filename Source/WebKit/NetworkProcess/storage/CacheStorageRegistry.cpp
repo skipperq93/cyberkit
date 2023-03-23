@@ -32,21 +32,21 @@ namespace WebKit {
 
 CacheStorageRegistry::CacheStorageRegistry() = default;
 
-void CacheStorageRegistry::registerCache(WebCore::DOMCacheIdentifier identifier, CacheStorageCache& cache)
+void CacheStorageRegistry::registerCache(CyberCore::DOMCacheIdentifier identifier, CacheStorageCache& cache)
 {
     ASSERT(!m_caches.contains(identifier));
 
     m_caches.add(identifier, cache);
 }
 
-void CacheStorageRegistry::unregisterCache(WebCore::DOMCacheIdentifier identifier)
+void CacheStorageRegistry::unregisterCache(CyberCore::DOMCacheIdentifier identifier)
 {
     ASSERT(m_caches.contains(identifier));
 
     m_caches.remove(identifier);
 }
 
-CacheStorageCache* CacheStorageRegistry::cache(WebCore::DOMCacheIdentifier identifier)
+CacheStorageCache* CacheStorageRegistry::cache(CyberCore::DOMCacheIdentifier identifier)
 {
     return m_caches.get(identifier).get();
 }

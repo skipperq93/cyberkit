@@ -79,7 +79,7 @@
 #import <CyberCore/TextIndicatorWindow.h>
 #import <CyberCore/TextUndoInsertionMarkupMac.h>
 #import <CyberCore/ValidationBubble.h>
-#import <CyberCore/WebCoreCALayerExtras.h>
+#import <CyberCore/CyberCoreCALayerExtras.h>
 #import <pal/spi/mac/NSApplicationSPI.h>
 #import <wtf/ProcessPrivilege.h>
 #import <wtf/RetainPtr.h>
@@ -104,7 +104,7 @@ static NSString * const kAXLoadCompleteNotification = @"AXLoadComplete";
 
 namespace WebKit {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 PageClientImpl::PageClientImpl(NSView *view, WKWebView *webView)
     : PageClientImplCocoa(webView)
@@ -124,7 +124,7 @@ std::unique_ptr<DrawingAreaProxy> PageClientImpl::createDrawingAreaProxy(WebProc
     return m_impl->createDrawingAreaProxy(process);
 }
 
-void PageClientImpl::setViewNeedsDisplay(const WebCore::Region&)
+void PageClientImpl::setViewNeedsDisplay(const CyberCore::Region&)
 {
     ASSERT_NOT_REACHED();
 }
@@ -133,7 +133,7 @@ void PageClientImpl::requestScroll(const FloatPoint& scrollPosition, const IntPo
 {
 }
 
-WebCore::FloatPoint PageClientImpl::viewScrollPosition()
+CyberCore::FloatPoint PageClientImpl::viewScrollPosition()
 {
     return { };
 }
@@ -243,7 +243,7 @@ void PageClientImpl::viewWillMoveToAnotherWindow()
     clearAllEditCommands();
 }
 
-WebCore::DestinationColorSpace PageClientImpl::colorSpace()
+CyberCore::DestinationColorSpace PageClientImpl::colorSpace()
 {
     return m_impl->colorSpace();
 }
@@ -292,12 +292,12 @@ void PageClientImpl::didFinishLoadingDataForCustomContentProvider(const String& 
 {
 }
 
-void PageClientImpl::didChangeContentSize(const WebCore::IntSize& newSize)
+void PageClientImpl::didChangeContentSize(const CyberCore::IntSize& newSize)
 {
     m_impl->didChangeContentSize(newSize);
 }
 
-void PageClientImpl::setCursor(const WebCore::Cursor& cursor)
+void PageClientImpl::setCursor(const CyberCore::Cursor& cursor)
 {
     ASSERT(hasProcessPrivilege(ProcessPrivilege::CanCommunicateWithWindowServer));
     // FIXME: Would be nice to share this code with WebKit1's WebChromeClient.
@@ -330,7 +330,7 @@ void PageClientImpl::setCursor(const WebCore::Cursor& cursor)
 
     [platformCursor set];
 
-    if (cursor.type() == WebCore::Cursor::Type::None) {
+    if (cursor.type() == CyberCore::Cursor::Type::None) {
         if ([NSCursor respondsToSelector:@selector(hideUntilChanged)])
             [NSCursor hideUntilChanged];
     }
@@ -341,7 +341,7 @@ void PageClientImpl::setCursorHiddenUntilMouseMoves(bool hiddenUntilMouseMoves)
     [NSCursor setHiddenUntilMouseMoves:hiddenUntilMouseMoves];
 }
 
-void PageClientImpl::didChangeViewportProperties(const WebCore::ViewportAttributes&)
+void PageClientImpl::didChangeViewportProperties(const CyberCore::ViewportAttributes&)
 {
 }
 
@@ -357,12 +357,12 @@ void PageClientImpl::registerInsertionUndoGrouping()
 
 #if ENABLE(UI_PROCESS_PDF_HUD)
 
-void PageClientImpl::createPDFHUD(PDFPluginIdentifier identifier, const WebCore::IntRect& rect)
+void PageClientImpl::createPDFHUD(PDFPluginIdentifier identifier, const CyberCore::IntRect& rect)
 {
     m_impl->createPDFHUD(identifier, rect);
 }
 
-void PageClientImpl::updatePDFHUDLocation(PDFPluginIdentifier identifier, const WebCore::IntRect& rect)
+void PageClientImpl::updatePDFHUDLocation(PDFPluginIdentifier identifier, const CyberCore::IntRect& rect)
 {
     m_impl->updatePDFHUDLocation(identifier, rect);
 }
@@ -394,7 +394,7 @@ void PageClientImpl::executeUndoRedo(UndoOrRedo undoOrRedo)
     return (undoOrRedo == UndoOrRedo::Undo) ? [[m_view undoManager] undo] : [[m_view undoManager] redo];
 }
 
-void PageClientImpl::startDrag(const WebCore::DragItem& item, const ShareableBitmapHandle& image)
+void PageClientImpl::startDrag(const CyberCore::DragItem& item, const ShareableBitmapHandle& image)
 {
     m_impl->startDrag(item, image);
 }
@@ -441,7 +441,7 @@ void PageClientImpl::pinnedStateDidChange()
     [m_webView didChangeValueForKey:@"_pinnedState"];
 }
 
-void PageClientImpl::drawPageBorderForPrinting(WebCore::FloatSize&& size)
+void PageClientImpl::drawPageBorderForPrinting(CyberCore::FloatSize&& size)
 {
     [m_webView drawPageBorderWithSize:size];
 }
@@ -460,7 +460,7 @@ IntRect PageClientImpl::rootViewToScreen(const IntRect& rect)
     return enclosingIntRect(tempRect);
 }
 
-IntRect PageClientImpl::rootViewToWindow(const WebCore::IntRect& rect)
+IntRect PageClientImpl::rootViewToWindow(const CyberCore::IntRect& rect)
 {
     NSRect tempRect = rect;
     tempRect = [m_view convertRect:tempRect toView:nil];
@@ -521,7 +521,7 @@ void PageClientImpl::didDismissContextMenu()
 #endif // ENABLE(CONTEXT_MENUS)
 
 #if ENABLE(INPUT_TYPE_COLOR)
-RefPtr<WebColorPicker> PageClientImpl::createColorPicker(WebPageProxy* page, const WebCore::Color& initialColor, const WebCore::IntRect& rect, Vector<WebCore::Color>&& suggestions)
+RefPtr<WebColorPicker> PageClientImpl::createColorPicker(WebPageProxy* page, const CyberCore::Color& initialColor, const CyberCore::IntRect& rect, Vector<CyberCore::Color>&& suggestions)
 {
     return WebColorPickerMac::create(page, initialColor, rect, WTFMove(suggestions), m_view);
 }
@@ -570,12 +570,12 @@ void PageClientImpl::clearSafeBrowsingWarningIfForMainFrameNavigation()
     m_impl->clearSafeBrowsingWarningIfForMainFrameNavigation();
 }
 
-void PageClientImpl::setTextIndicator(Ref<TextIndicator> textIndicator, WebCore::TextIndicatorLifetime lifetime)
+void PageClientImpl::setTextIndicator(Ref<TextIndicator> textIndicator, CyberCore::TextIndicatorLifetime lifetime)
 {
     m_impl->setTextIndicator(textIndicator.get(), lifetime);
 }
 
-void PageClientImpl::clearTextIndicator(WebCore::TextIndicatorDismissalAnimation dismissalAnimation)
+void PageClientImpl::clearTextIndicator(CyberCore::TextIndicatorDismissalAnimation dismissalAnimation)
 {
     m_impl->clearTextIndicatorWithAnimation(dismissalAnimation);
 }
@@ -629,7 +629,7 @@ CALayer *PageClientImpl::acceleratedCompositingRootLayer() const
     return m_impl->acceleratedCompositingRootLayer();
 }
 
-RefPtr<ViewSnapshot> PageClientImpl::takeViewSnapshot(std::optional<WebCore::IntRect>&&)
+RefPtr<ViewSnapshot> PageClientImpl::takeViewSnapshot(std::optional<CyberCore::IntRect>&&)
 {
     return m_impl->takeViewSnapshot();
 }
@@ -645,16 +645,16 @@ bool PageClientImpl::showShareSheet(const ShareDataWithParsedURL& shareData, WTF
     return true;
 }
 
-void PageClientImpl::wheelEventWasNotHandledByWebCore(const NativeWebWheelEvent& event)
+void PageClientImpl::wheelEventWasNotHandledByCyberCore(const NativeWebWheelEvent& event)
 {
     if (auto gestureController = m_impl->gestureController())
-        gestureController->wheelEventWasNotHandledByWebCore(event.nativeEvent());
+        gestureController->wheelEventWasNotHandledByCyberCore(event.nativeEvent());
 }
 
 #if ENABLE(MAC_GESTURE_EVENTS)
-void PageClientImpl::gestureEventWasNotHandledByWebCore(const NativeWebGestureEvent& event)
+void PageClientImpl::gestureEventWasNotHandledByCyberCore(const NativeWebGestureEvent& event)
 {
-    m_impl->gestureEventWasNotHandledByWebCore(event.nativeEvent());
+    m_impl->gestureEventWasNotHandledByCyberCore(event.nativeEvent());
 }
 #endif
 
@@ -663,9 +663,9 @@ void PageClientImpl::didPerformDictionaryLookup(const DictionaryPopupInfo& dicti
     m_impl->prepareForDictionaryLookup();
 
     DictionaryLookup::showPopup(dictionaryPopupInfo, m_view, [this](TextIndicator& textIndicator) {
-        m_impl->setTextIndicator(textIndicator, WebCore::TextIndicatorLifetime::Permanent);
+        m_impl->setTextIndicator(textIndicator, CyberCore::TextIndicatorLifetime::Permanent);
     }, nullptr, [this]() {
-        m_impl->clearTextIndicatorWithAnimation(WebCore::TextIndicatorDismissalAnimation::None);
+        m_impl->clearTextIndicatorWithAnimation(CyberCore::TextIndicatorDismissalAnimation::None);
     });
 }
 
@@ -685,7 +685,7 @@ void PageClientImpl::dismissCorrectionPanel(ReasonForDismissingAlternativeText r
 #endif
 }
 
-String PageClientImpl::dismissCorrectionPanelSoon(WebCore::ReasonForDismissingAlternativeText reason)
+String PageClientImpl::dismissCorrectionPanelSoon(CyberCore::ReasonForDismissingAlternativeText reason)
 {
 #if USE(AUTOCORRECTION_PANEL)
     return m_correctionPanel.dismiss(reason);
@@ -697,11 +697,11 @@ String PageClientImpl::dismissCorrectionPanelSoon(WebCore::ReasonForDismissingAl
 static inline NSCorrectionResponse toCorrectionResponse(AutocorrectionResponse response)
 {
     switch (response) {
-    case WebCore::AutocorrectionResponse::Reverted:
+    case CyberCore::AutocorrectionResponse::Reverted:
         return NSCorrectionResponseReverted;
-    case WebCore::AutocorrectionResponse::Edited:
+    case CyberCore::AutocorrectionResponse::Edited:
         return NSCorrectionResponseEdited;
-    case WebCore::AutocorrectionResponse::Accepted:
+    case CyberCore::AutocorrectionResponse::Accepted:
         return NSCorrectionResponseAccepted;
     }
 
@@ -736,7 +736,7 @@ bool PageClientImpl::executeSavedCommandBySelector(const String& selectorString)
     return m_impl->executeSavedCommandBySelector(NSSelectorFromString(selectorString));
 }
 
-void PageClientImpl::showDictationAlternativeUI(const WebCore::FloatRect& boundingBoxOfDictatedText, WebCore::DictationContext dictationContext)
+void PageClientImpl::showDictationAlternativeUI(const CyberCore::FloatRect& boundingBoxOfDictatedText, CyberCore::DictationContext dictationContext)
 {
     if (!isViewVisible() || !isViewInWindow())
         return;
@@ -881,7 +881,7 @@ void PageClientImpl::didSameDocumentNavigationForMainFrame(SameDocumentNavigatio
 
 void PageClientImpl::handleControlledElementIDResponse(const String& identifier)
 {
-    [m_webView _handleControlledElementIDResponse:nsStringFromWebCoreString(identifier)];
+    [m_webView _handleControlledElementIDResponse:nsStringFromCyberCoreString(identifier)];
 }
 
 void PageClientImpl::didChangeBackgroundColor()
@@ -923,7 +923,7 @@ void PageClientImpl::showPlatformContextMenu(NSMenu *menu, IntPoint location)
 }
 
 #if ENABLE(WIRELESS_PLAYBACK_TARGET)
-WebCore::WebMediaSessionManager& PageClientImpl::mediaSessionManager()
+CyberCore::WebMediaSessionManager& PageClientImpl::mediaSessionManager()
 {
     return WebMediaSessionManager::shared();
 }
@@ -968,7 +968,7 @@ _WKRemoteObjectRegistry *PageClientImpl::remoteObjectRegistry()
     return m_impl->remoteObjectRegistry();
 }
 
-void PageClientImpl::pageDidScroll(const WebCore::IntPoint& scrollPosition)
+void PageClientImpl::pageDidScroll(const CyberCore::IntPoint& scrollPosition)
 {
     m_impl->pageDidScroll(scrollPosition);
 }
@@ -978,7 +978,7 @@ void PageClientImpl::didRestoreScrollPosition()
     m_impl->didRestoreScrollPosition();
 }
 
-void PageClientImpl::requestScrollToRect(const WebCore::FloatRect& targetRect, const WebCore::FloatPoint& origin)
+void PageClientImpl::requestScrollToRect(const CyberCore::FloatRect& targetRect, const CyberCore::FloatPoint& origin)
 {
     // FIXME: Add additional logic to avoid Note Pip.
     m_impl->scrollToRect(targetRect, origin);
@@ -989,11 +989,11 @@ bool PageClientImpl::windowIsFrontWindowUnderMouse(const NativeWebMouseEvent& ev
     return m_impl->windowIsFrontWindowUnderMouse(event.nativeEvent());
 }
 
-WebCore::UserInterfaceLayoutDirection PageClientImpl::userInterfaceLayoutDirection()
+CyberCore::UserInterfaceLayoutDirection PageClientImpl::userInterfaceLayoutDirection()
 {
     if (!m_view)
-        return WebCore::UserInterfaceLayoutDirection::LTR;
-    return (m_view.userInterfaceLayoutDirection == NSUserInterfaceLayoutDirectionLeftToRight) ? WebCore::UserInterfaceLayoutDirection::LTR : WebCore::UserInterfaceLayoutDirection::RTL;
+        return CyberCore::UserInterfaceLayoutDirection::LTR;
+    return (m_view.userInterfaceLayoutDirection == NSUserInterfaceLayoutDirectionLeftToRight) ? CyberCore::UserInterfaceLayoutDirection::LTR : CyberCore::UserInterfaceLayoutDirection::RTL;
 }
 
 bool PageClientImpl::effectiveAppearanceIsDark() const
@@ -1011,12 +1011,12 @@ bool PageClientImpl::useFormSemanticContext() const
     return m_impl->useFormSemanticContext();
 }
 
-void PageClientImpl::takeFocus(WebCore::FocusDirection direction)
+void PageClientImpl::takeFocus(CyberCore::FocusDirection direction)
 {
     m_impl->takeFocus(direction);
 }
 
-void PageClientImpl::requestDOMPasteAccess(WebCore::DOMPasteAccessCategory pasteAccessCategory, const WebCore::IntRect& elementRect, const String& originIdentifier, CompletionHandler<void(WebCore::DOMPasteAccessResponse)>&& completion)
+void PageClientImpl::requestDOMPasteAccess(CyberCore::DOMPasteAccessCategory pasteAccessCategory, const CyberCore::IntRect& elementRect, const String& originIdentifier, CompletionHandler<void(CyberCore::DOMPasteAccessResponse)>&& completion)
 {
     m_impl->requestDOMPasteAccess(pasteAccessCategory, elementRect, originIdentifier, WTFMove(completion));
 }
@@ -1027,9 +1027,9 @@ void PageClientImpl::makeViewBlank(bool makeBlank)
 }
 
 #if HAVE(APP_ACCENT_COLORS)
-WebCore::Color PageClientImpl::accentColor()
+CyberCore::Color PageClientImpl::accentColor()
 {
-    return WebCore::colorFromCocoaColor([NSApp _effectiveAccentColor]);
+    return CyberCore::colorFromCocoaColor([NSApp _effectiveAccentColor]);
 }
 #endif
 

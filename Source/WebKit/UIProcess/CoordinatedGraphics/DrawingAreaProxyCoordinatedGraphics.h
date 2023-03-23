@@ -32,7 +32,7 @@
 #include "LayerTreeContext.h"
 #include <wtf/RunLoop.h>
 
-namespace WebCore {
+namespace CyberCore {
 class Region;
 }
 
@@ -44,7 +44,7 @@ public:
     virtual ~DrawingAreaProxyCoordinatedGraphics();
 
 #if !PLATFORM(WPE)
-    void paint(BackingStore::PlatformGraphicsContext, const WebCore::IntRect&, WebCore::Region& unpaintedRegion);
+    void paint(BackingStore::PlatformGraphicsContext, const CyberCore::IntRect&, CyberCore::Region& unpaintedRegion);
 #endif
 
     bool isInAcceleratedCompositingMode() const { return !m_layerTreeContext.isEmpty(); }
@@ -58,8 +58,8 @@ private:
     void setBackingStoreIsDiscardable(bool) override;
 
 #if PLATFORM(GTK)
-    void adjustTransientZoom(double scale, WebCore::FloatPoint origin) override;
-    void commitTransientZoom(double scale, WebCore::FloatPoint origin) override;
+    void adjustTransientZoom(double scale, CyberCore::FloatPoint origin) override;
+    void commitTransientZoom(double scale, CyberCore::FloatPoint origin) override;
 #endif
 
     // IPC message handlers

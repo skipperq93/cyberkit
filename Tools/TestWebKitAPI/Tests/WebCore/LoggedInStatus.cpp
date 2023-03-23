@@ -30,7 +30,7 @@
 #include <wtf/Seconds.h>
 #include <wtf/text/StringBuilder.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 namespace TestWebKitAPI {
 

@@ -27,10 +27,10 @@
 
 #include <wtf/ObjectIdentifier.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum InbandGenericCueIdentifierType { };
 using InbandGenericCueIdentifier = ObjectIdentifier<InbandGenericCueIdentifierType>;
 
-} // namespace WebCore
+} // namespace CyberCore
 

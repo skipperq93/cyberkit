@@ -29,8 +29,8 @@
 #import "WebResourceInternal.h"
 
 #import "WebFrameInternal.h"
-#import "WebKitLogging.h"
-#import "WebKitVersionChecks.h"
+#import "CyberKitLogging.h"
+#import "CyberKitVersionChecks.h"
 #import "WebNSDictionaryExtras.h"
 #import "WebNSObjectExtras.h"
 #import "WebNSURLExtras.h"
@@ -39,15 +39,15 @@
 #import <CyberCore/LegacyWebArchive.h>
 #import <CyberCore/RuntimeApplicationChecks.h>
 #import <CyberCore/ThreadCheck.h>
-#import <CyberCore/WebCoreJITOperations.h>
-#import <CyberCore/WebCoreObjCExtras.h>
-#import <CyberCore/WebCoreURLResponse.h>
+#import <CyberCore/CyberCoreJITOperations.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
+#import <CyberCore/CyberCoreURLResponse.h>
 #import <pal/text/TextEncoding.h>
 #import <wtf/MainThread.h>
 #import <wtf/RefPtr.h>
 #import <wtf/RunLoop.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 static NSString * const WebResourceDataKey =              @"WebResourceData";
 static NSString * const WebResourceFrameNameKey =         @"WebResourceFrameName";
@@ -70,7 +70,7 @@ static NSString * const WebResourceResponseKey =          @"WebResourceResponse"
 #if !PLATFORM(IOS_FAMILY)
     JSC::initialize();
     WTF::initializeMainThread();
-    WebCore::populateJITOperations();
+    CyberCore::populateJITOperations();
 #endif
 }
 
@@ -90,7 +90,7 @@ static NSString * const WebResourceResponseKey =          @"WebResourceResponse"
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainThread([WebResourcePrivate class], self))
+    if (CyberCoreObjCScheduleDeallocateOnMainThread([WebResourcePrivate class], self))
         return;
     [super dealloc];
 }
@@ -115,7 +115,7 @@ static NSString * const WebResourceResponseKey =          @"WebResourceResponse"
 
 - (instancetype)initWithCoder:(NSCoder *)decoder
 {
-    WebCoreThreadViolationCheckRoundTwo();
+    CyberCoreThreadViolationCheckRoundTwo();
 
     self = [super init];
     if (!self)
@@ -198,7 +198,7 @@ static NSString * const WebResourceResponseKey =          @"WebResourceResponse"
 
 - (NSData *)data
 {
-    WebCoreThreadViolationCheckRoundTwo();
+    CyberCoreThreadViolationCheckRoundTwo();
 
     if (!_private->coreResource)
         return nil;
@@ -207,7 +207,7 @@ static NSString * const WebResourceResponseKey =          @"WebResourceResponse"
 
 - (NSURL *)URL
 {
-    WebCoreThreadViolationCheckRoundTwo();
+    CyberCoreThreadViolationCheckRoundTwo();
 
     if (!_private->coreResource)
         return nil;
@@ -216,7 +216,7 @@ static NSString * const WebResourceResponseKey =          @"WebResourceResponse"
 
 - (NSString *)MIMEType
 {
-    WebCoreThreadViolationCheckRoundTwo();
+    CyberCoreThreadViolationCheckRoundTwo();
 
     if (!_private->coreResource)
         return nil;
@@ -226,7 +226,7 @@ static NSString * const WebResourceResponseKey =          @"WebResourceResponse"
 
 - (NSString *)textEncodingName
 {
-    WebCoreThreadViolationCheckRoundTwo();
+    CyberCoreThreadViolationCheckRoundTwo();
 
     if (!_private->coreResource)
         return nil;
@@ -236,7 +236,7 @@ static NSString * const WebResourceResponseKey =          @"WebResourceResponse"
 
 - (NSString *)frameName
 {
-    WebCoreThreadViolationCheckRoundTwo();
+    CyberCoreThreadViolationCheckRoundTwo();
 
     if (!_private->coreResource)
         return nil;
@@ -263,7 +263,7 @@ static NSString * const WebResourceResponseKey =          @"WebResourceResponse"
     return self;
 }
 
-- (NakedRef<WebCore::ArchiveResource>)_coreResource
+- (NakedRef<CyberCore::ArchiveResource>)_coreResource
 {
     return *_private->coreResource;
 }
@@ -276,7 +276,7 @@ static NSString * const WebResourceResponseKey =          @"WebResourceResponse"
 // FIXME: This "ignoreWhenUnarchiving" concept is an ugly one - can we find a cleaner solution for those who need this SPI?
 - (void)_ignoreWhenUnarchiving
 {
-    WebCoreThreadViolationCheckRoundTwo();
+    CyberCoreThreadViolationCheckRoundTwo();
 
     if (!_private->coreResource)
         return;
@@ -291,7 +291,7 @@ static NSString * const WebResourceResponseKey =          @"WebResourceResponse"
            response:(NSURLResponse *)response
            copyData:(BOOL)copyData
 {
-    WebCoreThreadViolationCheckRoundTwo();
+    CyberCoreThreadViolationCheckRoundTwo();
 
     self = [super init];
     if (!self)
@@ -327,7 +327,7 @@ static NSString * const WebResourceResponseKey =          @"WebResourceResponse"
 
 - (NSString *)_suggestedFilename
 {
-    WebCoreThreadViolationCheckRoundTwo();
+    CyberCoreThreadViolationCheckRoundTwo();
 
     if (!_private->coreResource)
         return nil;
@@ -349,7 +349,7 @@ static NSString * const WebResourceResponseKey =          @"WebResourceResponse"
 
 - (NSURLResponse *)_response
 {
-    WebCoreThreadViolationCheckRoundTwo();
+    CyberCoreThreadViolationCheckRoundTwo();
 
     NSURLResponse *response = nil;
     if (_private->coreResource)
@@ -359,7 +359,7 @@ static NSString * const WebResourceResponseKey =          @"WebResourceResponse"
 
 - (NSString *)_stringValue
 {
-    WebCoreThreadViolationCheckRoundTwo();
+    CyberCoreThreadViolationCheckRoundTwo();
 
     PAL::TextEncoding encoding;
     if (_private->coreResource)

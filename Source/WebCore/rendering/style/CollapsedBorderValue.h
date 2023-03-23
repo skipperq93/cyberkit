@@ -27,7 +27,7 @@
 #include "BorderValue.h"
 #include "LayoutUnit.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CollapsedBorderValue {
 public:
@@ -75,4 +75,4 @@ inline LayoutUnit CollapsedBorderValue::adjustedCollapsedBorderWidth(float borde
     return LayoutUnit(floorToDevicePixel(halfCollapsedBorderWidth, deviceScaleFactor));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

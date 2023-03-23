@@ -37,7 +37,7 @@
 #import <pal/cf/CoreMediaSoftLink.h>
 #import <pal/cf/VideoToolboxSoftLink.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 std::unique_ptr<VideoSampleBufferCompressor> VideoSampleBufferCompressor::create(String mimeType, CMBufferQueueTriggerCallback callback, void* callbackObject)
 {

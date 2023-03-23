@@ -31,7 +31,7 @@
 #include "ServiceWorkerContainer.h"
 #include "ServiceWorkerRegistration.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 void NavigationPreloadManager::enable(Promise&& promise)
 {
@@ -53,6 +53,6 @@ void NavigationPreloadManager::getState(StatePromise&& promise)
     m_registration.container().getNavigationPreloadState(m_registration.identifier(), WTFMove(promise));
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

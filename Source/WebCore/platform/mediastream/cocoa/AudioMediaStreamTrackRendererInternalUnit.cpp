@@ -41,7 +41,7 @@
 #include <wtf/FastMalloc.h>
 #include <wtf/Lock.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class LocalAudioMediaStreamTrackRendererInternalUnit final : public AudioMediaStreamTrackRendererInternalUnit {
     WTF_MAKE_FAST_ALLOCATED;
@@ -296,6 +296,6 @@ UniqueRef<AudioMediaStreamTrackRendererInternalUnit> AudioMediaStreamTrackRender
     return createInternalUnit(client);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM)

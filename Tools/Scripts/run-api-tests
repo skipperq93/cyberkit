@@ -113,10 +113,10 @@ def parse_args(args):
                              help='Only check and run TestWebKitAPI'),
         optparse.make_option('--ipc-only', action='store_const', const='TestIPC', dest='api_binary',
                              help='Only check and run TestIPC (Darwin ports only)'),
-        optparse.make_option('--web-core-only', action='store_const', const='TestWebCore', dest='api_binary',
-                             help='Only check and run TestWebCore.exe (Windows only)'),
-        optparse.make_option('--webkit-legacy-only', action='store_const', const='TestWebKitLegacy', dest='api_binary',
-                             help='Only check and run TestWebKitLegacy.exe (Windows only)'),
+        optparse.make_option('--web-core-only', action='store_const', const='TestCyberCore', dest='api_binary',
+                             help='Only check and run TestCyberCore.exe (Windows only)'),
+        optparse.make_option('--webkit-legacy-only', action='store_const', const='TestCyberKitLegacy', dest='api_binary',
+                             help='Only check and run TestCyberKitLegacy.exe (Windows only)'),
         optparse.make_option('--wgsl-only', action='store_const', const='TestWGSL', dest='api_binary',
                              help='Only check and run TestWGSL (Darwin ports only)'),
         optparse.make_option('-d', '--dump', action='store_true', default=False,
@@ -146,7 +146,7 @@ def parse_args(args):
                              help='Passes that environment variable to the tests (--additional-env-var=NAME=VALUE)'),
 
         optparse.make_option('--remote-layer-tree', action='store_true', default=False,
-                             help='Use the remote layer tree drawing model (macOS non-WebKitLegacy only)'),
+                             help='Use the remote layer tree drawing model (macOS non-CyberKitLegacy only)'),
         optparse.make_option('--use-gpu-process', action='store_true', default=False,
                              help='Enable GPU process DOM rendering'),
     ]))

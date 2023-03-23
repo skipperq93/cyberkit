@@ -30,20 +30,20 @@
 #import "config.h"
 #import "GCController.h"
 
-#import <CyberKit/WebCoreStatistics.h>
+#import <CyberKit/CyberCoreStatistics.h>
 
 
 void GCController::collect() const
 {
-    [WebCoreStatistics garbageCollectJavaScriptObjects];
+    [CyberCoreStatistics garbageCollectJavaScriptObjects];
 }
 
 void GCController::collectOnAlternateThread(bool waitUntilDone) const
 {
-    [WebCoreStatistics garbageCollectJavaScriptObjectsOnAlternateThreadForDebugging:waitUntilDone];
+    [CyberCoreStatistics garbageCollectJavaScriptObjectsOnAlternateThreadForDebugging:waitUntilDone];
 }
 
 size_t GCController::getJSObjectCount() const
 {
-    return [WebCoreStatistics javaScriptObjectsCount];
+    return [CyberCoreStatistics javaScriptObjectsCount];
 }

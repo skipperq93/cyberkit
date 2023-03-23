@@ -34,7 +34,7 @@
 #include <wtf/text/AtomString.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class Element;
@@ -100,4 +100,4 @@ inline bool ModalContainerObserver::shouldHide(const Element& element) const
     return m_userInteractionBlockingElement == &element || container() == &element;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

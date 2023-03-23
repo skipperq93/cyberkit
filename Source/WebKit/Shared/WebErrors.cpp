@@ -35,7 +35,7 @@
 #include <CyberCore/ResourceResponse.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 ResourceError blockedError(const ResourceRequest& request)
 {

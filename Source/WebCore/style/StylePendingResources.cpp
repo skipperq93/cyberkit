@@ -38,7 +38,7 @@
 #include "StyleImage.h"
 #include "TransformFunctions.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace Style {
 
 // <https://html.spec.whatwg.org/multipage/urls-and-fetching.html#cors-settings-attributes>

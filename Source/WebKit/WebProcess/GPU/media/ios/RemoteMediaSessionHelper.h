@@ -32,12 +32,12 @@
 #include <CyberCore/MediaPlaybackTargetContext.h>
 #include <CyberCore/MediaSessionHelperIOS.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebProcess;
 
 class RemoteMediaSessionHelper final
-    : public WebCore::MediaSessionHelper
+    : public CyberCore::MediaSessionHelper
     , public IPC::MessageReceiver
     , public GPUProcessConnection::Client {
 public:
@@ -46,11 +46,11 @@ public:
 
     IPC::Connection& ensureConnection();
 
-    using HasAvailableTargets = WebCore::MediaSessionHelperClient::HasAvailableTargets;
-    using PlayingToAutomotiveHeadUnit = WebCore::MediaSessionHelperClient::PlayingToAutomotiveHeadUnit;
-    using ShouldPause = WebCore::MediaSessionHelperClient::ShouldPause;
-    using SupportsAirPlayVideo = WebCore::MediaSessionHelperClient::SupportsAirPlayVideo;
-    using SuspendedUnderLock = WebCore::MediaSessionHelperClient::SuspendedUnderLock;
+    using HasAvailableTargets = CyberCore::MediaSessionHelperClient::HasAvailableTargets;
+    using PlayingToAutomotiveHeadUnit = CyberCore::MediaSessionHelperClient::PlayingToAutomotiveHeadUnit;
+    using ShouldPause = CyberCore::MediaSessionHelperClient::ShouldPause;
+    using SupportsAirPlayVideo = CyberCore::MediaSessionHelperClient::SupportsAirPlayVideo;
+    using SuspendedUnderLock = CyberCore::MediaSessionHelperClient::SuspendedUnderLock;
 
 private:
     // IPC::MessageReceiver
@@ -65,7 +65,7 @@ private:
     void providePresentingApplicationPID(int) final;
 
     // Messages
-    void activeVideoRouteDidChange(SupportsAirPlayVideo, WebCore::MediaPlaybackTargetContext&&);
+    void activeVideoRouteDidChange(SupportsAirPlayVideo, CyberCore::MediaPlaybackTargetContext&&);
 
     WebProcess& m_process;
     WeakPtr<GPUProcessConnection> m_gpuProcessConnection;

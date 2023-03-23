@@ -36,43 +36,43 @@
 #import <wtf/GetPtr.h>
 #import <wtf/URL.h>
 
-#define IMPL static_cast<WebCore::MutationEvent*>(reinterpret_cast<WebCore::Event*>(_internal))
+#define IMPL static_cast<CyberCore::MutationEvent*>(reinterpret_cast<CyberCore::Event*>(_internal))
 
 @implementation DOMMutationEvent
 
 - (DOMNode *)relatedNode
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->relatedNode()));
 }
 
 - (NSString *)prevValue
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->prevValue();
 }
 
 - (NSString *)newValue
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->newValue();
 }
 
 - (NSString *)attrName
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->attrName();
 }
 
 - (unsigned short)attrChange
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->attrChange();
 }
 
 - (void)initMutationEvent:(NSString *)type canBubble:(BOOL)canBubble cancelable:(BOOL)cancelable relatedNode:(DOMNode *)inRelatedNode prevValue:(NSString *)inPrevValue newValue:(NSString *)inNewValue attrName:(NSString *)inAttrName attrChange:(unsigned short)inAttrChange
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     IMPL->initMutationEvent(type, canBubble, cancelable, core(inRelatedNode), inPrevValue, inNewValue, inAttrName, inAttrChange);
 }
 

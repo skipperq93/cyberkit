@@ -25,7 +25,7 @@
 
 #import "config.h"
 #import "JSExportMacros.h"
-#import <CyberScriptCore/JavaScriptCore.h>
+#import <CyberScriptCore/CyberScriptCore.h>
 
 #import "CurrentThisInsideBlockGetterTest.h"
 #import "DateTests.h"
@@ -2090,8 +2090,8 @@ static NSURL* cacheFileInDataVault(NSString* name)
 
         NSString *userDirPath = [[NSFileManager defaultManager] stringWithFileSystemRepresentation:userDir length:strlen(userDir)];
         dataVaultURL = [NSURL fileURLWithPath:userDirPath isDirectory:YES];
-        dataVaultURL = [dataVaultURL URLByAppendingPathComponent:@"JavaScriptCore" isDirectory:YES];
-        rootless_mkdir_datavault(dataVaultURL.path.UTF8String, 0700, "JavaScriptCore");
+        dataVaultURL = [dataVaultURL URLByAppendingPathComponent:@"CyberScriptCore" isDirectory:YES];
+        rootless_mkdir_datavault(dataVaultURL.path.UTF8String, 0700, "CyberScriptCore");
     });
 
     return [dataVaultURL URLByAppendingPathComponent:name isDirectory:NO];

@@ -27,7 +27,7 @@
 #include "SVGRenderStyle.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(SVGFEDropShadowElement);
 
@@ -166,4 +166,4 @@ RefPtr<FilterEffect> SVGFEDropShadowElement::createFilterEffect(const FilterEffe
     return FEDropShadow::create(stdDeviationX(), stdDeviationY(), dx(), dy(), color, opacity);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

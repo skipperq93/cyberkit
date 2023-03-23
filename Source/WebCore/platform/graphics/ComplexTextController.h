@@ -43,7 +43,7 @@ namespace WTF {
 class CachedTextBreakIterator;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class FontCascade;
 class Font;
@@ -213,4 +213,4 @@ private:
     bool m_forTextEmphasis { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 class SharedWorkerObjectConnection;
 
@@ -38,4 +38,4 @@ public:
     virtual SharedWorkerObjectConnection* sharedWorkerConnection() = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

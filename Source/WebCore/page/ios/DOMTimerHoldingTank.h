@@ -30,7 +30,7 @@
 #include "Timer.h"
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMTimer;
 
@@ -70,6 +70,6 @@ private:
     static bool s_isDeferring;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(CONTENT_CHANGE_OBSERVER)

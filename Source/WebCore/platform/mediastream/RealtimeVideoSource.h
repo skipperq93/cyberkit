@@ -29,7 +29,7 @@
 
 #include "RealtimeVideoCaptureSource.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ImageTransferSessionVT;
 
@@ -95,7 +95,7 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM)
 

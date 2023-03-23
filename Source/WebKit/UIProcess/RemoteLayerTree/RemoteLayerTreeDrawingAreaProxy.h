@@ -52,8 +52,8 @@ public:
     
     virtual std::unique_ptr<RemoteScrollingCoordinatorProxy> createScrollingCoordinatorProxy() const = 0;
 
-    void acceleratedAnimationDidStart(WebCore::GraphicsLayer::PlatformLayerID, const String& key, MonotonicTime startTime);
-    void acceleratedAnimationDidEnd(WebCore::GraphicsLayer::PlatformLayerID, const String& key);
+    void acceleratedAnimationDidStart(CyberCore::GraphicsLayer::PlatformLayerID, const String& key, MonotonicTime startTime);
+    void acceleratedAnimationDidEnd(CyberCore::GraphicsLayer::PlatformLayerID, const String& key);
 
     TransactionID nextLayerTreeTransactionID() const { return m_pendingLayerTreeTransactionID.next(); }
     TransactionID lastCommittedLayerTreeTransactionID() const { return m_transactionIDForPendingCACommit; }
@@ -63,10 +63,10 @@ public:
     
     bool hasDebugIndicator() const { return !!m_debugIndicatorLayerTreeHost; }
 
-    CALayer *layerWithIDForTesting(WebCore::GraphicsLayer::PlatformLayerID) const;
+    CALayer *layerWithIDForTesting(CyberCore::GraphicsLayer::PlatformLayerID) const;
 
 #if ENABLE(OVERLAY_REGIONS_IN_EVENT_REGION)
-    void updateOverlayRegionIDs(const HashSet<WebCore::GraphicsLayer::PlatformLayerID> &overlayRegionIDs) { m_remoteLayerTreeHost->updateOverlayRegionIDs(overlayRegionIDs); }
+    void updateOverlayRegionIDs(const HashSet<CyberCore::GraphicsLayer::PlatformLayerID> &overlayRegionIDs) { m_remoteLayerTreeHost->updateOverlayRegionIDs(overlayRegionIDs); }
 #endif
 
 protected:
@@ -89,9 +89,9 @@ private:
     virtual void scheduleDisplayRefreshCallbacks() { }
     virtual void pauseDisplayRefreshCallbacks() { }
 
-    float indicatorScale(WebCore::IntSize contentsSize) const;
+    float indicatorScale(CyberCore::IntSize contentsSize) const;
     void updateDebugIndicator() final;
-    void updateDebugIndicator(WebCore::IntSize contentsSize, bool rootLayerChanged, float scale, const WebCore::IntPoint& scrollPosition);
+    void updateDebugIndicator(CyberCore::IntSize contentsSize, bool rootLayerChanged, float scale, const CyberCore::IntPoint& scrollPosition);
     void initializeDebugIndicator();
 
     void waitForDidUpdateActivityState(ActivityStateChangeID, WebProcessProxy&) final;
@@ -101,18 +101,18 @@ private:
 
     void prepareForAppSuspension() final;
     
-    WebCore::FloatPoint indicatorLocation() const;
+    CyberCore::FloatPoint indicatorLocation() const;
 
     // IPC::MessageReceiver
     void didReceiveMessage(IPC::Connection&, IPC::Decoder&) final;
 
     // Message handlers
-    virtual void setPreferredFramesPerSecond(WebCore::FramesPerSecond) { }
+    virtual void setPreferredFramesPerSecond(CyberCore::FramesPerSecond) { }
     void willCommitLayerTree(TransactionID);
     void commitLayerTree(IPC::Connection&, const RemoteLayerTreeTransaction&, const RemoteScrollingCoordinatorTransaction&);
     virtual void didCommitLayerTree(IPC::Connection&, const RemoteLayerTreeTransaction&, const RemoteScrollingCoordinatorTransaction&) { }
 
-    void asyncSetLayerContents(WebCore::GraphicsLayer::PlatformLayerID, ImageBufferBackendHandle&&);
+    void asyncSetLayerContents(CyberCore::GraphicsLayer::PlatformLayerID, ImageBufferBackendHandle&&);
 
     void sendUpdateGeometry();
 
@@ -121,7 +121,7 @@ private:
     enum DidUpdateMessageState { DoesNotNeedDidUpdate, NeedsDidUpdate, MissedCommit };
     DidUpdateMessageState m_didUpdateMessageState { DoesNotNeedDidUpdate };
 
-    WebCore::IntSize m_lastSentSize;
+    CyberCore::IntSize m_lastSentSize;
 
     std::unique_ptr<RemoteLayerTreeHost> m_debugIndicatorLayerTreeHost;
     RetainPtr<CALayer> m_tileMapHostLayer;

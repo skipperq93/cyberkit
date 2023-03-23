@@ -31,7 +31,7 @@
 #include "PixelBuffer.h"
 #include <CyberScriptCore/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FETurbulence;
 enum class TurbulenceType;
@@ -116,4 +116,4 @@ private:
     static void applyPlatform(const IntRect& filterRegion, const FloatSize& filterScale, PixelBuffer&, PaintingData&, StitchData&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

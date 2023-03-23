@@ -26,7 +26,7 @@
 #include "Supplementable.h"
 #include <wtf/IsoMalloc.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Blob;
 class DeferredPromise;

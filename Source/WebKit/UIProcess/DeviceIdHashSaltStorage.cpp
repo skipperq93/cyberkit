@@ -38,7 +38,7 @@
 #include <wtf/text/StringHash.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 static constexpr unsigned deviceIdHashSaltStorageVersion { 1 };
 static constexpr unsigned hashSaltSize { 48 };

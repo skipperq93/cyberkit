@@ -26,13 +26,13 @@
 #include "config.h"
 #include "WebDiagnosticLoggingClient.h"
 
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebPage.h"
 #include "WebPageProxyMessages.h"
 #include <CyberCore/Settings.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 WebDiagnosticLoggingClient::WebDiagnosticLoggingClient(WebPage& page)
     : m_page(page)
@@ -43,7 +43,7 @@ WebDiagnosticLoggingClient::~WebDiagnosticLoggingClient()
 {
 }
 
-void WebDiagnosticLoggingClient::logDiagnosticMessage(const String& message, const String& description, WebCore::ShouldSample shouldSample)
+void WebDiagnosticLoggingClient::logDiagnosticMessage(const String& message, const String& description, CyberCore::ShouldSample shouldSample)
 {
     ASSERT(!m_page.corePage() || m_page.corePage()->settings().diagnosticLoggingEnabled());
 
@@ -53,7 +53,7 @@ void WebDiagnosticLoggingClient::logDiagnosticMessage(const String& message, con
     m_page.send(Messages::WebPageProxy::LogDiagnosticMessageFromWebProcess(message, description, ShouldSample::No));
 }
 
-void WebDiagnosticLoggingClient::logDiagnosticMessageWithResult(const String& message, const String& description, WebCore::DiagnosticLoggingResultType result, WebCore::ShouldSample shouldSample)
+void WebDiagnosticLoggingClient::logDiagnosticMessageWithResult(const String& message, const String& description, CyberCore::DiagnosticLoggingResultType result, CyberCore::ShouldSample shouldSample)
 {
     ASSERT(!m_page.corePage() || m_page.corePage()->settings().diagnosticLoggingEnabled());
 
@@ -63,7 +63,7 @@ void WebDiagnosticLoggingClient::logDiagnosticMessageWithResult(const String& me
     m_page.send(Messages::WebPageProxy::LogDiagnosticMessageWithResultFromWebProcess(message, description, result, ShouldSample::No));
 }
 
-void WebDiagnosticLoggingClient::logDiagnosticMessageWithValue(const String& message, const String& description, double value, unsigned significantFigures, WebCore::ShouldSample shouldSample)
+void WebDiagnosticLoggingClient::logDiagnosticMessageWithValue(const String& message, const String& description, double value, unsigned significantFigures, CyberCore::ShouldSample shouldSample)
 {
     ASSERT(!m_page.corePage() || m_page.corePage()->settings().diagnosticLoggingEnabled());
 
@@ -73,7 +73,7 @@ void WebDiagnosticLoggingClient::logDiagnosticMessageWithValue(const String& mes
     m_page.send(Messages::WebPageProxy::LogDiagnosticMessageWithValueFromWebProcess(message, description, value, significantFigures, ShouldSample::No));
 }
 
-void WebDiagnosticLoggingClient::logDiagnosticMessageWithEnhancedPrivacy(const String& message, const String& description, WebCore::ShouldSample shouldSample)
+void WebDiagnosticLoggingClient::logDiagnosticMessageWithEnhancedPrivacy(const String& message, const String& description, CyberCore::ShouldSample shouldSample)
 {
     ASSERT(!m_page.corePage() || m_page.corePage()->settings().diagnosticLoggingEnabled());
 
@@ -93,11 +93,11 @@ void WebDiagnosticLoggingClient::logDiagnosticMessageWithValueDictionary(const S
     m_page.send(Messages::WebPageProxy::LogDiagnosticMessageWithValueDictionaryFromWebProcess(message, description, value, ShouldSample::No));
 }
 
-void WebDiagnosticLoggingClient::logDiagnosticMessageWithDomain(const String& message, WebCore::DiagnosticLoggingDomain domain)
+void WebDiagnosticLoggingClient::logDiagnosticMessageWithDomain(const String& message, CyberCore::DiagnosticLoggingDomain domain)
 {
     ASSERT(!m_page.corePage() || m_page.corePage()->settings().diagnosticLoggingEnabled());
 
     m_page.send(Messages::WebPageProxy::LogDiagnosticMessageWithDomainFromWebProcess(message, domain));
 }
 
-} // namespace WebKit
+} // namespace CyberKit

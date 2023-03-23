@@ -30,7 +30,7 @@
 #include "WebProcess.h"
 #include "WebSharedWorkerObjectConnection.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 WebSharedWorkerProvider& WebSharedWorkerProvider::singleton()
 {
@@ -40,9 +40,9 @@ WebSharedWorkerProvider& WebSharedWorkerProvider::singleton()
 
 WebSharedWorkerProvider::WebSharedWorkerProvider() = default;
 
-WebCore::SharedWorkerObjectConnection* WebSharedWorkerProvider::sharedWorkerConnection()
+CyberCore::SharedWorkerObjectConnection* WebSharedWorkerProvider::sharedWorkerConnection()
 {
     return &WebProcess::singleton().ensureNetworkProcessConnection().sharedWorkerConnection();
 }
 
-} // namespace WebKit
+} // namespace CyberKit

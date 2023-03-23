@@ -145,7 +145,7 @@
 #include <wtf/text/CString.h>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -5275,7 +5275,7 @@ bool RenderLayer::hasNonEmptyChildRenderers(PaintedContentRequest& request) cons
 
 bool RenderLayer::hasVisibleBoxDecorationsOrBackground() const
 {
-    return WebCore::hasVisibleBoxDecorationsOrBackground(renderer());
+    return CyberCore::hasVisibleBoxDecorationsOrBackground(renderer());
 }
 
 bool RenderLayer::hasVisibleBoxDecorations() const
@@ -5726,31 +5726,31 @@ TextStream& operator<<(TextStream& ts, PaintBehavior behavior)
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #if ENABLE(TREE_DEBUGGING)
 
-void showLayerTree(const WebCore::RenderLayer* layer)
+void showLayerTree(const CyberCore::RenderLayer* layer)
 {
     if (!layer)
         return;
 
     String output = externalRepresentation(&layer->renderer().frame(), {
-        WebCore::RenderAsTextFlag::ShowAllLayers,
-        WebCore::RenderAsTextFlag::ShowLayerNesting,
-        WebCore::RenderAsTextFlag::ShowCompositedLayers,
-        WebCore::RenderAsTextFlag::ShowOverflow,
-        WebCore::RenderAsTextFlag::ShowSVGGeometry,
-        WebCore::RenderAsTextFlag::ShowLayerFragments,
-        WebCore::RenderAsTextFlag::ShowAddresses,
-        WebCore::RenderAsTextFlag::ShowIDAndClass,
-        WebCore::RenderAsTextFlag::DontUpdateLayout,
-        WebCore::RenderAsTextFlag::ShowLayoutState,
+        CyberCore::RenderAsTextFlag::ShowAllLayers,
+        CyberCore::RenderAsTextFlag::ShowLayerNesting,
+        CyberCore::RenderAsTextFlag::ShowCompositedLayers,
+        CyberCore::RenderAsTextFlag::ShowOverflow,
+        CyberCore::RenderAsTextFlag::ShowSVGGeometry,
+        CyberCore::RenderAsTextFlag::ShowLayerFragments,
+        CyberCore::RenderAsTextFlag::ShowAddresses,
+        CyberCore::RenderAsTextFlag::ShowIDAndClass,
+        CyberCore::RenderAsTextFlag::DontUpdateLayout,
+        CyberCore::RenderAsTextFlag::ShowLayoutState,
     });
     fprintf(stderr, "\n%s\n", output.utf8().data());
 }
 
-void showLayerTree(const WebCore::RenderObject* renderer)
+void showLayerTree(const CyberCore::RenderObject* renderer)
 {
     if (!renderer)
         return;
@@ -5775,7 +5775,7 @@ static void outputIdent(TextStream& stream, unsigned depth)
         stream << " ";
 }
 
-static void outputPaintOrderTreeRecursive(TextStream& stream, const WebCore::RenderLayer& layer, const char* prefix, unsigned depth = 0)
+static void outputPaintOrderTreeRecursive(TextStream& stream, const CyberCore::RenderLayer& layer, const char* prefix, unsigned depth = 0)
 {
     stream << (layer.isCSSStackingContext() ? "S" : (layer.isForcedStackingContext() ? "F" : (layer.isOpportunisticStackingContext() ? "P" : "-")));
     stream << (layer.isNormalFlowOnly() ? "N" : "-");
@@ -5856,13 +5856,13 @@ static void outputPaintOrderTreeRecursive(TextStream& stream, const WebCore::Ren
         auto& backing = *layer.backing();
         stream << " (layerID " << backing.graphicsLayer()->primaryLayerID() << ")";
         
-        if (layer.indirectCompositingReason() != WebCore::IndirectCompositingReason::None)
+        if (layer.indirectCompositingReason() != CyberCore::IndirectCompositingReason::None)
             stream << " " << layer.indirectCompositingReason();
 
-        auto scrollingNodeID = backing.scrollingNodeIDForRole(WebCore::ScrollCoordinationRole::Scrolling);
-        auto frameHostingNodeID = backing.scrollingNodeIDForRole(WebCore::ScrollCoordinationRole::FrameHosting);
-        auto viewportConstrainedNodeID = backing.scrollingNodeIDForRole(WebCore::ScrollCoordinationRole::ViewportConstrained);
-        auto positionedNodeID = backing.scrollingNodeIDForRole(WebCore::ScrollCoordinationRole::Positioning);
+        auto scrollingNodeID = backing.scrollingNodeIDForRole(CyberCore::ScrollCoordinationRole::Scrolling);
+        auto frameHostingNodeID = backing.scrollingNodeIDForRole(CyberCore::ScrollCoordinationRole::FrameHosting);
+        auto viewportConstrainedNodeID = backing.scrollingNodeIDForRole(CyberCore::ScrollCoordinationRole::ViewportConstrained);
+        auto positionedNodeID = backing.scrollingNodeIDForRole(CyberCore::ScrollCoordinationRole::Positioning);
 
         if (scrollingNodeID || frameHostingNodeID || viewportConstrainedNodeID || positionedNodeID) {
             stream << " {";
@@ -5898,7 +5898,7 @@ static void outputPaintOrderTreeRecursive(TextStream& stream, const WebCore::Ren
     stream << " " << layer.name();
     stream.nextLine();
 
-    const_cast<WebCore::RenderLayer&>(layer).updateLayerListsIfNeeded();
+    const_cast<CyberCore::RenderLayer&>(layer).updateLayerListsIfNeeded();
 
     for (auto* child : layer.negativeZOrderLayers())
         outputPaintOrderTreeRecursive(stream, *child, "- ", depth + 1);
@@ -5910,7 +5910,7 @@ static void outputPaintOrderTreeRecursive(TextStream& stream, const WebCore::Ren
         outputPaintOrderTreeRecursive(stream, *child, "+ ", depth + 1);
 }
 
-void showPaintOrderTree(const WebCore::RenderLayer* layer)
+void showPaintOrderTree(const CyberCore::RenderLayer* layer)
 {
     TextStream stream;
     outputPaintOrderTreeLegend(stream);
@@ -5920,7 +5920,7 @@ void showPaintOrderTree(const WebCore::RenderLayer* layer)
     WTFLogAlways("%s", stream.release().utf8().data());
 }
 
-void showPaintOrderTree(const WebCore::RenderObject* renderer)
+void showPaintOrderTree(const CyberCore::RenderObject* renderer)
 {
     if (!renderer)
         return;

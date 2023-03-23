@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -18,43 +18,43 @@
  */
 
 #include "config.h"
-#include "WebKitDOMFile.h"
+#include "CyberKitDOMFile.h"
 
 #include <CyberCore/CSSImportRule.h>
 #include "DOMObjectCache.h"
 #include <CyberCore/Document.h>
 #include <CyberCore/ExceptionCode.h>
 #include <CyberCore/JSExecState.h>
-#include "WebKitDOMBlobPrivate.h"
-#include "WebKitDOMFilePrivate.h"
-#include "WebKitDOMPrivate.h"
+#include "CyberKitDOMBlobPrivate.h"
+#include "CyberKitDOMFilePrivate.h"
+#include "CyberKitDOMPrivate.h"
 #include "ConvertToUTF8String.h"
 #include <wtf/GetPtr.h>
 #include <wtf/RefPtr.h>
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
-namespace WebKit {
+namespace CyberKit {
 
-WebKitDOMFile* kit(WebCore::File* obj)
+CyberKitDOMFile* kit(CyberCore::File* obj)
 {
-    return WEBKIT_DOM_FILE(kit(static_cast<WebCore::Blob*>(obj)));
+    return WEBKIT_DOM_FILE(kit(static_cast<CyberCore::Blob*>(obj)));
 }
 
-WebCore::File* core(WebKitDOMFile* request)
+CyberCore::File* core(CyberKitDOMFile* request)
 {
-    return request ? static_cast<WebCore::File*>(WEBKIT_DOM_OBJECT(request)->coreObject) : 0;
+    return request ? static_cast<CyberCore::File*>(WEBKIT_DOM_OBJECT(request)->coreObject) : 0;
 }
 
-WebKitDOMFile* wrapFile(WebCore::File* coreObject)
+CyberKitDOMFile* wrapFile(CyberCore::File* coreObject)
 {
     ASSERT(coreObject);
     return WEBKIT_DOM_FILE(g_object_new(WEBKIT_DOM_TYPE_FILE, "core-object", coreObject, nullptr));
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
-G_DEFINE_TYPE(WebKitDOMFile, webkit_dom_file, WEBKIT_DOM_TYPE_BLOB)
+G_DEFINE_TYPE(CyberKitDOMFile, webkit_dom_file, WEBKIT_DOM_TYPE_BLOB)
 
 enum {
     DOM_FILE_PROP_0,
@@ -63,7 +63,7 @@ enum {
 
 static void webkit_dom_file_get_property(GObject* object, guint propertyId, GValue* value, GParamSpec* pspec)
 {
-    WebKitDOMFile* self = WEBKIT_DOM_FILE(object);
+    CyberKitDOMFile* self = WEBKIT_DOM_FILE(object);
 
     switch (propertyId) {
     case DOM_FILE_PROP_NAME:
@@ -75,7 +75,7 @@ static void webkit_dom_file_get_property(GObject* object, guint propertyId, GVal
     }
 }
 
-static void webkit_dom_file_class_init(WebKitDOMFileClass* requestClass)
+static void webkit_dom_file_class_init(CyberKitDOMFileClass* requestClass)
 {
     GObjectClass* gobjectClass = G_OBJECT_CLASS(requestClass);
     gobjectClass->get_property = webkit_dom_file_get_property;
@@ -91,16 +91,16 @@ static void webkit_dom_file_class_init(WebKitDOMFileClass* requestClass)
             WEBKIT_PARAM_READABLE));
 }
 
-static void webkit_dom_file_init(WebKitDOMFile* request)
+static void webkit_dom_file_init(CyberKitDOMFile* request)
 {
     UNUSED_PARAM(request);
 }
 
-gchar* webkit_dom_file_get_name(WebKitDOMFile* self)
+gchar* webkit_dom_file_get_name(CyberKitDOMFile* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_FILE(self), 0);
-    WebCore::File* item = WebKit::core(self);
+    CyberCore::File* item = CyberKit::core(self);
     gchar* result = convertToUTF8String(item->name());
     return result;
 }

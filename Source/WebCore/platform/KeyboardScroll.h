@@ -28,7 +28,7 @@
 #include "FloatSize.h"
 #include "ScrollTypes.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 WEBCORE_EXPORT FloatSize unitVectorForScrollDirection(ScrollDirection);
 
@@ -84,4 +84,4 @@ struct KeyboardScrollParameters {
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

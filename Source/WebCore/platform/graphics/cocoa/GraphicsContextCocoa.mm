@@ -57,7 +57,7 @@
 // FIXME: More of this should use CoreGraphics instead of AppKit.
 // FIXME: More of this should move into GraphicsContextCG.cpp.
 
-namespace WebCore {
+namespace CyberCore {
 
 // NSColor, NSBezierPath, and NSGraphicsContext calls do not raise exceptions
 // so we don't block exceptions.
@@ -152,7 +152,7 @@ static inline void drawDotsForDocumentMarker(CGContextRef context, const FloatRe
 #else
 void GraphicsContextCG::drawDotsForDocumentMarker(const FloatRect& rect, DocumentMarkerLineStyle style)
 {
-    WebCore::drawDotsForDocumentMarker(this->platformContext(), rect, style);
+    CyberCore::drawDotsForDocumentMarker(this->platformContext(), rect, style);
 }
 #endif
 
@@ -186,4 +186,4 @@ void GraphicsContextCG::convertToDestinationColorSpaceIfNeeded(RetainPtr<CGImage
 #endif
 }
 
-} // namespace WebCore
+} // namespace CyberCore

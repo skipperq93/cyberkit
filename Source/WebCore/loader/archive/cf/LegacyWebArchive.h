@@ -31,7 +31,7 @@
 #include "Archive.h"
 #include <wtf/Function.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Frame;
 class Node;
@@ -72,4 +72,4 @@ private:
     bool extract(CFDictionaryRef);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

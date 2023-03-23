@@ -34,7 +34,7 @@
 #include <wtf/MathExtras.h>
 #include <wtf/SetForScope.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace XPath {
         
 Number::Number(double value)

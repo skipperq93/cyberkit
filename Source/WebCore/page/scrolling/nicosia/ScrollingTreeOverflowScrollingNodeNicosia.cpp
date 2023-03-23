@@ -35,7 +35,7 @@
 #include "ScrollingTreeScrollingNodeDelegateNicosia.h"
 #include "ThreadedScrollingTree.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<ScrollingTreeOverflowScrollingNode> ScrollingTreeOverflowScrollingNodeNicosia::create(ScrollingTree& scrollingTree, ScrollingNodeID nodeID)
 {
@@ -87,6 +87,6 @@ WheelEventHandlingResult ScrollingTreeOverflowScrollingNodeNicosia::handleWheelE
     return WheelEventHandlingResult::result(delegate().handleWheelEvent(wheelEvent));
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ASYNC_SCROLLING) && USE(NICOSIA)

@@ -30,7 +30,7 @@
 #include <wtf/MathExtras.h>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 bool DisplayUpdate::relevantForUpdateFrequency(FramesPerSecond preferredFramesPerSecond) const
 {
@@ -48,4 +48,4 @@ TextStream& operator<<(TextStream& ts, const DisplayUpdate& update)
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

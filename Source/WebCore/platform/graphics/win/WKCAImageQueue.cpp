@@ -29,7 +29,7 @@
 #include <CoreFoundation/CoreFoundation.h>
 #include <wtf/RetainPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WKCAImageQueuePrivate {
     WTF_MAKE_FAST_ALLOCATED;

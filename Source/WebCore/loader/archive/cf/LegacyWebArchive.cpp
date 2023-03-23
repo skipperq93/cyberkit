@@ -59,7 +59,7 @@
 #include <wtf/text/StringBuilder.h>
 #include <wtf/text/CString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static const CFStringRef LegacyWebArchiveMainResourceKey = CFSTR("WebMainResource");
 static const CFStringRef LegacyWebArchiveSubresourcesKey = CFSTR("WebSubresources");

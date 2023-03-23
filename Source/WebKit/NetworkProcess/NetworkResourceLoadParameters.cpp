@@ -26,46 +26,46 @@
 #include "config.h"
 #include "NetworkResourceLoadParameters.h"
 
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 NetworkResourceLoadParameters::NetworkResourceLoadParameters(
     NetworkLoadParameters&& networkLoadParameters
-    , WebCore::ResourceLoaderIdentifier identifier
-    , RefPtr<WebCore::FormData>&& httpBody
+    , CyberCore::ResourceLoaderIdentifier identifier
+    , RefPtr<CyberCore::FormData>&& httpBody
     , std::optional<Vector<SandboxExtension::Handle>>&& sandboxExtensionIfHttpBody
     , std::optional<SandboxExtension::Handle>&& sandboxExtensionIflocalFile
     , Seconds maximumBufferingTime
-    , WebCore::FetchOptions&& options
-    , std::optional<WebCore::ContentSecurityPolicyResponseHeaders>&& cspResponseHeaders
+    , CyberCore::FetchOptions&& options
+    , std::optional<CyberCore::ContentSecurityPolicyResponseHeaders>&& cspResponseHeaders
     , URL&& parentFrameURL
     , URL&& frameURL
-    , WebCore::CrossOriginEmbedderPolicy parentCrossOriginEmbedderPolicy
-    , WebCore::CrossOriginEmbedderPolicy crossOriginEmbedderPolicy
-    , WebCore::HTTPHeaderMap&& originalRequestHeaders
+    , CyberCore::CrossOriginEmbedderPolicy parentCrossOriginEmbedderPolicy
+    , CyberCore::CrossOriginEmbedderPolicy crossOriginEmbedderPolicy
+    , CyberCore::HTTPHeaderMap&& originalRequestHeaders
     , bool shouldRestrictHTTPResponseAccess
-    , WebCore::PreflightPolicy preflightPolicy
+    , CyberCore::PreflightPolicy preflightPolicy
     , bool shouldEnableCrossOriginResourcePolicy
-    , Vector<RefPtr<WebCore::SecurityOrigin>>&& frameAncestorOrigins
+    , Vector<RefPtr<CyberCore::SecurityOrigin>>&& frameAncestorOrigins
     , bool pageHasResourceLoadClient
-    , std::optional<WebCore::FrameIdentifier> parentFrameID
+    , std::optional<CyberCore::FrameIdentifier> parentFrameID
     , bool crossOriginAccessControlCheckEnabled
     , URL&& documentURL
     , bool isCrossOriginOpenerPolicyEnabled
     , bool isClearSiteDataHeaderEnabled
     , bool isDisplayingInitialEmptyDocument
-    , WebCore::SandboxFlags effectiveSandboxFlags
+    , CyberCore::SandboxFlags effectiveSandboxFlags
     , URL&& openerURL
-    , WebCore::CrossOriginOpenerPolicy&& sourceCrossOriginOpenerPolicy
+    , CyberCore::CrossOriginOpenerPolicy&& sourceCrossOriginOpenerPolicy
     , uint64_t navigationID
-    , std::optional<WebCore::NavigationRequester>&& navigationRequester
+    , std::optional<CyberCore::NavigationRequester>&& navigationRequester
 #if ENABLE(SERVICE_WORKER)
-    , WebCore::ServiceWorkersMode serviceWorkersMode
-    , std::optional<WebCore::ServiceWorkerRegistrationIdentifier> serviceWorkerRegistrationIdentifier
-    , OptionSet<WebCore::HTTPHeadersToKeepFromCleaning> httpHeadersToKeep
-    , std::optional<WebCore::FetchIdentifier> navigationPreloadIdentifier
+    , CyberCore::ServiceWorkersMode serviceWorkersMode
+    , std::optional<CyberCore::ServiceWorkerRegistrationIdentifier> serviceWorkerRegistrationIdentifier
+    , OptionSet<CyberCore::HTTPHeadersToKeepFromCleaning> httpHeadersToKeep
+    , std::optional<CyberCore::FetchIdentifier> navigationPreloadIdentifier
 #endif
 #if ENABLE(CONTENT_EXTENSIONS)
     , URL&& mainDocumentURL

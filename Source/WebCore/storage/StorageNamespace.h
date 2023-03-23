@@ -32,7 +32,7 @@ namespace PAL {
 class SessionID;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class Page;
 class SecurityOrigin;
@@ -53,4 +53,4 @@ public:
     virtual uint64_t storageAreaMapCountForTesting() const { return 0; }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

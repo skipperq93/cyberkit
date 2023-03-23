@@ -28,7 +28,7 @@
 
 #include <CyberCore/File.h>
 #include <CyberCore/ResourceError.h>
-#include <CyberCore/WebCoreBundleWin.h>
+#include <CyberCore/CyberCoreBundleWin.h>
 #include <winsock2.h> // This is required for curl.h
 #include <wtf/FileSystem.h>
 #include <wtf/URL.h>
@@ -47,18 +47,18 @@ void InspectorResourceURLSchemeHandler::platformStartTask(WebPageProxy&, WebURLS
     auto requestPath = makeStringByReplacingAll(requestURL.path(), '/', '\\');
     if (requestPath.startsWith("\\"_s))
         requestPath = requestPath.substring(1);
-    auto path = WebCore::webKitBundlePath({ "WebInspectorUI"_s, requestPath });
+    auto path = CyberCore::webKitBundlePath({ "WebInspectorUI"_s, requestPath });
     bool success;
     FileSystem::MappedFileData file(path, FileSystem::MappedFileMode::Private, success);
     if (!success) {
-        task.didComplete(WebCore::ResourceError(CURLE_READ_ERROR, requestURL));
+        task.didComplete(CyberCore::ResourceError(CURLE_READ_ERROR, requestURL));
         return;
     }
-    auto contentType = WebCore::File::contentTypeForFile(path);
+    auto contentType = CyberCore::File::contentTypeForFile(path);
     if (contentType.isEmpty())
         contentType = "application/octet-stream"_s;
-    WebCore::ResourceResponse response(requestURL, contentType, file.size(), "UTF-8"_s);
-    auto data = WebCore::SharedBuffer::create(static_cast<const char*>(file.data()), file.size());
+    CyberCore::ResourceResponse response(requestURL, contentType, file.size(), "UTF-8"_s);
+    auto data = CyberCore::SharedBuffer::create(static_cast<const char*>(file.data()), file.size());
 
     task.didReceiveResponse(response);
     task.didReceiveData(WTFMove(data));

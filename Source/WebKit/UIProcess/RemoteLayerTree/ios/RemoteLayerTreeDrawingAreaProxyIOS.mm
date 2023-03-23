@@ -38,7 +38,7 @@
     CADisplayLink *_displayLink;
 #if ENABLE(TIMER_DRIVEN_DISPLAY_REFRESH_FOR_TESTING)
     RetainPtr<NSTimer> _updateTimer;
-    std::optional<WebCore::FramesPerSecond> _overrideFrameRate;
+    std::optional<CyberCore::FramesPerSecond> _overrideFrameRate;
 #endif
 }
 
@@ -82,7 +82,7 @@
                 auto minimumRefreshInterval = _displayLink.maximumRefreshRate;
                 if (minimumRefreshInterval > 0) {
                     if (auto displayID = page.displayID()) {
-                        WebCore::FramesPerSecond frameRate = std::round(1.0 / minimumRefreshInterval);
+                        CyberCore::FramesPerSecond frameRate = std::round(1.0 / minimumRefreshInterval);
                         page.windowScreenDidChange(*displayID, frameRate);
                     }
                 }
@@ -150,7 +150,7 @@
 
 namespace WebKit {
 using namespace IPC;
-using namespace WebCore;
+using namespace CyberCore;
 
 RemoteLayerTreeDrawingAreaProxyIOS::RemoteLayerTreeDrawingAreaProxyIOS(WebPageProxy& pageProxy, WebProcessProxy& processProxy)
     : RemoteLayerTreeDrawingAreaProxy(pageProxy, processProxy)

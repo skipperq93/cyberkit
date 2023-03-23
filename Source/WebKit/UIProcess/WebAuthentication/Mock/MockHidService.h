@@ -34,13 +34,13 @@ namespace WebKit {
 
 class MockHidService final : public HidService {
 public:
-    MockHidService(Observer&, const WebCore::MockWebAuthenticationConfiguration&);
+    MockHidService(Observer&, const CyberCore::MockWebAuthenticationConfiguration&);
 
 private:
     void platformStartDiscovery() final;
     UniqueRef<HidConnection> createHidConnection(IOHIDDeviceRef) const final;
 
-    WebCore::MockWebAuthenticationConfiguration m_configuration;
+    CyberCore::MockWebAuthenticationConfiguration m_configuration;
 };
 
 } // namespace WebKit

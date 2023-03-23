@@ -22,7 +22,7 @@
 
 messages -> WebProcessProxy LegacyReceiver {
     UpdateBackForwardItem(struct WebKit::BackForwardListItemState backForwardListItemState)
-    DidDestroyFrame(WebCore::FrameIdentifier frameID, WebKit::WebPageProxyIdentifier pageID) 
+    DidDestroyFrame(CyberCore::FrameIdentifier frameID, WebKit::WebPageProxyIdentifier pageID) 
 
     DidDestroyUserGestureToken(uint64_t userGestureTokenID) 
 
@@ -48,7 +48,7 @@ messages -> WebProcessProxy LegacyReceiver {
 
     MemoryPressureStatusChanged(bool isUnderMemoryPressure)
 
-    DidCollectPrewarmInformation(WebCore::RegistrableDomain domain, struct WebCore::PrewarmInformation prewarmInformation)
+    DidCollectPrewarmInformation(CyberCore::RegistrableDomain domain, struct CyberCore::PrewarmInformation prewarmInformation)
 
 #if PLATFORM(COCOA)
     CacheMediaMIMETypes(Vector<String> types)
@@ -70,11 +70,11 @@ messages -> WebProcessProxy LegacyReceiver {
     SendMessageToWebContextWithReply(struct WebKit::UserMessage userMessage) -> (struct WebKit::UserMessage replyMessage)
 #endif
 
-    DidCreateSleepDisabler(WebCore::SleepDisablerIdentifier identifier, String reason, bool display)
-    DidDestroySleepDisabler(WebCore::SleepDisablerIdentifier identifier)
+    DidCreateSleepDisabler(CyberCore::SleepDisablerIdentifier identifier, String reason, bool display)
+    DidDestroySleepDisabler(CyberCore::SleepDisablerIdentifier identifier)
 
-    CreateSpeechRecognitionServer(WebCore::PageIdentifier identifier)
-    DestroySpeechRecognitionServer(WebCore::PageIdentifier identifier)
+    CreateSpeechRecognitionServer(CyberCore::PageIdentifier identifier)
+    DestroySpeechRecognitionServer(CyberCore::PageIdentifier identifier)
 
     SystemBeep()
     
@@ -83,11 +83,11 @@ messages -> WebProcessProxy LegacyReceiver {
 #endif
 
 #if HAVE(MEDIA_ACCESSIBILITY_FRAMEWORK)
-    SetCaptionDisplayMode(WebCore::CaptionUserPreferences::CaptionDisplayMode mode)
+    SetCaptionDisplayMode(CyberCore::CaptionUserPreferences::CaptionDisplayMode mode)
     SetCaptionLanguage(String language)
 #endif
 
-    GetNotifications(URL registrationURL, String tag) -> (Vector<WebCore::NotificationData> result)
-    SetAppBadge(std::optional<WebKit::WebPageProxyIdentifier> pageIdentifier, WebCore::SecurityOriginData origin, std::optional<uint64_t> badge)
-    SetClientBadge(WebKit::WebPageProxyIdentifier pageIdentifier, WebCore::SecurityOriginData origin, std::optional<uint64_t> badge)
+    GetNotifications(URL registrationURL, String tag) -> (Vector<CyberCore::NotificationData> result)
+    SetAppBadge(std::optional<WebKit::WebPageProxyIdentifier> pageIdentifier, CyberCore::SecurityOriginData origin, std::optional<uint64_t> badge)
+    SetClientBadge(WebKit::WebPageProxyIdentifier pageIdentifier, CyberCore::SecurityOriginData origin, std::optional<uint64_t> badge)
 }

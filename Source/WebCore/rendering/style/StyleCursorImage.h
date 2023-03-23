@@ -27,7 +27,7 @@
 #include "StyleMultiImage.h"
 #include <wtf/WeakHashSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSValue;
 class Document;
@@ -67,6 +67,6 @@ private:
     WeakHashSet<SVGCursorElement, WeakPtrImplWithEventTargetData> m_cursorElements;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_STYLE_IMAGE(StyleCursorImage, isCursorImage)

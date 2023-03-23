@@ -33,7 +33,7 @@
 #include <wtf/HashMap.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class ShouldSample : bool { No, Yes };
 
@@ -65,4 +65,4 @@ inline bool DiagnosticLoggingClient::shouldLogAfterSampling(ShouldSample shouldS
     return cryptographicallyRandomUnitInterval() <= selectionProbability;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

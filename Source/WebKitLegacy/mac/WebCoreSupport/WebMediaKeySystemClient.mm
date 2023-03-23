@@ -30,7 +30,7 @@
 #import <CyberCore/MediaKeySystemRequest.h>
 #import <wtf/BlockObjCExceptions.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 void WebMediaKeySystemClient::requestMediaKeySystem(MediaKeySystemRequest& request)
 {

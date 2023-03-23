@@ -47,7 +47,7 @@
 #include <math.h>
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(SVGFontFaceElement);
 
@@ -330,4 +330,4 @@ void SVGFontFaceElement::childrenChanged(const ChildChange& change)
     rebuildFontFace();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

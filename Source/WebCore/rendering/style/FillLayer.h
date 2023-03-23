@@ -30,7 +30,7 @@
 #include "StyleImage.h"
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderElement;
 
@@ -236,4 +236,4 @@ WTF::TextStream& operator<<(WTF::TextStream&, FillSize);
 WTF::TextStream& operator<<(WTF::TextStream&, FillRepeatXY);
 WTF::TextStream& operator<<(WTF::TextStream&, const FillLayer&);
 
-} // namespace WebCore
+} // namespace CyberCore

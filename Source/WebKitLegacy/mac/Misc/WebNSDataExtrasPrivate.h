@@ -28,7 +28,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSData (WebKitExtras)
+@interface NSData (CyberKitExtras)
 
 -(NSString *)_webkit_guessedMIMEType;
 

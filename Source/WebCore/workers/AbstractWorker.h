@@ -34,7 +34,7 @@
 #include "ExceptionOr.h"
 #include "FetchOptions.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct FetchOptions;
 struct WorkerOptions;
@@ -60,4 +60,4 @@ private:
     void derefEventTarget() final { deref(); }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

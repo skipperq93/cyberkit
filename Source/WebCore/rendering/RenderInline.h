@@ -26,7 +26,7 @@
 #include "RenderBoxModelObject.h"
 #include "RenderLineBoxList.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class Position;
 class RenderFragmentContainer;
@@ -153,6 +153,6 @@ private:
 
 bool isEmptyInline(const RenderInline&);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderInline, isRenderInline())

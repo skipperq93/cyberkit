@@ -33,7 +33,7 @@
 #include "FontCache.h"
 #include "SurrogatePairAwareTextIterator.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 bool FontCascade::canReturnFallbackFontsForComplexText()
 {
@@ -151,6 +151,6 @@ const Font* FontCascade::fontForCombiningCharacterSequence(const UChar* original
     return baseFont;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(CAIRO)

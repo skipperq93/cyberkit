@@ -40,7 +40,7 @@ constexpr auto s_fileName = "localstorage.sqlite3"_s;
 
 // This is intended to be used for existing files.
 // We should not include origin in file name.
-static std::optional<WebCore::SecurityOriginData> fileNameToOrigin(const String& fileName)
+static std::optional<CyberCore::SecurityOriginData> fileNameToOrigin(const String& fileName)
 {
     if (!fileName.endsWith(StringView { s_fileSuffix }))
         return std::nullopt;
@@ -51,17 +51,17 @@ static std::optional<WebCore::SecurityOriginData> fileNameToOrigin(const String&
         return std::nullopt;
 
     auto originIdentifier = fileName.left(fileNameLength - suffixLength);
-    return WebCore::SecurityOriginData::fromDatabaseIdentifier(originIdentifier);
+    return CyberCore::SecurityOriginData::fromDatabaseIdentifier(originIdentifier);
 }
 
-static String originToFileName(const WebCore::ClientOrigin& origin)
+static String originToFileName(const CyberCore::ClientOrigin& origin)
 {
     return origin.clientOrigin.databaseIdentifier() + ".localstorage";
 }
 
-Vector<WebCore::SecurityOriginData> LocalStorageManager::originsOfLocalStorageData(const String& path)
+Vector<CyberCore::SecurityOriginData> LocalStorageManager::originsOfLocalStorageData(const String& path)
 {
-    Vector<WebCore::SecurityOriginData> origins;
+    Vector<CyberCore::SecurityOriginData> origins;
     if (path.isEmpty())
         return origins;
 
@@ -73,7 +73,7 @@ Vector<WebCore::SecurityOriginData> LocalStorageManager::originsOfLocalStorageDa
     return origins;
 }
 
-String LocalStorageManager::localStorageFilePath(const String& directory, const WebCore::ClientOrigin& origin)
+String LocalStorageManager::localStorageFilePath(const String& directory, const CyberCore::ClientOrigin& origin)
 {
     if (directory.isEmpty())
         return emptyString();
@@ -174,7 +174,7 @@ void LocalStorageManager::connectionClosedForTransientStorageArea(IPC::Connectio
     m_transientStorageArea = nullptr;
 }
 
-StorageAreaIdentifier LocalStorageManager::connectToLocalStorageArea(IPC::Connection::UniqueID connection, StorageAreaMapIdentifier sourceIdentifier, const WebCore::ClientOrigin& origin, Ref<WorkQueue>&& workQueue)
+StorageAreaIdentifier LocalStorageManager::connectToLocalStorageArea(IPC::Connection::UniqueID connection, StorageAreaMapIdentifier sourceIdentifier, const CyberCore::ClientOrigin& origin, Ref<WorkQueue>&& workQueue)
 {
     if (!m_localStorageArea) {
         if (!m_path.isEmpty())
@@ -190,7 +190,7 @@ StorageAreaIdentifier LocalStorageManager::connectToLocalStorageArea(IPC::Connec
     return m_localStorageArea->identifier();
 }
 
-StorageAreaIdentifier LocalStorageManager::connectToTransientLocalStorageArea(IPC::Connection::UniqueID connection, StorageAreaMapIdentifier sourceIdentifier, const WebCore::ClientOrigin& origin)
+StorageAreaIdentifier LocalStorageManager::connectToTransientLocalStorageArea(IPC::Connection::UniqueID connection, StorageAreaMapIdentifier sourceIdentifier, const CyberCore::ClientOrigin& origin)
 {
     if (!m_transientStorageArea) {
         m_transientStorageArea = makeUnique<MemoryStorageArea>(origin, StorageAreaBase::StorageType::Local);

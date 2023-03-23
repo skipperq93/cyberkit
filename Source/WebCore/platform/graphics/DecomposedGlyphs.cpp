@@ -26,7 +26,7 @@
 #include "config.h"
 #include "DecomposedGlyphs.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<DecomposedGlyphs> DecomposedGlyphs::create(const GlyphBufferGlyph* glyphs, const GlyphBufferAdvance* advances, unsigned count, const FloatPoint& localAnchor, FontSmoothingMode mode, RenderingResourceIdentifier renderingResourceIdentifier)
 {
@@ -57,4 +57,4 @@ DecomposedGlyphs::~DecomposedGlyphs()
         observer->releaseDecomposedGlyphs(m_renderingResourceIdentifier);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

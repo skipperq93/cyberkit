@@ -30,7 +30,7 @@
 #include <wtf/text/StringHash.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // This class uses copy-on-write semantics.
 class StorageMap {
@@ -80,4 +80,4 @@ private:
     unsigned m_quotaSize { noQuota }; // Measured in bytes.
 };
 
-} // namespace WebCore
+} // namespace CyberCore

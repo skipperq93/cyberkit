@@ -29,7 +29,7 @@
 
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 TextStream& operator<<(TextStream& ts, ScrollType scrollType)
 {
@@ -155,4 +155,4 @@ TextStream& operator<<(TextStream& ts, ScrollGranularity granularity)
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

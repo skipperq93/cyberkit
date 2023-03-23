@@ -27,7 +27,7 @@
 #include <wtf/MonotonicTime.h>
 #include <wtf/Noncopyable.h>
 
-namespace WebCore {
+namespace CyberCore {
 class TextureMapper;
 
 class TextureMapperFPSCounter {
@@ -45,6 +45,6 @@ private:
     int m_frameCount;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // TextureMapperFPSCounter_h

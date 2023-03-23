@@ -32,7 +32,7 @@ namespace WebKit {
 class UserMediaPermissionRequestProxy;
 class WebProcessProxy;
 
-class UserMediaProcessManager : public WebCore::RealtimeMediaSourceCenter::Observer {
+class UserMediaProcessManager : public CyberCore::RealtimeMediaSourceCenter::Observer {
 public:
 
     static UserMediaProcessManager& singleton();
@@ -58,7 +58,7 @@ private:
     // RealtimeMediaSourceCenter::Observer
     void devicesChanged() final;
 
-    Vector<WebCore::CaptureDevice> m_captureDevices;
+    Vector<CyberCore::CaptureDevice> m_captureDevices;
     bool m_captureEnabled { true };
     bool m_denyNextRequest { false };
 };

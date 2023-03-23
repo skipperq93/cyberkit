@@ -30,7 +30,7 @@
 #include "WritingMode.h"
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 class BorderData;
     
 class PathUtilities {

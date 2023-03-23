@@ -35,7 +35,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 DECLARE_ALLOCATOR_WITH_HEAP_IDENTIFIER(PerformanceEntry);
 class PerformanceEntry : public RefCounted<PerformanceEntry> {
@@ -74,4 +74,4 @@ private:
     const double m_duration;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

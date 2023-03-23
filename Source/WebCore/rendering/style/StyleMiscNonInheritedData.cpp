@@ -36,7 +36,7 @@
 #include "StyleMultiColData.h"
 #include "StyleTransformData.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 DEFINE_ALLOCATOR_WITH_HEAP_IDENTIFIER(StyleMiscNonInheritedData);
 
@@ -172,4 +172,4 @@ bool StyleMiscNonInheritedData::hasFilters() const
     return !filter->operations.isEmpty();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

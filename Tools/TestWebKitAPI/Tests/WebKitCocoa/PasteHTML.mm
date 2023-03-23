@@ -50,8 +50,8 @@
 
 void writeHTMLToPasteboard(NSString *html)
 {
-    [[NSPasteboard generalPasteboard] declareTypes:@[WebCore::legacyHTMLPasteboardType()] owner:nil];
-    [[NSPasteboard generalPasteboard] setString:html forType:WebCore::legacyHTMLPasteboardType()];
+    [[NSPasteboard generalPasteboard] declareTypes:@[CyberCore::legacyHTMLPasteboardType()] owner:nil];
+    [[NSPasteboard generalPasteboard] setString:html forType:CyberCore::legacyHTMLPasteboardType()];
 }
 #else
 void writeHTMLToPasteboard(NSString *html)

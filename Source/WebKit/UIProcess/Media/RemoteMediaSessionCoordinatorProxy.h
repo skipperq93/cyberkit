@@ -32,7 +32,7 @@
 #include <wtf/Forward.h>
 #include <wtf/Noncopyable.h>
 
-namespace WebCore {
+namespace CyberCore {
 struct ExceptionData;
 }
 
@@ -43,7 +43,7 @@ class WebPageProxy;
 class RemoteMediaSessionCoordinatorProxy
     : private IPC::MessageReceiver
     , public RefCounted<RemoteMediaSessionCoordinatorProxy>
-    , public WebCore::MediaSessionCoordinatorClient {
+    , public CyberCore::MediaSessionCoordinatorClient {
     WTF_MAKE_FAST_ALLOCATED;
 public:
     static Ref<RemoteMediaSessionCoordinatorProxy> create(WebPageProxy&, Ref<MediaSessionCoordinatorProxyPrivate>&&);
@@ -71,9 +71,9 @@ private:
     void coordinatePlay(MediaSessionCommandCompletionHandler&&);
     void coordinatePause(MediaSessionCommandCompletionHandler&&);
     void coordinateSetTrack(const String&, MediaSessionCommandCompletionHandler&&);
-    void positionStateChanged(const std::optional<WebCore::MediaPositionState>&);
-    void readyStateChanged(WebCore::MediaSessionReadyState);
-    void playbackStateChanged(WebCore::MediaSessionPlaybackState);
+    void positionStateChanged(const std::optional<CyberCore::MediaPositionState>&);
+    void readyStateChanged(CyberCore::MediaSessionReadyState);
+    void playbackStateChanged(CyberCore::MediaSessionPlaybackState);
     void trackIdentifierChanged(const String&);
 
     // MediaSessionCoordinatorClient
@@ -81,7 +81,7 @@ private:
     void playSession(std::optional<double> atTime, std::optional<MonotonicTime> hostTime, CompletionHandler<void(bool)>&&) final;
     void pauseSession(CompletionHandler<void(bool)>&&) final;
     void setSessionTrack(const String&, CompletionHandler<void(bool)>&&) final;
-    void coordinatorStateChanged(WebCore::MediaSessionCoordinatorState) final;
+    void coordinatorStateChanged(CyberCore::MediaSessionCoordinatorState) final;
 
 #if !RELEASE_LOG_DISABLED
     const WTF::Logger& logger() const { return m_logger; }

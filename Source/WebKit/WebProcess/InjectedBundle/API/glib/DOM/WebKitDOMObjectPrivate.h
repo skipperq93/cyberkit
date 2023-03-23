@@ -20,13 +20,13 @@
 
 #pragma once
 
-#include "WebKitDOMObject.h"
+#include "CyberKitDOMObject.h"
 
-struct _WebKitDOMObject {
+struct _CyberKitDOMObject {
     GObject parent;
 };
 
-struct _WebKitDOMObjectClass {
+struct _CyberKitDOMObjectClass {
     GObjectClass parent_class;
 
 #if PLATFORM(GTK)

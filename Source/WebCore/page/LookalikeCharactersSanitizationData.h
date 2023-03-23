@@ -28,7 +28,7 @@
 #include "RegistrableDomain.h"
 #include <optional>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct LookalikeCharactersSanitizationData {
     RegistrableDomain domain;

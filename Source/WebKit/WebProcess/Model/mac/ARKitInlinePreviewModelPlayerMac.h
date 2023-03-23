@@ -35,39 +35,39 @@
 
 OBJC_CLASS ASVInlinePreview;
 
-namespace WebKit {
+namespace CyberKit {
 
 class ARKitInlinePreviewModelPlayerMac final : public ARKitInlinePreviewModelPlayer {
 public:
-    static Ref<ARKitInlinePreviewModelPlayerMac> create(WebPage&, WebCore::ModelPlayerClient&);
+    static Ref<ARKitInlinePreviewModelPlayerMac> create(WebPage&, CyberCore::ModelPlayerClient&);
     virtual ~ARKitInlinePreviewModelPlayerMac();
 
     static void setModelElementCacheDirectory(const String&);
     static const String& modelElementCacheDirectory();
 
 private:
-    ARKitInlinePreviewModelPlayerMac(WebPage&, WebCore::ModelPlayerClient&);
+    ARKitInlinePreviewModelPlayerMac(WebPage&, CyberCore::ModelPlayerClient&);
 
     std::optional<ModelIdentifier> modelIdentifier() override;
 
-    // WebCore::ModelPlayer overrides.
-    void load(WebCore::Model&, WebCore::LayoutSize) override;
-    void sizeDidChange(WebCore::LayoutSize) override;
+    // CyberCore::ModelPlayer overrides.
+    void load(CyberCore::Model&, CyberCore::LayoutSize) override;
+    void sizeDidChange(CyberCore::LayoutSize) override;
     PlatformLayer* layer() override;
     bool supportsMouseInteraction() override;
     bool supportsDragging() override;
-    void handleMouseDown(const WebCore::LayoutPoint&, MonotonicTime) override;
-    void handleMouseMove(const WebCore::LayoutPoint&, MonotonicTime) override;
-    void handleMouseUp(const WebCore::LayoutPoint&, MonotonicTime) override;
+    void handleMouseDown(const CyberCore::LayoutPoint&, MonotonicTime) override;
+    void handleMouseMove(const CyberCore::LayoutPoint&, MonotonicTime) override;
+    void handleMouseUp(const CyberCore::LayoutPoint&, MonotonicTime) override;
     String inlinePreviewUUIDForTesting() const override;
 
-    void createFile(WebCore::Model&);
+    void createFile(CyberCore::Model&);
     void clearFile();
 
     void createPreviewsForModelWithURL(const URL&);
     void didCreateRemotePreviewForModelWithURL(const URL&);
 
-    WebCore::LayoutSize m_size;
+    CyberCore::LayoutSize m_size;
     String m_filePath;
     RetainPtr<ASVInlinePreview> m_inlinePreview;
 };

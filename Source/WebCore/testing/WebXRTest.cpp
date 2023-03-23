@@ -36,7 +36,7 @@
 #include "WebXRSystem.h"
 #include "XRSessionMode.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 WebXRTest::~WebXRTest() = default;
 
@@ -122,6 +122,6 @@ void WebXRTest::disconnectAllDevices(DOMPromiseDeferred<void>&& promise)
     promise.resolve();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBXR)

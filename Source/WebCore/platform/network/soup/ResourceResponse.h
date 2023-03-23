@@ -31,7 +31,7 @@
 #include <wtf/glib/GRefPtr.h>
 #include <wtf/text/CString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ResourceResponse : public ResourceResponseBase {
 public:
@@ -67,4 +67,4 @@ private:
     CertificateInfo platformCertificateInfo(Span<const std::byte>) const;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

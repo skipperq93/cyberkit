@@ -33,7 +33,7 @@
 #include <CoreGraphics/CGBase.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
     template<typename T>
     float narrowPrecisionToFloat(T);
@@ -55,6 +55,6 @@ namespace WebCore {
     }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // FloatConversion_h

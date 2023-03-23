@@ -29,7 +29,7 @@
 #include "webrtc/common_video/include/video_frame_buffer.h"
 #include "webrtc/rtc_base/ref_counted_object.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 WARN_UNUSED_RETURN GRefPtr<GstSample> convertLibWebRTCVideoFrameToGStreamerSample(const webrtc::VideoFrame&);
 

@@ -30,7 +30,7 @@
 
 #if ENABLE(VIDEO)
 
-namespace WebCore {
+namespace CyberCore {
 
 AudioTrackPrivateAVFObjC::AudioTrackPrivateAVFObjC(AVPlayerItemTrack* track)
     : AudioTrackPrivateAVFObjC(makeUnique<AVTrackPrivateAVFObjCImpl>(track))

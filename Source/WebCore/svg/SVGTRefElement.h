@@ -24,7 +24,7 @@
 #include "SVGTextPositioningElement.h"
 #include "SVGURIReference.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGTRefTargetEventListener;
 
@@ -60,4 +60,4 @@ private:
     Ref<SVGTRefTargetEventListener> m_targetListener;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

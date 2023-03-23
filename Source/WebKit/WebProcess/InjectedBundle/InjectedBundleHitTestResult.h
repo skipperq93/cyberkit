@@ -33,7 +33,7 @@
 #include <wtf/Ref.h>
 #include <wtf/RefPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class InjectedBundleNodeHandle;
 class WebFrame;
@@ -41,9 +41,9 @@ class WebImage;
 
 class InjectedBundleHitTestResult : public API::ObjectImpl<API::Object::Type::BundleHitTestResult> {
 public:
-    static Ref<InjectedBundleHitTestResult> create(const WebCore::HitTestResult&);
+    static Ref<InjectedBundleHitTestResult> create(const CyberCore::HitTestResult&);
 
-    const WebCore::HitTestResult& coreHitTestResult() const { return m_hitTestResult; }
+    const CyberCore::HitTestResult& coreHitTestResult() const { return m_hitTestResult; }
 
     RefPtr<InjectedBundleNodeHandle> nodeHandle() const;
     RefPtr<InjectedBundleNodeHandle> urlElementHandle() const;
@@ -63,20 +63,20 @@ public:
     String linkTitle() const;
     String linkSuggestedFilename() const;
     
-    WebCore::IntRect imageRect() const;
+    CyberCore::IntRect imageRect() const;
     RefPtr<WebImage> image() const;
     
     bool isSelected() const;
 
 private:
-    explicit InjectedBundleHitTestResult(const WebCore::HitTestResult& hitTestResult)
+    explicit InjectedBundleHitTestResult(const CyberCore::HitTestResult& hitTestResult)
         : m_hitTestResult(hitTestResult)
     {
     }
 
-    WebCore::HitTestResult m_hitTestResult;
+    CyberCore::HitTestResult m_hitTestResult;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // InjectedBundleHitTestResult_h

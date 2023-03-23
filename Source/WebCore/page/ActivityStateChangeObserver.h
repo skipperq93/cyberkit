@@ -28,7 +28,7 @@
 #include "ActivityState.h"
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ActivityStateChangeObserver : public CanMakeWeakPtr<ActivityStateChangeObserver> {
 public:
@@ -39,4 +39,4 @@ public:
     virtual void activityStateDidChange(OptionSet<ActivityState::Flag> oldActivityState, OptionSet<ActivityState::Flag> newActivityState) = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

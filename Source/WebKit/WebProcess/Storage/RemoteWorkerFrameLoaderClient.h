@@ -29,37 +29,37 @@
 #include <CyberCore/EmptyFrameLoaderClient.h>
 #include <CyberCore/ScriptExecutionContextIdentifier.h>
 
-namespace WebKit {
+namespace CyberKit {
 
-class RemoteWorkerFrameLoaderClient final : public WebCore::EmptyFrameLoaderClient {
+class RemoteWorkerFrameLoaderClient final : public CyberCore::EmptyFrameLoaderClient {
 public:
-    RemoteWorkerFrameLoaderClient(WebPageProxyIdentifier, WebCore::PageIdentifier, const String& userAgent);
+    RemoteWorkerFrameLoaderClient(WebPageProxyIdentifier, CyberCore::PageIdentifier, const String& userAgent);
 
     WebPageProxyIdentifier webPageProxyID() const { return m_webPageProxyID; }
 
     void setUserAgent(String&& userAgent) { m_userAgent = WTFMove(userAgent); }
 
-    void setServiceWorkerPageIdentifier(WebCore::ScriptExecutionContextIdentifier serviceWorkerPageIdentifier) { m_serviceWorkerPageIdentifier = serviceWorkerPageIdentifier; }
-    std::optional<WebCore::ScriptExecutionContextIdentifier> serviceWorkerPageIdentifier() const { return m_serviceWorkerPageIdentifier; }
+    void setServiceWorkerPageIdentifier(CyberCore::ScriptExecutionContextIdentifier serviceWorkerPageIdentifier) { m_serviceWorkerPageIdentifier = serviceWorkerPageIdentifier; }
+    std::optional<CyberCore::ScriptExecutionContextIdentifier> serviceWorkerPageIdentifier() const { return m_serviceWorkerPageIdentifier; }
 
 private:
-    Ref<WebCore::DocumentLoader> createDocumentLoader(const WebCore::ResourceRequest&, const WebCore::SubstituteData&) final;
+    Ref<CyberCore::DocumentLoader> createDocumentLoader(const CyberCore::ResourceRequest&, const CyberCore::SubstituteData&) final;
 
-    std::optional<WebCore::PageIdentifier> pageID() const final { return m_pageID; }
+    std::optional<CyberCore::PageIdentifier> pageID() const final { return m_pageID; }
 
-    bool shouldUseCredentialStorage(WebCore::DocumentLoader*, WebCore::ResourceLoaderIdentifier) final { return true; }
+    bool shouldUseCredentialStorage(CyberCore::DocumentLoader*, CyberCore::ResourceLoaderIdentifier) final { return true; }
     bool isRemoteWorkerFrameLoaderClient() const final { return true; }
 
     String userAgent(const URL&) const final { return m_userAgent; }
 
     WebPageProxyIdentifier m_webPageProxyID;
-    WebCore::PageIdentifier m_pageID;
+    CyberCore::PageIdentifier m_pageID;
     String m_userAgent;
-    std::optional<WebCore::ScriptExecutionContextIdentifier> m_serviceWorkerPageIdentifier;
+    std::optional<CyberCore::ScriptExecutionContextIdentifier> m_serviceWorkerPageIdentifier;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebKit::RemoteWorkerFrameLoaderClient)
-    static bool isType(const WebCore::FrameLoaderClient& frameLoaderClient) { return frameLoaderClient.isRemoteWorkerFrameLoaderClient(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberKit::RemoteWorkerFrameLoaderClient)
+    static bool isType(const CyberCore::FrameLoaderClient& frameLoaderClient) { return frameLoaderClient.isRemoteWorkerFrameLoaderClient(); }
 SPECIALIZE_TYPE_TRAITS_END()

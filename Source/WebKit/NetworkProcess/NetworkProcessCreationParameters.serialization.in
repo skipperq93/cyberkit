@@ -40,7 +40,7 @@ struct WebKit::NetworkProcessCreationParameters {
 #endif
 
 #if USE(SOUP)
-    WebCore::HTTPCookieAcceptPolicy cookieAcceptPolicy
+    CyberCore::HTTPCookieAcceptPolicy cookieAcceptPolicy
     Vector<String> languages
     std::optional<MemoryPressureHandler::Configuration> memoryPressureHandlerConfiguration
 #endif
@@ -54,6 +54,6 @@ struct WebKit::NetworkProcessCreationParameters {
     bool ftpEnabled
 
     Vector<WebKit::WebsiteDataStoreParameters> websiteDataStoreParameters
-    Vector<std::pair<WebCore::ProcessIdentifier, WebCore::RegistrableDomain>> allowedFirstPartiesForCookies;
+    Vector<std::pair<CyberCore::ProcessIdentifier, CyberCore::RegistrableDomain>> allowedFirstPartiesForCookies;
     HashSet<String> localhostAliasesForTesting;
 }

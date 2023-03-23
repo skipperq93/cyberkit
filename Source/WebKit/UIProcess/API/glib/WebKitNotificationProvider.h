@@ -27,7 +27,7 @@
 #include <wtf/glib/GRefPtr.h>
 #include <wtf/text/StringHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 class NotificationResources;
 }
 
@@ -42,7 +42,7 @@ public:
     WebKitNotificationProvider(WebNotificationManagerProxy*, WebKitWebContext*);
     ~WebKitNotificationProvider();
 
-    void show(WebPageProxy*, WebNotification&, RefPtr<WebCore::NotificationResources>&&);
+    void show(WebPageProxy*, WebNotification&, RefPtr<CyberCore::NotificationResources>&&);
     void cancel(const WebNotification&);
     void clearNotifications(const Vector<uint64_t>&);
 
@@ -61,7 +61,7 @@ private:
 
     void withdrawAnyPreviousAPINotificationMatchingTag(const CString&);
 
-    void show(WebNotification&, const RefPtr<WebCore::NotificationResources>&);
+    void show(WebNotification&, const RefPtr<CyberCore::NotificationResources>&);
 
     // NotificationService
     void didClickNotification(uint64_t) final;

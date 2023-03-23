@@ -29,12 +29,12 @@
 #include <CyberCore/SameSiteInfo.h>
 #include <wtf/HashSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 class NetworkStorageSession;
 enum class ShouldRelaxThirdPartyCookieBlocking : bool;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebCookieCache {
 public:
@@ -42,22 +42,22 @@ public:
 
     bool isSupported();
 
-    String cookiesForDOM(const URL& firstParty, const WebCore::SameSiteInfo&, const URL&, WebCore::FrameIdentifier, WebCore::PageIdentifier, WebCore::IncludeSecureCookies);
-    void setCookiesFromDOM(const URL& firstParty, const WebCore::SameSiteInfo&, const URL&, WebCore::FrameIdentifier, WebCore::PageIdentifier, const String& cookieString, WebCore::ShouldRelaxThirdPartyCookieBlocking);
+    String cookiesForDOM(const URL& firstParty, const CyberCore::SameSiteInfo&, const URL&, CyberCore::FrameIdentifier, CyberCore::PageIdentifier, CyberCore::IncludeSecureCookies);
+    void setCookiesFromDOM(const URL& firstParty, const CyberCore::SameSiteInfo&, const URL&, CyberCore::FrameIdentifier, CyberCore::PageIdentifier, const String& cookieString, CyberCore::ShouldRelaxThirdPartyCookieBlocking);
 
-    void cookiesAdded(const String& host, const Vector<WebCore::Cookie>&);
-    void cookiesDeleted(const String& host, const Vector<WebCore::Cookie>&);
+    void cookiesAdded(const String& host, const Vector<CyberCore::Cookie>&);
+    void cookiesDeleted(const String& host, const Vector<CyberCore::Cookie>&);
     void allCookiesDeleted();
 
     void clear();
     void clearForHost(const String&);
 
 private:
-    WebCore::NetworkStorageSession& inMemoryStorageSession();
+    CyberCore::NetworkStorageSession& inMemoryStorageSession();
     void pruneCacheIfNecessary();
 
     HashSet<String> m_hostsWithInMemoryStorage;
-    std::unique_ptr<WebCore::NetworkStorageSession> m_inMemoryStorageSession;
+    std::unique_ptr<CyberCore::NetworkStorageSession> m_inMemoryStorageSession;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

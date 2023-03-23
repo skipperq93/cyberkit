@@ -41,55 +41,55 @@
 #import <wtf/GetPtr.h>
 #import <wtf/URL.h>
 
-#define IMPL static_cast<WebCore::DeprecatedCSSOMPrimitiveValue*>(reinterpret_cast<WebCore::DeprecatedCSSOMValue*>(_internal))
+#define IMPL static_cast<CyberCore::DeprecatedCSSOMPrimitiveValue*>(reinterpret_cast<CyberCore::DeprecatedCSSOMValue*>(_internal))
 
 @implementation DOMCSSPrimitiveValue
 
 - (unsigned short)primitiveType
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->primitiveType();
 }
 
 - (void)setFloatValue:(unsigned short)unitType floatValue:(float)floatValue
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     raiseOnDOMError(IMPL->setFloatValue(unitType, floatValue));
 }
 
 - (float)getFloatValue:(unsigned short)unitType
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return raiseOnDOMError(IMPL->getFloatValue(unitType));
 }
 
 - (void)setStringValue:(unsigned short)stringType stringValue:(NSString *)stringValue
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     raiseOnDOMError(IMPL->setStringValue(stringType, stringValue));
 }
 
 - (NSString *)getStringValue
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return raiseOnDOMError(IMPL->getStringValue());
 }
 
 - (DOMCounter *)getCounterValue
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(raiseOnDOMError(IMPL->getCounterValue()).ptr());
 }
 
 - (DOMRect *)getRectValue
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(raiseOnDOMError(IMPL->getRectValue()).ptr());
 }
 
 - (DOMRGBColor *)getRGBColorValue
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(raiseOnDOMError(IMPL->getRGBColorValue()).ptr());
 }
 
@@ -109,10 +109,10 @@
 
 @end
 
-DOMCSSPrimitiveValue *kit(WebCore::DeprecatedCSSOMPrimitiveValue* value)
+DOMCSSPrimitiveValue *kit(CyberCore::DeprecatedCSSOMPrimitiveValue* value)
 {
-    WebCoreThreadViolationCheckRoundOne();
-    return static_cast<DOMCSSPrimitiveValue*>(kit(static_cast<WebCore::DeprecatedCSSOMValue*>(value)));
+    CyberCoreThreadViolationCheckRoundOne();
+    return static_cast<DOMCSSPrimitiveValue*>(kit(static_cast<CyberCore::DeprecatedCSSOMValue*>(value)));
 }
 
 #undef IMPL

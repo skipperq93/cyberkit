@@ -30,7 +30,7 @@
 
 #import "LayerHostingContext.h"
 #import "MediaPlayerPrivateRemoteMessages.h"
-#import "WebCoreArgumentCoders.h"
+#import "CyberCoreArgumentCoders.h"
 #import <QuartzCore/QuartzCore.h>
 #import <CyberCore/FloatSize.h>
 #import <CyberCore/IOSurface.h>
@@ -39,7 +39,7 @@
 
 namespace WebKit {
 
-void RemoteMediaPlayerProxy::setVideoInlineSizeIfPossible(const WebCore::FloatSize& size)
+void RemoteMediaPlayerProxy::setVideoInlineSizeIfPossible(const CyberCore::FloatSize& size)
 {
     if (!m_inlineLayerHostingContext || !m_inlineLayerHostingContext->rootLayer() || size.isEmpty())
         return;
@@ -80,7 +80,7 @@ void RemoteMediaPlayerProxy::mediaPlayerRenderingModeChanged()
     m_webProcessConnection->send(Messages::MediaPlayerPrivateRemote::RenderingModeChanged(), m_id);
 }
 
-void RemoteMediaPlayerProxy::setVideoInlineSizeFenced(const WebCore::FloatSize& size, const WTF::MachSendRight& machSendRight)
+void RemoteMediaPlayerProxy::setVideoInlineSizeFenced(const CyberCore::FloatSize& size, const WTF::MachSendRight& machSendRight)
 {
     ALWAYS_LOG(LOGIDENTIFIER, size.width(), "x", size.height());
     if (m_inlineLayerHostingContext)
@@ -92,11 +92,11 @@ void RemoteMediaPlayerProxy::setVideoInlineSizeFenced(const WebCore::FloatSize& 
 
 void RemoteMediaPlayerProxy::mediaPlayerOnNewVideoFrameMetadata(VideoFrameMetadata&& metadata, RetainPtr<CVPixelBufferRef>&& buffer)
 {
-    auto properties = m_videoFrameObjectHeap->add(WebCore::VideoFrameCV::create({ }, false, VideoFrame::Rotation::None, WTFMove(buffer)));
+    auto properties = m_videoFrameObjectHeap->add(CyberCore::VideoFrameCV::create({ }, false, VideoFrame::Rotation::None, WTFMove(buffer)));
     m_webProcessConnection->send(Messages::MediaPlayerPrivateRemote::PushVideoFrameMetadata(metadata, properties), m_id);
 }
 
-void RemoteMediaPlayerProxy::nativeImageForCurrentTime(CompletionHandler<void(std::optional<WTF::MachSendRight>&&, WebCore::DestinationColorSpace)>&& completionHandler)
+void RemoteMediaPlayerProxy::nativeImageForCurrentTime(CompletionHandler<void(std::optional<WTF::MachSendRight>&&, CyberCore::DestinationColorSpace)>&& completionHandler)
 {
     if (!m_player) {
         completionHandler(std::nullopt, DestinationColorSpace::SRGB());
@@ -115,7 +115,7 @@ void RemoteMediaPlayerProxy::nativeImageForCurrentTime(CompletionHandler<void(st
         return;
     }
 
-    auto surface = WebCore::IOSurface::createFromImage(nullptr, platformImage.get());
+    auto surface = CyberCore::IOSurface::createFromImage(nullptr, platformImage.get());
     if (!surface) {
         completionHandler(std::nullopt, DestinationColorSpace::SRGB());
         return;
@@ -124,7 +124,7 @@ void RemoteMediaPlayerProxy::nativeImageForCurrentTime(CompletionHandler<void(st
     completionHandler(surface->createSendRight(), nativeImage->colorSpace());
 }
 
-void RemoteMediaPlayerProxy::colorSpace(CompletionHandler<void(WebCore::DestinationColorSpace)>&& completionHandler)
+void RemoteMediaPlayerProxy::colorSpace(CompletionHandler<void(CyberCore::DestinationColorSpace)>&& completionHandler)
 {
     if (!m_player) {
         completionHandler(DestinationColorSpace::SRGB());

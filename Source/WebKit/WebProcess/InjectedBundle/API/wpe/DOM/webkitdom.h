@@ -22,11 +22,11 @@
 
 #define __WEBKITDOM_H_INSIDE__
 
-#include <wpe/WebKitDOMDefines.h>
-#include <wpe/WebKitDOMDocument.h>
-#include <wpe/WebKitDOMElement.h>
-#include <wpe/WebKitDOMNode.h>
-#include <wpe/WebKitDOMObject.h>
+#include <wpe/CyberKitDOMDefines.h>
+#include <wpe/CyberKitDOMDocument.h>
+#include <wpe/CyberKitDOMElement.h>
+#include <wpe/CyberKitDOMNode.h>
+#include <wpe/CyberKitDOMObject.h>
 
 #undef __WEBKITDOM_H_INSIDE__
 

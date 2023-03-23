@@ -40,7 +40,7 @@
 #include "Timer.h"
 #include <pal/HysteresisActivity.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static constexpr unsigned maximumPendingImageAnalysisCount = 5;
 static constexpr float minimumWidthForAnalysis = 20;
@@ -198,6 +198,6 @@ void ImageAnalysisQueue::clear()
     m_imageQueueEmptyHysteresis = nullptr;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(IMAGE_ANALYSIS)

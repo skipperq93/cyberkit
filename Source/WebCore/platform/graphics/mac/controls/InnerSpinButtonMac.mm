@@ -36,7 +36,7 @@
 #import <pal/spi/mac/NSAppearanceSPI.h>
 #import <wtf/BlockObjCExceptions.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 InnerSpinButtonMac::InnerSpinButtonMac(InnerSpinButtonPart& owningPart, ControlFactoryMac& controlFactory)
     : ControlMac(owningPart, controlFactory)
@@ -102,6 +102,6 @@ void InnerSpinButtonMac::draw(GraphicsContext& context, const FloatRoundedRect& 
     END_BLOCK_OBJC_EXCEPTIONS
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(MAC)

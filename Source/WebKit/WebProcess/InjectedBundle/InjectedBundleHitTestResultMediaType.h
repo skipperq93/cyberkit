@@ -25,7 +25,7 @@
 #ifndef InjectedBundleHitTestResultMediaType_h
 #define InjectedBundleHitTestResultMediaType_h
 
-namespace WebKit {
+namespace CyberKit {
 
 enum BundleHitTestResultMediaType {
     BundleHitTestResultMediaTypeNone,
@@ -33,6 +33,6 @@ enum BundleHitTestResultMediaType {
     BundleHitTestResultMediaTypeVideo
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // InjectedBundleHitTestResultMediaType_h

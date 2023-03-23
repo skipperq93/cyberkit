@@ -34,7 +34,7 @@
 #include <wtf/Function.h>
 #include <wtf/Noncopyable.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AffineTransform;
 class GraphicsContext;
@@ -127,4 +127,4 @@ private:
     bool m_shadowsIgnoreTransforms { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

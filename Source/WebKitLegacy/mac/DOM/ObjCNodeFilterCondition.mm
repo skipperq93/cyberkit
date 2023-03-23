@@ -31,11 +31,11 @@
 #import "DOMNodeInternal.h"
 #import <CyberCore/NodeFilter.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 unsigned short ObjCNodeFilterCondition::acceptNode(Node& node) const
 {
     return [m_filter.get() acceptNode:kit(&node)];
 }
 
-} // namespace WebCore
+} // namespace CyberCore

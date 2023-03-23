@@ -29,7 +29,7 @@
 #include "GridTrackSize.h"
 #include "LayoutSize.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static const int infinity = -1;
 
@@ -309,4 +309,4 @@ protected:
     GridTrackSizingAlgorithm& m_algorithm;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

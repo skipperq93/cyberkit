@@ -30,7 +30,7 @@
 
 #import <UIKit/UIKit.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Color colorFromCocoaColor(UIColor *color)
 {
@@ -50,6 +50,6 @@ Color colorFromCocoaColor(UIColor *color)
     return convertColor<SRGBA<uint8_t>>(SRGBA<float> { static_cast<float>(redComponent), static_cast<float>(greenComponent), static_cast<float>(blueComponent), static_cast<float>(alpha) });
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

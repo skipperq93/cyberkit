@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -18,7 +18,7 @@
  */
 
 #include "config.h"
-#include "WebKitDOMHTMLAnchorElement.h"
+#include "CyberKitDOMHTMLAnchorElement.h"
 
 #include <CyberCore/CSSImportRule.h>
 #include "DOMObjectCache.h"
@@ -28,74 +28,74 @@
 #include <CyberCore/HTMLNames.h>
 #include <CyberCore/JSExecState.h>
 #include "GObjectEventListener.h"
-#include "WebKitDOMDOMTokenListPrivate.h"
-#include "WebKitDOMEventPrivate.h"
-#include "WebKitDOMEventTarget.h"
-#include "WebKitDOMHTMLAnchorElementPrivate.h"
-#include "WebKitDOMNodePrivate.h"
-#include "WebKitDOMPrivate.h"
+#include "CyberKitDOMDOMTokenListPrivate.h"
+#include "CyberKitDOMEventPrivate.h"
+#include "CyberKitDOMEventTarget.h"
+#include "CyberKitDOMHTMLAnchorElementPrivate.h"
+#include "CyberKitDOMNodePrivate.h"
+#include "CyberKitDOMPrivate.h"
 #include "ConvertToUTF8String.h"
 #include <wtf/GetPtr.h>
 #include <wtf/RefPtr.h>
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
-namespace WebKit {
+namespace CyberKit {
 
-WebKitDOMHTMLAnchorElement* kit(WebCore::HTMLAnchorElement* obj)
+CyberKitDOMHTMLAnchorElement* kit(CyberCore::HTMLAnchorElement* obj)
 {
-    return WEBKIT_DOM_HTML_ANCHOR_ELEMENT(kit(static_cast<WebCore::Node*>(obj)));
+    return WEBKIT_DOM_HTML_ANCHOR_ELEMENT(kit(static_cast<CyberCore::Node*>(obj)));
 }
 
-WebCore::HTMLAnchorElement* core(WebKitDOMHTMLAnchorElement* request)
+CyberCore::HTMLAnchorElement* core(CyberKitDOMHTMLAnchorElement* request)
 {
-    return request ? static_cast<WebCore::HTMLAnchorElement*>(WEBKIT_DOM_OBJECT(request)->coreObject) : 0;
+    return request ? static_cast<CyberCore::HTMLAnchorElement*>(WEBKIT_DOM_OBJECT(request)->coreObject) : 0;
 }
 
-WebKitDOMHTMLAnchorElement* wrapHTMLAnchorElement(WebCore::HTMLAnchorElement* coreObject)
+CyberKitDOMHTMLAnchorElement* wrapHTMLAnchorElement(CyberCore::HTMLAnchorElement* coreObject)
 {
     ASSERT(coreObject);
     return WEBKIT_DOM_HTML_ANCHOR_ELEMENT(g_object_new(WEBKIT_DOM_TYPE_HTML_ANCHOR_ELEMENT, "core-object", coreObject, nullptr));
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
-static gboolean webkit_dom_html_anchor_element_dispatch_event(WebKitDOMEventTarget* target, WebKitDOMEvent* event, GError** error)
+static gboolean webkit_dom_html_anchor_element_dispatch_event(CyberKitDOMEventTarget* target, CyberKitDOMEvent* event, GError** error)
 {
-    WebCore::Event* coreEvent = WebKit::core(event);
+    CyberCore::Event* coreEvent = CyberKit::core(event);
     if (!coreEvent)
         return false;
-    WebCore::HTMLAnchorElement* coreTarget = static_cast<WebCore::HTMLAnchorElement*>(WEBKIT_DOM_OBJECT(target)->coreObject);
+    CyberCore::HTMLAnchorElement* coreTarget = static_cast<CyberCore::HTMLAnchorElement*>(WEBKIT_DOM_OBJECT(target)->coreObject);
 
     auto result = coreTarget->dispatchEventForBindings(*coreEvent);
     if (result.hasException()) {
-        auto description = WebCore::DOMException::description(result.releaseException().code());
+        auto description = CyberCore::DOMException::description(result.releaseException().code());
         g_set_error_literal(error, g_quark_from_string("WEBKIT_DOM"), description.legacyCode, description.name);
         return false;
     }
     return result.releaseReturnValue();
 }
 
-static gboolean webkit_dom_html_anchor_element_add_event_listener(WebKitDOMEventTarget* target, const char* eventName, GClosure* handler, gboolean useCapture)
+static gboolean webkit_dom_html_anchor_element_add_event_listener(CyberKitDOMEventTarget* target, const char* eventName, GClosure* handler, gboolean useCapture)
 {
-    WebCore::HTMLAnchorElement* coreTarget = static_cast<WebCore::HTMLAnchorElement*>(WEBKIT_DOM_OBJECT(target)->coreObject);
-    return WebKit::GObjectEventListener::addEventListener(G_OBJECT(target), coreTarget, eventName, handler, useCapture);
+    CyberCore::HTMLAnchorElement* coreTarget = static_cast<CyberCore::HTMLAnchorElement*>(WEBKIT_DOM_OBJECT(target)->coreObject);
+    return CyberKit::GObjectEventListener::addEventListener(G_OBJECT(target), coreTarget, eventName, handler, useCapture);
 }
 
-static gboolean webkit_dom_html_anchor_element_remove_event_listener(WebKitDOMEventTarget* target, const char* eventName, GClosure* handler, gboolean useCapture)
+static gboolean webkit_dom_html_anchor_element_remove_event_listener(CyberKitDOMEventTarget* target, const char* eventName, GClosure* handler, gboolean useCapture)
 {
-    WebCore::HTMLAnchorElement* coreTarget = static_cast<WebCore::HTMLAnchorElement*>(WEBKIT_DOM_OBJECT(target)->coreObject);
-    return WebKit::GObjectEventListener::removeEventListener(G_OBJECT(target), coreTarget, eventName, handler, useCapture);
+    CyberCore::HTMLAnchorElement* coreTarget = static_cast<CyberCore::HTMLAnchorElement*>(WEBKIT_DOM_OBJECT(target)->coreObject);
+    return CyberKit::GObjectEventListener::removeEventListener(G_OBJECT(target), coreTarget, eventName, handler, useCapture);
 }
 
-static void webkit_dom_html_anchor_element_dom_event_target_init(WebKitDOMEventTargetIface* iface)
+static void webkit_dom_html_anchor_element_dom_event_target_init(CyberKitDOMEventTargetIface* iface)
 {
     iface->dispatch_event = webkit_dom_html_anchor_element_dispatch_event;
     iface->add_event_listener = webkit_dom_html_anchor_element_add_event_listener;
     iface->remove_event_listener = webkit_dom_html_anchor_element_remove_event_listener;
 }
 
-G_DEFINE_TYPE_WITH_CODE(WebKitDOMHTMLAnchorElement, webkit_dom_html_anchor_element, WEBKIT_DOM_TYPE_HTML_ELEMENT, G_IMPLEMENT_INTERFACE(WEBKIT_DOM_TYPE_EVENT_TARGET, webkit_dom_html_anchor_element_dom_event_target_init))
+G_DEFINE_TYPE_WITH_CODE(CyberKitDOMHTMLAnchorElement, webkit_dom_html_anchor_element, WEBKIT_DOM_TYPE_HTML_ELEMENT, G_IMPLEMENT_INTERFACE(WEBKIT_DOM_TYPE_EVENT_TARGET, webkit_dom_html_anchor_element_dom_event_target_init))
 
 enum {
     DOM_HTML_ANCHOR_ELEMENT_PROP_0,
@@ -121,7 +121,7 @@ enum {
 
 static void webkit_dom_html_anchor_element_set_property(GObject* object, guint propertyId, const GValue* value, GParamSpec* pspec)
 {
-    WebKitDOMHTMLAnchorElement* self = WEBKIT_DOM_HTML_ANCHOR_ELEMENT(object);
+    CyberKitDOMHTMLAnchorElement* self = WEBKIT_DOM_HTML_ANCHOR_ELEMENT(object);
 
     switch (propertyId) {
     case DOM_HTML_ANCHOR_ELEMENT_PROP_CHARSET:
@@ -186,7 +186,7 @@ static void webkit_dom_html_anchor_element_set_property(GObject* object, guint p
 
 static void webkit_dom_html_anchor_element_get_property(GObject* object, guint propertyId, GValue* value, GParamSpec* pspec)
 {
-    WebKitDOMHTMLAnchorElement* self = WEBKIT_DOM_HTML_ANCHOR_ELEMENT(object);
+    CyberKitDOMHTMLAnchorElement* self = WEBKIT_DOM_HTML_ANCHOR_ELEMENT(object);
 
     switch (propertyId) {
     case DOM_HTML_ANCHOR_ELEMENT_PROP_CHARSET:
@@ -249,7 +249,7 @@ static void webkit_dom_html_anchor_element_get_property(GObject* object, guint p
     }
 }
 
-static void webkit_dom_html_anchor_element_class_init(WebKitDOMHTMLAnchorElementClass* requestClass)
+static void webkit_dom_html_anchor_element_class_init(CyberKitDOMHTMLAnchorElementClass* requestClass)
 {
     GObjectClass* gobjectClass = G_OBJECT_CLASS(requestClass);
     gobjectClass->set_property = webkit_dom_html_anchor_element_set_property;
@@ -437,338 +437,338 @@ static void webkit_dom_html_anchor_element_class_init(WebKitDOMHTMLAnchorElement
 
 }
 
-static void webkit_dom_html_anchor_element_init(WebKitDOMHTMLAnchorElement* request)
+static void webkit_dom_html_anchor_element_init(CyberKitDOMHTMLAnchorElement* request)
 {
     UNUSED_PARAM(request);
 }
 
-gchar* webkit_dom_html_anchor_element_get_charset(WebKitDOMHTMLAnchorElement* self)
+gchar* webkit_dom_html_anchor_element_get_charset(CyberKitDOMHTMLAnchorElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_ANCHOR_ELEMENT(self), 0);
-    WebCore::HTMLAnchorElement* item = WebKit::core(self);
-    gchar* result = convertToUTF8String(item->attributeWithoutSynchronization(WebCore::HTMLNames::charsetAttr));
+    CyberCore::HTMLAnchorElement* item = CyberKit::core(self);
+    gchar* result = convertToUTF8String(item->attributeWithoutSynchronization(CyberCore::HTMLNames::charsetAttr));
     return result;
 }
 
-void webkit_dom_html_anchor_element_set_charset(WebKitDOMHTMLAnchorElement* self, const gchar* value)
+void webkit_dom_html_anchor_element_set_charset(CyberKitDOMHTMLAnchorElement* self, const gchar* value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_ANCHOR_ELEMENT(self));
     g_return_if_fail(value);
-    WebCore::HTMLAnchorElement* item = WebKit::core(self);
-    item->setAttributeWithoutSynchronization(WebCore::HTMLNames::charsetAttr, WTF::AtomString::fromUTF8(value));
+    CyberCore::HTMLAnchorElement* item = CyberKit::core(self);
+    item->setAttributeWithoutSynchronization(CyberCore::HTMLNames::charsetAttr, WTF::AtomString::fromUTF8(value));
 }
 
-gchar* webkit_dom_html_anchor_element_get_coords(WebKitDOMHTMLAnchorElement* self)
+gchar* webkit_dom_html_anchor_element_get_coords(CyberKitDOMHTMLAnchorElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_ANCHOR_ELEMENT(self), 0);
-    WebCore::HTMLAnchorElement* item = WebKit::core(self);
-    gchar* result = convertToUTF8String(item->attributeWithoutSynchronization(WebCore::HTMLNames::coordsAttr));
+    CyberCore::HTMLAnchorElement* item = CyberKit::core(self);
+    gchar* result = convertToUTF8String(item->attributeWithoutSynchronization(CyberCore::HTMLNames::coordsAttr));
     return result;
 }
 
-void webkit_dom_html_anchor_element_set_coords(WebKitDOMHTMLAnchorElement* self, const gchar* value)
+void webkit_dom_html_anchor_element_set_coords(CyberKitDOMHTMLAnchorElement* self, const gchar* value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_ANCHOR_ELEMENT(self));
     g_return_if_fail(value);
-    WebCore::HTMLAnchorElement* item = WebKit::core(self);
-    item->setAttributeWithoutSynchronization(WebCore::HTMLNames::coordsAttr, WTF::AtomString::fromUTF8(value));
+    CyberCore::HTMLAnchorElement* item = CyberKit::core(self);
+    item->setAttributeWithoutSynchronization(CyberCore::HTMLNames::coordsAttr, WTF::AtomString::fromUTF8(value));
 }
 
-gchar* webkit_dom_html_anchor_element_get_hreflang(WebKitDOMHTMLAnchorElement* self)
+gchar* webkit_dom_html_anchor_element_get_hreflang(CyberKitDOMHTMLAnchorElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_ANCHOR_ELEMENT(self), 0);
-    WebCore::HTMLAnchorElement* item = WebKit::core(self);
-    gchar* result = convertToUTF8String(item->attributeWithoutSynchronization(WebCore::HTMLNames::hreflangAttr));
+    CyberCore::HTMLAnchorElement* item = CyberKit::core(self);
+    gchar* result = convertToUTF8String(item->attributeWithoutSynchronization(CyberCore::HTMLNames::hreflangAttr));
     return result;
 }
 
-void webkit_dom_html_anchor_element_set_hreflang(WebKitDOMHTMLAnchorElement* self, const gchar* value)
+void webkit_dom_html_anchor_element_set_hreflang(CyberKitDOMHTMLAnchorElement* self, const gchar* value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_ANCHOR_ELEMENT(self));
     g_return_if_fail(value);
-    WebCore::HTMLAnchorElement* item = WebKit::core(self);
-    item->setAttributeWithoutSynchronization(WebCore::HTMLNames::hreflangAttr, WTF::AtomString::fromUTF8(value));
+    CyberCore::HTMLAnchorElement* item = CyberKit::core(self);
+    item->setAttributeWithoutSynchronization(CyberCore::HTMLNames::hreflangAttr, WTF::AtomString::fromUTF8(value));
 }
 
-gchar* webkit_dom_html_anchor_element_get_name(WebKitDOMHTMLAnchorElement* self)
+gchar* webkit_dom_html_anchor_element_get_name(CyberKitDOMHTMLAnchorElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_ANCHOR_ELEMENT(self), 0);
-    WebCore::HTMLAnchorElement* item = WebKit::core(self);
+    CyberCore::HTMLAnchorElement* item = CyberKit::core(self);
     gchar* result = convertToUTF8String(item->getNameAttribute());
     return result;
 }
 
-void webkit_dom_html_anchor_element_set_name(WebKitDOMHTMLAnchorElement* self, const gchar* value)
+void webkit_dom_html_anchor_element_set_name(CyberKitDOMHTMLAnchorElement* self, const gchar* value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_ANCHOR_ELEMENT(self));
     g_return_if_fail(value);
-    WebCore::HTMLAnchorElement* item = WebKit::core(self);
-    item->setAttributeWithoutSynchronization(WebCore::HTMLNames::nameAttr, WTF::AtomString::fromUTF8(value));
+    CyberCore::HTMLAnchorElement* item = CyberKit::core(self);
+    item->setAttributeWithoutSynchronization(CyberCore::HTMLNames::nameAttr, WTF::AtomString::fromUTF8(value));
 }
 
-gchar* webkit_dom_html_anchor_element_get_rel(WebKitDOMHTMLAnchorElement* self)
+gchar* webkit_dom_html_anchor_element_get_rel(CyberKitDOMHTMLAnchorElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_ANCHOR_ELEMENT(self), 0);
-    WebCore::HTMLAnchorElement* item = WebKit::core(self);
-    gchar* result = convertToUTF8String(item->attributeWithoutSynchronization(WebCore::HTMLNames::relAttr));
+    CyberCore::HTMLAnchorElement* item = CyberKit::core(self);
+    gchar* result = convertToUTF8String(item->attributeWithoutSynchronization(CyberCore::HTMLNames::relAttr));
     return result;
 }
 
-void webkit_dom_html_anchor_element_set_rel(WebKitDOMHTMLAnchorElement* self, const gchar* value)
+void webkit_dom_html_anchor_element_set_rel(CyberKitDOMHTMLAnchorElement* self, const gchar* value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_ANCHOR_ELEMENT(self));
     g_return_if_fail(value);
-    WebCore::HTMLAnchorElement* item = WebKit::core(self);
-    item->setAttributeWithoutSynchronization(WebCore::HTMLNames::relAttr, WTF::AtomString::fromUTF8(value));
+    CyberCore::HTMLAnchorElement* item = CyberKit::core(self);
+    item->setAttributeWithoutSynchronization(CyberCore::HTMLNames::relAttr, WTF::AtomString::fromUTF8(value));
 }
 
-gchar* webkit_dom_html_anchor_element_get_rev(WebKitDOMHTMLAnchorElement* self)
+gchar* webkit_dom_html_anchor_element_get_rev(CyberKitDOMHTMLAnchorElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_ANCHOR_ELEMENT(self), 0);
-    WebCore::HTMLAnchorElement* item = WebKit::core(self);
-    gchar* result = convertToUTF8String(item->attributeWithoutSynchronization(WebCore::HTMLNames::revAttr));
+    CyberCore::HTMLAnchorElement* item = CyberKit::core(self);
+    gchar* result = convertToUTF8String(item->attributeWithoutSynchronization(CyberCore::HTMLNames::revAttr));
     return result;
 }
 
-void webkit_dom_html_anchor_element_set_rev(WebKitDOMHTMLAnchorElement* self, const gchar* value)
+void webkit_dom_html_anchor_element_set_rev(CyberKitDOMHTMLAnchorElement* self, const gchar* value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_ANCHOR_ELEMENT(self));
     g_return_if_fail(value);
-    WebCore::HTMLAnchorElement* item = WebKit::core(self);
-    item->setAttributeWithoutSynchronization(WebCore::HTMLNames::revAttr, WTF::AtomString::fromUTF8(value));
+    CyberCore::HTMLAnchorElement* item = CyberKit::core(self);
+    item->setAttributeWithoutSynchronization(CyberCore::HTMLNames::revAttr, WTF::AtomString::fromUTF8(value));
 }
 
-gchar* webkit_dom_html_anchor_element_get_shape(WebKitDOMHTMLAnchorElement* self)
+gchar* webkit_dom_html_anchor_element_get_shape(CyberKitDOMHTMLAnchorElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_ANCHOR_ELEMENT(self), 0);
-    WebCore::HTMLAnchorElement* item = WebKit::core(self);
-    gchar* result = convertToUTF8String(item->attributeWithoutSynchronization(WebCore::HTMLNames::shapeAttr));
+    CyberCore::HTMLAnchorElement* item = CyberKit::core(self);
+    gchar* result = convertToUTF8String(item->attributeWithoutSynchronization(CyberCore::HTMLNames::shapeAttr));
     return result;
 }
 
-void webkit_dom_html_anchor_element_set_shape(WebKitDOMHTMLAnchorElement* self, const gchar* value)
+void webkit_dom_html_anchor_element_set_shape(CyberKitDOMHTMLAnchorElement* self, const gchar* value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_ANCHOR_ELEMENT(self));
     g_return_if_fail(value);
-    WebCore::HTMLAnchorElement* item = WebKit::core(self);
-    item->setAttributeWithoutSynchronization(WebCore::HTMLNames::shapeAttr, WTF::AtomString::fromUTF8(value));
+    CyberCore::HTMLAnchorElement* item = CyberKit::core(self);
+    item->setAttributeWithoutSynchronization(CyberCore::HTMLNames::shapeAttr, WTF::AtomString::fromUTF8(value));
 }
 
-gchar* webkit_dom_html_anchor_element_get_target(WebKitDOMHTMLAnchorElement* self)
+gchar* webkit_dom_html_anchor_element_get_target(CyberKitDOMHTMLAnchorElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_ANCHOR_ELEMENT(self), 0);
-    WebCore::HTMLAnchorElement* item = WebKit::core(self);
-    gchar* result = convertToUTF8String(item->attributeWithoutSynchronization(WebCore::HTMLNames::targetAttr));
+    CyberCore::HTMLAnchorElement* item = CyberKit::core(self);
+    gchar* result = convertToUTF8String(item->attributeWithoutSynchronization(CyberCore::HTMLNames::targetAttr));
     return result;
 }
 
-void webkit_dom_html_anchor_element_set_target(WebKitDOMHTMLAnchorElement* self, const gchar* value)
+void webkit_dom_html_anchor_element_set_target(CyberKitDOMHTMLAnchorElement* self, const gchar* value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_ANCHOR_ELEMENT(self));
     g_return_if_fail(value);
-    WebCore::HTMLAnchorElement* item = WebKit::core(self);
-    item->setAttributeWithoutSynchronization(WebCore::HTMLNames::targetAttr, WTF::AtomString::fromUTF8(value));
+    CyberCore::HTMLAnchorElement* item = CyberKit::core(self);
+    item->setAttributeWithoutSynchronization(CyberCore::HTMLNames::targetAttr, WTF::AtomString::fromUTF8(value));
 }
 
-gchar* webkit_dom_html_anchor_element_get_type_attr(WebKitDOMHTMLAnchorElement* self)
+gchar* webkit_dom_html_anchor_element_get_type_attr(CyberKitDOMHTMLAnchorElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_ANCHOR_ELEMENT(self), 0);
-    WebCore::HTMLAnchorElement* item = WebKit::core(self);
-    gchar* result = convertToUTF8String(item->attributeWithoutSynchronization(WebCore::HTMLNames::typeAttr));
+    CyberCore::HTMLAnchorElement* item = CyberKit::core(self);
+    gchar* result = convertToUTF8String(item->attributeWithoutSynchronization(CyberCore::HTMLNames::typeAttr));
     return result;
 }
 
-void webkit_dom_html_anchor_element_set_type_attr(WebKitDOMHTMLAnchorElement* self, const gchar* value)
+void webkit_dom_html_anchor_element_set_type_attr(CyberKitDOMHTMLAnchorElement* self, const gchar* value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_ANCHOR_ELEMENT(self));
     g_return_if_fail(value);
-    WebCore::HTMLAnchorElement* item = WebKit::core(self);
-    item->setAttributeWithoutSynchronization(WebCore::HTMLNames::typeAttr, WTF::AtomString::fromUTF8(value));
+    CyberCore::HTMLAnchorElement* item = CyberKit::core(self);
+    item->setAttributeWithoutSynchronization(CyberCore::HTMLNames::typeAttr, WTF::AtomString::fromUTF8(value));
 }
 
-gchar* webkit_dom_html_anchor_element_get_text(WebKitDOMHTMLAnchorElement* self)
+gchar* webkit_dom_html_anchor_element_get_text(CyberKitDOMHTMLAnchorElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_ANCHOR_ELEMENT(self), 0);
-    WebCore::HTMLAnchorElement* item = WebKit::core(self);
+    CyberCore::HTMLAnchorElement* item = CyberKit::core(self);
     gchar* result = convertToUTF8String(item->text());
     return result;
 }
 
-void webkit_dom_html_anchor_element_set_text(WebKitDOMHTMLAnchorElement* self, const gchar* value)
+void webkit_dom_html_anchor_element_set_text(CyberKitDOMHTMLAnchorElement* self, const gchar* value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_ANCHOR_ELEMENT(self));
     g_return_if_fail(value);
-    WebCore::HTMLAnchorElement* item = WebKit::core(self);
+    CyberCore::HTMLAnchorElement* item = CyberKit::core(self);
     item->setText(WTF::String::fromUTF8(value));
 }
 
-gchar* webkit_dom_html_anchor_element_get_href(WebKitDOMHTMLAnchorElement* self)
+gchar* webkit_dom_html_anchor_element_get_href(CyberKitDOMHTMLAnchorElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_ANCHOR_ELEMENT(self), 0);
-    WebCore::HTMLAnchorElement* item = WebKit::core(self);
-    gchar* result = convertToUTF8String(item->getURLAttribute(WebCore::HTMLNames::hrefAttr));
+    CyberCore::HTMLAnchorElement* item = CyberKit::core(self);
+    gchar* result = convertToUTF8String(item->getURLAttribute(CyberCore::HTMLNames::hrefAttr));
     return result;
 }
 
-void webkit_dom_html_anchor_element_set_href(WebKitDOMHTMLAnchorElement* self, const gchar* value)
+void webkit_dom_html_anchor_element_set_href(CyberKitDOMHTMLAnchorElement* self, const gchar* value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_ANCHOR_ELEMENT(self));
     g_return_if_fail(value);
-    WebCore::HTMLAnchorElement* item = WebKit::core(self);
-    item->setAttributeWithoutSynchronization(WebCore::HTMLNames::hrefAttr, WTF::AtomString::fromUTF8(value));
+    CyberCore::HTMLAnchorElement* item = CyberKit::core(self);
+    item->setAttributeWithoutSynchronization(CyberCore::HTMLNames::hrefAttr, WTF::AtomString::fromUTF8(value));
 }
 
-gchar* webkit_dom_html_anchor_element_get_protocol(WebKitDOMHTMLAnchorElement* self)
+gchar* webkit_dom_html_anchor_element_get_protocol(CyberKitDOMHTMLAnchorElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_ANCHOR_ELEMENT(self), 0);
-    WebCore::HTMLAnchorElement* item = WebKit::core(self);
+    CyberCore::HTMLAnchorElement* item = CyberKit::core(self);
     gchar* result = convertToUTF8String(item->protocol());
     return result;
 }
 
-void webkit_dom_html_anchor_element_set_protocol(WebKitDOMHTMLAnchorElement* self, const gchar* value)
+void webkit_dom_html_anchor_element_set_protocol(CyberKitDOMHTMLAnchorElement* self, const gchar* value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_ANCHOR_ELEMENT(self));
     g_return_if_fail(value);
-    WebCore::HTMLAnchorElement* item = WebKit::core(self);
+    CyberCore::HTMLAnchorElement* item = CyberKit::core(self);
     WTF::String convertedValue = WTF::String::fromUTF8(value);
     item->setProtocol(convertedValue);
 }
 
-gchar* webkit_dom_html_anchor_element_get_host(WebKitDOMHTMLAnchorElement* self)
+gchar* webkit_dom_html_anchor_element_get_host(CyberKitDOMHTMLAnchorElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_ANCHOR_ELEMENT(self), 0);
-    WebCore::HTMLAnchorElement* item = WebKit::core(self);
+    CyberCore::HTMLAnchorElement* item = CyberKit::core(self);
     gchar* result = convertToUTF8String(item->host());
     return result;
 }
 
-void webkit_dom_html_anchor_element_set_host(WebKitDOMHTMLAnchorElement* self, const gchar* value)
+void webkit_dom_html_anchor_element_set_host(CyberKitDOMHTMLAnchorElement* self, const gchar* value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_ANCHOR_ELEMENT(self));
     g_return_if_fail(value);
-    WebCore::HTMLAnchorElement* item = WebKit::core(self);
+    CyberCore::HTMLAnchorElement* item = CyberKit::core(self);
     WTF::String convertedValue = WTF::String::fromUTF8(value);
     item->setHost(convertedValue);
 }
 
-gchar* webkit_dom_html_anchor_element_get_hostname(WebKitDOMHTMLAnchorElement* self)
+gchar* webkit_dom_html_anchor_element_get_hostname(CyberKitDOMHTMLAnchorElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_ANCHOR_ELEMENT(self), 0);
-    WebCore::HTMLAnchorElement* item = WebKit::core(self);
+    CyberCore::HTMLAnchorElement* item = CyberKit::core(self);
     gchar* result = convertToUTF8String(item->hostname());
     return result;
 }
 
-void webkit_dom_html_anchor_element_set_hostname(WebKitDOMHTMLAnchorElement* self, const gchar* value)
+void webkit_dom_html_anchor_element_set_hostname(CyberKitDOMHTMLAnchorElement* self, const gchar* value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_ANCHOR_ELEMENT(self));
     g_return_if_fail(value);
-    WebCore::HTMLAnchorElement* item = WebKit::core(self);
+    CyberCore::HTMLAnchorElement* item = CyberKit::core(self);
     WTF::String convertedValue = WTF::String::fromUTF8(value);
     item->setHostname(convertedValue);
 }
 
-gchar* webkit_dom_html_anchor_element_get_port(WebKitDOMHTMLAnchorElement* self)
+gchar* webkit_dom_html_anchor_element_get_port(CyberKitDOMHTMLAnchorElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_ANCHOR_ELEMENT(self), 0);
-    WebCore::HTMLAnchorElement* item = WebKit::core(self);
+    CyberCore::HTMLAnchorElement* item = CyberKit::core(self);
     gchar* result = convertToUTF8String(item->port());
     return result;
 }
 
-void webkit_dom_html_anchor_element_set_port(WebKitDOMHTMLAnchorElement* self, const gchar* value)
+void webkit_dom_html_anchor_element_set_port(CyberKitDOMHTMLAnchorElement* self, const gchar* value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_ANCHOR_ELEMENT(self));
     g_return_if_fail(value);
-    WebCore::HTMLAnchorElement* item = WebKit::core(self);
+    CyberCore::HTMLAnchorElement* item = CyberKit::core(self);
     WTF::String convertedValue = WTF::String::fromUTF8(value);
     item->setPort(convertedValue);
 }
 
-gchar* webkit_dom_html_anchor_element_get_pathname(WebKitDOMHTMLAnchorElement* self)
+gchar* webkit_dom_html_anchor_element_get_pathname(CyberKitDOMHTMLAnchorElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_ANCHOR_ELEMENT(self), 0);
-    WebCore::HTMLAnchorElement* item = WebKit::core(self);
+    CyberCore::HTMLAnchorElement* item = CyberKit::core(self);
     gchar* result = convertToUTF8String(item->pathname());
     return result;
 }
 
-void webkit_dom_html_anchor_element_set_pathname(WebKitDOMHTMLAnchorElement* self, const gchar* value)
+void webkit_dom_html_anchor_element_set_pathname(CyberKitDOMHTMLAnchorElement* self, const gchar* value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_ANCHOR_ELEMENT(self));
     g_return_if_fail(value);
-    WebCore::HTMLAnchorElement* item = WebKit::core(self);
+    CyberCore::HTMLAnchorElement* item = CyberKit::core(self);
     WTF::String convertedValue = WTF::String::fromUTF8(value);
     item->setPathname(convertedValue);
 }
 
-gchar* webkit_dom_html_anchor_element_get_search(WebKitDOMHTMLAnchorElement* self)
+gchar* webkit_dom_html_anchor_element_get_search(CyberKitDOMHTMLAnchorElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_ANCHOR_ELEMENT(self), 0);
-    WebCore::HTMLAnchorElement* item = WebKit::core(self);
+    CyberCore::HTMLAnchorElement* item = CyberKit::core(self);
     gchar* result = convertToUTF8String(item->search());
     return result;
 }
 
-void webkit_dom_html_anchor_element_set_search(WebKitDOMHTMLAnchorElement* self, const gchar* value)
+void webkit_dom_html_anchor_element_set_search(CyberKitDOMHTMLAnchorElement* self, const gchar* value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_ANCHOR_ELEMENT(self));
     g_return_if_fail(value);
-    WebCore::HTMLAnchorElement* item = WebKit::core(self);
+    CyberCore::HTMLAnchorElement* item = CyberKit::core(self);
     WTF::String convertedValue = WTF::String::fromUTF8(value);
     item->setSearch(convertedValue);
 }
 
-gchar* webkit_dom_html_anchor_element_get_hash(WebKitDOMHTMLAnchorElement* self)
+gchar* webkit_dom_html_anchor_element_get_hash(CyberKitDOMHTMLAnchorElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_ANCHOR_ELEMENT(self), 0);
-    WebCore::HTMLAnchorElement* item = WebKit::core(self);
+    CyberCore::HTMLAnchorElement* item = CyberKit::core(self);
     gchar* result = convertToUTF8String(item->hash());
     return result;
 }
 
-void webkit_dom_html_anchor_element_set_hash(WebKitDOMHTMLAnchorElement* self, const gchar* value)
+void webkit_dom_html_anchor_element_set_hash(CyberKitDOMHTMLAnchorElement* self, const gchar* value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_ANCHOR_ELEMENT(self));
     g_return_if_fail(value);
-    WebCore::HTMLAnchorElement* item = WebKit::core(self);
+    CyberCore::HTMLAnchorElement* item = CyberKit::core(self);
     WTF::String convertedValue = WTF::String::fromUTF8(value);
     item->setHash(convertedValue);
 }

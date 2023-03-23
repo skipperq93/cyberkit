@@ -31,7 +31,7 @@
 
 WKTypeID WKBundleBackForwardListItemGetTypeID()
 {
-    return WebKit::toAPI(API::Object::Type::Null);
+    return CyberKit::toAPI(API::Object::Type::Null);
 }
 
 bool WKBundleBackForwardListItemIsSame(WKBundleBackForwardListItemRef itemRef1, WKBundleBackForwardListItemRef itemRef2)

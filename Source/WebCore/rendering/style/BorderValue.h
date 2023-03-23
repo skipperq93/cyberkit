@@ -27,7 +27,7 @@
 #include "RenderStyleConstants.h"
 #include "StyleColor.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderStyle;
 
@@ -76,4 +76,4 @@ protected:
     unsigned m_isAuto : 1; // OutlineIsAuto
 };
 
-} // namespace WebCore
+} // namespace CyberCore

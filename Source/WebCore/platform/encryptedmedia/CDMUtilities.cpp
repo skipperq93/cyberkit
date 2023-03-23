@@ -34,7 +34,7 @@
 #include "SharedBuffer.h"
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace CDMUtilities {
 

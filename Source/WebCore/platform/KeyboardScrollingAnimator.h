@@ -30,7 +30,7 @@
 #include "RectEdges.h"
 #include "ScrollableArea.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class PlatformKeyboardEvent;
 
@@ -69,4 +69,4 @@ private:
     bool m_scrollTriggeringKeyIsPressed { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

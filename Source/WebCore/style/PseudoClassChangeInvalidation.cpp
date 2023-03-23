@@ -30,7 +30,7 @@
 #include "ElementRareData.h"
 #include "StyleInvalidationFunctions.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace Style {
 
 Vector<PseudoClassInvalidationKey, 4> makePseudoClassInvalidationKeys(CSSSelector::PseudoClassType pseudoClass, const Element& element)

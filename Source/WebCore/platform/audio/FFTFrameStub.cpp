@@ -33,7 +33,7 @@
 
 #include "FFTFrame.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // Normal constructor: allocates for a given fftSize.
 FFTFrame::FFTFrame(unsigned /*fftSize*/)
@@ -78,7 +78,7 @@ void FFTFrame::initialize()
 {
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // !OS(DARWIN) && !USE(GSTREAMER)
 

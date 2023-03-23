@@ -27,7 +27,7 @@
 
 #include "CachedResourceClient.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CachedFont;
 
@@ -39,6 +39,6 @@ public:
     virtual void fontLoaded(CachedFont&) { }
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CACHED_RESOURCE_CLIENT(CachedFontClient, FontType);

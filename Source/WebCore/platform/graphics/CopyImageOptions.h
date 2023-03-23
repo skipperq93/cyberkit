@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 enum BackingStoreCopy {
     CopyBackingStore, // Guarantee subsequent draws don't affect the copy.
@@ -37,4 +37,4 @@ enum class ShouldInterpolate : bool {
     No // Edges of the image may appear pixelated.
 };
 
-} // namespace WebCore
+} // namespace CyberCore

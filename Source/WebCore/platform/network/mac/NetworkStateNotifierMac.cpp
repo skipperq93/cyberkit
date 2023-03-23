@@ -31,7 +31,7 @@
 #include <SystemConfiguration/SystemConfiguration.h>
 #include <wtf/cf/TypeCastsCF.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 void NetworkStateNotifier::updateStateWithoutNotifying()
 {
@@ -74,7 +74,7 @@ void NetworkStateNotifier::updateStateWithoutNotifying()
 void NetworkStateNotifier::startObserving()
 {
     SCDynamicStoreContext context = { 0, this, 0, 0, 0 };
-    m_store = adoptCF(SCDynamicStoreCreate(0, CFSTR("com.apple.WebCore"), [] (SCDynamicStoreRef, CFArrayRef, void*) {
+    m_store = adoptCF(SCDynamicStoreCreate(0, CFSTR("com.apple.CyberCore"), [] (SCDynamicStoreRef, CFArrayRef, void*) {
         // Calling updateState() could be expensive so we coalesce calls with a timer.
         singleton().updateStateSoon();
     }, &context));

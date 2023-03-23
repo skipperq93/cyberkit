@@ -81,9 +81,9 @@ enum class WKFileUploadPanelImagePickerType : uint8_t {
 
 ALLOW_DEPRECATED_DECLARATIONS_BEGIN
 
-static inline UIImagePickerControllerCameraDevice cameraDeviceForMediaCaptureType(WebCore::MediaCaptureType mediaCaptureType)
+static inline UIImagePickerControllerCameraDevice cameraDeviceForMediaCaptureType(CyberCore::MediaCaptureType mediaCaptureType)
 {
-    return mediaCaptureType == WebCore::MediaCaptureType::MediaCaptureTypeUser ? UIImagePickerControllerCameraDeviceFront : UIImagePickerControllerCameraDeviceRear;
+    return mediaCaptureType == CyberCore::MediaCaptureType::MediaCaptureTypeUser ? UIImagePickerControllerCameraDeviceFront : UIImagePickerControllerCameraDeviceRear;
 }
 
 #if (PLATFORM(MAC) && __MAC_OS_X_VERSION_MIN_REQUIRED >= 110000) || (PLATFORM(IOS) && __IPHONE_OS_VERSION_MIN_REQUIRED >= 140000)
@@ -420,7 +420,7 @@ static NSString * firstUTIThatConformsTo(NSArray<NSString *> *typeIdentifiers, U
     RetainPtr<UIContextMenuInteraction> _documentContextMenuInteraction;
 #endif
     RetainPtr<UIDocumentPickerViewController> _documentPickerController;
-    WebCore::MediaCaptureType _mediaCaptureType;
+    CyberCore::MediaCaptureType _mediaCaptureType;
     Vector<RetainPtr<NSURL>> _temporaryUploadedFileURLs;
     RetainPtr<NSFileManager> _uploadFileManager;
     RetainPtr<NSFileCoordinator> _uploadFileCoordinator;
@@ -525,7 +525,7 @@ static NSString * firstUTIThatConformsTo(NSArray<NSString *> *typeIdentifiers, U
 
     Ref<API::Array> acceptFileExtensions = parameters->acceptFileExtensions();
     for (auto extension : acceptFileExtensions->elementsOfType<API::String>()) {
-        String mimeType = WebCore::MIMETypeRegistry::mimeTypeForExtension(extension->stringView().substring(1));
+        String mimeType = CyberCore::MIMETypeRegistry::mimeTypeForExtension(extension->stringView().substring(1));
         if (!mimeType.isEmpty())
             [mimeTypes addObject:mimeType];
     }
@@ -540,7 +540,7 @@ static NSString * firstUTIThatConformsTo(NSArray<NSString *> *typeIdentifiers, U
             _allowedImagePickerTypes.add({ WKFileUploadPanelImagePickerType::Video });
     }
 
-    _mediaCaptureType = WebCore::MediaCaptureType::MediaCaptureTypeNone;
+    _mediaCaptureType = CyberCore::MediaCaptureType::MediaCaptureTypeNone;
 #if ENABLE(MEDIA_CAPTURE)
     _mediaCaptureType = parameters->mediaCaptureType();
 #endif
@@ -674,9 +674,9 @@ static NSSet<NSString *> *UTIsForMIMETypes(NSArray *mimeTypes)
 - (NSString *)_chooseFilesButtonLabel
 {
     if (_allowMultipleFiles)
-        return WebCore::fileButtonChooseMultipleFilesLabel();
+        return CyberCore::fileButtonChooseMultipleFilesLabel();
 
-    return WebCore::fileButtonChooseFileLabel();
+    return CyberCore::fileButtonChooseFileLabel();
 }
 
 - (NSString *)_photoLibraryButtonLabel
@@ -848,20 +848,20 @@ static NSSet<NSString *> *UTIsForMIMETypes(NSArray *mimeTypes)
 {
     if ([UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceFront] || [UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceRear]) {
         if (![UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceFront])
-            _mediaCaptureType = WebCore::MediaCaptureType::MediaCaptureTypeEnvironment;
+            _mediaCaptureType = CyberCore::MediaCaptureType::MediaCaptureTypeEnvironment;
 
         if (![UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceRear])
-            _mediaCaptureType = WebCore::MediaCaptureType::MediaCaptureTypeUser;
+            _mediaCaptureType = CyberCore::MediaCaptureType::MediaCaptureTypeUser;
 
         return;
     }
 
-    _mediaCaptureType = WebCore::MediaCaptureType::MediaCaptureTypeNone;
+    _mediaCaptureType = CyberCore::MediaCaptureType::MediaCaptureTypeNone;
 }
 
 - (BOOL)_shouldMediaCaptureOpenMediaDevice
 {
-    if (_mediaCaptureType == WebCore::MediaCaptureType::MediaCaptureTypeNone || ![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+    if (_mediaCaptureType == CyberCore::MediaCaptureType::MediaCaptureTypeNone || ![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
         return NO;
 
     return YES;
@@ -881,7 +881,7 @@ static NSSet<NSString *> *UTIsForMIMETypes(NSArray *mimeTypes)
     [_cameraPicker _setRequiresPickingConfirmation:YES];
     [_cameraPicker _setShowsFileSizePicker:YES];
 
-    if (_mediaCaptureType != WebCore::MediaCaptureType::MediaCaptureTypeNone)
+    if (_mediaCaptureType != CyberCore::MediaCaptureType::MediaCaptureTypeNone)
         [_cameraPicker setCameraDevice:cameraDeviceForMediaCaptureType(_mediaCaptureType)];
 
     [self _presentFullscreenViewController:_cameraPicker.get() animated:YES];
@@ -932,7 +932,7 @@ static NSString *displayStringForDocumentsAtURLs(NSArray<NSURL *> *urls)
     if (urlsCount == 1)
         return urls[0].lastPathComponent;
 
-    return WebCore::multipleFileUploadText(urlsCount);
+    return CyberCore::multipleFileUploadText(urlsCount);
 }
 
 - (void)documentPicker:(UIDocumentPickerViewController *)controller didPickDocumentsAtURLs:(NSArray<NSURL *> *)urlsFromUIKit

@@ -44,14 +44,14 @@
 #include "ServiceWorkerContainer.h"
 #include "ServiceWorkerGlobalScope.h"
 #include "ServiceWorkerTypes.h"
-#include "WebCoreOpaqueRoot.h"
+#include "CyberCoreOpaqueRoot.h"
 #include "WorkerGlobalScope.h"
 #include <wtf/IsoMallocInlines.h>
 
 #define REGISTRATION_RELEASE_LOG(fmt, ...) RELEASE_LOG(ServiceWorker, "%p - ServiceWorkerRegistration::" fmt, this, ##__VA_ARGS__)
 #define REGISTRATION_RELEASE_LOG_ERROR(fmt, ...) RELEASE_LOG_ERROR(ServiceWorker, "%p - ServiceWorkerRegistration::" fmt, this, ##__VA_ARGS__)
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(ServiceWorkerRegistration);
 
@@ -276,9 +276,9 @@ NavigationPreloadManager& ServiceWorkerRegistration::navigationPreload()
     return *m_navigationPreload;
 }
 
-WebCoreOpaqueRoot root(ServiceWorkerRegistration* registration)
+CyberCoreOpaqueRoot root(ServiceWorkerRegistration* registration)
 {
-    return WebCoreOpaqueRoot { registration };
+    return CyberCoreOpaqueRoot { registration };
 }
 
 #if ENABLE(NOTIFICATION_EVENT)
@@ -334,6 +334,6 @@ void ServiceWorkerRegistration::getNotifications(const GetNotificationOptions& f
 
 #endif // ENABLE(NOTIFICATION_EVENT)
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

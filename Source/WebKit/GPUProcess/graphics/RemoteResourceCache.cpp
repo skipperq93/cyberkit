@@ -31,7 +31,7 @@
 #include "RemoteImageBuffer.h"
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 RemoteResourceCache::RemoteResourceCache(ProcessIdentifier webProcessIdentifier)
     : m_resourceHeap(webProcessIdentifier)
@@ -75,7 +75,7 @@ NativeImage* RemoteResourceCache::cachedNativeImage(QualifiedRenderingResourceId
     return m_resourceHeap.getNativeImage(renderingResourceIdentifier);
 }
 
-std::optional<WebCore::SourceImage> RemoteResourceCache::cachedSourceImage(QualifiedRenderingResourceIdentifier renderingResourceIdentifier) const
+std::optional<CyberCore::SourceImage> RemoteResourceCache::cachedSourceImage(QualifiedRenderingResourceIdentifier renderingResourceIdentifier) const
 {
     return m_resourceHeap.getSourceImage(renderingResourceIdentifier);
 }

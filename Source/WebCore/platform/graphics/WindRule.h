@@ -27,7 +27,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class WindRule : bool { NonZero, EvenOdd };
 

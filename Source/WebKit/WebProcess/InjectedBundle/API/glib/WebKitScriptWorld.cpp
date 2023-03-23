@@ -18,15 +18,15 @@
  */
 
 #include "config.h"
-#include "WebKitScriptWorld.h"
+#include "CyberKitScriptWorld.h"
 
-#include "WebKitScriptWorldPrivate.h"
+#include "CyberKitScriptWorldPrivate.h"
 #include <wtf/HashMap.h>
 #include <wtf/NeverDestroyed.h>
 #include <wtf/glib/WTFGType.h>
 
-using namespace WebKit;
-using namespace WebCore;
+using namespace CyberKit;
+using namespace CyberCore;
 
 enum {
     WINDOW_OBJECT_CLEARED,
@@ -34,7 +34,7 @@ enum {
     LAST_SIGNAL
 };
 
-typedef HashMap<InjectedBundleScriptWorld*, WebKitScriptWorld*> ScriptWorldMap;
+typedef HashMap<InjectedBundleScriptWorld*, CyberKitScriptWorld*> ScriptWorldMap;
 
 static ScriptWorldMap& scriptWorlds()
 {
@@ -42,8 +42,8 @@ static ScriptWorldMap& scriptWorlds()
     return map;
 }
 
-struct _WebKitScriptWorldPrivate {
-    ~_WebKitScriptWorldPrivate()
+struct _CyberKitScriptWorldPrivate {
+    ~_CyberKitScriptWorldPrivate()
     {
         ASSERT(scriptWorlds().contains(scriptWorld.get()));
         scriptWorlds().remove(scriptWorld.get());
@@ -55,17 +55,17 @@ struct _WebKitScriptWorldPrivate {
 
 static guint signals[LAST_SIGNAL] = { 0, };
 
-WEBKIT_DEFINE_FINAL_TYPE(WebKitScriptWorld, webkit_script_world, G_TYPE_OBJECT, GObject)
+WEBKIT_DEFINE_FINAL_TYPE(CyberKitScriptWorld, webkit_script_world, G_TYPE_OBJECT, GObject)
 
-static void webkit_script_world_class_init(WebKitScriptWorldClass* klass)
+static void webkit_script_world_class_init(CyberKitScriptWorldClass* klass)
 {
     /**
-     * WebKitScriptWorld::window-object-cleared:
-     * @world: the #WebKitScriptWorld on which the signal is emitted
-     * @page: a #WebKitWebPage
-     * @frame: the #WebKitFrame  to which @world belongs
+     * CyberKitScriptWorld::window-object-cleared:
+     * @world: the #CyberKitScriptWorld on which the signal is emitted
+     * @page: a #CyberKitWebPage
+     * @frame: the #CyberKitFrame  to which @world belongs
      *
-     * Emitted when the JavaScript window object in a #WebKitScriptWorld has been
+     * Emitted when the JavaScript window object in a #CyberKitScriptWorld has been
      * cleared. This is the preferred place to set custom properties on the window
      * object using the JavaScriptCore API. You can get the window object of @frame
      * from the JavaScript execution context of @world that is returned by
@@ -84,24 +84,24 @@ static void webkit_script_world_class_init(WebKitScriptWorldClass* klass)
         WEBKIT_TYPE_FRAME);
 }
 
-WebKitScriptWorld* webkitScriptWorldGet(InjectedBundleScriptWorld* scriptWorld)
+CyberKitScriptWorld* webkitScriptWorldGet(InjectedBundleScriptWorld* scriptWorld)
 {
     return scriptWorlds().get(scriptWorld);
 }
 
-InjectedBundleScriptWorld* webkitScriptWorldGetInjectedBundleScriptWorld(WebKitScriptWorld* world)
+InjectedBundleScriptWorld* webkitScriptWorldGetInjectedBundleScriptWorld(CyberKitScriptWorld* world)
 {
     return world->priv->scriptWorld.get();
 }
 
-void webkitScriptWorldWindowObjectCleared(WebKitScriptWorld* world, WebKitWebPage* page, WebKitFrame* frame)
+void webkitScriptWorldWindowObjectCleared(CyberKitScriptWorld* world, CyberKitWebPage* page, CyberKitFrame* frame)
 {
     g_signal_emit(world, signals[WINDOW_OBJECT_CLEARED], 0, page, frame);
 }
 
-static WebKitScriptWorld* webkitScriptWorldCreate(Ref<InjectedBundleScriptWorld>&& scriptWorld)
+static CyberKitScriptWorld* webkitScriptWorldCreate(Ref<InjectedBundleScriptWorld>&& scriptWorld)
 {
-    WebKitScriptWorld* world = WEBKIT_SCRIPT_WORLD(g_object_new(WEBKIT_TYPE_SCRIPT_WORLD, nullptr));
+    CyberKitScriptWorld* world = WEBKIT_SCRIPT_WORLD(g_object_new(WEBKIT_TYPE_SCRIPT_WORLD, nullptr));
     world->priv->scriptWorld = WTFMove(scriptWorld);
     world->priv->name = world->priv->scriptWorld->name().utf8();
 
@@ -119,16 +119,16 @@ static gpointer createDefaultScriptWorld(gpointer)
 /**
  * webkit_script_world_get_default:
  *
- * Get the default #WebKitScriptWorld. This is the normal script world
+ * Get the default #CyberKitScriptWorld. This is the normal script world
  * where all scripts are executed by default.
- * You can get the JavaScript execution context of a #WebKitScriptWorld
- * for a given #WebKitFrame with webkit_frame_get_javascript_context_for_script_world().
+ * You can get the JavaScript execution context of a #CyberKitScriptWorld
+ * for a given #CyberKitFrame with webkit_frame_get_javascript_context_for_script_world().
  *
- * Returns: (transfer none): the default #WebKitScriptWorld
+ * Returns: (transfer none): the default #CyberKitScriptWorld
  *
  * Since: 2.2
  */
-WebKitScriptWorld* webkit_script_world_get_default(void)
+CyberKitScriptWorld* webkit_script_world_get_default(void)
 {
     static GOnce onceInit = G_ONCE_INIT;
     return WEBKIT_SCRIPT_WORLD(g_once(&onceInit, createDefaultScriptWorld, 0));
@@ -137,20 +137,20 @@ WebKitScriptWorld* webkit_script_world_get_default(void)
 /**
  * webkit_script_world_new:
  *
- * Creates a new isolated #WebKitScriptWorld. Scripts executed in
+ * Creates a new isolated #CyberKitScriptWorld. Scripts executed in
  * isolated worlds have access to the DOM but not to other variable
  * or functions created by the page.
- * The #WebKitScriptWorld is created with a generated unique name. Use
+ * The #CyberKitScriptWorld is created with a generated unique name. Use
  * webkit_script_world_new_with_name() if you want to create it with a
  * custom name.
- * You can get the JavaScript execution context of a #WebKitScriptWorld
- * for a given #WebKitFrame with webkit_frame_get_javascript_context_for_script_world().
+ * You can get the JavaScript execution context of a #CyberKitScriptWorld
+ * for a given #CyberKitFrame with webkit_frame_get_javascript_context_for_script_world().
  *
- * Returns: (transfer full): a new isolated #WebKitScriptWorld
+ * Returns: (transfer full): a new isolated #CyberKitScriptWorld
  *
  * Since: 2.2
  */
-WebKitScriptWorld* webkit_script_world_new(void)
+CyberKitScriptWorld* webkit_script_world_new(void)
 {
     return webkitScriptWorldCreate(InjectedBundleScriptWorld::create(InjectedBundleScriptWorld::Type::User));
 }
@@ -159,17 +159,17 @@ WebKitScriptWorld* webkit_script_world_new(void)
  * webkit_script_world_new_with_name:
  * @name: a name for the script world
  *
- * Creates a new isolated #WebKitScriptWorld with a name. Scripts executed in
+ * Creates a new isolated #CyberKitScriptWorld with a name. Scripts executed in
  * isolated worlds have access to the DOM but not to other variable
  * or functions created by the page.
- * You can get the JavaScript execution context of a #WebKitScriptWorld
- * for a given #WebKitFrame with webkit_frame_get_javascript_context_for_script_world().
+ * You can get the JavaScript execution context of a #CyberKitScriptWorld
+ * for a given #CyberKitFrame with webkit_frame_get_javascript_context_for_script_world().
  *
- * Returns: (transfer full): a new isolated #WebKitScriptWorld
+ * Returns: (transfer full): a new isolated #CyberKitScriptWorld
  *
  * Since: 2.22
  */
-WebKitScriptWorld* webkit_script_world_new_with_name(const char* name)
+CyberKitScriptWorld* webkit_script_world_new_with_name(const char* name)
 {
     g_return_val_if_fail(name, nullptr);
 
@@ -178,15 +178,15 @@ WebKitScriptWorld* webkit_script_world_new_with_name(const char* name)
 
 /**
  * webkit_script_world_get_name:
- * @world: a #WebKitScriptWorld
+ * @world: a #CyberKitScriptWorld
  *
- * Get the name of a #WebKitScriptWorld.
+ * Get the name of a #CyberKitScriptWorld.
  *
  * Returns: the name of @world
  *
  * Since: 2.22
  */
-const char* webkit_script_world_get_name(WebKitScriptWorld* world)
+const char* webkit_script_world_get_name(CyberKitScriptWorld* world)
 {
     g_return_val_if_fail(WEBKIT_IS_SCRIPT_WORLD(world), nullptr);
 

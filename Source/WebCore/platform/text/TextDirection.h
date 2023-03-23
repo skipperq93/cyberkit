@@ -27,7 +27,7 @@
 
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class TextDirection : bool { LTR, RTL };
 

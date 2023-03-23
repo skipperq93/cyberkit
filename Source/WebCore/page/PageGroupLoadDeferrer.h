@@ -22,7 +22,7 @@
 #include <wtf/RefPtr.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
     class Frame;
     class Page;
@@ -37,4 +37,4 @@ namespace WebCore {
         Vector<RefPtr<Frame>, 16> m_deferredFrames;
     };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -40,10 +40,10 @@
 #if PLATFORM(IOS_FAMILY)
 #import "WebDatabaseManagerInternal.h"
 #import <CyberCore/DatabaseTracker.h>
-#import <CyberCore/WebCoreThread.h>
+#import <CyberCore/CyberCoreThread.h>
 #endif
 
-using namespace WebCore;
+using namespace CyberCore;
 
 NSString *WebDatabaseDirectoryDefaultsKey = @"WebDatabaseDirectory";
 
@@ -78,11 +78,11 @@ static NSString *databasesDirectoryPath();
 
     DatabaseManager& dbManager = DatabaseManager::singleton();
 
-    // Set the database root path in WebCore
+    // Set the database root path in CyberCore
     dbManager.initialize(databasesDirectoryPath());
 
     // Set the DatabaseManagerClient
-    dbManager.setClient(&WebKit::WebDatabaseManagerClient::sharedWebDatabaseManagerClient());
+    dbManager.setClient(&CyberKit::WebDatabaseManagerClient::sharedWebDatabaseManagerClient());
 
     return self;
 }
@@ -90,7 +90,7 @@ static NSString *databasesDirectoryPath();
 - (NSArray *)origins
 {
     return createNSArray(DatabaseTracker::singleton().origins(), [] (auto& origin) {
-        return adoptNS([[WebSecurityOrigin alloc] _initWithWebCoreSecurityOrigin:origin.securityOrigin().ptr()]);
+        return adoptNS([[WebSecurityOrigin alloc] _initWithCyberCoreSecurityOrigin:origin.securityOrigin().ptr()]);
     }).autorelease();
 }
 
@@ -223,7 +223,7 @@ static NSString *databasesDirectoryPath()
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *databasesDirectory = [defaults objectForKey:WebDatabaseDirectoryDefaultsKey];
     if (!databasesDirectory || ![databasesDirectory isKindOfClass:[NSString class]])
-        databasesDirectory = @"~/Library/WebKit/Databases";
+        databasesDirectory = @"~/Library/CyberKit/Databases";
     
     return [databasesDirectory stringByStandardizingPath];
 }

@@ -37,7 +37,7 @@
 
 #import <pal/ios/UIKitSoftLink.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static inline bool isClassic()
 {
@@ -104,6 +104,6 @@ String standardUserAgentWithApplicationName(const String& applicationName, const
 #endif
 }
 
-} // namespace WebCore.
+} // namespace CyberCore.
 
 #endif // PLATFORM(IOS_FAMILY)

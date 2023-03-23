@@ -1219,8 +1219,8 @@ msgid "Enable Timeline profiling"
 msgstr "Omogoči profiliranje časovnice"
 
 #: ../../../../WebKit/gtk/webkit/webkitwebinspector.cpp:321
-msgid "Profile the WebCore instrumentation."
-msgstr "Profiliranje orodij WebCore"
+msgid "Profile the CyberCore instrumentation."
+msgstr "Profiliranje orodij CyberCore"
 
 #: ../../../../WebKit/gtk/webkit/webkitwebnavigationaction.cpp:148
 msgid "Reason"

@@ -32,7 +32,7 @@
 #import <pal/cocoa/OpenGLSoftLinkCocoa.h>
 #import <pal/spi/cf/CFUtilitiesSPI.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct OSBuildInfo {
     OSBuildInfo()

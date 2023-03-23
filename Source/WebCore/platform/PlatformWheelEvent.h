@@ -34,7 +34,7 @@ namespace WTF {
 class TextStream;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class PlatformGestureEvent;
 
@@ -282,22 +282,22 @@ WEBCORE_EXPORT WTF::TextStream& operator<<(WTF::TextStream&, EventHandling);
 WEBCORE_EXPORT WTF::TextStream& operator<<(WTF::TextStream&, WheelScrollGestureState);
 WEBCORE_EXPORT WTF::TextStream& operator<<(WTF::TextStream&, PlatformWheelEventPhase);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::PlatformWheelEventPhase> {
+template<> struct EnumTraits<CyberCore::PlatformWheelEventPhase> {
     using values = EnumValues<
-        WebCore::PlatformWheelEventPhase,
-        WebCore::PlatformWheelEventPhase::None
+        CyberCore::PlatformWheelEventPhase,
+        CyberCore::PlatformWheelEventPhase::None
 #if ENABLE(KINETIC_SCROLLING)
         ,
-        WebCore::PlatformWheelEventPhase::Began,
-        WebCore::PlatformWheelEventPhase::Stationary,
-        WebCore::PlatformWheelEventPhase::Changed,
-        WebCore::PlatformWheelEventPhase::Ended,
-        WebCore::PlatformWheelEventPhase::Cancelled,
-        WebCore::PlatformWheelEventPhase::MayBegin
+        CyberCore::PlatformWheelEventPhase::Began,
+        CyberCore::PlatformWheelEventPhase::Stationary,
+        CyberCore::PlatformWheelEventPhase::Changed,
+        CyberCore::PlatformWheelEventPhase::Ended,
+        CyberCore::PlatformWheelEventPhase::Cancelled,
+        CyberCore::PlatformWheelEventPhase::MayBegin
 #endif
     >;
 };

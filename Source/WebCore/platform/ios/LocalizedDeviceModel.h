@@ -29,7 +29,7 @@
 
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WEBCORE_EXPORT String localizedDeviceModel();
 WEBCORE_EXPORT void setLocalizedDeviceModel(const String&);

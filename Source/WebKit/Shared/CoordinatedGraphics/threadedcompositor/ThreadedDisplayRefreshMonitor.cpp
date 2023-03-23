@@ -39,8 +39,8 @@ namespace WebKit {
 
 constexpr unsigned defaultRefreshRate = 60000;
 
-ThreadedDisplayRefreshMonitor::ThreadedDisplayRefreshMonitor(WebCore::PlatformDisplayID displayID, Client& client)
-    : WebCore::DisplayRefreshMonitor(displayID)
+ThreadedDisplayRefreshMonitor::ThreadedDisplayRefreshMonitor(CyberCore::PlatformDisplayID displayID, Client& client)
+    : CyberCore::DisplayRefreshMonitor(displayID)
     , m_displayRefreshTimer(RunLoop::main(), this, &ThreadedDisplayRefreshMonitor::displayRefreshCallback)
     , m_client(&client)
     , m_targetRefreshRate(defaultRefreshRate)

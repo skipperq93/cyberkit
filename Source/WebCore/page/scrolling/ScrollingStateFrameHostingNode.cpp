@@ -31,7 +31,7 @@
 #include "ScrollingStateTree.h"
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<ScrollingStateFrameHostingNode> ScrollingStateFrameHostingNode::create(ScrollingStateTree& stateTree, ScrollingNodeID nodeID)
 {
@@ -62,6 +62,6 @@ void ScrollingStateFrameHostingNode::dumpProperties(TextStream& ts, OptionSet<Sc
     ScrollingStateNode::dumpProperties(ts, behavior);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ASYNC_SCROLLING)

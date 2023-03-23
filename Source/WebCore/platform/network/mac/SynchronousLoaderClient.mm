@@ -28,7 +28,7 @@
 
 #import "AuthenticationChallenge.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 void SynchronousLoaderClient::didReceiveAuthenticationChallenge(ResourceHandle*, const AuthenticationChallenge& challenge)
 {

@@ -31,19 +31,19 @@
 #import <CyberCore/JSExecState.h>
 #import <CyberCore/Node.h>
 #import <CyberCore/ThreadCheck.h>
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 #import <CyberCore/WebScriptObjectPrivate.h>
 #import <CyberCore/XPathResult.h>
 #import <wtf/GetPtr.h>
 #import <wtf/URL.h>
 
-#define IMPL reinterpret_cast<WebCore::XPathResult*>(_internal)
+#define IMPL reinterpret_cast<CyberCore::XPathResult*>(_internal)
 
 @implementation DOMXPathResult
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainThread([DOMXPathResult class], self))
+    if (CyberCoreObjCScheduleDeallocateOnMainThread([DOMXPathResult class], self))
         return;
 
     if (_internal)
@@ -53,68 +53,68 @@
 
 - (unsigned short)resultType
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->resultType();
 }
 
 - (double)numberValue
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return raiseOnDOMError(IMPL->numberValue());
 }
 
 - (NSString *)stringValue
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return raiseOnDOMError(IMPL->stringValue());
 }
 
 - (BOOL)booleanValue
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return raiseOnDOMError(IMPL->booleanValue());
 }
 
 - (DOMNode *)singleNodeValue
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(raiseOnDOMError(IMPL->singleNodeValue()));
 }
 
 - (BOOL)invalidIteratorState
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->invalidIteratorState();
 }
 
 - (unsigned)snapshotLength
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return raiseOnDOMError(IMPL->snapshotLength());
 }
 
 - (DOMNode *)iterateNext
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(raiseOnDOMError(IMPL->iterateNext()));
 }
 
 - (DOMNode *)snapshotItem:(unsigned)index
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(raiseOnDOMError(IMPL->snapshotItem(index)));
 }
 
 @end
 
-WebCore::XPathResult* core(DOMXPathResult *wrapper)
+CyberCore::XPathResult* core(DOMXPathResult *wrapper)
 {
-    return wrapper ? reinterpret_cast<WebCore::XPathResult*>(wrapper->_internal) : nullptr;
+    return wrapper ? reinterpret_cast<CyberCore::XPathResult*>(wrapper->_internal) : nullptr;
 }
 
-DOMXPathResult *kit(WebCore::XPathResult* value)
+DOMXPathResult *kit(CyberCore::XPathResult* value)
 {
-    WebCoreThreadViolationCheckRoundOne();
+    CyberCoreThreadViolationCheckRoundOne();
     if (!value)
         return nil;
     if (DOMXPathResult *wrapper = getDOMWrapper(value))

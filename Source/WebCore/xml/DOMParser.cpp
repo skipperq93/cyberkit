@@ -24,7 +24,7 @@
 #include "SecurityOriginPolicy.h"
 #include "Settings.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 inline DOMParser::DOMParser(Document& contextDocument)
     : m_contextDocument(contextDocument)
@@ -58,4 +58,4 @@ ExceptionOr<Ref<Document>> DOMParser::parseFromString(const String& string, cons
     return document;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

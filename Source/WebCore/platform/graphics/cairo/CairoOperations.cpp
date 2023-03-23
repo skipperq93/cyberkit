@@ -51,7 +51,7 @@
 #include <algorithm>
 #include <cairo.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace Cairo {
 
 enum PatternAdjustment { NoAdjustment, AdjustPatternForGlobalAlpha };
@@ -695,7 +695,7 @@ void fillRoundedRect(GraphicsContextCairo& platformContext, const FloatRoundedRe
 
     Path path;
     path.addRoundedRect(rect);
-    appendWebCorePathToCairoContext(cr, path);
+    appendCyberCorePathToCairoContext(cr, path);
     setSourceRGBAFromColor(cr, color);
     cairo_fill(cr);
 
@@ -1101,7 +1101,7 @@ void drawFocusRing(GraphicsContextCairo& platformContext, const Path& path, floa
     cairo_save(cr);
 
     cairo_push_group(cr);
-    appendWebCorePathToCairoContext(cr, path);
+    appendCyberCorePathToCairoContext(cr, path);
     setSourceRGBAFromColor(cr, ringColor);
     cairo_set_line_width(cr, width);
     cairo_set_operator(cr, CAIRO_OPERATOR_OVER);
@@ -1210,7 +1210,7 @@ void clipOut(GraphicsContextCairo& platformContext, const Path& path)
     double x1, y1, x2, y2;
     cairo_clip_extents(cr, &x1, &y1, &x2, &y2);
     cairo_rectangle(cr, x1, y1, x2 - x1, y2 - y1);
-    appendWebCorePathToCairoContext(cr, path);
+    appendCyberCorePathToCairoContext(cr, path);
 
     cairo_fill_rule_t savedFillRule = cairo_get_fill_rule(cr);
     cairo_set_fill_rule(cr, CAIRO_FILL_RULE_EVEN_ODD);
@@ -1239,6 +1239,6 @@ void clipToImageBuffer(GraphicsContextCairo& platformContext, cairo_surface_t* i
 }
 
 } // namespace Cairo
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(CAIRO)

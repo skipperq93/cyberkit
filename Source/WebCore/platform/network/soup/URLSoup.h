@@ -32,7 +32,7 @@ namespace WTF {
 class URL;
 }
 
-namespace WebCore {
+namespace CyberCore {
 #if USE(SOUP2)
 URL soupURIToURL(SoupURI*);
 GUniquePtr<SoupURI> urlToSoupURI(const URL&);
@@ -40,4 +40,4 @@ GUniquePtr<SoupURI> urlToSoupURI(const URL&);
 URL soupURIToURL(GUri*);
 GRefPtr<GUri> urlToSoupURI(const URL&);
 #endif
-} // namespace WebCore
+} // namespace CyberCore

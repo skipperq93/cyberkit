@@ -32,7 +32,7 @@ namespace WTF {
 class TextStream;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 using FramesPerSecond = unsigned;
 
@@ -64,4 +64,4 @@ WEBCORE_EXPORT FramesPerSecond preferredFramesPerSecondFromInterval(Seconds);
 
 WEBCORE_EXPORT WTF::TextStream& operator<<(WTF::TextStream&, const OptionSet<ThrottlingReason>&);
 
-} // namespace WebCore
+} // namespace CyberCore

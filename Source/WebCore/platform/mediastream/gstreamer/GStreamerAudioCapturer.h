@@ -26,7 +26,7 @@
 
 #include "GStreamerCapturer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class GStreamerAudioCapturer final : public GStreamerCapturer {
 public:
@@ -39,6 +39,6 @@ public:
     bool setSampleRate(int);
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM) && USE(GSTREAMER)

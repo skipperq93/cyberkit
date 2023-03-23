@@ -34,7 +34,7 @@
 #include "Blob.h"
 #include "BlobURL.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 BlobData::BlobData(const String& contentType)
     : m_contentType(contentType)
@@ -105,4 +105,4 @@ void BlobData::swapItems(BlobDataItemList& items)
     m_items.swap(items);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -46,7 +46,7 @@
 #endif
 
 namespace Nicosia {
-using namespace WebCore;
+using namespace CyberCore;
 
 GraphicsContextCairo& contextForReplay(PaintingOperationReplay& operationReplay)
 {

@@ -24,12 +24,12 @@
 
 #import "WebScriptWorld.h"
 
-namespace WebCore {
+namespace CyberCore {
     class DOMWrapperWorld;
 }
 
-WebCore::DOMWrapperWorld* core(WebScriptWorld *);
+CyberCore::DOMWrapperWorld* core(WebScriptWorld *);
 
 @interface WebScriptWorld (WebInternal)
-+ (WebScriptWorld *)findOrCreateWorld:(WebCore::DOMWrapperWorld&)world;
++ (WebScriptWorld *)findOrCreateWorld:(CyberCore::DOMWrapperWorld&)world;
 @end

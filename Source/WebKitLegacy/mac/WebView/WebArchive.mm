@@ -29,20 +29,20 @@
 #import "WebArchive.h"
 #import "WebArchiveInternal.h"
 
-#import "WebKitLogging.h"
+#import "CyberKitLogging.h"
 #import "WebNSObjectExtras.h"
 #import "WebResourceInternal.h"
 #import <CyberScriptCore/InitializeThreading.h>
 #import <CyberCore/ArchiveResource.h>
 #import <CyberCore/LegacyWebArchive.h>
 #import <CyberCore/ThreadCheck.h>
-#import <CyberCore/WebCoreJITOperations.h>
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreJITOperations.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 #import <wtf/MainThread.h>
 #import <wtf/RunLoop.h>
 #import <wtf/cocoa/VectorCocoa.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 NSString *WebArchivePboardType = @"Apple Web Archive pasteboard type";
 
@@ -71,7 +71,7 @@ static NSString * const WebSubframeArchivesKey = @"WebSubframeArchives";
 #if !PLATFORM(IOS_FAMILY)
     JSC::initialize();
     WTF::initializeMainThread();
-    WebCore::populateJITOperations();
+    CyberCore::populateJITOperations();
 #endif
 }
 
@@ -108,7 +108,7 @@ static NSString * const WebSubframeArchivesKey = @"WebSubframeArchives";
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainThread([WebArchivePrivate class], self))
+    if (CyberCoreObjCScheduleDeallocateOnMainThread([WebArchivePrivate class], self))
         return;
     
     [super dealloc];
@@ -120,7 +120,7 @@ static NSString * const WebSubframeArchivesKey = @"WebSubframeArchives";
 
 - (instancetype)init
 {
-    WebCoreThreadViolationCheckRoundTwo();
+    CyberCoreThreadViolationCheckRoundTwo();
 
     self = [super init];
     if (!self)
@@ -143,7 +143,7 @@ static BOOL isArrayOfClass(id object, Class elementClass)
 
 - (instancetype)initWithMainResource:(WebResource *)mainResource subresources:(NSArray *)subresources subframeArchives:(NSArray *)subframeArchives
 {
-    WebCoreThreadViolationCheckRoundTwo();
+    CyberCoreThreadViolationCheckRoundTwo();
 
     self = [super init];
     if (!self)
@@ -185,7 +185,7 @@ static BOOL isArrayOfClass(id object, Class elementClass)
 
 - (instancetype)initWithData:(NSData *)data
 {
-    WebCoreThreadViolationCheckRoundTwo();
+    CyberCoreThreadViolationCheckRoundTwo();
 
     self = [super init];
     if (!self)
@@ -257,9 +257,9 @@ static BOOL isArrayOfClass(id object, Class elementClass)
 
 - (WebResource *)mainResource
 {
-    WebCoreThreadViolationCheckRoundTwo();
+    CyberCoreThreadViolationCheckRoundTwo();
 
-    // Currently from WebKit API perspective, WebArchives are entirely immutable once created
+    // Currently from CyberKit API perspective, WebArchives are entirely immutable once created
     // If they ever become mutable, we'll need to rethink this. 
     if (!_private->cachedMainResource) {
         if (auto* coreArchive = [_private coreArchive]) {
@@ -274,9 +274,9 @@ static BOOL isArrayOfClass(id object, Class elementClass)
 
 - (NSArray *)subresources
 {
-    WebCoreThreadViolationCheckRoundTwo();
+    CyberCoreThreadViolationCheckRoundTwo();
 
-    // Currently from WebKit API perspective, WebArchives are entirely immutable once created
+    // Currently from CyberKit API perspective, WebArchives are entirely immutable once created
     // If they ever become mutable, we'll need to rethink this.     
     if (!_private->cachedSubresources) {
         auto coreArchive = [_private coreArchive];
@@ -288,7 +288,7 @@ static BOOL isArrayOfClass(id object, Class elementClass)
             });
         }
     }
-    // Maintain the WebKit 3 behavior of this API, which is documented and
+    // Maintain the CyberKit 3 behavior of this API, which is documented and
     // relied upon by some clients, of returning nil if there are no subresources.
     if (![_private->cachedSubresources count])
         return nil;
@@ -299,9 +299,9 @@ static BOOL isArrayOfClass(id object, Class elementClass)
 
 - (NSArray *)subframeArchives
 {
-    WebCoreThreadViolationCheckRoundTwo();
+    CyberCoreThreadViolationCheckRoundTwo();
 
-    // Currently from WebKit API perspective, WebArchives are entirely immutable once created
+    // Currently from CyberKit API perspective, WebArchives are entirely immutable once created
     // If they ever become mutable, we'll need to rethink this.  
     if (!_private->cachedSubframeArchives) {
         auto* coreArchive = [_private coreArchive];
@@ -320,7 +320,7 @@ static BOOL isArrayOfClass(id object, Class elementClass)
 
 - (NSData *)data
 {
-    WebCoreThreadViolationCheckRoundTwo();
+    CyberCoreThreadViolationCheckRoundTwo();
 
 #if !LOG_DISABLED
     CFAbsoluteTime start = CFAbsoluteTimeGetCurrent();
@@ -341,9 +341,9 @@ static BOOL isArrayOfClass(id object, Class elementClass)
 
 @implementation WebArchive (WebInternal)
 
-- (id)_initWithCoreLegacyWebArchive:(RefPtr<WebCore::LegacyWebArchive>&&)coreLegacyWebArchive
+- (id)_initWithCoreLegacyWebArchive:(RefPtr<CyberCore::LegacyWebArchive>&&)coreLegacyWebArchive
 {
-    WebCoreThreadViolationCheckRoundTwo();
+    CyberCoreThreadViolationCheckRoundTwo();
 
     self = [super init];
     if (!self)
@@ -358,9 +358,9 @@ static BOOL isArrayOfClass(id object, Class elementClass)
     return self;
 }
 
-- (WebCore::LegacyWebArchive *)_coreLegacyWebArchive
+- (CyberCore::LegacyWebArchive *)_coreLegacyWebArchive
 {
-    WebCoreThreadViolationCheckRoundTwo();
+    CyberCoreThreadViolationCheckRoundTwo();
 
     return [_private coreArchive];
 }

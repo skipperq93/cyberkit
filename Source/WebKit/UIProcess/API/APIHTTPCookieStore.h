@@ -37,7 +37,7 @@
 #include "SoupCookiePersistentStorageType.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 struct Cookie;
 enum class HTTPCookieAcceptPolicy : uint8_t;
 }
@@ -58,15 +58,15 @@ public:
 
     virtual ~HTTPCookieStore();
 
-    void cookies(CompletionHandler<void(const Vector<WebCore::Cookie>&)>&&);
-    void cookiesForURL(WTF::URL&&, CompletionHandler<void(Vector<WebCore::Cookie>&&)>&&);
-    void setCookies(Vector<WebCore::Cookie>&&, CompletionHandler<void()>&&);
-    void deleteCookie(const WebCore::Cookie&, CompletionHandler<void()>&&);
+    void cookies(CompletionHandler<void(const Vector<CyberCore::Cookie>&)>&&);
+    void cookiesForURL(WTF::URL&&, CompletionHandler<void(Vector<CyberCore::Cookie>&&)>&&);
+    void setCookies(Vector<CyberCore::Cookie>&&, CompletionHandler<void()>&&);
+    void deleteCookie(const CyberCore::Cookie&, CompletionHandler<void()>&&);
     void deleteCookiesForHostnames(const Vector<WTF::String>&, CompletionHandler<void()>&&);
     
     void deleteAllCookies(CompletionHandler<void()>&&);
-    void setHTTPCookieAcceptPolicy(WebCore::HTTPCookieAcceptPolicy, CompletionHandler<void()>&&);
-    void getHTTPCookieAcceptPolicy(CompletionHandler<void(const WebCore::HTTPCookieAcceptPolicy&)>&&);
+    void setHTTPCookieAcceptPolicy(CyberCore::HTTPCookieAcceptPolicy, CompletionHandler<void()>&&);
+    void getHTTPCookieAcceptPolicy(CompletionHandler<void(const CyberCore::HTTPCookieAcceptPolicy&)>&&);
     void flushCookies(CompletionHandler<void()>&&);
 
     class Observer : public CanMakeWeakPtr<Observer> {
@@ -80,7 +80,7 @@ public:
 
     void cookiesDidChange();
 
-    void filterAppBoundCookies(Vector<WebCore::Cookie>&&, CompletionHandler<void(Vector<WebCore::Cookie>&&)>&&);
+    void filterAppBoundCookies(Vector<CyberCore::Cookie>&&, CompletionHandler<void(Vector<CyberCore::Cookie>&&)>&&);
 
 #if USE(SOUP)
     void setCookiePersistentStorage(const WTF::String& storagePath, WebKit::SoupCookiePersistentStorageType);

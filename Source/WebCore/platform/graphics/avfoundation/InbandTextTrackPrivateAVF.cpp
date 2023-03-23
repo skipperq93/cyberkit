@@ -46,7 +46,7 @@
 
 #include <pal/cf/CoreMediaSoftLink.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 AVFInbandTrackParent::~AVFInbandTrackParent() = default;
 
@@ -585,6 +585,6 @@ bool InbandTextTrackPrivateAVF::readNativeSampleBuffer(CFArrayRef nativeSamples,
 #endif
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(VIDEO) && (USE(AVFOUNDATION) || PLATFORM(IOS_FAMILY))

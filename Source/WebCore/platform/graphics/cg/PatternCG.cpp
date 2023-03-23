@@ -35,7 +35,7 @@
 #include <pal/spi/cg/CoreGraphicsSPI.h>
 #include <wtf/MainThread.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static void patternCallback(void* info, CGContextRef context)
 {

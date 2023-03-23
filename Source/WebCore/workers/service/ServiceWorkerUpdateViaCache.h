@@ -29,7 +29,7 @@
 
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class ServiceWorkerUpdateViaCache : uint8_t {
     Imports,
@@ -37,6 +37,6 @@ enum class ServiceWorkerUpdateViaCache : uint8_t {
     None,
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

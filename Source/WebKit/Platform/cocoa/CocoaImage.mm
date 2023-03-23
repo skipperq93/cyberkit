@@ -58,7 +58,7 @@ std::pair<RetainPtr<NSData>, RetainPtr<CFStringRef>> transcodeWithPreferredMIMET
 #else
     auto preferredTypeIdentifier = adoptCF(UTTypeCreatePreferredIdentifierForTag(kUTTagClassMIMEType, preferredMIMEType, kUTTypeImage));
 #endif
-    if (WebCore::isSupportedImageType(preferredTypeIdentifier.get())) {
+    if (CyberCore::isSupportedImageType(preferredTypeIdentifier.get())) {
         if (auto data = transcode(image, preferredTypeIdentifier.get()); [data length])
             return { WTFMove(data), WTFMove(preferredTypeIdentifier) };
     }

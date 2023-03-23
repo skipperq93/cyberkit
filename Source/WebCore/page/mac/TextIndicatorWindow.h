@@ -34,7 +34,7 @@
 OBJC_CLASS NSView;
 OBJC_CLASS WebTextIndicatorLayer;
 
-namespace WebCore {
+namespace CyberCore {
 
 #if PLATFORM(MAC)
 
@@ -67,6 +67,6 @@ private:
 
 #endif // PLATFORM(MAC)
 
-} // namespace WebCore
+} // namespace CyberCore
 
 

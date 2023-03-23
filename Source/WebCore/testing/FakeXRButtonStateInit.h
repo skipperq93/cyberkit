@@ -27,7 +27,7 @@
 
 #if ENABLE(WEBXR)
 
-namespace WebCore {
+namespace CyberCore {
 
 struct FakeXRButtonStateInit {
     enum class Type {
@@ -46,6 +46,6 @@ struct FakeXRButtonStateInit {
     float yValue { 0.0 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBXR)

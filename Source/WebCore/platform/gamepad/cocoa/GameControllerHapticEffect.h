@@ -31,7 +31,7 @@
 #import <wtf/RetainPtr.h>
 #import <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class GameControllerHapticEngines;
 struct GamepadEffectParameters;
@@ -57,6 +57,6 @@ private:
     CompletionHandler<void(bool)> m_completionHandler;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(GAMEPAD) && HAVE(WIDE_GAMECONTROLLER_SUPPORT)

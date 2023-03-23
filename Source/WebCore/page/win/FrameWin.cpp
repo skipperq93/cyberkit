@@ -34,7 +34,7 @@
 #include "PrintContext.h"
 #include "RenderObject.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 void computePageRectsForFrame(Frame* frame, const IntRect& printRect, float headerHeight, float footerHeight, float userScaleFactor, Vector<IntRect>& outPages, int& outPageHeight)
 {
@@ -57,4 +57,4 @@ GDIObject<HBITMAP> imageFromSelection(Frame* frame, bool forceBlackText)
     return image;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

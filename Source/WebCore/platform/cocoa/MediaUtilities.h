@@ -32,7 +32,7 @@ typedef const struct opaqueCMFormatDescription* CMFormatDescriptionRef;
 typedef struct opaqueCMSampleBuffer* CMSampleBufferRef;
 typedef struct __CVBuffer *CVPixelBufferRef;
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioStreamDescription;
 class PlatformAudioData;
@@ -41,4 +41,4 @@ RetainPtr<CMFormatDescriptionRef> createAudioFormatDescription(const AudioStream
 RetainPtr<CMSampleBufferRef> createAudioSampleBuffer(const PlatformAudioData&, const AudioStreamDescription&, CMTime, size_t sampleCount);
 RetainPtr<CMSampleBufferRef> createVideoSampleBuffer(CVPixelBufferRef, CMTime);
 
-} // namespace WebCore
+} // namespace CyberCore

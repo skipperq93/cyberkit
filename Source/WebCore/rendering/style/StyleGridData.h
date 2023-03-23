@@ -36,7 +36,7 @@
 #include <wtf/text/TextStream.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 typedef HashMap<String, Vector<unsigned>> NamedGridLinesMap;
 typedef HashMap<unsigned, Vector<String>, IntHash<unsigned>, WTF::UnsignedWithZeroKeyHashTraits<unsigned>> OrderedNamedGridLinesMap;
@@ -205,5 +205,5 @@ private:
     StyleGridData(const StyleGridData&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 

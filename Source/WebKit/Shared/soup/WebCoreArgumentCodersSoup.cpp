@@ -26,7 +26,7 @@
  */
 
 #include "config.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 
 #include "ArgumentCodersGLib.h"
 #include "DataReference.h"
@@ -41,7 +41,7 @@
 #include <wtf/text/CString.h>
 
 namespace IPC {
-using namespace WebCore;
+using namespace CyberCore;
 
 void ArgumentCoder<ResourceError>::encodePlatformData(Encoder& encoder, const ResourceError& resourceError)
 {

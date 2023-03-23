@@ -30,29 +30,29 @@
 #include <CyberCore/AuthenticatorCoordinatorClient.h>
 #include <CyberCore/FrameIdentifier.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPage;
 
-class WebAuthenticatorCoordinator final : public WebCore::AuthenticatorCoordinatorClient {
+class WebAuthenticatorCoordinator final : public CyberCore::AuthenticatorCoordinatorClient {
 public:
     explicit WebAuthenticatorCoordinator(WebPage&);
 
 private:
-    // WebCore::AuthenticatorCoordinatorClient
-    void makeCredential(const WebCore::Frame&, const WebCore::SecurityOrigin&, const Vector<uint8_t>&, const WebCore::PublicKeyCredentialCreationOptions&, WebCore::RequestCompletionHandler&&) final;
-    void getAssertion(const WebCore::Frame&, const WebCore::SecurityOrigin&, const Vector<uint8_t>& hash, const WebCore::PublicKeyCredentialRequestOptions&, WebCore::MediationRequirement, const std::pair<WebAuthn::Scope, std::optional<WebCore::SecurityOriginData>>&, WebCore::RequestCompletionHandler&&) final;
-    void isConditionalMediationAvailable(const WebCore::SecurityOrigin&, WebCore::QueryCompletionHandler&&) final;
-    void isUserVerifyingPlatformAuthenticatorAvailable(const WebCore::SecurityOrigin&, WebCore::QueryCompletionHandler&&) final;
+    // CyberCore::AuthenticatorCoordinatorClient
+    void makeCredential(const CyberCore::Frame&, const CyberCore::SecurityOrigin&, const Vector<uint8_t>&, const CyberCore::PublicKeyCredentialCreationOptions&, CyberCore::RequestCompletionHandler&&) final;
+    void getAssertion(const CyberCore::Frame&, const CyberCore::SecurityOrigin&, const Vector<uint8_t>& hash, const CyberCore::PublicKeyCredentialRequestOptions&, CyberCore::MediationRequirement, const std::pair<WebAuthn::Scope, std::optional<CyberCore::SecurityOriginData>>&, CyberCore::RequestCompletionHandler&&) final;
+    void isConditionalMediationAvailable(const CyberCore::SecurityOrigin&, CyberCore::QueryCompletionHandler&&) final;
+    void isUserVerifyingPlatformAuthenticatorAvailable(const CyberCore::SecurityOrigin&, CyberCore::QueryCompletionHandler&&) final;
     void resetUserGestureRequirement() final { m_requireUserGesture = false; }
     void cancel() final;
 
-    bool processingUserGesture(const WebCore::Frame&, const WebCore::FrameIdentifier&);
+    bool processingUserGesture(const CyberCore::Frame&, const CyberCore::FrameIdentifier&);
 
     WebPage& m_webPage;
     bool m_requireUserGesture { false };
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEB_AUTHN)

@@ -30,7 +30,7 @@
 
 #include "RuntimeApplicationChecks.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 bool RealtimeMediaSourceCenter::shouldInterruptAudioOnPageVisibilityChange()
 {
@@ -50,6 +50,6 @@ bool RealtimeMediaSourceCenter::shouldInterruptAudioOnPageVisibilityChange()
 #endif
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM)

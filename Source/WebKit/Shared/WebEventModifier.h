@@ -27,7 +27,7 @@
 
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 class NavigationAction;
 }
 
@@ -41,6 +41,6 @@ enum class WebEventModifier : uint8_t {
     CapsLockKey = 1 << 4,
 };
 
-OptionSet<WebEventModifier> modifiersForNavigationAction(const WebCore::NavigationAction&);
+OptionSet<WebEventModifier> modifiersForNavigationAction(const CyberCore::NavigationAction&);
 
 } // namespace WebKit

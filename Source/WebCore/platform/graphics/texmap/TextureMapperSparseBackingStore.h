@@ -34,12 +34,12 @@
 #include "TextureMapperTile.h"
 #include <wtf/HashMap.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class TextureMapperSparseBackingStore final : public TextureMapperBackingStore {
     WTF_MAKE_FAST_ALLOCATED;
 public:
-    using TileIndex = WebCore::IntPoint;
+    using TileIndex = CyberCore::IntPoint;
 
     WEBCORE_EXPORT void setSize(const IntSize&);
     WEBCORE_EXPORT void paintToTextureMapper(TextureMapper&, const FloatRect&, const TransformationMatrix&, float) override;
@@ -55,6 +55,6 @@ private:
     HashMap<TileIndex, std::unique_ptr<TextureMapperTile>> m_tiles;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(GRAPHICS_LAYER_WC)

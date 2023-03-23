@@ -41,7 +41,7 @@ public:
 private:
     WebKitPopupMenu(WKWPE::View&, WebPopupMenuProxy::Client&);
 
-    void showPopupMenu(const WebCore::IntRect&, WebCore::TextDirection, double pageScaleFactor, const Vector<WebPopupItem>&, const PlatformPopupMenuData&, int32_t selectedIndex) override;
+    void showPopupMenu(const CyberCore::IntRect&, CyberCore::TextDirection, double pageScaleFactor, const Vector<WebPopupItem>&, const PlatformPopupMenuData&, int32_t selectedIndex) override;
     void hidePopupMenu() override;
     void cancelTracking() override;
 

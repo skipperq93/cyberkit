@@ -33,7 +33,7 @@
 #import "PlaybackSessionManager.h"
 #import "VideoFullscreenManagerMessages.h"
 #import "VideoFullscreenManagerProxyMessages.h"
-#import "WebCoreArgumentCoders.h"
+#import "CyberCoreArgumentCoders.h"
 #import "WebPage.h"
 #import "WebProcess.h"
 #import <QuartzCore/CoreAnimation.h>
@@ -55,8 +55,8 @@
 #import <mach/mach_port.h>
 #import <wtf/MachSendRight.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 static FloatRect inlineVideoFrame(HTMLVideoElement& element)
 {
@@ -178,7 +178,7 @@ VideoFullscreenManager::ModelInterfaceTuple& VideoFullscreenManager::ensureModel
     return addResult.iterator->value;
 }
 
-WebCore::VideoFullscreenModelVideoElement& VideoFullscreenManager::ensureModel(PlaybackSessionContextIdentifier contextId)
+CyberCore::VideoFullscreenModelVideoElement& VideoFullscreenManager::ensureModel(PlaybackSessionContextIdentifier contextId)
 {
     return *std::get<0>(ensureModelAndInterface(contextId));
 }
@@ -228,7 +228,7 @@ void VideoFullscreenManager::removeClientForContext(PlaybackSessionContextIdenti
 
 #pragma mark Interface to ChromeClient:
 
-bool VideoFullscreenManager::canEnterVideoFullscreen(WebCore::HTMLMediaElementEnums::VideoFullscreenMode mode) const
+bool VideoFullscreenManager::canEnterVideoFullscreen(CyberCore::HTMLMediaElementEnums::VideoFullscreenMode mode) const
 {
 #if PLATFORM(IOS)
     if (m_currentlyInFullscreen && mode == HTMLMediaElementEnums::VideoFullscreenModeStandard)
@@ -237,7 +237,7 @@ bool VideoFullscreenManager::canEnterVideoFullscreen(WebCore::HTMLMediaElementEn
     return true;
 }
 
-bool VideoFullscreenManager::supportsVideoFullscreen(WebCore::HTMLMediaElementEnums::VideoFullscreenMode mode) const
+bool VideoFullscreenManager::supportsVideoFullscreen(CyberCore::HTMLMediaElementEnums::VideoFullscreenMode mode) const
 {
 #if PLATFORM(IOS_FAMILY)
     UNUSED_PARAM(mode);
@@ -326,7 +326,7 @@ void VideoFullscreenManager::enterVideoFullscreenForVideoElement(HTMLVideoElemen
         [videoLayer setDelegate:[WebActionDisablingCALayerDelegate shared]];
         [videoLayer setName:@"Web Video Fullscreen Layer"];
         [videoLayer setPosition:CGPointMake(0, 0)];
-        [videoLayer setBackgroundColor:cachedCGColor(WebCore::Color::transparentBlack).get()];
+        [videoLayer setBackgroundColor:cachedCGColor(CyberCore::Color::transparentBlack).get()];
 
         // Set a scale factor here to make convertRect:toLayer:nil take scale factor into account. <rdar://problem/18316542>.
         // This scale factor is inverted in the hosting process.
@@ -373,7 +373,7 @@ void VideoFullscreenManager::exitVideoFullscreenForVideoElement(HTMLVideoElement
     });
 }
 
-void VideoFullscreenManager::exitVideoFullscreenToModeWithoutAnimation(HTMLVideoElement& videoElement, WebCore::HTMLMediaElementEnums::VideoFullscreenMode targetMode)
+void VideoFullscreenManager::exitVideoFullscreenToModeWithoutAnimation(HTMLVideoElement& videoElement, CyberCore::HTMLMediaElementEnums::VideoFullscreenMode targetMode)
 {
     LOG(Fullscreen, "VideoFullscreenManager::exitVideoFullscreenToModeWithoutAnimation(%p)", this);
 
@@ -425,12 +425,12 @@ void VideoFullscreenManager::setPlayerIdentifier(PlaybackSessionContextIdentifie
 
 #pragma mark Messages from VideoFullscreenManagerProxy:
 
-void VideoFullscreenManager::requestFullscreenMode(PlaybackSessionContextIdentifier contextId, WebCore::HTMLMediaElementEnums::VideoFullscreenMode mode, bool finishedWithMedia)
+void VideoFullscreenManager::requestFullscreenMode(PlaybackSessionContextIdentifier contextId, CyberCore::HTMLMediaElementEnums::VideoFullscreenMode mode, bool finishedWithMedia)
 {
     ensureModel(contextId).requestFullscreenMode(mode, finishedWithMedia);
 }
 
-void VideoFullscreenManager::fullscreenModeChanged(PlaybackSessionContextIdentifier contextId, WebCore::HTMLMediaElementEnums::VideoFullscreenMode videoFullscreenMode)
+void VideoFullscreenManager::fullscreenModeChanged(PlaybackSessionContextIdentifier contextId, CyberCore::HTMLMediaElementEnums::VideoFullscreenMode videoFullscreenMode)
 {
     auto [model, interface] = ensureModelAndInterface(contextId);
     model->fullscreenModeChanged(videoFullscreenMode);
@@ -514,7 +514,7 @@ void VideoFullscreenManager::willExitFullscreen(PlaybackSessionContextIdentifier
     });
 }
 
-void VideoFullscreenManager::didEnterFullscreen(PlaybackSessionContextIdentifier contextId, std::optional<WebCore::FloatSize> size)
+void VideoFullscreenManager::didEnterFullscreen(PlaybackSessionContextIdentifier contextId, std::optional<CyberCore::FloatSize> size)
 {
     LOG(Fullscreen, "VideoFullscreenManager::didEnterFullscreen(%p, %x)", this, contextId);
 
@@ -640,7 +640,7 @@ void VideoFullscreenManager::fullscreenMayReturnToInline(PlaybackSessionContextI
     m_page->send(Messages::VideoFullscreenManagerProxy::PreparedToReturnToInline(contextId, true, inlineVideoFrame(*model.videoElement())));
 }
 
-void VideoFullscreenManager::requestRouteSharingPolicyAndContextUID(PlaybackSessionContextIdentifier contextId, CompletionHandler<void(WebCore::RouteSharingPolicy, String)>&& reply)
+void VideoFullscreenManager::requestRouteSharingPolicyAndContextUID(PlaybackSessionContextIdentifier contextId, CompletionHandler<void(CyberCore::RouteSharingPolicy, String)>&& reply)
 {
     ensureModel(contextId).requestRouteSharingPolicyAndContextUID(WTFMove(reply));
 }
@@ -651,7 +651,7 @@ void VideoFullscreenManager::setCurrentlyInFullscreen(VideoFullscreenInterfaceCo
     m_currentlyInFullscreen = currentlyInFullscreen;
 }
 
-void VideoFullscreenManager::setVideoLayerFrameFenced(PlaybackSessionContextIdentifier contextId, WebCore::FloatRect bounds, const WTF::MachSendRight& machSendRight)
+void VideoFullscreenManager::setVideoLayerFrameFenced(PlaybackSessionContextIdentifier contextId, CyberCore::FloatRect bounds, const WTF::MachSendRight& machSendRight)
 {
     LOG(Fullscreen, "VideoFullscreenManager::setVideoLayerFrameFenced(%p, %x)", this, contextId);
 
@@ -667,6 +667,6 @@ void VideoFullscreenManager::setVideoLayerFrameFenced(PlaybackSessionContextIden
     model->setVideoLayerFrame(bounds);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(VIDEO_PRESENTATION_MODE)

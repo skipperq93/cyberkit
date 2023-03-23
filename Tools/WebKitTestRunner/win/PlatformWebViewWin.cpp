@@ -225,7 +225,7 @@ cairo_surface_t* PlatformWebView::windowSnapshotImage()
     LONG width = windowRect.right - windowRect.left;
     LONG height = windowRect.bottom - windowRect.top;
 
-    WebCore::HWndDC windowDC(m_window);
+    CyberCore::HWndDC windowDC(m_window);
     auto memoryDC = adoptGDIObject(::CreateCompatibleDC(windowDC));
 
     BITMAPINFO bitmapInfo { };

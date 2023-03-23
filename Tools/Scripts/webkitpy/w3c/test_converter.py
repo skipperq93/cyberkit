@@ -86,8 +86,8 @@ class _W3CTestConverter(HTMLParser):
         self.convert_test_harness_links = convert_test_harness_links
 
         # These settings might vary between WebKit and Blink
-        css_property_file = self.path_from_webkit_root('Source', 'WebCore', 'css', 'CSSProperties.json')
-        css_property_value_file = self.path_from_webkit_root('Source', 'WebCore', 'css', 'CSSValueKeywords.in')
+        css_property_file = self.path_from_webkit_root('Source', 'CyberCore', 'css', 'CSSProperties.json')
+        css_property_value_file = self.path_from_webkit_root('Source', 'CyberCore', 'css', 'CSSValueKeywords.in')
 
         self.test_harness_re = re.compile('/resources/testharness')
 

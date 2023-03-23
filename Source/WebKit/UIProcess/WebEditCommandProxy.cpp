@@ -34,7 +34,7 @@
 #include <wtf/text/WTFString.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 WebEditCommandProxy::WebEditCommandProxy(WebUndoStepID commandID, const String& label, WebPageProxy& page)
     : m_commandID(commandID)

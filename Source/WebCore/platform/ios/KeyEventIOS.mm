@@ -36,7 +36,7 @@
 #import <pal/spi/cocoa/IOKitSPI.h>
 #import <wtf/MainThread.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 int windowsKeyCodeForKeyCode(uint16_t keyCode)
 {

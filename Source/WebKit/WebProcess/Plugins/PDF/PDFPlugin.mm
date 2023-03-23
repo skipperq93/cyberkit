@@ -40,7 +40,7 @@
 #import "PluginView.h"
 #import "WKAccessibilityWebPageObjectMac.h"
 #import "WKPageFindMatchesClient.h"
-#import "WebCoreArgumentCoders.h"
+#import "CyberCoreArgumentCoders.h"
 #import "WebEventConversion.h"
 #import "WebFindOptions.h"
 #import "WebFrame.h"
@@ -162,15 +162,15 @@ static const uint32_t nonLinearizedPDFSentinel = std::numeric_limits<uint32_t>::
 @interface WKPDFPluginAccessibilityObject : NSObject {
     PDFLayerController *_pdfLayerController;
     WeakObjCPtr<NSObject> _parent;
-    WebKit::PDFPlugin* _pdfPlugin;
-    WeakPtr<WebCore::HTMLPlugInElement, WebCore::WeakPtrImplWithEventTargetData> _pluginElement;
+    CyberKit::PDFPlugin* _pdfPlugin;
+    WeakPtr<CyberCore::HTMLPlugInElement, CyberCore::WeakPtrImplWithEventTargetData> _pluginElement;
 }
 
 @property (assign) PDFLayerController *pdfLayerController;
-@property (assign) WebKit::PDFPlugin* pdfPlugin;
-@property (assign) WeakPtr<WebCore::HTMLPlugInElement, WebCore::WeakPtrImplWithEventTargetData> pluginElement;
+@property (assign) CyberKit::PDFPlugin* pdfPlugin;
+@property (assign) WeakPtr<CyberCore::HTMLPlugInElement, CyberCore::WeakPtrImplWithEventTargetData> pluginElement;
 
-- (id)initWithPDFPlugin:(WebKit::PDFPlugin *)plugin andElement:(WebCore::HTMLPlugInElement *)element;
+- (id)initWithPDFPlugin:(CyberKit::PDFPlugin *)plugin andElement:(CyberCore::HTMLPlugInElement *)element;
 
 @end
 
@@ -179,7 +179,7 @@ static const uint32_t nonLinearizedPDFSentinel = std::numeric_limits<uint32_t>::
 @synthesize pdfPlugin = _pdfPlugin;
 @synthesize pluginElement = _pluginElement;
 
-- (id)initWithPDFPlugin:(WebKit::PDFPlugin *)plugin andElement:(WebCore::HTMLPlugInElement *)element
+- (id)initWithPDFPlugin:(CyberKit::PDFPlugin *)plugin andElement:(CyberCore::HTMLPlugInElement *)element
 {
     if (!(self = [super init]))
         return nil;
@@ -308,7 +308,7 @@ ALLOW_DEPRECATED_IMPLEMENTATIONS_BEGIN
 ALLOW_DEPRECATED_IMPLEMENTATIONS_END
 {
     if ([action isEqualToString:NSAccessibilityShowMenuAction])
-        _pdfPlugin->showContextMenuAtPoint(WebCore::IntRect(WebCore::IntPoint(), _pdfPlugin->size()).center());
+        _pdfPlugin->showContextMenuAtPoint(CyberCore::IntRect(CyberCore::IntPoint(), _pdfPlugin->size()).center());
 }
 
 ALLOW_DEPRECATED_IMPLEMENTATIONS_BEGIN
@@ -334,9 +334,9 @@ ALLOW_DEPRECATED_IMPLEMENTATIONS_END
 
 - (id)accessibilityFocusedUIElement
 {
-    if (WebKit::PDFPluginAnnotation* activeAnnotation = _pdfPlugin->activeAnnotation()) {
-        if (WebCore::AXObjectCache* existingCache = _pdfPlugin->axObjectCache()) {
-            if (WebCore::AccessibilityObject* object = existingCache->getOrCreate(activeAnnotation->element()))
+    if (CyberKit::PDFPluginAnnotation* activeAnnotation = _pdfPlugin->activeAnnotation()) {
+        if (CyberCore::AXObjectCache* existingCache = _pdfPlugin->axObjectCache()) {
+            if (CyberCore::AccessibilityObject* object = existingCache->getOrCreate(activeAnnotation->element()))
                 ALLOW_DEPRECATED_DECLARATIONS_BEGIN
                 return [object->wrapper() accessibilityAttributeValue:@"_AXAssociatedPluginParent"];
                 ALLOW_DEPRECATED_DECLARATIONS_END
@@ -348,22 +348,22 @@ ALLOW_DEPRECATED_IMPLEMENTATIONS_END
 - (id)accessibilityAssociatedControlForAnnotation:(PDFAnnotation *)annotation
 {
     // Only active annotations seem to have their associated controls available.
-    WebKit::PDFPluginAnnotation* activeAnnotation = _pdfPlugin->activeAnnotation();
+    CyberKit::PDFPluginAnnotation* activeAnnotation = _pdfPlugin->activeAnnotation();
     if (!activeAnnotation || ![activeAnnotation->annotation() isEqual:annotation])
         return nil;
     
-    WebCore::AXObjectCache* cache = _pdfPlugin->axObjectCache();
+    CyberCore::AXObjectCache* cache = _pdfPlugin->axObjectCache();
     if (!cache)
         return nil;
     
-    WebCore::AccessibilityObject* object = cache->getOrCreate(activeAnnotation->element());
+    CyberCore::AccessibilityObject* object = cache->getOrCreate(activeAnnotation->element());
     if (!object)
         return nil;
 
     return object->wrapper();
 }
 
-- (id)accessibilityHitTestIntPoint:(const WebCore::IntPoint&)point
+- (id)accessibilityHitTestIntPoint:(const CyberCore::IntPoint&)point
 {
     auto convertedPoint = _pdfPlugin->convertFromRootViewToPDFView(point);
     return [_pdfLayerController accessibilityHitTest:convertedPoint];
@@ -371,19 +371,19 @@ ALLOW_DEPRECATED_IMPLEMENTATIONS_END
 
 - (id)accessibilityHitTest:(NSPoint)point
 {
-    return [self accessibilityHitTestIntPoint:WebCore::IntPoint(point)];
+    return [self accessibilityHitTestIntPoint:CyberCore::IntPoint(point)];
 }
 
 @end
 
 
 @interface WKPDFPluginScrollbarLayer : CALayer {
-    WebKit::PDFPlugin* _pdfPlugin;
+    CyberKit::PDFPlugin* _pdfPlugin;
 }
 
-@property (assign) WebKit::PDFPlugin* pdfPlugin;
+@property (assign) CyberKit::PDFPlugin* pdfPlugin;
 
-- (id)initWithPDFPlugin:(WebKit::PDFPlugin *)plugin shouldFlip:(BOOL)shouldFlip;
+- (id)initWithPDFPlugin:(CyberKit::PDFPlugin *)plugin shouldFlip:(BOOL)shouldFlip;
 
 @end
 
@@ -391,7 +391,7 @@ ALLOW_DEPRECATED_IMPLEMENTATIONS_END
 
 @synthesize pdfPlugin = _pdfPlugin;
 
-- (id)initWithPDFPlugin:(WebKit::PDFPlugin *)plugin shouldFlip:(BOOL)shouldFlip
+- (id)initWithPDFPlugin:(CyberKit::PDFPlugin *)plugin shouldFlip:(BOOL)shouldFlip
 {
     if (!(self = [super init]))
         return nil;
@@ -419,12 +419,12 @@ ALLOW_DEPRECATED_IMPLEMENTATIONS_END
 @end
 
 @interface WKPDFLayerControllerDelegate : NSObject<PDFLayerControllerDelegate> {
-    WebKit::PDFPlugin* _pdfPlugin;
+    CyberKit::PDFPlugin* _pdfPlugin;
 }
 
-@property (assign) WebKit::PDFPlugin* pdfPlugin;
+@property (assign) CyberKit::PDFPlugin* pdfPlugin;
 
-- (id)initWithPDFPlugin:(WebKit::PDFPlugin *)plugin;
+- (id)initWithPDFPlugin:(CyberKit::PDFPlugin *)plugin;
 
 @end
 
@@ -432,7 +432,7 @@ ALLOW_DEPRECATED_IMPLEMENTATIONS_END
 
 @synthesize pdfPlugin = _pdfPlugin;
 
-- (id)initWithPDFPlugin:(WebKit::PDFPlugin *)plugin
+- (id)initWithPDFPlugin:(CyberKit::PDFPlugin *)plugin
 {
     if (!(self = [super init]))
         return nil;
@@ -449,7 +449,7 @@ ALLOW_DEPRECATED_IMPLEMENTATIONS_END
     // notifyScrollPositionChanged (avoiding a crash). The timer causing the crash at the time of
     // this change was ScrollbarsControllerMac::m_sendContentAreaScrolledTimer.
     callOnMainRunLoop([protectedPlugin = Ref { *_pdfPlugin }, newPosition] {
-        protectedPlugin->notifyScrollPositionChanged(WebCore::IntPoint(newPosition));
+        protectedPlugin->notifyScrollPositionChanged(CyberCore::IntPoint(newPosition));
     });
 }
 
@@ -530,8 +530,8 @@ ALLOW_DEPRECATED_IMPLEMENTATIONS_END
 - (PDFPage *)pageNearestPoint:(NSPoint)point currentPage:(PDFPage *)currentPage;
 @end
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 using namespace HTMLNames;
 
 static void appendValuesInPDFNameSubtreeToVector(CGPDFDictionaryRef subtree, Vector<CGPDFObjectRef>& values)
@@ -656,7 +656,7 @@ PDFPlugin::PDFPlugin(HTMLPlugInElement& element)
     bool isFullFrame = isFullFramePlugin();
     if (isFullFrame) {
         // FIXME: <rdar://problem/75332948> get the background color from PDFKit instead of hardcoding it
-        document.bodyOrFrameset()->setInlineStyleProperty(WebCore::CSSPropertyBackgroundColor, WebCore::serializationForHTML(WebCore::roundAndClampToSRGBALossy([WebCore::CocoaColor grayColor].CGColor)));
+        document.bodyOrFrameset()->setInlineStyleProperty(CyberCore::CSSPropertyBackgroundColor, CyberCore::serializationForHTML(CyberCore::roundAndClampToSRGBALossy([CyberCore::CocoaColor grayColor].CGColor)));
     }
 
     if (supportsForms()) {
@@ -717,7 +717,7 @@ void PDFPlugin::pdfLog(const String& message)
     LOG_WITH_STREAM(IncrementalPDFVerbose, stream << message);
 }
 
-void PDFPlugin::logStreamLoader(WTF::TextStream& stream, WebCore::NetscapePlugInStreamLoader& loader)
+void PDFPlugin::logStreamLoader(WTF::TextStream& stream, CyberCore::NetscapePlugInStreamLoader& loader)
 {
     ASSERT(isMainRunLoop());
 
@@ -1027,7 +1027,7 @@ void PDFPlugin::getResourceBytesAtPosition(size_t count, off_t position, Complet
     pdfLog(makeString("Scheduling a stream loader for request ", identifier, " (", count, " bytes at ", position, ")"));
 #endif
 
-    WebProcess::singleton().webLoaderStrategy().schedulePluginStreamLoad(*coreFrame, m_streamLoaderClient, WTFMove(resourceRequest), [this, protectedThis = Ref { *this }, identifier] (RefPtr<WebCore::NetscapePlugInStreamLoader>&& loader) {
+    WebProcess::singleton().webLoaderStrategy().schedulePluginStreamLoad(*coreFrame, m_streamLoaderClient, WTFMove(resourceRequest), [this, protectedThis = Ref { *this }, identifier] (RefPtr<CyberCore::NetscapePlugInStreamLoader>&& loader) {
         if (!loader)
             return;
         auto iterator = m_outstandingByteRangeRequests.find(identifier);
@@ -1671,7 +1671,7 @@ void PDFPlugin::installPDFDocument()
         [m_pdfLayerController setURLFragment:m_frame->url().fragmentIdentifier().createNSString().get()];
 }
 
-void PDFPlugin::streamDidReceiveResponse(const WebCore::ResourceResponse& response)
+void PDFPlugin::streamDidReceiveResponse(const CyberCore::ResourceResponse& response)
 {
     m_suggestedFilename = response.suggestedFilename();
     if (m_suggestedFilename.isEmpty())
@@ -1998,7 +1998,7 @@ IntPoint PDFPlugin::convertFromRootViewToPDFView(const IntPoint& point) const
 
 FloatRect PDFPlugin::convertFromPDFViewToScreen(const FloatRect& rect) const
 {
-    return WebCore::Accessibility::retrieveValueFromMainThread<WebCore::FloatRect>([&] () -> WebCore::FloatRect {
+    return CyberCore::Accessibility::retrieveValueFromMainThread<CyberCore::FloatRect>([&] () -> CyberCore::FloatRect {
         auto* coreFrame = m_frame ? m_frame->coreFrame() : nullptr;
         if (!coreFrame)
             return { };
@@ -2017,7 +2017,7 @@ FloatRect PDFPlugin::convertFromPDFViewToScreen(const FloatRect& rect) const
 
 IntRect PDFPlugin::boundsOnScreen() const
 {
-    return WebCore::Accessibility::retrieveValueFromMainThread<WebCore::IntRect>([&] () -> WebCore::IntRect {
+    return CyberCore::Accessibility::retrieveValueFromMainThread<CyberCore::IntRect>([&] () -> CyberCore::IntRect {
         auto* frameView = m_frame ? m_frame->coreFrame()->view() : nullptr;
         if (!frameView)
             return { };
@@ -2275,7 +2275,7 @@ bool PDFPlugin::showContextMenuAtPoint(const IntPoint& point)
     if (!frameView)
         return false;
     IntPoint contentsPoint = frameView->contentsToRootView(point);
-    WebMouseEvent event({ WebEventType::MouseDown, OptionSet<WebEventModifier> { }, WallTime::now() }, WebMouseEventButton::RightButton, 0, contentsPoint, contentsPoint, 0, 0, 0, 1, WebCore::ForceAtClick);
+    WebMouseEvent event({ WebEventType::MouseDown, OptionSet<WebEventModifier> { }, WallTime::now() }, WebMouseEventButton::RightButton, 0, contentsPoint, contentsPoint, 0, 0, 0, 1, CyberCore::ForceAtClick);
     return handleContextMenuEvent(event);
 }
 
@@ -2609,14 +2609,14 @@ void PDFPlugin::showDefinitionForAttributedString(NSAttributedString *string, CG
     m_frame->page()->send(Messages::WebPageProxy::DidPerformDictionaryLookup(dictionaryPopupInfo));
 }
 
-unsigned PDFPlugin::countFindMatches(const String& target, WebCore::FindOptions options, unsigned /*maxMatchCount*/)
+unsigned PDFPlugin::countFindMatches(const String& target, CyberCore::FindOptions options, unsigned /*maxMatchCount*/)
 {
     // FIXME: Why is it OK to ignore the passed-in maximum match count?
 
     if (!target.length())
         return 0;
 
-    NSStringCompareOptions nsOptions = options.contains(WebCore::CaseInsensitive) ? NSCaseInsensitiveSearch : 0;
+    NSStringCompareOptions nsOptions = options.contains(CyberCore::CaseInsensitive) ? NSCaseInsensitiveSearch : 0;
     return [[m_pdfDocument findString:target withOptions:nsOptions] count];
 }
 
@@ -2660,11 +2660,11 @@ PDFSelection *PDFPlugin::nextMatchForString(const String& target, bool searchFor
     return foundSelection;
 }
 
-bool PDFPlugin::findString(const String& target, WebCore::FindOptions options, unsigned maxMatchCount)
+bool PDFPlugin::findString(const String& target, CyberCore::FindOptions options, unsigned maxMatchCount)
 {
-    bool searchForward = !options.contains(WebCore::Backwards);
-    bool caseSensitive = !options.contains(WebCore::CaseInsensitive);
-    bool wrapSearch = options.contains(WebCore::WrapAround);
+    bool searchForward = !options.contains(CyberCore::Backwards);
+    bool caseSensitive = !options.contains(CyberCore::CaseInsensitive);
+    bool wrapSearch = options.contains(CyberCore::WrapAround);
 
     // If the max was zero, any result means we exceeded the max, so we can skip computing the actual count.
     // FIXME: How can always returning true without searching if passed a max of 0 be right?
@@ -2693,7 +2693,7 @@ bool PDFPlugin::findString(const String& target, WebCore::FindOptions options, u
     return foundMatch;
 }
 
-bool PDFPlugin::performDictionaryLookupAtLocation(const WebCore::FloatPoint& point)
+bool PDFPlugin::performDictionaryLookupAtLocation(const CyberCore::FloatPoint& point)
 {
     IntPoint localPoint = convertFromRootViewToPlugin(roundedIntPoint(point));
     PDFSelection* lookupSelection = [m_pdfLayerController getSelectionForWordAtPoint:convertFromPluginToPDFView(localPoint)];
@@ -2719,16 +2719,16 @@ void PDFPlugin::notifySelectionChanged(PDFSelection *)
     m_frame->page()->didChangeSelection(*m_frame->coreFrame());
 }
 
-static const WebCore::Cursor& coreCursor(PDFLayerControllerCursorType type)
+static const CyberCore::Cursor& coreCursor(PDFLayerControllerCursorType type)
 {
     switch (type) {
     case kPDFLayerControllerCursorTypeHand:
-        return WebCore::handCursor();
+        return CyberCore::handCursor();
     case kPDFLayerControllerCursorTypeIBeam:
-        return WebCore::iBeamCursor();
+        return CyberCore::iBeamCursor();
     case kPDFLayerControllerCursorTypePointer:
     default:
-        return WebCore::pointerCursor();
+        return CyberCore::pointerCursor();
     }
 }
 
@@ -2745,7 +2745,7 @@ String PDFPlugin::getSelectionString() const
     return [[m_pdfLayerController currentSelection] string];
 }
 
-bool PDFPlugin::existingSelectionContainsPoint(const WebCore::FloatPoint& locationInViewCoordinates) const
+bool PDFPlugin::existingSelectionContainsPoint(const CyberCore::FloatPoint& locationInViewCoordinates) const
 {
     PDFSelection *currentSelection = [m_pdfLayerController currentSelection];
     if (!currentSelection)
@@ -2789,7 +2789,7 @@ static NSPoint pointInLayoutSpaceForPointInWindowSpace(PDFLayerController* pdfLa
     return NSPointFromCGPoint(newPoint);
 }
 
-std::tuple<String, PDFSelection *, NSDictionary *> PDFPlugin::lookupTextAtLocation(const WebCore::FloatPoint& locationInViewCoordinates, WebHitTestResultData& data) const
+std::tuple<String, PDFSelection *, NSDictionary *> PDFPlugin::lookupTextAtLocation(const CyberCore::FloatPoint& locationInViewCoordinates, WebHitTestResultData& data) const
 {
     auto selection = [m_pdfLayerController currentSelection];
     if (existingSelectionContainsPoint(locationInViewCoordinates))
@@ -2851,14 +2851,14 @@ static NSRect rectInViewSpaceForRectInLayoutSpace(PDFLayerController* pdfLayerCo
     return NSRectFromCGRect(newRect);
 }
     
-WebCore::AXObjectCache* PDFPlugin::axObjectCache() const
+CyberCore::AXObjectCache* PDFPlugin::axObjectCache() const
 {
     if (!m_frame || !m_frame->coreFrame() || !m_frame->coreFrame()->document())
         return nullptr;
     return m_frame->coreFrame()->document()->axObjectCache();
 }
 
-WebCore::FloatRect PDFPlugin::rectForSelectionInRootView(PDFSelection *selection) const
+CyberCore::FloatRect PDFPlugin::rectForSelectionInRootView(PDFSelection *selection) const
 {
     PDFPage *currentPage = nil;
     NSArray *pages = selection.pages;
@@ -2950,7 +2950,7 @@ NSData *PDFPlugin::liveData() const
     return rawData();
 }
 
-id PDFPlugin::accessibilityAssociatedPluginParentForElement(WebCore::Element* element) const
+id PDFPlugin::accessibilityAssociatedPluginParentForElement(CyberCore::Element* element) const
 {
     if (!m_activeAnnotation)
         return nil;
@@ -2961,7 +2961,7 @@ id PDFPlugin::accessibilityAssociatedPluginParentForElement(WebCore::Element* el
     return [m_activeAnnotation->annotation() accessibilityNode];
 }
 
-id PDFPlugin::accessibilityHitTest(const WebCore::IntPoint& point) const
+id PDFPlugin::accessibilityHitTest(const CyberCore::IntPoint& point) const
 {
     return [m_accessibilityObject accessibilityHitTestIntPoint:point];
 }
@@ -2971,6 +2971,6 @@ id PDFPlugin::accessibilityObject() const
     return m_accessibilityObject.get();
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(PDFKIT_PLUGIN)

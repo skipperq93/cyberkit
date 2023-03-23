@@ -66,7 +66,7 @@
 #include "LocalDefaultSystemAppearance.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 SVGImage::SVGImage(ImageObserver& observer)
     : Image(&observer)

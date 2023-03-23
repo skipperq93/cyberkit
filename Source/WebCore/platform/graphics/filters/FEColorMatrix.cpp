@@ -33,7 +33,7 @@
 #include "FEColorMatrixCoreImageApplier.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<FEColorMatrix> FEColorMatrix::create(ColorMatrixType type, Vector<float>&& values)
 {
@@ -190,4 +190,4 @@ TextStream& FEColorMatrix::externalRepresentation(TextStream& ts, FilterRepresen
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

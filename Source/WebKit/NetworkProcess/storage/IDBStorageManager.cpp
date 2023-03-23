@@ -50,7 +50,7 @@ static bool migrateOriginDataImpl(const String& oldOriginDirectory, const String
     bool allMoved = true;
     for (auto& name : fileNames) {
         // This is an origin directory for third-party data.
-        if (auto origin = WebCore::SecurityOriginData::fromDatabaseIdentifier(name))
+        if (auto origin = CyberCore::SecurityOriginData::fromDatabaseIdentifier(name))
             continue;
 
         // Do not overwrite existing files.
@@ -66,15 +66,15 @@ static bool migrateOriginDataImpl(const String& oldOriginDirectory, const String
     return allMoved;
 }
 
-String IDBStorageManager::idbStorageOriginDirectory(const String& rootDirectory, const WebCore::ClientOrigin& origin)
+String IDBStorageManager::idbStorageOriginDirectory(const String& rootDirectory, const CyberCore::ClientOrigin& origin)
 {
     if (rootDirectory.isEmpty())
         return emptyString();
 
-    auto originDirectory = WebCore::IDBDatabaseIdentifier::databaseDirectoryRelativeToRoot(origin, rootDirectory, "v1"_s);
-    auto oldOriginDirectory = WebCore::IDBDatabaseIdentifier::databaseDirectoryRelativeToRoot(origin, rootDirectory, "v0"_s);
+    auto originDirectory = CyberCore::IDBDatabaseIdentifier::databaseDirectoryRelativeToRoot(origin, rootDirectory, "v1"_s);
+    auto oldOriginDirectory = CyberCore::IDBDatabaseIdentifier::databaseDirectoryRelativeToRoot(origin, rootDirectory, "v0"_s);
     migrateOriginDataImpl(oldOriginDirectory, originDirectory, [](const String& name) {
-        return WebCore::SQLiteFileSystem::computeHashForFileName(WebCore::IDBServer::SQLiteIDBBackingStore::decodeDatabaseName(name));
+        return CyberCore::SQLiteFileSystem::computeHashForFileName(CyberCore::IDBServer::SQLiteIDBBackingStore::decodeDatabaseName(name));
     });
 
     return originDirectory;
@@ -85,13 +85,13 @@ uint64_t IDBStorageManager::idbStorageSize(const String& originDirectory)
     if (originDirectory.isEmpty())
         return 0;
 
-    return WebCore::IDBServer::SQLiteIDBBackingStore::databasesSizeForDirectory(originDirectory);
+    return CyberCore::IDBServer::SQLiteIDBBackingStore::databasesSizeForDirectory(originDirectory);
 }
 
-static void getOriginsForVersion(const String& versionPath, HashSet<WebCore::ClientOrigin>& origins)
+static void getOriginsForVersion(const String& versionPath, HashSet<CyberCore::ClientOrigin>& origins)
 {
     for (auto& topDatabaseIdentifier : FileSystem::listDirectory(versionPath)) {
-        auto topOrigin = WebCore::SecurityOriginData::fromDatabaseIdentifier(topDatabaseIdentifier);
+        auto topOrigin = CyberCore::SecurityOriginData::fromDatabaseIdentifier(topDatabaseIdentifier);
         if (!topOrigin)
             continue;
 
@@ -101,14 +101,14 @@ static void getOriginsForVersion(const String& versionPath, HashSet<WebCore::Cli
             if (FileSystem::deleteEmptyDirectory(originDirectory))
                 continue;
 
-            auto clientOrigin = WebCore::SecurityOriginData::fromDatabaseIdentifier(databaseIdentifier);
+            auto clientOrigin = CyberCore::SecurityOriginData::fromDatabaseIdentifier(databaseIdentifier);
             // This is not origin directory, but may be database directory.
             if (!clientOrigin) {
-                origins.add(WebCore::ClientOrigin { *topOrigin, *topOrigin });
+                origins.add(CyberCore::ClientOrigin { *topOrigin, *topOrigin });
                 continue;
             }
 
-            origins.add(WebCore::ClientOrigin { *topOrigin, *clientOrigin });
+            origins.add(CyberCore::ClientOrigin { *topOrigin, *clientOrigin });
         }
 
         // We may have deleted empty children directories above, which make this directory empty.
@@ -116,9 +116,9 @@ static void getOriginsForVersion(const String& versionPath, HashSet<WebCore::Cli
     }
 }
 
-HashSet<WebCore::ClientOrigin> IDBStorageManager::originsOfIDBStorageData(const String& rootDirectory)
+HashSet<CyberCore::ClientOrigin> IDBStorageManager::originsOfIDBStorageData(const String& rootDirectory)
 {
-    HashSet<WebCore::ClientOrigin> origins;
+    HashSet<CyberCore::ClientOrigin> origins;
     if (rootDirectory.isEmpty())
         return origins;
 
@@ -180,22 +180,22 @@ void IDBStorageManager::stopDatabaseActivitiesForSuspend()
     }
 }
 
-WebCore::IDBServer::UniqueIDBDatabase& IDBStorageManager::getOrCreateUniqueIDBDatabase(const WebCore::IDBDatabaseIdentifier& identifier)
+CyberCore::IDBServer::UniqueIDBDatabase& IDBStorageManager::getOrCreateUniqueIDBDatabase(const CyberCore::IDBDatabaseIdentifier& identifier)
 {
     auto addResult = m_databases.add(identifier, nullptr);
     if (addResult.isNewEntry)
-        addResult.iterator->value = makeUnique<WebCore::IDBServer::UniqueIDBDatabase>(*this, identifier);
+        addResult.iterator->value = makeUnique<CyberCore::IDBServer::UniqueIDBDatabase>(*this, identifier);
 
     return *addResult.iterator->value;
 }
 
-void IDBStorageManager::openDatabase(WebCore::IDBServer::IDBConnectionToClient& connectionToClient, const WebCore::IDBRequestData& requestData)
+void IDBStorageManager::openDatabase(CyberCore::IDBServer::IDBConnectionToClient& connectionToClient, const CyberCore::IDBRequestData& requestData)
 {
     auto& database = getOrCreateUniqueIDBDatabase(requestData.databaseIdentifier());
     database.openDatabaseConnection(connectionToClient, requestData);
 }
 
-void IDBStorageManager::deleteDatabase(WebCore::IDBServer::IDBConnectionToClient& connectionToClient, const WebCore::IDBRequestData& requestData)
+void IDBStorageManager::deleteDatabase(CyberCore::IDBServer::IDBConnectionToClient& connectionToClient, const CyberCore::IDBRequestData& requestData)
 {
     auto& database = getOrCreateUniqueIDBDatabase(requestData.databaseIdentifier());
     database.handleDelete(connectionToClient, requestData);
@@ -205,9 +205,9 @@ void IDBStorageManager::deleteDatabase(WebCore::IDBServer::IDBConnectionToClient
         m_databases.remove(database.identifier());
 }
 
-Vector<WebCore::IDBDatabaseNameAndVersion> IDBStorageManager::getAllDatabaseNamesAndVersions()
+Vector<CyberCore::IDBDatabaseNameAndVersion> IDBStorageManager::getAllDatabaseNamesAndVersions()
 {
-    Vector<WebCore::IDBDatabaseNameAndVersion> result;
+    Vector<CyberCore::IDBDatabaseNameAndVersion> result;
     HashSet<String> visitedDatabasePaths;
     for (auto& database : m_databases.values()) {
         auto path = database->filePath();
@@ -221,18 +221,18 @@ Vector<WebCore::IDBDatabaseNameAndVersion> IDBStorageManager::getAllDatabaseName
     auto databaseIdentifiers = FileSystem::listDirectory(m_path);
     for (auto identifier : databaseIdentifiers) {
         auto databaseDirectory = FileSystem::pathByAppendingComponent(m_path, identifier);
-        auto databasePath = WebCore::IDBServer::SQLiteIDBBackingStore::fullDatabasePathForDirectory(databaseDirectory);
+        auto databasePath = CyberCore::IDBServer::SQLiteIDBBackingStore::fullDatabasePathForDirectory(databaseDirectory);
         if (visitedDatabasePaths.contains(databasePath))
             continue;
 
-        if (auto nameAndVersion = WebCore::IDBServer::SQLiteIDBBackingStore::databaseNameAndVersionFromFile(databasePath))
+        if (auto nameAndVersion = CyberCore::IDBServer::SQLiteIDBBackingStore::databaseNameAndVersionFromFile(databasePath))
             result.append(WTFMove(*nameAndVersion));
     }
 
     return result;
 }
 
-void IDBStorageManager::openDBRequestCancelled(const WebCore::IDBRequestData& requestData)
+void IDBStorageManager::openDBRequestCancelled(const CyberCore::IDBRequestData& requestData)
 {
     auto* database = m_databases.get(requestData.databaseIdentifier());
     if (!database)
@@ -245,36 +245,36 @@ void IDBStorageManager::openDBRequestCancelled(const WebCore::IDBRequestData& re
         m_databases.remove(database->identifier());
 }
 
-void IDBStorageManager::registerConnection(WebCore::IDBServer::UniqueIDBDatabaseConnection& connection)
+void IDBStorageManager::registerConnection(CyberCore::IDBServer::UniqueIDBDatabaseConnection& connection)
 {
     m_registry.registerConnection(connection);
 }
 
-void IDBStorageManager::unregisterConnection(WebCore::IDBServer::UniqueIDBDatabaseConnection& connection)
+void IDBStorageManager::unregisterConnection(CyberCore::IDBServer::UniqueIDBDatabaseConnection& connection)
 {
     m_registry.unregisterConnection(connection);
 }
 
-void IDBStorageManager::registerTransaction(WebCore::IDBServer::UniqueIDBDatabaseTransaction& transaction)
+void IDBStorageManager::registerTransaction(CyberCore::IDBServer::UniqueIDBDatabaseTransaction& transaction)
 {
     m_registry.registerTransaction(transaction);
 }
 
-void IDBStorageManager::unregisterTransaction(WebCore::IDBServer::UniqueIDBDatabaseTransaction& transaction)
+void IDBStorageManager::unregisterTransaction(CyberCore::IDBServer::UniqueIDBDatabaseTransaction& transaction)
 {
     m_registry.unregisterTransaction(transaction);
 }
 
-std::unique_ptr<WebCore::IDBServer::IDBBackingStore> IDBStorageManager::createBackingStore(const WebCore::IDBDatabaseIdentifier& identifier)
+std::unique_ptr<CyberCore::IDBServer::IDBBackingStore> IDBStorageManager::createBackingStore(const CyberCore::IDBDatabaseIdentifier& identifier)
 {
     if (m_path.isEmpty() || identifier.isTransient())
-        return makeUnique<WebCore::IDBServer::MemoryIDBBackingStore>(identifier);
+        return makeUnique<CyberCore::IDBServer::MemoryIDBBackingStore>(identifier);
 
-    auto name = WebCore::SQLiteFileSystem::computeHashForFileName(identifier.databaseName());
-    return makeUnique<WebCore::IDBServer::SQLiteIDBBackingStore>(identifier, FileSystem::pathByAppendingComponent(m_path, name));
+    auto name = CyberCore::SQLiteFileSystem::computeHashForFileName(identifier.databaseName());
+    return makeUnique<CyberCore::IDBServer::SQLiteIDBBackingStore>(identifier, FileSystem::pathByAppendingComponent(m_path, name));
 }
 
-void IDBStorageManager::requestSpace(const WebCore::ClientOrigin&, uint64_t size, CompletionHandler<void(bool)>&& completionHandler)
+void IDBStorageManager::requestSpace(const CyberCore::ClientOrigin&, uint64_t size, CompletionHandler<void(bool)>&& completionHandler)
 {
     m_quotaCheckFunction(size, WTFMove(completionHandler));
 }

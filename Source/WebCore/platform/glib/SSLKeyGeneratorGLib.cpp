@@ -31,7 +31,7 @@
 #include <wtf/Forward.h>
 #include <wtf/URL.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 void getSupportedKeySizes(Vector<String>&)
 {
@@ -44,4 +44,4 @@ String signedPublicKeyAndChallengeString(unsigned, const String&, const URL&)
     return { };
 }
 
-} // namespace WebCore
+} // namespace CyberCore

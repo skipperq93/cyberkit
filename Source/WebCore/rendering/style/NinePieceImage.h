@@ -28,7 +28,7 @@
 #include <wtf/DataRef.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class LayoutSize;
 class LayoutRect;
@@ -222,4 +222,4 @@ private:
 WTF::TextStream& operator<<(WTF::TextStream&, const NinePieceImage&);
 WTF::TextStream& operator<<(WTF::TextStream&, NinePieceImageRule);
 
-} // namespace WebCore
+} // namespace CyberCore

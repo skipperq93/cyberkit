@@ -28,7 +28,7 @@
 
 #include <gst/audio/audio.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class GStreamerAudioData final : public PlatformAudioData {
 public:
@@ -61,10 +61,10 @@ private:
     GstAudioInfo m_audioInfo;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::GStreamerAudioData)
-static bool isType(const WebCore::PlatformAudioData& data) { return data.kind() == WebCore::PlatformAudioData::Kind::GStreamerAudioData; }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::GStreamerAudioData)
+static bool isType(const CyberCore::PlatformAudioData& data) { return data.kind() == CyberCore::PlatformAudioData::Kind::GStreamerAudioData; }
 SPECIALIZE_TYPE_TRAITS_END()
 
 #endif // USE(GSTREAMER)

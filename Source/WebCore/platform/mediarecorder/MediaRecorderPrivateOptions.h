@@ -28,7 +28,7 @@
 
 #if ENABLE(MEDIA_RECORDER)
 
-namespace WebCore {
+namespace CyberCore {
 
 struct MediaRecorderPrivateOptions {
     String mimeType;
@@ -37,6 +37,6 @@ struct MediaRecorderPrivateOptions {
     std::optional<unsigned> bitsPerSecond;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_RECORDER)

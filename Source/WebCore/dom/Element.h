@@ -200,7 +200,7 @@ public:
     virtual void scrollTo(const ScrollToOptions&, ScrollClamping = ScrollClamping::Clamped, ScrollSnapPointSelectionMethod = ScrollSnapPointSelectionMethod::Closest);
     void scrollTo(double x, double y);
 
-    // These are only used by WebKitLegacy DOM API.
+    // These are only used by CyberKitLegacy DOM API.
     WEBCORE_EXPORT void scrollByLines(int lines);
     WEBCORE_EXPORT void scrollByPages(int pages);
 

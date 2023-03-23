@@ -18,64 +18,64 @@
  */
 
 #include "config.h"
-#include "WebKitConsoleMessage.h"
+#include "CyberKitConsoleMessage.h"
 
-#include "WebKitConsoleMessagePrivate.h"
+#include "CyberKitConsoleMessagePrivate.h"
 
 ALLOW_DEPRECATED_DECLARATIONS_BEGIN
-G_DEFINE_BOXED_TYPE(WebKitConsoleMessage, webkit_console_message, webkit_console_message_copy, webkit_console_message_free)
+G_DEFINE_BOXED_TYPE(CyberKitConsoleMessage, webkit_console_message, webkit_console_message_copy, webkit_console_message_free)
 ALLOW_DEPRECATED_DECLARATIONS_END
 
 /**
  * webkit_console_message_copy:
- * @console_message: a #WebKitConsoleMessage
+ * @console_message: a #CyberKitConsoleMessage
  *
  * Make a copy of @console_message.
  *
- * Returns: (transfer full): A copy of passed in #WebKitConsoleMessage
+ * Returns: (transfer full): A copy of passed in #CyberKitConsoleMessage
  *
  * Since: 2.12
  *
  * Deprecated: 2.40
  */
-WebKitConsoleMessage* webkit_console_message_copy(WebKitConsoleMessage* consoleMessage)
+CyberKitConsoleMessage* webkit_console_message_copy(CyberKitConsoleMessage* consoleMessage)
 {
     g_return_val_if_fail(consoleMessage, nullptr);
-    WebKitConsoleMessage* copy = static_cast<WebKitConsoleMessage*>(fastZeroedMalloc(sizeof(WebKitConsoleMessage)));
-    new (copy) WebKitConsoleMessage(consoleMessage);
+    CyberKitConsoleMessage* copy = static_cast<CyberKitConsoleMessage*>(fastZeroedMalloc(sizeof(CyberKitConsoleMessage)));
+    new (copy) CyberKitConsoleMessage(consoleMessage);
     return copy;
 }
 
 /**
  * webkit_console_message_free:
- * @console_message: a #WebKitConsoleMessage
+ * @console_message: a #CyberKitConsoleMessage
  *
- * Free the #WebKitConsoleMessage
+ * Free the #CyberKitConsoleMessage
  *
  * Since: 2.12
  *
  * Deprecated: 2.40
  */
-void webkit_console_message_free(WebKitConsoleMessage* consoleMessage)
+void webkit_console_message_free(CyberKitConsoleMessage* consoleMessage)
 {
     g_return_if_fail(consoleMessage);
-    consoleMessage->~WebKitConsoleMessage();
+    consoleMessage->~CyberKitConsoleMessage();
     fastFree(consoleMessage);
 }
 
 /**
  * webkit_console_message_get_source:
- * @console_message: a #WebKitConsoleMessage
+ * @console_message: a #CyberKitConsoleMessage
  *
- * Gets the source of a #WebKitConsoleMessage
+ * Gets the source of a #CyberKitConsoleMessage
  *
- * Returns: a #WebKitConsoleMessageSource indicating the source of @console_message
+ * Returns: a #CyberKitConsoleMessageSource indicating the source of @console_message
  *
  * Since: 2.12
  *
  * Deprecated: 2.40
  */
-WebKitConsoleMessageSource webkit_console_message_get_source(WebKitConsoleMessage* consoleMessage)
+CyberKitConsoleMessageSource webkit_console_message_get_source(CyberKitConsoleMessage* consoleMessage)
 {
     g_return_val_if_fail(consoleMessage, WEBKIT_CONSOLE_MESSAGE_SOURCE_OTHER);
     switch (consoleMessage->source) {
@@ -97,17 +97,17 @@ WebKitConsoleMessageSource webkit_console_message_get_source(WebKitConsoleMessag
 
 /**
  * webkit_console_message_get_level:
- * @console_message: a #WebKitConsoleMessage
+ * @console_message: a #CyberKitConsoleMessage
  *
- * Gets the log level of a #WebKitConsoleMessage
+ * Gets the log level of a #CyberKitConsoleMessage
  *
- * Returns: a #WebKitConsoleMessageLevel indicating the log level of @console_message
+ * Returns: a #CyberKitConsoleMessageLevel indicating the log level of @console_message
  *
  * Since: 2.12
  *
  * Deprecated: 2.40
  */
-WebKitConsoleMessageLevel webkit_console_message_get_level(WebKitConsoleMessage* consoleMessage)
+CyberKitConsoleMessageLevel webkit_console_message_get_level(CyberKitConsoleMessage* consoleMessage)
 {
     g_return_val_if_fail(consoleMessage, WEBKIT_CONSOLE_MESSAGE_LEVEL_LOG);
     switch (consoleMessage->level) {
@@ -129,9 +129,9 @@ WebKitConsoleMessageLevel webkit_console_message_get_level(WebKitConsoleMessage*
 
 /**
  * webkit_console_message_get_text:
- * @console_message: a #WebKitConsoleMessage
+ * @console_message: a #CyberKitConsoleMessage
  *
- * Gets the text message of a #WebKitConsoleMessage
+ * Gets the text message of a #CyberKitConsoleMessage
  *
  * Returns: the text message of @console_message
  *
@@ -139,7 +139,7 @@ WebKitConsoleMessageLevel webkit_console_message_get_level(WebKitConsoleMessage*
  *
  * Deprecated: 2.40
  */
-const gchar* webkit_console_message_get_text(WebKitConsoleMessage* consoleMessage)
+const gchar* webkit_console_message_get_text(CyberKitConsoleMessage* consoleMessage)
 {
     g_return_val_if_fail(consoleMessage, nullptr);
     return consoleMessage->message.data();
@@ -147,9 +147,9 @@ const gchar* webkit_console_message_get_text(WebKitConsoleMessage* consoleMessag
 
 /**
  * webkit_console_message_get_line:
- * @console_message: a #WebKitConsoleMessage
+ * @console_message: a #CyberKitConsoleMessage
  *
- * Gets the line number of a #WebKitConsoleMessage
+ * Gets the line number of a #CyberKitConsoleMessage
  *
  * Returns: the line number of @console_message
  *
@@ -157,7 +157,7 @@ const gchar* webkit_console_message_get_text(WebKitConsoleMessage* consoleMessag
  *
  * Deprecated: 2.40
  */
-guint webkit_console_message_get_line(WebKitConsoleMessage* consoleMessage)
+guint webkit_console_message_get_line(CyberKitConsoleMessage* consoleMessage)
 {
     g_return_val_if_fail(consoleMessage, 0);
     return consoleMessage->lineNumber;
@@ -165,9 +165,9 @@ guint webkit_console_message_get_line(WebKitConsoleMessage* consoleMessage)
 
 /**
  * webkit_console_message_get_source_id:
- * @console_message: a #WebKitConsoleMessage
+ * @console_message: a #CyberKitConsoleMessage
  *
- * Gets the source identifier of a #WebKitConsoleMessage
+ * Gets the source identifier of a #CyberKitConsoleMessage
  *
  * Returns: the source identifier of @console_message
  *
@@ -175,7 +175,7 @@ guint webkit_console_message_get_line(WebKitConsoleMessage* consoleMessage)
  *
  * Deprecated: 2.40
  */
-const gchar* webkit_console_message_get_source_id(WebKitConsoleMessage* consoleMessage)
+const gchar* webkit_console_message_get_source_id(CyberKitConsoleMessage* consoleMessage)
 {
     g_return_val_if_fail(consoleMessage, nullptr);
     return consoleMessage->sourceID.data();

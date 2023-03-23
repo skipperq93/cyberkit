@@ -65,14 +65,14 @@
 #import <CyberCore/VisibleUnits.h>
 #import <CyberCore/WAKAppKitStubs.h>
 
-using WebCore::Node;
-using WebCore::Position;
-using WebCore::Range;
-using WebCore::RenderBlock;
-using WebCore::RenderBox;
-using WebCore::RenderObject;
-using WebCore::RenderText;
-using WebCore::VisiblePosition;
+using CyberCore::Node;
+using CyberCore::Position;
+using CyberCore::Range;
+using CyberCore::RenderBlock;
+using CyberCore::RenderBox;
+using CyberCore::RenderObject;
+using CyberCore::RenderText;
+using CyberCore::VisiblePosition;
 
 @implementation DOMRange (UIKitExtensions)
 
@@ -80,22 +80,22 @@ using WebCore::VisiblePosition;
 {
     auto& range = *core(self);
 
-    WebCore::FrameSelection frameSelection;
+    CyberCore::FrameSelection frameSelection;
     frameSelection.setSelection(makeSimpleRange(range));
     
-    WebCore::TextGranularity granularity = WebCore::TextGranularity::CharacterGranularity;
-    // Until WebKit supports vertical layout, "down" is equivalent to "forward by a line" and
+    CyberCore::TextGranularity granularity = CyberCore::TextGranularity::CharacterGranularity;
+    // Until CyberKit supports vertical layout, "down" is equivalent to "forward by a line" and
     // "up" is equivalent to "backward by a line".
     if (direction == WebTextAdjustmentDown) {
         direction = WebTextAdjustmentForward;
-        granularity = WebCore::TextGranularity::LineGranularity;
+        granularity = CyberCore::TextGranularity::LineGranularity;
     } else if (direction == WebTextAdjustmentUp) {
         direction = WebTextAdjustmentBackward;
-        granularity = WebCore::TextGranularity::LineGranularity;
+        granularity = CyberCore::TextGranularity::LineGranularity;
     }
 
     for (UInt32 i = 0; i < amount; i++)
-        frameSelection.modify(WebCore::FrameSelection::AlterationMove, (WebCore::SelectionDirection)direction, granularity);
+        frameSelection.modify(CyberCore::FrameSelection::AlterationMove, (CyberCore::SelectionDirection)direction, granularity);
 
     Position start = frameSelection.selection().start().parentAnchoredEquivalent();
     Position end = frameSelection.selection().end().parentAnchoredEquivalent();
@@ -109,11 +109,11 @@ using WebCore::VisiblePosition;
 {
     auto& range = *core(self);
 
-    WebCore::FrameSelection frameSelection;
+    CyberCore::FrameSelection frameSelection;
     frameSelection.setSelection(makeSimpleRange(range));
 
     for (UInt32 i = 0; i < amount; i++)
-        frameSelection.modify(WebCore::FrameSelection::AlterationExtend, (WebCore::SelectionDirection)direction, WebCore::TextGranularity::CharacterGranularity);
+        frameSelection.modify(CyberCore::FrameSelection::AlterationExtend, (CyberCore::SelectionDirection)direction, CyberCore::TextGranularity::CharacterGranularity);
 
     Position start = frameSelection.selection().start().parentAnchoredEquivalent();
     Position end = frameSelection.selection().end().parentAnchoredEquivalent();
@@ -124,7 +124,7 @@ using WebCore::VisiblePosition;
 }
 
 // FIXME: Refactor to share code with intersectingNodesWithDeprecatedZeroOffsetStartQuirk.
-static WebCore::Node* firstNodeAfter(const WebCore::BoundaryPoint& point)
+static CyberCore::Node* firstNodeAfter(const CyberCore::BoundaryPoint& point)
 {
     if (point.container->isCharacterDataNode())
         return point.container.ptr();
@@ -132,7 +132,7 @@ static WebCore::Node* firstNodeAfter(const WebCore::BoundaryPoint& point)
         return child;
     if (!point.offset)
         return point.container.ptr();
-    return WebCore::NodeTraversal::nextSkippingChildren(point.container);
+    return CyberCore::NodeTraversal::nextSkippingChildren(point.container);
 }
 
 - (DOMNode *)firstNode
@@ -146,7 +146,7 @@ static WebCore::Node* firstNodeAfter(const WebCore::BoundaryPoint& point)
 
 @implementation DOMNode (UIKitExtensions)
 
-// NOTE: Code blatantly copied from [WebInspector _hightNode:] in WebKit/WebInspector/WebInspector.m@19861
+// NOTE: Code blatantly copied from [WebInspector _hightNode:] in CyberKit/WebInspector/WebInspector.m@19861
 - (NSArray *)boundingBoxes
 {
     NSArray *rects = nil;
@@ -192,11 +192,11 @@ static WebCore::Node* firstNodeAfter(const WebCore::BoundaryPoint& point)
     RenderObject* renderer = core(self)->renderer();
     
     if (is<RenderBox>(renderer)) {
-        WebCore::RoundedRect::Radii radii = downcast<RenderBox>(*renderer).borderRadii();
-        return @[[NSValue valueWithSize:(WebCore::FloatSize)radii.topLeft()],
-            [NSValue valueWithSize:(WebCore::FloatSize)radii.topRight()],
-            [NSValue valueWithSize:(WebCore::FloatSize)radii.bottomLeft()],
-            [NSValue valueWithSize:(WebCore::FloatSize)radii.bottomRight()]];
+        CyberCore::RoundedRect::Radii radii = downcast<RenderBox>(*renderer).borderRadii();
+        return @[[NSValue valueWithSize:(CyberCore::FloatSize)radii.topLeft()],
+            [NSValue valueWithSize:(CyberCore::FloatSize)radii.topRight()],
+            [NSValue valueWithSize:(CyberCore::FloatSize)radii.bottomLeft()],
+            [NSValue valueWithSize:(CyberCore::FloatSize)radii.bottomRight()]];
     }
     NSValue *emptyValue = [NSValue valueWithSize:CGSizeZero];
     return @[emptyValue, emptyValue, emptyValue, emptyValue];
@@ -214,7 +214,7 @@ static WebCore::Node* firstNodeAfter(const WebCore::BoundaryPoint& point)
 - (BOOL)isSelectableBlock
 {
     RenderObject* renderer = core(self)->renderer();
-    return renderer && (is<WebCore::RenderBlockFlow>(*renderer) || (is<RenderBlock>(*renderer) && downcast<RenderBlock>(*renderer).inlineContinuation() != nil));
+    return renderer && (is<CyberCore::RenderBlockFlow>(*renderer) || (is<RenderBlock>(*renderer) && downcast<RenderBlock>(*renderer).inlineContinuation() != nil));
 }
 
 - (DOMRange *)rangeOfContainingParagraph
@@ -235,10 +235,10 @@ static WebCore::Node* firstNodeAfter(const WebCore::BoundaryPoint& point)
 - (DOMNode *)findExplodedTextNodeAtPoint:(CGPoint)point
 {
     auto* renderer = core(self)->renderer();
-    if (!is<WebCore::RenderBlockFlow>(renderer))
+    if (!is<CyberCore::RenderBlockFlow>(renderer))
         return nil;
 
-    auto* renderText = downcast<WebCore::RenderBlockFlow>(*renderer).findClosestTextAtAbsolutePoint(point);
+    auto* renderText = downcast<CyberCore::RenderBlockFlow>(*renderer).findClosestTextAtAbsolutePoint(point);
     if (renderText && renderText->textNode())
         return kit(renderText->textNode());
 
@@ -265,7 +265,7 @@ static WebCore::Node* firstNodeAfter(const WebCore::BoundaryPoint& point)
             result = INT_MAX;
         } else if (!renderer->firstChildSlow()) {
             result = 0;
-        } else if (is<WebCore::RenderBlockFlow>(*renderer) || (is<RenderBlock>(*renderer) && downcast<RenderBlock>(*renderer).inlineContinuation())) {
+        } else if (is<CyberCore::RenderBlockFlow>(*renderer) || (is<RenderBlock>(*renderer) && downcast<RenderBlock>(*renderer).inlineContinuation())) {
             BOOL noCost = NO;
             if (auto renderBox = dynamicDowncast<RenderBox>(*renderer)) {
                 auto* parentRenderBox = dynamicDowncast<RenderBox>(renderBox->parent());
@@ -333,7 +333,7 @@ static WebCore::Node* firstNodeAfter(const WebCore::BoundaryPoint& point)
 - (WKQuad)absoluteQuadWithOwner:(DOMNode *)owner
 {
     if (owner) {
-        WebCore::IntRect rect = snappedIntRect(core(self)->computeRect(core(owner)->renderer()));
+        CyberCore::IntRect rect = snappedIntRect(core(self)->computeRect(core(owner)->renderer()));
         WKQuad quad;
         quad.p1 = CGPointMake(rect.x(), rect.y());
         quad.p2 = CGPointMake(rect.maxX(), rect.y());

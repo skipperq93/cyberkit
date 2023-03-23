@@ -57,7 +57,7 @@ iOS, tvOS and watchOS are all considered embedded builds. The first time after y
 sudo Tools/Scripts/configure-xcode-for-embedded-development
 ```
 
-Without this step, you will see the error message: "`target specifies product type ‘com.apple.product-type.tool’, but there’s no such product type for the ‘iphonesimulator’ platform.`" when building target `JSCLLIntOffsetsExtractor` of project `JavaScriptCore`.
+Without this step, you will see the error message: "`target specifies product type ‘com.apple.product-type.tool’, but there’s no such product type for the ‘iphonesimulator’ platform.`" when building target `JSCLLIntOffsetsExtractor` of project `CyberScriptCore`.
 
 Run the following command to build a debug build with debugging symbols and assertions for embedded simulators:
 

@@ -41,7 +41,7 @@
 #include <CyberCore/SecurityOriginData.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 const char* WebNotificationManagerProxy::supplementName()
 {
@@ -104,7 +104,7 @@ static WebPageProxyIdentifier identifierForPagePointer(WebPageProxy* webPage)
     return webPage ? webPage->identifier() : WebPageProxyIdentifier();
 }
 
-void WebNotificationManagerProxy::show(WebPageProxy* webPage, IPC::Connection& connection, const WebCore::NotificationData& notificationData, RefPtr<WebCore::NotificationResources>&& notificationResources)
+void WebNotificationManagerProxy::show(WebPageProxy* webPage, IPC::Connection& connection, const CyberCore::NotificationData& notificationData, RefPtr<CyberCore::NotificationResources>&& notificationResources)
 {
     LOG(Notifications, "WebPageProxy (%p) asking to show notification (%s)", webPage, notificationData.notificationID.toString().utf8().data());
 
@@ -112,7 +112,7 @@ void WebNotificationManagerProxy::show(WebPageProxy* webPage, IPC::Connection& c
     showImpl(webPage, WTFMove(notification), WTFMove(notificationResources));
 }
 
-void WebNotificationManagerProxy::show(const WebsiteDataStore& dataStore, IPC::Connection& connection, const WebCore::NotificationData& notificationData, RefPtr<WebCore::NotificationResources>&& notificationResources)
+void WebNotificationManagerProxy::show(const WebsiteDataStore& dataStore, IPC::Connection& connection, const CyberCore::NotificationData& notificationData, RefPtr<CyberCore::NotificationResources>&& notificationResources)
 {
     LOG(Notifications, "WebsiteDataStore (%p) asking to show notification (%s)", &dataStore, notificationData.notificationID.toString().utf8().data());
 
@@ -120,7 +120,7 @@ void WebNotificationManagerProxy::show(const WebsiteDataStore& dataStore, IPC::C
     showImpl(nullptr, WTFMove(notification), WTFMove(notificationResources));
 }
 
-void WebNotificationManagerProxy::showImpl(WebPageProxy* webPage, Ref<WebNotification>&& notification, RefPtr<WebCore::NotificationResources>&& notificationResources)
+void WebNotificationManagerProxy::showImpl(WebPageProxy* webPage, Ref<WebNotification>&& notification, RefPtr<CyberCore::NotificationResources>&& notificationResources)
 {
     m_globalNotificationMap.set(notification->notificationID(), notification->coreNotificationID());
     m_notifications.set(notification->coreNotificationID(), notification);
@@ -291,7 +291,7 @@ void WebNotificationManagerProxy::providerDidCloseNotifications(API::Array* glob
     }
 }
 
-static void setPushesAndNotificationsEnabledForOrigin(const WebCore::SecurityOriginData& origin, bool enabled)
+static void setPushesAndNotificationsEnabledForOrigin(const CyberCore::SecurityOriginData& origin, bool enabled)
 {
     WebsiteDataStore::forEachWebsiteDataStore([&origin, enabled](WebsiteDataStore& dataStore) {
         if (dataStore.isPersistent())
@@ -299,7 +299,7 @@ static void setPushesAndNotificationsEnabledForOrigin(const WebCore::SecurityOri
     });
 }
 
-static void removePushSubscriptionsForOrigins(const Vector<WebCore::SecurityOriginData>& origins)
+static void removePushSubscriptionsForOrigins(const Vector<CyberCore::SecurityOriginData>& origins)
 {
     WebsiteDataStore::forEachWebsiteDataStore([&origins](WebsiteDataStore& dataStore) {
         if (dataStore.isPersistent()) {
@@ -309,12 +309,12 @@ static void removePushSubscriptionsForOrigins(const Vector<WebCore::SecurityOrig
     });
 }
 
-static Vector<WebCore::SecurityOriginData> apiArrayToSecurityOrigins(API::Array* origins)
+static Vector<CyberCore::SecurityOriginData> apiArrayToSecurityOrigins(API::Array* origins)
 {
     if (!origins)
         return { };
 
-    Vector<WebCore::SecurityOriginData> securityOrigins;
+    Vector<CyberCore::SecurityOriginData> securityOrigins;
     size_t size = origins->size();
     securityOrigins.reserveInitialCapacity(size);
 

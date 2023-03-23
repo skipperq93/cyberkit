@@ -27,7 +27,7 @@
 
 #include <wtf/TypeCasts.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderObject;
 
@@ -48,4 +48,4 @@ template<typename T, typename U> inline RenderPtr<T> static_pointer_cast(RenderP
     return RenderPtr<T>(downcast<T>(p.release()));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

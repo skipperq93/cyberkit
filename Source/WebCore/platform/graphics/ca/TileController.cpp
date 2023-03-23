@@ -49,7 +49,7 @@
 #include "TileControllerMemoryHandlerIOS.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 static const Seconds tileSizeUpdateDelay { 500_ms };
 
@@ -797,6 +797,6 @@ void TileController::logFilledVisibleFreshTile(unsigned blankPixelCount)
     owningGraphicsLayer()->platformCALayerLogFilledVisibleFreshTile(blankPixelCount);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

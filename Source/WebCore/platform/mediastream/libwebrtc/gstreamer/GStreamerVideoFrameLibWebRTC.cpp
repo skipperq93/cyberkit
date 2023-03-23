@@ -25,7 +25,7 @@
 #include <gst/video/video-info.h>
 #include <thread>
 
-namespace WebCore {
+namespace CyberCore {
 
 GRefPtr<GstSample> convertLibWebRTCVideoFrameToGStreamerSample(const webrtc::VideoFrame& frame)
 {

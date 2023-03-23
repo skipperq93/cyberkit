@@ -36,11 +36,11 @@
 #import <CyberCore/ScrollingTreeFixedNodeCocoa.h>
 #import <CyberCore/ScrollingTreeOverflowScrollProxyNode.h>
 #import <CyberCore/ScrollingTreePositionedNode.h>
-#import <CyberCore/WebCoreCALayerExtras.h>
+#import <CyberCore/CyberCoreCALayerExtras.h>
 #import <wtf/text/TextStream.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 Ref<RemoteScrollingTree> RemoteScrollingTree::create(RemoteScrollingCoordinatorProxy& scrollingCoordinator)
 {
@@ -91,7 +91,7 @@ Ref<ScrollingTreeNode> RemoteScrollingTreeMac::createScrollingTreeNode(Scrolling
     return ScrollingTreeFixedNodeCocoa::create(*this, nodeID);
 }
 
-void RemoteScrollingTreeMac::handleMouseEvent(const WebCore::PlatformMouseEvent& event)
+void RemoteScrollingTreeMac::handleMouseEvent(const CyberCore::PlatformMouseEvent& event)
 {
     if (!rootNode())
         return;

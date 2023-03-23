@@ -27,7 +27,7 @@
 
 #if ENABLE(VIDEO)
 
-namespace WebCore {
+namespace CyberCore {
 
 struct VideoPlaybackQualityMetrics {
     uint32_t totalVideoFrames { 0 };
@@ -37,6 +37,6 @@ struct VideoPlaybackQualityMetrics {
     uint32_t displayCompositedVideoFrames { 0 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(VIDEO)

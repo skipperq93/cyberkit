@@ -37,7 +37,7 @@
 #include "RealtimeMediaSource.h"
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct PeerMediaDescription {
     void addPayload(MediaPayload&& payload) { payloads.append(WTFMove(payload)); }
@@ -72,6 +72,6 @@ struct PeerMediaDescription {
     Vector<IceCandidate> iceCandidates;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

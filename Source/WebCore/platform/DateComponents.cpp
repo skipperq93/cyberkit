@@ -39,7 +39,7 @@
 #include <wtf/text/StringConcatenateNumbers.h>
 #include <wtf/text/StringParsingBuffer.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // HTML defines minimum week of year is one.
 static constexpr int minimumWeekNumber = 1;
@@ -785,4 +785,4 @@ String DateComponents::toString(SecondFormat format) const
     return "(Invalid DateComponents)"_str;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

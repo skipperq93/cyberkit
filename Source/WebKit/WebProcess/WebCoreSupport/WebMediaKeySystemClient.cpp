@@ -33,8 +33,8 @@
 #include <CyberCore/MediaKeySystemController.h>
 #include <CyberCore/MediaKeySystemRequest.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 WebMediaKeySystemClient::WebMediaKeySystemClient(WebPage& page)
     : m_page(page)
@@ -51,6 +51,6 @@ void WebMediaKeySystemClient::cancelMediaKeySystemRequest(MediaKeySystemRequest&
     m_page.mediaKeySystemPermissionRequestManager().cancelMediaKeySystemRequest(request);
 }
 
-} // namespace WebKit;
+} // namespace CyberKit;
 
 #endif // ENABLE(ENCRYPTED_MEDIA)

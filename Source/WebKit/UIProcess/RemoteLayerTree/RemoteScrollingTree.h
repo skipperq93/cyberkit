@@ -32,7 +32,7 @@
 #include <CyberCore/ScrollingTree.h>
 #include <CyberCore/WheelEventTestMonitor.h>
 
-namespace WebCore {
+namespace CyberCore {
 class PlatformMouseEvent;
 };
 
@@ -40,7 +40,7 @@ namespace WebKit {
 
 class RemoteScrollingCoordinatorProxy;
 
-class RemoteScrollingTree : public WebCore::ScrollingTree {
+class RemoteScrollingTree : public CyberCore::ScrollingTree {
 public:
     static Ref<RemoteScrollingTree> create(RemoteScrollingCoordinatorProxy&);
     virtual ~RemoteScrollingTree();
@@ -49,26 +49,26 @@ public:
 
     void invalidate() final;
 
-    virtual void handleMouseEvent(const WebCore::PlatformMouseEvent&) { }
+    virtual void handleMouseEvent(const CyberCore::PlatformMouseEvent&) { }
 
     const RemoteScrollingCoordinatorProxy& scrollingCoordinatorProxy() const { return m_scrollingCoordinatorProxy; }
 
-    void scrollingTreeNodeDidScroll(WebCore::ScrollingTreeScrollingNode&, WebCore::ScrollingLayerPositionAction = WebCore::ScrollingLayerPositionAction::Sync) final;
-    void scrollingTreeNodeDidStopAnimatedScroll(WebCore::ScrollingTreeScrollingNode&) final;
-    bool scrollingTreeNodeRequestsScroll(WebCore::ScrollingNodeID, const WebCore::RequestedScrollData&) final;
+    void scrollingTreeNodeDidScroll(CyberCore::ScrollingTreeScrollingNode&, CyberCore::ScrollingLayerPositionAction = CyberCore::ScrollingLayerPositionAction::Sync) final;
+    void scrollingTreeNodeDidStopAnimatedScroll(CyberCore::ScrollingTreeScrollingNode&) final;
+    bool scrollingTreeNodeRequestsScroll(CyberCore::ScrollingNodeID, const CyberCore::RequestedScrollData&) final;
 
-    void currentSnapPointIndicesDidChange(WebCore::ScrollingNodeID, std::optional<unsigned> horizontal, std::optional<unsigned> vertical) final;
+    void currentSnapPointIndicesDidChange(CyberCore::ScrollingNodeID, std::optional<unsigned> horizontal, std::optional<unsigned> vertical) final;
     void reportExposedUnfilledArea(MonotonicTime, unsigned unfilledArea) override;
-    void reportSynchronousScrollingReasonsChanged(MonotonicTime, OptionSet<WebCore::SynchronousScrollingReason>) override;
+    void reportSynchronousScrollingReasonsChanged(MonotonicTime, OptionSet<CyberCore::SynchronousScrollingReason>) override;
 
 protected:
     explicit RemoteScrollingTree(RemoteScrollingCoordinatorProxy&);
 
-    Ref<WebCore::ScrollingTreeNode> createScrollingTreeNode(WebCore::ScrollingNodeType, WebCore::ScrollingNodeID) override;
+    Ref<CyberCore::ScrollingTreeNode> createScrollingTreeNode(CyberCore::ScrollingNodeType, CyberCore::ScrollingNodeID) override;
 
-    void receivedWheelEventWithPhases(WebCore::PlatformWheelEventPhase phase, WebCore::PlatformWheelEventPhase momentumPhase) override;
-    void deferWheelEventTestCompletionForReason(WebCore::ScrollingNodeID, WebCore::WheelEventTestMonitor::DeferReason) override;
-    void removeWheelEventTestCompletionDeferralForReason(WebCore::ScrollingNodeID, WebCore::WheelEventTestMonitor::DeferReason) override;
+    void receivedWheelEventWithPhases(CyberCore::PlatformWheelEventPhase phase, CyberCore::PlatformWheelEventPhase momentumPhase) override;
+    void deferWheelEventTestCompletionForReason(CyberCore::ScrollingNodeID, CyberCore::WheelEventTestMonitor::DeferReason) override;
+    void removeWheelEventTestCompletionDeferralForReason(CyberCore::ScrollingNodeID, CyberCore::WheelEventTestMonitor::DeferReason) override;
 
     RemoteScrollingCoordinatorProxy& m_scrollingCoordinatorProxy;
 };

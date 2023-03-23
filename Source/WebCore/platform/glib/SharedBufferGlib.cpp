@@ -24,7 +24,7 @@
 
 #include <glib.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 FragmentedSharedBuffer::FragmentedSharedBuffer(GBytes* bytes)
 {
@@ -47,4 +47,4 @@ GRefPtr<GBytes> SharedBuffer::createGBytes() const
     return bytes;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

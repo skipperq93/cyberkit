@@ -30,17 +30,17 @@
 NO_RETURN void raiseTypeErrorException();
 NO_RETURN void raiseNotSupportedErrorException();
 
-NO_RETURN void raiseDOMErrorException(WebCore::Exception&&);
-template<typename T> T raiseOnDOMError(WebCore::ExceptionOr<T>&&);
-void raiseOnDOMError(WebCore::ExceptionOr<void>&&);
+NO_RETURN void raiseDOMErrorException(CyberCore::Exception&&);
+template<typename T> T raiseOnDOMError(CyberCore::ExceptionOr<T>&&);
+void raiseOnDOMError(CyberCore::ExceptionOr<void>&&);
 
-inline void raiseOnDOMError(WebCore::ExceptionOr<void>&& possibleException)
+inline void raiseOnDOMError(CyberCore::ExceptionOr<void>&& possibleException)
 {
     if (possibleException.hasException())
         raiseDOMErrorException(possibleException.releaseException());
 }
 
-template<typename T> inline T raiseOnDOMError(WebCore::ExceptionOr<T>&& exceptionOrReturnValue)
+template<typename T> inline T raiseOnDOMError(CyberCore::ExceptionOr<T>&& exceptionOrReturnValue)
 {
     if (exceptionOrReturnValue.hasException())
         raiseDOMErrorException(exceptionOrReturnValue.releaseException());

@@ -52,7 +52,7 @@ public:
     explicit DragSource(GtkWidget*);
     ~DragSource();
 
-    void begin(WebCore::SelectionData&&, OptionSet<WebCore::DragOperation>, RefPtr<ShareableBitmap>&&, WebCore::IntPoint&& imageHotspot);
+    void begin(CyberCore::SelectionData&&, OptionSet<CyberCore::DragOperation>, RefPtr<ShareableBitmap>&&, CyberCore::IntPoint&& imageHotspot);
 
 private:
     GtkWidget* m_webView { nullptr };
@@ -61,7 +61,7 @@ private:
 #else
     GRefPtr<GdkDragContext> m_drag;
 #endif
-    std::optional<WebCore::SelectionData> m_selectionData;
+    std::optional<CyberCore::SelectionData> m_selectionData;
 };
 
 } // namespace WebKit

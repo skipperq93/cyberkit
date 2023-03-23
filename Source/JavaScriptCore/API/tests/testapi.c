@@ -27,7 +27,7 @@
 #include "config.h"
 
 #if USE(CF)
-#include "JavaScriptCore.h"
+#include "CyberScriptCore.h"
 #else
 #include "JavaScript.h"
 #endif

@@ -62,7 +62,7 @@
 #define TS_RIGHT_BUTTON_HOVER   20
 
 
-namespace WebCore {
+namespace CyberCore {
 
 static HANDLE scrollbarTheme;
 static bool runningVista;

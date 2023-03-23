@@ -36,7 +36,7 @@
 #include <wtf/WeakPtr.h>
 #include <wtf/text/StringConcatenateNumbers.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 GST_DEBUG_CATEGORY(webkit_audio_file_reader_debug);
 #define GST_CAT_DEFAULT webkit_audio_file_reader_debug
@@ -467,6 +467,6 @@ RefPtr<AudioBus> createBusFromInMemoryAudioFile(const void* data, size_t dataSiz
     return bus;
 }
 
-} // WebCore
+} // CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

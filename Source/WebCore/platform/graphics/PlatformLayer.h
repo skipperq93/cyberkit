@@ -36,15 +36,15 @@ class PlatformLayer;
 }
 using PlatformLayer = Nicosia::PlatformLayer;
 #elif USE(COORDINATED_GRAPHICS)
-namespace WebCore {
+namespace CyberCore {
 class TextureMapperPlatformLayerProxyProvider;
 };
-using PlatformLayer = WebCore::TextureMapperPlatformLayerProxyProvider;
+using PlatformLayer = CyberCore::TextureMapperPlatformLayerProxyProvider;
 #elif USE(TEXTURE_MAPPER)
-namespace WebCore {
+namespace CyberCore {
 class TextureMapperPlatformLayer;
 };
-using PlatformLayer = WebCore::TextureMapperPlatformLayer;
+using PlatformLayer = CyberCore::TextureMapperPlatformLayer;
 #else
 using PlatformLayer = void*;
 #endif

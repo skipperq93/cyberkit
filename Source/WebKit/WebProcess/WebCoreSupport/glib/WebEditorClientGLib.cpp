@@ -29,8 +29,8 @@
 #include <CyberCore/PlatformKeyboardEvent.h>
 #include <WebPage.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 void WebEditorClient::handleInputMethodKeydown(KeyboardEvent& event)
 {
@@ -54,4 +54,4 @@ void WebEditorClient::didDispatchInputMethodKeydown(KeyboardEvent& event)
         frame->editor().confirmComposition(platformEvent->text());
 }
 
-} // namespace WebKit
+} // namespace CyberKit

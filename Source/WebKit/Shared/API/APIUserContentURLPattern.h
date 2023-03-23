@@ -49,12 +49,12 @@ public:
 
 private:
     explicit UserContentURLPattern(const WTF::String& pattern)
-        : m_pattern(WebCore::UserContentURLPattern(pattern))
+        : m_pattern(CyberCore::UserContentURLPattern(pattern))
         , m_patternString(pattern)
     {
     }
 
-    WebCore::UserContentURLPattern m_pattern;
+    CyberCore::UserContentURLPattern m_pattern;
     WTF::String m_patternString;
 };
 

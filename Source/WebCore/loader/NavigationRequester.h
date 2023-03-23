@@ -29,7 +29,7 @@
 #include "PolicyContainer.h"
 #include "SecurityOrigin.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 
@@ -43,4 +43,4 @@ struct NavigationRequester {
     std::optional<GlobalFrameIdentifier> globalFrameIdentifier;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

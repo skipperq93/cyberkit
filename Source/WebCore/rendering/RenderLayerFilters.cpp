@@ -39,7 +39,7 @@
 #include "RenderSVGResourceFilter.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 RenderLayerFilters::RenderLayerFilters(RenderLayer& layer)
     : m_layer(layer)
@@ -204,4 +204,4 @@ void RenderLayerFilters::applyFilterEffect(GraphicsContext& destinationContext)
     LOG_WITH_STREAM(Filters, stream << "RenderLayerFilters " << this << " applyFilterEffect done\n");
 }
 
-} // namespace WebCore
+} // namespace CyberCore

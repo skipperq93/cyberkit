@@ -58,7 +58,7 @@
 #include <wtf/threads/BinarySemaphore.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 const OptionSet<WebsiteDataType>& WebResourceLoadStatisticsStore::monitoredDataTypes()
 {
@@ -180,7 +180,7 @@ WebResourceLoadStatisticsStore::~WebResourceLoadStatisticsStore()
     RELEASE_ASSERT(!m_statisticsStore);
 }
 
-Ref<WebResourceLoadStatisticsStore> WebResourceLoadStatisticsStore::create(NetworkSession& networkSession, const String& resourceLoadStatisticsDirectory, ShouldIncludeLocalhost shouldIncludeLocalhost, WebCore::ResourceLoadStatistics::IsEphemeral isEphemeral)
+Ref<WebResourceLoadStatisticsStore> WebResourceLoadStatisticsStore::create(NetworkSession& networkSession, const String& resourceLoadStatisticsDirectory, ShouldIncludeLocalhost shouldIncludeLocalhost, CyberCore::ResourceLoadStatistics::IsEphemeral isEphemeral)
 {
     return adoptRef(*new WebResourceLoadStatisticsStore(networkSession, resourceLoadStatisticsDirectory, shouldIncludeLocalhost, isEphemeral));
 }
@@ -1456,7 +1456,7 @@ void WebResourceLoadStatisticsStore::registrableDomainsWithWebsiteData(OptionSet
     completionHandler({ });
 }
 
-void WebResourceLoadStatisticsStore::sendDiagnosticMessageWithValue(const String& message, const String& description, unsigned value, unsigned sigDigits, WebCore::ShouldSample shouldSample) const
+void WebResourceLoadStatisticsStore::sendDiagnosticMessageWithValue(const String& message, const String& description, unsigned value, unsigned sigDigits, CyberCore::ShouldSample shouldSample) const
 {
     ASSERT(RunLoop::isMain());
     if (m_networkSession)
@@ -1519,7 +1519,7 @@ void WebResourceLoadStatisticsStore::ThirdPartyDataForSpecificFirstParty::encode
 
 auto WebResourceLoadStatisticsStore::ThirdPartyDataForSpecificFirstParty::decode(IPC::Decoder& decoder) -> std::optional<ThirdPartyDataForSpecificFirstParty>
 {
-    std::optional<WebCore::RegistrableDomain> decodedDomain;
+    std::optional<CyberCore::RegistrableDomain> decodedDomain;
     decoder >> decodedDomain;
     if (!decodedDomain)
         return std::nullopt;
@@ -1560,7 +1560,7 @@ void WebResourceLoadStatisticsStore::ThirdPartyData::encode(IPC::Encoder& encode
 
 auto WebResourceLoadStatisticsStore::ThirdPartyData::decode(IPC::Decoder& decoder) -> std::optional<ThirdPartyData>
 {
-    std::optional<WebCore::RegistrableDomain> decodedDomain;
+    std::optional<CyberCore::RegistrableDomain> decodedDomain;
     decoder >> decodedDomain;
     if (!decodedDomain)
         return std::nullopt;

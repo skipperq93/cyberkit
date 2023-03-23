@@ -36,12 +36,12 @@ typedef struct _GtkPrintSettings GtkPrintSettings;
 typedef struct _GtkPageSetup GtkPageSetup;
 typedef struct _GtkPageRange GtkPageRange;
 
-namespace WebCore {
+namespace CyberCore {
 class PrintContext;
 class ResourceError;
 };
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPrintOperationGtk {
     WTF_MAKE_FAST_ALLOCATED;
@@ -49,7 +49,7 @@ public:
     explicit WebPrintOperationGtk(const PrintInfo&);
     ~WebPrintOperationGtk();
 
-    void startPrint(WebCore::PrintContext*, CompletionHandler<void(RefPtr<WebCore::FragmentedSharedBuffer>&&, WebCore::ResourceError&&)>&&);
+    void startPrint(CyberCore::PrintContext*, CompletionHandler<void(RefPtr<CyberCore::FragmentedSharedBuffer>&&, CyberCore::ResourceError&&)>&&);
 
 private:
     void startPage(cairo_t*);
@@ -98,16 +98,16 @@ private:
     void getPositionOfPageInSheet(size_t rows, size_t columns, int& x, int&y);
     void prepareContextToDraw();
     void printPagesDone();
-    void printDone(RefPtr<WebCore::FragmentedSharedBuffer>&&, WebCore::ResourceError&&);
+    void printDone(RefPtr<CyberCore::FragmentedSharedBuffer>&&, CyberCore::ResourceError&&);
     URL frameURL() const;
 
     GRefPtr<GtkPrintSettings> m_printSettings;
     GRefPtr<GtkPageSetup> m_pageSetup;
     PrintInfo::PrintMode m_printMode { PrintInfo::PrintMode::PrintModeAsync };
-    WebCore::PrintContext* m_printContext { nullptr };
-    CompletionHandler<void(RefPtr<WebCore::FragmentedSharedBuffer>&&, WebCore::ResourceError&&)> m_completionHandler;
+    CyberCore::PrintContext* m_printContext { nullptr };
+    CompletionHandler<void(RefPtr<CyberCore::FragmentedSharedBuffer>&&, CyberCore::ResourceError&&)> m_completionHandler;
     RefPtr<cairo_t> m_cairoContext;
-    WebCore::SharedBufferBuilder m_buffer;
+    CyberCore::SharedBufferBuilder m_buffer;
     double m_xDPI { 1 };
     double m_yDPI { 1 };
 
@@ -129,4 +129,4 @@ private:
     double m_scale { 1 };
 };
 
-} // namespace WebKit
+} // namespace CyberKit

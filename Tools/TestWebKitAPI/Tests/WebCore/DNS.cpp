@@ -32,7 +32,7 @@
 #include <wtf/Expected.h>
 #include <wtf/RunLoop.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 namespace TestWebKitAPI {
 
@@ -45,11 +45,11 @@ TEST(DNSTest, cancelResolveDNS)
     const String hostname = String("www.webkit.org");
     uint64_t identifier = 1;
 
-    DNSCompletionHandler completionHandler = [](WebCore::DNSAddressesOrError&& result) mutable {
+    DNSCompletionHandler completionHandler = [](CyberCore::DNSAddressesOrError&& result) mutable {
         done = true;
 
         ASSERT_FALSE(result.has_value());
-        ASSERT_TRUE(result.error() == WebCore::DNSError::Cancelled);
+        ASSERT_TRUE(result.error() == CyberCore::DNSError::Cancelled);
 
         return;
     };
@@ -67,11 +67,11 @@ TEST(DNSTest, cannotResolveDNS)
     const String hostname = String("notavaliddomain.notavaliddomain");
     uint64_t identifier = 1;
 
-    DNSCompletionHandler completionHandler = [](WebCore::DNSAddressesOrError&& result) mutable {
+    DNSCompletionHandler completionHandler = [](CyberCore::DNSAddressesOrError&& result) mutable {
         done = true;
 
         ASSERT_FALSE(result.has_value());
-        ASSERT_TRUE(result.error() == WebCore::DNSError::CannotResolve);
+        ASSERT_TRUE(result.error() == CyberCore::DNSError::CannotResolve);
 
         return;
     };
@@ -88,7 +88,7 @@ TEST(DNSTest, resolveDNS)
     const String hostname = String("www.webkit.org");
     uint64_t identifier = 1;
 
-    DNSCompletionHandler completionHandler = [](WebCore::DNSAddressesOrError&& result) mutable {
+    DNSCompletionHandler completionHandler = [](CyberCore::DNSAddressesOrError&& result) mutable {
         done = true;
 
         ASSERT_TRUE(result.has_value());

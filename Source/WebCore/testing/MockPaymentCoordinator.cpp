@@ -46,7 +46,7 @@
 #include <wtf/RunLoop.h>
 #include <wtf/URL.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 MockPaymentCoordinator::MockPaymentCoordinator(Page& page)
     : m_page { page }
@@ -333,6 +333,6 @@ void MockPaymentCoordinator::beginApplePaySetup(const ApplePaySetupConfiguration
     completionHandler(true);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(APPLE_PAY)

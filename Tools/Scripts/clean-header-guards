@@ -14,7 +14,7 @@ end.parse!
 
 IgnoredFilenamePatterns = [
   # ignore headers which are known not to have guard
-  /WebCorePrefix/, 
+  /CyberCorePrefix/, 
   /ForwardingHeaders/,
   %r|bindings/objc|, 
   /vcproj/, # anything inside a vcproj is in the windows wasteland

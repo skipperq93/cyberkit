@@ -109,8 +109,8 @@ static LSAppLink *appLinkForURL(NSURL *url)
 #if ENABLE(MEDIA_CONTROLS_CONTEXT_MENUS)
     RetainPtr<UIContextMenuInteraction> _mediaControlsContextMenuInteraction;
     RetainPtr<UIMenu> _mediaControlsContextMenu;
-    WebCore::FloatRect _mediaControlsContextMenuTargetFrame;
-    CompletionHandler<void(WebCore::MediaControlsContextMenuItem::ID)> _mediaControlsContextMenuCallback;
+    CyberCore::FloatRect _mediaControlsContextMenuTargetFrame;
+    CompletionHandler<void(CyberCore::MediaControlsContextMenuItem::ID)> _mediaControlsContextMenuCallback;
 #endif // ENABLE(MEDIA_CONTROLS_CONTEXT_MENUS)
 #endif // USE(UICONTEXTMENU)
     WeakObjCPtr<UIView> _view;
@@ -210,15 +210,15 @@ static const CGFloat presentationElementRectPadding = 15;
     if (indicator.textRectsInBoundingRectCoordinates.isEmpty())
         return CGRectZero;
 
-    WebCore::FloatPoint touchLocation = _positionInformation->request.point;
-    WebCore::FloatPoint linkElementLocation = indicator.textBoundingRectInRootViewCoordinates.location();
+    CyberCore::FloatPoint touchLocation = _positionInformation->request.point;
+    CyberCore::FloatPoint linkElementLocation = indicator.textBoundingRectInRootViewCoordinates.location();
     auto indicatedRects = indicator.textRectsInBoundingRectCoordinates.map([&](auto rect) {
         rect.inflate(2);
         rect.moveBy(linkElementLocation);
         return rect;
     });
 
-    for (const auto& path : WebCore::PathUtilities::pathsWithShrinkWrappedRects(indicatedRects, 0)) {
+    for (const auto& path : CyberCore::PathUtilities::pathsWithShrinkWrappedRects(indicatedRects, 0)) {
         auto boundingRect = path.fastBoundingRect();
         if (boundingRect.contains(touchLocation))
             return CGRectInset([view convertRect:(CGRect)boundingRect fromView:_view.getAutoreleased()], -presentationElementRectPadding, -presentationElementRectPadding);
@@ -305,7 +305,7 @@ static const CGFloat presentationElementRectPadding = 15;
     if (!_delegate)
         return;
 
-    if (!WebCore::DataDetection::canBePresentedByDataDetectors(information.url))
+    if (!CyberCore::DataDetection::canBePresentedByDataDetectors(information.url))
         return;
 
     NSURL *targetURL = information.url;
@@ -717,7 +717,7 @@ ALLOW_DEPRECATED_DECLARATIONS_END
     _mediaControlsContextMenu = nil;
     _mediaControlsContextMenuTargetFrame = { };
     if (auto mediaControlsContextMenuCallback = std::exchange(_mediaControlsContextMenuCallback, { }))
-        mediaControlsContextMenuCallback(WebCore::MediaControlsContextMenuItem::invalidID);
+        mediaControlsContextMenuCallback(CyberCore::MediaControlsContextMenuItem::invalidID);
 
     if ([_delegate respondsToSelector:@selector(removeContextMenuViewIfPossibleForActionSheetAssistant:)])
         [_delegate removeContextMenuViewIfPossibleForActionSheetAssistant:self];
@@ -767,7 +767,7 @@ ALLOW_DEPRECATED_DECLARATIONS_END
 
     _positionInformation = positionInformation;
 
-    if (!WebCore::DataDetection::canBePresentedByDataDetectors(_positionInformation->url))
+    if (!CyberCore::DataDetection::canBePresentedByDataDetectors(_positionInformation->url))
         return;
 
     NSURL *targetURL = _positionInformation->url;
@@ -823,10 +823,10 @@ ALLOW_DEPRECATED_DECLARATIONS_END
 
 #if ENABLE(MEDIA_CONTROLS_CONTEXT_MENUS)
 
-- (NSArray<UIMenuElement *> *)_uiMenuElementsForMediaControlContextMenuItems:(Vector<WebCore::MediaControlsContextMenuItem>&&)items
+- (NSArray<UIMenuElement *> *)_uiMenuElementsForMediaControlContextMenuItems:(Vector<CyberCore::MediaControlsContextMenuItem>&&)items
 {
-    return createNSArray(items, [&] (WebCore::MediaControlsContextMenuItem& item) -> UIMenuElement * {
-        if (item.id == WebCore::MediaControlsContextMenuItem::invalidID && item.title.isEmpty() && item.icon.isEmpty() && item.children.isEmpty())
+    return createNSArray(items, [&] (CyberCore::MediaControlsContextMenuItem& item) -> UIMenuElement * {
+        if (item.id == CyberCore::MediaControlsContextMenuItem::invalidID && item.title.isEmpty() && item.icon.isEmpty() && item.children.isEmpty())
             return [UIMenu menuWithTitle:@"" image:nil identifier:nil options:UIMenuOptionsDisplayInline children:@[]];
 
         UIImage *image = !item.icon.isEmpty() ? [UIImage systemImageNamed:WTFMove(item.icon)] : nil;
@@ -848,14 +848,14 @@ ALLOW_DEPRECATED_DECLARATIONS_END
     }).autorelease();
 }
 
-- (void)showMediaControlsContextMenu:(WebCore::FloatRect&&)targetFrame items:(Vector<WebCore::MediaControlsContextMenuItem>&&)items completionHandler:(CompletionHandler<void(WebCore::MediaControlsContextMenuItem::ID)>&&)completionHandler
+- (void)showMediaControlsContextMenu:(CyberCore::FloatRect&&)targetFrame items:(Vector<CyberCore::MediaControlsContextMenuItem>&&)items completionHandler:(CompletionHandler<void(CyberCore::MediaControlsContextMenuItem::ID)>&&)completionHandler
 {
     ASSERT(!_mediaControlsContextMenuInteraction);
     ASSERT(!_mediaControlsContextMenu);
     ASSERT(!_mediaControlsContextMenuCallback);
 
     String menuTitle;
-    Vector<WebCore::MediaControlsContextMenuItem> itemsToPresent;
+    Vector<CyberCore::MediaControlsContextMenuItem> itemsToPresent;
     if (items.size() == 1) {
         menuTitle = WTFMove(items[0].title);
         itemsToPresent = WTFMove(items[0].children);
@@ -863,7 +863,7 @@ ALLOW_DEPRECATED_DECLARATIONS_END
         itemsToPresent = WTFMove(items);
 
     if (![_view window] || itemsToPresent.isEmpty()) {
-        completionHandler(WebCore::MediaControlsContextMenuItem::invalidID);
+        completionHandler(CyberCore::MediaControlsContextMenuItem::invalidID);
         return;
     }
 

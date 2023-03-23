@@ -30,7 +30,7 @@
 #include <wtf/text/AtomString.h>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct FontPalette {
     bool operator==(const FontPalette& other) const

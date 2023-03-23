@@ -31,7 +31,7 @@
 #include "Logging.h"
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 DisplayRefreshMonitorManager::~DisplayRefreshMonitorManager() = default;
 

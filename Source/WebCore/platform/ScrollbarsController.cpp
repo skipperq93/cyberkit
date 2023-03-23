@@ -28,7 +28,7 @@
 
 #include "ScrollableArea.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 #if !PLATFORM(MAC) && !PLATFORM(WPE) && !PLATFORM(GTK)
 std::unique_ptr<ScrollbarsController> ScrollbarsController::create(ScrollableArea& scrollableArea)
@@ -67,4 +67,4 @@ void ScrollbarsController::mayBeginScrollGesture()
     setScrollbarAnimationsUnsuspendedByUserInteraction(true);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

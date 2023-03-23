@@ -36,7 +36,7 @@
 #include "LibWebRTCAudioModule.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 AudioTrackPrivateMediaStream::AudioTrackPrivateMediaStream(MediaStreamTrackPrivate& track)
     : m_streamTrack(track)
@@ -206,6 +206,6 @@ void AudioTrackPrivateMediaStream::createNewRenderer()
         startRenderer();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM)

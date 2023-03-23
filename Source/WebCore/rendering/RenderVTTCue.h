@@ -31,7 +31,7 @@
 #include "InlineIteratorInlineBox.h"
 #include "RenderBlockFlow.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderBox;
 class VTTCue;
@@ -72,7 +72,7 @@ private:
     FloatPoint m_fallbackPosition;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderVTTCue, isRenderVTTCue())
 

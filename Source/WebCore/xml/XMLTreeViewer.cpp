@@ -45,7 +45,7 @@
 #include "XMLViewerCSS.h"
 #include "XMLViewerJS.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 XMLTreeViewer::XMLTreeViewer(Document& document)
     : m_document(document)
@@ -64,6 +64,6 @@ void XMLTreeViewer::transformDocumentToTreeView()
     m_document.styleScope().didChangeActiveStyleSheetCandidates();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(XSLT)

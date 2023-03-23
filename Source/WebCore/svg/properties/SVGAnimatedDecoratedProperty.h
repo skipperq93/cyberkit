@@ -28,7 +28,7 @@
 #include "SVGAnimatedProperty.h"
 #include "SVGDecoratedProperty.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 template<template <typename, typename> class DecoratedProperty, typename DecorationType>
 class SVGAnimatedDecoratedProperty : public SVGAnimatedProperty {

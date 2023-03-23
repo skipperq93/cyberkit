@@ -33,7 +33,7 @@
 #include "ScrollingTree.h"
 #include "ScrollingTreeOverflowScrollingNode.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 ScrollingTreeOverflowScrollProxyNode::ScrollingTreeOverflowScrollProxyNode(ScrollingTree& scrollingTree, ScrollingNodeID nodeID)
     : ScrollingTreeNode(scrollingTree, ScrollingNodeType::OverflowProxy, nodeID)
@@ -95,6 +95,6 @@ void ScrollingTreeOverflowScrollProxyNode::dumpProperties(TextStream& ts, Option
         ts.dumpProperty("overflow scrolling node", m_overflowScrollingNodeID);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ASYNC_SCROLLING)

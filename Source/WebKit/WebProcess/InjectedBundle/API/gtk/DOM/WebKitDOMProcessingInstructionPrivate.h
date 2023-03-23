@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -17,16 +17,16 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitDOMProcessingInstructionPrivate_h
-#define WebKitDOMProcessingInstructionPrivate_h
+#ifndef CyberKitDOMProcessingInstructionPrivate_h
+#define CyberKitDOMProcessingInstructionPrivate_h
 
 #include <CyberCore/ProcessingInstruction.h>
-#include <webkitdom/WebKitDOMProcessingInstruction.h>
+#include <webkitdom/CyberKitDOMProcessingInstruction.h>
 
-namespace WebKit {
-WebKitDOMProcessingInstruction* wrapProcessingInstruction(WebCore::ProcessingInstruction*);
-WebKitDOMProcessingInstruction* kit(WebCore::ProcessingInstruction*);
-WebCore::ProcessingInstruction* core(WebKitDOMProcessingInstruction*);
-} // namespace WebKit
+namespace CyberKit {
+CyberKitDOMProcessingInstruction* wrapProcessingInstruction(CyberCore::ProcessingInstruction*);
+CyberKitDOMProcessingInstruction* kit(CyberCore::ProcessingInstruction*);
+CyberCore::ProcessingInstruction* core(CyberKitDOMProcessingInstruction*);
+} // namespace CyberKit
 
-#endif /* WebKitDOMProcessingInstructionPrivate_h */
+#endif /* CyberKitDOMProcessingInstructionPrivate_h */

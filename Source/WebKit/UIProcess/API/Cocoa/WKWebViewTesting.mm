@@ -58,7 +58,7 @@
 
 #if ENABLE(MEDIA_SESSION_COORDINATOR)
 @interface WKMediaSessionCoordinatorHelper : NSObject <_WKMediaSessionCoordinatorDelegate>
-- (id)initWithCoordinator:(WebCore::MediaSessionCoordinatorClient*)coordinator;
+- (id)initWithCoordinator:(CyberCore::MediaSessionCoordinatorClient*)coordinator;
 - (void)seekSessionToTime:(double)time withCompletion:(void(^)(BOOL))completionHandler;
 - (void)playSessionWithCompletion:(void(^)(BOOL))completionHandler;
 - (void)pauseSessionWithCompletion:(void(^)(BOOL))completionHandler;
@@ -125,13 +125,13 @@ static void dumpCALayer(TextStream& ts, CALayer *layer, bool traverse)
 
 - (void)_addEventAttributionWithSourceID:(uint8_t)sourceID destinationURL:(NSURL *)destination sourceDescription:(NSString *)sourceDescription purchaser:(NSString *)purchaser reportEndpoint:(NSURL *)reportEndpoint optionalNonce:(NSString *)nonce applicationBundleID:(NSString *)bundleID ephemeral:(BOOL)ephemeral
 {
-    WebCore::PrivateClickMeasurement measurement(
-        WebCore::PrivateClickMeasurement::SourceID(sourceID),
-        WebCore::PCM::SourceSite(reportEndpoint),
-        WebCore::PCM::AttributionDestinationSite(destination),
+    CyberCore::PrivateClickMeasurement measurement(
+        CyberCore::PrivateClickMeasurement::SourceID(sourceID),
+        CyberCore::PCM::SourceSite(reportEndpoint),
+        CyberCore::PCM::AttributionDestinationSite(destination),
         bundleID,
         WallTime::now(),
-        ephemeral ? WebCore::PCM::AttributionEphemeral::Yes : WebCore::PCM::AttributionEphemeral::No
+        ephemeral ? CyberCore::PCM::AttributionEphemeral::Yes : CyberCore::PCM::AttributionEphemeral::No
     );
     if (nonce)
         measurement.setEphemeralSourceNonce({ nonce });
@@ -141,7 +141,7 @@ static void dumpCALayer(TextStream& ts, CALayer *layer, bool traverse)
 
 - (void)_setPageScale:(CGFloat)scale withOrigin:(CGPoint)origin
 {
-    _page->scalePage(scale, WebCore::roundedIntPoint(origin));
+    _page->scalePage(scale, CyberCore::roundedIntPoint(origin));
 }
 
 - (CGFloat)_pageScale
@@ -359,12 +359,12 @@ static void dumpCALayer(TextStream& ts, CALayer *layer, bool traverse)
 
 + (void)_setApplicationBundleIdentifier:(NSString *)bundleIdentifier
 {
-    WebCore::setApplicationBundleIdentifierOverride(String(bundleIdentifier));
+    CyberCore::setApplicationBundleIdentifierOverride(String(bundleIdentifier));
 }
 
 + (void)_clearApplicationBundleIdentifierTestingOverride
 {
-    WebCore::clearApplicationBundleIdentifierTestingOverride();
+    CyberCore::clearApplicationBundleIdentifierTestingOverride();
 }
 
 - (BOOL)_hasSleepDisabler
@@ -511,7 +511,7 @@ static void dumpCALayer(TextStream& ts, CALayer *layer, bool traverse)
 - (void)_computePagesForPrinting:(_WKFrameHandle *)handle completionHandler:(void(^)(void))completionHandler
 {
     WebKit::PrintInfo printInfo;
-    _page->computePagesForPrinting(handle->_frameHandle->frameID(), printInfo, [completionHandler = makeBlockPtr(completionHandler)] (const Vector<WebCore::IntRect>&, double, const WebCore::FloatBoxExtent&) {
+    _page->computePagesForPrinting(handle->_frameHandle->frameID(), printInfo, [completionHandler = makeBlockPtr(completionHandler)] (const Vector<CyberCore::IntRect>&, double, const CyberCore::FloatBoxExtent&) {
         completionHandler();
     });
 }
@@ -541,7 +541,7 @@ static void dumpCALayer(TextStream& ts, CALayer *layer, bool traverse)
 #if ENABLE(MEDIA_SESSION_COORDINATOR)
     class WKMediaSessionCoordinatorForTesting
         : public WebKit::MediaSessionCoordinatorProxyPrivate
-        , public WebCore::MediaSessionCoordinatorClient {
+        , public CyberCore::MediaSessionCoordinatorClient {
         WTF_MAKE_FAST_ALLOCATED;
     public:
 
@@ -550,9 +550,9 @@ static void dumpCALayer(TextStream& ts, CALayer *layer, bool traverse)
             return adoptRef(*new WKMediaSessionCoordinatorForTesting(privateCoordinator));
         }
 
-        using WebCore::MediaSessionCoordinatorClient::weakPtrFactory;
-        using WebCore::MediaSessionCoordinatorClient::WeakValueType;
-        using WebCore::MediaSessionCoordinatorClient::WeakPtrImplType;
+        using CyberCore::MediaSessionCoordinatorClient::weakPtrFactory;
+        using CyberCore::MediaSessionCoordinatorClient::WeakValueType;
+        using CyberCore::MediaSessionCoordinatorClient::WeakPtrImplType;
 
     private:
         explicit WKMediaSessionCoordinatorForTesting(id <_WKMediaSessionCoordinator> clientCoordinator)
@@ -596,16 +596,16 @@ static void dumpCALayer(TextStream& ts, CALayer *layer, bool traverse)
                 callback(false);
         }
 
-        void coordinatorStateChanged(WebCore::MediaSessionCoordinatorState state) final
+        void coordinatorStateChanged(CyberCore::MediaSessionCoordinatorState state) final
         {
             if (auto coordinatorClient = client())
                 coordinatorClient->coordinatorStateChanged(state);
         }
 
-        std::optional<WebCore::ExceptionData> result(bool success) const
+        std::optional<CyberCore::ExceptionData> result(bool success) const
         {
             if (!success)
-                return { WebCore::ExceptionData { WebCore::InvalidStateError, String() } };
+                return { CyberCore::ExceptionData { CyberCore::InvalidStateError, String() } };
 
             return { };
         }
@@ -619,7 +619,7 @@ static void dumpCALayer(TextStream& ts, CALayer *layer, bool traverse)
         {
             [m_clientCoordinator joinWithCompletion:makeBlockPtr([weakThis = WeakPtr { *this }, callback = WTFMove(callback)] (BOOL success) mutable {
                 if (!weakThis) {
-                    callback(WebCore::ExceptionData { WebCore::InvalidStateError, String() });
+                    callback(CyberCore::ExceptionData { CyberCore::InvalidStateError, String() });
                     return;
                 }
 
@@ -636,7 +636,7 @@ static void dumpCALayer(TextStream& ts, CALayer *layer, bool traverse)
         {
             [m_clientCoordinator seekTo:time withCompletion:makeBlockPtr([weakThis = WeakPtr { *this }, callback = WTFMove(callback)] (BOOL success) mutable {
                 if (!weakThis) {
-                    callback(WebCore::ExceptionData { WebCore::InvalidStateError, String() });
+                    callback(CyberCore::ExceptionData { CyberCore::InvalidStateError, String() });
                     return;
                 }
 
@@ -648,7 +648,7 @@ static void dumpCALayer(TextStream& ts, CALayer *layer, bool traverse)
         {
             [m_clientCoordinator playWithCompletion:makeBlockPtr([weakThis = WeakPtr { *this }, callback = WTFMove(callback)] (BOOL success) mutable {
                 if (!weakThis) {
-                    callback(WebCore::ExceptionData { WebCore::InvalidStateError, String() });
+                    callback(CyberCore::ExceptionData { CyberCore::InvalidStateError, String() });
                     return;
                 }
 
@@ -660,7 +660,7 @@ static void dumpCALayer(TextStream& ts, CALayer *layer, bool traverse)
         {
             [m_clientCoordinator pauseWithCompletion:makeBlockPtr([weakThis = WeakPtr { *this }, callback = WTFMove(callback)] (BOOL success) mutable {
                 if (!weakThis) {
-                    callback(WebCore::ExceptionData { WebCore::InvalidStateError, String() });
+                    callback(CyberCore::ExceptionData { CyberCore::InvalidStateError, String() });
                     return;
                 }
 
@@ -672,7 +672,7 @@ static void dumpCALayer(TextStream& ts, CALayer *layer, bool traverse)
         {
             [m_clientCoordinator setTrack:track withCompletion:makeBlockPtr([weakThis = WeakPtr { *this }, callback = WTFMove(callback)] (BOOL success) mutable {
                 if (!weakThis) {
-                    callback(WebCore::ExceptionData { WebCore::InvalidStateError, String() });
+                    callback(CyberCore::ExceptionData { CyberCore::InvalidStateError, String() });
                     return;
                 }
 
@@ -680,7 +680,7 @@ static void dumpCALayer(TextStream& ts, CALayer *layer, bool traverse)
             }).get()];
         }
 
-        void positionStateChanged(const std::optional<WebCore::MediaPositionState>& state) final
+        void positionStateChanged(const std::optional<CyberCore::MediaPositionState>& state) final
         {
             if (!state) {
                 [m_clientCoordinator positionStateChanged:nil];
@@ -695,22 +695,22 @@ static void dumpCALayer(TextStream& ts, CALayer *layer, bool traverse)
             [m_clientCoordinator positionStateChanged:&position];
         }
 
-        void readyStateChanged(WebCore::MediaSessionReadyState state) final
+        void readyStateChanged(CyberCore::MediaSessionReadyState state) final
         {
-            static_assert(static_cast<size_t>(WebCore::MediaSessionReadyState::Havenothing) == static_cast<size_t>(WKMediaSessionReadyStateHaveNothing), "WKMediaSessionReadyStateHaveNothing does not match WebKit value");
-            static_assert(static_cast<size_t>(WebCore::MediaSessionReadyState::Havemetadata) == static_cast<size_t>(WKMediaSessionReadyStateHaveMetadata), "WKMediaSessionReadyStateHaveMetadata does not match WebKit value");
-            static_assert(static_cast<size_t>(WebCore::MediaSessionReadyState::Havecurrentdata) == static_cast<size_t>(WKMediaSessionReadyStateHaveCurrentData), "WKMediaSessionReadyStateHaveCurrentData does not match WebKit value");
-            static_assert(static_cast<size_t>(WebCore::MediaSessionReadyState::Havefuturedata) == static_cast<size_t>(WKMediaSessionReadyStateHaveFutureData), "WKMediaSessionReadyStateHaveFutureData does not match WebKit value");
-            static_assert(static_cast<size_t>(WebCore::MediaSessionReadyState::Haveenoughdata) == static_cast<size_t>(WKMediaSessionReadyStateHaveEnoughData), "WKMediaSessionReadyStateHaveEnoughData does not match WebKit value");
+            static_assert(static_cast<size_t>(CyberCore::MediaSessionReadyState::Havenothing) == static_cast<size_t>(WKMediaSessionReadyStateHaveNothing), "WKMediaSessionReadyStateHaveNothing does not match WebKit value");
+            static_assert(static_cast<size_t>(CyberCore::MediaSessionReadyState::Havemetadata) == static_cast<size_t>(WKMediaSessionReadyStateHaveMetadata), "WKMediaSessionReadyStateHaveMetadata does not match WebKit value");
+            static_assert(static_cast<size_t>(CyberCore::MediaSessionReadyState::Havecurrentdata) == static_cast<size_t>(WKMediaSessionReadyStateHaveCurrentData), "WKMediaSessionReadyStateHaveCurrentData does not match WebKit value");
+            static_assert(static_cast<size_t>(CyberCore::MediaSessionReadyState::Havefuturedata) == static_cast<size_t>(WKMediaSessionReadyStateHaveFutureData), "WKMediaSessionReadyStateHaveFutureData does not match WebKit value");
+            static_assert(static_cast<size_t>(CyberCore::MediaSessionReadyState::Haveenoughdata) == static_cast<size_t>(WKMediaSessionReadyStateHaveEnoughData), "WKMediaSessionReadyStateHaveEnoughData does not match WebKit value");
 
             [m_clientCoordinator readyStateChanged:static_cast<_WKMediaSessionReadyState>(state)];
         }
 
-        void playbackStateChanged(WebCore::MediaSessionPlaybackState state) final
+        void playbackStateChanged(CyberCore::MediaSessionPlaybackState state) final
         {
-            static_assert(static_cast<size_t>(WebCore::MediaSessionPlaybackState::None) == static_cast<size_t>(WKMediaSessionPlaybackStateNone), "WKMediaSessionPlaybackStateNone does not match WebKit value");
-            static_assert(static_cast<size_t>(WebCore::MediaSessionPlaybackState::Paused) == static_cast<size_t>(WKMediaSessionPlaybackStatePaused), "WKMediaSessionPlaybackStatePaused does not match WebKit value");
-            static_assert(static_cast<size_t>(WebCore::MediaSessionPlaybackState::Playing) == static_cast<size_t>(WKMediaSessionPlaybackStatePlaying), "WKMediaSessionPlaybackStatePlaying does not match WebKit value");
+            static_assert(static_cast<size_t>(CyberCore::MediaSessionPlaybackState::None) == static_cast<size_t>(WKMediaSessionPlaybackStateNone), "WKMediaSessionPlaybackStateNone does not match WebKit value");
+            static_assert(static_cast<size_t>(CyberCore::MediaSessionPlaybackState::Paused) == static_cast<size_t>(WKMediaSessionPlaybackStatePaused), "WKMediaSessionPlaybackStatePaused does not match WebKit value");
+            static_assert(static_cast<size_t>(CyberCore::MediaSessionPlaybackState::Playing) == static_cast<size_t>(WKMediaSessionPlaybackStatePlaying), "WKMediaSessionPlaybackStatePlaying does not match WebKit value");
 
             [m_clientCoordinator playbackStateChanged:static_cast<_WKMediaSessionPlaybackState>(state)];
         }
@@ -742,10 +742,10 @@ static void dumpCALayer(TextStream& ts, CALayer *layer, bool traverse)
 
 #if ENABLE(MEDIA_SESSION_COORDINATOR)
 @implementation WKMediaSessionCoordinatorHelper {
-    WeakPtr<WebCore::MediaSessionCoordinatorClient> m_coordinatorClient;
+    WeakPtr<CyberCore::MediaSessionCoordinatorClient> m_coordinatorClient;
 }
 
-- (id)initWithCoordinator:(WebCore::MediaSessionCoordinatorClient*)coordinator
+- (id)initWithCoordinator:(CyberCore::MediaSessionCoordinatorClient*)coordinator
 {
     self = [super init];
     if (!self)
@@ -776,11 +776,11 @@ static void dumpCALayer(TextStream& ts, CALayer *layer, bool traverse)
 
 - (void)coordinatorStateChanged:(_WKMediaSessionCoordinatorState)state
 {
-    static_assert(static_cast<size_t>(WebCore::MediaSessionCoordinatorState::Waiting) == static_cast<size_t>(WKMediaSessionCoordinatorStateWaiting), "WKMediaSessionCoordinatorStateWaiting does not match WebKit value");
-    static_assert(static_cast<size_t>(WebCore::MediaSessionCoordinatorState::Joined) == static_cast<size_t>(WKMediaSessionCoordinatorStateJoined), "WKMediaSessionCoordinatorStateJoined does not match WebKit value");
-    static_assert(static_cast<size_t>(WebCore::MediaSessionCoordinatorState::Closed) == static_cast<size_t>(WKMediaSessionCoordinatorStateClosed), "WKMediaSessionCoordinatorStateClosed does not match WebKit value");
+    static_assert(static_cast<size_t>(CyberCore::MediaSessionCoordinatorState::Waiting) == static_cast<size_t>(WKMediaSessionCoordinatorStateWaiting), "WKMediaSessionCoordinatorStateWaiting does not match WebKit value");
+    static_assert(static_cast<size_t>(CyberCore::MediaSessionCoordinatorState::Joined) == static_cast<size_t>(WKMediaSessionCoordinatorStateJoined), "WKMediaSessionCoordinatorStateJoined does not match WebKit value");
+    static_assert(static_cast<size_t>(CyberCore::MediaSessionCoordinatorState::Closed) == static_cast<size_t>(WKMediaSessionCoordinatorStateClosed), "WKMediaSessionCoordinatorStateClosed does not match WebKit value");
 
-    m_coordinatorClient->coordinatorStateChanged(static_cast<WebCore::MediaSessionCoordinatorState>(state));
+    m_coordinatorClient->coordinatorStateChanged(static_cast<CyberCore::MediaSessionCoordinatorState>(state));
 }
 
 @end

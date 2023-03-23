@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -21,21 +21,21 @@
 #error "Only <webkitdom/webkitdom.h> can be included directly."
 #endif
 
-#ifndef WebKitDOMXPathResult_h
-#define WebKitDOMXPathResult_h
+#ifndef CyberKitDOMXPathResult_h
+#define CyberKitDOMXPathResult_h
 
 #include <glib-object.h>
-#include <webkitdom/WebKitDOMObject.h>
+#include <webkitdom/CyberKitDOMObject.h>
 #include <webkitdom/webkitdomdefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_DOM_TYPE_XPATH_RESULT            (webkit_dom_xpath_result_get_type())
-#define WEBKIT_DOM_XPATH_RESULT(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_XPATH_RESULT, WebKitDOMXPathResult))
-#define WEBKIT_DOM_XPATH_RESULT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_XPATH_RESULT, WebKitDOMXPathResultClass)
+#define WEBKIT_DOM_XPATH_RESULT(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_XPATH_RESULT, CyberKitDOMXPathResult))
+#define WEBKIT_DOM_XPATH_RESULT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_XPATH_RESULT, CyberKitDOMXPathResultClass)
 #define WEBKIT_DOM_IS_XPATH_RESULT(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_DOM_TYPE_XPATH_RESULT))
 #define WEBKIT_DOM_IS_XPATH_RESULT_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_DOM_TYPE_XPATH_RESULT))
-#define WEBKIT_DOM_XPATH_RESULT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_XPATH_RESULT, WebKitDOMXPathResultClass))
+#define WEBKIT_DOM_XPATH_RESULT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_XPATH_RESULT, CyberKitDOMXPathResultClass))
 
 #ifndef WEBKIT_DISABLE_DEPRECATED
 
@@ -111,12 +111,12 @@ G_BEGIN_DECLS
 
 #endif /* WEBKIT_DISABLE_DEPRECATED */
 
-struct _WebKitDOMXPathResult {
-    WebKitDOMObject parent_instance;
+struct _CyberKitDOMXPathResult {
+    CyberKitDOMObject parent_instance;
 };
 
-struct _WebKitDOMXPathResultClass {
-    WebKitDOMObjectClass parent_class;
+struct _CyberKitDOMXPathResultClass {
+    CyberKitDOMObjectClass parent_class;
 };
 
 WEBKIT_DEPRECATED GType
@@ -124,43 +124,43 @@ webkit_dom_xpath_result_get_type(void);
 
 /**
  * webkit_dom_xpath_result_iterate_next:
- * @self: A #WebKitDOMXPathResult
+ * @self: A #CyberKitDOMXPathResult
  * @error: #GError
  *
- * Returns: (transfer none): A #WebKitDOMNode
+ * Returns: (transfer none): A #CyberKitDOMNode
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMNode*
-webkit_dom_xpath_result_iterate_next(WebKitDOMXPathResult* self, GError** error);
+WEBKIT_DEPRECATED CyberKitDOMNode*
+webkit_dom_xpath_result_iterate_next(CyberKitDOMXPathResult* self, GError** error);
 
 /**
  * webkit_dom_xpath_result_snapshot_item:
- * @self: A #WebKitDOMXPathResult
+ * @self: A #CyberKitDOMXPathResult
  * @index: A #gulong
  * @error: #GError
  *
- * Returns: (transfer none): A #WebKitDOMNode
+ * Returns: (transfer none): A #CyberKitDOMNode
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMNode*
-webkit_dom_xpath_result_snapshot_item(WebKitDOMXPathResult* self, gulong index, GError** error);
+WEBKIT_DEPRECATED CyberKitDOMNode*
+webkit_dom_xpath_result_snapshot_item(CyberKitDOMXPathResult* self, gulong index, GError** error);
 
 /**
  * webkit_dom_xpath_result_get_result_type:
- * @self: A #WebKitDOMXPathResult
+ * @self: A #CyberKitDOMXPathResult
  *
  * Returns: A #gushort
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gushort
-webkit_dom_xpath_result_get_result_type(WebKitDOMXPathResult* self);
+webkit_dom_xpath_result_get_result_type(CyberKitDOMXPathResult* self);
 
 /**
  * webkit_dom_xpath_result_get_number_value:
- * @self: A #WebKitDOMXPathResult
+ * @self: A #CyberKitDOMXPathResult
  * @error: #GError
  *
  * Returns: A #gdouble
@@ -168,11 +168,11 @@ webkit_dom_xpath_result_get_result_type(WebKitDOMXPathResult* self);
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gdouble
-webkit_dom_xpath_result_get_number_value(WebKitDOMXPathResult* self, GError** error);
+webkit_dom_xpath_result_get_number_value(CyberKitDOMXPathResult* self, GError** error);
 
 /**
  * webkit_dom_xpath_result_get_string_value:
- * @self: A #WebKitDOMXPathResult
+ * @self: A #CyberKitDOMXPathResult
  * @error: #GError
  *
  * Returns: A #gchar
@@ -180,11 +180,11 @@ webkit_dom_xpath_result_get_number_value(WebKitDOMXPathResult* self, GError** er
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_xpath_result_get_string_value(WebKitDOMXPathResult* self, GError** error);
+webkit_dom_xpath_result_get_string_value(CyberKitDOMXPathResult* self, GError** error);
 
 /**
  * webkit_dom_xpath_result_get_boolean_value:
- * @self: A #WebKitDOMXPathResult
+ * @self: A #CyberKitDOMXPathResult
  * @error: #GError
  *
  * Returns: A #gboolean
@@ -192,34 +192,34 @@ webkit_dom_xpath_result_get_string_value(WebKitDOMXPathResult* self, GError** er
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
-webkit_dom_xpath_result_get_boolean_value(WebKitDOMXPathResult* self, GError** error);
+webkit_dom_xpath_result_get_boolean_value(CyberKitDOMXPathResult* self, GError** error);
 
 /**
  * webkit_dom_xpath_result_get_single_node_value:
- * @self: A #WebKitDOMXPathResult
+ * @self: A #CyberKitDOMXPathResult
  * @error: #GError
  *
- * Returns: (transfer none): A #WebKitDOMNode
+ * Returns: (transfer none): A #CyberKitDOMNode
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMNode*
-webkit_dom_xpath_result_get_single_node_value(WebKitDOMXPathResult* self, GError** error);
+WEBKIT_DEPRECATED CyberKitDOMNode*
+webkit_dom_xpath_result_get_single_node_value(CyberKitDOMXPathResult* self, GError** error);
 
 /**
  * webkit_dom_xpath_result_get_invalid_iterator_state:
- * @self: A #WebKitDOMXPathResult
+ * @self: A #CyberKitDOMXPathResult
  *
  * Returns: A #gboolean
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
-webkit_dom_xpath_result_get_invalid_iterator_state(WebKitDOMXPathResult* self);
+webkit_dom_xpath_result_get_invalid_iterator_state(CyberKitDOMXPathResult* self);
 
 /**
  * webkit_dom_xpath_result_get_snapshot_length:
- * @self: A #WebKitDOMXPathResult
+ * @self: A #CyberKitDOMXPathResult
  * @error: #GError
  *
  * Returns: A #gulong
@@ -227,8 +227,8 @@ webkit_dom_xpath_result_get_invalid_iterator_state(WebKitDOMXPathResult* self);
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gulong
-webkit_dom_xpath_result_get_snapshot_length(WebKitDOMXPathResult* self, GError** error);
+webkit_dom_xpath_result_get_snapshot_length(CyberKitDOMXPathResult* self, GError** error);
 
 G_END_DECLS
 
-#endif /* WebKitDOMXPathResult_h */
+#endif /* CyberKitDOMXPathResult_h */

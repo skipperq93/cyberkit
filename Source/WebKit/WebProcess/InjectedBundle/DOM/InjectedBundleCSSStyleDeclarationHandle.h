@@ -31,26 +31,26 @@
 #include <wtf/Ref.h>
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 class CSSStyleDeclaration;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class InjectedBundleCSSStyleDeclarationHandle : public API::ObjectImpl<API::Object::Type::BundleCSSStyleDeclarationHandle> {
 public:
     static RefPtr<InjectedBundleCSSStyleDeclarationHandle> getOrCreate(JSContextRef, JSObjectRef);
-    static RefPtr<InjectedBundleCSSStyleDeclarationHandle> getOrCreate(WebCore::CSSStyleDeclaration*);
+    static RefPtr<InjectedBundleCSSStyleDeclarationHandle> getOrCreate(CyberCore::CSSStyleDeclaration*);
     virtual ~InjectedBundleCSSStyleDeclarationHandle();
 
-    WebCore::CSSStyleDeclaration* coreCSSStyleDeclaration();
+    CyberCore::CSSStyleDeclaration* coreCSSStyleDeclaration();
 
 private:
-    InjectedBundleCSSStyleDeclarationHandle(WebCore::CSSStyleDeclaration&);
+    InjectedBundleCSSStyleDeclarationHandle(CyberCore::CSSStyleDeclaration&);
 
-    Ref<WebCore::CSSStyleDeclaration> m_styleDeclaration;
+    Ref<CyberCore::CSSStyleDeclaration> m_styleDeclaration;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // InjectedBundleCSSStyleDeclarationHandle_h

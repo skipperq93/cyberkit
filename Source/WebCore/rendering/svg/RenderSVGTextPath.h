@@ -22,7 +22,7 @@
 
 #include "RenderSVGInline.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGGeometryElement;
 class SVGTextPathElement;
@@ -49,6 +49,6 @@ private:
     Path m_layoutPath;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderSVGTextPath, isSVGTextPath())

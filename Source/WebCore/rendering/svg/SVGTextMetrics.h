@@ -21,7 +21,7 @@
 
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderSVGInlineText;
 class SVGTextLayoutAttributes;
@@ -76,4 +76,4 @@ private:
     Glyph m_glyph;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

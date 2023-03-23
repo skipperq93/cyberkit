@@ -32,7 +32,7 @@
 #include <wtf/WeakPtr.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class HTMLFormElement;
@@ -61,4 +61,4 @@ private:
     FormSubmissionTrigger m_formSubmissionTrigger;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

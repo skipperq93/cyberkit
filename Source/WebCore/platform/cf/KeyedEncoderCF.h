@@ -29,7 +29,7 @@
 #include <wtf/RetainPtr.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class KeyedEncoderCF final : public KeyedEncoder {
 public:
@@ -37,7 +37,7 @@ public:
     ~KeyedEncoderCF();
 
 private:
-    RefPtr<WebCore::SharedBuffer> finishEncoding() final;
+    RefPtr<CyberCore::SharedBuffer> finishEncoding() final;
 
     void encodeBytes(const String& key, const uint8_t*, size_t) final;
     void encodeBool(const String& key, bool) final;
@@ -63,4 +63,4 @@ private:
     Vector<CFMutableArrayRef, 16> m_arrayStack;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

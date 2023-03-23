@@ -29,7 +29,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 enum TabSizeValueType {
     LengthValueType,
@@ -74,4 +74,4 @@ inline bool operator!=(const TabSize& a, const TabSize& b)
     return !(a == b);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

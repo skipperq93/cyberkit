@@ -29,7 +29,7 @@
 #include <wtf/HashMap.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum UserStyleInjectionTime { InjectInExistingDocuments, InjectInSubsequentDocuments };
 enum UserStyleLevel { UserStyleUserLevel, UserStyleAuthorLevel };
@@ -40,15 +40,15 @@ class UserStyleSheet;
 typedef Vector<std::unique_ptr<UserStyleSheet>> UserStyleSheetVector;
 typedef HashMap<RefPtr<DOMWrapperWorld>, std::unique_ptr<UserStyleSheetVector>> UserStyleSheetMap;
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::UserStyleLevel> {
+template<> struct EnumTraits<CyberCore::UserStyleLevel> {
     using values = EnumValues<
-        WebCore::UserStyleLevel,
-        WebCore::UserStyleLevel::UserStyleUserLevel,
-        WebCore::UserStyleLevel::UserStyleAuthorLevel
+        CyberCore::UserStyleLevel,
+        CyberCore::UserStyleLevel::UserStyleUserLevel,
+        CyberCore::UserStyleLevel::UserStyleAuthorLevel
     >;
 };
 

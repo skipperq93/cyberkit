@@ -46,7 +46,7 @@
 #include <cairo-win32.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 static NeverDestroyed<cairo_font_options_t*> s_defaultCairoFontOptions = cairo_font_options_create();
 
@@ -115,7 +115,7 @@ void setPathOnCairoContext(cairo_t* to, cairo_t* from)
     appendPathToCairoContext(to, from);
 }
 
-void appendWebCorePathToCairoContext(cairo_t* context, const Path& path)
+void appendCyberCorePathToCairoContext(cairo_t* context, const Path& path)
 {
     if (path.isEmpty())
         return;
@@ -401,6 +401,6 @@ cairo_matrix_t toCairoMatrix(const AffineTransform& transform)
     return cairo_matrix_t { transform.a(), transform.b(), transform.c(), transform.d(), transform.e(), transform.f() };
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(CAIRO)

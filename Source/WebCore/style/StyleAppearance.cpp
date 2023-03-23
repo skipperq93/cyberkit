@@ -28,7 +28,7 @@
 
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 TextStream& operator<<(TextStream& ts, StyleAppearance appearance)
 {
@@ -143,4 +143,4 @@ TextStream& operator<<(TextStream& ts, StyleAppearance appearance)
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

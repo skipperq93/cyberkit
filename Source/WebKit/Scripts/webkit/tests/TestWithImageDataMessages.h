@@ -43,12 +43,12 @@ static inline IPC::ReceiverName messageReceiverName()
 
 class SendImageData {
 public:
-    using Arguments = std::tuple<RefPtr<WebCore::ImageData>>;
+    using Arguments = std::tuple<RefPtr<CyberCore::ImageData>>;
 
     static IPC::MessageName name() { return IPC::MessageName::TestWithImageData_SendImageData; }
     static constexpr bool isSync = false;
 
-    explicit SendImageData(const RefPtr<WebCore::ImageData>& s0)
+    explicit SendImageData(const RefPtr<CyberCore::ImageData>& s0)
         : m_arguments(s0)
     {
     }
@@ -59,7 +59,7 @@ public:
     }
 
 private:
-    std::tuple<const RefPtr<WebCore::ImageData>&> m_arguments;
+    std::tuple<const RefPtr<CyberCore::ImageData>&> m_arguments;
 };
 
 class ReceiveImageData {
@@ -71,7 +71,7 @@ public:
 
     static IPC::MessageName asyncMessageReplyName() { return IPC::MessageName::TestWithImageData_ReceiveImageDataReply; }
     static constexpr auto callbackThread = WTF::CompletionHandlerCallThread::ConstructionThread;
-    using ReplyArguments = std::tuple<RefPtr<WebCore::ImageData>>;
+    using ReplyArguments = std::tuple<RefPtr<CyberCore::ImageData>>;
     const auto& arguments() const
     {
         return m_arguments;

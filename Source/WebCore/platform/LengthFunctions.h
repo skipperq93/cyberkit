@@ -26,7 +26,7 @@
 #include "LayoutUnit.h"
 #include "Length.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class FloatSize;
 class FloatPoint;
@@ -82,4 +82,4 @@ inline int minimumIntValueForLength(const Length& length, LayoutUnit maximumValu
 template<typename T> inline LayoutUnit valueForLength(const Length& length, T maximumValue) { return valueForLength(length, LayoutUnit(maximumValue)); }
 template<typename T> inline LayoutUnit minimumValueForLength(const Length& length, T maximumValue) { return minimumValueForLength(length, LayoutUnit(maximumValue)); }
 
-} // namespace WebCore
+} // namespace CyberCore

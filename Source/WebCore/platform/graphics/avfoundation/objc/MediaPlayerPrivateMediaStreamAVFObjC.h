@@ -39,7 +39,7 @@
 OBJC_CLASS AVSampleBufferDisplayLayer;
 OBJC_CLASS WebRootSampleBufferBoundsChangeListener;
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioTrackPrivateMediaStream;
 class AVVideoCaptureSource;

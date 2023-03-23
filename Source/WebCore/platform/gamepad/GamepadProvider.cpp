@@ -31,7 +31,7 @@
 #include "GamepadProviderClient.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static GamepadProvider* sharedProvider = nullptr;
 
@@ -58,6 +58,6 @@ void GamepadProvider::dispatchPlatformGamepadInputActivity()
     m_shouldMakeGamepadsVisible = false;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(GAMEPAD)

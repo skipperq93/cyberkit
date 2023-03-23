@@ -33,7 +33,7 @@
 #include <wtf/RunLoop.h>
 #include <wtf/SetForScope.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 PreviewConverter::~PreviewConverter() = default;
 
@@ -294,6 +294,6 @@ void PreviewConverter::delegateDidFailWithError(const ResourceError& error)
     });
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(PREVIEW_CONVERTER)

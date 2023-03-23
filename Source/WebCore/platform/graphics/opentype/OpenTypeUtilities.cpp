@@ -30,7 +30,7 @@
 #include "FontMemoryResource.h"
 #include "SharedBuffer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct BigEndianUShort { 
     operator unsigned short() const { return (v & 0x00ff) << 8 | v >> 8; }

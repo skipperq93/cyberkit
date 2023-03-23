@@ -153,7 +153,7 @@ public:
     }
 
 #if PLATFORM(IOS_FAMILY)
-    HistoryEntryDataEncoder& operator<<(WebCore::FloatRect value)
+    HistoryEntryDataEncoder& operator<<(CyberCore::FloatRect value)
     {
         *this << value.x();
         *this << value.y();
@@ -163,7 +163,7 @@ public:
         return *this;
     }
 
-    HistoryEntryDataEncoder& operator<<(WebCore::IntRect value)
+    HistoryEntryDataEncoder& operator<<(CyberCore::IntRect value)
     {
         *this << value.x();
         *this << value.y();
@@ -173,7 +173,7 @@ public:
         return *this;
     }
 
-    HistoryEntryDataEncoder& operator<<(WebCore::FloatSize value)
+    HistoryEntryDataEncoder& operator<<(CyberCore::FloatSize value)
     {
         *this << value.width();
         *this << value.height();
@@ -181,7 +181,7 @@ public:
         return *this;
     }
 
-    HistoryEntryDataEncoder& operator<<(WebCore::IntSize value)
+    HistoryEntryDataEncoder& operator<<(CyberCore::IntSize value)
     {
         *this << value.width();
         *this << value.height();
@@ -642,9 +642,9 @@ public:
     }
 
 #if PLATFORM(IOS_FAMILY)
-    HistoryEntryDataDecoder& operator>>(WebCore::FloatRect& value)
+    HistoryEntryDataDecoder& operator>>(CyberCore::FloatRect& value)
     {
-        value = WebCore::FloatRect();
+        value = CyberCore::FloatRect();
 
         float x;
         *this >> x;
@@ -658,13 +658,13 @@ public:
         float height;
         *this >> height;
 
-        value = WebCore::FloatRect(x, y, width, height);
+        value = CyberCore::FloatRect(x, y, width, height);
         return *this;
     }
 
-    HistoryEntryDataDecoder& operator>>(WebCore::IntRect& value)
+    HistoryEntryDataDecoder& operator>>(CyberCore::IntRect& value)
     {
-        value = WebCore::IntRect();
+        value = CyberCore::IntRect();
 
         int32_t x;
         *this >> x;
@@ -678,13 +678,13 @@ public:
         int32_t height;
         *this >> height;
 
-        value = WebCore::IntRect(x, y, width, height);
+        value = CyberCore::IntRect(x, y, width, height);
         return *this;
     }
 
-    HistoryEntryDataDecoder& operator>>(WebCore::FloatSize& value)
+    HistoryEntryDataDecoder& operator>>(CyberCore::FloatSize& value)
     {
-        value = WebCore::FloatSize();
+        value = CyberCore::FloatSize();
 
         float width;
         *this >> width;
@@ -692,13 +692,13 @@ public:
         float height;
         *this >> height;
 
-        value = WebCore::FloatSize(width, height);
+        value = CyberCore::FloatSize(width, height);
         return *this;
     }
 
-    HistoryEntryDataDecoder& operator>>(WebCore::IntSize& value)
+    HistoryEntryDataDecoder& operator>>(CyberCore::IntSize& value)
     {
-        value = WebCore::IntSize();
+        value = CyberCore::IntSize();
 
         int32_t width;
         *this >> width;
@@ -706,7 +706,7 @@ public:
         int32_t height;
         *this >> height;
 
-        value = WebCore::IntSize(width, height);
+        value = CyberCore::IntSize(width, height);
         return *this;
     }
 #endif
@@ -942,7 +942,7 @@ static void decodeBackForwardTreeNode(HistoryEntryDataDecoder& decoder, FrameSta
     int32_t scrollPositionY;
     decoder >> scrollPositionY;
 
-    frameState.scrollPosition = WebCore::IntPoint(scrollPositionX, scrollPositionY);
+    frameState.scrollPosition = CyberCore::IntPoint(scrollPositionX, scrollPositionY);
 
     decoder >> frameState.pageScaleFactor;
 
@@ -1007,13 +1007,13 @@ static WARN_UNUSED_RETURN bool decodeSessionHistoryEntry(CFDictionaryRef entryDi
         return false;
 
     auto rawShouldOpenExternalURLsPolicy = dynamic_cf_cast<CFNumberRef>(CFDictionaryGetValue(entryDictionary, sessionHistoryEntryShouldOpenExternalURLsPolicyKey));
-    WebCore::ShouldOpenExternalURLsPolicy shouldOpenExternalURLsPolicy;
+    CyberCore::ShouldOpenExternalURLsPolicy shouldOpenExternalURLsPolicy;
     if (rawShouldOpenExternalURLsPolicy) {
         uint64_t value;
         CFNumberGetValue(rawShouldOpenExternalURLsPolicy, kCFNumberSInt64Type, &value);
-        shouldOpenExternalURLsPolicy = static_cast<WebCore::ShouldOpenExternalURLsPolicy>(value);
+        shouldOpenExternalURLsPolicy = static_cast<CyberCore::ShouldOpenExternalURLsPolicy>(value);
     } else
-        shouldOpenExternalURLsPolicy = WebCore::ShouldOpenExternalURLsPolicy::ShouldAllowExternalSchemesButNotAppLinks;
+        shouldOpenExternalURLsPolicy = CyberCore::ShouldOpenExternalURLsPolicy::ShouldAllowExternalSchemesButNotAppLinks;
 
     if (!decodeSessionHistoryEntryData(historyEntryData, backForwardListItemState.pageState.mainFrameState))
         return false;

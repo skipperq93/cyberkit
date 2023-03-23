@@ -37,7 +37,7 @@
 #include "ServiceWorkerWindowClient.h"
 #include "StructuredSerializeOptions.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<ServiceWorkerClient> ServiceWorkerClient::create(ServiceWorkerGlobalScope& context, ServiceWorkerClientData&& data)
 {
@@ -100,6 +100,6 @@ ExceptionOr<void> ServiceWorkerClient::postMessage(JSC::JSGlobalObject& globalOb
     return { };
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

@@ -31,7 +31,7 @@
 #include <wtf/ListHashSet.h>
 #include <wtf/WeakHashSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ImageQualityController;
 class RenderLayerCompositor;
@@ -287,6 +287,6 @@ private:
     WeakHashSet<const RenderBox> m_containerQueryBoxes;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderView, isRenderView())

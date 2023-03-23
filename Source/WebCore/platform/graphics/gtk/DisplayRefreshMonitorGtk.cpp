@@ -31,7 +31,7 @@
 #include <gtk/gtk.h>
 #include <wtf/RunLoop.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 constexpr FramesPerSecond DefaultFramesPerSecond = 60;
 
@@ -108,6 +108,6 @@ void DisplayRefreshMonitorGtk::stopNotificationMechanism()
     m_clockIsActive = false;    
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // !USE(GTK4)

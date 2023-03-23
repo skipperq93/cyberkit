@@ -38,7 +38,7 @@
 #include "SVGRectElement.h"
 #include <wtf/HashMap.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static Path pathFromCircleElement(const SVGElement& element)
 {
@@ -193,4 +193,4 @@ Path pathFromGraphicsElement(const SVGElement* element)
     return { };
 }
 
-} // namespace WebCore
+} // namespace CyberCore

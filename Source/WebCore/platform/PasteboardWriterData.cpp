@@ -28,7 +28,7 @@
 
 #include "SharedBuffer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 PasteboardWriterData::PasteboardWriterData() = default;
 PasteboardWriterData::~PasteboardWriterData() = default;

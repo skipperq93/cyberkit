@@ -25,7 +25,7 @@
 #include "SVGAnimateElementBase.h"
 #include "SVGTransformValue.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class AffineTransform;
 
@@ -46,4 +46,4 @@ private:
     SVGTransformValue::SVGTransformType m_type;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

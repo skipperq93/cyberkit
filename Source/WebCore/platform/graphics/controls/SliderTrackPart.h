@@ -28,7 +28,7 @@
 #include "ControlPart.h"
 #include "IntRect.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SliderTrackPart : public ControlPart {
 public:
@@ -52,8 +52,8 @@ private:
     Vector<double> m_tickRatios;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::SliderTrackPart) \
-    static bool isType(const WebCore::ControlPart& part) { return part.type() == WebCore::StyleAppearance::SliderHorizontal || part.type() == WebCore::StyleAppearance::SliderVertical; } \
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::SliderTrackPart) \
+    static bool isType(const CyberCore::ControlPart& part) { return part.type() == CyberCore::StyleAppearance::SliderHorizontal || part.type() == CyberCore::StyleAppearance::SliderVertical; } \
 SPECIALIZE_TYPE_TRAITS_END()

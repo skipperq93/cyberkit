@@ -28,7 +28,7 @@
 
 #if ENABLE(SERVICE_WORKER)
 
-namespace WebCore {
+namespace CyberCore {
 
 ServiceWorkerRegistrationOptions ServiceWorkerRegistrationOptions::isolatedCopy() const &
 {
@@ -40,6 +40,6 @@ ServiceWorkerRegistrationOptions ServiceWorkerRegistrationOptions::isolatedCopy(
     return ServiceWorkerRegistrationOptions { WTFMove(scope).isolatedCopy(), type, updateViaCache };
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

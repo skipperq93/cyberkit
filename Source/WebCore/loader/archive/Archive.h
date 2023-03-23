@@ -31,7 +31,7 @@
 #include "ArchiveResource.h"
 #include <wtf/HashSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Archive : public RefCounted<Archive> {
 public:
@@ -63,4 +63,4 @@ private:
     Vector<Ref<Archive>> m_subframeArchives;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

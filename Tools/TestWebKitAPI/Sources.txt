@@ -26,5 +26,5 @@ JavaScriptTest.cpp
 PlatformUtilities.cpp
 TestsController.cpp
 TestNotificationProvider.cpp
-WebCoreTestUtilities.cpp
+CyberCoreTestUtilities.cpp
 

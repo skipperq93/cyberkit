@@ -32,24 +32,24 @@
 #include <wtf/HashSet.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 enum class EventMakesGamepadsVisible : bool;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class SharedMemory;
 class WebGamepad;
 
 class GamepadData;
 
-class WebGamepadProvider final : public WebCore::GamepadProvider {
+class WebGamepadProvider final : public CyberCore::GamepadProvider {
 public:
     static WebGamepadProvider& singleton();
 
-    void gamepadConnected(const GamepadData&, WebCore::EventMakesGamepadsVisible);
+    void gamepadConnected(const GamepadData&, CyberCore::EventMakesGamepadsVisible);
     void gamepadDisconnected(unsigned index);
-    void gamepadActivity(const Vector<GamepadData>&, WebCore::EventMakesGamepadsVisible);
+    void gamepadActivity(const Vector<GamepadData>&, CyberCore::EventMakesGamepadsVisible);
 
     void setInitialGamepads(const Vector<GamepadData>&);
 
@@ -58,18 +58,18 @@ private:
     WebGamepadProvider();
     ~WebGamepadProvider() final;
     
-    void startMonitoringGamepads(WebCore::GamepadProviderClient&) final;
-    void stopMonitoringGamepads(WebCore::GamepadProviderClient&) final;
-    const Vector<WebCore::PlatformGamepad*>& platformGamepads() final;
-    void playEffect(unsigned gamepadIndex, const String& gamepadID, WebCore::GamepadHapticEffectType, const WebCore::GamepadEffectParameters&, CompletionHandler<void(bool)>&&) final;
+    void startMonitoringGamepads(CyberCore::GamepadProviderClient&) final;
+    void stopMonitoringGamepads(CyberCore::GamepadProviderClient&) final;
+    const Vector<CyberCore::PlatformGamepad*>& platformGamepads() final;
+    void playEffect(unsigned gamepadIndex, const String& gamepadID, CyberCore::GamepadHapticEffectType, const CyberCore::GamepadEffectParameters&, CompletionHandler<void(bool)>&&) final;
     void stopEffects(unsigned gamepadIndex, const String& gamepadID, CompletionHandler<void()>&&) final;
 
-    HashSet<WebCore::GamepadProviderClient*> m_clients;
+    HashSet<CyberCore::GamepadProviderClient*> m_clients;
 
     Vector<std::unique_ptr<WebGamepad>> m_gamepads;
-    Vector<WebCore::PlatformGamepad*> m_rawGamepads;
+    Vector<CyberCore::PlatformGamepad*> m_rawGamepads;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GAMEPAD)

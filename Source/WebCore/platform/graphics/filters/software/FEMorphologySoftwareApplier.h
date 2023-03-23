@@ -28,7 +28,7 @@
 #include "PixelBuffer.h"
 #include <CyberScriptCore/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FEMorphology;
 enum class MorphologyOperatorType;
@@ -74,4 +74,4 @@ private:
     static void applyPlatform(const PaintingData&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

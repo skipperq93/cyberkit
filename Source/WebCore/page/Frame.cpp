@@ -123,7 +123,7 @@
 
 #define FRAME_RELEASE_LOG_ERROR(channel, fmt, ...) RELEASE_LOG_ERROR(channel, "%p - Frame::" fmt, this, ##__VA_ARGS__)
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -1174,6 +1174,6 @@ DataDetectionResultsStorage& Frame::dataDetectionResults()
 
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #undef FRAME_RELEASE_LOG_ERROR

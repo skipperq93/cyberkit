@@ -26,7 +26,7 @@ constexpr const char* OPENXR_INPUT_HAND_PATH { "/user/hand/" };
 constexpr const char* OPENXR_INPUT_GRIP_PATH { "/input/grip/pose" };
 constexpr const char* OPENXR_INPUT_AIM_PATH { "/input/aim/pose" };
 
-using namespace WebCore;
+using namespace CyberCore;
 
 namespace PlatformXR {
 

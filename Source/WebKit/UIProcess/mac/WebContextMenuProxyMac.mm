@@ -147,7 +147,7 @@
     }
 
     ASSERT(!sender || [sender isKindOfClass:NSMenuItem.class]);
-    WebKit::WebContextMenuItemData item(WebCore::ActionType, static_cast<WebCore::ContextMenuAction>([sender tag]), [sender title], [sender isEnabled], [(NSMenuItem *)sender state] == NSControlStateValueOn);
+    WebKit::WebContextMenuItemData item(CyberCore::ActionType, static_cast<CyberCore::ContextMenuAction>([sender tag]), [sender title], [sender isEnabled], [(NSMenuItem *)sender state] == NSControlStateValueOn);
     if (representedObject) {
         ASSERT([representedObject isKindOfClass:[WKUserDataWrapper class]]);
         item.setUserData([static_cast<WKUserDataWrapper *>(representedObject) userData]);
@@ -191,7 +191,7 @@
 @end
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 WebContextMenuProxyMac::WebContextMenuProxyMac(NSView *webView, WebPageProxy& page, ContextMenuContextData&& context, const UserData& userData)
     : WebContextMenuProxy(page, WTFMove(context), userData)
@@ -490,7 +490,7 @@ void WebContextMenuProxyMac::show()
     WebContextMenuProxy::show();
 }
 
-static NSString *menuItemIdentifier(const WebCore::ContextMenuAction action)
+static NSString *menuItemIdentifier(const CyberCore::ContextMenuAction action)
 {
     switch (action) {
     case ContextMenuItemTagCopy:
@@ -620,7 +620,7 @@ static NSString *menuItemIdentifier(const WebCore::ContextMenuAction action)
 static RetainPtr<NSMenuItem> createMenuActionItem(const WebContextMenuItemData& item)
 {
     auto type = item.type();
-    ASSERT_UNUSED(type, type == WebCore::ActionType || type == WebCore::CheckableActionType);
+    ASSERT_UNUSED(type, type == CyberCore::ActionType || type == CyberCore::CheckableActionType);
 
     auto menuItem = adoptNS([[NSMenuItem alloc] initWithTitle:item.title() action:@selector(forwardContextMenuAction:) keyEquivalent:@""]);
 
@@ -655,7 +655,7 @@ void WebContextMenuProxyMac::getContextMenuFromItems(const Vector<WebContextMenu
 
     if (isLookupDisabled || isPopover) {
         filteredItems.removeAllMatching([] (auto& item) {
-            return item.action() == WebCore::ContextMenuItemTagLookUpInDictionary;
+            return item.action() == CyberCore::ContextMenuItemTagLookUpInDictionary;
         });
     }
 
@@ -759,16 +759,16 @@ void WebContextMenuProxyMac::getContextMenuItem(const WebContextMenuItemData& it
 #endif
 
     switch (item.type()) {
-    case WebCore::ActionType:
-    case WebCore::CheckableActionType:
+    case CyberCore::ActionType:
+    case CyberCore::CheckableActionType:
         completionHandler(createMenuActionItem(item).get());
         return;
 
-    case WebCore::SeparatorType:
+    case CyberCore::SeparatorType:
         completionHandler(NSMenuItem.separatorItem);
         return;
 
-    case WebCore::SubmenuType: {
+    case CyberCore::SubmenuType: {
         getContextMenuFromItems(item.submenu(), [action = item.action(), completionHandler = WTFMove(completionHandler), enabled = item.enabled(), title = item.title(), indentationLevel = item.indentationLevel()](NSMenu *menu) mutable {
             auto menuItem = adoptNS([[NSMenuItem alloc] initWithTitle:title action:nullptr keyEquivalent:@""]);
             [menuItem setEnabled:enabled];

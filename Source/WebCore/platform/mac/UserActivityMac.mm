@@ -28,7 +28,7 @@
 
 #import "Logging.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 #if HAVE(NS_ACTIVITY)
 
@@ -55,4 +55,4 @@ void UserActivity::Impl::endActivity()
 
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

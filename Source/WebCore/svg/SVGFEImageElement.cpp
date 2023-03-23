@@ -37,7 +37,7 @@
 #include "SVGRenderingContext.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(SVGFEImageElement);
 
@@ -240,4 +240,4 @@ void SVGFEImageElement::addSubresourceAttributeURLs(ListHashSet<URL>& urls) cons
     addSubresourceURL(urls, document().completeURL(href()));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

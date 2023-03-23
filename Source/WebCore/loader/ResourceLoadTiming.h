@@ -27,7 +27,7 @@
 
 #include <wtf/MonotonicTime.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ResourceLoadTiming {
 public:
@@ -48,4 +48,4 @@ private:
     MonotonicTime m_endTime;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -28,7 +28,7 @@
 #include "CalcExpressionNode.h"
 #include <wtf/TypeCasts.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CalcExpressionNumber final : public CalcExpressionNode {
 public:
@@ -57,4 +57,4 @@ inline bool operator==(const CalcExpressionNumber& a, const CalcExpressionNumber
 
 }
 
-SPECIALIZE_TYPE_TRAITS_CALCEXPRESSION_NODE(CalcExpressionNumber, type() == WebCore::CalcExpressionNodeType::Number)
+SPECIALIZE_TYPE_TRAITS_CALCEXPRESSION_NODE(CalcExpressionNumber, type() == CyberCore::CalcExpressionNodeType::Number)

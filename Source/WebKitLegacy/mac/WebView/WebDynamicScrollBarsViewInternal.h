@@ -29,21 +29,21 @@
 #if !PLATFORM(IOS_FAMILY)
 
 #import "WebDynamicScrollBarsView.h"
-#import <CyberCore/WebCoreFrameView.h>
+#import <CyberCore/CyberCoreFrameView.h>
 
-@interface WebDynamicScrollBarsView (WebInternal) <WebCoreFrameScrollView>
+@interface WebDynamicScrollBarsView (WebInternal) <CyberCoreFrameScrollView>
 
 - (BOOL)allowsHorizontalScrolling;
 - (BOOL)allowsVerticalScrolling;
 
-- (void)setScrollingModes:(WebCore::ScrollbarMode)hMode vertical:(WebCore::ScrollbarMode)vMode andLock:(BOOL)lock;
-- (void)scrollingModes:(WebCore::ScrollbarMode*)hMode vertical:(WebCore::ScrollbarMode*)vMode;
+- (void)setScrollingModes:(CyberCore::ScrollbarMode)hMode vertical:(CyberCore::ScrollbarMode)vMode andLock:(BOOL)lock;
+- (void)scrollingModes:(CyberCore::ScrollbarMode*)hMode vertical:(CyberCore::ScrollbarMode*)vMode;
 
-- (WebCore::ScrollbarMode)horizontalScrollingMode;
-- (WebCore::ScrollbarMode)verticalScrollingMode;
+- (CyberCore::ScrollbarMode)horizontalScrollingMode;
+- (CyberCore::ScrollbarMode)verticalScrollingMode;
 
-- (void)setHorizontalScrollingMode:(WebCore::ScrollbarMode)mode andLock:(BOOL)lock;
-- (void)setVerticalScrollingMode:(WebCore::ScrollbarMode)mode andLock:(BOOL)lock;
+- (void)setHorizontalScrollingMode:(CyberCore::ScrollbarMode)mode andLock:(BOOL)lock;
+- (void)setVerticalScrollingMode:(CyberCore::ScrollbarMode)mode andLock:(BOOL)lock;
 
 - (void)setHorizontalScrollingModeLocked:(BOOL)locked;
 - (void)setVerticalScrollingModeLocked:(BOOL)locked;

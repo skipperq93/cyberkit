@@ -29,7 +29,7 @@
 #if ENABLE(ENCRYPTED_MEDIA)
 
 #include "Logging.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebFrame.h"
 #include "WebPage.h"
 #include "WebPageProxyMessages.h"
@@ -41,7 +41,7 @@
 #include <CyberCore/SecurityOriginData.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 MediaKeySystemPermissionRequestManager::MediaKeySystemPermissionRequestManager(WebPage& page)
     : m_page(page)

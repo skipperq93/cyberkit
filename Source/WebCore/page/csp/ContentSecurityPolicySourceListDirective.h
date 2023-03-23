@@ -29,7 +29,7 @@
 #include "ContentSecurityPolicyDirective.h"
 #include "ContentSecurityPolicySourceList.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ContentSecurityPolicyDirectiveList;
 
@@ -59,4 +59,4 @@ private:
     ContentSecurityPolicySourceList m_sourceList;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

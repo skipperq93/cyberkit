@@ -27,7 +27,7 @@
 
 #if ENABLE(SERVICE_WORKER)
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class ServiceWorkerJobType : uint8_t {
     Register,
@@ -35,6 +35,6 @@ enum class ServiceWorkerJobType : uint8_t {
     Update,
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

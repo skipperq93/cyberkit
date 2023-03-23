@@ -23,7 +23,7 @@
 #include "SVGLocatable.h"
 #include "SVGTransformValue.h"
 
-namespace WebCore {
+namespace CyberCore {
     
 class AffineTransform;
 
@@ -42,4 +42,4 @@ public:
     virtual AffineTransform animatedLocalTransform() const = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -34,7 +34,7 @@
 #include <wtf/Ref.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 DECLARE_ALLOCATOR_WITH_HEAP_IDENTIFIER(StyleGridItemData);
 class StyleGridItemData : public RefCounted<StyleGridItemData> {
@@ -64,4 +64,4 @@ private:
     StyleGridItemData(const StyleGridItemData&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

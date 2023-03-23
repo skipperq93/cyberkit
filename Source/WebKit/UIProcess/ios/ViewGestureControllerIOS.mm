@@ -216,15 +216,15 @@ void ViewGestureController::beginSwipeGesture(_UINavigationInteractiveTransition
     RetainPtr<UIColor> backgroundColor = [UIColor whiteColor];
     if (ViewSnapshot* snapshot = targetItem->snapshot()) {
         float deviceScaleFactor = m_webPageProxy.deviceScaleFactor();
-        WebCore::FloatSize swipeLayerSizeInDeviceCoordinates(liveSwipeViewFrame.size);
+        CyberCore::FloatSize swipeLayerSizeInDeviceCoordinates(liveSwipeViewFrame.size);
         swipeLayerSizeInDeviceCoordinates.scale(deviceScaleFactor);
         
         BOOL shouldRestoreScrollPosition = targetItem->pageState().mainFrameState.shouldRestoreScrollPosition;
-        WebCore::IntPoint currentScrollPosition = WebCore::roundedIntPoint(m_webPageProxy.viewScrollPosition());
+        CyberCore::IntPoint currentScrollPosition = CyberCore::roundedIntPoint(m_webPageProxy.viewScrollPosition());
 
         if (snapshot->hasImage() && snapshot->size() == swipeLayerSizeInDeviceCoordinates && deviceScaleFactor == snapshot->deviceScaleFactor() && (shouldRestoreScrollPosition || (currentScrollPosition == snapshot->viewScrollPosition())))
             [m_snapshotView layer].contents = snapshot->asLayerContents();
-        WebCore::Color coreColor = snapshot->backgroundColor();
+        CyberCore::Color coreColor = snapshot->backgroundColor();
         if (coreColor.isValid())
             backgroundColor = cocoaColor(coreColor);
     }
@@ -436,7 +436,7 @@ void ViewGestureController::resetState()
 
     m_swipeTransitionContext = nullptr;
 
-    m_backgroundColorForCurrentSnapshot = WebCore::Color();
+    m_backgroundColorForCurrentSnapshot = CyberCore::Color();
 
     m_pendingNavigation = nullptr;
 

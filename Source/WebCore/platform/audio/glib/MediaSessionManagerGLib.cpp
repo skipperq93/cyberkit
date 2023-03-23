@@ -109,7 +109,7 @@ static const char s_mprisInterface[] =
         "</interface>"
     "</node>";
 
-namespace WebCore {
+namespace CyberCore {
 
 std::unique_ptr<PlatformMediaSessionManager> PlatformMediaSessionManager::create()
 {
@@ -326,6 +326,6 @@ void MediaSessionManagerGLib::dispatch(PlatformMediaSession::RemoteControlComman
     m_nowPlayingManager->didReceiveRemoteControlCommand(platformCommand, argument);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(GLIB) && ENABLE(MEDIA_SESSION)

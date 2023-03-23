@@ -34,16 +34,16 @@ namespace WebKit {
 
 class MockLocalConnection final : public LocalConnection {
 public:
-    explicit MockLocalConnection(const WebCore::MockWebAuthenticationConfiguration&);
+    explicit MockLocalConnection(const CyberCore::MockWebAuthenticationConfiguration&);
 
 private:
-    void verifyUser(const String&, WebCore::ClientDataType, SecAccessControlRef, WebCore::UserVerificationRequirement,  UserVerificationCallback&&) final;
+    void verifyUser(const String&, CyberCore::ClientDataType, SecAccessControlRef, CyberCore::UserVerificationRequirement,  UserVerificationCallback&&) final;
     void verifyUser(SecAccessControlRef, LAContext *, CompletionHandler<void(UserVerification)>&&) final;
     RetainPtr<SecKeyRef> createCredentialPrivateKey(LAContext *, SecAccessControlRef, const String& secAttrLabel, NSData *secAttrApplicationTag) const final;
     void getAttestation(SecKeyRef, NSData *authData, NSData *hash, AttestationCallback&&) const final;
-    void filterResponses(Vector<Ref<WebCore::AuthenticatorAssertionResponse>>&) const final;
+    void filterResponses(Vector<Ref<CyberCore::AuthenticatorAssertionResponse>>&) const final;
 
-    WebCore::MockWebAuthenticationConfiguration m_configuration;
+    CyberCore::MockWebAuthenticationConfiguration m_configuration;
 };
 
 } // namespace WebKit

@@ -35,8 +35,8 @@
 #include <CyberCore/ResourceError.h>
 #include <CyberCore/Settings.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 void WebFrameNetworkingContext::ensureWebsiteDataStoreSession(const WebsiteDataStoreParameters&)
 {
@@ -56,9 +56,9 @@ WebFrameLoaderClient* WebFrameNetworkingContext::webFrameLoaderClient() const
 }
 
 #if PLATFORM(WIN)
-WebCore::ResourceError WebFrameNetworkingContext::blockedError(const WebCore::ResourceRequest&) const
+CyberCore::ResourceError WebFrameNetworkingContext::blockedError(const CyberCore::ResourceRequest&) const
 {
-    return WebCore::ResourceError();
+    return CyberCore::ResourceError();
 }
 #endif
 

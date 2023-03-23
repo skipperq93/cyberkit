@@ -33,7 +33,7 @@ namespace PAL {
 class TextEncoding;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class BlobRegistryImpl;
 class DOMFormData;
@@ -140,7 +140,7 @@ public:
     WEBCORE_EXPORT static Ref<FormData> create(const void*, size_t);
     WEBCORE_EXPORT static Ref<FormData> create(const CString&);
     WEBCORE_EXPORT static Ref<FormData> create(Vector<uint8_t>&&);
-    WEBCORE_EXPORT static Ref<FormData> create(bool alwaysStream, Vector<char>&& boundary, Vector<WebCore::FormDataElement>&& elements, int64_t identifier);
+    WEBCORE_EXPORT static Ref<FormData> create(bool alwaysStream, Vector<char>&& boundary, Vector<CyberCore::FormDataElement>&& elements, int64_t identifier);
     static Ref<FormData> create(const Vector<char>&);
     static Ref<FormData> create(const Vector<uint8_t>&);
     static Ref<FormData> create(const DOMFormData&, EncodingType = EncodingType::FormURLEncoded);
@@ -224,5 +224,5 @@ inline bool operator!=(const FormData& a, const FormData& b)
     return !(a == b);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 

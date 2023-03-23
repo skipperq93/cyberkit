@@ -29,10 +29,10 @@
 #include <wtf/NeverDestroyed.h>
 
 #if USE(WEB_THREAD)
-#include "WebCoreThread.h"
+#include "CyberCoreThread.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 static const Seconds updateStateSoonInterval { 2_s };
 
@@ -89,4 +89,4 @@ void NetworkStateNotifier::updateStateSoon()
     m_updateStateTimer.startOneShot(updateStateSoonInterval);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

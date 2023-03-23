@@ -39,13 +39,13 @@ template<> struct ClientTraits<WKBundlePageContextMenuClientBase> {
 };
 }
 
-namespace WebCore {
+namespace CyberCore {
 class ContextMenuContext;
 class ContextMenuItem;
 class HitTestResult;
 }
 
-namespace WebKit {
+namespace CyberKit {
 class WebContextMenuItemData;
 class WebPage;
 
@@ -54,10 +54,10 @@ public:
     explicit InjectedBundlePageContextMenuClient(const WKBundlePageContextMenuClientBase*);
 
 private:
-    bool getCustomMenuFromDefaultItems(WebPage&, const WebCore::HitTestResult&, const Vector<WebCore::ContextMenuItem>& defaultMenu, Vector<WebContextMenuItemData>& newMenu, const WebCore::ContextMenuContext&, RefPtr<API::Object>& userData) override;
-    void prepareForImmediateAction(WebPage&, const WebCore::HitTestResult&, RefPtr<API::Object>& userData) override;
+    bool getCustomMenuFromDefaultItems(WebPage&, const CyberCore::HitTestResult&, const Vector<CyberCore::ContextMenuItem>& defaultMenu, Vector<WebContextMenuItemData>& newMenu, const CyberCore::ContextMenuContext&, RefPtr<API::Object>& userData) override;
+    void prepareForImmediateAction(WebPage&, const CyberCore::HitTestResult&, RefPtr<API::Object>& userData) override;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(CONTEXT_MENUS)

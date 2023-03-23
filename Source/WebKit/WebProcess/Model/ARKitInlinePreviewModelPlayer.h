@@ -34,28 +34,28 @@
 #import <CyberCore/ModelPlayerClient.h>
 #import <wtf/Compiler.h>
 
-namespace WebKit {
+namespace CyberKit {
 
-class ARKitInlinePreviewModelPlayer : public WebCore::ModelPlayer, public CanMakeWeakPtr<ARKitInlinePreviewModelPlayer> {
+class ARKitInlinePreviewModelPlayer : public CyberCore::ModelPlayer, public CanMakeWeakPtr<ARKitInlinePreviewModelPlayer> {
 public:
     virtual ~ARKitInlinePreviewModelPlayer();
 
 protected:
-    explicit ARKitInlinePreviewModelPlayer(WebPage&, WebCore::ModelPlayerClient&);
+    explicit ARKitInlinePreviewModelPlayer(WebPage&, CyberCore::ModelPlayerClient&);
 
     WebPage* page() { return m_page.get(); }
-    WebCore::ModelPlayerClient* client() { return m_client.get(); }
+    CyberCore::ModelPlayerClient* client() { return m_client.get(); }
 
     virtual std::optional<ModelIdentifier> modelIdentifier() = 0;
 
 private:
-    // WebCore::ModelPlayer overrides.
-    void load(WebCore::Model&, WebCore::LayoutSize) override;
-    void sizeDidChange(WebCore::LayoutSize) override;
+    // CyberCore::ModelPlayer overrides.
+    void load(CyberCore::Model&, CyberCore::LayoutSize) override;
+    void sizeDidChange(CyberCore::LayoutSize) override;
     PlatformLayer* layer() override;
     void enterFullscreen() override;
-    void getCamera(CompletionHandler<void(std::optional<WebCore::HTMLModelElementCamera>&&)>&&) override;
-    void setCamera(WebCore::HTMLModelElementCamera, CompletionHandler<void(bool success)>&&) override;
+    void getCamera(CompletionHandler<void(std::optional<CyberCore::HTMLModelElementCamera>&&)>&&) override;
+    void setCamera(CyberCore::HTMLModelElementCamera, CompletionHandler<void(bool success)>&&) override;
     void isPlayingAnimation(CompletionHandler<void(std::optional<bool>&&)>&&) override;
     void setAnimationIsPlaying(bool, CompletionHandler<void(bool success)>&&) override;
     void isLoopingAnimation(CompletionHandler<void(std::optional<bool>&&)>&&) override;
@@ -69,7 +69,7 @@ private:
     Vector<RetainPtr<id>> accessibilityChildren() override;
 
     WeakPtr<WebPage> m_page;
-    WeakPtr<WebCore::ModelPlayerClient> m_client;
+    WeakPtr<CyberCore::ModelPlayerClient> m_client;
 };
 
 }

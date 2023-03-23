@@ -31,7 +31,7 @@
 #include <libxml/xmlerror.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
     class CachedResourceLoader;
 
@@ -57,4 +57,4 @@ namespace WebCore {
 #endif
     };
 
-} // namespace WebCore
+} // namespace CyberCore

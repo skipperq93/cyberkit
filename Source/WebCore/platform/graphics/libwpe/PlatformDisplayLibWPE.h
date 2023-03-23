@@ -31,7 +31,7 @@
 
 struct wpe_renderer_backend_egl;
 
-namespace WebCore {
+namespace CyberCore {
 
 class PlatformDisplayLibWPE final : public PlatformDisplay {
 public:
@@ -51,7 +51,7 @@ private:
     struct wpe_renderer_backend_egl* m_backend { nullptr };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_PLATFORM_DISPLAY(PlatformDisplayLibWPE, WPE)
 

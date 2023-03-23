@@ -29,8 +29,8 @@
 #include <CyberCore/PasteboardItemInfo.h>
 #include <wtf/NeverDestroyed.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 WebPasteboardOverrides& WebPasteboardOverrides::sharedPasteboardOverrides()
 {
@@ -70,7 +70,7 @@ Vector<String> WebPasteboardOverrides::overriddenTypes(const String& pasteboardN
     return copyToVector(it->value.keys());
 }
 
-std::optional<WebCore::PasteboardItemInfo> WebPasteboardOverrides::overriddenInfo(const String& pasteboardName)
+std::optional<CyberCore::PasteboardItemInfo> WebPasteboardOverrides::overriddenInfo(const String& pasteboardName)
 {
     auto types = this->overriddenTypes(pasteboardName);
     if (types.isEmpty())
@@ -98,4 +98,4 @@ bool WebPasteboardOverrides::getDataForOverride(const String& pasteboardName, co
     return true;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

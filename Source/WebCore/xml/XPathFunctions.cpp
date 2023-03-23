@@ -40,7 +40,7 @@
 #include <wtf/SetForScope.h>
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace XPath {
 
 static inline bool isWhitespace(UChar c)

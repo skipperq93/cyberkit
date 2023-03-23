@@ -43,9 +43,9 @@
 #include <pal/spi/ios/SQLite3SPI.h>
 #endif
 
-using namespace WebCore;
+using namespace CyberCore;
 
-namespace WebKit {
+namespace CyberKit {
 
 static StorageTracker* storageTracker = nullptr;
 
@@ -643,4 +643,4 @@ uint64_t StorageTracker::diskUsageForOrigin(SecurityOrigin* origin)
     return FileSystem::fileSize(path).value_or(0);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -21,7 +21,7 @@
 
 #include "SVGElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGFontFaceFormatElement final : public SVGElement {
     WTF_MAKE_ISO_ALLOCATED(SVGFontFaceFormatElement);
@@ -35,4 +35,4 @@ private:
     bool rendererIsNeeded(const RenderStyle&) final { return false; }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

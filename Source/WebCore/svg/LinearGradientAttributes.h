@@ -21,7 +21,7 @@
 
 #include "GradientAttributes.h"
 
-namespace WebCore {
+namespace CyberCore {
 struct LinearGradientAttributes : GradientAttributes {
     LinearGradientAttributes()
         : m_x1()
@@ -64,4 +64,4 @@ private:
     bool m_y2Set : 1;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

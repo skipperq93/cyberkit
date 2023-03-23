@@ -39,7 +39,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 class GraphicsContextGL;
 
 class FakeXRView final : public RefCounted<FakeXRView> {
@@ -85,8 +85,8 @@ public:
     void scheduleOnNextFrame(Function<void()>&&);
     void addInputConnection(Ref<WebFakeXRInputController>&& input) { m_inputConnections.append(WTFMove(input)); };
 private:
-    WebCore::IntSize recommendedResolution(PlatformXR::SessionMode) final;
-    void initializeTrackingAndRendering(const WebCore::SecurityOriginData&, PlatformXR::SessionMode, const PlatformXR::Device::FeatureList&) final;
+    CyberCore::IntSize recommendedResolution(PlatformXR::SessionMode) final;
+    void initializeTrackingAndRendering(const CyberCore::SecurityOriginData&, PlatformXR::SessionMode, const PlatformXR::Device::FeatureList&) final;
     void shutDownTrackingAndRendering() final;
     bool supportsSessionShutdownNotification() const final { return m_supportsShutdownNotification; }
     void initializeReferenceSpace(PlatformXR::ReferenceSpaceType) final { }
@@ -102,7 +102,7 @@ private:
     bool m_supportsShutdownNotification { false };
     Timer m_frameTimer;
     RequestFrameCallback m_FrameCallback;
-    RefPtr<WebCore::GraphicsContextGL> m_gl;
+    RefPtr<CyberCore::GraphicsContextGL> m_gl;
     HashMap<PlatformXR::LayerHandle, PlatformGLObject> m_layers;
     uint32_t m_layerIndex { 0 };
     Vector<Ref<WebFakeXRInputController>> m_inputConnections;
@@ -136,6 +136,6 @@ private:
     PlatformXR::InputSourceHandle mInputSourceHandleIndex { 0 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBXR)

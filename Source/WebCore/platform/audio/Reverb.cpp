@@ -39,7 +39,7 @@
 #include <math.h>
 #include <wtf/MathExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // Empirical gain calibration tested across many impulse responses to ensure perceived volume is same as dry (unprocessed) signal
 constexpr float GainCalibration = -58;
@@ -238,6 +238,6 @@ size_t Reverb::latencyFrames() const
     return !m_convolvers.isEmpty() ? m_convolvers.first()->latencyFrames() : 0;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

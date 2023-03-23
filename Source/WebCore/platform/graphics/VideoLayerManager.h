@@ -29,7 +29,7 @@
 #include "PlatformLayer.h"
 #include <wtf/Function.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FloatRect;
 class IntSize;

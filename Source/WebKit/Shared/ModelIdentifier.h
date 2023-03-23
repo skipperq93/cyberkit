@@ -39,7 +39,7 @@ struct ModelIdentifier {
 #if ENABLE(ARKIT_INLINE_PREVIEW_MAC)
     String uuid;
 #elif ENABLE(ARKIT_INLINE_PREVIEW_IOS)
-    WebCore::GraphicsLayer::PlatformLayerID layerIdentifier;
+    CyberCore::GraphicsLayer::PlatformLayerID layerIdentifier;
 #endif
 };
 

@@ -51,15 +51,15 @@ public:
 
     bool canPreview(const String& mimeType) const;
 
-    void start(URL originatingPageURL, const String& mimeType, const WebCore::SystemPreviewInfo&);
+    void start(URL originatingPageURL, const String& mimeType, const CyberCore::SystemPreviewInfo&);
     void setDestinationURL(URL);
     void updateProgress(float);
     void finish(URL);
     void cancel();
-    void fail(const WebCore::ResourceError&);
+    void fail(const CyberCore::ResourceError&);
 
     WebPageProxy& page() { return m_webPageProxy; }
-    const WebCore::SystemPreviewInfo& previewInfo() const { return m_systemPreviewInfo; }
+    const CyberCore::SystemPreviewInfo& previewInfo() const { return m_systemPreviewInfo; }
 
     void triggerSystemPreviewAction();
 
@@ -67,7 +67,7 @@ public:
 
 private:
     WebPageProxy& m_webPageProxy;
-    WebCore::SystemPreviewInfo m_systemPreviewInfo;
+    CyberCore::SystemPreviewInfo m_systemPreviewInfo;
     URL m_destinationURL;
     URL m_originatingPageURL;
 #if USE(QUICK_LOOK)

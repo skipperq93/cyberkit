@@ -27,7 +27,7 @@
 
 #include <wtf/Function.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class NetworkStorageSession;
 

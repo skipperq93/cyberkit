@@ -193,10 +193,10 @@ struct AuxiliaryProcessInitializationParameters {
     String uiProcessName;
     String clientIdentifier;
     String clientBundleIdentifier;
-    std::optional<WebCore::ProcessIdentifier> processIdentifier;
+    std::optional<CyberCore::ProcessIdentifier> processIdentifier;
     IPC::Connection::Identifier connectionIdentifier;
     HashMap<String, String> extraInitializationData;
-    WebCore::AuxiliaryProcessType processType;
+    CyberCore::AuxiliaryProcessType processType;
 #if PLATFORM(COCOA)
     SDKAlignedBehaviors clientSDKAlignedBehaviors;
 #endif

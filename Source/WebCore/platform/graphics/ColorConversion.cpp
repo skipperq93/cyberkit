@@ -32,7 +32,7 @@
 #include "DestinationColorSpace.h"
 #include <wtf/MathExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // MARK: Lab-Like to LCH-Like conversion utilities.
 
@@ -450,4 +450,4 @@ ColorComponents<float, 4> convertAndResolveColorComponents(ColorSpace inputColor
 #endif
 }
 
-} // namespace WebCore
+} // namespace CyberCore

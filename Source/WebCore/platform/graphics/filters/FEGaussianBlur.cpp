@@ -30,7 +30,7 @@
 #include "Filter.h"
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<FEGaussianBlur> FEGaussianBlur::create(float x, float y, EdgeModeType edgeMode)
 {
@@ -172,4 +172,4 @@ TextStream& FEGaussianBlur::externalRepresentation(TextStream& ts, FilterReprese
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

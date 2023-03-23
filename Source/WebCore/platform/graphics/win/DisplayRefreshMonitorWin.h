@@ -28,7 +28,7 @@
 #include "DisplayRefreshMonitor.h"
 #include <wtf/RunLoop.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DisplayRefreshMonitorWin : public DisplayRefreshMonitor {
 public:
@@ -46,4 +46,4 @@ private:
     DisplayUpdate m_currentUpdate;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

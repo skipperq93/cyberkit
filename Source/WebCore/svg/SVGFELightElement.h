@@ -25,7 +25,7 @@
 #include "LightSource.h"
 #include "SVGElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGFilter;
 
@@ -81,4 +81,4 @@ private:
     Ref<SVGAnimatedNumber> m_limitingConeAngle { SVGAnimatedNumber::create(this) };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

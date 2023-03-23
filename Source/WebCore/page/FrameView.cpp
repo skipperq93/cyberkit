@@ -148,7 +148,7 @@
 #define FRAME_ID m_frame->frameID().object().toUInt64()
 #define FRAMEVIEW_RELEASE_LOG(channel, fmt, ...) RELEASE_LOG(channel, "%p - [pageID=%" PRIu64 ", frameID=%" PRIu64 ", isMainFrame=%d] FrameView::" fmt, this, PAGE_ID, FRAME_ID, m_frame->isMainFrame(), ##__VA_ARGS__)
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -704,7 +704,7 @@ void FrameView::applyPaginationToViewport()
     Pagination pagination;
     Overflow overflowY = documentOrBodyRenderer->effectiveOverflowY();
     if (overflowY == Overflow::PagedX || overflowY == Overflow::PagedY) {
-        pagination.mode = WebCore::paginationModeForRenderStyle(documentOrBodyRenderer->style());
+        pagination.mode = CyberCore::paginationModeForRenderStyle(documentOrBodyRenderer->style());
         GapLength columnGapLength = documentOrBodyRenderer->style().columnGap();
         pagination.gap = 0;
         if (!columnGapLength.isNormal()) {
@@ -1121,7 +1121,7 @@ int FrameView::footerHeight() const
 
 float FrameView::topContentInset(TopContentInsetType contentInsetTypeToReturn) const
 {
-    if (platformWidget() && contentInsetTypeToReturn == TopContentInsetType::WebCoreOrPlatformContentInset)
+    if (platformWidget() && contentInsetTypeToReturn == TopContentInsetType::CyberCoreOrPlatformContentInset)
         return platformTopContentInset();
 
     if (!m_frame->isMainFrame())
@@ -2569,7 +2569,7 @@ void FrameView::textFragmentIndicatorTimerFired()
     
     maintainScrollPositionAtScrollToTextFragmentRange(range);
     
-    auto textIndicator = TextIndicator::createWithRange(range, { TextIndicatorOption::DoNotClipToVisibleRect }, WebCore::TextIndicatorPresentationTransition::Bounce);
+    auto textIndicator = TextIndicator::createWithRange(range, { TextIndicatorOption::DoNotClipToVisibleRect }, CyberCore::TextIndicatorPresentationTransition::Bounce);
     
     auto* page = m_frame->page();
     
@@ -6303,7 +6303,7 @@ LayoutRect FrameView::getPossiblyFixedRectToExpose(const LayoutRect& visibleRect
     return requiredVisualViewport;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #undef PAGE_ID
 #undef FRAME_ID

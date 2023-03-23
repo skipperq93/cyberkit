@@ -25,7 +25,7 @@
 #include "SVGFilterPrimitiveStandardAttributes.h"
 #include <wtf/SortedArrayMap.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 template<>
 inline unsigned SVGIDLEnumLimits<CompositeOperationType>::highestExposedEnumValue() { return FECOMPOSITE_OPERATOR_ARITHMETIC; }
@@ -117,4 +117,4 @@ private:
     Ref<SVGAnimatedNumber> m_k4 { SVGAnimatedNumber::create(this) };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

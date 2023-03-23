@@ -36,7 +36,7 @@
 
 #import <pal/ios/QuickLookSoftLink.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 NSSet *QLPreviewGetSupportedMIMETypesSet()
 {
@@ -141,6 +141,6 @@ NSString *createTemporaryFileForQuickLook(NSString *fileName)
     return contentPath;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(QUICK_LOOK)

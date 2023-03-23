@@ -31,8 +31,8 @@
 #import <CyberCore/PlatformCALayerCocoa.h>
 #import <wtf/RetainPtr.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 PlatformCALayerRemoteTiledBacking::PlatformCALayerRemoteTiledBacking(LayerType layerType, PlatformCALayerClient* owner, RemoteLayerTreeContext& context)
     : PlatformCALayerRemote(layerType, owner, context)
@@ -54,13 +54,13 @@ void PlatformCALayerRemoteTiledBacking::setNeedsDisplay()
     m_tileController->setNeedsDisplay();
 }
 
-const WebCore::PlatformCALayerList* PlatformCALayerRemoteTiledBacking::customSublayers() const
+const CyberCore::PlatformCALayerList* PlatformCALayerRemoteTiledBacking::customSublayers() const
 {
     m_customSublayers = m_tileController->containerLayers();
     return &m_customSublayers;
 }
 
-void PlatformCALayerRemoteTiledBacking::setBounds(const WebCore::FloatRect& bounds)
+void PlatformCALayerRemoteTiledBacking::setBounds(const CyberCore::FloatRect& bounds)
 {
     PlatformCALayerRemote::setBounds(bounds);
     m_tileController->tileCacheLayerBoundsChanged();
@@ -111,9 +111,9 @@ void PlatformCALayerRemoteTiledBacking::setBorderWidth(float borderWidth)
     m_tileController->setTileDebugBorderWidth(borderWidth / 2);
 }
 
-void PlatformCALayerRemoteTiledBacking::setBorderColor(const WebCore::Color& color)
+void PlatformCALayerRemoteTiledBacking::setBorderColor(const CyberCore::Color& color)
 {
     m_tileController->setTileDebugBorderColor(color);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

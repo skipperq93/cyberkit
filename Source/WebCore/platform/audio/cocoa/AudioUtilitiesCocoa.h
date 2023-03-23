@@ -27,7 +27,7 @@
 
 #if ENABLE(WEB_AUDIO)
 
-namespace WebCore {
+namespace CyberCore {
 class AudioBus;
 
 WEBCORE_EXPORT AudioStreamBasicDescription audioStreamBasicDescriptionForAudioBus(AudioBus&);

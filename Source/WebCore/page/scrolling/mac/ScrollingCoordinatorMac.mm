@@ -45,7 +45,7 @@
 #import "TiledBacking.h"
 #import <wtf/MainThread.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<ScrollingCoordinator> ScrollingCoordinator::create(Page* page)
 {
@@ -103,6 +103,6 @@ void ScrollingCoordinatorMac::updateTiledScrollingIndicator()
     tiledBacking->setScrollingModeIndication(indicatorMode);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ASYNC_SCROLLING) && ENABLE(SCROLLING_THREAD)

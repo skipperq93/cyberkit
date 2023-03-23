@@ -27,10 +27,10 @@
 
 #import <CyberKit/WKWebsiteDataStore.h>
 
-namespace WebCore {
+namespace CyberCore {
 struct NotificationData;
 };
 
 @interface _WKNotificationData ()
--(instancetype)initWithCoreData:(const WebCore::NotificationData&)coreData dataStore:(WKWebsiteDataStore *)dataStore;
+-(instancetype)initWithCoreData:(const CyberCore::NotificationData&)coreData dataStore:(WKWebsiteDataStore *)dataStore;
 @end

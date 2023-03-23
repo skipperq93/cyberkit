@@ -46,7 +46,7 @@
 namespace WebKit::Daemon {
 
 #if ENABLE(SERVICE_WORKER)
-void Coder<WebCore::PushSubscriptionData>::encode(Encoder& encoder, const WebCore::PushSubscriptionData& instance)
+void Coder<CyberCore::PushSubscriptionData>::encode(Encoder& encoder, const CyberCore::PushSubscriptionData& instance)
 {
     encoder << instance.identifier;
     encoder << instance.endpoint;
@@ -56,9 +56,9 @@ void Coder<WebCore::PushSubscriptionData>::encode(Encoder& encoder, const WebCor
     encoder << instance.sharedAuthenticationSecret;
 }
 
-std::optional<WebCore::PushSubscriptionData> Coder<WebCore::PushSubscriptionData>::decode(Decoder& decoder)
+std::optional<CyberCore::PushSubscriptionData> Coder<CyberCore::PushSubscriptionData>::decode(Decoder& decoder)
 {
-    std::optional<WebCore::PushSubscriptionIdentifier> identifier;
+    std::optional<CyberCore::PushSubscriptionIdentifier> identifier;
     decoder >> identifier;
     if (!identifier)
         return std::nullopt;
@@ -68,7 +68,7 @@ std::optional<WebCore::PushSubscriptionData> Coder<WebCore::PushSubscriptionData
     if (!endpoint)
         return std::nullopt;
 
-    std::optional<std::optional<WebCore::EpochTimeStamp>> expirationTime;
+    std::optional<std::optional<CyberCore::EpochTimeStamp>> expirationTime;
     decoder >> expirationTime;
     if (!expirationTime)
         return std::nullopt;
@@ -113,7 +113,7 @@ std::optional<WTF::WallTime> Coder<WTF::WallTime>::decode(Decoder& decoder)
     return WallTime::fromRawSeconds(*value);
 }
 
-void Coder<WebCore::CertificateInfo>::encode(Encoder& encoder, const WebCore::CertificateInfo& instance)
+void Coder<CyberCore::CertificateInfo>::encode(Encoder& encoder, const CyberCore::CertificateInfo& instance)
 {
 #if PLATFORM(COCOA)
     auto data = adoptCF(SecTrustSerialize(instance.trust().get(), nullptr));
@@ -128,7 +128,7 @@ void Coder<WebCore::CertificateInfo>::encode(Encoder& encoder, const WebCore::Ce
 #endif
 }
 
-std::optional<WebCore::CertificateInfo> Coder<WebCore::CertificateInfo>::decode(Decoder& decoder)
+std::optional<CyberCore::CertificateInfo> Coder<CyberCore::CertificateInfo>::decode(Decoder& decoder)
 {
 #if PLATFORM(COCOA)
     std::optional<bool> hasTrust;
@@ -136,7 +136,7 @@ std::optional<WebCore::CertificateInfo> Coder<WebCore::CertificateInfo>::decode(
     if (!hasTrust)
         return std::nullopt;
     if (!*hasTrust)
-        return WebCore::CertificateInfo();
+        return CyberCore::CertificateInfo();
     std::optional<uint64_t> length;
     decoder >> length;
     if (!length)
@@ -147,64 +147,64 @@ std::optional<WebCore::CertificateInfo> Coder<WebCore::CertificateInfo>::decode(
     auto trust = adoptCF(SecTrustDeserialize(adoptCF(CFDataCreate(nullptr, bytes.data(), bytes.size())).get(), nullptr));
     if (!trust)
         return std::nullopt;
-    return WebCore::CertificateInfo(WTFMove(trust));
+    return CyberCore::CertificateInfo(WTFMove(trust));
 #else
-    return WebCore::CertificateInfo();
+    return CyberCore::CertificateInfo();
 #endif
 }
 
-template<> struct Coder<WebCore::PCM::SourceSite> {
-    static void encode(Encoder& encoder, const WebCore::PCM::SourceSite& instance)
+template<> struct Coder<CyberCore::PCM::SourceSite> {
+    static void encode(Encoder& encoder, const CyberCore::PCM::SourceSite& instance)
     {
         encoder << instance.registrableDomain;
     }
-    static std::optional<WebCore::PCM::SourceSite> decode(Decoder& decoder)
+    static std::optional<CyberCore::PCM::SourceSite> decode(Decoder& decoder)
     {
-        std::optional<WebCore::RegistrableDomain> registrableDomain;
+        std::optional<CyberCore::RegistrableDomain> registrableDomain;
         decoder >> registrableDomain;
         if (!registrableDomain)
             return std::nullopt;
-        return { WebCore::PCM::SourceSite { WTFMove(*registrableDomain) } };
+        return { CyberCore::PCM::SourceSite { WTFMove(*registrableDomain) } };
     }
 };
 
-template<> struct Coder<WebCore::PCM::AttributionDestinationSite> {
-    static void encode(Encoder& encoder, const WebCore::PCM::AttributionDestinationSite& instance)
+template<> struct Coder<CyberCore::PCM::AttributionDestinationSite> {
+    static void encode(Encoder& encoder, const CyberCore::PCM::AttributionDestinationSite& instance)
     {
         encoder << instance.registrableDomain;
     }
-    static std::optional<WebCore::PCM::AttributionDestinationSite> decode(Decoder& decoder)
+    static std::optional<CyberCore::PCM::AttributionDestinationSite> decode(Decoder& decoder)
     {
-        std::optional<WebCore::RegistrableDomain> registrableDomain;
+        std::optional<CyberCore::RegistrableDomain> registrableDomain;
         decoder >> registrableDomain;
         if (!registrableDomain)
             return std::nullopt;
-        return { WebCore::PCM::AttributionDestinationSite { WTFMove(*registrableDomain) } };
+        return { CyberCore::PCM::AttributionDestinationSite { WTFMove(*registrableDomain) } };
     }
 };
 
-template<> struct Coder<WebCore::PCM::EphemeralNonce> {
-    static void encode(Encoder& encoder, const WebCore::PCM::EphemeralNonce& instance)
+template<> struct Coder<CyberCore::PCM::EphemeralNonce> {
+    static void encode(Encoder& encoder, const CyberCore::PCM::EphemeralNonce& instance)
     {
         encoder << instance.nonce;
     }
-    static std::optional<WebCore::PCM::EphemeralNonce> decode(Decoder& decoder)
+    static std::optional<CyberCore::PCM::EphemeralNonce> decode(Decoder& decoder)
     {
         std::optional<String> nonce;
         decoder >> nonce;
         if (!nonce)
             return std::nullopt;
-        return { WebCore::PCM::EphemeralNonce { WTFMove(*nonce) } };
+        return { CyberCore::PCM::EphemeralNonce { WTFMove(*nonce) } };
     }
 };
 
-template<> struct Coder<WebCore::PCM::AttributionTimeToSendData> {
-    static void encode(Encoder& encoder, const WebCore::PCM::AttributionTimeToSendData& instance)
+template<> struct Coder<CyberCore::PCM::AttributionTimeToSendData> {
+    static void encode(Encoder& encoder, const CyberCore::PCM::AttributionTimeToSendData& instance)
     {
         encoder << instance.sourceEarliestTimeToSend;
         encoder << instance.destinationEarliestTimeToSend;
     }
-    static std::optional<WebCore::PCM::AttributionTimeToSendData> decode(Decoder& decoder)
+    static std::optional<CyberCore::PCM::AttributionTimeToSendData> decode(Decoder& decoder)
     {
         std::optional<std::optional<WallTime>> sourceEarliestTimeToSend;
         decoder >> sourceEarliestTimeToSend;
@@ -220,7 +220,7 @@ template<> struct Coder<WebCore::PCM::AttributionTimeToSendData> {
     }
 };
 
-void Coder<WebCore::PrivateClickMeasurement, void>::encode(Encoder& encoder, const WebCore::PrivateClickMeasurement& instance)
+void Coder<CyberCore::PrivateClickMeasurement, void>::encode(Encoder& encoder, const CyberCore::PrivateClickMeasurement& instance)
 {
     encoder << instance.sourceID();
     encoder << instance.sourceSite();
@@ -234,19 +234,19 @@ void Coder<WebCore::PrivateClickMeasurement, void>::encode(Encoder& encoder, con
     encoder << instance.sourceApplicationBundleID();
 }
 
-std::optional<WebCore::PrivateClickMeasurement> Coder<WebCore::PrivateClickMeasurement, void>::decode(Decoder& decoder)
+std::optional<CyberCore::PrivateClickMeasurement> Coder<CyberCore::PrivateClickMeasurement, void>::decode(Decoder& decoder)
 {
     std::optional<uint8_t> sourceID;
     decoder >> sourceID;
     if (!sourceID)
         return std::nullopt;
 
-    std::optional<WebCore::PCM::SourceSite> sourceSite;
+    std::optional<CyberCore::PCM::SourceSite> sourceSite;
     decoder >> sourceSite;
     if (!sourceSite)
         return std::nullopt;
 
-    std::optional<WebCore::PCM::AttributionDestinationSite> destinationSite;
+    std::optional<CyberCore::PCM::AttributionDestinationSite> destinationSite;
     decoder >> destinationSite;
     if (!destinationSite)
         return std::nullopt;
@@ -256,7 +256,7 @@ std::optional<WebCore::PrivateClickMeasurement> Coder<WebCore::PrivateClickMeasu
     if (!timeOfAdClick)
         return std::nullopt;
 
-    std::optional<WebCore::PCM::AttributionEphemeral> isEphemeral;
+    std::optional<CyberCore::PCM::AttributionEphemeral> isEphemeral;
     decoder >> isEphemeral;
     if (!isEphemeral)
         return std::nullopt;
@@ -266,17 +266,17 @@ std::optional<WebCore::PrivateClickMeasurement> Coder<WebCore::PrivateClickMeasu
     if (!adamID)
         return std::nullopt;
 
-    std::optional<std::optional<WebCore::PCM::AttributionTriggerData>> attributionTriggerData;
+    std::optional<std::optional<CyberCore::PCM::AttributionTriggerData>> attributionTriggerData;
     decoder >> attributionTriggerData;
     if (!attributionTriggerData)
         return std::nullopt;
 
-    std::optional<WebCore::PCM::AttributionTimeToSendData> timesToSend;
+    std::optional<CyberCore::PCM::AttributionTimeToSendData> timesToSend;
     decoder >> timesToSend;
     if (!timesToSend)
         return std::nullopt;
 
-    std::optional<std::optional<WebCore::PCM::EphemeralNonce>> ephemeralSourceNonce;
+    std::optional<std::optional<CyberCore::PCM::EphemeralNonce>> ephemeralSourceNonce;
     decoder >> ephemeralSourceNonce;
     if (!ephemeralSourceNonce)
         return std::nullopt;
@@ -300,7 +300,7 @@ std::optional<WebCore::PrivateClickMeasurement> Coder<WebCore::PrivateClickMeasu
     } };
 }
 
-void Coder<WebCore::PCM::AttributionTriggerData, void>::encode(Encoder& encoder, const WebCore::PCM::AttributionTriggerData& instance)
+void Coder<CyberCore::PCM::AttributionTriggerData, void>::encode(Encoder& encoder, const CyberCore::PCM::AttributionTriggerData& instance)
 {
     encoder << instance.data;
     encoder << instance.priority;
@@ -310,34 +310,34 @@ void Coder<WebCore::PCM::AttributionTriggerData, void>::encode(Encoder& encoder,
     encoder << instance.destinationSite;
 }
 
-std::optional<WebCore::PCM::AttributionTriggerData> Coder<WebCore::PCM::AttributionTriggerData, void>::decode(Decoder& decoder)
+std::optional<CyberCore::PCM::AttributionTriggerData> Coder<CyberCore::PCM::AttributionTriggerData, void>::decode(Decoder& decoder)
 {
     std::optional<uint8_t> data;
     decoder >> data;
     if (!data)
         return std::nullopt;
 
-    std::optional<WebCore::PCM::AttributionTriggerData::Priority::PriorityValue> priority;
+    std::optional<CyberCore::PCM::AttributionTriggerData::Priority::PriorityValue> priority;
     decoder >> priority;
     if (!priority)
         return std::nullopt;
 
-    std::optional<WebCore::PCM::WasSent> wasSent;
+    std::optional<CyberCore::PCM::WasSent> wasSent;
     decoder >> wasSent;
     if (!wasSent)
         return std::nullopt;
 
-    std::optional<std::optional<WebCore::RegistrableDomain>> sourceRegistrableDomain;
+    std::optional<std::optional<CyberCore::RegistrableDomain>> sourceRegistrableDomain;
     decoder >> sourceRegistrableDomain;
     if (!sourceRegistrableDomain)
         return std::nullopt;
 
-    std::optional<std::optional<WebCore::PCM::EphemeralNonce>> ephemeralDestinationNonce;
+    std::optional<std::optional<CyberCore::PCM::EphemeralNonce>> ephemeralDestinationNonce;
     decoder >> ephemeralDestinationNonce;
     if (!ephemeralDestinationNonce)
         return std::nullopt;
 
-    std::optional<std::optional<WebCore::RegistrableDomain>> destinationSite;
+    std::optional<std::optional<CyberCore::RegistrableDomain>> destinationSite;
     decoder >> destinationSite;
     if (!destinationSite)
         return std::nullopt;
@@ -392,15 +392,15 @@ std::optional<WebPushMessage> Coder<WebPushMessage, void>::decode(Decoder& decod
     } };
 }
 
-void Coder<WebCore::ExceptionData, void>::encode(Encoder& encoder, const WebCore::ExceptionData& instance)
+void Coder<CyberCore::ExceptionData, void>::encode(Encoder& encoder, const CyberCore::ExceptionData& instance)
 {
     encoder << instance.code;
     encoder << instance.message;
 }
 
-std::optional<WebCore::ExceptionData> Coder<WebCore::ExceptionData, void>::decode(Decoder& decoder)
+std::optional<CyberCore::ExceptionData> Coder<CyberCore::ExceptionData, void>::decode(Decoder& decoder)
 {
-    std::optional<WebCore::ExceptionCode> code;
+    std::optional<CyberCore::ExceptionCode> code;
     decoder >> code;
     if (!code)
         return std::nullopt;
@@ -410,17 +410,17 @@ std::optional<WebCore::ExceptionData> Coder<WebCore::ExceptionData, void>::decod
     if (!message)
         return std::nullopt;
 
-    return WebCore::ExceptionData { WTFMove(*code), WTFMove(*message) };
+    return CyberCore::ExceptionData { WTFMove(*code), WTFMove(*message) };
 }
 
-void Coder<WebCore::SecurityOriginData, void>::encode(Encoder& encoder, const WebCore::SecurityOriginData& instance)
+void Coder<CyberCore::SecurityOriginData, void>::encode(Encoder& encoder, const CyberCore::SecurityOriginData& instance)
 {
     encoder << instance.protocol();
     encoder << instance.host();
     encoder << instance.port();
 }
 
-std::optional<WebCore::SecurityOriginData> Coder<WebCore::SecurityOriginData, void>::decode(Decoder& decoder)
+std::optional<CyberCore::SecurityOriginData> Coder<CyberCore::SecurityOriginData, void>::decode(Decoder& decoder)
 {
     std::optional<String> protocol;
     decoder >> protocol;
@@ -437,36 +437,36 @@ std::optional<WebCore::SecurityOriginData> Coder<WebCore::SecurityOriginData, vo
     if (!port)
         return std::nullopt;
     
-    WebCore::SecurityOriginData data { WTFMove(*protocol), WTFMove(*host), WTFMove(*port) };
+    CyberCore::SecurityOriginData data { WTFMove(*protocol), WTFMove(*host), WTFMove(*port) };
     if (data.isHashTableDeletedValue())
         return std::nullopt;
 
     return data;
 }
 
-void Coder<WebCore::RegistrableDomain, void>::encode(Encoder& encoder, const WebCore::RegistrableDomain& instance)
+void Coder<CyberCore::RegistrableDomain, void>::encode(Encoder& encoder, const CyberCore::RegistrableDomain& instance)
 {
     encoder << instance.string();
 }
 
-std::optional<WebCore::RegistrableDomain> Coder<WebCore::RegistrableDomain, void>::decode(Decoder& decoder)
+std::optional<CyberCore::RegistrableDomain> Coder<CyberCore::RegistrableDomain, void>::decode(Decoder& decoder)
 {
     std::optional<String> host;
     decoder >> host;
     if (!host)
         return std::nullopt;
 
-    return { WebCore::RegistrableDomain::fromRawString(WTFMove(*host)) };
+    return { CyberCore::RegistrableDomain::fromRawString(WTFMove(*host)) };
 }
 
-void Coder<WebCore::PushSubscriptionIdentifier>::encode(Encoder& encoder, const WebCore::PushSubscriptionIdentifier& instance)
+void Coder<CyberCore::PushSubscriptionIdentifier>::encode(Encoder& encoder, const CyberCore::PushSubscriptionIdentifier& instance)
 {
     instance.encode(encoder);
 }
 
-std::optional<WebCore::PushSubscriptionIdentifier> Coder<WebCore::PushSubscriptionIdentifier>::decode(Decoder& decoder)
+std::optional<CyberCore::PushSubscriptionIdentifier> Coder<CyberCore::PushSubscriptionIdentifier>::decode(Decoder& decoder)
 {
-    return WebCore::PushSubscriptionIdentifier::decode(decoder);
+    return CyberCore::PushSubscriptionIdentifier::decode(decoder);
 }
 
 }

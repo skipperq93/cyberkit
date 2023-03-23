@@ -33,7 +33,7 @@
 #include "MediaPlaybackTargetMock.h"
 #include "WebMediaSessionManager.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static const Seconds timerInterval { 100_ms };
 
@@ -58,7 +58,7 @@ bool MediaPlaybackTargetPickerMock::externalOutputDeviceAvailable()
 Ref<MediaPlaybackTarget> MediaPlaybackTargetPickerMock::playbackTarget()
 {
     LOG(Media, "MediaPlaybackTargetPickerMock::playbackTarget");
-    return WebCore::MediaPlaybackTargetMock::create(m_deviceName, m_state);
+    return CyberCore::MediaPlaybackTargetMock::create(m_deviceName, m_state);
 }
 
 void MediaPlaybackTargetPickerMock::showPlaybackTargetPicker(PlatformView*, const FloatRect&, bool checkActiveRoute, bool useDarkAppearance)
@@ -139,6 +139,6 @@ void MediaPlaybackTargetPickerMock::dismissPopup()
     currentDeviceDidChange();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WIRELESS_PLAYBACK_TARGET) && !PLATFORM(IOS_FAMILY)

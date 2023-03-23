@@ -33,7 +33,7 @@
 #include <wtf/Noncopyable.h>
 #include <wtf/Ref.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ResourceHandle;
 class ResourceHandleClient;
@@ -69,4 +69,4 @@ private:
     ResourceHandleInternal* d();
 };
 
-} // namespace WebCore
+} // namespace CyberCore

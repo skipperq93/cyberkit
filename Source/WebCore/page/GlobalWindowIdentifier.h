@@ -30,7 +30,7 @@
 #include <wtf/Hasher.h>
 #include <wtf/ObjectIdentifier.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum WindowIdentifierType { };
 using WindowIdentifier = ObjectIdentifier<WindowIdentifierType>;
@@ -76,27 +76,27 @@ std::optional<GlobalWindowIdentifier> GlobalWindowIdentifier::decode(Decoder& de
     return { { WTFMove(*processIdentifier), WTFMove(*windowIdentifier) } };
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
 struct GlobalWindowIdentifierHash {
-    static unsigned hash(const WebCore::GlobalWindowIdentifier& key) { return computeHash(key); }
-    static bool equal(const WebCore::GlobalWindowIdentifier& a, const WebCore::GlobalWindowIdentifier& b) { return a == b; }
+    static unsigned hash(const CyberCore::GlobalWindowIdentifier& key) { return computeHash(key); }
+    static bool equal(const CyberCore::GlobalWindowIdentifier& a, const CyberCore::GlobalWindowIdentifier& b) { return a == b; }
     static const bool safeToCompareToEmptyOrDeleted = true;
 };
 
-template<> struct HashTraits<WebCore::GlobalWindowIdentifier> : GenericHashTraits<WebCore::GlobalWindowIdentifier> {
-    static WebCore::GlobalWindowIdentifier emptyValue() { return { }; }
+template<> struct HashTraits<CyberCore::GlobalWindowIdentifier> : GenericHashTraits<CyberCore::GlobalWindowIdentifier> {
+    static CyberCore::GlobalWindowIdentifier emptyValue() { return { }; }
 
-    static void constructDeletedValue(WebCore::GlobalWindowIdentifier& slot)
+    static void constructDeletedValue(CyberCore::GlobalWindowIdentifier& slot)
     {
-        new (NotNull, &slot.processIdentifier) WebCore::ProcessIdentifier(WTF::HashTableDeletedValue);
-        new (NotNull, &slot.windowIdentifier) WebCore::WindowIdentifier(WTF::HashTableDeletedValue);
+        new (NotNull, &slot.processIdentifier) CyberCore::ProcessIdentifier(WTF::HashTableDeletedValue);
+        new (NotNull, &slot.windowIdentifier) CyberCore::WindowIdentifier(WTF::HashTableDeletedValue);
     }
-    static bool isDeletedValue(const WebCore::GlobalWindowIdentifier& slot) { return slot.windowIdentifier.isHashTableDeletedValue(); }
+    static bool isDeletedValue(const CyberCore::GlobalWindowIdentifier& slot) { return slot.windowIdentifier.isHashTableDeletedValue(); }
 };
 
-template<> struct DefaultHash<WebCore::GlobalWindowIdentifier> : GlobalWindowIdentifierHash { };
+template<> struct DefaultHash<CyberCore::GlobalWindowIdentifier> : GlobalWindowIdentifierHash { };
 
 } // namespace WTF

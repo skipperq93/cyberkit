@@ -81,12 +81,12 @@ struct RecordMetaData {
 struct RecordHeader {
     double insertionTime { 0 };
     uint64_t size { 0 };
-    WebCore::FetchHeaders::Guard requestHeadersGuard { WebCore::FetchHeaders::Guard::None };
-    WebCore::ResourceRequest request;
-    WebCore::FetchOptions options;
+    CyberCore::FetchHeaders::Guard requestHeadersGuard { CyberCore::FetchHeaders::Guard::None };
+    CyberCore::ResourceRequest request;
+    CyberCore::FetchOptions options;
     String referrer;
-    WebCore::FetchHeaders::Guard responseHeadersGuard { WebCore::FetchHeaders::Guard::None };
-    WebCore::ResourceResponse response;
+    CyberCore::FetchHeaders::Guard responseHeadersGuard { CyberCore::FetchHeaders::Guard::None };
+    CyberCore::ResourceResponse response;
     uint64_t responseBodySize { 0 };
 };
 
@@ -219,18 +219,18 @@ static std::optional<RecordHeader> decodeRecordHeader(Span<const uint8_t> header
     if (!size)
         return std::nullopt;
 
-    std::optional<WebCore::FetchHeaders::Guard> requestHeadersGuard;
+    std::optional<CyberCore::FetchHeaders::Guard> requestHeadersGuard;
     decoder >> requestHeadersGuard;
     if (!requestHeadersGuard)
         return std::nullopt;
 
-    std::optional<WebCore::ResourceRequest> request;
+    std::optional<CyberCore::ResourceRequest> request;
     decoder >> request;
     if (!request)
         return std::nullopt;
 
-    WebCore::FetchOptions options;
-    if (!WebCore::FetchOptions::decodePersistent(decoder, options))
+    CyberCore::FetchOptions options;
+    if (!CyberCore::FetchOptions::decodePersistent(decoder, options))
         return std::nullopt;
 
     std::optional<String> referrer;
@@ -238,13 +238,13 @@ static std::optional<RecordHeader> decodeRecordHeader(Span<const uint8_t> header
     if (!referrer)
         return std::nullopt;
 
-    std::optional<WebCore::FetchHeaders::Guard> responseHeadersGuard;
+    std::optional<CyberCore::FetchHeaders::Guard> responseHeadersGuard;
     decoder >> responseHeadersGuard;
     if (!responseHeadersGuard)
         return std::nullopt;
 
-    WebCore::ResourceResponse response;
-    if (!WebCore::ResourceResponse::decode(decoder, response))
+    CyberCore::ResourceResponse response;
+    if (!CyberCore::ResourceResponse::decode(decoder, response))
         return std::nullopt;
 
     std::optional<uint64_t> responseBodySize;
@@ -290,7 +290,7 @@ static std::optional<StoredRecordInformation> readRecordInfoFromFileData(const F
         return std::nullopt;
 
     CacheStorageRecordInformation info { metaData->key, header->insertionTime, 0, 0, header->responseBodySize, header->request.url(), false, { } };
-    info.updateVaryHeaders(header->request, header->response.httpHeaderField(WebCore::HTTPHeaderName::Vary));
+    info.updateVaryHeaders(header->request, header->response.httpHeaderField(CyberCore::HTTPHeaderName::Vary));
     return StoredRecordInformation { info, *metaData, *header };
 }
 
@@ -300,7 +300,7 @@ std::optional<CacheStorageRecord> CacheStorageDiskStore::readRecordFromFileData(
     if (!storedInfo)
         return std::nullopt;
 
-    std::optional<WebCore::DOMCacheEngine::ResponseBody> responseBody;
+    std::optional<CyberCore::DOMCacheEngine::ResponseBody> responseBody;
     if (storedInfo->metaData.isBodyInline) {
         size_t bodyOffset = storedInfo->metaData.headerOffset + storedInfo->metaData.headerSize;
         size_t bodySize = storedInfo->metaData.bodySize;
@@ -311,12 +311,12 @@ std::optional<CacheStorageRecord> CacheStorageDiskStore::readRecordFromFileData(
         if (storedInfo->metaData.bodyHash != computeSHA1(bodyData, m_salt))
             return std::nullopt;
 
-        responseBody = WebCore::SharedBuffer::create(bodyData.data(), bodyData.size());
+        responseBody = CyberCore::SharedBuffer::create(bodyData.data(), bodyData.size());
     } else {
         if (blobBuffer.isEmpty())
             return std::nullopt;
 
-        auto sharedBuffer = WebCore::SharedBuffer::create(blobBuffer.data(), blobBuffer.size());
+        auto sharedBuffer = CyberCore::SharedBuffer::create(blobBuffer.data(), blobBuffer.size());
         auto bodyData = Span { sharedBuffer->data(), sharedBuffer->size() };
         if (storedInfo->metaData.bodyHash != computeSHA1(bodyData, m_salt))
             return std::nullopt;
@@ -447,7 +447,7 @@ static Vector<uint8_t> encodeRecordHeader(CacheStorageRecord&& record)
     record.options.encodePersistent(encoder);
     encoder << record.referrer;
     encoder << record.responseHeadersGuard;
-    encoder << WebCore::ResourceResponse::fromCrossThreadData(WTFMove(record.responseData));
+    encoder << CyberCore::ResourceResponse::fromCrossThreadData(WTFMove(record.responseData));
     encoder << record.responseBodySize;
     encoder.encodeChecksum();
 
@@ -456,10 +456,10 @@ static Vector<uint8_t> encodeRecordHeader(CacheStorageRecord&& record)
 
 static Vector<uint8_t> encodeRecordBody(const CacheStorageRecord& record)
 {
-    return WTF::switchOn(record.responseBody, [](const Ref<WebCore::FormData>& formData) {
+    return WTF::switchOn(record.responseBody, [](const Ref<CyberCore::FormData>& formData) {
         // FIXME: Store form data body.
         return Vector<uint8_t> { };
-    }, [&](const Ref<WebCore::SharedBuffer>& buffer) {
+    }, [&](const Ref<CyberCore::SharedBuffer>& buffer) {
         return Vector<uint8_t> { buffer->data(), buffer->size() };
     }, [](const std::nullptr_t&) {
         return Vector<uint8_t> { };

@@ -30,7 +30,7 @@
 #include "ContainerNode.h"
 #include "TextNodeTraversal.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace XPath {
         
 bool isRootDomNode(Node* node)

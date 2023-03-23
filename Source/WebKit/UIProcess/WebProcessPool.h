@@ -90,7 +90,7 @@ class Navigation;
 class PageConfiguration;
 }
 
-namespace WebCore {
+namespace CyberCore {
 class RegistrableDomain;
 enum class EventMakesGamepadsVisible : bool;
 enum class GamepadHapticEffectType : uint8_t;
@@ -226,7 +226,7 @@ public:
     void initializeClassesForParameterCoding();
 #endif
 
-    DownloadProxy& download(WebsiteDataStore&, WebPageProxy* initiatingPage, const WebCore::ResourceRequest&, const String& suggestedFilename = { });
+    DownloadProxy& download(WebsiteDataStore&, WebPageProxy* initiatingPage, const CyberCore::ResourceRequest&, const String& suggestedFilename = { });
     DownloadProxy& resumeDownload(WebsiteDataStore&, WebPageProxy* initiatingPage, const API::Data& resumeData, const String& path, CallDownloadDidStart);
 
     void setInjectedBundleInitializationUserData(RefPtr<API::Object>&& userData) { m_injectedBundleInitializationUserData = WTFMove(userData); }
@@ -248,7 +248,7 @@ public:
 #endif
 
 #if PLATFORM(MAC)
-    void displayPropertiesChanged(const WebCore::ScreenProperties&, WebCore::PlatformDisplayID, CGDisplayChangeSummaryFlags);
+    void displayPropertiesChanged(const CyberCore::ScreenProperties&, CyberCore::PlatformDisplayID, CGDisplayChangeSummaryFlags);
 #endif
 
 #if HAVE(CVDISPLAYLINK)
@@ -289,13 +289,13 @@ public:
     void stopMemorySampler();
 
 #if USE(SOUP)
-    void setInitialHTTPCookieAcceptPolicy(WebCore::HTTPCookieAcceptPolicy policy) { m_initialHTTPCookieAcceptPolicy = policy; }
+    void setInitialHTTPCookieAcceptPolicy(CyberCore::HTTPCookieAcceptPolicy policy) { m_initialHTTPCookieAcceptPolicy = policy; }
     static void setNetworkProcessMemoryPressureHandlerConfiguration(const std::optional<MemoryPressureHandler::Configuration>& configuration) { s_networkProcessMemoryPressureHandlerConfiguration = configuration; }
 #endif
     void setEnhancedAccessibility(bool);
     
     // Downloads.
-    DownloadProxy& createDownloadProxy(WebsiteDataStore&, const WebCore::ResourceRequest&, WebPageProxy* originatingPage, const FrameInfoData&);
+    DownloadProxy& createDownloadProxy(WebsiteDataStore&, const CyberCore::ResourceRequest&, WebPageProxy* originatingPage, const FrameInfoData&);
 
     API::LegacyContextHistoryClient& historyClient() { return *m_historyClient; }
     WebContextClient& client() { return m_client; }
@@ -318,7 +318,7 @@ public:
 
     void reportWebContentCPUTime(Seconds cpuTime, uint64_t activityState);
 
-    Ref<WebProcessProxy> processForRegistrableDomain(WebsiteDataStore&, const WebCore::RegistrableDomain&, WebProcessProxy::LockdownMode); // Will return an existing one if limit is met or due to caching.
+    Ref<WebProcessProxy> processForRegistrableDomain(WebsiteDataStore&, const CyberCore::RegistrableDomain&, WebProcessProxy::LockdownMode); // Will return an existing one if limit is met or due to caching.
 
     void prewarmProcess();
 
@@ -386,7 +386,7 @@ public:
 
     void updateRemoteWorkerUserAgent(const String& userAgent);
     UserContentControllerIdentifier userContentControllerIdentifierForRemoteWorkers();
-    static void establishRemoteWorkerContextConnectionToNetworkProcess(RemoteWorkerType, WebCore::RegistrableDomain&&, std::optional<WebCore::ProcessIdentifier> requestingProcessIdentifier, std::optional<WebCore::ScriptExecutionContextIdentifier> serviceWorkerPageIdentifier, PAL::SessionID, CompletionHandler<void(WebCore::ProcessIdentifier)>&&);
+    static void establishRemoteWorkerContextConnectionToNetworkProcess(RemoteWorkerType, CyberCore::RegistrableDomain&&, std::optional<CyberCore::ProcessIdentifier> requestingProcessIdentifier, std::optional<CyberCore::ScriptExecutionContextIdentifier> serviceWorkerPageIdentifier, PAL::SessionID, CompletionHandler<void(CyberCore::ProcessIdentifier)>&&);
 
 #if PLATFORM(COCOA)
     bool processSuppressionEnabled() const;
@@ -438,7 +438,7 @@ public:
     static bool anyProcessPoolNeedsUIBackgroundAssertion();
 
 #if ENABLE(GAMEPAD)
-    void gamepadConnected(const UIGamepad&, WebCore::EventMakesGamepadsVisible);
+    void gamepadConnected(const UIGamepad&, CyberCore::EventMakesGamepadsVisible);
     void gamepadDisconnected(const UIGamepad&);
 #endif
 
@@ -446,7 +446,7 @@ public:
     bool cookieStoragePartitioningEnabled() const { return m_cookieStoragePartitioningEnabled; }
     void setCookieStoragePartitioningEnabled(bool);
 
-    void clearPermanentCredentialsForProtectionSpace(WebCore::ProtectionSpace&&);
+    void clearPermanentCredentialsForProtectionSpace(CyberCore::ProtectionSpace&&);
 
     void lockdownModeStateChanged();
 #endif
@@ -464,9 +464,9 @@ public:
 
     void didReachGoodTimeToPrewarm();
 
-    void didCollectPrewarmInformation(const WebCore::RegistrableDomain&, const WebCore::PrewarmInformation&);
+    void didCollectPrewarmInformation(const CyberCore::RegistrableDomain&, const CyberCore::PrewarmInformation&);
 
-    void addMockMediaDevice(const WebCore::MockMediaDevice&);
+    void addMockMediaDevice(const CyberCore::MockMediaDevice&);
     void clearMockMediaDevices();
     void removeMockMediaDevice(const String&);
     void setMockMediaDeviceIsEphemeral(const String&, bool);
@@ -476,9 +476,9 @@ public:
     void clearCurrentModifierStateForTesting();
 
 #if ENABLE(TRACKING_PREVENTION)
-    void setDomainsWithUserInteraction(HashSet<WebCore::RegistrableDomain>&&);
+    void setDomainsWithUserInteraction(HashSet<CyberCore::RegistrableDomain>&&);
     void setDomainsWithCrossPageStorageAccess(HashMap<TopFrameDomain, SubResourceDomain>&&, CompletionHandler<void()>&&);
-    void seedResourceLoadStatisticsForTesting(const WebCore::RegistrableDomain& firstPartyDomain, const WebCore::RegistrableDomain& thirdPartyDomain, bool shouldScheduleNotification, CompletionHandler<void()>&&);
+    void seedResourceLoadStatisticsForTesting(const CyberCore::RegistrableDomain& firstPartyDomain, const CyberCore::RegistrableDomain& thirdPartyDomain, bool shouldScheduleNotification, CompletionHandler<void()>&&);
     void sendResourceLoadStatisticsDataImmediately(CompletionHandler<void()>&&);
 #endif
 
@@ -520,7 +520,7 @@ public:
     static void platformInitializeNetworkProcess(NetworkProcessCreationParameters&);
     static Vector<String> urlSchemesWithCustomProtocolHandlers();
 
-    Ref<WebProcessProxy> createNewWebProcess(WebsiteDataStore*, WebProcessProxy::LockdownMode, WebProcessProxy::IsPrewarmed = WebProcessProxy::IsPrewarmed::No, WebCore::CrossOriginMode = WebCore::CrossOriginMode::Shared);
+    Ref<WebProcessProxy> createNewWebProcess(WebsiteDataStore*, WebProcessProxy::LockdownMode, WebProcessProxy::IsPrewarmed = WebProcessProxy::IsPrewarmed::No, CyberCore::CrossOriginMode = CyberCore::CrossOriginMode::Shared);
 
     bool hasAudibleMediaActivity() const { return !!m_audibleMediaActivity; }
 #if PLATFORM(IOS_FAMILY)
@@ -552,7 +552,7 @@ private:
 #if ENABLE(GAMEPAD)
     void startedUsingGamepads(IPC::Connection&);
     void stoppedUsingGamepads(IPC::Connection&, CompletionHandler<void()>&&);
-    void playGamepadEffect(unsigned gamepadIndex, const String& gamepadID, WebCore::GamepadHapticEffectType, const WebCore::GamepadEffectParameters&, CompletionHandler<void(bool)>&&);
+    void playGamepadEffect(unsigned gamepadIndex, const String& gamepadID, CyberCore::GamepadHapticEffectType, const CyberCore::GamepadEffectParameters&, CompletionHandler<void(bool)>&&);
     void stopGamepadEffects(unsigned gamepadIndex, const String& gamepadID, CompletionHandler<void()>&&);
 
     void processStoppedUsingGamepads(WebProcessProxy&);
@@ -585,7 +585,7 @@ private:
     void addProcessToOriginCacheSet(WebProcessProxy&, const URL&);
     void removeProcessFromOriginCacheSet(WebProcessProxy&);
 
-    void tryPrewarmWithDomainInformation(WebProcessProxy&, const WebCore::RegistrableDomain&);
+    void tryPrewarmWithDomainInformation(WebProcessProxy&, const CyberCore::RegistrableDomain&);
 
     void updateBackForwardCacheCapacity();
 
@@ -693,7 +693,7 @@ private:
     WebContextSupplementMap m_supplements;
 
 #if USE(SOUP)
-    WebCore::HTTPCookieAcceptPolicy m_initialHTTPCookieAcceptPolicy { WebCore::HTTPCookieAcceptPolicy::ExclusivelyFromMainDocumentDomain };
+    CyberCore::HTTPCookieAcceptPolicy m_initialHTTPCookieAcceptPolicy { CyberCore::HTTPCookieAcceptPolicy::ExclusivelyFromMainDocumentDomain };
     static std::optional<MemoryPressureHandler::Configuration> s_networkProcessMemoryPressureHandlerConfiguration;
 #endif
 
@@ -713,7 +713,7 @@ private:
 #endif
 
 #if PLATFORM(COCOA)
-    std::unique_ptr<WebCore::PowerSourceNotifier> m_powerSourceNotifier;
+    std::unique_ptr<CyberCore::PowerSourceNotifier> m_powerSourceNotifier;
     RetainPtr<NSObject> m_activationObserver;
     RetainPtr<NSObject> m_accessibilityEnabledObserver;
     RetainPtr<NSObject> m_applicationLaunchObserver;
@@ -783,9 +783,9 @@ private:
     UniqueRef<WebBackForwardCache> m_backForwardCache;
 
     UniqueRef<WebProcessCache> m_webProcessCache;
-    HashMap<WebCore::RegistrableDomain, RefPtr<WebProcessProxy>> m_swappedProcessesPerRegistrableDomain;
+    HashMap<CyberCore::RegistrableDomain, RefPtr<WebProcessProxy>> m_swappedProcessesPerRegistrableDomain;
 
-    HashMap<WebCore::RegistrableDomain, std::unique_ptr<WebCore::PrewarmInformation>> m_prewarmInformationPerRegistrableDomain;
+    HashMap<CyberCore::RegistrableDomain, std::unique_ptr<CyberCore::PrewarmInformation>> m_prewarmInformationPerRegistrableDomain;
 
 #if HAVE(CVDISPLAYLINK)
     DisplayLinkCollection m_displayLinks;
@@ -825,12 +825,12 @@ private:
     static bool s_didGlobalStaticInitialization;
 
 #if ENABLE(TRACKING_PREVENTION)
-    HashSet<WebCore::RegistrableDomain> m_domainsWithUserInteraction;
+    HashSet<CyberCore::RegistrableDomain> m_domainsWithUserInteraction;
     HashMap<TopFrameDomain, SubResourceDomain> m_domainsWithCrossPageStorageAccessQuirk;
 #endif
     
 #if PLATFORM(MAC)
-    std::unique_ptr<WebCore::PowerObserver> m_powerObserver;
+    std::unique_ptr<CyberCore::PowerObserver> m_powerObserver;
     std::unique_ptr<PAL::SystemSleepListener> m_systemSleepListener;
     Vector<int> m_openDirectoryNotifyTokens;
 #endif

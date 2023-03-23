@@ -30,7 +30,7 @@
 #include "IntRect.h"
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 IntPoint::IntPoint(const FloatPoint& p)
     : m_x(clampToInteger(p.x()))

@@ -28,7 +28,7 @@
 #include <optional>
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WEBCORE_EXPORT void setPresentingApplicationPID(int);
 WEBCORE_EXPORT int presentingApplicationPID();
@@ -149,4 +149,4 @@ bool isWechat();
 
 #endif // PLATFORM(COCOA)
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -45,23 +45,23 @@ class PaintingEngine;
 class SceneIntegration;
 }
 
-namespace WebCore {
+namespace CyberCore {
 class GraphicsContext;
 class GraphicsLayer;
 class Image;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
-class CompositingCoordinator final : public WebCore::GraphicsLayerClient
-    , public WebCore::CoordinatedGraphicsLayerClient
-    , public WebCore::GraphicsLayerFactory
+class CompositingCoordinator final : public CyberCore::GraphicsLayerClient
+    , public CyberCore::CoordinatedGraphicsLayerClient
+    , public CyberCore::GraphicsLayerFactory
     , public Nicosia::SceneIntegration::Client {
     WTF_MAKE_NONCOPYABLE(CompositingCoordinator);
 public:
     class Client {
     public:
-        virtual void didFlushRootLayer(const WebCore::FloatRect& visibleContentRect) = 0;
+        virtual void didFlushRootLayer(const CyberCore::FloatRect& visibleContentRect) = 0;
         virtual void notifyFlushRequired() = 0;
         virtual void commitSceneState(const RefPtr<Nicosia::Scene>&) = 0;
         virtual void updateScene() = 0;
@@ -72,41 +72,41 @@ public:
 
     void invalidate();
 
-    void setRootCompositingLayer(WebCore::GraphicsLayer*);
-    void setViewOverlayRootLayer(WebCore::GraphicsLayer*);
-    void sizeDidChange(const WebCore::IntSize&);
+    void setRootCompositingLayer(CyberCore::GraphicsLayer*);
+    void setViewOverlayRootLayer(CyberCore::GraphicsLayer*);
+    void sizeDidChange(const CyberCore::IntSize&);
     void deviceOrPageScaleFactorChanged();
 
-    void setVisibleContentsRect(const WebCore::FloatRect&);
+    void setVisibleContentsRect(const CyberCore::FloatRect&);
     void renderNextFrame();
 
-    WebCore::GraphicsLayer* rootLayer() const { return m_rootLayer.get(); }
-    WebCore::GraphicsLayer* rootCompositingLayer() const { return m_rootCompositingLayer; }
+    CyberCore::GraphicsLayer* rootLayer() const { return m_rootLayer.get(); }
+    CyberCore::GraphicsLayer* rootCompositingLayer() const { return m_rootCompositingLayer; }
 
     void forceFrameSync() { m_shouldSyncFrame = true; }
 
-    bool flushPendingLayerChanges(OptionSet<WebCore::FinalizeRenderingUpdateFlags>);
+    bool flushPendingLayerChanges(OptionSet<CyberCore::FinalizeRenderingUpdateFlags>);
     void syncDisplayState();
 
     double nextAnimationServiceTime() const;
 
 private:
     // GraphicsLayerClient
-    void notifyFlushRequired(const WebCore::GraphicsLayer*) override;
+    void notifyFlushRequired(const CyberCore::GraphicsLayer*) override;
     float deviceScaleFactor() const override;
     float pageScaleFactor() const override;
 
     // CoordinatedGraphicsLayerClient
     bool isFlushingLayerChanges() const override { return m_isFlushingLayerChanges; }
-    WebCore::FloatRect visibleContentsRect() const override;
-    void detachLayer(WebCore::CoordinatedGraphicsLayer*) override;
-    void attachLayer(WebCore::CoordinatedGraphicsLayer*) override;
+    CyberCore::FloatRect visibleContentsRect() const override;
+    void detachLayer(CyberCore::CoordinatedGraphicsLayer*) override;
+    void attachLayer(CyberCore::CoordinatedGraphicsLayer*) override;
     Nicosia::PaintingEngine& paintingEngine() override;
     RefPtr<Nicosia::ImageBackingStore> imageBackingStore(uint64_t, Function<RefPtr<Nicosia::Buffer>()>) override;
     void syncLayerState() override;
 
     // GraphicsLayerFactory
-    Ref<WebCore::GraphicsLayer> createGraphicsLayer(WebCore::GraphicsLayer::Type, WebCore::GraphicsLayerClient&) override;
+    Ref<CyberCore::GraphicsLayer> createGraphicsLayer(CyberCore::GraphicsLayer::Type, CyberCore::GraphicsLayerClient&) override;
 
     // Nicosia::SceneIntegration::Client
     void requestUpdate() override;
@@ -120,9 +120,9 @@ private:
     WebPage& m_page;
     CompositingCoordinator::Client& m_client;
 
-    RefPtr<WebCore::GraphicsLayer> m_rootLayer;
-    WebCore::GraphicsLayer* m_rootCompositingLayer { nullptr };
-    WebCore::GraphicsLayer* m_overlayCompositingLayer { nullptr };
+    RefPtr<CyberCore::GraphicsLayer> m_rootLayer;
+    CyberCore::GraphicsLayer* m_rootCompositingLayer { nullptr };
+    CyberCore::GraphicsLayer* m_overlayCompositingLayer { nullptr };
 
     struct {
         RefPtr<Nicosia::Scene> scene;
@@ -130,7 +130,7 @@ private:
         Nicosia::Scene::State state;
     } m_nicosia;
 
-    HashMap<Nicosia::PlatformLayer::LayerID, WebCore::CoordinatedGraphicsLayer*> m_registeredLayers;
+    HashMap<Nicosia::PlatformLayer::LayerID, CyberCore::CoordinatedGraphicsLayer*> m_registeredLayers;
 
     std::unique_ptr<Nicosia::PaintingEngine> m_paintingEngine;
     HashMap<uint64_t, Ref<Nicosia::ImageBackingStore>> m_imageBackingStores;
@@ -141,11 +141,11 @@ private:
     bool m_shouldSyncFrame { false };
     bool m_didInitializeRootCompositingLayer { false };
 
-    WebCore::FloatRect m_visibleContentsRect;
+    CyberCore::FloatRect m_visibleContentsRect;
 
     double m_lastAnimationServiceTime { 0 };
 };
 
 }
 
-#endif // namespace WebKit
+#endif // namespace CyberKit

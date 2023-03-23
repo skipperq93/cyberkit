@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 #if ENABLE(VIDEO_PRESENTATION_MODE)
 WEBCORE_EXPORT void setSupportsPictureInPicture(bool);

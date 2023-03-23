@@ -33,7 +33,7 @@
 
 OBJC_CLASS SecKeyProxy;
 
-namespace WebCore {
+namespace CyberCore {
 class Credential;
 }
 
@@ -43,7 +43,7 @@ class SecKeyProxyStore : public RefCounted<SecKeyProxyStore>, public CanMakeWeak
 public:
     static Ref<SecKeyProxyStore> create() { return adoptRef(* new SecKeyProxyStore()); }
 
-    bool initialize(const WebCore::Credential&);
+    bool initialize(const CyberCore::Credential&);
     bool isInitialized() const { return !!m_secKeyProxy; }
 
     auto* get() const { return m_secKeyProxy.get(); }

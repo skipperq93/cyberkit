@@ -36,7 +36,7 @@ uint64_t StorageAreaBase::nextMessageIdentifier()
     return ++currentIdentifier;
 }
 
-StorageAreaBase::StorageAreaBase(unsigned quota, const WebCore::ClientOrigin& origin)
+StorageAreaBase::StorageAreaBase(unsigned quota, const CyberCore::ClientOrigin& origin)
     : m_identifier(StorageAreaIdentifier::generateThreadSafe())
     , m_quota(quota)
     , m_origin(origin)

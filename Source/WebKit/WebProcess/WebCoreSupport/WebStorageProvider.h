@@ -28,12 +28,12 @@
 #include "WebStorageConnection.h"
 #include <CyberCore/StorageProvider.h>
 
-namespace WebKit {
+namespace CyberKit {
 
-class WebStorageProvider final : public WebCore::StorageProvider {
+class WebStorageProvider final : public CyberCore::StorageProvider {
     WTF_MAKE_FAST_ALLOCATED;
 private:
-    WebCore::StorageConnection& storageConnection() final
+    CyberCore::StorageConnection& storageConnection() final
     {
         ASSERT(WTF::isMainRunLoop());
 
@@ -46,4 +46,4 @@ private:
     RefPtr<WebStorageConnection> m_connection;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

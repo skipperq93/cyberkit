@@ -29,7 +29,7 @@
 
 #if ENABLE(PUBLIC_SUFFIX_LIST)
 
-namespace WebCore {
+namespace CyberCore {
 
 WEBCORE_EXPORT bool isPublicSuffix(StringView domain);
 WEBCORE_EXPORT String topPrivatelyControlledDomain(const String& domain);
@@ -42,6 +42,6 @@ inline bool isDomainForTesting(const String& domain)
     return domain.endsWithIgnoringASCIICase("web-platform.test"_s);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(PUBLIC_SUFFIX_LIST)

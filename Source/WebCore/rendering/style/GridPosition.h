@@ -33,7 +33,7 @@
 
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum GridPositionType {
     AutoPosition,
@@ -96,4 +96,4 @@ private:
 
 WTF::TextStream& operator<<(WTF::TextStream&, const GridPosition&);
 
-} // namespace WebCore
+} // namespace CyberCore

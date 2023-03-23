@@ -28,29 +28,29 @@
 
 namespace WebKit {
 
-_WKMediaCaptureStateDeprecated toWKMediaCaptureStateDeprecated(WebCore::MediaProducerMediaStateFlags state)
+_WKMediaCaptureStateDeprecated toWKMediaCaptureStateDeprecated(CyberCore::MediaProducerMediaStateFlags state)
 {
     _WKMediaCaptureStateDeprecated mediaCaptureState = _WKMediaCaptureStateDeprecatedNone;
-    if (state & WebCore::MediaProducerMediaState::HasActiveAudioCaptureDevice)
+    if (state & CyberCore::MediaProducerMediaState::HasActiveAudioCaptureDevice)
         mediaCaptureState |= _WKMediaCaptureStateDeprecatedActiveMicrophone;
-    if (state & WebCore::MediaProducerMediaState::HasActiveVideoCaptureDevice)
+    if (state & CyberCore::MediaProducerMediaState::HasActiveVideoCaptureDevice)
         mediaCaptureState |= _WKMediaCaptureStateDeprecatedActiveCamera;
-    if (state & WebCore::MediaProducerMediaState::HasMutedAudioCaptureDevice)
+    if (state & CyberCore::MediaProducerMediaState::HasMutedAudioCaptureDevice)
         mediaCaptureState |= _WKMediaCaptureStateDeprecatedMutedMicrophone;
-    if (state & WebCore::MediaProducerMediaState::HasMutedVideoCaptureDevice)
+    if (state & CyberCore::MediaProducerMediaState::HasMutedVideoCaptureDevice)
         mediaCaptureState |= _WKMediaCaptureStateDeprecatedMutedCamera;
 
     return mediaCaptureState;
 }
 
-_WKMediaMutedState toWKMediaMutedState(WebCore::MediaProducerMutedStateFlags state)
+_WKMediaMutedState toWKMediaMutedState(CyberCore::MediaProducerMutedStateFlags state)
 {
     _WKMediaMutedState mediaMutedState = _WKMediaNoneMuted;
-    if (state & WebCore::MediaProducerMutedState::AudioIsMuted)
+    if (state & CyberCore::MediaProducerMutedState::AudioIsMuted)
         mediaMutedState |= _WKMediaAudioMuted;
-    if (state & WebCore::MediaProducer::AudioAndVideoCaptureIsMuted)
+    if (state & CyberCore::MediaProducer::AudioAndVideoCaptureIsMuted)
         mediaMutedState |= _WKMediaCaptureDevicesMuted;
-    if (state & WebCore::MediaProducerMutedState::ScreenCaptureIsMuted)
+    if (state & CyberCore::MediaProducerMutedState::ScreenCaptureIsMuted)
         mediaMutedState |= _WKMediaScreenCaptureMuted;
     return mediaMutedState;
 }

@@ -67,11 +67,11 @@
 #if PLATFORM(IOS_FAMILY)
 #import <CyberCore/WAKAppKitStubs.h>
 #import <CyberCore/WAKWindow.h>
-#import <CyberCore/WebCoreThreadMessage.h>
+#import <CyberCore/CyberCoreThreadMessage.h>
 #endif
 
 using namespace JSC;
-using namespace WebCore;
+using namespace CyberCore;
 
 //------------------------------------------------------------------------------------------
 // DOMNode
@@ -227,7 +227,7 @@ static inline WKQuad zeroQuad()
 
 #endif
 
-@implementation DOMNode (WebCoreInternal)
+@implementation DOMNode (CyberCoreInternal)
 
 IGNORE_WARNINGS_BEGIN("objc-protocol-method-implementation")
 
@@ -364,10 +364,10 @@ id <DOMEventTarget> kit(EventTarget* target)
 {
     auto& node = *core(self);
     node.document().updateLayoutIgnorePendingStylesheets();
-    WebCore::RenderObject *renderer = node.renderer();
+    CyberCore::RenderObject *renderer = node.renderer();
     if (!renderer)
         return nil;
-    Vector<WebCore::FloatQuad> quads;
+    Vector<CyberCore::FloatQuad> quads;
     renderer->absoluteQuads(quads);
     return kit(quads);
 }
@@ -649,7 +649,7 @@ id <DOMEventTarget> kit(EventTarget* target)
 
 - (NSData *)_imageTIFFRepresentation
 {
-    // FIXME: Could we move this function to WebCore::Element and autogenerate?
+    // FIXME: Could we move this function to CyberCore::Element and autogenerate?
     auto* renderer = core(self)->renderer();
     if (!is<RenderImage>(renderer))
         return nil;
@@ -768,7 +768,7 @@ id <DOMEventTarget> kit(EventTarget* target)
 //------------------------------------------------------------------------------------------
 // DOMNodeFilter
 
-DOMNodeFilter *kit(WebCore::NodeFilter* impl)
+DOMNodeFilter *kit(CyberCore::NodeFilter* impl)
 {
     if (!impl)
         return nil;
@@ -783,9 +783,9 @@ DOMNodeFilter *kit(WebCore::NodeFilter* impl)
     return wrapper.autorelease();
 }
 
-WebCore::NodeFilter* core(DOMNodeFilter *wrapper)
+CyberCore::NodeFilter* core(DOMNodeFilter *wrapper)
 {
-    return wrapper ? reinterpret_cast<WebCore::NodeFilter*>(wrapper->_internal) : 0;
+    return wrapper ? reinterpret_cast<CyberCore::NodeFilter*>(wrapper->_internal) : 0;
 }
 
 @implementation DOMNodeFilter
@@ -793,7 +793,7 @@ WebCore::NodeFilter* core(DOMNodeFilter *wrapper)
 - (void)dealloc
 {
     if (_internal)
-        reinterpret_cast<WebCore::NodeFilter*>(_internal)->deref();
+        reinterpret_cast<CyberCore::NodeFilter*>(_internal)->deref();
     [super dealloc];
 }
 

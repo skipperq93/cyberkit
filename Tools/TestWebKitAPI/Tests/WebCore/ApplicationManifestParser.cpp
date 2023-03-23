@@ -31,9 +31,9 @@
 #include <CyberCore/ApplicationManifestParser.h>
 #include <wtf/RunLoop.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
-namespace WebCore {
+namespace CyberCore {
 static inline std::ostream& operator<<(std::ostream& os, const ApplicationManifest::Display& display)
 {
     switch (display) {
@@ -47,7 +47,7 @@ static inline std::ostream& operator<<(std::ostream& os, const ApplicationManife
         return os << "ApplicationManifest::Display::Fullscreen";
     }
 }
-} // namespace WebCore
+} // namespace CyberCore
 
 class ApplicationManifestParserTest : public testing::Test {
 public:

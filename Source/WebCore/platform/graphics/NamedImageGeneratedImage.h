@@ -29,7 +29,7 @@
 #include "GeneratedImage.h"
 #include "Image.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class NamedImageGeneratedImage final : public GeneratedImage {
 public:

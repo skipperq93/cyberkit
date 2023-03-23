@@ -28,9 +28,9 @@
 #include "ProcessQualified.h"
 #include <wtf/ObjectIdentifier.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum SharedWorkerObjectIdentifierType { };
 using SharedWorkerObjectIdentifier = ProcessQualified<ObjectIdentifier<SharedWorkerObjectIdentifierType>>;
 
-} // namespace WebCore
+} // namespace CyberCore

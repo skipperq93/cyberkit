@@ -34,7 +34,7 @@
 #include <wtf/glib/GUniquePtr.h>
 #include <wtf/text/CString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 #if USE(SOUP2)
 #define SOUP_HTTP_ERROR_DOMAIN SOUP_HTTP_ERROR
@@ -104,6 +104,6 @@ bool ResourceError::platformCompare(const ResourceError& a, const ResourceError&
     return a.tlsErrors() == b.tlsErrors();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

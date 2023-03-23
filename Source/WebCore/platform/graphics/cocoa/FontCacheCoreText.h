@@ -33,7 +33,7 @@
 
 #include <CoreText/CTFont.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FontCreationContext;
 class UnrealizedCoreTextFont;
@@ -89,4 +89,4 @@ WEBCORE_EXPORT CFStringRef contentSizeCategory();
 
 VariationDefaultsMap defaultVariationValues(CTFontRef, ShouldLocalizeAxisNames);
 
-} // namespace WebCore
+} // namespace CyberCore

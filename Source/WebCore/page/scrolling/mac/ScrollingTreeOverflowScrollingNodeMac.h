@@ -31,7 +31,7 @@
 
 OBJC_CLASS CALayer;
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScrollingTreeScrollingNodeDelegateMac;
 

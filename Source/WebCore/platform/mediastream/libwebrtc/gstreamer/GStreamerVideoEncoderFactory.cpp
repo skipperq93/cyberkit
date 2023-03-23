@@ -52,7 +52,7 @@
 GST_DEBUG_CATEGORY(webkit_webrtcenc_debug);
 #define GST_CAT_DEFAULT webkit_webrtcenc_debug
 
-namespace WebCore {
+namespace CyberCore {
 
 class GStreamerEncodedImageBuffer : public webrtc::EncodedImageBufferInterface {
     WTF_MAKE_FAST_ALLOCATED;
@@ -439,5 +439,5 @@ std::vector<webrtc::SdpVideoFormat> GStreamerVideoEncoderFactory::GetSupportedFo
     return supportedCodecs;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 #endif

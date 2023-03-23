@@ -30,7 +30,7 @@
 #include "SVGAttributeAnimator.h"
 #include "SVGElement.h"
 
-namespace WebCore {
+namespace CyberCore {
     
 template<typename AnimationFunction>
 class SVGPropertyAnimator : public SVGAttributeAnimator {
@@ -100,4 +100,4 @@ protected:
     AnimationFunction m_function;
 };
     
-} // namespace WebCore
+} // namespace CyberCore

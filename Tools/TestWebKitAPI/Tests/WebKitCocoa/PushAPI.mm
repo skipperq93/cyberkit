@@ -312,7 +312,7 @@ static void terminateNetworkProcessWhileRegistrationIsStored(WKWebViewConfigurat
 {
     auto path = configuration.websiteDataStore._configuration._serviceWorkerRegistrationDirectory.path;
     NSURL* directory = [NSURL fileURLWithPath:path isDirectory:YES];
-    auto filename = makeString("ServiceWorkerRegistrations-"_s, WebCore::RegistrationDatabase::schemaVersion, ".sqlite3");
+    auto filename = makeString("ServiceWorkerRegistrations-"_s, CyberCore::RegistrationDatabase::schemaVersion, ".sqlite3");
     NSURL *swDBPath = [directory URLByAppendingPathComponent:filename];
     unsigned timeout = 0;
     while (![[NSFileManager defaultManager] fileExistsAtPath:swDBPath.path] && ++timeout < 100)

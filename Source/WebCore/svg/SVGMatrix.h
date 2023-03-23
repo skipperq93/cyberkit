@@ -29,7 +29,7 @@
 #include "ExceptionOr.h"
 #include "SVGValueProperty.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // FIXME: Remove this class once SVGMatrix becomes an alias to DOMMatrix.
 class SVGMatrix : public SVGValueProperty<AffineTransform> {
@@ -227,4 +227,4 @@ public:
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

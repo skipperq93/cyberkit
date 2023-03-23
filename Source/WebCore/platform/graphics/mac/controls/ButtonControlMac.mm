@@ -30,7 +30,7 @@
 
 #import <pal/spi/cocoa/NSButtonCellSPI.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 ButtonControlMac::ButtonControlMac(ControlPart& part, ControlFactoryMac& controlFactory, NSButtonCell *buttonCell)
     : ControlMac(part, controlFactory)
@@ -61,6 +61,6 @@ void ButtonControlMac::updateCellStates(const FloatRect& rect, const ControlStyl
         [m_buttonCell setControlSize:controlSize];
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(MAC)

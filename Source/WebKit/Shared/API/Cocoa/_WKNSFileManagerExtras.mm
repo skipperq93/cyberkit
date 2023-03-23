@@ -34,7 +34,7 @@
 
 + (NSString *)_web_createTemporaryFileForQuickLook:(NSString *)fileName
 {
-    return WebCore::createTemporaryFileForQuickLook(fileName);
+    return CyberCore::createTemporaryFileForQuickLook(fileName);
 }
 
 @end

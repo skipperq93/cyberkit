@@ -25,6 +25,6 @@
 #include "WebUserContentControllerProxy.h"
 
 WebKit::WebUserContentControllerProxy* webkitUserContentManagerGetUserContentControllerProxy(WebKitUserContentManager*);
-WebKitScriptMessageReply* webKitScriptMessageReplyCreate(WebCore::SerializedScriptValue&, WTF::Function<void(API::SerializedScriptValue*, const String&)>&&);
+WebKitScriptMessageReply* webKitScriptMessageReplyCreate(CyberCore::SerializedScriptValue&, WTF::Function<void(API::SerializedScriptValue*, const String&)>&&);
 
 #endif // WebKitUserContentManagerPrivate_h

@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -21,28 +21,28 @@
 #error "Only <webkitdom/webkitdom.h> can be included directly."
 #endif
 
-#ifndef WebKitDOMCSSStyleDeclaration_h
-#define WebKitDOMCSSStyleDeclaration_h
+#ifndef CyberKitDOMCSSStyleDeclaration_h
+#define CyberKitDOMCSSStyleDeclaration_h
 
 #include <glib-object.h>
-#include <webkitdom/WebKitDOMObject.h>
+#include <webkitdom/CyberKitDOMObject.h>
 #include <webkitdom/webkitdomdefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_DOM_TYPE_CSS_STYLE_DECLARATION            (webkit_dom_css_style_declaration_get_type())
-#define WEBKIT_DOM_CSS_STYLE_DECLARATION(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_CSS_STYLE_DECLARATION, WebKitDOMCSSStyleDeclaration))
-#define WEBKIT_DOM_CSS_STYLE_DECLARATION_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_CSS_STYLE_DECLARATION, WebKitDOMCSSStyleDeclarationClass)
+#define WEBKIT_DOM_CSS_STYLE_DECLARATION(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_CSS_STYLE_DECLARATION, CyberKitDOMCSSStyleDeclaration))
+#define WEBKIT_DOM_CSS_STYLE_DECLARATION_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_CSS_STYLE_DECLARATION, CyberKitDOMCSSStyleDeclarationClass)
 #define WEBKIT_DOM_IS_CSS_STYLE_DECLARATION(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_DOM_TYPE_CSS_STYLE_DECLARATION))
 #define WEBKIT_DOM_IS_CSS_STYLE_DECLARATION_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_DOM_TYPE_CSS_STYLE_DECLARATION))
-#define WEBKIT_DOM_CSS_STYLE_DECLARATION_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_CSS_STYLE_DECLARATION, WebKitDOMCSSStyleDeclarationClass))
+#define WEBKIT_DOM_CSS_STYLE_DECLARATION_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_CSS_STYLE_DECLARATION, CyberKitDOMCSSStyleDeclarationClass))
 
-struct _WebKitDOMCSSStyleDeclaration {
-    WebKitDOMObject parent_instance;
+struct _CyberKitDOMCSSStyleDeclaration {
+    CyberKitDOMObject parent_instance;
 };
 
-struct _WebKitDOMCSSStyleDeclarationClass {
-    WebKitDOMObjectClass parent_class;
+struct _CyberKitDOMCSSStyleDeclarationClass {
+    CyberKitDOMObjectClass parent_class;
 };
 
 WEBKIT_DEPRECATED GType
@@ -50,7 +50,7 @@ webkit_dom_css_style_declaration_get_type(void);
 
 /**
  * webkit_dom_css_style_declaration_get_property_value:
- * @self: A #WebKitDOMCSSStyleDeclaration
+ * @self: A #CyberKitDOMCSSStyleDeclaration
  * @propertyName: A #gchar
  *
  * Returns: A #gchar
@@ -58,11 +58,11 @@ webkit_dom_css_style_declaration_get_type(void);
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_css_style_declaration_get_property_value(WebKitDOMCSSStyleDeclaration* self, const gchar* propertyName);
+webkit_dom_css_style_declaration_get_property_value(CyberKitDOMCSSStyleDeclaration* self, const gchar* propertyName);
 
 /**
  * webkit_dom_css_style_declaration_remove_property:
- * @self: A #WebKitDOMCSSStyleDeclaration
+ * @self: A #CyberKitDOMCSSStyleDeclaration
  * @propertyName: A #gchar
  * @error: #GError
  *
@@ -71,11 +71,11 @@ webkit_dom_css_style_declaration_get_property_value(WebKitDOMCSSStyleDeclaration
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_css_style_declaration_remove_property(WebKitDOMCSSStyleDeclaration* self, const gchar* propertyName, GError** error);
+webkit_dom_css_style_declaration_remove_property(CyberKitDOMCSSStyleDeclaration* self, const gchar* propertyName, GError** error);
 
 /**
  * webkit_dom_css_style_declaration_get_property_priority:
- * @self: A #WebKitDOMCSSStyleDeclaration
+ * @self: A #CyberKitDOMCSSStyleDeclaration
  * @propertyName: A #gchar
  *
  * Returns: A #gchar
@@ -83,11 +83,11 @@ webkit_dom_css_style_declaration_remove_property(WebKitDOMCSSStyleDeclaration* s
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_css_style_declaration_get_property_priority(WebKitDOMCSSStyleDeclaration* self, const gchar* propertyName);
+webkit_dom_css_style_declaration_get_property_priority(CyberKitDOMCSSStyleDeclaration* self, const gchar* propertyName);
 
 /**
  * webkit_dom_css_style_declaration_set_property:
- * @self: A #WebKitDOMCSSStyleDeclaration
+ * @self: A #CyberKitDOMCSSStyleDeclaration
  * @propertyName: A #gchar
  * @value: A #gchar
  * @priority: A #gchar
@@ -97,11 +97,11 @@ webkit_dom_css_style_declaration_get_property_priority(WebKitDOMCSSStyleDeclarat
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_css_style_declaration_set_property(WebKitDOMCSSStyleDeclaration* self, const gchar* propertyName, const gchar* value, const gchar* priority, GError** error);
+webkit_dom_css_style_declaration_set_property(CyberKitDOMCSSStyleDeclaration* self, const gchar* propertyName, const gchar* value, const gchar* priority, GError** error);
 
 /**
  * webkit_dom_css_style_declaration_item:
- * @self: A #WebKitDOMCSSStyleDeclaration
+ * @self: A #CyberKitDOMCSSStyleDeclaration
  * @index: A #gulong
  *
  * Returns: A #gchar
@@ -109,11 +109,11 @@ webkit_dom_css_style_declaration_set_property(WebKitDOMCSSStyleDeclaration* self
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_css_style_declaration_item(WebKitDOMCSSStyleDeclaration* self, gulong index);
+webkit_dom_css_style_declaration_item(CyberKitDOMCSSStyleDeclaration* self, gulong index);
 
 /**
  * webkit_dom_css_style_declaration_get_property_shorthand:
- * @self: A #WebKitDOMCSSStyleDeclaration
+ * @self: A #CyberKitDOMCSSStyleDeclaration
  * @propertyName: A #gchar
  *
  * Returns: A #gchar
@@ -121,11 +121,11 @@ webkit_dom_css_style_declaration_item(WebKitDOMCSSStyleDeclaration* self, gulong
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_css_style_declaration_get_property_shorthand(WebKitDOMCSSStyleDeclaration* self, const gchar* propertyName);
+webkit_dom_css_style_declaration_get_property_shorthand(CyberKitDOMCSSStyleDeclaration* self, const gchar* propertyName);
 
 /**
  * webkit_dom_css_style_declaration_is_property_implicit:
- * @self: A #WebKitDOMCSSStyleDeclaration
+ * @self: A #CyberKitDOMCSSStyleDeclaration
  * @propertyName: A #gchar
  *
  * Returns: A #gboolean
@@ -133,22 +133,22 @@ webkit_dom_css_style_declaration_get_property_shorthand(WebKitDOMCSSStyleDeclara
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
-webkit_dom_css_style_declaration_is_property_implicit(WebKitDOMCSSStyleDeclaration* self, const gchar* propertyName);
+webkit_dom_css_style_declaration_is_property_implicit(CyberKitDOMCSSStyleDeclaration* self, const gchar* propertyName);
 
 /**
  * webkit_dom_css_style_declaration_get_css_text:
- * @self: A #WebKitDOMCSSStyleDeclaration
+ * @self: A #CyberKitDOMCSSStyleDeclaration
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_css_style_declaration_get_css_text(WebKitDOMCSSStyleDeclaration* self);
+webkit_dom_css_style_declaration_get_css_text(CyberKitDOMCSSStyleDeclaration* self);
 
 /**
  * webkit_dom_css_style_declaration_set_css_text:
- * @self: A #WebKitDOMCSSStyleDeclaration
+ * @self: A #CyberKitDOMCSSStyleDeclaration
  * @value: A #gchar
  * @error: #GError
  *
@@ -156,30 +156,30 @@ webkit_dom_css_style_declaration_get_css_text(WebKitDOMCSSStyleDeclaration* self
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_css_style_declaration_set_css_text(WebKitDOMCSSStyleDeclaration* self, const gchar* value, GError** error);
+webkit_dom_css_style_declaration_set_css_text(CyberKitDOMCSSStyleDeclaration* self, const gchar* value, GError** error);
 
 /**
  * webkit_dom_css_style_declaration_get_length:
- * @self: A #WebKitDOMCSSStyleDeclaration
+ * @self: A #CyberKitDOMCSSStyleDeclaration
  *
  * Returns: A #gulong
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gulong
-webkit_dom_css_style_declaration_get_length(WebKitDOMCSSStyleDeclaration* self);
+webkit_dom_css_style_declaration_get_length(CyberKitDOMCSSStyleDeclaration* self);
 
 /**
  * webkit_dom_css_style_declaration_get_parent_rule:
- * @self: A #WebKitDOMCSSStyleDeclaration
+ * @self: A #CyberKitDOMCSSStyleDeclaration
  *
- * Returns: (transfer full): A #WebKitDOMCSSRule
+ * Returns: (transfer full): A #CyberKitDOMCSSRule
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMCSSRule*
-webkit_dom_css_style_declaration_get_parent_rule(WebKitDOMCSSStyleDeclaration* self);
+WEBKIT_DEPRECATED CyberKitDOMCSSRule*
+webkit_dom_css_style_declaration_get_parent_rule(CyberKitDOMCSSStyleDeclaration* self);
 
 G_END_DECLS
 
-#endif /* WebKitDOMCSSStyleDeclaration_h */
+#endif /* CyberKitDOMCSSStyleDeclaration_h */

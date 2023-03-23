@@ -28,7 +28,7 @@
 
 #include "GraphicsContext.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class LocalWindowsContext {
     WTF_MAKE_NONCOPYABLE(LocalWindowsContext);
@@ -56,5 +56,5 @@ private:
     bool m_supportAlphaBlend;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 #endif // LocalWindowsContext_h

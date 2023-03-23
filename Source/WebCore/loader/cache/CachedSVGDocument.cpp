@@ -26,7 +26,7 @@
 #include "Settings.h"
 #include "SharedBuffer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 CachedSVGDocument::CachedSVGDocument(CachedResourceRequest&& request, PAL::SessionID sessionID, const CookieJar* cookieJar, const Settings& settings)
     : CachedResource(WTFMove(request), Type::SVGDocumentResource, sessionID, cookieJar)

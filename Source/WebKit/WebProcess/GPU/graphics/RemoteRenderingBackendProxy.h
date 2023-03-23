@@ -49,7 +49,7 @@
 #include <wtf/Span.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DestinationColorSpace;
 class Filter;
@@ -79,33 +79,33 @@ public:
 
     RemoteResourceCacheProxy& remoteResourceCacheProxy() { return m_remoteResourceCacheProxy; }
 
-    void transferImageBuffer(std::unique_ptr<RemoteSerializedImageBufferProxy>, WebCore::ImageBuffer&);
-    void moveToSerializedBuffer(WebCore::RenderingResourceIdentifier, RemoteSerializedImageBufferWriteReference&&);
-    void moveToImageBuffer(RemoteSerializedImageBufferWriteReference&&, WebCore::RenderingResourceIdentifier);
+    void transferImageBuffer(std::unique_ptr<RemoteSerializedImageBufferProxy>, CyberCore::ImageBuffer&);
+    void moveToSerializedBuffer(CyberCore::RenderingResourceIdentifier, RemoteSerializedImageBufferWriteReference&&);
+    void moveToImageBuffer(RemoteSerializedImageBufferWriteReference&&, CyberCore::RenderingResourceIdentifier);
 
-    void createRemoteImageBuffer(WebCore::ImageBuffer&);
-    bool isCached(const WebCore::ImageBuffer&) const;
+    void createRemoteImageBuffer(CyberCore::ImageBuffer&);
+    bool isCached(const CyberCore::ImageBuffer&) const;
 
     // IPC::MessageReceiver
     void didReceiveMessage(IPC::Connection&, IPC::Decoder&) override;
 
     // Messages to be sent.
-    RefPtr<WebCore::ImageBuffer> createImageBuffer(const WebCore::FloatSize&, WebCore::RenderingMode, WebCore::RenderingPurpose, float resolutionScale, const WebCore::DestinationColorSpace&, WebCore::PixelFormat, bool avoidBackendSizeCheck = false);
-    bool getPixelBufferForImageBuffer(WebCore::RenderingResourceIdentifier, const WebCore::PixelBufferFormat& destinationFormat, const WebCore::IntRect& srcRect, Span<uint8_t> result);
-    void putPixelBufferForImageBuffer(WebCore::RenderingResourceIdentifier, const WebCore::PixelBuffer&, const WebCore::IntRect& srcRect, const WebCore::IntPoint& destPoint, WebCore::AlphaPremultiplication destFormat);
-    RefPtr<ShareableBitmap> getShareableBitmap(WebCore::RenderingResourceIdentifier, WebCore::PreserveResolution);
-    RefPtr<WebCore::Image> getFilteredImage(WebCore::RenderingResourceIdentifier, WebCore::Filter&);
-    void cacheNativeImage(const ShareableBitmapHandle&, WebCore::RenderingResourceIdentifier);
-    void cacheFont(Ref<WebCore::Font>&&);
-    void cacheDecomposedGlyphs(Ref<WebCore::DecomposedGlyphs>&&);
+    RefPtr<CyberCore::ImageBuffer> createImageBuffer(const CyberCore::FloatSize&, CyberCore::RenderingMode, CyberCore::RenderingPurpose, float resolutionScale, const CyberCore::DestinationColorSpace&, CyberCore::PixelFormat, bool avoidBackendSizeCheck = false);
+    bool getPixelBufferForImageBuffer(CyberCore::RenderingResourceIdentifier, const CyberCore::PixelBufferFormat& destinationFormat, const CyberCore::IntRect& srcRect, Span<uint8_t> result);
+    void putPixelBufferForImageBuffer(CyberCore::RenderingResourceIdentifier, const CyberCore::PixelBuffer&, const CyberCore::IntRect& srcRect, const CyberCore::IntPoint& destPoint, CyberCore::AlphaPremultiplication destFormat);
+    RefPtr<ShareableBitmap> getShareableBitmap(CyberCore::RenderingResourceIdentifier, CyberCore::PreserveResolution);
+    RefPtr<CyberCore::Image> getFilteredImage(CyberCore::RenderingResourceIdentifier, CyberCore::Filter&);
+    void cacheNativeImage(const ShareableBitmapHandle&, CyberCore::RenderingResourceIdentifier);
+    void cacheFont(Ref<CyberCore::Font>&&);
+    void cacheDecomposedGlyphs(Ref<CyberCore::DecomposedGlyphs>&&);
     void releaseAllRemoteResources();
-    void releaseRemoteResource(WebCore::RenderingResourceIdentifier);
-    void markSurfacesVolatile(Vector<WebCore::RenderingResourceIdentifier>&&, CompletionHandler<void(bool madeAllVolatile)>&&);
+    void releaseRemoteResource(CyberCore::RenderingResourceIdentifier);
+    void markSurfacesVolatile(Vector<CyberCore::RenderingResourceIdentifier>&&, CompletionHandler<void(bool madeAllVolatile)>&&);
 
     struct BufferSet {
-        RefPtr<WebCore::ImageBuffer> front;
-        RefPtr<WebCore::ImageBuffer> back;
-        RefPtr<WebCore::ImageBuffer> secondaryBack;
+        RefPtr<CyberCore::ImageBuffer> front;
+        RefPtr<CyberCore::ImageBuffer> back;
+        RefPtr<CyberCore::ImageBuffer> secondaryBack;
     };
     
     struct LayerPrepareBuffersData {
@@ -183,17 +183,17 @@ private:
     void destroyGetPixelBufferSharedMemory();
 
     // Messages to be received.
-    void didCreateImageBufferBackend(ImageBufferBackendHandle&&, WebCore::RenderingResourceIdentifier);
+    void didCreateImageBufferBackend(ImageBufferBackendHandle&&, CyberCore::RenderingResourceIdentifier);
     void didFlush(DisplayListRecorderFlushIdentifier);
     void didFinalizeRenderingUpdate(RenderingUpdateID didRenderingUpdateID);
-    void didMarkLayersAsVolatile(MarkSurfacesAsVolatileRequestIdentifier, const Vector<WebCore::RenderingResourceIdentifier>& markedVolatileBufferIdentifiers, bool didMarkAllLayerAsVolatile);
+    void didMarkLayersAsVolatile(MarkSurfacesAsVolatileRequestIdentifier, const Vector<CyberCore::RenderingResourceIdentifier>& markedVolatileBufferIdentifiers, bool didMarkAllLayerAsVolatile);
 
     RefPtr<IPC::Connection> m_connection;
     RefPtr<IPC::StreamClientConnection> m_streamConnection;
     RemoteRenderingBackendCreationParameters m_parameters;
     RemoteResourceCacheProxy m_remoteResourceCacheProxy { *this };
     RefPtr<SharedMemory> m_getPixelBufferSharedMemory;
-    WebCore::Timer m_destroyGetPixelBufferSharedMemoryTimer { *this, &RemoteRenderingBackendProxy::destroyGetPixelBufferSharedMemory };
+    CyberCore::Timer m_destroyGetPixelBufferSharedMemoryTimer { *this, &RemoteRenderingBackendProxy::destroyGetPixelBufferSharedMemory };
     HashMap<MarkSurfacesAsVolatileRequestIdentifier, CompletionHandler<void(bool)>> m_markAsVolatileRequests;
     SerialFunctionDispatcher& m_dispatcher;
 

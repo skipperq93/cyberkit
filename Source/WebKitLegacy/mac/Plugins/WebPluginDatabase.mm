@@ -34,7 +34,7 @@
 #import "WebFrameViewInternal.h"
 #import "WebHTMLRepresentation.h"
 #import "WebHTMLViewInternal.h"
-#import "WebKitLogging.h"
+#import "CyberKitLogging.h"
 #import "WebNSFileManagerExtras.h"
 #import "WebPluginController.h"
 #import "WebPluginPackage.h"

@@ -34,7 +34,7 @@
 #include <CyberCore/Timer.h>
 #include <CyberCore/TransferredMessagePort.h>
 
-namespace WebCore {
+namespace CyberCore {
 class RegistrableDomain;
 class ScriptBuffer;
 struct ClientOrigin;
@@ -51,36 +51,36 @@ class WebSharedWorkerServer;
 class WebSharedWorkerServerToContextConnection final : public IPC::MessageSender, public IPC::MessageReceiver {
     WTF_MAKE_FAST_ALLOCATED;
 public:
-    WebSharedWorkerServerToContextConnection(NetworkConnectionToWebProcess&, const WebCore::RegistrableDomain&, WebSharedWorkerServer&);
+    WebSharedWorkerServerToContextConnection(NetworkConnectionToWebProcess&, const CyberCore::RegistrableDomain&, WebSharedWorkerServer&);
     ~WebSharedWorkerServerToContextConnection();
 
-    WebCore::ProcessIdentifier webProcessIdentifier() const;
-    const WebCore::RegistrableDomain& registrableDomain() const { return m_registrableDomain; }
+    CyberCore::ProcessIdentifier webProcessIdentifier() const;
+    const CyberCore::RegistrableDomain& registrableDomain() const { return m_registrableDomain; }
     IPC::Connection& ipcConnection() const;
 
     void terminateWhenPossible() { m_shouldTerminateWhenPossible = true; }
 
     void launchSharedWorker(WebSharedWorker&);
-    void postConnectEvent(const WebSharedWorker&, const WebCore::TransferredMessagePort&, CompletionHandler<void(bool)>&&);
+    void postConnectEvent(const WebSharedWorker&, const CyberCore::TransferredMessagePort&, CompletionHandler<void(bool)>&&);
     void terminateSharedWorker(const WebSharedWorker&);
 
-    void suspendSharedWorker(WebCore::SharedWorkerIdentifier);
-    void resumeSharedWorker(WebCore::SharedWorkerIdentifier);
+    void suspendSharedWorker(CyberCore::SharedWorkerIdentifier);
+    void resumeSharedWorker(CyberCore::SharedWorkerIdentifier);
 
-    const HashMap<WebCore::ProcessIdentifier, HashSet<WebCore::SharedWorkerObjectIdentifier>>& sharedWorkerObjects() const { return m_sharedWorkerObjects; }
+    const HashMap<CyberCore::ProcessIdentifier, HashSet<CyberCore::SharedWorkerObjectIdentifier>>& sharedWorkerObjects() const { return m_sharedWorkerObjects; }
 
     void didReceiveMessage(IPC::Connection&, IPC::Decoder&) final;
 
-    void addSharedWorkerObject(WebCore::SharedWorkerObjectIdentifier);
-    void removeSharedWorkerObject(WebCore::SharedWorkerObjectIdentifier);
+    void addSharedWorkerObject(CyberCore::SharedWorkerObjectIdentifier);
+    void removeSharedWorkerObject(CyberCore::SharedWorkerObjectIdentifier);
 
 private:
     void idleTerminationTimerFired();
     void connectionIsNoLongerNeeded();
 
     // IPC messages.
-    void postExceptionToWorkerObject(WebCore::SharedWorkerIdentifier, const String& errorMessage, int lineNumber, int columnNumber, const String& sourceURL);
-    void sharedWorkerTerminated(WebCore::SharedWorkerIdentifier);
+    void postExceptionToWorkerObject(CyberCore::SharedWorkerIdentifier, const String& errorMessage, int lineNumber, int columnNumber, const String& sourceURL);
+    void sharedWorkerTerminated(CyberCore::SharedWorkerIdentifier);
 
     // IPC::MessageSender.
     IPC::Connection* messageSenderConnection() const final;
@@ -88,9 +88,9 @@ private:
 
     NetworkConnectionToWebProcess& m_connection;
     WeakPtr<WebSharedWorkerServer> m_server;
-    WebCore::RegistrableDomain m_registrableDomain;
-    HashMap<WebCore::ProcessIdentifier, HashSet<WebCore::SharedWorkerObjectIdentifier>> m_sharedWorkerObjects;
-    WebCore::Timer m_idleTerminationTimer;
+    CyberCore::RegistrableDomain m_registrableDomain;
+    HashMap<CyberCore::ProcessIdentifier, HashSet<CyberCore::SharedWorkerObjectIdentifier>> m_sharedWorkerObjects;
+    CyberCore::Timer m_idleTerminationTimer;
     bool m_shouldTerminateWhenPossible { false };
 };
 

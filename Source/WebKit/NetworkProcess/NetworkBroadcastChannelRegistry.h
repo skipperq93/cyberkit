@@ -30,7 +30,7 @@
 #include <CyberCore/ClientOrigin.h>
 #include <wtf/HashMap.h>
 
-namespace WebCore {
+namespace CyberCore {
 struct MessageWithMessagePorts;
 }
 
@@ -47,14 +47,14 @@ public:
 
     void didReceiveMessage(IPC::Connection&, IPC::Decoder&);
 
-    void registerChannel(IPC::Connection&, const WebCore::ClientOrigin&, const String& name);
-    void unregisterChannel(IPC::Connection&, const WebCore::ClientOrigin&, const String& name);
-    void postMessage(IPC::Connection&, const WebCore::ClientOrigin&, const String& name, WebCore::MessageWithMessagePorts&&, CompletionHandler<void()>&&);
+    void registerChannel(IPC::Connection&, const CyberCore::ClientOrigin&, const String& name);
+    void unregisterChannel(IPC::Connection&, const CyberCore::ClientOrigin&, const String& name);
+    void postMessage(IPC::Connection&, const CyberCore::ClientOrigin&, const String& name, CyberCore::MessageWithMessagePorts&&, CompletionHandler<void()>&&);
 
 private:
     Ref<NetworkProcess> m_networkProcess;
     using NameToConnectionIdentifiersMap = HashMap<String, Vector<IPC::Connection::UniqueID>>;
-    HashMap<WebCore::ClientOrigin, NameToConnectionIdentifiersMap> m_broadcastChannels;
+    HashMap<CyberCore::ClientOrigin, NameToConnectionIdentifiersMap> m_broadcastChannels;
 };
 
 } // namespace WebKit

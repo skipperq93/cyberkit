@@ -36,7 +36,7 @@
 #include "WebKitFliteSourceGStreamer.h"
 #include <wtf/text/StringConcatenateNumbers.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class GstSpeechSynthesisWrapper {
     WTF_MAKE_FAST_ALLOCATED;
@@ -260,6 +260,6 @@ void PlatformSpeechSynthesizer::resetState()
     m_platformSpeechWrapper->resetState();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SPEECH_SYNTHESIS) && USE(GSTREAMER)

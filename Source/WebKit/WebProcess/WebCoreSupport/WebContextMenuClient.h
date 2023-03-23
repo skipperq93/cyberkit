@@ -30,11 +30,11 @@
 
 #include <CyberCore/ContextMenuClient.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPage;
 
-class WebContextMenuClient : public WebCore::ContextMenuClient {
+class WebContextMenuClient : public CyberCore::ContextMenuClient {
     WTF_MAKE_FAST_ALLOCATED;
 public:
     WebContextMenuClient(WebPage* page)
@@ -46,8 +46,8 @@ private:
     void contextMenuDestroyed() override;
 
     void downloadURL(const URL&) override;
-    void searchWithGoogle(const WebCore::Frame*) override;
-    void lookUpInDictionary(WebCore::Frame*) override;
+    void searchWithGoogle(const CyberCore::Frame*) override;
+    void lookUpInDictionary(CyberCore::Frame*) override;
     bool isSpeaking() override;
     void speak(const String&) override;
     void stopSpeaking() override;
@@ -65,11 +65,11 @@ private:
 #endif
 
 #if HAVE(TRANSLATION_UI_SERVICES)
-    void handleTranslation(const WebCore::TranslationContextMenuInfo&) final;
+    void handleTranslation(const CyberCore::TranslationContextMenuInfo&) final;
 #endif
 
 #if PLATFORM(GTK)
-    void insertEmoji(WebCore::Frame&) override;
+    void insertEmoji(CyberCore::Frame&) override;
 #endif
 
 #if USE(ACCESSIBILITY_CONTEXT_MENUS)
@@ -79,7 +79,7 @@ private:
     WebPage* m_page;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(CONTEXT_MENUS)
 #endif // WebContextMenuClient_h

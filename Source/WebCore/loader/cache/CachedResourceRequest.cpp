@@ -40,7 +40,7 @@
 #include "ServiceWorkerRegistrationData.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 CachedResourceRequest::CachedResourceRequest(ResourceRequest&& resourceRequest, const ResourceLoaderOptions& options, std::optional<ResourceLoadPriority> priority, String&& charset)
     : m_resourceRequest(WTFMove(resourceRequest))
@@ -342,4 +342,4 @@ void CachedResourceRequest::setNavigationServiceWorkerRegistrationData(const std
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

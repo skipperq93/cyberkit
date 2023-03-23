@@ -43,7 +43,7 @@
 namespace WebKit {
 
 using namespace JSC;
-using namespace WebCore;
+using namespace CyberCore;
 
 static const unsigned int maxBuffer = 128;
 static const unsigned int maxProcessPath = 35;

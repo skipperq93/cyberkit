@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -17,16 +17,16 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitDOMHTMLStyleElementPrivate_h
-#define WebKitDOMHTMLStyleElementPrivate_h
+#ifndef CyberKitDOMHTMLStyleElementPrivate_h
+#define CyberKitDOMHTMLStyleElementPrivate_h
 
 #include <CyberCore/HTMLStyleElement.h>
-#include <webkitdom/WebKitDOMHTMLStyleElement.h>
+#include <webkitdom/CyberKitDOMHTMLStyleElement.h>
 
-namespace WebKit {
-WebKitDOMHTMLStyleElement* wrapHTMLStyleElement(WebCore::HTMLStyleElement*);
-WebKitDOMHTMLStyleElement* kit(WebCore::HTMLStyleElement*);
-WebCore::HTMLStyleElement* core(WebKitDOMHTMLStyleElement*);
-} // namespace WebKit
+namespace CyberKit {
+CyberKitDOMHTMLStyleElement* wrapHTMLStyleElement(CyberCore::HTMLStyleElement*);
+CyberKitDOMHTMLStyleElement* kit(CyberCore::HTMLStyleElement*);
+CyberCore::HTMLStyleElement* core(CyberKitDOMHTMLStyleElement*);
+} // namespace CyberKit
 
-#endif /* WebKitDOMHTMLStyleElementPrivate_h */
+#endif /* CyberKitDOMHTMLStyleElementPrivate_h */

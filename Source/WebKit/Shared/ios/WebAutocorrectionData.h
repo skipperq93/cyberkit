@@ -35,7 +35,7 @@ class Decoder;
 class Encoder;
 }
 
-namespace WebCore {
+namespace CyberCore {
 class FloatRect;
 }
 
@@ -44,7 +44,7 @@ OBJC_CLASS UIFont;
 namespace WebKit {
 
 struct WebAutocorrectionData {
-    Vector<WebCore::FloatRect> textRects;
+    Vector<CyberCore::FloatRect> textRects;
     RetainPtr<UIFont> font;
 };
 

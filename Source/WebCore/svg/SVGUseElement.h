@@ -26,7 +26,7 @@
 #include "SVGGraphicsElement.h"
 #include "SVGURIReference.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CachedSVGDocument;
 

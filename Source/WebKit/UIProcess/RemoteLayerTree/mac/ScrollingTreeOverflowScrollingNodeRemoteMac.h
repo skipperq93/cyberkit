@@ -33,18 +33,18 @@ namespace WebKit {
 
 class ScrollerPairMac;
 
-class ScrollingTreeOverflowScrollingNodeRemoteMac : public WebCore::ScrollingTreeOverflowScrollingNodeMac {
+class ScrollingTreeOverflowScrollingNodeRemoteMac : public CyberCore::ScrollingTreeOverflowScrollingNodeMac {
 public:
-    static Ref<ScrollingTreeOverflowScrollingNodeRemoteMac> create(WebCore::ScrollingTree&, WebCore::ScrollingNodeID);
+    static Ref<ScrollingTreeOverflowScrollingNodeRemoteMac> create(CyberCore::ScrollingTree&, CyberCore::ScrollingNodeID);
     virtual ~ScrollingTreeOverflowScrollingNodeRemoteMac();
 
-    bool handleMouseEvent(const WebCore::PlatformMouseEvent&);
+    bool handleMouseEvent(const CyberCore::PlatformMouseEvent&);
 
 private:
-    ScrollingTreeOverflowScrollingNodeRemoteMac(WebCore::ScrollingTree&, WebCore::ScrollingNodeID);
+    ScrollingTreeOverflowScrollingNodeRemoteMac(CyberCore::ScrollingTree&, CyberCore::ScrollingNodeID);
 
-    void commitStateBeforeChildren(const WebCore::ScrollingStateNode&) override;
-    WebCore::WheelEventHandlingResult handleWheelEvent(const WebCore::PlatformWheelEvent&, WebCore::EventTargeting) override;
+    void commitStateBeforeChildren(const CyberCore::ScrollingStateNode&) override;
+    CyberCore::WheelEventHandlingResult handleWheelEvent(const CyberCore::PlatformWheelEvent&, CyberCore::EventTargeting) override;
     void repositionRelatedLayers() override;
 };
 

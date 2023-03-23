@@ -30,7 +30,7 @@
 #import "ControlMac.h"
 #import "MeterPart.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class MeterMac final : public ControlMac {
 public:
@@ -48,6 +48,6 @@ private:
     RetainPtr<NSLevelIndicatorCell> m_levelIndicatorCell;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(MAC)

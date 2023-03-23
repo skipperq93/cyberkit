@@ -32,7 +32,7 @@
 #include <pal/text/TextEncodingRegistry.h>
 #include <wtf/ASCIICType.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 

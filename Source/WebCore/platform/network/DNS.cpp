@@ -34,7 +34,7 @@
 #include <arpa/inet.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 void prefetchDNS(const String& hostname)
 {
@@ -51,12 +51,12 @@ void resolveDNS(const String& hostname, uint64_t identifier, DNSCompletionHandle
     if (hostname.isEmpty())
         return;
 
-    WebCore::DNSResolveQueue::singleton().resolve(hostname, identifier, WTFMove(completionHandler));
+    CyberCore::DNSResolveQueue::singleton().resolve(hostname, identifier, WTFMove(completionHandler));
 }
 
 void stopResolveDNS(uint64_t identifier)
 {
-    WebCore::DNSResolveQueue::singleton().stopResolve(identifier);
+    CyberCore::DNSResolveQueue::singleton().stopResolve(identifier);
 }
 
 std::optional<IPAddress> IPAddress::fromString(const String& string)

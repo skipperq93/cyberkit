@@ -34,7 +34,7 @@
 #include <wtf/ObjectIdentifier.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum DisplayConfigurationClientIdentifierType { };
 using DisplayConfigurationClientIdentifier = ObjectIdentifier<DisplayConfigurationClientIdentifierType>;

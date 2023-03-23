@@ -53,5 +53,5 @@ struct _WebKitFormDataInputStreamClass {
 
 GType webkit_form_data_input_stream_get_type(void);
 
-GRefPtr<GInputStream> webkitFormDataInputStreamNew(Ref<WebCore::FormData>&&);
+GRefPtr<GInputStream> webkitFormDataInputStreamNew(Ref<CyberCore::FormData>&&);
 GBytes* webkitFormDataInputStreamReadAll(WebKitFormDataInputStream*);

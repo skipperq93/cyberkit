@@ -34,7 +34,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/Ref.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class PerformanceNavigation : public RefCounted<PerformanceNavigation>, public DOMWindowProperty {
 public:
@@ -54,4 +54,4 @@ private:
     explicit PerformanceNavigation(DOMWindow*);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

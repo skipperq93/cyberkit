@@ -32,7 +32,7 @@
 #include "RenderGrid.h"
 #include "rendering/style/RenderStyleConstants.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 LayoutUnit GridTrack::baseSize() const
 {
@@ -1734,4 +1734,4 @@ bool GridTrackSizingAlgorithm::isDirectionInMasonryDirection() const
     return m_renderGrid->isMasonry(m_direction);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -27,7 +27,7 @@
 #include <memory>
 #include <wtf/HashMap.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class GraphicsContext;
 
@@ -99,4 +99,4 @@ private:
     bool m_shouldCollectGradientAttributes { true };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

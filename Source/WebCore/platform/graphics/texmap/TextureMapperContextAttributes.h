@@ -27,7 +27,7 @@
 
 #if USE(TEXTURE_MAPPER_GL)
 
-namespace WebCore {
+namespace CyberCore {
 
 struct TextureMapperContextAttributes {
     static const TextureMapperContextAttributes& get();
@@ -38,6 +38,6 @@ struct TextureMapperContextAttributes {
     bool supportsUnpackSubimage { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(TEXTURE_MAPPER_GL)

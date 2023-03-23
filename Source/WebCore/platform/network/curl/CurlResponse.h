@@ -29,7 +29,7 @@
 #include "NetworkLoadMetrics.h"
 #include <wtf/URL.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CurlResponse {
 public:
@@ -73,4 +73,4 @@ public:
     NetworkLoadMetrics networkLoadMetrics;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -34,7 +34,7 @@
 
 typedef struct OpaqueCMClock* CMClockRef;
 
-namespace WebCore {
+namespace CyberCore {
 
 class CoreAudioCaptureDevice : public CaptureDevice {
 public:
@@ -54,7 +54,7 @@ private:
 };
 
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM) && PLATFORM(MAC)
 

@@ -33,16 +33,16 @@
 #include "RemoteAudioSourceProviderManager.h"
 #include "RemoteMediaPlayerProxyMessages.h"
 
-namespace WebCore {
+namespace CyberCore {
 #if !RELEASE_LOG_DISABLED
 extern WTFLogChannel LogMedia;
 #endif
 }
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
-Ref<RemoteAudioSourceProvider> RemoteAudioSourceProvider::create(WebCore::MediaPlayerIdentifier identifier, WTF::LoggerHelper& helper)
+Ref<RemoteAudioSourceProvider> RemoteAudioSourceProvider::create(CyberCore::MediaPlayerIdentifier identifier, WTF::LoggerHelper& helper)
 {
     auto provider = adoptRef(*new RemoteAudioSourceProvider(identifier, helper));
     provider->m_gpuProcessConnection->audioSourceProviderManager().addProvider(provider.copyRef());
@@ -94,6 +94,6 @@ WTFLogChannel& RemoteAudioSourceProvider::logChannel() const
 }
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS) && ENABLE(WEB_AUDIO) && PLATFORM(COCOA)

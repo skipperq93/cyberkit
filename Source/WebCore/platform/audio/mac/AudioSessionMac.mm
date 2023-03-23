@@ -38,7 +38,7 @@
 
 #import <pal/cocoa/AVFoundationSoftLink.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static AudioDeviceID defaultDeviceWithoutCaching()
 {

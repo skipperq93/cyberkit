@@ -43,16 +43,16 @@ private:
     WebDateTimePickerGtk(WebPageProxy&);
 
     void endPicker() final;
-    void showDateTimePicker(WebCore::DateTimeChooserParameters&&) final;
+    void showDateTimePicker(CyberCore::DateTimeChooserParameters&&) final;
 
-    void update(WebCore::DateTimeChooserParameters&&);
+    void update(CyberCore::DateTimeChooserParameters&&);
     void didChooseDate();
     void invalidate();
 
     GtkWidget* m_popover { nullptr };
     GtkWidget* m_calendar { nullptr };
-    std::optional<WebCore::DateComponents> m_currentDate;
-    WebCore::SecondFormat m_secondFormat { WebCore::SecondFormat::None };
+    std::optional<CyberCore::DateComponents> m_currentDate;
+    CyberCore::SecondFormat m_secondFormat { CyberCore::SecondFormat::None };
     bool m_inUpdate { false };
 };
 

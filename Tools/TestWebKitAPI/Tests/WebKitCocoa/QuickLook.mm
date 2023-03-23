@@ -33,7 +33,7 @@
 #import "TestProtocol.h"
 #import "TestWKWebView.h"
 #import <CoreServices/CoreServices.h>
-#import <CyberCore/WebCoreThread.h>
+#import <CyberCore/CyberCoreThread.h>
 #import <CyberKit/WKNavigationDelegatePrivate.h>
 #import <CyberKit/WKProcessPoolPrivate.h>
 #import <CyberKit/WKWebViewConfigurationPrivate.h>

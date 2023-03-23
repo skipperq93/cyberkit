@@ -34,8 +34,8 @@ namespace WebKit {
 
 struct AudioTrackPrivateRemoteConfiguration : TrackPrivateRemoteConfiguration {
     bool enabled;
-    WebCore::AudioTrackPrivate::Kind kind { WebCore::AudioTrackPrivate::Kind::None };
-    WebCore::PlatformAudioTrackConfiguration trackConfiguration;
+    CyberCore::AudioTrackPrivate::Kind kind { CyberCore::AudioTrackPrivate::Kind::None };
+    CyberCore::PlatformAudioTrackConfiguration trackConfiguration;
 
     template<class Encoder>
     void encode(Encoder& encoder) const

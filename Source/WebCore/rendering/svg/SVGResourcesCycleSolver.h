@@ -23,7 +23,7 @@
 #include <wtf/Noncopyable.h>
 #include <wtf/WeakHashSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderElement;
 class RenderSVGResourceContainer;
@@ -46,4 +46,4 @@ private:
     WeakHashSet<RenderSVGResourceContainer> m_allResources; 
 };
 
-} // namespace WebCore
+} // namespace CyberCore

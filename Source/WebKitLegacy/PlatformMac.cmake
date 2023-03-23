@@ -6,31 +6,31 @@ add_definitions(-iframework ${APPLICATIONSERVICES_LIBRARY}/Versions/Current/Fram
 add_definitions(-DJSC_CLASS_AVAILABLE\\\(...\\\)=)
 add_definitions(-fobjc-weak)
 
-list(APPEND WebKitLegacy_PRIVATE_LIBRARIES
+list(APPEND CyberKitLegacy_PRIVATE_LIBRARIES
     ${SECURITYINTERFACE_LIBRARY}
 )
 
-list(APPEND WebKitLegacy_PRIVATE_INCLUDE_DIRECTORIES
+list(APPEND CyberKitLegacy_PRIVATE_INCLUDE_DIRECTORIES
     "${PAL_FRAMEWORK_HEADERS_DIR}"
     "${WEBKITLEGACY_DIR}"
     "${WEBKITLEGACY_DIR}/mac"
     "${WEBKITLEGACY_DIR}/mac/Misc"
     "${WEBKITLEGACY_DIR}/mac/WebView"
-    "${WEBKITLEGACY_DIR}/mac/WebCoreSupport"
-    "${WebKitLegacy_FRAMEWORK_HEADERS_DIR}"
-    "${WebKitLegacy_FRAMEWORK_HEADERS_DIR}/WebKitLegacy"
+    "${WEBKITLEGACY_DIR}/mac/CyberCoreSupport"
+    "${CyberKitLegacy_FRAMEWORK_HEADERS_DIR}"
+    "${CyberKitLegacy_FRAMEWORK_HEADERS_DIR}/CyberKitLegacy"
     "${CMAKE_SOURCE_DIR}/Source/ThirdParty/libwebrtc/Source"
     "${CMAKE_SOURCE_DIR}/Source/ThirdParty/libwebrtc/Source/third_party/abseil-cpp"
     "${CMAKE_SOURCE_DIR}/Source/ThirdParty/libwebrtc/Source/webrtc"
 )
 
-list(APPEND WebKitLegacy_UNIFIED_SOURCE_LIST_FILES
+list(APPEND CyberKitLegacy_UNIFIED_SOURCE_LIST_FILES
     SourcesCocoa.txt
 )
-WEBKIT_COMPUTE_SOURCES(WebKitLegacy)
+WEBKIT_COMPUTE_SOURCES(CyberKitLegacy)
 
-list(APPEND WebKitLegacy_SOURCES
-    cf/WebCoreSupport/WebInspectorClientCF.cpp
+list(APPEND CyberKitLegacy_SOURCES
+    cf/CyberCoreSupport/WebInspectorClientCF.cpp
 
     mac/DefaultDelegates/WebDefaultEditingDelegate.m
     mac/DefaultDelegates/WebDefaultPolicyDelegate.m
@@ -44,16 +44,16 @@ list(APPEND WebKitLegacy_SOURCES
     mac/History/WebURLsWithTitles.m
 
     mac/Misc/WebCache.mm
-    mac/Misc/WebCoreStatistics.mm
+    mac/Misc/CyberCoreStatistics.mm
     mac/Misc/WebDownload.mm
     mac/Misc/WebElementDictionary.mm
     mac/Misc/WebIconDatabase.mm
-    mac/Misc/WebKitErrors.m
-    mac/Misc/WebKitLogInitialization.mm
-    mac/Misc/WebKitLogging.m
-    mac/Misc/WebKitNSStringExtras.mm
-    mac/Misc/WebKitStatistics.m
-    mac/Misc/WebKitVersionChecks.mm
+    mac/Misc/CyberKitErrors.m
+    mac/Misc/CyberKitLogInitialization.mm
+    mac/Misc/CyberKitLogging.m
+    mac/Misc/CyberKitNSStringExtras.mm
+    mac/Misc/CyberKitStatistics.m
+    mac/Misc/CyberKitVersionChecks.mm
     mac/Misc/WebLocalizableStrings.mm
     mac/Misc/WebLocalizableStringsInternal.mm
     mac/Misc/WebNSControlExtras.m
@@ -85,32 +85,32 @@ list(APPEND WebKitLegacy_SOURCES
     mac/Storage/WebStorageManager.mm
     mac/Storage/WebStorageTrackerClient.mm
 
-    mac/WebCoreSupport/CorrectionPanel.mm
-    mac/WebCoreSupport/PopupMenuMac.mm
-    mac/WebCoreSupport/SearchPopupMenuMac.mm
-    mac/WebCoreSupport/WebAlternativeTextClient.mm
-    mac/WebCoreSupport/WebChromeClient.mm
-    mac/WebCoreSupport/WebContextMenuClient.mm
-    mac/WebCoreSupport/WebDeviceOrientationClient.mm
-    mac/WebCoreSupport/WebDragClient.mm
-    mac/WebCoreSupport/WebEditorClient.mm
-    mac/WebCoreSupport/WebFrameNetworkingContext.mm
-    mac/WebCoreSupport/WebGeolocationClient.mm
-    mac/WebCoreSupport/WebInspectorClient.mm
-    mac/WebCoreSupport/WebJavaScriptTextInputPanel.m
-    mac/WebCoreSupport/WebKitFullScreenListener.mm
-    mac/WebCoreSupport/WebMediaKeySystemClient.mm
-    mac/WebCoreSupport/WebNotificationClient.mm
-    mac/WebCoreSupport/WebOpenPanelResultListener.mm
-    mac/WebCoreSupport/WebPaymentCoordinatorClient.mm
-    mac/WebCoreSupport/WebPlatformStrategies.mm
-    mac/WebCoreSupport/WebPluginInfoProvider.mm
-    mac/WebCoreSupport/WebProgressTrackerClient.mm
-    mac/WebCoreSupport/WebSecurityOrigin.mm
-    mac/WebCoreSupport/WebSelectionServiceController.mm
-    mac/WebCoreSupport/WebSwitchingGPUClient.cpp
-    mac/WebCoreSupport/WebValidationMessageClient.mm
-    mac/WebCoreSupport/WebVisitedLinkStore.mm
+    mac/CyberCoreSupport/CorrectionPanel.mm
+    mac/CyberCoreSupport/PopupMenuMac.mm
+    mac/CyberCoreSupport/SearchPopupMenuMac.mm
+    mac/CyberCoreSupport/WebAlternativeTextClient.mm
+    mac/CyberCoreSupport/WebChromeClient.mm
+    mac/CyberCoreSupport/WebContextMenuClient.mm
+    mac/CyberCoreSupport/WebDeviceOrientationClient.mm
+    mac/CyberCoreSupport/WebDragClient.mm
+    mac/CyberCoreSupport/WebEditorClient.mm
+    mac/CyberCoreSupport/WebFrameNetworkingContext.mm
+    mac/CyberCoreSupport/WebGeolocationClient.mm
+    mac/CyberCoreSupport/WebInspectorClient.mm
+    mac/CyberCoreSupport/WebJavaScriptTextInputPanel.m
+    mac/CyberCoreSupport/CyberKitFullScreenListener.mm
+    mac/CyberCoreSupport/WebMediaKeySystemClient.mm
+    mac/CyberCoreSupport/WebNotificationClient.mm
+    mac/CyberCoreSupport/WebOpenPanelResultListener.mm
+    mac/CyberCoreSupport/WebPaymentCoordinatorClient.mm
+    mac/CyberCoreSupport/WebPlatformStrategies.mm
+    mac/CyberCoreSupport/WebPluginInfoProvider.mm
+    mac/CyberCoreSupport/WebProgressTrackerClient.mm
+    mac/CyberCoreSupport/WebSecurityOrigin.mm
+    mac/CyberCoreSupport/WebSelectionServiceController.mm
+    mac/CyberCoreSupport/WebSwitchingGPUClient.cpp
+    mac/CyberCoreSupport/WebValidationMessageClient.mm
+    mac/CyberCoreSupport/WebVisitedLinkStore.mm
 
     mac/WebInspector/WebInspectorFrontend.mm
     mac/WebInspector/WebNodeHighlight.mm
@@ -145,7 +145,7 @@ list(APPEND WebKitLegacy_SOURCES
     mac/WebView/WebWindowAnimation.mm
 )
 
-set(WebKitLegacy_LEGACY_FORWARDING_HEADERS_FILES
+set(CyberKitLegacy_LEGACY_FORWARDING_HEADERS_FILES
     mac/DOM/DOMHTMLHeadingElement.h
     mac/DOM/DOMHTMLBaseFontElement.h
     mac/DOM/DOMCSSUnknownRule.h
@@ -382,7 +382,7 @@ set(WebKitLegacy_LEGACY_FORWARDING_HEADERS_FILES
     mac/History/WebHistory.h
     mac/History/WebHistoryItem.h
 
-    mac/Misc/WebKitStatisticsPrivate.h
+    mac/Misc/CyberKitStatisticsPrivate.h
     mac/Misc/WebCache.h
     mac/Misc/NSURLDownloadSPI.h
     mac/Misc/WebStringTruncator.h
@@ -391,7 +391,7 @@ set(WebKitLegacy_LEGACY_FORWARDING_HEADERS_FILES
     mac/Misc/WebDownload.h
     mac/Misc/WebNSControlExtras.h
     mac/Misc/WebNSObjectExtras.h
-    mac/Misc/WebKitErrors.h
+    mac/Misc/CyberKitErrors.h
     mac/Misc/WebNSViewExtras.h
     mac/Misc/WebNSDictionaryExtras.h
     mac/Misc/WebNSURLRequestExtras.h
@@ -402,21 +402,21 @@ set(WebKitLegacy_LEGACY_FORWARDING_HEADERS_FILES
     mac/Misc/WebNSEventExtras.h
     mac/Misc/WebNSURLExtras.h
     mac/Misc/WebIconDatabase.h
-    mac/Misc/WebKitStatistics.h
-    mac/Misc/WebKitLogging.h
+    mac/Misc/CyberKitStatistics.h
+    mac/Misc/CyberKitLogging.h
     mac/Misc/WebQuotaManager.h
-    mac/Misc/WebKitNSStringExtras.h
+    mac/Misc/CyberKitNSStringExtras.h
     mac/Misc/WebNSPrintOperationExtras.h
     mac/Misc/WebNSImageExtras.h
-    mac/Misc/WebKitErrorsPrivate.h
+    mac/Misc/CyberKitErrorsPrivate.h
     mac/Misc/WebUserContentURLPattern.h
-    mac/Misc/WebKitVersionChecks.h
+    mac/Misc/CyberKitVersionChecks.h
     mac/Misc/WebLocalizableStrings.h
     mac/Misc/WebTypesInternal.h
-    mac/Misc/WebCoreStatistics.h
+    mac/Misc/CyberCoreStatistics.h
     mac/Misc/WebNSDataExtras.h
     mac/Misc/WebElementDictionary.h
-    mac/Misc/WebKit.h
+    mac/Misc/CyberKit.h
     mac/Misc/WebNSPasteboardExtras.h
 
     mac/Panels/WebPanelAuthenticationHandler.h
@@ -450,38 +450,38 @@ set(WebKitLegacy_LEGACY_FORWARDING_HEADERS_FILES
     mac/WebInspector/WebInspectorPrivate.h
     mac/WebInspector/WebInspectorFrontend.h
 
-    mac/WebCoreSupport/WebAlternativeTextClient.h
-    mac/WebCoreSupport/WebSecurityOriginPrivate.h
-    mac/WebCoreSupport/WebCreateFragmentInternal.h
-    mac/WebCoreSupport/WebProgressTrackerClient.h
-    mac/WebCoreSupport/WebDragClient.h
-    mac/WebCoreSupport/WebChromeClient.h
-    mac/WebCoreSupport/WebPluginInfoProvider.h
-    mac/WebCoreSupport/WebEditorClient.h
-    mac/WebCoreSupport/CorrectionPanel.h
-    mac/WebCoreSupport/WebSwitchingGPUClient.h
-    mac/WebCoreSupport/WebSecurityOriginInternal.h
-    mac/WebCoreSupport/WebSelectionServiceController.h
-    mac/WebCoreSupport/WebVisitedLinkStore.h
-    mac/WebCoreSupport/WebApplicationCache.h
-    mac/WebCoreSupport/WebInspectorClient.h
-    mac/WebCoreSupport/WebApplicationCacheQuotaManager.h
-    mac/WebCoreSupport/WebContextMenuClient.h
-    mac/WebCoreSupport/SearchPopupMenuMac.h
-    mac/WebCoreSupport/WebJavaScriptTextInputPanel.h
-    mac/WebCoreSupport/WebPaymentCoordinatorClient.h
-    mac/WebCoreSupport/WebApplicationCacheInternal.h
-    mac/WebCoreSupport/WebPlatformStrategies.h
-    mac/WebCoreSupport/WebGeolocationClient.h
-    mac/WebCoreSupport/WebFrameNetworkingContext.h
-    mac/WebCoreSupport/PopupMenuMac.h
-    mac/WebCoreSupport/WebDeviceOrientationClient.h
-    mac/WebCoreSupport/WebValidationMessageClient.h
-    mac/WebCoreSupport/WebCachedFramePlatformData.h
-    mac/WebCoreSupport/WebFrameLoaderClient.h
-    mac/WebCoreSupport/WebNotificationClient.h
-    mac/WebCoreSupport/WebKitFullScreenListener.h
-    mac/WebCoreSupport/WebOpenPanelResultListener.h
+    mac/CyberCoreSupport/WebAlternativeTextClient.h
+    mac/CyberCoreSupport/WebSecurityOriginPrivate.h
+    mac/CyberCoreSupport/WebCreateFragmentInternal.h
+    mac/CyberCoreSupport/WebProgressTrackerClient.h
+    mac/CyberCoreSupport/WebDragClient.h
+    mac/CyberCoreSupport/WebChromeClient.h
+    mac/CyberCoreSupport/WebPluginInfoProvider.h
+    mac/CyberCoreSupport/WebEditorClient.h
+    mac/CyberCoreSupport/CorrectionPanel.h
+    mac/CyberCoreSupport/WebSwitchingGPUClient.h
+    mac/CyberCoreSupport/WebSecurityOriginInternal.h
+    mac/CyberCoreSupport/WebSelectionServiceController.h
+    mac/CyberCoreSupport/WebVisitedLinkStore.h
+    mac/CyberCoreSupport/WebApplicationCache.h
+    mac/CyberCoreSupport/WebInspectorClient.h
+    mac/CyberCoreSupport/WebApplicationCacheQuotaManager.h
+    mac/CyberCoreSupport/WebContextMenuClient.h
+    mac/CyberCoreSupport/SearchPopupMenuMac.h
+    mac/CyberCoreSupport/WebJavaScriptTextInputPanel.h
+    mac/CyberCoreSupport/WebPaymentCoordinatorClient.h
+    mac/CyberCoreSupport/WebApplicationCacheInternal.h
+    mac/CyberCoreSupport/WebPlatformStrategies.h
+    mac/CyberCoreSupport/WebGeolocationClient.h
+    mac/CyberCoreSupport/WebFrameNetworkingContext.h
+    mac/CyberCoreSupport/PopupMenuMac.h
+    mac/CyberCoreSupport/WebDeviceOrientationClient.h
+    mac/CyberCoreSupport/WebValidationMessageClient.h
+    mac/CyberCoreSupport/WebCachedFramePlatformData.h
+    mac/CyberCoreSupport/WebFrameLoaderClient.h
+    mac/CyberCoreSupport/WebNotificationClient.h
+    mac/CyberCoreSupport/CyberKitFullScreenListener.h
+    mac/CyberCoreSupport/WebOpenPanelResultListener.h
 
     mac/WebView/WebArchive.h
     mac/WebView/WebHTMLViewPrivate.h
@@ -562,20 +562,20 @@ set(WebKitLegacy_LEGACY_FORWARDING_HEADERS_FILES
     mac/WebView/WebDynamicScrollBarsViewInternal.h
 
     ${WEBCORE_DIR}/bridge/objc/WebScriptObject.h
-    ${WEBCORE_DIR}/platform/cocoa/WebKitAvailability.h
+    ${WEBCORE_DIR}/platform/cocoa/CyberKitAvailability.h
     ${WEBCORE_DIR}/plugins/npfunctions.h
     ${WEBCORE_DIR}/plugins/npapi.h
 )
 
-add_definitions("-include WebKitPrefix.h")
+add_definitions("-include CyberKitPrefix.h")
 
 set(C99_FILES
     mac/DefaultDelegates/WebDefaultEditingDelegate.m
     mac/DefaultDelegates/WebDefaultUIDelegate.m
 
-    mac/Misc/WebKitErrors.m
-    mac/Misc/WebKitStatistics.m
-    mac/Misc/WebKitSystemBits.m
+    mac/Misc/CyberKitErrors.m
+    mac/Misc/CyberKitStatistics.m
+    mac/Misc/CyberKitSystemBits.m
     mac/Misc/WebNSArrayExtras.m
     mac/Misc/WebNSControlExtras.m
     mac/Misc/WebNSEventExtras.m
@@ -595,7 +595,7 @@ set(CPP_FILES
     Storage/StorageThread.cpp
 )
 
-foreach (_file ${WebKitLegacy_SOURCES})
+foreach (_file ${CyberKitLegacy_SOURCES})
     list(FIND C99_FILES ${_file} _c99_index)
     list(FIND CPP_FILES ${_file} _cpp_index)
     if (NOT ${_c99_index} EQUAL -1)
@@ -607,28 +607,28 @@ foreach (_file ${WebKitLegacy_SOURCES})
     endif ()
 endforeach ()
 
-foreach (_file ${WebKitLegacy_LEGACY_FORWARDING_HEADERS_FILES})
+foreach (_file ${CyberKitLegacy_LEGACY_FORWARDING_HEADERS_FILES})
     get_filename_component(_name "${_file}" NAME)
-    set(_target_filename "${WebKitLegacy_FRAMEWORK_HEADERS_DIR}/WebKitLegacy/${_name}")
+    set(_target_filename "${CyberKitLegacy_FRAMEWORK_HEADERS_DIR}/CyberKitLegacy/${_name}")
     if (NOT EXISTS ${_target_filename})
         file(WRITE ${_target_filename} "#import \"${_file}\"")
     endif ()
 endforeach ()
 
 add_custom_command(
-    OUTPUT ${WebKitLegacy_DERIVED_SOURCES_DIR}/WebViewPreferencesChangedGenerated.mm ${WebKitLegacy_DERIVED_SOURCES_DIR}/WebPreferencesInternalFeatures.mm ${WebKitLegacy_DERIVED_SOURCES_DIR}/WebPreferencesExperimentalFeatures.mm ${WebKitLegacy_DERIVED_SOURCES_DIR}/WebPreferencesDefinitions.h
-    DEPENDS ${WebKit_WEB_PREFERENCES_TEMPLATES} ${WebKit_WEB_PREFERENCES} WTF_CopyPreferences
-    COMMAND ${RUBY_EXECUTABLE} ${WTF_SCRIPTS_DIR}/GeneratePreferences.rb --frontend WebKitLegacy --outputDir "${WebKitLegacy_DERIVED_SOURCES_DIR}" --template "$<JOIN:${WebKit_WEB_PREFERENCES_TEMPLATES},;--template;>" ${WebKit_WEB_PREFERENCES}
+    OUTPUT ${CyberKitLegacy_DERIVED_SOURCES_DIR}/WebViewPreferencesChangedGenerated.mm ${CyberKitLegacy_DERIVED_SOURCES_DIR}/WebPreferencesInternalFeatures.mm ${CyberKitLegacy_DERIVED_SOURCES_DIR}/WebPreferencesExperimentalFeatures.mm ${CyberKitLegacy_DERIVED_SOURCES_DIR}/WebPreferencesDefinitions.h
+    DEPENDS ${CyberKit_WEB_PREFERENCES_TEMPLATES} ${CyberKit_WEB_PREFERENCES} WTF_CopyPreferences
+    COMMAND ${RUBY_EXECUTABLE} ${WTF_SCRIPTS_DIR}/GeneratePreferences.rb --frontend CyberKitLegacy --outputDir "${CyberKitLegacy_DERIVED_SOURCES_DIR}" --template "$<JOIN:${CyberKit_WEB_PREFERENCES_TEMPLATES},;--template;>" ${CyberKit_WEB_PREFERENCES}
     COMMAND_EXPAND_LISTS
     VERBATIM
 )
 
-list(APPEND WebKitLegacy_SOURCES
-    ${WebKitLegacy_DERIVED_SOURCES_DIR}/WebViewPreferencesChangedGenerated.mm
-    ${WebKitLegacy_DERIVED_SOURCES_DIR}/WebPreferencesInternalFeatures.mm
-    ${WebKitLegacy_DERIVED_SOURCES_DIR}/WebPreferencesExperimentalFeatures.mm
+list(APPEND CyberKitLegacy_SOURCES
+    ${CyberKitLegacy_DERIVED_SOURCES_DIR}/WebViewPreferencesChangedGenerated.mm
+    ${CyberKitLegacy_DERIVED_SOURCES_DIR}/WebPreferencesInternalFeatures.mm
+    ${CyberKitLegacy_DERIVED_SOURCES_DIR}/WebPreferencesExperimentalFeatures.mm
 )
 
-set(WebKitLegacy_OUTPUT_NAME WebKitLegacy)
+set(CyberKitLegacy_OUTPUT_NAME CyberKitLegacy)
 
 set(CMAKE_SHARED_LINKER_FLAGS ${CMAKE_SHARED_LINKER_FLAGS} "-compatibility_version 1 -current_version ${WEBKIT_MAC_VERSION} -framework SecurityInterface")

@@ -28,7 +28,7 @@
 
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<Model> Model::create(Ref<SharedBuffer>&& data, String mimeType, URL url)
 {

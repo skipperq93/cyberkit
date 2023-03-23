@@ -30,7 +30,7 @@
 #include <wtf/text/StringConcatenateNumbers.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 FontPlatformData::FontPlatformData(RetainPtr<CTFontRef>&& font, float size, bool syntheticBold, bool syntheticOblique, FontOrientation orientation, FontWidthVariant widthVariant, TextRenderingMode textRenderingMode, const CreationData* creationData)
     : FontPlatformData(size, syntheticBold, syntheticOblique, orientation, widthVariant, textRenderingMode, creationData)
@@ -38,7 +38,7 @@ FontPlatformData::FontPlatformData(RetainPtr<CTFontRef>&& font, float size, bool
     ASSERT_ARG(font, font);
     m_font = font;
     m_isColorBitmapFont = CTFontGetSymbolicTraits(font.get()) & kCTFontColorGlyphsTrait;
-    m_isSystemFont = WebCore::isSystemFont(font.get());
+    m_isSystemFont = CyberCore::isSystemFont(font.get());
     auto variations = adoptCF(static_cast<CFDictionaryRef>(CTFontCopyAttribute(font.get(), kCTFontVariationAttribute)));
     m_hasVariations = variations && CFDictionaryGetCount(variations.get());
 
@@ -189,4 +189,4 @@ void FontPlatformData::updateSize(float size)
     m_ctFont = nullptr;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -31,7 +31,7 @@
 
 #include "SubresourceLoader.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static void scheduleAll(const ResourceLoaderMap& loaders, SchedulePair& pair)
 {
@@ -63,4 +63,4 @@ void DocumentLoader::unschedule(SchedulePair& pair)
     unscheduleAll(m_multipartSubresourceLoaders, pair);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

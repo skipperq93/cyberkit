@@ -30,7 +30,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct MediaControlsContextMenuItem {
     using ID = uint64_t;
@@ -76,6 +76,6 @@ std::optional<MediaControlsContextMenuItem> MediaControlsContextMenuItem::decode
     return {{ WTFMove(*id), WTFMove(*title), WTFMove(*icon), WTFMove(*checked), WTFMove(*children) }};
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_CONTROLS_CONTEXT_MENUS) && USE(UICONTEXTMENU)

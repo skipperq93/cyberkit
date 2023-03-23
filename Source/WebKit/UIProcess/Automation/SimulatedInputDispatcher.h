@@ -89,8 +89,8 @@ struct SimulatedInputSourceState {
     std::optional<MouseButton> pressedMouseButton;
     std::optional<MouseMoveOrigin> origin;
     std::optional<String> nodeHandle;
-    std::optional<WebCore::IntPoint> location;
-    std::optional<WebCore::IntSize> scrollDelta;
+    std::optional<CyberCore::IntPoint> location;
+    std::optional<CyberCore::IntSize> scrollDelta;
     std::optional<Seconds> duration;
 
     static SimulatedInputSourceState emptyStateForSourceType(SimulatedInputSourceType);
@@ -135,18 +135,18 @@ public:
     public:
         virtual ~Client() { }
 #if ENABLE(WEBDRIVER_MOUSE_INTERACTIONS)
-        virtual void simulateMouseInteraction(WebPageProxy&, MouseInteraction, MouseButton, const WebCore::IntPoint& locationInView, const String& pointerType, AutomationCompletionHandler&&) = 0;
+        virtual void simulateMouseInteraction(WebPageProxy&, MouseInteraction, MouseButton, const CyberCore::IntPoint& locationInView, const String& pointerType, AutomationCompletionHandler&&) = 0;
 #endif
 #if ENABLE(WEBDRIVER_TOUCH_INTERACTIONS)
-        virtual void simulateTouchInteraction(WebPageProxy&, TouchInteraction, const WebCore::IntPoint& locationInView, std::optional<Seconds> duration, AutomationCompletionHandler&&) = 0;
+        virtual void simulateTouchInteraction(WebPageProxy&, TouchInteraction, const CyberCore::IntPoint& locationInView, std::optional<Seconds> duration, AutomationCompletionHandler&&) = 0;
 #endif
 #if ENABLE(WEBDRIVER_KEYBOARD_INTERACTIONS)
         virtual void simulateKeyboardInteraction(WebPageProxy&, KeyboardInteraction, std::variant<VirtualKey, CharKey>&&, AutomationCompletionHandler&&) = 0;
 #endif
 #if ENABLE(WEBDRIVER_WHEEL_INTERACTIONS)
-        virtual void simulateWheelInteraction(WebPageProxy&, const WebCore::IntPoint& locationInView, const WebCore::IntSize& delta, AutomationCompletionHandler&&) = 0;
+        virtual void simulateWheelInteraction(WebPageProxy&, const CyberCore::IntPoint& locationInView, const CyberCore::IntSize& delta, AutomationCompletionHandler&&) = 0;
 #endif
-        virtual void viewportInViewCenterPointOfElement(WebPageProxy&, std::optional<WebCore::FrameIdentifier>, const String& nodeHandle, Function<void (std::optional<WebCore::IntPoint>, std::optional<AutomationCommandError>)>&&) = 0;
+        virtual void viewportInViewCenterPointOfElement(WebPageProxy&, std::optional<CyberCore::FrameIdentifier>, const String& nodeHandle, Function<void (std::optional<CyberCore::IntPoint>, std::optional<AutomationCommandError>)>&&) = 0;
     };
 
     static Ref<SimulatedInputDispatcher> create(WebPageProxy& page, SimulatedInputDispatcher::Client& client)
@@ -156,7 +156,7 @@ public:
 
     ~SimulatedInputDispatcher();
 
-    void run(std::optional<WebCore::FrameIdentifier>, Vector<SimulatedInputKeyFrame>&& keyFrames, const HashMap<String, Ref<SimulatedInputSource>>& inputSources, AutomationCompletionHandler&&);
+    void run(std::optional<CyberCore::FrameIdentifier>, Vector<SimulatedInputKeyFrame>&& keyFrames, const HashMap<String, Ref<SimulatedInputSource>>& inputSources, AutomationCompletionHandler&&);
     void cancel();
 
     bool isActive() const;
@@ -174,12 +174,12 @@ private:
     void keyFrameTransitionDurationTimerFired();
     bool isKeyFrameTransitionComplete() const;
 
-    void resolveLocation(const WebCore::IntPoint& currentLocation, std::optional<WebCore::IntPoint> location, MouseMoveOrigin, std::optional<String> nodeHandle, Function<void (std::optional<WebCore::IntPoint>, std::optional<AutomationCommandError>)>&&);
+    void resolveLocation(const CyberCore::IntPoint& currentLocation, std::optional<CyberCore::IntPoint> location, MouseMoveOrigin, std::optional<String> nodeHandle, Function<void (std::optional<CyberCore::IntPoint>, std::optional<AutomationCommandError>)>&&);
 
     WebPageProxy& m_page;
     SimulatedInputDispatcher::Client& m_client;
 
-    std::optional<WebCore::FrameIdentifier> m_frameID;
+    std::optional<CyberCore::FrameIdentifier> m_frameID;
     AutomationCompletionHandler m_runCompletionHandler;
     AutomationCompletionHandler m_keyFrameTransitionCompletionHandler;
     RunLoop::Timer m_keyFrameTransitionDurationTimer;

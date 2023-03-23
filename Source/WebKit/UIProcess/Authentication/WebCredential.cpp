@@ -28,7 +28,7 @@
 
 namespace WebKit {
 
-WebCredential::WebCredential(const WebCore::Credential& credential)
+WebCredential::WebCredential(const CyberCore::Credential& credential)
     : m_coreCredential(credential)
 {
 }
@@ -37,7 +37,7 @@ WebCredential::~WebCredential()
 {
 }
 
-const WebCore::Credential& WebCredential::credential()
+const CyberCore::Credential& WebCredential::credential()
 {
     return m_coreCredential;
 }

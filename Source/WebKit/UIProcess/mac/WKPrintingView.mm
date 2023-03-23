@@ -181,7 +181,7 @@ static BOOL isForcingPreviewUpdate;
 
 - (BOOL)_hasPageRects
 {
-    // WebCore always prints at least one page.
+    // CyberCore always prints at least one page.
     return !_printingPageRects.isEmpty();
 }
 
@@ -209,7 +209,7 @@ static BOOL isForcingPreviewUpdate;
     return lastPage;
 }
 
-- (IPC::Connection::AsyncReplyID)_expectedPreviewCallbackForRect:(const WebCore::IntRect&)rect
+- (IPC::Connection::AsyncReplyID)_expectedPreviewCallbackForRect:(const CyberCore::IntRect&)rect
 {
     for (auto iter = _expectedPreviewCallbacks.begin(); iter != _expectedPreviewCallbacks.end(); ++iter) {
         if (iter->value  == rect)
@@ -300,7 +300,7 @@ static void pageDidDrawToImage(const WebKit::ShareableBitmapHandle& imageHandle,
     context->callbackID = _expectedPrintCallback;
 }
 
-static void pageDidComputePageRects(const Vector<WebCore::IntRect>& pageRects, double totalScaleFactorForPrinting, const WebCore::FloatBoxExtent& computedPageMargin, IPCCallbackContext* context)
+static void pageDidComputePageRects(const Vector<CyberCore::IntRect>& pageRects, double totalScaleFactorForPrinting, const CyberCore::FloatBoxExtent& computedPageMargin, IPCCallbackContext* context)
 {
     ASSERT(RunLoop::isMain());
 
@@ -322,11 +322,11 @@ static void pageDidComputePageRects(const Vector<WebCore::IntRect>& pageRects, d
 
         // Sanitize a response coming from the Web process.
         if (view->_printingPageRects.isEmpty())
-            view->_printingPageRects.append(WebCore::IntRect(0, 0, 1, 1));
+            view->_printingPageRects.append(CyberCore::IntRect(0, 0, 1, 1));
         if (view->_totalScaleFactorForPrinting <= 0)
             view->_totalScaleFactorForPrinting = 1;
 
-        const WebCore::IntRect& lastPrintingPageRect = view->_printingPageRects[view->_printingPageRects.size() - 1];
+        const CyberCore::IntRect& lastPrintingPageRect = view->_printingPageRects[view->_printingPageRects.size() - 1];
         NSRect newFrameSize = NSMakeRect(0, 0, 
             ceil(lastPrintingPageRect.maxX() * view->_totalScaleFactorForPrinting), 
             ceil(lastPrintingPageRect.maxY() * view->_totalScaleFactorForPrinting));
@@ -359,7 +359,7 @@ static void pageDidComputePageRects(const Vector<WebCore::IntRect>& pageRects, d
     ASSERT(!_expectedComputedPagesCallback);
 
     IPCCallbackContext* context = new IPCCallbackContext;
-    auto callback = [context](const Vector<WebCore::IntRect>& pageRects, double totalScaleFactorForPrinting, const WebCore::FloatBoxExtent& computedPageMargin) {
+    auto callback = [context](const Vector<CyberCore::IntRect>& pageRects, double totalScaleFactorForPrinting, const CyberCore::FloatBoxExtent& computedPageMargin) {
         std::unique_ptr<IPCCallbackContext> contextDeleter(context);
         pageDidComputePageRects(pageRects, totalScaleFactorForPrinting, computedPageMargin, context);
     };
@@ -440,7 +440,7 @@ static void prepareDataForPrintingOnSecondaryThread(WKPrintingView *view)
 {
     // Assuming that rect exactly matches one of the pages.
     for (size_t i = 0; i < _printingPageRects.size(); ++i) {
-        WebCore::IntRect currentRect(_printingPageRects[i]);
+        CyberCore::IntRect currentRect(_printingPageRects[i]);
         currentRect.scale(_totalScaleFactorForPrinting);
         if (rect.origin.y == currentRect.y() && rect.origin.x == currentRect.x())
             return i + 1;
@@ -517,11 +517,11 @@ static NSString *linkDestinationName(PDFDocument *document, PDFDestination *dest
     if (!_webFrame || !_webFrame->page())
         return;
 
-    WebCore::IntRect scaledPrintingRect(nsRect);
+    CyberCore::IntRect scaledPrintingRect(nsRect);
     scaledPrintingRect.scale(1 / _totalScaleFactorForPrinting);
-    WebCore::IntSize imageSize(nsRect.size);
+    CyberCore::IntSize imageSize(nsRect.size);
     imageSize.scale(_webFrame->page()->deviceScaleFactor());
-    HashMap<WebCore::IntRect, RefPtr<WebKit::ShareableBitmap>>::iterator pagePreviewIterator = _pagePreviews.find(scaledPrintingRect);
+    HashMap<CyberCore::IntRect, RefPtr<WebKit::ShareableBitmap>>::iterator pagePreviewIterator = _pagePreviews.find(scaledPrintingRect);
     if (pagePreviewIterator == _pagePreviews.end())  {
         // It's too early to ask for page preview if we don't even know page size and scale.
         if ([self _hasPageRects]) {
@@ -557,10 +557,10 @@ static NSString *linkDestinationName(PDFDocument *document, PDFDestination *dest
 
     RefPtr<WebKit::ShareableBitmap> bitmap = pagePreviewIterator->value;
 
-    WebCore::GraphicsContextCG context([[NSGraphicsContext currentContext] CGContext]);
-    WebCore::GraphicsContextStateSaver stateSaver(context);
+    CyberCore::GraphicsContextCG context([[NSGraphicsContext currentContext] CGContext]);
+    CyberCore::GraphicsContextStateSaver stateSaver(context);
 
-    bitmap->paint(context, _webFrame->page()->deviceScaleFactor(), WebCore::IntPoint(nsRect.origin), bitmap->bounds());
+    bitmap->paint(context, _webFrame->page()->deviceScaleFactor(), CyberCore::IntPoint(nsRect.origin), bitmap->bounds());
 }
 
 - (void)drawRect:(NSRect)nsRect
@@ -573,7 +573,7 @@ static NSString *linkDestinationName(PDFDocument *document, PDFDestination *dest
     ASSERT(_printOperation.get() == [NSPrintOperation currentOperation]);
 
     // Always use the light appearance when printing.
-    WebCore::LocalDefaultSystemAppearance localAppearance(false);
+    CyberCore::LocalDefaultSystemAppearance localAppearance(false);
 
     if ([self _isPrintingPreview]) {
         [self _drawPreview:nsRect];
@@ -680,7 +680,7 @@ static NSString *linkDestinationName(PDFDocument *document, PDFDestination *dest
     [currentContext restoreGraphicsState];
     
     [currentContext saveGraphicsState];
-    _webFrame->page()->drawPageBorderForPrinting(*_webFrame, static_cast<WebCore::FloatSize>(borderSize));
+    _webFrame->page()->drawPageBorderForPrinting(*_webFrame, static_cast<CyberCore::FloatSize>(borderSize));
     [currentContext restoreGraphicsState];
 }
 
@@ -708,7 +708,7 @@ static NSString *linkDestinationName(PDFDocument *document, PDFDestination *dest
         return NSZeroRect;
     }
 
-    WebCore::IntRect rect = _printingPageRects[page - 1];
+    CyberCore::IntRect rect = _printingPageRects[page - 1];
     rect.scale(_totalScaleFactorForPrinting);
     LOG(Printing, "-[WKPrintingView %p rectForPage:%d] -> x %d, y %d, width %d, height %d", self, (int)page, rect.x(), rect.y(), rect.width(), rect.height());
     return rect;

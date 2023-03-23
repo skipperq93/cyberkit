@@ -36,7 +36,7 @@
 #include <wtf/URL.h>
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static String defaultCookieJarPath()
 {
@@ -232,6 +232,6 @@ void NetworkStorageSession::setProxySettings(const CurlProxySettings& proxySetti
     CurlContext::singleton().setProxySettings(proxySettings);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(CURL)

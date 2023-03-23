@@ -28,7 +28,7 @@
 #include "GStreamerAudioStreamDescription.h"
 #include "MockRealtimeAudioSource.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class MockRealtimeAudioSourceGStreamer final : public MockRealtimeAudioSource {
 public:
@@ -58,6 +58,6 @@ private:
     bool m_isInterrupted { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM) && USE(GSTREAMER)

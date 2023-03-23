@@ -52,7 +52,7 @@
 #define MESSAGE_CHECK(process, assertion) MESSAGE_CHECK_BASE(assertion, process->connection())
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 class WebPageProxy;
 
@@ -143,7 +143,7 @@ std::optional<PageIdentifier> WebFrameProxy::pageIdentifier() const
     return m_page->webPageID();
 }
 
-void WebFrameProxy::navigateServiceWorkerClient(WebCore::ScriptExecutionContextIdentifier documentIdentifier, const URL& url, CompletionHandler<void(std::optional<PageIdentifier>, std::optional<FrameIdentifier>)>&& callback)
+void WebFrameProxy::navigateServiceWorkerClient(CyberCore::ScriptExecutionContextIdentifier documentIdentifier, const URL& url, CompletionHandler<void(std::optional<PageIdentifier>, std::optional<FrameIdentifier>)>&& callback)
 {
     if (!m_page) {
         callback({ }, { });
@@ -236,7 +236,7 @@ void WebFrameProxy::didFailProvisionalLoad()
         m_navigateCallback({ }, { });
 }
 
-void WebFrameProxy::didCommitLoad(const String& contentType, const WebCore::CertificateInfo& certificateInfo, bool containsPluginDocument)
+void WebFrameProxy::didCommitLoad(const String& contentType, const CyberCore::CertificateInfo& certificateInfo, bool containsPluginDocument)
 {
     m_frameLoadState.didCommitLoad();
 
@@ -322,7 +322,7 @@ void WebFrameProxy::transferNavigationCallbackToFrame(WebFrameProxy& frame)
     frame.setNavigationCallback(WTFMove(m_navigateCallback));
 }
 
-void WebFrameProxy::setNavigationCallback(CompletionHandler<void(std::optional<WebCore::PageIdentifier>, std::optional<WebCore::FrameIdentifier>)>&& navigateCallback)
+void WebFrameProxy::setNavigationCallback(CompletionHandler<void(std::optional<CyberCore::PageIdentifier>, std::optional<CyberCore::FrameIdentifier>)>&& navigateCallback)
 {
     ASSERT(!m_navigateCallback);
     m_navigateCallback = WTFMove(navigateCallback);
@@ -362,7 +362,7 @@ void WebFrameProxy::disconnect()
         m_parentFrame->m_childFrames.remove(*this);
 }
 
-void WebFrameProxy::didCreateSubframe(WebCore::FrameIdentifier frameID)
+void WebFrameProxy::didCreateSubframe(CyberCore::FrameIdentifier frameID)
 {
     // The DecidePolicyForNavigationActionSync IPC is synchronous and may therefore get processed before the DidCreateSubframe one.
     // When this happens, decidePolicyForNavigationActionSync() calls didCreateSubframe() and we need to ignore the DidCreateSubframe
@@ -379,7 +379,7 @@ void WebFrameProxy::didCreateSubframe(WebCore::FrameIdentifier frameID)
     m_childFrames.add(WTFMove(child));
 }
 
-void WebFrameProxy::swapToProcess(Ref<WebProcessProxy>&& process, const WebCore::ResourceRequest& request)
+void WebFrameProxy::swapToProcess(Ref<WebProcessProxy>&& process, const CyberCore::ResourceRequest& request)
 {
     ASSERT(!isMainFrame());
     m_provisionalFrame = makeUnique<ProvisionalFrameProxy>(*this, WTFMove(process), request);
@@ -395,7 +395,7 @@ uint64_t WebFrameProxy::messageSenderDestinationID() const
     return m_frameID.object().toUInt64();
 }
 
-void WebFrameProxy::commitProvisionalFrame(FrameIdentifier frameID, FrameInfoData&& frameInfo, ResourceRequest&& request, uint64_t navigationID, const String& mimeType, bool frameHasCustomContentProvider, WebCore::FrameLoadType frameLoadType, const WebCore::CertificateInfo& certificateInfo, bool usedLegacyTLS, bool privateRelayed, bool containsPluginDocument, WebCore::HasInsecureContent hasInsecureContent, WebCore::MouseEventPolicy mouseEventPolicy, const UserData& userData)
+void WebFrameProxy::commitProvisionalFrame(FrameIdentifier frameID, FrameInfoData&& frameInfo, ResourceRequest&& request, uint64_t navigationID, const String& mimeType, bool frameHasCustomContentProvider, CyberCore::FrameLoadType frameLoadType, const CyberCore::CertificateInfo& certificateInfo, bool usedLegacyTLS, bool privateRelayed, bool containsPluginDocument, CyberCore::HasInsecureContent hasInsecureContent, CyberCore::MouseEventPolicy mouseEventPolicy, const UserData& userData)
 {
     // FIXME: Not only is this a race condition, but we still want to receive messages,
     // such as if the parent frame navigates the remote frame.
@@ -411,7 +411,7 @@ void WebFrameProxy::commitProvisionalFrame(FrameIdentifier frameID, FrameInfoDat
     }
 }
 
-void WebFrameProxy::updateRemoteFrameSize(WebCore::IntSize newSize)
+void WebFrameProxy::updateRemoteFrameSize(CyberCore::IntSize newSize)
 {
     if (!m_page)
         return;

@@ -31,7 +31,7 @@
 #import "Attachment.h"
 #import "PlaybackSessionManagerMessages.h"
 #import "PlaybackSessionManagerProxyMessages.h"
-#import "WebCoreArgumentCoders.h"
+#import "CyberCoreArgumentCoders.h"
 #import "WebPage.h"
 #import "WebProcess.h"
 #import <CyberCore/Color.h>
@@ -44,8 +44,8 @@
 #import <CyberCore/UserGestureIndicator.h>
 #import <mach/mach_port.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 #pragma mark - PlaybackSessionInterfaceContext
 
@@ -89,7 +89,7 @@ void PlaybackSessionInterfaceContext::playbackStartedTimeChanged(double playback
         m_manager->playbackStartedTimeChanged(m_contextId, playbackStartedTime);
 }
 
-void PlaybackSessionInterfaceContext::seekableRangesChanged(const WebCore::TimeRanges& ranges, double lastModifiedTime, double liveUpdateInterval)
+void PlaybackSessionInterfaceContext::seekableRangesChanged(const CyberCore::TimeRanges& ranges, double lastModifiedTime, double liveUpdateInterval)
 {
     if (m_manager)
         m_manager->seekableRangesChanged(m_contextId, ranges, lastModifiedTime, liveUpdateInterval);
@@ -209,7 +209,7 @@ PlaybackSessionManager::ModelInterfaceTuple& PlaybackSessionManager::ensureModel
     return addResult.iterator->value;
 }
 
-WebCore::PlaybackSessionModelMediaElement& PlaybackSessionManager::ensureModel(PlaybackSessionContextIdentifier contextId)
+CyberCore::PlaybackSessionModelMediaElement& PlaybackSessionManager::ensureModel(PlaybackSessionContextIdentifier contextId)
 {
     return *std::get<0>(ensureModelAndInterface(contextId));
 }
@@ -243,7 +243,7 @@ void PlaybackSessionManager::removeClientForContext(PlaybackSessionContextIdenti
         removeContext(contextId);
 }
 
-void PlaybackSessionManager::setUpPlaybackControlsManager(WebCore::HTMLMediaElement& mediaElement)
+void PlaybackSessionManager::setUpPlaybackControlsManager(CyberCore::HTMLMediaElement& mediaElement)
 {
     auto foundIterator = m_mediaElements.find(&mediaElement);
     if (foundIterator != m_mediaElements.end()) {
@@ -298,7 +298,7 @@ void PlaybackSessionManager::mediaEngineChanged()
     std::get<0>(it->value)->mediaEngineChanged();
 }
 
-PlaybackSessionContextIdentifier PlaybackSessionManager::contextIdForMediaElement(WebCore::HTMLMediaElement& mediaElement)
+PlaybackSessionContextIdentifier PlaybackSessionManager::contextIdForMediaElement(CyberCore::HTMLMediaElement& mediaElement)
 {
     auto addResult = m_mediaElements.ensure(&mediaElement, [&] {
         return PlaybackSessionContextIdentifier::generate();
@@ -308,7 +308,7 @@ PlaybackSessionContextIdentifier PlaybackSessionManager::contextIdForMediaElemen
     return contextId;
 }
 
-WebCore::HTMLMediaElement* PlaybackSessionManager::currentPlaybackControlsElement() const
+CyberCore::HTMLMediaElement* PlaybackSessionManager::currentPlaybackControlsElement() const
 {
     if (!m_controlsManagerContextId)
         return nullptr;
@@ -347,7 +347,7 @@ void PlaybackSessionManager::rateChanged(PlaybackSessionContextIdentifier contex
     m_page->send(Messages::PlaybackSessionManagerProxy::RateChanged(contextId, playbackState, playbackRate, defaultPlaybackRate));
 }
 
-void PlaybackSessionManager::seekableRangesChanged(PlaybackSessionContextIdentifier contextId, const WebCore::TimeRanges& timeRanges, double lastModifiedTime, double liveUpdateInterval)
+void PlaybackSessionManager::seekableRangesChanged(PlaybackSessionContextIdentifier contextId, const CyberCore::TimeRanges& timeRanges, double lastModifiedTime, double liveUpdateInterval)
 {
     Vector<std::pair<double, double>> rangesVector;
     for (unsigned i = 0; i < timeRanges.length(); i++) {
@@ -531,12 +531,12 @@ void PlaybackSessionManager::setPlayingOnSecondScreen(PlaybackSessionContextIden
     ensureModel(contextId).setPlayingOnSecondScreen(value);
 }
 
-void PlaybackSessionManager::sendRemoteCommand(PlaybackSessionContextIdentifier contextId, WebCore::PlatformMediaSession::RemoteControlCommandType command, const WebCore::PlatformMediaSession::RemoteCommandArgument& argument)
+void PlaybackSessionManager::sendRemoteCommand(PlaybackSessionContextIdentifier contextId, CyberCore::PlatformMediaSession::RemoteControlCommandType command, const CyberCore::PlatformMediaSession::RemoteCommandArgument& argument)
 {
     UserGestureIndicator indicator(ProcessingUserGesture);
     ensureModel(contextId).sendRemoteCommand(command, argument);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(IOS_FAMILY) || (PLATFORM(MAC) && ENABLE(VIDEO_PRESENTATION_MODE))

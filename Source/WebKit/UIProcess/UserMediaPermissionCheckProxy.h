@@ -31,7 +31,7 @@
 #include <wtf/CompletionHandler.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 class SecurityOrigin;
 }
 
@@ -42,7 +42,7 @@ public:
     enum class PermissionInfo { Error, Unknown, Granted };
     using CompletionHandler = WTF::CompletionHandler<void(PermissionInfo)>;
 
-    static Ref<UserMediaPermissionCheckProxy> create(WebCore::FrameIdentifier frameID, CompletionHandler&& handler, Ref<WebCore::SecurityOrigin>&& userMediaDocumentOrigin, Ref<WebCore::SecurityOrigin>&& topLevelDocumentOrigin)
+    static Ref<UserMediaPermissionCheckProxy> create(CyberCore::FrameIdentifier frameID, CompletionHandler&& handler, Ref<CyberCore::SecurityOrigin>&& userMediaDocumentOrigin, Ref<CyberCore::SecurityOrigin>&& topLevelDocumentOrigin)
     {
         return adoptRef(*new UserMediaPermissionCheckProxy(frameID, WTFMove(handler), WTFMove(userMediaDocumentOrigin), WTFMove(topLevelDocumentOrigin)));
     }
@@ -51,20 +51,20 @@ public:
     void setUserMediaAccessInfo(bool);
     void invalidate() { complete(PermissionInfo::Error); }
 
-    WebCore::FrameIdentifier frameID() const { return m_frameID; }
-    WebCore::SecurityOrigin& userMediaDocumentSecurityOrigin() { return m_userMediaDocumentSecurityOrigin.get(); }
-    WebCore::SecurityOrigin& topLevelDocumentSecurityOrigin() { return m_topLevelDocumentSecurityOrigin.get(); }
+    CyberCore::FrameIdentifier frameID() const { return m_frameID; }
+    CyberCore::SecurityOrigin& userMediaDocumentSecurityOrigin() { return m_userMediaDocumentSecurityOrigin.get(); }
+    CyberCore::SecurityOrigin& topLevelDocumentSecurityOrigin() { return m_topLevelDocumentSecurityOrigin.get(); }
     
 private:
-    UserMediaPermissionCheckProxy(WebCore::FrameIdentifier, CompletionHandler&&, Ref<WebCore::SecurityOrigin>&& userMediaDocumentOrigin, Ref<WebCore::SecurityOrigin>&& topLevelDocumentOrigin);
+    UserMediaPermissionCheckProxy(CyberCore::FrameIdentifier, CompletionHandler&&, Ref<CyberCore::SecurityOrigin>&& userMediaDocumentOrigin, Ref<CyberCore::SecurityOrigin>&& topLevelDocumentOrigin);
     ~UserMediaPermissionCheckProxy();
 
     void complete(PermissionInfo);
     
-    WebCore::FrameIdentifier m_frameID;
+    CyberCore::FrameIdentifier m_frameID;
     CompletionHandler m_completionHandler;
-    Ref<WebCore::SecurityOrigin> m_userMediaDocumentSecurityOrigin;
-    Ref<WebCore::SecurityOrigin> m_topLevelDocumentSecurityOrigin;
+    Ref<CyberCore::SecurityOrigin> m_userMediaDocumentSecurityOrigin;
+    Ref<CyberCore::SecurityOrigin> m_topLevelDocumentSecurityOrigin;
 };
 
 } // namespace WebKit

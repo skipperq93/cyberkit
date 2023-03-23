@@ -32,7 +32,7 @@
 #include "StyleUpdate.h"
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ContainerNode;
 class Document;
@@ -108,4 +108,4 @@ private:
     RenderTreeBuilder m_builder;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

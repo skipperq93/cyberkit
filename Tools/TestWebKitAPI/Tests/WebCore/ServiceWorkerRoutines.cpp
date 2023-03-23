@@ -30,15 +30,15 @@
 
 TEST(ServiceWorkerRoutines, ServiceWorkerRegistrationKey_fromDatabaseKey)
 {
-    auto key = WebCore::ServiceWorkerRegistrationKey::fromDatabaseKey("_http://test.org"_s);
+    auto key = CyberCore::ServiceWorkerRegistrationKey::fromDatabaseKey("_http://test.org"_s);
     EXPECT_FALSE(!!key);
 
-    key = WebCore::ServiceWorkerRegistrationKey::fromDatabaseKey("http_test.org_164645646_http://test.org"_s);
+    key = CyberCore::ServiceWorkerRegistrationKey::fromDatabaseKey("http_test.org_164645646_http://test.org"_s);
     EXPECT_FALSE(!!key);
 
-    key = WebCore::ServiceWorkerRegistrationKey::fromDatabaseKey("??_test.org_443_http://test.org"_s);
+    key = CyberCore::ServiceWorkerRegistrationKey::fromDatabaseKey("??_test.org_443_http://test.org"_s);
     EXPECT_FALSE(!!key);
 
-    key = WebCore::ServiceWorkerRegistrationKey::fromDatabaseKey("https_??_443_http://test.org"_s);
+    key = CyberCore::ServiceWorkerRegistrationKey::fromDatabaseKey("https_??_443_http://test.org"_s);
     EXPECT_FALSE(!!key);
 }

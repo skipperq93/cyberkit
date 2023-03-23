@@ -30,7 +30,7 @@
 
 #import <Metal/Metal.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 bool isGPUAvailable()
 {
@@ -43,6 +43,6 @@ bool isGPUAvailable()
     return metalAvailable;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // HAVE(GPU_AVAILABILITY_CHECK)

@@ -25,8 +25,8 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
     
 enum class FetchOptionsCredentials : uint8_t { Omit, SameOrigin, Include };
     
-} // namespace WebCore
+} // namespace CyberCore

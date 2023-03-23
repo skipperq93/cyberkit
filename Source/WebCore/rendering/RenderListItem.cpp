@@ -40,7 +40,7 @@
 #include <wtf/StackStats.h>
 #include <wtf/StdLibExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -349,4 +349,4 @@ bool RenderListItem::isInReversedOrderedList() const
     return is<HTMLOListElement>(list) && downcast<HTMLOListElement>(*list).isReversed();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

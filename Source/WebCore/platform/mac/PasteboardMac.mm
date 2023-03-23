@@ -48,7 +48,7 @@
 #import <wtf/text/StringBuilder.h>
 #import <wtf/unicode/CharacterNames.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 const ASCIILiteral WebArchivePboardType = "Apple Web Archive pasteboard type"_s;
 const ASCIILiteral WebURLNamePboardType = "public.url-name"_s;

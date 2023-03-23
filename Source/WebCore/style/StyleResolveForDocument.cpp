@@ -46,7 +46,7 @@
 #include "StyleFontSizeFunctions.h"
 #include "StyleResolver.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace Style {
 

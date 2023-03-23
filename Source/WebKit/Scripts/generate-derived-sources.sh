@@ -13,8 +13,8 @@ if [ -z $1 ] || [ $1 != "sandbox-profiles-ios" ]; then
     /bin/ln -sfh "${JAVASCRIPTCORE_PRIVATE_HEADERS_DIR}" JavaScriptCorePrivateHeaders
     export JavaScriptCore_SCRIPTS_DIR="JavaScriptCorePrivateHeaders"
 
-    /bin/ln -sfh "${WEBCORE_PRIVATE_HEADERS_DIR}" WebCorePrivateHeaders
-    export WebCorePrivateHeaders="WebCorePrivateHeaders"
+    /bin/ln -sfh "${WEBCORE_PRIVATE_HEADERS_DIR}" CyberCorePrivateHeaders
+    export CyberCorePrivateHeaders="CyberCorePrivateHeaders"
 fi
 
 if [ ! "$CC" ]; then

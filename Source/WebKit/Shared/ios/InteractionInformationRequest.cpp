@@ -27,7 +27,7 @@
 #import "InteractionInformationRequest.h"
 
 #import "ArgumentCodersCF.h"
-#import "WebCoreArgumentCoders.h"
+#import "CyberCoreArgumentCoders.h"
 
 namespace WebKit {
 

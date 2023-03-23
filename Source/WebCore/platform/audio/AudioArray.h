@@ -33,7 +33,7 @@
 #include <wtf/CheckedArithmetic.h>
 #include <wtf/FastMalloc.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename T>
 class AudioArray {
@@ -146,6 +146,6 @@ private:
 typedef AudioArray<float> AudioFloatArray;
 typedef AudioArray<double> AudioDoubleArray;
 
-} // WebCore
+} // CyberCore
 
 #endif // AudioArray_h

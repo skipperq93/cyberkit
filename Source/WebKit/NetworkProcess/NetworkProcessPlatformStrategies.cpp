@@ -30,7 +30,7 @@
 #include <wtf/NeverDestroyed.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 void NetworkProcessPlatformStrategies::initialize()
 {
@@ -55,8 +55,8 @@ MediaStrategy* NetworkProcessPlatformStrategies::createMediaStrategy()
 
 BlobRegistry* NetworkProcessPlatformStrategies::createBlobRegistry()
 {
-    using namespace WebCore;
-    class EmptyBlobRegistry : public WebCore::BlobRegistry {
+    using namespace CyberCore;
+    class EmptyBlobRegistry : public CyberCore::BlobRegistry {
         void registerFileBlobURL(const URL&, Ref<BlobDataFileReference>&&, const String& path, const String& contentType) final { ASSERT_NOT_REACHED(); }
         void registerBlobURL(const URL&, Vector<BlobPart>&&, const String& contentType) final { ASSERT_NOT_REACHED(); }
         void registerBlobURL(const URL&, const URL& srcURL, const PolicyContainer&) final { ASSERT_NOT_REACHED(); }

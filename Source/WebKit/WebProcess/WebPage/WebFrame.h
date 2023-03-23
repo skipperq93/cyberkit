@@ -51,7 +51,7 @@ namespace API {
 class Array;
 }
 
-namespace WebCore {
+namespace CyberCore {
 class AbstractFrame;
 class CertificateInfo;
 class Frame;
@@ -61,7 +61,7 @@ class IntRect;
 class RemoteFrame;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class InjectedBundleCSSStyleDeclarationHandle;
 class InjectedBundleHitTestResult;
@@ -76,38 +76,38 @@ struct WebsitePoliciesData;
 class WebFrame : public API::ObjectImpl<API::Object::Type::BundleFrame>, public IPC::MessageReceiver, public IPC::MessageSender {
 public:
     static Ref<WebFrame> create(WebPage& page) { return adoptRef(*new WebFrame(page)); }
-    static Ref<WebFrame> createSubframe(WebPage&, WebFrame& parent, const AtomString& frameName, WebCore::HTMLFrameOwnerElement&);
+    static Ref<WebFrame> createSubframe(WebPage&, WebFrame& parent, const AtomString& frameName, CyberCore::HTMLFrameOwnerElement&);
     ~WebFrame();
 
-    void initWithCoreMainFrame(WebPage&, WebCore::Frame&, bool receivedMainFrameIdentifierFromUIProcess);
+    void initWithCoreMainFrame(WebPage&, CyberCore::Frame&, bool receivedMainFrameIdentifierFromUIProcess);
 
-    // Called when the FrameLoaderClient (and therefore the WebCore::Frame) is being torn down.
+    // Called when the FrameLoaderClient (and therefore the CyberCore::Frame) is being torn down.
     void invalidate();
 
     WebPage* page() const;
 
-    static WebFrame* fromCoreFrame(const WebCore::AbstractFrame&);
-    WebCore::Frame* coreFrame() const;
-    WebCore::RemoteFrame* coreRemoteFrame() const;
+    static WebFrame* fromCoreFrame(const CyberCore::AbstractFrame&);
+    CyberCore::Frame* coreFrame() const;
+    CyberCore::RemoteFrame* coreRemoteFrame() const;
 
     FrameInfoData info() const;
     void getFrameInfo(CompletionHandler<void(FrameInfoData&&)>&&);
 
-    WebCore::FrameIdentifier frameID() const;
+    CyberCore::FrameIdentifier frameID() const;
 
     enum class ForNavigationAction { No, Yes };
-    uint64_t setUpPolicyListener(WebCore::PolicyCheckIdentifier, WebCore::FramePolicyFunction&&, ForNavigationAction);
+    uint64_t setUpPolicyListener(CyberCore::PolicyCheckIdentifier, CyberCore::FramePolicyFunction&&, ForNavigationAction);
     void invalidatePolicyListeners();
     void didReceivePolicyDecision(uint64_t listenerID, PolicyDecision&&);
 
     FormSubmitListenerIdentifier setUpWillSubmitFormListener(CompletionHandler<void()>&&);
     void continueWillSubmitForm(FormSubmitListenerIdentifier);
 
-    void didCommitLoadInAnotherProcess(WebCore::LayerHostingContextIdentifier);
+    void didCommitLoadInAnotherProcess(CyberCore::LayerHostingContextIdentifier);
     void didFinishLoadInAnotherProcess();
 
-    void startDownload(const WebCore::ResourceRequest&, const String& suggestedName = { });
-    void convertMainResourceLoadToDownload(WebCore::DocumentLoader*, const WebCore::ResourceRequest&, const WebCore::ResourceResponse&);
+    void startDownload(const CyberCore::ResourceRequest&, const String& suggestedName = { });
+    void convertMainResourceLoadToDownload(CyberCore::DocumentLoader*, const CyberCore::ResourceRequest&, const CyberCore::ResourceResponse&);
 
     void addConsoleMessage(MessageSource, MessageLevel, const String&, uint64_t requestID = 0);
 
@@ -115,41 +115,41 @@ public:
     String contentsAsString() const;
     String selectionAsString() const;
 
-    WebCore::IntSize size() const;
+    CyberCore::IntSize size() const;
 
     // WKBundleFrame API and SPI functions
     bool isMainFrame() const;
     String name() const;
     URL url() const;
-    WebCore::CertificateInfo certificateInfo() const;
+    CyberCore::CertificateInfo certificateInfo() const;
     String innerText() const;
     bool isFrameSet() const;
     WebFrame* parentFrame() const;
     Ref<API::Array> childFrames();
     JSGlobalContextRef jsContext();
-    JSGlobalContextRef jsContextForWorld(WebCore::DOMWrapperWorld&);
+    JSGlobalContextRef jsContextForWorld(CyberCore::DOMWrapperWorld&);
     JSGlobalContextRef jsContextForWorld(InjectedBundleScriptWorld*);
-    JSGlobalContextRef jsContextForServiceWorkerWorld(WebCore::DOMWrapperWorld&);
+    JSGlobalContextRef jsContextForServiceWorkerWorld(CyberCore::DOMWrapperWorld&);
     JSGlobalContextRef jsContextForServiceWorkerWorld(InjectedBundleScriptWorld*);
-    WebCore::IntRect contentBounds() const;
-    WebCore::IntRect visibleContentBounds() const;
-    WebCore::IntRect visibleContentBoundsExcludingScrollbars() const;
-    WebCore::IntSize scrollOffset() const;
+    CyberCore::IntRect contentBounds() const;
+    CyberCore::IntRect visibleContentBounds() const;
+    CyberCore::IntRect visibleContentBoundsExcludingScrollbars() const;
+    CyberCore::IntSize scrollOffset() const;
     bool hasHorizontalScrollbar() const;
     bool hasVerticalScrollbar() const;
 
-    static constexpr OptionSet<WebCore::HitTestRequest::Type> defaultHitTestRequestTypes()
+    static constexpr OptionSet<CyberCore::HitTestRequest::Type> defaultHitTestRequestTypes()
     {
         return {{
-            WebCore::HitTestRequest::Type::ReadOnly,
-            WebCore::HitTestRequest::Type::Active,
-            WebCore::HitTestRequest::Type::IgnoreClipping,
-            WebCore::HitTestRequest::Type::AllowChildFrameContent,
-            WebCore::HitTestRequest::Type::DisallowUserAgentShadowContent,
+            CyberCore::HitTestRequest::Type::ReadOnly,
+            CyberCore::HitTestRequest::Type::Active,
+            CyberCore::HitTestRequest::Type::IgnoreClipping,
+            CyberCore::HitTestRequest::Type::AllowChildFrameContent,
+            CyberCore::HitTestRequest::Type::DisallowUserAgentShadowContent,
         }};
     }
 
-    RefPtr<InjectedBundleHitTestResult> hitTest(const WebCore::IntPoint, OptionSet<WebCore::HitTestRequest::Type> = defaultHitTestRequestTypes()) const;
+    RefPtr<InjectedBundleHitTestResult> hitTest(const CyberCore::IntPoint, OptionSet<CyberCore::HitTestRequest::Type> = defaultHitTestRequestTypes()) const;
 
     bool getDocumentBackgroundColor(double* red, double* green, double* blue, double* alpha);
     bool containsAnyFormElements() const;
@@ -177,7 +177,7 @@ public:
     String mimeTypeForResourceWithURL(const URL&) const;
 
     void setTextDirection(const String&);
-    void updateRemoteFrameSize(WebCore::IntSize);
+    void updateRemoteFrameSize(CyberCore::IntSize);
 
     void documentLoaderDetached(uint64_t navigationID);
 
@@ -221,13 +221,13 @@ private:
     IPC::Connection* messageSenderConnection() const final;
     uint64_t messageSenderDestinationID() const final;
 
-    WeakPtr<WebCore::AbstractFrame> m_coreFrame;
+    WeakPtr<CyberCore::AbstractFrame> m_coreFrame;
     WeakPtr<WebPage> m_page;
 
     struct PolicyCheck {
-        WebCore::PolicyCheckIdentifier corePolicyIdentifier;
+        CyberCore::PolicyCheckIdentifier corePolicyIdentifier;
         ForNavigationAction forNavigationAction { ForNavigationAction::No };
-        WebCore::FramePolicyFunction policyFunction;
+        CyberCore::FramePolicyFunction policyFunction;
     };
     HashMap<uint64_t, PolicyCheck> m_pendingPolicyChecks;
 
@@ -236,7 +236,7 @@ private:
 
     WeakPtr<LoadListener> m_loadListener;
 
-    WebCore::FrameIdentifier m_frameID;
+    CyberCore::FrameIdentifier m_frameID;
 
 #if PLATFORM(IOS_FAMILY)
     TransactionID m_firstLayerTreeTransactionIDAfterDidCommitLoad;
@@ -245,4 +245,4 @@ private:
 
 };
 
-} // namespace WebKit
+} // namespace CyberKit

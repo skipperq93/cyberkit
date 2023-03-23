@@ -19,19 +19,19 @@
 
 #pragma once
 
-#include "WebKitDOMNode.h"
+#include "CyberKitDOMNode.h"
 #include <CyberCore/Node.h>
 
-namespace WebKit {
-WebKitDOMNode* wrapNode(WebCore::Node*);
-WebKitDOMNode* kit(WebCore::Node*);
-WebCore::Node* core(WebKitDOMNode*);
-} // namespace WebKit
+namespace CyberKit {
+CyberKitDOMNode* wrapNode(CyberCore::Node*);
+CyberKitDOMNode* kit(CyberCore::Node*);
+CyberCore::Node* core(CyberKitDOMNode*);
+} // namespace CyberKit
 
-void webkitDOMNodeSetCoreObject(WebKitDOMNode*, WebCore::Node*);
-WebCore::Node* webkitDOMNodeGetCoreObject(WebKitDOMNode*);
+void webkitDOMNodeSetCoreObject(CyberKitDOMNode*, CyberCore::Node*);
+CyberCore::Node* webkitDOMNodeGetCoreObject(CyberKitDOMNode*);
 
 #if PLATFORM(GTK)
-void webkitDOMNodeDOMEventTargetInit(WebKitDOMEventTargetIface*);
+void webkitDOMNodeDOMEventTargetInit(CyberKitDOMEventTargetIface*);
 void webkitDOMNodeInstallProperties(GObjectClass*);
 #endif

@@ -30,7 +30,7 @@
 
 #include "IntRect.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class NullTextTrackRepresentation : public TextTrackRepresentation {
 public:

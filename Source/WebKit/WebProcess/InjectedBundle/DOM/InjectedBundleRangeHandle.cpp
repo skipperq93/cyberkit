@@ -53,8 +53,8 @@
 #include <CyberCore/LocalDefaultSystemAppearance.h>
 #endif
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 using DOMRangeHandleCache = HashMap<Range*, InjectedBundleRangeHandle*>;
 
@@ -101,7 +101,7 @@ Ref<InjectedBundleNodeHandle> InjectedBundleRangeHandle::document()
     return InjectedBundleNodeHandle::getOrCreate(m_range->startContainer().document());
 }
 
-WebCore::IntRect InjectedBundleRangeHandle::boundingRectInWindowCoordinates() const
+CyberCore::IntRect InjectedBundleRangeHandle::boundingRectInWindowCoordinates() const
 {
     auto range = makeSimpleRange(m_range);
     auto frame = range.start.document().frame();
@@ -177,9 +177,9 @@ String InjectedBundleRangeHandle::text() const
     return plainText(range);
 }
 
-RefPtr<InjectedBundleRangeHandle> createHandle(const std::optional<WebCore::SimpleRange>& range)
+RefPtr<InjectedBundleRangeHandle> createHandle(const std::optional<CyberCore::SimpleRange>& range)
 {
     return InjectedBundleRangeHandle::getOrCreate(createLiveRange(range).get());
 }
 
-} // namespace WebKit
+} // namespace CyberKit

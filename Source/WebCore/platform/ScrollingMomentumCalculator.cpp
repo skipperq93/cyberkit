@@ -29,7 +29,7 @@
 #include "FloatPoint.h"
 #include "FloatSize.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static const Seconds scrollSnapAnimationDuration = 1_s;
 static inline float projectedInertialScrollDistance(float initialWheelDelta)
@@ -235,4 +235,4 @@ float BasicScrollingMomentumCalculator::animationProgressAfterElapsedTime(Second
     return std::min(1.0, m_snapAnimationCurveMagnitude * (1.0 - std::pow(m_snapAnimationDecayFactor, -framesPerSecond * scrollSnapAnimationDuration.value() * timeProgress)));
 }
 
-}; // namespace WebCore
+}; // namespace CyberCore

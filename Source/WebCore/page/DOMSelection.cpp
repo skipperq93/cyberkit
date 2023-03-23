@@ -39,7 +39,7 @@
 #include "StaticRange.h"
 #include "TextIterator.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static RefPtr<Node> selectionShadowAncestor(Frame& frame)
 {
@@ -561,4 +561,4 @@ bool DOMSelection::isValidForPosition(Node* node) const
     return frame && (!node || &node->document() == frame->document());
 }
 
-} // namespace WebCore
+} // namespace CyberCore

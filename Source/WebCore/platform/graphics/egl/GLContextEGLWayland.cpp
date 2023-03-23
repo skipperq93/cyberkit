@@ -32,7 +32,7 @@
 #include <EGL/egl.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 GLContextEGL::GLContextEGL(PlatformDisplay& display, EGLContext context, EGLSurface surface, EGLConfig config, WlUniquePtr<struct wl_surface>&& wlSurface, struct wl_egl_window* wlWindow)
     : GLContext(display)
@@ -84,6 +84,6 @@ void GLContextEGL::destroyWaylandWindow()
         wl_egl_window_destroy(m_wlWindow);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif //  USE(EGL) && PLATFORM(WAYLAND)

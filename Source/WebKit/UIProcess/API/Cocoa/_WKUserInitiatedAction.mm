@@ -26,7 +26,7 @@
 #import "config.h"
 #import "_WKUserInitiatedActionInternal.h"
 
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 
 @implementation _WKUserInitiatedAction
 
@@ -40,7 +40,7 @@
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainRunLoop(_WKUserInitiatedAction.class, self))
+    if (CyberCoreObjCScheduleDeallocateOnMainRunLoop(_WKUserInitiatedAction.class, self))
         return;
 
     _userInitiatedAction->~UserInitiatedAction();

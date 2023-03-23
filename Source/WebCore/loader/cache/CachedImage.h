@@ -32,7 +32,7 @@
 #include <wtf/HashMap.h>
 #include <wtf/HashSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CachedImageClient;
 class CachedResourceLoader;
@@ -208,6 +208,6 @@ private:
     bool m_layerBasedSVGEngineEnabled : 1 { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CACHED_RESOURCE(CachedImage, CachedResource::Type::ImageResource)

@@ -33,7 +33,7 @@
 #include "Path.h"
 #include "WritingMode.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct LineSegment {
     LineSegment()
@@ -101,4 +101,4 @@ private:
     float m_margin;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

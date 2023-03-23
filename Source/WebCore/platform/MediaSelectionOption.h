@@ -27,7 +27,7 @@
 
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct MediaSelectionOption {
     enum class MediaType : uint8_t {
@@ -60,4 +60,4 @@ struct MediaSelectionOption {
     LegibleType legibleType { LegibleType::Regular };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -46,7 +46,7 @@ namespace API {
 class Navigation;
 }
 
-namespace WebCore {
+namespace CyberCore {
 class SecurityOriginData;
 }
 
@@ -95,26 +95,26 @@ private:
         ~NavigationClient();
 
     private:
-        void didStartProvisionalNavigation(WebPageProxy&, const WebCore::ResourceRequest&, API::Navigation*, API::Object*) override;
-        void didStartProvisionalLoadForFrame(WebPageProxy&, WebCore::ResourceRequest&&, FrameInfoData&&) override;
+        void didStartProvisionalNavigation(WebPageProxy&, const CyberCore::ResourceRequest&, API::Navigation*, API::Object*) override;
+        void didStartProvisionalLoadForFrame(WebPageProxy&, CyberCore::ResourceRequest&&, FrameInfoData&&) override;
         void didReceiveServerRedirectForProvisionalNavigation(WebPageProxy&, API::Navigation*, API::Object*) override;
         void willPerformClientRedirect(WebPageProxy&, const WTF::String&, double) override;
         void didPerformClientRedirect(WebPageProxy&, const WTF::String&, const WTF::String&) override;
         void didCancelClientRedirect(WebPageProxy&) override;
-        void didFailProvisionalNavigationWithError(WebPageProxy&, FrameInfoData&&, API::Navigation*, const WebCore::ResourceError&, API::Object*) override;
-        void didFailProvisionalLoadWithErrorForFrame(WebPageProxy&, WebCore::ResourceRequest&&, const WebCore::ResourceError&, FrameInfoData&&) override;
+        void didFailProvisionalNavigationWithError(WebPageProxy&, FrameInfoData&&, API::Navigation*, const CyberCore::ResourceError&, API::Object*) override;
+        void didFailProvisionalLoadWithErrorForFrame(WebPageProxy&, CyberCore::ResourceRequest&&, const CyberCore::ResourceError&, FrameInfoData&&) override;
         void didCommitNavigation(WebPageProxy&, API::Navigation*, API::Object*) override;
-        void didCommitLoadForFrame(WebKit::WebPageProxy&, WebCore::ResourceRequest&&, FrameInfoData&&) override;
+        void didCommitLoadForFrame(WebKit::WebPageProxy&, CyberCore::ResourceRequest&&, FrameInfoData&&) override;
         void didFinishDocumentLoad(WebPageProxy&, API::Navigation*, API::Object*) override;
         void didFinishNavigation(WebPageProxy&, API::Navigation*, API::Object*) override;
-        void didFinishLoadForFrame(WebPageProxy&, WebCore::ResourceRequest&&, FrameInfoData&&) override;
+        void didFinishLoadForFrame(WebPageProxy&, CyberCore::ResourceRequest&&, FrameInfoData&&) override;
         void didFailLoadDueToNetworkConnectionIntegrity(WebPageProxy&, const URL&) override;
-        void didFailNavigationWithError(WebPageProxy&, const FrameInfoData&, API::Navigation*, const WebCore::ResourceError&, API::Object*) override;
-        void didFailLoadWithErrorForFrame(WebPageProxy&, WebCore::ResourceRequest&&, const WebCore::ResourceError&, FrameInfoData&&) override;
+        void didFailNavigationWithError(WebPageProxy&, const FrameInfoData&, API::Navigation*, const CyberCore::ResourceError&, API::Object*) override;
+        void didFailLoadWithErrorForFrame(WebPageProxy&, CyberCore::ResourceRequest&&, const CyberCore::ResourceError&, FrameInfoData&&) override;
         void didSameDocumentNavigation(WebPageProxy&, API::Navigation*, SameDocumentNavigationType, API::Object*) override;
         void didChangeLookalikeCharacters(WebPageProxy&, const URL&, const URL&) override;
 
-        void renderingProgressDidChange(WebPageProxy&, OptionSet<WebCore::LayoutMilestone>) override;
+        void renderingProgressDidChange(WebPageProxy&, OptionSet<CyberCore::LayoutMilestone>) override;
 
         bool shouldBypassContentModeSafeguards() const final;
 
@@ -133,7 +133,7 @@ private:
 
 #if USE(QUICK_LOOK)
         void didStartLoadForQuickLookDocumentInMainFrame(const WTF::String& fileName, const WTF::String& uti) override;
-        void didFinishLoadForQuickLookDocumentInMainFrame(const WebCore::FragmentedSharedBuffer&) override;
+        void didFinishLoadForQuickLookDocumentInMainFrame(const CyberCore::FragmentedSharedBuffer&) override;
 #endif
 
 #if PLATFORM(MAC)
@@ -142,7 +142,7 @@ private:
         bool willGoToBackForwardListItem(WebPageProxy&, WebBackForwardListItem&, bool inBackForwardCache) final;
 
 #if ENABLE(CONTENT_EXTENSIONS)
-        void contentRuleListNotification(WebPageProxy&, URL&&, WebCore::ContentRuleListResults&&) final;
+        void contentRuleListNotification(WebPageProxy&, URL&&, CyberCore::ContentRuleListResults&&) final;
 #endif
         void decidePolicyForNavigationAction(WebPageProxy&, Ref<API::NavigationAction>&&, Ref<WebFramePolicyListenerProxy>&&) override;
         void decidePolicyForNavigationResponse(WebPageProxy&, Ref<API::NavigationResponse>&&, Ref<WebFramePolicyListenerProxy>&&) override;

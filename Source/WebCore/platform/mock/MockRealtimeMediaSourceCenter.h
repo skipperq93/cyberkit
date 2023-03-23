@@ -34,7 +34,7 @@
 #include "MockRealtimeVideoSource.h"
 #include "RealtimeMediaSourceCenter.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class MockRealtimeMediaSourceCenter {
 public:

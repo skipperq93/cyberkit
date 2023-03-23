@@ -33,19 +33,19 @@
 #import <wtf/SchedulePair.h>
 #import <wtf/threads/BinarySemaphore.h>
 
-namespace WebCore {
+namespace CyberCore {
 class NetworkLoadMetrics;
 class ResourceHandle;
 class SynchronousLoaderMessageQueue;
 }
 
-@interface WebCoreResourceHandleAsOperationQueueDelegate : NSObject <NSURLConnectionDelegate> {
+@interface CyberCoreResourceHandleAsOperationQueueDelegate : NSObject <NSURLConnectionDelegate> {
     Lock m_lock;
-    WebCore::ResourceHandle* m_handle WTF_GUARDED_BY_LOCK(m_lock);
+    CyberCore::ResourceHandle* m_handle WTF_GUARDED_BY_LOCK(m_lock);
 
     // Synchronous delegates on operation queue wait until main thread sends an asynchronous response.
     BinarySemaphore m_semaphore;
-    RefPtr<WebCore::SynchronousLoaderMessageQueue> m_messageQueue;
+    RefPtr<CyberCore::SynchronousLoaderMessageQueue> m_messageQueue;
     RetainPtr<NSURLRequest> m_requestResult;
     RetainPtr<NSCachedURLResponse> m_cachedResponseResult;
     std::optional<SchedulePairHashSet> m_scheduledPairs;
@@ -53,9 +53,9 @@ class SynchronousLoaderMessageQueue;
 }
 
 - (void)detachHandle;
-- (id)initWithHandle:(WebCore::ResourceHandle*)handle messageQueue:(RefPtr<WebCore::SynchronousLoaderMessageQueue>&&)messageQueue;
+- (id)initWithHandle:(CyberCore::ResourceHandle*)handle messageQueue:(RefPtr<CyberCore::SynchronousLoaderMessageQueue>&&)messageQueue;
 @end
 
-@interface WebCoreResourceHandleWithCredentialStorageAsOperationQueueDelegate : WebCoreResourceHandleAsOperationQueueDelegate
+@interface CyberCoreResourceHandleWithCredentialStorageAsOperationQueueDelegate : CyberCoreResourceHandleAsOperationQueueDelegate
 
 @end

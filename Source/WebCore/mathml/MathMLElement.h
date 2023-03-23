@@ -33,7 +33,7 @@
 #include "MathMLNames.h"
 #include "StyledElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class MathMLElement : public StyledElement {
     WTF_MAKE_ISO_ALLOCATED(MathMLElement);
@@ -114,10 +114,10 @@ inline bool Node::hasTagName(const MathMLQualifiedName& name) const
     return isMathMLElement() && downcast<MathMLElement>(*this).hasTagName(name);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::MathMLElement)
-    static bool isType(const WebCore::Node& node) { return node.isMathMLElement(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::MathMLElement)
+    static bool isType(const CyberCore::Node& node) { return node.isMathMLElement(); }
 SPECIALIZE_TYPE_TRAITS_END()
 
 #include "MathMLElementTypeHelpers.h"

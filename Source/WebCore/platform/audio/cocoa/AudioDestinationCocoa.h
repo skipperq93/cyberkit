@@ -34,7 +34,7 @@
 #include <wtf/RefPtr.h>
 #include <wtf/UniqueRef.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioBus;
 class MultiChannelResampler;
@@ -63,6 +63,6 @@ private:
 
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

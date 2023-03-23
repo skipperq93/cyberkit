@@ -25,7 +25,7 @@
 #include "QualifiedName.h"
 #include "SVGPropertyOwnerRegistry.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGElement;
 
@@ -80,4 +80,4 @@ private:
     Ref<SVGAnimatedString> m_href;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

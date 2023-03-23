@@ -28,7 +28,7 @@
 #include "RectEdges.h"
 #include "RenderLayerModelObject.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // Modes for some of the line-related functions.
 enum LinePositionMode { PositionOnContainingLine, PositionOfInteriorLineBoxes };
@@ -267,6 +267,6 @@ private:
     virtual LayoutRect frameRectForStickyPositioning() const = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderBoxModelObject, isBoxModelObject())

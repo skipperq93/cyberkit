@@ -19,18 +19,18 @@
 
 @INJECTED_BUNDLE_API_SINGLE_HEADER_CHECK@
 
-#ifndef WebKitConsoleMessage_h
-#define WebKitConsoleMessage_h
+#ifndef CyberKitConsoleMessage_h
+#define CyberKitConsoleMessage_h
 
 #include <glib-object.h>
-#include <@API_INCLUDE_PREFIX@/WebKitDefines.h>
+#include <@API_INCLUDE_PREFIX@/CyberKitDefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_TYPE_CONSOLE_MESSAGE (webkit_console_message_get_type())
 
 /**
- * WebKitConsoleMessageSource:
+ * CyberKitConsoleMessageSource:
  * @WEBKIT_CONSOLE_MESSAGE_SOURCE_JAVASCRIPT: Message produced by JavaScript.
  * @WEBKIT_CONSOLE_MESSAGE_SOURCE_NETWORK: Network messages.
  * @WEBKIT_CONSOLE_MESSAGE_SOURCE_CONSOLE_API: Messages produced by console API.
@@ -49,10 +49,10 @@ typedef enum {
     WEBKIT_CONSOLE_MESSAGE_SOURCE_CONSOLE_API,
     WEBKIT_CONSOLE_MESSAGE_SOURCE_SECURITY,
     WEBKIT_CONSOLE_MESSAGE_SOURCE_OTHER
-} WebKitConsoleMessageSource;
+} CyberKitConsoleMessageSource;
 
 /**
- * WebKitConsoleMessageLevel:
+ * CyberKitConsoleMessageLevel:
  * @WEBKIT_CONSOLE_MESSAGE_LEVEL_INFO: Information message.
  * @WEBKIT_CONSOLE_MESSAGE_LEVEL_LOG: Log message.
  * @WEBKIT_CONSOLE_MESSAGE_LEVEL_WARNING: Warning message.
@@ -71,33 +71,33 @@ typedef enum {
     WEBKIT_CONSOLE_MESSAGE_LEVEL_WARNING,
     WEBKIT_CONSOLE_MESSAGE_LEVEL_ERROR,
     WEBKIT_CONSOLE_MESSAGE_LEVEL_DEBUG
-} WebKitConsoleMessageLevel;
+} CyberKitConsoleMessageLevel;
 
-typedef struct _WebKitConsoleMessage WebKitConsoleMessage;
+typedef struct _CyberKitConsoleMessage CyberKitConsoleMessage;
 
 WEBKIT_DEPRECATED GType
 webkit_console_message_get_type      (void);
 
-WEBKIT_DEPRECATED WebKitConsoleMessage *
-webkit_console_message_copy          (WebKitConsoleMessage *console_message);
+WEBKIT_DEPRECATED CyberKitConsoleMessage *
+webkit_console_message_copy          (CyberKitConsoleMessage *console_message);
 
 WEBKIT_DEPRECATED void
-webkit_console_message_free          (WebKitConsoleMessage *console_message);
+webkit_console_message_free          (CyberKitConsoleMessage *console_message);
 
-WEBKIT_DEPRECATED WebKitConsoleMessageSource
-webkit_console_message_get_source    (WebKitConsoleMessage *console_message);
+WEBKIT_DEPRECATED CyberKitConsoleMessageSource
+webkit_console_message_get_source    (CyberKitConsoleMessage *console_message);
 
-WEBKIT_DEPRECATED WebKitConsoleMessageLevel
-webkit_console_message_get_level     (WebKitConsoleMessage *console_message);
+WEBKIT_DEPRECATED CyberKitConsoleMessageLevel
+webkit_console_message_get_level     (CyberKitConsoleMessage *console_message);
 
 WEBKIT_DEPRECATED const gchar *
-webkit_console_message_get_text      (WebKitConsoleMessage *console_message);
+webkit_console_message_get_text      (CyberKitConsoleMessage *console_message);
 
 WEBKIT_DEPRECATED guint
-webkit_console_message_get_line      (WebKitConsoleMessage *console_message);
+webkit_console_message_get_line      (CyberKitConsoleMessage *console_message);
 
 WEBKIT_DEPRECATED const gchar *
-webkit_console_message_get_source_id (WebKitConsoleMessage *console_message);
+webkit_console_message_get_source_id (CyberKitConsoleMessage *console_message);
 
 G_END_DECLS
 

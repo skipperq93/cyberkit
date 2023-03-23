@@ -41,7 +41,7 @@
 #include "SVGURIReference.h"
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
     
 bool DefaultFilterOperation::operator==(const FilterOperation& operation) const
 {
@@ -113,7 +113,7 @@ double FilterOperation::blendAmounts(double from, double to, const BlendingConte
                 break;
             }
         }
-        return WebCore::blend(from, to, context);
+        return CyberCore::blend(from, to, context);
     }();
 
     // Make sure blended values remain within bounds as specified by
@@ -415,11 +415,11 @@ RefPtr<FilterOperation> BlurFilterOperation::blend(const FilterOperation* from, 
     LengthType lengthType = m_stdDeviation.type();
 
     if (blendToPassthrough)
-        return BlurFilterOperation::create(WebCore::blend(m_stdDeviation, Length(lengthType), context));
+        return BlurFilterOperation::create(CyberCore::blend(m_stdDeviation, Length(lengthType), context));
 
     const BlurFilterOperation* fromOperation = downcast<BlurFilterOperation>(from);
     Length fromLength = fromOperation ? fromOperation->m_stdDeviation : Length(lengthType);
-    return BlurFilterOperation::create(WebCore::blend(fromLength, m_stdDeviation, context, ValueRange::NonNegative));
+    return BlurFilterOperation::create(CyberCore::blend(fromLength, m_stdDeviation, context, ValueRange::NonNegative));
 }
 
 bool BlurFilterOperation::isIdentity() const
@@ -448,9 +448,9 @@ RefPtr<FilterOperation> DropShadowFilterOperation::blend(const FilterOperation* 
 
     if (blendToPassthrough)
         return DropShadowFilterOperation::create(
-            WebCore::blend(m_location, IntPoint(), context),
-            WebCore::blend(m_stdDeviation, 0, context),
-            WebCore::blend(m_color, Color::transparentBlack, context));
+            CyberCore::blend(m_location, IntPoint(), context),
+            CyberCore::blend(m_stdDeviation, 0, context),
+            CyberCore::blend(m_color, Color::transparentBlack, context));
 
     const DropShadowFilterOperation* fromOperation = downcast<DropShadowFilterOperation>(from);
     IntPoint fromLocation = fromOperation ? fromOperation->location() : IntPoint();
@@ -458,9 +458,9 @@ RefPtr<FilterOperation> DropShadowFilterOperation::blend(const FilterOperation* 
     Color fromColor = fromOperation ? fromOperation->color() : Color::transparentBlack;
     
     return DropShadowFilterOperation::create(
-        WebCore::blend(fromLocation, m_location, context),
-        std::max(WebCore::blend(fromStdDeviation, m_stdDeviation, context), 0),
-        WebCore::blend(fromColor, m_color, context));
+        CyberCore::blend(fromLocation, m_location, context),
+        std::max(CyberCore::blend(fromStdDeviation, m_stdDeviation, context), 0),
+        CyberCore::blend(fromColor, m_color, context));
 }
 
 bool DropShadowFilterOperation::isIdentity() const
@@ -549,4 +549,4 @@ TextStream& operator<<(TextStream& ts, const FilterOperation& filter)
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

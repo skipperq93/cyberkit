@@ -30,7 +30,7 @@
 #include "LayoutRect.h"
 #include "LayoutSize.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class FloatRoundedRect;
 class LayoutUnit;
@@ -139,4 +139,4 @@ WTF::TextStream& operator<<(WTF::TextStream&, const RoundedRect&);
 // Snip away rectangles from corners, roughly one per step length of arc.
 WEBCORE_EXPORT Region approximateAsRegion(const RoundedRect&, unsigned stepLength = 20);
 
-} // namespace WebCore
+} // namespace CyberCore

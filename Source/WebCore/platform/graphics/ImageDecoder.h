@@ -35,7 +35,7 @@
 #include <wtf/text/WTFString.h>
 #include <wtf/ThreadSafeRefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FragmentedSharedBuffer;
 

@@ -52,18 +52,18 @@
 
 %pure-parser
 %lex-param { parser }
-%parse-param { WebCore::XPath::Parser& parser }
+%parse-param { CyberCore::XPath::Parser& parser }
 
 %union { 
-    WebCore::XPath::NumericOp::Opcode numericOpcode;
-    WebCore::XPath::EqTestOp::Opcode equalityTestOpcode;
+    CyberCore::XPath::NumericOp::Opcode numericOpcode;
+    CyberCore::XPath::EqTestOp::Opcode equalityTestOpcode;
     StringImpl* string;
-    WebCore::XPath::Step::Axis axis;
-    WebCore::XPath::LocationPath* locationPath;
-    WebCore::XPath::Step::NodeTest* nodeTest;
-    Vector<std::unique_ptr<WebCore::XPath::Expression>>* expressionVector;
-    WebCore::XPath::Step* step;
-    WebCore::XPath::Expression* expression;
+    CyberCore::XPath::Step::Axis axis;
+    CyberCore::XPath::LocationPath* locationPath;
+    CyberCore::XPath::Step::NodeTest* nodeTest;
+    Vector<std::unique_ptr<CyberCore::XPath::Expression>>* expressionVector;
+    CyberCore::XPath::Step* step;
+    CyberCore::XPath::Expression* expression;
 }
 %left <numericOpcode> MULOP
 
@@ -100,8 +100,8 @@
 
 %{
 
-static int xpathyylex(YYSTYPE* yylval, WebCore::XPath::Parser& parser) { return parser.lex(*yylval); }
-static void xpathyyerror(WebCore::XPath::Parser&, const char*) { }
+static int xpathyylex(YYSTYPE* yylval, CyberCore::XPath::Parser& parser) { return parser.lex(*yylval); }
+static void xpathyyerror(CyberCore::XPath::Parser&, const char*) { }
 
 %}
 
@@ -110,7 +110,7 @@ static void xpathyyerror(WebCore::XPath::Parser&, const char*) { }
 Top:
     Expr
     {
-        parser.setParseResult(std::unique_ptr<WebCore::XPath::Expression>($1));
+        parser.setParseResult(std::unique_ptr<CyberCore::XPath::Expression>($1));
     }
     ;
 
@@ -131,7 +131,7 @@ LocationPath:
 AbsoluteLocationPath:
     '/'
     {
-        $$ = new WebCore::XPath::LocationPath;
+        $$ = new CyberCore::XPath::LocationPath;
     }
     |
     '/' RelativeLocationPath
@@ -142,46 +142,46 @@ AbsoluteLocationPath:
     DescendantOrSelf RelativeLocationPath
     {
         $$ = $2;
-        $$->prependStep(std::unique_ptr<WebCore::XPath::Step>($1));
+        $$->prependStep(std::unique_ptr<CyberCore::XPath::Step>($1));
     }
     ;
 
 RelativeLocationPath:
     Step
     {
-        $$ = new WebCore::XPath::LocationPath;
-        $$->appendStep(std::unique_ptr<WebCore::XPath::Step>($1));
+        $$ = new CyberCore::XPath::LocationPath;
+        $$->appendStep(std::unique_ptr<CyberCore::XPath::Step>($1));
     }
     |
     RelativeLocationPath '/' Step
     {
         $$ = $1;
-        $$->appendStep(std::unique_ptr<WebCore::XPath::Step>($3));
+        $$->appendStep(std::unique_ptr<CyberCore::XPath::Step>($3));
     }
     |
     RelativeLocationPath DescendantOrSelf Step
     {
         $$ = $1;
-        $$->appendStep(std::unique_ptr<WebCore::XPath::Step>($2));
-        $$->appendStep(std::unique_ptr<WebCore::XPath::Step>($3));
+        $$->appendStep(std::unique_ptr<CyberCore::XPath::Step>($2));
+        $$->appendStep(std::unique_ptr<CyberCore::XPath::Step>($3));
     }
     ;
 
 Step:
     NodeTest OptionalPredicateList
     {
-        std::unique_ptr<WebCore::XPath::Step::NodeTest> nodeTest($1);
-        std::unique_ptr<Vector<std::unique_ptr<WebCore::XPath::Expression>>> predicateList($2);
+        std::unique_ptr<CyberCore::XPath::Step::NodeTest> nodeTest($1);
+        std::unique_ptr<Vector<std::unique_ptr<CyberCore::XPath::Expression>>> predicateList($2);
         if (predicateList)
-            $$ = new WebCore::XPath::Step(WebCore::XPath::Step::ChildAxis, WTFMove(*nodeTest), WTFMove(*predicateList));
+            $$ = new CyberCore::XPath::Step(CyberCore::XPath::Step::ChildAxis, WTFMove(*nodeTest), WTFMove(*predicateList));
         else
-            $$ = new WebCore::XPath::Step(WebCore::XPath::Step::ChildAxis, WTFMove(*nodeTest));
+            $$ = new CyberCore::XPath::Step(CyberCore::XPath::Step::ChildAxis, WTFMove(*nodeTest));
     }
     |
     NAMETEST OptionalPredicateList
     {
         String nametest = adoptRef($1);
-        std::unique_ptr<Vector<std::unique_ptr<WebCore::XPath::Expression>>> predicateList($2);
+        std::unique_ptr<Vector<std::unique_ptr<CyberCore::XPath::Expression>>> predicateList($2);
 
         String localName;
         String namespaceURI;
@@ -191,26 +191,26 @@ Step:
         }
 
         if (predicateList)
-            $$ = new WebCore::XPath::Step(WebCore::XPath::Step::ChildAxis, WebCore::XPath::Step::NodeTest(WebCore::XPath::Step::NodeTest::NameTest, localName, namespaceURI), WTFMove(*predicateList));
+            $$ = new CyberCore::XPath::Step(CyberCore::XPath::Step::ChildAxis, CyberCore::XPath::Step::NodeTest(CyberCore::XPath::Step::NodeTest::NameTest, localName, namespaceURI), WTFMove(*predicateList));
         else
-            $$ = new WebCore::XPath::Step(WebCore::XPath::Step::ChildAxis, WebCore::XPath::Step::NodeTest(WebCore::XPath::Step::NodeTest::NameTest, localName, namespaceURI));
+            $$ = new CyberCore::XPath::Step(CyberCore::XPath::Step::ChildAxis, CyberCore::XPath::Step::NodeTest(CyberCore::XPath::Step::NodeTest::NameTest, localName, namespaceURI));
     }
     |
     AxisSpecifier NodeTest OptionalPredicateList
     {
-        std::unique_ptr<WebCore::XPath::Step::NodeTest> nodeTest($2);
-        std::unique_ptr<Vector<std::unique_ptr<WebCore::XPath::Expression>>> predicateList($3);
+        std::unique_ptr<CyberCore::XPath::Step::NodeTest> nodeTest($2);
+        std::unique_ptr<Vector<std::unique_ptr<CyberCore::XPath::Expression>>> predicateList($3);
 
         if (predicateList)
-            $$ = new WebCore::XPath::Step($1, WTFMove(*nodeTest), WTFMove(*predicateList));
+            $$ = new CyberCore::XPath::Step($1, WTFMove(*nodeTest), WTFMove(*predicateList));
         else
-            $$ = new WebCore::XPath::Step($1, WTFMove(*nodeTest));
+            $$ = new CyberCore::XPath::Step($1, WTFMove(*nodeTest));
     }
     |
     AxisSpecifier NAMETEST OptionalPredicateList
     {
         String nametest = adoptRef($2);
-        std::unique_ptr<Vector<std::unique_ptr<WebCore::XPath::Expression>>> predicateList($3);
+        std::unique_ptr<Vector<std::unique_ptr<CyberCore::XPath::Expression>>> predicateList($3);
 
         String localName;
         String namespaceURI;
@@ -220,9 +220,9 @@ Step:
         }
 
         if (predicateList)
-            $$ = new WebCore::XPath::Step($1, WebCore::XPath::Step::NodeTest(WebCore::XPath::Step::NodeTest::NameTest, localName, namespaceURI), WTFMove(*predicateList));
+            $$ = new CyberCore::XPath::Step($1, CyberCore::XPath::Step::NodeTest(CyberCore::XPath::Step::NodeTest::NameTest, localName, namespaceURI), WTFMove(*predicateList));
         else
-            $$ = new WebCore::XPath::Step($1, WebCore::XPath::Step::NodeTest(WebCore::XPath::Step::NodeTest::NameTest, localName, namespaceURI));
+            $$ = new CyberCore::XPath::Step($1, CyberCore::XPath::Step::NodeTest(CyberCore::XPath::Step::NodeTest::NameTest, localName, namespaceURI));
     }
     |
     AbbreviatedStep
@@ -233,35 +233,35 @@ AxisSpecifier:
     |
     '@'
     {
-        $$ = WebCore::XPath::Step::AttributeAxis;
+        $$ = CyberCore::XPath::Step::AttributeAxis;
     }
     ;
 
 NodeTest:
     NODE '(' ')'
     {
-        $$ = new WebCore::XPath::Step::NodeTest(WebCore::XPath::Step::NodeTest::AnyNodeTest);
+        $$ = new CyberCore::XPath::Step::NodeTest(CyberCore::XPath::Step::NodeTest::AnyNodeTest);
     }
     |
     TEXT_ '(' ')'
     {
-        $$ = new WebCore::XPath::Step::NodeTest(WebCore::XPath::Step::NodeTest::TextNodeTest);
+        $$ = new CyberCore::XPath::Step::NodeTest(CyberCore::XPath::Step::NodeTest::TextNodeTest);
     }
     |
     COMMENT '(' ')'
     {
-        $$ = new WebCore::XPath::Step::NodeTest(WebCore::XPath::Step::NodeTest::CommentNodeTest);
+        $$ = new CyberCore::XPath::Step::NodeTest(CyberCore::XPath::Step::NodeTest::CommentNodeTest);
     }
     |
     PI '(' ')'
     {
-        $$ = new WebCore::XPath::Step::NodeTest(WebCore::XPath::Step::NodeTest::ProcessingInstructionNodeTest);
+        $$ = new CyberCore::XPath::Step::NodeTest(CyberCore::XPath::Step::NodeTest::ProcessingInstructionNodeTest);
     }
     |
     PI '(' LITERAL ')'
     {
         String literal = adoptRef($3);
-        $$ = new WebCore::XPath::Step::NodeTest(WebCore::XPath::Step::NodeTest::ProcessingInstructionNodeTest, literal.stripWhiteSpace());
+        $$ = new CyberCore::XPath::Step::NodeTest(CyberCore::XPath::Step::NodeTest::ProcessingInstructionNodeTest, literal.stripWhiteSpace());
     }
     ;
 
@@ -277,14 +277,14 @@ OptionalPredicateList:
 PredicateList:
     Predicate
     {
-        $$ = new Vector<std::unique_ptr<WebCore::XPath::Expression>>;
-        $$->append(std::unique_ptr<WebCore::XPath::Expression>($1));
+        $$ = new Vector<std::unique_ptr<CyberCore::XPath::Expression>>;
+        $$->append(std::unique_ptr<CyberCore::XPath::Expression>($1));
     }
     |
     PredicateList Predicate
     {
         $$ = $1;
-        $$->append(std::unique_ptr<WebCore::XPath::Expression>($2));
+        $$->append(std::unique_ptr<CyberCore::XPath::Expression>($2));
     }
     ;
 
@@ -298,19 +298,19 @@ Predicate:
 DescendantOrSelf:
     SLASHSLASH
     {
-        $$ = new WebCore::XPath::Step(WebCore::XPath::Step::DescendantOrSelfAxis, WebCore::XPath::Step::NodeTest(WebCore::XPath::Step::NodeTest::AnyNodeTest));
+        $$ = new CyberCore::XPath::Step(CyberCore::XPath::Step::DescendantOrSelfAxis, CyberCore::XPath::Step::NodeTest(CyberCore::XPath::Step::NodeTest::AnyNodeTest));
     }
     ;
 
 AbbreviatedStep:
     '.'
     {
-        $$ = new WebCore::XPath::Step(WebCore::XPath::Step::SelfAxis, WebCore::XPath::Step::NodeTest(WebCore::XPath::Step::NodeTest::AnyNodeTest));
+        $$ = new CyberCore::XPath::Step(CyberCore::XPath::Step::SelfAxis, CyberCore::XPath::Step::NodeTest(CyberCore::XPath::Step::NodeTest::AnyNodeTest));
     }
     |
     DOTDOT
     {
-        $$ = new WebCore::XPath::Step(WebCore::XPath::Step::ParentAxis, WebCore::XPath::Step::NodeTest(WebCore::XPath::Step::NodeTest::AnyNodeTest));
+        $$ = new CyberCore::XPath::Step(CyberCore::XPath::Step::ParentAxis, CyberCore::XPath::Step::NodeTest(CyberCore::XPath::Step::NodeTest::AnyNodeTest));
     }
     ;
 
@@ -318,7 +318,7 @@ PrimaryExpr:
     VARIABLEREFERENCE
     {
         String name = adoptRef($1);
-        $$ = new WebCore::XPath::VariableReference(name);
+        $$ = new CyberCore::XPath::VariableReference(name);
     }
     |
     '(' Expr ')'
@@ -329,13 +329,13 @@ PrimaryExpr:
     LITERAL
     {
         String literal = adoptRef($1);
-        $$ = new WebCore::XPath::StringExpression(WTFMove(literal));
+        $$ = new CyberCore::XPath::StringExpression(WTFMove(literal));
     }
     |
     NUMBER
     {
         String numeral = adoptRef($1);
-        $$ = new WebCore::XPath::Number(numeral.toDouble());
+        $$ = new CyberCore::XPath::Number(numeral.toDouble());
     }
     |
     FunctionCall
@@ -345,7 +345,7 @@ FunctionCall:
     FUNCTIONNAME '(' ')'
     {
         String name = adoptRef($1);
-        $$ = WebCore::XPath::Function::create(name).release();
+        $$ = CyberCore::XPath::Function::create(name).release();
         if (!$$)
             YYABORT;
     }
@@ -353,8 +353,8 @@ FunctionCall:
     FUNCTIONNAME '(' ArgumentList ')'
     {
         String name = adoptRef($1);
-        std::unique_ptr<Vector<std::unique_ptr<WebCore::XPath::Expression>>> argumentList($3);
-        $$ = WebCore::XPath::Function::create(name, WTFMove(*argumentList)).release();
+        std::unique_ptr<Vector<std::unique_ptr<CyberCore::XPath::Expression>>> argumentList($3);
+        $$ = CyberCore::XPath::Function::create(name, WTFMove(*argumentList)).release();
         if (!$$)
             YYABORT;
     }
@@ -363,14 +363,14 @@ FunctionCall:
 ArgumentList:
     Argument
     {
-        $$ = new Vector<std::unique_ptr<WebCore::XPath::Expression>>;
-        $$->append(std::unique_ptr<WebCore::XPath::Expression>($1));
+        $$ = new Vector<std::unique_ptr<CyberCore::XPath::Expression>>;
+        $$->append(std::unique_ptr<CyberCore::XPath::Expression>($1));
     }
     |
     ArgumentList ',' Argument
     {
         $$ = $1;
-        $$->append(std::unique_ptr<WebCore::XPath::Expression>($3));
+        $$->append(std::unique_ptr<CyberCore::XPath::Expression>($3));
     }
     ;
 
@@ -383,7 +383,7 @@ UnionExpr:
     |
     UnionExpr '|' PathExpr
     {
-        $$ = new WebCore::XPath::Union(std::unique_ptr<WebCore::XPath::Expression>($1), std::unique_ptr<WebCore::XPath::Expression>($3));
+        $$ = new CyberCore::XPath::Union(std::unique_ptr<CyberCore::XPath::Expression>($1), std::unique_ptr<CyberCore::XPath::Expression>($3));
     }
     ;
 
@@ -398,14 +398,14 @@ PathExpr:
     FilterExpr '/' RelativeLocationPath
     {
         $3->setAbsolute();
-        $$ = new WebCore::XPath::Path(std::unique_ptr<WebCore::XPath::Expression>($1), std::unique_ptr<WebCore::XPath::LocationPath>($3));
+        $$ = new CyberCore::XPath::Path(std::unique_ptr<CyberCore::XPath::Expression>($1), std::unique_ptr<CyberCore::XPath::LocationPath>($3));
     }
     |
     FilterExpr DescendantOrSelf RelativeLocationPath
     {
-        $3->prependStep(std::unique_ptr<WebCore::XPath::Step>($2));
+        $3->prependStep(std::unique_ptr<CyberCore::XPath::Step>($2));
         $3->setAbsolute();
-        $$ = new WebCore::XPath::Path(std::unique_ptr<WebCore::XPath::Expression>($1), std::unique_ptr<WebCore::XPath::LocationPath>($3));
+        $$ = new CyberCore::XPath::Path(std::unique_ptr<CyberCore::XPath::Expression>($1), std::unique_ptr<CyberCore::XPath::LocationPath>($3));
     }
     ;
 
@@ -414,8 +414,8 @@ FilterExpr:
     |
     PrimaryExpr PredicateList
     {
-        std::unique_ptr<Vector<std::unique_ptr<WebCore::XPath::Expression>>> predicateList($2);
-        $$ = new WebCore::XPath::Filter(std::unique_ptr<WebCore::XPath::Expression>($1), WTFMove(*predicateList));
+        std::unique_ptr<Vector<std::unique_ptr<CyberCore::XPath::Expression>>> predicateList($2);
+        $$ = new CyberCore::XPath::Filter(std::unique_ptr<CyberCore::XPath::Expression>($1), WTFMove(*predicateList));
     }
     ;
 
@@ -424,7 +424,7 @@ OrExpr:
     |
     OrExpr OR AndExpr
     {
-        $$ = new WebCore::XPath::LogicalOp(WebCore::XPath::LogicalOp::OP_Or, std::unique_ptr<WebCore::XPath::Expression>($1), std::unique_ptr<WebCore::XPath::Expression>($3));
+        $$ = new CyberCore::XPath::LogicalOp(CyberCore::XPath::LogicalOp::OP_Or, std::unique_ptr<CyberCore::XPath::Expression>($1), std::unique_ptr<CyberCore::XPath::Expression>($3));
     }
     ;
 
@@ -433,7 +433,7 @@ AndExpr:
     |
     AndExpr AND EqualityExpr
     {
-        $$ = new WebCore::XPath::LogicalOp(WebCore::XPath::LogicalOp::OP_And, std::unique_ptr<WebCore::XPath::Expression>($1), std::unique_ptr<WebCore::XPath::Expression>($3));
+        $$ = new CyberCore::XPath::LogicalOp(CyberCore::XPath::LogicalOp::OP_And, std::unique_ptr<CyberCore::XPath::Expression>($1), std::unique_ptr<CyberCore::XPath::Expression>($3));
     }
     ;
 
@@ -442,7 +442,7 @@ EqualityExpr:
     |
     EqualityExpr EQOP RelationalExpr
     {
-        $$ = new WebCore::XPath::EqTestOp($2, std::unique_ptr<WebCore::XPath::Expression>($1), std::unique_ptr<WebCore::XPath::Expression>($3));
+        $$ = new CyberCore::XPath::EqTestOp($2, std::unique_ptr<CyberCore::XPath::Expression>($1), std::unique_ptr<CyberCore::XPath::Expression>($3));
     }
     ;
 
@@ -451,7 +451,7 @@ RelationalExpr:
     |
     RelationalExpr RELOP AdditiveExpr
     {
-        $$ = new WebCore::XPath::EqTestOp($2, std::unique_ptr<WebCore::XPath::Expression>($1), std::unique_ptr<WebCore::XPath::Expression>($3));
+        $$ = new CyberCore::XPath::EqTestOp($2, std::unique_ptr<CyberCore::XPath::Expression>($1), std::unique_ptr<CyberCore::XPath::Expression>($3));
     }
     ;
 
@@ -460,12 +460,12 @@ AdditiveExpr:
     |
     AdditiveExpr PLUS MultiplicativeExpr
     {
-        $$ = new WebCore::XPath::NumericOp(WebCore::XPath::NumericOp::OP_Add, std::unique_ptr<WebCore::XPath::Expression>($1), std::unique_ptr<WebCore::XPath::Expression>($3));
+        $$ = new CyberCore::XPath::NumericOp(CyberCore::XPath::NumericOp::OP_Add, std::unique_ptr<CyberCore::XPath::Expression>($1), std::unique_ptr<CyberCore::XPath::Expression>($3));
     }
     |
     AdditiveExpr MINUS MultiplicativeExpr
     {
-        $$ = new WebCore::XPath::NumericOp(WebCore::XPath::NumericOp::OP_Sub, std::unique_ptr<WebCore::XPath::Expression>($1), std::unique_ptr<WebCore::XPath::Expression>($3));
+        $$ = new CyberCore::XPath::NumericOp(CyberCore::XPath::NumericOp::OP_Sub, std::unique_ptr<CyberCore::XPath::Expression>($1), std::unique_ptr<CyberCore::XPath::Expression>($3));
     }
     ;
 
@@ -474,7 +474,7 @@ MultiplicativeExpr:
     |
     MultiplicativeExpr MULOP UnaryExpr
     {
-        $$ = new WebCore::XPath::NumericOp($2, std::unique_ptr<WebCore::XPath::Expression>($1), std::unique_ptr<WebCore::XPath::Expression>($3));
+        $$ = new CyberCore::XPath::NumericOp($2, std::unique_ptr<CyberCore::XPath::Expression>($1), std::unique_ptr<CyberCore::XPath::Expression>($3));
     }
     ;
 
@@ -483,7 +483,7 @@ UnaryExpr:
     |
     MINUS UnaryExpr
     {
-        $$ = new WebCore::XPath::Negative(std::unique_ptr<WebCore::XPath::Expression>($2));
+        $$ = new CyberCore::XPath::Negative(std::unique_ptr<CyberCore::XPath::Expression>($2));
     }
     ;
 

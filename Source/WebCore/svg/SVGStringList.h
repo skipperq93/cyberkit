@@ -29,7 +29,7 @@
 #include "SVGPrimitiveList.h"
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGStringList final : public SVGPrimitiveList<String> {
     using Base = SVGPrimitiveList<String>;
@@ -55,4 +55,4 @@ public:
     String valueAsString() const override;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

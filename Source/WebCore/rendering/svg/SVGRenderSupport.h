@@ -26,7 +26,7 @@
 #include "PaintInfo.h"
 #include "RenderObject.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class FloatPoint;
 class FloatRect;
@@ -109,4 +109,4 @@ private:
     WeakPtr<RenderElement> m_element;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

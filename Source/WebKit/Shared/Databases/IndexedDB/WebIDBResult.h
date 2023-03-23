@@ -38,12 +38,12 @@ public:
     {
     }
 
-    WebIDBResult(const WebCore::IDBResultData& resultData)
+    WebIDBResult(const CyberCore::IDBResultData& resultData)
         : m_resultData(resultData)
     {
     }
 
-    WebIDBResult(const WebCore::IDBResultData& resultData, Vector<SandboxExtension::Handle>&& handles)
+    WebIDBResult(const CyberCore::IDBResultData& resultData, Vector<SandboxExtension::Handle>&& handles)
         : m_resultData(resultData)
         , m_handles(WTFMove(handles))
     {
@@ -52,12 +52,12 @@ public:
     WebIDBResult(WebIDBResult&&) = default;
     WebIDBResult& operator=(WebIDBResult&&) = default;
 
-    const WebCore::IDBResultData& resultData() const { return m_resultData; }
+    const CyberCore::IDBResultData& resultData() const { return m_resultData; }
     const Vector<SandboxExtension::Handle>& handles() const { return m_handles; }
 
 private:
     friend struct IPC::ArgumentCoder<WebIDBResult, void>;
-    WebCore::IDBResultData m_resultData;
+    CyberCore::IDBResultData m_resultData;
     Vector<SandboxExtension::Handle> m_handles;
 };
 

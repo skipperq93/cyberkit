@@ -81,7 +81,7 @@ void AuxiliaryProcess::platformInitialize(const AuxiliaryProcessInitializationPa
 
     [[NSFileManager defaultManager] changeCurrentDirectoryPath:[[NSBundle mainBundle] bundlePath]];
 
-    WebCore::setApplicationBundleIdentifier(parameters.clientBundleIdentifier);
+    CyberCore::setApplicationBundleIdentifier(parameters.clientBundleIdentifier);
     setSDKAlignedBehaviors(parameters.clientSDKAlignedBehaviors);
 }
 

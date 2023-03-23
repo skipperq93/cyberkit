@@ -28,7 +28,7 @@
 #include "Color.h"
 #include "StyleColor.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSPrimitiveValue;
 class Document;
@@ -43,4 +43,4 @@ Color colorFromPrimitiveValueWithResolvedCurrentColor(const Document&, RenderSty
 
 } // namespace Style
 
-} // namespace WebCore
+} // namespace CyberCore

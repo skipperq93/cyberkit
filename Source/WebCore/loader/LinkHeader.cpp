@@ -30,7 +30,7 @@
 
 #include "ParsingUtilities.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // LWSP definition in https://www.ietf.org/rfc/rfc0822.txt
 template<typename CharacterType> static bool isSpaceOrTab(CharacterType character)
@@ -349,5 +349,5 @@ LinkHeaderSet::LinkHeaderSet(const String& header)
     });
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 

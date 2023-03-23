@@ -38,7 +38,7 @@
 #include <wtf/RunLoop.h>
 #include <wtf/WorkQueue.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class MockRealtimeAudioSource : public RealtimeMediaSource {
 public:
@@ -89,10 +89,10 @@ private:
     MockMediaDevice m_device;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::MockRealtimeAudioSource)
-    static bool isType(const WebCore::RealtimeMediaSource& source) { return source.isCaptureSource() && source.isMockSource() && source.deviceType() == WebCore::CaptureDevice::DeviceType::Microphone; }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::MockRealtimeAudioSource)
+    static bool isType(const CyberCore::RealtimeMediaSource& source) { return source.isCaptureSource() && source.isMockSource() && source.deviceType() == CyberCore::CaptureDevice::DeviceType::Microphone; }
 SPECIALIZE_TYPE_TRAITS_END()
 
 

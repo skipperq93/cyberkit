@@ -33,7 +33,7 @@ class Navigation;
 struct SubstituteData;
 }
 
-namespace WebCore {
+namespace CyberCore {
 class ResourceRequest;
 
 enum class FrameLoadType : uint8_t;
@@ -50,11 +50,11 @@ public:
     explicit WebNavigationState();
     ~WebNavigationState();
 
-    Ref<API::Navigation> createBackForwardNavigation(WebBackForwardListItem& targetItem, WebBackForwardListItem* currentItem, WebCore::FrameLoadType);
-    Ref<API::Navigation> createLoadRequestNavigation(WebCore::ResourceRequest&&, WebBackForwardListItem* currentItem);
+    Ref<API::Navigation> createBackForwardNavigation(WebBackForwardListItem& targetItem, WebBackForwardListItem* currentItem, CyberCore::FrameLoadType);
+    Ref<API::Navigation> createLoadRequestNavigation(CyberCore::ResourceRequest&&, WebBackForwardListItem* currentItem);
     Ref<API::Navigation> createReloadNavigation(WebBackForwardListItem* currentAndTargetItem);
     Ref<API::Navigation> createLoadDataNavigation(std::unique_ptr<API::SubstituteData>&&);
-    Ref<API::Navigation> createSimulatedLoadWithDataNavigation(WebCore::ResourceRequest&&, std::unique_ptr<API::SubstituteData>&&, WebBackForwardListItem* currentItem);
+    Ref<API::Navigation> createSimulatedLoadWithDataNavigation(CyberCore::ResourceRequest&&, std::unique_ptr<API::SubstituteData>&&, WebBackForwardListItem* currentItem);
 
     bool hasNavigation(uint64_t navigationID) const { return m_navigations.contains(navigationID); }
     API::Navigation* navigation(uint64_t navigationID);

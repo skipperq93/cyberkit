@@ -1,5 +1,5 @@
 include(../ThirdParty/pdfjs/PdfJSFiles.cmake)
-include(../WebCore/Modules/pdfjs-extras/PdfJSExtras.cmake)
+include(../CyberCore/Modules/pdfjs-extras/PdfJSExtras.cmake)
 
 macro(WEBKIT_BUILD_PDFJS_GRESOURCES _derived_sources_dir)
     add_custom_command(

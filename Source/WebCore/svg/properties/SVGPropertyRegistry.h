@@ -27,7 +27,7 @@
 
 #include "SVGAttributeAnimator.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGAnimatedProperty;
 

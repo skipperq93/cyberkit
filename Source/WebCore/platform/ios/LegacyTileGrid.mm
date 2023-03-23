@@ -39,7 +39,7 @@
 #import <pal/spi/cocoa/QuartzCoreSPI.h>
 #import <wtf/MemoryPressureHandler.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 LegacyTileGrid::LegacyTileGrid(LegacyTileCache& tileCache, const IntSize& tileSize)
     : m_tileCache(tileCache)
@@ -563,6 +563,6 @@ void LegacyTileGrid::dumpTiles()
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(IOS_FAMILY)

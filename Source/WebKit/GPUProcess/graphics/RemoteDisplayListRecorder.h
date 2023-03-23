@@ -47,7 +47,7 @@ class RemoteResourceCache;
 
 class RemoteDisplayListRecorder : public IPC::StreamMessageReceiver, public CanMakeWeakPtr<RemoteDisplayListRecorder> {
 public:
-    static Ref<RemoteDisplayListRecorder> create(WebCore::ImageBuffer& imageBuffer, QualifiedRenderingResourceIdentifier imageBufferIdentifier, WebCore::ProcessIdentifier webProcessIdentifier, RemoteRenderingBackend& renderingBackend)
+    static Ref<RemoteDisplayListRecorder> create(CyberCore::ImageBuffer& imageBuffer, QualifiedRenderingResourceIdentifier imageBufferIdentifier, CyberCore::ProcessIdentifier webProcessIdentifier, RemoteRenderingBackend& renderingBackend)
     {
         auto instance = adoptRef(*new RemoteDisplayListRecorder(imageBuffer, imageBufferIdentifier, webProcessIdentifier, renderingBackend));
         instance->startListeningForIPC();
@@ -61,71 +61,71 @@ public:
     void restore();
     void translate(float x, float y);
     void rotate(float angle);
-    void scale(const WebCore::FloatSize& scale);
-    void setCTM(const WebCore::AffineTransform&);
-    void concatenateCTM(const WebCore::AffineTransform&);
-    void setInlineFillColor(WebCore::DisplayList::SetInlineFillColor&&);
-    void setInlineStrokeColor(WebCore::DisplayList::SetInlineStrokeColor&&);
+    void scale(const CyberCore::FloatSize& scale);
+    void setCTM(const CyberCore::AffineTransform&);
+    void concatenateCTM(const CyberCore::AffineTransform&);
+    void setInlineFillColor(CyberCore::DisplayList::SetInlineFillColor&&);
+    void setInlineStrokeColor(CyberCore::DisplayList::SetInlineStrokeColor&&);
     void setStrokeThickness(float);
-    void setState(WebCore::DisplayList::SetState&&);
-    void setLineCap(WebCore::LineCap);
-    void setLineDash(WebCore::DisplayList::SetLineDash&&);
-    void setLineJoin(WebCore::LineJoin);
+    void setState(CyberCore::DisplayList::SetState&&);
+    void setLineCap(CyberCore::LineCap);
+    void setLineDash(CyberCore::DisplayList::SetLineDash&&);
+    void setLineJoin(CyberCore::LineJoin);
     void setMiterLimit(float);
     void clearShadow();
-    void clip(const WebCore::FloatRect&);
-    void clipOut(const WebCore::FloatRect&);
-    void clipToImageBuffer(WebCore::RenderingResourceIdentifier, const WebCore::FloatRect& destinationRect);
-    void clipOutToPath(const WebCore::Path&);
-    void clipPath(const WebCore::Path&, WebCore::WindRule);
-    void drawGlyphs(WebCore::DisplayList::DrawGlyphs&&);
-    void drawDecomposedGlyphs(WebCore::RenderingResourceIdentifier fontIdentifier, WebCore::RenderingResourceIdentifier decomposedGlyphsIdentifier);
-    void drawFilteredImageBuffer(std::optional<WebCore::RenderingResourceIdentifier> sourceImageIdentifier, const WebCore::FloatRect& sourceImageRect, Ref<WebCore::Filter>);
-    void drawImageBuffer(WebCore::RenderingResourceIdentifier imageBufferIdentifier, const WebCore::FloatRect& destinationRect, const WebCore::FloatRect& srcRect, const WebCore::ImagePaintingOptions&);
-    void drawNativeImage(WebCore::RenderingResourceIdentifier imageIdentifier, const WebCore::FloatSize& imageSize, const WebCore::FloatRect& destRect, const WebCore::FloatRect& srcRect, const WebCore::ImagePaintingOptions&);
-    void drawSystemImage(Ref<WebCore::SystemImage>, const WebCore::FloatRect&);
-    void drawPattern(WebCore::RenderingResourceIdentifier imageIdentifier, const WebCore::FloatRect& destRect, const WebCore::FloatRect& tileRect, const WebCore::AffineTransform&, const WebCore::FloatPoint&, const WebCore::FloatSize& spacing, const WebCore::ImagePaintingOptions&);
+    void clip(const CyberCore::FloatRect&);
+    void clipOut(const CyberCore::FloatRect&);
+    void clipToImageBuffer(CyberCore::RenderingResourceIdentifier, const CyberCore::FloatRect& destinationRect);
+    void clipOutToPath(const CyberCore::Path&);
+    void clipPath(const CyberCore::Path&, CyberCore::WindRule);
+    void drawGlyphs(CyberCore::DisplayList::DrawGlyphs&&);
+    void drawDecomposedGlyphs(CyberCore::RenderingResourceIdentifier fontIdentifier, CyberCore::RenderingResourceIdentifier decomposedGlyphsIdentifier);
+    void drawFilteredImageBuffer(std::optional<CyberCore::RenderingResourceIdentifier> sourceImageIdentifier, const CyberCore::FloatRect& sourceImageRect, Ref<CyberCore::Filter>);
+    void drawImageBuffer(CyberCore::RenderingResourceIdentifier imageBufferIdentifier, const CyberCore::FloatRect& destinationRect, const CyberCore::FloatRect& srcRect, const CyberCore::ImagePaintingOptions&);
+    void drawNativeImage(CyberCore::RenderingResourceIdentifier imageIdentifier, const CyberCore::FloatSize& imageSize, const CyberCore::FloatRect& destRect, const CyberCore::FloatRect& srcRect, const CyberCore::ImagePaintingOptions&);
+    void drawSystemImage(Ref<CyberCore::SystemImage>, const CyberCore::FloatRect&);
+    void drawPattern(CyberCore::RenderingResourceIdentifier imageIdentifier, const CyberCore::FloatRect& destRect, const CyberCore::FloatRect& tileRect, const CyberCore::AffineTransform&, const CyberCore::FloatPoint&, const CyberCore::FloatSize& spacing, const CyberCore::ImagePaintingOptions&);
     void beginTransparencyLayer(float opacity);
     void endTransparencyLayer();
-    void drawRect(const WebCore::FloatRect&, float borderThickness);
-    void drawLine(const WebCore::FloatPoint& point1, const WebCore::FloatPoint& point2);
-    void drawLinesForText(WebCore::DisplayList::DrawLinesForText&&);
-    void drawDotsForDocumentMarker(const WebCore::FloatRect&, const WebCore::DocumentMarkerLineStyle&);
-    void drawEllipse(const WebCore::FloatRect&);
-    void drawPath(const WebCore::Path&);
-    void drawFocusRingPath(const WebCore::Path&, float outlineWidth, const WebCore::Color&);
-    void drawFocusRingRects(const Vector<WebCore::FloatRect>&, float outlineOffset, float outlineWidth, const WebCore::Color&);
-    void fillRect(const WebCore::FloatRect&);
-    void fillRectWithColor(const WebCore::FloatRect&, const WebCore::Color&);
-    void fillRectWithGradient(WebCore::DisplayList::FillRectWithGradient&&);
-    void fillCompositedRect(const WebCore::FloatRect&, const WebCore::Color&, WebCore::CompositeOperator, WebCore::BlendMode);
-    void fillRoundedRect(const WebCore::FloatRoundedRect&, const WebCore::Color&, WebCore::BlendMode);
-    void fillRectWithRoundedHole(const WebCore::FloatRect&, const WebCore::FloatRoundedRect&, const WebCore::Color&);
+    void drawRect(const CyberCore::FloatRect&, float borderThickness);
+    void drawLine(const CyberCore::FloatPoint& point1, const CyberCore::FloatPoint& point2);
+    void drawLinesForText(CyberCore::DisplayList::DrawLinesForText&&);
+    void drawDotsForDocumentMarker(const CyberCore::FloatRect&, const CyberCore::DocumentMarkerLineStyle&);
+    void drawEllipse(const CyberCore::FloatRect&);
+    void drawPath(const CyberCore::Path&);
+    void drawFocusRingPath(const CyberCore::Path&, float outlineWidth, const CyberCore::Color&);
+    void drawFocusRingRects(const Vector<CyberCore::FloatRect>&, float outlineOffset, float outlineWidth, const CyberCore::Color&);
+    void fillRect(const CyberCore::FloatRect&);
+    void fillRectWithColor(const CyberCore::FloatRect&, const CyberCore::Color&);
+    void fillRectWithGradient(CyberCore::DisplayList::FillRectWithGradient&&);
+    void fillCompositedRect(const CyberCore::FloatRect&, const CyberCore::Color&, CyberCore::CompositeOperator, CyberCore::BlendMode);
+    void fillRoundedRect(const CyberCore::FloatRoundedRect&, const CyberCore::Color&, CyberCore::BlendMode);
+    void fillRectWithRoundedHole(const CyberCore::FloatRect&, const CyberCore::FloatRoundedRect&, const CyberCore::Color&);
 #if ENABLE(INLINE_PATH_DATA)
-    void fillLine(const WebCore::LineData&);
-    void fillArc(const WebCore::ArcData&);
-    void fillQuadCurve(const WebCore::QuadCurveData&);
-    void fillBezierCurve(const WebCore::BezierCurveData&);
+    void fillLine(const CyberCore::LineData&);
+    void fillArc(const CyberCore::ArcData&);
+    void fillQuadCurve(const CyberCore::QuadCurveData&);
+    void fillBezierCurve(const CyberCore::BezierCurveData&);
 #endif
-    void fillPath(const WebCore::Path&);
-    void fillEllipse(const WebCore::FloatRect&);
+    void fillPath(const CyberCore::Path&);
+    void fillEllipse(const CyberCore::FloatRect&);
     void convertToLuminanceMask();
-    void transformToColorSpace(const WebCore::DestinationColorSpace&);
+    void transformToColorSpace(const CyberCore::DestinationColorSpace&);
 #if ENABLE(VIDEO)
-    void paintFrameForMedia(WebCore::MediaPlayerIdentifier, const WebCore::FloatRect& destination);
+    void paintFrameForMedia(CyberCore::MediaPlayerIdentifier, const CyberCore::FloatRect& destination);
 #endif
-    void strokeRect(const WebCore::FloatRect&, float lineWidth);
+    void strokeRect(const CyberCore::FloatRect&, float lineWidth);
 #if ENABLE(INLINE_PATH_DATA)
-    void strokeLine(const WebCore::LineData&);
-    void strokeLineWithColorAndThickness(WebCore::DisplayList::SetInlineStrokeColor&&, float, const WebCore::LineData&);
-    void strokeArc(const WebCore::ArcData&);
-    void strokeQuadCurve(const WebCore::QuadCurveData&);
-    void strokeBezierCurve(const WebCore::BezierCurveData&);
+    void strokeLine(const CyberCore::LineData&);
+    void strokeLineWithColorAndThickness(CyberCore::DisplayList::SetInlineStrokeColor&&, float, const CyberCore::LineData&);
+    void strokeArc(const CyberCore::ArcData&);
+    void strokeQuadCurve(const CyberCore::QuadCurveData&);
+    void strokeBezierCurve(const CyberCore::BezierCurveData&);
 #endif
-    void strokePath(const WebCore::Path&);
-    void strokeEllipse(const WebCore::FloatRect&);
-    void clearRect(const WebCore::FloatRect&);
-    void drawControlPart(Ref<WebCore::ControlPart>, const WebCore::FloatRoundedRect& borderRect, float deviceScaleFactor, const WebCore::ControlStyle&);
+    void strokePath(const CyberCore::Path&);
+    void strokeEllipse(const CyberCore::FloatRect&);
+    void clearRect(const CyberCore::FloatRect&);
+    void drawControlPart(Ref<CyberCore::ControlPart>, const CyberCore::FloatRoundedRect& borderRect, float deviceScaleFactor, const CyberCore::ControlStyle&);
 #if USE(CG)
     void applyStrokePattern();
     void applyFillPattern();
@@ -134,18 +134,18 @@ public:
     void flushContext(DisplayListRecorderFlushIdentifier);
 
 private:
-    RemoteDisplayListRecorder(WebCore::ImageBuffer&, QualifiedRenderingResourceIdentifier, WebCore::ProcessIdentifier webProcessIdentifier, RemoteRenderingBackend&);
+    RemoteDisplayListRecorder(CyberCore::ImageBuffer&, QualifiedRenderingResourceIdentifier, CyberCore::ProcessIdentifier webProcessIdentifier, RemoteRenderingBackend&);
 
-    void setStateWithQualifiedIdentifiers(WebCore::DisplayList::SetState&&, QualifiedRenderingResourceIdentifier strokePatternImageIdentifier, QualifiedRenderingResourceIdentifier fillPatternImageIdentifier);
-    void clipToImageBufferWithQualifiedIdentifier(QualifiedRenderingResourceIdentifier, const WebCore::FloatRect& destinationRect);
-    void drawGlyphsWithQualifiedIdentifier(WebCore::DisplayList::DrawGlyphs&&, QualifiedRenderingResourceIdentifier fontIdentifier);
+    void setStateWithQualifiedIdentifiers(CyberCore::DisplayList::SetState&&, QualifiedRenderingResourceIdentifier strokePatternImageIdentifier, QualifiedRenderingResourceIdentifier fillPatternImageIdentifier);
+    void clipToImageBufferWithQualifiedIdentifier(QualifiedRenderingResourceIdentifier, const CyberCore::FloatRect& destinationRect);
+    void drawGlyphsWithQualifiedIdentifier(CyberCore::DisplayList::DrawGlyphs&&, QualifiedRenderingResourceIdentifier fontIdentifier);
     void drawDecomposedGlyphsWithQualifiedIdentifiers(QualifiedRenderingResourceIdentifier fontIdentifier, QualifiedRenderingResourceIdentifier decomposedGlyphsIdentifier);
-    void drawImageBufferWithQualifiedIdentifier(QualifiedRenderingResourceIdentifier imageBufferIdentifier, const WebCore::FloatRect& destinationRect, const WebCore::FloatRect& srcRect, const WebCore::ImagePaintingOptions&);
-    void drawNativeImageWithQualifiedIdentifier(QualifiedRenderingResourceIdentifier imageIdentifier, const WebCore::FloatSize& imageSize, const WebCore::FloatRect& destRect, const WebCore::FloatRect& srcRect, const WebCore::ImagePaintingOptions&);
-    void drawPatternWithQualifiedIdentifier(QualifiedRenderingResourceIdentifier imageIdentifier, const WebCore::FloatRect& destRect, const WebCore::FloatRect& tileRect, const WebCore::AffineTransform&, const WebCore::FloatPoint&, const WebCore::FloatSize& spacing, const WebCore::ImagePaintingOptions&);
+    void drawImageBufferWithQualifiedIdentifier(QualifiedRenderingResourceIdentifier imageBufferIdentifier, const CyberCore::FloatRect& destinationRect, const CyberCore::FloatRect& srcRect, const CyberCore::ImagePaintingOptions&);
+    void drawNativeImageWithQualifiedIdentifier(QualifiedRenderingResourceIdentifier imageIdentifier, const CyberCore::FloatSize& imageSize, const CyberCore::FloatRect& destRect, const CyberCore::FloatRect& srcRect, const CyberCore::ImagePaintingOptions&);
+    void drawPatternWithQualifiedIdentifier(QualifiedRenderingResourceIdentifier imageIdentifier, const CyberCore::FloatRect& destRect, const CyberCore::FloatRect& tileRect, const CyberCore::AffineTransform&, const CyberCore::FloatPoint&, const CyberCore::FloatSize& spacing, const CyberCore::ImagePaintingOptions&);
 
     RemoteResourceCache& resourceCache();
-    WebCore::GraphicsContext& drawingContext();
+    CyberCore::GraphicsContext& drawingContext();
 
     template<typename T, typename ... AdditionalArgs>
     void handleItem(T&& item, AdditionalArgs&&... args)
@@ -160,16 +160,16 @@ private:
     void didReceiveStreamMessage(IPC::StreamServerConnection&, IPC::Decoder&) final;
 
 #if PLATFORM(COCOA) && ENABLE(VIDEO)
-    void paintVideoFrame(SharedVideoFrame&&, const WebCore::FloatRect&, bool shouldDiscardAlpha);
+    void paintVideoFrame(SharedVideoFrame&&, const CyberCore::FloatRect&, bool shouldDiscardAlpha);
     void setSharedVideoFrameSemaphore(IPC::Semaphore&&);
     void setSharedVideoFrameMemory(const SharedMemory::Handle&);
 #endif
 
-    WeakPtr<WebCore::ImageBuffer> m_imageBuffer;
+    WeakPtr<CyberCore::ImageBuffer> m_imageBuffer;
     QualifiedRenderingResourceIdentifier m_imageBufferIdentifier;
-    WebCore::ProcessIdentifier m_webProcessIdentifier;
+    CyberCore::ProcessIdentifier m_webProcessIdentifier;
     RefPtr<RemoteRenderingBackend> m_renderingBackend;
-    std::unique_ptr<WebCore::ControlFactory> m_controlFactory;
+    std::unique_ptr<CyberCore::ControlFactory> m_controlFactory;
 #if PLATFORM(COCOA) && ENABLE(VIDEO)
     SharedVideoFrameReader m_sharedVideoFrameReader;
 #endif

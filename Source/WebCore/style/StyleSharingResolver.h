@@ -28,7 +28,7 @@
 #include "Styleable.h"
 #include <wtf/HashMap.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class Element;

@@ -32,7 +32,7 @@
 #include <wtf/RunLoop.h>
 #include <wtf/glib/WTFGType.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 struct WebKitMediaThunderDecryptPrivate {
     RefPtr<CDMProxyThunder> cdmProxy;

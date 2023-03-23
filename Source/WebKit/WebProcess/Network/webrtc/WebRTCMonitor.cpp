@@ -35,7 +35,7 @@
 #include "WebProcess.h"
 #include <wtf/MainThread.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 #define WEBRTC_RELEASE_LOG(fmt, ...) RELEASE_LOG(Network, "%p - WebRTCMonitor::" fmt, this, ##__VA_ARGS__)
 
@@ -83,7 +83,7 @@ void WebRTCMonitor::networkProcessCrashed()
         observer.networkProcessCrashed();
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #undef WEBRTC_RELEASE_LOG
 

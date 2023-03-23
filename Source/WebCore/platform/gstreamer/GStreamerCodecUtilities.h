@@ -23,7 +23,7 @@
 
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace GStreamerCodecUtilities {
 
@@ -32,6 +32,6 @@ uint8_t parseVP9Profile(const String& codec);
 
 } // namespace GStreamerCodecUtilities
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(GSTREAMER)

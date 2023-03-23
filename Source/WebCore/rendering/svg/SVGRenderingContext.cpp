@@ -43,7 +43,7 @@
 #include "SVGResourcesCache.h"
 #include <wtf/MathExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static inline bool isRenderingMaskImage(const RenderObject& object)
 {

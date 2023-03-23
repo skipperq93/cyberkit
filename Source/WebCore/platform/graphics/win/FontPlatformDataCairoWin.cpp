@@ -37,7 +37,7 @@
 
 #include <cairo-win32.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 void FontPlatformData::platformDataInit(HFONT font, float size, HDC hdc, WCHAR* faceName)
 {

@@ -30,7 +30,7 @@
 
 #if ENABLE(ASYNC_SCROLLING)
 
-namespace WebCore {
+namespace CyberCore {
 
 void LayerRepresentation::retainPlatformLayer(void* typelessLayer)
 {
@@ -54,6 +54,6 @@ void* LayerRepresentation::makePlatformLayerTypeless(CALayer *layer)
     return (__bridge void*)layer;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ASYNC_SCROLLING)

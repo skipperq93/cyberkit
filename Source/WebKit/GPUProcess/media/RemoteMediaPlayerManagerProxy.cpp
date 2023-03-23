@@ -35,7 +35,7 @@
 #include "RemoteMediaPlayerProxy.h"
 #include "RemoteMediaPlayerProxyConfiguration.h"
 #include "ScopedRenderingResourcesRequest.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include <CyberCore/MediaPlayer.h>
 #include <CyberCore/MediaPlayerPrivate.h>
 #include <wtf/Logger.h>
@@ -47,7 +47,7 @@
 
 namespace WebKit {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 RemoteMediaPlayerManagerProxy::RemoteMediaPlayerManagerProxy(GPUConnectionToWebProcess& connection)
     : m_gpuConnectionToWebProcess(connection)
@@ -115,7 +115,7 @@ void RemoteMediaPlayerManagerProxy::supportsTypeAndCodecs(MediaPlayerEnums::Medi
     completionHandler(result);
 }
 
-void RemoteMediaPlayerManagerProxy::originsInMediaCache(MediaPlayerEnums::MediaEngineIdentifier engineIdentifier, const String&& path, CompletionHandler<void(HashSet<WebCore::SecurityOriginData>&&)>&& completionHandler)
+void RemoteMediaPlayerManagerProxy::originsInMediaCache(MediaPlayerEnums::MediaEngineIdentifier engineIdentifier, const String&& path, CompletionHandler<void(HashSet<CyberCore::SecurityOriginData>&&)>&& completionHandler)
 {
     auto engine = MediaPlayer::mediaEngine(engineIdentifier);
     if (!engine) {
@@ -138,7 +138,7 @@ void RemoteMediaPlayerManagerProxy::clearMediaCache(MediaPlayerEnums::MediaEngin
     engine->clearMediaCache(path, modifiedSince);
 }
 
-void RemoteMediaPlayerManagerProxy::clearMediaCacheForOrigins(MediaPlayerEnums::MediaEngineIdentifier engineIdentifier, const String&& path, HashSet<WebCore::SecurityOriginData>&& origins)
+void RemoteMediaPlayerManagerProxy::clearMediaCacheForOrigins(MediaPlayerEnums::MediaEngineIdentifier engineIdentifier, const String&& path, HashSet<CyberCore::SecurityOriginData>&& origins)
 {
     auto engine = MediaPlayer::mediaEngine(engineIdentifier);
     if (!engine) {
@@ -196,7 +196,7 @@ Logger& RemoteMediaPlayerManagerProxy::logger()
 }
 #endif
 
-ShareableBitmapHandle RemoteMediaPlayerManagerProxy::bitmapImageForCurrentTime(WebCore::MediaPlayerIdentifier identifier)
+ShareableBitmapHandle RemoteMediaPlayerManagerProxy::bitmapImageForCurrentTime(CyberCore::MediaPlayerIdentifier identifier)
 {
     auto player = mediaPlayer(identifier);
     if (!player)

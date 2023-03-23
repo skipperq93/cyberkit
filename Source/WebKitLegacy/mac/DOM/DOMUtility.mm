@@ -77,7 +77,7 @@ static WebScriptObject *createDOMWrapper(JSC::JSObject& jsWrapper)
 {
     JSC::VM& vm = jsWrapper.vm();
     #define WRAP(className) \
-        if (auto* wrapped = WebCore::JS##className::toWrapped(vm, &jsWrapper)) \
+        if (auto* wrapped = CyberCore::JS##className::toWrapped(vm, &jsWrapper)) \
             return kit(wrapped);
 
     WRAP(CSSRule)
@@ -120,5 +120,5 @@ static void disconnectWindowWrapper(WebScriptObject *windowWrapper)
 
 void initializeDOMWrapperHooks()
 {
-    WebCore::initializeDOMWrapperHooks(createDOMWrapper, disconnectWindowWrapper);
+    CyberCore::initializeDOMWrapperHooks(createDOMWrapper, disconnectWindowWrapper);
 }

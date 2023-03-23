@@ -24,7 +24,7 @@
 #include "RenderFlexibleBox.h"
 #include <memory>
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLFormControlElement;
 class RenderTextFragment;
@@ -78,6 +78,6 @@ private:
     WeakPtr<RenderBlock> m_inner;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderButton, isRenderButton())

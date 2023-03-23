@@ -41,7 +41,7 @@
 #undef Complex
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class GraphicsContext;
 class LayoutRect;

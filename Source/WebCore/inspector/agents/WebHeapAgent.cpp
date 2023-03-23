@@ -130,7 +130,7 @@ void WebHeapAgent::dispatchGarbageCollectedEvent(Protocol::Heap::GarbageCollecti
     // called between collection and sweeping and we don't want to
     // create unexpected JavaScript allocations that the Sweeper does
     // not expect to encounter. JavaScript allocations could happen
-    // with WebKitLegacy's in process inspector which shares the same
+    // with CyberKitLegacy's in process inspector which shares the same
     // VM as the inspected page.
 
     GarbageCollectionData data = {type, startTime, endTime};

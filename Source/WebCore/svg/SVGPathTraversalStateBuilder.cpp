@@ -26,7 +26,7 @@
 
 #include "PathTraversalState.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 SVGPathTraversalStateBuilder::SVGPathTraversalStateBuilder(PathTraversalState& state, float desiredLength)
     : m_traversalState(state)

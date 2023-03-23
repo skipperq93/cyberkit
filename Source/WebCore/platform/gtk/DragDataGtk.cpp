@@ -21,7 +21,7 @@
 
 #include "SelectionData.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 bool DragData::canSmartReplace() const
 {

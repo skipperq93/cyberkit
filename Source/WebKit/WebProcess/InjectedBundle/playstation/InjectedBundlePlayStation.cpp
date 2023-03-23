@@ -30,7 +30,7 @@
 #include "WKBundleInitialize.h"
 #include "library-bundle.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 bool InjectedBundle::initialize(const WebProcessCreationParameters& parameters, API::Object* initializationUserData)
 {
@@ -58,4 +58,4 @@ void InjectedBundle::setBundleParameters(const IPC::DataReference&)
 {
 }
 
-} // namespace WebKit
+} // namespace CyberKit

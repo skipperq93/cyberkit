@@ -28,7 +28,7 @@
 
 #include <CyberScriptCore/TypedArrayInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<ByteArrayPixelBuffer> ByteArrayPixelBuffer::create(const PixelBufferFormat& format, const IntSize& size, JSC::Uint8ClampedArray& data)
 {
@@ -80,4 +80,4 @@ RefPtr<PixelBuffer> ByteArrayPixelBuffer::createScratchPixelBuffer(const IntSize
     return ByteArrayPixelBuffer::tryCreate(m_format, size);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

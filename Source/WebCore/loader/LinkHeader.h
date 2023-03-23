@@ -30,7 +30,7 @@
 #include <wtf/Forward.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class LinkHeader {
 public:
@@ -94,5 +94,5 @@ private:
     Vector<LinkHeader> m_headerSet;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 

@@ -31,7 +31,7 @@
 #include <unicode/utypes.h>
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace MathMLOperatorDictionary {
 enum Form { Infix, Prefix, Postfix };

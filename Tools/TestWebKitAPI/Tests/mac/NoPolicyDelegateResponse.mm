@@ -73,7 +73,7 @@ static bool didStartProvisionalLoad;
 
 namespace TestWebKitAPI {
 
-TEST(WebKitLegacy, NoDecidePolicyForMIMETypeDecision)
+TEST(CyberKitLegacy, NoDecidePolicyForMIMETypeDecision)
 {
     auto webView = adoptNS([[WebView alloc] initWithFrame:NSZeroRect frameName:nil groupName:nil]);
     auto delegate = adoptNS([NoDecidePolicyForMIMETypeDecisionDelegate new]);
@@ -87,7 +87,7 @@ TEST(WebKitLegacy, NoDecidePolicyForMIMETypeDecision)
     EXPECT_TRUE(didNavigationResponseCheck);
 }
 
-TEST(WebKitLegacy, NoDecidePolicyForNavigationActionDecision)
+TEST(CyberKitLegacy, NoDecidePolicyForNavigationActionDecision)
 {
     auto webView = adoptNS([[WebView alloc] initWithFrame:NSZeroRect frameName:nil groupName:nil]);
     auto delegate = adoptNS([NoDecidePolicyForNavigationActionDecisionDelegate new]);

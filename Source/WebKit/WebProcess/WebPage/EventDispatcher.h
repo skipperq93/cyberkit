@@ -46,13 +46,13 @@
 #include "WebGestureEvent.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 struct DisplayUpdate;
 class ThreadedScrollingTree;
 using PlatformDisplayID = uint32_t;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class MomentumEventDispatcher;
 class ScrollingAccelerationCurve;
@@ -88,71 +88,71 @@ public:
 
     void initializeConnection(IPC::Connection&);
 
-    void notifyScrollingTreesDisplayDidRefresh(WebCore::PlatformDisplayID);
+    void notifyScrollingTreesDisplayDidRefresh(CyberCore::PlatformDisplayID);
 
 private:
     // IPC::MessageReceiver overrides.
     void didReceiveMessage(IPC::Connection&, IPC::Decoder&) override;
 
     // Message handlers
-    void wheelEvent(WebCore::PageIdentifier, const WebWheelEvent&, WebCore::RectEdges<bool> rubberBandableEdges);
+    void wheelEvent(CyberCore::PageIdentifier, const WebWheelEvent&, CyberCore::RectEdges<bool> rubberBandableEdges);
 #if ENABLE(MOMENTUM_EVENT_DISPATCHER)
-    void setScrollingAccelerationCurve(WebCore::PageIdentifier, std::optional<ScrollingAccelerationCurve>);
+    void setScrollingAccelerationCurve(CyberCore::PageIdentifier, std::optional<ScrollingAccelerationCurve>);
 #endif
 #if ENABLE(IOS_TOUCH_EVENTS)
-    void touchEvent(WebCore::PageIdentifier, const WebTouchEvent&, CompletionHandler<void(bool)>&&);
-    void touchEventWithoutCallback(WebCore::PageIdentifier, const WebTouchEvent&);
+    void touchEvent(CyberCore::PageIdentifier, const WebTouchEvent&, CompletionHandler<void(bool)>&&);
+    void touchEventWithoutCallback(CyberCore::PageIdentifier, const WebTouchEvent&);
 #endif
 #if ENABLE(MAC_GESTURE_EVENTS)
-    void gestureEvent(WebCore::PageIdentifier, const WebGestureEvent&);
+    void gestureEvent(CyberCore::PageIdentifier, const WebGestureEvent&);
 #endif
 
     // This is called on the main thread.
-    void dispatchWheelEvent(WebCore::PageIdentifier, const WebWheelEvent&, OptionSet<WebCore::WheelEventProcessingSteps>, WheelEventOrigin);
-    void dispatchWheelEventViaMainThread(WebCore::PageIdentifier, const WebWheelEvent&, OptionSet<WebCore::WheelEventProcessingSteps>, WheelEventOrigin);
+    void dispatchWheelEvent(CyberCore::PageIdentifier, const WebWheelEvent&, OptionSet<CyberCore::WheelEventProcessingSteps>, WheelEventOrigin);
+    void dispatchWheelEventViaMainThread(CyberCore::PageIdentifier, const WebWheelEvent&, OptionSet<CyberCore::WheelEventProcessingSteps>, WheelEventOrigin);
 
-    void internalWheelEvent(WebCore::PageIdentifier, const WebWheelEvent&, WebCore::RectEdges<bool> rubberBandableEdges, WheelEventOrigin);
+    void internalWheelEvent(CyberCore::PageIdentifier, const WebWheelEvent&, CyberCore::RectEdges<bool> rubberBandableEdges, WheelEventOrigin);
 
 #if ENABLE(IOS_TOUCH_EVENTS)
     void dispatchTouchEvents();
 #endif
 #if ENABLE(MAC_GESTURE_EVENTS)
-    void dispatchGestureEvent(WebCore::PageIdentifier, const WebGestureEvent&);
+    void dispatchGestureEvent(CyberCore::PageIdentifier, const WebGestureEvent&);
 #endif
 
-    static void sendDidReceiveEvent(WebCore::PageIdentifier, WebEventType, bool didHandleEvent);
+    static void sendDidReceiveEvent(CyberCore::PageIdentifier, WebEventType, bool didHandleEvent);
 
 #if PLATFORM(MAC)
-    void displayDidRefresh(WebCore::PlatformDisplayID, const WebCore::DisplayUpdate&, bool sendToMainThread);
+    void displayDidRefresh(CyberCore::PlatformDisplayID, const CyberCore::DisplayUpdate&, bool sendToMainThread);
 #endif
 
 #if ENABLE(SCROLLING_THREAD)
-    void displayDidRefreshOnScrollingThread(WebCore::PlatformDisplayID);
+    void displayDidRefreshOnScrollingThread(CyberCore::PlatformDisplayID);
 #endif
 
 #if ENABLE(MOMENTUM_EVENT_DISPATCHER)
     // EventDispatcher::Client
-    void handleSyntheticWheelEvent(WebCore::PageIdentifier, const WebWheelEvent&, WebCore::RectEdges<bool> rubberBandableEdges) override;
-    void startDisplayDidRefreshCallbacks(WebCore::PlatformDisplayID) override;
-    void stopDisplayDidRefreshCallbacks(WebCore::PlatformDisplayID) override;
+    void handleSyntheticWheelEvent(CyberCore::PageIdentifier, const WebWheelEvent&, CyberCore::RectEdges<bool> rubberBandableEdges) override;
+    void startDisplayDidRefreshCallbacks(CyberCore::PlatformDisplayID) override;
+    void stopDisplayDidRefreshCallbacks(CyberCore::PlatformDisplayID) override;
 
 #if ENABLE(MOMENTUM_EVENT_DISPATCHER_TEMPORARY_LOGGING)
     void flushMomentumEventLoggingSoon() override;
 #endif
 #endif
 
-    void pageScreenDidChange(WebCore::PageIdentifier, WebCore::PlatformDisplayID, std::optional<unsigned> nominalFramesPerSecond);
+    void pageScreenDidChange(CyberCore::PageIdentifier, CyberCore::PlatformDisplayID, std::optional<unsigned> nominalFramesPerSecond);
 
     Ref<WorkQueue> m_queue;
 
 #if ENABLE(ASYNC_SCROLLING) && ENABLE(SCROLLING_THREAD)
     Lock m_scrollingTreesLock;
-    HashMap<WebCore::PageIdentifier, RefPtr<WebCore::ThreadedScrollingTree>> m_scrollingTrees WTF_GUARDED_BY_LOCK(m_scrollingTreesLock);
+    HashMap<CyberCore::PageIdentifier, RefPtr<CyberCore::ThreadedScrollingTree>> m_scrollingTrees WTF_GUARDED_BY_LOCK(m_scrollingTreesLock);
 #endif
-    std::unique_ptr<WebCore::WheelEventDeltaFilter> m_recentWheelEventDeltaFilter;
+    std::unique_ptr<CyberCore::WheelEventDeltaFilter> m_recentWheelEventDeltaFilter;
 #if ENABLE(IOS_TOUCH_EVENTS)
     Lock m_touchEventsLock;
-    HashMap<WebCore::PageIdentifier, TouchEventQueue> m_touchEvents WTF_GUARDED_BY_LOCK(m_touchEventsLock);
+    HashMap<CyberCore::PageIdentifier, TouchEventQueue> m_touchEvents WTF_GUARDED_BY_LOCK(m_touchEventsLock);
 #endif
 
 #if ENABLE(MOMENTUM_EVENT_DISPATCHER)
@@ -161,4 +161,4 @@ private:
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit

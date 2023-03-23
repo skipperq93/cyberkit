@@ -29,7 +29,7 @@
 #include <wtf/ThreadSafeRefCounted.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RTCDataChannelRemoteHandler;
 
@@ -42,4 +42,4 @@ public:
     virtual void close(RTCDataChannelIdentifier) = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

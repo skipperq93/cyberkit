@@ -30,7 +30,7 @@
 
 class GIFImageReader;
 
-namespace WebCore {
+namespace CyberCore {
 
 // This class decodes the GIF image format.
 class GIFImageDecoder final : public ScalableImageDecoder {
@@ -83,4 +83,4 @@ private:
     std::unique_ptr<GIFImageReader> m_reader;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

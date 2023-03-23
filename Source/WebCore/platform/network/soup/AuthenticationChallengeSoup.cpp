@@ -33,7 +33,7 @@
 #include "URLSoup.h"
 #include <libsoup/soup.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static ProtectionSpace::ServerType protectionSpaceServerTypeFromURL(const URL& url, bool isForProxy)
 {
@@ -146,6 +146,6 @@ bool AuthenticationChallenge::platformCompare(const AuthenticationChallenge& a, 
     return true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

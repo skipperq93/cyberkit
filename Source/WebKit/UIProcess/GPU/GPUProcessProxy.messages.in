@@ -25,7 +25,7 @@
 messages -> GPUProcessProxy {
 
 #if HAVE(VISIBILITY_PROPAGATION_VIEW)
-    DidCreateContextForVisibilityPropagation(WebKit::WebPageProxyIdentifier pageProxyID, WebCore::PageIdentifier pageID, WebKit::LayerHostingContextID contextID)
+    DidCreateContextForVisibilityPropagation(WebKit::WebPageProxyIdentifier pageProxyID, CyberCore::PageIdentifier pageID, WebKit::LayerHostingContextID contextID)
 #endif
 
 #if ENABLE(VP9)
@@ -37,7 +37,7 @@ messages -> GPUProcessProxy {
 #endif
 
     ProcessIsReadyToExit()
-    TerminateWebProcess(WebCore::ProcessIdentifier webProcessIdentifier)
+    TerminateWebProcess(CyberCore::ProcessIdentifier webProcessIdentifier)
 }
 
 #endif // ENABLE(GPU_PROCESS)

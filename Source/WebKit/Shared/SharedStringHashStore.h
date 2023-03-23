@@ -39,17 +39,17 @@ public:
         virtual ~Client() { }
 
         virtual void didInvalidateSharedMemory() = 0;
-        virtual void didUpdateSharedStringHashes(const Vector<WebCore::SharedStringHash>& addedHashes, const Vector<WebCore::SharedStringHash>& removedHashes) { };
+        virtual void didUpdateSharedStringHashes(const Vector<CyberCore::SharedStringHash>& addedHashes, const Vector<CyberCore::SharedStringHash>& removedHashes) { };
     };
 
     SharedStringHashStore(Client&);
 
     std::optional<SharedMemory::Handle> createSharedMemoryHandle();
 
-    void scheduleAddition(WebCore::SharedStringHash);
-    void scheduleRemoval(WebCore::SharedStringHash);
+    void scheduleAddition(CyberCore::SharedStringHash);
+    void scheduleRemoval(CyberCore::SharedStringHash);
 
-    bool contains(WebCore::SharedStringHash);
+    bool contains(CyberCore::SharedStringHash);
     void clear();
 
     bool isEmpty() const { return !m_keyCount; }
@@ -63,7 +63,7 @@ private:
     struct Operation {
         enum Type { Add, Remove };
         Type type;
-        WebCore::SharedStringHash sharedStringHash;
+        CyberCore::SharedStringHash sharedStringHash;
     };
 
     Client& m_client;

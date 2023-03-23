@@ -175,44 +175,44 @@ static void _notificationCallback(WKViewRef v, WKViewNotificationType type, void
     UNUSED_PARAM(rect);
 }
 
-// WebCoreFrameView methods
+// CyberCoreFrameView methods
 
-- (void)setHorizontalScrollingMode:(WebCore::ScrollbarMode)mode
+- (void)setHorizontalScrollingMode:(CyberCore::ScrollbarMode)mode
 {
     UNUSED_PARAM(mode);
 }
 
-- (void)setVerticalScrollingMode:(WebCore::ScrollbarMode)mode
+- (void)setVerticalScrollingMode:(CyberCore::ScrollbarMode)mode
 {
     UNUSED_PARAM(mode);
 }
 
-- (void)setScrollingMode:(WebCore::ScrollbarMode)mode
+- (void)setScrollingMode:(CyberCore::ScrollbarMode)mode
 {
     UNUSED_PARAM(mode);
 }
 
-- (WebCore::ScrollbarMode)horizontalScrollingMode
+- (CyberCore::ScrollbarMode)horizontalScrollingMode
 {
-    return WebCore::ScrollbarMode::Auto;
+    return CyberCore::ScrollbarMode::Auto;
 }
 
-- (WebCore::ScrollbarMode)verticalScrollingMode
+- (CyberCore::ScrollbarMode)verticalScrollingMode
 {
-    return WebCore::ScrollbarMode::Auto;
+    return CyberCore::ScrollbarMode::Auto;
 }
 
 #pragma mark -
-#pragma mark WebCoreFrameScrollView protocol
+#pragma mark CyberCoreFrameScrollView protocol
 
-- (void)setScrollingModes:(WebCore::ScrollbarMode)hMode vertical:(WebCore::ScrollbarMode)vMode andLock:(BOOL)lock
+- (void)setScrollingModes:(CyberCore::ScrollbarMode)hMode vertical:(CyberCore::ScrollbarMode)vMode andLock:(BOOL)lock
 {
     UNUSED_PARAM(hMode);
     UNUSED_PARAM(vMode);
     UNUSED_PARAM(lock);
 }
 
-- (void)scrollingModes:(WebCore::ScrollbarMode*)hMode vertical:(WebCore::ScrollbarMode*)vMode
+- (void)scrollingModes:(CyberCore::ScrollbarMode*)hMode vertical:(CyberCore::ScrollbarMode*)vMode
 {
     UNUSED_PARAM(hMode);
     UNUSED_PARAM(vMode);
@@ -352,7 +352,7 @@ static BOOL scrollViewToPoint(WAKScrollView *scrollView, CGPoint point)
 
 - (CGRect)unobscuredContentRect
 {
-    // Only called by WebCore::ScrollView::unobscuredContentRect
+    // Only called by CyberCore::ScrollView::unobscuredContentRect
     WAKView* view = self;
     while ((view = [view superview])) {
         if ([view isKindOfClass:[WAKScrollView class]])
@@ -370,7 +370,7 @@ static BOOL scrollViewToPoint(WAKScrollView *scrollView, CGPoint point)
 
 - (CGRect)exposedContentRect
 {
-    // Only called by WebCore::ScrollView::exposedContentRect
+    // Only called by CyberCore::ScrollView::exposedContentRect
     WAKView* view = self;
     while ((view = [view superview])) {
         if ([view isKindOfClass:[WAKScrollView class]])

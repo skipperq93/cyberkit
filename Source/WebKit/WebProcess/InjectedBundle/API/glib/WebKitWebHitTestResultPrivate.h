@@ -17,12 +17,12 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitWebHitTestResultPrivate_h
-#define WebKitWebHitTestResultPrivate_h
+#ifndef CyberKitWebHitTestResultPrivate_h
+#define CyberKitWebHitTestResultPrivate_h
 
-#include "WebKitWebHitTestResult.h"
+#include "CyberKitWebHitTestResult.h"
 #include <CyberCore/HitTestResult.h>
 
-WebKitWebHitTestResult* webkitWebHitTestResultCreate(const WebCore::HitTestResult&);
+CyberKitWebHitTestResult* webkitWebHitTestResultCreate(const CyberCore::HitTestResult&);
 
-#endif // WebKitWebHitTestResultPrivate_h
+#endif // CyberKitWebHitTestResultPrivate_h

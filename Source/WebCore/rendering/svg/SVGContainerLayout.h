@@ -26,7 +26,7 @@
 #include <wtf/Noncopyable.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGContainerLayout {
     WTF_MAKE_NONCOPYABLE(SVGContainerLayout);
@@ -53,6 +53,6 @@ private:
     Vector<std::reference_wrapper<RenderLayerModelObject>> m_positionedChildren;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(LAYER_BASED_SVG_ENGINE)

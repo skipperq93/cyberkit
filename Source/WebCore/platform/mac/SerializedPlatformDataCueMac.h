@@ -29,7 +29,7 @@
 
 #include "SerializedPlatformDataCue.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SerializedPlatformDataCueMac final : public SerializedPlatformDataCue {
 public:
@@ -56,6 +56,6 @@ private:
 SerializedPlatformDataCueMac* toSerializedPlatformDataCueMac(SerializedPlatformDataCue*);
 const SerializedPlatformDataCueMac* toSerializedPlatformDataCueMac(const SerializedPlatformDataCue*);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

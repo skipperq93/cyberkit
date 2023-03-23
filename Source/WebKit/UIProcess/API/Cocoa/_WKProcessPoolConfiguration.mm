@@ -27,7 +27,7 @@
 #import "_WKProcessPoolConfigurationInternal.h"
 
 #import "LegacyGlobalSettings.h"
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 #import <objc/runtime.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/cocoa/VectorCocoa.h>
@@ -46,7 +46,7 @@
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainRunLoop(_WKProcessPoolConfiguration.class, self))
+    if (CyberCoreObjCScheduleDeallocateOnMainRunLoop(_WKProcessPoolConfiguration.class, self))
         return;
 
     _processPoolConfiguration->~ProcessPoolConfiguration();

@@ -32,7 +32,7 @@
 #include "StorageArea.h"
 #include "StorageNamespace.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // Suggested by the HTML5 spec.
 unsigned localStorageDatabaseQuotaInBytes = 5 * 1024 * 1024;

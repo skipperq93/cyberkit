@@ -38,7 +38,7 @@
 #include <wtf/WeakPtr.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SWServer;
 class SWServerRegistration;
@@ -83,6 +83,6 @@ private:
     bool m_needsPushingChanges { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

@@ -37,7 +37,7 @@
 #include <wtf/MediaTime.h>
 #include <wtf/ThreadAssertions.h>
 
-namespace WebCore {
+namespace CyberCore {
 class ImageTransferSessionVT;
 class LocalSampleBufferDisplayLayer;
 enum class VideoFrameRotation : uint16_t;
@@ -46,18 +46,18 @@ enum class VideoFrameRotation : uint16_t;
 namespace WebKit {
 class GPUConnectionToWebProcess;
 
-class RemoteSampleBufferDisplayLayer : public WebCore::SampleBufferDisplayLayer::Client, public IPC::MessageReceiver, private IPC::MessageSender {
+class RemoteSampleBufferDisplayLayer : public CyberCore::SampleBufferDisplayLayer::Client, public IPC::MessageReceiver, private IPC::MessageSender {
     WTF_MAKE_FAST_ALLOCATED;
 public:
     static std::unique_ptr<RemoteSampleBufferDisplayLayer> create(GPUConnectionToWebProcess&, SampleBufferDisplayLayerIdentifier, Ref<IPC::Connection>&&);
     ~RemoteSampleBufferDisplayLayer();
 
-    using WebCore::SampleBufferDisplayLayer::Client::weakPtrFactory;
-    using WebCore::SampleBufferDisplayLayer::Client::WeakValueType;
-    using WebCore::SampleBufferDisplayLayer::Client::WeakPtrImplType;
+    using CyberCore::SampleBufferDisplayLayer::Client::weakPtrFactory;
+    using CyberCore::SampleBufferDisplayLayer::Client::WeakValueType;
+    using CyberCore::SampleBufferDisplayLayer::Client::WeakPtrImplType;
 
     using LayerInitializationCallback = CompletionHandler<void(std::optional<LayerHostingContextID>)>;
-    void initialize(bool hideRootLayer, WebCore::IntSize, LayerInitializationCallback&&);
+    void initialize(bool hideRootLayer, CyberCore::IntSize, LayerInitializationCallback&&);
 
     // IPC::MessageReceiver
     void didReceiveMessage(IPC::Connection&, IPC::Decoder&) final;
@@ -72,7 +72,7 @@ private:
 #endif
     void updateDisplayMode(bool hideDisplayLayer, bool hideRootLayer);
     void updateAffineTransform(CGAffineTransform);
-    void updateBoundsAndPosition(CGRect, WebCore::VideoFrameRotation);
+    void updateBoundsAndPosition(CGRect, CyberCore::VideoFrameRotation);
     void flush();
     void flushAndRemoveImage();
     void play();
@@ -86,14 +86,14 @@ private:
     IPC::Connection* messageSenderConnection() const final;
     uint64_t messageSenderDestinationID() const final { return m_identifier.toUInt64(); }
 
-    // WebCore::SampleBufferDisplayLayer::Client
+    // CyberCore::SampleBufferDisplayLayer::Client
     void sampleBufferDisplayLayerStatusDidFail() final;
 
     GPUConnectionToWebProcess& m_gpuConnection WTF_GUARDED_BY_CAPABILITY(m_consumeThread);
     SampleBufferDisplayLayerIdentifier m_identifier;
     Ref<IPC::Connection> m_connection;
-    std::unique_ptr<WebCore::ImageTransferSessionVT> m_imageTransferSession;
-    std::unique_ptr<WebCore::LocalSampleBufferDisplayLayer> m_sampleBufferDisplayLayer;
+    std::unique_ptr<CyberCore::ImageTransferSessionVT> m_imageTransferSession;
+    std::unique_ptr<CyberCore::LocalSampleBufferDisplayLayer> m_sampleBufferDisplayLayer;
     std::unique_ptr<LayerHostingContext> m_layerHostingContext;
     SharedVideoFrameReader m_sharedVideoFrameReader;
     ThreadLikeAssertion m_consumeThread NO_UNIQUE_ADDRESS;

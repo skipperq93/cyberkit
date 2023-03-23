@@ -33,7 +33,7 @@
 #include <CyberCore/PlatformCALayer.h>
 #include <wtf/Vector.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class GraphicsLayerCARemote;
 class PlatformCALayerRemote;
@@ -41,34 +41,34 @@ class RemoteRenderingBackendProxy;
 class WebPage;
 
 // FIXME: This class doesn't do much now. Roll into RemoteLayerTreeDrawingArea?
-class RemoteLayerTreeContext : public WebCore::GraphicsLayerFactory {
+class RemoteLayerTreeContext : public CyberCore::GraphicsLayerFactory {
 public:
     explicit RemoteLayerTreeContext(WebPage&);
     ~RemoteLayerTreeContext();
 
-    void layerDidEnterContext(PlatformCALayerRemote&, WebCore::PlatformCALayer::LayerType);
+    void layerDidEnterContext(PlatformCALayerRemote&, CyberCore::PlatformCALayer::LayerType);
     void layerWillLeaveContext(PlatformCALayerRemote&);
 
     void graphicsLayerDidEnterContext(GraphicsLayerCARemote&);
     void graphicsLayerWillLeaveContext(GraphicsLayerCARemote&);
 
-    WebCore::LayerPool& layerPool() { return m_layerPool; }
+    CyberCore::LayerPool& layerPool() { return m_layerPool; }
 
     float deviceScaleFactor() const;
 
     LayerHostingMode layerHostingMode() const;
     
-    std::optional<WebCore::DestinationColorSpace> displayColorSpace() const;
+    std::optional<CyberCore::DestinationColorSpace> displayColorSpace() const;
 
     DrawingAreaIdentifier drawingAreaIdentifier() const;
 
-    void buildTransaction(RemoteLayerTreeTransaction&, WebCore::PlatformCALayer& rootLayer);
+    void buildTransaction(RemoteLayerTreeTransaction&, CyberCore::PlatformCALayer& rootLayer);
 
     void layerPropertyChangedWhileBuildingTransaction(PlatformCALayerRemote&);
 
     // From the UI process
-    void animationDidStart(WebCore::GraphicsLayer::PlatformLayerID, const String& key, MonotonicTime startTime);
-    void animationDidEnd(WebCore::GraphicsLayer::PlatformLayerID, const String& key);
+    void animationDidStart(CyberCore::GraphicsLayer::PlatformLayerID, const String& key, MonotonicTime startTime);
+    void animationDidEnd(CyberCore::GraphicsLayer::PlatformLayerID, const String& key);
 
     void willStartAnimationOnLayer(PlatformCALayerRemote&);
 
@@ -92,22 +92,22 @@ public:
 #endif
 
 private:
-    // WebCore::GraphicsLayerFactory
-    Ref<WebCore::GraphicsLayer> createGraphicsLayer(WebCore::GraphicsLayer::Type, WebCore::GraphicsLayerClient&) override;
+    // CyberCore::GraphicsLayerFactory
+    Ref<CyberCore::GraphicsLayer> createGraphicsLayer(CyberCore::GraphicsLayer::Type, CyberCore::GraphicsLayerClient&) override;
 
     WebPage& m_webPage;
 
-    HashMap<WebCore::GraphicsLayer::PlatformLayerID, RemoteLayerTreeTransaction::LayerCreationProperties> m_createdLayers;
-    Vector<WebCore::GraphicsLayer::PlatformLayerID> m_destroyedLayers;
+    HashMap<CyberCore::GraphicsLayer::PlatformLayerID, RemoteLayerTreeTransaction::LayerCreationProperties> m_createdLayers;
+    Vector<CyberCore::GraphicsLayer::PlatformLayerID> m_destroyedLayers;
 
-    HashMap<WebCore::GraphicsLayer::PlatformLayerID, PlatformCALayerRemote*> m_livePlatformLayers;
-    HashMap<WebCore::GraphicsLayer::PlatformLayerID, PlatformCALayerRemote*> m_layersWithAnimations;
+    HashMap<CyberCore::GraphicsLayer::PlatformLayerID, PlatformCALayerRemote*> m_livePlatformLayers;
+    HashMap<CyberCore::GraphicsLayer::PlatformLayerID, PlatformCALayerRemote*> m_layersWithAnimations;
 
     HashSet<GraphicsLayerCARemote*> m_liveGraphicsLayers;
 
     std::unique_ptr<RemoteLayerBackingStoreCollection> m_backingStoreCollection;
 
-    WebCore::LayerPool m_layerPool;
+    CyberCore::LayerPool m_layerPool;
 
     RemoteLayerTreeTransaction* m_currentTransaction { nullptr };
 
@@ -116,4 +116,4 @@ private:
     bool m_useCGDisplayListImageCache { false };
 };
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -37,7 +37,7 @@
 
 typedef struct __DDHighlight *DDHighlightRef;
 
-namespace WebCore {
+namespace CyberCore {
 
 class DataDetectorHighlight;
 class FloatRect;
@@ -109,6 +109,6 @@ private:
 
 bool areEquivalent(const DataDetectorHighlight*, const DataDetectorHighlight*);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(DATA_DETECTION) && PLATFORM(MAC)

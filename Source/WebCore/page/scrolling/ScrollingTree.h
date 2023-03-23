@@ -43,7 +43,7 @@
 #include <wtf/ThreadSafeRefCounted.h>
 #include <wtf/TypeCasts.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class IntPoint;
 class ScrollingStateTree;
@@ -126,7 +126,7 @@ public:
     virtual bool scrollingTreeNodeRequestsScroll(ScrollingNodeID, const RequestedScrollData&) { return false; }
 
     // Delegated scrolling/zooming has caused the viewport to change, so update viewport-constrained layers
-    WEBCORE_EXPORT void mainFrameViewportChangedViaDelegatedScrolling(const FloatPoint& scrollPosition, const WebCore::FloatRect& layoutViewport, double scale);
+    WEBCORE_EXPORT void mainFrameViewportChangedViaDelegatedScrolling(const FloatPoint& scrollPosition, const CyberCore::FloatRect& layoutViewport, double scale);
 
     void setNeedsApplyLayerPositionsAfterCommit() { m_needsApplyLayerPositionsAfterCommit = true; }
 
@@ -341,10 +341,10 @@ private:
     WheelEventTestMonitor::DeferReason m_deferReason;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #define SPECIALIZE_TYPE_TRAITS_SCROLLING_TREE(ToValueTypeName, predicate) \
 SPECIALIZE_TYPE_TRAITS_BEGIN(ToValueTypeName) \
-    static bool isType(const WebCore::ScrollingTree& tree) { return tree.predicate; } \
+    static bool isType(const CyberCore::ScrollingTree& tree) { return tree.predicate; } \
 SPECIALIZE_TYPE_TRAITS_END()
 #endif // ENABLE(ASYNC_SCROLLING)

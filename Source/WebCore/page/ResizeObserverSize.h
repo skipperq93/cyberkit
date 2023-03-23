@@ -30,7 +30,7 @@
 
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ResizeObserverSize : public RefCounted<ResizeObserverSize> {
 public:
@@ -55,4 +55,4 @@ private:
     double m_blockSize { 0 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -32,27 +32,27 @@
 constexpr float kMotionUpdateInterval = 1.0f / 60.0f;
 @class CMMotionManager;
 
-namespace WebCore {
+namespace CyberCore {
 class DeviceMotionClientIOS;
 class MotionManagerClient;
 }
 
-WEBCORE_EXPORT @interface WebCoreMotionManager : NSObject {
+WEBCORE_EXPORT @interface CyberCoreMotionManager : NSObject {
     RetainPtr<CMMotionManager> m_motionManager;
     RetainPtr<CLLocationManager> m_locationManager;
-    WeakHashSet<WebCore::MotionManagerClient> m_deviceMotionClients;
-    WeakHashSet<WebCore::MotionManagerClient> m_deviceOrientationClients;
+    WeakHashSet<CyberCore::MotionManagerClient> m_deviceMotionClients;
+    WeakHashSet<CyberCore::MotionManagerClient> m_deviceOrientationClients;
     RetainPtr<NSTimer> m_updateTimer;
     BOOL m_gyroAvailable;
     BOOL m_headingAvailable;
     BOOL m_initialized;
 }
 
-+ (WebCoreMotionManager *)sharedManager;
-- (void)addMotionClient:(WebCore::MotionManagerClient *)client;
-- (void)removeMotionClient:(WebCore::MotionManagerClient *)client;
-- (void)addOrientationClient:(WebCore::MotionManagerClient *)client;
-- (void)removeOrientationClient:(WebCore::MotionManagerClient *)client;
++ (CyberCoreMotionManager *)sharedManager;
+- (void)addMotionClient:(CyberCore::MotionManagerClient *)client;
+- (void)removeMotionClient:(CyberCore::MotionManagerClient *)client;
+- (void)addOrientationClient:(CyberCore::MotionManagerClient *)client;
+- (void)removeOrientationClient:(CyberCore::MotionManagerClient *)client;
 - (BOOL)gyroAvailable;
 - (BOOL)headingAvailable;
 @end

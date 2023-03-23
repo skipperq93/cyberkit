@@ -31,13 +31,13 @@
 #include "WebProcessSupplement.h"
 #include <wtf/CompletionHandler.h>
 
-namespace WebCore {
+namespace CyberCore {
 class CaptureDevice;
 struct MediaDeviceHashSalts;
 struct MediaStreamRequest;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebProcess;
 
@@ -55,16 +55,16 @@ private:
     void didReceiveMessage(IPC::Connection&, IPC::Decoder&) final;
 
     // Messages::UserMediaCaptureManager
-    using ValidateUserMediaRequestConstraintsCallback = CompletionHandler<void(std::optional<String> invalidConstraint, Vector<WebCore::CaptureDevice>& audioDevices, Vector<WebCore::CaptureDevice>& videoDevices)>;
-    void validateUserMediaRequestConstraints(WebCore::MediaStreamRequest, WebCore::MediaDeviceHashSalts&&, ValidateUserMediaRequestConstraintsCallback&&);
+    using ValidateUserMediaRequestConstraintsCallback = CompletionHandler<void(std::optional<String> invalidConstraint, Vector<CyberCore::CaptureDevice>& audioDevices, Vector<CyberCore::CaptureDevice>& videoDevices)>;
+    void validateUserMediaRequestConstraints(CyberCore::MediaStreamRequest, CyberCore::MediaDeviceHashSalts&&, ValidateUserMediaRequestConstraintsCallback&&);
     ValidateUserMediaRequestConstraintsCallback m_validateUserMediaRequestConstraintsCallback;
 
-    using GetMediaStreamDevicesCallback = CompletionHandler<void(Vector<WebCore::CaptureDevice>&&)>;
+    using GetMediaStreamDevicesCallback = CompletionHandler<void(Vector<CyberCore::CaptureDevice>&&)>;
     void getMediaStreamDevices(GetMediaStreamDevicesCallback&&);
 
     WebProcess& m_process;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

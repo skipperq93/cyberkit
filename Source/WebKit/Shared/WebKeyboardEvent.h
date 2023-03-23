@@ -42,13 +42,13 @@ public:
     ~WebKeyboardEvent();
 
 #if USE(APPKIT)
-    WebKeyboardEvent(WebEvent&&, const String& text, const String& unmodifiedText, const String& key, const String& code, const String& keyIdentifier, int windowsVirtualKeyCode, int nativeVirtualKeyCode, int macCharCode, bool handledByInputMethod, const Vector<WebCore::KeypressCommand>&, bool isAutoRepeat, bool isKeypad, bool isSystemKey);
+    WebKeyboardEvent(WebEvent&&, const String& text, const String& unmodifiedText, const String& key, const String& code, const String& keyIdentifier, int windowsVirtualKeyCode, int nativeVirtualKeyCode, int macCharCode, bool handledByInputMethod, const Vector<CyberCore::KeypressCommand>&, bool isAutoRepeat, bool isKeypad, bool isSystemKey);
 #elif PLATFORM(GTK)
-    WebKeyboardEvent(WebEvent&&, const String& text, const String& key, const String& code, const String& keyIdentifier, int windowsVirtualKeyCode, int nativeVirtualKeyCode, bool handledByInputMethod, std::optional<Vector<WebCore::CompositionUnderline>>&&, std::optional<EditingRange>&&, Vector<String>&& commands, bool isKeypad);
+    WebKeyboardEvent(WebEvent&&, const String& text, const String& key, const String& code, const String& keyIdentifier, int windowsVirtualKeyCode, int nativeVirtualKeyCode, bool handledByInputMethod, std::optional<Vector<CyberCore::CompositionUnderline>>&&, std::optional<EditingRange>&&, Vector<String>&& commands, bool isKeypad);
 #elif PLATFORM(IOS_FAMILY)
     WebKeyboardEvent(WebEvent&&, const String& text, const String& unmodifiedText, const String& key, const String& code, const String& keyIdentifier, int windowsVirtualKeyCode, int nativeVirtualKeyCode, int macCharCode, bool handledByInputMethod, bool isAutoRepeat, bool isKeypad, bool isSystemKey);
 #elif USE(LIBWPE)
-    WebKeyboardEvent(WebEvent&&, const String& text, const String& key, const String& code, const String& keyIdentifier, int windowsVirtualKeyCode, int nativeVirtualKeyCode, bool handledByInputMethod, std::optional<Vector<WebCore::CompositionUnderline>>&&, std::optional<EditingRange>&&, bool isKeypad);
+    WebKeyboardEvent(WebEvent&&, const String& text, const String& key, const String& code, const String& keyIdentifier, int windowsVirtualKeyCode, int nativeVirtualKeyCode, bool handledByInputMethod, std::optional<Vector<CyberCore::CompositionUnderline>>&&, std::optional<EditingRange>&&, bool isKeypad);
 #else
     WebKeyboardEvent(WebEvent&&, const String& text, const String& unmodifiedText, const String& key, const String& code, const String& keyIdentifier, int windowsVirtualKeyCode, int nativeVirtualKeyCode, int macCharCode, bool isAutoRepeat, bool isKeypad, bool isSystemKey);
 #endif
@@ -65,11 +65,11 @@ public:
     bool handledByInputMethod() const { return m_handledByInputMethod; }
 #endif
 #if PLATFORM(GTK) || USE(LIBWPE)
-    const std::optional<Vector<WebCore::CompositionUnderline>>& preeditUnderlines() const { return m_preeditUnderlines; }
+    const std::optional<Vector<CyberCore::CompositionUnderline>>& preeditUnderlines() const { return m_preeditUnderlines; }
     const std::optional<EditingRange>& preeditSelectionRange() const { return m_preeditSelectionRange; }
 #endif
 #if USE(APPKIT)
-    const Vector<WebCore::KeypressCommand>& commands() const { return m_commands; }
+    const Vector<CyberCore::KeypressCommand>& commands() const { return m_commands; }
 #elif PLATFORM(GTK)
     const Vector<String>& commands() const { return m_commands; }
 #endif
@@ -92,11 +92,11 @@ private:
     bool m_handledByInputMethod { false };
 #endif
 #if PLATFORM(GTK) || USE(LIBWPE)
-    std::optional<Vector<WebCore::CompositionUnderline>> m_preeditUnderlines;
+    std::optional<Vector<CyberCore::CompositionUnderline>> m_preeditUnderlines;
     std::optional<EditingRange> m_preeditSelectionRange;
 #endif
 #if USE(APPKIT)
-    Vector<WebCore::KeypressCommand> m_commands;
+    Vector<CyberCore::KeypressCommand> m_commands;
 #elif PLATFORM(GTK)
     Vector<String> m_commands;
 #endif

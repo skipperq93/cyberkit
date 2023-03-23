@@ -37,7 +37,7 @@
 #include "FilterImage.h"
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // spot-light edge darkening depends on an absolute treshold
 // according to the SVG 1.1 SE light regression tests
@@ -210,4 +210,4 @@ TextStream& SpotLightSource::externalRepresentation(TextStream& ts) const
     return ts;
 }
 
-}; // namespace WebCore
+}; // namespace CyberCore

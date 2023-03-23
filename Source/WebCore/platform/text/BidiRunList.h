@@ -25,7 +25,7 @@
 
 #include <wtf/Noncopyable.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 template <class Run>
 class BidiRunList {
@@ -228,6 +228,6 @@ void BidiRunList<Run>::reverseRuns(unsigned start, unsigned end)
         m_firstRun = WTFMove(previous);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // BidiRunList

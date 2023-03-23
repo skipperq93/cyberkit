@@ -37,7 +37,7 @@
 #include "RenderStyle.h"
 #include "Settings.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace Style {
 
@@ -202,4 +202,4 @@ float adjustedFontSize(float size, float sizeAdjust, const FontMetrics& metrics)
 }
 
 } // namespace Style
-} // namespace WebCore
+} // namespace CyberCore

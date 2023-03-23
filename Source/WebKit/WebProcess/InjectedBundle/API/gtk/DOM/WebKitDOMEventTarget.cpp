@@ -29,26 +29,26 @@
  */
 
 #include "config.h"
-#include "WebKitDOMEventTarget.h"
+#include "CyberKitDOMEventTarget.h"
 
 #include "DOMObjectCache.h"
 #include <CyberCore/EventTarget.h>
-#include "WebKitDOMEvent.h"
-#include "WebKitDOMEventTargetPrivate.h"
-#include "WebKitDOMPrivate.h"
+#include "CyberKitDOMEvent.h"
+#include "CyberKitDOMEventTargetPrivate.h"
+#include "CyberKitDOMPrivate.h"
 #include <wtf/glib/GRefPtr.h>
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
-typedef WebKitDOMEventTargetIface WebKitDOMEventTargetInterface;
+typedef CyberKitDOMEventTargetIface CyberKitDOMEventTargetInterface;
 
-G_DEFINE_INTERFACE(WebKitDOMEventTarget, webkit_dom_event_target, G_TYPE_OBJECT)
+G_DEFINE_INTERFACE(CyberKitDOMEventTarget, webkit_dom_event_target, G_TYPE_OBJECT)
 
-static void webkit_dom_event_target_default_init(WebKitDOMEventTargetIface*)
+static void webkit_dom_event_target_default_init(CyberKitDOMEventTargetIface*)
 {
 }
 
-gboolean webkit_dom_event_target_dispatch_event(WebKitDOMEventTarget* target, WebKitDOMEvent* event, GError** error)
+gboolean webkit_dom_event_target_dispatch_event(CyberKitDOMEventTarget* target, CyberKitDOMEvent* event, GError** error)
 {
     g_return_val_if_fail(WEBKIT_DOM_IS_EVENT_TARGET(target), FALSE);
     g_return_val_if_fail(WEBKIT_DOM_IS_EVENT(event), FALSE);
@@ -57,7 +57,7 @@ gboolean webkit_dom_event_target_dispatch_event(WebKitDOMEventTarget* target, We
     return WEBKIT_DOM_EVENT_TARGET_GET_IFACE(target)->dispatch_event(target, event, error);
 }
 
-gboolean webkit_dom_event_target_add_event_listener(WebKitDOMEventTarget* target, const char* eventName, GCallback handler, gboolean useCapture, gpointer userData)
+gboolean webkit_dom_event_target_add_event_listener(CyberKitDOMEventTarget* target, const char* eventName, GCallback handler, gboolean useCapture, gpointer userData)
 {
 
     g_return_val_if_fail(WEBKIT_DOM_IS_EVENT_TARGET(target), FALSE);
@@ -67,7 +67,7 @@ gboolean webkit_dom_event_target_add_event_listener(WebKitDOMEventTarget* target
     return WEBKIT_DOM_EVENT_TARGET_GET_IFACE(target)->add_event_listener(target, eventName, closure.get(), useCapture);
 }
 
-gboolean webkit_dom_event_target_remove_event_listener(WebKitDOMEventTarget* target, const char* eventName, GCallback handler, gboolean useCapture)
+gboolean webkit_dom_event_target_remove_event_listener(CyberKitDOMEventTarget* target, const char* eventName, GCallback handler, gboolean useCapture)
 {
     g_return_val_if_fail(WEBKIT_DOM_IS_EVENT_TARGET(target), FALSE);
     g_return_val_if_fail(eventName, FALSE);
@@ -76,7 +76,7 @@ gboolean webkit_dom_event_target_remove_event_listener(WebKitDOMEventTarget* tar
     return WEBKIT_DOM_EVENT_TARGET_GET_IFACE(target)->remove_event_listener(target, eventName, closure.get(), useCapture);
 }
 
-gboolean webkit_dom_event_target_add_event_listener_with_closure(WebKitDOMEventTarget* target, const char* eventName, GClosure* handler, gboolean useCapture)
+gboolean webkit_dom_event_target_add_event_listener_with_closure(CyberKitDOMEventTarget* target, const char* eventName, GClosure* handler, gboolean useCapture)
 {
     g_return_val_if_fail(WEBKIT_DOM_IS_EVENT_TARGET(target), FALSE);
     g_return_val_if_fail(eventName, FALSE);
@@ -85,7 +85,7 @@ gboolean webkit_dom_event_target_add_event_listener_with_closure(WebKitDOMEventT
     return WEBKIT_DOM_EVENT_TARGET_GET_IFACE(target)->add_event_listener(target, eventName, handler, useCapture);
 }
 
-gboolean webkit_dom_event_target_remove_event_listener_with_closure(WebKitDOMEventTarget* target, const char* eventName, GClosure* handler, gboolean useCapture)
+gboolean webkit_dom_event_target_remove_event_listener_with_closure(CyberKitDOMEventTarget* target, const char* eventName, GClosure* handler, gboolean useCapture)
 {
     g_return_val_if_fail(WEBKIT_DOM_IS_EVENT_TARGET(target), FALSE);
     g_return_val_if_fail(eventName, FALSE);
@@ -94,9 +94,9 @@ gboolean webkit_dom_event_target_remove_event_listener_with_closure(WebKitDOMEve
     return WEBKIT_DOM_EVENT_TARGET_GET_IFACE(target)->remove_event_listener(target, eventName, handler, useCapture);
 }
 
-namespace WebKit {
+namespace CyberKit {
 
-WebKitDOMEventTarget* kit(WebCore::EventTarget* obj)
+CyberKitDOMEventTarget* kit(CyberCore::EventTarget* obj)
 {
     if (!obj)
         return 0;
@@ -107,11 +107,11 @@ WebKitDOMEventTarget* kit(WebCore::EventTarget* obj)
     return wrap(obj);
 }
 
-WebCore::EventTarget* core(WebKitDOMEventTarget* request)
+CyberCore::EventTarget* core(CyberKitDOMEventTarget* request)
 {
-    return request ? static_cast<WebCore::EventTarget*>(WEBKIT_DOM_OBJECT(request)->coreObject) : 0;
+    return request ? static_cast<CyberCore::EventTarget*>(WEBKIT_DOM_OBJECT(request)->coreObject) : 0;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 G_GNUC_END_IGNORE_DEPRECATIONS;

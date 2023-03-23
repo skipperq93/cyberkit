@@ -42,7 +42,7 @@
 #endif
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 bool NetworkStorageSession::m_processMayUseCookieAPI = false;
 
@@ -434,7 +434,7 @@ const HashMap<RegistrableDomain, HashSet<RegistrableDomain>>& NetworkStorageSess
 
 bool NetworkStorageSession::loginDomainMatchesRequestingDomain(const TopFrameDomain& topFrameDomain, const SubResourceDomain& resourceDomain)
 {
-    auto loginDomains = WebCore::NetworkStorageSession::subResourceDomainsInNeedOfStorageAccessForFirstParty(topFrameDomain);
+    auto loginDomains = CyberCore::NetworkStorageSession::subResourceDomainsInNeedOfStorageAccessForFirstParty(topFrameDomain);
     return loginDomains && loginDomains.value().contains(resourceDomain);
 }
 

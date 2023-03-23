@@ -29,7 +29,7 @@
 
 #include "CaptionUserPreferences.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CaptionPreferencesDelegate {
 public:
@@ -39,6 +39,6 @@ public:
     virtual void setPreferredLanguage(const String&) { }
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

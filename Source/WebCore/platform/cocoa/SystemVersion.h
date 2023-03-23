@@ -24,7 +24,7 @@
 
 @class NSString;
 
-namespace WebCore {
+namespace CyberCore {
 
 WEBCORE_EXPORT NSString *systemMarketingVersion();
 

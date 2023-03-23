@@ -40,7 +40,7 @@
 #import <wtf/ProcessPrivilege.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 WebPopupMenuProxyMac::WebPopupMenuProxyMac(NSView *webView, WebPopupMenuProxy::Client& client)
     : WebPopupMenuProxy(client)
@@ -87,14 +87,14 @@ void WebPopupMenuProxyMac::populate(const Vector<WebPopupItem>& items, NSFont *f
                 RetainPtr<NSArray> writingDirectionArray = adoptNS([[NSArray alloc] initWithObjects:writingDirectionValue.get(), nil]);
                 [attributes setObject:writingDirectionArray.get() forKey:NSWritingDirectionAttributeName];
             }
-            RetainPtr<NSAttributedString> string = adoptNS([[NSAttributedString alloc] initWithString:nsStringFromWebCoreString(items[i].m_text) attributes:attributes.get()]);
+            RetainPtr<NSAttributedString> string = adoptNS([[NSAttributedString alloc] initWithString:nsStringFromCyberCoreString(items[i].m_text) attributes:attributes.get()]);
 
             [menuItem setAttributedTitle:string.get()];
             // We set the title as well as the attributed title here. The attributed title will be displayed in the menu,
             // but typeahead will use the non-attributed string that doesn't contain any leading or trailing whitespace.
             [menuItem setTitle:[[string string] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]];
             [menuItem setEnabled:items[i].m_isEnabled];
-            [menuItem setToolTip:nsStringFromWebCoreString(items[i].m_toolTip)];
+            [menuItem setToolTip:nsStringFromCyberCoreString(items[i].m_toolTip)];
         }
     }
 }
@@ -158,13 +158,13 @@ void WebPopupMenuProxyMac::showPopupMenu(const IntRect& rect, TextDirection text
 
     NSControlSize controlSize;
     switch (data.menuSize) {
-    case WebCore::PopupMenuStyle::PopupMenuSizeNormal:
+    case CyberCore::PopupMenuStyle::PopupMenuSizeNormal:
         controlSize = NSControlSizeRegular;
         break;
-    case WebCore::PopupMenuStyle::PopupMenuSizeSmall:
+    case CyberCore::PopupMenuStyle::PopupMenuSizeSmall:
         controlSize = NSControlSizeSmall;
         break;
-    case WebCore::PopupMenuStyle::PopupMenuSizeMini:
+    case CyberCore::PopupMenuStyle::PopupMenuSizeMini:
         controlSize = NSControlSizeMini;
         break;
     case PopupMenuStyle::PopupMenuSizeLarge:

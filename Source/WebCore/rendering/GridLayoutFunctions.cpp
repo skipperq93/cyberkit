@@ -29,7 +29,7 @@
 #include "LengthFunctions.h"
 #include "RenderGrid.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace GridLayoutFunctions {
 
@@ -193,4 +193,4 @@ bool isSubgridReversedDirection(const RenderGrid& grid, GridTrackSizingDirection
 
 } // namespace GridLayoutFunctions
 
-} // namespace WebCore
+} // namespace CyberCore

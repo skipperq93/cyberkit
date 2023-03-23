@@ -22,7 +22,7 @@
 #include "ParseFromStringOptions.h"
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class WeakPtrImplWithEventTargetData;

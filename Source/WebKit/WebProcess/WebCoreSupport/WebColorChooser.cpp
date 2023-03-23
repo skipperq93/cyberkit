@@ -28,14 +28,14 @@
 
 #if ENABLE(INPUT_TYPE_COLOR)
 
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebPage.h"
 #include "WebPageProxyMessages.h"
 #include "WebProcess.h"
 #include <CyberCore/ColorChooserClient.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 WebColorChooser::WebColorChooser(WebPage* page, ColorChooserClient* client, const Color& initialColor)
     : m_colorChooserClient(client)
@@ -96,6 +96,6 @@ void WebColorChooser::endChooser()
     WebProcess::singleton().parentProcessConnection()->send(Messages::WebPageProxy::EndColorPicker(), m_page->identifier());
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(INPUT_TYPE_COLOR)

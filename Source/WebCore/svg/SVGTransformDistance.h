@@ -21,7 +21,7 @@
 
 #include "SVGTransformValue.h"
 
-namespace WebCore {
+namespace CyberCore {
     
 class AffineTransform;
     
@@ -48,4 +48,4 @@ private:
     AffineTransform m_transform; // for storing scale, translation or matrix transforms
 };
 
-} // namespace WebCore
+} // namespace CyberCore

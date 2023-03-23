@@ -1884,7 +1884,7 @@ msgstr "వెబ్ యిన్‌స్పెక్టర్"
 #~ msgid "Enable Timeline profiling"
 #~ msgstr "టైమ్‌లైన్ ప్రొఫైలింగ్ చేతనంచేయి"
 
-#~ msgid "Profile the WebCore instrumentation."
+#~ msgid "Profile the CyberCore instrumentation."
 #~ msgstr "వెబ్‌కోర్ యిన్‌స్ట్రుమెంటేషన్ ప్రొఫైల్."
 
 #~ msgid "Reason"

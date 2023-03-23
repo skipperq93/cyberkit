@@ -26,7 +26,7 @@
 #include "config.h"
 #include "MockContentFilterManager.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 MockContentFilterManager& MockContentFilterManager::singleton()
 {
@@ -39,7 +39,7 @@ void MockContentFilterManager::setClient(RefPtr<MockContentFilterSettingsClient>
     m_client = client;
 }
     
-void MockContentFilterManager::notifySettingsChanged(WebCore::MockContentFilterSettings& settings) const
+void MockContentFilterManager::notifySettingsChanged(CyberCore::MockContentFilterSettings& settings) const
 {
     if (m_client)
         m_client->mockContentFilterSettingsChanged(settings);

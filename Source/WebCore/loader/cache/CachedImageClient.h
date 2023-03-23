@@ -25,7 +25,7 @@
 #include "CachedResourceClient.h"
 #include "ImageTypes.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CachedImage;
 class Document;
@@ -56,6 +56,6 @@ public:
     virtual bool allowsAnimation() const { return true; }
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CACHED_RESOURCE_CLIENT(CachedImageClient, ImageType);

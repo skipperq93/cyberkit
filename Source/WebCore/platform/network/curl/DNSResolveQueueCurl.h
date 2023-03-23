@@ -27,7 +27,7 @@
 
 #include "DNSResolveQueue.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class DNSResolveQueueCurl final : public DNSResolveQueue {
 public:

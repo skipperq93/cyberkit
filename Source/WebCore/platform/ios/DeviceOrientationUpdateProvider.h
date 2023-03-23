@@ -29,7 +29,7 @@
 
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class MotionManagerClient;
 
@@ -50,6 +50,6 @@ protected:
     DeviceOrientationUpdateProvider() = default;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(IOS_FAMILY) && ENABLE(DEVICE_ORIENTATION)

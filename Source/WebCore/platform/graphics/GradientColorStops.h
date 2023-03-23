@@ -31,7 +31,7 @@
 #include <wtf/Forward.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class GradientColorStops {
 public:
@@ -123,4 +123,4 @@ private:
 
 TextStream& operator<<(TextStream&, const GradientColorStops&);
 
-} // namespace WebCore
+} // namespace CyberCore

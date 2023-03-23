@@ -30,7 +30,7 @@ import sys
 
 REBASE_DICTIONARY = {
     'WebKit2/': 'WebKit/',
-    'WebKit/': 'WebKitLegacy/'
+    'WebKit/': 'CyberKitLegacy/'
 }
 class RebaseStatus:
     DO_NOT_NEED = 0

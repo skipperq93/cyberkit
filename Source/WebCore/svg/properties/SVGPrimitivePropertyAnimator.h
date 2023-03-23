@@ -29,7 +29,7 @@
 #include "SVGPropertyTraits.h"
 #include "SVGValueProperty.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename PropertyType, typename AnimationFunction>
 class SVGPrimitivePropertyAnimator : public SVGPropertyAnimator<AnimationFunction> {
@@ -75,4 +75,4 @@ protected:
     Ref<ValuePropertyType> m_property;
 };
     
-} // namespace WebCore
+} // namespace CyberCore

@@ -33,16 +33,16 @@
 #include "NetworkProcess.h"
 #include "NetworkProcessProxyMessages.h"
 #include "PendingDownload.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebFrame.h"
 #include "WebPage.h"
 #include "WebPageProxyMessages.h"
 #include <CyberCore/AuthenticationChallenge.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
-static bool canCoalesceChallenge(const WebCore::AuthenticationChallenge& challenge)
+static bool canCoalesceChallenge(const CyberCore::AuthenticationChallenge& challenge)
 {
     // Do not coalesce server trust evaluation requests because ProtectionSpace comparison does not evaluate server trust (e.g. certificate).
     return challenge.protectionSpace().authenticationScheme() != ProtectionSpace::AuthenticationScheme::ServerTrustEvaluationRequested;
@@ -119,7 +119,7 @@ void AuthenticationManager::didReceiveAuthenticationChallenge(PAL::SessionID ses
     m_process.send(Messages::NetworkProcessProxy::DidReceiveAuthenticationChallenge(sessionID, pageID, topOriginData, authenticationChallenge, negotiatedLegacyTLS == NegotiatedLegacyTLS::Yes, challengeID));
 }
 
-void AuthenticationManager::didReceiveAuthenticationChallenge(IPC::MessageSender& download, const WebCore::AuthenticationChallenge& authenticationChallenge, ChallengeCompletionHandler&& completionHandler)
+void AuthenticationManager::didReceiveAuthenticationChallenge(IPC::MessageSender& download, const CyberCore::AuthenticationChallenge& authenticationChallenge, ChallengeCompletionHandler&& completionHandler)
 {
     WebPageProxyIdentifier dummyPageID;
     auto challengeID = addChallengeToChallengeMap(makeUniqueRef<Challenge>(dummyPageID, authenticationChallenge, WTFMove(completionHandler)));
@@ -131,7 +131,7 @@ void AuthenticationManager::didReceiveAuthenticationChallenge(IPC::MessageSender
     download.send(Messages::DownloadProxy::DidReceiveAuthenticationChallenge(authenticationChallenge, challengeID));
 }
 
-void AuthenticationManager::completeAuthenticationChallenge(AuthenticationChallengeIdentifier challengeID, AuthenticationChallengeDisposition disposition, WebCore::Credential&& credential)
+void AuthenticationManager::completeAuthenticationChallenge(AuthenticationChallengeIdentifier challengeID, AuthenticationChallengeDisposition disposition, CyberCore::Credential&& credential)
 {
     ASSERT(RunLoop::isMain());
 

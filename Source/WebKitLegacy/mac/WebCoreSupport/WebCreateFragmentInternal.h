@@ -29,11 +29,11 @@
 
 #import <Foundation/Foundation.h>
 
-namespace WebCore {
+namespace CyberCore {
 class Document;
 struct FragmentAndResources;
 }
 
-extern "C" void _WebCreateFragment(WebCore::Document&, NSAttributedString *, WebCore::FragmentAndResources&);
+extern "C" void _WebCreateFragment(CyberCore::Document&, NSAttributedString *, CyberCore::FragmentAndResources&);
 
 #endif

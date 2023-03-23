@@ -28,9 +28,9 @@
 #include <CyberCore/SharedWorkerProvider.h>
 #include <wtf/NeverDestroyed.h>
 
-namespace WebKit {
+namespace CyberKit {
 
-class WebSharedWorkerProvider final : public WebCore::SharedWorkerProvider {
+class WebSharedWorkerProvider final : public CyberCore::SharedWorkerProvider {
 public:
     static WebSharedWorkerProvider& singleton();
 
@@ -38,7 +38,7 @@ private:
     friend NeverDestroyed<WebSharedWorkerProvider>;
     WebSharedWorkerProvider();
 
-    WebCore::SharedWorkerObjectConnection* sharedWorkerConnection() final;
+    CyberCore::SharedWorkerObjectConnection* sharedWorkerConnection() final;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

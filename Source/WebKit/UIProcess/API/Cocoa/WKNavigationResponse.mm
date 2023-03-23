@@ -27,13 +27,13 @@
 #import "WKNavigationResponseInternal.h"
 
 #import "WKFrameInfoInternal.h"
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 
 @implementation WKNavigationResponse
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainRunLoop(WKNavigationResponse.class, self))
+    if (CyberCoreObjCScheduleDeallocateOnMainRunLoop(WKNavigationResponse.class, self))
         return;
 
     _navigationResponse->~NavigationResponse();
@@ -79,7 +79,7 @@
 
 - (NSURLRequest *)_request
 {
-    return _navigationResponse->request().nsURLRequest(WebCore::HTTPBodyUpdatePolicy::DoNotUpdateHTTPBody);
+    return _navigationResponse->request().nsURLRequest(CyberCore::HTTPBodyUpdatePolicy::DoNotUpdateHTTPBody);
 }
 
 - (NSString *)_downloadAttribute

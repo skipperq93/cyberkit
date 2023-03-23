@@ -36,7 +36,7 @@
 #include <wtf/StdSet.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 enum class StorageAccessPromptWasShown : bool;
 enum class StorageAccessWasGranted : bool;
 struct ResourceLoadStatistics;
@@ -67,7 +67,7 @@ public:
     void classifyPrevalentResources() override;
     void runIncrementalVacuumCommand();
 
-    void requestStorageAccessUnderOpener(DomainInNeedOfStorageAccess&&, WebCore::PageIdentifier openerID, OpenerDomain&&) override;
+    void requestStorageAccessUnderOpener(DomainInNeedOfStorageAccess&&, CyberCore::PageIdentifier openerID, OpenerDomain&&) override;
 
     void grandfatherDataForDomains(const HashSet<RegistrableDomain>&) override;
 
@@ -94,9 +94,9 @@ public:
     void setTopFrameUniqueRedirectTo(const TopFrameDomain&, const RedirectDomain&) override;
     void setTopFrameUniqueRedirectFrom(const TopFrameDomain&, const RedirectDomain&) override;
 
-    void hasStorageAccess(SubFrameDomain&&, TopFrameDomain&&, std::optional<WebCore::FrameIdentifier>, WebCore::PageIdentifier, CompletionHandler<void(bool)>&&) override;
-    void requestStorageAccess(SubFrameDomain&&, TopFrameDomain&&, WebCore::FrameIdentifier, WebCore::PageIdentifier, WebCore::StorageAccessScope, CompletionHandler<void(StorageAccessStatus)>&&) override;
-    void grantStorageAccess(SubFrameDomain&&, TopFrameDomain&&, WebCore::FrameIdentifier, WebCore::PageIdentifier, WebCore::StorageAccessPromptWasShown, WebCore::StorageAccessScope, CompletionHandler<void(WebCore::StorageAccessWasGranted)>&&) override;
+    void hasStorageAccess(SubFrameDomain&&, TopFrameDomain&&, std::optional<CyberCore::FrameIdentifier>, CyberCore::PageIdentifier, CompletionHandler<void(bool)>&&) override;
+    void requestStorageAccess(SubFrameDomain&&, TopFrameDomain&&, CyberCore::FrameIdentifier, CyberCore::PageIdentifier, CyberCore::StorageAccessScope, CompletionHandler<void(StorageAccessStatus)>&&) override;
+    void grantStorageAccess(SubFrameDomain&&, TopFrameDomain&&, CyberCore::FrameIdentifier, CyberCore::PageIdentifier, CyberCore::StorageAccessPromptWasShown, CyberCore::StorageAccessScope, CompletionHandler<void(CyberCore::StorageAccessWasGranted)>&&) override;
 
     void logFrameNavigation(const NavigatedToDomain&, const TopFrameDomain&, const NavigatedFromDomain&, bool isRedirect, bool isMainFrame, Seconds delayAfterMainFrameDocumentLoad, bool wasPotentiallyInitiatedByUser) override;
     void logCrossSiteLoadWithLinkDecoration(const NavigatedFromDomain&, const NavigatedToDomain&) override;
@@ -147,12 +147,12 @@ private:
     ASCIILiteral getSubStatisticStatement(ASCIILiteral) const;
     void appendSubStatisticList(StringBuilder&, ASCIILiteral tableName, const String& domain) const;
     void mergeStatistic(const ResourceLoadStatistics&);
-    void merge(WebCore::SQLiteStatement*, const ResourceLoadStatistics&);
+    void merge(CyberCore::SQLiteStatement*, const ResourceLoadStatistics&);
     void clearDatabaseContents();
     bool insertObservedDomain(const ResourceLoadStatistics&) WARN_UNUSED_RETURN;
     void insertDomainRelationships(const ResourceLoadStatistics&);
     void insertDomainRelationshipList(const String&, const HashSet<RegistrableDomain>&, unsigned);
-    bool relationshipExists(WebCore::SQLiteStatementAutoResetScope&, std::optional<unsigned> firstDomainID, const RegistrableDomain& secondDomain) const;
+    bool relationshipExists(CyberCore::SQLiteStatementAutoResetScope&, std::optional<unsigned> firstDomainID, const RegistrableDomain& secondDomain) const;
     std::optional<unsigned> domainID(const RegistrableDomain&) const;
     bool domainExists(const RegistrableDomain&) const;
     void updateLastSeen(const RegistrableDomain&, WallTime);
@@ -177,7 +177,7 @@ private:
     bool hasHadRecentWebPushInteraction(const DomainData&) const;
     bool hasHadUnexpiredRecentUserInteraction(const DomainData&, OperatingDatesWindow);
     void clearGrandfathering(Vector<unsigned>&&);
-    WebCore::StorageAccessPromptWasShown hasUserGrantedStorageAccessThroughPrompt(unsigned domainID, const RegistrableDomain&);
+    CyberCore::StorageAccessPromptWasShown hasUserGrantedStorageAccessThroughPrompt(unsigned domainID, const RegistrableDomain&);
     void incrementRecordsDeletedCountForDomains(HashSet<RegistrableDomain>&&) override;
 
     void reclassifyResources();
@@ -191,7 +191,7 @@ private:
     };
     HashMap<unsigned, NotVeryPrevalentResources> findNotVeryPrevalentResources();
 
-    bool predicateValueForDomain(WebCore::SQLiteStatementAutoResetScope&, const RegistrableDomain&) const;
+    bool predicateValueForDomain(CyberCore::SQLiteStatementAutoResetScope&, const RegistrableDomain&) const;
 
     bool areAllThirdPartyCookiesBlockedUnder(const TopFrameDomain&) override;
     CookieAccess cookieAccess(const SubResourceDomain&, const TopFrameDomain&);
@@ -199,7 +199,7 @@ private:
     void setPrevalentResource(const RegistrableDomain&, ResourceLoadPrevalence);
     unsigned recursivelyFindNonPrevalentDomainsThatRedirectedToThisDomain(unsigned primaryDomainID, StdSet<unsigned>& nonPrevalentRedirectionSources, unsigned numberOfRecursiveCalls);
     void setDomainsAsPrevalent(StdSet<unsigned>&&);
-    void grantStorageAccessInternal(SubFrameDomain&&, TopFrameDomain&&, std::optional<WebCore::FrameIdentifier>, WebCore::PageIdentifier, WebCore::StorageAccessPromptWasShown, WebCore::StorageAccessScope, CompletionHandler<void(WebCore::StorageAccessWasGranted)>&&);
+    void grantStorageAccessInternal(SubFrameDomain&&, TopFrameDomain&&, std::optional<CyberCore::FrameIdentifier>, CyberCore::PageIdentifier, CyberCore::StorageAccessPromptWasShown, CyberCore::StorageAccessScope, CompletionHandler<void(CyberCore::StorageAccessWasGranted)>&&);
     void markAsPrevalentIfHasRedirectedToPrevalent();
     Vector<RegistrableDomain> ensurePrevalentResourcesForDebugMode() override;
     void removeDataRecords(CompletionHandler<void()>&&);
@@ -217,45 +217,45 @@ private:
     String ensureAndMakeDomainList(const HashSet<RegistrableDomain>&);
     std::optional<WallTime> mostRecentUserInteractionTime(const DomainData&);
 
-    mutable std::unique_ptr<WebCore::SQLiteStatement> m_observedDomainCountStatement;
-    std::unique_ptr<WebCore::SQLiteStatement> m_insertObservedDomainStatement;
-    std::unique_ptr<WebCore::SQLiteStatement> m_insertTopLevelDomainStatement;
-    mutable std::unique_ptr<WebCore::SQLiteStatement> m_domainIDFromStringStatement;
-    mutable std::unique_ptr<WebCore::SQLiteStatement> m_topFrameLinkDecorationsFromExistsStatement;
-    mutable std::unique_ptr<WebCore::SQLiteStatement> m_topFrameLoadedThirdPartyScriptsExistsStatement;
-    mutable std::unique_ptr<WebCore::SQLiteStatement> m_subframeUnderTopFrameDomainExistsStatement;
-    mutable std::unique_ptr<WebCore::SQLiteStatement> m_subresourceUnderTopFrameDomainExistsStatement;
-    mutable std::unique_ptr<WebCore::SQLiteStatement> m_subresourceUniqueRedirectsToExistsStatement;
-    std::unique_ptr<WebCore::SQLiteStatement> m_mostRecentUserInteractionStatement;
-    std::unique_ptr<WebCore::SQLiteStatement> m_updateLastSeenStatement;
-    mutable std::unique_ptr<WebCore::SQLiteStatement> m_updateDataRecordsRemovedStatement;
-    std::unique_ptr<WebCore::SQLiteStatement> m_updatePrevalentResourceStatement;
-    mutable std::unique_ptr<WebCore::SQLiteStatement> m_isPrevalentResourceStatement;
-    std::unique_ptr<WebCore::SQLiteStatement> m_updateVeryPrevalentResourceStatement;
-    mutable std::unique_ptr<WebCore::SQLiteStatement> m_isVeryPrevalentResourceStatement;
-    std::unique_ptr<WebCore::SQLiteStatement> m_clearPrevalentResourceStatement;
-    mutable std::unique_ptr<WebCore::SQLiteStatement> m_hadUserInteractionStatement;
-    std::unique_ptr<WebCore::SQLiteStatement> m_updateGrandfatheredStatement;
-    mutable std::unique_ptr<WebCore::SQLiteStatement> m_updateIsScheduledForAllButCookieDataRemovalStatement;
-    mutable std::unique_ptr<WebCore::SQLiteStatement> m_updateMostRecentWebPushInteractionTimeStatement;
-    mutable std::unique_ptr<WebCore::SQLiteStatement> m_isGrandfatheredStatement;
-    mutable std::unique_ptr<WebCore::SQLiteStatement> m_countPrevalentResourcesStatement;
-    mutable std::unique_ptr<WebCore::SQLiteStatement> m_countPrevalentResourcesWithUserInteractionStatement;
-    mutable std::unique_ptr<WebCore::SQLiteStatement> m_countPrevalentResourcesWithoutUserInteractionStatement;
-    mutable std::unique_ptr<WebCore::SQLiteStatement> m_getResourceDataByDomainNameStatement;
-    mutable std::unique_ptr<WebCore::SQLiteStatement> m_getAllDomainsStatement;
-    mutable std::unique_ptr<WebCore::SQLiteStatement> m_domainStringFromDomainIDStatement;
-    mutable std::unique_ptr<WebCore::SQLiteStatement> m_getAllSubStatisticsStatement;
-    mutable std::unique_ptr<WebCore::SQLiteStatement> m_storageAccessExistsStatement;
-    mutable std::unique_ptr<WebCore::SQLiteStatement> m_getMostRecentlyUpdatedTimestampStatement;
-    mutable std::unique_ptr<WebCore::SQLiteStatement> m_linkDecorationExistsStatement;
-    mutable std::unique_ptr<WebCore::SQLiteStatement> m_scriptLoadExistsStatement;
-    mutable std::unique_ptr<WebCore::SQLiteStatement> m_subFrameExistsStatement;
-    mutable std::unique_ptr<WebCore::SQLiteStatement> m_subResourceExistsStatement;
-    mutable std::unique_ptr<WebCore::SQLiteStatement> m_uniqueRedirectExistsStatement;
-    mutable std::unique_ptr<WebCore::SQLiteStatement> m_observedDomainsExistsStatement;
-    mutable std::unique_ptr<WebCore::SQLiteStatement> m_removeAllDataStatement;
-    mutable std::unique_ptr<WebCore::SQLiteStatement> m_checkIfTableExistsStatement;
+    mutable std::unique_ptr<CyberCore::SQLiteStatement> m_observedDomainCountStatement;
+    std::unique_ptr<CyberCore::SQLiteStatement> m_insertObservedDomainStatement;
+    std::unique_ptr<CyberCore::SQLiteStatement> m_insertTopLevelDomainStatement;
+    mutable std::unique_ptr<CyberCore::SQLiteStatement> m_domainIDFromStringStatement;
+    mutable std::unique_ptr<CyberCore::SQLiteStatement> m_topFrameLinkDecorationsFromExistsStatement;
+    mutable std::unique_ptr<CyberCore::SQLiteStatement> m_topFrameLoadedThirdPartyScriptsExistsStatement;
+    mutable std::unique_ptr<CyberCore::SQLiteStatement> m_subframeUnderTopFrameDomainExistsStatement;
+    mutable std::unique_ptr<CyberCore::SQLiteStatement> m_subresourceUnderTopFrameDomainExistsStatement;
+    mutable std::unique_ptr<CyberCore::SQLiteStatement> m_subresourceUniqueRedirectsToExistsStatement;
+    std::unique_ptr<CyberCore::SQLiteStatement> m_mostRecentUserInteractionStatement;
+    std::unique_ptr<CyberCore::SQLiteStatement> m_updateLastSeenStatement;
+    mutable std::unique_ptr<CyberCore::SQLiteStatement> m_updateDataRecordsRemovedStatement;
+    std::unique_ptr<CyberCore::SQLiteStatement> m_updatePrevalentResourceStatement;
+    mutable std::unique_ptr<CyberCore::SQLiteStatement> m_isPrevalentResourceStatement;
+    std::unique_ptr<CyberCore::SQLiteStatement> m_updateVeryPrevalentResourceStatement;
+    mutable std::unique_ptr<CyberCore::SQLiteStatement> m_isVeryPrevalentResourceStatement;
+    std::unique_ptr<CyberCore::SQLiteStatement> m_clearPrevalentResourceStatement;
+    mutable std::unique_ptr<CyberCore::SQLiteStatement> m_hadUserInteractionStatement;
+    std::unique_ptr<CyberCore::SQLiteStatement> m_updateGrandfatheredStatement;
+    mutable std::unique_ptr<CyberCore::SQLiteStatement> m_updateIsScheduledForAllButCookieDataRemovalStatement;
+    mutable std::unique_ptr<CyberCore::SQLiteStatement> m_updateMostRecentWebPushInteractionTimeStatement;
+    mutable std::unique_ptr<CyberCore::SQLiteStatement> m_isGrandfatheredStatement;
+    mutable std::unique_ptr<CyberCore::SQLiteStatement> m_countPrevalentResourcesStatement;
+    mutable std::unique_ptr<CyberCore::SQLiteStatement> m_countPrevalentResourcesWithUserInteractionStatement;
+    mutable std::unique_ptr<CyberCore::SQLiteStatement> m_countPrevalentResourcesWithoutUserInteractionStatement;
+    mutable std::unique_ptr<CyberCore::SQLiteStatement> m_getResourceDataByDomainNameStatement;
+    mutable std::unique_ptr<CyberCore::SQLiteStatement> m_getAllDomainsStatement;
+    mutable std::unique_ptr<CyberCore::SQLiteStatement> m_domainStringFromDomainIDStatement;
+    mutable std::unique_ptr<CyberCore::SQLiteStatement> m_getAllSubStatisticsStatement;
+    mutable std::unique_ptr<CyberCore::SQLiteStatement> m_storageAccessExistsStatement;
+    mutable std::unique_ptr<CyberCore::SQLiteStatement> m_getMostRecentlyUpdatedTimestampStatement;
+    mutable std::unique_ptr<CyberCore::SQLiteStatement> m_linkDecorationExistsStatement;
+    mutable std::unique_ptr<CyberCore::SQLiteStatement> m_scriptLoadExistsStatement;
+    mutable std::unique_ptr<CyberCore::SQLiteStatement> m_subFrameExistsStatement;
+    mutable std::unique_ptr<CyberCore::SQLiteStatement> m_subResourceExistsStatement;
+    mutable std::unique_ptr<CyberCore::SQLiteStatement> m_uniqueRedirectExistsStatement;
+    mutable std::unique_ptr<CyberCore::SQLiteStatement> m_observedDomainsExistsStatement;
+    mutable std::unique_ptr<CyberCore::SQLiteStatement> m_removeAllDataStatement;
+    mutable std::unique_ptr<CyberCore::SQLiteStatement> m_checkIfTableExistsStatement;
 
     PAL::SessionID m_sessionID;
     bool m_isNewResourceLoadStatisticsDatabaseFile { false };

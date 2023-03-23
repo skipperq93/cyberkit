@@ -38,7 +38,7 @@
 #include "MediaPlaybackTargetClient.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class MediaPlaybackTarget;
@@ -311,7 +311,7 @@ template<class Decoder> inline std::optional<PlatformMediaSession::RemoteCommand
     return { { *time, *fastSeek } };
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
@@ -319,93 +319,93 @@ template<typename Type>
 struct LogArgument;
 
 template <>
-struct LogArgument<WebCore::PlatformMediaSession::State> {
-    static String toString(const WebCore::PlatformMediaSession::State state)
+struct LogArgument<CyberCore::PlatformMediaSession::State> {
+    static String toString(const CyberCore::PlatformMediaSession::State state)
     {
         return convertEnumerationToString(state);
     }
 };
 
 template <>
-struct LogArgument<WebCore::PlatformMediaSession::InterruptionType> {
-    static String toString(const WebCore::PlatformMediaSession::InterruptionType state)
+struct LogArgument<CyberCore::PlatformMediaSession::InterruptionType> {
+    static String toString(const CyberCore::PlatformMediaSession::InterruptionType state)
     {
         return convertEnumerationToString(state);
     }
 };
 
 template <>
-struct LogArgument<WebCore::PlatformMediaSession::RemoteControlCommandType> {
-    static String toString(const WebCore::PlatformMediaSession::RemoteControlCommandType command)
+struct LogArgument<CyberCore::PlatformMediaSession::RemoteControlCommandType> {
+    static String toString(const CyberCore::PlatformMediaSession::RemoteControlCommandType command)
     {
         return convertEnumerationToString(command);
     }
 };
 
-template <> struct EnumTraits<WebCore::PlatformMediaSession::MediaType> {
+template <> struct EnumTraits<CyberCore::PlatformMediaSession::MediaType> {
     using values = EnumValues <
-    WebCore::PlatformMediaSession::MediaType,
-    WebCore::PlatformMediaSession::MediaType::None,
-    WebCore::PlatformMediaSession::MediaType::Video,
-    WebCore::PlatformMediaSession::MediaType::VideoAudio,
-    WebCore::PlatformMediaSession::MediaType::Audio,
-    WebCore::PlatformMediaSession::MediaType::WebAudio
+    CyberCore::PlatformMediaSession::MediaType,
+    CyberCore::PlatformMediaSession::MediaType::None,
+    CyberCore::PlatformMediaSession::MediaType::Video,
+    CyberCore::PlatformMediaSession::MediaType::VideoAudio,
+    CyberCore::PlatformMediaSession::MediaType::Audio,
+    CyberCore::PlatformMediaSession::MediaType::WebAudio
     >;
 };
 
-template <> struct EnumTraits<WebCore::PlatformMediaSession::State> {
+template <> struct EnumTraits<CyberCore::PlatformMediaSession::State> {
     using values = EnumValues <
-    WebCore::PlatformMediaSession::State,
-    WebCore::PlatformMediaSession::State::Idle,
-    WebCore::PlatformMediaSession::State::Autoplaying,
-    WebCore::PlatformMediaSession::State::Playing,
-    WebCore::PlatformMediaSession::State::Paused,
-    WebCore::PlatformMediaSession::State::Interrupted
+    CyberCore::PlatformMediaSession::State,
+    CyberCore::PlatformMediaSession::State::Idle,
+    CyberCore::PlatformMediaSession::State::Autoplaying,
+    CyberCore::PlatformMediaSession::State::Playing,
+    CyberCore::PlatformMediaSession::State::Paused,
+    CyberCore::PlatformMediaSession::State::Interrupted
     >;
 };
 
-template <> struct EnumTraits<WebCore::PlatformMediaSession::InterruptionType> {
+template <> struct EnumTraits<CyberCore::PlatformMediaSession::InterruptionType> {
     using values = EnumValues <
-    WebCore::PlatformMediaSession::InterruptionType,
-    WebCore::PlatformMediaSession::InterruptionType::NoInterruption,
-    WebCore::PlatformMediaSession::InterruptionType::SystemSleep,
-    WebCore::PlatformMediaSession::InterruptionType::EnteringBackground,
-    WebCore::PlatformMediaSession::InterruptionType::SystemInterruption,
-    WebCore::PlatformMediaSession::InterruptionType::SuspendedUnderLock,
-    WebCore::PlatformMediaSession::InterruptionType::InvisibleAutoplay,
-    WebCore::PlatformMediaSession::InterruptionType::ProcessInactive,
-    WebCore::PlatformMediaSession::InterruptionType::PlaybackSuspended,
-    WebCore::PlatformMediaSession::InterruptionType::PageNotVisible
+    CyberCore::PlatformMediaSession::InterruptionType,
+    CyberCore::PlatformMediaSession::InterruptionType::NoInterruption,
+    CyberCore::PlatformMediaSession::InterruptionType::SystemSleep,
+    CyberCore::PlatformMediaSession::InterruptionType::EnteringBackground,
+    CyberCore::PlatformMediaSession::InterruptionType::SystemInterruption,
+    CyberCore::PlatformMediaSession::InterruptionType::SuspendedUnderLock,
+    CyberCore::PlatformMediaSession::InterruptionType::InvisibleAutoplay,
+    CyberCore::PlatformMediaSession::InterruptionType::ProcessInactive,
+    CyberCore::PlatformMediaSession::InterruptionType::PlaybackSuspended,
+    CyberCore::PlatformMediaSession::InterruptionType::PageNotVisible
     >;
 };
 
-template <> struct EnumTraits<WebCore::PlatformMediaSession::EndInterruptionFlags> {
+template <> struct EnumTraits<CyberCore::PlatformMediaSession::EndInterruptionFlags> {
     using values = EnumValues <
-    WebCore::PlatformMediaSession::EndInterruptionFlags,
-    WebCore::PlatformMediaSession::EndInterruptionFlags::NoFlags,
-    WebCore::PlatformMediaSession::EndInterruptionFlags::MayResumePlaying
+    CyberCore::PlatformMediaSession::EndInterruptionFlags,
+    CyberCore::PlatformMediaSession::EndInterruptionFlags::NoFlags,
+    CyberCore::PlatformMediaSession::EndInterruptionFlags::MayResumePlaying
     >;
 };
 
-template <> struct EnumTraits<WebCore::PlatformMediaSession::RemoteControlCommandType> {
+template <> struct EnumTraits<CyberCore::PlatformMediaSession::RemoteControlCommandType> {
     using values = EnumValues <
-    WebCore::PlatformMediaSession::RemoteControlCommandType,
-    WebCore::PlatformMediaSession::RemoteControlCommandType::NoCommand,
-    WebCore::PlatformMediaSession::RemoteControlCommandType::PlayCommand,
-    WebCore::PlatformMediaSession::RemoteControlCommandType::PauseCommand,
-    WebCore::PlatformMediaSession::RemoteControlCommandType::StopCommand,
-    WebCore::PlatformMediaSession::RemoteControlCommandType::TogglePlayPauseCommand,
-    WebCore::PlatformMediaSession::RemoteControlCommandType::BeginSeekingBackwardCommand,
-    WebCore::PlatformMediaSession::RemoteControlCommandType::EndSeekingBackwardCommand,
-    WebCore::PlatformMediaSession::RemoteControlCommandType::BeginSeekingForwardCommand,
-    WebCore::PlatformMediaSession::RemoteControlCommandType::EndSeekingForwardCommand,
-    WebCore::PlatformMediaSession::RemoteControlCommandType::SeekToPlaybackPositionCommand,
-    WebCore::PlatformMediaSession::RemoteControlCommandType::SkipForwardCommand,
-    WebCore::PlatformMediaSession::RemoteControlCommandType::SkipBackwardCommand,
-    WebCore::PlatformMediaSession::RemoteControlCommandType::NextTrackCommand,
-    WebCore::PlatformMediaSession::RemoteControlCommandType::PreviousTrackCommand,
-    WebCore::PlatformMediaSession::RemoteControlCommandType::BeginScrubbingCommand,
-    WebCore::PlatformMediaSession::RemoteControlCommandType::EndScrubbingCommand
+    CyberCore::PlatformMediaSession::RemoteControlCommandType,
+    CyberCore::PlatformMediaSession::RemoteControlCommandType::NoCommand,
+    CyberCore::PlatformMediaSession::RemoteControlCommandType::PlayCommand,
+    CyberCore::PlatformMediaSession::RemoteControlCommandType::PauseCommand,
+    CyberCore::PlatformMediaSession::RemoteControlCommandType::StopCommand,
+    CyberCore::PlatformMediaSession::RemoteControlCommandType::TogglePlayPauseCommand,
+    CyberCore::PlatformMediaSession::RemoteControlCommandType::BeginSeekingBackwardCommand,
+    CyberCore::PlatformMediaSession::RemoteControlCommandType::EndSeekingBackwardCommand,
+    CyberCore::PlatformMediaSession::RemoteControlCommandType::BeginSeekingForwardCommand,
+    CyberCore::PlatformMediaSession::RemoteControlCommandType::EndSeekingForwardCommand,
+    CyberCore::PlatformMediaSession::RemoteControlCommandType::SeekToPlaybackPositionCommand,
+    CyberCore::PlatformMediaSession::RemoteControlCommandType::SkipForwardCommand,
+    CyberCore::PlatformMediaSession::RemoteControlCommandType::SkipBackwardCommand,
+    CyberCore::PlatformMediaSession::RemoteControlCommandType::NextTrackCommand,
+    CyberCore::PlatformMediaSession::RemoteControlCommandType::PreviousTrackCommand,
+    CyberCore::PlatformMediaSession::RemoteControlCommandType::BeginScrubbingCommand,
+    CyberCore::PlatformMediaSession::RemoteControlCommandType::EndScrubbingCommand
     >;
 };
 

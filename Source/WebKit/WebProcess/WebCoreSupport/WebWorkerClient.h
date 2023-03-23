@@ -30,12 +30,12 @@
 #include "RemoteVideoFrameObjectHeapProxy.h"
 #include <CyberCore/WorkerClient.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPage;
 class RemoteRenderingBackendProxy;
 
-class WebWorkerClient : public WebCore::WorkerClient {
+class WebWorkerClient : public CyberCore::WorkerClient {
     WTF_MAKE_FAST_ALLOCATED;
 public:
     // Constructed on the main thread, and then transferred to the
@@ -50,22 +50,22 @@ public:
     // nested worker.
 #if ENABLE(GPU_PROCESS)
 #if ENABLE(VIDEO)
-    WebWorkerClient(IPC::Connection&, SerialFunctionDispatcher&, RemoteRenderingBackendCreationParameters&, WebCore::PlatformDisplayID&, Ref<RemoteVideoFrameObjectHeapProxy>&&);
+    WebWorkerClient(IPC::Connection&, SerialFunctionDispatcher&, RemoteRenderingBackendCreationParameters&, CyberCore::PlatformDisplayID&, Ref<RemoteVideoFrameObjectHeapProxy>&&);
 #else
-    WebWorkerClient(IPC::Connection&, SerialFunctionDispatcher&, RemoteRenderingBackendCreationParameters&, WebCore::PlatformDisplayID&);
+    WebWorkerClient(IPC::Connection&, SerialFunctionDispatcher&, RemoteRenderingBackendCreationParameters&, CyberCore::PlatformDisplayID&);
 #endif
 #else
-    WebWorkerClient(SerialFunctionDispatcher&, WebCore::PlatformDisplayID&);
+    WebWorkerClient(SerialFunctionDispatcher&, CyberCore::PlatformDisplayID&);
 #endif
 
     std::unique_ptr<WorkerClient> clone(SerialFunctionDispatcher&) final;
 
-    WebCore::PlatformDisplayID displayID() const final;
+    CyberCore::PlatformDisplayID displayID() const final;
 
-    RefPtr<WebCore::ImageBuffer> sinkIntoImageBuffer(std::unique_ptr<WebCore::SerializedImageBuffer>) final;
-    RefPtr<WebCore::ImageBuffer> createImageBuffer(const WebCore::FloatSize&, WebCore::RenderingMode, WebCore::RenderingPurpose, float resolutionScale, const WebCore::DestinationColorSpace&, WebCore::PixelFormat, bool avoidBackendSizeCheck = false) const final;
+    RefPtr<CyberCore::ImageBuffer> sinkIntoImageBuffer(std::unique_ptr<CyberCore::SerializedImageBuffer>) final;
+    RefPtr<CyberCore::ImageBuffer> createImageBuffer(const CyberCore::FloatSize&, CyberCore::RenderingMode, CyberCore::RenderingPurpose, float resolutionScale, const CyberCore::DestinationColorSpace&, CyberCore::PixelFormat, bool avoidBackendSizeCheck = false) const final;
 #if ENABLE(WEBGL)
-    RefPtr<WebCore::GraphicsContextGL> createGraphicsContextGL(const WebCore::GraphicsContextGLAttributes&) const final;
+    RefPtr<CyberCore::GraphicsContextGL> createGraphicsContextGL(const CyberCore::GraphicsContextGLAttributes&) const final;
 #endif
 
 private:
@@ -82,7 +82,7 @@ private:
     Ref<RemoteVideoFrameObjectHeapProxy> m_videoFrameObjectHeapProxy;
 #endif
 #endif
-    WebCore::PlatformDisplayID m_displayID;
+    CyberCore::PlatformDisplayID m_displayID;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

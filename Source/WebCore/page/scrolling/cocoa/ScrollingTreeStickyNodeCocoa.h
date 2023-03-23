@@ -32,7 +32,7 @@
 #include "ScrollingTreeStickyNode.h"
 #include <wtf/RetainPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScrollingTreeStickyNodeCocoa : public ScrollingTreeStickyNode {
 public:
@@ -54,7 +54,7 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_SCROLLING_NODE(ScrollingTreeStickyNodeCocoa, isStickyNode())
 

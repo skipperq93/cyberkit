@@ -31,7 +31,7 @@
 #include <wtf/ThreadSafeRefCounted.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AbstractDOMWindow;
 class AbstractFrameView;
@@ -75,4 +75,4 @@ private:
     WeakPtr<HTMLFrameOwnerElement, WeakPtrImplWithEventTargetData> m_ownerElement;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

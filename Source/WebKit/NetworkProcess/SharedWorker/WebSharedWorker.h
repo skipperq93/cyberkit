@@ -35,7 +35,7 @@
 #include <wtf/ListHashSet.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 class RegistrableDomain;
 }
 
@@ -47,48 +47,48 @@ class WebSharedWorkerServerToContextConnection;
 class WebSharedWorker : public CanMakeWeakPtr<WebSharedWorker> {
     WTF_MAKE_FAST_ALLOCATED;
 public:
-    WebSharedWorker(WebSharedWorkerServer&, const WebCore::SharedWorkerKey&, const WebCore::WorkerOptions&);
+    WebSharedWorker(WebSharedWorkerServer&, const CyberCore::SharedWorkerKey&, const CyberCore::WorkerOptions&);
     ~WebSharedWorker();
 
-    static WebSharedWorker* fromIdentifier(WebCore::SharedWorkerIdentifier);
+    static WebSharedWorker* fromIdentifier(CyberCore::SharedWorkerIdentifier);
 
-    WebCore::SharedWorkerIdentifier identifier() const { return m_identifier; }
-    const WebCore::SharedWorkerKey& key() const { return m_key; }
-    const WebCore::WorkerOptions& workerOptions() const { return m_workerOptions; }
-    const WebCore::ClientOrigin& origin() const { return m_key.origin; }
+    CyberCore::SharedWorkerIdentifier identifier() const { return m_identifier; }
+    const CyberCore::SharedWorkerKey& key() const { return m_key; }
+    const CyberCore::WorkerOptions& workerOptions() const { return m_workerOptions; }
+    const CyberCore::ClientOrigin& origin() const { return m_key.origin; }
     const URL& url() const { return m_key.url; }
-    WebCore::RegistrableDomain registrableDomain() const;
+    CyberCore::RegistrableDomain registrableDomain() const;
     WebSharedWorkerServerToContextConnection* contextConnection() const;
 
-    void addSharedWorkerObject(WebCore::SharedWorkerObjectIdentifier, const WebCore::TransferredMessagePort&);
-    void removeSharedWorkerObject(WebCore::SharedWorkerObjectIdentifier);
-    void suspend(WebCore::SharedWorkerObjectIdentifier);
-    void resume(WebCore::SharedWorkerObjectIdentifier);
+    void addSharedWorkerObject(CyberCore::SharedWorkerObjectIdentifier, const CyberCore::TransferredMessagePort&);
+    void removeSharedWorkerObject(CyberCore::SharedWorkerObjectIdentifier);
+    void suspend(CyberCore::SharedWorkerObjectIdentifier);
+    void resume(CyberCore::SharedWorkerObjectIdentifier);
     unsigned sharedWorkerObjectsCount() const { return m_sharedWorkerObjects.size(); }
-    void forEachSharedWorkerObject(const Function<void(WebCore::SharedWorkerObjectIdentifier, const WebCore::TransferredMessagePort&)>&) const;
-    std::optional<WebCore::ProcessIdentifier> firstSharedWorkerObjectProcess() const;
+    void forEachSharedWorkerObject(const Function<void(CyberCore::SharedWorkerObjectIdentifier, const CyberCore::TransferredMessagePort&)>&) const;
+    std::optional<CyberCore::ProcessIdentifier> firstSharedWorkerObjectProcess() const;
 
     void didCreateContextConnection(WebSharedWorkerServerToContextConnection&);
 
     bool isRunning() const { return m_isRunning; }
     void markAsRunning() { m_isRunning = true; }
 
-    const WebCore::WorkerInitializationData& initializationData() const { return m_initializationData; }
-    void setInitializationData(WebCore::WorkerInitializationData&& initializationData) { m_initializationData = WTFMove(initializationData); }
+    const CyberCore::WorkerInitializationData& initializationData() const { return m_initializationData; }
+    void setInitializationData(CyberCore::WorkerInitializationData&& initializationData) { m_initializationData = WTFMove(initializationData); }
 
-    const WebCore::WorkerFetchResult& fetchResult() const { return m_fetchResult; }
-    void setFetchResult(WebCore::WorkerFetchResult&&);
+    const CyberCore::WorkerFetchResult& fetchResult() const { return m_fetchResult; }
+    void setFetchResult(CyberCore::WorkerFetchResult&&);
     bool didFinishFetching() const { return !!m_fetchResult.script; }
 
     void launch(WebSharedWorkerServerToContextConnection&);
 
     struct SharedWorkerObjectState {
         bool isSuspended { false };
-        WebCore::TransferredMessagePort port;
+        CyberCore::TransferredMessagePort port;
     };
 
     struct Object {
-        WebCore::SharedWorkerObjectIdentifier identifier;
+        CyberCore::SharedWorkerObjectIdentifier identifier;
         SharedWorkerObjectState state;
     };
 
@@ -102,12 +102,12 @@ private:
     void resumeIfNeeded();
 
     WebSharedWorkerServer& m_server;
-    WebCore::SharedWorkerIdentifier m_identifier;
-    WebCore::SharedWorkerKey m_key;
-    WebCore::WorkerOptions m_workerOptions;
+    CyberCore::SharedWorkerIdentifier m_identifier;
+    CyberCore::SharedWorkerKey m_key;
+    CyberCore::WorkerOptions m_workerOptions;
     ListHashSet<Object> m_sharedWorkerObjects;
-    WebCore::WorkerFetchResult m_fetchResult;
-    WebCore::WorkerInitializationData m_initializationData;
+    CyberCore::WorkerFetchResult m_fetchResult;
+    CyberCore::WorkerInitializationData m_initializationData;
     bool m_isRunning { false };
     bool m_isSuspended { false };
 };
@@ -117,7 +117,7 @@ private:
 namespace WTF {
 
 struct WebSharedWorkerObjectHash {
-    static unsigned hash(const WebKit::WebSharedWorker::Object& object) { return DefaultHash<WebCore::SharedWorkerObjectIdentifier>::hash(object.identifier); }
+    static unsigned hash(const WebKit::WebSharedWorker::Object& object) { return DefaultHash<CyberCore::SharedWorkerObjectIdentifier>::hash(object.identifier); }
     static bool equal(const WebKit::WebSharedWorker::Object& a, const WebKit::WebSharedWorker::Object& b) { return a.identifier == b.identifier; }
     static constexpr bool safeToCompareToEmptyOrDeleted = true;
 };

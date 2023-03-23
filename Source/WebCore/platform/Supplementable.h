@@ -34,7 +34,7 @@
 #include <wtf/Threading.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 // What you should know about Supplementable and Supplement
 // ========================================================
@@ -128,7 +128,7 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // Supplementable_h
 

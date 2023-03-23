@@ -36,7 +36,7 @@ namespace WebKit {
 
 static const Seconds expirationDelay { 30_min };
 
-WebBackForwardCacheEntry::WebBackForwardCacheEntry(WebBackForwardCache& backForwardCache, WebCore::BackForwardItemIdentifier backForwardItemID, WebCore::ProcessIdentifier processIdentifier, std::unique_ptr<SuspendedPageProxy>&& suspendedPage)
+WebBackForwardCacheEntry::WebBackForwardCacheEntry(WebBackForwardCache& backForwardCache, CyberCore::BackForwardItemIdentifier backForwardItemID, CyberCore::ProcessIdentifier processIdentifier, std::unique_ptr<SuspendedPageProxy>&& suspendedPage)
     : m_backForwardCache(backForwardCache)
     , m_processIdentifier(processIdentifier)
     , m_backForwardItemID(backForwardItemID)

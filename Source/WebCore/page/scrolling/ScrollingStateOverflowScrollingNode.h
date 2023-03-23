@@ -29,7 +29,7 @@
 
 #include "ScrollingStateScrollingNode.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScrollingStateOverflowScrollingNode : public ScrollingStateScrollingNode {
 public:
@@ -46,7 +46,7 @@ private:
     ScrollingStateOverflowScrollingNode(const ScrollingStateOverflowScrollingNode&, ScrollingStateTree&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_SCROLLING_STATE_NODE(ScrollingStateOverflowScrollingNode, isOverflowScrollingNode())
 

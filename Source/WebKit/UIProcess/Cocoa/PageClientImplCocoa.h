@@ -36,7 +36,7 @@ namespace API {
 class Attachment;
 }
 
-namespace WebCore {
+namespace CyberCore {
 class AlternativeTextUIController;
 class Color;
 
@@ -80,14 +80,14 @@ public:
     NSSet *serializableFileWrapperClasses() const final;
 #endif
 
-    WebCore::DictationContext addDictationAlternatives(NSTextAlternatives *) final;
-    void replaceDictationAlternatives(NSTextAlternatives *, WebCore::DictationContext) final;
-    void removeDictationAlternatives(WebCore::DictationContext) final;
-    Vector<String> dictationAlternatives(WebCore::DictationContext) final;
-    NSTextAlternatives *platformDictationAlternatives(WebCore::DictationContext) final;
+    CyberCore::DictationContext addDictationAlternatives(NSTextAlternatives *) final;
+    void replaceDictationAlternatives(NSTextAlternatives *, CyberCore::DictationContext) final;
+    void removeDictationAlternatives(CyberCore::DictationContext) final;
+    Vector<String> dictationAlternatives(CyberCore::DictationContext) final;
+    NSTextAlternatives *platformDictationAlternatives(CyberCore::DictationContext) final;
 
 #if ENABLE(APP_HIGHLIGHTS)
-    void storeAppHighlight(const WebCore::AppHighlight&) final;
+    void storeAppHighlight(const CyberCore::AppHighlight&) final;
 #endif
 
     void microphoneCaptureWillChange() final;
@@ -106,7 +106,7 @@ public:
 
 protected:
     WeakObjCPtr<WKWebView> m_webView;
-    std::unique_ptr<WebCore::AlternativeTextUIController> m_alternativeTextUIController;
+    std::unique_ptr<CyberCore::AlternativeTextUIController> m_alternativeTextUIController;
 };
 
 }

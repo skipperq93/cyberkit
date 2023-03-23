@@ -29,7 +29,7 @@
 #include <optional>
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Color;
 class ControlStates;
@@ -95,4 +95,4 @@ private:
     void operator=(const Theme&) = delete;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

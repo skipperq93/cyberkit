@@ -34,7 +34,7 @@ enum {
     kAudioHardwarePropertyProcessIsRunning = 'prun'
 };
 
-namespace WebCore {
+namespace CyberCore {
     
 static AudioHardwareActivityType isAudioHardwareProcessRunning()
 {

@@ -29,7 +29,7 @@
 #include "RenderStyleConstants.h"
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class StyleReflection : public RefCounted<StyleReflection> {
 public:
@@ -64,4 +64,4 @@ private:
     NinePieceImage m_mask;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

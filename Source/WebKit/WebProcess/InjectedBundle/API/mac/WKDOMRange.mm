@@ -37,27 +37,27 @@
 
 @implementation WKDOMRange
 
-- (id)_initWithImpl:(WebCore::Range*)impl
+- (id)_initWithImpl:(CyberCore::Range*)impl
 {
     self = [super init];
     if (!self)
         return nil;
 
     _impl = impl;
-    WebKit::WKDOMRangeCache().add(impl, self);
+    CyberKit::WKDOMRangeCache().add(impl, self);
 
     return self;
 }
 
 - (id)initWithDocument:(WKDOMDocument *)document
 {
-    return [self _initWithImpl:WebCore::Range::create(*WebKit::toWebCoreDocument(document)).ptr()];
+    return [self _initWithImpl:CyberCore::Range::create(*CyberKit::toCyberCoreDocument(document)).ptr()];
 }
 
 - (void)dealloc
 {
     ensureOnMainRunLoop([range = WTFMove(_impl)] {
-        WebKit::WKDOMRangeCache().remove(range.get());
+        CyberKit::WKDOMRangeCache().remove(range.get());
     });
     [super dealloc];
 }
@@ -66,14 +66,14 @@
 {
     if (!node)
         return;
-    _impl->setStart(*WebKit::toWebCoreNode(node), offset);
+    _impl->setStart(*CyberKit::toCyberCoreNode(node), offset);
 }
 
 - (void)setEnd:(WKDOMNode *)node offset:(int)offset
 {
     if (!node)
         return;
-    _impl->setEnd(*WebKit::toWebCoreNode(node), offset);
+    _impl->setEnd(*CyberKit::toCyberCoreNode(node), offset);
 }
 
 - (void)collapse:(BOOL)toStart
@@ -85,19 +85,19 @@
 {
     if (!node)
         return;
-    _impl->selectNode(*WebKit::toWebCoreNode(node));
+    _impl->selectNode(*CyberKit::toCyberCoreNode(node));
 }
 
 - (void)selectNodeContents:(WKDOMNode *)node
 {
     if (!node)
         return;
-    _impl->selectNodeContents(*WebKit::toWebCoreNode(node));
+    _impl->selectNodeContents(*CyberKit::toCyberCoreNode(node));
 }
 
 - (WKDOMNode *)startContainer
 {
-    return WebKit::toWKDOMNode(&_impl->startContainer());
+    return CyberKit::toWKDOMNode(&_impl->startContainer());
 }
 
 - (NSInteger)startOffset
@@ -107,7 +107,7 @@
 
 - (WKDOMNode *)endContainer
 {
-    return WebKit::toWKDOMNode(&_impl->endContainer());
+    return CyberKit::toWKDOMNode(&_impl->endContainer());
 }
 
 - (NSInteger)endOffset
@@ -131,13 +131,13 @@
 {
     auto range = makeSimpleRange(*_impl);
     range.start.document().updateLayoutIgnorePendingStylesheets();
-    return createNSArray(WebCore::RenderObject::absoluteTextRects(range)).autorelease();
+    return createNSArray(CyberCore::RenderObject::absoluteTextRects(range)).autorelease();
 }
 
 - (WKDOMRange *)rangeByExpandingToWordBoundaryByCharacters:(NSUInteger)characters inDirection:(WKDOMRangeDirection)direction
 {
     auto range = makeSimpleRange(*_impl);
-    auto newRange = rangeExpandedByCharactersInDirectionAtWordBoundary(makeDeprecatedLegacyPosition(direction == WKDOMRangeDirectionForward ? range.end : range.start), characters, direction == WKDOMRangeDirectionForward ? WebCore::SelectionDirection::Forward : WebCore::SelectionDirection::Backward);
+    auto newRange = rangeExpandedByCharactersInDirectionAtWordBoundary(makeDeprecatedLegacyPosition(direction == WKDOMRangeDirectionForward ? range.end : range.start), characters, direction == WKDOMRangeDirectionForward ? CyberCore::SelectionDirection::Forward : CyberCore::SelectionDirection::Backward);
     return adoptNS([[WKDOMRange alloc] _initWithImpl:createLiveRange(newRange).get()]).autorelease();
 }
 
@@ -147,7 +147,7 @@
 
 - (WKBundleRangeHandleRef)_copyBundleRangeHandleRef
 {
-    auto rangeHandle = WebKit::InjectedBundleRangeHandle::getOrCreate(_impl.get());
+    auto rangeHandle = CyberKit::InjectedBundleRangeHandle::getOrCreate(_impl.get());
     return toAPI(rangeHandle.leakRef());
 }
 

@@ -38,7 +38,7 @@
 #include <JavaScriptCore/VM.h>
 #include <wtf/text/StringConcatenateNumbers.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static ResourceUsageData gData;
 
@@ -161,6 +161,6 @@ void ResourceUsageOverlay::platformDestroy()
     m_overlayPainter = nullptr;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(RESOURCE_USAGE) && OS(LINUX)

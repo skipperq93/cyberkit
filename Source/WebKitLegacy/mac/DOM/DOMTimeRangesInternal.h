@@ -25,8 +25,8 @@
 
 #import <CyberKitLegacy/DOMTimeRanges.h>
 
-namespace WebCore {
+namespace CyberCore {
 class TimeRanges;
 }
 
-DOMTimeRanges *kit(WebCore::TimeRanges*);
+DOMTimeRanges *kit(CyberCore::TimeRanges*);

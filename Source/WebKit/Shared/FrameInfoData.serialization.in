@@ -20,13 +20,13 @@
 # OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-headers: "FrameInfoData.h" "WebCoreArgumentCoders.h"
+headers: "FrameInfoData.h" "CyberCoreArgumentCoders.h"
 
 struct WebKit::FrameInfoData {
     bool isMainFrame
-    WebCore::ResourceRequest request
-    WebCore::SecurityOriginData securityOrigin
+    CyberCore::ResourceRequest request
+    CyberCore::SecurityOriginData securityOrigin
     String frameName
-    std::optional<WebCore::FrameIdentifier> frameID
-    std::optional<WebCore::FrameIdentifier> parentFrameID
+    std::optional<CyberCore::FrameIdentifier> frameID
+    std::optional<CyberCore::FrameIdentifier> parentFrameID
 }

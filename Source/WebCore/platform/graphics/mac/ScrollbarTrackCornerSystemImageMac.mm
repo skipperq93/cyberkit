@@ -34,7 +34,7 @@
 #import <pal/spi/mac/CoreUISPI.h>
 #import <pal/spi/mac/NSAppearanceSPI.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 ScrollbarTrackCornerSystemImageMac::ScrollbarTrackCornerSystemImageMac()
     : AppKitControlSystemImage(AppKitControlSystemImageType::ScrollbarTrackCorner)
@@ -50,6 +50,6 @@ void ScrollbarTrackCornerSystemImageMac::drawControl(GraphicsContext& graphicsCo
     [[NSAppearance currentDrawingAppearance] _drawInRect:rect context:localContext.cgContext() options:cornerDrawingOptions];
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(APPKIT)

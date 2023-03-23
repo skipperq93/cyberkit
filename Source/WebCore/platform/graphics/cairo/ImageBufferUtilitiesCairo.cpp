@@ -48,7 +48,7 @@
 #include <wtf/glib/GUniquePtr.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 #if !PLATFORM(GTK)
 static cairo_status_t writeFunction(void* output, const unsigned char* data, unsigned length)
@@ -107,6 +107,6 @@ Vector<uint8_t> encodeData(cairo_surface_t* image, const String& mimeType, std::
 }
 #endif // !PLATFORM(GTK)
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(CAIRO)

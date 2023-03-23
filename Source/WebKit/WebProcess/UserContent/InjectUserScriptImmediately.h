@@ -27,7 +27,7 @@
 
 #include <wtf/Forward.h>
 
-namespace WebKit {
+namespace CyberKit {
     
 enum class InjectUserScriptImmediately : bool { No, Yes };
     
@@ -35,11 +35,11 @@ enum class InjectUserScriptImmediately : bool { No, Yes };
 
 namespace WTF {
 
-template<> struct EnumTraits<WebKit::InjectUserScriptImmediately> {
+template<> struct EnumTraits<CyberKit::InjectUserScriptImmediately> {
     using values = EnumValues<
-    WebKit::InjectUserScriptImmediately,
-    WebKit::InjectUserScriptImmediately::No,
-    WebKit::InjectUserScriptImmediately::Yes
+    CyberKit::InjectUserScriptImmediately,
+    CyberKit::InjectUserScriptImmediately::No,
+    CyberKit::InjectUserScriptImmediately::Yes
     >;
 };
 

@@ -67,10 +67,10 @@
 
 #if PLATFORM(IOS_FAMILY)
 #include "SystemMemory.h"
-#include "WebCoreThread.h"
+#include "CyberCoreThread.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 // The threshold width or height above which a tiled layer will be used. This should be
 // large enough to avoid tiled layers for most GraphicsLayers, but less than the OpenGL
@@ -334,7 +334,7 @@ Ref<PlatformCALayer> GraphicsLayerCA::createPlatformCALayer(PlatformLayer* platf
 }
 
 #if ENABLE(MODEL_ELEMENT)
-Ref<PlatformCALayer> GraphicsLayerCA::createPlatformCALayer(Ref<WebCore::Model>, PlatformCALayerClient* owner)
+Ref<PlatformCALayer> GraphicsLayerCA::createPlatformCALayer(Ref<CyberCore::Model>, PlatformCALayerClient* owner)
 {
     // By default, just make a plain layer; subclasses can override to provide a custom PlatformCALayer for Model.
     return GraphicsLayerCA::createPlatformCALayer(PlatformCALayer::LayerTypeLayer, owner);
@@ -343,7 +343,7 @@ Ref<PlatformCALayer> GraphicsLayerCA::createPlatformCALayer(Ref<WebCore::Model>,
 
 Ref<PlatformCALayer> GraphicsLayerCA::createPlatformCALayerHost(LayerHostingContextIdentifier, PlatformCALayerClient* owner)
 {
-    ASSERT_NOT_REACHED_WITH_MESSAGE("GraphicsLayerCARemote::createPlatformCALayerHost should always be called instead of this, but this symbol is needed to compile WebKitLegacy.");
+    ASSERT_NOT_REACHED_WITH_MESSAGE("GraphicsLayerCARemote::createPlatformCALayerHost should always be called instead of this, but this symbol is needed to compile CyberKitLegacy.");
     return GraphicsLayerCA::createPlatformCALayer(PlatformCALayer::LayerTypeLayer, owner);
 }
 
@@ -4873,6 +4873,6 @@ RefPtr<GraphicsLayerAsyncContentsDisplayDelegate> GraphicsLayerCA::createAsyncCo
     return adoptRef(new GraphicsLayerAsyncContentsDisplayDelegateCocoa(*this));
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

@@ -28,7 +28,7 @@
 
 #include "Page.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Page* CaretAnimator::page() const
 {
@@ -52,4 +52,4 @@ void CaretAnimator::scheduleAnimation()
         page->scheduleRenderingUpdate(RenderingUpdateStep::CaretAnimation);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -38,7 +38,7 @@
 #import <wtf/URL.h>
 #import <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 struct DragItem;
 struct TextIndicatorData;
 }
@@ -46,12 +46,12 @@ struct TextIndicatorData;
 namespace WebKit {
 
 struct DragSourceState {
-    OptionSet<WebCore::DragSourceAction> action;
+    OptionSet<CyberCore::DragSourceAction> action;
     CGPoint adjustedOrigin { CGPointZero };
     CGRect dragPreviewFrameInRootViewCoordinates { CGRectZero };
     RetainPtr<UIImage> image;
-    std::optional<WebCore::TextIndicatorData> indicatorData;
-    std::optional<WebCore::Path> visiblePath;
+    std::optional<CyberCore::TextIndicatorData> indicatorData;
+    std::optional<CyberCore::Path> visiblePath;
     String linkTitle;
     URL linkURL;
     bool possiblyNeedsDragPreviewUpdate { true };
@@ -77,7 +77,7 @@ public:
     // These helper methods are unique to UIDragInteraction.
     void prepareForDragSession(id <UIDragSession>, dispatch_block_t completionHandler);
     void dragSessionWillBegin();
-    void stageDragItem(const WebCore::DragItem&, UIImage *);
+    void stageDragItem(const CyberCore::DragItem&, UIImage *);
     bool hasStagedDragSource() const;
     const DragSourceState& stagedDragSource() const { return m_stagedDragSource.value(); }
     enum class DidBecomeActive { No, Yes };
@@ -88,7 +88,7 @@ public:
     void dragSessionWillRequestAdditionalItem(void (^completion)(NSArray <UIDragItem *> *));
 
     // These helper methods are unique to UIDropInteraction.
-    void dropSessionDidEnterOrUpdate(id <UIDropSession>, const WebCore::DragData&);
+    void dropSessionDidEnterOrUpdate(id <UIDropSession>, const CyberCore::DragData&);
     void dropSessionDidExit() { m_dropSession = nil; }
     void dropSessionWillPerformDrop() { m_isPerformingDrop = true; }
 
@@ -106,8 +106,8 @@ public:
 
     void setDefaultDropPreview(UIDragItem *, UITargetedDragPreview *);
     void prepareForDelayedDropPreview(UIDragItem *, void(^provider)(UITargetedDragPreview *preview));
-    void deliverDelayedDropPreview(UIView *contentView, UIView *previewContainer, const WebCore::TextIndicatorData&);
-    void deliverDelayedDropPreview(UIView *contentView, CGRect unobscuredContentRect, NSArray<UIDragItem *> *, const Vector<WebCore::IntRect>& placeholderRects);
+    void deliverDelayedDropPreview(UIView *contentView, UIView *previewContainer, const CyberCore::TextIndicatorData&);
+    void deliverDelayedDropPreview(UIView *contentView, CGRect unobscuredContentRect, NSArray<UIDragItem *> *, const Vector<CyberCore::IntRect>& placeholderRects);
     void clearAllDelayedItemPreviewProviders();
 
 private:

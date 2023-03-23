@@ -29,9 +29,9 @@
 #include <CyberCore/MarkedText.h>
 #include <CyberCore/RenderedDocumentMarker.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
-namespace WebCore {
+namespace CyberCore {
 
 std::ostream& operator<<(std::ostream& os, MarkedText::Type type)
 {

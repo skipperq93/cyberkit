@@ -32,11 +32,11 @@ NS_ASSUME_NONNULL_BEGIN
  @abstract Field indicating the purpose and level of completeness of a web feature. Used to determine which UI (if any) should reveal a feature.
  */
 typedef NS_ENUM(NSUInteger, WebFeatureStatus) {
-    /// For customizing WebKit behavior in embedding applications.
+    /// For customizing CyberKit behavior in embedding applications.
     WebFeatureStatusEmbedder,
     /// Feature in active development. Unfinished, no promise it is usable or safe.
     WebFeatureStatusUnstable,
-    /// Tools for debugging the WebKit engine. Not generally useful to web developers.
+    /// Tools for debugging the CyberKit engine. Not generally useful to web developers.
     WebFeatureStatusInternal,
     /// Tools for web developers.
     WebFeatureStatusDeveloper,

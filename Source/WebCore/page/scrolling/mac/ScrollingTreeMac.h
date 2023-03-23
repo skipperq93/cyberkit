@@ -29,7 +29,7 @@
 
 #include "ThreadedScrollingTree.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class WheelEventTestMonitor;
 
@@ -57,8 +57,8 @@ private:
     void didCompleteRenderingUpdate() final;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_SCROLLING_TREE(WebCore::ScrollingTreeMac, isScrollingTreeMac())
+SPECIALIZE_TYPE_TRAITS_SCROLLING_TREE(CyberCore::ScrollingTreeMac, isScrollingTreeMac())
 
 #endif // ENABLE(ASYNC_SCROLLING) && ENABLE(SCROLLING_THREAD)

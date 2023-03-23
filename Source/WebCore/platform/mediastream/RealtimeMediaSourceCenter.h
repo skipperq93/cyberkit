@@ -49,7 +49,7 @@
 #include <wtf/OSObjectPtr.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class CaptureDevice;
 class CaptureDeviceManager;
@@ -147,7 +147,7 @@ private:
     bool m_useMockCaptureDevices { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM)
 

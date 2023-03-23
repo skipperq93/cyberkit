@@ -27,7 +27,7 @@
 
 #include "PlatformCALayerRemote.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 class LayerHostingContext;
 
@@ -35,7 +35,7 @@ class LayerHostingContext;
 class PlatformCALayerRemoteCustom final : public PlatformCALayerRemote {
     friend class PlatformCALayerRemote;
 public:
-    static Ref<PlatformCALayerRemote> create(PlatformLayer *, WebCore::PlatformCALayerClient*, RemoteLayerTreeContext&);
+    static Ref<PlatformCALayerRemote> create(PlatformLayer *, CyberCore::PlatformCALayerClient*, RemoteLayerTreeContext&);
 
     virtual ~PlatformCALayerRemoteCustom();
 
@@ -43,15 +43,15 @@ public:
 
     uint32_t hostingContextID() override;
 
-    void setNeedsDisplayInRect(const WebCore::FloatRect& dirtyRect) override;
+    void setNeedsDisplayInRect(const CyberCore::FloatRect& dirtyRect) override;
     void setNeedsDisplay() override;
 
 private:
-    PlatformCALayerRemoteCustom(WebCore::PlatformCALayer::LayerType, PlatformLayer *, WebCore::PlatformCALayerClient* owner, RemoteLayerTreeContext&);
+    PlatformCALayerRemoteCustom(CyberCore::PlatformCALayer::LayerType, PlatformLayer *, CyberCore::PlatformCALayerClient* owner, RemoteLayerTreeContext&);
 
-    Ref<WebCore::PlatformCALayer> clone(WebCore::PlatformCALayerClient* owner) const override;
+    Ref<CyberCore::PlatformCALayer> clone(CyberCore::PlatformCALayerClient* owner) const override;
     
-    void populateCreationProperties(RemoteLayerTreeTransaction::LayerCreationProperties&, const RemoteLayerTreeContext&, WebCore::PlatformCALayer::LayerType) override;
+    void populateCreationProperties(RemoteLayerTreeTransaction::LayerCreationProperties&, const RemoteLayerTreeContext&, CyberCore::PlatformCALayer::LayerType) override;
 
     Type type() const final { return Type::RemoteCustom; }
 
@@ -62,6 +62,6 @@ private:
     RetainPtr<PlatformLayer> m_platformLayer;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
-SPECIALIZE_TYPE_TRAITS_PLATFORM_CALAYER(WebKit::PlatformCALayerRemoteCustom, type() == WebCore::PlatformCALayer::Type::RemoteCustom)
+SPECIALIZE_TYPE_TRAITS_PLATFORM_CALAYER(CyberKit::PlatformCALayerRemoteCustom, type() == CyberCore::PlatformCALayer::Type::RemoteCustom)

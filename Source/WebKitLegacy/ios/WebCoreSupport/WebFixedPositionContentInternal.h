@@ -28,13 +28,13 @@
 
 @class CALayer;
 
-namespace WebCore {
+namespace CyberCore {
 class ViewportConstraints;
 }
 
-@interface WebFixedPositionContent(WebKitInternal)
-// Called from inside WebKit.
+@interface WebFixedPositionContent(CyberKitInternal)
+// Called from inside CyberKit.
 
-- (void)setViewportConstrainedLayers:(WTF::HashMap<CALayer *, std::unique_ptr<WebCore::ViewportConstraints>>&)layerMap stickyContainerMap:(const WTF::HashMap<CALayer*, CALayer*>&)stickyContainers;
+- (void)setViewportConstrainedLayers:(WTF::HashMap<CALayer *, std::unique_ptr<CyberCore::ViewportConstraints>>&)layerMap stickyContainerMap:(const WTF::HashMap<CALayer*, CALayer*>&)stickyContainers;
 
 @end

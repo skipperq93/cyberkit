@@ -34,7 +34,7 @@
 #include <wtf/RefPtr.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RTCSessionDescriptionDescriptor;
 class RTCSessionDescriptionRequest;
@@ -108,6 +108,6 @@ private:
     RTCDataChannelState m_state;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

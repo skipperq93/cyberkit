@@ -30,7 +30,7 @@
 #include <wtf/text/StringCommon.h>
 #include <wtf/text/StringConcatenateNumbers.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using CodeUnitMatchFunction = bool (*)(UChar);
 

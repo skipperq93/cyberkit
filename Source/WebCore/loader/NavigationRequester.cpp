@@ -32,7 +32,7 @@
 #include "FrameDestructionObserverInlines.h"
 #include "FrameLoader.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static std::optional<GlobalFrameIdentifier> createGlobalFrameIdentifier(const Document& document)
 {
@@ -58,4 +58,4 @@ NavigationRequester NavigationRequester::from(Document& document)
     };
 }
 
-} // namespace WebCore
+} // namespace CyberCore

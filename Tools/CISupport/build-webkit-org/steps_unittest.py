@@ -279,7 +279,7 @@ class TestCleanBuildIfScheduled(BuildStepMixinAdditions, unittest.TestCase):
                 command=['python3', 'Tools/CISupport/clean-build', '--platform=ios-14', '--release'],
             ) + 0,
         )
-        self.expectOutcome(result=SUCCESS, state_string='deleted WebKitBuild directory')
+        self.expectOutcome(result=SUCCESS, state_string='deleted CyberKitBuild directory')
         return self.runStep()
 
     def test_failure(self):
@@ -296,14 +296,14 @@ class TestCleanBuildIfScheduled(BuildStepMixinAdditions, unittest.TestCase):
             ) + 2
             + ExpectShell.log('stdio', stdout='Unexpected error.'),
         )
-        self.expectOutcome(result=FAILURE, state_string='deleted WebKitBuild directory (failure)')
+        self.expectOutcome(result=FAILURE, state_string='deleted CyberKitBuild directory (failure)')
         return self.runStep()
 
     def test_skip(self):
         self.setupStep(CleanBuildIfScheduled())
         self.setProperty('fullPlatform', 'ios-simulator-14')
         self.setProperty('configuration', 'debug')
-        self.expectOutcome(result=SKIPPED, state_string='deleted WebKitBuild directory (skipped)')
+        self.expectOutcome(result=SKIPPED, state_string='deleted CyberKitBuild directory (skipped)')
         return self.runStep()
 
 
@@ -387,7 +387,7 @@ class TestInstallWpeDependencies(BuildStepMixinAdditions, unittest.TestCase):
         return self.runStep()
 
 
-class TestCompileWebKit(BuildStepMixinAdditions, unittest.TestCase):
+class TestCompileCyberKit(BuildStepMixinAdditions, unittest.TestCase):
     def setUp(self):
         self.longMessage = True
         return self.setUpBuildStep()
@@ -396,7 +396,7 @@ class TestCompileWebKit(BuildStepMixinAdditions, unittest.TestCase):
         return self.tearDownBuildStep()
 
     def test_success(self):
-        self.setupStep(CompileWebKit())
+        self.setupStep(CompileCyberKit())
         self.setProperty('fullPlatform', 'ios-simulator-11')
         self.setProperty('configuration', 'release')
         self.expectRemoteCommands(
@@ -411,7 +411,7 @@ class TestCompileWebKit(BuildStepMixinAdditions, unittest.TestCase):
         return self.runStep()
 
     def test_bigsur_timeout(self):
-        self.setupStep(CompileWebKit())
+        self.setupStep(CompileCyberKit())
         self.setProperty('fullPlatform', 'mac-bigsur')
         self.setProperty('configuration', 'release')
         self.expectRemoteCommands(
@@ -426,7 +426,7 @@ class TestCompileWebKit(BuildStepMixinAdditions, unittest.TestCase):
         return self.runStep()
 
     def test_success_gtk(self):
-        self.setupStep(CompileWebKit())
+        self.setupStep(CompileCyberKit())
         self.setProperty('platform', 'gtk')
         self.setProperty('fullPlatform', 'gtk')
         self.setProperty('configuration', 'release')
@@ -435,14 +435,14 @@ class TestCompileWebKit(BuildStepMixinAdditions, unittest.TestCase):
                 workdir='wkdir',
                 timeout=1800,
                 logEnviron=True,
-                command=['perl', 'Tools/Scripts/build-webkit', '--no-fatal-warnings', '--release', '--prefix=/app/webkit/WebKitBuild/Release/install', '--gtk'],
+                command=['perl', 'Tools/Scripts/build-webkit', '--no-fatal-warnings', '--release', '--prefix=/app/webkit/CyberKitBuild/Release/install', '--gtk'],
             ) + 0,
         )
         self.expectOutcome(result=SUCCESS, state_string='compiled')
         return self.runStep()
 
     def test_success_wpe(self):
-        self.setupStep(CompileWebKit())
+        self.setupStep(CompileCyberKit())
         self.setProperty('platform', 'wpe')
         self.setProperty('fullPlatform', 'wpe')
         self.setProperty('configuration', 'release')
@@ -458,7 +458,7 @@ class TestCompileWebKit(BuildStepMixinAdditions, unittest.TestCase):
         return self.runStep()
 
     def test_failure(self):
-        self.setupStep(CompileWebKit())
+        self.setupStep(CompileCyberKit())
         self.setProperty('fullPlatform', 'mac-sierra')
         self.setProperty('configuration', 'debug')
         self.expectRemoteCommands(
@@ -553,7 +553,7 @@ class TestShowIdentifier(BuildStepMixinAdditions, unittest.TestCase):
         return self.runStep()
 
 
-class TestRunWebKitPerlTests(BuildStepMixinAdditions, unittest.TestCase):
+class TestRunCyberKitPerlTests(BuildStepMixinAdditions, unittest.TestCase):
     def setUp(self):
         self.longMessage = True
         return self.setUpBuildStep()
@@ -592,7 +592,7 @@ Failed 1/40 test programs. 10/630 subtests failed.'''),
         return self.runStep()
 
 
-class TestRunWebKitPyTests(BuildStepMixinAdditions, unittest.TestCase):
+class TestRunCyberKitPyTests(BuildStepMixinAdditions, unittest.TestCase):
     def setUp(self):
         self.longMessage = True
         os.environ['RESULTS_SERVER_API_KEY'] = 'test-api-key'
@@ -603,8 +603,8 @@ class TestRunWebKitPyTests(BuildStepMixinAdditions, unittest.TestCase):
         return self.tearDownBuildStep()
 
     def configureStep(self):
-        self.setupStep(RunWebKitPyTests())
-        self.setProperty('buildername', 'WebKitPy-Tests-EWS')
+        self.setupStep(RunCyberKitPyTests())
+        self.setProperty('buildername', 'CyberKitPy-Tests-EWS')
         self.setProperty('buildnumber', '101')
         self.setProperty('workername', 'ews100')
 
@@ -617,7 +617,7 @@ class TestRunWebKitPyTests(BuildStepMixinAdditions, unittest.TestCase):
                 logEnviron=False,
                 command=['python3', 'Tools/Scripts/test-webkitpy', '--verbose',
                          '--buildbot-master', CURRENT_HOSTNAME,
-                         '--builder-name', 'WebKitPy-Tests-EWS',
+                         '--builder-name', 'CyberKitPy-Tests-EWS',
                          '--build-number', '101', '--buildbot-worker', 'ews100',
                          '--report', RESULTS_WEBKIT_URL],
                 env={'RESULTS_SERVER_API_KEY': 'test-api-key'}
@@ -635,7 +635,7 @@ class TestRunWebKitPyTests(BuildStepMixinAdditions, unittest.TestCase):
                 logEnviron=False,
                 command=['python3', 'Tools/Scripts/test-webkitpy', '--verbose',
                          '--buildbot-master', CURRENT_HOSTNAME,
-                         '--builder-name', 'WebKitPy-Tests-EWS',
+                         '--builder-name', 'CyberKitPy-Tests-EWS',
                          '--build-number', '101', '--buildbot-worker', 'ews100',
                          '--report', RESULTS_WEBKIT_URL],
                 env={'RESULTS_SERVER_API_KEY': 'test-api-key'}
@@ -653,7 +653,7 @@ class TestRunWebKitPyTests(BuildStepMixinAdditions, unittest.TestCase):
                 logEnviron=False,
                 command=['python3', 'Tools/Scripts/test-webkitpy', '--verbose',
                          '--buildbot-master', CURRENT_HOSTNAME,
-                         '--builder-name', 'WebKitPy-Tests-EWS',
+                         '--builder-name', 'CyberKitPy-Tests-EWS',
                          '--build-number', '101', '--buildbot-worker', 'ews100',
                          '--report', RESULTS_WEBKIT_URL],
                 env={'RESULTS_SERVER_API_KEY': 'test-api-key'}
@@ -672,7 +672,7 @@ class TestRunWebKitPyTests(BuildStepMixinAdditions, unittest.TestCase):
                 logEnviron=False,
                 command=['python3', 'Tools/Scripts/test-webkitpy', '--verbose',
                          '--buildbot-master', CURRENT_HOSTNAME,
-                         '--builder-name', 'WebKitPy-Tests-EWS',
+                         '--builder-name', 'CyberKitPy-Tests-EWS',
                          '--build-number', '101', '--buildbot-worker', 'ews100',
                          '--report', RESULTS_WEBKIT_URL],
                 env={'RESULTS_SERVER_API_KEY': 'test-api-key'}
@@ -691,7 +691,7 @@ class TestRunWebKitPyTests(BuildStepMixinAdditions, unittest.TestCase):
                 logEnviron=False,
                 command=['python3', 'Tools/Scripts/test-webkitpy', '--verbose',
                          '--buildbot-master', CURRENT_HOSTNAME,
-                         '--builder-name', 'WebKitPy-Tests-EWS',
+                         '--builder-name', 'CyberKitPy-Tests-EWS',
                          '--build-number', '101', '--buildbot-worker', 'ews100',
                          '--report', RESULTS_WEBKIT_URL],
                 env={'RESULTS_SERVER_API_KEY': 'test-api-key'}
@@ -702,7 +702,7 @@ class TestRunWebKitPyTests(BuildStepMixinAdditions, unittest.TestCase):
         return self.runStep()
 
 
-class TestRunLLDBWebKitTests(BuildStepMixinAdditions, unittest.TestCase):
+class TestRunLLDBCyberKitTests(BuildStepMixinAdditions, unittest.TestCase):
     def setUp(self):
         self.longMessage = True
         return self.setUpBuildStep()
@@ -711,7 +711,7 @@ class TestRunLLDBWebKitTests(BuildStepMixinAdditions, unittest.TestCase):
         return self.tearDownBuildStep()
 
     def test_success(self):
-        self.setupStep(RunLLDBWebKitTests())
+        self.setupStep(RunLLDBCyberKitTests())
         self.setProperty('configuration', 'release')
         self.expectRemoteCommands(
             ExpectShell(
@@ -725,7 +725,7 @@ class TestRunLLDBWebKitTests(BuildStepMixinAdditions, unittest.TestCase):
         return self.runStep()
 
     def test_unexpected_failure(self):
-        self.setupStep(RunLLDBWebKitTests())
+        self.setupStep(RunLLDBCyberKitTests())
         self.setProperty('configuration', 'release')
         self.expectRemoteCommands(
             ExpectShell(
@@ -739,7 +739,7 @@ class TestRunLLDBWebKitTests(BuildStepMixinAdditions, unittest.TestCase):
         return self.runStep()
 
     def test_failure(self):
-        self.setupStep(RunLLDBWebKitTests())
+        self.setupStep(RunLLDBCyberKitTests())
         self.setProperty('configuration', 'release')
         self.expectRemoteCommands(
             ExpectShell(
@@ -754,7 +754,7 @@ class TestRunLLDBWebKitTests(BuildStepMixinAdditions, unittest.TestCase):
         return self.runStep()
 
     def test_errors(self):
-        self.setupStep(RunLLDBWebKitTests())
+        self.setupStep(RunLLDBCyberKitTests())
         self.setProperty('configuration', 'release')
         self.expectRemoteCommands(
             ExpectShell(
@@ -769,7 +769,7 @@ class TestRunLLDBWebKitTests(BuildStepMixinAdditions, unittest.TestCase):
         return self.runStep()
 
     def test_lot_of_failures(self):
-        self.setupStep(RunLLDBWebKitTests())
+        self.setupStep(RunLLDBCyberKitTests())
         self.setProperty('configuration', 'release')
         self.expectRemoteCommands(
             ExpectShell(
@@ -784,7 +784,7 @@ class TestRunLLDBWebKitTests(BuildStepMixinAdditions, unittest.TestCase):
         return self.runStep()
 
 
-class TestRunWebKitTests(BuildStepMixinAdditions, unittest.TestCase):
+class TestRunCyberKitTests(BuildStepMixinAdditions, unittest.TestCase):
     def setUp(self):
         self.longMessage = True
         os.environ['RESULTS_SERVER_API_KEY'] = 'test-api-key'
@@ -795,7 +795,7 @@ class TestRunWebKitTests(BuildStepMixinAdditions, unittest.TestCase):
         return self.tearDownBuildStep()
 
     def configureStep(self):
-        self.setupStep(RunWebKitTests())
+        self.setupStep(RunCyberKitTests())
         self.setProperty('buildername', 'iOS-14-Simulator-WK2-Tests-EWS')
         self.setProperty('buildnumber', '101')
         self.setProperty('workername', 'ews100')
@@ -927,7 +927,7 @@ class TestRunWebKitTests(BuildStepMixinAdditions, unittest.TestCase):
         return self.runStep()
 
 
-class TestRunWebKit1Tests(BuildStepMixinAdditions, unittest.TestCase):
+class TestRunCyberKit1Tests(BuildStepMixinAdditions, unittest.TestCase):
     def setUp(self):
         self.longMessage = True
         self.jsonFileName = 'layout-test-results/full_results.json'
@@ -939,7 +939,7 @@ class TestRunWebKit1Tests(BuildStepMixinAdditions, unittest.TestCase):
         return self.tearDownBuildStep()
 
     def configureStep(self):
-        self.setupStep(RunWebKit1Tests())
+        self.setupStep(RunCyberKit1Tests())
         self.setProperty('buildername', 'Apple-iOS-14-Simulator-Debug-Build')
         self.setProperty('buildnumber', '101')
         self.setProperty('workername', 'bot100')
@@ -1139,7 +1139,7 @@ class TestPrintConfiguration(BuildStepMixinAdditions, unittest.TestCase):
 ProductVersion:	12.0.1
 BuildVersion:	21A558'''),
             ExpectShell(command=['system_profiler', 'SPSoftwareDataType', 'SPHardwareDataType'], workdir='wkdir', timeout=60, logEnviron=False) + 0
-            + ExpectShell.log('stdio', stdout='Configuration version: Software: System Software Overview: System Version: macOS 11.4 (20F71) Kernel Version: Darwin 20.5.0 Boot Volume: Macintosh HD Boot Mode: Normal Computer Name: bot1020 User Name: WebKit Build Worker (buildbot) Secure Virtual Memory: Enabled System Integrity Protection: Enabled Time since boot: 27 seconds Hardware: Hardware Overview: Model Name: Mac mini Model Identifier: Macmini8,1 Processor Name: 6-Core Intel Core i7 Processor Speed: 3.2 GHz Number of Processors: 1 Total Number of Cores: 6 L2 Cache (per Core): 256 KB L3 Cache: 12 MB Hyper-Threading Technology: Enabled Memory: 32 GB System Firmware Version: 1554.120.19.0.0 (iBridge: 18.16.14663.0.0,0) Serial Number (system): C07DXXXXXXXX Hardware UUID: F724DE6E-706A-5A54-8D16-000000000000 Provisioning UDID: E724DE6E-006A-5A54-8D16-000000000000 Activation Lock Status: Disabled Xcode 12.5 Build version 12E262'),
+            + ExpectShell.log('stdio', stdout='Configuration version: Software: System Software Overview: System Version: macOS 11.4 (20F71) Kernel Version: Darwin 20.5.0 Boot Volume: Macintosh HD Boot Mode: Normal Computer Name: bot1020 User Name: CyberKit Build Worker (buildbot) Secure Virtual Memory: Enabled System Integrity Protection: Enabled Time since boot: 27 seconds Hardware: Hardware Overview: Model Name: Mac mini Model Identifier: Macmini8,1 Processor Name: 6-Core Intel Core i7 Processor Speed: 3.2 GHz Number of Processors: 1 Total Number of Cores: 6 L2 Cache (per Core): 256 KB L3 Cache: 12 MB Hyper-Threading Technology: Enabled Memory: 32 GB System Firmware Version: 1554.120.19.0.0 (iBridge: 18.16.14663.0.0,0) Serial Number (system): C07DXXXXXXXX Hardware UUID: F724DE6E-706A-5A54-8D16-000000000000 Provisioning UDID: E724DE6E-006A-5A54-8D16-000000000000 Activation Lock Status: Disabled Xcode 12.5 Build version 12E262'),
             ExpectShell(command=['/bin/sh', '-c', 'echo TimezoneVers: $(cat /usr/share/zoneinfo/+VERSION)'], workdir='wkdir', timeout=60, logEnviron=False) + 0,
             ExpectShell(command=['xcodebuild', '-sdk', '-version'], workdir='wkdir', timeout=60, logEnviron=False)
             + ExpectShell.log('stdio', stdout='''MacOSX12.0.sdk - macOS 12.0 (macosx12.0)

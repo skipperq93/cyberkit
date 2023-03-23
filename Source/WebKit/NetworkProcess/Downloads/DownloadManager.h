@@ -41,7 +41,7 @@ namespace PAL {
 class SessionID;
 }
 
-namespace WebCore {
+namespace CyberCore {
 class BlobDataFileReference;
 class ResourceHandle;
 class ResourceRequest;
@@ -82,10 +82,10 @@ public:
 
     explicit DownloadManager(Client&);
 
-    void startDownload(PAL::SessionID, DownloadID, const WebCore::ResourceRequest&, std::optional<NavigatingToAppBoundDomain>, const String& suggestedName = { });
+    void startDownload(PAL::SessionID, DownloadID, const CyberCore::ResourceRequest&, std::optional<NavigatingToAppBoundDomain>, const String& suggestedName = { });
     void dataTaskBecameDownloadTask(DownloadID, std::unique_ptr<Download>&&);
-    void continueWillSendRequest(DownloadID, WebCore::ResourceRequest&&);
-    void convertNetworkLoadToDownload(DownloadID, std::unique_ptr<NetworkLoad>&&, ResponseCompletionHandler&&,  Vector<RefPtr<WebCore::BlobDataFileReference>>&&, const WebCore::ResourceRequest&, const WebCore::ResourceResponse&);
+    void continueWillSendRequest(DownloadID, CyberCore::ResourceRequest&&);
+    void convertNetworkLoadToDownload(DownloadID, std::unique_ptr<NetworkLoad>&&, ResponseCompletionHandler&&,  Vector<RefPtr<CyberCore::BlobDataFileReference>>&&, const CyberCore::ResourceRequest&, const CyberCore::ResourceResponse&);
     void downloadDestinationDecided(DownloadID, Ref<NetworkDataTask>&&);
 
     void resumeDownload(PAL::SessionID, DownloadID, const IPC::DataReference& resumeData, const String& path, SandboxExtension::Handle&&, CallDownloadDidStart);

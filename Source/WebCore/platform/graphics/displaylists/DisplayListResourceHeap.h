@@ -34,7 +34,7 @@
 #include <wtf/HashMap.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace DisplayList {
 
 class ResourceHeap {

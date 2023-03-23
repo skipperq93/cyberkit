@@ -45,7 +45,7 @@
 #endif
 #import <pal/cf/AudioToolboxSoftLink.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 #if ENABLE(VORBIS) || ENABLE(OPUS)
 static bool registerDecoderFactory(const char* decoderName, OSType decoderType)

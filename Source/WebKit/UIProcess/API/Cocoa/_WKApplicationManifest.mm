@@ -30,7 +30,7 @@
 #import <CyberCore/ApplicationManifestParser.h>
 #import <CyberCore/Color.h>
 #import <CyberCore/ColorCocoa.h>
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 #import <wtf/cocoa/VectorCocoa.h>
 
 #if PLATFORM(IOS_FAMILY)
@@ -41,26 +41,26 @@
 #import "AppKitSPI.h"
 #endif
 
-static OptionSet<WebCore::ApplicationManifest::Icon::Purpose> fromPurposes(NSArray<NSNumber *> *purposes)
+static OptionSet<CyberCore::ApplicationManifest::Icon::Purpose> fromPurposes(NSArray<NSNumber *> *purposes)
 {
-    OptionSet<WebCore::ApplicationManifest::Icon::Purpose> purposeSet;
+    OptionSet<CyberCore::ApplicationManifest::Icon::Purpose> purposeSet;
     for (NSNumber *purposeNumber in purposes) {
-        auto purpose = static_cast<WebCore::ApplicationManifest::Icon::Purpose>(purposeNumber.integerValue);
+        auto purpose = static_cast<CyberCore::ApplicationManifest::Icon::Purpose>(purposeNumber.integerValue);
         purposeSet.add(purpose);
     }
 
     return purposeSet;
 }
 
-static RetainPtr<NSArray<NSNumber *>> fromPurposes(OptionSet<WebCore::ApplicationManifest::Icon::Purpose> purposes)
+static RetainPtr<NSArray<NSNumber *>> fromPurposes(OptionSet<CyberCore::ApplicationManifest::Icon::Purpose> purposes)
 {
     auto purposeArray = adoptNS([[NSMutableArray alloc] init]);
     for (auto purpose : purposes)
-        [purposeArray addObject:[NSNumber numberWithUnsignedChar:static_cast<std::underlying_type<WebCore::ApplicationManifest::Icon::Purpose>::type>(purpose)]];
+        [purposeArray addObject:[NSNumber numberWithUnsignedChar:static_cast<std::underlying_type<CyberCore::ApplicationManifest::Icon::Purpose>::type>(purpose)]];
     return purposeArray;
 }
 
-static std::optional<WebCore::ApplicationManifest::Icon> makeVectorElement(const WebCore::ApplicationManifest::Icon*, id arrayElement)
+static std::optional<CyberCore::ApplicationManifest::Icon> makeVectorElement(const CyberCore::ApplicationManifest::Icon*, id arrayElement)
 {
     if (![arrayElement isKindOfClass: _WKApplicationManifestIcon.class])
         return std::nullopt;
@@ -69,7 +69,7 @@ static std::optional<WebCore::ApplicationManifest::Icon> makeVectorElement(const
     if (!icon)
         return std::nullopt;
 
-    return WebCore::ApplicationManifest::Icon {
+    return CyberCore::ApplicationManifest::Icon {
         icon.src,
         makeVector<String>(icon.sizes),
         icon.type,
@@ -97,7 +97,7 @@ static std::optional<WebCore::ApplicationManifest::Icon> makeVectorElement(const
     return self;
 }
 
-- (instancetype)initWithCoreIcon:(const WebCore::ApplicationManifest::Icon *)icon
+- (instancetype)initWithCoreIcon:(const CyberCore::ApplicationManifest::Icon *)icon
 {
     if (!(self = [[_WKApplicationManifestIcon alloc] init]))
         return nil;
@@ -124,7 +124,7 @@ static std::optional<WebCore::ApplicationManifest::Icon> makeVectorElement(const
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainRunLoop(_WKApplicationManifestIcon.class, self))
+    if (CyberCoreObjCScheduleDeallocateOnMainRunLoop(_WKApplicationManifestIcon.class, self))
         return;
 
     [_src release];
@@ -156,19 +156,19 @@ static std::optional<WebCore::ApplicationManifest::Icon> makeVectorElement(const
     NSInteger display = [aDecoder decodeIntegerForKey:@"display"];
     URL startURL = [aDecoder decodeObjectOfClass:[NSURL class] forKey:@"start_url"];
     URL manifestId = [aDecoder decodeObjectOfClass:[NSURL class] forKey:@"manifestId"];
-    WebCore::CocoaColor *themeColor = [aDecoder decodeObjectOfClass:[WebCore::CocoaColor class] forKey:@"theme_color"];
+    CyberCore::CocoaColor *themeColor = [aDecoder decodeObjectOfClass:[CyberCore::CocoaColor class] forKey:@"theme_color"];
     NSArray<_WKApplicationManifestIcon *> *icons = [aDecoder decodeObjectOfClasses:[NSSet setWithArray:@[[NSArray class], [_WKApplicationManifestIcon class]]] forKey:@"icons"];
 
-    WebCore::ApplicationManifest coreApplicationManifest {
+    CyberCore::ApplicationManifest coreApplicationManifest {
         WTFMove(name),
         WTFMove(shortName),
         WTFMove(description),
         WTFMove(scopeURL),
-        static_cast<WebCore::ApplicationManifest::Display>(display),
+        static_cast<CyberCore::ApplicationManifest::Display>(display),
         WTFMove(startURL),
         WTFMove(manifestId),
-        WebCore::roundAndClampToSRGBALossy(themeColor.CGColor),
-        makeVector<WebCore::ApplicationManifest::Icon>(icons),
+        CyberCore::roundAndClampToSRGBALossy(themeColor.CGColor),
+        makeVector<CyberCore::ApplicationManifest::Icon>(icons),
     };
 
     API::Object::constructInWrapper<API::ApplicationManifest>(self, WTFMove(coreApplicationManifest));
@@ -178,7 +178,7 @@ static std::optional<WebCore::ApplicationManifest::Icon> makeVectorElement(const
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainRunLoop(_WKApplicationManifest.class, self))
+    if (CyberCoreObjCScheduleDeallocateOnMainRunLoop(_WKApplicationManifest.class, self))
         return;
 
     _applicationManifest->~ApplicationManifest();
@@ -201,7 +201,7 @@ static std::optional<WebCore::ApplicationManifest::Icon> makeVectorElement(const
 
 + (_WKApplicationManifest *)applicationManifestFromJSON:(NSString *)json manifestURL:(NSURL *)manifestURL documentURL:(NSURL *)documentURL
 {
-    auto manifest = WebCore::ApplicationManifestParser::parse(WTF::String(json), URL(manifestURL), URL(documentURL));
+    auto manifest = CyberCore::ApplicationManifestParser::parse(WTF::String(json), URL(manifestURL), URL(documentURL));
     return wrapper(API::ApplicationManifest::create(manifest));
 }
 
@@ -240,7 +240,7 @@ static NSString *nullableNSString(const WTF::String& string)
     return _applicationManifest->applicationManifest().startURL;
 }
 
-- (WebCore::CocoaColor *)themeColor
+- (CyberCore::CocoaColor *)themeColor
 {
     return cocoaColor(_applicationManifest->applicationManifest().themeColor).autorelease();
 }
@@ -248,13 +248,13 @@ static NSString *nullableNSString(const WTF::String& string)
 - (_WKApplicationManifestDisplayMode)displayMode
 {
     switch (_applicationManifest->applicationManifest().display) {
-    case WebCore::ApplicationManifest::Display::Browser:
+    case CyberCore::ApplicationManifest::Display::Browser:
         return _WKApplicationManifestDisplayModeBrowser;
-    case WebCore::ApplicationManifest::Display::MinimalUI:
+    case CyberCore::ApplicationManifest::Display::MinimalUI:
         return _WKApplicationManifestDisplayModeMinimalUI;
-    case WebCore::ApplicationManifest::Display::Standalone:
+    case CyberCore::ApplicationManifest::Display::Standalone:
         return _WKApplicationManifestDisplayModeStandalone;
-    case WebCore::ApplicationManifest::Display::Fullscreen:
+    case CyberCore::ApplicationManifest::Display::Fullscreen:
         return _WKApplicationManifestDisplayModeFullScreen;
     }
 
@@ -320,7 +320,7 @@ static NSString *nullableNSString(const WTF::String& string)
     return nil;
 }
 
-- (WebCore::CocoaColor *)themeColor
+- (CyberCore::CocoaColor *)themeColor
 {
     return nil;
 }

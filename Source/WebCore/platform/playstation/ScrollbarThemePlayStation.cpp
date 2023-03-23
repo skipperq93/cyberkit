@@ -31,7 +31,7 @@
 #include "ScrollView.h"
 #include "Scrollbar.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 ScrollbarTheme& ScrollbarTheme::nativeTheme()
 {
@@ -84,4 +84,4 @@ void ScrollbarThemePlayStation::paintThumb(GraphicsContext& context, Scrollbar& 
         context.fillRect(thumbRect, Color::darkGray);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

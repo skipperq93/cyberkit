@@ -29,7 +29,7 @@
 
 #import "ControlMac.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class TextFieldPart;
 
@@ -45,6 +45,6 @@ private:
     RetainPtr<NSTextFieldCell> m_textFieldCell;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(MAC)

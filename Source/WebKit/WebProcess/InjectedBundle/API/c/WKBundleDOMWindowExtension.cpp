@@ -33,22 +33,22 @@
 
 WKTypeID WKBundleDOMWindowExtensionGetTypeID()
 {
-    return WebKit::toAPI(WebKit::InjectedBundleDOMWindowExtension::APIType);
+    return CyberKit::toAPI(CyberKit::InjectedBundleDOMWindowExtension::APIType);
 }
 
 WKBundleDOMWindowExtensionRef WKBundleDOMWindowExtensionCreate(WKBundleFrameRef frame, WKBundleScriptWorldRef world)
 {
-    RefPtr<WebKit::InjectedBundleDOMWindowExtension> extension = WebKit::InjectedBundleDOMWindowExtension::create(WebKit::toImpl(frame), WebKit::toImpl(world));
+    RefPtr<CyberKit::InjectedBundleDOMWindowExtension> extension = CyberKit::InjectedBundleDOMWindowExtension::create(CyberKit::toImpl(frame), CyberKit::toImpl(world));
     return toAPI(extension.leakRef());
 }
 
 WKBundleFrameRef WKBundleDOMWindowExtensionGetFrame(WKBundleDOMWindowExtensionRef extension)
 {
-    return toAPI(WebKit::toImpl(extension)->frame());
+    return toAPI(CyberKit::toImpl(extension)->frame());
 }
 
 WKBundleScriptWorldRef WKBundleDOMWindowExtensionGetScriptWorld(WKBundleDOMWindowExtensionRef extension)
 {
-    return toAPI(WebKit::toImpl(extension)->world());
+    return toAPI(CyberKit::toImpl(extension)->world());
 }
 

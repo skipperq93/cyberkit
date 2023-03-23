@@ -28,10 +28,10 @@
 
 #if ENABLE(TOUCH_EVENTS)
 
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 void WebPlatformTouchPoint::encode(IPC::Encoder& encoder) const
 {

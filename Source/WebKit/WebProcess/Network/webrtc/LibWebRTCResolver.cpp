@@ -34,7 +34,7 @@
 #include "WebProcess.h"
 #include <wtf/MainThread.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 void LibWebRTCResolver::sendOnMainThread(Function<void(IPC::Connection&)>&& callback)
 {
@@ -116,6 +116,6 @@ void LibWebRTCResolver::setError(int error)
         doDestroy();
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(LIBWEBRTC)

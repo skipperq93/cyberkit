@@ -1,5 +1,5 @@
 /*
- * This file is part of the select element renderer in WebCore.
+ * This file is part of the select element renderer in CyberCore.
  *
  * Copyright (C) 2010 Nokia Corporation and/or its subsidiary(-ies).
  * Copyright (C) 2006, 2007, 2008, 2009, 2010, 2011, 2015 Apple Inc. All rights reserved.
@@ -56,7 +56,7 @@
 #include "RenderThemeIOS.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -611,7 +611,7 @@ int RenderMenuList::selectedIndex() const
 void RenderMenuList::popupDidHide()
 {
 #if !PLATFORM(IOS_FAMILY)
-    // PopupMenuMac::show in WebKitLegacy can call this callback even when popup had already been dismissed.
+    // PopupMenuMac::show in CyberKitLegacy can call this callback even when popup had already been dismissed.
     m_popupIsVisible = false;
 #endif
 }

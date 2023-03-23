@@ -42,7 +42,7 @@ class CallFrame;
 
 using JSC::MessageType;
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class Page;
@@ -85,4 +85,4 @@ private:
     Page& m_page;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

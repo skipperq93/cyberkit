@@ -32,7 +32,7 @@
 
 @protocol DOMEventListener;
 
-namespace WebCore {
+namespace CyberCore {
 
     class ObjCEventListener : public EventListener {
     public:
@@ -57,4 +57,4 @@ namespace WebCore {
         RetainPtr<ObjCListener> m_listener;
     };
 
-} // namespace WebCore
+} // namespace CyberCore

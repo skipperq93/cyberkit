@@ -35,9 +35,9 @@
 #include <CyberCore/SharedWorkerKey.h>
 #include <CyberCore/WorkerOptions.h>
 
-namespace WebKit {
+namespace CyberKit {
 
-#define CONNECTION_RELEASE_LOG(fmt, ...) RELEASE_LOG(SharedWorker, "%p - [webProcessIdentifier=%" PRIu64 "] WebSharedWorkerObjectConnection::" fmt, this, WebCore::Process::identifier().toUInt64(), ##__VA_ARGS__)
+#define CONNECTION_RELEASE_LOG(fmt, ...) RELEASE_LOG(SharedWorker, "%p - [webProcessIdentifier=%" PRIu64 "] WebSharedWorkerObjectConnection::" fmt, this, CyberCore::Process::identifier().toUInt64(), ##__VA_ARGS__)
 
 WebSharedWorkerObjectConnection::WebSharedWorkerObjectConnection()
 {
@@ -54,26 +54,26 @@ IPC::Connection* WebSharedWorkerObjectConnection::messageSenderConnection() cons
     return &WebProcess::singleton().ensureNetworkProcessConnection().connection();
 }
 
-void WebSharedWorkerObjectConnection::requestSharedWorker(const WebCore::SharedWorkerKey& sharedWorkerKey, WebCore::SharedWorkerObjectIdentifier sharedWorkerObjectIdentifier, WebCore::TransferredMessagePort&& port, const WebCore::WorkerOptions& workerOptions)
+void WebSharedWorkerObjectConnection::requestSharedWorker(const CyberCore::SharedWorkerKey& sharedWorkerKey, CyberCore::SharedWorkerObjectIdentifier sharedWorkerObjectIdentifier, CyberCore::TransferredMessagePort&& port, const CyberCore::WorkerOptions& workerOptions)
 {
     CONNECTION_RELEASE_LOG("requestSharedWorker: sharedWorkerObjectIdentifier=%" PUBLIC_LOG_STRING, sharedWorkerObjectIdentifier.toString().utf8().data());
     WebMessagePortChannelProvider::singleton().messagePortSentToRemote(port.first);
     send(Messages::WebSharedWorkerServerConnection::RequestSharedWorker { sharedWorkerKey, sharedWorkerObjectIdentifier, WTFMove(port), workerOptions });
 }
 
-void WebSharedWorkerObjectConnection::sharedWorkerObjectIsGoingAway(const WebCore::SharedWorkerKey& sharedWorkerKey, WebCore::SharedWorkerObjectIdentifier sharedWorkerObjectIdentifier)
+void WebSharedWorkerObjectConnection::sharedWorkerObjectIsGoingAway(const CyberCore::SharedWorkerKey& sharedWorkerKey, CyberCore::SharedWorkerObjectIdentifier sharedWorkerObjectIdentifier)
 {
     CONNECTION_RELEASE_LOG("sharedWorkerObjectIsGoingAway: sharedWorkerObjectIdentifier=%" PUBLIC_LOG_STRING, sharedWorkerObjectIdentifier.toString().utf8().data());
     send(Messages::WebSharedWorkerServerConnection::SharedWorkerObjectIsGoingAway { sharedWorkerKey, sharedWorkerObjectIdentifier });
 }
 
-void WebSharedWorkerObjectConnection::suspendForBackForwardCache(const WebCore::SharedWorkerKey& sharedWorkerKey, WebCore::SharedWorkerObjectIdentifier sharedWorkerObjectIdentifier)
+void WebSharedWorkerObjectConnection::suspendForBackForwardCache(const CyberCore::SharedWorkerKey& sharedWorkerKey, CyberCore::SharedWorkerObjectIdentifier sharedWorkerObjectIdentifier)
 {
     CONNECTION_RELEASE_LOG("suspendForBackForwardCache: sharedWorkerObjectIdentifier=%" PUBLIC_LOG_STRING, sharedWorkerObjectIdentifier.toString().utf8().data());
     send(Messages::WebSharedWorkerServerConnection::SuspendForBackForwardCache { sharedWorkerKey, sharedWorkerObjectIdentifier });
 }
 
-void WebSharedWorkerObjectConnection::resumeForBackForwardCache(const WebCore::SharedWorkerKey& sharedWorkerKey, WebCore::SharedWorkerObjectIdentifier sharedWorkerObjectIdentifier)
+void WebSharedWorkerObjectConnection::resumeForBackForwardCache(const CyberCore::SharedWorkerKey& sharedWorkerKey, CyberCore::SharedWorkerObjectIdentifier sharedWorkerObjectIdentifier)
 {
     CONNECTION_RELEASE_LOG("resumeForBackForwardCache: sharedWorkerObjectIdentifier=%" PUBLIC_LOG_STRING, sharedWorkerObjectIdentifier.toString().utf8().data());
     send(Messages::WebSharedWorkerServerConnection::ResumeForBackForwardCache { sharedWorkerKey, sharedWorkerObjectIdentifier });
@@ -81,4 +81,4 @@ void WebSharedWorkerObjectConnection::resumeForBackForwardCache(const WebCore::S
 
 #undef CONNECTION_RELEASE_LOG
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -28,13 +28,13 @@
 
 #if PLATFORM(MAC) || HAVE(UIKIT_WITH_MOUSE_SUPPORT)
 
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 
 @implementation _WKHitTestResult
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainRunLoop(_WKHitTestResult.class, self))
+    if (CyberCoreObjCScheduleDeallocateOnMainRunLoop(_WKHitTestResult.class, self))
         return;
 
     _hitTestResult->~HitTestResult();

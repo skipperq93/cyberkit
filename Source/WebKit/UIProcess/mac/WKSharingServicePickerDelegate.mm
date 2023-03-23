@@ -133,7 +133,7 @@
         dataReference = IPC::DataReference(static_cast<const uint8_t*>([data bytes]), [data length]);
 
         types.append(NSPasteboardTypeRTFD);
-        types.append(WebCore::legacyRTFDPasteboardType());
+        types.append(CyberCore::legacyRTFDPasteboardType());
     } else if ([item isKindOfClass:[NSData class]]) {
         NSData *data = (NSData *)item;
         RetainPtr<CGImageSourceRef> source = adoptCF(CGImageSourceCreateWithData((CFDataRef)data, NULL));

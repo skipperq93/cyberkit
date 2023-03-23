@@ -31,7 +31,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/StringConcatenateNumbers.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static const int schemaVersion = 1;
 static constexpr auto createSearchTableSQL {

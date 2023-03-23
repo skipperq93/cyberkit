@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -21,28 +21,28 @@
 #error "Only <webkitdom/webkitdom.h> can be included directly."
 #endif
 
-#ifndef WebKitDOMHTMLMapElement_h
-#define WebKitDOMHTMLMapElement_h
+#ifndef CyberKitDOMHTMLMapElement_h
+#define CyberKitDOMHTMLMapElement_h
 
 #include <glib-object.h>
-#include <webkitdom/WebKitDOMHTMLElement.h>
+#include <webkitdom/CyberKitDOMHTMLElement.h>
 #include <webkitdom/webkitdomdefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_DOM_TYPE_HTML_MAP_ELEMENT            (webkit_dom_html_map_element_get_type())
-#define WEBKIT_DOM_HTML_MAP_ELEMENT(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_HTML_MAP_ELEMENT, WebKitDOMHTMLMapElement))
-#define WEBKIT_DOM_HTML_MAP_ELEMENT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_HTML_MAP_ELEMENT, WebKitDOMHTMLMapElementClass)
+#define WEBKIT_DOM_HTML_MAP_ELEMENT(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_HTML_MAP_ELEMENT, CyberKitDOMHTMLMapElement))
+#define WEBKIT_DOM_HTML_MAP_ELEMENT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_HTML_MAP_ELEMENT, CyberKitDOMHTMLMapElementClass)
 #define WEBKIT_DOM_IS_HTML_MAP_ELEMENT(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_DOM_TYPE_HTML_MAP_ELEMENT))
 #define WEBKIT_DOM_IS_HTML_MAP_ELEMENT_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_DOM_TYPE_HTML_MAP_ELEMENT))
-#define WEBKIT_DOM_HTML_MAP_ELEMENT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_HTML_MAP_ELEMENT, WebKitDOMHTMLMapElementClass))
+#define WEBKIT_DOM_HTML_MAP_ELEMENT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_HTML_MAP_ELEMENT, CyberKitDOMHTMLMapElementClass))
 
-struct _WebKitDOMHTMLMapElement {
-    WebKitDOMHTMLElement parent_instance;
+struct _CyberKitDOMHTMLMapElement {
+    CyberKitDOMHTMLElement parent_instance;
 };
 
-struct _WebKitDOMHTMLMapElementClass {
-    WebKitDOMHTMLElementClass parent_class;
+struct _CyberKitDOMHTMLMapElementClass {
+    CyberKitDOMHTMLElementClass parent_class;
 };
 
 WEBKIT_DEPRECATED GType
@@ -50,37 +50,37 @@ webkit_dom_html_map_element_get_type(void);
 
 /**
  * webkit_dom_html_map_element_get_areas:
- * @self: A #WebKitDOMHTMLMapElement
+ * @self: A #CyberKitDOMHTMLMapElement
  *
- * Returns: (transfer full): A #WebKitDOMHTMLCollection
+ * Returns: (transfer full): A #CyberKitDOMHTMLCollection
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMHTMLCollection*
-webkit_dom_html_map_element_get_areas(WebKitDOMHTMLMapElement* self);
+WEBKIT_DEPRECATED CyberKitDOMHTMLCollection*
+webkit_dom_html_map_element_get_areas(CyberKitDOMHTMLMapElement* self);
 
 /**
  * webkit_dom_html_map_element_get_name:
- * @self: A #WebKitDOMHTMLMapElement
+ * @self: A #CyberKitDOMHTMLMapElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_map_element_get_name(WebKitDOMHTMLMapElement* self);
+webkit_dom_html_map_element_get_name(CyberKitDOMHTMLMapElement* self);
 
 /**
  * webkit_dom_html_map_element_set_name:
- * @self: A #WebKitDOMHTMLMapElement
+ * @self: A #CyberKitDOMHTMLMapElement
  * @value: A #gchar
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_map_element_set_name(WebKitDOMHTMLMapElement* self, const gchar* value);
+webkit_dom_html_map_element_set_name(CyberKitDOMHTMLMapElement* self, const gchar* value);
 
 G_END_DECLS
 
-#endif /* WebKitDOMHTMLMapElement_h */
+#endif /* CyberKitDOMHTMLMapElement_h */

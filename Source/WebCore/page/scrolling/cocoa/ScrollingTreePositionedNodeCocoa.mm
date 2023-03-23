@@ -30,9 +30,9 @@
 
 #import "Logging.h"
 #import "ScrollingStatePositionedNode.h"
-#import "WebCoreCALayerExtras.h"
+#import "CyberCoreCALayerExtras.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<ScrollingTreePositionedNodeCocoa> ScrollingTreePositionedNodeCocoa::create(ScrollingTree& scrollingTree, ScrollingNodeID nodeID)
 {
@@ -73,6 +73,6 @@ void ScrollingTreePositionedNodeCocoa::applyLayerPositions()
 #endif
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ASYNC_SCROLLING)

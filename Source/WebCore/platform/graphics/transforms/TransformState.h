@@ -36,7 +36,7 @@ namespace WTF {
 class TextStream;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class TransformState {
 public:
@@ -159,4 +159,4 @@ inline TransformState::TransformDirection TransformState::inverseDirection() con
 
 WTF::TextStream& operator<<(WTF::TextStream&, const TransformState&);
 
-} // namespace WebCore
+} // namespace CyberCore

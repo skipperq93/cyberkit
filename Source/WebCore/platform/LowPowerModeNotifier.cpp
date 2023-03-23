@@ -26,7 +26,7 @@
 #include "config.h"
 #include "LowPowerModeNotifier.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 #if !HAVE(APPLE_LOW_POWER_MODE_SUPPORT) && !USE(GLIB)
 
@@ -43,4 +43,4 @@ bool LowPowerModeNotifier::isLowPowerModeEnabled() const
 
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -38,7 +38,7 @@ class Decoder;
 class Encoder;
 }
 
-namespace WebCore {
+namespace CyberCore {
 class HitTestResult;
 }
 
@@ -47,9 +47,9 @@ namespace WebKit {
 #if PLATFORM(MAC)
 struct WebHitTestResultPlatformData {
     RetainPtr<DDActionContext> detectedDataActionContext;
-    WebCore::FloatRect detectedDataBoundingBox;
-    RefPtr<WebCore::TextIndicator> detectedDataTextIndicator;
-    WebCore::PageOverlay::PageOverlayID detectedDataOriginatingPageOverlay;
+    CyberCore::FloatRect detectedDataBoundingBox;
+    RefPtr<CyberCore::TextIndicator> detectedDataTextIndicator;
+    CyberCore::PageOverlay::PageOverlayID detectedDataOriginatingPageOverlay;
 };
 #endif
 
@@ -62,7 +62,7 @@ struct WebHitTestResultData {
     String linkTitle;
     String linkSuggestedFilename;
     bool isContentEditable;
-    WebCore::IntRect elementBoundingBox;
+    CyberCore::IntRect elementBoundingBox;
     enum class IsScrollbar : uint8_t { No, Vertical, Horizontal };
     IsScrollbar isScrollbar;
     bool isSelected;
@@ -81,21 +81,21 @@ struct WebHitTestResultData {
     WebHitTestResultPlatformData platformData;
 #endif
     
-    WebCore::DictionaryPopupInfo dictionaryPopupInfo;
+    CyberCore::DictionaryPopupInfo dictionaryPopupInfo;
 
-    RefPtr<WebCore::TextIndicator> linkTextIndicator;
+    RefPtr<CyberCore::TextIndicator> linkTextIndicator;
 
     WebHitTestResultData();
-    WebHitTestResultData(const WebCore::HitTestResult&, const String& toolTipText);
-    WebHitTestResultData(const WebCore::HitTestResult&, bool includeImage);
-    WebHitTestResultData(const String& absoluteImageURL, const String& absolutePDFURL, const String& absoluteLinkURL, const String& absoluteMediaURL, const String& linkLabel, const String& linkTitle, const String& linkSuggestedFilename, bool isContentEditable, const WebCore::IntRect& elementBoundingBox, const WebKit::WebHitTestResultData::IsScrollbar&, bool isSelected, bool isTextNode, bool isOverTextInsideFormControlElement, bool isDownloadableMedia, const String& lookupText, const String& toolTipText, const String& imageText, const std::optional<WebKit::SharedMemory::Handle>& imageHandle, const RefPtr<WebKit::ShareableBitmap>& imageBitmap, const String& sourceImageMIMEType,
+    WebHitTestResultData(const CyberCore::HitTestResult&, const String& toolTipText);
+    WebHitTestResultData(const CyberCore::HitTestResult&, bool includeImage);
+    WebHitTestResultData(const String& absoluteImageURL, const String& absolutePDFURL, const String& absoluteLinkURL, const String& absoluteMediaURL, const String& linkLabel, const String& linkTitle, const String& linkSuggestedFilename, bool isContentEditable, const CyberCore::IntRect& elementBoundingBox, const WebKit::WebHitTestResultData::IsScrollbar&, bool isSelected, bool isTextNode, bool isOverTextInsideFormControlElement, bool isDownloadableMedia, const String& lookupText, const String& toolTipText, const String& imageText, const std::optional<WebKit::SharedMemory::Handle>& imageHandle, const RefPtr<WebKit::ShareableBitmap>& imageBitmap, const String& sourceImageMIMEType,
 #if PLATFORM(MAC)
         const WebHitTestResultPlatformData&,
 #endif
-        const WebCore::DictionaryPopupInfo&, const RefPtr<WebCore::TextIndicator>&);
+        const CyberCore::DictionaryPopupInfo&, const RefPtr<CyberCore::TextIndicator>&);
     ~WebHitTestResultData();
 
-    WebCore::IntRect elementBoundingBoxInWindowCoordinates(const WebCore::HitTestResult&);
+    CyberCore::IntRect elementBoundingBoxInWindowCoordinates(const CyberCore::HitTestResult&);
 
     std::optional<WebKit::SharedMemory::Handle> getImageSharedMemoryHandle() const;
 };

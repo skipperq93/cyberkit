@@ -33,7 +33,7 @@
 #include <algorithm>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 FloatRoundedRect::FloatRoundedRect(const RoundedRect& rect)
     : m_rect(rect.rect())
@@ -213,4 +213,4 @@ TextStream& operator<<(TextStream& ts, const FloatRoundedRect& roundedRect)
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

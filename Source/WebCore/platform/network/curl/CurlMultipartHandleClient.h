@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 class CurlResponse;
 class FragmentedSharedBuffer;
@@ -39,4 +39,4 @@ protected:
     ~CurlMultipartHandleClient() { }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

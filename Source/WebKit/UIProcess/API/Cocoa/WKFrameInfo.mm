@@ -29,13 +29,13 @@
 #import "WKSecurityOriginInternal.h"
 #import "WKWebViewInternal.h"
 #import "_WKFrameHandleInternal.h"
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 
 @implementation WKFrameInfo
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainRunLoop(WKFrameInfo.class, self))
+    if (CyberCoreObjCScheduleDeallocateOnMainRunLoop(WKFrameInfo.class, self))
         return;
 
     _frameInfo->~FrameInfo();
@@ -55,7 +55,7 @@
 
 - (NSURLRequest *)request
 {
-    return _frameInfo->request().nsURLRequest(WebCore::HTTPBodyUpdatePolicy::DoNotUpdateHTTPBody);
+    return _frameInfo->request().nsURLRequest(CyberCore::HTTPBodyUpdatePolicy::DoNotUpdateHTTPBody);
 }
 
 - (WKSecurityOrigin *)securityOrigin

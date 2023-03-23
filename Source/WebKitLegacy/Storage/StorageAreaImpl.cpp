@@ -38,9 +38,9 @@
 #include <CyberCore/StorageType.h>
 #include <wtf/MainThread.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
-namespace WebKit {
+namespace CyberKit {
 
 StorageAreaImpl::~StorageAreaImpl()
 {
@@ -65,7 +65,7 @@ inline StorageAreaImpl::StorageAreaImpl(StorageType storageType, const SecurityO
 Ref<StorageAreaImpl> StorageAreaImpl::create(StorageType storageType, const SecurityOrigin& origin, RefPtr<StorageSyncManager>&& syncManager, unsigned quota)
 {
     Ref<StorageAreaImpl> area = adoptRef(*new StorageAreaImpl(storageType, origin, WTFMove(syncManager), quota));
-    // FIXME: If there's no backing storage for LocalStorage, the default WebKit behavior should be that of private browsing,
+    // FIXME: If there's no backing storage for LocalStorage, the default CyberKit behavior should be that of private browsing,
     // not silently ignoring it. https://bugs.webkit.org/show_bug.cgi?id=25894
     if (area->m_storageSyncManager) {
         area->m_storageAreaSync = StorageAreaSync::create(area->m_storageSyncManager.get(), area.copyRef(), area->m_securityOrigin->data().databaseIdentifier());
@@ -307,4 +307,4 @@ void StorageAreaImpl::sessionChanged(bool isNewSessionPersistent)
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore

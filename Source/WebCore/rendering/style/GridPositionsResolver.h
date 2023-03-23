@@ -32,7 +32,7 @@
 
 #include "GridPosition.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class GridSpan;
 class RenderBox;
@@ -96,4 +96,4 @@ public:
     static unsigned explicitGridRowCount(const RenderGrid&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -52,7 +52,7 @@
 #include "SelectionGeometry.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 static bool initializeIndicator(TextIndicatorData&, Frame&, const SimpleRange&, FloatSize margin, bool indicatesCurrentSelection);
 
@@ -349,4 +349,4 @@ static bool initializeIndicator(TextIndicatorData& data, Frame& frame, const Sim
     return takeSnapshots(data, frame, enclosingIntRect(textBoundingRectInDocumentCoordinates), clippedTextRectsInDocumentCoordinates);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

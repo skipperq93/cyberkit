@@ -30,7 +30,7 @@
 #include "ScrollTypes.h"
 #include <wtf/Seconds.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FloatPoint;
 class FloatSize;
@@ -89,4 +89,4 @@ private:
     bool m_momentumCalculatorRequiresInitialization { true };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

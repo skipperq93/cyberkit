@@ -27,7 +27,7 @@
 
 #include "ScrollbarThemeComposite.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScrollbarThemePlayStation : public ScrollbarThemeComposite {
 public:
@@ -47,4 +47,4 @@ public:
     void paintThumb(GraphicsContext&, Scrollbar&, const IntRect&) override;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

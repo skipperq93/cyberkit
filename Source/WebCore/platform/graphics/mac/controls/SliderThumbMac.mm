@@ -34,7 +34,7 @@
 #import "LocalDefaultSystemAppearance.h"
 #import "SliderThumbPart.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 SliderThumbMac::SliderThumbMac(SliderThumbPart& owningPart, ControlFactoryMac& controlFactory, NSSliderCell *sliderCell)
     : ControlMac(owningPart, controlFactory)
@@ -81,6 +81,6 @@ void SliderThumbMac::draw(GraphicsContext& context, const FloatRoundedRect& bord
     drawCell(context, logicalRect, deviceScaleFactor, styleForDrawing, m_sliderCell.get(), true);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(MAC)

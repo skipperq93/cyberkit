@@ -25,7 +25,7 @@
 #include "IntRect.h"
 #include "NicosiaBuffer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SurfaceUpdateInfo {
 
@@ -39,7 +39,7 @@ public:
     RefPtr<Nicosia::Buffer> buffer;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(COORDINATED_GRAPHICS)
 

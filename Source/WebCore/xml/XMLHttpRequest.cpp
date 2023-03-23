@@ -65,7 +65,7 @@
 #include <wtf/StdLibExtras.h>
 #include <wtf/text/CString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(XMLHttpRequest);
 
@@ -1221,4 +1221,4 @@ bool XMLHttpRequest::virtualHasPendingActivity() const
     return false;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

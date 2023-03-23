@@ -27,7 +27,7 @@
 
 #include "Theme.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ThemeCocoa : public Theme {
 protected:
@@ -36,4 +36,4 @@ private:
     void drawNamedImage(const String&, GraphicsContext&, const FloatSize&) const final;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

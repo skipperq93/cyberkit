@@ -29,7 +29,7 @@
 
 #include "MouseEventWithHitTestResults.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 bool EventHandler::passMouseMoveEventToSubframe(MouseEventWithHitTestResults& mouseEventAndResult, Frame& subframe, HitTestResult* hitTestResult)
 {

@@ -30,7 +30,7 @@
 #include <cstddef>
 #include <cstdint>
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace DMABufFormatImpl {
 
@@ -354,4 +354,4 @@ inline DMABufFormat DMABufFormat::create(uint32_t fourccValue)
     return { };
 }
 
-} // namespace WebCore
+} // namespace CyberCore

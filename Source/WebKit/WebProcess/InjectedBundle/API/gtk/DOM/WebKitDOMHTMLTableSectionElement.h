@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -21,28 +21,28 @@
 #error "Only <webkitdom/webkitdom.h> can be included directly."
 #endif
 
-#ifndef WebKitDOMHTMLTableSectionElement_h
-#define WebKitDOMHTMLTableSectionElement_h
+#ifndef CyberKitDOMHTMLTableSectionElement_h
+#define CyberKitDOMHTMLTableSectionElement_h
 
 #include <glib-object.h>
-#include <webkitdom/WebKitDOMHTMLElement.h>
+#include <webkitdom/CyberKitDOMHTMLElement.h>
 #include <webkitdom/webkitdomdefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_DOM_TYPE_HTML_TABLE_SECTION_ELEMENT            (webkit_dom_html_table_section_element_get_type())
-#define WEBKIT_DOM_HTML_TABLE_SECTION_ELEMENT(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_HTML_TABLE_SECTION_ELEMENT, WebKitDOMHTMLTableSectionElement))
-#define WEBKIT_DOM_HTML_TABLE_SECTION_ELEMENT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_HTML_TABLE_SECTION_ELEMENT, WebKitDOMHTMLTableSectionElementClass)
+#define WEBKIT_DOM_HTML_TABLE_SECTION_ELEMENT(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_HTML_TABLE_SECTION_ELEMENT, CyberKitDOMHTMLTableSectionElement))
+#define WEBKIT_DOM_HTML_TABLE_SECTION_ELEMENT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_HTML_TABLE_SECTION_ELEMENT, CyberKitDOMHTMLTableSectionElementClass)
 #define WEBKIT_DOM_IS_HTML_TABLE_SECTION_ELEMENT(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_DOM_TYPE_HTML_TABLE_SECTION_ELEMENT))
 #define WEBKIT_DOM_IS_HTML_TABLE_SECTION_ELEMENT_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_DOM_TYPE_HTML_TABLE_SECTION_ELEMENT))
-#define WEBKIT_DOM_HTML_TABLE_SECTION_ELEMENT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_HTML_TABLE_SECTION_ELEMENT, WebKitDOMHTMLTableSectionElementClass))
+#define WEBKIT_DOM_HTML_TABLE_SECTION_ELEMENT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_HTML_TABLE_SECTION_ELEMENT, CyberKitDOMHTMLTableSectionElementClass))
 
-struct _WebKitDOMHTMLTableSectionElement {
-    WebKitDOMHTMLElement parent_instance;
+struct _CyberKitDOMHTMLTableSectionElement {
+    CyberKitDOMHTMLElement parent_instance;
 };
 
-struct _WebKitDOMHTMLTableSectionElementClass {
-    WebKitDOMHTMLElementClass parent_class;
+struct _CyberKitDOMHTMLTableSectionElementClass {
+    CyberKitDOMHTMLElementClass parent_class;
 };
 
 WEBKIT_DEPRECATED GType
@@ -50,20 +50,20 @@ webkit_dom_html_table_section_element_get_type(void);
 
 /**
  * webkit_dom_html_table_section_element_insert_row:
- * @self: A #WebKitDOMHTMLTableSectionElement
+ * @self: A #CyberKitDOMHTMLTableSectionElement
  * @index: A #glong
  * @error: #GError
  *
- * Returns: (transfer none): A #WebKitDOMHTMLElement
+ * Returns: (transfer none): A #CyberKitDOMHTMLElement
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMHTMLElement*
-webkit_dom_html_table_section_element_insert_row(WebKitDOMHTMLTableSectionElement* self, glong index, GError** error);
+WEBKIT_DEPRECATED CyberKitDOMHTMLElement*
+webkit_dom_html_table_section_element_insert_row(CyberKitDOMHTMLTableSectionElement* self, glong index, GError** error);
 
 /**
  * webkit_dom_html_table_section_element_delete_row:
- * @self: A #WebKitDOMHTMLTableSectionElement
+ * @self: A #CyberKitDOMHTMLTableSectionElement
  * @index: A #glong
  * @error: #GError
  *
@@ -71,107 +71,107 @@ webkit_dom_html_table_section_element_insert_row(WebKitDOMHTMLTableSectionElemen
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_table_section_element_delete_row(WebKitDOMHTMLTableSectionElement* self, glong index, GError** error);
+webkit_dom_html_table_section_element_delete_row(CyberKitDOMHTMLTableSectionElement* self, glong index, GError** error);
 
 /**
  * webkit_dom_html_table_section_element_get_align:
- * @self: A #WebKitDOMHTMLTableSectionElement
+ * @self: A #CyberKitDOMHTMLTableSectionElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_table_section_element_get_align(WebKitDOMHTMLTableSectionElement* self);
+webkit_dom_html_table_section_element_get_align(CyberKitDOMHTMLTableSectionElement* self);
 
 /**
  * webkit_dom_html_table_section_element_set_align:
- * @self: A #WebKitDOMHTMLTableSectionElement
+ * @self: A #CyberKitDOMHTMLTableSectionElement
  * @value: A #gchar
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_table_section_element_set_align(WebKitDOMHTMLTableSectionElement* self, const gchar* value);
+webkit_dom_html_table_section_element_set_align(CyberKitDOMHTMLTableSectionElement* self, const gchar* value);
 
 /**
  * webkit_dom_html_table_section_element_get_ch:
- * @self: A #WebKitDOMHTMLTableSectionElement
+ * @self: A #CyberKitDOMHTMLTableSectionElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_table_section_element_get_ch(WebKitDOMHTMLTableSectionElement* self);
+webkit_dom_html_table_section_element_get_ch(CyberKitDOMHTMLTableSectionElement* self);
 
 /**
  * webkit_dom_html_table_section_element_set_ch:
- * @self: A #WebKitDOMHTMLTableSectionElement
+ * @self: A #CyberKitDOMHTMLTableSectionElement
  * @value: A #gchar
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_table_section_element_set_ch(WebKitDOMHTMLTableSectionElement* self, const gchar* value);
+webkit_dom_html_table_section_element_set_ch(CyberKitDOMHTMLTableSectionElement* self, const gchar* value);
 
 /**
  * webkit_dom_html_table_section_element_get_ch_off:
- * @self: A #WebKitDOMHTMLTableSectionElement
+ * @self: A #CyberKitDOMHTMLTableSectionElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_table_section_element_get_ch_off(WebKitDOMHTMLTableSectionElement* self);
+webkit_dom_html_table_section_element_get_ch_off(CyberKitDOMHTMLTableSectionElement* self);
 
 /**
  * webkit_dom_html_table_section_element_set_ch_off:
- * @self: A #WebKitDOMHTMLTableSectionElement
+ * @self: A #CyberKitDOMHTMLTableSectionElement
  * @value: A #gchar
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_table_section_element_set_ch_off(WebKitDOMHTMLTableSectionElement* self, const gchar* value);
+webkit_dom_html_table_section_element_set_ch_off(CyberKitDOMHTMLTableSectionElement* self, const gchar* value);
 
 /**
  * webkit_dom_html_table_section_element_get_v_align:
- * @self: A #WebKitDOMHTMLTableSectionElement
+ * @self: A #CyberKitDOMHTMLTableSectionElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_table_section_element_get_v_align(WebKitDOMHTMLTableSectionElement* self);
+webkit_dom_html_table_section_element_get_v_align(CyberKitDOMHTMLTableSectionElement* self);
 
 /**
  * webkit_dom_html_table_section_element_set_v_align:
- * @self: A #WebKitDOMHTMLTableSectionElement
+ * @self: A #CyberKitDOMHTMLTableSectionElement
  * @value: A #gchar
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_table_section_element_set_v_align(WebKitDOMHTMLTableSectionElement* self, const gchar* value);
+webkit_dom_html_table_section_element_set_v_align(CyberKitDOMHTMLTableSectionElement* self, const gchar* value);
 
 /**
  * webkit_dom_html_table_section_element_get_rows:
- * @self: A #WebKitDOMHTMLTableSectionElement
+ * @self: A #CyberKitDOMHTMLTableSectionElement
  *
- * Returns: (transfer full): A #WebKitDOMHTMLCollection
+ * Returns: (transfer full): A #CyberKitDOMHTMLCollection
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMHTMLCollection*
-webkit_dom_html_table_section_element_get_rows(WebKitDOMHTMLTableSectionElement* self);
+WEBKIT_DEPRECATED CyberKitDOMHTMLCollection*
+webkit_dom_html_table_section_element_get_rows(CyberKitDOMHTMLTableSectionElement* self);
 
 G_END_DECLS
 
-#endif /* WebKitDOMHTMLTableSectionElement_h */
+#endif /* CyberKitDOMHTMLTableSectionElement_h */

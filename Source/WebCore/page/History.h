@@ -32,7 +32,7 @@
 #include "SerializedScriptValue.h"
 #include <wtf/WallTime.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 
@@ -102,4 +102,4 @@ inline ExceptionOr<void> History::replaceState(RefPtr<SerializedScriptValue>&& d
     return stateObjectAdded(WTFMove(data), title, urlString, StateObjectType::Replace);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

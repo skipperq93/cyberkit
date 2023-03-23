@@ -34,7 +34,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/AtomString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FontDatabase {
     WTF_MAKE_NONCOPYABLE(FontDatabase);
@@ -77,4 +77,4 @@ private:
     AllowUserInstalledFonts m_allowUserInstalledFonts;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

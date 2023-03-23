@@ -25,7 +25,7 @@
 #include "RenderStyle.h"
 #include "RenderStyleConstants.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 DEFINE_ALLOCATOR_WITH_HEAP_IDENTIFIER(StyleBackgroundData);
 
@@ -82,4 +82,4 @@ TextStream& operator<<(TextStream& ts, const StyleBackgroundData& backgroundData
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

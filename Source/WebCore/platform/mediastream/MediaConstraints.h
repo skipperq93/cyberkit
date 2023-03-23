@@ -40,7 +40,7 @@
 #include <wtf/Function.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
     
 class MediaConstraint {
 public:
@@ -800,11 +800,11 @@ struct MediaConstraints {
     bool isValid { false };
 };
     
-} // namespace WebCore
+} // namespace CyberCore
 
 #define SPECIALIZE_TYPE_TRAITS_MEDIACONSTRAINT(ConstraintType, predicate) \
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::ConstraintType) \
-static bool isType(const WebCore::MediaConstraint& constraint) { return constraint.predicate; } \
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::ConstraintType) \
+static bool isType(const CyberCore::MediaConstraint& constraint) { return constraint.predicate; } \
 SPECIALIZE_TYPE_TRAITS_END()
 
 SPECIALIZE_TYPE_TRAITS_MEDIACONSTRAINT(IntConstraint, isInt())

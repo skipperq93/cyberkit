@@ -31,7 +31,7 @@
 #include "ResizeObserverSize.h"
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Element;
 class ResizeObserverSize;
@@ -66,4 +66,4 @@ private:
     Vector<Ref<ResizeObserverSize>> m_contentBoxSizes;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

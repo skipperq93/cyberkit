@@ -33,10 +33,10 @@
 
 namespace WebKit {
 
-std::optional<WebCore::SimpleRange> EditingRange::toRange(WebCore::Frame& frame, const EditingRange& editingRange, EditingRangeIsRelativeTo base)
+std::optional<CyberCore::SimpleRange> EditingRange::toRange(CyberCore::Frame& frame, const EditingRange& editingRange, EditingRangeIsRelativeTo base)
 {
     ASSERT(editingRange.location != notFound);
-    WebCore::CharacterRange range { editingRange.location, editingRange.length };
+    CyberCore::CharacterRange range { editingRange.location, editingRange.length };
 
     if (base == EditingRangeIsRelativeTo::EditableRoot) {
         // Our critical assumption is that this code path is called by input methods that
@@ -58,10 +58,10 @@ std::optional<WebCore::SimpleRange> EditingRange::toRange(WebCore::Frame& frame,
         return std::nullopt;
 
     auto scopeEnd = makeBoundaryPointAfterNodeContents(paragraphStart->container->treeScope().rootNode());
-    return WebCore::resolveCharacterRange({ WTFMove(*paragraphStart), WTFMove(scopeEnd) }, range);
+    return CyberCore::resolveCharacterRange({ WTFMove(*paragraphStart), WTFMove(scopeEnd) }, range);
 }
 
-EditingRange EditingRange::fromRange(WebCore::Frame& frame, const std::optional<WebCore::SimpleRange>& range, EditingRangeIsRelativeTo editingRangeIsRelativeTo)
+EditingRange EditingRange::fromRange(CyberCore::Frame& frame, const std::optional<CyberCore::SimpleRange>& range, EditingRangeIsRelativeTo editingRangeIsRelativeTo)
 {
     ASSERT(editingRangeIsRelativeTo == EditingRangeIsRelativeTo::EditableRoot);
 

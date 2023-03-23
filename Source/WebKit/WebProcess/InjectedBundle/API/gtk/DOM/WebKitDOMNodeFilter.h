@@ -16,8 +16,8 @@
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef WebKitDOMNodeFilter_h
-#define WebKitDOMNodeFilter_h
+#ifndef CyberKitDOMNodeFilter_h
+#define CyberKitDOMNodeFilter_h
 
 #include <glib-object.h>
 #include <webkitdom/webkitdomdefines.h>
@@ -25,10 +25,10 @@
 G_BEGIN_DECLS
 
 #define WEBKIT_DOM_TYPE_NODE_FILTER            (webkit_dom_node_filter_get_type ())
-#define WEBKIT_DOM_NODE_FILTER(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), WEBKIT_DOM_TYPE_NODE_FILTER, WebKitDOMNodeFilter))
-#define WEBKIT_DOM_NODE_FILTER_CLASS(obj)      (G_TYPE_CHECK_CLASS_CAST ((obj), WEBKIT_DOM_TYPE_NODE_FILTER, WebKitDOMNodeFilterIface))
+#define WEBKIT_DOM_NODE_FILTER(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), WEBKIT_DOM_TYPE_NODE_FILTER, CyberKitDOMNodeFilter))
+#define WEBKIT_DOM_NODE_FILTER_CLASS(obj)      (G_TYPE_CHECK_CLASS_CAST ((obj), WEBKIT_DOM_TYPE_NODE_FILTER, CyberKitDOMNodeFilterIface))
 #define WEBKIT_DOM_IS_NODE_FILTER(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), WEBKIT_DOM_TYPE_NODE_FILTER))
-#define WEBKIT_DOM_NODE_FILTER_GET_IFACE(obj)  (G_TYPE_INSTANCE_GET_INTERFACE ((obj), WEBKIT_DOM_TYPE_NODE_FILTER, WebKitDOMNodeFilterIface))
+#define WEBKIT_DOM_NODE_FILTER_GET_IFACE(obj)  (G_TYPE_INSTANCE_GET_INTERFACE ((obj), WEBKIT_DOM_TYPE_NODE_FILTER, CyberKitDOMNodeFilterIface))
 
 #ifndef WEBKIT_DISABLE_DEPRECATED
 
@@ -36,7 +36,7 @@ G_BEGIN_DECLS
  * WEBKIT_DOM_NODE_FILTER_ACCEPT:
  *
  * Accept the node. Use this macro as return value of webkit_dom_node_filter_accept_node()
- * implementation to accept the given #WebKitDOMNode
+ * implementation to accept the given #CyberKitDOMNode
  *
  * Since: 2.6
  *
@@ -48,7 +48,7 @@ G_BEGIN_DECLS
  * WEBKIT_DOM_NODE_FILTER_REJECT:
  *
  * Reject the node. Use this macro as return value of webkit_dom_node_filter_accept_node()
- * implementation to reject the given #WebKitDOMNode. The children of the given node will
+ * implementation to reject the given #CyberKitDOMNode. The children of the given node will
  * be rejected too.
  *
  * Since: 2.6
@@ -61,7 +61,7 @@ G_BEGIN_DECLS
  * WEBKIT_DOM_NODE_FILTER_SKIP:
  *
  * Skip the node. Use this macro as return value of webkit_dom_node_filter_accept_node()
- * implementation to skip the given #WebKitDOMNode. The children of the given node will
+ * implementation to skip the given #CyberKitDOMNode. The children of the given node will
  * not be skipped.
  *
  * Since: 2.6
@@ -84,7 +84,7 @@ G_BEGIN_DECLS
 /**
  * WEBKIT_DOM_NODE_FILTER_SHOW_ELEMENT:
  *
- * Show #WebKitDOMElement nodes.
+ * Show #CyberKitDOMElement nodes.
  *
  * Since: 2.6
  *
@@ -95,7 +95,7 @@ G_BEGIN_DECLS
 /**
  * WEBKIT_DOM_NODE_FILTER_SHOW_ATTRIBUTE:
  *
- * Show #WebKitDOMAttr nodes.
+ * Show #CyberKitDOMAttr nodes.
  *
  * Since: 2.6
  *
@@ -106,7 +106,7 @@ G_BEGIN_DECLS
 /**
  * WEBKIT_DOM_NODE_FILTER_SHOW_TEXT:
  *
- * Show #WebKitDOMText nodes.
+ * Show #CyberKitDOMText nodes.
  *
  * Since: 2.6
  *
@@ -117,7 +117,7 @@ G_BEGIN_DECLS
 /**
  * WEBKIT_DOM_NODE_FILTER_SHOW_CDATA_SECTION:
  *
- * Show #WebKitDOMCDataSection nodes.
+ * Show #CyberKitDOMCDataSection nodes.
  *
  * Since: 2.6
  *
@@ -128,7 +128,7 @@ G_BEGIN_DECLS
 /**
  * WEBKIT_DOM_NODE_FILTER_SHOW_ENTITY_REFERENCE:
  *
- * Show #WebKitDOMEntityReference nodes.
+ * Show #CyberKitDOMEntityReference nodes.
  *
  * Since: 2.6
  *
@@ -139,7 +139,7 @@ G_BEGIN_DECLS
 /**
  * WEBKIT_DOM_NODE_FILTER_SHOW_ENTITY:
  *
- * Show #WebKitDOMEntity nodes.
+ * Show #CyberKitDOMEntity nodes.
  *
  * Since: 2.6
  *
@@ -150,7 +150,7 @@ G_BEGIN_DECLS
 /**
  * WEBKIT_DOM_NODE_FILTER_SHOW_PROCESSING_INSTRUCTION:
  *
- * Show #WebKitDOMProcessingInstruction nodes.
+ * Show #CyberKitDOMProcessingInstruction nodes.
  *
  * Since: 2.6
  *
@@ -161,7 +161,7 @@ G_BEGIN_DECLS
 /**
  * WEBKIT_DOM_NODE_FILTER_SHOW_COMMENT:
  *
- * Show #WebKitDOMComment nodes.
+ * Show #CyberKitDOMComment nodes.
  *
  * Since: 2.6
  *
@@ -172,7 +172,7 @@ G_BEGIN_DECLS
 /**
  * WEBKIT_DOM_NODE_FILTER_SHOW_DOCUMENT:
  *
- * Show #WebKitDOMDocument nodes.
+ * Show #CyberKitDOMDocument nodes.
  *
  * Since: 2.6
  *
@@ -183,7 +183,7 @@ G_BEGIN_DECLS
 /**
  * WEBKIT_DOM_NODE_FILTER_SHOW_DOCUMENT_TYPE:
  *
- * Show #WebKitDOMDocumentType nodes.
+ * Show #CyberKitDOMDocumentType nodes.
  *
  * Since: 2.6
  *
@@ -194,7 +194,7 @@ G_BEGIN_DECLS
 /**
  * WEBKIT_DOM_NODE_FILTER_SHOW_DOCUMENT_FRAGMENT:
  *
- * Show #WebKitDOMDocumentFragment nodes.
+ * Show #CyberKitDOMDocumentFragment nodes.
  *
  * Since: 2.6
  *
@@ -205,7 +205,7 @@ G_BEGIN_DECLS
 /**
  * WEBKIT_DOM_NODE_FILTER_SHOW_NOTATION:
  *
- * Show #WebKitDOMNotation nodes.
+ * Show #CyberKitDOMNotation nodes.
  *
  * Since: 2.6
  *
@@ -215,12 +215,12 @@ G_BEGIN_DECLS
 
 #endif /* WEBKIT_DISABLE_DEPRECATED */
 
-struct _WebKitDOMNodeFilterIface {
+struct _CyberKitDOMNodeFilterIface {
     GTypeInterface gIface;
 
     /* virtual table */
-    gshort (* accept_node)(WebKitDOMNodeFilter *filter,
-                           WebKitDOMNode       *node);
+    gshort (* accept_node)(CyberKitDOMNodeFilter *filter,
+                           CyberKitDOMNode       *node);
 
     void (*_webkitdom_reserved0) (void);
     void (*_webkitdom_reserved1) (void);
@@ -233,16 +233,16 @@ WEBKIT_DEPRECATED GType webkit_dom_node_filter_get_type(void) G_GNUC_CONST;
 
 /**
  * webkit_dom_node_filter_accept_node:
- * @filter: A #WebKitDOMNodeFilter
- * @node: A #WebKitDOMNode
+ * @filter: A #CyberKitDOMNodeFilter
+ * @node: A #CyberKitDOMNode
  *
  * Returns: a #gshort
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
  */
-WEBKIT_DEPRECATED gshort webkit_dom_node_filter_accept_node(WebKitDOMNodeFilter *filter,
-                                                     WebKitDOMNode       *node);
+WEBKIT_DEPRECATED gshort webkit_dom_node_filter_accept_node(CyberKitDOMNodeFilter *filter,
+                                                     CyberKitDOMNode       *node);
 
 G_END_DECLS
 
-#endif /* WebKitDOMNodeFilter_h */
+#endif /* CyberKitDOMNodeFilter_h */

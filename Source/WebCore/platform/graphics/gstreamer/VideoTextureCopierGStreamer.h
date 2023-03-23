@@ -29,7 +29,7 @@
 #include "TransformationMatrix.h"
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ImageOrientation;
 
@@ -69,7 +69,7 @@ private:
     GLuint m_resultTexture { 0 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(GSTREAMER_GL)
 

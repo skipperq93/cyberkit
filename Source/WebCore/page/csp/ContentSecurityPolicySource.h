@@ -28,7 +28,7 @@
 
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ContentSecurityPolicy;
 class SecurityOriginData;
@@ -62,4 +62,4 @@ private:
     bool m_isSelfSource;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

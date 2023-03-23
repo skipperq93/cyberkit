@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -18,31 +18,31 @@
  */
 
 #include "config.h"
-#include "WebKitDOMHTMLCollection.h"
+#include "CyberKitDOMHTMLCollection.h"
 
 #include <CyberCore/CSSImportRule.h>
 #include "DOMObjectCache.h"
 #include <CyberCore/Document.h>
 #include <CyberCore/ExceptionCode.h>
 #include <CyberCore/JSExecState.h>
-#include "WebKitDOMHTMLCollectionPrivate.h"
-#include "WebKitDOMNodePrivate.h"
-#include "WebKitDOMPrivate.h"
+#include "CyberKitDOMHTMLCollectionPrivate.h"
+#include "CyberKitDOMNodePrivate.h"
+#include "CyberKitDOMPrivate.h"
 #include "ConvertToUTF8String.h"
 #include <wtf/GetPtr.h>
 #include <wtf/RefPtr.h>
 
-#define WEBKIT_DOM_HTML_COLLECTION_GET_PRIVATE(obj) G_TYPE_INSTANCE_GET_PRIVATE(obj, WEBKIT_DOM_TYPE_HTML_COLLECTION, WebKitDOMHTMLCollectionPrivate)
+#define WEBKIT_DOM_HTML_COLLECTION_GET_PRIVATE(obj) G_TYPE_INSTANCE_GET_PRIVATE(obj, WEBKIT_DOM_TYPE_HTML_COLLECTION, CyberKitDOMHTMLCollectionPrivate)
 
-typedef struct _WebKitDOMHTMLCollectionPrivate {
-    RefPtr<WebCore::HTMLCollection> coreObject;
-} WebKitDOMHTMLCollectionPrivate;
+typedef struct _CyberKitDOMHTMLCollectionPrivate {
+    RefPtr<CyberCore::HTMLCollection> coreObject;
+} CyberKitDOMHTMLCollectionPrivate;
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
-namespace WebKit {
+namespace CyberKit {
 
-WebKitDOMHTMLCollection* kit(WebCore::HTMLCollection* obj)
+CyberKitDOMHTMLCollection* kit(CyberCore::HTMLCollection* obj)
 {
     if (!obj)
         return 0;
@@ -53,20 +53,20 @@ WebKitDOMHTMLCollection* kit(WebCore::HTMLCollection* obj)
     return wrap(obj);
 }
 
-WebCore::HTMLCollection* core(WebKitDOMHTMLCollection* request)
+CyberCore::HTMLCollection* core(CyberKitDOMHTMLCollection* request)
 {
-    return request ? static_cast<WebCore::HTMLCollection*>(WEBKIT_DOM_OBJECT(request)->coreObject) : 0;
+    return request ? static_cast<CyberCore::HTMLCollection*>(WEBKIT_DOM_OBJECT(request)->coreObject) : 0;
 }
 
-WebKitDOMHTMLCollection* wrapHTMLCollection(WebCore::HTMLCollection* coreObject)
+CyberKitDOMHTMLCollection* wrapHTMLCollection(CyberCore::HTMLCollection* coreObject)
 {
     ASSERT(coreObject);
     return WEBKIT_DOM_HTML_COLLECTION(g_object_new(WEBKIT_DOM_TYPE_HTML_COLLECTION, "core-object", coreObject, nullptr));
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
-G_DEFINE_TYPE(WebKitDOMHTMLCollection, webkit_dom_html_collection, WEBKIT_DOM_TYPE_OBJECT)
+G_DEFINE_TYPE(CyberKitDOMHTMLCollection, webkit_dom_html_collection, WEBKIT_DOM_TYPE_OBJECT)
 
 enum {
     DOM_HTML_COLLECTION_PROP_0,
@@ -75,17 +75,17 @@ enum {
 
 static void webkit_dom_html_collection_finalize(GObject* object)
 {
-    WebKitDOMHTMLCollectionPrivate* priv = WEBKIT_DOM_HTML_COLLECTION_GET_PRIVATE(object);
+    CyberKitDOMHTMLCollectionPrivate* priv = WEBKIT_DOM_HTML_COLLECTION_GET_PRIVATE(object);
 
-    WebKit::DOMObjectCache::forget(priv->coreObject.get());
+    CyberKit::DOMObjectCache::forget(priv->coreObject.get());
 
-    priv->~WebKitDOMHTMLCollectionPrivate();
+    priv->~CyberKitDOMHTMLCollectionPrivate();
     G_OBJECT_CLASS(webkit_dom_html_collection_parent_class)->finalize(object);
 }
 
 static void webkit_dom_html_collection_get_property(GObject* object, guint propertyId, GValue* value, GParamSpec* pspec)
 {
-    WebKitDOMHTMLCollection* self = WEBKIT_DOM_HTML_COLLECTION(object);
+    CyberKitDOMHTMLCollection* self = WEBKIT_DOM_HTML_COLLECTION(object);
 
     switch (propertyId) {
     case DOM_HTML_COLLECTION_PROP_LENGTH:
@@ -101,17 +101,17 @@ static GObject* webkit_dom_html_collection_constructor(GType type, guint constru
 {
     GObject* object = G_OBJECT_CLASS(webkit_dom_html_collection_parent_class)->constructor(type, constructPropertiesCount, constructProperties);
 
-    WebKitDOMHTMLCollectionPrivate* priv = WEBKIT_DOM_HTML_COLLECTION_GET_PRIVATE(object);
-    priv->coreObject = static_cast<WebCore::HTMLCollection*>(WEBKIT_DOM_OBJECT(object)->coreObject);
-    WebKit::DOMObjectCache::put(priv->coreObject.get(), object);
+    CyberKitDOMHTMLCollectionPrivate* priv = WEBKIT_DOM_HTML_COLLECTION_GET_PRIVATE(object);
+    priv->coreObject = static_cast<CyberCore::HTMLCollection*>(WEBKIT_DOM_OBJECT(object)->coreObject);
+    CyberKit::DOMObjectCache::put(priv->coreObject.get(), object);
 
     return object;
 }
 
-static void webkit_dom_html_collection_class_init(WebKitDOMHTMLCollectionClass* requestClass)
+static void webkit_dom_html_collection_class_init(CyberKitDOMHTMLCollectionClass* requestClass)
 {
     GObjectClass* gobjectClass = G_OBJECT_CLASS(requestClass);
-    g_type_class_add_private(gobjectClass, sizeof(WebKitDOMHTMLCollectionPrivate));
+    g_type_class_add_private(gobjectClass, sizeof(CyberKitDOMHTMLCollectionPrivate));
     gobjectClass->constructor = webkit_dom_html_collection_constructor;
     gobjectClass->finalize = webkit_dom_html_collection_finalize;
     gobjectClass->get_property = webkit_dom_html_collection_get_property;
@@ -128,36 +128,36 @@ static void webkit_dom_html_collection_class_init(WebKitDOMHTMLCollectionClass* 
 
 }
 
-static void webkit_dom_html_collection_init(WebKitDOMHTMLCollection* request)
+static void webkit_dom_html_collection_init(CyberKitDOMHTMLCollection* request)
 {
-    WebKitDOMHTMLCollectionPrivate* priv = WEBKIT_DOM_HTML_COLLECTION_GET_PRIVATE(request);
-    new (priv) WebKitDOMHTMLCollectionPrivate();
+    CyberKitDOMHTMLCollectionPrivate* priv = WEBKIT_DOM_HTML_COLLECTION_GET_PRIVATE(request);
+    new (priv) CyberKitDOMHTMLCollectionPrivate();
 }
 
-WebKitDOMNode* webkit_dom_html_collection_item(WebKitDOMHTMLCollection* self, gulong index)
+CyberKitDOMNode* webkit_dom_html_collection_item(CyberKitDOMHTMLCollection* self, gulong index)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_COLLECTION(self), 0);
-    WebCore::HTMLCollection* item = WebKit::core(self);
-    RefPtr<WebCore::Node> gobjectResult = WTF::getPtr(item->item(index));
-    return WebKit::kit(gobjectResult.get());
+    CyberCore::HTMLCollection* item = CyberKit::core(self);
+    RefPtr<CyberCore::Node> gobjectResult = WTF::getPtr(item->item(index));
+    return CyberKit::kit(gobjectResult.get());
 }
 
-WebKitDOMNode* webkit_dom_html_collection_named_item(WebKitDOMHTMLCollection* self, const gchar* name)
+CyberKitDOMNode* webkit_dom_html_collection_named_item(CyberKitDOMHTMLCollection* self, const gchar* name)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_COLLECTION(self), 0);
     g_return_val_if_fail(name, 0);
-    WebCore::HTMLCollection* item = WebKit::core(self);
-    RefPtr<WebCore::Node> gobjectResult = WTF::getPtr(item->namedItem(WTF::AtomString::fromUTF8(name)));
-    return WebKit::kit(gobjectResult.get());
+    CyberCore::HTMLCollection* item = CyberKit::core(self);
+    RefPtr<CyberCore::Node> gobjectResult = WTF::getPtr(item->namedItem(WTF::AtomString::fromUTF8(name)));
+    return CyberKit::kit(gobjectResult.get());
 }
 
-gulong webkit_dom_html_collection_get_length(WebKitDOMHTMLCollection* self)
+gulong webkit_dom_html_collection_get_length(CyberKitDOMHTMLCollection* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_COLLECTION(self), 0);
-    WebCore::HTMLCollection* item = WebKit::core(self);
+    CyberCore::HTMLCollection* item = CyberKit::core(self);
     gulong result = item->length();
     return result;
 }

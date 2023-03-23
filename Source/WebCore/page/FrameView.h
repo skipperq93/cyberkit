@@ -48,7 +48,7 @@ namespace WTF {
 class TextStream;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class AXObjectCache;
 class AbstractFrame;
@@ -644,7 +644,7 @@ public:
     WEBCORE_EXPORT int headerHeight() const final;
     WEBCORE_EXPORT int footerHeight() const final;
 
-    WEBCORE_EXPORT float topContentInset(TopContentInsetType = TopContentInsetType::WebCoreContentInset) const final;
+    WEBCORE_EXPORT float topContentInset(TopContentInsetType = TopContentInsetType::CyberCoreContentInset) const final;
     void topContentInsetDidChange(float newTopContentInset);
 
     void topContentDirectionDidChange();
@@ -687,7 +687,7 @@ public:
     // exposedRect represents WebKit's understanding of what part
     // of the view is actually exposed on screen (taking into account
     // clipping by other UI elements), whereas visibleContentRect is
-    // internal to WebCore and doesn't respect those things.
+    // internal to CyberCore and doesn't respect those things.
     WEBCORE_EXPORT void setViewExposedRect(std::optional<FloatRect>);
     std::optional<FloatRect> viewExposedRect() const { return m_viewExposedRect; }
 
@@ -1069,9 +1069,9 @@ inline void FrameView::incrementVisuallyNonEmptyPixelCount(const IntSize& size)
 
 WTF::TextStream& operator<<(WTF::TextStream&, const FrameView&);
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::FrameView)
-static bool isType(const WebCore::AbstractFrameView& view) { return view.viewType() == WebCore::AbstractFrameView::FrameViewType::Local; }
-static bool isType(const WebCore::Widget& widget) { return widget.isFrameView(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::FrameView)
+static bool isType(const CyberCore::AbstractFrameView& view) { return view.viewType() == CyberCore::AbstractFrameView::FrameViewType::Local; }
+static bool isType(const CyberCore::Widget& widget) { return widget.isFrameView(); }
 SPECIALIZE_TYPE_TRAITS_END()

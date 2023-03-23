@@ -105,7 +105,7 @@
 #endif
 
 namespace API {
-using namespace WebCore;
+using namespace CyberCore;
 using namespace WebKit;
 
 #if ENABLE(CONTEXT_MENUS)
@@ -193,14 +193,14 @@ void WKPageLoadURL(WKPageRef pageRef, WKURLRef URLRef)
 void WKPageLoadURLWithShouldOpenExternalURLsPolicy(WKPageRef pageRef, WKURLRef URLRef, bool shouldOpenExternalURLs)
 {
     CRASH_IF_SUSPENDED;
-    WebCore::ShouldOpenExternalURLsPolicy shouldOpenExternalURLsPolicy = shouldOpenExternalURLs ? WebCore::ShouldOpenExternalURLsPolicy::ShouldAllow : WebCore::ShouldOpenExternalURLsPolicy::ShouldNotAllow;
+    CyberCore::ShouldOpenExternalURLsPolicy shouldOpenExternalURLsPolicy = shouldOpenExternalURLs ? CyberCore::ShouldOpenExternalURLsPolicy::ShouldAllow : CyberCore::ShouldOpenExternalURLsPolicy::ShouldNotAllow;
     toImpl(pageRef)->loadRequest(URL { toWTFString(URLRef) }, shouldOpenExternalURLsPolicy);
 }
 
 void WKPageLoadURLWithUserData(WKPageRef pageRef, WKURLRef URLRef, WKTypeRef userDataRef)
 {
     CRASH_IF_SUSPENDED;
-    toImpl(pageRef)->loadRequest(URL { toWTFString(URLRef) }, WebCore::ShouldOpenExternalURLsPolicy::ShouldNotAllow, toImpl(userDataRef));
+    toImpl(pageRef)->loadRequest(URL { toWTFString(URLRef) }, CyberCore::ShouldOpenExternalURLsPolicy::ShouldNotAllow, toImpl(userDataRef));
 }
 
 void WKPageLoadURLRequest(WKPageRef pageRef, WKURLRequestRef urlRequestRef)
@@ -214,7 +214,7 @@ void WKPageLoadURLRequestWithUserData(WKPageRef pageRef, WKURLRequestRef urlRequ
 {
     CRASH_IF_SUSPENDED;
     auto resourceRequest = toImpl(urlRequestRef)->resourceRequest();
-    toImpl(pageRef)->loadRequest(WTFMove(resourceRequest), WebCore::ShouldOpenExternalURLsPolicy::ShouldNotAllow, toImpl(userDataRef));
+    toImpl(pageRef)->loadRequest(WTFMove(resourceRequest), CyberCore::ShouldOpenExternalURLsPolicy::ShouldNotAllow, toImpl(userDataRef));
 }
 
 void WKPageLoadFile(WKPageRef pageRef, WKURLRef fileURL, WKURLRef resourceDirectoryURL)
@@ -255,11 +255,11 @@ static IPC::DataReference dataFrom(const String& string)
     return { string.characters8(), string.length() * sizeof(LChar) };
 }
 
-static Ref<WebCore::DataSegment> dataReferenceFrom(const String& string)
+static Ref<CyberCore::DataSegment> dataReferenceFrom(const String& string)
 {
     if (string.isNull() || !string.is8Bit())
-        return WebCore::DataSegment::create(Vector<uint8_t>(reinterpret_cast<const uint8_t*>(string.characters16()), string.length() * sizeof(UChar)));
-    return WebCore::DataSegment::create(Vector<uint8_t>(string.characters8(), string.length() * sizeof(LChar)));
+        return CyberCore::DataSegment::create(Vector<uint8_t>(reinterpret_cast<const uint8_t*>(string.characters16()), string.length() * sizeof(UChar)));
+    return CyberCore::DataSegment::create(Vector<uint8_t>(string.characters8(), string.length() * sizeof(LChar)));
 }
 
 static void loadString(WKPageRef pageRef, WKStringRef stringRef, const String& mimeType, const String& baseURL, WKTypeRef userDataRef)
@@ -326,10 +326,10 @@ void WKPageStopLoading(WKPageRef pageRef)
 void WKPageReload(WKPageRef pageRef)
 {
     CRASH_IF_SUSPENDED;
-    OptionSet<WebCore::ReloadOption> reloadOptions;
+    OptionSet<CyberCore::ReloadOption> reloadOptions;
 #if PLATFORM(COCOA)
     if (linkedOnOrAfterSDKWithBehavior(SDKAlignedBehavior::ExpiredOnlyReloadBehavior))
-        reloadOptions.add(WebCore::ReloadOption::ExpiredOnly);
+        reloadOptions.add(CyberCore::ReloadOption::ExpiredOnly);
 #endif
 
     toImpl(pageRef)->reload(reloadOptions);
@@ -338,19 +338,19 @@ void WKPageReload(WKPageRef pageRef)
 void WKPageReloadWithoutContentBlockers(WKPageRef pageRef)
 {
     CRASH_IF_SUSPENDED;
-    toImpl(pageRef)->reload(WebCore::ReloadOption::DisableContentBlockers);
+    toImpl(pageRef)->reload(CyberCore::ReloadOption::DisableContentBlockers);
 }
 
 void WKPageReloadFromOrigin(WKPageRef pageRef)
 {
     CRASH_IF_SUSPENDED;
-    toImpl(pageRef)->reload(WebCore::ReloadOption::FromOrigin);
+    toImpl(pageRef)->reload(CyberCore::ReloadOption::FromOrigin);
 }
 
 void WKPageReloadExpiredOnly(WKPageRef pageRef)
 {
     CRASH_IF_SUSPENDED;
-    toImpl(pageRef)->reload(WebCore::ReloadOption::ExpiredOnly);
+    toImpl(pageRef)->reload(CyberCore::ReloadOption::ExpiredOnly);
 }
 
 bool WKPageTryClose(WKPageRef pageRef)
@@ -361,11 +361,11 @@ bool WKPageTryClose(WKPageRef pageRef)
 
 void WKPagePermissionChanged(WKStringRef permissionName, WKStringRef originString)
 {
-    auto name = WebCore::Permissions::toPermissionName(toWTFString(permissionName));
+    auto name = CyberCore::Permissions::toPermissionName(toWTFString(permissionName));
     if (!name)
         return;
 
-    auto topOrigin = WebCore::SecurityOrigin::createFromString(toWTFString(originString))->data();
+    auto topOrigin = CyberCore::SecurityOrigin::createFromString(toWTFString(originString))->data();
     WebKit::WebProcessProxy::permissionChanged(*name, topOrigin);
 }
 
@@ -799,22 +799,22 @@ bool WKPageBackgroundExtendsBeyondPage(WKPageRef pageRef)
 void WKPageSetPaginationMode(WKPageRef pageRef, WKPaginationMode paginationMode)
 {
     CRASH_IF_SUSPENDED;
-    WebCore::Pagination::Mode mode;
+    CyberCore::Pagination::Mode mode;
     switch (paginationMode) {
     case kWKPaginationModeUnpaginated:
-        mode = WebCore::Pagination::Unpaginated;
+        mode = CyberCore::Pagination::Unpaginated;
         break;
     case kWKPaginationModeLeftToRight:
-        mode = WebCore::Pagination::LeftToRightPaginated;
+        mode = CyberCore::Pagination::LeftToRightPaginated;
         break;
     case kWKPaginationModeRightToLeft:
-        mode = WebCore::Pagination::RightToLeftPaginated;
+        mode = CyberCore::Pagination::RightToLeftPaginated;
         break;
     case kWKPaginationModeTopToBottom:
-        mode = WebCore::Pagination::TopToBottomPaginated;
+        mode = CyberCore::Pagination::TopToBottomPaginated;
         break;
     case kWKPaginationModeBottomToTop:
-        mode = WebCore::Pagination::BottomToTopPaginated;
+        mode = CyberCore::Pagination::BottomToTopPaginated;
         break;
     default:
         return;
@@ -825,15 +825,15 @@ void WKPageSetPaginationMode(WKPageRef pageRef, WKPaginationMode paginationMode)
 WKPaginationMode WKPageGetPaginationMode(WKPageRef pageRef)
 {
     switch (toImpl(pageRef)->paginationMode()) {
-    case WebCore::Pagination::Unpaginated:
+    case CyberCore::Pagination::Unpaginated:
         return kWKPaginationModeUnpaginated;
-    case WebCore::Pagination::LeftToRightPaginated:
+    case CyberCore::Pagination::LeftToRightPaginated:
         return kWKPaginationModeLeftToRight;
-    case WebCore::Pagination::RightToLeftPaginated:
+    case CyberCore::Pagination::RightToLeftPaginated:
         return kWKPaginationModeRightToLeft;
-    case WebCore::Pagination::TopToBottomPaginated:
+    case CyberCore::Pagination::TopToBottomPaginated:
         return kWKPaginationModeTopToBottom;
-    case WebCore::Pagination::BottomToTopPaginated:
+    case CyberCore::Pagination::BottomToTopPaginated:
         return kWKPaginationModeBottomToTop;
     }
 
@@ -1017,7 +1017,7 @@ void WKPageSetPageContextMenuClient(WKPageRef pageRef, const WKPageContextMenuCl
             m_client.customContextMenuItemSelected(toAPI(&page), toAPI(WebContextMenuItem::create(itemData).ptr()), m_client.base.clientInfo);
         }
 
-        void showContextMenu(WebPageProxy& page, const WebCore::IntPoint& menuLocation, const Vector<Ref<WebContextMenuItem>>& menuItemsVector) override
+        void showContextMenu(WebPageProxy& page, const CyberCore::IntPoint& menuLocation, const Vector<Ref<WebContextMenuItem>>& menuItemsVector) override
         {
             if (!canShowContextMenu())
                 return;
@@ -1065,7 +1065,7 @@ void WKPageSetPageFindClient(WKPageRef pageRef, const WKPageFindClientBase* wkCl
         }
 
     private:
-        void didFindString(WebPageProxy* page, const String& string, const Vector<WebCore::IntRect>&, uint32_t matchCount, int32_t, bool didWrapAround) override
+        void didFindString(WebPageProxy* page, const String& string, const Vector<CyberCore::IntRect>&, uint32_t matchCount, int32_t, bool didWrapAround) override
         {
             if (!m_client.didFindString)
                 return;
@@ -1104,7 +1104,7 @@ void WKPageSetPageFindMatchesClient(WKPageRef pageRef, const WKPageFindMatchesCl
         }
 
     private:
-        void didFindStringMatches(WebPageProxy* page, const String& string, const Vector<Vector<WebCore::IntRect>>& matchRects, int32_t index) override
+        void didFindStringMatches(WebPageProxy* page, const String& string, const Vector<Vector<CyberCore::IntRect>>& matchRects, int32_t index) override
         {
             if (!m_client.didFindStringMatches)
                 return;
@@ -1209,7 +1209,7 @@ void WKPageSetPageLoaderClient(WKPageRef pageRef, const WKPageLoaderClientBase* 
             m_client.didReceiveServerRedirectForProvisionalLoadForFrame(toAPI(&page), toAPI(&frame), toAPI(userData), m_client.base.clientInfo);
         }
 
-        void didFailProvisionalLoadWithErrorForFrame(WebPageProxy& page, WebFrameProxy& frame, API::Navigation*, const WebCore::ResourceError& error, API::Object* userData) override
+        void didFailProvisionalLoadWithErrorForFrame(WebPageProxy& page, WebFrameProxy& frame, API::Navigation*, const CyberCore::ResourceError& error, API::Object* userData) override
         {
             if (!m_client.didFailProvisionalLoadWithErrorForFrame)
                 return;
@@ -1225,7 +1225,7 @@ void WKPageSetPageLoaderClient(WKPageRef pageRef, const WKPageLoaderClientBase* 
             m_client.didFinishLoadForFrame(toAPI(&page), toAPI(&frame), toAPI(userData), m_client.base.clientInfo);
         }
 
-        void didFailLoadWithErrorForFrame(WebPageProxy& page, WebFrameProxy& frame, API::Navigation*, const WebCore::ResourceError& error, API::Object* userData) override
+        void didFailLoadWithErrorForFrame(WebPageProxy& page, WebFrameProxy& frame, API::Navigation*, const CyberCore::ResourceError& error, API::Object* userData) override
         {
             if (!m_client.didFailLoadWithErrorForFrame)
                 return;
@@ -1241,7 +1241,7 @@ void WKPageSetPageLoaderClient(WKPageRef pageRef, const WKPageLoaderClientBase* 
             m_client.didFirstVisuallyNonEmptyLayoutForFrame(toAPI(&page), toAPI(&frame), toAPI(userData), m_client.base.clientInfo);
         }
 
-        void didReachLayoutMilestone(WebPageProxy& page, OptionSet<WebCore::LayoutMilestone> milestones) override
+        void didReachLayoutMilestone(WebPageProxy& page, OptionSet<CyberCore::LayoutMilestone> milestones) override
         {
             if (!m_client.didLayout)
                 return;
@@ -1295,11 +1295,11 @@ ALLOW_DEPRECATED_DECLARATIONS_END
     // It would be nice to get rid of this code and transition all clients to using didLayout instead of
     // didFirstLayoutInFrame and didFirstVisuallyNonEmptyLayoutInFrame. In the meantime, this is required
     // for backwards compatibility.
-    OptionSet<WebCore::LayoutMilestone> milestones;
+    OptionSet<CyberCore::LayoutMilestone> milestones;
     if (loaderClient->client().didFirstLayoutForFrame)
-        milestones.add(WebCore::DidFirstLayout);
+        milestones.add(CyberCore::DidFirstLayout);
     if (loaderClient->client().didFirstVisuallyNonEmptyLayoutForFrame)
-        milestones.add(WebCore::DidFirstVisuallyNonEmptyLayout);
+        milestones.add(CyberCore::DidFirstVisuallyNonEmptyLayout);
 
     if (milestones)
         webPageProxy->send(Messages::WebPage::ListenForLayoutMilestones(milestones));
@@ -1321,7 +1321,7 @@ void WKPageSetPagePolicyClient(WKPageRef pageRef, const WKPagePolicyClientBase* 
         }
 
     private:
-        void decidePolicyForNavigationAction(WebPageProxy& page, WebFrameProxy* frame, Ref<API::NavigationAction>&& navigationAction, WebFrameProxy* originatingFrame, const WebCore::ResourceRequest& originalResourceRequest, const WebCore::ResourceRequest& resourceRequest, Ref<WebFramePolicyListenerProxy>&& listener) override
+        void decidePolicyForNavigationAction(WebPageProxy& page, WebFrameProxy* frame, Ref<API::NavigationAction>&& navigationAction, WebFrameProxy* originatingFrame, const CyberCore::ResourceRequest& originalResourceRequest, const CyberCore::ResourceRequest& resourceRequest, Ref<WebFramePolicyListenerProxy>&& listener) override
         {
             if (!m_client.decidePolicyForNavigationAction_deprecatedForUseWithV0 && !m_client.decidePolicyForNavigationAction_deprecatedForUseWithV1 && !m_client.decidePolicyForNavigationAction) {
                 listener->use();
@@ -1339,7 +1339,7 @@ void WKPageSetPagePolicyClient(WKPageRef pageRef, const WKPagePolicyClientBase* 
                 m_client.decidePolicyForNavigationAction(toAPI(&page), toAPI(frame), toAPI(navigationAction->data().navigationType), toAPI(navigationAction->data().modifiers), toAPI(navigationAction->data().mouseButton), toAPI(originatingFrame), toAPI(originalRequest.ptr()), toAPI(request.ptr()), toAPI(listener.ptr()), nullptr, m_client.base.clientInfo);
         }
 
-        void decidePolicyForNewWindowAction(WebPageProxy& page, WebFrameProxy& frame, Ref<API::NavigationAction>&& navigationAction, const WebCore::ResourceRequest& resourceRequest, const String& frameName, Ref<WebFramePolicyListenerProxy>&& listener) override
+        void decidePolicyForNewWindowAction(WebPageProxy& page, WebFrameProxy& frame, Ref<API::NavigationAction>&& navigationAction, const CyberCore::ResourceRequest& resourceRequest, const String& frameName, Ref<WebFramePolicyListenerProxy>&& listener) override
         {
             if (!m_client.decidePolicyForNewWindowAction) {
                 listener->use();
@@ -1351,7 +1351,7 @@ void WKPageSetPagePolicyClient(WKPageRef pageRef, const WKPagePolicyClientBase* 
             m_client.decidePolicyForNewWindowAction(toAPI(&page), toAPI(&frame), toAPI(navigationAction->data().navigationType), toAPI(navigationAction->data().modifiers), toAPI(navigationAction->data().mouseButton), toAPI(request.ptr()), toAPI(frameName.impl()), toAPI(listener.ptr()), nullptr, m_client.base.clientInfo);
         }
 
-        void decidePolicyForResponse(WebPageProxy& page, WebFrameProxy& frame, const WebCore::ResourceResponse& resourceResponse, const WebCore::ResourceRequest& resourceRequest, bool canShowMIMEType, Ref<WebFramePolicyListenerProxy>&& listener) override
+        void decidePolicyForResponse(WebPageProxy& page, WebFrameProxy& frame, const CyberCore::ResourceResponse& resourceResponse, const CyberCore::ResourceRequest& resourceRequest, bool canShowMIMEType, Ref<WebFramePolicyListenerProxy>&& listener) override
         {
             if (!m_client.decidePolicyForResponse_deprecatedForUseWithV0 && !m_client.decidePolicyForResponse) {
                 listener->use();
@@ -1377,7 +1377,7 @@ ALLOW_DEPRECATED_DECLARATIONS_END
 }
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
     
 class RunBeforeUnloadConfirmPanelResultListener : public API::ObjectImpl<API::Object::Type::RunBeforeUnloadConfirmPanelResultListener> {
 public:
@@ -1573,7 +1573,7 @@ void WKPageSetPageUIClient(WKPageRef pageRef, const WKPageUIClientBase* wkClient
         }
 
     private:
-        void createNewPage(WebPageProxy& page, WebCore::WindowFeatures&& windowFeatures, Ref<API::NavigationAction>&& navigationAction, CompletionHandler<void(RefPtr<WebPageProxy>&&)>&& completionHandler) final
+        void createNewPage(WebPageProxy& page, CyberCore::WindowFeatures&& windowFeatures, Ref<API::NavigationAction>&& navigationAction, CompletionHandler<void(RefPtr<WebPageProxy>&&)>&& completionHandler) final
         {
             if (m_client.createNewPage) {
                 auto configuration = page.configuration().copy();
@@ -1855,7 +1855,7 @@ void WKPageSetPageUIClient(WKPageRef pageRef, const WKPageUIClientBase* wkClient
             m_client.setWindowFrame(toAPI(&page), toAPI(frame), m_client.base.clientInfo);
         }
 
-        void windowFrame(WebPageProxy& page, Function<void(WebCore::FloatRect)>&& completionHandler) final
+        void windowFrame(WebPageProxy& page, Function<void(CyberCore::FloatRect)>&& completionHandler) final
         {
             if (!m_client.getWindowFrame)
                 return completionHandler({ });
@@ -1949,7 +1949,7 @@ void WKPageSetPageUIClient(WKPageRef pageRef, const WKPageUIClientBase* wkClient
             m_client.decidePolicyForNotificationPermissionRequest(toAPI(&page), toAPI(&origin), toAPI(NotificationPermissionRequest::create(WTFMove(completionHandler)).ptr()), m_client.base.clientInfo);
         }
 
-        void requestStorageAccessConfirm(WebPageProxy& page, WebFrameProxy* frame, const WebCore::RegistrableDomain& requestingDomain, const WebCore::RegistrableDomain& currentDomain, CompletionHandler<void(bool)>&& completionHandler) final
+        void requestStorageAccessConfirm(WebPageProxy& page, WebFrameProxy* frame, const CyberCore::RegistrableDomain& requestingDomain, const CyberCore::RegistrableDomain& currentDomain, CompletionHandler<void(bool)>&& completionHandler) final
         {
             if (!m_client.requestStorageAccessConfirm) {
                 completionHandler(true);
@@ -1989,7 +1989,7 @@ void WKPageSetPageUIClient(WKPageRef pageRef, const WKPageUIClientBase* wkClient
             return m_client.footerHeight(toAPI(&page), toAPI(&frame), m_client.base.clientInfo);
         }
 
-        void drawHeader(WebPageProxy& page, WebFrameProxy& frame, WebCore::FloatRect&& rect) final
+        void drawHeader(WebPageProxy& page, WebFrameProxy& frame, CyberCore::FloatRect&& rect) final
         {
             if (!m_client.drawHeader)
                 return;
@@ -1997,7 +1997,7 @@ void WKPageSetPageUIClient(WKPageRef pageRef, const WKPageUIClientBase* wkClient
             m_client.drawHeader(toAPI(&page), toAPI(&frame), toAPI(rect), m_client.base.clientInfo);
         }
 
-        void drawFooter(WebPageProxy& page, WebFrameProxy& frame, WebCore::FloatRect&& rect) final
+        void drawFooter(WebPageProxy& page, WebFrameProxy& frame, CyberCore::FloatRect&& rect) final
         {
             if (!m_client.drawFooter)
                 return;
@@ -2005,7 +2005,7 @@ void WKPageSetPageUIClient(WKPageRef pageRef, const WKPageUIClientBase* wkClient
             m_client.drawFooter(toAPI(&page), toAPI(&frame), toAPI(rect), m_client.base.clientInfo);
         }
 
-        void printFrame(WebPageProxy& page, WebFrameProxy& frame, const WebCore::FloatSize&, CompletionHandler<void()>&& completionHandler) final
+        void printFrame(WebPageProxy& page, WebFrameProxy& frame, const CyberCore::FloatSize&, CompletionHandler<void()>&& completionHandler) final
         {
             if (m_client.printFrame)
                 m_client.printFrame(toAPI(&page), toAPI(&frame), m_client.base.clientInfo);
@@ -2083,36 +2083,36 @@ void WKPageSetPageUIClient(WKPageRef pageRef, const WKPageUIClientBase* wkClient
         }
 #endif
 
-        static WKAutoplayEventFlags toWKAutoplayEventFlags(OptionSet<WebCore::AutoplayEventFlags> flags)
+        static WKAutoplayEventFlags toWKAutoplayEventFlags(OptionSet<CyberCore::AutoplayEventFlags> flags)
         {
             WKAutoplayEventFlags wkFlags = kWKAutoplayEventFlagsNone;
-            if (flags.contains(WebCore::AutoplayEventFlags::HasAudio))
+            if (flags.contains(CyberCore::AutoplayEventFlags::HasAudio))
                 wkFlags |= kWKAutoplayEventFlagsHasAudio;
-            if (flags.contains(WebCore::AutoplayEventFlags::PlaybackWasPrevented))
+            if (flags.contains(CyberCore::AutoplayEventFlags::PlaybackWasPrevented))
                 wkFlags |= kWKAutoplayEventFlagsPlaybackWasPrevented;
-            if (flags.contains(WebCore::AutoplayEventFlags::MediaIsMainContent))
+            if (flags.contains(CyberCore::AutoplayEventFlags::MediaIsMainContent))
                 wkFlags |= kWKAutoplayEventFlagsMediaIsMainContent;
 
             return wkFlags;
         }
 
-        static WKAutoplayEvent toWKAutoplayEvent(WebCore::AutoplayEvent event)
+        static WKAutoplayEvent toWKAutoplayEvent(CyberCore::AutoplayEvent event)
         {
             switch (event) {
-            case WebCore::AutoplayEvent::DidAutoplayMediaPastThresholdWithoutUserInterference:
+            case CyberCore::AutoplayEvent::DidAutoplayMediaPastThresholdWithoutUserInterference:
                 return kWKAutoplayEventDidAutoplayMediaPastThresholdWithoutUserInterference;
-            case WebCore::AutoplayEvent::DidPlayMediaWithUserGesture:
+            case CyberCore::AutoplayEvent::DidPlayMediaWithUserGesture:
                 return kWKAutoplayEventDidPlayMediaWithUserGesture;
-            case WebCore::AutoplayEvent::DidPreventMediaFromPlaying:
+            case CyberCore::AutoplayEvent::DidPreventMediaFromPlaying:
                 return kWKAutoplayEventDidPreventFromAutoplaying;
-            case WebCore::AutoplayEvent::UserDidInterfereWithPlayback:
+            case CyberCore::AutoplayEvent::UserDidInterfereWithPlayback:
                 return kWKAutoplayEventUserDidInterfereWithPlayback;
             }
 
             RELEASE_ASSERT_NOT_REACHED();
         }
 
-        void handleAutoplayEvent(WebPageProxy& page, WebCore::AutoplayEvent event, OptionSet<WebCore::AutoplayEventFlags> flags) final
+        void handleAutoplayEvent(WebPageProxy& page, CyberCore::AutoplayEvent event, OptionSet<CyberCore::AutoplayEventFlags> flags) final
         {
             if (!m_client.handleAutoplayEvent)
                 return;
@@ -2126,7 +2126,7 @@ void WKPageSetPageUIClient(WKPageRef pageRef, const WKPageUIClientBase* wkClient
         {
             class PanelClient final : public API::WebAuthenticationPanelClient {
             public:
-                void selectAssertionResponse(Vector<Ref<WebCore::AuthenticatorAssertionResponse>>&& responses, WebKit::WebAuthenticationSource, CompletionHandler<void(WebCore::AuthenticatorAssertionResponse*)>&& completionHandler) const final
+                void selectAssertionResponse(Vector<Ref<CyberCore::AuthenticatorAssertionResponse>>&& responses, WebKit::WebAuthenticationSource, CompletionHandler<void(CyberCore::AuthenticatorAssertionResponse*)>&& completionHandler) const final
                 {
                     ASSERT(!responses.isEmpty());
                     completionHandler(responses[0].ptr());
@@ -2168,7 +2168,7 @@ void WKPageSetPageUIClient(WKPageRef pageRef, const WKPageUIClientBase* wkClient
             m_client.decidePolicyForMediaKeySystemPermissionRequest(toAPI(&page), toAPI(&origin), toAPI(API::String::create(keySystem).ptr()), toAPI(MediaKeySystemPermissionCallback::create(WTFMove(completionHandler)).ptr()));
         }
 
-        void queryPermission(const WTF::String& permissionName, API::SecurityOrigin& origin, CompletionHandler<void(std::optional<WebCore::PermissionState>)>&& completionHandler) final
+        void queryPermission(const WTF::String& permissionName, API::SecurityOrigin& origin, CompletionHandler<void(std::optional<CyberCore::PermissionState>)>&& completionHandler) final
         {
             if (!m_client.queryPermission) {
                 completionHandler({ });
@@ -2177,23 +2177,23 @@ void WKPageSetPageUIClient(WKPageRef pageRef, const WKPageUIClientBase* wkClient
             m_client.queryPermission(toAPI(API::String::create(permissionName).ptr()), toAPI(&origin), toAPI(QueryPermissionResultCallback::create(WTFMove(completionHandler)).ptr()));
         }
 
-        static WKScreenOrientationType toWKScreenOrientationType(WebCore::ScreenOrientationType orientation)
+        static WKScreenOrientationType toWKScreenOrientationType(CyberCore::ScreenOrientationType orientation)
         {
             switch (orientation) {
-            case WebCore::ScreenOrientationType::LandscapePrimary:
+            case CyberCore::ScreenOrientationType::LandscapePrimary:
                 return kWKScreenOrientationTypeLandscapePrimary;
-            case WebCore::ScreenOrientationType::LandscapeSecondary:
+            case CyberCore::ScreenOrientationType::LandscapeSecondary:
                 return kWKScreenOrientationTypeLandscapeSecondary;
-            case WebCore::ScreenOrientationType::PortraitSecondary:
+            case CyberCore::ScreenOrientationType::PortraitSecondary:
                 return kWKScreenOrientationTypePortraitSecondary;
-            case WebCore::ScreenOrientationType::PortraitPrimary:
+            case CyberCore::ScreenOrientationType::PortraitPrimary:
                 return kWKScreenOrientationTypePortraitPrimary;
             }
             ASSERT_NOT_REACHED();
             return kWKScreenOrientationTypePortraitPrimary;
         }
 
-        bool lockScreenOrientation(WebPageProxy& page, WebCore::ScreenOrientationType orientation) final
+        bool lockScreenOrientation(WebPageProxy& page, CyberCore::ScreenOrientationType orientation) final
         {
             if (!m_client.lockScreenOrientation)
                 return false;
@@ -2254,7 +2254,7 @@ void WKPageSetPageNavigationClient(WKPageRef pageRef, const WKPageNavigationClie
             m_client.didReceiveServerRedirectForProvisionalNavigation(toAPI(&page), toAPI(navigation), toAPI(userData), m_client.base.clientInfo);
         }
 
-        void didFailProvisionalNavigationWithError(WebPageProxy& page, FrameInfoData&& frameInfo, API::Navigation* navigation, const WebCore::ResourceError& error, API::Object* userData) override
+        void didFailProvisionalNavigationWithError(WebPageProxy& page, FrameInfoData&& frameInfo, API::Navigation* navigation, const CyberCore::ResourceError& error, API::Object* userData) override
         {
             if (frameInfo.isMainFrame) {
                 if (m_client.didFailProvisionalNavigation)
@@ -2277,7 +2277,7 @@ void WKPageSetPageNavigationClient(WKPageRef pageRef, const WKPageNavigationClie
                 m_client.didFinishNavigation(toAPI(&page), toAPI(navigation), toAPI(userData), m_client.base.clientInfo);
         }
 
-        void didFailNavigationWithError(WebPageProxy& page, const FrameInfoData&, API::Navigation* navigation, const WebCore::ResourceError& error, API::Object* userData) override
+        void didFailNavigationWithError(WebPageProxy& page, const FrameInfoData&, API::Navigation* navigation, const CyberCore::ResourceError& error, API::Object* userData) override
         {
             if (m_client.didFailNavigation)
                 m_client.didFailNavigation(toAPI(&page), toAPI(navigation), toAPI(error), toAPI(userData), m_client.base.clientInfo);
@@ -2297,7 +2297,7 @@ void WKPageSetPageNavigationClient(WKPageRef pageRef, const WKPageNavigationClie
             m_client.didSameDocumentNavigation(toAPI(&page), toAPI(navigation), toAPI(navigationType), toAPI(userData), m_client.base.clientInfo);
         }
         
-        void renderingProgressDidChange(WebPageProxy& page, OptionSet<WebCore::LayoutMilestone> milestones) override
+        void renderingProgressDidChange(WebPageProxy& page, OptionSet<CyberCore::LayoutMilestone> milestones) override
         {
             if (!m_client.renderingProgressDidChange)
                 return;
@@ -2735,7 +2735,7 @@ static PrintInfo printInfoFromWKPrintInfo(const WKPrintInfo& printInfo)
 void WKPageComputePagesForPrinting(WKPageRef pageRef, WKFrameRef frame, WKPrintInfo printInfo, WKPageComputePagesForPrintingFunction callback, void* context)
 {
     CRASH_IF_SUSPENDED;
-    toImpl(pageRef)->computePagesForPrinting(toImpl(frame)->frameID(), printInfoFromWKPrintInfo(printInfo), [context, callback](const Vector<WebCore::IntRect>& rects, double scaleFactor, const WebCore::FloatBoxExtent& computedPageMargin) {
+    toImpl(pageRef)->computePagesForPrinting(toImpl(frame)->frameID(), printInfoFromWKPrintInfo(printInfo), [context, callback](const Vector<CyberCore::IntRect>& rects, double scaleFactor, const CyberCore::FloatBoxExtent& computedPageMargin) {
         Vector<WKRect> wkRects(rects.size());
         for (size_t i = 0; i < rects.size(); ++i)
             wkRects[i] = toAPI(rects[i]);
@@ -2806,14 +2806,14 @@ void WKPageSetMediaVolume(WKPageRef pageRef, float volume)
 void WKPageSetMuted(WKPageRef pageRef, WKMediaMutedState mutedState)
 {
     CRASH_IF_SUSPENDED;
-    WebCore::MediaProducerMutedStateFlags coreState;
+    CyberCore::MediaProducerMutedStateFlags coreState;
 
     if (mutedState & kWKMediaAudioMuted)
-        coreState.add(WebCore::MediaProducerMutedState::AudioIsMuted);
+        coreState.add(CyberCore::MediaProducerMutedState::AudioIsMuted);
     if (mutedState & kWKMediaCaptureDevicesMuted)
-        coreState.add(WebCore::MediaProducer::AudioAndVideoCaptureIsMuted);
+        coreState.add(CyberCore::MediaProducer::AudioAndVideoCaptureIsMuted);
     if (mutedState & kWKMediaScreenCaptureMuted)
-        coreState.add(WebCore::MediaProducerMutedState::ScreenCaptureIsMuted);
+        coreState.add(CyberCore::MediaProducerMutedState::ScreenCaptureIsMuted);
 
     toImpl(pageRef)->setMuted(coreState);
 }
@@ -2909,11 +2909,11 @@ WKScrollPinningBehavior WKPageGetScrollPinningBehavior(WKPageRef page)
     ScrollPinningBehavior pinning = toImpl(page)->scrollPinningBehavior();
     
     switch (pinning) {
-    case WebCore::ScrollPinningBehavior::DoNotPin:
+    case CyberCore::ScrollPinningBehavior::DoNotPin:
         return kWKScrollPinningBehaviorDoNotPin;
-    case WebCore::ScrollPinningBehavior::PinToTop:
+    case CyberCore::ScrollPinningBehavior::PinToTop:
         return kWKScrollPinningBehaviorPinToTop;
-    case WebCore::ScrollPinningBehavior::PinToBottom:
+    case CyberCore::ScrollPinningBehavior::PinToBottom:
         return kWKScrollPinningBehaviorPinToBottom;
     }
     
@@ -2961,28 +2961,28 @@ bool WKPageIsPlayingAudio(WKPageRef page)
 
 WKMediaState WKPageGetMediaState(WKPageRef page)
 {
-    WebCore::MediaProducerMediaStateFlags coreState = toImpl(page)->reportedMediaState();
+    CyberCore::MediaProducerMediaStateFlags coreState = toImpl(page)->reportedMediaState();
     WKMediaState state = kWKMediaIsNotPlaying;
 
-    if (coreState & WebCore::MediaProducerMediaState::IsPlayingAudio)
+    if (coreState & CyberCore::MediaProducerMediaState::IsPlayingAudio)
         state |= kWKMediaIsPlayingAudio;
-    if (coreState & WebCore::MediaProducerMediaState::IsPlayingVideo)
+    if (coreState & CyberCore::MediaProducerMediaState::IsPlayingVideo)
         state |= kWKMediaIsPlayingVideo;
-    if (coreState & WebCore::MediaProducerMediaState::HasActiveAudioCaptureDevice)
+    if (coreState & CyberCore::MediaProducerMediaState::HasActiveAudioCaptureDevice)
         state |= kWKMediaHasActiveAudioCaptureDevice;
-    if (coreState & WebCore::MediaProducerMediaState::HasActiveVideoCaptureDevice)
+    if (coreState & CyberCore::MediaProducerMediaState::HasActiveVideoCaptureDevice)
         state |= kWKMediaHasActiveVideoCaptureDevice;
-    if (coreState & WebCore::MediaProducerMediaState::HasMutedAudioCaptureDevice)
+    if (coreState & CyberCore::MediaProducerMediaState::HasMutedAudioCaptureDevice)
         state |= kWKMediaHasMutedAudioCaptureDevice;
-    if (coreState & WebCore::MediaProducerMediaState::HasMutedVideoCaptureDevice)
+    if (coreState & CyberCore::MediaProducerMediaState::HasMutedVideoCaptureDevice)
         state |= kWKMediaHasMutedVideoCaptureDevice;
-    if (coreState & WebCore::MediaProducerMediaState::HasActiveScreenCaptureDevice)
+    if (coreState & CyberCore::MediaProducerMediaState::HasActiveScreenCaptureDevice)
         state |= kWKMediaHasActiveScreenCaptureDevice;
-    if (coreState & WebCore::MediaProducerMediaState::HasMutedScreenCaptureDevice)
+    if (coreState & CyberCore::MediaProducerMediaState::HasMutedScreenCaptureDevice)
         state |= kWKMediaHasMutedScreenCaptureDevice;
-    if (coreState & WebCore::MediaProducerMediaState::HasActiveWindowCaptureDevice)
+    if (coreState & CyberCore::MediaProducerMediaState::HasActiveWindowCaptureDevice)
         state |= kWKMediaHasActiveWindowCaptureDevice;
-    if (coreState & WebCore::MediaProducerMediaState::HasMutedWindowCaptureDevice)
+    if (coreState & CyberCore::MediaProducerMediaState::HasMutedWindowCaptureDevice)
         state |= kWKMediaHasMutedWindowCaptureDevice;
 
     return state;
@@ -3032,7 +3032,7 @@ void WKPageGetApplicationManifest_b(WKPageRef pageRef, WKPageGetApplicationManif
 {
     CRASH_IF_SUSPENDED;
 #if ENABLE(APPLICATION_MANIFEST)
-    toImpl(pageRef)->getApplicationManifest([block](const std::optional<WebCore::ApplicationManifest>& manifest) {
+    toImpl(pageRef)->getApplicationManifest([block](const std::optional<CyberCore::ApplicationManifest>& manifest) {
         block();
     });
 #else // ENABLE(APPLICATION_MANIFEST)

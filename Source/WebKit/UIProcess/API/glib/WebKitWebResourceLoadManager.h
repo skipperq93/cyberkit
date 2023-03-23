@@ -26,7 +26,7 @@
 #include <wtf/HashMap.h>
 #include <wtf/glib/GRefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 class ResourceError;
 class ResourceRequest;
 class ResourceResponse;
@@ -40,14 +40,14 @@ public:
     explicit WebKitWebResourceLoadManager(WebKitWebView*);
     ~WebKitWebResourceLoadManager();
 
-    void didInitiateLoad(WebCore::ResourceLoaderIdentifier, WebCore::FrameIdentifier, WebCore::ResourceRequest&&);
-    void didSendRequest(WebCore::ResourceLoaderIdentifier, WebCore::FrameIdentifier, WebCore::ResourceRequest&&, WebCore::ResourceResponse&&);
-    void didReceiveResponse(WebCore::ResourceLoaderIdentifier, WebCore::FrameIdentifier, WebCore::ResourceResponse&&);
-    void didFinishLoad(WebCore::ResourceLoaderIdentifier, WebCore::FrameIdentifier, WebCore::ResourceError&&);
+    void didInitiateLoad(CyberCore::ResourceLoaderIdentifier, CyberCore::FrameIdentifier, CyberCore::ResourceRequest&&);
+    void didSendRequest(CyberCore::ResourceLoaderIdentifier, CyberCore::FrameIdentifier, CyberCore::ResourceRequest&&, CyberCore::ResourceResponse&&);
+    void didReceiveResponse(CyberCore::ResourceLoaderIdentifier, CyberCore::FrameIdentifier, CyberCore::ResourceResponse&&);
+    void didFinishLoad(CyberCore::ResourceLoaderIdentifier, CyberCore::FrameIdentifier, CyberCore::ResourceError&&);
 
 private:
     WebKitWebView* m_webView { nullptr };
-    HashMap<std::pair<WebCore::ResourceLoaderIdentifier, WebCore::FrameIdentifier>, GRefPtr<WebKitWebResource>> m_resources;
+    HashMap<std::pair<CyberCore::ResourceLoaderIdentifier, CyberCore::FrameIdentifier>, GRefPtr<WebKitWebResource>> m_resources;
 };
 
 } // namespace WebKit

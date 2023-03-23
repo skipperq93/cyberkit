@@ -44,7 +44,7 @@
 #include "SVGResources.h"
 #include "SVGResourcesCache.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 SVGContainerLayout::SVGContainerLayout(RenderLayerModelObject& container)
     : m_container(container)

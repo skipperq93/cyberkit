@@ -27,7 +27,7 @@
 
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DiagnosticLoggingKeys {
 public:
@@ -190,4 +190,4 @@ public:
     WEBCORE_EXPORT static String backgroundCPUUsageToDiagnosticLoggingKey(double cpuUsage);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

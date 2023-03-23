@@ -1208,7 +1208,7 @@ fast/css/variables/env/ios [ Pass ]
 # Known failures
 ##
 
-# <rdar://problem/14590711> CrashTracer: [USER] DumpRenderTree at WebCore: WebCore::Element::detach + 17
+# <rdar://problem/14590711> CrashTracer: [USER] DumpRenderTree at CyberCore: CyberCore::Element::detach + 17
 svg/as-image/svg-nested.html
 
 # Height of actual image is 1-2 pixels shorter than expected image.
@@ -1903,7 +1903,7 @@ fast/workers/worker-timeout.html
 # <rdar://problem/19226254> ASSERT(!_chooser) in -[WebOpenPanelResultListener dealloc]
 fast/events/domactivate-sets-underlying-click-event-as-handled.html
 
-# <rdar://problem/19226320> ASSERT(useDownstream ? (result > vp) : (result < vp)) fails in WebCore::nextSentenceBoundaryInDirection()
+# <rdar://problem/19226320> ASSERT(useDownstream ? (result > vp) : (result < vp)) fails in CyberCore::nextSentenceBoundaryInDirection()
 fast/events/special-key-events-in-input-text.html
 fast/events/key-events-in-input-text.html
 
@@ -1926,7 +1926,7 @@ fast/css/css-selector-text.html
 # <rdar://problem/19227549> ASSERT(!m_webFrame->_private->provisionalURL) fails in WebFrameLoaderClient::dispatchDidStartProvisionalLoad()
 fast/forms/validation-message-user-modify.html
 
-# <rdar://problem/10348432> DumpRenderTree at WebCore: WebCore::HistoryController::restoreScrollPositionAndViewState
+# <rdar://problem/10348432> DumpRenderTree at CyberCore: CyberCore::HistoryController::restoreScrollPositionAndViewState
 fast/dom/location-new-window-no-crash.html
 
 # <rdar://problem/19017693> ASSERTION FAILED: [[dataSource webFrame] dataSource] || [[dataSource webFrame] provisionalDataSource] in -[ResourceLoadDelegate webView:identifierForInitialRequest:fromDataSource:]

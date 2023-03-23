@@ -39,7 +39,7 @@ class JSGlobalObject;
 class JSValue;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class ServiceWorkerGlobalScope;
 
@@ -74,6 +74,6 @@ private:
     ServiceWorkerClientData m_data;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

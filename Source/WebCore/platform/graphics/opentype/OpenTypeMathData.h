@@ -39,7 +39,7 @@
 #include <hb-ot.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class FontPlatformData;
 class SharedBuffer;
@@ -141,6 +141,6 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MATHML)

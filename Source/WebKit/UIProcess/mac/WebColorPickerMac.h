@@ -36,7 +36,7 @@
 #import <wtf/RetainPtr.h>
 #import <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 class Color;
 }
 
@@ -45,7 +45,7 @@ class WebColorPickerMac;
 }
 
 @protocol WKColorPickerUIMac <NSObject>
-- (void)setAndShowPicker:(WebKit::WebColorPickerMac*)picker withColor:(NSColor *)color suggestions:(Vector<WebCore::Color>&&)suggestions;
+- (void)setAndShowPicker:(WebKit::WebColorPickerMac*)picker withColor:(NSColor *)color suggestions:(Vector<CyberCore::Color>&&)suggestions;
 - (void)invalidate;
 - (void)setColor:(NSColor *)color;
 - (void)didChooseColor:(id)sender;
@@ -55,19 +55,19 @@ namespace WebKit {
     
 class WebColorPickerMac final : public WebColorPicker {
 public:        
-    static Ref<WebColorPickerMac> create(WebColorPicker::Client*, const WebCore::Color&, const WebCore::IntRect&, Vector<WebCore::Color>&&, NSView *);
+    static Ref<WebColorPickerMac> create(WebColorPicker::Client*, const CyberCore::Color&, const CyberCore::IntRect&, Vector<CyberCore::Color>&&, NSView *);
     virtual ~WebColorPickerMac();
 
     void endPicker() final;
-    void setSelectedColor(const WebCore::Color&) final;
-    void showColorPicker(const WebCore::Color&) final;
+    void setSelectedColor(const CyberCore::Color&) final;
+    void showColorPicker(const CyberCore::Color&) final;
     
-    void didChooseColor(const WebCore::Color&);
+    void didChooseColor(const CyberCore::Color&);
 
 private:
-    WebColorPickerMac(WebColorPicker::Client*, const WebCore::Color&, const WebCore::IntRect&, Vector<WebCore::Color>&&, NSView *);
+    WebColorPickerMac(WebColorPicker::Client*, const CyberCore::Color&, const CyberCore::IntRect&, Vector<CyberCore::Color>&&, NSView *);
     RetainPtr<NSObject<WKColorPickerUIMac> > m_colorPickerUI;
-    Vector<WebCore::Color> m_suggestions;
+    Vector<CyberCore::Color> m_suggestions;
 };
 
 } // namespace WebKit

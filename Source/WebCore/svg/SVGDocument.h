@@ -23,7 +23,7 @@
 
 #include "XMLDocument.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGSVGElement;
 
@@ -51,9 +51,9 @@ inline Ref<SVGDocument> SVGDocument::create(Frame* frame, const Settings& settin
     return document;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::SVGDocument)
-    static bool isType(const WebCore::Document& document) { return document.isSVGDocument(); }
-    static bool isType(const WebCore::Node& node) { return is<WebCore::Document>(node) && isType(downcast<WebCore::Document>(node)); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::SVGDocument)
+    static bool isType(const CyberCore::Document& document) { return document.isSVGDocument(); }
+    static bool isType(const CyberCore::Node& node) { return is<CyberCore::Document>(node) && isType(downcast<CyberCore::Document>(node)); }
 SPECIALIZE_TYPE_TRAITS_END()

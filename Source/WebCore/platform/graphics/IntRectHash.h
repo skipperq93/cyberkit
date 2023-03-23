@@ -31,23 +31,23 @@
 
 namespace WTF {
 
-template<> struct IntHash<WebCore::IntRect> {
-    static unsigned hash(const WebCore::IntRect& key)
+template<> struct IntHash<CyberCore::IntRect> {
+    static unsigned hash(const CyberCore::IntRect& key)
     {
-        return pairIntHash(DefaultHash<WebCore::IntPoint>::hash(key.location()), DefaultHash<WebCore::IntSize>::hash(key.size()));
+        return pairIntHash(DefaultHash<CyberCore::IntPoint>::hash(key.location()), DefaultHash<CyberCore::IntSize>::hash(key.size()));
     }
-    static bool equal(const WebCore::IntRect& a, const WebCore::IntRect& b)
+    static bool equal(const CyberCore::IntRect& a, const CyberCore::IntRect& b)
     {
-        return DefaultHash<WebCore::IntPoint>::equal(a.location(), b.location()) && DefaultHash<WebCore::IntSize>::equal(a.size(), b.size());
+        return DefaultHash<CyberCore::IntPoint>::equal(a.location(), b.location()) && DefaultHash<CyberCore::IntSize>::equal(a.size(), b.size());
     }
     static const bool safeToCompareToEmptyOrDeleted = true;
 };
-template<> struct DefaultHash<WebCore::IntRect> : IntHash<WebCore::IntRect> { };
+template<> struct DefaultHash<CyberCore::IntRect> : IntHash<CyberCore::IntRect> { };
 
-template<> struct HashTraits<WebCore::IntRect> : GenericHashTraits<WebCore::IntRect> {
+template<> struct HashTraits<CyberCore::IntRect> : GenericHashTraits<CyberCore::IntRect> {
     static const bool emptyValueIsZero = true;
-    static void constructDeletedValue(WebCore::IntRect& slot) { new (NotNull, &slot) WebCore::IntRect(-1, -1, -1, -1); }
-    static bool isDeletedValue(const WebCore::IntRect& value) { return value.x() == -1 && value.y() == -1 && value.width() == -1 && value.height() == -1; }
+    static void constructDeletedValue(CyberCore::IntRect& slot) { new (NotNull, &slot) CyberCore::IntRect(-1, -1, -1, -1); }
+    static bool isDeletedValue(const CyberCore::IntRect& value) { return value.x() == -1 && value.y() == -1 && value.width() == -1 && value.height() == -1; }
 };
 
 }

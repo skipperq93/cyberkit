@@ -34,7 +34,7 @@
 #import <CyberCore/GraphicsContext.h>
 #import <CyberCore/WKGraphics.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 @implementation WebPlainWhiteView
 

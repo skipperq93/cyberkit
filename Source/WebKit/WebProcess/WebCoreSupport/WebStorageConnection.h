@@ -31,24 +31,24 @@ namespace IPC {
 class Connection;
 }
 
-namespace WebCore {
+namespace CyberCore {
 template<typename> class ExceptionOr;
 class FileSystemDirectoryHandle;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
-class WebStorageConnection final : public WebCore::StorageConnection {
+class WebStorageConnection final : public CyberCore::StorageConnection {
 public:
     static Ref<WebStorageConnection> create();
 
 private:
-    void getPersisted(WebCore::ClientOrigin&&, StorageConnection::PersistCallback&&) final;
-    void persist(const WebCore::ClientOrigin&, StorageConnection::PersistCallback&&) final;
-    void getEstimate(WebCore::ClientOrigin&&, StorageConnection::GetEstimateCallback&&) final;
-    void fileSystemGetDirectory(WebCore::ClientOrigin&&, StorageConnection::GetDirectoryCallback&&) final;
+    void getPersisted(CyberCore::ClientOrigin&&, StorageConnection::PersistCallback&&) final;
+    void persist(const CyberCore::ClientOrigin&, StorageConnection::PersistCallback&&) final;
+    void getEstimate(CyberCore::ClientOrigin&&, StorageConnection::GetEstimateCallback&&) final;
+    void fileSystemGetDirectory(CyberCore::ClientOrigin&&, StorageConnection::GetDirectoryCallback&&) final;
 
     IPC::Connection& connection();
 };
 
-} // namespace WebKit
+} // namespace CyberKit

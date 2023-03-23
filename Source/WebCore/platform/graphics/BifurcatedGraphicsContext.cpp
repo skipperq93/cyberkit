@@ -34,7 +34,7 @@
 #define VERIFY_STATE_SYNCHRONIZATION() ((void)0)
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 BifurcatedGraphicsContext::BifurcatedGraphicsContext(GraphicsContext& primaryContext, GraphicsContext& secondaryContext)
     : m_primaryContext(primaryContext)
@@ -589,5 +589,5 @@ GraphicsContextPlatformPrivate* BifurcatedGraphicsContext::deprecatedPrivateCont
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 

@@ -40,7 +40,7 @@
 #include "GraphicsContextCG.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 // Returns info for the default monitor if widget is NULL
 static MONITORINFOEX monitorInfoForWidget(Widget* widget)
@@ -115,4 +115,4 @@ bool screenSupportsExtendedColor(Widget*)
     return false;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

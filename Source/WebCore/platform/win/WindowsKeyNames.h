@@ -34,7 +34,7 @@
 #include <wtf/OptionSetHash.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WindowsKeyNames {
 public:
@@ -58,4 +58,4 @@ private:
     VirtualKeyToKeyMap m_printableKeyCodeToKey;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

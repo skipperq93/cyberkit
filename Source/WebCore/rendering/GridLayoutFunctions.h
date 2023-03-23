@@ -28,7 +28,7 @@
 #include "GridPositionsResolver.h"
 #include "LayoutUnit.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderBox;
 class RenderElement;
@@ -57,5 +57,5 @@ LayoutUnit extraMarginForSubgridAncestors(GridTrackSizingDirection, const Render
 
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 

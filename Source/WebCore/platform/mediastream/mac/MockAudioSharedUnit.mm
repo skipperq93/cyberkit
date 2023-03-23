@@ -50,7 +50,7 @@
 #import <pal/cf/AudioToolboxSoftLink.h>
 #import <pal/cf/CoreMediaSoftLink.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static inline size_t alignTo16Bytes(size_t size)
 {
@@ -432,6 +432,6 @@ OSStatus MockAudioSharedInternalUnit::defaultOutputDevice(uint32_t* device)
     return 0;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM)

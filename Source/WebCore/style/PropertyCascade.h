@@ -30,7 +30,7 @@
 #include "WebAnimationTypes.h"
 #include <bitset>
 
-namespace WebCore {
+namespace CyberCore {
 
 class StyleResolver;
 

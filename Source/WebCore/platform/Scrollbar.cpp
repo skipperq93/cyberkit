@@ -43,7 +43,7 @@
 #define THUMB_POSITION_AFFECTS_BUTTONS
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<Scrollbar> Scrollbar::createNativeScrollbar(ScrollableArea& scrollableArea, ScrollbarOrientation orientation, ScrollbarControlSize size)
 {
@@ -488,4 +488,4 @@ NativeScrollbarVisibility Scrollbar::nativeScrollbarVisibility(const Scrollbar* 
     return NativeScrollbarVisibility::Visible;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

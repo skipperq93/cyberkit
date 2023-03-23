@@ -27,11 +27,11 @@
 
 #include <CyberCore/AlternativeTextClient.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPage;
 
-class WebAlternativeTextClient final : public WebCore::AlternativeTextClient {
+class WebAlternativeTextClient final : public CyberCore::AlternativeTextClient {
     WTF_MAKE_FAST_ALLOCATED;
 public:
     explicit WebAlternativeTextClient(WebPage*);
@@ -39,16 +39,16 @@ public:
 
 private:
 #if USE(AUTOCORRECTION_PANEL)
-    void showCorrectionAlternative(WebCore::AlternativeTextType, const WebCore::FloatRect& boundingBoxOfReplacedString, const String& replacedString, const String& replacementString, const Vector<String>& alternativeReplacementStrings) override;
-    void dismissAlternative(WebCore::ReasonForDismissingAlternativeText) override;
-    String dismissAlternativeSoon(WebCore::ReasonForDismissingAlternativeText) override;
-    void recordAutocorrectionResponse(WebCore::AutocorrectionResponse, const String& replacedString, const String& replacementString) override;
+    void showCorrectionAlternative(CyberCore::AlternativeTextType, const CyberCore::FloatRect& boundingBoxOfReplacedString, const String& replacedString, const String& replacementString, const Vector<String>& alternativeReplacementStrings) override;
+    void dismissAlternative(CyberCore::ReasonForDismissingAlternativeText) override;
+    String dismissAlternativeSoon(CyberCore::ReasonForDismissingAlternativeText) override;
+    void recordAutocorrectionResponse(CyberCore::AutocorrectionResponse, const String& replacedString, const String& replacementString) override;
 #endif
 
 #if USE(DICTATION_ALTERNATIVES)
-    void showDictationAlternativeUI(const WebCore::FloatRect& boundingBoxOfDictatedText, WebCore::DictationContext) final;
-    void removeDictationAlternatives(WebCore::DictationContext) final;
-    Vector<String> dictationAlternatives(WebCore::DictationContext) final;
+    void showDictationAlternativeUI(const CyberCore::FloatRect& boundingBoxOfDictatedText, CyberCore::DictationContext) final;
+    void removeDictationAlternatives(CyberCore::DictationContext) final;
+    Vector<String> dictationAlternatives(CyberCore::DictationContext) final;
 #endif
 
 #if !(USE(AUTOCORRECTION_PANEL) || USE(DICTATION_ALTERNATIVES))

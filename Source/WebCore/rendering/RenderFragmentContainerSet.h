@@ -27,7 +27,7 @@
 
 #include "RenderFragmentContainer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderFragmentedFlow;
 
@@ -58,4 +58,4 @@ private:
     bool isRenderFragmentContainerSet() const final { return true; }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

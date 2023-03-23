@@ -43,7 +43,7 @@ NS_ASSUME_NONNULL_BEGIN
 NS_ASSUME_NONNULL_END
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 static bool usageTrackingAvailable()
 {
@@ -113,7 +113,7 @@ void MediaUsageManagerCocoa::reset()
     m_mediaSessions.clear();
 }
 
-void MediaUsageManagerCocoa::addMediaSession(WebCore::MediaSessionIdentifier identifier, const String& bundleIdentifier, const URL& pageURL)
+void MediaUsageManagerCocoa::addMediaSession(CyberCore::MediaSessionIdentifier identifier, const String& bundleIdentifier, const URL& pageURL)
 {
     auto addResult = m_mediaSessions.ensure(identifier, [&] {
         return makeUnique<MediaUsageManagerCocoa::SessionMediaUsage>(identifier, bundleIdentifier, pageURL);
@@ -121,13 +121,13 @@ void MediaUsageManagerCocoa::addMediaSession(WebCore::MediaSessionIdentifier ide
     ASSERT_UNUSED(addResult, addResult.isNewEntry);
 }
 
-void MediaUsageManagerCocoa::removeMediaSession(WebCore::MediaSessionIdentifier identifier)
+void MediaUsageManagerCocoa::removeMediaSession(CyberCore::MediaSessionIdentifier identifier)
 {
     ASSERT(m_mediaSessions.contains(identifier));
     m_mediaSessions.remove(identifier);
 }
 
-void MediaUsageManagerCocoa::updateMediaUsage(WebCore::MediaSessionIdentifier identifier, const WebCore::MediaUsageInfo& mediaUsageInfo)
+void MediaUsageManagerCocoa::updateMediaUsage(CyberCore::MediaSessionIdentifier identifier, const CyberCore::MediaUsageInfo& mediaUsageInfo)
 {
     ASSERT(m_mediaSessions.contains(identifier));
     auto session = m_mediaSessions.get(identifier);

@@ -35,7 +35,7 @@ namespace WTF {
 class TextStream;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScrollingCoordinator;
 
@@ -116,4 +116,4 @@ private:
 
 TextStream& operator<<(TextStream&, const LayerAncestorClippingStack&);
 
-} // namespace WebCore
+} // namespace CyberCore

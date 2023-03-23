@@ -41,7 +41,7 @@
 #include <pal/spi/ios/SQLite3SPI.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 static constexpr std::array<const char *, 3> databaseFileSuffixes { "", "-shm", "-wal" };
 
@@ -147,4 +147,4 @@ String SQLiteFileSystem::computeHashForFileName(StringView fileName)
     return String::fromUTF8(result);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -29,9 +29,9 @@
 #include "StorageNamespaceImpl.h"
 #include <CyberCore/StorageNamespaceProvider.h>
 
-namespace WebKit {
+namespace CyberKit {
 
-class WebStorageNamespaceProvider final : public WebCore::StorageNamespaceProvider, public CanMakeWeakPtr<WebStorageNamespaceProvider> {
+class WebStorageNamespaceProvider final : public CyberCore::StorageNamespaceProvider, public CanMakeWeakPtr<WebStorageNamespaceProvider> {
 public:
     static Ref<WebStorageNamespaceProvider> getOrCreate();
     virtual ~WebStorageNamespaceProvider();
@@ -42,14 +42,14 @@ public:
 private:
     explicit WebStorageNamespaceProvider();
 
-    Ref<WebCore::StorageNamespace> createLocalStorageNamespace(unsigned quota, PAL::SessionID) override;
-    Ref<WebCore::StorageNamespace> createTransientLocalStorageNamespace(WebCore::SecurityOrigin&, unsigned quota, PAL::SessionID) override;
+    Ref<CyberCore::StorageNamespace> createLocalStorageNamespace(unsigned quota, PAL::SessionID) override;
+    Ref<CyberCore::StorageNamespace> createTransientLocalStorageNamespace(CyberCore::SecurityOrigin&, unsigned quota, PAL::SessionID) override;
 
-    RefPtr<WebCore::StorageNamespace> sessionStorageNamespace(const WebCore::SecurityOrigin&, WebCore::Page&, ShouldCreateNamespace) final;
-    void copySessionStorageNamespace(WebCore::Page&, WebCore::Page&) final;
+    RefPtr<CyberCore::StorageNamespace> sessionStorageNamespace(const CyberCore::SecurityOrigin&, CyberCore::Page&, ShouldCreateNamespace) final;
+    void copySessionStorageNamespace(CyberCore::Page&, CyberCore::Page&) final;
     struct SessionStorageNamespaces {
         unsigned useCount { 0 };
-        HashMap<WebCore::SecurityOriginData, RefPtr<WebCore::StorageNamespace>> map;
+        HashMap<CyberCore::SecurityOriginData, RefPtr<CyberCore::StorageNamespace>> map;
     };
 
     HashMap<StorageNamespaceImpl::Identifier, SessionStorageNamespaces> m_sessionStorageNamespaces;

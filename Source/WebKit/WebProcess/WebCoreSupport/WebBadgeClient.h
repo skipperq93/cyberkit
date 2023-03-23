@@ -28,9 +28,9 @@
 #include <CyberCore/BadgeClient.h>
 #include <wtf/Ref.h>
 
-namespace WebKit {
+namespace CyberKit {
 
-class WebBadgeClient final : public WebCore::BadgeClient {
+class WebBadgeClient final : public CyberCore::BadgeClient {
 public:
     static Ref<WebBadgeClient> create()
     {
@@ -38,8 +38,8 @@ public:
     }
 
 private:
-    void setAppBadge(WebCore::Page*, const WebCore::SecurityOriginData&, std::optional<uint64_t>) final;
-    void setClientBadge(WebCore::Page&, const WebCore::SecurityOriginData&, std::optional<uint64_t>) final;
+    void setAppBadge(CyberCore::Page*, const CyberCore::SecurityOriginData&, std::optional<uint64_t>) final;
+    void setClientBadge(CyberCore::Page&, const CyberCore::SecurityOriginData&, std::optional<uint64_t>) final;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

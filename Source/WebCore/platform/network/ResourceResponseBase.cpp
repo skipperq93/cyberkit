@@ -38,7 +38,7 @@
 #include <wtf/StdLibExtras.h>
 #include <wtf/text/StringView.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 bool isScriptAllowedByNosniff(const ResourceResponse& response)
 {
@@ -70,7 +70,7 @@ ResourceResponseBase::ResourceResponseBase(std::optional<ResourceResponseBase::R
     , m_httpStatusText(data ? data->m_httpStatusText : AtomString { })
     , m_httpVersion(data ? data->m_httpVersion : AtomString { })
     , m_httpHeaderFields(data ? data->m_httpHeaderFields : HTTPHeaderMap { })
-    , m_networkLoadMetrics(data ? data->m_networkLoadMetrics : Box<WebCore::NetworkLoadMetrics> { })
+    , m_networkLoadMetrics(data ? data->m_networkLoadMetrics : Box<CyberCore::NetworkLoadMetrics> { })
     , m_certificateInfo(data ? data->m_certificateInfo : std::nullopt)
     , m_httpStatusCode(data ? data->m_httpStatusCode : 0)
     , m_isNull(data ? false : true)
@@ -394,7 +394,7 @@ void ResourceResponseBase::setHTTPVersion(const AtomString& versionText)
 
 static bool isSafeRedirectionResponseHeader(HTTPHeaderName name)
 {
-    // WebCore needs to keep location and cache related headers as it does caching.
+    // CyberCore needs to keep location and cache related headers as it does caching.
     // We also keep CORS/ReferrerPolicy headers until CORS checks/Referrer computation are done in NetworkProcess.
     return name == HTTPHeaderName::Location
         || name == HTTPHeaderName::ReferrerPolicy
@@ -653,7 +653,7 @@ void ResourceResponseBase::parseCacheControlDirectives() const
 
     lazyInit(CommonFieldsOnly);
 
-    m_cacheControlDirectives = WebCore::parseCacheControlDirectives(m_httpHeaderFields);
+    m_cacheControlDirectives = CyberCore::parseCacheControlDirectives(m_httpHeaderFields);
     m_haveParsedCacheControlHeader = true;
 }
     
@@ -829,7 +829,7 @@ void ResourceResponseBase::lazyInit(InitLevel initLevel) const
     const_cast<ResourceResponse*>(static_cast<const ResourceResponse*>(this))->platformLazyInit(initLevel);
 }
 
-bool ResourceResponseBase::equalForWebKitLegacyChallengeComparison(const ResourceResponse& a, const ResourceResponse& b)
+bool ResourceResponseBase::equalForCyberKitLegacyChallengeComparison(const ResourceResponse& a, const ResourceResponse& b)
 {
     if (a.isNull() != b.isNull())
         return false;  

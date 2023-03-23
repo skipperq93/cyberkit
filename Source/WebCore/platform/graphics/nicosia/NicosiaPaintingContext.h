@@ -31,7 +31,7 @@
 #include "NicosiaPaintingOperation.h"
 #include <memory>
 
-namespace WebCore {
+namespace CyberCore {
 class GraphicsContext;
 }
 
@@ -65,7 +65,7 @@ public:
     virtual ~PaintingContext() = default;
 
 protected:
-    virtual WebCore::GraphicsContext& graphicsContext() = 0;
+    virtual CyberCore::GraphicsContext& graphicsContext() = 0;
     virtual void replay(const PaintingOperations&) = 0;
 
 private:

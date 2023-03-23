@@ -30,7 +30,7 @@
 
 OBJC_CLASS WebView;
 
-class WebProgressTrackerClient : public WebCore::ProgressTrackerClient {
+class WebProgressTrackerClient : public CyberCore::ProgressTrackerClient {
 public:
     explicit WebProgressTrackerClient(WebView*);
 
@@ -40,9 +40,9 @@ private:
     void didChangeEstimatedProgress() override;
 #endif
 
-    void progressStarted(WebCore::Frame& originatingProgressFrame) override;
-    void progressEstimateChanged(WebCore::Frame& originatingProgressFrame) override;
-    void progressFinished(WebCore::Frame& originatingProgressFrame) override;
+    void progressStarted(CyberCore::Frame& originatingProgressFrame) override;
+    void progressEstimateChanged(CyberCore::Frame& originatingProgressFrame) override;
+    void progressFinished(CyberCore::Frame& originatingProgressFrame) override;
 
     WebView *m_webView;
 };

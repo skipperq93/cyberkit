@@ -39,7 +39,7 @@
 
 #include <pal/cf/CoreMediaSoftLink.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 IncomingAudioMediaStreamTrackRendererUnit::IncomingAudioMediaStreamTrackRendererUnit(LibWebRTCAudioModule& audioModule)
     : m_audioModule(audioModule)
@@ -198,6 +198,6 @@ const void* IncomingAudioMediaStreamTrackRendererUnit::logIdentifier() const
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM)

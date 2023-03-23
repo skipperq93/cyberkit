@@ -40,7 +40,7 @@
 #import <CyberCore/MemoryCache.h>
 #import <CyberCore/NetworkStorageSession.h>
 #import <CyberCore/StorageSessionProvider.h>
-#import <CyberCore/WebCoreJITOperations.h>
+#import <CyberCore/CyberCoreJITOperations.h>
 #import <wtf/MainThread.h>
 #import <wtf/RunLoop.h>
 
@@ -49,11 +49,11 @@
 #import <CyberCore/BackForwardCache.h>
 #import <CyberCore/CachedImage.h>
 #import <CyberCore/Frame.h>
-#import <CyberCore/WebCoreThreadRun.h>
+#import <CyberCore/CyberCoreThreadRun.h>
 #endif
 
-class DefaultStorageSessionProvider : public WebCore::StorageSessionProvider {
-    WebCore::NetworkStorageSession* storageSession() const final
+class DefaultStorageSessionProvider : public CyberCore::StorageSessionProvider {
+    CyberCore::NetworkStorageSession* storageSession() const final
     {
         return &NetworkStorageSessionMap::defaultStorageSession();
     }
@@ -66,13 +66,13 @@ class DefaultStorageSessionProvider : public WebCore::StorageSessionProvider {
 #if !PLATFORM(IOS_FAMILY)
     JSC::initialize();
     WTF::initializeMainThread();
-    WebCore::populateJITOperations();
+    CyberCore::populateJITOperations();
 #endif
 }
 
 + (NSArray *)statistics
 {
-    auto s = WebCore::MemoryCache::singleton().getStatistics();
+    auto s = CyberCore::MemoryCache::singleton().getStatistics();
     return @[
         @{
             @"Images": @(s.images.count),
@@ -128,7 +128,7 @@ class DefaultStorageSessionProvider : public WebCore::StorageSessionProvider {
     webApplicationCacheStorage().empty();
 
     // Empty the Cross-Origin Preflight cache
-    WebCore::CrossOriginPreflightResultCache::singleton().clear();
+    CyberCore::CrossOriginPreflightResultCache::singleton().clear();
 }
 
 #if PLATFORM(IOS_FAMILY)
@@ -145,13 +145,13 @@ class DefaultStorageSessionProvider : public WebCore::StorageSessionProvider {
         [WebView _setCacheModel:WebCacheModelDocumentViewer];
         [WebView _setCacheModel:cacheModel];
 
-        WebCore::MemoryCache::singleton().pruneLiveResources(true);
+        CyberCore::MemoryCache::singleton().pruneLiveResources(true);
     });
 }
 
 + (void)sizeOfDeadResources:(int *)resources
 {
-    WebCore::MemoryCache::Statistics stats = WebCore::MemoryCache::singleton().getStatistics();
+    CyberCore::MemoryCache::Statistics stats = CyberCore::MemoryCache::singleton().getStatistics();
     if (resources) {
         *resources = (stats.images.size - stats.images.liveSize)
                      + (stats.cssStyleSheets.size - stats.cssStyleSheets.liveSize)
@@ -167,12 +167,12 @@ class DefaultStorageSessionProvider : public WebCore::StorageSessionProvider {
     if (!url)
         return nullptr;
     
-    WebCore::ResourceRequest request(url);
-    WebCore::CachedResource* cachedResource = WebCore::MemoryCache::singleton().resourceForRequest(request, PAL::SessionID::defaultSessionID());
-    if (!is<WebCore::CachedImage>(cachedResource))
+    CyberCore::ResourceRequest request(url);
+    CyberCore::CachedResource* cachedResource = CyberCore::MemoryCache::singleton().resourceForRequest(request, PAL::SessionID::defaultSessionID());
+    if (!is<CyberCore::CachedImage>(cachedResource))
         return nullptr;
 
-    auto& cachedImage = downcast<WebCore::CachedImage>(*cachedResource);
+    auto& cachedImage = downcast<CyberCore::CachedImage>(*cachedResource);
     if (!cachedImage.hasImage())
         return nullptr;
     
@@ -190,12 +190,12 @@ class DefaultStorageSessionProvider : public WebCore::StorageSessionProvider {
     if (!pthread_main_np())
         return [[self _webkit_invokeOnMainThread] setDisabled:disabled];
 
-    WebCore::MemoryCache::singleton().setDisabled(disabled);
+    CyberCore::MemoryCache::singleton().setDisabled(disabled);
 }
 
 + (BOOL)isDisabled
 {
-    return WebCore::MemoryCache::singleton().disabled();
+    return CyberCore::MemoryCache::singleton().disabled();
 }
 
 + (void)clearCachedCredentials

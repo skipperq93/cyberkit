@@ -28,7 +28,7 @@
 #include <unicode/utf16.h>
 #include <wtf/text/TextBreakIterator.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ComposedCharacterClusterTextIterator {
 public:

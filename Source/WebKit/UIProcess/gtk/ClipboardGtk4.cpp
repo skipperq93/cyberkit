@@ -121,22 +121,22 @@ void Clipboard::readFilePaths(CompletionHandler<void(Vector<String>&&)>&& comple
 struct ReadBufferAsyncData {
     WTF_MAKE_STRUCT_FAST_ALLOCATED;
 
-    explicit ReadBufferAsyncData(CompletionHandler<void(Ref<WebCore::SharedBuffer>&&)>&& handler)
+    explicit ReadBufferAsyncData(CompletionHandler<void(Ref<CyberCore::SharedBuffer>&&)>&& handler)
         : completionHandler(WTFMove(handler))
     {
     }
 
-    CompletionHandler<void(Ref<WebCore::SharedBuffer>&&)> completionHandler;
+    CompletionHandler<void(Ref<CyberCore::SharedBuffer>&&)> completionHandler;
 };
 
-void Clipboard::readBuffer(const char* format, CompletionHandler<void(Ref<WebCore::SharedBuffer>&&)>&& completionHandler)
+void Clipboard::readBuffer(const char* format, CompletionHandler<void(Ref<CyberCore::SharedBuffer>&&)>&& completionHandler)
 {
     const char* mimeTypes[] = { format, nullptr };
     gdk_clipboard_read_async(m_clipboard, mimeTypes, G_PRIORITY_DEFAULT, nullptr, [](GObject* clipboard, GAsyncResult* result, gpointer userData) {
         std::unique_ptr<ReadBufferAsyncData> data(static_cast<ReadBufferAsyncData*>(userData));
         GRefPtr<GInputStream> inputStream = adoptGRef(gdk_clipboard_read_finish(GDK_CLIPBOARD(clipboard), result, nullptr, nullptr));
         if (!inputStream) {
-            data->completionHandler(WebCore::SharedBuffer::create());
+            data->completionHandler(CyberCore::SharedBuffer::create());
             return;
         }
 
@@ -147,17 +147,17 @@ void Clipboard::readBuffer(const char* format, CompletionHandler<void(Ref<WebCor
                 std::unique_ptr<ReadBufferAsyncData> data(static_cast<ReadBufferAsyncData*>(userData));
                 gssize writtenBytes = g_output_stream_splice_finish(G_OUTPUT_STREAM(stream), result, nullptr);
                 if (writtenBytes <= 0) {
-                    data->completionHandler(WebCore::SharedBuffer::create());
+                    data->completionHandler(CyberCore::SharedBuffer::create());
                     return;
                 }
 
                 GRefPtr<GBytes> bytes = adoptGRef(g_memory_output_stream_steal_as_bytes(G_MEMORY_OUTPUT_STREAM(stream)));
-                data->completionHandler(WebCore::SharedBuffer::create(bytes.get()));
+                data->completionHandler(CyberCore::SharedBuffer::create(bytes.get()));
             }, data.release());
     }, new ReadBufferAsyncData(WTFMove(completionHandler)));
 }
 
-void Clipboard::write(WebCore::SelectionData&& selectionData)
+void Clipboard::write(CyberCore::SelectionData&& selectionData)
 {
     Vector<GdkContentProvider*> providers;
     if (selectionData.hasMarkup()) {
@@ -187,7 +187,7 @@ void Clipboard::write(WebCore::SelectionData&& selectionData)
 
     if (selectionData.hasCustomData()) {
         GRefPtr<GBytes> bytes = selectionData.customData()->createGBytes();
-        providers.append(gdk_content_provider_new_for_bytes(WebCore::PasteboardCustomData::gtkType().characters(), bytes.get()));
+        providers.append(gdk_content_provider_new_for_bytes(CyberCore::PasteboardCustomData::gtkType().characters(), bytes.get()));
     }
 
     if (providers.isEmpty()) {

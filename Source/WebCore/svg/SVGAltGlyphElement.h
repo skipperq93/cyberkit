@@ -24,7 +24,7 @@
 #include "SVGTextPositioningElement.h"
 #include "SVGURIReference.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGGlyphElement;
 
@@ -49,4 +49,4 @@ private:
     bool childShouldCreateRenderer(const Node&) const override;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

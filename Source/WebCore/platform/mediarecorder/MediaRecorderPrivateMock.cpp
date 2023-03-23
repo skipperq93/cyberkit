@@ -34,7 +34,7 @@
 #include <wtf/MediaTime.h>
 #include <wtf/MonotonicTime.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 MediaRecorderPrivateMock::MediaRecorderPrivateMock(MediaStreamPrivate& stream)
 {
@@ -114,6 +114,6 @@ const String& MediaRecorderPrivateMock::mimeType() const
     return textPlainMimeType;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_RECORDER)

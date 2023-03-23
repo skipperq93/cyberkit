@@ -27,7 +27,7 @@
 #include "SVGStringList.h"
 #include "SVGZoomAndPan.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGViewElement final : public SVGElement, public SVGFitToViewBox, public SVGZoomAndPan {
     WTF_MAKE_ISO_ALLOCATED(SVGViewElement);
@@ -54,4 +54,4 @@ private:
     WeakPtr<SVGSVGElement, WeakPtrImplWithEventTargetData> m_targetElement;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -24,7 +24,7 @@
 
 #include <wtf/OptionSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderStyle;
 
@@ -79,6 +79,6 @@ private:
 };
 
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(TEXT_AUTOSIZING)

@@ -39,7 +39,7 @@
 #include <wtf/CrossThreadCopier.h>
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(Worklet);
 
@@ -109,4 +109,4 @@ const char* Worklet::activeDOMObjectName() const
     return "Worklet";
 }
 
-} // namespace WebCore
+} // namespace CyberCore

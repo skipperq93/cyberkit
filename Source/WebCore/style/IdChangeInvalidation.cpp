@@ -31,7 +31,7 @@
 #include "StyleInvalidationFunctions.h"
 #include "StyleInvalidator.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace Style {
 
 void IdChangeInvalidation::invalidateStyle(const AtomString& changedId)

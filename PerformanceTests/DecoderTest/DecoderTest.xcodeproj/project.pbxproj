@@ -11,7 +11,7 @@
 		CDE0C9C424CA36CD00593A83 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDE0C9C324CA36CD00593A83 /* CoreMedia.framework */; };
 		CDEB7B2924CB558C0015249E /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDEB7B2824CB558C0015249E /* CoreServices.framework */; };
 		CDEB7B2B24CB68E90015249E /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDEB7B2A24CB68E90015249E /* VideoToolbox.framework */; };
-		CDED1C3E24CD350600934E12 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDE0C9BE24CA247A00593A83 /* JavaScriptCore.framework */; };
+		CDED1C3E24CD350600934E12 /* CyberScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDE0C9BE24CA247A00593A83 /* CyberScriptCore.framework */; };
 		CDF1350124C9F99900432E1E /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = CDF1350024C9F99900432E1E /* main.mm */; };
 /* End PBXBuildFile section */
 
@@ -28,7 +28,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		CDE0C9BE24CA247A00593A83 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		CDE0C9BE24CA247A00593A83 /* CyberScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CyberScriptCore.framework; path = System/Library/Frameworks/CyberScriptCore.framework; sourceTree = SDKROOT; };
 		CDE0C9C024CA249A00593A83 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		CDE0C9C324CA36CD00593A83 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		CDEB7B2624CAC7420015249E /* config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
@@ -48,7 +48,7 @@
 			files = (
 				CDE0C9C424CA36CD00593A83 /* CoreMedia.framework in Frameworks */,
 				CDEB7B2924CB558C0015249E /* CoreServices.framework in Frameworks */,
-				CDED1C3E24CD350600934E12 /* JavaScriptCore.framework in Frameworks */,
+				CDED1C3E24CD350600934E12 /* CyberScriptCore.framework in Frameworks */,
 				CDEB7B2B24CB68E90015249E /* VideoToolbox.framework in Frameworks */,
 				CDE0C9C124CA249A00593A83 /* WebKit.framework in Frameworks */,
 			);
@@ -62,7 +62,7 @@
 			children = (
 				CDE0C9C324CA36CD00593A83 /* CoreMedia.framework */,
 				CDEB7B2824CB558C0015249E /* CoreServices.framework */,
-				CDE0C9BE24CA247A00593A83 /* JavaScriptCore.framework */,
+				CDE0C9BE24CA247A00593A83 /* CyberScriptCore.framework */,
 				CDEB7B2A24CB68E90015249E /* VideoToolbox.framework */,
 				CDE0C9C024CA249A00593A83 /* WebKit.framework */,
 			);

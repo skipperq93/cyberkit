@@ -28,9 +28,9 @@
 #include "Test.h"
 #include <CyberCore/StringWithDirection.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
-namespace WebCore {
+namespace CyberCore {
 
 std::ostream& operator<<(std::ostream& os, const TextDirection& direction)
 {

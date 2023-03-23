@@ -96,9 +96,9 @@ static String pointerTypeForUITouchType(UITouchType type)
     UNUSED_PARAM(type);
 #else
     if (type == UITouchTypePencil)
-        return WebCore::penPointerEventType();
+        return CyberCore::penPointerEventType();
 #endif
-    return WebCore::mousePointerEventType();
+    return CyberCore::mousePointerEventType();
 }
 
 
@@ -124,8 +124,8 @@ static String pointerTypeForUITouchType(UITouchType type)
         return 1;
     }();
 
-    WebCore::IntPoint point { [self locationInView:self.view] };
-    auto delta = point - WebCore::IntPoint { [_currentTouch previousLocationInView:self.view] };
+    CyberCore::IntPoint point { [self locationInView:self.view] };
+    auto delta = point - CyberCore::IntPoint { [_currentTouch previousLocationInView:self.view] };
     // UITouch's timestamp uses mach_absolute_time as its timebase, same as MonotonicTime.
     auto timestamp = MonotonicTime::fromRawSeconds([_currentTouch timestamp]).approximateWallTime();
 

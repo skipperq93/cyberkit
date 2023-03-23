@@ -64,7 +64,7 @@ typedef void (*AXPostedNotificationCallback)(id element, NSString* notification,
 - (NSString *)selectionRangeString;
 - (NSArray *)lineRectsAndText;
 - (CGPoint)accessibilityClickPoint;
-- (void)accessibilityModifySelection:(WebCore::TextGranularity)granularity increase:(BOOL)increase;
+- (void)accessibilityModifySelection:(CyberCore::TextGranularity)granularity increase:(BOOL)increase;
 - (NSRange)_accessibilitySelectedTextRange;
 - (void)_accessibilitySetSelectedTextRange:(NSRange)range;
 - (BOOL)accessibilityReplaceRange:(NSRange)range withText:(NSString *)string;
@@ -1059,12 +1059,12 @@ bool AccessibilityUIElement::scrollPageRight()
 
 void AccessibilityUIElement::increaseTextSelection()
 {
-    [m_element accessibilityModifySelection:WebCore::TextGranularity::CharacterGranularity increase:YES];
+    [m_element accessibilityModifySelection:CyberCore::TextGranularity::CharacterGranularity increase:YES];
 }
 
 void AccessibilityUIElement::decreaseTextSelection()
 {
-    [m_element accessibilityModifySelection:WebCore::TextGranularity::CharacterGranularity increase:NO];
+    [m_element accessibilityModifySelection:CyberCore::TextGranularity::CharacterGranularity increase:NO];
 }
 
 JSRetainPtr<JSStringRef> AccessibilityUIElement::stringForSelection()

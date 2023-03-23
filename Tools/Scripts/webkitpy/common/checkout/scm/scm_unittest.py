@@ -274,7 +274,7 @@ class SCMClassTests(unittest.TestCase):
         self.assertRaises(ScriptError, run_command, command_returns_non_zero, input=input_process.stdout)
 
     def test_error_handlers(self):
-        git_failure_message = "Merge conflict during commit: Your file or directory 'WebCore/ChangeLog' is probably out-of-date: resource out of date; try updating at /usr/local/libexec/git-core//git-svn line 469"
+        git_failure_message = "Merge conflict during commit: Your file or directory 'CyberCore/ChangeLog' is probably out-of-date: resource out of date; try updating at /usr/local/libexec/git-core//git-svn line 469"
         svn_failure_message = """svn: Commit failed (details follow):
 svn: File or directory 'ChangeLog' is out of date; try updating
 svn: resource out of date; try updating

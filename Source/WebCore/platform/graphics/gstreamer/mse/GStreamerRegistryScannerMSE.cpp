@@ -23,7 +23,7 @@
 #if USE(GSTREAMER) && ENABLE(MEDIA_SOURCE)
 #include "RuntimeApplicationChecks.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 GStreamerRegistryScannerMSE& GStreamerRegistryScannerMSE::singleton()
 {

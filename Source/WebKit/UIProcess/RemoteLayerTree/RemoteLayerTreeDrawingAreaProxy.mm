@@ -48,7 +48,7 @@
 
 namespace WebKit {
 using namespace IPC;
-using namespace WebCore;
+using namespace CyberCore;
 
 RemoteLayerTreeDrawingAreaProxy::RemoteLayerTreeDrawingAreaProxy(WebPageProxy& pageProxy, WebProcessProxy& processProxy)
     : DrawingAreaProxy(DrawingAreaType::RemoteLayerTree, pageProxy)
@@ -214,12 +214,12 @@ void RemoteLayerTreeDrawingAreaProxy::asyncSetLayerContents(GraphicsLayer::Platf
     m_remoteLayerTreeHost->asyncSetLayerContents(layerID, WTFMove(handle));
 }
 
-void RemoteLayerTreeDrawingAreaProxy::acceleratedAnimationDidStart(WebCore::GraphicsLayer::PlatformLayerID layerID, const String& key, MonotonicTime startTime)
+void RemoteLayerTreeDrawingAreaProxy::acceleratedAnimationDidStart(CyberCore::GraphicsLayer::PlatformLayerID layerID, const String& key, MonotonicTime startTime)
 {
     m_webPageProxy.send(Messages::DrawingArea::AcceleratedAnimationDidStart(layerID, key, startTime), m_identifier);
 }
 
-void RemoteLayerTreeDrawingAreaProxy::acceleratedAnimationDidEnd(WebCore::GraphicsLayer::PlatformLayerID layerID, const String& key)
+void RemoteLayerTreeDrawingAreaProxy::acceleratedAnimationDidEnd(CyberCore::GraphicsLayer::PlatformLayerID layerID, const String& key)
 {
     m_webPageProxy.send(Messages::DrawingArea::AcceleratedAnimationDidEnd(layerID, key), m_identifier);
 }
@@ -426,7 +426,7 @@ bool RemoteLayerTreeDrawingAreaProxy::hasVisibleContent() const
     return m_remoteLayerTreeHost->rootLayer();
 }
 
-CALayer *RemoteLayerTreeDrawingAreaProxy::layerWithIDForTesting(WebCore::GraphicsLayer::PlatformLayerID layerID) const
+CALayer *RemoteLayerTreeDrawingAreaProxy::layerWithIDForTesting(CyberCore::GraphicsLayer::PlatformLayerID layerID) const
 {
     return m_remoteLayerTreeHost->layerWithIDForTesting(layerID);
 }

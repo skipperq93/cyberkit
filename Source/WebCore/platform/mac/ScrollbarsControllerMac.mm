@@ -43,7 +43,7 @@
 #import <wtf/NakedPtr.h>
 #import <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static ScrollbarThemeMac* macScrollbarTheme()
 {
@@ -56,18 +56,18 @@ static NSScrollerImp *scrollerImpForScrollbar(Scrollbar& scrollbar)
     return ScrollbarThemeMac::painterForScrollbar(scrollbar);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 @interface WebScrollerImpPairDelegate : NSObject <NSScrollerImpPairDelegate> {
-    WebCore::ScrollableArea* _scrollableArea;
+    CyberCore::ScrollableArea* _scrollableArea;
 }
-- (id)initWithScrollableArea:(WebCore::ScrollableArea*)scrollableArea;
+- (id)initWithScrollableArea:(CyberCore::ScrollableArea*)scrollableArea;
 
 @end
 
 @implementation WebScrollerImpPairDelegate
 
-- (id)initWithScrollableArea:(WebCore::ScrollableArea*)scrollableArea
+- (id)initWithScrollableArea:(CyberCore::ScrollableArea*)scrollableArea
 {
     self = [super init];
     if (!self)
@@ -88,7 +88,7 @@ static NSScrollerImp *scrollerImpForScrollbar(Scrollbar& scrollbar)
     if (!_scrollableArea)
         return NSZeroRect;
 
-    WebCore::IntSize contentsSize = _scrollableArea->contentsSize();
+    CyberCore::IntSize contentsSize = _scrollableArea->contentsSize();
     return NSMakeRect(0, 0, contentsSize.width(), contentsSize.height());
 }
 
@@ -119,7 +119,7 @@ static NSScrollerImp *scrollerImpForScrollbar(Scrollbar& scrollbar)
     if (!_scrollableArea || !scrollerImp)
         return NSZeroPoint;
 
-    WebCore::Scrollbar* scrollbar = 0;
+    CyberCore::Scrollbar* scrollbar = 0;
     if ([scrollerImp isHorizontal])
         scrollbar = _scrollableArea->horizontalScrollbar();
     else
@@ -135,7 +135,7 @@ static NSScrollerImp *scrollerImpForScrollbar(Scrollbar& scrollbar)
 
     ASSERT(scrollerImp == scrollerImpForScrollbar(*scrollbar));
 
-    return scrollbar->convertFromContainingView(WebCore::roundedIntPoint(pointInContentArea));
+    return scrollbar->convertFromContainingView(CyberCore::roundedIntPoint(pointInContentArea));
 }
 
 - (void)scrollerImpPair:(NSScrollerImpPair *)scrollerImpPair setContentAreaNeedsDisplayInRect:(NSRect)rect
@@ -159,7 +159,7 @@ static NSScrollerImp *scrollerImpForScrollbar(Scrollbar& scrollbar)
 
     [scrollerImpPair setScrollerStyle:newRecommendedScrollerStyle];
 
-    static_cast<WebCore::ScrollbarsControllerMac&>(_scrollableArea->scrollbarsController()).updateScrollerStyle();
+    static_cast<CyberCore::ScrollbarsControllerMac&>(_scrollableArea->scrollbarsController()).updateScrollerStyle();
 }
 
 @end
@@ -183,12 +183,12 @@ static TextStream& operator<<(TextStream& ts, FeatureToAnimate feature)
     return ts;
 }
 
-using WebCore::LogOverlayScrollbars;
+using CyberCore::LogOverlayScrollbars;
 
 #endif
 
 @interface WebScrollbarPartAnimation : NSObject {
-    WebCore::Scrollbar* _scrollbar;
+    CyberCore::Scrollbar* _scrollbar;
     RetainPtr<NSScrollerImp> _scrollerImp;
     FeatureToAnimate _featureToAnimate;
     CGFloat _startValue;
@@ -196,9 +196,9 @@ using WebCore::LogOverlayScrollbars;
     NSTimeInterval _duration;
     RetainPtr<NSTimer> _timer;
     RetainPtr<NSDate> _startDate;
-    RefPtr<WebCore::CubicBezierTimingFunction> _timingFunction;
+    RefPtr<CyberCore::CubicBezierTimingFunction> _timingFunction;
 }
-- (id)initWithScrollbar:(WebCore::Scrollbar*)scrollbar featureToAnimate:(FeatureToAnimate)featureToAnimate animateFrom:(CGFloat)startValue animateTo:(CGFloat)endValue duration:(NSTimeInterval)duration;
+- (id)initWithScrollbar:(CyberCore::Scrollbar*)scrollbar featureToAnimate:(FeatureToAnimate)featureToAnimate animateFrom:(CGFloat)startValue animateTo:(CGFloat)endValue duration:(NSTimeInterval)duration;
 - (void)setCurrentProgress:(NSTimer *)timer;
 - (void)setDuration:(NSTimeInterval)duration;
 - (void)stopAnimation;
@@ -206,7 +206,7 @@ using WebCore::LogOverlayScrollbars;
 
 @implementation WebScrollbarPartAnimation
 
-- (id)initWithScrollbar:(WebCore::Scrollbar*)scrollbar featureToAnimate:(FeatureToAnimate)featureToAnimate animateFrom:(CGFloat)startValue animateTo:(CGFloat)endValue duration:(NSTimeInterval)duration
+- (id)initWithScrollbar:(CyberCore::Scrollbar*)scrollbar featureToAnimate:(FeatureToAnimate)featureToAnimate animateFrom:(CGFloat)startValue animateTo:(CGFloat)endValue duration:(NSTimeInterval)duration
 {
     self = [super init];
     if (!self)
@@ -215,7 +215,7 @@ using WebCore::LogOverlayScrollbars;
     const NSTimeInterval timeInterval = 0.01;
     _timer = adoptNS([[NSTimer alloc] initWithFireDate:[NSDate dateWithTimeIntervalSinceNow:0] interval:timeInterval target:self selector:@selector(setCurrentProgress:) userInfo:nil repeats:YES]);
     _duration = duration;
-    _timingFunction = WebCore::CubicBezierTimingFunction::create(WebCore::CubicBezierTimingFunction::TimingFunctionPreset::EaseInOut);
+    _timingFunction = CyberCore::CubicBezierTimingFunction::create(CyberCore::CubicBezierTimingFunction::TimingFunctionPreset::EaseInOut);
 
     LOG_WITH_STREAM(OverlayScrollbars, stream << "Creating WebScrollbarPartAnimation for " << featureToAnimate << " from " << startValue << " to " << endValue);
 
@@ -313,20 +313,20 @@ using WebCore::LogOverlayScrollbars;
 @end
 
 @interface WebScrollerImpDelegate : NSObject<NSAnimationDelegate, NSScrollerImpDelegate> {
-    WebCore::Scrollbar* _scrollbar;
+    CyberCore::Scrollbar* _scrollbar;
 
     RetainPtr<WebScrollbarPartAnimation> _knobAlphaAnimation;
     RetainPtr<WebScrollbarPartAnimation> _trackAlphaAnimation;
     RetainPtr<WebScrollbarPartAnimation> _uiStateTransitionAnimation;
     RetainPtr<WebScrollbarPartAnimation> _expansionTransitionAnimation;
 }
-- (id)initWithScrollbar:(WebCore::Scrollbar*)scrollbar;
+- (id)initWithScrollbar:(CyberCore::Scrollbar*)scrollbar;
 - (void)cancelAnimations;
 @end
 
 @implementation WebScrollerImpDelegate
 
-- (id)initWithScrollbar:(WebCore::Scrollbar*)scrollbar
+- (id)initWithScrollbar:(CyberCore::Scrollbar*)scrollbar
 {
     self = [super init];
     if (!self)
@@ -346,9 +346,9 @@ using WebCore::LogOverlayScrollbars;
     END_BLOCK_OBJC_EXCEPTIONS
 }
 
-- (NakedPtr<WebCore::ScrollbarsControllerMac>)scrollbarsController
+- (NakedPtr<CyberCore::ScrollbarsControllerMac>)scrollbarsController
 {
-    return &static_cast<WebCore::ScrollbarsControllerMac&>(_scrollbar->scrollableArea().scrollbarsController());
+    return &static_cast<CyberCore::ScrollbarsControllerMac&>(_scrollbar->scrollableArea().scrollbarsController());
 }
 
 - (NSRect)convertRectToBacking:(NSRect)aRect
@@ -366,11 +366,11 @@ using WebCore::LogOverlayScrollbars;
     if (!_scrollbar)
         return nil;
 
-    if (!WebCore::ScrollbarThemeMac::isCurrentlyDrawingIntoLayer())
+    if (!CyberCore::ScrollbarThemeMac::isCurrentlyDrawingIntoLayer())
         return nil;
 
-    WebCore::GraphicsLayer* layer;
-    if (_scrollbar->orientation() == WebCore::ScrollbarOrientation::Vertical)
+    CyberCore::GraphicsLayer* layer;
+    if (_scrollbar->orientation() == CyberCore::ScrollbarOrientation::Vertical)
         layer = _scrollbar->scrollableArea().layerForVerticalScrollbar();
     else
         layer = _scrollbar->scrollableArea().layerForHorizontalScrollbar();
@@ -422,7 +422,7 @@ using WebCore::LogOverlayScrollbars;
 }
 #endif
 
-- (void)setUpAlphaAnimation:(RetainPtr<WebScrollbarPartAnimation>&)scrollbarPartAnimation scrollerPainter:(NSScrollerImp *)scrollerPainter part:(WebCore::ScrollbarPart)part animateAlphaTo:(CGFloat)newAlpha duration:(NSTimeInterval)duration
+- (void)setUpAlphaAnimation:(RetainPtr<WebScrollbarPartAnimation>&)scrollbarPartAnimation scrollerPainter:(NSScrollerImp *)scrollerPainter part:(CyberCore::ScrollbarPart)part animateAlphaTo:(CGFloat)newAlpha duration:(NSTimeInterval)duration
 {
     // If the user has scrolled the page, then the scrollbars must be animated here.
     // This overrides the early returns.
@@ -447,20 +447,20 @@ using WebCore::LogOverlayScrollbars;
         scrollbarPartAnimation = nil;
     }
 
-    if (auto* macTheme = WebCore::macScrollbarTheme())
+    if (auto* macTheme = CyberCore::macScrollbarTheme())
         macTheme->setPaintCharacteristicsForScrollbar(*_scrollbar);
 
-    if (part == WebCore::ThumbPart && _scrollbar->orientation() == WebCore::ScrollbarOrientation::Vertical) {
+    if (part == CyberCore::ThumbPart && _scrollbar->orientation() == CyberCore::ScrollbarOrientation::Vertical) {
         if (newAlpha == 1) {
-            auto thumbRect = WebCore::IntRect([scrollerPainter rectForPart:NSScrollerKnob]);
+            auto thumbRect = CyberCore::IntRect([scrollerPainter rectForPart:NSScrollerKnob]);
             [self scrollbarsController]->setVisibleScrollerThumbRect(thumbRect);
         } else
             [self scrollbarsController]->setVisibleScrollerThumbRect({ });
     }
 
     scrollbarPartAnimation = adoptNS([[WebScrollbarPartAnimation alloc] initWithScrollbar:_scrollbar
-                                                                       featureToAnimate:part == WebCore::ThumbPart ? ThumbAlpha : TrackAlpha
-                                                                            animateFrom:part == WebCore::ThumbPart ? [scrollerPainter knobAlpha] : [scrollerPainter trackAlpha]
+                                                                       featureToAnimate:part == CyberCore::ThumbPart ? ThumbAlpha : TrackAlpha
+                                                                            animateFrom:part == CyberCore::ThumbPart ? [scrollerPainter knobAlpha] : [scrollerPainter trackAlpha]
                                                                               animateTo:newAlpha
                                                                                duration:duration]);
     [scrollbarPartAnimation startAnimation];
@@ -486,7 +486,7 @@ using WebCore::LogOverlayScrollbars;
     if (newKnobAlpha == 0 && _scrollbar->supportsUpdateOnSecondaryThread())
         [scrollerPainter setUsePresentationValue:NO];
 
-    [self setUpAlphaAnimation:_knobAlphaAnimation scrollerPainter:scrollerPainter part:WebCore::ThumbPart animateAlphaTo:newKnobAlpha duration:duration];
+    [self setUpAlphaAnimation:_knobAlphaAnimation scrollerPainter:scrollerPainter part:CyberCore::ThumbPart animateAlphaTo:newKnobAlpha duration:duration];
 }
 
 - (void)scrollerImp:(NSScrollerImp *)scrollerImp animateTrackAlphaTo:(CGFloat)newTrackAlpha duration:(NSTimeInterval)duration
@@ -497,7 +497,7 @@ using WebCore::LogOverlayScrollbars;
     ASSERT(scrollerImp == scrollerImpForScrollbar(*_scrollbar));
 
     NSScrollerImp *scrollerPainter = (NSScrollerImp *)scrollerImp;
-    [self setUpAlphaAnimation:_trackAlphaAnimation scrollerPainter:scrollerPainter part:WebCore::BackTrackPart animateAlphaTo:newTrackAlpha duration:duration];
+    [self setUpAlphaAnimation:_trackAlphaAnimation scrollerPainter:scrollerPainter part:CyberCore::BackTrackPart animateAlphaTo:newTrackAlpha duration:duration];
 }
 
 - (void)scrollerImp:(NSScrollerImp *)scrollerImp animateUIStateTransitionWithDuration:(NSTimeInterval)duration
@@ -573,7 +573,7 @@ using WebCore::LogOverlayScrollbars;
 
 @end
 
-namespace WebCore {
+namespace CyberCore {
 
 std::unique_ptr<ScrollbarsController> ScrollbarsController::create(ScrollableArea& scrollableArea)
 {
@@ -1085,6 +1085,6 @@ WheelEventTestMonitor* ScrollbarsControllerMac::wheelEventTestMonitor() const
 }
 
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(MAC)

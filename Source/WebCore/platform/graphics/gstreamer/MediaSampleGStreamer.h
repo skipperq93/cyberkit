@@ -29,7 +29,7 @@
 #include "VideoFrameTimeMetadata.h"
 #include <wtf/text/AtomString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class MediaSampleGStreamer : public MediaSample {
 public:
@@ -72,6 +72,6 @@ private:
     MediaSample::SampleFlags m_flags { MediaSample::IsSync };
 };
 
-} // namespace WebCore.
+} // namespace CyberCore.
 
 #endif // ENABLE(VIDEO) && USE(GSTREAMER)

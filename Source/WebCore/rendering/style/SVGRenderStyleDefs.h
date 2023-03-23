@@ -39,7 +39,7 @@ namespace WTF {
 class TextStream;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSValue;
 class CSSValueList;
@@ -360,4 +360,4 @@ WTF::TextStream& operator<<(WTF::TextStream&, const StyleShadowSVGData&);
 WTF::TextStream& operator<<(WTF::TextStream&, const StyleInheritedResourceData&);
 WTF::TextStream& operator<<(WTF::TextStream&, const StyleLayoutData&);
 
-} // namespace WebCore
+} // namespace CyberCore

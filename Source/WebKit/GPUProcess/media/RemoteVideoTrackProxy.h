@@ -48,9 +48,9 @@ struct VideoTrackPrivateRemoteConfiguration;
 
 class RemoteVideoTrackProxy final
     : public ThreadSafeRefCounted<RemoteVideoTrackProxy, WTF::DestructionThread::Main>
-    , private WebCore::VideoTrackPrivateClient {
+    , private CyberCore::VideoTrackPrivateClient {
 public:
-    static Ref<RemoteVideoTrackProxy> create(GPUConnectionToWebProcess& connectionToWebProcess, TrackPrivateRemoteIdentifier identifier, WebCore::VideoTrackPrivate& trackPrivate, WebCore::MediaPlayerIdentifier mediaPlayerIdentifier)
+    static Ref<RemoteVideoTrackProxy> create(GPUConnectionToWebProcess& connectionToWebProcess, TrackPrivateRemoteIdentifier identifier, CyberCore::VideoTrackPrivate& trackPrivate, CyberCore::MediaPlayerIdentifier mediaPlayerIdentifier)
     {
         return adoptRef(*new RemoteVideoTrackProxy(connectionToWebProcess, identifier, trackPrivate, mediaPlayerIdentifier));
     }
@@ -65,11 +65,11 @@ public:
     }
 
 private:
-    RemoteVideoTrackProxy(GPUConnectionToWebProcess&, TrackPrivateRemoteIdentifier, WebCore::VideoTrackPrivate&, WebCore::MediaPlayerIdentifier);
+    RemoteVideoTrackProxy(GPUConnectionToWebProcess&, TrackPrivateRemoteIdentifier, CyberCore::VideoTrackPrivate&, CyberCore::MediaPlayerIdentifier);
 
     // VideoTrackPrivateClient
     void selectedChanged(bool) final;
-    void configurationChanged(const WebCore::PlatformVideoTrackConfiguration&) final { updateConfiguration(); }
+    void configurationChanged(const CyberCore::PlatformVideoTrackConfiguration&) final { updateConfiguration(); }
 
     // TrackPrivateBaseClient
     void idChanged(const AtomString&) final;
@@ -82,8 +82,8 @@ private:
 
     WeakPtr<GPUConnectionToWebProcess> m_connectionToWebProcess;
     TrackPrivateRemoteIdentifier m_identifier;
-    Ref<WebCore::VideoTrackPrivate> m_trackPrivate;
-    WebCore::MediaPlayerIdentifier m_mediaPlayerIdentifier;
+    Ref<CyberCore::VideoTrackPrivate> m_trackPrivate;
+    CyberCore::MediaPlayerIdentifier m_mediaPlayerIdentifier;
     bool m_selected { false };
 };
 

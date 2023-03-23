@@ -36,7 +36,7 @@ namespace WebKit {
 RemoteAudioHardwareListenerProxy::RemoteAudioHardwareListenerProxy(GPUConnectionToWebProcess& gpuConnection, RemoteAudioHardwareListenerIdentifier&& identifier)
     : m_gpuConnection(gpuConnection)
     , m_identifier(WTFMove(identifier))
-    , m_listener(WebCore::AudioHardwareListener::create(*this))
+    , m_listener(CyberCore::AudioHardwareListener::create(*this))
 {
     audioOutputDeviceChanged();
 }

@@ -38,7 +38,7 @@
 #include "PublicSuffix.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 // FIXME: Make this a NetworkingContext property.
 #if PLATFORM(IOS_FAMILY)
@@ -94,7 +94,7 @@ unsigned initializeMaximumHTTPConnectionCountPerHost()
     if (keyExistsAndHasValidFormat)
         ResourceRequest::setHTTPPipeliningEnabled(prefValue);
 
-    // Use WebCore scheduler when we can't use request priorities with CFNetwork.
+    // Use CyberCore scheduler when we can't use request priorities with CFNetwork.
     if (!ResourceRequest::resourcePrioritiesEnabled())
         return maximumHTTPConnectionCountPerHost;
 
@@ -126,4 +126,4 @@ CFStringRef ResourceRequest::isUserInitiatedKey()
     return key;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

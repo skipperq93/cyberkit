@@ -29,15 +29,15 @@
 
 #import "WebDelegateImplementationCaching.h"
 
-#import "WebKitLogInitialization.h"
-#import "WebKitLogging.h"
+#import "CyberKitLogInitialization.h"
+#import "CyberKitLogging.h"
 #import "WebView.h"
 #import "WebViewData.h"
 #import <wtf/ObjCRuntimeExtras.h>
 
 #if PLATFORM(IOS_FAMILY)
 #import "WebViewInternal.h"
-#import <CyberCore/WebCoreThreadMessage.h>
+#import <CyberCore/CyberCoreThreadMessage.h>
 #endif
 
 @implementation WebView (WebDelegateImplementationCaching)

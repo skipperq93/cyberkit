@@ -29,7 +29,7 @@
 #include <mutex>
 #include <wtf/Lock.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace SQLiteDatabaseTracker {
 
@@ -75,4 +75,4 @@ bool hasTransactionInProgress()
 
 } // namespace SQLiteDatabaseTracker
 
-} // namespace WebCore
+} // namespace CyberCore

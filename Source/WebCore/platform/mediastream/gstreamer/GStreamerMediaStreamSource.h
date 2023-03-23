@@ -25,7 +25,7 @@
 
 #include <gst/gst.h>
 
-namespace WebCore {
+namespace CyberCore {
 class MediaStreamPrivate;
 class MediaStreamTrackPrivate;
 }
@@ -55,8 +55,8 @@ struct _WebKitMediaStreamSrcClass {
 };
 
 GstElement* webkitMediaStreamSrcNew();
-void webkitMediaStreamSrcSetStream(WebKitMediaStreamSrc*, WebCore::MediaStreamPrivate*, bool isVideoPlayer);
-void webkitMediaStreamSrcAddTrack(WebKitMediaStreamSrc*, WebCore::MediaStreamTrackPrivate*, bool onlyTrack);
+void webkitMediaStreamSrcSetStream(WebKitMediaStreamSrc*, CyberCore::MediaStreamPrivate*, bool isVideoPlayer);
+void webkitMediaStreamSrcAddTrack(WebKitMediaStreamSrc*, CyberCore::MediaStreamTrackPrivate*, bool onlyTrack);
 void webkitMediaStreamSrcConfigureAudioTracks(WebKitMediaStreamSrc*, float volume, bool isMuted, bool isPlaying);
 void webkitMediaStreamSrcSignalEndOfStream(WebKitMediaStreamSrc*);
 

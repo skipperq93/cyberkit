@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -18,44 +18,44 @@
  */
 
 #include "config.h"
-#include "WebKitDOMWheelEvent.h"
+#include "CyberKitDOMWheelEvent.h"
 
 #include <CyberCore/CSSImportRule.h>
 #include "DOMObjectCache.h"
 #include <CyberCore/Document.h>
 #include <CyberCore/ExceptionCode.h>
 #include <CyberCore/JSExecState.h>
-#include "WebKitDOMDOMWindowPrivate.h"
-#include "WebKitDOMEventPrivate.h"
-#include "WebKitDOMPrivate.h"
-#include "WebKitDOMWheelEventPrivate.h"
+#include "CyberKitDOMDOMWindowPrivate.h"
+#include "CyberKitDOMEventPrivate.h"
+#include "CyberKitDOMPrivate.h"
+#include "CyberKitDOMWheelEventPrivate.h"
 #include "ConvertToUTF8String.h"
 #include <wtf/GetPtr.h>
 #include <wtf/RefPtr.h>
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
-namespace WebKit {
+namespace CyberKit {
 
-WebKitDOMWheelEvent* kit(WebCore::WheelEvent* obj)
+CyberKitDOMWheelEvent* kit(CyberCore::WheelEvent* obj)
 {
-    return WEBKIT_DOM_WHEEL_EVENT(kit(static_cast<WebCore::Event*>(obj)));
+    return WEBKIT_DOM_WHEEL_EVENT(kit(static_cast<CyberCore::Event*>(obj)));
 }
 
-WebCore::WheelEvent* core(WebKitDOMWheelEvent* request)
+CyberCore::WheelEvent* core(CyberKitDOMWheelEvent* request)
 {
-    return request ? static_cast<WebCore::WheelEvent*>(WEBKIT_DOM_OBJECT(request)->coreObject) : 0;
+    return request ? static_cast<CyberCore::WheelEvent*>(WEBKIT_DOM_OBJECT(request)->coreObject) : 0;
 }
 
-WebKitDOMWheelEvent* wrapWheelEvent(WebCore::WheelEvent* coreObject)
+CyberKitDOMWheelEvent* wrapWheelEvent(CyberCore::WheelEvent* coreObject)
 {
     ASSERT(coreObject);
     return WEBKIT_DOM_WHEEL_EVENT(g_object_new(WEBKIT_DOM_TYPE_WHEEL_EVENT, "core-object", coreObject, nullptr));
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
-G_DEFINE_TYPE(WebKitDOMWheelEvent, webkit_dom_wheel_event, WEBKIT_DOM_TYPE_MOUSE_EVENT)
+G_DEFINE_TYPE(CyberKitDOMWheelEvent, webkit_dom_wheel_event, WEBKIT_DOM_TYPE_MOUSE_EVENT)
 
 enum {
     DOM_WHEEL_EVENT_PROP_0,
@@ -66,7 +66,7 @@ enum {
 
 static void webkit_dom_wheel_event_get_property(GObject* object, guint propertyId, GValue* value, GParamSpec* pspec)
 {
-    WebKitDOMWheelEvent* self = WEBKIT_DOM_WHEEL_EVENT(object);
+    CyberKitDOMWheelEvent* self = WEBKIT_DOM_WHEEL_EVENT(object);
 
     switch (propertyId) {
     case DOM_WHEEL_EVENT_PROP_WHEEL_DELTA_X:
@@ -84,7 +84,7 @@ static void webkit_dom_wheel_event_get_property(GObject* object, guint propertyI
     }
 }
 
-static void webkit_dom_wheel_event_class_init(WebKitDOMWheelEventClass* requestClass)
+static void webkit_dom_wheel_event_class_init(CyberKitDOMWheelEventClass* requestClass)
 {
     GObjectClass* gobjectClass = G_OBJECT_CLASS(requestClass);
     gobjectClass->get_property = webkit_dom_wheel_event_get_property;
@@ -120,43 +120,43 @@ static void webkit_dom_wheel_event_class_init(WebKitDOMWheelEventClass* requestC
             WEBKIT_PARAM_READABLE));
 }
 
-static void webkit_dom_wheel_event_init(WebKitDOMWheelEvent* request)
+static void webkit_dom_wheel_event_init(CyberKitDOMWheelEvent* request)
 {
     UNUSED_PARAM(request);
 }
 
-void webkit_dom_wheel_event_init_wheel_event(WebKitDOMWheelEvent* self, glong wheelDeltaX, glong wheelDeltaY, WebKitDOMDOMWindow* view, glong screenX, glong screenY, glong clientX, glong clientY, gboolean ctrlKey, gboolean altKey, gboolean shiftKey, gboolean metaKey)
+void webkit_dom_wheel_event_init_wheel_event(CyberKitDOMWheelEvent* self, glong wheelDeltaX, glong wheelDeltaY, CyberKitDOMDOMWindow* view, glong screenX, glong screenY, glong clientX, glong clientY, gboolean ctrlKey, gboolean altKey, gboolean shiftKey, gboolean metaKey)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_WHEEL_EVENT(self));
     g_return_if_fail(WEBKIT_DOM_IS_DOM_WINDOW(view));
-    WebCore::WheelEvent* item = WebKit::core(self);
-    item->initWebKitWheelEvent(wheelDeltaX, wheelDeltaY, WebKit::toWindowProxy(view), screenX, screenY, clientX, clientY, ctrlKey, altKey, shiftKey, metaKey);
+    CyberCore::WheelEvent* item = CyberKit::core(self);
+    item->initCyberKitWheelEvent(wheelDeltaX, wheelDeltaY, CyberKit::toWindowProxy(view), screenX, screenY, clientX, clientY, ctrlKey, altKey, shiftKey, metaKey);
 }
 
-glong webkit_dom_wheel_event_get_wheel_delta_x(WebKitDOMWheelEvent* self)
+glong webkit_dom_wheel_event_get_wheel_delta_x(CyberKitDOMWheelEvent* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_WHEEL_EVENT(self), 0);
-    WebCore::WheelEvent* item = WebKit::core(self);
+    CyberCore::WheelEvent* item = CyberKit::core(self);
     glong result = item->wheelDeltaX();
     return result;
 }
 
-glong webkit_dom_wheel_event_get_wheel_delta_y(WebKitDOMWheelEvent* self)
+glong webkit_dom_wheel_event_get_wheel_delta_y(CyberKitDOMWheelEvent* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_WHEEL_EVENT(self), 0);
-    WebCore::WheelEvent* item = WebKit::core(self);
+    CyberCore::WheelEvent* item = CyberKit::core(self);
     glong result = item->wheelDeltaY();
     return result;
 }
 
-glong webkit_dom_wheel_event_get_wheel_delta(WebKitDOMWheelEvent* self)
+glong webkit_dom_wheel_event_get_wheel_delta(CyberKitDOMWheelEvent* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_WHEEL_EVENT(self), 0);
-    WebCore::WheelEvent* item = WebKit::core(self);
+    CyberCore::WheelEvent* item = CyberKit::core(self);
     glong result = item->wheelDelta();
     return result;
 }

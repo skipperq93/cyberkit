@@ -30,7 +30,7 @@
 #include "DOMPromiseProxy.h"
 #include <wtf/UniqueRef.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct BackgroundFetchRecordInformation;
 class FetchRequest;
@@ -56,6 +56,6 @@ private:
     Ref<FetchRequest> m_request;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

@@ -175,15 +175,15 @@
 typedef union YYSTYPE
 #line 57 "XPathGrammar.y"
 { 
-    WebCore::XPath::NumericOp::Opcode numericOpcode;
-    WebCore::XPath::EqTestOp::Opcode equalityTestOpcode;
+    CyberCore::XPath::NumericOp::Opcode numericOpcode;
+    CyberCore::XPath::EqTestOp::Opcode equalityTestOpcode;
     StringImpl* string;
-    WebCore::XPath::Step::Axis axis;
-    WebCore::XPath::LocationPath* locationPath;
-    WebCore::XPath::Step::NodeTest* nodeTest;
-    Vector<std::unique_ptr<WebCore::XPath::Expression>>* expressionVector;
-    WebCore::XPath::Step* step;
-    WebCore::XPath::Expression* expression;
+    CyberCore::XPath::Step::Axis axis;
+    CyberCore::XPath::LocationPath* locationPath;
+    CyberCore::XPath::Step::NodeTest* nodeTest;
+    Vector<std::unique_ptr<CyberCore::XPath::Expression>>* expressionVector;
+    CyberCore::XPath::Step* step;
+    CyberCore::XPath::Expression* expression;
 }
 /* Line 193 of yacc.c.  */
 #line 187 "XPathGrammar.cpp"
@@ -199,8 +199,8 @@ typedef union YYSTYPE
 #line 101 "XPathGrammar.y"
 
 
-static int xpathyylex(YYSTYPE* yylval, WebCore::XPath::Parser& parser) { return parser.lex(*yylval); }
-static void xpathyyerror(WebCore::XPath::Parser&, const char*) { }
+static int xpathyylex(YYSTYPE* yylval, CyberCore::XPath::Parser& parser) { return parser.lex(*yylval); }
+static void xpathyyerror(CyberCore::XPath::Parser&, const char*) { }
 
 
 
@@ -811,14 +811,14 @@ do {									  \
 #if (defined __STDC__ || defined __C99__FUNC__ \
      || defined __cplusplus || defined _MSC_VER)
 static void
-yy_symbol_value_print (FILE *yyoutput, int yytype, YYSTYPE const * const yyvaluep, WebCore::XPath::Parser& parser)
+yy_symbol_value_print (FILE *yyoutput, int yytype, YYSTYPE const * const yyvaluep, CyberCore::XPath::Parser& parser)
 #else
 static void
 yy_symbol_value_print (yyoutput, yytype, yyvaluep, parser)
     FILE *yyoutput;
     int yytype;
     YYSTYPE const * const yyvaluep;
-    WebCore::XPath::Parser& parser;
+    CyberCore::XPath::Parser& parser;
 #endif
 {
   if (!yyvaluep)
@@ -845,14 +845,14 @@ yy_symbol_value_print (yyoutput, yytype, yyvaluep, parser)
 #if (defined __STDC__ || defined __C99__FUNC__ \
      || defined __cplusplus || defined _MSC_VER)
 static void
-yy_symbol_print (FILE *yyoutput, int yytype, YYSTYPE const * const yyvaluep, WebCore::XPath::Parser& parser)
+yy_symbol_print (FILE *yyoutput, int yytype, YYSTYPE const * const yyvaluep, CyberCore::XPath::Parser& parser)
 #else
 static void
 yy_symbol_print (yyoutput, yytype, yyvaluep, parser)
     FILE *yyoutput;
     int yytype;
     YYSTYPE const * const yyvaluep;
-    WebCore::XPath::Parser& parser;
+    CyberCore::XPath::Parser& parser;
 #endif
 {
   if (yytype < YYNTOKENS)
@@ -900,13 +900,13 @@ do {								\
 #if (defined __STDC__ || defined __C99__FUNC__ \
      || defined __cplusplus || defined _MSC_VER)
 static void
-yy_reduce_print (YYSTYPE *yyvsp, int yyrule, WebCore::XPath::Parser& parser)
+yy_reduce_print (YYSTYPE *yyvsp, int yyrule, CyberCore::XPath::Parser& parser)
 #else
 static void
 yy_reduce_print (yyvsp, yyrule, parser)
     YYSTYPE *yyvsp;
     int yyrule;
-    WebCore::XPath::Parser& parser;
+    CyberCore::XPath::Parser& parser;
 #endif
 {
   int yynrhs = yyr2[yyrule];
@@ -1179,14 +1179,14 @@ yysyntax_error (char *yyresult, int yystate, int yychar)
 #if (defined __STDC__ || defined __C99__FUNC__ \
      || defined __cplusplus || defined _MSC_VER)
 static void
-yydestruct (const char *yymsg, int yytype, YYSTYPE *yyvaluep, WebCore::XPath::Parser& parser)
+yydestruct (const char *yymsg, int yytype, YYSTYPE *yyvaluep, CyberCore::XPath::Parser& parser)
 #else
 static void
 yydestruct (yymsg, yytype, yyvaluep, parser)
     const char *yymsg;
     int yytype;
     YYSTYPE *yyvaluep;
-    WebCore::XPath::Parser& parser;
+    CyberCore::XPath::Parser& parser;
 #endif
 {
   YYUSE (yyvaluep);
@@ -1370,7 +1370,7 @@ int yyparse ();
 #endif
 #else /* ! YYPARSE_PARAM */
 #if defined __STDC__ || defined __cplusplus
-int yyparse (WebCore::XPath::Parser& parser);
+int yyparse (CyberCore::XPath::Parser& parser);
 #else
 int yyparse ();
 #endif
@@ -1399,11 +1399,11 @@ yyparse (YYPARSE_PARAM)
 #if (defined __STDC__ || defined __C99__FUNC__ \
      || defined __cplusplus || defined _MSC_VER)
 int
-yyparse (WebCore::XPath::Parser& parser)
+yyparse (CyberCore::XPath::Parser& parser)
 #else
 int
 yyparse (parser)
-    WebCore::XPath::Parser& parser;
+    CyberCore::XPath::Parser& parser;
 #endif
 #endif
 {
@@ -1658,7 +1658,7 @@ yyreduce:
         case 2:
 #line 112 "XPathGrammar.y"
     {
-        parser.setParseResult(std::unique_ptr<WebCore::XPath::Expression>((yyvsp[(1) - (1)].expression)));
+        parser.setParseResult(std::unique_ptr<CyberCore::XPath::Expression>((yyvsp[(1) - (1)].expression)));
     ;}
     break;
 
@@ -1673,7 +1673,7 @@ yyreduce:
   case 6:
 #line 133 "XPathGrammar.y"
     {
-        (yyval.locationPath) = new WebCore::XPath::LocationPath;
+        (yyval.locationPath) = new CyberCore::XPath::LocationPath;
     ;}
     break;
 
@@ -1688,15 +1688,15 @@ yyreduce:
 #line 143 "XPathGrammar.y"
     {
         (yyval.locationPath) = (yyvsp[(2) - (2)].locationPath);
-        (yyval.locationPath)->prependStep(std::unique_ptr<WebCore::XPath::Step>((yyvsp[(1) - (2)].step)));
+        (yyval.locationPath)->prependStep(std::unique_ptr<CyberCore::XPath::Step>((yyvsp[(1) - (2)].step)));
     ;}
     break;
 
   case 9:
 #line 151 "XPathGrammar.y"
     {
-        (yyval.locationPath) = new WebCore::XPath::LocationPath;
-        (yyval.locationPath)->appendStep(std::unique_ptr<WebCore::XPath::Step>((yyvsp[(1) - (1)].step)));
+        (yyval.locationPath) = new CyberCore::XPath::LocationPath;
+        (yyval.locationPath)->appendStep(std::unique_ptr<CyberCore::XPath::Step>((yyvsp[(1) - (1)].step)));
     ;}
     break;
 
@@ -1704,7 +1704,7 @@ yyreduce:
 #line 157 "XPathGrammar.y"
     {
         (yyval.locationPath) = (yyvsp[(1) - (3)].locationPath);
-        (yyval.locationPath)->appendStep(std::unique_ptr<WebCore::XPath::Step>((yyvsp[(3) - (3)].step)));
+        (yyval.locationPath)->appendStep(std::unique_ptr<CyberCore::XPath::Step>((yyvsp[(3) - (3)].step)));
     ;}
     break;
 
@@ -1712,20 +1712,20 @@ yyreduce:
 #line 163 "XPathGrammar.y"
     {
         (yyval.locationPath) = (yyvsp[(1) - (3)].locationPath);
-        (yyval.locationPath)->appendStep(std::unique_ptr<WebCore::XPath::Step>((yyvsp[(2) - (3)].step)));
-        (yyval.locationPath)->appendStep(std::unique_ptr<WebCore::XPath::Step>((yyvsp[(3) - (3)].step)));
+        (yyval.locationPath)->appendStep(std::unique_ptr<CyberCore::XPath::Step>((yyvsp[(2) - (3)].step)));
+        (yyval.locationPath)->appendStep(std::unique_ptr<CyberCore::XPath::Step>((yyvsp[(3) - (3)].step)));
     ;}
     break;
 
   case 12:
 #line 172 "XPathGrammar.y"
     {
-        std::unique_ptr<WebCore::XPath::Step::NodeTest> nodeTest((yyvsp[(1) - (2)].nodeTest));
-        std::unique_ptr<Vector<std::unique_ptr<WebCore::XPath::Expression>>> predicateList((yyvsp[(2) - (2)].expressionVector));
+        std::unique_ptr<CyberCore::XPath::Step::NodeTest> nodeTest((yyvsp[(1) - (2)].nodeTest));
+        std::unique_ptr<Vector<std::unique_ptr<CyberCore::XPath::Expression>>> predicateList((yyvsp[(2) - (2)].expressionVector));
         if (predicateList)
-            (yyval.step) = new WebCore::XPath::Step(WebCore::XPath::Step::ChildAxis, WTFMove(*nodeTest), WTFMove(*predicateList));
+            (yyval.step) = new CyberCore::XPath::Step(CyberCore::XPath::Step::ChildAxis, WTFMove(*nodeTest), WTFMove(*predicateList));
         else
-            (yyval.step) = new WebCore::XPath::Step(WebCore::XPath::Step::ChildAxis, WTFMove(*nodeTest));
+            (yyval.step) = new CyberCore::XPath::Step(CyberCore::XPath::Step::ChildAxis, WTFMove(*nodeTest));
     ;}
     break;
 
@@ -1733,7 +1733,7 @@ yyreduce:
 #line 182 "XPathGrammar.y"
     {
         String nametest = adoptRef((yyvsp[(1) - (2)].string));
-        std::unique_ptr<Vector<std::unique_ptr<WebCore::XPath::Expression>>> predicateList((yyvsp[(2) - (2)].expressionVector));
+        std::unique_ptr<Vector<std::unique_ptr<CyberCore::XPath::Expression>>> predicateList((yyvsp[(2) - (2)].expressionVector));
 
         AtomString localName;
         AtomString namespaceURI;
@@ -1743,22 +1743,22 @@ yyreduce:
         }
 
         if (predicateList)
-            (yyval.step) = new WebCore::XPath::Step(WebCore::XPath::Step::ChildAxis, WebCore::XPath::Step::NodeTest(WebCore::XPath::Step::NodeTest::NameTest, localName, namespaceURI), WTFMove(*predicateList));
+            (yyval.step) = new CyberCore::XPath::Step(CyberCore::XPath::Step::ChildAxis, CyberCore::XPath::Step::NodeTest(CyberCore::XPath::Step::NodeTest::NameTest, localName, namespaceURI), WTFMove(*predicateList));
         else
-            (yyval.step) = new WebCore::XPath::Step(WebCore::XPath::Step::ChildAxis, WebCore::XPath::Step::NodeTest(WebCore::XPath::Step::NodeTest::NameTest, localName, namespaceURI));
+            (yyval.step) = new CyberCore::XPath::Step(CyberCore::XPath::Step::ChildAxis, CyberCore::XPath::Step::NodeTest(CyberCore::XPath::Step::NodeTest::NameTest, localName, namespaceURI));
     ;}
     break;
 
   case 14:
 #line 200 "XPathGrammar.y"
     {
-        std::unique_ptr<WebCore::XPath::Step::NodeTest> nodeTest((yyvsp[(2) - (3)].nodeTest));
-        std::unique_ptr<Vector<std::unique_ptr<WebCore::XPath::Expression>>> predicateList((yyvsp[(3) - (3)].expressionVector));
+        std::unique_ptr<CyberCore::XPath::Step::NodeTest> nodeTest((yyvsp[(2) - (3)].nodeTest));
+        std::unique_ptr<Vector<std::unique_ptr<CyberCore::XPath::Expression>>> predicateList((yyvsp[(3) - (3)].expressionVector));
 
         if (predicateList)
-            (yyval.step) = new WebCore::XPath::Step((yyvsp[(1) - (3)].axis), WTFMove(*nodeTest), WTFMove(*predicateList));
+            (yyval.step) = new CyberCore::XPath::Step((yyvsp[(1) - (3)].axis), WTFMove(*nodeTest), WTFMove(*predicateList));
         else
-            (yyval.step) = new WebCore::XPath::Step((yyvsp[(1) - (3)].axis), WTFMove(*nodeTest));
+            (yyval.step) = new CyberCore::XPath::Step((yyvsp[(1) - (3)].axis), WTFMove(*nodeTest));
     ;}
     break;
 
@@ -1766,7 +1766,7 @@ yyreduce:
 #line 211 "XPathGrammar.y"
     {
         String nametest = adoptRef((yyvsp[(2) - (3)].string));
-        std::unique_ptr<Vector<std::unique_ptr<WebCore::XPath::Expression>>> predicateList((yyvsp[(3) - (3)].expressionVector));
+        std::unique_ptr<Vector<std::unique_ptr<CyberCore::XPath::Expression>>> predicateList((yyvsp[(3) - (3)].expressionVector));
 
         AtomString localName;
         AtomString namespaceURI;
@@ -1776,44 +1776,44 @@ yyreduce:
         }
 
         if (predicateList)
-            (yyval.step) = new WebCore::XPath::Step((yyvsp[(1) - (3)].axis), WebCore::XPath::Step::NodeTest(WebCore::XPath::Step::NodeTest::NameTest, localName, namespaceURI), WTFMove(*predicateList));
+            (yyval.step) = new CyberCore::XPath::Step((yyvsp[(1) - (3)].axis), CyberCore::XPath::Step::NodeTest(CyberCore::XPath::Step::NodeTest::NameTest, localName, namespaceURI), WTFMove(*predicateList));
         else
-            (yyval.step) = new WebCore::XPath::Step((yyvsp[(1) - (3)].axis), WebCore::XPath::Step::NodeTest(WebCore::XPath::Step::NodeTest::NameTest, localName, namespaceURI));
+            (yyval.step) = new CyberCore::XPath::Step((yyvsp[(1) - (3)].axis), CyberCore::XPath::Step::NodeTest(CyberCore::XPath::Step::NodeTest::NameTest, localName, namespaceURI));
     ;}
     break;
 
   case 18:
 #line 235 "XPathGrammar.y"
     {
-        (yyval.axis) = WebCore::XPath::Step::AttributeAxis;
+        (yyval.axis) = CyberCore::XPath::Step::AttributeAxis;
     ;}
     break;
 
   case 19:
 #line 242 "XPathGrammar.y"
     {
-        (yyval.nodeTest) = new WebCore::XPath::Step::NodeTest(WebCore::XPath::Step::NodeTest::AnyNodeTest);
+        (yyval.nodeTest) = new CyberCore::XPath::Step::NodeTest(CyberCore::XPath::Step::NodeTest::AnyNodeTest);
     ;}
     break;
 
   case 20:
 #line 247 "XPathGrammar.y"
     {
-        (yyval.nodeTest) = new WebCore::XPath::Step::NodeTest(WebCore::XPath::Step::NodeTest::TextNodeTest);
+        (yyval.nodeTest) = new CyberCore::XPath::Step::NodeTest(CyberCore::XPath::Step::NodeTest::TextNodeTest);
     ;}
     break;
 
   case 21:
 #line 252 "XPathGrammar.y"
     {
-        (yyval.nodeTest) = new WebCore::XPath::Step::NodeTest(WebCore::XPath::Step::NodeTest::CommentNodeTest);
+        (yyval.nodeTest) = new CyberCore::XPath::Step::NodeTest(CyberCore::XPath::Step::NodeTest::CommentNodeTest);
     ;}
     break;
 
   case 22:
 #line 257 "XPathGrammar.y"
     {
-        (yyval.nodeTest) = new WebCore::XPath::Step::NodeTest(WebCore::XPath::Step::NodeTest::ProcessingInstructionNodeTest);
+        (yyval.nodeTest) = new CyberCore::XPath::Step::NodeTest(CyberCore::XPath::Step::NodeTest::ProcessingInstructionNodeTest);
     ;}
     break;
 
@@ -1823,7 +1823,7 @@ yyreduce:
         auto stringImpl = adoptRef((yyvsp[(3) - (4)].string));
         if (stringImpl)
             stringImpl = stringImpl->stripWhiteSpace();
-        (yyval.nodeTest) = new WebCore::XPath::Step::NodeTest(WebCore::XPath::Step::NodeTest::ProcessingInstructionNodeTest, stringImpl.get());
+        (yyval.nodeTest) = new CyberCore::XPath::Step::NodeTest(CyberCore::XPath::Step::NodeTest::ProcessingInstructionNodeTest, stringImpl.get());
     ;}
     break;
 
@@ -1837,8 +1837,8 @@ yyreduce:
   case 26:
 #line 279 "XPathGrammar.y"
     {
-        (yyval.expressionVector) = new Vector<std::unique_ptr<WebCore::XPath::Expression>>;
-        (yyval.expressionVector)->append(std::unique_ptr<WebCore::XPath::Expression>((yyvsp[(1) - (1)].expression)));
+        (yyval.expressionVector) = new Vector<std::unique_ptr<CyberCore::XPath::Expression>>;
+        (yyval.expressionVector)->append(std::unique_ptr<CyberCore::XPath::Expression>((yyvsp[(1) - (1)].expression)));
     ;}
     break;
 
@@ -1846,7 +1846,7 @@ yyreduce:
 #line 285 "XPathGrammar.y"
     {
         (yyval.expressionVector) = (yyvsp[(1) - (2)].expressionVector);
-        (yyval.expressionVector)->append(std::unique_ptr<WebCore::XPath::Expression>((yyvsp[(2) - (2)].expression)));
+        (yyval.expressionVector)->append(std::unique_ptr<CyberCore::XPath::Expression>((yyvsp[(2) - (2)].expression)));
     ;}
     break;
 
@@ -1860,21 +1860,21 @@ yyreduce:
   case 29:
 #line 300 "XPathGrammar.y"
     {
-        (yyval.step) = new WebCore::XPath::Step(WebCore::XPath::Step::DescendantOrSelfAxis, WebCore::XPath::Step::NodeTest(WebCore::XPath::Step::NodeTest::AnyNodeTest));
+        (yyval.step) = new CyberCore::XPath::Step(CyberCore::XPath::Step::DescendantOrSelfAxis, CyberCore::XPath::Step::NodeTest(CyberCore::XPath::Step::NodeTest::AnyNodeTest));
     ;}
     break;
 
   case 30:
 #line 307 "XPathGrammar.y"
     {
-        (yyval.step) = new WebCore::XPath::Step(WebCore::XPath::Step::SelfAxis, WebCore::XPath::Step::NodeTest(WebCore::XPath::Step::NodeTest::AnyNodeTest));
+        (yyval.step) = new CyberCore::XPath::Step(CyberCore::XPath::Step::SelfAxis, CyberCore::XPath::Step::NodeTest(CyberCore::XPath::Step::NodeTest::AnyNodeTest));
     ;}
     break;
 
   case 31:
 #line 312 "XPathGrammar.y"
     {
-        (yyval.step) = new WebCore::XPath::Step(WebCore::XPath::Step::ParentAxis, WebCore::XPath::Step::NodeTest(WebCore::XPath::Step::NodeTest::AnyNodeTest));
+        (yyval.step) = new CyberCore::XPath::Step(CyberCore::XPath::Step::ParentAxis, CyberCore::XPath::Step::NodeTest(CyberCore::XPath::Step::NodeTest::AnyNodeTest));
     ;}
     break;
 
@@ -1882,7 +1882,7 @@ yyreduce:
 #line 319 "XPathGrammar.y"
     {
         String name = adoptRef((yyvsp[(1) - (1)].string));
-        (yyval.expression) = new WebCore::XPath::VariableReference(name);
+        (yyval.expression) = new CyberCore::XPath::VariableReference(name);
     ;}
     break;
 
@@ -1897,7 +1897,7 @@ yyreduce:
 #line 330 "XPathGrammar.y"
     {
         String literal = adoptRef((yyvsp[(1) - (1)].string));
-        (yyval.expression) = new WebCore::XPath::StringExpression(WTFMove(literal));
+        (yyval.expression) = new CyberCore::XPath::StringExpression(WTFMove(literal));
     ;}
     break;
 
@@ -1905,7 +1905,7 @@ yyreduce:
 #line 336 "XPathGrammar.y"
     {
         String numeral = adoptRef((yyvsp[(1) - (1)].string));
-        (yyval.expression) = new WebCore::XPath::Number(numeral.toDouble());
+        (yyval.expression) = new CyberCore::XPath::Number(numeral.toDouble());
     ;}
     break;
 
@@ -1913,7 +1913,7 @@ yyreduce:
 #line 346 "XPathGrammar.y"
     {
         String name = adoptRef((yyvsp[(1) - (3)].string));
-        (yyval.expression) = WebCore::XPath::Function::create(name).release();
+        (yyval.expression) = CyberCore::XPath::Function::create(name).release();
         if (!(yyval.expression))
             YYABORT;
     ;}
@@ -1923,8 +1923,8 @@ yyreduce:
 #line 354 "XPathGrammar.y"
     {
         String name = adoptRef((yyvsp[(1) - (4)].string));
-        std::unique_ptr<Vector<std::unique_ptr<WebCore::XPath::Expression>>> argumentList((yyvsp[(3) - (4)].expressionVector));
-        (yyval.expression) = WebCore::XPath::Function::create(name, WTFMove(*argumentList)).release();
+        std::unique_ptr<Vector<std::unique_ptr<CyberCore::XPath::Expression>>> argumentList((yyvsp[(3) - (4)].expressionVector));
+        (yyval.expression) = CyberCore::XPath::Function::create(name, WTFMove(*argumentList)).release();
         if (!(yyval.expression))
             YYABORT;
     ;}
@@ -1933,8 +1933,8 @@ yyreduce:
   case 39:
 #line 365 "XPathGrammar.y"
     {
-        (yyval.expressionVector) = new Vector<std::unique_ptr<WebCore::XPath::Expression>>;
-        (yyval.expressionVector)->append(std::unique_ptr<WebCore::XPath::Expression>((yyvsp[(1) - (1)].expression)));
+        (yyval.expressionVector) = new Vector<std::unique_ptr<CyberCore::XPath::Expression>>;
+        (yyval.expressionVector)->append(std::unique_ptr<CyberCore::XPath::Expression>((yyvsp[(1) - (1)].expression)));
     ;}
     break;
 
@@ -1942,14 +1942,14 @@ yyreduce:
 #line 371 "XPathGrammar.y"
     {
         (yyval.expressionVector) = (yyvsp[(1) - (3)].expressionVector);
-        (yyval.expressionVector)->append(std::unique_ptr<WebCore::XPath::Expression>((yyvsp[(3) - (3)].expression)));
+        (yyval.expressionVector)->append(std::unique_ptr<CyberCore::XPath::Expression>((yyvsp[(3) - (3)].expression)));
     ;}
     break;
 
   case 43:
 #line 385 "XPathGrammar.y"
     {
-        (yyval.expression) = new WebCore::XPath::Union(std::unique_ptr<WebCore::XPath::Expression>((yyvsp[(1) - (3)].expression)), std::unique_ptr<WebCore::XPath::Expression>((yyvsp[(3) - (3)].expression)));
+        (yyval.expression) = new CyberCore::XPath::Union(std::unique_ptr<CyberCore::XPath::Expression>((yyvsp[(1) - (3)].expression)), std::unique_ptr<CyberCore::XPath::Expression>((yyvsp[(3) - (3)].expression)));
     ;}
     break;
 
@@ -1964,80 +1964,80 @@ yyreduce:
 #line 399 "XPathGrammar.y"
     {
         (yyvsp[(3) - (3)].locationPath)->setAbsolute();
-        (yyval.expression) = new WebCore::XPath::Path(std::unique_ptr<WebCore::XPath::Expression>((yyvsp[(1) - (3)].expression)), std::unique_ptr<WebCore::XPath::LocationPath>((yyvsp[(3) - (3)].locationPath)));
+        (yyval.expression) = new CyberCore::XPath::Path(std::unique_ptr<CyberCore::XPath::Expression>((yyvsp[(1) - (3)].expression)), std::unique_ptr<CyberCore::XPath::LocationPath>((yyvsp[(3) - (3)].locationPath)));
     ;}
     break;
 
   case 47:
 #line 405 "XPathGrammar.y"
     {
-        (yyvsp[(3) - (3)].locationPath)->prependStep(std::unique_ptr<WebCore::XPath::Step>((yyvsp[(2) - (3)].step)));
+        (yyvsp[(3) - (3)].locationPath)->prependStep(std::unique_ptr<CyberCore::XPath::Step>((yyvsp[(2) - (3)].step)));
         (yyvsp[(3) - (3)].locationPath)->setAbsolute();
-        (yyval.expression) = new WebCore::XPath::Path(std::unique_ptr<WebCore::XPath::Expression>((yyvsp[(1) - (3)].expression)), std::unique_ptr<WebCore::XPath::LocationPath>((yyvsp[(3) - (3)].locationPath)));
+        (yyval.expression) = new CyberCore::XPath::Path(std::unique_ptr<CyberCore::XPath::Expression>((yyvsp[(1) - (3)].expression)), std::unique_ptr<CyberCore::XPath::LocationPath>((yyvsp[(3) - (3)].locationPath)));
     ;}
     break;
 
   case 49:
 #line 416 "XPathGrammar.y"
     {
-        std::unique_ptr<Vector<std::unique_ptr<WebCore::XPath::Expression>>> predicateList((yyvsp[(2) - (2)].expressionVector));
-        (yyval.expression) = new WebCore::XPath::Filter(std::unique_ptr<WebCore::XPath::Expression>((yyvsp[(1) - (2)].expression)), WTFMove(*predicateList));
+        std::unique_ptr<Vector<std::unique_ptr<CyberCore::XPath::Expression>>> predicateList((yyvsp[(2) - (2)].expressionVector));
+        (yyval.expression) = new CyberCore::XPath::Filter(std::unique_ptr<CyberCore::XPath::Expression>((yyvsp[(1) - (2)].expression)), WTFMove(*predicateList));
     ;}
     break;
 
   case 51:
 #line 426 "XPathGrammar.y"
     {
-        (yyval.expression) = new WebCore::XPath::LogicalOp(WebCore::XPath::LogicalOp::OP_Or, std::unique_ptr<WebCore::XPath::Expression>((yyvsp[(1) - (3)].expression)), std::unique_ptr<WebCore::XPath::Expression>((yyvsp[(3) - (3)].expression)));
+        (yyval.expression) = new CyberCore::XPath::LogicalOp(CyberCore::XPath::LogicalOp::OP_Or, std::unique_ptr<CyberCore::XPath::Expression>((yyvsp[(1) - (3)].expression)), std::unique_ptr<CyberCore::XPath::Expression>((yyvsp[(3) - (3)].expression)));
     ;}
     break;
 
   case 53:
 #line 435 "XPathGrammar.y"
     {
-        (yyval.expression) = new WebCore::XPath::LogicalOp(WebCore::XPath::LogicalOp::OP_And, std::unique_ptr<WebCore::XPath::Expression>((yyvsp[(1) - (3)].expression)), std::unique_ptr<WebCore::XPath::Expression>((yyvsp[(3) - (3)].expression)));
+        (yyval.expression) = new CyberCore::XPath::LogicalOp(CyberCore::XPath::LogicalOp::OP_And, std::unique_ptr<CyberCore::XPath::Expression>((yyvsp[(1) - (3)].expression)), std::unique_ptr<CyberCore::XPath::Expression>((yyvsp[(3) - (3)].expression)));
     ;}
     break;
 
   case 55:
 #line 444 "XPathGrammar.y"
     {
-        (yyval.expression) = new WebCore::XPath::EqTestOp((yyvsp[(2) - (3)].equalityTestOpcode), std::unique_ptr<WebCore::XPath::Expression>((yyvsp[(1) - (3)].expression)), std::unique_ptr<WebCore::XPath::Expression>((yyvsp[(3) - (3)].expression)));
+        (yyval.expression) = new CyberCore::XPath::EqTestOp((yyvsp[(2) - (3)].equalityTestOpcode), std::unique_ptr<CyberCore::XPath::Expression>((yyvsp[(1) - (3)].expression)), std::unique_ptr<CyberCore::XPath::Expression>((yyvsp[(3) - (3)].expression)));
     ;}
     break;
 
   case 57:
 #line 453 "XPathGrammar.y"
     {
-        (yyval.expression) = new WebCore::XPath::EqTestOp((yyvsp[(2) - (3)].equalityTestOpcode), std::unique_ptr<WebCore::XPath::Expression>((yyvsp[(1) - (3)].expression)), std::unique_ptr<WebCore::XPath::Expression>((yyvsp[(3) - (3)].expression)));
+        (yyval.expression) = new CyberCore::XPath::EqTestOp((yyvsp[(2) - (3)].equalityTestOpcode), std::unique_ptr<CyberCore::XPath::Expression>((yyvsp[(1) - (3)].expression)), std::unique_ptr<CyberCore::XPath::Expression>((yyvsp[(3) - (3)].expression)));
     ;}
     break;
 
   case 59:
 #line 462 "XPathGrammar.y"
     {
-        (yyval.expression) = new WebCore::XPath::NumericOp(WebCore::XPath::NumericOp::OP_Add, std::unique_ptr<WebCore::XPath::Expression>((yyvsp[(1) - (3)].expression)), std::unique_ptr<WebCore::XPath::Expression>((yyvsp[(3) - (3)].expression)));
+        (yyval.expression) = new CyberCore::XPath::NumericOp(CyberCore::XPath::NumericOp::OP_Add, std::unique_ptr<CyberCore::XPath::Expression>((yyvsp[(1) - (3)].expression)), std::unique_ptr<CyberCore::XPath::Expression>((yyvsp[(3) - (3)].expression)));
     ;}
     break;
 
   case 60:
 #line 467 "XPathGrammar.y"
     {
-        (yyval.expression) = new WebCore::XPath::NumericOp(WebCore::XPath::NumericOp::OP_Sub, std::unique_ptr<WebCore::XPath::Expression>((yyvsp[(1) - (3)].expression)), std::unique_ptr<WebCore::XPath::Expression>((yyvsp[(3) - (3)].expression)));
+        (yyval.expression) = new CyberCore::XPath::NumericOp(CyberCore::XPath::NumericOp::OP_Sub, std::unique_ptr<CyberCore::XPath::Expression>((yyvsp[(1) - (3)].expression)), std::unique_ptr<CyberCore::XPath::Expression>((yyvsp[(3) - (3)].expression)));
     ;}
     break;
 
   case 62:
 #line 476 "XPathGrammar.y"
     {
-        (yyval.expression) = new WebCore::XPath::NumericOp((yyvsp[(2) - (3)].numericOpcode), std::unique_ptr<WebCore::XPath::Expression>((yyvsp[(1) - (3)].expression)), std::unique_ptr<WebCore::XPath::Expression>((yyvsp[(3) - (3)].expression)));
+        (yyval.expression) = new CyberCore::XPath::NumericOp((yyvsp[(2) - (3)].numericOpcode), std::unique_ptr<CyberCore::XPath::Expression>((yyvsp[(1) - (3)].expression)), std::unique_ptr<CyberCore::XPath::Expression>((yyvsp[(3) - (3)].expression)));
     ;}
     break;
 
   case 64:
 #line 485 "XPathGrammar.y"
     {
-        (yyval.expression) = new WebCore::XPath::Negative(std::unique_ptr<WebCore::XPath::Expression>((yyvsp[(2) - (2)].expression)));
+        (yyval.expression) = new CyberCore::XPath::Negative(std::unique_ptr<CyberCore::XPath::Expression>((yyvsp[(2) - (2)].expression)));
     ;}
     break;
 

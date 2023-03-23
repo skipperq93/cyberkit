@@ -29,7 +29,7 @@
 
 @class NSURLAuthenticationChallenge;
 
-namespace WebCore {
+namespace CyberCore {
 
 class AuthenticationChallenge;
 

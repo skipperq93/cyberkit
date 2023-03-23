@@ -28,7 +28,7 @@
 #include "ControlFactory.h"
 #include "ControlPart.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class MenuListButtonPart final : public ControlPart {
 public:
@@ -49,4 +49,4 @@ private:
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

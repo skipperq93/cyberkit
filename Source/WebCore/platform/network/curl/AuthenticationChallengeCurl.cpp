@@ -32,7 +32,7 @@
 #include "CurlResponse.h"
 #include "ResourceError.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 AuthenticationChallenge::AuthenticationChallenge(const CurlResponse& curlResponse, unsigned previousFailureCount, const ResourceResponse& response, AuthenticationClient* client)
     : AuthenticationChallengeBase(protectionSpaceForPasswordBased(curlResponse, response), Credential(), previousFailureCount, response, ResourceError())
@@ -133,6 +133,6 @@ void AuthenticationChallenge::removeLeadingAndTrailingQuotes(String& value)
         value = value.substring(1, length - 2);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

@@ -38,7 +38,7 @@
 #include <wtf/Atomics.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 CoordinatedGraphicsScene::CoordinatedGraphicsScene(CoordinatedGraphicsSceneClient* client)
     : m_client(client)
@@ -166,7 +166,7 @@ void updateImageBacking(TextureMapperLayer& layer,
         auto buffer = WTFMove(imageBackingStore.backingStoreState().buffer);
         if (buffer) {
             backingStore->createTile(1, 1.0);
-            WebCore::IntRect rect { { }, buffer->size() };
+            CyberCore::IntRect rect { { }, buffer->size() };
             ASSERT(2000 >= std::max(rect.width(), rect.height()));
             backingStore->setSize(rect.size());
             backingStore->updateTile(1, rect, rect, WTFMove(buffer), rect.location());
@@ -231,7 +231,7 @@ void CoordinatedGraphicsScene::updateSceneState()
         };
         Vector<ImageBacking> imageBacking;
     } layersByBacking;
-    HashSet<Ref<WebCore::TextureMapperPlatformLayerProxy>> replacedProxiesToInvalidate;
+    HashSet<Ref<CyberCore::TextureMapperPlatformLayerProxy>> replacedProxiesToInvalidate;
 
     // Access the scene state and perform state update for each layer.
     m_nicosia.scene->accessState(
@@ -380,8 +380,8 @@ void CoordinatedGraphicsScene::updateSceneState()
     // Iterate through each backing type of layers and gather backing store
     // or proxy objects that need an update.
     // FIXME: HashSet<std::reference_wrapper<>> would be ideal, but doesn't work (yet).
-    HashSet<Ref<WebCore::CoordinatedBackingStore>> backingStoresWithPendingBuffers;
-    HashSet<Ref<WebCore::TextureMapperPlatformLayerProxy>> proxiesForSwapping;
+    HashSet<Ref<CyberCore::CoordinatedBackingStore>> backingStoresWithPendingBuffers;
+    HashSet<Ref<CyberCore::TextureMapperPlatformLayerProxy>> proxiesForSwapping;
 
     {
         for (auto& entry : layersByBacking.backingStore) {

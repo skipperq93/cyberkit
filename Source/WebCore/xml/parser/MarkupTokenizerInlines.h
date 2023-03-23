@@ -32,7 +32,7 @@
 #pragma warning(disable: 4702)
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 inline bool isTokenizerWhitespace(UChar character)
 {
@@ -93,4 +93,4 @@ inline bool isTokenizerWhitespace(UChar character)
         goto newState;                                          \
     } while (false)
 
-} // namespace WebCore
+} // namespace CyberCore

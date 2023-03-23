@@ -78,7 +78,7 @@ void WebPaymentCoordinatorProxy::openPaymentSetup(const String& merchantIdentifi
     platformOpenPaymentSetup(merchantIdentifier, domainName, WTFMove(completionHandler));
 }
 
-void WebPaymentCoordinatorProxy::showPaymentUI(WebCore::PageIdentifier destinationID, WebPageProxyIdentifier webPageProxyID, const String& originatingURLString, const Vector<String>& linkIconURLStrings, const WebCore::ApplePaySessionPaymentRequest& paymentRequest, CompletionHandler<void(bool)>&& completionHandler)
+void WebPaymentCoordinatorProxy::showPaymentUI(CyberCore::PageIdentifier destinationID, WebPageProxyIdentifier webPageProxyID, const String& originatingURLString, const Vector<String>& linkIconURLStrings, const CyberCore::ApplePaySessionPaymentRequest& paymentRequest, CompletionHandler<void(bool)>&& completionHandler)
 {
     if (auto& coordinator = activePaymentCoordinatorProxy())
         coordinator->didReachFinalState();
@@ -120,7 +120,7 @@ void WebPaymentCoordinatorProxy::showPaymentUI(WebCore::PageIdentifier destinati
     completionHandler(true);
 }
 
-void WebPaymentCoordinatorProxy::completeMerchantValidation(const WebCore::PaymentMerchantSession& paymentMerchantSession)
+void WebPaymentCoordinatorProxy::completeMerchantValidation(const CyberCore::PaymentMerchantSession& paymentMerchantSession)
 {
     // It's possible that the payment has been canceled already.
     if (m_state == State::Idle)
@@ -132,7 +132,7 @@ void WebPaymentCoordinatorProxy::completeMerchantValidation(const WebCore::Payme
     m_merchantValidationState = MerchantValidationState::ValidationComplete;
 }
 
-void WebPaymentCoordinatorProxy::completeShippingMethodSelection(std::optional<WebCore::ApplePayShippingMethodUpdate>&& update)
+void WebPaymentCoordinatorProxy::completeShippingMethodSelection(std::optional<CyberCore::ApplePayShippingMethodUpdate>&& update)
 {
     // It's possible that the payment has been canceled already.
     if (m_state == State::Idle)
@@ -144,7 +144,7 @@ void WebPaymentCoordinatorProxy::completeShippingMethodSelection(std::optional<W
     m_state = State::Active;
 }
 
-void WebPaymentCoordinatorProxy::completeShippingContactSelection(std::optional<WebCore::ApplePayShippingContactUpdate>&& update)
+void WebPaymentCoordinatorProxy::completeShippingContactSelection(std::optional<CyberCore::ApplePayShippingContactUpdate>&& update)
 {
     // It's possible that the payment has been canceled already.
     if (m_state == State::Idle)
@@ -156,7 +156,7 @@ void WebPaymentCoordinatorProxy::completeShippingContactSelection(std::optional<
     m_state = State::Active;
 }
 
-void WebPaymentCoordinatorProxy::completePaymentMethodSelection(std::optional<WebCore::ApplePayPaymentMethodUpdate>&& update)
+void WebPaymentCoordinatorProxy::completePaymentMethodSelection(std::optional<CyberCore::ApplePayPaymentMethodUpdate>&& update)
 {
     // It's possible that the payment has been canceled already.
     if (m_state == State::Idle)
@@ -170,7 +170,7 @@ void WebPaymentCoordinatorProxy::completePaymentMethodSelection(std::optional<We
 
 #if ENABLE(APPLE_PAY_COUPON_CODE)
 
-void WebPaymentCoordinatorProxy::completeCouponCodeChange(std::optional<WebCore::ApplePayCouponCodeUpdate>&& update)
+void WebPaymentCoordinatorProxy::completeCouponCodeChange(std::optional<CyberCore::ApplePayCouponCodeUpdate>&& update)
 {
     // It's possible that the payment has been canceled already.
     if (m_state == State::Idle)
@@ -186,7 +186,7 @@ void WebPaymentCoordinatorProxy::completeCouponCodeChange(std::optional<WebCore:
 
 #endif // ENABLE(APPLE_PAY_COUPON_CODE)
 
-void WebPaymentCoordinatorProxy::completePaymentSession(WebCore::ApplePayPaymentAuthorizationResult&& result)
+void WebPaymentCoordinatorProxy::completePaymentSession(CyberCore::ApplePayPaymentAuthorizationResult&& result)
 {
     // It's possible that the payment has been canceled already.
     if (!canCompletePayment())
@@ -229,18 +229,18 @@ void WebPaymentCoordinatorProxy::presenterWillValidateMerchant(PaymentAuthorizat
     send(Messages::WebPaymentCoordinator::ValidateMerchant(url.string()));
 }
 
-void WebPaymentCoordinatorProxy::presenterDidAuthorizePayment(PaymentAuthorizationPresenter&, const WebCore::Payment& payment)
+void WebPaymentCoordinatorProxy::presenterDidAuthorizePayment(PaymentAuthorizationPresenter&, const CyberCore::Payment& payment)
 {
     m_state = State::Authorized;
     send(Messages::WebPaymentCoordinator::DidAuthorizePayment(payment));
 }
 
-void WebPaymentCoordinatorProxy::presenterDidFinish(PaymentAuthorizationPresenter&, WebCore::PaymentSessionError&& error)
+void WebPaymentCoordinatorProxy::presenterDidFinish(PaymentAuthorizationPresenter&, CyberCore::PaymentSessionError&& error)
 {
     didReachFinalState(WTFMove(error));
 }
 
-void WebPaymentCoordinatorProxy::presenterDidSelectShippingMethod(PaymentAuthorizationPresenter&, const WebCore::ApplePayShippingMethod& shippingMethod)
+void WebPaymentCoordinatorProxy::presenterDidSelectShippingMethod(PaymentAuthorizationPresenter&, const CyberCore::ApplePayShippingMethod& shippingMethod)
 {
     ASSERT(m_state == State::Active);
 
@@ -260,7 +260,7 @@ void WebPaymentCoordinatorProxy::presenterDidChangeCouponCode(PaymentAuthorizati
 
 #endif // ENABLE(APPLE_PAY_COUPON_CODE)
 
-void WebPaymentCoordinatorProxy::presenterDidSelectShippingContact(PaymentAuthorizationPresenter&, const WebCore::PaymentContact& shippingContact)
+void WebPaymentCoordinatorProxy::presenterDidSelectShippingContact(PaymentAuthorizationPresenter&, const CyberCore::PaymentContact& shippingContact)
 {
     ASSERT(m_state == State::Active);
 
@@ -268,7 +268,7 @@ void WebPaymentCoordinatorProxy::presenterDidSelectShippingContact(PaymentAuthor
     send(Messages::WebPaymentCoordinator::DidSelectShippingContact(shippingContact));
 }
 
-void WebPaymentCoordinatorProxy::presenterDidSelectPaymentMethod(PaymentAuthorizationPresenter&, const WebCore::PaymentMethod& paymentMethod)
+void WebPaymentCoordinatorProxy::presenterDidSelectPaymentMethod(PaymentAuthorizationPresenter&, const CyberCore::PaymentMethod& paymentMethod)
 {
     ASSERT(m_state == State::Active);
 
@@ -356,7 +356,7 @@ bool WebPaymentCoordinatorProxy::canAbort() const
     }
 }
 
-void WebPaymentCoordinatorProxy::didReachFinalState(WebCore::PaymentSessionError&& error)
+void WebPaymentCoordinatorProxy::didReachFinalState(CyberCore::PaymentSessionError&& error)
 {
     ASSERT(!canBegin());
 

@@ -28,7 +28,7 @@
 #include <wtf/ArgumentCoder.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class MockContentFilterSettings {
     friend class NeverDestroyed<MockContentFilterSettings>;
@@ -89,4 +89,4 @@ private:
     String m_modifiedRequestURL;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

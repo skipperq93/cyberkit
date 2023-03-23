@@ -39,7 +39,7 @@ class Logger;
 }
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 struct CDMKeySystemConfiguration;
 struct CDMMediaCapability;

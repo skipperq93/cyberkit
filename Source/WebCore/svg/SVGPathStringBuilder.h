@@ -23,7 +23,7 @@
 #include "SVGPathConsumer.h"
 #include <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGPathStringBuilder final : public SVGPathConsumer {
 public:
@@ -53,4 +53,4 @@ private:
     StringBuilder m_stringBuilder;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

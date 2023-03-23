@@ -31,7 +31,7 @@
 #include "StyleScopeOrdinal.h"
 #include <wtf/Hasher.h>
 
-namespace WebCore::Style {
+namespace CyberCore::Style {
 
 enum class FromStyleAttribute : bool { No, Yes };
 

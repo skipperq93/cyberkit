@@ -29,7 +29,7 @@
 
 typedef const struct opaqueCMFormatDescription *CMFormatDescriptionRef;
 
-namespace WebCore {
+namespace CyberCore {
 
 class FloatSize;
 struct PlatformVideoColorSpace;

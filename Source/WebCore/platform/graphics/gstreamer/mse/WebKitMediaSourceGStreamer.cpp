@@ -43,7 +43,7 @@
 #include <wtf/text/CString.h>
 
 using namespace WTF;
-using namespace WebCore;
+using namespace CyberCore;
 
 GST_DEBUG_CATEGORY_STATIC(webkit_media_src_debug);
 #define GST_CAT_DEFAULT webkit_media_src_debug
@@ -679,7 +679,7 @@ static void webKitMediaSrcSeek(WebKitMediaSrc* source, uint64_t startTime, doubl
         webKitMediaSrcStreamFlush(stream.get(), true);
 }
 
-static int countStreamsOfType(WebKitMediaSrc* source, WebCore::TrackPrivateBaseGStreamer::TrackType type)
+static int countStreamsOfType(WebKitMediaSrc* source, CyberCore::TrackPrivateBaseGStreamer::TrackType type)
 {
     // Barring pipeline dumps someone may add during debugging, WebKit will only read these properties (n-video etc.) from the main thread.
     return std::count_if(source->priv->streams.begin(), source->priv->streams.end(), [type](auto item) {
@@ -693,13 +693,13 @@ static void webKitMediaSrcGetProperty(GObject* object, unsigned propId, GValue* 
 
     switch (propId) {
     case PROP_N_AUDIO:
-        g_value_set_int(value, countStreamsOfType(source, WebCore::TrackPrivateBaseGStreamer::TrackType::Audio));
+        g_value_set_int(value, countStreamsOfType(source, CyberCore::TrackPrivateBaseGStreamer::TrackType::Audio));
         break;
     case PROP_N_VIDEO:
-        g_value_set_int(value, countStreamsOfType(source, WebCore::TrackPrivateBaseGStreamer::TrackType::Video));
+        g_value_set_int(value, countStreamsOfType(source, CyberCore::TrackPrivateBaseGStreamer::TrackType::Video));
         break;
     case PROP_N_TEXT:
-        g_value_set_int(value, countStreamsOfType(source, WebCore::TrackPrivateBaseGStreamer::TrackType::Text));
+        g_value_set_int(value, countStreamsOfType(source, CyberCore::TrackPrivateBaseGStreamer::TrackType::Text));
         break;
     default:
         G_OBJECT_WARN_INVALID_PROPERTY_ID(object, propId, pspec);

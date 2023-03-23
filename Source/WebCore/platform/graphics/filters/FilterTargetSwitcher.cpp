@@ -31,7 +31,7 @@
 #include "FilterStyleTargetSwitcher.h"
 #include "GraphicsContext.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 std::unique_ptr<FilterTargetSwitcher> FilterTargetSwitcher::create(GraphicsContext& destinationContext, Filter& filter, const FloatRect &sourceImageRect, const DestinationColorSpace& colorSpace, FilterResults* results)
 {
@@ -45,4 +45,4 @@ FilterTargetSwitcher::FilterTargetSwitcher(Filter& filter)
 {
 }
 
-} // namespace WebCore
+} // namespace CyberCore

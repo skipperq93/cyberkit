@@ -30,8 +30,8 @@
 
 @interface WebVisiblePosition (Internal)
 
-+ (WebVisiblePosition *)_wrapVisiblePosition:(WebCore::VisiblePosition)visiblePosition;
-- (WebCore::VisiblePosition)_visiblePosition;
++ (WebVisiblePosition *)_wrapVisiblePosition:(CyberCore::VisiblePosition)visiblePosition;
+- (CyberCore::VisiblePosition)_visiblePosition;
 
 @end
 

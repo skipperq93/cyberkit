@@ -23,8 +23,8 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef WebCoreThreadRun_h
-#define WebCoreThreadRun_h
+#ifndef CyberCoreThreadRun_h
+#define CyberCoreThreadRun_h
 
 #if TARGET_OS_IPHONE
 
@@ -42,4 +42,4 @@ WEBCORE_EXPORT void WebThreadRun(void (^block)(void));
 
 #endif // TARGET_OS_IPHONE
 
-#endif // WebCoreThreadRun_h
+#endif // CyberCoreThreadRun_h

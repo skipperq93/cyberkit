@@ -31,7 +31,7 @@
 #include <variant>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using SQLValue = std::variant<std::nullptr_t, String, double>;
 

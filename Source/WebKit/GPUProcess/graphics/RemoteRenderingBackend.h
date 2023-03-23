@@ -51,7 +51,7 @@ enum class Critical : bool;
 enum class Synchronous : bool;
 }
 
-namespace WebCore {
+namespace CyberCore {
 class DestinationColorSpace;
 class FloatSize;
 class MediaPlayer;
@@ -89,18 +89,18 @@ public:
 
     IPC::StreamServerConnection& streamConnection() const { return m_streamConnection.get(); }
 #if ENABLE(VIDEO)
-    void performWithMediaPlayerOnMainThread(WebCore::MediaPlayerIdentifier, Function<void(WebCore::MediaPlayer&)>&&);
+    void performWithMediaPlayerOnMainThread(CyberCore::MediaPlayerIdentifier, Function<void(CyberCore::MediaPlayer&)>&&);
 #endif
 
     void lowMemoryHandler(WTF::Critical, WTF::Synchronous);
 
 #if HAVE(IOSURFACE)
-    WebCore::IOSurfacePool& ioSurfacePool() const { return m_ioSurfacePool; }
+    CyberCore::IOSurfacePool& ioSurfacePool() const { return m_ioSurfacePool; }
 #endif
 
-    const WebCore::ProcessIdentity& resourceOwner() const { return m_resourceOwner; }
+    const CyberCore::ProcessIdentity& resourceOwner() const { return m_resourceOwner; }
 
-    void releaseResource(WebCore::RenderingResourceIdentifier);
+    void releaseResource(CyberCore::RenderingResourceIdentifier);
 
     GPUConnectionToWebProcess& gpuConnectionToWebProcess() { return m_gpuConnectionToWebProcess.get(); }
 
@@ -113,30 +113,30 @@ private:
     uint64_t messageSenderDestinationID() const override;
 
     // Messages to be received.
-    void createImageBuffer(const WebCore::FloatSize& logicalSize, WebCore::RenderingMode, WebCore::RenderingPurpose, float resolutionScale, const WebCore::DestinationColorSpace&, WebCore::PixelFormat, WebCore::RenderingResourceIdentifier);
-    void moveToSerializedBuffer(WebCore::RenderingResourceIdentifier, RemoteSerializedImageBufferWriteReference&&);
-    void moveToImageBuffer(RemoteSerializedImageBufferWriteReference&&, WebCore::RenderingResourceIdentifier);
-    void getPixelBufferForImageBuffer(WebCore::RenderingResourceIdentifier, WebCore::PixelBufferFormat&&, WebCore::IntRect&& srcRect, CompletionHandler<void()>&&);
-    void getPixelBufferForImageBufferWithNewMemory(WebCore::RenderingResourceIdentifier, SharedMemory::Handle&&, WebCore::PixelBufferFormat&& destinationFormat, WebCore::IntRect&& srcRect, CompletionHandler<void()>&&);
+    void createImageBuffer(const CyberCore::FloatSize& logicalSize, CyberCore::RenderingMode, CyberCore::RenderingPurpose, float resolutionScale, const CyberCore::DestinationColorSpace&, CyberCore::PixelFormat, CyberCore::RenderingResourceIdentifier);
+    void moveToSerializedBuffer(CyberCore::RenderingResourceIdentifier, RemoteSerializedImageBufferWriteReference&&);
+    void moveToImageBuffer(RemoteSerializedImageBufferWriteReference&&, CyberCore::RenderingResourceIdentifier);
+    void getPixelBufferForImageBuffer(CyberCore::RenderingResourceIdentifier, CyberCore::PixelBufferFormat&&, CyberCore::IntRect&& srcRect, CompletionHandler<void()>&&);
+    void getPixelBufferForImageBufferWithNewMemory(CyberCore::RenderingResourceIdentifier, SharedMemory::Handle&&, CyberCore::PixelBufferFormat&& destinationFormat, CyberCore::IntRect&& srcRect, CompletionHandler<void()>&&);
     void destroyGetPixelBufferSharedMemory();
-    void putPixelBufferForImageBuffer(WebCore::RenderingResourceIdentifier, Ref<WebCore::PixelBuffer>&&, WebCore::IntRect&& srcRect, WebCore::IntPoint&& destPoint, WebCore::AlphaPremultiplication destFormat);
-    void getShareableBitmapForImageBuffer(WebCore::RenderingResourceIdentifier, WebCore::PreserveResolution, CompletionHandler<void(ShareableBitmapHandle&&)>&&);
-    void getFilteredImageForImageBuffer(WebCore::RenderingResourceIdentifier, Ref<WebCore::Filter>, CompletionHandler<void(ShareableBitmapHandle&&)>&&);
-    void cacheNativeImage(const ShareableBitmapHandle&, WebCore::RenderingResourceIdentifier);
-    void cacheDecomposedGlyphs(Ref<WebCore::DecomposedGlyphs>&&);
-    void cacheFont(Ref<WebCore::Font>&&);
+    void putPixelBufferForImageBuffer(CyberCore::RenderingResourceIdentifier, Ref<CyberCore::PixelBuffer>&&, CyberCore::IntRect&& srcRect, CyberCore::IntPoint&& destPoint, CyberCore::AlphaPremultiplication destFormat);
+    void getShareableBitmapForImageBuffer(CyberCore::RenderingResourceIdentifier, CyberCore::PreserveResolution, CompletionHandler<void(ShareableBitmapHandle&&)>&&);
+    void getFilteredImageForImageBuffer(CyberCore::RenderingResourceIdentifier, Ref<CyberCore::Filter>, CompletionHandler<void(ShareableBitmapHandle&&)>&&);
+    void cacheNativeImage(const ShareableBitmapHandle&, CyberCore::RenderingResourceIdentifier);
+    void cacheDecomposedGlyphs(Ref<CyberCore::DecomposedGlyphs>&&);
+    void cacheFont(Ref<CyberCore::Font>&&);
     void releaseAllResources();
     void finalizeRenderingUpdate(RenderingUpdateID);
-    void markSurfacesVolatile(MarkSurfacesAsVolatileRequestIdentifier, const Vector<WebCore::RenderingResourceIdentifier>&);
+    void markSurfacesVolatile(MarkSurfacesAsVolatileRequestIdentifier, const Vector<CyberCore::RenderingResourceIdentifier>&);
     void prepareBuffersForDisplay(Vector<PrepareBackingStoreBuffersInputData> swapBuffersInput, CompletionHandler<void(const Vector<PrepareBackingStoreBuffersOutputData>&)>&&);
 
     // Received messages translated to use QualifiedRenderingResourceIdentifier.
-    void createImageBufferWithQualifiedIdentifier(const WebCore::FloatSize& logicalSize, WebCore::RenderingMode, WebCore::RenderingPurpose, float resolutionScale, const WebCore::DestinationColorSpace&, WebCore::PixelFormat, QualifiedRenderingResourceIdentifier);
-    void getShareableBitmapForImageBufferWithQualifiedIdentifier(QualifiedRenderingResourceIdentifier, WebCore::PreserveResolution, CompletionHandler<void(ShareableBitmapHandle&&)>&&);
+    void createImageBufferWithQualifiedIdentifier(const CyberCore::FloatSize& logicalSize, CyberCore::RenderingMode, CyberCore::RenderingPurpose, float resolutionScale, const CyberCore::DestinationColorSpace&, CyberCore::PixelFormat, QualifiedRenderingResourceIdentifier);
+    void getShareableBitmapForImageBufferWithQualifiedIdentifier(QualifiedRenderingResourceIdentifier, CyberCore::PreserveResolution, CompletionHandler<void(ShareableBitmapHandle&&)>&&);
     void cacheNativeImageWithQualifiedIdentifier(const ShareableBitmapHandle&, QualifiedRenderingResourceIdentifier);
-    void cacheDecomposedGlyphsWithQualifiedIdentifier(Ref<WebCore::DecomposedGlyphs>&&, QualifiedRenderingResourceIdentifier);
+    void cacheDecomposedGlyphsWithQualifiedIdentifier(Ref<CyberCore::DecomposedGlyphs>&&, QualifiedRenderingResourceIdentifier);
     void releaseResourceWithQualifiedIdentifier(QualifiedRenderingResourceIdentifier);
-    void cacheFontWithQualifiedIdentifier(Ref<WebCore::Font>&&, QualifiedRenderingResourceIdentifier);
+    void cacheFontWithQualifiedIdentifier(Ref<CyberCore::Font>&&, QualifiedRenderingResourceIdentifier);
 
     void prepareLayerBuffersForDisplay(const PrepareBackingStoreBuffersInputData&, PrepareBackingStoreBuffersOutputData&);
 
@@ -144,11 +144,11 @@ private:
     Ref<IPC::StreamServerConnection> m_streamConnection;
     RemoteResourceCache m_remoteResourceCache;
     Ref<GPUConnectionToWebProcess> m_gpuConnectionToWebProcess;
-    WebCore::ProcessIdentity m_resourceOwner;
+    CyberCore::ProcessIdentity m_resourceOwner;
     RenderingBackendIdentifier m_renderingBackendIdentifier;
     RefPtr<SharedMemory> m_getPixelBufferSharedMemory;
 #if HAVE(IOSURFACE)
-    Ref<WebCore::IOSurfacePool> m_ioSurfacePool;
+    Ref<CyberCore::IOSurfacePool> m_ioSurfacePool;
 #endif
 
     Lock m_remoteDisplayListsLock;

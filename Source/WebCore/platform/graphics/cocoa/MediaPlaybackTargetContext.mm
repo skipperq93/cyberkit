@@ -33,7 +33,7 @@
 #import <pal/spi/cocoa/AVFoundationSPI.h>
 #import <pal/cocoa/AVFoundationSoftLink.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 MediaPlaybackTargetContext::MediaPlaybackTargetContext(RetainPtr<AVOutputContext>&& outputContext)
     : m_outputContext(outputContext)

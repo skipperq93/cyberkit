@@ -32,7 +32,7 @@
 #include <wtf/EnumTraits.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class TranslationContextMenuMode : bool { NonEditable, Editable };
 enum class TranslationContextMenuSource : bool { Unspecified, Image };
@@ -87,23 +87,23 @@ template<class Decoder> std::optional<TranslationContextMenuInfo> TranslationCon
     return { { WTFMove(*text), WTFMove(*selectionBoundsInRootView), WTFMove(*locationInRootView), *mode, *source } };
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::TranslationContextMenuMode> {
+template<> struct EnumTraits<CyberCore::TranslationContextMenuMode> {
     using values = EnumValues<
-        WebCore::TranslationContextMenuMode,
-        WebCore::TranslationContextMenuMode::NonEditable,
-        WebCore::TranslationContextMenuMode::Editable
+        CyberCore::TranslationContextMenuMode,
+        CyberCore::TranslationContextMenuMode::NonEditable,
+        CyberCore::TranslationContextMenuMode::Editable
     >;
 };
 
-template<> struct EnumTraits<WebCore::TranslationContextMenuSource> {
+template<> struct EnumTraits<CyberCore::TranslationContextMenuSource> {
     using values = EnumValues<
-        WebCore::TranslationContextMenuSource,
-        WebCore::TranslationContextMenuSource::Unspecified,
-        WebCore::TranslationContextMenuSource::Image
+        CyberCore::TranslationContextMenuSource,
+        CyberCore::TranslationContextMenuSource::Unspecified,
+        CyberCore::TranslationContextMenuSource::Image
     >;
 };
 

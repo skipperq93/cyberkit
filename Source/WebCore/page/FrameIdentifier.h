@@ -28,7 +28,7 @@
 #include "ProcessQualified.h"
 #include <wtf/ObjectIdentifier.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum FrameIdentifierType { };
 using FrameIdentifier = ProcessQualified<ObjectIdentifier<FrameIdentifierType>>;

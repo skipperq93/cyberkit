@@ -46,7 +46,7 @@
 #include <glib.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class WorkerSharedTimer final : public SharedTimer {
 public:
@@ -326,4 +326,4 @@ bool WorkerMainRunLoop::runInMode(WorkerOrWorkletGlobalScope*, const String&, bo
     return true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

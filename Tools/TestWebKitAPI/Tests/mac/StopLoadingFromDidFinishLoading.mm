@@ -45,7 +45,7 @@ static bool finished = false;
 
 namespace TestWebKitAPI {
 
-TEST(WebKitLegacy, StopLoadingFromDidFinishLoading)
+TEST(CyberKitLegacy, StopLoadingFromDidFinishLoading)
 {
     @autoreleasepool {
         auto webView = adoptNS([[WebView alloc] init]);

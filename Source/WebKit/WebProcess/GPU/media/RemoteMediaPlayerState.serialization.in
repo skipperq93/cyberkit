@@ -21,7 +21,7 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #if ENABLE(GPU_PROCESS) && ENABLE(VIDEO)
-struct WebKit::RemoteMediaPlayerState {
+struct CyberKit::RemoteMediaPlayerState {
     MediaTime duration;
     MediaTime minTimeSeekable;
     MediaTime maxTimeSeekable;
@@ -29,18 +29,18 @@ struct WebKit::RemoteMediaPlayerState {
     MediaTime startTime;
     String languageOfPrimaryAudioTrack;
     String wirelessPlaybackTargetName;
-    WebCore::PlatformTimeRanges bufferedRanges;
-    WebCore::MediaPlayerEnums::NetworkState networkState;
-    WebCore::MediaPlayerEnums::ReadyState readyState;
-    WebCore::MediaPlayerEnums::MovieLoadType movieLoadType;
-    WebCore::MediaPlayerEnums::WirelessPlaybackTargetType wirelessPlaybackTargetType;
-    WebCore::FloatSize naturalSize;
+    CyberCore::PlatformTimeRanges bufferedRanges;
+    CyberCore::MediaPlayerEnums::NetworkState networkState;
+    CyberCore::MediaPlayerEnums::ReadyState readyState;
+    CyberCore::MediaPlayerEnums::MovieLoadType movieLoadType;
+    CyberCore::MediaPlayerEnums::WirelessPlaybackTargetType wirelessPlaybackTargetType;
+    CyberCore::FloatSize naturalSize;
     double maxFastForwardRate;
     double minFastReverseRate;
     double seekableTimeRangesLastModifiedTime;
     double liveUpdateInterval;
     uint64_t totalBytes;
-    std::optional<WebCore::VideoPlaybackQualityMetrics> videoMetrics;
+    std::optional<CyberCore::VideoPlaybackQualityMetrics> videoMetrics;
     std::optional<bool> documentIsCrossOrigin;
     bool paused;
     bool canSaveMediaData;

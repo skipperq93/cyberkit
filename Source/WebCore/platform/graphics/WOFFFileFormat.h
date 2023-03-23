@@ -28,7 +28,7 @@
 
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SharedBuffer;
 
@@ -44,6 +44,6 @@ bool convertWOFFToSfnt(SharedBuffer& woff, Vector<uint8_t>& sfnt);
 // the buffer will be set to nullptr.
 bool convertWOFFToSfntIfNecessary(RefPtr<SharedBuffer>&);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // WOFFFileFormat_h

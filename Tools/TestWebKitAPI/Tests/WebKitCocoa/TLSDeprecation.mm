@@ -29,7 +29,7 @@
 #import "PlatformUtilities.h"
 #import "TestNavigationDelegate.h"
 #import "TestWKWebView.h"
-#import "WebCoreTestSupport.h"
+#import "CyberCoreTestSupport.h"
 #import <CyberKit/WKProcessPoolPrivate.h>
 #import <CyberKit/WKWebsiteDataStorePrivate.h>
 #import <CyberKit/WebKit.h>
@@ -39,7 +39,7 @@
 
 #if PLATFORM(IOS_FAMILY)
 #import <CyberKit/WebUIKitSupport.h>
-#import <CyberKit/WebCoreThread.h>
+#import <CyberKit/CyberCoreThread.h>
 #endif
 
 @interface TLSObserver : NSObject

@@ -31,7 +31,7 @@
 #include "Logging.h"
 #include <wtf/CryptographicallyRandomNumber.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static inline MediaTime roundTowardsTimeScaleWithRoundingMargin(const MediaTime& time, uint32_t timeScale, const MediaTime& roundingMargin)
 {
@@ -360,6 +360,6 @@ WTFLogChannel& TrackBuffer::logChannel() const
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_SOURCE)

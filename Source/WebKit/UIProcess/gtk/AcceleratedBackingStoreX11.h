@@ -50,11 +50,11 @@ private:
 #if USE(GTK4)
     void snapshot(GtkSnapshot*) override;
 #else
-    bool paint(cairo_t*, const WebCore::IntRect&) override;
+    bool paint(cairo_t*, const CyberCore::IntRect&) override;
 #endif
 
     RefPtr<cairo_surface_t> m_surface;
-    WebCore::XUniqueDamage m_damage;
+    CyberCore::XUniqueDamage m_damage;
 };
 
 } // namespace WebKit

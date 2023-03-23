@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -17,16 +17,16 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitDOMHTMLImageElementPrivate_h
-#define WebKitDOMHTMLImageElementPrivate_h
+#ifndef CyberKitDOMHTMLImageElementPrivate_h
+#define CyberKitDOMHTMLImageElementPrivate_h
 
 #include <CyberCore/HTMLImageElement.h>
-#include <webkitdom/WebKitDOMHTMLImageElement.h>
+#include <webkitdom/CyberKitDOMHTMLImageElement.h>
 
-namespace WebKit {
-WebKitDOMHTMLImageElement* wrapHTMLImageElement(WebCore::HTMLImageElement*);
-WebKitDOMHTMLImageElement* kit(WebCore::HTMLImageElement*);
-WebCore::HTMLImageElement* core(WebKitDOMHTMLImageElement*);
-} // namespace WebKit
+namespace CyberKit {
+CyberKitDOMHTMLImageElement* wrapHTMLImageElement(CyberCore::HTMLImageElement*);
+CyberKitDOMHTMLImageElement* kit(CyberCore::HTMLImageElement*);
+CyberCore::HTMLImageElement* core(CyberKitDOMHTMLImageElement*);
+} // namespace CyberKit
 
-#endif /* WebKitDOMHTMLImageElementPrivate_h */
+#endif /* CyberKitDOMHTMLImageElementPrivate_h */

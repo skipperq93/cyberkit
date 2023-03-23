@@ -37,10 +37,10 @@ namespace Nicosia {
 
 auto ContentLayerTextureMapperImpl::createFactory(Client& client) -> Factory
 {
-    return createFactory(client, adoptRef(*new WebCore::TextureMapperPlatformLayerProxyGL));
+    return createFactory(client, adoptRef(*new CyberCore::TextureMapperPlatformLayerProxyGL));
 }
 
-auto ContentLayerTextureMapperImpl::createFactory(Client& client, Ref<WebCore::TextureMapperPlatformLayerProxy>&& proxy) -> Factory
+auto ContentLayerTextureMapperImpl::createFactory(Client& client, Ref<CyberCore::TextureMapperPlatformLayerProxy>&& proxy) -> Factory
 {
     return Factory(
         [&client, proxy = WTFMove(proxy)](ContentLayer&) mutable {
@@ -48,7 +48,7 @@ auto ContentLayerTextureMapperImpl::createFactory(Client& client, Ref<WebCore::T
         });
 }
 
-ContentLayerTextureMapperImpl::ContentLayerTextureMapperImpl(Client& client, Ref<WebCore::TextureMapperPlatformLayerProxy>&& proxy)
+ContentLayerTextureMapperImpl::ContentLayerTextureMapperImpl(Client& client, Ref<CyberCore::TextureMapperPlatformLayerProxy>&& proxy)
     : m_proxy(WTFMove(proxy))
     , m_client { { }, &client }
 {

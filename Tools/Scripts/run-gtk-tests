@@ -40,7 +40,7 @@ except ImportError:
         raise
 
 class GtkTestRunner(TestRunner):
-    TestRunner.TEST_TARGETS = [ "WebKitGTK", "TestWebKit", "TestJSC", "TestWTF", "TestWebCore", "TestJavaScriptCore" ]
+    TestRunner.TEST_TARGETS = [ "WebKitGTK", "TestWebKit", "TestJSC", "TestWTF", "TestCyberCore", "TestJavaScriptCore" ]
 
     def __init__(self, options, tests=[]):
         super(GtkTestRunner, self).__init__("gtk", options, tests)
@@ -81,7 +81,7 @@ class GtkTestRunner(TestRunner):
         return os.path.basename(os.path.dirname(test_program)) in ["WebKitGTK"] or os.path.basename(test_program) in ["TestJSC"]
 
     def is_google_test(self, test_program):
-        return os.path.basename(test_program) in ["TestWebKit", "TestWTF", "TestWebCore", "TestJavaScriptCore"]
+        return os.path.basename(test_program) in ["TestWebKit", "TestWTF", "TestCyberCore", "TestJavaScriptCore"]
 
     def is_qt_test(self, test_program):
         return False

@@ -25,7 +25,7 @@
 
 @class NSAttributedString;
 
-namespace WebCore {
+namespace CyberCore {
 
 WEBCORE_EXPORT NSAttributedString *attributedStringByStrippingAttachmentCharacters(NSAttributedString *);
 

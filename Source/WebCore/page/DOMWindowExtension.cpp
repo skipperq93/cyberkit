@@ -34,7 +34,7 @@
 #include "FrameLoaderClient.h"
 #include <wtf/Ref.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 DOMWindowExtension::DOMWindowExtension(DOMWindow* window, DOMWrapperWorld& world)
     : m_window(window)
@@ -138,4 +138,4 @@ void DOMWindowExtension::willDetachGlobalObjectFromFrame()
     m_wasDetached = true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

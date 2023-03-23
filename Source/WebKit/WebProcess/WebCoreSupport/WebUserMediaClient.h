@@ -24,11 +24,11 @@
 
 #include <CyberCore/UserMediaClient.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPage;
 
-class WebUserMediaClient : public WebCore::UserMediaClient {
+class WebUserMediaClient : public CyberCore::UserMediaClient {
     WTF_MAKE_FAST_ALLOCATED;
 public:
     WebUserMediaClient(WebPage&);
@@ -37,10 +37,10 @@ public:
 private:
     void pageDestroyed() override;
 
-    void requestUserMediaAccess(WebCore::UserMediaRequest&) override;
-    void cancelUserMediaAccessRequest(WebCore::UserMediaRequest&) override;
+    void requestUserMediaAccess(CyberCore::UserMediaRequest&) override;
+    void cancelUserMediaAccessRequest(CyberCore::UserMediaRequest&) override;
 
-    void enumerateMediaDevices(WebCore::Document&, WebCore::UserMediaClient::EnumerateDevicesCallback&&) final;
+    void enumerateMediaDevices(CyberCore::Document&, CyberCore::UserMediaClient::EnumerateDevicesCallback&&) final;
 
     DeviceChangeObserverToken addDeviceChangeObserver(WTF::Function<void()>&&) final;
     void removeDeviceChangeObserver(DeviceChangeObserverToken) final;
@@ -50,7 +50,7 @@ private:
     WebPage& m_page;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM)
 

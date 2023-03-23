@@ -31,9 +31,9 @@
 #import <Foundation/NSURLAuthenticationChallenge.h>
 #import <Foundation/NSURLProtectionSpace.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
-@interface WebCoreAuthenticationClientAsChallengeSender : NSObject <NSURLAuthenticationChallengeSender>
+@interface CyberCoreAuthenticationClientAsChallengeSender : NSObject <NSURLAuthenticationChallengeSender>
 {
     AuthenticationClient* m_client;
 }
@@ -42,7 +42,7 @@ using namespace WebCore;
 - (void)detachClient;
 @end
 
-@implementation WebCoreAuthenticationClientAsChallengeSender
+@implementation CyberCoreAuthenticationClientAsChallengeSender
 
 - (id)initWithAuthenticationClient:(AuthenticationClient*)client
 {
@@ -95,7 +95,7 @@ using namespace WebCore;
 
 @end
 
-namespace WebCore {
+namespace CyberCore {
 
 AuthenticationChallenge::AuthenticationChallenge(const ProtectionSpace& protectionSpace,
                                                  const Credential& proposedCredential,
@@ -124,19 +124,19 @@ AuthenticationChallenge::AuthenticationChallenge(NSURLAuthenticationChallenge *c
 void AuthenticationChallenge::setAuthenticationClient(AuthenticationClient* client)
 {
     if (client) {
-        m_sender = adoptNS([[WebCoreAuthenticationClientAsChallengeSender alloc] initWithAuthenticationClient:client]);
+        m_sender = adoptNS([[CyberCoreAuthenticationClientAsChallengeSender alloc] initWithAuthenticationClient:client]);
         if (m_nsChallenge)
             m_nsChallenge = adoptNS([[NSURLAuthenticationChallenge alloc] initWithAuthenticationChallenge:m_nsChallenge.get() sender:m_sender.get()]);
     } else {
-        if ([m_sender isMemberOfClass:[WebCoreAuthenticationClientAsChallengeSender class]])
-            [(WebCoreAuthenticationClientAsChallengeSender *)m_sender.get() detachClient];
+        if ([m_sender isMemberOfClass:[CyberCoreAuthenticationClientAsChallengeSender class]])
+            [(CyberCoreAuthenticationClientAsChallengeSender *)m_sender.get() detachClient];
     }
 }
 
 AuthenticationClient* AuthenticationChallenge::authenticationClient() const
 {
-    if ([m_sender isMemberOfClass:[WebCoreAuthenticationClientAsChallengeSender class]])
-        return [static_cast<WebCoreAuthenticationClientAsChallengeSender*>(m_sender.get()) client];
+    if ([m_sender isMemberOfClass:[CyberCoreAuthenticationClientAsChallengeSender class]])
+        return [static_cast<CyberCoreAuthenticationClientAsChallengeSender*>(m_sender.get()) client];
     
     return nullptr;
 }
@@ -165,4 +165,4 @@ AuthenticationChallenge core(NSURLAuthenticationChallenge *macChallenge)
     return AuthenticationChallenge(macChallenge);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

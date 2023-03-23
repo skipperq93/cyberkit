@@ -31,12 +31,12 @@
 #include "DataReference.h"
 #include "RemoteMediaResourceManagerMessages.h"
 #include "SharedBufferReference.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include <wtf/CompletionHandler.h>
 
-namespace WebKit {
+namespace CyberKit {
 
-RemoteMediaResourceProxy::RemoteMediaResourceProxy(Ref<IPC::Connection>&& connection, WebCore::PlatformMediaResource& platformMediaResource, RemoteMediaResourceIdentifier identifier)
+RemoteMediaResourceProxy::RemoteMediaResourceProxy(Ref<IPC::Connection>&& connection, CyberCore::PlatformMediaResource& platformMediaResource, RemoteMediaResourceIdentifier identifier)
     : m_connection(WTFMove(connection))
     , m_platformMediaResource(platformMediaResource)
     , m_id(identifier)
@@ -47,32 +47,32 @@ RemoteMediaResourceProxy::~RemoteMediaResourceProxy()
 {
 }
 
-void RemoteMediaResourceProxy::responseReceived(WebCore::PlatformMediaResource&, const WebCore::ResourceResponse& response, CompletionHandler<void(WebCore::ShouldContinuePolicyCheck)>&& completionHandler)
+void RemoteMediaResourceProxy::responseReceived(CyberCore::PlatformMediaResource&, const CyberCore::ResourceResponse& response, CompletionHandler<void(CyberCore::ShouldContinuePolicyCheck)>&& completionHandler)
 {
     m_connection->sendWithAsyncReply(Messages::RemoteMediaResourceManager::ResponseReceived(m_id, response, m_platformMediaResource.didPassAccessControlCheck()), [completionHandler = WTFMove(completionHandler)](auto shouldContinue) mutable {
         completionHandler(shouldContinue);
     });
 }
 
-void RemoteMediaResourceProxy::redirectReceived(WebCore::PlatformMediaResource&, WebCore::ResourceRequest&& request, const WebCore::ResourceResponse& response, CompletionHandler<void(WebCore::ResourceRequest&&)>&& completionHandler)
+void RemoteMediaResourceProxy::redirectReceived(CyberCore::PlatformMediaResource&, CyberCore::ResourceRequest&& request, const CyberCore::ResourceResponse& response, CompletionHandler<void(CyberCore::ResourceRequest&&)>&& completionHandler)
 {
     m_connection->sendWithAsyncReply(Messages::RemoteMediaResourceManager::RedirectReceived(m_id, request, response), [completionHandler = WTFMove(completionHandler)](auto&& request) mutable {
         completionHandler(WTFMove(request));
     });
 }
 
-bool RemoteMediaResourceProxy::shouldCacheResponse(WebCore::PlatformMediaResource&, const WebCore::ResourceResponse&)
+bool RemoteMediaResourceProxy::shouldCacheResponse(CyberCore::PlatformMediaResource&, const CyberCore::ResourceResponse&)
 {
-    // TODO: need to check WebCoreNSURLSessionDataTaskClient::shouldCacheResponse()
+    // TODO: need to check CyberCoreNSURLSessionDataTaskClient::shouldCacheResponse()
     return false;
 }
 
-void RemoteMediaResourceProxy::dataSent(WebCore::PlatformMediaResource&, unsigned long long bytesSent, unsigned long long totalBytesToBeSent)
+void RemoteMediaResourceProxy::dataSent(CyberCore::PlatformMediaResource&, unsigned long long bytesSent, unsigned long long totalBytesToBeSent)
 {
     m_connection->send(Messages::RemoteMediaResourceManager::DataSent(m_id, bytesSent, totalBytesToBeSent), 0);
 }
 
-void RemoteMediaResourceProxy::dataReceived(WebCore::PlatformMediaResource&, const WebCore::SharedBuffer& buffer)
+void RemoteMediaResourceProxy::dataReceived(CyberCore::PlatformMediaResource&, const CyberCore::SharedBuffer& buffer)
 {
     m_connection->sendWithAsyncReply(Messages::RemoteMediaResourceManager::DataReceived(m_id, IPC::SharedBufferReference { buffer }), [] (auto&& bufferHandle) {
         // Take ownership of shared memory and mark it as media-related memory.
@@ -81,17 +81,17 @@ void RemoteMediaResourceProxy::dataReceived(WebCore::PlatformMediaResource&, con
     }, 0);
 }
 
-void RemoteMediaResourceProxy::accessControlCheckFailed(WebCore::PlatformMediaResource&, const WebCore::ResourceError& error)
+void RemoteMediaResourceProxy::accessControlCheckFailed(CyberCore::PlatformMediaResource&, const CyberCore::ResourceError& error)
 {
     m_connection->send(Messages::RemoteMediaResourceManager::AccessControlCheckFailed(m_id, error), 0);
 }
 
-void RemoteMediaResourceProxy::loadFailed(WebCore::PlatformMediaResource&, const WebCore::ResourceError& error)
+void RemoteMediaResourceProxy::loadFailed(CyberCore::PlatformMediaResource&, const CyberCore::ResourceError& error)
 {
     m_connection->send(Messages::RemoteMediaResourceManager::LoadFailed(m_id, error), 0);
 }
 
-void RemoteMediaResourceProxy::loadFinished(WebCore::PlatformMediaResource&, const WebCore::NetworkLoadMetrics& metrics)
+void RemoteMediaResourceProxy::loadFinished(CyberCore::PlatformMediaResource&, const CyberCore::NetworkLoadMetrics& metrics)
 {
     m_connection->send(Messages::RemoteMediaResourceManager::LoadFinished(m_id, metrics), 0);
 }

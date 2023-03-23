@@ -30,7 +30,7 @@
 #include <wtf/Forward.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class IntersectionObserver;
 class IntersectionObserverEntry;
@@ -44,4 +44,4 @@ public:
     virtual CallbackResult<void> handleEvent(IntersectionObserver&, const Vector<Ref<IntersectionObserverEntry>>&, IntersectionObserver&) = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

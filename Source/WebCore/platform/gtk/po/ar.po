@@ -1164,7 +1164,7 @@ msgid "Enable Timeline profiling"
 msgstr "فعّل تحسين الخط الزمني"
 
 #: ../../../WebKit/gtk/webkit/webkitwebinspector.cpp:321
-msgid "Profile the WebCore instrumentation."
+msgid "Profile the CyberCore instrumentation."
 msgstr "حسّن أداء وب‌كور."
 
 #: ../../../WebKit/gtk/webkit/webkitwebnavigationaction.cpp:148

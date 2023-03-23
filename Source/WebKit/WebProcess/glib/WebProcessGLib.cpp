@@ -27,8 +27,8 @@
 #include "config.h"
 #include "WebProcess.h"
 
-#include "WebKitExtensionManager.h"
-#include "WebKitWebExtensionPrivate.h"
+#include "CyberKitExtensionManager.h"
+#include "CyberKitWebExtensionPrivate.h"
 #include "WebPage.h"
 #include "WebProcessCreationParameters.h"
 
@@ -71,9 +71,9 @@
 
 #include <CyberCore/CairoUtilities.h>
 
-namespace WebKit {
+namespace CyberKit {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 void WebProcess::stopRunLoop()
 {
@@ -91,7 +91,7 @@ void WebProcess::stopRunLoop()
 
 void WebProcess::platformSetCacheModel(CacheModel cacheModel)
 {
-    WebCore::MemoryCache::singleton().setDisabled(cacheModel == CacheModel::DocumentViewer);
+    CyberCore::MemoryCache::singleton().setDisabled(cacheModel == CacheModel::DocumentViewer);
 }
 
 void WebProcess::platformInitializeProcess(const AuxiliaryProcessInitializationParameters&)
@@ -124,7 +124,7 @@ void WebProcess::platformInitializeWebProcess(WebProcessCreationParameters& para
         auto hostClientFileDescriptor = parameters.hostClientFileDescriptor.release();
         if (hostClientFileDescriptor != -1) {
             wpe_loader_init(parameters.implementationLibraryName.data());
-            m_wpeDisplay = WebCore::PlatformDisplayLibWPE::create();
+            m_wpeDisplay = CyberCore::PlatformDisplayLibWPE::create();
             if (!m_wpeDisplay->initialize(hostClientFileDescriptor))
                 m_wpeDisplay = nullptr;
         }
@@ -132,7 +132,7 @@ void WebProcess::platformInitializeWebProcess(WebProcessCreationParameters& para
 #endif
 
 #if USE(GSTREAMER)
-    WebCore::setGStreamerOptionsFromUIProcess(WTFMove(parameters.gstreamerOptions));
+    CyberCore::setGStreamerOptionsFromUIProcess(WTFMove(parameters.gstreamerOptions));
 #endif
 
 #if PLATFORM(GTK) && !USE(GTK4)
@@ -143,10 +143,10 @@ void WebProcess::platformInitializeWebProcess(WebProcessCreationParameters& para
         MemoryPressureHandler::singleton().setConfiguration(WTFMove(*parameters.memoryPressureHandlerConfiguration));
 
     if (!parameters.applicationID.isEmpty())
-        WebCore::setApplicationID(parameters.applicationID);
+        CyberCore::setApplicationID(parameters.applicationID);
 
     if (!parameters.applicationName.isEmpty())
-        WebCore::setApplicationName(parameters.applicationName);
+        CyberCore::setApplicationName(parameters.applicationName);
 
 #if ENABLE(REMOTE_INSPECTOR)
     if (!parameters.inspectorServerAddress.isNull())
@@ -175,7 +175,7 @@ void WebProcess::platformTerminate()
 
 void WebProcess::sendMessageToWebExtension(UserMessage&& message)
 {
-    if (auto* extension = WebKitExtensionManager::singleton().extension())
+    if (auto* extension = CyberKitExtensionManager::singleton().extension())
         webkitWebExtensionDidReceiveUserMessage(extension, WTFMove(message));
 }
 
@@ -186,7 +186,7 @@ void WebProcess::setUseSystemAppearanceForScrollbars(bool useSystemAppearanceFor
 }
 #endif
 
-void WebProcess::grantAccessToAssetServices(Vector<WebKit::SandboxExtension::Handle>&&)
+void WebProcess::grantAccessToAssetServices(Vector<CyberKit::SandboxExtension::Handle>&&)
 {
 }
 
@@ -194,8 +194,8 @@ void WebProcess::revokeAccessToAssetServices()
 {
 }
 
-void WebProcess::switchFromStaticFontRegistryToUserFontRegistry(Vector<WebKit::SandboxExtension::Handle>&&)
+void WebProcess::switchFromStaticFontRegistryToUserFontRegistry(Vector<CyberKit::SandboxExtension::Handle>&&)
 {
 }
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -36,7 +36,7 @@
 
 #include <pal/spi/cf/CoreTextSPI.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 FontCascade::FontCascade(const FontPlatformData& fontData, FontSmoothingMode fontSmoothingMode)
     : m_fonts(FontCascadeFonts::createForPlatformFont(fontData))

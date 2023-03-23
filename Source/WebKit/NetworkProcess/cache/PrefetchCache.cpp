@@ -30,14 +30,14 @@
 
 namespace WebKit {
 
-PrefetchCache::Entry::Entry(WebCore::ResourceResponse&& response, PrivateRelayed privateRelayed, RefPtr<WebCore::FragmentedSharedBuffer>&& buffer)
+PrefetchCache::Entry::Entry(CyberCore::ResourceResponse&& response, PrivateRelayed privateRelayed, RefPtr<CyberCore::FragmentedSharedBuffer>&& buffer)
     : response(WTFMove(response))
     , privateRelayed(privateRelayed)
     , buffer(WTFMove(buffer))
 {
 }
 
-PrefetchCache::Entry::Entry(WebCore::ResourceResponse&& redirectResponse, WebCore::ResourceRequest&& redirectRequest)
+PrefetchCache::Entry::Entry(CyberCore::ResourceResponse&& redirectResponse, CyberCore::ResourceRequest&& redirectRequest)
     : response(WTFMove(redirectResponse)), redirectRequest(WTFMove(redirectRequest))
 {
 }
@@ -68,13 +68,13 @@ std::unique_ptr<PrefetchCache::Entry> PrefetchCache::take(const URL& url)
         return std::get<0>(tuple) == url;
     });
     auto entry = resources->take(url);
-    ASSERT(!entry || !entry->response.httpHeaderField(WebCore::HTTPHeaderName::Vary).contains("Cookie"_s));
+    ASSERT(!entry || !entry->response.httpHeaderField(CyberCore::HTTPHeaderName::Vary).contains("Cookie"_s));
     return entry;
 }
 
 static const Seconds expirationTimeout { 5_s };
 
-void PrefetchCache::store(const URL& requestURL, WebCore::ResourceResponse&& response, PrivateRelayed privateRelayed, RefPtr<WebCore::FragmentedSharedBuffer>&& buffer)
+void PrefetchCache::store(const URL& requestURL, CyberCore::ResourceResponse&& response, PrivateRelayed privateRelayed, RefPtr<CyberCore::FragmentedSharedBuffer>&& buffer)
 {
     if (!m_sessionPrefetches)
         m_sessionPrefetches = makeUnique<PrefetchEntriesMap>();
@@ -87,7 +87,7 @@ void PrefetchCache::store(const URL& requestURL, WebCore::ResourceResponse&& res
         m_expirationTimer.startOneShot(expirationTimeout);
 }
 
-void PrefetchCache::storeRedirect(const URL& requestUrl, WebCore::ResourceResponse&& redirectResponse, WebCore::ResourceRequest&& redirectRequest)
+void PrefetchCache::storeRedirect(const URL& requestUrl, CyberCore::ResourceResponse&& redirectResponse, CyberCore::ResourceRequest&& redirectRequest)
 {
     if (!m_sessionPrefetches)
         m_sessionPrefetches = makeUnique<PrefetchEntriesMap>();

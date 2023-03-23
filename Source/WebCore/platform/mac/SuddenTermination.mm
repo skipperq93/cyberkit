@@ -28,7 +28,7 @@
 
 #if !PLATFORM(IOS_FAMILY)
 
-namespace WebCore {
+namespace CyberCore {
 
 void disableSuddenTermination()
 {
@@ -40,6 +40,6 @@ void enableSuddenTermination()
     [[NSProcessInfo processInfo] enableSuddenTermination];
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

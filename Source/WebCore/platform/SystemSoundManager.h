@@ -27,7 +27,7 @@
 
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SystemSoundDelegate;
 
@@ -46,4 +46,4 @@ private:
     std::unique_ptr<SystemSoundDelegate> m_delegate;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

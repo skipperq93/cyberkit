@@ -35,7 +35,7 @@
 static const uint32_t kWoff2Signature = 0x774f4632; // "wOF2"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 static bool readUInt32(SharedBuffer& buffer, size_t& offset, uint32_t& value)
 {
@@ -302,4 +302,4 @@ bool convertWOFFToSfntIfNecessary(RefPtr<SharedBuffer>& buffer)
 #endif
 }
 
-} // namespace WebCore
+} // namespace CyberCore

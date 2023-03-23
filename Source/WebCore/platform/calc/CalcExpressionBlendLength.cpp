@@ -30,7 +30,7 @@
 #include "LengthFunctions.h"
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 CalcExpressionBlendLength::CalcExpressionBlendLength(Length from, Length to, double progress)
     : CalcExpressionNode(CalcExpressionNodeType::BlendLength)

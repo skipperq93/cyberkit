@@ -30,7 +30,7 @@
 #import "LengthBox.h"
 #import "PlatformControl.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ControlFactoryMac;
 class FloatSize;
@@ -79,6 +79,6 @@ private:
     ControlFactoryMac& m_controlFactory;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(MAC)

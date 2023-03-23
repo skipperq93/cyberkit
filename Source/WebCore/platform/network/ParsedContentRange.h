@@ -28,7 +28,7 @@
 #include <wtf/Forward.h>
 #include <wtf/Markable.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ParsedContentRange {
 public:

@@ -29,7 +29,7 @@
 #import "DateInstance.h"
 #import "Error.h"
 #import "Exception.h"
-#import "JavaScriptCore.h"
+#import "CyberScriptCore.h"
 #import "JSContextInternal.h"
 #import "JSObjectRefPrivate.h"
 #import "JSVirtualMachineInternal.h"

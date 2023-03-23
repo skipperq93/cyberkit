@@ -28,7 +28,7 @@
 #include "MediaCapabilitiesInfo.h"
 #include "MediaDecodingConfiguration.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct MediaCapabilitiesDecodingInfo : MediaCapabilitiesInfo {
     // FIXME(C++17): remove the following constructors once all compilers support extended
@@ -56,5 +56,5 @@ inline MediaCapabilitiesDecodingInfo MediaCapabilitiesDecodingInfo::isolatedCopy
     return { MediaCapabilitiesInfo::isolatedCopy(), supportedConfiguration.isolatedCopy() };
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 

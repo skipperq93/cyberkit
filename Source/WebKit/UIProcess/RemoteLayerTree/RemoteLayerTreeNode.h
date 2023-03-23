@@ -42,13 +42,13 @@ class RemoteLayerTreeScrollbars;
 class RemoteLayerTreeNode : public CanMakeWeakPtr<RemoteLayerTreeNode> {
     WTF_MAKE_FAST_ALLOCATED;
 public:
-    RemoteLayerTreeNode(WebCore::GraphicsLayer::PlatformLayerID, Markable<WebCore::LayerHostingContextIdentifier>, RetainPtr<CALayer>);
+    RemoteLayerTreeNode(CyberCore::GraphicsLayer::PlatformLayerID, Markable<CyberCore::LayerHostingContextIdentifier>, RetainPtr<CALayer>);
 #if PLATFORM(IOS_FAMILY)
-    RemoteLayerTreeNode(WebCore::GraphicsLayer::PlatformLayerID, Markable<WebCore::LayerHostingContextIdentifier>, RetainPtr<UIView>);
+    RemoteLayerTreeNode(CyberCore::GraphicsLayer::PlatformLayerID, Markable<CyberCore::LayerHostingContextIdentifier>, RetainPtr<UIView>);
 #endif
     ~RemoteLayerTreeNode();
 
-    static std::unique_ptr<RemoteLayerTreeNode> createWithPlainLayer(WebCore::GraphicsLayer::PlatformLayerID);
+    static std::unique_ptr<RemoteLayerTreeNode> createWithPlainLayer(CyberCore::GraphicsLayer::PlatformLayerID);
 
     CALayer *layer() const { return m_layer.get(); }
 #if ENABLE(INTERACTION_REGIONS_IN_EVENT_REGION)
@@ -58,41 +58,41 @@ public:
     UIView *uiView() const { return m_uiView.get(); }
 #endif
 
-    WebCore::GraphicsLayer::PlatformLayerID layerID() const { return m_layerID; }
+    CyberCore::GraphicsLayer::PlatformLayerID layerID() const { return m_layerID; }
 
-    const WebCore::EventRegion& eventRegion() const { return m_eventRegion; }
-    void setEventRegion(const WebCore::EventRegion&);
+    const CyberCore::EventRegion& eventRegion() const { return m_eventRegion; }
+    void setEventRegion(const CyberCore::EventRegion&);
 
     // Non-ancestor scroller that controls positioning of the layer.
-    WebCore::GraphicsLayer::PlatformLayerID actingScrollContainerID() const { return m_actingScrollContainerID; }
+    CyberCore::GraphicsLayer::PlatformLayerID actingScrollContainerID() const { return m_actingScrollContainerID; }
     // Ancestor scrollers that don't affect positioning of the layer.
-    const Vector<WebCore::GraphicsLayer::PlatformLayerID>& stationaryScrollContainerIDs() const { return m_stationaryScrollContainerIDs; }
+    const Vector<CyberCore::GraphicsLayer::PlatformLayerID>& stationaryScrollContainerIDs() const { return m_stationaryScrollContainerIDs; }
 
-    void setActingScrollContainerID(WebCore::GraphicsLayer::PlatformLayerID value) { m_actingScrollContainerID = value; }
-    void setStationaryScrollContainerIDs(Vector<WebCore::GraphicsLayer::PlatformLayerID>&& value) { m_stationaryScrollContainerIDs = WTFMove(value); }
+    void setActingScrollContainerID(CyberCore::GraphicsLayer::PlatformLayerID value) { m_actingScrollContainerID = value; }
+    void setStationaryScrollContainerIDs(Vector<CyberCore::GraphicsLayer::PlatformLayerID>&& value) { m_stationaryScrollContainerIDs = WTFMove(value); }
 
     void detachFromParent();
 
-    static WebCore::GraphicsLayer::PlatformLayerID layerID(CALayer *);
+    static CyberCore::GraphicsLayer::PlatformLayerID layerID(CALayer *);
     static RemoteLayerTreeNode* forCALayer(CALayer *);
 
     static NSString *appendLayerDescription(NSString *description, CALayer *);
 
 #if ENABLE(SCROLLING_THREAD)
-    WebCore::ScrollingNodeID scrollingNodeID() const { return m_scrollingNodeID; }
-    void setScrollingNodeID(WebCore::ScrollingNodeID nodeID) { m_scrollingNodeID = nodeID; }
+    CyberCore::ScrollingNodeID scrollingNodeID() const { return m_scrollingNodeID; }
+    void setScrollingNodeID(CyberCore::ScrollingNodeID nodeID) { m_scrollingNodeID = nodeID; }
 #endif
 
-    Markable<WebCore::LayerHostingContextIdentifier> remoteContextHostingIdentifier() const { return m_remoteContextHostingIdentifier; }
-    Markable<WebCore::LayerHostingContextIdentifier> remoteContextHostedIdentifier() const { return m_remoteContextHostedIdentifier; }
-    void setRemoteContextHostedIdentifier(WebCore::LayerHostingContextIdentifier identifier) { m_remoteContextHostedIdentifier = identifier; }
+    Markable<CyberCore::LayerHostingContextIdentifier> remoteContextHostingIdentifier() const { return m_remoteContextHostingIdentifier; }
+    Markable<CyberCore::LayerHostingContextIdentifier> remoteContextHostedIdentifier() const { return m_remoteContextHostedIdentifier; }
+    void setRemoteContextHostedIdentifier(CyberCore::LayerHostingContextIdentifier identifier) { m_remoteContextHostedIdentifier = identifier; }
 
 private:
     void initializeLayer();
 
-    WebCore::GraphicsLayer::PlatformLayerID m_layerID;
-    Markable<WebCore::LayerHostingContextIdentifier> m_remoteContextHostingIdentifier;
-    Markable<WebCore::LayerHostingContextIdentifier> m_remoteContextHostedIdentifier;
+    CyberCore::GraphicsLayer::PlatformLayerID m_layerID;
+    Markable<CyberCore::LayerHostingContextIdentifier> m_remoteContextHostingIdentifier;
+    Markable<CyberCore::LayerHostingContextIdentifier> m_remoteContextHostedIdentifier;
 
     RetainPtr<CALayer> m_layer;
 #if ENABLE(INTERACTION_REGIONS_IN_EVENT_REGION)
@@ -102,14 +102,14 @@ private:
     RetainPtr<UIView> m_uiView;
 #endif
 
-    WebCore::EventRegion m_eventRegion;
+    CyberCore::EventRegion m_eventRegion;
 
 #if ENABLE(SCROLLING_THREAD)
-    WebCore::ScrollingNodeID m_scrollingNodeID { 0 };
+    CyberCore::ScrollingNodeID m_scrollingNodeID { 0 };
 #endif
 
-    WebCore::GraphicsLayer::PlatformLayerID m_actingScrollContainerID;
-    Vector<WebCore::GraphicsLayer::PlatformLayerID> m_stationaryScrollContainerIDs;
+    CyberCore::GraphicsLayer::PlatformLayerID m_actingScrollContainerID;
+    Vector<CyberCore::GraphicsLayer::PlatformLayerID> m_stationaryScrollContainerIDs;
 };
 
 }

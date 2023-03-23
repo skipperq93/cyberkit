@@ -43,7 +43,7 @@
 #include <wtf/Forward.h>
 #include <wtf/UniqueArray.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // Defines the interface for an "FFT frame", an object which is able to perform a forward
 // and reverse FFT, internally storing the resultant frequency-domain data.
@@ -114,6 +114,6 @@ private:
     AudioFloatArray m_imagData;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // FFTFrame_h

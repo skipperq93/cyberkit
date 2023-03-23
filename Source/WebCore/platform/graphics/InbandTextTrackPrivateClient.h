@@ -37,7 +37,7 @@
 #include "SerializedPlatformDataCue.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class InbandTextTrackPrivate;
 class ISOWebVTTCue;
@@ -63,6 +63,6 @@ public:
     virtual void parseWebVTTCueData(ISOWebVTTCue&&) = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(VIDEO)

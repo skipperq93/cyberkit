@@ -39,7 +39,7 @@
 
 #define PROGRESS_TRACKER_RELEASE_LOG(fmt, ...) RELEASE_LOG(Network, "%p - ProgressTracker::" fmt, this, ##__VA_ARGS__)
 
-namespace WebCore {
+namespace CyberCore {
 
 // Always start progress at initialProgressValue. This helps provide feedback as
 // soon as a load starts.
@@ -242,8 +242,8 @@ void ProgressTracker::incrementProgress(ResourceLoaderIdentifier identifier, uns
     else
         percentOfRemainingBytes = 1.0;
 
-    // For documents that use WebCore's layout system, treat first layout as the half-way point.
-    // FIXME: The hasHTMLView function is a sort of roundabout way of asking "do you use WebCore's layout system".
+    // For documents that use CyberCore's layout system, treat first layout as the half-way point.
+    // FIXME: The hasHTMLView function is a sort of roundabout way of asking "do you use CyberCore's layout system".
     bool useClampedMaxProgress = frame->loader().client().hasHTMLView()
         && !frame->loader().stateMachine().firstLayoutDone();
     double maxProgressValue = useClampedMaxProgress ? 0.5 : finalProgressValue;

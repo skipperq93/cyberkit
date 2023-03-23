@@ -35,7 +35,7 @@
 #include "SecurityContext.h"
 #include <wtf/text/StringParsingBuffer.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename CharacterType> static bool isDirectiveNameCharacter(CharacterType c)
 {
@@ -725,4 +725,4 @@ bool ContentSecurityPolicyDirectiveList::shouldReportSample(const String& violat
     return directive && directive->shouldReportSample();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

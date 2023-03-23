@@ -33,7 +33,7 @@
 #import <wtf/RobinHoodHashSet.h>
 #import <wtf/cocoa/VectorCocoa.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static MemoryCompactLookupOnlyRobinHoodHashMap<String, MemoryCompactLookupOnlyRobinHoodHashSet<String>>& extensionsForMIMETypeMap()
 {

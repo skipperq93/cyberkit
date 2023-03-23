@@ -34,7 +34,7 @@
 #include <JavaScriptCore/VM.h>
 #include <psapi.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 void ResourceUsageThread::platformSaveStateBeforeStarting()
 {

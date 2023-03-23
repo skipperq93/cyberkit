@@ -40,86 +40,86 @@ namespace IPC {
 class SharedBufferReference;
 }
 
-namespace WebCore {
+namespace CyberCore {
 struct ExceptionData;
 class ResourceLoader;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebSWOriginTable;
 class WebServiceWorkerProvider;
 
-class WebSWClientConnection final : public WebCore::SWClientConnection, private IPC::MessageSender, public IPC::MessageReceiver {
+class WebSWClientConnection final : public CyberCore::SWClientConnection, private IPC::MessageSender, public IPC::MessageReceiver {
 public:
     static Ref<WebSWClientConnection> create() { return adoptRef(*new WebSWClientConnection); }
     ~WebSWClientConnection();
 
-    WebCore::SWServerConnectionIdentifier serverConnectionIdentifier() const final { return m_identifier; }
+    CyberCore::SWServerConnectionIdentifier serverConnectionIdentifier() const final { return m_identifier; }
 
-    void addServiceWorkerRegistrationInServer(WebCore::ServiceWorkerRegistrationIdentifier) final;
-    void removeServiceWorkerRegistrationInServer(WebCore::ServiceWorkerRegistrationIdentifier) final;
+    void addServiceWorkerRegistrationInServer(CyberCore::ServiceWorkerRegistrationIdentifier) final;
+    void removeServiceWorkerRegistrationInServer(CyberCore::ServiceWorkerRegistrationIdentifier) final;
 
     void disconnectedFromWebProcess();
     void didReceiveMessage(IPC::Connection&, IPC::Decoder&) final;
 
-    bool mayHaveServiceWorkerRegisteredForOrigin(const WebCore::SecurityOriginData&) const final;
+    bool mayHaveServiceWorkerRegisteredForOrigin(const CyberCore::SecurityOriginData&) const final;
 
     void connectionToServerLost();
 
     bool isThrottleable() const { return m_isThrottleable; }
     void updateThrottleState();
 
-    void terminateWorkerForTesting(WebCore::ServiceWorkerIdentifier, CompletionHandler<void()>&&);
+    void terminateWorkerForTesting(CyberCore::ServiceWorkerIdentifier, CompletionHandler<void()>&&);
 
 private:
     WebSWClientConnection();
 
-    void scheduleJobInServer(const WebCore::ServiceWorkerJobData&) final;
-    void finishFetchingScriptInServer(const WebCore::ServiceWorkerJobDataIdentifier&, WebCore::ServiceWorkerRegistrationKey&&, WebCore::WorkerFetchResult&&) final;
-    void postMessageToServiceWorker(WebCore::ServiceWorkerIdentifier destinationIdentifier, WebCore::MessageWithMessagePorts&&, const WebCore::ServiceWorkerOrClientIdentifier& source) final;
-    void registerServiceWorkerClient(const WebCore::ClientOrigin&, WebCore::ServiceWorkerClientData&&, const std::optional<WebCore::ServiceWorkerRegistrationIdentifier>&, String&& userAgent) final;
-    void unregisterServiceWorkerClient(WebCore::ScriptExecutionContextIdentifier) final;
-    void scheduleUnregisterJobInServer(WebCore::ServiceWorkerRegistrationIdentifier, WebCore::ServiceWorkerOrClientIdentifier, CompletionHandler<void(WebCore::ExceptionOr<bool>&&)>&&) final;
+    void scheduleJobInServer(const CyberCore::ServiceWorkerJobData&) final;
+    void finishFetchingScriptInServer(const CyberCore::ServiceWorkerJobDataIdentifier&, CyberCore::ServiceWorkerRegistrationKey&&, CyberCore::WorkerFetchResult&&) final;
+    void postMessageToServiceWorker(CyberCore::ServiceWorkerIdentifier destinationIdentifier, CyberCore::MessageWithMessagePorts&&, const CyberCore::ServiceWorkerOrClientIdentifier& source) final;
+    void registerServiceWorkerClient(const CyberCore::ClientOrigin&, CyberCore::ServiceWorkerClientData&&, const std::optional<CyberCore::ServiceWorkerRegistrationIdentifier>&, String&& userAgent) final;
+    void unregisterServiceWorkerClient(CyberCore::ScriptExecutionContextIdentifier) final;
+    void scheduleUnregisterJobInServer(CyberCore::ServiceWorkerRegistrationIdentifier, CyberCore::ServiceWorkerOrClientIdentifier, CompletionHandler<void(CyberCore::ExceptionOr<bool>&&)>&&) final;
 
-    void matchRegistration(WebCore::SecurityOriginData&& topOrigin, const URL& clientURL, RegistrationCallback&&) final;
-    void didMatchRegistration(uint64_t matchRequestIdentifier, std::optional<WebCore::ServiceWorkerRegistrationData>&&);
-    void didGetRegistrations(uint64_t matchRequestIdentifier, Vector<WebCore::ServiceWorkerRegistrationData>&&);
-    void whenRegistrationReady(const WebCore::SecurityOriginData& topOrigin, const URL& clientURL, WhenRegistrationReadyCallback&&) final;
+    void matchRegistration(CyberCore::SecurityOriginData&& topOrigin, const URL& clientURL, RegistrationCallback&&) final;
+    void didMatchRegistration(uint64_t matchRequestIdentifier, std::optional<CyberCore::ServiceWorkerRegistrationData>&&);
+    void didGetRegistrations(uint64_t matchRequestIdentifier, Vector<CyberCore::ServiceWorkerRegistrationData>&&);
+    void whenRegistrationReady(const CyberCore::SecurityOriginData& topOrigin, const URL& clientURL, WhenRegistrationReadyCallback&&) final;
 
-    void setServiceWorkerClientIsControlled(WebCore::ScriptExecutionContextIdentifier, WebCore::ServiceWorkerRegistrationData&&, CompletionHandler<void(bool)>&&);
-    void setWorkerIsControlled(WebCore::ScriptExecutionContextIdentifier, WebCore::ServiceWorkerRegistrationData&&, CompletionHandler<void(bool)>&&);
+    void setServiceWorkerClientIsControlled(CyberCore::ScriptExecutionContextIdentifier, CyberCore::ServiceWorkerRegistrationData&&, CompletionHandler<void(bool)>&&);
+    void setWorkerIsControlled(CyberCore::ScriptExecutionContextIdentifier, CyberCore::ServiceWorkerRegistrationData&&, CompletionHandler<void(bool)>&&);
 
-    void getRegistrations(WebCore::SecurityOriginData&& topOrigin, const URL& clientURL, GetRegistrationsCallback&&) final;
-    void whenServiceWorkerIsTerminatedForTesting(WebCore::ServiceWorkerIdentifier, CompletionHandler<void()>&&) final;
+    void getRegistrations(CyberCore::SecurityOriginData&& topOrigin, const URL& clientURL, GetRegistrationsCallback&&) final;
+    void whenServiceWorkerIsTerminatedForTesting(CyberCore::ServiceWorkerIdentifier, CompletionHandler<void()>&&) final;
 
-    void didResolveRegistrationPromise(const WebCore::ServiceWorkerRegistrationKey&) final;
+    void didResolveRegistrationPromise(const CyberCore::ServiceWorkerRegistrationKey&) final;
     void storeRegistrationsOnDiskForTesting(CompletionHandler<void()>&&) final;
 
-    void subscribeToPushService(WebCore::ServiceWorkerRegistrationIdentifier, const Vector<uint8_t>& applicationServerKey, SubscribeToPushServiceCallback&&) final;
-    void unsubscribeFromPushService(WebCore::ServiceWorkerRegistrationIdentifier, WebCore::PushSubscriptionIdentifier, UnsubscribeFromPushServiceCallback&&) final;
-    void getPushSubscription(WebCore::ServiceWorkerRegistrationIdentifier, GetPushSubscriptionCallback&&) final;
-    void getPushPermissionState(WebCore::ServiceWorkerRegistrationIdentifier, GetPushPermissionStateCallback&&) final;
+    void subscribeToPushService(CyberCore::ServiceWorkerRegistrationIdentifier, const Vector<uint8_t>& applicationServerKey, SubscribeToPushServiceCallback&&) final;
+    void unsubscribeFromPushService(CyberCore::ServiceWorkerRegistrationIdentifier, CyberCore::PushSubscriptionIdentifier, UnsubscribeFromPushServiceCallback&&) final;
+    void getPushSubscription(CyberCore::ServiceWorkerRegistrationIdentifier, GetPushSubscriptionCallback&&) final;
+    void getPushPermissionState(CyberCore::ServiceWorkerRegistrationIdentifier, GetPushPermissionStateCallback&&) final;
     void getNotifications(const URL&, const String&, GetNotificationsCallback&&) final;
 
-    void enableNavigationPreload(WebCore::ServiceWorkerRegistrationIdentifier, ExceptionOrVoidCallback&&) final;
-    void disableNavigationPreload(WebCore::ServiceWorkerRegistrationIdentifier, ExceptionOrVoidCallback&&) final;
-    void setNavigationPreloadHeaderValue(WebCore::ServiceWorkerRegistrationIdentifier, String&&, ExceptionOrVoidCallback&&) final;
-    void getNavigationPreloadState(WebCore::ServiceWorkerRegistrationIdentifier, ExceptionOrNavigationPreloadStateCallback&&) final;
+    void enableNavigationPreload(CyberCore::ServiceWorkerRegistrationIdentifier, ExceptionOrVoidCallback&&) final;
+    void disableNavigationPreload(CyberCore::ServiceWorkerRegistrationIdentifier, ExceptionOrVoidCallback&&) final;
+    void setNavigationPreloadHeaderValue(CyberCore::ServiceWorkerRegistrationIdentifier, String&&, ExceptionOrVoidCallback&&) final;
+    void getNavigationPreloadState(CyberCore::ServiceWorkerRegistrationIdentifier, ExceptionOrNavigationPreloadStateCallback&&) final;
 
-    void startBackgroundFetch(WebCore::ServiceWorkerRegistrationIdentifier, const String&, Vector<WebCore::BackgroundFetchRequest>&&, WebCore::BackgroundFetchOptions&&, ExceptionOrBackgroundFetchInformationCallback&&) final;
-    void backgroundFetchInformation(WebCore::ServiceWorkerRegistrationIdentifier, const String&, ExceptionOrBackgroundFetchInformationCallback&&) final;
-    void backgroundFetchIdentifiers(WebCore::ServiceWorkerRegistrationIdentifier, BackgroundFetchIdentifiersCallback&&) final;
-    void abortBackgroundFetch(WebCore::ServiceWorkerRegistrationIdentifier, const String&, AbortBackgroundFetchCallback&&) final;
-    void matchBackgroundFetch(WebCore::ServiceWorkerRegistrationIdentifier, const String&, WebCore::RetrieveRecordsOptions&&, MatchBackgroundFetchCallback&&) final;
-    void retrieveRecordResponse(WebCore::BackgroundFetchRecordIdentifier, RetrieveRecordResponseCallback&&) final;
-    void retrieveRecordResponseBody(WebCore::BackgroundFetchRecordIdentifier, RetrieveRecordResponseBodyCallback&&) final;
+    void startBackgroundFetch(CyberCore::ServiceWorkerRegistrationIdentifier, const String&, Vector<CyberCore::BackgroundFetchRequest>&&, CyberCore::BackgroundFetchOptions&&, ExceptionOrBackgroundFetchInformationCallback&&) final;
+    void backgroundFetchInformation(CyberCore::ServiceWorkerRegistrationIdentifier, const String&, ExceptionOrBackgroundFetchInformationCallback&&) final;
+    void backgroundFetchIdentifiers(CyberCore::ServiceWorkerRegistrationIdentifier, BackgroundFetchIdentifiersCallback&&) final;
+    void abortBackgroundFetch(CyberCore::ServiceWorkerRegistrationIdentifier, const String&, AbortBackgroundFetchCallback&&) final;
+    void matchBackgroundFetch(CyberCore::ServiceWorkerRegistrationIdentifier, const String&, CyberCore::RetrieveRecordsOptions&&, MatchBackgroundFetchCallback&&) final;
+    void retrieveRecordResponse(CyberCore::BackgroundFetchRecordIdentifier, RetrieveRecordResponseCallback&&) final;
+    void retrieveRecordResponseBody(CyberCore::BackgroundFetchRecordIdentifier, RetrieveRecordResponseBodyCallback&&) final;
 
-    void focusServiceWorkerClient(WebCore::ScriptExecutionContextIdentifier, CompletionHandler<void(std::optional<WebCore::ServiceWorkerClientData>&&)>&&);
+    void focusServiceWorkerClient(CyberCore::ScriptExecutionContextIdentifier, CompletionHandler<void(std::optional<CyberCore::ServiceWorkerClientData>&&)>&&);
     void notifyRecordResponseBodyChunk(RetrieveRecordResponseBodyCallbackIdentifier, IPC::SharedBufferReference&&);
-    void notifyRecordResponseBodyEnd(RetrieveRecordResponseBodyCallbackIdentifier, WebCore::ResourceError&&);
+    void notifyRecordResponseBodyEnd(RetrieveRecordResponseBodyCallbackIdentifier, CyberCore::ResourceError&&);
 
-    void scheduleStorageJob(const WebCore::ServiceWorkerJobData&);
+    void scheduleStorageJob(const CyberCore::ServiceWorkerJobData&);
 
     void runOrDelayTaskForImport(Function<void()>&& task);
 
@@ -131,7 +131,7 @@ private:
 
     void clear();
 
-    WebCore::SWServerConnectionIdentifier m_identifier;
+    CyberCore::SWServerConnectionIdentifier m_identifier;
 
     UniqueRef<WebSWOriginTable> m_swOriginTable;
 
@@ -140,6 +140,6 @@ private:
     HashMap<RetrieveRecordResponseBodyCallbackIdentifier, RetrieveRecordResponseBodyCallback> m_retrieveRecordResponseBodyCallbacks;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(SERVICE_WORKER)

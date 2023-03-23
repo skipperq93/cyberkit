@@ -112,7 +112,7 @@ private:
     void spinMainRunLoop() const;
     // _AXUIElementUseSecondaryAXThread and _AXUIElementRequestServicedBySecondaryAXThread
     // do not work for WebKitTestRunner since this is calling directly into
-    // WebCore/accessibility via JavaScript without going through HIServices.
+    // CyberCore/accessibility via JavaScript without going through HIServices.
     // Thus to simulate the behavior of HIServices, AccessibilityController is spawning a secondary thread to service the JavaScript requests.
     bool m_useMockAXThread { false };
 #endif
@@ -160,7 +160,7 @@ private:
     Vector<Function<void()>> m_functions;
 
 #if PLATFORM(COCOA)
-    // FIXME: We should use WebCore::RunLoop here.
+    // FIXME: We should use CyberCore::RunLoop here.
     RetainPtr<CFRunLoopRef> m_threadRunLoop;
     RetainPtr<CFRunLoopSourceRef> m_threadRunLoopSource;
 #else

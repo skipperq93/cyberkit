@@ -36,7 +36,7 @@
 #include <optional>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioSampleDataSource;
 class AudioSampleBufferList;
@@ -66,7 +66,7 @@ private:
     RefPtr<AudioSampleDataSource> m_dataSource; // Used in background thread.
     RefPtr<AudioSampleDataSource> m_registeredDataSource; // Used in main thread.
     bool m_shouldRecreateDataSource { false };
-    WebCore::AudioMediaStreamTrackRendererUnit::ResetObserver m_resetObserver;
+    CyberCore::AudioMediaStreamTrackRendererUnit::ResetObserver m_resetObserver;
 };
 
 }

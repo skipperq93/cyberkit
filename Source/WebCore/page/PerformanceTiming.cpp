@@ -41,7 +41,7 @@
 #include "Performance.h"
 #include "ResourceResponse.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 PerformanceTiming::PerformanceTiming(DOMWindow* window)
     : DOMWindowProperty(window)
@@ -396,4 +396,4 @@ unsigned long long PerformanceTiming::monotonicTimeToIntegerMilliseconds(Monoton
     return static_cast<unsigned long long>(reduced.milliseconds());
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -31,7 +31,7 @@
 #include "ScrollingConstraints.h"
 #include "ScrollingTreeNode.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScrollingTreePositionedNode : public ScrollingTreeNode {
 public:
@@ -54,7 +54,7 @@ protected:
     AbsolutePositionConstraints m_constraints;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_SCROLLING_NODE(ScrollingTreePositionedNode, isPositionedNode())
 

@@ -30,7 +30,7 @@
 #include "HIDElement.h"
 #include "SharedGamepadValue.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class HIDInputType {
     ButtonPress,
@@ -105,6 +105,6 @@ private:
     Vector<SharedGamepadValue> m_buttonValues;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(GAMEPAD) && PLATFORM(MAC)

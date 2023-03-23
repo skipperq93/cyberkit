@@ -28,7 +28,7 @@
 
 #include "Logging.h"
 #include "ViewGestureGeometryCollectorMessages.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebFrame.h"
 #include "WebPage.h"
 #include "WebProcess.h"
@@ -49,8 +49,8 @@
 #include "ViewGestureControllerMessages.h"
 #endif
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 #if PLATFORM(IOS_FAMILY)
 static const double minimumScaleDifferenceForZooming = 0.3;
@@ -275,5 +275,5 @@ void ViewGestureGeometryCollector::mainFrameDidLayout()
 #endif
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 

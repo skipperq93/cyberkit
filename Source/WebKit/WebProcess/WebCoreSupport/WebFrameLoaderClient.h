@@ -32,13 +32,13 @@
 #include <pal/SessionID.h>
 #include <wtf/Scope.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class PluginView;
 class WebFrame;
 struct WebsitePoliciesData;
     
-class WebFrameLoaderClient final : public WebCore::FrameLoaderClient {
+class WebFrameLoaderClient final : public CyberCore::FrameLoaderClient {
 public:
     explicit WebFrameLoaderClient(Ref<WebFrame>&&);
     ~WebFrameLoaderClient();
@@ -52,21 +52,21 @@ public:
     void applyToDocumentLoader(WebsitePoliciesData&&);
 
     std::optional<WebPageProxyIdentifier> webPageProxyID() const;
-    std::optional<WebCore::PageIdentifier> pageID() const final;
+    std::optional<CyberCore::PageIdentifier> pageID() const final;
 
 #if ENABLE(TRACKING_PREVENTION)
     bool hasFrameSpecificStorageAccess() final { return !!m_frameSpecificStorageAccessIdentifier; }
     
     struct FrameSpecificStorageAccessIdentifier {
-        WebCore::FrameIdentifier frameID;
-        WebCore::PageIdentifier pageID;
+        CyberCore::FrameIdentifier frameID;
+        CyberCore::PageIdentifier pageID;
     };
     void setHasFrameSpecificStorageAccess(FrameSpecificStorageAccessIdentifier&&);
-    void didLoadFromRegistrableDomain(WebCore::RegistrableDomain&&) final;
-    Vector<WebCore::RegistrableDomain> loadedSubresourceDomains() const final;
+    void didLoadFromRegistrableDomain(CyberCore::RegistrableDomain&&) final;
+    Vector<CyberCore::RegistrableDomain> loadedSubresourceDomains() const final;
 #endif
 
-    WebCore::AllowsContentJavaScript allowsContentJavaScriptFromMostRecentNavigation() const final;
+    CyberCore::AllowsContentJavaScript allowsContentJavaScriptFromMostRecentNavigation() const final;
 
     ScopeExit<Function<void()>> takeFrameInvalidator() { return WTFMove(m_frameInvalidator); }
 
@@ -74,7 +74,7 @@ private:
     bool hasHTMLView() const final;
     bool hasWebView() const final;
     
-    void makeRepresentation(WebCore::DocumentLoader*) final;
+    void makeRepresentation(CyberCore::DocumentLoader*) final;
 #if PLATFORM(IOS_FAMILY)
     bool forceLayoutOnRestoreFromBackForwardCache() final;
 #endif
@@ -85,22 +85,22 @@ private:
     void detachedFromParent2() final;
     void detachedFromParent3() final;
     
-    void assignIdentifierToInitialRequest(WebCore::ResourceLoaderIdentifier, WebCore::DocumentLoader*, const WebCore::ResourceRequest&) final;
+    void assignIdentifierToInitialRequest(CyberCore::ResourceLoaderIdentifier, CyberCore::DocumentLoader*, const CyberCore::ResourceRequest&) final;
     
-    void dispatchWillSendRequest(WebCore::DocumentLoader*, WebCore::ResourceLoaderIdentifier, WebCore::ResourceRequest&, const WebCore::ResourceResponse& redirectResponse) final;
-    bool shouldUseCredentialStorage(WebCore::DocumentLoader*, WebCore::ResourceLoaderIdentifier) final;
-    void dispatchDidReceiveAuthenticationChallenge(WebCore::DocumentLoader*, WebCore::ResourceLoaderIdentifier, const WebCore::AuthenticationChallenge&) final;
+    void dispatchWillSendRequest(CyberCore::DocumentLoader*, CyberCore::ResourceLoaderIdentifier, CyberCore::ResourceRequest&, const CyberCore::ResourceResponse& redirectResponse) final;
+    bool shouldUseCredentialStorage(CyberCore::DocumentLoader*, CyberCore::ResourceLoaderIdentifier) final;
+    void dispatchDidReceiveAuthenticationChallenge(CyberCore::DocumentLoader*, CyberCore::ResourceLoaderIdentifier, const CyberCore::AuthenticationChallenge&) final;
 #if USE(PROTECTION_SPACE_AUTH_CALLBACK)
-    bool canAuthenticateAgainstProtectionSpace(WebCore::DocumentLoader*, WebCore::ResourceLoaderIdentifier, const WebCore::ProtectionSpace&) final;
+    bool canAuthenticateAgainstProtectionSpace(CyberCore::DocumentLoader*, CyberCore::ResourceLoaderIdentifier, const CyberCore::ProtectionSpace&) final;
 #endif
 #if PLATFORM(IOS_FAMILY)
-    RetainPtr<CFDictionaryRef> connectionProperties(WebCore::DocumentLoader*, WebCore::ResourceLoaderIdentifier) final;
+    RetainPtr<CFDictionaryRef> connectionProperties(CyberCore::DocumentLoader*, CyberCore::ResourceLoaderIdentifier) final;
 #endif
-    void dispatchDidReceiveResponse(WebCore::DocumentLoader*, WebCore::ResourceLoaderIdentifier, const WebCore::ResourceResponse&) final;
-    void dispatchDidReceiveContentLength(WebCore::DocumentLoader*, WebCore::ResourceLoaderIdentifier, int dataLength) final;
-    void dispatchDidFinishLoading(WebCore::DocumentLoader*, WebCore::ResourceLoaderIdentifier) final;
-    void dispatchDidFailLoading(WebCore::DocumentLoader*, WebCore::ResourceLoaderIdentifier, const WebCore::ResourceError&) final;
-    bool dispatchDidLoadResourceFromMemoryCache(WebCore::DocumentLoader*, const WebCore::ResourceRequest&, const WebCore::ResourceResponse&, int length) final;
+    void dispatchDidReceiveResponse(CyberCore::DocumentLoader*, CyberCore::ResourceLoaderIdentifier, const CyberCore::ResourceResponse&) final;
+    void dispatchDidReceiveContentLength(CyberCore::DocumentLoader*, CyberCore::ResourceLoaderIdentifier, int dataLength) final;
+    void dispatchDidFinishLoading(CyberCore::DocumentLoader*, CyberCore::ResourceLoaderIdentifier) final;
+    void dispatchDidFailLoading(CyberCore::DocumentLoader*, CyberCore::ResourceLoaderIdentifier, const CyberCore::ResourceError&) final;
+    bool dispatchDidLoadResourceFromMemoryCache(CyberCore::DocumentLoader*, const CyberCore::ResourceRequest&, const CyberCore::ResourceResponse&, int length) final;
 #if ENABLE(DATA_DETECTION)
     void dispatchDidFinishDataDetection(NSArray *detectionResults) final;
 #endif
@@ -111,7 +111,7 @@ private:
     void dispatchDidReceiveServerRedirectForProvisionalLoad() final;
     void dispatchDidChangeProvisionalURL() final;
     void dispatchDidCancelClientRedirect() final;
-    void dispatchWillPerformClientRedirect(const URL&, double interval, WallTime fireDate, WebCore::LockBackForwardList) final;
+    void dispatchWillPerformClientRedirect(const URL&, double interval, WallTime fireDate, CyberCore::LockBackForwardList) final;
     void dispatchDidChangeLocationWithinPage() final;
     void dispatchDidPushStateWithinPage() final;
     void dispatchDidReplaceStateWithinPage() final;
@@ -119,98 +119,98 @@ private:
     void didSameDocumentNavigationForFrameViaJSHistoryAPI(SameDocumentNavigationType);
     void dispatchWillClose() final;
     void dispatchDidStartProvisionalLoad() final;
-    void dispatchDidReceiveTitle(const WebCore::StringWithDirection&) final;
-    void dispatchDidCommitLoad(std::optional<WebCore::HasInsecureContent>, std::optional<WebCore::UsedLegacyTLS>, std::optional<WebCore::WasPrivateRelayed>) final;
-    void dispatchDidFailProvisionalLoad(const WebCore::ResourceError&, WebCore::WillContinueLoading, WebCore::WillInternallyHandleFailure) final;
-    void dispatchDidFailLoad(const WebCore::ResourceError&) final;
+    void dispatchDidReceiveTitle(const CyberCore::StringWithDirection&) final;
+    void dispatchDidCommitLoad(std::optional<CyberCore::HasInsecureContent>, std::optional<CyberCore::UsedLegacyTLS>, std::optional<CyberCore::WasPrivateRelayed>) final;
+    void dispatchDidFailProvisionalLoad(const CyberCore::ResourceError&, CyberCore::WillContinueLoading, CyberCore::WillInternallyHandleFailure) final;
+    void dispatchDidFailLoad(const CyberCore::ResourceError&) final;
     void dispatchDidFinishDocumentLoad() final;
     void dispatchDidFinishLoad() final;
     void dispatchDidExplicitOpen(const URL&, const String& mimeType) final;
 
-    void dispatchDidReachLayoutMilestone(OptionSet<WebCore::LayoutMilestone>) final;
+    void dispatchDidReachLayoutMilestone(OptionSet<CyberCore::LayoutMilestone>) final;
     void dispatchDidReachVisuallyNonEmptyState() final;
     void dispatchDidLayout() final;
 
-    WebCore::Frame* dispatchCreatePage(const WebCore::NavigationAction&, WebCore::NewFrameOpenerPolicy) final;
+    CyberCore::Frame* dispatchCreatePage(const CyberCore::NavigationAction&, CyberCore::NewFrameOpenerPolicy) final;
     void dispatchShow() final;
     
-    void dispatchDecidePolicyForResponse(const WebCore::ResourceResponse&, const WebCore::ResourceRequest&, WebCore::PolicyCheckIdentifier, const String&, WebCore::FramePolicyFunction&&) final;
-    void dispatchDecidePolicyForNewWindowAction(const WebCore::NavigationAction&, const WebCore::ResourceRequest&, WebCore::FormState*, const String& frameName, WebCore::PolicyCheckIdentifier, WebCore::FramePolicyFunction&&) final;
-    void dispatchDecidePolicyForNavigationAction(const WebCore::NavigationAction&, const WebCore::ResourceRequest&, const WebCore::ResourceResponse& redirectResponse, WebCore::FormState*, WebCore::PolicyDecisionMode, WebCore::PolicyCheckIdentifier, WebCore::FramePolicyFunction&&) final;
+    void dispatchDecidePolicyForResponse(const CyberCore::ResourceResponse&, const CyberCore::ResourceRequest&, CyberCore::PolicyCheckIdentifier, const String&, CyberCore::FramePolicyFunction&&) final;
+    void dispatchDecidePolicyForNewWindowAction(const CyberCore::NavigationAction&, const CyberCore::ResourceRequest&, CyberCore::FormState*, const String& frameName, CyberCore::PolicyCheckIdentifier, CyberCore::FramePolicyFunction&&) final;
+    void dispatchDecidePolicyForNavigationAction(const CyberCore::NavigationAction&, const CyberCore::ResourceRequest&, const CyberCore::ResourceResponse& redirectResponse, CyberCore::FormState*, CyberCore::PolicyDecisionMode, CyberCore::PolicyCheckIdentifier, CyberCore::FramePolicyFunction&&) final;
     void cancelPolicyCheck() final;
     
-    void dispatchUnableToImplementPolicy(const WebCore::ResourceError&) final;
+    void dispatchUnableToImplementPolicy(const CyberCore::ResourceError&) final;
     
-    void dispatchWillSendSubmitEvent(Ref<WebCore::FormState>&&) final;
-    void dispatchWillSubmitForm(WebCore::FormState&, CompletionHandler<void()>&&) final;
+    void dispatchWillSendSubmitEvent(Ref<CyberCore::FormState>&&) final;
+    void dispatchWillSubmitForm(CyberCore::FormState&, CompletionHandler<void()>&&) final;
     
-    void revertToProvisionalState(WebCore::DocumentLoader*) final;
-    void setMainDocumentError(WebCore::DocumentLoader*, const WebCore::ResourceError&) final;
+    void revertToProvisionalState(CyberCore::DocumentLoader*) final;
+    void setMainDocumentError(CyberCore::DocumentLoader*, const CyberCore::ResourceError&) final;
     
     void setMainFrameDocumentReady(bool) final;
     
-    void startDownload(const WebCore::ResourceRequest&, const String& suggestedName = String()) final;
+    void startDownload(const CyberCore::ResourceRequest&, const String& suggestedName = String()) final;
     
-    void willChangeTitle(WebCore::DocumentLoader*) final;
-    void didChangeTitle(WebCore::DocumentLoader*) final;
+    void willChangeTitle(CyberCore::DocumentLoader*) final;
+    void didChangeTitle(CyberCore::DocumentLoader*) final;
 
     void willReplaceMultipartContent() final;
     void didReplaceMultipartContent() final;
 
-    void committedLoad(WebCore::DocumentLoader*, const WebCore::SharedBuffer&) final;
-    void finishedLoading(WebCore::DocumentLoader*) final;
+    void committedLoad(CyberCore::DocumentLoader*, const CyberCore::SharedBuffer&) final;
+    void finishedLoading(CyberCore::DocumentLoader*) final;
     
     void updateGlobalHistory() final;
     void updateGlobalHistoryRedirectLinks() final;
     
-    bool shouldGoToHistoryItem(WebCore::HistoryItem&) const final;
+    bool shouldGoToHistoryItem(CyberCore::HistoryItem&) const final;
 
     void didDisplayInsecureContent() final;
-    void didRunInsecureContent(WebCore::SecurityOrigin&, const URL&) final;
+    void didRunInsecureContent(CyberCore::SecurityOrigin&, const URL&) final;
 
 #if ENABLE(SERVICE_WORKER)
     void didFinishServiceWorkerPageRegistration(bool success) final;
 #endif
 
-    WebCore::ResourceError cancelledError(const WebCore::ResourceRequest&) const final;
-    WebCore::ResourceError blockedError(const WebCore::ResourceRequest&) const final;
-    WebCore::ResourceError blockedByContentBlockerError(const WebCore::ResourceRequest&) const final;
-    WebCore::ResourceError cannotShowURLError(const WebCore::ResourceRequest&) const final;
-    WebCore::ResourceError interruptedForPolicyChangeError(const WebCore::ResourceRequest&) const final;
+    CyberCore::ResourceError cancelledError(const CyberCore::ResourceRequest&) const final;
+    CyberCore::ResourceError blockedError(const CyberCore::ResourceRequest&) const final;
+    CyberCore::ResourceError blockedByContentBlockerError(const CyberCore::ResourceRequest&) const final;
+    CyberCore::ResourceError cannotShowURLError(const CyberCore::ResourceRequest&) const final;
+    CyberCore::ResourceError interruptedForPolicyChangeError(const CyberCore::ResourceRequest&) const final;
 #if ENABLE(CONTENT_FILTERING)
-    WebCore::ResourceError blockedByContentFilterError(const WebCore::ResourceRequest&) const final;
+    CyberCore::ResourceError blockedByContentFilterError(const CyberCore::ResourceRequest&) const final;
 #endif
     
-    WebCore::ResourceError cannotShowMIMETypeError(const WebCore::ResourceResponse&) const final;
-    WebCore::ResourceError fileDoesNotExistError(const WebCore::ResourceResponse&) const final;
-    WebCore::ResourceError pluginWillHandleLoadError(const WebCore::ResourceResponse&) const final;
+    CyberCore::ResourceError cannotShowMIMETypeError(const CyberCore::ResourceResponse&) const final;
+    CyberCore::ResourceError fileDoesNotExistError(const CyberCore::ResourceResponse&) const final;
+    CyberCore::ResourceError pluginWillHandleLoadError(const CyberCore::ResourceResponse&) const final;
     
-    bool shouldFallBack(const WebCore::ResourceError&) const final;
+    bool shouldFallBack(const CyberCore::ResourceError&) const final;
     
-    bool canHandleRequest(const WebCore::ResourceRequest&) const final;
+    bool canHandleRequest(const CyberCore::ResourceRequest&) const final;
     bool canShowMIMEType(const String& MIMEType) const final;
     bool canShowMIMETypeAsHTML(const String& MIMEType) const final;
     bool representationExistsForURLScheme(StringView URLScheme) const final;
     String generatedMIMETypeForURLScheme(StringView URLScheme) const final;
     
     void frameLoadCompleted() final;
-    void saveViewStateToItem(WebCore::HistoryItem&) final;
+    void saveViewStateToItem(CyberCore::HistoryItem&) final;
     void restoreViewState() final;
     void provisionalLoadStarted() final;
     void didFinishLoad() final;
     void prepareForDataSourceReplacement() final;
     
-    Ref<WebCore::DocumentLoader> createDocumentLoader(const WebCore::ResourceRequest&, const WebCore::SubstituteData&) final;
-    void updateCachedDocumentLoader(WebCore::DocumentLoader&) final;
+    Ref<CyberCore::DocumentLoader> createDocumentLoader(const CyberCore::ResourceRequest&, const CyberCore::SubstituteData&) final;
+    void updateCachedDocumentLoader(CyberCore::DocumentLoader&) final;
 
-    void setTitle(const WebCore::StringWithDirection&, const URL&) final;
+    void setTitle(const CyberCore::StringWithDirection&, const URL&) final;
     
     String userAgent(const URL&) const final;
 
     String overrideContentSecurityPolicy() const final;
 
-    void savePlatformDataToCachedFrame(WebCore::CachedFrame*) final;
-    void transitionToCommittedFromCachedFrame(WebCore::CachedFrame*) final;
+    void savePlatformDataToCachedFrame(CyberCore::CachedFrame*) final;
+    void transitionToCommittedFromCachedFrame(CyberCore::CachedFrame*) final;
 #if PLATFORM(IOS_FAMILY)
     void didRestoreFrameHierarchyForCachedFrame() final;
 #endif
@@ -219,30 +219,30 @@ private:
     void didRestoreFromBackForwardCache() final;
 
     bool canCachePage() const final;
-    void convertMainResourceLoadToDownload(WebCore::DocumentLoader*, const WebCore::ResourceRequest&, const WebCore::ResourceResponse&) final;
+    void convertMainResourceLoadToDownload(CyberCore::DocumentLoader*, const CyberCore::ResourceRequest&, const CyberCore::ResourceResponse&) final;
 
-    RefPtr<WebCore::Frame> createFrame(const AtomString& name, WebCore::HTMLFrameOwnerElement&) final;
+    RefPtr<CyberCore::Frame> createFrame(const AtomString& name, CyberCore::HTMLFrameOwnerElement&) final;
 
-    RefPtr<WebCore::Widget> createPlugin(const WebCore::IntSize&, WebCore::HTMLPlugInElement&, const URL&, const Vector<AtomString>&, const Vector<AtomString>&, const String&, bool loadManually) final;
-    void redirectDataToPlugin(WebCore::Widget&) final;
+    RefPtr<CyberCore::Widget> createPlugin(const CyberCore::IntSize&, CyberCore::HTMLPlugInElement&, const URL&, const Vector<AtomString>&, const Vector<AtomString>&, const String&, bool loadManually) final;
+    void redirectDataToPlugin(CyberCore::Widget&) final;
     
-    WebCore::ObjectContentType objectContentType(const URL&, const String& mimeType) final;
+    CyberCore::ObjectContentType objectContentType(const URL&, const String& mimeType) final;
     AtomString overrideMediaType() const final;
 
-    void dispatchDidClearWindowObjectInWorld(WebCore::DOMWrapperWorld&) final;
+    void dispatchDidClearWindowObjectInWorld(CyberCore::DOMWrapperWorld&) final;
     
-    void dispatchGlobalObjectAvailable(WebCore::DOMWrapperWorld&) final;
-    void dispatchServiceWorkerGlobalObjectAvailable(WebCore::DOMWrapperWorld&) final;
-    void dispatchWillDisconnectDOMWindowExtensionFromGlobalObject(WebCore::DOMWindowExtension*) final;
-    void dispatchDidReconnectDOMWindowExtensionToGlobalObject(WebCore::DOMWindowExtension*) final;
-    void dispatchWillDestroyGlobalObjectForDOMWindowExtension(WebCore::DOMWindowExtension*) final;
+    void dispatchGlobalObjectAvailable(CyberCore::DOMWrapperWorld&) final;
+    void dispatchServiceWorkerGlobalObjectAvailable(CyberCore::DOMWrapperWorld&) final;
+    void dispatchWillDisconnectDOMWindowExtensionFromGlobalObject(CyberCore::DOMWindowExtension*) final;
+    void dispatchDidReconnectDOMWindowExtensionToGlobalObject(CyberCore::DOMWindowExtension*) final;
+    void dispatchWillDestroyGlobalObjectForDOMWindowExtension(CyberCore::DOMWindowExtension*) final;
 
-    void willInjectUserScript(WebCore::DOMWrapperWorld&) final;
+    void willInjectUserScript(CyberCore::DOMWrapperWorld&) final;
 
 #if PLATFORM(COCOA)
     RemoteAXObjectRef accessibilityRemoteObject() final;
     
-    void willCacheResponse(WebCore::DocumentLoader*, WebCore::ResourceLoaderIdentifier, NSCachedURLResponse*, CompletionHandler<void(NSCachedURLResponse *)>&&) const final;
+    void willCacheResponse(CyberCore::DocumentLoader*, CyberCore::ResourceLoaderIdentifier, NSCachedURLResponse*, CompletionHandler<void(NSCachedURLResponse *)>&&) const final;
 
     NSDictionary *dataDetectionContext() final;
 #endif
@@ -253,24 +253,24 @@ private:
 
     bool shouldForceUniversalAccessFromLocalURL(const URL&) final;
 
-    Ref<WebCore::FrameNetworkingContext> createNetworkingContext() final;
+    Ref<CyberCore::FrameNetworkingContext> createNetworkingContext() final;
 
     void completePageTransitionIfNeeded() final;
 
 #if USE(QUICK_LOOK)
-    RefPtr<WebCore::LegacyPreviewLoaderClient> createPreviewLoaderClient(const String& fileName, const String& uti) final;
+    RefPtr<CyberCore::LegacyPreviewLoaderClient> createPreviewLoaderClient(const String& fileName, const String& uti) final;
 #endif
 
 #if ENABLE(CONTENT_FILTERING)
-    void contentFilterDidBlockLoad(WebCore::ContentFilterUnblockHandler) final;
+    void contentFilterDidBlockLoad(CyberCore::ContentFilterUnblockHandler) final;
 #endif
 
     void prefetchDNS(const String&) final;
-    void sendH2Ping(const URL&, CompletionHandler<void(Expected<WTF::Seconds, WebCore::ResourceError>&&)>&&) final;
+    void sendH2Ping(const URL&, CompletionHandler<void(Expected<WTF::Seconds, CyberCore::ResourceError>&&)>&&) final;
 
     void didRestoreScrollPosition() final;
 
-    void getLoadDecisionForIcons(const Vector<std::pair<WebCore::LinkIcon&, uint64_t>>&) final;
+    void getLoadDecisionForIcons(const Vector<std::pair<CyberCore::LinkIcon&, uint64_t>>&) final;
 
     inline bool hasPlugInView() const;
 
@@ -306,15 +306,15 @@ private:
 #endif
 };
 
-// As long as EmptyFrameLoaderClient exists in WebCore, this can return nullptr.
-inline WebFrameLoaderClient* toWebFrameLoaderClient(WebCore::FrameLoaderClient& client)
+// As long as EmptyFrameLoaderClient exists in CyberCore, this can return nullptr.
+inline WebFrameLoaderClient* toWebFrameLoaderClient(CyberCore::FrameLoaderClient& client)
 {
     return client.isEmptyFrameLoaderClient() ? nullptr : static_cast<WebFrameLoaderClient*>(&client);
 }
 
-inline const WebFrameLoaderClient* toWebFrameLoaderClient(const WebCore::FrameLoaderClient& client)
+inline const WebFrameLoaderClient* toWebFrameLoaderClient(const CyberCore::FrameLoaderClient& client)
 {
     return client.isEmptyFrameLoaderClient() ? nullptr : static_cast<const WebFrameLoaderClient*>(&client);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -34,7 +34,7 @@
 #include <wtf/NeverDestroyed.h>
 #include <wtf/glib/GUniquePtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 GRefPtr<GdkPixbuf> cairoSurfaceToGdkPixbuf(cairo_surface_t* surface)
 {
@@ -57,4 +57,4 @@ GRefPtr<GdkTexture> cairoSurfaceToGdkTexture(cairo_surface_t* surface)
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

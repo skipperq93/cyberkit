@@ -28,9 +28,9 @@
 
 #if ENABLE(MEDIA_STREAM)
 
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 MediaDeviceSandboxExtensions::MediaDeviceSandboxExtensions(Vector<String> ids, Vector<SandboxExtension::Handle>&& handles, SandboxExtension::Handle&& machBootstrapHandle)
     : m_ids(ids)
@@ -79,6 +79,6 @@ size_t MediaDeviceSandboxExtensions::size() const
     return m_ids.size();
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(MEDIA_STREAM)

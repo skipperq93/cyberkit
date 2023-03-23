@@ -43,7 +43,7 @@
 #include <wtf/MathExtras.h>
 #include <wtf/unicode/CharacterNames.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace MathMLNames;
 

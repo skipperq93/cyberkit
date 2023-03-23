@@ -42,7 +42,7 @@
 #include <wtf/ParallelJobs.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 inline void FEGaussianBlurSoftwareApplier::kernelPosition(int blurIteration, unsigned& radius, int& deltaLeft, int& deltaRight)
 {
@@ -454,4 +454,4 @@ bool FEGaussianBlurSoftwareApplier::apply(const Filter& filter, const FilterImag
     return true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

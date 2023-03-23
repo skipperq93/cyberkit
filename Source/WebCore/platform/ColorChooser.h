@@ -32,7 +32,7 @@
 
 #if ENABLE(INPUT_TYPE_COLOR)
 
-namespace WebCore {
+namespace CyberCore {
 
 class Color;
 
@@ -46,7 +46,7 @@ public:
     virtual void endChooser() { }
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(INPUT_TYPE_COLOR)
 

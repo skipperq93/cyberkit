@@ -37,7 +37,7 @@
 #import "WindowsKeyboardCodes.h"
 #import <wtf/WallTime.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static OptionSet<PlatformEvent::Modifier> modifiersForEvent(WebEvent *event)
 {
@@ -651,6 +651,6 @@ PlatformTouchEvent PlatformEventFactory::createPlatformSimulatedTouchEvent(Platf
 
 #endif // ENABLE(TOUCH_EVENTS)
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(IOS_FAMILY)

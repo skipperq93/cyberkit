@@ -33,7 +33,7 @@
 #include "RenderBox.h"
 #include <wtf/MathExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static inline LayoutUnit adjustRadiusForMarginBoxShape(LayoutUnit radius, LayoutUnit margin)
 {
@@ -164,4 +164,4 @@ void BoxShape::buildDisplayPaths(DisplayPaths& paths) const
         paths.marginShape.addRoundedRect(shapeMarginBounds(), Path::RoundedRectStrategy::PreferBezier);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

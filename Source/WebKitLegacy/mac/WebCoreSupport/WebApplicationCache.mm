@@ -25,7 +25,7 @@
 
 #import "WebApplicationCacheInternal.h"
 
-#import "WebKitNSStringExtras.h"
+#import "CyberKitNSStringExtras.h"
 #import "WebSecurityOriginInternal.h"
 #import <CyberCore/ApplicationCache.h>
 #import <CyberCore/ApplicationCacheStorage.h>
@@ -48,8 +48,8 @@ static RetainPtr<NSString>& overrideBundleIdentifier()
     return overrideBundleIdentifier;
 }
 
-// FIXME: This will be removed when WebKitInitializeApplicationCachePathIfNecessary()
-// is moved from WebView.mm to WebKitInitializeApplicationCacheIfNecessary() in this file.
+// FIXME: This will be removed when CyberKitInitializeApplicationCachePathIfNecessary()
+// is moved from WebView.mm to CyberKitInitializeApplicationCacheIfNecessary() in this file.
 // https://bugs.webkit.org/show_bug.cgi?id=57567 
 + (void)initializeWithBundleIdentifier:(NSString *)bundleIdentifier
 {
@@ -57,7 +57,7 @@ static RetainPtr<NSString>& overrideBundleIdentifier()
     if (initialized)
         return;
 
-    WebCore::SQLiteDatabaseTracker::setClient(&WebCore::WebSQLiteDatabaseTrackerClient::sharedWebSQLiteDatabaseTrackerClient());
+    CyberCore::SQLiteDatabaseTracker::setClient(&CyberCore::WebSQLiteDatabaseTrackerClient::sharedWebSQLiteDatabaseTrackerClient());
 
     ASSERT(!overrideBundleIdentifier());
     overrideBundleIdentifier() = adoptNS([bundleIdentifier copy]);
@@ -71,7 +71,7 @@ static NSString *applicationCacheBundleIdentifier()
 #if PLATFORM(IOS_FAMILY)
     if (overrideBundleIdentifier())
         return overrideBundleIdentifier().get();
-    if (WebCore::IOSApplication::isMobileSafari())
+    if (CyberCore::IOSApplication::isMobileSafari())
         return @"com.apple.WebAppCache";
 #endif
 
@@ -127,15 +127,15 @@ static NSString *applicationCachePath()
 + (NSArray *)originsWithCache
 {
     return createNSArray(webApplicationCacheStorage().originsWithCache(), [] (auto& origin) {
-        return adoptNS([[WebSecurityOrigin alloc] _initWithWebCoreSecurityOrigin:origin.securityOrigin().ptr()]);
+        return adoptNS([[WebSecurityOrigin alloc] _initWithCyberCoreSecurityOrigin:origin.securityOrigin().ptr()]);
     }).autorelease();
 }
 
 @end
 
-WebCore::ApplicationCacheStorage& webApplicationCacheStorage()
+CyberCore::ApplicationCacheStorage& webApplicationCacheStorage()
 {
-    static WebCore::ApplicationCacheStorage& storage = WebCore::ApplicationCacheStorage::create(applicationCachePath(), "ApplicationCache"_s).leakRef();
+    static CyberCore::ApplicationCacheStorage& storage = CyberCore::ApplicationCacheStorage::create(applicationCachePath(), "ApplicationCache"_s).leakRef();
 
     return storage;
 }

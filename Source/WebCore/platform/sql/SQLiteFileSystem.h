@@ -36,7 +36,7 @@
 
 struct sqlite3;
 
-namespace WebCore {
+namespace CyberCore {
 
 class SQLiteDatabase;
 
@@ -100,6 +100,6 @@ private:
     SQLiteFileSystem();
 }; // class SQLiteFileSystem
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

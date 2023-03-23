@@ -36,7 +36,7 @@
 
 typedef const struct opaqueCMFormatDescription *CMFormatDescriptionRef;
 
-namespace WebCore {
+namespace CyberCore {
 
 class RealtimeIncomingAudioSourceCocoa final : public RealtimeIncomingAudioSource {
 public:
@@ -73,6 +73,6 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(LIBWEBRTC)

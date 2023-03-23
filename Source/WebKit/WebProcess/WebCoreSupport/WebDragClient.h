@@ -30,11 +30,11 @@
 
 #include <CyberCore/DragClient.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPage;
 
-class WebDragClient : public WebCore::DragClient {
+class WebDragClient : public CyberCore::DragClient {
     WTF_MAKE_FAST_ALLOCATED;
 public:
     WebDragClient(WebPage* page)
@@ -43,21 +43,21 @@ public:
     }
 
 private:
-    void willPerformDragDestinationAction(WebCore::DragDestinationAction, const WebCore::DragData&) override;
-    void willPerformDragSourceAction(WebCore::DragSourceAction, const WebCore::IntPoint&, WebCore::DataTransfer&) override;
-    OptionSet<WebCore::DragSourceAction> dragSourceActionMaskForPoint(const WebCore::IntPoint& windowPoint) override;
+    void willPerformDragDestinationAction(CyberCore::DragDestinationAction, const CyberCore::DragData&) override;
+    void willPerformDragSourceAction(CyberCore::DragSourceAction, const CyberCore::IntPoint&, CyberCore::DataTransfer&) override;
+    OptionSet<CyberCore::DragSourceAction> dragSourceActionMaskForPoint(const CyberCore::IntPoint& windowPoint) override;
 
-    void startDrag(WebCore::DragItem, WebCore::DataTransfer&, WebCore::Frame&) override;
+    void startDrag(CyberCore::DragItem, CyberCore::DataTransfer&, CyberCore::Frame&) override;
     void didConcludeEditDrag() override;
 
 #if PLATFORM(COCOA)
-    void declareAndWriteDragImage(const String& pasteboardName, WebCore::Element&, const URL&, const String&, WebCore::Frame*) override;
+    void declareAndWriteDragImage(const String& pasteboardName, CyberCore::Element&, const URL&, const String&, CyberCore::Frame*) override;
 #endif
 
     WebPage* m_page;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(DRAG_SUPPORT)
 

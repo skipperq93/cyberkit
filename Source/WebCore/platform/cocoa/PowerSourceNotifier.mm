@@ -31,7 +31,7 @@
 #import <pal/spi/cocoa/IOPSLibSPI.h>
 #import <wtf/RunLoop.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 PowerSourceNotifier::PowerSourceNotifier(PowerSourceNotifierCallback&& callback)
     : m_callback(WTFMove(callback))

@@ -28,7 +28,7 @@
 
 #include "ExceptionOr.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class Node;
 class XPathExpression;

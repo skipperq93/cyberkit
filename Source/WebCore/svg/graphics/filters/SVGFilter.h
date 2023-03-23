@@ -28,7 +28,7 @@
 #include <wtf/Ref.h>
 #include <wtf/TypeCasts.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FilterImage;
 class GraphicsContext;
@@ -77,9 +77,9 @@ private:
     SVGFilterExpression m_expression;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::SVGFilter)
-    static bool isType(const WebCore::Filter& filter) { return filter.isSVGFilter(); }
-    static bool isType(const WebCore::FilterFunction& function) { return function.isSVGFilter(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::SVGFilter)
+    static bool isType(const CyberCore::Filter& filter) { return filter.isSVGFilter(); }
+    static bool isType(const CyberCore::FilterFunction& function) { return function.isSVGFilter(); }
 SPECIALIZE_TYPE_TRAITS_END()

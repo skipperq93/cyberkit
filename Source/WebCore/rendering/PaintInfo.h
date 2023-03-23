@@ -35,7 +35,7 @@
 #include <wtf/ListHashSet.h>
 #include <wtf/OptionSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class EventRegionContext;
 class OverlapTestRequestClient;
@@ -136,4 +136,4 @@ private:
     GraphicsContext* m_context;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

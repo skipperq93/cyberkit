@@ -272,7 +272,7 @@ class BaseGenerator(object):
                     input=stdout)
 
             # TODO: Make this generator-specific (there's no need to reference
-            # WebCore, for example, when processing the JavaScriptCore
+            # CyberCore, for example, when processing the JavaScriptCore
             # project).
 
             input_lines = self._get_file_lines(input.name)
@@ -280,8 +280,8 @@ class BaseGenerator(object):
 
             input_lines = self._replacePrefix(input_lines, "JavaScriptCore/",               "$(PROJECT_DIR)/")
             input_lines = self._replacePrefix(input_lines, "JavaScriptCorePrivateHeaders/", "$(JAVASCRIPTCORE_PRIVATE_HEADERS_DIR)/")
-            input_lines = self._replacePrefix(input_lines, "WebCore/",                      "$(PROJECT_DIR)/")
-            input_lines = self._replacePrefix(input_lines, "WebCorePrivateHeaders/",        "$(WEBCORE_PRIVATE_HEADERS_DIR)/")
+            input_lines = self._replacePrefix(input_lines, "CyberCore/",                      "$(PROJECT_DIR)/")
+            input_lines = self._replacePrefix(input_lines, "CyberCorePrivateHeaders/",        "$(WEBCORE_PRIVATE_HEADERS_DIR)/")
             input_lines = self._replacePrefix(input_lines, "WebKit2PrivateHeaders/",        "$(WEBKIT2_PRIVATE_HEADERS_DIR)/")
 
             input_lines = self._unexpand(input_lines, "JAVASCRIPTCORE_PRIVATE_HEADERS_DIR")
@@ -742,13 +742,13 @@ class JavaScriptCoreGenerator(BaseGenerator):
         return os.path.join(self._get_project_dir(), "Scripts", "generate-unified-sources.sh")
 
 
-class WebCoreGenerator(BaseGenerator):
+class CyberCoreGenerator(BaseGenerator):
     VALID_PLATFORMS = ("macosx", "iphoneos", "iphonesimulator", "watchos", "watchsimulator", "appletvos", "appletvsimulator")
     VALID_CONFIGURATIONS = ("Debug", "Release", "Production")
 
     @util.LogEntryExit
     def _get_project_file_path(self):
-        return os.path.join(self.application.get_opensource_dir(), "Source", "WebCore", "CyberCore.xcodeproj")
+        return os.path.join(self.application.get_opensource_dir(), "Source", "CyberCore", "CyberCore.xcodeproj")
 
     @util.LogEntryExit
     def _get_generate_derived_sources_script(self):
@@ -780,13 +780,13 @@ class WebKitGenerator(BaseGenerator):
         return os.path.join(self._get_project_dir(), "Scripts", "generate-unified-sources.sh")
 
 
-class WebKitLegacyGenerator(BaseGenerator):
+class CyberKitLegacyGenerator(BaseGenerator):
     VALID_PLATFORMS = ("macosx", "iphoneos", "iphonesimulator", "watchos", "watchsimulator", "appletvos", "appletvsimulator")
     VALID_CONFIGURATIONS = ("Debug", "Release", "Production")
 
     @util.LogEntryExit
     def _get_project_file_path(self):
-        return os.path.join(self.application.get_opensource_dir(), "Source", "WebKitLegacy", "CyberKitLegacy.xcodeproj")
+        return os.path.join(self.application.get_opensource_dir(), "Source", "CyberKitLegacy", "CyberKitLegacy.xcodeproj")
 
     @util.LogEntryExit
     def _get_generate_unified_sources_script(self):

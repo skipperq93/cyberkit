@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -21,21 +21,21 @@
 #error "Only <webkitdom/webkitdom.h> can be included directly."
 #endif
 
-#ifndef WebKitDOMCSSValue_h
-#define WebKitDOMCSSValue_h
+#ifndef CyberKitDOMCSSValue_h
+#define CyberKitDOMCSSValue_h
 
 #include <glib-object.h>
-#include <webkitdom/WebKitDOMObject.h>
+#include <webkitdom/CyberKitDOMObject.h>
 #include <webkitdom/webkitdomdefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_DOM_TYPE_CSS_VALUE            (webkit_dom_css_value_get_type())
-#define WEBKIT_DOM_CSS_VALUE(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_CSS_VALUE, WebKitDOMCSSValue))
-#define WEBKIT_DOM_CSS_VALUE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_CSS_VALUE, WebKitDOMCSSValueClass)
+#define WEBKIT_DOM_CSS_VALUE(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_CSS_VALUE, CyberKitDOMCSSValue))
+#define WEBKIT_DOM_CSS_VALUE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_CSS_VALUE, CyberKitDOMCSSValueClass)
 #define WEBKIT_DOM_IS_CSS_VALUE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_DOM_TYPE_CSS_VALUE))
 #define WEBKIT_DOM_IS_CSS_VALUE_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_DOM_TYPE_CSS_VALUE))
-#define WEBKIT_DOM_CSS_VALUE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_CSS_VALUE, WebKitDOMCSSValueClass))
+#define WEBKIT_DOM_CSS_VALUE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_CSS_VALUE, CyberKitDOMCSSValueClass))
 
 #ifndef WEBKIT_DISABLE_DEPRECATED
 
@@ -69,12 +69,12 @@ G_BEGIN_DECLS
 
 #endif /* WEBKIT_DISABLE_DEPRECATED */
 
-struct _WebKitDOMCSSValue {
-    WebKitDOMObject parent_instance;
+struct _CyberKitDOMCSSValue {
+    CyberKitDOMObject parent_instance;
 };
 
-struct _WebKitDOMCSSValueClass {
-    WebKitDOMObjectClass parent_class;
+struct _CyberKitDOMCSSValueClass {
+    CyberKitDOMObjectClass parent_class;
 };
 
 WEBKIT_DEPRECATED GType
@@ -82,18 +82,18 @@ webkit_dom_css_value_get_type(void);
 
 /**
  * webkit_dom_css_value_get_css_text:
- * @self: A #WebKitDOMCSSValue
+ * @self: A #CyberKitDOMCSSValue
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_css_value_get_css_text(WebKitDOMCSSValue* self);
+webkit_dom_css_value_get_css_text(CyberKitDOMCSSValue* self);
 
 /**
  * webkit_dom_css_value_set_css_text:
- * @self: A #WebKitDOMCSSValue
+ * @self: A #CyberKitDOMCSSValue
  * @value: A #gchar
  * @error: #GError
  *
@@ -101,19 +101,19 @@ webkit_dom_css_value_get_css_text(WebKitDOMCSSValue* self);
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_css_value_set_css_text(WebKitDOMCSSValue* self, const gchar* value, GError** error);
+webkit_dom_css_value_set_css_text(CyberKitDOMCSSValue* self, const gchar* value, GError** error);
 
 /**
  * webkit_dom_css_value_get_css_value_type:
- * @self: A #WebKitDOMCSSValue
+ * @self: A #CyberKitDOMCSSValue
  *
  * Returns: A #gushort
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gushort
-webkit_dom_css_value_get_css_value_type(WebKitDOMCSSValue* self);
+webkit_dom_css_value_get_css_value_type(CyberKitDOMCSSValue* self);
 
 G_END_DECLS
 
-#endif /* WebKitDOMCSSValue_h */
+#endif /* CyberKitDOMCSSValue_h */

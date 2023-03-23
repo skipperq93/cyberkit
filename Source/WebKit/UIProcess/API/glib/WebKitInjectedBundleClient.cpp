@@ -32,7 +32,7 @@
 #include <wtf/glib/GUniquePtr.h>
 
 using namespace WebKit;
-using namespace WebCore;
+using namespace CyberCore;
 
 class WebKitInjectedBundleClient final : public API::InjectedBundleClient {
 public:

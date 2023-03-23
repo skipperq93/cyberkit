@@ -31,7 +31,7 @@
 #import "ColorSpaceCG.h"
 #import "FloatRoundedRect.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 SliderTrackMac::SliderTrackMac(SliderTrackPart& part, ControlFactoryMac& controlFactory)
     : ControlMac(part, controlFactory)
@@ -99,6 +99,6 @@ void SliderTrackMac::draw(GraphicsContext& context, const FloatRoundedRect& bord
     CGContextDrawShading(cgContext, mainShading.get());
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(MAC)

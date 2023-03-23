@@ -31,9 +31,9 @@
 #include "CoreAudioCaptureSource.h"
 #include <wtf/WeakHashSet.h>
 
-OBJC_CLASS WebCoreAudioCaptureSourceIOSListener;
+OBJC_CLASS CyberCoreAudioCaptureSourceIOSListener;
 
-namespace WebCore {
+namespace CyberCore {
 
 class CoreAudioCaptureSourceFactoryIOS final : public CoreAudioCaptureSourceFactory  {
 public:
@@ -45,10 +45,10 @@ private:
     void addExtensiveObserver(ExtensiveObserver&) final;
     void removeExtensiveObserver(ExtensiveObserver&) final;
 
-    RetainPtr<WebCoreAudioCaptureSourceIOSListener> m_listener;
+    RetainPtr<CyberCoreAudioCaptureSourceIOSListener> m_listener;
     WeakHashSet<ExtensiveObserver> m_observers;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM) && PLATFORM(IOS_FAMILY)

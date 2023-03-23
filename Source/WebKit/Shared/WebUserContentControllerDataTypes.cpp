@@ -26,7 +26,7 @@
 #include "config.h"
 #include "WebUserContentControllerDataTypes.h"
 
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 
 namespace WebKit {
 
@@ -49,7 +49,7 @@ std::optional<WebUserScriptData> WebUserScriptData::decode(IPC::Decoder& decoder
     if (!worldIdentifier)
         return std::nullopt;
     
-    std::optional<WebCore::UserScript> userScript;
+    std::optional<CyberCore::UserScript> userScript;
     decoder >> userScript;
     if (!userScript)
         return std::nullopt;
@@ -76,7 +76,7 @@ std::optional<WebUserStyleSheetData> WebUserStyleSheetData::decode(IPC::Decoder&
     if (!worldIdentifier)
         return std::nullopt;
     
-    WebCore::UserStyleSheet userStyleSheet;
+    CyberCore::UserStyleSheet userStyleSheet;
     if (!decoder.decode(userStyleSheet))
         return std::nullopt;
     

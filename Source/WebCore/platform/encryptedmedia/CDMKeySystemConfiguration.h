@@ -36,7 +36,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct CDMKeySystemConfiguration {
     using KeysRequirement = CDMRequirement;
@@ -50,6 +50,6 @@ struct CDMKeySystemConfiguration {
     Vector<CDMSessionType> sessionTypes;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ENCRYPTED_MEDIA)

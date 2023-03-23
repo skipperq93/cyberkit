@@ -29,7 +29,7 @@
 #import "Utilities.h"
 #import <CyberCore/SharedBuffer.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 namespace TestWebKitAPI {
 

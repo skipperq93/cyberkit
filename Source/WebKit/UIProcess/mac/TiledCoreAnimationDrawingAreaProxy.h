@@ -49,8 +49,8 @@ private:
     void updateAcceleratedCompositingMode(uint64_t backingStoreStateID, const LayerTreeContext&) override;
     void didFirstLayerFlush(uint64_t /* backingStoreStateID */, const LayerTreeContext&) override;
 
-    void adjustTransientZoom(double scale, WebCore::FloatPoint origin) override;
-    void commitTransientZoom(double scale, WebCore::FloatPoint origin) override;
+    void adjustTransientZoom(double scale, CyberCore::FloatPoint origin) override;
+    void commitTransientZoom(double scale, CyberCore::FloatPoint origin) override;
 
     void waitForDidUpdateActivityState(ActivityStateChangeID, WebProcessProxy&) override;
     void dispatchPresentationCallbacksAfterFlushingLayers(IPC::Connection&, Vector<IPC::AsyncReplyID>&&) final;
@@ -70,13 +70,13 @@ private:
     bool m_isWaitingForDidUpdateGeometry { false };
 
     // The last size we sent to the web process.
-    WebCore::IntSize m_lastSentSize;
+    CyberCore::IntSize m_lastSentSize;
 
     // The last minimum layout size we sent to the web process.
-    WebCore::IntSize m_lastSentMinimumSizeForAutoLayout;
+    CyberCore::IntSize m_lastSentMinimumSizeForAutoLayout;
 
     // The last maxmium size for size-to-content auto-sizing we sent to the web process.
-    WebCore::IntSize m_lastSentSizeToContentAutoSizeMaximumSize;
+    CyberCore::IntSize m_lastSentSizeToContentAutoSizeMaximumSize;
 };
 
 } // namespace WebKit

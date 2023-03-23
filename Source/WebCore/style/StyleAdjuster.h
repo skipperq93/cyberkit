@@ -29,7 +29,7 @@
 #include "TextSizeAdjustment.h"
 #include <wtf/OptionSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class Element;

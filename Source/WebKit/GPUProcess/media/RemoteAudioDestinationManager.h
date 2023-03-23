@@ -37,7 +37,7 @@
 #if PLATFORM(COCOA)
 #include "SharedCARingBuffer.h"
 
-namespace WebCore {
+namespace CyberCore {
 class CAAudioStreamDescription;
 }
 #endif

@@ -27,7 +27,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class Element;
@@ -113,4 +113,4 @@ private:
     std::unique_ptr<HashMap<String, Ref<Element>>> m_linkedDestinations;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

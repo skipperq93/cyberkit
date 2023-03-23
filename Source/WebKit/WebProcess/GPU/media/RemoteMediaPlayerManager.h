@@ -33,11 +33,11 @@
 #include <CyberCore/MediaPlayerIdentifier.h>
 #include <wtf/HashMap.h>
 
-namespace WebCore {
+namespace CyberCore {
 class MediaPlayerPrivateInterface;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class MediaPlayerPrivateRemote;
 class RemoteMediaPlayerMIMETypeCache;
@@ -62,14 +62,14 @@ public:
 
     void didReceivePlayerMessage(IPC::Connection&, IPC::Decoder&);
 
-    void deleteRemoteMediaPlayer(WebCore::MediaPlayerIdentifier);
+    void deleteRemoteMediaPlayer(CyberCore::MediaPlayerIdentifier);
 
-    WebCore::MediaPlayerIdentifier findRemotePlayerId(const WebCore::MediaPlayerPrivateInterface*);
+    CyberCore::MediaPlayerIdentifier findRemotePlayerId(const CyberCore::MediaPlayerPrivateInterface*);
 
-    RemoteMediaPlayerMIMETypeCache& typeCache(WebCore::MediaPlayerEnums::MediaEngineIdentifier);
+    RemoteMediaPlayerMIMETypeCache& typeCache(CyberCore::MediaPlayerEnums::MediaEngineIdentifier);
 
 private:
-    std::unique_ptr<WebCore::MediaPlayerPrivateInterface> createRemoteMediaPlayer(WebCore::MediaPlayer*, WebCore::MediaPlayerEnums::MediaEngineIdentifier);
+    std::unique_ptr<CyberCore::MediaPlayerPrivateInterface> createRemoteMediaPlayer(CyberCore::MediaPlayer*, CyberCore::MediaPlayerEnums::MediaEngineIdentifier);
 
     // WebProcessSupplement
     void initialize(const WebProcessCreationParameters&) final;
@@ -78,18 +78,18 @@ private:
     void gpuProcessConnectionDidClose(GPUProcessConnection&) final;
 
     friend class MediaPlayerRemoteFactory;
-    void getSupportedTypes(WebCore::MediaPlayerEnums::MediaEngineIdentifier, HashSet<String, ASCIICaseInsensitiveHash>&);
-    WebCore::MediaPlayer::SupportsType supportsTypeAndCodecs(WebCore::MediaPlayerEnums::MediaEngineIdentifier, const WebCore::MediaEngineSupportParameters&);
-    bool supportsKeySystem(WebCore::MediaPlayerEnums::MediaEngineIdentifier, const String& keySystem, const String& mimeType);
-    HashSet<WebCore::SecurityOriginData> originsInMediaCache(WebCore::MediaPlayerEnums::MediaEngineIdentifier, const String&);
-    void clearMediaCache(WebCore::MediaPlayerEnums::MediaEngineIdentifier, const String&, WallTime modifiedSince);
-    void clearMediaCacheForOrigins(WebCore::MediaPlayerEnums::MediaEngineIdentifier, const String&, const HashSet<WebCore::SecurityOriginData>&);
+    void getSupportedTypes(CyberCore::MediaPlayerEnums::MediaEngineIdentifier, HashSet<String, ASCIICaseInsensitiveHash>&);
+    CyberCore::MediaPlayer::SupportsType supportsTypeAndCodecs(CyberCore::MediaPlayerEnums::MediaEngineIdentifier, const CyberCore::MediaEngineSupportParameters&);
+    bool supportsKeySystem(CyberCore::MediaPlayerEnums::MediaEngineIdentifier, const String& keySystem, const String& mimeType);
+    HashSet<CyberCore::SecurityOriginData> originsInMediaCache(CyberCore::MediaPlayerEnums::MediaEngineIdentifier, const String&);
+    void clearMediaCache(CyberCore::MediaPlayerEnums::MediaEngineIdentifier, const String&, WallTime modifiedSince);
+    void clearMediaCacheForOrigins(CyberCore::MediaPlayerEnums::MediaEngineIdentifier, const String&, const HashSet<CyberCore::SecurityOriginData>&);
 
-    HashMap<WebCore::MediaPlayerIdentifier, WeakPtr<MediaPlayerPrivateRemote>> m_players;
+    HashMap<CyberCore::MediaPlayerIdentifier, WeakPtr<MediaPlayerPrivateRemote>> m_players;
     WebProcess& m_process;
     mutable GPUProcessConnection* m_gpuProcessConnection { nullptr };
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS) && ENABLE(VIDEO)

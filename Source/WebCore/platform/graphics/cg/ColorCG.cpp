@@ -38,21 +38,21 @@
 #include <wtf/StdLibExtras.h>
 #include <wtf/TinyLRUCache.h>
 
-namespace WebCore {
+namespace CyberCore {
 static RetainPtr<CGColorRef> createCGColor(const Color&);
 }
 
 namespace WTF {
 
 template<>
-RetainPtr<CGColorRef> TinyLRUCachePolicy<WebCore::Color, RetainPtr<CGColorRef>>::createValueForKey(const WebCore::Color& color)
+RetainPtr<CGColorRef> TinyLRUCachePolicy<CyberCore::Color, RetainPtr<CGColorRef>>::createValueForKey(const CyberCore::Color& color)
 {
-    return WebCore::createCGColor(color);
+    return CyberCore::createCGColor(color);
 }
 
 } // namespace WTF
 
-namespace WebCore {
+namespace CyberCore {
 
 std::optional<SRGBA<uint8_t>> roundAndClampToSRGBALossy(CGColorRef color)
 {

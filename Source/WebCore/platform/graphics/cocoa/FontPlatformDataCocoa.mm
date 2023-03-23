@@ -35,7 +35,7 @@
 #import <pal/spi/cg/CoreGraphicsSPI.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 unsigned FontPlatformData::hash() const
 {
@@ -68,4 +68,4 @@ Vector<FontPlatformData::FontVariationAxis> FontPlatformData::variationAxes(Shou
 }
 
 
-} // namespace WebCore
+} // namespace CyberCore

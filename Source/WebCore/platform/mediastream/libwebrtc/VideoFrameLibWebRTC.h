@@ -41,7 +41,7 @@ ALLOW_COMMA_END
 using CVPixelBufferRef = struct __CVBuffer*;
 
 
-namespace WebCore {
+namespace CyberCore {
 
 class VideoFrameLibWebRTC final : public VideoFrame {
 public:
@@ -71,8 +71,8 @@ private:
 
 }
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::VideoFrameLibWebRTC)
-    static bool isType(const WebCore::VideoFrame& videoFrame) { return videoFrame.isLibWebRTC(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::VideoFrameLibWebRTC)
+    static bool isType(const CyberCore::VideoFrame& videoFrame) { return videoFrame.isLibWebRTC(); }
 SPECIALIZE_TYPE_TRAITS_END()
 
 #endif // PLATFORM(COCOA) && USE(LIBWEBRTC)

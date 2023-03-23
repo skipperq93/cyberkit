@@ -30,7 +30,7 @@
 #include "TextureMapperPlatformLayerBuffer.h"
 #include "TextureMapperPlatformLayerProxy.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 TextureMapperGCGLPlatformLayer::TextureMapperGCGLPlatformLayer(GraphicsContextGLTextureMapperANGLE& context)
     : m_context(context)
@@ -52,6 +52,6 @@ void TextureMapperGCGLPlatformLayer::paintToTextureMapper(TextureMapper& texture
     texmapGL.drawTexture(m_context.m_compositorTexture, flags, textureSize, targetRect, matrix, opacity);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBGL) && USE(TEXTURE_MAPPER)

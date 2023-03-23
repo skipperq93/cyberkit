@@ -27,7 +27,7 @@
 
 #include <optional>
 
-namespace WebCore {
+namespace CyberCore {
     
 struct MediaCapabilitiesInfo {
     bool supported { false };
@@ -42,5 +42,5 @@ inline MediaCapabilitiesInfo MediaCapabilitiesInfo::isolatedCopy() const
     return *this;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 

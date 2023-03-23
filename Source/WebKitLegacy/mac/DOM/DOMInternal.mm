@@ -42,7 +42,7 @@
 #endif
 
 //------------------------------------------------------------------------------------------
-// Wrapping WebCore implementation objects
+// Wrapping CyberCore implementation objects
 
 #ifdef NEEDS_WRAPPER_CACHE_LOCK
 static Lock wrapperCacheLock;
@@ -109,20 +109,20 @@ void removeDOMWrapper(DOMObjectInternal* impl)
         return;
     }
     
-    // Extract the WebCore::Node from the ObjectiveC wrapper.
+    // Extract the CyberCore::Node from the ObjectiveC wrapper.
     DOMNode *n = (DOMNode *)self;
-    WebCore::Node *nodeImpl = core(n);
+    CyberCore::Node *nodeImpl = core(n);
 
     // Dig up Interpreter and ExecState.
-    WebCore::Frame *frame = nodeImpl->document().frame();
+    CyberCore::Frame *frame = nodeImpl->document().frame();
     if (!frame)
         return;
 
     // The global object which should own this node - FIXME: does this need to be isolated-world aware?
-    WebCore::JSDOMGlobalObject* globalObject = frame->script().globalObject(WebCore::mainThreadNormalWorld());
+    CyberCore::JSDOMGlobalObject* globalObject = frame->script().globalObject(CyberCore::mainThreadNormalWorld());
 
     // Get (or create) a cached JS object for the DOM node.
-    JSC::JSObject *scriptImp = asObject(WebCore::toJS(globalObject, globalObject, nodeImpl));
+    JSC::JSObject *scriptImp = asObject(CyberCore::toJS(globalObject, globalObject, nodeImpl));
 
     JSC::Bindings::RootObject* rootObject = frame->script().bindingRootObject();
 

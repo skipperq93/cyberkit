@@ -38,22 +38,22 @@
 #include <wtf/Noncopyable.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 class Document;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPage;
 
-class WebFoundTextRangeController : private WebCore::PageOverlay::Client {
+class WebFoundTextRangeController : private CyberCore::PageOverlay::Client {
     WTF_MAKE_FAST_ALLOCATED;
     WTF_MAKE_NONCOPYABLE(WebFoundTextRangeController);
 
 public:
     explicit WebFoundTextRangeController(WebPage&);
 
-    void findTextRangesForStringMatches(const String&, OptionSet<FindOptions>, uint32_t maxMatchCount, CompletionHandler<void(Vector<WebKit::WebFoundTextRange>&&)>&&);
+    void findTextRangesForStringMatches(const String&, OptionSet<FindOptions>, uint32_t maxMatchCount, CompletionHandler<void(Vector<CyberKit::WebFoundTextRange>&&)>&&);
 
     void replaceFoundTextRangeWithString(const WebFoundTextRange&, const String&);
 
@@ -65,38 +65,38 @@ public:
     void didBeginTextSearchOperation();
     void didEndTextSearchOperation();
 
-    void addLayerForFindOverlay(CompletionHandler<void(WebCore::GraphicsLayer::PlatformLayerID)>&&);
+    void addLayerForFindOverlay(CompletionHandler<void(CyberCore::GraphicsLayer::PlatformLayerID)>&&);
     void removeLayerForFindOverlay();
 
-    void requestRectForFoundTextRange(const WebFoundTextRange&, CompletionHandler<void(WebCore::FloatRect)>&&);
+    void requestRectForFoundTextRange(const WebFoundTextRange&, CompletionHandler<void(CyberCore::FloatRect)>&&);
 
     void redraw();
 
 private:
     // PageOverlay::Client.
-    void willMoveToPage(WebCore::PageOverlay&, WebCore::Page*) override;
-    void didMoveToPage(WebCore::PageOverlay&, WebCore::Page*) override;
-    bool mouseEvent(WebCore::PageOverlay&, const WebCore::PlatformMouseEvent&) override;
-    void drawRect(WebCore::PageOverlay&, WebCore::GraphicsContext&, const WebCore::IntRect& dirtyRect) override;
+    void willMoveToPage(CyberCore::PageOverlay&, CyberCore::Page*) override;
+    void didMoveToPage(CyberCore::PageOverlay&, CyberCore::Page*) override;
+    bool mouseEvent(CyberCore::PageOverlay&, const CyberCore::PlatformMouseEvent&) override;
+    void drawRect(CyberCore::PageOverlay&, CyberCore::GraphicsContext&, const CyberCore::IntRect& dirtyRect) override;
 
-    RefPtr<WebCore::TextIndicator> createTextIndicatorForRange(const WebCore::SimpleRange&, WebCore::TextIndicatorPresentationTransition);
-    void setTextIndicatorWithRange(const WebCore::SimpleRange&);
-    void flashTextIndicatorAndUpdateSelectionWithRange(const WebCore::SimpleRange&);
+    RefPtr<CyberCore::TextIndicator> createTextIndicatorForRange(const CyberCore::SimpleRange&, CyberCore::TextIndicatorPresentationTransition);
+    void setTextIndicatorWithRange(const CyberCore::SimpleRange&);
+    void flashTextIndicatorAndUpdateSelectionWithRange(const CyberCore::SimpleRange&);
 
-    Vector<WebCore::FloatRect> rectsForTextMatchesInRect(WebCore::IntRect clipRect);
+    Vector<CyberCore::FloatRect> rectsForTextMatchesInRect(CyberCore::IntRect clipRect);
 
-    WebCore::Document* documentForFoundTextRange(const WebFoundTextRange&) const;
-    std::optional<WebCore::SimpleRange> simpleRangeFromFoundTextRange(WebFoundTextRange);
+    CyberCore::Document* documentForFoundTextRange(const WebFoundTextRange&) const;
+    std::optional<CyberCore::SimpleRange> simpleRangeFromFoundTextRange(WebFoundTextRange);
 
     WeakPtr<WebPage> m_webPage;
-    RefPtr<WebCore::PageOverlay> m_findPageOverlay;
+    RefPtr<CyberCore::PageOverlay> m_findPageOverlay;
 
     WebFoundTextRange m_highlightedRange;
 
-    HashMap<WebFoundTextRange, std::optional<WebCore::SimpleRange>> m_cachedFoundRanges;
+    HashMap<WebFoundTextRange, std::optional<CyberCore::SimpleRange>> m_cachedFoundRanges;
     HashMap<WebFoundTextRange, FindDecorationStyle> m_decoratedRanges;
 
-    RefPtr<WebCore::TextIndicator> m_textIndicator;
+    RefPtr<CyberCore::TextIndicator> m_textIndicator;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

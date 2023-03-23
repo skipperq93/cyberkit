@@ -42,7 +42,7 @@
 #include "RemoteRenderingBackendMessages.h"
 #include "RemoteRenderingBackendProxyMessages.h"
 #include "SwapBuffersDisplayRequirement.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include <CyberCore/HTMLCanvasElement.h>
 #include <wtf/CheckedArithmetic.h>
 #include <wtf/StdLibExtras.h>
@@ -79,7 +79,7 @@
 } while (0)
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 Ref<RemoteRenderingBackend> RemoteRenderingBackend::create(GPUConnectionToWebProcess& gpuConnectionToWebProcess, RemoteRenderingBackendCreationParameters&& creationParameters, IPC::StreamServerConnection::Handle&& connectionHandle)
 {
@@ -174,7 +174,7 @@ void RemoteRenderingBackend::createImageBuffer(const FloatSize& logicalSize, Ren
     createImageBufferWithQualifiedIdentifier(logicalSize, renderingMode, purpose, resolutionScale, colorSpace, pixelFormat, { imageBufferResourceIdentifier, m_gpuConnectionToWebProcess->webProcessIdentifier() });
 }
 
-void RemoteRenderingBackend::moveToSerializedBuffer(WebCore::RenderingResourceIdentifier identifier, RemoteSerializedImageBufferWriteReference&& reference)
+void RemoteRenderingBackend::moveToSerializedBuffer(CyberCore::RenderingResourceIdentifier identifier, RemoteSerializedImageBufferWriteReference&& reference)
 {
     // This transfers onwership of the ImageBufferBackend to the GPUConnectionToWebProcess's heap, and lets the RemoteImageBuffer be released.
     // That's because the RemoteImageBuffer also has a RemoteDisplayList, which is an IPC object and can't easily be transferred to a different
@@ -185,7 +185,7 @@ void RemoteRenderingBackend::moveToSerializedBuffer(WebCore::RenderingResourceId
     m_gpuConnectionToWebProcess->serializedImageBufferHeap().retire(WTFMove(reference), WTFMove(data), std::nullopt);
 }
 
-void RemoteRenderingBackend::moveToImageBuffer(RemoteSerializedImageBufferWriteReference&& reference, WebCore::RenderingResourceIdentifier identifier)
+void RemoteRenderingBackend::moveToImageBuffer(RemoteSerializedImageBufferWriteReference&& reference, CyberCore::RenderingResourceIdentifier identifier)
 {
     QualifiedRenderingResourceIdentifier qualifiedIdentifier { identifier, m_gpuConnectionToWebProcess->webProcessIdentifier() };
     RemoteSerializedImageBufferReadReference readReference(reference.reference());

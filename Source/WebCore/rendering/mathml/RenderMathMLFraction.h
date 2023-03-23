@@ -32,7 +32,7 @@
 #include "MathMLFractionElement.h"
 #include "RenderMathMLBlock.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class MathMLFractionElement;
 
@@ -70,7 +70,7 @@ private:
     LayoutUnit fractionAscent() const;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderMathMLFraction, isRenderMathMLFraction())
 

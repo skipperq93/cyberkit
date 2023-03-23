@@ -35,9 +35,9 @@
 #import <wtf/Vector.h>
 #import <wtf/cf/TypeCastsCF.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
-namespace WebCoreTestSupport {
+namespace CyberCoreTestSupport {
 
 static RetainPtr<CFURLResponseRef> createCFURLResponseFromResponseData(CFDataRef responseData)
 {
@@ -269,4 +269,4 @@ RetainPtr<CFStringRef> createXMLStringFromWebArchiveData(CFDataRef webArchiveDat
     return string;
 }
 
-} // namespace WebCoreTestSupport
+} // namespace CyberCoreTestSupport

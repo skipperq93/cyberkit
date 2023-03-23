@@ -29,7 +29,7 @@
 
 #import "ControlMac.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class InnerSpinButtonPart;
 
@@ -43,6 +43,6 @@ private:
     void draw(GraphicsContext&, const FloatRoundedRect& borderRect, float deviceScaleFactor, const ControlStyle&) override;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(MAC)

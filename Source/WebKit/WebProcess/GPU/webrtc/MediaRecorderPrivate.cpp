@@ -44,9 +44,9 @@
 
 #include <pal/cf/CoreMediaSoftLink.h>
 
-namespace WebKit {
+namespace CyberKit {
 using namespace PAL;
-using namespace WebCore;
+using namespace CyberCore;
 
 MediaRecorderPrivate::MediaRecorderPrivate(MediaStreamPrivate& stream, const MediaRecorderPrivateOptions& options)
     : m_identifier(MediaRecorderIdentifier::generate())
@@ -94,7 +94,7 @@ void MediaRecorderPrivate::videoFrameAvailable(VideoFrame& videoFrame, VideoFram
     if (shouldMuteVideo()) {
         if (!m_blackFrameSize) {
             auto size = videoFrame.presentationSize();
-            m_blackFrameSize = WebCore::IntSize { static_cast<int>(size.width()), static_cast<int>(size.height()) };
+            m_blackFrameSize = CyberCore::IntSize { static_cast<int>(size.width()), static_cast<int>(size.height()) };
         }
         SharedVideoFrame sharedVideoFrame { videoFrame.presentationTime(), videoFrame.isMirrored(), videoFrame.rotation(), *m_blackFrameSize };
         m_connection->send(Messages::RemoteMediaRecorder::VideoFrameAvailable { sharedVideoFrame }, m_identifier);
@@ -143,7 +143,7 @@ void MediaRecorderPrivate::audioSamplesAvailable(const MediaTime& time, const Pl
     m_connection->send(Messages::RemoteMediaRecorder::AudioSamplesAvailable { time, numberOfFrames }, m_identifier);
 }
 
-void MediaRecorderPrivate::fetchData(CompletionHandler<void(RefPtr<WebCore::FragmentedSharedBuffer>&&, const String& mimeType, double)>&& completionHandler)
+void MediaRecorderPrivate::fetchData(CompletionHandler<void(RefPtr<CyberCore::FragmentedSharedBuffer>&&, const String& mimeType, double)>&& completionHandler)
 {
     m_connection->sendWithAsyncReply(Messages::RemoteMediaRecorder::FetchData { }, [completionHandler = WTFMove(completionHandler), mimeType = mimeType()](auto&& data, double timeCode) mutable {
         // FIXME: If completion handler is called following a GPUProcess connection being closed, we should fail the MediaRecorder.

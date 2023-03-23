@@ -40,7 +40,7 @@ class VirtualService : public AuthenticatorTransportService {
 public:
     explicit VirtualService(Observer&, Vector<std::pair<String, VirtualAuthenticatorConfiguration>>&);
 
-    static UniqueRef<AuthenticatorTransportService> createVirtual(WebCore::AuthenticatorTransport, Observer&, Vector<std::pair<String, VirtualAuthenticatorConfiguration>>&);
+    static UniqueRef<AuthenticatorTransportService> createVirtual(CyberCore::AuthenticatorTransport, Observer&, Vector<std::pair<String, VirtualAuthenticatorConfiguration>>&);
 private:
     void startDiscoveryInternal() final;
 

@@ -29,7 +29,7 @@
 #include "IdentityTransformOperation.h"
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 void IdentityTransformOperation::dump(TextStream& ts) const
 {
@@ -107,4 +107,4 @@ std::optional<TransformOperation::Type> TransformOperation::sharedPrimitiveType(
     return sharedPrimitiveType(other->primitiveType());
 }
 
-} // namespace WebCore
+} // namespace CyberCore

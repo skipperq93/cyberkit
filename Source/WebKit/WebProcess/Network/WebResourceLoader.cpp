@@ -32,7 +32,7 @@
 #include "NetworkResourceLoaderMessages.h"
 #include "PrivateRelayed.h"
 #include "SharedBufferReference.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebErrors.h"
 #include "WebFrame.h"
 #include "WebFrameLoaderClient.h"
@@ -48,7 +48,7 @@
 #include <CyberCore/Frame.h>
 #include <CyberCore/FrameLoader.h>
 #include <CyberCore/FrameLoaderClient.h>
-#include <CyberCore/InspectorInstrumentationWebKit.h>
+#include <CyberCore/InspectorInstrumentationCyberKit.h>
 #include <CyberCore/NetworkLoadMetrics.h>
 #include <CyberCore/Page.h>
 #include <CyberCore/ResourceError.h>
@@ -59,15 +59,15 @@
 
 #define WEBRESOURCELOADER_RELEASE_LOG(fmt, ...) RELEASE_LOG(Network, "%p - [webPageID=%" PRIu64 ", frameID=%" PRIu64 ", resourceID=%" PRIu64 "] WebResourceLoader::" fmt, this, m_trackingParameters.pageID.toUInt64(), m_trackingParameters.frameID.object().toUInt64(), m_trackingParameters.resourceID.toUInt64(), ##__VA_ARGS__)
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 Ref<WebResourceLoader> WebResourceLoader::create(Ref<ResourceLoader>&& coreLoader, const TrackingParameters& trackingParameters)
 {
     return adoptRef(*new WebResourceLoader(WTFMove(coreLoader), trackingParameters));
 }
 
-WebResourceLoader::WebResourceLoader(Ref<WebCore::ResourceLoader>&& coreLoader, const TrackingParameters& trackingParameters)
+WebResourceLoader::WebResourceLoader(Ref<CyberCore::ResourceLoader>&& coreLoader, const TrackingParameters& trackingParameters)
     : m_coreLoader(WTFMove(coreLoader))
     , m_trackingParameters(trackingParameters)
 {
@@ -186,10 +186,10 @@ void WebResourceLoader::didReceiveResponse(ResourceResponse&& response, PrivateR
         };
     }
 
-    if (InspectorInstrumentationWebKit::shouldInterceptResponse(m_coreLoader->frame(), response)) {
+    if (InspectorInstrumentationCyberKit::shouldInterceptResponse(m_coreLoader->frame(), response)) {
         auto interceptedRequestIdentifier = m_coreLoader->identifier();
         m_interceptController.beginInterceptingResponse(interceptedRequestIdentifier);
-        InspectorInstrumentationWebKit::interceptResponse(m_coreLoader->frame(), response, interceptedRequestIdentifier, [this, protectedThis = Ref { *this }, interceptedRequestIdentifier, policyDecisionCompletionHandler = WTFMove(policyDecisionCompletionHandler)](const ResourceResponse& inspectorResponse, RefPtr<FragmentedSharedBuffer> overrideData) mutable {
+        InspectorInstrumentationCyberKit::interceptResponse(m_coreLoader->frame(), response, interceptedRequestIdentifier, [this, protectedThis = Ref { *this }, interceptedRequestIdentifier, policyDecisionCompletionHandler = WTFMove(policyDecisionCompletionHandler)](const ResourceResponse& inspectorResponse, RefPtr<FragmentedSharedBuffer> overrideData) mutable {
             if (!m_coreLoader || !m_coreLoader->identifier()) {
                 WEBRESOURCELOADER_RELEASE_LOG("didReceiveResponse: not continuing intercept load because no coreLoader or no ID");
                 m_interceptController.continueResponse(interceptedRequestIdentifier);
@@ -205,14 +205,14 @@ void WebResourceLoader::didReceiveResponse(ResourceResponse&& response, PrivateR
                     return;
                 }
 
-                RefPtr<WebCore::ResourceLoader> protectedCoreLoader = m_coreLoader;
+                RefPtr<CyberCore::ResourceLoader> protectedCoreLoader = m_coreLoader;
                 if (!overrideData)
                     m_interceptController.continueResponse(interceptedRequestIdentifier);
                 else {
                     m_interceptController.interceptedResponse(interceptedRequestIdentifier);
                     if (unsigned bufferSize = overrideData->size())
                         protectedCoreLoader->didReceiveBuffer(overrideData.releaseNonNull(), bufferSize, DataPayloadWholeResource);
-                    WebCore::NetworkLoadMetrics emptyMetrics;
+                    CyberCore::NetworkLoadMetrics emptyMetrics;
                     protectedCoreLoader->didFinishLoading(emptyMetrics);
                 }
             });
@@ -337,7 +337,7 @@ void WebResourceLoader::didReceiveResource(const ShareableResource::Handle& hand
         WEBRESOURCELOADER_RELEASE_LOG("didReceiveResource: Unable to create FragmentedSharedBuffer");
         if (auto* frame = m_coreLoader->frame()) {
             if (auto* page = frame->page())
-                page->diagnosticLoggingClient().logDiagnosticMessage(WebCore::DiagnosticLoggingKeys::internalErrorKey(), WebCore::DiagnosticLoggingKeys::createSharedBufferFailedKey(), WebCore::ShouldSample::No);
+                page->diagnosticLoggingClient().logDiagnosticMessage(CyberCore::DiagnosticLoggingKeys::internalErrorKey(), CyberCore::DiagnosticLoggingKeys::createSharedBufferFailedKey(), CyberCore::ShouldSample::No);
         }
         m_coreLoader->didFail(internalError(m_coreLoader->request().url()));
         return;
@@ -358,7 +358,7 @@ void WebResourceLoader::didReceiveResource(const ShareableResource::Handle& hand
 #endif
 
 #if ENABLE(CONTENT_FILTERING_IN_NETWORKING_PROCESS)
-void WebResourceLoader::contentFilterDidBlockLoad(const WebCore::ContentFilterUnblockHandler& unblockHandler, String&& unblockRequestDeniedScript, const ResourceError& error, const URL& blockedPageURL,  WebCore::SubstituteData&& substituteData)
+void WebResourceLoader::contentFilterDidBlockLoad(const CyberCore::ContentFilterUnblockHandler& unblockHandler, String&& unblockRequestDeniedScript, const ResourceError& error, const URL& blockedPageURL,  CyberCore::SubstituteData&& substituteData)
 {
     if (!m_coreLoader || !m_coreLoader->documentLoader())
         return;
@@ -370,6 +370,6 @@ void WebResourceLoader::contentFilterDidBlockLoad(const WebCore::ContentFilterUn
 }
 #endif // ENABLE(CONTENT_FILTERING_IN_NETWORKING_PROCESS)
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #undef WEBRESOURCELOADER_RELEASE_LOG

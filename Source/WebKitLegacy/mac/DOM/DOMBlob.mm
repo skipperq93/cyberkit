@@ -31,18 +31,18 @@
 #import "ExceptionHandlers.h"
 #import <CyberCore/JSExecState.h>
 #import <CyberCore/ThreadCheck.h>
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 #import <CyberCore/WebScriptObjectPrivate.h>
 #import <wtf/GetPtr.h>
 #import <wtf/URL.h>
 
-#define IMPL reinterpret_cast<WebCore::Blob*>(_internal)
+#define IMPL reinterpret_cast<CyberCore::Blob*>(_internal)
 
 @implementation DOMBlob
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainThread([DOMBlob class], self))
+    if (CyberCoreObjCScheduleDeallocateOnMainThread([DOMBlob class], self))
         return;
 
     if (_internal)
@@ -52,21 +52,21 @@
 
 - (unsigned long long)size
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->size();
 }
 
 - (NSString *)type
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->type();
 }
 
 @end
 
-DOMBlob *kit(WebCore::Blob* value)
+DOMBlob *kit(CyberCore::Blob* value)
 {
-    WebCoreThreadViolationCheckRoundOne();
+    CyberCoreThreadViolationCheckRoundOne();
     if (!value)
         return nil;
     if (DOMBlob *wrapper = getDOMWrapper(value))

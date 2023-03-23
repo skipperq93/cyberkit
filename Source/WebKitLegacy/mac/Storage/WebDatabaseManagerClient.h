@@ -26,15 +26,15 @@
 #import <CyberCore/DatabaseManagerClient.h>
 #import <wtf/NeverDestroyed.h>
 
-namespace WebKit {
+namespace CyberKit {
 
-class WebDatabaseManagerClient final : public WebCore::DatabaseManagerClient {
+class WebDatabaseManagerClient final : public CyberCore::DatabaseManagerClient {
 public:
     static WebDatabaseManagerClient& sharedWebDatabaseManagerClient();
     
     virtual ~WebDatabaseManagerClient();
-    void dispatchDidModifyOrigin(const WebCore::SecurityOriginData&) final;
-    void dispatchDidModifyDatabase(const WebCore::SecurityOriginData&, const WTF::String& databaseIdentifier) final;
+    void dispatchDidModifyOrigin(const CyberCore::SecurityOriginData&) final;
+    void dispatchDidModifyDatabase(const CyberCore::SecurityOriginData&, const WTF::String& databaseIdentifier) final;
 
 #if PLATFORM(IOS_FAMILY)
     void dispatchDidAddNewOrigin() final;
@@ -58,4 +58,4 @@ private:
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit

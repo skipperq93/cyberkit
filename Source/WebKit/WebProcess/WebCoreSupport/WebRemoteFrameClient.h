@@ -29,9 +29,9 @@
 #include <CyberCore/RemoteFrameClient.h>
 #include <wtf/Scope.h>
 
-namespace WebKit {
+namespace CyberKit {
 
-class WebRemoteFrameClient final : public WebCore::RemoteFrameClient {
+class WebRemoteFrameClient final : public CyberCore::RemoteFrameClient {
 public:
     explicit WebRemoteFrameClient(Ref<WebFrame>&&, ScopeExit<Function<void()>>&& frameInvalidator);
     ~WebRemoteFrameClient();
@@ -40,7 +40,7 @@ public:
 
 private:
     void frameDetached() final;
-    void sizeDidChange(WebCore::IntSize) final;
+    void sizeDidChange(CyberCore::IntSize) final;
 
     Ref<WebFrame> m_frame;
     ScopeExit<Function<void()>> m_frameInvalidator;

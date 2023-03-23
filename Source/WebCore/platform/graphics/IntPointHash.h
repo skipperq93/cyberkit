@@ -28,17 +28,17 @@ namespace WTF {
     
 // The empty value is (0, INT_MIN), the deleted value is (INT_MIN, 0)
 struct IntPointHash {
-    static unsigned hash(const WebCore::IntPoint& p) { return pairIntHash(p.x(), p.y()); }
-    static bool equal(const WebCore::IntPoint& a, const WebCore::IntPoint& b) { return a == b; }
+    static unsigned hash(const CyberCore::IntPoint& p) { return pairIntHash(p.x(), p.y()); }
+    static bool equal(const CyberCore::IntPoint& a, const CyberCore::IntPoint& b) { return a == b; }
     static const bool safeToCompareToEmptyOrDeleted = true;
 };
-template<> struct HashTraits<WebCore::IntPoint> : GenericHashTraits<WebCore::IntPoint> {
-    static WebCore::IntPoint emptyValue() { return WebCore::IntPoint(0, std::numeric_limits<int>::min()); }
+template<> struct HashTraits<CyberCore::IntPoint> : GenericHashTraits<CyberCore::IntPoint> {
+    static CyberCore::IntPoint emptyValue() { return CyberCore::IntPoint(0, std::numeric_limits<int>::min()); }
     
-    static void constructDeletedValue(WebCore::IntPoint& slot) { slot.setX(std::numeric_limits<int>::min()); }
-    static bool isDeletedValue(const WebCore::IntPoint& slot) { return slot.x() == std::numeric_limits<int>::min(); }
+    static void constructDeletedValue(CyberCore::IntPoint& slot) { slot.setX(std::numeric_limits<int>::min()); }
+    static bool isDeletedValue(const CyberCore::IntPoint& slot) { return slot.x() == std::numeric_limits<int>::min(); }
 };
-template<> struct DefaultHash<WebCore::IntPoint> : IntPointHash { };
+template<> struct DefaultHash<CyberCore::IntPoint> : IntPointHash { };
 
 }
 

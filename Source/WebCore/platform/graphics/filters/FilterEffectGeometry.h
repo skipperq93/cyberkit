@@ -29,7 +29,7 @@
 #include <wtf/OptionSet.h>
 #include <wtf/Ref.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FilterEffect;
 
@@ -111,18 +111,18 @@ std::optional<FilterEffectGeometry> FilterEffectGeometry::decode(Decoder& decode
     return FilterEffectGeometry(*boundaries, *flags);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::FilterEffectGeometry::Flags> {
+template<> struct EnumTraits<CyberCore::FilterEffectGeometry::Flags> {
     using values = EnumValues<
-        WebCore::FilterEffectGeometry::Flags,
+        CyberCore::FilterEffectGeometry::Flags,
 
-        WebCore::FilterEffectGeometry::Flags::HasX,
-        WebCore::FilterEffectGeometry::Flags::HasY,
-        WebCore::FilterEffectGeometry::Flags::HasWidth,
-        WebCore::FilterEffectGeometry::Flags::HasHeight
+        CyberCore::FilterEffectGeometry::Flags::HasX,
+        CyberCore::FilterEffectGeometry::Flags::HasY,
+        CyberCore::FilterEffectGeometry::Flags::HasWidth,
+        CyberCore::FilterEffectGeometry::Flags::HasHeight
     >;
 };
 

@@ -28,7 +28,7 @@
 #include "WritingMode.h"
 #include <wtf/text/StringView.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FloatPoint;
 class FloatRect;
@@ -195,4 +195,4 @@ inline TextRun TextRun::isolatedCopy() const
 
 TextStream& operator<<(TextStream&, const TextRun&);
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -44,8 +44,8 @@
 #import "SharedBuffer.h"
 #import "SubresourceLoader.h"
 #import "SynchronousLoaderClient.h"
-#import "WebCoreResourceHandleAsOperationQueueDelegate.h"
-#import "WebCoreURLResponse.h"
+#import "CyberCoreResourceHandleAsOperationQueueDelegate.h"
+#import "CyberCoreURLResponse.h"
 #import <pal/spi/cf/CFNetworkSPI.h>
 #import <pal/spi/cocoa/NSURLConnectionSPI.h>
 #import <wtf/BlockObjCExceptions.h>
@@ -58,12 +58,12 @@
 
 #if PLATFORM(IOS_FAMILY)
 #import "RuntimeApplicationChecks.h"
-#import "WebCoreThreadRun.h"
+#import "CyberCoreThreadRun.h"
 #endif
 
-using namespace WebCore;
+using namespace CyberCore;
 
-namespace WebCore {
+namespace CyberCore {
     
 static void applyBasicAuthorizationHeader(ResourceRequest& request, const Credential& credential)
 {
@@ -315,9 +315,9 @@ id ResourceHandle::makeDelegate(bool shouldUseCredentialStorage, RefPtr<Synchron
     ASSERT(!d->m_delegate);
 
     if (shouldUseCredentialStorage)
-        d->m_delegate = adoptNS([[WebCoreResourceHandleAsOperationQueueDelegate alloc] initWithHandle:this messageQueue:WTFMove(queue)]);
+        d->m_delegate = adoptNS([[CyberCoreResourceHandleAsOperationQueueDelegate alloc] initWithHandle:this messageQueue:WTFMove(queue)]);
     else
-        d->m_delegate = adoptNS([[WebCoreResourceHandleWithCredentialStorageAsOperationQueueDelegate alloc] initWithHandle:this messageQueue:WTFMove(queue)]);
+        d->m_delegate = adoptNS([[CyberCoreResourceHandleWithCredentialStorageAsOperationQueueDelegate alloc] initWithHandle:this messageQueue:WTFMove(queue)]);
 
     return d->m_delegate.get();
 }
@@ -344,7 +344,7 @@ NSURLConnection *ResourceHandle::connection() const
     
 CFStringRef ResourceHandle::synchronousLoadRunLoopMode()
 {
-    return CFSTR("WebCoreSynchronousLoaderRunLoopMode");
+    return CFSTR("CyberCoreSynchronousLoaderRunLoopMode");
 }
 
 void ResourceHandle::platformLoadResourceSynchronously(NetworkingContext* context, const ResourceRequest& request, StoredCredentialsPolicy storedCredentialsPolicy, SecurityOrigin* sourceOrigin, ResourceError& error, ResourceResponse& response, Vector<uint8_t>& data)
@@ -493,7 +493,7 @@ void ResourceHandle::didReceiveAuthenticationChallenge(const AuthenticationChall
 
 #if PLATFORM(IOS_FAMILY)
     // If the challenge is for a proxy protection space, look for default credentials in
-    // the keychain.  CFNetwork used to handle this until WebCore was changed to always
+    // the keychain.  CFNetwork used to handle this until CyberCore was changed to always
     // return NO to -connectionShouldUseCredentialStorage: for <rdar://problem/7704943>.
     if (!challenge.previousFailureCount() && challenge.protectionSpace().isProxy()) {
         RELEASE_ASSERT(hasProcessPrivilege(ProcessPrivilege::CanAccessCredentials));
@@ -582,10 +582,10 @@ void ResourceHandle::receivedCredential(const AuthenticationChallenge& challenge
     LOG(Network, "Handle %p receivedCredential", this);
 
     ASSERT(!challenge.isNull());
-    if (!AuthenticationChallengeBase::equalForWebKitLegacyChallengeComparison(challenge, d->m_currentWebChallenge))
+    if (!AuthenticationChallengeBase::equalForCyberKitLegacyChallengeComparison(challenge, d->m_currentWebChallenge))
         return;
 
-    // FIXME: Support empty credentials. Currently, an empty credential cannot be stored in WebCore credential storage, as that's empty value for its map.
+    // FIXME: Support empty credentials. Currently, an empty credential cannot be stored in CyberCore credential storage, as that's empty value for its map.
     if (credential.isEmpty()) {
         receivedRequestToContinueWithoutCredential(challenge);
         return;
@@ -612,7 +612,7 @@ void ResourceHandle::receivedRequestToContinueWithoutCredential(const Authentica
     LOG(Network, "Handle %p receivedRequestToContinueWithoutCredential", this);
 
     ASSERT(!challenge.isNull());
-    if (!AuthenticationChallengeBase::equalForWebKitLegacyChallengeComparison(challenge, d->m_currentWebChallenge))
+    if (!AuthenticationChallengeBase::equalForCyberKitLegacyChallengeComparison(challenge, d->m_currentWebChallenge))
         return;
 
     [[d->m_currentMacChallenge sender] continueWithoutCredentialForAuthenticationChallenge:d->m_currentMacChallenge];
@@ -624,7 +624,7 @@ void ResourceHandle::receivedCancellation(const AuthenticationChallenge& challen
 {
     LOG(Network, "Handle %p receivedCancellation", this);
 
-    if (!AuthenticationChallengeBase::equalForWebKitLegacyChallengeComparison(challenge, d->m_currentWebChallenge))
+    if (!AuthenticationChallengeBase::equalForCyberKitLegacyChallengeComparison(challenge, d->m_currentWebChallenge))
         return;
 
     if (client())
@@ -636,7 +636,7 @@ void ResourceHandle::receivedRequestToPerformDefaultHandling(const Authenticatio
     LOG(Network, "Handle %p receivedRequestToPerformDefaultHandling", this);
 
     ASSERT(!challenge.isNull());
-    if (!AuthenticationChallengeBase::equalForWebKitLegacyChallengeComparison(challenge, d->m_currentWebChallenge))
+    if (!AuthenticationChallengeBase::equalForCyberKitLegacyChallengeComparison(challenge, d->m_currentWebChallenge))
         return;
 
     [[d->m_currentMacChallenge sender] performDefaultHandlingForAuthenticationChallenge:d->m_currentMacChallenge];
@@ -649,7 +649,7 @@ void ResourceHandle::receivedChallengeRejection(const AuthenticationChallenge& c
     LOG(Network, "Handle %p receivedChallengeRejection", this);
 
     ASSERT(!challenge.isNull());
-    if (!AuthenticationChallengeBase::equalForWebKitLegacyChallengeComparison(challenge, d->m_currentWebChallenge))
+    if (!AuthenticationChallengeBase::equalForCyberKitLegacyChallengeComparison(challenge, d->m_currentWebChallenge))
         return;
 
     [[d->m_currentMacChallenge sender] rejectProtectionSpaceAndContinueWithChallenge:d->m_currentMacChallenge];
@@ -657,4 +657,4 @@ void ResourceHandle::receivedChallengeRejection(const AuthenticationChallenge& c
     clearAuthentication();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

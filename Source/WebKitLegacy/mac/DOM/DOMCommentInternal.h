@@ -25,8 +25,8 @@
 
 #import <CyberKitLegacy/DOMComment.h>
 
-namespace WebCore {
+namespace CyberCore {
 class Comment;
 }
 
-DOMComment *kit(WebCore::Comment*);
+DOMComment *kit(CyberCore::Comment*);

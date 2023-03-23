@@ -42,7 +42,7 @@
 
 #include "NicosiaGCGLANGLELayer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 RefPtr<GraphicsContextGLFallback> GraphicsContextGLFallback::create(GraphicsContextGLAttributes&& attributes)
 {
@@ -273,6 +273,6 @@ void GraphicsContextGLFallback::prepareForDisplay()
     markLayerComposited();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBGL) && USE(TEXTURE_MAPPER)

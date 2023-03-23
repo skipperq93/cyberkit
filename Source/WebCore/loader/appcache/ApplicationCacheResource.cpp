@@ -27,7 +27,7 @@
 #include "ApplicationCacheResource.h"
 #include <stdio.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<ApplicationCacheResource> ApplicationCacheResource::create(const URL& url, const ResourceResponse& response, unsigned type, RefPtr<FragmentedSharedBuffer>&& buffer, const String& path)
 {
@@ -101,4 +101,4 @@ void ApplicationCacheResource::dumpType(unsigned type)
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -30,7 +30,7 @@
 #include <AudioToolbox/AudioToolbox.h>
 #include <CoreAudio/CoreAudioTypes.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioMediaStreamTrackRendererUnit;
 class CAAudioStreamDescription;

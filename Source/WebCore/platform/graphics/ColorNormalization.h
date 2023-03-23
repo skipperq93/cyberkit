@@ -30,7 +30,7 @@
 #include "ColorTypes.h"
 #include <wtf/MathExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename ColorType> ColorType makeColorTypeByNormalizingComponents(const ColorComponents<float, 4>&);
 template<typename ColorType> Color makeCanonicalColor(ColorType);

@@ -41,7 +41,7 @@
 #define NEED_OPENSSL_THREAD_SUPPORT 0
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class CurlSSLHandle {
     WTF_MAKE_NONCOPYABLE(CurlSSLHandle);
@@ -118,4 +118,4 @@ private:
     HashMap<String, ClientCertificate, ASCIICaseInsensitiveHash> m_allowedClientHosts;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

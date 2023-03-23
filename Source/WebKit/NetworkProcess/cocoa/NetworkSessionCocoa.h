@@ -47,7 +47,7 @@ OBJC_CLASS NSURLCredentialStorage;
 #include <wtf/HashMap.h>
 #include <wtf/Seconds.h>
 
-namespace WebCore {
+namespace CyberCore {
 enum class NetworkConnectionIntegrity : uint16_t;
 }
 
@@ -58,7 +58,7 @@ class LegacyCustomProtocolManager;
 class NetworkSessionCocoa;
 
 struct SessionWrapper : public CanMakeWeakPtr<SessionWrapper> {
-    void initialize(NSURLSessionConfiguration *, NetworkSessionCocoa&, WebCore::StoredCredentialsPolicy, NavigatingToAppBoundDomain);
+    void initialize(NSURLSessionConfiguration *, NetworkSessionCocoa&, CyberCore::StoredCredentialsPolicy, NavigatingToAppBoundDomain);
 
     RetainPtr<NSURLSession> session;
     RetainPtr<WKNetworkSessionDelegate> delegate;
@@ -85,8 +85,8 @@ public:
 
     SessionWrapper& initializeEphemeralStatelessSessionIfNeeded(NavigatingToAppBoundDomain, NetworkSessionCocoa&);
 
-    SessionWrapper& isolatedSession(WebCore::StoredCredentialsPolicy, const WebCore::RegistrableDomain&, NavigatingToAppBoundDomain, NetworkSessionCocoa&);
-    HashMap<WebCore::RegistrableDomain, std::unique_ptr<IsolatedSession>> isolatedSessions;
+    SessionWrapper& isolatedSession(CyberCore::StoredCredentialsPolicy, const CyberCore::RegistrableDomain&, NavigatingToAppBoundDomain, NetworkSessionCocoa&);
+    HashMap<CyberCore::RegistrableDomain, std::unique_ptr<IsolatedSession>> isolatedSessions;
 
     std::unique_ptr<IsolatedSession> appBoundSession;
 
@@ -114,10 +114,10 @@ public:
     const String& dataConnectionServiceType() const;
 #endif
 
-    static bool allowsSpecificHTTPSCertificateForHost(const WebCore::AuthenticationChallenge&);
-    void setClientAuditToken(const WebCore::AuthenticationChallenge&);
+    static bool allowsSpecificHTTPSCertificateForHost(const CyberCore::AuthenticationChallenge&);
+    void setClientAuditToken(const CyberCore::AuthenticationChallenge&);
 
-    void continueDidReceiveChallenge(SessionWrapper&, const WebCore::AuthenticationChallenge&, NegotiatedLegacyTLS, NetworkDataTaskCocoa::TaskIdentifier, NetworkDataTaskCocoa*, CompletionHandler<void(WebKit::AuthenticationChallengeDisposition, const WebCore::Credential&)>&&);
+    void continueDidReceiveChallenge(SessionWrapper&, const CyberCore::AuthenticationChallenge&, NegotiatedLegacyTLS, NetworkDataTaskCocoa::TaskIdentifier, NetworkDataTaskCocoa*, CompletionHandler<void(WebKit::AuthenticationChallengeDisposition, const CyberCore::Credential&)>&&);
 
     SessionWrapper& sessionWrapperForDownloadResume() { return m_defaultSessionSet->sessionWithCredentialStorage; }
 
@@ -129,7 +129,7 @@ public:
 
     CFDictionaryRef proxyConfiguration() const { return m_proxyConfiguration.get(); }
 
-    bool hasIsolatedSession(const WebCore::RegistrableDomain&) const override;
+    bool hasIsolatedSession(const CyberCore::RegistrableDomain&) const override;
     void clearIsolatedSessions() override;
 
 #if ENABLE(APP_BOUND_DOMAINS)
@@ -137,42 +137,42 @@ public:
     void clearAppBoundSession() override;
 #endif
 
-    SessionWrapper& sessionWrapperForTask(WebPageProxyIdentifier, const WebCore::ResourceRequest&, WebCore::StoredCredentialsPolicy, std::optional<NavigatingToAppBoundDomain>);
+    SessionWrapper& sessionWrapperForTask(WebPageProxyIdentifier, const CyberCore::ResourceRequest&, CyberCore::StoredCredentialsPolicy, std::optional<NavigatingToAppBoundDomain>);
     bool preventsSystemHTTPProxyAuthentication() const { return m_preventsSystemHTTPProxyAuthentication; }
     
     _NSHSTSStorage *hstsStorage() const;
     NSURLCredentialStorage *nsCredentialStorage() const;
 
-    void removeNetworkWebsiteData(std::optional<WallTime>, std::optional<HashSet<WebCore::RegistrableDomain>>&&, CompletionHandler<void()>&&) override;
+    void removeNetworkWebsiteData(std::optional<WallTime>, std::optional<HashSet<CyberCore::RegistrableDomain>>&&, CompletionHandler<void()>&&) override;
 
     void removeDataTask(DataTaskIdentifier);
 
 private:
     void invalidateAndCancel() override;
-    HashSet<WebCore::SecurityOriginData> originsWithCredentials() final;
-    void removeCredentialsForOrigins(const Vector<WebCore::SecurityOriginData>&) final;
+    HashSet<CyberCore::SecurityOriginData> originsWithCredentials() final;
+    void removeCredentialsForOrigins(const Vector<CyberCore::SecurityOriginData>&) final;
     void clearCredentials(WallTime) final;
 
     bool shouldLogCookieInformation() const override { return m_shouldLogCookieInformation; }
-    SessionWrapper& isolatedSession(WebPageProxyIdentifier, WebCore::StoredCredentialsPolicy, const WebCore::RegistrableDomain&, NavigatingToAppBoundDomain);
+    SessionWrapper& isolatedSession(WebPageProxyIdentifier, CyberCore::StoredCredentialsPolicy, const CyberCore::RegistrableDomain&, NavigatingToAppBoundDomain);
 
 #if ENABLE(APP_BOUND_DOMAINS)
-    SessionWrapper& appBoundSession(WebPageProxyIdentifier, WebCore::StoredCredentialsPolicy);
+    SessionWrapper& appBoundSession(WebPageProxyIdentifier, CyberCore::StoredCredentialsPolicy);
 #endif
 
-    void donateToSKAdNetwork(WebCore::PrivateClickMeasurement&&) final;
+    void donateToSKAdNetwork(CyberCore::PrivateClickMeasurement&&) final;
 
-    Vector<WebCore::SecurityOriginData> hostNamesWithAlternativeServices() const override;
+    Vector<CyberCore::SecurityOriginData> hostNamesWithAlternativeServices() const override;
     void deleteAlternativeServicesForHostNames(const Vector<String>&) override;
     void clearAlternativeServices(WallTime) override;
 
 #if HAVE(NSURLSESSION_WEBSOCKET)
-    std::unique_ptr<WebSocketTask> createWebSocketTask(WebPageProxyIdentifier, NetworkSocketChannel&, const WebCore::ResourceRequest&, const String& protocol, const WebCore::ClientOrigin&, bool hadMainFrameMainResourcePrivateRelayed, bool allowPrivacyProxy, OptionSet<WebCore::NetworkConnectionIntegrity>) final;
+    std::unique_ptr<WebSocketTask> createWebSocketTask(WebPageProxyIdentifier, NetworkSocketChannel&, const CyberCore::ResourceRequest&, const String& protocol, const CyberCore::ClientOrigin&, bool hadMainFrameMainResourcePrivateRelayed, bool allowPrivacyProxy, OptionSet<CyberCore::NetworkConnectionIntegrity>) final;
     void addWebSocketTask(WebPageProxyIdentifier, WebSocketTask&) final;
     void removeWebSocketTask(SessionSet&, WebSocketTask&) final;
 #endif
 
-    void dataTaskWithRequest(WebPageProxyIdentifier, WebCore::ResourceRequest&&, CompletionHandler<void(DataTaskIdentifier)>&&) final;
+    void dataTaskWithRequest(WebPageProxyIdentifier, CyberCore::ResourceRequest&&, CompletionHandler<void(DataTaskIdentifier)>&&) final;
     void cancelDataTask(DataTaskIdentifier) final;
     void addWebPageNetworkParameters(WebPageProxyIdentifier, WebPageNetworkParameters&&) final;
     void removeWebPageNetworkParameters(WebPageProxyIdentifier) final;

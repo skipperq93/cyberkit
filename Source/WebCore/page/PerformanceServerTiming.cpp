@@ -27,7 +27,7 @@
 #include "config.h"
 #include "PerformanceServerTiming.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<PerformanceServerTiming> PerformanceServerTiming::create(String&& name, double duration, String&& description)
 {
@@ -43,4 +43,4 @@ PerformanceServerTiming::PerformanceServerTiming(String&& name, double duration,
 
 PerformanceServerTiming::~PerformanceServerTiming() = default;
 
-} // namespace WebCore
+} // namespace CyberCore

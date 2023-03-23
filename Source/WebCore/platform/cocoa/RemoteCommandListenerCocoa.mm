@@ -35,7 +35,7 @@
 
 #import "MediaRemoteSoftLink.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static std::optional<MRMediaRemoteCommand> mediaRemoteCommandForPlatformCommand(PlatformMediaSession::RemoteControlCommandType command)
 {

@@ -27,7 +27,7 @@
 #include "SVGNames.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(SVGFEBlendElement);
 
@@ -102,4 +102,4 @@ RefPtr<FilterEffect> SVGFEBlendElement::createFilterEffect(const FilterEffectVec
     return FEBlend::create(mode());
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -28,9 +28,9 @@
 #include "WebPageProxyIdentifier.h"
 #include <CyberCore/SocketProvider.h>
 
-namespace WebKit {
+namespace CyberKit {
 
-class WebSocketProvider final : public WebCore::SocketProvider {
+class WebSocketProvider final : public CyberCore::SocketProvider {
 public:
     static Ref<WebSocketProvider> create(WebPageProxyIdentifier webPageProxyID) { return adoptRef(*new WebSocketProvider(webPageProxyID)); }
     WebSocketProvider(WebPageProxyIdentifier webPageProxyID)
@@ -38,8 +38,8 @@ public:
     {
     }
 
-    Ref<WebCore::SocketStreamHandle> createSocketStreamHandle(const URL&, WebCore::SocketStreamHandleClient&, WebCore::WebSocketIdentifier, PAL::SessionID, const String& credentialPartition, const WebCore::StorageSessionProvider*) final;
-    RefPtr<WebCore::ThreadableWebSocketChannel> createWebSocketChannel(WebCore::Document&, WebCore::WebSocketChannelClient&) final;
+    Ref<CyberCore::SocketStreamHandle> createSocketStreamHandle(const URL&, CyberCore::SocketStreamHandleClient&, CyberCore::WebSocketIdentifier, PAL::SessionID, const String& credentialPartition, const CyberCore::StorageSessionProvider*) final;
+    RefPtr<CyberCore::ThreadableWebSocketChannel> createWebSocketChannel(CyberCore::Document&, CyberCore::WebSocketChannelClient&) final;
     virtual ~WebSocketProvider() { }
 
 private:

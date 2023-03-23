@@ -44,7 +44,7 @@ class DownloadClient;
 class FrameInfo;
 }
 
-namespace WebCore {
+namespace CyberCore {
 class AuthenticationChallenge;
 class IntRect;
 class ProtectionSpace;
@@ -72,7 +72,7 @@ public:
     ~DownloadProxy();
 
     DownloadID downloadID() const { return m_downloadID; }
-    const WebCore::ResourceRequest& request() const { return m_request; }
+    const CyberCore::ResourceRequest& request() const { return m_request; }
     API::Data* legacyResumeData() const { return m_legacyResumeData.get(); }
 
     void cancel(CompletionHandler<void(API::Data*)>&&);
@@ -96,7 +96,7 @@ public:
 
 #if USE(SYSTEM_PREVIEW)
     bool isSystemPreviewDownload() const { return request().isSystemPreview(); }
-    WebCore::SystemPreviewInfo systemPreviewDownloadInfo() const { RELEASE_ASSERT(request().systemPreviewInfo().has_value()); return *request().systemPreviewInfo(); }
+    CyberCore::SystemPreviewInfo systemPreviewDownloadInfo() const { RELEASE_ASSERT(request().systemPreviewInfo().has_value()); return *request().systemPreviewInfo(); }
 #endif
 
 #if PLATFORM(COCOA)
@@ -115,18 +115,18 @@ public:
     void setSuggestedFilename(const String& suggestedFilename) { m_suggestedFilename = suggestedFilename; }
 
     // Message handlers.
-    void didStart(const WebCore::ResourceRequest&, const String& suggestedFilename);
-    void didReceiveAuthenticationChallenge(WebCore::AuthenticationChallenge&&, AuthenticationChallengeIdentifier);
+    void didStart(const CyberCore::ResourceRequest&, const String& suggestedFilename);
+    void didReceiveAuthenticationChallenge(CyberCore::AuthenticationChallenge&&, AuthenticationChallengeIdentifier);
     void didReceiveData(uint64_t bytesWritten, uint64_t totalBytesWritten, uint64_t totalBytesExpectedToWrite);
     void shouldDecodeSourceDataOfMIMEType(const String& mimeType, bool& result);
     void didCreateDestination(const String& path);
     void didFinish();
-    void didFail(const WebCore::ResourceError&, const IPC::DataReference& resumeData);
-    void willSendRequest(WebCore::ResourceRequest&& redirectRequest, const WebCore::ResourceResponse& redirectResponse);
-    void decideDestinationWithSuggestedFilename(const WebCore::ResourceResponse&, String&& suggestedFilename, CompletionHandler<void(String, SandboxExtension::Handle, AllowOverwrite)>&&);
+    void didFail(const CyberCore::ResourceError&, const IPC::DataReference& resumeData);
+    void willSendRequest(CyberCore::ResourceRequest&& redirectRequest, const CyberCore::ResourceResponse& redirectResponse);
+    void decideDestinationWithSuggestedFilename(const CyberCore::ResourceResponse&, String&& suggestedFilename, CompletionHandler<void(String, SandboxExtension::Handle, AllowOverwrite)>&&);
 
 private:
-    explicit DownloadProxy(DownloadProxyMap&, WebsiteDataStore&, API::DownloadClient&, const WebCore::ResourceRequest&, const FrameInfoData&, WebPageProxy*);
+    explicit DownloadProxy(DownloadProxyMap&, WebsiteDataStore&, API::DownloadClient&, const CyberCore::ResourceRequest&, const FrameInfoData&, WebPageProxy*);
 
     // IPC::MessageReceiver
     void didReceiveMessage(IPC::Connection&, IPC::Decoder&) override;
@@ -137,7 +137,7 @@ private:
     DownloadID m_downloadID;
 
     RefPtr<API::Data> m_legacyResumeData;
-    WebCore::ResourceRequest m_request;
+    CyberCore::ResourceRequest m_request;
     String m_suggestedFilename;
     String m_destinationFilename;
 

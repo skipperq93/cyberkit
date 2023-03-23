@@ -33,7 +33,7 @@ namespace WebKit {
 
 class WebProtectionSpace : public API::ObjectImpl<API::Object::Type::ProtectionSpace> {
 public:
-    static Ref<WebProtectionSpace> create(const WebCore::ProtectionSpace& protectionSpace)
+    static Ref<WebProtectionSpace> create(const CyberCore::ProtectionSpace& protectionSpace)
     {
         return adoptRef(*new WebProtectionSpace(protectionSpace));
     }
@@ -43,16 +43,16 @@ public:
     int port() const;
     const String& realm() const;
     bool isProxy() const;
-    WebCore::ProtectionSpace::ServerType serverType() const;
+    CyberCore::ProtectionSpace::ServerType serverType() const;
     bool receivesCredentialSecurely() const;
-    WebCore::ProtectionSpace::AuthenticationScheme authenticationScheme() const;
+    CyberCore::ProtectionSpace::AuthenticationScheme authenticationScheme() const;
 
-    const WebCore::ProtectionSpace& protectionSpace() const { return m_coreProtectionSpace; }
+    const CyberCore::ProtectionSpace& protectionSpace() const { return m_coreProtectionSpace; }
 
 private:
-    explicit WebProtectionSpace(const WebCore::ProtectionSpace&);
+    explicit WebProtectionSpace(const CyberCore::ProtectionSpace&);
 
-    WebCore::ProtectionSpace m_coreProtectionSpace;
+    CyberCore::ProtectionSpace m_coreProtectionSpace;
 };
 
 } // namespace WebKit

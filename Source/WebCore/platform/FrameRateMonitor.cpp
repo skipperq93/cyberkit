@@ -26,7 +26,7 @@
 #include "config.h"
 #include "FrameRateMonitor.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static constexpr Seconds MinimumAverageDuration = 1_s;
 static constexpr Seconds MaxQueueDuration = 2_s;

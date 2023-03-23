@@ -25,7 +25,7 @@
 #include <wtf/Noncopyable.h>
 #include <wtf/OptionSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FloatRect;
 
@@ -88,6 +88,6 @@ private:
     const RenderLayerModelObject& m_renderer;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

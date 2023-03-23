@@ -35,7 +35,7 @@
 #include <wtf/HashMap.h>
 #include <wtf/text/StringHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct MediaPayload {
 public:
@@ -56,6 +56,6 @@ public:
     HashMap<String, unsigned> parameters;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

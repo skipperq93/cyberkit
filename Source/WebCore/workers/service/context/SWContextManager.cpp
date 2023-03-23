@@ -32,7 +32,7 @@
 #include "MessageWithMessagePorts.h"
 #include "ServiceWorkerGlobalScope.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 SWContextManager& SWContextManager::singleton()
 {
@@ -235,6 +235,6 @@ void SWContextManager::setAsInspected(ServiceWorkerIdentifier identifier, bool i
         m_connection->setAsInspected(identifier, isInspected);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

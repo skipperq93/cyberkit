@@ -26,12 +26,12 @@
 #include "config.h"
 #include "WebPerformanceLoggingClient.h"
 
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebPage.h"
 #include "WebPageProxyMessages.h"
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 WebPerformanceLoggingClient::WebPerformanceLoggingClient(WebPage& page)
     : m_page(page)
@@ -43,4 +43,4 @@ void WebPerformanceLoggingClient::logScrollingEvent(ScrollingEvent event, Monoto
     m_page.send(Messages::WebPageProxy::LogScrollingEvent(static_cast<uint32_t>(event), timestamp, data));
 }
 
-} // namespace WebKit
+} // namespace CyberKit

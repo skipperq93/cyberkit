@@ -25,7 +25,7 @@
 #include "TableLayout.h"
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderTable;
 class RenderTableCell;
@@ -66,4 +66,4 @@ private:
     LayoutUnit m_scaledWidthFromPercentColumns;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

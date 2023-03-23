@@ -40,7 +40,7 @@
 
 namespace Nicosia {
 
-class BackingStoreTextureMapperImpl final : public BackingStore::Impl, public WebCore::TiledBackingStoreClient {
+class BackingStoreTextureMapperImpl final : public BackingStore::Impl, public CyberCore::TiledBackingStoreClient {
     WTF_MAKE_FAST_ALLOCATED;
 public:
     static Factory createFactory();
@@ -65,8 +65,8 @@ public:
 
         struct UpdateData {
             uint32_t tileID;
-            WebCore::IntRect tileRect;
-            WebCore::SurfaceUpdateInfo updateInfo;
+            CyberCore::IntRect tileRect;
+            CyberCore::SurfaceUpdateInfo updateInfo;
         };
         Vector<UpdateData> tilesToUpdate;
 
@@ -85,7 +85,7 @@ public:
         LayerState(LayerState&&) = delete;
         LayerState& operator=(LayerState&&) = delete;
 
-        std::unique_ptr<WebCore::TiledBackingStore> mainBackingStore;
+        std::unique_ptr<CyberCore::TiledBackingStore> mainBackingStore;
 
         TileUpdate update;
         bool isFlushing { false };
@@ -105,7 +105,7 @@ public:
         CompositionState(CompositionState&&) = delete;
         CompositionState& operator=(CompositionState&&) = delete;
 
-        RefPtr<WebCore::CoordinatedBackingStore> backingStore;
+        RefPtr<CyberCore::CoordinatedBackingStore> backingStore;
     };
     CompositionState& compositionState() { return m_compositionState; }
 
@@ -115,7 +115,7 @@ public:
     // FIXME: Move these to private once updateTile() is not called from CoordinatedGrahpicsLayer.
     void tiledBackingStoreHasPendingTileCreation() override;
     void createTile(uint32_t, float) override;
-    void updateTile(uint32_t, const WebCore::SurfaceUpdateInfo&, const WebCore::IntRect&) override;
+    void updateTile(uint32_t, const CyberCore::SurfaceUpdateInfo&, const CyberCore::IntRect&) override;
     void removeTile(uint32_t) override;
 
 private:

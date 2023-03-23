@@ -32,8 +32,8 @@
 #include <CyberCore/Page.h>
 #include <CyberCore/RenderTheme.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 GtkSettingsManagerProxy& GtkSettingsManagerProxy::singleton()
 {
@@ -181,4 +181,4 @@ void GtkSettingsManagerProxy::applyAntialiasSettings()
     setDefaultCairoAntialiasOptions(antialiasMode, subpixelOrder);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

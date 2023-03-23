@@ -37,7 +37,7 @@ OBJC_CLASS WebLowPowerModeObserver;
 typedef struct _GPowerProfileMonitor GPowerProfileMonitor;
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class LowPowerModeNotifier {
     WTF_MAKE_FAST_ALLOCATED;

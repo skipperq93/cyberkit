@@ -34,7 +34,7 @@
 #include <wtf/MemoryPressureHandler.h>
 #include <wtf/text/StringCommon.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct GlyphOverflow;
 
@@ -229,6 +229,6 @@ inline bool operator==(const WidthCache::SmallStringKey& a, const WidthCache::Sm
     return equal(a.characters(), b.characters(), a.length());
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // WidthCache_h

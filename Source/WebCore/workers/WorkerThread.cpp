@@ -37,7 +37,7 @@
 #include <wtf/SetForScope.h>
 #include <wtf/Threading.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static std::atomic<unsigned> workerThreadCounter { 0 };
 
@@ -195,4 +195,4 @@ WorkerGlobalScope* WorkerThread::globalScope()
     return downcast<WorkerGlobalScope>(WorkerOrWorkletThread::globalScope());
 }
 
-} // namespace WebCore
+} // namespace CyberCore

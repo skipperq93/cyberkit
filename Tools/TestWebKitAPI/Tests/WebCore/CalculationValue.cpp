@@ -37,7 +37,7 @@ namespace TestWebKitAPI {
 
 static unsigned deletionCount;
 
-class CalculationDeletionTestNode : public WebCore::CalcExpressionNode {
+class CalculationDeletionTestNode : public CyberCore::CalcExpressionNode {
     WTF_MAKE_FAST_ALLOCATED;
 public:
     virtual ~CalculationDeletionTestNode()
@@ -52,38 +52,38 @@ private:
     void dump(WTF::TextStream&) const override { };
 };
 
-static Ref<WebCore::CalculationValue> createTestValue()
+static Ref<CyberCore::CalculationValue> createTestValue()
 {
     auto node = makeUnique<CalculationDeletionTestNode>();
-    return WebCore::CalculationValue::create(WTFMove(node), WebCore::ValueRange::All);
+    return CyberCore::CalculationValue::create(WTFMove(node), CyberCore::ValueRange::All);
 }
 
 TEST(CalculationValue, LengthConstruction)
 {
-    RefPtr<WebCore::CalculationValue> value = createTestValue();
+    RefPtr<CyberCore::CalculationValue> value = createTestValue();
 
     EXPECT_EQ(1U, value->refCount());
 
     {
-        WebCore::Length length(*value);
+        CyberCore::Length length(*value);
         EXPECT_EQ(2U, value->refCount());
     }
 
     EXPECT_EQ(1U, value->refCount());
 
     {
-        WebCore::Length lengthA(*value);
+        CyberCore::Length lengthA(*value);
         EXPECT_EQ(2U, value->refCount());
-        WebCore::Length lengthB(lengthA);
+        CyberCore::Length lengthB(lengthA);
         EXPECT_EQ(2U, value->refCount());
     }
 
     EXPECT_EQ(1U, value->refCount());
 
     {
-        WebCore::Length lengthC(*value);
+        CyberCore::Length lengthC(*value);
         EXPECT_EQ(2U, value->refCount());
-        WebCore::Length lengthD(WTFMove(lengthC));
+        CyberCore::Length lengthD(WTFMove(lengthC));
         EXPECT_EQ(2U, value->refCount());
     }
 
@@ -97,13 +97,13 @@ TEST(CalculationValue, LengthConstruction)
 
 TEST(CalculationValue, LengthConstructionReleasedValue)
 {
-    RefPtr<WebCore::CalculationValue> value = createTestValue();
+    RefPtr<CyberCore::CalculationValue> value = createTestValue();
 
     EXPECT_EQ(1U, value->refCount());
 
     {
         auto* rawValue = value.get();
-        WebCore::Length length(value.releaseNonNull());
+        CyberCore::Length length(value.releaseNonNull());
         EXPECT_EQ(1U, rawValue->refCount());
 
         EXPECT_EQ(0U, deletionCount);
@@ -116,9 +116,9 @@ TEST(CalculationValue, LengthConstructionReleasedValue)
 
     {
         auto* rawValue = value.get();
-        WebCore::Length lengthA(value.releaseNonNull());
+        CyberCore::Length lengthA(value.releaseNonNull());
         EXPECT_EQ(1U, rawValue->refCount());
-        WebCore::Length lengthB(lengthA);
+        CyberCore::Length lengthB(lengthA);
         EXPECT_EQ(1U, rawValue->refCount());
 
         EXPECT_EQ(0U, deletionCount);
@@ -131,9 +131,9 @@ TEST(CalculationValue, LengthConstructionReleasedValue)
 
     {
         auto* rawValue = value.get();
-        WebCore::Length lengthC(value.releaseNonNull());
+        CyberCore::Length lengthC(value.releaseNonNull());
         EXPECT_EQ(1U, rawValue->refCount());
-        WebCore::Length lengthD(WTFMove(lengthC));
+        CyberCore::Length lengthD(WTFMove(lengthC));
         EXPECT_EQ(1U, rawValue->refCount());
 
         EXPECT_EQ(0U, deletionCount);
@@ -145,14 +145,14 @@ TEST(CalculationValue, LengthConstructionReleasedValue)
 
 TEST(CalculationValue, LengthAssignment)
 {
-    RefPtr<WebCore::CalculationValue> value = createTestValue();
+    RefPtr<CyberCore::CalculationValue> value = createTestValue();
 
     EXPECT_EQ(1U, value->refCount());
 
     {
-        WebCore::Length lengthA(*value);
+        CyberCore::Length lengthA(*value);
         EXPECT_EQ(2U, value->refCount());
-        WebCore::Length lengthB;
+        CyberCore::Length lengthB;
         lengthB = lengthA;
         EXPECT_EQ(2U, value->refCount());
     }
@@ -160,9 +160,9 @@ TEST(CalculationValue, LengthAssignment)
     EXPECT_EQ(1U, value->refCount());
 
     {
-        WebCore::Length lengthC(*value);
+        CyberCore::Length lengthC(*value);
         EXPECT_EQ(2U, value->refCount());
-        WebCore::Length lengthD;
+        CyberCore::Length lengthD;
         lengthD = WTFMove(lengthC);
         EXPECT_EQ(2U, value->refCount());
     }
@@ -175,15 +175,15 @@ TEST(CalculationValue, LengthAssignment)
     deletionCount = 0;
 
     value = createTestValue();
-    RefPtr<WebCore::CalculationValue> value2 = createTestValue();
+    RefPtr<CyberCore::CalculationValue> value2 = createTestValue();
 
     EXPECT_EQ(1U, value->refCount());
     EXPECT_EQ(1U, value2->refCount());
 
     {
-        WebCore::Length lengthE(*value);
+        CyberCore::Length lengthE(*value);
         EXPECT_EQ(2U, value->refCount());
-        WebCore::Length lengthF(*value2);
+        CyberCore::Length lengthF(*value2);
         EXPECT_EQ(2U, value2->refCount());
         lengthE = lengthF;
         EXPECT_EQ(1U, value->refCount());
@@ -194,9 +194,9 @@ TEST(CalculationValue, LengthAssignment)
     EXPECT_EQ(1U, value2->refCount());
 
     {
-        WebCore::Length lengthG(*value);
+        CyberCore::Length lengthG(*value);
         EXPECT_EQ(2U, value->refCount());
-        WebCore::Length lengthH(*value2);
+        CyberCore::Length lengthH(*value2);
         EXPECT_EQ(2U, value2->refCount());
         lengthG = WTFMove(lengthH);
         EXPECT_EQ(1U, value->refCount());
@@ -213,13 +213,13 @@ TEST(CalculationValue, LengthAssignment)
 
 TEST(CalculationValue, LengthAssignmentReleasedValue)
 {
-    RefPtr<WebCore::CalculationValue> value = createTestValue();
+    RefPtr<CyberCore::CalculationValue> value = createTestValue();
 
     {
         auto* rawValue = value.get();
-        WebCore::Length lengthA(value.releaseNonNull());
+        CyberCore::Length lengthA(value.releaseNonNull());
         EXPECT_EQ(1U, rawValue->refCount());
-        WebCore::Length lengthB;
+        CyberCore::Length lengthB;
         lengthB = lengthA;
         EXPECT_EQ(1U, rawValue->refCount());
 
@@ -233,9 +233,9 @@ TEST(CalculationValue, LengthAssignmentReleasedValue)
 
     {
         auto* rawValue = value.get();
-        WebCore::Length lengthC(value.releaseNonNull());
+        CyberCore::Length lengthC(value.releaseNonNull());
         EXPECT_EQ(1U, rawValue->refCount());
-        WebCore::Length lengthD;
+        CyberCore::Length lengthD;
         lengthD = WTFMove(lengthC);
         EXPECT_EQ(1U, rawValue->refCount());
 
@@ -246,17 +246,17 @@ TEST(CalculationValue, LengthAssignmentReleasedValue)
     deletionCount = 0;
 
     value = createTestValue();
-    RefPtr<WebCore::CalculationValue> value2 = createTestValue();
+    RefPtr<CyberCore::CalculationValue> value2 = createTestValue();
 
     EXPECT_EQ(1U, value->refCount());
     EXPECT_EQ(1U, value2->refCount());
 
     {
         auto* rawValue = value.get();
-        WebCore::Length lengthE(value.releaseNonNull());
+        CyberCore::Length lengthE(value.releaseNonNull());
         EXPECT_EQ(1U, rawValue->refCount());
         auto* rawValue2 = value2.get();
-        WebCore::Length lengthF(value2.releaseNonNull());
+        CyberCore::Length lengthF(value2.releaseNonNull());
         EXPECT_EQ(1U, rawValue2->refCount());
 
         lengthE = lengthF;
@@ -275,10 +275,10 @@ TEST(CalculationValue, LengthAssignmentReleasedValue)
 
     {
         auto* rawValue = value.get();
-        WebCore::Length lengthG(value.releaseNonNull());
+        CyberCore::Length lengthG(value.releaseNonNull());
         EXPECT_EQ(1U, rawValue->refCount());
         auto* rawValue2 = value2.get();
-        WebCore::Length lengthH(value2.releaseNonNull());
+        CyberCore::Length lengthH(value2.releaseNonNull());
         EXPECT_EQ(1U, rawValue2->refCount());
 
         lengthG = WTFMove(lengthH);

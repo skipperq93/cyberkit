@@ -28,7 +28,7 @@
 
 #import <CyberKitLegacy/WebNSFileManagerExtras.h>
 
-#import "WebKitNSStringExtras.h"
+#import "CyberKitNSStringExtras.h"
 #import "WebNSURLExtras.h"
 #import <CyberCore/LoaderNSURLExtras.h>
 #import <sys/stat.h>

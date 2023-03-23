@@ -26,7 +26,7 @@
 #include "config.h"
 #include "SystemFontDatabase.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 SystemFontDatabase::SystemFontDatabase() = default;
 
@@ -60,4 +60,4 @@ void SystemFontDatabase::invalidate()
     platformInvalidate();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

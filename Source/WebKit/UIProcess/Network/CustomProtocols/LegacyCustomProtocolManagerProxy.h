@@ -36,11 +36,11 @@
 OBJC_CLASS WKCustomProtocolLoader;
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 class ResourceError;
 class ResourceRequest;
 class ResourceResponse;
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WebKit {
 
@@ -52,15 +52,15 @@ public:
     LegacyCustomProtocolManagerProxy(NetworkProcessProxy&);
     ~LegacyCustomProtocolManagerProxy();
 
-    void startLoading(LegacyCustomProtocolID, const WebCore::ResourceRequest&);
+    void startLoading(LegacyCustomProtocolID, const CyberCore::ResourceRequest&);
     void stopLoading(LegacyCustomProtocolID);
 
     void invalidate();
 
-    void wasRedirectedToRequest(LegacyCustomProtocolID, const WebCore::ResourceRequest&, const WebCore::ResourceResponse&);
-    void didReceiveResponse(LegacyCustomProtocolID, const WebCore::ResourceResponse&, CacheStoragePolicy);
+    void wasRedirectedToRequest(LegacyCustomProtocolID, const CyberCore::ResourceRequest&, const CyberCore::ResourceResponse&);
+    void didReceiveResponse(LegacyCustomProtocolID, const CyberCore::ResourceResponse&, CacheStoragePolicy);
     void didLoadData(LegacyCustomProtocolID, const IPC::DataReference&);
-    void didFailWithError(LegacyCustomProtocolID, const WebCore::ResourceError&);
+    void didFailWithError(LegacyCustomProtocolID, const CyberCore::ResourceError&);
     void didFinishLoading(LegacyCustomProtocolID);
 
 private:

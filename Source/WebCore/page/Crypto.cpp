@@ -42,7 +42,7 @@
 #include <CommonCrypto/CommonRandom.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 Crypto::Crypto(ScriptExecutionContext* context)
     : ContextDestructionObserver(context)

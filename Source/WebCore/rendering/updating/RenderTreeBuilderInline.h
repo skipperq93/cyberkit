@@ -27,7 +27,7 @@
 
 #include "RenderTreeBuilder.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderTreeBuilder::Inline {
     WTF_MAKE_FAST_ALLOCATED;

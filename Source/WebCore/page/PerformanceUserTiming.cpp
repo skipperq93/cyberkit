@@ -36,7 +36,7 @@
 #include <CyberScriptCore/JSCJSValueInlines.h>
 #include <wtf/SortedArrayMap.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using NavigationTimingFunction = unsigned long long (PerformanceTiming::*)() const;
 
@@ -291,4 +291,4 @@ Vector<RefPtr<PerformanceEntry>> PerformanceUserTiming::getMeasures(const String
     return m_measuresMap.get(name);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

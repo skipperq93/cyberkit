@@ -40,42 +40,42 @@ namespace WebKit {
 
 class QualifiedResourceHeap {
 public:
-    QualifiedResourceHeap(WebCore::ProcessIdentifier webProcessIdentifier)
+    QualifiedResourceHeap(CyberCore::ProcessIdentifier webProcessIdentifier)
         : m_webProcessIdentifier(webProcessIdentifier)
     {
     }
 
-    void add(QualifiedRenderingResourceIdentifier renderingResourceIdentifier, Ref<WebCore::ImageBuffer>&& imageBuffer)
+    void add(QualifiedRenderingResourceIdentifier renderingResourceIdentifier, Ref<CyberCore::ImageBuffer>&& imageBuffer)
     {
         add(renderingResourceIdentifier, WTFMove(imageBuffer), m_imageBufferCount);
     }
 
-    void add(QualifiedRenderingResourceIdentifier renderingResourceIdentifier, Ref<WebCore::NativeImage>&& image)
+    void add(QualifiedRenderingResourceIdentifier renderingResourceIdentifier, Ref<CyberCore::NativeImage>&& image)
     {
         add(renderingResourceIdentifier, WTFMove(image), m_nativeImageCount);
     }
 
-    void add(QualifiedRenderingResourceIdentifier renderingResourceIdentifier, Ref<WebCore::Font>&& font)
+    void add(QualifiedRenderingResourceIdentifier renderingResourceIdentifier, Ref<CyberCore::Font>&& font)
     {
         add(renderingResourceIdentifier, WTFMove(font), m_fontCount);
     }
 
-    void add(QualifiedRenderingResourceIdentifier renderingResourceIdentifier, Ref<WebCore::DecomposedGlyphs>&& decomposedGlyphs)
+    void add(QualifiedRenderingResourceIdentifier renderingResourceIdentifier, Ref<CyberCore::DecomposedGlyphs>&& decomposedGlyphs)
     {
         add(renderingResourceIdentifier, WTFMove(decomposedGlyphs), m_decomposedGlyphsCount);
     }
 
-    WebCore::ImageBuffer* getImageBuffer(QualifiedRenderingResourceIdentifier renderingResourceIdentifier) const
+    CyberCore::ImageBuffer* getImageBuffer(QualifiedRenderingResourceIdentifier renderingResourceIdentifier) const
     {
-        return get<WebCore::ImageBuffer>(renderingResourceIdentifier);
+        return get<CyberCore::ImageBuffer>(renderingResourceIdentifier);
     }
 
-    WebCore::NativeImage* getNativeImage(QualifiedRenderingResourceIdentifier renderingResourceIdentifier) const
+    CyberCore::NativeImage* getNativeImage(QualifiedRenderingResourceIdentifier renderingResourceIdentifier) const
     {
-        return get<WebCore::NativeImage>(renderingResourceIdentifier);
+        return get<CyberCore::NativeImage>(renderingResourceIdentifier);
     }
     
-    std::optional<WebCore::SourceImage> getSourceImage(QualifiedRenderingResourceIdentifier renderingResourceIdentifier) const
+    std::optional<CyberCore::SourceImage> getSourceImage(QualifiedRenderingResourceIdentifier renderingResourceIdentifier) const
     {
         if (!renderingResourceIdentifier)
             return std::nullopt;
@@ -89,34 +89,34 @@ public:
         return std::nullopt;
     }
 
-    WebCore::Font* getFont(QualifiedRenderingResourceIdentifier renderingResourceIdentifier) const
+    CyberCore::Font* getFont(QualifiedRenderingResourceIdentifier renderingResourceIdentifier) const
     {
-        return get<WebCore::Font>(renderingResourceIdentifier);
+        return get<CyberCore::Font>(renderingResourceIdentifier);
     }
 
-    WebCore::DecomposedGlyphs* getDecomposedGlyphs(QualifiedRenderingResourceIdentifier renderingResourceIdentifier) const
+    CyberCore::DecomposedGlyphs* getDecomposedGlyphs(QualifiedRenderingResourceIdentifier renderingResourceIdentifier) const
     {
-        return get<WebCore::DecomposedGlyphs>(renderingResourceIdentifier);
+        return get<CyberCore::DecomposedGlyphs>(renderingResourceIdentifier);
     }
 
     bool removeImageBuffer(QualifiedRenderingResourceIdentifier renderingResourceIdentifier)
     {
-        return remove<WebCore::ImageBuffer>(renderingResourceIdentifier, m_imageBufferCount);
+        return remove<CyberCore::ImageBuffer>(renderingResourceIdentifier, m_imageBufferCount);
     }
 
     bool removeNativeImage(QualifiedRenderingResourceIdentifier renderingResourceIdentifier)
     {
-        return remove<WebCore::NativeImage>(renderingResourceIdentifier, m_nativeImageCount);
+        return remove<CyberCore::NativeImage>(renderingResourceIdentifier, m_nativeImageCount);
     }
 
     bool removeFont(QualifiedRenderingResourceIdentifier renderingResourceIdentifier)
     {
-        return remove<WebCore::Font>(renderingResourceIdentifier, m_fontCount);
+        return remove<CyberCore::Font>(renderingResourceIdentifier, m_fontCount);
     }
 
     bool removeDecomposedGlyphs(QualifiedRenderingResourceIdentifier renderingResourceIdentifier)
     {
-        return remove<WebCore::DecomposedGlyphs>(renderingResourceIdentifier, m_decomposedGlyphsCount);
+        return remove<CyberCore::DecomposedGlyphs>(renderingResourceIdentifier, m_decomposedGlyphsCount);
     }
 
     void releaseAllResources()
@@ -127,9 +127,9 @@ public:
             return;
 
         m_resources.removeIf([] (const auto& resource) {
-            return std::holds_alternative<Ref<WebCore::NativeImage>>(resource.value)
-                || std::holds_alternative<Ref<WebCore::Font>>(resource.value)
-                || std::holds_alternative<Ref<WebCore::DecomposedGlyphs>>(resource.value);
+            return std::holds_alternative<Ref<CyberCore::NativeImage>>(resource.value)
+                || std::holds_alternative<Ref<CyberCore::Font>>(resource.value)
+                || std::holds_alternative<Ref<CyberCore::DecomposedGlyphs>>(resource.value);
         });
 
         m_nativeImageCount = 0;
@@ -197,13 +197,13 @@ private:
         for (const auto& pair : m_resources) {
             WTF::switchOn(pair.value, [&] (std::monostate) {
                 ASSERT_NOT_REACHED();
-            }, [&] (const Ref<WebCore::ImageBuffer>&) {
+            }, [&] (const Ref<CyberCore::ImageBuffer>&) {
                 ++imageBufferCount;
-            }, [&] (const Ref<WebCore::NativeImage>&) {
+            }, [&] (const Ref<CyberCore::NativeImage>&) {
                 ++nativeImageCount;
-            }, [&] (const Ref<WebCore::Font>&) {
+            }, [&] (const Ref<CyberCore::Font>&) {
                 ++fontCount;
-            }, [&] (const Ref<WebCore::DecomposedGlyphs>&) {
+            }, [&] (const Ref<CyberCore::DecomposedGlyphs>&) {
                 ++decomposedGlyphsCount;
             });
         }
@@ -215,9 +215,9 @@ private:
 #endif
     }
 
-    using Resource = std::variant<std::monostate, Ref<WebCore::ImageBuffer>, Ref<WebCore::NativeImage>, Ref<WebCore::Font>, Ref<WebCore::DecomposedGlyphs>>;
+    using Resource = std::variant<std::monostate, Ref<CyberCore::ImageBuffer>, Ref<CyberCore::NativeImage>, Ref<CyberCore::Font>, Ref<CyberCore::DecomposedGlyphs>>;
     HashMap<QualifiedRenderingResourceIdentifier, Resource> m_resources;
-    WebCore::ProcessIdentifier m_webProcessIdentifier;
+    CyberCore::ProcessIdentifier m_webProcessIdentifier;
     unsigned m_imageBufferCount { 0 };
     unsigned m_nativeImageCount { 0 };
     unsigned m_fontCount { 0 };

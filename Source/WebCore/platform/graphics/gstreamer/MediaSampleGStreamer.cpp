@@ -28,7 +28,7 @@
 
 #if ENABLE(VIDEO) && USE(GSTREAMER)
 
-namespace WebCore {
+namespace CyberCore {
 
 MediaSampleGStreamer::MediaSampleGStreamer(GRefPtr<GstSample>&& sample, const FloatSize& presentationSize, const AtomString& trackId)
     : m_pts(MediaTime::zeroTime())
@@ -169,6 +169,6 @@ void MediaSampleGStreamer::dump(PrintStream& out) const
     out.print("), trackId(", trackID().string(), "), presentationSize(", presentationSize().width(), "x", presentationSize().height(), ")}");
 }
 
-} // namespace WebCore.
+} // namespace CyberCore.
 
 #endif // ENABLE(VIDEO) && USE(GSTREAMER)

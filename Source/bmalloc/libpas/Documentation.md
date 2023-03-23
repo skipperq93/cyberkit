@@ -31,12 +31,12 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 # Introduction
 
 This document describes how libpas works as of [247029@main](https://commits.webkit.org/247029@main), so a bit ahead of
-where WebKit was as of [246842@main](https://commits.webkit.org/246842@main). Libpas is a fast and memory-efficient
+where CyberKit was as of [246842@main](https://commits.webkit.org/246842@main). Libpas is a fast and memory-efficient
 memory allocation toolkit capable of supporting many heaps at once, engineered with the hopes that someday it'll be used
 for comprehensive isoheaping of all malloc/new callsites in C/C++ programs.
 
-Since WebKit [186504@main](https://commits.webkit.org/186504@main), we've been steadily enabling libpas as a
-replacement for WebKit's bmalloc and MetaAllocator. This has so far added up to a ~2% Speedometer2 speed-up and
+Since CyberKit [186504@main](https://commits.webkit.org/186504@main), we've been steadily enabling libpas as a
+replacement for CyberKit's bmalloc and MetaAllocator. This has so far added up to a ~2% Speedometer2 speed-up and
 a ~8% memory improvement (on multiple memory benchmarks). Half of the speed-up comes from replacing the MetaAllocator,
 which was JavaScriptCore's old way of managing executable memory. Now, JSC uses libpas's jit_heap to manage executable
 memory. The other half of the speed-up comes from replacing everything that bmalloc provided -- the fastMalloc API, the
@@ -52,7 +52,7 @@ describe the coding style. Next I tell all about the design. Finally I talk abou
 Libpas tries to be:
 
 - Fast. The goal is to beat bmalloc performance on single-threaded code. Bmalloc was previously the fastest
-  known malloc for WebKit.
+  known malloc for CyberKit.
 - Scalable. Libpas is meant to scale well on multi-core devices.
 - Memory-efficient. The goal is to beat bmalloc memory usage across the board. Part of the strategy for memory
   efficiency is consistent use of first-fit allocation.
@@ -70,7 +70,7 @@ Libpas tries to be:
 - Common free. Users of libpas isoheaps don't have to know the heap of an object when they free it. All objects
   should funnel into the same free function. One kind of exception to this requirement is stuff like
   ExecutableAllocator, which needs a malloc, but is fine with not calling a common free function.
-- Cages. WebKit uses virtual memory reservations called *cages*, in which case WebKit allocates the virtual
+- Cages. CyberKit uses virtual memory reservations called *cages*, in which case CyberKit allocates the virtual
   memory and the malloc has to associate that memory with some heap. Libpas supports multiple kinds of cages.
 
 # Libpas Style
@@ -128,7 +128,7 @@ grouped together with some class, even a singleton, we name the file it's in aft
 of examples of this, like `pas_deallocate` or `pas_get_page_base`. Sometimes this gets fun, like
 `pas_get_page_base_and_kind_for_small_other_in_fast_megapage.h`.
 
-Finally, libpas avoids abbreviations even more so than WebKit usually does. Functions that have a quirky
+Finally, libpas avoids abbreviations even more so than CyberKit usually does. Functions that have a quirky
 meaning typically have a long name that tells the story. The point is to make it easy to appreciate the subtlety
 of the algorithm when reading the code. This is the kind of code where complex situations should look complex
 at any abstraction level.
@@ -423,11 +423,11 @@ Thread local caches tend to get large because both the local allocators and loca
 arrays. The local allocator has an array of bits that tell the allocator where the free objects are. The local
 view cache has an array of view pointers (up to 1.6MB / 16KB = 100 entries, each using a 24-bit pointer). When
 used in single-heap applications, these overheads don't matter -- they end up being accounting for less than
-10<sup>-5</sup> of the overall process footprint (not just in WebKit but when I experimented with libpas in
+10<sup>-5</sup> of the overall process footprint (not just in CyberKit but when I experimented with libpas in
 daemons). But when used for many heaps, these overheads are substantial. Given thousands or tens of thousands
 of heaps, TLCs account for as much as 1% of memory. So, TLCs support partial decommit. Those pages that only
 have allocators that are inactive get decommitted. Note that TLC decommit has landed in the libpas.git repo
-as of [247029@main](https://commits.webkit.org/247029@main), but hasn't yet been merged into WebKit.
+as of [247029@main](https://commits.webkit.org/247029@main), but hasn't yet been merged into CyberKit.
 
 The TLC deallocation log flush algorithm is designed to achieve two performance optimizations:
 
@@ -1200,7 +1200,7 @@ Note that this just configures whether new pages are zeroed and what the view ca
 heap are. The *intrinsic heap* is one of the four categories of heaps that the basic heap configuration template
 supports:
 
-- Intrinsic heaps are global singleton heaps, like the common heap for primitives. WebKit's fastMalloc bottoms
+- Intrinsic heaps are global singleton heaps, like the common heap for primitives. CyberKit's fastMalloc bottoms
   out in an intrinsic heap.
 - Primitive heaps are heaps for primitive untyped values, but that aren't singletons. You can have many
   primitive heaps.
@@ -1225,7 +1225,7 @@ probably base it on the basic heap config template (though we don't absolutely h
 
 ## JIT Heap Config
 
-The JIT heap config is for replacing the MetaAllocator as a way of doing executable memory allocation in WebKit.
+The JIT heap config is for replacing the MetaAllocator as a way of doing executable memory allocation in CyberKit.
 It needs to satisfy two requirements of executable memory allocation:
 
 - The allocator cannot read or write the memory it manages, since that memory may have weird permissions at any
@@ -1324,7 +1324,7 @@ This concludes the discussion of libpas design.
 # Testing Libpas
 
 I've tried to write test cases for every behavior in libpas, to the point that you should feel comfortable
-dropping a new libpas in WebKit (or wherever) if `test_pas` passes.
+dropping a new libpas in CyberKit (or wherever) if `test_pas` passes.
 
 `test_pas` is a white-box component, regression, and unit test suite. It's allowed to call any libpas function,
 even internal functions, and sometimes functions that libpas exposes only for the test suite.

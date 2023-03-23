@@ -44,7 +44,7 @@
 
 namespace WebKit {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 static WorkQueue& remoteVideoFrameObjectHeapQueue()
 {
@@ -90,7 +90,7 @@ void RemoteVideoFrameObjectHeap::close()
     // TODO: add can happen after stopping.
 }
 
-RemoteVideoFrameProxy::Properties RemoteVideoFrameObjectHeap::add(Ref<WebCore::VideoFrame>&& frame)
+RemoteVideoFrameProxy::Properties RemoteVideoFrameObjectHeap::add(Ref<CyberCore::VideoFrame>&& frame)
 {
     auto write = RemoteVideoFrameWriteReference::generateForAdd();
     auto newFrameReference = write.retiredReference();
@@ -141,7 +141,7 @@ void RemoteVideoFrameObjectHeap::pixelBuffer(RemoteVideoFrameReadReference&& rea
     completionHandler(WTFMove(pixelBuffer));
 }
 
-void RemoteVideoFrameObjectHeap::convertFrameBuffer(SharedVideoFrame&& sharedVideoFrame, CompletionHandler<void(WebCore::DestinationColorSpace)>&& callback)
+void RemoteVideoFrameObjectHeap::convertFrameBuffer(SharedVideoFrame&& sharedVideoFrame, CompletionHandler<void(CyberCore::DestinationColorSpace)>&& callback)
 {
     DestinationColorSpace destinationColorSpace { DestinationColorSpace::SRGB().platformColorSpace() };
     auto scope = makeScopeExit([&callback, &destinationColorSpace] { callback(destinationColorSpace); });

@@ -36,19 +36,19 @@ namespace IPC {
 class Connection;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class GPUProcessConnection;
 class WebProcess;
 
 class RemoteRemoteCommandListener final
-    : public WebCore::RemoteCommandListener
+    : public CyberCore::RemoteCommandListener
     , private GPUProcessConnection::Client
     , private IPC::MessageReceiver {
     WTF_MAKE_FAST_ALLOCATED;
 public:
-    static std::unique_ptr<RemoteRemoteCommandListener> create(WebCore::RemoteCommandListenerClient&, WebProcess&);
-    RemoteRemoteCommandListener(WebCore::RemoteCommandListenerClient&, WebProcess&);
+    static std::unique_ptr<RemoteRemoteCommandListener> create(CyberCore::RemoteCommandListenerClient&, WebProcess&);
+    RemoteRemoteCommandListener(CyberCore::RemoteCommandListenerClient&, WebProcess&);
     ~RemoteRemoteCommandListener();
 
 private:
@@ -59,16 +59,16 @@ private:
     void gpuProcessConnectionDidClose(GPUProcessConnection&) final;
 
     // Messages
-    void didReceiveRemoteControlCommand(WebCore::PlatformMediaSession::RemoteControlCommandType, const WebCore::PlatformMediaSession::RemoteCommandArgument&);
+    void didReceiveRemoteControlCommand(CyberCore::PlatformMediaSession::RemoteControlCommandType, const CyberCore::PlatformMediaSession::RemoteCommandArgument&);
 
-    // WebCore::RemoteCommandListener
+    // CyberCore::RemoteCommandListener
     void updateSupportedCommands() final;
 
     GPUProcessConnection& ensureGPUProcessConnection();
 
     WebProcess& m_process;
     RemoteRemoteCommandListenerIdentifier m_identifier;
-    WebCore::RemoteCommandListener::RemoteCommandsSet m_currentCommands;
+    CyberCore::RemoteCommandListener::RemoteCommandsSet m_currentCommands;
     bool m_currentSupportSeeking { false };
     WeakPtr<GPUProcessConnection> m_gpuProcessConnection;
 };

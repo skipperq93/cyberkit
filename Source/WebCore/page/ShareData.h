@@ -28,7 +28,7 @@
 #include "SharedBuffer.h"
 #include <wtf/URL.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class ShareDataOriginator : bool { Web, User };
     

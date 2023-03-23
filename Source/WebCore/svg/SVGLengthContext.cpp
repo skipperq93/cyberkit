@@ -34,7 +34,7 @@
 #include "SVGSVGElement.h"
 #include <wtf/MathExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 SVGLengthContext::SVGLengthContext(const SVGElement* context)
     : m_context(context)

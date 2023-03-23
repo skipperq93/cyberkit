@@ -37,51 +37,51 @@
 
 namespace WebKit {
 
-OptionSet<WebCore::PlatformEvent::Modifier> platform(OptionSet<WebEventModifier> modifiers)
+OptionSet<CyberCore::PlatformEvent::Modifier> platform(OptionSet<WebEventModifier> modifiers)
 {
-    OptionSet<WebCore::PlatformEvent::Modifier> result;
+    OptionSet<CyberCore::PlatformEvent::Modifier> result;
     if (modifiers.contains(WebEventModifier::ShiftKey))
-        result.add(WebCore::PlatformEvent::Modifier::ShiftKey);
+        result.add(CyberCore::PlatformEvent::Modifier::ShiftKey);
     if (modifiers.contains(WebEventModifier::ControlKey))
-        result.add(WebCore::PlatformEvent::Modifier::ControlKey);
+        result.add(CyberCore::PlatformEvent::Modifier::ControlKey);
     if (modifiers.contains(WebEventModifier::AltKey))
-        result.add(WebCore::PlatformEvent::Modifier::AltKey);
+        result.add(CyberCore::PlatformEvent::Modifier::AltKey);
     if (modifiers.contains(WebEventModifier::MetaKey))
-        result.add(WebCore::PlatformEvent::Modifier::MetaKey);
+        result.add(CyberCore::PlatformEvent::Modifier::MetaKey);
     if (modifiers.contains(WebEventModifier::CapsLockKey))
-        result.add(WebCore::PlatformEvent::Modifier::CapsLockKey);
+        result.add(CyberCore::PlatformEvent::Modifier::CapsLockKey);
     return result;
 }
 
-class WebKit2PlatformMouseEvent : public WebCore::PlatformMouseEvent {
+class WebKit2PlatformMouseEvent : public CyberCore::PlatformMouseEvent {
 public:
     WebKit2PlatformMouseEvent(const WebMouseEvent& webEvent)
     {
         // PlatformEvent
         switch (webEvent.type()) {
         case WebEventType::MouseDown:
-            m_type = WebCore::PlatformEvent::Type::MousePressed;
-            m_force = WebCore::ForceAtClick;
+            m_type = CyberCore::PlatformEvent::Type::MousePressed;
+            m_force = CyberCore::ForceAtClick;
             break;
         case WebEventType::MouseUp:
-            m_type = WebCore::PlatformEvent::Type::MouseReleased;
-            m_force = WebCore::ForceAtClick;
+            m_type = CyberCore::PlatformEvent::Type::MouseReleased;
+            m_force = CyberCore::ForceAtClick;
             break;
         case WebEventType::MouseMove:
-            m_type = WebCore::PlatformEvent::Type::MouseMoved;
+            m_type = CyberCore::PlatformEvent::Type::MouseMoved;
             m_force = webEvent.force();
             break;
         case WebEventType::MouseForceChanged:
-            m_type = WebCore::PlatformEvent::Type::MouseForceChanged;
+            m_type = CyberCore::PlatformEvent::Type::MouseForceChanged;
             m_force = webEvent.force();
             break;
         case WebEventType::MouseForceDown:
-            m_type = WebCore::PlatformEvent::Type::MouseForceDown;
-            m_force = WebCore::ForceAtForceClick;
+            m_type = CyberCore::PlatformEvent::Type::MouseForceDown;
+            m_force = CyberCore::ForceAtForceClick;
             break;
         case WebEventType::MouseForceUp:
-            m_type = WebCore::PlatformEvent::Type::MouseForceUp;
-            m_force = WebCore::ForceAtForceClick;
+            m_type = CyberCore::PlatformEvent::Type::MouseForceUp;
+            m_force = CyberCore::ForceAtForceClick;
             break;
         default:
             ASSERT_NOT_REACHED();
@@ -94,16 +94,16 @@ public:
         // PlatformMouseEvent
         switch (webEvent.button()) {
         case WebMouseEventButton::NoButton:
-            m_button = WebCore::NoButton;
+            m_button = CyberCore::NoButton;
             break;
         case WebMouseEventButton::LeftButton:
-            m_button = WebCore::LeftButton;
+            m_button = CyberCore::LeftButton;
             break;
         case WebMouseEventButton::MiddleButton:
-            m_button = WebCore::MiddleButton;
+            m_button = CyberCore::MiddleButton;
             break;
         case WebMouseEventButton::RightButton:
-            m_button = WebCore::RightButton;
+            m_button = CyberCore::RightButton;
             break;
         default:
             ASSERT_NOT_REACHED();
@@ -112,7 +112,7 @@ public:
         m_buttons = webEvent.buttons();
 
         m_position = webEvent.position();
-        m_movementDelta = WebCore::IntPoint(webEvent.deltaX(), webEvent.deltaY());
+        m_movementDelta = CyberCore::IntPoint(webEvent.deltaX(), webEvent.deltaY());
         m_globalPosition = webEvent.globalPosition();
         m_clickCount = webEvent.clickCount();
 #if PLATFORM(MAC)
@@ -136,12 +136,12 @@ public:
     }
 };
 
-WebCore::PlatformMouseEvent platform(const WebMouseEvent& webEvent)
+CyberCore::PlatformMouseEvent platform(const WebMouseEvent& webEvent)
 {
     return WebKit2PlatformMouseEvent(webEvent);
 }
 
-class WebKit2PlatformWheelEvent : public WebCore::PlatformWheelEvent {
+class WebKit2PlatformWheelEvent : public CyberCore::PlatformWheelEvent {
 public:
     WebKit2PlatformWheelEvent(const WebWheelEvent& webEvent)
     {
@@ -159,11 +159,11 @@ public:
         m_deltaY = webEvent.delta().height();
         m_wheelTicksX = webEvent.wheelTicks().width();
         m_wheelTicksY = webEvent.wheelTicks().height();
-        m_granularity = (webEvent.granularity() == WebWheelEvent::ScrollByPageWheelEvent) ? WebCore::ScrollByPageWheelEvent : WebCore::ScrollByPixelWheelEvent;
+        m_granularity = (webEvent.granularity() == WebWheelEvent::ScrollByPageWheelEvent) ? CyberCore::ScrollByPageWheelEvent : CyberCore::ScrollByPixelWheelEvent;
         m_directionInvertedFromDevice = webEvent.directionInvertedFromDevice();
 #if ENABLE(KINETIC_SCROLLING)
-        m_phase = static_cast<WebCore::PlatformWheelEventPhase>(webEvent.phase());
-        m_momentumPhase = static_cast<WebCore::PlatformWheelEventPhase>(webEvent.momentumPhase());
+        m_phase = static_cast<CyberCore::PlatformWheelEventPhase>(webEvent.phase());
+        m_momentumPhase = static_cast<CyberCore::PlatformWheelEventPhase>(webEvent.momentumPhase());
 #endif
 #if PLATFORM(COCOA) || PLATFORM(GTK) || USE(LIBWPE)
         m_hasPreciseScrollingDeltas = webEvent.hasPreciseScrollingDeltas();
@@ -178,28 +178,28 @@ public:
     }
 };
 
-WebCore::PlatformWheelEvent platform(const WebWheelEvent& webEvent)
+CyberCore::PlatformWheelEvent platform(const WebWheelEvent& webEvent)
 {
     return WebKit2PlatformWheelEvent(webEvent);
 }
 
-class WebKit2PlatformKeyboardEvent : public WebCore::PlatformKeyboardEvent {
+class WebKit2PlatformKeyboardEvent : public CyberCore::PlatformKeyboardEvent {
 public:
     WebKit2PlatformKeyboardEvent(const WebKeyboardEvent& webEvent)
     {
         // PlatformEvent
         switch (webEvent.type()) {
         case WebEventType::KeyDown:
-            m_type = WebCore::PlatformEvent::Type::KeyDown;
+            m_type = CyberCore::PlatformEvent::Type::KeyDown;
             break;
         case WebEventType::KeyUp:
-            m_type = WebCore::PlatformEvent::Type::KeyUp;
+            m_type = CyberCore::PlatformEvent::Type::KeyUp;
             break;
         case WebEventType::RawKeyDown:
-            m_type = WebCore::PlatformEvent::Type::RawKeyDown;
+            m_type = CyberCore::PlatformEvent::Type::RawKeyDown;
             break;
         case WebEventType::Char:
-            m_type = WebCore::PlatformEvent::Type::Char;
+            m_type = CyberCore::PlatformEvent::Type::Char;
             break;
         default:
             ASSERT_NOT_REACHED();
@@ -235,7 +235,7 @@ public:
     }
 };
 
-WebCore::PlatformKeyboardEvent platform(const WebKeyboardEvent& webEvent)
+CyberCore::PlatformKeyboardEvent platform(const WebKeyboardEvent& webEvent)
 {
     return WebKit2PlatformKeyboardEvent(webEvent);
 }
@@ -244,33 +244,33 @@ WebCore::PlatformKeyboardEvent platform(const WebKeyboardEvent& webEvent)
 
 #if PLATFORM(IOS_FAMILY)
 
-static WebCore::PlatformTouchPoint::TouchPhaseType touchEventType(const WebPlatformTouchPoint& webTouchPoint)
+static CyberCore::PlatformTouchPoint::TouchPhaseType touchEventType(const WebPlatformTouchPoint& webTouchPoint)
 {
     switch (webTouchPoint.phase()) {
     case WebPlatformTouchPoint::TouchReleased:
-        return WebCore::PlatformTouchPoint::TouchPhaseEnded;
+        return CyberCore::PlatformTouchPoint::TouchPhaseEnded;
     case WebPlatformTouchPoint::TouchPressed:
-        return WebCore::PlatformTouchPoint::TouchPhaseBegan;
+        return CyberCore::PlatformTouchPoint::TouchPhaseBegan;
     case WebPlatformTouchPoint::TouchMoved:
-        return WebCore::PlatformTouchPoint::TouchPhaseMoved;
+        return CyberCore::PlatformTouchPoint::TouchPhaseMoved;
     case WebPlatformTouchPoint::TouchStationary:
-        return WebCore::PlatformTouchPoint::TouchPhaseStationary;
+        return CyberCore::PlatformTouchPoint::TouchPhaseStationary;
     case WebPlatformTouchPoint::TouchCancelled:
-        return WebCore::PlatformTouchPoint::TouchPhaseCancelled;
+        return CyberCore::PlatformTouchPoint::TouchPhaseCancelled;
     }
 }
 
-static WebCore::PlatformTouchPoint::TouchType webPlatformTouchTypeToPlatform(const WebPlatformTouchPoint::TouchType& webTouchType)
+static CyberCore::PlatformTouchPoint::TouchType webPlatformTouchTypeToPlatform(const WebPlatformTouchPoint::TouchType& webTouchType)
 {
     switch (webTouchType) {
     case WebPlatformTouchPoint::TouchType::Direct:
-        return WebCore::PlatformTouchPoint::TouchType::Direct;
+        return CyberCore::PlatformTouchPoint::TouchType::Direct;
     case WebPlatformTouchPoint::TouchType::Stylus:
-        return WebCore::PlatformTouchPoint::TouchType::Stylus;
+        return CyberCore::PlatformTouchPoint::TouchType::Stylus;
     }
 }
 
-class WebKit2PlatformTouchPoint : public WebCore::PlatformTouchPoint {
+class WebKit2PlatformTouchPoint : public CyberCore::PlatformTouchPoint {
 public:
 WebKit2PlatformTouchPoint(const WebPlatformTouchPoint& webTouchPoint)
     : PlatformTouchPoint(webTouchPoint.identifier(), webTouchPoint.location(), touchEventType(webTouchPoint)
@@ -284,7 +284,7 @@ WebKit2PlatformTouchPoint(const WebPlatformTouchPoint& webTouchPoint)
 
 #else
 
-class WebKit2PlatformTouchPoint : public WebCore::PlatformTouchPoint {
+class WebKit2PlatformTouchPoint : public CyberCore::PlatformTouchPoint {
 public:
     WebKit2PlatformTouchPoint(const WebPlatformTouchPoint& webTouchPoint)
     {
@@ -320,23 +320,23 @@ public:
 };
 #endif // PLATFORM(IOS_FAMILY)
 
-class WebKit2PlatformTouchEvent : public WebCore::PlatformTouchEvent {
+class WebKit2PlatformTouchEvent : public CyberCore::PlatformTouchEvent {
 public:
     WebKit2PlatformTouchEvent(const WebTouchEvent& webEvent)
     {
         // PlatformEvent
         switch (webEvent.type()) {
         case WebEventType::TouchStart:
-            m_type = WebCore::PlatformEvent::Type::TouchStart;
+            m_type = CyberCore::PlatformEvent::Type::TouchStart;
             break;
         case WebEventType::TouchMove:
-            m_type = WebCore::PlatformEvent::Type::TouchMove;
+            m_type = CyberCore::PlatformEvent::Type::TouchMove;
             break;
         case WebEventType::TouchEnd:
-            m_type = WebCore::PlatformEvent::Type::TouchEnd;
+            m_type = CyberCore::PlatformEvent::Type::TouchEnd;
             break;
         case WebEventType::TouchCancel:
-            m_type = WebCore::PlatformEvent::Type::TouchCancel;
+            m_type = CyberCore::PlatformEvent::Type::TouchCancel;
             break;
         default:
             ASSERT_NOT_REACHED();
@@ -367,26 +367,26 @@ public:
     }
 };
 
-WebCore::PlatformTouchEvent platform(const WebTouchEvent& webEvent)
+CyberCore::PlatformTouchEvent platform(const WebTouchEvent& webEvent)
 {
     return WebKit2PlatformTouchEvent(webEvent);
 }
 #endif
 
 #if ENABLE(MAC_GESTURE_EVENTS)
-class WebKit2PlatformGestureEvent : public WebCore::PlatformGestureEvent {
+class WebKit2PlatformGestureEvent : public CyberCore::PlatformGestureEvent {
 public:
     WebKit2PlatformGestureEvent(const WebGestureEvent& webEvent)
     {
         switch (webEvent.type()) {
         case WebEventType::GestureStart:
-            m_type = WebCore::PlatformEvent::Type::GestureStart;
+            m_type = CyberCore::PlatformEvent::Type::GestureStart;
             break;
         case WebEventType::GestureChange:
-            m_type = WebCore::PlatformEvent::Type::GestureChange;
+            m_type = CyberCore::PlatformEvent::Type::GestureChange;
             break;
         case WebEventType::GestureEnd:
-            m_type = WebCore::PlatformEvent::Type::GestureEnd;
+            m_type = CyberCore::PlatformEvent::Type::GestureEnd;
             break;
         default:
             ASSERT_NOT_REACHED();
@@ -403,7 +403,7 @@ public:
     }
 };
 
-WebCore::PlatformGestureEvent platform(const WebGestureEvent& webEvent)
+CyberCore::PlatformGestureEvent platform(const WebGestureEvent& webEvent)
 {
     return WebKit2PlatformGestureEvent(webEvent);
 }

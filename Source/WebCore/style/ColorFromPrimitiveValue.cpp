@@ -34,7 +34,7 @@
 #include "StyleBuilderState.h"
 #include "StyleColor.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace Style {
 
@@ -77,4 +77,4 @@ Color colorFromPrimitiveValueWithResolvedCurrentColor(const Document& document, 
 
 } // namespace Style
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -393,7 +393,7 @@
         return NSZeroSize;
 
     NSSize screenSize = _view.window.screen.frame.size;
-    WebCore::FloatRect largestRect = WebCore::largestRectWithAspectRatioInsideRect(screenSize.width / screenSize.height, _view.bounds);
+    CyberCore::FloatRect largestRect = CyberCore::largestRectWithAspectRatioInsideRect(screenSize.width / screenSize.height, _view.bounds);
     return NSMakeSize(largestRect.width() * 0.75, largestRect.height() * 0.75);
 }
 
@@ -414,7 +414,7 @@
         return nil;
 
     RefPtr<WebKit::WebPageProxy> page = _page.get();
-    WebCore::PageOverlay::PageOverlayID overlayID = _hitTestResultData.platformData.detectedDataOriginatingPageOverlay;
+    CyberCore::PageOverlay::PageOverlayID overlayID = _hitTestResultData.platformData.detectedDataOriginatingPageOverlay;
     _currentActionContext = [actionContext contextForView:_view altMode:YES interactionStartedHandler:^() {
         page->send(Messages::WebPage::DataDetectorsDidPresentUI(overlayID));
     } interactionChangedHandler:^() {
@@ -479,16 +479,16 @@
     if (_state != WebKit::ImmediateActionState::Ready)
         return nil;
 
-    WebCore::DictionaryPopupInfo dictionaryPopupInfo = _hitTestResultData.dictionaryPopupInfo;
+    CyberCore::DictionaryPopupInfo dictionaryPopupInfo = _hitTestResultData.dictionaryPopupInfo;
     if (!dictionaryPopupInfo.platformData.attributedString)
         return nil;
 
     _viewImpl->prepareForDictionaryLookup();
 
-    return WebCore::DictionaryLookup::animationControllerForPopup(dictionaryPopupInfo, _view, [self](WebCore::TextIndicator& textIndicator) {
-        _viewImpl->setTextIndicator(textIndicator, WebCore::TextIndicatorLifetime::Permanent);
+    return CyberCore::DictionaryLookup::animationControllerForPopup(dictionaryPopupInfo, _view, [self](CyberCore::TextIndicator& textIndicator) {
+        _viewImpl->setTextIndicator(textIndicator, CyberCore::TextIndicatorLifetime::Permanent);
     }, nullptr, [self]() {
-        _viewImpl->clearTextIndicatorWithAnimation(WebCore::TextIndicatorDismissalAnimation::None);
+        _viewImpl->clearTextIndicatorWithAnimation(CyberCore::TextIndicatorDismissalAnimation::None);
     });
 }
 

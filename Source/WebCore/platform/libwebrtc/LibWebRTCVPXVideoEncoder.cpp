@@ -46,7 +46,7 @@ ALLOW_COMMA_BEGIN
 ALLOW_COMMA_END
 ALLOW_UNUSED_PARAMETERS_END
 
-namespace WebCore {
+namespace CyberCore {
 
 static WorkQueue& vpxEncoderQueue()
 {

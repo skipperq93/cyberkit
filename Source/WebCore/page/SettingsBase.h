@@ -56,7 +56,7 @@
 #include "DataDetectorType.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class Page;
 
@@ -196,4 +196,4 @@ protected:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore

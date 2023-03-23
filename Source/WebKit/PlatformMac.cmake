@@ -23,7 +23,7 @@ include(Headers.cmake)
 
 list(APPEND WebKit_PRIVATE_LIBRARIES
     Accessibility
-    WebKitLegacy
+    CyberKitLegacy
     ${APPLICATIONSERVICES_LIBRARY}
     ${CORESERVICES_LIBRARY}
     ${DEVICEIDENTITY_LIBRARY}
@@ -160,10 +160,10 @@ list(APPEND WebKit_PRIVATE_INCLUDE_DIRECTORIES
     "${WEBKIT_DIR}/WebProcess/WebPage/Cocoa"
     "${WEBKIT_DIR}/WebProcess/WebPage/RemoteLayerTree"
     "${WEBKIT_DIR}/WebProcess/WebPage/mac"
-    "${WEBKIT_DIR}/WebProcess/WebCoreSupport/mac"
+    "${WEBKIT_DIR}/WebProcess/CyberCoreSupport/mac"
     "${WEBKIT_DIR}/webpushd"
     "${WEBKITLEGACY_DIR}"
-    "${WebKitLegacy_FRAMEWORK_HEADERS_DIR}"
+    "${CyberKitLegacy_FRAMEWORK_HEADERS_DIR}"
 )
 
 set(XPCService_SOURCES
@@ -262,7 +262,7 @@ list(APPEND WebKit_SERIALIZATION_IN_FILES
     Shared/Cocoa/CacheStoragePolicy.serialization.in
     Shared/Cocoa/DataDetectionResult.serialization.in
     Shared/Cocoa/RevealItem.serialization.in
-    Shared/Cocoa/WebCoreArgumentCodersCocoa.serialization.in
+    Shared/Cocoa/CyberCoreArgumentCodersCocoa.serialization.in
 )
 
 list(APPEND WebKit_PUBLIC_FRAMEWORK_HEADERS
@@ -397,7 +397,7 @@ list(APPEND WebKit_PUBLIC_FRAMEWORK_HEADERS
     UIProcess/API/Cocoa/WKWebsiteDataStorePrivate.h
     UIProcess/API/Cocoa/WKWindowFeatures.h
     UIProcess/API/Cocoa/WKWindowFeaturesPrivate.h
-    UIProcess/API/Cocoa/WebKitLegacy.h
+    UIProcess/API/Cocoa/CyberKitLegacy.h
     UIProcess/API/Cocoa/_WKActivatedElementInfo.h
     UIProcess/API/Cocoa/_WKAppHighlight.h
     UIProcess/API/Cocoa/_WKAppHighlightDelegate.h
@@ -549,7 +549,7 @@ set(WebKit_FORWARDING_HEADERS_DIRECTORIES
 )
 
 # FIXME: Forwarding headers should be complete copies of the header.
-set(WebKitLegacyForwardingHeaders
+set(CyberKitLegacyForwardingHeaders
     DOM.h
     DOMCore.h
     DOMElement.h
@@ -558,7 +558,7 @@ set(WebKitLegacyForwardingHeaders
     DOMPrivate.h
     WebApplicationCache.h
     WebCache.h
-    WebCoreStatistics.h
+    CyberCoreStatistics.h
     WebDOMOperations.h
     WebDOMOperationsPrivate.h
     WebDatabaseManagerPrivate.h

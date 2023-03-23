@@ -24,11 +24,11 @@
  */
 
 #include "config.h"
-#include "WebCoreThreadRun.h"
+#include "CyberCoreThreadRun.h"
 
 #if PLATFORM(IOS_FAMILY)
 
-#include "WebCoreThreadInternal.h"
+#include "CyberCoreThreadInternal.h"
 #include <mutex>
 #include <wtf/Condition.h>
 #include <wtf/Lock.h>

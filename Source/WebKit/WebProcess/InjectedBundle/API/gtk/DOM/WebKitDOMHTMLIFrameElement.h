@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -21,28 +21,28 @@
 #error "Only <webkitdom/webkitdom.h> can be included directly."
 #endif
 
-#ifndef WebKitDOMHTMLIFrameElement_h
-#define WebKitDOMHTMLIFrameElement_h
+#ifndef CyberKitDOMHTMLIFrameElement_h
+#define CyberKitDOMHTMLIFrameElement_h
 
 #include <glib-object.h>
-#include <webkitdom/WebKitDOMHTMLElement.h>
+#include <webkitdom/CyberKitDOMHTMLElement.h>
 #include <webkitdom/webkitdomdefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_DOM_TYPE_HTML_IFRAME_ELEMENT            (webkit_dom_html_iframe_element_get_type())
-#define WEBKIT_DOM_HTML_IFRAME_ELEMENT(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_HTML_IFRAME_ELEMENT, WebKitDOMHTMLIFrameElement))
-#define WEBKIT_DOM_HTML_IFRAME_ELEMENT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_HTML_IFRAME_ELEMENT, WebKitDOMHTMLIFrameElementClass)
+#define WEBKIT_DOM_HTML_IFRAME_ELEMENT(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_HTML_IFRAME_ELEMENT, CyberKitDOMHTMLIFrameElement))
+#define WEBKIT_DOM_HTML_IFRAME_ELEMENT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_HTML_IFRAME_ELEMENT, CyberKitDOMHTMLIFrameElementClass)
 #define WEBKIT_DOM_IS_HTML_IFRAME_ELEMENT(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_DOM_TYPE_HTML_IFRAME_ELEMENT))
 #define WEBKIT_DOM_IS_HTML_IFRAME_ELEMENT_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_DOM_TYPE_HTML_IFRAME_ELEMENT))
-#define WEBKIT_DOM_HTML_IFRAME_ELEMENT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_HTML_IFRAME_ELEMENT, WebKitDOMHTMLIFrameElementClass))
+#define WEBKIT_DOM_HTML_IFRAME_ELEMENT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_HTML_IFRAME_ELEMENT, CyberKitDOMHTMLIFrameElementClass))
 
-struct _WebKitDOMHTMLIFrameElement {
-    WebKitDOMHTMLElement parent_instance;
+struct _CyberKitDOMHTMLIFrameElement {
+    CyberKitDOMHTMLElement parent_instance;
 };
 
-struct _WebKitDOMHTMLIFrameElementClass {
-    WebKitDOMHTMLElementClass parent_class;
+struct _CyberKitDOMHTMLIFrameElementClass {
+    CyberKitDOMHTMLElementClass parent_class;
 };
 
 WEBKIT_DEPRECATED GType
@@ -50,246 +50,246 @@ webkit_dom_html_iframe_element_get_type(void);
 
 /**
  * webkit_dom_html_iframe_element_get_align:
- * @self: A #WebKitDOMHTMLIFrameElement
+ * @self: A #CyberKitDOMHTMLIFrameElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_iframe_element_get_align(WebKitDOMHTMLIFrameElement* self);
+webkit_dom_html_iframe_element_get_align(CyberKitDOMHTMLIFrameElement* self);
 
 /**
  * webkit_dom_html_iframe_element_set_align:
- * @self: A #WebKitDOMHTMLIFrameElement
+ * @self: A #CyberKitDOMHTMLIFrameElement
  * @value: A #gchar
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_iframe_element_set_align(WebKitDOMHTMLIFrameElement* self, const gchar* value);
+webkit_dom_html_iframe_element_set_align(CyberKitDOMHTMLIFrameElement* self, const gchar* value);
 
 /**
  * webkit_dom_html_iframe_element_get_frame_border:
- * @self: A #WebKitDOMHTMLIFrameElement
+ * @self: A #CyberKitDOMHTMLIFrameElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_iframe_element_get_frame_border(WebKitDOMHTMLIFrameElement* self);
+webkit_dom_html_iframe_element_get_frame_border(CyberKitDOMHTMLIFrameElement* self);
 
 /**
  * webkit_dom_html_iframe_element_set_frame_border:
- * @self: A #WebKitDOMHTMLIFrameElement
+ * @self: A #CyberKitDOMHTMLIFrameElement
  * @value: A #gchar
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_iframe_element_set_frame_border(WebKitDOMHTMLIFrameElement* self, const gchar* value);
+webkit_dom_html_iframe_element_set_frame_border(CyberKitDOMHTMLIFrameElement* self, const gchar* value);
 
 /**
  * webkit_dom_html_iframe_element_get_height:
- * @self: A #WebKitDOMHTMLIFrameElement
+ * @self: A #CyberKitDOMHTMLIFrameElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_iframe_element_get_height(WebKitDOMHTMLIFrameElement* self);
+webkit_dom_html_iframe_element_get_height(CyberKitDOMHTMLIFrameElement* self);
 
 /**
  * webkit_dom_html_iframe_element_set_height:
- * @self: A #WebKitDOMHTMLIFrameElement
+ * @self: A #CyberKitDOMHTMLIFrameElement
  * @value: A #gchar
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_iframe_element_set_height(WebKitDOMHTMLIFrameElement* self, const gchar* value);
+webkit_dom_html_iframe_element_set_height(CyberKitDOMHTMLIFrameElement* self, const gchar* value);
 
 /**
  * webkit_dom_html_iframe_element_get_long_desc:
- * @self: A #WebKitDOMHTMLIFrameElement
+ * @self: A #CyberKitDOMHTMLIFrameElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_iframe_element_get_long_desc(WebKitDOMHTMLIFrameElement* self);
+webkit_dom_html_iframe_element_get_long_desc(CyberKitDOMHTMLIFrameElement* self);
 
 /**
  * webkit_dom_html_iframe_element_set_long_desc:
- * @self: A #WebKitDOMHTMLIFrameElement
+ * @self: A #CyberKitDOMHTMLIFrameElement
  * @value: A #gchar
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_iframe_element_set_long_desc(WebKitDOMHTMLIFrameElement* self, const gchar* value);
+webkit_dom_html_iframe_element_set_long_desc(CyberKitDOMHTMLIFrameElement* self, const gchar* value);
 
 /**
  * webkit_dom_html_iframe_element_get_margin_height:
- * @self: A #WebKitDOMHTMLIFrameElement
+ * @self: A #CyberKitDOMHTMLIFrameElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_iframe_element_get_margin_height(WebKitDOMHTMLIFrameElement* self);
+webkit_dom_html_iframe_element_get_margin_height(CyberKitDOMHTMLIFrameElement* self);
 
 /**
  * webkit_dom_html_iframe_element_set_margin_height:
- * @self: A #WebKitDOMHTMLIFrameElement
+ * @self: A #CyberKitDOMHTMLIFrameElement
  * @value: A #gchar
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_iframe_element_set_margin_height(WebKitDOMHTMLIFrameElement* self, const gchar* value);
+webkit_dom_html_iframe_element_set_margin_height(CyberKitDOMHTMLIFrameElement* self, const gchar* value);
 
 /**
  * webkit_dom_html_iframe_element_get_margin_width:
- * @self: A #WebKitDOMHTMLIFrameElement
+ * @self: A #CyberKitDOMHTMLIFrameElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_iframe_element_get_margin_width(WebKitDOMHTMLIFrameElement* self);
+webkit_dom_html_iframe_element_get_margin_width(CyberKitDOMHTMLIFrameElement* self);
 
 /**
  * webkit_dom_html_iframe_element_set_margin_width:
- * @self: A #WebKitDOMHTMLIFrameElement
+ * @self: A #CyberKitDOMHTMLIFrameElement
  * @value: A #gchar
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_iframe_element_set_margin_width(WebKitDOMHTMLIFrameElement* self, const gchar* value);
+webkit_dom_html_iframe_element_set_margin_width(CyberKitDOMHTMLIFrameElement* self, const gchar* value);
 
 /**
  * webkit_dom_html_iframe_element_get_name:
- * @self: A #WebKitDOMHTMLIFrameElement
+ * @self: A #CyberKitDOMHTMLIFrameElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_iframe_element_get_name(WebKitDOMHTMLIFrameElement* self);
+webkit_dom_html_iframe_element_get_name(CyberKitDOMHTMLIFrameElement* self);
 
 /**
  * webkit_dom_html_iframe_element_set_name:
- * @self: A #WebKitDOMHTMLIFrameElement
+ * @self: A #CyberKitDOMHTMLIFrameElement
  * @value: A #gchar
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_iframe_element_set_name(WebKitDOMHTMLIFrameElement* self, const gchar* value);
+webkit_dom_html_iframe_element_set_name(CyberKitDOMHTMLIFrameElement* self, const gchar* value);
 
 /**
  * webkit_dom_html_iframe_element_get_scrolling:
- * @self: A #WebKitDOMHTMLIFrameElement
+ * @self: A #CyberKitDOMHTMLIFrameElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_iframe_element_get_scrolling(WebKitDOMHTMLIFrameElement* self);
+webkit_dom_html_iframe_element_get_scrolling(CyberKitDOMHTMLIFrameElement* self);
 
 /**
  * webkit_dom_html_iframe_element_set_scrolling:
- * @self: A #WebKitDOMHTMLIFrameElement
+ * @self: A #CyberKitDOMHTMLIFrameElement
  * @value: A #gchar
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_iframe_element_set_scrolling(WebKitDOMHTMLIFrameElement* self, const gchar* value);
+webkit_dom_html_iframe_element_set_scrolling(CyberKitDOMHTMLIFrameElement* self, const gchar* value);
 
 /**
  * webkit_dom_html_iframe_element_get_src:
- * @self: A #WebKitDOMHTMLIFrameElement
+ * @self: A #CyberKitDOMHTMLIFrameElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_iframe_element_get_src(WebKitDOMHTMLIFrameElement* self);
+webkit_dom_html_iframe_element_get_src(CyberKitDOMHTMLIFrameElement* self);
 
 /**
  * webkit_dom_html_iframe_element_set_src:
- * @self: A #WebKitDOMHTMLIFrameElement
+ * @self: A #CyberKitDOMHTMLIFrameElement
  * @value: A #gchar
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_iframe_element_set_src(WebKitDOMHTMLIFrameElement* self, const gchar* value);
+webkit_dom_html_iframe_element_set_src(CyberKitDOMHTMLIFrameElement* self, const gchar* value);
 
 /**
  * webkit_dom_html_iframe_element_get_width:
- * @self: A #WebKitDOMHTMLIFrameElement
+ * @self: A #CyberKitDOMHTMLIFrameElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_iframe_element_get_width(WebKitDOMHTMLIFrameElement* self);
+webkit_dom_html_iframe_element_get_width(CyberKitDOMHTMLIFrameElement* self);
 
 /**
  * webkit_dom_html_iframe_element_set_width:
- * @self: A #WebKitDOMHTMLIFrameElement
+ * @self: A #CyberKitDOMHTMLIFrameElement
  * @value: A #gchar
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_iframe_element_set_width(WebKitDOMHTMLIFrameElement* self, const gchar* value);
+webkit_dom_html_iframe_element_set_width(CyberKitDOMHTMLIFrameElement* self, const gchar* value);
 
 /**
  * webkit_dom_html_iframe_element_get_content_document:
- * @self: A #WebKitDOMHTMLIFrameElement
+ * @self: A #CyberKitDOMHTMLIFrameElement
  *
- * Returns: (transfer none): A #WebKitDOMDocument
+ * Returns: (transfer none): A #CyberKitDOMDocument
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMDocument*
-webkit_dom_html_iframe_element_get_content_document(WebKitDOMHTMLIFrameElement* self);
+WEBKIT_DEPRECATED CyberKitDOMDocument*
+webkit_dom_html_iframe_element_get_content_document(CyberKitDOMHTMLIFrameElement* self);
 
 /**
  * webkit_dom_html_iframe_element_get_content_window:
- * @self: A #WebKitDOMHTMLIFrameElement
+ * @self: A #CyberKitDOMHTMLIFrameElement
  *
- * Returns: (transfer full): A #WebKitDOMDOMWindow
+ * Returns: (transfer full): A #CyberKitDOMDOMWindow
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMDOMWindow*
-webkit_dom_html_iframe_element_get_content_window(WebKitDOMHTMLIFrameElement* self);
+WEBKIT_DEPRECATED CyberKitDOMDOMWindow*
+webkit_dom_html_iframe_element_get_content_window(CyberKitDOMHTMLIFrameElement* self);
 
 G_END_DECLS
 
-#endif /* WebKitDOMHTMLIFrameElement_h */
+#endif /* CyberKitDOMHTMLIFrameElement_h */

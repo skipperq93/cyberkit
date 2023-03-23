@@ -41,7 +41,7 @@
 #import <wtf/ASCIICType.h>
 #import <wtf/WallTime.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 NSPoint globalPoint(const NSPoint& windowPoint, NSWindow *window)
 {
@@ -835,6 +835,6 @@ PlatformKeyboardEvent PlatformEventFactory::createPlatformKeyboardEvent(NSEvent 
     return PlatformKeyboardEventBuilder(event);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(MAC)

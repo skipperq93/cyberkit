@@ -48,7 +48,7 @@
 #include <wtf/StdLibExtras.h>
 #include <wtf/WorkQueue.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 BlobRegistryImpl::~BlobRegistryImpl() = default;
 
@@ -422,4 +422,4 @@ void BlobRegistryImpl::unregisterBlobURLHandle(const URL& url)
         m_blobs.remove(urlKey);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -29,7 +29,7 @@
 
 #if PLATFORM(MAC)
 
-namespace WebCore {
+namespace CyberCore {
 
 class ThemeMac final : public ThemeCocoa {
 public:
@@ -62,6 +62,6 @@ private:
     bool userPrefersContrast() const final;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(MAC)

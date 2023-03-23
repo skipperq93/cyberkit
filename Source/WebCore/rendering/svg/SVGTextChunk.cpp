@@ -27,7 +27,7 @@
 #include "SVGTextContentElement.h"
 #include "SVGTextFragment.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 SVGTextChunk::SVGTextChunk(const Vector<SVGInlineTextBox*>& lineLayoutBoxes, unsigned first, unsigned limit)
 {
@@ -212,4 +212,4 @@ void SVGTextChunk::processTextAnchorCorrection() const
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore

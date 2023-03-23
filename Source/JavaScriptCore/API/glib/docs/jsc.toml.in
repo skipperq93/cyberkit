@@ -1,5 +1,5 @@
 [library]
-description = "The JavaScriptCore library"
+description = "The CyberScriptCore library"
 license = "BSD, LGPL-2.1"
 authors = "The WebKit GTK and WPE teams"
 version = "@PROJECT_VERSION@"

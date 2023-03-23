@@ -35,7 +35,7 @@
 #include "UserContentController.h"
 #include "UserMessageHandler.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 UserMessageHandlersNamespace::UserMessageHandlersNamespace(Frame& frame, UserContentProvider& userContentProvider)
     : FrameDestructionObserver(&frame)
@@ -99,6 +99,6 @@ UserMessageHandler* UserMessageHandlersNamespace::namedItem(DOMWrapperWorld& wor
     return handler;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(USER_MESSAGE_HANDLERS)

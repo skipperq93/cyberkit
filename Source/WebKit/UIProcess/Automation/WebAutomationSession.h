@@ -53,7 +53,7 @@ class BackendDispatcher;
 class FrontendRouter;
 }
 
-namespace WebCore {
+namespace CyberCore {
 class IntPoint;
 class IntRect;
 
@@ -147,18 +147,18 @@ public:
 
     // SimulatedInputDispatcher::Client API
 #if ENABLE(WEBDRIVER_MOUSE_INTERACTIONS)
-    void simulateMouseInteraction(WebPageProxy&, MouseInteraction, MouseButton, const WebCore::IntPoint& locationInView, const String& pointerType, AutomationCompletionHandler&&);
+    void simulateMouseInteraction(WebPageProxy&, MouseInteraction, MouseButton, const CyberCore::IntPoint& locationInView, const String& pointerType, AutomationCompletionHandler&&);
 #endif
 #if ENABLE(WEBDRIVER_TOUCH_INTERACTIONS)
-    void simulateTouchInteraction(WebPageProxy&, TouchInteraction, const WebCore::IntPoint& locationInView, std::optional<Seconds> duration, AutomationCompletionHandler&&);
+    void simulateTouchInteraction(WebPageProxy&, TouchInteraction, const CyberCore::IntPoint& locationInView, std::optional<Seconds> duration, AutomationCompletionHandler&&);
 #endif
 #if ENABLE(WEBDRIVER_KEYBOARD_INTERACTIONS)
     void simulateKeyboardInteraction(WebPageProxy&, KeyboardInteraction, std::variant<VirtualKey, CharKey>&&, AutomationCompletionHandler&&);
 #endif
 #if ENABLE(WEBDRIVER_WHEEL_INTERACTIONS)
-    void simulateWheelInteraction(WebPageProxy&, const WebCore::IntPoint& locationInView, const WebCore::IntSize& delta, AutomationCompletionHandler&&);
+    void simulateWheelInteraction(WebPageProxy&, const CyberCore::IntPoint& locationInView, const CyberCore::IntSize& delta, AutomationCompletionHandler&&);
 #endif
-    void viewportInViewCenterPointOfElement(WebPageProxy&, std::optional<WebCore::FrameIdentifier>, const Inspector::Protocol::Automation::NodeHandle&, Function<void(std::optional<WebCore::IntPoint>, std::optional<AutomationCommandError>)>&&);
+    void viewportInViewCenterPointOfElement(WebPageProxy&, std::optional<CyberCore::FrameIdentifier>, const Inspector::Protocol::Automation::NodeHandle&, Function<void(std::optional<CyberCore::IntPoint>, std::optional<AutomationCommandError>)>&&);
 
 #endif // ENABLE(WEBDRIVER_ACTIONS_API)
 
@@ -230,22 +230,22 @@ public:
     void markEventAsSynthesizedForAutomation(NSEvent *);
 #endif
 
-    void didDestroyFrame(WebCore::FrameIdentifier);
+    void didDestroyFrame(CyberCore::FrameIdentifier);
 
 private:
     RefPtr<WebPageProxy> webPageProxyForHandle(const String&);
     String handleForWebPageProxy(const WebPageProxy&);
-    Ref<Inspector::Protocol::Automation::BrowsingContext> buildBrowsingContextForPage(WebPageProxy&, WebCore::FloatRect windowFrame);
+    Ref<Inspector::Protocol::Automation::BrowsingContext> buildBrowsingContextForPage(WebPageProxy&, CyberCore::FloatRect windowFrame);
     void getNextContext(Ref<WebAutomationSession>&&, Vector<Ref<WebPageProxy>>&&, Ref<JSON::ArrayOf<Inspector::Protocol::Automation::BrowsingContext>>, Ref<WebAutomationSession::GetBrowsingContextsCallback>&&);
 
-    std::optional<WebCore::FrameIdentifier> webFrameIDForHandle(const String&, bool& frameNotFound);
-    String handleForWebFrameID(std::optional<WebCore::FrameIdentifier>);
+    std::optional<CyberCore::FrameIdentifier> webFrameIDForHandle(const String&, bool& frameNotFound);
+    String handleForWebFrameID(std::optional<CyberCore::FrameIdentifier>);
     String handleForWebFrameProxy(const WebFrameProxy&);
 
     void waitForNavigationToCompleteOnPage(WebPageProxy&, Inspector::Protocol::Automation::PageLoadStrategy, Seconds, Ref<Inspector::BackendDispatcher::CallbackBase>&&);
     void waitForNavigationToCompleteOnFrame(WebFrameProxy&, Inspector::Protocol::Automation::PageLoadStrategy, Seconds, Ref<Inspector::BackendDispatcher::CallbackBase>&&);
     void respondToPendingPageNavigationCallbacksWithTimeout(HashMap<WebPageProxyIdentifier, RefPtr<Inspector::BackendDispatcher::CallbackBase>>&);
-    void respondToPendingFrameNavigationCallbacksWithTimeout(HashMap<WebCore::FrameIdentifier, RefPtr<Inspector::BackendDispatcher::CallbackBase>>&);
+    void respondToPendingFrameNavigationCallbacksWithTimeout(HashMap<CyberCore::FrameIdentifier, RefPtr<Inspector::BackendDispatcher::CallbackBase>>&);
     void loadTimerFired();
 
     void exitFullscreenWindowForPage(WebPageProxy&, WTF::CompletionHandler<void()>&&);
@@ -262,14 +262,14 @@ private:
 
     // Platform-dependent implementations.
 #if ENABLE(WEBDRIVER_MOUSE_INTERACTIONS)
-    void updateClickCount(MouseButton, const WebCore::IntPoint&, Seconds maxTime, int maxDistance);
+    void updateClickCount(MouseButton, const CyberCore::IntPoint&, Seconds maxTime, int maxDistance);
     void resetClickCount();
-    void platformSimulateMouseInteraction(WebPageProxy&, MouseInteraction, MouseButton, const WebCore::IntPoint& locationInViewport, OptionSet<WebEventModifier>, const String& pointerType);
+    void platformSimulateMouseInteraction(WebPageProxy&, MouseInteraction, MouseButton, const CyberCore::IntPoint& locationInViewport, OptionSet<WebEventModifier>, const String& pointerType);
     static OptionSet<WebEventModifier> platformWebModifiersFromRaw(unsigned modifiers);
 #endif
 #if ENABLE(WEBDRIVER_TOUCH_INTERACTIONS)
     // Simulates a single touch point being pressed, moved, and released.
-    void platformSimulateTouchInteraction(WebPageProxy&, TouchInteraction, const WebCore::IntPoint& locationInViewport, std::optional<Seconds> duration, AutomationCompletionHandler&&);
+    void platformSimulateTouchInteraction(WebPageProxy&, TouchInteraction, const CyberCore::IntPoint& locationInViewport, std::optional<Seconds> duration, AutomationCompletionHandler&&);
 #endif
 #if ENABLE(WEBDRIVER_KEYBOARD_INTERACTIONS)
     // Simulates a single virtual or char key being pressed/released, such as 'a', Control, F-keys, Numpad keys, etc. as allowed by the protocol.
@@ -278,7 +278,7 @@ private:
     void platformSimulateKeySequence(WebPageProxy&, const String&);
 #endif // ENABLE(WEBDRIVER_KEYBOARD_INTERACTIONS)
 #if ENABLE(WEBDRIVER_WHEEL_INTERACTIONS)
-    void platformSimulateWheelInteraction(WebPageProxy&, const WebCore::IntPoint& locationInViewport, const WebCore::IntSize& delta);
+    void platformSimulateWheelInteraction(WebPageProxy&, const CyberCore::IntPoint& locationInViewport, const CyberCore::IntSize& delta);
 #endif // ENABLE(WEBDRIVER_WHEEL_INTERACTIONS)
 
     // Get base64-encoded PNG data from a bitmap.
@@ -309,13 +309,13 @@ private:
     HashMap<WebPageProxyIdentifier, String> m_webPageHandleMap;
     HashMap<String, WebPageProxyIdentifier> m_handleWebPageMap;
 
-    HashMap<WebCore::FrameIdentifier, String> m_webFrameHandleMap;
-    HashMap<String, WebCore::FrameIdentifier> m_handleWebFrameMap;
+    HashMap<CyberCore::FrameIdentifier, String> m_webFrameHandleMap;
+    HashMap<String, CyberCore::FrameIdentifier> m_handleWebFrameMap;
 
     HashMap<WebPageProxyIdentifier, RefPtr<Inspector::BackendDispatcher::CallbackBase>> m_pendingNormalNavigationInBrowsingContextCallbacksPerPage;
     HashMap<WebPageProxyIdentifier, RefPtr<Inspector::BackendDispatcher::CallbackBase>> m_pendingEagerNavigationInBrowsingContextCallbacksPerPage;
-    HashMap<WebCore::FrameIdentifier, RefPtr<Inspector::BackendDispatcher::CallbackBase>> m_pendingNormalNavigationInBrowsingContextCallbacksPerFrame;
-    HashMap<WebCore::FrameIdentifier, RefPtr<Inspector::BackendDispatcher::CallbackBase>> m_pendingEagerNavigationInBrowsingContextCallbacksPerFrame;
+    HashMap<CyberCore::FrameIdentifier, RefPtr<Inspector::BackendDispatcher::CallbackBase>> m_pendingNormalNavigationInBrowsingContextCallbacksPerFrame;
+    HashMap<CyberCore::FrameIdentifier, RefPtr<Inspector::BackendDispatcher::CallbackBase>> m_pendingEagerNavigationInBrowsingContextCallbacksPerFrame;
     HashMap<WebPageProxyIdentifier, RefPtr<Inspector::BackendDispatcher::CallbackBase>> m_pendingInspectorCallbacksPerPage;
 #if ENABLE(WEBDRIVER_KEYBOARD_INTERACTIONS)
     HashMap<WebPageProxyIdentifier, Function<void(std::optional<AutomationCommandError>)>> m_pendingKeyboardEventsFlushedCallbacksPerPage;
@@ -361,7 +361,7 @@ private:
 #if ENABLE(WEBDRIVER_MOUSE_INTERACTIONS)
     MonotonicTime m_lastClickTime;
     MouseButton m_lastClickButton { MouseButton::None };
-    WebCore::IntPoint m_lastClickPosition;
+    CyberCore::IntPoint m_lastClickPosition;
     unsigned m_clickCount { 1 };
 #endif
 

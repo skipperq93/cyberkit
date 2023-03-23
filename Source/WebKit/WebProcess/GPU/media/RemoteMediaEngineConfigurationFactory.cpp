@@ -37,8 +37,8 @@
 #include <CyberCore/MediaEncodingConfiguration.h>
 #include <CyberCore/MediaEngineConfigurationFactory.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 RemoteMediaEngineConfigurationFactory::RemoteMediaEngineConfigurationFactory(WebProcess& process)
     : m_process(process)

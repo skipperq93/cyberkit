@@ -205,7 +205,7 @@
     if (!presenter)
         return [self completePaymentSession:PKPaymentAuthorizationStatusFailure errors:@[ ]];
 
-    presenter->client().presenterDidAuthorizePayment(*presenter, WebCore::Payment(payment));
+    presenter->client().presenterDidAuthorizePayment(*presenter, CyberCore::Payment(payment));
 }
 
 - (void)_didFinish
@@ -246,7 +246,7 @@
     if (!presenter)
         return [self completePaymentMethodSelection:nil];
 
-    presenter->client().presenterDidSelectPaymentMethod(*presenter, WebCore::PaymentMethod(paymentMethod));
+    presenter->client().presenterDidSelectPaymentMethod(*presenter, CyberCore::PaymentMethod(paymentMethod));
 }
 
 - (void)_didSelectShippingContact:(PKContact *)contact completion:(WebKit::DidSelectShippingContactCompletion::BlockType)completion
@@ -258,16 +258,16 @@
     if (!presenter)
         return [self completeShippingContactSelection:nil];
 
-    presenter->client().presenterDidSelectShippingContact(*presenter, WebCore::PaymentContact(contact));
+    presenter->client().presenterDidSelectShippingContact(*presenter, CyberCore::PaymentContact(contact));
 }
 
 #if HAVE(PASSKIT_SHIPPING_METHOD_DATE_COMPONENTS_RANGE) && (!PLATFORM(IOS) || __IPHONE_OS_VERSION_MIN_REQUIRED >= 150000)
 
-static WebCore::ApplePayDateComponents toDateComponents(NSDateComponents *dateComponents)
+static CyberCore::ApplePayDateComponents toDateComponents(NSDateComponents *dateComponents)
 {
     ASSERT(dateComponents);
 
-    WebCore::ApplePayDateComponents result;
+    CyberCore::ApplePayDateComponents result;
     result.years = dateComponents.year;
     result.months = dateComponents.month;
     result.days = dateComponents.day;
@@ -275,11 +275,11 @@ static WebCore::ApplePayDateComponents toDateComponents(NSDateComponents *dateCo
     return result;
 }
 
-static WebCore::ApplePayDateComponentsRange toDateComponentsRange(PKDateComponentsRange *dateComponentsRange)
+static CyberCore::ApplePayDateComponentsRange toDateComponentsRange(PKDateComponentsRange *dateComponentsRange)
 {
     ASSERT(dateComponentsRange);
 
-    WebCore::ApplePayDateComponentsRange result;
+    CyberCore::ApplePayDateComponentsRange result;
     result.startDateComponents = toDateComponents(dateComponentsRange.startDateComponents);
     result.endDateComponents = toDateComponents(dateComponentsRange.endDateComponents);
     return result;
@@ -287,11 +287,11 @@ static WebCore::ApplePayDateComponentsRange toDateComponentsRange(PKDateComponen
 
 #endif // HAVE(PASSKIT_SHIPPING_METHOD_DATE_COMPONENTS_RANGE)
 
-static WebCore::ApplePayShippingMethod toShippingMethod(PKShippingMethod *shippingMethod, bool selected)
+static CyberCore::ApplePayShippingMethod toShippingMethod(PKShippingMethod *shippingMethod, bool selected)
 {
     ASSERT(shippingMethod);
 
-    WebCore::ApplePayShippingMethod result;
+    CyberCore::ApplePayShippingMethod result;
     result.amount = shippingMethod.amount.stringValue;
     result.detail = shippingMethod.detail;
     result.identifier = shippingMethod.identifier;

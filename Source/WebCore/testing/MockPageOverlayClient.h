@@ -29,7 +29,7 @@
 #include "PageOverlay.h"
 #include <wtf/HashSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Frame;
 class Page;
@@ -63,4 +63,4 @@ private:
     HashSet<RefPtr<MockPageOverlay>> m_overlays;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

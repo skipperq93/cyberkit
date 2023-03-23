@@ -31,7 +31,7 @@
 #include <wtf/EnumTraits.h>
 #include <wtf/OptionSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class SynchronousScrollingReason : uint8_t {
     // Flags for frame scrolling.
@@ -211,60 +211,60 @@ WEBCORE_EXPORT WTF::TextStream& operator<<(WTF::TextStream&, WheelEventHandlingR
 WEBCORE_EXPORT WTF::TextStream& operator<<(WTF::TextStream&, WheelEventProcessingSteps);
 WEBCORE_EXPORT WTF::TextStream& operator<<(WTF::TextStream&, ScrollUpdateType);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::SynchronousScrollingReason> {
+template<> struct EnumTraits<CyberCore::SynchronousScrollingReason> {
     using values = EnumValues<
-        WebCore::SynchronousScrollingReason,
-        WebCore::SynchronousScrollingReason::ForcedOnMainThread,
-        WebCore::SynchronousScrollingReason::HasViewportConstrainedObjectsWithoutSupportingFixedLayers,
-        WebCore::SynchronousScrollingReason::HasNonLayerViewportConstrainedObjects,
-        WebCore::SynchronousScrollingReason::IsImageDocument,
-        WebCore::SynchronousScrollingReason::HasSlowRepaintObjects,
-        WebCore::SynchronousScrollingReason::DescendantScrollersHaveSynchronousScrolling
+        CyberCore::SynchronousScrollingReason,
+        CyberCore::SynchronousScrollingReason::ForcedOnMainThread,
+        CyberCore::SynchronousScrollingReason::HasViewportConstrainedObjectsWithoutSupportingFixedLayers,
+        CyberCore::SynchronousScrollingReason::HasNonLayerViewportConstrainedObjects,
+        CyberCore::SynchronousScrollingReason::IsImageDocument,
+        CyberCore::SynchronousScrollingReason::HasSlowRepaintObjects,
+        CyberCore::SynchronousScrollingReason::DescendantScrollersHaveSynchronousScrolling
     >;
 };
 
-template<> struct EnumTraits<WebCore::ScrollRequestType> {
+template<> struct EnumTraits<CyberCore::ScrollRequestType> {
     using values = EnumValues<
-        WebCore::ScrollRequestType,
-        WebCore::ScrollRequestType::PositionUpdate,
-        WebCore::ScrollRequestType::CancelAnimatedScroll
+        CyberCore::ScrollRequestType,
+        CyberCore::ScrollRequestType::PositionUpdate,
+        CyberCore::ScrollRequestType::CancelAnimatedScroll
     >;
 };
 
-template<> struct EnumTraits<WebCore::ScrollingNodeType> {
+template<> struct EnumTraits<CyberCore::ScrollingNodeType> {
     using values = EnumValues<
-        WebCore::ScrollingNodeType,
-        WebCore::ScrollingNodeType::MainFrame,
-        WebCore::ScrollingNodeType::Subframe,
-        WebCore::ScrollingNodeType::FrameHosting,
-        WebCore::ScrollingNodeType::Overflow,
-        WebCore::ScrollingNodeType::OverflowProxy,
-        WebCore::ScrollingNodeType::Fixed,
-        WebCore::ScrollingNodeType::Sticky,
-        WebCore::ScrollingNodeType::Positioned
+        CyberCore::ScrollingNodeType,
+        CyberCore::ScrollingNodeType::MainFrame,
+        CyberCore::ScrollingNodeType::Subframe,
+        CyberCore::ScrollingNodeType::FrameHosting,
+        CyberCore::ScrollingNodeType::Overflow,
+        CyberCore::ScrollingNodeType::OverflowProxy,
+        CyberCore::ScrollingNodeType::Fixed,
+        CyberCore::ScrollingNodeType::Sticky,
+        CyberCore::ScrollingNodeType::Positioned
     >;
 };
 
-template<> struct EnumTraits<WebCore::KeyboardScrollAction> {
+template<> struct EnumTraits<CyberCore::KeyboardScrollAction> {
     using values = EnumValues<
-        WebCore::KeyboardScrollAction,
-        WebCore::KeyboardScrollAction::StartAnimation,
-        WebCore::KeyboardScrollAction::StopWithAnimation,
-        WebCore::KeyboardScrollAction::StopImmediately
+        CyberCore::KeyboardScrollAction,
+        CyberCore::KeyboardScrollAction::StartAnimation,
+        CyberCore::KeyboardScrollAction::StopWithAnimation,
+        CyberCore::KeyboardScrollAction::StopImmediately
     >;
 };
 
-template<> struct EnumTraits<WebCore::WheelEventProcessingSteps> {
+template<> struct EnumTraits<CyberCore::WheelEventProcessingSteps> {
     using values = EnumValues<
-        WebCore::WheelEventProcessingSteps,
-        WebCore::WheelEventProcessingSteps::ScrollingThread,
-        WebCore::WheelEventProcessingSteps::MainThreadForScrolling,
-        WebCore::WheelEventProcessingSteps::MainThreadForNonBlockingDOMEventDispatch,
-        WebCore::WheelEventProcessingSteps::MainThreadForBlockingDOMEventDispatch
+        CyberCore::WheelEventProcessingSteps,
+        CyberCore::WheelEventProcessingSteps::ScrollingThread,
+        CyberCore::WheelEventProcessingSteps::MainThreadForScrolling,
+        CyberCore::WheelEventProcessingSteps::MainThreadForNonBlockingDOMEventDispatch,
+        CyberCore::WheelEventProcessingSteps::MainThreadForBlockingDOMEventDispatch
     >;
 };
 

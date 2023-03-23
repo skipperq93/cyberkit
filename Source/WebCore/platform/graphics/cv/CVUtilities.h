@@ -34,7 +34,7 @@ using CGColorSpaceRef = struct CGColorSpace*;
 using CVPixelBufferPoolRef = struct __CVPixelBufferPool*;
 using CVPixelBufferRef = struct __CVBuffer*;
 
-namespace WebCore {
+namespace CyberCore {
 class ProcessIdentity;
 
 // Creates CVPixelBufferPool that creates CVPixelBuffers backed by IOSurfaces.

@@ -29,25 +29,25 @@
 #include "ImageBuffer.h"
 #include "InMemoryDisplayList.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace DisplayList {
 
-class ImageBuffer final : public WebCore::ImageBuffer {
+class ImageBuffer final : public CyberCore::ImageBuffer {
 public:
     template<typename BackendType>
-    static auto create(const FloatSize& size, float resolutionScale, const DestinationColorSpace& colorSpace, PixelFormat pixelFormat, RenderingPurpose purpose, const WebCore::ImageBufferCreationContext& creationContext)
+    static auto create(const FloatSize& size, float resolutionScale, const DestinationColorSpace& colorSpace, PixelFormat pixelFormat, RenderingPurpose purpose, const CyberCore::ImageBufferCreationContext& creationContext)
     {
-        return WebCore::ImageBuffer::create<BackendType, ImageBuffer>(size, resolutionScale, colorSpace, pixelFormat, purpose, creationContext);
+        return CyberCore::ImageBuffer::create<BackendType, ImageBuffer>(size, resolutionScale, colorSpace, pixelFormat, purpose, creationContext);
     }
 
     template<typename BackendType>
     static auto create(const FloatSize& size, const GraphicsContext& context, RenderingPurpose purpose)
     {
-        return WebCore::ImageBuffer::create<BackendType, ImageBuffer>(size, context, purpose);
+        return CyberCore::ImageBuffer::create<BackendType, ImageBuffer>(size, context, purpose);
     }
 
     ImageBuffer(const ImageBufferBackend::Parameters& parameters, const ImageBufferBackend::Info& info, std::unique_ptr<ImageBufferBackend>&& backend)
-        : WebCore::ImageBuffer(parameters, info, WTFMove(backend))
+        : CyberCore::ImageBuffer(parameters, info, WTFMove(backend))
         , m_drawingContext(logicalSize(), baseTransform(), colorSpace())
         , m_writingClient(makeUnique<InMemoryDisplayList::WritingClient>())
         , m_readingClient(makeUnique<InMemoryDisplayList::ReadingClient>())
@@ -57,7 +57,7 @@ public:
     }
 
     ImageBuffer(const ImageBufferBackend::Parameters& parameters, const ImageBufferBackend::Info& info)
-        : WebCore::ImageBuffer(parameters, info)
+        : CyberCore::ImageBuffer(parameters, info)
         , m_drawingContext(logicalSize(), baseTransform(), colorSpace())
         , m_writingClient(makeUnique<InMemoryDisplayList::WritingClient>())
         , m_readingClient(makeUnique<InMemoryDisplayList::ReadingClient>())
@@ -79,7 +79,7 @@ public:
     void flushDrawingContext() final
     {
         if (!m_drawingContext.displayList().isEmpty())
-            m_drawingContext.replayDisplayList(WebCore::ImageBuffer::context());
+            m_drawingContext.replayDisplayList(CyberCore::ImageBuffer::context());
     }
 
 protected:
@@ -89,4 +89,4 @@ protected:
 };
 
 } // DisplayList
-} // namespace WebCore
+} // namespace CyberCore

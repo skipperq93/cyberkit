@@ -37,7 +37,7 @@
 #include <wtf/Function.h>
 #include <wtf/MonotonicTime.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ContentSecurityPolicyResponseHeaders;
 class ScriptBuffer;
@@ -67,4 +67,4 @@ protected:
     virtual ~WorkerGlobalScopeProxy() = default;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

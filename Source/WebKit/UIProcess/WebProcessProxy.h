@@ -73,7 +73,7 @@ class Navigation;
 class PageConfiguration;
 }
 
-namespace WebCore {
+namespace CyberCore {
 class DeferrableOneShotTimer;
 class ResourceRequest;
 struct NotificationData;
@@ -141,7 +141,7 @@ enum class CheckBackForwardList : bool { No, Yes };
 class WebProcessProxy : public AuxiliaryProcessProxy, private ProcessThrottlerClient {
 public:
     using WebPageProxyMap = HashMap<WebPageProxyIdentifier, WeakPtr<WebPageProxy>>;
-    typedef HashMap<WebCore::FrameIdentifier, WeakPtr<WebFrameProxy>> WebFrameProxyMap;
+    typedef HashMap<CyberCore::FrameIdentifier, WeakPtr<WebFrameProxy>> WebFrameProxyMap;
     typedef HashMap<uint64_t, RefPtr<API::UserInitiatedAction>> UserInitiatedActionMap;
 
     enum class IsPrewarmed {
@@ -152,8 +152,8 @@ public:
     enum class ShouldLaunchProcess : bool { No, Yes };
     enum class LockdownMode : bool { Disabled, Enabled };
 
-    static Ref<WebProcessProxy> create(WebProcessPool&, WebsiteDataStore*, LockdownMode, IsPrewarmed, WebCore::CrossOriginMode = WebCore::CrossOriginMode::Shared, ShouldLaunchProcess = ShouldLaunchProcess::Yes);
-    static Ref<WebProcessProxy> createForRemoteWorkers(RemoteWorkerType, WebProcessPool&, WebCore::RegistrableDomain&&, WebsiteDataStore&);
+    static Ref<WebProcessProxy> create(WebProcessPool&, WebsiteDataStore*, LockdownMode, IsPrewarmed, CyberCore::CrossOriginMode = CyberCore::CrossOriginMode::Shared, ShouldLaunchProcess = ShouldLaunchProcess::Yes);
+    static Ref<WebProcessProxy> createForRemoteWorkers(RemoteWorkerType, WebProcessPool&, CyberCore::RegistrableDomain&&, WebsiteDataStore&);
 
 #if ENABLE(WEBCONTENT_CRASH_TESTING)
     static Ref<WebProcessProxy> createForWebContentCrashy(WebProcessPool&);
@@ -161,8 +161,8 @@ public:
 
     ~WebProcessProxy();
 
-    static void forWebPagesWithOrigin(PAL::SessionID, const WebCore::SecurityOriginData&, const Function<void(WebPageProxy&)>&);
-    static Vector<std::pair<WebCore::ProcessIdentifier, WebCore::RegistrableDomain>> allowedFirstPartiesForCookies();
+    static void forWebPagesWithOrigin(PAL::SessionID, const CyberCore::SecurityOriginData&, const Function<void(WebPageProxy&)>&);
+    static Vector<std::pair<CyberCore::ProcessIdentifier, CyberCore::RegistrableDomain>> allowedFirstPartiesForCookies();
 
     WebConnection* webConnection() const { return m_webConnection.get(); }
 
@@ -173,9 +173,9 @@ public:
     WebProcessPool* processPoolIfExists() const;
     WebProcessPool& processPool() const;
 
-    bool isMatchingRegistrableDomain(const WebCore::RegistrableDomain& domain) const { return m_registrableDomain ? *m_registrableDomain == domain : false; }
-    WebCore::RegistrableDomain registrableDomain() const { return valueOrDefault(m_registrableDomain); }
-    const std::optional<WebCore::RegistrableDomain>& optionalRegistrableDomain() const { return m_registrableDomain; }
+    bool isMatchingRegistrableDomain(const CyberCore::RegistrableDomain& domain) const { return m_registrableDomain ? *m_registrableDomain == domain : false; }
+    CyberCore::RegistrableDomain registrableDomain() const { return valueOrDefault(m_registrableDomain); }
+    const std::optional<CyberCore::RegistrableDomain>& optionalRegistrableDomain() const { return m_registrableDomain; }
 
     enum class WillShutDown : bool { No, Yes };
     void setIsInProcessCache(bool, WillShutDown = WillShutDown::No);
@@ -192,7 +192,7 @@ public:
     static bool hasReachedProcessCountLimit();
     static void setProcessCountLimit(unsigned);
 
-    static RefPtr<WebProcessProxy> processForIdentifier(WebCore::ProcessIdentifier);
+    static RefPtr<WebProcessProxy> processForIdentifier(CyberCore::ProcessIdentifier);
     static RefPtr<WebPageProxy> webPage(WebPageProxyIdentifier);
     static RefPtr<WebPageProxy> audioCapturingWebPage();
     Ref<WebPageProxy> createWebPage(PageClient&, Ref<API::PageConfiguration>&&);
@@ -229,7 +229,7 @@ public:
     bool isCrashyProcess() const { return m_isWebContentCrashyProcess; }
 #endif
 
-    void didCreateWebPageInProcess(WebCore::PageIdentifier);
+    void didCreateWebPageInProcess(CyberCore::PageIdentifier);
 
     void addVisitedLinkStoreUser(VisitedLinkStore&, WebPageProxyIdentifier);
     void removeVisitedLinkStoreUser(VisitedLinkStore&, WebPageProxyIdentifier);
@@ -267,7 +267,7 @@ public:
 
     void fetchWebsiteData(PAL::SessionID, OptionSet<WebsiteDataType>, CompletionHandler<void(WebsiteData)>&&);
     void deleteWebsiteData(PAL::SessionID, OptionSet<WebsiteDataType>, WallTime modifiedSince, CompletionHandler<void()>&&);
-    void deleteWebsiteDataForOrigins(PAL::SessionID, OptionSet<WebsiteDataType>, const Vector<WebCore::SecurityOriginData>&, CompletionHandler<void()>&&);
+    void deleteWebsiteDataForOrigins(PAL::SessionID, OptionSet<WebsiteDataType>, const Vector<CyberCore::SecurityOriginData>&, CompletionHandler<void()>&&);
 
 #if ENABLE(TRACKING_PREVENTION)
     static void notifyPageStatisticsAndDataRecordsProcessed();
@@ -275,7 +275,7 @@ public:
     static void notifyWebsiteDataDeletionForRegistrableDomainsFinished();
     static void notifyWebsiteDataScanForRegistrableDomainsFinished();
 
-    void setThirdPartyCookieBlockingMode(WebCore::ThirdPartyCookieBlockingMode, CompletionHandler<void()>&&);
+    void setThirdPartyCookieBlockingMode(CyberCore::ThirdPartyCookieBlockingMode, CompletionHandler<void()>&&);
 #endif
 
     void enableSuddenTermination();
@@ -335,12 +335,12 @@ public:
 
 #if HAVE(CVDISPLAYLINK)
     DisplayLink::Client& displayLinkClient() { return m_displayLinkClient; }
-    std::optional<unsigned> nominalFramesPerSecondForDisplay(WebCore::PlatformDisplayID);
+    std::optional<unsigned> nominalFramesPerSecondForDisplay(CyberCore::PlatformDisplayID);
 
-    void startDisplayLink(DisplayLinkObserverID, WebCore::PlatformDisplayID, WebCore::FramesPerSecond);
-    void stopDisplayLink(DisplayLinkObserverID, WebCore::PlatformDisplayID);
-    void setDisplayLinkPreferredFramesPerSecond(DisplayLinkObserverID, WebCore::PlatformDisplayID, WebCore::FramesPerSecond);
-    void setDisplayLinkForDisplayWantsFullSpeedUpdates(WebCore::PlatformDisplayID, bool wantsFullSpeedUpdates);
+    void startDisplayLink(DisplayLinkObserverID, CyberCore::PlatformDisplayID, CyberCore::FramesPerSecond);
+    void stopDisplayLink(DisplayLinkObserverID, CyberCore::PlatformDisplayID);
+    void setDisplayLinkPreferredFramesPerSecond(DisplayLinkObserverID, CyberCore::PlatformDisplayID, CyberCore::FramesPerSecond);
+    void setDisplayLinkForDisplayWantsFullSpeedUpdates(CyberCore::PlatformDisplayID, bool wantsFullSpeedUpdates);
 #endif
 
     // Called when the web process has crashed or we know that it will terminate soon.
@@ -393,7 +393,7 @@ public:
 
     void setRemoteWorkerUserAgent(const String&);
     void updateRemoteWorkerPreferencesStore(const WebPreferencesStore&);
-    void establishRemoteWorkerContext(RemoteWorkerType, const WebPreferencesStore&, const WebCore::RegistrableDomain&, std::optional<WebCore::ScriptExecutionContextIdentifier> serviceWorkerPageIdentifier, CompletionHandler<void()>&&);
+    void establishRemoteWorkerContext(RemoteWorkerType, const WebPreferencesStore&, const CyberCore::RegistrableDomain&, std::optional<CyberCore::ScriptExecutionContextIdentifier> serviceWorkerPageIdentifier, CompletionHandler<void()>&&);
     void registerRemoteWorkerClientProcess(RemoteWorkerType, WebProcessProxy&);
     void unregisterRemoteWorkerClientProcess(RemoteWorkerType, WebProcessProxy&);
     void updateRemoteWorkerProcessAssertion(RemoteWorkerType);
@@ -436,11 +436,11 @@ public:
 #endif
 
 #if ENABLE(MEDIA_STREAM)
-    static void muteCaptureInPagesExcept(WebCore::PageIdentifier);
+    static void muteCaptureInPagesExcept(CyberCore::PageIdentifier);
     SpeechRecognitionRemoteRealtimeMediaSourceManager& ensureSpeechRecognitionRemoteRealtimeMediaSourceManager();
 #endif
-    void pageMutedStateChanged(WebCore::PageIdentifier, WebCore::MediaProducerMutedStateFlags);
-    void pageIsBecomingInvisible(WebCore::PageIdentifier);
+    void pageMutedStateChanged(CyberCore::PageIdentifier, CyberCore::MediaProducerMutedStateFlags);
+    void pageIsBecomingInvisible(CyberCore::PageIdentifier);
 
 #if PLATFORM(COCOA) && ENABLE(REMOTE_INSPECTOR)
     static bool shouldEnableRemoteInspector();
@@ -454,15 +454,15 @@ public:
 #endif
 
 #if HAVE(MEDIA_ACCESSIBILITY_FRAMEWORK)
-    void setCaptionDisplayMode(WebCore::CaptionUserPreferences::CaptionDisplayMode);
+    void setCaptionDisplayMode(CyberCore::CaptionUserPreferences::CaptionDisplayMode);
     void setCaptionLanguage(const String&);
 #endif
-    void getNotifications(const URL&, const String&, CompletionHandler<void(Vector<WebCore::NotificationData>&&)>&&);
+    void getNotifications(const URL&, const String&, CompletionHandler<void(Vector<CyberCore::NotificationData>&&)>&&);
 
-    void setAppBadge(std::optional<WebPageProxyIdentifier>, const WebCore::SecurityOriginData&, std::optional<uint64_t> badge);
-    void setClientBadge(WebPageProxyIdentifier, const WebCore::SecurityOriginData&, std::optional<uint64_t> badge);
+    void setAppBadge(std::optional<WebPageProxyIdentifier>, const CyberCore::SecurityOriginData&, std::optional<uint64_t> badge);
+    void setClientBadge(WebPageProxyIdentifier, const CyberCore::SecurityOriginData&, std::optional<uint64_t> badge);
 
-    WebCore::CrossOriginMode crossOriginMode() const { return m_crossOriginMode; }
+    CyberCore::CrossOriginMode crossOriginMode() const { return m_crossOriginMode; }
     LockdownMode lockdownMode() const { return m_lockdownMode; }
 
 #if PLATFORM(COCOA)
@@ -479,11 +479,11 @@ public:
     const WeakHashSet<WebProcessProxy>* serviceWorkerClientProcesses() const;
     const WeakHashSet<WebProcessProxy>* sharedWorkerClientProcesses() const;
 
-    static void permissionChanged(WebCore::PermissionName, const WebCore::SecurityOriginData&);
-    void sendPermissionChanged(WebCore::PermissionName, const WebCore::SecurityOriginData&);
+    static void permissionChanged(CyberCore::PermissionName, const CyberCore::SecurityOriginData&);
+    void sendPermissionChanged(CyberCore::PermissionName, const CyberCore::SecurityOriginData&);
 
 protected:
-    WebProcessProxy(WebProcessPool&, WebsiteDataStore*, IsPrewarmed, WebCore::CrossOriginMode, LockdownMode);
+    WebProcessProxy(WebProcessPool&, WebsiteDataStore*, IsPrewarmed, CyberCore::CrossOriginMode, LockdownMode);
 
     // AuxiliaryProcessProxy
     ASCIILiteral processName() const final { return "WebContent"_s; }
@@ -502,7 +502,7 @@ protected:
     void didFinishLaunching(ProcessLauncher*, IPC::Connection::Identifier) override;
     bool shouldConfigureJSCForTesting() const final;
     bool isJITEnabled() const final;
-    bool shouldEnableSharedArrayBuffer() const final { return m_crossOriginMode == WebCore::CrossOriginMode::Isolated; }
+    bool shouldEnableSharedArrayBuffer() const final { return m_crossOriginMode == CyberCore::CrossOriginMode::Isolated; }
     bool shouldEnableLockdownMode() const final { return m_lockdownMode == LockdownMode::Enabled; }
 
     void validateFreezerStatus();
@@ -512,7 +512,7 @@ protected:
 #endif
 
 private:
-    using WebProcessProxyMap = HashMap<WebCore::ProcessIdentifier, WeakPtr<WebProcessProxy>>;
+    using WebProcessProxyMap = HashMap<CyberCore::ProcessIdentifier, WeakPtr<WebProcessProxy>>;
     static WebProcessProxyMap& allProcessMap();
     static Vector<RefPtr<WebProcessProxy>> allProcesses();
 
@@ -521,7 +521,7 @@ private:
 
     // IPC message handlers.
     void updateBackForwardItem(const BackForwardListItemState&);
-    void didDestroyFrame(WebCore::FrameIdentifier, WebPageProxyIdentifier);
+    void didDestroyFrame(CyberCore::FrameIdentifier, WebPageProxyIdentifier);
     void didDestroyUserGestureToken(uint64_t);
 
     bool canBeAddedToWebProcessCache() const;
@@ -563,7 +563,7 @@ private:
 
     bool canTerminateAuxiliaryProcess();
 
-    void didCollectPrewarmInformation(const WebCore::RegistrableDomain&, const WebCore::PrewarmInformation&);
+    void didCollectPrewarmInformation(const CyberCore::RegistrableDomain&, const CyberCore::PrewarmInformation&);
 
     void logDiagnosticMessageForResourceLimitTermination(const String& limitKey);
     
@@ -576,8 +576,8 @@ private:
     void sendMessageToWebContextWithReply(UserMessage&&, CompletionHandler<void(UserMessage&&)>&&);
 #endif
 
-    void didCreateSleepDisabler(WebCore::SleepDisablerIdentifier, const String& reason, bool display);
-    void didDestroySleepDisabler(WebCore::SleepDisablerIdentifier);
+    void didCreateSleepDisabler(CyberCore::SleepDisablerIdentifier, const String& reason, bool display);
+    void didDestroySleepDisabler(CyberCore::SleepDisablerIdentifier);
 
     void createSpeechRecognitionServer(SpeechRecognitionServerIdentifier);
     void destroySpeechRecognitionServer(SpeechRecognitionServerIdentifier);
@@ -665,7 +665,7 @@ private:
 
     HashMap<String, uint64_t> m_pageURLRetainCountMap;
 
-    std::optional<WebCore::RegistrableDomain> m_registrableDomain;
+    std::optional<CyberCore::RegistrableDomain> m_registrableDomain;
     bool m_isInProcessCache { false };
 
     enum class NoOrMaybe { No, Maybe } m_isResponsive;
@@ -685,7 +685,7 @@ private:
     bool m_hasCommittedAnyProvisionalLoads { false };
     bool m_isPrewarmed;
     LockdownMode m_lockdownMode { LockdownMode::Disabled };
-    WebCore::CrossOriginMode m_crossOriginMode { WebCore::CrossOriginMode::Shared };
+    CyberCore::CrossOriginMode m_crossOriginMode { CyberCore::CrossOriginMode::Shared };
 #if PLATFORM(COCOA)
     bool m_hasNetworkExtensionSandboxAccess { false };
 #endif
@@ -708,7 +708,7 @@ private:
 
     struct RemoteWorkerInformation {
         WebPageProxyIdentifier remoteWorkerPageProxyID;
-        WebCore::PageIdentifier remoteWorkerPageID;
+        CyberCore::PageIdentifier remoteWorkerPageID;
         RemoteWorkerInitializationData initializationData;
         ProcessThrottler::ActivityVariant activity;
         WeakHashSet<WebProcessProxy> clientProcesses;
@@ -717,7 +717,7 @@ private:
     std::optional<RemoteWorkerInformation> m_sharedWorkerInformation;
     bool m_hasServiceWorkerBackgroundProcessing { false };
 
-    HashMap<WebCore::SleepDisablerIdentifier, std::unique_ptr<WebCore::SleepDisabler>> m_sleepDisablers;
+    HashMap<CyberCore::SleepDisablerIdentifier, std::unique_ptr<CyberCore::SleepDisabler>> m_sleepDisablers;
 
     struct AudibleMediaActivity {
         Ref<ProcessAssertion> assertion;

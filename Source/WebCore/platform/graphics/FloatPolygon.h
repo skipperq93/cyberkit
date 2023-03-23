@@ -36,7 +36,7 @@
 #include <memory>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FloatPolygonEdge;
 
@@ -133,4 +133,4 @@ private:
 TextStream& operator<<(TextStream&, const FloatPolygonEdge&);
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

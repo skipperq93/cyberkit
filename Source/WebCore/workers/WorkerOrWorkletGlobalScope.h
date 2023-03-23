@@ -30,7 +30,7 @@
 #include "ScriptExecutionContext.h"
 #include "WorkerThreadType.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class EventLoopTaskGroup;
 class ScriptModuleLoader;
@@ -116,8 +116,8 @@ private:
     bool m_isClosing { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::WorkerOrWorkletGlobalScope)
-    static bool isType(const WebCore::ScriptExecutionContext& context) { return context.isWorkerGlobalScope() || context.isWorkletGlobalScope(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::WorkerOrWorkletGlobalScope)
+    static bool isType(const CyberCore::ScriptExecutionContext& context) { return context.isWorkerGlobalScope() || context.isWorkletGlobalScope(); }
 SPECIALIZE_TYPE_TRAITS_END()

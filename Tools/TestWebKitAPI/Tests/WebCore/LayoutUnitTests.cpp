@@ -32,11 +32,11 @@
 
 #include <CyberCore/LayoutUnit.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 namespace TestWebKitAPI {
 
-TEST(WebCoreLayoutUnit, LayoutUnitInt)
+TEST(CyberCoreLayoutUnit, LayoutUnitInt)
 {
     ASSERT_EQ(LayoutUnit(INT_MIN).toInt(), intMinForLayoutUnit);
     ASSERT_EQ(LayoutUnit(INT_MIN / 2).toInt(), intMinForLayoutUnit);
@@ -62,7 +62,7 @@ TEST(WebCoreLayoutUnit, LayoutUnitInt)
     ASSERT_EQ(LayoutUnit(INT_MAX).toInt(), intMaxForLayoutUnit);
 }
 
-TEST(WebCoreLayoutUnit, LayoutUnitFloat)
+TEST(CyberCoreLayoutUnit, LayoutUnitFloat)
 {
     const float tolerance = 1.0f / kFixedPointDenominator;
     ASSERT_FLOAT_EQ(LayoutUnit(1.0f).toFloat(), 1.0f);
@@ -81,7 +81,7 @@ TEST(WebCoreLayoutUnit, LayoutUnitFloat)
     ASSERT_NEAR(LayoutUnit(-33554432.f).toDouble(), -33554432.f, tolerance);
 }
 
-TEST(WebCoreLayoutUnit, LayoutUnitRounding)
+TEST(CyberCoreLayoutUnit, LayoutUnitRounding)
 {
     ASSERT_EQ(LayoutUnit(-1.9f).round(), -2);
     ASSERT_EQ(LayoutUnit(-1.6f).round(), -2);
@@ -106,7 +106,7 @@ TEST(WebCoreLayoutUnit, LayoutUnitRounding)
     ASSERT_EQ(LayoutUnit::fromFloatRound(1.51f).round(), 2);
 }
 
-TEST(WebCoreLayoutUnit, LayoutUnitMultiplication)
+TEST(CyberCoreLayoutUnit, LayoutUnitMultiplication)
 {
     ASSERT_EQ((LayoutUnit(1) * LayoutUnit(1)).toInt(), 1);
     ASSERT_EQ((LayoutUnit(1) * LayoutUnit(2)).toInt(), 2);
@@ -150,7 +150,7 @@ TEST(WebCoreLayoutUnit, LayoutUnitMultiplication)
     ASSERT_EQ((LayoutUnit(4) * overflowIntSizeT).toInt(), intMaxForLayoutUnit);
 }
 
-TEST(WebCoreLayoutUnit, LayoutUnitDivision)
+TEST(CyberCoreLayoutUnit, LayoutUnitDivision)
 {
     ASSERT_EQ((LayoutUnit(1) / LayoutUnit(1)).toInt(), 1);
     ASSERT_EQ((LayoutUnit(1) / LayoutUnit(2)).toInt(), 0);
@@ -188,7 +188,7 @@ TEST(WebCoreLayoutUnit, LayoutUnitDivision)
     ASSERT_EQ((LayoutUnit(intMaxForLayoutUnit) / LayoutUnit(0.5)).toInt(), intMaxForLayoutUnit);
 }
 
-TEST(WebCoreLayoutUnit, LayoutUnitCeil)
+TEST(CyberCoreLayoutUnit, LayoutUnitCeil)
 {
     ASSERT_EQ(LayoutUnit(0).ceil(), 0);
     ASSERT_EQ(LayoutUnit(0.1).ceil(), 1);
@@ -209,7 +209,7 @@ TEST(WebCoreLayoutUnit, LayoutUnitCeil)
     ASSERT_EQ(LayoutUnit(intMinForLayoutUnit).ceil(), intMinForLayoutUnit);
 }
 
-TEST(WebCoreLayoutUnit, LayoutUnitFloor)
+TEST(CyberCoreLayoutUnit, LayoutUnitFloor)
 {
     ASSERT_EQ(LayoutUnit(0).floor(), 0);
     ASSERT_EQ(LayoutUnit(0.1).floor(), 0);
@@ -230,7 +230,7 @@ TEST(WebCoreLayoutUnit, LayoutUnitFloor)
     ASSERT_EQ((LayoutUnit(intMinForLayoutUnit) + LayoutUnit(1)).floor(), intMinForLayoutUnit + 1);
 }
 
-TEST(WebCoreLayoutUnit, LayoutUnitPixelSnapping)
+TEST(CyberCoreLayoutUnit, LayoutUnitPixelSnapping)
 {
     for (int i = -100000; i <= 100000; ++i) {
         ASSERT_EQ(roundToDevicePixel(LayoutUnit(i), 1), i);

@@ -41,7 +41,7 @@ class Logger;
 }
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class SharedBuffer;
 
@@ -109,11 +109,11 @@ public:
     virtual void displayChanged(PlatformDisplayID) { }
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #define SPECIALIZE_TYPE_TRAITS_CDM_INSTANCE(ToValueTypeName, ImplementationTypeName) \
 SPECIALIZE_TYPE_TRAITS_BEGIN(ToValueTypeName) \
-static bool isType(const WebCore::CDMInstance& instance) { return instance.implementationType() == ImplementationTypeName; } \
+static bool isType(const CyberCore::CDMInstance& instance) { return instance.implementationType() == ImplementationTypeName; } \
 SPECIALIZE_TYPE_TRAITS_END()
 
 #endif

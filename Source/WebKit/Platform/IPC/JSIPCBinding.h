@@ -46,7 +46,7 @@ class URL;
 
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class FloatRect;
 class IntRect;
@@ -66,7 +66,7 @@ JSC::JSValue jsValueForDecodedArgumentValue(JSC::JSGlobalObject*, T&&)
 
 template<> JSC::JSValue jsValueForDecodedArgumentValue(JSC::JSGlobalObject*, String&&);
 template<> JSC::JSValue jsValueForDecodedArgumentValue(JSC::JSGlobalObject*, URL&&);
-template<> JSC::JSValue jsValueForDecodedArgumentValue(JSC::JSGlobalObject*, WebCore::RegistrableDomain&&);
+template<> JSC::JSValue jsValueForDecodedArgumentValue(JSC::JSGlobalObject*, CyberCore::RegistrableDomain&&);
 
 template<> JSC::JSValue jsValueForDecodedArgumentValue(JSC::JSGlobalObject*, IPC::Semaphore&&);
 template<> JSC::JSValue jsValueForDecodedArgumentValue(JSC::JSGlobalObject*, WebKit::SharedMemory::Handle&&);
@@ -102,8 +102,8 @@ JSC::JSValue jsValueForDecodedArgumentValue(JSC::JSGlobalObject* globalObject, O
     return jsValueForDecodedArgumentValue(globalObject, value.toUInt64());
 }
 
-template<> JSC::JSValue jsValueForDecodedArgumentValue(JSC::JSGlobalObject*, WebCore::IntRect&&);
-template<> JSC::JSValue jsValueForDecodedArgumentValue(JSC::JSGlobalObject*, WebCore::FloatRect&&);
+template<> JSC::JSValue jsValueForDecodedArgumentValue(JSC::JSGlobalObject*, CyberCore::IntRect&&);
+template<> JSC::JSValue jsValueForDecodedArgumentValue(JSC::JSGlobalObject*, CyberCore::FloatRect&&);
 
 template<typename U>
 JSC::JSValue jsValueForDecodedArgumentValue(JSC::JSGlobalObject* globalObject, OptionSet<U>&& value)

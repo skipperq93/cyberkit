@@ -39,7 +39,7 @@
 
 using namespace PlatformXR;
 
-namespace WebKit {
+namespace CyberKit {
 
 PlatformXRSystemProxy::PlatformXRSystemProxy(WebPage& page)
     : m_page(page)
@@ -70,12 +70,12 @@ void PlatformXRSystemProxy::enumerateImmersiveXRDevices(CompletionHandler<void(c
     });
 }
 
-void PlatformXRSystemProxy::requestPermissionOnSessionFeatures(const WebCore::SecurityOriginData& securityOriginData, PlatformXR::SessionMode mode, const PlatformXR::Device::FeatureList& granted, const PlatformXR::Device::FeatureList& consentRequired, const PlatformXR::Device::FeatureList& consentOptional, CompletionHandler<void(std::optional<PlatformXR::Device::FeatureList>&&)>&& completionHandler)
+void PlatformXRSystemProxy::requestPermissionOnSessionFeatures(const CyberCore::SecurityOriginData& securityOriginData, PlatformXR::SessionMode mode, const PlatformXR::Device::FeatureList& granted, const PlatformXR::Device::FeatureList& consentRequired, const PlatformXR::Device::FeatureList& consentOptional, CompletionHandler<void(std::optional<PlatformXR::Device::FeatureList>&&)>&& completionHandler)
 {
     m_page.sendWithAsyncReply(Messages::PlatformXRSystem::RequestPermissionOnSessionFeatures(securityOriginData, mode, granted, consentRequired, consentOptional), WTFMove(completionHandler));
 }
 
-void PlatformXRSystemProxy::initializeTrackingAndRendering(const WebCore::SecurityOriginData& securityOriginData, PlatformXR::SessionMode mode, const PlatformXR::Device::FeatureList& requestedFeatures)
+void PlatformXRSystemProxy::initializeTrackingAndRendering(const CyberCore::SecurityOriginData& securityOriginData, PlatformXR::SessionMode mode, const PlatformXR::Device::FeatureList& requestedFeatures)
 {
     m_page.send(Messages::PlatformXRSystem::InitializeTrackingAndRendering(securityOriginData, mode, requestedFeatures));
 }
@@ -123,6 +123,6 @@ RefPtr<XRDeviceProxy> PlatformXRSystemProxy::deviceByIdentifier(XRDeviceIdentifi
     return nullptr;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(WEBXR)

@@ -31,7 +31,7 @@
 #import <Foundation/Foundation.h>
 #import <CyberKit/WebKitNSStringExtras.h>
 
-TEST(WebKitLegacyStringWidth, ThaiWidthForWeb)
+TEST(CyberKitLegacyStringWidth, ThaiWidthForWeb)
 {
     NSString *testString = @"ค้นหาใน";
     float result = [testString _web_widthWithFont:[NSFont systemFontOfSize:16]];

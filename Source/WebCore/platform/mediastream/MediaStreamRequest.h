@@ -30,7 +30,7 @@
 #include "MediaConstraints.h"
 #include "PageIdentifier.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct MediaStreamRequest {
     enum class Type : uint8_t {
@@ -45,11 +45,11 @@ struct MediaStreamRequest {
     PageIdentifier pageIdentifier;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #else
 
-namespace WebCore {
+namespace CyberCore {
 
 struct MediaStreamRequest {
     enum class Type : uint8_t {
@@ -60,6 +60,6 @@ struct MediaStreamRequest {
     Type type;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM)

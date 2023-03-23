@@ -35,7 +35,7 @@
 
 #import <pal/cf/CoreMediaSoftLink.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static Vector<FourCC> contentTypesToCodecs(const Vector<ContentType>& contentTypes)
 {

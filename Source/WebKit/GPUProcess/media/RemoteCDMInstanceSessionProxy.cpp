@@ -31,22 +31,22 @@
 #include "GPUConnectionToWebProcess.h"
 #include "RemoteCDMFactoryProxy.h"
 #include "RemoteCDMInstanceSessionMessages.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include <CyberCore/SharedBuffer.h>
 
 namespace WebKit {
 
-using namespace WebCore;
+using namespace CyberCore;
 
-std::unique_ptr<RemoteCDMInstanceSessionProxy> RemoteCDMInstanceSessionProxy::create(WeakPtr<RemoteCDMProxy>&& proxy, Ref<WebCore::CDMInstanceSession>&& session, uint64_t logIdentifier, RemoteCDMInstanceSessionIdentifier identifier)
+std::unique_ptr<RemoteCDMInstanceSessionProxy> RemoteCDMInstanceSessionProxy::create(WeakPtr<RemoteCDMProxy>&& proxy, Ref<CyberCore::CDMInstanceSession>&& session, uint64_t logIdentifier, RemoteCDMInstanceSessionIdentifier identifier)
 {
     auto sessionProxy = std::unique_ptr<RemoteCDMInstanceSessionProxy>(new RemoteCDMInstanceSessionProxy(WTFMove(proxy), WTFMove(session), logIdentifier, identifier));
-    WeakPtr<WebCore::CDMInstanceSessionClient> client = sessionProxy.get();
+    WeakPtr<CyberCore::CDMInstanceSessionClient> client = sessionProxy.get();
     sessionProxy->m_session->setClient(WTFMove(client));
     return sessionProxy;
 }
 
-RemoteCDMInstanceSessionProxy::RemoteCDMInstanceSessionProxy(WeakPtr<RemoteCDMProxy>&& cdm, Ref<WebCore::CDMInstanceSession>&& session, uint64_t logIdentifier, RemoteCDMInstanceSessionIdentifier identifier)
+RemoteCDMInstanceSessionProxy::RemoteCDMInstanceSessionProxy(WeakPtr<RemoteCDMProxy>&& cdm, Ref<CyberCore::CDMInstanceSession>&& session, uint64_t logIdentifier, RemoteCDMInstanceSessionIdentifier identifier)
     : m_cdm(WTFMove(cdm))
     , m_session(WTFMove(session))
     , m_identifier(identifier)
@@ -66,7 +66,7 @@ void RemoteCDMInstanceSessionProxy::setLogIdentifier(uint64_t logIdentifier)
 #endif
 }
 
-void RemoteCDMInstanceSessionProxy::requestLicense(LicenseType type, AtomString initDataType, RefPtr<WebCore::SharedBuffer>&& initData, LicenseCallback&& completion)
+void RemoteCDMInstanceSessionProxy::requestLicense(LicenseType type, AtomString initDataType, RefPtr<CyberCore::SharedBuffer>&& initData, LicenseCallback&& completion)
 {
     if (!initData) {
         completion({ }, emptyString(), false, false);

@@ -31,7 +31,7 @@
 #include <wtf/Lock.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ContentType;
 class MediaStreamTrackPrivate;
@@ -90,6 +90,6 @@ private:
     const MediaRecorderPrivateOptions& m_options;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(GSTREAMER_TRANSCODER)

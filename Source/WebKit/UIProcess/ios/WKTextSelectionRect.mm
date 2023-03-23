@@ -34,14 +34,14 @@
 #if HAVE(UI_TEXT_SELECTION_RECT_CUSTOM_HANDLE_INFO)
 
 @interface WKTextSelectionRectCustomHandleInfo : UITextSelectionRectCustomHandleInfo
-- (instancetype)initWithFloatQuad:(const WebCore::FloatQuad&)quad;
+- (instancetype)initWithFloatQuad:(const CyberCore::FloatQuad&)quad;
 @end
 
 @implementation WKTextSelectionRectCustomHandleInfo {
-    WebCore::FloatQuad _quad;
+    CyberCore::FloatQuad _quad;
 }
 
-- (instancetype)initWithFloatQuad:(const WebCore::FloatQuad&)quad
+- (instancetype)initWithFloatQuad:(const CyberCore::FloatQuad&)quad
 {
     if (!(self = [super init]))
         return nil;
@@ -75,18 +75,18 @@
 #endif // HAVE(UI_TEXT_SELECTION_RECT_CUSTOM_HANDLE_INFO)
 
 @implementation WKTextSelectionRect {
-    WebCore::SelectionGeometry _selectionGeometry;
+    CyberCore::SelectionGeometry _selectionGeometry;
     CGFloat _scaleFactor;
 }
 
 - (instancetype)initWithCGRect:(CGRect)rect
 {
-    WebCore::SelectionGeometry selectionGeometry;
-    selectionGeometry.setRect(WebCore::enclosingIntRect(rect));
+    CyberCore::SelectionGeometry selectionGeometry;
+    selectionGeometry.setRect(CyberCore::enclosingIntRect(rect));
     return [self initWithSelectionGeometry:WTFMove(selectionGeometry) scaleFactor:1];
 }
 
-- (instancetype)initWithSelectionGeometry:(const WebCore::SelectionGeometry&)selectionGeometry scaleFactor:(CGFloat)scaleFactor
+- (instancetype)initWithSelectionGeometry:(const CyberCore::SelectionGeometry&)selectionGeometry scaleFactor:(CGFloat)scaleFactor
 {
     if (!(self = [super init]))
         return nil;
@@ -98,7 +98,7 @@
 
 - (UIBezierPath *)_path
 {
-    if (_selectionGeometry.behavior() == WebCore::SelectionRenderingBehavior::CoalesceBoundingRects)
+    if (_selectionGeometry.behavior() == CyberCore::SelectionRenderingBehavior::CoalesceBoundingRects)
         return nil;
 
     auto selectionBounds = _selectionGeometry.rect();
@@ -120,7 +120,7 @@
 
 - (WKTextSelectionRectCustomHandleInfo *)_customHandleInfo
 {
-    if (_selectionGeometry.behavior() == WebCore::SelectionRenderingBehavior::CoalesceBoundingRects)
+    if (_selectionGeometry.behavior() == CyberCore::SelectionRenderingBehavior::CoalesceBoundingRects)
         return nil;
 
     auto scaledQuad = _selectionGeometry.quad();
@@ -138,7 +138,7 @@
 ALLOW_DEPRECATED_DECLARATIONS_BEGIN
 - (UITextWritingDirection)writingDirection
 {
-    return _selectionGeometry.direction() == WebCore::TextDirection::LTR ? UITextWritingDirectionLeftToRight : UITextWritingDirectionRightToLeft;
+    return _selectionGeometry.direction() == CyberCore::TextDirection::LTR ? UITextWritingDirectionLeftToRight : UITextWritingDirectionRightToLeft;
 }
 ALLOW_DEPRECATED_DECLARATIONS_END
 

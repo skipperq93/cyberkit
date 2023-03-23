@@ -32,7 +32,7 @@
 #include <wtf/CheckedArithmetic.h>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 IntRect::IntRect(const FloatRect& r)
     : m_location(clampToInteger(r.x()), clampToInteger(r.y()))
@@ -166,4 +166,4 @@ TextStream& operator<<(TextStream& ts, const IntRect& r)
     return ts << r.location() << " " << r.size();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

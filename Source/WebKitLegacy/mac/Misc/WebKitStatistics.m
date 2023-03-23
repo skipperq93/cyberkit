@@ -26,9 +26,9 @@
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import "WebKitStatistics.h"
+#import "CyberKitStatistics.h"
 
-#import "WebKitStatisticsPrivate.h"
+#import "CyberKitStatisticsPrivate.h"
 
 int WebViewCount;
 int WebDataSourceCount;
@@ -36,7 +36,7 @@ int WebFrameCount;
 int WebHTMLRepresentationCount;
 int WebFrameViewCount;
 
-@implementation WebKitStatistics
+@implementation CyberKitStatistics
 
 + (int)webViewCount
 {

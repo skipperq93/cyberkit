@@ -29,14 +29,14 @@
 #include <CyberCore/FileChooser.h>
 #include <CyberCore/Icon.h>
 
-namespace WebKit {
+namespace CyberKit {
 
-Ref<WebOpenPanelResultListener> WebOpenPanelResultListener::create(WebPage& page, Ref<WebCore::FileChooser>&& fileChooser)
+Ref<WebOpenPanelResultListener> WebOpenPanelResultListener::create(WebPage& page, Ref<CyberCore::FileChooser>&& fileChooser)
 {
     return adoptRef(*new WebOpenPanelResultListener(page, WTFMove(fileChooser)));
 }
 
-WebOpenPanelResultListener::WebOpenPanelResultListener(WebPage& page, Ref<WebCore::FileChooser>&& fileChooser)
+WebOpenPanelResultListener::WebOpenPanelResultListener(WebPage& page, Ref<CyberCore::FileChooser>&& fileChooser)
     : m_page(&page)
     , m_fileChooser(WTFMove(fileChooser))
 {
@@ -57,10 +57,10 @@ void WebOpenPanelResultListener::didCancelFileChoosing()
 }
 
 #if PLATFORM(IOS_FAMILY)
-void WebOpenPanelResultListener::didChooseFilesWithDisplayStringAndIcon(const Vector<String>& files, const String& displayString, WebCore::Icon* displayIcon)
+void WebOpenPanelResultListener::didChooseFilesWithDisplayStringAndIcon(const Vector<String>& files, const String& displayString, CyberCore::Icon* displayIcon)
 {
     m_fileChooser->chooseMediaFiles(files, displayString, displayIcon);
 }
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit

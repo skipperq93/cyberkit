@@ -31,7 +31,7 @@
 #include <wtf/text/WTFString.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 void WebPasteboardProxy::getPasteboardTypes(CompletionHandler<void(Vector<String>&&)>&& completionHandler)
 {
@@ -45,7 +45,7 @@ void WebPasteboardProxy::readStringFromPasteboard(IPC::Connection&, size_t index
     completionHandler(PlatformPasteboard().readString(index, pasteboardType));
 }
 
-void WebPasteboardProxy::writeWebContentToPasteboard(const WebCore::PasteboardWebContent& content)
+void WebPasteboardProxy::writeWebContentToPasteboard(const CyberCore::PasteboardWebContent& content)
 {
     PlatformPasteboard().write(content);
 }

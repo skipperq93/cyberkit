@@ -25,9 +25,9 @@
 
 #import <CyberKitLegacy/DOMHTMLTableSectionElement.h>
 
-namespace WebCore {
+namespace CyberCore {
 class HTMLTableSectionElement;
 }
 
-WebCore::HTMLTableSectionElement* core(DOMHTMLTableSectionElement *);
-DOMHTMLTableSectionElement *kit(WebCore::HTMLTableSectionElement*);
+CyberCore::HTMLTableSectionElement* core(DOMHTMLTableSectionElement *);
+DOMHTMLTableSectionElement *kit(CyberCore::HTMLTableSectionElement*);

@@ -34,7 +34,7 @@
 #include <windows.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 RefPtr<BitmapImage> BitmapImage::create(HBITMAP hBitmap)
 {
@@ -103,4 +103,4 @@ void BitmapImage::drawFrameMatchingSourceSize(GraphicsContext& ctxt, const Float
     draw(ctxt, dstRect, FloatRect(0.0f, 0.0f, imageSize.width(), imageSize.height()), { compositeOp });
 }
 
-} // namespace WebCore
+} // namespace CyberCore

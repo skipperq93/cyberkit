@@ -38,14 +38,14 @@
 #include "StringTruncator.h"
 #include "TextIndicator.h"
 #include "TextRun.h"
-#include "WebCoreTextRenderer.h"
+#include "CyberCoreTextRenderer.h"
 #include <wtf/RetainPtr.h>
 #include <wtf/URL.h>
 #include <wtf/win/GDIObject.h>
 
 #include <windows.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 GDIObject<HBITMAP> allocImage(HDC, IntSize, PlatformGraphicsContext** targetRef);
 void deallocContext(PlatformGraphicsContext* target);
@@ -202,14 +202,14 @@ DragImageRef createDragImageForLink(Element&, URL& url, const String& inLabel, T
         if (clipURLString)
             urlString = StringTruncator::rightTruncate(urlString, imageSize.width() - (DragLabelBorderX * 2.0f), *urlFont);
         IntPoint textPos(DragLabelBorderX, imageSize.height() - (LabelBorderYOffset + urlFont->metricsOfPrimaryFont().descent()));
-        WebCoreDrawDoubledTextAtPoint(context, urlString, textPos, *urlFont, topColor, bottomColor);
+        CyberCoreDrawDoubledTextAtPoint(context, urlString, textPos, *urlFont, topColor, bottomColor);
     }
     
     if (clipLabelString)
         label = StringTruncator::rightTruncate(label, imageSize.width() - (DragLabelBorderX * 2.0f), *labelFont);
 
     IntPoint textPos(DragLabelBorderX, DragLabelBorderY + labelFont->pixelSize());
-    WebCoreDrawDoubledTextAtPoint(context, label, textPos, *labelFont, topColor, bottomColor);
+    CyberCoreDrawDoubledTextAtPoint(context, label, textPos, *labelFont, topColor, bottomColor);
 
     deallocContext(contextRef);
     return image.leak();

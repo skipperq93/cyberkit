@@ -59,14 +59,14 @@ private:
     void setPendingDownloadLocation(const String&, SandboxExtension::Handle&&, bool /*allowOverwrite*/) override;
     String suggestedFilename() const override;
 
-    void setPriority(WebCore::ResourceLoadPriority) override;
+    void setPriority(CyberCore::ResourceLoadPriority) override;
 
     void timeoutFired();
     void startTimeout();
     void stopTimeout();
 
     enum class WasBlockingCookies { No, Yes };
-    void createRequest(WebCore::ResourceRequest&&, WasBlockingCookies);
+    void createRequest(CyberCore::ResourceRequest&&, WasBlockingCookies);
     void clearRequest();
 
     struct SendRequestData {
@@ -77,7 +77,7 @@ private:
     static void sendRequestCallback(SoupSession*, GAsyncResult*, SendRequestData*);
     void didSendRequest(GRefPtr<GInputStream>&&);
     void dispatchDidReceiveResponse();
-    void dispatchDidCompleteWithError(const WebCore::ResourceError&);
+    void dispatchDidCompleteWithError(const CyberCore::ResourceError&);
 
 #if !USE(SOUP2)
     static void preconnectCallback(SoupSession*, GAsyncResult*, NetworkDataTaskSoup*);
@@ -94,16 +94,16 @@ private:
     void didSniffContent(CString&&);
 
     bool persistentCredentialStorageEnabled() const;
-    void applyAuthenticationToRequest(WebCore::ResourceRequest&);
+    void applyAuthenticationToRequest(CyberCore::ResourceRequest&);
 #if USE(SOUP2)
     static void authenticateCallback(SoupSession*, SoupMessage*, SoupAuth*, gboolean retrying, NetworkDataTaskSoup*);
 #else
     static gboolean authenticateCallback(SoupMessage*, SoupAuth*, gboolean retrying, NetworkDataTaskSoup*);
 #endif
-    void authenticate(WebCore::AuthenticationChallenge&&);
-    void continueAuthenticate(WebCore::AuthenticationChallenge&&);
-    void completeAuthentication(const WebCore::AuthenticationChallenge&, const WebCore::Credential&);
-    void cancelAuthentication(const WebCore::AuthenticationChallenge&);
+    void authenticate(CyberCore::AuthenticationChallenge&&);
+    void continueAuthenticate(CyberCore::AuthenticationChallenge&&);
+    void completeAuthentication(const CyberCore::AuthenticationChallenge&, const CyberCore::Credential&);
+    void cancelAuthentication(const CyberCore::AuthenticationChallenge&);
 
     static void skipInputStreamForRedirectionCallback(GInputStream*, GAsyncResult*, NetworkDataTaskSoup*);
     void skipInputStreamForRedirection();
@@ -143,11 +143,11 @@ private:
     static void writeDownloadCallback(GOutputStream*, GAsyncResult*, NetworkDataTaskSoup*);
     void writeDownload();
     void didWriteDownload(gsize bytesWritten);
-    void didFailDownload(const WebCore::ResourceError&);
+    void didFailDownload(const CyberCore::ResourceError&);
     void didFinishDownload();
     void cleanDownloadFiles();
 
-    void didFail(const WebCore::ResourceError&);
+    void didFail(const CyberCore::ResourceError&);
 
 #if USE(SOUP2)
     static void networkEventCallback(SoupMessage*, GSocketClientEvent, GIOStream*, NetworkDataTaskSoup*);
@@ -179,14 +179,14 @@ private:
     static void enumerateFileChildrenCallback(GFile*, GAsyncResult*, NetworkDataTaskSoup*);
     void didReadFile(GRefPtr<GInputStream>&&);
 
-    void didReadDataURL(std::optional<WebCore::DataURLDecoder::Result>&&);
+    void didReadDataURL(std::optional<CyberCore::DataURLDecoder::Result>&&);
 
-    WebCore::AdditionalNetworkLoadMetricsForWebInspector& additionalNetworkLoadMetricsForWebInspector();
+    CyberCore::AdditionalNetworkLoadMetricsForWebInspector& additionalNetworkLoadMetricsForWebInspector();
 
-    WebCore::FrameIdentifier m_frameID;
-    WebCore::PageIdentifier m_pageID;
+    CyberCore::FrameIdentifier m_frameID;
+    CyberCore::PageIdentifier m_pageID;
     State m_state { State::Suspended };
-    WebCore::ContentSniffingPolicy m_shouldContentSniff;
+    CyberCore::ContentSniffingPolicy m_shouldContentSniff;
     PreconnectOnly m_shouldPreconnectOnly { PreconnectOnly::No };
     GRefPtr<SoupMessage> m_soupMessage;
     GRefPtr<GFile> m_file;
@@ -194,11 +194,11 @@ private:
     GRefPtr<SoupMultipartInputStream> m_multipartInputStream;
     GRefPtr<GCancellable> m_cancellable;
     GRefPtr<GAsyncResult> m_pendingResult;
-    std::optional<WebCore::DataURLDecoder::Result> m_pendingDataURLResult;
-    WebCore::ProtectionSpace m_protectionSpaceForPersistentStorage;
-    WebCore::Credential m_credentialForPersistentStorage;
-    WebCore::ResourceRequest m_currentRequest;
-    WebCore::ResourceResponse m_response;
+    std::optional<CyberCore::DataURLDecoder::Result> m_pendingDataURLResult;
+    CyberCore::ProtectionSpace m_protectionSpaceForPersistentStorage;
+    CyberCore::Credential m_credentialForPersistentStorage;
+    CyberCore::ResourceRequest m_currentRequest;
+    CyberCore::ResourceResponse m_response;
     CString m_sniffedContentType;
     Vector<uint8_t> m_readBuffer;
     uint64_t m_bodyDataTotalBytesSent { 0 };
@@ -206,9 +206,9 @@ private:
     GRefPtr<GFile> m_downloadIntermediateFile;
     GRefPtr<GOutputStream> m_downloadOutputStream;
     bool m_allowOverwriteDownload { false };
-    WebCore::NetworkLoadMetrics m_networkLoadMetrics;
+    CyberCore::NetworkLoadMetrics m_networkLoadMetrics;
     bool m_isBlockingCookies { false };
-    RefPtr<WebCore::SecurityOrigin> m_sourceOrigin;
+    RefPtr<CyberCore::SecurityOrigin> m_sourceOrigin;
     RunLoop::Timer m_timeoutSource;
 };
 

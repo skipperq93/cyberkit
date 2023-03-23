@@ -27,7 +27,7 @@
 
 #include <wtf/EnumTraits.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class StorageBlockingPolicy : uint8_t {
     AllowAll = 0,
@@ -39,12 +39,12 @@ enum class StorageBlockingPolicy : uint8_t {
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::StorageBlockingPolicy> {
+template<> struct EnumTraits<CyberCore::StorageBlockingPolicy> {
     using values = EnumValues<
-        WebCore::StorageBlockingPolicy,
-        WebCore::StorageBlockingPolicy::AllowAll,
-        WebCore::StorageBlockingPolicy::BlockThirdParty,
-        WebCore::StorageBlockingPolicy::BlockAll
+        CyberCore::StorageBlockingPolicy,
+        CyberCore::StorageBlockingPolicy::AllowAll,
+        CyberCore::StorageBlockingPolicy::BlockThirdParty,
+        CyberCore::StorageBlockingPolicy::BlockAll
     >;
 };
 

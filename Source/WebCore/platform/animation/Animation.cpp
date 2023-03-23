@@ -27,7 +27,7 @@
 #include <wtf/NeverDestroyed.h>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Animation::Animation()
     : m_name(initialName())
@@ -173,4 +173,4 @@ TextStream& operator<<(TextStream& ts, const Animation& animation)
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -29,7 +29,7 @@
 
 #include "Image.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<Pattern> Pattern::create(SourceImage&& tileImage, const Parameters& parameters)
 {

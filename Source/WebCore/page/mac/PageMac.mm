@@ -41,10 +41,10 @@
 #import <pal/Logging.h>
 
 #if PLATFORM(IOS_FAMILY)
-#import "WebCoreThreadInternal.h"
+#import "CyberCoreThreadInternal.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 void Page::platformInitialize()
 {

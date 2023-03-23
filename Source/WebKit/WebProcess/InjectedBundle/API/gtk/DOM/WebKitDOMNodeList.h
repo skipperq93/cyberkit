@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -21,28 +21,28 @@
 #error "Only <webkitdom/webkitdom.h> can be included directly."
 #endif
 
-#ifndef WebKitDOMNodeList_h
-#define WebKitDOMNodeList_h
+#ifndef CyberKitDOMNodeList_h
+#define CyberKitDOMNodeList_h
 
 #include <glib-object.h>
-#include <webkitdom/WebKitDOMObject.h>
+#include <webkitdom/CyberKitDOMObject.h>
 #include <webkitdom/webkitdomdefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_DOM_TYPE_NODE_LIST            (webkit_dom_node_list_get_type())
-#define WEBKIT_DOM_NODE_LIST(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_NODE_LIST, WebKitDOMNodeList))
-#define WEBKIT_DOM_NODE_LIST_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_NODE_LIST, WebKitDOMNodeListClass)
+#define WEBKIT_DOM_NODE_LIST(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_NODE_LIST, CyberKitDOMNodeList))
+#define WEBKIT_DOM_NODE_LIST_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_NODE_LIST, CyberKitDOMNodeListClass)
 #define WEBKIT_DOM_IS_NODE_LIST(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_DOM_TYPE_NODE_LIST))
 #define WEBKIT_DOM_IS_NODE_LIST_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_DOM_TYPE_NODE_LIST))
-#define WEBKIT_DOM_NODE_LIST_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_NODE_LIST, WebKitDOMNodeListClass))
+#define WEBKIT_DOM_NODE_LIST_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_NODE_LIST, CyberKitDOMNodeListClass))
 
-struct _WebKitDOMNodeList {
-    WebKitDOMObject parent_instance;
+struct _CyberKitDOMNodeList {
+    CyberKitDOMObject parent_instance;
 };
 
-struct _WebKitDOMNodeListClass {
-    WebKitDOMObjectClass parent_class;
+struct _CyberKitDOMNodeListClass {
+    CyberKitDOMObjectClass parent_class;
 };
 
 WEBKIT_DEPRECATED GType
@@ -50,27 +50,27 @@ webkit_dom_node_list_get_type(void);
 
 /**
  * webkit_dom_node_list_item:
- * @self: A #WebKitDOMNodeList
+ * @self: A #CyberKitDOMNodeList
  * @index: A #gulong
  *
- * Returns: (transfer none): A #WebKitDOMNode
+ * Returns: (transfer none): A #CyberKitDOMNode
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMNode*
-webkit_dom_node_list_item(WebKitDOMNodeList* self, gulong index);
+WEBKIT_DEPRECATED CyberKitDOMNode*
+webkit_dom_node_list_item(CyberKitDOMNodeList* self, gulong index);
 
 /**
  * webkit_dom_node_list_get_length:
- * @self: A #WebKitDOMNodeList
+ * @self: A #CyberKitDOMNodeList
  *
  * Returns: A #gulong
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gulong
-webkit_dom_node_list_get_length(WebKitDOMNodeList* self);
+webkit_dom_node_list_get_length(CyberKitDOMNodeList* self);
 
 G_END_DECLS
 
-#endif /* WebKitDOMNodeList_h */
+#endif /* CyberKitDOMNodeList_h */

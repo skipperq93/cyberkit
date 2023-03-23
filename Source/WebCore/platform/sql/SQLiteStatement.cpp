@@ -40,7 +40,7 @@
 #error SQLite version 3.6.16 or newer is required
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 SQLiteStatement::SQLiteStatement(SQLiteDatabase& db, sqlite3_stmt* statement)
     : m_database(db)
@@ -323,4 +323,4 @@ bool SQLiteStatement::isReadOnly()
     return sqlite3_stmt_readonly(m_statement);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

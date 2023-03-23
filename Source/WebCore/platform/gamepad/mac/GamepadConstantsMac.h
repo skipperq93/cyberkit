@@ -29,7 +29,7 @@
 
 #import <IOKit/hid/IOHIDUsageTables.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 constexpr const uint64_t hidHatswitchFullUsage = ((uint64_t)kHIDPage_GenericDesktop) << 32 | kHIDUsage_GD_Hatswitch;
 constexpr const uint64_t hidPointerFullUsage = ((uint64_t)kHIDPage_GenericDesktop) << 32 | kHIDUsage_GD_Pointer;
@@ -61,6 +61,6 @@ constexpr const uint64_t hidButton18FullUsage = ((uint64_t)kHIDPage_Button) << 3
 constexpr const uint64_t hidButton19FullUsage = ((uint64_t)kHIDPage_Button) << 32 | (kHIDUsage_Button_1 + 18);
 constexpr const uint64_t hidButton20FullUsage = ((uint64_t)kHIDPage_Button) << 32 | (kHIDUsage_Button_1 + 19);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(GAMEPAD) && PLATFORM(MAC)

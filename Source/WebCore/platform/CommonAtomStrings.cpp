@@ -26,7 +26,7 @@
 #include "config.h"
 #include "CommonAtomStrings.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 #define DEFINE_COMMON_ATOM(atomName, atomValue) \
     MainThreadLazyNeverDestroyed<const AtomString> atomName ## AtomData;
@@ -49,4 +49,4 @@ void initializeCommonAtomStrings()
 #undef DEFINE_COMMON_ATOM
 #undef INITIALIZE_COMMON_ATOM
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -34,7 +34,7 @@
 #include <memory>
 #include <wtf/UniqueArray.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioBus;
 
@@ -100,6 +100,6 @@ protected:
     DynamicsCompressorKernel m_compressor;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // DynamicsCompressor_h

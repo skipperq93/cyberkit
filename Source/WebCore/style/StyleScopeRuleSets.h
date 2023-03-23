@@ -30,7 +30,7 @@
 #include <wtf/RefPtr.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSStyleRule;
 class CSSStyleSheet;
@@ -142,4 +142,4 @@ inline RuleFeatureSet& ScopeRuleSets::mutableFeatures()
 }
 
 } // namespace Style
-} // namespace WebCore
+} // namespace CyberCore

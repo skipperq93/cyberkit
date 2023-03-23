@@ -27,7 +27,7 @@
 #import "WKObject.h"
 
 #import "APIObject.h"
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 #import <wtf/RetainPtr.h>
 
 @interface NSObject ()
@@ -52,7 +52,7 @@
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainRunLoop(WKObject.class, self))
+    if (CyberCoreObjCScheduleDeallocateOnMainRunLoop(WKObject.class, self))
         return;
 
     API::Object::fromWKObjectExtraSpace(self).~Object();

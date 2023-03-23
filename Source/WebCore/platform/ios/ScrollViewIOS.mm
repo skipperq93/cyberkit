@@ -38,16 +38,16 @@
 #import "WAKViewInternal.h"
 #import "WAKWindow.h"
 #import "WKViewPrivate.h"
-#import "WebCoreFrameView.h"
+#import "CyberCoreFrameView.h"
 #import <wtf/BlockObjCExceptions.h>
 
-namespace WebCore {
+namespace CyberCore {
 
-inline NSScrollView<WebCoreFrameScrollView> *ScrollView::scrollView() const
+inline NSScrollView<CyberCoreFrameScrollView> *ScrollView::scrollView() const
 {
     ASSERT(!platformWidget() || [platformWidget() isKindOfClass:[NSScrollView class]]);
-    ASSERT(!platformWidget() || [platformWidget() conformsToProtocol:@protocol(WebCoreFrameScrollView)]);
-    return static_cast<NSScrollView<WebCoreFrameScrollView> *>(platformWidget());
+    ASSERT(!platformWidget() || [platformWidget() conformsToProtocol:@protocol(CyberCoreFrameScrollView)]);
+    return static_cast<NSScrollView<CyberCoreFrameScrollView> *>(platformWidget());
 }
 
 NSView *ScrollView::documentView() const

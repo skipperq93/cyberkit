@@ -31,7 +31,7 @@
 #include <CyberCore/DFACombiner.h>
 #include <wtf/MainThread.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 using namespace ContentExtensions;
 
 namespace TestWebKitAPI {

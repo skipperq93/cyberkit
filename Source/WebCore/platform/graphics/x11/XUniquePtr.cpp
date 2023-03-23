@@ -36,7 +36,7 @@ extern "C" void glXDestroyContext(::Display*, GLXContext);
 #endif
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 #if USE(GLX)
 

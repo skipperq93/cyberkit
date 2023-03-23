@@ -30,7 +30,7 @@
 #include "ResourceRequestBase.h"
 #include <pal/spi/cf/CFNetworkSPI.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ResourceRequest;
 
@@ -126,4 +126,4 @@ inline RetainPtr<CFStringRef> httpHeaderValueUsingSuitableEncoding(HTTPHeaderMap
     return header.value.createCFString();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

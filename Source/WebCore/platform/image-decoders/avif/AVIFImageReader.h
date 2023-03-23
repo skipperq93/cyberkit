@@ -29,7 +29,7 @@
 
 #include "AVIFUniquePtr.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScalableImageDecoderFrame;
 
@@ -44,7 +44,7 @@ public:
     size_t imageCount() const;
 
 private:
-    RefPtr<WebCore::AVIFImageDecoder> m_decoder;
+    RefPtr<CyberCore::AVIFImageDecoder> m_decoder;
     AVIFUniquePtr<avifDecoder> m_avifDecoder;
 
     bool m_dataParsed { false };

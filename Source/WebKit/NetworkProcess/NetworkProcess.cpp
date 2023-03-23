@@ -121,7 +121,7 @@
 #endif
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 static void callExitSoon(IPC::Connection*)
 {
@@ -312,12 +312,12 @@ void NetworkProcess::initializeNetworkProcess(NetworkProcessCreationParameters&&
 #else
     WTF::setProcessPrivileges({ ProcessPrivilege::CanAccessRawCookies, ProcessPrivilege::CanAccessCredentials });
 #endif
-    WebCore::SQLiteDatabase::useFastMalloc();
-    WebCore::NetworkStorageSession::permitProcessToUseCookieAPI(true);
+    CyberCore::SQLiteDatabase::useFastMalloc();
+    CyberCore::NetworkStorageSession::permitProcessToUseCookieAPI(true);
     platformInitializeNetworkProcess(parameters);
 
     WTF::Thread::setCurrentThreadIsUserInitiated();
-    WebCore::initializeCommonAtomStrings();
+    CyberCore::initializeCommonAtomStrings();
 
     m_suppressMemoryPressureHandler = parameters.shouldSuppressMemoryPressureHandler;
     if (!m_suppressMemoryPressureHandler) {
@@ -354,7 +354,7 @@ void NetworkProcess::initializeNetworkProcess(NetworkProcessCreationParameters&&
     for (auto&& websiteDataStoreParameters : WTFMove(parameters.websiteDataStoreParameters))
         addWebsiteDataStore(WTFMove(websiteDataStoreParameters));
 
-    RELEASE_LOG(Process, "%p - NetworkProcess::initializeNetworkProcess: Presenting processPID=%d", this, WebCore::presentingApplicationPID());
+    RELEASE_LOG(Process, "%p - NetworkProcess::initializeNetworkProcess: Presenting processPID=%d", this, CyberCore::presentingApplicationPID());
 }
 
 void NetworkProcess::initializeConnection(IPC::Connection* connection)
@@ -392,7 +392,7 @@ void NetworkProcess::createNetworkConnectionToWebProcess(ProcessIdentifier ident
         session->storageManager().startReceivingMessageFromConnection(connection.connection());
 }
 
-void NetworkProcess::addAllowedFirstPartyForCookies(WebCore::ProcessIdentifier processIdentifier, WebCore::RegistrableDomain&& firstPartyForCookies, LoadedWebArchive loadedWebArchive, CompletionHandler<void()>&& completionHandler)
+void NetworkProcess::addAllowedFirstPartyForCookies(CyberCore::ProcessIdentifier processIdentifier, CyberCore::RegistrableDomain&& firstPartyForCookies, LoadedWebArchive loadedWebArchive, CompletionHandler<void()>&& completionHandler)
 {
     auto& pair = m_allowedFirstPartiesForCookies.ensure(processIdentifier, [] {
         return std::make_pair(LoadedWebArchive::No, HashSet<RegistrableDomain> { });
@@ -406,14 +406,14 @@ void NetworkProcess::addAllowedFirstPartyForCookies(WebCore::ProcessIdentifier p
     completionHandler();
 }
 
-void NetworkProcess::webProcessWillLoadWebArchive(WebCore::ProcessIdentifier processIdentifier)
+void NetworkProcess::webProcessWillLoadWebArchive(CyberCore::ProcessIdentifier processIdentifier)
 {
     m_allowedFirstPartiesForCookies.ensure(processIdentifier, [] {
         return std::make_pair(LoadedWebArchive::Yes, HashSet<RegistrableDomain> { });
     }).iterator->value.first = LoadedWebArchive::Yes;
 }
 
-bool NetworkProcess::allowsFirstPartyForCookies(WebCore::ProcessIdentifier processIdentifier, const URL& firstParty)
+bool NetworkProcess::allowsFirstPartyForCookies(CyberCore::ProcessIdentifier processIdentifier, const URL& firstParty)
 {
     // FIXME: This should probably not be necessary. If about:blank is the first party for cookies,
     // we should set it to be the inherited origin then remove this exception.
@@ -427,7 +427,7 @@ bool NetworkProcess::allowsFirstPartyForCookies(WebCore::ProcessIdentifier proce
     return allowsFirstPartyForCookies(processIdentifier, firstPartyDomain);
 }
 
-bool NetworkProcess::allowsFirstPartyForCookies(WebCore::ProcessIdentifier processIdentifier, const RegistrableDomain& firstPartyDomain)
+bool NetworkProcess::allowsFirstPartyForCookies(CyberCore::ProcessIdentifier processIdentifier, const RegistrableDomain& firstPartyDomain)
 {
     if (!decltype(m_allowedFirstPartiesForCookies)::isValidKey(processIdentifier)) {
         ASSERT_NOT_REACHED();
@@ -477,9 +477,9 @@ void NetworkProcess::addStorageSession(PAL::SessionID sessionID, bool shouldUseT
     RetainPtr<CFURLStorageSessionRef> storageSession;
     auto cfIdentifier = makeString(identifierBase, ".PrivateBrowsing."_s, UUID::createVersion4()).createCFString();
     if (sessionID.isEphemeral())
-        storageSession = createPrivateStorageSession(cfIdentifier.get(), std::nullopt, WebCore::NetworkStorageSession::ShouldDisableCFURLCache::Yes);
+        storageSession = createPrivateStorageSession(cfIdentifier.get(), std::nullopt, CyberCore::NetworkStorageSession::ShouldDisableCFURLCache::Yes);
     else if (sessionID != PAL::SessionID::defaultSessionID())
-        storageSession = WebCore::NetworkStorageSession::createCFStorageSessionForIdentifier(cfIdentifier.get(), WebCore::NetworkStorageSession::ShouldDisableCFURLCache::Yes);
+        storageSession = CyberCore::NetworkStorageSession::createCFStorageSessionForIdentifier(cfIdentifier.get(), CyberCore::NetworkStorageSession::ShouldDisableCFURLCache::Yes);
 
     if (NetworkStorageSession::processMayUseCookieAPI()) {
         ASSERT(hasProcessPrivilege(ProcessPrivilege::CanAccessRawCookies));
@@ -523,20 +523,20 @@ void NetworkProcess::forEachNetworkSession(const Function<void(NetworkSession&)>
         functor(*session);
 }
 
-std::unique_ptr<WebCore::NetworkStorageSession> NetworkProcess::newTestingSession(PAL::SessionID sessionID)
+std::unique_ptr<CyberCore::NetworkStorageSession> NetworkProcess::newTestingSession(PAL::SessionID sessionID)
 {
 #if PLATFORM(COCOA)
     // Session name should be short enough for shared memory region name to be under the limit, otherwise sandbox rules won't work (see <rdar://problem/13642852>).
-    auto session = WebCore::createPrivateStorageSession(makeString("WebKit Test-", getCurrentProcessID()).createCFString().get(), std::nullopt, NetworkStorageSession::ShouldDisableCFURLCache::Yes);
+    auto session = CyberCore::createPrivateStorageSession(makeString("WebKit Test-", getCurrentProcessID()).createCFString().get(), std::nullopt, NetworkStorageSession::ShouldDisableCFURLCache::Yes);
     RetainPtr<CFHTTPCookieStorageRef> cookieStorage;
-    if (WebCore::NetworkStorageSession::processMayUseCookieAPI()) {
+    if (CyberCore::NetworkStorageSession::processMayUseCookieAPI()) {
         ASSERT(hasProcessPrivilege(ProcessPrivilege::CanAccessRawCookies));
         if (session)
             cookieStorage = adoptCF(_CFURLStorageSessionCopyCookieStorage(kCFAllocatorDefault, session.get()));
     }
-    return makeUnique<WebCore::NetworkStorageSession>(sessionID, WTFMove(session), WTFMove(cookieStorage));
+    return makeUnique<CyberCore::NetworkStorageSession>(sessionID, WTFMove(session), WTFMove(cookieStorage));
 #elif USE(CURL) || USE(SOUP)
-    return makeUnique<WebCore::NetworkStorageSession>(sessionID);
+    return makeUnique<CyberCore::NetworkStorageSession>(sessionID);
 #endif
 }
 
@@ -546,12 +546,12 @@ void NetworkProcess::cookieAcceptPolicyChanged(HTTPCookieAcceptPolicy newPolicy)
         connection->cookieAcceptPolicyChanged(newPolicy);
 }
 
-WebCore::NetworkStorageSession* NetworkProcess::storageSession(PAL::SessionID sessionID) const
+CyberCore::NetworkStorageSession* NetworkProcess::storageSession(PAL::SessionID sessionID) const
 {
     return m_networkStorageSessions.get(sessionID);
 }
 
-void NetworkProcess::forEachNetworkStorageSession(const Function<void(WebCore::NetworkStorageSession&)>& functor)
+void NetworkProcess::forEachNetworkStorageSession(const Function<void(CyberCore::NetworkStorageSession&)>& functor)
 {
     for (auto& storageSession : m_networkStorageSessions.values())
         functor(*storageSession);
@@ -1223,7 +1223,7 @@ void NetworkProcess::resetCacheMaxAgeCapForPrevalentResources(PAL::SessionID ses
     completionHandler();
 }
 
-void NetworkProcess::didCommitCrossSiteLoadWithDataTransfer(PAL::SessionID sessionID, RegistrableDomain&& fromDomain, RegistrableDomain&& toDomain, OptionSet<WebCore::CrossSiteNavigationDataTransfer::Flag> navigationDataTransfer, WebPageProxyIdentifier webPageProxyID, WebCore::PageIdentifier webPageID)
+void NetworkProcess::didCommitCrossSiteLoadWithDataTransfer(PAL::SessionID sessionID, RegistrableDomain&& fromDomain, RegistrableDomain&& toDomain, OptionSet<CyberCore::CrossSiteNavigationDataTransfer::Flag> navigationDataTransfer, WebPageProxyIdentifier webPageProxyID, CyberCore::PageIdentifier webPageID)
 {
     ASSERT(!navigationDataTransfer.isEmpty());
 
@@ -1270,7 +1270,7 @@ void NetworkProcess::resetCrossSiteLoadsWithLinkDecorationForTesting(PAL::Sessio
     completionHandler();
 }
 
-void NetworkProcess::hasIsolatedSession(PAL::SessionID sessionID, const WebCore::RegistrableDomain& domain, CompletionHandler<void(bool)>&& completionHandler) const
+void NetworkProcess::hasIsolatedSession(PAL::SessionID sessionID, const CyberCore::RegistrableDomain& domain, CompletionHandler<void(bool)>&& completionHandler) const
 {
     bool result = false;
     if (auto* session = networkSession(sessionID))
@@ -1279,7 +1279,7 @@ void NetworkProcess::hasIsolatedSession(PAL::SessionID sessionID, const WebCore:
 }
 
 #if ENABLE(APP_BOUND_DOMAINS)
-void NetworkProcess::setAppBoundDomainsForResourceLoadStatistics(PAL::SessionID sessionID, HashSet<WebCore::RegistrableDomain>&& appBoundDomains, CompletionHandler<void()>&& completionHandler)
+void NetworkProcess::setAppBoundDomainsForResourceLoadStatistics(PAL::SessionID sessionID, HashSet<CyberCore::RegistrableDomain>&& appBoundDomains, CompletionHandler<void()>&& completionHandler)
 {
     if (auto* session = networkSession(sessionID)) {
         if (auto* resourceLoadStatistics = session->resourceLoadStatistics()) {
@@ -1293,7 +1293,7 @@ void NetworkProcess::setAppBoundDomainsForResourceLoadStatistics(PAL::SessionID 
 #endif
 
 #if ENABLE(MANAGED_DOMAINS)
-void NetworkProcess::setManagedDomainsForResourceLoadStatistics(PAL::SessionID sessionID, HashSet<WebCore::RegistrableDomain>&& appBoundDomains, CompletionHandler<void()>&& completionHandler)
+void NetworkProcess::setManagedDomainsForResourceLoadStatistics(PAL::SessionID sessionID, HashSet<CyberCore::RegistrableDomain>&& appBoundDomains, CompletionHandler<void()>&& completionHandler)
 {
     if (auto* session = networkSession(sessionID)) {
         if (auto* resourceLoadStatistics = session->resourceLoadStatistics()) {
@@ -1314,7 +1314,7 @@ void NetworkProcess::setShouldDowngradeReferrerForTesting(bool enabled, Completi
     completionHandler();
 }
 
-void NetworkProcess::setThirdPartyCookieBlockingMode(PAL::SessionID sessionID, WebCore::ThirdPartyCookieBlockingMode blockingMode, CompletionHandler<void()>&& completionHandler)
+void NetworkProcess::setThirdPartyCookieBlockingMode(PAL::SessionID sessionID, CyberCore::ThirdPartyCookieBlockingMode blockingMode, CompletionHandler<void()>&& completionHandler)
 {
     if (auto* session = networkSession(sessionID))
         session->setThirdPartyCookieBlockingMode(blockingMode);
@@ -1323,7 +1323,7 @@ void NetworkProcess::setThirdPartyCookieBlockingMode(PAL::SessionID sessionID, W
     completionHandler();
 }
 
-void NetworkProcess::setShouldEnbleSameSiteStrictEnforcementForTesting(PAL::SessionID sessionID, WebCore::SameSiteStrictEnforcementEnabled enabled, CompletionHandler<void()>&& completionHandler)
+void NetworkProcess::setShouldEnbleSameSiteStrictEnforcementForTesting(PAL::SessionID sessionID, CyberCore::SameSiteStrictEnforcementEnabled enabled, CompletionHandler<void()>&& completionHandler)
 {
     if (auto* session = networkSession(sessionID))
         session->setShouldEnbleSameSiteStrictEnforcement(enabled);
@@ -1332,7 +1332,7 @@ void NetworkProcess::setShouldEnbleSameSiteStrictEnforcementForTesting(PAL::Sess
     completionHandler();
 }
 
-void NetworkProcess::setFirstPartyWebsiteDataRemovalModeForTesting(PAL::SessionID sessionID, WebCore::FirstPartyWebsiteDataRemovalMode mode, CompletionHandler<void()>&& completionHandler)
+void NetworkProcess::setFirstPartyWebsiteDataRemovalModeForTesting(PAL::SessionID sessionID, CyberCore::FirstPartyWebsiteDataRemovalMode mode, CompletionHandler<void()>&& completionHandler)
 {
     if (auto* session = networkSession(sessionID)) {
         if (auto* resourceLoadStatistics = session->resourceLoadStatistics())
@@ -1345,7 +1345,7 @@ void NetworkProcess::setFirstPartyWebsiteDataRemovalModeForTesting(PAL::SessionI
     }
 }
 
-void NetworkProcess::setToSameSiteStrictCookiesForTesting(PAL::SessionID sessionID, const WebCore::RegistrableDomain& domain, CompletionHandler<void()>&& completionHandler)
+void NetworkProcess::setToSameSiteStrictCookiesForTesting(PAL::SessionID sessionID, const CyberCore::RegistrableDomain& domain, CompletionHandler<void()>&& completionHandler)
 {
     if (auto* networkStorageSession = storageSession(sessionID))
         networkStorageSession->setAllCookiesToSameSiteStrict(domain, WTFMove(completionHandler));
@@ -1355,14 +1355,14 @@ void NetworkProcess::setToSameSiteStrictCookiesForTesting(PAL::SessionID session
     }
 }
 
-void NetworkProcess::setFirstPartyHostCNAMEDomainForTesting(PAL::SessionID sessionID, String&& firstPartyHost, WebCore::RegistrableDomain&& cnameDomain, CompletionHandler<void()>&& completionHandler)
+void NetworkProcess::setFirstPartyHostCNAMEDomainForTesting(PAL::SessionID sessionID, String&& firstPartyHost, CyberCore::RegistrableDomain&& cnameDomain, CompletionHandler<void()>&& completionHandler)
 {
     if (auto* session = networkSession(sessionID))
         session->setFirstPartyHostCNAMEDomain(WTFMove(firstPartyHost), WTFMove(cnameDomain));
     completionHandler();
 }
 
-void NetworkProcess::setThirdPartyCNAMEDomainForTesting(PAL::SessionID sessionID, WebCore::RegistrableDomain&& domain, CompletionHandler<void()>&& completionHandler)
+void NetworkProcess::setThirdPartyCNAMEDomainForTesting(PAL::SessionID sessionID, CyberCore::RegistrableDomain&& domain, CompletionHandler<void()>&& completionHandler)
 {
     if (auto* session = networkSession(sessionID))
         session->setThirdPartyCNAMEDomainForTesting(WTFMove(domain));
@@ -1411,7 +1411,7 @@ void NetworkProcess::setPrivateClickMeasurementDebugMode(PAL::SessionID sessionI
         session->setPrivateClickMeasurementDebugMode(enabled);
 }
 
-void NetworkProcess::preconnectTo(PAL::SessionID sessionID, WebPageProxyIdentifier webPageProxyID, WebCore::PageIdentifier webPageID, const URL& url, const String& userAgent, WebCore::StoredCredentialsPolicy storedCredentialsPolicy, std::optional<NavigatingToAppBoundDomain> isNavigatingToAppBoundDomain, LastNavigationWasAppInitiated lastNavigationWasAppInitiated)
+void NetworkProcess::preconnectTo(PAL::SessionID sessionID, WebPageProxyIdentifier webPageProxyID, CyberCore::PageIdentifier webPageID, const URL& url, const String& userAgent, CyberCore::StoredCredentialsPolicy storedCredentialsPolicy, std::optional<NavigatingToAppBoundDomain> isNavigatingToAppBoundDomain, LastNavigationWasAppInitiated lastNavigationWasAppInitiated)
 {
     LOG(Network, "(NetworkProcess) Preconnecting to URL %s (storedCredentialsPolicy %i)", url.string().utf8().data(), (int)storedCredentialsPolicy);
 
@@ -1429,7 +1429,7 @@ void NetworkProcess::preconnectTo(PAL::SessionID sessionID, WebPageProxyIdentifi
     parameters.request = ResourceRequest { url };
     parameters.request.setIsAppInitiated(lastNavigationWasAppInitiated == LastNavigationWasAppInitiated::Yes);
     parameters.request.setFirstPartyForCookies(url);
-    parameters.request.setPriority(WebCore::ResourceLoadPriority::VeryHigh);
+    parameters.request.setPriority(CyberCore::ResourceLoadPriority::VeryHigh);
     parameters.webPageProxyID = webPageProxyID;
     parameters.webPageID = webPageID;
     parameters.isNavigatingToAppBoundDomain = isNavigatingToAppBoundDomain;
@@ -1444,13 +1444,13 @@ void NetworkProcess::preconnectTo(PAL::SessionID sessionID, WebPageProxyIdentifi
     NetworkLoadParameters parametersForAdditionalPreconnect = parameters;
 
     session->networkLoadScheduler().startedPreconnectForMainResource(url, userAgent);
-    auto task = new PreconnectTask(*session, WTFMove(parameters), [session = WeakPtr { *session }, url, userAgent, parametersForAdditionalPreconnect = WTFMove(parametersForAdditionalPreconnect)](const WebCore::ResourceError& error, const WebCore::NetworkLoadMetrics& metrics) mutable {
+    auto task = new PreconnectTask(*session, WTFMove(parameters), [session = WeakPtr { *session }, url, userAgent, parametersForAdditionalPreconnect = WTFMove(parametersForAdditionalPreconnect)](const CyberCore::ResourceError& error, const CyberCore::NetworkLoadMetrics& metrics) mutable {
         if (session) {
             session->networkLoadScheduler().finishedPreconnectForMainResource(url, userAgent, error);
 #if ENABLE(ADDITIONAL_PRECONNECT_ON_HTTP_1X)
             if (equalLettersIgnoringASCIICase(metrics.protocol, "http/1.1"_s)) {
                 auto parameters = parametersForAdditionalPreconnect;
-                auto task = new PreconnectTask(*session, WTFMove(parameters), [](const WebCore::ResourceError& error, const WebCore::NetworkLoadMetrics& metrics) { });
+                auto task = new PreconnectTask(*session, WTFMove(parameters), [](const CyberCore::ResourceError& error, const CyberCore::NetworkLoadMetrics& metrics) { });
                 task->start();
             }
 #endif // ENABLE(ADDITIONAL_PRECONNECT_ON_HTTP_1X)
@@ -1757,13 +1757,13 @@ void NetworkProcess::deleteWebsiteDataForOrigins(PAL::SessionID sessionID, Optio
         session->storageManager().deleteData(websiteDataTypes, originDatas, [clearTasksHandler] { });
 
     if (session) {
-        HashSet<WebCore::RegistrableDomain> domainsToDeleteNetworkDataFor;
+        HashSet<CyberCore::RegistrableDomain> domainsToDeleteNetworkDataFor;
         for (auto& originData : originDatas)
-            domainsToDeleteNetworkDataFor.add(WebCore::RegistrableDomain::uncheckedCreateFromHost(originData.host()));
+            domainsToDeleteNetworkDataFor.add(CyberCore::RegistrableDomain::uncheckedCreateFromHost(originData.host()));
         for (auto& cookieHostName : cookieHostNames)
-            domainsToDeleteNetworkDataFor.add(WebCore::RegistrableDomain::uncheckedCreateFromHost(cookieHostName));
+            domainsToDeleteNetworkDataFor.add(CyberCore::RegistrableDomain::uncheckedCreateFromHost(cookieHostName));
         for (auto& cacheHostName : HSTSCacheHostNames)
-            domainsToDeleteNetworkDataFor.add(WebCore::RegistrableDomain::uncheckedCreateFromHost(cacheHostName));
+            domainsToDeleteNetworkDataFor.add(CyberCore::RegistrableDomain::uncheckedCreateFromHost(cacheHostName));
         for (auto& domain : registrableDomains)
             domainsToDeleteNetworkDataFor.add(domain);
 
@@ -1783,7 +1783,7 @@ static Vector<String> filterForRegistrableDomains(const Vector<RegistrableDomain
     return result;
 }
 
-static Vector<WebCore::SecurityOriginData> filterForRegistrableDomains(const HashSet<WebCore::SecurityOriginData>& origins, const Vector<RegistrableDomain>& domainsToDelete, HashSet<RegistrableDomain>& domainsDeleted)
+static Vector<CyberCore::SecurityOriginData> filterForRegistrableDomains(const HashSet<CyberCore::SecurityOriginData>& origins, const Vector<RegistrableDomain>& domainsToDelete, HashSet<RegistrableDomain>& domainsDeleted)
 {
     Vector<SecurityOriginData> originsDeleted;
     for (const auto& origin : origins) {
@@ -1841,17 +1841,17 @@ void NetworkProcess::deleteAndRestrictWebsiteDataForRegistrableDomains(PAL::Sess
             networkStorageSession->getHostnamesWithCookies(hostNamesWithCookies);
 
             hostnamesWithCookiesToDelete = filterForRegistrableDomains(domains.domainsToDeleteAllCookiesFor, hostNamesWithCookies);
-            networkStorageSession->deleteCookiesForHostnames(hostnamesWithCookiesToDelete, WebCore::IncludeHttpOnlyCookies::Yes, ScriptWrittenCookiesOnly::No, [callbackAggregator] { });
+            networkStorageSession->deleteCookiesForHostnames(hostnamesWithCookiesToDelete, CyberCore::IncludeHttpOnlyCookies::Yes, ScriptWrittenCookiesOnly::No, [callbackAggregator] { });
 
 #if ENABLE(JS_COOKIE_CHECKING)
             hostnamesWithScriptWrittenCookiesToDelete = filterForRegistrableDomains(domains.domainsToDeleteAllScriptWrittenStorageFor, hostNamesWithCookies);
-            networkStorageSession->deleteCookiesForHostnames(hostnamesWithScriptWrittenCookiesToDelete, WebCore::IncludeHttpOnlyCookies::No, ScriptWrittenCookiesOnly::Yes, [callbackAggregator] { });
+            networkStorageSession->deleteCookiesForHostnames(hostnamesWithScriptWrittenCookiesToDelete, CyberCore::IncludeHttpOnlyCookies::No, ScriptWrittenCookiesOnly::Yes, [callbackAggregator] { });
 #endif
             for (const auto& host : hostnamesWithCookiesToDelete)
                 callbackAggregator->m_domains.add(RegistrableDomain::uncheckedCreateFromHost(host));
 
             hostnamesWithCookiesToDelete = filterForRegistrableDomains(domains.domainsToDeleteAllButHttpOnlyCookiesFor, hostNamesWithCookies);
-            networkStorageSession->deleteCookiesForHostnames(hostnamesWithCookiesToDelete, WebCore::IncludeHttpOnlyCookies::No, ScriptWrittenCookiesOnly::No, [callbackAggregator] { });
+            networkStorageSession->deleteCookiesForHostnames(hostnamesWithCookiesToDelete, CyberCore::IncludeHttpOnlyCookies::No, ScriptWrittenCookiesOnly::No, [callbackAggregator] { });
 
             for (const auto& host : hostnamesWithCookiesToDelete)
                 callbackAggregator->m_domains.add(RegistrableDomain::uncheckedCreateFromHost(host));
@@ -2078,7 +2078,7 @@ void NetworkProcess::publishDownloadProgress(DownloadID downloadID, const URL& u
 }
 #endif
 
-void NetworkProcess::continueWillSendRequest(DownloadID downloadID, WebCore::ResourceRequest&& request)
+void NetworkProcess::continueWillSendRequest(DownloadID downloadID, CyberCore::ResourceRequest&& request)
 {
     downloadManager().continueWillSendRequest(downloadID, WTFMove(request));
 }
@@ -2107,7 +2107,7 @@ void NetworkProcess::findPendingDownloadLocation(NetworkDataTask& networkDataTas
     }, destinationID);
 }
 
-void NetworkProcess::dataTaskWithRequest(WebPageProxyIdentifier pageID, PAL::SessionID sessionID, WebCore::ResourceRequest&& request, IPC::FormDataReference&& httpBody, CompletionHandler<void(DataTaskIdentifier)>&& completionHandler)
+void NetworkProcess::dataTaskWithRequest(WebPageProxyIdentifier pageID, PAL::SessionID sessionID, CyberCore::ResourceRequest&& request, IPC::FormDataReference&& httpBody, CompletionHandler<void(DataTaskIdentifier)>&& completionHandler)
 {
     request.setHTTPBody(httpBody.takeData());
     networkSession(sessionID)->dataTaskWithRequest(pageID, WTFMove(request), WTFMove(completionHandler));
@@ -2146,7 +2146,7 @@ void NetworkProcess::setAllowsAnySSLCertificateForWebSocket(bool allows, Complet
     completionHandler();
 }
 
-void NetworkProcess::allowTLSCertificateChainForLocalPCMTesting(PAL::SessionID sessionID, const WebCore::CertificateInfo& certificateInfo)
+void NetworkProcess::allowTLSCertificateChainForLocalPCMTesting(PAL::SessionID sessionID, const CyberCore::CertificateInfo& certificateInfo)
 {
     if (auto* session = networkSession(sessionID))
         session->allowTLSCertificateChainForLocalPCMTesting(certificateInfo);
@@ -2187,7 +2187,7 @@ void NetworkProcess::processWillSuspendImminentlyForTestingSync(CompletionHandle
     prepareToSuspend(true, MonotonicTime::now(), WTFMove(completionHandler));
 }
 
-void NetworkProcess::terminateRemoteWorkerContextConnectionWhenPossible(RemoteWorkerType workerType, PAL::SessionID sessionID, const WebCore::RegistrableDomain& registrableDomain, WebCore::ProcessIdentifier processIdentifier)
+void NetworkProcess::terminateRemoteWorkerContextConnectionWhenPossible(RemoteWorkerType workerType, PAL::SessionID sessionID, const CyberCore::RegistrableDomain& registrableDomain, CyberCore::ProcessIdentifier processIdentifier)
 {
     auto* session = networkSession(sessionID);
     if (!session)
@@ -2280,7 +2280,7 @@ void NetworkProcess::processDidResume(bool forForegroundActivity)
 
 void NetworkProcess::prefetchDNS(const String& hostname)
 {
-    WebCore::prefetchDNS(hostname);
+    CyberCore::prefetchDNS(hostname);
 }
 
 void NetworkProcess::registerURLSchemeAsSecure(const String& scheme) const
@@ -2459,7 +2459,7 @@ void NetworkProcess::deletePushAndNotificationRegistration(PAL::SessionID sessio
     callback("Cannot find network session"_s);
 }
 
-void NetworkProcess::getOriginsWithPushAndNotificationPermissions(PAL::SessionID sessionID, CompletionHandler<void(const Vector<WebCore::SecurityOriginData>&)>&& callback)
+void NetworkProcess::getOriginsWithPushAndNotificationPermissions(PAL::SessionID sessionID, CompletionHandler<void(const Vector<CyberCore::SecurityOriginData>&)>&& callback)
 {
 #if ENABLE(BUILT_IN_NOTIFICATIONS)
     if (auto* session = networkSession(sessionID)) {
@@ -2524,7 +2524,7 @@ void NetworkProcess::platformFlushCookies(PAL::SessionID, CompletionHandler<void
 
 #endif
 
-void NetworkProcess::storePrivateClickMeasurement(PAL::SessionID sessionID, WebCore::PrivateClickMeasurement&& privateClickMeasurement)
+void NetworkProcess::storePrivateClickMeasurement(PAL::SessionID sessionID, CyberCore::PrivateClickMeasurement&& privateClickMeasurement)
 {
     if (auto* session = networkSession(sessionID))
         session->storePrivateClickMeasurement(WTFMove(privateClickMeasurement));
@@ -2703,7 +2703,7 @@ void NetworkProcess::connectionToWebProcessClosed(IPC::Connection& connection, P
         session->storageManager().stopReceivingMessageFromConnection(connection);
 }
 
-WebCore::ProcessIdentifier NetworkProcess::webProcessIdentifierForConnection(IPC::Connection& connection) const
+CyberCore::ProcessIdentifier NetworkProcess::webProcessIdentifierForConnection(IPC::Connection& connection) const
 {
     for (auto& [processIdentifier, webConnection] : m_webProcessConnections) {
         if (&webConnection->connection() == &connection)
@@ -2768,8 +2768,8 @@ void NetworkProcess::broadcastConsoleMessage(PAL::SessionID sessionID, JSC::Mess
 void NetworkProcess::updateBundleIdentifier(String&& bundleIdentifier, CompletionHandler<void()>&& completionHandler)
 {
 #if PLATFORM(COCOA)
-    WebCore::clearApplicationBundleIdentifierTestingOverride();
-    WebCore::setApplicationBundleIdentifierOverride(bundleIdentifier);
+    CyberCore::clearApplicationBundleIdentifierTestingOverride();
+    CyberCore::setApplicationBundleIdentifierOverride(bundleIdentifier);
 #endif
     completionHandler();
 }
@@ -2777,7 +2777,7 @@ void NetworkProcess::updateBundleIdentifier(String&& bundleIdentifier, Completio
 void NetworkProcess::clearBundleIdentifier(CompletionHandler<void()>&& completionHandler)
 {
 #if PLATFORM(COCOA)
-    WebCore::clearApplicationBundleIdentifierTestingOverride();
+    CyberCore::clearApplicationBundleIdentifierTestingOverride();
 #endif
     completionHandler();
 }
@@ -2796,7 +2796,7 @@ void NetworkProcess::setCORSDisablingPatterns(PageIdentifier pageIdentifier, Vec
     for (auto&& pattern : WTFMove(patterns)) {
         UserContentURLPattern parsedPattern(WTFMove(pattern));
         if (parsedPattern.isValid()) {
-            WebCore::SecurityPolicy::allowAccessTo(parsedPattern);
+            CyberCore::SecurityPolicy::allowAccessTo(parsedPattern);
             parsedPatterns.uncheckedAppend(WTFMove(parsedPattern));
         }
     }

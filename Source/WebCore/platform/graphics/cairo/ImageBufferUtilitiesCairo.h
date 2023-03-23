@@ -35,10 +35,10 @@
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Vector<uint8_t> encodeData(cairo_surface_t*, const String& mimeType, std::optional<double> quality);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(CAIRO)

@@ -37,7 +37,7 @@
 #import "RemoteVideoFrameIdentifier.h"
 #import "RemoteVideoFrameObjectHeap.h"
 #import "SharedVideoFrame.h"
-#import "WebCoreArgumentCoders.h"
+#import "CyberCoreArgumentCoders.h"
 #import <CyberCore/CVUtilities.h>
 #import <CyberCore/FrameRateMonitor.h>
 #import <CyberCore/LibWebRTCProvider.h>
@@ -57,7 +57,7 @@ ALLOW_COMMA_END
 #import <CyberCore/CoreVideoSoftLink.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 Ref<LibWebRTCCodecsProxy> LibWebRTCCodecsProxy::create(GPUConnectionToWebProcess& webProcessConnection)
 {
@@ -119,7 +119,7 @@ auto LibWebRTCCodecsProxy::createDecoderCallback(VideoDecoderIdentifier identifi
         if (frameRateMonitor)
             frameRateMonitor->update();
 
-        auto videoFrame = WebCore::VideoFrameCV::create(MediaTime(timeStampNs, 1), false, WebCore::VideoFrame::Rotation::None, pixelBuffer);
+        auto videoFrame = CyberCore::VideoFrameCV::create(MediaTime(timeStampNs, 1), false, CyberCore::VideoFrame::Rotation::None, pixelBuffer);
         if (resourceOwner)
             videoFrame->setOwnershipIdentity(resourceOwner);
         if (videoFrameObjectHeap) {
@@ -131,7 +131,7 @@ auto LibWebRTCCodecsProxy::createDecoderCallback(VideoDecoderIdentifier identifi
     };
 }
 
-std::unique_ptr<WebCore::WebRTCVideoDecoder> LibWebRTCCodecsProxy::createLocalDecoder(VideoDecoderIdentifier identifier, VideoCodecType codecType, bool useRemoteFrames, bool enableAdditionalLogging)
+std::unique_ptr<CyberCore::WebRTCVideoDecoder> LibWebRTCCodecsProxy::createLocalDecoder(VideoDecoderIdentifier identifier, VideoCodecType codecType, bool useRemoteFrames, bool enableAdditionalLogging)
 {
     auto block = makeBlockPtr(createDecoderCallback(identifier, useRemoteFrames, enableAdditionalLogging));
 
@@ -287,16 +287,16 @@ LibWebRTCCodecsProxy::Encoder* LibWebRTCCodecsProxy::findEncoder(VideoEncoderIde
     return &iterator->value;
 }
 
-static inline webrtc::VideoRotation toWebRTCVideoRotation(WebCore::VideoFrame::Rotation rotation)
+static inline webrtc::VideoRotation toWebRTCVideoRotation(CyberCore::VideoFrame::Rotation rotation)
 {
     switch (rotation) {
-    case WebCore::VideoFrame::Rotation::None:
+    case CyberCore::VideoFrame::Rotation::None:
         return webrtc::kVideoRotation_0;
-    case WebCore::VideoFrame::Rotation::UpsideDown:
+    case CyberCore::VideoFrame::Rotation::UpsideDown:
         return webrtc::kVideoRotation_180;
-    case WebCore::VideoFrame::Rotation::Right:
+    case CyberCore::VideoFrame::Rotation::Right:
         return webrtc::kVideoRotation_90;
-    case WebCore::VideoFrame::Rotation::Left:
+    case CyberCore::VideoFrame::Rotation::Left:
         return webrtc::kVideoRotation_270;
     }
     ASSERT_NOT_REACHED();
@@ -321,7 +321,7 @@ void LibWebRTCCodecsProxy::encodeFrame(VideoEncoderIdentifier identifier, Shared
 
     if (CVPixelBufferGetPixelFormatType(pixelBuffer.get()) == kCVPixelFormatType_32BGRA) {
         if (!m_pixelBufferConformer) {
-            m_pixelBufferConformer = makeUnique<WebCore::PixelBufferConformerCV>((__bridge CFDictionaryRef)@{ (__bridge NSString *)kCVPixelBufferPixelFormatTypeKey: @(kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange) });
+            m_pixelBufferConformer = makeUnique<CyberCore::PixelBufferConformerCV>((__bridge CFDictionaryRef)@{ (__bridge NSString *)kCVPixelBufferPixelFormatTypeKey: @(kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange) });
         }
         pixelBuffer = m_pixelBufferConformer->convert(pixelBuffer.get());
         if (!pixelBuffer)
@@ -390,7 +390,7 @@ bool LibWebRTCCodecsProxy::allowsExitUnderMemoryPressure() const
 
 void LibWebRTCCodecsProxy::setRTCLoggingLevel(WTFLogLevel level)
 {
-    WebCore::LibWebRTCProvider::setRTCLogging(level);
+    CyberCore::LibWebRTCProvider::setRTCLogging(level);
 }
 
 }

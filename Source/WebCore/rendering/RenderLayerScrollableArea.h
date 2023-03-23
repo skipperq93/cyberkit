@@ -47,7 +47,7 @@
 #include "RenderLayer.h"
 #include "ScrollableArea.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderMarquee;
 
@@ -313,4 +313,4 @@ private:
     std::unique_ptr<RenderMarquee> m_marquee; // Used for <marquee>.
 };
 
-} // namespace WebCore
+} // namespace CyberCore

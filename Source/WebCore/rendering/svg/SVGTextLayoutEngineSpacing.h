@@ -22,7 +22,7 @@
 #include <unicode/uchar.h>
 #include <wtf/Noncopyable.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FontCascade;
 class SVGRenderStyle;
@@ -41,4 +41,4 @@ private:
     const UChar* m_lastCharacter;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

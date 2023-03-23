@@ -28,7 +28,7 @@
 
 #if HAVE(RUBBER_BANDING)
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScrollAnimationRubberBand final: public ScrollAnimation {
 public:
@@ -51,8 +51,8 @@ private:
     FloatSize m_initialOverscroll;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_SCROLL_ANIMATION(WebCore::ScrollAnimationRubberBand, type() == WebCore::ScrollAnimation::Type::RubberBand)
+SPECIALIZE_TYPE_TRAITS_SCROLL_ANIMATION(CyberCore::ScrollAnimationRubberBand, type() == CyberCore::ScrollAnimation::Type::RubberBand)
 
 #endif // HAVE(RUBBER_BANDING)

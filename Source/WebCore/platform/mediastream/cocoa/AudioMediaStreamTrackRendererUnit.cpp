@@ -31,7 +31,7 @@
 #include "AudioSampleDataSource.h"
 #include "Logging.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 AudioMediaStreamTrackRendererUnit& AudioMediaStreamTrackRendererUnit::singleton()
 {
@@ -168,6 +168,6 @@ OSStatus AudioMediaStreamTrackRendererUnit::render(size_t sampleCount, AudioBuff
     return 0;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM)

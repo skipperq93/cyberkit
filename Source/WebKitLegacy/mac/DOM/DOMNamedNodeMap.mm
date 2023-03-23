@@ -32,18 +32,18 @@
 #import <CyberCore/JSExecState.h>
 #import <CyberCore/NamedNodeMap.h>
 #import <CyberCore/ThreadCheck.h>
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 #import <CyberCore/WebScriptObjectPrivate.h>
 #import <wtf/GetPtr.h>
 #import <wtf/URL.h>
 
-#define IMPL reinterpret_cast<WebCore::NamedNodeMap*>(_internal)
+#define IMPL reinterpret_cast<CyberCore::NamedNodeMap*>(_internal)
 
 @implementation DOMNamedNodeMap
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainThread([DOMNamedNodeMap class], self))
+    if (CyberCoreObjCScheduleDeallocateOnMainThread([DOMNamedNodeMap class], self))
         return;
 
     if (_internal)
@@ -53,42 +53,42 @@
 
 - (unsigned)length
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->length();
 }
 
 - (DOMNode *)getNamedItem:(NSString *)name
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->getNamedItem(name)));
 }
 
 - (DOMNode *)setNamedItem:(DOMNode *)node
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     if (!node)
         raiseTypeErrorException();
     auto& coreNode = *core(node);
-    if (!is<WebCore::Attr>(coreNode))
+    if (!is<CyberCore::Attr>(coreNode))
         raiseTypeErrorException();
-    return kit(raiseOnDOMError(IMPL->setNamedItem(downcast<WebCore::Attr>(coreNode))).get());
+    return kit(raiseOnDOMError(IMPL->setNamedItem(downcast<CyberCore::Attr>(coreNode))).get());
 }
 
 - (DOMNode *)removeNamedItem:(NSString *)name
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(raiseOnDOMError(IMPL->removeNamedItem(name)).ptr());
 }
 
 - (DOMNode *)item:(unsigned)index
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->item(index)));
 }
 
 - (DOMNode *)getNamedItemNS:(NSString *)namespaceURI localName:(NSString *)localName
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->getNamedItemNS(namespaceURI, localName)));
 }
 
@@ -99,7 +99,7 @@
 
 - (DOMNode *)removeNamedItemNS:(NSString *)namespaceURI localName:(NSString *)localName
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(raiseOnDOMError(IMPL->removeNamedItemNS(namespaceURI, localName)).ptr());
 }
 
@@ -119,9 +119,9 @@
 
 @end
 
-DOMNamedNodeMap *kit(WebCore::NamedNodeMap* value)
+DOMNamedNodeMap *kit(CyberCore::NamedNodeMap* value)
 {
-    WebCoreThreadViolationCheckRoundOne();
+    CyberCoreThreadViolationCheckRoundOne();
     if (!value)
         return nil;
     if (DOMNamedNodeMap *wrapper = getDOMWrapper(value))

@@ -30,7 +30,7 @@
 #include <wtf/text/StringConcatenateNumbers.h>
 #include <wtf/text/StringToIntegerConversion.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static bool areContentRangeValuesValid(int64_t firstBytePosition, int64_t lastBytePosition, int64_t instanceLength)
 {

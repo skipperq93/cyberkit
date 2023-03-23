@@ -34,19 +34,19 @@
 #import <CyberCore/WebScriptObjectPrivate.h>
 #import <wtf/GetPtr.h>
 
-#define IMPL static_cast<WebCore::DeprecatedCSSOMValueList*>(reinterpret_cast<WebCore::DeprecatedCSSOMValue*>(_internal))
+#define IMPL static_cast<CyberCore::DeprecatedCSSOMValueList*>(reinterpret_cast<CyberCore::DeprecatedCSSOMValue*>(_internal))
 
 @implementation DOMCSSValueList
 
 - (unsigned)length
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->length();
 }
 
 - (DOMCSSValue *)item:(unsigned)index
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->item(index)));
 }
 

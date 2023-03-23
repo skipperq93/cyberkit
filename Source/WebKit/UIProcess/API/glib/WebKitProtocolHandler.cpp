@@ -83,7 +83,7 @@
 #endif
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 WebKitProtocolHandler::WebKitProtocolHandler(WebKitWebContext* context)
 {

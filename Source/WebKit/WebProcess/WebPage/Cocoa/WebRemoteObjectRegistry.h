@@ -27,7 +27,7 @@
 
 #include "RemoteObjectRegistry.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPage;
 
@@ -45,4 +45,4 @@ private:
     WebPage& m_page;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

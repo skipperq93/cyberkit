@@ -36,7 +36,7 @@
 
 namespace TestWebKitAPI {
 
-static void testGetAndSet(WebCore::IntRect rect)
+static void testGetAndSet(CyberCore::IntRect rect)
 {
     rect.setX(1);
     EXPECT_EQ(1, rect.x());
@@ -48,7 +48,7 @@ static void testGetAndSet(WebCore::IntRect rect)
     EXPECT_EQ(73, rect.height());
 }
 
-static void testEmptyRect(const WebCore::IntRect& rect)
+static void testEmptyRect(const CyberCore::IntRect& rect)
 {
     EXPECT_EQ(0, rect.x());
     EXPECT_EQ(0, rect.y());
@@ -61,7 +61,7 @@ static void testEmptyRect(const WebCore::IntRect& rect)
 
 TEST(IntRect, DefaultConstruction)
 {
-    WebCore::IntRect test;
+    CyberCore::IntRect test;
 
     testEmptyRect(test);
 
@@ -78,7 +78,7 @@ TEST(IntRect, DefaultConstruction)
 
 TEST(IntRect, ValueConstruction)
 {
-    WebCore::IntRect test(10, 20, 100, 50);
+    CyberCore::IntRect test(10, 20, 100, 50);
 
     EXPECT_EQ(10, test.x());
     EXPECT_EQ(20, test.y());
@@ -99,10 +99,10 @@ TEST(IntRect, ValueConstruction)
 
 TEST(IntRect, PointSizeConstruction)
 {
-    WebCore::IntPoint location(20, 30);
-    WebCore::IntSize size(100, 50);
+    CyberCore::IntPoint location(20, 30);
+    CyberCore::IntSize size(100, 50);
 
-    WebCore::IntRect test(location, size);
+    CyberCore::IntRect test(location, size);
 
     EXPECT_EQ(20, test.x());
     EXPECT_EQ(30, test.y());
@@ -123,9 +123,9 @@ TEST(IntRect, PointSizeConstruction)
 
 TEST(IntRect, FloatRectConstruction)
 {
-    WebCore::FloatRect rect(20.0f, 30.0f, 150.0f, 300.0f);
+    CyberCore::FloatRect rect(20.0f, 30.0f, 150.0f, 300.0f);
 
-    WebCore::IntRect test(rect);
+    CyberCore::IntRect test(rect);
 
     EXPECT_EQ(20, test.x());
     EXPECT_EQ(30, test.y());
@@ -146,11 +146,11 @@ TEST(IntRect, FloatRectConstruction)
 
 TEST(IntRect, SetLocationAndSize)
 {
-    WebCore::IntRect rect;
+    CyberCore::IntRect rect;
 
     testEmptyRect(rect);
 
-    WebCore::IntPoint location(10, 20);
+    CyberCore::IntPoint location(10, 20);
 
     rect.setLocation(location);
 
@@ -162,7 +162,7 @@ TEST(IntRect, SetLocationAndSize)
     EXPECT_EQ(20, rect.maxY());
     EXPECT_TRUE(rect.isEmpty());
 
-    WebCore::IntSize size(100, 200);
+    CyberCore::IntSize size(100, 200);
 
     rect.setSize(size);
 
@@ -177,7 +177,7 @@ TEST(IntRect, SetLocationAndSize)
 
 TEST(IntRect, Center)
 {
-    WebCore::IntRect rect(20, 40, 100, 200);
+    CyberCore::IntRect rect(20, 40, 100, 200);
 
     auto center = rect.center();
 
@@ -187,16 +187,16 @@ TEST(IntRect, Center)
 
 TEST(IntRect, Move)
 {
-    WebCore::IntRect rect(20, 30, 100, 200);
+    CyberCore::IntRect rect(20, 30, 100, 200);
 
-    WebCore::IntSize delta(10, 20);
+    CyberCore::IntSize delta(10, 20);
 
     rect.move(delta);
 
     EXPECT_EQ(30, rect.x());
     EXPECT_EQ(50, rect.y());
 
-    WebCore::IntPoint deltaPoint(-20, -40);
+    CyberCore::IntPoint deltaPoint(-20, -40);
 
     rect.moveBy(deltaPoint);
 
@@ -211,9 +211,9 @@ TEST(IntRect, Move)
 
 TEST(IntRect, Expand)
 {
-    WebCore::IntRect rect(20, 30, 100, 200);
+    CyberCore::IntRect rect(20, 30, 100, 200);
 
-    WebCore::IntSize size(100, 100);
+    CyberCore::IntSize size(100, 100);
 
     rect.expand(size);
 
@@ -225,7 +225,7 @@ TEST(IntRect, Expand)
     EXPECT_EQ(255, rect.width());
     EXPECT_EQ(322, rect.height());
 
-    WebCore::IntSize size2(-10, -20);
+    CyberCore::IntSize size2(-10, -20);
 
     rect.expand(size2);
 
@@ -240,9 +240,9 @@ TEST(IntRect, Expand)
 
 TEST(IntRect, Contract)
 {
-    WebCore::IntRect rect(20, 30, 100, 200);
+    CyberCore::IntRect rect(20, 30, 100, 200);
 
-    WebCore::IntSize size(50, 100);
+    CyberCore::IntSize size(50, 100);
 
     rect.contract(size);
 
@@ -254,7 +254,7 @@ TEST(IntRect, Contract)
     EXPECT_EQ(25, rect.width());
     EXPECT_EQ(78, rect.height());
 
-    WebCore::IntSize size2(-10, -20);
+    CyberCore::IntSize size2(-10, -20);
 
     rect.contract(size2);
 
@@ -269,7 +269,7 @@ TEST(IntRect, Contract)
 
 TEST(IntRect, ShiftXEdge)
 {
-    WebCore::IntRect rect(20, 30, 100, 200);
+    CyberCore::IntRect rect(20, 30, 100, 200);
 
     rect.shiftXEdgeTo(77);
 
@@ -292,7 +292,7 @@ TEST(IntRect, ShiftXEdge)
 
 TEST(IntRect, ShiftYEdge)
 {
-    WebCore::IntRect rect(20, 30, 100, 200);
+    CyberCore::IntRect rect(20, 30, 100, 200);
 
     rect.shiftYEdgeTo(59.0f);
 
@@ -315,7 +315,7 @@ TEST(IntRect, ShiftYEdge)
 
 TEST(IntRect, Inflate)
 {
-    WebCore::IntRect rect(20, 30, 100, 200);
+    CyberCore::IntRect rect(20, 30, 100, 200);
 
     rect.inflateX(5);
 
@@ -337,50 +337,50 @@ TEST(IntRect, Inflate)
 
 TEST(IntRect, Corners)
 {
-    WebCore::IntRect rect(20, 30, 100, 200);
+    CyberCore::IntRect rect(20, 30, 100, 200);
 
-    WebCore::FloatPoint topLeft = rect.minXMinYCorner();
+    CyberCore::FloatPoint topLeft = rect.minXMinYCorner();
     EXPECT_EQ(20, topLeft.x());
     EXPECT_EQ(30, topLeft.y());
 
-    WebCore::FloatPoint topRight = rect.maxXMinYCorner();
+    CyberCore::FloatPoint topRight = rect.maxXMinYCorner();
     EXPECT_EQ(120, topRight.x());
     EXPECT_EQ(30, topRight.y());
 
-    WebCore::FloatPoint bottomLeft = rect.minXMaxYCorner();
+    CyberCore::FloatPoint bottomLeft = rect.minXMaxYCorner();
     EXPECT_EQ(20, bottomLeft.x());
     EXPECT_EQ(230, bottomLeft.y());
 
-    WebCore::FloatPoint bottomRight = rect.maxXMaxYCorner();
+    CyberCore::FloatPoint bottomRight = rect.maxXMaxYCorner();
     EXPECT_EQ(120, bottomRight.x());
     EXPECT_EQ(230, bottomRight.y());
 }
 
 TEST(IntRect, Contains)
 {
-    WebCore::IntRect rect(20, 30, 100, 200);
+    CyberCore::IntRect rect(20, 30, 100, 200);
 
-    WebCore::IntRect contained(30, 40, 50, 100);
+    CyberCore::IntRect contained(30, 40, 50, 100);
 
     ASSERT_TRUE(rect.contains(contained));
 
-    WebCore::IntRect outside(120, 230, 50, 100);
+    CyberCore::IntRect outside(120, 230, 50, 100);
 
     ASSERT_FALSE(rect.contains(outside));
 
-    WebCore::IntRect intersects(10, 20, 90, 180);
+    CyberCore::IntRect intersects(10, 20, 90, 180);
 
     ASSERT_FALSE(rect.contains(intersects));
 
-    WebCore::IntPoint pointInside(60, 70);
+    CyberCore::IntPoint pointInside(60, 70);
 
     ASSERT_TRUE(rect.contains(pointInside));
 
-    WebCore::IntPoint pointOutside(160, 270);
+    CyberCore::IntPoint pointOutside(160, 270);
 
     ASSERT_FALSE(rect.contains(pointOutside));
 
-    WebCore::IntPoint pointOnLine(20, 30);
+    CyberCore::IntPoint pointOnLine(20, 30);
 
     ASSERT_TRUE(rect.contains(pointOnLine));
 
@@ -390,22 +390,22 @@ TEST(IntRect, Contains)
 
 TEST(IntRect, Intersects)
 {
-    WebCore::IntRect rect(20, 30, 100, 200);
+    CyberCore::IntRect rect(20, 30, 100, 200);
 
-    WebCore::IntRect contained(30, 40, 50, 100);
+    CyberCore::IntRect contained(30, 40, 50, 100);
 
     ASSERT_TRUE(rect.intersects(contained));
 
-    WebCore::IntRect outside(120, 230, 50, 100);
+    CyberCore::IntRect outside(120, 230, 50, 100);
 
     ASSERT_FALSE(rect.intersects(outside));
 
-    WebCore::IntRect intersects(10, 20, 90, 180);
+    CyberCore::IntRect intersects(10, 20, 90, 180);
 
     ASSERT_TRUE(rect.intersects(intersects));
 }
 
-static void testIntersectResult(const WebCore::IntRect& rect)
+static void testIntersectResult(const CyberCore::IntRect& rect)
 {
     EXPECT_EQ(70, rect.x());
     EXPECT_EQ(120, rect.maxX());
@@ -415,21 +415,21 @@ static void testIntersectResult(const WebCore::IntRect& rect)
 
 TEST(IntRect, Intersect)
 {
-    WebCore::IntRect rectA(20, 30, 100, 200);
-    WebCore::IntRect rectB(70, 80, 100, 200);
+    CyberCore::IntRect rectA(20, 30, 100, 200);
+    CyberCore::IntRect rectB(70, 80, 100, 200);
 
     rectA.intersect(rectB);
 
     testIntersectResult(rectA);
 
-    WebCore::IntRect rectC(20, 30, 100, 200);
+    CyberCore::IntRect rectC(20, 30, 100, 200);
 
-    auto intersected = WebCore::intersection(rectC, rectB);
+    auto intersected = CyberCore::intersection(rectC, rectB);
 
     testIntersectResult(intersected);
 }
 
-static void testUnitedRects(const WebCore::IntRect& united)
+static void testUnitedRects(const CyberCore::IntRect& united)
 {
     EXPECT_EQ(20, united.x());
     EXPECT_EQ(170, united.maxX());
@@ -439,23 +439,23 @@ static void testUnitedRects(const WebCore::IntRect& united)
 
 TEST(IntRect, Unite)
 {
-    WebCore::IntRect rectA(20, 30, 100, 200);
-    WebCore::IntRect rectB(70, 80, 100, 200);
+    CyberCore::IntRect rectA(20, 30, 100, 200);
+    CyberCore::IntRect rectB(70, 80, 100, 200);
 
     rectA.unite(rectB);
 
     testUnitedRects(rectA);
 
-    WebCore::IntRect rectC(20, 30, 100, 200);
+    CyberCore::IntRect rectC(20, 30, 100, 200);
 
-    auto united = WebCore::unionRect(rectC, rectB);
+    auto united = CyberCore::unionRect(rectC, rectB);
 
     testUnitedRects(united);
 }
 
 TEST(IntRect, Scale)
 {
-    WebCore::IntRect rect(20, 30, 100, 200);
+    CyberCore::IntRect rect(20, 30, 100, 200);
 
     rect.scale(2.0f);
 
@@ -467,7 +467,7 @@ TEST(IntRect, Scale)
 
 TEST(IntRect, Transpose)
 {
-    WebCore::IntRect rect(20, 30, 100, 200);
+    CyberCore::IntRect rect(20, 30, 100, 200);
 
     auto transposed = rect.transposedRect();
 
@@ -478,7 +478,7 @@ TEST(IntRect, Transpose)
 }
 
 #if USE(CG) || PLATFORM(WIN)
-static void checkCastRect(const WebCore::IntRect& rect)
+static void checkCastRect(const CyberCore::IntRect& rect)
 {
     EXPECT_EQ(10, rect.x());
     EXPECT_EQ(40, rect.maxX());
@@ -491,12 +491,12 @@ static void checkCastRect(const WebCore::IntRect& rect)
 
 TEST(IntRect, Casting)
 {
-    WebCore::IntRect rect(10, 20, 30, 40);
+    CyberCore::IntRect rect(10, 20, 30, 40);
 
 #if USE(CG)
     CGRect cgRect = CGRectMake(10.0, 20.0, 30.0, 40.0);
 
-    WebCore::IntRect rectFromCGRect(cgRect);
+    CyberCore::IntRect rectFromCGRect(cgRect);
 
     checkCastRect(rectFromCGRect);
 #endif
@@ -509,13 +509,13 @@ TEST(IntRect, Casting)
     EXPECT_EQ(40, gdiRect.right);
     EXPECT_EQ(60, gdiRect.bottom);
 
-    WebCore::IntRect rectFromGDIRect(gdiRect);
+    CyberCore::IntRect rectFromGDIRect(gdiRect);
 
     checkCastRect(rectFromGDIRect);
 #endif
 }
 
-static void checkSubtractionResult1(const WebCore::IntRect& rect)
+static void checkSubtractionResult1(const CyberCore::IntRect& rect)
 {
     EXPECT_EQ(-10, rect.x());
     EXPECT_EQ(90, rect.maxX());
@@ -525,7 +525,7 @@ static void checkSubtractionResult1(const WebCore::IntRect& rect)
     EXPECT_EQ(100, rect.height());
 }
 
-static void checkSubtractionResult2(const WebCore::IntRect& rect)
+static void checkSubtractionResult2(const CyberCore::IntRect& rect)
 {
     EXPECT_EQ(-40, rect.x());
     EXPECT_EQ(60, rect.maxX());
@@ -537,22 +537,22 @@ static void checkSubtractionResult2(const WebCore::IntRect& rect)
 
 TEST(IntRect, Subtraction)
 {
-    WebCore::IntRect rect(10, 20, 100, 100);
-    WebCore::IntPoint rightSide(20, 30);
+    CyberCore::IntRect rect(10, 20, 100, 100);
+    CyberCore::IntPoint rightSide(20, 30);
 
     rect -= rightSide;
 
     checkSubtractionResult1(rect);
 
-    auto rect2 = rect - WebCore::IntPoint(30, 40);
+    auto rect2 = rect - CyberCore::IntPoint(30, 40);
     checkSubtractionResult2(rect2);
 }
 
 TEST(IntRect, Equality)
 {
-    WebCore::IntRect rect(10, 20, 100, 100);
-    WebCore::IntRect rect2(10, 20, 100, 100);
-    WebCore::IntRect rightSide(110, 20, 20, 100);
+    CyberCore::IntRect rect(10, 20, 100, 100);
+    CyberCore::IntRect rect2(10, 20, 100, 100);
+    CyberCore::IntRect rightSide(110, 20, 20, 100);
 
     ASSERT_TRUE(rect == rect2);
     ASSERT_FALSE(rect != rect2);
@@ -561,7 +561,7 @@ TEST(IntRect, Equality)
 }
 
 #if USE(CG)
-static void checkEnclosingIntRect(const WebCore::IntRect& rect)
+static void checkEnclosingIntRect(const CyberCore::IntRect& rect)
 {
     EXPECT_EQ(10, rect.x());
     EXPECT_EQ(41, rect.maxX());
@@ -577,7 +577,7 @@ TEST(IntRect, EnclosingIntRect)
 #if USE(CG)
     CGRect cgRect = CGRectMake(10.5, 21.3, 30.1, 40.0);
 
-    WebCore::IntRect enclosingCG = WebCore::enclosingIntRect(cgRect);
+    CyberCore::IntRect enclosingCG = CyberCore::enclosingIntRect(cgRect);
 
     checkEnclosingIntRect(enclosingCG);
 #endif
@@ -585,7 +585,7 @@ TEST(IntRect, EnclosingIntRect)
 
 TEST(IntRect, AreaAndDistances)
 {
-    WebCore::IntRect rect(10, 20, 100, 100);
+    CyberCore::IntRect rect(10, 20, 100, 100);
 
     EXPECT_EQ(10000U, rect.area().value());
 }

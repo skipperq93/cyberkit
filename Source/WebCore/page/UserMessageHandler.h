@@ -31,7 +31,7 @@
 #include "FrameDestructionObserver.h"
 #include "UserMessageHandlerDescriptor.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class DeferredPromise;
 
@@ -54,6 +54,6 @@ private:
     RefPtr<UserMessageHandlerDescriptor> m_descriptor;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(USER_MESSAGE_HANDLERS)

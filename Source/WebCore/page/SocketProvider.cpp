@@ -29,7 +29,7 @@
 #include "SocketStreamHandleImpl.h"
 #include "ThreadableWebSocketChannel.h"
 
-namespace WebCore {
+namespace CyberCore {
     
 Ref<SocketStreamHandle> SocketProvider::createSocketStreamHandle(const URL& url, SocketStreamHandleClient& client, WebSocketIdentifier, PAL::SessionID sessionID, const String& credentialPartition, const StorageSessionProvider* provider)
 {

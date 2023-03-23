@@ -24,7 +24,7 @@
  */
 
 #include "config.h"
-#include "WebKitDOMHTMLPrivate.h"
+#include "CyberKitDOMHTMLPrivate.h"
 
 #include <CyberCore/HTMLAnchorElement.h>
 #include <CyberCore/HTMLAreaElement.h>
@@ -82,66 +82,66 @@
 #include <CyberCore/HTMLTitleElement.h>
 #include <CyberCore/HTMLUListElement.h>
 #include <CyberCore/HTMLVideoElement.h>
-#include "WebKitDOMHTMLAnchorElementPrivate.h"
-#include "WebKitDOMHTMLAreaElementPrivate.h"
-#include "WebKitDOMHTMLBRElementPrivate.h"
-#include "WebKitDOMHTMLBaseElementPrivate.h"
-#include "WebKitDOMHTMLBodyElementPrivate.h"
-#include "WebKitDOMHTMLButtonElementPrivate.h"
-#include "WebKitDOMHTMLCanvasElementPrivate.h"
-#include "WebKitDOMHTMLDListElementPrivate.h"
-#include "WebKitDOMHTMLDirectoryElementPrivate.h"
-#include "WebKitDOMHTMLDivElementPrivate.h"
-#include "WebKitDOMHTMLElementPrivate.h"
-#include "WebKitDOMHTMLEmbedElementPrivate.h"
-#include "WebKitDOMHTMLFieldSetElementPrivate.h"
-#include "WebKitDOMHTMLFontElementPrivate.h"
-#include "WebKitDOMHTMLFormElementPrivate.h"
-#include "WebKitDOMHTMLFrameElementPrivate.h"
-#include "WebKitDOMHTMLFrameSetElementPrivate.h"
-#include "WebKitDOMHTMLHRElementPrivate.h"
-#include "WebKitDOMHTMLHeadElementPrivate.h"
-#include "WebKitDOMHTMLHeadingElementPrivate.h"
-#include "WebKitDOMHTMLHtmlElementPrivate.h"
-#include "WebKitDOMHTMLIFrameElementPrivate.h"
-#include "WebKitDOMHTMLImageElementPrivate.h"
-#include "WebKitDOMHTMLInputElementPrivate.h"
-#include "WebKitDOMHTMLLIElementPrivate.h"
-#include "WebKitDOMHTMLLabelElementPrivate.h"
-#include "WebKitDOMHTMLLegendElementPrivate.h"
-#include "WebKitDOMHTMLLinkElementPrivate.h"
-#include "WebKitDOMHTMLMapElementPrivate.h"
-#include "WebKitDOMHTMLMarqueeElementPrivate.h"
-#include "WebKitDOMHTMLMenuElementPrivate.h"
-#include "WebKitDOMHTMLMetaElementPrivate.h"
-#include "WebKitDOMHTMLModElementPrivate.h"
-#include "WebKitDOMHTMLOListElementPrivate.h"
-#include "WebKitDOMHTMLObjectElementPrivate.h"
-#include "WebKitDOMHTMLOptGroupElementPrivate.h"
-#include "WebKitDOMHTMLOptionElementPrivate.h"
-#include "WebKitDOMHTMLParagraphElementPrivate.h"
-#include "WebKitDOMHTMLParamElementPrivate.h"
-#include "WebKitDOMHTMLPreElementPrivate.h"
-#include "WebKitDOMHTMLQuoteElementPrivate.h"
-#include "WebKitDOMHTMLScriptElementPrivate.h"
-#include "WebKitDOMHTMLSelectElementPrivate.h"
-#include "WebKitDOMHTMLStyleElementPrivate.h"
-#include "WebKitDOMHTMLTableCaptionElementPrivate.h"
-#include "WebKitDOMHTMLTableCellElementPrivate.h"
-#include "WebKitDOMHTMLTableColElementPrivate.h"
-#include "WebKitDOMHTMLTableElementPrivate.h"
-#include "WebKitDOMHTMLTableRowElementPrivate.h"
-#include "WebKitDOMHTMLTableSectionElementPrivate.h"
-#include "WebKitDOMHTMLTextAreaElementPrivate.h"
-#include "WebKitDOMHTMLTitleElementPrivate.h"
-#include "WebKitDOMHTMLUListElementPrivate.h"
+#include "CyberKitDOMHTMLAnchorElementPrivate.h"
+#include "CyberKitDOMHTMLAreaElementPrivate.h"
+#include "CyberKitDOMHTMLBRElementPrivate.h"
+#include "CyberKitDOMHTMLBaseElementPrivate.h"
+#include "CyberKitDOMHTMLBodyElementPrivate.h"
+#include "CyberKitDOMHTMLButtonElementPrivate.h"
+#include "CyberKitDOMHTMLCanvasElementPrivate.h"
+#include "CyberKitDOMHTMLDListElementPrivate.h"
+#include "CyberKitDOMHTMLDirectoryElementPrivate.h"
+#include "CyberKitDOMHTMLDivElementPrivate.h"
+#include "CyberKitDOMHTMLElementPrivate.h"
+#include "CyberKitDOMHTMLEmbedElementPrivate.h"
+#include "CyberKitDOMHTMLFieldSetElementPrivate.h"
+#include "CyberKitDOMHTMLFontElementPrivate.h"
+#include "CyberKitDOMHTMLFormElementPrivate.h"
+#include "CyberKitDOMHTMLFrameElementPrivate.h"
+#include "CyberKitDOMHTMLFrameSetElementPrivate.h"
+#include "CyberKitDOMHTMLHRElementPrivate.h"
+#include "CyberKitDOMHTMLHeadElementPrivate.h"
+#include "CyberKitDOMHTMLHeadingElementPrivate.h"
+#include "CyberKitDOMHTMLHtmlElementPrivate.h"
+#include "CyberKitDOMHTMLIFrameElementPrivate.h"
+#include "CyberKitDOMHTMLImageElementPrivate.h"
+#include "CyberKitDOMHTMLInputElementPrivate.h"
+#include "CyberKitDOMHTMLLIElementPrivate.h"
+#include "CyberKitDOMHTMLLabelElementPrivate.h"
+#include "CyberKitDOMHTMLLegendElementPrivate.h"
+#include "CyberKitDOMHTMLLinkElementPrivate.h"
+#include "CyberKitDOMHTMLMapElementPrivate.h"
+#include "CyberKitDOMHTMLMarqueeElementPrivate.h"
+#include "CyberKitDOMHTMLMenuElementPrivate.h"
+#include "CyberKitDOMHTMLMetaElementPrivate.h"
+#include "CyberKitDOMHTMLModElementPrivate.h"
+#include "CyberKitDOMHTMLOListElementPrivate.h"
+#include "CyberKitDOMHTMLObjectElementPrivate.h"
+#include "CyberKitDOMHTMLOptGroupElementPrivate.h"
+#include "CyberKitDOMHTMLOptionElementPrivate.h"
+#include "CyberKitDOMHTMLParagraphElementPrivate.h"
+#include "CyberKitDOMHTMLParamElementPrivate.h"
+#include "CyberKitDOMHTMLPreElementPrivate.h"
+#include "CyberKitDOMHTMLQuoteElementPrivate.h"
+#include "CyberKitDOMHTMLScriptElementPrivate.h"
+#include "CyberKitDOMHTMLSelectElementPrivate.h"
+#include "CyberKitDOMHTMLStyleElementPrivate.h"
+#include "CyberKitDOMHTMLTableCaptionElementPrivate.h"
+#include "CyberKitDOMHTMLTableCellElementPrivate.h"
+#include "CyberKitDOMHTMLTableColElementPrivate.h"
+#include "CyberKitDOMHTMLTableElementPrivate.h"
+#include "CyberKitDOMHTMLTableRowElementPrivate.h"
+#include "CyberKitDOMHTMLTableSectionElementPrivate.h"
+#include "CyberKitDOMHTMLTextAreaElementPrivate.h"
+#include "CyberKitDOMHTMLTitleElementPrivate.h"
+#include "CyberKitDOMHTMLUListElementPrivate.h"
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
-namespace WebKit {
+namespace CyberKit {
 
-using namespace WebCore;
-using namespace WebCore::HTMLNames;
+using namespace CyberCore;
+using namespace CyberCore::HTMLNames;
 
 // macro(TagName, ElementName)
 
@@ -214,16 +214,16 @@ using namespace WebCore::HTMLNames;
     macro(xmp, Pre)
 
 #define DEFINE_HTML_WRAPPER(TagName, ElementName) \
-    static WebKitDOMHTMLElement* TagName##Wrapper(HTMLElement* element) \
+    static CyberKitDOMHTMLElement* TagName##Wrapper(HTMLElement* element) \
     { \
         return WEBKIT_DOM_HTML_ELEMENT(wrapHTML##ElementName##Element(static_cast<HTML##ElementName##Element*>(element))); \
     }
     FOR_EACH_HTML_TAG(DEFINE_HTML_WRAPPER)
 #undef DEFINE_HTML_WRAPPER
 
-typedef WebKitDOMHTMLElement* (*HTMLElementWrapFunction)(HTMLElement*);
+typedef CyberKitDOMHTMLElement* (*HTMLElementWrapFunction)(HTMLElement*);
 
-WebKitDOMHTMLElement* wrap(HTMLElement* element)
+CyberKitDOMHTMLElement* wrap(HTMLElement* element)
 {
     static HashMap<const QualifiedName::QualifiedNameImpl*, HTMLElementWrapFunction> map;
     if (map.isEmpty()) {

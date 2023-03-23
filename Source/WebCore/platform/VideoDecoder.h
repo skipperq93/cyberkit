@@ -31,7 +31,7 @@
 #include <wtf/Expected.h>
 #include <wtf/Span.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class VideoFrame;
 

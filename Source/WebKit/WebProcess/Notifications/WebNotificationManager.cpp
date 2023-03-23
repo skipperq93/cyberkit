@@ -26,7 +26,7 @@
 #include "config.h"
 #include "WebNotificationManager.h"
 
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebPage.h"
 #include "WebProcess.h"
 #include "WebProcessCreationParameters.h"
@@ -50,8 +50,8 @@
 #include <CyberCore/UserGestureIndicator.h>
 #endif
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 const char* WebNotificationManager::supplementName()
 {
@@ -133,7 +133,7 @@ static bool sendMessage(WebPage* page, const Function<bool(IPC::Connection&, uin
         return sendMessage(WebProcess::singleton().ensureNetworkProcessConnection().connection(), WebProcess::singleton().sessionID().toUInt64());
 #endif
 
-    std::optional<WebCore::PageIdentifier> pageIdentifier;
+    std::optional<CyberCore::PageIdentifier> pageIdentifier;
     if (page)
         pageIdentifier = page->identifier();
 #if ENABLE(SERVICE_WORKER)
@@ -292,4 +292,4 @@ void WebNotificationManager::didCloseNotifications(const Vector<UUID>& notificat
 #endif
 }
 
-} // namespace WebKit
+} // namespace CyberKit

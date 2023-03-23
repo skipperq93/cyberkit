@@ -30,7 +30,7 @@
 #include <wtf/Forward.h>
 #include <wtf/Observer.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioSampleDataSource;
 

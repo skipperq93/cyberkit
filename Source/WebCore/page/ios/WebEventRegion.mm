@@ -30,7 +30,7 @@
 
 #import "FloatQuad.h"
 
-using namespace WebCore;
+using namespace CyberCore;
 
 @interface WebEventRegion(Private)
 - (FloatQuad)quad;

@@ -51,7 +51,7 @@ namespace WTF {
 class TextStream;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class MediaPlayer;
 struct ImagePaintingOptions;
@@ -2029,82 +2029,82 @@ TextStream& operator<<(TextStream&, ItemType);
 #endif
 
 } // namespace DisplayList
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::DisplayList::ItemType> {
+template<> struct EnumTraits<CyberCore::DisplayList::ItemType> {
     using values = EnumValues<
-    WebCore::DisplayList::ItemType,
-    WebCore::DisplayList::ItemType::Save,
-    WebCore::DisplayList::ItemType::Restore,
-    WebCore::DisplayList::ItemType::Translate,
-    WebCore::DisplayList::ItemType::Rotate,
-    WebCore::DisplayList::ItemType::Scale,
-    WebCore::DisplayList::ItemType::SetCTM,
-    WebCore::DisplayList::ItemType::ConcatenateCTM,
-    WebCore::DisplayList::ItemType::SetInlineFillColor,
-    WebCore::DisplayList::ItemType::SetInlineStrokeColor,
-    WebCore::DisplayList::ItemType::SetStrokeThickness,
-    WebCore::DisplayList::ItemType::SetState,
-    WebCore::DisplayList::ItemType::SetLineCap,
-    WebCore::DisplayList::ItemType::SetLineDash,
-    WebCore::DisplayList::ItemType::SetLineJoin,
-    WebCore::DisplayList::ItemType::SetMiterLimit,
-    WebCore::DisplayList::ItemType::ClearShadow,
-    WebCore::DisplayList::ItemType::Clip,
-    WebCore::DisplayList::ItemType::ClipOut,
-    WebCore::DisplayList::ItemType::ClipToImageBuffer,
-    WebCore::DisplayList::ItemType::ClipOutToPath,
-    WebCore::DisplayList::ItemType::ClipPath,
-    WebCore::DisplayList::ItemType::DrawGlyphs,
-    WebCore::DisplayList::ItemType::DrawDecomposedGlyphs,
-    WebCore::DisplayList::ItemType::DrawImageBuffer,
-    WebCore::DisplayList::ItemType::DrawNativeImage,
-    WebCore::DisplayList::ItemType::DrawSystemImage,
-    WebCore::DisplayList::ItemType::DrawPattern,
-    WebCore::DisplayList::ItemType::DrawRect,
-    WebCore::DisplayList::ItemType::DrawLine,
-    WebCore::DisplayList::ItemType::DrawLinesForText,
-    WebCore::DisplayList::ItemType::DrawDotsForDocumentMarker,
-    WebCore::DisplayList::ItemType::DrawEllipse,
-    WebCore::DisplayList::ItemType::DrawPath,
-    WebCore::DisplayList::ItemType::DrawFocusRingPath,
-    WebCore::DisplayList::ItemType::DrawFocusRingRects,
-    WebCore::DisplayList::ItemType::FillRect,
-    WebCore::DisplayList::ItemType::FillRectWithColor,
-    WebCore::DisplayList::ItemType::FillRectWithGradient,
-    WebCore::DisplayList::ItemType::FillCompositedRect,
-    WebCore::DisplayList::ItemType::FillRoundedRect,
-    WebCore::DisplayList::ItemType::FillRectWithRoundedHole,
+    CyberCore::DisplayList::ItemType,
+    CyberCore::DisplayList::ItemType::Save,
+    CyberCore::DisplayList::ItemType::Restore,
+    CyberCore::DisplayList::ItemType::Translate,
+    CyberCore::DisplayList::ItemType::Rotate,
+    CyberCore::DisplayList::ItemType::Scale,
+    CyberCore::DisplayList::ItemType::SetCTM,
+    CyberCore::DisplayList::ItemType::ConcatenateCTM,
+    CyberCore::DisplayList::ItemType::SetInlineFillColor,
+    CyberCore::DisplayList::ItemType::SetInlineStrokeColor,
+    CyberCore::DisplayList::ItemType::SetStrokeThickness,
+    CyberCore::DisplayList::ItemType::SetState,
+    CyberCore::DisplayList::ItemType::SetLineCap,
+    CyberCore::DisplayList::ItemType::SetLineDash,
+    CyberCore::DisplayList::ItemType::SetLineJoin,
+    CyberCore::DisplayList::ItemType::SetMiterLimit,
+    CyberCore::DisplayList::ItemType::ClearShadow,
+    CyberCore::DisplayList::ItemType::Clip,
+    CyberCore::DisplayList::ItemType::ClipOut,
+    CyberCore::DisplayList::ItemType::ClipToImageBuffer,
+    CyberCore::DisplayList::ItemType::ClipOutToPath,
+    CyberCore::DisplayList::ItemType::ClipPath,
+    CyberCore::DisplayList::ItemType::DrawGlyphs,
+    CyberCore::DisplayList::ItemType::DrawDecomposedGlyphs,
+    CyberCore::DisplayList::ItemType::DrawImageBuffer,
+    CyberCore::DisplayList::ItemType::DrawNativeImage,
+    CyberCore::DisplayList::ItemType::DrawSystemImage,
+    CyberCore::DisplayList::ItemType::DrawPattern,
+    CyberCore::DisplayList::ItemType::DrawRect,
+    CyberCore::DisplayList::ItemType::DrawLine,
+    CyberCore::DisplayList::ItemType::DrawLinesForText,
+    CyberCore::DisplayList::ItemType::DrawDotsForDocumentMarker,
+    CyberCore::DisplayList::ItemType::DrawEllipse,
+    CyberCore::DisplayList::ItemType::DrawPath,
+    CyberCore::DisplayList::ItemType::DrawFocusRingPath,
+    CyberCore::DisplayList::ItemType::DrawFocusRingRects,
+    CyberCore::DisplayList::ItemType::FillRect,
+    CyberCore::DisplayList::ItemType::FillRectWithColor,
+    CyberCore::DisplayList::ItemType::FillRectWithGradient,
+    CyberCore::DisplayList::ItemType::FillCompositedRect,
+    CyberCore::DisplayList::ItemType::FillRoundedRect,
+    CyberCore::DisplayList::ItemType::FillRectWithRoundedHole,
 #if ENABLE(INLINE_PATH_DATA)
-    WebCore::DisplayList::ItemType::FillLine,
-    WebCore::DisplayList::ItemType::FillArc,
-    WebCore::DisplayList::ItemType::FillQuadCurve,
-    WebCore::DisplayList::ItemType::FillBezierCurve,
+    CyberCore::DisplayList::ItemType::FillLine,
+    CyberCore::DisplayList::ItemType::FillArc,
+    CyberCore::DisplayList::ItemType::FillQuadCurve,
+    CyberCore::DisplayList::ItemType::FillBezierCurve,
 #endif
-    WebCore::DisplayList::ItemType::FillPath,
-    WebCore::DisplayList::ItemType::FillEllipse,
+    CyberCore::DisplayList::ItemType::FillPath,
+    CyberCore::DisplayList::ItemType::FillEllipse,
 #if ENABLE(VIDEO)
-    WebCore::DisplayList::ItemType::PaintFrameForMedia,
+    CyberCore::DisplayList::ItemType::PaintFrameForMedia,
 #endif
-    WebCore::DisplayList::ItemType::StrokeRect,
-    WebCore::DisplayList::ItemType::StrokeLine,
+    CyberCore::DisplayList::ItemType::StrokeRect,
+    CyberCore::DisplayList::ItemType::StrokeLine,
 #if ENABLE(INLINE_PATH_DATA)
-    WebCore::DisplayList::ItemType::StrokeArc,
-    WebCore::DisplayList::ItemType::StrokeQuadCurve,
-    WebCore::DisplayList::ItemType::StrokeBezierCurve,
+    CyberCore::DisplayList::ItemType::StrokeArc,
+    CyberCore::DisplayList::ItemType::StrokeQuadCurve,
+    CyberCore::DisplayList::ItemType::StrokeBezierCurve,
 #endif
-    WebCore::DisplayList::ItemType::StrokePath,
-    WebCore::DisplayList::ItemType::StrokeEllipse,
-    WebCore::DisplayList::ItemType::ClearRect,
-    WebCore::DisplayList::ItemType::BeginTransparencyLayer,
-    WebCore::DisplayList::ItemType::EndTransparencyLayer,
+    CyberCore::DisplayList::ItemType::StrokePath,
+    CyberCore::DisplayList::ItemType::StrokeEllipse,
+    CyberCore::DisplayList::ItemType::ClearRect,
+    CyberCore::DisplayList::ItemType::BeginTransparencyLayer,
+    CyberCore::DisplayList::ItemType::EndTransparencyLayer,
 #if USE(CG)
-    WebCore::DisplayList::ItemType::ApplyStrokePattern,
-    WebCore::DisplayList::ItemType::ApplyFillPattern,
+    CyberCore::DisplayList::ItemType::ApplyStrokePattern,
+    CyberCore::DisplayList::ItemType::ApplyFillPattern,
 #endif
-    WebCore::DisplayList::ItemType::ApplyDeviceScaleFactor
+    CyberCore::DisplayList::ItemType::ApplyDeviceScaleFactor
     >;
 
 };

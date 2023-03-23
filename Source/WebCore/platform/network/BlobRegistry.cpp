@@ -29,7 +29,7 @@
 #include "PlatformStrategies.h"
 #include <wtf/MainThread.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 BlobRegistry& blobRegistry()
 {

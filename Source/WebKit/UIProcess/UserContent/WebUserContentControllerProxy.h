@@ -51,7 +51,7 @@ class UserScript;
 class UserStyleSheet;
 }
 
-namespace WebCore {
+namespace CyberCore {
 class SecurityOriginData;
 }
 

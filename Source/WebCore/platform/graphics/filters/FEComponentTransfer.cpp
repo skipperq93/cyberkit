@@ -33,7 +33,7 @@
 #include "FEComponentTransferCoreImageApplier.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<FEComponentTransfer> FEComponentTransfer::create(const ComponentTransferFunction& redFunction, const ComponentTransferFunction& greenFunction, const ComponentTransferFunction& blueFunction, const ComponentTransferFunction& alphaFunction)
 {
@@ -213,4 +213,4 @@ TextStream& FEComponentTransfer::externalRepresentation(TextStream& ts, FilterRe
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

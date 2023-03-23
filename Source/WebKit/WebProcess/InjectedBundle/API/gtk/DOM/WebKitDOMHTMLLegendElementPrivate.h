@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -17,16 +17,16 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitDOMHTMLLegendElementPrivate_h
-#define WebKitDOMHTMLLegendElementPrivate_h
+#ifndef CyberKitDOMHTMLLegendElementPrivate_h
+#define CyberKitDOMHTMLLegendElementPrivate_h
 
 #include <CyberCore/HTMLLegendElement.h>
-#include <webkitdom/WebKitDOMHTMLLegendElement.h>
+#include <webkitdom/CyberKitDOMHTMLLegendElement.h>
 
-namespace WebKit {
-WebKitDOMHTMLLegendElement* wrapHTMLLegendElement(WebCore::HTMLLegendElement*);
-WebKitDOMHTMLLegendElement* kit(WebCore::HTMLLegendElement*);
-WebCore::HTMLLegendElement* core(WebKitDOMHTMLLegendElement*);
-} // namespace WebKit
+namespace CyberKit {
+CyberKitDOMHTMLLegendElement* wrapHTMLLegendElement(CyberCore::HTMLLegendElement*);
+CyberKitDOMHTMLLegendElement* kit(CyberCore::HTMLLegendElement*);
+CyberCore::HTMLLegendElement* core(CyberKitDOMHTMLLegendElement*);
+} // namespace CyberKit
 
-#endif /* WebKitDOMHTMLLegendElementPrivate_h */
+#endif /* CyberKitDOMHTMLLegendElementPrivate_h */

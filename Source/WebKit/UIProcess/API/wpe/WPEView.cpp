@@ -62,7 +62,7 @@ View::View(struct wpe_view_backend* backend, const API::PageConfiguration& baseC
 #endif
     , m_pageClient(makeUnique<PageClientImpl>(*this))
     , m_size { 800, 600 }
-    , m_viewStateFlags { WebCore::ActivityState::WindowIsActive, WebCore::ActivityState::IsFocused, WebCore::ActivityState::IsVisible, WebCore::ActivityState::IsInWindow }
+    , m_viewStateFlags { CyberCore::ActivityState::WindowIsActive, CyberCore::ActivityState::IsFocused, CyberCore::ActivityState::IsVisible, CyberCore::ActivityState::IsInWindow }
     , m_backend(backend)
 {
     ASSERT(m_backend);
@@ -93,7 +93,7 @@ View::View(struct wpe_view_backend* backend, const API::PageConfiguration& baseC
         [](void* data, uint32_t width, uint32_t height)
         {
             auto& view = *reinterpret_cast<View*>(data);
-            view.setSize(WebCore::IntSize(width, height));
+            view.setSize(CyberCore::IntSize(width, height));
         },
         // frame_displayed
         [](void* data)
@@ -105,15 +105,15 @@ View::View(struct wpe_view_backend* backend, const API::PageConfiguration& baseC
         [](void* data, uint32_t state)
         {
             auto& view = *reinterpret_cast<View*>(data);
-            OptionSet<WebCore::ActivityState::Flag> flags;
+            OptionSet<CyberCore::ActivityState::Flag> flags;
             if (state & wpe_view_activity_state_visible)
-                flags.add(WebCore::ActivityState::IsVisible);
+                flags.add(CyberCore::ActivityState::IsVisible);
             if (state & wpe_view_activity_state_focused) {
-                flags.add(WebCore::ActivityState::IsFocused);
-                flags.add(WebCore::ActivityState::WindowIsActive);
+                flags.add(CyberCore::ActivityState::IsFocused);
+                flags.add(CyberCore::ActivityState::WindowIsActive);
             }
             if (state & wpe_view_activity_state_in_window)
-                flags.add(WebCore::ActivityState::IsInWindow);
+                flags.add(CyberCore::ActivityState::IsInWindow);
             view.setViewState(flags);
         },
 #if WPE_CHECK_VERSION(1, 3, 0)
@@ -388,20 +388,20 @@ void View::selectionDidChange()
     }
 }
 
-void View::setSize(const WebCore::IntSize& size)
+void View::setSize(const CyberCore::IntSize& size)
 {
     m_size = size;
     if (m_pageProxy->drawingArea())
         m_pageProxy->drawingArea()->setSize(size);
 }
 
-void View::setViewState(OptionSet<WebCore::ActivityState::Flag> flags)
+void View::setViewState(OptionSet<CyberCore::ActivityState::Flag> flags)
 {
     auto changedFlags = m_viewStateFlags ^ flags;
     m_viewStateFlags = flags;
 
-    if (changedFlags.contains(WebCore::ActivityState::IsFocused)) {
-        if (m_viewStateFlags.contains(WebCore::ActivityState::IsFocused))
+    if (changedFlags.contains(CyberCore::ActivityState::IsFocused)) {
+        if (m_viewStateFlags.contains(CyberCore::ActivityState::IsFocused))
             m_inputMethodFilter.notifyFocusedIn();
         else
             m_inputMethodFilter.notifyFocusedOut();
@@ -410,7 +410,7 @@ void View::setViewState(OptionSet<WebCore::ActivityState::Flag> flags)
     if (changedFlags)
         m_pageProxy->activityStateDidChange(changedFlags);
 
-    if (!viewsVector().isEmpty() && viewState().contains(WebCore::ActivityState::IsVisible)) {
+    if (!viewsVector().isEmpty() && viewState().contains(CyberCore::ActivityState::IsVisible)) {
         if (viewsVector().first() != this) {
             viewsVector().removeAll(this);
             viewsVector().insert(0, this);
@@ -427,12 +427,12 @@ void View::handleKeyboardEvent(struct wpe_input_keyboard_event* event)
     page().handleKeyboardEvent(WebKit::NativeWebKeyboardEvent(event, event->pressed ? filterResult.keyText : String(), NativeWebKeyboardEvent::HandledByInputMethod::No, std::nullopt, std::nullopt));
 }
 
-void View::synthesizeCompositionKeyPress(const String& text, std::optional<Vector<WebCore::CompositionUnderline>>&& underlines, std::optional<EditingRange>&& selectionRange)
+void View::synthesizeCompositionKeyPress(const String& text, std::optional<Vector<CyberCore::CompositionUnderline>>&& underlines, std::optional<EditingRange>&& selectionRange)
 {
     // The Windows composition key event code is 299 or VK_PROCESSKEY. We need to
     // emit this code for web compatibility reasons when key events trigger
     // composition results. WPE doesn't have an equivalent, so we send VoidSymbol
-    // here to WebCore. PlatformKeyEvent converts this code into VK_PROCESSKEY.
+    // here to CyberCore. PlatformKeyEvent converts this code into VK_PROCESSKEY.
     static struct wpe_input_keyboard_event event = { 0, WPE_KEY_VoidSymbol, 0, true, 0 };
     page().handleKeyboardEvent(WebKit::NativeWebKeyboardEvent(&event, text, NativeWebKeyboardEvent::HandledByInputMethod::Yes, WTFMove(underlines), WTFMove(selectionRange)));
 }
@@ -470,20 +470,20 @@ WebKit::WebPageProxy* View::platformWebPageProxyForGamepadInput()
     if (views.isEmpty())
         return nullptr;
 
-    struct wpe_view_backend* viewBackend = WebCore::GamepadProviderLibWPE::singleton().inputView();
+    struct wpe_view_backend* viewBackend = CyberCore::GamepadProviderLibWPE::singleton().inputView();
 
     size_t index = notFound;
 
     if (viewBackend) {
         index = views.findIf([&](View* view) {
             return view->backend() == viewBackend
-                && view->viewState().contains(WebCore::ActivityState::IsVisible)
-                && view->viewState().contains(WebCore::ActivityState::IsFocused);
+                && view->viewState().contains(CyberCore::ActivityState::IsVisible)
+                && view->viewState().contains(CyberCore::ActivityState::IsFocused);
         });
     } else {
         index = views.findIf([](View* view) {
-            return view->viewState().contains(WebCore::ActivityState::IsVisible)
-                && view->viewState().contains(WebCore::ActivityState::IsFocused);
+            return view->viewState().contains(CyberCore::ActivityState::IsVisible)
+                && view->viewState().contains(CyberCore::ActivityState::IsFocused);
         });
     }
 

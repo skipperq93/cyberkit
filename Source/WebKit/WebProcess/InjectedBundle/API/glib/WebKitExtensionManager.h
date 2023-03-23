@@ -25,35 +25,35 @@
 #include <wtf/Vector.h>
 #include <wtf/glib/GRefPtr.h>
 
-typedef struct _WebKitWebExtension WebKitWebExtension;
+typedef struct _CyberKitWebExtension CyberKitWebExtension;
 
 namespace API {
 class Object;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class InjectedBundle;
 
-class WebKitExtensionManager {
-    WTF_MAKE_NONCOPYABLE(WebKitExtensionManager);
+class CyberKitExtensionManager {
+    WTF_MAKE_NONCOPYABLE(CyberKitExtensionManager);
 public:
-    __attribute__((visibility("default"))) static WebKitExtensionManager& singleton();
+    __attribute__((visibility("default"))) static CyberKitExtensionManager& singleton();
 
     __attribute__((visibility("default"))) void initialize(InjectedBundle*, API::Object*);
 
-    WebKitWebExtension* extension() const { return m_extension.get(); }
+    CyberKitWebExtension* extension() const { return m_extension.get(); }
 
 private:
-    WebKitExtensionManager();
+    CyberKitExtensionManager();
 
     void scanModules(const String&, Vector<String>&);
     bool initializeWebExtension(Module* extensionModule, GVariant* userData);
 
     Vector<Module*> m_extensionModules;
-    GRefPtr<WebKitWebExtension> m_extension;
+    GRefPtr<CyberKitWebExtension> m_extension;
 
-    friend NeverDestroyed<WebKitExtensionManager>;
+    friend NeverDestroyed<CyberKitExtensionManager>;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

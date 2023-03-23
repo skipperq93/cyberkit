@@ -50,7 +50,7 @@
 
 namespace WebKit {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 static HashMap<UserContentControllerIdentifier, WebUserContentControllerProxy*>& webUserContentControllerProxies()
 {
@@ -341,12 +341,12 @@ void WebUserContentControllerProxy::didPostMessage(WebPageProxyIdentifier pagePr
         return;
 
     if (!handler->client().supportsAsyncReply()) {
-        handler->client().didPostMessage(*page, WTFMove(frameInfoData), handler->world(),  WebCore::SerializedScriptValue::createFromWireBytes({ dataReference }));
+        handler->client().didPostMessage(*page, WTFMove(frameInfoData), handler->world(),  CyberCore::SerializedScriptValue::createFromWireBytes({ dataReference }));
         reply({ }, { });
         return;
     }
 
-    handler->client().didPostMessageWithAsyncReply(*page, WTFMove(frameInfoData), handler->world(),  WebCore::SerializedScriptValue::createFromWireBytes({ dataReference }), [reply = WTFMove(reply)](API::SerializedScriptValue* value, const String& errorMessage) mutable {
+    handler->client().didPostMessageWithAsyncReply(*page, WTFMove(frameInfoData), handler->world(),  CyberCore::SerializedScriptValue::createFromWireBytes({ dataReference }), [reply = WTFMove(reply)](API::SerializedScriptValue* value, const String& errorMessage) mutable {
         if (errorMessage.isNull()) {
             ASSERT(value);
             reply({ value->internalRepresentation().wireBytes() }, { });

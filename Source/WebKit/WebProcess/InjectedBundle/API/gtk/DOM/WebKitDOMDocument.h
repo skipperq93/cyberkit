@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -21,28 +21,28 @@
 #error "Only <webkitdom/webkitdom.h> can be included directly."
 #endif
 
-#ifndef WebKitDOMDocument_h
-#define WebKitDOMDocument_h
+#ifndef CyberKitDOMDocument_h
+#define CyberKitDOMDocument_h
 
 #include <glib-object.h>
-#include <webkitdom/WebKitDOMNode.h>
+#include <webkitdom/CyberKitDOMNode.h>
 #include <webkitdom/webkitdomdefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_DOM_TYPE_DOCUMENT            (webkit_dom_document_get_type())
-#define WEBKIT_DOM_DOCUMENT(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_DOCUMENT, WebKitDOMDocument))
-#define WEBKIT_DOM_DOCUMENT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_DOCUMENT, WebKitDOMDocumentClass)
+#define WEBKIT_DOM_DOCUMENT(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_DOCUMENT, CyberKitDOMDocument))
+#define WEBKIT_DOM_DOCUMENT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_DOCUMENT, CyberKitDOMDocumentClass)
 #define WEBKIT_DOM_IS_DOCUMENT(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_DOM_TYPE_DOCUMENT))
 #define WEBKIT_DOM_IS_DOCUMENT_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_DOM_TYPE_DOCUMENT))
-#define WEBKIT_DOM_DOCUMENT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_DOCUMENT, WebKitDOMDocumentClass))
+#define WEBKIT_DOM_DOCUMENT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_DOCUMENT, CyberKitDOMDocumentClass))
 
-struct _WebKitDOMDocument {
-    WebKitDOMNode parent_instance;
+struct _CyberKitDOMDocument {
+    CyberKitDOMNode parent_instance;
 };
 
-struct _WebKitDOMDocumentClass {
-    WebKitDOMNodeClass parent_class;
+struct _CyberKitDOMDocumentClass {
+    CyberKitDOMNodeClass parent_class;
 };
 
 WEBKIT_DEPRECATED GType
@@ -50,291 +50,291 @@ webkit_dom_document_get_type(void);
 
 /**
  * webkit_dom_document_create_element:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  * @tagName: A #gchar
  * @error: #GError
  *
- * Returns: (transfer none): A #WebKitDOMElement
+ * Returns: (transfer none): A #CyberKitDOMElement
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMElement*
-webkit_dom_document_create_element(WebKitDOMDocument* self, const gchar* tagName, GError** error);
+WEBKIT_DEPRECATED CyberKitDOMElement*
+webkit_dom_document_create_element(CyberKitDOMDocument* self, const gchar* tagName, GError** error);
 
 /**
  * webkit_dom_document_create_document_fragment:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  *
- * Returns: (transfer none): A #WebKitDOMDocumentFragment
+ * Returns: (transfer none): A #CyberKitDOMDocumentFragment
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMDocumentFragment*
-webkit_dom_document_create_document_fragment(WebKitDOMDocument* self);
+WEBKIT_DEPRECATED CyberKitDOMDocumentFragment*
+webkit_dom_document_create_document_fragment(CyberKitDOMDocument* self);
 
 /**
  * webkit_dom_document_create_text_node:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  * @data: A #gchar
  *
- * Returns: (transfer none): A #WebKitDOMText
+ * Returns: (transfer none): A #CyberKitDOMText
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMText*
-webkit_dom_document_create_text_node(WebKitDOMDocument* self, const gchar* data);
+WEBKIT_DEPRECATED CyberKitDOMText*
+webkit_dom_document_create_text_node(CyberKitDOMDocument* self, const gchar* data);
 
 /**
  * webkit_dom_document_create_comment:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  * @data: A #gchar
  *
- * Returns: (transfer none): A #WebKitDOMComment
+ * Returns: (transfer none): A #CyberKitDOMComment
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMComment*
-webkit_dom_document_create_comment(WebKitDOMDocument* self, const gchar* data);
+WEBKIT_DEPRECATED CyberKitDOMComment*
+webkit_dom_document_create_comment(CyberKitDOMDocument* self, const gchar* data);
 
 /**
  * webkit_dom_document_create_cdata_section:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  * @data: A #gchar
  * @error: #GError
  *
- * Returns: (transfer none): A #WebKitDOMCDATASection
+ * Returns: (transfer none): A #CyberKitDOMCDATASection
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMCDATASection*
-webkit_dom_document_create_cdata_section(WebKitDOMDocument* self, const gchar* data, GError** error);
+WEBKIT_DEPRECATED CyberKitDOMCDATASection*
+webkit_dom_document_create_cdata_section(CyberKitDOMDocument* self, const gchar* data, GError** error);
 
 /**
  * webkit_dom_document_create_processing_instruction:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  * @target: A #gchar
  * @data: A #gchar
  * @error: #GError
  *
- * Returns: (transfer none): A #WebKitDOMProcessingInstruction
+ * Returns: (transfer none): A #CyberKitDOMProcessingInstruction
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMProcessingInstruction*
-webkit_dom_document_create_processing_instruction(WebKitDOMDocument* self, const gchar* target, const gchar* data, GError** error);
+WEBKIT_DEPRECATED CyberKitDOMProcessingInstruction*
+webkit_dom_document_create_processing_instruction(CyberKitDOMDocument* self, const gchar* target, const gchar* data, GError** error);
 
 /**
  * webkit_dom_document_create_attribute:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  * @name: A #gchar
  * @error: #GError
  *
- * Returns: (transfer none): A #WebKitDOMAttr
+ * Returns: (transfer none): A #CyberKitDOMAttr
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMAttr*
-webkit_dom_document_create_attribute(WebKitDOMDocument* self, const gchar* name, GError** error);
+WEBKIT_DEPRECATED CyberKitDOMAttr*
+webkit_dom_document_create_attribute(CyberKitDOMDocument* self, const gchar* name, GError** error);
 
 /**
  * webkit_dom_document_get_elements_by_tag_name_as_html_collection:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  * @tagname: A #gchar
  *
- * Returns: (transfer full): A #WebKitDOMHTMLCollection
+ * Returns: (transfer full): A #CyberKitDOMHTMLCollection
  *
  * Since: 2.12
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMHTMLCollection*
-webkit_dom_document_get_elements_by_tag_name_as_html_collection(WebKitDOMDocument* self, const gchar* tagname);
+WEBKIT_DEPRECATED CyberKitDOMHTMLCollection*
+webkit_dom_document_get_elements_by_tag_name_as_html_collection(CyberKitDOMDocument* self, const gchar* tagname);
 
 /**
  * webkit_dom_document_import_node:
- * @self: A #WebKitDOMDocument
- * @importedNode: A #WebKitDOMNode
+ * @self: A #CyberKitDOMDocument
+ * @importedNode: A #CyberKitDOMNode
  * @deep: A #gboolean
  * @error: #GError
  *
- * Returns: (transfer none): A #WebKitDOMNode
+ * Returns: (transfer none): A #CyberKitDOMNode
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMNode*
-webkit_dom_document_import_node(WebKitDOMDocument* self, WebKitDOMNode* importedNode, gboolean deep, GError** error);
+WEBKIT_DEPRECATED CyberKitDOMNode*
+webkit_dom_document_import_node(CyberKitDOMDocument* self, CyberKitDOMNode* importedNode, gboolean deep, GError** error);
 
 /**
  * webkit_dom_document_create_element_ns:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  * @namespaceURI: (allow-none): A #gchar
  * @qualifiedName: A #gchar
  * @error: #GError
  *
- * Returns: (transfer none): A #WebKitDOMElement
+ * Returns: (transfer none): A #CyberKitDOMElement
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMElement*
-webkit_dom_document_create_element_ns(WebKitDOMDocument* self, const gchar* namespaceURI, const gchar* qualifiedName, GError** error);
+WEBKIT_DEPRECATED CyberKitDOMElement*
+webkit_dom_document_create_element_ns(CyberKitDOMDocument* self, const gchar* namespaceURI, const gchar* qualifiedName, GError** error);
 
 /**
  * webkit_dom_document_create_attribute_ns:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  * @namespaceURI: (allow-none): A #gchar
  * @qualifiedName: A #gchar
  * @error: #GError
  *
- * Returns: (transfer none): A #WebKitDOMAttr
+ * Returns: (transfer none): A #CyberKitDOMAttr
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMAttr*
-webkit_dom_document_create_attribute_ns(WebKitDOMDocument* self, const gchar* namespaceURI, const gchar* qualifiedName, GError** error);
+WEBKIT_DEPRECATED CyberKitDOMAttr*
+webkit_dom_document_create_attribute_ns(CyberKitDOMDocument* self, const gchar* namespaceURI, const gchar* qualifiedName, GError** error);
 
 /**
  * webkit_dom_document_get_elements_by_tag_name_ns_as_html_collection:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  * @namespaceURI: A #gchar
  * @localName: A #gchar
  *
- * Returns: (transfer full): A #WebKitDOMHTMLCollection
+ * Returns: (transfer full): A #CyberKitDOMHTMLCollection
  *
  * Since: 2.12
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMHTMLCollection*
-webkit_dom_document_get_elements_by_tag_name_ns_as_html_collection(WebKitDOMDocument* self, const gchar* namespaceURI, const gchar* localName);
+WEBKIT_DEPRECATED CyberKitDOMHTMLCollection*
+webkit_dom_document_get_elements_by_tag_name_ns_as_html_collection(CyberKitDOMDocument* self, const gchar* namespaceURI, const gchar* localName);
 
 /**
  * webkit_dom_document_adopt_node:
- * @self: A #WebKitDOMDocument
- * @source: A #WebKitDOMNode
+ * @self: A #CyberKitDOMDocument
+ * @source: A #CyberKitDOMNode
  * @error: #GError
  *
- * Returns: (transfer none): A #WebKitDOMNode
+ * Returns: (transfer none): A #CyberKitDOMNode
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMNode*
-webkit_dom_document_adopt_node(WebKitDOMDocument* self, WebKitDOMNode* source, GError** error);
+WEBKIT_DEPRECATED CyberKitDOMNode*
+webkit_dom_document_adopt_node(CyberKitDOMDocument* self, CyberKitDOMNode* source, GError** error);
 
 /**
  * webkit_dom_document_create_event:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  * @eventType: A #gchar
  * @error: #GError
  *
- * Returns: (transfer full): A #WebKitDOMEvent
+ * Returns: (transfer full): A #CyberKitDOMEvent
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMEvent*
-webkit_dom_document_create_event(WebKitDOMDocument* self, const gchar* eventType, GError** error);
+WEBKIT_DEPRECATED CyberKitDOMEvent*
+webkit_dom_document_create_event(CyberKitDOMDocument* self, const gchar* eventType, GError** error);
 
 /**
  * webkit_dom_document_create_range:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  *
- * Returns: (transfer full): A #WebKitDOMRange
+ * Returns: (transfer full): A #CyberKitDOMRange
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMRange*
-webkit_dom_document_create_range(WebKitDOMDocument* self);
+WEBKIT_DEPRECATED CyberKitDOMRange*
+webkit_dom_document_create_range(CyberKitDOMDocument* self);
 
 /**
  * webkit_dom_document_create_node_iterator:
- * @self: A #WebKitDOMDocument
- * @root: A #WebKitDOMNode
+ * @self: A #CyberKitDOMDocument
+ * @root: A #CyberKitDOMNode
  * @whatToShow: A #gulong
- * @filter: (allow-none): A #WebKitDOMNodeFilter
+ * @filter: (allow-none): A #CyberKitDOMNodeFilter
  * @expandEntityReferences: A #gboolean
  * @error: #GError
  *
- * Returns: (transfer full): A #WebKitDOMNodeIterator
+ * Returns: (transfer full): A #CyberKitDOMNodeIterator
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMNodeIterator*
-webkit_dom_document_create_node_iterator(WebKitDOMDocument* self, WebKitDOMNode* root, gulong whatToShow, WebKitDOMNodeFilter* filter, gboolean expandEntityReferences, GError** error);
+WEBKIT_DEPRECATED CyberKitDOMNodeIterator*
+webkit_dom_document_create_node_iterator(CyberKitDOMDocument* self, CyberKitDOMNode* root, gulong whatToShow, CyberKitDOMNodeFilter* filter, gboolean expandEntityReferences, GError** error);
 
 /**
  * webkit_dom_document_create_tree_walker:
- * @self: A #WebKitDOMDocument
- * @root: A #WebKitDOMNode
+ * @self: A #CyberKitDOMDocument
+ * @root: A #CyberKitDOMNode
  * @whatToShow: A #gulong
- * @filter: (allow-none): A #WebKitDOMNodeFilter
+ * @filter: (allow-none): A #CyberKitDOMNodeFilter
  * @expandEntityReferences: A #gboolean
  * @error: #GError
  *
- * Returns: (transfer full): A #WebKitDOMTreeWalker
+ * Returns: (transfer full): A #CyberKitDOMTreeWalker
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMTreeWalker*
-webkit_dom_document_create_tree_walker(WebKitDOMDocument* self, WebKitDOMNode* root, gulong whatToShow, WebKitDOMNodeFilter* filter, gboolean expandEntityReferences, GError** error);
+WEBKIT_DEPRECATED CyberKitDOMTreeWalker*
+webkit_dom_document_create_tree_walker(CyberKitDOMDocument* self, CyberKitDOMNode* root, gulong whatToShow, CyberKitDOMNodeFilter* filter, gboolean expandEntityReferences, GError** error);
 
 /**
  * webkit_dom_document_get_override_style:
- * @self: A #WebKitDOMDocument
- * @element: A #WebKitDOMElement
+ * @self: A #CyberKitDOMDocument
+ * @element: A #CyberKitDOMElement
  * @pseudoElement: (allow-none): A #gchar
  *
- * Returns: (transfer full): A #WebKitDOMCSSStyleDeclaration
+ * Returns: (transfer full): A #CyberKitDOMCSSStyleDeclaration
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMCSSStyleDeclaration*
-webkit_dom_document_get_override_style(WebKitDOMDocument* self, WebKitDOMElement* element, const gchar* pseudoElement);
+WEBKIT_DEPRECATED CyberKitDOMCSSStyleDeclaration*
+webkit_dom_document_get_override_style(CyberKitDOMDocument* self, CyberKitDOMElement* element, const gchar* pseudoElement);
 
 /**
  * webkit_dom_document_create_expression:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  * @expression: A #gchar
- * @resolver: A #WebKitDOMXPathNSResolver
+ * @resolver: A #CyberKitDOMXPathNSResolver
  * @error: #GError
  *
- * Returns: (transfer full): A #WebKitDOMXPathExpression
+ * Returns: (transfer full): A #CyberKitDOMXPathExpression
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMXPathExpression*
-webkit_dom_document_create_expression(WebKitDOMDocument* self, const gchar* expression, WebKitDOMXPathNSResolver* resolver, GError** error);
+WEBKIT_DEPRECATED CyberKitDOMXPathExpression*
+webkit_dom_document_create_expression(CyberKitDOMDocument* self, const gchar* expression, CyberKitDOMXPathNSResolver* resolver, GError** error);
 
 /**
  * webkit_dom_document_create_ns_resolver:
- * @self: A #WebKitDOMDocument
- * @nodeResolver: A #WebKitDOMNode
+ * @self: A #CyberKitDOMDocument
+ * @nodeResolver: A #CyberKitDOMNode
  *
- * Returns: (transfer full): A #WebKitDOMXPathNSResolver
+ * Returns: (transfer full): A #CyberKitDOMXPathNSResolver
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMXPathNSResolver*
-webkit_dom_document_create_ns_resolver(WebKitDOMDocument* self, WebKitDOMNode* nodeResolver);
+WEBKIT_DEPRECATED CyberKitDOMXPathNSResolver*
+webkit_dom_document_create_ns_resolver(CyberKitDOMDocument* self, CyberKitDOMNode* nodeResolver);
 
 /**
  * webkit_dom_document_evaluate:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  * @expression: A #gchar
- * @contextNode: A #WebKitDOMNode
- * @resolver: (allow-none): A #WebKitDOMXPathNSResolver
+ * @contextNode: A #CyberKitDOMNode
+ * @resolver: (allow-none): A #CyberKitDOMXPathNSResolver
  * @type: A #gushort
- * @inResult: (allow-none): A #WebKitDOMXPathResult
+ * @inResult: (allow-none): A #CyberKitDOMXPathResult
  * @error: #GError
  *
- * Returns: (transfer full): A #WebKitDOMXPathResult
+ * Returns: (transfer full): A #CyberKitDOMXPathResult
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMXPathResult*
-webkit_dom_document_evaluate(WebKitDOMDocument* self, const gchar* expression, WebKitDOMNode* contextNode, WebKitDOMXPathNSResolver* resolver, gushort type, WebKitDOMXPathResult* inResult, GError** error);
+WEBKIT_DEPRECATED CyberKitDOMXPathResult*
+webkit_dom_document_evaluate(CyberKitDOMDocument* self, const gchar* expression, CyberKitDOMNode* contextNode, CyberKitDOMXPathNSResolver* resolver, gushort type, CyberKitDOMXPathResult* inResult, GError** error);
 
 /**
  * webkit_dom_document_exec_command:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  * @command: A #gchar
  * @userInterface: A #gboolean
  * @value: A #gchar
@@ -344,11 +344,11 @@ webkit_dom_document_evaluate(WebKitDOMDocument* self, const gchar* expression, W
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
-webkit_dom_document_exec_command(WebKitDOMDocument* self, const gchar* command, gboolean userInterface, const gchar* value);
+webkit_dom_document_exec_command(CyberKitDOMDocument* self, const gchar* command, gboolean userInterface, const gchar* value);
 
 /**
  * webkit_dom_document_query_command_enabled:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  * @command: A #gchar
  *
  * Returns: A #gboolean
@@ -356,11 +356,11 @@ webkit_dom_document_exec_command(WebKitDOMDocument* self, const gchar* command, 
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
-webkit_dom_document_query_command_enabled(WebKitDOMDocument* self, const gchar* command);
+webkit_dom_document_query_command_enabled(CyberKitDOMDocument* self, const gchar* command);
 
 /**
  * webkit_dom_document_query_command_indeterm:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  * @command: A #gchar
  *
  * Returns: A #gboolean
@@ -368,11 +368,11 @@ webkit_dom_document_query_command_enabled(WebKitDOMDocument* self, const gchar* 
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
-webkit_dom_document_query_command_indeterm(WebKitDOMDocument* self, const gchar* command);
+webkit_dom_document_query_command_indeterm(CyberKitDOMDocument* self, const gchar* command);
 
 /**
  * webkit_dom_document_query_command_state:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  * @command: A #gchar
  *
  * Returns: A #gboolean
@@ -380,11 +380,11 @@ webkit_dom_document_query_command_indeterm(WebKitDOMDocument* self, const gchar*
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
-webkit_dom_document_query_command_state(WebKitDOMDocument* self, const gchar* command);
+webkit_dom_document_query_command_state(CyberKitDOMDocument* self, const gchar* command);
 
 /**
  * webkit_dom_document_query_command_supported:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  * @command: A #gchar
  *
  * Returns: A #gboolean
@@ -392,11 +392,11 @@ webkit_dom_document_query_command_state(WebKitDOMDocument* self, const gchar* co
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
-webkit_dom_document_query_command_supported(WebKitDOMDocument* self, const gchar* command);
+webkit_dom_document_query_command_supported(CyberKitDOMDocument* self, const gchar* command);
 
 /**
  * webkit_dom_document_query_command_value:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  * @command: A #gchar
  *
  * Returns: A #gchar
@@ -404,176 +404,176 @@ webkit_dom_document_query_command_supported(WebKitDOMDocument* self, const gchar
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_document_query_command_value(WebKitDOMDocument* self, const gchar* command);
+webkit_dom_document_query_command_value(CyberKitDOMDocument* self, const gchar* command);
 
 /**
  * webkit_dom_document_get_elements_by_name:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  * @elementName: A #gchar
  *
- * Returns: (transfer full): A #WebKitDOMNodeList
+ * Returns: (transfer full): A #CyberKitDOMNodeList
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMNodeList*
-webkit_dom_document_get_elements_by_name(WebKitDOMDocument* self, const gchar* elementName);
+WEBKIT_DEPRECATED CyberKitDOMNodeList*
+webkit_dom_document_get_elements_by_name(CyberKitDOMDocument* self, const gchar* elementName);
 
 /**
  * webkit_dom_document_element_from_point:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  * @x: A #glong
  * @y: A #glong
  *
- * Returns: (transfer none): A #WebKitDOMElement
+ * Returns: (transfer none): A #CyberKitDOMElement
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMElement*
-webkit_dom_document_element_from_point(WebKitDOMDocument* self, glong x, glong y);
+WEBKIT_DEPRECATED CyberKitDOMElement*
+webkit_dom_document_element_from_point(CyberKitDOMDocument* self, glong x, glong y);
 
 /**
  * webkit_dom_document_create_css_style_declaration:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  *
- * Returns: (transfer full): A #WebKitDOMCSSStyleDeclaration
+ * Returns: (transfer full): A #CyberKitDOMCSSStyleDeclaration
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMCSSStyleDeclaration*
-webkit_dom_document_create_css_style_declaration(WebKitDOMDocument* self);
+WEBKIT_DEPRECATED CyberKitDOMCSSStyleDeclaration*
+webkit_dom_document_create_css_style_declaration(CyberKitDOMDocument* self);
 
 /**
  * webkit_dom_document_get_elements_by_class_name_as_html_collection:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  * @classNames: A #gchar
  *
- * Returns: (transfer full): A #WebKitDOMHTMLCollection
+ * Returns: (transfer full): A #CyberKitDOMHTMLCollection
  *
  * Since: 2.12
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMHTMLCollection*
-webkit_dom_document_get_elements_by_class_name_as_html_collection(WebKitDOMDocument* self, const gchar* classNames);
+WEBKIT_DEPRECATED CyberKitDOMHTMLCollection*
+webkit_dom_document_get_elements_by_class_name_as_html_collection(CyberKitDOMDocument* self, const gchar* classNames);
 
 /**
  * webkit_dom_document_has_focus:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  *
  * Returns: A #gboolean
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
-webkit_dom_document_has_focus(WebKitDOMDocument* self);
+webkit_dom_document_has_focus(CyberKitDOMDocument* self);
 
 /**
  * webkit_dom_document_get_element_by_id:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  * @elementId: A #gchar
  *
- * Returns: (transfer none): A #WebKitDOMElement
+ * Returns: (transfer none): A #CyberKitDOMElement
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMElement*
-webkit_dom_document_get_element_by_id(WebKitDOMDocument* self, const gchar* elementId);
+WEBKIT_DEPRECATED CyberKitDOMElement*
+webkit_dom_document_get_element_by_id(CyberKitDOMDocument* self, const gchar* elementId);
 
 /**
  * webkit_dom_document_query_selector:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  * @selectors: A #gchar
  * @error: #GError
  *
- * Returns: (transfer none): A #WebKitDOMElement
+ * Returns: (transfer none): A #CyberKitDOMElement
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMElement*
-webkit_dom_document_query_selector(WebKitDOMDocument* self, const gchar* selectors, GError** error);
+WEBKIT_DEPRECATED CyberKitDOMElement*
+webkit_dom_document_query_selector(CyberKitDOMDocument* self, const gchar* selectors, GError** error);
 
 /**
  * webkit_dom_document_query_selector_all:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  * @selectors: A #gchar
  * @error: #GError
  *
- * Returns: (transfer full): A #WebKitDOMNodeList
+ * Returns: (transfer full): A #CyberKitDOMNodeList
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMNodeList*
-webkit_dom_document_query_selector_all(WebKitDOMDocument* self, const gchar* selectors, GError** error);
+WEBKIT_DEPRECATED CyberKitDOMNodeList*
+webkit_dom_document_query_selector_all(CyberKitDOMDocument* self, const gchar* selectors, GError** error);
 
 /**
  * webkit_dom_document_get_doctype:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  *
- * Returns: (transfer none): A #WebKitDOMDocumentType
+ * Returns: (transfer none): A #CyberKitDOMDocumentType
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMDocumentType*
-webkit_dom_document_get_doctype(WebKitDOMDocument* self);
+WEBKIT_DEPRECATED CyberKitDOMDocumentType*
+webkit_dom_document_get_doctype(CyberKitDOMDocument* self);
 
 /**
  * webkit_dom_document_get_implementation:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  *
- * Returns: (transfer full): A #WebKitDOMDOMImplementation
+ * Returns: (transfer full): A #CyberKitDOMDOMImplementation
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMDOMImplementation*
-webkit_dom_document_get_implementation(WebKitDOMDocument* self);
+WEBKIT_DEPRECATED CyberKitDOMDOMImplementation*
+webkit_dom_document_get_implementation(CyberKitDOMDocument* self);
 
 /**
  * webkit_dom_document_get_document_element:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  *
- * Returns: (transfer none): A #WebKitDOMElement
+ * Returns: (transfer none): A #CyberKitDOMElement
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMElement*
-webkit_dom_document_get_document_element(WebKitDOMDocument* self);
+WEBKIT_DEPRECATED CyberKitDOMElement*
+webkit_dom_document_get_document_element(CyberKitDOMDocument* self);
 
 /**
  * webkit_dom_document_get_input_encoding:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_document_get_input_encoding(WebKitDOMDocument* self);
+webkit_dom_document_get_input_encoding(CyberKitDOMDocument* self);
 
 /**
  * webkit_dom_document_get_xml_encoding:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_document_get_xml_encoding(WebKitDOMDocument* self);
+webkit_dom_document_get_xml_encoding(CyberKitDOMDocument* self);
 
 /**
  * webkit_dom_document_get_xml_version:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_document_get_xml_version(WebKitDOMDocument* self);
+webkit_dom_document_get_xml_version(CyberKitDOMDocument* self);
 
 /**
  * webkit_dom_document_set_xml_version:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  * @value: A #gchar
  * @error: #GError
  *
@@ -581,22 +581,22 @@ webkit_dom_document_get_xml_version(WebKitDOMDocument* self);
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_document_set_xml_version(WebKitDOMDocument* self, const gchar* value, GError** error);
+webkit_dom_document_set_xml_version(CyberKitDOMDocument* self, const gchar* value, GError** error);
 
 /**
  * webkit_dom_document_get_xml_standalone:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  *
  * Returns: A #gboolean
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
-webkit_dom_document_get_xml_standalone(WebKitDOMDocument* self);
+webkit_dom_document_get_xml_standalone(CyberKitDOMDocument* self);
 
 /**
  * webkit_dom_document_set_xml_standalone:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  * @value: A #gboolean
  * @error: #GError
  *
@@ -604,77 +604,77 @@ webkit_dom_document_get_xml_standalone(WebKitDOMDocument* self);
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_document_set_xml_standalone(WebKitDOMDocument* self, gboolean value, GError** error);
+webkit_dom_document_set_xml_standalone(CyberKitDOMDocument* self, gboolean value, GError** error);
 
 /**
  * webkit_dom_document_get_document_uri:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_document_get_document_uri(WebKitDOMDocument* self);
+webkit_dom_document_get_document_uri(CyberKitDOMDocument* self);
 
 /**
  * webkit_dom_document_set_document_uri:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  * @value: A #gchar
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_document_set_document_uri(WebKitDOMDocument* self, const gchar* value);
+webkit_dom_document_set_document_uri(CyberKitDOMDocument* self, const gchar* value);
 
 /**
  * webkit_dom_document_get_default_view:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  *
- * Returns: (transfer full): A #WebKitDOMDOMWindow
+ * Returns: (transfer full): A #CyberKitDOMDOMWindow
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMDOMWindow*
-webkit_dom_document_get_default_view(WebKitDOMDocument* self);
+WEBKIT_DEPRECATED CyberKitDOMDOMWindow*
+webkit_dom_document_get_default_view(CyberKitDOMDocument* self);
 
 /**
  * webkit_dom_document_get_style_sheets:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  *
- * Returns: (transfer none): A #WebKitDOMStyleSheetList
+ * Returns: (transfer none): A #CyberKitDOMStyleSheetList
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMStyleSheetList*
-webkit_dom_document_get_style_sheets(WebKitDOMDocument* self);
+WEBKIT_DEPRECATED CyberKitDOMStyleSheetList*
+webkit_dom_document_get_style_sheets(CyberKitDOMDocument* self);
 
 /**
  * webkit_dom_document_get_title:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_document_get_title(WebKitDOMDocument* self);
+webkit_dom_document_get_title(CyberKitDOMDocument* self);
 
 /**
  * webkit_dom_document_set_title:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  * @value: A #gchar
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_document_set_title(WebKitDOMDocument* self, const gchar* value);
+webkit_dom_document_set_title(CyberKitDOMDocument* self, const gchar* value);
 
 /**
  * webkit_dom_document_get_design_mode:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  *
  * Returns: A #gchar
  *
@@ -683,11 +683,11 @@ webkit_dom_document_set_title(WebKitDOMDocument* self, const gchar* value);
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_document_get_design_mode(WebKitDOMDocument* self);
+webkit_dom_document_get_design_mode(CyberKitDOMDocument* self);
 
 /**
  * webkit_dom_document_set_design_mode:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  * @value: A #gchar
  *
  * Since: 2.14
@@ -695,44 +695,44 @@ webkit_dom_document_get_design_mode(WebKitDOMDocument* self);
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_document_set_design_mode(WebKitDOMDocument* self, const gchar* value);
+webkit_dom_document_set_design_mode(CyberKitDOMDocument* self, const gchar* value);
 
 /**
  * webkit_dom_document_get_referrer:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_document_get_referrer(WebKitDOMDocument* self);
+webkit_dom_document_get_referrer(CyberKitDOMDocument* self);
 
 /**
  * webkit_dom_document_get_domain:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_document_get_domain(WebKitDOMDocument* self);
+webkit_dom_document_get_domain(CyberKitDOMDocument* self);
 
 /**
  * webkit_dom_document_get_url:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_document_get_url(WebKitDOMDocument* self);
+webkit_dom_document_get_url(CyberKitDOMDocument* self);
 
 /**
  * webkit_dom_document_get_cookie:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  * @error: #GError
  *
  * Returns: A #gchar
@@ -740,11 +740,11 @@ webkit_dom_document_get_url(WebKitDOMDocument* self);
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_document_get_cookie(WebKitDOMDocument* self, GError** error);
+webkit_dom_document_get_cookie(CyberKitDOMDocument* self, GError** error);
 
 /**
  * webkit_dom_document_set_cookie:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  * @value: A #gchar
  * @error: #GError
  *
@@ -752,194 +752,194 @@ webkit_dom_document_get_cookie(WebKitDOMDocument* self, GError** error);
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_document_set_cookie(WebKitDOMDocument* self, const gchar* value, GError** error);
+webkit_dom_document_set_cookie(CyberKitDOMDocument* self, const gchar* value, GError** error);
 
 /**
  * webkit_dom_document_get_body:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  *
- * Returns: (transfer none): A #WebKitDOMHTMLElement
+ * Returns: (transfer none): A #CyberKitDOMHTMLElement
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMHTMLElement*
-webkit_dom_document_get_body(WebKitDOMDocument* self);
+WEBKIT_DEPRECATED CyberKitDOMHTMLElement*
+webkit_dom_document_get_body(CyberKitDOMDocument* self);
 
 /**
  * webkit_dom_document_set_body:
- * @self: A #WebKitDOMDocument
- * @value: A #WebKitDOMHTMLElement
+ * @self: A #CyberKitDOMDocument
+ * @value: A #CyberKitDOMHTMLElement
  * @error: #GError
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_document_set_body(WebKitDOMDocument* self, WebKitDOMHTMLElement* value, GError** error);
+webkit_dom_document_set_body(CyberKitDOMDocument* self, CyberKitDOMHTMLElement* value, GError** error);
 
 /**
  * webkit_dom_document_get_head:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  *
- * Returns: (transfer none): A #WebKitDOMHTMLHeadElement
+ * Returns: (transfer none): A #CyberKitDOMHTMLHeadElement
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMHTMLHeadElement*
-webkit_dom_document_get_head(WebKitDOMDocument* self);
+WEBKIT_DEPRECATED CyberKitDOMHTMLHeadElement*
+webkit_dom_document_get_head(CyberKitDOMDocument* self);
 
 /**
  * webkit_dom_document_get_images:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  *
- * Returns: (transfer full): A #WebKitDOMHTMLCollection
+ * Returns: (transfer full): A #CyberKitDOMHTMLCollection
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMHTMLCollection*
-webkit_dom_document_get_images(WebKitDOMDocument* self);
+WEBKIT_DEPRECATED CyberKitDOMHTMLCollection*
+webkit_dom_document_get_images(CyberKitDOMDocument* self);
 
 /**
  * webkit_dom_document_get_applets:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  *
- * Returns: (transfer full): A #WebKitDOMHTMLCollection
+ * Returns: (transfer full): A #CyberKitDOMHTMLCollection
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMHTMLCollection*
-webkit_dom_document_get_applets(WebKitDOMDocument* self);
+WEBKIT_DEPRECATED CyberKitDOMHTMLCollection*
+webkit_dom_document_get_applets(CyberKitDOMDocument* self);
 
 /**
  * webkit_dom_document_get_links:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  *
- * Returns: (transfer full): A #WebKitDOMHTMLCollection
+ * Returns: (transfer full): A #CyberKitDOMHTMLCollection
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMHTMLCollection*
-webkit_dom_document_get_links(WebKitDOMDocument* self);
+WEBKIT_DEPRECATED CyberKitDOMHTMLCollection*
+webkit_dom_document_get_links(CyberKitDOMDocument* self);
 
 /**
  * webkit_dom_document_get_forms:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  *
- * Returns: (transfer full): A #WebKitDOMHTMLCollection
+ * Returns: (transfer full): A #CyberKitDOMHTMLCollection
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMHTMLCollection*
-webkit_dom_document_get_forms(WebKitDOMDocument* self);
+WEBKIT_DEPRECATED CyberKitDOMHTMLCollection*
+webkit_dom_document_get_forms(CyberKitDOMDocument* self);
 
 /**
  * webkit_dom_document_get_anchors:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  *
- * Returns: (transfer full): A #WebKitDOMHTMLCollection
+ * Returns: (transfer full): A #CyberKitDOMHTMLCollection
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMHTMLCollection*
-webkit_dom_document_get_anchors(WebKitDOMDocument* self);
+WEBKIT_DEPRECATED CyberKitDOMHTMLCollection*
+webkit_dom_document_get_anchors(CyberKitDOMDocument* self);
 
 /**
  * webkit_dom_document_get_embeds:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  *
- * Returns: (transfer full): A #WebKitDOMHTMLCollection
+ * Returns: (transfer full): A #CyberKitDOMHTMLCollection
  *
  * Since: 2.14
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMHTMLCollection*
-webkit_dom_document_get_embeds(WebKitDOMDocument* self);
+WEBKIT_DEPRECATED CyberKitDOMHTMLCollection*
+webkit_dom_document_get_embeds(CyberKitDOMDocument* self);
 
 /**
  * webkit_dom_document_get_plugins:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  *
- * Returns: (transfer full): A #WebKitDOMHTMLCollection
+ * Returns: (transfer full): A #CyberKitDOMHTMLCollection
  *
  * Since: 2.14
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMHTMLCollection*
-webkit_dom_document_get_plugins(WebKitDOMDocument* self);
+WEBKIT_DEPRECATED CyberKitDOMHTMLCollection*
+webkit_dom_document_get_plugins(CyberKitDOMDocument* self);
 
 /**
  * webkit_dom_document_get_scripts:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  *
- * Returns: (transfer full): A #WebKitDOMHTMLCollection
+ * Returns: (transfer full): A #CyberKitDOMHTMLCollection
  *
  * Since: 2.14
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMHTMLCollection*
-webkit_dom_document_get_scripts(WebKitDOMDocument* self);
+WEBKIT_DEPRECATED CyberKitDOMHTMLCollection*
+webkit_dom_document_get_scripts(CyberKitDOMDocument* self);
 
 /**
  * webkit_dom_document_get_last_modified:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_document_get_last_modified(WebKitDOMDocument* self);
+webkit_dom_document_get_last_modified(CyberKitDOMDocument* self);
 
 /**
  * webkit_dom_document_get_charset:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_document_get_charset(WebKitDOMDocument* self);
+webkit_dom_document_get_charset(CyberKitDOMDocument* self);
 
 /**
  * webkit_dom_document_set_charset:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  * @value: A #gchar
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_document_set_charset(WebKitDOMDocument* self, const gchar* value);
+webkit_dom_document_set_charset(CyberKitDOMDocument* self, const gchar* value);
 
 /**
  * webkit_dom_document_get_ready_state:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_document_get_ready_state(WebKitDOMDocument* self);
+webkit_dom_document_get_ready_state(CyberKitDOMDocument* self);
 
 /**
  * webkit_dom_document_get_character_set:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_document_get_character_set(WebKitDOMDocument* self);
+webkit_dom_document_get_character_set(CyberKitDOMDocument* self);
 
 /**
  * webkit_dom_document_get_preferred_stylesheet_set:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  *
  * This function has been removed and does nothing.
  *
@@ -948,11 +948,11 @@ webkit_dom_document_get_character_set(WebKitDOMDocument* self);
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_document_get_preferred_stylesheet_set(WebKitDOMDocument* self);
+webkit_dom_document_get_preferred_stylesheet_set(CyberKitDOMDocument* self);
 
 /**
  * webkit_dom_document_get_selected_stylesheet_set:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  *
  * This function has been removed and does nothing.
  *
@@ -961,11 +961,11 @@ webkit_dom_document_get_preferred_stylesheet_set(WebKitDOMDocument* self);
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_document_get_selected_stylesheet_set(WebKitDOMDocument* self);
+webkit_dom_document_get_selected_stylesheet_set(CyberKitDOMDocument* self);
 
 /**
  * webkit_dom_document_set_selected_stylesheet_set:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  * @value: A #gchar
  *
  * This function has been removed and does nothing.
@@ -973,22 +973,22 @@ webkit_dom_document_get_selected_stylesheet_set(WebKitDOMDocument* self);
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_document_set_selected_stylesheet_set(WebKitDOMDocument* self, const gchar* value);
+webkit_dom_document_set_selected_stylesheet_set(CyberKitDOMDocument* self, const gchar* value);
 
 /**
  * webkit_dom_document_get_active_element:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  *
- * Returns: (transfer none): A #WebKitDOMElement
+ * Returns: (transfer none): A #CyberKitDOMElement
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMElement*
-webkit_dom_document_get_active_element(WebKitDOMDocument* self);
+WEBKIT_DEPRECATED CyberKitDOMElement*
+webkit_dom_document_get_active_element(CyberKitDOMDocument* self);
 
 /**
  * webkit_dom_document_get_compat_mode:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  *
  * Returns: A #gchar
  *
@@ -997,59 +997,59 @@ webkit_dom_document_get_active_element(WebKitDOMDocument* self);
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_document_get_compat_mode(WebKitDOMDocument* self);
+webkit_dom_document_get_compat_mode(CyberKitDOMDocument* self);
 
 /**
  * webkit_dom_document_caret_range_from_point:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  * @x: A #glong
  * @y: A #glong
  *
- * Returns: (transfer full): A #WebKitDOMRange
+ * Returns: (transfer full): A #CyberKitDOMRange
  *
  * Since: 2.16
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMRange*
-webkit_dom_document_caret_range_from_point(WebKitDOMDocument* self, glong x, glong y);
+WEBKIT_DEPRECATED CyberKitDOMRange*
+webkit_dom_document_caret_range_from_point(CyberKitDOMDocument* self, glong x, glong y);
 
 /**
  * webkit_dom_document_webkit_cancel_fullscreen:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  *
  * Since: 2.16
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_document_webkit_cancel_fullscreen(WebKitDOMDocument* self);
+webkit_dom_document_webkit_cancel_fullscreen(CyberKitDOMDocument* self);
 
 /**
  * webkit_dom_document_webkit_exit_fullscreen:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  *
  * Since: 2.16
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_document_webkit_exit_fullscreen(WebKitDOMDocument* self);
+webkit_dom_document_webkit_exit_fullscreen(CyberKitDOMDocument* self);
 
 /**
  * webkit_dom_document_exit_pointer_lock:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  *
  * Since: 2.16
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_document_exit_pointer_lock(WebKitDOMDocument* self);
+webkit_dom_document_exit_pointer_lock(CyberKitDOMDocument* self);
 
 /**
  * webkit_dom_document_get_content_type:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  *
  * Returns: A #gchar
  *
@@ -1058,11 +1058,11 @@ webkit_dom_document_exit_pointer_lock(WebKitDOMDocument* self);
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_document_get_content_type(WebKitDOMDocument* self);
+webkit_dom_document_get_content_type(CyberKitDOMDocument* self);
 
 /**
  * webkit_dom_document_get_dir:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  *
  * Returns: A #gchar
  *
@@ -1071,11 +1071,11 @@ webkit_dom_document_get_content_type(WebKitDOMDocument* self);
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_document_get_dir(WebKitDOMDocument* self);
+webkit_dom_document_get_dir(CyberKitDOMDocument* self);
 
 /**
  * webkit_dom_document_set_dir:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  * @value: A #gchar
  *
  * Since: 2.16
@@ -1083,11 +1083,11 @@ webkit_dom_document_get_dir(WebKitDOMDocument* self);
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_document_set_dir(WebKitDOMDocument* self, const gchar* value);
+webkit_dom_document_set_dir(CyberKitDOMDocument* self, const gchar* value);
 
 /**
  * webkit_dom_document_get_webkit_is_fullscreen:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  *
  * Returns: A #gboolean
  *
@@ -1096,11 +1096,11 @@ webkit_dom_document_set_dir(WebKitDOMDocument* self, const gchar* value);
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
-webkit_dom_document_get_webkit_is_fullscreen(WebKitDOMDocument* self);
+webkit_dom_document_get_webkit_is_fullscreen(CyberKitDOMDocument* self);
 
 /**
  * webkit_dom_document_get_webkit_fullscreen_keyboard_input_allowed:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  *
  * Returns: A #gboolean
  *
@@ -1109,24 +1109,24 @@ webkit_dom_document_get_webkit_is_fullscreen(WebKitDOMDocument* self);
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
-webkit_dom_document_get_webkit_fullscreen_keyboard_input_allowed(WebKitDOMDocument* self);
+webkit_dom_document_get_webkit_fullscreen_keyboard_input_allowed(CyberKitDOMDocument* self);
 
 /**
  * webkit_dom_document_get_webkit_current_fullscreen_element:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  *
- * Returns: (transfer none): A #WebKitDOMElement
+ * Returns: (transfer none): A #CyberKitDOMElement
  *
  * Since: 2.16
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMElement*
-webkit_dom_document_get_webkit_current_fullscreen_element(WebKitDOMDocument* self);
+WEBKIT_DEPRECATED CyberKitDOMElement*
+webkit_dom_document_get_webkit_current_fullscreen_element(CyberKitDOMDocument* self);
 
 /**
  * webkit_dom_document_get_webkit_fullscreen_enabled:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  *
  * Returns: A #gboolean
  *
@@ -1135,37 +1135,37 @@ webkit_dom_document_get_webkit_current_fullscreen_element(WebKitDOMDocument* sel
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
-webkit_dom_document_get_webkit_fullscreen_enabled(WebKitDOMDocument* self);
+webkit_dom_document_get_webkit_fullscreen_enabled(CyberKitDOMDocument* self);
 
 /**
  * webkit_dom_document_get_webkit_fullscreen_element:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  *
- * Returns: (transfer none): A #WebKitDOMElement
+ * Returns: (transfer none): A #CyberKitDOMElement
  *
  * Since: 2.16
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMElement*
-webkit_dom_document_get_webkit_fullscreen_element(WebKitDOMDocument* self);
+WEBKIT_DEPRECATED CyberKitDOMElement*
+webkit_dom_document_get_webkit_fullscreen_element(CyberKitDOMDocument* self);
 
 /**
  * webkit_dom_document_get_pointer_lock_element:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  *
- * Returns: (transfer none): A #WebKitDOMElement
+ * Returns: (transfer none): A #CyberKitDOMElement
  *
  * Since: 2.16
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMElement*
-webkit_dom_document_get_pointer_lock_element(WebKitDOMDocument* self);
+WEBKIT_DEPRECATED CyberKitDOMElement*
+webkit_dom_document_get_pointer_lock_element(CyberKitDOMDocument* self);
 
 /**
  * webkit_dom_document_get_visibility_state:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  *
  * Returns: A #gchar
  *
@@ -1174,11 +1174,11 @@ webkit_dom_document_get_pointer_lock_element(WebKitDOMDocument* self);
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_document_get_visibility_state(WebKitDOMDocument* self);
+webkit_dom_document_get_visibility_state(CyberKitDOMDocument* self);
 
 /**
  * webkit_dom_document_get_hidden:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  *
  * Returns: A #gboolean
  *
@@ -1187,24 +1187,24 @@ webkit_dom_document_get_visibility_state(WebKitDOMDocument* self);
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
-webkit_dom_document_get_hidden(WebKitDOMDocument* self);
+webkit_dom_document_get_hidden(CyberKitDOMDocument* self);
 
 /**
  * webkit_dom_document_get_current_script:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  *
- * Returns: (transfer none): A #WebKitDOMHTMLScriptElement
+ * Returns: (transfer none): A #CyberKitDOMHTMLScriptElement
  *
  * Since: 2.16
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMHTMLScriptElement*
-webkit_dom_document_get_current_script(WebKitDOMDocument* self);
+WEBKIT_DEPRECATED CyberKitDOMHTMLScriptElement*
+webkit_dom_document_get_current_script(CyberKitDOMDocument* self);
 
 /**
  * webkit_dom_document_get_origin:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  *
  * Returns: A #gchar
  *
@@ -1213,63 +1213,63 @@ webkit_dom_document_get_current_script(WebKitDOMDocument* self);
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_document_get_origin(WebKitDOMDocument* self);
+webkit_dom_document_get_origin(CyberKitDOMDocument* self);
 
 /**
  * webkit_dom_document_get_scrolling_element:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  *
- * Returns: (transfer none): A #WebKitDOMElement
+ * Returns: (transfer none): A #CyberKitDOMElement
  *
  * Since: 2.16
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMElement*
-webkit_dom_document_get_scrolling_element(WebKitDOMDocument* self);
+WEBKIT_DEPRECATED CyberKitDOMElement*
+webkit_dom_document_get_scrolling_element(CyberKitDOMDocument* self);
 
 /**
  * webkit_dom_document_get_children:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  *
- * Returns: (transfer full): A #WebKitDOMHTMLCollection
+ * Returns: (transfer full): A #CyberKitDOMHTMLCollection
  *
  * Since: 2.16
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMHTMLCollection*
-webkit_dom_document_get_children(WebKitDOMDocument* self);
+WEBKIT_DEPRECATED CyberKitDOMHTMLCollection*
+webkit_dom_document_get_children(CyberKitDOMDocument* self);
 
 /**
  * webkit_dom_document_get_first_element_child:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  *
- * Returns: (transfer none): A #WebKitDOMElement
+ * Returns: (transfer none): A #CyberKitDOMElement
  *
  * Since: 2.16
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMElement*
-webkit_dom_document_get_first_element_child(WebKitDOMDocument* self);
+WEBKIT_DEPRECATED CyberKitDOMElement*
+webkit_dom_document_get_first_element_child(CyberKitDOMDocument* self);
 
 /**
  * webkit_dom_document_get_last_element_child:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  *
- * Returns: (transfer none): A #WebKitDOMElement
+ * Returns: (transfer none): A #CyberKitDOMElement
  *
  * Since: 2.16
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMElement*
-webkit_dom_document_get_last_element_child(WebKitDOMDocument* self);
+WEBKIT_DEPRECATED CyberKitDOMElement*
+webkit_dom_document_get_last_element_child(CyberKitDOMDocument* self);
 
 /**
  * webkit_dom_document_get_child_element_count:
- * @self: A #WebKitDOMDocument
+ * @self: A #CyberKitDOMDocument
  *
  * Returns: A #gulong
  *
@@ -1278,8 +1278,8 @@ webkit_dom_document_get_last_element_child(WebKitDOMDocument* self);
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gulong
-webkit_dom_document_get_child_element_count(WebKitDOMDocument* self);
+webkit_dom_document_get_child_element_count(CyberKitDOMDocument* self);
 
 G_END_DECLS
 
-#endif /* WebKitDOMDocument_h */
+#endif /* CyberKitDOMDocument_h */

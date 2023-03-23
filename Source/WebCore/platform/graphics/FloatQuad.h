@@ -36,7 +36,7 @@ namespace WTF {
 class TextStream;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 // FIXME: Seems like this would be better as a struct.
 
@@ -184,4 +184,4 @@ WEBCORE_EXPORT WTF::TextStream& operator<<(WTF::TextStream&, const FloatQuad&);
 Vector<FloatRect> boundingBoxes(const Vector<FloatQuad>&);
 WEBCORE_EXPORT FloatRect unitedBoundingBoxes(const Vector<FloatQuad>&);
 
-} // namespace WebCore
+} // namespace CyberCore

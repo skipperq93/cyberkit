@@ -56,7 +56,7 @@ void ScopedWebGLRenderingResourcesRequest::freeWebGLRenderingResources()
     if (s_requests)
         return;
     remoteGraphicsContextGLStreamWorkQueue().dispatch([] {
-        WebCore::GraphicsContextGLANGLE::releaseThreadResources(WebCore::GraphicsContextGLANGLE::ReleaseThreadResourceBehavior::TerminateAndReleaseThreadResources);
+        CyberCore::GraphicsContextGLANGLE::releaseThreadResources(CyberCore::GraphicsContextGLANGLE::ReleaseThreadResourceBehavior::TerminateAndReleaseThreadResources);
     });
 }
 

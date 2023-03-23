@@ -32,7 +32,7 @@
 OBJC_CLASS PKShippingMethod;
 OBJC_CLASS PKShippingMethods;
 
-namespace WebCore {
+namespace CyberCore {
 struct ApplePayShippingMethod;
 }
 
@@ -41,9 +41,9 @@ namespace WebKit {
 // FIXME: Rather than having these free functions scattered about, Apple Pay data types should know
 // how to convert themselves to and from their platform representations.
 NSDecimalNumber *toDecimalNumber(const String& amount);
-PKShippingMethod *toPKShippingMethod(const WebCore::ApplePayShippingMethod&);
+PKShippingMethod *toPKShippingMethod(const CyberCore::ApplePayShippingMethod&);
 #if HAVE(PASSKIT_DEFAULT_SHIPPING_METHOD)
-PKShippingMethods *toPKShippingMethods(const Vector<WebCore::ApplePayShippingMethod>&);
+PKShippingMethods *toPKShippingMethods(const Vector<CyberCore::ApplePayShippingMethod>&);
 #endif
 
 } // namespace WebKit

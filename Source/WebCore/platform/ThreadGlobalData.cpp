@@ -37,7 +37,7 @@
 #include <wtf/Threading.h>
 #include <wtf/text/StringImpl.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 ThreadGlobalData::ThreadGlobalData()
     : m_threadTimers(makeUnique<ThreadTimers>())
@@ -60,7 +60,7 @@ void ThreadGlobalData::destroy()
 #if USE(WEB_THREAD)
 static ThreadGlobalData* sharedMainThreadStaticData { nullptr };
 
-void ThreadGlobalData::setWebCoreThreadData()
+void ThreadGlobalData::setCyberCoreThreadData()
 {
     ASSERT(isWebThread());
     ASSERT(&threadGlobalData() != sharedMainThreadStaticData);
@@ -136,13 +136,13 @@ void ThreadGlobalData::initializeFontCache()
     m_fontCache = makeUnique<FontCache>();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace PAL {
 
 ThreadGlobalData& threadGlobalData()
 {
-    return WebCore::threadGlobalData();
+    return CyberCore::threadGlobalData();
 }
 
 } // namespace PAL

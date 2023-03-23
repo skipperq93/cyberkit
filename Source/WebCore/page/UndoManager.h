@@ -33,7 +33,7 @@
 #include <wtf/RefPtr.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class UndoItem;
 
@@ -59,4 +59,4 @@ private:
     HashSet<RefPtr<UndoItem>> m_items;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -38,7 +38,7 @@ namespace WebKit {
 
 class WebCacheStorageProvider;
 
-class WebCacheStorageConnection final : public CanMakeWeakPtr<WebCacheStorageConnection>, public WebCore::CacheStorageConnection {
+class WebCacheStorageConnection final : public CanMakeWeakPtr<WebCacheStorageConnection>, public CyberCore::CacheStorageConnection {
 public:
     static Ref<WebCacheStorageConnection> create(WebCacheStorageProvider& provider) { return adoptRef(*new WebCacheStorageConnection(provider)); }
 
@@ -52,24 +52,24 @@ private:
 
     IPC::Connection& connection();
 
-    // WebCore::CacheStorageConnection
-    void open(const WebCore::ClientOrigin&, const String& cacheName, WebCore::DOMCacheEngine::CacheIdentifierCallback&&) final;
-    void remove(WebCore::DOMCacheIdentifier, WebCore::DOMCacheEngine::RemoveCacheIdentifierCallback&&) final;
-    void retrieveCaches(const WebCore::ClientOrigin&, uint64_t updateCounter, WebCore::DOMCacheEngine::CacheInfosCallback&&) final;
+    // CyberCore::CacheStorageConnection
+    void open(const CyberCore::ClientOrigin&, const String& cacheName, CyberCore::DOMCacheEngine::CacheIdentifierCallback&&) final;
+    void remove(CyberCore::DOMCacheIdentifier, CyberCore::DOMCacheEngine::RemoveCacheIdentifierCallback&&) final;
+    void retrieveCaches(const CyberCore::ClientOrigin&, uint64_t updateCounter, CyberCore::DOMCacheEngine::CacheInfosCallback&&) final;
 
-    void retrieveRecords(WebCore::DOMCacheIdentifier, WebCore::RetrieveRecordsOptions&&, WebCore::DOMCacheEngine::RecordsCallback&&) final;
-    void batchDeleteOperation(WebCore::DOMCacheIdentifier, const WebCore::ResourceRequest&, WebCore::CacheQueryOptions&&, WebCore::DOMCacheEngine::RecordIdentifiersCallback&&) final;
-    void batchPutOperation(WebCore::DOMCacheIdentifier, Vector<WebCore::DOMCacheEngine::Record>&&, WebCore::DOMCacheEngine::RecordIdentifiersCallback&&) final;
+    void retrieveRecords(CyberCore::DOMCacheIdentifier, CyberCore::RetrieveRecordsOptions&&, CyberCore::DOMCacheEngine::RecordsCallback&&) final;
+    void batchDeleteOperation(CyberCore::DOMCacheIdentifier, const CyberCore::ResourceRequest&, CyberCore::CacheQueryOptions&&, CyberCore::DOMCacheEngine::RecordIdentifiersCallback&&) final;
+    void batchPutOperation(CyberCore::DOMCacheIdentifier, Vector<CyberCore::DOMCacheEngine::Record>&&, CyberCore::DOMCacheEngine::RecordIdentifiersCallback&&) final;
 
-    void reference(WebCore::DOMCacheIdentifier) final;
-    void dereference(WebCore::DOMCacheIdentifier) final;
+    void reference(CyberCore::DOMCacheIdentifier) final;
+    void dereference(CyberCore::DOMCacheIdentifier) final;
 
-    void clearMemoryRepresentation(const WebCore::ClientOrigin&, WebCore::DOMCacheEngine::CompletionCallback&&) final;
+    void clearMemoryRepresentation(const CyberCore::ClientOrigin&, CyberCore::DOMCacheEngine::CompletionCallback&&) final;
     void engineRepresentation(CompletionHandler<void(const String&)>&&) final;
-    void updateQuotaBasedOnSpaceUsage(const WebCore::ClientOrigin&) final;
+    void updateQuotaBasedOnSpaceUsage(const CyberCore::ClientOrigin&) final;
 
     WebCacheStorageProvider& m_provider;
-    HashSet<WebCore::DOMCacheIdentifier> m_connectedIdentifiers;
+    HashSet<CyberCore::DOMCacheIdentifier> m_connectedIdentifiers;
 };
 
 }

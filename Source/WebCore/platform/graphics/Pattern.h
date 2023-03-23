@@ -41,7 +41,7 @@ typedef struct _cairo_pattern cairo_pattern_t;
 typedef cairo_pattern_t* PlatformPatternPtr;
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class AffineTransform;
 class GraphicsContext;

@@ -28,7 +28,7 @@
 
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 TextStream& operator<<(TextStream& ts, ControlStyle::State state)
 {
@@ -100,4 +100,4 @@ TextStream& operator<<(TextStream& ts, const ControlStyle& style)
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

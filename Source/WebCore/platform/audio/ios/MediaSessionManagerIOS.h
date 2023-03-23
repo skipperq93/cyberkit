@@ -41,7 +41,7 @@ extern NSString* WebUIApplicationDidBecomeActiveNotification;
 extern NSString* WebUIApplicationDidEnterBackgroundNotification;
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class MediaSessionManageriOS
     : public MediaSessionManagerCocoa
@@ -97,6 +97,6 @@ private:
     bool m_havePresentedApplicationPID { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(IOS_FAMILY)

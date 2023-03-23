@@ -35,7 +35,7 @@
 #include <wtf/SortedArrayMap.h>
 #include <wtf/text/StringToIntegerConversion.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 std::optional<AVCParameters> parseAVCCodecParameters(StringView codecString)
 {

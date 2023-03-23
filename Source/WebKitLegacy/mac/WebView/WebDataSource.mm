@@ -38,10 +38,10 @@
 #import "WebFrameLoaderClient.h"
 #import "WebFrameViewInternal.h"
 #import "WebHTMLRepresentation.h"
-#import "WebKitErrorsPrivate.h"
-#import "WebKitLogging.h"
-#import "WebKitNSStringExtras.h"
-#import "WebKitStatisticsPrivate.h"
+#import "CyberKitErrorsPrivate.h"
+#import "CyberKitLogging.h"
+#import "CyberKitNSStringExtras.h"
+#import "CyberKitStatisticsPrivate.h"
 #import "WebNSURLExtras.h"
 #import "WebNSURLRequestExtras.h"
 #import "WebPDFRepresentation.h"
@@ -55,9 +55,9 @@
 #import <CyberCore/MIMETypeRegistry.h>
 #import <CyberCore/ResourceRequest.h>
 #import <CyberCore/SharedBuffer.h>
-#import <CyberCore/WebCoreJITOperations.h>
-#import <CyberCore/WebCoreObjCExtras.h>
-#import <CyberCore/WebCoreURLResponse.h>
+#import <CyberCore/CyberCoreJITOperations.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
+#import <CyberCore/CyberCoreURLResponse.h>
 #import <CyberKitLegacy/DOMHTML.h>
 #import <CyberKitLegacy/DOMPrivate.h>
 #import <wtf/Assertions.h>
@@ -84,7 +84,7 @@ public:
     WebDataSourcePrivate(Ref<WebDocumentLoaderMac>&& loader)
         : loader(WTFMove(loader))
         , representationFinishedLoading(NO)
-        , includedInWebKitStatistics(NO)
+        , includedInCyberKitStatistics(NO)
 #if PLATFORM(IOS_FAMILY)
         , _dataSourceDelegate(nil)
 #endif
@@ -104,13 +104,13 @@ public:
     Ref<WebDocumentLoaderMac> loader;
     RetainPtr<id<WebDocumentRepresentation> > representation;
     BOOL representationFinishedLoading;
-    BOOL includedInWebKitStatistics;
+    BOOL includedInCyberKitStatistics;
 #if PLATFORM(IOS_FAMILY)
     NSObject<WebDataSourcePrivateDelegate> *_dataSourceDelegate;
 #endif
 #if USE(QUICK_LOOK)
     RetainPtr<NSDictionary> _quickLookContent;
-    RefPtr<WebCore::LegacyPreviewLoaderClient> _quickLookPreviewLoaderClient;
+    RefPtr<CyberCore::LegacyPreviewLoaderClient> _quickLookPreviewLoaderClient;
 #endif
 };
 
@@ -157,7 +157,7 @@ void addTypesFromClass(NSMutableDictionary *allTypes, Class objCClass, NSArray *
 #if !PLATFORM(IOS_FAMILY)
         JSC::initialize();
         WTF::initializeMainThread();
-        WebCore::populateJITOperations();
+        CyberCore::populateJITOperations();
 #endif
     }
 }
@@ -276,7 +276,7 @@ void addTypesFromClass(NSMutableDictionary *allTypes, Class objCClass, NSArray *
         addTypesFromClass(types.get(), [WebHTMLRepresentation class], [WebHTMLRepresentation supportedMediaMIMETypes]);
 
         // Since this is a "secret default" we don't both registering it.
-        BOOL omitPDFSupport = [[NSUserDefaults standardUserDefaults] boolForKey:@"WebKitOmitPDFSupport"];
+        BOOL omitPDFSupport = [[NSUserDefaults standardUserDefaults] boolForKey:@"CyberKitOmitPDFSupport"];
         if (!omitPDFSupport) {
 #if PLATFORM(IOS_FAMILY)
 #define WebPDFRepresentation ([WebView _getPDFRepresentationClass])
@@ -304,7 +304,7 @@ void addTypesFromClass(NSMutableDictionary *allTypes, Class objCClass, NSArray *
         [[self webFrame] _replaceSelectionWithFragment:fragment selectReplacement:selectReplacement smartReplace:NO matchStyle:NO];
 }
 
-// FIXME: There are few reasons why this method and many of its related methods can't be pushed entirely into WebCore in the future.
+// FIXME: There are few reasons why this method and many of its related methods can't be pushed entirely into CyberCore in the future.
 - (DOMDocumentFragment *)_documentFragmentWithArchive:(WebArchive *)archive
 {
     ASSERT(archive);
@@ -318,7 +318,7 @@ void addTypesFromClass(NSMutableDictionary *allTypes, Class objCClass, NSArray *
             toPrivate(_private)->loader->addAllArchiveResources(*[archive _coreLegacyWebArchive]);
 
             return [[self webFrame] _documentFragmentWithMarkupString:markupString.get() baseURLString:[[mainResource URL] _web_originalDataAsString]];
-        } else if (WebCore::MIMETypeRegistry::isSupportedImageMIMEType(MIMEType))
+        } else if (CyberCore::MIMETypeRegistry::isSupportedImageMIMEType(MIMEType))
             return [self _documentFragmentWithImageResource:mainResource];
     }
     return nil;
@@ -392,7 +392,7 @@ void addTypesFromClass(NSMutableDictionary *allTypes, Class objCClass, NSArray *
 #endif
 }
 
-- (NakedPtr<WebCore::DocumentLoader>)_documentLoader
+- (NakedPtr<CyberCore::DocumentLoader>)_documentLoader
 {
     return toPrivate(_private)->loader.ptr();
 }
@@ -407,14 +407,14 @@ void addTypesFromClass(NSMutableDictionary *allTypes, Class objCClass, NSArray *
         
     LOG(Loading, "creating datasource for %@", static_cast<NSURL *>(toPrivate(_private)->loader->request().url()));
 
-    if ((toPrivate(_private)->includedInWebKitStatistics = [[self webFrame] _isIncludedInWebKitStatistics]))
+    if ((toPrivate(_private)->includedInCyberKitStatistics = [[self webFrame] _isIncludedInCyberKitStatistics]))
         ++WebDataSourceCount;
 
     return self;
 }
 
 #if USE(QUICK_LOOK)
-- (WebCore::LegacyPreviewLoaderClient*)_quickLookPreviewLoaderClient
+- (CyberCore::LegacyPreviewLoaderClient*)_quickLookPreviewLoaderClient
 {
     return toPrivate(_private)->_quickLookPreviewLoaderClient.get();
 }
@@ -424,7 +424,7 @@ void addTypesFromClass(NSMutableDictionary *allTypes, Class objCClass, NSArray *
     toPrivate(_private)->_quickLookContent = adoptNS([quickLookContent copy]);
 }
 
-- (void)_setQuickLookPreviewLoaderClient:(WebCore::LegacyPreviewLoaderClient*)quickLookPreviewLoaderClient
+- (void)_setQuickLookPreviewLoaderClient:(CyberCore::LegacyPreviewLoaderClient*)quickLookPreviewLoaderClient
 {
     toPrivate(_private)->_quickLookPreviewLoaderClient = quickLookPreviewLoaderClient;
 }
@@ -436,21 +436,21 @@ void addTypesFromClass(NSMutableDictionary *allTypes, Class objCClass, NSArray *
 
 - (instancetype)initWithRequest:(NSURLRequest *)request
 {
-    return [self _initWithDocumentLoader:WebDocumentLoaderMac::create(request, WebCore::SubstituteData())];
+    return [self _initWithDocumentLoader:WebDocumentLoaderMac::create(request, CyberCore::SubstituteData())];
 }
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainThread([WebDataSource class], self))
+    if (CyberCoreObjCScheduleDeallocateOnMainThread([WebDataSource class], self))
         return;
 
-    if (toPrivate(_private) && toPrivate(_private)->includedInWebKitStatistics)
+    if (toPrivate(_private) && toPrivate(_private)->includedInCyberKitStatistics)
         --WebDataSourceCount;
 
 #if USE(QUICK_LOOK)
-    // Added in -[WebCoreResourceHandleAsDelegate connection:didReceiveResponse:].
+    // Added in -[CyberCoreResourceHandleAsDelegate connection:didReceiveResponse:].
     if (NSURL *url = [[self response] URL])
-        WebCore::removeQLPreviewConverterForURL(url);
+        CyberCore::removeQLPreviewConverterForURL(url);
 #endif
 
     delete toPrivate(_private);
@@ -460,7 +460,7 @@ void addTypesFromClass(NSMutableDictionary *allTypes, Class objCClass, NSArray *
 
 - (NSData *)data
 {
-    RefPtr<WebCore::FragmentedSharedBuffer> mainResourceData = toPrivate(_private)->loader->mainResourceData();
+    RefPtr<CyberCore::FragmentedSharedBuffer> mainResourceData = toPrivate(_private)->loader->mainResourceData();
     if (!mainResourceData)
         return nil;
     return mainResourceData->makeContiguous()->createNSData().autorelease();
@@ -481,7 +481,7 @@ void addTypesFromClass(NSMutableDictionary *allTypes, Class objCClass, NSArray *
 
 - (NSURLRequest *)initialRequest
 {
-    return toPrivate(_private)->loader->originalRequest().nsURLRequest(WebCore::HTTPBodyUpdatePolicy::UpdateHTTPBody);
+    return toPrivate(_private)->loader->originalRequest().nsURLRequest(CyberCore::HTTPBodyUpdatePolicy::UpdateHTTPBody);
 }
 
 - (NSMutableURLRequest *)request
@@ -491,7 +491,7 @@ void addTypesFromClass(NSMutableDictionary *allTypes, Class objCClass, NSArray *
         return nil;
 
     // FIXME: this cast is dubious
-    return (NSMutableURLRequest *)toPrivate(_private)->loader->request().nsURLRequest(WebCore::HTTPBodyUpdatePolicy::UpdateHTTPBody);
+    return (NSMutableURLRequest *)toPrivate(_private)->loader->request().nsURLRequest(CyberCore::HTTPBodyUpdatePolicy::UpdateHTTPBody);
 }
 
 - (NSURLResponse *)response
@@ -532,7 +532,7 @@ void addTypesFromClass(NSMutableDictionary *allTypes, Class objCClass, NSArray *
     if (!toPrivate(_private)->loader->isCommitted())
         return nil;
         
-    return adoptNS([[WebArchive alloc] _initWithCoreLegacyWebArchive:WebCore::LegacyWebArchive::create(*core([self webFrame]))]).autorelease();
+    return adoptNS([[WebArchive alloc] _initWithCoreLegacyWebArchive:CyberCore::LegacyWebArchive::create(*core([self webFrame]))]).autorelease();
 }
 
 - (WebResource *)mainResource

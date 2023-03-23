@@ -64,7 +64,7 @@ uint64_t FileSystemStorageManager::allocatedUnusedCapacity() const
     return result;
 }
 
-Expected<WebCore::FileSystemHandleIdentifier, FileSystemStorageError> FileSystemStorageManager::createHandle(IPC::Connection::UniqueID connection, FileSystemStorageHandle::Type type, String&& path, String&& name, bool createIfNecessary)
+Expected<CyberCore::FileSystemHandleIdentifier, FileSystemStorageError> FileSystemStorageManager::createHandle(IPC::Connection::UniqueID connection, FileSystemStorageHandle::Type type, String&& path, String&& name, bool createIfNecessary)
 {
     ASSERT(!RunLoop::isMain());
 
@@ -95,20 +95,20 @@ Expected<WebCore::FileSystemHandleIdentifier, FileSystemStorageError> FileSystem
         return makeUnexpected(FileSystemStorageError::Unknown);
     auto newHandleIdentifier = newHandle->identifier();
     m_handlesByConnection.ensure(connection, [&] {
-        return HashSet<WebCore::FileSystemHandleIdentifier> { };
+        return HashSet<CyberCore::FileSystemHandleIdentifier> { };
     }).iterator->value.add(newHandleIdentifier);
     m_registry.registerHandle(newHandleIdentifier, *newHandle);
     m_handles.add(newHandleIdentifier, WTFMove(newHandle));
     return newHandleIdentifier;
 }
 
-const String& FileSystemStorageManager::getPath(WebCore::FileSystemHandleIdentifier identifier)
+const String& FileSystemStorageManager::getPath(CyberCore::FileSystemHandleIdentifier identifier)
 {
     auto handle = m_handles.find(identifier);
     return handle == m_handles.end() ? emptyString() : handle->value->path();
 }
 
-FileSystemStorageHandle::Type FileSystemStorageManager::getType(WebCore::FileSystemHandleIdentifier identifier)
+FileSystemStorageHandle::Type FileSystemStorageManager::getType(CyberCore::FileSystemHandleIdentifier identifier)
 {
     auto handle = m_handles.find(identifier);
     return handle == m_handles.end() ? FileSystemStorageHandle::Type::Any : handle->value->type();
@@ -147,14 +147,14 @@ void FileSystemStorageManager::connectionClosed(IPC::Connection::UniqueID connec
     m_handlesByConnection.remove(connectionHandles);
 }
 
-Expected<WebCore::FileSystemHandleIdentifier, FileSystemStorageError> FileSystemStorageManager::getDirectory(IPC::Connection::UniqueID connection)
+Expected<CyberCore::FileSystemHandleIdentifier, FileSystemStorageError> FileSystemStorageManager::getDirectory(IPC::Connection::UniqueID connection)
 {
     ASSERT(!RunLoop::isMain());
 
     return createHandle(connection, FileSystemStorageHandle::Type::Directory, String { m_path }, { }, true);
 }
 
-bool FileSystemStorageManager::acquireLockForFile(const String& path, WebCore::FileSystemHandleIdentifier identifier)
+bool FileSystemStorageManager::acquireLockForFile(const String& path, CyberCore::FileSystemHandleIdentifier identifier)
 {
     if (m_lockMap.contains(path))
         return false;
@@ -163,7 +163,7 @@ bool FileSystemStorageManager::acquireLockForFile(const String& path, WebCore::F
     return true;
 }
 
-bool FileSystemStorageManager::releaseLockForFile(const String& path, WebCore::FileSystemHandleIdentifier identifier)
+bool FileSystemStorageManager::releaseLockForFile(const String& path, CyberCore::FileSystemHandleIdentifier identifier)
 {
     if (auto lockedByIdentifier = m_lockMap.get(path); lockedByIdentifier == identifier) {
         m_lockMap.remove(path);

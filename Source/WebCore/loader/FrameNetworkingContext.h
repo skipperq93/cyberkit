@@ -24,7 +24,7 @@
 #include "NetworkingContext.h"
 #include "ReferrerPolicy.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class FrameNetworkingContext : public NetworkingContext {
 public:

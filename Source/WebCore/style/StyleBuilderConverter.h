@@ -69,7 +69,7 @@
 #include "TouchAction.h"
 #include "TransformFunctions.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace Style {
 
 // Note that we assume the CSS parser only allows valid CSSValue types.
@@ -1841,4 +1841,4 @@ inline std::optional<Length> BuilderConverter::convertBlockStepSize(BuilderState
 }
 
 } // namespace Style
-} // namespace WebCore
+} // namespace CyberCore

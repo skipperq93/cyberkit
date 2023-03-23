@@ -29,7 +29,7 @@
 
 #include "ScrollingTreeScrollingNode.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScrollingTreeOverflowScrollingNode : public ScrollingTreeScrollingNode {
 public:
@@ -41,7 +41,7 @@ protected:
     WEBCORE_EXPORT void dumpProperties(TextStream&, OptionSet<ScrollingStateTreeAsTextBehavior>) const;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_SCROLLING_NODE(ScrollingTreeOverflowScrollingNode, isOverflowScrollingNode())
 

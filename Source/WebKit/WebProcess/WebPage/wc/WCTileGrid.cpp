@@ -28,17 +28,17 @@
 
 #if USE(GRAPHICS_LAYER_WC)
 
-namespace WebKit {
+namespace CyberKit {
 
-WCTileGrid::Tile::Tile(WebCore::IntRect rect)
+WCTileGrid::Tile::Tile(CyberCore::IntRect rect)
     : m_tileRect(rect)
     , m_dirtyRect(rect)
 {
 }
 
-void WCTileGrid::Tile::addDirtyRect(const WebCore::IntRect& dirtyRect)
+void WCTileGrid::Tile::addDirtyRect(const CyberCore::IntRect& dirtyRect)
 {
-    WebCore::IntRect rect { dirtyRect };
+    CyberCore::IntRect rect { dirtyRect };
     rect.intersect(m_tileRect);
     m_dirtyRect.unite(rect);
 }
@@ -53,15 +53,15 @@ bool WCTileGrid::Tile::hasDirtyRect() const
     return !m_dirtyRect.isEmpty();
 }
 
-void WCTileGrid::setSize(const WebCore::IntSize& size)
+void WCTileGrid::setSize(const CyberCore::IntSize& size)
 {
     m_size = size;
     m_tiles.clear();
 }
 
-WebCore::IntRect WCTileGrid::tileRectFromPixelRect(const WebCore::IntRect& pixelRect)
+CyberCore::IntRect WCTileGrid::tileRectFromPixelRect(const CyberCore::IntRect& pixelRect)
 {
-    auto rect = WebCore::intersection(pixelRect, { { }, m_size });
+    auto rect = CyberCore::intersection(pixelRect, { { }, m_size });
     if (rect.isEmpty())
         return { };
     int x = rect.x();
@@ -75,19 +75,19 @@ WebCore::IntRect WCTileGrid::tileRectFromPixelRect(const WebCore::IntRect& pixel
     return { x, y, maxX - x, maxY - y };
 }
 
-WebCore::IntSize WCTileGrid::tileSizeFromPixelSize(const WebCore::IntSize& size)
+CyberCore::IntSize WCTileGrid::tileSizeFromPixelSize(const CyberCore::IntSize& size)
 {
     int width = (size.width() + tilePixelSize().width() - 1) / tilePixelSize().width();
     int height = (size.height() + tilePixelSize().height() - 1) / tilePixelSize().height();
     return { width, height };
 }
 
-WebCore::IntSize WCTileGrid::tilePixelSize() const
+CyberCore::IntSize WCTileGrid::tilePixelSize() const
 {
     return { 512, 512 };
 }
 
-void WCTileGrid::addDirtyRect(const WebCore::IntRect& dirtyRect)
+void WCTileGrid::addDirtyRect(const CyberCore::IntRect& dirtyRect)
 {
     for (auto& iterator : m_tiles)
         iterator.value->addDirtyRect(dirtyRect);
@@ -109,8 +109,8 @@ bool WCTileGrid::ensureTile(TileIndex index)
         int y1 = index.y() * tilePixelSize().height();
         int x2 = std::min(x1 + tilePixelSize().width(), m_size.width());
         int y2 = std::min(y1 + tilePixelSize().height(), m_size.height());
-        WebCore::IntRect rect { x1, y1, x2 - x1, y2 - y1 };
-        ASSERT(WebCore::IntRect({ }, m_size).contains(rect));
+        CyberCore::IntRect rect { x1, y1, x2 - x1, y2 - y1 };
+        ASSERT(CyberCore::IntRect({ }, m_size).contains(rect));
         return makeUnique<Tile>(rect);
     });
     if (!addResult.isNewEntry)
@@ -118,7 +118,7 @@ bool WCTileGrid::ensureTile(TileIndex index)
     return addResult.isNewEntry;
 }
 
-bool WCTileGrid::setCoverageRect(const WebCore::IntRect& coverage)
+bool WCTileGrid::setCoverageRect(const CyberCore::IntRect& coverage)
 {
     bool needsToPaint = false;
     auto tileRect = tileRectFromPixelRect(coverage);
@@ -138,6 +138,6 @@ bool WCTileGrid::setCoverageRect(const WebCore::IntRect& coverage)
     return needsToPaint;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(GRAPHICS_LAYER_WC)

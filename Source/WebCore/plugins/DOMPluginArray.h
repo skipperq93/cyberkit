@@ -27,7 +27,7 @@
 #include <wtf/Vector.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMPlugin;
 class Navigator;
@@ -56,4 +56,4 @@ private:
     Vector<Ref<DOMPlugin>> m_additionalWebVisibilePlugins;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -28,7 +28,7 @@
 #include "InlineRunAndOffset.h"
 #include "RenderObjectEnums.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class CaretRectMode {
     Normal,

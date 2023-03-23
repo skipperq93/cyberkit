@@ -36,7 +36,7 @@
 #include <wtf/FunctionDispatcher.h>
 #include <wtf/UniqueRef.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class LibWebRTCNetwork : private FunctionDispatcher, private IPC::MessageReceiver {
     WTF_MAKE_FAST_ALLOCATED;
@@ -71,11 +71,11 @@ private:
 #if USE(LIBWEBRTC)
     void setSocketFactoryConnection();
 
-    void signalReadPacket(WebCore::LibWebRTCSocketIdentifier, const IPC::DataReference&, const RTCNetwork::IPAddress&, uint16_t port, int64_t);
-    void signalSentPacket(WebCore::LibWebRTCSocketIdentifier, int, int64_t);
-    void signalAddressReady(WebCore::LibWebRTCSocketIdentifier, const RTCNetwork::SocketAddress&);
-    void signalConnect(WebCore::LibWebRTCSocketIdentifier);
-    void signalClose(WebCore::LibWebRTCSocketIdentifier, int);
+    void signalReadPacket(CyberCore::LibWebRTCSocketIdentifier, const IPC::DataReference&, const RTCNetwork::IPAddress&, uint16_t port, int64_t);
+    void signalSentPacket(CyberCore::LibWebRTCSocketIdentifier, int, int64_t);
+    void signalAddressReady(CyberCore::LibWebRTCSocketIdentifier, const RTCNetwork::SocketAddress&);
+    void signalConnect(CyberCore::LibWebRTCSocketIdentifier);
+    void signalClose(CyberCore::LibWebRTCSocketIdentifier, int);
 #endif
 
     // FunctionDispatcher
@@ -97,4 +97,4 @@ private:
     RefPtr<IPC::Connection> m_connection;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -29,7 +29,7 @@
 
 #if !PLATFORM(IOS_FAMILY)
 
-namespace WebCore {
+namespace CyberCore {
 
 #ifndef NSGEOMETRY_TYPES_SAME_AS_CGGEOMETRY_TYPES
 

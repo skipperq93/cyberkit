@@ -28,7 +28,7 @@
 
 #include "CachedResource.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 CachedResourceHandleBase::CachedResourceHandleBase()
     : m_resource(nullptr)

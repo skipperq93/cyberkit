@@ -30,7 +30,7 @@
 #include "Document.h"
 #include "SharedBuffer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 ShareDataReader::ShareDataReader(CompletionHandler<void(ExceptionOr<ShareDataWithParsedURL&>)>&& completionHandler)
     : m_completionHandler(WTFMove(completionHandler))

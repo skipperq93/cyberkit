@@ -53,7 +53,7 @@
 #include <pal/cf/AudioToolboxSoftLink.h>
 #include <pal/cf/CoreMediaSoftLink.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 const UInt32 outputBus = 0;
 const UInt32 inputBus = 1;
@@ -728,6 +728,6 @@ void CoreAudioSharedUnit::setIsInBackground(bool isInBackground)
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM)

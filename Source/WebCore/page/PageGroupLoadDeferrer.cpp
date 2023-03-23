@@ -28,7 +28,7 @@
 #include "PageGroup.h"
 #include "ScriptRunner.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 PageGroupLoadDeferrer::PageGroupLoadDeferrer(Page& page, bool deferSelf)
 {
@@ -76,4 +76,4 @@ PageGroupLoadDeferrer::~PageGroupLoadDeferrer()
 }
 
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -27,7 +27,7 @@
 
 #if PLATFORM(MAC)
 
-namespace WebCore {
+namespace CyberCore {
 enum ThreadViolationBehavior {
     NoThreadCheck,
     LogOnFirstThreadViolation,
@@ -44,16 +44,16 @@ WEBCORE_EXPORT void setDefaultThreadViolationBehavior(ThreadViolationBehavior, T
 WEBCORE_EXPORT void reportThreadViolation(const char* function, ThreadViolationRound);
 }
 
-extern "C" void WebCoreReportThreadViolation(const char* function, WebCore::ThreadViolationRound);
+extern "C" void CyberCoreReportThreadViolation(const char* function, CyberCore::ThreadViolationRound);
 
-#define WebCoreThreadViolationCheckRoundOne() ::WebCore::reportThreadViolation(WTF_PRETTY_FUNCTION, WebCore::ThreadViolationRoundOne)
-#define WebCoreThreadViolationCheckRoundTwo() ::WebCore::reportThreadViolation(WTF_PRETTY_FUNCTION, WebCore::ThreadViolationRoundTwo)
-#define WebCoreThreadViolationCheckRoundThree() ::WebCore::reportThreadViolation(WTF_PRETTY_FUNCTION, WebCore::ThreadViolationRoundThree)
+#define CyberCoreThreadViolationCheckRoundOne() ::CyberCore::reportThreadViolation(WTF_PRETTY_FUNCTION, CyberCore::ThreadViolationRoundOne)
+#define CyberCoreThreadViolationCheckRoundTwo() ::CyberCore::reportThreadViolation(WTF_PRETTY_FUNCTION, CyberCore::ThreadViolationRoundTwo)
+#define CyberCoreThreadViolationCheckRoundThree() ::CyberCore::reportThreadViolation(WTF_PRETTY_FUNCTION, CyberCore::ThreadViolationRoundThree)
 
 #else
 
-#define WebCoreThreadViolationCheckRoundOne() do { } while (0)
-#define WebCoreThreadViolationCheckRoundTwo() do { } while (0)
-#define WebCoreThreadViolationCheckRoundThree() do { } while (0)
+#define CyberCoreThreadViolationCheckRoundOne() do { } while (0)
+#define CyberCoreThreadViolationCheckRoundTwo() do { } while (0)
+#define CyberCoreThreadViolationCheckRoundThree() do { } while (0)
 
 #endif // PLATFORM(MAC)

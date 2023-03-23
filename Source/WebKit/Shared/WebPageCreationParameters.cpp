@@ -26,7 +26,7 @@
 #include "config.h"
 #include "WebPageCreationParameters.h"
 
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 
 namespace WebKit {
 
@@ -305,7 +305,7 @@ std::optional<WebPageCreationParameters> WebPageCreationParameters::decode(IPC::
     if (!decoder.decode(parameters.mediaVolume))
         return std::nullopt;
 
-    std::optional<WebCore::MediaProducerMutedStateFlags> mutedStateFlags;
+    std::optional<CyberCore::MediaProducerMutedStateFlags> mutedStateFlags;
     decoder >> mutedStateFlags;
     if (!mutedStateFlags)
         return std::nullopt;
@@ -356,7 +356,7 @@ std::optional<WebPageCreationParameters> WebPageCreationParameters::decode(IPC::
     parameters.hasResourceLoadClient = WTFMove(*hasResourceLoadClient);
 
 #if PLATFORM(MAC)
-    std::optional<std::optional<WebCore::DestinationColorSpace>> colorSpace;
+    std::optional<std::optional<CyberCore::DestinationColorSpace>> colorSpace;
     decoder >> colorSpace;
     if (!colorSpace)
         return std::nullopt;
@@ -378,7 +378,7 @@ std::optional<WebPageCreationParameters> WebPageCreationParameters::decode(IPC::
         return std::nullopt;
     if (!decoder.decode(parameters.viewportConfigurationViewSize))
         return std::nullopt;
-    std::optional<std::optional<WebCore::ViewportArguments>> overrideViewportArguments;
+    std::optional<std::optional<CyberCore::ViewportArguments>> overrideViewportArguments;
     decoder >> overrideViewportArguments;
     if (!overrideViewportArguments)
         return std::nullopt;
@@ -477,7 +477,7 @@ std::optional<WebPageCreationParameters> WebPageCreationParameters::decode(IPC::
     parameters.urlSchemesWithLegacyCustomProtocolHandlers = WTFMove(*urlSchemesWithLegacyCustomProtocolHandlers);
 
 #if ENABLE(APPLICATION_MANIFEST)
-    std::optional<std::optional<WebCore::ApplicationManifest>> applicationManifest;
+    std::optional<std::optional<CyberCore::ApplicationManifest>> applicationManifest;
     decoder >> applicationManifest;
     if (!applicationManifest)
         return std::nullopt;
@@ -506,13 +506,13 @@ std::optional<WebPageCreationParameters> WebPageCreationParameters::decode(IPC::
     parameters.webExtensionControllerParameters = WTFMove(*webExtensionControllerParameters);
 #endif
 
-    std::optional<std::optional<WebCore::Color>> backgroundColor;
+    std::optional<std::optional<CyberCore::Color>> backgroundColor;
     decoder >> backgroundColor;
     if (!backgroundColor)
         return std::nullopt;
     parameters.backgroundColor = WTFMove(*backgroundColor);
 
-    std::optional<std::optional<WebCore::PageIdentifier>> oldPageID;
+    std::optional<std::optional<CyberCore::PageIdentifier>> oldPageID;
     decoder >> oldPageID;
     if (!oldPageID)
         return std::nullopt;
@@ -655,7 +655,7 @@ std::optional<WebPageCreationParameters> WebPageCreationParameters::decode(IPC::
         return std::nullopt;
     parameters.lookalikeCharacterStrings = WTFMove(*lookalikeCharacterStrings);
 
-    std::optional<Vector<WebCore::LookalikeCharactersSanitizationData>> allowedLookalikeCharacterStrings;
+    std::optional<Vector<CyberCore::LookalikeCharactersSanitizationData>> allowedLookalikeCharacterStrings;
     decoder >> allowedLookalikeCharacterStrings;
     if (!allowedLookalikeCharacterStrings)
         return std::nullopt;

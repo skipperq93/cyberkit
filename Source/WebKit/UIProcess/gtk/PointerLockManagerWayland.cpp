@@ -40,7 +40,7 @@
 #endif
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 PointerLockManagerWayland::PointerLockManagerWayland(WebPageProxy& webPage, const FloatPoint& position, const FloatPoint& globalPosition, WebMouseEventButton button, unsigned short buttons, OptionSet<WebEventModifier> modifiers)
     : PointerLockManager(webPage, position, globalPosition, button, buttons, modifiers)

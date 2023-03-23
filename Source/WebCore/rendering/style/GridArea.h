@@ -35,7 +35,7 @@
 #include <wtf/HashMap.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // A span in a single direction (either rows or columns). Note that |startLine|
 // and |endLine| are grid lines' indexes.
@@ -243,4 +243,4 @@ public:
 
 typedef HashMap<String, GridArea> NamedGridAreaMap;
 
-} // namespace WebCore
+} // namespace CyberCore

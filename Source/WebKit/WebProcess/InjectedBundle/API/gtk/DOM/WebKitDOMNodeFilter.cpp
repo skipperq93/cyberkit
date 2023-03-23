@@ -17,27 +17,27 @@
  */
 
 #include "config.h"
-#include "WebKitDOMNodeFilter.h"
+#include "CyberKitDOMNodeFilter.h"
 
 #include "GObjectNodeFilterCondition.h"
 #include <CyberCore/Document.h>
 #include <CyberCore/NativeNodeFilter.h>
-#include "WebKitDOMNode.h"
-#include "WebKitDOMNodeFilterPrivate.h"
+#include "CyberKitDOMNode.h"
+#include "CyberKitDOMNodeFilterPrivate.h"
 #include <wtf/HashMap.h>
 #include <wtf/NeverDestroyed.h>
 
-typedef WebKitDOMNodeFilterIface WebKitDOMNodeFilterInterface;
+typedef CyberKitDOMNodeFilterIface CyberKitDOMNodeFilterInterface;
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
-G_DEFINE_INTERFACE(WebKitDOMNodeFilter, webkit_dom_node_filter, G_TYPE_OBJECT)
+G_DEFINE_INTERFACE(CyberKitDOMNodeFilter, webkit_dom_node_filter, G_TYPE_OBJECT)
 
-static void webkit_dom_node_filter_default_init(WebKitDOMNodeFilterIface*)
+static void webkit_dom_node_filter_default_init(CyberKitDOMNodeFilterIface*)
 {
 }
 
-gshort webkit_dom_node_filter_accept_node(WebKitDOMNodeFilter* filter, WebKitDOMNode* node)
+gshort webkit_dom_node_filter_accept_node(CyberKitDOMNodeFilter* filter, CyberKitDOMNode* node)
 {
     g_return_val_if_fail(WEBKIT_DOM_IS_NODE_FILTER(filter), WEBKIT_DOM_NODE_FILTER_REJECT);
     g_return_val_if_fail(WEBKIT_DOM_IS_NODE(node), WEBKIT_DOM_NODE_FILTER_REJECT);
@@ -45,22 +45,22 @@ gshort webkit_dom_node_filter_accept_node(WebKitDOMNodeFilter* filter, WebKitDOM
     return WEBKIT_DOM_NODE_FILTER_GET_IFACE(filter)->accept_node(filter, node);
 }
 
-namespace WebKit {
+namespace CyberKit {
 
-static HashMap<WebCore::NodeFilter*, WebKitDOMNodeFilter*>& nodeFilterMap()
+static HashMap<CyberCore::NodeFilter*, CyberKitDOMNodeFilter*>& nodeFilterMap()
 {
-    static NeverDestroyed<HashMap<WebCore::NodeFilter*, WebKitDOMNodeFilter*>> nodeFilterMap;
+    static NeverDestroyed<HashMap<CyberCore::NodeFilter*, CyberKitDOMNodeFilter*>> nodeFilterMap;
     return nodeFilterMap;
 }
 
 static void nodeFilterObjectDestroyedCallback(gpointer coreNodeFilter, GObject* nodeFilter)
 {
-    WebKitDOMNodeFilter* filter = nodeFilterMap().take(static_cast<WebCore::NodeFilter*>(coreNodeFilter));
+    CyberKitDOMNodeFilter* filter = nodeFilterMap().take(static_cast<CyberCore::NodeFilter*>(coreNodeFilter));
     UNUSED_PARAM(nodeFilter);
     ASSERT_UNUSED(filter, reinterpret_cast<GObject*>(filter) == nodeFilter);
 }
 
-WebKitDOMNodeFilter* kit(WebCore::NodeFilter* coreNodeFilter)
+CyberKitDOMNodeFilter* kit(CyberCore::NodeFilter* coreNodeFilter)
 {
     if (!coreNodeFilter)
         return nullptr;
@@ -68,14 +68,14 @@ WebKitDOMNodeFilter* kit(WebCore::NodeFilter* coreNodeFilter)
     return nodeFilterMap().get(coreNodeFilter);
 }
 
-RefPtr<WebCore::NodeFilter> core(WebCore::Document* document, WebKitDOMNodeFilter* nodeFilter)
+RefPtr<CyberCore::NodeFilter> core(CyberCore::Document* document, CyberKitDOMNodeFilter* nodeFilter)
 {
     if (!nodeFilter)
         return nullptr;
 
-    RefPtr<WebCore::NodeFilter> coreNodeFilter = static_cast<WebCore::NodeFilter*>(g_object_get_data(G_OBJECT(nodeFilter), "webkit-core-node-filter"));
+    RefPtr<CyberCore::NodeFilter> coreNodeFilter = static_cast<CyberCore::NodeFilter*>(g_object_get_data(G_OBJECT(nodeFilter), "webkit-core-node-filter"));
     if (!coreNodeFilter) {
-        coreNodeFilter = WebCore::NativeNodeFilter::create(document, WebKit::GObjectNodeFilterCondition::create(nodeFilter));
+        coreNodeFilter = CyberCore::NativeNodeFilter::create(document, CyberKit::GObjectNodeFilterCondition::create(nodeFilter));
         nodeFilterMap().add(coreNodeFilter.get(), nodeFilter);
         g_object_weak_ref(G_OBJECT(nodeFilter), nodeFilterObjectDestroyedCallback, coreNodeFilter.get());
         g_object_set_data(G_OBJECT(nodeFilter), "webkit-core-node-filter", coreNodeFilter.get());
@@ -83,5 +83,5 @@ RefPtr<WebCore::NodeFilter> core(WebCore::Document* document, WebKitDOMNodeFilte
     return coreNodeFilter;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 G_GNUC_END_IGNORE_DEPRECATIONS;

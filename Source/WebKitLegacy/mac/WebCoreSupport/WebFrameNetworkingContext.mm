@@ -38,11 +38,11 @@
 #import <pal/spi/cf/CFNetworkSPI.h>
 
 #if PLATFORM(IOS_FAMILY)
-#import <CyberCore/WebCoreThread.h>
+#import <CyberCore/CyberCoreThread.h>
 #import <CyberKitLegacy/WebFrameLoadDelegate.h>
 #endif
 
-using namespace WebCore;
+using namespace CyberCore;
 
 NetworkStorageSession& WebFrameNetworkingContext::ensurePrivateBrowsingSession()
 {
@@ -97,7 +97,7 @@ NetworkStorageSession* WebFrameNetworkingContext::storageSession() const
     if (frame() && frame()->page() && frame()->page()->sessionID().isEphemeral()) {
         if (auto* session = NetworkStorageSessionMap::storageSession(PAL::SessionID::legacyPrivateSessionID()))
             return session;
-        // Some requests may still be coming shortly before WebCore updates the session ID and after WebKit destroys the private browsing session.
+        // Some requests may still be coming shortly before CyberCore updates the session ID and after CyberKit destroys the private browsing session.
         LOG_ERROR("Invalid session ID. Please file a bug unless you just disabled private browsing, in which case it's an expected race.");
     }
     return &NetworkStorageSessionMap::defaultStorageSession();

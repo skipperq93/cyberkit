@@ -33,7 +33,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Performance;
 class ScriptExecutionContext;
@@ -82,4 +82,4 @@ private:
     bool m_hasNavigationTiming { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

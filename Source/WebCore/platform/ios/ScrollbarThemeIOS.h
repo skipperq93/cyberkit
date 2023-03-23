@@ -29,7 +29,7 @@
 
 #include "ScrollbarThemeComposite.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScrollbarThemeIOS : public ScrollbarThemeComposite {
 public:

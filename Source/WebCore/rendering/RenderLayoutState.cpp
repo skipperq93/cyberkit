@@ -33,7 +33,7 @@
 #include "RenderView.h"
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 RenderLayoutState::RenderLayoutState(RenderElement& renderer, IsPaginated isPaginated)
     : m_clipped(false)
@@ -344,5 +344,5 @@ PaginatedLayoutStateMaintainer::~PaginatedLayoutStateMaintainer()
         m_context.popLayoutState();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 

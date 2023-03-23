@@ -26,7 +26,7 @@
 #include "RenderSVGText.h"
 #include "SVGTextPositioningElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 SVGTextLayoutAttributesBuilder::SVGTextLayoutAttributesBuilder()
     : m_textLength(0)

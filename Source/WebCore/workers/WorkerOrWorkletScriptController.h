@@ -43,7 +43,7 @@ class JSModuleRecord;
 class VM;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class Exception;
 class JSDOMGlobalObject;
@@ -126,4 +126,4 @@ private:
     bool m_isTerminatingExecution WTF_GUARDED_BY_LOCK(m_scheduledTerminationLock) { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

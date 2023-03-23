@@ -28,7 +28,7 @@
 
 #include "Worklet.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 WorkletPendingTasks::WorkletPendingTasks(Worklet& worklet, DOMPromiseDeferred<void>&& promise, int counter)
     : m_worklet(worklet)
@@ -66,4 +66,4 @@ void WorkletPendingTasks::decrementCounter()
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore

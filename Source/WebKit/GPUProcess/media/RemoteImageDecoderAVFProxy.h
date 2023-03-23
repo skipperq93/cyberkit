@@ -56,17 +56,17 @@ public:
     bool allowsExitUnderMemoryPressure() const;
 
 private:
-    void createDecoder(const IPC::SharedBufferReference&, const String& mimeType, CompletionHandler<void(std::optional<WebCore::ImageDecoderIdentifier>&&)>&&);
-    void deleteDecoder(WebCore::ImageDecoderIdentifier);
-    void setExpectedContentSize(WebCore::ImageDecoderIdentifier, long long expectedContentSize);
-    void setData(WebCore::ImageDecoderIdentifier, const IPC::SharedBufferReference&, bool allDataReceived, CompletionHandler<void(size_t frameCount, const WebCore::IntSize& size, bool hasTrack, std::optional<Vector<WebCore::ImageDecoder::FrameInfo>>&&)>&&);
-    void createFrameImageAtIndex(WebCore::ImageDecoderIdentifier, size_t index, CompletionHandler<void(std::optional<WebKit::ShareableBitmapHandle>&&)>&&);
-    void clearFrameBufferCache(WebCore::ImageDecoderIdentifier, size_t index);
+    void createDecoder(const IPC::SharedBufferReference&, const String& mimeType, CompletionHandler<void(std::optional<CyberCore::ImageDecoderIdentifier>&&)>&&);
+    void deleteDecoder(CyberCore::ImageDecoderIdentifier);
+    void setExpectedContentSize(CyberCore::ImageDecoderIdentifier, long long expectedContentSize);
+    void setData(CyberCore::ImageDecoderIdentifier, const IPC::SharedBufferReference&, bool allDataReceived, CompletionHandler<void(size_t frameCount, const CyberCore::IntSize& size, bool hasTrack, std::optional<Vector<CyberCore::ImageDecoder::FrameInfo>>&&)>&&);
+    void createFrameImageAtIndex(CyberCore::ImageDecoderIdentifier, size_t index, CompletionHandler<void(std::optional<WebKit::ShareableBitmapHandle>&&)>&&);
+    void clearFrameBufferCache(CyberCore::ImageDecoderIdentifier, size_t index);
 
-    void encodedDataStatusChanged(WebCore::ImageDecoderIdentifier);
+    void encodedDataStatusChanged(CyberCore::ImageDecoderIdentifier);
 
     WeakPtr<GPUConnectionToWebProcess> m_connectionToWebProcess;
-    HashMap<WebCore::ImageDecoderIdentifier, RefPtr<WebCore::ImageDecoderAVFObjC>> m_imageDecoders;
+    HashMap<CyberCore::ImageDecoderIdentifier, RefPtr<CyberCore::ImageDecoderAVFObjC>> m_imageDecoders;
 };
 
 }

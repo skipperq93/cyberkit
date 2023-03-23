@@ -35,7 +35,7 @@
 #import <pal/cocoa/PassKitSoftLink.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 RetainPtr<PKAutomaticReloadPaymentRequest> platformAutomaticReloadPaymentRequest(const ApplePayAutomaticReloadPaymentRequest& webAutomaticReloadPaymentRequest)
 {

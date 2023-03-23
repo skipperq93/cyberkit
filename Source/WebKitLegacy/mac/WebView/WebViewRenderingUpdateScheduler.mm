@@ -31,8 +31,8 @@
 
 #if PLATFORM(IOS_FAMILY)
 #import <CyberCore/RuntimeApplicationChecks.h>
-#import <CyberCore/WebCoreThread.h>
-#import <CyberCore/WebCoreThreadInternal.h>
+#import <CyberCore/CyberCoreThread.h>
+#import <CyberCore/CyberCoreThreadInternal.h>
 #endif
 
 WebViewRenderingUpdateScheduler::WebViewRenderingUpdateScheduler(WebView* webView)
@@ -40,11 +40,11 @@ WebViewRenderingUpdateScheduler::WebViewRenderingUpdateScheduler(WebView* webVie
 {
     ASSERT_ARG(webView, webView);
 
-    m_renderingUpdateRunLoopObserver = makeUnique<WebCore::RunLoopObserver>(static_cast<CFIndex>(WebCore::RunLoopObserver::WellKnownRunLoopOrders::RenderingUpdate), [this]() {
+    m_renderingUpdateRunLoopObserver = makeUnique<CyberCore::RunLoopObserver>(static_cast<CFIndex>(CyberCore::RunLoopObserver::WellKnownRunLoopOrders::RenderingUpdate), [this]() {
         this->renderingUpdateRunLoopObserverCallback();
     });
 
-    m_postRenderingUpdateRunLoopObserver = makeUnique<WebCore::RunLoopObserver>(static_cast<CFIndex>(WebCore::RunLoopObserver::WellKnownRunLoopOrders::PostRenderingUpdate), [this]() {
+    m_postRenderingUpdateRunLoopObserver = makeUnique<CyberCore::RunLoopObserver>(static_cast<CFIndex>(CyberCore::RunLoopObserver::WellKnownRunLoopOrders::PostRenderingUpdate), [this]() {
         this->postRenderingUpdateCallback();
     });
 }
@@ -137,13 +137,13 @@ void WebViewRenderingUpdateScheduler::postRenderingUpdateCallback()
 
     To avoid flashing, we have to ensure that compositing changes (rendered via
     the CoreAnimation rendering display link) appear on screen at the same time
-    as content painted into the window via the normal WebCore rendering path.
+    as content painted into the window via the normal CyberCore rendering path.
 
     CoreAnimation will commit any layer changes at the end of the runloop via
     its "CA commit" observer. Those changes can then appear onscreen at any time
     when the display link fires, which can result in unsynchronized rendering.
 
-    To fix this, the GraphicsLayerCA code in WebCore does not change the CA
+    To fix this, the GraphicsLayerCA code in CyberCore does not change the CA
     layer tree during style changes and layout; it stores up all changes and
     commits them via flushCompositingState(). There are then two situations in
     which we can call flushCompositingState():

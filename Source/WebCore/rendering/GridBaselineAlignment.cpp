@@ -35,7 +35,7 @@
 #include "RenderStyle.h"
 #include "rendering/style/RenderStyleConstants.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // This function gives the margin 'over' based on the baseline-axis, since in grid we can have 2-dimensional
 // alignment by baseline. In horizontal writing-mode, the row-axis is the horizontal axis. When we use this
@@ -237,4 +237,4 @@ BaselineGroup& BaselineContext::findCompatibleSharedGroup(const RenderBox& child
     return m_sharedGroups[0];
 }
 
-} // namespace WebCore
+} // namespace CyberCore

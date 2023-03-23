@@ -36,7 +36,7 @@
 #include "WPEView.h"
 #endif
 
-using namespace WebCore;
+using namespace CyberCore;
 using namespace WebKit;
 
 struct _WebKitUserContentManagerPrivate {
@@ -396,7 +396,7 @@ public:
     {
     }
 
-    void didPostMessage(WebPageProxy&, FrameInfoData&&, API::ContentWorld&, WebCore::SerializedScriptValue& serializedScriptValue) override
+    void didPostMessage(WebPageProxy&, FrameInfoData&&, API::ContentWorld&, CyberCore::SerializedScriptValue& serializedScriptValue) override
     {
         WebKitJavascriptResult* jsResult = webkitJavascriptResultCreate(serializedScriptValue);
         g_signal_emit(m_manager, signals[SCRIPT_MESSAGE_RECEIVED], m_handlerName, jsResult);
@@ -408,7 +408,7 @@ public:
         return m_supportsAsyncReply;
     }
 
-    void didPostMessageWithAsyncReply(WebPageProxy&, FrameInfoData&&, API::ContentWorld&, WebCore::SerializedScriptValue& serializedScriptValue, WTF::Function<void(API::SerializedScriptValue*, const String&)>&& completionHandler) override
+    void didPostMessageWithAsyncReply(WebPageProxy&, FrameInfoData&&, API::ContentWorld&, CyberCore::SerializedScriptValue& serializedScriptValue, WTF::Function<void(API::SerializedScriptValue*, const String&)>&& completionHandler) override
     {
         WebKitJavascriptResult* jsResult = webkitJavascriptResultCreate(serializedScriptValue);
         WebKitScriptMessageReply* message = webKitScriptMessageReplyCreate(WTFMove(completionHandler));

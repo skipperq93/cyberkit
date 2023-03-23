@@ -136,13 +136,13 @@ void Connection::sendPushMessage()
 {
     ASSERT(m_pushMessage);
 
-    WebKit::Daemon::Encoder encoder;
+    CyberKit::Daemon::Encoder encoder;
     encoder << *m_pushMessage;
 
     auto dictionary = adoptNS(xpc_dictionary_create(nullptr, nullptr, 0));
-    xpc_dictionary_set_uint64(dictionary.get(), WebKit::WebPushD::protocolVersionKey, WebKit::WebPushD::protocolVersionValue);
-    xpc_dictionary_set_value(dictionary.get(), WebKit::WebPushD::protocolEncodedMessageKey, WebKit::vectorToXPCData(encoder.takeBuffer()).get());
-    xpc_dictionary_set_uint64(dictionary.get(), WebKit::WebPushD::protocolMessageTypeKey, static_cast<uint64_t>(WebKit::WebPushD::MessageType::InjectPushMessageForTesting));
+    xpc_dictionary_set_uint64(dictionary.get(), CyberKit::WebPushD::protocolVersionKey, CyberKit::WebPushD::protocolVersionValue);
+    xpc_dictionary_set_value(dictionary.get(), CyberKit::WebPushD::protocolEncodedMessageKey, CyberKit::vectorToXPCData(encoder.takeBuffer()).get());
+    xpc_dictionary_set_uint64(dictionary.get(), CyberKit::WebPushD::protocolMessageTypeKey, static_cast<uint64_t>(CyberKit::WebPushD::MessageType::InjectPushMessageForTesting));
 
     printf("Injecting push message\n");
 
@@ -159,9 +159,9 @@ void Connection::startDebugStreamAction()
 {
     auto dictionary = adoptNS(xpc_dictionary_create(nullptr, nullptr, 0));
     std::array<uint8_t, 1> encodedMessage { 1 };
-    xpc_dictionary_set_uint64(dictionary.get(), WebKit::WebPushD::protocolVersionKey, WebKit::WebPushD::protocolVersionValue);
-    xpc_dictionary_set_uint64(dictionary.get(), WebKit::WebPushD::protocolMessageTypeKey, static_cast<uint64_t>(WebKit::WebPushD::MessageType::SetDebugModeIsEnabled));
-    xpc_dictionary_set_data(dictionary.get(), WebKit::WebPushD::protocolEncodedMessageKey, encodedMessage.data(), encodedMessage.size());
+    xpc_dictionary_set_uint64(dictionary.get(), CyberKit::WebPushD::protocolVersionKey, CyberKit::WebPushD::protocolVersionValue);
+    xpc_dictionary_set_uint64(dictionary.get(), CyberKit::WebPushD::protocolMessageTypeKey, static_cast<uint64_t>(CyberKit::WebPushD::MessageType::SetDebugModeIsEnabled));
+    xpc_dictionary_set_data(dictionary.get(), CyberKit::WebPushD::protocolEncodedMessageKey, encodedMessage.data(), encodedMessage.size());
 
     xpc_connection_send_message(m_connection.get(), dictionary.get());
 
@@ -178,7 +178,7 @@ void Connection::sendAuditToken()
         return;
     }
 
-    WebKit::WebPushD::WebPushDaemonConnectionConfiguration configuration;
+    CyberKit::WebPushD::WebPushDaemonConnectionConfiguration configuration;
     configuration.useMockBundlesForTesting = true;
 
     Vector<uint8_t> tokenVector;
@@ -186,13 +186,13 @@ void Connection::sendAuditToken()
     memcpy(tokenVector.data(), &token, sizeof(token));
     configuration.hostAppAuditTokenData = WTFMove(tokenVector);
 
-    WebKit::Daemon::Encoder encoder;
+    CyberKit::Daemon::Encoder encoder;
     configuration.encode(encoder);
 
     auto dictionary = adoptNS(xpc_dictionary_create(nullptr, nullptr, 0));
-    xpc_dictionary_set_uint64(dictionary.get(), WebKit::WebPushD::protocolVersionKey, WebKit::WebPushD::protocolVersionValue);
-    xpc_dictionary_set_uint64(dictionary.get(), WebKit::WebPushD::protocolMessageTypeKey, static_cast<uint64_t>(WebKit::WebPushD::MessageType::UpdateConnectionConfiguration));
-    xpc_dictionary_set_value(dictionary.get(), WebKit::WebPushD::protocolEncodedMessageKey, WebKit::vectorToXPCData(encoder.takeBuffer()).get());
+    xpc_dictionary_set_uint64(dictionary.get(), CyberKit::WebPushD::protocolVersionKey, CyberKit::WebPushD::protocolVersionValue);
+    xpc_dictionary_set_uint64(dictionary.get(), CyberKit::WebPushD::protocolMessageTypeKey, static_cast<uint64_t>(CyberKit::WebPushD::MessageType::UpdateConnectionConfiguration));
+    xpc_dictionary_set_value(dictionary.get(), CyberKit::WebPushD::protocolEncodedMessageKey, CyberKit::vectorToXPCData(encoder.takeBuffer()).get());
     xpc_connection_send_message(m_connection.get(), dictionary.get());
 }
 

@@ -34,7 +34,7 @@
 
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 class MediaPlayerPrivateGStreamer;
 
 class VideoTrackPrivateGStreamer final : public VideoTrackPrivate, public TrackPrivateBaseGStreamer {
@@ -74,6 +74,6 @@ private:
     WeakPtr<MediaPlayerPrivateGStreamer> m_player;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(VIDEO) && USE(GSTREAMER)

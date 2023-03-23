@@ -98,7 +98,7 @@
             return;
         }
 
-        NSString *mimeType = WebCore::MIMETypeRegistry::mimeTypeForExtension(String(fileURLForRequest.pathExtension));
+        NSString *mimeType = CyberCore::MIMETypeRegistry::mimeTypeForExtension(String(fileURLForRequest.pathExtension));
         if (!mimeType)
             mimeType = @"application/octet-stream";
 

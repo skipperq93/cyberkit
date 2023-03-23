@@ -29,7 +29,7 @@
 #include "ImageTypes.h"
 #include <wtf/FastMalloc.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class GraphicsContext;
 class ImageBuffer;
@@ -63,4 +63,4 @@ private:
     FloatRect m_sourceRect;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -33,7 +33,7 @@
 #include "CSSSelectorList.h"
 #include "RuleSet.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace Style {
 
 static bool isSiblingOrSubject(MatchElement matchElement)
@@ -466,4 +466,4 @@ void RuleFeatureSet::shrinkToFit()
 }
 
 } // namespace Style
-} // namespace WebCore
+} // namespace CyberCore

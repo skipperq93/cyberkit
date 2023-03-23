@@ -31,7 +31,7 @@
 #include "NotImplemented.h"
 #include "Widget.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 int screenDepth(Widget*)
 {
@@ -104,4 +104,4 @@ bool screenIsTouchPrimaryInputDevice()
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -29,7 +29,7 @@
 #include "Gradient.h"
 #include "Pattern.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SourceBrush {
 public:
@@ -108,4 +108,4 @@ inline bool operator!=(const SourceBrush& a, const SourceBrush& b)
 
 WTF::TextStream& operator<<(WTF::TextStream&, const SourceBrush&);
 
-} // namespace WebCore
+} // namespace CyberCore

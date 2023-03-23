@@ -36,7 +36,7 @@
 
 namespace WebKit {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 constexpr unsigned maxFireCountWithoutObservers { 20 };
 

@@ -34,7 +34,7 @@
 #include <wtf/text/AtomString.h>
 #include <wtf/text/AtomStringHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class SystemFontKind : uint8_t {
     SystemUI,
@@ -147,4 +147,4 @@ inline unsigned SystemFontDatabaseCoreText::CascadeListParameters::Hash::hash(co
     return computeHash(parameters);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

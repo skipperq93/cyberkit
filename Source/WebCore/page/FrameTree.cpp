@@ -34,7 +34,7 @@
 #include <wtf/text/StringBuilder.h>
 #include <wtf/text/StringConcatenateNumbers.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 FrameTree::FrameTree(AbstractFrame& thisFrame, AbstractFrame* parentFrame)
     : m_thisFrame(static_cast<Frame&>(thisFrame))
@@ -558,7 +558,7 @@ bool isTopTargetFrameName(StringView name)
     return equalIgnoringASCIICase(name, "_top"_s);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #ifndef NDEBUG
 
@@ -568,7 +568,7 @@ static void printIndent(int indent)
         printf("    ");
 }
 
-static void printFrames(const WebCore::AbstractFrame& frame, const WebCore::AbstractFrame* targetFrame, int indent)
+static void printFrames(const CyberCore::AbstractFrame& frame, const CyberCore::AbstractFrame* targetFrame, int indent)
 {
     if (&frame == targetFrame) {
         printf("--> ");
@@ -576,7 +576,7 @@ static void printFrames(const WebCore::AbstractFrame& frame, const WebCore::Abst
     } else
         printIndent(indent);
 
-    auto* localFrame = dynamicDowncast<WebCore::Frame>(frame);
+    auto* localFrame = dynamicDowncast<CyberCore::Frame>(frame);
     if (!localFrame) {
         printf("RemoteFrame %p\n", &frame);
         return;
@@ -601,7 +601,7 @@ static void printFrames(const WebCore::AbstractFrame& frame, const WebCore::Abst
         printFrames(*child, targetFrame, indent + 1);
 }
 
-void showFrameTree(const WebCore::AbstractFrame* frame)
+void showFrameTree(const CyberCore::AbstractFrame* frame)
 {
     if (!frame) {
         printf("Null input frame\n");

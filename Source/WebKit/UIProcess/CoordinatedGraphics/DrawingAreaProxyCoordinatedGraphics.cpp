@@ -47,7 +47,7 @@
 #endif
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 DrawingAreaProxyCoordinatedGraphics::DrawingAreaProxyCoordinatedGraphics(WebPageProxy& webPageProxy)
     : DrawingAreaProxy(DrawingAreaType::CoordinatedGraphics, webPageProxy)

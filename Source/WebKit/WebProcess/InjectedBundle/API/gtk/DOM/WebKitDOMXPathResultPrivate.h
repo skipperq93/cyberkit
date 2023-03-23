@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -17,16 +17,16 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitDOMXPathResultPrivate_h
-#define WebKitDOMXPathResultPrivate_h
+#ifndef CyberKitDOMXPathResultPrivate_h
+#define CyberKitDOMXPathResultPrivate_h
 
 #include <CyberCore/XPathResult.h>
-#include <webkitdom/WebKitDOMXPathResult.h>
+#include <webkitdom/CyberKitDOMXPathResult.h>
 
-namespace WebKit {
-WebKitDOMXPathResult* wrapXPathResult(WebCore::XPathResult*);
-WebKitDOMXPathResult* kit(WebCore::XPathResult*);
-WebCore::XPathResult* core(WebKitDOMXPathResult*);
-} // namespace WebKit
+namespace CyberKit {
+CyberKitDOMXPathResult* wrapXPathResult(CyberCore::XPathResult*);
+CyberKitDOMXPathResult* kit(CyberCore::XPathResult*);
+CyberCore::XPathResult* core(CyberKitDOMXPathResult*);
+} // namespace CyberKit
 
-#endif /* WebKitDOMXPathResultPrivate_h */
+#endif /* CyberKitDOMXPathResultPrivate_h */

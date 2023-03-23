@@ -57,7 +57,7 @@
 #include "Settings.h"
 #include <wtf/CompletionHandler.h>
 
-namespace WebCore {
+namespace CyberCore {
     
 using namespace HTMLNames;
 
@@ -406,4 +406,4 @@ bool FrameLoader::SubframeLoader::shouldConvertInvalidURLsToBlank() const
     return m_frame.settings().shouldConvertInvalidURLsToBlank();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

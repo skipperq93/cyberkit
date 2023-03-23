@@ -31,27 +31,27 @@
 
 namespace TestWebKitAPI {
 
-TEST(WebCore, ContextMenuAction_IsValidEnum)
+TEST(CyberCore, ContextMenuAction_IsValidEnum)
 {
-    EXPECT_FALSE(WTF::isValidEnum<WebCore::ContextMenuAction>(WebCore::ContextMenuAction::ContextMenuItemTagNoAction - 1));
-    EXPECT_TRUE(WTF::isValidEnum<WebCore::ContextMenuAction>(WebCore::ContextMenuAction::ContextMenuItemTagNoAction));
-    EXPECT_TRUE(WTF::isValidEnum<WebCore::ContextMenuAction>(WebCore::ContextMenuAction::ContextMenuItemTagNoAction + 1));
+    EXPECT_FALSE(WTF::isValidEnum<CyberCore::ContextMenuAction>(CyberCore::ContextMenuAction::ContextMenuItemTagNoAction - 1));
+    EXPECT_TRUE(WTF::isValidEnum<CyberCore::ContextMenuAction>(CyberCore::ContextMenuAction::ContextMenuItemTagNoAction));
+    EXPECT_TRUE(WTF::isValidEnum<CyberCore::ContextMenuAction>(CyberCore::ContextMenuAction::ContextMenuItemTagNoAction + 1));
 
-    EXPECT_TRUE(WTF::isValidEnum<WebCore::ContextMenuAction>(WebCore::ContextMenuAction::ContextMenuItemLastNonCustomTag - 1));
-    EXPECT_TRUE(WTF::isValidEnum<WebCore::ContextMenuAction>(WebCore::ContextMenuAction::ContextMenuItemLastNonCustomTag));
-    EXPECT_FALSE(WTF::isValidEnum<WebCore::ContextMenuAction>(WebCore::ContextMenuAction::ContextMenuItemLastNonCustomTag + 1));
+    EXPECT_TRUE(WTF::isValidEnum<CyberCore::ContextMenuAction>(CyberCore::ContextMenuAction::ContextMenuItemLastNonCustomTag - 1));
+    EXPECT_TRUE(WTF::isValidEnum<CyberCore::ContextMenuAction>(CyberCore::ContextMenuAction::ContextMenuItemLastNonCustomTag));
+    EXPECT_FALSE(WTF::isValidEnum<CyberCore::ContextMenuAction>(CyberCore::ContextMenuAction::ContextMenuItemLastNonCustomTag + 1));
 
-    EXPECT_FALSE(WTF::isValidEnum<WebCore::ContextMenuAction>(WebCore::ContextMenuAction::ContextMenuItemBaseCustomTag - 1));
-    EXPECT_TRUE(WTF::isValidEnum<WebCore::ContextMenuAction>(WebCore::ContextMenuAction::ContextMenuItemBaseCustomTag));
-    EXPECT_TRUE(WTF::isValidEnum<WebCore::ContextMenuAction>(WebCore::ContextMenuAction::ContextMenuItemBaseCustomTag + 1));
-    EXPECT_TRUE(WTF::isValidEnum<WebCore::ContextMenuAction>(WebCore::ContextMenuAction::ContextMenuItemLastCustomTag - 1));
-    EXPECT_TRUE(WTF::isValidEnum<WebCore::ContextMenuAction>(WebCore::ContextMenuAction::ContextMenuItemLastCustomTag));
-    EXPECT_FALSE(WTF::isValidEnum<WebCore::ContextMenuAction>(WebCore::ContextMenuAction::ContextMenuItemLastCustomTag + 1));
+    EXPECT_FALSE(WTF::isValidEnum<CyberCore::ContextMenuAction>(CyberCore::ContextMenuAction::ContextMenuItemBaseCustomTag - 1));
+    EXPECT_TRUE(WTF::isValidEnum<CyberCore::ContextMenuAction>(CyberCore::ContextMenuAction::ContextMenuItemBaseCustomTag));
+    EXPECT_TRUE(WTF::isValidEnum<CyberCore::ContextMenuAction>(CyberCore::ContextMenuAction::ContextMenuItemBaseCustomTag + 1));
+    EXPECT_TRUE(WTF::isValidEnum<CyberCore::ContextMenuAction>(CyberCore::ContextMenuAction::ContextMenuItemLastCustomTag - 1));
+    EXPECT_TRUE(WTF::isValidEnum<CyberCore::ContextMenuAction>(CyberCore::ContextMenuAction::ContextMenuItemLastCustomTag));
+    EXPECT_FALSE(WTF::isValidEnum<CyberCore::ContextMenuAction>(CyberCore::ContextMenuAction::ContextMenuItemLastCustomTag + 1));
 
-    EXPECT_FALSE(WTF::isValidEnum<WebCore::ContextMenuAction>(WebCore::ContextMenuAction::ContextMenuItemBaseApplicationTag - 1));
-    EXPECT_TRUE(WTF::isValidEnum<WebCore::ContextMenuAction>(WebCore::ContextMenuAction::ContextMenuItemBaseApplicationTag));
-    EXPECT_TRUE(WTF::isValidEnum<WebCore::ContextMenuAction>(WebCore::ContextMenuAction::ContextMenuItemBaseApplicationTag + 1));
-    EXPECT_TRUE(WTF::isValidEnum<WebCore::ContextMenuAction>(std::numeric_limits<int>::max()));
+    EXPECT_FALSE(WTF::isValidEnum<CyberCore::ContextMenuAction>(CyberCore::ContextMenuAction::ContextMenuItemBaseApplicationTag - 1));
+    EXPECT_TRUE(WTF::isValidEnum<CyberCore::ContextMenuAction>(CyberCore::ContextMenuAction::ContextMenuItemBaseApplicationTag));
+    EXPECT_TRUE(WTF::isValidEnum<CyberCore::ContextMenuAction>(CyberCore::ContextMenuAction::ContextMenuItemBaseApplicationTag + 1));
+    EXPECT_TRUE(WTF::isValidEnum<CyberCore::ContextMenuAction>(std::numeric_limits<int>::max()));
 }
 
 } // namespace TestWebKitAPI

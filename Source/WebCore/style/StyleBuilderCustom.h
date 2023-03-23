@@ -56,7 +56,7 @@
 #include "StyleScope.h"
 #include "WillChangeData.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace Style {
 
 #define DECLARE_PROPERTY_CUSTOM_HANDLERS(property) \

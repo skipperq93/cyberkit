@@ -37,7 +37,7 @@
 
 #include <pal/cocoa/MediaToolboxSoftLink.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 MediaPlayerEnums::SupportsType SourceBufferParser::isContentTypeSupported(const ContentType& type)
 {
@@ -170,6 +170,6 @@ RefPtr<SharedBuffer> SourceBufferParser::Segment::getSharedBuffer() const
     );
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_SOURCE)

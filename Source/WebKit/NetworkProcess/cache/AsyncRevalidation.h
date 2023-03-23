@@ -33,7 +33,7 @@
 #include <wtf/CompletionHandler.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 enum class NetworkConnectionIntegrity : uint16_t;
 class ResourceRequest;
 };
@@ -52,7 +52,7 @@ public:
         Timeout,
         Success,
     };
-    AsyncRevalidation(Cache&, const GlobalFrameID&, const WebCore::ResourceRequest&, std::unique_ptr<NetworkCache::Entry>&&, std::optional<NavigatingToAppBoundDomain>, bool allowPrivacyProxy, OptionSet<WebCore::NetworkConnectionIntegrity> networkConnectionIntegrityPolicy, CompletionHandler<void(Result)>&&);
+    AsyncRevalidation(Cache&, const GlobalFrameID&, const CyberCore::ResourceRequest&, std::unique_ptr<NetworkCache::Entry>&&, std::optional<NavigatingToAppBoundDomain>, bool allowPrivacyProxy, OptionSet<CyberCore::NetworkConnectionIntegrity> networkConnectionIntegrityPolicy, CompletionHandler<void(Result)>&&);
     void cancel();
 
     const SpeculativeLoad& load() const { return *m_load; }
@@ -61,7 +61,7 @@ private:
     void staleWhileRevalidateEnding();
 
     std::unique_ptr<SpeculativeLoad> m_load;
-    WebCore::Timer m_timer;
+    CyberCore::Timer m_timer;
     CompletionHandler<void(Result)> m_completionHandler;
 };
 

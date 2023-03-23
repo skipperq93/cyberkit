@@ -36,7 +36,7 @@
 #include FT_MODULE_H
 #include <mutex>
 
-namespace WebCore {
+namespace CyberCore {
 
 static void releaseCustomFontData(void* data)
 {

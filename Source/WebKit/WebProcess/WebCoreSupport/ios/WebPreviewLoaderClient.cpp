@@ -36,9 +36,9 @@
 #include <wtf/HashMap.h>
 #include <wtf/NeverDestroyed.h>
 
-namespace WebKit {
+namespace CyberKit {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 WebPreviewLoaderClient::WebPreviewLoaderClient(const String& fileName, const String& uti, PageIdentifier pageID)
     : m_fileName { fileName }
@@ -86,6 +86,6 @@ void WebPreviewLoaderClient::didRequestPassword(Function<void(const String&)>&& 
     webPage->requestPasswordForQuickLookDocumentInMainFrame(m_fileName, WTFMove(completionHandler));
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(QUICK_LOOK)

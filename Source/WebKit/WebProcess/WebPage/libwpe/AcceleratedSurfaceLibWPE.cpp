@@ -33,8 +33,8 @@
 #include <wpe/wpe-egl.h>
 #include <wtf/UniStdExtras.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 std::unique_ptr<AcceleratedSurfaceLibWPE> AcceleratedSurfaceLibWPE::create(WebPage& webPage, Client& client)
 {
@@ -112,6 +112,6 @@ void AcceleratedSurfaceLibWPE::didRenderFrame()
     wpe_renderer_backend_egl_target_frame_rendered(m_backend);
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(WPE_RENDERER)

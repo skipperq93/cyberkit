@@ -28,7 +28,7 @@
 #include <wtf/FastMalloc.h>
 #include <wtf/Noncopyable.h>
 
-namespace WebCore {
+namespace CyberCore {
 class SQLiteStatement;
 
 class SQLiteStatementAutoResetScope {
@@ -49,4 +49,4 @@ private:
     SQLiteStatement* m_statement;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

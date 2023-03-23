@@ -29,13 +29,13 @@
 #import "WebArchive.h"
 #import <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
     class LegacyWebArchive;
 }
 
 @interface WebArchive (WebInternal)
 
-- (id)_initWithCoreLegacyWebArchive:(WTF::RefPtr<WebCore::LegacyWebArchive>&&)coreLegacyWebArchive;
-- (WebCore::LegacyWebArchive *)_coreLegacyWebArchive;
+- (id)_initWithCoreLegacyWebArchive:(WTF::RefPtr<CyberCore::LegacyWebArchive>&&)coreLegacyWebArchive;
+- (CyberCore::LegacyWebArchive *)_coreLegacyWebArchive;
 
 @end

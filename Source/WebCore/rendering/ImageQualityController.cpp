@@ -32,7 +32,7 @@
 #include "RenderBoxModelObject.h"
 #include "RenderView.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static const double cInterpolationCutoff = 800. * 800.;
 static const Seconds lowQualityTimeThreshold { 500_ms };

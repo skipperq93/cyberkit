@@ -35,20 +35,20 @@ namespace WebKit {
 
 class ScrollingTreeScrollingNodeDelegateIOS;
 
-class ScrollingTreeOverflowScrollingNodeIOS final : public WebCore::ScrollingTreeOverflowScrollingNode {
+class ScrollingTreeOverflowScrollingNodeIOS final : public CyberCore::ScrollingTreeOverflowScrollingNode {
 public:
-    static Ref<ScrollingTreeOverflowScrollingNodeIOS> create(WebCore::ScrollingTree&, WebCore::ScrollingNodeID);
+    static Ref<ScrollingTreeOverflowScrollingNodeIOS> create(CyberCore::ScrollingTree&, CyberCore::ScrollingNodeID);
     virtual ~ScrollingTreeOverflowScrollingNodeIOS();
 
     UIScrollView* scrollView() const;
 
 private:
-    ScrollingTreeOverflowScrollingNodeIOS(WebCore::ScrollingTree&, WebCore::ScrollingNodeID);
+    ScrollingTreeOverflowScrollingNodeIOS(CyberCore::ScrollingTree&, CyberCore::ScrollingNodeID);
 
     ScrollingTreeScrollingNodeDelegateIOS& delegate() const;
 
-    void commitStateBeforeChildren(const WebCore::ScrollingStateNode&) final;
-    void commitStateAfterChildren(const WebCore::ScrollingStateNode&) final;
+    void commitStateBeforeChildren(const CyberCore::ScrollingStateNode&) final;
+    void commitStateAfterChildren(const CyberCore::ScrollingStateNode&) final;
     
     void repositionScrollingLayers() final;
 };

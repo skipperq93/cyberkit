@@ -38,7 +38,7 @@
 #include <memory>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class GraphicsLayerContentsDisplayDelegate;
 class ProcessIdentity;
@@ -53,7 +53,7 @@ class ImageRotationSessionVT;
 
 class WEBCORE_EXPORT GraphicsContextGLCocoa : public GraphicsContextGLANGLE {
 public:
-    static RefPtr<GraphicsContextGLCocoa> create(WebCore::GraphicsContextGLAttributes&&, ProcessIdentity&& resourceOwner);
+    static RefPtr<GraphicsContextGLCocoa> create(CyberCore::GraphicsContextGLAttributes&&, ProcessIdentity&& resourceOwner);
     ~GraphicsContextGLCocoa();
     IOSurface* displayBuffer();
     void markDisplayBufferInUse();
@@ -94,7 +94,7 @@ public:
     void updateContextOnDisplayReconfiguration();
 #endif
 protected:
-    GraphicsContextGLCocoa(WebCore::GraphicsContextGLAttributes&&, ProcessIdentity&& resourceOwner);
+    GraphicsContextGLCocoa(CyberCore::GraphicsContextGLAttributes&&, ProcessIdentity&& resourceOwner);
 
     // GraphicsContextGLANGLE overrides.
     bool platformInitializeContext() final;

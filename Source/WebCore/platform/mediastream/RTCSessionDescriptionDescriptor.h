@@ -37,7 +37,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RTCSessionDescriptionDescriptor : public RefCounted<RTCSessionDescriptionDescriptor> {
 public:
@@ -57,6 +57,6 @@ private:
     String m_sdp;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

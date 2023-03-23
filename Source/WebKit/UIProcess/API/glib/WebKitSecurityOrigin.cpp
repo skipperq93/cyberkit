@@ -42,12 +42,12 @@
  */
 
 struct _WebKitSecurityOrigin {
-    explicit _WebKitSecurityOrigin(WebCore::SecurityOriginData&& data)
+    explicit _WebKitSecurityOrigin(CyberCore::SecurityOriginData&& data)
         : securityOriginData(WTFMove(data))
     {
     }
 
-    WebCore::SecurityOriginData securityOriginData;
+    CyberCore::SecurityOriginData securityOriginData;
     CString protocol;
     CString host;
     int referenceCount { 1 };
@@ -55,14 +55,14 @@ struct _WebKitSecurityOrigin {
 
 G_DEFINE_BOXED_TYPE(WebKitSecurityOrigin, webkit_security_origin, webkit_security_origin_ref, webkit_security_origin_unref)
 
-WebKitSecurityOrigin* webkitSecurityOriginCreate(WebCore::SecurityOriginData&& data)
+WebKitSecurityOrigin* webkitSecurityOriginCreate(CyberCore::SecurityOriginData&& data)
 {
     WebKitSecurityOrigin* origin = static_cast<WebKitSecurityOrigin*>(fastMalloc(sizeof(WebKitSecurityOrigin)));
     new (origin) WebKitSecurityOrigin(WTFMove(data));
     return origin;
 }
 
-const WebCore::SecurityOriginData& webkitSecurityOriginGetSecurityOriginData(WebKitSecurityOrigin* origin)
+const CyberCore::SecurityOriginData& webkitSecurityOriginGetSecurityOriginData(WebKitSecurityOrigin* origin)
 {
     ASSERT(origin);
     return origin->securityOriginData;
@@ -91,7 +91,7 @@ WebKitSecurityOrigin* webkit_security_origin_new(const gchar* protocol, const gc
     if (port && !WTF::isDefaultPortForProtocol(port, StringView::fromLatin1(protocol)))
         optionalPort = port;
 
-    return webkitSecurityOriginCreate(WebCore::SecurityOriginData(String::fromUTF8(protocol), String::fromUTF8(host), optionalPort));
+    return webkitSecurityOriginCreate(CyberCore::SecurityOriginData(String::fromUTF8(protocol), String::fromUTF8(host), optionalPort));
 }
 
 /**
@@ -112,7 +112,7 @@ WebKitSecurityOrigin* webkit_security_origin_new_for_uri(const gchar* uri)
 {
     g_return_val_if_fail(uri, nullptr);
 
-    return webkitSecurityOriginCreate(WebCore::SecurityOriginData::fromURLWithoutStrictOpaqueness(URL { String::fromUTF8(uri) }));
+    return webkitSecurityOriginCreate(CyberCore::SecurityOriginData::fromURLWithoutStrictOpaqueness(URL { String::fromUTF8(uri) }));
 }
 
 /**

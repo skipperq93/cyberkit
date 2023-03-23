@@ -26,7 +26,7 @@
 #include "config.h"
 #include "DisplayListIterator.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace DisplayList {
 
 bool DisplayList::Iterator::atEnd() const

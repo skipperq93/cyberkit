@@ -108,7 +108,7 @@ const TestFeatures& TestOptions::defaults()
             { "WebSQLEnabled", true },
             { "XSSAuditorEnabled", false },
 
-            // FIXME: These experimental features are currently the only ones not enabled for WebKitLegacy, we
+            // FIXME: These experimental features are currently the only ones not enabled for CyberKitLegacy, we
             // should either enable them or stop exposing them (as we do with with preferences).
             // All other experimental features are automatically enabled regardless of their specified defaults.
             { "AsyncClipboardAPIEnabled", false },

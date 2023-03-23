@@ -54,7 +54,7 @@
 #include "PDFDocumentImage.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 CachedImage::CachedImage(CachedResourceRequest&& request, PAL::SessionID sessionID, const CookieJar* cookieJar)
     : CachedResource(WTFMove(request), Type::ImageResource, sessionID, cookieJar)
@@ -773,4 +773,4 @@ bool CachedImage::isVisibleInViewport(const Document& document) const
     return false;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

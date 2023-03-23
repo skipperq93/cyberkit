@@ -31,7 +31,7 @@
 #include "GPUConnectionToWebProcess.h"
 #include "Logging.h"
 #include "RemoteAudioDestinationManagerMessages.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebProcess.h"
 #include <CyberCore/AudioBus.h>
 #include <CyberCore/AudioUtilities.h>
@@ -53,7 +53,7 @@ constexpr size_t ringBufferSizeInSecond = 2;
 constexpr unsigned maxAudioBufferListSampleCount = 4096;
 #endif
 
-using AudioIOCallback = WebCore::AudioIOCallback;
+using AudioIOCallback = CyberCore::AudioIOCallback;
 
 Ref<RemoteAudioDestinationProxy> RemoteAudioDestinationProxy::create(AudioIOCallback& callback,
     const String& inputDeviceId, unsigned numberOfInputChannels, unsigned numberOfOutputChannels, float sampleRate)
@@ -62,7 +62,7 @@ Ref<RemoteAudioDestinationProxy> RemoteAudioDestinationProxy::create(AudioIOCall
 }
 
 RemoteAudioDestinationProxy::RemoteAudioDestinationProxy(AudioIOCallback& callback, const String& inputDeviceId, unsigned numberOfInputChannels, unsigned numberOfOutputChannels, float sampleRate)
-    : WebCore::AudioDestinationResampler(callback, numberOfOutputChannels, sampleRate, hardwareSampleRate())
+    : CyberCore::AudioDestinationResampler(callback, numberOfOutputChannels, sampleRate, hardwareSampleRate())
     , m_inputDeviceId(inputDeviceId)
     , m_numberOfInputChannels(numberOfInputChannels)
     , m_remoteSampleRate(hardwareSampleRate())
@@ -79,9 +79,9 @@ void RemoteAudioDestinationProxy::startRenderingThread()
             if (m_shouldStopThread)
                 break;
 
-            unsigned frameCount = WebCore::AudioUtilities::renderQuantumSize;
+            unsigned frameCount = CyberCore::AudioUtilities::renderQuantumSize;
             while (m_renderSemaphore.waitFor(0_s))
-                frameCount += WebCore::AudioUtilities::renderQuantumSize;
+                frameCount += CyberCore::AudioUtilities::renderQuantumSize;
 
             renderAudio(frameCount);
         } while (!m_shouldStopThread);
@@ -115,7 +115,7 @@ IPC::Connection* RemoteAudioDestinationProxy::connection()
         auto [ringBuffer, handle] = ProducerSharedCARingBuffer::allocate(streamFormat, numberOfFrames);
         m_ringBuffer = WTFMove(ringBuffer);
         m_gpuProcessConnection->connection().send(Messages::RemoteAudioDestinationManager::AudioSamplesStorageChanged { m_destinationID, WTFMove(handle) }, 0);
-        m_audioBufferList = makeUnique<WebCore::WebAudioBufferList>(streamFormat);
+        m_audioBufferList = makeUnique<CyberCore::WebAudioBufferList>(streamFormat);
         m_audioBufferList->setSampleCount(maxAudioBufferListSampleCount);
 #endif
 

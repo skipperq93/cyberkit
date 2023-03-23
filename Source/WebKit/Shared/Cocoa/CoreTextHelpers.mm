@@ -31,12 +31,12 @@
 
 namespace WebKit {
 
-WebCore::CocoaFont *fontWithAttributes(NSDictionary *attributes, CGFloat size)
+CyberCore::CocoaFont *fontWithAttributes(NSDictionary *attributes, CGFloat size)
 {
     BEGIN_BLOCK_OBJC_EXCEPTIONS
 
-    auto descriptor = [WebCore::CocoaFontDescriptor fontDescriptorWithFontAttributes:attributes];
-    return [WebCore::CocoaFont fontWithDescriptor:descriptor size:size];
+    auto descriptor = [CyberCore::CocoaFontDescriptor fontDescriptorWithFontAttributes:attributes];
+    return [CyberCore::CocoaFont fontWithDescriptor:descriptor size:size];
 
     END_BLOCK_OBJC_EXCEPTIONS
 

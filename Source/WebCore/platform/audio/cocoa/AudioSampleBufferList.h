@@ -36,7 +36,7 @@
 typedef struct AudioStreamBasicDescription AudioStreamBasicDescription;
 typedef struct OpaqueAudioConverter* AudioConverterRef;
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioSampleBufferList : public RefCounted<AudioSampleBufferList> {
 public:
@@ -94,4 +94,4 @@ inline size_t AudioSampleBufferList::audioBufferListSizeForStream(const CAAudioS
     return offsetof(AudioBufferList, mBuffers) + (sizeof(AudioBuffer) * std::max<uint32_t>(1, description.numberOfChannelStreams()));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

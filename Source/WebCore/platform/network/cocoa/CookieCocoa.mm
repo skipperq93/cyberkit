@@ -29,7 +29,7 @@
 // FIXME: Remove NS_ASSUME_NONNULL_BEGIN/END and all _Nullable annotations once we remove the NSHTTPCookie forward declaration below.
 NS_ASSUME_NONNULL_BEGIN
 
-namespace WebCore {
+namespace CyberCore {
 
 static Vector<uint16_t> portVectorFromList(NSArray<NSNumber *> *portList)
 {
@@ -202,4 +202,4 @@ unsigned Cookie::hash() const
 
 NS_ASSUME_NONNULL_END
 
-} // namespace WebCore
+} // namespace CyberCore

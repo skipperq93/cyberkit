@@ -32,8 +32,8 @@
 #include <CyberCore/PlatformScreen.h>
 #include <CyberCore/PointerCharacteristics.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 void WebPage::platformReinitialize()
 {
@@ -81,4 +81,4 @@ OptionSet<PointerCharacteristics> WebPage::pointerCharacteristicsOfAllAvailableP
     return PointerCharacteristics::Fine;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

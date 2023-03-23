@@ -43,7 +43,7 @@ class WebPageProxy;
 class PointerLockManagerWayland final : public PointerLockManager {
     WTF_MAKE_NONCOPYABLE(PointerLockManagerWayland); WTF_MAKE_FAST_ALLOCATED;
 public:
-    PointerLockManagerWayland(WebPageProxy&, const WebCore::FloatPoint&, const WebCore::FloatPoint&, WebMouseEventButton, unsigned short, OptionSet<WebEventModifier>);
+    PointerLockManagerWayland(WebPageProxy&, const CyberCore::FloatPoint&, const CyberCore::FloatPoint&, WebMouseEventButton, unsigned short, OptionSet<WebEventModifier>);
     ~PointerLockManagerWayland();
 
 private:
@@ -53,7 +53,7 @@ private:
     bool lock() override;
     bool unlock() override;
 
-    WebCore::WlUniquePtr<struct wl_registry> m_registry;
+    CyberCore::WlUniquePtr<struct wl_registry> m_registry;
     struct zwp_pointer_constraints_v1* m_pointerConstraints { nullptr };
     struct zwp_locked_pointer_v1* m_lockedPointer { nullptr };
     struct zwp_relative_pointer_manager_v1* m_relativePointerManager { nullptr };

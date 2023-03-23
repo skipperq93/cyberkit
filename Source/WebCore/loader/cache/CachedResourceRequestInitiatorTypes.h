@@ -28,7 +28,7 @@
 #include "ThreadGlobalData.h"
 #include <wtf/text/AtomString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct CachedResourceRequestInitiatorTypes {
     CachedResourceRequestInitiatorTypes();
@@ -49,4 +49,4 @@ inline const CachedResourceRequestInitiatorTypes& cachedResourceRequestInitiator
     return threadGlobalData().cachedResourceRequestInitiatorTypes();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

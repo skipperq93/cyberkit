@@ -53,7 +53,7 @@ static bool didFinishLoad;
 
 namespace TestWebKitAPI {
 
-TEST(WebKitLegacy, StopLoadingFromDidReceiveResponse)
+TEST(CyberKitLegacy, StopLoadingFromDidReceiveResponse)
 {
     @autoreleasepool {
         RetainPtr<WebView> webView = adoptNS([[WebView alloc] initWithFrame:NSMakeRect(0, 0, 120, 200) frameName:nil groupName:nil]);

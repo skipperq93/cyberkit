@@ -27,7 +27,7 @@
 
 #import "SearchPopupMenu.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 WEBCORE_EXPORT void saveRecentSearchesToFile(const String& name, const Vector<RecentSearch>&, const String& directory);
 WEBCORE_EXPORT Vector<RecentSearch> loadRecentSearchesFromFile(const String& name, const String& directory);

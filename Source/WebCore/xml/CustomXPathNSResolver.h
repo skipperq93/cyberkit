@@ -30,7 +30,7 @@
 #include "XPathNSResolver.h"
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CustomXPathNSResolver : public XPathNSResolver, public ActiveDOMCallback {
 public:
@@ -41,4 +41,4 @@ public:
     AtomString lookupNamespaceURI(const AtomString& prefix);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

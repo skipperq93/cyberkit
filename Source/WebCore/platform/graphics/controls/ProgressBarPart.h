@@ -28,7 +28,7 @@
 #include "ControlPart.h"
 #include <wtf/Seconds.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ProgressBarPart : public ControlPart {
 public:
@@ -46,6 +46,6 @@ private:
     Seconds m_animationStartTime;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CONTROL_PART(ProgressBar)

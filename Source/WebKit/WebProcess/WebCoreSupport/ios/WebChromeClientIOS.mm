@@ -32,7 +32,7 @@
 #import "InteractionInformationAtPosition.h"
 #import "InteractionInformationRequest.h"
 #import "UIKitSPI.h"
-#import "WebCoreArgumentCoders.h"
+#import "CyberCoreArgumentCoders.h"
 #import "WebFrame.h"
 #import "WebIconUtilities.h"
 #import "WebPage.h"
@@ -45,8 +45,8 @@
 #import <CyberCore/PlatformMouseEvent.h>
 #import <wtf/RefPtr.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 #if ENABLE(IOS_TOUCH_EVENTS)
 
@@ -64,17 +64,17 @@ void WebChromeClient::didReceiveMobileDocType(bool isMobileDoctype)
     m_page.didReceiveMobileDocType(isMobileDoctype);
 }
 
-void WebChromeClient::setNeedsScrollNotifications(WebCore::Frame&, bool)
+void WebChromeClient::setNeedsScrollNotifications(CyberCore::Frame&, bool)
 {
     notImplemented();
 }
 
-void WebChromeClient::didFinishContentChangeObserving(WebCore::Frame&, WKContentChange observedContentChange)
+void WebChromeClient::didFinishContentChangeObserving(CyberCore::Frame&, WKContentChange observedContentChange)
 {
     m_page.didFinishContentChangeObserving(observedContentChange);
 }
 
-void WebChromeClient::notifyRevealedSelectionByScrollingFrame(WebCore::Frame&)
+void WebChromeClient::notifyRevealedSelectionByScrollingFrame(CyberCore::Frame&)
 {
     m_page.didScrollSelection();
 }
@@ -118,12 +118,12 @@ void WebChromeClient::restoreFormNotifications()
     notImplemented();
 }
 
-void WebChromeClient::addOrUpdateScrollingLayer(WebCore::Node*, PlatformLayer*, PlatformLayer*, const WebCore::IntSize&, bool, bool)
+void WebChromeClient::addOrUpdateScrollingLayer(CyberCore::Node*, PlatformLayer*, PlatformLayer*, const CyberCore::IntSize&, bool, bool)
 {
     notImplemented();
 }
 
-void WebChromeClient::removeScrollingLayer(WebCore::Node*, PlatformLayer*, PlatformLayer*)
+void WebChromeClient::removeScrollingLayer(CyberCore::Node*, PlatformLayer*, PlatformLayer*)
 {
     notImplemented();
 }
@@ -133,7 +133,7 @@ void WebChromeClient::webAppOrientationsUpdated()
     notImplemented();
 }
 
-void WebChromeClient::showPlaybackTargetPicker(bool hasVideo, WebCore::RouteSharingPolicy policy, const String& routingContextUID)
+void WebChromeClient::showPlaybackTargetPicker(bool hasVideo, CyberCore::RouteSharingPolicy policy, const String& routingContextUID)
 {
     m_page.send(Messages::WebPageProxy::ShowPlaybackTargetPicker(hasVideo, m_page.rectForElementAtInteractionLocation(), policy, routingContextUID));
 }
@@ -150,7 +150,7 @@ int WebChromeClient::deviceOrientation() const
 }
 #endif
 
-bool WebChromeClient::shouldUseMouseEventForSelection(const WebCore::PlatformMouseEvent& event)
+bool WebChromeClient::shouldUseMouseEventForSelection(const CyberCore::PlatformMouseEvent& event)
 {
     // In iPadOS and macCatalyst, despite getting mouse events, we still want UITextInteraction and friends to own selection gestures.
     // However, we need to allow single-clicks to set the selection, because that is how UITextInteraction is activated.
@@ -175,6 +175,6 @@ bool WebChromeClient::showDataDetectorsUIForElement(const Element& element, cons
     return true;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(IOS_FAMILY)

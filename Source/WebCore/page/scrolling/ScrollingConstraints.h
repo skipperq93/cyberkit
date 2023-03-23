@@ -28,7 +28,7 @@
 #include "FloatRect.h"
 #include "ScrollTypes.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class AbsolutePositionConstraints {
     WTF_MAKE_FAST_ALLOCATED;
@@ -204,4 +204,4 @@ WEBCORE_EXPORT WTF::TextStream& operator<<(WTF::TextStream&, const AbsolutePosit
 WEBCORE_EXPORT WTF::TextStream& operator<<(WTF::TextStream&, const FixedPositionViewportConstraints&);
 WEBCORE_EXPORT WTF::TextStream& operator<<(WTF::TextStream&, const StickyPositionViewportConstraints&);
 
-} // namespace WebCore
+} // namespace CyberCore

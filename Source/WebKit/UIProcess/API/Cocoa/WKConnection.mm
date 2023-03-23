@@ -30,7 +30,7 @@
 #import "WKRetainPtr.h"
 #import "WKSharedAPICast.h"
 #import "WKStringCF.h"
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/WeakObjCPtr.h>
 #import <wtf/cocoa/TypeCastsCocoa.h>
@@ -44,7 +44,7 @@ ALLOW_DEPRECATED_IMPLEMENTATIONS_END
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainRunLoop(WKConnection.class, self))
+    if (CyberCoreObjCScheduleDeallocateOnMainRunLoop(WKConnection.class, self))
         return;
 
     self._connection.~WebConnection();

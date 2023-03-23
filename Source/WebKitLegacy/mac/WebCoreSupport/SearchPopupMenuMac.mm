@@ -30,10 +30,10 @@ static String defaultSearchFieldRecentSearchesStorageDirectory()
     if (!appName)
         appName = [[NSProcessInfo processInfo] processName];
 
-    return [[NSHomeDirectory() stringByAppendingPathComponent:@"Library/WebKit"] stringByAppendingPathComponent:appName];
+    return [[NSHomeDirectory() stringByAppendingPathComponent:@"Library/CyberKit"] stringByAppendingPathComponent:appName];
 }
 
-SearchPopupMenuMac::SearchPopupMenuMac(WebCore::PopupMenuClient* client)
+SearchPopupMenuMac::SearchPopupMenuMac(CyberCore::PopupMenuClient* client)
     : m_popup(adoptRef(new PopupMenuMac(client)))
     , m_directory(defaultSearchFieldRecentSearchesStorageDirectory())
 {
@@ -44,7 +44,7 @@ SearchPopupMenuMac::~SearchPopupMenuMac()
 {
 }
 
-WebCore::PopupMenu* SearchPopupMenuMac::popupMenu()
+CyberCore::PopupMenu* SearchPopupMenuMac::popupMenu()
 {
     return m_popup.get();
 }
@@ -54,12 +54,12 @@ bool SearchPopupMenuMac::enabled()
     return true;
 }
 
-void SearchPopupMenuMac::saveRecentSearches(const AtomString& name, const Vector<WebCore::RecentSearch>& searchItems)
+void SearchPopupMenuMac::saveRecentSearches(const AtomString& name, const Vector<CyberCore::RecentSearch>& searchItems)
 {
-    WebCore::saveRecentSearchesToFile(name, searchItems, m_directory);
+    CyberCore::saveRecentSearchesToFile(name, searchItems, m_directory);
 }
 
-void SearchPopupMenuMac::loadRecentSearches(const AtomString& name, Vector<WebCore::RecentSearch>& searchItems)
+void SearchPopupMenuMac::loadRecentSearches(const AtomString& name, Vector<CyberCore::RecentSearch>& searchItems)
 {
-    searchItems = WebCore::loadRecentSearchesFromFile(name, m_directory);
+    searchItems = CyberCore::loadRecentSearchesFromFile(name, m_directory);
 }

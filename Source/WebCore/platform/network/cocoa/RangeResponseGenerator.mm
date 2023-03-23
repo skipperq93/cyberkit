@@ -31,12 +31,12 @@
 #import "PlatformMediaResourceLoader.h"
 #import "ResourceResponse.h"
 #import "SharedBuffer.h"
-#import "WebCoreNSURLSession.h"
+#import "CyberCoreNSURLSession.h"
 #import <pal/spi/cf/CFNetworkSPI.h>
 #import <wtf/FastMalloc.h>
 #import <wtf/text/StringBuilder.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct RangeResponseGenerator::Data {
     WTF_MAKE_STRUCT_FAST_ALLOCATED;
@@ -55,7 +55,7 @@ struct RangeResponseGenerator::Data {
         enum class ResponseState : uint8_t { NotSynthesizedYet, WaitingForSession, SessionCalledCompletionHandler } responseState { ResponseState::NotSynthesizedYet };
     };
 
-    HashMap<RetainPtr<WebCoreNSURLSessionDataTask>, std::unique_ptr<TaskData>> taskData;
+    HashMap<RetainPtr<CyberCoreNSURLSessionDataTask>, std::unique_ptr<TaskData>> taskData;
     SharedBufferBuilder buffer;
     ResourceResponse originalResponse;
     enum class SuccessfullyFinishedLoading : bool { No, Yes } successfullyFinishedLoading { SuccessfullyFinishedLoading::No };
@@ -93,7 +93,7 @@ static ResourceResponse synthesizedResponseForRange(const ResourceResponse& orig
     return newResponse;
 }
 
-void RangeResponseGenerator::removeTask(WebCoreNSURLSessionDataTask *task)
+void RangeResponseGenerator::removeTask(CyberCoreNSURLSessionDataTask *task)
 {
     ASSERT(isMainThread());
     auto url = task.originalRequest.URL;
@@ -106,7 +106,7 @@ void RangeResponseGenerator::removeTask(WebCoreNSURLSessionDataTask *task)
     data->taskData.remove(task);
 }
 
-void RangeResponseGenerator::giveResponseToTaskIfBytesInRangeReceived(WebCoreNSURLSessionDataTask *task, const ParsedRequestRange& range, std::optional<size_t> expectedContentLength, const Data& data)
+void RangeResponseGenerator::giveResponseToTaskIfBytesInRangeReceived(CyberCoreNSURLSessionDataTask *task, const ParsedRequestRange& range, std::optional<size_t> expectedContentLength, const Data& data)
 {
     ASSERT(isMainThread());
 
@@ -150,7 +150,7 @@ void RangeResponseGenerator::giveResponseToTaskIfBytesInRangeReceived(WebCoreNSU
     switch (taskData->responseState) {
     case Data::TaskData::ResponseState::NotSynthesizedYet: {
         auto response = synthesizedResponseForRange(data.originalResponse, range, expectedContentLength);
-        [task resource:nullptr receivedResponse:response completionHandler:[giveBytesToTask = WTFMove(giveBytesToTask), taskData = WeakPtr { taskData }, task = retainPtr(task)] (WebCore::ShouldContinuePolicyCheck shouldContinue) {
+        [task resource:nullptr receivedResponse:response completionHandler:[giveBytesToTask = WTFMove(giveBytesToTask), taskData = WeakPtr { taskData }, task = retainPtr(task)] (CyberCore::ShouldContinuePolicyCheck shouldContinue) {
             if (taskData)
                 taskData->responseState = Data::TaskData::ResponseState::SessionCalledCompletionHandler;
             if (shouldContinue == ShouldContinuePolicyCheck::Yes)
@@ -191,7 +191,7 @@ void RangeResponseGenerator::giveResponseToTasksWithFinishedRanges(Data& data)
         giveResponseToTaskIfBytesInRangeReceived(pair.key.get(), pair.value->range, expectedContentLength, data);
 }
 
-bool RangeResponseGenerator::willHandleRequest(WebCoreNSURLSessionDataTask *task, NSURLRequest *request)
+bool RangeResponseGenerator::willHandleRequest(CyberCoreNSURLSessionDataTask *task, NSURLRequest *request)
 {
     ASSERT(isMainThread());
     if (!request.URL)
@@ -288,7 +288,7 @@ private:
     const String m_urlString;
 };
 
-bool RangeResponseGenerator::willSynthesizeRangeResponses(WebCoreNSURLSessionDataTask *task, PlatformMediaResource& resource, const ResourceResponse& response)
+bool RangeResponseGenerator::willSynthesizeRangeResponses(CyberCoreNSURLSessionDataTask *task, PlatformMediaResource& resource, const ResourceResponse& response)
 {
     ASSERT(isMainThread());
     NSURLRequest *originalRequest = task.originalRequest;
@@ -312,4 +312,4 @@ bool RangeResponseGenerator::willSynthesizeRangeResponses(WebCoreNSURLSessionDat
     return true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

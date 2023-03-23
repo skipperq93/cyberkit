@@ -27,7 +27,7 @@
 #include <wtf/text/StringHash.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Page;
 
@@ -136,4 +136,4 @@ inline bool isSupportedPlugin(const Vector<SupportedPluginIdentifier>& pluginIde
     }) != notFound;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -44,7 +44,7 @@
 #include "WebVTTParser.h"
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
     
 TextTrackLoader::TextTrackLoader(TextTrackLoaderClient& client, Document& document)
     : m_client(client)

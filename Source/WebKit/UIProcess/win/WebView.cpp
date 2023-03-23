@@ -49,7 +49,7 @@
 #include <CyberCore/IntRect.h>
 #include <CyberCore/NotImplemented.h>
 #include <CyberCore/Region.h>
-#include <CyberCore/WebCoreInstanceHandle.h>
+#include <CyberCore/CyberCoreInstanceHandle.h>
 #include <CyberCore/WindowMessageBroadcaster.h>
 #include <CyberCore/WindowsTouch.h>
 #include <wtf/FileSystem.h>
@@ -72,7 +72,7 @@
 #endif
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 static const LPCWSTR kWebKit2WebViewWindowClassName = L"WebKit2WebViewWindowClass";
 
@@ -794,7 +794,7 @@ HCURSOR WebView::cursorToShow() const
     return m_webCoreCursor;
 }
 
-void WebView::setCursor(const WebCore::Cursor& cursor)
+void WebView::setCursor(const CyberCore::Cursor& cursor)
 {
     if (!cursor.platformCursor()->nativeCursor())
         return;
@@ -857,7 +857,7 @@ void WebView::setScrollOffsetOnNextResize(const IntSize& scrollOffset)
     m_nextResizeScrollOffset = scrollOffset;
 }
 
-void WebView::setViewNeedsDisplay(const WebCore::Region& region)
+void WebView::setViewNeedsDisplay(const CyberCore::Region& region)
 {
     const RECT r = region.bounds();
     ::InvalidateRect(m_window, &r, true);
@@ -889,7 +889,7 @@ HWND WebView::nativeWindow()
     return m_window;
 }
 
-// WebCore::WindowMessageListener
+// CyberCore::WindowMessageListener
 
 void WebView::windowReceivedMessage(HWND, UINT message, WPARAM wParam, LPARAM)
 {

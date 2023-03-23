@@ -29,7 +29,7 @@
 #include "RectEdges.h"
 #include "ScrollAnimation.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class FloatPoint;
 class TimingFunction;
@@ -65,6 +65,6 @@ private:
     bool m_scrollTriggeringKeyIsPressed;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_SCROLL_ANIMATION(WebCore::ScrollAnimationKeyboard, type() == WebCore::ScrollAnimation::Type::Keyboard)
+SPECIALIZE_TYPE_TRAITS_SCROLL_ANIMATION(CyberCore::ScrollAnimationKeyboard, type() == CyberCore::ScrollAnimation::Type::Keyboard)

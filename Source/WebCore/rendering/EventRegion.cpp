@@ -36,7 +36,7 @@
 #include "WindRule.h"
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 EventRegionContext::EventRegionContext(EventRegion& eventRegion)
     : m_eventRegion(eventRegion)
@@ -141,17 +141,17 @@ EventRegion::EventRegion() = default;
 
 EventRegion::EventRegion(Region&& region
 #if ENABLE(TOUCH_ACTION_REGIONS)
-    , Vector<WebCore::Region> touchActionRegions
+    , Vector<CyberCore::Region> touchActionRegions
 #endif
 #if ENABLE(WHEEL_EVENT_REGIONS)
-    , WebCore::Region wheelEventListenerRegion
-    , WebCore::Region nonPassiveWheelEventListenerRegion
+    , CyberCore::Region wheelEventListenerRegion
+    , CyberCore::Region nonPassiveWheelEventListenerRegion
 #endif
 #if ENABLE(EDITABLE_REGION)
-    , std::optional<WebCore::Region> editableRegion
+    , std::optional<CyberCore::Region> editableRegion
 #endif
 #if ENABLE(INTERACTION_REGIONS_IN_EVENT_REGION)
-    , Vector<WebCore::InteractionRegion> interactionRegions
+    , Vector<CyberCore::InteractionRegion> interactionRegions
 #endif
     )
     : m_region(WTFMove(region))

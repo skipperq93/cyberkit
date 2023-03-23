@@ -34,8 +34,8 @@
 SOFT_LINK_LIBRARY(user32);
 SOFT_LINK_OPTIONAL(user32, SetProcessDpiAwarenessContext, BOOL, STDAPICALLTYPE, (DPI_AWARENESS_CONTEXT));
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 class WebProcessMainWin final : public AuxiliaryProcessMainBase<WebProcess> {
 public:
@@ -57,4 +57,4 @@ int WebProcessMain(int argc, char** argv)
     return AuxiliaryProcessMain<WebProcessMainWin>(argc, argv);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

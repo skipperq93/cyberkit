@@ -30,7 +30,7 @@
 
 #import <CyberKitLegacy/WebNSImageExtras.h>
 
-#import <CyberKitLegacy/WebKitLogging.h>
+#import <CyberKitLegacy/CyberKitLogging.h>
 
 @implementation NSImage (WebExtras)
 

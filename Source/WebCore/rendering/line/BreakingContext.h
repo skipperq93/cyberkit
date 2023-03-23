@@ -45,7 +45,7 @@
 #include <wtf/text/StringView.h>
 #include <wtf/unicode/CharacterNames.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // We don't let our line box tree for a single line get any deeper than this.
 const unsigned cMaxLineDepth = 200;
@@ -663,7 +663,7 @@ inline bool BreakingContext::handleText(WordMeasurements& wordMeasurements, bool
     const RenderStyle& style = lineStyle(renderer, m_lineInfo);
     const FontCascade& font = style.fontCascade();
     bool isFixedPitch = font.isFixedPitch();
-    bool canHyphenate = style.hyphens() == Hyphens::Auto && WebCore::canHyphenate(style.computedLocale());
+    bool canHyphenate = style.hyphens() == Hyphens::Auto && CyberCore::canHyphenate(style.computedLocale());
     bool canHangPunctuationAtStart = style.hangingPunctuation().contains(HangingPunctuation::First);
     bool canHangPunctuationAtEnd = style.hangingPunctuation().contains(HangingPunctuation::Last);
     bool canHangStopOrCommaAtLineEnd = style.hangingPunctuation().contains(HangingPunctuation::AllowEnd);
@@ -1231,4 +1231,4 @@ inline LegacyInlineIterator BreakingContext::handleEndOfLine()
     return m_lineBreak;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -24,7 +24,7 @@
 
 #if USE(GSTREAMER_WEBRTC)
 
-namespace WebCore {
+namespace CyberCore {
 
 class WEBCORE_EXPORT GStreamerWebRTCProvider : public WebRTCProvider {
     WTF_MAKE_FAST_ALLOCATED;

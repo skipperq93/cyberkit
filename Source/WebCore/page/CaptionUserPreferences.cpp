@@ -45,7 +45,7 @@
 #include <wtf/Language.h>
 #include <wtf/unicode/Collator.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<CaptionUserPreferences> CaptionUserPreferences::create(PageGroup& group)
 {

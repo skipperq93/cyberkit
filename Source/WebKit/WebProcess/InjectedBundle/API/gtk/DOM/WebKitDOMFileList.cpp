@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -18,31 +18,31 @@
  */
 
 #include "config.h"
-#include "WebKitDOMFileList.h"
+#include "CyberKitDOMFileList.h"
 
 #include <CyberCore/CSSImportRule.h>
 #include "DOMObjectCache.h"
 #include <CyberCore/Document.h>
 #include <CyberCore/ExceptionCode.h>
 #include <CyberCore/JSExecState.h>
-#include "WebKitDOMFileListPrivate.h"
-#include "WebKitDOMFilePrivate.h"
-#include "WebKitDOMPrivate.h"
+#include "CyberKitDOMFileListPrivate.h"
+#include "CyberKitDOMFilePrivate.h"
+#include "CyberKitDOMPrivate.h"
 #include "ConvertToUTF8String.h"
 #include <wtf/GetPtr.h>
 #include <wtf/RefPtr.h>
 
-#define WEBKIT_DOM_FILE_LIST_GET_PRIVATE(obj) G_TYPE_INSTANCE_GET_PRIVATE(obj, WEBKIT_DOM_TYPE_FILE_LIST, WebKitDOMFileListPrivate)
+#define WEBKIT_DOM_FILE_LIST_GET_PRIVATE(obj) G_TYPE_INSTANCE_GET_PRIVATE(obj, WEBKIT_DOM_TYPE_FILE_LIST, CyberKitDOMFileListPrivate)
 
-typedef struct _WebKitDOMFileListPrivate {
-    RefPtr<WebCore::FileList> coreObject;
-} WebKitDOMFileListPrivate;
+typedef struct _CyberKitDOMFileListPrivate {
+    RefPtr<CyberCore::FileList> coreObject;
+} CyberKitDOMFileListPrivate;
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
-namespace WebKit {
+namespace CyberKit {
 
-WebKitDOMFileList* kit(WebCore::FileList* obj)
+CyberKitDOMFileList* kit(CyberCore::FileList* obj)
 {
     if (!obj)
         return 0;
@@ -53,20 +53,20 @@ WebKitDOMFileList* kit(WebCore::FileList* obj)
     return wrapFileList(obj);
 }
 
-WebCore::FileList* core(WebKitDOMFileList* request)
+CyberCore::FileList* core(CyberKitDOMFileList* request)
 {
-    return request ? static_cast<WebCore::FileList*>(WEBKIT_DOM_OBJECT(request)->coreObject) : 0;
+    return request ? static_cast<CyberCore::FileList*>(WEBKIT_DOM_OBJECT(request)->coreObject) : 0;
 }
 
-WebKitDOMFileList* wrapFileList(WebCore::FileList* coreObject)
+CyberKitDOMFileList* wrapFileList(CyberCore::FileList* coreObject)
 {
     ASSERT(coreObject);
     return WEBKIT_DOM_FILE_LIST(g_object_new(WEBKIT_DOM_TYPE_FILE_LIST, "core-object", coreObject, nullptr));
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
-G_DEFINE_TYPE(WebKitDOMFileList, webkit_dom_file_list, WEBKIT_DOM_TYPE_OBJECT)
+G_DEFINE_TYPE(CyberKitDOMFileList, webkit_dom_file_list, WEBKIT_DOM_TYPE_OBJECT)
 
 enum {
     DOM_FILE_LIST_PROP_0,
@@ -75,17 +75,17 @@ enum {
 
 static void webkit_dom_file_list_finalize(GObject* object)
 {
-    WebKitDOMFileListPrivate* priv = WEBKIT_DOM_FILE_LIST_GET_PRIVATE(object);
+    CyberKitDOMFileListPrivate* priv = WEBKIT_DOM_FILE_LIST_GET_PRIVATE(object);
 
-    WebKit::DOMObjectCache::forget(priv->coreObject.get());
+    CyberKit::DOMObjectCache::forget(priv->coreObject.get());
 
-    priv->~WebKitDOMFileListPrivate();
+    priv->~CyberKitDOMFileListPrivate();
     G_OBJECT_CLASS(webkit_dom_file_list_parent_class)->finalize(object);
 }
 
 static void webkit_dom_file_list_get_property(GObject* object, guint propertyId, GValue* value, GParamSpec* pspec)
 {
-    WebKitDOMFileList* self = WEBKIT_DOM_FILE_LIST(object);
+    CyberKitDOMFileList* self = WEBKIT_DOM_FILE_LIST(object);
 
     switch (propertyId) {
     case DOM_FILE_LIST_PROP_LENGTH:
@@ -101,17 +101,17 @@ static GObject* webkit_dom_file_list_constructor(GType type, guint constructProp
 {
     GObject* object = G_OBJECT_CLASS(webkit_dom_file_list_parent_class)->constructor(type, constructPropertiesCount, constructProperties);
 
-    WebKitDOMFileListPrivate* priv = WEBKIT_DOM_FILE_LIST_GET_PRIVATE(object);
-    priv->coreObject = static_cast<WebCore::FileList*>(WEBKIT_DOM_OBJECT(object)->coreObject);
-    WebKit::DOMObjectCache::put(priv->coreObject.get(), object);
+    CyberKitDOMFileListPrivate* priv = WEBKIT_DOM_FILE_LIST_GET_PRIVATE(object);
+    priv->coreObject = static_cast<CyberCore::FileList*>(WEBKIT_DOM_OBJECT(object)->coreObject);
+    CyberKit::DOMObjectCache::put(priv->coreObject.get(), object);
 
     return object;
 }
 
-static void webkit_dom_file_list_class_init(WebKitDOMFileListClass* requestClass)
+static void webkit_dom_file_list_class_init(CyberKitDOMFileListClass* requestClass)
 {
     GObjectClass* gobjectClass = G_OBJECT_CLASS(requestClass);
-    g_type_class_add_private(gobjectClass, sizeof(WebKitDOMFileListPrivate));
+    g_type_class_add_private(gobjectClass, sizeof(CyberKitDOMFileListPrivate));
     gobjectClass->constructor = webkit_dom_file_list_constructor;
     gobjectClass->finalize = webkit_dom_file_list_finalize;
     gobjectClass->get_property = webkit_dom_file_list_get_property;
@@ -128,26 +128,26 @@ static void webkit_dom_file_list_class_init(WebKitDOMFileListClass* requestClass
 
 }
 
-static void webkit_dom_file_list_init(WebKitDOMFileList* request)
+static void webkit_dom_file_list_init(CyberKitDOMFileList* request)
 {
-    WebKitDOMFileListPrivate* priv = WEBKIT_DOM_FILE_LIST_GET_PRIVATE(request);
-    new (priv) WebKitDOMFileListPrivate();
+    CyberKitDOMFileListPrivate* priv = WEBKIT_DOM_FILE_LIST_GET_PRIVATE(request);
+    new (priv) CyberKitDOMFileListPrivate();
 }
 
-WebKitDOMFile* webkit_dom_file_list_item(WebKitDOMFileList* self, gulong index)
+CyberKitDOMFile* webkit_dom_file_list_item(CyberKitDOMFileList* self, gulong index)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_FILE_LIST(self), 0);
-    WebCore::FileList* item = WebKit::core(self);
-    RefPtr<WebCore::File> gobjectResult = WTF::getPtr(item->item(index));
-    return WebKit::kit(gobjectResult.get());
+    CyberCore::FileList* item = CyberKit::core(self);
+    RefPtr<CyberCore::File> gobjectResult = WTF::getPtr(item->item(index));
+    return CyberKit::kit(gobjectResult.get());
 }
 
-gulong webkit_dom_file_list_get_length(WebKitDOMFileList* self)
+gulong webkit_dom_file_list_get_length(CyberKitDOMFileList* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_FILE_LIST(self), 0);
-    WebCore::FileList* item = WebKit::core(self);
+    CyberCore::FileList* item = CyberKit::core(self);
     gulong result = item->length();
     return result;
 }

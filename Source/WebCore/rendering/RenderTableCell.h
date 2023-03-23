@@ -28,7 +28,7 @@
 #include "RenderTableRow.h"
 #include "RenderTableSection.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // These is limited by the size of RenderTableCell::m_column bitfield.
 static const unsigned unsetColumnIndex = 0x1FFFFFF;
@@ -382,6 +382,6 @@ inline RenderPtr<RenderBox> RenderTableCell::createAnonymousBoxWithSameTypeAs(co
     return RenderTableCell::createTableCellWithStyle(renderer.document(), renderer.style());
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderTableCell, isTableCell())

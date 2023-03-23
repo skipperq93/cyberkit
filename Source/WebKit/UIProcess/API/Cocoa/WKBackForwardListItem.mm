@@ -27,7 +27,7 @@
 #import "WKBackForwardListItemInternal.h"
 
 #import "WKNSURLExtras.h"
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 
 @implementation WKBackForwardListItem {
     API::ObjectStorage<WebKit::WebBackForwardListItem> _item;
@@ -35,7 +35,7 @@
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainRunLoop(WKBackForwardListItem.class, self))
+    if (CyberCoreObjCScheduleDeallocateOnMainRunLoop(WKBackForwardListItem.class, self))
         return;
 
     _item->~WebBackForwardListItem();

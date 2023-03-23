@@ -34,7 +34,7 @@
 #include <CyberCore/NavigationPreloadState.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 class NetworkLoadMetrics;
 class FragmentedSharedBuffer;
 }
@@ -48,22 +48,22 @@ class NetworkSession;
 class ServiceWorkerNavigationPreloader final : public NetworkLoadClient, public CanMakeWeakPtr<ServiceWorkerNavigationPreloader> {
     WTF_MAKE_FAST_ALLOCATED;
 public:
-    ServiceWorkerNavigationPreloader(NetworkSession&, NetworkLoadParameters&&, const WebCore::NavigationPreloadState&, bool shouldCaptureExtraNetworkLoadMetrics);
+    ServiceWorkerNavigationPreloader(NetworkSession&, NetworkLoadParameters&&, const CyberCore::NavigationPreloadState&, bool shouldCaptureExtraNetworkLoadMetrics);
     ~ServiceWorkerNavigationPreloader();
 
     void cancel();
 
     using ResponseCallback = Function<void()>;
     void waitForResponse(ResponseCallback&&);
-    using BodyCallback = Function<void(RefPtr<const WebCore::FragmentedSharedBuffer>&&, uint64_t reportedEncodedDataLength)>;
+    using BodyCallback = Function<void(RefPtr<const CyberCore::FragmentedSharedBuffer>&&, uint64_t reportedEncodedDataLength)>;
     void waitForBody(BodyCallback&&);
 
-    const WebCore::ResourceError& error() const { return m_error; }
-    const WebCore::ResourceResponse& response() const { return m_response; }
-    const WebCore::NetworkLoadMetrics& networkLoadMetrics() const { return m_networkLoadMetrics; }
+    const CyberCore::ResourceError& error() const { return m_error; }
+    const CyberCore::ResourceResponse& response() const { return m_response; }
+    const CyberCore::NetworkLoadMetrics& networkLoadMetrics() const { return m_networkLoadMetrics; }
     bool isServiceWorkerNavigationPreloadEnabled() const { return m_state.enabled; }
 
-    bool convertToDownload(DownloadManager&, DownloadID, const WebCore::ResourceRequest&, const WebCore::ResourceResponse&);
+    bool convertToDownload(DownloadManager&, DownloadID, const CyberCore::ResourceRequest&, const CyberCore::ResourceResponse&);
 
     MonotonicTime startTime() const { return m_startTime; }
 
@@ -72,11 +72,11 @@ private:
     void didSendData(uint64_t bytesSent, uint64_t totalBytesToBeSent) final { }
     bool isSynchronous() const final { return false; }
     bool isAllowedToAskUserForCredentials() const final { return false; }
-    void willSendRedirectedRequest(WebCore::ResourceRequest&&, WebCore::ResourceRequest&& redirectRequest, WebCore::ResourceResponse&& redirectResponse) final;
-    void didReceiveResponse(WebCore::ResourceResponse&&, PrivateRelayed, ResponseCompletionHandler&&) final;
-    void didReceiveBuffer(const WebCore::FragmentedSharedBuffer&, uint64_t reportedEncodedDataLength) final;
-    void didFinishLoading(const WebCore::NetworkLoadMetrics&) final;
-    void didFailLoading(const WebCore::ResourceError&) final;
+    void willSendRedirectedRequest(CyberCore::ResourceRequest&&, CyberCore::ResourceRequest&& redirectRequest, CyberCore::ResourceResponse&& redirectResponse) final;
+    void didReceiveResponse(CyberCore::ResourceResponse&&, PrivateRelayed, ResponseCompletionHandler&&) final;
+    void didReceiveBuffer(const CyberCore::FragmentedSharedBuffer&, uint64_t reportedEncodedDataLength) final;
+    void didFinishLoading(const CyberCore::NetworkLoadMetrics&) final;
+    void didFailLoading(const CyberCore::ResourceError&) final;
     bool shouldCaptureExtraNetworkLoadMetrics() const final { return m_shouldCaptureExtraNetworkLoadMetrics; }
 
     void start();
@@ -88,13 +88,13 @@ private:
     WeakPtr<NetworkSession> m_session;
 
     NetworkLoadParameters m_parameters;
-    WebCore::NavigationPreloadState m_state;
+    CyberCore::NavigationPreloadState m_state;
 
     std::unique_ptr<NetworkCache::Entry> m_cacheEntry;
-    WebCore::NetworkLoadMetrics m_networkLoadMetrics;
-    WebCore::ResourceResponse m_response;
+    CyberCore::NetworkLoadMetrics m_networkLoadMetrics;
+    CyberCore::ResourceResponse m_response;
     ResponseCompletionHandler m_responseCompletionHandler;
-    WebCore::ResourceError m_error;
+    CyberCore::ResourceError m_error;
 
     ResponseCallback m_responseCallback;
     BodyCallback m_bodyCallback;

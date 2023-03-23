@@ -29,7 +29,7 @@
 
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class PlatformSpeechSynthesisVoice : public RefCounted<PlatformSpeechSynthesisVoice> {
 public:
@@ -62,6 +62,6 @@ private:
     bool m_default { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SPEECH_SYNTHESIS)

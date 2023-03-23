@@ -27,9 +27,9 @@
 
 #include <wtf/ObjectIdentifier.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum MediaPlayerIdentifierType { };
 using MediaPlayerIdentifier = ObjectIdentifier<MediaPlayerIdentifierType>;
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -38,7 +38,7 @@ namespace IPC {
 class Decoder;
 }
 
-namespace WebCore {
+namespace CyberCore {
 class IntSize;
 }
 
@@ -72,7 +72,7 @@ private:
     bool dispatchMessage(IPC::Connection&, IPC::Decoder&);
 
     using LayerCreationCallback = CompletionHandler<void(std::optional<LayerHostingContextID>)>&&;
-    void createLayer(SampleBufferDisplayLayerIdentifier, bool hideRootLayer, WebCore::IntSize, LayerCreationCallback);
+    void createLayer(SampleBufferDisplayLayerIdentifier, bool hideRootLayer, CyberCore::IntSize, LayerCreationCallback);
     void releaseLayer(SampleBufferDisplayLayerIdentifier);
 
     GPUConnectionToWebProcess& m_connectionToWebProcess;

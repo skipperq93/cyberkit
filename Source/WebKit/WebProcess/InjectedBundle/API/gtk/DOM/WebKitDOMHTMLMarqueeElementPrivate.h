@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -17,16 +17,16 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitDOMHTMLMarqueeElementPrivate_h
-#define WebKitDOMHTMLMarqueeElementPrivate_h
+#ifndef CyberKitDOMHTMLMarqueeElementPrivate_h
+#define CyberKitDOMHTMLMarqueeElementPrivate_h
 
 #include <CyberCore/HTMLMarqueeElement.h>
-#include <webkitdom/WebKitDOMHTMLMarqueeElement.h>
+#include <webkitdom/CyberKitDOMHTMLMarqueeElement.h>
 
-namespace WebKit {
-WebKitDOMHTMLMarqueeElement* wrapHTMLMarqueeElement(WebCore::HTMLMarqueeElement*);
-WebKitDOMHTMLMarqueeElement* kit(WebCore::HTMLMarqueeElement*);
-WebCore::HTMLMarqueeElement* core(WebKitDOMHTMLMarqueeElement*);
-} // namespace WebKit
+namespace CyberKit {
+CyberKitDOMHTMLMarqueeElement* wrapHTMLMarqueeElement(CyberCore::HTMLMarqueeElement*);
+CyberKitDOMHTMLMarqueeElement* kit(CyberCore::HTMLMarqueeElement*);
+CyberCore::HTMLMarqueeElement* core(CyberKitDOMHTMLMarqueeElement*);
+} // namespace CyberKit
 
-#endif /* WebKitDOMHTMLMarqueeElementPrivate_h */
+#endif /* CyberKitDOMHTMLMarqueeElementPrivate_h */

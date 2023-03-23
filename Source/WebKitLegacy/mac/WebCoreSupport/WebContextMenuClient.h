@@ -35,11 +35,11 @@
 @class WebSharingServicePickerController;
 @class WebView;
 
-namespace WebCore {
+namespace CyberCore {
 class Node;
 }
 
-class WebContextMenuClient : public WebCore::ContextMenuClient
+class WebContextMenuClient : public CyberCore::ContextMenuClient
 #if ENABLE(SERVICE_CONTROLS)
     , public WebSharingServicePickerClient
 #endif
@@ -52,8 +52,8 @@ public:
     void contextMenuDestroyed() override;
 
     void downloadURL(const URL&) override;
-    void searchWithGoogle(const WebCore::Frame*) override;
-    void lookUpInDictionary(WebCore::Frame*) override;
+    void searchWithGoogle(const CyberCore::Frame*) override;
+    void lookUpInDictionary(CyberCore::Frame*) override;
     bool isSpeaking() override;
     void speak(const WTF::String&) override;
     void stopSpeaking() override;
@@ -71,18 +71,18 @@ public:
 #if ENABLE(SERVICE_CONTROLS)
     // WebSharingServicePickerClient
     void sharingServicePickerWillBeDestroyed(WebSharingServicePickerController &) override;
-    WebCore::FloatRect screenRectForCurrentSharingServicePickerItem(WebSharingServicePickerController &) override;
+    CyberCore::FloatRect screenRectForCurrentSharingServicePickerItem(WebSharingServicePickerController &) override;
     RetainPtr<NSImage> imageForCurrentSharingServicePickerItem(WebSharingServicePickerController &) override;
 #endif
 
 #if HAVE(TRANSLATION_UI_SERVICES)
-    void handleTranslation(const WebCore::TranslationContextMenuInfo&) final;
+    void handleTranslation(const CyberCore::TranslationContextMenuInfo&) final;
 #endif
 
 private:
     NSMenu *contextMenuForEvent(NSEvent *, NSView *, bool& isServicesMenu);
 
-    bool clientFloatRectForNode(WebCore::Node&, WebCore::FloatRect&) const;
+    bool clientFloatRectForNode(CyberCore::Node&, CyberCore::FloatRect&) const;
 
 #if ENABLE(SERVICE_CONTROLS)
     RetainPtr<WebSharingServicePickerController> m_sharingServicePickerController;

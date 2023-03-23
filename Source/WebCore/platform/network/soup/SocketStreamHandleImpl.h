@@ -39,7 +39,7 @@
 
 #include <pal/SessionID.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SocketStreamError;
 class SocketStreamHandleClient;
@@ -74,6 +74,6 @@ private:
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(SOUP)

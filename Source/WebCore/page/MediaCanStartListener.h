@@ -27,7 +27,7 @@
 
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 
@@ -38,4 +38,4 @@ protected:
     virtual ~MediaCanStartListener() = default;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

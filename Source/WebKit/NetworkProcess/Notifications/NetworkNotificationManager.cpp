@@ -37,7 +37,7 @@
 #include <CyberCore/SecurityOriginData.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 NetworkNotificationManager::NetworkNotificationManager(NetworkSession& networkSession, const String& webPushMachServiceName, WebPushD::WebPushDaemonConnectionConfiguration&& configuration)
     : m_networkSession(networkSession)
@@ -105,7 +105,7 @@ void NetworkNotificationManager::getPendingPushMessages(CompletionHandler<void(c
     sendMessageWithReply<WebPushD::MessageType::GetPendingPushMessages>(WTFMove(replyHandler));
 }
 
-void NetworkNotificationManager::showNotification(IPC::Connection&, const WebCore::NotificationData&, RefPtr<NotificationResources>&&, CompletionHandler<void()>&& callback)
+void NetworkNotificationManager::showNotification(IPC::Connection&, const CyberCore::NotificationData&, RefPtr<NotificationResources>&&, CompletionHandler<void()>&& callback)
 {
     callback();
 
@@ -138,7 +138,7 @@ void NetworkNotificationManager::didDestroyNotification(const UUID&)
         return;
 }
 
-void NetworkNotificationManager::subscribeToPushService(URL&& scopeURL, Vector<uint8_t>&& applicationServerKey, CompletionHandler<void(Expected<WebCore::PushSubscriptionData, WebCore::ExceptionData>&&)>&& completionHandler)
+void NetworkNotificationManager::subscribeToPushService(URL&& scopeURL, Vector<uint8_t>&& applicationServerKey, CompletionHandler<void(Expected<CyberCore::PushSubscriptionData, CyberCore::ExceptionData>&&)>&& completionHandler)
 {
     if (!m_connection) {
         completionHandler(makeUnexpected(ExceptionData { AbortError, "No connection to push daemon"_s }));
@@ -148,7 +148,7 @@ void NetworkNotificationManager::subscribeToPushService(URL&& scopeURL, Vector<u
     sendMessageWithReply<WebPushD::MessageType::SubscribeToPushService>(WTFMove(completionHandler), WTFMove(scopeURL), WTFMove(applicationServerKey));
 }
 
-void NetworkNotificationManager::unsubscribeFromPushService(URL&& scopeURL, std::optional<PushSubscriptionIdentifier> pushSubscriptionIdentifier, CompletionHandler<void(Expected<bool, WebCore::ExceptionData>&&)>&& completionHandler)
+void NetworkNotificationManager::unsubscribeFromPushService(URL&& scopeURL, std::optional<PushSubscriptionIdentifier> pushSubscriptionIdentifier, CompletionHandler<void(Expected<bool, CyberCore::ExceptionData>&&)>&& completionHandler)
 {
     if (!m_connection) {
         completionHandler(makeUnexpected(ExceptionData { AbortError, "No connection to push daemon"_s }));
@@ -158,10 +158,10 @@ void NetworkNotificationManager::unsubscribeFromPushService(URL&& scopeURL, std:
     sendMessageWithReply<WebPushD::MessageType::UnsubscribeFromPushService>(WTFMove(completionHandler), WTFMove(scopeURL), pushSubscriptionIdentifier);
 }
 
-void NetworkNotificationManager::getPushSubscription(URL&& scopeURL, CompletionHandler<void(Expected<std::optional<WebCore::PushSubscriptionData>, WebCore::ExceptionData>&&)>&& completionHandler)
+void NetworkNotificationManager::getPushSubscription(URL&& scopeURL, CompletionHandler<void(Expected<std::optional<CyberCore::PushSubscriptionData>, CyberCore::ExceptionData>&&)>&& completionHandler)
 {
     if (m_networkSession.sessionID().isEphemeral()) {
-        completionHandler(std::optional<WebCore::PushSubscriptionData> { });
+        completionHandler(std::optional<CyberCore::PushSubscriptionData> { });
         return;
     }
 
@@ -173,7 +173,7 @@ void NetworkNotificationManager::getPushSubscription(URL&& scopeURL, CompletionH
     sendMessageWithReply<WebPushD::MessageType::GetPushSubscription>(WTFMove(completionHandler), WTFMove(scopeURL));
 }
 
-void NetworkNotificationManager::getPushPermissionState(URL&& scopeURL, CompletionHandler<void(Expected<uint8_t, WebCore::ExceptionData>&&)>&& completionHandler)
+void NetworkNotificationManager::getPushPermissionState(URL&& scopeURL, CompletionHandler<void(Expected<uint8_t, CyberCore::ExceptionData>&&)>&& completionHandler)
 {
     if (m_networkSession.sessionID().isEphemeral()) {
         completionHandler(static_cast<uint8_t>(PushPermissionState::Denied));
@@ -188,7 +188,7 @@ void NetworkNotificationManager::getPushPermissionState(URL&& scopeURL, Completi
     sendMessageWithReply<WebPushD::MessageType::GetPushPermissionState>(WTFMove(completionHandler), WTFMove(scopeURL));
 }
 
-void NetworkNotificationManager::incrementSilentPushCount(WebCore::SecurityOriginData&& origin, CompletionHandler<void(unsigned)>&& completionHandler)
+void NetworkNotificationManager::incrementSilentPushCount(CyberCore::SecurityOriginData&& origin, CompletionHandler<void(unsigned)>&& completionHandler)
 {
     if (!m_connection) {
         completionHandler(0);
@@ -208,7 +208,7 @@ void NetworkNotificationManager::removeAllPushSubscriptions(CompletionHandler<vo
     sendMessageWithReply<WebPushD::MessageType::RemoveAllPushSubscriptions>(WTFMove(completionHandler));
 }
 
-void NetworkNotificationManager::removePushSubscriptionsForOrigin(WebCore::SecurityOriginData&& origin, CompletionHandler<void(unsigned)>&& completionHandler)
+void NetworkNotificationManager::removePushSubscriptionsForOrigin(CyberCore::SecurityOriginData&& origin, CompletionHandler<void(unsigned)>&& completionHandler)
 {
     if (!m_connection) {
         completionHandler(0);
@@ -302,10 +302,10 @@ template<> struct ReplyCaller<Vector<WebPushMessage>&&> {
     }
 };
 
-template<> struct ReplyCaller<Expected<WebCore::PushSubscriptionData, WebCore::ExceptionData>&&> {
-    static void callReply(Daemon::Decoder&& decoder, CompletionHandler<void(Expected<WebCore::PushSubscriptionData, WebCore::ExceptionData>&&)>&& completionHandler)
+template<> struct ReplyCaller<Expected<CyberCore::PushSubscriptionData, CyberCore::ExceptionData>&&> {
+    static void callReply(Daemon::Decoder&& decoder, CompletionHandler<void(Expected<CyberCore::PushSubscriptionData, CyberCore::ExceptionData>&&)>&& completionHandler)
     {
-        std::optional<Expected<WebCore::PushSubscriptionData, WebCore::ExceptionData>> data;
+        std::optional<Expected<CyberCore::PushSubscriptionData, CyberCore::ExceptionData>> data;
         decoder >> data;
 
         if (!data)
@@ -315,10 +315,10 @@ template<> struct ReplyCaller<Expected<WebCore::PushSubscriptionData, WebCore::E
     }
 };
 
-template<> struct ReplyCaller<Expected<bool, WebCore::ExceptionData>&&> {
-    static void callReply(Daemon::Decoder&& decoder, CompletionHandler<void(Expected<bool, WebCore::ExceptionData>&&)>&& completionHandler)
+template<> struct ReplyCaller<Expected<bool, CyberCore::ExceptionData>&&> {
+    static void callReply(Daemon::Decoder&& decoder, CompletionHandler<void(Expected<bool, CyberCore::ExceptionData>&&)>&& completionHandler)
     {
-        std::optional<Expected<bool, WebCore::ExceptionData>> data;
+        std::optional<Expected<bool, CyberCore::ExceptionData>> data;
         decoder >> data;
 
         if (!data)
@@ -328,10 +328,10 @@ template<> struct ReplyCaller<Expected<bool, WebCore::ExceptionData>&&> {
     }
 };
 
-template<> struct ReplyCaller<Expected<std::optional<WebCore::PushSubscriptionData>, WebCore::ExceptionData>&&> {
-    static void callReply(Daemon::Decoder&& decoder, CompletionHandler<void(Expected<std::optional<WebCore::PushSubscriptionData>, WebCore::ExceptionData>&&)>&& completionHandler)
+template<> struct ReplyCaller<Expected<std::optional<CyberCore::PushSubscriptionData>, CyberCore::ExceptionData>&&> {
+    static void callReply(Daemon::Decoder&& decoder, CompletionHandler<void(Expected<std::optional<CyberCore::PushSubscriptionData>, CyberCore::ExceptionData>&&)>&& completionHandler)
     {
-        std::optional<Expected<std::optional<WebCore::PushSubscriptionData>, WebCore::ExceptionData>> data;
+        std::optional<Expected<std::optional<CyberCore::PushSubscriptionData>, CyberCore::ExceptionData>> data;
         decoder >> data;
 
         if (!data)
@@ -341,10 +341,10 @@ template<> struct ReplyCaller<Expected<std::optional<WebCore::PushSubscriptionDa
     }
 };
 
-template<> struct ReplyCaller<Expected<uint8_t, WebCore::ExceptionData>&&> {
-    static void callReply(Daemon::Decoder&& decoder, CompletionHandler<void(Expected<uint8_t, WebCore::ExceptionData>&&)>&& completionHandler)
+template<> struct ReplyCaller<Expected<uint8_t, CyberCore::ExceptionData>&&> {
+    static void callReply(Daemon::Decoder&& decoder, CompletionHandler<void(Expected<uint8_t, CyberCore::ExceptionData>&&)>&& completionHandler)
     {
-        std::optional<Expected<uint8_t, WebCore::ExceptionData>> data;
+        std::optional<Expected<uint8_t, CyberCore::ExceptionData>> data;
         decoder >> data;
 
         if (!data)

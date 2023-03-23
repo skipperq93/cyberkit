@@ -37,8 +37,8 @@
 #include <CyberCore/GeolocationPositionData.h>
 #include <CyberCore/Page.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 static RegistrableDomain registrableDomainForPage(WebPage& page)
 {
@@ -138,7 +138,7 @@ void WebGeolocationManager::setEnableHighAccuracyForPage(WebPage& page, bool ena
         m_process.parentProcessConnection()->send(Messages::WebGeolocationManagerProxy::SetEnableHighAccuracy(registrableDomain, highAccuracyShouldBeEnabled), 0);
 }
 
-void WebGeolocationManager::didChangePosition(const WebCore::RegistrableDomain& registrableDomain, const GeolocationPositionData& position)
+void WebGeolocationManager::didChangePosition(const CyberCore::RegistrableDomain& registrableDomain, const GeolocationPositionData& position)
 {
 #if ENABLE(GEOLOCATION)
     if (auto it = m_pageSets.find(registrableDomain); it != m_pageSets.end()) {
@@ -153,7 +153,7 @@ void WebGeolocationManager::didChangePosition(const WebCore::RegistrableDomain& 
 #endif // ENABLE(GEOLOCATION)
 }
 
-void WebGeolocationManager::didFailToDeterminePosition(const WebCore::RegistrableDomain& registrableDomain, const String& errorMessage)
+void WebGeolocationManager::didFailToDeterminePosition(const CyberCore::RegistrableDomain& registrableDomain, const String& errorMessage)
 {
 #if ENABLE(GEOLOCATION)
     if (auto it = m_pageSets.find(registrableDomain); it != m_pageSets.end()) {
@@ -182,7 +182,7 @@ bool WebGeolocationManager::isHighAccuracyEnabled(const PageSets& pageSets) cons
 }
 
 #if PLATFORM(IOS_FAMILY)
-void WebGeolocationManager::resetPermissions(const WebCore::RegistrableDomain& registrableDomain)
+void WebGeolocationManager::resetPermissions(const CyberCore::RegistrableDomain& registrableDomain)
 {
     auto it = m_pageSets.find(registrableDomain);
     if (it != m_pageSets.end())
@@ -195,4 +195,4 @@ void WebGeolocationManager::resetPermissions(const WebCore::RegistrableDomain& r
 }
 #endif // PLATFORM(IOS_FAMILY)
 
-} // namespace WebKit
+} // namespace CyberKit

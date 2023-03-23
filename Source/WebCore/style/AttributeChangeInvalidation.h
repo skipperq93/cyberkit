@@ -28,7 +28,7 @@
 #include "Element.h"
 #include "StyleInvalidator.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace Style {
 
 class AttributeChangeInvalidation {

@@ -46,7 +46,7 @@ static inline NSData *replacementDataFromDecisionInfo(NSDictionary *decisionInfo
     return decisionInfo[NEFilterSourceOptionsPageData];
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 #if !ENABLE(CONTENT_FILTERING_IN_NETWORKING_PROCESS)
 NetworkExtensionContentFilter::SandboxExtensionsState NetworkExtensionContentFilter::m_sandboxExtensionsState = SandboxExtensionsState::NotSet;
@@ -244,6 +244,6 @@ void NetworkExtensionContentFilter::setHasConsumedSandboxExtensions(bool hasCons
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(CONTENT_FILTERING)

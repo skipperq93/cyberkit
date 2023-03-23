@@ -33,7 +33,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 class ResourceRequest;
 }
 
@@ -43,7 +43,7 @@ struct URLSchemeTaskParameters;
 class WebPageProxy;
 class WebProcessProxy;
 
-using SyncLoadCompletionHandler = CompletionHandler<void(const WebCore::ResourceResponse&, const WebCore::ResourceError&, Vector<uint8_t>&&)>;
+using SyncLoadCompletionHandler = CompletionHandler<void(const CyberCore::ResourceResponse&, const CyberCore::ResourceError&, Vector<uint8_t>&&)>;
 
 class WebURLSchemeHandler : public RefCounted<WebURLSchemeHandler> {
     WTF_MAKE_NONCOPYABLE(WebURLSchemeHandler);
@@ -52,8 +52,8 @@ public:
 
     WebURLSchemeHandlerIdentifier identifier() const { return m_identifier; }
 
-    void startTask(WebPageProxy&, WebProcessProxy&, WebCore::PageIdentifier, URLSchemeTaskParameters&&, SyncLoadCompletionHandler&&);
-    void stopTask(WebPageProxy&, WebCore::ResourceLoaderIdentifier taskIdentifier);
+    void startTask(WebPageProxy&, WebProcessProxy&, CyberCore::PageIdentifier, URLSchemeTaskParameters&&, SyncLoadCompletionHandler&&);
+    void stopTask(WebPageProxy&, CyberCore::ResourceLoaderIdentifier taskIdentifier);
     void stopAllTasksForPage(WebPageProxy&, WebProcessProxy*);
     void taskCompleted(WebPageProxyIdentifier, WebURLSchemeTask&);
 
@@ -67,13 +67,13 @@ private:
     virtual void platformStopTask(WebPageProxy&, WebURLSchemeTask&) = 0;
     virtual void platformTaskCompleted(WebURLSchemeTask&) { };
 
-    void removeTaskFromPageMap(WebPageProxyIdentifier, WebCore::ResourceLoaderIdentifier);
-    WebProcessProxy* processForTaskIdentifier(WebPageProxy&, WebCore::ResourceLoaderIdentifier) const;
+    void removeTaskFromPageMap(WebPageProxyIdentifier, CyberCore::ResourceLoaderIdentifier);
+    WebProcessProxy* processForTaskIdentifier(WebPageProxy&, CyberCore::ResourceLoaderIdentifier) const;
 
     WebURLSchemeHandlerIdentifier m_identifier;
 
-    HashMap<std::pair<WebCore::ResourceLoaderIdentifier, WebPageProxyIdentifier>, Ref<WebURLSchemeTask>> m_tasks;
-    HashMap<WebPageProxyIdentifier, HashSet<WebCore::ResourceLoaderIdentifier>> m_tasksByPageIdentifier;
+    HashMap<std::pair<CyberCore::ResourceLoaderIdentifier, WebPageProxyIdentifier>, Ref<WebURLSchemeTask>> m_tasks;
+    HashMap<WebPageProxyIdentifier, HashSet<CyberCore::ResourceLoaderIdentifier>> m_tasksByPageIdentifier;
     
     SyncLoadCompletionHandler m_syncLoadCompletionHandler;
 

@@ -34,7 +34,7 @@
 #include "VisibilityChangeClient.h"
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DeferredPromise;
 
@@ -90,4 +90,4 @@ private:
     bool m_hasChangeEventListener { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -29,11 +29,11 @@
 #include <CyberScriptCore/HeapInlines.h>
 #include <CyberScriptCore/WeakInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 GCObservation::GCObservation(JSC::JSObject* object)
     : m_observedValue(object, nullptr, nullptr)
 {
 }
 
-} // namespace WebCore
+} // namespace CyberCore

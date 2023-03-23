@@ -29,11 +29,11 @@
 
 #include <wtf/ObjectIdentifier.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 enum RemoteMediaSourceIdentifierType { };
 using RemoteMediaSourceIdentifier = ObjectIdentifier<RemoteMediaSourceIdentifierType>;
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

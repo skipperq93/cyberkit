@@ -26,7 +26,7 @@
 #ifndef AuthenticationClient_h
 #define AuthenticationClient_h
 
-namespace WebCore {
+namespace CyberCore {
 
 class AuthenticationChallenge;
 class Credential;

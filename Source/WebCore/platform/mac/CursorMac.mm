@@ -37,13 +37,13 @@
 #import <pal/spi/mac/HIServicesSPI.h>
 #endif
 
-@interface WebCoreCursorBundle : NSObject { }
+@interface CyberCoreCursorBundle : NSObject { }
 @end
 
-@implementation WebCoreCursorBundle
+@implementation CyberCoreCursorBundle
 @end
 
-namespace WebCore {
+namespace CyberCore {
 
 #if HAVE(HISERVICES)
 
@@ -414,6 +414,6 @@ void Cursor::setAsPlatformCursor() const
     [cursor set];
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // HAVE(NSCURSOR)

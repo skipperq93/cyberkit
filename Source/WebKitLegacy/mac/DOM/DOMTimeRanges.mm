@@ -36,17 +36,17 @@
 #import <CyberCore/JSExecState.h>
 #import <CyberCore/ThreadCheck.h>
 #import <CyberCore/TimeRanges.h>
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 #import <CyberCore/WebScriptObjectPrivate.h>
 #import <wtf/GetPtr.h>
 
-#define IMPL reinterpret_cast<WebCore::TimeRanges*>(_internal)
+#define IMPL reinterpret_cast<CyberCore::TimeRanges*>(_internal)
 
 @implementation DOMTimeRanges
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainThread([DOMTimeRanges class], self))
+    if (CyberCoreObjCScheduleDeallocateOnMainThread([DOMTimeRanges class], self))
         return;
 
     if (_internal)
@@ -56,27 +56,27 @@
 
 - (unsigned)length
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->length();
 }
 
 - (double)start:(unsigned)index
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return raiseOnDOMError(IMPL->start(index));
 }
 
 - (double)end:(unsigned)index
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return raiseOnDOMError(IMPL->end(index));
 }
 
 @end
 
-DOMTimeRanges *kit(WebCore::TimeRanges* value)
+DOMTimeRanges *kit(CyberCore::TimeRanges* value)
 {
-    WebCoreThreadViolationCheckRoundOne();
+    CyberCoreThreadViolationCheckRoundOne();
     if (!value)
         return nil;
     if (DOMTimeRanges *wrapper = getDOMWrapper(value))

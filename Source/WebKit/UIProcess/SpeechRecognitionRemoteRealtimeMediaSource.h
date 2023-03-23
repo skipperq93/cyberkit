@@ -35,7 +35,7 @@
 #include <CyberCore/CAAudioStreamDescription.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 class CaptureDevice;
 #if PLATFORM(COCOA)
 class WebAudioBufferList;
@@ -45,15 +45,15 @@ class WebAudioBufferList;
 namespace WebKit {
 class SpeechRecognitionRemoteRealtimeMediaSourceManager;
     
-class SpeechRecognitionRemoteRealtimeMediaSource : public WebCore::RealtimeMediaSource {
+class SpeechRecognitionRemoteRealtimeMediaSource : public CyberCore::RealtimeMediaSource {
 public:
-    static Ref<WebCore::RealtimeMediaSource> create(SpeechRecognitionRemoteRealtimeMediaSourceManager&, const WebCore::CaptureDevice&, WebCore::PageIdentifier);
+    static Ref<CyberCore::RealtimeMediaSource> create(SpeechRecognitionRemoteRealtimeMediaSourceManager&, const CyberCore::CaptureDevice&, CyberCore::PageIdentifier);
     ~SpeechRecognitionRemoteRealtimeMediaSource();
 
-    WebCore::RealtimeMediaSourceIdentifier identifier() const { return m_identifier; }
+    CyberCore::RealtimeMediaSourceIdentifier identifier() const { return m_identifier; }
 
 #if PLATFORM(COCOA)
-    void setStorage(ConsumerSharedCARingBuffer::Handle&&, const WebCore::CAAudioStreamDescription&);
+    void setStorage(ConsumerSharedCARingBuffer::Handle&&, const CyberCore::CAAudioStreamDescription&);
 #endif
 
     void remoteAudioSamplesAvailable(MediaTime, uint64_t numberOfFrames);
@@ -61,23 +61,23 @@ public:
     void remoteSourceStopped();
 
 private:
-    SpeechRecognitionRemoteRealtimeMediaSource(WebCore::RealtimeMediaSourceIdentifier, SpeechRecognitionRemoteRealtimeMediaSourceManager&, const WebCore::CaptureDevice&, WebCore::PageIdentifier);
+    SpeechRecognitionRemoteRealtimeMediaSource(CyberCore::RealtimeMediaSourceIdentifier, SpeechRecognitionRemoteRealtimeMediaSourceManager&, const CyberCore::CaptureDevice&, CyberCore::PageIdentifier);
 
-    // WebCore::RealtimeMediaSource
+    // CyberCore::RealtimeMediaSource
     void startProducingData() final;
     void stopProducingData() final;
-    const WebCore::RealtimeMediaSourceCapabilities& capabilities() final { return m_capabilities; }
-    const WebCore::RealtimeMediaSourceSettings& settings() final { return m_settings; }
+    const CyberCore::RealtimeMediaSourceCapabilities& capabilities() final { return m_capabilities; }
+    const CyberCore::RealtimeMediaSourceSettings& settings() final { return m_settings; }
 
-    WebCore::RealtimeMediaSourceIdentifier m_identifier;
+    CyberCore::RealtimeMediaSourceIdentifier m_identifier;
     WeakPtr<SpeechRecognitionRemoteRealtimeMediaSourceManager> m_manager;
-    WebCore::RealtimeMediaSourceCapabilities m_capabilities;
-    WebCore::RealtimeMediaSourceSettings m_settings;
+    CyberCore::RealtimeMediaSourceCapabilities m_capabilities;
+    CyberCore::RealtimeMediaSourceSettings m_settings;
 
 #if PLATFORM(COCOA)
-    std::optional<WebCore::CAAudioStreamDescription> m_description;
+    std::optional<CyberCore::CAAudioStreamDescription> m_description;
     std::unique_ptr<ConsumerSharedCARingBuffer> m_ringBuffer;
-    std::unique_ptr<WebCore::WebAudioBufferList> m_buffer;
+    std::unique_ptr<CyberCore::WebAudioBufferList> m_buffer;
 #endif
 };
 

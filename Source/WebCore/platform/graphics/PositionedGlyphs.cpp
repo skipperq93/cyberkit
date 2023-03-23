@@ -28,7 +28,7 @@
 
 #include "Font.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 FloatRect PositionedGlyphs::computeBounds(const Font& font) const
 {
@@ -49,4 +49,4 @@ FloatRect PositionedGlyphs::computeBounds(const Font& font) const
     return bounds;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

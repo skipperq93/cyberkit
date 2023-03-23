@@ -39,26 +39,26 @@ template<> struct ClientTraits<WKBundlePageFullScreenClientBase> {
 };
 }
 
-namespace WebCore {
+namespace CyberCore {
 class Element;
 class IntRect;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPage;
 
 class InjectedBundlePageFullScreenClient : public API::Client<WKBundlePageFullScreenClientBase> {
 public:
     bool supportsFullScreen(WebPage*, bool withKeyboard);
-    void enterFullScreenForElement(WebPage*, WebCore::Element*, bool blocksReturnToFullscreenFromPictureInPicture, bool isVideoElementWithControls, WebCore::FloatSize videoDimensions);
-    void exitFullScreenForElement(WebPage*, WebCore::Element*);
-    void beganEnterFullScreen(WebPage*, WebCore::IntRect& initialFrame, WebCore::IntRect& finalFrame);
-    void beganExitFullScreen(WebPage*, WebCore::IntRect& initialFrame, WebCore::IntRect& finalFrame);
+    void enterFullScreenForElement(WebPage*, CyberCore::Element*, bool blocksReturnToFullscreenFromPictureInPicture, bool isVideoElementWithControls, CyberCore::FloatSize videoDimensions);
+    void exitFullScreenForElement(WebPage*, CyberCore::Element*);
+    void beganEnterFullScreen(WebPage*, CyberCore::IntRect& initialFrame, CyberCore::IntRect& finalFrame);
+    void beganExitFullScreen(WebPage*, CyberCore::IntRect& initialFrame, CyberCore::IntRect& finalFrame);
     void closeFullScreen(WebPage*);
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(FULLSCREEN_API)
 

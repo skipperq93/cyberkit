@@ -30,7 +30,7 @@
 
 #include <openjpeg.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // SYCC to RGB conversion code from libopenjpeg (BSD), adapted to WebKit coding style.
 // --------------------------------------------------------
@@ -554,6 +554,6 @@ void JPEG2000ImageDecoder::decode(bool onlySize, bool allDataReceived)
         buffer.setHasAlpha(true);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(OPENJPEG)

@@ -44,7 +44,7 @@
 #include <pal/spi/cg/CoreGraphicsSPI.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 BitmapImage::BitmapImage(ImageObserver* observer)
     : Image(observer)

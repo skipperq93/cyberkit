@@ -28,7 +28,7 @@
 #include "RenderView.h"
 #include "SVGRenderSupport.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 RenderSVGResourceSolidColor::RenderSVGResourceSolidColor() = default;
 

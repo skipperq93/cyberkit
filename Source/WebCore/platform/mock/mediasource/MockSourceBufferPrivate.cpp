@@ -40,7 +40,7 @@
 #include <CyberScriptCore/ArrayBuffer.h>
 #include <wtf/StringPrintStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class MockMediaSample final : public MediaSample {
 public:

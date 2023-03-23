@@ -33,7 +33,7 @@ namespace WTF {
 class TextStream;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 struct GraphicsDropShadow {
     FloatSize offset;
@@ -162,4 +162,4 @@ std::optional<GraphicsColorMatrix> GraphicsColorMatrix::decode(Decoder& decoder)
     return GraphicsColorMatrix { WTFMove(*values) };
 }
 
-} // namespace WebCore
+} // namespace CyberCore

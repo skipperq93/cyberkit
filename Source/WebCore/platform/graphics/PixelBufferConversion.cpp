@@ -35,7 +35,7 @@
 #include <Accelerate/Accelerate.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 #if USE(ACCELERATE) && USE(CG)
 

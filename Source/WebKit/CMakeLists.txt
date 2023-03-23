@@ -6,7 +6,7 @@ set(WebKit_PRIVATE_INCLUDE_DIRECTORIES
 
 set(WebKit_INCLUDE_DIRECTORIES
     "${PAL_FRAMEWORK_HEADERS_DIR}"
-    "${WebCore_PRIVATE_FRAMEWORK_HEADERS_DIR}"
+    "${CyberCore_PRIVATE_FRAMEWORK_HEADERS_DIR}"
     "${WebKit_FRAMEWORK_HEADERS_DIR}"
     "${WebKit_DERIVED_SOURCES_DIR}"
     "${WebKit_DERIVED_SOURCES_DIR}/include"
@@ -112,7 +112,7 @@ set(WebKit_INCLUDE_DIRECTORIES
     "${WEBKIT_DIR}/WebProcess/Speech"
     "${WEBKIT_DIR}/WebProcess/Storage"
     "${WEBKIT_DIR}/WebProcess/UserContent"
-    "${WEBKIT_DIR}/WebProcess/WebCoreSupport"
+    "${WEBKIT_DIR}/WebProcess/CyberCoreSupport"
     "${WEBKIT_DIR}/WebProcess/WebPage"
     "${WEBKIT_DIR}/WebProcess/WebPage/RemoteLayerTree"
     "${WEBKIT_DIR}/WebProcess/WebStorage"
@@ -320,12 +320,12 @@ set(WebKit_MESSAGES_IN_FILES
 
     WebProcess/UserContent/WebUserContentController
 
-    WebProcess/WebCoreSupport/RemoteWebLockRegistry
-    WebProcess/WebCoreSupport/WebBroadcastChannelRegistry
-    WebProcess/WebCoreSupport/WebFileSystemStorageConnection
-    WebProcess/WebCoreSupport/WebPermissionController
-    WebProcess/WebCoreSupport/WebScreenOrientationManager
-    WebProcess/WebCoreSupport/WebSpeechRecognitionConnection
+    WebProcess/CyberCoreSupport/RemoteWebLockRegistry
+    WebProcess/CyberCoreSupport/WebBroadcastChannelRegistry
+    WebProcess/CyberCoreSupport/WebFileSystemStorageConnection
+    WebProcess/CyberCoreSupport/WebPermissionController
+    WebProcess/CyberCoreSupport/WebScreenOrientationManager
+    WebProcess/CyberCoreSupport/WebSpeechRecognitionConnection
 
     WebProcess/WebPage/DrawingArea
     WebProcess/WebPage/EventDispatcher
@@ -342,7 +342,7 @@ set(WebKit_FRAMEWORKS
     JavaScriptCore
     PAL
     WTF
-    WebCore
+    CyberCore
 )
 if (NOT USE_SYSTEM_MALLOC)
     list(APPEND WebKit_FRAMEWORKS bmalloc)
@@ -543,7 +543,7 @@ set(WebKit_SERIALIZATION_IN_FILES
     Shared/TextFlags.serialization.in
     Shared/TextRecognitionResult.serialization.in
     Shared/WTFArgumentCoders.serialization.in
-    Shared/WebCoreArgumentCoders.serialization.in
+    Shared/CyberCoreArgumentCoders.serialization.in
     Shared/WebEvent.serialization.in
     Shared/WebHitTestResultData.serialization.in
     Shared/WebPopupItem.serialization.in

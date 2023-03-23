@@ -34,7 +34,7 @@
 #include <wtf/MainThread.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 ResourceUsageThread::ResourceUsageThread()
 {
@@ -118,7 +118,7 @@ void ResourceUsageThread::createThreadIfNeeded()
         return;
 
     m_vm = &commonVM();
-    m_thread = Thread::create("WebCore: ResourceUsage", [this] {
+    m_thread = Thread::create("CyberCore: ResourceUsage", [this] {
         threadBody();
     });
 }
@@ -151,6 +151,6 @@ NO_RETURN void ResourceUsageThread::threadBody()
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(RESOURCE_USAGE)

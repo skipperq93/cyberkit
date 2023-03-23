@@ -27,7 +27,7 @@
 
 #include <CyberCore/MockContentFilterSettingsClient.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class MockContentFilterManager {
 public:
@@ -35,7 +35,7 @@ public:
 
     WEBCORE_TESTSUPPORT_EXPORT void setClient(RefPtr<MockContentFilterSettingsClient>);
     
-    WEBCORE_TESTSUPPORT_EXPORT void notifySettingsChanged(WebCore::MockContentFilterSettings&) const;
+    WEBCORE_TESTSUPPORT_EXPORT void notifySettingsChanged(CyberCore::MockContentFilterSettings&) const;
 
 private:
     RefPtr<MockContentFilterSettingsClient> m_client;

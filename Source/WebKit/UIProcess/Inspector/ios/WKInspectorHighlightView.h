@@ -28,15 +28,15 @@
 #import <UIKit/UIKit.h>
 #import <CyberCore/InspectorOverlay.h>
 
-namespace WebCore {
+namespace CyberCore {
 class FloatRect;
 }
 
 @interface WKInspectorHighlightView : UIView {
     RetainPtr<NSMutableArray<CAShapeLayer *>> _layers;
-    std::optional<WebCore::InspectorOverlay::Highlight> _highlight;
+    std::optional<CyberCore::InspectorOverlay::Highlight> _highlight;
 }
-- (void)update:(const WebCore::InspectorOverlay::Highlight&)highlight scale:(double)scale frame:(const WebCore::FloatRect&)frame;
+- (void)update:(const CyberCore::InspectorOverlay::Highlight&)highlight scale:(double)scale frame:(const CyberCore::FloatRect&)frame;
 @end
 
 #endif

@@ -78,7 +78,7 @@
 
 #if PLATFORM(COCOA)
 
-namespace WebKit {
+namespace CyberKit {
 
 void WebPage::platformInitialize(const WebPageCreationParameters& parameters)
 {
@@ -119,7 +119,7 @@ void WebPage::requestActiveNowPlayingSessionInfo(CompletionHandler<void(bool, bo
     double elapsedTime = NAN;
     uint64_t uniqueIdentifier = 0;
     bool registeredAsNowPlayingApplication = false;
-    if (auto* sharedManager = WebCore::PlatformMediaSessionManager::sharedManagerIfExists()) {
+    if (auto* sharedManager = CyberCore::PlatformMediaSessionManager::sharedManagerIfExists()) {
         hasActiveSession = sharedManager->hasActiveNowPlayingSession();
         title = sharedManager->lastUpdatedNowPlayingTitle();
         duration = sharedManager->lastUpdatedNowPlayingDuration();
@@ -244,7 +244,7 @@ DictionaryPopupInfo WebPage::dictionaryPopupInfoForRange(Frame& frame, const Sim
     return dictionaryPopupInfo;
 }
 
-void WebPage::insertDictatedTextAsync(const String& text, const EditingRange& replacementEditingRange, const Vector<WebCore::DictationAlternative>& dictationAlternativeLocations, InsertTextOptions&& options)
+void WebPage::insertDictatedTextAsync(const String& text, const EditingRange& replacementEditingRange, const Vector<CyberCore::DictationAlternative>& dictationAlternativeLocations, InsertTextOptions&& options)
 {
     Ref frame = CheckedRef(m_page->focusController())->focusedOrMainFrame();
 
@@ -348,7 +348,7 @@ void WebPage::clearDictationAlternatives(Vector<DictationContext>&& contexts)
     document->markers().filterMarkers(documentRange, [&] (auto& marker) {
         if (!std::holds_alternative<DocumentMarker::DictationData>(marker.data()))
             return FilterMarkerResult::Keep;
-        return setOfContextsToRemove.contains(std::get<WebCore::DocumentMarker::DictationData>(marker.data()).context) ? FilterMarkerResult::Remove : FilterMarkerResult::Keep;
+        return setOfContextsToRemove.contains(std::get<CyberCore::DocumentMarker::DictationData>(marker.data()).context) ? FilterMarkerResult::Remove : FilterMarkerResult::Keep;
     }, DocumentMarker::DictationAlternatives);
 }
 
@@ -367,7 +367,7 @@ WebPaymentCoordinator* WebPage::paymentCoordinator()
 }
 #endif
 
-void WebPage::getContentsAsAttributedString(CompletionHandler<void(const WebCore::AttributedString&)>&& completionHandler)
+void WebPage::getContentsAsAttributedString(CompletionHandler<void(const CyberCore::AttributedString&)>&& completionHandler)
 {
     completionHandler(is<LocalFrame>(m_page->mainFrame()) ? attributedString(makeRangeSelectingNodeContents(*downcast<LocalFrame>(m_page->mainFrame()).document())) : AttributedString());
 }
@@ -534,7 +534,7 @@ void WebPage::consumeNetworkExtensionSandboxExtensions(const Vector<SandboxExten
 }
 #endif
 
-void WebPage::getPDFFirstPageSize(WebCore::FrameIdentifier frameID, CompletionHandler<void(WebCore::FloatSize)>&& completionHandler)
+void WebPage::getPDFFirstPageSize(CyberCore::FrameIdentifier frameID, CompletionHandler<void(CyberCore::FloatSize)>&& completionHandler)
 {
 #if !ENABLE(PDFKIT_PLUGIN)
     return completionHandler({ });
@@ -620,8 +620,8 @@ void WebPage::replaceImageForRemoveBackground(const ElementContext& elementConte
         frame->editor().replaceNodeFromPasteboard(*element, replaceSelectionPasteboardName(), EditAction::RemoveBackground);
 
         auto position = frame->selection().selection().visibleStart();
-        if (auto imageRange = makeSimpleRange(WebCore::VisiblePositionRange { position.previous(), position })) {
-            for (WebCore::TextIterator iterator { *imageRange, { } }; !iterator.atEnd(); iterator.advance()) {
+        if (auto imageRange = makeSimpleRange(CyberCore::VisiblePositionRange { position.previous(), position })) {
+            for (CyberCore::TextIterator iterator { *imageRange, { } }; !iterator.atEnd(); iterator.advance()) {
                 if (RefPtr image = dynamicDowncast<HTMLImageElement>(iterator.node())) {
                     m_elementsToExcludeFromRemoveBackground.add(*image);
                     break;
@@ -671,8 +671,8 @@ void WebPage::readSelectionFromPasteboard(const String& pasteboardName, Completi
     completionHandler(true);
 }
 
-#if USE(APPLE_INTERNAL_SDK) && __has_include(<WebKitAdditions/WebPageCocoaAdditions.mm>)
-#include <WebKitAdditions/WebPageCocoaAdditions.mm>
+#if USE(APPLE_INTERNAL_SDK) && __has_include(<CyberKitAdditions/WebPageCocoaAdditions.mm>)
+#include <CyberKitAdditions/WebPageCocoaAdditions.mm>
 #else
 URL WebPage::sanitizeLookalikeCharacters(const URL& url, LookalikeCharacterSanitizationTrigger)
 {
@@ -706,10 +706,10 @@ Node* WebPage::clickableNodeAtLocation(const FloatPoint& viewportLocation, Float
     if (!document)
         return nullptr;
 
-    WebCore::HitTestResult result { pointInContentsCoordinates };
+    CyberCore::HitTestResult result { pointInContentsCoordinates };
     constexpr OptionSet<HitTestRequest::Type> hitType { HitTestRequest::Type::ReadOnly, HitTestRequest::Type::Active, HitTestRequest::Type::DisallowUserAgentShadowContent, HitTestRequest::Type::AllowVisibleChildFrameContentOnly };
 
-    document->hitTest(WebCore::HitTestRequest { hitType }, result);
+    document->hitTest(CyberCore::HitTestRequest { hitType }, result);
     return result.innerNode();
 #endif
 }
@@ -727,7 +727,7 @@ bool WebPage::isTransparentOrFullyClipped(const Element& element) const
     return renderer->hasNonEmptyVisibleRectRespectingParentFrames();
 }
 
-Vector<FloatRect> WebPage::getEvasionRectsAroundSelection(const Vector<WebCore::FloatPoint>& offsetsForHitTesting, bool evasionRectsAboveSelection) const
+Vector<FloatRect> WebPage::getEvasionRectsAroundSelection(const Vector<CyberCore::FloatPoint>& offsetsForHitTesting, bool evasionRectsAboveSelection) const
 {
     Ref frame = CheckedRef(m_page->focusController())->focusedOrMainFrame();
     RefPtr frameView = frame->view();
@@ -820,6 +820,6 @@ Vector<FloatRect> WebPage::getEvasionRectsAroundSelection(const Vector<WebCore::
     return rectsToAvoidInRootViewCoordinates;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(COCOA)

@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -21,28 +21,28 @@
 #error "Only <webkitdom/webkitdom.h> can be included directly."
 #endif
 
-#ifndef WebKitDOMHTMLFontElement_h
-#define WebKitDOMHTMLFontElement_h
+#ifndef CyberKitDOMHTMLFontElement_h
+#define CyberKitDOMHTMLFontElement_h
 
 #include <glib-object.h>
-#include <webkitdom/WebKitDOMHTMLElement.h>
+#include <webkitdom/CyberKitDOMHTMLElement.h>
 #include <webkitdom/webkitdomdefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_DOM_TYPE_HTML_FONT_ELEMENT            (webkit_dom_html_font_element_get_type())
-#define WEBKIT_DOM_HTML_FONT_ELEMENT(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_HTML_FONT_ELEMENT, WebKitDOMHTMLFontElement))
-#define WEBKIT_DOM_HTML_FONT_ELEMENT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_HTML_FONT_ELEMENT, WebKitDOMHTMLFontElementClass)
+#define WEBKIT_DOM_HTML_FONT_ELEMENT(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_HTML_FONT_ELEMENT, CyberKitDOMHTMLFontElement))
+#define WEBKIT_DOM_HTML_FONT_ELEMENT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_HTML_FONT_ELEMENT, CyberKitDOMHTMLFontElementClass)
 #define WEBKIT_DOM_IS_HTML_FONT_ELEMENT(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_DOM_TYPE_HTML_FONT_ELEMENT))
 #define WEBKIT_DOM_IS_HTML_FONT_ELEMENT_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_DOM_TYPE_HTML_FONT_ELEMENT))
-#define WEBKIT_DOM_HTML_FONT_ELEMENT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_HTML_FONT_ELEMENT, WebKitDOMHTMLFontElementClass))
+#define WEBKIT_DOM_HTML_FONT_ELEMENT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_HTML_FONT_ELEMENT, CyberKitDOMHTMLFontElementClass))
 
-struct _WebKitDOMHTMLFontElement {
-    WebKitDOMHTMLElement parent_instance;
+struct _CyberKitDOMHTMLFontElement {
+    CyberKitDOMHTMLElement parent_instance;
 };
 
-struct _WebKitDOMHTMLFontElementClass {
-    WebKitDOMHTMLElementClass parent_class;
+struct _CyberKitDOMHTMLFontElementClass {
+    CyberKitDOMHTMLElementClass parent_class;
 };
 
 WEBKIT_DEPRECATED GType
@@ -50,70 +50,70 @@ webkit_dom_html_font_element_get_type(void);
 
 /**
  * webkit_dom_html_font_element_get_color:
- * @self: A #WebKitDOMHTMLFontElement
+ * @self: A #CyberKitDOMHTMLFontElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_font_element_get_color(WebKitDOMHTMLFontElement* self);
+webkit_dom_html_font_element_get_color(CyberKitDOMHTMLFontElement* self);
 
 /**
  * webkit_dom_html_font_element_set_color:
- * @self: A #WebKitDOMHTMLFontElement
+ * @self: A #CyberKitDOMHTMLFontElement
  * @value: A #gchar
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_font_element_set_color(WebKitDOMHTMLFontElement* self, const gchar* value);
+webkit_dom_html_font_element_set_color(CyberKitDOMHTMLFontElement* self, const gchar* value);
 
 /**
  * webkit_dom_html_font_element_get_face:
- * @self: A #WebKitDOMHTMLFontElement
+ * @self: A #CyberKitDOMHTMLFontElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_font_element_get_face(WebKitDOMHTMLFontElement* self);
+webkit_dom_html_font_element_get_face(CyberKitDOMHTMLFontElement* self);
 
 /**
  * webkit_dom_html_font_element_set_face:
- * @self: A #WebKitDOMHTMLFontElement
+ * @self: A #CyberKitDOMHTMLFontElement
  * @value: A #gchar
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_font_element_set_face(WebKitDOMHTMLFontElement* self, const gchar* value);
+webkit_dom_html_font_element_set_face(CyberKitDOMHTMLFontElement* self, const gchar* value);
 
 /**
  * webkit_dom_html_font_element_get_size:
- * @self: A #WebKitDOMHTMLFontElement
+ * @self: A #CyberKitDOMHTMLFontElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_font_element_get_size(WebKitDOMHTMLFontElement* self);
+webkit_dom_html_font_element_get_size(CyberKitDOMHTMLFontElement* self);
 
 /**
  * webkit_dom_html_font_element_set_size:
- * @self: A #WebKitDOMHTMLFontElement
+ * @self: A #CyberKitDOMHTMLFontElement
  * @value: A #gchar
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_font_element_set_size(WebKitDOMHTMLFontElement* self, const gchar* value);
+webkit_dom_html_font_element_set_size(CyberKitDOMHTMLFontElement* self, const gchar* value);
 
 G_END_DECLS
 
-#endif /* WebKitDOMHTMLFontElement_h */
+#endif /* CyberKitDOMHTMLFontElement_h */

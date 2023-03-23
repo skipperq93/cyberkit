@@ -50,7 +50,7 @@ typedef struct _GstGLDisplay GstGLDisplay;
 #include "LCMSUniquePtr.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class GLContext;
 
@@ -162,9 +162,9 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #define SPECIALIZE_TYPE_TRAITS_PLATFORM_DISPLAY(ToClassName, DisplayType) \
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::ToClassName) \
-    static bool isType(const WebCore::PlatformDisplay& display) { return display.type() == WebCore::PlatformDisplay::Type::DisplayType; } \
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::ToClassName) \
+    static bool isType(const CyberCore::PlatformDisplay& display) { return display.type() == CyberCore::PlatformDisplay::Type::DisplayType; } \
 SPECIALIZE_TYPE_TRAITS_END()

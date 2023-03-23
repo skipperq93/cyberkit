@@ -26,7 +26,7 @@
 
 #if ENABLE(WEB_RTC)
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class RTCIceTransportState {
     New,
@@ -38,6 +38,6 @@ enum class RTCIceTransportState {
     Closed
 };
 
-}; // namespace WebCore
+}; // namespace CyberCore
 
 #endif

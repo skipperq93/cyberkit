@@ -41,7 +41,7 @@
 #include <CyberCore/SceneKitModelPlayer.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 WebModelPlayerProvider::WebModelPlayerProvider(WebPage& page)
     : m_page { page }
@@ -51,9 +51,9 @@ WebModelPlayerProvider::WebModelPlayerProvider(WebPage& page)
 
 WebModelPlayerProvider::~WebModelPlayerProvider() = default;
 
-// MARK: - WebCore::ModelPlayerProvider overrides.
+// MARK: - CyberCore::ModelPlayerProvider overrides.
 
-RefPtr<WebCore::ModelPlayer> WebModelPlayerProvider::createModelPlayer(WebCore::ModelPlayerClient& client)
+RefPtr<CyberCore::ModelPlayer> WebModelPlayerProvider::createModelPlayer(CyberCore::ModelPlayerClient& client)
 {
 #if ENABLE(ARKIT_INLINE_PREVIEW_MAC)
     if (m_page.useARKitForModel())
@@ -61,7 +61,7 @@ RefPtr<WebCore::ModelPlayer> WebModelPlayerProvider::createModelPlayer(WebCore::
 #endif
 #if HAVE(SCENEKIT)
     if (m_page.useSceneKitForModel())
-        return WebCore::SceneKitModelPlayer::create(client);
+        return CyberCore::SceneKitModelPlayer::create(client);
 #endif
 #if ENABLE(ARKIT_INLINE_PREVIEW_IOS)
     return ARKitInlinePreviewModelPlayerIOS::create(m_page, client);

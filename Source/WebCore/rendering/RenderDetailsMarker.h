@@ -23,7 +23,7 @@
 #include "DetailsMarkerControl.h"
 #include "RenderBlockFlow.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderDetailsMarker final : public RenderBlockFlow {
     WTF_MAKE_ISO_ALLOCATED(RenderDetailsMarker);
@@ -44,6 +44,6 @@ private:
     Path getPath(const LayoutPoint& origin) const;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderDetailsMarker, isDetailsMarker())

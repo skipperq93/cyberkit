@@ -27,7 +27,7 @@
 
 #include "ExceptionOr.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // FIXME: We should merge these into WindowOrWorkerGlobalScope.
 class Base64Utilities {

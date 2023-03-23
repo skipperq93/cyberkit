@@ -32,7 +32,7 @@
 
 #include <wtf/MathExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static inline FloatSize inwardEdgeNormal(const FloatPolygonEdge& edge)
 {
@@ -157,4 +157,4 @@ void PolygonShape::buildDisplayPaths(DisplayPaths& paths) const
     paths.shape.closeSubpath();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

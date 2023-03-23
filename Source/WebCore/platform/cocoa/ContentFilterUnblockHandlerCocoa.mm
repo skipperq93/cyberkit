@@ -37,7 +37,7 @@
 #import <wtf/text/CString.h>
 
 #if PLATFORM(IOS_FAMILY)
-#import "WebCoreThreadRun.h"
+#import "CyberCoreThreadRun.h"
 #endif
 
 static NSString * const unblockURLHostKey { @"unblockURLHost" };
@@ -53,7 +53,7 @@ SOFT_LINK_PRIVATE_FRAMEWORK(WebContentAnalysis);
 SOFT_LINK_CLASS(WebContentAnalysis, WebFilterEvaluator);
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 ContentFilterUnblockHandler::ContentFilterUnblockHandler(String unblockURLHost, UnblockRequesterFunction unblockRequester)
     : m_unblockURLHost { WTFMove(unblockURLHost) }
@@ -193,6 +193,6 @@ void ContentFilterUnblockHandler::setUnblockedAfterRequest(bool unblocked)
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(CONTENT_FILTERING)

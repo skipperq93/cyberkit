@@ -39,7 +39,7 @@ namespace WTF {
 class TextStream;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class Filter;
 class FilterResults;
@@ -107,36 +107,36 @@ private:
 
 WEBCORE_EXPORT TextStream& operator<<(TextStream&, const FilterFunction&);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::FilterFunction::Type> {
+template<> struct EnumTraits<CyberCore::FilterFunction::Type> {
     using values = EnumValues<
-        WebCore::FilterFunction::Type,
+        CyberCore::FilterFunction::Type,
 
-        WebCore::FilterFunction::Type::CSSFilter,
-        WebCore::FilterFunction::Type::SVGFilter,
+        CyberCore::FilterFunction::Type::CSSFilter,
+        CyberCore::FilterFunction::Type::SVGFilter,
 
-        WebCore::FilterFunction::Type::FEBlend,
-        WebCore::FilterFunction::Type::FEColorMatrix,
-        WebCore::FilterFunction::Type::FEComponentTransfer,
-        WebCore::FilterFunction::Type::FEComposite,
-        WebCore::FilterFunction::Type::FEConvolveMatrix,
-        WebCore::FilterFunction::Type::FEDiffuseLighting,
-        WebCore::FilterFunction::Type::FEDisplacementMap,
-        WebCore::FilterFunction::Type::FEDropShadow,
-        WebCore::FilterFunction::Type::FEFlood,
-        WebCore::FilterFunction::Type::FEGaussianBlur,
-        WebCore::FilterFunction::Type::FEImage,
-        WebCore::FilterFunction::Type::FEMerge,
-        WebCore::FilterFunction::Type::FEMorphology,
-        WebCore::FilterFunction::Type::FEOffset,
-        WebCore::FilterFunction::Type::FESpecularLighting,
-        WebCore::FilterFunction::Type::FETile,
-        WebCore::FilterFunction::Type::FETurbulence,
-        WebCore::FilterFunction::Type::SourceAlpha,
-        WebCore::FilterFunction::Type::SourceGraphic
+        CyberCore::FilterFunction::Type::FEBlend,
+        CyberCore::FilterFunction::Type::FEColorMatrix,
+        CyberCore::FilterFunction::Type::FEComponentTransfer,
+        CyberCore::FilterFunction::Type::FEComposite,
+        CyberCore::FilterFunction::Type::FEConvolveMatrix,
+        CyberCore::FilterFunction::Type::FEDiffuseLighting,
+        CyberCore::FilterFunction::Type::FEDisplacementMap,
+        CyberCore::FilterFunction::Type::FEDropShadow,
+        CyberCore::FilterFunction::Type::FEFlood,
+        CyberCore::FilterFunction::Type::FEGaussianBlur,
+        CyberCore::FilterFunction::Type::FEImage,
+        CyberCore::FilterFunction::Type::FEMerge,
+        CyberCore::FilterFunction::Type::FEMorphology,
+        CyberCore::FilterFunction::Type::FEOffset,
+        CyberCore::FilterFunction::Type::FESpecularLighting,
+        CyberCore::FilterFunction::Type::FETile,
+        CyberCore::FilterFunction::Type::FETurbulence,
+        CyberCore::FilterFunction::Type::SourceAlpha,
+        CyberCore::FilterFunction::Type::SourceGraphic
     >;
 };
 

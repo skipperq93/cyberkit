@@ -41,7 +41,7 @@
 #include "FakeXRJointStateInit.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class WebFakeXRInputController final : public RefCounted<WebFakeXRInputController> {
 public:
@@ -92,6 +92,6 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBXR)

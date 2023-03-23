@@ -66,7 +66,7 @@ static int memfd_create(const char* name, unsigned flags)
 #endif
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 static int createSealedMemFdWithData(const char* name, gconstpointer data, size_t size)
 {

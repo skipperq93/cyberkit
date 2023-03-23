@@ -55,7 +55,7 @@
 #include <wtf/ProcessID.h>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 AsyncScrollingCoordinator::AsyncScrollingCoordinator(Page* page)
     : ScrollingCoordinator(page)
@@ -1143,6 +1143,6 @@ bool AsyncScrollingCoordinator::scrollAnimatorEnabled() const
     return settings.scrollAnimatorEnabled();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ASYNC_SCROLLING)

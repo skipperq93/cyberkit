@@ -33,7 +33,7 @@
 GST_DEBUG_CATEGORY(webkit_app_sink_workaround_debug);
 #define GST_CAT_DEFAULT webkit_app_sink_workaround_debug
 
-namespace WebCore {
+namespace CyberCore {
 
 static bool checkNeedsAppsinkWorkaround()
 {
@@ -78,7 +78,7 @@ void registerAppsinkWorkaroundIfNeeded()
     });
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 struct WebKitAppSinkWithWorkaroundPrivate {
     // Must only be read and written with the pad lock.

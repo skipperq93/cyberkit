@@ -27,7 +27,7 @@
 
 #include <wtf/EnumTraits.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class ScreenOrientationLockType : uint8_t {
     Any,
@@ -40,21 +40,21 @@ enum class ScreenOrientationLockType : uint8_t {
     LandscapeSecondary
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::ScreenOrientationLockType> {
+template<> struct EnumTraits<CyberCore::ScreenOrientationLockType> {
     using values = EnumValues<
-        WebCore::ScreenOrientationLockType,
-        WebCore::ScreenOrientationLockType::Any,
-        WebCore::ScreenOrientationLockType::Natural,
-        WebCore::ScreenOrientationLockType::Landscape,
-        WebCore::ScreenOrientationLockType::Portrait,
-        WebCore::ScreenOrientationLockType::PortraitPrimary,
-        WebCore::ScreenOrientationLockType::PortraitSecondary,
-        WebCore::ScreenOrientationLockType::LandscapePrimary,
-        WebCore::ScreenOrientationLockType::LandscapeSecondary
+        CyberCore::ScreenOrientationLockType,
+        CyberCore::ScreenOrientationLockType::Any,
+        CyberCore::ScreenOrientationLockType::Natural,
+        CyberCore::ScreenOrientationLockType::Landscape,
+        CyberCore::ScreenOrientationLockType::Portrait,
+        CyberCore::ScreenOrientationLockType::PortraitPrimary,
+        CyberCore::ScreenOrientationLockType::PortraitSecondary,
+        CyberCore::ScreenOrientationLockType::LandscapePrimary,
+        CyberCore::ScreenOrientationLockType::LandscapeSecondary
     >;
 };
 

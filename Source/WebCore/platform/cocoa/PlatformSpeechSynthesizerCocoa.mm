@@ -70,21 +70,21 @@ static float getAVSpeechUtteranceMaximumSpeechRate()
 #define AVSpeechUtteranceMaximumSpeechRate getAVSpeechUtteranceMaximumSpeechRate()
 
 @interface WebSpeechSynthesisWrapper : NSObject<AVSpeechSynthesizerDelegate> {
-    WebCore::PlatformSpeechSynthesizer* m_synthesizerObject;
+    CyberCore::PlatformSpeechSynthesizer* m_synthesizerObject;
     // Hold a Ref to the utterance so that it won't disappear until the synth is done with it.
-    RefPtr<WebCore::PlatformSpeechSynthesisUtterance> m_utterance;
+    RefPtr<CyberCore::PlatformSpeechSynthesisUtterance> m_utterance;
 
     RetainPtr<AVSpeechSynthesizer> m_synthesizer;
 }
 
-- (WebSpeechSynthesisWrapper *)initWithSpeechSynthesizer:(WebCore::PlatformSpeechSynthesizer*)synthesizer;
-- (void)speakUtterance:(RefPtr<WebCore::PlatformSpeechSynthesisUtterance>&&)utterance;
+- (WebSpeechSynthesisWrapper *)initWithSpeechSynthesizer:(CyberCore::PlatformSpeechSynthesizer*)synthesizer;
+- (void)speakUtterance:(RefPtr<CyberCore::PlatformSpeechSynthesisUtterance>&&)utterance;
 
 @end
 
 @implementation WebSpeechSynthesisWrapper
 
-- (WebSpeechSynthesisWrapper *)initWithSpeechSynthesizer:(WebCore::PlatformSpeechSynthesizer*)synthesizer
+- (WebSpeechSynthesisWrapper *)initWithSpeechSynthesizer:(CyberCore::PlatformSpeechSynthesizer*)synthesizer
 {
     if (!(self = [super init]))
         return nil;
@@ -105,7 +105,7 @@ static float getAVSpeechUtteranceMaximumSpeechRate()
     return rate;
 }
 
-- (void)speakUtterance:(RefPtr<WebCore::PlatformSpeechSynthesisUtterance>&&)utterance
+- (void)speakUtterance:(RefPtr<CyberCore::PlatformSpeechSynthesisUtterance>&&)utterance
 {
     ASSERT(utterance);
     if (!utterance || !PAL::isAVFoundationFrameworkAvailable())
@@ -119,7 +119,7 @@ static float getAVSpeechUtteranceMaximumSpeechRate()
     
     // Choose the best voice, by first looking at the utterance voice, then the utterance language,
     // then choose the default language.
-    WebCore::PlatformSpeechSynthesisVoice* utteranceVoice = utterance->voice();
+    CyberCore::PlatformSpeechSynthesisVoice* utteranceVoice = utterance->voice();
     NSString *voiceLanguage = nil;
     if (!utteranceVoice || utteranceVoice->voiceURI().isEmpty()) {
         if (utterance->lang().isEmpty())
@@ -208,7 +208,7 @@ static float getAVSpeechUtteranceMaximumSpeechRate()
         return;
 
     // Clear the m_utterance variable in case finish speaking kicks off a new speaking job immediately.
-    RefPtr<WebCore::PlatformSpeechSynthesisUtterance> protectedUtterance = m_utterance;
+    RefPtr<CyberCore::PlatformSpeechSynthesisUtterance> protectedUtterance = m_utterance;
     m_utterance = nullptr;
 
     m_synthesizerObject->client().didFinishSpeaking(*protectedUtterance);
@@ -239,7 +239,7 @@ static float getAVSpeechUtteranceMaximumSpeechRate()
         return;
 
     // Clear the m_utterance variable in case finish speaking kicks off a new speaking job immediately.
-    RefPtr<WebCore::PlatformSpeechSynthesisUtterance> protectedUtterance = m_utterance;
+    RefPtr<CyberCore::PlatformSpeechSynthesisUtterance> protectedUtterance = m_utterance;
     m_utterance = nullptr;
 
     m_synthesizerObject->client().didFinishSpeaking(*protectedUtterance);
@@ -252,12 +252,12 @@ static float getAVSpeechUtteranceMaximumSpeechRate()
         return;
 
     // AVSpeechSynthesizer only supports word boundaries.
-    m_synthesizerObject->client().boundaryEventOccurred(*m_utterance, WebCore::SpeechBoundary::SpeechWordBoundary, characterRange.location, characterRange.length);
+    m_synthesizerObject->client().boundaryEventOccurred(*m_utterance, CyberCore::SpeechBoundary::SpeechWordBoundary, characterRange.location, characterRange.length);
 }
 
 @end
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<PlatformSpeechSynthesizer> PlatformSpeechSynthesizer::create(PlatformSpeechSynthesizerClient& client)
 {
@@ -331,6 +331,6 @@ void PlatformSpeechSynthesizer::resetState()
     [m_platformSpeechWrapper resetState];
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SPEECH_SYNTHESIS) && PLATFORM(COCOA)

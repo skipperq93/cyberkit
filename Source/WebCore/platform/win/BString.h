@@ -38,7 +38,7 @@ typedef wchar_t* BSTR;
 typedef _Null_terminated_ wchar_t* BSTR;
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
     class BString {
     public:

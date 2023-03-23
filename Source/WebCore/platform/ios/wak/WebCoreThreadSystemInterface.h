@@ -31,7 +31,7 @@
 extern "C" {
 #endif
 
-WEBCORE_EXPORT void InitWebCoreThreadSystemInterface(void);
+WEBCORE_EXPORT void InitCyberCoreThreadSystemInterface(void);
 
 #ifdef __cplusplus
 }

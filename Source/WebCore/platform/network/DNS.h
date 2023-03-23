@@ -37,7 +37,7 @@
 #include <netinet/in.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class IPAddress {
 public:
@@ -120,12 +120,12 @@ inline std::optional<IPAddress> IPAddress::fromSockAddrIn6(const struct sockaddr
     return { };
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct HashTraits<WebCore::IPAddress> : GenericHashTraits<WebCore::IPAddress> {
-    static WebCore::IPAddress emptyValue() { return WebCore::IPAddress { WTF::HashTableEmptyValue }; }
+template<> struct HashTraits<CyberCore::IPAddress> : GenericHashTraits<CyberCore::IPAddress> {
+    static CyberCore::IPAddress emptyValue() { return CyberCore::IPAddress { WTF::HashTableEmptyValue }; }
 };
 
 } // namespace WTF

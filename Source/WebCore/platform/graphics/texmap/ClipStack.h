@@ -27,7 +27,7 @@
 #include "TransformationMatrix.h"
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // Because GLSL uniform arrays need to have a defined size, we need to put a limit to the number of simultaneous
 // rounded rectangle clips that we're going to allow. Currently this is defined to 10.
@@ -95,6 +95,6 @@ private:
     Vector<float, s_roundedRectInverseTransformComponentsArraySize> m_roundedRectInverseTransformComponents;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ClipStack_h

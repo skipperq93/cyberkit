@@ -29,7 +29,7 @@
 #include "DeferrableTask.h"
 #include "PlatformMediaSession.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RemoteCommandListenerClient {
     WTF_MAKE_FAST_ALLOCATED;

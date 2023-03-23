@@ -21,43 +21,43 @@
 #error "Only <wpe/webkitdom.h> can be included directly."
 #endif
 
-#ifndef WebKitDOMNode_h
-#define WebKitDOMNode_h
+#ifndef CyberKitDOMNode_h
+#define CyberKitDOMNode_h
 
 #include <glib-object.h>
 #include <jsc/jsc.h>
-#include <wpe/WebKitDOMObject.h>
-#include <wpe/WebKitDOMDefines.h>
+#include <wpe/CyberKitDOMObject.h>
+#include <wpe/CyberKitDOMDefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_DOM_TYPE_NODE            (webkit_dom_node_get_type())
-#define WEBKIT_DOM_NODE(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_NODE, WebKitDOMNode))
-#define WEBKIT_DOM_NODE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_NODE, WebKitDOMNodeClass)
+#define WEBKIT_DOM_NODE(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_NODE, CyberKitDOMNode))
+#define WEBKIT_DOM_NODE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_NODE, CyberKitDOMNodeClass)
 #define WEBKIT_DOM_IS_NODE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_DOM_TYPE_NODE))
 #define WEBKIT_DOM_IS_NODE_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_DOM_TYPE_NODE))
-#define WEBKIT_DOM_NODE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_NODE, WebKitDOMNodeClass))
+#define WEBKIT_DOM_NODE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_NODE, CyberKitDOMNodeClass))
 
-typedef struct _WebKitDOMNode WebKitDOMNode;
-typedef struct _WebKitDOMNodeClass WebKitDOMNodeClass;
-typedef struct _WebKitDOMNodePrivate WebKitDOMNodePrivate;
+typedef struct _CyberKitDOMNode CyberKitDOMNode;
+typedef struct _CyberKitDOMNodeClass CyberKitDOMNodeClass;
+typedef struct _CyberKitDOMNodePrivate CyberKitDOMNodePrivate;
 
-struct _WebKitDOMNode {
-    WebKitDOMObject parent_instance;
+struct _CyberKitDOMNode {
+    CyberKitDOMObject parent_instance;
 
-    WebKitDOMNodePrivate *priv;
+    CyberKitDOMNodePrivate *priv;
 };
 
-struct _WebKitDOMNodeClass {
-    WebKitDOMObjectClass parent_class;
+struct _CyberKitDOMNodeClass {
+    CyberKitDOMObjectClass parent_class;
 };
 
 WEBKIT_DEPRECATED GType
 webkit_dom_node_get_type     (void);
 
-WEBKIT_DEPRECATED WebKitDOMNode *
+WEBKIT_DEPRECATED CyberKitDOMNode *
 webkit_dom_node_for_js_value (JSCValue *value);
 
 G_END_DECLS
 
-#endif /* WebKitDOMNode_h */
+#endif /* CyberKitDOMNode_h */

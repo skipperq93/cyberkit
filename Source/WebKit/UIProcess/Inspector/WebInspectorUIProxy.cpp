@@ -56,7 +56,7 @@
 #endif
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 const unsigned WebInspectorUIProxy::minimumWindowWidth = 500;
 const unsigned WebInspectorUIProxy::minimumWindowHeight = 400;
@@ -597,7 +597,7 @@ void WebInspectorUIProxy::frontendLoaded()
 
 void WebInspectorUIProxy::bringToFront()
 {
-    // WebCore::InspectorFrontendClientLocal tells us to do this on load. We want to
+    // CyberCore::InspectorFrontendClientLocal tells us to do this on load. We want to
     // ignore it once if we only wanted to connect. This allows the Inspector to later
     // request to be brought to the front when a breakpoint is hit or some other action.
     if (m_ignoreFirstBringToFront) {
@@ -682,7 +682,7 @@ void WebInspectorUIProxy::timelineRecordingChanged(bool active)
     m_isProfilingPage = active;
 }
 
-void WebInspectorUIProxy::setDeveloperPreferenceOverride(WebCore::InspectorClient::DeveloperPreference developerPreference, std::optional<bool> overrideValue)
+void WebInspectorUIProxy::setDeveloperPreferenceOverride(CyberCore::InspectorClient::DeveloperPreference developerPreference, std::optional<bool> overrideValue)
 {
     switch (developerPreference) {
     case InspectorClient::DeveloperPreference::PrivateClickMeasurementDebugModeEnabled:
@@ -753,7 +753,7 @@ void WebInspectorUIProxy::load(const String& path, CompletionHandler<void(const 
     platformLoad(path, WTFMove(completionHandler));
 }
 
-void WebInspectorUIProxy::pickColorFromScreen(CompletionHandler<void(const std::optional<WebCore::Color> &)>&& completionHandler)
+void WebInspectorUIProxy::pickColorFromScreen(CompletionHandler<void(const std::optional<CyberCore::Color> &)>&& completionHandler)
 {
     if (!m_inspectedPage->preferences().developerExtrasEnabled()) {
         completionHandler({ });
@@ -852,7 +852,7 @@ void WebInspectorUIProxy::platformShowCertificate(const CertificateInfo&)
     notImplemented();
 }
 
-void WebInspectorUIProxy::platformSave(Vector<WebCore::InspectorFrontendClient::SaveData>&&, bool /* forceSaveAs */)
+void WebInspectorUIProxy::platformSave(Vector<CyberCore::InspectorFrontendClient::SaveData>&&, bool /* forceSaveAs */)
 {
     notImplemented();
 }
@@ -863,7 +863,7 @@ void WebInspectorUIProxy::platformLoad(const String& path, CompletionHandler<voi
     completionHandler(nullString());
 }
 
-void WebInspectorUIProxy::platformPickColorFromScreen(CompletionHandler<void(const std::optional<WebCore::Color>&)>&& completionHandler)
+void WebInspectorUIProxy::platformPickColorFromScreen(CompletionHandler<void(const std::optional<CyberCore::Color>&)>&& completionHandler)
 {
     notImplemented();
     completionHandler({ });

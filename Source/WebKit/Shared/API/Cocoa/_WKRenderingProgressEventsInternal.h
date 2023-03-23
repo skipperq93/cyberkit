@@ -27,32 +27,32 @@
 
 #import <CyberCore/LayoutMilestone.h>
 
-static inline _WKRenderingProgressEvents renderingProgressEvents(OptionSet<WebCore::LayoutMilestone> milestones)
+static inline _WKRenderingProgressEvents renderingProgressEvents(OptionSet<CyberCore::LayoutMilestone> milestones)
 {
     _WKRenderingProgressEvents events = 0;
 
-    if (milestones & WebCore::DidFirstLayout)
+    if (milestones & CyberCore::DidFirstLayout)
         events |= _WKRenderingProgressEventFirstLayout;
 
-    if (milestones & WebCore::DidFirstVisuallyNonEmptyLayout)
+    if (milestones & CyberCore::DidFirstVisuallyNonEmptyLayout)
         events |= _WKRenderingProgressEventFirstVisuallyNonEmptyLayout;
 
-    if (milestones & WebCore::DidHitRelevantRepaintedObjectsAreaThreshold)
+    if (milestones & CyberCore::DidHitRelevantRepaintedObjectsAreaThreshold)
         events |= _WKRenderingProgressEventFirstPaintWithSignificantArea;
 
-    if (milestones & WebCore::ReachedSessionRestorationRenderTreeSizeThreshold)
+    if (milestones & CyberCore::ReachedSessionRestorationRenderTreeSizeThreshold)
         events |= _WKRenderingProgressEventReachedSessionRestorationRenderTreeSizeThreshold;
 
-    if (milestones & WebCore::DidFirstLayoutAfterSuppressedIncrementalRendering)
+    if (milestones & CyberCore::DidFirstLayoutAfterSuppressedIncrementalRendering)
         events |= _WKRenderingProgressEventFirstLayoutAfterSuppressedIncrementalRendering;
 
-    if (milestones & WebCore::DidFirstPaintAfterSuppressedIncrementalRendering)
+    if (milestones & CyberCore::DidFirstPaintAfterSuppressedIncrementalRendering)
         events |= _WKRenderingProgressEventFirstPaintAfterSuppressedIncrementalRendering;
 
-    if (milestones & WebCore::DidRenderSignificantAmountOfText)
+    if (milestones & CyberCore::DidRenderSignificantAmountOfText)
         events |= _WKRenderingProgressEventDidRenderSignificantAmountOfText;
 
-    if (milestones & WebCore::DidFirstMeaningfulPaint)
+    if (milestones & CyberCore::DidFirstMeaningfulPaint)
         events |= _WKRenderingProgressEventFirstMeaningfulPaint;
 
     return events;

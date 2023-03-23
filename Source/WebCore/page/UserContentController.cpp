@@ -35,7 +35,7 @@
 #include "CompiledContentExtension.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<UserContentController> UserContentController::create()
 {
@@ -148,4 +148,4 @@ void UserContentController::removeAllUserContent()
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore

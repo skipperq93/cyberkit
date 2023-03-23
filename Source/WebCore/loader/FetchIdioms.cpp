@@ -29,7 +29,7 @@
 #include "HTTPParsers.h"
 #include "ResourceResponse.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 bool shouldBlockResponseDueToMIMEType(const ResourceResponse& response, FetchOptions::Destination requestDestination)
 {
@@ -39,5 +39,5 @@ bool shouldBlockResponseDueToMIMEType(const ResourceResponse& response, FetchOpt
         || equalLettersIgnoringASCIICase(mimeType, "text/csv"_s));
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 

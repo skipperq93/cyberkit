@@ -27,7 +27,7 @@
 #include "TransformOperation.h"
 #include <wtf/Ref.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct BlendingContext;
 
@@ -78,6 +78,6 @@ private:
     double m_z;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_TRANSFORMOPERATION(WebCore::ScaleTransformOperation, isScaleTransformOperationType())
+SPECIALIZE_TYPE_TRAITS_TRANSFORMOPERATION(CyberCore::ScaleTransformOperation, isScaleTransformOperationType())

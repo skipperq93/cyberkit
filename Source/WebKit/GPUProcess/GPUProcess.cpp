@@ -117,7 +117,7 @@ void GPUProcess::didReceiveMessage(IPC::Connection& connection, IPC::Decoder& de
     didReceiveGPUProcessMessage(connection, decoder);
 }
 
-void GPUProcess::createGPUConnectionToWebProcess(WebCore::ProcessIdentifier identifier, PAL::SessionID sessionID, IPC::Connection::Handle&& connectionHandle, GPUProcessConnectionParameters&& parameters, CompletionHandler<void()>&& completionHandler)
+void GPUProcess::createGPUConnectionToWebProcess(CyberCore::ProcessIdentifier identifier, PAL::SessionID sessionID, IPC::Connection::Handle&& connectionHandle, GPUProcessConnectionParameters&& parameters, CompletionHandler<void()>&& completionHandler)
 {
     RELEASE_LOG(Process, "%p - GPUProcess::createGPUConnectionToWebProcess: processIdentifier=%" PRIu64, this, identifier.toUInt64());
 
@@ -214,7 +214,7 @@ void GPUProcess::lowMemoryHandler(Critical critical, Synchronous synchronous)
     for (auto& connection : m_webProcessConnections.values())
         connection->lowMemoryHandler(critical, synchronous);
 
-    WebCore::releaseGraphicsMemory(critical, synchronous);
+    CyberCore::releaseGraphicsMemory(critical, synchronous);
 }
 
 void GPUProcess::initializeGPUProcess(GPUProcessCreationParameters&& parameters)
@@ -222,7 +222,7 @@ void GPUProcess::initializeGPUProcess(GPUProcessCreationParameters&& parameters)
     applyProcessCreationParameters(parameters.auxiliaryProcessParameters);
     RELEASE_LOG(Process, "%p - GPUProcess::initializeGPUProcess:", this);
     WTF::Thread::setCurrentThreadIsUserInitiated();
-    WebCore::initializeCommonAtomStrings();
+    CyberCore::initializeCommonAtomStrings();
 
     auto& memoryPressureHandler = MemoryPressureHandler::singleton();
     memoryPressureHandler.setLowMemoryHandler([this] (Critical critical, Synchronous synchronous) {
@@ -268,7 +268,7 @@ void GPUProcess::initializeGPUProcess(GPUProcessCreationParameters&& parameters)
     // Match the QoS of the UIProcess since the GPU process is doing rendering on its behalf.
     WTF::Thread::setCurrentThreadIsUserInteractive(0);
 
-    WebCore::setPresentingApplicationPID(parameters.parentPID);
+    CyberCore::setPresentingApplicationPID(parameters.parentPID);
 
 #if USE(OS_STATE)
     registerWithStateDumper("GPUProcess state"_s);
@@ -346,7 +346,7 @@ void GPUProcess::resume()
 {
 }
 
-GPUConnectionToWebProcess* GPUProcess::webProcessConnection(WebCore::ProcessIdentifier identifier) const
+GPUConnectionToWebProcess* GPUProcess::webProcessConnection(CyberCore::ProcessIdentifier identifier) const
 {
     return m_webProcessConnections.get(identifier);
 }
@@ -364,7 +364,7 @@ void GPUProcess::setOrientationForMediaCapture(uint64_t orientation)
         connection->setOrientationForMediaCapture(orientation);
 }
 
-void GPUProcess::updateCaptureAccess(bool allowAudioCapture, bool allowVideoCapture, bool allowDisplayCapture, WebCore::ProcessIdentifier processID, CompletionHandler<void()>&& completionHandler)
+void GPUProcess::updateCaptureAccess(bool allowAudioCapture, bool allowVideoCapture, bool allowDisplayCapture, CyberCore::ProcessIdentifier processID, CompletionHandler<void()>&& completionHandler)
 {
 #if ENABLE(MEDIA_STREAM) && PLATFORM(COCOA)
     ensureAVCaptureServerConnection();
@@ -383,7 +383,7 @@ void GPUProcess::updateCaptureAccess(bool allowAudioCapture, bool allowVideoCapt
     completionHandler();
 }
 
-void GPUProcess::updateCaptureOrigin(const WebCore::SecurityOriginData& originData, WebCore::ProcessIdentifier processID)
+void GPUProcess::updateCaptureOrigin(const CyberCore::SecurityOriginData& originData, CyberCore::ProcessIdentifier processID)
 {
     if (auto* connection = webProcessConnection(processID))
         connection->updateCaptureOrigin(originData);
@@ -395,7 +395,7 @@ void GPUProcess::updateSandboxAccess(const Vector<SandboxExtension::Handle>& ext
         SandboxExtension::consumePermanently(extension);
 }
 
-void GPUProcess::addMockMediaDevice(const WebCore::MockMediaDevice& device)
+void GPUProcess::addMockMediaDevice(const CyberCore::MockMediaDevice& device)
 {
     MockRealtimeMediaSourceCenter::addDevice(device);
 }
@@ -432,14 +432,14 @@ void GPUProcess::triggerMockMicrophoneConfigurationChange()
 #endif // ENABLE(MEDIA_STREAM)
 
 #if HAVE(SC_CONTENT_SHARING_SESSION)
-void GPUProcess::showWindowPicker(CompletionHandler<void(std::optional<WebCore::CaptureDevice>)>&& completionHandler)
+void GPUProcess::showWindowPicker(CompletionHandler<void(std::optional<CyberCore::CaptureDevice>)>&& completionHandler)
 {
-    WebCore::ScreenCaptureKitSharingSessionManager::singleton().showWindowPicker(WTFMove(completionHandler));
+    CyberCore::ScreenCaptureKitSharingSessionManager::singleton().showWindowPicker(WTFMove(completionHandler));
 }
 
-void GPUProcess::showScreenPicker(CompletionHandler<void(std::optional<WebCore::CaptureDevice>)>&& completionHandler)
+void GPUProcess::showScreenPicker(CompletionHandler<void(std::optional<CyberCore::CaptureDevice>)>&& completionHandler)
 {
-    WebCore::ScreenCaptureKitSharingSessionManager::singleton().showScreenPicker(WTFMove(completionHandler));
+    CyberCore::ScreenCaptureKitSharingSessionManager::singleton().showScreenPicker(WTFMove(completionHandler));
 }
 #endif // HAVE(SC_CONTENT_SHARING_SESSION)
 
@@ -487,10 +487,10 @@ const String& GPUProcess::mediaKeysStorageDirectory(PAL::SessionID sessionID) co
 }
 #endif
 
-WebCore::NowPlayingManager& GPUProcess::nowPlayingManager()
+CyberCore::NowPlayingManager& GPUProcess::nowPlayingManager()
 {
     if (!m_nowPlayingManager)
-        m_nowPlayingManager = makeUnique<WebCore::NowPlayingManager>();
+        m_nowPlayingManager = makeUnique<CyberCore::NowPlayingManager>();
     return *m_nowPlayingManager;
 }
 
@@ -527,19 +527,19 @@ void GPUProcess::enableVP9Decoders(bool shouldEnableVP8Decoder, bool shouldEnabl
     if (shouldEnableVP9Decoder && !m_enableVP9Decoder) {
         m_enableVP9Decoder = true;
 #if PLATFORM(COCOA)
-        WebCore::registerSupplementalVP9Decoder();
+        CyberCore::registerSupplementalVP9Decoder();
 #endif
     }
     if (shouldEnableVP8Decoder && !m_enableVP8Decoder) {
         m_enableVP8Decoder = true;
 #if PLATFORM(COCOA)
-        WebCore::registerWebKitVP8Decoder();
+        CyberCore::registerWebKitVP8Decoder();
 #endif
     }
     if (shouldEnableVP9SWDecoder && !m_enableVP9SWDecoder) {
         m_enableVP9SWDecoder = true;
 #if PLATFORM(COCOA)
-        WebCore::registerWebKitVP9Decoder();
+        CyberCore::registerWebKitVP9Decoder();
 #endif
     }
 }
@@ -559,7 +559,7 @@ void GPUProcess::processIsStartingToCaptureAudio(GPUConnectionToWebProcess& proc
 #endif
 
 #if ENABLE(VIDEO)
-void GPUProcess::requestBitmapImageForCurrentTime(WebCore::ProcessIdentifier processIdentifier, WebCore::MediaPlayerIdentifier playerIdentifier, CompletionHandler<void(const ShareableBitmapHandle&)>&& completion)
+void GPUProcess::requestBitmapImageForCurrentTime(CyberCore::ProcessIdentifier processIdentifier, CyberCore::MediaPlayerIdentifier playerIdentifier, CompletionHandler<void(const ShareableBitmapHandle&)>&& completion)
 {
     auto iterator = m_webProcessConnections.find(processIdentifier);
     if (iterator == m_webProcessConnections.end()) {

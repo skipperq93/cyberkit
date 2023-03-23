@@ -35,7 +35,7 @@
 #include "WorkerThread.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(SharedWorkerGlobalScope);
 
@@ -77,4 +77,4 @@ void SharedWorkerGlobalScope::postConnectEvent(TransferredMessagePort&& transfer
 
 #undef SCOPE_RELEASE_LOG
 
-} // namespace WebCore
+} // namespace CyberCore

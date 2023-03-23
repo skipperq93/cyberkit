@@ -37,7 +37,7 @@
 #include <wtf/WeakHashSet.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class RouteSharingPolicy : uint8_t {
     Default,
@@ -180,7 +180,7 @@ WEBCORE_EXPORT String convertEnumerationToString(AudioSession::CategoryType);
 WEBCORE_EXPORT String convertEnumerationToString(AudioSessionRoutingArbitrationClient::RoutingArbitrationError);
 WEBCORE_EXPORT String convertEnumerationToString(AudioSessionRoutingArbitrationClient::DefaultRouteChanged);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
@@ -188,31 +188,31 @@ template<typename Type>
 struct LogArgument;
 
 template <>
-struct LogArgument<WebCore::RouteSharingPolicy> {
-    static String toString(const WebCore::RouteSharingPolicy policy)
+struct LogArgument<CyberCore::RouteSharingPolicy> {
+    static String toString(const CyberCore::RouteSharingPolicy policy)
     {
         return convertEnumerationToString(policy);
     }
 };
 
 template <>
-struct LogArgument<WebCore::AudioSession::CategoryType> {
-    static String toString(const WebCore::AudioSession::CategoryType category)
+struct LogArgument<CyberCore::AudioSession::CategoryType> {
+    static String toString(const CyberCore::AudioSession::CategoryType category)
     {
         return convertEnumerationToString(category);
     }
 };
 
 template <>
-struct LogArgument<WebCore::AudioSessionRoutingArbitrationClient::RoutingArbitrationError> {
-    static String toString(const WebCore::AudioSessionRoutingArbitrationClient::RoutingArbitrationError error)
+struct LogArgument<CyberCore::AudioSessionRoutingArbitrationClient::RoutingArbitrationError> {
+    static String toString(const CyberCore::AudioSessionRoutingArbitrationClient::RoutingArbitrationError error)
     {
         return convertEnumerationToString(error);
     }
 };
 template <>
-struct LogArgument<WebCore::AudioSessionRoutingArbitrationClient::DefaultRouteChanged> {
-    static String toString(const WebCore::AudioSessionRoutingArbitrationClient::DefaultRouteChanged changed)
+struct LogArgument<CyberCore::AudioSessionRoutingArbitrationClient::DefaultRouteChanged> {
+    static String toString(const CyberCore::AudioSessionRoutingArbitrationClient::DefaultRouteChanged changed)
     {
         return convertEnumerationToString(changed);
     }

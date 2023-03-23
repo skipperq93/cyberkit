@@ -70,7 +70,7 @@ interface IDWriteFont;
 interface IDWriteFontFace;
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class FontDescription;
 
@@ -290,7 +290,7 @@ private:
     bool m_fixedWidth { false };
 #endif
 
-    // Adding any non-derived information to FontPlatformData needs a parallel change in WebCoreArgumentCodersCocoa.cpp.
+    // Adding any non-derived information to FontPlatformData needs a parallel change in CyberCoreArgumentCodersCocoa.cpp.
 };
 
 #if USE(CORE_TEXT)
@@ -340,4 +340,4 @@ private:
 
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -1,5 +1,5 @@
 /*
- * This file is part of the select element renderer in WebCore.
+ * This file is part of the select element renderer in CyberCore.
  *
  * Copyright (C) 2010 Nokia Corporation and/or its subsidiary(-ies).
  * Copyright (C) 2006, 2007, 2008, 2009, 2010, 2011, 2015 Apple Inc. All rights reserved.
@@ -34,7 +34,7 @@
 #define POPUP_MENU_PULLS_DOWN 1
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLSelectElement;
 class RenderText;
@@ -159,6 +159,6 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderMenuList, isMenuList())

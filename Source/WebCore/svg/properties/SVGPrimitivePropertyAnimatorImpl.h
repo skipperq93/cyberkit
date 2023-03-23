@@ -28,7 +28,7 @@
 #include "SVGAnimationAdditiveValueFunctionImpl.h"
 #include "SVGPrimitivePropertyAnimator.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 using SVGColorAnimator = SVGPrimitivePropertyAnimator<Color, SVGAnimationColorFunction>;
 using SVGNumberAnimator = SVGPrimitivePropertyAnimator<float, SVGAnimationNumberFunction>;

@@ -28,7 +28,7 @@
 
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
     class Node;
 
@@ -45,4 +45,4 @@ namespace WebCore {
 
     } // namespace XPath
 
-} // namespace WebCore
+} // namespace CyberCore

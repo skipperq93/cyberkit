@@ -23,32 +23,32 @@
 #if ENABLE(IMAGE_ANALYSIS)
 
 header: <CyberCore/TextRecognitionResult.h>
-[CustomHeader] struct WebCore::TextRecognitionWordData {
+[CustomHeader] struct CyberCore::TextRecognitionWordData {
     String text;
-    WebCore::FloatQuad normalizedQuad;
+    CyberCore::FloatQuad normalizedQuad;
     bool hasLeadingWhitespace;
 };
 
 header: <CyberCore/TextRecognitionResult.h>
-[CustomHeader] struct WebCore::TextRecognitionLineData {
-    WebCore::FloatQuad normalizedQuad;
-    Vector<WebCore::TextRecognitionWordData> children;
+[CustomHeader] struct CyberCore::TextRecognitionLineData {
+    CyberCore::FloatQuad normalizedQuad;
+    Vector<CyberCore::TextRecognitionWordData> children;
     bool hasTrailingNewline;
 };
 
 header: <CyberCore/TextRecognitionResult.h>
-[CustomHeader] struct WebCore::TextRecognitionBlockData {
+[CustomHeader] struct CyberCore::TextRecognitionBlockData {
     String text;
-    WebCore::FloatQuad normalizedQuad;
+    CyberCore::FloatQuad normalizedQuad;
 };
 
 header: <CyberCore/TextRecognitionResult.h>
-[CustomHeader] struct WebCore::TextRecognitionResult {
-    Vector<WebCore::TextRecognitionLineData> lines;
+[CustomHeader] struct CyberCore::TextRecognitionResult {
+    Vector<CyberCore::TextRecognitionLineData> lines;
 #if ENABLE(DATA_DETECTION)
-    Vector<WebCore::TextRecognitionDataDetector> dataDetectors;
+    Vector<CyberCore::TextRecognitionDataDetector> dataDetectors;
 #endif
-    Vector<WebCore::TextRecognitionBlockData> blocks;
+    Vector<CyberCore::TextRecognitionBlockData> blocks;
 #if ENABLE(IMAGE_ANALYSIS_ENHANCEMENTS)
     RetainPtr<VKCImageAnalysis> platformData;
 #endifs

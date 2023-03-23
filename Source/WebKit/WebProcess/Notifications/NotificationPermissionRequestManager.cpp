@@ -27,7 +27,7 @@
 #include "NotificationPermissionRequestManager.h"
 
 #include "NotificationManagerMessageHandlerMessages.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebPage.h"
 #include "WebPageProxyMessages.h"
 #include "WebProcess.h"
@@ -46,8 +46,8 @@
 #include <CyberCore/DeprecatedGlobalSettings.h>
 #endif
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 Ref<NotificationPermissionRequestManager> NotificationPermissionRequestManager::create(WebPage* page)
 {
@@ -92,7 +92,7 @@ void NotificationPermissionRequestManager::startRequest(const SecurityOriginData
         };
 
 #if ENABLE(BUILT_IN_NOTIFICATIONS)
-        if (WebCore::DeprecatedGlobalSettings::builtInNotificationsEnabled() && allowed) {
+        if (CyberCore::DeprecatedGlobalSettings::builtInNotificationsEnabled() && allowed) {
             WebProcess::singleton().ensureNetworkProcessConnection().connection().sendWithAsyncReply(Messages::NotificationManagerMessageHandler::RequestSystemNotificationPermission(securityOrigin.toString()), WTFMove(innerPermissionHandler), m_page->sessionID().toUInt64());
             return;
         }
@@ -138,4 +138,4 @@ void NotificationPermissionRequestManager::removeAllPermissionsForTesting()
 #endif
 }
 
-} // namespace WebKit
+} // namespace CyberKit

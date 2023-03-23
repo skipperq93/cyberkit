@@ -8,7 +8,7 @@ IGNORE_WARNINGS_BEGIN("implicit-fallthrough")
 // Older versions of gperf like to use the `register` keyword.
 #define register
 
-namespace WebCore {
+namespace CyberCore {
 %}
 %struct-type
 struct NamedColor;
@@ -180,6 +180,6 @@ const struct NamedColor* findColor(const char* str, unsigned int len)
     return ColorDataHash::findColorImpl(str, len);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 IGNORE_WARNINGS_END

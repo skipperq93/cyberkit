@@ -32,7 +32,7 @@
 
 #import <pal/cocoa/AVFoundationSoftLink.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 UniqueRef<SharedRoutingArbitrator::Token> SharedRoutingArbitrator::Token::create()
 {

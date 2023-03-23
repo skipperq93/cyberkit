@@ -35,7 +35,7 @@ class Decoder;
 class Encoder;
 }
 
-namespace WebCore {
+namespace CyberCore {
 class HTMLInputElement;
 }
 
@@ -62,9 +62,9 @@ struct InputMethodState {
         InhibitOnScreenKeyboard = 1 << 5
     };
 
-    void setPurposeOrHintForInputMode(WebCore::InputMode);
-    void setPurposeForInputElement(WebCore::HTMLInputElement&);
-    void addHintsForAutocapitalizeType(WebCore::AutocapitalizeType);
+    void setPurposeOrHintForInputMode(CyberCore::InputMode);
+    void setPurposeForInputElement(CyberCore::HTMLInputElement&);
+    void addHintsForAutocapitalizeType(CyberCore::AutocapitalizeType);
 
     void encode(IPC::Encoder&) const;
     static std::optional<InputMethodState> decode(IPC::Decoder&);

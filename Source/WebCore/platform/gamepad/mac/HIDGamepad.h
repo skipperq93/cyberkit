@@ -33,7 +33,7 @@
 #include <IOKit/hid/IOHIDDevice.h>
 #include <wtf/HashMap.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class HIDGamepad : public PlatformGamepad {
 public:
@@ -60,6 +60,6 @@ private:
     HIDDevice m_device;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(GAMEPAD) && PLATFORM(MAC)

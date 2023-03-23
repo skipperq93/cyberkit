@@ -27,7 +27,7 @@
 
 #include "ISOBox.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class WEBCORE_EXPORT ISOSchemeInformationBox final : public ISOBox {
 public:

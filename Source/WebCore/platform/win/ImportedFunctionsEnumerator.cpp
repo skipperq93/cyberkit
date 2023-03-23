@@ -30,7 +30,7 @@
 // <http://msdn.microsoft.com/en-us/windows/hardware/gg463119> for more information about the PE
 // image format.
 
-namespace WebCore {
+namespace CyberCore {
 
 ImportedFunctionsEnumerator::ImportedFunctionsEnumerator(const PEImage& image, const IMAGE_THUNK_DATA* importNameTable, const IMAGE_THUNK_DATA* importAddressTable)
     : m_image(image)
@@ -72,4 +72,4 @@ const void* const* ImportedFunctionsEnumerator::addressOfCurrentFunctionPointer(
     return reinterpret_cast<const void* const*>(&m_addressTableEntry->u1.Function);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

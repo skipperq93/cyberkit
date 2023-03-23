@@ -45,7 +45,7 @@
 #include "DeviceOrientationUpdateProvider.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class AlternativeTextClient;
 class ApplicationCacheStorage;
@@ -162,7 +162,7 @@ public:
 
     Ref<BadgeClient> badgeClient;
 
-    ContentSecurityPolicyModeForExtension contentSecurityPolicyModeForExtension { WebCore::ContentSecurityPolicyModeForExtension::None };
+    ContentSecurityPolicyModeForExtension contentSecurityPolicyModeForExtension { CyberCore::ContentSecurityPolicyModeForExtension::None };
     std::optional<FrameIdentifier> mainFrameIdentifier;
 };
 

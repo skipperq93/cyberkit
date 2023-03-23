@@ -38,7 +38,7 @@
 #include "ScrollView.h"
 #include "Settings.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // Delay time in second for start autoscroll if pointer is in border edge of scrollable element.
 static const Seconds autoscrollDelay { 200_ms };
@@ -326,4 +326,4 @@ void AutoscrollController::updatePanScrollState(FrameView* view, const IntPoint&
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

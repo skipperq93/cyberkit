@@ -40,7 +40,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct MediaEndpointConfiguration {
     // FIXME: We might be able to remove these constructors once all compilers can handle without it (see https://bugs.webkit.org/show_bug.cgi?id=163255#c15)
@@ -66,6 +66,6 @@ struct MediaEndpointConfiguration {
     Vector<CertificatePEM> certificates;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

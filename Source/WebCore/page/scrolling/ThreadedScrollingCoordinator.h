@@ -29,7 +29,7 @@
 
 #include "AsyncScrollingCoordinator.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ThreadedScrollingCoordinator : public AsyncScrollingCoordinator {
 protected:
@@ -53,6 +53,6 @@ private:
     WEBCORE_EXPORT void startMonitoringWheelEvents(bool clearLatchingState) final;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ASYNC_SCROLLING) && ENABLE(SCROLLING_THREAD)

@@ -36,7 +36,7 @@
 
 namespace WebKit {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 NetworkSessionCurl::NetworkSessionCurl(NetworkProcess& networkProcess, const NetworkSessionCreationParameters& parameters)
     : NetworkSession(networkProcess, parameters)
@@ -59,7 +59,7 @@ NetworkSessionCurl::~NetworkSessionCurl()
 
 }
 
-std::unique_ptr<WebSocketTask> NetworkSessionCurl::createWebSocketTask(WebPageProxyIdentifier, NetworkSocketChannel& channel, const WebCore::ResourceRequest& request, const String& protocol, const WebCore::ClientOrigin&, bool, bool, OptionSet<WebCore::NetworkConnectionIntegrity>)
+std::unique_ptr<WebSocketTask> NetworkSessionCurl::createWebSocketTask(WebPageProxyIdentifier, NetworkSocketChannel& channel, const CyberCore::ResourceRequest& request, const String& protocol, const CyberCore::ClientOrigin&, bool, bool, OptionSet<CyberCore::NetworkConnectionIntegrity>)
 {
     return makeUnique<WebSocketTask>(channel, request, protocol);
 }

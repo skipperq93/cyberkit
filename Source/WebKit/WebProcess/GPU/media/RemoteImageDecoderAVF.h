@@ -29,27 +29,27 @@
 
 #include "MessageReceiver.h"
 #include "RemoteImageDecoderAVFManager.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include <CyberCore/ImageDecoder.h>
 #include <CyberCore/ImageDecoderIdentifier.h>
 #include <wtf/Function.h>
 #include <wtf/HashMap.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class GPUProcessConnection;
 class WebProcess;
 
 class RemoteImageDecoderAVF final
-    : public WebCore::ImageDecoder
+    : public CyberCore::ImageDecoder
     , public CanMakeWeakPtr<RemoteImageDecoderAVF> {
 public:
-    static Ref<RemoteImageDecoderAVF> create(RemoteImageDecoderAVFManager& manager, const WebCore::ImageDecoderIdentifier& identifier, WebCore::FragmentedSharedBuffer&, const String& mimeType)
+    static Ref<RemoteImageDecoderAVF> create(RemoteImageDecoderAVFManager& manager, const CyberCore::ImageDecoderIdentifier& identifier, CyberCore::FragmentedSharedBuffer&, const String& mimeType)
     {
         return adoptRef(*new RemoteImageDecoderAVF(manager, identifier, mimeType));
     }
-    RemoteImageDecoderAVF(RemoteImageDecoderAVFManager&, const WebCore::ImageDecoderIdentifier&, const String& mimeType);
+    RemoteImageDecoderAVF(RemoteImageDecoderAVFManager&, const CyberCore::ImageDecoderIdentifier&, const String& mimeType);
 
     virtual ~RemoteImageDecoderAVF();
 
@@ -58,47 +58,47 @@ public:
 
     size_t bytesDecodedToDetermineProperties() const override { return 0; }
 
-    WebCore::EncodedDataStatus encodedDataStatus() const final;
-    void setEncodedDataStatusChangeCallback(WTF::Function<void(WebCore::EncodedDataStatus)>&&) final;
-    WebCore::IntSize size() const final;
+    CyberCore::EncodedDataStatus encodedDataStatus() const final;
+    void setEncodedDataStatusChangeCallback(WTF::Function<void(CyberCore::EncodedDataStatus)>&&) final;
+    CyberCore::IntSize size() const final;
     size_t frameCount() const final;
-    WebCore::RepetitionCount repetitionCount() const final;
+    CyberCore::RepetitionCount repetitionCount() const final;
     String uti() const final;
     String filenameExtension() const final;
-    std::optional<WebCore::IntPoint> hotSpot() const final { return std::nullopt; }
+    std::optional<CyberCore::IntPoint> hotSpot() const final { return std::nullopt; }
     String accessibilityDescription() const final { return String(); }
 
-    WebCore::IntSize frameSizeAtIndex(size_t, WebCore::SubsamplingLevel = WebCore::SubsamplingLevel::Default) const final;
+    CyberCore::IntSize frameSizeAtIndex(size_t, CyberCore::SubsamplingLevel = CyberCore::SubsamplingLevel::Default) const final;
     bool frameIsCompleteAtIndex(size_t) const final;
     FrameMetadata frameMetadataAtIndex(size_t) const final;
 
     Seconds frameDurationAtIndex(size_t) const final;
     bool frameHasAlphaAtIndex(size_t) const final;
     bool frameAllowSubsamplingAtIndex(size_t) const final;
-    unsigned frameBytesAtIndex(size_t, WebCore::SubsamplingLevel = WebCore::SubsamplingLevel::Default) const final;
+    unsigned frameBytesAtIndex(size_t, CyberCore::SubsamplingLevel = CyberCore::SubsamplingLevel::Default) const final;
 
-    WebCore::PlatformImagePtr createFrameImageAtIndex(size_t, WebCore::SubsamplingLevel = WebCore::SubsamplingLevel::Default, const WebCore::DecodingOptions& = WebCore::DecodingOptions(WebCore::DecodingMode::Synchronous)) final;
+    CyberCore::PlatformImagePtr createFrameImageAtIndex(size_t, CyberCore::SubsamplingLevel = CyberCore::SubsamplingLevel::Default, const CyberCore::DecodingOptions& = CyberCore::DecodingOptions(CyberCore::DecodingMode::Synchronous)) final;
 
     void setExpectedContentSize(long long) final;
-    void setData(const WebCore::FragmentedSharedBuffer&, bool allDataReceived) final;
+    void setData(const CyberCore::FragmentedSharedBuffer&, bool allDataReceived) final;
     bool isAllDataReceived() const final { return m_isAllDataReceived; }
     void clearFrameBufferCache(size_t) final;
 
-    void encodedDataStatusChanged(size_t frameCount, const WebCore::IntSize&, bool hasTrack);
+    void encodedDataStatusChanged(size_t frameCount, const CyberCore::IntSize&, bool hasTrack);
 
 private:
     WeakPtr<GPUProcessConnection> m_gpuProcessConnection;
     RemoteImageDecoderAVFManager& m_manager;
-    WebCore::ImageDecoderIdentifier m_identifier;
+    CyberCore::ImageDecoderIdentifier m_identifier;
 
     String m_mimeType;
     String m_uti;
     bool m_isAllDataReceived { false };
-    WTF::Function<void(WebCore::EncodedDataStatus)> m_encodedDataStatusChangedCallback;
-    HashMap<int, WebCore::PlatformImagePtr, WTF::IntHash<int>, WTF::UnsignedWithZeroKeyHashTraits<int>> m_frameImages;
+    WTF::Function<void(CyberCore::EncodedDataStatus)> m_encodedDataStatusChangedCallback;
+    HashMap<int, CyberCore::PlatformImagePtr, WTF::IntHash<int>, WTF::UnsignedWithZeroKeyHashTraits<int>> m_frameImages;
     Vector<ImageDecoder::FrameInfo> m_frameInfos;
     size_t m_frameCount { 0 };
-    std::optional<WebCore::IntSize> m_size;
+    std::optional<CyberCore::IntSize> m_size;
     bool m_hasTrack { false };
 };
 

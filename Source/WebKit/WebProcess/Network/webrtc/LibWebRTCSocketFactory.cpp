@@ -36,8 +36,8 @@
 #include <CyberCore/DeprecatedGlobalSettings.h>
 #include <wtf/MainThread.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 static inline rtc::SocketAddress prepareSocketAddress(const rtc::SocketAddress& address, bool disableNonLocalhostConnections)
 {
@@ -67,7 +67,7 @@ IPC::Connection* LibWebRTCSocketFactory::connection()
     return m_connection.get();
 }
 
-rtc::AsyncPacketSocket* LibWebRTCSocketFactory::createUdpSocket(const void* socketGroup, const rtc::SocketAddress& address, uint16_t minPort, uint16_t maxPort, WebPageProxyIdentifier pageIdentifier, bool isFirstParty, bool isRelayDisabled, const WebCore::RegistrableDomain& domain)
+rtc::AsyncPacketSocket* LibWebRTCSocketFactory::createUdpSocket(const void* socketGroup, const rtc::SocketAddress& address, uint16_t minPort, uint16_t maxPort, WebPageProxyIdentifier pageIdentifier, bool isFirstParty, bool isRelayDisabled, const CyberCore::RegistrableDomain& domain)
 {
     ASSERT(!WTF::isMainRunLoop());
     auto socket = makeUnique<LibWebRTCSocket>(*this, socketGroup, LibWebRTCSocket::Type::UDP, address, rtc::SocketAddress());
@@ -86,7 +86,7 @@ rtc::AsyncPacketSocket* LibWebRTCSocketFactory::createUdpSocket(const void* sock
     return socket.release();
 }
 
-rtc::AsyncPacketSocket* LibWebRTCSocketFactory::createClientTcpSocket(const void* socketGroup, const rtc::SocketAddress& localAddress, const rtc::SocketAddress& remoteAddress, String&& userAgent, const rtc::PacketSocketTcpOptions& options, WebPageProxyIdentifier pageIdentifier, bool isFirstParty, bool isRelayDisabled, const WebCore::RegistrableDomain& domain)
+rtc::AsyncPacketSocket* LibWebRTCSocketFactory::createClientTcpSocket(const void* socketGroup, const rtc::SocketAddress& localAddress, const rtc::SocketAddress& remoteAddress, String&& userAgent, const rtc::PacketSocketTcpOptions& options, WebPageProxyIdentifier pageIdentifier, bool isFirstParty, bool isRelayDisabled, const CyberCore::RegistrableDomain& domain)
 {
     ASSERT(!WTF::isMainRunLoop());
 
@@ -156,6 +156,6 @@ rtc::AsyncResolverInterface* LibWebRTCSocketFactory::createAsyncResolver()
     return resolverPointer;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(LIBWEBRTC)

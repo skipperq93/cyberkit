@@ -29,7 +29,7 @@
 #include "config.h"
 #include "FloatLine.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 const FloatPoint FloatLine::pointAtAbsoluteDistance(float absoluteDistance) const
 {

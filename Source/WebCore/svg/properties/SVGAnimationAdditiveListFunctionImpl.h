@@ -32,7 +32,7 @@
 #include "SVGTransformDistance.h"
 #include "SVGTransformList.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGElement;
 
@@ -271,4 +271,4 @@ private:
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore

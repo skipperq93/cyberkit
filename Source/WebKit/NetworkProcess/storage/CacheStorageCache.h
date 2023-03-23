@@ -39,27 +39,27 @@ class CacheStorageCache : public CanMakeWeakPtr<CacheStorageCache> {
     WTF_MAKE_FAST_ALLOCATED;
 public:
     CacheStorageCache(CacheStorageManager&, const String& name, const String& uniqueName, const String& path, Ref<WorkQueue>&&);
-    WebCore::DOMCacheIdentifier identifier() const { return m_identifier; }
+    CyberCore::DOMCacheIdentifier identifier() const { return m_identifier; }
     const String& name() const { return m_name; }
     const String& uniqueName() const { return m_uniqueName; }
     CacheStorageManager* manager();
 
     void getSize(CompletionHandler<void(uint64_t)>&&);
-    void open(WebCore::DOMCacheEngine::CacheIdentifierCallback&&);
-    void retrieveRecords(WebCore::RetrieveRecordsOptions&&, WebCore::DOMCacheEngine::RecordsCallback&&);
-    void removeRecords(WebCore::ResourceRequest&&, WebCore::CacheQueryOptions&&, WebCore::DOMCacheEngine::RecordIdentifiersCallback&&);
-    void putRecords(Vector<WebCore::DOMCacheEngine::Record>&&, WebCore::DOMCacheEngine::RecordIdentifiersCallback&&);
+    void open(CyberCore::DOMCacheEngine::CacheIdentifierCallback&&);
+    void retrieveRecords(CyberCore::RetrieveRecordsOptions&&, CyberCore::DOMCacheEngine::RecordsCallback&&);
+    void removeRecords(CyberCore::ResourceRequest&&, CyberCore::CacheQueryOptions&&, CyberCore::DOMCacheEngine::RecordIdentifiersCallback&&);
+    void putRecords(Vector<CyberCore::DOMCacheEngine::Record>&&, CyberCore::DOMCacheEngine::RecordIdentifiersCallback&&);
     void removeAllRecords();
     void close();
 
 private:
-    CacheStorageRecordInformation* findExistingRecord(const WebCore::ResourceRequest&, std::optional<uint64_t> = std::nullopt);
-    void putRecordsAfterQuotaCheck(Vector<CacheStorageRecord>&&, WebCore::DOMCacheEngine::RecordIdentifiersCallback&&);
-    void putRecordsInStore(Vector<CacheStorageRecord>&&, Vector<std::optional<CacheStorageRecord>>&&, WebCore::DOMCacheEngine::RecordIdentifiersCallback&&);
+    CacheStorageRecordInformation* findExistingRecord(const CyberCore::ResourceRequest&, std::optional<uint64_t> = std::nullopt);
+    void putRecordsAfterQuotaCheck(Vector<CacheStorageRecord>&&, CyberCore::DOMCacheEngine::RecordIdentifiersCallback&&);
+    void putRecordsInStore(Vector<CacheStorageRecord>&&, Vector<std::optional<CacheStorageRecord>>&&, CyberCore::DOMCacheEngine::RecordIdentifiersCallback&&);
 
     WeakPtr<CacheStorageManager> m_manager;
     bool m_isInitialized { false };
-    WebCore::DOMCacheIdentifier m_identifier;
+    CyberCore::DOMCacheIdentifier m_identifier;
     String m_name;
     String m_uniqueName;
     HashMap<String, Vector<CacheStorageRecordInformation>> m_records;

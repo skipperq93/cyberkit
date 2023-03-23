@@ -32,7 +32,7 @@
 #include "Timer.h"
 #include <wtf/HashCountedSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DeviceClient;
 class Page;
@@ -64,4 +64,4 @@ protected:
     Timer m_timer;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

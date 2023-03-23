@@ -35,7 +35,7 @@ class AudioTrackInterface;
 class AudioTrackSinkInterface;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class RealtimeOutgoingAudioSourceCocoa final : public RealtimeOutgoingAudioSource {
 public:
@@ -64,6 +64,6 @@ private:
     bool m_skippingAudioData { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(LIBWEBRTC)

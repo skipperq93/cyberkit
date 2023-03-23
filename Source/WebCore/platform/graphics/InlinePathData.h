@@ -30,7 +30,7 @@
 #include "FloatPoint.h"
 #include <variant>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct LineData {
     FloatPoint start;
@@ -72,6 +72,6 @@ struct BezierCurveData {
 
 using InlinePathData = std::variant<std::monostate, MoveData, LineData, ArcData, QuadCurveData, BezierCurveData>;
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(INLINE_PATH_DATA)

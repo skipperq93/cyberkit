@@ -31,7 +31,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/Ref.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 DECLARE_ALLOCATOR_WITH_HEAP_IDENTIFIER(StyleBackgroundData);
 class StyleBackgroundData : public RefCounted<StyleBackgroundData> {
@@ -58,4 +58,4 @@ private:
 
 WTF::TextStream& operator<<(WTF::TextStream&, const StyleBackgroundData&);
 
-} // namespace WebCore
+} // namespace CyberCore

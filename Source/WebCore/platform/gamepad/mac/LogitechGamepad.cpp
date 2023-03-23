@@ -34,7 +34,7 @@
 #include <IOKit/hid/IOHIDUsageTables.h>
 #include <wtf/HexNumber.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 LogitechGamepad::LogitechGamepad(HIDDevice&& device, unsigned index)
     : HIDGamepad(WTFMove(device), index)
@@ -121,6 +121,6 @@ LogitechGamepad::LogitechGamepad(HIDDevice&& device, unsigned index)
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(GAMEPAD) && PLATFORM(MAC)

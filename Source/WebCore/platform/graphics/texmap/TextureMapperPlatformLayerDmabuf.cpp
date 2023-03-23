@@ -40,7 +40,7 @@
 
 #include <unistd.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static constexpr uint32_t createFourCC(char a, char b, char c, char d)
 {
@@ -123,6 +123,6 @@ std::unique_ptr<TextureMapperPlatformLayerBuffer> TextureMapperPlatformLayerDmab
     return TextureMapperPlatformLayerBuffer::clone();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(ANGLE) && USE(NICOSIA)

@@ -31,19 +31,19 @@
 namespace WTF {
 
 struct ColorHash {
-    static unsigned hash(const WebCore::Color& key) { return computeHash(key); }
-    static bool equal(const WebCore::Color& a, const WebCore::Color& b) { return a == b; }
+    static unsigned hash(const CyberCore::Color& key) { return computeHash(key); }
+    static bool equal(const CyberCore::Color& a, const CyberCore::Color& b) { return a == b; }
     static const bool safeToCompareToEmptyOrDeleted = true;
 };
 
-template<> struct DefaultHash<WebCore::Color> : ColorHash { };
+template<> struct DefaultHash<CyberCore::Color> : ColorHash { };
 
-template<> struct HashTraits<WebCore::Color> : GenericHashTraits<WebCore::Color> {
+template<> struct HashTraits<CyberCore::Color> : GenericHashTraits<CyberCore::Color> {
     static const bool emptyValueIsZero = false;
-    static WebCore::Color emptyValue() { return WebCore::Color(HashTableEmptyValue); }
+    static CyberCore::Color emptyValue() { return CyberCore::Color(HashTableEmptyValue); }
 
-    static void constructDeletedValue(WebCore::Color& slot) { new (NotNull, &slot) WebCore::Color(HashTableDeletedValue); }
-    static bool isDeletedValue(const WebCore::Color& value) { return value.isHashTableDeletedValue(); }
+    static void constructDeletedValue(CyberCore::Color& slot) { new (NotNull, &slot) CyberCore::Color(HashTableDeletedValue); }
+    static bool isDeletedValue(const CyberCore::Color& value) { return value.isHashTableDeletedValue(); }
 };
 
 } // namespace WTF

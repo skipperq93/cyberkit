@@ -45,7 +45,7 @@
 #include <algorithm>
 #include <math.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace VectorMath {
 
@@ -831,6 +831,6 @@ void addVectorsThenMultiplyByScalar(const float* inputVector1, const float* inpu
 
 } // namespace VectorMath
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

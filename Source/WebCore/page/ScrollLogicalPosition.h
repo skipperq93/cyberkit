@@ -19,7 +19,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class ScrollLogicalPosition : uint8_t {
     Start = 0,

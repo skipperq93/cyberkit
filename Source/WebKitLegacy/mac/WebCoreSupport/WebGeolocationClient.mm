@@ -42,10 +42,10 @@
 
 #if PLATFORM(IOS_FAMILY)
 #import <CyberCore/WAKResponder.h>
-#import <CyberKitLegacy/WebCoreThreadRun.h>
+#import <CyberKitLegacy/CyberCoreThreadRun.h>
 #endif
 
-using namespace WebCore;
+using namespace CyberCore;
 
 #if !PLATFORM(IOS_FAMILY)
 @interface WebGeolocationPolicyListener : NSObject <WebAllowDenyPolicyListener>
@@ -128,7 +128,7 @@ void WebGeolocationClient::requestPermission(Geolocation& geolocation)
         return;
     }
 
-    auto webOrigin = adoptNS([[WebSecurityOrigin alloc] _initWithWebCoreSecurityOrigin:&frame->document()->securityOrigin()]);
+    auto webOrigin = adoptNS([[WebSecurityOrigin alloc] _initWithCyberCoreSecurityOrigin:&frame->document()->securityOrigin()]);
     auto listener = adoptNS([[WebGeolocationPolicyListener alloc] initWithGeolocation:geolocation]);
 
     CallUIDelegate(m_webView, selector, webOrigin.get(), kit(frame), listener.get());
@@ -228,7 +228,7 @@ std::optional<GeolocationPositionData> WebGeolocationClient::lastPosition()
     Frame* frame = m_geolocation->frame();
     if (!frame)
         return;
-    auto webOrigin = adoptNS([[WebSecurityOrigin alloc] _initWithWebCoreSecurityOrigin:&frame->document()->securityOrigin()]);
+    auto webOrigin = adoptNS([[WebSecurityOrigin alloc] _initWithCyberCoreSecurityOrigin:&frame->document()->securityOrigin()]);
     auto listener = adoptNS([[WebGeolocationPolicyListener alloc] initWithGeolocation:m_geolocation.get() forWebView:webView]);
     SEL selector = @selector(webView:decidePolicyForGeolocationRequestFromOrigin:frame:listener:);
     CallUIDelegate(webView, selector, webOrigin.get(), kit(frame), listener.get());

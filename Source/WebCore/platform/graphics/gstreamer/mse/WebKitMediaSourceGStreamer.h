@@ -33,11 +33,11 @@
 #include "SourceBufferPrivateClient.h"
 #include "SourceBufferPrivateGStreamer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class MediaPlayerPrivateGStreamerMSE;
 
-} // namespace WebCore
+} // namespace CyberCore
 
 G_BEGIN_DECLS
 
@@ -61,7 +61,7 @@ struct WebKitMediaSrcClass {
 
 GType webkit_media_src_get_type(void);
 
-void webKitMediaSrcEmitStreams(WebKitMediaSrc* source, const Vector<RefPtr<WebCore::MediaSourceTrackGStreamer>>& tracks);
+void webKitMediaSrcEmitStreams(WebKitMediaSrc* source, const Vector<RefPtr<CyberCore::MediaSourceTrackGStreamer>>& tracks);
 
 void webKitMediaSrcFlush(WebKitMediaSrc*, const AtomString& streamName);
 

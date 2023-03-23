@@ -30,18 +30,18 @@
 
 @implementation _WKModalContainerInfo
 
-- (instancetype)initWithTypes:(OptionSet<WebCore::ModalContainerControlType>)types
+- (instancetype)initWithTypes:(OptionSet<CyberCore::ModalContainerControlType>)types
 {
     if (!(self = [super init]))
         return nil;
 
-    if (types.contains(WebCore::ModalContainerControlType::Positive))
+    if (types.contains(CyberCore::ModalContainerControlType::Positive))
         _availableTypes |= _WKModalContainerControlTypePositive;
 
-    if (types.contains(WebCore::ModalContainerControlType::Negative))
+    if (types.contains(CyberCore::ModalContainerControlType::Negative))
         _availableTypes |= _WKModalContainerControlTypeNegative;
 
-    if (types.contains(WebCore::ModalContainerControlType::Neutral))
+    if (types.contains(CyberCore::ModalContainerControlType::Neutral))
         _availableTypes |= _WKModalContainerControlTypeNeutral;
 
     return self;

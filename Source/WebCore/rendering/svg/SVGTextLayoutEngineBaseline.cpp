@@ -28,7 +28,7 @@
 #include "SVGRenderStyle.h"
 #include "SVGTextMetrics.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 SVGTextLayoutEngineBaseline::SVGTextLayoutEngineBaseline(const FontCascade& font)
     : m_font(font)

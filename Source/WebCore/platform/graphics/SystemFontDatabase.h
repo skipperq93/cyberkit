@@ -31,7 +31,7 @@
 #include <wtf/EnumeratedArray.h>
 #include <wtf/text/AtomString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SystemFontDatabase {
 public:
@@ -95,4 +95,4 @@ private:
     SystemFontShorthandCache m_systemFontShorthandCache;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

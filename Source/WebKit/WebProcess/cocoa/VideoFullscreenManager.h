@@ -49,12 +49,12 @@ namespace WTF {
 class MachSendRight;
 }
 
-namespace WebCore {
+namespace CyberCore {
 class FloatSize;
 class Node;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class LayerHostingContext;
 class WebPage;
@@ -64,7 +64,7 @@ class VideoFullscreenManager;
 
 class VideoFullscreenInterfaceContext
     : public RefCounted<VideoFullscreenInterfaceContext>
-    , public WebCore::VideoFullscreenModelClient {
+    , public CyberCore::VideoFullscreenModelClient {
 public:
     static Ref<VideoFullscreenInterfaceContext> create(VideoFullscreenManager& manager, PlaybackSessionContextIdentifier contextId)
     {
@@ -84,8 +84,8 @@ public:
     bool targetIsFullscreen() const { return m_targetIsFullscreen; }
     void setTargetIsFullscreen(bool flag) { m_targetIsFullscreen = flag; }
 
-    WebCore::HTMLMediaElementEnums::VideoFullscreenMode fullscreenMode() const { return m_fullscreenMode; }
-    void setFullscreenMode(WebCore::HTMLMediaElementEnums::VideoFullscreenMode mode) { m_fullscreenMode = mode; }
+    CyberCore::HTMLMediaElementEnums::VideoFullscreenMode fullscreenMode() const { return m_fullscreenMode; }
+    void setFullscreenMode(CyberCore::HTMLMediaElementEnums::VideoFullscreenMode mode) { m_fullscreenMode = mode; }
 
     bool fullscreenStandby() const { return m_fullscreenStandby; }
     void setFullscreenStandby(bool value) { m_fullscreenStandby = value; }
@@ -96,8 +96,8 @@ public:
 private:
     // VideoFullscreenModelClient
     void hasVideoChanged(bool) override;
-    void videoDimensionsChanged(const WebCore::FloatSize&) override;
-    void setPlayerIdentifier(std::optional<WebCore::MediaPlayerIdentifier>) final;
+    void videoDimensionsChanged(const CyberCore::FloatSize&) override;
+    void setPlayerIdentifier(std::optional<CyberCore::MediaPlayerIdentifier>) final;
 
     VideoFullscreenInterfaceContext(VideoFullscreenManager&, PlaybackSessionContextIdentifier);
 
@@ -106,7 +106,7 @@ private:
     std::unique_ptr<LayerHostingContext> m_layerHostingContext;
     AnimationType m_animationType { AnimationType::None };
     bool m_targetIsFullscreen { false };
-    WebCore::HTMLMediaElementEnums::VideoFullscreenMode m_fullscreenMode { WebCore::HTMLMediaElementEnums::VideoFullscreenModeNone };
+    CyberCore::HTMLMediaElementEnums::VideoFullscreenMode m_fullscreenMode { CyberCore::HTMLMediaElementEnums::VideoFullscreenModeNone };
     bool m_fullscreenStandby { false };
     bool m_isFullscreen { false };
 };
@@ -123,22 +123,22 @@ public:
     void didReceiveMessage(IPC::Connection&, IPC::Decoder&) override;
 
     // Interface to WebChromeClient
-    bool canEnterVideoFullscreen(WebCore::HTMLMediaElementEnums::VideoFullscreenMode) const;
-    bool supportsVideoFullscreen(WebCore::HTMLMediaElementEnums::VideoFullscreenMode) const;
+    bool canEnterVideoFullscreen(CyberCore::HTMLMediaElementEnums::VideoFullscreenMode) const;
+    bool supportsVideoFullscreen(CyberCore::HTMLMediaElementEnums::VideoFullscreenMode) const;
     bool supportsVideoFullscreenStandby() const;
-    void enterVideoFullscreenForVideoElement(WebCore::HTMLVideoElement&, WebCore::HTMLMediaElementEnums::VideoFullscreenMode, bool standby);
-    void exitVideoFullscreenForVideoElement(WebCore::HTMLVideoElement&, WTF::CompletionHandler<void(bool)>&& = [](bool) { });
-    void exitVideoFullscreenToModeWithoutAnimation(WebCore::HTMLVideoElement&, WebCore::HTMLMediaElementEnums::VideoFullscreenMode);
+    void enterVideoFullscreenForVideoElement(CyberCore::HTMLVideoElement&, CyberCore::HTMLMediaElementEnums::VideoFullscreenMode, bool standby);
+    void exitVideoFullscreenForVideoElement(CyberCore::HTMLVideoElement&, WTF::CompletionHandler<void(bool)>&& = [](bool) { });
+    void exitVideoFullscreenToModeWithoutAnimation(CyberCore::HTMLVideoElement&, CyberCore::HTMLMediaElementEnums::VideoFullscreenMode);
 
 protected:
     friend class VideoFullscreenInterfaceContext;
 
     explicit VideoFullscreenManager(WebPage&, PlaybackSessionManager&);
 
-    typedef std::tuple<RefPtr<WebCore::VideoFullscreenModelVideoElement>, RefPtr<VideoFullscreenInterfaceContext>> ModelInterfaceTuple;
+    typedef std::tuple<RefPtr<CyberCore::VideoFullscreenModelVideoElement>, RefPtr<VideoFullscreenInterfaceContext>> ModelInterfaceTuple;
     ModelInterfaceTuple createModelAndInterface(PlaybackSessionContextIdentifier);
     ModelInterfaceTuple& ensureModelAndInterface(PlaybackSessionContextIdentifier);
-    WebCore::VideoFullscreenModelVideoElement& ensureModel(PlaybackSessionContextIdentifier);
+    CyberCore::VideoFullscreenModelVideoElement& ensureModel(PlaybackSessionContextIdentifier);
     VideoFullscreenInterfaceContext& ensureInterface(PlaybackSessionContextIdentifier);
     void removeContext(PlaybackSessionContextIdentifier);
     void addClientForContext(PlaybackSessionContextIdentifier);
@@ -146,11 +146,11 @@ protected:
 
     // Interface to VideoFullscreenInterfaceContext
     void hasVideoChanged(PlaybackSessionContextIdentifier, bool hasVideo);
-    void videoDimensionsChanged(PlaybackSessionContextIdentifier, const WebCore::FloatSize&);
-    void setPlayerIdentifier(PlaybackSessionContextIdentifier, std::optional<WebCore::MediaPlayerIdentifier>);
+    void videoDimensionsChanged(PlaybackSessionContextIdentifier, const CyberCore::FloatSize&);
+    void setPlayerIdentifier(PlaybackSessionContextIdentifier, std::optional<CyberCore::MediaPlayerIdentifier>);
 
     // Messages from VideoFullscreenManagerProxy
-    void requestFullscreenMode(PlaybackSessionContextIdentifier, WebCore::HTMLMediaElementEnums::VideoFullscreenMode, bool finishedWithMedia);
+    void requestFullscreenMode(PlaybackSessionContextIdentifier, CyberCore::HTMLMediaElementEnums::VideoFullscreenMode, bool finishedWithMedia);
     void requestUpdateInlineRect(PlaybackSessionContextIdentifier);
     void requestVideoContentLayer(PlaybackSessionContextIdentifier);
     void returnVideoContentLayer(PlaybackSessionContextIdentifier);
@@ -159,27 +159,27 @@ protected:
 #endif
     void willExitFullscreen(PlaybackSessionContextIdentifier);
     void didExitFullscreen(PlaybackSessionContextIdentifier);
-    void didEnterFullscreen(PlaybackSessionContextIdentifier, std::optional<WebCore::FloatSize>);
+    void didEnterFullscreen(PlaybackSessionContextIdentifier, std::optional<CyberCore::FloatSize>);
     void failedToEnterFullscreen(PlaybackSessionContextIdentifier);
     void didCleanupFullscreen(PlaybackSessionContextIdentifier);
-    void setVideoLayerFrameFenced(PlaybackSessionContextIdentifier, WebCore::FloatRect bounds, const WTF::MachSendRight&);
+    void setVideoLayerFrameFenced(PlaybackSessionContextIdentifier, CyberCore::FloatRect bounds, const WTF::MachSendRight&);
     void setVideoLayerGravityEnum(PlaybackSessionContextIdentifier, unsigned gravity);
-    void fullscreenModeChanged(PlaybackSessionContextIdentifier, WebCore::HTMLMediaElementEnums::VideoFullscreenMode);
+    void fullscreenModeChanged(PlaybackSessionContextIdentifier, CyberCore::HTMLMediaElementEnums::VideoFullscreenMode);
     void fullscreenMayReturnToInline(PlaybackSessionContextIdentifier, bool isPageVisible);
-    void requestRouteSharingPolicyAndContextUID(PlaybackSessionContextIdentifier, CompletionHandler<void(WebCore::RouteSharingPolicy, String)>&&);
+    void requestRouteSharingPolicyAndContextUID(PlaybackSessionContextIdentifier, CompletionHandler<void(CyberCore::RouteSharingPolicy, String)>&&);
 
     void setCurrentlyInFullscreen(VideoFullscreenInterfaceContext&, bool);
 
     WebPage* m_page;
     Ref<PlaybackSessionManager> m_playbackSessionManager;
-    HashMap<WebCore::HTMLVideoElement*, PlaybackSessionContextIdentifier> m_videoElements;
+    HashMap<CyberCore::HTMLVideoElement*, PlaybackSessionContextIdentifier> m_videoElements;
     HashMap<PlaybackSessionContextIdentifier, ModelInterfaceTuple> m_contextMap;
     PlaybackSessionContextIdentifier m_controlsManagerContextId;
     HashMap<PlaybackSessionContextIdentifier, int> m_clientCounts;
-    WeakPtr<WebCore::HTMLVideoElement, WebCore::WeakPtrImplWithEventTargetData> m_videoElementInPictureInPicture;
+    WeakPtr<CyberCore::HTMLVideoElement, CyberCore::WeakPtrImplWithEventTargetData> m_videoElementInPictureInPicture;
     bool m_currentlyInFullscreen { false };
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(VIDEO_PRESENTATION_MODE)

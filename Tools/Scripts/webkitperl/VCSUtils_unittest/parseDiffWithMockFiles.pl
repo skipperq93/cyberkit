@@ -106,13 +106,13 @@ EOF
 
 my $diffBody = <<EOF;
 +
- MODULES = JavaScriptCore JavaScriptGlue WebCore WebKit WebKitTools
+ MODULES = JavaScriptCore JavaScriptGlue CyberCore WebKit WebKitTools
  
  all:
 EOF
 
 my $MakefileContents = <<EOF;
-MODULES = JavaScriptCore JavaScriptGlue WebCore WebKit WebKitTools 
+MODULES = JavaScriptCore JavaScriptGlue CyberCore WebKit WebKitTools 
 
 all:
 EOF
@@ -181,7 +181,7 @@ Index: MakefileWithWindowsEOL
 --- MakefileWithWindowsEOL	(revision 53052)
 +++ MakefileWithWindowsEOL	(working copy)
 @@ -1,3 +1,4 @@\r
- MODULES = JavaScriptCore JavaScriptGlue WebCore WebKit WebKitTools\r
+ MODULES = JavaScriptCore JavaScriptGlue CyberCore WebKit WebKitTools\r
  \r
 -all:
 \\ No newline at end of file
@@ -197,7 +197,7 @@ Index: MakefileWithWindowsEOL
 --- MakefileWithWindowsEOL	(revision 53052)
 +++ MakefileWithWindowsEOL	(working copy)
 @@ -1,3 +1,4 @@\r
- MODULES = JavaScriptCore JavaScriptGlue WebCore WebKit WebKitTools\r
+ MODULES = JavaScriptCore JavaScriptGlue CyberCore WebKit WebKitTools\r
  \r
 -all:
 \\ No newline at end of file
@@ -220,7 +220,7 @@ Index: MakefileWithMacEOL
 ===================================================================
 --- MakefileWithMacEOL	(revision 53052)
 +++ MakefileWithMacEOL	(working copy)
-@@ -1,3 +1,4 @@\r MODULES = JavaScriptCore JavaScriptGlue WebCore WebKit WebKitTools\r \r-all:
+@@ -1,3 +1,4 @@\r MODULES = JavaScriptCore JavaScriptGlue CyberCore WebKit WebKitTools\r \r-all:
 \\ No newline at end of file
 +all:\r+\r
 EOF
@@ -231,7 +231,7 @@ EOF
 ===================================================================
 --- MakefileWithMacEOL	(revision 53052)
 +++ MakefileWithMacEOL	(working copy)
-@@ -1,3 +1,4 @@\r MODULES = JavaScriptCore JavaScriptGlue WebCore WebKit WebKitTools\r \r-all:
+@@ -1,3 +1,4 @@\r MODULES = JavaScriptCore JavaScriptGlue CyberCore WebKit WebKitTools\r \r-all:
 \\ No newline at end of file
 +all:\r+\r),
     indexPath => "MakefileWithMacEOL",
@@ -341,7 +341,7 @@ index e7e8475..ae16fc3 100644
 --- a/MakefileWithWindowsEOL
 +++ b/MakefileWithWindowsEOL
 @@ -1,3 +1,4 @@\r
- MODULES = JavaScriptCore JavaScriptGlue WebCore WebKit WebKitTools\r
+ MODULES = JavaScriptCore JavaScriptGlue CyberCore WebKit WebKitTools\r
  \r
 -all:
 \\ No newline at end of file
@@ -357,7 +357,7 @@ index e7e8475..ae16fc3 100644
 --- MakefileWithWindowsEOL\t(revision 0)
 +++ MakefileWithWindowsEOL\t(working copy)
 @@ -1,3 +1,4 @@\r
- MODULES = JavaScriptCore JavaScriptGlue WebCore WebKit WebKitTools\r
+ MODULES = JavaScriptCore JavaScriptGlue CyberCore WebKit WebKitTools\r
  \r
 -all:
 \\ No newline at end of file
@@ -379,7 +379,7 @@ diff --git a/MakefileWithMacEOL b/MakefileWithMacEOL
 index e7e8475..ae16fc3 100644
 --- a/MakefileWithMacEOL
 +++ b/MakefileWithMacEOL
-@@ -1,3 +1,4 @@\r MODULES = JavaScriptCore JavaScriptGlue WebCore WebKit WebKitTools\r \r-all:
+@@ -1,3 +1,4 @@\r MODULES = JavaScriptCore JavaScriptGlue CyberCore WebKit WebKitTools\r \r-all:
 \\ No newline at end of file
 +all:\r+\r
 EOF
@@ -390,7 +390,7 @@ EOF
 index e7e8475..ae16fc3 100644
 --- MakefileWithMacEOL\t(revision 0)
 +++ MakefileWithMacEOL\t(working copy)
-@@ -1,3 +1,4 @@\r MODULES = JavaScriptCore JavaScriptGlue WebCore WebKit WebKitTools\r \r-all:
+@@ -1,3 +1,4 @@\r MODULES = JavaScriptCore JavaScriptGlue CyberCore WebKit WebKitTools\r \r-all:
 \\ No newline at end of file
 +all:\r+\r),
     indexPath => "MakefileWithMacEOL",

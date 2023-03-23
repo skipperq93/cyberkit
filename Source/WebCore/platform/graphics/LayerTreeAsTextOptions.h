@@ -27,7 +27,7 @@
 
 #include <wtf/OptionSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class LayerTreeAsTextOptions : uint16_t {
     Debug                        = 1 << 0, // Dump extra debugging info like layer addresses.
@@ -62,4 +62,4 @@ static constexpr OptionSet<LayerTreeAsTextOptions> AllLayerTreeAsTextOptions = {
     LayerTreeAsTextOptions::IncludeDeepColor,
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -28,7 +28,7 @@
 
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 #if PLATFORM(COCOA)
 enum class UserAgentType { Default, Desktop };

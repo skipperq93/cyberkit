@@ -32,7 +32,7 @@
 #include <wtf/FileSystem.h>
 #include <wtf/text/CString.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 bool InjectedBundle::initialize(const WebProcessCreationParameters&, API::Object* initializationUserData)
 {
@@ -60,4 +60,4 @@ void InjectedBundle::setBundleParameters(const IPC::DataReference&)
 {
 }
 
-} // namespace WebKit
+} // namespace CyberKit

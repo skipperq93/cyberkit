@@ -33,7 +33,7 @@
 
 namespace WebKit {
 
-class WebCompiledContentRuleList final : public WebCore::ContentExtensions::CompiledContentExtension {
+class WebCompiledContentRuleList final : public CyberCore::ContentExtensions::CompiledContentExtension {
 public:
     static Ref<WebCompiledContentRuleList> create(WebCompiledContentRuleListData&&);
     virtual ~WebCompiledContentRuleList();

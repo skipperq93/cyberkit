@@ -26,7 +26,7 @@
 #include "RenderTextControlSingleLine.h"
 #include "SearchPopupMenu.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class HTMLInputElement;
 
@@ -92,6 +92,6 @@ private:
     Vector<RecentSearch> m_recentSearches;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderSearchField, isSearchField())

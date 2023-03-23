@@ -37,7 +37,7 @@ namespace webrtc {
 class VideoFrameBuffer;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class SharedVideoFrameInfo {
 public:

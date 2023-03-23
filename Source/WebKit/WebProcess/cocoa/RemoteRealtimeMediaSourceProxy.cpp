@@ -33,15 +33,15 @@
 #include "UserMediaCaptureManager.h"
 #include "UserMediaCaptureManagerMessages.h"
 #include "UserMediaCaptureManagerProxyMessages.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebProcess.h"
 #include <CyberCore/MediaConstraints.h>
 #include <CyberCore/RealtimeMediaSource.h>
 #include <CyberCore/RealtimeMediaSourceCenter.h>
 #include <CyberCore/WebAudioBufferList.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 static IPC::Connection& getSourceConnection(bool shouldCaptureInGPUProcess)
 {
@@ -53,7 +53,7 @@ static IPC::Connection& getSourceConnection(bool shouldCaptureInGPUProcess)
     return *WebProcess::singleton().parentProcessConnection();
 }
 
-RemoteRealtimeMediaSourceProxy::RemoteRealtimeMediaSourceProxy(WebCore::RealtimeMediaSourceIdentifier identifier, const WebCore::CaptureDevice& device, bool shouldCaptureInGPUProcess, const WebCore::MediaConstraints* constraints)
+RemoteRealtimeMediaSourceProxy::RemoteRealtimeMediaSourceProxy(CyberCore::RealtimeMediaSourceIdentifier identifier, const CyberCore::CaptureDevice& device, bool shouldCaptureInGPUProcess, const CyberCore::MediaConstraints* constraints)
     : m_identifier(identifier)
     , m_connection(getSourceConnection(shouldCaptureInGPUProcess))
     , m_device(device)
@@ -90,7 +90,7 @@ void RemoteRealtimeMediaSourceProxy::endProducingData()
     m_connection->send(Messages::UserMediaCaptureManagerProxy::EndProducingData { m_identifier }, 0);
 }
 
-void RemoteRealtimeMediaSourceProxy::createRemoteMediaSource(const MediaDeviceHashSalts& deviceIDHashSalts, WebCore::PageIdentifier pageIdentifier, CreateCallback&& callback, bool shouldUseRemoteFrame)
+void RemoteRealtimeMediaSourceProxy::createRemoteMediaSource(const MediaDeviceHashSalts& deviceIDHashSalts, CyberCore::PageIdentifier pageIdentifier, CreateCallback&& callback, bool shouldUseRemoteFrame)
 {
     m_connection->sendWithAsyncReply(Messages::UserMediaCaptureManagerProxy::CreateMediaSourceForCaptureDeviceWithConstraints(identifier(), m_device, deviceIDHashSalts, m_constraints, shouldUseRemoteFrame, pageIdentifier), WTFMove(callback));
 }
@@ -100,7 +100,7 @@ RemoteRealtimeMediaSourceProxy RemoteRealtimeMediaSourceProxy::clone()
     return { RealtimeMediaSourceIdentifier::generate(), m_device, m_shouldCaptureInGPUProcess, &m_constraints };
 }
 
-void RemoteRealtimeMediaSourceProxy::createRemoteCloneSource(WebCore::RealtimeMediaSourceIdentifier cloneIdentifier, WebCore::PageIdentifier pageIdentifier)
+void RemoteRealtimeMediaSourceProxy::createRemoteCloneSource(CyberCore::RealtimeMediaSourceIdentifier cloneIdentifier, CyberCore::PageIdentifier pageIdentifier)
 {
     m_connection->send(Messages::UserMediaCaptureManagerProxy::Clone { m_identifier, cloneIdentifier, pageIdentifier }, 0);
 }

@@ -29,7 +29,7 @@
 #include "Filter.h"
 #include "GraphicsContext.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 FilterStyleTargetSwitcher::FilterStyleTargetSwitcher(Filter& filter, const FloatRect& sourceImageRect)
     : FilterTargetSwitcher(filter)
@@ -55,4 +55,4 @@ void FilterStyleTargetSwitcher::endDrawSourceImage(GraphicsContext& destinationC
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore

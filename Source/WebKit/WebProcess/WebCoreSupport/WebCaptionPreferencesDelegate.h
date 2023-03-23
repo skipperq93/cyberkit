@@ -29,17 +29,17 @@
 
 #include <CyberCore/CaptionPreferencesDelegate.h>
 
-namespace WebKit {
+namespace CyberKit {
 
-class WebCaptionPreferencesDelegate final : public WebCore::CaptionPreferencesDelegate {
+class WebCaptionPreferencesDelegate final : public CyberCore::CaptionPreferencesDelegate {
     WTF_MAKE_FAST_ALLOCATED;
 public:
     virtual ~WebCaptionPreferencesDelegate() { }
 
-    void setDisplayMode(WebCore::CaptionUserPreferences::CaptionDisplayMode) final;
+    void setDisplayMode(CyberCore::CaptionUserPreferences::CaptionDisplayMode) final;
     void setPreferredLanguage(const String&) final;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

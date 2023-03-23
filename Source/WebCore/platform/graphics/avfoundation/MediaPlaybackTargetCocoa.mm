@@ -32,7 +32,7 @@
 #import <pal/spi/cocoa/AVFoundationSPI.h>
 #import <pal/cocoa/AVFoundationSoftLink.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<MediaPlaybackTarget> MediaPlaybackTargetCocoa::create(AVOutputContext *outputContext)
 {
@@ -77,6 +77,6 @@ const MediaPlaybackTargetCocoa* toMediaPlaybackTargetCocoa(const MediaPlaybackTa
     return static_cast<const MediaPlaybackTargetCocoa*>(rep);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WIRELESS_PLAYBACK_TARGET)

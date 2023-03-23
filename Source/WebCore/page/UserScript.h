@@ -30,7 +30,7 @@
 #include "UserScriptTypes.h"
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class UserScript {
     WTF_MAKE_FAST_ALLOCATED;
@@ -134,4 +134,4 @@ std::optional<UserScript> UserScript::decode(Decoder& decoder)
     }};
 }
 
-} // namespace WebCore
+} // namespace CyberCore

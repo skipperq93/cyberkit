@@ -28,7 +28,7 @@
 #include "NowPlayingManager.h"
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioDestination;
 class AudioIOCallback;
@@ -49,4 +49,4 @@ protected:
     virtual ~MediaStrategy();
 };
 
-} // namespace WebCore
+} // namespace CyberCore

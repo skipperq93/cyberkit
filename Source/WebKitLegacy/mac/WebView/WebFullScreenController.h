@@ -32,7 +32,7 @@
 @class WebWindowFadeAnimation;
 @class WebWindowScaleAnimation;
 @class WebView;
-namespace WebCore {
+namespace CyberCore {
 class Element;
 class RenderBox;
 class EventListener;
@@ -40,7 +40,7 @@ class EventListener;
 
 @interface WebFullScreenController : NSWindowController {
 @private
-    RefPtr<WebCore::Element> _element;
+    RefPtr<CyberCore::Element> _element;
     WebView *_webView;
     RetainPtr<NSView> _webViewPlaceholder;
     RetainPtr<WebWindowScaleAnimation> _scaleAnimation;
@@ -48,7 +48,7 @@ class EventListener;
     RetainPtr<NSWindow> _backgroundWindow;
     NSRect _initialFrame;
     NSRect _finalFrame;
-    WebCore::IntPoint _scrollPosition;
+    CyberCore::IntPoint _scrollPosition;
     float _savedScale;
 
     BOOL _isEnteringFullScreen;
@@ -66,8 +66,8 @@ class EventListener;
 
 - (BOOL)isFullScreen;
 
-- (void)setElement:(RefPtr<WebCore::Element>&&)element;
-- (WebCore::Element*)element;
+- (void)setElement:(RefPtr<CyberCore::Element>&&)element;
+- (CyberCore::Element*)element;
 
 - (void)enterFullScreen:(NSScreen *)screen;
 - (void)exitFullScreen;

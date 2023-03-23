@@ -36,20 +36,20 @@
 OBJC_CLASS AVAssetTrack;
 OBJC_CLASS AVAssetReader;
 OBJC_CLASS AVURLAsset;
-OBJC_CLASS WebCoreSharedBufferResourceLoaderDelegate;
+OBJC_CLASS CyberCoreSharedBufferResourceLoaderDelegate;
 typedef struct opaqueCMSampleBuffer* CMSampleBufferRef;
 
 namespace WTF {
 class MediaTime;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class ContentType;
 class ImageDecoderAVFObjCSample;
 class ImageRotationSessionVT;
 class PixelBufferConformerCV;
-class WebCoreDecompressionSession;
+class CyberCoreDecompressionSession;
 
 class ImageDecoderAVFObjC : public ImageDecoder {
 public:
@@ -110,9 +110,9 @@ private:
     String m_uti;
     RetainPtr<AVURLAsset> m_asset;
     RetainPtr<AVAssetTrack> m_track;
-    RetainPtr<WebCoreSharedBufferResourceLoaderDelegate> m_loader;
+    RetainPtr<CyberCoreSharedBufferResourceLoaderDelegate> m_loader;
     std::unique_ptr<ImageRotationSessionVT> m_imageRotationSession;
-    Ref<WebCoreDecompressionSession> m_decompressionSession;
+    Ref<CyberCoreDecompressionSession> m_decompressionSession;
     Function<void(EncodedDataStatus)> m_encodedDataStatusChangedCallback;
 
     SampleMap m_sampleData;

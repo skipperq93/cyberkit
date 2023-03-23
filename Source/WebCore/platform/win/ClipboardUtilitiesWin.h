@@ -30,7 +30,7 @@
 #include <windows.h>
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class DocumentFragment;
@@ -84,6 +84,6 @@ void getFileContentData(IDataObject*, int size, void* dataBlob);
 void setFileDescriptorData(IDataObject*, int size, const String& pathname);
 void setFileContentData(IDataObject*, int size, void* dataBlob);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ClipboardUtilitiesWin_h

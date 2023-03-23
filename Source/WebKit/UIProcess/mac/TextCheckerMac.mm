@@ -48,7 +48,7 @@ static NSString* const WebAutomaticLinkDetectionEnabled = @"WebAutomaticLinkDete
 static NSString* const WebAutomaticTextReplacementEnabled = @"WebAutomaticTextReplacementEnabled";
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 static bool shouldAutomaticTextReplacementBeEnabled()
 {
@@ -427,7 +427,7 @@ void TextChecker::checkSpellingOfString(SpellDocumentTag, StringView, int32_t&, 
     notImplemented();
 }
 
-void TextChecker::checkGrammarOfString(SpellDocumentTag, StringView, Vector<WebCore::GrammarDetail>&, int32_t&, int32_t&)
+void TextChecker::checkGrammarOfString(SpellDocumentTag, StringView, Vector<CyberCore::GrammarDetail>&, int32_t&, int32_t&)
 {
     // Mac uses checkTextOfParagraph instead.
     notImplemented();

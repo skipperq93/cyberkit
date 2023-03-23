@@ -37,14 +37,14 @@ Ref<WebGrammarDetail> WebGrammarDetail::create(int location, int length, API::Ar
     return adoptRef(*new WebGrammarDetail(location, length, guesses, userDescription));
 }
 
-Ref<WebGrammarDetail> WebGrammarDetail::create(const WebCore::GrammarDetail& grammarDetail)
+Ref<WebGrammarDetail> WebGrammarDetail::create(const CyberCore::GrammarDetail& grammarDetail)
 {
     return adoptRef(*new WebGrammarDetail(grammarDetail));
 }
 
 WebGrammarDetail::WebGrammarDetail(int location, int length, API::Array* guesses, const String& userDescription)
 {
-    m_grammarDetail.range = WebCore::CharacterRange(location, length);
+    m_grammarDetail.range = CyberCore::CharacterRange(location, length);
 
     size_t numGuesses = guesses->size();
     m_grammarDetail.guesses.reserveCapacity(numGuesses);
@@ -63,7 +63,7 @@ Ref<API::Array> WebGrammarDetail::guesses() const
     return API::Array::create(WTFMove(wkGuesses));
 }
 
-WebGrammarDetail::WebGrammarDetail(const WebCore::GrammarDetail& grammarDetail)
+WebGrammarDetail::WebGrammarDetail(const CyberCore::GrammarDetail& grammarDetail)
     : m_grammarDetail(grammarDetail)
 {
 }

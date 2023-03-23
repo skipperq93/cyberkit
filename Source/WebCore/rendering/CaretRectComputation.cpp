@@ -37,7 +37,7 @@
 #include "RenderSVGInlineText.h"
 #include "RenderText.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 #if USE(APPLE_INTERNAL_SDK) && PLATFORM(MAC)
 #import <WebKitAdditions/CaretRectComputationAdditions.cpp>

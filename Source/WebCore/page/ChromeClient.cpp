@@ -30,7 +30,7 @@
 #include "GraphicsContextGL.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 ChromeClient::ChromeClient() = default;
 
@@ -43,7 +43,7 @@ RefPtr<GraphicsContextGL> ChromeClient::createGraphicsContextGL(const GraphicsCo
 }
 #endif
 
-RefPtr<ImageBuffer> ChromeClient::sinkIntoImageBuffer(std::unique_ptr<WebCore::SerializedImageBuffer> imageBuffer)
+RefPtr<ImageBuffer> ChromeClient::sinkIntoImageBuffer(std::unique_ptr<CyberCore::SerializedImageBuffer> imageBuffer)
 {
     return SerializedImageBuffer::sinkIntoImageBuffer(WTFMove(imageBuffer));
 }

@@ -33,7 +33,7 @@ namespace WTF {
 class TextStream;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class LengthType : uint8_t {
     Auto,
@@ -524,4 +524,4 @@ Length convertTo100PercentMinusLength(const Length&);
 
 WTF::TextStream& operator<<(WTF::TextStream&, Length);
 
-} // namespace WebCore
+} // namespace CyberCore

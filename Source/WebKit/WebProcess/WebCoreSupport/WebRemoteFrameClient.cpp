@@ -29,7 +29,7 @@
 #include <CyberCore/FrameTree.h>
 #include <CyberCore/RemoteFrame.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 WebRemoteFrameClient::WebRemoteFrameClient(Ref<WebFrame>&& frame, ScopeExit<Function<void()>>&& frameInvalidator)
     : m_frame(WTFMove(frame))
@@ -54,7 +54,7 @@ void WebRemoteFrameClient::frameDetached()
     m_frame->invalidate();
 }
 
-void WebRemoteFrameClient::sizeDidChange(WebCore::IntSize size)
+void WebRemoteFrameClient::sizeDidChange(CyberCore::IntSize size)
 {
     m_frame->updateRemoteFrameSize(size);
 }

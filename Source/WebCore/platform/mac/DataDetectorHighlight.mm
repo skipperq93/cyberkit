@@ -39,7 +39,7 @@
 #import <wtf/Seconds.h>
 #import <pal/mac/DataDetectorsSoftLink.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 constexpr Seconds highlightFadeAnimationDuration = 300_ms;
 constexpr double highlightFadeAnimationFrameRate = 30;
@@ -211,6 +211,6 @@ bool areEquivalent(const DataDetectorHighlight* a, const DataDetectorHighlight* 
     return a->type() == b->type() && a->range() == b->range();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(DATA_DETECTION) && PLATFORM(MAC)

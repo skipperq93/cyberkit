@@ -30,7 +30,7 @@
 #include <CyberScriptCore/RemoteInspectionTarget.h>
 #include <wtf/Noncopyable.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Page;
 
@@ -60,8 +60,8 @@ private:
     String m_nameOverride;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_CONTROLLABLE_TARGET(WebCore::PageDebuggable, Page);
+SPECIALIZE_TYPE_TRAITS_CONTROLLABLE_TARGET(CyberCore::PageDebuggable, Page);
 
 #endif // ENABLE(REMOTE_INSPECTOR)

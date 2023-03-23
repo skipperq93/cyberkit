@@ -21,13 +21,13 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 messages -> DownloadProxy {
-    DidStart(WebCore::ResourceRequest request, String suggestedFilename)
-    DidReceiveAuthenticationChallenge(WebCore::AuthenticationChallenge challenge, WebKit::AuthenticationChallengeIdentifier challengeID)
-    WillSendRequest(WebCore::ResourceRequest redirectRequest, WebCore::ResourceResponse redirectResponse))
-    DecideDestinationWithSuggestedFilename(WebCore::ResourceResponse response, String suggestedFilename) -> (String filename, WebKit::SandboxExtension::Handle handle, enum:bool WebKit::AllowOverwrite allowOverwrite)
+    DidStart(CyberCore::ResourceRequest request, String suggestedFilename)
+    DidReceiveAuthenticationChallenge(CyberCore::AuthenticationChallenge challenge, WebKit::AuthenticationChallengeIdentifier challengeID)
+    WillSendRequest(CyberCore::ResourceRequest redirectRequest, CyberCore::ResourceResponse redirectResponse))
+    DecideDestinationWithSuggestedFilename(CyberCore::ResourceResponse response, String suggestedFilename) -> (String filename, WebKit::SandboxExtension::Handle handle, enum:bool WebKit::AllowOverwrite allowOverwrite)
 
     DidReceiveData(uint64_t bytesWritten, uint64_t totalBytesWritten, uint64_t totalBytesExpectedToWrite)
     DidCreateDestination(String path)
     DidFinish()
-    DidFail(WebCore::ResourceError error, IPC::DataReference resumeData)
+    DidFail(CyberCore::ResourceError error, IPC::DataReference resumeData)
 }

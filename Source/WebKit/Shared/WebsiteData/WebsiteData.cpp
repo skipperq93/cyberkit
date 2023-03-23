@@ -120,14 +120,14 @@ WebsiteData WebsiteData::isolatedCopy() &&
     };
 }
 
-WebsiteData::Entry::Entry(WebCore::SecurityOriginData inOrigin, WebsiteDataType inType, uint64_t inSize)
+WebsiteData::Entry::Entry(CyberCore::SecurityOriginData inOrigin, WebsiteDataType inType, uint64_t inSize)
     : origin(inOrigin)
     , type(inType)
     , size(inSize)
 {
 }
 
-WebsiteData::Entry::Entry(WebCore::SecurityOriginData&& inOrigin, OptionSet<WebsiteDataType>&& inType, uint64_t inSize)
+WebsiteData::Entry::Entry(CyberCore::SecurityOriginData&& inOrigin, OptionSet<WebsiteDataType>&& inType, uint64_t inSize)
     : origin(WTFMove(inOrigin))
     , size(inSize)
 {

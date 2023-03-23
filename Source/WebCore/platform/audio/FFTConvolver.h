@@ -32,7 +32,7 @@
 #include "AudioArray.h"
 #include "FFTFrame.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class FFTConvolver final {
     WTF_MAKE_FAST_ALLOCATED;
@@ -68,6 +68,6 @@ private:
     AudioFloatArray m_lastOverlapBuffer;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // FFTConvolver_h

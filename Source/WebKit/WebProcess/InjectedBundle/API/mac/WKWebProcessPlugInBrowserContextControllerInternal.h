@@ -28,7 +28,7 @@
 #import "WKObject.h"
 #import "WebPage.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 template<> struct WrapperTraits<WebPage> {
     using WrapperClass = WKWebProcessPlugInBrowserContextController;

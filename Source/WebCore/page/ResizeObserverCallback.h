@@ -29,7 +29,7 @@
 #include "CallbackResult.h"
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ResizeObserver;
 class ResizeObserverEntry;
@@ -43,4 +43,4 @@ public:
     virtual CallbackResult<void> handleEvent(ResizeObserver&, const Vector<Ref<ResizeObserverEntry>>&, ResizeObserver&) = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

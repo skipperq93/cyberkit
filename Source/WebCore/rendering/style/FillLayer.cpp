@@ -25,7 +25,7 @@
 #include <wtf/PointerComparison.h>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct SameSizeAsFillLayer : RefCounted<SameSizeAsFillLayer> {
     RefPtr<FillLayer> next;
@@ -421,4 +421,4 @@ TextStream& operator<<(TextStream& ts, const FillLayer& layer)
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

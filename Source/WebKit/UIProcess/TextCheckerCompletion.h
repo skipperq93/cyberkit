@@ -37,18 +37,18 @@ class WebPageProxy;
 
 class TextCheckerCompletion : public RefCounted<TextCheckerCompletion> {
 public:
-    static Ref<TextCheckerCompletion> create(TextCheckerRequestID, const WebCore::TextCheckingRequestData&, WebPageProxy*);
+    static Ref<TextCheckerCompletion> create(TextCheckerRequestID, const CyberCore::TextCheckingRequestData&, WebPageProxy*);
 
-    const WebCore::TextCheckingRequestData& textCheckingRequestData() const;
+    const CyberCore::TextCheckingRequestData& textCheckingRequestData() const;
     SpellDocumentTag spellDocumentTag();
-    void didFinishCheckingText(const Vector<WebCore::TextCheckingResult>&) const;
+    void didFinishCheckingText(const Vector<CyberCore::TextCheckingResult>&) const;
     void didCancelCheckingText() const;
 
 private:
-    TextCheckerCompletion(TextCheckerRequestID, const WebCore::TextCheckingRequestData&, WebPageProxy*);
+    TextCheckerCompletion(TextCheckerRequestID, const CyberCore::TextCheckingRequestData&, WebPageProxy*);
 
     const TextCheckerRequestID m_requestID;
-    const WebCore::TextCheckingRequestData m_requestData;
+    const CyberCore::TextCheckingRequestData m_requestData;
     WebPageProxy* m_page;
 };
 

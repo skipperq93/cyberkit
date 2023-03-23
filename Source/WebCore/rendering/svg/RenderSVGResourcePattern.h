@@ -30,7 +30,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/HashMap.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct PatternData {
     WTF_MAKE_FAST_ALLOCATED;
@@ -71,6 +71,6 @@ private:
     bool m_shouldCollectPatternAttributes { true };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_SVG_RESOURCE(RenderSVGResourcePattern, PatternResourceType)

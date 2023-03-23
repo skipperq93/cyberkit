@@ -39,13 +39,13 @@ namespace WebKit {
 class NetworkRTCTCPSocketCocoa final : public NetworkRTCProvider::Socket {
     WTF_MAKE_FAST_ALLOCATED;
 public:
-    static std::unique_ptr<NetworkRTCProvider::Socket> createClientTCPSocket(WebCore::LibWebRTCSocketIdentifier, NetworkRTCProvider&, const rtc::SocketAddress&, int options, const String& attributedBundleIdentifier, bool isFirstParty, bool isRelayDisabled, const WebCore::RegistrableDomain&, Ref<IPC::Connection>&&);
+    static std::unique_ptr<NetworkRTCProvider::Socket> createClientTCPSocket(CyberCore::LibWebRTCSocketIdentifier, NetworkRTCProvider&, const rtc::SocketAddress&, int options, const String& attributedBundleIdentifier, bool isFirstParty, bool isRelayDisabled, const CyberCore::RegistrableDomain&, Ref<IPC::Connection>&&);
 
-    NetworkRTCTCPSocketCocoa(WebCore::LibWebRTCSocketIdentifier, NetworkRTCProvider&, const rtc::SocketAddress&, int options, const String& attributedBundleIdentifier, bool isFirstParty, bool isRelayDisabled, const WebCore::RegistrableDomain&, Ref<IPC::Connection>&&);
+    NetworkRTCTCPSocketCocoa(CyberCore::LibWebRTCSocketIdentifier, NetworkRTCProvider&, const rtc::SocketAddress&, int options, const String& attributedBundleIdentifier, bool isFirstParty, bool isRelayDisabled, const CyberCore::RegistrableDomain&, Ref<IPC::Connection>&&);
 
 private:
     // NetworkRTCProvider::Socket.
-    WebCore::LibWebRTCSocketIdentifier identifier() const final { return m_identifier; }
+    CyberCore::LibWebRTCSocketIdentifier identifier() const final { return m_identifier; }
     Type type() const final { return Type::ClientTCP; }
     void close() final;
     void setOption(int option, int value) final;
@@ -53,7 +53,7 @@ private:
 
     Vector<uint8_t> createMessageBuffer(const uint8_t*, size_t);
 
-    WebCore::LibWebRTCSocketIdentifier m_identifier;
+    CyberCore::LibWebRTCSocketIdentifier m_identifier;
     NetworkRTCProvider& m_rtcProvider;
     Ref<IPC::Connection> m_connection;
     RetainPtr<nw_connection_t> m_nwConnection;

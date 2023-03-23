@@ -30,7 +30,7 @@
 
 #import "ArgumentCoders.h"
 #import "TextCheckingControllerProxyMessages.h"
-#import "WebCoreArgumentCoders.h"
+#import "CyberCoreArgumentCoders.h"
 #import "WebPage.h"
 #import "WebProcess.h"
 #import <CyberCore/AttributedString.h>
@@ -52,8 +52,8 @@ typedef NS_ENUM(NSInteger, NSSpellingState) {
 };
 #endif
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 TextCheckingControllerProxy::TextCheckingControllerProxy(WebPage& page)
     : m_page(page)
@@ -94,7 +94,7 @@ std::optional<TextCheckingControllerProxy::RangeAndOffset> TextCheckingControlle
     return { { resolveCharacterRange(scope, adjustedSelectionCharacterRange), adjustedSelectionCharacterRange.location } };
 }
 
-void TextCheckingControllerProxy::replaceRelativeToSelection(const WebCore::AttributedString& annotatedString, int64_t selectionOffset, uint64_t length, uint64_t relativeReplacementLocation, uint64_t relativeReplacementLength)
+void TextCheckingControllerProxy::replaceRelativeToSelection(const CyberCore::AttributedString& annotatedString, int64_t selectionOffset, uint64_t length, uint64_t relativeReplacementLocation, uint64_t relativeReplacementLength)
 {
     Ref frame = CheckedRef(m_page.corePage()->focusController())->focusedOrMainFrame();
     auto& frameSelection = frame->selection();
@@ -130,8 +130,8 @@ void TextCheckingControllerProxy::replaceRelativeToSelection(const WebCore::Attr
         [attrs enumerateKeysAndObjectsUsingBlock:^(NSAttributedStringKey key, id value, BOOL *stop) {
             if (![value isKindOfClass:[NSString class]])
                 return;
-            markers.addMarker(attributeCoreRange, WebCore::DocumentMarker::PlatformTextChecking,
-                WebCore::DocumentMarker::PlatformTextCheckingData { key, (NSString *)value });
+            markers.addMarker(attributeCoreRange, CyberCore::DocumentMarker::PlatformTextChecking,
+                CyberCore::DocumentMarker::PlatformTextCheckingData { key, (NSString *)value });
 
             // FIXME: Switch to constants after rdar://problem/48914153 is resolved.
             if ([key isEqualToString:@"NSSpellingState"]) {
@@ -154,16 +154,16 @@ void TextCheckingControllerProxy::removeAnnotationRelativeToSelection(const Stri
         return;
 
     auto removeCoreSpellingMarkers = annotation == "NSSpellingState"_s;
-    auto types = removeCoreSpellingMarkers ? relevantMarkerTypes() : WebCore::DocumentMarker::PlatformTextChecking;
+    auto types = removeCoreSpellingMarkers ? relevantMarkerTypes() : CyberCore::DocumentMarker::PlatformTextChecking;
     RefPtr document = CheckedRef(m_page.corePage()->focusController())->focusedOrMainFrame().document();
     document->markers().filterMarkers(rangeAndOffset->range, [&] (const DocumentMarker& marker) {
-        if (!std::holds_alternative<WebCore::DocumentMarker::PlatformTextCheckingData>(marker.data()))
+        if (!std::holds_alternative<CyberCore::DocumentMarker::PlatformTextCheckingData>(marker.data()))
             return FilterMarkerResult::Keep;
-        return std::get<WebCore::DocumentMarker::PlatformTextCheckingData>(marker.data()).key == annotation ? FilterMarkerResult::Remove : FilterMarkerResult::Keep;
+        return std::get<CyberCore::DocumentMarker::PlatformTextCheckingData>(marker.data()).key == annotation ? FilterMarkerResult::Remove : FilterMarkerResult::Keep;
     }, types);
 }
 
-WebCore::AttributedString TextCheckingControllerProxy::annotatedSubstringBetweenPositions(const WebCore::VisiblePosition& start, const WebCore::VisiblePosition& end)
+CyberCore::AttributedString TextCheckingControllerProxy::annotatedSubstringBetweenPositions(const CyberCore::VisiblePosition& start, const CyberCore::VisiblePosition& end)
 {
     auto entireRange = makeSimpleRange(start, end);
     if (!entireRange)
@@ -191,6 +191,6 @@ WebCore::AttributedString TextCheckingControllerProxy::annotatedSubstringBetween
     return { { WTFMove(string) } };
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(PLATFORM_DRIVEN_TEXT_CHECKING)

@@ -35,7 +35,7 @@
 #include <wtf/Ref.h>
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DocumentLoader;
 class DocumentLoadTiming;
@@ -102,4 +102,4 @@ private:
     mutable unsigned long long m_loadEventEnd { 0 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

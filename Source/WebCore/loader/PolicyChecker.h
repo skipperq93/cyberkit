@@ -44,7 +44,7 @@ template<typename> class CompletionHandler;
 class CompletionHandlerCallingScope;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class DocumentLoader;
 class FormState;
@@ -110,4 +110,4 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore

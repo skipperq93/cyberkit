@@ -29,7 +29,7 @@
 #include <wtf/URL.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class UserContentURLPattern {
 public:
@@ -98,4 +98,4 @@ private:
     bool m_matchSubdomains { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

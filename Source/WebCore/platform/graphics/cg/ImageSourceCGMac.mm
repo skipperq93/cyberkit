@@ -34,7 +34,7 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 String MIMETypeForImageType(const String& uti)
 {
@@ -48,4 +48,4 @@ ALLOW_DEPRECATED_DECLARATIONS_BEGIN
 ALLOW_DEPRECATED_DECLARATIONS_END
 }
 
-} // namespace WebCore
+} // namespace CyberCore

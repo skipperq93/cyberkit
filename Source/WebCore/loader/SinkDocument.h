@@ -27,7 +27,7 @@
 
 #include "HTMLDocument.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SinkDocument final : public HTMLDocument {
     WTF_MAKE_ISO_ALLOCATED(SinkDocument);
@@ -45,4 +45,4 @@ private:
     Ref<DocumentParser> createParser() final;
 };
 
-}; // namespace WebCore
+}; // namespace CyberCore

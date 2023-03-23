@@ -21,7 +21,7 @@ msgstr ""
 "X-Generator: Poedit 3.1.1\n"
 
 # Filen finns på https://github.com/WebKit/WebKit/blob/
-# main/Source/WebCore/platform/LocalizedStrings.cpp
+# main/Source/CyberCore/platform/LocalizedStrings.cpp
 #: ../LocalizedStringsGtk.cpp:43
 msgid "Copy Link Loc_ation"
 msgstr "Kopiera länkens ad_ress"
@@ -140,7 +140,7 @@ msgid_plural "Use no more than %d characters"
 msgstr[0] "Använd inte fler än ett tecken"
 msgstr[1] "Använd inte fler än %d tecken"
 
-# Filen finns på https://github.com/WebKit/WebKit/blob/main/Source/WebCore/platform/LocalizedStrings.cpp
+# Filen finns på https://github.com/WebKit/WebKit/blob/main/Source/CyberCore/platform/LocalizedStrings.cpp
 #: ../../LocalizedStrings.cpp:162
 msgctxt "alt text for <input> elements with no alt, title, or value"
 msgid "Submit"

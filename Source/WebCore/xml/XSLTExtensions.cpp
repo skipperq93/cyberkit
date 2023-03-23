@@ -39,7 +39,7 @@
 #include "SoftLinkLibxslt.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 // FIXME: This code is taken from libexslt 1.1.11; should sync with newer versions.
 static void exsltNodeSetFunction(xmlXPathParserContextPtr ctxt, int nargs)

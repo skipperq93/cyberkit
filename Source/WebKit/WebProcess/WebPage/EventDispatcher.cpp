@@ -53,11 +53,11 @@
 #include <CyberCore/ThreadedScrollingTree.h>
 #endif
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 EventDispatcher::EventDispatcher()
-    : m_queue(WorkQueue::create("com.apple.WebKit.EventDispatcher", WorkQueue::QOS::UserInteractive))
+    : m_queue(WorkQueue::create("com.apple.CyberKit.EventDispatcher", WorkQueue::QOS::UserInteractive))
     , m_recentWheelEventDeltaFilter(WheelEventDeltaFilter::create())
 #if ENABLE(MOMENTUM_EVENT_DISPATCHER)
     , m_momentumEventDispatcher(WTF::makeUnique<MomentumEventDispatcher>(*this))
@@ -101,7 +101,7 @@ void EventDispatcher::initializeConnection(IPC::Connection& connection)
 
 void EventDispatcher::internalWheelEvent(PageIdentifier pageID, const WebWheelEvent& wheelEvent, RectEdges<bool> rubberBandableEdges, WheelEventOrigin wheelEventOrigin)
 {
-    auto processingSteps = OptionSet<WebCore::WheelEventProcessingSteps> { WheelEventProcessingSteps::MainThreadForScrolling, WheelEventProcessingSteps::MainThreadForBlockingDOMEventDispatch };
+    auto processingSteps = OptionSet<CyberCore::WheelEventProcessingSteps> { WheelEventProcessingSteps::MainThreadForScrolling, WheelEventProcessingSteps::MainThreadForBlockingDOMEventDispatch };
 
     ensureOnMainRunLoop([pageID] {
         if (auto* webPage = WebProcess::singleton().webPage(pageID)) {
@@ -131,7 +131,7 @@ void EventDispatcher::internalWheelEvent(PageIdentifier pageID, const WebWheelEv
         }
         
         // FIXME: It's pretty horrible that we're updating the back/forward state here.
-        // WebCore should always know the current state and know when it changes so the
+        // CyberCore should always know the current state and know when it changes so the
         // scrolling tree can be notified.
         // We only need to do this at the beginning of the gesture.
         if (platformWheelEvent.phase() == PlatformWheelEventPhase::Began)
@@ -190,7 +190,7 @@ void EventDispatcher::wheelEvent(PageIdentifier pageID, const WebWheelEvent& whe
 }
 
 #if ENABLE(MAC_GESTURE_EVENTS)
-void EventDispatcher::gestureEvent(PageIdentifier pageID, const WebKit::WebGestureEvent& gestureEvent)
+void EventDispatcher::gestureEvent(PageIdentifier pageID, const CyberKit::WebGestureEvent& gestureEvent)
 {
     RunLoop::main().dispatch([this, pageID, gestureEvent] {
         dispatchGestureEvent(pageID, gestureEvent);
@@ -255,7 +255,7 @@ void EventDispatcher::dispatchTouchEvents()
 }
 #endif
 
-void EventDispatcher::dispatchWheelEventViaMainThread(WebCore::PageIdentifier pageID, const WebWheelEvent& wheelEvent, OptionSet<WheelEventProcessingSteps> processingSteps, WheelEventOrigin wheelEventOrigin)
+void EventDispatcher::dispatchWheelEventViaMainThread(CyberCore::PageIdentifier pageID, const WebWheelEvent& wheelEvent, OptionSet<WheelEventProcessingSteps> processingSteps, WheelEventOrigin wheelEventOrigin)
 {
     ASSERT(!RunLoop::isMain());
     RunLoop::main().dispatch([this, pageID, wheelEvent, wheelEventOrigin, steps = processingSteps - WheelEventProcessingSteps::ScrollingThread] {
@@ -342,17 +342,17 @@ void EventDispatcher::setScrollingAccelerationCurve(PageIdentifier pageID, std::
     m_momentumEventDispatcher->setScrollingAccelerationCurve(pageID, curve);
 }
 
-void EventDispatcher::handleSyntheticWheelEvent(WebCore::PageIdentifier pageIdentifier, const WebWheelEvent& event, WebCore::RectEdges<bool> rubberBandableEdges)
+void EventDispatcher::handleSyntheticWheelEvent(CyberCore::PageIdentifier pageIdentifier, const WebWheelEvent& event, CyberCore::RectEdges<bool> rubberBandableEdges)
 {
     internalWheelEvent(pageIdentifier, event, rubberBandableEdges, WheelEventOrigin::MomentumEventDispatcher);
 }
 
-void EventDispatcher::startDisplayDidRefreshCallbacks(WebCore::PlatformDisplayID displayID)
+void EventDispatcher::startDisplayDidRefreshCallbacks(CyberCore::PlatformDisplayID displayID)
 {
-    WebProcess::singleton().parentProcessConnection()->send(Messages::WebProcessProxy::StartDisplayLink(m_observerID, displayID, WebCore::FullSpeedFramesPerSecond), 0);
+    WebProcess::singleton().parentProcessConnection()->send(Messages::WebProcessProxy::StartDisplayLink(m_observerID, displayID, CyberCore::FullSpeedFramesPerSecond), 0);
 }
 
-void EventDispatcher::stopDisplayDidRefreshCallbacks(WebCore::PlatformDisplayID displayID)
+void EventDispatcher::stopDisplayDidRefreshCallbacks(CyberCore::PlatformDisplayID displayID)
 {
     WebProcess::singleton().parentProcessConnection()->send(Messages::WebProcessProxy::StopDisplayLink(m_observerID, displayID), 0);
 }
@@ -368,4 +368,4 @@ void EventDispatcher::flushMomentumEventLoggingSoon()
 #endif
 #endif // ENABLE(MOMENTUM_EVENT_DISPATCHER)
 
-} // namespace WebKit
+} // namespace CyberKit

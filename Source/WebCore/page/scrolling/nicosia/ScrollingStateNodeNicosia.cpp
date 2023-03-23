@@ -31,7 +31,7 @@
 #include "NicosiaPlatformLayer.h"
 #include "PlatformLayer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 void LayerRepresentation::retainPlatformLayer(void* typelessLayer)
 {
@@ -55,6 +55,6 @@ void* LayerRepresentation::makePlatformLayerTypeless(PlatformLayer* layer)
     return layer;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ASYNC_SCROLLING) && USE(NICOSIA)

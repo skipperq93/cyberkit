@@ -28,8 +28,8 @@
 
 @class NSURL;
 
-namespace WebCore {
+namespace CyberCore {
 
 WEBCORE_EXPORT NSURL *URLByCanonicalizingURL(NSURL *);
 
-} // namespace WebCore
+} // namespace CyberCore

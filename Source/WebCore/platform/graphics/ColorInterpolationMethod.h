@@ -36,7 +36,7 @@ namespace WTF {
 class TextStream;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class HueInterpolationMethod : uint8_t {
     Shorter,
@@ -70,47 +70,47 @@ inline constexpr bool hasHueInterpolationMethod = HasHueInterpolationMethod<T>::
 struct ColorInterpolationMethod {
     struct HSL {
         static constexpr auto interpolationColorSpace = ColorInterpolationColorSpace::HSL;
-        using ColorType = WebCore::HSLA<float>;
+        using ColorType = CyberCore::HSLA<float>;
         HueInterpolationMethod hueInterpolationMethod = HueInterpolationMethod::Shorter;
     };
     struct HWB {
         static constexpr auto interpolationColorSpace = ColorInterpolationColorSpace::HWB;
-        using ColorType = WebCore::HWBA<float>;
+        using ColorType = CyberCore::HWBA<float>;
         HueInterpolationMethod hueInterpolationMethod = HueInterpolationMethod::Shorter;
     };
     struct LCH {
         static constexpr auto interpolationColorSpace = ColorInterpolationColorSpace::LCH;
-        using ColorType = WebCore::LCHA<float>;
+        using ColorType = CyberCore::LCHA<float>;
         HueInterpolationMethod hueInterpolationMethod = HueInterpolationMethod::Shorter;
     };
     struct Lab {
         static constexpr auto interpolationColorSpace = ColorInterpolationColorSpace::Lab;
-        using ColorType = WebCore::Lab<float>;
+        using ColorType = CyberCore::Lab<float>;
     };
     struct OKLCH {
         static constexpr auto interpolationColorSpace = ColorInterpolationColorSpace::OKLCH;
-        using ColorType = WebCore::OKLCHA<float>;
+        using ColorType = CyberCore::OKLCHA<float>;
         HueInterpolationMethod hueInterpolationMethod = HueInterpolationMethod::Shorter;
     };
     struct OKLab {
         static constexpr auto interpolationColorSpace = ColorInterpolationColorSpace::OKLab;
-        using ColorType = WebCore::OKLab<float>;
+        using ColorType = CyberCore::OKLab<float>;
     };
     struct SRGB {
         static constexpr auto interpolationColorSpace = ColorInterpolationColorSpace::SRGB;
-        using ColorType = WebCore::ExtendedSRGBA<float>;
+        using ColorType = CyberCore::ExtendedSRGBA<float>;
     };
     struct SRGBLinear {
         static constexpr auto interpolationColorSpace = ColorInterpolationColorSpace::SRGBLinear;
-        using ColorType = WebCore::ExtendedLinearSRGBA<float>;
+        using ColorType = CyberCore::ExtendedLinearSRGBA<float>;
     };
     struct XYZD50 {
         static constexpr auto interpolationColorSpace = ColorInterpolationColorSpace::XYZD50;
-        using ColorType = WebCore::XYZA<float, WhitePoint::D50>;
+        using ColorType = CyberCore::XYZA<float, WhitePoint::D50>;
     };
     struct XYZD65 {
         static constexpr auto interpolationColorSpace = ColorInterpolationColorSpace::XYZD65;
-        using ColorType = WebCore::XYZA<float, WhitePoint::D65>;
+        using ColorType = CyberCore::XYZA<float, WhitePoint::D65>;
     };
 
     std::variant<HSL, HWB, LCH, Lab, OKLCH, OKLab, SRGB, SRGBLinear, XYZD50, XYZD65> colorSpace;
@@ -196,29 +196,29 @@ WTF::TextStream& operator<<(WTF::TextStream&, const ColorInterpolationMethod&);
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::HueInterpolationMethod> {
+template<> struct EnumTraits<CyberCore::HueInterpolationMethod> {
     using values = EnumValues<
-        WebCore::HueInterpolationMethod,
-        WebCore::HueInterpolationMethod::Shorter,
-        WebCore::HueInterpolationMethod::Longer,
-        WebCore::HueInterpolationMethod::Increasing,
-        WebCore::HueInterpolationMethod::Decreasing
+        CyberCore::HueInterpolationMethod,
+        CyberCore::HueInterpolationMethod::Shorter,
+        CyberCore::HueInterpolationMethod::Longer,
+        CyberCore::HueInterpolationMethod::Increasing,
+        CyberCore::HueInterpolationMethod::Decreasing
     >;
 };
 
-template<> struct EnumTraits<WebCore::ColorInterpolationColorSpace> {
+template<> struct EnumTraits<CyberCore::ColorInterpolationColorSpace> {
     using values = EnumValues<
-        WebCore::ColorInterpolationColorSpace,
-        WebCore::ColorInterpolationColorSpace::HSL,
-        WebCore::ColorInterpolationColorSpace::HWB,
-        WebCore::ColorInterpolationColorSpace::LCH,
-        WebCore::ColorInterpolationColorSpace::Lab,
-        WebCore::ColorInterpolationColorSpace::OKLCH,
-        WebCore::ColorInterpolationColorSpace::OKLab,
-        WebCore::ColorInterpolationColorSpace::SRGB,
-        WebCore::ColorInterpolationColorSpace::SRGBLinear,
-        WebCore::ColorInterpolationColorSpace::XYZD50,
-        WebCore::ColorInterpolationColorSpace::XYZD65
+        CyberCore::ColorInterpolationColorSpace,
+        CyberCore::ColorInterpolationColorSpace::HSL,
+        CyberCore::ColorInterpolationColorSpace::HWB,
+        CyberCore::ColorInterpolationColorSpace::LCH,
+        CyberCore::ColorInterpolationColorSpace::Lab,
+        CyberCore::ColorInterpolationColorSpace::OKLCH,
+        CyberCore::ColorInterpolationColorSpace::OKLab,
+        CyberCore::ColorInterpolationColorSpace::SRGB,
+        CyberCore::ColorInterpolationColorSpace::SRGBLinear,
+        CyberCore::ColorInterpolationColorSpace::XYZD50,
+        CyberCore::ColorInterpolationColorSpace::XYZD65
     >;
 };
 

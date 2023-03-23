@@ -32,7 +32,7 @@
 
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 CGSubimageCacheWithTimer* CGSubimageCacheWithTimer::s_cache;
 
@@ -168,7 +168,7 @@ bool CGSubimageCacheWithTimer::subimageCacheExists()
     return !!s_cache;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // CACHE_SUBIMAGES
 

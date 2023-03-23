@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -17,16 +17,16 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitDOMHTMLCanvasElementPrivate_h
-#define WebKitDOMHTMLCanvasElementPrivate_h
+#ifndef CyberKitDOMHTMLCanvasElementPrivate_h
+#define CyberKitDOMHTMLCanvasElementPrivate_h
 
 #include <CyberCore/HTMLCanvasElement.h>
-#include <webkitdom/WebKitDOMHTMLCanvasElement.h>
+#include <webkitdom/CyberKitDOMHTMLCanvasElement.h>
 
-namespace WebKit {
-WebKitDOMHTMLCanvasElement* wrapHTMLCanvasElement(WebCore::HTMLCanvasElement*);
-WebKitDOMHTMLCanvasElement* kit(WebCore::HTMLCanvasElement*);
-WebCore::HTMLCanvasElement* core(WebKitDOMHTMLCanvasElement*);
-} // namespace WebKit
+namespace CyberKit {
+CyberKitDOMHTMLCanvasElement* wrapHTMLCanvasElement(CyberCore::HTMLCanvasElement*);
+CyberKitDOMHTMLCanvasElement* kit(CyberCore::HTMLCanvasElement*);
+CyberCore::HTMLCanvasElement* core(CyberKitDOMHTMLCanvasElement*);
+} // namespace CyberKit
 
-#endif /* WebKitDOMHTMLCanvasElementPrivate_h */
+#endif /* CyberKitDOMHTMLCanvasElementPrivate_h */

@@ -30,7 +30,7 @@
 #include "FloatPoint.h"
 #include "Path.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class PathTraversalState {
 public:

@@ -131,15 +131,15 @@ static bool subFrameReceivedScriptSource = false;
 
 static void cleanUpInAppBrowserPrivacyTestSettings()
 {
-    WebCore::clearApplicationBundleIdentifierTestingOverride();
-    WebCore::setApplicationBundleIdentifier("com.apple.WebKit.TestWebKitAPI"_s);
+    CyberCore::clearApplicationBundleIdentifierTestingOverride();
+    CyberCore::setApplicationBundleIdentifier("com.apple.WebKit.TestWebKitAPI"_s);
 }
 
 static void initializeInAppBrowserPrivacyTestSettings()
 {
     WTF::initializeMainThread();
-    WebCore::clearApplicationBundleIdentifierTestingOverride();
-    WebCore::setApplicationBundleIdentifier("inAppBrowserPrivacyTestIdentifier"_s);
+    CyberCore::clearApplicationBundleIdentifierTestingOverride();
+    CyberCore::setApplicationBundleIdentifier("inAppBrowserPrivacyTestIdentifier"_s);
 }
 
 TEST(InAppBrowserPrivacy, NonAppBoundDomainFailedUserScriptAtStart)

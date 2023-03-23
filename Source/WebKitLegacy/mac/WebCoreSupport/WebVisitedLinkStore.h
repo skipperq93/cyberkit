@@ -30,7 +30,7 @@
 #import <CyberCore/VisitedLinkStore.h>
 #import <wtf/Ref.h>
 
-class WebVisitedLinkStore final : public WebCore::VisitedLinkStore {
+class WebVisitedLinkStore final : public CyberCore::VisitedLinkStore {
 public:
     static Ref<WebVisitedLinkStore> create();
     virtual ~WebVisitedLinkStore();
@@ -44,14 +44,14 @@ public:
 private:
     WebVisitedLinkStore();
 
-    bool isLinkVisited(WebCore::Page&, WebCore::SharedStringHash, const URL& baseURL, const AtomString& attributeURL) override;
-    void addVisitedLink(WebCore::Page&, WebCore::SharedStringHash) override;
+    bool isLinkVisited(CyberCore::Page&, CyberCore::SharedStringHash, const URL& baseURL, const AtomString& attributeURL) override;
+    void addVisitedLink(CyberCore::Page&, CyberCore::SharedStringHash) override;
 
-    void populateVisitedLinksIfNeeded(WebCore::Page&);
-    void addVisitedLinkHash(WebCore::SharedStringHash);
+    void populateVisitedLinksIfNeeded(CyberCore::Page&);
+    void addVisitedLinkHash(CyberCore::SharedStringHash);
     void removeVisitedLinkHashes();
 
-    HashSet<WebCore::SharedStringHash, WebCore::SharedStringHashHash> m_visitedLinkHashes;
+    HashSet<CyberCore::SharedStringHash, CyberCore::SharedStringHashHash> m_visitedLinkHashes;
     bool m_visitedLinksPopulated;
 };
 

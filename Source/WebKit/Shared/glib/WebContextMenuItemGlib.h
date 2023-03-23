@@ -39,7 +39,7 @@ namespace WebKit {
 class WebContextMenuItemGlib final : public WebContextMenuItemData {
     WTF_MAKE_FAST_ALLOCATED;
 public:
-    WebContextMenuItemGlib(WebCore::ContextMenuItemType, WebCore::ContextMenuAction, const String& title, bool enabled = true, bool checked = false);
+    WebContextMenuItemGlib(CyberCore::ContextMenuItemType, CyberCore::ContextMenuAction, const String& title, bool enabled = true, bool checked = false);
     WebContextMenuItemGlib(const WebContextMenuItemData&);
     WebContextMenuItemGlib(const WebContextMenuItemGlib&, Vector<WebContextMenuItemGlib>&& submenu);
     WebContextMenuItemGlib(GAction*, const String& title, GVariant* target = nullptr);
@@ -49,7 +49,7 @@ public:
     ~WebContextMenuItemGlib();
 
     // We don't use the SubmenuType internally, so check if we have submenu items.
-    WebCore::ContextMenuItemType type() const { return m_submenuItems.isEmpty() ? WebContextMenuItemData::type() : WebCore::SubmenuType; }
+    CyberCore::ContextMenuItemType type() const { return m_submenuItems.isEmpty() ? WebContextMenuItemData::type() : CyberCore::SubmenuType; }
     GAction* gAction() const { return m_gAction.get(); }
     GVariant* gActionTarget() const { return m_gActionTarget.get(); }
     const Vector<WebContextMenuItemGlib>& submenuItems() const { return m_submenuItems; }

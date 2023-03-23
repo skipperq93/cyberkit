@@ -25,7 +25,7 @@
 
 typedef struct _WebKitColorChooserRequest WebKitColorChooserRequest;
 
-namespace WebCore {
+namespace CyberCore {
 class Color;
 }
 
@@ -33,22 +33,22 @@ namespace WebKit {
 
 class WebKitColorChooser final : public WebColorPickerGtk {
 public:
-    static Ref<WebKitColorChooser> create(WebPageProxy&, const WebCore::Color&, const WebCore::IntRect&);
+    static Ref<WebKitColorChooser> create(WebPageProxy&, const CyberCore::Color&, const CyberCore::IntRect&);
     virtual ~WebKitColorChooser();
 
-    const WebCore::IntRect& elementRect() const { return m_elementRect; }
+    const CyberCore::IntRect& elementRect() const { return m_elementRect; }
 
 private:
-    WebKitColorChooser(WebPageProxy&, const WebCore::Color&, const WebCore::IntRect&);
+    WebKitColorChooser(WebPageProxy&, const CyberCore::Color&, const CyberCore::IntRect&);
 
     void endPicker() override;
-    void showColorPicker(const WebCore::Color&) override;
+    void showColorPicker(const CyberCore::Color&) override;
 
     static void colorChooserRequestFinished(WebKitColorChooserRequest*, WebKitColorChooser*);
     static void colorChooserRequestRGBAChanged(WebKitColorChooserRequest*, GParamSpec*, WebKitColorChooser*);
 
     GRefPtr<WebKitColorChooserRequest> m_request;
-    WebCore::IntRect m_elementRect;
+    CyberCore::IntRect m_elementRect;
 };
 
 } // namespace WebKit

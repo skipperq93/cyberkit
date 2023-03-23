@@ -26,7 +26,7 @@
 #include "SVGURIReference.h"
 #include "SharedStringHash.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMTokenList;
 
@@ -74,4 +74,4 @@ private:
     std::unique_ptr<DOMTokenList> m_relList;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

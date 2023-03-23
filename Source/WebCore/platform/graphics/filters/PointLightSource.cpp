@@ -36,7 +36,7 @@
 #include "FilterImage.h"
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<PointLightSource> PointLightSource::create(const FloatPoint3D& position)
 {
@@ -102,4 +102,4 @@ TextStream& PointLightSource::externalRepresentation(TextStream& ts) const
     return ts;
 }
 
-}; // namespace WebCore
+}; // namespace CyberCore

@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -17,16 +17,16 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitDOMHTMLParamElementPrivate_h
-#define WebKitDOMHTMLParamElementPrivate_h
+#ifndef CyberKitDOMHTMLParamElementPrivate_h
+#define CyberKitDOMHTMLParamElementPrivate_h
 
 #include <CyberCore/HTMLParamElement.h>
-#include <webkitdom/WebKitDOMHTMLParamElement.h>
+#include <webkitdom/CyberKitDOMHTMLParamElement.h>
 
-namespace WebKit {
-WebKitDOMHTMLParamElement* wrapHTMLParamElement(WebCore::HTMLParamElement*);
-WebKitDOMHTMLParamElement* kit(WebCore::HTMLParamElement*);
-WebCore::HTMLParamElement* core(WebKitDOMHTMLParamElement*);
-} // namespace WebKit
+namespace CyberKit {
+CyberKitDOMHTMLParamElement* wrapHTMLParamElement(CyberCore::HTMLParamElement*);
+CyberKitDOMHTMLParamElement* kit(CyberCore::HTMLParamElement*);
+CyberCore::HTMLParamElement* core(CyberKitDOMHTMLParamElement*);
+} // namespace CyberKit
 
-#endif /* WebKitDOMHTMLParamElementPrivate_h */
+#endif /* CyberKitDOMHTMLParamElementPrivate_h */

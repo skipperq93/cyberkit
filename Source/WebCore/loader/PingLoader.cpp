@@ -60,7 +60,7 @@
 #include "ViolationReportType.h"
 #include <wtf/text/CString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 #if ENABLE(CONTENT_EXTENSIONS)
 
@@ -263,4 +263,4 @@ String PingLoader::sanitizeURLForReport(const URL& url)
     return sanitizedURL.string();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

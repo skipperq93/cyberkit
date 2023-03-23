@@ -34,7 +34,7 @@
 #include "WorkerOptions.h"
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CacheStorageProvider;
 class Page;
@@ -97,4 +97,4 @@ private:
     ClientOrigin m_clientOrigin;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

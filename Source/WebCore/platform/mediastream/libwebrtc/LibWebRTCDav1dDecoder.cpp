@@ -65,7 +65,7 @@ extern "C" int I420Copy(const uint8_t* src_y,
              int height);
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class Dav1dDecoder final : public webrtc::VideoDecoder {
     WTF_MAKE_FAST_ALLOCATED;

@@ -44,7 +44,7 @@
 #include "WebAudioSourceProvider.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<MediaStreamTrackPrivate> MediaStreamTrackPrivate::create(Ref<const Logger>&& logger, Ref<RealtimeMediaSource>&& source)
 {
@@ -303,6 +303,6 @@ WTFLogChannel& MediaStreamTrackPrivate::logChannel() const
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM)

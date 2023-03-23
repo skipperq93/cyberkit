@@ -32,7 +32,7 @@
 #include "NicosiaGCGLANGLELayer.h"
 #include "PlatformLayerDisplayDelegate.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 RefPtr<GraphicsContextGLGBMTextureMapper> GraphicsContextGLGBMTextureMapper::create(GraphicsContextGLAttributes&& attributes)
 {
@@ -61,6 +61,6 @@ bool GraphicsContextGLGBMTextureMapper::platformInitialize()
     return GraphicsContextGLGBM::platformInitialize();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBGL) && USE(TEXTURE_MAPPER) && USE(LIBGBM)

@@ -46,7 +46,7 @@
 #import <CyberCore/SecurityOrigin.h>
 #import <CyberCore/SecurityOriginData.h>
 #import <CyberCore/SerializedScriptValue.h>
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 
 @implementation WKUserContentController
 
@@ -62,7 +62,7 @@
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainRunLoop(WKUserContentController.class, self))
+    if (CyberCoreObjCScheduleDeallocateOnMainRunLoop(WKUserContentController.class, self))
         return;
 
     _userContentControllerProxy->~WebUserContentControllerProxy();
@@ -142,7 +142,7 @@ public:
     {
     }
 
-    void didPostMessage(WebKit::WebPageProxy& page, WebKit::FrameInfoData&& frameInfoData, API::ContentWorld& world, WebCore::SerializedScriptValue& serializedScriptValue) final
+    void didPostMessage(WebKit::WebPageProxy& page, WebKit::FrameInfoData&& frameInfoData, API::ContentWorld& world, CyberCore::SerializedScriptValue& serializedScriptValue) final
     {
         @autoreleasepool {
             auto webView = page.cocoaView();
@@ -161,7 +161,7 @@ public:
         return m_supportsAsyncReply;
     }
 
-    void didPostMessageWithAsyncReply(WebKit::WebPageProxy& page, WebKit::FrameInfoData&& frameInfoData, API::ContentWorld& world, WebCore::SerializedScriptValue& serializedScriptValue, Function<void(API::SerializedScriptValue*, const String&)>&& replyHandler) final
+    void didPostMessageWithAsyncReply(WebKit::WebPageProxy& page, WebKit::FrameInfoData&& frameInfoData, API::ContentWorld& world, CyberCore::SerializedScriptValue& serializedScriptValue, Function<void(API::SerializedScriptValue*, const String&)>&& replyHandler) final
     {
         ASSERT(m_supportsAsyncReply);
 

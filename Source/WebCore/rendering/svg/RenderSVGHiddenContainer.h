@@ -23,7 +23,7 @@
 #if ENABLE(LAYER_BASED_SVG_ENGINE)
 #include "RenderSVGContainer.h"
 
-namespace WebCore {
+namespace CyberCore {
     
 class SVGElement;
 
@@ -57,7 +57,7 @@ private:
     void styleDidChange(StyleDifference, const RenderStyle* oldStyle) final;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderSVGHiddenContainer, isSVGHiddenContainer())
 

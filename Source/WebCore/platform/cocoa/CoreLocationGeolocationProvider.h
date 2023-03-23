@@ -32,7 +32,7 @@
 
 OBJC_CLASS WebCLLocationManager;
 
-namespace WebCore {
+namespace CyberCore {
 
 class GeolocationPositionData;
 class RegistrableDomain;
@@ -65,4 +65,4 @@ private:
 
 #endif // HAVE(CORE_LOCATION)
 
-} // namespace WebCore
+} // namespace CyberCore

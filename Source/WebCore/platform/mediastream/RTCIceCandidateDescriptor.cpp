@@ -34,7 +34,7 @@
 
 #include "RTCIceCandidateDescriptor.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<RTCIceCandidateDescriptor> RTCIceCandidateDescriptor::create(const String& candidate, const String& sdpMid, unsigned short sdpMLineIndex)
 {
@@ -50,6 +50,6 @@ RTCIceCandidateDescriptor::RTCIceCandidateDescriptor(const String& candidate, co
 
 RTCIceCandidateDescriptor::~RTCIceCandidateDescriptor() = default;
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

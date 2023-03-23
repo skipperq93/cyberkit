@@ -27,14 +27,14 @@
 
 #if ENABLE(GPU_PROCESS)
 
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include <CyberCore/ProcessIdentity.h>
 #include <wtf/MachSendRight.h>
 
 namespace WebKit {
 
 struct GPUProcessConnectionParameters {
-    WebCore::ProcessIdentity webProcessIdentity;
+    CyberCore::ProcessIdentity webProcessIdentity;
     Vector<String> overrideLanguages;
     bool isLockdownModeEnabled { false };
 #if ENABLE(IPC_TESTING_API)
@@ -67,7 +67,7 @@ struct GPUProcessConnectionParameters {
 
     static std::optional<GPUProcessConnectionParameters> decode(IPC::Decoder& decoder)
     {
-        auto webProcessIdentity = decoder.decode<WebCore::ProcessIdentity>();
+        auto webProcessIdentity = decoder.decode<CyberCore::ProcessIdentity>();
         auto overrideLanguages = decoder.decode<Vector<String>>();
         auto isLockdownModeEnabled = decoder.decode<bool>();
 #if ENABLE(IPC_TESTING_API)

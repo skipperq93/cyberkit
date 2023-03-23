@@ -48,9 +48,9 @@
 #include <CyberCore/AudioSession.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 class SpeechRecognitionRealtimeMediaSourceManager::Source
     : private RealtimeMediaSource::Observer
@@ -232,6 +232,6 @@ uint64_t SpeechRecognitionRealtimeMediaSourceManager::messageSenderDestinationID
     return 0;
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif

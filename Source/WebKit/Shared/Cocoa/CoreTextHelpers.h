@@ -36,6 +36,6 @@
 
 namespace WebKit {
 
-WebCore::CocoaFont *fontWithAttributes(NSDictionary *attributes, CGFloat size);
+CyberCore::CocoaFont *fontWithAttributes(NSDictionary *attributes, CGFloat size);
 
 }

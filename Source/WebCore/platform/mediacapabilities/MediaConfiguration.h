@@ -29,7 +29,7 @@
 #include "VideoConfiguration.h"
 #include <wtf/CrossThreadCopier.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct MediaConfiguration {
     std::optional<VideoConfiguration> video;
@@ -52,5 +52,5 @@ inline MediaConfiguration MediaConfiguration::isolatedCopy() &&
     return { crossThreadCopy(WTFMove(video)),  crossThreadCopy(WTFMove(audio)), crossThreadCopy(WTFMove(allowedMediaContainerTypes)), crossThreadCopy(WTFMove(allowedMediaCodecTypes)) };
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 

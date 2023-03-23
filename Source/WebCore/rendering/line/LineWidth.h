@@ -31,7 +31,7 @@
 
 #include "LayoutUnit.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class FloatingObject;
 class RenderBlockFlow;
@@ -104,4 +104,4 @@ private:
 
 IndentTextOrNot requiresIndent(bool isFirstLine, bool isAfterHardLineBreak, const RenderStyle&);
 
-} // namespace WebCore
+} // namespace CyberCore

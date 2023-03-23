@@ -28,7 +28,7 @@
 
 #include "Frame.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 FrameDestructionObserver::FrameDestructionObserver(Frame* frame)
     : m_frame(nullptr)

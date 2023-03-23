@@ -34,7 +34,7 @@
 
 namespace TestWebKitAPI {
 
-static void testGetAndSet(WebCore::IntSize rect)
+static void testGetAndSet(CyberCore::IntSize rect)
 {
     rect.setWidth(203);
     EXPECT_EQ(203, rect.width());
@@ -42,7 +42,7 @@ static void testGetAndSet(WebCore::IntSize rect)
     EXPECT_EQ(73, rect.height());
 }
 
-static void testEmptySize(const WebCore::IntSize& rect)
+static void testEmptySize(const CyberCore::IntSize& rect)
 {
     EXPECT_EQ(0, rect.width());
     EXPECT_EQ(0, rect.height());
@@ -52,7 +52,7 @@ static void testEmptySize(const WebCore::IntSize& rect)
 
 TEST(IntSize, DefaultConstruction)
 {
-    WebCore::IntSize test;
+    CyberCore::IntSize test;
 
     testEmptySize(test);
 
@@ -61,7 +61,7 @@ TEST(IntSize, DefaultConstruction)
 
 TEST(IntSize, ValueConstruction)
 {
-    WebCore::IntSize test(100, 200);
+    CyberCore::IntSize test(100, 200);
 
     EXPECT_EQ(100, test.width());
     EXPECT_EQ(200, test.height());
@@ -74,8 +74,8 @@ TEST(IntSize, ValueConstruction)
 
 TEST(IntSize, FloatSizeConstruction)
 {
-    WebCore::FloatSize size(1024.2, 767.8);
-    WebCore::IntSize test(size);
+    CyberCore::FloatSize size(1024.2, 767.8);
+    CyberCore::IntSize test(size);
 
     EXPECT_EQ(1024, test.width());
     EXPECT_EQ(767, test.height());
@@ -91,7 +91,7 @@ TEST(IntSize, FloatSizeConstruction)
 
 TEST(IntSize, MinDimension)
 {
-    WebCore::IntSize test(1024, 768);
+    CyberCore::IntSize test(1024, 768);
 
     EXPECT_EQ(768, test.minDimension());
 
@@ -102,7 +102,7 @@ TEST(IntSize, MinDimension)
 
 TEST(IntSize, MaxDimension)
 {
-    WebCore::IntSize test(1024, 768);
+    CyberCore::IntSize test(1024, 768);
 
     EXPECT_EQ(1024, test.maxDimension());
 
@@ -113,7 +113,7 @@ TEST(IntSize, MaxDimension)
 
 TEST(IntSize, DiagonalLengthAndArea)
 {
-    WebCore::IntSize test(1024, 768);
+    CyberCore::IntSize test(1024, 768);
 
     EXPECT_EQ(1638400, test.diagonalLengthSquared());
     EXPECT_EQ(786432U, test.area().value());
@@ -121,7 +121,7 @@ TEST(IntSize, DiagonalLengthAndArea)
 
 TEST(IntSize, Scale)
 {
-    WebCore::IntSize test(1024, 768);
+    CyberCore::IntSize test(1024, 768);
 
     test.scale(2.0f);
 
@@ -141,7 +141,7 @@ TEST(IntSize, Scale)
 
 TEST(IntSize, Expand)
 {
-    WebCore::IntSize test(1024, 768);
+    CyberCore::IntSize test(1024, 768);
 
     EXPECT_EQ(1024, test.width());
     EXPECT_EQ(768, test.height());
@@ -151,7 +151,7 @@ TEST(IntSize, Expand)
     EXPECT_EQ(1124, test.width());
     EXPECT_EQ(818, test.height());
 
-    WebCore::IntSize other(2048, 700);
+    CyberCore::IntSize other(2048, 700);
 
     auto expanded = test.expandedTo(other);
 
@@ -161,15 +161,15 @@ TEST(IntSize, Expand)
 
 TEST(IntSize, Shrink)
 {
-    WebCore::IntSize test(1024, 768);
-    WebCore::IntSize other(1000, 700);
+    CyberCore::IntSize test(1024, 768);
+    CyberCore::IntSize other(1000, 700);
 
     auto shrunken = test.shrunkTo(other);
 
     EXPECT_EQ(1000, shrunken.width());
     EXPECT_EQ(700, shrunken.height());
 
-    WebCore::IntSize other2(2000.0f, 700.0f);
+    CyberCore::IntSize other2(2000.0f, 700.0f);
 
     auto shrunken2 = test.shrunkTo(other2);
 
@@ -179,7 +179,7 @@ TEST(IntSize, Shrink)
 
 TEST(IntSize, TransposedSize)
 {
-    WebCore::IntSize test(1024, 768);
+    CyberCore::IntSize test(1024, 768);
 
     auto transposedSize = test.transposedSize();
 
@@ -190,7 +190,7 @@ TEST(IntSize, TransposedSize)
 TEST(IntSize, Casting)
 {
 #if USE(CG)
-    WebCore::IntSize test(1024, 768);
+    CyberCore::IntSize test(1024, 768);
     CGSize cgSize = test;
 
     EXPECT_FLOAT_EQ(1024.0f, cgSize.width);
@@ -198,7 +198,7 @@ TEST(IntSize, Casting)
 
     CGSize cgSize2 = CGSizeMake(-22.3f, 14.6f);
 
-    WebCore::IntSize testCG(cgSize2);
+    CyberCore::IntSize testCG(cgSize2);
 
     EXPECT_EQ(-22, testCG.width());
     EXPECT_EQ(14, testCG.height());
@@ -207,10 +207,10 @@ TEST(IntSize, Casting)
 
 TEST(IntSize, AddSubtract)
 {
-    WebCore::IntSize a(512, 384);
-    WebCore::IntSize b(100, 100);
+    CyberCore::IntSize a(512, 384);
+    CyberCore::IntSize b(100, 100);
 
-    WebCore::IntSize c = a + b;
+    CyberCore::IntSize c = a + b;
 
     EXPECT_EQ(612, c.width());
     EXPECT_EQ(484, c.height());
@@ -220,9 +220,9 @@ TEST(IntSize, AddSubtract)
     EXPECT_EQ(612, a.width());
     EXPECT_EQ(484, a.height());
 
-    WebCore::IntSize a2(512, 384);
+    CyberCore::IntSize a2(512, 384);
 
-    WebCore::IntSize d = a2 - b;
+    CyberCore::IntSize d = a2 - b;
 
     EXPECT_EQ(412, d.width());
     EXPECT_EQ(284, d.height());
@@ -235,9 +235,9 @@ TEST(IntSize, AddSubtract)
 
 TEST(IntSize, Negation)
 {
-    WebCore::IntSize a(512, 384);
+    CyberCore::IntSize a(512, 384);
 
-    WebCore::IntSize negated = -a;
+    CyberCore::IntSize negated = -a;
 
     EXPECT_EQ(-512, negated.width());
     EXPECT_EQ(-384, negated.height());
@@ -245,9 +245,9 @@ TEST(IntSize, Negation)
 
 TEST(IntSize, Equality)
 {
-    WebCore::IntSize a(1024, 768);
-    WebCore::IntSize b(1024, 768);
-    WebCore::IntSize c(768, 534);
+    CyberCore::IntSize a(1024, 768);
+    CyberCore::IntSize b(1024, 768);
+    CyberCore::IntSize c(768, 534);
 
     ASSERT_TRUE(a == b);
     ASSERT_FALSE(a != b);
@@ -257,7 +257,7 @@ TEST(IntSize, Equality)
 
 TEST(IntSize, Contract)
 {
-    WebCore::IntSize a(1024, 768);
+    CyberCore::IntSize a(1024, 768);
 
     a.contract(100, 50);
 
@@ -267,21 +267,21 @@ TEST(IntSize, Contract)
 
 TEST(IntSize, Clamp)
 {
-    WebCore::IntSize a(1024, 768);
+    CyberCore::IntSize a(1024, 768);
 
     a.clampNegativeToZero();
 
     EXPECT_EQ(1024, a.width());
     EXPECT_EQ(768, a.height());
 
-    WebCore::IntSize b(-1024, -768);
+    CyberCore::IntSize b(-1024, -768);
 
     b.clampNegativeToZero();
 
     EXPECT_EQ(0, b.width());
     EXPECT_EQ(0, b.height());
 
-    WebCore::IntSize minimumSize(1024, 1000);
+    CyberCore::IntSize minimumSize(1024, 1000);
 
     a.clampToMinimumSize(minimumSize);
 
@@ -291,24 +291,24 @@ TEST(IntSize, Clamp)
 
 TEST(IntSize, ConstrainedBetween)
 {
-    WebCore::IntSize minimumSize(384, 256);
-    WebCore::IntSize maximumSize(2048, 1536);
+    CyberCore::IntSize minimumSize(384, 256);
+    CyberCore::IntSize maximumSize(2048, 1536);
 
-    WebCore::IntSize a(1024, 768);
+    CyberCore::IntSize a(1024, 768);
 
     auto constrained1 = a.constrainedBetween(minimumSize, maximumSize);
 
     EXPECT_EQ(1024, constrained1.width());
     EXPECT_EQ(768, constrained1.height());
 
-    WebCore::IntSize b(200, 100);
+    CyberCore::IntSize b(200, 100);
 
     auto constrained2 = b.constrainedBetween(minimumSize, maximumSize);
 
     EXPECT_EQ(384, constrained2.width());
     EXPECT_EQ(256, constrained2.height());
 
-    WebCore::IntSize c(5000, 2000);
+    CyberCore::IntSize c(5000, 2000);
 
     auto constrained3 = c.constrainedBetween(minimumSize, maximumSize);
 

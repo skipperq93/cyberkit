@@ -34,7 +34,7 @@
 #import <Foundation/NSURLAuthenticationChallenge.h>
 #import <Foundation/NSURLProtectionSpace.h>
 #import <Foundation/NSURLCredential.h>
-#import <CyberKitLegacy/WebKitNSStringExtras.h>
+#import <CyberKitLegacy/CyberKitNSStringExtras.h>
 #import <CyberKitLegacy/WebNSURLExtras.h>
 #import <wtf/Assertions.h>
 

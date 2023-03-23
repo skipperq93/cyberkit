@@ -29,7 +29,7 @@
 
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class ServiceWorkerUpdateViaCache : uint8_t;
 enum class WorkerType : bool;
@@ -43,6 +43,6 @@ struct ServiceWorkerRegistrationOptions {
     ServiceWorkerRegistrationOptions isolatedCopy() &&;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

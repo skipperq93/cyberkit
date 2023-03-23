@@ -83,9 +83,9 @@ static void runTest()
     NSString *existingDatabaseName = @"IndexedDBTest";
     NSString *createdDatabaseName = @"IndexedDBOther";
     NSString *unusedDatabaseName = @"IndexedDBUnused";
-    NSString *existingDatbaseHash = WebCore::SQLiteFileSystem::computeHashForFileName(String { existingDatabaseName });
-    NSString *createdDatabaseHash = WebCore::SQLiteFileSystem::computeHashForFileName(String { createdDatabaseName });
-    NSString *unusedDatabaseHash = WebCore::SQLiteFileSystem::computeHashForFileName(String { createdDatabaseName });
+    NSString *existingDatbaseHash = CyberCore::SQLiteFileSystem::computeHashForFileName(String { existingDatabaseName });
+    NSString *createdDatabaseHash = CyberCore::SQLiteFileSystem::computeHashForFileName(String { createdDatabaseName });
+    NSString *unusedDatabaseHash = CyberCore::SQLiteFileSystem::computeHashForFileName(String { createdDatabaseName });
     NSURL *idbRootURL = [websiteDataStoreConfiguration.get() _indexedDBDatabaseDirectory];
     NSURL *oldVersionDirectoryURL = [idbRootURL URLByAppendingPathComponent:@"v0"];
     NSURL *newVersionDirectoryURL = [idbRootURL URLByAppendingPathComponent:@"v1"];
@@ -127,8 +127,8 @@ static void createDirectories(StringView testName)
     if (testName == "none"_s)
         return;
     
-    NSString *existingDatbaseHash = WebCore::SQLiteFileSystem::computeHashForFileName(String { existingDatabaseName });
-    NSString *createdDatabaseHash = WebCore::SQLiteFileSystem::computeHashForFileName(String { createdDatabaseName });
+    NSString *existingDatbaseHash = CyberCore::SQLiteFileSystem::computeHashForFileName(String { existingDatabaseName });
+    NSString *createdDatabaseHash = CyberCore::SQLiteFileSystem::computeHashForFileName(String { createdDatabaseName });
     NSURL *oldVersionDirectoryURL = [idbRootURL URLByAppendingPathComponent:@"v0"];
     NSURL *newVersionDirectoryURL = [idbRootURL URLByAppendingPathComponent:@"v1"];
     NSURL *newVersionOriginDirectoryURL = [newVersionDirectoryURL URLByAppendingPathComponent: @"file__0"];

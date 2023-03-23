@@ -40,7 +40,7 @@ static void resetTestState()
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"WebKitCacheModelPreferenceKey"];
 }
 
-TEST(WebKitLegacy, SetAndUpdateCacheModelInitialModel)
+TEST(CyberKitLegacy, SetAndUpdateCacheModelInitialModel)
 {
     resetTestState();
 
@@ -51,7 +51,7 @@ TEST(WebKitLegacy, SetAndUpdateCacheModelInitialModel)
     EXPECT_EQ((int)WebCacheModelDocumentViewer, (int)[WebView _cacheModel]);
 }
 
-TEST(WebKitLegacy, SetAndUpdateCacheModelStandardPreferenceChange)
+TEST(CyberKitLegacy, SetAndUpdateCacheModelStandardPreferenceChange)
 {
     resetTestState();
 
@@ -67,7 +67,7 @@ TEST(WebKitLegacy, SetAndUpdateCacheModelStandardPreferenceChange)
     EXPECT_EQ((int)WebCacheModelDocumentViewer, (int)[WebView _cacheModel]);
 }
 
-TEST(WebKitLegacy, SetAndUpdateCacheModelPreferencesChangeMix)
+TEST(CyberKitLegacy, SetAndUpdateCacheModelPreferencesChangeMix)
 {
     resetTestState();
 

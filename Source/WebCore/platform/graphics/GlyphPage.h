@@ -35,7 +35,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/Ref.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Font;
 
@@ -129,6 +129,6 @@ private:
     WEBCORE_EXPORT static unsigned s_count;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // GlyphPage_h

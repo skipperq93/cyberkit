@@ -40,7 +40,7 @@
 #import <functional>
 #import <pal/spi/cocoa/QuartzCoreSPI.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 #if LOG_TILING
 static int totalTileCount;
@@ -132,6 +132,6 @@ void LegacyTileGridTile::showBorder(bool flag)
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(IOS_FAMILY)

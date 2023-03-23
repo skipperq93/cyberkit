@@ -70,7 +70,7 @@ typedef void (*PFNGLEGLIMAGETARGETTEXTURE2DOESPROC) (GLenum target, GLeglImageOE
 static PFNGLEGLIMAGETARGETTEXTURE2DOESPROC glImageTargetTexture2D;
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 enum class WaylandImpl { Unsupported, EGL, SHM };
 static std::optional<WaylandImpl> s_waylandImpl;
@@ -111,7 +111,7 @@ static bool tryInitializeEGL()
     if (!wpe_fdo_initialize_for_egl_display(eglDisplay))
         return false;
 
-    std::unique_ptr<WebCore::GLContext> eglContext = GLContext::createOffscreenContext();
+    std::unique_ptr<CyberCore::GLContext> eglContext = GLContext::createOffscreenContext();
     if (!eglContext)
         return false;
 

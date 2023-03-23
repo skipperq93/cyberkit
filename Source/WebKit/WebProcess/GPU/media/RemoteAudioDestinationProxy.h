@@ -42,17 +42,17 @@
 #endif
 
 #if PLATFORM(COCOA)
-namespace WebCore {
+namespace CyberCore {
 class WebAudioBufferList;
 }
 #endif
 
 namespace WebKit {
 
-class RemoteAudioDestinationProxy final : public WebCore::AudioDestinationResampler, public GPUProcessConnection::Client {
+class RemoteAudioDestinationProxy final : public CyberCore::AudioDestinationResampler, public GPUProcessConnection::Client {
     WTF_MAKE_NONCOPYABLE(RemoteAudioDestinationProxy);
 public:
-    using AudioIOCallback = WebCore::AudioIOCallback;
+    using AudioIOCallback = CyberCore::AudioIOCallback;
 
     static Ref<RemoteAudioDestinationProxy> create(AudioIOCallback&, const String& inputDeviceId, unsigned numberOfInputChannels, unsigned numberOfOutputChannels, float sampleRate);
 
@@ -78,7 +78,7 @@ private:
     WeakPtr<GPUProcessConnection> m_gpuProcessConnection;
 #if PLATFORM(COCOA)
     std::unique_ptr<ProducerSharedCARingBuffer> m_ringBuffer;
-    std::unique_ptr<WebCore::WebAudioBufferList> m_audioBufferList;
+    std::unique_ptr<CyberCore::WebAudioBufferList> m_audioBufferList;
     uint64_t m_currentFrame { 0 };
 #endif
     IPC::Semaphore m_renderSemaphore;

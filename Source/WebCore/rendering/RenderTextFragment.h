@@ -25,7 +25,7 @@
 #include "RenderBoxModelObject.h"
 #include "RenderText.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // Used to represent a text substring of an element, e.g., for text runs that are split because of
 // first letter and that must therefore have different styles (and positions in the render tree).
@@ -71,9 +71,9 @@ private:
     WeakPtr<RenderBoxModelObject> m_firstLetter;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::RenderTextFragment)
-    static bool isType(const WebCore::RenderText& renderer) { return renderer.isTextFragment(); }
-    static bool isType(const WebCore::RenderObject& renderer) { return is<WebCore::RenderText>(renderer) && isType(downcast<WebCore::RenderText>(renderer)); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::RenderTextFragment)
+    static bool isType(const CyberCore::RenderText& renderer) { return renderer.isTextFragment(); }
+    static bool isType(const CyberCore::RenderObject& renderer) { return is<CyberCore::RenderText>(renderer) && isType(downcast<CyberCore::RenderText>(renderer)); }
 SPECIALIZE_TYPE_TRAITS_END()

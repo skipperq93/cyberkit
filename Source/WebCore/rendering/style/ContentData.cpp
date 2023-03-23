@@ -31,7 +31,7 @@
 #include "RenderTextFragment.h"
 #include "StyleInheritedData.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 std::unique_ptr<ContentData> ContentData::clone() const
 {
@@ -71,4 +71,4 @@ RenderPtr<RenderObject> QuoteContentData::createContentRenderer(Document& docume
     return quote;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

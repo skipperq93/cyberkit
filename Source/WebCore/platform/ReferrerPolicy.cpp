@@ -27,7 +27,7 @@
 
 #include "HTTPParsers.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class ShouldParseLegacyKeywords { No, Yes };
 
@@ -114,4 +114,4 @@ String referrerPolicyToString(const ReferrerPolicy& referrerPolicy)
     return { };
 }
 
-} // namespace WebCore
+} // namespace CyberCore

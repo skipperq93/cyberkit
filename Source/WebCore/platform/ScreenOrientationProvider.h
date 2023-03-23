@@ -38,7 +38,7 @@ OBJC_CLASS UIWindow;
 OBJC_CLASS WebScreenOrientationObserver;
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScreenOrientationProvider : public RefCounted<ScreenOrientationProvider>, public CanMakeWeakPtr<ScreenOrientationProvider> {
 public:
@@ -77,4 +77,4 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore

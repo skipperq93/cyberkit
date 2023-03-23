@@ -25,7 +25,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 #if COMPILER(MSVC)
 #pragma warning(push)
@@ -60,4 +60,4 @@ inline bool operator!=(const QuotesData& a, const QuotesData& b)
     return !(a == b);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

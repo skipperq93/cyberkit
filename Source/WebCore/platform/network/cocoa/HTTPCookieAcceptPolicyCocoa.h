@@ -28,7 +28,7 @@
 #include "HTTPCookieAcceptPolicy.h"
 #include <pal/spi/cf/CFNetworkSPI.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 inline HTTPCookieAcceptPolicy toHTTPCookieAcceptPolicy(NSHTTPCookieAcceptPolicy policy)
 {

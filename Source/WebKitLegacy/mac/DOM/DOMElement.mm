@@ -46,228 +46,228 @@
 #import <CyberCore/ThreadCheck.h>
 #import <CyberCore/WebScriptObjectPrivate.h>
 
-static inline WebCore::Element& unwrap(DOMElement& wrapper)
+static inline CyberCore::Element& unwrap(DOMElement& wrapper)
 {
     ASSERT(wrapper._internal);
-    return downcast<WebCore::Element>(reinterpret_cast<WebCore::Node&>(*wrapper._internal));
+    return downcast<CyberCore::Element>(reinterpret_cast<CyberCore::Node&>(*wrapper._internal));
 }
 
-WebCore::Element* core(DOMElement *wrapper)
+CyberCore::Element* core(DOMElement *wrapper)
 {
     return wrapper ? &unwrap(*wrapper) : nullptr;
 }
 
-DOMElement *kit(WebCore::Element* value)
+DOMElement *kit(CyberCore::Element* value)
 {
-    WebCoreThreadViolationCheckRoundOne();
-    return static_cast<DOMElement*>(kit(static_cast<WebCore::Node*>(value)));
+    CyberCoreThreadViolationCheckRoundOne();
+    return static_cast<DOMElement*>(kit(static_cast<CyberCore::Node*>(value)));
 }
 
 @implementation DOMElement
 
 - (NSString *)tagName
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return unwrap(*self).tagName();
 }
 
 - (DOMCSSStyleDeclaration *)style
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     auto& element = unwrap(*self);
-    return is<WebCore::StyledElement>(element) ? kit(&downcast<WebCore::StyledElement>(element).cssomStyle()) : nullptr;
+    return is<CyberCore::StyledElement>(element) ? kit(&downcast<CyberCore::StyledElement>(element).cssomStyle()) : nullptr;
 }
 
 - (int)offsetLeft
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return unwrap(*self).offsetLeftForBindings();
 }
 
 - (int)offsetTop
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return unwrap(*self).offsetTopForBindings();
 }
 
 - (int)offsetWidth
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return unwrap(*self).offsetWidth();
 }
 
 - (int)offsetHeight
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return unwrap(*self).offsetHeight();
 }
 
 - (int)clientLeft
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return unwrap(*self).clientLeft();
 }
 
 - (int)clientTop
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return unwrap(*self).clientTop();
 }
 
 - (int)clientWidth
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return unwrap(*self).clientWidth();
 }
 
 - (int)clientHeight
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return unwrap(*self).clientHeight();
 }
 
 - (int)scrollLeft
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return unwrap(*self).scrollLeft();
 }
 
 - (void)setScrollLeft:(int)newScrollLeft
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     unwrap(*self).setScrollLeft(newScrollLeft);
 }
 
 - (int)scrollTop
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return unwrap(*self).scrollTop();
 }
 
 - (void)setScrollTop:(int)newScrollTop
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     unwrap(*self).setScrollTop(newScrollTop);
 }
 
 - (int)scrollWidth
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return unwrap(*self).scrollWidth();
 }
 
 - (int)scrollHeight
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return unwrap(*self).scrollHeight();
 }
 
 - (DOMElement *)offsetParent
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(unwrap(*self).offsetParentForBindings());
 }
 
 - (NSString *)innerHTML
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return unwrap(*self).innerHTML();
 }
 
 - (void)setInnerHTML:(NSString *)newInnerHTML
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     raiseOnDOMError(unwrap(*self).setInnerHTML(newInnerHTML));
 }
 
 - (NSString *)outerHTML
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return unwrap(*self).outerHTML();
 }
 
 - (void)setOuterHTML:(NSString *)newOuterHTML
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     raiseOnDOMError(unwrap(*self).setOuterHTML(newOuterHTML));
 }
 
 - (NSString *)className
 {
-    WebCore::JSMainThreadNullState state;
-    return unwrap(*self).getAttribute(WebCore::HTMLNames::classAttr);
+    CyberCore::JSMainThreadNullState state;
+    return unwrap(*self).getAttribute(CyberCore::HTMLNames::classAttr);
 }
 
 - (void)setClassName:(NSString *)newClassName
 {
-    WebCore::JSMainThreadNullState state;
-    unwrap(*self).setAttributeWithoutSynchronization(WebCore::HTMLNames::classAttr, newClassName);
+    CyberCore::JSMainThreadNullState state;
+    unwrap(*self).setAttributeWithoutSynchronization(CyberCore::HTMLNames::classAttr, newClassName);
 }
 
 - (DOMTokenList *)classList
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(&unwrap(*self).classList());
 }
 
 - (NSString *)innerText
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return unwrap(*self).innerText();
 }
 
 - (NSString *)uiactions
 {
-    WebCore::JSMainThreadNullState state;
-    return unwrap(*self).getAttribute(WebCore::HTMLNames::uiactionsAttr);
+    CyberCore::JSMainThreadNullState state;
+    return unwrap(*self).getAttribute(CyberCore::HTMLNames::uiactionsAttr);
 }
 
 - (void)setUiactions:(NSString *)newUiactions
 {
-    WebCore::JSMainThreadNullState state;
-    unwrap(*self).setAttributeWithoutSynchronization(WebCore::HTMLNames::uiactionsAttr, newUiactions);
+    CyberCore::JSMainThreadNullState state;
+    unwrap(*self).setAttributeWithoutSynchronization(CyberCore::HTMLNames::uiactionsAttr, newUiactions);
 }
 
 - (DOMElement *)previousElementSibling
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(unwrap(*self).previousElementSibling());
 }
 
 - (DOMElement *)nextElementSibling
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(unwrap(*self).nextElementSibling());
 }
 
 - (DOMHTMLCollection *)children
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(unwrap(*self).children().ptr());
 }
 
 - (DOMElement *)firstElementChild
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(unwrap(*self).firstElementChild());
 }
 
 - (DOMElement *)lastElementChild
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(unwrap(*self).lastElementChild());
 }
 
 - (unsigned)childElementCount
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return unwrap(*self).childElementCount();
 }
 
 #if PLATFORM(IOS_FAMILY)
 - (CGRect)boundsInRootViewSpace
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     auto bounds = unwrap(*self).boundsInRootViewSpace();
     return CGRectMake(bounds.x(), bounds.y(), bounds.width(), bounds.height());
 }
@@ -275,31 +275,31 @@ DOMElement *kit(WebCore::Element* value)
 
 - (NSString *)getAttribute:(NSString *)name
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return unwrap(*self).getAttribute(name);
 }
 
 - (void)setAttribute:(NSString *)name value:(NSString *)value
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     raiseOnDOMError(unwrap(*self).setAttribute(name, value));
 }
 
 - (void)removeAttribute:(NSString *)name
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     unwrap(*self).removeAttribute(name);
 }
 
 - (DOMAttr *)getAttributeNode:(NSString *)name
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(unwrap(*self).getAttributeNode(name).get());
 }
 
 - (DOMAttr *)setAttributeNode:(DOMAttr *)newAttr
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     if (!newAttr)
         raiseTypeErrorException();
     return kit(raiseOnDOMError(unwrap(*self).setAttributeNode(*core(newAttr))).get());
@@ -307,7 +307,7 @@ DOMElement *kit(WebCore::Element* value)
 
 - (DOMAttr *)removeAttributeNode:(DOMAttr *)oldAttr
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     if (!oldAttr)
         raiseTypeErrorException();
     return kit(raiseOnDOMError(unwrap(*self).removeAttributeNode(*core(oldAttr))).ptr());
@@ -318,26 +318,26 @@ DOMElement *kit(WebCore::Element* value)
     if (!name)
         return nullptr;
 
-    WebCore::JSMainThreadNullState state;
-    Ref<WebCore::NodeList> result = unwrap(*self).getElementsByTagName(name);
+    CyberCore::JSMainThreadNullState state;
+    Ref<CyberCore::NodeList> result = unwrap(*self).getElementsByTagName(name);
     return kit(result.ptr());
 }
 
 - (NSString *)getAttributeNS:(NSString *)namespaceURI localName:(NSString *)localName
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return unwrap(*self).getAttributeNS(namespaceURI, localName);
 }
 
 - (void)setAttributeNS:(NSString *)namespaceURI qualifiedName:(NSString *)qualifiedName value:(NSString *)value
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     raiseOnDOMError(unwrap(*self).setAttributeNS(namespaceURI, qualifiedName, value));
 }
 
 - (void)removeAttributeNS:(NSString *)namespaceURI localName:(NSString *)localName
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     unwrap(*self).removeAttributeNS(namespaceURI, localName);
 }
 
@@ -346,20 +346,20 @@ DOMElement *kit(WebCore::Element* value)
     if (!localName)
         return nullptr;
 
-    WebCore::JSMainThreadNullState state;
-    Ref<WebCore::NodeList> result = unwrap(*self).getElementsByTagNameNS(namespaceURI, localName);
+    CyberCore::JSMainThreadNullState state;
+    Ref<CyberCore::NodeList> result = unwrap(*self).getElementsByTagNameNS(namespaceURI, localName);
     return kit(result.ptr());
 }
 
 - (DOMAttr *)getAttributeNodeNS:(NSString *)namespaceURI localName:(NSString *)localName
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(unwrap(*self).getAttributeNodeNS(namespaceURI, localName).get());
 }
 
 - (DOMAttr *)setAttributeNodeNS:(DOMAttr *)newAttr
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     if (!newAttr)
         raiseTypeErrorException();
     return kit(raiseOnDOMError(unwrap(*self).setAttributeNodeNS(*core(newAttr))).get());
@@ -367,74 +367,74 @@ DOMElement *kit(WebCore::Element* value)
 
 - (BOOL)hasAttribute:(NSString *)name
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return unwrap(*self).hasAttribute(name);
 }
 
 - (BOOL)hasAttributeNS:(NSString *)namespaceURI localName:(NSString *)localName
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return unwrap(*self).hasAttributeNS(namespaceURI, localName);
 }
 
 - (void)focus
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     unwrap(*self).focus();
 }
 
 - (void)blur
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     unwrap(*self).blur();
 }
 
 - (void)scrollIntoView:(BOOL)alignWithTop
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     unwrap(*self).scrollIntoView(alignWithTop);
 }
 
 - (void)scrollIntoViewIfNeeded:(BOOL)centerIfNeeded
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     unwrap(*self).scrollIntoViewIfNeeded(centerIfNeeded);
 }
 
 - (void)scrollByLines:(int)lines
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     unwrap(*self).scrollByLines(lines);
 }
 
 - (void)scrollByPages:(int)pages
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     unwrap(*self).scrollByPages(pages);
 }
 
 - (DOMNodeList *)getElementsByClassName:(NSString *)name
 {
-    WebCore::JSMainThreadNullState state;
-    Ref<WebCore::NodeList> result = unwrap(*self).getElementsByClassName(name);
+    CyberCore::JSMainThreadNullState state;
+    Ref<CyberCore::NodeList> result = unwrap(*self).getElementsByClassName(name);
     return kit(result.ptr());
 }
 
 - (BOOL)matches:(NSString *)selectors
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return raiseOnDOMError(unwrap(*self).matches(selectors));
 }
 
 - (DOMElement *)closest:(NSString *)selectors
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(raiseOnDOMError(unwrap(*self).closest(selectors)));
 }
 
 - (BOOL)webkitMatchesSelector:(NSString *)selectors
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return raiseOnDOMError(unwrap(*self).matches(selectors));
 }
 
@@ -442,13 +442,13 @@ DOMElement *kit(WebCore::Element* value)
 
 - (void)webkitRequestFullScreen:(unsigned short)flags
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     unwrap(*self).webkitRequestFullscreen();
 }
 
 - (void)webkitRequestFullscreen
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     unwrap(*self).webkitRequestFullscreen();
 }
 
@@ -456,19 +456,19 @@ DOMElement *kit(WebCore::Element* value)
 
 - (void)remove
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     raiseOnDOMError(unwrap(*self).remove());
 }
 
 - (DOMElement *)querySelector:(NSString *)selectors
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(raiseOnDOMError(unwrap(*self).querySelector(selectors)));
 }
 
 - (DOMNodeList *)querySelectorAll:(NSString *)selectors
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(raiseOnDOMError(unwrap(*self).querySelectorAll(selectors)).ptr());
 }
 

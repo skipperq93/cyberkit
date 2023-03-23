@@ -30,7 +30,7 @@
 #include "DragData.h"
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WCEnumFormatEtc final : public IEnumFORMATETC
 {

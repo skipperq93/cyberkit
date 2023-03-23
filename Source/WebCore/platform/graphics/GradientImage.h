@@ -27,7 +27,7 @@
 
 #include "GeneratedImage.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class Gradient;
 class Image;

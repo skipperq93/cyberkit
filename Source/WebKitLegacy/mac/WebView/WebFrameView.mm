@@ -40,9 +40,9 @@
 #import "WebFrameViewPrivate.h"
 #import "WebHistoryItemInternal.h"
 #import "WebHTMLViewPrivate.h"
-#import "WebKitErrorsPrivate.h"
-#import "WebKitStatisticsPrivate.h"
-#import "WebKitVersionChecks.h"
+#import "CyberKitErrorsPrivate.h"
+#import "CyberKitStatisticsPrivate.h"
+#import "CyberKitVersionChecks.h"
 #import "WebNSDictionaryExtras.h"
 #import "WebNSObjectExtras.h"
 #import "WebNSViewExtras.h"
@@ -62,8 +62,8 @@
 #import <CyberCore/RenderView.h>
 #import <CyberCore/RenderWidget.h>
 #import <CyberCore/ThreadCheck.h>
-#import <CyberCore/WebCoreFrameView.h>
-#import <CyberCore/WebCoreView.h>
+#import <CyberCore/CyberCoreFrameView.h>
+#import <CyberCore/CyberCoreView.h>
 #import <wtf/Assertions.h>
 
 #if PLATFORM(IOS_FAMILY)
@@ -104,7 +104,7 @@ enum {
     SpaceKey = 0x0020
 };
 
-@interface WebFrameView (WebFrameViewFileInternal) <WebCoreFrameView>
+@interface WebFrameView (WebFrameViewFileInternal) <CyberCoreFrameView>
 - (float)_verticalKeyboardScrollDistance;
 @end
 
@@ -112,7 +112,7 @@ enum {
 @public
     WebFrame *webFrame;
     RetainPtr<WebDynamicScrollBarsView> frameScrollView;
-    BOOL includedInWebKitStatistics;
+    BOOL includedInCyberKitStatistics;
 }
 @end
 
@@ -128,7 +128,7 @@ enum {
     return [[self _scrollView] verticalLineScroll];
 }
 
-- (NakedPtr<WebCore::Frame>)_web_frame
+- (NakedPtr<CyberCore::Frame>)_web_frame
 {
     return core(_private->webFrame);
 }
@@ -217,8 +217,8 @@ enum {
     // Not retained because the WebView owns the WebFrame, which owns the WebFrameView.
     _private->webFrame = webFrame;    
 
-    if (!_private->includedInWebKitStatistics && [webFrame _isIncludedInWebKitStatistics]) {
-        _private->includedInWebKitStatistics = YES;
+    if (!_private->includedInCyberKitStatistics && [webFrame _isIncludedInCyberKitStatistics]) {
+        _private->includedInCyberKitStatistics = YES;
         ++WebFrameViewCount;
     }
 }
@@ -235,7 +235,7 @@ enum {
 - (float)_verticalPageScrollDistance
 {
     float height = [[self _contentView] bounds].size.height;
-    return std::max<float>(height * WebCore::Scrollbar::minFractionToStepWhenPaging(), height - WebCore::Scrollbar::maxOverlapBetweenPages());
+    return std::max<float>(height * CyberCore::Scrollbar::minFractionToStepWhenPaging(), height - CyberCore::Scrollbar::maxOverlapBetweenPages());
 }
 
 + (NSMutableDictionary *)_viewTypesAllowImageTypeOmission:(BOOL)allowImageTypeOmission
@@ -246,7 +246,7 @@ enum {
         addTypesFromClass(types.get(), [WebHTMLView class], [WebHTMLView supportedMediaMIMETypes]);
 
         // Since this is a "secret default" we don't bother registering it.
-        BOOL omitPDFSupport = [[NSUserDefaults standardUserDefaults] boolForKey:@"WebKitOmitPDFSupport"];
+        BOOL omitPDFSupport = [[NSUserDefaults standardUserDefaults] boolForKey:@"CyberKitOmitPDFSupport"];
         if (!omitPDFSupport) {
 #if PLATFORM(IOS_FAMILY)
 #define WebPDFView ([WebView _getPDFViewClass])
@@ -309,7 +309,7 @@ enum {
     view->setPlatformWidget(_private->frameScrollView.get());
 
     // FIXME: Frame tries to do this too. Is this code needed?
-    if (WebCore::RenderWidget* owner = frame->ownerRenderer()) {
+    if (CyberCore::RenderWidget* owner = frame->ownerRenderer()) {
         owner->setWidget(view);
         // Now the RenderWidget owns the view, so we don't any more.
     }
@@ -324,7 +324,7 @@ enum {
         [[self _scrollView] setDrawsBackground:YES];
     if (auto coreFrame = [self _web_frame]) {
         if (auto* coreFrameView = coreFrame->view())
-            coreFrameView->availableContentSizeChanged(WebCore::ScrollableArea::AvailableSizeChangeReason::AreaSizeChanged);
+            coreFrameView->availableContentSizeChanged(CyberCore::ScrollableArea::AvailableSizeChangeReason::AreaSizeChanged);
     }
 }
 
@@ -342,22 +342,22 @@ enum {
     if (!didFirstTimeInitialization) {
         didFirstTimeInitialization = true;
         
-        // Need to tell WebCore what function to call for the "History Item has Changed" notification.
+        // Need to tell CyberCore what function to call for the "History Item has Changed" notification.
         // Note: We also do this in WebHistoryItem's init method.
-        // FIXME: This means that if we mix legacy WebKit and modern WebKit in the same process, we won't get both notifications.
-        WebCore::notifyHistoryItemChanged = WKNotifyHistoryItemChanged;
+        // FIXME: This means that if we mix legacy CyberKit and modern CyberKit in the same process, we won't get both notifications.
+        CyberCore::notifyHistoryItemChanged = WKNotifyHistoryItemChanged;
 
 #if !PLATFORM(IOS_FAMILY)
-        if (!WebKitLinkedOnOrAfter(WEBKIT_FIRST_VERSION_WITH_MAIN_THREAD_EXCEPTIONS))
-            setDefaultThreadViolationBehavior(WebCore::LogOnFirstThreadViolation, WebCore::ThreadViolationRoundOne);
+        if (!CyberKitLinkedOnOrAfter(WEBKIT_FIRST_VERSION_WITH_MAIN_THREAD_EXCEPTIONS))
+            setDefaultThreadViolationBehavior(CyberCore::LogOnFirstThreadViolation, CyberCore::ThreadViolationRoundOne);
 
-        bool throwExceptionsForRoundTwo = WebKitLinkedOnOrAfter(WEBKIT_FIRST_VERSION_WITH_ROUND_TWO_MAIN_THREAD_EXCEPTIONS);
+        bool throwExceptionsForRoundTwo = CyberKitLinkedOnOrAfter(WEBKIT_FIRST_VERSION_WITH_ROUND_TWO_MAIN_THREAD_EXCEPTIONS);
         if (!throwExceptionsForRoundTwo)
-            setDefaultThreadViolationBehavior(WebCore::LogOnFirstThreadViolation, WebCore::ThreadViolationRoundTwo);
+            setDefaultThreadViolationBehavior(CyberCore::LogOnFirstThreadViolation, CyberCore::ThreadViolationRoundTwo);
 
-        bool throwExceptionsForRoundThree = WebKitLinkedOnOrAfter(WEBKIT_FIRST_VERSION_WITH_ROUND_THREE_MAIN_THREAD_EXCEPTIONS);
+        bool throwExceptionsForRoundThree = CyberKitLinkedOnOrAfter(WEBKIT_FIRST_VERSION_WITH_ROUND_THREE_MAIN_THREAD_EXCEPTIONS);
         if (!throwExceptionsForRoundThree)
-            setDefaultThreadViolationBehavior(WebCore::LogOnFirstThreadViolation, WebCore::ThreadViolationRoundThree);
+            setDefaultThreadViolationBehavior(CyberCore::LogOnFirstThreadViolation, CyberCore::ThreadViolationRoundThree);
 #endif
     }
 
@@ -374,7 +374,7 @@ enum {
     [scrollView setHasVerticalScroller:NO];
     [scrollView setHasHorizontalScroller:NO];
     [scrollView setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
-    [scrollView setLineScroll:WebCore::Scrollbar::pixelsPerLineStep()];
+    [scrollView setLineScroll:CyberCore::Scrollbar::pixelsPerLineStep()];
     [self addSubview:scrollView.get()];
 
     // Don't call our overridden version of setNextKeyView here; we need to make the standard NSView
@@ -387,7 +387,7 @@ enum {
 
 - (void)dealloc 
 {
-    if (_private && _private->includedInWebKitStatistics)
+    if (_private && _private->includedInCyberKitStatistics)
         --WebFrameViewCount;
     
     [_private release];
@@ -412,15 +412,15 @@ enum {
 
 - (void)setAllowsScrolling:(BOOL)flag
 {
-    WebCore::Frame *frame = core([self webFrame]);
-    if (WebCore::FrameView *view = frame? frame->view() : 0)
+    CyberCore::Frame *frame = core([self webFrame]);
+    if (CyberCore::FrameView *view = frame? frame->view() : 0)
         view->setCanHaveScrollbars(flag);
 }
 
 - (BOOL)allowsScrolling
 {
-    WebCore::Frame *frame = core([self webFrame]);
-    if (WebCore::FrameView *view = frame? frame->view() : 0)
+    CyberCore::Frame *frame = core([self webFrame]);
+    if (CyberCore::FrameView *view = frame? frame->view() : 0)
         return view->canHaveScrollbars();
     return YES;
 }
@@ -432,7 +432,7 @@ enum {
 
 - (BOOL)acceptsFirstResponder
 {
-    // We always accept first responder; this matches OS X 10.2 WebKit
+    // We always accept first responder; this matches OS X 10.2 CyberKit
     // behavior (see 3469791).
     return YES;
 }
@@ -495,7 +495,7 @@ enum {
             NSRectFill(rect);
 #else
             CGContextRef cgContext = WKGetCurrentGraphicsContext();
-            CGContextSetFillColorWithColor(cgContext, WebCore::cachedCGColor(WebCore::Color::white).get());
+            CGContextSetFillColorWithColor(cgContext, CyberCore::cachedCGColor(CyberCore::Color::white).get());
             WKRectFill(cgContext, rect);
 #endif
         }
@@ -507,7 +507,7 @@ enum {
             NSRectFill(rect);
 #else
             CGContextRef cgContext = WKGetCurrentGraphicsContext();
-            CGContextSetFillColorWithColor(cgContext, WebCore::cachedCGColor(WebCore::Color::cyan).get());
+            CGContextSetFillColorWithColor(cgContext, CyberCore::cachedCGColor(CyberCore::Color::cyan).get());
             WKRectFill(cgContext, rect);
 #endif
         }
@@ -591,7 +591,7 @@ enum {
     [super viewDidMoveToWindow];
 }
 
-- (BOOL)_scrollOverflowInDirection:(WebCore::ScrollDirection)direction granularity:(WebCore::ScrollGranularity)granularity
+- (BOOL)_scrollOverflowInDirection:(CyberCore::ScrollDirection)direction granularity:(CyberCore::ScrollGranularity)granularity
 {
     // scrolling overflows is only applicable if we're dealing with an WebHTMLView
     if (![[self documentView] isKindOfClass:[WebHTMLView class]])
@@ -633,7 +633,7 @@ enum {
 
 - (BOOL)_scrollToBeginningOfDocument
 {
-    if ([self _scrollOverflowInDirection:WebCore::ScrollUp granularity:WebCore::ScrollGranularity::Document])
+    if ([self _scrollOverflowInDirection:CyberCore::ScrollUp granularity:CyberCore::ScrollGranularity::Document])
         return YES;
     if (![self _isScrollable])
         return NO;
@@ -645,7 +645,7 @@ enum {
 
 - (BOOL)_scrollToEndOfDocument
 {
-    if ([self _scrollOverflowInDirection:WebCore::ScrollDown granularity:WebCore::ScrollGranularity::Document])
+    if ([self _scrollOverflowInDirection:CyberCore::ScrollDown granularity:CyberCore::ScrollGranularity::Document])
         return YES;
     if (![self _isScrollable])
         return NO;
@@ -737,12 +737,12 @@ enum {
 - (float)_horizontalPageScrollDistance
 {
     float width = [[self _contentView] bounds].size.width;
-    return std::max<float>(width * WebCore::Scrollbar::minFractionToStepWhenPaging(), width - WebCore::Scrollbar::maxOverlapBetweenPages());
+    return std::max<float>(width * CyberCore::Scrollbar::minFractionToStepWhenPaging(), width - CyberCore::Scrollbar::maxOverlapBetweenPages());
 }
 
 - (BOOL)_pageVertically:(BOOL)up
 {
-    if ([self _scrollOverflowInDirection:up ? WebCore::ScrollUp : WebCore::ScrollDown granularity:WebCore::ScrollGranularity::Page])
+    if ([self _scrollOverflowInDirection:up ? CyberCore::ScrollUp : CyberCore::ScrollDown granularity:CyberCore::ScrollGranularity::Page])
         return YES;
     
     if (![self _isScrollable])
@@ -754,7 +754,7 @@ enum {
 
 - (BOOL)_pageHorizontally:(BOOL)left
 {
-    if ([self _scrollOverflowInDirection:left ? WebCore::ScrollLeft : WebCore::ScrollRight granularity:WebCore::ScrollGranularity::Page])
+    if ([self _scrollOverflowInDirection:left ? CyberCore::ScrollLeft : CyberCore::ScrollRight granularity:CyberCore::ScrollGranularity::Page])
         return YES;
 
     if (![self _isScrollable])
@@ -776,7 +776,7 @@ enum {
 
 - (BOOL)_scrollLineVertically:(BOOL)up
 {
-    if ([self _scrollOverflowInDirection:up ? WebCore::ScrollUp : WebCore::ScrollDown granularity:WebCore::ScrollGranularity::Line])
+    if ([self _scrollOverflowInDirection:up ? CyberCore::ScrollUp : CyberCore::ScrollDown granularity:CyberCore::ScrollGranularity::Line])
         return YES;
 
     if (![self _isScrollable])
@@ -788,7 +788,7 @@ enum {
 
 - (BOOL)_scrollLineHorizontally:(BOOL)left
 {
-    if ([self _scrollOverflowInDirection:left ? WebCore::ScrollLeft : WebCore::ScrollRight granularity:WebCore::ScrollGranularity::Line])
+    if ([self _scrollOverflowInDirection:left ? CyberCore::ScrollLeft : CyberCore::ScrollRight granularity:CyberCore::ScrollGranularity::Line])
         return YES;
 
     if (![self _isScrollable])
@@ -842,7 +842,7 @@ enum {
 }
 
 #if PLATFORM(IOS_FAMILY)
-// Unlike OS X WebKit, on iOS, unhandled mouse events are forwarded to allow for scrolling.
+// Unlike OS X CyberKit, on iOS, unhandled mouse events are forwarded to allow for scrolling.
 // Since mouse events were forwarded to this WebFrameView, this means that the subviews didn't
 // handle the event. Pass the events to the next scroll view.
 - (void)_forwardMouseEvent:(WebEvent *)event
@@ -1165,18 +1165,18 @@ enum {
 
 - (BOOL)_hasScrollBars
 {
-    // FIXME: This method was used by Safari 4.0.x and older versions, but has not been used by any other WebKit
+    // FIXME: This method was used by Safari 4.0.x and older versions, but has not been used by any other CyberKit
     // clients to my knowledge, and will not be used by future versions of Safari. It can probably be removed 
-    // once we no longer need to keep nightly WebKit builds working with Safari 4.0.x and earlier.
+    // once we no longer need to keep nightly CyberKit builds working with Safari 4.0.x and earlier.
     NSScrollView *scrollView = [self _scrollView];
     return [scrollView hasHorizontalScroller] || [scrollView hasVerticalScroller];
 }
 
 - (WebFrameView *)_largestChildWithScrollBars
 {
-    // FIXME: This method was used by Safari 4.0.x and older versions, but has not been used by any other WebKit
+    // FIXME: This method was used by Safari 4.0.x and older versions, but has not been used by any other CyberKit
     // clients to my knowledge, and will not be used by future versions of Safari. It can probably be removed 
-    // once we no longer need to keep nightly WebKit builds working with Safari 4.0.x and earlier.
+    // once we no longer need to keep nightly CyberKit builds working with Safari 4.0.x and earlier.
     WebFrameView *largest = nil;
     NSArray *frameChildren = [[self webFrame] childFrames];
     

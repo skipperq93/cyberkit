@@ -27,7 +27,7 @@
 
 #include <wtf/EnumTraits.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class LoadSchedulingMode : uint8_t {
     Direct, // All loads are issued directly to network layer.
@@ -37,11 +37,11 @@ enum class LoadSchedulingMode : uint8_t {
 }
 
 namespace WTF {
-template<> struct EnumTraits<WebCore::LoadSchedulingMode> {
+template<> struct EnumTraits<CyberCore::LoadSchedulingMode> {
     using values = EnumValues<
-        WebCore::LoadSchedulingMode,
-        WebCore::LoadSchedulingMode::Direct,
-        WebCore::LoadSchedulingMode::Prioritized
+        CyberCore::LoadSchedulingMode,
+        CyberCore::LoadSchedulingMode::Direct,
+        CyberCore::LoadSchedulingMode::Prioritized
     >;
 };
 }

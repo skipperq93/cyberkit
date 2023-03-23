@@ -46,7 +46,7 @@ static const char* gContextMenuTitle = "webkit-context-menu-title";
 static const char* gContextMenuItemGroup = "webkitContextMenu";
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 #if USE(GTK4)
 const char* WebContextMenuProxyGtk::widgetDismissedSignal = "closed";

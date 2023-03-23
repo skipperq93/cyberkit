@@ -31,5 +31,5 @@
 
 id WKBundleGetParameters(WKBundleRef bundle)
 {
-    return WebKit::toImpl(bundle)->bundleParameters();
+    return CyberKit::toImpl(bundle)->bundleParameters();
 }

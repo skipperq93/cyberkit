@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -21,28 +21,28 @@
 #error "Only <webkitdom/webkitdom.h> can be included directly."
 #endif
 
-#ifndef WebKitDOMHTMLBaseElement_h
-#define WebKitDOMHTMLBaseElement_h
+#ifndef CyberKitDOMHTMLBaseElement_h
+#define CyberKitDOMHTMLBaseElement_h
 
 #include <glib-object.h>
-#include <webkitdom/WebKitDOMHTMLElement.h>
+#include <webkitdom/CyberKitDOMHTMLElement.h>
 #include <webkitdom/webkitdomdefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_DOM_TYPE_HTML_BASE_ELEMENT            (webkit_dom_html_base_element_get_type())
-#define WEBKIT_DOM_HTML_BASE_ELEMENT(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_HTML_BASE_ELEMENT, WebKitDOMHTMLBaseElement))
-#define WEBKIT_DOM_HTML_BASE_ELEMENT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_HTML_BASE_ELEMENT, WebKitDOMHTMLBaseElementClass)
+#define WEBKIT_DOM_HTML_BASE_ELEMENT(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_HTML_BASE_ELEMENT, CyberKitDOMHTMLBaseElement))
+#define WEBKIT_DOM_HTML_BASE_ELEMENT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_HTML_BASE_ELEMENT, CyberKitDOMHTMLBaseElementClass)
 #define WEBKIT_DOM_IS_HTML_BASE_ELEMENT(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_DOM_TYPE_HTML_BASE_ELEMENT))
 #define WEBKIT_DOM_IS_HTML_BASE_ELEMENT_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_DOM_TYPE_HTML_BASE_ELEMENT))
-#define WEBKIT_DOM_HTML_BASE_ELEMENT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_HTML_BASE_ELEMENT, WebKitDOMHTMLBaseElementClass))
+#define WEBKIT_DOM_HTML_BASE_ELEMENT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_HTML_BASE_ELEMENT, CyberKitDOMHTMLBaseElementClass))
 
-struct _WebKitDOMHTMLBaseElement {
-    WebKitDOMHTMLElement parent_instance;
+struct _CyberKitDOMHTMLBaseElement {
+    CyberKitDOMHTMLElement parent_instance;
 };
 
-struct _WebKitDOMHTMLBaseElementClass {
-    WebKitDOMHTMLElementClass parent_class;
+struct _CyberKitDOMHTMLBaseElementClass {
+    CyberKitDOMHTMLElementClass parent_class;
 };
 
 WEBKIT_DEPRECATED GType
@@ -50,48 +50,48 @@ webkit_dom_html_base_element_get_type(void);
 
 /**
  * webkit_dom_html_base_element_get_href:
- * @self: A #WebKitDOMHTMLBaseElement
+ * @self: A #CyberKitDOMHTMLBaseElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_base_element_get_href(WebKitDOMHTMLBaseElement* self);
+webkit_dom_html_base_element_get_href(CyberKitDOMHTMLBaseElement* self);
 
 /**
  * webkit_dom_html_base_element_set_href:
- * @self: A #WebKitDOMHTMLBaseElement
+ * @self: A #CyberKitDOMHTMLBaseElement
  * @value: A #gchar
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_base_element_set_href(WebKitDOMHTMLBaseElement* self, const gchar* value);
+webkit_dom_html_base_element_set_href(CyberKitDOMHTMLBaseElement* self, const gchar* value);
 
 /**
  * webkit_dom_html_base_element_get_target:
- * @self: A #WebKitDOMHTMLBaseElement
+ * @self: A #CyberKitDOMHTMLBaseElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_base_element_get_target(WebKitDOMHTMLBaseElement* self);
+webkit_dom_html_base_element_get_target(CyberKitDOMHTMLBaseElement* self);
 
 /**
  * webkit_dom_html_base_element_set_target:
- * @self: A #WebKitDOMHTMLBaseElement
+ * @self: A #CyberKitDOMHTMLBaseElement
  * @value: A #gchar
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_base_element_set_target(WebKitDOMHTMLBaseElement* self, const gchar* value);
+webkit_dom_html_base_element_set_target(CyberKitDOMHTMLBaseElement* self, const gchar* value);
 
 G_END_DECLS
 
-#endif /* WebKitDOMHTMLBaseElement_h */
+#endif /* CyberKitDOMHTMLBaseElement_h */

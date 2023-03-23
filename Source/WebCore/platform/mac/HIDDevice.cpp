@@ -37,7 +37,7 @@
 
 WTF_DECLARE_CF_TYPE_TRAIT(IOHIDElement);
 
-namespace WebCore {
+namespace CyberCore {
 
 static int getDevicePropertyAsInt(IOHIDDeviceRef device, CFStringRef key)
 {
@@ -109,6 +109,6 @@ Vector<HIDElement> HIDDevice::uniqueInputElementsInDeviceTreeOrder() const
     return result;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(MAC)

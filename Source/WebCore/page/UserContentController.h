@@ -29,7 +29,7 @@
 #include "UserScriptTypes.h"
 #include "UserStyleSheetTypes.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class UserContentController final : public UserContentProvider {
 public:
@@ -66,4 +66,4 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore

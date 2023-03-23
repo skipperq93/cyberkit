@@ -24,7 +24,7 @@
 
 #include "LegacyRenderSVGModelObject.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGElement;
 
@@ -80,6 +80,6 @@ private:
     bool m_needsBoundariesUpdate { true };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(LegacyRenderSVGContainer, isLegacySVGContainer())

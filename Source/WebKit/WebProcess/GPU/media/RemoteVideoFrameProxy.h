@@ -37,39 +37,39 @@ class Connection;
 class Decoder;
 }
 
-namespace WebCore {
+namespace CyberCore {
 #if PLATFORM(COCOA)
 class VideoFrameCV;
 #endif
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class GPUProcessConnection;
 class RemoteVideoFrameObjectHeapProxy;
 
-// A WebCore::VideoFrame class that points to a concrete WebCore::VideoFrame instance
+// A CyberCore::VideoFrame class that points to a concrete CyberCore::VideoFrame instance
 // in another process, GPU process.
-class RemoteVideoFrameProxy final : public WebCore::VideoFrame {
+class RemoteVideoFrameProxy final : public CyberCore::VideoFrame {
     WTF_MAKE_FAST_ALLOCATED;
     WTF_MAKE_NONCOPYABLE(RemoteVideoFrameProxy);
 public:
     struct Properties {
         // The receiver owns the reference, so it must be released via either adoption to
         // `RemoteVideoFrameProxy::create()` or via `RemoteVideoFrameProxy::releaseUnused()`.
-        WebKit::RemoteVideoFrameReference reference;
+        CyberKit::RemoteVideoFrameReference reference;
         MediaTime presentationTime;
         bool isMirrored { false };
         Rotation rotation { Rotation::None };
-        WebCore::IntSize size;
+        CyberCore::IntSize size;
         uint32_t pixelFormat { 0 };
-        WebCore::PlatformVideoColorSpace colorSpace;
+        CyberCore::PlatformVideoColorSpace colorSpace;
 
         template<typename Encoder> void encode(Encoder&) const;
         template<typename Decoder> static std::optional<Properties> decode(Decoder&);
     };
 
-    static Properties properties(WebKit::RemoteVideoFrameReference&&, const WebCore::VideoFrame&);
+    static Properties properties(CyberKit::RemoteVideoFrameReference&&, const CyberCore::VideoFrame&);
 
     static Ref<RemoteVideoFrameProxy> create(IPC::Connection&, RemoteVideoFrameObjectHeapProxy&, Properties&&);
 
@@ -82,10 +82,10 @@ public:
     RemoteVideoFrameIdentifier identifier() const;
     RemoteVideoFrameReadReference newReadReference() const;
 
-    WebCore::IntSize size() const { return m_size; }
+    CyberCore::IntSize size() const { return m_size; }
 
-    // WebCore::VideoFrame overrides.
-    WebCore::FloatSize presentationSize() const final { return m_size; }
+    // CyberCore::VideoFrame overrides.
+    CyberCore::FloatSize presentationSize() const final { return m_size; }
     uint32_t pixelFormat() const final;
     bool isRemoteProxy() const final { return true; }
 #if PLATFORM(COCOA)
@@ -98,7 +98,7 @@ private:
 
     const Ref<IPC::Connection> m_connection;
     RemoteVideoFrameReferenceTracker m_referenceTracker;
-    const WebCore::IntSize m_size;
+    const CyberCore::IntSize m_size;
     uint32_t m_pixelFormat { 0 };
     // FIXME: Remove this.
     mutable RefPtr<RemoteVideoFrameObjectHeapProxy> m_videoFrameObjectHeapProxy;
@@ -119,9 +119,9 @@ template<typename Decoder> std::optional<RemoteVideoFrameProxy::Properties> Remo
     auto presentationTime = decoder.template decode<MediaTime>();
     auto isMirrored = decoder.template decode<bool>();
     auto rotation = decoder.template decode<Rotation>();
-    auto size = decoder.template decode<WebCore::IntSize>();
+    auto size = decoder.template decode<CyberCore::IntSize>();
     auto pixelFormat = decoder.template decode<uint32_t>();
-    auto colorSpace = decoder.template decode<WebCore::PlatformVideoColorSpace>();
+    auto colorSpace = decoder.template decode<CyberCore::PlatformVideoColorSpace>();
     if (!decoder.isValid())
         return std::nullopt;
     return Properties { WTFMove(*reference), WTFMove(*presentationTime), *isMirrored, *rotation, *size, *pixelFormat, *colorSpace };
@@ -131,8 +131,8 @@ TextStream& operator<<(TextStream&, const RemoteVideoFrameProxy::Properties&);
 
 }
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebKit::RemoteVideoFrameProxy)
-    static bool isType(const WebCore::VideoFrame& videoFrame) { return videoFrame.isRemoteProxy(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberKit::RemoteVideoFrameProxy)
+    static bool isType(const CyberCore::VideoFrame& videoFrame) { return videoFrame.isRemoteProxy(); }
 SPECIALIZE_TYPE_TRAITS_END()
 
 #endif

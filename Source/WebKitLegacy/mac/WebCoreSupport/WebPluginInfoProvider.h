@@ -25,7 +25,7 @@
 
 #import <CyberCore/PluginInfoProvider.h>
 
-class WebPluginInfoProvider final : public WebCore::PluginInfoProvider {
+class WebPluginInfoProvider final : public CyberCore::PluginInfoProvider {
     friend class NeverDestroyed<WebPluginInfoProvider>;
 
 public:
@@ -34,8 +34,8 @@ public:
 
 private:
     void refreshPlugins() override;
-    Vector<WebCore::PluginInfo> pluginInfo(WebCore::Page&, std::optional<Vector<WebCore::SupportedPluginIdentifier>>&) final;
-    Vector<WebCore::PluginInfo> webVisiblePluginInfo(WebCore::Page&, const URL&) final;
+    Vector<CyberCore::PluginInfo> pluginInfo(CyberCore::Page&, std::optional<Vector<CyberCore::SupportedPluginIdentifier>>&) final;
+    Vector<CyberCore::PluginInfo> webVisiblePluginInfo(CyberCore::Page&, const URL&) final;
 
     WebPluginInfoProvider();
 };

@@ -24,7 +24,7 @@
 #include <wtf/URL.h>
 #include <wtf/text/StringHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SelectionData {
     WTF_MAKE_FAST_ALLOCATED;
@@ -79,4 +79,4 @@ private:
     RefPtr<SharedBuffer> m_customData;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

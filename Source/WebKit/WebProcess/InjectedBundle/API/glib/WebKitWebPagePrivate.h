@@ -21,10 +21,10 @@
 
 #include "APIDictionary.h"
 #include "UserMessage.h"
-#include "WebKitWebPage.h"
+#include "CyberKitWebPage.h"
 #include "WebPage.h"
 
-WebKitWebPage* webkitWebPageCreate(WebKit::WebPage*);
-void webkitWebPageDidReceiveUserMessage(WebKitWebPage*, WebKit::UserMessage&&, CompletionHandler<void(WebKit::UserMessage&&)>&&);
-WebKit::WebPage* webkitWebPageGetPage(WebKitWebPage*);
+CyberKitWebPage* webkitWebPageCreate(CyberKit::WebPage*);
+void webkitWebPageDidReceiveUserMessage(CyberKitWebPage*, CyberKit::UserMessage&&, CompletionHandler<void(CyberKit::UserMessage&&)>&&);
+CyberKit::WebPage* webkitWebPageGetPage(CyberKitWebPage*);
 

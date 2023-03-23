@@ -32,18 +32,18 @@
 #import <CyberCore/FontCascade.h>
 #import <CyberCore/FontPlatformData.h>
 #import <CyberCore/StringTruncator.h>
-#import <CyberCore/WebCoreJITOperations.h>
+#import <CyberCore/CyberCoreJITOperations.h>
 #import <wtf/MainThread.h>
 #import <wtf/NeverDestroyed.h>
 
-static WebCore::FontCascade& fontFromNSFont(NSFont *font)
+static CyberCore::FontCascade& fontFromNSFont(NSFont *font)
 {
     static NeverDestroyed<RetainPtr<NSFont>> currentNSFont;
-    static NeverDestroyed<WebCore::FontCascade> currentFont;
+    static NeverDestroyed<CyberCore::FontCascade> currentFont;
     if ([font isEqual:currentNSFont.get().get()])
         return currentFont;
     currentNSFont.get() = font;
-    currentFont.get() = WebCore::FontCascade(WebCore::FontPlatformData((__bridge CTFontRef)font, [font pointSize]));
+    currentFont.get() = CyberCore::FontCascade(CyberCore::FontPlatformData((__bridge CTFontRef)font, [font pointSize]));
     return currentFont;
 }
 
@@ -53,7 +53,7 @@ static WebCore::FontCascade& fontFromNSFont(NSFont *font)
 {
     JSC::initialize();
     WTF::initializeMainThread();
-    WebCore::populateJITOperations();
+    CyberCore::populateJITOperations();
 }
 
 + (NSString *)centerTruncateString:(NSString *)string toWidth:(float)maxWidth
@@ -64,7 +64,7 @@ static WebCore::FontCascade& fontFromNSFont(NSFont *font)
     if (!menuFont.get())
         return nil;
 
-    return WebCore::StringTruncator::centerTruncate(string, maxWidth, fontFromNSFont(menuFont.get().get()));
+    return CyberCore::StringTruncator::centerTruncate(string, maxWidth, fontFromNSFont(menuFont.get().get()));
 }
 
 + (NSString *)centerTruncateString:(NSString *)string toWidth:(float)maxWidth withFont:(NSFont *)font
@@ -72,7 +72,7 @@ static WebCore::FontCascade& fontFromNSFont(NSFont *font)
     if (!font)
         return nil;
 
-    return WebCore::StringTruncator::centerTruncate(string, maxWidth, fontFromNSFont(font));
+    return CyberCore::StringTruncator::centerTruncate(string, maxWidth, fontFromNSFont(font));
 }
 
 + (NSString *)rightTruncateString:(NSString *)string toWidth:(float)maxWidth withFont:(NSFont *)font
@@ -80,7 +80,7 @@ static WebCore::FontCascade& fontFromNSFont(NSFont *font)
     if (!font)
         return nil;
 
-    return WebCore::StringTruncator::rightTruncate(string, maxWidth, fontFromNSFont(font));
+    return CyberCore::StringTruncator::rightTruncate(string, maxWidth, fontFromNSFont(font));
 }
 
 + (float)widthOfString:(NSString *)string font:(NSFont *)font
@@ -88,7 +88,7 @@ static WebCore::FontCascade& fontFromNSFont(NSFont *font)
     if (!font)
         return 0;
 
-    return WebCore::StringTruncator::width(string, fontFromNSFont(font));
+    return CyberCore::StringTruncator::width(string, fontFromNSFont(font));
 }
 
 @end

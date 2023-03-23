@@ -51,7 +51,7 @@ namespace webrtc {
 using LocalEncoder = void*;
 }
 
-namespace WebCore {
+namespace CyberCore {
 class FrameRateMonitor;
 class PixelBufferConformerCV;
 }
@@ -76,7 +76,7 @@ private:
     explicit LibWebRTCCodecsProxy(GPUConnectionToWebProcess&);
     void initialize();
     auto createDecoderCallback(VideoDecoderIdentifier, bool useRemoteFrames, bool enableAdditionalLogging);
-    std::unique_ptr<WebCore::WebRTCVideoDecoder> createLocalDecoder(VideoDecoderIdentifier, VideoCodecType, bool useRemoteFrames, bool enableAdditionalLogging);
+    std::unique_ptr<CyberCore::WebRTCVideoDecoder> createLocalDecoder(VideoDecoderIdentifier, VideoCodecType, bool useRemoteFrames, bool enableAdditionalLogging);
     WorkQueue& workQueue() const { return m_queue; }
 
     // IPC::WorkQueueMessageReceiver overrides.
@@ -100,8 +100,8 @@ private:
     void setRTCLoggingLevel(WTFLogLevel);
 
     struct Decoder {
-        std::unique_ptr<WebCore::WebRTCVideoDecoder> webrtcDecoder;
-        std::unique_ptr<WebCore::FrameRateMonitor> frameRateMonitor;
+        std::unique_ptr<CyberCore::WebRTCVideoDecoder> webrtcDecoder;
+        std::unique_ptr<CyberCore::FrameRateMonitor> frameRateMonitor;
     };
     void doDecoderTask(VideoDecoderIdentifier, Function<void(Decoder&)>&&);
 
@@ -114,12 +114,12 @@ private:
     Ref<IPC::Connection> m_connection;
     Ref<WorkQueue> m_queue;
     Ref<RemoteVideoFrameObjectHeap> m_videoFrameObjectHeap;
-    WebCore::ProcessIdentity m_resourceOwner;
+    CyberCore::ProcessIdentity m_resourceOwner;
     HashMap<VideoDecoderIdentifier, Decoder> m_decoders WTF_GUARDED_BY_CAPABILITY(workQueue());
     HashMap<VideoEncoderIdentifier, Encoder> m_encoders WTF_GUARDED_BY_CAPABILITY(workQueue());
     std::atomic<bool> m_hasEncodersOrDecoders { false };
 
-    std::unique_ptr<WebCore::PixelBufferConformerCV> m_pixelBufferConformer;
+    std::unique_ptr<CyberCore::PixelBufferConformerCV> m_pixelBufferConformer;
 };
 
 }

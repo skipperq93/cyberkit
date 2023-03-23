@@ -32,21 +32,21 @@ namespace WebKit {
 
 FileSystemStorageHandleRegistry::FileSystemStorageHandleRegistry() = default;
 
-void FileSystemStorageHandleRegistry::registerHandle(WebCore::FileSystemHandleIdentifier identifier, FileSystemStorageHandle& handle)
+void FileSystemStorageHandleRegistry::registerHandle(CyberCore::FileSystemHandleIdentifier identifier, FileSystemStorageHandle& handle)
 {
     ASSERT(!m_handles.contains(identifier));
 
     m_handles.add(identifier, handle);
 }
 
-void FileSystemStorageHandleRegistry::unregisterHandle(WebCore::FileSystemHandleIdentifier identifier)
+void FileSystemStorageHandleRegistry::unregisterHandle(CyberCore::FileSystemHandleIdentifier identifier)
 {
     ASSERT(m_handles.contains(identifier));
 
     m_handles.remove(identifier);
 }
 
-FileSystemStorageHandle* FileSystemStorageHandleRegistry::getHandle(WebCore::FileSystemHandleIdentifier identifier)
+FileSystemStorageHandle* FileSystemStorageHandleRegistry::getHandle(CyberCore::FileSystemHandleIdentifier identifier)
 {
     if (auto handle = m_handles.get(identifier))
         return handle.get();

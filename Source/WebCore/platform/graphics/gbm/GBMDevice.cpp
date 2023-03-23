@@ -36,7 +36,7 @@
 #include <wtf/StdLibExtras.h>
 #include <xf86drm.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 const GBMDevice& GBMDevice::singleton()
 {
@@ -84,6 +84,6 @@ GBMDevice::~GBMDevice()
         close(m_fd);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(LIBGBM)

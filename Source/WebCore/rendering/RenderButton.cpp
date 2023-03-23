@@ -36,7 +36,7 @@
 #include "RenderThemeIOS.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -176,4 +176,4 @@ bool RenderButton::hasControlClip() const
     return is<HTMLInputElement>(formControlElement());
 }
 
-} // namespace WebCore
+} // namespace CyberCore

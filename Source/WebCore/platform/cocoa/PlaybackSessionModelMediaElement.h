@@ -34,7 +34,7 @@
 #include <wtf/RefPtr.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioTrack;
 class HTMLMediaElement;
@@ -52,9 +52,9 @@ public:
 
     WEBCORE_EXPORT void mediaEngineChanged();
 
-    WEBCORE_EXPORT void handleEvent(WebCore::ScriptExecutionContext&, WebCore::Event&) final;
+    WEBCORE_EXPORT void handleEvent(CyberCore::ScriptExecutionContext&, CyberCore::Event&) final;
     void updateForEventName(const AtomString&);
-    bool operator==(const EventListener& rhs) const final { return static_cast<const WebCore::EventListener*>(this) == &rhs; }
+    bool operator==(const EventListener& rhs) const final { return static_cast<const CyberCore::EventListener*>(this) == &rhs; }
 
     WEBCORE_EXPORT void addClient(PlaybackSessionModelClient&);
     WEBCORE_EXPORT void removeClient(PlaybackSessionModelClient&);

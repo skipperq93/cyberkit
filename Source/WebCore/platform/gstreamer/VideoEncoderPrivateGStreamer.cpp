@@ -31,7 +31,7 @@
 #include <wtf/text/StringToIntegerConversion.h>
 #include <wtf/text/StringView.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 GST_DEBUG_CATEGORY(video_encoder_debug);
 #define GST_CAT_DEFAULT video_encoder_debug

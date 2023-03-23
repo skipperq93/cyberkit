@@ -42,11 +42,11 @@
 #import <CyberCore/ScrollView.h>
 #import <CyberCore/Scrollbar.h>
 
-namespace ax = WebCore::Accessibility;
+namespace ax = CyberCore::Accessibility;
 
 @implementation WKAccessibilityWebPageObjectBase
 
-- (NakedPtr<WebCore::AXObjectCache>)axObjectCache
+- (NakedPtr<CyberCore::AXObjectCache>)axObjectCache
 {
     ASSERT(isMainRunLoop());
 
@@ -57,7 +57,7 @@ namespace ax = WebCore::Accessibility;
     if (!page)
         return nullptr;
 
-    auto* localMainFrame = dynamicDowncast<WebCore::LocalFrame>(page->mainFrame());
+    auto* localMainFrame = dynamicDowncast<CyberCore::LocalFrame>(page->mainFrame());
     if (!localMainFrame || !localMainFrame->document())
         return nullptr;
 
@@ -82,8 +82,8 @@ namespace ax = WebCore::Accessibility;
 - (id)accessibilityRootObjectWrapper
 {
     return ax::retrieveAutoreleasedValueFromMainThread<id>([protectedSelf = retainPtr(self)] () -> RetainPtr<id> {
-        if (!WebCore::AXObjectCache::accessibilityEnabled())
-            WebCore::AXObjectCache::enableAccessibility();
+        if (!CyberCore::AXObjectCache::accessibilityEnabled())
+            CyberCore::AXObjectCache::enableAccessibility();
 
         if (protectedSelf.get()->m_hasMainFramePlugin)
             return protectedSelf.get().accessibilityPluginObject;
@@ -97,7 +97,7 @@ namespace ax = WebCore::Accessibility;
     });
 }
 
-- (void)setWebPage:(NakedPtr<WebKit::WebPage>)page
+- (void)setWebPage:(NakedPtr<CyberKit::WebPage>)page
 {
     ASSERT(isMainRunLoop());
 

@@ -43,7 +43,7 @@
 #import <pal/cocoa/VisionKitCoreSoftLink.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 RetainPtr<CocoaImageAnalyzer> createImageAnalyzer()
 {

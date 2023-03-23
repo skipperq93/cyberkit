@@ -31,7 +31,7 @@
 #include "NetworkCacheIOChannel.h"
 #include "NetworkCacheKey.h"
 #include "NetworkProcess.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include <CyberCore/CacheQueryOptions.h>
 #include <CyberCore/CrossOriginAccessControl.h>
 #include <CyberCore/HTTPParsers.h>
@@ -51,8 +51,8 @@ namespace WebKit {
 
 namespace CacheStorage {
 
-using namespace WebCore;
-using namespace WebCore::DOMCacheEngine;
+using namespace CyberCore;
+using namespace CyberCore::DOMCacheEngine;
 using namespace NetworkCache;
 
 static inline String computeKeyURL(const URL& url)
@@ -72,7 +72,7 @@ static inline Vector<uint64_t> queryCache(const Vector<RecordInformation>* recor
 
     Vector<uint64_t> results;
     for (const auto& record : *records) {
-        if (WebCore::DOMCacheEngine::queryCacheMatch(request, record.url, record.hasVaryStar, record.varyHeaders, options))
+        if (CyberCore::DOMCacheEngine::queryCacheMatch(request, record.url, record.hasVaryStar, record.varyHeaders, options))
             results.append(record.identifier);
     }
     return results;
@@ -80,7 +80,7 @@ static inline Vector<uint64_t> queryCache(const Vector<RecordInformation>* recor
 
 static inline void updateVaryInformation(RecordInformation& recordInformation, const ResourceRequest& request, const ResourceResponse& response)
 {
-    auto varyValue = response.httpHeaderField(WebCore::HTTPHeaderName::Vary);
+    auto varyValue = response.httpHeaderField(CyberCore::HTTPHeaderName::Vary);
     if (varyValue.isNull()) {
         recordInformation.hasVaryStar = false;
         recordInformation.varyHeaders = { };
@@ -134,7 +134,7 @@ RecordInformation RecordInformation::isolatedCopy() &&
 }
 
 struct TraversalResult {
-    WebCore::DOMCacheIdentifier cacheIdentifier;
+    CyberCore::DOMCacheIdentifier cacheIdentifier;
     HashMap<String, Vector<RecordInformation>> records;
     Vector<Key> failedRecords;
 
@@ -394,7 +394,7 @@ void Cache::storeRecords(Vector<Record>&& records, RecordIdentifiersCallback&& c
 {
     auto taskCounter = AsynchronousPutTaskCounter::create(WTFMove(callback));
 
-    WebCore::CacheQueryOptions options;
+    CyberCore::CacheQueryOptions options;
     for (auto& record : records) {
         auto* sameURLRecords = recordsFromURL(record.request.url());
         auto matchingRecords = queryCache(sameURLRecords, record.request, options);
@@ -419,7 +419,7 @@ void Cache::put(Vector<Record>&& records, RecordIdentifiersCallback&& callback)
 {
     ASSERT(m_state == State::Open);
 
-    WebCore::CacheQueryOptions options;
+    CyberCore::CacheQueryOptions options;
     CheckedUint64 spaceRequired = 0;
 
     for (auto& record : records) {
@@ -455,7 +455,7 @@ void Cache::put(Vector<Record>&& records, RecordIdentifiersCallback&& callback)
     });
 }
 
-void Cache::remove(WebCore::ResourceRequest&& request, WebCore::CacheQueryOptions&& options, RecordIdentifiersCallback&& callback)
+void Cache::remove(CyberCore::ResourceRequest&& request, CyberCore::CacheQueryOptions&& options, RecordIdentifiersCallback&& callback)
 {
     ASSERT(m_state == State::Open);
 
@@ -567,9 +567,9 @@ Storage::Record Cache::encode(const RecordInformation& recordInformation, const 
 
     Data header(encoder.buffer(), encoder.bufferSize());
     Data body;
-    WTF::switchOn(record.responseBody, [](const Ref<WebCore::FormData>& formData) {
+    WTF::switchOn(record.responseBody, [](const Ref<CyberCore::FormData>& formData) {
         // FIXME: Store form data body.
-    }, [&](const Ref<WebCore::SharedBuffer>& buffer) {
+    }, [&](const Ref<CyberCore::SharedBuffer>& buffer) {
         body = { buffer->data(), buffer->size() };
     }, [](const std::nullptr_t&) {
     });
@@ -577,7 +577,7 @@ Storage::Record Cache::encode(const RecordInformation& recordInformation, const 
     return { recordInformation.key, { }, header, body, { } };
 }
 
-static std::optional<WebCore::DOMCacheEngine::Record> decodeDOMCacheRecord(WTF::Persistence::Decoder& decoder)
+static std::optional<CyberCore::DOMCacheEngine::Record> decodeDOMCacheRecord(WTF::Persistence::Decoder& decoder)
 {
     std::optional<FetchHeaders::Guard> requestHeadersGuard;
     decoder >> requestHeadersGuard;
@@ -644,7 +644,7 @@ std::optional<Cache::DecodedRecord> Cache::decodeRecordHeader(const Storage::Rec
     if (!size)
         return std::nullopt;
 
-    std::optional<WebCore::DOMCacheEngine::Record> record = decodeDOMCacheRecord(decoder);
+    std::optional<CyberCore::DOMCacheEngine::Record> record = decodeDOMCacheRecord(decoder);
     if (!record)
         return std::nullopt;
 
@@ -663,7 +663,7 @@ std::optional<Record> Cache::decode(const Storage::Record& storage)
         return std::nullopt;
 
     auto record = WTFMove(result->record);
-    record.responseBody = WebCore::SharedBuffer::create(storage.body.data(), storage.body.size());
+    record.responseBody = CyberCore::SharedBuffer::create(storage.body.data(), storage.body.size());
 
     return record;
 }

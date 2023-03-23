@@ -37,7 +37,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/TypeCasts.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FloatRect;
 class TimingFunction;
@@ -94,24 +94,24 @@ public:
 
     // Basic-animation properties.
     virtual void setFromValue(float) = 0;
-    virtual void setFromValue(const WebCore::TransformationMatrix&) = 0;
+    virtual void setFromValue(const CyberCore::TransformationMatrix&) = 0;
     virtual void setFromValue(const FloatPoint3D&) = 0;
-    virtual void setFromValue(const WebCore::Color&) = 0;
+    virtual void setFromValue(const CyberCore::Color&) = 0;
     virtual void setFromValue(const FilterOperation*) = 0;
     virtual void copyFromValueFrom(const PlatformCAAnimation&) = 0;
 
     virtual void setToValue(float) = 0;
-    virtual void setToValue(const WebCore::TransformationMatrix&) = 0;
+    virtual void setToValue(const CyberCore::TransformationMatrix&) = 0;
     virtual void setToValue(const FloatPoint3D&) = 0;
-    virtual void setToValue(const WebCore::Color&) = 0;
+    virtual void setToValue(const CyberCore::Color&) = 0;
     virtual void setToValue(const FilterOperation*) = 0;
     virtual void copyToValueFrom(const PlatformCAAnimation&) = 0;
 
     // Keyframe-animation properties.
     virtual void setValues(const Vector<float>&) = 0;
-    virtual void setValues(const Vector<WebCore::TransformationMatrix>&) = 0;
+    virtual void setValues(const Vector<CyberCore::TransformationMatrix>&) = 0;
     virtual void setValues(const Vector<FloatPoint3D>&) = 0;
-    virtual void setValues(const Vector<WebCore::Color>&) = 0;
+    virtual void setValues(const Vector<CyberCore::Color>&) = 0;
     virtual void setValues(const Vector<RefPtr<FilterOperation>>&) = 0;
     virtual void copyValuesFrom(const PlatformCAAnimation&) = 0;
 
@@ -153,50 +153,50 @@ WEBCORE_EXPORT WTF::TextStream& operator<<(WTF::TextStream&, PlatformCAAnimation
 WEBCORE_EXPORT WTF::TextStream& operator<<(WTF::TextStream&, PlatformCAAnimation::FillModeType);
 WEBCORE_EXPORT WTF::TextStream& operator<<(WTF::TextStream&, PlatformCAAnimation::ValueFunctionType);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #define SPECIALIZE_TYPE_TRAITS_CAANIMATION(ToValueTypeName, predicate) \
 SPECIALIZE_TYPE_TRAITS_BEGIN(ToValueTypeName) \
-    static bool isType(const WebCore::PlatformCAAnimation& animation) { return animation.predicate; } \
+    static bool isType(const CyberCore::PlatformCAAnimation& animation) { return animation.predicate; } \
 SPECIALIZE_TYPE_TRAITS_END()
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::PlatformCAAnimation::AnimationType> {
+template<> struct EnumTraits<CyberCore::PlatformCAAnimation::AnimationType> {
     using values = EnumValues<
-        WebCore::PlatformCAAnimation::AnimationType,
-        WebCore::PlatformCAAnimation::AnimationType::Basic,
-        WebCore::PlatformCAAnimation::AnimationType::Group,
-        WebCore::PlatformCAAnimation::AnimationType::Keyframe,
-        WebCore::PlatformCAAnimation::AnimationType::Spring
+        CyberCore::PlatformCAAnimation::AnimationType,
+        CyberCore::PlatformCAAnimation::AnimationType::Basic,
+        CyberCore::PlatformCAAnimation::AnimationType::Group,
+        CyberCore::PlatformCAAnimation::AnimationType::Keyframe,
+        CyberCore::PlatformCAAnimation::AnimationType::Spring
     >;
 };
 
-template<> struct EnumTraits<WebCore::PlatformCAAnimation::FillModeType> {
+template<> struct EnumTraits<CyberCore::PlatformCAAnimation::FillModeType> {
     using values = EnumValues<
-        WebCore::PlatformCAAnimation::FillModeType,
-        WebCore::PlatformCAAnimation::FillModeType::NoFillMode,
-        WebCore::PlatformCAAnimation::FillModeType::Forwards,
-        WebCore::PlatformCAAnimation::FillModeType::Backwards,
-        WebCore::PlatformCAAnimation::FillModeType::Both
+        CyberCore::PlatformCAAnimation::FillModeType,
+        CyberCore::PlatformCAAnimation::FillModeType::NoFillMode,
+        CyberCore::PlatformCAAnimation::FillModeType::Forwards,
+        CyberCore::PlatformCAAnimation::FillModeType::Backwards,
+        CyberCore::PlatformCAAnimation::FillModeType::Both
     >;
 };
 
-template<> struct EnumTraits<WebCore::PlatformCAAnimation::ValueFunctionType> {
+template<> struct EnumTraits<CyberCore::PlatformCAAnimation::ValueFunctionType> {
     using values = EnumValues<
-        WebCore::PlatformCAAnimation::ValueFunctionType,
-        WebCore::PlatformCAAnimation::ValueFunctionType::NoValueFunction,
-        WebCore::PlatformCAAnimation::ValueFunctionType::RotateX,
-        WebCore::PlatformCAAnimation::ValueFunctionType::RotateY,
-        WebCore::PlatformCAAnimation::ValueFunctionType::RotateZ,
-        WebCore::PlatformCAAnimation::ValueFunctionType::ScaleX,
-        WebCore::PlatformCAAnimation::ValueFunctionType::ScaleY,
-        WebCore::PlatformCAAnimation::ValueFunctionType::ScaleZ,
-        WebCore::PlatformCAAnimation::ValueFunctionType::Scale,
-        WebCore::PlatformCAAnimation::ValueFunctionType::TranslateX,
-        WebCore::PlatformCAAnimation::ValueFunctionType::TranslateY,
-        WebCore::PlatformCAAnimation::ValueFunctionType::TranslateZ,
-        WebCore::PlatformCAAnimation::ValueFunctionType::Translate
+        CyberCore::PlatformCAAnimation::ValueFunctionType,
+        CyberCore::PlatformCAAnimation::ValueFunctionType::NoValueFunction,
+        CyberCore::PlatformCAAnimation::ValueFunctionType::RotateX,
+        CyberCore::PlatformCAAnimation::ValueFunctionType::RotateY,
+        CyberCore::PlatformCAAnimation::ValueFunctionType::RotateZ,
+        CyberCore::PlatformCAAnimation::ValueFunctionType::ScaleX,
+        CyberCore::PlatformCAAnimation::ValueFunctionType::ScaleY,
+        CyberCore::PlatformCAAnimation::ValueFunctionType::ScaleZ,
+        CyberCore::PlatformCAAnimation::ValueFunctionType::Scale,
+        CyberCore::PlatformCAAnimation::ValueFunctionType::TranslateX,
+        CyberCore::PlatformCAAnimation::ValueFunctionType::TranslateY,
+        CyberCore::PlatformCAAnimation::ValueFunctionType::TranslateZ,
+        CyberCore::PlatformCAAnimation::ValueFunctionType::Translate
     >;
 };
 

@@ -30,7 +30,7 @@
 
 #include "RenderBox.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderReplica final : public RenderBox {
     WTF_MAKE_ISO_ALLOCATED(RenderReplica);
@@ -52,4 +52,4 @@ private:
     void computePreferredLogicalWidths() override;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

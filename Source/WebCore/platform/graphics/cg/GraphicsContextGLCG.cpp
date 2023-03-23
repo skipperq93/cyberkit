@@ -47,7 +47,7 @@
 #include <wtf/RetainPtr.h>
 #include <wtf/StdLibExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum SourceDataFormatBase {
     SourceFormatBaseR = 0,
@@ -547,6 +547,6 @@ void GraphicsContextGL::paintToCanvas(const GraphicsContextGLAttributes& sourceC
     context.drawNativeImage(*image, imageSize, canvasRect, FloatRect(FloatPoint(), imageSize), { CompositeOperator::Copy });
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEBGL)

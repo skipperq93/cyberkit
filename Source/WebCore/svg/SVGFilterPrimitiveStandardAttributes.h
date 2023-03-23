@@ -28,7 +28,7 @@
 #include "SVGNames.h"
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Filter;
 class FilterEffect;
@@ -93,9 +93,9 @@ private:
     Ref<SVGAnimatedString> m_result { SVGAnimatedString::create(this) };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::SVGFilterPrimitiveStandardAttributes)
-    static bool isType(const WebCore::SVGElement& element) { return element.isFilterEffect(); }
-    static bool isType(const WebCore::Node& node) { return is<WebCore::SVGElement>(node) && isType(downcast<WebCore::SVGElement>(node)); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::SVGFilterPrimitiveStandardAttributes)
+    static bool isType(const CyberCore::SVGElement& element) { return element.isFilterEffect(); }
+    static bool isType(const CyberCore::Node& node) { return is<CyberCore::SVGElement>(node) && isType(downcast<CyberCore::SVGElement>(node)); }
 SPECIALIZE_TYPE_TRAITS_END()

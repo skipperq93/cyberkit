@@ -24,7 +24,7 @@
 #include "CairoUtilities.h"
 #include <cairo-xlib.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 BackingStoreBackendCairoX11::BackingStoreBackendCairoX11(unsigned long rootWindowID, Visual* visual, int depth, const IntSize& size, float deviceScaleFactor)
     : BackingStoreBackendCairo(size)
@@ -69,6 +69,6 @@ void BackingStoreBackendCairoX11::scroll(const IntRect& scrollRect, const IntSiz
     cairo_surface_mark_dirty_rectangle(m_surface.get(), targetRect.x(), targetRect.y(), targetRect.width(), targetRect.height());
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(CAIRO) && PLATFORM(X11)

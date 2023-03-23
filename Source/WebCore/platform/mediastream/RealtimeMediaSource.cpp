@@ -47,7 +47,7 @@
 #include <wtf/UUID.h>
 #include <wtf/text/StringHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static RealtimeMediaSource::Type toSourceType(CaptureDevice::DeviceType type)
 {
@@ -1201,6 +1201,6 @@ String convertEnumerationToString(RealtimeMediaSource::Type enumerationValue)
     return values[static_cast<size_t>(enumerationValue)];
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM)

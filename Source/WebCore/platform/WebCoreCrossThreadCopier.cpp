@@ -29,7 +29,7 @@
  */
 
 #include "config.h"
-#include "WebCoreCrossThreadCopier.h"
+#include "CyberCoreCrossThreadCopier.h"
 
 #include "ThreadSafeDataBuffer.h"
 #include <pal/SessionID.h>
@@ -41,9 +41,9 @@ CrossThreadCopierBase<false, false, PAL::SessionID>::Type CrossThreadCopierBase<
     return sessionID;
 }
 
-CrossThreadCopierBase<false, false, WebCore::ThreadSafeDataBuffer>::Type CrossThreadCopierBase<false, false, WebCore::ThreadSafeDataBuffer>::copy(const WebCore::ThreadSafeDataBuffer& buffer)
+CrossThreadCopierBase<false, false, CyberCore::ThreadSafeDataBuffer>::Type CrossThreadCopierBase<false, false, CyberCore::ThreadSafeDataBuffer>::copy(const CyberCore::ThreadSafeDataBuffer& buffer)
 {
-    return WebCore::ThreadSafeDataBuffer(buffer);
+    return CyberCore::ThreadSafeDataBuffer(buffer);
 }
 
 } // namespace WTF

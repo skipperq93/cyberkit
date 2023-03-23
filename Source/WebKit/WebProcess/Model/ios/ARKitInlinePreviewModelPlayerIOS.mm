@@ -32,9 +32,9 @@
 #import "WebPageProxyMessages.h"
 #import <CyberCore/GraphicsLayer.h>
 
-namespace WebKit {
+namespace CyberKit {
 
-Ref<ARKitInlinePreviewModelPlayerIOS> ARKitInlinePreviewModelPlayerIOS::create(WebPage& page, WebCore::ModelPlayerClient& client)
+Ref<ARKitInlinePreviewModelPlayerIOS> ARKitInlinePreviewModelPlayerIOS::create(WebPage& page, CyberCore::ModelPlayerClient& client)
 {
     return adoptRef(*new ARKitInlinePreviewModelPlayerIOS(page, client));
 }
@@ -45,7 +45,7 @@ static HashSet<ARKitInlinePreviewModelPlayerIOS*>& instances()
     return instances;
 }
 
-ARKitInlinePreviewModelPlayerIOS::ARKitInlinePreviewModelPlayerIOS(WebPage& page, WebCore::ModelPlayerClient& client)
+ARKitInlinePreviewModelPlayerIOS::ARKitInlinePreviewModelPlayerIOS(WebPage& page, CyberCore::ModelPlayerClient& client)
     : ARKitInlinePreviewModelPlayer(page, client)
 {
     instances().add(this);
@@ -80,7 +80,7 @@ void ARKitInlinePreviewModelPlayerIOS::pageLoadedModelInlinePreview(WebPage& pag
         modelPlayer->client()->didFinishLoading(*modelPlayer);
 }
 
-void ARKitInlinePreviewModelPlayerIOS::pageFailedToLoadModelInlinePreview(WebPage& page, WebCore::GraphicsLayer::PlatformLayerID layerID, const WebCore::ResourceError& error)
+void ARKitInlinePreviewModelPlayerIOS::pageFailedToLoadModelInlinePreview(WebPage& page, CyberCore::GraphicsLayer::PlatformLayerID layerID, const CyberCore::ResourceError& error)
 {
     if (auto* modelPlayer = modelPlayerForPageAndLayerID(page, layerID))
         modelPlayer->client()->didFailLoading(*modelPlayer, error);
@@ -97,7 +97,7 @@ std::optional<ModelIdentifier> ARKitInlinePreviewModelPlayerIOS::modelIdentifier
     return { };
 }
 
-// MARK: - WebCore::ModelPlayer overrides.
+// MARK: - CyberCore::ModelPlayer overrides.
 
 void ARKitInlinePreviewModelPlayerIOS::enterFullscreen()
 {
@@ -119,17 +119,17 @@ void ARKitInlinePreviewModelPlayerIOS::setInteractionEnabled(bool isInteractionE
         strongPage->send(Messages::WebPageProxy::ModelElementSetInteractionEnabled(*modelIdentifier, isInteractionEnabled));
 }
 
-void ARKitInlinePreviewModelPlayerIOS::handleMouseDown(const WebCore::LayoutPoint&, MonotonicTime)
+void ARKitInlinePreviewModelPlayerIOS::handleMouseDown(const CyberCore::LayoutPoint&, MonotonicTime)
 {
     ASSERT_NOT_REACHED();
 }
 
-void ARKitInlinePreviewModelPlayerIOS::handleMouseMove(const WebCore::LayoutPoint&, MonotonicTime)
+void ARKitInlinePreviewModelPlayerIOS::handleMouseMove(const CyberCore::LayoutPoint&, MonotonicTime)
 {
     ASSERT_NOT_REACHED();
 }
 
-void ARKitInlinePreviewModelPlayerIOS::handleMouseUp(const WebCore::LayoutPoint&, MonotonicTime)
+void ARKitInlinePreviewModelPlayerIOS::handleMouseUp(const CyberCore::LayoutPoint&, MonotonicTime)
 {
     ASSERT_NOT_REACHED();
 }

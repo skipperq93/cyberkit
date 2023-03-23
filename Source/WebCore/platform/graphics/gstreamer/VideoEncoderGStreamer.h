@@ -26,7 +26,7 @@
 #include <wtf/FastMalloc.h>
 #include <wtf/UniqueRef.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class GStreamerInternalVideoEncoder;
 
@@ -48,6 +48,6 @@ private:
     Ref<GStreamerInternalVideoEncoder> m_internalEncoder;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_CODECS) && USE(GSTREAMER)

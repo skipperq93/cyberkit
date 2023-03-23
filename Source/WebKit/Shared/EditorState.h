@@ -92,9 +92,9 @@ struct EditorState {
 #if PLATFORM(COCOA)
         uint64_t selectedTextLength { 0 };
         uint32_t textAlignment { NoAlignment };
-        WebCore::Color textColor { WebCore::Color::black }; // FIXME: Maybe this should be on VisualData?
+        CyberCore::Color textColor { CyberCore::Color::black }; // FIXME: Maybe this should be on VisualData?
         uint32_t enclosingListType { NoList };
-        WebCore::WritingDirection baseWritingDirection { WebCore::WritingDirection::Natural };
+        CyberCore::WritingDirection baseWritingDirection { CyberCore::WritingDirection::Natural };
 #endif
 #if PLATFORM(IOS_FAMILY)
         String markedText;
@@ -103,7 +103,7 @@ struct EditorState {
         UChar32 characterBeforeSelection { 0 };
         UChar32 twoCharacterBeforeSelection { 0 };
 #if USE(DICTATION_ALTERNATIVES)
-        Vector<WebCore::DictationContext> dictationContextsForSelection;
+        Vector<CyberCore::DictationContext> dictationContextsForSelection;
 #endif
         bool isReplaceAllowed { false };
         bool hasContent { false };
@@ -111,18 +111,18 @@ struct EditorState {
         bool insideFixedPosition { false };
         bool hasPlainText { false };
         bool editableRootIsTransparentOrFullyClipped { false };
-        WebCore::Color caretColor; // FIXME: Maybe this should be on VisualData?
+        CyberCore::Color caretColor; // FIXME: Maybe this should be on VisualData?
         bool atStartOfSentence { false };
         bool selectionStartIsAtParagraphBoundary { false };
         bool selectionEndIsAtParagraphBoundary { false };
-        std::optional<WebCore::ElementContext> selectedEditableImage;
+        std::optional<CyberCore::ElementContext> selectedEditableImage;
 #endif
 #if PLATFORM(MAC)
-        WebCore::IntRect selectionBoundingRect; // FIXME: Maybe this should be on VisualData?
+        CyberCore::IntRect selectionBoundingRect; // FIXME: Maybe this should be on VisualData?
         uint64_t candidateRequestStartPosition { 0 };
         String paragraphContextForCandidateRequest;
         String stringForCandidateRequest;
-        Vector<WebCore::FloatRect> evasionRectsAroundSelection;
+        Vector<CyberCore::FloatRect> evasionRectsAroundSelection;
 #endif
 #if PLATFORM(GTK) || PLATFORM(WPE)
         String surroundingContext;
@@ -130,7 +130,7 @@ struct EditorState {
         uint64_t surroundingContextSelectionPosition { 0 };
 #endif
 
-        std::optional<WebCore::FontAttributes> fontAttributes;
+        std::optional<CyberCore::FontAttributes> fontAttributes;
 
         bool canCut { false };
         bool canCopy { false };
@@ -142,15 +142,15 @@ struct EditorState {
     // Visual data is only updated in sync with rendering updates.
     struct VisualData {
 #if PLATFORM(IOS_FAMILY) || PLATFORM(GTK) || PLATFORM(WPE)
-        WebCore::IntRect caretRectAtStart;
+        CyberCore::IntRect caretRectAtStart;
 #endif
 #if PLATFORM(IOS_FAMILY)
-        WebCore::IntRect selectionClipRect;
-        WebCore::IntRect caretRectAtEnd;
-        Vector<WebCore::SelectionGeometry> selectionGeometries;
-        Vector<WebCore::SelectionGeometry> markedTextRects;
-        WebCore::IntRect markedTextCaretRectAtStart;
-        WebCore::IntRect markedTextCaretRectAtEnd;
+        CyberCore::IntRect selectionClipRect;
+        CyberCore::IntRect caretRectAtEnd;
+        Vector<CyberCore::SelectionGeometry> selectionGeometries;
+        Vector<CyberCore::SelectionGeometry> markedTextRects;
+        CyberCore::IntRect markedTextCaretRectAtStart;
+        CyberCore::IntRect markedTextCaretRectAtEnd;
 #endif
     };
 

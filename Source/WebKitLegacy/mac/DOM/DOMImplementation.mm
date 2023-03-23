@@ -38,19 +38,19 @@
 #import <CyberCore/JSExecState.h>
 #import <CyberCore/SVGTests.h>
 #import <CyberCore/ThreadCheck.h>
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 #import <CyberCore/WebScriptObjectPrivate.h>
 
 @implementation DOMImplementation
 
-static inline WebCore::DOMImplementation& unwrap(DOMImplementation& wrapper)
+static inline CyberCore::DOMImplementation& unwrap(DOMImplementation& wrapper)
 {
-    return *reinterpret_cast<WebCore::DOMImplementation*>(wrapper._internal);
+    return *reinterpret_cast<CyberCore::DOMImplementation*>(wrapper._internal);
 }
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainThread([DOMImplementation class], self))
+    if (CyberCoreObjCScheduleDeallocateOnMainThread([DOMImplementation class], self))
         return;
     if (_internal)
         unwrap(*self).deref();
@@ -59,30 +59,30 @@ static inline WebCore::DOMImplementation& unwrap(DOMImplementation& wrapper)
 
 - (BOOL)hasFeature:(NSString *)feature version:(NSString *)version
 {
-    return WebCore::SVGTests::hasFeatureForLegacyBindings(feature, version);
+    return CyberCore::SVGTests::hasFeatureForLegacyBindings(feature, version);
 }
 
 - (DOMDocumentType *)createDocumentType:(NSString *)qualifiedName publicId:(NSString *)publicId systemId:(NSString *)systemId
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(raiseOnDOMError(unwrap(*self).createDocumentType(qualifiedName, publicId, systemId)).ptr());
 }
 
 - (DOMDocument *)createDocument:(NSString *)namespaceURI qualifiedName:(NSString *)qualifiedName doctype:(DOMDocumentType *)doctype
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(raiseOnDOMError(unwrap(*self).createDocument(namespaceURI, qualifiedName, core(doctype))).ptr());
 }
 
 - (DOMCSSStyleSheet *)createCSSStyleSheet:(NSString *)title media:(NSString *)media
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(unwrap(*self).createCSSStyleSheet(title, media).ptr());
 }
 
 - (DOMHTMLDocument *)createHTMLDocument:(NSString *)title
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(unwrap(*self).createHTMLDocument(title).ptr());
 }
 
@@ -112,9 +112,9 @@ static inline WebCore::DOMImplementation& unwrap(DOMImplementation& wrapper)
 
 @end
 
-DOMImplementation *kit(WebCore::DOMImplementation* value)
+DOMImplementation *kit(CyberCore::DOMImplementation* value)
 {
-    WebCoreThreadViolationCheckRoundOne();
+    CyberCoreThreadViolationCheckRoundOne();
     if (!value)
         return nil;
     if (DOMImplementation *wrapper = getDOMWrapper(value))

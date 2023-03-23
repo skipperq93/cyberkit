@@ -28,7 +28,7 @@
 #include <wtf/HashMap.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class UserScriptInjectionTime : bool { DocumentStart, DocumentEnd };
 enum class WaitForNotificationBeforeInjecting : bool { No, Yes };
@@ -39,4 +39,4 @@ class UserScript;
 typedef Vector<std::unique_ptr<UserScript>> UserScriptVector;
 typedef HashMap<RefPtr<DOMWrapperWorld>, std::unique_ptr<UserScriptVector>> UserScriptMap;
 
-} // namespace WebCore
+} // namespace CyberCore

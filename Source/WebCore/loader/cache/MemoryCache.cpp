@@ -47,7 +47,7 @@
 #include <wtf/SetForScope.h>
 #include <wtf/text/CString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static const int cDefaultCacheCapacity = 8192 * 1024;
 static const Seconds cMinDelayBeforeLiveDecodedPrune { 1_s };
@@ -773,4 +773,4 @@ void MemoryCache::dumpLRULists(bool includeLive) const
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore

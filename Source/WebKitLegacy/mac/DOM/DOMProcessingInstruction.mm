@@ -36,33 +36,33 @@
 #import <wtf/GetPtr.h>
 #import <wtf/URL.h>
 
-#define IMPL static_cast<WebCore::ProcessingInstruction*>(reinterpret_cast<WebCore::Node*>(_internal))
+#define IMPL static_cast<CyberCore::ProcessingInstruction*>(reinterpret_cast<CyberCore::Node*>(_internal))
 
 @implementation DOMProcessingInstruction
 
 - (NSString *)target
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->target();
 }
 
 - (DOMStyleSheet *)sheet
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->sheet()));
 }
 
 @end
 
-WebCore::ProcessingInstruction* core(DOMProcessingInstruction *wrapper)
+CyberCore::ProcessingInstruction* core(DOMProcessingInstruction *wrapper)
 {
-    return wrapper ? reinterpret_cast<WebCore::ProcessingInstruction*>(wrapper->_internal) : 0;
+    return wrapper ? reinterpret_cast<CyberCore::ProcessingInstruction*>(wrapper->_internal) : 0;
 }
 
-DOMProcessingInstruction *kit(WebCore::ProcessingInstruction* value)
+DOMProcessingInstruction *kit(CyberCore::ProcessingInstruction* value)
 {
-    WebCoreThreadViolationCheckRoundOne();
-    return static_cast<DOMProcessingInstruction*>(kit(static_cast<WebCore::Node*>(value)));
+    CyberCoreThreadViolationCheckRoundOne();
+    return static_cast<DOMProcessingInstruction*>(kit(static_cast<CyberCore::Node*>(value)));
 }
 
 #undef IMPL

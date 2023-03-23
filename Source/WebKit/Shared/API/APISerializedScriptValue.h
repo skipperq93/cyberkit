@@ -44,14 +44,14 @@ namespace API {
 
 class SerializedScriptValue : public API::ObjectImpl<API::Object::Type::SerializedScriptValue> {
 public:
-    static Ref<SerializedScriptValue> create(Ref<WebCore::SerializedScriptValue>&& serializedValue)
+    static Ref<SerializedScriptValue> create(Ref<CyberCore::SerializedScriptValue>&& serializedValue)
     {
         return adoptRef(*new SerializedScriptValue(WTFMove(serializedValue)));
     }
     
     static RefPtr<SerializedScriptValue> create(JSContextRef context, JSValueRef value, JSValueRef* exception)
     {
-        RefPtr<WebCore::SerializedScriptValue> serializedValue = WebCore::SerializedScriptValue::create(context, value, exception);
+        RefPtr<CyberCore::SerializedScriptValue> serializedValue = CyberCore::SerializedScriptValue::create(context, value, exception);
         if (!serializedValue)
             return nullptr;
         return adoptRef(*new SerializedScriptValue(serializedValue.releaseNonNull()));
@@ -59,7 +59,7 @@ public:
     
     static Ref<SerializedScriptValue> createFromWireBytes(Vector<uint8_t>&& buffer)
     {
-        return adoptRef(*new SerializedScriptValue(WebCore::SerializedScriptValue::createFromWireBytes(WTFMove(buffer))));
+        return adoptRef(*new SerializedScriptValue(CyberCore::SerializedScriptValue::createFromWireBytes(WTFMove(buffer))));
     }
     
     JSValueRef deserialize(JSContextRef context, JSValueRef* exception)
@@ -68,28 +68,28 @@ public:
     }
     
 #if PLATFORM(COCOA) && defined(__OBJC__)
-    static id deserialize(WebCore::SerializedScriptValue&, JSValueRef* exception);
+    static id deserialize(CyberCore::SerializedScriptValue&, JSValueRef* exception);
     static RefPtr<SerializedScriptValue> createFromNSObject(id);
 #endif
 
 #if USE(GLIB)
     static JSCContext* sharedJSCContext();
-    static GRefPtr<JSCValue> deserialize(WebCore::SerializedScriptValue&);
+    static GRefPtr<JSCValue> deserialize(CyberCore::SerializedScriptValue&);
     static RefPtr<SerializedScriptValue> createFromGVariant(GVariant*);
     static RefPtr<SerializedScriptValue> createFromJSCValue(JSCValue*);
 #endif
 
     IPC::DataReference dataReference() const { return m_serializedScriptValue->wireBytes(); }
 
-    WebCore::SerializedScriptValue& internalRepresentation() { return m_serializedScriptValue.get(); }
+    CyberCore::SerializedScriptValue& internalRepresentation() { return m_serializedScriptValue.get(); }
 
 private:
-    explicit SerializedScriptValue(Ref<WebCore::SerializedScriptValue>&& serializedScriptValue)
+    explicit SerializedScriptValue(Ref<CyberCore::SerializedScriptValue>&& serializedScriptValue)
         : m_serializedScriptValue(WTFMove(serializedScriptValue))
     {
     }
 
-    Ref<WebCore::SerializedScriptValue> m_serializedScriptValue;
+    Ref<CyberCore::SerializedScriptValue> m_serializedScriptValue;
 };
     
 }

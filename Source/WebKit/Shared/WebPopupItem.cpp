@@ -33,7 +33,7 @@ namespace WebKit {
 
 WebPopupItem::WebPopupItem()
     : m_type(Type::Item)
-    , m_textDirection(WebCore::TextDirection::LTR)
+    , m_textDirection(CyberCore::TextDirection::LTR)
     , m_hasTextDirectionOverride(false)
     , m_isEnabled(true)
     , m_isSelected(false)
@@ -42,7 +42,7 @@ WebPopupItem::WebPopupItem()
 
 WebPopupItem::WebPopupItem(Type type)
     : m_type(type)
-    , m_textDirection(WebCore::TextDirection::LTR)
+    , m_textDirection(CyberCore::TextDirection::LTR)
     , m_hasTextDirectionOverride(false)
     , m_isEnabled(true)
     , m_isLabel(false)
@@ -50,7 +50,7 @@ WebPopupItem::WebPopupItem(Type type)
 {
 }
 
-WebPopupItem::WebPopupItem(Type type, const String& text, WebCore::TextDirection textDirection, bool hasTextDirectionOverride, const String& toolTip, const String& accessibilityText, bool isEnabled, bool isLabel, bool isSelected)
+WebPopupItem::WebPopupItem(Type type, const String& text, CyberCore::TextDirection textDirection, bool hasTextDirectionOverride, const String& toolTip, const String& accessibilityText, bool isEnabled, bool isLabel, bool isSelected)
     : m_type(type)
     , m_text(text)
     , m_textDirection(textDirection)

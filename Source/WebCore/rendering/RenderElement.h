@@ -26,7 +26,7 @@
 #include "LengthFunctions.h"
 #include "RenderObject.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ContentData;
 class ControlStates;
@@ -651,6 +651,6 @@ inline RenderObject* RenderElement::lastInFlowChild() const
     return nullptr;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderElement, isRenderElement())

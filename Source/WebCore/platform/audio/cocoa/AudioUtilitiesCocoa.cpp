@@ -31,7 +31,7 @@
 #include "AudioBus.h"
 #include "AudioDestinationCocoa.h"
 
-namespace WebCore {
+namespace CyberCore {
     
 AudioStreamBasicDescription audioStreamBasicDescriptionForAudioBus(AudioBus& bus)
 {

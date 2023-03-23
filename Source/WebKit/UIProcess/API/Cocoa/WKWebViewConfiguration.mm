@@ -1385,21 +1385,21 @@ static WebKit::AttributionOverrideTesting toAttributionOverrideTesting(_WKAttrib
 
 - (BOOL)_shouldRelaxThirdPartyCookieBlocking
 {
-    return _pageConfiguration->shouldRelaxThirdPartyCookieBlocking() == WebCore::ShouldRelaxThirdPartyCookieBlocking::Yes;
+    return _pageConfiguration->shouldRelaxThirdPartyCookieBlocking() == CyberCore::ShouldRelaxThirdPartyCookieBlocking::Yes;
 }
 
 - (void)_setShouldRelaxThirdPartyCookieBlocking:(BOOL)relax
 {
-    bool allowed = WebCore::applicationBundleIdentifier() == "com.apple.WebKit.TestWebKitAPI"_s;
+    bool allowed = CyberCore::applicationBundleIdentifier() == "com.apple.WebKit.TestWebKitAPI"_s;
 #if PLATFORM(MAC)
-    allowed = allowed || WebCore::MacApplication::isSafari();
+    allowed = allowed || CyberCore::MacApplication::isSafari();
 #elif PLATFORM(IOS_FAMILY)
-    allowed = allowed || WebCore::IOSApplication::isMobileSafari() || WebCore::IOSApplication::isSafariViewService();
+    allowed = allowed || CyberCore::IOSApplication::isMobileSafari() || CyberCore::IOSApplication::isSafariViewService();
 #endif
     if (!allowed)
         [NSException raise:NSObjectNotAvailableException format:@"_shouldRelaxThirdPartyCookieBlocking may only be used by Safari."];
 
-    _pageConfiguration->setShouldRelaxThirdPartyCookieBlocking(relax ? WebCore::ShouldRelaxThirdPartyCookieBlocking::Yes : WebCore::ShouldRelaxThirdPartyCookieBlocking::No);
+    _pageConfiguration->setShouldRelaxThirdPartyCookieBlocking(relax ? CyberCore::ShouldRelaxThirdPartyCookieBlocking::Yes : CyberCore::ShouldRelaxThirdPartyCookieBlocking::No);
 }
 
 - (NSString *)_processDisplayName

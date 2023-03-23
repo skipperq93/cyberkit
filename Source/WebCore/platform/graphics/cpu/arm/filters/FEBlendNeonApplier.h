@@ -32,7 +32,7 @@
 
 #include "FilterEffectApplier.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class FEBlend;
 
@@ -48,6 +48,6 @@ private:
     void applyPlatform(unsigned char* srcPixelArrayA, unsigned char* srcPixelArrayB, unsigned char* dstPixelArray, unsigned colorArrayLength) const;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // HAVE(ARM_NEON_INTRINSICS)

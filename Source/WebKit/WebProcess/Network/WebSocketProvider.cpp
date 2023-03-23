@@ -35,8 +35,8 @@
 #include "WebSocketChannelManager.h"
 #include "WebSocketStream.h"
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 Ref<SocketStreamHandle> WebSocketProvider::createSocketStreamHandle(const URL& url, SocketStreamHandleClient& client, WebSocketIdentifier identifier, PAL::SessionID sessionID, const String& credentialPartition, const StorageSessionProvider*)
 {
@@ -49,4 +49,4 @@ RefPtr<ThreadableWebSocketChannel> WebSocketProvider::createWebSocketChannel(Doc
     return WebSocketChannel::create(m_webPageProxyID, document, client);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

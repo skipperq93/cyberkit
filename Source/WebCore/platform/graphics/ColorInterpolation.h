@@ -30,7 +30,7 @@
 #include "ColorNormalization.h"
 #include "ColorTypes.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // Provides support for premulitplied and unpremultiplied operations on two color
 // operands. https://www.w3.org/TR/css-values-4/#combine-colors

@@ -22,7 +22,7 @@
 #include <wtf/Deque.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // FIXME: This should not start with "k".
 // FIXME: This is a shared tokenizer concept, not a SegmentedString concept, but this is the only common header for now.

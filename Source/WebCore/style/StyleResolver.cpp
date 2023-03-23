@@ -82,7 +82,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/AtomStringHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace Style {
 
 using namespace HTMLNames;
@@ -684,4 +684,4 @@ std::optional<DynamicMediaQueryEvaluationChanges> Resolver::evaluateDynamicMedia
 }
 
 } // namespace Style
-} // namespace WebCore
+} // namespace CyberCore

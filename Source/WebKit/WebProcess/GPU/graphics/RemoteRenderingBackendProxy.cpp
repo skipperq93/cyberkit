@@ -36,7 +36,7 @@
 #include "RemoteRenderingBackendMessages.h"
 #include "RemoteRenderingBackendProxyMessages.h"
 #include "SwapBuffersDisplayRequirement.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebPage.h"
 #include "WebProcess.h"
 #include <CyberScriptCore/TypedArrayInlines.h>
@@ -44,7 +44,7 @@
 
 namespace WebKit {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 std::unique_ptr<RemoteRenderingBackendProxy> RemoteRenderingBackendProxy::create(WebPage& webPage)
 {
@@ -159,12 +159,12 @@ RefPtr<ImageBuffer> RemoteRenderingBackendProxy::createImageBuffer(const FloatSi
     return nullptr;
 }
 
-void RemoteRenderingBackendProxy::moveToSerializedBuffer(WebCore::RenderingResourceIdentifier identifier, RemoteSerializedImageBufferWriteReference&& reference)
+void RemoteRenderingBackendProxy::moveToSerializedBuffer(CyberCore::RenderingResourceIdentifier identifier, RemoteSerializedImageBufferWriteReference&& reference)
 {
     send(Messages::RemoteRenderingBackend::MoveToSerializedBuffer(identifier, reference));
 }
 
-void RemoteRenderingBackendProxy::moveToImageBuffer(RemoteSerializedImageBufferWriteReference&& reference, WebCore::RenderingResourceIdentifier identifier)
+void RemoteRenderingBackendProxy::moveToImageBuffer(RemoteSerializedImageBufferWriteReference&& reference, CyberCore::RenderingResourceIdentifier identifier)
 {
     send(Messages::RemoteRenderingBackend::MoveToImageBuffer(reference, identifier));
 }
@@ -368,7 +368,7 @@ auto RemoteRenderingBackendProxy::prepareBuffersForDisplay(const Vector<LayerPre
     return result;
 }
 
-void RemoteRenderingBackendProxy::markSurfacesVolatile(Vector<WebCore::RenderingResourceIdentifier>&& identifiers, CompletionHandler<void(bool)>&& completionHandler)
+void RemoteRenderingBackendProxy::markSurfacesVolatile(Vector<CyberCore::RenderingResourceIdentifier>&& identifiers, CompletionHandler<void(bool)>&& completionHandler)
 {
     auto requestIdentifier = MarkSurfacesAsVolatileRequestIdentifier::generate();
     m_markAsVolatileRequests.add(requestIdentifier, WTFMove(completionHandler));
@@ -376,7 +376,7 @@ void RemoteRenderingBackendProxy::markSurfacesVolatile(Vector<WebCore::Rendering
     send(Messages::RemoteRenderingBackend::MarkSurfacesVolatile(requestIdentifier, identifiers));
 }
 
-void RemoteRenderingBackendProxy::didMarkLayersAsVolatile(MarkSurfacesAsVolatileRequestIdentifier requestIdentifier, const Vector<WebCore::RenderingResourceIdentifier>& markedVolatileBufferIdentifiers, bool didMarkAllLayersAsVolatile)
+void RemoteRenderingBackendProxy::didMarkLayersAsVolatile(MarkSurfacesAsVolatileRequestIdentifier requestIdentifier, const Vector<CyberCore::RenderingResourceIdentifier>& markedVolatileBufferIdentifiers, bool didMarkAllLayersAsVolatile)
 {
     ASSERT(requestIdentifier);
     auto completionHandler = m_markAsVolatileRequests.take(requestIdentifier);
@@ -386,7 +386,7 @@ void RemoteRenderingBackendProxy::didMarkLayersAsVolatile(MarkSurfacesAsVolatile
     for (auto identifier : markedVolatileBufferIdentifiers) {
         auto imageBuffer = m_remoteResourceCacheProxy.cachedImageBuffer(identifier);
         if (imageBuffer)
-            imageBuffer->setVolatilityState(WebCore::VolatilityState::Volatile);
+            imageBuffer->setVolatilityState(CyberCore::VolatilityState::Volatile);
     }
     completionHandler(didMarkAllLayersAsVolatile);
 }

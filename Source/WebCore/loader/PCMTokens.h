@@ -34,7 +34,7 @@ OBJC_CLASS RSABSSATokenWaitingActivation;
 OBJC_CLASS RSABSSATokenBlinder;
 #endif
 
-namespace WebCore::PCM {
+namespace CyberCore::PCM {
 
 struct UnlinkableToken {
 #if PLATFORM(COCOA)

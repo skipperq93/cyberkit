@@ -19,11 +19,11 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGElement;
 class Path;
 
 Path pathFromGraphicsElement(const SVGElement*);
 
-} // namespace WebCore
+} // namespace CyberCore

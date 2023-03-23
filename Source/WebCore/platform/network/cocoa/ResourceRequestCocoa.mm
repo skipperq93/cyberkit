@@ -40,7 +40,7 @@
 #import <wtf/cocoa/VectorCocoa.h>
 #import <wtf/text/CString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 ResourceRequest::ResourceRequest(NSURLRequest *nsRequest)
     : m_nsRequest(nsRequest)
@@ -108,12 +108,12 @@ ResourceRequestPlatformData ResourceRequest::getResourceRequestPlatformData() co
 {
     RELEASE_ASSERT(m_httpBody || m_nsRequest);
     
-    auto requestToSerialize = retainPtr(this->nsURLRequest(WebCore::HTTPBodyUpdatePolicy::DoNotUpdateHTTPBody));
+    auto requestToSerialize = retainPtr(this->nsURLRequest(CyberCore::HTTPBodyUpdatePolicy::DoNotUpdateHTTPBody));
 
     if (Class requestClass = [requestToSerialize class]; UNLIKELY(requestClass != [NSURLRequest class] && requestClass != [NSMutableURLRequest class])) {
-        WebCore::ResourceRequest request(requestToSerialize.get());
-        request.replacePlatformRequest(WebCore::HTTPBodyUpdatePolicy::DoNotUpdateHTTPBody);
-        requestToSerialize = retainPtr(request.nsURLRequest(WebCore::HTTPBodyUpdatePolicy::DoNotUpdateHTTPBody));
+        CyberCore::ResourceRequest request(requestToSerialize.get());
+        request.replacePlatformRequest(CyberCore::HTTPBodyUpdatePolicy::DoNotUpdateHTTPBody);
+        requestToSerialize = retainPtr(request.nsURLRequest(CyberCore::HTTPBodyUpdatePolicy::DoNotUpdateHTTPBody));
     }
     ASSERT([requestToSerialize class] == [NSURLRequest class] || [requestToSerialize class] == [NSMutableURLRequest class]);
 
@@ -341,7 +341,7 @@ void ResourceRequest::doUpdatePlatformHTTPBody()
 
     auto formData = httpBody();
     if (formData && !formData->isEmpty())
-        WebCore::setHTTPBody(nsRequest.get(), WTFMove(formData));
+        CyberCore::setHTTPBody(nsRequest.get(), WTFMove(formData));
 
     if (NSInputStream *bodyStream = [nsRequest HTTPBodyStream]) {
         // For streams, provide a Content-Length to avoid using chunked encoding, and to get accurate total length in callbacks.
@@ -390,7 +390,7 @@ NSCachedURLResponse *cachedResponseForRequest(CFURLStorageSessionRef storageSess
     return adoptNS([[NSCachedURLResponse alloc] _initWithCFCachedURLResponse:cachedResponse.get()]).autorelease();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(COCOA)
 

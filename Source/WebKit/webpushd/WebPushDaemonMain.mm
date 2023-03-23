@@ -42,7 +42,7 @@
 #import <wtf/OSObjectPtr.h>
 #import <wtf/spi/darwin/XPCSPI.h>
 
-using WebKit::Daemon::EncodedMessage;
+using CyberKit::Daemon::EncodedMessage;
 using WebPushD::Daemon;
 
 static const ASCIILiteral entitlementName = "com.apple.private.webkit.webpush"_s;
@@ -72,19 +72,19 @@ using WebPushD::connectionEventHandler;
 using WebPushD::connectionAdded;
 using WebPushD::connectionRemoved;
 
-namespace WebKit {
+namespace CyberKit {
 
 static void applySandbox()
 {
 #if PLATFORM(MAC)
-    NSBundle *bundle = [NSBundle bundleWithIdentifier:@"com.apple.WebKit"];
-    auto profilePath = makeString(String([bundle resourcePath]), "/com.apple.WebKit.webpushd.mac.sb"_s);
+    NSBundle *bundle = [NSBundle bundleWithIdentifier:@"com.apple.CyberKit"];
+    auto profilePath = makeString(String([bundle resourcePath]), "/com.apple.CyberKit.webpushd.mac.sb"_s);
     if (FileSystem::fileExists(profilePath)) {
         AuxiliaryProcess::applySandboxProfileForDaemon(profilePath, "com.apple.webkit.webpushd"_s);
         return;
     }
 
-    auto oldProfilePath = makeString(String([bundle resourcePath]), "/com.apple.WebKit.webpushd.sb"_s);
+    auto oldProfilePath = makeString(String([bundle resourcePath]), "/com.apple.CyberKit.webpushd.sb"_s);
     AuxiliaryProcess::applySandboxProfileForDaemon(oldProfilePath, "com.apple.webkit.webpushd"_s);
 #endif
 }
@@ -103,8 +103,8 @@ int WebPushDaemonMain(int argc, char** argv)
 
 #if !LOG_DISABLED || !RELEASE_LOG_DISABLED
         WTF::logChannels().initializeLogChannelsIfNecessary();
-        WebCore::logChannels().initializeLogChannelsIfNecessary();
-        WebKit::logChannels().initializeLogChannelsIfNecessary();
+        CyberCore::logChannels().initializeLogChannelsIfNecessary();
+        CyberKit::logChannels().initializeLogChannelsIfNecessary();
 #endif // !LOG_DISABLED || !RELEASE_LOG_DISABLED
 
         static struct option options[] = {
@@ -136,13 +136,13 @@ int WebPushDaemonMain(int argc, char** argv)
             }
         }
 
-        WebKit::startListeningForMachServiceConnections(machServiceName, entitlementName, connectionAdded, connectionRemoved, connectionEventHandler);
+        CyberKit::startListeningForMachServiceConnections(machServiceName, entitlementName, connectionAdded, connectionRemoved, connectionEventHandler);
 
         if (useMockPushService)
             ::WebPushD::Daemon::singleton().startMockPushService();
         else {
             String libraryPath = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES)[0];
-            String pushDatabasePath = FileSystem::pathByAppendingComponents(libraryPath, { "WebKit"_s, "WebPush"_s, "PushDatabase.db"_s });
+            String pushDatabasePath = FileSystem::pathByAppendingComponents(libraryPath, { "CyberKit"_s, "WebPush"_s, "PushDatabase.db"_s });
             ::WebPushD::Daemon::singleton().startPushService(String::fromLatin1(incomingPushServiceName), pushDatabasePath);
         }
     }
@@ -150,4 +150,4 @@ int WebPushDaemonMain(int argc, char** argv)
     return 0;
 }
 
-} // namespace WebKit
+} // namespace CyberKit

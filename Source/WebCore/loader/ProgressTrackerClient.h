@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 class Frame;
 
@@ -42,4 +42,4 @@ public:
     virtual void progressFinished(Frame& originatingProgressFrame) = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

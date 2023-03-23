@@ -21,8 +21,8 @@
 #error "Only <wpe/webkitdom.h> can be included directly."
 #endif
 
-#ifndef WebKitDOMDefines_h
-#define WebKitDOMDefines_h
+#ifndef CyberKitDOMDefines_h
+#define CyberKitDOMDefines_h
 
 #include <glib.h>
 
@@ -43,4 +43,4 @@
     #define WEBKIT_API
 #endif
 
-#endif /* WebKitDOMDefines_h */
+#endif /* CyberKitDOMDefines_h */

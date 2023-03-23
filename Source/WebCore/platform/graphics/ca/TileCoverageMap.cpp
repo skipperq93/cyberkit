@@ -30,7 +30,7 @@
 #include "TileController.h"
 #include "TileGrid.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 TileCoverageMap::TileCoverageMap(const TileController& controller)
     : m_controller(controller)

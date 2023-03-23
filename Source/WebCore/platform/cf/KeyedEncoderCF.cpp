@@ -30,7 +30,7 @@
 #include <CoreFoundation/CoreFoundation.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 std::unique_ptr<KeyedEncoder> KeyedEncoder::encoder()
 {
@@ -154,4 +154,4 @@ RefPtr<SharedBuffer> KeyedEncoderCF::finishEncoding()
     return SharedBuffer::create(data.get());
 }
 
-} // namespace WebCore
+} // namespace CyberCore

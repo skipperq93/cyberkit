@@ -29,7 +29,7 @@
 
 #include "CoreAudioSharedUnit.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace MockAudioSharedUnit {
 
@@ -38,7 +38,7 @@ void increaseBufferSize();
 
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM)
 

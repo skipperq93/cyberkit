@@ -28,7 +28,7 @@
 GST_DEBUG_CATEGORY(webkit_video_capturer_debug);
 #define GST_CAT_DEFAULT webkit_video_capturer_debug
 
-namespace WebCore {
+namespace CyberCore {
 
 static void initializeDebugCategory()
 {
@@ -359,6 +359,6 @@ void GStreamerVideoCapturer::reconfigure()
     g_object_set(m_videoSrcMIMETypeFilter.get(), "caps", caps.get(), nullptr);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM) && USE(GSTREAMER)

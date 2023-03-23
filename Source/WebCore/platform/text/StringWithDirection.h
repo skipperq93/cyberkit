@@ -34,7 +34,7 @@
 #include "WritingMode.h"
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // In some circumstances we want to store a String along with the TextDirection
 // of the String as learned from the context of the String. For example,

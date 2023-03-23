@@ -33,7 +33,7 @@
 #import <sys/stat.h>
 #import <sys/time.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 auto PluginBlocklist::loadPolicyForPluginVersion(NSString *bundleIdentifier, NSString *bundleVersionString) -> LoadPolicy
 {

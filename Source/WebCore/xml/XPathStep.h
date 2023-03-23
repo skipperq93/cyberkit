@@ -29,7 +29,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/AtomString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Node;
 
@@ -96,4 +96,4 @@ private:
 void optimizeStepPair(Step&, Step&, bool& dropSecondStep);
 
 } // namespace XPath
-} // namespace WebCore
+} // namespace CyberCore

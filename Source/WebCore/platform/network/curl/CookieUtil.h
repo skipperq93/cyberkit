@@ -28,7 +28,7 @@
 #include <wtf/URL.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct Cookie;
 
@@ -44,4 +44,4 @@ WEBCORE_EXPORT String defaultPathForURL(const URL&);
 
 } // namespace CookieUtil
 
-} // namespace WebCore
+} // namespace CyberCore

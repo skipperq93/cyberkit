@@ -43,8 +43,8 @@ from webkitpy.style.checker import ProcessorBase
 from webkitpy.style.filereader import TextFileReader
 from webkitpy.style.main import change_directory
 
-_inspector_directory = "Source/WebCore/inspector/front-end"
-_localized_strings = "Source/WebCore/en.lproj/localizedStrings.js"
+_inspector_directory = "Source/CyberCore/inspector/front-end"
+_localized_strings = "Source/CyberCore/en.lproj/localizedStrings.js"
 
 _log = logging.getLogger("check-inspector-strings")
 

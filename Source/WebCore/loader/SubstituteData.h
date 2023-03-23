@@ -30,7 +30,7 @@
 #include <wtf/RefPtr.h>
 #include <wtf/URL.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SubstituteData {
 public:
@@ -67,4 +67,4 @@ private:
     SessionHistoryVisibility m_shouldRevealToSessionHistory { SessionHistoryVisibility::Hidden };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

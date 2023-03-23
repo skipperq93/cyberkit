@@ -332,7 +332,7 @@ public:
 
     static IPC::MessageName asyncMessageReplyName() { return IPC::MessageName::TestWithoutAttributes_GetPluginsReply; }
     static constexpr auto callbackThread = WTF::CompletionHandlerCallThread::ConstructionThread;
-    using ReplyArguments = std::tuple<Vector<WebCore::PluginInfo>>;
+    using ReplyArguments = std::tuple<Vector<CyberCore::PluginInfo>>;
     explicit GetPlugins(bool refresh)
         : m_arguments(refresh)
     {
@@ -432,12 +432,12 @@ private:
 
 class SetVideoLayerID {
 public:
-    using Arguments = std::tuple<WebCore::GraphicsLayer::PlatformLayerID>;
+    using Arguments = std::tuple<CyberCore::GraphicsLayer::PlatformLayerID>;
 
     static IPC::MessageName name() { return IPC::MessageName::TestWithoutAttributes_SetVideoLayerID; }
     static constexpr bool isSync = false;
 
-    explicit SetVideoLayerID(const WebCore::GraphicsLayer::PlatformLayerID& videoLayerID)
+    explicit SetVideoLayerID(const CyberCore::GraphicsLayer::PlatformLayerID& videoLayerID)
         : m_arguments(videoLayerID)
     {
     }
@@ -448,7 +448,7 @@ public:
     }
 
 private:
-    std::tuple<const WebCore::GraphicsLayer::PlatformLayerID&> m_arguments;
+    std::tuple<const CyberCore::GraphicsLayer::PlatformLayerID&> m_arguments;
 };
 
 #if PLATFORM(MAC)
@@ -484,7 +484,7 @@ public:
 
     static IPC::MessageName asyncMessageReplyName() { return IPC::MessageName::TestWithoutAttributes_InterpretKeyEventReply; }
     static constexpr auto callbackThread = WTF::CompletionHandlerCallThread::ConstructionThread;
-    using ReplyArguments = std::tuple<Vector<WebCore::KeypressCommand>>;
+    using ReplyArguments = std::tuple<Vector<CyberCore::KeypressCommand>>;
     explicit InterpretKeyEvent(uint32_t type)
         : m_arguments(type)
     {

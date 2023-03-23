@@ -32,7 +32,7 @@
 #include <CyberCore/GStreamerCommon.h>
 #include <gst/gst.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 namespace TestWebKitAPI {
 

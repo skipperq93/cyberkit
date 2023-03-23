@@ -113,9 +113,9 @@ WebMemoryStatistics WebMemorySampler::sampleWebKit() const
     totalBytesInUse += fastMallocBytesInUse;
     totalBytesCommitted += fastMallocBytesCommitted;
     
-    JSC::JSLockHolder lock(WebCore::commonVM());
-    size_t jscHeapBytesInUse = WebCore::commonVM().heap.size();
-    size_t jscHeapBytesCommitted = WebCore::commonVM().heap.capacity();
+    JSC::JSLockHolder lock(CyberCore::commonVM());
+    size_t jscHeapBytesInUse = CyberCore::commonVM().heap.size();
+    size_t jscHeapBytesCommitted = CyberCore::commonVM().heap.capacity();
     totalBytesInUse += jscHeapBytesInUse;
     totalBytesCommitted += jscHeapBytesCommitted;
     

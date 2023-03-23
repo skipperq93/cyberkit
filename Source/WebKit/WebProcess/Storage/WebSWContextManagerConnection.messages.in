@@ -23,32 +23,32 @@
 #if ENABLE(SERVICE_WORKER)
 
 messages -> WebSWContextManagerConnection {
-    InstallServiceWorker(struct WebCore::ServiceWorkerContextData contextData, struct WebCore::ServiceWorkerData workerData, String userAgent, enum:bool WebCore::WorkerThreadMode workerThreadMode)
-    UpdateAppInitiatedValue(WebCore::ServiceWorkerIdentifier serviceWorkerIdentifier, enum:bool WebCore::LastNavigationWasAppInitiated lastNavigationWasAppInitiated)
-    StartFetch(WebCore::SWServerConnectionIdentifier serverConnectionIdentifier, WebCore::ServiceWorkerIdentifier serviceWorkerIdentifier, WebCore::FetchIdentifier fetchIdentifier, WebCore::ResourceRequest request, struct WebCore::FetchOptions options, IPC::FormDataReference requestBody, String referrer, bool isServiceWorkerNavigationPreloadEnabled, String clientIdentifier, String resutlingClientIdentifier)
-    CancelFetch(WebCore::SWServerConnectionIdentifier serverConnectionIdentifier, WebCore::ServiceWorkerIdentifier serviceWorkerIdentifier, WebCore::FetchIdentifier fetchIdentifier)
-    ContinueDidReceiveFetchResponse(WebCore::SWServerConnectionIdentifier serverConnectionIdentifier, WebCore::ServiceWorkerIdentifier serviceWorkerIdentifier, WebCore::FetchIdentifier fetchIdentifier)
-    PostMessageToServiceWorker(WebCore::ServiceWorkerIdentifier destinationIdentifier, struct WebCore::MessageWithMessagePorts message, WebCore::ServiceWorkerOrClientData sourceData)
-    FireInstallEvent(WebCore::ServiceWorkerIdentifier identifier)
-    FireActivateEvent(WebCore::ServiceWorkerIdentifier identifier)
-    FirePushEvent(WebCore::ServiceWorkerIdentifier identifier, std::optional<IPC::DataReference> data) -> (bool result)
-    FireNotificationEvent(WebCore::ServiceWorkerIdentifier identifier, struct WebCore::NotificationData data, enum:bool WebCore::NotificationEventType type) -> (bool result)
+    InstallServiceWorker(struct CyberCore::ServiceWorkerContextData contextData, struct CyberCore::ServiceWorkerData workerData, String userAgent, enum:bool CyberCore::WorkerThreadMode workerThreadMode)
+    UpdateAppInitiatedValue(CyberCore::ServiceWorkerIdentifier serviceWorkerIdentifier, enum:bool CyberCore::LastNavigationWasAppInitiated lastNavigationWasAppInitiated)
+    StartFetch(CyberCore::SWServerConnectionIdentifier serverConnectionIdentifier, CyberCore::ServiceWorkerIdentifier serviceWorkerIdentifier, CyberCore::FetchIdentifier fetchIdentifier, CyberCore::ResourceRequest request, struct CyberCore::FetchOptions options, IPC::FormDataReference requestBody, String referrer, bool isServiceWorkerNavigationPreloadEnabled, String clientIdentifier, String resutlingClientIdentifier)
+    CancelFetch(CyberCore::SWServerConnectionIdentifier serverConnectionIdentifier, CyberCore::ServiceWorkerIdentifier serviceWorkerIdentifier, CyberCore::FetchIdentifier fetchIdentifier)
+    ContinueDidReceiveFetchResponse(CyberCore::SWServerConnectionIdentifier serverConnectionIdentifier, CyberCore::ServiceWorkerIdentifier serviceWorkerIdentifier, CyberCore::FetchIdentifier fetchIdentifier)
+    PostMessageToServiceWorker(CyberCore::ServiceWorkerIdentifier destinationIdentifier, struct CyberCore::MessageWithMessagePorts message, CyberCore::ServiceWorkerOrClientData sourceData)
+    FireInstallEvent(CyberCore::ServiceWorkerIdentifier identifier)
+    FireActivateEvent(CyberCore::ServiceWorkerIdentifier identifier)
+    FirePushEvent(CyberCore::ServiceWorkerIdentifier identifier, std::optional<IPC::DataReference> data) -> (bool result)
+    FireNotificationEvent(CyberCore::ServiceWorkerIdentifier identifier, struct CyberCore::NotificationData data, enum:bool CyberCore::NotificationEventType type) -> (bool result)
 
-    TerminateWorker(WebCore::ServiceWorkerIdentifier identifier)
+    TerminateWorker(CyberCore::ServiceWorkerIdentifier identifier)
 #if ENABLE(SHAREABLE_RESOURCE) && PLATFORM(COCOA)
-    DidSaveScriptsToDisk(WebCore::ServiceWorkerIdentifier serviceWorkerIdentifier, WebCore::ScriptBuffer script, HashMap<URL, WebCore::ScriptBuffer> importedScripts);
+    DidSaveScriptsToDisk(CyberCore::ServiceWorkerIdentifier serviceWorkerIdentifier, CyberCore::ScriptBuffer script, HashMap<URL, CyberCore::ScriptBuffer> importedScripts);
 #endif
-    MatchAllCompleted(uint64_t matchAllRequestIdentifier, Vector<WebCore::ServiceWorkerClientData> clientsData)
+    MatchAllCompleted(uint64_t matchAllRequestIdentifier, Vector<CyberCore::ServiceWorkerClientData> clientsData)
     SkipWaitingCompleted(uint64_t matchAllRequestIdentifier)
     SetUserAgent(String userAgent)
-    UpdatePreferencesStore(struct WebKit::WebPreferencesStore store)
+    UpdatePreferencesStore(struct CyberKit::WebPreferencesStore store)
     Close()
     SetThrottleState(bool isThrottleable)
 
-    ConvertFetchToDownload(WebCore::SWServerConnectionIdentifier serverConnectionIdentifier, WebCore::ServiceWorkerIdentifier serviceWorkerIdentifier, WebCore::FetchIdentifier identifier)
+    ConvertFetchToDownload(CyberCore::SWServerConnectionIdentifier serverConnectionIdentifier, CyberCore::ServiceWorkerIdentifier serviceWorkerIdentifier, CyberCore::FetchIdentifier identifier)
 
-    NavigationPreloadIsReady(WebCore::SWServerConnectionIdentifier serverConnectionIdentifier, WebCore::ServiceWorkerIdentifier serviceWorkerIdentifier, WebCore::FetchIdentifier identifier, WebCore::ResourceResponse response)
-    NavigationPreloadFailed(WebCore::SWServerConnectionIdentifier serverConnectionIdentifier, WebCore::ServiceWorkerIdentifier serviceWorkerIdentifier, WebCore::FetchIdentifier identifier, WebCore::ResourceError error)
+    NavigationPreloadIsReady(CyberCore::SWServerConnectionIdentifier serverConnectionIdentifier, CyberCore::ServiceWorkerIdentifier serviceWorkerIdentifier, CyberCore::FetchIdentifier identifier, CyberCore::ResourceResponse response)
+    NavigationPreloadFailed(CyberCore::SWServerConnectionIdentifier serverConnectionIdentifier, CyberCore::ServiceWorkerIdentifier serviceWorkerIdentifier, CyberCore::FetchIdentifier identifier, CyberCore::ResourceError error)
 }
 
 #endif

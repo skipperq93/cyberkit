@@ -33,7 +33,7 @@
 #include "GraphicsContextCG.h"
 #include <pal/spi/cg/CoreGraphicsSPI.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 void Gradient::stopsChanged()
 {

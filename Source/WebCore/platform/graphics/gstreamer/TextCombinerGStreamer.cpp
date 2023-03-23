@@ -48,7 +48,7 @@ struct _WebKitTextCombinerPrivate {
 WEBKIT_DEFINE_TYPE_WITH_CODE(WebKitTextCombiner, webkit_text_combiner, GST_TYPE_BIN,
     GST_DEBUG_CATEGORY_INIT(webkitTextCombinerDebug, "webkittextcombiner", 0, "webkit text combiner"))
 
-using namespace WebCore;
+using namespace CyberCore;
 
 void webKitTextCombinerHandleCaps(WebKitTextCombiner* combiner, GstPad* pad, const GstCaps* caps)
 {

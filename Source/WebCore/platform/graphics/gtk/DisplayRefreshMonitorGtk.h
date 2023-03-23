@@ -31,7 +31,7 @@
 
 typedef struct _GtkWidget GtkWidget;
 
-namespace WebCore {
+namespace CyberCore {
 
 class DisplayRefreshMonitorGtk : public DisplayRefreshMonitor {
 public:
@@ -56,6 +56,6 @@ private:
     bool m_clockIsActive { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // !USE(GTK4)

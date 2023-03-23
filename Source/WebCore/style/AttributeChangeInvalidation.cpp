@@ -30,7 +30,7 @@
 #include "ElementRareData.h"
 #include "StyleInvalidationFunctions.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace Style {
 
 static bool mayBeAffectedByAttributeChange(const RuleFeatureSet& features, bool isHTML, const QualifiedName& attributeName)

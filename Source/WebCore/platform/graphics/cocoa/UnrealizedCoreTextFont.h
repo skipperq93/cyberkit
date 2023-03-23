@@ -30,7 +30,7 @@
 #include <variant>
 #include <wtf/RetainPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FontCreationContext;
 class FontDescription;
@@ -94,4 +94,4 @@ private:
     FontVariationSettings m_variationSettings;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

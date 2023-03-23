@@ -26,7 +26,7 @@
 #include "config.h"
 #include "KeyboardScroll.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 FloatSize unitVectorForScrollDirection(ScrollDirection direction)
 {

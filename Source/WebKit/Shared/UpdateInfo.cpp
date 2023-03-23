@@ -28,7 +28,7 @@
 
 #if USE(COORDINATED_GRAPHICS) || USE(TEXTURE_MAPPER)
 
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 
 namespace WebKit {
 

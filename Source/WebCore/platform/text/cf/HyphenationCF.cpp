@@ -68,7 +68,7 @@ public:
 };
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 bool canHyphenate(const AtomString& localeIdentifier)
 {
@@ -84,4 +84,4 @@ size_t lastHyphenLocation(StringView text, size_t beforeIndex, const AtomString&
     return result == kCFNotFound ? 0 : result;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

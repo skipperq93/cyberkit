@@ -25,7 +25,7 @@
 
 #import "WebDeviceOrientationInternal.h"
 
-using namespace WebCore;
+using namespace CyberCore;
 
 @implementation WebDeviceOrientationInternal
 
@@ -42,7 +42,7 @@ using namespace WebCore;
 
 @implementation WebDeviceOrientation (Internal)
 
-- (id)initWithCoreDeviceOrientation:(RefPtr<WebCore::DeviceOrientationData>&&)coreDeviceOrientation
+- (id)initWithCoreDeviceOrientation:(RefPtr<CyberCore::DeviceOrientationData>&&)coreDeviceOrientation
 {
     self = [super init];
     if (!self)

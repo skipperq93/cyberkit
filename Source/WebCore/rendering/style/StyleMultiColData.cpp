@@ -24,7 +24,7 @@
 
 #include "RenderStyle.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 DEFINE_ALLOCATOR_WITH_HEAP_IDENTIFIER(StyleMultiColData);
 
@@ -68,4 +68,4 @@ bool StyleMultiColData::operator==(const StyleMultiColData& other) const
         && axis == other.axis && progression == other.progression;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

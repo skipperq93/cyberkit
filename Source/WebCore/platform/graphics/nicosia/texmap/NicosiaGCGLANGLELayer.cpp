@@ -46,7 +46,7 @@
 
 namespace Nicosia {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 void GCGLANGLELayer::swapBuffersIfNeeded()
 {
@@ -81,7 +81,7 @@ void GCGLANGLELayer::swapBuffersIfNeeded()
 
         auto& context = static_cast<GraphicsContextGLFallback&>(m_context);
         auto size = context.getInternalFramebufferSize();
-        RefPtr<WebCore::ImageBuffer> imageBuffer = ImageBuffer::create(size, RenderingPurpose::Unspecified, 1, DestinationColorSpace::SRGB(), PixelFormat::BGRA8);
+        RefPtr<CyberCore::ImageBuffer> imageBuffer = ImageBuffer::create(size, RenderingPurpose::Unspecified, 1, DestinationColorSpace::SRGB(), PixelFormat::BGRA8);
         if (!imageBuffer)
             return;
 

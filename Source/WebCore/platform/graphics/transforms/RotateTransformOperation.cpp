@@ -27,7 +27,7 @@
 #include <wtf/MathExtras.h>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<RotateTransformOperation> RotateTransformOperation::create(double x, double y, double z, double angle, TransformOperation::Type type)
 {
@@ -87,7 +87,7 @@ Ref<TransformOperation> RotateTransformOperation::blend(const TransformOperation
     auto toNormalizedVector = normalizedVector(*toOp);
     if (!fromAngle || !toAngle || fromNormalizedVector == toNormalizedVector) {
         auto vector = (!fromAngle && toAngle) ? toNormalizedVector : fromNormalizedVector;
-        return RotateTransformOperation::create(vector.x(), vector.y(), vector.z(), WebCore::blend(fromAngle, toAngle, context), *outputType);
+        return RotateTransformOperation::create(vector.x(), vector.y(), vector.z(), CyberCore::blend(fromAngle, toAngle, context), *outputType);
     }
 
     // Create the 2 rotation matrices
@@ -135,4 +135,4 @@ void RotateTransformOperation::dump(TextStream& ts) const
     ts << type() << "(" << TextStream::FormatNumberRespectingIntegers(m_x) << ", " << TextStream::FormatNumberRespectingIntegers(m_y) << ", " << TextStream::FormatNumberRespectingIntegers(m_z) << ", " << TextStream::FormatNumberRespectingIntegers(m_angle) << "deg)";
 }
 
-} // namespace WebCore
+} // namespace CyberCore

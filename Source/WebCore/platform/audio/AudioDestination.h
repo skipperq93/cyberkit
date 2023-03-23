@@ -37,7 +37,7 @@
 #include <wtf/ThreadSafeRefCounted.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // AudioDestination is an abstraction for audio hardware I/O.
 // The audio hardware periodically calls the AudioIOCallback render() method asking it to render/output the next render quantum of audio.
@@ -109,6 +109,6 @@ inline void AudioDestination::callRenderCallback(AudioBus* sourceBus, AudioBus* 
     destinationBus->zero();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // AudioDestination_h

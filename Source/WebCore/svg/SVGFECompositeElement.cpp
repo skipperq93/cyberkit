@@ -26,7 +26,7 @@
 #include "SVGNames.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(SVGFECompositeElement);
 
@@ -135,4 +135,4 @@ RefPtr<FilterEffect> SVGFECompositeElement::createFilterEffect(const FilterEffec
     return FEComposite::create(svgOperator(), k1(), k2(), k3(), k4());
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -37,7 +37,7 @@
 #include "ServiceWorker.h"
 #include "WorkerObjectProxy.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 DedicatedWorkerThread::DedicatedWorkerThread(const WorkerParameters& params, const ScriptBuffer& sourceCode, WorkerLoaderProxy& workerLoaderProxy, WorkerDebuggerProxy& workerDebuggerProxy, WorkerObjectProxy& workerObjectProxy, WorkerBadgeProxy& workerBadgeProxy, WorkerThreadStartMode startMode, const SecurityOrigin& topOrigin, IDBClient::IDBConnectionProxy* connectionProxy, SocketProvider* socketProvider, JSC::RuntimeFlags runtimeFlags)
     : WorkerThread(params, sourceCode, workerLoaderProxy, workerDebuggerProxy, workerObjectProxy, workerBadgeProxy, startMode, topOrigin, connectionProxy, socketProvider, runtimeFlags)
@@ -58,4 +58,4 @@ Ref<WorkerGlobalScope> DedicatedWorkerThread::createWorkerGlobalScope(const Work
     return scope;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

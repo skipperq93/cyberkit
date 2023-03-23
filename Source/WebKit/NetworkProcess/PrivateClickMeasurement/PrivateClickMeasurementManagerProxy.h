@@ -43,11 +43,11 @@ public:
 
     using ApplicationBundleIdentifier = String;
 
-    void storeUnattributed(WebCore::PrivateClickMeasurement&&, CompletionHandler<void()>&&) final;
-    void handleAttribution(WebCore::PCM::AttributionTriggerData&&, const URL& requestURL, WebCore::RegistrableDomain&& redirectDomain, const URL& firstPartyURL, const ApplicationBundleIdentifier&) final;
+    void storeUnattributed(CyberCore::PrivateClickMeasurement&&, CompletionHandler<void()>&&) final;
+    void handleAttribution(CyberCore::PCM::AttributionTriggerData&&, const URL& requestURL, CyberCore::RegistrableDomain&& redirectDomain, const URL& firstPartyURL, const ApplicationBundleIdentifier&) final;
     void clear(CompletionHandler<void()>&&) final;
-    void clearForRegistrableDomain(WebCore::RegistrableDomain&&, CompletionHandler<void()>&&) final;
-    void migratePrivateClickMeasurementFromLegacyStorage(WebCore::PrivateClickMeasurement&&, PrivateClickMeasurementAttributionType) final;
+    void clearForRegistrableDomain(CyberCore::RegistrableDomain&&, CompletionHandler<void()>&&) final;
+    void migratePrivateClickMeasurementFromLegacyStorage(CyberCore::PrivateClickMeasurement&&, PrivateClickMeasurementAttributionType) final;
     void setDebugModeIsEnabled(bool) final;
 
     void toStringForTesting(CompletionHandler<void(String)>&&) const final;
@@ -61,7 +61,7 @@ public:
     void startTimerImmediatelyForTesting() final;
     void setPrivateClickMeasurementAppBundleIDForTesting(ApplicationBundleIdentifier&&) final;
     void destroyStoreForTesting(CompletionHandler<void()>&&) final;
-    void allowTLSCertificateChainForLocalPCMTesting(const WebCore::CertificateInfo&) final;
+    void allowTLSCertificateChainForLocalPCMTesting(const CyberCore::CertificateInfo&) final;
 
 private:
     template<MessageType messageType, typename... Args>

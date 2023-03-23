@@ -30,7 +30,7 @@
 #include <wtf/NeverDestroyed.h>
 #include <wtf/StdLibExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace XPath {
 
 EvaluationContext& Expression::evaluationContext()
@@ -58,4 +58,4 @@ void Expression::setSubexpressions(Vector<std::unique_ptr<Expression>> subexpres
 }
 
 } // namespace XPath
-} // namespace WebCore
+} // namespace CyberCore

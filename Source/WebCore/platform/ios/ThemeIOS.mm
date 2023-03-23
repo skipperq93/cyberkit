@@ -31,7 +31,7 @@
 #import <pal/ios/UIKitSoftLink.h>
 #import <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Theme& Theme::singleton()
 {

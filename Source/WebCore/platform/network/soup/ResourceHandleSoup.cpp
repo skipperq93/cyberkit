@@ -62,7 +62,7 @@
 #include <wtf/glib/RunLoopSourcePriority.h>
 #include <wtf/text/CString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 ResourceHandleInternal::~ResourceHandleInternal() = default;
 

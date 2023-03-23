@@ -30,7 +30,7 @@
 #include <windows.h>
 #include <wtf/MathExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 IntRect::IntRect(const RECT& r)
     : m_location(r.left, r.top)

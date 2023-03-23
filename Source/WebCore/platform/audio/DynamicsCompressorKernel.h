@@ -33,7 +33,7 @@
 #include <memory>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DynamicsCompressorKernel final {
     WTF_MAKE_FAST_ALLOCATED;
@@ -127,6 +127,6 @@ protected:
     float m_K { uninitializedValue };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // DynamicsCompressorKernel_h

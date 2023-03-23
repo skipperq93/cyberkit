@@ -25,8 +25,8 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class ShouldRelaxThirdPartyCookieBlocking : bool { No, Yes };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -38,7 +38,7 @@ namespace JSC {
     }
 }
 
-namespace WebCore {
+namespace CyberCore {
     class NodeFilter;
     class XPathNSResolver;
 #if ENABLE(TOUCH_EVENTS)
@@ -72,11 +72,11 @@ inline void addDOMWrapper(NSObject* wrapper, Source impl)
     addDOMWrapper(wrapper, reinterpret_cast<DOMObjectInternal*>(impl));
 }
 
-DOMNodeFilter *kit(WebCore::NodeFilter*);
-WebCore::NodeFilter* core(DOMNodeFilter *);
+DOMNodeFilter *kit(CyberCore::NodeFilter*);
+CyberCore::NodeFilter* core(DOMNodeFilter *);
 
-DOMNativeXPathNSResolver *kit(WebCore::XPathNSResolver*);
-WebCore::XPathNSResolver* core(DOMNativeXPathNSResolver *);
+DOMNativeXPathNSResolver *kit(CyberCore::XPathNSResolver*);
+CyberCore::XPathNSResolver* core(DOMNativeXPathNSResolver *);
 
 inline NSTimeInterval kit(WallTime time)
 {

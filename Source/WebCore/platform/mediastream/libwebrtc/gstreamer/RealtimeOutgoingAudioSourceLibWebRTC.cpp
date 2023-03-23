@@ -28,7 +28,7 @@
 #include "LibWebRTCProvider.h"
 #include "NotImplemented.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 RealtimeOutgoingAudioSourceLibWebRTC::RealtimeOutgoingAudioSourceLibWebRTC(Ref<MediaStreamTrackPrivate>&& audioSource)
     : RealtimeOutgoingAudioSource(WTFMove(audioSource))
@@ -145,6 +145,6 @@ bool RealtimeOutgoingAudioSourceLibWebRTC::hasBufferedEnoughData()
     return false;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(LIBWEBRTC)

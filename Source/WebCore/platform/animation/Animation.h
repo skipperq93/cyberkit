@@ -31,7 +31,7 @@
 #include "TimingFunction.h"
 #include "WebAnimationTypes.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class Animation : public RefCounted<Animation> {
 public:
@@ -254,4 +254,4 @@ WTF::TextStream& operator<<(WTF::TextStream&, Animation::TransitionProperty);
 WTF::TextStream& operator<<(WTF::TextStream&, Animation::AnimationDirection);
 WTF::TextStream& operator<<(WTF::TextStream&, const Animation&);
 
-} // namespace WebCore
+} // namespace CyberCore

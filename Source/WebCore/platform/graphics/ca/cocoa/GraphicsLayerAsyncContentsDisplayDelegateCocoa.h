@@ -27,7 +27,7 @@
 
 #include "GraphicsLayerContentsDisplayDelegate.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class GraphicsLayerCA;
 

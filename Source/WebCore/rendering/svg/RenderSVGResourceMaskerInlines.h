@@ -29,7 +29,7 @@
 #include "SVGElementTypeHelpers.h"
 #include "SVGMaskElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 inline SVGMaskElement& RenderSVGResourceMasker::maskElement() const
 {

@@ -153,7 +153,7 @@ TEST(CopyHTML, SanitizationPreservesCharacterSet)
         EXPECT_WK_STREQ("我叫謝文昇", [attributedString string]);
 
         __block BOOL foundColorAttribute = NO;
-        [attributedString enumerateAttribute:NSForegroundColorAttributeName inRange:NSMakeRange(0, 5) options:0 usingBlock:^(WebCore::CocoaColor *color, NSRange range, BOOL*) {
+        [attributedString enumerateAttribute:NSForegroundColorAttributeName inRange:NSMakeRange(0, 5) options:0 usingBlock:^(CyberCore::CocoaColor *color, NSRange range, BOOL*) {
             CGFloat redComponent = 0;
             CGFloat greenComponent = 0;
             CGFloat blueComponent = 0;

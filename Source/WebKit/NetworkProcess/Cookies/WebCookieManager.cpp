@@ -29,7 +29,7 @@
 #include "NetworkProcess.h"
 #include "NetworkProcessProxyMessages.h"
 #include "WebCookieManagerMessages.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include <CyberCore/Cookie.h>
 #include <CyberCore/CookieStorage.h>
 #include <CyberCore/HTTPCookieAcceptPolicy.h>
@@ -40,7 +40,7 @@
 #include <wtf/text/WTFString.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 const char* WebCookieManager::supplementName()
 {
@@ -95,7 +95,7 @@ void WebCookieManager::deleteAllCookiesModifiedSince(PAL::SessionID sessionID, W
         completionHandler();
 }
 
-void WebCookieManager::getAllCookies(PAL::SessionID sessionID, CompletionHandler<void(Vector<WebCore::Cookie>&&)>&& completionHandler)
+void WebCookieManager::getAllCookies(PAL::SessionID sessionID, CompletionHandler<void(Vector<CyberCore::Cookie>&&)>&& completionHandler)
 {
     Vector<Cookie> cookies;
     if (auto* storageSession = m_process.storageSession(sessionID))
@@ -103,7 +103,7 @@ void WebCookieManager::getAllCookies(PAL::SessionID sessionID, CompletionHandler
     completionHandler(WTFMove(cookies));
 }
 
-void WebCookieManager::getCookies(PAL::SessionID sessionID, const URL& url, CompletionHandler<void(Vector<WebCore::Cookie>&&)>&& completionHandler)
+void WebCookieManager::getCookies(PAL::SessionID sessionID, const URL& url, CompletionHandler<void(Vector<CyberCore::Cookie>&&)>&& completionHandler)
 {
     Vector<Cookie> cookies;
     if (auto* storageSession = m_process.storageSession(sessionID))
@@ -136,7 +136,7 @@ void WebCookieManager::notifyCookiesDidChange(PAL::SessionID sessionID)
 void WebCookieManager::startObservingCookieChanges(PAL::SessionID sessionID)
 {
     if (auto* storageSession = m_process.storageSession(sessionID)) {
-        WebCore::startObservingCookieChanges(*storageSession, [this, sessionID] {
+        CyberCore::startObservingCookieChanges(*storageSession, [this, sessionID] {
             notifyCookiesDidChange(sessionID);
         });
     }
@@ -145,7 +145,7 @@ void WebCookieManager::startObservingCookieChanges(PAL::SessionID sessionID)
 void WebCookieManager::stopObservingCookieChanges(PAL::SessionID sessionID)
 {
     if (auto* storageSession = m_process.storageSession(sessionID))
-        WebCore::stopObservingCookieChanges(*storageSession);
+        CyberCore::stopObservingCookieChanges(*storageSession);
 }
 
 void WebCookieManager::setHTTPCookieAcceptPolicy(HTTPCookieAcceptPolicy policy, CompletionHandler<void()>&& completionHandler)

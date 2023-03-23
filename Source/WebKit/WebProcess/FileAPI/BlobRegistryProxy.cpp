@@ -28,14 +28,14 @@
 
 #include "NetworkConnectionToWebProcessMessages.h"
 #include "NetworkProcessConnection.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebProcess.h"
 #include <CyberCore/BlobDataFileReference.h>
 #include <CyberCore/CrossOriginOpenerPolicy.h>
 #include <CyberCore/SWContextManager.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 void BlobRegistryProxy::registerFileBlobURL(const URL& url, Ref<BlobDataFileReference>&& file, const String& path, const String& contentType)
 {
@@ -61,7 +61,7 @@ void BlobRegistryProxy::registerBlobURL(const URL& url, const URL& srcURL, const
     WebProcess::singleton().ensureNetworkProcessConnection().connection().send(Messages::NetworkConnectionToWebProcess::RegisterBlobURLFromURL { url, srcURL, policyContainer }, 0);
 }
 
-void BlobRegistryProxy::registerBlobURLOptionallyFileBacked(const URL& url, const URL& srcURL, RefPtr<WebCore::BlobDataFileReference>&& file, const String& contentType)
+void BlobRegistryProxy::registerBlobURLOptionallyFileBacked(const URL& url, const URL& srcURL, RefPtr<CyberCore::BlobDataFileReference>&& file, const String& contentType)
 {
     ASSERT(file);
     WebProcess::singleton().ensureNetworkProcessConnection().connection().send(Messages::NetworkConnectionToWebProcess::RegisterBlobURLOptionallyFileBacked(url, srcURL, file->path(), contentType), 0);

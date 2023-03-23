@@ -27,7 +27,7 @@
 
 #include "DisplayListRecorder.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace DisplayList {
 

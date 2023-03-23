@@ -29,7 +29,7 @@
 #if ENABLE(LAYER_BASED_SVG_ENGINE)
 #include "RenderSVGShape.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderSVGPath final : public RenderSVGShape {
     WTF_MAKE_ISO_ALLOCATED(RenderSVGPath);
@@ -57,7 +57,7 @@ private:
     Vector<FloatPoint> m_zeroLengthLinecapLocations;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderSVGPath, isSVGPath())
 

@@ -34,22 +34,22 @@
 #include <wtf/HashMap.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 struct MessageWithMessagePorts;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
-class WebBroadcastChannelRegistry final : public WebCore::BroadcastChannelRegistry {
+class WebBroadcastChannelRegistry final : public CyberCore::BroadcastChannelRegistry {
 public:
     static Ref<WebBroadcastChannelRegistry> create()
     {
         return adoptRef(*new WebBroadcastChannelRegistry);
     }
 
-    void registerChannel(const WebCore::PartitionedSecurityOrigin&, const String& name, WebCore::BroadcastChannelIdentifier) final;
-    void unregisterChannel(const WebCore::PartitionedSecurityOrigin&, const String& name, WebCore::BroadcastChannelIdentifier) final;
-    void postMessage(const WebCore::PartitionedSecurityOrigin&, const String& name, WebCore::BroadcastChannelIdentifier source, Ref<WebCore::SerializedScriptValue>&&, CompletionHandler<void()>&&) final;
+    void registerChannel(const CyberCore::PartitionedSecurityOrigin&, const String& name, CyberCore::BroadcastChannelIdentifier) final;
+    void unregisterChannel(const CyberCore::PartitionedSecurityOrigin&, const String& name, CyberCore::BroadcastChannelIdentifier) final;
+    void postMessage(const CyberCore::PartitionedSecurityOrigin&, const String& name, CyberCore::BroadcastChannelIdentifier source, Ref<CyberCore::SerializedScriptValue>&&, CompletionHandler<void()>&&) final;
 
     void networkProcessCrashed();
 
@@ -58,10 +58,10 @@ public:
 private:
     WebBroadcastChannelRegistry() = default;
 
-    void postMessageToRemote(const WebCore::ClientOrigin&, const String& name, WebCore::MessageWithMessagePorts&&, CompletionHandler<void()>&&);
-    void postMessageLocally(const WebCore::PartitionedSecurityOrigin&, const String& name, std::optional<WebCore::BroadcastChannelIdentifier> sourceInProcess, Ref<WebCore::SerializedScriptValue>&&, Ref<WTF::CallbackAggregator>&&);
+    void postMessageToRemote(const CyberCore::ClientOrigin&, const String& name, CyberCore::MessageWithMessagePorts&&, CompletionHandler<void()>&&);
+    void postMessageLocally(const CyberCore::PartitionedSecurityOrigin&, const String& name, std::optional<CyberCore::BroadcastChannelIdentifier> sourceInProcess, Ref<CyberCore::SerializedScriptValue>&&, Ref<WTF::CallbackAggregator>&&);
 
-    HashMap<WebCore::PartitionedSecurityOrigin, HashMap<String, Vector<WebCore::BroadcastChannelIdentifier>>> m_channelsPerOrigin;
+    HashMap<CyberCore::PartitionedSecurityOrigin, HashMap<String, Vector<CyberCore::BroadcastChannelIdentifier>>> m_channelsPerOrigin;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

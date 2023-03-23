@@ -46,7 +46,7 @@ namespace WTF {
 class TextStream;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class AffineTransform;
 class Color;
@@ -1270,16 +1270,16 @@ void printLayerTreeForLiveDocuments();
 void printGraphicsLayerTreeForLiveDocuments();
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #define SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(ToValueTypeName, predicate) \
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::ToValueTypeName) \
-    static bool isType(const WebCore::RenderObject& renderer) { return renderer.predicate; } \
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::ToValueTypeName) \
+    static bool isType(const CyberCore::RenderObject& renderer) { return renderer.predicate; } \
 SPECIALIZE_TYPE_TRAITS_END()
 
 #if ENABLE(TREE_DEBUGGING)
-// Outside the WebCore namespace for ease of invocation from the debugger.
-void showNodeTree(const WebCore::RenderObject*);
-void showLineTree(const WebCore::RenderObject*);
-void showRenderTree(const WebCore::RenderObject*);
+// Outside the CyberCore namespace for ease of invocation from the debugger.
+void showNodeTree(const CyberCore::RenderObject*);
+void showLineTree(const CyberCore::RenderObject*);
+void showRenderTree(const CyberCore::RenderObject*);
 #endif

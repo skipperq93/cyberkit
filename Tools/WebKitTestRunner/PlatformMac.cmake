@@ -52,7 +52,7 @@ list(APPEND TestRunnerInjectedBundle_LIBRARIES
     ${FOUNDATION_LIBRARY}
     JavaScriptCore
     WTF
-    WebCoreTestSupport
+    CyberCoreTestSupport
     WebKit
 )
 set(CMAKE_SHARED_LINKER_FLAGS ${CMAKE_SHARED_LINKER_FLAGS} "-framework Cocoa")

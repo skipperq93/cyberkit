@@ -6,7 +6,7 @@
  * Copyright (C) 2009 Igalia S.L.
  */
 #include "config.h"
-#include "WebKitDOMObject.h"
+#include "CyberKitDOMObject.h"
 
 #if PLATFORM(GTK)
 enum {
@@ -17,9 +17,9 @@ enum {
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
-G_DEFINE_TYPE(WebKitDOMObject, webkit_dom_object, G_TYPE_OBJECT)
+G_DEFINE_TYPE(CyberKitDOMObject, webkit_dom_object, G_TYPE_OBJECT)
 
-static void webkit_dom_object_init(WebKitDOMObject*)
+static void webkit_dom_object_init(CyberKitDOMObject*)
 {
 }
 
@@ -37,7 +37,7 @@ static void webkitDOMObjectSetProperty(GObject* object, guint propertyId, const 
 }
 #endif
 
-static void webkit_dom_object_class_init(WebKitDOMObjectClass* klass)
+static void webkit_dom_object_class_init(CyberKitDOMObjectClass* klass)
 {
 #if PLATFORM(GTK)
     GObjectClass* gobjectClass = G_OBJECT_CLASS(klass);

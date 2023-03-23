@@ -55,7 +55,7 @@
 #import <CyberCore/RenderLayer.h>
 #import <CyberCore/RenderLayerScrollableArea.h>
 #import <CyberCore/WAKWindow.h>
-#import <CyberCore/WebCoreThreadMessage.h>
+#import <CyberCore/CyberCoreThreadMessage.h>
 #endif
 
 // FIXME: We should move all these into the various specific element source files.
@@ -72,13 +72,13 @@
     if (!renderer)
         return 0;
 
-    if (!is<WebCore::RenderBlockFlow>(*renderer))
+    if (!is<CyberCore::RenderBlockFlow>(*renderer))
         renderer = renderer->containingBlock();
 
-    if (!is<WebCore::RenderBox>(*renderer) || !renderer->hasNonVisibleOverflow())
+    if (!is<CyberCore::RenderBox>(*renderer) || !renderer->hasNonVisibleOverflow())
         return 0;
 
-    auto* layer = downcast<WebCore::RenderBox>(*renderer).layer();
+    auto* layer = downcast<CyberCore::RenderBox>(*renderer).layer();
     if (!layer)
         return 0;
     auto* scrollableArea = layer->scrollableArea();
@@ -94,12 +94,12 @@
     if (!renderer)
         return 0;
 
-    if (!is<WebCore::RenderBlockFlow>(*renderer))
+    if (!is<CyberCore::RenderBlockFlow>(*renderer))
         renderer = renderer->containingBlock();
-    if (!is<WebCore::RenderBox>(*renderer) || !renderer->hasNonVisibleOverflow())
+    if (!is<CyberCore::RenderBox>(*renderer) || !renderer->hasNonVisibleOverflow())
         return 0;
 
-    auto* layer = downcast<WebCore::RenderBox>(*renderer).layer();
+    auto* layer = downcast<CyberCore::RenderBox>(*renderer).layer();
     if (!layer)
         return 0;
     auto* scrollableArea = layer->scrollableArea();
@@ -120,19 +120,19 @@
     if (!renderer)
         return;
 
-    if (!is<WebCore::RenderBlockFlow>(*renderer))
+    if (!is<CyberCore::RenderBlockFlow>(*renderer))
         renderer = renderer->containingBlock();
-    if (!renderer->hasNonVisibleOverflow() || !is<WebCore::RenderBox>(*renderer))
+    if (!renderer->hasNonVisibleOverflow() || !is<CyberCore::RenderBox>(*renderer))
         return;
 
-    auto* layer = downcast<WebCore::RenderBox>(*renderer).layer();
+    auto* layer = downcast<CyberCore::RenderBox>(*renderer).layer();
     if (!layer)
         return;
     auto* scrollableArea = layer->ensureLayerScrollableArea();
 
-    auto scrollPositionChangeOptions = WebCore::ScrollPositionChangeOptions::createProgrammatic();
-    scrollPositionChangeOptions.clamping = WebCore::ScrollClamping::Unclamped;
-    scrollableArea->scrollToOffset(WebCore::ScrollOffset(x, y), scrollPositionChangeOptions);
+    auto scrollPositionChangeOptions = CyberCore::ScrollPositionChangeOptions::createProgrammatic();
+    scrollPositionChangeOptions.clamping = CyberCore::ScrollClamping::Unclamped;
+    scrollableArea->scrollToOffset(CyberCore::ScrollOffset(x, y), scrollPositionChangeOptions);
 }
 
 - (void)absolutePosition:(int *)x :(int *)y :(int *)w :(int *)h
@@ -144,9 +144,9 @@
         if (h)
             *h = renderer->width();
         if (x && y) {
-            WebCore::FloatPoint floatPoint(*x, *y);
+            CyberCore::FloatPoint floatPoint(*x, *y);
             renderer->localToAbsolute(floatPoint);
-            WebCore::IntPoint point = roundedIntPoint(floatPoint);
+            CyberCore::IntPoint point = roundedIntPoint(floatPoint);
             *x = point.x();
             *y = point.y();
         }
@@ -179,7 +179,7 @@
 
 - (DOMDocumentFragment *)_createDocumentFragmentWithMarkupString:(NSString *)markupString baseURLString:(NSString *)baseURLString
 {
-    NSURL *baseURL = core(self)->completeURL(WebCore::stripLeadingAndTrailingHTMLSpaces(baseURLString));
+    NSURL *baseURL = core(self)->completeURL(CyberCore::stripLeadingAndTrailingHTMLSpaces(baseURLString));
     return [self createDocumentFragmentWithMarkupString:markupString baseURL:baseURL];
 }
 
@@ -204,7 +204,7 @@
 - (void)_activateItemAtIndex:(int)index
 {
     // Use the setSelectedIndexByUser function so a change event will be fired. <rdar://problem/6760590>
-    if (WebCore::HTMLSelectElement* select = core(self))
+    if (CyberCore::HTMLSelectElement* select = core(self))
         select->optionSelectedByUser(index, true);
 }
 
@@ -213,7 +213,7 @@
     // Use the setSelectedIndexByUser function so a change event will be fired. <rdar://problem/6760590>
     // If this is a <select multiple> the allowMultipleSelection flag will allow setting multiple
     // selections without clearing the other selections.
-    if (WebCore::HTMLSelectElement* select = core(self))
+    if (CyberCore::HTMLSelectElement* select = core(self))
         select->optionSelectedByUser(index, true, allowMultipleSelection);
 }
 
@@ -239,18 +239,18 @@
 
 @end
 
-static WebAutocapitalizeType webAutocapitalizeType(WebCore::AutocapitalizeType type)
+static WebAutocapitalizeType webAutocapitalizeType(CyberCore::AutocapitalizeType type)
 {
     switch (type) {
-    case WebCore::AutocapitalizeType::Default:
+    case CyberCore::AutocapitalizeType::Default:
         return WebAutocapitalizeTypeDefault;
-    case WebCore::AutocapitalizeType::None:
+    case CyberCore::AutocapitalizeType::None:
         return WebAutocapitalizeTypeNone;
-    case WebCore::AutocapitalizeType::Words:
+    case CyberCore::AutocapitalizeType::Words:
         return WebAutocapitalizeTypeWords;
-    case WebCore::AutocapitalizeType::Sentences:
+    case CyberCore::AutocapitalizeType::Sentences:
         return WebAutocapitalizeTypeSentences;
-    case WebCore::AutocapitalizeType::AllCharacters:
+    case CyberCore::AutocapitalizeType::AllCharacters:
         return WebAutocapitalizeTypeAllCharacters;
     }
 }
@@ -259,7 +259,7 @@ static WebAutocapitalizeType webAutocapitalizeType(WebCore::AutocapitalizeType t
 
 - (WebAutocapitalizeType)_autocapitalizeType
 {
-    WebCore::HTMLInputElement* inputElement = core(self);
+    CyberCore::HTMLInputElement* inputElement = core(self);
     return webAutocapitalizeType(inputElement->autocapitalizeType());
 }
 
@@ -269,7 +269,7 @@ static WebAutocapitalizeType webAutocapitalizeType(WebCore::AutocapitalizeType t
 
 - (WebAutocapitalizeType)_autocapitalizeType
 {
-    WebCore::HTMLTextAreaElement* textareaElement = core(self);
+    CyberCore::HTMLTextAreaElement* textareaElement = core(self);
     return webAutocapitalizeType(textareaElement->autocapitalizeType());
 }
 
@@ -279,23 +279,23 @@ static WebAutocapitalizeType webAutocapitalizeType(WebCore::AutocapitalizeType t
 
 - (void)setValueWithChangeEvent:(NSString *)newValue
 {
-    WebCore::JSMainThreadNullState state;
-    core(self)->setValue(newValue, WebCore::DispatchInputAndChangeEvent);
+    CyberCore::JSMainThreadNullState state;
+    core(self)->setValue(newValue, CyberCore::DispatchInputAndChangeEvent);
 }
 
 - (void)setValueAsNumberWithChangeEvent:(double)newValueAsNumber
 {
-    WebCore::JSMainThreadNullState state;
-    core(self)->setValueAsNumber(newValueAsNumber, WebCore::DispatchInputAndChangeEvent);
+    CyberCore::JSMainThreadNullState state;
+    core(self)->setValueAsNumber(newValueAsNumber, CyberCore::DispatchInputAndChangeEvent);
 }
 
 @end
 
 #endif
 
-Class kitClass(WebCore::HTMLCollection* collection)
+Class kitClass(CyberCore::HTMLCollection* collection)
 {
-    if (collection->type() == WebCore::SelectOptions)
+    if (collection->type() == CyberCore::SelectOptions)
         return [DOMHTMLOptionsCollection class];
     return [DOMHTMLCollection class];
 }

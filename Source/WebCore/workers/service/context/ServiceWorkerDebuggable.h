@@ -32,7 +32,7 @@
 #include <CyberScriptCore/RemoteInspectionTarget.h>
 #include <wtf/Noncopyable.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ServiceWorkerThreadProxy;
 
@@ -58,9 +58,9 @@ private:
     String m_scopeURL;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_CONTROLLABLE_TARGET(WebCore::ServiceWorkerDebuggable, ServiceWorker);
+SPECIALIZE_TYPE_TRAITS_CONTROLLABLE_TARGET(CyberCore::ServiceWorkerDebuggable, ServiceWorker);
 
 #endif // ENABLE(SERVICE_WORKER)
 #endif // ENABLE(REMOTE_INSPECTOR)

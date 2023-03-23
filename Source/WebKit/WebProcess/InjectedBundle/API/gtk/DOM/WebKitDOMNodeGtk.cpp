@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -18,17 +18,17 @@
  */
 
 #include "config.h"
-#include "WebKitDOMNode.h"
+#include "CyberKitDOMNode.h"
 
 #include "ConvertToUTF8String.h"
 #include "GObjectEventListener.h"
-#include "WebKitDOMDocumentPrivate.h"
-#include "WebKitDOMElementPrivate.h"
-#include "WebKitDOMEventPrivate.h"
-#include "WebKitDOMEventTarget.h"
-#include "WebKitDOMNodeListPrivate.h"
-#include "WebKitDOMNodePrivate.h"
-#include "WebKitDOMPrivate.h"
+#include "CyberKitDOMDocumentPrivate.h"
+#include "CyberKitDOMElementPrivate.h"
+#include "CyberKitDOMEventPrivate.h"
+#include "CyberKitDOMEventTarget.h"
+#include "CyberKitDOMNodeListPrivate.h"
+#include "CyberKitDOMNodePrivate.h"
+#include "CyberKitDOMPrivate.h"
 #include <CyberCore/CSSImportRule.h>
 #include <CyberCore/DOMException.h>
 #include <CyberCore/Document.h>
@@ -40,35 +40,35 @@
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
-static gboolean webkit_dom_node_dispatch_event(WebKitDOMEventTarget* target, WebKitDOMEvent* event, GError** error)
+static gboolean webkit_dom_node_dispatch_event(CyberKitDOMEventTarget* target, CyberKitDOMEvent* event, GError** error)
 {
-    WebCore::Event* coreEvent = WebKit::core(event);
+    CyberCore::Event* coreEvent = CyberKit::core(event);
     if (!coreEvent)
         return false;
-    WebCore::Node* coreTarget = static_cast<WebCore::Node*>(WEBKIT_DOM_OBJECT(target)->coreObject);
+    CyberCore::Node* coreTarget = static_cast<CyberCore::Node*>(WEBKIT_DOM_OBJECT(target)->coreObject);
 
     auto result = coreTarget->dispatchEventForBindings(*coreEvent);
     if (result.hasException()) {
-        auto description = WebCore::DOMException::description(result.releaseException().code());
+        auto description = CyberCore::DOMException::description(result.releaseException().code());
         g_set_error_literal(error, g_quark_from_string("WEBKIT_DOM"), description.legacyCode, description.name);
         return false;
     }
     return result.releaseReturnValue();
 }
 
-static gboolean webkit_dom_node_add_event_listener(WebKitDOMEventTarget* target, const char* eventName, GClosure* handler, gboolean useCapture)
+static gboolean webkit_dom_node_add_event_listener(CyberKitDOMEventTarget* target, const char* eventName, GClosure* handler, gboolean useCapture)
 {
-    WebCore::Node* coreTarget = static_cast<WebCore::Node*>(WEBKIT_DOM_OBJECT(target)->coreObject);
-    return WebKit::GObjectEventListener::addEventListener(G_OBJECT(target), coreTarget, eventName, handler, useCapture);
+    CyberCore::Node* coreTarget = static_cast<CyberCore::Node*>(WEBKIT_DOM_OBJECT(target)->coreObject);
+    return CyberKit::GObjectEventListener::addEventListener(G_OBJECT(target), coreTarget, eventName, handler, useCapture);
 }
 
-static gboolean webkit_dom_node_remove_event_listener(WebKitDOMEventTarget* target, const char* eventName, GClosure* handler, gboolean useCapture)
+static gboolean webkit_dom_node_remove_event_listener(CyberKitDOMEventTarget* target, const char* eventName, GClosure* handler, gboolean useCapture)
 {
-    WebCore::Node* coreTarget = static_cast<WebCore::Node*>(WEBKIT_DOM_OBJECT(target)->coreObject);
-    return WebKit::GObjectEventListener::removeEventListener(G_OBJECT(target), coreTarget, eventName, handler, useCapture);
+    CyberCore::Node* coreTarget = static_cast<CyberCore::Node*>(WEBKIT_DOM_OBJECT(target)->coreObject);
+    return CyberKit::GObjectEventListener::removeEventListener(G_OBJECT(target), coreTarget, eventName, handler, useCapture);
 }
 
-void webkitDOMNodeDOMEventTargetInit(WebKitDOMEventTargetIface* iface)
+void webkitDOMNodeDOMEventTargetInit(CyberKitDOMEventTargetIface* iface)
 {
     iface->dispatch_event = webkit_dom_node_dispatch_event;
     iface->add_event_listener = webkit_dom_node_add_event_listener;
@@ -94,7 +94,7 @@ enum {
 
 static void webkit_dom_node_set_property(GObject* object, guint propertyId, const GValue* value, GParamSpec* pspec)
 {
-    WebKitDOMNode* self = WEBKIT_DOM_NODE(object);
+    CyberKitDOMNode* self = WEBKIT_DOM_NODE(object);
 
     switch (propertyId) {
     case DOM_NODE_PROP_NODE_VALUE:
@@ -111,7 +111,7 @@ static void webkit_dom_node_set_property(GObject* object, guint propertyId, cons
 
 static void webkit_dom_node_get_property(GObject* object, guint propertyId, GValue* value, GParamSpec* pspec)
 {
-    WebKitDOMNode* self = WEBKIT_DOM_NODE(object);
+    CyberKitDOMNode* self = WEBKIT_DOM_NODE(object);
 
     switch (propertyId) {
     case DOM_NODE_PROP_NODE_NAME:
@@ -200,7 +200,7 @@ void webkitDOMNodeInstallProperties(GObjectClass* gobjectClass)
         g_param_spec_object(
             "parent-node",
             "Node:parent-node",
-            "read-only WebKitDOMNode* Node:parent-node",
+            "read-only CyberKitDOMNode* Node:parent-node",
             WEBKIT_DOM_TYPE_NODE,
             WEBKIT_PARAM_READABLE));
 
@@ -210,7 +210,7 @@ void webkitDOMNodeInstallProperties(GObjectClass* gobjectClass)
         g_param_spec_object(
             "child-nodes",
             "Node:child-nodes",
-            "read-only WebKitDOMNodeList* Node:child-nodes",
+            "read-only CyberKitDOMNodeList* Node:child-nodes",
             WEBKIT_DOM_TYPE_NODE_LIST,
             WEBKIT_PARAM_READABLE));
 
@@ -220,7 +220,7 @@ void webkitDOMNodeInstallProperties(GObjectClass* gobjectClass)
         g_param_spec_object(
             "first-child",
             "Node:first-child",
-            "read-only WebKitDOMNode* Node:first-child",
+            "read-only CyberKitDOMNode* Node:first-child",
             WEBKIT_DOM_TYPE_NODE,
             WEBKIT_PARAM_READABLE));
 
@@ -230,7 +230,7 @@ void webkitDOMNodeInstallProperties(GObjectClass* gobjectClass)
         g_param_spec_object(
             "last-child",
             "Node:last-child",
-            "read-only WebKitDOMNode* Node:last-child",
+            "read-only CyberKitDOMNode* Node:last-child",
             WEBKIT_DOM_TYPE_NODE,
             WEBKIT_PARAM_READABLE));
 
@@ -240,7 +240,7 @@ void webkitDOMNodeInstallProperties(GObjectClass* gobjectClass)
         g_param_spec_object(
             "previous-sibling",
             "Node:previous-sibling",
-            "read-only WebKitDOMNode* Node:previous-sibling",
+            "read-only CyberKitDOMNode* Node:previous-sibling",
             WEBKIT_DOM_TYPE_NODE,
             WEBKIT_PARAM_READABLE));
 
@@ -250,7 +250,7 @@ void webkitDOMNodeInstallProperties(GObjectClass* gobjectClass)
         g_param_spec_object(
             "next-sibling",
             "Node:next-sibling",
-            "read-only WebKitDOMNode* Node:next-sibling",
+            "read-only CyberKitDOMNode* Node:next-sibling",
             WEBKIT_DOM_TYPE_NODE,
             WEBKIT_PARAM_READABLE));
 
@@ -260,7 +260,7 @@ void webkitDOMNodeInstallProperties(GObjectClass* gobjectClass)
         g_param_spec_object(
             "owner-document",
             "Node:owner-document",
-            "read-only WebKitDOMDocument* Node:owner-document",
+            "read-only CyberKitDOMDocument* Node:owner-document",
             WEBKIT_DOM_TYPE_DOCUMENT,
             WEBKIT_PARAM_READABLE));
 
@@ -290,336 +290,336 @@ void webkitDOMNodeInstallProperties(GObjectClass* gobjectClass)
         g_param_spec_object(
             "parent-element",
             "Node:parent-element",
-            "read-only WebKitDOMElement* Node:parent-element",
+            "read-only CyberKitDOMElement* Node:parent-element",
             WEBKIT_DOM_TYPE_ELEMENT,
             WEBKIT_PARAM_READABLE));
 
 }
 
-WebKitDOMNode* webkit_dom_node_insert_before(WebKitDOMNode* self, WebKitDOMNode* newChild, WebKitDOMNode* refChild, GError** error)
+CyberKitDOMNode* webkit_dom_node_insert_before(CyberKitDOMNode* self, CyberKitDOMNode* newChild, CyberKitDOMNode* refChild, GError** error)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_NODE(self), 0);
     g_return_val_if_fail(WEBKIT_DOM_IS_NODE(newChild), 0);
     g_return_val_if_fail(!refChild || WEBKIT_DOM_IS_NODE(refChild), 0);
     g_return_val_if_fail(!error || !*error, 0);
-    WebCore::Node* item = WebKit::core(self);
-    WebCore::Node* convertedNewChild = WebKit::core(newChild);
-    WebCore::Node* convertedRefChild = WebKit::core(refChild);
+    CyberCore::Node* item = CyberKit::core(self);
+    CyberCore::Node* convertedNewChild = CyberKit::core(newChild);
+    CyberCore::Node* convertedRefChild = CyberKit::core(refChild);
     auto result = item->insertBefore(*convertedNewChild, convertedRefChild);
     if (result.hasException()) {
-        auto description = WebCore::DOMException::description(result.releaseException().code());
+        auto description = CyberCore::DOMException::description(result.releaseException().code());
         g_set_error_literal(error, g_quark_from_string("WEBKIT_DOM"), description.legacyCode, description.name);
         return nullptr;
     }
     return newChild;
 }
 
-WebKitDOMNode* webkit_dom_node_replace_child(WebKitDOMNode* self, WebKitDOMNode* newChild, WebKitDOMNode* oldChild, GError** error)
+CyberKitDOMNode* webkit_dom_node_replace_child(CyberKitDOMNode* self, CyberKitDOMNode* newChild, CyberKitDOMNode* oldChild, GError** error)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_NODE(self), 0);
     g_return_val_if_fail(WEBKIT_DOM_IS_NODE(newChild), 0);
     g_return_val_if_fail(WEBKIT_DOM_IS_NODE(oldChild), 0);
     g_return_val_if_fail(!error || !*error, 0);
-    WebCore::Node* item = WebKit::core(self);
-    WebCore::Node* convertedNewChild = WebKit::core(newChild);
-    WebCore::Node* convertedOldChild = WebKit::core(oldChild);
+    CyberCore::Node* item = CyberKit::core(self);
+    CyberCore::Node* convertedNewChild = CyberKit::core(newChild);
+    CyberCore::Node* convertedOldChild = CyberKit::core(oldChild);
     auto result = item->replaceChild(*convertedNewChild, *convertedOldChild);
     if (result.hasException()) {
-        auto description = WebCore::DOMException::description(result.releaseException().code());
+        auto description = CyberCore::DOMException::description(result.releaseException().code());
         g_set_error_literal(error, g_quark_from_string("WEBKIT_DOM"), description.legacyCode, description.name);
         return nullptr;
     }
     return oldChild;
 }
 
-WebKitDOMNode* webkit_dom_node_remove_child(WebKitDOMNode* self, WebKitDOMNode* oldChild, GError** error)
+CyberKitDOMNode* webkit_dom_node_remove_child(CyberKitDOMNode* self, CyberKitDOMNode* oldChild, GError** error)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_NODE(self), 0);
     g_return_val_if_fail(WEBKIT_DOM_IS_NODE(oldChild), 0);
     g_return_val_if_fail(!error || !*error, 0);
-    WebCore::Node* item = WebKit::core(self);
-    WebCore::Node* convertedOldChild = WebKit::core(oldChild);
+    CyberCore::Node* item = CyberKit::core(self);
+    CyberCore::Node* convertedOldChild = CyberKit::core(oldChild);
     auto result = item->removeChild(*convertedOldChild);
     if (result.hasException()) {
-        auto description = WebCore::DOMException::description(result.releaseException().code());
+        auto description = CyberCore::DOMException::description(result.releaseException().code());
         g_set_error_literal(error, g_quark_from_string("WEBKIT_DOM"), description.legacyCode, description.name);
         return nullptr;
     }
     return oldChild;
 }
 
-WebKitDOMNode* webkit_dom_node_append_child(WebKitDOMNode* self, WebKitDOMNode* newChild, GError** error)
+CyberKitDOMNode* webkit_dom_node_append_child(CyberKitDOMNode* self, CyberKitDOMNode* newChild, GError** error)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_NODE(self), 0);
     g_return_val_if_fail(WEBKIT_DOM_IS_NODE(newChild), 0);
     g_return_val_if_fail(!error || !*error, 0);
-    WebCore::Node* item = WebKit::core(self);
-    WebCore::Node* convertedNewChild = WebKit::core(newChild);
+    CyberCore::Node* item = CyberKit::core(self);
+    CyberCore::Node* convertedNewChild = CyberKit::core(newChild);
     auto result = item->appendChild(*convertedNewChild);
     if (result.hasException()) {
-        auto description = WebCore::DOMException::description(result.releaseException().code());
+        auto description = CyberCore::DOMException::description(result.releaseException().code());
         g_set_error_literal(error, g_quark_from_string("WEBKIT_DOM"), description.legacyCode, description.name);
         return nullptr;
     }
     return newChild;
 }
 
-gboolean webkit_dom_node_has_child_nodes(WebKitDOMNode* self)
+gboolean webkit_dom_node_has_child_nodes(CyberKitDOMNode* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_NODE(self), FALSE);
-    WebCore::Node* item = WebKit::core(self);
+    CyberCore::Node* item = CyberKit::core(self);
     gboolean result = item->hasChildNodes();
     return result;
 }
 
-WebKitDOMNode* webkit_dom_node_clone_node_with_error(WebKitDOMNode* self, gboolean deep, GError** error)
+CyberKitDOMNode* webkit_dom_node_clone_node_with_error(CyberKitDOMNode* self, gboolean deep, GError** error)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_NODE(self), 0);
     g_return_val_if_fail(!error || !*error, 0);
-    WebCore::Node* item = WebKit::core(self);
+    CyberCore::Node* item = CyberKit::core(self);
     auto result = item->cloneNodeForBindings(deep);
     if (result.hasException()) {
-        auto description = WebCore::DOMException::description(result.releaseException().code());
+        auto description = CyberCore::DOMException::description(result.releaseException().code());
         g_set_error_literal(error, g_quark_from_string("WEBKIT_DOM"), description.legacyCode, description.name);
         return nullptr;
     }
-    return WebKit::kit(result.releaseReturnValue().ptr());
+    return CyberKit::kit(result.releaseReturnValue().ptr());
 }
 
-void webkit_dom_node_normalize(WebKitDOMNode* self)
+void webkit_dom_node_normalize(CyberKitDOMNode* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_NODE(self));
-    WebCore::Node* item = WebKit::core(self);
+    CyberCore::Node* item = CyberKit::core(self);
     item->normalize();
 }
 
-gboolean webkit_dom_node_is_supported(WebKitDOMNode* self, const gchar* feature, const gchar* version)
+gboolean webkit_dom_node_is_supported(CyberKitDOMNode* self, const gchar* feature, const gchar* version)
 {
     g_return_val_if_fail(WEBKIT_DOM_IS_NODE(self), FALSE);
     g_return_val_if_fail(feature, FALSE);
     g_return_val_if_fail(version, FALSE);
     WTF::String convertedFeature = WTF::String::fromUTF8(feature);
     WTF::String convertedVersion = WTF::String::fromUTF8(version);
-    return WebCore::SVGTests::hasFeatureForLegacyBindings(convertedFeature, convertedVersion);
+    return CyberCore::SVGTests::hasFeatureForLegacyBindings(convertedFeature, convertedVersion);
 }
 
-gboolean webkit_dom_node_is_same_node(WebKitDOMNode* self, WebKitDOMNode* other)
+gboolean webkit_dom_node_is_same_node(CyberKitDOMNode* self, CyberKitDOMNode* other)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_NODE(self), FALSE);
     g_return_val_if_fail(WEBKIT_DOM_IS_NODE(other), FALSE);
-    WebCore::Node* item = WebKit::core(self);
-    WebCore::Node* convertedOther = WebKit::core(other);
+    CyberCore::Node* item = CyberKit::core(self);
+    CyberCore::Node* convertedOther = CyberKit::core(other);
     gboolean result = item->isSameNode(convertedOther);
     return result;
 }
 
-gboolean webkit_dom_node_is_equal_node(WebKitDOMNode* self, WebKitDOMNode* other)
+gboolean webkit_dom_node_is_equal_node(CyberKitDOMNode* self, CyberKitDOMNode* other)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_NODE(self), FALSE);
     g_return_val_if_fail(WEBKIT_DOM_IS_NODE(other), FALSE);
-    WebCore::Node* item = WebKit::core(self);
-    WebCore::Node* convertedOther = WebKit::core(other);
+    CyberCore::Node* item = CyberKit::core(self);
+    CyberCore::Node* convertedOther = CyberKit::core(other);
     gboolean result = item->isEqualNode(convertedOther);
     return result;
 }
 
-gchar* webkit_dom_node_lookup_prefix(WebKitDOMNode* self, const gchar* namespaceURI)
+gchar* webkit_dom_node_lookup_prefix(CyberKitDOMNode* self, const gchar* namespaceURI)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_NODE(self), 0);
     g_return_val_if_fail(namespaceURI, 0);
-    WebCore::Node* item = WebKit::core(self);
+    CyberCore::Node* item = CyberKit::core(self);
     gchar* result = convertToUTF8String(item->lookupPrefix(WTF::AtomString::fromUTF8(namespaceURI)));
     return result;
 }
 
-gchar* webkit_dom_node_lookup_namespace_uri(WebKitDOMNode* self, const gchar* prefix)
+gchar* webkit_dom_node_lookup_namespace_uri(CyberKitDOMNode* self, const gchar* prefix)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_NODE(self), 0);
     g_return_val_if_fail(prefix, 0);
-    WebCore::Node* item = WebKit::core(self);
+    CyberCore::Node* item = CyberKit::core(self);
     gchar* result = convertToUTF8String(item->lookupNamespaceURI(WTF::AtomString::fromUTF8(prefix)));
     return result;
 }
 
-gboolean webkit_dom_node_is_default_namespace(WebKitDOMNode* self, const gchar* namespaceURI)
+gboolean webkit_dom_node_is_default_namespace(CyberKitDOMNode* self, const gchar* namespaceURI)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_NODE(self), FALSE);
     g_return_val_if_fail(namespaceURI, FALSE);
-    WebCore::Node* item = WebKit::core(self);
+    CyberCore::Node* item = CyberKit::core(self);
     gboolean result = item->isDefaultNamespace(WTF::AtomString::fromUTF8(namespaceURI));
     return result;
 }
 
-gushort webkit_dom_node_compare_document_position(WebKitDOMNode* self, WebKitDOMNode* other)
+gushort webkit_dom_node_compare_document_position(CyberKitDOMNode* self, CyberKitDOMNode* other)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_NODE(self), 0);
     g_return_val_if_fail(WEBKIT_DOM_IS_NODE(other), 0);
-    WebCore::Node* item = WebKit::core(self);
-    WebCore::Node* convertedOther = WebKit::core(other);
+    CyberCore::Node* item = CyberKit::core(self);
+    CyberCore::Node* convertedOther = CyberKit::core(other);
     gushort result = item->compareDocumentPosition(*convertedOther);
     return result;
 }
 
-gboolean webkit_dom_node_contains(WebKitDOMNode* self, WebKitDOMNode* other)
+gboolean webkit_dom_node_contains(CyberKitDOMNode* self, CyberKitDOMNode* other)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_NODE(self), FALSE);
     g_return_val_if_fail(WEBKIT_DOM_IS_NODE(other), FALSE);
-    WebCore::Node* item = WebKit::core(self);
-    WebCore::Node* convertedOther = WebKit::core(other);
+    CyberCore::Node* item = CyberKit::core(self);
+    CyberCore::Node* convertedOther = CyberKit::core(other);
     gboolean result = item->contains(convertedOther);
     return result;
 }
 
-gchar* webkit_dom_node_get_node_name(WebKitDOMNode* self)
+gchar* webkit_dom_node_get_node_name(CyberKitDOMNode* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_NODE(self), 0);
-    WebCore::Node* item = WebKit::core(self);
+    CyberCore::Node* item = CyberKit::core(self);
     gchar* result = convertToUTF8String(item->nodeName());
     return result;
 }
 
-gchar* webkit_dom_node_get_node_value(WebKitDOMNode* self)
+gchar* webkit_dom_node_get_node_value(CyberKitDOMNode* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_NODE(self), 0);
-    WebCore::Node* item = WebKit::core(self);
+    CyberCore::Node* item = CyberKit::core(self);
     gchar* result = convertToUTF8String(item->nodeValue());
     return result;
 }
 
-void webkit_dom_node_set_node_value(WebKitDOMNode* self, const gchar* value, GError** error)
+void webkit_dom_node_set_node_value(CyberKitDOMNode* self, const gchar* value, GError** error)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_NODE(self));
     g_return_if_fail(value);
     g_return_if_fail(!error || !*error);
-    WebCore::Node* item = WebKit::core(self);
+    CyberCore::Node* item = CyberKit::core(self);
     WTF::String convertedValue = WTF::String::fromUTF8(value);
     item->setNodeValue(convertedValue);
 }
 
-gushort webkit_dom_node_get_node_type(WebKitDOMNode* self)
+gushort webkit_dom_node_get_node_type(CyberKitDOMNode* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_NODE(self), 0);
-    WebCore::Node* item = WebKit::core(self);
+    CyberCore::Node* item = CyberKit::core(self);
     gushort result = item->nodeType();
     return result;
 }
 
-WebKitDOMNode* webkit_dom_node_get_parent_node(WebKitDOMNode* self)
+CyberKitDOMNode* webkit_dom_node_get_parent_node(CyberKitDOMNode* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_NODE(self), 0);
-    WebCore::Node* item = WebKit::core(self);
-    RefPtr<WebCore::Node> gobjectResult = WTF::getPtr(item->parentNode());
-    return WebKit::kit(gobjectResult.get());
+    CyberCore::Node* item = CyberKit::core(self);
+    RefPtr<CyberCore::Node> gobjectResult = WTF::getPtr(item->parentNode());
+    return CyberKit::kit(gobjectResult.get());
 }
 
-WebKitDOMNodeList* webkit_dom_node_get_child_nodes(WebKitDOMNode* self)
+CyberKitDOMNodeList* webkit_dom_node_get_child_nodes(CyberKitDOMNode* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_NODE(self), 0);
-    WebCore::Node* item = WebKit::core(self);
-    RefPtr<WebCore::NodeList> gobjectResult = WTF::getPtr(item->childNodes());
-    return WebKit::kit(gobjectResult.get());
+    CyberCore::Node* item = CyberKit::core(self);
+    RefPtr<CyberCore::NodeList> gobjectResult = WTF::getPtr(item->childNodes());
+    return CyberKit::kit(gobjectResult.get());
 }
 
-WebKitDOMNode* webkit_dom_node_get_first_child(WebKitDOMNode* self)
+CyberKitDOMNode* webkit_dom_node_get_first_child(CyberKitDOMNode* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_NODE(self), 0);
-    WebCore::Node* item = WebKit::core(self);
-    RefPtr<WebCore::Node> gobjectResult = WTF::getPtr(item->firstChild());
-    return WebKit::kit(gobjectResult.get());
+    CyberCore::Node* item = CyberKit::core(self);
+    RefPtr<CyberCore::Node> gobjectResult = WTF::getPtr(item->firstChild());
+    return CyberKit::kit(gobjectResult.get());
 }
 
-WebKitDOMNode* webkit_dom_node_get_last_child(WebKitDOMNode* self)
+CyberKitDOMNode* webkit_dom_node_get_last_child(CyberKitDOMNode* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_NODE(self), 0);
-    WebCore::Node* item = WebKit::core(self);
-    RefPtr<WebCore::Node> gobjectResult = WTF::getPtr(item->lastChild());
-    return WebKit::kit(gobjectResult.get());
+    CyberCore::Node* item = CyberKit::core(self);
+    RefPtr<CyberCore::Node> gobjectResult = WTF::getPtr(item->lastChild());
+    return CyberKit::kit(gobjectResult.get());
 }
 
-WebKitDOMNode* webkit_dom_node_get_previous_sibling(WebKitDOMNode* self)
+CyberKitDOMNode* webkit_dom_node_get_previous_sibling(CyberKitDOMNode* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_NODE(self), 0);
-    WebCore::Node* item = WebKit::core(self);
-    RefPtr<WebCore::Node> gobjectResult = WTF::getPtr(item->previousSibling());
-    return WebKit::kit(gobjectResult.get());
+    CyberCore::Node* item = CyberKit::core(self);
+    RefPtr<CyberCore::Node> gobjectResult = WTF::getPtr(item->previousSibling());
+    return CyberKit::kit(gobjectResult.get());
 }
 
-WebKitDOMNode* webkit_dom_node_get_next_sibling(WebKitDOMNode* self)
+CyberKitDOMNode* webkit_dom_node_get_next_sibling(CyberKitDOMNode* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_NODE(self), 0);
-    WebCore::Node* item = WebKit::core(self);
-    RefPtr<WebCore::Node> gobjectResult = WTF::getPtr(item->nextSibling());
-    return WebKit::kit(gobjectResult.get());
+    CyberCore::Node* item = CyberKit::core(self);
+    RefPtr<CyberCore::Node> gobjectResult = WTF::getPtr(item->nextSibling());
+    return CyberKit::kit(gobjectResult.get());
 }
 
-WebKitDOMDocument* webkit_dom_node_get_owner_document(WebKitDOMNode* self)
+CyberKitDOMDocument* webkit_dom_node_get_owner_document(CyberKitDOMNode* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_NODE(self), 0);
-    WebCore::Node* item = WebKit::core(self);
-    RefPtr<WebCore::Document> gobjectResult = WTF::getPtr(item->ownerDocument());
-    return WebKit::kit(gobjectResult.get());
+    CyberCore::Node* item = CyberKit::core(self);
+    RefPtr<CyberCore::Document> gobjectResult = WTF::getPtr(item->ownerDocument());
+    return CyberKit::kit(gobjectResult.get());
 }
 
-gchar* webkit_dom_node_get_base_uri(WebKitDOMNode* self)
+gchar* webkit_dom_node_get_base_uri(CyberKitDOMNode* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_NODE(self), 0);
-    WebCore::Node* item = WebKit::core(self);
+    CyberCore::Node* item = CyberKit::core(self);
     gchar* result = convertToUTF8String(item->baseURI());
     return result;
 }
 
-gchar* webkit_dom_node_get_text_content(WebKitDOMNode* self)
+gchar* webkit_dom_node_get_text_content(CyberKitDOMNode* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_NODE(self), 0);
-    WebCore::Node* item = WebKit::core(self);
+    CyberCore::Node* item = CyberKit::core(self);
     gchar* result = convertToUTF8String(item->textContent());
     return result;
 }
 
-void webkit_dom_node_set_text_content(WebKitDOMNode* self, const gchar* value, GError** error)
+void webkit_dom_node_set_text_content(CyberKitDOMNode* self, const gchar* value, GError** error)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_NODE(self));
     g_return_if_fail(value);
     g_return_if_fail(!error || !*error);
-    WebCore::Node* item = WebKit::core(self);
+    CyberCore::Node* item = CyberKit::core(self);
     item->setTextContent(WTF::String::fromUTF8(value));
 }
 
-WebKitDOMElement* webkit_dom_node_get_parent_element(WebKitDOMNode* self)
+CyberKitDOMElement* webkit_dom_node_get_parent_element(CyberKitDOMNode* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_NODE(self), 0);
-    WebCore::Node* item = WebKit::core(self);
-    RefPtr<WebCore::Element> gobjectResult = WTF::getPtr(item->parentElement());
-    return WebKit::kit(gobjectResult.get());
+    CyberCore::Node* item = CyberKit::core(self);
+    RefPtr<CyberCore::Element> gobjectResult = WTF::getPtr(item->parentElement());
+    return CyberKit::kit(gobjectResult.get());
 }
 
 G_GNUC_END_IGNORE_DEPRECATIONS;

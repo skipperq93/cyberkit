@@ -27,7 +27,7 @@
 #include "SVGPathByteStream.h"
 #include "SVGPathSegImpl.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGPathSegList;
 class SVGPoint;
@@ -126,4 +126,4 @@ private:
     Ref<SVGAnimatedPathSegList> m_pathSegList { SVGAnimatedPathSegList::create(this) };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

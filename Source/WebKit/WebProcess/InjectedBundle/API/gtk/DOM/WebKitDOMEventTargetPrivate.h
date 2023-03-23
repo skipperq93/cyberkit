@@ -17,18 +17,18 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitDOMEventTargetPrivate_h
-#define WebKitDOMEventTargetPrivate_h
+#ifndef CyberKitDOMEventTargetPrivate_h
+#define CyberKitDOMEventTargetPrivate_h
 
-#include <webkitdom/WebKitDOMEventTarget.h>
+#include <webkitdom/CyberKitDOMEventTarget.h>
 
-namespace WebCore {
+namespace CyberCore {
 class EventTarget;
 }
 
-namespace WebKit {
-WebKitDOMEventTarget* kit(WebCore::EventTarget*);
-WebCore::EventTarget* core(WebKitDOMEventTarget*);
-} // namespace WebKit
+namespace CyberKit {
+CyberKitDOMEventTarget* kit(CyberCore::EventTarget*);
+CyberCore::EventTarget* core(CyberKitDOMEventTarget*);
+} // namespace CyberKit
 
-#endif /* WebKitDOMEventTargetPrivate_h */
+#endif /* CyberKitDOMEventTargetPrivate_h */

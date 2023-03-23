@@ -56,7 +56,7 @@ namespace WTF {
 class TextStream;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class FloatSize;
 
@@ -216,16 +216,16 @@ constexpr bool operator!=(const IntSize& a, const IntSize& b)
 
 WEBCORE_EXPORT WTF::TextStream& operator<<(WTF::TextStream&, const IntSize&);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct DefaultHash<WebCore::IntSize>;
-template<> struct HashTraits<WebCore::IntSize>;
+template<> struct DefaultHash<CyberCore::IntSize>;
+template<> struct HashTraits<CyberCore::IntSize>;
 
 template<typename> struct LogArgument;
-template<> struct LogArgument<WebCore::IntSize> {
-    static String toString(const WebCore::IntSize& size) { return size.toJSONString(); }
+template<> struct LogArgument<CyberCore::IntSize> {
+    static String toString(const CyberCore::IntSize& size) { return size.toJSONString(); }
 };
 
 }

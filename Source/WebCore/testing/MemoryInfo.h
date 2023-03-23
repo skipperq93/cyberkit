@@ -33,7 +33,7 @@
 #include "CommonVM.h"
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class MemoryInfo : public RefCounted<MemoryInfo> {
 public:
@@ -53,4 +53,4 @@ private:
     size_t m_totalJSHeapSize;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

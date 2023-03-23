@@ -34,7 +34,7 @@
 #include <wtf/Function.h>
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // SincResampler is a high-quality sample-rate converter.
 
@@ -94,6 +94,6 @@ protected:
     bool m_isBufferPrimed { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // SincResampler_h

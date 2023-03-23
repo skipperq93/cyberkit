@@ -25,7 +25,7 @@
 #include "SelectorFilter.h"
 #include "StyleRule.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace Style {
 
 enum class MatchBasedOnRuleHash : unsigned {
@@ -88,12 +88,12 @@ private:
 };
 
 } // namespace Style
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
 // RuleData is simple enough that initializing to 0 and moving with memcpy will totally work.
-template<> struct VectorTraits<WebCore::Style::RuleData> : SimpleClassVectorTraits { };
+template<> struct VectorTraits<CyberCore::Style::RuleData> : SimpleClassVectorTraits { };
 
 } // namespace WTF
 

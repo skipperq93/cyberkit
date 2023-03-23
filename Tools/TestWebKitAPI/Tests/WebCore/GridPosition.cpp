@@ -32,7 +32,7 @@ namespace TestWebKitAPI {
 TEST(GridPositionTest, GridPositionLimits)
 {
 
-    WebCore::GridPosition gridPosition;
+    CyberCore::GridPosition gridPosition;
 
     gridPosition.setExplicitPosition(999999, emptyString());
     EXPECT_EQ(gridPosition.integerPosition(), 999999);

@@ -30,7 +30,7 @@
 
 #include "SubstituteResource.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ArchiveResource : public SubstituteResource {
 public:
@@ -56,4 +56,4 @@ private:
     bool m_shouldIgnoreWhenUnarchiving;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

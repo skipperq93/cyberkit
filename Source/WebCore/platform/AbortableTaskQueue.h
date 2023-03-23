@@ -27,7 +27,7 @@
 #include <wtf/RunLoop.h>
 #include <wtf/StdLibExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 /* AbortableTaskQueue is a high-level synchronization object for cases where abortable work is done in
  * background thread(s) that sometimes needs to post tasks to the main thread.
@@ -238,4 +238,4 @@ private:
     Deque<Ref<Task>> m_channel WTF_GUARDED_BY_LOCK(m_lock);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

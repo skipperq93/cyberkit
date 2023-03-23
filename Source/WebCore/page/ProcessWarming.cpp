@@ -48,7 +48,7 @@
 #include "GPUPrewarming.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 void ProcessWarming::initializeNames()
 {
@@ -87,7 +87,7 @@ void ProcessWarming::prewarmGlobally()
 #endif
 }
 
-WebCore::PrewarmInformation ProcessWarming::collectPrewarmInformation()
+CyberCore::PrewarmInformation ProcessWarming::collectPrewarmInformation()
 {
     return { FontCache::forCurrentThread().collectPrewarmInformation() };
 }

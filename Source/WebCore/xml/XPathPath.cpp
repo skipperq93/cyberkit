@@ -32,7 +32,7 @@
 #include "XPathPredicate.h"
 #include "XPathStep.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace XPath {
         
 Filter::Filter(std::unique_ptr<Expression> expression, Vector<std::unique_ptr<Expression>> predicates)

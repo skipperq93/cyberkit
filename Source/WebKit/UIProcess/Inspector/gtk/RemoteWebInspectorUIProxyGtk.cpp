@@ -38,7 +38,7 @@
 #include <wtf/text/Base64.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 void RemoteWebInspectorUIProxy::updateWindowTitle(const CString& targetName)
 {
@@ -157,7 +157,7 @@ void RemoteWebInspectorUIProxy::platformLoad(const String&, CompletionHandler<vo
     completionHandler(nullString());
 }
 
-void RemoteWebInspectorUIProxy::platformPickColorFromScreen(CompletionHandler<void(const std::optional<WebCore::Color>&)>&& completionHandler)
+void RemoteWebInspectorUIProxy::platformPickColorFromScreen(CompletionHandler<void(const std::optional<CyberCore::Color>&)>&& completionHandler)
 {
     completionHandler({ });
 }

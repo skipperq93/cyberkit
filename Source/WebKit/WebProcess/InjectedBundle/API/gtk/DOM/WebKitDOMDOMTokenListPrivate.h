@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -17,16 +17,16 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitDOMDOMTokenListPrivate_h
-#define WebKitDOMDOMTokenListPrivate_h
+#ifndef CyberKitDOMDOMTokenListPrivate_h
+#define CyberKitDOMDOMTokenListPrivate_h
 
 #include <CyberCore/DOMTokenList.h>
-#include <webkitdom/WebKitDOMDOMTokenList.h>
+#include <webkitdom/CyberKitDOMDOMTokenList.h>
 
-namespace WebKit {
-WebKitDOMDOMTokenList* wrapDOMTokenList(WebCore::DOMTokenList*);
-WebKitDOMDOMTokenList* kit(WebCore::DOMTokenList*);
-WebCore::DOMTokenList* core(WebKitDOMDOMTokenList*);
-} // namespace WebKit
+namespace CyberKit {
+CyberKitDOMDOMTokenList* wrapDOMTokenList(CyberCore::DOMTokenList*);
+CyberKitDOMDOMTokenList* kit(CyberCore::DOMTokenList*);
+CyberCore::DOMTokenList* core(CyberKitDOMDOMTokenList*);
+} // namespace CyberKit
 
-#endif /* WebKitDOMDOMTokenListPrivate_h */
+#endif /* CyberKitDOMDOMTokenListPrivate_h */

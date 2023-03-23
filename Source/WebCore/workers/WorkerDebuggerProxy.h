@@ -32,7 +32,7 @@
 
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WorkerDebuggerProxy {
 public:
@@ -41,4 +41,4 @@ public:
     virtual void setResourceCachingDisabledByWebInspector(bool) = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

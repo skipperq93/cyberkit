@@ -28,7 +28,7 @@
 #import "InjectedBundleRangeHandle.h"
 #import "WKObject.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 template<> struct WrapperTraits<InjectedBundleRangeHandle> {
     using WrapperClass = WKWebProcessPlugInRangeHandle;
@@ -38,6 +38,6 @@ template<> struct WrapperTraits<InjectedBundleRangeHandle> {
 
 @interface WKWebProcessPlugInRangeHandle () <WKObject>
 
-@property (readonly) WebKit::InjectedBundleRangeHandle& _rangeHandle;
+@property (readonly) CyberKit::InjectedBundleRangeHandle& _rangeHandle;
 
 @end

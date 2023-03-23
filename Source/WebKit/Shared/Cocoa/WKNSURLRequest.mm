@@ -32,7 +32,7 @@
 
 - (NSObject *)_web_createTarget
 {
-    return [static_cast<API::URLRequest*>(&self._apiObject)->resourceRequest().nsURLRequest(WebCore::HTTPBodyUpdatePolicy::DoNotUpdateHTTPBody) copy];
+    return [static_cast<API::URLRequest*>(&self._apiObject)->resourceRequest().nsURLRequest(CyberCore::HTTPBodyUpdatePolicy::DoNotUpdateHTTPBody) copy];
 }
 
 - (NSURL *)URL

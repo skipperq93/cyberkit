@@ -35,7 +35,7 @@
 #include <wtf/EnumTraits.h>
 #include <wtf/URL.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class ResourceRequestCachePolicy : uint8_t {
     UseProtocolCachePolicy, // normal load, equivalent to fetch "default" cache mode.
@@ -318,43 +318,43 @@ WEBCORE_EXPORT unsigned initializeMaximumHTTPConnectionCountPerHost();
 WEBCORE_EXPORT void initializeHTTPConnectionSettingsOnStartup();
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraitsForPersistence<WebCore::ResourceRequestCachePolicy> {
+template<> struct EnumTraitsForPersistence<CyberCore::ResourceRequestCachePolicy> {
     using values = EnumValues<
-        WebCore::ResourceRequestCachePolicy,
-        WebCore::ResourceRequestCachePolicy::UseProtocolCachePolicy,
-        WebCore::ResourceRequestCachePolicy::ReloadIgnoringCacheData,
-        WebCore::ResourceRequestCachePolicy::ReturnCacheDataElseLoad,
-        WebCore::ResourceRequestCachePolicy::ReturnCacheDataDontLoad,
-        WebCore::ResourceRequestCachePolicy::DoNotUseAnyCache,
-        WebCore::ResourceRequestCachePolicy::RefreshAnyCacheData
+        CyberCore::ResourceRequestCachePolicy,
+        CyberCore::ResourceRequestCachePolicy::UseProtocolCachePolicy,
+        CyberCore::ResourceRequestCachePolicy::ReloadIgnoringCacheData,
+        CyberCore::ResourceRequestCachePolicy::ReturnCacheDataElseLoad,
+        CyberCore::ResourceRequestCachePolicy::ReturnCacheDataDontLoad,
+        CyberCore::ResourceRequestCachePolicy::DoNotUseAnyCache,
+        CyberCore::ResourceRequestCachePolicy::RefreshAnyCacheData
     >;
 };
 
-template<> struct EnumTraitsForPersistence<WebCore::ResourceRequestBase::SameSiteDisposition> {
+template<> struct EnumTraitsForPersistence<CyberCore::ResourceRequestBase::SameSiteDisposition> {
     using values = EnumValues<
-        WebCore::ResourceRequestBase::SameSiteDisposition,
-        WebCore::ResourceRequestBase::SameSiteDisposition::Unspecified,
-        WebCore::ResourceRequestBase::SameSiteDisposition::SameSite,
-        WebCore::ResourceRequestBase::SameSiteDisposition::CrossSite
+        CyberCore::ResourceRequestBase::SameSiteDisposition,
+        CyberCore::ResourceRequestBase::SameSiteDisposition::Unspecified,
+        CyberCore::ResourceRequestBase::SameSiteDisposition::SameSite,
+        CyberCore::ResourceRequestBase::SameSiteDisposition::CrossSite
     >;
 };
 
-template<> struct EnumTraitsForPersistence<WebCore::ResourceRequestRequester> {
+template<> struct EnumTraitsForPersistence<CyberCore::ResourceRequestRequester> {
     using values = EnumValues<
-        WebCore::ResourceRequestRequester,
-        WebCore::ResourceRequestRequester::Unspecified,
-        WebCore::ResourceRequestRequester::Main,
-        WebCore::ResourceRequestRequester::XHR,
-        WebCore::ResourceRequestRequester::Fetch,
-        WebCore::ResourceRequestRequester::Media,
-        WebCore::ResourceRequestRequester::ImportScripts,
-        WebCore::ResourceRequestRequester::Ping,
-        WebCore::ResourceRequestRequester::Beacon,
-        WebCore::ResourceRequestRequester::EventSource
+        CyberCore::ResourceRequestRequester,
+        CyberCore::ResourceRequestRequester::Unspecified,
+        CyberCore::ResourceRequestRequester::Main,
+        CyberCore::ResourceRequestRequester::XHR,
+        CyberCore::ResourceRequestRequester::Fetch,
+        CyberCore::ResourceRequestRequester::Media,
+        CyberCore::ResourceRequestRequester::ImportScripts,
+        CyberCore::ResourceRequestRequester::Ping,
+        CyberCore::ResourceRequestRequester::Beacon,
+        CyberCore::ResourceRequestRequester::EventSource
     >;
 };
 

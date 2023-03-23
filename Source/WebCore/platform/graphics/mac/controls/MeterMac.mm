@@ -34,7 +34,7 @@
 #import "MeterPart.h"
 #import <wtf/BlockObjCExceptions.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 MeterMac::MeterMac(MeterPart& owningMeterPart, ControlFactoryMac& controlFactory, NSLevelIndicatorCell* levelIndicatorCell)
     : ControlMac(owningMeterPart, controlFactory)
@@ -94,6 +94,6 @@ void MeterMac::draw(GraphicsContext& context, const FloatRoundedRect& borderRect
     drawCell(context, borderRect.rect(), deviceScaleFactor, style, m_levelIndicatorCell.get());
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(MAC)

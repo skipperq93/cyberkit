@@ -24,7 +24,7 @@
  */
 
 #import "config.h"
-#import "WebCoreResourceHandleAsOperationQueueDelegate.h"
+#import "CyberCoreResourceHandleAsOperationQueueDelegate.h"
 
 #import "AuthenticationChallenge.h"
 #import "AuthenticationMac.h"
@@ -37,13 +37,13 @@
 #import "SecurityOrigin.h"
 #import "SharedBuffer.h"
 #import "SynchronousLoaderClient.h"
-#import "WebCoreURLResponse.h"
+#import "CyberCoreURLResponse.h"
 #import <pal/spi/cf/CFNetworkSPI.h>
 #import <pal/spi/cocoa/NSURLConnectionSPI.h>
 #import <wtf/BlockPtr.h>
 #import <wtf/MainThread.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 static bool scheduledWithCustomRunLoopMode(const std::optional<SchedulePairHashSet>& pairs)
 {
@@ -57,7 +57,7 @@ static bool scheduledWithCustomRunLoopMode(const std::optional<SchedulePairHashS
     return false;
 }
 
-@implementation WebCoreResourceHandleAsOperationQueueDelegate
+@implementation CyberCoreResourceHandleAsOperationQueueDelegate
 
 - (void)callFunctionOnMainThread:(Function<void()>&&)function
 {
@@ -81,7 +81,7 @@ static bool scheduledWithCustomRunLoopMode(const std::optional<SchedulePairHashS
         CFRunLoopPerformBlock(pair->runLoop(), pair->mode(), block.get());
 }
 
-- (id)initWithHandle:(WebCore::ResourceHandle*)handle messageQueue:(RefPtr<WebCore::SynchronousLoaderMessageQueue>&&)messageQueue
+- (id)initWithHandle:(CyberCore::ResourceHandle*)handle messageQueue:(RefPtr<CyberCore::SynchronousLoaderMessageQueue>&&)messageQueue
 {
     self = [self init];
     if (!self)
@@ -151,7 +151,7 @@ static bool scheduledWithCustomRunLoopMode(const std::optional<SchedulePairHashS
             redirectRequest.clearHTTPContentType();
 
         // Check if the redirected url is allowed to access the redirecting url's timing information.
-        if (!m_handle->hasCrossOriginRedirect() && !WebCore::SecurityOrigin::create(redirectRequest.url())->canRequest(redirectResponse.get().URL))
+        if (!m_handle->hasCrossOriginRedirect() && !CyberCore::SecurityOrigin::create(redirectRequest.url())->canRequest(redirectResponse.get().URL))
             m_handle->markAsHavingCrossOriginRedirect();
         m_handle->checkTAO(response);
 
@@ -420,7 +420,7 @@ ALLOW_DEPRECATED_IMPLEMENTATIONS_END
 
 @end
 
-@implementation WebCoreResourceHandleWithCredentialStorageAsOperationQueueDelegate
+@implementation CyberCoreResourceHandleWithCredentialStorageAsOperationQueueDelegate
 
 - (BOOL)connectionShouldUseCredentialStorage:(NSURLConnection *)connection
 {

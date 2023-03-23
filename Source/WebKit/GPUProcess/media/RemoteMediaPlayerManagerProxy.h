@@ -65,27 +65,27 @@ public:
     void didReceivePlayerMessage(IPC::Connection&, IPC::Decoder&);
     bool didReceiveSyncPlayerMessage(IPC::Connection&, IPC::Decoder&, UniqueRef<IPC::Encoder>&);
 
-    RefPtr<WebCore::MediaPlayer> mediaPlayer(const WebCore::MediaPlayerIdentifier&);
+    RefPtr<CyberCore::MediaPlayer> mediaPlayer(const CyberCore::MediaPlayerIdentifier&);
 
-    ShareableBitmapHandle bitmapImageForCurrentTime(WebCore::MediaPlayerIdentifier);
+    ShareableBitmapHandle bitmapImageForCurrentTime(CyberCore::MediaPlayerIdentifier);
 
 private:
     // IPC::MessageReceiver
     void didReceiveMessage(IPC::Connection&, IPC::Decoder&) final;
     bool didReceiveSyncMessage(IPC::Connection&, IPC::Decoder&, UniqueRef<IPC::Encoder>&) final;
 
-    void createMediaPlayer(WebCore::MediaPlayerIdentifier, WebCore::MediaPlayerEnums::MediaEngineIdentifier, RemoteMediaPlayerProxyConfiguration&&);
-    void deleteMediaPlayer(WebCore::MediaPlayerIdentifier);
+    void createMediaPlayer(CyberCore::MediaPlayerIdentifier, CyberCore::MediaPlayerEnums::MediaEngineIdentifier, RemoteMediaPlayerProxyConfiguration&&);
+    void deleteMediaPlayer(CyberCore::MediaPlayerIdentifier);
 
     // Media player factory
-    void getSupportedTypes(WebCore::MediaPlayerEnums::MediaEngineIdentifier, CompletionHandler<void(Vector<String>&&)>&&);
-    void supportsTypeAndCodecs(WebCore::MediaPlayerEnums::MediaEngineIdentifier, const WebCore::MediaEngineSupportParameters&&, CompletionHandler<void(WebCore::MediaPlayer::SupportsType)>&&);
-    void originsInMediaCache(WebCore::MediaPlayerEnums::MediaEngineIdentifier, const String&&, CompletionHandler<void(HashSet<WebCore::SecurityOriginData>&&)>&&);
-    void clearMediaCache(WebCore::MediaPlayerEnums::MediaEngineIdentifier, const String&&, WallTime);
-    void clearMediaCacheForOrigins(WebCore::MediaPlayerEnums::MediaEngineIdentifier, const String&&, HashSet<WebCore::SecurityOriginData>&&);
-    void supportsKeySystem(WebCore::MediaPlayerEnums::MediaEngineIdentifier, const String&&, const String&&, CompletionHandler<void(bool)>&&);
+    void getSupportedTypes(CyberCore::MediaPlayerEnums::MediaEngineIdentifier, CompletionHandler<void(Vector<String>&&)>&&);
+    void supportsTypeAndCodecs(CyberCore::MediaPlayerEnums::MediaEngineIdentifier, const CyberCore::MediaEngineSupportParameters&&, CompletionHandler<void(CyberCore::MediaPlayer::SupportsType)>&&);
+    void originsInMediaCache(CyberCore::MediaPlayerEnums::MediaEngineIdentifier, const String&&, CompletionHandler<void(HashSet<CyberCore::SecurityOriginData>&&)>&&);
+    void clearMediaCache(CyberCore::MediaPlayerEnums::MediaEngineIdentifier, const String&&, WallTime);
+    void clearMediaCacheForOrigins(CyberCore::MediaPlayerEnums::MediaEngineIdentifier, const String&&, HashSet<CyberCore::SecurityOriginData>&&);
+    void supportsKeySystem(CyberCore::MediaPlayerEnums::MediaEngineIdentifier, const String&&, const String&&, CompletionHandler<void(bool)>&&);
 
-    HashMap<WebCore::MediaPlayerIdentifier, std::unique_ptr<RemoteMediaPlayerProxy>> m_proxies;
+    HashMap<CyberCore::MediaPlayerIdentifier, std::unique_ptr<RemoteMediaPlayerProxy>> m_proxies;
     WeakPtr<GPUConnectionToWebProcess> m_gpuConnectionToWebProcess;
 
 #if !RELEASE_LOG_DISABLED

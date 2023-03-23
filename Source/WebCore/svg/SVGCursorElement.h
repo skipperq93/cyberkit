@@ -25,7 +25,7 @@
 #include "SVGTests.h"
 #include "SVGURIReference.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class StyleCursorImage;
 
@@ -63,4 +63,4 @@ private:
     HashSet<StyleCursorImage*> m_clients;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -35,28 +35,28 @@
 #import <wtf/GetPtr.h>
 #import <wtf/URL.h>
 
-#define IMPL static_cast<WebCore::HTMLHeadElement*>(reinterpret_cast<WebCore::Node*>(_internal))
+#define IMPL static_cast<CyberCore::HTMLHeadElement*>(reinterpret_cast<CyberCore::Node*>(_internal))
 
 @implementation DOMHTMLHeadElement
 
 - (NSString *)profile
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return nullptr;
 }
 
 - (void)setProfile:(NSString *)newProfile
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return;
 }
 
 @end
 
-DOMHTMLHeadElement *kit(WebCore::HTMLHeadElement* value)
+DOMHTMLHeadElement *kit(CyberCore::HTMLHeadElement* value)
 {
-    WebCoreThreadViolationCheckRoundOne();
-    return static_cast<DOMHTMLHeadElement*>(kit(static_cast<WebCore::Node*>(value)));
+    CyberCoreThreadViolationCheckRoundOne();
+    return static_cast<DOMHTMLHeadElement*>(kit(static_cast<CyberCore::Node*>(value)));
 }
 
 #undef IMPL

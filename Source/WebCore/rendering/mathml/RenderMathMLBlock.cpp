@@ -42,7 +42,7 @@
 #include "PaintInfo.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace MathMLNames;
 

@@ -35,7 +35,7 @@
 #include <wtf/Assertions.h>
 #include <wtf/WallTime.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 int systemMemoryLevel()
 {
@@ -54,6 +54,6 @@ int systemMemoryLevel()
 #endif
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(IOS_FAMILY)

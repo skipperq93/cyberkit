@@ -62,7 +62,7 @@
 #include <wtf/text/StringHash.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 struct SameSizeAsBorderValue {
     StyleColor m_color;
@@ -3051,4 +3051,4 @@ UserSelect RenderStyle::effectiveUserSelect() const
     return value;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

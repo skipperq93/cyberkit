@@ -31,7 +31,7 @@
 
 #include "FloatPoint3D.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 // Cone gain is defined according to the OpenAL specification
 
@@ -59,6 +59,6 @@ protected:
     double m_outerGain { 0 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // Cone_h

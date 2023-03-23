@@ -26,7 +26,7 @@
 #include "config.h"
 #include "ImageResolution.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 std::optional<IntSize> ImageResolution::densityCorrectedSize(const FloatSize& sourceSize, const ResolutionMetadata& metadata)
 {

@@ -1,4 +1,4 @@
-This test ensures WebKit ignores groups with redundant accessibility text.
+This test ensures CyberKit ignores groups with redundant accessibility text.
 
 On success, you will see a series of "PASS" messages, followed by "TEST COMPLETE".
 

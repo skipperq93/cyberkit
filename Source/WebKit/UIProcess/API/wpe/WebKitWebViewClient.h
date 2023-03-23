@@ -28,7 +28,7 @@ namespace WKWPE {
 class View;
 }
 
-namespace WebCore {
+namespace CyberCore {
 class IntRect;
 }
 
@@ -44,7 +44,7 @@ class WebKitWebViewClient final : public API::ViewClient {
 public:
     explicit WebKitWebViewClient(WebKitWebView*);
 
-    GRefPtr<WebKitOptionMenu> showOptionMenu(WebKit::WebKitPopupMenu&, const WebCore::IntRect&, const Vector<WebKit::WebPopupItem>&, int32_t selectedIndex);
+    GRefPtr<WebKitOptionMenu> showOptionMenu(WebKit::WebKitPopupMenu&, const CyberCore::IntRect&, const Vector<WebKit::WebPopupItem>&, int32_t selectedIndex);
 
 private:
     bool isGLibBasedAPI() override { return true; }

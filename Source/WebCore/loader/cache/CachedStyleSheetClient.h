@@ -28,7 +28,7 @@
 #include "CachedResourceClient.h"
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CachedCSSStyleSheet;
 
@@ -41,6 +41,6 @@ public:
     virtual void setXSLStyleSheet(const String& /* href */, const URL& /* baseURL */, const String& /* sheet */) { }
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CACHED_RESOURCE_CLIENT(CachedStyleSheetClient, StyleSheetType);

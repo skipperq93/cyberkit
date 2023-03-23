@@ -35,7 +35,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 class ResourceError;
 class ResourceRequest;
 class ResourceResponse;
@@ -47,7 +47,7 @@ class SecurityOriginData;
 enum class HTTPCookieAcceptPolicy : uint8_t;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebIDBConnectionToServer;
 class WebSharedWorkerObjectConnection;
@@ -58,7 +58,7 @@ enum class WebsiteDataType : uint32_t;
 
 class NetworkProcessConnection : public RefCounted<NetworkProcessConnection>, IPC::Connection::Client {
 public:
-    static Ref<NetworkProcessConnection> create(IPC::Connection::Identifier&& connectionIdentifier, WebCore::HTTPCookieAcceptPolicy httpCookieAcceptPolicy)
+    static Ref<NetworkProcessConnection> create(IPC::Connection::Identifier&& connectionIdentifier, CyberCore::HTTPCookieAcceptPolicy httpCookieAcceptPolicy)
     {
         return adoptRef(*new NetworkProcessConnection(connectionIdentifier, httpCookieAcceptPolicy));
     }
@@ -83,17 +83,17 @@ public:
     std::optional<audit_token_t> networkProcessAuditToken() const { return m_networkProcessAuditToken; }
 #endif
 
-    WebCore::HTTPCookieAcceptPolicy cookieAcceptPolicy() const { return m_cookieAcceptPolicy; }
+    CyberCore::HTTPCookieAcceptPolicy cookieAcceptPolicy() const { return m_cookieAcceptPolicy; }
     bool cookiesEnabled() const;
 
 #if HAVE(COOKIE_CHANGE_LISTENER_API)
-    void cookiesAdded(const String& host, const Vector<WebCore::Cookie>&);
-    void cookiesDeleted(const String& host, const Vector<WebCore::Cookie>&);
+    void cookiesAdded(const String& host, const Vector<CyberCore::Cookie>&);
+    void cookiesDeleted(const String& host, const Vector<CyberCore::Cookie>&);
     void allCookiesDeleted();
 #endif
 
 private:
-    NetworkProcessConnection(IPC::Connection::Identifier, WebCore::HTTPCookieAcceptPolicy);
+    NetworkProcessConnection(IPC::Connection::Identifier, CyberCore::HTTPCookieAcceptPolicy);
 
     // IPC::Connection::Client
     void didReceiveMessage(IPC::Connection&, IPC::Decoder&) override;
@@ -101,19 +101,19 @@ private:
     void didClose(IPC::Connection&) override;
     void didReceiveInvalidMessage(IPC::Connection&, IPC::MessageName) override;
 
-    void didFinishPingLoad(WebCore::ResourceLoaderIdentifier pingLoadIdentifier, WebCore::ResourceError&&, WebCore::ResourceResponse&&);
-    void didFinishPreconnection(WebCore::ResourceLoaderIdentifier preconnectionIdentifier, WebCore::ResourceError&&);
+    void didFinishPingLoad(CyberCore::ResourceLoaderIdentifier pingLoadIdentifier, CyberCore::ResourceError&&, CyberCore::ResourceResponse&&);
+    void didFinishPreconnection(CyberCore::ResourceLoaderIdentifier preconnectionIdentifier, CyberCore::ResourceError&&);
     void setOnLineState(bool isOnLine);
-    void cookieAcceptPolicyChanged(WebCore::HTTPCookieAcceptPolicy);
+    void cookieAcceptPolicyChanged(CyberCore::HTTPCookieAcceptPolicy);
 
-    void messagesAvailableForPort(const WebCore::MessagePortIdentifier&);
+    void messagesAvailableForPort(const CyberCore::MessagePortIdentifier&);
 
 #if ENABLE(SHAREABLE_RESOURCE)
     // Message handlers.
-    void didCacheResource(const WebCore::ResourceRequest&, const ShareableResource::Handle&);
+    void didCacheResource(const CyberCore::ResourceRequest&, const ShareableResource::Handle&);
 #endif
 #if ENABLE(WEB_RTC)
-    void connectToRTCDataChannelRemoteSource(WebCore::RTCDataChannelIdentifier source, WebCore::RTCDataChannelIdentifier handler, CompletionHandler<void(std::optional<bool>)>&&);
+    void connectToRTCDataChannelRemoteSource(CyberCore::RTCDataChannelIdentifier source, CyberCore::RTCDataChannelIdentifier handler, CompletionHandler<void(std::optional<bool>)>&&);
 #endif
 
     void broadcastConsoleMessage(MessageSource, MessageLevel, const String& message);
@@ -130,7 +130,7 @@ private:
     RefPtr<WebSWClientConnection> m_swConnection;
 #endif
     RefPtr<WebSharedWorkerObjectConnection> m_sharedWorkerConnection;
-    WebCore::HTTPCookieAcceptPolicy m_cookieAcceptPolicy;
+    CyberCore::HTTPCookieAcceptPolicy m_cookieAcceptPolicy;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

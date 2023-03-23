@@ -28,7 +28,7 @@
 
 #if ENABLE(SPEECH_SYNTHESIS)
 
-namespace WebCore {
+namespace CyberCore {
     
 const Vector<RefPtr<PlatformSpeechSynthesisVoice>>& PlatformSpeechSynthesizer::voiceList() const
 {
@@ -40,6 +40,6 @@ const Vector<RefPtr<PlatformSpeechSynthesisVoice>>& PlatformSpeechSynthesizer::v
     return m_voiceList;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SPEECH_SYNTHESIS)

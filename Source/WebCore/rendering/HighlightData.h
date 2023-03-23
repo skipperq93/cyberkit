@@ -32,7 +32,7 @@
 
 #include "RenderObject.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct HighlightRangeData;
 struct TextBoxSelectableRange;
@@ -107,4 +107,4 @@ protected:
     const bool m_isSelection { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

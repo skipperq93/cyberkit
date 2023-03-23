@@ -34,7 +34,7 @@
 #include <stdio.h>
 #include <wtf/text/CString.h>
 
-namespace WebCore {
+namespace CyberCore {
  
 static inline bool fallbackURLLongerThan(const std::pair<URL, URL>& lhs, const std::pair<URL, URL>& rhs)
 {

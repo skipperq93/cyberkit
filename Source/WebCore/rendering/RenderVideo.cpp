@@ -42,7 +42,7 @@
 #include <wtf/IsoMallocInlines.h>
 #include <wtf/StackStats.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using namespace HTMLNames;
 
@@ -340,6 +340,6 @@ bool RenderVideo::hasDefaultObjectSize() const
     return !hasVideoMetadata() && !hasPosterFrameSize() && !shouldApplySizeContainment();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

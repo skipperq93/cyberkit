@@ -30,7 +30,7 @@
 #include "RenderMathMLFencedOperator.h"
 #include "RenderMathMLRow.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class MathMLRowElement;
 

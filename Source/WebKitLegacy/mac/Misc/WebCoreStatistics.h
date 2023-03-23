@@ -32,7 +32,7 @@
 
 @class DOMElement;
 
-@interface WebCoreStatistics : NSObject
+@interface CyberCoreStatistics : NSObject
 {
 }
 
@@ -62,8 +62,8 @@
 + (BOOL)shouldPrintExceptions;
 + (void)setShouldPrintExceptions:(BOOL)print;
 
-+ (void)startIgnoringWebCoreNodeLeaks;
-+ (void)stopIgnoringWebCoreNodeLeaks;
++ (void)startIgnoringCyberCoreNodeLeaks;
++ (void)stopIgnoringCyberCoreNodeLeaks;
 
 + (NSDictionary *)memoryStatistics;
 + (void)returnFreeMemoryToSystem;
@@ -92,7 +92,7 @@ typedef NS_OPTIONS(NSUInteger, WebRenderTreeAsTextOptions) {
     WebRenderTreeAsTextShowLayerFragments      = 1 << 5
 };
 
-@interface WebFrame (WebKitDebug)
+@interface WebFrame (CyberKitDebug)
 - (NSString *)renderTreeAsExternalRepresentationForPrinting;
 - (NSString *)renderTreeAsExternalRepresentationWithOptions:(WebRenderTreeAsTextOptions)options;
 - (int)numberOfPagesWithPageWidth:(float)pageWidthInPixels pageHeight:(float)pageHeightInPixels;

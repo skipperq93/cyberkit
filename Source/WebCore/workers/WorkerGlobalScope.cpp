@@ -76,7 +76,7 @@
 #include <wtf/WorkQueue.h>
 #include <wtf/threads/BinarySemaphore.h>
 
-namespace WebCore {
+namespace CyberCore {
 using namespace Inspector;
 
 static Lock allWorkerGlobalScopeIdentifiersLock;
@@ -677,7 +677,7 @@ void WorkerGlobalScope::updateServiceWorkerClientData()
     if (!settingsValues().serviceWorkersEnabled)
         return;
 
-    ASSERT(type() == WebCore::WorkerGlobalScope::Type::DedicatedWorker || type() == WebCore::WorkerGlobalScope::Type::SharedWorker);
+    ASSERT(type() == CyberCore::WorkerGlobalScope::Type::DedicatedWorker || type() == CyberCore::WorkerGlobalScope::Type::SharedWorker);
     auto controllingServiceWorkerRegistrationIdentifier = activeServiceWorker() ? std::make_optional<ServiceWorkerRegistrationIdentifier>(activeServiceWorker()->registrationIdentifier()) : std::nullopt;
     swClientConnection().registerServiceWorkerClient(clientOrigin(), ServiceWorkerClientData::from(*this), controllingServiceWorkerRegistrationIdentifier, String { m_userAgent });
 }
@@ -699,4 +699,4 @@ void WorkerGlobalScope::sendReportToEndpoints(const URL&, const Vector<String>& 
 }
 
 
-} // namespace WebCore
+} // namespace CyberCore

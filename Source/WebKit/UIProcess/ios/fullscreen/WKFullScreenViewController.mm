@@ -47,14 +47,14 @@ static const NSTimeInterval autoHideDelay = 4.0;
 
 @class WKFullscreenStackView;
 
-class WKFullScreenViewControllerPlaybackSessionModelClient : WebCore::PlaybackSessionModelClient {
+class WKFullScreenViewControllerPlaybackSessionModelClient : CyberCore::PlaybackSessionModelClient {
 public:
     void setParent(WKFullScreenViewController *parent) { m_parent = parent; }
 
-    void rateChanged(OptionSet<WebCore::PlaybackSessionModel::PlaybackState> playbackState, double /* playbackRate */, double /* defaultPlaybackRate */) override
+    void rateChanged(OptionSet<CyberCore::PlaybackSessionModel::PlaybackState> playbackState, double /* playbackRate */, double /* defaultPlaybackRate */) override
     {
         if (auto *controller = m_parent.getAutoreleased())
-            controller.playing = playbackState.contains(WebCore::PlaybackSessionModel::PlaybackState::Playing);
+            controller.playing = playbackState.contains(CyberCore::PlaybackSessionModel::PlaybackState::Playing);
     }
 
     void isPictureInPictureSupportedChanged(bool) override
@@ -67,7 +67,7 @@ public:
             controller.pictureInPictureActive = active;
     }
 
-    void setInterface(WebCore::PlaybackSessionInterfaceAVKit* interface)
+    void setInterface(CyberCore::PlaybackSessionInterfaceAVKit* interface)
     {
         if (m_interface == interface)
             return;
@@ -81,7 +81,7 @@ public:
 
 private:
     WeakObjCPtr<WKFullScreenViewController> m_parent;
-    RefPtr<WebCore::PlaybackSessionInterfaceAVKit> m_interface;
+    RefPtr<CyberCore::PlaybackSessionInterfaceAVKit> m_interface;
 };
 
 #pragma mark - _WKExtrinsicButton
@@ -129,7 +129,7 @@ private:
 @interface WKFullScreenViewController () <UIGestureRecognizerDelegate, UIToolbarDelegate>
 @property (weak, nonatomic) WKWebView *_webView; // Cannot be retained, see <rdar://problem/14884666>.
 @property (readonly, nonatomic) WebKit::WebFullScreenManagerProxy* _manager;
-@property (readonly, nonatomic) WebCore::FloatBoxExtent _effectiveFullscreenInsets;
+@property (readonly, nonatomic) CyberCore::FloatBoxExtent _effectiveFullscreenInsets;
 @end
 
 @implementation WKFullScreenViewController {
@@ -322,7 +322,7 @@ ALLOW_DEPRECATED_DECLARATIONS_END
 
     _playbackClient.setInterface(playbackSessionInterface);
 
-    WebCore::PlaybackSessionModel* playbackSessionModel = playbackSessionInterface ? playbackSessionInterface->playbackSessionModel() : nullptr;
+    CyberCore::PlaybackSessionModel* playbackSessionModel = playbackSessionInterface ? playbackSessionInterface->playbackSessionModel() : nullptr;
     self.playing = playbackSessionModel ? playbackSessionModel->isPlaying() : NO;
     bool isPiPEnabled = false;
     if (auto page = [self._webView _page])
@@ -644,11 +644,11 @@ ALLOW_DEPRECATED_DECLARATIONS_END
 }
 
 @dynamic _effectiveFullscreenInsets;
-- (WebCore::FloatBoxExtent)_effectiveFullscreenInsets
+- (CyberCore::FloatBoxExtent)_effectiveFullscreenInsets
 {
     ASSERT(_valid);
     auto safeAreaInsets = self.view.safeAreaInsets;
-    WebCore::FloatBoxExtent insets { safeAreaInsets.top, safeAreaInsets.right, safeAreaInsets.bottom, safeAreaInsets.left };
+    CyberCore::FloatBoxExtent insets { safeAreaInsets.top, safeAreaInsets.right, safeAreaInsets.bottom, safeAreaInsets.left };
 
     CGRect cancelFrame = _cancelButton.get().frame;
     CGPoint maxXY = CGPointMake(CGRectGetMaxX(cancelFrame), CGRectGetMaxY(cancelFrame));
@@ -677,7 +677,7 @@ ALLOW_DEPRECATED_DECLARATIONS_END
     if (!playbackSessionInterface)
         return;
 
-    WebCore::PlaybackSessionModel* playbackSessionModel = playbackSessionInterface->playbackSessionModel();
+    CyberCore::PlaybackSessionModel* playbackSessionModel = playbackSessionInterface->playbackSessionModel();
     if (!playbackSessionModel)
         return;
 

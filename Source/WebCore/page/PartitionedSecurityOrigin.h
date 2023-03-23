@@ -30,7 +30,7 @@
 #include <wtf/Hasher.h>
 #include <wtf/Ref.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct PartitionedSecurityOrigin {
     PartitionedSecurityOrigin(Ref<SecurityOrigin>&& topOrigin, Ref<SecurityOrigin>&& clientOrigin)
@@ -62,41 +62,41 @@ inline bool operator==(const PartitionedSecurityOrigin& a, const PartitionedSecu
     return a.topOrigin->isSameOriginAs(b.topOrigin) && a.clientOrigin->isSameOriginAs(b.clientOrigin);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-inline void add(Hasher& hasher, const WebCore::PartitionedSecurityOrigin& origin)
+inline void add(Hasher& hasher, const CyberCore::PartitionedSecurityOrigin& origin)
 {
     add(hasher, origin.topOrigin.get(), origin.clientOrigin.get());
 }
 
 struct PartitionedSecurityOriginHash {
-    static unsigned hash(const WebCore::PartitionedSecurityOrigin& origin) { return computeHash(origin); }
-    static bool equal(const WebCore::PartitionedSecurityOrigin& a, const WebCore::PartitionedSecurityOrigin& b) { return a == b; }
+    static unsigned hash(const CyberCore::PartitionedSecurityOrigin& origin) { return computeHash(origin); }
+    static bool equal(const CyberCore::PartitionedSecurityOrigin& a, const CyberCore::PartitionedSecurityOrigin& b) { return a == b; }
     static constexpr bool safeToCompareToEmptyOrDeleted = false;
 };
 
-template<> struct DefaultHash<WebCore::PartitionedSecurityOrigin> : PartitionedSecurityOriginHash { };
+template<> struct DefaultHash<CyberCore::PartitionedSecurityOrigin> : PartitionedSecurityOriginHash { };
 
-template<> struct HashTraits<WebCore::PartitionedSecurityOrigin> : SimpleClassHashTraits<WebCore::PartitionedSecurityOrigin> {
+template<> struct HashTraits<CyberCore::PartitionedSecurityOrigin> : SimpleClassHashTraits<CyberCore::PartitionedSecurityOrigin> {
     static constexpr bool emptyValueIsZero = true;
-    static WebCore::PartitionedSecurityOrigin emptyValue() { return HashTableEmptyValue; }
+    static CyberCore::PartitionedSecurityOrigin emptyValue() { return HashTableEmptyValue; }
 
     template <typename>
-    static void constructEmptyValue(WebCore::PartitionedSecurityOrigin& slot)
+    static void constructEmptyValue(CyberCore::PartitionedSecurityOrigin& slot)
     {
-        new (NotNull, std::addressof(slot)) WebCore::PartitionedSecurityOrigin(HashTableEmptyValue);
+        new (NotNull, std::addressof(slot)) CyberCore::PartitionedSecurityOrigin(HashTableEmptyValue);
     }
 
     static constexpr bool hasIsEmptyValueFunction = true;
-    static bool isEmptyValue(const WebCore::PartitionedSecurityOrigin& value) { return value.isHashTableEmptyValue(); }
+    static bool isEmptyValue(const CyberCore::PartitionedSecurityOrigin& value) { return value.isHashTableEmptyValue(); }
 
-    using PeekType = std::optional<WebCore::PartitionedSecurityOrigin>;
-    static PeekType peek(const WebCore::PartitionedSecurityOrigin& value) { return isEmptyValue(value) ? std::nullopt : std::optional { value }; }
+    using PeekType = std::optional<CyberCore::PartitionedSecurityOrigin>;
+    static PeekType peek(const CyberCore::PartitionedSecurityOrigin& value) { return isEmptyValue(value) ? std::nullopt : std::optional { value }; }
 
-    using TakeType = std::optional<WebCore::PartitionedSecurityOrigin>;
-    static TakeType take(WebCore::PartitionedSecurityOrigin&& value) { return isEmptyValue(value) ? std::nullopt : std::optional { WTFMove(value) }; }
+    using TakeType = std::optional<CyberCore::PartitionedSecurityOrigin>;
+    static TakeType take(CyberCore::PartitionedSecurityOrigin&& value) { return isEmptyValue(value) ? std::nullopt : std::optional { WTFMove(value) }; }
 };
 
 } // namespace WTF

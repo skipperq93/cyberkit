@@ -37,7 +37,7 @@
 
 OBJC_CLASS NSMenu;
 
-namespace WebCore {
+namespace CyberCore {
 class IntPoint;
 }
 
@@ -55,7 +55,7 @@ public:
 
     virtual void getContextMenuFromProposedMenu(WebKit::WebPageProxy&, Vector<Ref<WebKit::WebContextMenuItem>>&& proposedMenu, WebKit::WebContextMenuListenerProxy& listener, const WebKit::WebHitTestResultData&, API::Object* /* userData */) { listener.useContextMenuItems(WTFMove(proposedMenu)); }
     virtual void customContextMenuItemSelected(WebKit::WebPageProxy&, const WebKit::WebContextMenuItemData&) { }
-    virtual void showContextMenu(WebKit::WebPageProxy&, const WebCore::IntPoint&, const Vector<Ref<WebKit::WebContextMenuItem>>&) { }
+    virtual void showContextMenu(WebKit::WebPageProxy&, const CyberCore::IntPoint&, const Vector<Ref<WebKit::WebContextMenuItem>>&) { }
     virtual bool canShowContextMenu() const { return false; }
     virtual bool hideContextMenu(WebKit::WebPageProxy&) { return false; }
 

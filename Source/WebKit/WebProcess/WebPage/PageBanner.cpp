@@ -29,7 +29,7 @@
 #include "WebPage.h"
 #include <CyberCore/GraphicsLayer.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 PageBanner::~PageBanner()
 {
@@ -65,9 +65,9 @@ bool PageBanner::mouseEvent(const WebMouseEvent&)
     return false;
 }
 
-void PageBanner::didAddParentLayer(WebCore::GraphicsLayer*)
+void PageBanner::didAddParentLayer(CyberCore::GraphicsLayer*)
 {
 }
 #endif
 
-} // namespace WebKit
+} // namespace CyberKit

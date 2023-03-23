@@ -33,13 +33,13 @@
 #include <wtf/text/StringHash.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ProtectionSpace;
 
 class CredentialStorage {
 public:
-    // WebCore session credential storage.
+    // CyberCore session credential storage.
     WEBCORE_EXPORT void set(const String&, const Credential&, const ProtectionSpace&, const URL&);
     WEBCORE_EXPORT Credential get(const String&, const ProtectionSpace&);
     WEBCORE_EXPORT void remove(const String&, const ProtectionSpace&);
@@ -66,4 +66,4 @@ private:
     PathToDefaultProtectionSpaceMap::iterator findDefaultProtectionSpaceForURL(const URL&);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

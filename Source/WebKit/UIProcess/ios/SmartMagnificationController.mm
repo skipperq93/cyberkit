@@ -47,7 +47,7 @@ static const double smartMagnificationMaximumScale = 1.6;
 static const double smartMagnificationMinimumScale = 0;
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 SmartMagnificationController::SmartMagnificationController(WKContentView *contentView)
     : m_webPageProxy(*contentView.page)

@@ -43,7 +43,7 @@ using CocoaImageAnalyzer = VKImageAnalyzer;
 using CocoaImageAnalyzerRequest = VKImageAnalyzerRequest;
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 struct TextRecognitionResult;
 }
 
@@ -52,13 +52,13 @@ namespace WebKit {
 bool isLiveTextAvailableAndEnabled();
 bool languageIdentifierSupportsLiveText(NSString *);
 
-WebCore::TextRecognitionResult makeTextRecognitionResult(CocoaImageAnalysis *);
+CyberCore::TextRecognitionResult makeTextRecognitionResult(CocoaImageAnalysis *);
 
 RetainPtr<CocoaImageAnalyzer> createImageAnalyzer();
 RetainPtr<CocoaImageAnalyzerRequest> createImageAnalyzerRequest(CGImageRef, VKAnalysisTypes);
 
 #if ENABLE(IMAGE_ANALYSIS_ENHANCEMENTS)
-void requestVisualTranslation(CocoaImageAnalyzer *, NSURL *, const String& source, const String& target, CGImageRef, CompletionHandler<void(WebCore::TextRecognitionResult&&)>&&);
+void requestVisualTranslation(CocoaImageAnalyzer *, NSURL *, const String& source, const String& target, CGImageRef, CompletionHandler<void(CyberCore::TextRecognitionResult&&)>&&);
 void requestBackgroundRemoval(CGImageRef, CompletionHandler<void(CGImageRef)>&&);
 
 constexpr VKAnalysisTypes analysisTypesForElementFullscreenVideo()

@@ -25,18 +25,18 @@
 
 #import <CyberKitLegacy/DOMAbstractView.h>
 
-namespace WebCore {
+namespace CyberCore {
 class AbstractDOMWindow;
 class DOMWindow;
 class WindowProxy;
 }
 
-WebCore::DOMWindow* core(DOMAbstractView *);
-DOMAbstractView *kit(WebCore::DOMWindow*);
-DOMAbstractView *kit(WebCore::AbstractDOMWindow*);
-DOMAbstractView *kit(WebCore::WindowProxy*);
-WebCore::WindowProxy* toWindowProxy(DOMAbstractView *);
+CyberCore::DOMWindow* core(DOMAbstractView *);
+DOMAbstractView *kit(CyberCore::DOMWindow*);
+DOMAbstractView *kit(CyberCore::AbstractDOMWindow*);
+DOMAbstractView *kit(CyberCore::WindowProxy*);
+CyberCore::WindowProxy* toWindowProxy(DOMAbstractView *);
 
-@interface DOMAbstractView (WebKitLegacyInternal)
+@interface DOMAbstractView (CyberKitLegacyInternal)
 - (void)_disconnectFrame;
 @end

@@ -36,7 +36,7 @@
 #endif
 #include "SharedBuffer.h"
 
-namespace WebCore {
+namespace CyberCore {
 using namespace std;
 
 #if ENABLE(OPENTYPE_MATH)
@@ -388,6 +388,6 @@ void OpenTypeMathData::getMathVariants(Glyph, bool, Vector<Glyph>&, Vector<Assem
 #endif
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MATHML)

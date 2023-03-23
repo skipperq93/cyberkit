@@ -35,7 +35,7 @@
 #include "PixelBuffer.h"
 #include <arm_neon.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FEBlendUtilitiesNEON {
 public:
@@ -204,6 +204,6 @@ bool FEBlendNeonApplier::apply(const Filter&, const FilterImageVector& inputs, F
     return true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // HAVE(ARM_NEON_INTRINSICS)

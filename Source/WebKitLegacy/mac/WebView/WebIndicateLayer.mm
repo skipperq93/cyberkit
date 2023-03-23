@@ -34,7 +34,7 @@
 #import <pal/spi/cocoa/QuartzCoreSPI.h>
 #import <wtf/NeverDestroyed.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 @implementation WebIndicateLayer
 

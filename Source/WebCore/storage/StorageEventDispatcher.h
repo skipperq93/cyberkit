@@ -31,7 +31,7 @@
 
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Page;
 class PageGroup;
@@ -43,4 +43,4 @@ WEBCORE_EXPORT void dispatchSessionStorageEvents(const String& key, const String
 WEBCORE_EXPORT void dispatchLocalStorageEvents(const String& key, const String& oldValue, const String& newValue, PageGroup*, const SecurityOrigin&, const String& url, const Function<bool(Storage&)>& isSourceStorage);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

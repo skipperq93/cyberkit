@@ -29,7 +29,7 @@
 #include "Timer.h"
 #include <wtf/CPUTime.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Page;
 

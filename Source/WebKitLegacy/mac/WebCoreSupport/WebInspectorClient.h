@@ -43,7 +43,7 @@ OBJC_CLASS WebInspectorWindowController;
 OBJC_CLASS WebNodeHighlighter;
 OBJC_CLASS WebView;
 
-namespace WebCore {
+namespace CyberCore {
 class CertificateInfo;
 class Frame;
 class Page;
@@ -51,16 +51,16 @@ class Page;
 
 class WebInspectorFrontendClient;
 
-class WebInspectorClient final : public WebCore::InspectorClient, public Inspector::FrontendChannel {
+class WebInspectorClient final : public CyberCore::InspectorClient, public Inspector::FrontendChannel {
     WTF_MAKE_FAST_ALLOCATED;
 public:
     explicit WebInspectorClient(WebView *inspectedWebView);
 
     void inspectedPageDestroyed() override;
 
-    Inspector::FrontendChannel* openLocalFrontend(WebCore::InspectorController*) override;
+    Inspector::FrontendChannel* openLocalFrontend(CyberCore::InspectorController*) override;
     void bringFrontendToFront() override;
-    void didResizeMainFrame(WebCore::Frame*) override;
+    void didResizeMainFrame(CyberCore::Frame*) override;
 
     void highlight() override;
     void hideHighlight() override;
@@ -75,7 +75,7 @@ public:
 
     bool overridesShowPaintRects() const override { return true; }
     void setShowPaintRects(bool) override;
-    void showPaintRect(const WebCore::FloatRect&) override;
+    void showPaintRect(const CyberCore::FloatRect&) override;
 #endif
 
     void didSetSearchingForNode(bool) override;
@@ -98,18 +98,18 @@ public:
     void releaseFrontend();
 
 private:
-    std::unique_ptr<WebCore::InspectorFrontendClientLocal::Settings> createFrontendSettings();
+    std::unique_ptr<CyberCore::InspectorFrontendClientLocal::Settings> createFrontendSettings();
 
     WebView *m_inspectedWebView { nullptr };
     RetainPtr<WebNodeHighlighter> m_highlighter;
-    WebCore::Page* m_frontendPage { nullptr };
+    CyberCore::Page* m_frontendPage { nullptr };
     std::unique_ptr<WebInspectorFrontendClient> m_frontendClient;
 };
 
 
-class WebInspectorFrontendClient : public WebCore::InspectorFrontendClientLocal {
+class WebInspectorFrontendClient : public CyberCore::InspectorFrontendClientLocal {
 public:
-    WebInspectorFrontendClient(WebView*, WebInspectorWindowController*, WebCore::InspectorController*, WebCore::Page*, std::unique_ptr<Settings>);
+    WebInspectorFrontendClient(WebView*, WebInspectorWindowController*, CyberCore::InspectorController*, CyberCore::Page*, std::unique_ptr<Settings>);
 
     void attachAvailabilityChanged(bool);
     bool canAttach();
@@ -141,29 +141,29 @@ public:
     void setAttachedWindowWidth(unsigned height) override;
 
 #if !PLATFORM(IOS_FAMILY)
-    const WebCore::FloatRect& sheetRect() const { return m_sheetRect; }
+    const CyberCore::FloatRect& sheetRect() const { return m_sheetRect; }
 #endif
-    void setSheetRect(const WebCore::FloatRect&) override;
+    void setSheetRect(const CyberCore::FloatRect&) override;
 
     void inspectedURLChanged(const String& newURL) override;
-    void showCertificate(const WebCore::CertificateInfo&) override;
+    void showCertificate(const CyberCore::CertificateInfo&) override;
 
 #if ENABLE(INSPECTOR_TELEMETRY)
     bool supportsDiagnosticLogging() override;
-    void logDiagnosticEvent(const String& eventName, const WebCore::DiagnosticLoggingClient::ValueDictionary&) override;
+    void logDiagnosticEvent(const String& eventName, const CyberCore::DiagnosticLoggingClient::ValueDictionary&) override;
 #endif
 
 private:
     void updateWindowTitle() const;
 
-    bool canSave(WebCore::InspectorFrontendClient::SaveMode) override;
-    void save(Vector<WebCore::InspectorFrontendClient::SaveData>&&, bool base64Encoded) override;
+    bool canSave(CyberCore::InspectorFrontendClient::SaveMode) override;
+    void save(Vector<CyberCore::InspectorFrontendClient::SaveData>&&, bool base64Encoded) override;
 
 #if !PLATFORM(IOS_FAMILY)
     WebView *m_inspectedWebView;
     RetainPtr<WebInspectorWindowController> m_frontendWindowController;
     String m_inspectedURL;
     HashMap<String, RetainPtr<NSURL>> m_suggestedToActualURLMap;
-    WebCore::FloatRect m_sheetRect;
+    CyberCore::FloatRect m_sheetRect;
 #endif
 };

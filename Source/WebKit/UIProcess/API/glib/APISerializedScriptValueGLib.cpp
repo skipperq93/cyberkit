@@ -94,7 +94,7 @@ JSCContext* SerializedScriptValue::sharedJSCContext()
     return sharedContext().ensureContext();
 }
 
-GRefPtr<JSCValue> SerializedScriptValue::deserialize(WebCore::SerializedScriptValue& serializedScriptValue)
+GRefPtr<JSCValue> SerializedScriptValue::deserialize(CyberCore::SerializedScriptValue& serializedScriptValue)
 {
     ASSERT(RunLoop::isMain());
 
@@ -141,7 +141,7 @@ static GRefPtr<JSCValue> valueFromGVariant(JSCContext* context, GVariant* varian
     return nullptr;
 }
 
-static RefPtr<WebCore::SerializedScriptValue> coreValueFromGVariant(GVariant* variant)
+static RefPtr<CyberCore::SerializedScriptValue> coreValueFromGVariant(GVariant* variant)
 {
     if (!variant)
         return nullptr;
@@ -156,7 +156,7 @@ static RefPtr<WebCore::SerializedScriptValue> coreValueFromGVariant(GVariant* va
     ASSERT(globalObject);
     JSC::JSLockHolder lock(globalObject);
 
-    return WebCore::SerializedScriptValue::create(*globalObject, toJS(globalObject, jscValueGetJSValue(value.get())));
+    return CyberCore::SerializedScriptValue::create(*globalObject, toJS(globalObject, jscValueGetJSValue(value.get())));
 }
 
 RefPtr<SerializedScriptValue> SerializedScriptValue::createFromGVariant(GVariant* object)

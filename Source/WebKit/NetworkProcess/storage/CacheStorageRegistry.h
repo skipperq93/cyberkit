@@ -36,12 +36,12 @@ class CacheStorageRegistry {
     WTF_MAKE_FAST_ALLOCATED;
 public:
     CacheStorageRegistry();
-    void registerCache(WebCore::DOMCacheIdentifier, CacheStorageCache&);
-    void unregisterCache(WebCore::DOMCacheIdentifier);
-    CacheStorageCache* cache(WebCore::DOMCacheIdentifier);
+    void registerCache(CyberCore::DOMCacheIdentifier, CacheStorageCache&);
+    void unregisterCache(CyberCore::DOMCacheIdentifier);
+    CacheStorageCache* cache(CyberCore::DOMCacheIdentifier);
 
 private:
-    HashMap<WebCore::DOMCacheIdentifier, WeakPtr<CacheStorageCache>> m_caches;
+    HashMap<CyberCore::DOMCacheIdentifier, WeakPtr<CacheStorageCache>> m_caches;
 };
 
 }

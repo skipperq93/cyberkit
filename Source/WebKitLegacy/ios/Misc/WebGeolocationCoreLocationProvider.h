@@ -27,7 +27,7 @@
 
 #import <Foundation/Foundation.h>
 
-namespace WebCore {
+namespace CyberCore {
 class GeolocationPositionData;
 }
 
@@ -42,7 +42,7 @@ class GeolocationPositionData;
 - (void)geolocationAuthorizationGranted;
 - (void)geolocationAuthorizationDenied;
 
-- (void)positionChanged:(WebCore::GeolocationPositionData&&)position;
+- (void)positionChanged:(CyberCore::GeolocationPositionData&&)position;
 - (void)errorOccurred:(NSString *)errorMessage;
 - (void)resetGeolocation;
 @end

@@ -54,7 +54,7 @@
 #include <algorithm>
 #include <cmath>
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace {
 

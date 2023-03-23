@@ -30,7 +30,7 @@
 #include "MediaSessionManagerCocoa.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 NowPlayingManager::NowPlayingManager() = default;
 NowPlayingManager::~NowPlayingManager() = default;

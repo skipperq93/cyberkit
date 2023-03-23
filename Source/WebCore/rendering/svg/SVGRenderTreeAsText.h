@@ -28,7 +28,7 @@
 #include "RenderTreeAsText.h"
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class LegacyRenderSVGContainer;
 class LegacyRenderSVGImage;
@@ -73,4 +73,4 @@ WTF::TextStream& operator<<(WTF::TextStream& ts, const Vector<Item*>& v)
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

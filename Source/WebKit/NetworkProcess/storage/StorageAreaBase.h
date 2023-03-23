@@ -32,7 +32,7 @@
 #include <CyberCore/ClientOrigin.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 struct ClientOrigin;
 }
 
@@ -59,7 +59,7 @@ public:
     virtual void clear() = 0;
 
     StorageAreaIdentifier identifier() const { return m_identifier; }
-    WebCore::ClientOrigin origin() const { return m_origin; }
+    CyberCore::ClientOrigin origin() const { return m_origin; }
     unsigned quota() const { return m_quota; }
     void addListener(IPC::Connection::UniqueID, StorageAreaMapIdentifier);
     void removeListener(IPC::Connection::UniqueID);
@@ -72,13 +72,13 @@ public:
     virtual Expected<void, StorageError> clear(IPC::Connection::UniqueID, StorageAreaImplIdentifier, const String& urlString) = 0;
 
 protected:
-    StorageAreaBase(unsigned quota, const WebCore::ClientOrigin&);
+    StorageAreaBase(unsigned quota, const CyberCore::ClientOrigin&);
     void dispatchEvents(IPC::Connection::UniqueID, StorageAreaImplIdentifier, const String& key, const String& oldValue, const String& newValue, const String& urlString) const;
 
 private:
     StorageAreaIdentifier m_identifier;
     unsigned m_quota;
-    WebCore::ClientOrigin m_origin;
+    CyberCore::ClientOrigin m_origin;
     HashMap<IPC::Connection::UniqueID, StorageAreaMapIdentifier> m_listeners;
 };
 

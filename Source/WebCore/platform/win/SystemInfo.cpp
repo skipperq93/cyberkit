@@ -30,7 +30,7 @@
 #include <wtf/text/StringConcatenateNumbers.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WindowsVersion windowsVersion(int* major, int* minor)
 {
@@ -166,4 +166,4 @@ String windowsVersionForUAString()
     return osVersionForUAString() + architectureTokenForUAString();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

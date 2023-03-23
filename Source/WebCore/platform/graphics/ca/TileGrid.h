@@ -38,7 +38,7 @@
 typedef struct CGContext *CGContextRef;
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 class GraphicsContext;
 class PlatformCALayer;

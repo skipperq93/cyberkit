@@ -42,7 +42,7 @@
 
 static const UChar gRadicalCharacter = 0x221A;
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(RenderMathMLRoot);
 

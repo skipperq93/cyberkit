@@ -26,7 +26,7 @@
 #ifndef ImportedModulesEnumeratorBase_h
 #define ImportedModulesEnumeratorBase_h
 
-namespace WebCore {
+namespace CyberCore {
 
 class ImportedFunctionsEnumerator;
 
@@ -42,6 +42,6 @@ protected:
     virtual ~ImportedModulesEnumeratorBase() = default;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ImportedModulesEnumeratorBase_h

@@ -51,7 +51,7 @@
 #include "OpenTypeVerticalData.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 struct FontPlatformDataCacheKey {
     FontDescriptionKey descriptionKey;
@@ -499,4 +499,4 @@ void FontCache::platformReleaseNoncriticalMemory()
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

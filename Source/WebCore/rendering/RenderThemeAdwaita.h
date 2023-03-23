@@ -30,7 +30,7 @@
 
 #include "RenderTheme.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderThemeAdwaita : public RenderTheme {
 public:
@@ -107,6 +107,6 @@ private:
 #endif
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(THEME_ADWAITA)

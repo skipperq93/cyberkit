@@ -40,8 +40,8 @@
 #import <pal/spi/ios/GraphicsServicesSPI.h>
 #import <pal/spi/ios/UIKitSPI.h>
 
-using WebCore::windowsKeyCodeForKeyCode;
-using WebCore::windowsKeyCodeForCharCode;
+using CyberCore::windowsKeyCodeForKeyCode;
+using CyberCore::windowsKeyCodeForCharCode;
 
 @implementation WebEvent
 

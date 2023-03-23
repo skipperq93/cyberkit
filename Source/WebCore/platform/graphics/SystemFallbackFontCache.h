@@ -34,7 +34,7 @@
 #include <wtf/Hasher.h>
 #include <wtf/text/AtomString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Font;
 class FontDescription;
@@ -86,4 +86,4 @@ private:
     HashMap<const Font*, CharacterFallbackMap> m_characterFallbackMaps;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

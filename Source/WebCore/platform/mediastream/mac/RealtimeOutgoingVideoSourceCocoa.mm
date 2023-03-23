@@ -37,7 +37,7 @@
 #import "CoreVideoSoftLink.h"
 #import "VideoToolboxSoftLink.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static inline unsigned rotationToAngle(webrtc::VideoRotation rotation)
 {
@@ -75,6 +75,6 @@ RetainPtr<CVPixelBufferRef> RealtimeOutgoingVideoSourceCocoa::rotatePixelBuffer(
     return m_rotationSession->rotate(pixelBuffer);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(LIBWEBRTC)

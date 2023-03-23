@@ -28,7 +28,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 // These values were calculated by performing a linear regression on the CSS weights/widths/slopes and Core Text weights/widths/slopes of San Francisco.
 // FIXME: <rdar://problem/31312602> Get the real values from Core Text.
@@ -116,4 +116,4 @@ inline float normalizeVariationWidth(float value)
     return value * 400 - 400;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -32,7 +32,7 @@
 #include "RenderObject.h"
 #include "ShadowRoot.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 void RenderTreePosition::computeNextSibling(const Node& node)
 {

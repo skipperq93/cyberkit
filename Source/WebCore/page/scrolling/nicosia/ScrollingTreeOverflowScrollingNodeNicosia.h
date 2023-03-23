@@ -32,7 +32,7 @@
 
 #include "ScrollingTreeOverflowScrollingNode.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class ScrollingTreeScrollingNodeDelegateNicosia;
 
@@ -51,6 +51,6 @@ private:
     WheelEventHandlingResult handleWheelEvent(const PlatformWheelEvent&, EventTargeting) override;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ASYNC_SCROLLING) && USE(NICOSIA)

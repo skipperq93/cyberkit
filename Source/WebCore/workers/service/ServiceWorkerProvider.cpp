@@ -36,7 +36,7 @@
 #include "Page.h"
 #include "SWClientConnection.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static ServiceWorkerProvider* sharedProvider;
 
@@ -56,6 +56,6 @@ void ServiceWorkerProvider::setSharedProvider(ServiceWorkerProvider& newProvider
     sharedProvider = &newProvider;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

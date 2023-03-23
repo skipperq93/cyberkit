@@ -28,11 +28,11 @@
 
 #import "WebDocumentLoaderMac.h"
 
-#import "WebKitVersionChecks.h"
+#import "CyberKitVersionChecks.h"
 #import "WebView.h"
 #import <CyberCore/FrameDestructionObserverInlines.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 WebDocumentLoaderMac::WebDocumentLoaderMac(const ResourceRequest& request, const SubstituteData& substituteData)
     : DocumentLoader(request, substituteData)
@@ -44,7 +44,7 @@ WebDocumentLoaderMac::WebDocumentLoaderMac(const ResourceRequest& request, const
 static inline bool needsDataLoadWorkaround(WebView *webView)
 {
 #if !PLATFORM(IOS_FAMILY)
-    static bool needsWorkaround = !WebKitLinkedOnOrAfter(WEBKIT_FIRST_VERSION_WITHOUT_ADOBE_INSTALLER_QUIRK) 
+    static bool needsWorkaround = !CyberKitLinkedOnOrAfter(WEBKIT_FIRST_VERSION_WITHOUT_ADOBE_INSTALLER_QUIRK) 
                                   && [[[NSBundle mainBundle] bundleIdentifier] isEqualToString:@"com.adobe.Installers.Setup"];
     return needsWorkaround;
 #else
@@ -93,7 +93,7 @@ void WebDocumentLoaderMac::detachFromFrame()
     // frame is not attached?
 }
 
-void WebDocumentLoaderMac::increaseLoadCount(WebCore::ResourceLoaderIdentifier identifier)
+void WebDocumentLoaderMac::increaseLoadCount(CyberCore::ResourceLoaderIdentifier identifier)
 {
     ASSERT(m_dataSource);
 
@@ -104,7 +104,7 @@ void WebDocumentLoaderMac::increaseLoadCount(WebCore::ResourceLoaderIdentifier i
     retainDataSource();
 }
 
-void WebDocumentLoaderMac::decreaseLoadCount(WebCore::ResourceLoaderIdentifier identifier)
+void WebDocumentLoaderMac::decreaseLoadCount(CyberCore::ResourceLoaderIdentifier identifier)
 {
     auto it = m_loadingResources.find(identifier);
     

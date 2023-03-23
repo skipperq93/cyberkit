@@ -26,7 +26,7 @@
 #include "config.h"
 #include "SourceBrush.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 SourceBrush::SourceBrush(const Color& color, std::optional<Brush>&& brush)
     : m_color(color)
@@ -88,4 +88,4 @@ WTF::TextStream& operator<<(TextStream& ts, const SourceBrush& brush)
     return ts;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

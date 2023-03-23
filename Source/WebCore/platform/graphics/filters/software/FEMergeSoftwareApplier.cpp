@@ -27,7 +27,7 @@
 #include "GraphicsContext.h"
 #include "ImageBuffer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 bool FEMergeSoftwareApplier::apply(const Filter&, const FilterImageVector& inputs, FilterImage& result) const
 {
@@ -51,4 +51,4 @@ bool FEMergeSoftwareApplier::apply(const Filter&, const FilterImageVector& input
     return true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

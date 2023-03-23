@@ -37,7 +37,7 @@ namespace WebKit {
 
 class WebView;
 
-class WebPopupMenuProxyWin : public WebPopupMenuProxy, private WebCore::ScrollableArea {
+class WebPopupMenuProxyWin : public WebPopupMenuProxy, private CyberCore::ScrollableArea {
 public:
     static Ref<WebPopupMenuProxyWin> create(WebView* webView, WebPopupMenuProxy::Client& client)
     {
@@ -45,7 +45,7 @@ public:
     }
     ~WebPopupMenuProxyWin();
 
-    void showPopupMenu(const WebCore::IntRect&, WebCore::TextDirection, double pageScaleFactor, const Vector<WebPopupItem>&, const PlatformPopupMenuData&, int32_t selectedIndex) override;
+    void showPopupMenu(const CyberCore::IntRect&, CyberCore::TextDirection, double pageScaleFactor, const Vector<WebPopupItem>&, const PlatformPopupMenuData&, int32_t selectedIndex) override;
     void hidePopupMenu() override;
 
     bool setFocusedIndex(int index, bool hotTracking = false);
@@ -57,22 +57,22 @@ public:
 private:
     WebPopupMenuProxyWin(WebView*, WebPopupMenuProxy::Client&);
 
-    WebCore::Scrollbar* scrollbar() const { return m_scrollbar.get(); }
+    CyberCore::Scrollbar* scrollbar() const { return m_scrollbar.get(); }
 
     // ScrollableArea
-    WebCore::ScrollPosition scrollPosition() const override;
-    void setScrollOffset(const WebCore::IntPoint&) override;
+    CyberCore::ScrollPosition scrollPosition() const override;
+    void setScrollOffset(const CyberCore::IntPoint&) override;
 
-    void invalidateScrollbarRect(WebCore::Scrollbar&, const WebCore::IntRect&) override;
-    void invalidateScrollCornerRect(const WebCore::IntRect&) override { }
+    void invalidateScrollbarRect(CyberCore::Scrollbar&, const CyberCore::IntRect&) override;
+    void invalidateScrollCornerRect(const CyberCore::IntRect&) override { }
     bool isActive() const override { return true; }
     bool isScrollCornerVisible() const override { return false; }
-    WebCore::IntRect scrollCornerRect() const override { return WebCore::IntRect(); }
-    WebCore::Scrollbar* verticalScrollbar() const override { return m_scrollbar.get(); }
-    WebCore::ScrollableArea* enclosingScrollableArea() const override { return 0; }
-    WebCore::IntSize visibleSize() const override;
-    WebCore::IntSize contentsSize() const override;
-    WebCore::IntRect scrollableAreaBoundingBox(bool* = nullptr) const override;
+    CyberCore::IntRect scrollCornerRect() const override { return CyberCore::IntRect(); }
+    CyberCore::Scrollbar* verticalScrollbar() const override { return m_scrollbar.get(); }
+    CyberCore::ScrollableArea* enclosingScrollableArea() const override { return 0; }
+    CyberCore::IntSize visibleSize() const override;
+    CyberCore::IntSize contentsSize() const override;
+    CyberCore::IntRect scrollableAreaBoundingBox(bool* = nullptr) const override;
     bool shouldPlaceVerticalScrollbarOnLeft() const override { return false; }
     bool forceUpdateScrollbarsOnMainThreadForPerformanceTesting() const override { return false; }
     bool isScrollableOrRubberbandable() override { return true; }
@@ -98,13 +98,13 @@ private:
     LRESULT onPrintClient(HWND, UINT message, WPARAM, LPARAM, bool& handled);
     LRESULT onGetObject(HWND, UINT message, WPARAM, LPARAM, bool &handled);
 
-    void calculatePositionAndSize(const WebCore::IntRect&);
-    WebCore::IntRect clientRect() const;
+    void calculatePositionAndSize(const CyberCore::IntRect&);
+    CyberCore::IntRect clientRect() const;
     void invalidateItem(int index);
 
 
     int itemHeight() const { return m_itemHeight; }
-    const WebCore::IntRect& windowRect() const { return m_windowRect; }
+    const CyberCore::IntRect& windowRect() const { return m_windowRect; }
     int wheelDelta() const { return m_wheelDelta; }
     void setWasClicked(bool b = true) { m_wasClicked = b; }
     bool wasClicked() const { return m_wasClicked; }
@@ -114,9 +114,9 @@ private:
     bool up(unsigned lines = 1);
     bool down(unsigned lines = 1);
 
-    void paint(const WebCore::IntRect& damageRect, HDC = 0);
+    void paint(const CyberCore::IntRect& damageRect, HDC = 0);
     int visibleItems() const;
-    int listIndexAtPoint(const WebCore::IntPoint&) const;
+    int listIndexAtPoint(const CyberCore::IntPoint&) const;
     int focusedIndex() const;
     void focusFirst();
     void focusLast();
@@ -129,11 +129,11 @@ private:
     PlatformPopupMenuData m_data;
     int m_newSelectedIndex { 0 };
 
-    RefPtr<WebCore::Scrollbar> m_scrollbar;
+    RefPtr<CyberCore::Scrollbar> m_scrollbar;
     GDIObject<HDC> m_DC;
     GDIObject<HBITMAP> m_bmp;
     HWND m_popup { nullptr };
-    WebCore::IntRect m_windowRect;
+    CyberCore::IntRect m_windowRect;
 
     int m_itemHeight { 0 };
     int m_scrollOffset { 0 };

@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
     
 class OverlapTestRequestClient {
 public:
@@ -33,4 +33,4 @@ public:
     virtual void setOverlapTestResult(bool) = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

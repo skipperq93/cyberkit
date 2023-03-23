@@ -28,7 +28,7 @@
 
 #include "RFC7230.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 std::optional<HTTPHeaderField> HTTPHeaderField::create(String&& unparsedName, String&& unparsedValue)
 {

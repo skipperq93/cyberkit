@@ -31,7 +31,7 @@
 
 #include <memory>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioBus;
 class HRTFDatabaseLoader;
@@ -69,6 +69,6 @@ protected:
     PanningModelType m_panningModel;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // Panner_h

@@ -39,7 +39,7 @@
 #include <wtf/URL.h>
 #include <wtf/WallTime.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 namespace DataURLDecoder {
 struct Result;
@@ -102,7 +102,7 @@ public:
         AtomString m_httpStatusText;
         AtomString m_httpVersion;
         HTTPHeaderMap m_httpHeaderFields;
-        Box<WebCore::NetworkLoadMetrics> m_networkLoadMetrics;
+        Box<CyberCore::NetworkLoadMetrics> m_networkLoadMetrics;
 
         short m_httpStatusCode;
         std::optional<CertificateInfo> m_certificateInfo;
@@ -245,7 +245,7 @@ public:
 
     WEBCORE_EXPORT static ResourceResponse syntheticRedirectResponse(const URL& fromURL, const URL& toURL);
 
-    static bool equalForWebKitLegacyChallengeComparison(const ResourceResponse&, const ResourceResponse&);
+    static bool equalForCyberKitLegacyChallengeComparison(const ResourceResponse&, const ResourceResponse&);
 
     template<class Encoder, typename = std::enable_if_t<!std::is_same_v<Encoder, IPC::Encoder>>>
     void encode(Encoder&) const;
@@ -469,45 +469,45 @@ bool ResourceResponseBase::decode(Decoder& decoder, ResourceResponseBase& respon
     return true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraitsForPersistence<WebCore::ResourceResponseBase::Type> {
+template<> struct EnumTraitsForPersistence<CyberCore::ResourceResponseBase::Type> {
     using values = EnumValues<
-        WebCore::ResourceResponseBase::Type,
-        WebCore::ResourceResponseBase::Type::Basic,
-        WebCore::ResourceResponseBase::Type::Cors,
-        WebCore::ResourceResponseBase::Type::Default,
-        WebCore::ResourceResponseBase::Type::Error,
-        WebCore::ResourceResponseBase::Type::Opaque,
-        WebCore::ResourceResponseBase::Type::Opaqueredirect
+        CyberCore::ResourceResponseBase::Type,
+        CyberCore::ResourceResponseBase::Type::Basic,
+        CyberCore::ResourceResponseBase::Type::Cors,
+        CyberCore::ResourceResponseBase::Type::Default,
+        CyberCore::ResourceResponseBase::Type::Error,
+        CyberCore::ResourceResponseBase::Type::Opaque,
+        CyberCore::ResourceResponseBase::Type::Opaqueredirect
     >;
 };
 
-template<> struct EnumTraitsForPersistence<WebCore::ResourceResponseBase::Tainting> {
+template<> struct EnumTraitsForPersistence<CyberCore::ResourceResponseBase::Tainting> {
     using values = EnumValues<
-        WebCore::ResourceResponseBase::Tainting,
-        WebCore::ResourceResponseBase::Tainting::Basic,
-        WebCore::ResourceResponseBase::Tainting::Cors,
-        WebCore::ResourceResponseBase::Tainting::Opaque,
-        WebCore::ResourceResponseBase::Tainting::Opaqueredirect
+        CyberCore::ResourceResponseBase::Tainting,
+        CyberCore::ResourceResponseBase::Tainting::Basic,
+        CyberCore::ResourceResponseBase::Tainting::Cors,
+        CyberCore::ResourceResponseBase::Tainting::Opaque,
+        CyberCore::ResourceResponseBase::Tainting::Opaqueredirect
     >;
 };
 
-template<> struct EnumTraitsForPersistence<WebCore::ResourceResponseBase::Source> {
+template<> struct EnumTraitsForPersistence<CyberCore::ResourceResponseBase::Source> {
     using values = EnumValues<
-        WebCore::ResourceResponseBase::Source,
-        WebCore::ResourceResponseBase::Source::Unknown,
-        WebCore::ResourceResponseBase::Source::Network,
-        WebCore::ResourceResponseBase::Source::DiskCache,
-        WebCore::ResourceResponseBase::Source::DiskCacheAfterValidation,
-        WebCore::ResourceResponseBase::Source::MemoryCache,
-        WebCore::ResourceResponseBase::Source::MemoryCacheAfterValidation,
-        WebCore::ResourceResponseBase::Source::ServiceWorker,
-        WebCore::ResourceResponseBase::Source::ApplicationCache,
-        WebCore::ResourceResponseBase::Source::DOMCache,
-        WebCore::ResourceResponseBase::Source::InspectorOverride
+        CyberCore::ResourceResponseBase::Source,
+        CyberCore::ResourceResponseBase::Source::Unknown,
+        CyberCore::ResourceResponseBase::Source::Network,
+        CyberCore::ResourceResponseBase::Source::DiskCache,
+        CyberCore::ResourceResponseBase::Source::DiskCacheAfterValidation,
+        CyberCore::ResourceResponseBase::Source::MemoryCache,
+        CyberCore::ResourceResponseBase::Source::MemoryCacheAfterValidation,
+        CyberCore::ResourceResponseBase::Source::ServiceWorker,
+        CyberCore::ResourceResponseBase::Source::ApplicationCache,
+        CyberCore::ResourceResponseBase::Source::DOMCache,
+        CyberCore::ResourceResponseBase::Source::InspectorOverride
     >;
 };
 

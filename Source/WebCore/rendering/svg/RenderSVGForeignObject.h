@@ -28,7 +28,7 @@
 #include "RenderSVGBlock.h"
 #include "SVGBoundingBoxComputation.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGForeignObjectElement;
 
@@ -73,7 +73,7 @@ private:
     AffineTransform m_supplementalLayerTransform;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_RENDER_OBJECT(RenderSVGForeignObject, isSVGForeignObject())
 

@@ -33,7 +33,7 @@
 #include <wtf/Forward.h>
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ContainerNode;
 class Document;
@@ -72,7 +72,7 @@ public:
 
     bool contentIsVisible() const { return m_activityState.contains(ActivityState::IsVisible); }
 
-    // These methods are used in WebCore/bindings/objc/DOM.mm.
+    // These methods are used in CyberCore/bindings/objc/DOM.mm.
     WEBCORE_EXPORT Element* nextFocusableElement(Node&);
     WEBCORE_EXPORT Element* previousFocusableElement(Node&);
 
@@ -127,4 +127,4 @@ private:
     MonotonicTime m_focusSetTime;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

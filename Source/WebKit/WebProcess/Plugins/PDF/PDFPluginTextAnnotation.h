@@ -32,13 +32,13 @@
 
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 class Element;
 }
 
 OBJC_CLASS PDFAnnotationTextWidget;
 
-namespace WebKit {
+namespace CyberKit {
 
 class PDFPluginTextAnnotation : public PDFPluginAnnotation {
 public:
@@ -54,18 +54,18 @@ protected:
     {
     }
 
-    Ref<WebCore::Element> createAnnotationElement() override;
+    Ref<CyberCore::Element> createAnnotationElement() override;
     String value() const;
 
 private:
-    bool handleEvent(WebCore::Event&) override;
+    bool handleEvent(CyberCore::Event&) override;
 
     ALLOW_DEPRECATED_DECLARATIONS_BEGIN
     PDFAnnotationTextWidget *textAnnotation() const { return static_cast<PDFAnnotationTextWidget *>(annotation()); }
     ALLOW_DEPRECATED_DECLARATIONS_END
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(PDFKIT_PLUGIN)
 

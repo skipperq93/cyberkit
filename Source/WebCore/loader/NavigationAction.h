@@ -40,7 +40,7 @@
 #include "UserGestureIndicator.h"
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class Event;
@@ -171,4 +171,4 @@ private:
     NewFrameOpenerPolicy m_newFrameOpenerPolicy { NewFrameOpenerPolicy::Allow };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

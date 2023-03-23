@@ -30,7 +30,7 @@
 #include <wtf/HashMap.h>
 #include <wtf/ListHashSet.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ContainerNode;
 class Document;

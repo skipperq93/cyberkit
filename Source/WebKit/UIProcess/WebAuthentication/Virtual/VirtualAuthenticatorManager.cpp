@@ -71,7 +71,7 @@ Vector<VirtualCredential> VirtualAuthenticatorManager::credentialsMatchingList(c
     return matching;
 }
 
-UniqueRef<AuthenticatorTransportService> VirtualAuthenticatorManager::createService(WebCore::AuthenticatorTransport transport, AuthenticatorTransportService::Observer& observer) const
+UniqueRef<AuthenticatorTransportService> VirtualAuthenticatorManager::createService(CyberCore::AuthenticatorTransport transport, AuthenticatorTransportService::Observer& observer) const
 {
     Vector<std::pair<String, VirtualAuthenticatorConfiguration>> configs;
     for (auto& id : m_virtualAuthenticators.keys()) {
@@ -93,7 +93,7 @@ void VirtualAuthenticatorManager::runPanel()
     startDiscovery(transports);
 }
 
-void VirtualAuthenticatorManager::selectAssertionResponse(Vector<Ref<WebCore::AuthenticatorAssertionResponse>>&& responses, WebAuthenticationSource source, CompletionHandler<void(WebCore::AuthenticatorAssertionResponse*)>&& completionHandler)
+void VirtualAuthenticatorManager::selectAssertionResponse(Vector<Ref<CyberCore::AuthenticatorAssertionResponse>>&& responses, WebAuthenticationSource source, CompletionHandler<void(CyberCore::AuthenticatorAssertionResponse*)>&& completionHandler)
 {
     completionHandler(responses[0].ptr());
 }

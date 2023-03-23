@@ -26,7 +26,7 @@
 #include "config.h"
 #include "ImageBackingStore.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 PlatformImagePtr ImageBackingStore::image() const
 {
@@ -41,4 +41,4 @@ PlatformImagePtr ImageBackingStore::image() const
     return adoptCF(CGImageCreate(width, height, bitsPerComponent, bytesPerPixel * 8, bytesPerRow, colorSpace.get(), (m_premultiplyAlpha ? kCGImageAlphaPremultipliedFirst : kCGImageAlphaFirst) | kCGImageByteOrder32Little, dataProvider.get(), nullptr, true, kCGRenderingIntentDefault));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

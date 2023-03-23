@@ -27,7 +27,7 @@
 
 #if ENABLE(CG_DISPLAY_LIST_BACKED_IMAGE_BUFFER)
 
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include <CyberCore/SharedBuffer.h>
 #include <wtf/MachSendRight.h>
 
@@ -42,7 +42,7 @@ class CGDisplayList {
     WTF_MAKE_NONCOPYABLE(CGDisplayList);
 public:
     CGDisplayList() = default;
-    CGDisplayList(WebCore::SharedBuffer& displayList, Vector<MachSendRight>&& surfaces)
+    CGDisplayList(CyberCore::SharedBuffer& displayList, Vector<MachSendRight>&& surfaces)
         : m_displayList(&displayList)
         , m_surfaces(WTFMove(surfaces))
     {
@@ -51,14 +51,14 @@ public:
     CGDisplayList(CGDisplayList&&) = default;
     CGDisplayList& operator=(CGDisplayList&&) = default;
 
-    RefPtr<WebCore::SharedBuffer> buffer() const { return m_displayList; }
+    RefPtr<CyberCore::SharedBuffer> buffer() const { return m_displayList; }
     Vector<MachSendRight> takeSurfaces() { return std::exchange(m_surfaces, { }); }
 
     void encode(IPC::Encoder&) const;
     static WARN_UNUSED_RETURN bool decode(IPC::Decoder&, CGDisplayList&);
 
 private:
-    RefPtr<WebCore::SharedBuffer> m_displayList;
+    RefPtr<CyberCore::SharedBuffer> m_displayList;
     Vector<MachSendRight> m_surfaces;
 };
 

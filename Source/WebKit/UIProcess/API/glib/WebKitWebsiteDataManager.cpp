@@ -1023,7 +1023,7 @@ void webkit_website_data_manager_set_network_proxy_settings(WebKitWebsiteDataMan
         dataStore.setNetworkProxySettings({ });
         break;
     case WEBKIT_NETWORK_PROXY_MODE_NO_PROXY:
-        dataStore.setNetworkProxySettings(WebCore::SoupNetworkProxySettings(WebCore::SoupNetworkProxySettings::Mode::NoProxy));
+        dataStore.setNetworkProxySettings(CyberCore::SoupNetworkProxySettings(CyberCore::SoupNetworkProxySettings::Mode::NoProxy));
         break;
     case WEBKIT_NETWORK_PROXY_MODE_CUSTOM:
         auto settings = webkitNetworkProxySettingsGetNetworkProxySettings(proxySettings);

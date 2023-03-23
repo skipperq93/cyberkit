@@ -27,7 +27,7 @@
 #include "TransformState.h"
 #include <wtf/MathExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGLayerTransformComputation {
     WTF_MAKE_NONCOPYABLE(SVGLayerTransformComputation);
@@ -129,6 +129,6 @@ private:
     const RenderLayerModelObject& m_renderer;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(LAYER_BASED_SVG_ENGINE)

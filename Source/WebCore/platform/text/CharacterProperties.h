@@ -27,7 +27,7 @@
 
 #include <unicode/uchar.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static inline bool isEmojiGroupCandidate(UChar32 character)
 {

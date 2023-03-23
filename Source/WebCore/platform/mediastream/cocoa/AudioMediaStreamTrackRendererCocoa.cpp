@@ -34,7 +34,7 @@
 #include "LibWebRTCAudioModule.h"
 #include <wtf/CompletionHandler.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 AudioMediaStreamTrackRendererCocoa::AudioMediaStreamTrackRendererCocoa(Init&& init)
     : AudioMediaStreamTrackRenderer(WTFMove(init))
@@ -168,6 +168,6 @@ void AudioMediaStreamTrackRendererCocoa::pushSamples(const MediaTime& sampleTime
     m_dataSource->pushSamples(sampleTime, audioData, sampleCount);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM)

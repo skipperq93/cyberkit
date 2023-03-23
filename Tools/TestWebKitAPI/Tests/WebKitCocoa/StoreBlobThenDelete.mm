@@ -63,7 +63,7 @@ TEST(IndexedDB, StoreBlobThenRemoveData)
     TestWebKitAPI::Util::run(&readyToContinue);
     EXPECT_WK_STREQ(@"Success", (NSString *)[lastScriptMessage body]);
 
-    NSString *hash = WebCore::SQLiteFileSystem::computeHashForFileName("StoreBlobToBeDeleted"_s);
+    NSString *hash = CyberCore::SQLiteFileSystem::computeHashForFileName("StoreBlobToBeDeleted"_s);
     NSURL *originURL = [NSURL URLWithString:@"file://"];
     __block NSString *originDirectoryString = nil;
     readyToContinue = false;
@@ -86,7 +86,7 @@ TEST(IndexedDB, StoreBlobThenRemoveData)
     // 1 - Create the path for a fake database that won't actively be in use
     // 2 - Move -wal and -shm files into that directory
     // 3 - Make sure the entire directory is deleted
-    NSString *fakeHash = WebCore::SQLiteFileSystem::computeHashForFileName("FakeDatabasePath"_s);
+    NSString *fakeHash = CyberCore::SQLiteFileSystem::computeHashForFileName("FakeDatabasePath"_s);
     NSURL *fakeDatabaseDirectory = [originDirectory URLByAppendingPathComponent:fakeHash];
     NSURL *fakeShmURL = [fakeDatabaseDirectory URLByAppendingPathComponent:@"IndexedDB.sqlite3-wal"];
     NSURL *fakeWalURL = [fakeDatabaseDirectory URLByAppendingPathComponent:@"IndexedDB.sqlite3-shm"];
@@ -142,7 +142,7 @@ TEST(IndexedDB, StoreBlobThenDeleteDatabase)
     TestWebKitAPI::Util::run(&readyToContinue);
     EXPECT_WK_STREQ(@"Success", (NSString *)[lastScriptMessage body]);
 
-    NSString *hash = WebCore::SQLiteFileSystem::computeHashForFileName("StoreBlobToBeDeleted"_s);
+    NSString *hash = CyberCore::SQLiteFileSystem::computeHashForFileName("StoreBlobToBeDeleted"_s);
     NSURL *originURL = [NSURL URLWithString:@"file://"];
     __block NSString *originDirectoryString = nil;
     readyToContinue = false;

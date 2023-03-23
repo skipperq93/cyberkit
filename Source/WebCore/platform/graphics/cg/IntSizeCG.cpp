@@ -30,7 +30,7 @@
 
 #include <CoreGraphics/CoreGraphics.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 IntSize::IntSize(const CGSize& s) : m_width(static_cast<int>(s.width)), m_height(static_cast<int>(s.height))
 {

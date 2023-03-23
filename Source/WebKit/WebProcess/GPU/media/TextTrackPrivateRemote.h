@@ -34,21 +34,21 @@
 #include <CyberCore/InbandTextTrackPrivate.h>
 #include <CyberCore/MediaPlayerIdentifier.h>
 
-namespace WebCore {
+namespace CyberCore {
 class InbandGenericCue;
 class ISOWebVTTCue;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class GPUProcessConnection;
 class MediaPlayerPrivateRemote;
 
-class TextTrackPrivateRemote final : public WebCore::InbandTextTrackPrivate {
+class TextTrackPrivateRemote final : public CyberCore::InbandTextTrackPrivate {
     WTF_MAKE_NONCOPYABLE(TextTrackPrivateRemote)
 public:
 
-    static Ref<TextTrackPrivateRemote> create(GPUProcessConnection& gpuProcessConnection, WebCore::MediaPlayerIdentifier playerIdentifier, TrackPrivateRemoteIdentifier identifier, TextTrackPrivateRemoteConfiguration&& configuration)
+    static Ref<TextTrackPrivateRemote> create(GPUProcessConnection& gpuProcessConnection, CyberCore::MediaPlayerIdentifier playerIdentifier, TrackPrivateRemoteIdentifier identifier, TextTrackPrivateRemoteConfiguration&& configuration)
     {
         return adoptRef(*new TextTrackPrivateRemote(gpuProcessConnection, playerIdentifier, identifier, WTFMove(configuration)));
     }
@@ -56,18 +56,18 @@ public:
     void addDataCue(MediaTime&& start, MediaTime&& end, IPC::DataReference&&);
 
 #if ENABLE(DATACUE_VALUE)
-    using SerializedPlatformDataCueValue = WebCore::SerializedPlatformDataCueValue;
+    using SerializedPlatformDataCueValue = CyberCore::SerializedPlatformDataCueValue;
     void addDataCueWithType(MediaTime&& start, MediaTime&& end, SerializedPlatformDataCueValue&&, String&&);
     void updateDataCue(MediaTime&& start, MediaTime&& end, SerializedPlatformDataCueValue&&);
     void removeDataCue(MediaTime&& start, MediaTime&& end, SerializedPlatformDataCueValue&&);
 #endif
 
-    using InbandGenericCue = WebCore::InbandGenericCue;
+    using InbandGenericCue = CyberCore::InbandGenericCue;
     void addGenericCue(Ref<InbandGenericCue>);
     void updateGenericCue(Ref<InbandGenericCue>);
     void removeGenericCue(Ref<InbandGenericCue>);
 
-    using ISOWebVTTCue = WebCore::ISOWebVTTCue;
+    using ISOWebVTTCue = CyberCore::ISOWebVTTCue;
     void parseWebVTTFileHeader(String&&);
     void parseWebVTTCueData(const IPC::DataReference&);
     void parseWebVTTCueDataStruct(ISOWebVTTCue&&);
@@ -80,10 +80,10 @@ public:
     int trackIndex() const final { return m_trackIndex; }
     AtomString inBandMetadataTrackDispatchType() const final { return m_inBandMetadataTrackDispatchType; }
 
-    using TextTrackKind = WebCore::InbandTextTrackPrivate::Kind;
+    using TextTrackKind = CyberCore::InbandTextTrackPrivate::Kind;
     TextTrackKind kind() const final { return m_kind; }
 
-    using TextTrackMode = WebCore::InbandTextTrackPrivate::Mode;
+    using TextTrackMode = CyberCore::InbandTextTrackPrivate::Mode;
     void setMode(TextTrackMode) final;
 
     bool isClosedCaptions() const final { return m_isClosedCaptions; }
@@ -95,7 +95,7 @@ public:
     MediaTime startTimeVariance() const final { return m_startTimeVariance; }
 
 private:
-    TextTrackPrivateRemote(GPUProcessConnection&, WebCore::MediaPlayerIdentifier, TrackPrivateRemoteIdentifier, TextTrackPrivateRemoteConfiguration&&);
+    TextTrackPrivateRemote(GPUProcessConnection&, CyberCore::MediaPlayerIdentifier, TrackPrivateRemoteIdentifier, TextTrackPrivateRemoteConfiguration&&);
 
     WeakPtr<GPUProcessConnection> m_gpuProcessConnection;
     AtomString m_id;
@@ -104,7 +104,7 @@ private:
     int m_trackIndex { -1 };
     AtomString m_inBandMetadataTrackDispatchType;
     MediaTime m_startTimeVariance { MediaTime::zeroTime() };
-    WebCore::MediaPlayerIdentifier m_playerIdentifier;
+    CyberCore::MediaPlayerIdentifier m_playerIdentifier;
     TrackPrivateRemoteIdentifier m_identifier;
 
     TextTrackKind m_kind { TextTrackKind::None };
@@ -116,6 +116,6 @@ private:
     bool m_isDefault { false };
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS) && ENABLE(VIDEO)

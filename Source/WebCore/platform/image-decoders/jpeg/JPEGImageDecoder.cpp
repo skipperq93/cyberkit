@@ -81,7 +81,7 @@ static const int iccMarker = JPEG_APP0 + 2;
 static const unsigned iccHeaderSize = 14;
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 struct decoder_error_mgr {
     struct jpeg_error_mgr pub; // "public" fields for IJG library

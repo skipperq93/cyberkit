@@ -32,7 +32,7 @@
 #include <wtf/HashMap.h>
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static HashMap<Display*, Vector<XErrorTrapper*>>& xErrorTrappersMap()
 {
@@ -96,6 +96,6 @@ void XErrorTrapper::errorEvent(XErrorEvent* event)
         CRASH();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(X11)

@@ -35,7 +35,7 @@ struct AudioBufferList;
 typedef struct OpaqueCMBlockBuffer *CMBlockBufferRef;
 typedef struct opaqueCMSampleBuffer *CMSampleBufferRef;
 
-namespace WebCore {
+namespace CyberCore {
 
 class CAAudioStreamDescription;
 
@@ -75,6 +75,6 @@ private:
 
 }
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::WebAudioBufferList)
-static bool isType(const WebCore::PlatformAudioData& data) { return data.kind() == WebCore::PlatformAudioData::Kind::WebAudioBufferList; }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::WebAudioBufferList)
+static bool isType(const CyberCore::PlatformAudioData& data) { return data.kind() == CyberCore::PlatformAudioData::Kind::WebAudioBufferList; }
 SPECIALIZE_TYPE_TRAITS_END()

@@ -37,25 +37,25 @@
 #import <CyberCore/Event.h>
 #import <CyberCore/EventNames.h>
 
-using WebCore::eventNames;
+using CyberCore::eventNames;
 
-Class kitClass(WebCore::Event* impl)
+Class kitClass(CyberCore::Event* impl)
 {
     switch (impl->eventInterface()) {
-    case WebCore::KeyboardEventInterfaceType:
+    case CyberCore::KeyboardEventInterfaceType:
         return [DOMKeyboardEvent class];
-    case WebCore::MouseEventInterfaceType:
+    case CyberCore::MouseEventInterfaceType:
         return [DOMMouseEvent class];
-    case WebCore::MutationEventInterfaceType:
+    case CyberCore::MutationEventInterfaceType:
         return [DOMMutationEvent class];
-    case WebCore::OverflowEventInterfaceType:
+    case CyberCore::OverflowEventInterfaceType:
         return [DOMOverflowEvent class];
-    case WebCore::ProgressEventInterfaceType:
-    case WebCore::XMLHttpRequestProgressEventInterfaceType:
+    case CyberCore::ProgressEventInterfaceType:
+    case CyberCore::XMLHttpRequestProgressEventInterfaceType:
         return [DOMProgressEvent class];
-    case WebCore::TextEventInterfaceType:
+    case CyberCore::TextEventInterfaceType:
         return [DOMTextEvent class];
-    case WebCore::WheelEventInterfaceType:
+    case CyberCore::WheelEventInterfaceType:
         return [DOMWheelEvent class];
     default:
         if (impl->isUIEvent())

@@ -25,14 +25,14 @@
 
 #import "_WKTextInputContext.h"
 
-namespace WebCore {
+namespace CyberCore {
 struct ElementContext;
 }
 
 @interface _WKTextInputContext ()
 
-- (instancetype)_initWithTextInputContext:(const WebCore::ElementContext&)context;
+- (instancetype)_initWithTextInputContext:(const CyberCore::ElementContext&)context;
 
-- (const WebCore::ElementContext&)_textInputContext;
+- (const CyberCore::ElementContext&)_textInputContext;
 
 @end

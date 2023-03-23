@@ -48,7 +48,7 @@
 #endif
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 Ref<NetworkDataTask> NetworkDataTask::create(NetworkSession& session, NetworkDataTaskClient& client, const NetworkLoadParameters& parameters)
 {
@@ -159,7 +159,7 @@ String NetworkDataTask::description() const
     return emptyString();
 }
 
-void NetworkDataTask::setH2PingCallback(const URL& url, CompletionHandler<void(Expected<WTF::Seconds, WebCore::ResourceError>&&)>&& completionHandler)
+void NetworkDataTask::setH2PingCallback(const URL& url, CompletionHandler<void(Expected<WTF::Seconds, CyberCore::ResourceError>&&)>&& completionHandler)
 {
     ASSERT_NOT_REACHED();
     completionHandler(makeUnexpected(internalError(url)));
@@ -180,7 +180,7 @@ NetworkSession* NetworkDataTask::networkSession()
     return m_session.get();
 }
 
-void NetworkDataTask::restrictRequestReferrerToOriginIfNeeded(WebCore::ResourceRequest& request)
+void NetworkDataTask::restrictRequestReferrerToOriginIfNeeded(CyberCore::ResourceRequest& request)
 {
 #if ENABLE(TRACKING_PREVENTION)
     if ((m_session->sessionID().isEphemeral() || m_session->isTrackingPreventionEnabled()) && m_session->shouldDowngradeReferrer() && request.isThirdParty())

@@ -38,7 +38,7 @@ namespace PAL {
 class SessionID;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 struct ClientOrigin;
 struct WorkerFetchResult;
@@ -60,33 +60,33 @@ public:
     ~WebSharedWorkerServer();
 
     PAL::SessionID sessionID();
-    WebSharedWorkerServerToContextConnection* contextConnectionForRegistrableDomain(const WebCore::RegistrableDomain&) const;
+    WebSharedWorkerServerToContextConnection* contextConnectionForRegistrableDomain(const CyberCore::RegistrableDomain&) const;
 
-    void requestSharedWorker(WebCore::SharedWorkerKey&&, WebCore::SharedWorkerObjectIdentifier, WebCore::TransferredMessagePort&&, WebCore::WorkerOptions&&);
-    void sharedWorkerObjectIsGoingAway(const WebCore::SharedWorkerKey&, WebCore::SharedWorkerObjectIdentifier);
-    void suspendForBackForwardCache(const WebCore::SharedWorkerKey&, WebCore::SharedWorkerObjectIdentifier);
-    void resumeForBackForwardCache(const WebCore::SharedWorkerKey&, WebCore::SharedWorkerObjectIdentifier);
-    void postExceptionToWorkerObject(WebCore::SharedWorkerIdentifier, const String& errorMessage, int lineNumber, int columnNumber, const String& sourceURL);
-    void sharedWorkerTerminated(WebCore::SharedWorkerIdentifier);
+    void requestSharedWorker(CyberCore::SharedWorkerKey&&, CyberCore::SharedWorkerObjectIdentifier, CyberCore::TransferredMessagePort&&, CyberCore::WorkerOptions&&);
+    void sharedWorkerObjectIsGoingAway(const CyberCore::SharedWorkerKey&, CyberCore::SharedWorkerObjectIdentifier);
+    void suspendForBackForwardCache(const CyberCore::SharedWorkerKey&, CyberCore::SharedWorkerObjectIdentifier);
+    void resumeForBackForwardCache(const CyberCore::SharedWorkerKey&, CyberCore::SharedWorkerObjectIdentifier);
+    void postExceptionToWorkerObject(CyberCore::SharedWorkerIdentifier, const String& errorMessage, int lineNumber, int columnNumber, const String& sourceURL);
+    void sharedWorkerTerminated(CyberCore::SharedWorkerIdentifier);
 
-    void terminateContextConnectionWhenPossible(const WebCore::RegistrableDomain&, WebCore::ProcessIdentifier);
+    void terminateContextConnectionWhenPossible(const CyberCore::RegistrableDomain&, CyberCore::ProcessIdentifier);
     void addContextConnection(WebSharedWorkerServerToContextConnection&);
     void removeContextConnection(WebSharedWorkerServerToContextConnection&);
     void addConnection(std::unique_ptr<WebSharedWorkerServerConnection>&&);
-    void removeConnection(WebCore::ProcessIdentifier);
+    void removeConnection(CyberCore::ProcessIdentifier);
 
 private:
-    void createContextConnection(const WebCore::RegistrableDomain&, std::optional<WebCore::ProcessIdentifier> requestingProcessIdentifier);
-    bool needsContextConnectionForRegistrableDomain(const WebCore::RegistrableDomain&) const;
+    void createContextConnection(const CyberCore::RegistrableDomain&, std::optional<CyberCore::ProcessIdentifier> requestingProcessIdentifier);
+    bool needsContextConnectionForRegistrableDomain(const CyberCore::RegistrableDomain&) const;
     void contextConnectionCreated(WebSharedWorkerServerToContextConnection&);
-    void didFinishFetchingSharedWorkerScript(WebSharedWorker&, WebCore::WorkerFetchResult&&, WebCore::WorkerInitializationData&&);
-    void shutDownSharedWorker(const WebCore::SharedWorkerKey&);
+    void didFinishFetchingSharedWorkerScript(WebSharedWorker&, CyberCore::WorkerFetchResult&&, CyberCore::WorkerInitializationData&&);
+    void shutDownSharedWorker(const CyberCore::SharedWorkerKey&);
 
     NetworkSession& m_session;
-    HashMap<WebCore::ProcessIdentifier, std::unique_ptr<WebSharedWorkerServerConnection>> m_connections;
-    HashMap<WebCore::RegistrableDomain, WebSharedWorkerServerToContextConnection*> m_contextConnections;
-    HashSet<WebCore::RegistrableDomain> m_pendingContextConnectionDomains;
-    HashMap<WebCore::SharedWorkerKey, std::unique_ptr<WebSharedWorker>> m_sharedWorkers;
+    HashMap<CyberCore::ProcessIdentifier, std::unique_ptr<WebSharedWorkerServerConnection>> m_connections;
+    HashMap<CyberCore::RegistrableDomain, WebSharedWorkerServerToContextConnection*> m_contextConnections;
+    HashSet<CyberCore::RegistrableDomain> m_pendingContextConnectionDomains;
+    HashMap<CyberCore::SharedWorkerKey, std::unique_ptr<WebSharedWorker>> m_sharedWorkers;
 };
 
 } // namespace WebKit

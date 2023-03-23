@@ -32,7 +32,7 @@ namespace WTF {
 class TextStream;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 struct VelocityData  {
     float horizontalVelocity { 0 };
@@ -85,4 +85,4 @@ private:
     } m_positionHistory[maxHistoryDepth];
 };
 
-} // namespace WebCore
+} // namespace CyberCore

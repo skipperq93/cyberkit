@@ -42,7 +42,7 @@
 
 OBJC_CLASS WebAVPlayerController;
 
-namespace WebCore {
+namespace CyberCore {
 class IntRect;
 class PlaybackSessionModel;
 class WebPlaybackSessionChangeObserver;

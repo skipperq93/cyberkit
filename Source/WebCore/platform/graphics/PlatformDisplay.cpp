@@ -88,7 +88,7 @@
 #include <wtf/glib/GRefPtr.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 std::unique_ptr<PlatformDisplay> PlatformDisplay::createPlatformDisplay()
 {
@@ -379,4 +379,4 @@ const String& PlatformDisplay::accessibilityBusAddress() const
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore

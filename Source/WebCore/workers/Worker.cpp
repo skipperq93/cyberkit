@@ -54,7 +54,7 @@
 #include <wtf/NeverDestroyed.h>
 #include <wtf/Scope.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(Worker);
 
@@ -268,4 +268,4 @@ void Worker::forEachWorker(const Function<Function<void(ScriptExecutionContext&)
         ScriptExecutionContext::postTaskTo(contextIdentifier, callback());
 }
 
-} // namespace WebCore
+} // namespace CyberCore

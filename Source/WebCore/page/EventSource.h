@@ -40,7 +40,7 @@
 #include <wtf/URL.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class MessageEvent;
 class TextResourceDecoder;
@@ -145,4 +145,4 @@ inline EventSource::State EventSource::readyState() const
     return m_state;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -23,7 +23,7 @@
 #include "CachedResourceHandle.h"
 #include "SVGElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CSSFontFaceSrcResourceValue;
 
@@ -49,4 +49,4 @@ private:
     CachedResourceHandle<CachedFont> m_cachedFont;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

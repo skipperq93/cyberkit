@@ -65,7 +65,7 @@ namespace WebKit {
 
 class RemoteAudioDestination final
 #if PLATFORM(COCOA)
-    : public WebCore::AudioUnitRenderer
+    : public CyberCore::AudioUnitRenderer
 #endif
 {
     WTF_MAKE_FAST_ALLOCATED;
@@ -143,7 +143,7 @@ private:
         }
 
         unsigned requestedSamplesCount = m_extraRequestedFrames;
-        for (; requestedSamplesCount < numberOfFrames; requestedSamplesCount += WebCore::AudioUtilities::renderQuantumSize) {
+        for (; requestedSamplesCount < numberOfFrames; requestedSamplesCount += CyberCore::AudioUtilities::renderQuantumSize) {
             // Ask the audio thread in the WebContent process to render a quantum.
             m_renderSemaphore.signal();
         }
@@ -156,7 +156,7 @@ private:
     bool m_isPlaying { false };
 
 #if PLATFORM(COCOA)
-    WebCore::AudioOutputUnitAdaptor m_audioOutputUnitAdaptor;
+    CyberCore::AudioOutputUnitAdaptor m_audioOutputUnitAdaptor;
     const uint32_t m_numOutputChannels;
     std::unique_ptr<ConsumerSharedCARingBuffer> m_ringBuffer;
     uint64_t m_startFrame { 0 };

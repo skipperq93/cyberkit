@@ -59,13 +59,13 @@
 #import <pal/cocoa/PassKitSoftLink.h>
 #endif
 
-@interface WebCoreRenderThemeBundle : NSObject
+@interface CyberCoreRenderThemeBundle : NSObject
 @end
 
-@implementation WebCoreRenderThemeBundle
+@implementation CyberCoreRenderThemeBundle
 @end
 
-namespace WebCore {
+namespace CyberCore {
 
 constexpr int kThumbnailBorderStrokeWidth = 1;
 constexpr int kThumbnailBorderCornerRadius = 1;
@@ -167,7 +167,7 @@ Vector<String, 2> RenderThemeCocoa::mediaControlsScripts()
 {
     // FIXME: Localized strings are not worth having a script. We should make it JSON data etc. instead.
     if (m_mediaControlsLocalizedStringsScript.isEmpty()) {
-        NSBundle *bundle = [NSBundle bundleForClass:[WebCoreRenderThemeBundle class]];
+        NSBundle *bundle = [NSBundle bundleForClass:[CyberCoreRenderThemeBundle class]];
         m_mediaControlsLocalizedStringsScript = [NSString stringWithContentsOfFile:[bundle pathForResource:@"modern-media-controls-localized-strings" ofType:@"js"] encoding:NSUTF8StringEncoding error:nil];
     }
 
@@ -183,7 +183,7 @@ Vector<String, 2> RenderThemeCocoa::mediaControlsScripts()
 String RenderThemeCocoa::mediaControlsBase64StringForIconNameAndType(const String& iconName, const String& iconType)
 {
     NSString *directory = @"modern-media-controls/images";
-    NSBundle *bundle = [NSBundle bundleForClass:[WebCoreRenderThemeBundle class]];
+    NSBundle *bundle = [NSBundle bundleForClass:[CyberCoreRenderThemeBundle class]];
     return [[NSData dataWithContentsOfFile:[bundle pathForResource:iconName ofType:iconType inDirectory:directory]] base64EncodedStringWithOptions:0];
 }
 

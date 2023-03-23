@@ -24,14 +24,14 @@
  */
 
 #import "config.h"
-#import "WebCoreMotionManager.h"
+#import "CyberCoreMotionManager.h"
 
 #if PLATFORM(IOS_FAMILY) && ENABLE(DEVICE_ORIENTATION)
 
 #import "DeviceMotionClientIOS.h"
 #import "MotionManagerClient.h"
-#import "WebCoreObjCExtras.h"
-#import "WebCoreThreadRun.h"
+#import "CyberCoreObjCExtras.h"
+#import "CyberCoreThreadRun.h"
 #import <CoreLocation/CoreLocation.h>
 #import <objc/objc-runtime.h>
 #import <pal/spi/cocoa/CoreMotionSPI.h>
@@ -53,7 +53,7 @@ SOFT_LINK_CLASS(CoreMotion, CMDeviceMotion)
 
 static const double kGravity = 9.80665;
 
-@interface WebCoreMotionManager(Private)
+@interface CyberCoreMotionManager(Private)
 
 - (void)initializeOnMainThread;
 - (void)checkClientStatus;
@@ -63,11 +63,11 @@ static const double kGravity = 9.80665;
 
 @end
 
-@implementation WebCoreMotionManager
+@implementation CyberCoreMotionManager
 
-+ (WebCoreMotionManager *)sharedManager
++ (CyberCoreMotionManager *)sharedManager
 {
-    static WebCoreMotionManager *sharedMotionManager = [[WebCoreMotionManager alloc] init];
+    static CyberCoreMotionManager *sharedMotionManager = [[CyberCoreMotionManager alloc] init];
     return sharedMotionManager;
 }
 
@@ -82,7 +82,7 @@ static const double kGravity = 9.80665;
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainThread([WebCoreMotionManager class], self))
+    if (CyberCoreObjCScheduleDeallocateOnMainThread([CyberCoreMotionManager class], self))
         return;
 
     ASSERT(!m_updateTimer);
@@ -98,28 +98,28 @@ static const double kGravity = 9.80665;
     [super dealloc];
 }
 
-- (void)addMotionClient:(WebCore::MotionManagerClient *)client
+- (void)addMotionClient:(CyberCore::MotionManagerClient *)client
 {
     m_deviceMotionClients.add(*client);
     if (m_initialized)
         [self checkClientStatus];
 }
 
-- (void)removeMotionClient:(WebCore::MotionManagerClient *)client
+- (void)removeMotionClient:(CyberCore::MotionManagerClient *)client
 {
     m_deviceMotionClients.remove(*client);
     if (m_initialized)
         [self checkClientStatus];
 }
 
-- (void)addOrientationClient:(WebCore::MotionManagerClient *)client
+- (void)addOrientationClient:(CyberCore::MotionManagerClient *)client
 {
     m_deviceOrientationClients.add(*client);
     if (m_initialized)
         [self checkClientStatus];
 }
 
-- (void)removeOrientationClient:(WebCore::MotionManagerClient *)client
+- (void)removeOrientationClient:(CyberCore::MotionManagerClient *)client
 {
     m_deviceOrientationClients.remove(*client);
     if (m_initialized)
@@ -216,7 +216,7 @@ static const double kGravity = 9.80665;
     WebThreadRun(^{
         CMAcceleration accel = newAcceleration.acceleration;
 
-        Vector<WeakPtr<WebCore::MotionManagerClient>> motionClients;
+        Vector<WeakPtr<CyberCore::MotionManagerClient>> motionClients;
         motionClients.reserveInitialCapacity(m_deviceMotionClients.computeSize());
         for (auto& client : m_deviceMotionClients)
             motionClients.uncheckedAppend(client);
@@ -241,7 +241,7 @@ static const double kGravity = 9.80665;
 
         CMRotationRate rotationRate = newMotion.rotationRate;
 
-        Vector<WeakPtr<WebCore::MotionManagerClient>> motionClients;
+        Vector<WeakPtr<CyberCore::MotionManagerClient>> motionClients;
         motionClients.reserveInitialCapacity(m_deviceMotionClients.computeSize());
         for (auto& client : m_deviceMotionClients)
             motionClients.uncheckedAppend(client);
@@ -253,7 +253,7 @@ static const double kGravity = 9.80665;
 
         CMAttitude* attitude = newMotion.attitude;
 
-        Vector<WeakPtr<WebCore::MotionManagerClient>> orientationClients;
+        Vector<WeakPtr<CyberCore::MotionManagerClient>> orientationClients;
         orientationClients.reserveInitialCapacity(m_deviceOrientationClients.computeSize());
         for (auto& client : m_deviceOrientationClients)
             orientationClients.uncheckedAppend(client);

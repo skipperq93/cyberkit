@@ -47,12 +47,12 @@ namespace WebKit {
 
 namespace CacheStorage {
 
-using namespace WebCore::DOMCacheEngine;
+using namespace CyberCore::DOMCacheEngine;
 using namespace NetworkCache;
 
 static Lock globalSizeFileLock;
 
-String Engine::cachesRootPath(const WebCore::ClientOrigin& origin)
+String Engine::cachesRootPath(const CyberCore::ClientOrigin& origin)
 {
     if (!shouldPersist() || !m_salt)
         return { };
@@ -93,47 +93,47 @@ void Engine::fetchEntries(NetworkSession& networkSession, bool shouldComputeSize
     networkSession.ensureCacheEngine().fetchEntries(shouldComputeSize, WTFMove(completionHandler));
 }
 
-void Engine::open(NetworkSession& networkSession, WebCore::ClientOrigin&& origin, String&& cacheName, WebCore::DOMCacheEngine::CacheIdentifierCallback&& callback)
+void Engine::open(NetworkSession& networkSession, CyberCore::ClientOrigin&& origin, String&& cacheName, CyberCore::DOMCacheEngine::CacheIdentifierCallback&& callback)
 {
     networkSession.ensureCacheEngine().open(origin, cacheName, WTFMove(callback));
 }
 
-void Engine::remove(NetworkSession& networkSession, WebCore::DOMCacheIdentifier cacheIdentifier, WebCore::DOMCacheEngine::RemoveCacheIdentifierCallback&& callback)
+void Engine::remove(NetworkSession& networkSession, CyberCore::DOMCacheIdentifier cacheIdentifier, CyberCore::DOMCacheEngine::RemoveCacheIdentifierCallback&& callback)
 {
     networkSession.ensureCacheEngine().remove(cacheIdentifier, WTFMove(callback));
 }
 
-void Engine::retrieveCaches(NetworkSession& networkSession, WebCore::ClientOrigin&& origin, uint64_t updateCounter, WebCore::DOMCacheEngine::CacheInfosCallback&& callback)
+void Engine::retrieveCaches(NetworkSession& networkSession, CyberCore::ClientOrigin&& origin, uint64_t updateCounter, CyberCore::DOMCacheEngine::CacheInfosCallback&& callback)
 {
     networkSession.ensureCacheEngine().retrieveCaches(origin, updateCounter, WTFMove(callback));
 }
 
-void Engine::retrieveRecords(NetworkSession& networkSession, WebCore::DOMCacheIdentifier cacheIdentifier, WebCore::RetrieveRecordsOptions&& options, WebCore::DOMCacheEngine::RecordsCallback&& callback)
+void Engine::retrieveRecords(NetworkSession& networkSession, CyberCore::DOMCacheIdentifier cacheIdentifier, CyberCore::RetrieveRecordsOptions&& options, CyberCore::DOMCacheEngine::RecordsCallback&& callback)
 {
     networkSession.ensureCacheEngine().retrieveRecords(cacheIdentifier, WTFMove(options), WTFMove(callback));
 }
 
-void Engine::putRecords(NetworkSession& networkSession, WebCore::DOMCacheIdentifier cacheIdentifier, Vector<WebCore::DOMCacheEngine::Record>&& records, WebCore::DOMCacheEngine::RecordIdentifiersCallback&& callback)
+void Engine::putRecords(NetworkSession& networkSession, CyberCore::DOMCacheIdentifier cacheIdentifier, Vector<CyberCore::DOMCacheEngine::Record>&& records, CyberCore::DOMCacheEngine::RecordIdentifiersCallback&& callback)
 {
     networkSession.ensureCacheEngine().putRecords(cacheIdentifier, WTFMove(records), WTFMove(callback));
 }
 
-void Engine::deleteMatchingRecords(NetworkSession& networkSession, WebCore::DOMCacheIdentifier cacheIdentifier, WebCore::ResourceRequest&& request, WebCore::CacheQueryOptions&& options, WebCore::DOMCacheEngine::RecordIdentifiersCallback&& callback)
+void Engine::deleteMatchingRecords(NetworkSession& networkSession, CyberCore::DOMCacheIdentifier cacheIdentifier, CyberCore::ResourceRequest&& request, CyberCore::CacheQueryOptions&& options, CyberCore::DOMCacheEngine::RecordIdentifiersCallback&& callback)
 {
     networkSession.ensureCacheEngine().deleteMatchingRecords(cacheIdentifier, WTFMove(request), WTFMove(options), WTFMove(callback));
 }
 
-void Engine::lock(NetworkSession& networkSession, WebCore::DOMCacheIdentifier cacheIdentifier)
+void Engine::lock(NetworkSession& networkSession, CyberCore::DOMCacheIdentifier cacheIdentifier)
 {
     networkSession.ensureCacheEngine().lock(cacheIdentifier);
 }
 
-void Engine::unlock(NetworkSession& networkSession, WebCore::DOMCacheIdentifier cacheIdentifier)
+void Engine::unlock(NetworkSession& networkSession, CyberCore::DOMCacheIdentifier cacheIdentifier)
 {
     networkSession.ensureCacheEngine().unlock(cacheIdentifier);
 }
 
-void Engine::clearMemoryRepresentation(NetworkSession& networkSession, WebCore::ClientOrigin&& origin, WebCore::DOMCacheEngine::CompletionCallback&& callback)
+void Engine::clearMemoryRepresentation(NetworkSession& networkSession, CyberCore::ClientOrigin&& origin, CyberCore::DOMCacheEngine::CompletionCallback&& callback)
 {
     networkSession.ensureCacheEngine().clearMemoryRepresentation(origin, WTFMove(callback));
 }
@@ -148,7 +148,7 @@ void Engine::clearAllCaches(NetworkSession& networkSession, CompletionHandler<vo
     networkSession.ensureCacheEngine().clearAllCaches(WTFMove(completionHandler));
 }
 
-void Engine::clearCachesForOrigin(NetworkSession& networkSession, WebCore::SecurityOriginData&& originData, CompletionHandler<void()>&& completionHandler)
+void Engine::clearCachesForOrigin(NetworkSession& networkSession, CyberCore::SecurityOriginData&& originData, CompletionHandler<void()>&& completionHandler)
 {
     networkSession.ensureCacheEngine().clearCachesForOrigin(originData, WTFMove(completionHandler));
 }
@@ -177,7 +177,7 @@ static uint64_t getDirectorySize(const String& directoryPath)
     return directorySize;
 }
 
-String Engine::storagePath(const String& rootDirectory, const WebCore::ClientOrigin& origin)
+String Engine::storagePath(const String& rootDirectory, const CyberCore::ClientOrigin& origin)
 {
     ASSERT(!isMainRunLoop());
     
@@ -207,7 +207,7 @@ uint64_t Engine::diskUsage(const String& originDirectory)
     return getDirectorySize(originDirectory);
 }
 
-void Engine::requestSpace(const WebCore::ClientOrigin& origin, uint64_t spaceRequested, CompletionHandler<void(bool)>&& callback)
+void Engine::requestSpace(const CyberCore::ClientOrigin& origin, uint64_t spaceRequested, CompletionHandler<void(bool)>&& callback)
 {
     ASSERT(isMainThread());
 
@@ -230,7 +230,7 @@ Engine::Engine(NetworkSession& networkSession, const String& rootPath)
         m_ioQueue = WorkQueue::create("com.apple.WebKit.CacheStorageEngine.serial.default", WorkQueue::QOS::Default);
 }
 
-void Engine::open(const WebCore::ClientOrigin& origin, const String& cacheName, CacheIdentifierCallback&& callback)
+void Engine::open(const CyberCore::ClientOrigin& origin, const String& cacheName, CacheIdentifierCallback&& callback)
 {
     readCachesFromDisk(origin, [cacheName, callback = WTFMove(callback)](CachesOrError&& cachesOrError) mutable {
         if (!cachesOrError.has_value()) {
@@ -242,7 +242,7 @@ void Engine::open(const WebCore::ClientOrigin& origin, const String& cacheName, 
     });
 }
 
-void Engine::remove(WebCore::DOMCacheIdentifier cacheIdentifier, RemoveCacheIdentifierCallback&& callback)
+void Engine::remove(CyberCore::DOMCacheIdentifier cacheIdentifier, RemoveCacheIdentifierCallback&& callback)
 {
     Caches* cachesToModify = nullptr;
     for (auto& caches : m_caches.values()) {
@@ -260,7 +260,7 @@ void Engine::remove(WebCore::DOMCacheIdentifier cacheIdentifier, RemoveCacheIden
     cachesToModify->remove(cacheIdentifier, WTFMove(callback));
 }
 
-void Engine::retrieveCaches(const WebCore::ClientOrigin& origin, uint64_t updateCounter, CacheInfosCallback&& callback)
+void Engine::retrieveCaches(const CyberCore::ClientOrigin& origin, uint64_t updateCounter, CacheInfosCallback&& callback)
 {
     readCachesFromDisk(origin, [updateCounter, callback = WTFMove(callback)](CachesOrError&& cachesOrError) mutable {
         if (!cachesOrError.has_value()) {
@@ -272,7 +272,7 @@ void Engine::retrieveCaches(const WebCore::ClientOrigin& origin, uint64_t update
     });
 }
 
-void Engine::retrieveRecords(WebCore::DOMCacheIdentifier cacheIdentifier, WebCore::RetrieveRecordsOptions&& options, RecordsCallback&& callback)
+void Engine::retrieveRecords(CyberCore::DOMCacheIdentifier cacheIdentifier, CyberCore::RetrieveRecordsOptions&& options, RecordsCallback&& callback)
 {
     readCache(cacheIdentifier, [options = WTFMove(options), callback = WTFMove(callback)](CacheOrError&& result) mutable {
         if (!result.has_value()) {
@@ -283,7 +283,7 @@ void Engine::retrieveRecords(WebCore::DOMCacheIdentifier cacheIdentifier, WebCor
     });
 }
 
-void Engine::putRecords(WebCore::DOMCacheIdentifier cacheIdentifier, Vector<Record>&& records, RecordIdentifiersCallback&& callback)
+void Engine::putRecords(CyberCore::DOMCacheIdentifier cacheIdentifier, Vector<Record>&& records, RecordIdentifiersCallback&& callback)
 {
     readCache(cacheIdentifier, [records = WTFMove(records), callback = WTFMove(callback)](CacheOrError&& result) mutable {
         if (!result.has_value()) {
@@ -295,7 +295,7 @@ void Engine::putRecords(WebCore::DOMCacheIdentifier cacheIdentifier, Vector<Reco
     });
 }
 
-void Engine::deleteMatchingRecords(WebCore::DOMCacheIdentifier cacheIdentifier, WebCore::ResourceRequest&& request, WebCore::CacheQueryOptions&& options, RecordIdentifiersCallback&& callback)
+void Engine::deleteMatchingRecords(CyberCore::DOMCacheIdentifier cacheIdentifier, CyberCore::ResourceRequest&& request, CyberCore::CacheQueryOptions&& options, RecordIdentifiersCallback&& callback)
 {
     readCache(cacheIdentifier, [request = WTFMove(request), options = WTFMove(options), callback = WTFMove(callback)](CacheOrError&& result) mutable {
         if (!result.has_value()) {
@@ -347,7 +347,7 @@ void Engine::initialize(CompletionCallback&& callback)
     });
 }
 
-void Engine::readCachesFromDisk(const WebCore::ClientOrigin& origin, CachesCallback&& callback)
+void Engine::readCachesFromDisk(const CyberCore::ClientOrigin& origin, CachesCallback&& callback)
 {
     initialize([this, origin, callback = WTFMove(callback)](std::optional<Error>&& error) mutable {
         if (error) {
@@ -357,7 +357,7 @@ void Engine::readCachesFromDisk(const WebCore::ClientOrigin& origin, CachesCallb
 
         auto& caches = m_caches.ensure(origin, [&origin, this] {
             auto path = cachesRootPath(origin);
-            return Caches::create(*this, WebCore::ClientOrigin { origin }, WTFMove(path));
+            return Caches::create(*this, CyberCore::ClientOrigin { origin }, WTFMove(path));
         }).iterator->value;
 
         if (caches->isInitialized()) {
@@ -376,7 +376,7 @@ void Engine::readCachesFromDisk(const WebCore::ClientOrigin& origin, CachesCallb
     });
 }
 
-void Engine::readCache(WebCore::DOMCacheIdentifier cacheIdentifier, CacheCallback&& callback)
+void Engine::readCache(CyberCore::DOMCacheIdentifier cacheIdentifier, CacheCallback&& callback)
 {
     auto* cache = this->cache(cacheIdentifier);
     if (!cache) {
@@ -403,7 +403,7 @@ void Engine::readCache(WebCore::DOMCacheIdentifier cacheIdentifier, CacheCallbac
     callback(std::reference_wrapper<Cache> { *cache });
 }
 
-Cache* Engine::cache(WebCore::DOMCacheIdentifier cacheIdentifier)
+Cache* Engine::cache(CyberCore::DOMCacheIdentifier cacheIdentifier)
 {
     Cache* result = nullptr;
     for (auto& caches : m_caches.values()) {
@@ -413,7 +413,7 @@ Cache* Engine::cache(WebCore::DOMCacheIdentifier cacheIdentifier)
     return result;
 }
 
-void Engine::writeFile(String&& filename, NetworkCache::Data&& data, WebCore::DOMCacheEngine::CompletionCallback&& callback)
+void Engine::writeFile(String&& filename, NetworkCache::Data&& data, CyberCore::DOMCacheEngine::CompletionCallback&& callback)
 {
     if (!shouldPersist()) {
         callback(std::nullopt);
@@ -528,7 +528,7 @@ public:
         m_callback(WTFMove(m_entries));
     }
 
-    void addOrigin(WebCore::SecurityOriginData&& origin, uint64_t size)
+    void addOrigin(CyberCore::SecurityOriginData&& origin, uint64_t size)
     {
         m_entries.append(WebsiteData::Entry { WTFMove(origin), WebsiteDataType::DOMCache, size });
     }
@@ -644,7 +644,7 @@ void Engine::clearAllCachesFromDisk(CompletionHandler<void()>&& completionHandle
     });
 }
 
-void Engine::clearCachesForOrigin(const WebCore::SecurityOriginData& origin, CompletionHandler<void()>&& completionHandler)
+void Engine::clearCachesForOrigin(const CyberCore::SecurityOriginData& origin, CompletionHandler<void()>&& completionHandler)
 {
     ASSERT(RunLoop::isMain());
 
@@ -663,7 +663,7 @@ void Engine::clearCachesForOrigin(const WebCore::SecurityOriginData& origin, Com
     }
 }
 
-void Engine::clearCachesForOriginFromDisk(const WebCore::SecurityOriginData& origin, CompletionHandler<void()>&& completionHandler)
+void Engine::clearCachesForOriginFromDisk(const CyberCore::SecurityOriginData& origin, CompletionHandler<void()>&& completionHandler)
 {
     ASSERT(RunLoop::isMain());
     getDirectories([this, weakThis = WeakPtr { *this }, origin, completionHandler = WTFMove(completionHandler)](const auto& folderPaths) mutable {
@@ -673,11 +673,11 @@ void Engine::clearCachesForOriginFromDisk(const WebCore::SecurityOriginData& ori
     });
 }
 
-void Engine::clearCachesForOriginFromDirectories(const Vector<String>& folderPaths, const WebCore::SecurityOriginData& origin, CompletionHandler<void()>&& completionHandler)
+void Engine::clearCachesForOriginFromDirectories(const Vector<String>& folderPaths, const CyberCore::SecurityOriginData& origin, CompletionHandler<void()>&& completionHandler)
 {
     auto callbackAggregator = CallbackAggregator::create(WTFMove(completionHandler));
     for (auto& folderPath : folderPaths) {
-        Caches::retrieveOriginFromDirectory(folderPath, *m_ioQueue, [this, protectedThis = Ref { *this }, origin, callbackAggregator, folderPath = folderPath] (std::optional<WebCore::ClientOrigin>&& folderOrigin) mutable {
+        Caches::retrieveOriginFromDirectory(folderPath, *m_ioQueue, [this, protectedThis = Ref { *this }, origin, callbackAggregator, folderPath = folderPath] (std::optional<CyberCore::ClientOrigin>&& folderOrigin) mutable {
             if (!folderOrigin)
                 return;
             if (folderOrigin->topOrigin != origin && folderOrigin->clientOrigin != origin)
@@ -702,7 +702,7 @@ void Engine::deleteNonEmptyDirectoryOnBackgroundThread(String&& path, Completion
     });
 }
 
-void Engine::clearMemoryRepresentation(const WebCore::ClientOrigin& origin, WebCore::DOMCacheEngine::CompletionCallback&& callback)
+void Engine::clearMemoryRepresentation(const CyberCore::ClientOrigin& origin, CyberCore::DOMCacheEngine::CompletionCallback&& callback)
 {
     readCachesFromDisk(origin, [callback = WTFMove(callback)](CachesOrError&& result) mutable {
         if (!result.has_value()) {

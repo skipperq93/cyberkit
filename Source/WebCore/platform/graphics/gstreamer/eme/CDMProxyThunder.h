@@ -38,7 +38,7 @@
 #include <wtf/Condition.h>
 #include <wtf/VectorHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // This is the thread-safe API that decode threads should use to make use of a platform CDM module.
 class CDMProxyThunder final : public CDMProxy, public CanMakeWeakPtr<CDMProxyThunder, WeakPtrFactoryInitialization::Eager> {
@@ -64,6 +64,6 @@ private:
     String m_keySystem;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ENCRYPTED_MEDIA) && ENABLE(THUNDER)

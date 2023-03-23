@@ -43,7 +43,7 @@ namespace WTF {
 class TextStream;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 #ifdef NDEBUG
 
@@ -849,29 +849,29 @@ inline LayoutUnit operator"" _lu(unsigned long long value)
 
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct DefaultHash<WebCore::LayoutUnit> {
-    static unsigned hash(const WebCore::LayoutUnit& p) { return DefaultHash<int>::hash(p.rawValue()); }
-    static bool equal(const WebCore::LayoutUnit& a, const WebCore::LayoutUnit& b) { return a == b; }
+template<> struct DefaultHash<CyberCore::LayoutUnit> {
+    static unsigned hash(const CyberCore::LayoutUnit& p) { return DefaultHash<int>::hash(p.rawValue()); }
+    static bool equal(const CyberCore::LayoutUnit& a, const CyberCore::LayoutUnit& b) { return a == b; }
     static const bool safeToCompareToEmptyOrDeleted = true;
 };
 
 // The empty value is INT_MIN, the deleted value is INT_MAX. During the course of layout
 // these values are typically only used to represent uninitialized values, so they are
 // good candidates to represent the deleted and empty values in HashMaps as well.
-template<> struct HashTraits<WebCore::LayoutUnit> : GenericHashTraits<WebCore::LayoutUnit> {
+template<> struct HashTraits<CyberCore::LayoutUnit> : GenericHashTraits<CyberCore::LayoutUnit> {
     static constexpr bool emptyValueIsZero = false;
-    static WebCore::LayoutUnit emptyValue()
+    static CyberCore::LayoutUnit emptyValue()
     {
-        WebCore::LayoutUnit value;
+        CyberCore::LayoutUnit value;
         value.setRawValue(std::numeric_limits<int>::min());
         return value;
     }
-    static void constructDeletedValue(WebCore::LayoutUnit& slot) { slot.setRawValue(std::numeric_limits<int>::max()); }
-    static bool isDeletedValue(WebCore::LayoutUnit value) { return value.rawValue() == std::numeric_limits<int>::max(); }
+    static void constructDeletedValue(CyberCore::LayoutUnit& slot) { slot.setRawValue(std::numeric_limits<int>::max()); }
+    static bool isDeletedValue(CyberCore::LayoutUnit value) { return value.rawValue() == std::numeric_limits<int>::max(); }
 };
 
 } // namespace WTF

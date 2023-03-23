@@ -78,22 +78,22 @@ static void runTestWithInputType(NSString *type)
     EXPECT_TRUE([[[uiWebView _browserView] inputView] isKindOfClass:[UIDatePicker class]]);
 }
 
-TEST(WebKitLegacy, DateInputAccessoryViewTest)
+TEST(CyberKitLegacy, DateInputAccessoryViewTest)
 {
     runTestWithInputType(@"date");
 }
 
-TEST(WebKitLegacy, DateTimeLocalInputAccessoryViewTest)
+TEST(CyberKitLegacy, DateTimeLocalInputAccessoryViewTest)
 {
     runTestWithInputType(@"datetime-local");
 }
 
-TEST(WebKitLegacy, MonthInputAccessoryViewTest)
+TEST(CyberKitLegacy, MonthInputAccessoryViewTest)
 {
     runTestWithInputType(@"month");
 }
 
-TEST(WebKitLegacy, TimeInputAccessoryViewTest)
+TEST(CyberKitLegacy, TimeInputAccessoryViewTest)
 {
     runTestWithInputType(@"time");
 }

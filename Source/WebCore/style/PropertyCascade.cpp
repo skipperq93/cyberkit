@@ -35,7 +35,7 @@
 #include "StyleBuilderGenerated.h"
 #include "StylePropertyShorthand.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace Style {
 
 PropertyCascade::PropertyCascade(const MatchResult& matchResult, CascadeLevel maximumCascadeLevel, IncludedProperties includedProperties, const HashSet<AnimatableProperty>* animatedProperties)

@@ -39,7 +39,7 @@ namespace WTF {
 class WorkQueue;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioMediaStreamTrackRendererInternalUnit;
 class AudioSampleDataSource;

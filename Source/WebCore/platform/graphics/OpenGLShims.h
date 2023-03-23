@@ -35,7 +35,7 @@ typedef char GLchar;
 
 typedef struct _OpenGLFunctionTable OpenGLFunctionTable;
 
-namespace WebCore {
+namespace CyberCore {
 bool initializeOpenGLShims();
 OpenGLFunctionTable* openGLFunctionTable();
 }
@@ -265,7 +265,7 @@ typedef struct _OpenGLFunctionTable {
 
 // We disable the shims for OpenGLShims.cpp, so that we can set them.
 #ifndef DISABLE_SHIMS
-#define LOOKUP_GL_FUNCTION(Function) WebCore::openGLFunctionTable()->Function
+#define LOOKUP_GL_FUNCTION(Function) CyberCore::openGLFunctionTable()->Function
 #define glActiveTexture                        LOOKUP_GL_FUNCTION(glActiveTexture)
 #define glAttachShader                         LOOKUP_GL_FUNCTION(glAttachShader)
 #define glBindAttribLocation                   LOOKUP_GL_FUNCTION(glBindAttribLocation)

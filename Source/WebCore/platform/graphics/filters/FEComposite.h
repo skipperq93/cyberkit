@@ -25,7 +25,7 @@
 #include "FilterEffect.h"
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum CompositeOperationType {
     FECOMPOSITE_OPERATOR_UNKNOWN    = 0, 
@@ -84,22 +84,22 @@ private:
     float m_k4;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::CompositeOperationType> {
+template<> struct EnumTraits<CyberCore::CompositeOperationType> {
     using values = EnumValues<
-        WebCore::CompositeOperationType,
+        CyberCore::CompositeOperationType,
 
-        WebCore::FECOMPOSITE_OPERATOR_UNKNOWN,
-        WebCore::FECOMPOSITE_OPERATOR_OVER,
-        WebCore::FECOMPOSITE_OPERATOR_IN,
-        WebCore::FECOMPOSITE_OPERATOR_OUT,
-        WebCore::FECOMPOSITE_OPERATOR_ATOP,
-        WebCore::FECOMPOSITE_OPERATOR_XOR,
-        WebCore::FECOMPOSITE_OPERATOR_ARITHMETIC,
-        WebCore::FECOMPOSITE_OPERATOR_LIGHTER
+        CyberCore::FECOMPOSITE_OPERATOR_UNKNOWN,
+        CyberCore::FECOMPOSITE_OPERATOR_OVER,
+        CyberCore::FECOMPOSITE_OPERATOR_IN,
+        CyberCore::FECOMPOSITE_OPERATOR_OUT,
+        CyberCore::FECOMPOSITE_OPERATOR_ATOP,
+        CyberCore::FECOMPOSITE_OPERATOR_XOR,
+        CyberCore::FECOMPOSITE_OPERATOR_ARITHMETIC,
+        CyberCore::FECOMPOSITE_OPERATOR_LIGHTER
     >;
 };
 

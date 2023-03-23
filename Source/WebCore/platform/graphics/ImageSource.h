@@ -34,7 +34,7 @@
 #include <wtf/WorkQueue.h>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class BitmapImage;
 class GraphicsContext;

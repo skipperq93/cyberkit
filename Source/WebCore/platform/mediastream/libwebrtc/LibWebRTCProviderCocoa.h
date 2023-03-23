@@ -34,7 +34,7 @@ class VideoDecoderFactory;
 class VideoEncoderFactory;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class WEBCORE_EXPORT LibWebRTCProviderCocoa : public LibWebRTCProvider {
 public:
@@ -51,6 +51,6 @@ private:
     bool isVPSoftwareDecoderSmooth(const VideoConfiguration&) final;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

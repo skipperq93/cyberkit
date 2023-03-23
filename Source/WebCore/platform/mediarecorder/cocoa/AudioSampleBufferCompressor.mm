@@ -40,7 +40,7 @@
 
 #define LOW_WATER_TIME_IN_SECONDS 0.1
 
-namespace WebCore {
+namespace CyberCore {
 
 std::unique_ptr<AudioSampleBufferCompressor> AudioSampleBufferCompressor::create(CMBufferQueueTriggerCallback callback, void* callbackObject)
 {

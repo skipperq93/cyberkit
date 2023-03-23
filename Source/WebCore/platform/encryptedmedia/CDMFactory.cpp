@@ -36,7 +36,7 @@
 #include <wtf/NeverDestroyed.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Vector<CDMFactory*>& CDMFactory::registeredFactories()
 {
@@ -67,6 +67,6 @@ void CDMFactory::platformRegisterFactories(Vector<CDMFactory*>&)
 }
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ENCRYPTED_MEDIA)

@@ -33,7 +33,7 @@
 #import "ImageBuffer.h"
 #import <dlfcn.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 void ThemeCocoa::drawNamedImage(const String& name, GraphicsContext& context, const FloatSize& size) const
 {

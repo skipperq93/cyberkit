@@ -100,13 +100,13 @@ class ChangeLogTest(unittest.TestCase):
             * a list of things
 
         * platform/cf/KURLCFNet.cpp:
-        (WebCore::createCFURLFromBuffer):
-        (WebCore::KURL::createCFURL):
+        (CyberCore::createCFURLFromBuffer):
+        (CyberCore::KURL::createCFURL):
         * platform/mac/KURLMac.mm :
-        (WebCore::KURL::operator NSURL *):
-        (WebCore::KURL::createCFURL):
-        * WebCoreSupport/ChromeClientEfl.cpp:
-        (WebCore::ChromeClientEfl::closeWindowSoon): call new function and moves its
+        (CyberCore::KURL::operator NSURL *):
+        (CyberCore::KURL::createCFURL):
+        * CyberCoreSupport/ChromeClientEfl.cpp:
+        (CyberCore::ChromeClientEfl::closeWindowSoon): call new function and moves its
         previous functionality there.
         * ewk/ewk_private.h:
         * ewk/ewk_view.cpp:
@@ -139,7 +139,7 @@ class ChangeLogTest(unittest.TestCase):
        RS=Tony Chang.
 
        r81977 moved FontPlatformData.h from
-       WebCore/platform/graphics/cocoa to platform/graphics. This
+       CyberCore/platform/graphics/cocoa to platform/graphics. This
        change updates the chromium build accordingly.
 
        https://bugs.webkit.org/show_bug.cgi?id=57281
@@ -154,7 +154,7 @@ class ChangeLogTest(unittest.TestCase):
        a warning in Release build.
 
        * accessibility/AccessibilityRenderObject.cpp:
-       (WebCore::lastChildConsideringContinuation):
+       (CyberCore::lastChildConsideringContinuation):
 
 2011-10-11  Antti Koivisto  <antti@apple.com>
 
@@ -218,14 +218,14 @@ class ChangeLogTest(unittest.TestCase):
         commit_text = '''
 2011-03-29  Timothy Hatcher  <timothy@apple.com>
 
-        Update WebCore Localizable.strings to contain WebCore, WebKit/mac and WebKit2 strings.
+        Update CyberCore Localizable.strings to contain CyberCore, WebKit/mac and WebKit2 strings.
 
         https://webkit.org/b/57354
 
         Reviewed by Sam Weinig.
 
         * English.lproj/Localizable.strings: Updated.
-        * StringsNotToBeLocalized.txt: Removed. To hard to maintain in WebCore.
+        * StringsNotToBeLocalized.txt: Removed. To hard to maintain in CyberCore.
         * platform/network/cf/LoaderRunLoopCF.h: Remove a single quote in an #error so
         extract-localizable-strings does not complain about unbalanced single quotes.
         '''
@@ -254,10 +254,10 @@ class ChangeLogTest(unittest.TestCase):
         self.assertIsNone(parsed_entries[2].bug_description())
         self.assertEqual(parsed_entries[3].author_name(), "Benjamin Poulain")
         self.assertEqual(parsed_entries[3].touched_files(), ["platform/cf/KURLCFNet.cpp", "platform/mac/KURLMac.mm",
-            "WebCoreSupport/ChromeClientEfl.cpp", "ewk/ewk_private.h", "ewk/ewk_view.cpp"])
-        self.assertEqual(parsed_entries[3].touched_functions(), {"platform/cf/KURLCFNet.cpp": ["WebCore::createCFURLFromBuffer", "WebCore::KURL::createCFURL"],
-            "platform/mac/KURLMac.mm": ["WebCore::KURL::operator NSURL *", "WebCore::KURL::createCFURL"],
-            "WebCoreSupport/ChromeClientEfl.cpp": ["WebCore::ChromeClientEfl::closeWindowSoon"], "ewk/ewk_private.h": [], "ewk/ewk_view.cpp": []})
+            "CyberCoreSupport/ChromeClientEfl.cpp", "ewk/ewk_private.h", "ewk/ewk_view.cpp"])
+        self.assertEqual(parsed_entries[3].touched_functions(), {"platform/cf/KURLCFNet.cpp": ["CyberCore::createCFURLFromBuffer", "CyberCore::KURL::createCFURL"],
+            "platform/mac/KURLMac.mm": ["CyberCore::KURL::operator NSURL *", "CyberCore::KURL::createCFURL"],
+            "CyberCoreSupport/ChromeClientEfl.cpp": ["CyberCore::ChromeClientEfl::closeWindowSoon"], "ewk/ewk_private.h": [], "ewk/ewk_view.cpp": []})
         self.assertEqual(parsed_entries[3].bug_description(), "[Mac] ResourceRequest's nsURLRequest() does not differentiate null and empty URLs with CFNetwork")
         self.assertEqual(parsed_entries[4].reviewer_text(), "David Hyatt")
         self.assertIsNone(parsed_entries[4].bug_description())
@@ -284,7 +284,7 @@ class ChangeLogTest(unittest.TestCase):
             u"93798 ap@apple.com \n"
             u"93798 ap@apple.com         Fix build when GCC 4.2 is not installed.\n"
             u"93798 ap@apple.com \n"
-            u"93798 ap@apple.com         * gtest/xcode/Config/CompilerVersion.xcconfig: Copied from Source/WebCore/Configurations/CompilerVersion.xcconfig.\n"
+            u"93798 ap@apple.com         * gtest/xcode/Config/CompilerVersion.xcconfig: Copied from Source/CyberCore/Configurations/CompilerVersion.xcconfig.\n"
             u"93798 ap@apple.com         * gtest/xcode/Config/General.xcconfig:\n"
             u"93798 ap@apple.com         Use the same compiler version as other projects do.\n"
             u"93798 ap@apple.com\n"
@@ -301,7 +301,7 @@ class ChangeLogTest(unittest.TestCase):
             u"99187 andreas.kling@nokia.com         again since there's a cycle in the includes between CSSRule/StyleSheet.\n"
             u"99187 andreas.kling@nokia.com \n"
             u"99187 andreas.kling@nokia.com         * css/StyleSheet.cpp:\n"
-            u"99187 andreas.kling@nokia.com         (WebCore::StyleSheet::parentStyleSheet):\n"
+            u"99187 andreas.kling@nokia.com         (CyberCore::StyleSheet::parentStyleSheet):\n"
             u"99187 andreas.kling@nokia.com         * css/StyleSheet.h:\n"
             u"99187 andreas.kling@nokia.com \n")
 

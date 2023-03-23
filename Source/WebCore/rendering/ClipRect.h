@@ -31,7 +31,7 @@ namespace WTF {
 class TextStream;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class HitTestLocation;
 
@@ -109,4 +109,4 @@ inline ClipRect intersection(const ClipRect& a, const ClipRect& b)
 
 WTF::TextStream& operator<<(WTF::TextStream&, const ClipRect&);
 
-} // namespace WebCore
+} // namespace CyberCore

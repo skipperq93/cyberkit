@@ -48,19 +48,19 @@ header: "SessionState.h"
     int64_t documentSequenceNumber;
     int64_t itemSequenceNumber;
 
-    WebCore::IntPoint scrollPosition;
+    CyberCore::IntPoint scrollPosition;
     bool shouldRestoreScrollPosition;
     float pageScaleFactor;
 
     std::optional<WebKit::HTTPBody> httpBody;
 
 #if PLATFORM(IOS_FAMILY)
-    WebCore::FloatRect exposedContentRect;
-    WebCore::IntRect unobscuredContentRect;
-    WebCore::FloatSize minimumLayoutSizeInScrollViewCoordinates;
-    WebCore::IntSize contentSize;
+    CyberCore::FloatRect exposedContentRect;
+    CyberCore::IntRect unobscuredContentRect;
+    CyberCore::FloatSize minimumLayoutSizeInScrollViewCoordinates;
+    CyberCore::IntSize contentSize;
     bool scaleIsInitial;
-    WebCore::FloatBoxExtent obscuredInsets;
+    CyberCore::FloatBoxExtent obscuredInsets;
 #endif
 
     Vector<WebKit::FrameState> children;
@@ -70,13 +70,13 @@ header: "SessionState.h"
 [CustomHeader] struct WebKit::PageState {
     String title;
     WebKit::FrameState mainFrameState;
-    WebCore::ShouldOpenExternalURLsPolicy shouldOpenExternalURLsPolicy;
-    RefPtr<WebCore::SerializedScriptValue> sessionStateObject;
+    CyberCore::ShouldOpenExternalURLsPolicy shouldOpenExternalURLsPolicy;
+    RefPtr<CyberCore::SerializedScriptValue> sessionStateObject;
     bool wasCreatedByJSWithoutUserInteraction;
 };
 
 [CustomHeader] struct WebKit::BackForwardListItemState {
-    WebCore::BackForwardItemIdentifier identifier;
+    CyberCore::BackForwardItemIdentifier identifier;
 
     WebKit::PageState pageState;
     bool hasCachedPage;

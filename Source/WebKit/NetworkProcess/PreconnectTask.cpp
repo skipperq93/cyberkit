@@ -37,9 +37,9 @@
 
 namespace WebKit {
 
-using namespace WebCore;
+using namespace CyberCore;
 
-PreconnectTask::PreconnectTask(NetworkSession& networkSession, NetworkLoadParameters&& parameters, CompletionHandler<void(const ResourceError&, const WebCore::NetworkLoadMetrics&)>&& completionHandler)
+PreconnectTask::PreconnectTask(NetworkSession& networkSession, NetworkLoadParameters&& parameters, CompletionHandler<void(const ResourceError&, const CyberCore::NetworkLoadMetrics&)>&& completionHandler)
     : m_completionHandler(WTFMove(completionHandler))
     , m_timeout(60_s)
     , m_timeoutTimer([this] { didFinish(ResourceError { String(), 0, m_networkLoad->parameters().request.url(), "Preconnection timed out"_s, ResourceError::Type::Timeout }, { }); })
@@ -50,7 +50,7 @@ PreconnectTask::PreconnectTask(NetworkSession& networkSession, NetworkLoadParame
     m_networkLoad = makeUnique<NetworkLoad>(*this, nullptr, WTFMove(parameters), networkSession);
 }
 
-void PreconnectTask::setH2PingCallback(const URL& url, CompletionHandler<void(Expected<WTF::Seconds, WebCore::ResourceError>&&)>&& completionHandler)
+void PreconnectTask::setH2PingCallback(const URL& url, CompletionHandler<void(Expected<WTF::Seconds, CyberCore::ResourceError>&&)>&& completionHandler)
 {
     m_networkLoad->setH2PingCallback(url, WTFMove(completionHandler));
 }

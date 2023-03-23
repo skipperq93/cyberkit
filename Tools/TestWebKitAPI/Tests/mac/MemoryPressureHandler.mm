@@ -29,7 +29,7 @@
 
 namespace TestWebKitAPI {
 
-TEST(WebKitLegacy, MemoryPressureHandler)
+TEST(CyberKitLegacy, MemoryPressureHandler)
 {
     WebInstallMemoryPressureHandler();
     auto webView = adoptNS([[WebView alloc] initWithFrame:NSZeroRect frameName:nil groupName:nil]);

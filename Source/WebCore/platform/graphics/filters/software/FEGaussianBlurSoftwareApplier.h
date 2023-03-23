@@ -27,7 +27,7 @@
 #include "PixelBuffer.h"
 #include <CyberScriptCore/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FEGaussianBlur;
 enum class EdgeModeType;
@@ -67,4 +67,4 @@ private:
     static inline void applyPlatform(PixelBuffer& ioBuffer, PixelBuffer& tempBuffer, unsigned kernelSizeX, unsigned kernelSizeY, IntSize& paintSize, bool isAlphaImage, EdgeModeType);
 };
 
-} // namespace WebCore
+} // namespace CyberCore

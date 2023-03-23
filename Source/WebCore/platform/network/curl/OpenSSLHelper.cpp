@@ -149,9 +149,9 @@ private:
 };
 
 
-static WebCore::CertificateInfo::CertificateChain pemDataFromCtx(StackOfX509&& certs)
+static CyberCore::CertificateInfo::CertificateChain pemDataFromCtx(StackOfX509&& certs)
 {
-    WebCore::CertificateInfo::CertificateChain result;
+    CyberCore::CertificateInfo::CertificateChain result;
 
     for (int i = 0; i < certs.count(); i++) {
         BIO bio(certs.item(i));
@@ -165,17 +165,17 @@ static WebCore::CertificateInfo::CertificateChain pemDataFromCtx(StackOfX509&& c
     return result;
 }
 
-std::unique_ptr<WebCore::CertificateInfo> createCertificateInfo(std::optional<long>&& verifyResult, SSL* ssl)
+std::unique_ptr<CyberCore::CertificateInfo> createCertificateInfo(std::optional<long>&& verifyResult, SSL* ssl)
 {
     if (!verifyResult || !ssl)
         return nullptr;
 
     auto certChain = SSL_get_peer_cert_chain(ssl);
 
-    return makeUnique<WebCore::CertificateInfo>(*verifyResult, pemDataFromCtx(StackOfX509(certChain)));
+    return makeUnique<CyberCore::CertificateInfo>(*verifyResult, pemDataFromCtx(StackOfX509(certChain)));
 }
 
-WebCore::CertificateInfo::CertificateChain createCertificateChain(X509_STORE_CTX* ctx)
+CyberCore::CertificateInfo::CertificateChain createCertificateChain(X509_STORE_CTX* ctx)
 {
     if (!ctx)
         return { };
@@ -359,14 +359,14 @@ String canonicalizeIPv6Address(Span<uint8_t, 16> data)
     return ipAddress.toString();
 }
 
-std::optional<WebCore::CertificateSummary> createSummaryInfo(const Vector<uint8_t>& pem)
+std::optional<CyberCore::CertificateSummary> createSummaryInfo(const Vector<uint8_t>& pem)
 {
     BIO bio { pem };
     auto x509 = bio.readX509();
     if (!x509)
         return std::nullopt;
 
-    WebCore::CertificateSummary summaryInfo;
+    CyberCore::CertificateSummary summaryInfo;
 
     summaryInfo.subject = getCommonName(x509.get());
     if (summaryInfo.subject.isNull())

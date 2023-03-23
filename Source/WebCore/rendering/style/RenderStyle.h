@@ -123,7 +123,7 @@
             group.access().parentVariable.access().variable.setColor(value); \
     } while (0)
 
-namespace WebCore {
+namespace CyberCore {
 
 class BorderData;
 class ContentData;
@@ -895,10 +895,10 @@ public:
     InputSecurity inputSecurity() const { return static_cast<InputSecurity>(m_nonInheritedData->rareData->inputSecurity); }
 
     WritingMode writingMode() const { return static_cast<WritingMode>(m_inheritedFlags.writingMode); }
-    bool isHorizontalWritingMode() const { return WebCore::isHorizontalWritingMode(writingMode()); }
-    bool isVerticalWritingMode() const { return WebCore::isVerticalWritingMode(writingMode()); }
-    bool isFlippedLinesWritingMode() const { return WebCore::isFlippedLinesWritingMode(writingMode()); }
-    bool isFlippedBlocksWritingMode() const { return WebCore::isFlippedWritingMode(writingMode()); }
+    bool isHorizontalWritingMode() const { return CyberCore::isHorizontalWritingMode(writingMode()); }
+    bool isVerticalWritingMode() const { return CyberCore::isVerticalWritingMode(writingMode()); }
+    bool isFlippedLinesWritingMode() const { return CyberCore::isFlippedLinesWritingMode(writingMode()); }
+    bool isFlippedBlocksWritingMode() const { return CyberCore::isFlippedWritingMode(writingMode()); }
 
     ImageOrientation imageOrientation() const;
 
@@ -2618,4 +2618,4 @@ inline bool isNonVisibleOverflow(Overflow overflow)
     return overflow == Overflow::Hidden || overflow == Overflow::Scroll || overflow == Overflow::Clip;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

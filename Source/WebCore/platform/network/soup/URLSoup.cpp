@@ -28,7 +28,7 @@
 
 #include <wtf/URL.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 #if USE(SOUP2)
 URL soupURIToURL(SoupURI* soupURI)
@@ -72,4 +72,4 @@ GRefPtr<GUri> urlToSoupURI(const URL& url)
 }
 #endif // USE(SOUP2)
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -32,7 +32,7 @@
 #include <EGL/egl.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 GLContextEGL::GLContextEGL(PlatformDisplay& display, EGLContext context, EGLSurface surface, EGLConfig config, XUniquePixmap&& pixmap)
     : GLContext(display)
@@ -100,6 +100,6 @@ std::unique_ptr<GLContextEGL> GLContextEGL::createPixmapContext(PlatformDisplay&
     return std::unique_ptr<GLContextEGL>(new GLContextEGL(platformDisplay, context, surface, config, WTFMove(pixmap)));
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(EGL) && PLATFORM(X11)

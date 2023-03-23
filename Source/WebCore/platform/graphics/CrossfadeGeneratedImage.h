@@ -30,7 +30,7 @@
 #include "Image.h"
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CrossfadeGeneratedImage final : public GeneratedImage {
 public:

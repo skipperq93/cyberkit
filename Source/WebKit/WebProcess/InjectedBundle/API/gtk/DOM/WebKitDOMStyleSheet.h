@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -21,28 +21,28 @@
 #error "Only <webkitdom/webkitdom.h> can be included directly."
 #endif
 
-#ifndef WebKitDOMStyleSheet_h
-#define WebKitDOMStyleSheet_h
+#ifndef CyberKitDOMStyleSheet_h
+#define CyberKitDOMStyleSheet_h
 
 #include <glib-object.h>
-#include <webkitdom/WebKitDOMObject.h>
+#include <webkitdom/CyberKitDOMObject.h>
 #include <webkitdom/webkitdomdefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_DOM_TYPE_STYLE_SHEET            (webkit_dom_style_sheet_get_type())
-#define WEBKIT_DOM_STYLE_SHEET(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_STYLE_SHEET, WebKitDOMStyleSheet))
-#define WEBKIT_DOM_STYLE_SHEET_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_STYLE_SHEET, WebKitDOMStyleSheetClass)
+#define WEBKIT_DOM_STYLE_SHEET(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_STYLE_SHEET, CyberKitDOMStyleSheet))
+#define WEBKIT_DOM_STYLE_SHEET_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_STYLE_SHEET, CyberKitDOMStyleSheetClass)
 #define WEBKIT_DOM_IS_STYLE_SHEET(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_DOM_TYPE_STYLE_SHEET))
 #define WEBKIT_DOM_IS_STYLE_SHEET_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_DOM_TYPE_STYLE_SHEET))
-#define WEBKIT_DOM_STYLE_SHEET_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_STYLE_SHEET, WebKitDOMStyleSheetClass))
+#define WEBKIT_DOM_STYLE_SHEET_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_STYLE_SHEET, CyberKitDOMStyleSheetClass))
 
-struct _WebKitDOMStyleSheet {
-    WebKitDOMObject parent_instance;
+struct _CyberKitDOMStyleSheet {
+    CyberKitDOMObject parent_instance;
 };
 
-struct _WebKitDOMStyleSheetClass {
-    WebKitDOMObjectClass parent_class;
+struct _CyberKitDOMStyleSheetClass {
+    CyberKitDOMObjectClass parent_class;
 };
 
 WEBKIT_DEPRECATED GType
@@ -50,92 +50,92 @@ webkit_dom_style_sheet_get_type(void);
 
 /**
  * webkit_dom_style_sheet_get_content_type:
- * @self: A #WebKitDOMStyleSheet
+ * @self: A #CyberKitDOMStyleSheet
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_style_sheet_get_content_type(WebKitDOMStyleSheet* self);
+webkit_dom_style_sheet_get_content_type(CyberKitDOMStyleSheet* self);
 
 /**
  * webkit_dom_style_sheet_get_disabled:
- * @self: A #WebKitDOMStyleSheet
+ * @self: A #CyberKitDOMStyleSheet
  *
  * Returns: A #gboolean
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gboolean
-webkit_dom_style_sheet_get_disabled(WebKitDOMStyleSheet* self);
+webkit_dom_style_sheet_get_disabled(CyberKitDOMStyleSheet* self);
 
 /**
  * webkit_dom_style_sheet_set_disabled:
- * @self: A #WebKitDOMStyleSheet
+ * @self: A #CyberKitDOMStyleSheet
  * @value: A #gboolean
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_style_sheet_set_disabled(WebKitDOMStyleSheet* self, gboolean value);
+webkit_dom_style_sheet_set_disabled(CyberKitDOMStyleSheet* self, gboolean value);
 
 /**
  * webkit_dom_style_sheet_get_owner_node:
- * @self: A #WebKitDOMStyleSheet
+ * @self: A #CyberKitDOMStyleSheet
  *
- * Returns: (transfer none): A #WebKitDOMNode
+ * Returns: (transfer none): A #CyberKitDOMNode
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMNode*
-webkit_dom_style_sheet_get_owner_node(WebKitDOMStyleSheet* self);
+WEBKIT_DEPRECATED CyberKitDOMNode*
+webkit_dom_style_sheet_get_owner_node(CyberKitDOMStyleSheet* self);
 
 /**
  * webkit_dom_style_sheet_get_parent_style_sheet:
- * @self: A #WebKitDOMStyleSheet
+ * @self: A #CyberKitDOMStyleSheet
  *
- * Returns: (transfer full): A #WebKitDOMStyleSheet
+ * Returns: (transfer full): A #CyberKitDOMStyleSheet
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMStyleSheet*
-webkit_dom_style_sheet_get_parent_style_sheet(WebKitDOMStyleSheet* self);
+WEBKIT_DEPRECATED CyberKitDOMStyleSheet*
+webkit_dom_style_sheet_get_parent_style_sheet(CyberKitDOMStyleSheet* self);
 
 /**
  * webkit_dom_style_sheet_get_href:
- * @self: A #WebKitDOMStyleSheet
+ * @self: A #CyberKitDOMStyleSheet
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_style_sheet_get_href(WebKitDOMStyleSheet* self);
+webkit_dom_style_sheet_get_href(CyberKitDOMStyleSheet* self);
 
 /**
  * webkit_dom_style_sheet_get_title:
- * @self: A #WebKitDOMStyleSheet
+ * @self: A #CyberKitDOMStyleSheet
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_style_sheet_get_title(WebKitDOMStyleSheet* self);
+webkit_dom_style_sheet_get_title(CyberKitDOMStyleSheet* self);
 
 /**
  * webkit_dom_style_sheet_get_media:
- * @self: A #WebKitDOMStyleSheet
+ * @self: A #CyberKitDOMStyleSheet
  *
- * Returns: (transfer full): A #WebKitDOMMediaList
+ * Returns: (transfer full): A #CyberKitDOMMediaList
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
-WEBKIT_DEPRECATED WebKitDOMMediaList*
-webkit_dom_style_sheet_get_media(WebKitDOMStyleSheet* self);
+WEBKIT_DEPRECATED CyberKitDOMMediaList*
+webkit_dom_style_sheet_get_media(CyberKitDOMStyleSheet* self);
 
 G_END_DECLS
 
-#endif /* WebKitDOMStyleSheet_h */
+#endif /* CyberKitDOMStyleSheet_h */

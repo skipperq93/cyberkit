@@ -33,7 +33,7 @@
 
 #include "DrawingAreaMessages.h"
 #include "UpdateInfo.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebPageProxy.h"
 #include <CyberCore/Region.h>
 
@@ -44,14 +44,14 @@ DrawingAreaProxyWC::DrawingAreaProxyWC(WebPageProxy& webPageProxy)
 {
 }
 
-void DrawingAreaProxyWC::paint(BackingStore::PlatformGraphicsContext context, const WebCore::IntRect& rect, WebCore::Region& unpaintedRegion)
+void DrawingAreaProxyWC::paint(BackingStore::PlatformGraphicsContext context, const CyberCore::IntRect& rect, CyberCore::Region& unpaintedRegion)
 {
     unpaintedRegion = rect;
 
     if (!m_backingStore)
         return;
     m_backingStore->paint(context, rect);
-    unpaintedRegion.subtract(WebCore::IntRect({ }, m_backingStore->size()));
+    unpaintedRegion.subtract(CyberCore::IntRect({ }, m_backingStore->size()));
 }
 
 void DrawingAreaProxyWC::sizeDidChange()
@@ -88,12 +88,12 @@ void DrawingAreaProxyWC::incorporateUpdate(const UpdateInfo& updateInfo)
 
     m_backingStore->incorporateUpdate(updateInfo);
 
-    WebCore::Region damageRegion;
+    CyberCore::Region damageRegion;
     if (updateInfo.scrollRect.isEmpty()) {
         for (const auto& rect : updateInfo.updateRects)
             damageRegion.unite(rect);
     } else
-        damageRegion = WebCore::IntRect({ }, m_webPageProxy.viewSize());
+        damageRegion = CyberCore::IntRect({ }, m_webPageProxy.viewSize());
     m_webPageProxy.setViewNeedsDisplay(damageRegion);
 }
 

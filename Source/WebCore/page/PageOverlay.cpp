@@ -35,7 +35,7 @@
 #include "PlatformMouseEvent.h"
 #include "ScrollbarTheme.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static const Seconds fadeAnimationDuration { 200_ms };
 static const double fadeAnimationFrameRate = 30;

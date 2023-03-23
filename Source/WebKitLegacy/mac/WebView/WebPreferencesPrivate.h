@@ -35,12 +35,12 @@
 @class WebFeature;
 
 typedef enum {
-    WebKitEditableLinkDefaultBehavior,
-    WebKitEditableLinkAlwaysLive,
-    WebKitEditableLinkOnlyLiveWithShiftKey,
-    WebKitEditableLinkLiveWhenNotFocused,
-    WebKitEditableLinkNeverLive
-} WebKitEditableLinkBehavior;
+    CyberKitEditableLinkDefaultBehavior,
+    CyberKitEditableLinkAlwaysLive,
+    CyberKitEditableLinkOnlyLiveWithShiftKey,
+    CyberKitEditableLinkLiveWhenNotFocused,
+    CyberKitEditableLinkNeverLive
+} CyberKitEditableLinkBehavior;
 
 typedef enum {
     WebTextDirectionSubmenuNeverIncluded,
@@ -55,29 +55,29 @@ typedef enum {
 } WebStorageBlockingPolicy;
 
 typedef enum {
-    WebKitJavaScriptRuntimeFlagsAllEnabled = 0
-} WebKitJavaScriptRuntimeFlags;
+    CyberKitJavaScriptRuntimeFlagsAllEnabled = 0
+} CyberKitJavaScriptRuntimeFlags;
 
 typedef enum {
-    WebKitFrameFlatteningDisabled,
-    WebKitFrameFlatteningEnabledForNonFullScreenIFrames,
-    WebKitFrameFlatteningFullyEnabled
-} WebKitFrameFlattening;
+    CyberKitFrameFlatteningDisabled,
+    CyberKitFrameFlatteningEnabledForNonFullScreenIFrames,
+    CyberKitFrameFlatteningFullyEnabled
+} CyberKitFrameFlattening;
 
 typedef enum : unsigned {
-    WebKitAudioSessionCategoryAmbientSound = 'ambi',
-    WebKitAudioSessionCategorySoloAmbientSound = 'solo',
-    WebKitAudioSessionCategoryMediaPlayback = 'medi',
-    WebKitAudioSessionCategoryRecordAudio = 'reca',
-    WebKitAudioSessionCategoryPlayAndRecord = 'plar',
-    WebKitAudioSessionCategoryAudioProcessing = 'proc',
-} WebKitAudioSessionCategory;
+    CyberKitAudioSessionCategoryAmbientSound = 'ambi',
+    CyberKitAudioSessionCategorySoloAmbientSound = 'solo',
+    CyberKitAudioSessionCategoryMediaPlayback = 'medi',
+    CyberKitAudioSessionCategoryRecordAudio = 'reca',
+    CyberKitAudioSessionCategoryPlayAndRecord = 'plar',
+    CyberKitAudioSessionCategoryAudioProcessing = 'proc',
+} CyberKitAudioSessionCategory;
 
 typedef enum {
-    WebKitPitchCorrectionAlgorithmBestAllAround = 0,
-    WebKitPitchCorrectionAlgorithmBestForMusic,
-    WebKitPitchCorrectionAlgorithmBestForSpeech,
-} WebKitPitchCorrectionAlgorithm;
+    CyberKitPitchCorrectionAlgorithmBestAllAround = 0,
+    CyberKitPitchCorrectionAlgorithmBestForMusic,
+    CyberKitPitchCorrectionAlgorithmBestForSpeech,
+} CyberKitPitchCorrectionAlgorithm;
 
 extern NSString *WebPreferencesChangedNotification WEBKIT_DEPRECATED_MAC(10_3, 10_14);
 extern NSString *WebPreferencesRemovedNotification WEBKIT_DEPRECATED_MAC(10_3, 10_14);
@@ -101,7 +101,7 @@ extern NSString *WebPreferencesCacheModelChangedInternalNotification WEBKIT_DEPR
 + (void)_setInitialDefaultTextEncodingToSystemEncoding;
 + (void)_setIBCreatorID:(NSString *)string;
 
-+ (void)setWebKitLinkTimeVersion:(int)version;
++ (void)setCyberKitLinkTimeVersion:(int)version;
 
 // For WebView's use only.
 - (void)willAddToWebView;
@@ -114,7 +114,7 @@ extern NSString *WebPreferencesCacheModelChangedInternalNotification WEBKIT_DEPR
 
 @property (nonatomic, getter=isDNSPrefetchingEnabled) BOOL DNSPrefetchingEnabled;
 @property (nonatomic) BOOL developerExtrasEnabled;
-@property (nonatomic) WebKitJavaScriptRuntimeFlags javaScriptRuntimeFlags;
+@property (nonatomic) CyberKitJavaScriptRuntimeFlags javaScriptRuntimeFlags;
 @property (nonatomic) BOOL authorAndUserStylesEnabled;
 @property (nonatomic) BOOL usesEncodingDetector;
 @property (nonatomic) BOOL shrinksStandaloneImagesToFit;
@@ -134,7 +134,7 @@ extern NSString *WebPreferencesCacheModelChangedInternalNotification WEBKIT_DEPR
 @property (nonatomic) BOOL zoomsTextOnly;
 @property (nonatomic) BOOL javaScriptCanAccessClipboard;
 @property (nonatomic, getter=isFrameFlatteningEnabled) BOOL frameFlatteningEnabled;
-@property (nonatomic) WebKitFrameFlattening frameFlattening;
+@property (nonatomic) CyberKitFrameFlattening frameFlattening;
 @property (nonatomic) BOOL asyncFrameScrollingEnabled;
 @property (nonatomic, getter=isSpatialNavigationEnabled) BOOL spatialNavigationEnabled;
 @property (nonatomic) BOOL mediaDevicesEnabled;
@@ -142,7 +142,7 @@ extern NSString *WebPreferencesCacheModelChangedInternalNotification WEBKIT_DEPR
 @property (nonatomic) BOOL peerConnectionEnabled;
 @property (nonatomic) int64_t applicationCacheTotalQuota;
 @property (nonatomic) int64_t applicationCacheDefaultOriginQuota;
-@property (nonatomic) WebKitEditableLinkBehavior editableLinkBehavior;
+@property (nonatomic) CyberKitEditableLinkBehavior editableLinkBehavior;
 @property (nonatomic) WebTextDirectionSubmenuInclusionBehavior textDirectionSubmenuInclusionBehavior;
 // If site-specific spoofing is enabled, some pages that do inappropriate user-agent string checks will be
 // passed a nonstandard user-agent string to get them to work correctly. This method might be removed in
@@ -262,7 +262,7 @@ extern NSString *WebPreferencesCacheModelChangedInternalNotification WEBKIT_DEPR
 @property (nonatomic) BOOL storageTrackerEnabled;
 @property (nonatomic) unsigned audioSessionCategoryOverride;
 // WARNING: this affect network performance. This must not be enabled for production use.
-// Enabling this makes WebCore reports the network data usage.
+// Enabling this makes CyberCore reports the network data usage.
 // This is a global setting.
 @property (nonatomic) BOOL networkDataUsageTrackingEnabled;
 @property (nonatomic) NSString *networkInterfaceName;
@@ -340,7 +340,7 @@ extern NSString *WebPreferencesCacheModelChangedInternalNotification WEBKIT_DEPR
 @property (nonatomic) BOOL CSSIndividualTransformPropertiesEnabled;
 @property (nonatomic) BOOL contactPickerAPIEnabled;
 @property (nonatomic, setter=_setSpeechRecognitionEnabled:) BOOL _speechRecognitionEnabled;
-@property (nonatomic, setter=_setPitchCorrectionAlgorithm:) WebKitPitchCorrectionAlgorithm _pitchCorrectionAlgorithm;
+@property (nonatomic, setter=_setPitchCorrectionAlgorithm:) CyberKitPitchCorrectionAlgorithm _pitchCorrectionAlgorithm;
 @end
 
 @interface WebPreferences (WebPrivateDeprecated)

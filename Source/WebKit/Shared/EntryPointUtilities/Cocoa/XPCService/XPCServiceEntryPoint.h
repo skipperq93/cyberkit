@@ -61,7 +61,7 @@ public:
     virtual bool checkEntitlements();
 
     virtual bool getConnectionIdentifier(IPC::Connection::Identifier& identifier);
-    virtual bool getProcessIdentifier(WebCore::ProcessIdentifier&);
+    virtual bool getProcessIdentifier(CyberCore::ProcessIdentifier&);
     virtual bool getClientIdentifier(String& clientIdentifier);
     virtual bool getClientBundleIdentifier(String& clientBundleIdentifier);
     virtual bool getClientProcessName(String& clientProcessName);
@@ -146,7 +146,7 @@ void XPCServiceInitializer(OSObjectPtr<xpc_connection_t> connection, xpc_object_
     
     delegate.getClientSDKAlignedBehaviors(parameters.clientSDKAlignedBehaviors);
 
-    WebCore::ProcessIdentifier processIdentifier;
+    CyberCore::ProcessIdentifier processIdentifier;
     if (!delegate.getProcessIdentifier(processIdentifier))
         exit(EXIT_FAILURE);
     parameters.processIdentifier = processIdentifier;

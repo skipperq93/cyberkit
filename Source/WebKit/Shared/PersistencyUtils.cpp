@@ -33,7 +33,7 @@
 
 namespace WebKit {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 std::unique_ptr<KeyedDecoder> createForFile(const String& path)
 {

@@ -34,7 +34,7 @@ namespace API {
 class ContentRuleListAction final : public ObjectImpl<Object::Type::ContentRuleListAction> {
 public:
 #if ENABLE(CONTENT_EXTENSIONS)
-    static Ref<ContentRuleListAction> create(WebCore::ContentRuleListResults::Result&&);
+    static Ref<ContentRuleListAction> create(CyberCore::ContentRuleListResults::Result&&);
     virtual ~ContentRuleListAction();
 
     bool blockedLoad() const;
@@ -45,9 +45,9 @@ public:
     const Vector<WTF::String>& notifications() const;
 
 private:
-    ContentRuleListAction(WebCore::ContentRuleListResults::Result&&);
+    ContentRuleListAction(CyberCore::ContentRuleListResults::Result&&);
 
-    WebCore::ContentRuleListResults::Result m_result;
+    CyberCore::ContentRuleListResults::Result m_result;
 #endif // ENABLE(CONTENT_EXTENSIONS)
 };
     

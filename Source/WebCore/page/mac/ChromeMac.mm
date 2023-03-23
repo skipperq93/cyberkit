@@ -28,7 +28,7 @@
 #import "WAKView.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 
 void Chrome::focusNSView(NSView* view)
@@ -60,4 +60,4 @@ void Chrome::focusNSView(NSView* view)
     END_BLOCK_OBJC_EXCEPTIONS
 }
 
-} // namespace WebCore
+} // namespace CyberCore

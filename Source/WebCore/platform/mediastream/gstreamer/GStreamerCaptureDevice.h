@@ -28,7 +28,7 @@
 
 #include <gst/gst.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class GStreamerCaptureDevice : public CaptureDevice {
 public:

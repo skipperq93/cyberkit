@@ -35,7 +35,7 @@
 #include "FontFamilySpecificationNull.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 #if PLATFORM(COCOA)
 typedef FontFamilySpecificationCoreText FontFamilyPlatformSpecification;

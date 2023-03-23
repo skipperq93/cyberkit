@@ -34,7 +34,7 @@
 
 #if ENABLE(GPU_PROCESS) && ENABLE(LEGACY_ENCRYPTED_MEDIA)
 
-namespace WebCore {
+namespace CyberCore {
 class LegacyCDM;
 class LegacyCDMSession;
 class SharedBuffer;
@@ -47,13 +47,13 @@ class RemoteMediaPlayerProxy;
 
 class RemoteLegacyCDMSessionProxy
     : public IPC::MessageReceiver
-    , public WebCore::LegacyCDMSessionClient {
+    , public CyberCore::LegacyCDMSessionClient {
 public:
-    static std::unique_ptr<RemoteLegacyCDMSessionProxy> create(RemoteLegacyCDMFactoryProxy&, uint64_t logIdentifier, RemoteLegacyCDMSessionIdentifier, WebCore::LegacyCDM&);
+    static std::unique_ptr<RemoteLegacyCDMSessionProxy> create(RemoteLegacyCDMFactoryProxy&, uint64_t logIdentifier, RemoteLegacyCDMSessionIdentifier, CyberCore::LegacyCDM&);
     ~RemoteLegacyCDMSessionProxy();
 
     RemoteLegacyCDMFactoryProxy* factory() const { return m_factory.get(); }
-    WebCore::LegacyCDMSession* session() const { return m_session.get(); }
+    CyberCore::LegacyCDMSession* session() const { return m_session.get(); }
 
     void setPlayer(WeakPtr<RemoteMediaPlayerProxy> player) { m_player = WTFMove(player); }
 
@@ -61,7 +61,7 @@ public:
 
 private:
     friend class RemoteLegacyCDMFactoryProxy;
-    RemoteLegacyCDMSessionProxy(RemoteLegacyCDMFactoryProxy&, uint64_t logIdentifier, RemoteLegacyCDMSessionIdentifier, WebCore::LegacyCDM&);
+    RemoteLegacyCDMSessionProxy(RemoteLegacyCDMFactoryProxy&, uint64_t logIdentifier, RemoteLegacyCDMSessionIdentifier, CyberCore::LegacyCDM&);
 
     // IPC::MessageReceiver
     void didReceiveMessage(IPC::Connection&, IPC::Decoder&) final;
@@ -79,12 +79,12 @@ private:
 #endif
 
     // Messages
-    using GenerateKeyCallback = CompletionHandler<void(RefPtr<WebCore::SharedBuffer>&&, const String&, unsigned short, uint32_t)>;
-    void generateKeyRequest(const String& mimeType, RefPtr<WebCore::SharedBuffer>&& initData, GenerateKeyCallback&&);
+    using GenerateKeyCallback = CompletionHandler<void(RefPtr<CyberCore::SharedBuffer>&&, const String&, unsigned short, uint32_t)>;
+    void generateKeyRequest(const String& mimeType, RefPtr<CyberCore::SharedBuffer>&& initData, GenerateKeyCallback&&);
     void releaseKeys();
-    using UpdateCallback = CompletionHandler<void(bool, RefPtr<WebCore::SharedBuffer>&&, unsigned short, uint32_t)>;
-    void update(RefPtr<WebCore::SharedBuffer>&& update, UpdateCallback&&);
-    using CachedKeyForKeyIDCallback = CompletionHandler<void(RefPtr<WebCore::SharedBuffer>&&)>;
+    using UpdateCallback = CompletionHandler<void(bool, RefPtr<CyberCore::SharedBuffer>&&, unsigned short, uint32_t)>;
+    void update(RefPtr<CyberCore::SharedBuffer>&& update, UpdateCallback&&);
+    using CachedKeyForKeyIDCallback = CompletionHandler<void(RefPtr<CyberCore::SharedBuffer>&&)>;
     void cachedKeyForKeyID(String keyId, CachedKeyForKeyIDCallback&&);
 
     WeakPtr<RemoteLegacyCDMFactoryProxy> m_factory;
@@ -95,7 +95,7 @@ private:
 #endif
 
     RemoteLegacyCDMSessionIdentifier m_identifier;
-    std::unique_ptr<WebCore::LegacyCDMSession> m_session;
+    std::unique_ptr<CyberCore::LegacyCDMSession> m_session;
     WeakPtr<RemoteMediaPlayerProxy> m_player;
 };
 

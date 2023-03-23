@@ -29,7 +29,7 @@
 
 #import "ControlMac.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SliderThumbPart;
 
@@ -47,6 +47,6 @@ private:
     RetainPtr<NSSliderCell> m_sliderCell;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(MAC)

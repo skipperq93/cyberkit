@@ -37,7 +37,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class ContentType;
 class SourceBufferPrivate;
@@ -82,34 +82,34 @@ private:
 String convertEnumerationToString(MediaSourcePrivate::AddStatus);
 String convertEnumerationToString(MediaSourcePrivate::EndOfStreamStatus);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
 template<typename Type> struct LogArgument;
 
 template <>
-struct LogArgument<WebCore::MediaSourcePrivate::AddStatus> {
-    static String toString(const WebCore::MediaSourcePrivate::AddStatus status)
+struct LogArgument<CyberCore::MediaSourcePrivate::AddStatus> {
+    static String toString(const CyberCore::MediaSourcePrivate::AddStatus status)
     {
         return convertEnumerationToString(status);
     }
 };
 
 template <>
-struct LogArgument<WebCore::MediaSourcePrivate::EndOfStreamStatus> {
-    static String toString(const WebCore::MediaSourcePrivate::EndOfStreamStatus status)
+struct LogArgument<CyberCore::MediaSourcePrivate::EndOfStreamStatus> {
+    static String toString(const CyberCore::MediaSourcePrivate::EndOfStreamStatus status)
     {
         return convertEnumerationToString(status);
     }
 };
 
-template<> struct EnumTraits<WebCore::MediaSourcePrivate::AddStatus> {
+template<> struct EnumTraits<CyberCore::MediaSourcePrivate::AddStatus> {
     using values = EnumValues<
-        WebCore::MediaSourcePrivate::AddStatus,
-        WebCore::MediaSourcePrivate::AddStatus::Ok,
-        WebCore::MediaSourcePrivate::AddStatus::NotSupported,
-        WebCore::MediaSourcePrivate::AddStatus::ReachedIdLimit
+        CyberCore::MediaSourcePrivate::AddStatus,
+        CyberCore::MediaSourcePrivate::AddStatus::Ok,
+        CyberCore::MediaSourcePrivate::AddStatus::NotSupported,
+        CyberCore::MediaSourcePrivate::AddStatus::ReachedIdLimit
     >;
 };
 

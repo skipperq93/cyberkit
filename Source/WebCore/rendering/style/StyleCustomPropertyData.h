@@ -28,7 +28,7 @@
 #include <wtf/RefPtr.h>
 #include <wtf/text/AtomStringHash.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class StyleCustomPropertyData : public RefCounted<StyleCustomPropertyData> {
 private:
@@ -58,4 +58,4 @@ private:
     unsigned m_ownValuesSizeExcludingOverriddenParentValues { 0 };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

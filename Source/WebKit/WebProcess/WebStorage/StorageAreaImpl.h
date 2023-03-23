@@ -31,15 +31,15 @@
 #include <wtf/HashMap.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 class SecurityOrigin;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class StorageAreaMap;
 
-class StorageAreaImpl final : public WebCore::StorageArea {
+class StorageAreaImpl final : public CyberCore::StorageArea {
 public:
     using Identifier = StorageAreaImplIdentifier;
 
@@ -51,15 +51,15 @@ public:
 private:
     StorageAreaImpl(StorageAreaMap&);
 
-    // WebCore::StorageArea.
+    // CyberCore::StorageArea.
     unsigned length() override;
     String key(unsigned index) override;
     String item(const String& key) override;
-    void setItem(WebCore::Frame& sourceFrame, const String& key, const String& value, bool& quotaException) override;
-    void removeItem(WebCore::Frame& sourceFrame, const String& key) override;
-    void clear(WebCore::Frame& sourceFrame) override;
+    void setItem(CyberCore::Frame& sourceFrame, const String& key, const String& value, bool& quotaException) override;
+    void removeItem(CyberCore::Frame& sourceFrame, const String& key) override;
+    void clear(CyberCore::Frame& sourceFrame) override;
     bool contains(const String& key) override;
-    WebCore::StorageType storageType() const override;
+    CyberCore::StorageType storageType() const override;
     size_t memoryBytesUsedByCache() override;
     void prewarm() final;
 
@@ -67,4 +67,4 @@ private:
     WeakPtr<StorageAreaMap> m_storageAreaMap;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -33,7 +33,7 @@
 #include <wtf/FileSystem.h>
 #include <wtf/text/CString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WorkQueue& sharedImageTranscodingQueue()
 {
@@ -104,7 +104,7 @@ Vector<String> findImagesForTranscoding(const Vector<String>& paths, const Vecto
     bool needsTranscoding = false;
     auto transcodingPaths = paths.map([&](auto& path) {
         // Append a path of the image which needs transcoding. Otherwise append a null string.
-        if (!allowedMIMETypes.contains(WebCore::MIMETypeRegistry::mimeTypeForPath(path))) {
+        if (!allowedMIMETypes.contains(CyberCore::MIMETypeRegistry::mimeTypeForPath(path))) {
             needsTranscoding = true;
             return path;
         }
@@ -126,4 +126,4 @@ Vector<String> transcodeImages(const Vector<String>& paths, const String& destin
     });
 }
 
-} // namespace WebCore
+} // namespace CyberCore

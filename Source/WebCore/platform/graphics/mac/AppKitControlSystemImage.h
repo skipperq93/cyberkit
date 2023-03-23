@@ -33,7 +33,7 @@
 #include <wtf/Forward.h>
 #include <wtf/Ref.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Color;
 
@@ -67,21 +67,21 @@ private:
     bool m_useDarkAppearance { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::AppKitControlSystemImageType> {
+template<> struct EnumTraits<CyberCore::AppKitControlSystemImageType> {
     using values = EnumValues<
-        WebCore::AppKitControlSystemImageType,
-        WebCore::AppKitControlSystemImageType::ScrollbarTrackCorner
+        CyberCore::AppKitControlSystemImageType,
+        CyberCore::AppKitControlSystemImageType::ScrollbarTrackCorner
     >;
 };
 
 } // namespace WTF
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::AppKitControlSystemImage)
-    static bool isType(const WebCore::SystemImage& systemImage) { return systemImage.systemImageType() == WebCore::SystemImageType::AppKitControl; }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::AppKitControlSystemImage)
+    static bool isType(const CyberCore::SystemImage& systemImage) { return systemImage.systemImageType() == CyberCore::SystemImageType::AppKitControl; }
 SPECIALIZE_TYPE_TRAITS_END()
 
 #endif // USE(APPKIT)

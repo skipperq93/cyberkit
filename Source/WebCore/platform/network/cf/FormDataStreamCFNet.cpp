@@ -71,7 +71,7 @@ typedef struct {
 EXTERN void CFReadStreamSignalEvent(CFReadStreamRef stream, CFStreamEventType event, const void *error);
 EXTERN CFReadStreamRef CFReadStreamCreate(CFAllocatorRef alloc, const void *callbacks, void *info);
 
-namespace WebCore {
+namespace CyberCore {
 
 static void formEventCallback(CFReadStreamRef stream, CFStreamEventType type, void* context);
 
@@ -415,4 +415,4 @@ FormData* httpBodyFromStream(CFReadStreamRef stream)
     return reinterpret_cast<FormData*>(static_cast<intptr_t>(formDataPointerAsNumber));
 }
 
-} // namespace WebCore
+} // namespace CyberCore

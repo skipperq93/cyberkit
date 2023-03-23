@@ -31,7 +31,7 @@
 #include <memory>
 #include <wtf/Ref.h>
 
-namespace WebCore {
+namespace CyberCore {
 class GraphicsLayer;
 class IntRect;
 }
@@ -47,7 +47,7 @@ public:
 
     virtual ~PaintingEngine() = default;
 
-    virtual bool paint(WebCore::GraphicsLayer&, Ref<Buffer>&&, const WebCore::IntRect&, const WebCore::IntRect&, const WebCore::IntRect&, float) = 0;
+    virtual bool paint(CyberCore::GraphicsLayer&, Ref<Buffer>&&, const CyberCore::IntRect&, const CyberCore::IntRect&, const CyberCore::IntRect&, float) = 0;
 };
 
 } /// namespace Nicosia

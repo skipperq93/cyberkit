@@ -32,7 +32,7 @@
 #include <wtf/Vector.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class TypeConversions : public RefCounted<TypeConversions> {
 public:
@@ -180,4 +180,4 @@ private:
     TestTreatNullAsEmptyStringUnion m_treatNullAsEmptyStringUnion;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

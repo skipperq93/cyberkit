@@ -31,7 +31,7 @@
 #import <AVFoundation/AVAudioSession.h>
 #import <UIKit/UIKit.h>
 #import <CyberCore/DeprecatedGlobalSettings.h>
-#import <CyberKit/WebKitLegacy.h>
+#import <CyberKit/CyberKitLegacy.h>
 #import <wtf/RetainPtr.h>
 #import <wtf/SoftLinking.h>
 
@@ -82,12 +82,12 @@ static AVAudioSessionRouteSharingPolicy routeSharingPolicyLongFormAudio()
 
 // FIXME Re-enable when https://bugs.webkit.org/show_bug.cgi?id=237125 is resovled 
 #if PLATFORM(IOS)
-TEST(WebKitLegacy, DISABLED_AudioSessionCategoryIOS)
+TEST(CyberKitLegacy, DISABLED_AudioSessionCategoryIOS)
 #else
-TEST(WebKitLegacy, AudioSessionCategoryIOS)
+TEST(CyberKitLegacy, AudioSessionCategoryIOS)
 #endif
 {
-    WebCore::DeprecatedGlobalSettings::setShouldManageAudioSessionCategory(true);
+    CyberCore::DeprecatedGlobalSettings::setShouldManageAudioSessionCategory(true);
     RetainPtr<UIWindow> uiWindow = adoptNS([[UIWindow alloc] initWithFrame:NSMakeRect(0, 0, 800, 600)]);
     RetainPtr<UIWebView> uiWebView = adoptNS([[UIWebView alloc] initWithFrame:NSMakeRect(0, 0, 800, 600)]);
     [uiWindow addSubview:uiWebView.get()];

@@ -31,7 +31,7 @@
 #include "CairoUtilities.h"
 #include "GraphicsContext.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 cairo_pattern_t* Pattern::createPlatformPattern(const AffineTransform&) const
 {
@@ -55,6 +55,6 @@ cairo_pattern_t* Pattern::createPlatformPattern(const AffineTransform&) const
     return pattern;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(CAIRO)

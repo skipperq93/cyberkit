@@ -27,7 +27,7 @@
 #include "FloatPoint.h"
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class EdgeModeType {
     Unknown,
@@ -83,18 +83,18 @@ private:
     Vector<float> m_kernelMatrix;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::EdgeModeType> {
+template<> struct EnumTraits<CyberCore::EdgeModeType> {
     using values = EnumValues<
-        WebCore::EdgeModeType,
+        CyberCore::EdgeModeType,
 
-        WebCore::EdgeModeType::Unknown,
-        WebCore::EdgeModeType::Duplicate,
-        WebCore::EdgeModeType::Wrap,
-        WebCore::EdgeModeType::None
+        CyberCore::EdgeModeType::Unknown,
+        CyberCore::EdgeModeType::Duplicate,
+        CyberCore::EdgeModeType::Wrap,
+        CyberCore::EdgeModeType::None
     >;
 };
 

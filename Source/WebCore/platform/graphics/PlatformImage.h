@@ -32,7 +32,7 @@ typedef struct CGImage* CGImageRef;
 #include "RefPtrCairo.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 #if USE(CG)
 using PlatformImagePtr = RetainPtr<CGImageRef>;

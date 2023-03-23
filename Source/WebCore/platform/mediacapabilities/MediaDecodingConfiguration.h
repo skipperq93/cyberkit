@@ -28,7 +28,7 @@
 #include "MediaConfiguration.h"
 #include "MediaDecodingType.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 struct MediaDecodingConfiguration : MediaConfiguration {
     MediaDecodingType type;
@@ -43,5 +43,5 @@ inline MediaDecodingConfiguration MediaDecodingConfiguration::isolatedCopy() con
     return { MediaConfiguration::isolatedCopy(), type, canExposeVP9 };
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 

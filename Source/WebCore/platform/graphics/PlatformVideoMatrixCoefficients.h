@@ -27,7 +27,7 @@
 
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class PlatformVideoMatrixCoefficients : uint8_t {
     Rgb,
@@ -42,4 +42,4 @@ enum class PlatformVideoMatrixCoefficients : uint8_t {
     Unspecified,
 };
 
-} // namespace WebCore
+} // namespace CyberCore

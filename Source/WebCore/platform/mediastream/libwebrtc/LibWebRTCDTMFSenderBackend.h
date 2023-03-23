@@ -38,7 +38,7 @@ ALLOW_COMMA_BEGIN
 ALLOW_UNUSED_PARAMETERS_END
 ALLOW_COMMA_END
 
-namespace WebCore {
+namespace CyberCore {
 
 // Use eager initialization for the WeakPtrFactory since we construct WeakPtrs on another thread.
 class LibWebRTCDTMFSenderBackend final : public RTCDTMFSenderBackend, private webrtc::DtmfSenderObserverInterface, public CanMakeWeakPtr<LibWebRTCDTMFSenderBackend, WeakPtrFactoryInitialization::Eager> {
@@ -63,6 +63,6 @@ private:
     Function<void()> m_onTonePlayed;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(LIBWEBRTC)

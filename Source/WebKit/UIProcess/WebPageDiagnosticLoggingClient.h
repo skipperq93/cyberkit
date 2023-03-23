@@ -49,7 +49,7 @@ public:
     explicit WebPageDiagnosticLoggingClient(const WKPageDiagnosticLoggingClientBase*);
 
     void logDiagnosticMessage(WebPageProxy*, const String& message, const String& description) override;
-    void logDiagnosticMessageWithResult(WebPageProxy*, const String& message, const String& description, WebCore::DiagnosticLoggingResultType) override;
+    void logDiagnosticMessageWithResult(WebPageProxy*, const String& message, const String& description, CyberCore::DiagnosticLoggingResultType) override;
     void logDiagnosticMessageWithValue(WebPageProxy*, const String& message, const String& description, const String& value) override;
     void logDiagnosticMessageWithEnhancedPrivacy(WebPageProxy*, const String& message, const String& description) override;
     void logDiagnosticMessageWithValueDictionary(WebKit::WebPageProxy*, const WTF::String& message, const WTF::String& description, Ref<API::Dictionary>&&) override { }

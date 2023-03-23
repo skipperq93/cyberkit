@@ -32,7 +32,7 @@
 
 #if USE(WEBP)
 
-namespace WebCore {
+namespace CyberCore {
 
 // Convenience function to improve code readability, as WebPDemuxGetFrame is +1 based.
 bool webpFrameAtIndex(WebPDemuxer* demuxer, size_t index, WebPIterator* webpFrame)
@@ -321,7 +321,7 @@ void WEBPImageDecoder::parseHeader()
 
     m_formatFlags = WebPDemuxGetI(demuxer, WEBP_FF_FORMAT_FLAGS);
     if (!(m_formatFlags & ANIMATION_FLAG))
-        m_repetitionCount = WebCore::RepetitionCountNone;
+        m_repetitionCount = CyberCore::RepetitionCountNone;
     else {
         // Since we have parsed at least one frame, even if partially,
         // the global animation (ANIM) properties have been read since
@@ -329,7 +329,7 @@ void WEBPImageDecoder::parseHeader()
         m_repetitionCount = WebPDemuxGetI(demuxer, WEBP_FF_LOOP_COUNT);
         ASSERT(m_repetitionCount == (m_repetitionCount & 0xffff)); // Loop count is always <= 16 bits.
         if (!m_repetitionCount)
-            m_repetitionCount = WebCore::RepetitionCountInfinite;
+            m_repetitionCount = CyberCore::RepetitionCountInfinite;
     }
 
     WebPDemuxDelete(demuxer);
@@ -358,6 +358,6 @@ void WEBPImageDecoder::clearFrameBufferCache(size_t clearBeforeFrame)
     }
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

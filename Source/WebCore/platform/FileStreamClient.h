@@ -31,7 +31,7 @@
 #ifndef FileStreamClient_h
 #define FileStreamClient_h
 
-namespace WebCore {
+namespace CyberCore {
 
 class FileStreamClient {
 public:
@@ -45,6 +45,6 @@ protected:
     virtual ~FileStreamClient() = default;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // FileStreamClient_h

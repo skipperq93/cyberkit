@@ -35,7 +35,7 @@ FrameTreeNode::~FrameTreeNode() = default;
 
 Ref<FrameHandle> FrameTreeNode::handle() const
 {
-    return FrameHandle::create(m_data.info.frameID ? *m_data.info.frameID : WebCore::FrameIdentifier { });
+    return FrameHandle::create(m_data.info.frameID ? *m_data.info.frameID : CyberCore::FrameIdentifier { });
 }
 
 RefPtr<FrameHandle> FrameTreeNode::parentFrameHandle() const

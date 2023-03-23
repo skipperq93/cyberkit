@@ -24,7 +24,7 @@
 
 #include "FilterEffect.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class MorphologyOperatorType {
     Unknown,
@@ -61,17 +61,17 @@ private:
     float m_radiusY;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 namespace WTF {
 
-template<> struct EnumTraits<WebCore::MorphologyOperatorType> {
+template<> struct EnumTraits<CyberCore::MorphologyOperatorType> {
     using values = EnumValues<
-        WebCore::MorphologyOperatorType,
+        CyberCore::MorphologyOperatorType,
 
-        WebCore::MorphologyOperatorType::Unknown,
-        WebCore::MorphologyOperatorType::Erode,
-        WebCore::MorphologyOperatorType::Dilate
+        CyberCore::MorphologyOperatorType::Unknown,
+        CyberCore::MorphologyOperatorType::Erode,
+        CyberCore::MorphologyOperatorType::Dilate
     >;
 };
 

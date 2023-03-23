@@ -41,7 +41,7 @@
 #import <wtf/Assertions.h>
 #import <wtf/RefPtr.h>
 
-#import <CyberKit/WebCoreStatistics.h>
+#import <CyberKit/CyberCoreStatistics.h>
 #import <CyberKit/WebDocumentPrivate.h>
 #import <CyberKit/WebHTMLViewPrivate.h>
 #import <CyberKit/WebViewPrivate.h>

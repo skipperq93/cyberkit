@@ -28,7 +28,7 @@
 
 #if ENABLE(WEBXR)
 
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 
 namespace WebKit {
 

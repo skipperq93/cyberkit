@@ -24,7 +24,7 @@
 
 #include "CachedResourceClient.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class CachedSVGDocumentClient : public CachedResourceClient {
 public:
@@ -33,6 +33,6 @@ public:
     CachedResourceClientType resourceClientType() const override { return expectedType(); }
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_CACHED_RESOURCE_CLIENT(CachedSVGDocumentClient, SVGDocumentType);

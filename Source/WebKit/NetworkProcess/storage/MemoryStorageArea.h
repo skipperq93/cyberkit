@@ -28,7 +28,7 @@
 #include "StorageAreaBase.h"
 #include <CyberCore/StorageMap.h>
 
-namespace WebCore {
+namespace CyberCore {
 class StorageMap;
 }
 
@@ -36,7 +36,7 @@ namespace WebKit {
 
 class MemoryStorageArea final : public StorageAreaBase {
 public:
-    explicit MemoryStorageArea(const WebCore::ClientOrigin&, StorageAreaBase::StorageType = StorageAreaBase::StorageType::Session);
+    explicit MemoryStorageArea(const CyberCore::ClientOrigin&, StorageAreaBase::StorageType = StorageAreaBase::StorageType::Session);
 
     StorageAreaBase::Type type() const final { return StorageAreaBase::Type::Memory; };
     bool isEmpty() final;
@@ -52,7 +52,7 @@ private:
     Expected<void, StorageError> removeItem(IPC::Connection::UniqueID, StorageAreaImplIdentifier, const String& key, const String& urlString) final;
     Expected<void, StorageError> clear(IPC::Connection::UniqueID, StorageAreaImplIdentifier, const String& urlString) final;
 
-    mutable WebCore::StorageMap m_map;
+    mutable CyberCore::StorageMap m_map;
     StorageAreaBase::StorageType m_storageType;
 };
 

@@ -30,7 +30,7 @@
 #include <wtf/text/StringParsingBuffer.h>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static inline const char* lengthTypeToString(SVGLengthType lengthType)
 {
@@ -214,13 +214,13 @@ SVGLengthValue SVGLengthValue::blend(const SVGLengthValue& from, const SVGLength
     if (from.lengthType() == SVGLengthType::Percentage || to.lengthType() == SVGLengthType::Percentage) {
         auto fromPercent = from.valueAsPercentage() * 100;
         auto toPercent = to.valueAsPercentage() * 100;
-        return { WebCore::blend(fromPercent, toPercent, { progress }), SVGLengthType::Percentage };
+        return { CyberCore::blend(fromPercent, toPercent, { progress }), SVGLengthType::Percentage };
     }
 
     if (from.lengthType() == to.lengthType() || from.isZero() || to.isZero() || from.isRelative()) {
         auto fromValue = from.valueInSpecifiedUnits();
         auto toValue = to.valueInSpecifiedUnits();
-        return { WebCore::blend(fromValue, toValue, { progress }), to.isZero() ? from.lengthType() : to.lengthType() };
+        return { CyberCore::blend(fromValue, toValue, { progress }), to.isZero() ? from.lengthType() : to.lengthType() };
     }
 
     SVGLengthContext nonRelativeLengthContext(nullptr);
@@ -233,7 +233,7 @@ SVGLengthValue SVGLengthValue::blend(const SVGLengthValue& from, const SVGLength
         return { };
 
     float toValue = to.valueInSpecifiedUnits();
-    return { WebCore::blend(fromValue.releaseReturnValue(), toValue, { progress }), to.lengthType() };
+    return { CyberCore::blend(fromValue.releaseReturnValue(), toValue, { progress }), to.lengthType() };
 }
 
 SVGLengthValue SVGLengthValue::fromCSSPrimitiveValue(const CSSPrimitiveValue& value, const CSSToLengthConversionData& conversionData, ShouldConvertNumberToPxLength shouldConvertNumberToPxLength)

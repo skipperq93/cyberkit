@@ -39,7 +39,7 @@ template<> struct ClientTraits<WKBundlePageUIClientBase> {
 };
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class InjectedBundlePageUIClient : public API::Client<WKBundlePageUIClientBase>, public API::InjectedBundle::PageUIClient {
 public:
@@ -51,7 +51,7 @@ public:
     void willRunJavaScriptAlert(WebPage*, const String&, WebFrame*) override;
     void willRunJavaScriptConfirm(WebPage*, const String&, WebFrame*) override;
     void willRunJavaScriptPrompt(WebPage*, const String&, const String&, WebFrame*) override;
-    void mouseDidMoveOverElement(WebPage*, const WebCore::HitTestResult&, OptionSet<WebEventModifier>, RefPtr<API::Object>& userData) override;
+    void mouseDidMoveOverElement(WebPage*, const CyberCore::HitTestResult&, OptionSet<WebEventModifier>, RefPtr<API::Object>& userData) override;
     void pageDidScroll(WebPage*) override;
 
     UIElementVisibility statusBarIsVisible(WebPage*) override;
@@ -71,4 +71,4 @@ public:
     void didResignInputElementStrongPasswordAppearance(WebPage&, InjectedBundleNodeHandle&, RefPtr<API::Object>& userData) override;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

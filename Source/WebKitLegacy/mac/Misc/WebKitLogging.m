@@ -26,7 +26,7 @@
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import "WebKitLogging.h"
+#import "CyberKitLogging.h"
 
 #if !LOG_DISABLED || !RELEASE_LOG_DISABLED
 

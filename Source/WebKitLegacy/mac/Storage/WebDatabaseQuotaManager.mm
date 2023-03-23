@@ -29,7 +29,7 @@
 #import <CyberCore/DatabaseTracker.h>
 #import <CyberCore/SecurityOriginData.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 @implementation WebDatabaseQuotaManager
 

@@ -38,7 +38,7 @@
 namespace WebKit {
 
 #if HAVE(AUDIO_COMPONENT_SERVER_REGISTRATIONS)
-RefPtr<WebCore::SharedBuffer> AuxiliaryProcessProxy::fetchAudioComponentServerRegistrations()
+RefPtr<CyberCore::SharedBuffer> AuxiliaryProcessProxy::fetchAudioComponentServerRegistrations()
 {
     using namespace PAL;
 
@@ -47,13 +47,13 @@ RefPtr<WebCore::SharedBuffer> AuxiliaryProcessProxy::fetchAudioComponentServerRe
     if (!PAL::isAudioToolboxCoreFrameworkAvailable() || !PAL::canLoad_AudioToolboxCore_AudioComponentFetchServerRegistrations())
         return nullptr;
     
-    WebCore::registerOpusDecoderIfNeeded();
-    WebCore::registerVorbisDecoderIfNeeded();
+    CyberCore::registerOpusDecoderIfNeeded();
+    CyberCore::registerVorbisDecoderIfNeeded();
 
     if (noErr != AudioComponentFetchServerRegistrations(&registrations) || !registrations)
         return nullptr;
 
-    return WebCore::SharedBuffer::create(adoptCF(registrations).get());
+    return CyberCore::SharedBuffer::create(adoptCF(registrations).get());
 }
 #endif
 

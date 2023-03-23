@@ -31,7 +31,7 @@
 
 namespace WebKit {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 NativeWebKeyboardEvent::NativeWebKeyboardEvent(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam, Vector<MSG>&& pendingCharEvents)
     : WebKeyboardEvent(WebEventFactory::createWebKeyboardEvent(hwnd, message, wParam, lParam))

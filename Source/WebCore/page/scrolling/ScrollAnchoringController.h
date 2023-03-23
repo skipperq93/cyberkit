@@ -28,7 +28,7 @@
 #include "FloatPoint.h"
 #include "FrameView.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class Element;
 
@@ -49,4 +49,4 @@ private:
     FloatPoint m_lastPositionForAnchorElement;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

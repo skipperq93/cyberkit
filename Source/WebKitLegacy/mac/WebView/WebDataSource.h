@@ -87,7 +87,7 @@ WEBKIT_CLASS_DEPRECATED_MAC(10_3, 10_14)
 /*!
     @property initialRequest
     @abstract A reference to the original request that created the
-    datasource.  This request will be unmodified by WebKit. 
+    datasource.  This request will be unmodified by CyberKit. 
 */
 @property (nonatomic, readonly, strong) NSURLRequest *initialRequest;
 

@@ -28,7 +28,7 @@
 
 #if ENABLE(MEDIA_STREAM)
 
-namespace WebCore {
+namespace CyberCore {
 
 bool RealtimeMediaSourceSupportedConstraints::supportsConstraint(MediaConstraintType constraint) const
 {
@@ -67,6 +67,6 @@ bool RealtimeMediaSourceSupportedConstraints::supportsConstraint(MediaConstraint
     return false;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(MEDIA_STREAM)

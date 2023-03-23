@@ -41,7 +41,7 @@
 #include <wtf/MathExtras.h>
 #include <wtf/StackStats.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(RenderSlider);
 
@@ -114,4 +114,4 @@ double RenderSlider::valueRatio() const
     return (value - min) / (max - min);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

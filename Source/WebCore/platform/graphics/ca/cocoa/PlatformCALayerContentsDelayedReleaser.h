@@ -30,7 +30,7 @@
 #include <wtf/Lock.h>
 #include <wtf/ThreadSafeRefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class PlatformCALayer;
 
@@ -65,6 +65,6 @@ private:
     bool m_hadOverlappingCommit WTF_GUARDED_BY_LOCK(m_lock) { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(MAC)

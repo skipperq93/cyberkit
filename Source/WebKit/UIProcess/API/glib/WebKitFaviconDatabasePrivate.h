@@ -27,7 +27,7 @@ WebKitFaviconDatabase* webkitFaviconDatabaseCreate();
 void webkitFaviconDatabaseOpen(WebKitFaviconDatabase*, const String& path, bool isEphemeral);
 void webkitFaviconDatabaseClose(WebKitFaviconDatabase*);
 #if PLATFORM(GTK)
-void webkitFaviconDatabaseGetLoadDecisionForIcon(WebKitFaviconDatabase*, const WebCore::LinkIcon&, const String&, bool isEphemeral, Function<void(bool)>&&);
-void webkitFaviconDatabaseSetIconForPageURL(WebKitFaviconDatabase*, const WebCore::LinkIcon&, API::Data&, const String&, bool isEphemeral);
+void webkitFaviconDatabaseGetLoadDecisionForIcon(WebKitFaviconDatabase*, const CyberCore::LinkIcon&, const String&, bool isEphemeral, Function<void(bool)>&&);
+void webkitFaviconDatabaseSetIconForPageURL(WebKitFaviconDatabase*, const CyberCore::LinkIcon&, API::Data&, const String&, bool isEphemeral);
 void webkitFaviconDatabaseGetFaviconInternal(WebKitFaviconDatabase*, const gchar* pageURI, bool isEphemeral, GCancellable*, GAsyncReadyCallback, gpointer);
 #endif

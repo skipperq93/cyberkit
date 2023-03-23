@@ -32,7 +32,7 @@
 
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // ScrollingStatePositionedNode is used to manage the layers for z-order composited descendants of overflow:scroll
 // which are not containing block descendants (i.e. position:absolute). These layers must have their position inside their ancestor clipping
@@ -63,7 +63,7 @@ private:
     AbsolutePositionConstraints m_constraints;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_SCROLLING_STATE_NODE(ScrollingStatePositionedNode, isPositionedNode())
 

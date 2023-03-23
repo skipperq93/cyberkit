@@ -34,7 +34,7 @@
 #include <gst/pbutils/pbutils.h>
 #include <wtf/Scope.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 GST_DEBUG_CATEGORY(webkit_video_track_debug);
 #define GST_CAT_DEFAULT webkit_video_track_debug
@@ -180,6 +180,6 @@ void VideoTrackPrivateGStreamer::setSelected(bool selected)
         m_player->updateEnabledVideoTrack();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(VIDEO) && USE(GSTREAMER)

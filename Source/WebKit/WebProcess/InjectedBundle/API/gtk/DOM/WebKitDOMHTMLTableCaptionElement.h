@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -21,28 +21,28 @@
 #error "Only <webkitdom/webkitdom.h> can be included directly."
 #endif
 
-#ifndef WebKitDOMHTMLTableCaptionElement_h
-#define WebKitDOMHTMLTableCaptionElement_h
+#ifndef CyberKitDOMHTMLTableCaptionElement_h
+#define CyberKitDOMHTMLTableCaptionElement_h
 
 #include <glib-object.h>
-#include <webkitdom/WebKitDOMHTMLElement.h>
+#include <webkitdom/CyberKitDOMHTMLElement.h>
 #include <webkitdom/webkitdomdefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_DOM_TYPE_HTML_TABLE_CAPTION_ELEMENT            (webkit_dom_html_table_caption_element_get_type())
-#define WEBKIT_DOM_HTML_TABLE_CAPTION_ELEMENT(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_HTML_TABLE_CAPTION_ELEMENT, WebKitDOMHTMLTableCaptionElement))
-#define WEBKIT_DOM_HTML_TABLE_CAPTION_ELEMENT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_HTML_TABLE_CAPTION_ELEMENT, WebKitDOMHTMLTableCaptionElementClass)
+#define WEBKIT_DOM_HTML_TABLE_CAPTION_ELEMENT(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_HTML_TABLE_CAPTION_ELEMENT, CyberKitDOMHTMLTableCaptionElement))
+#define WEBKIT_DOM_HTML_TABLE_CAPTION_ELEMENT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_HTML_TABLE_CAPTION_ELEMENT, CyberKitDOMHTMLTableCaptionElementClass)
 #define WEBKIT_DOM_IS_HTML_TABLE_CAPTION_ELEMENT(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_DOM_TYPE_HTML_TABLE_CAPTION_ELEMENT))
 #define WEBKIT_DOM_IS_HTML_TABLE_CAPTION_ELEMENT_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_DOM_TYPE_HTML_TABLE_CAPTION_ELEMENT))
-#define WEBKIT_DOM_HTML_TABLE_CAPTION_ELEMENT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_HTML_TABLE_CAPTION_ELEMENT, WebKitDOMHTMLTableCaptionElementClass))
+#define WEBKIT_DOM_HTML_TABLE_CAPTION_ELEMENT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_HTML_TABLE_CAPTION_ELEMENT, CyberKitDOMHTMLTableCaptionElementClass))
 
-struct _WebKitDOMHTMLTableCaptionElement {
-    WebKitDOMHTMLElement parent_instance;
+struct _CyberKitDOMHTMLTableCaptionElement {
+    CyberKitDOMHTMLElement parent_instance;
 };
 
-struct _WebKitDOMHTMLTableCaptionElementClass {
-    WebKitDOMHTMLElementClass parent_class;
+struct _CyberKitDOMHTMLTableCaptionElementClass {
+    CyberKitDOMHTMLElementClass parent_class;
 };
 
 WEBKIT_DEPRECATED GType
@@ -50,26 +50,26 @@ webkit_dom_html_table_caption_element_get_type(void);
 
 /**
  * webkit_dom_html_table_caption_element_get_align:
- * @self: A #WebKitDOMHTMLTableCaptionElement
+ * @self: A #CyberKitDOMHTMLTableCaptionElement
  *
  * Returns: A #gchar
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED gchar*
-webkit_dom_html_table_caption_element_get_align(WebKitDOMHTMLTableCaptionElement* self);
+webkit_dom_html_table_caption_element_get_align(CyberKitDOMHTMLTableCaptionElement* self);
 
 /**
  * webkit_dom_html_table_caption_element_set_align:
- * @self: A #WebKitDOMHTMLTableCaptionElement
+ * @self: A #CyberKitDOMHTMLTableCaptionElement
  * @value: A #gchar
  *
  *
  * Deprecated: 2.22: Use JavaScriptCore API instead
 **/
 WEBKIT_DEPRECATED void
-webkit_dom_html_table_caption_element_set_align(WebKitDOMHTMLTableCaptionElement* self, const gchar* value);
+webkit_dom_html_table_caption_element_set_align(CyberKitDOMHTMLTableCaptionElement* self, const gchar* value);
 
 G_END_DECLS
 
-#endif /* WebKitDOMHTMLTableCaptionElement_h */
+#endif /* CyberKitDOMHTMLTableCaptionElement_h */

@@ -26,7 +26,7 @@
 #include <wtf/glib/WTFGType.h>
 #include <wtf/text/WTFString.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 /**
  * WebKitNetworkProxySettings:

@@ -30,7 +30,7 @@
 
 #include "PDFPluginTextAnnotation.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 class PDFPluginPasswordField : public PDFPluginTextAnnotation {
 public:
@@ -45,12 +45,12 @@ private:
     {
     }
 
-    Ref<WebCore::Element> createAnnotationElement() override;
+    Ref<CyberCore::Element> createAnnotationElement() override;
 
-    bool handleEvent(WebCore::Event&) override;
+    bool handleEvent(CyberCore::Event&) override;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(PDFKIT_PLUGIN)
 

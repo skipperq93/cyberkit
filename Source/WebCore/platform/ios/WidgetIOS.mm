@@ -40,8 +40,8 @@
 #import "WAKScrollView.h"
 #import "WAKView.h"
 #import "WAKWindow.h"
-#import "WebCoreFrameView.h"
-#import "WebCoreView.h"
+#import "CyberCoreFrameView.h"
+#import "CyberCoreView.h"
 #import <wtf/BlockObjCExceptions.h>
 
 @interface NSView (WebSetSelectedMethods)
@@ -49,7 +49,7 @@
 - (void)webPlugInSetIsSelected:(BOOL)isSelected;
 @end
 
-namespace WebCore {
+namespace CyberCore {
 
 static void safeRemoveFromSuperview(NSView *view)
 {
@@ -136,9 +136,9 @@ NSView* Widget::getOuterView() const
 {
     NSView* view = platformWidget();
 
-    // If this widget's view is a WebCoreFrameScrollView then we
+    // If this widget's view is a CyberCoreFrameScrollView then we
     // resize its containing view, a WebFrameView.
-    if ([view conformsToProtocol:@protocol(WebCoreFrameScrollView)]) {
+    if ([view conformsToProtocol:@protocol(CyberCoreFrameScrollView)]) {
         view = [view superview];
         ASSERT(view);
     }

@@ -30,7 +30,7 @@
 
 #import "WebFrameInternal.h"
 #import "WebJSPDFDoc.h"
-#import "WebKitVersionChecks.h"
+#import "CyberKitVersionChecks.h"
 #import "WebPDFDocumentExtras.h"
 #import "WebPDFViewPlaceholder.h"
 #import <CyberScriptCore/JSContextRef.h>
@@ -52,7 +52,7 @@
 #import <wtf/NeverDestroyed.h>
 #import <wtf/StdLibExtras.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 using namespace std;
 
 static int comparePageRects(const void *key, const void *array);

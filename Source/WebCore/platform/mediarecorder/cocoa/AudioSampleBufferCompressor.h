@@ -32,7 +32,7 @@
 typedef struct opaqueCMSampleBuffer *CMSampleBufferRef;
 typedef struct OpaqueAudioConverter* AudioConverterRef;
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioSampleBufferCompressor {
     WTF_MAKE_FAST_ALLOCATED;

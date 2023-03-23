@@ -24,7 +24,7 @@
 
 #include <wtf/HashMap.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class GraphicsContext;
 class ImageBuffer;
@@ -105,7 +105,7 @@ private:
 
 }
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::RenderSVGResourceClipper)
-static bool isType(const WebCore::RenderObject& renderer) { return renderer.isSVGResourceClipper(); }
-static bool isType(const WebCore::RenderSVGResource& resource) { return resource.resourceType() == WebCore::ClipperResourceType; }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::RenderSVGResourceClipper)
+static bool isType(const CyberCore::RenderObject& renderer) { return renderer.isSVGResourceClipper(); }
+static bool isType(const CyberCore::RenderSVGResource& resource) { return resource.resourceType() == CyberCore::ClipperResourceType; }
 SPECIALIZE_TYPE_TRAITS_END()

@@ -29,7 +29,7 @@
 #include <wtf/RefPtr.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct BlendingContext;
 
@@ -67,7 +67,7 @@ public:
     bool hasMatrixOperation() const
     {
         return std::any_of(m_operations.begin(), m_operations.end(), [](auto operation) {
-            return operation->type() == WebCore::TransformOperation::Type::Matrix;
+            return operation->type() == CyberCore::TransformOperation::Type::Matrix;
         });
     }
 
@@ -128,5 +128,5 @@ private:
 
 WTF::TextStream& operator<<(WTF::TextStream&, const TransformOperations&);
 
-} // namespace WebCore
+} // namespace CyberCore
 

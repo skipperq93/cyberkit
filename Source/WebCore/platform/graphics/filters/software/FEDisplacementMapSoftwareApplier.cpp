@@ -30,7 +30,7 @@
 #include "GraphicsContext.h"
 #include "PixelBuffer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 FEDisplacementMapSoftwareApplier::FEDisplacementMapSoftwareApplier(const FEDisplacementMap& effect)
     : Base(effect)
@@ -106,4 +106,4 @@ bool FEDisplacementMapSoftwareApplier::apply(const Filter& filter, const FilterI
     return true;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

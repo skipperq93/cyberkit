@@ -35,7 +35,7 @@
 
 namespace WebKit {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 Ref<RemoteAudioHardwareListener> RemoteAudioHardwareListener::create(AudioHardwareListener::Client& client, WebProcess& webProcess)
 {

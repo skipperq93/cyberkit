@@ -37,7 +37,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RTCIceCandidateDescriptor : public RefCounted<RTCIceCandidateDescriptor> {
 public:
@@ -56,6 +56,6 @@ private:
     unsigned short m_sdpMLineIndex;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC)

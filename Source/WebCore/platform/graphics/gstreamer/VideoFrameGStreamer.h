@@ -28,7 +28,7 @@
 
 typedef struct _GstSample GstSample;
 
-namespace WebCore {
+namespace CyberCore {
 
 class PixelBuffer;
 class IntSize;
@@ -69,10 +69,10 @@ private:
     mutable GstVideoFormat m_cachedVideoFormat { GST_VIDEO_FORMAT_UNKNOWN };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::VideoFrameGStreamer)
-static bool isType(const WebCore::VideoFrame& frame) { return frame.isGStreamer(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::VideoFrameGStreamer)
+static bool isType(const CyberCore::VideoFrame& frame) { return frame.isGStreamer(); }
 SPECIALIZE_TYPE_TRAITS_END()
 
 #endif // ENABLE(VIDEO) && USE(GSTREAMER)

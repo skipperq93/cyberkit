@@ -31,22 +31,22 @@
 #include <CyberCore/StorageSessionProvider.h>
 #include <wtf/WeakPtr.h>
 
-class PageStorageSessionProvider final : public WebCore::StorageSessionProvider {
+class PageStorageSessionProvider final : public CyberCore::StorageSessionProvider {
 public:
     static Ref<PageStorageSessionProvider> create() { return adoptRef(*new PageStorageSessionProvider); }
 
-    WebCore::NetworkStorageSession* storageSession() const
+    CyberCore::NetworkStorageSession* storageSession() const
     {
         if (m_page)
             return NetworkStorageSessionMap::storageSession(m_page->sessionID());
         return nullptr;
     }
 
-    void setPage(WebCore::Page& page)
+    void setPage(CyberCore::Page& page)
     {
         m_page = page;
     }
 
 private:
-    WeakPtr<WebCore::Page> m_page;
+    WeakPtr<CyberCore::Page> m_page;
 };

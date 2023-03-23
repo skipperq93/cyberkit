@@ -43,7 +43,7 @@
 #import <wtf/text/AtomStringHash.h>
 #import "LocalizedDateCache.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 std::unique_ptr<Locale> Locale::create(const AtomString& locale)
 {

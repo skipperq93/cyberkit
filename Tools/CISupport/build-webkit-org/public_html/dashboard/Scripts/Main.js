@@ -102,8 +102,8 @@ if (hasBubbles) {
 }
 
 var testNames = {};
-testNames[Buildbot.TestCategory.WebKit2] = "WK2 Tests";
-testNames[Buildbot.TestCategory.WebKit1] = "WK1 Tests";
+testNames[Buildbot.TestCategory.CyberKit2] = "WK2 Tests";
+testNames[Buildbot.TestCategory.CyberKit1] = "WK1 Tests";
 
 function initPlatformsByFamily()
 {

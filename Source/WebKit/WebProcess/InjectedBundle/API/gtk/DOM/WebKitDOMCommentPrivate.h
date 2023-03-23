@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -17,16 +17,16 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitDOMCommentPrivate_h
-#define WebKitDOMCommentPrivate_h
+#ifndef CyberKitDOMCommentPrivate_h
+#define CyberKitDOMCommentPrivate_h
 
 #include <CyberCore/Comment.h>
-#include <webkitdom/WebKitDOMComment.h>
+#include <webkitdom/CyberKitDOMComment.h>
 
-namespace WebKit {
-WebKitDOMComment* wrapComment(WebCore::Comment*);
-WebKitDOMComment* kit(WebCore::Comment*);
-WebCore::Comment* core(WebKitDOMComment*);
-} // namespace WebKit
+namespace CyberKit {
+CyberKitDOMComment* wrapComment(CyberCore::Comment*);
+CyberKitDOMComment* kit(CyberCore::Comment*);
+CyberCore::Comment* core(CyberKitDOMComment*);
+} // namespace CyberKit
 
-#endif /* WebKitDOMCommentPrivate_h */
+#endif /* CyberKitDOMCommentPrivate_h */

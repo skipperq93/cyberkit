@@ -29,7 +29,7 @@
 #include "CallbackResult.h"
 #include <wtf/RefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class PerformanceObserver;
 class PerformanceObserverEntryList;
@@ -43,4 +43,4 @@ public:
     virtual CallbackResult<void> handleEvent(PerformanceObserver&, PerformanceObserverEntryList&, PerformanceObserver&) = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

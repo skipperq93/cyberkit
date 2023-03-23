@@ -29,11 +29,11 @@
 #include "WebProcess.h"
 #include "WebProcessProxyMessages.h"
 
-namespace WebKit {
+namespace CyberKit {
 
 void WebSystemSoundDelegate::systemBeep()
 {
     WebProcess::singleton().parentProcessConnection()->send(Messages::WebProcessProxy::SystemBeep(), 0);
 }
 
-} // namespace WebKit
+} // namespace CyberKit

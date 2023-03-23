@@ -43,7 +43,7 @@
 #include "StyleSheetContents.h"
 #include "UserAgentStyle.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace Style {
 
 void InspectorCSSOMWrappers::collectFromStyleSheetIfNeeded(CSSStyleSheet* styleSheet)
@@ -163,4 +163,4 @@ CSSStyleRule* InspectorCSSOMWrappers::getWrapperForRuleInSheets(const StyleRule*
 }
 
 } // namespace Style
-} // namespace WebCore
+} // namespace CyberCore

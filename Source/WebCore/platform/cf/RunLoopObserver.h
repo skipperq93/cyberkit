@@ -30,7 +30,7 @@
 #include <wtf/Noncopyable.h>
 #include <wtf/RetainPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RunLoopObserver {
     WTF_MAKE_NONCOPYABLE(RunLoopObserver); WTF_MAKE_FAST_ALLOCATED;
@@ -69,5 +69,5 @@ private:
     RetainPtr<CFRunLoopObserverRef> m_runLoopObserver;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 

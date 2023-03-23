@@ -23,7 +23,7 @@
 
 #include "SVGElement.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class SVGFEMergeNodeElement final : public SVGElement {
     WTF_MAKE_ISO_ALLOCATED(SVGFEMergeNodeElement);
@@ -46,4 +46,4 @@ private:
     Ref<SVGAnimatedString> m_in1 { SVGAnimatedString::create(this) };
 };
 
-} // namespace WebCore
+} // namespace CyberCore

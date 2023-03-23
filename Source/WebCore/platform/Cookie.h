@@ -38,7 +38,7 @@
 typedef struct _SoupCookie SoupCookie;
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 
 struct Cookie {
     Cookie() = default;
@@ -133,21 +133,21 @@ struct CookieHash {
 
 namespace WTF {
     template<typename T> struct DefaultHash;
-    template<> struct DefaultHash<WebCore::Cookie> : WebCore::CookieHash { };
-    template<> struct HashTraits<WebCore::Cookie> : GenericHashTraits<WebCore::Cookie> {
-        static WebCore::Cookie emptyValue() { return { }; }
-        static void constructDeletedValue(WebCore::Cookie& slot) { new (NotNull, &slot.name) String(WTF::HashTableDeletedValue); }
-        static bool isDeletedValue(const WebCore::Cookie& slot) { return slot.name.isHashTableDeletedValue(); }
+    template<> struct DefaultHash<CyberCore::Cookie> : CyberCore::CookieHash { };
+    template<> struct HashTraits<CyberCore::Cookie> : GenericHashTraits<CyberCore::Cookie> {
+        static CyberCore::Cookie emptyValue() { return { }; }
+        static void constructDeletedValue(CyberCore::Cookie& slot) { new (NotNull, &slot.name) String(WTF::HashTableDeletedValue); }
+        static bool isDeletedValue(const CyberCore::Cookie& slot) { return slot.name.isHashTableDeletedValue(); }
 
         static const bool hasIsEmptyValueFunction = true;
-        static bool isEmptyValue(const WebCore::Cookie& slot) { return slot.isNull(); }
+        static bool isEmptyValue(const CyberCore::Cookie& slot) { return slot.isNull(); }
     };
-    template<> struct EnumTraits<WebCore::Cookie::SameSitePolicy> {
+    template<> struct EnumTraits<CyberCore::Cookie::SameSitePolicy> {
     using values = EnumValues<
-        WebCore::Cookie::SameSitePolicy,
-        WebCore::Cookie::SameSitePolicy::None,
-        WebCore::Cookie::SameSitePolicy::Lax,
-        WebCore::Cookie::SameSitePolicy::Strict
+        CyberCore::Cookie::SameSitePolicy,
+        CyberCore::Cookie::SameSitePolicy::None,
+        CyberCore::Cookie::SameSitePolicy::Lax,
+        CyberCore::Cookie::SameSitePolicy::Strict
     >;
 };
 }

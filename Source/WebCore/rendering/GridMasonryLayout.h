@@ -29,7 +29,7 @@
 #include "LayoutUnit.h"
 #include "RenderBox.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderGrid;
 
@@ -98,4 +98,4 @@ private:
     unsigned m_autoFlowNextCursor;
 };
 
-} // end namespace WebCore
+} // end namespace CyberCore

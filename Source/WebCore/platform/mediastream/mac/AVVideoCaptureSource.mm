@@ -52,9 +52,9 @@
 #import <pal/cocoa/AVFoundationSoftLink.h>
 #import <pal/cf/CoreMediaSoftLink.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
-@interface WebCoreAVVideoCaptureSourceObserver : NSObject<AVCaptureVideoDataOutputSampleBufferDelegate> {
+@interface CyberCoreAVVideoCaptureSourceObserver : NSObject<AVCaptureVideoDataOutputSampleBufferDelegate> {
     AVVideoCaptureSource* m_callback;
 }
 
@@ -72,7 +72,7 @@ using namespace WebCore;
 #endif
 @end
 
-namespace WebCore {
+namespace CyberCore {
 
 static inline OSType avVideoCapturePixelBufferFormat()
 {
@@ -88,7 +88,7 @@ static dispatch_queue_t globaVideoCaptureSerialQueue()
     static dispatch_queue_t globalQueue;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        globalQueue = dispatch_queue_create_with_target("WebCoreAVVideoCaptureSource video capture queue", DISPATCH_QUEUE_SERIAL, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0));
+        globalQueue = dispatch_queue_create_with_target("CyberCoreAVVideoCaptureSource video capture queue", DISPATCH_QUEUE_SERIAL, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0));
     });
     return globalQueue;
 }
@@ -127,7 +127,7 @@ CaptureSourceOrError AVVideoCaptureSource::create(const CaptureDevice& device, M
 
 AVVideoCaptureSource::AVVideoCaptureSource(AVCaptureDevice* avDevice, const CaptureDevice& device, MediaDeviceHashSalts&& hashSalts, PageIdentifier pageIdentifier)
     : RealtimeVideoCaptureSource(device, WTFMove(hashSalts), pageIdentifier)
-    , m_objcObserver(adoptNS([[WebCoreAVVideoCaptureSourceObserver alloc] initWithCallback:this]))
+    , m_objcObserver(adoptNS([[CyberCoreAVVideoCaptureSourceObserver alloc] initWithCallback:this]))
     , m_device(avDevice)
     , m_verifyCapturingTimer(*this, &AVVideoCaptureSource::verifyIsCapturing)
 {
@@ -706,9 +706,9 @@ void AVVideoCaptureSource::deviceDisconnected(RetainPtr<NSNotification> notifica
         captureFailed();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
-@implementation WebCoreAVVideoCaptureSourceObserver
+@implementation CyberCoreAVVideoCaptureSourceObserver
 
 - (id)initWithCallback:(AVVideoCaptureSource*)callback
 {

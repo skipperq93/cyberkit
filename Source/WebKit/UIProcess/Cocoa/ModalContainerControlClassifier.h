@@ -30,7 +30,7 @@
 
 @class MLModel;
 
-namespace WebCore {
+namespace CyberCore {
 enum class ModalContainerControlType : uint8_t;
 }
 
@@ -41,7 +41,7 @@ class ModalContainerControlClassifier {
 public:
     static ModalContainerControlClassifier& sharedClassifier();
 
-    void classify(Vector<String>&& text, CompletionHandler<void(Vector<WebCore::ModalContainerControlType>&&)>&&);
+    void classify(Vector<String>&& text, CompletionHandler<void(Vector<CyberCore::ModalContainerControlType>&&)>&&);
 
 private:
     friend std::unique_ptr<ModalContainerControlClassifier> std::make_unique<ModalContainerControlClassifier>();

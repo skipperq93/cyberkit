@@ -31,7 +31,7 @@
 #include <wtf/Noncopyable.h>
 #include <wtf/URL.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class CachedRawResource;
 class DocumentLoader;
@@ -54,4 +54,4 @@ private:
     CachedResourceHandle<CachedRawResource> m_resource;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

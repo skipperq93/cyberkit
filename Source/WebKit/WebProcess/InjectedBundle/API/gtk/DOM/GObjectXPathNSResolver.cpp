@@ -24,7 +24,7 @@
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
-namespace WebKit {
+namespace CyberKit {
 
 GObjectXPathNSResolver::~GObjectXPathNSResolver()
 {
@@ -35,5 +35,5 @@ AtomString GObjectXPathNSResolver::lookupNamespaceURI(const AtomString& prefix)
     return AtomString::fromUTF8(webkit_dom_xpath_ns_resolver_lookup_namespace_uri(m_resolver.get(), prefix.string().utf8().data()));
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 G_GNUC_END_IGNORE_DEPRECATIONS;

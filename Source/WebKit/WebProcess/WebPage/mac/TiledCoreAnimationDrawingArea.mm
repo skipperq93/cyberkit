@@ -69,8 +69,8 @@
 #import <CyberCore/ScrollingTree.h>
 #endif
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 TiledCoreAnimationDrawingArea::TiledCoreAnimationDrawingArea(WebPage& webPage, const WebPageCreationParameters& parameters)
     : DrawingArea(DrawingAreaType::TiledCoreAnimation, parameters.drawingAreaIdentifier, webPage)
@@ -379,7 +379,7 @@ void TiledCoreAnimationDrawingArea::updateRendering(UpdateRenderingType flushTyp
         m_webPage.finalizeRenderingUpdate(flags);
 
         // If we have an active transient zoom, we want the zoom to win over any changes
-        // that WebCore makes to the relevant layers, so re-apply our changes after flushing.
+        // that CyberCore makes to the relevant layers, so re-apply our changes after flushing.
         if (m_transientZoomScale != 1)
             applyTransientZoomToLayers(m_transientZoomScale, m_transientZoomOrigin);
 
@@ -552,17 +552,17 @@ void TiledCoreAnimationDrawingArea::setLayerHostingMode(LayerHostingMode)
     send(Messages::DrawingAreaProxy::UpdateAcceleratedCompositingMode(0, layerTreeContext));
 }
 
-void TiledCoreAnimationDrawingArea::setColorSpace(std::optional<WebCore::DestinationColorSpace> colorSpace)
+void TiledCoreAnimationDrawingArea::setColorSpace(std::optional<CyberCore::DestinationColorSpace> colorSpace)
 {
     m_layerHostingContext->setColorSpace(colorSpace ? colorSpace->platformColorSpace() : nullptr);
 }
 
-std::optional<WebCore::DestinationColorSpace> TiledCoreAnimationDrawingArea::displayColorSpace() const
+std::optional<CyberCore::DestinationColorSpace> TiledCoreAnimationDrawingArea::displayColorSpace() const
 {
     return DestinationColorSpace { m_layerHostingContext->colorSpace() };
 }
 
-RefPtr<WebCore::DisplayRefreshMonitor> TiledCoreAnimationDrawingArea::createDisplayRefreshMonitor(PlatformDisplayID displayID)
+RefPtr<CyberCore::DisplayRefreshMonitor> TiledCoreAnimationDrawingArea::createDisplayRefreshMonitor(PlatformDisplayID displayID)
 {
     return DisplayRefreshMonitorMac::create(displayID);
 }
@@ -829,7 +829,7 @@ void TiledCoreAnimationDrawingArea::scheduleRenderingUpdateRunLoopObserver()
     m_renderingUpdateRunLoopObserver->schedule();
 
     // Avoid running any more tasks before the runloop observer fires.
-    WebCore::WindowEventLoop::breakToAllowRenderingUpdate();
+    CyberCore::WindowEventLoop::breakToAllowRenderingUpdate();
 }
 
 void TiledCoreAnimationDrawingArea::invalidateRenderingUpdateRunLoopObserver()
@@ -871,6 +871,6 @@ void TiledCoreAnimationDrawingArea::postRenderingUpdateRunLoopCallback()
     invalidatePostRenderingUpdateRunLoopObserver();
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // PLATFORM(MAC)

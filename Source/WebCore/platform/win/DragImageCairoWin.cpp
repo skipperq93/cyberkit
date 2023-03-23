@@ -36,7 +36,7 @@
 #include <wtf/RetainPtr.h>
 #include <wtf/win/GDIObject.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 void deallocContext(GraphicsContextCairo* target)
 {

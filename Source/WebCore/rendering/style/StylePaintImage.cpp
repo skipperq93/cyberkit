@@ -36,7 +36,7 @@
 #include "RenderElement.h"
 #include <wtf/PointerComparison.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 StylePaintImage::StylePaintImage(String&& name, Ref<CSSVariableData>&& arguments)
     : StyleGeneratedImage { Type::PaintImage, StylePaintImage::isFixedSize }
@@ -118,6 +118,6 @@ FloatSize StylePaintImage::fixedSize(const RenderElement&) const
     return { };
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(CSS_PAINTING_API)

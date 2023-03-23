@@ -38,7 +38,7 @@
 #include "RemoteMediaResourceManagerMessages.h"
 #include "SandboxExtension.h"
 #include "VideoLayerRemote.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebProcess.h"
 #include <CyberScriptCore/TypedArrayInlines.h>
 #include <CyberCore/DeprecatedGlobalSettings.h>
@@ -85,14 +85,14 @@
 #include <CyberCore/VideoLayerManagerObjC.h>
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 #if !RELEASE_LOG_DISABLED
 extern WTFLogChannel LogMedia;
 #endif
 }
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 #ifdef ALWAYS_LOG_UNIMPLEMENTED_METHODS
 #undef notImplemented
@@ -232,7 +232,7 @@ void MediaPlayerPrivateRemote::setPreservesPitch(bool preservesPitch)
     connection().send(Messages::RemoteMediaPlayerProxy::SetPreservesPitch(preservesPitch), m_id);
 }
 
-void MediaPlayerPrivateRemote::setPitchCorrectionAlgorithm(WebCore::MediaPlayer::PitchCorrectionAlgorithm algorithm)
+void MediaPlayerPrivateRemote::setPitchCorrectionAlgorithm(CyberCore::MediaPlayer::PitchCorrectionAlgorithm algorithm)
 {
     connection().send(Messages::RemoteMediaPlayerProxy::SetPitchCorrectionAlgorithm(algorithm), m_id);
 }
@@ -406,7 +406,7 @@ void MediaPlayerPrivateRemote::characteristicChanged(RemoteMediaPlayerState&& st
         player->characteristicChanged();
 }
 
-void MediaPlayerPrivateRemote::sizeChanged(WebCore::FloatSize naturalSize)
+void MediaPlayerPrivateRemote::sizeChanged(CyberCore::FloatSize naturalSize)
 {
     m_cachedState.naturalSize = naturalSize;
     if (RefPtr player = m_player.get())
@@ -854,7 +854,7 @@ void MediaPlayerPrivateRemote::updateVideoFullscreenInlineImage()
     connection().send(Messages::RemoteMediaPlayerProxy::UpdateVideoFullscreenInlineImage(), m_id);
 }
 
-void MediaPlayerPrivateRemote::setVideoFullscreenFrame(WebCore::FloatRect rect)
+void MediaPlayerPrivateRemote::setVideoFullscreenFrame(CyberCore::FloatRect rect)
 {
 #if PLATFORM(COCOA)
     ALWAYS_LOG(LOGIDENTIFIER, "width = ", rect.size().width(), ", height = ", rect.size().height());
@@ -862,7 +862,7 @@ void MediaPlayerPrivateRemote::setVideoFullscreenFrame(WebCore::FloatRect rect)
 #endif
 }
 
-void MediaPlayerPrivateRemote::setVideoFullscreenGravity(WebCore::MediaPlayerEnums::VideoGravity gravity)
+void MediaPlayerPrivateRemote::setVideoFullscreenGravity(CyberCore::MediaPlayerEnums::VideoGravity gravity)
 {
     m_videoFullscreenGravity = gravity;
     connection().send(Messages::RemoteMediaPlayerProxy::SetVideoFullscreenGravity(gravity), m_id);
@@ -1002,7 +1002,7 @@ void MediaPlayerPrivateRemote::paintCurrentFrameInContext(GraphicsContext& conte
 }
 
 #if !USE(AVFOUNDATION)
-bool MediaPlayerPrivateRemote::copyVideoTextureToPlatformTexture(WebCore::GraphicsContextGL*, PlatformGLObject, GCGLenum, GCGLint, GCGLenum, GCGLenum, GCGLenum, bool, bool)
+bool MediaPlayerPrivateRemote::copyVideoTextureToPlatformTexture(CyberCore::GraphicsContextGL*, PlatformGLObject, GCGLenum, GCGLint, GCGLenum, GCGLenum, GCGLenum, bool, bool)
 {
     notImplemented();
     return false;
@@ -1020,7 +1020,7 @@ void MediaPlayerPrivateRemote::willBeAskedToPaintGL()
 }
 #endif
 
-RefPtr<WebCore::VideoFrame> MediaPlayerPrivateRemote::videoFrameForCurrentTime()
+RefPtr<CyberCore::VideoFrame> MediaPlayerPrivateRemote::videoFrameForCurrentTime()
 {
     if (readyState() < MediaPlayer::ReadyState::HaveCurrentData)
         return { };
@@ -1272,7 +1272,7 @@ bool MediaPlayerPrivateRemote::requiresTextTrackRepresentation() const
 #endif
 }
 
-void MediaPlayerPrivateRemote::setTextTrackRepresentation(WebCore::TextTrackRepresentation* representation)
+void MediaPlayerPrivateRemote::setTextTrackRepresentation(CyberCore::TextTrackRepresentation* representation)
 {
 #if PLATFORM(COCOA)
     auto* representationLayer = representation ? representation->platformLayer() : nil;
@@ -1369,7 +1369,7 @@ void MediaPlayerPrivateRemote::applicationDidBecomeActive()
     connection().send(Messages::RemoteMediaPlayerProxy::ApplicationDidBecomeActive(), m_id);
 }
 
-void MediaPlayerPrivateRemote::setPreferredDynamicRangeMode(WebCore::DynamicRangeMode mode)
+void MediaPlayerPrivateRemote::setPreferredDynamicRangeMode(CyberCore::DynamicRangeMode mode)
 {
     connection().send(Messages::RemoteMediaPlayerProxy::SetPreferredDynamicRangeMode(mode), m_id);
 }
@@ -1437,7 +1437,7 @@ void MediaPlayerPrivateRemote::setShouldDisableHDR(bool shouldDisable)
     connection().send(Messages::RemoteMediaPlayerProxy::SetShouldDisableHDR(shouldDisable), m_id);
 }
 
-void MediaPlayerPrivateRemote::requestResource(RemoteMediaResourceIdentifier remoteMediaResourceIdentifier, WebCore::ResourceRequest&& request, WebCore::PlatformMediaResourceLoader::LoadOptions options)
+void MediaPlayerPrivateRemote::requestResource(RemoteMediaResourceIdentifier remoteMediaResourceIdentifier, CyberCore::ResourceRequest&& request, CyberCore::PlatformMediaResourceLoader::LoadOptions options)
 {
     ASSERT(!m_mediaResources.contains(remoteMediaResourceIdentifier));
     auto resource = m_mediaResourceLoader->requestResource(WTFMove(request), options);
@@ -1452,7 +1452,7 @@ void MediaPlayerPrivateRemote::requestResource(RemoteMediaResourceIdentifier rem
     m_mediaResources.add(remoteMediaResourceIdentifier, WTFMove(resource));
 }
 
-void MediaPlayerPrivateRemote::sendH2Ping(const URL& url, CompletionHandler<void(Expected<WTF::Seconds, WebCore::ResourceError>&&)>&& completionHandler)
+void MediaPlayerPrivateRemote::sendH2Ping(const URL& url, CompletionHandler<void(Expected<WTF::Seconds, CyberCore::ResourceError>&&)>&& completionHandler)
 {
     m_mediaResourceLoader->sendH2Ping(url, WTFMove(completionHandler));
 }
@@ -1476,7 +1476,7 @@ void MediaPlayerPrivateRemote::activeSourceBuffersChanged()
 }
 
 #if PLATFORM(IOS_FAMILY)
-void MediaPlayerPrivateRemote::getRawCookies(const URL& url, WebCore::MediaPlayerClient::GetRawCookiesCallback&& completionHandler) const
+void MediaPlayerPrivateRemote::getRawCookies(const URL& url, CyberCore::MediaPlayerClient::GetRawCookiesCallback&& completionHandler) const
 {
     if (RefPtr player = m_player.get())
         player->getRawCookies(url, WTFMove(completionHandler));

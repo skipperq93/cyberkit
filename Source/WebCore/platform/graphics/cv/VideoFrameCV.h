@@ -34,7 +34,7 @@
 
 using CMSampleBufferRef = struct opaqueCMSampleBuffer*;
 
-namespace WebCore {
+namespace CyberCore {
 
 class PixelBuffer;
 
@@ -49,7 +49,7 @@ public:
     ImageOrientation orientation() const;
 
     // VideoFrame overrides.
-    WEBCORE_EXPORT WebCore::FloatSize presentationSize() const final;
+    WEBCORE_EXPORT CyberCore::FloatSize presentationSize() const final;
     WEBCORE_EXPORT uint32_t pixelFormat() const final;
     WEBCORE_EXPORT void setOwnershipIdentity(const ProcessIdentity&) final;
     bool isCV() const final { return true; }
@@ -63,8 +63,8 @@ private:
 
 }
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::VideoFrameCV)
-    static bool isType(const WebCore::VideoFrame& videoFrame) { return videoFrame.isCV(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::VideoFrameCV)
+    static bool isType(const CyberCore::VideoFrame& videoFrame) { return videoFrame.isCV(); }
 SPECIALIZE_TYPE_TRAITS_END()
 
 #endif

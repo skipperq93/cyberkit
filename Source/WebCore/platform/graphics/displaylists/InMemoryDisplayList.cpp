@@ -28,7 +28,7 @@
 
 #include "DisplayListIterator.h"
 
-namespace WebCore {
+namespace CyberCore {
 namespace DisplayList {
 
 std::optional<std::size_t> InMemoryDisplayList::WritingClient::requiredSizeForItem(const DisplayListItem& displayListItem) const

@@ -33,7 +33,7 @@
 #include "NEONHelpers.h"
 #include <arm_neon.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 template <int b1, int b4>
 inline void FEComposite::computeArithmeticPixelsNeon(const uint8_t* source, uint8_t* destination, unsigned pixelArrayLength, float k1, float k2, float k3, float k4)
@@ -86,7 +86,7 @@ inline void FEComposite::platformArithmeticNeon(const uint8_t* source, uint8_t* 
     computeArithmeticPixelsNeon<1, 1>(source, destination, pixelArrayLength, k1, k2, k3, k4);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // HAVE(ARM_NEON_INTRINSICS)
 

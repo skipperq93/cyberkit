@@ -35,7 +35,7 @@
 #include "ServiceWorkerGlobalScope.h"
 #include "ServiceWorkerThread.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 ServiceWorkerWindowClient::ServiceWorkerWindowClient(ServiceWorkerGlobalScope& context, ServiceWorkerClientData&& data)
     : ServiceWorkerClient(context, WTFMove(data))
@@ -115,6 +115,6 @@ void ServiceWorkerWindowClient::navigate(ScriptExecutionContext& context, const 
     });
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

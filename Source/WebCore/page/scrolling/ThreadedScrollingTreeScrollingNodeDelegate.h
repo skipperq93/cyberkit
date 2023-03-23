@@ -31,7 +31,7 @@
 
 #include "ScrollingEffectsController.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class FloatPoint;
 class FloatSize;
@@ -91,6 +91,6 @@ protected:
     ScrollingEffectsController m_scrollController;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(ASYNC_SCROLLING) && ENABLE(SCROLLING_THREAD)

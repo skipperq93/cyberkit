@@ -30,7 +30,7 @@
 
 #import <pal/spi/cg/CoreGraphicsSPI.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FontAntialiasingStateSaver {
     WTF_MAKE_NONCOPYABLE(FontAntialiasingStateSaver);

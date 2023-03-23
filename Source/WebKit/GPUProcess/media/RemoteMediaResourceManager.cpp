@@ -32,13 +32,13 @@
 #include "RemoteMediaResource.h"
 #include "RemoteMediaResourceIdentifier.h"
 #include "SharedBufferReference.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include <CyberCore/ResourceRequest.h>
 #include <wtf/Scope.h>
 
 namespace WebKit {
 
-using namespace WebCore;
+using namespace CyberCore;
 
 RemoteMediaResourceManager::RemoteMediaResourceManager()
 {
@@ -71,7 +71,7 @@ void RemoteMediaResourceManager::responseReceived(RemoteMediaResourceIdentifier 
     resource->responseReceived(response, didPassAccessControlCheck, WTFMove(completionHandler));
 }
 
-void RemoteMediaResourceManager::redirectReceived(RemoteMediaResourceIdentifier identifier, ResourceRequest&& request, const ResourceResponse& response, CompletionHandler<void(WebCore::ResourceRequest&&)>&& completionHandler)
+void RemoteMediaResourceManager::redirectReceived(RemoteMediaResourceIdentifier identifier, ResourceRequest&& request, const ResourceResponse& response, CompletionHandler<void(CyberCore::ResourceRequest&&)>&& completionHandler)
 {
     auto* resource = m_remoteMediaResources.get(identifier);
     if (!resource) {

@@ -49,12 +49,12 @@ SimulatedInputSourceState SimulatedInputSourceState::emptyStateForSourceType(Sim
     case SimulatedInputSourceType::Keyboard:
         break;
     case SimulatedInputSourceType::Wheel:
-        result.scrollDelta = WebCore::IntSize();
+        result.scrollDelta = CyberCore::IntSize();
         FALLTHROUGH;
     case SimulatedInputSourceType::Mouse:
     case SimulatedInputSourceType::Touch:
     case SimulatedInputSourceType::Pen:
-        result.location = WebCore::IntPoint();
+        result.location = CyberCore::IntPoint();
     }
 
     return result;
@@ -208,7 +208,7 @@ void SimulatedInputDispatcher::transitionBetweenKeyFrames(const SimulatedInputKe
     transitionToNextInputSourceState();
 }
 
-void SimulatedInputDispatcher::resolveLocation(const WebCore::IntPoint& currentLocation, std::optional<WebCore::IntPoint> location, MouseMoveOrigin origin, std::optional<String> nodeHandle, Function<void (std::optional<WebCore::IntPoint>, std::optional<AutomationCommandError>)>&& completionHandler)
+void SimulatedInputDispatcher::resolveLocation(const CyberCore::IntPoint& currentLocation, std::optional<CyberCore::IntPoint> location, MouseMoveOrigin origin, std::optional<String> nodeHandle, Function<void (std::optional<CyberCore::IntPoint>, std::optional<AutomationCommandError>)>&& completionHandler)
 {
     if (!location) {
         completionHandler(currentLocation, std::nullopt);
@@ -220,13 +220,13 @@ void SimulatedInputDispatcher::resolveLocation(const WebCore::IntPoint& currentL
         completionHandler(location.value(), std::nullopt);
         break;
     case MouseMoveOrigin::Pointer: {
-        WebCore::IntPoint destination(currentLocation);
+        CyberCore::IntPoint destination(currentLocation);
         destination.moveBy(location.value());
         completionHandler(destination, std::nullopt);
         break;
     }
     case MouseMoveOrigin::Element: {
-        m_client.viewportInViewCenterPointOfElement(m_page, m_frameID, nodeHandle.value(), [destination = location.value(), completionHandler = WTFMove(completionHandler)](std::optional<WebCore::IntPoint> inViewCenterPoint, std::optional<AutomationCommandError> error) mutable {
+        m_client.viewportInViewCenterPointOfElement(m_page, m_frameID, nodeHandle.value(), [destination = location.value(), completionHandler = WTFMove(completionHandler)](std::optional<CyberCore::IntPoint> inViewCenterPoint, std::optional<AutomationCommandError> error) mutable {
             if (error) {
                 completionHandler(std::nullopt, error);
                 return;
@@ -279,7 +279,7 @@ void SimulatedInputDispatcher::transitionInputSourceToState(SimulatedInputSource
 #if !ENABLE(WEBDRIVER_MOUSE_INTERACTIONS)
         RELEASE_ASSERT_NOT_REACHED();
 #else
-        resolveLocation(valueOrDefault(a.location), b.location, b.origin.value_or(MouseMoveOrigin::Viewport), b.nodeHandle, [this, &a, &b, inputSource = inputSource.type, eventDispatchFinished = WTFMove(eventDispatchFinished)](std::optional<WebCore::IntPoint> location, std::optional<AutomationCommandError> error) mutable {
+        resolveLocation(valueOrDefault(a.location), b.location, b.origin.value_or(MouseMoveOrigin::Viewport), b.nodeHandle, [this, &a, &b, inputSource = inputSource.type, eventDispatchFinished = WTFMove(eventDispatchFinished)](std::optional<CyberCore::IntPoint> location, std::optional<AutomationCommandError> error) mutable {
             if (error) {
                 eventDispatchFinished(error);
                 return;
@@ -290,7 +290,7 @@ void SimulatedInputDispatcher::transitionInputSourceToState(SimulatedInputSource
                 return;
             }
 
-            const String& pointerType = inputSource == SimulatedInputSourceType::Mouse ? WebCore::mousePointerEventType() : WebCore::penPointerEventType();
+            const String& pointerType = inputSource == SimulatedInputSourceType::Mouse ? CyberCore::mousePointerEventType() : CyberCore::penPointerEventType();
 
             b.location = location;
             // The "dispatch a pointer{Down,Up,Move} action" algorithms (§17.4 Dispatching Actions).
@@ -320,7 +320,7 @@ void SimulatedInputDispatcher::transitionInputSourceToState(SimulatedInputSource
 #if !ENABLE(WEBDRIVER_TOUCH_INTERACTIONS)
         RELEASE_ASSERT_NOT_REACHED();
 #else
-        resolveLocation(valueOrDefault(a.location), b.location, b.origin.value_or(MouseMoveOrigin::Viewport), b.nodeHandle, [this, &a, &b, eventDispatchFinished = WTFMove(eventDispatchFinished)](std::optional<WebCore::IntPoint> location, std::optional<AutomationCommandError> error) mutable {
+        resolveLocation(valueOrDefault(a.location), b.location, b.origin.value_or(MouseMoveOrigin::Viewport), b.nodeHandle, [this, &a, &b, eventDispatchFinished = WTFMove(eventDispatchFinished)](std::optional<CyberCore::IntPoint> location, std::optional<AutomationCommandError> error) mutable {
             if (error) {
                 eventDispatchFinished(error);
                 return;
@@ -439,7 +439,7 @@ void SimulatedInputDispatcher::transitionInputSourceToState(SimulatedInputSource
 #if !ENABLE(WEBDRIVER_WHEEL_INTERACTIONS)
         RELEASE_ASSERT_NOT_REACHED();
 #else
-        resolveLocation(valueOrDefault(a.location), b.location, b.origin.value_or(MouseMoveOrigin::Viewport), b.nodeHandle, [this, &a, &b, eventDispatchFinished = WTFMove(eventDispatchFinished)](std::optional<WebCore::IntPoint> location, std::optional<AutomationCommandError> error) mutable {
+        resolveLocation(valueOrDefault(a.location), b.location, b.origin.value_or(MouseMoveOrigin::Viewport), b.nodeHandle, [this, &a, &b, eventDispatchFinished = WTFMove(eventDispatchFinished)](std::optional<CyberCore::IntPoint> location, std::optional<AutomationCommandError> error) mutable {
             if (error) {
                 eventDispatchFinished(error);
                 return;
@@ -467,7 +467,7 @@ void SimulatedInputDispatcher::transitionInputSourceToState(SimulatedInputSource
     }
 }
 
-void SimulatedInputDispatcher::run(std::optional<WebCore::FrameIdentifier> frameID, Vector<SimulatedInputKeyFrame>&& keyFrames, const HashMap<String, Ref<SimulatedInputSource>>& inputSources, AutomationCompletionHandler&& completionHandler)
+void SimulatedInputDispatcher::run(std::optional<CyberCore::FrameIdentifier> frameID, Vector<SimulatedInputKeyFrame>&& keyFrames, const HashMap<String, Ref<SimulatedInputSource>>& inputSources, AutomationCompletionHandler&& completionHandler)
 {
     ASSERT(!isActive());
     if (isActive()) {

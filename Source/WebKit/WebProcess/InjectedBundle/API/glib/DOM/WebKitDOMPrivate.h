@@ -23,17 +23,17 @@
 
 #pragma once
 
-#include "WebKitDOMNode.h"
+#include "CyberKitDOMNode.h"
 #include <wtf/glib/WTFGType.h>
 
 #if PLATFORM(GTK)
-#include "WebKitDOMPrivateGtk.h"
+#include "CyberKitDOMPrivateGtk.h"
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 class Node;
-} // namespace WebCore
+} // namespace CyberCore
 
-namespace WebKit {
-WebKitDOMNode* wrap(WebCore::Node*);
-} // namespace WebKit
+namespace CyberKit {
+CyberKitDOMNode* wrap(CyberCore::Node*);
+} // namespace CyberKit

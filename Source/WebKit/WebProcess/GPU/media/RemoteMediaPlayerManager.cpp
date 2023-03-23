@@ -34,7 +34,7 @@
 #include "RemoteMediaPlayerManagerProxyMessages.h"
 #include "RemoteMediaPlayerProxyConfiguration.h"
 #include "SampleBufferDisplayLayerManager.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebProcess.h"
 #include "WebProcessCreationParameters.h"
 #include <CyberCore/ContentTypeUtilities.h>
@@ -47,10 +47,10 @@
 #include <CyberCore/MediaPlayerPrivateMediaStreamAVFObjC.h>
 #endif
 
-namespace WebKit {
+namespace CyberKit {
 
 using namespace PAL;
-using namespace WebCore;
+using namespace CyberCore;
 
 class MediaPlayerRemoteFactory final : public MediaPlayerFactory {
 public:
@@ -265,10 +265,10 @@ void RemoteMediaPlayerManager::setUseGPUProcess(bool useGPUProcess)
 
 #if PLATFORM(COCOA) && ENABLE(MEDIA_STREAM)
     if (useGPUProcess) {
-        WebCore::SampleBufferDisplayLayer::setCreator([](auto& client) {
+        CyberCore::SampleBufferDisplayLayer::setCreator([](auto& client) {
             return WebProcess::singleton().ensureGPUProcessConnection().sampleBufferDisplayLayerManager().createLayer(client);
         });
-        WebCore::MediaPlayerPrivateMediaStreamAVFObjC::setNativeImageCreator([](auto& videoFrame) {
+        CyberCore::MediaPlayerPrivateMediaStreamAVFObjC::setNativeImageCreator([](auto& videoFrame) {
             return WebProcess::singleton().ensureGPUProcessConnection().videoFrameObjectHeapProxy().getNativeImage(videoFrame);
         });
     }
@@ -301,6 +301,6 @@ void RemoteMediaPlayerManager::gpuProcessConnectionDidClose(GPUProcessConnection
     }
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(GPU_PROCESS) && ENABLE(VIDEO)

@@ -35,7 +35,7 @@
 #include <wtf/RefPtr.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class AudioChannel;
     
@@ -91,6 +91,6 @@ private:
 
 typedef Vector<RefPtr<HRTFKernel>> HRTFKernelList;
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // HRTFKernel_h

@@ -31,8 +31,8 @@
 #import <CyberCore/FrameView.h>
 #import <CyberCore/PopupMenuClient.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 void WebPopupMenu::setUpPlatformData(const IntRect&, PlatformPopupMenuData& data)
 {
@@ -59,4 +59,4 @@ void WebPopupMenu::setUpPlatformData(const IntRect&, PlatformPopupMenuData& data
 #endif
 }
 
-} // namespace WebKit
+} // namespace CyberKit

@@ -27,7 +27,7 @@
 
 #if ENABLE(WEBGL)
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class GraphicsContextGLSimulatedEventForTesting {
     ContextChange,
@@ -35,6 +35,6 @@ enum class GraphicsContextGLSimulatedEventForTesting {
     Timeout
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

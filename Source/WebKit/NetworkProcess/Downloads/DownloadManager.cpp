@@ -37,7 +37,7 @@
 #include <wtf/StdLibExtras.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 DownloadManager::DownloadManager(Client& client)
     : m_client(client)
@@ -74,7 +74,7 @@ void DownloadManager::dataTaskBecameDownloadTask(DownloadID downloadID, std::uni
     m_downloads.add(downloadID, WTFMove(download));
 }
 
-void DownloadManager::continueWillSendRequest(DownloadID downloadID, WebCore::ResourceRequest&& request)
+void DownloadManager::continueWillSendRequest(DownloadID downloadID, CyberCore::ResourceRequest&& request)
 {
     auto* pendingDownload = m_pendingDownloads.get(downloadID);
     ASSERT(pendingDownload);
@@ -82,7 +82,7 @@ void DownloadManager::continueWillSendRequest(DownloadID downloadID, WebCore::Re
         pendingDownload->continueWillSendRequest(WTFMove(request));
 }
 
-void DownloadManager::convertNetworkLoadToDownload(DownloadID downloadID, std::unique_ptr<NetworkLoad>&& networkLoad, ResponseCompletionHandler&& completionHandler, Vector<RefPtr<WebCore::BlobDataFileReference>>&& blobFileReferences, const ResourceRequest& request, const ResourceResponse& response)
+void DownloadManager::convertNetworkLoadToDownload(DownloadID downloadID, std::unique_ptr<NetworkLoad>&& networkLoad, ResponseCompletionHandler&& completionHandler, Vector<RefPtr<CyberCore::BlobDataFileReference>>&& blobFileReferences, const ResourceRequest& request, const ResourceResponse& response)
 {
     ASSERT(!m_pendingDownloads.contains(downloadID));
     m_pendingDownloads.add(downloadID, makeUnique<PendingDownload>(m_client.parentProcessConnectionForDownloads(), WTFMove(networkLoad), WTFMove(completionHandler), downloadID, request, response));

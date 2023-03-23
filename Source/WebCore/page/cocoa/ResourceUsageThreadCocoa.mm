@@ -40,7 +40,7 @@
 #import <wtf/spi/cocoa/MachVMSPI.h>
 #import <wtf/text/StringConcatenateNumbers.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 static unsigned categoryForVMTag(unsigned tag)
 {

@@ -31,12 +31,12 @@
 
 namespace WebKit {
 
-class WebDatabaseProvider final : public WebCore::DatabaseProvider {
+class WebDatabaseProvider final : public CyberCore::DatabaseProvider {
 public:
     static Ref<WebDatabaseProvider> getOrCreate(PageGroupIdentifier);
     virtual ~WebDatabaseProvider();
 
-    WebCore::IDBClient::IDBConnectionToServer& idbConnectionToServerForSession(PAL::SessionID) final;
+    CyberCore::IDBClient::IDBConnectionToServer& idbConnectionToServerForSession(PAL::SessionID) final;
 
 private:
     explicit WebDatabaseProvider(PageGroupIdentifier);

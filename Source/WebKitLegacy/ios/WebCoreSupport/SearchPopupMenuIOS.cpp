@@ -23,7 +23,7 @@
 
 #if PLATFORM(IOS_FAMILY)
 
-using namespace WebCore;
+using namespace CyberCore;
 
 SearchPopupMenuIOS::SearchPopupMenuIOS(PopupMenuClient* client)
     : m_popup(adoptRef(*new PopupMenuIOS(client)))

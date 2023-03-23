@@ -38,7 +38,7 @@
 #include "StyleCachedImage.h"
 #include "StyleImageSet.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<StyleCursorImage> StyleCursorImage::create(Ref<StyleImage>&& image, const std::optional<IntPoint>& hotSpot, const URL& originalURL, LoadedFromOpaqueSource loadedFromOpaqueSource)
 { 
@@ -145,4 +145,4 @@ bool StyleCursorImage::usesDataProtocol() const
     return m_originalURL.protocolIsData();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

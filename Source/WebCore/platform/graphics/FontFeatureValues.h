@@ -30,7 +30,7 @@
 #include <wtf/text/StringHash.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 using FontFeatureValuesTag = std::pair<String, Vector<unsigned>>;
 
@@ -149,4 +149,4 @@ private:
     Tags m_annotation;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -37,7 +37,7 @@
 
 OBJC_CLASS WebEvent;
 
-namespace WebCore {
+namespace CyberCore {
 
 class PlatformEventFactory {
 public:
@@ -55,6 +55,6 @@ WEBCORE_EXPORT String codeForKeyEvent(WebEvent *);
 WEBCORE_EXPORT String keyIdentifierForKeyEvent(WebEvent *);
 WEBCORE_EXPORT int windowsKeyCodeForKeyEvent(WebEvent*);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(IOS_FAMILY)

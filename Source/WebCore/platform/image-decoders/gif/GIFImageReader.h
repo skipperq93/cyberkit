@@ -80,7 +80,7 @@ struct GIFFrameContext;
 class GIFLZWContext {
     WTF_MAKE_FAST_ALLOCATED;
 public:
-    GIFLZWContext(WebCore::GIFImageDecoder* client, const GIFFrameContext* frameContext)
+    GIFLZWContext(CyberCore::GIFImageDecoder* client, const GIFFrameContext* frameContext)
         : stackp(0)
         , codesize(0)
         , codemask(0)
@@ -125,7 +125,7 @@ private:
     Vector<unsigned char> rowBuffer; // Single scanline temporary buffer.
 
     // Initialized during construction and read-only.
-    WebCore::GIFImageDecoder* m_client;
+    CyberCore::GIFImageDecoder* m_client;
     const GIFFrameContext* m_frameContext;
 };
 
@@ -154,7 +154,7 @@ public:
     unsigned width;
     unsigned height;
     int tpixel; // Index of transparent pixel.
-    WebCore::ScalableImageDecoderFrame::DisposalMethod disposalMethod; // Restore to background, leave in place, etc.
+    CyberCore::ScalableImageDecoderFrame::DisposalMethod disposalMethod; // Restore to background, leave in place, etc.
     size_t localColormapPosition; // Per-image colormap.
     int localColormapSize; // Size of local colormap array.
     int datasize;
@@ -173,7 +173,7 @@ public:
         , width(0)
         , height(0)
         , tpixel(0)
-        , disposalMethod(WebCore::ScalableImageDecoderFrame::DisposalMethod::Unspecified)
+        , disposalMethod(CyberCore::ScalableImageDecoderFrame::DisposalMethod::Unspecified)
         , localColormapPosition(0)
         , localColormapSize(0)
         , datasize(0)
@@ -194,7 +194,7 @@ public:
         m_lzwBlocks.append(GIFLZWBlock(position, size));
     }
 
-    bool decode(const unsigned char* data, size_t length, WebCore::GIFImageDecoder* client, bool* frameDecoded);
+    bool decode(const unsigned char* data, size_t length, CyberCore::GIFImageDecoder* client, bool* frameDecoded);
 
     bool isComplete() const { return m_isComplete; }
     void setComplete() { m_isComplete = true; }
@@ -219,7 +219,7 @@ private:
 class GIFImageReader {
     WTF_MAKE_FAST_ALLOCATED;
 public:
-    GIFImageReader(WebCore::GIFImageDecoder* client = 0)
+    GIFImageReader(CyberCore::GIFImageDecoder* client = 0)
         : m_client(client)
         , m_state(GIFType)
         , m_bytesToConsume(6) // Number of bytes for GIF type, either "GIF87a" or "GIF89a".
@@ -237,9 +237,9 @@ public:
     {
     }
 
-    void setData(const WebCore::SharedBuffer& data) { m_data = &data; }
+    void setData(const CyberCore::SharedBuffer& data) { m_data = &data; }
     // FIXME: haltAtFrame should be size_t.
-    bool decode(WebCore::GIFImageDecoder::GIFQuery, unsigned haltAtFrame);
+    bool decode(CyberCore::GIFImageDecoder::GIFQuery, unsigned haltAtFrame);
 
     size_t imagesCount() const
     {
@@ -296,7 +296,7 @@ private:
         return m_frames.isEmpty() || (m_frames.size() == 1u && !m_frames[0]->isComplete());
     }
 
-    WebCore::GIFImageDecoder* m_client;
+    CyberCore::GIFImageDecoder* m_client;
 
     // Parsing state machine.
     GIFState m_state; // Current decoder master state.
@@ -316,6 +316,6 @@ private:
     Vector<std::unique_ptr<GIFFrameContext> > m_frames;
     size_t m_currentDecodingFrame;
 
-    RefPtr<const WebCore::SharedBuffer> m_data;
+    RefPtr<const CyberCore::SharedBuffer> m_data;
     bool m_parseCompleted;
 };

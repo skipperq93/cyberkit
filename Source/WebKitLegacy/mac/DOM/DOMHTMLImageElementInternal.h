@@ -25,8 +25,8 @@
 
 #import <CyberKitLegacy/DOMHTMLImageElement.h>
 
-namespace WebCore {
+namespace CyberCore {
 class HTMLImageElement;
 }
 
-WebCore::HTMLImageElement* core(DOMHTMLImageElement *);
+CyberCore::HTMLImageElement* core(DOMHTMLImageElement *);

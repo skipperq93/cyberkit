@@ -27,7 +27,7 @@
 
 #include "RenderTreeUpdater.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderElement;
 class RenderObject;

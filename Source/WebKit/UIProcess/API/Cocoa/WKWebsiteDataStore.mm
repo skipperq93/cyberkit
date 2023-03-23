@@ -51,7 +51,7 @@
 #import <CyberCore/Credential.h>
 #import <CyberCore/RegistrationDatabase.h>
 #import <CyberCore/ServiceWorkerClientData.h>
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 #import <wtf/BlockPtr.h>
 #import <wtf/URL.h>
 #import <wtf/WeakObjCPtr.h>
@@ -73,7 +73,7 @@ public:
     }
 
 private:
-    void requestStorageSpace(const WebCore::SecurityOriginData& topOrigin, const WebCore::SecurityOriginData& frameOrigin, uint64_t quota, uint64_t currentSize, uint64_t spaceRequired, CompletionHandler<void(std::optional<uint64_t>)>&& completionHandler) final
+    void requestStorageSpace(const CyberCore::SecurityOriginData& topOrigin, const CyberCore::SecurityOriginData& frameOrigin, uint64_t quota, uint64_t currentSize, uint64_t spaceRequired, CompletionHandler<void(std::optional<uint64_t>)>&& completionHandler) final
     {
         if (!m_hasRequestStorageSpaceSelector || !m_delegate) {
             completionHandler({ });
@@ -107,13 +107,13 @@ private:
             if (checker->completionHandlerHasBeenCalled())
                 return;
             checker->didCallCompletionHandler();
-            challenge->listener().completeChallenge(WebKit::toAuthenticationChallengeDisposition(disposition), WebCore::Credential(credential));
+            challenge->listener().completeChallenge(WebKit::toAuthenticationChallengeDisposition(disposition), CyberCore::Credential(credential));
         });
 
         [m_delegate.getAutoreleased() didReceiveAuthenticationChallenge:nsURLChallenge completionHandler:completionHandler.get()];
     }
 
-    void openWindowFromServiceWorker(const String& url, const WebCore::SecurityOriginData& serviceWorkerOrigin, CompletionHandler<void(WebKit::WebPageProxy*)>&& callback)
+    void openWindowFromServiceWorker(const String& url, const CyberCore::SecurityOriginData& serviceWorkerOrigin, CompletionHandler<void(WebKit::WebPageProxy*)>&& callback)
     {
         if (!m_hasOpenWindowSelector || !m_delegate || !m_dataStore) {
             callback({ });
@@ -134,7 +134,7 @@ private:
         [m_delegate.getAutoreleased() websiteDataStore:m_dataStore.getAutoreleased() openWindow:nsURL fromServiceWorkerOrigin:wrapper(apiOrigin.get()) completionHandler:completionHandler.get()];
     }
 
-    bool showNotification(const WebCore::NotificationData& data) final
+    bool showNotification(const CyberCore::NotificationData& data) final
     {
         if (!m_hasShowNotificationSelector || !m_delegate || !m_dataStore)
             return false;
@@ -153,14 +153,14 @@ private:
         NSDictionary<NSString *, NSNumber *> *permissions = [m_delegate.getAutoreleased() notificationPermissionsForWebsiteDataStore:m_dataStore.getAutoreleased()];
         for (NSString *key in permissions) {
             NSNumber *value = permissions[key];
-            auto origin = WebCore::SecurityOriginData::fromURL(URL(key));
+            auto origin = CyberCore::SecurityOriginData::fromURL(URL(key));
             result.set(origin.toString(), value.boolValue);
         }
 
         return result;
     }
 
-    void workerUpdatedAppBadge(const WebCore::SecurityOriginData& origin, std::optional<uint64_t> badge) final
+    void workerUpdatedAppBadge(const CyberCore::SecurityOriginData& origin, std::optional<uint64_t> badge) final
     {
         if (!m_hasWorkerUpdatedAppBadgeSelector || !m_delegate || !m_dataStore)
             return;
@@ -173,7 +173,7 @@ private:
         [m_delegate.getAutoreleased() websiteDataStore:m_dataStore.getAutoreleased() workerOrigin:wrapper(apiOrigin.get()) updatedAppBadge:(NSNumber *)nsBadge];
     }
 
-    void requestBackgroundFetchPermission(const WebCore::SecurityOriginData& topOrigin, const WebCore::SecurityOriginData& frameOrigin, CompletionHandler<void(bool)>&& completionHandler)
+    void requestBackgroundFetchPermission(const CyberCore::SecurityOriginData& topOrigin, const CyberCore::SecurityOriginData& frameOrigin, CompletionHandler<void(bool)>&& completionHandler)
     {
         if (!m_hasRequestBackgroundFetchPermissionSelector) {
             completionHandler(false);
@@ -233,7 +233,7 @@ private:
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainRunLoop(WKWebsiteDataStore.class, self))
+    if (CyberCoreObjCScheduleDeallocateOnMainRunLoop(WKWebsiteDataStore.class, self))
         return;
 
     _websiteDataStore->WebKit::WebsiteDataStore::~WebsiteDataStore();
@@ -541,7 +541,7 @@ static Vector<WebKit::WebsiteDataRecord> toWebsiteDataRecords(NSArray *dataRecor
         return;
     }
     
-    webPageProxy->getLoadedSubresourceDomains([completionHandler = makeBlockPtr(completionHandler)] (Vector<WebCore::RegistrableDomain>&& loadedSubresourceDomains) {
+    webPageProxy->getLoadedSubresourceDomains([completionHandler = makeBlockPtr(completionHandler)] (Vector<CyberCore::RegistrableDomain>&& loadedSubresourceDomains) {
         Vector<RefPtr<API::Object>> apiDomains = WTF::map(loadedSubresourceDomains, [](auto& domain) {
             return RefPtr<API::Object>(API::String::create(String(domain.string())));
         });
@@ -742,7 +742,7 @@ static Vector<WebKit::WebsiteDataRecord> toWebsiteDataRecords(NSArray *dataRecor
 - (bool)_hasRegisteredServiceWorker
 {
 #if ENABLE(SERVICE_WORKER)
-    return FileSystem::fileExists(WebCore::serviceWorkerRegistrationDatabaseFilename(_websiteDataStore->configuration().serviceWorkerRegistrationDirectory()));
+    return FileSystem::fileExists(CyberCore::serviceWorkerRegistrationDatabaseFilename(_websiteDataStore->configuration().serviceWorkerRegistrationDirectory()));
 #else
     return NO;
 #endif
@@ -757,8 +757,8 @@ static Vector<WebKit::WebsiteDataRecord> toWebsiteDataRecords(NSArray *dataRecor
     if (![dataTypes isSubsetOfSet:supportedTypes])
         [NSException raise:NSInvalidArgumentException format:@"_renameOrigin can only be called with WKWebsiteDataTypeLocalStorage and WKWebsiteDataTypeIndexedDBDatabases right now."];
 
-    auto oldOrigin = WebCore::SecurityOriginData::fromURLWithoutStrictOpaqueness(oldName);
-    auto newOrigin = WebCore::SecurityOriginData::fromURLWithoutStrictOpaqueness(newName);
+    auto oldOrigin = CyberCore::SecurityOriginData::fromURLWithoutStrictOpaqueness(oldName);
+    auto newOrigin = CyberCore::SecurityOriginData::fromURLWithoutStrictOpaqueness(newName);
     _websiteDataStore->renameOriginInWebsiteData(WTFMove(oldOrigin), WTFMove(newOrigin), WebKit::toWebsiteDataTypes(dataTypes), [completionHandler = makeBlockPtr(completionHandler)] {
         completionHandler();
     });
@@ -793,12 +793,12 @@ static Vector<WebKit::WebsiteDataRecord> toWebsiteDataRecords(NSArray *dataRecor
 
 - (void)_allowTLSCertificateChain:(NSArray *)certificateChain forHost:(NSString *)host
 {
-    _websiteDataStore->allowSpecificHTTPSCertificateForHost(WebCore::CertificateInfo(WebCore::CertificateInfo::secTrustFromCertificateChain((__bridge CFArrayRef)certificateChain)), host);
+    _websiteDataStore->allowSpecificHTTPSCertificateForHost(CyberCore::CertificateInfo(CyberCore::CertificateInfo::secTrustFromCertificateChain((__bridge CFArrayRef)certificateChain)), host);
 }
 
 - (void)_trustServerForLocalPCMTesting:(SecTrustRef)serverTrust
 {
-    _websiteDataStore->allowTLSCertificateChainForLocalPCMTesting(WebCore::CertificateInfo(serverTrust));
+    _websiteDataStore->allowTLSCertificateChainForLocalPCMTesting(CyberCore::CertificateInfo(serverTrust));
 }
 
 - (void)_setPrivateClickMeasurementDebugModeEnabledForTesting:(BOOL)enabled
@@ -938,7 +938,7 @@ static Vector<WebKit::WebsiteDataRecord> toWebsiteDataRecords(NSArray *dataRecor
 -(void)_processPersistentNotificationClick:(NSDictionary *)notificationDictionaryRepresentation completionHandler:(void(^)(bool))completionHandler
 {
 #if ENABLE(SERVICE_WORKER)
-    auto notificationData = WebCore::NotificationData::fromDictionary(notificationDictionaryRepresentation);
+    auto notificationData = CyberCore::NotificationData::fromDictionary(notificationDictionaryRepresentation);
     if (!notificationData) {
         RELEASE_LOG_ERROR(Push, "Asked to handle a persistent notification click with an invalid notification dictionary representation");
         completionHandler(false);
@@ -948,7 +948,7 @@ static Vector<WebKit::WebsiteDataRecord> toWebsiteDataRecords(NSArray *dataRecor
     RELEASE_LOG(Push, "Sending persistent notification click from origin %" SENSITIVE_LOG_STRING " to network process to handle", notificationData->originString.utf8().data());
 
     notificationData->sourceSession = _websiteDataStore->sessionID();
-    _websiteDataStore->networkProcess().processNotificationEvent(*notificationData, WebCore::NotificationEventType::Click, [completionHandler = makeBlockPtr(completionHandler)] (bool wasProcessed) {
+    _websiteDataStore->networkProcess().processNotificationEvent(*notificationData, CyberCore::NotificationEventType::Click, [completionHandler = makeBlockPtr(completionHandler)] (bool wasProcessed) {
         RELEASE_LOG(Push, "Notification click event processing complete. Callback result: %d", wasProcessed);
         completionHandler(wasProcessed);
     });
@@ -958,7 +958,7 @@ static Vector<WebKit::WebsiteDataRecord> toWebsiteDataRecords(NSArray *dataRecor
 -(void)_processPersistentNotificationClose:(NSDictionary *)notificationDictionaryRepresentation completionHandler:(void(^)(bool))completionHandler
 {
 #if ENABLE(SERVICE_WORKER)
-    auto notificationData = WebCore::NotificationData::fromDictionary(notificationDictionaryRepresentation);
+    auto notificationData = CyberCore::NotificationData::fromDictionary(notificationDictionaryRepresentation);
     if (!notificationData) {
         RELEASE_LOG_ERROR(Push, "Asked to handle a persistent notification click with an invalid notification dictionary representation");
         completionHandler(false);
@@ -967,7 +967,7 @@ static Vector<WebKit::WebsiteDataRecord> toWebsiteDataRecords(NSArray *dataRecor
 
     RELEASE_LOG(Push, "Sending persistent notification close from origin %" SENSITIVE_LOG_STRING " to network process to handle", notificationData->originString.utf8().data());
 
-    _websiteDataStore->networkProcess().processNotificationEvent(*notificationData, WebCore::NotificationEventType::Close, [completionHandler = makeBlockPtr(completionHandler)] (bool wasProcessed) {
+    _websiteDataStore->networkProcess().processNotificationEvent(*notificationData, CyberCore::NotificationEventType::Close, [completionHandler = makeBlockPtr(completionHandler)] (bool wasProcessed) {
         RELEASE_LOG(Push, "Notification close event processing complete. Callback result: %d", wasProcessed);
         completionHandler(wasProcessed);
     });
@@ -996,7 +996,7 @@ static Vector<WebKit::WebsiteDataRecord> toWebsiteDataRecords(NSArray *dataRecor
 -(void)_getOriginsWithPushAndNotificationPermissions:(void(^)(NSSet<WKSecurityOrigin *> *))completionHandler
 {
     auto completionHandlerCopy = makeBlockPtr(completionHandler);
-    _websiteDataStore->networkProcess().getOriginsWithPushAndNotificationPermissions(_websiteDataStore->sessionID(), [completionHandlerCopy](const Vector<WebCore::SecurityOriginData>& origins) {
+    _websiteDataStore->networkProcess().getOriginsWithPushAndNotificationPermissions(_websiteDataStore->sessionID(), [completionHandlerCopy](const Vector<CyberCore::SecurityOriginData>& origins) {
         auto set = adoptNS([[NSMutableSet alloc] initWithCapacity:origins.size()]);
         for (auto& origin : origins) {
             auto apiOrigin = API::SecurityOrigin::create(origin);
@@ -1022,7 +1022,7 @@ static Vector<WebKit::WebsiteDataRecord> toWebsiteDataRecords(NSArray *dataRecor
         return completionHandler(nil);
 
     auto completionHandlerCopy = makeBlockPtr(completionHandler);
-    _websiteDataStore->originDirectoryForTesting(WebCore::ClientOrigin { WebCore::SecurityOriginData::fromURLWithoutStrictOpaqueness(topOrigin), WebCore::SecurityOriginData::fromURLWithoutStrictOpaqueness(origin) }, { *websiteDataType }, [completionHandlerCopy = WTFMove(completionHandlerCopy)](auto result) {
+    _websiteDataStore->originDirectoryForTesting(CyberCore::ClientOrigin { CyberCore::SecurityOriginData::fromURLWithoutStrictOpaqueness(topOrigin), CyberCore::SecurityOriginData::fromURLWithoutStrictOpaqueness(origin) }, { *websiteDataType }, [completionHandlerCopy = WTFMove(completionHandlerCopy)](auto result) {
         completionHandlerCopy(result);
     });
 }

@@ -25,7 +25,7 @@
 #include "SVGNames.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(SVGFEDisplacementMapElement);
 
@@ -119,4 +119,4 @@ RefPtr<FilterEffect> SVGFEDisplacementMapElement::createFilterEffect(const Filte
     return FEDisplacementMap::create(xChannelSelector(), yChannelSelector(), scale());
 }
 
-} // namespace WebCore
+} // namespace CyberCore

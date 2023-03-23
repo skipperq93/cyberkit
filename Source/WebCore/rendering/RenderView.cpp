@@ -65,7 +65,7 @@
 #include <wtf/SetForScope.h>
 #include <wtf/StackStats.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(RenderView);
 
@@ -1108,4 +1108,4 @@ void RenderView::unregisterContainerQueryBox(const RenderBox& box)
     m_containerQueryBoxes.remove(box);
 }
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -36,7 +36,7 @@
 OBJC_CLASS AVStreamDataParser;
 OBJC_CLASS NSError;
 
-namespace WebCore {
+namespace CyberCore {
 
 class CDMPrivateMediaSourceAVFObjC;
 

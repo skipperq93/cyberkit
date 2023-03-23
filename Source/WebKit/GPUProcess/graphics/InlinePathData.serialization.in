@@ -23,47 +23,47 @@
 #if ENABLE(INLINE_PATH_DATA)
 
 header: <CyberCore/InlinePathData.h>
-[CustomHeader, AdditionalEncoder=StreamConnectionEncoder] struct WebCore::LineData {
-    WebCore::FloatPoint start;
-    WebCore::FloatPoint end;
+[CustomHeader, AdditionalEncoder=StreamConnectionEncoder] struct CyberCore::LineData {
+    CyberCore::FloatPoint start;
+    CyberCore::FloatPoint end;
 };
 
 header: <CyberCore/InlinePathData.h>
-[CustomHeader, AdditionalEncoder=StreamConnectionEncoder] struct WebCore::MoveData {
-    WebCore::FloatPoint location;
+[CustomHeader, AdditionalEncoder=StreamConnectionEncoder] struct CyberCore::MoveData {
+    CyberCore::FloatPoint location;
 };
 
 header: <CyberCore/InlinePathData.h>
-[CustomHeader, AdditionalEncoder=StreamConnectionEncoder] struct WebCore::QuadCurveData {
-    WebCore::FloatPoint startPoint;
-    WebCore::FloatPoint controlPoint;
-    WebCore::FloatPoint endPoint;
+[CustomHeader, AdditionalEncoder=StreamConnectionEncoder] struct CyberCore::QuadCurveData {
+    CyberCore::FloatPoint startPoint;
+    CyberCore::FloatPoint controlPoint;
+    CyberCore::FloatPoint endPoint;
 };
 
 header: <CyberCore/InlinePathData.h>
-[CustomHeader, AdditionalEncoder=StreamConnectionEncoder] struct WebCore::BezierCurveData {
-    WebCore::FloatPoint startPoint;
-    WebCore::FloatPoint controlPoint1;
-    WebCore::FloatPoint controlPoint2;
-    WebCore::FloatPoint endPoint;
+[CustomHeader, AdditionalEncoder=StreamConnectionEncoder] struct CyberCore::BezierCurveData {
+    CyberCore::FloatPoint startPoint;
+    CyberCore::FloatPoint controlPoint1;
+    CyberCore::FloatPoint controlPoint2;
+    CyberCore::FloatPoint endPoint;
 };
 
 header: <CyberCore/InlinePathData.h>
-[CustomHeader, AdditionalEncoder=StreamConnectionEncoder, NestedClass] enum class WebCore::ArcData::Type : uint8_t {
+[CustomHeader, AdditionalEncoder=StreamConnectionEncoder, NestedClass] enum class CyberCore::ArcData::Type : uint8_t {
     ArcOnly,
     LineAndArc,
     ClosedLineAndArc
 };
     
 header: <CyberCore/InlinePathData.h>
-[CustomHeader, AdditionalEncoder=StreamConnectionEncoder] struct WebCore::ArcData {
-    WebCore::FloatPoint start;
-    WebCore::FloatPoint center;
+[CustomHeader, AdditionalEncoder=StreamConnectionEncoder] struct CyberCore::ArcData {
+    CyberCore::FloatPoint start;
+    CyberCore::FloatPoint center;
     float radius;
     float startAngle;
     float endAngle;
     bool clockwise;
-    WebCore::ArcData::Type type;
+    CyberCore::ArcData::Type type;
 };
 
 #endif

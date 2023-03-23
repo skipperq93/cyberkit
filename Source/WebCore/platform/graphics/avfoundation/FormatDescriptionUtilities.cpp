@@ -44,7 +44,7 @@ constexpr CMVideoCodecType kCMVideoCodecType_VP9 { 'vp09' };
 constexpr CMVideoCodecType kCMVideoCodecType_DolbyVisionHEVC { 'dvh1' };
 #endif
 
-namespace WebCore {
+namespace CyberCore {
 FloatSize presentationSizeFromFormatDescription(CMFormatDescriptionRef formatDescription)
 {
     if (!formatDescription)

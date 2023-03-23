@@ -28,7 +28,7 @@
 #include "Filter.h"
 #include "LengthBox.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class FilterOperations;
 class GraphicsContext;
@@ -71,8 +71,8 @@ private:
     Vector<Ref<FilterFunction>> m_functions;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::CSSFilter)
-    static bool isType(const WebCore::Filter& filter) { return filter.isCSSFilter(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::CSSFilter)
+    static bool isType(const CyberCore::Filter& filter) { return filter.isCSSFilter(); }
 SPECIALIZE_TYPE_TRAITS_END()

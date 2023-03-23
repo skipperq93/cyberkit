@@ -36,7 +36,7 @@
 #include "SharedBuffer.h"
 #include "SynchronousLoaderClient.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 CurlDownload::~CurlDownload()
 {

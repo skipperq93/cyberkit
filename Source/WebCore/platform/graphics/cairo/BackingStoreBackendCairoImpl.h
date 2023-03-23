@@ -22,7 +22,7 @@
 #include "BackingStoreBackendCairo.h"
 #include <pal/HysteresisActivity.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class BackingStoreBackendCairoImpl final : public BackingStoreBackendCairo {
 public:
@@ -36,6 +36,6 @@ private:
     PAL::HysteresisActivity m_scrolledHysteresis;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(CAIRO)

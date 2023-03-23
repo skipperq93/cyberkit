@@ -23,7 +23,7 @@
 
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 SVGPathStringBuilder::SVGPathStringBuilder() = default;
 
@@ -170,4 +170,4 @@ void SVGPathStringBuilder::closePath()
     m_stringBuilder.append("Z ");
 }
 
-} // namespace WebCore
+} // namespace CyberCore

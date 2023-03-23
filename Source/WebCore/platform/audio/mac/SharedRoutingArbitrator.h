@@ -30,7 +30,7 @@
 #include "AudioSession.h"
 #include <wtf/UniqueRef.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class WEBCORE_EXPORT SharedRoutingArbitrator {
 public:

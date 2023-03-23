@@ -73,7 +73,7 @@ public:
     SessionStorageManager* existingSessionStorageManager() { return m_sessionStorageManager.get(); }
     IDBStorageManager& idbStorageManager(IDBStorageRegistry&, IDBStorageManager::QuotaCheckFunction&&);
     IDBStorageManager* existingIDBStorageManager() { return m_idbStorageManager.get(); }
-    CacheStorageManager& cacheStorageManager(CacheStorageRegistry&, const WebCore::ClientOrigin&, CacheStorageManager::QuotaCheckFunction&&, Ref<WorkQueue>&&);
+    CacheStorageManager& cacheStorageManager(CacheStorageRegistry&, const CyberCore::ClientOrigin&, CacheStorageManager::QuotaCheckFunction&&, Ref<WorkQueue>&&);
     CacheStorageManager* existingCacheStorageManager() { return m_cacheStorageManager.get(); }
     uint64_t cacheStorageSize();
     void closeCacheStorageManager();
@@ -221,10 +221,10 @@ IDBStorageManager& OriginStorageManager::StorageBucket::idbStorageManager(IDBSto
     return *m_idbStorageManager;
 }
 
-CacheStorageManager& OriginStorageManager::StorageBucket::cacheStorageManager(CacheStorageRegistry& registry, const WebCore::ClientOrigin& origin, CacheStorageManager::QuotaCheckFunction&& quotaCheckFunction, Ref<WorkQueue>&& queue)
+CacheStorageManager& OriginStorageManager::StorageBucket::cacheStorageManager(CacheStorageRegistry& registry, const CyberCore::ClientOrigin& origin, CacheStorageManager::QuotaCheckFunction&& quotaCheckFunction, Ref<WorkQueue>&& queue)
 {
     if (!m_cacheStorageManager) {
-        std::optional<WebCore::ClientOrigin> optionalOrigin;
+        std::optional<CyberCore::ClientOrigin> optionalOrigin;
         if (m_level < UnifiedOriginStorageLevel::Standard)
             optionalOrigin = origin;
         m_cacheStorageManager = makeUnique<CacheStorageManager>(resolvedCacheStoragePath(), registry, optionalOrigin, WTFMove(quotaCheckFunction), WTFMove(queue));
@@ -317,7 +317,7 @@ OriginStorageManager::DataTypeSizeMap OriginStorageManager::StorageBucket::fetch
         if (FileSystem::fileExists(localStoragePath)) {
             uint64_t size = 0;
             if (shouldComputeSize)
-                size = WebCore::SQLiteFileSystem::databaseFileSize(localStoragePath);
+                size = CyberCore::SQLiteFileSystem::databaseFileSize(localStoragePath);
             result.add(WebsiteDataType::LocalStorage, size);
         }
     }
@@ -376,7 +376,7 @@ void OriginStorageManager::StorageBucket::deleteLocalStorageData(WallTime time)
     if (FileSystem::fileModificationTime(currentLocalStoragePath) >= time) {
         if (m_localStorageManager)
             m_localStorageManager->clearDataOnDisk();
-        WebCore::SQLiteFileSystem::deleteDatabaseFile(currentLocalStoragePath);
+        CyberCore::SQLiteFileSystem::deleteDatabaseFile(currentLocalStoragePath);
     }
 
     if (!m_localStorageManager)
@@ -423,7 +423,7 @@ void OriginStorageManager::StorageBucket::moveData(OptionSet<WebsiteDataType> ty
         auto currentLocalStoragePath = resolvedLocalStoragePath();
         if (!currentLocalStoragePath.isEmpty()) {
             FileSystem::makeAllDirectories(FileSystem::parentPath(localStoragePath));
-            WebCore::SQLiteFileSystem::moveDatabaseFile(currentLocalStoragePath, localStoragePath);
+            CyberCore::SQLiteFileSystem::moveDatabaseFile(currentLocalStoragePath, localStoragePath);
         }
     }
 
@@ -476,7 +476,7 @@ String OriginStorageManager::StorageBucket::resolvedLocalStoragePath()
         if (!m_customLocalStoragePath.isEmpty() && !FileSystem::fileExists(localStoragePath) && FileSystem::fileExists(m_customLocalStoragePath)) {
             RELEASE_LOG(Storage, "%p - StorageBucket::resolvedLocalStoragePath New path '%" PUBLIC_LOG_STRING "'", this, localStoragePath.utf8().data());
             FileSystem::makeAllDirectories(localStorageDirectory);
-            auto moved = WebCore::SQLiteFileSystem::moveDatabaseFile(m_customLocalStoragePath, localStoragePath);
+            auto moved = CyberCore::SQLiteFileSystem::moveDatabaseFile(m_customLocalStoragePath, localStoragePath);
             if (!moved && !FileSystem::fileExists(localStoragePath))
                 RELEASE_LOG_ERROR(Storage, "%p - StorageBucket::resolvedLocalStoragePath Fails to migrate file to new path", this);
         }
@@ -686,7 +686,7 @@ CacheStorageManager* OriginStorageManager::existingCacheStorageManager()
     return defaultBucket().existingCacheStorageManager();
 }
 
-CacheStorageManager& OriginStorageManager::cacheStorageManager(CacheStorageRegistry& registry, const WebCore::ClientOrigin& origin, Ref<WorkQueue>&& queue)
+CacheStorageManager& OriginStorageManager::cacheStorageManager(CacheStorageRegistry& registry, const CyberCore::ClientOrigin& origin, Ref<WorkQueue>&& queue)
 {
     return defaultBucket().cacheStorageManager(registry, origin, [quotaManager = ThreadSafeWeakPtr { this->quotaManager() }](uint64_t spaceRequested, CompletionHandler<void(bool)>&& completionHandler) mutable {
         if (!quotaManager.get())
@@ -721,11 +721,11 @@ void OriginStorageManager::setPersisted(bool value)
     defaultBucket().setMode(value ? StorageBucketMode::Persistent : StorageBucketMode::BestEffort);
 }
 
-WebCore::StorageEstimate OriginStorageManager::estimate()
+CyberCore::StorageEstimate OriginStorageManager::estimate()
 {
     ASSERT(!RunLoop::isMain());
 
-    return WebCore::StorageEstimate { quotaManager().usage(), quotaManager().quota() };
+    return CyberCore::StorageEstimate { quotaManager().usage(), quotaManager().quota() };
 }
 
 OriginStorageManager::DataTypeSizeMap OriginStorageManager::fetchDataTypesInList(OptionSet<WebsiteDataType> types, bool shouldComputeSize)

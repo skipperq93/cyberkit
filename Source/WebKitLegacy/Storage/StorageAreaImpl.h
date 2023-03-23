@@ -32,29 +32,29 @@
 #include <wtf/HashMap.h>
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 class SecurityOrigin;
 class StorageMap;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class StorageAreaSync;
 
-class StorageAreaImpl : public WebCore::StorageArea {
+class StorageAreaImpl : public CyberCore::StorageArea {
 public:
-    static Ref<StorageAreaImpl> create(WebCore::StorageType, const WebCore::SecurityOrigin&, RefPtr<WebCore::StorageSyncManager>&&, unsigned quota);
+    static Ref<StorageAreaImpl> create(CyberCore::StorageType, const CyberCore::SecurityOrigin&, RefPtr<CyberCore::StorageSyncManager>&&, unsigned quota);
     virtual ~StorageAreaImpl();
 
     unsigned length() override;
     String key(unsigned index) override;
     String item(const String& key) override;
-    void setItem(WebCore::Frame& sourceFrame, const String& key, const String& value, bool& quotaException) override;
-    void removeItem(WebCore::Frame& sourceFrame, const String& key) override;
-    void clear(WebCore::Frame& sourceFrame) override;
+    void setItem(CyberCore::Frame& sourceFrame, const String& key, const String& value, bool& quotaException) override;
+    void removeItem(CyberCore::Frame& sourceFrame, const String& key) override;
+    void clear(CyberCore::Frame& sourceFrame) override;
     bool contains(const String& key) override;
 
-    WebCore::StorageType storageType() const override;
+    CyberCore::StorageType storageType() const override;
 
     size_t memoryBytesUsedByCache() override;
 
@@ -76,26 +76,26 @@ public:
     void sessionChanged(bool isNewSessionPersistent);
 
 private:
-    StorageAreaImpl(WebCore::StorageType, const WebCore::SecurityOrigin&, RefPtr<WebCore::StorageSyncManager>&&, unsigned quota);
+    StorageAreaImpl(CyberCore::StorageType, const CyberCore::SecurityOrigin&, RefPtr<CyberCore::StorageSyncManager>&&, unsigned quota);
     explicit StorageAreaImpl(const StorageAreaImpl&);
 
     void blockUntilImportComplete() const;
     void closeDatabaseTimerFired();
 
-    void dispatchStorageEvent(const String& key, const String& oldValue, const String& newValue, WebCore::Frame& sourceFrame);
+    void dispatchStorageEvent(const String& key, const String& oldValue, const String& newValue, CyberCore::Frame& sourceFrame);
 
-    WebCore::StorageType m_storageType;
-    Ref<const WebCore::SecurityOrigin> m_securityOrigin;
-    WebCore::StorageMap m_storageMap;
+    CyberCore::StorageType m_storageType;
+    Ref<const CyberCore::SecurityOrigin> m_securityOrigin;
+    CyberCore::StorageMap m_storageMap;
 
     RefPtr<StorageAreaSync> m_storageAreaSync;
-    RefPtr<WebCore::StorageSyncManager> m_storageSyncManager;
+    RefPtr<CyberCore::StorageSyncManager> m_storageSyncManager;
 
 #if ASSERT_ENABLED
     bool m_isShutdown { false };
 #endif
     unsigned m_accessCount;
-    WebCore::Timer m_closeDatabaseTimer;
+    CyberCore::Timer m_closeDatabaseTimer;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

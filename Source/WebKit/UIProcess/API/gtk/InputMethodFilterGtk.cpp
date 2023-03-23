@@ -29,7 +29,7 @@
 #include <wtf/SetForScope.h>
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 IntRect InputMethodFilter::platformTransformCursorRectToViewCoordinates(const IntRect& cursorRect)
 {

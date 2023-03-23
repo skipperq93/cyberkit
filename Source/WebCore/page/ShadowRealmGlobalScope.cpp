@@ -31,7 +31,7 @@
 #include "ScriptModuleLoader.h"
 #include <wtf/IsoMallocInlines.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(ShadowRealmGlobalScope);
 
@@ -60,4 +60,4 @@ ScriptModuleLoader& ShadowRealmGlobalScope::moduleLoader()
 
 ShadowRealmGlobalScope::~ShadowRealmGlobalScope() = default;
 
-} // namespace WebCore
+} // namespace CyberCore

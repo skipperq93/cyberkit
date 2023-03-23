@@ -25,8 +25,8 @@
 
 #import <CyberKitLegacy/DOMHTMLHeadElement.h>
 
-namespace WebCore {
+namespace CyberCore {
 class HTMLHeadElement;
 }
 
-DOMHTMLHeadElement *kit(WebCore::HTMLHeadElement*);
+DOMHTMLHeadElement *kit(CyberCore::HTMLHeadElement*);

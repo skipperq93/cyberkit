@@ -32,8 +32,8 @@
 #include <CyberCore/Page.h>
 #include <CyberCore/ProgressTracker.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
 WebProgressTrackerClient::WebProgressTrackerClient(WebPage& webPage)
     : m_webPage(webPage)
@@ -71,4 +71,4 @@ void WebProgressTrackerClient::progressFinished(Frame& originatingProgressFrame)
     m_webPage.send(Messages::WebPageProxy::DidFinishProgress());
 }
 
-} // namespace WebKit
+} // namespace CyberKit

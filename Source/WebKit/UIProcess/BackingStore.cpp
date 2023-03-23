@@ -30,7 +30,7 @@
 #include "UpdateInfo.h"
 
 namespace WebKit {
-using namespace WebCore;
+using namespace CyberCore;
 
 BackingStore::BackingStore(const IntSize& size, float deviceScaleFactor, WebPageProxy& webPageProxy)
     : m_size(size)

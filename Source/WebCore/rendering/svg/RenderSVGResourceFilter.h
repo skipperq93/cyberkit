@@ -31,7 +31,7 @@
 #include <wtf/IsoMalloc.h>
 #include <wtf/RefPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class GraphicsContext;
 class SVGFilterElement;
@@ -91,9 +91,9 @@ private:
 
 WTF::TextStream& operator<<(WTF::TextStream&, FilterData::FilterDataState);
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::RenderSVGResourceFilter)
-    static bool isType(const WebCore::RenderObject& renderer) { return renderer.isSVGResourceFilter(); }
-    static bool isType(const WebCore::RenderSVGResource& resource) { return resource.resourceType() == WebCore::FilterResourceType; }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::RenderSVGResourceFilter)
+    static bool isType(const CyberCore::RenderObject& renderer) { return renderer.isSVGResourceFilter(); }
+    static bool isType(const CyberCore::RenderSVGResource& resource) { return resource.resourceType() == CyberCore::FilterResourceType; }
 SPECIALIZE_TYPE_TRAITS_END()

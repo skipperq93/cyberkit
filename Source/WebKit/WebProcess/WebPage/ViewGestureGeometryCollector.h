@@ -29,13 +29,13 @@
 #include "MessageReceiver.h"
 #include <wtf/RunLoop.h>
 
-namespace WebCore {
+namespace CyberCore {
 class FloatPoint;
 class FloatRect;
 class Node;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPage;
 
@@ -47,14 +47,14 @@ public:
 
     void mainFrameDidLayout();
 
-    void computeZoomInformationForNode(WebCore::Node&, WebCore::FloatPoint& origin, WebCore::FloatRect& renderRect, bool& isReplaced, double& viewportMinimumScale, double& viewportMaximumScale);
+    void computeZoomInformationForNode(CyberCore::Node&, CyberCore::FloatPoint& origin, CyberCore::FloatRect& renderRect, bool& isReplaced, double& viewportMinimumScale, double& viewportMaximumScale);
 
 private:
     // IPC::MessageReceiver.
     void didReceiveMessage(IPC::Connection&, IPC::Decoder&) override;
 
     // Message handlers.
-    void collectGeometryForSmartMagnificationGesture(WebCore::FloatPoint origin);
+    void collectGeometryForSmartMagnificationGesture(CyberCore::FloatPoint origin);
 
 #if !PLATFORM(IOS_FAMILY)
     void collectGeometryForMagnificationGesture();
@@ -63,7 +63,7 @@ private:
     void sendDidHitRenderTreeSizeThresholdIfNeeded();
 #endif
 
-    void dispatchDidCollectGeometryForSmartMagnificationGesture(WebCore::FloatPoint origin, WebCore::FloatRect targetRect, WebCore::FloatRect visibleContentRect, bool fitEntireRect, double viewportMinimumScale, double viewportMaximumScale);
+    void dispatchDidCollectGeometryForSmartMagnificationGesture(CyberCore::FloatPoint origin, CyberCore::FloatRect targetRect, CyberCore::FloatRect visibleContentRect, bool fitEntireRect, double viewportMinimumScale, double viewportMaximumScale);
     void computeMinimumAndMaximumViewportScales(double& viewportMinimumScale, double& viewportMaximumScale) const;
 
 #if PLATFORM(IOS_FAMILY)
@@ -79,6 +79,6 @@ private:
 #endif
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ViewGestureGeometryCollector

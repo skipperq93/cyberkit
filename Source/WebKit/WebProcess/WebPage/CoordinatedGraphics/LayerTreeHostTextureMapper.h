@@ -38,7 +38,7 @@
 #include <CyberCore/Timer.h>
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 class GraphicsLayer;
 class GraphicsLayerFactory;
 class IntRect;
@@ -47,11 +47,11 @@ class Page;
 struct ViewportAttributes;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 class WebPage;
 
-class LayerTreeHost : public WebCore::GraphicsLayerClient {
+class LayerTreeHost : public CyberCore::GraphicsLayerClient {
     WTF_MAKE_FAST_ALLOCATED;
 public:
     explicit LayerTreeHost(WebPage&);
@@ -62,26 +62,26 @@ public:
     void setShouldNotifyAfterNextScheduledLayerFlush(bool);
     void scheduleLayerFlush();
     void cancelPendingLayerFlush();
-    void setRootCompositingLayer(WebCore::GraphicsLayer*);
-    void setViewOverlayRootLayer(WebCore::GraphicsLayer*);
-    void setNonCompositedContentsNeedDisplay(const WebCore::IntRect&);
-    void scrollNonCompositedContents(const WebCore::IntRect&);
+    void setRootCompositingLayer(CyberCore::GraphicsLayer*);
+    void setViewOverlayRootLayer(CyberCore::GraphicsLayer*);
+    void setNonCompositedContentsNeedDisplay(const CyberCore::IntRect&);
+    void scrollNonCompositedContents(const CyberCore::IntRect&);
     void forceRepaint();
     void forceRepaintAsync(CompletionHandler<void()>&&);
-    void sizeDidChange(const WebCore::IntSize& newSize);
+    void sizeDidChange(const CyberCore::IntSize& newSize);
     void pauseRendering();
     void resumeRendering();
-    WebCore::GraphicsLayerFactory* graphicsLayerFactory();
-    void contentsSizeChanged(const WebCore::IntSize&);
-    void didChangeViewportAttributes(WebCore::ViewportAttributes&&);
+    CyberCore::GraphicsLayerFactory* graphicsLayerFactory();
+    void contentsSizeChanged(const CyberCore::IntSize&);
+    void didChangeViewportAttributes(CyberCore::ViewportAttributes&&);
     void setIsDiscardable(bool);
     void deviceOrPageScaleFactorChanged();
-    RefPtr<WebCore::DisplayRefreshMonitor> createDisplayRefreshMonitor(WebCore::PlatformDisplayID);
-    WebCore::PlatformDisplayID displayID() const { return m_displayID; }
+    RefPtr<CyberCore::DisplayRefreshMonitor> createDisplayRefreshMonitor(CyberCore::PlatformDisplayID);
+    CyberCore::PlatformDisplayID displayID() const { return m_displayID; }
 
 private:
     // GraphicsLayerClient
-    void paintContents(const WebCore::GraphicsLayer*, WebCore::GraphicsContext&, const WebCore::FloatRect& rectToPaint, WebCore::GraphicsLayerPaintBehavior) override;
+    void paintContents(const CyberCore::GraphicsLayer*, CyberCore::GraphicsContext&, const CyberCore::FloatRect& rectToPaint, CyberCore::GraphicsLayerPaintBehavior) override;
     float deviceScaleFactor() const override;
 
     void initialize();
@@ -90,25 +90,25 @@ private:
     void compositeLayersToContext();
     void flushAndRenderLayers();
     bool flushPendingLayerChanges();
-    void scrollNonCompositedContents(const WebCore::IntRect& scrollRect, const WebCore::IntSize& scrollOffset);
+    void scrollNonCompositedContents(const CyberCore::IntRect& scrollRect, const CyberCore::IntSize& scrollOffset);
     void layerFlushTimerFired();
     bool prepareForRendering();
     void applyDeviceScaleFactor();
 
     WebPage& m_webPage;
-    std::unique_ptr<WebCore::GLContext> m_context;
+    std::unique_ptr<CyberCore::GLContext> m_context;
     LayerTreeContext m_layerTreeContext;
-    WebCore::PlatformDisplayID m_displayID;
-    RefPtr<WebCore::GraphicsLayer> m_rootLayer;
-    WebCore::GraphicsLayer* m_rootCompositingLayer { nullptr };
-    WebCore::GraphicsLayer* m_overlayCompositingLayer { nullptr };
-    std::unique_ptr<WebCore::TextureMapper> m_textureMapper;
-    WebCore::TextureMapperFPSCounter m_fpsCounter;
-    WebCore::Timer m_layerFlushTimer;
+    CyberCore::PlatformDisplayID m_displayID;
+    RefPtr<CyberCore::GraphicsLayer> m_rootLayer;
+    CyberCore::GraphicsLayer* m_rootCompositingLayer { nullptr };
+    CyberCore::GraphicsLayer* m_overlayCompositingLayer { nullptr };
+    std::unique_ptr<CyberCore::TextureMapper> m_textureMapper;
+    CyberCore::TextureMapperFPSCounter m_fpsCounter;
+    CyberCore::Timer m_layerFlushTimer;
     bool m_notifyAfterScheduledLayerFlush { false };
     bool m_isSuspended { false };
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(GRAPHICS_LAYER_TEXTURE_MAPPER)

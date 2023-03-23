@@ -37,7 +37,7 @@
 #include <wtf/MainThread.h>
 #include <wtf/StringExtras.h>
 
-using namespace WebCore;
+using namespace CyberCore;
 
 namespace TestWebKitAPI {
 

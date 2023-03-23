@@ -24,7 +24,7 @@
 #include "GUniquePtrGStreamer.h"
 #include "RealtimeIncomingSourceGStreamer.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RealtimeIncomingVideoSourceGStreamer : public RealtimeIncomingSourceGStreamer {
 public:
@@ -51,10 +51,10 @@ private:
     GUniquePtr<GstStructure> m_stats;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::RealtimeIncomingVideoSourceGStreamer)
-    static bool isType(const WebCore::RealtimeMediaSource& source) { return source.isIncomingVideoSource(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::RealtimeIncomingVideoSourceGStreamer)
+    static bool isType(const CyberCore::RealtimeMediaSource& source) { return source.isIncomingVideoSource(); }
 SPECIALIZE_TYPE_TRAITS_END()
 
 #endif // USE(GSTREAMER_WEBRTC)

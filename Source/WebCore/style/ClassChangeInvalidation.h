@@ -29,7 +29,7 @@
 #include "StyleInvalidator.h"
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class SpaceSplitString;
 

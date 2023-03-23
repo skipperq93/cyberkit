@@ -27,7 +27,7 @@
 #include "TextBoxSelectableRange.h"
 #include "TextRun.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class RenderCombineText;
 
@@ -171,6 +171,6 @@ private:
 
 LayoutRect snappedSelectionRect(const LayoutRect&, float logicalRight, float selectionTop, float selectionHeight, bool isHorizontal);
 
-} // namespace WebCore
+} // namespace CyberCore
 
 SPECIALIZE_TYPE_TRAITS_INLINE_BOX(LegacyInlineTextBox, isInlineTextBox())

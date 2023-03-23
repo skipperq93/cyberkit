@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -21,28 +21,28 @@
 #error "Only <webkitdom/webkitdom.h> can be included directly."
 #endif
 
-#ifndef WebKitDOMCDATASection_h
-#define WebKitDOMCDATASection_h
+#ifndef CyberKitDOMCDATASection_h
+#define CyberKitDOMCDATASection_h
 
 #include <glib-object.h>
-#include <webkitdom/WebKitDOMText.h>
+#include <webkitdom/CyberKitDOMText.h>
 #include <webkitdom/webkitdomdefines.h>
 
 G_BEGIN_DECLS
 
 #define WEBKIT_DOM_TYPE_CDATA_SECTION            (webkit_dom_cdata_section_get_type())
-#define WEBKIT_DOM_CDATA_SECTION(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_CDATA_SECTION, WebKitDOMCDATASection))
-#define WEBKIT_DOM_CDATA_SECTION_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_CDATA_SECTION, WebKitDOMCDATASectionClass)
+#define WEBKIT_DOM_CDATA_SECTION(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), WEBKIT_DOM_TYPE_CDATA_SECTION, CyberKitDOMCDATASection))
+#define WEBKIT_DOM_CDATA_SECTION_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass),  WEBKIT_DOM_TYPE_CDATA_SECTION, CyberKitDOMCDATASectionClass)
 #define WEBKIT_DOM_IS_CDATA_SECTION(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), WEBKIT_DOM_TYPE_CDATA_SECTION))
 #define WEBKIT_DOM_IS_CDATA_SECTION_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass),  WEBKIT_DOM_TYPE_CDATA_SECTION))
-#define WEBKIT_DOM_CDATA_SECTION_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_CDATA_SECTION, WebKitDOMCDATASectionClass))
+#define WEBKIT_DOM_CDATA_SECTION_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj),  WEBKIT_DOM_TYPE_CDATA_SECTION, CyberKitDOMCDATASectionClass))
 
-struct _WebKitDOMCDATASection {
-    WebKitDOMText parent_instance;
+struct _CyberKitDOMCDATASection {
+    CyberKitDOMText parent_instance;
 };
 
-struct _WebKitDOMCDATASectionClass {
-    WebKitDOMTextClass parent_class;
+struct _CyberKitDOMCDATASectionClass {
+    CyberKitDOMTextClass parent_class;
 };
 
 WEBKIT_DEPRECATED GType
@@ -50,4 +50,4 @@ webkit_dom_cdata_section_get_type(void);
 
 G_END_DECLS
 
-#endif /* WebKitDOMCDATASection_h */
+#endif /* CyberKitDOMCDATASection_h */

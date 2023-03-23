@@ -33,13 +33,13 @@
 #include <wtf/Vector.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class GPU;
 class ScriptExecutionContext;
 class ServiceWorkerContainer;
 class StorageManager;
-class WebCoreOpaqueRoot;
+class CyberCoreOpaqueRoot;
 class WebLockManager;
 
 class NavigatorBase : public RefCounted<NavigatorBase>, public ContextDestructionObserver, public CanMakeWeakPtr<NavigatorBase> {
@@ -84,6 +84,6 @@ private:
 #endif
 };
 
-WebCoreOpaqueRoot root(NavigatorBase*);
+CyberCoreOpaqueRoot root(NavigatorBase*);
 
-} // namespace WebCore
+} // namespace CyberCore

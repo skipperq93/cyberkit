@@ -28,13 +28,13 @@
 #if JSC_OBJC_API_ENABLED
 
 #import "PlatformUtilities.h"
-#import "WebCoreTestSupport.h"
+#import "CyberCoreTestSupport.h"
 #import <Carbon/Carbon.h>
 #import <IOKit/pwr_mgt/IOPMLib.h>
 #import <CyberScriptCore/JSCConfig.h>
 #import <CyberScriptCore/JSContext.h>
 #import <CyberCore/Settings.h>
-#import <CyberKit/WebKitLegacy.h>
+#import <CyberKit/CyberKitLegacy.h>
 #import <wtf/RetainPtr.h>
 
 static bool didFinishLoad = false;
@@ -49,7 +49,7 @@ static bool didEndRemotePlayback = false;
 @implementation MediaPlaybackSleepAssertionLoadDelegate
 - (void)webView:(WebView *)webView didCreateJavaScriptContext:(JSContext *)context forFrame:(WebFrame *)frame
 {
-    WebCoreTestSupport::injectInternalsObject(context.JSGlobalContextRef);
+    CyberCoreTestSupport::injectInternalsObject(context.JSGlobalContextRef);
 }
 @end
 
@@ -141,7 +141,7 @@ static bool hasAssertionType(CFStringRef type)
     return false;
 }
 
-TEST(WebKitLegacy, MediaPlaybackSleepAssertion)
+TEST(CyberKitLegacy, MediaPlaybackSleepAssertion)
 {
     JSC::Config::configureForTesting();
 

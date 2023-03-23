@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -18,31 +18,31 @@
  */
 
 #include "config.h"
-#include "WebKitDOMNodeList.h"
+#include "CyberKitDOMNodeList.h"
 
 #include <CyberCore/CSSImportRule.h>
 #include "DOMObjectCache.h"
 #include <CyberCore/Document.h>
 #include <CyberCore/ExceptionCode.h>
 #include <CyberCore/JSExecState.h>
-#include "WebKitDOMNodeListPrivate.h"
-#include "WebKitDOMNodePrivate.h"
-#include "WebKitDOMPrivate.h"
+#include "CyberKitDOMNodeListPrivate.h"
+#include "CyberKitDOMNodePrivate.h"
+#include "CyberKitDOMPrivate.h"
 #include "ConvertToUTF8String.h"
 #include <wtf/GetPtr.h>
 #include <wtf/RefPtr.h>
 
-#define WEBKIT_DOM_NODE_LIST_GET_PRIVATE(obj) G_TYPE_INSTANCE_GET_PRIVATE(obj, WEBKIT_DOM_TYPE_NODE_LIST, WebKitDOMNodeListPrivate)
+#define WEBKIT_DOM_NODE_LIST_GET_PRIVATE(obj) G_TYPE_INSTANCE_GET_PRIVATE(obj, WEBKIT_DOM_TYPE_NODE_LIST, CyberKitDOMNodeListPrivate)
 
-typedef struct _WebKitDOMNodeListPrivate {
-    RefPtr<WebCore::NodeList> coreObject;
-} WebKitDOMNodeListPrivate;
+typedef struct _CyberKitDOMNodeListPrivate {
+    RefPtr<CyberCore::NodeList> coreObject;
+} CyberKitDOMNodeListPrivate;
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
-namespace WebKit {
+namespace CyberKit {
 
-WebKitDOMNodeList* kit(WebCore::NodeList* obj)
+CyberKitDOMNodeList* kit(CyberCore::NodeList* obj)
 {
     if (!obj)
         return 0;
@@ -53,20 +53,20 @@ WebKitDOMNodeList* kit(WebCore::NodeList* obj)
     return wrapNodeList(obj);
 }
 
-WebCore::NodeList* core(WebKitDOMNodeList* request)
+CyberCore::NodeList* core(CyberKitDOMNodeList* request)
 {
-    return request ? static_cast<WebCore::NodeList*>(WEBKIT_DOM_OBJECT(request)->coreObject) : 0;
+    return request ? static_cast<CyberCore::NodeList*>(WEBKIT_DOM_OBJECT(request)->coreObject) : 0;
 }
 
-WebKitDOMNodeList* wrapNodeList(WebCore::NodeList* coreObject)
+CyberKitDOMNodeList* wrapNodeList(CyberCore::NodeList* coreObject)
 {
     ASSERT(coreObject);
     return WEBKIT_DOM_NODE_LIST(g_object_new(WEBKIT_DOM_TYPE_NODE_LIST, "core-object", coreObject, nullptr));
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
-G_DEFINE_TYPE(WebKitDOMNodeList, webkit_dom_node_list, WEBKIT_DOM_TYPE_OBJECT)
+G_DEFINE_TYPE(CyberKitDOMNodeList, webkit_dom_node_list, WEBKIT_DOM_TYPE_OBJECT)
 
 enum {
     DOM_NODE_LIST_PROP_0,
@@ -75,17 +75,17 @@ enum {
 
 static void webkit_dom_node_list_finalize(GObject* object)
 {
-    WebKitDOMNodeListPrivate* priv = WEBKIT_DOM_NODE_LIST_GET_PRIVATE(object);
+    CyberKitDOMNodeListPrivate* priv = WEBKIT_DOM_NODE_LIST_GET_PRIVATE(object);
 
-    WebKit::DOMObjectCache::forget(priv->coreObject.get());
+    CyberKit::DOMObjectCache::forget(priv->coreObject.get());
 
-    priv->~WebKitDOMNodeListPrivate();
+    priv->~CyberKitDOMNodeListPrivate();
     G_OBJECT_CLASS(webkit_dom_node_list_parent_class)->finalize(object);
 }
 
 static void webkit_dom_node_list_get_property(GObject* object, guint propertyId, GValue* value, GParamSpec* pspec)
 {
-    WebKitDOMNodeList* self = WEBKIT_DOM_NODE_LIST(object);
+    CyberKitDOMNodeList* self = WEBKIT_DOM_NODE_LIST(object);
 
     switch (propertyId) {
     case DOM_NODE_LIST_PROP_LENGTH:
@@ -101,17 +101,17 @@ static GObject* webkit_dom_node_list_constructor(GType type, guint constructProp
 {
     GObject* object = G_OBJECT_CLASS(webkit_dom_node_list_parent_class)->constructor(type, constructPropertiesCount, constructProperties);
 
-    WebKitDOMNodeListPrivate* priv = WEBKIT_DOM_NODE_LIST_GET_PRIVATE(object);
-    priv->coreObject = static_cast<WebCore::NodeList*>(WEBKIT_DOM_OBJECT(object)->coreObject);
-    WebKit::DOMObjectCache::put(priv->coreObject.get(), object);
+    CyberKitDOMNodeListPrivate* priv = WEBKIT_DOM_NODE_LIST_GET_PRIVATE(object);
+    priv->coreObject = static_cast<CyberCore::NodeList*>(WEBKIT_DOM_OBJECT(object)->coreObject);
+    CyberKit::DOMObjectCache::put(priv->coreObject.get(), object);
 
     return object;
 }
 
-static void webkit_dom_node_list_class_init(WebKitDOMNodeListClass* requestClass)
+static void webkit_dom_node_list_class_init(CyberKitDOMNodeListClass* requestClass)
 {
     GObjectClass* gobjectClass = G_OBJECT_CLASS(requestClass);
-    g_type_class_add_private(gobjectClass, sizeof(WebKitDOMNodeListPrivate));
+    g_type_class_add_private(gobjectClass, sizeof(CyberKitDOMNodeListPrivate));
     gobjectClass->constructor = webkit_dom_node_list_constructor;
     gobjectClass->finalize = webkit_dom_node_list_finalize;
     gobjectClass->get_property = webkit_dom_node_list_get_property;
@@ -128,26 +128,26 @@ static void webkit_dom_node_list_class_init(WebKitDOMNodeListClass* requestClass
 
 }
 
-static void webkit_dom_node_list_init(WebKitDOMNodeList* request)
+static void webkit_dom_node_list_init(CyberKitDOMNodeList* request)
 {
-    WebKitDOMNodeListPrivate* priv = WEBKIT_DOM_NODE_LIST_GET_PRIVATE(request);
-    new (priv) WebKitDOMNodeListPrivate();
+    CyberKitDOMNodeListPrivate* priv = WEBKIT_DOM_NODE_LIST_GET_PRIVATE(request);
+    new (priv) CyberKitDOMNodeListPrivate();
 }
 
-WebKitDOMNode* webkit_dom_node_list_item(WebKitDOMNodeList* self, gulong index)
+CyberKitDOMNode* webkit_dom_node_list_item(CyberKitDOMNodeList* self, gulong index)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_NODE_LIST(self), 0);
-    WebCore::NodeList* item = WebKit::core(self);
-    RefPtr<WebCore::Node> gobjectResult = WTF::getPtr(item->item(index));
-    return WebKit::kit(gobjectResult.get());
+    CyberCore::NodeList* item = CyberKit::core(self);
+    RefPtr<CyberCore::Node> gobjectResult = WTF::getPtr(item->item(index));
+    return CyberKit::kit(gobjectResult.get());
 }
 
-gulong webkit_dom_node_list_get_length(WebKitDOMNodeList* self)
+gulong webkit_dom_node_list_get_length(CyberKitDOMNodeList* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_NODE_LIST(self), 0);
-    WebCore::NodeList* item = WebKit::core(self);
+    CyberCore::NodeList* item = CyberKit::core(self);
     gulong result = item->length();
     return result;
 }

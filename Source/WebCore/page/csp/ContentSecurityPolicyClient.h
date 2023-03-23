@@ -29,7 +29,7 @@
 #include <CyberScriptCore/ConsoleTypes.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class FormData;
 
@@ -53,4 +53,4 @@ struct WEBCORE_EXPORT ContentSecurityPolicyClient {
     virtual void enqueueSecurityPolicyViolationEvent(SecurityPolicyViolationEventInit&&) = 0;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

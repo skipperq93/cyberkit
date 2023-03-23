@@ -38,7 +38,7 @@ OBJC_CLASS DDScannerResult;
 #include <wtf/RetainPtr.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct CharacterRange;
 
@@ -129,6 +129,6 @@ struct TextRecognitionResult {
 RetainPtr<NSAttributedString> stringForRange(const TextRecognitionResult&, const CharacterRange&);
 #endif
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(IMAGE_ANALYSIS)

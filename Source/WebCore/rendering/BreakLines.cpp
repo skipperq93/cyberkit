@@ -31,7 +31,7 @@
 #include <wtf/StdLibExtras.h>
 #include <wtf/unicode/CharacterNames.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // Pack 8 bits into one byte
 #define B(a, b, c, d, e, f, g, h) \
@@ -97,4 +97,4 @@ const unsigned char lineBreakTable[][lineBreakTableColumnCount] = {
 
 static_assert(std::size(lineBreakTable) == lineBreakTableLastCharacter - lineBreakTableFirstCharacter + 1, "Test LineBreakTable consistency");
 
-} // namespace WebCore
+} // namespace CyberCore

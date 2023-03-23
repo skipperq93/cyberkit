@@ -26,7 +26,7 @@
 #import "config.h"
 #import "WKNSData.h"
 
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 
 @implementation WKNSData {
     API::ObjectStorage<API::Data> _data;
@@ -34,7 +34,7 @@
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainRunLoop(WKNSData.class, self))
+    if (CyberCoreObjCScheduleDeallocateOnMainRunLoop(WKNSData.class, self))
         return;
 
     _data->~Data();

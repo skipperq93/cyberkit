@@ -43,7 +43,7 @@ class FormDataReference;
 class SharedBufferReference;
 }
 
-namespace WebCore {
+namespace CyberCore {
 class ContentFilterUnblockHandler;
 class NetworkLoadMetrics;
 class ResourceError;
@@ -54,7 +54,7 @@ class SubstituteData;
 enum class MainFrameMainResource : bool;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
 enum class PrivateRelayed : bool;
 
@@ -62,52 +62,52 @@ class WebResourceLoader : public RefCounted<WebResourceLoader>, public IPC::Mess
 public:
     struct TrackingParameters {
         WebPageProxyIdentifier webPageProxyID;
-        WebCore::PageIdentifier pageID;
-        WebCore::FrameIdentifier frameID;
-        WebCore::ResourceLoaderIdentifier resourceID;
+        CyberCore::PageIdentifier pageID;
+        CyberCore::FrameIdentifier frameID;
+        CyberCore::ResourceLoaderIdentifier resourceID;
     };
 
-    static Ref<WebResourceLoader> create(Ref<WebCore::ResourceLoader>&&, const TrackingParameters&);
+    static Ref<WebResourceLoader> create(Ref<CyberCore::ResourceLoader>&&, const TrackingParameters&);
 
     ~WebResourceLoader();
 
     void didReceiveWebResourceLoaderMessage(IPC::Connection&, IPC::Decoder&);
 
-    WebCore::ResourceLoader* resourceLoader() const { return m_coreLoader.get(); }
+    CyberCore::ResourceLoader* resourceLoader() const { return m_coreLoader.get(); }
 
     void detachFromCoreLoader();
 
 private:
-    WebResourceLoader(Ref<WebCore::ResourceLoader>&&, const TrackingParameters&);
+    WebResourceLoader(Ref<CyberCore::ResourceLoader>&&, const TrackingParameters&);
 
     // IPC::MessageSender
     IPC::Connection* messageSenderConnection() const override;
     uint64_t messageSenderDestinationID() const override;
 
-    void willSendRequest(WebCore::ResourceRequest&&, IPC::FormDataReference&& requestBody, WebCore::ResourceResponse&&);
+    void willSendRequest(CyberCore::ResourceRequest&&, IPC::FormDataReference&& requestBody, CyberCore::ResourceResponse&&);
     void didSendData(uint64_t bytesSent, uint64_t totalBytesToBeSent);
-    void didReceiveResponse(WebCore::ResourceResponse&&, PrivateRelayed, bool needsContinueDidReceiveResponseMessage, std::optional<WebCore::NetworkLoadMetrics>&&);
+    void didReceiveResponse(CyberCore::ResourceResponse&&, PrivateRelayed, bool needsContinueDidReceiveResponseMessage, std::optional<CyberCore::NetworkLoadMetrics>&&);
     void didReceiveData(IPC::SharedBufferReference&& data, uint64_t encodedDataLength);
-    void didFinishResourceLoad(WebCore::NetworkLoadMetrics&&);
-    void didFailResourceLoad(const WebCore::ResourceError&);
-    void didFailServiceWorkerLoad(const WebCore::ResourceError&);
+    void didFinishResourceLoad(CyberCore::NetworkLoadMetrics&&);
+    void didFailResourceLoad(const CyberCore::ResourceError&);
+    void didFailServiceWorkerLoad(const CyberCore::ResourceError&);
     void serviceWorkerDidNotHandle();
     void didBlockAuthenticationChallenge();
     void setWorkerStart(MonotonicTime value) { m_workerStart = value; }
 
-    void stopLoadingAfterXFrameOptionsOrContentSecurityPolicyDenied(const WebCore::ResourceResponse&);
+    void stopLoadingAfterXFrameOptionsOrContentSecurityPolicyDenied(const CyberCore::ResourceResponse&);
 
-    WebCore::MainFrameMainResource mainFrameMainResource() const;
+    CyberCore::MainFrameMainResource mainFrameMainResource() const;
     
 #if ENABLE(SHAREABLE_RESOURCE)
     void didReceiveResource(const ShareableResource::Handle&);
 #endif
 
 #if ENABLE(CONTENT_FILTERING_IN_NETWORKING_PROCESS)
-    void contentFilterDidBlockLoad(const WebCore::ContentFilterUnblockHandler&, String&& unblockRequestDeniedScript, const WebCore::ResourceError&, const URL& blockedPageURL, WebCore::SubstituteData&&);
+    void contentFilterDidBlockLoad(const CyberCore::ContentFilterUnblockHandler&, String&& unblockRequestDeniedScript, const CyberCore::ResourceError&, const URL& blockedPageURL, CyberCore::SubstituteData&&);
 #endif
     
-    RefPtr<WebCore::ResourceLoader> m_coreLoader;
+    RefPtr<CyberCore::ResourceLoader> m_coreLoader;
     TrackingParameters m_trackingParameters;
     WebResourceInterceptController m_interceptController;
     size_t m_numBytesReceived { 0 };
@@ -119,4 +119,4 @@ private:
     MonotonicTime m_workerStart;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

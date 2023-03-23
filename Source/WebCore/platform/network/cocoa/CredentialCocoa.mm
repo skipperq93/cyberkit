@@ -26,7 +26,7 @@
 #import "config.h"
 #import "CredentialCocoa.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static NSURLCredentialPersistence toNSURLCredentialPersistence(CredentialPersistence persistence)
 {
@@ -117,4 +117,4 @@ bool Credential::encodingRequiresPlatformData(NSURLCredential *credential)
     return !credential.user;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

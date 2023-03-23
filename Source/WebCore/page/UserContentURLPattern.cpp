@@ -30,7 +30,7 @@
 #include <wtf/StdLibExtras.h>
 #include <wtf/URL.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 UserContentURLPattern::UserContentURLPattern(StringView scheme, StringView host, StringView path)
 {
@@ -286,4 +286,4 @@ bool UserContentURLPattern::matchesPath(const String& path) const
     return MatchTester(m_path, path).test();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

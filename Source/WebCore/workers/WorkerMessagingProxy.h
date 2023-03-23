@@ -33,7 +33,7 @@
 #include <wtf/MonotonicTime.h>
 #include <wtf/ThreadSafeRefCounted.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DedicatedWorkerThread;
 class WorkerInspectorProxy;
@@ -105,8 +105,8 @@ private:
     Vector<std::unique_ptr<ScriptExecutionContext::Task>> m_queuedEarlyTasks; // Tasks are queued here until there's a thread object created.
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::WorkerMessagingProxy)
-    static bool isType(const WebCore::WorkerLoaderProxy& proxy) { return proxy.isWorkerMessagingProxy(); }
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::WorkerMessagingProxy)
+    static bool isType(const CyberCore::WorkerLoaderProxy& proxy) { return proxy.isWorkerMessagingProxy(); }
 SPECIALIZE_TYPE_TRAITS_END()

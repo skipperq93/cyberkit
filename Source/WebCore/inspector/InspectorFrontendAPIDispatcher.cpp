@@ -66,7 +66,7 @@ void InspectorFrontendAPIDispatcher::frontendLoaded()
     ASSERT(m_frontendPage);
     m_frontendLoaded = true;
 
-    // In some convoluted WebKitLegacy-only scenarios, the backend may try to dispatch events to the frontend
+    // In some convoluted CyberKitLegacy-only scenarios, the backend may try to dispatch events to the frontend
     // underneath InspectorFrontendHost::loaded() when it is unsafe to execute script, causing suspend() to
     // be called before the frontend has fully loaded. See <https://bugs.webkit.org/show_bug.cgi?id=218840>.
     if (!m_suspended)

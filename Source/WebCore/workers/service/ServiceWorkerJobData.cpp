@@ -30,7 +30,7 @@
 
 #if ENABLE(SERVICE_WORKER)
 
-namespace WebCore {
+namespace CyberCore {
 
 static inline ServiceWorkerOrClientIdentifier serviceWorkerOrClientIdentifier(const ServiceWorkerOrClientIdentifier& localSourceContext)
 {
@@ -53,7 +53,7 @@ ServiceWorkerJobData::ServiceWorkerJobData(Identifier identifier, const ServiceW
 {
 }
 
-ServiceWorkerJobData::ServiceWorkerJobData(WebCore::ServiceWorkerJobDataIdentifier&& identifier, URL&& scriptURL, URL&& clientCreationURL, WebCore::SecurityOriginData&& topOrigin, URL&& scopeURL, WebCore::ServiceWorkerOrClientIdentifier&& sourceContext, WebCore::WorkerType workerType, WebCore::ServiceWorkerJobType type, String&& domainForCachePartition, bool isFromServiceWorkerPage, std::optional<WebCore::ServiceWorkerRegistrationOptions>&& registrationOptions)
+ServiceWorkerJobData::ServiceWorkerJobData(CyberCore::ServiceWorkerJobDataIdentifier&& identifier, URL&& scriptURL, URL&& clientCreationURL, CyberCore::SecurityOriginData&& topOrigin, URL&& scopeURL, CyberCore::ServiceWorkerOrClientIdentifier&& sourceContext, CyberCore::WorkerType workerType, CyberCore::ServiceWorkerJobType type, String&& domainForCachePartition, bool isFromServiceWorkerPage, std::optional<CyberCore::ServiceWorkerRegistrationOptions>&& registrationOptions)
     : scriptURL(WTFMove(scriptURL))
     , clientCreationURL(WTFMove(clientCreationURL))
     , topOrigin(WTFMove(topOrigin))
@@ -126,6 +126,6 @@ bool ServiceWorkerJobData::isEquivalent(const ServiceWorkerJobData& job) const
     return false;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

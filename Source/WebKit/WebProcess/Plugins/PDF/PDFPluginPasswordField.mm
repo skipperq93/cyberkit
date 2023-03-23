@@ -37,8 +37,8 @@
 #import <CyberCore/HTMLElement.h>
 #import <CyberCore/KeyboardEvent.h>
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 using namespace HTMLNames;
 
 Ref<PDFPluginPasswordField> PDFPluginPasswordField::create(PDFLayerController *pdfLayerController, PDFPlugin* plugin)
@@ -63,7 +63,7 @@ void PDFPluginPasswordField::updateGeometry()
 {
 }
 
-bool PDFPluginPasswordField::handleEvent(WebCore::Event& event)
+bool PDFPluginPasswordField::handleEvent(CyberCore::Event& event)
 {
     if (event.isKeyboardEvent() && event.type() == eventNames().keyupEvent) {
         auto& keyboardEvent = downcast<KeyboardEvent>(event);
@@ -78,6 +78,6 @@ bool PDFPluginPasswordField::handleEvent(WebCore::Event& event)
     return false;
 }
     
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // ENABLE(PDFKIT_PLUGIN)

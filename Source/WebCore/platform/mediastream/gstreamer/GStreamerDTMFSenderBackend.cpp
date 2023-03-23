@@ -25,7 +25,7 @@
 #include "NotImplemented.h"
 #include <wtf/MainThread.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 GStreamerDTMFSenderBackend::GStreamerDTMFSenderBackend()
 {
@@ -71,6 +71,6 @@ void GStreamerDTMFSenderBackend::onTonePlayed(Function<void()>&& onTonePlayed)
     m_onTonePlayed = WTFMove(onTonePlayed);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_RTC) && USE(GSTREAMER_WEBRTC)

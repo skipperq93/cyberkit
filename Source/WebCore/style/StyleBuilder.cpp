@@ -47,7 +47,7 @@
 
 #include <wtf/SetForScope.h>
 
-namespace WebCore {
+namespace CyberCore {
 namespace Style {
 
 static const CSSPropertyID firstLowPriorityProperty = static_cast<CSSPropertyID>(lastHighPriorityProperty + 1);
@@ -262,7 +262,7 @@ void Builder::applyProperty(CSSPropertyID id, CSSValue& value, SelectorChecker::
         return applyProperty(newId, valueToApply.get(), linkMatchMask);
     }
 
-    auto valueID = WebCore::valueID(valueToApply.get());
+    auto valueID = CyberCore::valueID(valueToApply.get());
 
     const CSSCustomPropertyValue* customPropertyValue = nullptr;
     const CSSRegisteredCustomProperty* registeredCustomProperty = nullptr;

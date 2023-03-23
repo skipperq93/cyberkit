@@ -27,7 +27,7 @@
 
 #import <pal/spi/cocoa/AVKitSPI.h>
 
-namespace WebCore {
+namespace CyberCore {
 class PlaybackSessionModel;
 class PlaybackSessionInterfaceAVKit;
 }
@@ -45,8 +45,8 @@ class PlaybackSessionInterfaceAVKit;
 - (void)setAllowsPictureInPicture:(BOOL)allowsPictureInPicture;
 
 @property (retain) AVPlayerController *playerControllerProxy;
-@property (assign /*weak*/) WebCore::PlaybackSessionModel* delegate;
-@property (assign /*weak*/) WebCore::PlaybackSessionInterfaceAVKit* playbackSessionInterface;
+@property (assign /*weak*/) CyberCore::PlaybackSessionModel* delegate;
+@property (assign /*weak*/) CyberCore::PlaybackSessionInterfaceAVKit* playbackSessionInterface;
 
 @property (readonly) BOOL canScanForward;
 @property BOOL canScanBackward;

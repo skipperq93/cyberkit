@@ -29,7 +29,7 @@
 #include <wtf/URL.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct MediaUsageInfo {
     URL mediaURL;
@@ -258,4 +258,4 @@ template<class Decoder> inline std::optional<MediaUsageInfo> MediaUsageInfo::dec
     return info;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

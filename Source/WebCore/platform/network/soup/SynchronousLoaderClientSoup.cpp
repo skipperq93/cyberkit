@@ -33,7 +33,7 @@
 #include "NotImplemented.h"
 #include "ResourceHandle.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 void SynchronousLoaderClient::didReceiveAuthenticationChallenge(ResourceHandle*, const AuthenticationChallenge&)
 {

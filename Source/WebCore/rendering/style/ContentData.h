@@ -29,7 +29,7 @@
 #include "RenderPtr.h"
 #include <wtf/TypeCasts.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class Document;
 class RenderObject;
@@ -230,11 +230,11 @@ inline bool operator!=(const ContentData& a, const ContentData& b)
     return !(a == b);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #define SPECIALIZE_TYPE_TRAITS_CONTENT_DATA(ToClassName, ContentDataName) \
-SPECIALIZE_TYPE_TRAITS_BEGIN(WebCore::ToClassName) \
-    static bool isType(const WebCore::ContentData& contentData) { return contentData.is##ContentDataName(); } \
+SPECIALIZE_TYPE_TRAITS_BEGIN(CyberCore::ToClassName) \
+    static bool isType(const CyberCore::ContentData& contentData) { return contentData.is##ContentDataName(); } \
 SPECIALIZE_TYPE_TRAITS_END()
 
 SPECIALIZE_TYPE_TRAITS_CONTENT_DATA(ImageContentData, Image)

@@ -42,7 +42,7 @@
 #include "RectangleShape.h"
 #include "WindRule.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 static std::unique_ptr<Shape> createInsetShape(const FloatRoundedRect& bounds)
 {
@@ -248,4 +248,4 @@ std::unique_ptr<Shape> Shape::createBoxShape(const RoundedRect& roundedRect, Wri
     return shape;
 }
 
-} // namespace WebCore
+} // namespace CyberCore

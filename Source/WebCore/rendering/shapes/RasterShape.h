@@ -35,7 +35,7 @@
 #include <wtf/Assertions.h>
 #include <wtf/Vector.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class RasterShapeIntervals {
     WTF_MAKE_FAST_ALLOCATED;
@@ -105,4 +105,4 @@ private:
     IntSize m_marginRectSize;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -48,7 +48,7 @@ namespace API {
 class ViewClient;
 }
 
-namespace WebCore {
+namespace CyberCore {
 struct CompositionUnderline;
 }
 
@@ -83,7 +83,7 @@ public:
     void setInputMethodContext(WebKitInputMethodContext*);
     WebKitInputMethodContext* inputMethodContext() const;
     void setInputMethodState(std::optional<WebKit::InputMethodState>&&);
-    void synthesizeCompositionKeyPress(const String&, std::optional<Vector<WebCore::CompositionUnderline>>&&, std::optional<WebKit::EditingRange>&&);
+    void synthesizeCompositionKeyPress(const String&, std::optional<Vector<CyberCore::CompositionUnderline>>&&, std::optional<WebKit::EditingRange>&&);
 
     void selectionDidChange();
 
@@ -92,9 +92,9 @@ public:
     API::ViewClient& client() const { return *m_client; }
     struct wpe_view_backend* backend() { return m_backend; }
 
-    const WebCore::IntSize& size() const { return m_size; }
+    const CyberCore::IntSize& size() const { return m_size; }
 
-    OptionSet<WebCore::ActivityState::Flag> viewState() const { return m_viewStateFlags; }
+    OptionSet<CyberCore::ActivityState::Flag> viewState() const { return m_viewStateFlags; }
 
     void close();
 
@@ -117,8 +117,8 @@ public:
 private:
     View(struct wpe_view_backend*, const API::PageConfiguration&);
 
-    void setSize(const WebCore::IntSize&);
-    void setViewState(OptionSet<WebCore::ActivityState::Flag>);
+    void setSize(const CyberCore::IntSize&);
+    void setViewState(OptionSet<CyberCore::ActivityState::Flag>);
     void handleKeyboardEvent(struct wpe_input_keyboard_event*);
 
     std::unique_ptr<API::ViewClient> m_client;
@@ -128,8 +128,8 @@ private:
 #endif
     std::unique_ptr<WebKit::PageClientImpl> m_pageClient;
     RefPtr<WebKit::WebPageProxy> m_pageProxy;
-    WebCore::IntSize m_size;
-    OptionSet<WebCore::ActivityState::Flag> m_viewStateFlags;
+    CyberCore::IntSize m_size;
+    OptionSet<CyberCore::ActivityState::Flag> m_viewStateFlags;
 
     struct wpe_view_backend* m_backend;
 

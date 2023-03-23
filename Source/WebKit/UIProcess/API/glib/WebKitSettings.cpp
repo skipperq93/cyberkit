@@ -3148,9 +3148,9 @@ void webkit_settings_set_user_agent(WebKitSettings* settings, const char* userAg
     String userAgentString;
     if (userAgent && *userAgent) {
         userAgentString = String::fromUTF8(userAgent);
-        g_return_if_fail(WebCore::isValidUserAgentHeaderValue(userAgentString));
+        g_return_if_fail(CyberCore::isValidUserAgentHeaderValue(userAgentString));
     } else
-        userAgentString = WebCore::standardUserAgent(emptyString());
+        userAgentString = CyberCore::standardUserAgent(emptyString());
 
     CString newUserAgent = userAgentString.utf8();
     if (newUserAgent == priv->userAgent)
@@ -3176,7 +3176,7 @@ void webkit_settings_set_user_agent_with_application_details(WebKitSettings* set
 {
     g_return_if_fail(WEBKIT_IS_SETTINGS(settings));
 
-    CString newUserAgent = WebCore::standardUserAgent(String::fromUTF8(applicationName), String::fromUTF8(applicationVersion)).utf8();
+    CString newUserAgent = CyberCore::standardUserAgent(String::fromUTF8(applicationName), String::fromUTF8(applicationVersion)).utf8();
     webkit_settings_set_user_agent(settings, newUserAgent.data());
 }
 
@@ -3836,7 +3836,7 @@ void webkit_settings_set_enable_back_forward_navigation_gestures(WebKitSettings*
  */
 guint32 webkit_settings_font_size_to_points(guint32 pixels)
 {
-    return std::round(pixels * 72 / WebCore::screenDPI());
+    return std::round(pixels * 72 / CyberCore::screenDPI());
 }
 
 /**
@@ -3856,7 +3856,7 @@ guint32 webkit_settings_font_size_to_points(guint32 pixels)
  */
 guint32 webkit_settings_font_size_to_pixels(guint32 points)
 {
-    return std::round(points * WebCore::screenDPI() / 72);
+    return std::round(points * CyberCore::screenDPI() / 72);
 }
 #endif // PLATFORM(GTK)
 

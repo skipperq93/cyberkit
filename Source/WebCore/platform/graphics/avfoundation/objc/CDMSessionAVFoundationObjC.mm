@@ -33,7 +33,7 @@
 #import "Logging.h"
 #import "MediaPlayer.h"
 #import "MediaPlayerPrivateAVFoundationObjC.h"
-#import "WebCoreNSErrorExtras.h"
+#import "CyberCoreNSErrorExtras.h"
 #import <AVFoundation/AVAsset.h>
 #import <AVFoundation/AVAssetResourceLoader.h>
 #import <CyberScriptCore/TypedArrayInlines.h>
@@ -43,7 +43,7 @@
 #import <wtf/SoftLinking.h>
 #import <wtf/UUID.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 CDMSessionAVFoundationObjC::CDMSessionAVFoundationObjC(MediaPlayerPrivateAVFoundationObjC* parent, LegacyCDMSessionClient& client)
     : m_parent(*parent)

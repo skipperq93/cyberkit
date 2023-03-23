@@ -33,14 +33,14 @@
 #import "JSDOMPromiseDeferred.h"
 #import <pal/spi/cocoa/LaunchServicesSPI.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 String ServiceWorkerInternals::processName() const
 {
     return adoptCF((CFStringRef)_LSCopyApplicationInformationItem(kLSDefaultSessionID, _LSGetCurrentApplicationASN(), _kLSDisplayNameKey)).get();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif
 

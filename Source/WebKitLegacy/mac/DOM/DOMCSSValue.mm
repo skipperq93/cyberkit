@@ -31,18 +31,18 @@
 #import "ExceptionHandlers.h"
 #import <CyberCore/JSExecState.h>
 #import <CyberCore/ThreadCheck.h>
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 #import <CyberCore/WebScriptObjectPrivate.h>
 #import <wtf/GetPtr.h>
 #import <wtf/URL.h>
 
-#define IMPL reinterpret_cast<WebCore::DeprecatedCSSOMValue*>(_internal)
+#define IMPL reinterpret_cast<CyberCore::DeprecatedCSSOMValue*>(_internal)
 
 @implementation DOMCSSValue
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainThread([DOMCSSValue class], self))
+    if (CyberCoreObjCScheduleDeallocateOnMainThread([DOMCSSValue class], self))
         return;
 
     if (_internal)
@@ -52,27 +52,27 @@
 
 - (NSString *)cssText
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->cssText();
 }
 
 - (void)setCssText:(NSString *)newCssText
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     raiseOnDOMError(IMPL->setCssText(newCssText));
 }
 
 - (unsigned short)cssValueType
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->cssValueType();
 }
 
 @end
 
-DOMCSSValue *kit(WebCore::DeprecatedCSSOMValue* value)
+DOMCSSValue *kit(CyberCore::DeprecatedCSSOMValue* value)
 {
-    WebCoreThreadViolationCheckRoundOne();
+    CyberCoreThreadViolationCheckRoundOne();
     if (!value)
         return nil;
     if (DOMCSSValue *wrapper = getDOMWrapper(value))

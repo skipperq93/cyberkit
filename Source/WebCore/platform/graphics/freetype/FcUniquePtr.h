@@ -31,7 +31,7 @@
 #include <fontconfig/fontconfig.h>
 #include <memory>
 
-namespace WebCore {
+namespace CyberCore {
 
 template<typename T>
 struct FcPtrDeleter {
@@ -69,7 +69,7 @@ template<> struct FcPtrDeleter<FcObjectSet> {
     }
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(FREETYPE)
 

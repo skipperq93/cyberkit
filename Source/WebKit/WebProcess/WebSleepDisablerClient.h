@@ -27,13 +27,13 @@
 
 #include <CyberCore/SleepDisablerClient.h>
 
-namespace WebKit {
+namespace CyberKit {
 
-class WebSleepDisablerClient : public WebCore::SleepDisablerClient {
+class WebSleepDisablerClient : public CyberCore::SleepDisablerClient {
     WTF_MAKE_FAST_ALLOCATED;
 public:
-    void didCreateSleepDisabler(WebCore::SleepDisablerIdentifier, const String&, bool) override;
-    void didDestroySleepDisabler(WebCore::SleepDisablerIdentifier) override;
+    void didCreateSleepDisabler(CyberCore::SleepDisablerIdentifier, const String&, bool) override;
+    void didDestroySleepDisabler(CyberCore::SleepDisablerIdentifier) override;
 };
 
-} // namespace WebKit
+} // namespace CyberKit

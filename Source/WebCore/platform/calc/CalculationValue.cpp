@@ -36,7 +36,7 @@
 #include <limits>
 #include <wtf/text/TextStream.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 Ref<CalculationValue> CalculationValue::create(std::unique_ptr<CalcExpressionNode> value, ValueRange range)
 {
@@ -71,4 +71,4 @@ TextStream& operator<<(TextStream& ts, const CalculationValue& value)
     return ts << "calc(" << value.expression() << ")";
 }
 
-} // namespace WebCore
+} // namespace CyberCore

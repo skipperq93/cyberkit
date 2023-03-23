@@ -34,9 +34,9 @@
 #include "MotionManagerClient.h"
 #include <wtf/RefPtr.h>
 
-OBJC_CLASS WebCoreMotionManager;
+OBJC_CLASS CyberCoreMotionManager;
 
-namespace WebCore {
+namespace CyberCore {
 
 class DeviceMotionClientIOS : public DeviceMotionClient, public MotionManagerClient {
 public:
@@ -51,13 +51,13 @@ public:
     void motionChanged(double, double, double, double, double, double, std::optional<double>, std::optional<double>, std::optional<double>) override;
 
 private:
-    WebCoreMotionManager* m_motionManager { nullptr };
+    CyberCoreMotionManager* m_motionManager { nullptr };
     DeviceMotionController* m_controller { nullptr };
     RefPtr<DeviceMotionData> m_currentDeviceMotionData;
     RefPtr<DeviceOrientationUpdateProvider> m_deviceOrientationUpdateProvider;
     bool m_updating { false };
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // PLATFORM(IOS_FAMILY) && ENABLE(DEVICE_ORIENTATION)

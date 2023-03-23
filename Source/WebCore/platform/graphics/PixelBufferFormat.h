@@ -30,7 +30,7 @@
 #include "PixelFormat.h"
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct PixelBufferFormat {
     AlphaPremultiplication alphaFormat;

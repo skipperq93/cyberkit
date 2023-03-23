@@ -28,7 +28,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CyberScriptCore/JSBase.h>
-#import <CyberKitLegacy/WebKitAvailability.h>
+#import <CyberKitLegacy/CyberKitAvailability.h>
 
 @class DOMDocument;
 @class DOMHTMLElement;
@@ -213,7 +213,7 @@ WEBKIT_CLASS_DEPRECATED_MAC(10_3, 10_14)
 /*!
     @property globalContext
     @abstract The frame's global JavaScript execution context.
-    @discussion Use this method to bridge between the WebKit and JavaScriptCore APIs.
+    @discussion Use this method to bridge between the CyberKit and JavaScriptCore APIs.
 */
 @property (nonatomic, readonly) JSGlobalContextRef globalContext;
 
@@ -221,7 +221,7 @@ WEBKIT_CLASS_DEPRECATED_MAC(10_3, 10_14)
 /*!
     @property javaScriptContext
     @abstract The frame's global JavaScript execution context.
-    @discussion Use this method to bridge between the WebKit and Objective-C JavaScriptCore API.
+    @discussion Use this method to bridge between the CyberKit and Objective-C JavaScriptCore API.
 */
 @property (nonatomic, readonly, strong) JSContext *javaScriptContext;
 #endif // JSC_OBJC_API_ENABLED

@@ -30,7 +30,7 @@
 
 #include "SecurityOrigin.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 void SWOriginStore::add(const SecurityOriginData& origin)
 {
@@ -66,6 +66,6 @@ void SWOriginStore::clearAll()
     clearStore();
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

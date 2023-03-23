@@ -25,7 +25,7 @@
 #include "StyleScopeRuleSets.h"
 #include <wtf/Forward.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class StyleRulePage;
 
@@ -57,4 +57,4 @@ private:
 };
 
 } // namespace Style
-} // namespace WebCore
+} // namespace CyberCore

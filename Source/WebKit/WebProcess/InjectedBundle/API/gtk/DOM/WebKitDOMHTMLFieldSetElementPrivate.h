@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -17,16 +17,16 @@
  *  Boston, MA 02110-1301, USA.
  */
 
-#ifndef WebKitDOMHTMLFieldSetElementPrivate_h
-#define WebKitDOMHTMLFieldSetElementPrivate_h
+#ifndef CyberKitDOMHTMLFieldSetElementPrivate_h
+#define CyberKitDOMHTMLFieldSetElementPrivate_h
 
 #include <CyberCore/HTMLFieldSetElement.h>
-#include <webkitdom/WebKitDOMHTMLFieldSetElement.h>
+#include <webkitdom/CyberKitDOMHTMLFieldSetElement.h>
 
-namespace WebKit {
-WebKitDOMHTMLFieldSetElement* wrapHTMLFieldSetElement(WebCore::HTMLFieldSetElement*);
-WebKitDOMHTMLFieldSetElement* kit(WebCore::HTMLFieldSetElement*);
-WebCore::HTMLFieldSetElement* core(WebKitDOMHTMLFieldSetElement*);
-} // namespace WebKit
+namespace CyberKit {
+CyberKitDOMHTMLFieldSetElement* wrapHTMLFieldSetElement(CyberCore::HTMLFieldSetElement*);
+CyberKitDOMHTMLFieldSetElement* kit(CyberCore::HTMLFieldSetElement*);
+CyberCore::HTMLFieldSetElement* core(CyberKitDOMHTMLFieldSetElement*);
+} // namespace CyberKit
 
-#endif /* WebKitDOMHTMLFieldSetElementPrivate_h */
+#endif /* CyberKitDOMHTMLFieldSetElementPrivate_h */

@@ -33,13 +33,13 @@
 #include <CyberCore/CDMInstanceSession.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 class SharedBuffer;
 }
 
-namespace WebKit {
+namespace CyberKit {
 
-class RemoteCDMInstanceSession final : public IPC::MessageReceiver, public WebCore::CDMInstanceSession {
+class RemoteCDMInstanceSession final : public IPC::MessageReceiver, public CyberCore::CDMInstanceSession {
 public:
     static Ref<RemoteCDMInstanceSession> create(WeakPtr<RemoteCDMFactory>&&, RemoteCDMInstanceSessionIdentifier&&);
     virtual ~RemoteCDMInstanceSession();
@@ -59,13 +59,13 @@ private:
 
     // Messages
     void updateKeyStatuses(KeyStatusVector&&);
-    void sendMessage(WebCore::CDMMessageType, RefPtr<WebCore::SharedBuffer>&&);
+    void sendMessage(CyberCore::CDMMessageType, RefPtr<CyberCore::SharedBuffer>&&);
     void sessionIdChanged(const String&);
 
-    void setClient(WeakPtr<WebCore::CDMInstanceSessionClient>&& client) final { m_client = WTFMove(client); }
+    void setClient(WeakPtr<CyberCore::CDMInstanceSessionClient>&& client) final { m_client = WTFMove(client); }
     void clearClient() final { m_client = nullptr; }
-    void requestLicense(LicenseType, const AtomString& initDataType, Ref<WebCore::SharedBuffer>&& initData, LicenseCallback&&) final;
-    void updateLicense(const String& sessionId, LicenseType, Ref<WebCore::SharedBuffer>&& response, LicenseUpdateCallback&&) final;
+    void requestLicense(LicenseType, const AtomString& initDataType, Ref<CyberCore::SharedBuffer>&& initData, LicenseCallback&&) final;
+    void updateLicense(const String& sessionId, LicenseType, Ref<CyberCore::SharedBuffer>&& response, LicenseUpdateCallback&&) final;
     void loadSession(LicenseType, const String& sessionId, const String& origin, LoadSessionCallback&&) final;
     void closeSession(const String& sessionId, CloseSessionCallback&&) final;
     void removeSessionData(const String& sessionId, LicenseType, RemoveSessionDataCallback&&) final;
@@ -73,9 +73,9 @@ private:
 
     WeakPtr<RemoteCDMFactory> m_factory;
     RemoteCDMInstanceSessionIdentifier m_identifier;
-    WeakPtr<WebCore::CDMInstanceSessionClient> m_client;
+    WeakPtr<CyberCore::CDMInstanceSessionClient> m_client;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif

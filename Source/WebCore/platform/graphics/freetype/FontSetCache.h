@@ -27,7 +27,7 @@
 #include <wtf/HashTraits.h>
 #include <wtf/Hasher.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct FontSetCacheKey {
     FontSetCacheKey() = default;
@@ -92,4 +92,4 @@ private:
     HashMap<FontSetCacheKey, std::unique_ptr<FontSet>, FontSetCacheKeyHash, SimpleClassHashTraits<FontSetCacheKey>> m_cache;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

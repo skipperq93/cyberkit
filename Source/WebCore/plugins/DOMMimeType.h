@@ -24,7 +24,7 @@
 #include <wtf/RefPtr.h>
 #include <wtf/WeakPtr.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class DOMPlugin;
 class Navigator;
@@ -49,4 +49,4 @@ private:
     WeakPtr<DOMPlugin> m_enabledPlugin;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

@@ -31,7 +31,7 @@
 #include <wtf/JSONValues.h>
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 ContentType::ContentType(String&& contentType)
     : m_type(WTFMove(contentType))
@@ -132,4 +132,4 @@ String ContentType::toJSONString() const
     return object->toJSONString();
 }
 
-} // namespace WebCore
+} // namespace CyberCore

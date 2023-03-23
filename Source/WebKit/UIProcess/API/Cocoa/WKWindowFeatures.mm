@@ -26,7 +26,7 @@
 #import "config.h"
 #import "WKWindowFeaturesInternal.h"
 
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 #import <CyberCore/WindowFeatures.h>
 #import <wtf/RetainPtr.h>
 
@@ -34,7 +34,7 @@
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainRunLoop(WKWindowFeatures.class, self))
+    if (CyberCoreObjCScheduleDeallocateOnMainRunLoop(WKWindowFeatures.class, self))
         return;
 
     _windowFeatures->API::WindowFeatures::~WindowFeatures();

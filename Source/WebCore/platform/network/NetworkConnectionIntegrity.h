@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 enum class NetworkConnectionIntegrity : uint16_t {
     Enabled = 1 << 0,

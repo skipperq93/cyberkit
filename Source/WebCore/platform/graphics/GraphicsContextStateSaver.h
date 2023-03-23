@@ -25,7 +25,7 @@
 
 #pragma once
 
-namespace WebCore {
+namespace CyberCore {
 
 class GraphicsContextStateSaver {
     WTF_MAKE_FAST_ALLOCATED;
@@ -141,4 +141,4 @@ private:
     bool m_interpolationQualityChanged;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

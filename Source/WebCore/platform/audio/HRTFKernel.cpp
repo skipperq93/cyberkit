@@ -38,7 +38,7 @@
 #include "FloatConversion.h"
 #include <wtf/MathExtras.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 // Takes the input AudioChannel as an input impulse response and calculates the average group delay.
 // This represents the initial delay before the most energetic part of the impulse response.
@@ -134,6 +134,6 @@ RefPtr<HRTFKernel> HRTFKernel::createInterpolatedKernel(HRTFKernel* kernel1, HRT
     return HRTFKernel::create(WTFMove(interpolatedFrame), frameDelay, sampleRate1);
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(WEB_AUDIO)

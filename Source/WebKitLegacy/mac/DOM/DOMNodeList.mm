@@ -32,17 +32,17 @@
 #import <CyberCore/Node.h>
 #import <CyberCore/NodeList.h>
 #import <CyberCore/ThreadCheck.h>
-#import <CyberCore/WebCoreObjCExtras.h>
+#import <CyberCore/CyberCoreObjCExtras.h>
 #import <CyberCore/WebScriptObjectPrivate.h>
 #import <wtf/GetPtr.h>
 
-#define IMPL reinterpret_cast<WebCore::NodeList*>(_internal)
+#define IMPL reinterpret_cast<CyberCore::NodeList*>(_internal)
 
 @implementation DOMNodeList
 
 - (void)dealloc
 {
-    if (WebCoreObjCScheduleDeallocateOnMainThread([DOMNodeList class], self))
+    if (CyberCoreObjCScheduleDeallocateOnMainThread([DOMNodeList class], self))
         return;
 
     if (_internal)
@@ -52,21 +52,21 @@
 
 - (unsigned)length
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return IMPL->length();
 }
 
 - (DOMNode *)item:(unsigned)index
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     return kit(WTF::getPtr(IMPL->item(index)));
 }
 
 @end
 
-DOMNodeList *kit(WebCore::NodeList* value)
+DOMNodeList *kit(CyberCore::NodeList* value)
 {
-    WebCoreThreadViolationCheckRoundOne();
+    CyberCoreThreadViolationCheckRoundOne();
     if (!value)
         return nil;
     if (DOMNodeList *wrapper = getDOMWrapper(value))

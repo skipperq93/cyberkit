@@ -33,7 +33,7 @@
 #include "Shape.h"
 #include "ShapeInterval.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class OffsetPolygonEdge final : public VertexPair {
 public:
@@ -74,4 +74,4 @@ private:
     FloatPolygon m_polygon;
 };
 
-} // namespace WebCore
+} // namespace CyberCore

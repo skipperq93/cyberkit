@@ -25,7 +25,7 @@
 
 #import "config.h"
 #import "InjectedBundleHitTestProtocol.h"
-#import "WebCoreTestSupport.h"
+#import "CyberCoreTestSupport.h"
 #import <CyberKit/WKBundlePage.h>
 #import <CyberKit/WKBundlePageResourceLoadClient.h>
 #import <CyberKit/WKWebProcessPlugIn.h>
@@ -57,7 +57,7 @@
 
 - (void)webProcessPlugInBrowserContextController:(WKWebProcessPlugInBrowserContextController *)controller didClearWindowObjectForFrame:(WKWebProcessPlugInFrame *)frame inScriptWorld:(WKWebProcessPlugInScriptWorld *)scriptWorld
 {
-    WebCoreTestSupport::injectInternalsObject([frame jsContextForWorld:scriptWorld].JSGlobalContextRef);
+    CyberCoreTestSupport::injectInternalsObject([frame jsContextForWorld:scriptWorld].JSGlobalContextRef);
 }
 
 - (void)webProcessPlugInBrowserContextController:(WKWebProcessPlugInBrowserContextController*)controller didFinishLoadForFrame:(WKWebProcessPlugInFrame *)frame

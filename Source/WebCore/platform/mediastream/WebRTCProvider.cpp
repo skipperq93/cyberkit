@@ -35,7 +35,7 @@
 #include <wtf/Function.h>
 #include <wtf/NeverDestroyed.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 #if !USE(LIBWEBRTC) && !USE(GSTREAMER_WEBRTC)
 UniqueRef<WebRTCProvider> WebRTCProvider::create()
@@ -307,4 +307,4 @@ std::optional<MediaCapabilitiesEncodingInfo> WebRTCProvider::videoEncodingCapabi
     return { };
 }
 
-} // namespace WebCore
+} // namespace CyberCore

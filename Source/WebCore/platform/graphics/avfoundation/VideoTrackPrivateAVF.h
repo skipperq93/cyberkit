@@ -29,7 +29,7 @@
 
 #include "VideoTrackPrivate.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 class VideoTrackPrivateAVF : public VideoTrackPrivate {
     WTF_MAKE_NONCOPYABLE(VideoTrackPrivateAVF)

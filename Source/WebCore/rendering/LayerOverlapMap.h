@@ -32,7 +32,7 @@ namespace WTF {
 class TextStream;
 }
 
-namespace WebCore {
+namespace CyberCore {
 
 class OverflowAwareOverlapContainer;
 class OverlapMapContainer;
@@ -75,4 +75,4 @@ private:
 
 TextStream& operator<<(TextStream&, const LayerOverlapMap&);
 
-} // namespace WebCore
+} // namespace CyberCore

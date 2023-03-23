@@ -35,7 +35,7 @@
 #include <CoreText/CoreText.h>
 #include <pal/spi/cf/CoreTextSPI.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 FontCustomPlatformData::~FontCustomPlatformData() = default;
 

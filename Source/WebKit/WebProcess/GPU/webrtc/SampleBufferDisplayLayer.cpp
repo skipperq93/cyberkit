@@ -35,19 +35,19 @@
 #include "RemoteSampleBufferDisplayLayerMessages.h"
 #include "RemoteVideoFrameProxy.h"
 #include "SampleBufferDisplayLayerManager.h"
-#include "WebCoreArgumentCoders.h"
+#include "CyberCoreArgumentCoders.h"
 #include "WebProcess.h"
 
-namespace WebKit {
-using namespace WebCore;
+namespace CyberKit {
+using namespace CyberCore;
 
-std::unique_ptr<SampleBufferDisplayLayer> SampleBufferDisplayLayer::create(SampleBufferDisplayLayerManager& manager, WebCore::SampleBufferDisplayLayer::Client& client)
+std::unique_ptr<SampleBufferDisplayLayer> SampleBufferDisplayLayer::create(SampleBufferDisplayLayerManager& manager, CyberCore::SampleBufferDisplayLayer::Client& client)
 {
     return std::unique_ptr<SampleBufferDisplayLayer>(new SampleBufferDisplayLayer(manager, client));
 }
 
-SampleBufferDisplayLayer::SampleBufferDisplayLayer(SampleBufferDisplayLayerManager& manager, WebCore::SampleBufferDisplayLayer::Client& client)
-    : WebCore::SampleBufferDisplayLayer(client)
+SampleBufferDisplayLayer::SampleBufferDisplayLayer(SampleBufferDisplayLayerManager& manager, CyberCore::SampleBufferDisplayLayer::Client& client)
+    : CyberCore::SampleBufferDisplayLayer(client)
     , m_gpuProcessConnection(&WebProcess::singleton().ensureGPUProcessConnection())
     , m_manager(manager)
     , m_connection(m_gpuProcessConnection->connection())

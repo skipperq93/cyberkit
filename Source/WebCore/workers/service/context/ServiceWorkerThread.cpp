@@ -57,7 +57,7 @@
 
 using namespace PAL;
 
-namespace WebCore {
+namespace CyberCore {
 
 class DummyServiceWorkerThreadProxy : public WorkerObjectProxy {
 public:
@@ -460,6 +460,6 @@ void ServiceWorkerThread::finishedFiringPushSubscriptionChangeEvent()
     --m_pushSubscriptionChangeEventCount;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // ENABLE(SERVICE_WORKER)

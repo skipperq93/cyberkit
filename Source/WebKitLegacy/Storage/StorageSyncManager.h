@@ -33,7 +33,7 @@
 #include <wtf/RefCounted.h>
 #include <wtf/text/WTFString.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 class StorageThread;
 class StorageAreaSync;
@@ -60,6 +60,6 @@ private:
     String m_path;
 };
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // StorageSyncManager_h

@@ -29,23 +29,23 @@
 
 #import <CyberCore/DataDetectorType.h>
 
-static inline OptionSet<WebCore::DataDetectorType> fromWKDataDetectorTypes(WKDataDetectorTypes types)
+static inline OptionSet<CyberCore::DataDetectorType> fromWKDataDetectorTypes(WKDataDetectorTypes types)
 {
-    OptionSet<WebCore::DataDetectorType> result;
+    OptionSet<CyberCore::DataDetectorType> result;
     if (types & WKDataDetectorTypePhoneNumber)
-        result.add(WebCore::DataDetectorType::PhoneNumber);
+        result.add(CyberCore::DataDetectorType::PhoneNumber);
     if (types & WKDataDetectorTypeLink)
-        result.add(WebCore::DataDetectorType::Link);
+        result.add(CyberCore::DataDetectorType::Link);
     if (types & WKDataDetectorTypeAddress)
-        result.add(WebCore::DataDetectorType::Address);
+        result.add(CyberCore::DataDetectorType::Address);
     if (types & WKDataDetectorTypeCalendarEvent)
-        result.add(WebCore::DataDetectorType::CalendarEvent);
+        result.add(CyberCore::DataDetectorType::CalendarEvent);
     if (types & WKDataDetectorTypeTrackingNumber)
-        result.add(WebCore::DataDetectorType::TrackingNumber);
+        result.add(CyberCore::DataDetectorType::TrackingNumber);
     if (types & WKDataDetectorTypeFlightNumber)
-        result.add(WebCore::DataDetectorType::FlightNumber);
+        result.add(CyberCore::DataDetectorType::FlightNumber);
     if (types & WKDataDetectorTypeLookupSuggestion)
-        result.add(WebCore::DataDetectorType::LookupSuggestion);
+        result.add(CyberCore::DataDetectorType::LookupSuggestion);
 
     return result;
 }

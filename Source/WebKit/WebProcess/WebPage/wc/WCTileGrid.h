@@ -30,46 +30,46 @@
 #include <CyberCore/IntRect.h>
 #include <CyberCore/TextureMapperSparseBackingStore.h>
 
-namespace WebKit {
+namespace CyberKit {
 
 class WCTileGrid {
 public:
-    using TileIndex = WebCore::TextureMapperSparseBackingStore::TileIndex;
+    using TileIndex = CyberCore::TextureMapperSparseBackingStore::TileIndex;
 
     class Tile {
         WTF_MAKE_FAST_ALLOCATED;
         WTF_MAKE_NONCOPYABLE(Tile);
     public:
-        Tile(WebCore::IntRect);
+        Tile(CyberCore::IntRect);
         bool willRemove() const { return m_willRemove; }
         void setWillRemove(bool v) { m_willRemove = v; }
-        void addDirtyRect(const WebCore::IntRect&);
+        void addDirtyRect(const CyberCore::IntRect&);
         void clearDirtyRect();
         bool hasDirtyRect() const;
-        WebCore::IntRect& dirtyRect() { return m_dirtyRect; }
+        CyberCore::IntRect& dirtyRect() { return m_dirtyRect; }
 
     private:
         bool m_willRemove { false };
-        WebCore::IntRect m_tileRect;
-        WebCore::IntRect m_dirtyRect;
+        CyberCore::IntRect m_tileRect;
+        CyberCore::IntRect m_dirtyRect;
     };
 
-    void setSize(const WebCore::IntSize&);
-    void addDirtyRect(const WebCore::IntRect&);
+    void setSize(const CyberCore::IntSize&);
+    void addDirtyRect(const CyberCore::IntRect&);
     void clearDirtyRects();
-    bool setCoverageRect(const WebCore::IntRect&);
+    bool setCoverageRect(const CyberCore::IntRect&);
     auto& tiles() { return m_tiles; }
-    WebCore::IntSize tilePixelSize() const;
+    CyberCore::IntSize tilePixelSize() const;
 
 private:
     bool ensureTile(TileIndex);
-    WebCore::IntRect tileRectFromPixelRect(const WebCore::IntRect&);
-    WebCore::IntSize tileSizeFromPixelSize(const WebCore::IntSize&);
+    CyberCore::IntRect tileRectFromPixelRect(const CyberCore::IntRect&);
+    CyberCore::IntSize tileSizeFromPixelSize(const CyberCore::IntSize&);
     
-    WebCore::IntSize m_size;
+    CyberCore::IntSize m_size;
     HashMap<TileIndex, std::unique_ptr<Tile>> m_tiles;
 };
 
-} // namespace WebKit
+} // namespace CyberKit
 
 #endif // USE(GRAPHICS_LAYER_WC)

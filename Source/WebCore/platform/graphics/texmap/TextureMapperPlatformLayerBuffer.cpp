@@ -31,7 +31,7 @@
 #include "FloatRect.h"
 #include "NotImplemented.h"
 
-namespace WebCore {
+namespace CyberCore {
 
 TextureMapperPlatformLayerBuffer::TextureMapperPlatformLayerBuffer(RefPtr<BitmapTexture>&& texture, TextureMapperGL::Flags flags)
     : m_variant(RGBTexture { 0 })
@@ -158,6 +158,6 @@ void TextureMapperPlatformLayerBuffer::paintToTextureMapper(TextureMapper& textu
         });
 }
 
-} // namespace WebCore
+} // namespace CyberCore
 
 #endif // USE(COORDINATED_GRAPHICS)

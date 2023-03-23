@@ -54,8 +54,8 @@ struct ResourceLoadInfo {
     };
     
     NetworkResourceLoadIdentifier resourceLoadID;
-    std::optional<WebCore::FrameIdentifier> frameID;
-    std::optional<WebCore::FrameIdentifier> parentFrameID;
+    std::optional<CyberCore::FrameIdentifier> frameID;
+    std::optional<CyberCore::FrameIdentifier> parentFrameID;
     URL originalURL;
     String originalHTTPMethod;
     WallTime eventTimestamp;
@@ -81,12 +81,12 @@ struct ResourceLoadInfo {
         if (!resourceLoadID)
             return std::nullopt;
 
-        std::optional<std::optional<WebCore::FrameIdentifier>> frameID;
+        std::optional<std::optional<CyberCore::FrameIdentifier>> frameID;
         decoder >> frameID;
         if (!frameID)
             return std::nullopt;
 
-        std::optional<std::optional<WebCore::FrameIdentifier>> parentFrameID;
+        std::optional<std::optional<CyberCore::FrameIdentifier>> parentFrameID;
         decoder >> parentFrameID;
         if (!parentFrameID)
             return std::nullopt;

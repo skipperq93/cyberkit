@@ -1,5 +1,5 @@
 /*
- *  This file is part of the WebKit open source project.
+ *  This file is part of the CyberKit open source project.
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Library General Public
@@ -18,7 +18,7 @@
  */
 
 #include "config.h"
-#include "WebKitDOMHTMLTitleElement.h"
+#include "CyberKitDOMHTMLTitleElement.h"
 
 #include <CyberCore/CSSImportRule.h>
 #include "DOMObjectCache.h"
@@ -26,73 +26,73 @@
 #include <CyberCore/Document.h>
 #include "GObjectEventListener.h"
 #include <CyberCore/JSExecState.h>
-#include "WebKitDOMEventPrivate.h"
-#include "WebKitDOMEventTarget.h"
-#include "WebKitDOMHTMLTitleElementPrivate.h"
-#include "WebKitDOMNodePrivate.h"
-#include "WebKitDOMPrivate.h"
+#include "CyberKitDOMEventPrivate.h"
+#include "CyberKitDOMEventTarget.h"
+#include "CyberKitDOMHTMLTitleElementPrivate.h"
+#include "CyberKitDOMNodePrivate.h"
+#include "CyberKitDOMPrivate.h"
 #include "ConvertToUTF8String.h"
 #include <wtf/GetPtr.h>
 #include <wtf/RefPtr.h>
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
-namespace WebKit {
+namespace CyberKit {
 
-WebKitDOMHTMLTitleElement* kit(WebCore::HTMLTitleElement* obj)
+CyberKitDOMHTMLTitleElement* kit(CyberCore::HTMLTitleElement* obj)
 {
-    return WEBKIT_DOM_HTML_TITLE_ELEMENT(kit(static_cast<WebCore::Node*>(obj)));
+    return WEBKIT_DOM_HTML_TITLE_ELEMENT(kit(static_cast<CyberCore::Node*>(obj)));
 }
 
-WebCore::HTMLTitleElement* core(WebKitDOMHTMLTitleElement* request)
+CyberCore::HTMLTitleElement* core(CyberKitDOMHTMLTitleElement* request)
 {
-    return request ? static_cast<WebCore::HTMLTitleElement*>(WEBKIT_DOM_OBJECT(request)->coreObject) : 0;
+    return request ? static_cast<CyberCore::HTMLTitleElement*>(WEBKIT_DOM_OBJECT(request)->coreObject) : 0;
 }
 
-WebKitDOMHTMLTitleElement* wrapHTMLTitleElement(WebCore::HTMLTitleElement* coreObject)
+CyberKitDOMHTMLTitleElement* wrapHTMLTitleElement(CyberCore::HTMLTitleElement* coreObject)
 {
     ASSERT(coreObject);
     return WEBKIT_DOM_HTML_TITLE_ELEMENT(g_object_new(WEBKIT_DOM_TYPE_HTML_TITLE_ELEMENT, "core-object", coreObject, nullptr));
 }
 
-} // namespace WebKit
+} // namespace CyberKit
 
-static gboolean webkit_dom_html_title_element_dispatch_event(WebKitDOMEventTarget* target, WebKitDOMEvent* event, GError** error)
+static gboolean webkit_dom_html_title_element_dispatch_event(CyberKitDOMEventTarget* target, CyberKitDOMEvent* event, GError** error)
 {
-    WebCore::Event* coreEvent = WebKit::core(event);
+    CyberCore::Event* coreEvent = CyberKit::core(event);
     if (!coreEvent)
         return false;
-    WebCore::HTMLTitleElement* coreTarget = static_cast<WebCore::HTMLTitleElement*>(WEBKIT_DOM_OBJECT(target)->coreObject);
+    CyberCore::HTMLTitleElement* coreTarget = static_cast<CyberCore::HTMLTitleElement*>(WEBKIT_DOM_OBJECT(target)->coreObject);
 
     auto result = coreTarget->dispatchEventForBindings(*coreEvent);
     if (result.hasException()) {
-        auto description = WebCore::DOMException::description(result.releaseException().code());
+        auto description = CyberCore::DOMException::description(result.releaseException().code());
         g_set_error_literal(error, g_quark_from_string("WEBKIT_DOM"), description.legacyCode, description.name);
         return false;
     }
     return result.releaseReturnValue();
 }
 
-static gboolean webkit_dom_html_title_element_add_event_listener(WebKitDOMEventTarget* target, const char* eventName, GClosure* handler, gboolean useCapture)
+static gboolean webkit_dom_html_title_element_add_event_listener(CyberKitDOMEventTarget* target, const char* eventName, GClosure* handler, gboolean useCapture)
 {
-    WebCore::HTMLTitleElement* coreTarget = static_cast<WebCore::HTMLTitleElement*>(WEBKIT_DOM_OBJECT(target)->coreObject);
-    return WebKit::GObjectEventListener::addEventListener(G_OBJECT(target), coreTarget, eventName, handler, useCapture);
+    CyberCore::HTMLTitleElement* coreTarget = static_cast<CyberCore::HTMLTitleElement*>(WEBKIT_DOM_OBJECT(target)->coreObject);
+    return CyberKit::GObjectEventListener::addEventListener(G_OBJECT(target), coreTarget, eventName, handler, useCapture);
 }
 
-static gboolean webkit_dom_html_title_element_remove_event_listener(WebKitDOMEventTarget* target, const char* eventName, GClosure* handler, gboolean useCapture)
+static gboolean webkit_dom_html_title_element_remove_event_listener(CyberKitDOMEventTarget* target, const char* eventName, GClosure* handler, gboolean useCapture)
 {
-    WebCore::HTMLTitleElement* coreTarget = static_cast<WebCore::HTMLTitleElement*>(WEBKIT_DOM_OBJECT(target)->coreObject);
-    return WebKit::GObjectEventListener::removeEventListener(G_OBJECT(target), coreTarget, eventName, handler, useCapture);
+    CyberCore::HTMLTitleElement* coreTarget = static_cast<CyberCore::HTMLTitleElement*>(WEBKIT_DOM_OBJECT(target)->coreObject);
+    return CyberKit::GObjectEventListener::removeEventListener(G_OBJECT(target), coreTarget, eventName, handler, useCapture);
 }
 
-static void webkit_dom_html_title_element_dom_event_target_init(WebKitDOMEventTargetIface* iface)
+static void webkit_dom_html_title_element_dom_event_target_init(CyberKitDOMEventTargetIface* iface)
 {
     iface->dispatch_event = webkit_dom_html_title_element_dispatch_event;
     iface->add_event_listener = webkit_dom_html_title_element_add_event_listener;
     iface->remove_event_listener = webkit_dom_html_title_element_remove_event_listener;
 }
 
-G_DEFINE_TYPE_WITH_CODE(WebKitDOMHTMLTitleElement, webkit_dom_html_title_element, WEBKIT_DOM_TYPE_HTML_ELEMENT, G_IMPLEMENT_INTERFACE(WEBKIT_DOM_TYPE_EVENT_TARGET, webkit_dom_html_title_element_dom_event_target_init))
+G_DEFINE_TYPE_WITH_CODE(CyberKitDOMHTMLTitleElement, webkit_dom_html_title_element, WEBKIT_DOM_TYPE_HTML_ELEMENT, G_IMPLEMENT_INTERFACE(WEBKIT_DOM_TYPE_EVENT_TARGET, webkit_dom_html_title_element_dom_event_target_init))
 
 enum {
     DOM_HTML_TITLE_ELEMENT_PROP_0,
@@ -101,7 +101,7 @@ enum {
 
 static void webkit_dom_html_title_element_set_property(GObject* object, guint propertyId, const GValue* value, GParamSpec* pspec)
 {
-    WebKitDOMHTMLTitleElement* self = WEBKIT_DOM_HTML_TITLE_ELEMENT(object);
+    CyberKitDOMHTMLTitleElement* self = WEBKIT_DOM_HTML_TITLE_ELEMENT(object);
 
     switch (propertyId) {
     case DOM_HTML_TITLE_ELEMENT_PROP_TEXT:
@@ -115,7 +115,7 @@ static void webkit_dom_html_title_element_set_property(GObject* object, guint pr
 
 static void webkit_dom_html_title_element_get_property(GObject* object, guint propertyId, GValue* value, GParamSpec* pspec)
 {
-    WebKitDOMHTMLTitleElement* self = WEBKIT_DOM_HTML_TITLE_ELEMENT(object);
+    CyberKitDOMHTMLTitleElement* self = WEBKIT_DOM_HTML_TITLE_ELEMENT(object);
 
     switch (propertyId) {
     case DOM_HTML_TITLE_ELEMENT_PROP_TEXT:
@@ -127,7 +127,7 @@ static void webkit_dom_html_title_element_get_property(GObject* object, guint pr
     }
 }
 
-static void webkit_dom_html_title_element_class_init(WebKitDOMHTMLTitleElementClass* requestClass)
+static void webkit_dom_html_title_element_class_init(CyberKitDOMHTMLTitleElementClass* requestClass)
 {
     GObjectClass* gobjectClass = G_OBJECT_CLASS(requestClass);
     gobjectClass->set_property = webkit_dom_html_title_element_set_property;
@@ -145,26 +145,26 @@ static void webkit_dom_html_title_element_class_init(WebKitDOMHTMLTitleElementCl
 
 }
 
-static void webkit_dom_html_title_element_init(WebKitDOMHTMLTitleElement* request)
+static void webkit_dom_html_title_element_init(CyberKitDOMHTMLTitleElement* request)
 {
     UNUSED_PARAM(request);
 }
 
-gchar* webkit_dom_html_title_element_get_text(WebKitDOMHTMLTitleElement* self)
+gchar* webkit_dom_html_title_element_get_text(CyberKitDOMHTMLTitleElement* self)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_val_if_fail(WEBKIT_DOM_IS_HTML_TITLE_ELEMENT(self), 0);
-    WebCore::HTMLTitleElement* item = WebKit::core(self);
+    CyberCore::HTMLTitleElement* item = CyberKit::core(self);
     gchar* result = convertToUTF8String(item->text());
     return result;
 }
 
-void webkit_dom_html_title_element_set_text(WebKitDOMHTMLTitleElement* self, const gchar* value)
+void webkit_dom_html_title_element_set_text(CyberKitDOMHTMLTitleElement* self, const gchar* value)
 {
-    WebCore::JSMainThreadNullState state;
+    CyberCore::JSMainThreadNullState state;
     g_return_if_fail(WEBKIT_DOM_IS_HTML_TITLE_ELEMENT(self));
     g_return_if_fail(value);
-    WebCore::HTMLTitleElement* item = WebKit::core(self);
+    CyberCore::HTMLTitleElement* item = CyberKit::core(self);
     item->setText(WTF::String::fromUTF8(value));
 }
 

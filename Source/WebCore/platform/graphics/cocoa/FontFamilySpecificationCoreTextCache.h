@@ -29,7 +29,7 @@
 #include <CoreText/CoreText.h>
 #include <wtf/HashMap.h>
 
-namespace WebCore {
+namespace CyberCore {
 
 struct FontFamilySpecificationKey {
     RetainPtr<CTFontDescriptorRef> fontDescriptor;
@@ -93,4 +93,4 @@ template<typename Functor> FontPlatformData& FontFamilySpecificationCoreTextCach
     return *fontPlatformData;
 }
 
-} // namespace WebCore
+} // namespace CyberCore
